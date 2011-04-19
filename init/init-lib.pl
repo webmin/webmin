@@ -602,9 +602,19 @@ if ($init_mode eq "upstart" && (!-r "$config{'init_dir'}/$_[0]" ||
 		# Config file exists, make sure it is enabled
 		&system_logged("insserv ".quotemeta($_[0])." >/dev/null 2>&1");
 		my $lref = &read_file_lines($cfile);
+		my $foundstart;
 		foreach my $l (@$lref) {
-			if ($l =~ /^#+\s*start/) {
+			if ($l =~ /^#+start/) {
+				# Start of start block
 				$l =~ s/^#+//;
+				$foundstart = 1;
+				}
+			elsif ($l =~ /^#+\s+\S/ && $foundstart) {
+				# Continuation line for start
+				$l =~ s/^#+//;
+				}
+			elsif ($l =~ /^\S/ && $foundstart) {
+				# Some other directive after start
 				last;
 				}
 			}
@@ -917,9 +927,19 @@ if ($init_mode eq "upstart") {
 	my $cfile = "/etc/init/$_[0].conf";
 	if (-r $cfile) {
 		my $lref = &read_file_lines($cfile);
+		my $foundstart;
 		foreach my $l (@$lref) {
-			if ($l =~ /^\s*start/) {
+			if ($l =~ /^start\s/) {
+				# Start of start block
 				$l = "#".$l;
+				$foundstart = 1;
+				}
+			elsif ($l =~ /^\s+\S/ && $foundstart) {
+				# Continuation line for start
+				$l = "#".$l;
+				}
+			elsif ($l =~ /^\S/ && $foundstart) {
+				# Some other directive after start
 				last;
 				}
 			}

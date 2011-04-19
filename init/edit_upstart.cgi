@@ -73,8 +73,8 @@ if ($in{'new'}) {
 	}
 else {
 	print &ui_form_end([ [ undef, $text{'save'} ],
-			     [ 'start', $text{'index_start'} ],
-			     [ 'stop', $text{'index_stop'} ],
+			     [ 'start', $text{'edit_startnow'} ],
+			     [ 'stop', $text{'edit_stopnow'} ],
 			     [ 'delete', $text{'delete'} ] ]);
 	}
 

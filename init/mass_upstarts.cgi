@@ -53,4 +53,10 @@ if ($enable || $disable) {
 		    join(" ", @sel));
 	}
 
-&ui_print_footer("", $text{'index_return'});
+if ($in{'return'}) {
+	&ui_print_footer("edit_upstart.cgi?name=".&urlize($in{'return'}),
+			 $text{'upstart_return'});
+	}
+else {
+	&ui_print_footer("", $text{'index_return'});
+	}

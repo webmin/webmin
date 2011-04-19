@@ -206,5 +206,6 @@ upstart_eclash=A service with the same name already exists
 upstart_edesc=Missing service description
 upstart_eserver=No server command entered
 upstart_eserver2=Server command does not exist
+upstart_return=upstart service
 
 __norefs=1

@@ -17,8 +17,9 @@ if (!$in{'new'}) {
 
 if ($in{'start'} || $in{'stop'}) {
 	# Just redirect to the start page
-	&redirect("mass_upstarts.cgi?d=".&urlize($in{'name'}).
-		  ($in{'start'} ? "start=1" : "stop=1"));
+	&redirect("mass_upstarts.cgi?d=".&urlize($in{'name'})."&".
+		  ($in{'start'} ? "start=1" : "stop=1").
+		  "&return=".&urlize($in{'name'}));
 	exit;
 	}
 
