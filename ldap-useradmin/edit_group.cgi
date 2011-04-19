@@ -99,7 +99,7 @@ else {
 print &ui_table_end();
 
 # Show extra fields (if any)
-&extra_fields_input($config{'group_fields'}, $ginfo);
+&extra_fields_input($config{'group_fields'}, $ginfo, \@tds);
 
 # Show capabilties section
 print &ui_table_start($text{'gedit_cap'}, "width=100%", 4, [ "width=30%" ]);

@@ -319,7 +319,7 @@ if ($groupfield) {
 print &ui_table_end();
 
 # Show extra fields (if any)
-&extra_fields_input($config{'fields'}, $uinfo);
+&extra_fields_input($config{'fields'}, $uinfo, \@tds);
 
 # Show capabilties section
 print &ui_table_start($text{'uedit_cap'}, "width=100%", 4, \@tds);

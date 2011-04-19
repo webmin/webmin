@@ -909,44 +909,35 @@ sub in_schema
 return $_[0] && $_[0]->attribute($_[1]);
 }
 
-# extra_fields_input(fields-list, &user|&group)
+# extra_fields_input(fields-list, &user|&group, &tds)
 sub extra_fields_input
 {
-local ($fields, $uinfo) = @_;
-local @fields = map { [ split(/\s+/, $_, 2) ] } split(/\t/, $fields);
+my ($fields, $uinfo, $tds) = @_;
+my @fields = map { [ split(/\s+/, $_, 2) ] } split(/\t/, $fields);
 if (@fields) {
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'uedit_fields'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table width=100%>\n";
-	local $i = 0;
-	local $f;
-	foreach $f (@fields) {
-		local ($multi) = ($f->[0] =~ s/\+$//);
-		print "<tr>\n" if ($i%2 == 0);
-
-		print "<td valign=top width=25%><b>$f->[1]</b></td>\n";
-		print "<td valign=top width=25%>\n";
-		local @v;
+	print &ui_table_start($text{'uedit_fields'}, "width=100%", 4, $tds);
+	my $i = 0;
+	foreach my $f (@fields) {
+		my ($multi) = ($f->[0] =~ s/\+$//);
+		my @v;
 		if ($in{'new'}) {
 			$v[0] = $in{lc($f->[0])};
 			}
 		else {
 			@v = $uinfo->get_value($f->[0]);
 			}
+		my $input;
 		if ($config{'multi_fields'} || @v > 1 || $multi) {
-			print "<textarea name=field_$i rows=3 cols=25>\n";
-			print join("\n", @v);
-			print "</textarea>\n";
+			$input = &ui_textarea("field_$i",
+					      join("\n", @v), 3, 25);
 			}
 		else {
-			printf "<input name=field_%d size=25 value='%s'>\n",
-				$i, $v[0];
+			$input = &ui_textbox("field_$i", $v[0], 25);
 			}
-		print "</td>\n";
 
-		print "</tr>\n" if ($i++%2 == 1);
+		print &ui_table_row($f->[1], $input);
 		}
-	print "</table></td></tr></table><p>\n";
+	print &ui_table_end();
 	}
 }
 
