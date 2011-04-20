@@ -40,6 +40,7 @@ elsif ($in{'new'}) {
 	$in{'server'} =~ /\S/ || &error($text{'upstart_eserver'});
 	($bin, $args) = split(/\s+/, $in{'server'});
 	&has_command($bin) || &error($text{'upstart_eserver2'});
+	$in{'server'} =~ /;|\&\&|\|\|/ && &error($text{'upstart_eserver3'});
 	$in{'prestart'} =~ s/\r//g;
 
 	# Create the config file

@@ -47,7 +47,7 @@ index_uname=Service name
 index_udesc=Service description
 index_uboot=Start at boot?
 index_ustatus=Running now?
-index_uadd=Create a new service.
+index_uadd=Create a new upstart service.
 
 edit_title=Edit Action
 create_title=Create Action
@@ -206,6 +206,7 @@ upstart_eclash=A service with the same name already exists
 upstart_edesc=Missing service description
 upstart_eserver=No server command entered
 upstart_eserver2=Server command does not exist
+upstart_eserver3=Only one server command can be entered
 upstart_return=upstart service
 
 __norefs=1
