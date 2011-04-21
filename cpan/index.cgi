@@ -111,7 +111,8 @@ if (@recs) {
 	print &ui_hidden("source", 3),"\n";
 	print "$text{'index_recs'}<p>\n";
 	print &ui_select("cpan", [ map { $_->[0] } @recs ],
-		 [ map { [ $_->[0], "$_->[0] ($_->[1]->{'desc'})" ] } @allrecs],
+		 [ map { [ $_->[0], &text('index_user',
+				$_->[0], $_->[1]->{'desc'}) ] } @allrecs ],
 		 5, 1),"<br>\n";
 	print &ui_submit($text{'index_recsok'});
 	print &ui_form_end();
