@@ -138,8 +138,11 @@ sub list_diffs
 {
 local $i = 0;
 local @rv;
+local $idprefix = substr($act->{'id'}, 0, 5);
+local $oldbase = "$ENV{'WEBMIN_VAR'}/diffs/$idprefix/$act->{'id'}";
 local $base = "$ENV{'WEBMIN_VAR'}/diffs/$act->{'id'}";
-local @files = &expand_base_dir($base);
+return ( ) if (!-d $base && !-d $oldbase);
+local @files = &expand_base_dir(-d $base ? $base : $oldbase);
 
 # Read the diff files
 foreach my $file (@files) {
@@ -186,8 +189,12 @@ sub list_files
 {
 local $i = 0;
 local @rv;
+local $idprefix = substr($act->{'id'}, 0, 5);
+local $oldbase = "$ENV{'WEBMIN_VAR'}/files/$idprefix/$act->{'id'}";
 local $base = "$ENV{'WEBMIN_VAR'}/files/$act->{'id'}";
-local @files = &expand_base_dir($base);
+return ( ) if (!-d $base && !-d $oldbase);
+local @files = &expand_base_dir(-d $base ? $base : $oldbase);
+
 foreach my $file (@files) {
         local ($type, $object, $data);
 	open(FILE, $file);
@@ -254,7 +261,10 @@ Returns the text of the page that generated this action, or undef if none.
 sub get_action_output
 {
 local ($act) = @_;
-return &read_file_contents("$ENV{'WEBMIN_VAR'}/output/$act->{'id'}");
+local $idprefix = substr($act->{'id'}, 0, 5);
+return &read_file_contents("$ENV{'WEBMIN_VAR'}/output/$idprefix/$act->{'id'}")
+       ||
+       &read_file_contents("$ENV{'WEBMIN_VAR'}/output/$act->{'id'}");
 }
 
 =head2 expand_base_dir(base)

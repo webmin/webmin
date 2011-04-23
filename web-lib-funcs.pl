@@ -5194,6 +5194,7 @@ my $now = time();
 my @tm = localtime($now);
 my $script_name = $0 =~ /([^\/]+)$/ ? $1 : '-';
 my $id = sprintf "%d.%d.%d", $now, $$, $main::action_id_count;
+my $idprefix = substr($now, 0, 5);
 $main::action_id_count++;
 my $line = sprintf "%s [%2.2d/%s/%4.4d %2.2d:%2.2d:%2.2d] %s %s %s %s %s \"%s\" \"%s\" \"%s\"",
 	$id, $tm[3], ucfirst($number_to_month_map{$tm[4]}), $tm[5]+1900,
@@ -5243,20 +5244,22 @@ if ($gconfig{'logfiles'} && !&get_module_variable('$no_log_file_changes')) {
 	my $i = 0;
 	mkdir("$ENV{'WEBMIN_VAR'}/diffs", 0700);
 	foreach my $d (@main::locked_file_diff) {
-		mkdir("$ENV{'WEBMIN_VAR'}/diffs/$id", 0700);
-		open(DIFFLOG, ">$ENV{'WEBMIN_VAR'}/diffs/$id/$i");
+		mkdir("$ENV{'WEBMIN_VAR'}/diffs/$idprefix", 0700);
+		mkdir("$ENV{'WEBMIN_VAR'}/diffs/$idprefix/$id", 0700);
+		open(DIFFLOG, ">$ENV{'WEBMIN_VAR'}/diffs/$idprefix/$id/$i");
 		print DIFFLOG "$d->{'type'} $d->{'object'}\n";
 		print DIFFLOG $d->{'data'};
 		close(DIFFLOG);
 		if ($d->{'input'}) {
-			open(DIFFLOG, ">$ENV{'WEBMIN_VAR'}/diffs/$id/$i.input");
+			open(DIFFLOG,
+			  ">$ENV{'WEBMIN_VAR'}/diffs/$idprefix/$id/$i.input");
 			print DIFFLOG $d->{'input'};
 			close(DIFFLOG);
 			}
 		if ($gconfig{'logperms'}) {
 			chmod(oct($gconfig{'logperms'}),
-			      "$ENV{'WEBMIN_VAR'}/diffs/$id/$i",
-			      "$ENV{'WEBMIN_VAR'}/diffs/$id/$i.input");
+			     "$ENV{'WEBMIN_VAR'}/diffs/$idprefix/$id/$i",
+			     "$ENV{'WEBMIN_VAR'}/diffs/$idprefix/$id/$i.input");
 			}
 		$i++;
 		}
@@ -5268,8 +5271,9 @@ if ($gconfig{'logfullfiles'}) {
 	my $i = 0;
 	mkdir("$ENV{'WEBMIN_VAR'}/files", 0700);
 	foreach my $f (keys %main::orig_file_data) {
-		mkdir("$ENV{'WEBMIN_VAR'}/files/$id", 0700);
-		open(ORIGLOG, ">$ENV{'WEBMIN_VAR'}/files/$id/$i");
+		mkdir("$ENV{'WEBMIN_VAR'}/files/$idprefix", 0700);
+		mkdir("$ENV{'WEBMIN_VAR'}/files/$idprefix/$id", 0700);
+		open(ORIGLOG, ">$ENV{'WEBMIN_VAR'}/files/$idprefix/$id/$i");
 		if (!defined($main::orig_file_type{$f})) {
 			print ORIGLOG -1," ",$f,"\n";
 			}
@@ -5280,7 +5284,7 @@ if ($gconfig{'logfullfiles'}) {
 		close(ORIGLOG);
 		if ($gconfig{'logperms'}) {
 			chmod(oct($gconfig{'logperms'}),
-			      "$ENV{'WEBMIN_VAR'}/files/$id.$i");
+			      "$ENV{'WEBMIN_VAR'}/files/$idprefix/$id.$i");
 			}
 		$i++;
 		}
@@ -5291,12 +5295,13 @@ if ($gconfig{'logfullfiles'}) {
 if ($miniserv::page_capture_out) {
 	# Save the whole page output
 	mkdir("$ENV{'WEBMIN_VAR'}/output", 0700);
-	open(PAGEOUT, ">$ENV{'WEBMIN_VAR'}/output/$id");
+	mkdir("$ENV{'WEBMIN_VAR'}/output/$idprefix", 0700);
+	open(PAGEOUT, ">$ENV{'WEBMIN_VAR'}/output/$idprefix/$id");
 	print PAGEOUT $miniserv::page_capture_out;
 	close(PAGEOUT);
 	if ($gconfig{'logperms'}) {
 		chmod(oct($gconfig{'logperms'}),
-		      "$ENV{'WEBMIN_VAR'}/output/$id");
+		      "$ENV{'WEBMIN_VAR'}/output/$idprefix/$id");
 		}
 	$miniserv::page_capture_out = undef;
 	}
