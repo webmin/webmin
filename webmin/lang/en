@@ -621,6 +621,7 @@ log_deletecache=Deleted $1 URLs from cache
 log_clearcache=Cleared all URLs from cache
 log_lock=Changed file locking
 log_sendmail=Changed mail sending options
+log_debug=Changed debugging log file options
 
 themes_title=Webmin Themes
 themes_desc=Themes control the appearance of the Webmin user interface, including icons, colours, backgrounds and the layout of pages. The selection box below can be used to choose one of the themes installed on your system.
