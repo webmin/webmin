@@ -240,9 +240,11 @@ local ($cmd, $fh, $fhmode, $pass) = @_;
 local ($cfh, $fpid) = &proc::pty_process_exec_logged($cmd);
 local ($wrong_password, $got_login, $connect_failed);
 local $out;
+local $stars = ("*" x length($pass));
 while(1) {
 	local $rv = &wait_for($cfh, "password:", "yes\\/no", "(^|\\n)\\s*Permission denied.*\n", "ssh: connect.*\n", ".*\n");
 	if ($wait_for_input !~ /^\s*DUMP:\s+ACLs\s+in\s+inode/i) {
+		$wait_for_input =~ s/\Q$pass\E/$stars/g;
 		if ($fhmode) {
 			print $fh &html_escape($wait_for_input);
 			}
