@@ -2316,11 +2316,11 @@ foreach $u (@$users) {
 	push(@cols, "") if ($anyedit && $u->{'noedit'});
 	push(@cols, &user_link($u));
 	push(@cols, $u->{'uid'});
-	push(@cols, $gidgrp{$u->{'gid'}}||$u->{'gid'});
-	push(@cols, $u->{'real'});
-	push(@cols, $u->{'home'});
-	push(@cols, $u->{'shell'});
-	push(@cols, $llogin{$u->{'user'}}) if ($lshow);
+	push(@cols, $gidgrp{$u->{'gid'}} || $u->{'gid'});
+	push(@cols, &html_escape($u->{'real'}));
+	push(@cols, &html_escape($u->{'home'}));
+	push(@cols, &html_escape($u->{'shell'}));
+	push(@cols, &html_escape($llogin{$u->{'user'}})) if ($lshow);
 	if ($u->{'noedit'}) {
 		print &ui_columns_row(\@cols, \@tds);
 		}
@@ -2387,7 +2387,7 @@ foreach $g (@$groups) {
 	push(@cols, &group_link($g));
 	push(@cols, $g->{'gid'});
 	if ($anydesc) {
-		push(@cols, $g->{'desc'});
+		push(@cols, &html_escape($g->{'desc'}));
 		}
 	push(@cols, &html_escape($members));
 	if ($g->{'noedit'} || !$access{'gdelete'}) {
