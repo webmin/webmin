@@ -27,9 +27,9 @@ ref in the same format as returned by get_module_info.
 =cut
 sub list_backup_modules
 {
-local ($m, @rv);
+my ($m, @rv);
 foreach $m (&get_all_module_infos()) {
-	local $mdir = &module_root_directory($m->{'dir'});
+	my $mdir = &module_root_directory($m->{'dir'});
 	if (&check_os_support($m) &&
 	    -r "$mdir/backup_config.pl") {
 		push(@rv, $m);
@@ -64,7 +64,7 @@ at least the following keys :
 =cut
 sub list_backups
 {
-local (@rv, $f);
+my (@rv, $f);
 opendir(DIR, $backups_dir);
 foreach $f (sort { $a cmp $b } readdir(DIR)) {
 	next if ($f !~ /^(\S+)\.backup$/);
@@ -82,7 +82,7 @@ same format as list_backups.
 =cut
 sub get_backup
 {
-local %backup;
+my %backup;
 &read_file("$backups_dir/$_[0].backup", \%backup) || return undef;
 $backup{'id'} = $_[0];
 return \%backup;
@@ -147,7 +147,7 @@ Returns HTML for a field for selecting a local or FTP file.
 sub show_backup_destination
 {
 local ($mode, $user, $pass, $server, $path, $port) = &parse_backup_url($_[1]);
-local $rv;
+my $rv;
 $rv .= "<table cellpadding=1 cellspacing=0>";
 
 # Local file field
@@ -279,7 +279,7 @@ or an error message on failure.
 sub execute_backup
 {
 # Work out modules we can use
-local @mods;
+my @mods;
 foreach my $m (@{$_[0]}) {
 	my $mdir = &module_root_directory($m);
 	if ($m && &foreign_check($m) && -r "$mdir/backup_config.pl") {
@@ -289,7 +289,7 @@ foreach my $m (@{$_[0]}) {
 
 # Work out where to write to
 local ($mode, $user, $pass, $host, $path, $port) = &parse_backup_url($_[1]);
-local $file;
+my $file;
 if ($mode == 0) {
 	$file = &date_subs($path);
 	}
@@ -298,19 +298,19 @@ else {
 	}
 
 # Get module descriptions
-local $m;
-local %desc;
+my $m;
+my %desc;
 foreach $m (@mods) {
-	local %minfo = &get_module_info($m);
+	my %minfo = &get_module_info($m);
 	$desc{$m} = $minfo{'desc'};
 	}
 
-local @files;
+my @files;
 if (!$_[5]) {
 	# Build list of all files to save from modules
 	foreach my $m (@mods) {
 		&foreign_require($m, "backup_config.pl");
-		local @mfiles = &foreign_call($m, "backup_config_files");
+		my @mfiles = &foreign_call($m, "backup_config_files");
 		push(@files, @mfiles);
 		push(@{$manifestfiles{$m}}, @mfiles);
 		}
@@ -319,7 +319,7 @@ if (!$_[5]) {
 # Add module config files
 if ($_[4]) {
 	foreach $m (@mods) {
-		local @cfiles = ( "$config_directory/$m/config" );
+		my @cfiles = ( "$config_directory/$m/config" );
 		push(@files, @cfiles);
 		push(@{$manifestfiles{$m}}, @cfiles);
 		}
@@ -344,10 +344,10 @@ foreach my $f (@{$_[6]}) {
 # Save the manifest files
 &execute_command("rm -rf ".quotemeta($manifests_dir));
 mkdir($manifests_dir, 0755);
-local @manifests;
+my @manifests;
 foreach $m (@mods, "_others") {
 	next if (!defined($manifestfiles{$m}));
-	local $man = "$manifests_dir/$m";
+	my $man = "$manifests_dir/$m";
 	&open_tempfile(MAN, ">$man");
 	&print_tempfile(MAN, map { "$_\n" } @{$manifestfiles{$m}});
 	&close_tempfile(MAN);
@@ -360,10 +360,10 @@ foreach $m (@mods, "_others") {
 
 if (!$_[5]) {
 	# Call all module pre functions
-	local $m;
+	my $m;
 	foreach $m (@mods) {
 		if (&foreign_defined($m, "pre_backup")) {
-			local $err = &foreign_call($m, "pre_backup", \@files);
+			my $err = &foreign_call($m, "pre_backup", \@files);
 			if ($err) {
 				return &text('backup_epre', $desc{$m}, $err);
 				}
@@ -372,7 +372,7 @@ if (!$_[5]) {
 	}
 
 # Make the tar (possibly .gz) file
-local $filestemp = &transname();
+my $filestemp = &transname();
 &open_tempfile(FILESTEMP, ">$filestemp");
 foreach my $f (&unique(@files), @manifests) {
 	my $frel = $f;
@@ -380,8 +380,8 @@ foreach my $f (&unique(@files), @manifests) {
 	&print_tempfile(FILESTEMP, $frel."\n");
 	}
 &close_tempfile(FILESTEMP);
-local $qfile = quotemeta($file);
-local $out;
+my $qfile = quotemeta($file);
+my $out;
 if (&has_command("gzip")) {
 	&execute_command("cd / ; tar cfT - $filestemp | gzip -c >$qfile",
 			 undef, \$out, \$out);
@@ -396,7 +396,7 @@ if ($ex) {
 	&unlink_file($file) if ($mode != 0);
 	return &text('backup_etar', "<pre>$out</pre>");
 	}
-local @st = stat($file);
+my @st = stat($file);
 ${$_[2]} = $st[7] if ($_[2]);
 @{$_[3]} = &unique(@files) if ($_[3]);
 &set_ownership_permissions(undef, undef, 0600, $file);
@@ -412,7 +412,7 @@ if (!$_[5]) {
 
 if ($mode == 1) {
 	# FTP upload to destination
-	local $err;
+	my $err;
 	&ftp_upload($host, &date_subs($path), $file, \$err, undef,
 		    $user, $pass, $port);
 	&unlink_file($file);
@@ -420,7 +420,7 @@ if ($mode == 1) {
 	}
 elsif ($mode == 2) {
 	# SCP to destination
-	local $err;
+	my $err;
 	&scp_copy($file, "$user\@$host:".&date_subs($path), $pass, \$err,$port);
 	&unlink_file($file);
 	return $err if ($err);
@@ -439,7 +439,7 @@ sub execute_restore
 {
 # Fetch file if needed
 local ($mode, $user, $pass, $host, $path, $port) = &parse_backup_url($_[1]);
-local $file;
+my $file;
 if ($mode == 0) {
 	$file = $path;
 	}
@@ -447,7 +447,7 @@ else {
 	$file = &transname();
 	if ($mode == 2) {
 		# Download with SCP
-		local $err;
+		my $err;
 		&scp_copy("$user\@$host:$path", $file, $pass, \$err, $port);
 		if ($err) {
 			&unlink_file($file);
@@ -456,7 +456,7 @@ else {
 		}
 	elsif ($mode == 1) {
 		# Download with FTP
-		local $err;
+		my $err;
 		&ftp_download($host, $path, $file, \$err, undef,
 			      $user, $pass, $port);
 		if ($err) {
@@ -468,11 +468,11 @@ else {
 
 # Validate archive
 open(FILE, $file);
-local $two;
+my $two;
 read(FILE, $two, 2);
 close(FILE);
-local $qfile = quotemeta($file);
-local $gzipped = ($two eq "\037\213");
+my $qfile = quotemeta($file);
+my $gzipped = ($two eq "\037\213");
 if ($gzipped) {
 	# Gzipped
 	&has_command("gunzip") || return $text{'backup_egunzip'};
@@ -481,7 +481,7 @@ if ($gzipped) {
 else {
 	$cmd = "tar tf $qfile";
 	}
-local $out;
+my $out;
 &execute_command($cmd, undef, \$out, \$out, 0, 1);
 if ($?) {
 	&unlink_file($file) if ($mode != 0);
@@ -494,7 +494,7 @@ local %tarfiles = map { $_, 1 } @tarfiles;
 local %hasmod = map { $_, 1 } @{$_[0]};
 $hasmod{"_others"} = 1;
 &execute_command("rm -rf ".quotemeta($manifests_dir));
-local $rel_manifests_dir = $manifests_dir;
+my $rel_manifests_dir = $manifests_dir;
 $rel_manifests_dir =~ s/^\///;
 if ($gzipped) {
 	&execute_command("cd / ; gunzip -c $qfile | tar xf - $rel_manifests_dir", undef, \$out, \$out);
@@ -503,13 +503,13 @@ else {
 	&execute_command("cd / ; tar xf $qfile $rel_manifests_dir", undef, \$out, \$out);
 	}
 opendir(DIR, $manifests_dir);
-local $m;
-local %mfiles;
-local @files;
+my $m;
+my %mfiles;
+my @files;
 while($m = readdir(DIR)) {
 	next if ($m eq "." || $m eq ".." || !$hasmod{$m});
 	open(MAN, "$manifests_dir/$m");
-	local @mfiles;
+	my @mfiles;
 	while(<MAN>) {
 		s/\r|\n//g;
 		if ($tarfiles{$_}) {
@@ -527,9 +527,9 @@ if (!@files) {
 	}
 
 # Get descriptions for each module
-local %desc;
+my %desc;
 foreach my $m (@{$_[0]}) {
-	local %minfo = &get_module_info($m);
+	my %minfo = &get_module_info($m);
 	$desc{$m} = $minfo{'desc'};
 	}
 
@@ -540,7 +540,7 @@ foreach my $m (@{$_[0]}) {
 	    -r "$mdir/backup_config.pl") {
 		&foreign_require($m, "backup_config.pl");
 		if (&foreign_defined($m, "pre_restore")) {
-			local $err = &foreign_call($m, "pre_restore", \@files);
+			my $err = &foreign_call($m, "pre_restore", \@files);
 			if ($err) {
 				&unlink_file($file) if ($mode != 0);
 				return &text('backup_epre2', $desc{$m}, $err);
@@ -551,7 +551,7 @@ foreach my $m (@{$_[0]}) {
 
 # Lock all files being extracted
 if (!$_[4]) {
-	local $f;
+	my $f;
 	foreach $f (@files) {
 		&lock_file($f);
 		}
@@ -569,11 +569,11 @@ else {
 	&execute_command("cd / ; tar ${flag}f $qfile $qfiles",
 			 undef, \$out, \$out);
 	}
-local $ex = $?;
+my $ex = $?;
 
 # Un-lock all files being extracted
 if (!$_[4]) {
-	local $f;
+	my $f;
 	foreach $f (@files) {
 		&unlock_file($f);
 		}
@@ -610,9 +610,9 @@ sub scp_copy
 local $cmd = "scp -r ".($_[4] ? "-P $_[4] " : "").
 	     quotemeta($_[0])." ".quotemeta($_[1]);
 local ($fh, $fpid) = &proc::pty_process_exec($cmd);
-local $out;
+my $out;
 while(1) {
-	local $rv = &wait_for($fh, "password:", "yes\\/no", ".*\n");
+	my $rv = &wait_for($fh, "password:", "yes\\/no", ".*\n");
 	$out .= $wait_for_input;
 	if ($rv == 0) {
 		syswrite($fh, "$_[2]\n");
@@ -625,7 +625,7 @@ while(1) {
 		}
 	}
 close($fh);
-local $got = waitpid($fpid, 0);
+my $got = waitpid($fpid, 0);
 if ($? || $out =~ /permission\s+denied/i) {
 	${$_[3]} = "scp failed : <pre>$out</pre>";
 	}
@@ -685,7 +685,7 @@ sub date_subs
 if ($config{'date_subs'}) {
         eval "use POSIX";
         eval "use posix" if ($@);
-        local @tm = localtime(time());
+        my @tm = localtime(time());
         return strftime($_[0], @tm);
         }
 else {
@@ -700,7 +700,7 @@ Returns HTML for selecting what gets included in a backup.
 =cut
 sub show_backup_what
 {
-local ($name, $webmin, $nofiles, $others) = @_;
+my ($name, $webmin, $nofiles, $others) = @_;
 return &ui_checkbox($name."_webmin", 1, $text{'edit_webmin'}, $webmin)."\n".
        &ui_checkbox($name."_nofiles", 1, $text{'edit_nofiles'}, !$nofiles)."\n".
        &ui_checkbox($name."_other", 1, $text{'edit_other'}, $others)."<br>".
@@ -715,11 +715,11 @@ files to include.
 =cut
 sub parse_backup_what
 {
-local ($name, $in) = @_;
-local $webmin = $in->{$name."_webmin"};
-local $nofiles = !$in->{$name."_nofiles"};
+my ($name, $in) = @_;
+my $webmin = $in->{$name."_webmin"};
+my $nofiles = !$in->{$name."_nofiles"};
 $in->{$name."_files"} =~ s/\r//g;
-local $others = $in->{$name."_other"} ?
+my $others = $in->{$name."_other"} ?
 	join("\t", split(/\n+/, $in->{$name."_files"})) : undef;
 $webmin || !$nofiles || $others || &error($text{'save_ewebmin'});
 return ($webmin, $nofiles, $others);
@@ -732,14 +732,14 @@ Given a directory, return a list of full paths to all files within it.
 =cut
 sub expand_directory
 {
-local ($dir) = @_;
-local @rv;
+my ($dir) = @_;
+my @rv;
 opendir(EXPAND, $dir);
-local @sf = readdir(EXPAND);
+my @sf = readdir(EXPAND);
 closedir(EXPAND);
 foreach my $sf (@sf) {
 	next if ($sf eq "." || $sf eq "..");
-	local $path = "$dir/$sf";
+	my $path = "$dir/$sf";
 	if (-l $path || !-d $path) {
 		push(@rv, $path);
 		}

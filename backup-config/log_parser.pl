@@ -7,13 +7,13 @@ do 'backup-config-lib.pl';
 # Converts logged information from this module into human-readable form
 sub parse_webmin_log
 {
-local ($user, $script, $action, $type, $object, $p) = @_;
+my ($user, $script, $action, $type, $object, $p) = @_;
 if ($type eq "backup") {
-	local @mods = split(/\s+/, $p->{'mods'});
+	my @mods = split(/\s+/, $p->{'mods'});
 	return &text('log_'.$action.'_backup', scalar(@mods), &nice_dest($object));
 	}
 elsif ($action eq "backup" || $action eq "restore") {
-	local @mods = split(/\0/, $p->{'mods'});
+	my @mods = split(/\0/, $p->{'mods'});
 	return &text('log_'.$action, scalar(@mods), &nice_dest($object));
 	}
 else {
