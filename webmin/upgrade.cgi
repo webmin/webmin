@@ -135,7 +135,7 @@ if ($in{'sig'}) {
 	if (!$ec) {
 		if ($in{'mode'} eq 'rpm') {
 			# Use rpm's gpg signature verification
-			local $out = `rpm --checksig $qfile 2>&1`;
+			my $out = `rpm --checksig $qfile 2>&1`;
 			if ($?) {
 				$ec = 3;
 				$emsg = &text('upgrade_echecksig',
@@ -146,7 +146,7 @@ if ($in{'sig'}) {
 			# Do a manual signature check
 			if ($in{'source'} == 2) {
 				# Download the key for this tar.gz
-				local ($sigtemp, $sigerror);
+				my ($sigtemp, $sigerror);
 				&http_download($update_host, $update_port, "/download/sigs/webmin-$version.tar.gz-sig.asc", \$sigtemp, \$sigerror);
 				if ($sigerror) {
 					$ec = 4;
@@ -154,8 +154,8 @@ if ($in{'sig'}) {
 						      $sigerror);
 					}
 				else {
-					local $data =&read_file_contents($file);
-					local ($vc, $vmsg) =
+					my $data =&read_file_contents($file);
+					my ($vc, $vmsg) =
 					    &verify_data($data, $sigtemp);
 					if ($vc > 1) {
 						$ec = 3;
@@ -281,7 +281,7 @@ elsif ($in{'mode'} eq 'solaris-pkg' || $in{'mode'} eq 'sun-pkg') {
 	&foreign_require("software", "software-lib.pl");
 	&foreign_call("software", "is_package", $file) ||
 		&inst_error($text{'upgrade_epackage'});
-	local @p = &foreign_call("software", "file_packages", $file);
+	my @p = &foreign_call("software", "file_packages", $file);
 	#
 	# The package name will always include "webmin" in lower case,
 	# but may be preceeded by the source package source ("WS" for the
@@ -364,7 +364,7 @@ elsif ($in{'mode'} eq 'caldera') {
 	if ($1 <= &get_webmin_version() && !$in{'force'}) {
 		&inst_error(&text('upgrade_eversion', "$1"));
 		}
-	local $wfound = 0;
+	my $wfound = 0;
 	open(OUT, "rpm -qpl $file |");
 	while(<OUT>) {
 		$wfound++ if (/^\/etc\/webmin/);
@@ -488,7 +488,7 @@ else {
 		opendir(DIR, $root_directory);
 		foreach $d (readdir(DIR)) {
 			next if ($d =~ /^\./);
-			local $p = "$root_directory/$d";
+			my $p = "$root_directory/$d";
 			if (-d $p && !-r "$p/module.info" && $intar{$d}) {
 				push(@mods, $d);
 				}

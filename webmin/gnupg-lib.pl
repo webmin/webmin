@@ -18,12 +18,12 @@ $gpgpath = $config{'gpg'} || "gpg";
 # Returns an array of all GnuPG keys
 sub list_keys
 {
-local (@rv, %kmap);
+my (@rv, %kmap);
 open(GPG, "LC_ALL='' LANG='' $gpgpath --list-keys 2>/dev/null |");
 while(<GPG>) {
 	if (/^pub\s+(\S+)\/(\S+)\s+(\S+)\s+(.*)\s+<(\S+)>/ ||
 	    /^pub\s+(\S+)\/(\S+)\s+(\S+)\s+(.*)/) {
-		local $k = { 'size' => $1,
+		my $k = { 'size' => $1,
 			     'key' => $2,
 			     'date' => $3,
 			     'name' => $4 ? [ $4 ] : [ ],
@@ -80,7 +80,7 @@ return grep { $_->{'secret'} } &list_keys();
 # key_fingerprint(&key)
 sub key_fingerprint
 {
-local $fp;
+my $fp;
 local $_;
 open(GPG, "LC_ALL='' LANG='' $gpgpath --fingerprint \"$_[0]->{'name'}->[0]\" |");
 while(<GPG>) {
@@ -97,7 +97,7 @@ sub get_passphrase
 {
 open(PASS, "$user_module_config_directory/pass.$_[0]->{'key'}") ||
   open(PASS, "$user_module_config_directory/pass") || return undef;
-local $pass = <PASS>;
+my $pass = <PASS>;
 close(PASS);
 chop($pass);
 return $pass;
@@ -117,16 +117,16 @@ chmod(0700, "$user_module_config_directory/pass.$_[1]->{'key'}");
 # returns an error message or undef on failure
 sub encrypt_data
 {
-local $srcfile = &transname();
+my $srcfile = &transname();
 local @keys = ref($_[2]) eq 'ARRAY' ? @{$_[2]} : ( $_[2] );
 local $rcpt = join(" ", map { "--recipient \"$_->{'name'}->[0]\"" } @keys);
 &write_entire_file($srcfile, $_[0]);
-local $dstfile = &transname();
+my $dstfile = &transname();
 local $ascii = $_[3] ? "--armor" : "";
-local $comp = $config{'compress'} eq '' ? "" :
+my $comp = $config{'compress'} eq '' ? "" :
 		" --compress-algo $config{'compress'}";
-local $cmd = "LC_ALL='' LANG='' $gpgpath --output $dstfile $rcpt $ascii $comp --encrypt $srcfile";
-local ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
+my $cmd = "LC_ALL='' LANG='' $gpgpath --output $dstfile $rcpt $ascii $comp --encrypt $srcfile";
+my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
 while(1) {
 	$rv = &wait_for($fh, "anyway");
 	if ($rv == 0) {
@@ -138,7 +138,7 @@ while(1) {
 	}
 close($fh);
 unlink($srcfile);
-local $dst = &read_entire_file($dstfile);
+my $dst = &read_entire_file($dstfile);
 unlink($dstfile);
 if ($dst) {
 	${$_[1]} = $dst;
@@ -154,14 +154,14 @@ else {
 # into &result. Returns an error message or undef on success.
 sub decrypt_data
 {
-local $srcfile = &transname();
+my $srcfile = &transname();
 &write_entire_file($srcfile, $_[0]);
-local $dstfile = &transname();
-local $cmd = "LC_ALL='' LANG='' $gpgpath --output $dstfile --decrypt $srcfile";
-local ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
-local ($error, $seen_pass, $pass, $key, $keyid);
+my $dstfile = &transname();
+my $cmd = "LC_ALL='' LANG='' $gpgpath --output $dstfile --decrypt $srcfile";
+my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
+my ($error, $seen_pass, $pass, $key, $keyid);
 while(1) {
-	local $rv = &wait_for($fh, "passphrase:", "key,\\s+ID\\s+(\\S+),", "failed.*\\n", "error.*\\n", "invalid.*\\n", "signal caught.*\\n");
+	my $rv = &wait_for($fh, "passphrase:", "key,\\s+ID\\s+(\\S+),", "failed.*\\n", "error.*\\n", "invalid.*\\n", "signal caught.*\\n");
 	if ($rv == 0) {
 		last if ($seen_pass++);
 		sleep(1);
@@ -183,7 +183,7 @@ while(1) {
 	}
 close($fh);
 unlink($srcfile);
-local $dst = &read_entire_file($dstfile);
+my $dst = &read_entire_file($dstfile);
 unlink($dstfile);
 if (!$keyid) {
 	return $text{'gnupg_ecryptid'};
@@ -209,10 +209,10 @@ else {
 # mode 1 = ascii signature at end, mode 2 = ascii signature only
 sub sign_data
 {
-local $srcfile = &transname();
+my $srcfile = &transname();
 &write_entire_file($srcfile, $_[0]);
-local $dstfile = &transname();
-local $cmd;
+my $dstfile = &transname();
+my $cmd;
 if ($_[3] == 0) {
 	$cmd = "$gpgpath --output $dstfile --default-key $_[2]->{'key'} --sign $srcfile";
 	}
@@ -223,8 +223,8 @@ elsif ($_[3] == 2) {
 	$cmd = "$gpgpath --armor --output $dstfile --default-key $_[2]->{'key'} --detach-sig $srcfile";
 	}
 $cmd = "LC_ALL='' LANG='' $cmd";
-local ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
-local ($error, $seen_pass);
+my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
+my ($error, $seen_pass);
 local $pass = &get_passphrase($_[2]);
 if (!defined($pass)) {
 	return $text{'gnupg_esignpass'}.". ".
@@ -247,7 +247,7 @@ while(1) {
 	}
 close($fh);
 unlink($srcfile);
-local $dst = &read_entire_file($dstfile);
+my $dst = &read_entire_file($dstfile);
 unlink($dstfile);
 if ($error || $seen_pass > 1) {
 	return "<pre>$wait_for_input</pre>";
@@ -267,10 +267,10 @@ else {
 # code 4 = verification totally failed, message contains reason
 sub verify_data
 {
-local $datafile = &transname();
+my $datafile = &transname();
 &write_entire_file($datafile, $_[0]);
-local $cmd;
-local $sigfile;
+my $cmd;
+my $sigfile;
 if (!$_[1]) {
 	$cmd = "LC_ALL='' LANG='' $gpgpath --verify $datafile";
 	}
@@ -283,7 +283,7 @@ else {
 #&wait_for($fh);
 #close($fh);
 #local $out = $wait_for_input;
-local $out = &backquote_command("$cmd 2>&1 </dev/null");
+my $out = &backquote_command("$cmd 2>&1 </dev/null");
 unlink($datafile);
 unlink($sigfile) if ($sigfile);
 if ($out =~ /BAD signature from "(.*)"/i) {
@@ -293,7 +293,7 @@ elsif ($out =~ /key ID (\S+).*\n.*not found/i) {
 	return (3, $1);
 	}
 elsif ($out =~ /Good signature from "(.*)"/i) {
-	local $signer = $1;
+	my $signer = $1;
 	if ($out =~ /warning/) {
 		return (1, $signer);
 		}
@@ -309,7 +309,7 @@ else {
 # read_entire_file(file)
 sub read_entire_file
 {
-local ($rv, $buf);
+my ($rv, $buf);
 open(FILE, $_[0]) || return undef;
 while(read(FILE, $buf, 1024) > 0) {
 	$rv .= $buf;
@@ -331,9 +331,9 @@ sub write_entire_file
 sub get_trust_level
 {
 local $cmd = "LC_ALL='' LANG='' $gpgpath --edit-key \"$_[0]->{'name'}->[0]\"";
-local ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
-local $rv = &wait_for($fh, "trust:\\s+(.)", "command>");
-local $tr;
+my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
+my $rv = &wait_for($fh, "trust:\\s+(.)", "command>");
+my $tr;
 if ($rv == 0) {
 	$tr = $matches[1] eq "q" ? 1 : $matches[1] eq "n" ? 2 :
 	      $matches[1] eq "m" ? 3 : $matches[1] eq "f" ? 4 : 0;
@@ -350,10 +350,10 @@ return $tr;
 # Delete one public or secret key
 sub delete_key
 {
-local ($key) = @_;
+my ($key) = @_;
 if ($key->{'secret'}) {
-	local $cmd = "LC_ALL='' LANG='' $gpgpath --delete-secret-key \"$key->{'name'}->[0]\"";
-	local ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
+	my $cmd = "LC_ALL='' LANG='' $gpgpath --delete-secret-key \"$key->{'name'}->[0]\"";
+	my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
 	&wait_for($fh, "\\?");
 	syswrite($fh, "y\n");
 	&wait_for($fh, "\\?");
@@ -361,8 +361,8 @@ if ($key->{'secret'}) {
 	sleep(1);
 	close($fh);
 	}
-local $cmd = "LC_ALL='' LANG='' $gpgpath --delete-key \"$key->{'name'}->[0]\"";
-local ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
+my $cmd = "LC_ALL='' LANG='' $gpgpath --delete-key \"$key->{'name'}->[0]\"";
+my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
 &wait_for($fh, "\\?");
 syswrite($fh, "y\n");
 sleep(1);
@@ -390,11 +390,11 @@ return undef;
 # but the key isn't visible.
 sub fetch_gpg_key
 {
-local ($id) = @_;
-local $out = &backquote_command(
+my ($id) = @_;
+my $out = &backquote_command(
 	"$gpgpath --keyserver ".quotemeta($config{'keyserver'}).
 	" --recv-key ".quotemeta($id)." 2>&1 </dev/null");
-local @keys = &list_keys();
+my @keys = &list_keys();
 local ($key) = grep { lc($_->{'key'}) eq lc($id) } @keys;
 if ($?) {
 	return wantarray ? (1, $out) : 1;
@@ -417,17 +417,17 @@ else {
 # address, and returns them as a list of hash refs
 sub search_gpg_keys
 {
-local ($word) = @_;
-local $cmd = "$gpgpath --keyserver ".quotemeta($config{'keyserver'}).
+my ($word) = @_;
+my $cmd = "$gpgpath --keyserver ".quotemeta($config{'keyserver'}).
 	     " --search-keys ".quotemeta($word);
-local ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
-local @rv;
+my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
+my @rv;
 while(1) {
 	$wait_for_input = undef;
-	local $rv = &wait_for($fh, "N.ext, or Q.uit");
+	my $rv = &wait_for($fh, "N.ext, or Q.uit");
 	if ($rv < 0) { last; }
-	local $count = 0;
-	local $key;
+	my $count = 0;
+	my $key;
 	foreach my $l (split(/\r?\n/, $wait_for_input)) {
 		if ($l =~ /^\(\d+\)\s+(\d+)\s+bit\s+(\S+)\s+key\s+(\S+)/) {
 			# Key with no name .. skip!

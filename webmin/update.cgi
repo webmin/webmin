@@ -26,9 +26,9 @@ foreach $url (@urls) {
 	$count += scalar(@$updates);
 	foreach $u (@$updates) {
 		# Get module or theme's details
-		local %minfo = &get_module_info($u->[0]);
-		local %tinfo = &get_theme_info($u->[0]);
-		local %info = %minfo ? %minfo : %tinfo;
+		my %minfo = &get_module_info($u->[0]);
+		my %tinfo = &get_theme_info($u->[0]);
+		my %info = %minfo ? %minfo : %tinfo;
 
 		if ($in{'show'}) {
 			# Just tell the user what would be done
@@ -41,7 +41,7 @@ foreach $url (@urls) {
 			}
 		else {
 			# Actually do the update ..
-			local (@mdescs, @mdirs, @msizes);
+			my (@mdescs, @mdirs, @msizes);
 			print &text('update_mok', "<b>$u->[0]</b>", "<b>$u->[1]</b>"),
 			      "<br>\n";
 			print "&nbsp;" x 10;

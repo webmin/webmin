@@ -32,7 +32,7 @@ if (!$in{'confirm'}) {
 	&ui_print_header(undef, $text{'delete_title'}, "");
 	print "<p><form action=delete_mod.cgi>\n";
 	foreach $m (@mods) {
-		local %minfo = &get_module_info($m);
+		my %minfo = &get_module_info($m);
 		if (%minfo) {
 			$module++;
 			}

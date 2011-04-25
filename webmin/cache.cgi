@@ -18,7 +18,7 @@ if ($in{'search'}) {
 	$surl =~ s/\//_/g;
 	foreach $c (&list_cached_files()) {
 		if ($c->[0] =~ /\Q$surl\E/i) {
-			local @st = stat($c->[1]);
+			my @st = stat($c->[1]);
 			push(@urls, [ $c->[0], $c->[2], $st[7], $st[9] ]);
 			}
 		}

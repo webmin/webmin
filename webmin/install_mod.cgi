@@ -35,7 +35,7 @@ elsif ($in{'source'} == 2 || $in{'source'} == 4) {
 	&error_setup(&text('install_err3', $url));
 	$file = &transname(&file_basename($url));
 	$need_unlink = 1;
-	local $error;
+	my $error;
 	$progress_callback_url = $url;
 	if ($url =~ /^(http|https):\/\/([^\/]+)(\/.*)$/) {
 		$ssl = $1 eq 'https';
@@ -56,7 +56,7 @@ elsif ($in{'source'} == 3) {
 	&error_setup($text{'install_err4'});
 	$in{'standard'} =~ /^\S+$/ || &error($text{'install_estandard'});
 	$need_unlink = 1;
-	local $error;
+	my $error;
 
 	# Find the URL of the package
 	$mods = &list_standard_modules();
@@ -101,7 +101,7 @@ for($i=0; $i<@mdescs; $i++) {
 	$mdirs[$i] =~ /\/([^\/]+)$/;
 	if (%minfo = &get_module_info($1)) {
 		# Installed a module
-		local $cat = $catnames{$minfo{'category'}};
+		my $cat = $catnames{$minfo{'category'}};
 		$cat = $text{"category_".$minfo{'category'}} if (!$cat);
 		$cat = $text{"category_"} if (!$cat);
 		print &text($minfo{'hidden'} ? 'install_line3' :

@@ -20,9 +20,9 @@ foreach $url (@urls) {
 	# Go through the results
 	foreach $u (@$updates) {
 		# Get module or theme's details
-		local %minfo = &get_module_info($u->[0]);
-		local %tinfo = &get_theme_info($u->[0]);
-		local %info = %minfo ? %minfo : %tinfo;
+		my %minfo = &get_module_info($u->[0]);
+		my %tinfo = &get_theme_info($u->[0]);
+		my %info = %minfo ? %minfo : %tinfo;
 
 		if ($config{'upshow'}) {
 			# Just tell the user what would be done
@@ -32,7 +32,7 @@ foreach $url (@urls) {
 			}
 		else {
 			# Actually do the update ..
-			local (@mdescs, @mdirs, @msizes);
+			my (@mdescs, @mdirs, @msizes);
 			$rv .= &text('update_mok', $u->[0], $u->[1])."\n".
 			       ($info{'longdesc'} ? "$text{'update_fixes'} : " : "").
 			       $u->[4]."\n\n";
@@ -77,10 +77,10 @@ if ($version > &get_webmin_version()) {
 if ($config{'upemail'} && $rv && &foreign_check("mailboxes")) {
 	# Construct and send the email
 	&foreign_require("mailboxes", "mailboxes-lib.pl");
-	local $data;
-	local $type = $gconfig{'real_os_type'} || $gconfig{'os_type'};
-	local $version = $gconfig{'real_os_version'} || $gconfig{'os_version'};
-	local $myhost = &get_system_hostname();
+	my $data;
+	my $type = $gconfig{'real_os_type'} || $gconfig{'os_type'};
+	my $version = $gconfig{'real_os_version'} || $gconfig{'os_version'};
+	my $myhost = &get_system_hostname();
 	$data .= "$myhost ($type $version)\n\n";
 	$data .= &text('update_rv', "http://$host:$port$page")."\n\n";
 	$data .= $rv;

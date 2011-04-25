@@ -63,9 +63,9 @@ client SSL certificate CA.
 =cut
 sub setup_ca
 {
-local $adir = &module_root_directory("acl");
-local $conf = `cat $adir/openssl.cnf`;
-local $acl = "$config_directory/acl";
+my $adir = &module_root_directory("acl");
+my $conf = `cat $adir/openssl.cnf`;
+my $acl = "$config_directory/acl";
 $conf =~ s/DIRECTORY/$acl/g;
 
 &lock_file("$acl/openssl.cnf");
@@ -103,10 +103,10 @@ corresponding to the theme.info file.
 =cut
 sub list_themes
 {
-local (@rv, $o);
+my (@rv, $o);
 opendir(DIR, $root_directory);
 foreach $m (readdir(DIR)) {
-	local %tinfo;
+	my %tinfo;
 	next if ($m =~ /^\./);
 	next if (!&read_file_cached("$root_directory/$m/theme.info", \%tinfo));
 	next if (!&check_os_support(\%tinfo));
@@ -136,10 +136,10 @@ paramter, which must be an array reference.
 =cut
 sub install_webmin_module
 {
-local ($file, $need_unlink, $nodeps, $grant) = @_;
-local (@mdescs, @mdirs, @msizes);
-local (@newmods, $m);
-local $install_root_directory = $gconfig{'install_root'} || $root_directory;
+my ($file, $need_unlink, $nodeps, $grant) = @_;
+my (@mdescs, @mdirs, @msizes);
+my (@newmods, $m);
+my $install_root_directory = $gconfig{'install_root'} || $root_directory;
 
 # Uncompress the module file if needed
 open(MFILE, $file);
@@ -150,9 +150,9 @@ if ($two eq "\037\235") {
 		unlink($file) if ($need_unlink);
 		return &text('install_ecomp', "<tt>uncompress</tt>");
 		}
-	local $temp = $file =~ /\/([^\/]+)\.Z/i ? &transname("$1")
+	my $temp = $file =~ /\/([^\/]+)\.Z/i ? &transname("$1")
 						: &transname();
-	local $out = `uncompress -c "$file" 2>&1 >$temp`;
+	my $out = `uncompress -c "$file" 2>&1 >$temp`;
 	unlink($file) if ($need_unlink);
 	if ($?) {
 		unlink($temp);
@@ -166,10 +166,10 @@ elsif ($two eq "\037\213") {
 		unlink($file) if ($need_unlink);
 		return &text('install_egzip', "<tt>gunzip</tt>");
 		}
-	local $temp = $file =~ /\/([^\/]+)\.gz/i ? &transname("$1")
+	my $temp = $file =~ /\/([^\/]+)\.gz/i ? &transname("$1")
 						 : &transname();
-	local $cmd = &has_command("gunzip") ? "gunzip -c" : "gzip -d -c";
-	local $out = &backquote_command($cmd." ".&quote_path($file).
+	my $cmd = &has_command("gunzip") ? "gunzip -c" : "gzip -d -c";
+	my $out = &backquote_command($cmd." ".&quote_path($file).
 					"  2>&1 >$temp");
 	unlink($file) if ($need_unlink);
 	if ($? || !-s $temp) {
@@ -184,9 +184,9 @@ elsif ($two eq "BZ") {
 		unlink($file) if ($need_unlink);
 		return &text('install_ebunzip', "<tt>bunzip2</tt>");
 		}
-	local $temp = $file =~ /\/([^\/]+)\.gz/i ? &transname("$1")
+	my $temp = $file =~ /\/([^\/]+)\.gz/i ? &transname("$1")
 						 : &transname();
-	local $out = `bunzip2 -c "$file" 2>&1 >$temp`;
+	my $out = `bunzip2 -c "$file" 2>&1 >$temp`;
 	unlink($file) if ($need_unlink);
 	if ($?) {
 		unlink($temp);
@@ -197,7 +197,7 @@ elsif ($two eq "BZ") {
 	}
 
 # Check if this is an RPM webmin module or theme
-local ($type, $redirect_to);
+my ($type, $redirect_to);
 open(TYPE, "$root_directory/install-type");
 chop($type = <TYPE>);
 close(TYPE);
@@ -205,7 +205,7 @@ if ($type eq 'rpm' && $file =~ /\.rpm$/i &&
     ($out = `rpm -qp $file 2>/dev/null`)) {
 	# Looks like an RPM of some kind, hopefully an RPM webmin module
 	# or theme
-	local (%minfo, %tinfo);
+	my (%minfo, %tinfo);
 	if ($out !~ /(^|\n)(wbm|wbt)-([a-z\-]+[a-z])/) {
 		unlink($file) if ($need_unlink);
 		return $text{'install_erpm'};
@@ -246,9 +246,9 @@ if ($type eq 'rpm' && $file =~ /\.rpm$/i &&
 else {
 	# Check if this is a valid module (a tar file of multiple module or
 	# theme directories)
-	local (%mods, %hasfile);
+	my (%mods, %hasfile);
 	&has_command("tar") || return $text{'install_enotar'};
-	local $tar = &backquote_command("tar tf ".&quote_path($file)." 2>&1");
+	my $tar = &backquote_command("tar tf ".&quote_path($file)." 2>&1");
 	if ($?) {
 		unlink($file) if ($need_unlink);
 		return &text('install_etar', $tar);
@@ -272,16 +272,16 @@ else {
 		}
 
 	# Get the module.info or theme.info files to check dependancies
-	local $ver = &get_webmin_version();
-	local $tmpdir = &transname();
+	my $ver = &get_webmin_version();
+	my $tmpdir = &transname();
 	mkdir($tmpdir, 0700);
-	local $err;
-	local @realmods;
+	my $err;
+	my @realmods;
 	foreach $m (keys %mods) {
 		next if (!$hasfile{$m,"module.info"} &&
 			 !$hasfile{$m,"theme.info"});
 		push(@realmods, $m);
-		local %minfo;
+		my %minfo;
 		system("cd $tmpdir ; tar xf \"$file\" $m/module.info ./$m/module.info $m/theme.info ./$m/theme.info >/dev/null 2>&1");
 		if (!&read_file("$tmpdir/$m/module.info", \%minfo) &&
 		    !&read_file("$tmpdir/$m/theme.info", \%minfo)) {
@@ -296,7 +296,7 @@ else {
 			$err = &text('install_eusermin', "<tt>$m</tt>");
 			}
 		elsif (!$nodeps) {
-			local $deps = $minfo{'webmin_depends'} ||
+			my $deps = $minfo{'webmin_depends'} ||
 				      $minfo{'depends'};
 			foreach $dep (split(/\s+/, $deps)) {
 				if ($dep =~ /^[0-9\.]+$/) {
@@ -310,8 +310,8 @@ else {
 				elsif ($dep =~ /^(\S+)\/([0-9\.]+)$/) {
 					# Depends on a specific version of
 					# some other module
-					local ($dmod, $dver) = ($1, $2);
-					local %dinfo = &get_module_info($dmod);
+					my ($dmod, $dver) = ($1, $2);
+					my %dinfo = &get_module_info($dmod);
 					if (!$mods{$dmod} &&
 					    (!%dinfo ||
 					     $dinfo{'version'} < $dver)) {
@@ -346,9 +346,9 @@ else {
 		}
 
 	# Delete modules or themes being replaced
-	local $oldpwd = &get_current_dir();
+	my $oldpwd = &get_current_dir();
 	chdir($root_directory);
-	local @grantmods;
+	my @grantmods;
 	foreach $m (@realmods) {
 		push(@grantmods, $m) if (!&foreign_exists($m));
 		if ($m ne "webmin") {
@@ -357,19 +357,19 @@ else {
 		}
 
 	# Extract all the modules and update perl path and ownership
-	local $out = `cd $install_root_directory ; tar xf "$file" 2>&1 >/dev/null`;
+	my $out = `cd $install_root_directory ; tar xf "$file" 2>&1 >/dev/null`;
 	chdir($oldpwd);
 	if ($?) {
 		unlink($file) if ($need_unlink);
 		return &text('install_eextract', $out);
 		}
 	if ($need_unlink) { unlink($file); }
-	local $perl = &get_perl_path();
-	local @st = stat("$module_root_directory/index.cgi");
+	my $perl = &get_perl_path();
+	my @st = stat("$module_root_directory/index.cgi");
 	foreach $moddir (keys %mods) {
-		local $pwd = &module_root_directory($moddir);
+		my $pwd = &module_root_directory($moddir);
 		if ($hasfile{$moddir,"module.info"}) {
-			local %minfo = &get_module_info($moddir);
+			my %minfo = &get_module_info($moddir);
 			push(@mdescs, $minfo{'desc'});
 			push(@mdirs, $pwd);
 			push(@msizes, &disk_usage_kb($pwd));
@@ -378,7 +378,7 @@ else {
 			push(@newmods, $moddir);
 			}
 		else {
-			local %tinfo = &get_theme_info($moddir);
+			my %tinfo = &get_theme_info($moddir);
 			push(@mdescs, $tinfo{'desc'});
 			push(@mdirs, $pwd);
 			push(@msizes, &disk_usage_kb($pwd));
@@ -430,12 +430,12 @@ ref of module names.
 sub grant_user_module
 {
 # Grant to appropriate users
-local %acl;
+my %acl;
 &read_acl(undef, \%acl);
 &open_tempfile(ACL, ">".&acl_filename()); 
-local $u;
+my $u;
 foreach $u (keys %acl) {
-	local @mods = @{$acl{$u}};
+	my @mods = @{$acl{$u}};
 	if (!$_[0] || &indexof($u, @{$_[0]}) >= 0) {
 		@mods = &unique(@mods, @{$_[1]});
 		}
@@ -448,7 +448,7 @@ if ($_[1] && &foreign_check("acl")) {
 	&foreign_require("acl", "acl-lib.pl");
 	local @groups = &acl::list_groups();
 	local @users = &acl::list_users();
-	local $g;
+	my $g;
 	foreach $g (@groups) {
 		if (&indexof($g->{'name'}, @{$_[0]}) >= 0) {
 			$g->{'modules'} = [ &unique(@{$g->{'modules'}},
@@ -472,14 +472,14 @@ sub delete_webmin_module
 {
 local $m = $_[0];
 return undef if (!$m);
-local %minfo = &get_module_info($m);
+my %minfo = &get_module_info($m);
 %minfo = &get_theme_info($m) if (!%minfo);
 return undef if (!%minfo);
-local ($mdesc, @aclrm);
+my ($mdesc, @aclrm);
 @aclrm = ( $m ) if ($_[1]);
 if ($minfo{'clone'}) {
 	# Deleting a clone
-	local %cinfo;
+	my %cinfo;
 	&read_file("$config_directory/$m/clone", \%cinfo);
 	unlink(&module_root_directory($m));
 	system("rm -rf $config_directory/$m");
@@ -490,10 +490,10 @@ if ($minfo{'clone'}) {
 	}
 else {
 	# Delete any clones of this module
-	local @clones;
-	local $mdir = &module_root_directory($m);
-	local @mst = stat($mdir);
-	local $r;
+	my @clones;
+	my $mdir = &module_root_directory($m);
+	my @mst = stat($mdir);
+	my $r;
 	foreach $r (@root_directories) {
 		opendir(DIR, $r);
 		foreach $l (readdir(DIR)) {
@@ -521,7 +521,7 @@ else {
 		}
 
 	# Deleting the real module
-	local $size = &disk_usage_kb($mdir);
+	my $size = &disk_usage_kb($mdir);
 	$mdesc = &text('delete_desc2', "<b>$minfo{'desc'}</b>",
 			   "<tt>$mdir</tt>", $size);
 	if ($type eq 'rpm') {
@@ -543,12 +543,12 @@ else {
 # Delete from all users and groups
 if (@aclrm) {
 	&foreign_require("acl", "acl-lib.pl");
-	local ($u, $g, $m);
+	my ($u, $g, $m);
 	foreach $u (&acl::list_users()) {
-		local $changed;
+		my $changed;
 		foreach $m (@aclrm) {
-			local $mi = &indexof($m, @{$u->{'modules'}});
-			local $oi = &indexof($m, @{$u->{'ownmods'}});
+			my $mi = &indexof($m, @{$u->{'modules'}});
+			my $oi = &indexof($m, @{$u->{'ownmods'}});
 			splice(@{$u->{'modules'}}, $mi, 1) if ($mi >= 0);
 			splice(@{$u->{'ownmods'}}, $oi, 1) if ($oi >= 0);
 			$changed++ if ($mi >= 0 || $oi >= 0);
@@ -556,10 +556,10 @@ if (@aclrm) {
 		&acl::modify_user($u->{'name'}, $u) if ($changed);
 		}
 	foreach $g (&acl::list_groups()) {
-		local $changed;
+		my $changed;
 		foreach $m (@aclrm) {
-			local $mi = &indexof($m, @{$g->{'modules'}});
-			local $oi = &indexof($m, @{$g->{'ownmods'}});
+			my $mi = &indexof($m, @{$g->{'modules'}});
+			my $oi = &indexof($m, @{$g->{'ownmods'}});
 			splice(@{$g->{'modules'}}, $mi, 1) if ($mi >= 0);
 			splice(@{$g->{'ownmods'}}, $oi, 1) if ($oi >= 0);
 			$changed++ if ($mi >= 0 || $oi >= 0);
@@ -596,7 +596,7 @@ sub gnupg_setup
 return ( 1, &text('enogpg', "<tt>gpg</tt>") ) if (!&has_command($gpgpath));
 
 # Check if we already have the key
-local @keys = &list_keys();
+my @keys = &list_keys();
 foreach $k (@keys) {
 	return ( 0 ) if ($k->{'email'}->[0] eq $webmin_key_email &&
 		         &key_fingerprint($k) eq $webmin_key_fingerprint);
@@ -620,9 +620,9 @@ message instead.
 =cut
 sub list_standard_modules
 {
-local $temp = &transname();
-local $error;
-local ($host, $port, $page, $ssl);
+my $temp = &transname();
+my $error;
+my ($host, $port, $page, $ssl);
 if ($config{'standard_url'}) {
 	($host, $port, $page, $ssl) = &parse_http_url($config{'standard_url'});
 	return $text{'standard_eurl'} if (!$host);
@@ -633,7 +633,7 @@ else {
 	}
 &http_download($host, $port, $page, $temp, \$error, undef, $ssl);
 return $error if ($error);
-local @rv;
+my @rv;
 open(TEMP, $temp);
 while(<TEMP>) {
 	s/\r|\n//g;
@@ -665,9 +665,9 @@ occurs, returns the message instead.
 =cut
 sub list_third_modules
 {
-local $temp = &transname();
-local $error;
-local ($host, $port, $page, $ssl);
+my $temp = &transname();
+my $error;
+my ($host, $port, $page, $ssl);
 if ($config{'third_url'}) {
 	($host, $port, $page, $ssl) = &parse_http_url($config{'third_url'});
 	return $text{'third_eurl'} if (!$host);
@@ -678,7 +678,7 @@ else {
 	}
 &http_download($host, $port, $page, $temp, \$error, undef, $ssl);
 return $error if ($error);
-local @rv;
+my @rv;
 open(TEMP, $temp);
 while(<TEMP>) {
 	s/\r|\n//g;
@@ -732,7 +732,7 @@ or undef if the admin hasn't chosen any yet.
 sub get_newmodule_users
 {
 if (open(NEWMODS, $newmodule_users_file)) {
-	local @rv;
+	my @rv;
 	while(<NEWMODS>) {
 		s/\r|\n//g;
 		push(@rv, $_) if (/\S/);
@@ -776,7 +776,7 @@ be * (meaning the primary port).
 =cut
 sub get_miniserv_sockets
 {
-local @sockets;
+my @sockets;
 push(@sockets, [ $_[0]->{'bind'} || "*", $_[0]->{'port'} ]);
 foreach $s (split(/\s+/, $_[0]->{'sockets'})) {
 	if ($s =~ /^(\d+)$/) {
@@ -824,28 +824,28 @@ The parameters are :
 =cut
 sub fetch_updates
 {
-local ($url, $user, $pass, $sigmode) = @_;
-local ($host, $port, $page, $ssl) = &parse_http_url($url);
+my ($url, $user, $pass, $sigmode) = @_;
+my ($host, $port, $page, $ssl) = &parse_http_url($url);
 $host || &error($text{'update_eurl'});
 
 # Download the file
-local $temp = &transname();
+my $temp = &transname();
 &http_download($host, $port, $page, $temp, undef, undef, $ssl, $user, $pass,
 	       0, 0, 1);
 
 # Download the signature, if we can check it
-local ($ec, $emsg) = &gnupg_setup();
+my ($ec, $emsg) = &gnupg_setup();
 if (!$ec && $sigmode) {
-	local $err;
-	local $sig;
+	my $err;
+	my $sig;
 	&http_download($host, $port, $page."-sig.asc", \$sig,
 		       \$err, undef, $ssl, $user, $pass, 0, 0, 1);
 	if ($err) {
 		$sigmode == 2 && &error(&text('update_enosig', $err));
 		}
 	else {
-		local $data = &read_file_contents($temp);
-		local ($vc, $vmsg) = &verify_data($data, $sig);
+		my $data = &read_file_contents($temp);
+		my ($vc, $vmsg) = &verify_data($data, $sig);
 		if ($vc > 1) {
 			&error(&text('update_ebadsig',
 				&text('upgrade_everify'.$vc, $vmsg)));
@@ -853,7 +853,7 @@ if (!$ec && $sigmode) {
 		}
 	}
 
-local @updates;
+my @updates;
 open(UPDATES, $temp);
 while(<UPDATES>) {
 	if (/^([^\t]+)\t+([^\t]+)\t+([^\t]+)\t+([^\t]+)\t+(.*)/) {
@@ -891,20 +891,20 @@ with -sig.asc appended, and check that it is valid. Parameters are :
 =cut
 sub check_update_signature
 {
-local ($host, $port, $page, $ssl, $user, $pass, $file, $sigmode) = @_;
+my ($host, $port, $page, $ssl, $user, $pass, $file, $sigmode) = @_;
 
-local ($ec, $emsg) = &gnupg_setup();
+my ($ec, $emsg) = &gnupg_setup();
 if (!$ec && $sigmode) {
-	local $err;
-	local $sig;
+	my $err;
+	my $sig;
 	&http_download($host, $port, $page."-sig.asc", \$sig,
 		       \$err, undef, $ssl, $user, $pass);
 	if ($err) {
                 $sigmode == 2 && return &text('update_enomodsig', $err);
                 }
 	else {
-		local $data = &read_file_contents($file);
-		local ($vc, $vmsg) = &verify_data($data, $sig);
+		my $data = &read_file_contents($file);
+		my ($vc, $vmsg) = &verify_data($data, $sig);
 		if ($vc > 1) {
 			return &text('update_ebadmodsig',
 				&text('upgrade_everify'.$vc, $vmsg));
@@ -934,10 +934,10 @@ Returns a list of IP address to key file mappings from a miniserv.conf entry.
 =cut
 sub get_ipkeys
 {
-local (@rv, $k);
+my (@rv, $k);
 foreach $k (keys %{$_[0]}) {
 	if ($k =~ /^ipkey_(\S+)/) {
-		local $ipkey = { 'ips' => [ split(/,/, $1) ],
+		my $ipkey = { 'ips' => [ split(/,/, $1) ],
 				 'key' => $_[0]->{$k},
 				 'index' => scalar(@rv) };
 		$ipkey->{'cert'} = $_[0]->{'ipcert_'.$1};
@@ -954,14 +954,14 @@ Updates miniserv.conf entries from the given list of keys.
 =cut
 sub save_ipkeys
 {
-local $k;
+my $k;
 foreach $k (keys %{$_[0]}) {
 	if ($k =~ /^(ipkey_|ipcert_)/) {
 		delete($_[0]->{$k});
 		}
 	}
 foreach $k (@{$_[1]}) {
-	local $ips = join(",", @{$k->{'ips'}});
+	my $ips = join(",", @{$k->{'ips'}});
 	$_[0]->{'ipkey_'.$ips} = $k->{'key'};
 	if ($k->{'cert'}) {
 		$_[0]->{'ipcert_'.$ips} = $k->{'cert'};
@@ -1003,9 +1003,9 @@ local $cache = $_[1];
 if ($cache) {
 	# Check the cache file, and only re-check the OS if older than
 	# 1 day, or if we have rebooted recently
-	local %cache;
-	local $uptime = &get_system_uptime();
-	local $lastreboot = $uptime ? time()-$uptime : undef;
+	my %cache;
+	my $uptime = &get_system_uptime();
+	my $lastreboot = $uptime ? time()-$uptime : undef;
 	if (&read_file($detect_operating_system_cache, \%cache) &&
 	    $cache{'os_type'} && $cache{'os_version'} &&
 	    $cache{'real_os_type'} && $cache{'real_os_version'}) {
@@ -1015,10 +1015,10 @@ if ($cache) {
 			}
 		}
 	}
-local $temp = &transname();
-local $perl = &get_perl_path();
+my $temp = &transname();
+my $perl = &get_perl_path();
 system("$perl $root_directory/oschooser.pl $file $temp 1");
-local %rv;
+my %rv;
 &read_env_file($temp, \%rv);
 $rv{'time'} = time();
 &write_file($detect_operating_system_cache, \%rv);
@@ -1033,8 +1033,8 @@ password expiry, Webmin updates and more.
 =cut
 sub show_webmin_notifications
 {
-local ($noupdates) = @_;
-local @notifs = &get_webmin_notifications($noupdates);
+my ($noupdates) = @_;
+my @notifs = &get_webmin_notifications($noupdates);
 if (@notifs) {
 	print "<center>\n",join("<hr>\n", @notifs),"</center>\n";
 	}
@@ -1049,15 +1049,15 @@ not included.
 =cut
 sub get_webmin_notifications
 {
-local ($noupdates) = @_;
+my ($noupdates) = @_;
 $noupdates = 1 if (&shared_root_directory());
-local @notifs;
-local %miniserv;
+my @notifs;
+my %miniserv;
 &get_miniserv_config(\%miniserv);
 &load_theme_library();	# So that UI functions work
 
 # Need OS upgrade
-local %realos = &detect_operating_system(undef, 1);
+my %realos = &detect_operating_system(undef, 1);
 if (($realos{'os_version'} ne $gconfig{'os_version'} ||
      $realos{'os_type'} ne $gconfig{'os_type'}) &&
     &foreign_available("webmin")) {
@@ -1070,7 +1070,7 @@ if (($realos{'os_version'} ne $gconfig{'os_version'} ||
 	}
 
 # Password close to expiry
-local $warn_days = $config{'warn_days'};
+my $warn_days = $config{'warn_days'};
 if (&foreign_check("acl")) {
 	# Get the Webmin user
 	&foreign_require("acl", "acl-lib.pl");
@@ -1083,9 +1083,9 @@ if (&foreign_check("acl")) {
 				&useradmin::list_users();
 		if ($uinfo && $uinfo->{'warn'} && $uinfo->{'change'} &&
 		    $uinfo->{'max'}) {
-			local $daysago = int(time()/(24*60*60)) -
+			my $daysago = int(time()/(24*60*60)) -
 					 $uinfo->{'change'};
-			local $cdate = &make_date(
+			my $cdate = &make_date(
 				$uinfo->{'change'}*24*60*60, 1);
 			if ($daysago > $uinfo->{'max'}) {
 				# Passed expiry date
@@ -1102,8 +1102,8 @@ if (&foreign_check("acl")) {
 		}
 	elsif ($uinfo && $uinfo->{'lastchange'}) {
 		# Webmin auth .. check password in Webmin
-		local $daysold = (time() - $uinfo->{'lastchange'})/(24*60*60);
-		local $link = &foreign_available("change-user") ?
+		my $daysold = (time() - $uinfo->{'lastchange'})/(24*60*60);
+		my $link = &foreign_available("change-user") ?
 			&text('notif_changenow',
 			     "$gconfig{'webprefix'}/change-user/")."<p>\n" : "";
 		if ($miniserv{'pass_maxdays'} &&
@@ -1131,12 +1131,12 @@ if (&foreign_check("acl")) {
 	}
 
 # New Webmin version is available, but only once per day
-local $now = time();
+my $now = time();
 if (&foreign_available($module_name) && !$noupdates) {
 	if (!$config{'last_version_check'} ||
             $now - $config{'last_version_check'} > 24*60*60) {
 		# Cached last version has expired .. re-fetch
-		local ($ok, $version) = &get_latest_webmin_version();
+		my ($ok, $version) = &get_latest_webmin_version();
 		if ($ok) {
 			$config{'last_version_check'} = $now;
 			$config{'last_version_number'} = $version;
@@ -1145,10 +1145,10 @@ if (&foreign_available($module_name) && !$noupdates) {
 		}
 	if ($config{'last_version_number'} > &get_webmin_version()) {
 		# New version is out there .. offer to upgrade
-		local $mode = &get_install_type();
-		local $checksig = 0;
+		my $mode = &get_install_type();
+		my $checksig = 0;
 		if ((!$mode || $mode eq "rpm") && &foreign_check("proc")) {
-			local ($ec, $emsg) = &gnupg_setup();
+			my ($ec, $emsg) = &gnupg_setup();
 			if (!$ec) {
 				$checksig = 1;
 				}
@@ -1167,9 +1167,9 @@ if (&foreign_available($module_name) && !$noupdates) {
 
 # Webmin module updates
 if (&foreign_available($module_name) && !$noupdates) {
-	local @st = stat($update_cache);
-	local $allupdates = [ ];
-	local @urls = $config{'upsource'} ?
+	my @st = stat($update_cache);
+	my $allupdates = [ ];
+	my @urls = $config{'upsource'} ?
 		split(/\t+/, $config{'upsource'}) : ( $update_url );
 	if (!@st || $now - $st[9] > 24*60*60) {
 		# Need to re-fetch cache
@@ -1178,7 +1178,7 @@ if (&foreign_available($module_name) && !$noupdates) {
 				    $url eq $update_url ? 2 : 1;
 			eval {
 				local $main::error_must_die = 1;
-				local ($updates) = &fetch_updates($url,
+				my ($updates) = &fetch_updates($url,
 					$config{'upuser'}, $config{'uppass'},
 					$checksig);
 				push(@$allupdates, @$updates);
@@ -1190,14 +1190,14 @@ if (&foreign_available($module_name) && !$noupdates) {
 		}
 	else {
 		# Just use cache
-		local $cdata = &read_file_contents($update_cache);
+		my $cdata = &read_file_contents($update_cache);
 		$allupdates = &unserialise_variable($cdata);
 		}
 
 	# All a table of them, and a form to install
 	$allupdates = &filter_updates($allupdates);
 	if (@$allupdates) {
-		local $msg = &ui_form_start(
+		my $msg = &ui_form_start(
 			"$gconfig{'webprefix'}/webmin/update.cgi");
 		$msg .= &text('notif_updatemsg', scalar(@$allupdates))."<p>\n";
 		$msg .= &ui_columns_start(
@@ -1205,9 +1205,9 @@ if (&foreign_available($module_name) && !$noupdates) {
 			  $text{'notify_updatever'},
 			  $text{'notify_updatedesc'} ]);
 		foreach my $u (@$allupdates) {
-			local %minfo = &get_module_info($u->[0]);
-			local %tinfo = &get_theme_info($u->[0]);
-			local %info = %minfo ? %minfo : %tinfo;
+			my %minfo = &get_module_info($u->[0]);
+			my %tinfo = &get_theme_info($u->[0]);
+			my %info = %minfo ? %minfo : %tinfo;
 			$msg .= &ui_columns_row([
 				$info{'desc'},
 				$u->[1],
@@ -1237,9 +1237,9 @@ sub get_system_uptime
 {
 # Try Linux /proc/uptime first
 if (open(UPTIME, "/proc/uptime")) {
-	local $line = <UPTIME>;
+	my $line = <UPTIME>;
 	close(UPTIME);
-	local ($uptime, $dummy) = split(/\s+/, $line);
+	my ($uptime, $dummy) = split(/\s+/, $line);
 	if ($uptime > 0) {
 		return int($uptime);
 		}
@@ -1247,7 +1247,7 @@ if (open(UPTIME, "/proc/uptime")) {
 
 # Try to parse uptime command output
 if ($gconfig{'os_type'} ne 'windows') {
-	local $out = &backquote_command("uptime");
+	my $out = &backquote_command("uptime");
 	if ($out =~ /up\s+(\d+)\s+day/) {
 		return $1*24*60*60;
 		}
@@ -1283,7 +1283,7 @@ Returns a list of known OSs, each of which is a hash ref with keys :
 sub list_operating_systems
 {
 local $file = $_[0] || "$root_directory/os_list.txt";
-local @rv;
+my @rv;
 open(OSLIST, $file);
 while(<OSLIST>) {
 	if (/^([^\t]+)\t+([^\t]+)\t+([^\t]+)\t+([^\t]+)\t+(.*)/) {
@@ -1319,10 +1319,10 @@ if (&running_in_zone()) {
 	# In a Solaris zone .. is the root directory loopback mounted?
 	if (&foreign_exists("mount")) {
 		&foreign_require("mount", "mount-lib.pl");
-		local @rst = stat($root_directory);
-		local $m;
+		my @rst = stat($root_directory);
+		my $m;
 		foreach $m (&mount::list_mounted()) {
-			local @mst = stat($m->[0]);
+			my @mst = stat($m->[0]);
 			if ($mst[0] == $rst[0] &&
 			    &is_under_directory($m->[0], $root_directory)) {
 				# Found the mount!
@@ -1373,7 +1373,7 @@ Returns a (hopefully) unique ID for this Webmin install.
 sub get_webmin_id
 {
 if (!$config{'webminid'}) {
-	local $salt = substr(time(), -2);
+	my $salt = substr(time(), -2);
 	$config{'webminid'} = &unix_crypt(&get_system_hostname(), $salt);
 	&save_module_config();
 	}
@@ -1402,7 +1402,7 @@ else {
 	}
 
 for($i=1; $i<@_; $i++) {
-	local $mismatch = 0;
+	my $mismatch = 0;
 	local $ip = $_[$i];
         if ($ip =~ /^(\S+)\/(\d+)$/) {
                 # Convert CIDR to netmask format
@@ -1474,7 +1474,7 @@ allowed IPs, or an error message if not
 =cut
 sub valid_allow
 {
-local ($h) = @_;
+my ($h) = @_;
 if ($h =~ /^([0-9\.]+)\/(\d+)$/) {
 	&check_ipaddress($1) ||
 		return &text('access_enet', "$1");
@@ -1542,8 +1542,8 @@ ref containing a module name and directory.
 =cut
 sub get_tempdirs
 {
-local ($gconfig) = @_;
-local @rv;
+my ($gconfig) = @_;
+my @rv;
 foreach my $k (keys %$gconfig) {
 	if ($k =~ /^tempdir_(.*)$/) {
 		push(@rv, [ $1, $gconfig->{$k} ]);
@@ -1559,7 +1559,7 @@ Updates the global config with a list of per-module temp dirs
 =cut
 sub save_tempdirs
 {
-local ($gconfig, $dirs) = @_;
+my ($gconfig, $dirs) = @_;
 foreach my $k (keys %$gconfig) {
 	if ($k =~ /^tempdir_(.*)$/) {
 		delete($gconfig->{$k});
@@ -1578,10 +1578,10 @@ if it was installed from a .wbm.
 =cut
 sub get_module_install_type
 {
-local ($mod) = @_;
-local $it = &module_root_directory($mod)."/install-type";
+my ($mod) = @_;
+my $it = &module_root_directory($mod)."/install-type";
 open(TYPE, $it) || return undef;
-local $type = <TYPE>;
+my $type = <TYPE>;
 chop($type);
 close(TYPE);
 return $type;
@@ -1595,7 +1595,7 @@ or undef for tar.gz).
 =cut
 sub get_install_type
 {
-local $mode;
+my $mode;
 if (open(MODE, "$root_directory/install-type")) {
 	chop($mode = <MODE>);
 	close(MODE);
@@ -1625,7 +1625,7 @@ containing a full path and url.
 =cut
 sub list_cached_files
 {
-local @rv;
+my @rv;
 opendir(DIR, $main::http_cache_directory);
 foreach my $cfile (readdir(DIR)) {
 	next if ($cfile eq "." || $cfile eq "..");
@@ -1644,7 +1644,7 @@ Output a page with header and footer about Webmin needing to restart.
 =cut
 sub show_restart_page
 {
-local ($title, $msg) = @_;
+my ($title, $msg) = @_;
 $title ||= $text{'restart_title'};
 $msg ||= $text{'restart_done'};
 &ui_print_header(undef, $title, "");
@@ -1662,7 +1662,7 @@ Returns a hash of details of a cert in some file.
 =cut
 sub cert_info
 {
-local %rv;
+my %rv;
 local $_;
 open(OUT, "openssl x509 -in ".quotemeta($_[0])." -issuer -subject -enddate |");
 while(<OUT>) {
@@ -1703,7 +1703,7 @@ other keys.
 =cut
 sub cert_pem_data
 {
-local ($d) = @_;
+my ($d) = @_;
 local $data = &read_file_contents($_[0]);
 if ($data =~ /(-----BEGIN\s+CERTIFICATE-----\n([A-Za-z0-9\+\/=\n\r]+)-----END\s+CERTIFICATE-----)/) {
 	return $1;
@@ -1718,7 +1718,7 @@ Returns a cert in PKCS12 format.
 =cut
 sub cert_pkcs12_data
 {
-local ($keyfile, $certfile) = @_;
+my ($keyfile, $certfile) = @_;
 if ($certfile) {
 	open(OUT, "openssl pkcs12 -in ".quotemeta($certfile).
 		  " -inkey ".quotemeta($keyfile).
@@ -1743,13 +1743,13 @@ at run-time.
 =cut
 sub get_blocked_users_hosts
 {
-local ($miniserv) = @_;
-local $bf = $miniserv->{'blockedfile'};
+my ($miniserv) = @_;
+my $bf = $miniserv->{'blockedfile'};
 if (!$bf) {
 	$miniserv->{'pidfile'} =~ /^(.*)\/[^\/]+$/;
 	$bf = "$1/blocked";
 	}
-local @rv;
+my @rv;
 &open_readfile(BLOCKED, $bf);
 while(<BLOCKED>) {
 	s/\r|\n//g;
@@ -1770,8 +1770,8 @@ Returns HTML for inputs to generate a new self-signed cert.
 =cut
 sub show_ssl_key_form
 {
-local ($defhost, $defemail, $deforg) = @_;
-local $rv;
+my ($defhost, $defemail, $deforg) = @_;
+my $rv;
 
 $rv .= &ui_table_row($text{'ssl_cn'},
 		    &ui_opt_textbox("commonName", $defhost, 30,
@@ -1814,8 +1814,8 @@ Returns undef on success or an error message on failure.
 =cut
 sub parse_ssl_key_form
 {
-local ($in, $keyfile, $certfile) = @_;
-local %in = %$in;
+my ($in, $keyfile, $certfile) = @_;
+my %in = %$in;
 
 # Validate inputs
 $in{'commonName_def'} || $in{'commonName'} =~ /^[A-Za-z0-9\.\-\*]+$/ ||
@@ -1825,7 +1825,7 @@ $in{'days'} =~ /^\d+$/ || return $text{'newkey_edays'};
 $in{'countryName'} =~ /^\S\S$/ || return $text{'newkey_ecountry'};
 
 # Work out SSL command
-local %aclconfig = &foreign_config('acl');
+my %aclconfig = &foreign_config('acl');
 &foreign_require("acl", "acl-lib.pl");
 local $cmd = &acl::get_ssleay();
 if (!$cmd) {
@@ -1834,10 +1834,10 @@ if (!$cmd) {
 	}
 
 # Run openssl and feed it key data
-local $ctemp = &transname();
-local $ktemp = &transname();
-local $outtemp = &transname();
-local $size = $in{'size_def'} ? $default_key_size : quotemeta($in{'size'});
+my $ctemp = &transname();
+my $ktemp = &transname();
+my $outtemp = &transname();
+my $size = $in{'size_def'} ? $default_key_size : quotemeta($in{'size'});
 open(CA, "| $cmd req -newkey rsa:$size -x509 -nodes -out $ctemp -keyout $ktemp -days ".quotemeta($in{'days'})." >$outtemp 2>&1");
 print CA ($in{'countryName'} || "."),"\n";
 print CA ($in{'stateOrProvinceName'} || "."),"\n";
@@ -1847,16 +1847,16 @@ print CA ($in{'organizationalUnitName'} || "."),"\n";
 print CA ($in{'commonName_def'} ? "*" : $in{'commonName'}),"\n";
 print CA ($in{'emailAddress'} || "."),"\n";
 close(CA);
-local $rv = $?;
-local $out = &read_file_contents($outtemp);
+my $rv = $?;
+my $out = &read_file_contents($outtemp);
 unlink($outtemp);
 if (!-r $ctemp || !-r $ktemp || $?) {
 	return $text{'newkey_essl'}."<br>"."<pre>".&html_escape($out)."</pre>";
 	}
 
 # Write to the final files
-local $certout = &read_file_contents($ctemp);
-local $keyout = &read_file_contents($ktemp);
+my $certout = &read_file_contents($ctemp);
+my $keyout = &read_file_contents($ktemp);
 unlink($ctemp, $ktemp);
 
 &open_lock_tempfile(KEYFILE, ">$keyfile");
@@ -1886,21 +1886,21 @@ modules whose underlying servers are installed.
 =cut
 sub build_installed_modules
 {
-local ($force, $mod) = @_;
-local %installed;
-local $changed;
+my ($force, $mod) = @_;
+my %installed;
+my $changed;
 &read_file_cached("$config_directory/installed.cache", \%installed);
-local @changed;
+my @changed;
 foreach my $minfo (&get_all_module_infos()) {
 	next if ($mod && $minfo->{'dir'} ne $mod);
 	next if (defined($installed{$minfo->{'dir'}}) && !$force && !$mod);
 	next if (!&check_os_support($minfo));
 	$@ = undef;
-	local $o = $installed{$minfo->{'dir'}};
-	local $pid = fork();
+	my $o = $installed{$minfo->{'dir'}};
+	my $pid = fork();
 	if (!$pid) {
 		# Check in a sub-process
-		local $rv;
+		my $rv;
 		eval {
 			local $main::error_must_die = 1;
 			$rv = &foreign_installed($minfo->{'dir'}, 0) ? 1 : 0;
@@ -1927,8 +1927,8 @@ Returns 1 and the latest version of Webmin available on www.webmin.com, or
 =cut
 sub get_latest_webmin_version
 {
-local $file = &transname();
-local ($error, $version);
+my $file = &transname();
+my ($error, $version);
 &http_download($update_host, $update_port, '/', $file, \$error);
 return (0, $error) if ($error);
 open(FILE, $file);
@@ -1960,15 +1960,15 @@ suitable for this system. The parameters are :
 =cut
 sub filter_updates
 {
-local ($allupdates, $version, $third, $missing) = @_;
+my ($allupdates, $version, $third, $missing) = @_;
 $version ||= &get_webmin_version();
-local $bversion = &base_version($version);
-local $updatestemp = &transname();
-local @updates;
+my $bversion = &base_version($version);
+my $updatestemp = &transname();
+my @updates;
 foreach my $u (@$allupdates) {
-	local %minfo = &get_module_info($u->[0]);
-	local %tinfo = &get_theme_info($u->[0]);
-	local %info = %minfo ? %minfo : %tinfo;
+	my %minfo = &get_module_info($u->[0]);
+	my %tinfo = &get_theme_info($u->[0]);
+	my %info = %minfo ? %minfo : %tinfo;
 
 	# Skip if wrong version of Webmin, unless this is non-core module and
 	# we are handling them too
@@ -1984,11 +1984,11 @@ foreach my $u (@$allupdates) {
 	next if (%info && $info{'version'} && $info{'version'} >= $u->[1]);
 
 	# Skip if not supported on this OS
-	local $osinfo = { 'os_support' => $u->[3] };
+	my $osinfo = { 'os_support' => $u->[3] };
 	next if (!&check_os_support($osinfo));
 
 	# Skip if installed from RPM or Deb and update was not
-	local $itype = &get_module_install_type($u->[0]);
+	my $itype = &get_module_install_type($u->[0]);
 	next if ($itype && $u->[2] !~ /\.$itype$/i);
 
 	push(@updates, $u);

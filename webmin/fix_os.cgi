@@ -17,7 +17,7 @@ $gconfig{'os_version'} = $osinfo{'os_version'};
 # Do Usermin too, if installed and running an equivalent version
 if (&foreign_installed("usermin")) {
 	&foreign_require("usermin", "usermin-lib.pl");
-	local %miniserv;
+	my %miniserv;
 	&usermin::get_usermin_miniserv_config(\%miniserv);
 	@ust = stat("$miniserv{'root'}/os_list.txt");
 	@wst = stat("$root_directory/os_list.txt");

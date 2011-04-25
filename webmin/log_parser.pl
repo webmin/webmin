@@ -7,7 +7,7 @@ do 'webmin-lib.pl';
 # Converts logged information from this module into human-readable form
 sub parse_webmin_log
 {
-local ($user, $script, $action, $type, $object, $p) = @_;
+my ($user, $script, $action, $type, $object, $p) = @_;
 if ($action eq 'install') {
 	return &text('log_install', "<i>$p->{'desc'}</i>");
 	}

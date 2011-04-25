@@ -47,7 +47,7 @@ system("(find '$config_directory/$dst' -name '*.lock' | xargs rm -f) >/dev/null 
 &read_acl(undef, \%acl);
 &open_tempfile(ACL, "> ".&acl_filename());
 foreach $u (keys %acl) {
-	local @mods = @{$acl{$u}};
+	my @mods = @{$acl{$u}};
 	if ($u eq $base_remote_user) {
 		@mods = &unique(@mods, $dst);
 		}

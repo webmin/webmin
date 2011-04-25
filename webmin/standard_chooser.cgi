@@ -23,7 +23,7 @@ else {
 	print "</script>\n";
 	@table = ( );
 	foreach $m (@$mods) {
-		local $minfo = { 'os_support' => $m->[3] };
+		my $minfo = { 'os_support' => $m->[3] };
 		next if (!&check_os_support($minfo));
 		push(@table, [
 		 "<a href='' onClick='return select(\"$m->[0]\")'>$m->[0]</a>",

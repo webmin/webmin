@@ -6,7 +6,7 @@ do 'webmin-lib.pl';
 sub backup_config_files
 {
 &get_miniserv_config(\%miniserv);
-local @rv = ( "$config_directory/config",
+my @rv = ( "$config_directory/config",
 	      "$config_directory/miniserv.conf",
 	      "$config_directory/webmin.cats",
 	      "$config_directory/webmin.catnames",
@@ -47,7 +47,7 @@ return undef;
 sub post_restore
 {
 # Merge in local settings that cannot be copied
-local %miniserv;
+my %miniserv;
 &get_miniserv_config(\%miniserv);
 foreach my $k (keys %oldminiserv) {
 	my $copy = 0;
@@ -60,7 +60,7 @@ foreach my $k (keys %oldminiserv) {
 	}
 &put_miniserv_config(\%miniserv);
 
-local %gconfig;
+my %gconfig;
 &read_file("$config_directory/config", \%gconfig);
 foreach my $k (keys %oldconfig) {
 	my $copy = 0;

@@ -19,7 +19,7 @@ $stable = &ui_columns_start([ $text{'bind_sip'}, $text{'bind_sport'} ]);
 $i = 0;
 foreach $s (@sockets, [ undef, "*" ]) {
 	# IP address
-	local @cols;
+	my @cols;
 	push(@cols, &ui_select("ip_def_$i", $s->[0] eq "" ? 0 :
 					    $s->[0] eq "*" ? 1 : 2,
 			       [ [ 0, "&nbsp;" ],

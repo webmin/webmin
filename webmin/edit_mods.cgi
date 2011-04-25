@@ -99,13 +99,13 @@ print "$text{'mods_desc3'}<p>\n";
 print &ui_form_start("delete_mod.cgi", "post");
 print &ui_table_start($text{'mods_delete'}, undef, 2);
 
-local $home = $root_directory eq '/usr/local/webadmin';
+my $home = $root_directory eq '/usr/local/webadmin';
 @opts = ( );
 foreach $m (@mlist) {
 	if ($m->{'dir'} ne 'webmin' && &check_os_support($m)) {
-		local @st = stat(&module_root_directory($m->{'dir'}));
-		local @tm = localtime($st[9]);
-		local $vstr = $m->{'version'} == $version ? "" :
+		my @st = stat(&module_root_directory($m->{'dir'}));
+		my @tm = localtime($st[9]);
+		my $vstr = $m->{'version'} == $version ? "" :
 			      $m->{'version'} ? "(v. $m->{'version'})" :
 			      $home ? "" :
 			      sprintf "(%d/%d/%d)",

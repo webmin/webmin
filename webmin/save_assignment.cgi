@@ -4,7 +4,7 @@ require './webmin-lib.pl';
 
 &lock_file("$config_directory/webmin.cats");
 foreach $module (keys %in){
-	local %minfo = &get_module_info($module);
+	my %minfo = &get_module_info($module);
 	next if (!%minfo);
 	if ($minfo{'realcategory'} ne $in{$module}) {
 		$cats{$module} = $in{$module};

@@ -6,7 +6,7 @@ do 'webmin-lib.pl';
 # Returns the Webmin error log
 sub syslog_getlogs
 {
-local %miniserv;
+my %miniserv;
 &get_miniserv_config(\%miniserv);
 if ($miniserv{'errorlog'} eq '-') {
 	# Logging to stdout
