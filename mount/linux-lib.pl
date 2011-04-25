@@ -23,7 +23,7 @@ if (!$no_check_support) {
 		$smbfs_fs = "smbfs";
 		}
 	$swaps_support = -r "/proc/swaps";
-	if (`uname -r` =~ /^(\d+\.\d+)/ && $1 >= 2.4) {
+	if (&backquote_command("uname -r") =~ /^(\d+\.\d+)/ && $1 >= 2.4) {
 		$tmpfs_support = 1;
 		$ext3_support = 1;
 		$no_mount_check = 1;
@@ -63,7 +63,8 @@ $uuid_directory = "/dev/disk/by-uuid";
 sub list_mounts
 {
 return @list_mounts_cache if (@list_mounts_cache);
-local(@rv, @p, @o, $_, $i, $j); $i = 0;
+local(@rv, @p, @o, $_, $i, $j);
+$i = 0;
 
 # Get /etc/fstab mounts
 open(FSTAB, $config{fstab_file});
@@ -90,7 +91,7 @@ while(<FSTAB>) {
 	if (($j = &indexof("bind", @o)) >= 0) {
 		# Special bind option, which indicates a loopback filesystem
 		splice(@o, $j, 1);
-		$p[0] = "bind";
+		$rv[$i]->[2] = "bind";
 		}
 	$rv[$i]->[3] = (@o ? join(',' , @o) : "-");
 	$rv[$i]->[4] = (@p >= 5 ? $p[5] : 0);
@@ -513,6 +514,15 @@ while(<MTAB>) {
 				}
 			}
 		}
+
+	print STDERR "opts=$p[3]\n";
+	if ($p[3] =~ s/,bind,// || $p[3] =~ s/^bind,// ||
+	    $p[3] =~ s/,bind$// || $p[3] =~ s/^bind$//) {
+		# Special bind option, which indicates a loopback filesystem
+		print STDERR "detected bind\n";
+		$p[2] = "bind";
+		}
+
 	push(@rv, [ $p[1], $p[0], $p[2], $p[3] ]);
 	}
 close(MTAB);
