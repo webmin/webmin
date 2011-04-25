@@ -40,6 +40,7 @@ my %index;
 &build_log_index(\%index);
 my @rv;
 open(LOG, $webmin_logfile);
+my ($id, $idx);
 while(($id, $idx) = each %index) {
 	my ($pos, $time, $user, $module, $sid) = split(/\s+/, $idx);
 	next if (defined($onlyuser) && $user ne $onlyuser);
@@ -325,7 +326,6 @@ sub get_action
 {
 my %index;
 &build_log_index(\%index);
-my $act;
 open(LOG, $webmin_logfile);
 local @idx = split(/\s+/, $index{$_[0]});
 seek(LOG, $idx[0], 0);
