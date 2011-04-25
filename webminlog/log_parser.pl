@@ -7,7 +7,7 @@ do 'webminlog-lib.pl';
 # Converts logged information from this module into human-readable form
 sub parse_webmin_log
 {
-local ($user, $script, $action, $type, $object, $p) = @_;
+my ($user, $script, $action, $type, $object, $p) = @_;
 if ($action eq 'rollback') {
 	return &text('log_rollback', "<i>".$p->{'desc'}."</i>",
 				     "<i>".$p->{'mdesc'}."</i>");

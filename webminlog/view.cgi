@@ -111,13 +111,13 @@ $rbcount = 0;
 $i = 0;
 $fhtml = "";
 foreach $d (&list_diffs($act)) {
-	local $t = $text{"view_type_".$d->{'type'}};
-	local $rb;
+	my $t = $text{"view_type_".$d->{'type'}};
+	my $rb;
 	if ($d->{'type'} eq 'create' || $d->{'type'} eq 'modify' ||
 	    $d->{'type'} eq 'delete') {
 		($rb) = grep { $_->{'file'} eq $d->{'object'} } @files;
 		}
-	local $cbox = @files ?
+	my $cbox = @files ?
 		&ui_checkbox("r", $d->{'object'}, "", $rb, undef, !$rb) : undef;
 	$rbcount++ if ($rb);
 	if ($t =~ /\$2/ || !$d->{'diff'}) {

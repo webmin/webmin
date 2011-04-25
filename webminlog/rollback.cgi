@@ -101,7 +101,7 @@ else {
 		elsif (-l $f->{'file'} && $f->{'type'} == 2 ||
 		       !-e $f->{'file'} && $f->{'type'} == 2) {
 			# Was a link, and is one now
-			local $lnk = readlink($f->{'file'});
+			my $lnk = readlink($f->{'file'});
 			if (!-e $f->{'file'}) {
 				print &text('rollback_clink', "<tt>$f->{'data'}</tt>");
 				$count++;
@@ -117,7 +117,7 @@ else {
 		elsif (-e $f->{'file'} && -l $f->{'file'} &&
 		       $f->{'type'} == 0) {
 			# Was a file, but is now a link
-			local $lnk = readlink($f->{'file'});
+			my $lnk = readlink($f->{'file'});
 			print &text('rollback_makefile', "<tt>$lnk</tt>");
 			print "<pre>$f->{'data'}</pre>";
 			$count++;
@@ -147,12 +147,12 @@ else {
 			}
 		else {
 			# Was a file, and is one now
-			local $qnew = quotemeta($f->{'file'});
-			local $temp = &transname();
+			my $qnew = quotemeta($f->{'file'});
+			my $temp = &transname();
 			open(TEMP, ">$temp");
 			print TEMP $f->{'data'};
 			close(TEMP);
-			local $out = `diff $qnew $temp`;
+			my $out = &backquote_command("diff $qnew $temp");
 			if ($out) {
 				print $text{'rollback_changes'};
 				print "<pre>$out</pre>";

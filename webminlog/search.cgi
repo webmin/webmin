@@ -56,7 +56,7 @@ else {
 &build_log_index(\%index);
 open(LOG, $webmin_logfile);
 while(($id, $idx) = each %index) {
-	local ($pos, $time, $user, $module, $sid) = split(/\s+/, $idx);
+	my ($pos, $time, $user, $module, $sid) = split(/\s+/, $idx);
 	if (($in{'uall'} == 1 ||
 	     $in{'uall'} == 0 && $in{'user'} eq $user ||
 	     $in{'uall'} == 3 && $in{'ouser'} eq $user ||
@@ -76,12 +76,12 @@ while(($id, $idx) = each %index) {
 		# Check modified files
 		if ($gconfig{'logfiles'} && (!$in{'fall'} || !$in{'dall'})) {
 			# Make sure the specified file was modified
-			local $found = 0;
+			my $found = 0;
 			foreach $d (&list_diffs($act)) {
-				local $filematch = $in{'fall'} ||
+				my $filematch = $in{'fall'} ||
 					$d->{'object'} &&
 					$d->{'object'} eq $in{'file'};
-				local $diffmatch = $in{'dall'} ||
+				my $diffmatch = $in{'dall'} ||
 					$d->{'diff'} =~ /\Q$in{'diff'}\E/i;
 				if ($filematch && $diffmatch) {
 					$found++;
@@ -127,10 +127,10 @@ if ($in{'csv'}) {
 				{ 'desc' => $text{'search_global'} } :
 				$minfo_cache{$m};
 		if (!$minfo) {
-			local %minfo = &get_module_info($m);
+			my %minfo = &get_module_info($m);
 			$minfo = $minfo_cache{$m} = \%minfo;
 			}
-		local $desc = &get_action_description($act, 0);
+		my $desc = &get_action_description($act, 0);
 		$desc =~ s/<[^>]+>//g;
 		@cols = ( $desc, 
 			  $minfo->{'desc'},
@@ -170,21 +170,21 @@ elsif (@match) {
 		  $text{'search_date'},
 		  $text{'search_time'} ], "100");
 	foreach $act (sort { $b->{'time'} <=> $a->{'time'} } @match) {
-		local @tm = localtime($act->{'time'});
-		local $m = $act->{'module'};
-		local $d;
+		my @tm = localtime($act->{'time'});
+		my $m = $act->{'module'};
+		my $d;
 		$minfo = $m eq "global" ? 
 				{ 'desc' => $text{'search_global'} } :
 				$minfo_cache{$m};
 		if (!$minfo) {
 			# first time seeing module ..
-			local %minfo = &get_module_info($m);
+			my %minfo = &get_module_info($m);
 			$minfo = $minfo_cache{$m} = \%minfo;
 			}
 
-		local @cols;
-		local $desc = &get_action_description($act, 0);
-		local $anno = &get_annotation($act);
+		my @cols;
+		my $desc = &get_action_description($act, 0);
+		my $anno = &get_annotation($act);
 		push(@cols, "<a href='view.cgi?id=$act->{'id'}".
 		      "&return=".&urlize($in{'return'}).
 		      "&returndesc=".&urlize($in{'returndesc'}).
@@ -224,7 +224,7 @@ local $d = $in{"$_[0]_d"};
 local $m = $in{"$_[0]_m"};
 local $y = $in{"$_[0]_y"};
 return 0 if (!$d && !$y);
-local $rv;
+my $rv;
 eval { $rv = timelocal(0, 0, 0, $d, $m, $y-1900) };
 &error($text{'search_etime'}) if ($@);
 return $rv;

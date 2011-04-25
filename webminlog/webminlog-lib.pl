@@ -35,13 +35,13 @@ following parameters :
 =cut
 sub list_webmin_log
 {
-local ($onlyuser, $onlymodule, $start, $end) = @_;
-local %index;
+my ($onlyuser, $onlymodule, $start, $end) = @_;
+my %index;
 &build_log_index(\%index);
-local @rv;
+my @rv;
 open(LOG, $webmin_logfile);
 while(($id, $idx) = each %index) {
-	local ($pos, $time, $user, $module, $sid) = split(/\s+/, $idx);
+	my ($pos, $time, $user, $module, $sid) = split(/\s+/, $idx);
 	next if (defined($onlyuser) && $user ne $onlyuser);
 	next if (defined($onlymodule) && $module ne $onlymodule);
 	next if (defined($start) && $time < $start);
@@ -89,13 +89,13 @@ sub parse_logline
 {
 if ($_[0] =~ /^(\d+)\.(\S+)\s+\[.*\]\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+"([^"]+)"\s+"([^"]+)"\s+"([^"]+)"(.*)/ ||
     $_[0] =~ /^(\d+)\.(\S+)\s+\[.*\]\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)(.*)/) {
-	local $rv = { 'time' => $1, 'id' => "$1.$2",
+	my $rv = { 'time' => $1, 'id' => "$1.$2",
 		      'user' => $3, 'sid' => $4,
 		      'ip' => $5, 'module' => $6,
 		      'script' => $7, 'action' => $8,
 		      'type' => $9, 'object' => $10 };
-	local %param;
-	local $p = $11;
+	my %param;
+	my $p = $11;
 	while($p =~ /^\s*([^=\s]+)='([^']*)'(.*)$/) {
 		if (defined($param{$1})) {
 			$param{$1} .= "\0".$2;
@@ -136,19 +136,19 @@ hash ref with the keys :
 =cut
 sub list_diffs
 {
-local $i = 0;
-local @rv;
-local $idprefix = substr($act->{'id'}, 0, 5);
-local $oldbase = "$ENV{'WEBMIN_VAR'}/diffs/$idprefix/$act->{'id'}";
-local $base = "$ENV{'WEBMIN_VAR'}/diffs/$act->{'id'}";
+my $i = 0;
+my @rv;
+my $idprefix = substr($act->{'id'}, 0, 5);
+my $oldbase = "$ENV{'WEBMIN_VAR'}/diffs/$idprefix/$act->{'id'}";
+my $base = "$ENV{'WEBMIN_VAR'}/diffs/$act->{'id'}";
 return ( ) if (!-d $base && !-d $oldbase);
-local @files = &expand_base_dir(-d $base ? $base : $oldbase);
+my @files = &expand_base_dir(-d $base ? $base : $oldbase);
 
 # Read the diff files
 foreach my $file (@files) {
-        local ($type, $object, $diff, $input);
+        my ($type, $object, $diff, $input);
 	open(DIFF, $file);
-        local $line = <DIFF>;
+        my $line = <DIFF>;
         while(<DIFF>) { $diff .= $_; }
         close(DIFF);
 	if ($line =~ /^(\/.*)/) {
@@ -187,18 +187,18 @@ ref containing keys :
 =cut
 sub list_files
 {
-local $i = 0;
-local @rv;
-local $idprefix = substr($act->{'id'}, 0, 5);
-local $oldbase = "$ENV{'WEBMIN_VAR'}/files/$idprefix/$act->{'id'}";
-local $base = "$ENV{'WEBMIN_VAR'}/files/$act->{'id'}";
+my $i = 0;
+my @rv;
+my $idprefix = substr($act->{'id'}, 0, 5);
+my $oldbase = "$ENV{'WEBMIN_VAR'}/files/$idprefix/$act->{'id'}";
+my $base = "$ENV{'WEBMIN_VAR'}/files/$act->{'id'}";
 return ( ) if (!-d $base && !-d $oldbase);
-local @files = &expand_base_dir(-d $base ? $base : $oldbase);
+my @files = &expand_base_dir(-d $base ? $base : $oldbase);
 
 foreach my $file (@files) {
-        local ($type, $object, $data);
+        my ($type, $object, $data);
 	open(FILE, $file);
-        local $line = <FILE>;
+        my $line = <FILE>;
 	$line =~ s/\r|\n//g;
         while(<FILE>) { $data .= $_; }
         close(FILE);
@@ -228,7 +228,7 @@ Returns the text of the log annotation for this action, or undef if none.
 =cut
 sub get_annotation
 {
-local ($act) = @_;
+my ($act) = @_;
 return &read_file_contents("$ENV{'WEBMIN_VAR'}/annotations/$act->{'id'}");
 }
 
@@ -239,9 +239,9 @@ Updates the annotation for some action.
 =cut
 sub save_annotation
 {
-local ($act, $text) = @_;
-local $dir = "$ENV{'WEBMIN_VAR'}/annotations";
-local $file = "$dir/$act->{'id'}";
+my ($act, $text) = @_;
+my $dir = "$ENV{'WEBMIN_VAR'}/annotations";
+my $file = "$dir/$act->{'id'}";
 if ($text eq '') {
 	unlink($file);
 	}
@@ -260,8 +260,8 @@ Returns the text of the page that generated this action, or undef if none.
 =cut
 sub get_action_output
 {
-local ($act) = @_;
-local $idprefix = substr($act->{'id'}, 0, 5);
+my ($act) = @_;
+my $idprefix = substr($act->{'id'}, 0, 5);
 return &read_file_contents("$ENV{'WEBMIN_VAR'}/output/$idprefix/$act->{'id'}")
        ||
        &read_file_contents("$ENV{'WEBMIN_VAR'}/output/$act->{'id'}");
@@ -275,8 +275,8 @@ directory.
 =cut
 sub expand_base_dir
 {
-local ($base) = @_;
-local @files;
+my ($base) = @_;
+my @files;
 if (-d $base) {
 	# Find files in the dir
 	opendir(DIR, $base);
@@ -323,14 +323,14 @@ as returned by parse_logline.
 =cut
 sub get_action
 {
-local %index;
+my %index;
 &build_log_index(\%index);
-local $act;
+my $act;
 open(LOG, $webmin_logfile);
 local @idx = split(/\s+/, $index{$_[0]});
 seek(LOG, $idx[0], 0);
-local $line = <LOG>;
-local $act = &parse_logline($line);
+my $line = <LOG>;
+my $act = &parse_logline($line);
 close(LOG);
 return $act->{'id'} eq $_[0] ? $act : undef;
 }
@@ -343,10 +343,10 @@ For internal use only really.
 =cut
 sub build_log_index
 {
-local ($index) = @_;
-local $ifile = "$module_config_directory/logindex";
+my ($index) = @_;
+my $ifile = "$module_config_directory/logindex";
 dbmopen(%$index, $ifile, 0600);
-local @st = stat($webmin_logfile);
+my @st = stat($webmin_logfile);
 if ($st[9] > $index->{'lastchange'}) {
 	# Log has changed .. perhaps need to rebuild
 	open(LOG, $webmin_logfile);
@@ -384,7 +384,7 @@ for the action, it will be returned.
 =cut
 sub get_action_description
 {
-local ($act, $long) = @_;
+my ($act, $long) = @_;
 if (!defined($parser_cache{$act->{'module'}})) {
 	# Bring in module parser library for the first time
 	if (-r "$root_directory/$act->{'module'}/log_parser.pl") {
@@ -395,7 +395,7 @@ if (!defined($parser_cache{$act->{'module'}})) {
 		$parser_cache{$act->{'module'}} = 0;
 		}
 	}
-local $d;
+my $d;
 if ($parser_cache{$act->{'module'}}) {
 	# Module can return string
 	$d = &foreign_call($act->{'module'}, "parse_webmin_log",
