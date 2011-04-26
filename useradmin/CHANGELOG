@@ -64,3 +64,5 @@ On Linux systems with SElinux enabled, the context user_u:object_r:user_home_dir
 When deleting a user's personal group and user deletion in other modules is enabled, delete the group in other modules too.
 ---- Changes since 1.530 ----
 Added support for SHA512 format passwords.
+---- Changes since 1.540 ----
+Fixed an XSS vulnerability that can be triggered if an attacker has the ability to change the real name of a Unix user.
