@@ -515,11 +515,9 @@ while(<MTAB>) {
 			}
 		}
 
-	print STDERR "opts=$p[3]\n";
 	if ($p[3] =~ s/,bind,// || $p[3] =~ s/^bind,// ||
 	    $p[3] =~ s/,bind$// || $p[3] =~ s/^bind$//) {
 		# Special bind option, which indicates a loopback filesystem
-		print STDERR "detected bind\n";
 		$p[2] = "bind";
 		}
 
