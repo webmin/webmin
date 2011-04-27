@@ -36,7 +36,10 @@ if (!$pid) {
 	untie(*STDIN); open(STDIN, "</dev/null");
 	untie(*STDOUT); open(STDOUT, ">$logfile");
 	untie(*STDERR); open(STDERR, ">$logfile");
-	exec($python, "ajaxterm.py", "--port", $port, "--log");
+	$shell = &has_command("bash") ||
+		 &has_command("sh") || "/bin/sh";
+	exec($python, "ajaxterm.py", "--port", $port, "--log",
+	     $config{'autologin'} ? ("--command", $shell) : ( ));
 	exit(1);
 	}
 

@@ -3,7 +3,10 @@
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
-&init_config();
+
+# Since this script is run on every keypress, init_config is intentionally
+# not called to reduce startup time.
+#&init_config();
 
 # Parse out port
 $ENV{'PATH_INFO'} =~ /^\/(\d+)(.*)$/ ||
@@ -46,7 +49,7 @@ while($buf = &read_http_connection($con, 1024)) {
 &close_http_connection($con);
 
 # Touch status file to indicate it is still running
-$statusdir = $ENV{'WEBMIN_VAR'}."/".$module_name;
+$statusdir = $ENV{'WEBMIN_VAR'}."/ajaxterm";
 if (!-d $statusdir) {
 	&make_dir($statusdir, 0700);
 	}
