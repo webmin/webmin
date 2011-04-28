@@ -42,7 +42,7 @@ print "<p>\n";
 
 # Show records
 if (-r $temp) {
-	@recs = &read_zone_file($temp, $zone->{'name'}.".");
+	@recs = &read_zone_file($temp, $zone->{'name'}.".", undef, undef, 0, 1);
 	print &text('xfer_count', scalar(@recs)),"<p>\n";
 	}
 &unlink_file($temp);

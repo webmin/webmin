@@ -511,7 +511,7 @@ if ($v) {
 return &ui_table_row($_[0],
 	&ui_radio("$_[1]_def", $v ? 0 : 1, [ [ 1, $text{'default'} ],
 					     [ 0, $text{'listed'} ] ])."<br>".
-	&ui_textarea($_[1], join("\n", @av), 3, 15));
+	&ui_textarea($_[1], join("\n", @av), 3, 50));
 }
 
 # save_addr_match(name, &parent, indent)
@@ -3294,7 +3294,7 @@ foreach my $ip (@$masters) {
 	else {
 		my $out = &backquote_logged("$dig IN AXFR ".quotemeta($dom).
 					    " \@".quotemeta($ip)." 2>&1");
-		if ($?) {
+		if ($? || $out =~ /Transfer\s+failed/) {
 			$rv{$ip} = $out;
 			}
 		elsif (!$out) {
