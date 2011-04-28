@@ -2,28 +2,33 @@
 # rollback.cgi
 # Revert all changed config files, after asking for confirmation
 
+use strict;
+use warnings;
 require './webminlog-lib.pl';
+our (%text, %in, %access);
 &ReadParse();
-$act = &get_action($in{'id'});
+my $act = &get_action($in{'id'});
 
 if ($in{'annosave'}) {
 	# Just saving an annotation
 	$in{'anno'} =~ s/\r//g;
 	&save_annotation($act, $in{'anno'});
 	&redirect("view.cgi?id=$in{'id'}&search=".&urlize($in{'search'}));
+	exit;
 	}
 
 $access{'rollback'} ||  &error($text{'rollback_ecannot'});
 &can_user($act->{'user'}) || &error($text{'view_ecannot'});
 &can_mod($act->{'module'}) || &error($text{'view_ecannot'});
-%r = map { $_, 1 } split(/\0/, $in{'r'});
+my %r = map { $_, 1 } split(/\0/, $in{'r'});
 %r || &error($text{'rollback_enone'});
-@files = grep { $r{$_->{'file'}} } &list_files($act);
+my @files = grep { $r{$_->{'file'}} } &list_files($act);
 
 &ui_print_header(undef, $text{'rollback_title'}, "");
 if ($in{'confirm'}) {
 	# Do it!
-	foreach $f (@files) {
+	my %done;
+	foreach my $f (@files) {
 		next if ($done{$f->{'file'}});
 		if (-d $f->{'file'} || $f->{'type'} == 1) {
 			# Skip directory
@@ -46,9 +51,10 @@ if ($in{'confirm'}) {
 			# Remove link and create file
 			&lock_file($f->{'file'});
 			&unlink_file($f->{'file'});
-			&open_tempfile(FILE, ">$f->{'file'}");
-			&print_tempfile(FILE, $f->{'data'});
-			&close_tempfile(FILE);
+			my $fh;
+			&open_tempfile($fh, ">$f->{'file'}");
+			&print_tempfile($fh, $f->{'data'});
+			&close_tempfile($fh);
 			&unlock_file($f->{'file'});
 			print &text('rollback_madefile',
 				    "<tt>$f->{'file'}</tt>");
@@ -67,16 +73,17 @@ if ($in{'confirm'}) {
 			}
 		else {
 			# Replace file with old contents
-			&open_lock_tempfile(FILE, ">$f->{'file'}");
-			&print_tempfile(FILE, $f->{'data'});
-			&close_tempfile(FILE);
+			my $fh;
+			&open_lock_tempfile($fh, ">$f->{'file'}");
+			&print_tempfile($fh, $f->{'data'});
+			&close_tempfile($fh);
 			print &text('rollback_modfile',
 				    "<tt>$f->{'file'}</tt>");
 			}
 		print "<br>\n";
 		$done{$f->{'file'}}++;
 		}
-	%minfo = &get_module_info($act->{'module'});
+	my %minfo = &get_module_info($act->{'module'});
 	&webmin_log("rollback", undef, $in{'id'},
 		    { 'desc' => &get_action_description($act),
 		      'mdesc' => $minfo{'desc'} });
@@ -86,11 +93,13 @@ else {
 	print &ui_form_start("rollback.cgi");
 	print &ui_hidden("id", $in{'id'});
 	print &ui_hidden("search", $in{'search'});
-	foreach $r (keys %r) {
+	foreach my $r (keys %r) {
 		print &ui_hidden("r", $r);
 		}
 	print $text{'rollback_rusure'},"<p>\n";
-	foreach $f (@files) {
+	my %done;
+	my $count = 0;
+	foreach my $f (@files) {
 		next if ($done{$f->{'file'}});
 		print &ui_table_start("<tt>$f->{'file'}</tt>", "width=100%", 2);
 		print "<tr> <td colspan=2>";

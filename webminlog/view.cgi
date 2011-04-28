@@ -2,18 +2,21 @@
 # view.cgi
 # Show details of the action, including changed files
 
+use strict;
+use warnings;
 require './webminlog-lib.pl';
+our (%text, %in);
 &ReadParse();
 
 # find the log record to view
-$act = &get_action($in{'id'});
+my $act = &get_action($in{'id'});
 &can_user($act->{'user'}) || &error($text{'view_ecannot'});
 &can_mod($act->{'module'}) || &error($text{'view_ecannot'});
 
 # display info about the action
 &ui_print_header(undef, $text{'view_title'}, "");
 
-@files = &list_files($act);
+my @files = &list_files($act);
 print &ui_form_start("rollback.cgi");
 print &ui_hidden("id", $in{'id'});
 print &ui_hidden("search", $in{'search'});
@@ -25,7 +28,7 @@ print &ui_hidden_table_start(&text('view_header', $act->{'id'}),
 print &ui_table_row($text{'view_action'}."",
 		    &get_action_description($act, 1), 3);
 
-%minfo = $act->{'module'} eq 'global' ?
+my %minfo = $act->{'module'} eq 'global' ?
 		( 'desc' => $text{'search_global'} ) :
 		&get_module_info($act->{'module'});
 print &ui_table_row($text{'view_module'},
@@ -50,11 +53,7 @@ if ($act->{'sid'} ne '-') {
 		"<a href='search.cgi?sid=$act->{'sid'}&uall=1&mall=1&tall=1&fall=1&return=".&urlize($in{'return'})."&returndesc=".&urlize($in{'returndesc'})."'>$act->{'sid'}</a>");
 	}
 
-@tm = localtime($act->{'time'});
-print &ui_table_row($text{'view_time'},
-		    sprintf("%2.2d/%s/%4.4d %2.2d:%2.2d:%2.2d",
-			$tm[3], $text{"smonth_".($tm[4]+1)}, $tm[5]+1900,
-			$tm[2], $tm[1], $tm[0]));
+print &ui_table_row($text{'view_time'}, &make_date($act->{'time'}));
 
 if ($act->{'webmin'}) {
 	print &ui_table_row($text{'view_host'},
@@ -63,7 +62,7 @@ if ($act->{'webmin'}) {
 print &ui_hidden_table_end("main");
 
 # Annotations for this log entry
-$text = &get_annotation($act);
+my $text = &get_annotation($act);
 print &ui_hidden_table_start($text{'view_anno'}, "width=100%", 1, "anno",
 			     $text ? 1 : 0);
 print &ui_table_row(undef,
@@ -73,7 +72,7 @@ print &ui_table_row(undef,
 print &ui_hidden_table_end("anno");
 
 # Page output, if any
-$output = &get_action_output($act);
+my $output = &get_action_output($act);
 if ($output && &foreign_check("mailboxes")) {
 	&foreign_require("mailboxes");
 	$output = &mailboxes::filter_javascript($output);
@@ -87,16 +86,16 @@ if ($output && &foreign_check("mailboxes")) {
 
 # Raw log data, hidden by default
 print &ui_hidden_table_start($text{'view_raw'}, "width=100%", 1, "raw", 0);
-@tds = ( "width=20% ");
-$rtable = &ui_columns_start([ $text{'view_rawname'}, $text{'view_rawvalue'} ],
-			    100, 0, \@tds);
-foreach $k (keys %$act) {
+my @tds = ( "width=20% ");
+my $rtable = &ui_columns_start(
+	[ $text{'view_rawname'}, $text{'view_rawvalue'} ], 100, 0, \@tds);
+foreach my $k (keys %$act) {
 	next if ($k eq 'param');
 	$rtable .= &ui_columns_row([
 		"<b>".&html_escape($k)."</b>",
 		&html_escape($act->{$k}) ], \@tds);
 	}
-foreach $k (keys %{$act->{'param'}}) {
+foreach my $k (keys %{$act->{'param'}}) {
 	$rtable .= &ui_columns_row([
 		&html_escape($k),
 		&html_escape(join("\n", split(/\0/, $act->{'param'}->{$k}))) ],
@@ -107,10 +106,11 @@ print &ui_table_row(undef, $rtable, 2);
 print &ui_hidden_table_end("raw");
 
 # display modified and commands run files
-$rbcount = 0;
-$i = 0;
-$fhtml = "";
-foreach $d (&list_diffs($act)) {
+my $rbcount = 0;
+my $i = 0;
+my $fhtml = "";
+my $anydiffs = 0;
+foreach my $d (&list_diffs($act)) {
 	my $t = $text{"view_type_".$d->{'type'}};
 	my $rb;
 	if ($d->{'type'} eq 'create' || $d->{'type'} eq 'modify' ||

@@ -11,11 +11,15 @@ This module contains functions for parsing the Webmin actions log file.
 =cut
 
 BEGIN { push(@INC, ".."); };
+use strict;
+use warnings;
 use WebminCore;
 &init_config();
-%access = &get_module_acl();
-%access_mods = map { $_, 1 } split(/\s+/, $access{'mods'});
-%access_users = map { $_, 1 } split(/\s+/, $access{'users'});
+our %access = &get_module_acl();
+our %access_mods = map { $_, 1 } split(/\s+/, $access{'mods'});
+our %access_users = map { $_, 1 } split(/\s+/, $access{'users'});
+our %parser_cache;
+our (%text, $module_config_directory, $root_directory);
 
 =head2 list_webmin_log([only-user], [only-module], [start-time, end-time])
 
@@ -106,7 +110,7 @@ if ($_[0] =~ /^(\d+)\.(\S+)\s+\[.*\]\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+"
 			}
 		$p = $3;
 		}
-	foreach $k (keys %param) {
+	foreach my $k (keys %param) {
 		$param{$k} =~ s/%(..)/pack("c",hex($1))/ge;
 		}
 	$rv->{'param'} = \%param;
@@ -137,6 +141,7 @@ hash ref with the keys :
 =cut
 sub list_diffs
 {
+my ($act) = @_;
 my $i = 0;
 my @rv;
 my $idprefix = substr($act->{'id'}, 0, 5);
@@ -188,6 +193,7 @@ ref containing keys :
 =cut
 sub list_files
 {
+my ($act) = @_;
 my $i = 0;
 my @rv;
 my $idprefix = substr($act->{'id'}, 0, 5);
@@ -248,9 +254,10 @@ if ($text eq '') {
 	}
 else {
 	&make_dir($dir, 0700) if (!-d $dir);
-	&open_tempfile(ANNO, ">$file");
-	&print_tempfile(ANNO, $text);
-	&close_tempfile(ANNO);
+	my $fh;
+	&open_tempfile($fh, ">$file");
+	&print_tempfile($fh, $text);
+	&close_tempfile($fh);
 	}
 }
 
@@ -287,7 +294,7 @@ if (-d $base) {
 	}
 else {
 	# Files are those that start with id
-	$i = 0;
+	my $i = 0;
 	while(-r "$base.$i") {
 		push(@files, "$base.$i");
 		$i++;
@@ -327,7 +334,7 @@ sub get_action
 my %index;
 &build_log_index(\%index);
 open(LOG, $webmin_logfile);
-local @idx = split(/\s+/, $index{$_[0]});
+my @idx = split(/\s+/, $index{$_[0]});
 seek(LOG, $idx[0], 0);
 my $line = <LOG>;
 my $act = &parse_logline($line);
@@ -359,6 +366,7 @@ if ($st[9] > $index->{'lastchange'}) {
 		%$index = ( 'lastpos' => 0 );
 		}
 	while(<LOG>) {
+		my $act;
 		if ($act = &parse_logline($_)) {
 			$index->{$act->{'id'}} = $index->{'lastpos'}." ".
 						 $act->{'time'}." ".
