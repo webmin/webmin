@@ -36,7 +36,7 @@ Tao Linux			$1	redhat-linux	10.0	`cat /etc/redhat-release 2>/dev/null` =~ /Tao\s
 CentOS Linux			$1	redhat-linux	10.0	`cat /etc/centos-release /etc/redhat-release 2>/dev/null` =~ /CentOS\s+release\s+(\S+)/i && $1 < 4
 CentOS Linux			$1	redhat-linux	$1+8.0	`cat /etc/centos-release /etc/redhat-release 2>/dev/null` =~ /CentOS\s+release\s+(\S+)/i && $1 >= 4
 Scientific Linux		$1	redhat-linux	10.0	`cat /etc/redhat-release 2>/dev/null` =~ /Scientific\s+Linux.*\s+release\s+(\S+)/i && $1 < 4
-Scientific Linux		$1	redhat-linux	12.0	`cat /etc/redhat-release 2>/dev/null` =~ /Scientific\s+Linux.*\s+release\s+(\S+)/i && $1 >= 4 && $1 < 6
+Scientific Linux		$1	redhat-linux	13.0	`cat /etc/redhat-release 2>/dev/null` =~ /Scientific\s+Linux.*\s+release\s+(\S+)/i && $1 >= 4 && $1 < 6
 Scientific Linux		$1	redhat-linux	14.0	`cat /etc/redhat-release 2>/dev/null` =~ /Scientific\s+Linux.*\s+release\s+(\S+)/i && $1 >= 6
 Gralinux			$1	redhat-linux	$2+8.0	`cat /etc/redhtat-release 2>/dev/null` =~ /Gralinux\s+(ES|AS|WS)\s+release\s+(\d+)/i
 NeoShine Linux			$1	redhat-linux	$1+10	`cat /etc/neoshine-release 2>/dev/null` =~ /NeoShine\s+Linux.*release\s+(\d+)/i
