@@ -17,13 +17,47 @@ for RPC operations. Example code :
 =cut
 
 BEGIN { push(@INC, ".."); };
+use strict;
+use warnings;
 use WebminCore;
 use Socket;
+our (%text, %config, %gconfig, $module_config_directory);
 &init_config();
-%access = &get_module_acl();
-$cron_cmd = "$module_config_directory/auto.pl";
 
-@cluster_modules = ( "cluster-software" );
+our %access = &get_module_acl();
+our $cron_cmd = "$module_config_directory/auto.pl";
+our @cluster_modules = ( "cluster-software" );
+
+our @server_types = (
+		  # Linux sub-types, which have to come first
+		  [ 'asianux', 'Asianux', undef, 'Asianux' ],
+		  [ 'centos', 'CentOS Linux', undef, 'CentOS' ],
+		  [ 'ubuntu', 'Ubuntu Linux', undef, 'Ubuntu' ],
+		  [ 'fedora', 'Fedora Linux', undef, 'Fedora' ],
+		  [ 'redflag', 'Red Flag Linux', undef, 'RedFlag' ],
+
+		  # Linux variants with a type code
+		  [ 'cobalt', 'Cobalt Linux', 'cobalt-linux' ],
+		  [ 'debian', 'Debian Linux', 'debian-linux' ],
+		  [ 'caldera', 'OpenLinux', 'open-linux' ],
+		  [ 'mandrake', 'Mandrake Linux', 'mandrake-linux' ],
+		  [ 'msc', 'MSC.Linux', 'msc-linux' ],
+		  [ 'redhat', 'Redhat Linux', 'redhat-linux' ],
+		  [ 'slackware', 'Slackware Linux', 'slackware-linux' ],
+		  [ 'suse', 'SuSE Linux', 'suse-linux' ],
+		  [ 'turbo', 'TurboLinux', 'turbo-linux' ],
+		  [ 'linux', 'Linux', '.*-linux' ],
+
+		  # Other operating systems
+		  [ 'freebsd', 'FreeBSD', 'freebsd' ],
+		  [ 'solaris', 'Solaris', 'solaris' ],
+		  [ 'hpux', 'HP/UX', 'hpux' ],
+		  [ 'sco', 'SCO', '(openserver|unixware)' ],
+		  [ 'mac', 'Mac OS X', 'macos' ],
+		  [ 'irix', 'IRIX', 'irix' ],
+		  [ 'windows', 'Windows', 'windows' ],
+		  [ 'unknown', $text{'lib_other'} ],
+		);
 
 =head2 list_servers
 
@@ -55,7 +89,7 @@ following keys :
 =cut
 sub list_servers
 {
-local ($f, @rv);
+my ($f, @rv);
 opendir(DIR, $module_config_directory);
 while($f = readdir(DIR)) {
 	if ($f =~ /^(\S+)\.serv$/) {
@@ -74,7 +108,7 @@ The format is the same as list_servers.
 =cut
 sub list_servers_sorted
 {
-local @servers = &list_servers();
+my @servers = &list_servers();
 if ($_[0]) {
 	@servers = grep { &can_use_server($_) } @servers;
 	}
@@ -106,7 +140,7 @@ format as list_serves.
 =cut
 sub get_server
 {
-local $serv;
+my $serv;
 $serv->{'id'} = $_[0];
 &read_file("$module_config_directory/$_[0].serv", $serv) || return undef;
 $serv->{'file'} = "$module_config_directory/$_[0].serv";
@@ -151,7 +185,7 @@ by the given hash ref.
 sub can_use_server
 {
 return 1 if ($access{'servers'} eq '*');
-foreach $s (split(/\s+/, $access{'servers'})) {
+foreach my $s (split(/\s+/, $access{'servers'})) {
 	return 1 if ($_[0]->{'host'} eq $s ||
 		     $_[0]->{'id'} eq $s);
 	}
@@ -170,12 +204,12 @@ which is a hash ref with the keys :
 =cut
 sub list_all_groups
 {
-local (@rv, %gmap, $s, $f, $gn);
+my (@rv, %gmap, $s, $f, $gn);
 
 # Add webmin servers groups
 foreach $s ($_[0] ? @{$_[0]} : &list_servers()) {
 	foreach $gn (split(/\t+/, $s->{'group'})) {
-		local $grp = $gmap{$gn};
+		my $grp = $gmap{$gn};
 		if (!$grp) {
 			$gmap{$gn} = $grp = { 'name' => $gn, 'type' => 0 };
 			push(@rv, $grp);
@@ -188,7 +222,7 @@ foreach $s ($_[0] ? @{$_[0]} : &list_servers()) {
 opendir(DIR, $config{'groups_dir'});
 foreach $f (readdir(DIR)) {
 	next if ($f eq '.' || $f eq '..');
-	local $grp = $gmap{$f};
+	my $grp = $gmap{$f};
 	if (!$grp) {
 		$gmap{$f} = $grp = { 'name' => $f, 'type' => 1 };
 		push(@rv, $grp);
@@ -211,10 +245,10 @@ closedir(DIR);
 
 # Fix up MSC groups that include other groups
 while(1) {
-	local ($grp, $any);
+	my ($grp, $any);
 	foreach $grp (@rv) {
-		local @mems;
-		foreach $m (@{$grp->{'members'}}) {
+		my @mems;
+		foreach my $m (@{$grp->{'members'}}) {
 			if ($m =~ /^:(.*)$/) {
 				push(@mems, @{$gmap{$1}->{'members'}});
 				$any++;
@@ -238,7 +272,7 @@ For internal use only.
 =cut
 sub logged_in
 {
-local $id = $_[0]->{'id'};
+my $id = $_[0]->{'id'};
 if ($ENV{'HTTP_COOKIE'} =~ /$id=([A-Za-z0-9=]+)/) {
 	return split(/:/, &decode_base64("$1"));
 	}
@@ -247,9 +281,9 @@ else {
 	}
 }
 
-=head2 @server_types
+=head2 get_server_types()
 
-This array lists operating system types known to this module. Each element
+Returns a list of operating system types known to this module. Each element
 is an array ref with the elements :
 
 =item Internal OS code, such as 'centos'.
@@ -261,36 +295,10 @@ is an array ref with the elements :
 =item Webmin OS name for this type.
 
 =cut
-@server_types = (
-		  # Linux sub-types, which have to come first
-		  [ 'asianux', 'Asianux', undef, 'Asianux' ],
-		  [ 'centos', 'CentOS Linux', undef, 'CentOS' ],
-		  [ 'ubuntu', 'Ubuntu Linux', undef, 'Ubuntu' ],
-		  [ 'fedora', 'Fedora Linux', undef, 'Fedora' ],
-		  [ 'redflag', 'Red Flag Linux', undef, 'RedFlag' ],
-
-		  # Linux variants with a type code
-		  [ 'cobalt', 'Cobalt Linux', 'cobalt-linux' ],
-		  [ 'debian', 'Debian Linux', 'debian-linux' ],
-		  [ 'caldera', 'OpenLinux', 'open-linux' ],
-		  [ 'mandrake', 'Mandrake Linux', 'mandrake-linux' ],
-		  [ 'msc', 'MSC.Linux', 'msc-linux' ],
-		  [ 'redhat', 'Redhat Linux', 'redhat-linux' ],
-		  [ 'slackware', 'Slackware Linux', 'slackware-linux' ],
-		  [ 'suse', 'SuSE Linux', 'suse-linux' ],
-		  [ 'turbo', 'TurboLinux', 'turbo-linux' ],
-		  [ 'linux', 'Linux', '.*-linux' ],
-
-		  # Other operating systems
-		  [ 'freebsd', 'FreeBSD', 'freebsd' ],
-		  [ 'solaris', 'Solaris', 'solaris' ],
-		  [ 'hpux', 'HP/UX', 'hpux' ],
-		  [ 'sco', 'SCO', '(openserver|unixware)' ],
-		  [ 'mac', 'Mac OS X', 'macos' ],
-		  [ 'irix', 'IRIX', 'irix' ],
-		  [ 'windows', 'Windows', 'windows' ],
-		  [ 'unknown', $text{'lib_other'} ],
-		);
+sub get_server_types
+{
+return @server_types;
+}
 
 =head2 this_server
 
@@ -299,7 +307,7 @@ Returns a fake servers-list entry for this server.
 =cut
 sub this_server
 {
-local $type = 'unknown';
+my $type = 'unknown';
 foreach my $s (@server_types) {
 	if ($s->[2] && $gconfig{'os_type'} =~ /^$s->[2]$/ ||
 	    $s->[3] && $gconfig{'real_os_type'} =~ /$s->[3]/) {
@@ -318,13 +326,13 @@ the hostname. Returns undef if this cannot be computed.
 =cut
 sub get_my_address
 {
-local $myip;
+my $myip;
 if (&foreign_check("net")) {
 	# Try to get ethernet interface
 	&foreign_require("net", "net-lib.pl");
-	local @act = &net::active_interfaces();
-	local @ifaces = grep { &net::iface_type($_->{'fullname'}) =~ /ether/i }
-			      @act;
+	my @act = &net::active_interfaces();
+	my @ifaces = grep { &net::iface_type($_->{'fullname'}) =~ /ether/i }
+			  @act;
 	@ifaces = ( $act[0] ) if (!@ifaces && @act);
 	if (@ifaces) {
 		return wantarray ? ( map { $_->{'address'} } @ifaces )
@@ -347,8 +355,8 @@ octets to 255.
 =cut
 sub address_to_broadcast
 {
-local $end = $_[1] ? "0" : "255";
-local @ip = split(/\./, $_[0]);
+my $end = $_[1] ? "0" : "255";
+my @ip = split(/\./, $_[0]);
 return $ip[0] >= 192 ? "$ip[0].$ip[1].$ip[2].$end" :
        $ip[0] >= 128 ? "$ip[0].$ip[1].$end.$end" :
 		       "$ip[0].$end.$end.$end";
@@ -368,7 +376,7 @@ eval {
 	&remote_foreign_require($_[0], "webmin", "webmin-lib.pl");
 	alarm(0);
 	};
-local $rv = $@;
+my $rv = $@;
 $rv =~ s/\s+at\s+(\S+)\s+line\s+\d+.*$//;
 return $rv;
 }
@@ -381,7 +389,7 @@ Returns the cron job hash ref for the regular scheduled new servers check.
 sub find_cron_job
 {
 &foreign_require("cron", "cron-lib.pl");
-local ($job) = grep { $_->{'command'} eq $cron_cmd } &cron::list_cron_jobs();
+my ($job) = grep { $_->{'command'} eq $cron_cmd } &cron::list_cron_jobs();
 return $job;
 }
 
@@ -393,9 +401,9 @@ Mainly for internal use.
 =cut
 sub find_servers
 {
-local ($broad, $limit, $noprint, $defuser, $defpass, $deftype, $mods, $self,
-       $port) = @_;
-local (@found, @already, @foundme, %addmods);
+my ($broad, $limit, $noprint, $defuser, $defpass, $deftype, $mods, $self,
+    $port) = @_;
+my (@found, @already, @foundme, %addmods);
 
 my %server;
 foreach my $s (&list_servers()) {
@@ -403,7 +411,7 @@ foreach my $s (&list_servers()) {
 	}
 
 # create the broadcast socket
-local %miniserv;
+my %miniserv;
 &get_miniserv_config(\%miniserv);
 $port ||= $config{'listen'} || $miniserv{'listen'} || 10000;
 socket(BROAD, PF_INET, SOCK_DGRAM, getprotobyname("udp")) ||
@@ -421,7 +429,7 @@ if ($myip && !$self) {
 my %me = map { $_, 1 } &get_my_address();
 
 # Ignore configured IPs
-local %skip;
+my %skip;
 foreach my $skip (split(/\t+/, $config{'skipips'})) {
 	$skip{&to_ipaddress($skip)} = 1;
 	}
@@ -429,7 +437,7 @@ foreach my $skip (split(/\t+/, $config{'skipips'})) {
 # Ignore our own IP addresses
 if (&foreign_check("net")) {
 	&foreign_require("net", "net-lib.pl");
-	local @active = &net::active_interfaces();
+	my @active = &net::active_interfaces();
 	foreach my $a (@active) {
 		if ($a->{'address'} && (!$self || $a->{'virtual'} ne '')) {
 			$myaddr{inet_aton($a->{'address'})}++;
@@ -438,7 +446,7 @@ if (&foreign_check("net")) {
 
 	# Adds IPs of interfaces to skip
 	foreach my $skip (split(/\s+/, $config{'skipifaces'})) {
-		local ($iface) = grep { $_->{'fullname'} eq $skip } @active;
+		my ($iface) = grep { $_->{'fullname'} eq $skip } @active;
 		if ($iface) {
 			$skip{$iface->{'address'}} = 1;
 			}
@@ -446,8 +454,7 @@ if (&foreign_check("net")) {
 	}
 
 # send out the packets
-@broad = &unique(@broad);
-foreach my $b (@broad) {
+foreach my $b (&unique(@$broad)) {
 	send(BROAD, "webmin", 0, pack_sockaddr_in($port, inet_aton($b)));
 	}
 
@@ -456,19 +463,19 @@ my $tmstart = time();
 my $found;
 my %already;
 while(time()-$tmstart < $limit) {
-	local $rin;
+	my $rin;
 	vec($rin, fileno(BROAD), 1) = 1;
 	if (select($rin, undef, undef, 1)) {
-		local $buf;
-		local $from = recv(BROAD, $buf, 1024, 0);
+		my $buf;
+		my $from = recv(BROAD, $buf, 1024, 0);
 		next if (!$from);
-		local ($fromport, $fromaddr) = unpack_sockaddr_in($from);
-		local $fromip = inet_ntoa($fromaddr);
+		my ($fromport, $fromaddr) = unpack_sockaddr_in($from);
+		my $fromip = inet_ntoa($fromaddr);
 		if ($fromip !~ /\.(255|0)$/ && !$already{$fromip}++) {
 			# Got a response .. parse it
-			local ($host, $port, $ssl, $realhost) =split(/:/, $buf);
+			my ($host, $port, $ssl, $realhost) =split(/:/, $buf);
 			if ($config{'resolve'}) {
-				local $byname = gethostbyaddr($fromaddr,
+				my $byname = gethostbyaddr($fromaddr,
 							      AF_INET);
 				$host = !$host && $byname ? $byname :
 					!$host && !$byname ? $fromip :
@@ -479,11 +486,11 @@ while(time()-$tmstart < $limit) {
 				}
 			if ($host eq "0.0.0.0") {
 				# Remote doesn't know it's IP or name
-				local $byname = gethostbyaddr($fromaddr,
+				my $byname = gethostbyaddr($fromaddr,
 							      AF_INET);
 				$host = $byname || $fromip;
 				}
-			local $url = ($ssl ? 'https' : 'http').
+			my $url = ($ssl ? 'https' : 'http').
 				     "://$host:$port/";
 
 			# Hack for OC to use real hostname if we found
@@ -517,8 +524,8 @@ while(time()-$tmstart < $limit) {
 				}
 			else {
 				# Found a new one!
-				local $fast = $config{'deffast'} == 1 ? 1 : 0;
-				local $serv = {	'id' => $id++,
+				my $fast = $config{'deffast'} == 1 ? 1 : 0;
+				my $serv = {	'id' => $id++,
 						'ssl' => $ssl,
 						'type' => $deftype || 'unknown',
 					 	'fast' => $fast,
@@ -529,7 +536,7 @@ while(time()-$tmstart < $limit) {
 						'pass' => $defpass, };
 				&save_server($serv);
 
-				local $err;
+				my $err;
 				if ($defuser) {
 					# See if the login was OK
 					$err = &test_server($host);
@@ -550,7 +557,7 @@ while(time()-$tmstart < $limit) {
 					# Add in all the cluster modules too
 					foreach my $m (@$mods) {
 						&foreign_require($m, "$m-lib.pl");
-						($ok, $out) = &foreign_call($m, "add_managed_host", $serv);
+						my ($ok, $out) = &foreign_call($m, "add_managed_host", $serv);
 						push(@{$addmods{$serv->{'id'}}}, [ $m, $ok, $out ]);
 						}
 					}
@@ -562,7 +569,7 @@ while(time()-$tmstart < $limit) {
 						&remote_foreign_require(
 							$serv, "servers",
 							"servers-lib.pl");
-						local $rt =
+						my $rt =
 							&remote_foreign_call(
 							$serv, "servers",
 							"this_server");

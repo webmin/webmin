@@ -1,12 +1,13 @@
 
+use strict;
+use warnings;
 do 'servers-lib.pl';
 
 # backup_config_files()
 # Returns files and directories that can be backed up
 sub backup_config_files
 {
-local @rv = map { $_->{'file'} } &list_servers();
-return @rv;
+return map { $_->{'file'} } &list_servers();
 }
 
 # pre_backup(&files)

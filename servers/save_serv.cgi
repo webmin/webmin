@@ -2,11 +2,15 @@
 # save_serv.cgi
 # Save or delete a server
 
+use strict;
+use warnings;
 require './servers-lib.pl';
+our (%in, %access, %text);
 &ReadParse();
 $access{'edit'} || &error($text{'edit_ecannot'});
 &error_setup($text{'save_err'});
 
+my $serv;
 if ($in{'id'}) {
 	$serv = &get_server($in{'id'});
 	&can_use_server($serv) || &error($text{'edit_ecannot'});
@@ -38,18 +42,20 @@ else {
 		}
 	if ($in{'fast'} == 2 && $in{'mode'} == 1) {
 		# Does the server have fastrpc.cgi ?
-		local $con = &make_http_connection($in{'host'}, $in{'port'},
+		my $con = &make_http_connection($in{'host'}, $in{'port'},
 					   $in{'ssl'}, "GET", "/fastrpc.cgi");
 		$in{'fast'} = 0;
 		if (ref($con)) {
-			&write_http_connection($con, "Host: $s->{'host'}\r\n");
-			&write_http_connection($con, "User-agent: Webmin\r\n");
-			$auth = &encode_base64("$in{'wuser'}:$in{'wpass'}");
+			&write_http_connection($con,
+				        "Host: $serv->{'host'}\r\n");
+			&write_http_connection($con,
+					"User-agent: Webmin\r\n");
+			my $auth = &encode_base64("$in{'wuser'}:$in{'wpass'}");
 			$auth =~ s/\n//g;
 			&write_http_connection($con,
 					"Authorization: basic $auth\r\n");
 			&write_http_connection($con, "\r\n");
-			local $line = &read_http_connection($con);
+			my $line = &read_http_connection($con);
 			if ($line =~ /^HTTP\/1\..\s+401\s+/) {
 				&error($text{'save_elogin'});
 				}
@@ -61,7 +67,7 @@ else {
 					} while($line);
 				$line = &read_http_connection($con);
 				if ($line =~ /^1\s+(\S+)\s+(\S+)/) {
-					local ($port = $1, $sid = $2, $error);
+					my ($port, $sid, $error) = ($1, $2);
 					&open_socket($in{'host'}, $port,
 						     $sid, \$error);
 					if (!$error) {
@@ -78,7 +84,7 @@ else {
 		}
 
 	# save the server
-	@groups = split(/\0/, $in{'group'});
+	my @groups = split(/\0/, $in{'group'});
 	if ($in{'newgroup'}) {
 		$in{'newgroup'} =~ /^\S+$/ || &error($text{'save_egroup2'});
 		push(@groups, $in{'newgroup'});

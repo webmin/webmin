@@ -7,11 +7,14 @@ if ($ENV{'PATH_INFO'} =~ /^\/(\d+)\/([a-zA-Z0-9\-\/]+)\.(jar|class|gif|png)$/) {
 	# as Java sometimes doesn't provide these
 	$trust_unknown_referers = 1;
 	}
+use strict;
+use warnings;
 require './servers-lib.pl';
+our (%text, %gconfig, %access, $module_name, %tconfig);
 $ENV{'PATH_INFO'} =~ /^\/(\d+)(.*)$/ ||
 	&error("Bad PATH_INFO : $ENV{'PATH_INFO'}");
-$id = $1;
-$path = $2 ? &urlize("$2") : '/';
+my $id = $1;
+my $path = $2 ? &urlize("$2") : '/';
 $path =~ s/^%2F/\//;
 if ($ENV{'QUERY_STRING'}) {
 	$path .= '?'.$ENV{'QUERY_STRING'};
@@ -19,14 +22,16 @@ if ($ENV{'QUERY_STRING'}) {
 elsif (@ARGV) {
 	$path .= '?'.join('+', @ARGV);
 	}
-$s = &get_server($id);
+my $s = &get_server($id);
 &can_use_server($s) || &error($text{'link_ecannot'});
 $access{'links'} || &error($text{'link_ecannot'});
-$url = "$gconfig{'webprefix'}/$module_name/link.cgi/$s->{'id'}";
+my $url = "$gconfig{'webprefix'}/$module_name/link.cgi/$s->{'id'}";
 $| = 1;
-$meth = $ENV{'REQUEST_METHOD'};
+my $meth = $ENV{'REQUEST_METHOD'};
+my %miniserv;
 &get_miniserv_config(\%miniserv);
 
+my ($user, $pass);
 if ($s->{'autouser'}) {
 	# Login is variable .. check if we have it yet
 	if ($ENV{'HTTP_COOKIE'} =~ /$id=(\S+)/) {
@@ -58,7 +63,7 @@ if ($s->{'autouser'}) {
 	}
 elsif ($s->{'sameuser'}) {
 	# Login comes from this server
-	$user = $remote_user;
+	$user = $main::remote_user;
 	defined($main::remote_pass) || &error($text{'login_esame'});
 	$pass = $main::remote_pass;
 	}
@@ -69,16 +74,17 @@ else {
 	}
 
 # Connect to the server
-$con = &make_http_connection($s->{'ip'} || $s->{'host'}, $s->{'port'},
-			     $s->{'ssl'}, $meth, $path);
+my $con = &make_http_connection($s->{'ip'} || $s->{'host'}, $s->{'port'},
+			        $s->{'ssl'}, $meth, $path);
 &error($con) if (!ref($con));
 
 # Send request headers
 &write_http_connection($con, "Host: $s->{'host'}\r\n");
 &write_http_connection($con, "User-agent: Webmin\r\n");
-$auth = &encode_base64("$user:$pass");
+my $auth = &encode_base64("$user:$pass");
 $auth =~ s/\n//g;
 &write_http_connection($con, "Authorization: basic $auth\r\n");
+my ($http_host, $http_port);
 if ($ENV{'HTTP_HOST'} =~ /^(\S+):(\d+)$/) {
 	# Browser supplies port
 	$http_host = $1;
@@ -99,19 +105,22 @@ else {
 			$ENV{'HTTPS'} eq "ON" ? "https" : "http",
 			$http_host, $http_port,
 			$tconfig{'inframe'} ? "" : "$module_name/"));
-$cl = $ENV{'CONTENT_LENGTH'};
+my $cl = $ENV{'CONTENT_LENGTH'};
 &write_http_connection($con, "Content-length: $cl\r\n") if ($cl);
 &write_http_connection($con, "Content-type: $ENV{'CONTENT_TYPE'}\r\n")
 	if ($ENV{'CONTENT_TYPE'});
 &write_http_connection($con, "\r\n");
+my $post;
 if ($cl) {
-	&read_fully(STDIN, \$post, $cl);
+	&read_fully(\*STDIN, \$post, $cl);
 	&write_http_connection($con, $post);
 	}
 
 # read back the headers
-$dummy = &read_http_connection($con);
+my $dummy = &read_http_connection($con);
+my (%header, $headers);
 while(1) {
+	my $headline;
 	($headline = &read_http_connection($con)) =~ s/\r|\n//g;
 	last if (!$headline);
 	$headline =~ /^(\S+):\s+(.*)$/ || &error("Bad header");
@@ -119,7 +128,7 @@ while(1) {
 	$headers .= $headline."\n";
 	}
 
-$defport = $s->{'ssl'} ? 443 : 80;
+my $defport = $s->{'ssl'} ? 443 : 80;
 if ($header{'location'} =~ /^(http|https):\/\/$s->{'host'}:$s->{'port'}(.*)$/ ||
     $header{'location'} =~ /^(http|https):\/\/$s->{'host'}(.*)/ &&
     $s->{'port'} == $defport) {
@@ -175,7 +184,7 @@ elsif ($header{'content-type'} =~ /text\/css/ && !$header{'x-no-links'}) {
 	}
 else {
 	# Just pass through
-	while($buf = &read_http_connection($con, 1024)) {
+	while(my $buf = &read_http_connection($con, 1024)) {
 		print $buf;
 		}
 	}

@@ -2,14 +2,18 @@
 # Show a form for finding Webmin servers
 # Thanks to OpenCountry for sponsoring this feature
 
+use strict;
+use warnings;
 require './servers-lib.pl';
+our (%text, %config, %access, @cluster_modules);
 $access{'auto'} || &error($text{'auto_ecannot'});
 &ui_print_header(undef, $text{'auto_title'}, "");
 
 print &ui_form_start("save_auto.cgi");
 print &ui_table_start($text{'auto_header'}, undef, 2);
 
-$job = &find_cron_job();
+my $job = &find_cron_job();
+my $mins;
 if ($job && $job->{'mins'} =~ /^\*\/(\d+)$/) {
 	$mins = $1;
 	}
@@ -24,9 +28,9 @@ print &ui_table_row($text{'auto_sched'},
 	      [ [ 0, $text{'no'} ],
 		[ 1, &text('auto_sched1', &ui_textbox("mins", $mins, 4)) ] ]));
 
-@nets = split(/\s+/, $config{'auto_net'});
-$nmode = !$config{'auto_net'} ? 1 :
-	 &check_ipaddress($nets[0]) ? 0 : 2;
+my @nets = split(/\s+/, $config{'auto_net'});
+my $nmode = !$config{'auto_net'} ? 1 :
+	    &check_ipaddress($nets[0]) ? 0 : 2;
 print &ui_table_row($text{'auto_net'},
     &ui_radio("net_def", $nmode,
 	      [ [ 1, $text{'auto_auto'} ],
@@ -41,7 +45,7 @@ print &ui_table_row($text{'auto_pass'},
 
 print &ui_table_row($text{'auto_type'},
 	    &ui_select("type", $config{'auto_type'} || "unknown",
-		       [ @server_types ]));
+		       [ &get_server_types() ]));
 
 print &ui_table_row($text{'auto_email'},
     &ui_opt_textbox("email", $config{'auto_email'}, 20, $text{'auto_none'}));
@@ -55,7 +59,7 @@ print &ui_table_row($text{'auto_remove'},
 print &ui_table_row($text{'auto_findself'},
 	    &ui_yesno_radio("self", int($config{'auto_self'})));
 
-foreach $m (@cluster_modules) {
+foreach my $m (@cluster_modules) {
 	if (&foreign_available($m)) {
 		print &ui_table_row($text{'auto_'.$m},
 			&ui_yesno_radio($m, int($config{'auto_'.$m})));

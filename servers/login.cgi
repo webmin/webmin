@@ -2,9 +2,12 @@
 # login.cgi
 # Store the username and password for a server in a cookie
 
+use strict;
+use warnings;
 require './servers-lib.pl';
+our (%in);
 &ReadParse();
-$enc = &encode_base64($in{'user'}.":".$in{'pass'});
+my $enc = &encode_base64($in{'user'}.":".$in{'pass'});
 $enc =~ s/\r|\n//g;
 print "Set-Cookie: $in{'id'}=$enc; path=/";
 if (uc($ENV{'HTTPS'}) eq 'ON') {

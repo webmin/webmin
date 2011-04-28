@@ -2,12 +2,15 @@
 # Save scheduled finding of servers
 # Thanks to OpenCountry for sponsoring this feature
 
+use strict;
+use warnings;
 require './servers-lib.pl';
+our (%in, %text, $module_name, $cron_cmd, @cluster_modules, %config, %access);
 $access{'auto'} || &error($text{'auto_ecannot'});
 &ReadParse();
 &error_setup($text{'auto_err'});
 
-$job = &find_cron_job();
+my $job = &find_cron_job();
 
 # Validate inputs
 if ($in{'sched'}) {
@@ -16,8 +19,8 @@ if ($in{'sched'}) {
 		$config{'auto_net'} = undef;
 		}
 	elsif ($in{'net_def'} == 0) {
-		@nets = split(/\s+/, $in{'net'});
-		foreach $n (@nets) {
+		my @nets = split(/\s+/, $in{'net'});
+		foreach my $n (@nets) {
 			&check_ipaddress($n) ||
 				&error($text{'auto_enet'});
 			}
@@ -32,7 +35,7 @@ if ($in{'sched'}) {
 	$config{'auto_user'} = $in{'auser'};
 	$config{'auto_pass'} = $in{'apass'};
 	$config{'auto_type'} = $in{'type'};
-	foreach $m (@cluster_modules) {
+	foreach my $m (@cluster_modules) {
 		if (&foreign_available($m)) {
 			$config{'auto_'.$m} = $in{$m};
 			}
@@ -50,10 +53,10 @@ if ($in{'sched'}) {
 
 # Create or update Cron job
 &cron::create_wrapper($cron_cmd, $module_name, "auto.pl");
+my @mins;
 if ($in{'sched'}) {
 	# Work out minutes
-	@mins = ( );
-	for($i=0; $i<60; $i+=$in{'mins'}) {
+	for(my $i=0; $i<60; $i+=$in{'mins'}) {
 		push(@mins, $i);
 		}
 	}

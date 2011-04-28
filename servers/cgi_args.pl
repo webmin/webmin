@@ -1,5 +1,8 @@
 
+use strict;
+use warnings;
 do 'servers-lib.pl';
+our (%access);
 
 sub cgi_args
 {

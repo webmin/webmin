@@ -1,14 +1,17 @@
 #!/usr/local/bin/perl
 # Display a list of other webmin servers
 
+use strict;
+use warnings;
 require './servers-lib.pl';
+our (%text, %config, %access);
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 
-@servers = &list_servers_sorted(1);
+my @servers = &list_servers_sorted(1);
 
 # Work out links
+my @linksrow;
 if ($access{'edit'}) {
-	@linksrow = ( );
 	if (@servers) {
 		print &ui_form_start("delete_servs.cgi");
 		push(@linksrow, &select_all_link("d"),
@@ -29,9 +32,9 @@ if (@servers && $config{'display_mode'}) {
 		$text{'index_desc'},
 		$text{'index_group'},
 		$text{'index_os'} ], 100);
-	foreach $s (@servers) {
-		local @cols;
-		local $table =
+	foreach my $s (@servers) {
+		my @cols;
+		my $table =
 			"<table cellpadding=0 cellspacing=0 width=100%><tr>\n";
 		if (!$access{'links'} || !$s->{'port'}) {
 			$table .= "<td>\n";
@@ -60,7 +63,8 @@ if (@servers && $config{'display_mode'}) {
 		push(@cols, $table);
 		push(@cols, $s->{'desc'});
 		push(@cols, $s->{'group'} || $text{'index_none'});
-		local ($type) = grep { $_->[0] eq $s->{'type'} } @server_types;
+		my ($type) = grep { $_->[0] eq $s->{'type'} }
+				  &get_server_types();
 		push(@cols, $type->[1]);
 		if ($access{'edit'}) {
 			print &ui_checked_columns_row(\@cols, undef,
@@ -75,14 +79,15 @@ if (@servers && $config{'display_mode'}) {
 elsif (@servers) {
 	# Show server icons
 	print &ui_links_row(\@linksrow);
+	my (@afters, @befores);
 	if ($access{'edit'}) {
-		local $sep = length($text{'index_edit'}) > 10 ? "<br>" : " ";
+		my $sep = length($text{'index_edit'}) > 10 ? "<br>" : " ";
 		@afters = map { $sep."<a href='edit_serv.cgi?id=$_->{'id'}'>(".$text{'index_edit'}.")</a>" } @servers;
 		@befores = map { &ui_checkbox("d", $_->{'id'}) } @servers;
 		}
-	@titles = map { &make_iconname($_) } @servers;
-	@icons = map { "images/$_->{'type'}.gif" } @servers;
-	@links = map { !$access{'links'} ? undef :
+	my @titles = map { &make_iconname($_) } @servers;
+	my @icons = map { "images/$_->{'type'}.gif" } @servers;
+	my @links = map { !$access{'links'} ? undef :
 		       $_->{'user'} || $_->{'autouser'} ?
 			"link.cgi/$_->{'id'}/" : &make_url($_) } @servers;
 	&icons_table(\@links, \@titles, \@icons, undef, "target=_top",
@@ -98,15 +103,16 @@ if ($access{'edit'}) {
 		}
 	}
 
-$myip = &get_my_address();
-$myscan = &address_to_broadcast($myip, 1) if ($myip);
+my $myip = &get_my_address();
+my $myscan = &address_to_broadcast($myip, 1) if ($myip);
 if ($access{'find'} || $access{'auto'}) {
 	print &ui_hr();
 	print &ui_buttons_start();
 	if ($access{'find'}) {
 		# Buttons to scan and broadcast for servers
+		my %miniserv;
 		&get_miniserv_config(\%miniserv);
-		$port = $config{'listen'} || $miniserv{'listen'} || 10000;
+		my $port = $config{'listen'} || $miniserv{'listen'} || 10000;
 		print &ui_buttons_row("find.cgi", $text{'index_broad'},
 						  $text{'index_findmsg'});
 		print &ui_buttons_row("find.cgi", $text{'index_scan'},
@@ -139,7 +145,7 @@ return sprintf "http%s://%s:%d/",
 
 sub make_iconname
 {
-local $rv;
+my $rv;
 if ($_[0]->{'desc'} && !$config{'show_ip'}) {
 	$rv = $_[0]->{'desc'};
 	}

@@ -2,14 +2,19 @@
 # edit_serv.cgi
 # Edit or create a webmin server
 
+use strict;
+use warnings;
 require './servers-lib.pl';
+our (%text, %in, %config, %access, $status_error_msg);
 &ReadParse();
 $access{'edit'} || &error($text{'edit_ecannot'});
 
+my $s;
 if ($in{'new'}) {
 	&ui_print_header(undef, $text{'create_title'}, "");
+	my %miniserv;
 	&get_miniserv_config(\%miniserv);
-	$ts = &this_server();
+	my $ts = &this_server();
 	$s = { 'port' => $miniserv{'port'},
 	       'type' => $config{'auto_type'} || $ts->{'type'}, };
 	}
@@ -49,7 +54,7 @@ else {
 	print &ui_table_row($text{'edit_type'},
 	    &ui_select("type", $s->{'type'},
 		[ map { [ $_->[0], $_->[1] ] }
-		      sort { $a->[1] cmp $b->[1] } @server_types ]));
+		      sort { $a->[1] cmp $b->[1] } &get_server_types() ]));
 	}
 
 print &ui_table_row($text{'edit_ssl'},
@@ -62,24 +67,25 @@ print &ui_table_row($text{'edit_desc'},
 
 if ($access{'forcegroup'}) {
 	# Cannot change group
-	foreach $g (split(/\t/, $s->{'group'})) {
+	foreach my $g (split(/\t/, $s->{'group'})) {
 		print &ui_hidden("group", $g),"\n";
 		}
 	}
 else {
 	# Show group checkboxes, with option to add a new one
-	@groups = &unique(map { split(/\t/, $_->{'group'}) } &list_servers());
-	%ingroups = map { $_, 1 } split(/\t/, $s->{'group'});
-	@grid = ( );
-	foreach $g (@groups) {
+	my @groups = &unique(map { split(/\t/, $_->{'group'}) }
+				 &list_servers());
+	my %ingroups = map { $_, 1 } split(/\t/, $s->{'group'});
+	my @grid = ( );
+	foreach my $g (@groups) {
 		push(@grid, &ui_checkbox("group", $g, $g, $ingroups{$g}));
 		}
-	$gtable = &ui_grid_table(\@grid, 4);
+	my $gtable = &ui_grid_table(\@grid, 4);
 	$gtable .= $text{'edit_new'}." ".&ui_textbox("newgroup", undef, 10);
 	print &ui_table_row($text{'edit_group'}, $gtable, 3);
 	}
 
-$mode = $in{'new'} ? $config{'deflink'} :
+my $mode = $in{'new'} ? $config{'deflink'} :
 	$s->{'autouser'} ? 2 :
 	$s->{'sameuser'} ? 3 : $s->{'user'} ? 1 : 0;
 if ($access{'forcelink'}) {
@@ -93,7 +99,7 @@ if ($access{'forcelink'}) {
 	}
 else {
 	# Login mode
-	$linksel = &ui_radio("mode", $mode,
+	my $linksel = &ui_radio("mode", $mode,
 		[ [ 0, "$text{'edit_mode0'}<br>" ],
 		  [ 1, $text{'edit_mode1'}." ".$text{'edit_user'}." ".
 		       &ui_textbox("wuser", $mode == 1 ? $s->{'user'} : "", 10).
@@ -134,6 +140,7 @@ if ($s->{'user'} && $config{'show_status'}) {
 	{
 	$status_error_msg = join("", @_);
 	}
+	my $msg;
 	&remote_error_setup(\&status_error);
 	eval {
 		$SIG{'ALRM'} = sub { die "alarm\n" };

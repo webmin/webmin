@@ -2,14 +2,19 @@
 # find.cgi
 # Broadcast to other webmin servers
 
+use strict;
+use warnings;
 require './servers-lib.pl';
+our (%text, %access, %in, %config);
 &ReadParse();
 $access{'find'} || &error($text{'find_ecannot'});
 
+my $limit;
+my @broad;
 if (defined($in{'scan'})) {
 	# send to all addresses on the given network
 	$in{'scan'} =~ /^(\d+\.\d+\.\d+)\.0$/ || &error($text{'find_escan'});
-	for($i=0; $i<256; $i++) {
+	for(my $i=0; $i<256; $i++) {
 		push(@broad, "$1.$i");
 		}
 	$limit = $config{'scan_time'};
@@ -17,10 +22,9 @@ if (defined($in{'scan'})) {
 	}
 else {
 	# broadcast to some useful addresses
-	$myip = &get_my_address();
+	my $myip = &get_my_address();
 	if ($myip) {
 		push(@broad, &address_to_broadcast($myip, 0));
-		$myaddr{inet_aton($myip)}++;
 		}
 	push(@broad, "255.255.255.255");
 	$limit = 2;
