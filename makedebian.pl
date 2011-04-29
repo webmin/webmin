@@ -420,11 +420,12 @@ system("gpg --output deb/${product}_$ver$rel.dsc --clearsign deb/${product}_$ver
 unlink("deb/${product}_$ver$rel.plain");
 print "Wrote source deb/${product}_$ver$rel.dsc\n";
 
+$dir = "sarge";
 if (-d "/usr/local/webadmin/deb/repository") {
 	# Add to our repository
 	chdir("/usr/local/webadmin/deb/repository");
-	system("reprepro -Vb . remove sarge $product");
-	system("reprepro -Vb . includedeb sarge ../${product}_${ver}${rel}_all.deb");
+	system("reprepro -Vb . remove $dir $product");
+	system("reprepro -Vb . includedeb $dir ../${product}_${ver}${rel}_all.deb");
 	chdir("/usr/local/webadmin");
 	}
 
