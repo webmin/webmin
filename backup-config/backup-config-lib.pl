@@ -11,13 +11,16 @@ Functions for creating configuration file backups. Some example code :
 =cut
 
 BEGIN { push(@INC, ".."); };
+use strict;
+use warnings;
 use WebminCore;
+our (%text, $module_config_directory, %config);
 &init_config();
 &foreign_require("cron", "cron-lib.pl");
 
-$cron_cmd = "$module_config_directory/backup.pl";
-$backups_dir = "$module_config_directory/backups";
-$manifests_dir = "/tmp/backup-config-manifests";
+my $cron_cmd = "$module_config_directory/backup.pl";
+my $backups_dir = "$module_config_directory/backups";
+my $manifests_dir = "/tmp/backup-config-manifests";
 
 =head2 list_backup_modules
 
@@ -146,7 +149,7 @@ Returns HTML for a field for selecting a local or FTP file.
 =cut
 sub show_backup_destination
 {
-local ($mode, $user, $pass, $server, $path, $port) = &parse_backup_url($_[1]);
+my ($mode, $user, $pass, $server, $path, $port) = &parse_backup_url($_[1]);
 my $rv;
 $rv .= "<table cellpadding=1 cellspacing=0>";
 
@@ -222,8 +225,8 @@ Returns a backup destination string, or calls error.
 =cut
 sub parse_backup_destination
 {
-local %in = %{$_[1]};
-local $mode = $in{"$_[0]_mode"};
+my %in = %{$_[1]};
+my $mode = $in{"$_[0]_mode"};
 if ($mode == 0) {
 	# Local file
 	$in{"$_[0]_file"} =~ /^\/\S/ || &error($text{'backup_edest'});
@@ -288,7 +291,7 @@ foreach my $m (@{$_[0]}) {
 	}
 
 # Work out where to write to
-local ($mode, $user, $pass, $host, $path, $port) = &parse_backup_url($_[1]);
+my ($mode, $user, $pass, $host, $path, $port) = &parse_backup_url($_[1]);
 my $file;
 if ($mode == 0) {
 	$file = &date_subs($path);
@@ -306,6 +309,7 @@ foreach $m (@mods) {
 	}
 
 my @files;
+my %manifestfiles;
 if (!$_[5]) {
 	# Build list of all files to save from modules
 	foreach my $m (@mods) {
@@ -348,9 +352,10 @@ my @manifests;
 foreach $m (@mods, "_others") {
 	next if (!defined($manifestfiles{$m}));
 	my $man = "$manifests_dir/$m";
-	&open_tempfile(MAN, ">$man");
-	&print_tempfile(MAN, map { "$_\n" } @{$manifestfiles{$m}});
-	&close_tempfile(MAN);
+	my $fh;
+	&open_tempfile($fh, ">$man");
+	&print_tempfile($fh, map { "$_\n" } @{$manifestfiles{$m}});
+	&close_tempfile($fh);
 	push(@manifests, $man);
 	}
 
@@ -373,13 +378,14 @@ if (!$_[5]) {
 
 # Make the tar (possibly .gz) file
 my $filestemp = &transname();
-&open_tempfile(FILESTEMP, ">$filestemp");
+my $fh;
+&open_tempfile($fh, ">$filestemp");
 foreach my $f (&unique(@files), @manifests) {
 	my $frel = $f;
 	$frel =~ s/^\///;
-	&print_tempfile(FILESTEMP, $frel."\n");
+	&print_tempfile($fh, $frel."\n");
 	}
-&close_tempfile(FILESTEMP);
+&close_tempfile($fh);
 my $qfile = quotemeta($file);
 my $out;
 if (&has_command("gzip")) {
@@ -437,8 +443,10 @@ Returns undef on success, or an error message.
 =cut
 sub execute_restore
 {
+my ($mods, $src, $files, $apply, $show) = @_;
+
 # Fetch file if needed
-local ($mode, $user, $pass, $host, $path, $port) = &parse_backup_url($_[1]);
+my ($mode, $user, $pass, $host, $path, $port) = &parse_backup_url($src);
 my $file;
 if ($mode == 0) {
 	$file = $path;
@@ -473,6 +481,7 @@ read(FILE, $two, 2);
 close(FILE);
 my $qfile = quotemeta($file);
 my $gzipped = ($two eq "\037\213");
+my $cmd;
 if ($gzipped) {
 	# Gzipped
 	&has_command("gunzip") || return $text{'backup_egunzip'};
@@ -487,11 +496,11 @@ if ($?) {
 	&unlink_file($file) if ($mode != 0);
 	return &text('backup_euntar', "<pre>$out</pre>");
 	}
-local @tarfiles = map { "/$_" } split(/\r?\n/, $out);
-local %tarfiles = map { $_, 1 } @tarfiles;
+my @tarfiles = map { "/$_" } split(/\r?\n/, $out);
+my %tarfiles = map { $_, 1 } @tarfiles;
 
 # Extract manifests for each module
-local %hasmod = map { $_, 1 } @{$_[0]};
+my %hasmod = map { $_, 1 } @{$_[0]};
 $hasmod{"_others"} = 1;
 &execute_command("rm -rf ".quotemeta($manifests_dir));
 my $rel_manifests_dir = $manifests_dir;
@@ -558,9 +567,8 @@ if (!$_[4]) {
 	}
 
 # Extract contents (only files specified by manifests)
-local $flag = $_[4] ? "t" : "x";
-local $qfiles = join(" ", map { s/^\///; quotemeta($_) }
-				&unique(@files));
+my $flag = $_[4] ? "t" : "x";
+my $qfiles = join(" ", map { s/^\///; quotemeta($_) } &unique(@files));
 if ($gzipped) {
 	&execute_command("cd / ; gunzip -c $qfile | tar ${flag}f - $qfiles",
 			 undef, \$out, \$out);
@@ -607,9 +615,9 @@ a server, like user@foo:/path/to/bar/
 sub scp_copy
 {
 &foreign_require("proc", "proc-lib.pl");
-local $cmd = "scp -r ".($_[4] ? "-P $_[4] " : "").
-	     quotemeta($_[0])." ".quotemeta($_[1]);
-local ($fh, $fpid) = &proc::pty_process_exec($cmd);
+my $cmd = "scp -r ".($_[4] ? "-P $_[4] " : "").
+	  quotemeta($_[0])." ".quotemeta($_[1]);
+my ($fh, $fpid) = &proc::pty_process_exec($cmd);
 my $out;
 while(1) {
 	my $rv = &wait_for($fh, "password:", "yes\\/no", ".*\n");
@@ -638,9 +646,9 @@ MISSING DOCUMENTATION
 =cut
 sub find_cron_job
 {
-local @jobs = &cron::list_cron_jobs();
-local ($job) = grep { $_->{'user'} eq 'root' &&
-		$_->{'command'} eq "$cron_cmd $_[0]->{'id'}" } @jobs;
+my @jobs = &cron::list_cron_jobs();
+my ($job) = grep { $_->{'user'} eq 'root' &&
+		   $_->{'command'} eq "$cron_cmd $_[0]->{'id'}" } @jobs;
 return $job;
 }
 
@@ -651,8 +659,9 @@ Returns a backup filename in a human-readable format, with dates substituted.
 =cut
 sub nice_dest
 {
-local ($mode, $user, $pass, $server, $path, $port) = &parse_backup_url($_[0]);
-if ($_[1]) {
+my ($url, $subdates) = @_;
+my ($mode, $user, $pass, $server, $path, $port) = &parse_backup_url($url);
+if ($subdates) {
 	$path = &date_subs($path);
 	}
 if ($mode == 0) {
