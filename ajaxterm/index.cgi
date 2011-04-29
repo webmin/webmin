@@ -38,6 +38,9 @@ if (!$pid) {
 	untie(*STDERR); open(STDERR, ">$logfile");
 	$shell = &has_command("bash") ||
 		 &has_command("sh") || "/bin/sh";
+	@uinfo = getpwnam("root");
+	$home = $uinfo[7] || "/";
+	$shell = "$shell -c ".quotemeta("cd '$home' ; exec $shell");
 	exec($python, "ajaxterm.py", "--port", $port, "--log",
 	     $config{'autologin'} ? ("--command", $shell) : ( ));
 	exit(1);
