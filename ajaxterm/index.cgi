@@ -71,7 +71,7 @@ if (!fork()) {
 	untie(*STDIN); close(STDIN);
 	untie(*STDOUT); close(STDOUT);
 	untie(*STDERR); close(STDERR);
-	$statfile = "$ENV{'WEBMIN_VAR'}/$module_name/$port";
+	$statfile = "$ENV{'WEBMIN_VAR'}/ajaxterm/$port";
 	while(1) {
 		my @st = stat($statfile);
 		if (@st && time() - $st[9] > $config{'timeout'}) {

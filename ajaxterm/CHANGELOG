@@ -1,0 +1,2 @@
+---- Changes since 1.550 ----
+First version of this module, which allows shell logins without the need to use a separate SSH client or even run an SSH server.
