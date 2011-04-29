@@ -30,7 +30,7 @@ if (!$config{'delete_root'} && $delete_sys) {
 
 if ($in{'confirmed'}) {
 	foreach $group (@dlist) {
-		# Show username
+		# Show group name
 		print "<b>",&text('gmass_doing', $group->{'group'}),"</b><br>\n";
 		print "<ul>\n";
 
