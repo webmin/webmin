@@ -12,7 +12,7 @@ use WebminCore;
 &init_config();
 &foreign_require("acl", "acl-lib.pl");
 &foreign_require("webmin", "webmin-lib.pl");
-my %access = &get_module_acl();
+our %access = &get_module_acl();
 
 =head2 can_change_pass(&user)
 
