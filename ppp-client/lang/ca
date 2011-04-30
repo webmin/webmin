@@ -102,4 +102,4 @@ log_init=S'ha inicialitzat o refrescat la configuració
 log_connect=S'ha connectat amb $1
 log_fail=No s'ha pogut connectar amb $1
 log_disconnect=S'ha desconnectat de $1
-
+__norefs=1

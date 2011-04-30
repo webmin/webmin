@@ -114,3 +114,4 @@ system_csw=CSW (Blastwave)
 system_webmin=Mòdul de Webmin
 system_usermin=Mòdul d'Usermin
 system_tgz=tar.gz de Webmin o Usermin
+__norefs=1

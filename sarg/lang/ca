@@ -120,13 +120,13 @@ report_displayed_values=Mostra el trànsit
 report_bytes2=En bytes
 report_abbrev=Abreujat (K, M, G)
 report_weekdays=Dies de la setmana a incloure en l'informe
-report_weekdays0=$sday_0
-report_weekdays1=$sday_1
-report_weekdays2=$sday_2
-report_weekdays3=$sday_3
-report_weekdays4=$sday_4
-report_weekdays5=$sday_5
-report_weekdays6=$sday_6
+report_weekdays0=Dg
+report_weekdays1=Dl
+report_weekdays2=Dm
+report_weekdays3=Dc
+report_weekdays4=Dj
+report_weekdays5=Dv
+report_weekdays6=Ds
 report_hours=Hores a incloure en l'informe
 report_err=No s'han pogut desar les opcions de l'informe
 report_efile=El fitxer no existeix
@@ -142,8 +142,8 @@ sched_sched=Informe planificat activat
 sched_yes=Sí, a les hores seleccionades a sota...
 sched_clear=Buida cada vegada el directori d'informes
 sched_dir=Directori d'informes
-sched_edir=No has definit cap directori de destí dels informes a la pàgina <a href='$1'>$log_title</a>. Cal configurar això abans d'activar els informes planificats.
-sched_esfile=No s'ha definit cap fitxer de registre de squid a la pàgina <a href='$1'>$log_title</a>. Això s'ha de configurar abans de poder activar l'informe planificat.
+sched_edir=No has definit cap directori de destí dels informes a la pàgina <a href='$1'>Origen del Registre i Destinació de l'Informe</a>. Cal configurar això abans d'activar els informes planificats.
+sched_esfile=No s'ha definit cap fitxer de registre de squid a la pàgina <a href='$1'>Origen del Registre i Destinació de l'Informe</a>. Això s'ha de configurar abans de poder activar l'informe planificat.
 sched_range=Genera l'informe per al rang de dates
 sched_rall=Tots els registres del fitxer de registre
 sched_rsel=Des de fa $1 dies fins fa $2 dies
@@ -173,3 +173,5 @@ webmin_log_sched_delete=S'ha desactivat la planificació d'informes
 webmin_log_sched_update=S'ha actualitzat la planificació d'informes
 webmin_log_sched_nothing=S'ha deixat la planificació d'informes desactivada
 webmin_log_generate=S'ha generat l'informe
+
+__norefs=1

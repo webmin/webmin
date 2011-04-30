@@ -241,3 +241,4 @@ manual_err=No s'ha pogut desar la configuració del fitxer
 dknown_err=No s'han pogut suprimir els hosts coneguts
 dknown_enone=No n'hi ha cap de seleccionat
 
+__norefs=1

@@ -23,7 +23,7 @@ size=Mida
 parent=Procés pare
 runtime=Temps d'execució
 nice=Nivell <i>nice</i>
-stime=Iniciat
+stime=Inici
 sclass=Classe de planificació E/S
 sprio=Prioritat E/S
 
@@ -95,7 +95,7 @@ linux_group=Grup
 linux_ruser=Usuari real
 linux_rgroup=Grup real
 linux_pgid=ID del grup de processos
-linux_stime=$stime
+linux_stime=Inici
 
 linuxstat_R=Executant
 linuxstat_S=Dormint
@@ -111,14 +111,14 @@ freebsd_ruser=Usuari real
 freebsd_rgroup=Grup real
 freebsd_tty=TTY
 freebsd_pgid=Grup de processos
-freebsd_lstart=$stime
+freebsd_lstart=Inici
 freebsd_lim=Límit de memòria
 
 hpux_pri=Prioritat
 hpux_tty=TTY
 hpux_status=Estat
 hpux_wchan=Esperant
-hpux_stime=$stime
+hpux_stime=Inici
 
 hpuxstat_0=Inexistent
 hpuxstat_S=Dormint
@@ -136,7 +136,7 @@ sysv_ruser=Usuari real
 sysv_rgroup=Grup real
 sysv_pgid=ID del grup de processos
 sysv_tty=TTY
-sysv_stime=$stime
+sysv_stime=Inici
 sysv_task=ID de Tasca
 sysv_zone=Nom de la Zona
 
@@ -201,3 +201,4 @@ trace_change=Canvia
 windows_threads=Fils del procés
 
 syslog_dmesg=Missatges del nucli
+__norefs=1

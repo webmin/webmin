@@ -24,7 +24,7 @@ bind_desc2=Aquest formulari es pot utilitzar per canviar el número de port que U
 bind_erestart=S'ha produït un error en inicia Usermin amb els nous valors de port i adreça: $1
 
 mods_title=Mòduls Usermin
-umods_title=$mods_title
+umods_title=Mòduls Usermin
 mods_desc1=Es poden afegir mòduls Usermin després de la instal·lació utilitzant el formulari de la dreta. Els mòduls es distribueixen típicament en fitxers <tt>.wbm</tt>, cadascun dels quals pot contenir un o més mòduls. Els mòduls també es poden instal·lar des de fitxers RPM, si estan suportats pel sistema operatiu.
 mods_install=Instal·la un Mòdul
 mods_local=Des d'un fitxer local
@@ -246,7 +246,7 @@ ui_hnm0=Nom de host real
 ui_hnm1=Nom de host apartir de l'URL
 ui_hnm2=Nom de domini a partir de l'URL
 ui_hnm3=Un altre nom...
-ui_tabs=Categoritza els mòduls de la pàgina índex
+ui_tabs=Categoritza els mòduls
 
 upgrade_title=Actualització d'Usermin
 upgrade_title2=Instal·lació d'Usermin
@@ -491,3 +491,4 @@ blocked_cleardesc=Fes clic sobre aquest botó per esborrar tot els bloqueigs actu
 
 mobile_title=Opcions del Dispositiu Mòbil
 
+__norefs=1

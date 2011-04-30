@@ -110,4 +110,4 @@ log_conn_l=S'ha connectat el túnel $1 amb l'adreça local $2
 log_failed=No s'ha pogut connectar el túnel $1
 log_disc=S'ha desconnectat el túnel $1
 log_opts=S'han editat les opcions globals del PPP
-
+__norefs=1

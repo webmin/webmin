@@ -134,3 +134,4 @@ log_disable_l=S'han desactivat els serveis $1
 config_dirdef=Fitxer de configuració de Xinetd
 config_dirto=Fitxer nou al directori
 
+__norefs=1

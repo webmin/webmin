@@ -4,6 +4,7 @@ threshold_pc=Percentatge llindar per ressaltar la quota utilitzada,3,No ho mostr
 pc_show=Percentatges d'ús a mostrar,1,2-Estricte i Lax,1-Només estricte,0-Només lax
 sort_mode=Ordena els usuaris i els grups per,1,0-Blocs utilitzats,2-Nom,1-Ordre de repquota,3-Quota estricta de bloc,4-Quota laxa de bloc,5-Percentatge de quota estricta utilitzat,6-Percentatge de quota laxa utilitzat
 block_mode=Mostra les quotes en,1,1-Kilobytes (on sigui possible),0-Blocs
+hide_uids=Mostra els usuaris suprimits,1,0-Sí,1-No
 line1.1=Missatges de correu de quota,11
 email_msg=Missatge de correu per als usuaris que excedeixen la quota,9,80,5,\t
 email_subject=Tema del missatge de correu per als usuaris,3,Per defecte

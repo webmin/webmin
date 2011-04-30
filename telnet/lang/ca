@@ -6,3 +6,4 @@ index_sshcredits=Inclou programari desenvolupat pel Cryptix Development Team (<a
 index_esocket=No hi ha cap servidor telnet en execució a $1 port $2.
 index_esocket2=No hi ha cap servidor SSH en execució a $1 port $2.
 index_elookup=No s'ha pogut consultar l'adreça IP de $1 per provar el servidor telnet o SSH.
+__norefs=1

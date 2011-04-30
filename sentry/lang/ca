@@ -103,4 +103,4 @@ log_hostsentry_start=S'ha iniciat el dimoni de hostsentry
 log_hostsentry_stop=S'ha aturat el dimoni de hostsentry
 log_portsentry_start=S'ha iniciat el dimoni de portsentry
 log_portsentry_stop=S'ha aturat el dimoni de portsentry
-
+__norefs=1

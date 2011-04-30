@@ -48,3 +48,4 @@ index_stopmsg=Fes clic sobre aquest botó per aturar el dimoni d'OpenSLP del sist
 
 stop_err=No s'ha pogut aturar OpenSLP
 start_err=No s'ha pogut iniciar OpenSLP
+__norefs=1

@@ -152,6 +152,8 @@ misc_esmtp=Hi falta el servidor SMTP o bé no es pot resoldre
 misc_esmtp_port=Hi falta el port SMTP o bé no és numèric
 misc_esendmail=L'ordre per enviar correu és invàlida
 misc_esendmail2=Hi falta l'ordre per enviar correu
+misc_include=Permet l'obertura d'<i>Includes</i> remots
+misc_path=Informació del Camí de Correció de CGI
 
 log_manual=Edita manualment el fitxer $1
 log_vars=S'han canviat les variables PHP de $1
@@ -168,3 +170,4 @@ acl_anyfile=Pot editar qualsevol fitxer com a configuració de PHP
 acl_manual=Pot editar manualment els fitxers de configuració
 acl_inis=Fitxers addicionals de configuració<br>(En format <i>nomfitxer</i>=<i>descripcio</i>)
 acl_user=Llegeix i escriu els fitxers com a usuari
+__norefs=1

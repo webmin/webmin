@@ -141,7 +141,7 @@ vsave_err=No s'ha pogut desar el mapejat virtual
 vsave_edomain='$1' no és un domini de correu vàlid
 vsave_euser='$1' no és un nom d'usuari de correu vàlid
 vsave_eprepend='$1' no és un prefix de mapejat vàlid
-vsave_eboth=No pots seleccionar '$vform_all' i '$vform_none' alhora
+vsave_eboth=No pots seleccionar 'Qualsevol adreça que no coincideixi amb cap altre mapejat virtual' i 'Res' alhora
 
 vdelete_err=No s'han pogut suprimir els mapejats virtuals
 
@@ -401,3 +401,4 @@ match_!headers=Les capçaleres no coincideixen
 delq_titles=Supressió de Missatges
 delq_rusure=Segur que vols suprimir els $1 missatges en cua seleccionats?
 delq_confirm=Suprimeix els missatges
+__norefs=1

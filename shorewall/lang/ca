@@ -452,3 +452,4 @@ params_create=Creació de paràmetre personalitzat
 params_header=Detalls del paràmetre personalitzat
 params_err=No s'ha pogut desar el paràmetre personalitzat
 params_varname=Nom de paràmetre invàlid (ha de ser un nom de variable shell vàlid)
+__norefs=1

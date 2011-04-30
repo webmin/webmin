@@ -132,3 +132,4 @@ email_upsize=Mida carregada: $1
 email_upextract=Estat de l'extracció: $1
 email_subjectu=Càrrega completa
 email_upmsg=S'han completat les càrregues següents
+__norefs=1

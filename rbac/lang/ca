@@ -250,3 +250,4 @@ prctl_res=Recurs
 prctl_priv=Tipus de privilegi
 prctl_limit=Límit superior
 prctl_action=Acció
+__norefs=1

@@ -43,3 +43,4 @@ acl_mode6=Usuaris que coincideixen amb
 acl_expire=Pot forçar els usuaris a canviar la contrasenya a la pròxima entrada
 acl_sec=Inclou els grups secundaris
 acl_notusers=Excepte els usuaris
+__norefs=1

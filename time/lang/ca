@@ -68,3 +68,4 @@ timezone_err=No s'ha pogut desar la zona horària
 timezone_ecannot=No tens permís per canviar la zona horària
 timezone_enone=No has seleccionat cap zona
 
+__norefs=1

@@ -69,3 +69,4 @@ log_create=S'ha creat el túnel SSL $1
 log_delete=S'ha suprimit el túnel SSL $1
 log_modify=S'ha modificat el túnel SSL $1
 log_delete_stunnels=S'han suprimit $1 túnels SSL
+__norefs=1

@@ -37,4 +37,4 @@ log_create_export=S'ha creat l'exportació de $1
 log_delete_export=S'ha suprimit l'exportació de $1
 log_modify_export=S'ha modificat l'exportació de $1
 log_apply=S'ha aplicat la configuració
-
+__norefs=1

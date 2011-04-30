@@ -452,4 +452,4 @@ eafter=La verificació de la configuració ha fallat: no s'han desat $1 canvis.
 proftpd_apply=Aplica els Canvis
 proftpd_stop=Atura ProFTPd
 proftpd_start=Inicia ProFTPd
-
+__norefs=1

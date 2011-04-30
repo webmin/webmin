@@ -40,11 +40,12 @@ short_ok=...el test s'ha executat bé. Mira l'estat de la unitat a la pàgina prin
 
 ext_title=Auto Test Extès
 ext_doing=S'està iniciant l'auto test extès del $1...
-ext_failed=$short_failed
-ext_ok=$short_ok
+ext_failed=...ha fallat!
+ext_ok=...el test s'ha executat bé. Mira l'estat de la unitat a la pàgina principal del mòdul per veure'n els resultats.
 
 data_title=Test de Recopilació de Dades
 data_doing=S'està iniciant la recopilació de dades fora de línia a $1...
 data_failed=...ha fallat!
 data_ok=...la recopilació s'ha executat bé. Mira l'estat de la unitat a la pàgina principal del mòdul per veure'n els resultats.
 
+__norefs=1

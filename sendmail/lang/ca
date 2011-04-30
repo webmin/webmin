@@ -536,6 +536,9 @@ view_mark2=Especial
 view_return=al correu original
 view_sub=Correu Adjunt
 view_egone=Aquest missatge ja no existeix
+view_afile=Nom de l'adjunció
+view_atype=Tipus d'adjunció
+view_asize=Mida del fitxer
 
 compose_title=Redacció de Correu
 reply_title=Respon al Correu
@@ -835,4 +838,4 @@ ports_ename=Nom de port invàlid a la fila $1
 ports_eclash=Nom de port duplicat a la fila $1
 ports_eaddress=Hi falta l'adreça IP a la fila $1 o bé és invàlida
 ports_eport=Hi falta el número de port a la fila $1 o bé és invàlid
-
+__norefs=1

@@ -288,3 +288,4 @@ log_apply=S'ha aplicat la configuració
 log_start=S'ha iniciat el servidor Syslog-NG
 log_stop=S'ha aturat el servidor Syslog-NG
 log_options=S'han canviat les opcions globals
+__norefs=1

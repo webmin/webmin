@@ -152,3 +152,4 @@ email_regsubject=Sistema $1 registrat
 email_reg=El sistema $1 ha estat registrat automàticament.
 email_unregsubject=Sistema $1 desregistrat
 email_unreg=El sistema $1 ha estat desregistrat automàticament.
+__norefs=1

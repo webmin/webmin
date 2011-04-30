@@ -971,3 +971,4 @@ cachemgr_all=Utilitza aquesta contrasenya per a totes les accions
 cachemgr_others=Altres accions:
 cachemgr_enone=No n'has introduït cap - hauries de selecccionar <i>No en cal cap</i>
 cachemgr_err=No s'han pogut desar les contrasenyes del gestor del cau
+__norefs=1

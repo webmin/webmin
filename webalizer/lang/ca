@@ -1,6 +1,6 @@
 index_title=Anàlisi de Fitxers de Registre Webalizer
 index_version=Webalizer versió $1
-index_version_webalizer=$index_version
+index_version_webalizer=Webalizer versió $1
 index_version_awffull=AWFFull
 index_ewebalizer=No s'ha trobat al sistema l'ordre $1 d'anàlisi de fitxers de registre. Pot ser que no estigui instal·lada, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_econf=No s'ha trobat al sistema el fitxer $1 de configuració de Webalizer. Pot ser que no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
@@ -163,3 +163,4 @@ acl_this=Usuari Webmin actual
 acl_any=Qualsevol usuari
 acl_add=Pot afegir nous fitxers de registre per a l'anàlisi
 
+__norefs=1

@@ -388,4 +388,4 @@ hpux_enforce_dependencies=Força les dependències
 hpux_enforce_scripts=Força els scripts
 hpux_enforce_dsa=Força l'anàlisi d'espai al disc
 hpux_root=Directori arrel
-
+__norefs=1

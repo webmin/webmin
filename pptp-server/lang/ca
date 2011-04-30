@@ -67,8 +67,8 @@ options_version=PPPd versió $1
 options_msdesc=Les opcions de sota activen el mètode d'autenticació MS-CHAP i el xifratge MPPE, que és l'utilitzat per defecte pels clients VPN de Windows. No obstant, MPPE necessita suport tant al dimoni PPP com al nucli del sistema operatiu.
 options_mschap=Autenticació MS-CHAP
 options_mschap-v2=Autenticació MS-CHAP versió 2
-options_chapms=$options_mschap
-options_chapms-v2=$options_mschap-v2
+options_chapms=Autenticació MS-CHAP
+options_chapms-v2=Autenticació MS-CHAP versió 2
 
 secrets_title=Comptes PPP
 secrets_ecannot=No tens permís per editar els comptes PPP
@@ -150,3 +150,4 @@ acl_secrets=Pot gestionar els comptes PPTP
 acl_conns=Pot visualitzar les connexions
 acl_stop=Pot aturar i iniciar el servidor PPTP
 acl_apply=Pot aplicar la configuració
+__norefs=1

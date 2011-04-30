@@ -236,3 +236,4 @@ log_misc=S'han canviat les opcions miscel·lànies
 log_restart=S'han aplicat els canvis
 log_start=S'ha iniciat el servidor FTP
 
+__norefs=1

@@ -97,10 +97,10 @@ desc_amd.home=Arrel de l'automuntador
 desc_amd.master=Mapes de l'automuntador
 desc_auto_home=Arrel de l'automuntador
 desc_auto_master=Mapes de l'automuntador
-desc_auto_local=Automuntador local
-desc_auto.home=$desc_auto_home
-desc_auto.master=$desc_auto_master
-desc_auto.local=$desc_auto_local
+desc_auto_local=Local de l'automuntador
+desc_auto.home=Arrel de l'automuntador
+desc_auto.master=Mapes de l'automuntador
+desc_auto.local=Local de l'automuntador
 desc_automount=Mapes de l'automuntador
 desc_netgroup=Grups de xarxa
 desc_netgrp=Grups de xarxa
@@ -306,3 +306,4 @@ eswitch_err=No s'ha pogut desar el servei
 eswitch_enone=No has seleccionat cap origen!
 
 
+__norefs=1

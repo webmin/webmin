@@ -127,3 +127,4 @@ delete_enone=No has seleccionat cap acció
 check_epostfix=Procmail no està activat a la configuració de Postfix. EL fitxer de configuració <tt>$2</tt> ha de tenir l'opció <tt>$1</tt> posada a <tt>$3</tt>.
 check_esendmail=Sendmail no està configurat per utilitzar Procmail per al lliurament local. Això es pot configurar al mòdul del <a href='$1'>Servidor de Correu Sendmail</a> de Webmin.
 
+__norefs=1

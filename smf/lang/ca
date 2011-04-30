@@ -323,3 +323,4 @@ smfwizard_manpage_section=Especifica la secció de la pàgina man
 smfwizard_manpage_section_error=*La secció no pot ser nul·la!*
 smfwizard_manpage_manpath=Especifica el camí de les pàgines man
 smfwizard_manpage_manpath_error=*El camí de les pàgines man no pot ser nul!*
+__norefs=1

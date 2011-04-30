@@ -148,3 +148,4 @@ delete_title=Supressió d'Array RAID
 delete_rusure=Segur que vols suprimir l'array RAID $1, que utilitza $2 d'espai al disc?
 delete_ok=Sí, Suprimeix-lo
 delete_eidx=No has seleccionat cap array RAID!
+__norefs=1

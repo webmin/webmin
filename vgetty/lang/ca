@@ -116,3 +116,4 @@ log_vgetty_delete=S'ha suprimit el port sèrie $1
 
 email_subject=Missatge Voicemail
 email_body=S'ha rebut un missatge Voicemail a $1 per part de $2.
+__norefs=1

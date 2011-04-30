@@ -22,7 +22,7 @@ index_eversion=La base de dades PostgreSQL del sistema és de la versió $1, però 
 index_elibrary=No es pot executar el programa client PostgreSQL $1 perquè no es troben les llibreries compartides de Postgres. Comprova la <a href='$2'>configuració del mòdul</a> assegura't que el <i>Camí de les llibreries compartides de PostgreSQL</i> està posat.
 index_ldpath=La llibreria compartida està establerta a $1, i la resposta de $2 ha estat:
 index_version=Versió PostgreSQL $1
-index_setup=No s'ha trobat al sistema el fitxer $1 de configuració de PostgreSQL, indicant que la base de dades encara no s'ha inicialitzat. Fes clic sobre el botó de sota per configurar PostgreSQL amb l'ordre $2.
+index_setup=No s'ha trobat al sistema el fitxer $1 de configuració de PostgreSQL, indicant que la base de dades encara no s'ha inicialitzat. Fes clic sobre el botó de sota per configurar PostgreSQL.
 index_setupok=Inicialitza la Base de Dades
 index_nomod=Atenció: El mòdul Perl $1 no està instal·lat al sistema, de manera que Webmin no podrà accedir de forma fiable a la base de dades PostgreSQL. <a href='$2'>Fes clic aquí</a> per instal·lar-lo ara.
 index_nomods=Atenció: Els mòduls Perl $1 i $2 no està instal·lat al sistema, de manera que Webmin no podrà accedir de forma fiable a la base de dades PostgreSQL. <a href='$3'>Fes clic aquí</a> per instal·lar-lo ara.
@@ -218,6 +218,8 @@ newdb_epath=Hi falta el camí de la base de dades
 newdb_user=Propietat de l'usuari
 newdb_encoding=Codificació del joc de caràcters
 newdb_eencoding=Hi falta la codificació del joc de caràcters
+newdb_template=Base de daes de plantilla
+newdb_notemplate=Cap
 
 user_title=Usuaris PostgreSQL
 user_ecannot=No tens permís per editar els usuaris
@@ -453,6 +455,9 @@ restore_ecmd=No s'ha trobat al sistema l'ordre de restauració $1
 restore_ecannot=No tens permís per restaurar còpies
 restore_only=Restaurar només les dades, sense les taules
 restore_clean=Suprimeix les taules abans de restaurar
+restore_tables=Taules a restaurar
+restore_tables1=Totes les del fitxer de còpia
+restore_tables0=les taules llistades
 restore_failed=La restauració ha fallat: $1
 
 backup_title=Còpia de la Base de Dades
@@ -610,3 +615,4 @@ seq_ecannot=No tens permís per gestionar seqüències
 
 dgrant_err=No s'han pogut reiniciar els drets
 dgrant_enone=No has seleccionat cap objecte
+__norefs=1

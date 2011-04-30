@@ -285,7 +285,7 @@ procmail_title=Lliurament de Spam Procmail
 procmail_ok=Canvia el Lliurament Procmail
 procmail_desc=El formulari es pot utilitzar per canviar la configuració de Procmail que determina què passa als missatges classificats com a spam.
 
-simple_title=$header_title
+simple_title=Comprovacions de Capçalera i Cos
 simple_desc=Aquesta pàgina permet definir tests addicionals que SpamAssassin aplicarà al correu, basant-se en les capçaleres dels missatges, el contingut del cos, els URLs trobats al cos. El nom assignat a cada test és cosa teva, però normalment és una cosa com ara CONTE_FOO.
 simple_switch=Canvia a mode avançat...
 simple_header=Tests de missatge a aplicar
@@ -380,3 +380,4 @@ dawl_ecannot=No tens permès de gestionar la llista blanca automàtica d'aquest us
 dawl_doing=S'estan suprimint les llistes blanques automàtiques de tots els usuaris...
 dawl_done=...s'han suprimit $2 entrades de $1 usuaris.
 dawl_title=Suprimeix Totes les Llistes Blanques Automàtiques
+__norefs=1

@@ -108,3 +108,4 @@ acl_sel=Només els fitxers llistats i aquells sota els directoris llistats...
 acl_extra=Fitxers de registre extra d'aquest usuari
 acl_syslog=Pot veure els registres de syslog
 acl_others=Pot veure els registres d'altres mòduls
+__norefs=1

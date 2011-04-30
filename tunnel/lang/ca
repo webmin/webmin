@@ -19,3 +19,4 @@ login_clear=Neteja
 seturl_err=No s'ha pogut obrir l'URL
 seturl_eurl=Has introduït un URL invàlid
 
+__norefs=1

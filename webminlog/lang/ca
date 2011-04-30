@@ -119,3 +119,4 @@ rollback_nodeleted=S'ha omès el fitxer inexistent $1.
 rollback_enone=No has seleccionat cap fitxer
 
 log_rollback=S'ha revertit l'acció $1 al mòdul $2
+__norefs=1

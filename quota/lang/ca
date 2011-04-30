@@ -343,3 +343,4 @@ gmass_header=Canvis de la quota a aplicar als grups seleccionats
 gmass_count=Els canvis de sota s'aplicaran als $1 grups seleccionats...
 gmass_ok=Actualitza els Grups
 gmass_err=No s'han pogut actualitzar les quotes de grup
+__norefs=1
