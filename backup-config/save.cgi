@@ -1,10 +1,14 @@
 #!/usr/local/bin/perl
 # Create, update or delete a scheduled backup
 
+use strict;
+use warnings;
 require './backup-config-lib.pl';
+our (%in, %text, $cron_cmd, $module_name);
 &ReadParse();
 
 # Find the backup job
+my ($job, $backup);
 if (!$in{'new'}) {
 	$backup = &get_backup($in{'id'});
 	$job = &find_cron_job($backup);
@@ -25,7 +29,7 @@ if ($in{'delete'}) {
 else {
 	# Validate inputs
 	&error_setup($text{'save_err'});
-	@mods = split(/\0/, $in{'mods'});
+	my @mods = split(/\0/, $in{'mods'});
 	$backup->{'mods'} = join(" ", @mods);
 	$backup->{'dest'} = &parse_backup_destination("dest", \%in);
 	&cron::parse_times_input($backup, \%in);
@@ -69,8 +73,9 @@ if ($in{'run'}) {
 	&ui_print_unbuffered_header(undef, $text{'run_title'}, "");
 
 	# Run the pre-backup command, if any
+	my $err;
 	if ($backup->{'pre'} =~ /\S/) {
-		$preout = &backquote_command(
+		my $preout = &backquote_command(
 			"($backup->{'pre'}) 2>&1 </dev/null");
 		print &text('email_pre',
 			"<tt>".&html_escape($backup->{'pre'})."</tt>")."<br>\n".
@@ -80,11 +85,12 @@ if ($in{'run'}) {
 			}
 		}
 
-	@mods = split(/\s+/, $backup->{'mods'});
-	$nice = &nice_dest($backup->{'dest'}, 1);
+	my @mods = split(/\s+/, $backup->{'mods'});
+	my $nice = &nice_dest($backup->{'dest'}, 1);
 	if (!$err) {
 		print &text('run_doing', scalar(@mods),
 			    "<tt>$nice</tt>"),"<br>\n";
+		my $size;
 		$err = &execute_backup(
 			\@mods, $backup->{'dest'}, \$size, undef,
 			$backup->{'configfile'}, $backup->{'nofiles'},
@@ -100,7 +106,7 @@ if ($in{'run'}) {
 
 	# Run the post-backup command, if any
 	if (!$err && $backup->{'post'} =~ /\S/) {
-		$postout = &backquote_command(
+		my $postout = &backquote_command(
 			"($backup->{'post'}) 2>&1 </dev/null");
 		print &text('email_post',
 		      "<tt>".&html_escape($backup->{'post'})."</tt>")."<br>\n".
@@ -110,7 +116,6 @@ if ($in{'run'}) {
 	&webmin_log("run", "backup", $backup->{'dest'}, $backup);
 	&ui_print_footer("edit.cgi?id=$in{'id'}", $text{'edit_return'},
 			 "index.cgi?mode=sched", $text{'index_return'});
-	exit;
 	}
 else {
 	&redirect("index.cgi?mode=sched");

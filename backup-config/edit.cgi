@@ -1,8 +1,13 @@
 #!/usr/local/bin/perl
 # Show one scheduled backup
 
+use strict;
+use warnings;
 require './backup-config-lib.pl';
+our (%in, %text);
 &ReadParse();
+
+my $backup;
 if ($in{'new'}) {
 	&ui_print_header(undef, $text{'edit_title1'}, "");
 	$backup = { 'emode' => 0,
@@ -22,13 +27,13 @@ print &ui_form_start("save.cgi", "post");
 print &ui_hidden("new", $in{'new'});
 print &ui_hidden("id", $in{'id'});
 
-@tds = ( "width=30%" );
+my @tds = ( "width=30%" );
 print &ui_hidden_table_start($text{'edit_header'}, "width=100%", 2,
 			     "main", 1, \@tds);
 
 # Show modules to backup
-@mods = &list_backup_modules();
-@dmods = split(/\s+/, $backup->{'mods'});
+my @mods = &list_backup_modules();
+my @dmods = split(/\s+/, $backup->{'mods'});
 print &ui_table_row($text{'edit_mods'},
 		    &ui_select("mods", \@dmods,
 		       [ map { [ $_->{'dir'}, $_->{'desc'} ] } @mods ],
@@ -73,6 +78,7 @@ print &ui_table_row($text{'edit_emode'},
 				[ 1, $text{'edit_emode1'} ] ]));
 
 # Show schedule
+my $job;
 if ($backup) {
 	$job = &find_cron_job($backup);
 	}

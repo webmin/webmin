@@ -1,20 +1,23 @@
 #!/usr/local/bin/perl
 # Do an immediate restore
 
+use strict;
+use warnings;
 require './backup-config-lib.pl';
+our (%in, %text, %config, $module_config_file);
 &ReadParseMime();
 
 # Validate inputs
 &error_setup($text{'restore_err'});
-$src = &parse_backup_destination("src", \%in);
-@mods = split(/\0/, $in{'mods'});
+my $src = &parse_backup_destination("src", \%in);
+my @mods = split(/\0/, $in{'mods'});
 @mods || &error($text{'restore_emods'});
 
 # Do it ..
-($mode, $user, $pass, $server, $path, $port) = &parse_backup_url($src);
+my ($mode, $user, $pass, $server, $path, $port) = &parse_backup_url($src);
 if ($mode == 3) {
 	# Create temp file for uploaded file
-	$temp = &transname();
+	my $temp = &transname();
 	open(TEMP, ">$temp");
 	print TEMP $in{$path};
 	close(TEMP);
@@ -23,8 +26,9 @@ if ($mode == 3) {
 &ui_print_header(undef, $text{'restore_title'}, "");
 print &text($in{'test'} ? 'restore_testing' : 'restore_doing',
 	    &nice_dest($src)),"<p>\n";
-$err = &execute_restore(\@mods, $src, \@files, $in{'apply'}, $in{'test'});
-&unlink_file($temp) if ($mode == 3);
+my @files;
+my $err = &execute_restore(\@mods, $src, \@files, $in{'apply'}, $in{'test'});
+&unlink_file($src) if ($mode == 3);
 if ($err) {
 	print &text('restore_failed', $err),"<p>\n";
 	}

@@ -1,33 +1,38 @@
 #!/usr/local/bin/perl
 # Show all scheduled backups, and a form for doing an immediate one
 
+use strict;
+use warnings;
 require './backup-config-lib.pl';
+our (%text, %in, %config);
 &ReadParse();
+
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
-@mods = &list_backup_modules();
+my @mods = &list_backup_modules();
 if (!@mods) {
 	&ui_print_endpage($text{'index_emods'});
 	}
-%mods = map { $_->{'dir'}, $_ } @mods;
+my %mods = map { $_->{'dir'}, $_ } @mods;
 
 # Show tabs
-@tabs = ( [ "backup", $text{'index_tabbackup'}, "index.cgi?mode=backup" ],
-	  [ "sched", $text{'index_tabsched'}, "index.cgi?mode=sched" ],
-	  [ "restore", $text{'index_tabrestore'}, "index.cgi?mode=restore" ],
-	);
+my @tabs = ( [ "backup", $text{'index_tabbackup'}, "index.cgi?mode=backup" ],
+	     [ "sched", $text{'index_tabsched'}, "index.cgi?mode=sched" ],
+	     [ "restore", $text{'index_tabrestore'}, "index.cgi?mode=restore" ],
+	   );
 print &ui_tabs_start(\@tabs, "tab", $in{'mode'} || "backup", 1);
 
 print &ui_tabs_start_tab("tab", "sched");
-@backups = &list_backups();
+my @backups = &list_backups();
+my $using_strftime = 0;
 if (@backups) {
 	# Show all scheduled backups
 	print "<a href='edit.cgi?new=1'>$text{'index_add'}</a><br>\n";
 	print &ui_columns_start([ $text{'index_dest'},
 			    	  $text{'index_mods'},
 			    	  $text{'index_sched'} ], 100);
-	foreach $b (@backups) {
-		local @m = map { $mods{$_}->{'desc'} }
-			       split(/\s+/, $b->{'mods'});
+	foreach my $b (@backups) {
+		my @m = map { $mods{$_}->{'desc'} }
+			    split(/\s+/, $b->{'mods'});
 		print &ui_columns_row(
 			[ "<a href='edit.cgi?id=$b->{'id'}'>".
 			  &nice_dest($b->{'dest'})."</a>",
@@ -54,7 +59,7 @@ print &ui_tabs_start_tab("tab", "backup");
 print &ui_form_start("backup.cgi/backup.tgz", "post");
 print &ui_table_start($text{'index_header'}, undef, 2);
 
-@dmods = split(/\s+/, $config{'mods'});
+my @dmods = split(/\s+/, $config{'mods'});
 print &ui_table_row($text{'edit_mods'},
 		    &ui_select("mods", \@dmods,
 		       [ map { [ $_->{'dir'}, $_->{'desc'} ] } @mods ],
@@ -77,7 +82,6 @@ print &ui_tabs_start_tab("tab", "restore");
 print &ui_form_start("restore.cgi", "form-data");
 print &ui_table_start($text{'index_header2'}, undef, 2);
 
-@dmods = split(/\s+/, $config{'mods'});
 print &ui_table_row($text{'edit_mods2'},
 		    &ui_select("mods", \@dmods,
 		       [ map { [ $_->{'dir'}, $_->{'desc'} ] } @mods ],

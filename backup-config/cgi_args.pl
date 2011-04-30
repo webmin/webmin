@@ -1,4 +1,6 @@
 
+use strict;
+use warnings;
 do 'backup-config-lib.pl';
 
 sub cgi_args

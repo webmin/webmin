@@ -1,22 +1,29 @@
 #!/usr/local/bin/perl
 # Do an immediate backup
 
+use strict;
+use warnings;
 require './backup-config-lib.pl';
+our (%in, %text, %config, $module_config_file);
 &ReadParse();
 
 # Validate inputs
 &error_setup($text{'backup_err'});
-$dest = &parse_backup_destination("dest", \%in);
-($configfile, $nofiles, $others) = &parse_backup_what("what", \%in);
-@mods = split(/\0/, $in{'mods'});
+my $dest = &parse_backup_destination("dest", \%in);
+my ($configfile, $nofiles, $others) = &parse_backup_what("what", \%in);
+my @mods = split(/\0/, $in{'mods'});
 @mods || ($nofiles && !$configfile) || &error($text{'backup_emods'});
 
 # Go for it
-($mode, $user, $pass, $server, $path, $port) = &parse_backup_url($dest);
+my ($mode, $user, $pass, $server, $path, $port) = &parse_backup_url($dest);
+my $err;
 if ($mode != 4) {
 	# Save somewhere, and tell the user
 	&ui_print_header(undef, $text{'backup_title'}, "");
 	print &text('backup_doing', &nice_dest($dest, 1)),"<p>\n";
+	my $size;
+	my @files;
+	my @mods;
 	$err = &execute_backup(\@mods, $dest, \$size, \@files,
 			       $configfile, $nofiles,
 			       [ split(/\t+/, $others) ]);
@@ -31,7 +38,9 @@ if ($mode != 4) {
 	}
 else {
 	# Output file in browser
-	$temp = &transname();
+	my $temp = &transname();
+	my $size;
+	my @mods;
 	$err = &execute_backup(\@mods, $temp, \$size, undef,
 			       $configfile, $nofiles);
 	if ($err) {
@@ -39,6 +48,7 @@ else {
 		&error($err);
 		}
 	print "Content-type: application/octet-stream\n\n";
+	my $buf;
 	open(TEMP, $temp);
 	while(read(TEMP, $buf, 1024)) {
 		print $buf;
