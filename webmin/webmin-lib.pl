@@ -5,55 +5,62 @@ Common functions for configuring miniserv and adjusting global Webmin settings.
 =cut
 
 BEGIN { push(@INC, ".."); };
+use strict;
+use warnings;
 use WebminCore;
 &init_config();
+our ($module_root_directory, %text, %gconfig, $root_directory, %config,
+     $module_name, $remote_user, $base_remote_user, $gpgpath,
+     $module_config_directory, @lang_order_list, @root_directories);
 do "$module_root_directory/gnupg-lib.pl";
 use Socket;
 
-@cs_codes = ( 'cs_page', 'cs_text', 'cs_table', 'cs_header', 'cs_link' );
-@cs_names = map { $text{$_} } @cs_codes;
+our @cs_codes = ( 'cs_page', 'cs_text', 'cs_table', 'cs_header', 'cs_link' );
+our @cs_names = map { $text{$_} } @cs_codes;
 
-$osdn_host = "prdownloads.sourceforge.net";
-$osdn_port = 80;
+our $osdn_host = "prdownloads.sourceforge.net";
+our $osdn_port = 80;
 
-$update_host = "www.webmin.com";
-$update_port = 80;
-$update_page = "/updates/updates.txt";
-$update_url = "http://$update_host:$update_port$update_page";
-$redirect_url = "http://$update_host/cgi-bin/redirect.cgi";
-$update_cache = "$module_config_directory/update-cache";
+our $update_host = "www.webmin.com";
+our $update_port = 80;
+our $update_page = "/updates/updates.txt";
+our $update_url = "http://$update_host:$update_port$update_page";
+our $redirect_url = "http://$update_host/cgi-bin/redirect.cgi";
+our $update_cache = "$module_config_directory/update-cache";
 
-$webmin_key_email = "jcameron\@webmin.com";
-$webmin_key_fingerprint = "1719 003A CE3E 5A41 E2DE  70DF D97A 3AE9 11F6 3C51";
+our $webmin_key_email = "jcameron\@webmin.com";
+our $webmin_key_fingerprint = "1719 003A CE3E 5A41 E2DE  70DF D97A 3AE9 11F6 3C51";
 
-$standard_host = $update_host;
-$standard_port = $update_port;
-$standard_page = "/download/modules/standard.txt";
-$standard_ssl = 0;
+our $standard_host = $update_host;
+our $standard_port = $update_port;
+our $standard_page = "/download/modules/standard.txt";
+our $standard_ssl = 0;
 
-$third_host = $update_host;
-$third_port = $update_port;
-$third_page = "/cgi-bin/third.cgi";
-$third_ssl = 0;
+our $third_host = $update_host;
+our $third_port = $update_port;
+our $third_page = "/cgi-bin/third.cgi";
+our $third_ssl = 0;
 
-$default_key_size = "2048";
+our $default_key_size = "2048";
 
-$cron_cmd = "$module_config_directory/update.pl";
+our $cron_cmd = "$module_config_directory/update.pl";
 
-$os_info_address = "os\@webmin.com";
+our $os_info_address = "os\@webmin.com";
 
-$detect_operating_system_cache = "$module_config_directory/oscache";
+our $detect_operating_system_cache = "$module_config_directory/oscache";
 
-@webmin_date_formats = ( "dd/mon/yyyy", "dd/mm/yyyy",
-			 "mm/dd/yyyy", "yyyy/mm/dd",
-			 "d. mon yyyy", "dd.mm.yyyy", "yyyy-mm-dd" );
+our @webmin_date_formats = ( "dd/mon/yyyy", "dd/mm/yyyy",
+			     "mm/dd/yyyy", "yyyy/mm/dd",
+			     "d. mon yyyy", "dd.mm.yyyy", "yyyy-mm-dd" );
 
-@debug_what_events = ( 'start', 'read', 'write', 'ops', 'procs', 'diff', 'cmd', 'net', 'sql' );
+our @debug_what_events = ( 'start', 'read', 'write', 'ops', 'procs', 'diff', 'cmd', 'net', 'sql' );
 
-$record_login_cmd = "$config_directory/login.pl";
-$record_logout_cmd = "$config_directory/logout.pl";
+our $record_login_cmd = "$config_directory/login.pl";
+our $record_logout_cmd = "$config_directory/logout.pl";
 
-$strong_ssl_ciphers = "ALL:!aNULL:!ADH:!eNULL:!LOW:!EXP:RC4+RSA:+HIGH:+MEDIUM";
+our $strong_ssl_ciphers = "ALL:!aNULL:!ADH:!eNULL:!LOW:!EXP:RC4+RSA:+HIGH:+MEDIUM";
+
+our $newmodule_users_file = "$config_directory/newmodules";
 
 =head2 setup_ca
 
@@ -63,28 +70,32 @@ client SSL certificate CA.
 =cut
 sub setup_ca
 {
+my ($miniserv) = @_;
 my $adir = &module_root_directory("acl");
-my $conf = `cat $adir/openssl.cnf`;
+my $conf = &read_file_contents("$adir/openssl.cnf");
 my $acl = "$config_directory/acl";
 $conf =~ s/DIRECTORY/$acl/g;
 
 &lock_file("$acl/openssl.cnf");
-&open_tempfile(CONF, ">$acl/openssl.cnf");
-&print_tempfile(CONF, $conf);
-&close_tempfile(CONF);
+my $cfh;
+&open_tempfile($cfh, ">$acl/openssl.cnf");
+&print_tempfile($cfh, $conf);
+&close_tempfile($cfh);
 chmod(0600, "$acl/openssl.cnf");
 &unlock_file("$acl/openssl.cnf");
 
 &lock_file("$acl/index.txt");
-&open_tempfile(INDEX, ">$acl/index.txt");
-&close_tempfile(INDEX);
+my $ifh;
+&open_tempfile($ifh, ">$acl/index.txt");
+&close_tempfile($ifh);
 chmod(0600, "$acl/index.txt");
 &unlock_file("$acl/index.txt");
 
 &lock_file("$acl/serial");
-&open_tempfile(SERIAL, ">$acl/serial");
-&print_tempfile(SERIAL, "011E\n");
-&close_tempfile(SERIAL);
+my $sfh;
+&open_tempfile($sfh, ">$acl/serial");
+&print_tempfile($sfh, "011E\n");
+&close_tempfile($sfh);
 chmod(0600, "$acl/serial");
 &unlock_file("$acl/serial");
 
@@ -92,7 +103,7 @@ chmod(0600, "$acl/serial");
 mkdir("$acl/newcerts", 0700);
 chmod(0700, "$acl/newcerts");
 &unlock_file("$acl/newcerts");
-$miniserv{'ca'} = "$acl/ca.pem";
+$miniserv->{'ca'} = "$acl/ca.pem";
 }
 
 =head2 list_themes
@@ -103,14 +114,14 @@ corresponding to the theme.info file.
 =cut
 sub list_themes
 {
-my (@rv, $o);
+my @rv;
 opendir(DIR, $root_directory);
-foreach $m (readdir(DIR)) {
+foreach my $m (readdir(DIR)) {
 	my %tinfo;
 	next if ($m =~ /^\./);
 	next if (!&read_file_cached("$root_directory/$m/theme.info", \%tinfo));
 	next if (!&check_os_support(\%tinfo));
-	foreach $o (@lang_order_list) {
+	foreach my $o (@lang_order_list) {
 		if ($tinfo{'desc_'.$o}) {
 			$tinfo{'desc'} = $tinfo{'desc_'.$o};
 			}
@@ -142,6 +153,7 @@ my (@newmods, $m);
 my $install_root_directory = $gconfig{'install_root'} || $root_directory;
 
 # Uncompress the module file if needed
+my $two;
 open(MFILE, $file);
 read(MFILE, $two, 2);
 close(MFILE);
@@ -201,11 +213,12 @@ my ($type, $redirect_to);
 open(TYPE, "$root_directory/install-type");
 chop($type = <TYPE>);
 close(TYPE);
+my $out;
 if ($type eq 'rpm' && $file =~ /\.rpm$/i &&
-    ($out = `rpm -qp $file 2>/dev/null`)) {
+    ($out = &backquote_command("rpm -qp $file 2>/dev/null"))) {
 	# Looks like an RPM of some kind, hopefully an RPM webmin module
 	# or theme
-	my (%minfo, %tinfo);
+	my (%minfo, %tinfo, $name);
 	if ($out !~ /(^|\n)(wbm|wbt)-([a-z\-]+[a-z])/) {
 		unlink($file) if ($need_unlink);
 		return $text{'install_erpm'};
@@ -253,7 +266,7 @@ else {
 		unlink($file) if ($need_unlink);
 		return &text('install_etar', $tar);
 		}
-	foreach $f (split(/\n/, $tar)) {
+	foreach my $f (split(/\n/, $tar)) {
 		if ($f =~ /^\.\/([^\/]+)\/(.*)$/ || $f =~ /^([^\/]+)\/(.*)$/) {
 			$redirect_to = $1 if (!$redirect_to);
 			$mods{$1}++;
@@ -298,7 +311,7 @@ else {
 		elsif (!$nodeps) {
 			my $deps = $minfo{'webmin_depends'} ||
 				      $minfo{'depends'};
-			foreach $dep (split(/\s+/, $deps)) {
+			foreach my $dep (split(/\s+/, $deps)) {
 				if ($dep =~ /^[0-9\.]+$/) {
 					# Depends on some version of webmin
 					if ($dep > $ver) {
@@ -328,7 +341,7 @@ else {
 					        "<tt>$m</tt>", "<tt>$dep</tt>");
 					}
 				}
-			foreach $dep (split(/\s+/, $minfo{'perldepends'})) {
+			foreach my $dep (split(/\s+/, $minfo{'perldepends'})) {
 				eval "use $dep";
 				if ($@) {
 					$err = &text('install_eperldep',
@@ -366,7 +379,7 @@ else {
 	if ($need_unlink) { unlink($file); }
 	my $perl = &get_perl_path();
 	my @st = stat("$module_root_directory/index.cgi");
-	foreach $moddir (keys %mods) {
+	foreach my $moddir (keys %mods) {
 		my $pwd = &module_root_directory($moddir);
 		if ($hasfile{$moddir,"module.info"}) {
 			my %minfo = &get_module_info($moddir);
@@ -390,7 +403,7 @@ else {
 		}
 
 	# Copy appropriate config file from modules to /etc/webmin
-	local @permmods = grep { !-d "$config_directory/$_" } @newmods;
+	my @permmods = grep { !-d "$config_directory/$_" } @newmods;
 	system("cd $root_directory ; $perl $root_directory/copyconfig.pl '$gconfig{'os_type'}/$gconfig{'real_os_type'}' '$gconfig{'os_version'}/$gconfig{'real_os_version'}' '$install_root_directory' '$config_directory' ".join(' ', @realmods)." >/dev/null");
 
 	# Set correct permissions on *new* config directory
@@ -432,24 +445,24 @@ sub grant_user_module
 # Grant to appropriate users
 my %acl;
 &read_acl(undef, \%acl);
-&open_tempfile(ACL, ">".&acl_filename()); 
+my $fh;
+&open_tempfile($fh, ">".&acl_filename()); 
 my $u;
 foreach $u (keys %acl) {
 	my @mods = @{$acl{$u}};
 	if (!$_[0] || &indexof($u, @{$_[0]}) >= 0) {
 		@mods = &unique(@mods, @{$_[1]});
 		}
-	&print_tempfile(ACL, "$u: ",join(' ', @mods),"\n");
+	&print_tempfile($fh, "$u: ",join(' ', @mods),"\n");
 	}
-&close_tempfile(ACL);
+&close_tempfile($fh);
 
 # Grant to appropriate groups
 if ($_[1] && &foreign_check("acl")) {
 	&foreign_require("acl", "acl-lib.pl");
-	local @groups = &acl::list_groups();
-	local @users = &acl::list_users();
-	my $g;
-	foreach $g (@groups) {
+	my @groups = &acl::list_groups();
+	my @users = &acl::list_users();
+	foreach my $g (@groups) {
 		if (&indexof($g->{'name'}, @{$_[0]}) >= 0) {
 			$g->{'modules'} = [ &unique(@{$g->{'modules'}},
 					    	    @{$_[1]}) ];
@@ -470,7 +483,7 @@ removed too.
 =cut
 sub delete_webmin_module
 {
-local $m = $_[0];
+my $m = $_[0];
 return undef if (!$m);
 my %minfo = &get_module_info($m);
 %minfo = &get_theme_info($m) if (!%minfo);
@@ -493,11 +506,10 @@ else {
 	my @clones;
 	my $mdir = &module_root_directory($m);
 	my @mst = stat($mdir);
-	my $r;
-	foreach $r (@root_directories) {
+	foreach my $r (@root_directories) {
 		opendir(DIR, $r);
-		foreach $l (readdir(DIR)) {
-			@lst = stat("$r/$l");
+		foreach my $l (readdir(DIR)) {
+			my @lst = stat("$r/$l");
 			if (-l "$r/$l" && $lst[1] == $mst[1]) {
 				unlink("$r/$l");
 				system("rm -rf $config_directory/$l");
@@ -507,6 +519,7 @@ else {
 		closedir(DIR);
 		}
 
+	my $type;
 	open(TYPE, "$mdir/install-type");
 	chop($type = <TYPE>);
 	close(TYPE);
@@ -579,7 +592,7 @@ Returns the part of a filename after the last /.
 =cut
 sub file_basename
 {
-local $rv = $_[0];
+my $rv = $_[0];
 $rv =~ s/^.*[\/\\]//;
 return $rv;
 }
@@ -597,14 +610,15 @@ return ( 1, &text('enogpg', "<tt>gpg</tt>") ) if (!&has_command($gpgpath));
 
 # Check if we already have the key
 my @keys = &list_keys();
-foreach $k (@keys) {
+foreach my $k (@keys) {
 	return ( 0 ) if ($k->{'email'}->[0] eq $webmin_key_email &&
 		         &key_fingerprint($k) eq $webmin_key_fingerprint);
 	}
 
 # Import it if not
 &list_keys();
-$out = `$gpgpath --import $module_root_directory/jcameron-key.asc 2>&1`;
+my $out = &backquote_logged(
+	"$gpgpath --import $module_root_directory/jcameron-key.asc 2>&1");
 if ($?) {
 	return (2, $out);
 	}
@@ -637,7 +651,7 @@ my @rv;
 open(TEMP, $temp);
 while(<TEMP>) {
 	s/\r|\n//g;
-	local @l = split(/\t+/, $_);
+	my @l = split(/\t+/, $_);
 	push(@rv, \@l);
 	}
 close(TEMP);
@@ -682,7 +696,7 @@ my @rv;
 open(TEMP, $temp);
 while(<TEMP>) {
 	s/\r|\n//g;
-	local @l = split(/\t+/, $_);
+	my @l = split(/\t+/, $_);
 	push(@rv, \@l);
 	}
 close(TEMP);
@@ -721,8 +735,6 @@ sub base_version
 return sprintf("%.2f0", $_[0] - 0.005);
 }
 
-$newmodule_users_file = "$config_directory/newmodules";
-
 =head2 get_newmodule_users
 
 Returns a ref to an array of users to whom new modules are granted by default,
@@ -755,11 +767,12 @@ sub save_newmodule_users
 {
 &lock_file($newmodule_users_file);
 if ($_[0]) {
-	&open_tempfile(NEWMODS, ">$newmodule_users_file");
-	foreach $u (@{$_[0]}) {
-		&print_tempfile(NEWMODS, "$u\n");
+	my $fh;
+	&open_tempfile($fh, ">$newmodule_users_file");
+	foreach my $u (@{$_[0]}) {
+		&print_tempfile($fh, "$u\n");
 		}
-	&close_tempfile(NEWMODS);
+	&close_tempfile($fh);
 	}
 else {
 	unlink($newmodule_users_file);
@@ -778,7 +791,7 @@ sub get_miniserv_sockets
 {
 my @sockets;
 push(@sockets, [ $_[0]->{'bind'} || "*", $_[0]->{'port'} ]);
-foreach $s (split(/\s+/, $_[0]->{'sockets'})) {
+foreach my $s (split(/\s+/, $_[0]->{'sockets'})) {
 	if ($s =~ /^(\d+)$/) {
 		# Just listen on another port on the main IP
 		push(@sockets, [ $sockets[0]->[0], $s ]);
@@ -922,8 +935,8 @@ as returned by cron::list_cron_jobs
 =cut
 sub find_cron_job
 {
-local ($job) = grep { $_->{'user'} eq 'root' &&
-		      $_->{'command'} eq $cron_cmd } @{$_[0]};
+my ($job) = grep { $_->{'user'} eq 'root' &&
+		   $_->{'command'} eq $cron_cmd } @{$_[0]};
 return $job;
 }
 
@@ -934,8 +947,8 @@ Returns a list of IP address to key file mappings from a miniserv.conf entry.
 =cut
 sub get_ipkeys
 {
-my (@rv, $k);
-foreach $k (keys %{$_[0]}) {
+my @rv;
+foreach my $k (keys %{$_[0]}) {
 	if ($k =~ /^ipkey_(\S+)/) {
 		my $ipkey = { 'ips' => [ split(/,/, $1) ],
 				 'key' => $_[0]->{$k},
@@ -977,7 +990,7 @@ line.
 =cut
 sub validate_key_cert
 {
-local $key = &read_file_contents($_[0]);
+my $key = &read_file_contents($_[0]);
 $key =~ /BEGIN RSA PRIVATE KEY/i ||
     $key =~ /BEGIN PRIVATE KEY/i ||
 	&error(&text('ssl_ekey', $_[0]));
@@ -985,7 +998,7 @@ if (!$_[1]) {
 	$key =~ /BEGIN CERTIFICATE/ || &error(&text('ssl_ecert', $_[0]));
 	}
 else {
-	local $cert = &read_file_contents($_[1]);
+	my $cert = &read_file_contents($_[1]);
 	$cert =~ /BEGIN CERTIFICATE/ || &error(&text('ssl_ecert', $_[1]));
 	}
 }
@@ -998,8 +1011,8 @@ real_os_version, suitable for the current system.
 =cut
 sub detect_operating_system
 {
-local $file = $_[0] || "$root_directory/os_list.txt";
-local $cache = $_[1];
+my $file = $_[0] || "$root_directory/os_list.txt";
+my $cache = $_[1];
 if ($cache) {
 	# Check the cache file, and only re-check the OS if older than
 	# 1 day, or if we have rebooted recently
@@ -1074,8 +1087,8 @@ my $warn_days = $config{'warn_days'};
 if (&foreign_check("acl")) {
 	# Get the Webmin user
 	&foreign_require("acl", "acl-lib.pl");
-	local @users = &acl::list_users();
-	local ($uinfo) = grep { $_->{'name'} eq $base_remote_user } @users;
+	my @users = &acl::list_users();
+	my ($uinfo) = grep { $_->{'name'} eq $base_remote_user } @users;
 	if ($uinfo && $uinfo->{'pass'} eq 'x' && &foreign_check("useradmin")) {
 		# Unix auth .. check password in Users and Groups
 		&foreign_require("useradmin", "user-lib.pl");
@@ -1174,8 +1187,8 @@ if (&foreign_available($module_name) && !$noupdates) {
 	if (!@st || $now - $st[9] > 24*60*60) {
 		# Need to re-fetch cache
 		foreach my $url (@urls) {
-			$checksig = $config{'upchecksig'} ? 2 :
-				    $url eq $update_url ? 2 : 1;
+			my $checksig = $config{'upchecksig'} ? 2 :
+				       $url eq $update_url ? 2 : 1;
 			eval {
 				local $main::error_must_die = 1;
 				my ($updates) = &fetch_updates($url,
@@ -1184,9 +1197,10 @@ if (&foreign_available($module_name) && !$noupdates) {
 				push(@$allupdates, @$updates);
 				};
 			}
-		&open_tempfile(UPCACHE, ">$update_cache", 1);
-		&print_tempfile(UPCACHE, &serialise_variable($allupdates));
-		&close_tempfile(UPCACHE);
+		my $fh;
+		&open_tempfile($fh, ">$update_cache", 1);
+		&print_tempfile($fh, &serialise_variable($allupdates));
+		&close_tempfile($fh);
 		}
 	else {
 		# Just use cache
@@ -1282,7 +1296,7 @@ Returns a list of known OSs, each of which is a hash ref with keys :
 =cut
 sub list_operating_systems
 {
-local $file = $_[0] || "$root_directory/os_list.txt";
+my $file = $_[0] || "$root_directory/os_list.txt";
 my @rv;
 open(OSLIST, $file);
 while(<OSLIST>) {
@@ -1348,7 +1362,7 @@ if (!&foreign_installed("mailboxes", 1)) {
 	return $text{'submit_emailboxes'};
 	}
 &foreign_require("mailboxes", "mailboxes-lib.pl");
-local $mail = { 'headers' => [ [ 'From', &mailboxes::get_from_address() ],
+my $mail = {    'headers' => [ [ 'From', &mailboxes::get_from_address() ],
 			       [ 'To', $os_info_address ],
 			       [ 'Subject', 'Webmin OS Information' ] ],
 		'attach' => [ {
@@ -1388,12 +1402,11 @@ returns 1 if a match is found.
 =cut
 sub ip_match
 {
-local(@io, @mo, @ms, $i, $j);
-@io = &check_ip6address($_[0]) ? split(/:/, $_[0])
-			       : split(/\./, $_[0]);
+my @io = &check_ip6address($_[0]) ? split(/:/, $_[0])
+			          : split(/\./, $_[0]);
 
 # Resolve to hostname and check that it forward resolves again
-$hn = &to_hostname($_[0]);
+my $hn = &to_hostname($_[0]);
 if (&check_ip6address($_[0])) {
 	$hn = "" if (&to_ip6address($hn) ne $_[0]);
 	}
@@ -1401,17 +1414,18 @@ else {
 	$hn = "" if (&to_ipaddress($hn) ne $_[0]);
 	}
 
-for($i=1; $i<@_; $i++) {
+for(my $i=1; $i<@_; $i++) {
 	my $mismatch = 0;
-	local $ip = $_[$i];
+	my $ip = $_[$i];
         if ($ip =~ /^(\S+)\/(\d+)$/) {
                 # Convert CIDR to netmask format
                 $ip = $1."/".&prefix_to_mask($2);
                 }
 	if ($ip =~ /^(\S+)\/(\S+)$/) {
 		# Compare with IPv4 network/mask
-		@mo = split(/\./, $1); @ms = split(/\./, $2);
-		for($j=0; $j<4; $j++) {
+		my @mo = split(/\./, $1);
+		my @ms = split(/\./, $2);
+		for(my $j=0; $j<4; $j++) {
 			if ((int($io[$j]) & int($ms[$j])) != int($mo[$j])) {
 				$mismatch = 1;
 				}
@@ -1426,9 +1440,9 @@ for($i=1; $i<@_; $i++) {
 		}
 	elsif ($_[$i] =~ /^[0-9\.]+$/) {
 		# Compare with IPv4 address or network
-		@mo = split(/\./, $_[$i]);
+		my @mo = split(/\./, $_[$i]);
 		while(@mo && !$mo[$#mo]) { pop(@mo); }
-		for($j=0; $j<@mo; $j++) {
+		for(my $j=0; $j<@mo; $j++) {
 			if ($mo[$j] != $io[$j]) {
 				$mismatch = 1;
 				}
@@ -1436,9 +1450,9 @@ for($i=1; $i<@_; $i++) {
 		}
 	elsif ($_[$i] =~ /^[a-f0-9:]+$/) {
 		# Compare with IPv6 address or network
-		@mo = split(/:/, $_[$i]);
+		my @mo = split(/:/, $_[$i]);
 		while(@mo && !$mo[$#mo]) { pop(@mo); }
-		for($j=0; $j<@mo; $j++) {
+		for(my $j=0; $j<@mo; $j++) {
 			if ($mo[$j] ne $io[$j]) {
 				$mismatch = 1;
 				}
@@ -1519,7 +1533,7 @@ a package name and the relative path of the .pl file to pre-load.
 =cut
 sub get_preloads
 {
-local @rv = map { [ split(/=/, $_) ] } split(/\s+/, $_[0]->{'preload'});
+my @rv = map { [ split(/=/, $_) ] } split(/\s+/, $_[0]->{'preload'});
 return @rv;
 }
 
@@ -1629,7 +1643,7 @@ my @rv;
 opendir(DIR, $main::http_cache_directory);
 foreach my $cfile (readdir(DIR)) {
 	next if ($cfile eq "." || $cfile eq "..");
-	$curl = $cfile;
+	my $curl = $cfile;
 	$curl =~ s/_/\//g;
 	push(@rv, [ $cfile, "$main::http_cache_directory/$cfile", $curl ]);
 	}
@@ -1704,7 +1718,7 @@ other keys.
 sub cert_pem_data
 {
 my ($d) = @_;
-local $data = &read_file_contents($_[0]);
+my $data = &read_file_contents($_[0]);
 if ($data =~ /(-----BEGIN\s+CERTIFICATE-----\n([A-Za-z0-9\+\/=\n\r]+)-----END\s+CERTIFICATE-----)/) {
 	return $1;
 	}
@@ -1728,6 +1742,7 @@ else {
 	open(OUT, "openssl pkcs12 -in ".quotemeta($keyfile).
 		  " -export -passout pass: -nokeys |");
 	}
+my $data;
 while(<OUT>) {
 	$data .= $_;
 	}
@@ -1750,16 +1765,17 @@ if (!$bf) {
 	$bf = "$1/blocked";
 	}
 my @rv;
-&open_readfile(BLOCKED, $bf);
-while(<BLOCKED>) {
+my $fh;
+&open_readfile($fh, $bf);
+while(<$fh>) {
 	s/\r|\n//g;
-	local ($type, $who, $fails, $when) = split(/\s+/, $_);
+	my ($type, $who, $fails, $when) = split(/\s+/, $_);
 	push(@rv, { 'type' => $type,
 		    $type => $who,
 		    'fails' => $fails,
 		    'when' => $when });
 	}
-close(BLOCKED);
+close($fh);
 return @rv;
 }
 
@@ -1827,7 +1843,7 @@ $in{'countryName'} =~ /^\S\S$/ || return $text{'newkey_ecountry'};
 # Work out SSL command
 my %aclconfig = &foreign_config('acl');
 &foreign_require("acl", "acl-lib.pl");
-local $cmd = &acl::get_ssleay();
+my $cmd = &acl::get_ssleay();
 if (!$cmd) {
 	return &text('newkey_ecmd', "<tt>$aclconfig{'ssleay'}</tt>",
 		     "$gconfig{'webprefix'}/config.cgi?acl");
@@ -1859,20 +1875,21 @@ my $certout = &read_file_contents($ctemp);
 my $keyout = &read_file_contents($ktemp);
 unlink($ctemp, $ktemp);
 
-&open_lock_tempfile(KEYFILE, ">$keyfile");
-&print_tempfile(KEYFILE, $keyout);
+my ($kfh, $cfh);
+&open_lock_tempfile($kfh, ">$keyfile");
+&print_tempfile($kfh, $keyout);
 if ($certfile) {
 	# Separate files
-	&open_lock_tempfile(CERTFILE, ">$certfile");
-	&print_tempfile(CERTFILE, $certout);
-	&close_tempfile(CERTFILE);
+	&open_lock_tempfile($cfh, ">$certfile");
+	&print_tempfile($cfh, $certout);
+	&close_tempfile($cfh);
 	&set_ownership_permissions(undef, undef, 0600, $certfile);
 	}
 else {
 	# Both go in the same file
-	&print_tempfile(KEYFILE, $certout);
+	&print_tempfile($kfh, $certout);
 	}
-&close_tempfile(KEYFILE);
+&close_tempfile($kfh);
 &set_ownership_permissions(undef, undef, 0600, $keyfile);
 
 return undef;
