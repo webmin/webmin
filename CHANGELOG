@@ -143,3 +143,5 @@ Allow per-language language overrides to be defined, in custom-lang.$code files.
 Updated numerous modules to improve support for Debian 6 and Ubuntu 10.10.
 If a browser asks for gzip compression, Webmin can now return compressed content either generated dynamically or from a pre-compressed .gz file in the same directory. Dynamic compression depends on the Compress::Zlib perl module.
 Added support for Amazon Linux.
+---- Changes since 1.550 ----
+Catalan updates, thanks to Jaume Badiella.
