@@ -133,3 +133,4 @@ user_return=a la configuració de l'usuari
 
 email_ok=Sortida de fetchmail
 email_failed=Error de fetchmail
+__norefs=1

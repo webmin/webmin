@@ -61,6 +61,7 @@ download_missing=Hi falten $1 mòduls
 download_nomissing=Tot instal·lat
 download_ebuild=Un o més dels mòduls de Perl necessiten $1 per compilar-se, però aquest mòdul no està instal·lat.
 download_yum=S'està instal·lant el mòdul Perl $1 del paquet $2...
+download_missingok=Mòduls que falten de CPAN
 
 install_title=Instal·lació de Mòdul
 install_untar=S'està desempaquetant el fitxer del mòdul
@@ -120,3 +121,4 @@ uninstalls_err=No s'han pogut desinstal·lar els mòduls
 uninstalls_enone=No n'hi ha cap de seleccionat
 uninstalls_emod=$1 ha fallat: $2
 uninstalls_rusure=Segur que vols desisnstal·lar els $1 mòduls seleccionats? S'eliminaran $2 submòduls i $3 fitxers.
+__norefs=1

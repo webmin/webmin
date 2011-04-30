@@ -344,3 +344,4 @@ rename_header=Opcions de renomenament de la cadena
 rename_adjust=Modifica les altres regles que salten a aquesta cadena
 rename_none=Cap
 rename_ecannot=No tens permís per renomenar cadenes
+__norefs=1

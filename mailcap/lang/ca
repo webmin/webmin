@@ -44,3 +44,4 @@ log_modify_mailcap=S'ha modificat el programa de tipus MIME per a $1
 log_delete_mailcaps=S'han suprimit $1 programes de tipus MIME
 log_disable_mailcaps=S'han desactivat $1 programes de tipus MIME
 log_enable_mailcaps=S'han activat $1 programes de tipus MIME
+__norefs=1

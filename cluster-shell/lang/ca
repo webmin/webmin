@@ -19,3 +19,4 @@ run_enone=No has seleccionat cap servidor per executar
 log_clear=S'ha netejat l'historial d'ordres
 log_run=S'ha executat $1 a $2 servidors
 log_run_l=S'ha executat $1 a $2
+__norefs=1

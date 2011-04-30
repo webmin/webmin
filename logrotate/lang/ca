@@ -58,7 +58,7 @@ edit_errorsno=Ningú
 edit_errorsto=L'adreça o usuari
 edit_post=Ordres a executar després de la rotació
 edit_pre=Ordres a executar abans de la rotació
-edit_default=$default ($1)
+edit_default=Per defecte ($1)
 edit_sharedscripts=Executa els scripts només una vegada per a tots els fitxers
 edit_now=Fes la Rotació Ara
 
@@ -108,3 +108,4 @@ force_failed=...ha fallat! Vegeu la sortida de sobre per saber-ne el perquè.
 delete_err=No s'han pogut suprimir els registres
 delete_enone=No has seleccionar cap registre
 
+__norefs=1

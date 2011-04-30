@@ -24,4 +24,4 @@ log_delete_record=S'han suprimit $1 registre(s) $2 de la zona $3
 log_create_record=S'han creat $1 registre(s) $2 a la zona $3
 log_modify_record=S'han modificat $1 registre(s) $2 de la zona $3
 log_boot=S'ha creat el fitxer de configuració primari
-
+__norefs=1

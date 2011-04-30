@@ -23,6 +23,7 @@ short_names=Converteix els noms de registres a la forma canònica,1,0-Sí,1-No
 extra_forward=Tipus de registres extra de les zones de reenviament,0
 extra_reverse=Tipus de registres extra de les zones inverses,0
 largezones=Mostra els registres de les zones,1,0-Sí,1-No (per a zones grans)
+default_view=Vista per defecte de les zones noves,3,La primera de la llista
 
 line2=Opcions de fitxer de zona,11
 soa_style=Estil del número sèrie,1,0-Número incremental,1-Basat en la data (AAAAMMDDnn),2-Hora Unix

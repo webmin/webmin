@@ -265,4 +265,4 @@ disk_size=Mida
 disk_dsize=<b>Mida del disc:</b> $1
 disk_model=<b>Fabricant i model:</b> $1
 disk_cylinders=<b>Cilindres:</b> $1
-
+__norefs=1

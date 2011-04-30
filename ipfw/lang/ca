@@ -235,3 +235,4 @@ add_emissing=EL servidor $1 no té la configuració del tallafocs IPFW
 add_ok=S'ha afegit $1, amb $2 regles del tallafocs actives.
 
 
+__norefs=1

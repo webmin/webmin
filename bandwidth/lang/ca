@@ -81,4 +81,4 @@ syslog_syslog-ng=Syslog-NG
 rotate_title=Actualització d'Estadístiques
 rotate_doing=S'està processant el trànsit de xarxa registrat...
 rotate_done=...fet.
-
+__norefs=1

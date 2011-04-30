@@ -276,6 +276,7 @@ edit_dok=Sí, Suprimeix-lo
 edit_eptr='$1' no és un nom de host de registre d'adreça inversa vàlid
 edit_espfa='$1' no és un host destinació vàlid
 edit_espfmx='$1' no és un nom de domini destinació vàlid
+edit_espfmxmax=No tens permís per tenir més de 10 dominis des dels quals enviar MX
 edit_espfip='$1' no és una adreça IP o IP/prefix destinació vàlida
 edit_espfip6='$1' no és una adreça IPv6 p IPv6/prefix remitent vàlida
 edit_espfinclude='$1' no és un domini addicional remitent vàlid
@@ -1108,4 +1109,4 @@ trusted_ealg=Hi falta el número d'algoritme a la fila $1 o bé és invàlid
 trusted_ekey=Hi falta la clau de zona fiable codificada en base-64 a la fila $1 o bé és invàlida
 trusted_setup=Per tal que DNSSEC sigui útil per a verificar la majoria de zones signades a Internet, s'ha de configurar BIND per a utilitzar un servidor DLV. Webmin pot configurar-ho per tu, utilitzant el servidor DLV ICS DLV a $1.
 trusted_ok=Configura DLV i Activa la Verificació de DNSSEC
-
+__norefs=1

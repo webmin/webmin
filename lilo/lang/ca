@@ -95,3 +95,4 @@ log_apply=S'ha aplicat la configuració
 log_global=S'han canviat les opcions globals
 
 
+__norefs=1

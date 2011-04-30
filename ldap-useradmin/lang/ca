@@ -94,3 +94,4 @@ raw_for=De $1
 batch_samba=Crea un compte Samba per als usuaris nous
 batch_descafter3=A les línies <b>create</b> i <b>modify</b>, hi pots afegir de forma opcional camps extra que continguin atributs LDAP en la forma <i>name</i>=<i>valor</i>, per assignar-los als usuaris nous o modificats.
 batch_eattr=Atribut LDAP invàlid a la línia $1: $2
+__norefs=1

@@ -320,3 +320,4 @@ update_onhost=Resultats de l'actualització a $1...
 update_failed=...l'actualització ha fallat a $1
 update_none=...no s'ha trobat cap actualització.
 
+__norefs=1

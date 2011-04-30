@@ -53,9 +53,9 @@ edit_anonuid=Tracta els usuaris no fiables com
 edit_default=Defecte
 edit_anongid=Tracta els grups no fiables com
 edit_sync=Sincronitza totes les escriptures immediatament
-edit_sync1=$yes
-edit_sync2=$no
-edit_sync0=$default
+edit_sync1=Sí
+edit_sync2=No
+edit_sync0=Per defecte
 edit_in=en
 
 save_err=No s'ha pogut desar l'exportació
@@ -85,3 +85,4 @@ log_create=S'ha creat l'exportació NFS $1
 log_create_l=S'ha creat l'exportació NFS $1 a $2
 log_apply=S'ha aplicat la configuració
 log_delete_exports=S'han suprimit $1 exportacions NFS
+__norefs=1

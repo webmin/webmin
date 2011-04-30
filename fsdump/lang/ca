@@ -227,3 +227,4 @@ email_failed=La còpia ha fallat!
 
 newtape_subject=Canvi de la cinta $1 per a la còpia de $2 a $3
 newtape_body=La còpia de $2 a $3 ha atès la quantitat màxima de dades permesa a la cinta $1. Has de posar una nova cinta i prémer l'enllaç 'Cinta carregada' al mòdul de Còpia de Sistemes de Fitxers de Webmin per seguir amb la còpia.
+__norefs=1

@@ -9,3 +9,4 @@ nobody_group=Grup nobody
 save=Desa la configuració i reinicia el dimoni
 save_err=No s'ha pogut desar el fitxer de configuració $1
 error_dir=El directory $1 no existeix
+__norefs=1

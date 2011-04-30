@@ -314,4 +314,4 @@ add_echeck=El servidor $1 no té el mòdul d'Administració d'Impressores
 add_ediff=El servidor $1 està utilitzant un sistema d'impressió ($2) diferent del d'aquest servidor
 add_ediff2=El servidor $1 està utilitzant un controlador d'impressió ($2) diferent del d'aquest servidor
 add_ok=S'ha afegit $1, amb $2 impressores.
-
+__norefs=1

@@ -102,3 +102,4 @@ start_err=No s'ha pogut iniciar heartbeat
 apply_err=No s'han pogut aplicar els canvis
 apply_epid=El procés ja no esta`en execució
 
+__norefs=1

@@ -36,3 +36,4 @@ acl_lang=Pot canviar l'idioma
 acl_theme=Pot canviar el tema
 acl_pass=Pot canviar la contrasenya (si està establerta a Webmin)
 
+__norefs=1

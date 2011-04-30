@@ -119,3 +119,4 @@ stop_err=No s'ha pogut aturar Jabber
 stop_epid=No s'ha pogut trobar el procés de Jabber
 start_err=No s'ha pogut iniciar Jabber
 
+__norefs=1

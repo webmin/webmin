@@ -152,7 +152,7 @@ listl_start=Data Inicial
 listl_end=Data Final
 listl_return=a la llista de hosts i xarxes
 listl_all=Llista tots els préstecs actius i expirats
-listl_delete2=Fes clic sobre l'adreça IP d'un dels préstecs de la llista de dalt per suprimir-lo.
+listl_delete=Suprimeix els Préstecs Seleccionats
 listl_unknown=Desconeguts
 listl_allocs=$1 adreces IP disponibles, $2 allotjades ($3 %)
 listl_mode=Mode de mostra:
@@ -161,6 +161,8 @@ listl_mode_1=Subxarxes i ús
 listl_size=Total d'IPs
 listl_used=Allotjades
 listl_pc=Percentatge
+listl_err=No s'han pogut suprimir els préstecs
+listl_enone=No n'has seleccionat cap
 
 restart_errmsg1=No s'ha pogut reiniciar dhcpd
 restart_errmsg2=No s'ha pogut enviar el senyal al procés
@@ -451,8 +453,8 @@ text_return=al menú principal
 text_undo=desfés
 text_ecannot=No tens permís permís per editar el fitxer de configuració
 
-index_buttetext=Fitxer de configuració
-index_text=Edita el fitxer de configuració a l'editor de text (compte!)
+index_buttetext=Edita Manualment la Configuració
+index_text=Edita el fitxer de configuració manualment
 
 stop_err=No s'ha pogut aturar el servidor DHCP
 stop_ekill=No està en execució!
@@ -474,3 +476,4 @@ hdelete_rusure3=Segur que vols suprimir els $2 grups seleccionats? També es perd
 hdelete_ok=Suprimeix-los Ara
 
 
+__norefs=1

@@ -15,3 +15,4 @@ default_admin=Servidor d'administració
 default_domain=Nom de domini per defecte
 
 save=Actualitza la Configuració
+__norefs=1

@@ -47,3 +47,4 @@ save_esame1=El directori <tt>$1</tt> ja està exportat a <tt>$2</tt>. El sistema 
 save_esame2=El directori <tt>$1</tt> ja està exportat a <tt>$2</tt>. El sistema operatiu no permet que els directoris del mateix sistema de fitxers <i>local</i> siguin exportats a la mateixa xarxa per separat
 
 restart_err=No s'han pogut aplicar els canvis
+__norefs=1

@@ -48,6 +48,7 @@ edit_weekdays=Dies de la Setmana
 edit_all=Tots
 edit_selected=Seleccionats ...
 edit_run=Executa-ho Ara
+edit_saverun=Desa-ho i Executa-ho Ara
 edit_clone=Clona el Treball
 edit_return=al treball cron
 edit_ctrl=Nota: Fes Ctrl-clic (o command-click al Mac) per a seleccionar i deseleccionar minuts, hores, dies i mesos.
@@ -176,3 +177,4 @@ range_eend=Hi falta la data final de l'interval o bé és invàlida
 
 delete_err=No s'han pogut suprimir els treballs Cron
 delete_enone=No has seleccionat res
+__norefs=1

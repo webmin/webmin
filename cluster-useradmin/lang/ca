@@ -164,3 +164,4 @@ log_add_group=S'han afegit els usuaris i els grups dels hosts al grup $1
 log_refresh=S'han refrescat els usuaris i els grups
 log_sync=S'han sincronitzat els els usuaris i els grups
 
+__norefs=1

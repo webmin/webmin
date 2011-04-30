@@ -71,6 +71,7 @@ lv_stripe=Volum a tires
 lv_nostripe=Desactivat (allotja sempre de bon principi)
 lv_stripes=Fes tires a través de $1 volums físics
 lv_stripes2=Volums físics per fer a tires
+lv_stripesize=Mida de la tira
 lv_err=No s'ha pogut desar el volum lògic
 lv_ename=Hi falta el nom del volum o bé no és vàlid
 lv_esame=Ja existeix un volum lògic amb el mateix nom
@@ -178,4 +179,4 @@ log_resize_pv=S'ha canviat la mida del volum físic $1 al GV $2
 log_delete_pv=S'ha tret el volum físic $1 del GV $2
 
 blocks=blocs
-
+__norefs=1

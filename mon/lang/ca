@@ -203,3 +203,4 @@ periods_ehour=Hi falta l'hora del període $1 o bé és invàlida (ha de ser com ara
 
 show_title=Estat Operacional
 show_ecgi=L'estat del programa MON $1 no existeix. Pot ser que no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
+__norefs=1

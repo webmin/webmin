@@ -461,3 +461,4 @@ ecompile=S'ha produït un error en construir un programa per a llistar els sistem
 freebsd_eaddr=Hi falta l'adreça del servidor o bé és invàlida
 freebsd_eworkgroup=Hi falta el grup de treball o bé és invàlid
 
+__norefs=1

@@ -122,4 +122,4 @@ search_already=S'està ometent el fitxer d'opcions Apache conegut $1.
 search_noprot=S'està ometent el fitxer d'opcions Apache, ja que no protegeix el directori.
 search_open=No es pot obrir el fitxer d'opcions $1 d'Apache: $2
 search_done=...fet
-
+__norefs=1

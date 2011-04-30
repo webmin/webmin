@@ -192,3 +192,4 @@ manual_title=Edició del Fitxer de Configuració
 manual_desc=S'està editant el fitxer de configuració $1 de Dovecot...
 manual_err=No s'ha pogut desar el fitxer de configuració
 manual_edata=No has introduït res!
+__norefs=1

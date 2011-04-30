@@ -6,3 +6,4 @@ passwd_err=No s'ha pogut canviar la contrasenya
 passwd_title=Canvi de la Contrasenya
 passwd_on=S'està canviant la contrasenya a $1...
 passwd_euser=L'usuari no existeix!
+__norefs=1

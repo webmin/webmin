@@ -20,7 +20,7 @@ inittab_powerokwait=La màquina es torna a encendre
 inittab_powerfailnow=Se'n va la llum
 inittab_ctrlaltdel=Ctrl-Alt-Supr
 inittab_kbdrequest=Combinació especial de tecles
-inittab_kbrequest=$inittab_kbdrequest
+inittab_kbrequest=Combinació especial de tecles
 inittab_return=a la llista de processos
 inittab_apply=Aplica la Configuració d'Init
 inittab_applymsg=Fes clic sobre aquest botó per aplicar la configuració Init de SysV actual executant l'ordre <tt>telinit q</tt>. Tingues en compte que, en executar aquesta ordre, qualsevol error en la configuració pot fer que el sistema no funcioni.
@@ -50,4 +50,4 @@ apply_err=No s'ha pogut aplicar la configuració
 
 delete_err=No s'han pogut suprimir els processos
 delete_enone=No has seleccionat cap procés
-
+__norefs=1

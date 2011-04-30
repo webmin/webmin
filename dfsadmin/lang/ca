@@ -55,3 +55,4 @@ delete_err=No s'han pogut suprimir els recursos compartits
 delete_enone=No has seleccionat cap recurs
 
 restart_err=No s'han pogut aplicar els canvis
+__norefs=1

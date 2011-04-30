@@ -105,3 +105,4 @@ log_create_rprog_l=S'ha creat l'RPC $1 número $2 pel programa $3
 log_modify_rprog_l=S'ha modificat l'RPC $1 número $2 pel programa $3
 log_delete_rprog_l=S'ha suprimit l'RPC $1 número $2 pel programa $3
 
+__norefs=1

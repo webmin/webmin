@@ -330,3 +330,4 @@ config_have=Als servidors que el tenen
 config_group=Als membres del grup $1
 config_on=A $1
 config_err=No s'ha pogut desar la configuració del mòdul
+__norefs=1

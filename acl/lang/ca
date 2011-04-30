@@ -337,7 +337,7 @@ switch_euser=No tens permís per canviar a aquest usuari
 switch_eold=No s'ha trobat la sessió existent!
 
 rbac_title=Configuració de RBAC
-rbac_desc=La integració de Webmin amb RBAC proporciona una forma de determinar els permisos d'ACL i mòduls d'usuari des d'una base de dades RBAC (Role Based Access Control), en lloc d'utilitzar els fitxers propis de configuració de Webmin. Un cop s'ha activat el suport RBAC, tot usuari per al qual s'hagi seleccionat l'opció <b>$edit_rbacdeny1</b> tindrà les seves capacitats determinades per RBAC en lloc de la configuració de control d'accés de Webmin.
+rbac_desc=La integració de Webmin amb RBAC proporciona una forma de determinar els permisos d'ACL i mòduls d'usuari des d'una base de dades RBAC (Role Based Access Control), en lloc d'utilitzar els fitxers propis de configuració de Webmin. Un cop s'ha activat el suport RBAC, tot usuari per al qual s'hagi seleccionat l'opció <b>RBAC controla totes les ACLs i mòduls</b> tindrà les seves capacitats determinades per RBAC en lloc de la configuració de control d'accés de Webmin.
 rbac_esolaris=De moment, RBAC només està suportat per Solaris, així que no es pot utilitzar en aquest sistema $1.
 rbac_eperl=El mòdul Perl $1 necessari per a la integració amb RBAC no està instal·lat. Fés clic <a href='$2'>aquí</a> per instal·lar-lo ara.
 rbac_ok=La integració amb RBAC està disponible en aquest sistema, i es pot activar en base a cada usuari a la pàgina d'Edició d'Usuaris Webmin.
@@ -448,3 +448,4 @@ makedn_still=S'han trobat alguns problemes, tot i que s'ha creat el DN: $1
 schema_title=Descàrrega de l'Esquema LDAP
 schema_desc=Abans que Webmin pugui utilitzar un servidor LDAP per a emmagatzemar usuaris i grups, cal configurar-lo per a utilitzar l'esquema de sota. Habitualment, això es pot fer desant la definició de l'esquema a <tt>/etc/ldap/schema</tt> o <tt>/etc/openldap/schema</tt> com a <tt>webmin.schema</tt>, i configurant llavors el servidor per a utilitzar aquest fitxer d'esquema.
 schema_download=Descarrega el fitxer d'esquema: <a href=$1>$1</a>
+__norefs=1

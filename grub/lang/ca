@@ -74,3 +74,4 @@ log_up_title=S'ha desplaçat cap amunt l'opció d'engegada $1
 log_down_title=S'ha desplaçat cap avall l'opció d'engegada $1
 log_global=S'han canviat les opcions globals
 log_install=S'ha instal·lat el GRUB
+__norefs=1

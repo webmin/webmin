@@ -66,3 +66,4 @@ email_subject_failed=La còpia de cluster de $1 ha fallat
 delete_err=No s'han pogut suprimir les còpies
 delete_enone=No has seleccionat cap còpia
 
+__norefs=1

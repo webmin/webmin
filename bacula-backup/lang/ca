@@ -656,3 +656,4 @@ restore_enofiles=Cap dels fitxers seleccionats es troba a la còpia
 restore_level_F=Complet
 restore_level_D=Diferencial
 restore_level_I=Incremental
+__norefs=1

@@ -147,3 +147,4 @@ acl_dirs=Permet els directoris per als fitxers origen
 delete_err=No s'han pogut suprimir els perfils de gravació
 delete_enone=No has seleccionat cap perfil
 
+__norefs=1

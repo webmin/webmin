@@ -145,3 +145,4 @@ log_stop=S'ha aturat el servidor Frox
 log_start=S'ha iniciat el servidor Frox
 log_apply=S'ha aplicat la configuració
 
+__norefs=1

@@ -75,3 +75,4 @@ log_delete_l=S'ha suprimit l'exportació NFS $1 to $2
 log_create=S'ha creat l'exportació NFS $1
 log_create_l=S'ha creat l'exportació NFS $1 to $2
 log_apply=S'ha aplicat la configuració
+__norefs=1

@@ -41,3 +41,4 @@ right_updates=Actualitzacions de paquets
 right_upok=Tots els paquets instal·lats estan actualitzats
 right_upneed=Hi ha $1 actualitzacions de paquets disponibles
 right_upsec=Hi ha $1 actualitzacions de paquets disponibles, de les quals $2 són actualitzacions de seguretat
+__norefs=1

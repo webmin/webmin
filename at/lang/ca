@@ -65,3 +65,4 @@ log_create_job=S'ha creat l'ordre planificada per a $1
 log_delete_job=S'ha cancel·lat l'ordre planificada per a $1
 log_exec_job=S'ha executat l'ordre planificada per a $1
 log_delete_jobs=S'han cancel·lat $1 ordres planificades
+__norefs=1

@@ -65,3 +65,4 @@ log_bootup=S'ha activat l'ADSL en engegar el sistema
 log_bootdown=S'ha desactivat l'ADSL en engegar el sistema
 log_setup=S'ha aplicat la configuració per defecte
 
+__norefs=1

@@ -163,4 +163,4 @@ mass_ok=...fet.
 change_err=No tens permís per canviar de nivell d'execució
 change_title=Canvia el Nivell d'Execució
 change_cmd=S'està canviant al nivell d'execució $1 amb l'ordre $2. Això pot trigar una mica, i pot ser que el Webmin ja no estigui disponible després del canvi.
-
+__norefs=1
