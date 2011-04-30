@@ -10,7 +10,7 @@ $in{'size_def'} || $in{'size'} =~ /^\d+$/ || &error($text{'newkey_esize'});
 
 &lock_file($ENV{'MINISERV_CONFIG'});
 &get_miniserv_config(\%miniserv);
-&setup_ca() if (!-r $miniserv{'ca'});
+&setup_ca(\%miniserv) if (!-r $miniserv{'ca'});
 &lock_file($miniserv{'ca'});
 $ctemp = &transname();
 $ktemp = &transname();

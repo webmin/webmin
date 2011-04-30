@@ -12,7 +12,7 @@ if (!$module_name) {
 	}
 &foreign_require("proc", "proc-lib.pl");
 
-$gpgpath = $config{'gpg'} || "gpg";
+our $gpgpath = $config{'gpg'} || "gpg";
 
 # list_keys()
 # Returns an array of all GnuPG keys
