@@ -2,13 +2,16 @@
 # change.cgi
 # Make all the changes, and re-direct to / in case the theme has changed
 
+use strict;
+use warnings;
 require './change-user-lib.pl';
+our (%text, %in, %gconfig, $base_remote_user, %access);
 &ReadParse();
 
-@users = &acl::list_users();
-($user) = grep { $_->{'name'} eq $base_remote_user } @users;
-$oldtheme = $user->{'theme'};
-$oldoverlay = $user->{'overlay'};
+my @users = &acl::list_users();
+my ($user) = grep { $_->{'name'} eq $base_remote_user } @users;
+my $oldtheme = $user->{'theme'};
+my $oldoverlay = $user->{'overlay'};
 if (!defined($oldtheme)) {
 	($oldtheme, $oldoverlay) = split(/\s+/, $gconfig{'theme'});
 	}
@@ -18,7 +21,7 @@ if ($access{'pass'} && &can_change_pass($user) && !$in{'pass_def'}) {
 	$in{'pass'} =~ /:/ && &error($text{'change_ecolon'});
 	$in{'pass'} eq $in{'pass2'} ||
 		&error($text{'change_epass2'});
-	$perr = &acl::check_password_restrictions(
+	my $perr = &acl::check_password_restrictions(
 		$user->{'name'}, $in{'pass'});
 	&error(&text('change_epass', $perr)) if ($perr);
 	}
@@ -34,6 +37,7 @@ if ($access{'lang'}) {
 	}
 
 # Parse custom theme and possibly overlay
+my ($newoverlay, $newtheme);
 if ($access{'theme'}) {
 	if ($in{'theme_def'}) {
 		$user->{'theme'} = undef;
@@ -54,7 +58,7 @@ if ($access{'theme'}) {
 	else {
 		$newoverlay = $in{'overlay'};
 		$user->{'theme'} || &error($text{'change_eoverlay'});
-		%oinfo = &get_theme_info($in{'overlay'});
+		my %oinfo = &get_theme_info($in{'overlay'});
 		if ($oinfo{'overlays'} &&
 		    &indexof($user->{'theme'},
 			     split(/\s+/, $oinfo{'overlays'})) < 0) {

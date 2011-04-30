@@ -2,16 +2,20 @@
 # index.cgi
 # Display the user's current language, theme and password
 
+use strict;
+use warnings;
 require './change-user-lib.pl';
+our (%text, %access, $base_remote_user, $default_lang, %gconfig);
 &ui_print_header(undef, $text{'index_title'}, "", undef, 0, 1);
 
-@users = &acl::list_users();
-($user) = grep { $_->{'name'} eq $base_remote_user } @users;
+my @users = &acl::list_users();
+my ($user) = grep { $_->{'name'} eq $base_remote_user } @users;
 
+my @can;
 push(@can, 'lang') if ($access{'lang'});
 push(@can, 'theme') if ($access{'theme'});
 push(@can, 'pass') if ($access{'pass'} && &can_change_pass($user));
-$can = &text('index_d'.scalar(@can), map { $text{'index_d'.$_} } @can);
+my $can = &text('index_d'.scalar(@can), map { $text{'index_d'.$_} } @can);
 print &text('index_desc2', $can),"<p>\n";
 
 print &ui_form_start("change.cgi", "post");
@@ -19,9 +23,9 @@ print &ui_table_start(undef, undef, 2);
 
 if ($access{'lang'}) {
 	# Show personal language
-	@langs = &list_languages();
-	$glang = $gconfig{"lang"} || $default_lang;
-	($linfo) = grep { $_->{'lang'} eq $glang } @langs;
+	my @langs = &list_languages();
+	my $glang = $gconfig{"lang"} || $default_lang;
+	my ($linfo) = grep { $_->{'lang'} eq $glang } @langs;
 	print &ui_table_row($text{'index_lang'},
 		&ui_radio("lang_def", $user->{'lang'} ? 0 : 1,
 			  [ [ 1, &text('index_langglobal',
@@ -35,17 +39,18 @@ if ($access{'lang'}) {
 
 if ($access{'theme'}) {
 	# Show personal theme
+	my $tname;
 	if ($gconfig{'theme'}) {
-		($gtheme, $goverlay) = split(/\s+/, $gconfig{'theme'});
-		%tinfo = &webmin::get_theme_info($gtheme);
+		my ($gtheme, $goverlay) = split(/\s+/, $gconfig{'theme'});
+		my %tinfo = &webmin::get_theme_info($gtheme);
 		$tname = $tinfo{'desc'};
 		}
 	else {
 		$tname = $text{'index_themedef'};
 		}
-	@all = &webmin::list_themes();
-	@themes = grep { !$_->{'overlay'} } @all;
-	@overlays = grep { $_->{'overlay'} } @all;
+	my @all = &webmin::list_themes();
+	my @themes = grep { !$_->{'overlay'} } @all;
+	my @overlays = grep { $_->{'overlay'} } @all;
 
 	# Main theme
 	print &ui_table_row($text{'index_theme'},

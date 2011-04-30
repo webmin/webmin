@@ -6,11 +6,13 @@ say here.
 =cut
 
 BEGIN { push(@INC, ".."); };
+use strict;
+use warnings;
 use WebminCore;
 &init_config();
 &foreign_require("acl", "acl-lib.pl");
 &foreign_require("webmin", "webmin-lib.pl");
-%access = &get_module_acl();
+my %access = &get_module_acl();
 
 =head2 can_change_pass(&user)
 
@@ -19,7 +21,8 @@ Returns 1 if some user's password can be changed.
 =cut
 sub can_change_pass
 {
-return $_[0]->{'pass'} ne 'x' && $_[0]->{'pass'} ne 'e' && !$_[0]{'sync'} &&
-       $_[0]->{'pass'} ne "*LK*";
+my ($user) = @_;
+return $user->{'pass'} ne 'x' && $user->{'pass'} ne 'e' && !$user->{'sync'} &&
+       $user->{'pass'} ne "*LK*";
 }
 

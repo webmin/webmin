@@ -1,5 +1,8 @@
 
+use strict;
+use warnings;
 do 'change-user-lib.pl';
+our (%text, %in);
 
 # acl_security_form(&options)
 # Output HTML for editing security options for the acl module
