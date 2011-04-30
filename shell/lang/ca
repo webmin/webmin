@@ -12,4 +12,4 @@ acl_user_def=Usuari Webmin actual
 
 log_run=S'ha executat l'ordre $1
 log_clear=S'ha netejat l'historial d'ordres
-
+__norefs=1

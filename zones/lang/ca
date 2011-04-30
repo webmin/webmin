@@ -287,3 +287,4 @@ webmin_eperl=$1 no té Perl instal·lat
 webmin_eroot=El directori $1 no existeix o bé no conté el Webmin.
 webmin_title=Instal·lació de Webmin
 
+__norefs=1
