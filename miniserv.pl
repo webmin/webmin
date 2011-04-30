@@ -2496,7 +2496,8 @@ else {
 		$rv = &write_keep_alive();
 		&write_data("\r\n");
 		&reset_byte_count();
-		while(read(FILE, $buf, 1024) > 0) {
+		my $bufsize = $config{'bufsize'} || 1024;
+		while(read(FILE, $buf, $bufsize) > 0) {
 			&write_data($buf);
 			}
 		close(FILE);
@@ -2827,7 +2828,8 @@ while(($idx = index($main::read_buffer, "\n")) < 0) {
 		$more = Net::SSLeay::read($ssl_con);
 		}
 	else {
-                local $ok = sysread(SOCK, $more, 1024);
+		my $bufsize = $config{'bufsize'} || 1024;
+                local $ok = sysread(SOCK, $more, $bufsize);
 		$more = undef if ($ok <= 0);
 		}
 	if ($more eq '') {
