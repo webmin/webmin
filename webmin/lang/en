@@ -393,6 +393,8 @@ startpage_deftab=Default category
 startpage_nohost=Show version, hostname and OS in title?
 startpage_gotonone=&lt;None&gt;
 startpage_gotomodule=After login, always go to module
+startpage_webminup=Show Webmin updates on System Information page?
+startpage_moduleup=Show module updates on System Information page?
 
 upgrade_title=Upgrade Webmin
 upgrade_desc=This form allows you to upgrade your entire Webmin installation to a new version. You can install from a local file, an uploaded file or from the latest version at <a href=http://www.webmin.com/>www.webmin.com</a>. Just as with a manual upgrade, all your config settings and third-party modules will be kept.

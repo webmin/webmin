@@ -18,6 +18,8 @@ $gconfig{'gotoone'} = $in{'gotoone'};
 $gconfig{'deftab'} = $in{'deftab'};
 $gconfig{'nohostname'} = $in{'nohostname'};
 $gconfig{'gotomodule'} = $in{'gotomodule'};
+$gconfig{'nowebminup'} = !$in{'webminup'};
+$gconfig{'nomoduleup'} = !$in{'moduleup'};
 &write_file("$config_directory/config", \%gconfig);
 &unlock_file("$config_directory/config");
 &webmin_log("startpage", undef, undef, \%in);

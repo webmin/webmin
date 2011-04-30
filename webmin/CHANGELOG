@@ -103,3 +103,5 @@ Added an option to the User Interface page to always put the hostname before the
 Strong PCI-compliant ciphers can now be selected on the SSL Encryption page.
 ---- Changes since 1.540 ----
 Added the Sending Email page which controls how Webmin itself sends messages.
+---- Changes since 1.550 ----
+Added fields to the Index Page Options page to control the display of Webmin and module updates.
