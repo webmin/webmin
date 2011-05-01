@@ -2,13 +2,17 @@
 # index.cgi
 # Display a table of icons for different types of webmin configuration
 
+use strict;
+use warnings;
 require './webmin-lib.pl';
-$ver = &get_webmin_version();
+our (%in, %text, %gconfig, %config);
+my $ver = &get_webmin_version();
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 	undef, undef, undef, &text('index_version', $ver));
-%access = &get_module_acl();
+my %access = &get_module_acl();
 &ReadParse();
 
+my (@wlinks, @wtitles, @wicons);
 @wlinks = ( "edit_access.cgi", "edit_bind.cgi", "edit_log.cgi",
 	    "edit_proxy.cgi", "edit_ui.cgi", "edit_mods.cgi",
 	    "edit_os.cgi", "edit_lang.cgi", "edit_startpage.cgi",
@@ -53,9 +57,9 @@ push(@wtitles, $text{'ssl_title'}, $text{'ca_title'});
 push(@wicons, "images/ssl.gif", "images/ca.gif");
 
 # Hide dis-allowed pages
-%allow = map { $_, 1 } split(/\s+/, $access{'allow'});
-%disallow = map { $_, 1 } split(/\s+/, $access{'disallow'});
-for($i=0; $i<@wlinks; $i++) {
+my %allow = map { $_, 1 } split(/\s+/, $access{'allow'});
+my %disallow = map { $_, 1 } split(/\s+/, $access{'disallow'});
+for(my $i=0; $i<@wlinks; $i++) {
 	$wlinks[$i] =~ /edit_(\S+)\.cgi/;
 	if (%allow && !$allow{$1} ||
 	    $disallow{$1} ||
@@ -72,9 +76,12 @@ print &ui_hr();
 
 print &ui_buttons_start();
 
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+
 if (&foreign_check("init")) {
 	&foreign_require("init", "init-lib.pl");
-	$starting = &init::action_status("webmin");
+	my $starting = &init::action_status("webmin");
 	print &ui_buttons_row("bootup.cgi",
 	      $text{'index_boot'},
 	      $text{'index_bootmsg'}.
