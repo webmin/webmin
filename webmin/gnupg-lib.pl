@@ -2,7 +2,10 @@
 # Functions for managing gnupg keys, signing, encrypting and so on
 
 BEGIN { push(@INC, ".."); };
+use strict;
+use warnings;
 use WebminCore;
+our ($module_name, %config, $user_module_config_directory, %text);
 
 if (!$module_name) {
 	# Only do this if we are the primary library for the usermin gnupg mod
@@ -106,9 +109,10 @@ return $pass;
 # put_passphrase(pass, &key)
 sub put_passphrase
 {
-&open_tempfile(PASS, ">$user_module_config_directory/pass.$_[1]->{'key'}");
-&print_tempfile(PASS, $_[0],"\n");
-&close_tempfile(PASS);
+my $fh;
+&open_tempfile($fh, ">$user_module_config_directory/pass.$_[1]->{'key'}");
+&print_tempfile($fh, $_[0],"\n");
+&close_tempfile($fh);
 chmod(0700, "$user_module_config_directory/pass.$_[1]->{'key'}");
 }
 
@@ -118,17 +122,17 @@ chmod(0700, "$user_module_config_directory/pass.$_[1]->{'key'}");
 sub encrypt_data
 {
 my $srcfile = &transname();
-local @keys = ref($_[2]) eq 'ARRAY' ? @{$_[2]} : ( $_[2] );
-local $rcpt = join(" ", map { "--recipient \"$_->{'name'}->[0]\"" } @keys);
+my @keys = ref($_[2]) eq 'ARRAY' ? @{$_[2]} : ( $_[2] );
+my $rcpt = join(" ", map { "--recipient \"$_->{'name'}->[0]\"" } @keys);
 &write_entire_file($srcfile, $_[0]);
 my $dstfile = &transname();
-local $ascii = $_[3] ? "--armor" : "";
+my $ascii = $_[3] ? "--armor" : "";
 my $comp = $config{'compress'} eq '' ? "" :
 		" --compress-algo $config{'compress'}";
 my $cmd = "LC_ALL='' LANG='' $gpgpath --output $dstfile $rcpt $ascii $comp --encrypt $srcfile";
 my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
 while(1) {
-	$rv = &wait_for($fh, "anyway");
+	my $rv = &wait_for($fh, "anyway");
 	if ($rv == 0) {
 		syswrite($fh, "yes\n", length("yes\n"));
 		}
@@ -225,13 +229,13 @@ elsif ($_[3] == 2) {
 $cmd = "LC_ALL='' LANG='' $cmd";
 my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
 my ($error, $seen_pass);
-local $pass = &get_passphrase($_[2]);
+my $pass = &get_passphrase($_[2]);
 if (!defined($pass)) {
 	return $text{'gnupg_esignpass'}.". ".
 	    &text('gnupg_canset', "/gnupg/edit_key.cgi?key=$_[2]->{'key'}").".";
 	}
 while(1) {
-	$rv = &wait_for($fh, "passphrase:", "failed", "error");
+	my $rv = &wait_for($fh, "passphrase:", "failed", "error");
 	if ($rv == 0) {
 		last if ($seen_pass++);
 		sleep(1);
@@ -321,16 +325,17 @@ return $rv;
 # write_entire_file(file, data)
 sub write_entire_file
 {
-&open_tempfile(FILE, ">$_[0]");
-&print_tempfile(FILE, $_[1]);
-&close_tempfile(FILE);
+my $fh;
+&open_tempfile($fh, ">$_[0]");
+&print_tempfile($fh, $_[1]);
+&close_tempfile($fh);
 }
 
 # get_trust_level(&key)
 # Returns the trust level of a key
 sub get_trust_level
 {
-local $cmd = "LC_ALL='' LANG='' $gpgpath --edit-key \"$_[0]->{'name'}->[0]\"";
+my $cmd = "LC_ALL='' LANG='' $gpgpath --edit-key \"$_[0]->{'name'}->[0]\"";
 my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
 my $rv = &wait_for($fh, "trust:\\s+(.)", "command>");
 my $tr;
@@ -375,7 +380,7 @@ sub default_email_address
 {
 if (&foreign_check("mailbox")) {
 	&foreign_require("mailbox", "mailbox-lib.pl");
-	($fromaddr) = &mailbox::split_addresses(
+	my ($fromaddr) = &mailbox::split_addresses(
 			&mailbox::get_preferred_from_address());
 	if ($fromaddr) {
 		return $fromaddr->[0];
@@ -395,7 +400,7 @@ my $out = &backquote_command(
 	"$gpgpath --keyserver ".quotemeta($config{'keyserver'}).
 	" --recv-key ".quotemeta($id)." 2>&1 </dev/null");
 my @keys = &list_keys();
-local ($key) = grep { lc($_->{'key'}) eq lc($id) } @keys;
+my ($key) = grep { lc($_->{'key'}) eq lc($id) } @keys;
 if ($?) {
 	return wantarray ? (1, $out) : 1;
 	}
