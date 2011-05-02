@@ -36,12 +36,6 @@ for($i=0; defined($tmod = $in{'tmod_'.$i}); $i++) {
 	}
 &save_tempdirs(\%gconfig, \@tdirs);
 
-# Save stack trace option
-$gconfig{'error_stack'} = $in{'stack'};
-
-# Save showing of stderr
-$miniserv{'noshowstderr'} = !$in{'showstderr'};
-
 # Save umask
 if ($in{'umask_def'}) {
 	delete($gconfig{'umask'});
@@ -96,16 +90,6 @@ else {
 	$in{'precache'} =~ /\S/ || &error($text{'advanced_eprecache'});
 	$miniserv{'precache'} = $in{'precache'};
 	}
-
-# Save password pass option
-$miniserv{'pass_password'} = $in{'pass'};
-
-# Save gzip option
-if ($in{'gzip'} == 1) {
-	eval "use Compress::Zlib";
-	$@ && &error(&text('advanced_egzip', '<tt>Compress::Zlib</tt>'));
-	}
-$miniserv{'gzip'} = $in{'gzip'};
 
 &lock_file($ENV{'MINISERV_CONFIG'});
 &put_miniserv_config(\%miniserv);

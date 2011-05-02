@@ -617,6 +617,7 @@ log_theme_def=Changed theme to Webmin default
 log_referers=Changed trusted referrers
 log_descs=Changed module titles
 log_advanced=Changed advanced options
+log_web=Changed web server options
 log_osdnclear=Cleared download cache
 log_savekey=Uploaded existing SSL key
 log_deletecache=Deleted $1 URLs from cache
@@ -798,9 +799,9 @@ advanced_pri=Priority level
 advanced_sclass=IO class for scheduled jobs
 advanced_sprio=IO priority for scheduled jobs
 advanced_gzip=Gzip compress static files?
-advanced_gzipauto=Only pre-compressed .gz file exists
+advanced_gzipauto=Only if pre-compressed .gz file exists
 advanced_gzip0=Never
-advanced_gzip1=Use pre-compressed file or compress dynamically
+advanced_gzip1=Use pre-compressed file and compress dynamically
 advanced_egzip=Gzip compression cannot be enabled unless the $1 perl module is installed
 
 syslog_errorlog=Webmin error log
@@ -928,5 +929,13 @@ sendmail_err=Failed to save mail sending options
 sendmail_esmtp=Missing or un-resolvable SMTP server hostname
 sendmail_elogin=Missing SMTP server login
 sendmail_efrom=Missing or incorrectly formatted from address
+
+web_title=Web Server Options
+web_header=Options for Webmin's built-in webserver
+web_expires=Client-side cache time for static files
+web_expiresdef=Webmin default (7 days)
+web_expiressecs=Time in seconds
+web_err=Failed to save web server options
+web_eexpires=Missing or non-numeric client size cache time
 
 __norefs=1

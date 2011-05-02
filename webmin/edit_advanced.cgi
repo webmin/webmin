@@ -63,18 +63,6 @@ print &ui_table_row($text{'advanced_precache'},
 			  &ui_textbox("precache",
 			   $mode == 2 ? $miniserv{'precache'} : "", 40)) ] ]));
 
-# Show call stack on error
-print &ui_table_row($text{'advanced_stack'},
-		    &ui_yesno_radio("stack", int($gconfig{'error_stack'})));
-
-# Show CGI errors
-print &ui_table_row($text{'advanced_showstderr'},
-	    &ui_yesno_radio("showstderr", int(!$miniserv{'noshowstderr'})));
-
-# Pass passwords to CGI programs
-print &ui_table_row($text{'advanced_pass'},
-		    &ui_yesno_radio("pass", int($miniserv{'pass_password'})));
-
 # Umask for created files
 print &ui_table_row($text{'advanced_umask'},
 	    &ui_opt_textbox("umask", $gconfig{'umask'}, 5, $text{'default'}));
@@ -109,13 +97,6 @@ if (&foreign_check("proc")) {
 				     @prios ]));
 		}
 	}
-
-# Gzip static files?
-print &ui_table_row($text{'advanced_gzip'},
-	&ui_radio("gzip", $miniserv{'gzip'},
-		  [ [ '', $text{'advanced_gzipauto'} ],
-		    [ 0, $text{'advanced_gzip0'} ],
-		    [ 1, $text{'advanced_gzip1'} ] ]));
 
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
