@@ -1869,6 +1869,10 @@ my ($nowait) = @_;
 return undef if (&is_readonly_mode());
 my %miniserv;
 &get_miniserv_config(\%miniserv) || return;
+if ($main::webmin_script_type eq 'web' && !$ENV{"MINISERV_CONFIG"}) {
+	# Running under some web server other than miniserv, so do nothing
+	return;
+	}
 
 my $i;
 if ($gconfig{'os_type'} ne 'windows') {
@@ -1878,11 +1882,22 @@ if ($gconfig{'os_type'} ne 'windows') {
 	my @oldst = stat($miniserv{'pidfile'});
 	$pid = $ENV{'MINISERV_PID'};
 	if (!$pid) {
-		open(PID, $miniserv{'pidfile'}) ||
-			&error("Failed to open PID file $miniserv{'pidfile'}");
+		if (!open(PID, $miniserv{'pidfile'})) {
+			print STDERR "PID file $miniserv{'pidfile'} does ",
+				     "not exist\n";
+			return;
+			}
 		chop($pid = <PID>);
 		close(PID);
-		$pid || &error("Invalid PID file $miniserv{'pidfile'}");
+		if (!$pid) {
+			print STDERR "Invalid PID file $miniserv{'pidfile'}\n";
+			return;
+			}
+		if (!kill(0, $pid)) {
+			print STDERR "PID $pid from file $miniserv{'pidfile'} ",
+			             "is not valid\n";
+			return;
+			}
 		}
 
 	# Just signal miniserv to restart
