@@ -106,3 +106,4 @@ Added the Sending Email page which controls how Webmin itself sends messages.
 ---- Changes since 1.550 ----
 Added fields to the Index Page Options page to control the display of Webmin and module updates.
 Moved settings related to Webmin's built-in webserver to the new Web Server Options page.
+The client-side expiry time for static files served by Webmin can now be configured on the Web Server Options page, and can be customized on a per-file basis.

@@ -13,6 +13,26 @@ print &ui_table_row($text{'web_expires'},
 	&ui_opt_textbox("expires", $miniserv{'expires'}, 10,
 			$text{'web_expiresdef'}, $text{'web_expiressecs'}));
 
+# Additonal expiry times based on path
+my @expires_paths;
+foreach my $pe (split(/\t+/, $miniserv{'expires_paths'})) {
+	my ($p, $e) = split(/=/, $pe);
+	if ($p && $e ne '') {
+		push(@expires_paths, [ $p, $e ]);
+		}
+	}
+push(@expires_paths, [ undef, $miniserv{'expires'} || 86400 ]);
+my $etable = &ui_columns_start([ $text{'web_expirespath'},
+			         $text{'web_expirestime'} ]);
+for(my $i=0; $i<@expires_paths; $i++) {
+	$etable .= &ui_columns_row([
+		&ui_textbox("expirespath_$i", $expires_paths[$i]->[0], 40),
+		&ui_textbox("expirestime_$i", $expires_paths[$i]->[1], 10),
+		]);
+	}
+$etable .= &ui_columns_end();
+print &ui_table_row($text{'web_expirespaths'}, $etable);
+
 # Show call stack on error
 print &ui_table_row($text{'advanced_stack'},
 		    &ui_yesno_radio("stack", int($gconfig{'error_stack'})));

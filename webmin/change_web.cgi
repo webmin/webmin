@@ -16,6 +16,16 @@ else {
 	$miniserv{'expires'} = $in{'expires'};
 	}
 
+# Save per-path expires
+for(my $i=0; defined($p = $in{"expirespath_$i"}); $i++) {
+	$t = $in{"expirestime_$i"};
+	next if ($p !~ /\S/);
+	$t =~ /^\d+$/ || &error(&text('web_eexpires2', $i+1));
+	push(@expires_paths, [ $p, $t ]);
+	}
+$miniserv{'expires_paths'} = join("\t", map { $_->[0]."=".$_->[1] }
+					    @expires_paths);
+
 # Save stack trace option
 $gconfig{'error_stack'} = $in{'stack'};
 

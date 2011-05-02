@@ -2466,7 +2466,8 @@ else {
 		      "Server: $config{server}\r\n".
 		      "Content-type: ".&get_type($full)."\r\n".
 		      "Last-Modified: ".&http_date($stopen[9])."\r\n".
-		      "Expires: ".&http_date(time()+$config{'expires'})."\r\n";
+		      "Expires: ".
+			&http_date(time()+&get_expires_time($simple))."\r\n";
 
 	if (!$gzipped && $use_gzip && $acceptenc{'gzip'} &&
 	    &should_gzip_file($full)) {
@@ -4264,7 +4265,7 @@ my %vital = ("port", 80,
 	  "maxconns", 50,
 	  "pam", "webmin",
 	  "sidname", "sid",
-	  "unauth", "^/unauthenticated/ ^/robots.txt\$ ^[A-Za-z0-9\\-/_]+\\.jar\$ ^[A-Za-z0-9\\-/_]+\\.class\$ ^[A-Za-z0-9\\-/_]+\\.gif\$ ^[A-Za-z0-9\\-/_]+\\.conf\$ ^[A-Za-z0-9\\-/_]+\\.ico\$ ^/robots.txt\$",
+	  "unauth", "^/unauthenticated/ ^/robots.txt\$ ^[A-Za-z0-9\\-/_]+\\.jar\$ ^[A-Za-z0-9\\-/_]+\\.class\$ ^[A-Za-z0-9\\-/_]+\\.gif\$ ^[A-Za-z0-9\\-/_]+\\.png\$ ^[A-Za-z0-9\\-/_]+\\.conf\$ ^[A-Za-z0-9\\-/_]+\\.ico\$ ^/robots.txt\$",
 	  "max_post", 10000,
 	  "expires", 7*24*60*60,
 	  "pam_test_user", "root",
@@ -4780,6 +4781,15 @@ foreach my $d (split(/\s+/, $config{'davpaths'})) {
 # Mobile agent substrings and hostname prefixes
 @mobile_agents = split(/\t+/, $config{'mobile_agents'});
 @mobile_prefixes = split(/\s+/, $config{'mobile_prefixes'});
+
+# Expires time list
+@expires_paths = ( );
+foreach my $pe (split(/\t+/, $config{'expires_paths'})) {
+	my ($p, $e) = split(/=/, $pe);
+	if ($p && $e ne '') {
+		push(@expires_paths, [ $p, $e ]);
+		}
+	}
 
 # Open debug log
 close(DEBUG);
@@ -5782,5 +5792,18 @@ sub should_gzip_file
 {
 my ($path) = @_;
 return $path !~ /\.(gif|png|jpg|jpeg|tif|tiff)$/i;
+}
+
+# get_expires_time(path)
+# Given a URL path, return the client-side expiry time in seconds
+sub get_expires_time
+{
+my ($path) = @_;
+foreach my $pe (@expires_paths) {
+	if ($path =~ /$pe->[0]/i) {
+		return $pe->[1];
+		}
+	}
+return $config{'expires'};
 }
 

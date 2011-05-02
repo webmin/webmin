@@ -936,6 +936,10 @@ web_expires=Client-side cache time for static files
 web_expiresdef=Webmin default (7 days)
 web_expiressecs=Time in seconds
 web_err=Failed to save web server options
-web_eexpires=Missing or non-numeric client size cache time
+web_eexpires=Missing or non-numeric client side cache time
+web_expirespaths=Client-side cache times based on URL path
+web_expirespath=Path regular expression
+web_expirestime=Cache time in seconds
+web_eexpires2=Missing or non-numeric client side cache time in row $1
 
 __norefs=1
