@@ -57,3 +57,5 @@ Added a field for editing the MAC address to apply at boot time on Redhat and De
 Include hostname configuration files in backups, thanks to Caspar Smit.
 ---- Changes since 1.530 ----
 Static IPv6 addresses and default routes on Redhat, CentOS, Fedora, Debian and Ubuntu Linux systems, and Solaris can now be viewed and managed.
+---- Changes since 1.550 ----
+The speed, link status and duplex of active ethernet interfaces is now shown on the active interfaces page.

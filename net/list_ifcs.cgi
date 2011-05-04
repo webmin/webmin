@@ -80,7 +80,8 @@ if (!$access{'bootonly'}) {
 		push(@cols, &iface_type($a->{'name'}).
 		      ($a->{'virtual'} eq "" ||
 		       $mod ? "" : " ($text{'ifcs_virtual'})").
-		      (%minfo ? " ($minfo{'desc'})" : ""));
+		      (%minfo ? " ($minfo{'desc'})" : "").
+		      ($a->{'speed'} ? " ".$a->{'speed'} : ""));
 		push(@cols, &html_escape($a->{'address'}));
 		push(@cols, &html_escape($a->{'netmask'}));
 		if (&supports_address6()) {

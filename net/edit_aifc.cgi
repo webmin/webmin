@@ -165,6 +165,18 @@ if ($a && $a->{'virtual'} eq "") {
 	        "(<a href='edit_aifc.cgi?new=1&virtual=$a->{'name'}'>".
 		"$text{'ifcs_addvirt'}</a>)");
 	}
+
+# Physical parameters
+if (defined($a->{'link'})) {
+	print &ui_table_row($text{'ifcs_link'},
+		$a->{'link'} ? $text{'ifcs_linkyes'}
+			     : "<font color=red>$text{'ifcs_linkno'}</font>");
+	}
+if ($a->{'speed'}) {
+	print &ui_table_row($text{'ifcs_speed'}, $a->{'speed'}.
+		($a->{'duplex'} ? " ".&text('ifcs_duplex', $a->{'duplex'})
+				: ""));
+	}
      
 # End of the form
 print &ui_table_end();

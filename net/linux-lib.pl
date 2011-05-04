@@ -13,6 +13,7 @@ while(<IFC>) {
 	else { $lines[$#lines] .= $_; }
 	}
 close(IFC);
+my $ethtool = &has_command("ethtool");
 foreach $l (@lines) {
 	local %ifc;
 	$l =~ /^([^:\s]+)/; $ifc{'name'} = $1;
@@ -39,6 +40,21 @@ foreach $l (@lines) {
 	$ifc{'scope6'} = \@scope6;
 	$ifc{'edit'} = ($ifc{'name'} !~ /^ppp/);
 	$ifc{'index'} = scalar(@rv);
+
+	# Get current status for ethtool
+	if ($ifc{'fullname'} =~ /^eth(\d+)$/ && $ethtool) {
+		my $out = &backquote_logged(
+			"$ethtool $ifc{'fullname'} 2>/dev/null");
+		if ($out =~ /Speed:\s+(\S+)/i) {
+			$ifc{'speed'} = $1;
+			}
+		if ($out =~ /Duplex:\s+(\S+)/i) {
+			$ifc{'duplex'} = $1;
+			}
+		if ($out =~ /Link\s+detected:\s+(\S+)/i) {
+			$ifc{'link'} = lc($1) eq 'yes' ? 1 : 0;
+			}
+		}
 	push(@rv, \%ifc);
 	}
 return @rv;

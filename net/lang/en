@@ -48,6 +48,11 @@ ifcs_address6=IPv6 address
 ifcs_netmask6=Netmask
 ifcs_mode6a=IPv6 addresses
 ifcs_none6=IPv6 disabled
+ifcs_link=Network link status
+ifcs_linkyes=Connected
+ifcs_linkno=Dis-connected
+ifcs_speed=Interface speed
+ifcs_duplex=, $1 duplex
 
 aifc_create=Create Active Interface
 aifc_edit=Edit Active Interface
