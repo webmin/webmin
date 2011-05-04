@@ -1601,17 +1601,15 @@ foreach my $a (&list_actions()) {
 	my $l = glob("/etc/rc$rl.d/S*$a");
 	$s->{'boot'} = $l ? 'start' : 'stop';
 	$s->{'desc'} = &init_description($f);
-	my $out = &backquote_command("$f status 2>&1 </dev/null");
-	if ($out =~ /not\s+running/i ||
-	    $out =~ /no\s+server\s+running/i ||
-	    $out =~ /not\s+access\s+PID/i) {
-		$s->{'status'} = 'waiting';
-		}
-	elsif ($out =~ /running/i) {
-		$s->{'status'} = 'running';
-		}
-	elsif ($out =~ /stopped/) {
-		$s->{'status'} = 'waiting';
+	my $hasarg = &get_action_args($f);
+	if ($hasarg->{'status'}) {
+		my $r = &action_running($f);
+		if ($r == 0) {
+			$s->{'status'} = 'waiting';
+			}
+		elsif ($r == 1) {
+			$s->{'status'} = 'running';
+			}
 		}
 	push(@rv, $s);
 	}
@@ -1717,6 +1715,43 @@ Immediately shuts down the system.
 sub shutdown_system
 {
 &system_logged("$config{'shutdown_command'} >$null_file 2>$null_file");
+}
+
+# get_action_args(filename)
+# Returns the args that this action script appears to support, like stop, start
+# and status.
+sub get_action_args
+{
+my ($file) = @_;
+my %hasarg;
+open(FILE, $file);
+while(<FILE>) {
+	if (/^\s*(['"]?)([a-z]+)\1\)/i) {
+		$hasarg{$2}++;
+		}
+	}
+close(FILE);
+return \%hasarg;
+}
+
+# action_running(filename)
+# Assuming some init.d action supports the status parameter, returns a 1 if
+# running, 0 if not, or -1 if unknown
+sub action_running
+{
+my ($file) = @_;
+my $out = &backquote_command("$file status");
+if ($out =~ /not\s+running/i ||
+    $out =~ /no\s+server\s+running/i) {
+	return 0;
+	}
+elsif ($out =~ /running/i) {
+	return 1;
+	}
+elsif ($out =~ /stopped/i) {
+	return 0;
+	}
+return -1;
 }
 
 1;

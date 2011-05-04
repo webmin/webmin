@@ -13,14 +13,8 @@ if ($ty == 0) {
 	$ac = $ARGV[1];
 	&ui_print_header(undef, $text{'edit_title'}, "");
 	$file = &action_filename($ac);
-	open(FILE, $file);
-	while(<FILE>) {
-		$data .= $_;
-		if (/^\s*(['"]?)([a-z]+)\1\)/i) {
-			$hasarg{$2}++;
-			}
-		}
-	close(FILE);
+	$data = &read_file_contents($file);
+	$hasarg = &get_action_args($file);
 	}
 elsif ($ty == 1) {
 	# Editing an action in one of the runlevels
@@ -126,17 +120,13 @@ elsif (!$config{'expert'} || $access{'bootup'} == 2) {
 		}
 
 	# Show if action is currently running
-	if ($hasarg{'status'} && $config{'status_check'}) {
-		$out = &backquote_command("$file status</dev/null 2>/dev/null");
-		if ($out =~ /not\s+running/i ||
-		    $out =~ /no\s+server\s+running/i) {
+	if ($hasarg->{'status'} && $config{'status_check'}) {
+		$r = &action_running($file);
+		if ($r == 0) {
 			$status = "<font color=#ff0000>$text{'no'}</font>";
 			}
-		elsif ($out =~ /running/i) {
+		elsif ($r == 1) {
 			$status = $text{'yes'};
-			}
-		elsif ($out =~ /stopped/i) {
-			$status = "<font color=#ff0000>$text{'no'}</font>";
 			}
 		else {
 			$status = "<i>$text{'edit_unknown'}</i>";
@@ -197,7 +187,7 @@ if ($ty != 2) {
 	$args = join("+", @ARGV);
 	print &ui_hidden("back", "edit_action.cgi?$args");
 	foreach $a (@action_buttons) {
-		if ($a eq 'start' || $a eq 'stop' || $hasarg{$a}) {
+		if ($a eq 'start' || $a eq 'stop' || $hasarg->{$a}) {
 			push(@buts, [ $a, $text{'edit_'.$a.'now'} ]);
 			}
 		}

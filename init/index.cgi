@@ -158,22 +158,15 @@ elsif ($init_mode eq "init" && $access{'bootup'}) {
 				push(@cols, $order);
 				}
 			if ($config{'status_check'} == 2) {
-				if ($actsl[$i] =~ /^0/) {
-					local $out = $has{'status'} ?
-						`$actsf[$i] status` : '';
-					if ($out =~ /not\s+running/i ||
-					    $out =~ /no\s+server\s+running/i) {
+				if ($actsl[$i] =~ /^0/ && $has{'status'}) {
+					local $r = &action_running($actsf[$i]);
+					if ($r == 0) {
 						push(@cols,
 							"<font color=#ff0000>".
 							"$text{'no'}</font>");
 						}
-					elsif ($out =~ /running/i) {
+					elsif ($r == 1) {
 						push(@cols, $text{'yes'});
-						}
-					elsif ($out =~ /stopped/i) {
-						push(@cols,
-							"<font color=#ff0000>".
-							"$text{'no'}</font>");
 						}
 					else {
 						push(@cols, undef);
