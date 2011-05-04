@@ -2280,7 +2280,7 @@ else {
 }
 
 
-=head2 ftp_download(host, file, destfile, [&error], [&callback], [user, pass], [port])
+=head2 ftp_download(host, file, destfile, [&error], [&callback], [user, pass], [port], [no-cache])
 
 Download data from an FTP site to a local file. The parameters are :
 
@@ -2300,10 +2300,12 @@ Download data from an FTP site to a local file. The parameters are :
 
 =item port - FTP server port number, which defaults to 21 if not set.
 
+=item no-cache - If set to 1, Webmin's internal caching for this URL is disabled.
+
 =cut
 sub ftp_download
 {
-my ($host, $file, $dest, $error, $cbfunc, $user, $pass, $port) = @_;
+my ($host, $file, $dest, $error, $cbfunc, $user, $pass, $port, $nocache) = @_;
 $port ||= 21;
 if ($gconfig{'debug_what_net'}) {
 	&webmin_debug_log('FTP', "host=$host port=$port file=$file".
@@ -2321,7 +2323,7 @@ if (&is_readonly_mode()) {
 # Check if we already have cached the URL
 my $url = "ftp://".$host.$file;
 my $cfile = &check_in_http_cache($url);
-if ($cfile) {
+if ($cfile && !$nocache) {
 	# Yes! Copy to dest file or variable
 	&$cbfunc(6, $url) if ($cbfunc);
 	if (ref($dest)) {
@@ -2363,7 +2365,8 @@ if ($gconfig{'ftp_proxy'} =~ /^http:\/\/(\S+):(\d+)/ && !&no_proxy($_[0])) {
 			print SOCK "Proxy-Authorization: Basic $auth\r\n";
 			}
 		print SOCK "\r\n";
-		&complete_http_download({ 'fh' => "SOCK" }, $_[2], $_[3], $_[4]);
+		&complete_http_download({ 'fh' => "SOCK" }, $_[2], $_[3], $_[4],
+				undef, undef, undef, undef, 0, $nocache);
 		$connected = 1;
 		}
 	elsif (!$gconfig{'proxy_fallback'}) {
