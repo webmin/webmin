@@ -188,8 +188,13 @@ print &ui_table_row($text{'mform_delivery'},
 		       [ $1, $text{"mform_$1"} ] } @mailers ]));
 
 # Show send to input
-if ($m->{'dest'} =~ /^\[(\S+)\]$/) { $dest = $1; $nomx = 1; }
-else { $dest = $m->{'dest'}; }
+$dest = $m->{'dest'};
+if ($dest =~ s/\[([^\]:]+)\]/$1/g) {
+	$nomx = 1;
+	}
+else {
+	$dest = $m->{'dest'};
+	}
 print &ui_table_row($text{'mform_to'},
     &ui_textbox("dest", $dest, 30)."<br>".
     &ui_checkbox("nomx", 1, $text{'mform_ignore'}, $nomx));

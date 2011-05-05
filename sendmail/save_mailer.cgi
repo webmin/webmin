@@ -35,11 +35,14 @@ else {
 		}
 	$mailer = $in{'mailer'};
 	$dest = $in{'dest'};
+	$dest =~ s/\s+/:/g;
 
 	$newm{'domain'} = $domain;
 	$newm{'mailer'} = $mailer;
-	$newm{'dest'} = $in{'nomx'} && $mailer =~ /smtp|relay/ ? "[$dest]"
-							       : $dest;
+	if ($in{'nomx'} && $mailer =~ /smtp|relay/) {
+		$dest = join(":", map { "[".$_."]" } split(/:/, $dest));
+		}
+	$newm{'dest'} = $dest;
 	$newm{'cmt'} = $in{'cmt'};
 	if ($in{'new'}) {
 		&create_mailer(\%newm, $mfile, $mdbm, $mdbmtype);
