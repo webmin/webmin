@@ -1,3 +1,4 @@
+#!/usr/local/bin/perl
 # oschooser.pl
 # Read the list of operating systems and ask the user to choose
 # an OS and version
