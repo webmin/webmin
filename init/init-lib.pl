@@ -1591,15 +1591,18 @@ foreach my $l (split(/\r?\n/, $out)) {
 	}
 
 # Also add legacy init scripts
-my ($rl) = &get_inittab_runlevel();
+my @rls = &get_inittab_runlevel();
 foreach my $a (&list_actions()) {
 	$a =~ s/\s+\d+$//;
 	next if ($done{$a});
 	my $f = &action_filename($a);
 	my $s = { 'name' => $a,
 		  'legacy' => 1 };
-	my $l = glob("/etc/rc$rl.d/S*$a");
-	$s->{'boot'} = $l ? 'start' : 'stop';
+	$s->{'boot'} = 'stop';
+	foreach my $rl (@rls) {
+		my $l = glob("/etc/rc$rl.d/S*$a");
+		$s->{'boot'} = 'start' if ($l);
+		}
 	$s->{'desc'} = &init_description($f);
 	my $hasarg = &get_action_args($f);
 	if ($hasarg->{'status'}) {
