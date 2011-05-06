@@ -625,6 +625,7 @@ if ($init_mode eq "upstart" && (!-r "$config{'init_dir'}/$_[0]" ||
 		&create_upstart_service($_[0], $_[1], $_[2], $_[5]->{'fork'});
 		&system_logged("insserv ".quotemeta($_[0])." >/dev/null 2>&1");
 		}
+	return;
 	}
 if ($init_mode eq "init" || $init_mode eq "local" || $init_mode eq "upstart") {
 	# In these modes, we create a script to run
@@ -633,7 +634,7 @@ if ($init_mode eq "init" || $init_mode eq "local" || $init_mode eq "upstart") {
 		$daemon++;
 		}
 	local $fn;
-	if ($init_mode eq "init") {
+	if ($init_mode eq "init" || $init_mode eq "upstart") {
 		# Normal init.d system
 		$fn = &action_filename($_[0]);
 		}
