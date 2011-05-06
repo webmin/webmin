@@ -171,8 +171,8 @@ sub get_default_value
 sub set_current_value
 {
     my $value = $_[1];
-#    print "--".$value."--<br>";
-    if (($value eq "__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__" || $value eq &get_default_value($_[0])) && !$_[2])
+    if ($value eq "__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__" ||
+	$value eq &get_default_value($_[0]) && !$_[2])
     {
 	# there is a special case in which there is no static default value ;
 	# postfix will handle it correctly if I remove the line in `main.cf'
@@ -204,10 +204,13 @@ sub set_current_value
     }
     else
     {
-	$value =~ s/\$/\\\$/g;     # prepend a \ in front of every $ to protect from shell substitution
         local ($out, $ex);
-	$ex = &execute_command("$config{'postfix_config_command'} -c $config_dir -e $_[0]=\"$value\"", undef, \$out, \$out);
-	$ex && &error(&text('query_set_efailed', $_[0], $_[1], $out)."<br> $config{'postfix_config_command'} -c $config_dir -e $_[0]=\"$value\" 2>&1");
+	$ex = &execute_command(
+		"$config{'postfix_config_command'} -c $config_dir ".
+		"-e $_[0]=".quotemeta($value), undef, \$out, \$out);
+	$ex && &error(&text('query_set_efailed', $_[0], $_[1], $out).
+		      "<br> $config{'postfix_config_command'} -c $config_dir ".
+		     "-e $_[0]=\"$value\" 2>&1");
         &unflush_file_lines($config{'postfix_config_file'}); # Invalidate cache
     }
 }
@@ -538,7 +541,7 @@ foreach $e (@{$_[0]}) {
 	}
 }
 
-# save_options(%options)
+# save_options(%options, [&always-save])
 #
 sub save_options
 {
@@ -560,7 +563,8 @@ sub save_options
 		   }
 		}
             }
-	    &set_current_value($param, $value);
+	    &set_current_value($param, $value,
+			       &indexof($param, @{$_[1]}) >= 0);
 	}
     }
 }

@@ -19,7 +19,7 @@ require './postfix-lib.pl';
 
 &lock_postfix_files();
 &before_save();
-&save_options(\%in);
+&save_options(\%in, [ "myhostname", "mydomain" ]);
 &ensure_map("relocated_maps");
 &after_save();
 &unlock_postfix_files();
