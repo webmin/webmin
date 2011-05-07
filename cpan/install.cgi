@@ -88,12 +88,7 @@ sub clean_up
 {
 system("rm -rf $mod_dir") if ($mod_dir && -d $mod_dir);
 unlink(@pfile) if ($in{'need_unlink'} && (!$config{'save_partial'} || $_[0]));
-if ($in{'return'}) {
-	&ui_print_footer($in{'return'}, $in{'returndesc'});
-	}
-else {
-	&ui_print_footer("", $text{'index_return'});
-	}
+&ui_print_footer($in{'return'}, $in{'returndesc'} || $text{'index_return'});
 }
 
 # show_output(desc, dir, command)

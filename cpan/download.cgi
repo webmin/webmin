@@ -88,7 +88,8 @@ elsif ($in{'source'} == 3) {
 			print "</ul>\n";
 			$i++;
 			}
-		&ui_print_footer("", $text{'index_return'});
+		&ui_print_footer($in{'return'},
+			         $in{'returndesc'} || $text{'index_return'});
 		exit;
 		}
 
@@ -357,12 +358,14 @@ print &ui_form_end([ [ undef, $text{'download_cont'} ],
 			( [ "need", $text{'download_need'} ] ) : ( )
 		   ]);
 
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer($in{'return'},
+		 $in{'returndesc'} || $text{'index_return'});
 
 sub install_error
 {
 print "<br><b>$main::whatfailed : $_[0]</b> <p>\n";
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer($in{'return'},
+		 $in{'returndesc'} || $text{'index_return'});
 exit;
 }
 
