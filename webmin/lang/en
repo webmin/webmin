@@ -928,6 +928,7 @@ sendmail_fromaddr=Address
 sendmail_err=Failed to save mail sending options
 sendmail_esmtp=Missing or un-resolvable SMTP server hostname
 sendmail_elogin=Missing SMTP server login
+sendmail_esasl=SMTP authentication cannot be enabled unless the <a href=$1>$2</a> Perl module is installed.
 sendmail_efrom=Missing or incorrectly formatted from address
 
 web_title=Web Server Options

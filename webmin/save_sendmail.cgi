@@ -28,6 +28,15 @@ if ($in{'login_def'}) {
 	}
 else {
 	$in{'login_user'} =~ /^\S+$/ || &error($text{'sendmail_elogin'});
+	eval "use Authen::SASL";
+	if ($@) {
+		# Perl module missing
+		&error(&text('sendmail_esasl',
+			"/cpan/download.cgi?source=3&cpan=Authen::SASL&".
+                        "mode=2&return=/$module_name/&returndesc=".
+                        &urlize($text{'index_return'}),
+			"Authen::SASL"));
+		}
 	$mconfig{'smtp_user'} = $in{'login_user'};
 	$mconfig{'smtp_pass'} = $in{'login_pass'};
 	}
