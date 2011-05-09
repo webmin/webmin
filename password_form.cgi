@@ -5,6 +5,7 @@
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 
+$pragma_no_cache = 1;
 $ENV{'MINISERV_INTERNAL'} || die "Can only be called by miniserv.pl";
 &init_config();
 &ReadParse();
