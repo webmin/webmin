@@ -3,3 +3,4 @@ category=net
 os_support=solaris *-linux hpux freebsd unixware openserver osf1 macos openbsd netbsd irix
 desc=Network Services and Protocols
 longdesc=Edit services in /etc/inetd.conf, /etc/services and /etc/rpc.
+desc_ca=Serveis i Protocols de Xarxa

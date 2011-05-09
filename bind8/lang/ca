@@ -192,6 +192,7 @@ slave_apply=Força l'Actualització
 slave_applymsg2=Fes clic sobre aquest botó per forçar una retransferència de la zona a partir del servidor mestre, de manera que obtingui els registres més recents.
 slave_last=Darrera transferència: $1
 slave_never=Mai
+slave_xfer=Prova la Transferència de Zona
 
 screate_title1=Creació de Zona Esclava
 screate_title2=Creació de Zona Stub
@@ -1109,4 +1110,11 @@ trusted_ealg=Hi falta el número d'algoritme a la fila $1 o bé és invàlid
 trusted_ekey=Hi falta la clau de zona fiable codificada en base-64 a la fila $1 o bé és invàlida
 trusted_setup=Per tal que DNSSEC sigui útil per a verificar la majoria de zones signades a Internet, s'ha de configurar BIND per a utilitzar un servidor DLV. Webmin pot configurar-ho per tu, utilitzant el servidor DLV ICS DLV a $1.
 trusted_ok=Configura DLV i Activa la Verificació de DNSSEC
+
+xfer_title=Prova de Transferència de Zona
+xfer_doing=Provant la transferència de la zona esclava des de $1...
+xfer_failed=...des de $1: Ha fallat: $2
+xfer_done=...des de $1: Completat OK
+xfer_count=La prova de transferència ha obtingut correctament $1 registres des d'almenys un servidor de noms. Les transferències reals per part de BIND haurien de reeixir.
+
 __norefs=1

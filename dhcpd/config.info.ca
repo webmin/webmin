@@ -3,6 +3,7 @@ lease_sort=Ordena els préstecs per,1,0-L'ordre del fitxer,1-Adreça IP,2-Nom de H
 hostnet_list=Mostra les subxarxes i hosts com,1,0-Icones,1-Llista
 dhcpd_nocols=Icones per fila,0,5
 lease_tz=Mostra els temps de préstec en,1,0-GMT,1-Hora local
+lease_refresh=Segons entre refrescs de la llista de préstecs,3,Mai
 show_ip=Mostra les adreces IP dels hosts,1,1-Sí,0-No
 show_mac=Mostra les adreces MAC dels hosts,1,1-Sí,0-No
 group_name=Mostra els noms de grup com,1,1-Opció <tt>domini&#45;nom</tt>,0-Nom o recompte de membres,2-Descripció

@@ -163,6 +163,7 @@ listl_used=Allotjades
 listl_pc=Percentatge
 listl_err=No s'han pogut suprimir els préstecs
 listl_enone=No n'has seleccionat cap
+listl_refresh=Refresca la llista
 
 restart_errmsg1=No s'ha pogut reiniciar dhcpd
 restart_errmsg2=No s'ha pogut enviar el senyal al procés
