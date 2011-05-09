@@ -33,7 +33,7 @@ my $nmode = !$config{'auto_net'} ? 1 :
 	    &check_ipaddress($nets[0]) ? 0 : 2;
 print &ui_table_row($text{'auto_net'},
     &ui_radio("net_def", $nmode,
-	      [ [ 1, $text{'auto_auto'} ],
+	      [ [ 1, $text{'auto_auto'}."<br>" ],
 		[ 0, &text('auto_ip', &ui_textbox("net", $nmode == 0 ? $config{'auto_net'} : undef, 40))."<br>" ],
 		[ 2, &text('auto_iface', &ui_textbox("iface", $nmode == 2 ? $config{'auto_net'} : undef, 8)) ] ]));
 
