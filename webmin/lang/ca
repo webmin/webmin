@@ -186,7 +186,7 @@ mods_install=Instal·lació de Mòdul
 mods_local=Des d'un fitxer local
 mods_uploaded=Des d'un fitxer pujat
 mods_ftp=Des de FTP o URL HTTP
-mods_standard=Mòdul estàndard de <a href='$1'>www.webmin.com</a>
+mods_standard=Mòdul estàndard de <a href='$1' target=_new>www.webmin.com</a>
 mods_standard2=Mòdul estàndard
 mods_third=Mòdul de tercers de
 mods_thsel=Selecciona...
@@ -620,6 +620,8 @@ log_savekey=S'ha pujat la clau SSL existent
 log_deletecache=S'han suprimit $1 URLs del cau
 log_clearcache=S'han eliminat tots els URLs del cau
 log_lock=S'ha canviat el bloqueig de fitxers
+log_sendmail=S'han canviat les opcions d'enviament de correu
+log_debug=S'han canviat les opcions de depuració del fitxer de registre
 
 themes_title=Temes Webmin
 themes_desc=Temes controla l'aparença de la interfície d'usuari de Webmin, incloent-hi les icones, els colors, els fons i la disposició de les pàgines. La caixa de selecció de sota es pot utilitzar per triar un dels temes instal·lats al sistema.
@@ -903,4 +905,26 @@ status_interval1=Mai
 status_interval0=Cada
 status_mins=minuts
 status_pkgs=Recol·lecta les actualitzacions de paquets disponibles
+
+sendmail_title=Enviament de Correu
+sendmail_desc=Aquesta pàgina controla la forma d'enviar correus de Webmin, com ara quan es fan còpies planificades o monitorització en segon pla. També afecta el correu enviat utilitzant el mòdul Lectura del Correu d'Usuaris
+sendmail_header=Opcions d'enviament de correu
+sendmail_system=Servidor de correu local
+sendmail_smtp=Envia el correu utilitzant
+sendmail_smtp0=Ordre del servidor de correu local
+sendmail_smtp1=Via SMTP al servidor de correu local
+sendmail_smtp2=Via SMTP a un servidor de correu remot
+sendmail_login=Autenticació del servidor SMTP
+sendmail_login1=Sense autenticació
+sendmail_login0=Usuari
+sendmail_pass=contrasenya
+sendmail_auth=Mètode d'autenticació SMTP
+sendmail_from=Adreça origen del correu de Webmin
+sendmail_fromdef=Per defecte ($1)
+sendmail_fromaddr=Adreça
+sendmail_err=No s'han pogut desar les opcions d'enviament
+sendmail_esmtp=Hi falta el nom de host del servidor SMTP p bé no es pot resoldre
+sendmail_elogin=Hi falta l'usuari del servidor SMTP
+sendmail_efrom=Hi falta l'adreça origen o bé no està ben formada
+
 __norefs=1

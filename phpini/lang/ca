@@ -154,6 +154,7 @@ misc_esendmail=L'ordre per enviar correu és invàlida
 misc_esendmail2=Hi falta l'ordre per enviar correu
 misc_include=Permet l'obertura d'<i>Includes</i> remots
 misc_path=Informació del Camí de Correció de CGI
+misc_timezone=Zona horària PHP
 
 log_manual=Edita manualment el fitxer $1
 log_vars=S'han canviat les variables PHP de $1
