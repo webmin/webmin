@@ -1,43 +1,63 @@
-index_title=Czas systemowy
-index_timeserver=Serwer czasu
-index_address=Nazwa/Adres
-index_zone=Strefa czasowa
-index_tz=Bie¿±ca lokalizacja
-
-action_save=Zachowaj
+__norefs=1
+acl_error=Masz dostêp do modu³u czasu systemowego, ale nie mo¿esz zmieniaæ ani czasu systemowego ani sprzêtowego
+acl_hw=U¿ytkownik mo¿e zmieniaæ czas sprzêtowy
+acl_no=Nie
+acl_nohw==Nie masz uprawnieñ do zmiany czasu sprzêtowego
+acl_nontp=Nie masz uprawnieñ do synchronizacji z serwerem czasu
+acl_nosys=Nie masz uprawnieñ do zmiany czasu systemowego
+acl_ntp=Synchronizowaæ z serwerem czasu?
+acl_sys=U¿ytkownik mo¿e zmieniaæ czas systemowy
+acl_timezone=U¿ytkownik mo¿e ustawiæ strefê czasow±?
+acl_yes=Tak
 action_apply=Zastosuj
+action_save=Zachowaj
+action_savezone=Zmieñ strefê czasow±
 action_sync=Synchronizuj czas systemowy z czasem sprzêtowym
 action_sync_s=Synchronizuj czas sprzêtowy z czasem systemowym
-action_timeserver_sys=Synchronizuj czas systemowy
 action_timeserver_hw=Synchronizuj czas sprzêtowy
-action_savezone=Zmieñ strefê czasow±
-
-acl_sys=U¿ytkownik mo¿e zmieniaæ czas systemowy
-acl_hw=U¿ytkownik mo¿e zmieniaæ czas sprzêtowy
-acl_yes=Tak
-acl_no=Nie
-acl_error=Masz dostêp do modu³u czasu systemowego, ale nie mo¿esz zmieniaæ ani czasu systemowego ani sprzêtowego
-acl_nosys=Nie masz uprawnieñ do zmiany czasu systemowego
-acl_nohw==Nie masz uprawnieñ do zmiany czasu sprzêtowego
-
-sys_title=Czas systemowy
-hw_title=Czas sprzêtowy
-
-day=Dzieñ tygodnia
-month=Miesi±c
+action_timeserver_sys=Synchronizuj czas systemowy
 date=Dzieñ
-hour=Godzina
-year=Rok
-
+day=Dzieñ tygodnia
 error_cnf=B³±d&nbsp;: $1 nie ma takiego polecenia
+error_ediff=Ró¿nica czasów serwera czasu i lokalnego jest zbyt du¿a : $1 dni
+error_entp=Synchronizacja czasu NTP nie powiod³a siê: $1
+error_etimeserver=Brak serwerów czasu do synchronizacji z wpisanych
 error_hw=Nie mogê ustawiæ czasu sprzêtowego&nbsp;: $1
 error_sync=Nie mogê ustawiæ czasu systemowego&nbsp;: $1
-
+hour=Godzina
+hw_title=Czas sprzêtowy
+index_addresses=Nazwy hosta lub adresy serwerów czasu
+index_descsync=Niniejszy formularz s³u¿y do konfiguracji systemu do automatycznej synchronizacji czasu ze zdalnym serwerem. Synchronizacja bêdzie odbywaæ siê za pomoc± <tt>time</tt> Unixa lub protoko³u NTP, w zale¿no¶ci od zainstalowanych poleceñ i obs³ugiwanych przez zdalny system.
+index_desctime=Niniejszy formularz s³u¿y do zmiany systemowego obecnego czasu, który jest u¿ywany przez wszystkie uruchomione procesy. W systemach operacyjnych, które maj± odrêbny zegar sprzêtowy, mo¿e byæ u¿ywany do ustawiania go.
+index_desczone=Ten formularz pozwala na ustawienie domy¶lnej strefy czasowej systemu, który s³u¿y do konwersji czasu systemu na format czytelny dla cz³owieka i offset.
+index_eformat=Nieznany format wyj¶ciowy <tt>hwclock</tt>
+index_ehwclock=$1 nie powiod³o siê : $2
+index_hardware2=Ustaw tak¿e czas sprzêtowy
+index_sched=Synchronizacja zgodnie z harmonogramem?
+index_schedyes=Tak, w czasie jak poni¿ej ..
+index_sync=Synchronizuj i Zastosuj
+index_tabsync=Synchronizacja z serwerem czasu
+index_tabtime=Ustaw czas
+index_tabzone=Zmieñ strefê czasow±
+index_timeserver=Serwer czasu
+index_title=Czas systemowy
+index_tz=Bie¿±ca lokalizacja
+index_tzheader=Strefa czasowa
+index_zone=Strefa czasowa
+log_remote_date=Pobrano czas systemowy z&nbsp;$2
+log_remote_date_l=Pobrano czas systemowy $1 z&nbsp;$2
+log_remote_hwclock=Pobrano czas sprzêtowy z&nbsp;$2
+log_remote_hwclock_l=Pobrano czas sprzêtowy $1 z&nbsp;$2
 log_set_date=Ustawiono czas systemowy na $1
 log_set_hwclock=Ustawiono zagar sprzêtowy na $1
-log_remote_date=Pobrano czas systemowy z&nbsp;$2
-log_remote_hwclock=Pobrano czas sprzêtowy z&nbsp;$2
-log_remote_date_l=Pobrano czas systemowy $1 z&nbsp;$2
-log_remote_hwclock_l=Pobrano czas sprzêtowy $1 z&nbsp;$2
 log_sync=Zsynchronizowano czas systemowy z&nbsp;zegarem sprzêtowym
 log_sync_s=Zsynchronizowano zegar sprzêtowy z&nbsp;czasem systemowym
+log_timezone=Zmieniono strefê czasow± na $1
+minute=Minuty
+month=Miesi±c
+second=Sekundy
+sys_title=Czas systemowy
+timezone_ecannot=Nie mo¿esz zmieniæ strefy czasowej
+timezone_enone=Nie wybrano strefy
+timezone_err=Nie uda³o siê zapisaæ strefy czasowej
+year=Rok
