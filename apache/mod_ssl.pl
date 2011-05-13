@@ -8,6 +8,7 @@ $rv = [ [ 'SSLEngine', 0, 14, 'virtual', undef, 10 ],
 	[ 'SSLProtocol', 0, 14, 'virtual', undef, 10 ],
 	[ 'SSLCertificateFile', 0, 14, 'virtual', undef, 9 ],
 	[ 'SSLCertificateKeyFile', 0, 14, 'virtual', undef, 8 ],
+	[ 'SSLCACertificateFile', 0, 14, 'virtual', undef, 7.7 ],
 	[ 'SSLPassPhraseDialog', 1, 14, 'global', 2.0, 7.5 ],
 	[ 'SSLVerifyClient', 0, 14, 'virtual directory htaccess', undef, 7 ],
 	[ 'SSLVerifyDepth', 0, 14, 'virtual directory htaccess', undef, 6 ],
@@ -78,6 +79,19 @@ sub save_SSLCertificateKeyFile
 {
 return &parse_opt("SSLCertificateKeyFile", '\S', $text{'mod_ssl_ekfile'});
 }
+
+sub edit_SSLCACertificateFile
+{
+return (2, $text{'mod_ssl_cafile'},
+	&opt_input($_[0]->{'value'}, "SSLCACertificateFile", $text{'mod_ssl_default'}, 35).
+	&file_chooser_button("SSLCACertificateFile", 0));
+}
+sub save_SSLCACertificateFile
+{
+return &parse_opt("SSLCertificateFile", '\S', $text{'mod_ssl_ecafile'});
+}
+
+
 
 sub edit_SSLVerifyClient
 {
