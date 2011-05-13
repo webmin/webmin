@@ -421,14 +421,15 @@ if ($config{'inetd'}) {
 		}
 
 	# Work out the hostname for this web server
-	$host = &get_socket_name(SOCK, 0);
+	local $sn = getsockname(SOCK);
+	$ipv6 = length($sn) > 16;
+	$host = &get_socket_name(SOCK, $ipv6);
 	$host || exit;
 	$port = $config{'port'};
 	$acptaddr = getpeername(SOCK);
 	$acptaddr || exit;
 
 	# Work out remote and local IPs
-	$ipv6 = length($acptaddr) > 16;
 	(undef, $peera, undef) = &get_address_ip($acptaddr, $ipv6);
 	(undef, $locala) = &get_socket_ip(SOCK, $ipv6);
 
