@@ -77,7 +77,6 @@ foreach $x (@conf) {
 			}
 		}
 	local @cols;
-	local @mytds = @tds;
 	push(@cols, "<a href='edit_serv.cgi?idx=$x->{'index'}'>".
 		    &html_escape($x->{'value'})."</a>");
 	push(@cols, &indexof('RPC', @{$q->{'type'}}) < 0 ?
@@ -88,8 +87,7 @@ foreach $x (@conf) {
 		push(@cols, &html_escape(uc($s[3])));
 		}
 	else {
-		push(@cols, "<i>$text{'index_noport'}</i>");
-		push(@mytds, "", "", "colspan=2");
+		push(@cols, "<i>$text{'index_noport'}</i>", "");
 		}
 	push(@cols, $q->{'user'} ? &html_escape($q->{'user'}->[0]) : "");
 	push(@cols, &indexof('INTERNAL', @{$q->{'type'}}) >= 0 ?
