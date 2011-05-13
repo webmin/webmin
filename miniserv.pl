@@ -430,8 +430,9 @@ if ($config{'inetd'}) {
 	$acptaddr || exit;
 
 	# Work out remote and local IPs
-	(undef, $peera, undef) = &get_address_ip($acptaddr, $ipv6);
+	$ipv6 = length($acptaddr) > 16;
 	(undef, $locala) = &get_socket_ip(SOCK, $ipv6);
+	(undef, $peera, undef) = &get_address_ip($acptaddr, $ipv6);
 
 	print DEBUG "main: Starting handle_request loop pid=$$\n";
 	while(&handle_request($peera, $locala, $ipv6)) { }
