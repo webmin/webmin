@@ -414,25 +414,36 @@ if ($config{'inetd'}) {
 			}
 		}
 
+	# Work out if IPv6 is being used locally
+	local $sn = getsockname(SOCK);
+	print DEBUG "sn=$sn\n";
+	print DEBUG "length=",length($sn),"\n";
+	$localipv6 = length($sn) > 16;
+
 	# Initialize SSL for this connection
 	if ($use_ssl) {
-		$ssl_con = &ssl_connection_for_ip(SOCK, 0);
+		$ssl_con = &ssl_connection_for_ip(SOCK, $localipv6);
 		$ssl_con || exit;
 		}
 
 	# Work out the hostname for this web server
-	local $sn = getsockname(SOCK);
-	$ipv6 = length($sn) > 16;
-	$host = &get_socket_name(SOCK, $ipv6);
+	print DEBUG "localipv6=$localipv6\n";
+	$host = &get_socket_name(SOCK, $localipv6);
+	print DEBUG "host=$host\n";
 	$host || exit;
 	$port = $config{'port'};
 	$acptaddr = getpeername(SOCK);
+	print DEBUG "acptaddr=$acptaddr\n";
+	print DEBUG "length=",length($acptaddr),"\n";
 	$acptaddr || exit;
 
 	# Work out remote and local IPs
 	$ipv6 = length($acptaddr) > 16;
-	(undef, $locala) = &get_socket_ip(SOCK, $ipv6);
+	print DEBUG "ipv6=$ipv6\n";
+	(undef, $locala) = &get_socket_ip(SOCK, $localipv6);
+	print DEBUG "locala=$locala\n";
 	(undef, $peera, undef) = &get_address_ip($acptaddr, $ipv6);
+	print DEBUG "peera=$peera\n";
 
 	print DEBUG "main: Starting handle_request loop pid=$$\n";
 	while(&handle_request($peera, $locala, $ipv6)) { }
