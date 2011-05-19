@@ -121,7 +121,9 @@ local @boot = sort { $a->{'fullname'} cmp $b->{'fullname'} }
 		   &net::boot_interfaces();
 local ($eth) = grep { $_->{'fullname'} =~ /^eth\d+$/ } @boot;
 local ($ppp) = grep { $_->{'fullname'} =~ /^ppp\d+$/ } @boot;
-return $eth || $ppp || $boot[0];
+local ($venetn) = grep { $_->{'fullname'} =~ /^venet\d+:\d+$/ } @boot;
+local ($venet) = grep { $_->{'fullname'} =~ /^venet\d+$/ } @boot;
+return $eth || $ppp || $venetn || $venet || $boot[0];
 }
 
 1;
