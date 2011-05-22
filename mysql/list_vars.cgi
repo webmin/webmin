@@ -7,6 +7,8 @@ $access{'perms'} == 1 || &error($text{'vars_ecannot'});
 &ReadParse();
 %d = map { $_, 1 } split(/\0/, $in{'d'});
 
+print &text('vars_desc', 'edit_cnf.cgi'),"<p>\n";
+
 # Work out which ones can be edited
 %canedit = map { $_->[0], 1 } &list_system_variables();
 
