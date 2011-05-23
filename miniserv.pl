@@ -419,6 +419,7 @@ if ($config{'inetd'}) {
 	print DEBUG "sn=$sn\n";
 	print DEBUG "length=",length($sn),"\n";
 	$localipv6 = length($sn) > 16;
+	print DEBUG "localipv6=$localipv6\n";
 
 	# Initialize SSL for this connection
 	if ($use_ssl) {
@@ -427,7 +428,6 @@ if ($config{'inetd'}) {
 		}
 
 	# Work out the hostname for this web server
-	print DEBUG "localipv6=$localipv6\n";
 	$host = &get_socket_name(SOCK, $localipv6);
 	print DEBUG "host=$host\n";
 	$host || exit;
