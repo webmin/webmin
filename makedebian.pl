@@ -304,6 +304,9 @@ if [ "$inetd" != "1" ]; then
 		/etc/init.d/$baseproduct start >/dev/null 2>&1 </dev/null
 	fi
 fi
+if [ "$product" = "usermin" ]; then
+	insserv $baseproduct >/dev/null 2>&1
+fi
 cat >/etc/$baseproduct/uninstall.sh <<EOFF
 #!/bin/sh
 printf "Are you sure you want to uninstall $ucproduct? (y/n) : "
