@@ -776,10 +776,10 @@ local $mm = $module_info{'usermin'} ? "usermount" : "mount";
 local ($m, %mtab);
 foreach $m (&foreign_call($mm, "list_mounted", 1)) {
 	if ($m->[3] =~ /loop=([^,]+)/) {
-		$mtab{&resolve_and_simplify("$1")} = $m->[0];
+		$mtab{&resolve_and_simplify("$1")} ||= $m->[0];
 		}
 	else {
-		$mtab{&resolve_and_simplify($m->[1])} = $m->[0];
+		$mtab{&resolve_and_simplify($m->[1])} ||= $m->[0];
 		}
 	}
 return %mtab;
