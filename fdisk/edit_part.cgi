@@ -115,7 +115,8 @@ if ($pinfo->{'extended'} || $in{'new'} == 3) {
 	}
 else {
 	print &ui_table_row($text{'edit_type'},
-		&ui_select("type", $in{'new'} ? 83 : $pinfo->{'type'},
+		&ui_select("type",
+			   $in{'new'} ? &default_tag() : $pinfo->{'type'},
 			   [ map { [ $_, &tag_name($_) ] }
 				 (sort { &tag_name($a) cmp &tag_name($b) }
 				       &list_tags()) ]));

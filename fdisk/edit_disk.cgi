@@ -17,8 +17,8 @@ $d || &error($text{'disk_egone'});
 foreach $p (@parts) {
 	$usedpri++ if ($p->{'number'} <= 4);
 	$extended++ if ($p->{'extended'});
-	if ($p->{'end'} > $d->{'cylinders'}-1) {
-		$d->{'cylinders'} = $p->{'end'}+1;
+	if ($p->{'end'} > $d->{'cylinders'}) {
+		$d->{'cylinders'} = $p->{'end'};
 		}
 	if (!$p->{'extended'} && $stat[2] &&
 	    &indexof($p->{'type'}, @space_type) >= 0 &&

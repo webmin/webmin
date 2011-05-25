@@ -1,4 +1,6 @@
 index_title=Partition Manager
+index_parted=Using <tt>parted</tt>
+index_fdisk=Using <tt>fdisk</tt>
 index_err=Failed to list disks
 index_disk=Disk
 index_parts=Partitions

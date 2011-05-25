@@ -405,11 +405,11 @@ while(<FDISK>) {
 		$part->{'desc'} = &partition_description($part->{'device'});
 		push(@{$disk->{'parts'}}, $part);
 		}
-	elsif (/^\s*(\d+)\s+(\d+)cyl\s+(\d+)cyl\s+(\d+)cyl\s+(primary|logical|extended)/) {
+	elsif (/^\s*(\d+)\s+(\d+)cyl\s+(\d+)cyl\s+(\d+)cyl\s+(primary|logical|extended)\s*(\S*)/) {
 		# Partition within the current disk from parted
 		local $part = { 'number' => $1,
 				'device' => $disk->{'device'}.$1,
-				'type' => "XXX",
+				'type' => $6,
 				'start' => $2+1,
 				'end' => $3+1,
 				'blocks' => $4 * $disk->{'cylsize'},
@@ -575,9 +575,8 @@ sub create_partition
 my ($disk, $part, $start, $end, $type) = @_;
 if ($has_parted) {
 	# Using parted
-	# XXX partition type
 	my $pe = $part > 4 ? "logical" : "primary";
-	my $cmd = "parted ".$disk." unit cyl mkpart ".$pe." ".$start." ".$end;
+	my $cmd = "parted ".$disk." unit cyl mkpartfs ".$pe." ".$type." ".($start-1)." ".$end;
 	my $out = &backquote_logged("$cmd </dev/null 2>&1");
 	if ($?) {
 		&error("$cmd failed : $out");
@@ -641,15 +640,26 @@ undef(@list_disks_partitions_cache);
 # Returns a list of known partition tag numbers
 sub list_tags
 {
-return sort { hex($a) <=> hex($b) } (keys %tags);
+if ($has_parted) {
+	# Parted types
+	return sort { $a cmp $b } (keys %parted_tags);
+	}
+else {
+	# Classic fdisk types
+	return sort { hex($a) <=> hex($b) } (keys %tags);
+	}
 }
 
 # tag_name(tag)
 # Returns a human-readable version of a tag
 sub tag_name
 {
-return $tags{$_[0]} ? $tags{$_[0]}
-		    : $hidden_tags{$_[0]};
+return $tags{$_[0]} || $parted_tags{$_[0]} || $hidden_tags{$_[0]};
+}
+
+sub default_tag
+{
+return $has_parted ? 'ext2' : '83';
 }
 
 # conv_type(tag)
@@ -1226,6 +1236,18 @@ else { return " $_[2] $in{$_[0]}"; }
 %hidden_tags = (
 	 '5', 'Extended',
 	 'f', 'Windows extended LBA',
+	);
+
+%parted_tags = (
+	'', 'None',
+	'fat16', 'Windows FAT16',
+	'fat32', 'Windows FAT32',
+	'ext2', 'Linux',
+	'HFS', 'MacOS HFS',
+	'linux-swap', 'Linx Swap',
+	'NTFS', 'Windows NTFS',
+	'reiserfs', 'ReiserFS',
+	'ufs', 'FreeBSD UFS',
 	);
 	
 @space_type = ( '1', '4', '5', '6', 'b', 'c', 'e', '83' );
