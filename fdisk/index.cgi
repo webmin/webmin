@@ -15,7 +15,8 @@ if (@disks == 1 && &can_edit_disk($disks[0]->{'device'})) {
 	edit;
 	}
 
-&ui_print_header(undef, $module_info{'desc'}, "", undef, 0, 1, 0,
+$pdesc = $has_parted ? $text{'index_parted'} : $text{'index_fdisk'};
+&ui_print_header($pdesc, $module_info{'desc'}, "", undef, 0, 1, 0,
 	&help_search_link("fdisk", "man", "doc", "howto"));
 $extwidth = 250;
 

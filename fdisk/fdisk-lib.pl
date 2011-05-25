@@ -20,6 +20,7 @@ $has_xfs_db = &has_command("xfs_db");
 $has_volid = &has_command("vol_id");
 $has_reiserfstune = &has_command("reiserfstune");
 $uuid_directory = "/dev/disk/by-uuid";
+$has_parted = !$config{'noparted'} && &has_command("parted");
 $| = 1;
 
 # list_disks_partitions([include-cds])
@@ -203,12 +204,26 @@ closedir(IDS);
 # Call fdisk to get partition and geometry information
 local $devs = join(" ", @devs);
 local ($disk, $m2);
-open(FDISK, "fdisk -l $devs 2>/dev/null |");
+if ($has_parted) {
+	open(FDISK, join(" ; ", map { "parted $_ unit cyl print 2>/dev/null" }
+				    @devs)." |");
+	}
+else {
+	open(FDISK, "fdisk -l $devs 2>/dev/null |");
+	}
 while(<FDISK>) {
 	if (/Disk\s+([^ :]+):\s+(\d+)\s+\S+\s+(\d+)\s+\S+\s+(\d+)/ ||
-	    ($m2 = ($_ =~ /Disk\s+([^ :]+):\s+(.*)\s+bytes/))) {
+	    ($m2 = ($_ =~ /Disk\s+([^ :]+):\s+(.*)\s+bytes/)) ||
+	    ($m3 = ($_ =~ /Disk\s+([^ :]+):\s+([0-9\.]+)cyl/))) {
 		# New disk section
-		if ($m2) {
+		if ($m3) {
+			# Parted format
+			$disk = { 'device' => $1,
+				  'prefix' => $1,
+				  'cylinders' => $2 };
+			}
+		elsif ($m2) {
+			# New style fdisk
 			$disk = { 'device' => $1,
 				  'prefix' => $1 };
 			<FDISK> =~ /(\d+)\s+\S+\s+(\d+)\s+\S+\s+(\d+)/ || next;
@@ -217,6 +232,7 @@ while(<FDISK>) {
 			$disk->{'cylinders'} = $3;
 			}
 		else {
+			# Old style fdisk
 			$disk = { 'device' => $1,
 				  'prefix' => $1,
 				  'heads' => $2,
@@ -361,13 +377,23 @@ while(<FDISK>) {
 		push(@disks, $disk);
 		}
 	elsif (/^Units\s+=\s+cylinders\s+of\s+(\d+)\s+\*\s+(\d+)/) {
-		# Unit size for disk
+		# Unit size for disk from fdisk
 		$disk->{'bytes'} = $2;
 		$disk->{'cylsize'} = $disk->{'heads'} * $disk->{'sectors'} *
 				     $disk->{'bytes'};
 		}
+	elsif (/BIOS\s+cylinder,head,sector\s+geometry:\s+(\d+),(\d+),(\d+)\.\s+Each\s+cylinder\s+is\s+(\d+)(b|kb|mb)/i) {
+		# Unit size for disk from parted
+		$disk->{'cylinders'} = $1;
+		$disk->{'heads'} = $2;
+		$disk->{'sectors'} = $3;
+		$disk->{'cylsize'} = $4 * (lc($5) eq "b" ? 1 :
+					   lc($5) eq "kb" ? 1024 : 1024*1024);
+		$disk->{'bytes'} = $disk->{'cylsize'} / $disk->{'heads'} /
+						        $disk->{'sectors'};
+		}
 	elsif (/(\/dev\/\S+?(\d+))[ \t*]+\d+\s+(\d+)\s+(\d+)\s+(\S+)\s+(\S{1,2})\s+(.*)/ || /(\/dev\/\S+?(\d+))[ \t*]+(\d+)\s+(\d+)\s+(\S+)\s+(\S{1,2})\s+(.*)/) {
-		# Partition within the current disk
+		# Partition within the current disk from fdisk
 		local $part = { 'number' => $2,
 				'device' => $1,
 				'type' => $6,
@@ -376,22 +402,20 @@ while(<FDISK>) {
 				'blocks' => int($5),
 				'extended' => $6 eq '5' || $6 eq 'f' ? 1 : 0,
 				'index' => scalar(@{$disk->{'parts'}}) };
-		$part->{'desc'} =
-			$part->{'device'} =~ /(.)d([a-z]+)(\d+)$/ ?
-			 &text('select_part', $1 eq 's' ? 'SCSI' : 'IDE', uc($2), "$3") :
-			$part->{'device'} =~ /scsi\/host(\d+)\/bus(\d+)\/target(\d+)\/lun(\d+)\/part(\d+)/ ?
-			 &text('select_spart', "$1", "$2", "$3", "$4", "$5") :
-			$part->{'device'} =~ /ide\/host(\d+)\/bus(\d+)\/target(\d+)\/lun(\d+)\/part(\d+)/ ?
-			 &text('select_snewide', "$1", "$2", "$3", "$4", "$5") :
-			$part->{'device'} =~ /rd\/c(\d+)d(\d+)p(\d+)$/ ? 
-			 &text('select_mpart', "$1", "$2", "$3") :
-			$part->{'device'} =~ /ida\/c(\d+)d(\d+)p(\d+)$/ ? 
-			 &text('select_cpart', "$1", "$2", "$3") :
-			$part->{'device'} =~ /cciss\/c(\d+)d(\d+)p(\d+)$/ ? 
-			 &text('select_smartpart', "$1", "$2", "$3") :
-			$part->{'device'} =~ /ataraid\/disc(\d+)\/part(\d+)$/ ?
-			 &text('select_ppart', "$1", "$2") :
-			"???",
+		$part->{'desc'} = &partition_description($part->{'device'});
+		push(@{$disk->{'parts'}}, $part);
+		}
+	elsif (/^\s*(\d+)\s+(\d+)cyl\s+(\d+)cyl\s+(\d+)cyl\s+(primary|logical|extended)/) {
+		# Partition within the current disk from parted
+		local $part = { 'number' => $1,
+				'device' => $disk->{'device'}.$1,
+				'type' => "XXX",
+				'start' => $2+1,
+				'end' => $3+1,
+				'blocks' => $4 * $disk->{'cylsize'},
+				'extended' => $5 eq 'extended' ? 1 : 0,
+				'index' => scalar(@{$disk->{'parts'}}) };
+		$part->{'desc'} = &partition_description($part->{'device'});
 		push(@{$disk->{'parts'}}, $part);
 		}
 	}
@@ -453,6 +477,28 @@ foreach $d (@disks) {
 return @disks;
 }
 
+# partition_description(device)
+# Converts a device path like /dev/hda into a human-readable name
+sub partition_description
+{
+my ($device) = @_;
+return $device =~ /(.)d([a-z]+)(\d+)$/ ?
+	 &text('select_part', $1 eq 's' ? 'SCSI' : 'IDE', uc($2), "$3") :
+       $device =~ /scsi\/host(\d+)\/bus(\d+)\/target(\d+)\/lun(\d+)\/part(\d+)/ ?
+	 &text('select_spart', "$1", "$2", "$3", "$4", "$5") :
+       $device =~ /ide\/host(\d+)\/bus(\d+)\/target(\d+)\/lun(\d+)\/part(\d+)/ ?
+	 &text('select_snewide', "$1", "$2", "$3", "$4", "$5") :
+       $device =~ /rd\/c(\d+)d(\d+)p(\d+)$/ ? 
+	 &text('select_mpart', "$1", "$2", "$3") :
+       $device =~ /ida\/c(\d+)d(\d+)p(\d+)$/ ? 
+	 &text('select_cpart', "$1", "$2", "$3") :
+       $device =~ /cciss\/c(\d+)d(\d+)p(\d+)$/ ? 
+	 &text('select_smartpart', "$1", "$2", "$3") :
+       $device =~ /ataraid\/disc(\d+)\/part(\d+)$/ ?
+	 &text('select_ppart', "$1", "$2") :
+	 "???";
+}
+
 # hbt_to_device(host, bus, target)
 # Converts an IDE device specified as a host, bus and target to an hdX device
 sub hbt_to_device
@@ -498,14 +544,27 @@ undef(@list_disks_partitions_cache);
 # Delete an existing partition
 sub delete_partition
 {
-&open_fdisk("$_[0]");
-&wprint("d\n");
-local $rv = &wait_for($fh, 'Partition.*:', 'Selected partition');
-&wprint("$_[1]\n") if ($rv == 0);
-&wait_for($fh, 'Command.*:');
-&wprint("w\n");
-&wait_for($fh, 'Syncing'); sleep(3);
-&close_fdisk();
+my ($disk, $part) = @_;
+if ($has_parted) {
+	# Using parted
+	my $cmd = "parted ".$disk." rm ".$part;
+	my $out = &backquote_logged("$cmd </dev/null 2>&1");
+	if ($?) {
+		&error("$cmd failed : $out");
+		}
+	}
+else {
+	# Using fdisk
+	&open_fdisk($disk);
+	&wprint("d\n");
+	local $rv = &wait_for($fh, 'Partition.*:', 'Selected partition');
+	&wprint("$part\n") if ($rv == 0);
+	&wait_for($fh, 'Command.*:');
+	&wprint("w\n");
+	&wait_for($fh, 'Syncing');
+	sleep(3);
+	&close_fdisk();
+	}
 undef(@list_disks_partitions_cache);
 }
 
@@ -513,32 +572,47 @@ undef(@list_disks_partitions_cache);
 # Create a new partition with the given extent and type
 sub create_partition
 {
-&open_fdisk("$_[0]");
-&wprint("n\n");
-local $wf = &wait_for($fh, 'primary.*\r\n', 'First.*:');
-if ($_[1] > 4) {
-	&wprint("l\n");
+my ($disk, $part, $start, $end, $type) = @_;
+if ($has_parted) {
+	# Using parted
+	# XXX partition type
+	my $pe = $part > 4 ? "logical" : "primary";
+	my $cmd = "parted ".$disk." unit cyl mkpart ".$pe." ".$start." ".$end;
+	my $out = &backquote_logged("$cmd </dev/null 2>&1");
+	if ($?) {
+		&error("$cmd failed : $out");
+		}
 	}
 else {
-	&wprint("p\n");
-	local $wf2 = &wait_for($fh, 'Partition.*:', 'Selected partition');
-	&wprint("$_[1]\n") if ($wf2 == 0);
-	}
-&wait_for($fh, 'First.*:') if ($wf != 1);
-&wprint("$_[2]\n");
-&wait_for($fh, 'Last.*:');
-&wprint("$_[3]\n");
-&wait_for($fh, 'Command.*:');
+	# Using fdisk
+	&open_fdisk($disk);
+	&wprint("n\n");
+	local $wf = &wait_for($fh, 'primary.*\r\n', 'First.*:');
+	if ($part > 4) {
+		&wprint("l\n");
+		}
+	else {
+		&wprint("p\n");
+		local $wf2 = &wait_for($fh, 'Partition.*:',
+					    'Selected partition');
+		&wprint("$part\n") if ($wf2 == 0);
+		}
+	&wait_for($fh, 'First.*:') if ($wf != 1);
+	&wprint("$start\n");
+	&wait_for($fh, 'Last.*:');
+	&wprint("$end\n");
+	&wait_for($fh, 'Command.*:');
 
-&wprint("t\n");
-local $rv = &wait_for($fh, 'Partition.*:', 'Selected partition');
-&wprint("$_[1]\n") if ($rv == 0);
-&wait_for($fh, 'Hex.*:');
-&wprint("$_[4]\n");
-&wait_for($fh, 'Command.*:');
-&wprint("w\n");
-&wait_for($fh, 'Syncing'); sleep(3);
-&close_fdisk();
+	&wprint("t\n");
+	local $rv = &wait_for($fh, 'Partition.*:', 'Selected partition');
+	&wprint("$part\n") if ($rv == 0);
+	&wait_for($fh, 'Hex.*:');
+	&wprint("$type\n");
+	&wait_for($fh, 'Command.*:');
+	&wprint("w\n");
+	&wait_for($fh, 'Syncing'); sleep(3);
+	&close_fdisk();
+	}
 undef(@list_disks_partitions_cache);
 }
 
