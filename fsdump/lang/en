@@ -91,6 +91,7 @@ dump_gzip2=Yes, with bzip
 dump_bcomp=Buffer compressed data into blocks?
 dump_xdev=Limit backup to one filesystem?
 dump_update2=Just add new files to archive?
+dump_ignoreread=Ignore read errors on files?
 dump_notape=Prompt for new tape if needed?
 dump_rmt=Path to <tt>rmt</tt> on remote system
 dump_links=Follow symbolic links?

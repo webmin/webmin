@@ -99,6 +99,11 @@ if ($_[0]->{'fs'} eq 'tar') {
 	print &ui_table_row(&hlink($text{'dump_update2'},"tarupdate"),
 			    &ui_yesno_radio("update", int($_[0]->{'update'})),
 			    1, $tds);
+
+	print &ui_table_row(&hlink($text{'dump_ignoreread'},"ignoreread"),
+			    &ui_yesno_radio("ignoreread",
+					    int($_[0]->{'ignoreread'})),
+			    1, $tds);
 	}
 elsif ($_[0]->{'fs'} eq 'xfs') {
 	# Display xfs dump options
@@ -241,6 +246,7 @@ if ($_[0]->{'fs'} eq 'tar') {
 		&error($text{'dump_eftpupdate'});
 		}
 	$_[0]->{'update'} = $in{'update'};
+	$_[0]->{'ignoreread'} = $in{'ignoreread'};
 	if ($in{'gzip'} && $in{'update'}) {
 		&error($text{'dump_egzip3'});
 		}
@@ -357,6 +363,7 @@ if ($_[0]->{'fs'} eq 'tar') {
 		if ($_[0]->{'rsh'} && $_[0]->{'host'});
 	$cmd .= " --rmt-command=".quotemeta($_[0]->{'rmt'})
 		if ($_[0]->{'rmt'});
+	$cmd .= " --ignore-failed-read" if ($_[0]->{'ignoreread'});
 	if ($_[0]->{'exclude'}) {
 		foreach my $e (&split_quoted_string($_[0]->{'exclude'})) {
 			$cmd .= " --exclude ".quotemeta($e);
