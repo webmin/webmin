@@ -171,7 +171,7 @@ masq_ecannot=You are not allowed to configure masquerading
 masq_domain=Masquerade as domain
 masq_domains=Domains to be masqueraded
 masq_ndomains=Domains not to masquerade
-masq_desc1=If a domain is given above, sendmail will alter the <tt>From</tt> address of all outgoing messages to appear to come from that domain. In addition, any email messages passing through your system from one of the hosts or domains listed below will also have their <tt>From</tt> addresses modified in the same way. Note that any domain masquerading defined here can be overriden for specific users using the <a href='$1'>Outgoing Addresses</a> page.
+masq_desc1=If a domain is given below, sendmail will alter the <tt>From</tt> address of all outgoing messages to appear to come from that domain. In addition, any email messages passing through your system from one of the hosts or domains listed below will also have their <tt>From</tt> addresses modified in the same way. Note that any domain masquerading defined here can be overriden for specific users using the <a href='$1'>Outgoing Addresses</a> page.
 masq_desc2=This feature can be useful if you want email from your system to appear to come from your domain name rather than your hostname, or if your system is the mail hub for number of other hosts running their own mailservers.
 masq_err=Failed to save domain masquerading
 masq_edomain='$1' is not a valid domain to masquerade as
