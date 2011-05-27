@@ -16,9 +16,19 @@ if (@disks == 1 && &can_edit_disk($disks[0]->{'device'})) {
 	}
 
 $pdesc = $has_parted ? $text{'index_parted'} : $text{'index_fdisk'};
-&ui_print_header($pdesc, $module_info{'desc'}, "", undef, 0, 1, 0,
+&ui_print_header($pdesc, $module_info{'desc'}, "", undef, 1, 1, 0,
 	&help_search_link("fdisk", "man", "doc", "howto"));
 $extwidth = 250;
+
+# Check for critical commands
+if ($has_parted) {
+	&has_command("parted") ||
+		&ui_print_endpage(&text('index_ecmd', '<tt>parted</tt>'));
+	}
+else {
+	&has_command("fdisk") ||
+		&ui_print_endpage(&text('index_ecmd', '<tt>fdisk</tt>'));
+	}
 
 # Show a table of just disks
 @disks = sort { $a->{'device'} cmp $b->{'device'} } @disks;

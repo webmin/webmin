@@ -1,6 +1,7 @@
 index_title=Partition Manager
 index_parted=Using <tt>parted</tt>
 index_fdisk=Using <tt>fdisk</tt>
+index_ecmd=You have selected to use the $1 command for partition management, but it is not installed on your system.
 index_err=Failed to list disks
 index_disk=Disk
 index_parts=Partitions
@@ -84,7 +85,8 @@ edit_mountlvm=Part of LVM volume group $1
 edit_notexist=Not created yet
 edit_notused=Not in use
 edit_size=Size
-edit_label=Partition label
+edit_label=Filesystem label
+edit_name=Partition name
 edit_volid=Volume ID
 edit_blocks=$1 blocks
 edit_inuse=This partition cannot be changed as it is currently in use or configured for use.
@@ -267,5 +269,6 @@ disk_size=Size
 disk_dsize=<b>Disk size:</b> $1
 disk_model=<b>Make and model:</b> $1
 disk_cylinders=<b>Cylinders:</b> $1
+disk_return=list of partitions
 
 __norefs=1

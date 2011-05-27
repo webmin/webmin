@@ -20,7 +20,15 @@ $has_xfs_db = &has_command("xfs_db");
 $has_volid = &has_command("vol_id");
 $has_reiserfstune = &has_command("reiserfstune");
 $uuid_directory = "/dev/disk/by-uuid";
-$has_parted = !$config{'noparted'} && &has_command("parted");
+if ($config{'mode'} eq 'parted') {
+	$has_parted = 1;
+	}
+elsif ($config{'mode'} eq 'fdisk') {
+	$has_parted = 0;
+	}
+else {
+	$has_parted = !$config{'noparted'} && &has_command("parted");
+	}
 $| = 1;
 
 # list_disks_partitions([include-cds])
@@ -401,22 +409,30 @@ while(<FDISK>) {
 				'end' => $4,
 				'blocks' => int($5),
 				'extended' => $6 eq '5' || $6 eq 'f' ? 1 : 0,
-				'index' => scalar(@{$disk->{'parts'}}) };
+				'index' => scalar(@{$disk->{'parts'}}),
+			 	'edittype' => 1, };
 		$part->{'desc'} = &partition_description($part->{'device'});
 		push(@{$disk->{'parts'}}, $part);
 		}
-	elsif (/^\s*(\d+)\s+(\d+)cyl\s+(\d+)cyl\s+(\d+)cyl\s+(primary|logical|extended)\s*(\S*)/) {
+	elsif (/^\s*(\d+)\s+(\d+)cyl\s+(\d+)cyl\s+(\d+)cyl(\s+(primary|logical|extended))?\s*(\S*)\s*(\S*)/) {
 		# Partition within the current disk from parted
 		local $part = { 'number' => $1,
 				'device' => $disk->{'device'}.$1,
-				'type' => $6,
+				'type' => $7,
 				'start' => $2+1,
 				'end' => $3+1,
 				'blocks' => $4 * $disk->{'cylsize'},
-				'extended' => $5 eq 'extended' ? 1 : 0,
-				'index' => scalar(@{$disk->{'parts'}}) };
+				'extended' => $6 eq 'extended' ? 1 : 0,
+				'index' => scalar(@{$disk->{'parts'}}),
+			        'name' => $8,
+				'edittype' => 0, };
+		$part->{'type'} = 'ext2' if ($part->{'type'} =~ /^ext/);
 		$part->{'desc'} = &partition_description($part->{'device'});
 		push(@{$disk->{'parts'}}, $part);
+		}
+	elsif (/Partition\s+Table:\s+(\S+)/) {
+		# Parted partition table type
+		$disk->{'table'} = $1;
 		}
 	}
 close(FDISK);
@@ -547,7 +563,7 @@ sub delete_partition
 my ($disk, $part) = @_;
 if ($has_parted) {
 	# Using parted
-	my $cmd = "parted ".$disk." rm ".$part;
+	my $cmd = "parted -s ".$disk." rm ".$part;
 	my $out = &backquote_logged("$cmd </dev/null 2>&1");
 	if ($?) {
 		&error("$cmd failed : $out");
@@ -576,7 +592,15 @@ my ($disk, $part, $start, $end, $type) = @_;
 if ($has_parted) {
 	# Using parted
 	my $pe = $part > 4 ? "logical" : "primary";
-	my $cmd = "parted ".$disk." unit cyl mkpartfs ".$pe." ".$type." ".($start-1)." ".$end;
+	my $cmd;
+	if ($type) {
+		$cmd = "parted -s ".$disk." unit cyl mkpartfs ".$pe." ".
+		       $type." ".($start-1)." ".$end;
+		}
+	else {
+		$cmd = "parted -s ".$disk." unit cyl mkpart ".$pe." ".
+		       ($start-1)." ".$end;
+		}
 	my $out = &backquote_logged("$cmd </dev/null 2>&1");
 	if ($?) {
 		&error("$cmd failed : $out");
@@ -616,23 +640,38 @@ undef(@list_disks_partitions_cache);
 }
 
 # create_extended(disk, partition, start, end)
+# Create a new extended partition
 sub create_extended
 {
-&open_fdisk("$_[0]");
-&wprint("n\n");
-&wait_for($fh, 'primary.*\r\n');
-&wprint("e\n");
-&wait_for($fh, 'Partition.*:');
-&wprint("$_[1]\n");
-&wait_for($fh, 'First.*:');
-&wprint("$_[2]\n");
-&wait_for($fh, 'Last.*:');
-&wprint("$_[3]\n");
-&wait_for($fh, 'Command.*:');
+my ($disk, $part, $start, $end) = @_;
+if ($has_parted) {
+	# Create using parted
+	my $cmd = "parted -s ".$disk." unit cyl mkpart extended ".
+		  ($start-1)." ".$end;
+	my $out = &backquote_logged("$cmd </dev/null 2>&1");
+	if ($?) {
+		&error("$cmd failed : $out");
+		}
+	}
+else {
+	# Use classic fdisk
+	&open_fdisk($disk);
+	&wprint("n\n");
+	&wait_for($fh, 'primary.*\r\n');
+	&wprint("e\n");
+	&wait_for($fh, 'Partition.*:');
+	&wprint("$part\n");
+	&wait_for($fh, 'First.*:');
+	&wprint("$start\n");
+	&wait_for($fh, 'Last.*:');
+	&wprint("$end\n");
+	&wait_for($fh, 'Command.*:');
 
-&wprint("w\n");
-&wait_for($fh, 'Syncing'); sleep(3);
-&close_fdisk();
+	&wprint("w\n");
+	&wait_for($fh, 'Syncing');
+	sleep(3);
+	&close_fdisk();
+	}
 undef(@list_disks_partitions_cache);
 }
 
@@ -666,14 +705,59 @@ return $has_parted ? 'ext2' : '83';
 # Given a partition tag, returns the filesystem type (assuming it is supported)
 sub conv_type
 {
-local @rv;
-if ($_[0] eq "4" || $_[0] eq "6" ||
-    $_[0] eq "1" || $_[0] eq "e") { @rv = ( "msdos" ); }
-elsif ($_[0] eq "b" || $_[0] eq "c") { @rv = ( "vfat" ); }
-elsif ($_[0] eq "83") { @rv = ( "ext3", "ext4", "ext2", "xfs", "reiserfs" ); }
-elsif ($_[0] eq "82") { @rv = ( "swap" ); }
-elsif ($_[0] eq "81") { @rv = ( "minix" ); }
-else { return ( ); }
+my ($tag) = @_;
+my @rv;
+if ($has_parted) {
+	# Use parted type names
+	if ($tag eq "fat16") {
+		@rv = ( "msdos" );
+		}
+	elsif ($tag eq "fat32") {
+		@rv = ( "vfat" );
+		}
+	elsif ($tag eq "ext2") {
+		@rv = ( "ext3", "ext4", "ext2", "xfs", "reiserfs" );
+		}
+	elsif ($tag eq "hfs") {
+		@rv = ( "hfs" );
+		}
+	elsif ($tag eq "linux-swap") {
+		@rv = ( "swap" );
+		}
+	elsif ($tag eq "NTFS") {
+		@rv = ( "ntfs" );
+		}
+	elsif ($tag eq "reiserfs") {
+		@rv = "reiserfs";
+		}
+	elsif ($tag eq "ufs") {
+		@rv = ( "ufs" );
+		}
+	else {
+		return ( );
+		}
+	}
+else {
+	# Use fdisk type IDs
+	if ($tag eq "4" || $tag eq "6" || $tag eq "1" || $tag eq "e") {
+		@rv = ( "msdos" );
+		}
+	elsif ($tag eq "b" || $tag eq "c") {
+		@rv = ( "vfat" );
+		}
+	elsif ($tag eq "83") {
+		@rv = ( "ext3", "ext4", "ext2", "xfs", "reiserfs" );
+		}
+	elsif ($tag eq "82") {
+		@rv = ( "swap" );
+		}
+	elsif ($tag eq "81") {
+		@rv = ( "minix" );
+		}
+	else {
+		return ( );
+		}
+	}
 local %supp = map { $_, 1 } &mount::list_fstypes();
 @rv = grep { $supp{$_} } @rv;
 return wantarray ? @rv : $rv[0];
@@ -1369,6 +1453,22 @@ if ($has_xfs_db && ($_[2] eq "xfs" || !$_[2])) {
 	return 1 if (!$?);
 	}
 return 0;
+}
+
+# supports_label(&partition)
+# Returns 1 if the label can be set on a partition
+sub supports_label
+{
+my ($part) = @_;
+return $part->{'type'} eq '83' || $part->{'type'} eq 'ext2';
+}
+
+# supports_name(&disk)
+# Returns 1 if the name can be set on a disk's partitions
+sub supports_name
+{
+my ($disk) = @_;
+return $disk->{'table'} eq 'gpt';
 }
 
 # supports_hdparm(&disk)

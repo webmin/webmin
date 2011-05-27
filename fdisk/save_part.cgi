@@ -16,7 +16,7 @@ if ($in{'delete'} && $in{'confirm'}) {
 	$pinfo = $plist[$in{'part'}];
 	&delete_partition($dinfo->{'device'}, $pinfo->{'number'});
 	&webmin_log("delete", "part", $dinfo->{'device'}, \%in);
-	&redirect("");
+	&redirect("edit_disk.cgi?device=$dinfo->{'device'}");
 	}
 elsif ($in{'delete'}) {
 	# Ask the user if he really wants to delete the partition
@@ -33,17 +33,22 @@ elsif ($in{'delete'}) {
 	print "<input type=submit name=confirm value='$text{'delete_ok'}'>\n";
 	print "</form></center>\n";
 
-	&ui_print_footer("", $text{'index_return'});
+	&ui_print_footer("edit_disk.cgi?device=$dinfo->{'device'}",
+			 $text{'disk_return'});
 	}
 elsif (!$in{'new'}) {
-	# changing existing partition
+	# Changing existing partition type and label
 	$pinfo = $plist[$in{'part'}];
-	&change_type($dinfo->{'device'}, $pinfo->{'number'}, $in{'type'});
-	if (defined($in{'label'}) && $in{'type'} eq '83') {
+	if ($pinfo->{'edittype'}) {
+		&change_type($dinfo->{'device'}, $pinfo->{'number'},
+			     $in{'type'});
+		$pinfo->{'type'} = $in{'type'};
+		}
+	if (defined($in{'label'}) && &supports_label($pinfo)) {
 		&set_label($pinfo->{'device'}, $in{'label'});
 		}
 	&webmin_log("modify", "part", $dinfo->{'device'}, \%in);
-	&redirect("");
+	&redirect("edit_disk.cgi?device=$dinfo->{'device'}");
 	}
 else {
 	# Adding new partition
@@ -77,7 +82,8 @@ else {
 	else {
 		&create_partition($dinfo->{'device'}, $in{'newpart'},
 				  $in{'start'}, $in{'end'}, $in{'type'});
-		if ($in{'label'} && $in{'type'} eq '83') {
+		$pinfo = { 'type' => $in{'type'} };
+		if ($in{'label'} && &supports_label($pinfo)) {
 			local $dev = $dinfo->{'prefix'}.$in{'newpart'};
 			&set_label($dev, $in{'label'});
 			}

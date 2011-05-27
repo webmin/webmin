@@ -111,15 +111,23 @@ print &ui_table_row($text{'edit_device'}, $dev);
 
 # Partition type
 if ($pinfo->{'extended'} || $in{'new'} == 3) {
+	# Extended, cannot change
 	print &ui_table_row($text{'edit_type'}, $text{'extended'});
 	}
-else {
+elsif ($pinfo->{'edittype'} || $in{'new'}) {
+	# Can change
 	print &ui_table_row($text{'edit_type'},
 		&ui_select("type",
 			   $in{'new'} ? &default_tag() : $pinfo->{'type'},
 			   [ map { [ $_, &tag_name($_) ] }
 				 (sort { &tag_name($a) cmp &tag_name($b) }
 				       &list_tags()) ]));
+	}
+else {
+	# Tool doesn't allow change
+	print &ui_table_row($text{'edit_type'},
+			    &tag_name($pinfo->{'type'}));
+		
 	}
 
 # Extent and cylinders
@@ -174,7 +182,7 @@ if (!$in{'new'}) {
 	}
 
 # Show field for editing filesystem label
-if (($has_e2label || $has_xfs_db) && $pinfo->{'type'} eq '83' && !$in{'new'}) {
+if (($has_e2label || $has_xfs_db) && &supports_label($pinfo) && !$in{'new'}) {
 	local $label = $in{'new'} ? undef : &get_label($pinfo->{'device'});
 	if (@stat) {
 		print &ui_table_row($text{'edit_label'},
@@ -186,10 +194,16 @@ if (($has_e2label || $has_xfs_db) && $pinfo->{'type'} eq '83' && !$in{'new'}) {
 		}
 	}
 
+# Show field for partition name
+if (&supports_name($dinfo)) {
+	print &ui_table_row($text{'edit_name'},
+			&ui_textbox("name", $pinfo->{'name'}, 20));
+	}
+
 # Show current UUID
 if ($has_volid && !$in{'new'}) {
 	local $volid = &get_volid($pinfo->{'device'});
-	print &ui_table_row($text{'edit_volid'}, "<tt>$volid</tt>");
+	print &ui_table_row($text{'edit_volid'}, "<tt>$volid</tt>", 3);
 	}
 
 print &ui_table_end();
