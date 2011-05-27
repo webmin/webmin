@@ -936,6 +936,7 @@ if (@fields) {
 			}
 
 		print &ui_table_row($f->[1], $input);
+		$i++;
 		}
 	print &ui_table_end();
 	}
