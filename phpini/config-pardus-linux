@@ -1,1 +1,1 @@
-php_ini=/etc/php/php.ini
+php_ini=/etc/php/apache2/php.ini
