@@ -726,7 +726,7 @@ foreach $d (&fdisk::list_disks_partitions()) {
 		next if ($used{$p->{'device'}} || $p->{'extended'});
 		local @ds = &device_status($p->{'device'});
 		next if (@ds);
-		if ($p->{'type'} eq '83') {
+		if ($p->{'type'} eq '83' || $p->{'type'} eq 'ext2') {
 			local $label = &fdisk::get_label($p->{'device'});
 			next if ($used{"LABEL=$label"});
 			}

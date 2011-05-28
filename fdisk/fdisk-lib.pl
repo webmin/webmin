@@ -213,8 +213,9 @@ closedir(IDS);
 local $devs = join(" ", @devs);
 local ($disk, $m2);
 if ($has_parted) {
-	open(FDISK, join(" ; ", map { "parted $_ unit cyl print 2>/dev/null" }
-				    @devs)." |");
+	open(FDISK, join(" ; ",
+		map { "parted $_ unit cyl print 2>/dev/null || ".
+		      "fdisk -l $_ 2>/dev/null" } @devs)." |");
 	}
 else {
 	open(FDISK, "fdisk -l $devs 2>/dev/null |");
@@ -233,7 +234,8 @@ while(<FDISK>) {
 		elsif ($m2) {
 			# New style fdisk
 			$disk = { 'device' => $1,
-				  'prefix' => $1 };
+				  'prefix' => $1,
+				  'table' => 'msdos', };
 			<FDISK> =~ /(\d+)\s+\S+\s+(\d+)\s+\S+\s+(\d+)/ || next;
 			$disk->{'heads'} = $1;
 			$disk->{'sectors'} = $2;
@@ -245,7 +247,8 @@ while(<FDISK>) {
 				  'prefix' => $1,
 				  'heads' => $2,
 				  'sectors' => $3,
-				  'cylinders' => $4 };
+				  'cylinders' => $4,
+				  'table' => 'msdos', };
 			}
 		$disk->{'index'} = scalar(@disks);
 		$disk->{'parts'} = [ ];
@@ -1309,6 +1312,7 @@ else { return " $_[2] $in{$_[0]}"; }
 	'e3', 'DOS read-only',
 	'e4', 'SpeedStor',
 	'eb', 'BeOS',
+	'ee', 'GPT',
 	'f1', 'SpeedStor',
 	'f4', 'SpeedStor large partition',
 	'f2', 'DOS secondary',
@@ -1455,6 +1459,36 @@ if ($has_xfs_db && ($_[2] eq "xfs" || !$_[2])) {
 return 0;
 }
 
+# set_name(&disk, &partition, name)
+# Sets the name of a partition, for partition types that support it
+sub set_name
+{
+my ($dinfo, $pinfo, $name) = @_;
+my $cmd = "parted -s ".$dinfo->{'device'}." name ".$pinfo->{'number'}." ";
+if ($name) {
+	$cmd .= quotemeta($name);
+	}
+else {
+	$cmd .= " '\"\"'";
+	}
+my $out = &backquote_logged("$cmd </dev/null 2>&1");
+if ($?) {
+	&error("$cmd failed : $out");
+	}
+}
+
+# set_partition_table(device, table-type)
+# Wipe and re-create the partition table on some disk
+sub set_partition_table
+{
+my ($disk, $table) = @_;
+my $cmd = "parted -s ".$disk." mktable ".$table;
+my $out = &backquote_logged("$cmd </dev/null 2>&1");
+if ($?) {
+	&error("$cmd failed : $out");
+	}
+}
+
 # supports_label(&partition)
 # Returns 1 if the label can be set on a partition
 sub supports_label
@@ -1478,6 +1512,13 @@ local ($d) = @_;
 return $d->{'type'} eq 'ide' || $d->{'type'} eq 'scsi' && $d->{'model'} =~ /ATA/;
 }
 
+# supports_relabel(&disk)
+# Return 1 if a disk can have it's partition table re-written
+sub supports_relabel
+{
+return $has_parted ? 1 : 0;
+}
+
 # supports_smart(&disk)
 sub supports_smart
 {
@@ -1485,3 +1526,24 @@ return &foreign_installed("smart-status") &&
        &foreign_available("smart-status");
 }
 
+# supports_extended(&disk)
+# Return 1 if some disk can support extended partitions
+sub supports_extended
+{
+my ($disk) = @_;
+return $disk->{'label'} eq 'msdos' ? 1 : 0;
+}
+
+# list_table_types(&disk)
+# Returns the list of supported partition table types for a disk
+sub list_table_types
+{
+if ($has_parted) {
+	return ( 'msdos', 'gpt', 'bsd', 'dvh', 'loop', 'mac', 'pc98', 'sun' );
+	}
+else {
+	return ( 'msdos' );
+	}
+}
+
+1;

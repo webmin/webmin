@@ -279,5 +279,6 @@ if (!$in{'new'} && !$pinfo->{'extended'}) {
 	print &ui_buttons_end();
 	}
 
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer("edit_disk.cgi?device=$dinfo->{'device'}",
+		 $text{'disk_return'});
 

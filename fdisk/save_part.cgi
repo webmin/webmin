@@ -47,6 +47,9 @@ elsif (!$in{'new'}) {
 	if (defined($in{'label'}) && &supports_label($pinfo)) {
 		&set_label($pinfo->{'device'}, $in{'label'});
 		}
+	if (defined($in{'name'}) && &supports_name($dinfo)) {
+		&set_name($dinfo, $pinfo, $in{'name'});
+		}
 	&webmin_log("modify", "part", $dinfo->{'device'}, \%in);
 	&redirect("edit_disk.cgi?device=$dinfo->{'device'}");
 	}
@@ -82,10 +85,14 @@ else {
 	else {
 		&create_partition($dinfo->{'device'}, $in{'newpart'},
 				  $in{'start'}, $in{'end'}, $in{'type'});
-		$pinfo = { 'type' => $in{'type'} };
+		$pinfo = { 'type' => $in{'type'},
+			   'number' => $in{'newpart'} };
 		if ($in{'label'} && &supports_label($pinfo)) {
 			local $dev = $dinfo->{'prefix'}.$in{'newpart'};
 			&set_label($dev, $in{'label'});
+			}
+		if ($in{'name'} && &supports_name($dinfo)) {
+			&set_name($dinfo, $pinfo, $in{'name'});
 			}
 		&webmin_log("create", "part", $dinfo->{'device'}, \%in);
 		}

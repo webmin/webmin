@@ -36,7 +36,7 @@ if ($extended) {
 	push(@edlinks, "<a href=\"edit_part.cgi?disk=$d->{'index'}&new=2\">".
 		       $text{'index_addlog'}."</a>");
 	}
-elsif ($usedpri != 4) {
+elsif ($usedpri != 4 && &supports_extended()) {
 	push(@edlinks, "<a href=\"edit_part.cgi?disk=$d->{'index'}&new=3\">".
 			$text{'index_addext'}."</a>");
 	}
@@ -50,6 +50,9 @@ if ($d->{'model'}) {
 	push(@info, &text('disk_model', $d->{'model'}));
 	}
 push(@info, &text('disk_cylinders', $d->{'cylinders'}));
+if ($d->{'table'}) {
+	push(@info, &text('disk_table', uc($d->{'table'})));
+	}
 print &ui_links_row(\@info),"<p>\n";
 
 # Show table of partitions, if any
@@ -145,6 +148,11 @@ if (&supports_smart($d)) {
 	print &ui_buttons_row("../smart-status/index.cgi", $text{'index_smart'},
 			      $text{'index_smartdesc'},
 			      &ui_hidden("drive", $d->{'device'}));
+	}
+if (&supports_relabel($d)) {
+	print &ui_buttons_row("edit_relabel.cgi", $text{'index_relabel'},
+			      $text{'index_relabeldesc'},
+			      &ui_hidden("device", $d->{'device'}));
 	}
 print &ui_buttons_end();
 

@@ -25,6 +25,8 @@ index_hdparm=Edit IDE parameters
 index_hdparmdesc=Change settings for an IDE drive, such as the DMA mode, standby timeout and number of sectors read.
 index_smart=Show SMART status
 index_smartdesc=Displays the status reported by this drive, including temperature and error rates.
+index_relabel=Wipe Partitions
+index_relabeldesc=Delete all existing partitions and create a new partition table with a different format.
 index_use=Use
 index_free=Free
 index_return=disk list
@@ -269,6 +271,17 @@ disk_size=Size
 disk_dsize=<b>Disk size:</b> $1
 disk_model=<b>Make and model:</b> $1
 disk_cylinders=<b>Cylinders:</b> $1
+disk_table=<b>Partition format:</b> $1
 disk_return=list of partitions
+
+relabel_title=Wipe Partitions
+relabel_warn=Are you sure you want to wipe all partitions on $1 ($2) by re-writing the disk label? All existing data and filesystems will be lost!
+relabel_parts=Existing partitions
+relabel_noparts=None created yet
+relabel_table=Partition table format
+relabel_ok=Wipe and Re-Label
+
+table_msdos=MS-DOS (Standard partition format)
+table_gpt=GPT (For 2T or larger disks)
 
 __norefs=1
