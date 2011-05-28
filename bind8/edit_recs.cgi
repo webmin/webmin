@@ -171,8 +171,9 @@ for($i=0; $i<@_; $i++) {
 	if (!$access{'ro'} && $type eq 'master') {
 		push(@cols, 
 		      "<a href=\"edit_record.cgi?index=".
-		      "$in{'index'}&id=$id&num=$r->{'num'}&type=$in{'type'}&".
-		      "sort=$in{'sort'}&view=$in{'view'}\">$name</a>");
+		      "$in{'index'}&id=".&urlize($id)."&num=$r->{'num'}&".
+		      "type=$in{'type'}&sort=$in{'sort'}&view=$in{'view'}\">".
+		      "$name</a>");
 		}
 	else {
 		push(@cols, $name);
