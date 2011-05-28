@@ -854,5 +854,33 @@ foreach my $r (@$recs) {
 return undef;
 }
 
+# record_id(&r)
+# Returns a unique ID string for a record, based on the name and value
+sub record_id
+{
+my ($r) = @_;
+return $r->{'name'}."/".$r->{'type'}.
+       (uc($r->{'type'}) eq 'SOA' ? '' : '/'.join('/', @{$r->{'values'}}));
+}
+
+# find_record_by_id(&recs, id, index)
+# Find a record by ID and possibly index
+sub find_record_by_id
+{
+my ($recs, $id, $num) = @_;
+my @rv = grep { &record_id($_) eq $id } @$recs;
+if (!@rv) {
+	return undef;
+	}
+elsif (@rv == 1) {
+	return $rv[0];
+	}
+else {
+	# Multiple matches .. find the one with the right index
+	@rv = grep { $_->{'num'} == $num } @rv;
+	return @rv ? $rv[0] : undef;
+	}
+}
+
 1;
 

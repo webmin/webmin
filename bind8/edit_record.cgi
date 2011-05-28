@@ -11,7 +11,8 @@ $dom = $zone->{'name'};
 $type = $zone->{'type'};
 $file = $zone->{'file'};
 @recs = &read_zone_file($file, $dom);
-$rec = $recs[$in{'num'}];
+$rec = &find_record_by_id(\@recs, $in{'id'}, $in{'num'});
+$rec || &error($text{'edit_egone'});
 &can_edit_type($rec->{'type'}, \%access) ||
 	&error($text{'recs_ecannottype'});
 

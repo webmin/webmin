@@ -36,7 +36,9 @@ else {
 	@recs = &read_zone_file($zone->{'file'}, $dom);
 
 	foreach $d (sort { $b <=> $a } @d) {
-		$r = $recs[$d];
+		($num, $id) = split(/\//, $d, 2);
+		$r = &find_record_by_id(\@recs, $id, $num);
+		next if (!$r);
 		if ($in{'rev'}) {
 			# Find the reverse
 			$fulloldvalue0 = &convert_to_absolute(

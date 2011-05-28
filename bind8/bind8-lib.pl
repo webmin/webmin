@@ -878,6 +878,7 @@ print &ui_hidden("sort", $in{'sort'});
 if (defined($_[5])) {
 	print &ui_hidden("num", $_[5]);
 	%rec = %{$_[6]};
+	print &ui_hidden("id", &record_id(\%rec));
 	}
 else {
 	print &ui_hidden("new", 1);

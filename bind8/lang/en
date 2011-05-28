@@ -238,6 +238,7 @@ edit_uprev=Update reverse?
 edit_over=Yes (and replace existing)
 edit_upfwd=Update forward?
 edit_err=Failed to save record
+edit_egone=Selected record no longer exists!
 edit_ettl='$1' is not a valid time-to-live
 edit_eip='$1' is not a valid IP address
 edit_eip6='$1' is not a valid IPv6 address

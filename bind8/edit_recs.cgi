@@ -167,10 +167,11 @@ for($i=0; $i<@_; $i++) {
 		}
 	local @cols;
 	$name = &html_escape($name);
+	$id = &record_id($r);
 	if (!$access{'ro'} && $type eq 'master') {
 		push(@cols, 
 		      "<a href=\"edit_record.cgi?index=".
-		      "$in{'index'}&type=$in{'type'}&num=$r->{'num'}&".
+		      "$in{'index'}&id=$id&num=$r->{'num'}&type=$in{'type'}&".
 		      "sort=$in{'sort'}&view=$in{'view'}\">$name</a>");
 		}
 	else {
@@ -225,7 +226,7 @@ for($i=0; $i<@_; $i++) {
 		}
 	if (!$access{'ro'} && $type eq 'master') {
 		$rv .= &ui_checked_columns_row(\@cols, \@tds,
-					      "d", $r->{'num'});
+					      "d", $r->{'num'}."/".$id);
 		}
 	else {
 		$rv .= &ui_columns_row(\@cols, \@tds);

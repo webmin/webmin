@@ -27,7 +27,10 @@ else {
 	}
 
 # get the old record if needed
-$r = $recs[$in{'num'}] if (defined($in{'num'}));
+if (defined($in{'num'})) {
+	$r = &find_record_by_id(\@recs, $in{'id'}, $in{'num'});
+	$r || &error($text{'edit_egone'});
+	}
 
 # check for deletion
 if ($in{'delete'}) {
@@ -540,7 +543,8 @@ else {
 &unlock_all_files();
 $r->{'newvalues'} = $vals;
 &webmin_log($in{'new'} ? 'create' : 'modify', 'record', $in{'origin'}, $r);
-&redirect("edit_recs.cgi?index=$in{'index'}&view=$in{'view'}&type=$in{'redirtype'}&sort=$in{'sort'}");
+&redirect("edit_recs.cgi?index=$in{'index'}&view=$in{'view'}&".
+	  "type=$in{'redirtype'}&sort=$in{'sort'}");
 
 # valname(name)
 sub valname
