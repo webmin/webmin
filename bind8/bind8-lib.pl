@@ -1911,15 +1911,23 @@ return undef;
 sub restart_zone
 {
 local ($dom, $view) = @_;
-local $out;
+local ($out, $ex);
 if ($view) {
 	# Reload a zone in a view
+	&try_cmd("freeze ".quotemeta($dom)." IN ".quotemeta($view).
+		 " 2>&1 </dev/null");
 	$out = &try_cmd("reload ".quotemeta($dom)." IN ".quotemeta($view).
 			" 2>&1 </dev/null");
+	$ex = $?;
+	&try_cmd("thaw ".quotemeta($dom)." IN ".quotemeta($view).
+		 " 2>&1 </dev/null");
 	}
 else {
 	# Just reload one top-level zone
+	&try_cmd("freeze ".quotemeta($dom)." 2>&1 </dev/null");
 	$out = &try_cmd("reload ".quotemeta($dom)." 2>&1 </dev/null");
+	$ex = $?;
+	&try_cmd("thaw ".quotemeta($dom)." 2>&1 </dev/null");
 	}
 if ($out =~ /not found/i) {
 	# Zone is not known to BIND yet - do a total reload
@@ -1937,7 +1945,7 @@ if ($out =~ /not found/i) {
 			}
 		}
 	}
-elsif ($? || $out =~ /failed|not found|error/i) {
+elsif ($ex || $out =~ /failed|not found|error/i) {
 	return &text('restart_endc', "<tt>".&html_escape($out)."</tt>");
 	}
 &refresh_nscd();
