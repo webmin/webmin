@@ -28,3 +28,5 @@ Fix list of users for a share to show open files correctly, and not show the sam
 Try to use the smbpasswd command to create or delete users, if installed.
 ---- Changes since 1.520 ----
 Add support for the locked account flag for users, thanks to Juan Miguel Corral Cano.
+---- Changes since 1.550 ----
+Added improved Winbind support, thanks to Caspar Smit.

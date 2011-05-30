@@ -29,12 +29,18 @@ index_createprnshare=Create a new printer share.
 index_createcopy=Create a new copy.
 index_view=View all connections.
 index_start=Start Samba Servers
+index_start_wb=Start Winbind Servers
 index_startmsg=The Samba servers do not appear to be running on your system. This means that the shares listed above will not be accessible to other computers.
+index_startmsg_wb=The Winbind servers do not appear to be running on your system.
 index_restart=Restart Samba Servers
+index_restart_wb=Restart Winbind Servers
 index_restartmsg=Click this button to restart the running Samba servers on your system. This will force the current configuration to be applied.
+index_restartmsg_wb=Click this button to restart the running Winbind servers on your system.
 index_restartmsg2=This will also disconnect any connections to the server, so if you do not want the current configuration to be applied immediately you should just wait 1 minute until Samba reloads the configuration automatically.
 index_stop=Stop Samba Servers
+index_stop_wb=Stop Winbind Servers
 index_stopmsg=Click this button to shut down the running Samba servers on your system. All currently logged in users will be forcibly disconnected.
+index_stopmsg_wb=Click this button to shut down the running Winbind servers on your system.
 index_einclude=Warning - Your Samba configuration file $1 contains the $2 or $3 directive. This may cause Webmin to modify the file incorrectly.
 index_delete=Delete Selected Shares
 
@@ -399,8 +405,10 @@ savesmb_server=You must enter a password server
 
 start_err=Failed to start Samba servers
 start_fail=$1 failed
+start_err_wb=Failed to start Winbind servers
 
 restart_err=Failed to restart Samba servers
+restart_err_wb=Failed to restart Winbind servers
 
 swats_fail=Failed to save username
 swats_user=Missing SWAT username
@@ -422,8 +430,11 @@ viewu_kill=Disconnect Selected Users
 viewu_enone=No users selected
 
 log_apply=Restarted Samba servers
+log_apply_wb=Restarted Winbind servers
 log_stop=Stopped Samba servers
+log_stop_wb=Stopped Winbind servers
 log_start=Started Samba servers
+log_start_wb=Started Winbind servers
 log_save_fshare=Modified file share $1
 log_save_pshare=Modified printer share $1
 log_save_sec=Modified security and access control for share $1
@@ -628,6 +639,7 @@ bind_local=Enable Winbind for local accounts?
 bind_trust=Trust domain server users?
 bind_users=Disallow listing of users?
 bind_groups=Disallow listing of groups?
+bind_defaultdomain=Always use default domain?
 bind_realm=Kerberos realm on domain server
 bind_cache=Seconds to cache user details for
 bind_uid=Range of UIDs for Windows users

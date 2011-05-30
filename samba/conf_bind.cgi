@@ -37,6 +37,11 @@ print "<td>",&ui_radio("groups",
 		&istrue("winbind enum groups") ? 1 : 0,
 		[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]),"</td>\n";
 
+print "<tr> <td><b>$text{'bind_defaultdomain'}</b></td>\n";
+print "<td>",&ui_radio("defaultdomain",
+		&istrue("winbind use default domain") ? 1 : 0,
+		[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]),"</td>\n";
+
 print "<tr> <td><b>$text{'bind_realm'}</b></td>\n";
 printf "<td><input name=realm size=20 value='%s'></td>\n",
 	&getval("realm");

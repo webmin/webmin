@@ -276,6 +276,24 @@ if ($access{'apply'}) {
 				      $text{'index_stopmsg'});
 		}
 	print &ui_buttons_end();
+	if (&has_command("winbindd")) {
+		$isrun2 = &is_winbind_running();
+		print &ui_hr();
+		print &ui_buttons_start();
+		if ($isrun2 == 0) {
+               	 # Start button
+               	 print &ui_buttons_row("start_wb.cgi", $text{'index_start_wb'},
+                                      $text{'index_startmsg_wb'});
+               	 }
+        	elsif ($isrun2 == 1) {
+               	 # Restart / stop buttons
+               	 print &ui_buttons_row("restart_wb.cgi", $text{'index_restart_wb'},
+               	                       $text{'index_restartmsg_wb'});
+               	 print &ui_buttons_row("stop_wb.cgi", $text{'index_stop_wb'},
+               	                       $text{'index_stopmsg_wb'});
+               	 }
+		}
+	print &ui_buttons_end();
 	}
 
 &ui_print_footer("/", $text{'index'});

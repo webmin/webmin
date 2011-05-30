@@ -734,6 +734,15 @@ return !$found_inet && !@smbpids && !@nmbpids ? 0 :
        !$found_inet ? 1 : 2;
 }
 
+# is_winbind_running()
+# Returns 0 if not, 1 if it is
+sub is_winbind_running
+{
+local (@wbpids);
+@wbpids = &find_byname("winbindd");
+return !@wbpids ? 0 : 1;
+}
+
 # can($permissions_string, \%access, [$sname])
 # check global and per-share permissions:
 #

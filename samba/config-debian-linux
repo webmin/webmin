@@ -5,6 +5,7 @@ samba_password_program=/usr/bin/smbpasswd
 samba_status_program=/usr/bin/smbstatus
 samba_server=/usr/sbin/smbd
 name_server=/usr/sbin/nmbd
+winbind_server=/usr/sbin/winbindd
 smb_conf=/etc/smb.conf
 text_lists=0
 run_from_inetd=1

@@ -21,6 +21,8 @@ $global = &get_share("global");
 
 &setval("winbind enum groups", $in{'groups'} ? "yes" : "no");
 
+&setval("winbind use default domain", $in{'defaultdomain'} ? "yes" : "no");
+
 $in{'realm'} eq "" || $in{'realm'} =~ /^\S+$/ || &error($text{'bind_erealm'});
 &setval("realm", $in{'realm'});
 
