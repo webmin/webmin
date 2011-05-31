@@ -18,7 +18,7 @@ $supports_tar = 1;
 sub supported_filesystems
 {
 local @rv;
-push(@rv, "ext2", "ext3") if (&has_command("dump"));
+push(@rv, "ext2", "ext3", "ext4") if (&has_command("dump"));
 push(@rv, "xfs") if (&has_command("xfsdump"));
 return @rv;
 }
