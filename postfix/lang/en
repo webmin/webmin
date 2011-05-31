@@ -676,6 +676,7 @@ master_max2=Maximum processes
 master_procs=At most $1
 master_name2=Server name/port
 master_egone=Server process no longer exists!
+master_eclash=A server process with the same name and transport type already exists
 master_err=Failed to save server process
 master_ename=Missing or invalid server name or port
 master_ehost=Invalid host address to listen on

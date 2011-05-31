@@ -18,7 +18,8 @@ if ($in{'new'}) {
 		};
 	}
 else {
-	($prog) = grep { $_->{'name'} eq $in{'name'} } @$master;
+	($prog) = grep { $_->{'name'} eq $in{'name'} &&
+			 $_->{'type'} eq $in{'type'} } @$master;
 	$prog || &error($text{'master_egone'});
 	&ui_print_header(undef, $text{'master_edit'}, "");
 	}
@@ -26,6 +27,7 @@ else {
 print &ui_form_start("save_master.cgi", "post");
 print &ui_hidden("new", $in{'new'}),"\n";
 print &ui_hidden("old", $in{'name'}),"\n";
+print &ui_hidden("oldtype", $in{'type'}),"\n";
 print &ui_table_start($text{'master_header'}, "width=100%", 4);
 
 print &ui_table_row($text{'master_type'},

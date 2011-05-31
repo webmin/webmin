@@ -10,7 +10,8 @@ if ($in{'new'}) {
 	$prog = { };
 	}
 else {
-	($prog) = grep { $_->{'name'} eq $in{'old'} } @$master;
+	($prog) = grep { $_->{'name'} eq $in{'old'} &&
+			 $_->{'type'} eq $in{'oldtype'} } @$master;
 	$prog || &error($text{'master_egone'});
 	}
 &lock_file($config{'postfix_master'});
@@ -56,6 +57,17 @@ else {
 	else {
 		$in{'procs'} =~ /^\d+$/ || &error($text{'master_emaxprocs'});
 		$prog->{'maxprocs'} = $in{'procs'};
+		}
+
+	# Check for clash by name and type, but only between enabled servers
+	if ($in{'enabled'}) {
+		if ($in{'new'} || $in{'name'} ne $in{'old'} ||
+				  $in{'type'} ne $in{'oldtype'}) {
+			($clash) = grep { $_->{'name'} eq $in{'name'} &&
+					  $_->{'type'} eq $in{'type'} &&
+					  $_->{'enabled'} } @$master;
+			$clash && &error($text{'master_eclash'});
+			}
 		}
 
 	# Save or update
