@@ -20,7 +20,9 @@ foreach $d ([ "safe_mode_include_dir", "safe_einclude" ],
 		&save_directive($conf, $d->[0], undef);
 		}
 	else {
-		-d $in{$d->[0]} || &error($text{$d->[1]});
+		foreach my $d (split(/:/, $in{$d->[0]})) {
+			-d $d || &error($text{$d->[1]});
+			}
 		&save_directive($conf, $d->[0], $in{$d->[0]});
 		}
 	}
