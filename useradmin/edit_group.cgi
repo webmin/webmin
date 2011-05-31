@@ -6,14 +6,16 @@ require './user-lib.pl';
 &ReadParse();
 
 # Get group and show page header
-$n = $in{'num'};
+$n = $in{'group'};
 if ($n eq "") {
 	$access{'gcreate'} == 1 || &error($text{'gedit_ecreate'});
 	&ui_print_header(undef, $text{'gedit_title2'}, "", "create_group");
 	}
 else {
 	@glist = &list_groups();
-	%group = %{$glist[$n]};
+	($ginfo_hash) = grep { $_->{'group'} eq $n } @glist;
+	$ginfo_hash || &error($text{'gedit_egone'});
+	%group = %$ginfo_hash;
 	&can_edit_group(\%access, \%group) ||
 		&error($text{'gedit_eedit'});
 	&ui_print_header(undef, $text{'gedit_title'}, "", "edit_group");
@@ -24,7 +26,7 @@ else {
 
 # Start of form
 print &ui_form_start("save_group.cgi", "post");
-print &ui_hidden("num", $n) if ($n ne "");
+print &ui_hidden("old", $n) if ($n ne "");
 print &ui_table_start($text{'gedit_details'}, "width=100%", 2, [ "width=30%" ]);
 
 # Group name
@@ -99,7 +101,7 @@ if ($n ne "") {
 		foreach $u (@upri) {
 			if (&can_edit_user(\%access, $u)) {
 				push(@uprilinks, "<a href='edit_user.cgi?".
-				  "num=$u->{'num'}'>$u->{'user'}</a>");
+				  "user=$u->{'user'}'>$u->{'user'}</a>");
 				}
 			else {
 				push(@uprilinks, $u->{'user'});

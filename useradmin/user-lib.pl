@@ -2463,7 +2463,7 @@ elsif ($_[0]->{'dn'}) {
 	       "$dis</a>";
 	}
 else {
-	return "<a href='edit_user.cgi?num=$_[0]->{'num'}'>".
+	return "<a href='edit_user.cgi?user=".&urlize($_[0]->{'user'})."'>".
 	       "$dis</a>";
 	}
 }
@@ -2483,7 +2483,7 @@ elsif ($_[0]->{'dn'}) {
 	       &html_escape($_[0]->{'group'})."</a>";
 	}
 else {
-	return "<a href='edit_group.cgi?num=$_[0]->{'num'}'>".
+	return "<a href='edit_group.cgi?group=".&urlize($_[0]->{'group'})."'>".
 	       &html_escape($_[0]->{'group'})."</a>";
 	}
 }

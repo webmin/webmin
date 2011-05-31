@@ -9,7 +9,7 @@ require 'timelocal.pl';
 
 if ($in{'delete'}) {
 	# Redirect to deletion page
-	&redirect("delete_group.cgi?num=$in{'num'}");
+	&redirect("delete_group.cgi?group=$in{'old'}");
 	return;
 	}
 
@@ -24,9 +24,12 @@ $in{'gid'} =~ s/\r|\n//g;
 
 &lock_user_files();
 @glist = &list_groups();
-if ($in{'num'} ne "") {
+if ($in{'old'} ne "") {
 	# get old group
-	%ogroup = %{$glist[$in{'num'}]};
+	@glist = &list_groups();
+	($ginfo_hash) = grep { $_->{'group'} eq $in{'old'} } @glist;
+	$ginfo_hash || &error($text{'gedit_egone'});
+	%ogroup = %$ginfo_hash;
 	$group{'group'} = $ogroup{'group'};
 	&can_edit_group(\%access, \%ogroup) || &error($text{'gsave_eedit'});
 	}
@@ -43,7 +46,7 @@ else {
 	}
 
 # Validate and save inputs
-if (!$in{'gid_def'} || $in{'num'} ne '') {
+if (!$in{'gid_def'} || $in{'old'} ne '') {
 	# Only do GID checks if not automatic
 	$in{'gid'} =~ /^[0-9]+$/ || &error(&text('gsave_egid', $in{'gid'}));
 	!$access{'lowgid'} || $in{'gid'} >= $access{'lowgid'} ||

@@ -8,12 +8,12 @@ if ($cgi eq 'edit_user.cgi') {
 	# Link to first available user
 	my @allulist = &list_users();
 	my @ulist = &list_allowed_users(\%access, \@allulist);
-	return @ulist ? "num=".&urlize($ulist[0]->{'num'}) : "none";
+	return @ulist ? "user=".&urlize($ulist[0]->{'user'}) : "none";
 	}
 elsif ($cgi eq 'edit_group.cgi') {
 	my @allglist = &list_groups();
 	my @glist = &list_allowed_groups(\%access, \@allglist);
-	return @glist ? "num=".&urlize($glist[0]->{'num'}) : "none";
+	return @glist ? "group=".&urlize($glist[0]->{'group'}) : "none";
 	}
 return undef;
 }

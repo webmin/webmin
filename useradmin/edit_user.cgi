@@ -7,14 +7,16 @@ require 'timelocal.pl';
 &ReadParse();
 
 # Show header and get the user
-$n = $in{'num'};
+$n = $in{'user'};
 if ($n eq "") {
 	$access{'ucreate'} || &error($text{'uedit_ecreate'});
 	&ui_print_header(undef, $text{'uedit_title2'}, "", "create_user");
 	}
 else {
 	@ulist = &list_users();
-	%uinfo = %{$ulist[$n]};
+	($uinfo_hash) = grep { $_->{'user'} eq $n } @ulist;
+	$uinfo_hash || &error($text{'uedit_egone'});
+	%uinfo = %$uinfo_hash;
 	&can_edit_user(\%access, \%uinfo) || &error($text{'uedit_eedit'});
 	&ui_print_header(undef, $text{'uedit_title'}, "", "edit_user");
 	}
@@ -37,8 +39,7 @@ if ($shells{'shells'}) {
 
 # Start of the form
 print &ui_form_start("save_user.cgi", "post");
-print &ui_hidden("num", $n) if ($n ne "");
-print &ui_hidden("old", $uinfo{'user'}) if ($n ne "");
+print &ui_hidden("old", $n) if ($n ne "");
 print &ui_table_start($text{'uedit_details'}, "width=100%", 2, \@tds);
 
 # Username

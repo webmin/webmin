@@ -22,7 +22,7 @@ for($i=0; $i<@glist; $i++) {
 		}
 	}
 if (@match == 1) {
-	&redirect("edit_group.cgi?num=".$match[0]->{'num'});
+	&redirect("edit_group.cgi?group=".$match[0]->{'group'});
 	}
 else {
 	&ui_print_header(undef, $text{'search_title'}, "");

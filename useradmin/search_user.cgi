@@ -42,7 +42,7 @@ for($i=0; $i<@ulist; $i++) {
 		}
 	}
 if (@match == 1) {
-	&redirect("edit_user.cgi?num=".$match[0]->{'num'});
+	&redirect("edit_user.cgi?user=".$match[0]->{'user'});
 	}
 else {
 	&ui_print_header(undef, $text{'search_title'}, "");

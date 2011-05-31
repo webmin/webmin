@@ -5,8 +5,8 @@
 require './user-lib.pl';
 &ReadParse();
 @glist = &list_groups();
-$group = $glist[$in{'num'}];
-$group || &error($text{'gdel_enum'});
+($group) = grep { $_->{'group'} eq $in{'group'} } @glist;
+$group || &error($text{'gedit_egone'});
 $| = 1;
 &error_setup($text{'gdel_err'});
 &can_edit_group(\%access, $group) || &error($text{'gdel_egroup'});
@@ -55,7 +55,7 @@ if ($in{'confirmed'}) {
 	print "$text{'gdel_done'}<p>\n";
 
 done:
-	&ui_print_footer("", $text{'index_return'});
+	&ui_print_footer("index.cgi?mode=groups", $text{'index_return'});
 	}
 else {
 	# check if this is anyone's primary group
@@ -71,13 +71,12 @@ else {
 	# Ask if the user is sure
 	print &ui_confirmation_form("delete_group.cgi",
 		&text('gdel_sure', $group->{'group'}),
-		[ [ "num", $in{'num'} ],
-		  [ "group", $group->{'group'} ] ],
+		[ [ "group", $group->{'group'} ] ],
 		[ [ "confirmed", $text{'gdel_del'} ] ],
 		ui_checkbox("others", 1, $text{'gdel_dothers'},
                            $config{'default_other'}),
 		);
 
-	&ui_print_footer("", $text{'index_return'});
+	&ui_print_footer("index.cgi?mode=groups", $text{'index_return'});
 	}
 

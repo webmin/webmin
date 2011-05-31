@@ -22,8 +22,7 @@ elsif ($in{'switch'}) {
 	return;
 	}
 elsif ($in{'delete'}) {
-	&redirect("delete_user.cgi?user=".&urlize($in{'old'}).
-		  "&num=".$in{'num'});
+	&redirect("delete_user.cgi?user=".&urlize($in{'old'}));
 	return;
 	}
 
@@ -54,9 +53,11 @@ $err = &check_username_restrictions($in{'user'});
 &lock_user_files();
 @ulist = &list_users();
 @glist = &list_groups();
-if ($in{'num'} ne "") {
+if ($in{'old'} ne "") {
 	# Get old user info
-	%ouser = %{$ulist[$in{'num'}]};
+	($ouser_hash) = grep { $_->{'user'} eq $in{'old'} } @ulist;
+	$ouser_hash || &error($text{'uedit_egone'});
+	%ouser = %$ouser_hash;
 	if (!$access{'urename'} && $ouser{'user'} ne $user{'user'}) {
 		&error($text{'usave_erename'});
 		}
@@ -79,7 +80,7 @@ else {
 			if ($ou->{'user'} eq $in{'user'});
 		}
 	}
-if (($in{'num'} eq '' || $user{'user'} ne $ouser{'user'}) &&
+if (($in{'old'} eq '' || $user{'user'} ne $ouser{'user'}) &&
     $config{'alias_check'} && &foreign_check("sendmail")) {
 	# Check if the new username conflicts with a sendmail alias
 	&foreign_require("sendmail", "sendmail-lib.pl");
@@ -93,7 +94,7 @@ if (($in{'num'} eq '' || $user{'user'} ne $ouser{'user'}) &&
 	}
 
 # Validate and store basic inputs
-if (!$in{'uid_def'} || $in{'num'} ne '') {
+if (!$in{'uid_def'} || $in{'old'} ne '') {
 	# Only do UID checks if not automatic
 	$in{'uid'} =~ /^\-?[0-9]+$/ || &error(&text('usave_euid', $in{'uid'}));
 	if (!%ouser || $ouser{'uid'} != $in{'uid'}) {
@@ -154,7 +155,7 @@ if ($access{'shells'} ne "*") {
 		}
 	}
 $user{'uid'} = $in{'uid'};
-if ($in{'num'} ne "" || !$in{'gidmode'}) {
+if ($in{'old'} ne "" || !$in{'gidmode'}) {
 	# Selecting existing group
 	$user{'gid'} = &my_getgrnam($in{'gid'});
 	if ($user{'gid'} eq "") { &error(&text('usave_egid', $in{'gid'})); }
@@ -239,7 +240,7 @@ foreach $gname (@sgnames) {
 	}
 
 if ($access{'ugroups'} ne "*") {
-	if ($in{'num'} ne "") {
+	if ($in{'old'} ne "") {
 		# existing users can only be added to or removed from
 		# allowed groups
 		if ($ouser{'gid'} != $user{'gid'}) {

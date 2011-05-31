@@ -6,8 +6,8 @@ require './user-lib.pl';
 &ReadParse();
 &lock_user_files();
 @ulist = &list_users();
-$user = $ulist[$in{'num'}];
-$user || &error($text{'udel_enum'});
+($user) = grep { $_->{'user'} eq $in{'user'} } @ulist;
+$user || &error($text{'uedit_egone'});
 &error_setup($text{'udel_err'});
 &can_edit_user(\%access, $user) || &error($text{'udel_euser'});
 $access{'udelete'} || &error($text{'udel_euser'});
@@ -156,8 +156,7 @@ else {
 		}
 
 	print &ui_confirmation_form("delete_user.cgi", $msg,
-		[ [ "num", $in{'num'} ],
-		  [ "user", $user->{'user'} ],
+		[ [ "user", $user->{'user'} ],
 		  [ "confirmed", 1 ] ],
 		\@buts,
 		$access{'dothers'} == 1 ?
