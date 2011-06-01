@@ -69,6 +69,7 @@ print &ui_table_hr();
 
 # Get the current map value for the relayhost
 $rh = &get_current_value("relayhost");
+$rh =~ s/^\[(.*)\]$/$1/g;
 if ($rh) {
 	$pmap = &get_maps("smtp_sasl_password_maps");
 	foreach my $o (@$pmap) {

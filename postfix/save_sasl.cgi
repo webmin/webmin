@@ -54,6 +54,7 @@ if ($postfix_version >= 2.3) {
 
 # Save SMTP relay options
 $rh = &get_current_value("relayhost");
+$rh =~ s/^\[(.*)\]$/$1/g;
 if ($rh) {
 	if ($in{'login_none'} == 0 &&
 	    !&get_current_value("smtp_sasl_password_maps")) {
