@@ -811,6 +811,11 @@ sasl_eca=Missing or invalid TLS certificate authority file
 sasl_level_none=Never
 sasl_level_may=If requested by client
 sasl_level_encrypt=Always
+sasl_login=SMTP login to outgoing mail host
+sasl_nologin=None needed
+sasl_userpass=Login as $1 with password $2
+sasl_elogin=Missing or invalid SMTP login
+sasl_epass=Invalid SMTP password
 
 client_title=SMTP Client Restrictions
 client_ecannot=You are not allowed to edit SMTP client restrictions

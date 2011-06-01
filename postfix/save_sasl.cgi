@@ -20,6 +20,12 @@ if ($in{'smtpd_tls_CAfile_def'} eq "__USE_FREE_FIELD__") {
 	-r $in{'smtpd_tls_CAfile'} || &error($text{'sasl_eca'});
 	}
 
+# Validate remote mail server login
+if (!$in{'login_none'}) {
+	$in{'login_user'} =~ /^[^: ]+$/ || &error($text{'sasl_elogin'});
+	$in{'login_pass'} =~ /^[^: ]*$/ || &error($text{'sasl_epass'});
+	}
+
 &lock_postfix_files();
 &save_options(\%in);
 
@@ -44,6 +50,38 @@ foreach $o (&list_smtpd_restrictions()) {
 if ($postfix_version >= 2.3) {
 	&set_current_value("smtpd_tls_security_level",
 			   $in{'smtpd_tls_security_level'});
+	}
+
+# Save SMTP relay options
+$rh = &get_current_value("relayhost");
+if ($rh) {
+	if ($in{'login_none'} == 0 &&
+	    !&get_current_value("smtp_sasl_password_maps")) {
+		# Setup initial map
+		&set_current_value("smtp_sasl_password_maps",
+				"hash:".&guess_config_dir()."/smtp_sasl_password_map");
+		}
+        $pmap = &get_maps("smtp_sasl_password_maps");
+	foreach my $o (@$pmap) {
+                if ($o->{'name'} eq $rh) {
+			$old = $o;
+			}
+		}
+	$newmap = { 'name' => $rh,
+		    'value' => $in{'login_user'}.":".$in{'login_pass'} };
+	if ($old && $in{'login_def'}) {
+		# Delete entry
+		&delete_mapping("smtp_sasl_password_maps", $old);
+		}
+	elsif ($old && !$in{'login_def'}) {
+		# Update entry
+		&modify_mapping("smtp_sasl_password_maps", $old, $newmap);
+		}
+	elsif (!$old && !$in{'login_def'}) {
+		# Add entry
+		&create_mapping("smtp_sasl_password_maps", $newmap);
+		}
+	&regenerate_any_table("smtp_sasl_password_maps");
 	}
 
 &unlock_postfix_files();

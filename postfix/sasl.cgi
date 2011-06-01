@@ -62,6 +62,28 @@ else {
 
 &option_radios_freefield("smtpd_tls_CAfile", 60, $none);
 
+print &ui_table_hr();
+
+# Outgoing authentication options
+&option_radios_freefield("relayhost", 45, $text{'opts_direct'});
+
+# Get the current map value for the relayhost
+$rh = &get_current_value("relayhost");
+if ($rh) {
+	$pmap = &get_maps("smtp_sasl_password_maps");
+	foreach my $o (@$pmap) {
+		if ($o->{'name'} eq $rh) {
+			($ruser, $rpass) = split(/:/, $o->{'value'});
+			}
+		}
+	}
+print &ui_table_row($text{'sasl_login'},
+	&ui_radio("login_none", $ruser ? 0 : 1,
+		  [ [ 1, $text{'sasl_nologin'}."<br>" ],
+		    [ 0, &text('sasl_userpass',
+				&ui_textbox("login_user", $ruser, 20), 
+				&ui_textbox("login_pass", $rpass, 20)) ] ]), 3);
+
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'opts_save'} ] ]);
 
