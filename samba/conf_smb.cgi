@@ -106,10 +106,15 @@ foreach $p (@protocols) {
 print "</select></td>\n";
 
 print "<td><b>$text{'smb_master'}</b></td>\n";
-printf "<td><input type=radio name=preferred_master value=yes %s> $text{'yes'}\n",
-	&isfalse("preferred master") ? "" : "checked";
-printf "$gap <input type=radio name=preferred_master value=no %s> $text{'no'}</td> </tr>\n",
+print "<td>";
+printf "<input type=radio name=preferred_master value=yes %s> $text{'yes'}\n",
+	&istrue("preferred master") ? "checked" : "";
+printf "$gap <input type=radio name=preferred_master value=no %s> $text{'no'}\n",
 	&isfalse("preferred master") ? "checked" : "";
+printf "<input type=radio name=preferred_master value=auto %s> $text{'smb_master_auto'}\n",
+	&getval("preferred master") =~ /auto/ ||
+	!&getval("preferred master") ? "checked" : "";
+print "</td> </tr>\n";
 
 print "<tr> <td><b>$text{'smb_security'}</b></td>\n";
 print "<td><select name=security>\n";

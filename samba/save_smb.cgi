@@ -57,7 +57,7 @@ $in{os_level} =~ /^\d+$/ ||
 
 &setval("protocol", $in{protocol}, "");
 
-&setval("preferred master", $in{preferred_master}, "yes");
+&setval("preferred master", $in{preferred_master}, "auto");
 
 &setval("security", $in{security}, "");
 

@@ -159,6 +159,7 @@ smb_winpopup=Winpopup command
 smb_priority=Master browser priority
 smb_protocol=Highest protocol
 smb_master=Master browser?
+smb_master_auto=Automatic
 smb_security=Security
 smb_sharelevel=Share level
 smb_userlevel=User level
