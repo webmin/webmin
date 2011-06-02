@@ -13,6 +13,7 @@ index_rpm=Install Usermin RPM package
 index_tgz=Install Usermin tar.gz package
 index_deb=Install Usermin Debian package
 index_esame=The Usermin configuration directory $1 set on the <a href='$2'>module configuration</a> page is the same as Webmin's directory, which is not correct.
+index_eroot=The Usermin configuration directory $1 exists, but the program root directory $2 that it refers to does not! You should manually download and re-install Usermin.
 index_restart=Restart Usermin
 index_restartmsg=Click this button to re-start the Usermin server process. This may be necessary if you have recently upgraded Perl.
 

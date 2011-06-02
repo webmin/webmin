@@ -37,13 +37,22 @@ elsif (&same_file($config{'usermin_dir'}, $config_directory)) {
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
+&get_usermin_miniserv_config(\%miniserv);
+if (!$miniserv{'root'} && !-d $miniserv{'root'}) {
+	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
+
+	print "<p>",&text('index_eroot', "<tt>$config{'usermin_dir'}</tt>",
+			  "<tt>$miniserv{'root'}</tt>"),"<p>\n";
+
+	&ui_print_footer("/", $text{'index'});
+	exit;
+	}
 
 $ver = &get_usermin_version();
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 	&help_search_link("usermin", "google"), undef, undef,
 	&text('index_version', $ver));
 
-&get_usermin_miniserv_config(\%miniserv);
 @links = ( "edit_access.cgi",
 	   "edit_bind.cgi",
 	   "edit_ui.cgi",

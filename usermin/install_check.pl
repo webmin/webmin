@@ -10,7 +10,11 @@ sub is_installed
 {
 if (-r "$config{'usermin_dir'}/miniserv.conf" &&
     !&same_file($config{'usermin_dir'}, $config_directory)) {
-	return $_[0] ? 2 : 1;
+	my %miniserv;
+	&get_usermin_miniserv_config(\%miniserv);
+	if ($miniserv{'root'} && -d $miniserv{'root'}) {
+		return $_[0] ? 2 : 1;
+		}
 	}
 return 0;
 }
