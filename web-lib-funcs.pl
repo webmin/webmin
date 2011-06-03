@@ -2216,11 +2216,15 @@ if ($rcode >= 300 && $rcode < 400) {
 	my ($host, $port, $page, $ssl);
 	if ($header{'location'} =~ /^(http|https):\/\/([^:]+):(\d+)(\/.*)?$/) {
 		$ssl = $1 eq 'https' ? 1 : 0;
-		$host = $2; $port = $3; $page = $4 || "/";
+		$host = $2;
+		$port = $3;
+		$page = $4 || "/";
 		}
 	elsif ($header{'location'} =~ /^(http|https):\/\/([^:\/]+)(\/.*)?$/) {
 		$ssl = $1 eq 'https' ? 1 : 0;
-		$host = $2; $port = 80; $page = $3 || "/";
+		$host = $2;
+		$port = $ssl ? 443 : 80;
+		$page = $3 || "/";
 		}
 	elsif ($header{'location'} =~ /^\// && $_[5]) {
 		# Relative to same server
