@@ -214,8 +214,8 @@ sub tempname
 my $tmp_base = $gconfig{'tempdir_'.&get_module_name()} ?
 			$gconfig{'tempdir_'.&get_module_name()} :
 		  $gconfig{'tempdir'} ? $gconfig{'tempdir'} :
-		  $ENV{'TEMP'} ? $ENV{'TEMP'} :
-		  $ENV{'TMP'} ? $ENV{'TMP'} :
+		  $ENV{'TEMP'} && $ENV{'TEMP'} ne "/tmp" ? $ENV{'TEMP'} :
+		  $ENV{'TMP'} && $ENV{'TMP'} ne "/tmp" ? $ENV{'TMP'} :
 		  -d "c:/temp" ? "c:/temp" : "/tmp/.webmin";
 my $tmp_dir = -d $remote_user_info[7] && !$gconfig{'nohometemp'} ?
 			"$remote_user_info[7]/.tmp" :
