@@ -16,7 +16,7 @@ $id =~ /^[a-z0-9_]+$/i || &error($text{'uptracker_eid2'});
 $| = 1;
 
 # Output text boxes that get updated with filenames and progress
-$ff = "style='font-family: courier'";
+$ff = "style='font-family: courier,monospace'";
 print "<form>\n";
 print "<center><table>\n";
 print "<tr> <td><b>$text{'uptracker_file'}</b></td>\n";
