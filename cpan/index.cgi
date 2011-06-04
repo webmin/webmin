@@ -110,10 +110,15 @@ if (@recs) {
 	print &ui_form_start("download.cgi");
 	print &ui_hidden("source", 3),"\n";
 	print "$text{'index_recs'}<p>\n";
-	print &ui_select("cpan", [ map { $_->[0] } @recs ],
-		 [ map { [ $_->[0], &text('index_user',
-				$_->[0], $_->[1]->{'desc'}) ] } @allrecs ],
-		 5, 1),"<br>\n";
+	print &ui_multi_select("cpan",
+		 [ map { [ $_->[0],
+			   &text('index_user', $_->[0], $_->[1]->{'desc'}) ] }
+		       @recs ],
+		 [ map { [ $_->[0],
+			   &text('index_user', $_->[0], $_->[1]->{'desc'}) ] }
+		       @allrecs ],
+		 20, 1, 0,
+		 $text{'index_allmods'}, $text{'index_wantmods'}, 300),"<br>\n";
 	print &ui_submit($text{'index_recsok'});
 	print &ui_form_end();
 	}

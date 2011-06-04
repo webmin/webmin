@@ -26,6 +26,8 @@ index_none=No installed Perl modules were found on your system.
 index_tabmods=Existing modules
 index_tabinstall=Install module
 index_tabsuggest=Suggested modules
+index_allmods=All modules used by Webmin
+index_wantmods=Modules to install
 
 download_err=Failed to install module
 download_elocal=No local file given
