@@ -613,7 +613,7 @@ else {
 	# Using fdisk
 	&open_fdisk($disk);
 	&wprint("n\n");
-	local $wf = &wait_for($fh, 'primary.*\r\n', 'First.*:');
+	local $wf = &wait_for($fh, 'primary.*\r?\n', 'First.*:');
 	if ($part > 4) {
 		&wprint("l\n");
 		}
@@ -660,7 +660,7 @@ else {
 	# Use classic fdisk
 	&open_fdisk($disk);
 	&wprint("n\n");
-	&wait_for($fh, 'primary.*\r\n');
+	&wait_for($fh, 'primary.*\r?\n');
 	&wprint("e\n");
 	&wait_for($fh, 'Partition.*:');
 	&wprint("$part\n");
