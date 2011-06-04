@@ -66,7 +66,7 @@ function ts_resortTable(lnk,clid) {
     var td = lnk.parentNode;
     while(td.nodeName.toLowerCase() != 'td')
         td = td.parentNode;
-    var column = clid || td.cellIndex;
+    var column = typeof(clid) == 'undefined' ? td.cellIndex : clid;
     var table = getParent(td,'TABLE');
     
     // Work out a type for the column
@@ -74,6 +74,7 @@ function ts_resortTable(lnk,clid) {
     var itm = ts_getInnerText(table.rows[1].cells[column]);
     sortfn = ts_sort_caseinsensitive;
     if (itm.match(/^\d\d[\/-]\d\d[\/-]\d\d\d\d$/)) sortfn = ts_sort_date;
+    if (itm.match(/^\d\d[\/-]\S\S\S[\/-]\d\d\d\d$/)) sortfn = ts_sort_date;
     if (itm.match(/^\d\d[\/-]\d\d[\/-]\d\d$/)) sortfn = ts_sort_date;
     if (itm.match(/^[£$]/)) sortfn = ts_sort_currency;
     if (itm.match(/^[\d\.]+\s*(bytes|b|kb|tb|gb|mb)$/i)) sortfn = ts_sort_filesize;
@@ -128,7 +129,11 @@ function ts_sort_date(a,b) {
     aa = ts_getInnerText(a.cells[SORT_COLUMN_INDEX]);
     bb = ts_getInnerText(b.cells[SORT_COLUMN_INDEX]);
     if (aa.length == 10) {
+        // yyyy/mm/dd format
         dt1 = aa.substr(6,4)+aa.substr(3,2)+aa.substr(0,2);
+    } else if (aa.length == 11) {
+        // dd/mon/yyyy format
+        dt1 = aa.substr(7,4)+ts_month_num(aa.substr(3,3))+aa.substr(0,2);
     } else {
         yr = aa.substr(6,2);
         if (parseInt(yr) < 50) { yr = '20'+yr; } else { yr = '19'+yr; }
@@ -136,6 +141,9 @@ function ts_sort_date(a,b) {
     }
     if (bb.length == 10) {
         dt2 = bb.substr(6,4)+bb.substr(3,2)+bb.substr(0,2);
+    } else if (bb.length == 11) {
+        // dd/mon/yyyy format
+        dt2 = bb.substr(7,4)+ts_month_num(bb.substr(3,3))+bb.substr(0,2);
     } else {
         yr = bb.substr(6,2);
         if (parseInt(yr) < 50) { yr = '20'+yr; } else { yr = '19'+yr; }
@@ -144,6 +152,22 @@ function ts_sort_date(a,b) {
     if (dt1==dt2) return 0;
     if (dt1<dt2) return -1;
     return 1;
+}
+
+function ts_month_num(month) {
+  month = month.toLowerCase();
+  return month == 'jan' ? '01' :
+	 month == 'feb' ? '02' :
+	 month == 'mar' ? '03' :
+	 month == 'apr' ? '04' :
+	 month == 'may' ? '05' :
+	 month == 'jun' ? '06' :
+	 month == 'jul' ? '07' :
+	 month == 'aug' ? '08' :
+	 month == 'sep' ? '09' :
+	 month == 'oct' ? '10' :
+	 month == 'nov' ? '11' :
+	 month == 'dec' ? '12' : '00';
 }
 
 function ts_sort_currency(a,b) { 
