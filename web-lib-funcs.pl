@@ -2284,6 +2284,92 @@ else {
 }
 
 
+=head2 http_post(host, port, page, contents, destfile, [&error], [&callback], [sslmode], [user, pass], [timeout], [osdn-convert], [no-cache], [&headers])
+
+Posts data to an HTTP url and downloads the response to a local file or string. The parameters are :
+
+=item host - The hostname part of the URL, such as www.google.com
+
+=item port - The HTTP port number, such as 80
+
+=item page - The filename part of the URL, like /index.html
+
+=item contents - The data to post
+
+=item destfile - The local file to save the URL data to, like /tmp/index.html. This can also be a scalar reference, in which case the data will be appended to that scalar.
+
+=item error - If set to a scalar ref, the function will store any error message in this scalar and return 0 on failure, or 1 on success. If not set, it will simply call the error function if the download fails.
+
+=item callback - If set to a function ref, it will be called after each block of data is received. This is typically set to \&progress_callback, for printing download progress.
+
+=item sslmode - If set to 1, an HTTPS connection is used instead of HTTP.
+
+=item user - If set, HTTP authentication is done with this username.
+
+=item pass - The HTTP password to use with the username above.
+
+=item timeout - A timeout in seconds to wait for the TCP connection to be established before failing.
+
+=item osdn-convert - If set to 1, URL for downloads from sourceforge are converted to use an appropriate mirror site.
+
+=item no-cache - If set to 1, Webmin's internal caching for this URL is disabled.
+
+=item headers - If set to a hash ref of additional HTTP headers, they will be added to the request.
+
+=cut
+sub http_post
+{
+my ($host, $port, $page, $contents, $dest, $error, $cbfunc, $ssl, $user, $pass,
+    $timeout, $osdn, $nocache, $headers) = @_;
+if ($gconfig{'debug_what_net'}) {
+	&webmin_debug_log('HTTP', "host=$host port=$port page=$page ssl=$ssl".
+				  ($user ? " user=$user pass=$pass" : "").
+				  (ref($dest) ? "" : " dest=$dest"));
+	}
+if ($osdn) {
+	# Convert OSDN URL first
+	my $prot = $ssl ? "https://" : "http://";
+	my $portstr = $ssl && $port == 443 ||
+			 !$ssl && $port == 80 ? "" : ":$port";
+	($host, $port, $page, $ssl) = &parse_http_url(
+		&convert_osdn_url($prot.$host.$portstr.$page));
+	}
+
+# Build headers
+my @headers;
+push(@headers, [ "Host", $host ]);
+push(@headers, [ "User-agent", "Webmin" ]);
+push(@headers, [ "Accept-language", "en" ]);
+push(@headers, [ "Content-type", "application/x-www-form-urlencoded" ]);
+push(@headers, [ "Content-length", length($content) ]);
+if ($user) {
+	my $auth = &encode_base64("$user:$pass");
+	$auth =~ tr/\r\n//d;
+	push(@headers, [ "Authorization", "Basic $auth" ]);
+	}
+foreach my $hname (keys %$headers) {
+	push(@headers, [ $hname, $headers->{$hname} ]);
+	}
+
+# Actually download it
+$main::download_timed_out = undef;
+local $SIG{ALRM} = \&download_timeout;
+alarm($timeout || 60);
+my $h = &make_http_connection($host, $port, $ssl, "POST", $page, \@headers);
+alarm(0);
+$h = $main::download_timed_out if ($main::download_timed_out);
+if (!ref($h)) {
+	if ($error) { $$error = $h; return; }
+	else { &error($h); }
+	}
+&write_http_connection($content."\r\n");
+&complete_http_download($h, $dest, $error, $cbfunc, $osdn, $host, $port,
+			$headers, $ssl, $nocache);
+if ((!$error || !$$error) && !$nocache) {
+	&write_to_http_cache($url, $dest);
+	}
+}
+
 =head2 ftp_download(host, file, destfile, [&error], [&callback], [user, pass], [port], [no-cache])
 
 Download data from an FTP site to a local file. The parameters are :
