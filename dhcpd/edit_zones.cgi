@@ -36,10 +36,7 @@ printf "<td colspan=3><input name=primary size=15 value='%s'></td> </tr>\n",
 print "<tr>\n";
 @keys = sort { $a->{'values'}->[0] cmp $b->{'values'}->[0] } (find("key", $conf));
 print "<td valign=top align=left><b>$text{'zone_tsigkey'}</b></td>\n";
-print "<td)><select name=key size=1>\n";
-
-
-
+print "<td><select name=key size=1>\n";
 local $keyname=find_value("key",$zone->{'members'});
 foreach $k (@keys) {
 	$curkeyname=$k->{'values'}->[0];
