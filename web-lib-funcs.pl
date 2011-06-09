@@ -2284,7 +2284,7 @@ else {
 }
 
 
-=head2 http_post(host, port, page, contents, destfile, [&error], [&callback], [sslmode], [user, pass], [timeout], [osdn-convert], [no-cache], [&headers])
+=head2 http_post(host, port, page, content, destfile, [&error], [&callback], [sslmode], [user, pass], [timeout], [osdn-convert], [no-cache], [&headers])
 
 Posts data to an HTTP url and downloads the response to a local file or string. The parameters are :
 
@@ -2294,7 +2294,7 @@ Posts data to an HTTP url and downloads the response to a local file or string. 
 
 =item page - The filename part of the URL, like /index.html
 
-=item contents - The data to post
+=item content - The data to post
 
 =item destfile - The local file to save the URL data to, like /tmp/index.html. This can also be a scalar reference, in which case the data will be appended to that scalar.
 
@@ -2319,7 +2319,7 @@ Posts data to an HTTP url and downloads the response to a local file or string. 
 =cut
 sub http_post
 {
-my ($host, $port, $page, $contents, $dest, $error, $cbfunc, $ssl, $user, $pass,
+my ($host, $port, $page, $content, $dest, $error, $cbfunc, $ssl, $user, $pass,
     $timeout, $osdn, $nocache, $headers) = @_;
 if ($gconfig{'debug_what_net'}) {
 	&webmin_debug_log('HTTP', "host=$host port=$port page=$page ssl=$ssl".
