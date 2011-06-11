@@ -277,7 +277,7 @@ foreach my $file (&recursive_find_ldif($config{'config_file'})) {
 			$dir->{'value'} = $value;
 			push(@rv, $dir);
 			}
-		elsif (/^\s+(\S.*)$/ && @rv && $rv[$#rv]->{'file'} eq $file) {
+		elsif (/^\s(\s*\S.*)$/ && @rv && $rv[$#rv]->{'file'} eq $file) {
 			# Continuation line
 			local $dir = $rv[$#rv];
 			$dir->{'value'} .= $1;
