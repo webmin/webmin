@@ -43,7 +43,7 @@ foreach $l (@lines) {
 
 	# Get current status for ethtool
 	if ($ifc{'fullname'} =~ /^eth(\d+)$/ && $ethtool) {
-		my $out = &backquote_logged(
+		my $out = &backquote_command(
 			"$ethtool $ifc{'fullname'} 2>/dev/null");
 		if ($out =~ /Speed:\s+(\S+)/i) {
 			$ifc{'speed'} = $1;
