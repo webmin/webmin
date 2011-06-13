@@ -25,7 +25,7 @@ print &ui_table_row($text{'edit_mod'}, "$m[$midx] $ver");
 
 # Description
 print &ui_table_row($text{'edit_desc'},
-	$desc ? &html_escape($desc) : $text{'edit_none'});
+	$desc ? &html_escape($desc) : $text{'edit_none'}, 2);
 
 # Install date
 print &ui_table_row($text{'edit_date'}, $mod->{'date'});
