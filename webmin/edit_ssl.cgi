@@ -152,7 +152,7 @@ print &ui_form_start("savekey.cgi", "form-data");
 print &ui_table_start($text{'ssl_saveheader'}, undef, 2);
 
 print &ui_table_row($text{'ssl_privkey'},
-		    &ui_textarea("key", undef, 7, 60)."<br>\n".
+		    &ui_textarea("key", undef, 7, 70)."<br>\n".
 		    "<b>$text{'ssl_upload'}</b>\n".
 		    &ui_upload("keyfile"));
 
@@ -160,9 +160,18 @@ print &ui_table_row($text{'ssl_privcert'},
 		    &ui_radio("cert_def", 1,
 			[ [ 1, $text{'ssl_same'} ],
 			  [ 0, $text{'ssl_below'} ] ])."<br>\n".
-		    &ui_textarea("cert", undef, 7, 60)."<br>\n".
+		    &ui_textarea("cert", undef, 7, 70)."<br>\n".
 		    "<b>$text{'ssl_upload'}</b>\n".
 		    &ui_upload("certfile"));
+
+print &ui_table_row($text{'ssl_privchain'},
+		    &ui_radio("chain_def", 1,
+			[ [ 1, $miniserv{'extracas'} ? $text{'ssl_leavechain'}
+						     : $text{'ssl_nochain'} ],
+			  [ 0, $text{'ssl_below'} ] ])."<br>\n".
+		    &ui_textarea("chain", undef, 7, 70)."<br>\n".
+		    "<b>$text{'ssl_upload'}</b>\n".
+		    &ui_upload("chainfile"));
 
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);

@@ -22,6 +22,13 @@ else {
 	$key =~ /BEGIN CERTIFICATE/ &&
 	  $key =~ /END CERTIFICATE/ || &error($text{'savekey_ecert2'});
 	}
+if (!$in{'chain_def'}) {
+	# Make sure chained cert is valid
+	$chain = $in{'chain'} || $in{'chainfile'};
+	$chain =~ s/\r//g;
+	$chain =~ /BEGIN CERTIFICATE/ &&
+	  $chain =~ /END CERTIFICATE/ || &error($text{'savekey_echain'});
+	}
 
 # Save config and key file
 &lock_file($ENV{'MINISERV_CONFIG'});
@@ -43,6 +50,15 @@ else {
 	&close_tempfile(CERT);
 	&unlock_file($miniserv{'certfile'});
 	}
+if (!$in{'chain_def'}) {
+	$miniserv{'extracas'} = "$config_directory/miniserv.chain"
+		if (!$miniserv{'extracas'} || $miniserv{'extracas'} =~ /\s/);
+	&lock_file($miniserv{'extracas'});
+	&open_tempfile(CERT, ">$miniserv{'extracas'}");
+	&print_tempfile(CERT, $chain);
+	&close_tempfile(CERT);
+	&unlock_file($miniserv{'extracas'});
+	}
 &put_miniserv_config(\%miniserv);
 &unlock_file($ENV{'MINISERV_CONFIG'});
 
@@ -55,6 +71,9 @@ if ($miniserv{'certfile'}) {
 	}
 else {
 	print &text('savekey_done', "<tt>$miniserv{'keyfile'}</tt>"),"<p>\n";
+	}
+if (!$in{'chain_def'}) {
+	print &text('savekey_done3', "<tt>$miniserv{'extracas'}</tt>"),"<p>\n";
 	}
 
 &ui_print_footer("", $text{'index_return'});
