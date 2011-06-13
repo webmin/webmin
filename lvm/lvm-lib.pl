@@ -679,6 +679,30 @@ elsif ($has_raid) {
 			}
 		}
 	}
+if (&foreign_check("server-manager")) {
+	# Look for Cloudmin systems using the disk, hosted on this system
+	if (!@server_manager_systems) {
+		&foreign_require("server-manager");
+		@server_manager_systems =
+			grep { my $p = &server_manager::get_parent_server($_);
+			       $p && $p->{'id'} eq '0' }
+			     &server_manager::list_managed_servers();
+		}
+	foreach my $s (@server_manager_systems) {
+		if ($s->{$s->{'manager'}.'_filesystem'} eq $_[0]) {
+			return ( $s->{'host'}, 'cloudmin', 
+			         $s->{'status'} ne 'down' );
+			}
+		my $ffunc = "type_".$s->{'manager'}."_list_disk_devices";
+		if (&foreign_defined("server-manager", $ffunc)) {
+			my @disks = &foreign_call("server-manager", $ffunc, $s);
+			if (&indexof($_[0], @disks) >= 0) {
+				return ( $s->{'host'}, 'cloudmin', 
+					 $s->{'status'} ne 'down' );
+				}
+			}
+		}
+	}
 return ();
 }
 
@@ -686,10 +710,19 @@ return ();
 # Returns a text string about the status of an LV
 sub device_message
 {
-$msg = $_[2] ? 'lv_mount' : 'lv_umount';
-$msg .= 'vm' if ($_[1] eq 'swap');
-$msg .= 'raid' if ($_[1] eq 'raid');
-return &text($msg, "<tt>$_[0]</tt>", "<tt>$_[1]</tt>");
+my $msg;
+if ($_[1] eq 'cloudmin') {
+	# Used by Cloudmin system
+	$msg = $_[2] ? 'lv_mountcm' : 'lv_umountcm';
+	return &text($msg, "<tt>$_[0]</tt>");
+	}
+else {
+	# Used by filesystem or RAID
+	$msg = $_[2] ? 'lv_mount' : 'lv_umount';
+	$msg .= 'vm' if ($_[1] eq 'swap');
+	$msg .= 'raid' if ($_[1] eq 'raid');
+	return &text($msg, "<tt>$_[0]</tt>", "<tt>$_[1]</tt>");
+	}
 }
 
 # list_lvmtab()

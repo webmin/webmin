@@ -29,3 +29,5 @@ When editing a logical volume that is already in /etc/fstab, don't allow the fil
 When editing a physical volume, its size can be increased to match the underlying device, such as a partition that has been grown.
 ---- Changes since 1.530 ----
 When creating a new striped logical volume, the strip size can now be selected.
+---- Changes since 1.550 ----
+LVs being used by Cloudmin on the same system are now shown on the Logical Volumes page.
