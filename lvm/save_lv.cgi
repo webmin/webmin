@@ -64,13 +64,22 @@ else {
 		$size = $in{'freesize'};
 		$sizeof = 'FREE';
 		}
-	else {
+	elsif ($in{'size_mode'} == 3) {
 		# Size of some PV
 		$in{'pvsize'} =~ /^\d+$/ &&
 			$in{'pvsize'} > 0 &&
 			$in{'pvsize'} <= 100 || &error($text{'lv_epvsize'});
 		$size = $in{'pvsize'};
 		$sizeof = $in{'pvof'};
+		}
+	elsif ($in{'size_mode'} == 4) {
+		# Size in kB
+		$in{'sizekb'} =~ /^\d+$/ || &error($text{'lv_esize'});
+		$size = $in{'sizekb'};
+		$sizeof = undef;
+		}
+	else {
+		&error("Invalid size mode ".$in{'size_mode'});
 		}
 	$in{'snap'} || $in{'lv'} || $in{'stripe_def'} ||
 		$in{'stripe'} =~ /^[1-9]\d*$/ || &error($text{'lv_estripe'});

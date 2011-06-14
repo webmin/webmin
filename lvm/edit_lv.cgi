@@ -38,7 +38,8 @@ if (!&can_resize_lv_stat(@stat)) {
 else {
 	# Details for new LV
 	if ($stat[2]) {
-		print &ui_table_row($text{'lv_name'}, $lv->{'name'});
+		print &ui_table_row($text{'lv_name'}, $lv->{'name'},
+				    undef, [ "", "valign=top" ]);
 		print &ui_hidden("name", $lv->{'name'});
 		}
 	else {
@@ -86,7 +87,12 @@ else {
 		else {
 			# Show in exactly kB
 			print &ui_table_row($text{'lv_size'},
-				&ui_textbox("size", $lv->{'size'}, 8)." kB");
+				&ui_radio_table("size_mode", 4,
+				    [ [ 4, $text{'lv_sizeabs'},
+					&ui_textbox("sizekb", $lv->{'size'}, 8).
+					" kB" ],
+				      [ 0, $text{'lv_sizesimple'},
+					&ui_bytesbox("size", $size, 8) ] ]));
 			}
 		}
 	}

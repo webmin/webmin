@@ -31,3 +31,4 @@ When editing a physical volume, its size can be increased to match the underlyin
 When creating a new striped logical volume, the strip size can now be selected.
 ---- Changes since 1.550 ----
 LVs being used by Cloudmin on the same system are now shown on the Logical Volumes page.
+When editing an LV whose size is not a round number of GB, MB or TB and is instead shown in kB, sizing can now be done to a size in GB, MB or TB.
