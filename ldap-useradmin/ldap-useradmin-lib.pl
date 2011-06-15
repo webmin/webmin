@@ -33,11 +33,11 @@ else { $got_net_imap++; }
 $secret_file = "/etc/ldap.secret";
 $samba_class = $config{'samba_class'} || "sambaAccount";
 $samba_class =~ s/^\s+//; $samba_class =~ s/\s+$//;
-$samba_schema = $samba_class eq "sambaSamAccount" ? 3 : 2;
+$samba_schema = lc($samba_class) eq lc("sambaSamAccount") ? 3 : 2;
 $samba_group_class = $config{'samba_gclass'} || "sambaGroup";
 $samba_group_class =~ s/^\s+//; $samba_group_class =~ s/\s+$//;
-$samba_group_schema = $samba_group_class eq "sambaSamGroup" ||
-		      $samba_group_class eq "sambaGroupMapping" ? 3 : 2;
+$samba_group_schema = lc($samba_group_class) eq lc("sambaSamGroup") ||
+		      lc($samba_group_class) eq lc("sambaGroupMapping") ? 3 : 2;
 $cyrus_class = $config{'imap_class'} || "SuSEeMailObject";
 $cyrus_class =~ s/^\s+//; $cyrus_class =~ s/\s+$//;
 
