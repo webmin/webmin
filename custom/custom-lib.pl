@@ -497,7 +497,6 @@ sub execute_custom_command
 {
 local ($cmd, $env, $export, $str, $print) = @_;
 &foreign_require("proc", "proc-lib.pl");
-print STDERR "running $str\n";
 
 &clean_environment() if ($cmd->{'clear'});
 local $got;
@@ -515,14 +514,15 @@ if ($cmd->{'su'}) {
 	chmod(0755, $temp);
 	$got = &proc::safe_process_exec(
 			     &command_as_user($user, 1, $temp), 0, 0,
-			     $fh, undef, !$cmd->{'raw'}, 0,
+			     $fh, undef, !$cmd->{'raw'} && !$cmd->{'format'}, 0,
 			     $cmd->{'timeout'});
 	unlink($temp);
 	}
 else {
 	$got = &proc::safe_process_exec(
 			     $str, $user_info[2], undef, $fh, undef,
-			     !$cmd->{'raw'}, 0, $cmd->{'timeout'});
+			     !$cmd->{'raw'} && !$cmd->{'format'}, 0,
+			     $cmd->{'timeout'});
 	}
 &reset_environment() if ($cmd->{'clear'});
 close(OUTTEMP);
