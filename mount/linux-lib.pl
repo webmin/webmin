@@ -1035,7 +1035,7 @@ elsif ($_[0] eq "swap") {
 	}
 elsif ($_[0] eq $smbfs_fs || $_[0] eq "cifs") {
 	# Windows filesystem
-	$_[1] =~ /^\\\\(.*)\\(.*)$/;
+	$_[1] =~ /^\\\\([^\\]*)\\(.*)$/;
 	local ($server, $share) = ($1, $2);
 	print "<tr> <td><b>$text{'linux_smbserver'}</b></td>\n";
 	print "<td><input name=smbfs_server value=\"$server\" size=20>\n";
