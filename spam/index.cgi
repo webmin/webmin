@@ -56,7 +56,7 @@ else {
 			    "../config.cgi?$module_name"),"<p>\n";
 		}
 	else {
-		# Work out of SpamAssassin is enabled in procmail
+		# Work out if SpamAssassin is enabled in procmail
 		if ($warn_procmail && &foreign_check("procmail")) {
 			&foreign_require("procmail", "procmail-lib.pl");
 			$spam_enabled = 0;	# Found call to spamassassin
