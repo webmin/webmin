@@ -258,9 +258,11 @@ if ($use_ssl) {
 		}
 	$client_certs = 0 if (!-r $config{'ca'} || !%certs);
 	$ssl_contexts{"*"} = &create_ssl_context($config{'keyfile'},
-						 $config{'certfile'});
+						 $config{'certfile'},
+						 $config{'extracas'});
 	foreach $ipkey (@ipkeys) {
-		$ctx = &create_ssl_context($ipkey->{'key'}, $ipkey->{'cert'});
+		$ctx = &create_ssl_context($ipkey->{'key'}, $ipkey->{'cert'},
+				   $ipkey->{'extracas'} || $config{'extracas'});
 		foreach $ip (@{$ipkey->{'ips'}}) {
 			$ssl_contexts{$ip} = $ctx;
 			}
@@ -4137,16 +4139,17 @@ foreach $k (keys %{$_[0]}) {
 				 'key' => $_[0]->{$k},
 				 'index' => scalar(@rv) };
 		$ipkey->{'cert'} = $_[0]->{'ipcert_'.$1};
+		$ipkey->{'extracas'} = $_[0]->{'ipextracas_'.$1};
 		push(@rv, $ipkey);
 		}
 	}
 return @rv;
 }
 
-# create_ssl_context(keyfile, [certfile])
+# create_ssl_context(keyfile, [certfile], [extracas])
 sub create_ssl_context
 {
-local ($keyfile, $certfile) = @_;
+local ($keyfile, $certfile, $extracas) = @_;
 local $ssl_ctx;
 eval { $ssl_ctx = Net::SSLeay::new_x_ctx() };
 $ssl_ctx ||= Net::SSLeay::CTX_new();
@@ -4157,9 +4160,8 @@ if ($client_certs) {
 	Net::SSLeay::CTX_set_verify(
 		$ssl_ctx, &Net::SSLeay::VERIFY_PEER, \&verify_client);
 	}
-if ($config{'extracas'}) {
-	local $p;
-	foreach $p (split(/\s+/, $config{'extracas'})) {
+if ($extracas && $extracas ne "none") {
+	foreach my $p (split(/\s+/, $extracas)) {
 		Net::SSLeay::CTX_load_verify_locations(
 			$ssl_ctx, $p, "");
 		}
