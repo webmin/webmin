@@ -31,6 +31,19 @@ print &ui_table_row($text{'ssl_cert'},
 				$text{'ssl_cert_def'})."\n".
 		    &file_chooser_button("cert"));
 
+$mode = $ipkey->{'extracas'} eq "none" ? 2 :
+	$ipkey->{'extracas'} ? 1 : 0;
+print &ui_table_row($text{'ssl_extracas'},
+	&ui_radio("extracas_mode", $mode,
+		  [ [ 0, $text{'ssl_extracasdef'} ],
+		    [ 2, $text{'ssl_extracasnone'} ],
+		    [ 1, $text{'ssl_extracasbelow'} ] ])."<br>\n".
+	&ui_textarea("extracas",
+		     $mode == 1 ? join("\n",split(/\s+/, $ipkey->{'extracas'}))
+				: "",
+		     3, 60)." ".
+	&file_chooser_button("extracas", 0, undef, undef, 1));
+
 print &ui_table_end();
 if ($in{'new'}) {
 	print &ui_form_end([ [ "create", $text{'create'} ] ]);

@@ -67,7 +67,8 @@ print &ui_table_row($text{'ssl_cipher_list'},
 
 print &ui_table_row($text{'ssl_extracas'},
 	&ui_textarea("extracas", join("\n",split(/\s+/, $miniserv{'extracas'})),
-		     3, 60));
+		     3, 60)." ".
+	&file_chooser_button("extracas", 0, undef, undef, 1));
 
 print &ui_table_end();
 print &ui_form_end([ [ "", $text{'save'} ] ]);
@@ -106,7 +107,8 @@ if (@ipkeys) {
 			"<a href='edit_ipkey.cgi?idx=$k->{'index'}'>".
 			join(", ", @{$k->{'ips'}})."</a>",
 			"<tt>$k->{'key'}</tt>",
-			$k->{'cert'} ? "<tt>$k->{'cert'}</tt>" : "<br>"
+			$k->{'cert'} ? "<tt>$k->{'cert'}</tt>"
+				     : $text{'ssl_cert_def'},
 			]);
 		}
 	print &ui_columns_end();

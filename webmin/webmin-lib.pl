@@ -951,9 +951,10 @@ my @rv;
 foreach my $k (keys %{$_[0]}) {
 	if ($k =~ /^ipkey_(\S+)/) {
 		my $ipkey = { 'ips' => [ split(/,/, $1) ],
-				 'key' => $_[0]->{$k},
-				 'index' => scalar(@rv) };
+			      'key' => $_[0]->{$k},
+			      'index' => scalar(@rv) };
 		$ipkey->{'cert'} = $_[0]->{'ipcert_'.$1};
+		$ipkey->{'extracas'} = $_[0]->{'ipextracas_'.$1};
 		push(@rv, $ipkey);
 		}
 	}
@@ -978,6 +979,15 @@ foreach $k (@{$_[1]}) {
 	$_[0]->{'ipkey_'.$ips} = $k->{'key'};
 	if ($k->{'cert'}) {
 		$_[0]->{'ipcert_'.$ips} = $k->{'cert'};
+		}
+	else {
+		delete($_[0]->{'ipcert_'.$ips});
+		}
+	if ($k->{'extracas'}) {
+		$_[0]->{'ipextracas_'.$ips} = $k->{'extracas'};
+		}
+	else {
+		delete($_[0]->{'ipextracas_'.$ips});
 		}
 	}
 }

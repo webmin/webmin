@@ -108,3 +108,4 @@ Added fields to the Index Page Options page to control the display of Webmin and
 Moved settings related to Webmin's built-in webserver to the new Web Server Options page.
 The client-side expiry time for static files served by Webmin can now be configured on the Web Server Options page, and can be customized on a per-file basis.
 A chained certificate file supplied by a CA can now be easily uploaded using the Upload certificate tab on the SSL Encryption page.
+Chained certificate files can now be set for per-IP address SSL keys, rather than the global chained list always being used.
