@@ -72,7 +72,7 @@ else {
 	$status{'end'} = time();
 	&write_file($sfile, \%status);
 
-	if ($status{'status'} = 'complete') {
+	if ($status{'status'} eq 'complete') {
 		# Execute the post-backup script
 		$bok = &execute_after($dump, OUT, 0);
 		if (!$bok && !$dump->{'afterfok'}) {
