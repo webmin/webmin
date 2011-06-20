@@ -108,7 +108,7 @@ if ($access{'cmds'}) {
 
 	print &ui_table_row(&hlink($text{'dump_after'},"after"),
 			    &ui_textbox("after", $dump->{'after'}, 60)." ".
-			    &ui_checkbox("afterfok", 1, $text{'dump_fok'},
+			    &ui_checkbox("afterfok", 1, $text{'dump_fok2'},
 					 !$dump->{'afterfok'}),
 			    3, \@tds);
 	}

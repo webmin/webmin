@@ -69,6 +69,7 @@ dump_ecomp=Missing or invalid compression level
 dump_before=Command to run before backup
 dump_after=Command to run after backup
 dump_fok=Halt if command fails
+dump_fok2=Report failure if command fails
 dump_extra=Extra command-line parameters
 dump_rsh=Remote backup command
 dump_rsh0=Default (RSH)
