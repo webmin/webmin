@@ -972,7 +972,7 @@ foreach my $iface (grep { $_->[1] eq 'inet6' } @ifaces) {
 	$iface->[3] = [ grep { $_->[0] ne 'gateway' } @{$iface->[3]} ];
 
 	# Add if needed
-	if ($iface->[0] eq $_[1]) {
+	if ($iface->[0] eq $_[1] && $_[0]) {
 		push(@{$iface->[3]}, [ 'gateway', $_[0] ]);
 		}
 	&modify_interface_def(@$iface);
