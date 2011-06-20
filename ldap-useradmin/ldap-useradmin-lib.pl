@@ -948,10 +948,12 @@ sub parse_extra_fields
 local ($fields, $props, $rprops, $ldap, $dn) = @_;
 local @fields = map { [ split(/\s+/, $_, 2) ] } split(/\t/, $fields);
 local %noclash = map { lc($_), 1 } split(/\s+/, $config{'noclash'});
+local %already = map { lc($_), 1 } (@$props, @$rprops);
 local $i = 0;
 local $f;
 foreach $f (@fields) {
 	$f->[0] =~ s/\+$//;
+	next if ($already{lc($f->[0])});	# Skip fields set by Webmin
 	if ($in{"field_$i"} eq "") {
 		push(@$rprops, $f->[0]);
 		}
