@@ -622,7 +622,8 @@ if ($init_mode eq "upstart" && (!-r "$config{'init_dir'}/$_[0]" ||
 		}
 	else {
 		# Need to create config
-		&create_upstart_service($_[0], $_[1], $_[2], $_[5]->{'fork'});
+		&create_upstart_service($_[0], $_[1], $_[2], undef,
+					$_[5]->{'fork'});
 		&system_logged("insserv ".quotemeta($_[0])." >/dev/null 2>&1");
 		}
 	return;
