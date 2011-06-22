@@ -1333,11 +1333,11 @@ allowed.
 =cut
 sub shared_root_directory
 {
-if ($gconfig{'shared_root'} eq '1') {
+if (exists($gconfig{'shared_root'}) && $gconfig{'shared_root'} eq '1') {
 	# Always shared
 	return 1;
 	}
-elsif ($gconfig{'shared_root'} eq '0') {
+elsif (exists($gconfig{'shared_root'}) && $gconfig{'shared_root'} eq '0') {
 	# Definately not shared
 	return 0;
 	}
@@ -2001,16 +2001,18 @@ foreach my $u (@$allupdates) {
 
 	# Skip if wrong version of Webmin, unless this is non-core module and
 	# we are handling them too
-	next if (($u->[1] >= $bversion + .01 ||
-		  $u->[1] <= $bversion ||
-		  $u->[1] <= $version) &&
+	my $nver = $u->[1];
+	$nver =~ s/^(\d+\.\d+)\..*$/$1/;
+	next if (($nver >= $bversion + .01 ||
+		  $nver <= $bversion ||
+		  $nver <= $version) &&
 		 (!%info || $info{'longdesc'} || !$third));
 
 	# Skip if not installed, unless installing new
 	next if (!%info && !$missing);
 
 	# Skip if module has a version, and we already have it
-	next if (%info && $info{'version'} && $info{'version'} >= $u->[1]);
+	next if (%info && $info{'version'} && $info{'version'} >= $nver);
 
 	# Skip if not supported on this OS
 	my $osinfo = { 'os_support' => $u->[3] };

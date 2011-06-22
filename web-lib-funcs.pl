@@ -4123,6 +4123,7 @@ if ($> == 0 && $< != 0 && !$ENV{'FOREIGN_MODULE_NAME'}) {
 $config_file = "$config_directory/config";
 %gconfig = ( );
 &read_file_cached($config_file, \%gconfig);
+$gconfig{'webprefix'} = '' if (!exists($gconfig{'webprefix'}));
 $null_file = $gconfig{'os_type'} eq 'windows' ? "NUL" : "/dev/null";
 $path_separator = $gconfig{'os_type'} eq 'windows' ? ';' : ':';
 
