@@ -77,7 +77,7 @@ if ($product eq "webmin") {
 	system("cd $usr_dir && rm -f mount/macos-mounts*");
 	system("cd $usr_dir && rm -f webmin-gentoo-init");
 	system("cd $usr_dir && rm -rf format bsdexports hpuxexports sgiexports zones rbac");
-	system("cd $usr_dir && rm -f acl/Authen-SolarisRBAC-0.1*");
+	system("cd $usr_dir && rm -rf acl/Authen-SolarisRBAC-0.1*");
 	}
 
 # Create init script
