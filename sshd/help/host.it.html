@@ -1,0 +1,31 @@
+Questa pagina mostra le opzioni per ogni singolo host, per gli host il quale nome
+corrisponde a qualche pattern, o per tutti gli host. Alcune delle opzioni meno ovvie sono :
+
+<dl>
+<dt><b>Login come utente</b>
+<dd>Normalmente se nessun username è dato alla line di comando di <tt>ssh</tt>,
+    il nome corrente dell' utente è passato come login a SSH.
+    In ogni caso, questa opzione ti permette di definire un differente username
+    per dei particolari host. <p>
+
+<dt><b>Carattere di escape</b>
+<dd>Quando è effettuato un login con SSH in modalità interattiva, il carattere
+    di escape è usato per interrompere o sospendere la connessione. <p>
+
+<dt><b>Comprimere traffico SSH?</b>
+<dd>Se l' opzione è attivata il client SSH comprime tutto il traffico verso questo
+    server con l' algoritmo <tt>gzip</tt>. Ciò può essere utile se stai copiando file con
+    <tt>scp</tt> attraverso un collegamento lento. <p>
+
+<dt><b>Porte locali redirette al server</b>
+<dd>In questa tabella puoi inserire numeri di porte locali le quali saranno
+    redirette sulle porte SSH di qualche altro server. Questo può essere utile se il
+    tuo solo accesso a certe reti è permesso solo attraverso connessione SSH passanti
+    per una macchina di questa rete e vuoi accedere ad altri servizi disponibili come web server
+    o server POP. <p>
+
+<dt><b>Porte redirette localmente</b>
+<dd>In questa tabella puoi inserire numeri di porte locali le quali saranno
+    redirette su host o porte della rete del client <p>
+
+</dl>
