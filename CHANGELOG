@@ -145,3 +145,4 @@ If a browser asks for gzip compression, Webmin can now return compressed content
 Added support for Amazon Linux.
 ---- Changes since 1.550 ----
 Catalan updates, thanks to Jaume Badiella.
+Italian translation updates, thanks to Andrea Oliveri.
