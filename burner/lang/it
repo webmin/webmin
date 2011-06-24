@@ -1,3 +1,4 @@
+__norefs=1
 acl_all=Tutti
 acl_create=Pu&#242; creare nuovi profili di masterizzazione?
 acl_dirs=Permetti directory per i file sorgenti
