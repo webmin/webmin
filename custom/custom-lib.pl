@@ -537,24 +537,39 @@ sub show_parameter_input
 {
 local ($a, $form) = @_;
 local $n = $a->{'name'};
+local $v = $a->{'opts'};
+if ($a->{'type'} != 9 && $a->{'type'} != 12) {
+	if ($v =~ /^"(.*)"$/ || $v =~ /^'(.*)'$/) {
+		# Quoted default
+		$v = $1;
+		}
+	elsif ($v =~ /^\// && $config{'params_file'}) {
+		# File to read
+		$v = &read_file_contents($v);
+		}
+	elsif ($v =~ /^(.*)\s*\|$/ && $config{'params_cmd'}) {
+		# Command to run
+		$v = &backquote_command("$1 2>/dev/null </dev/null");
+		}
+	}
 if ($a->{'type'} == 0) {
-	return &ui_textbox($n, undef, 30);
+	return &ui_textbox($n, $v, 30);
 	}
 elsif ($a->{'type'} == 1 || $a->{'type'} == 2) {
-	return &ui_user_textbox($n, undef, $form);
+	return &ui_user_textbox($n, $v, $form);
 	}
 elsif ($a->{'type'} == 3 || $a->{'type'} == 4) {
-	return &ui_group_textbox($n, undef, $form);
+	return &ui_group_textbox($n, $v, $form);
 	}
 elsif ($a->{'type'} == 5 || $a->{'type'} == 6) {
-	return &ui_textbox($n, $a->{'opts'}, 30)." ".
+	return &ui_textbox($n, $v, 30)." ".
 	       &file_chooser_button($n, $a->{'type'}-5, $form);
 	}
 elsif ($a->{'type'} == 7) {
-	return &ui_yesno_radio($n, 0);
+	return &ui_yesno_radio($n, $v =~ /true|yes|1/ ? 1 : 0);
 	}
 elsif ($a->{'type'} == 8) {
-	return &ui_password($n, undef, 30);
+	return &ui_password($n, $v, 30);
 	}
 elsif ($a->{'type'} == 9) {
 	return &ui_select($n, undef, [ &read_opts_file($a->{'opts'}) ]);
@@ -563,7 +578,7 @@ elsif ($a->{'type'} == 10) {
 	return &ui_upload($n, 30);
 	}
 elsif ($a->{'type'} == 11) {
-	return &ui_textarea($n, undef, 4, 30);
+	return &ui_textarea($n, $v, 4, 30);
 	}
 elsif ($a->{'type'} == 12) {
 	return &ui_select($n, undef, [ &read_opts_file($a->{'opts'}) ],

@@ -5,3 +5,5 @@ height=Height of file editor window,3,Default (20 chars)
 wrap=File editor wrap mode,1,-Default (Soft),hard-Hard,off-Off
 columns=Columns to display commands in,1,2-2,1-1
 sort=Sort commands by,1,desc-Command name,html-Description,-Command ordering
+params_file=Treat default values starting with / as file to read?,1,1-Yes,0-No
+params_cmd=Treat default values ending with | as command to run?,1,1-Yes,0-No
