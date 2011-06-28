@@ -879,13 +879,6 @@ while(1) {
 				$SIG{'HUP'} = 'IGNORE';
 				$SIG{'USR1'} = 'IGNORE';
 
-				# Initialize SSL for this connection
-				if ($use_ssl) {
-					$ssl_con = &ssl_connection_for_ip(
-							SOCK, $ipv6fhs{$s});
-					$ssl_con || exit;
-					}
-
 				# Close the file handle for the session DBM
 				dbmclose(%sessiondb);
 
@@ -896,6 +889,13 @@ while(1) {
 					}
 				&close_all_sockets();
 				close(LISTEN);
+
+				# Initialize SSL for this connection
+				if ($use_ssl) {
+					$ssl_con = &ssl_connection_for_ip(
+							SOCK, $ipv6fhs{$s});
+					$ssl_con || exit;
+					}
 
 				print DEBUG
 				  "main: Starting handle_request loop pid=$$\n";
