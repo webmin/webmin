@@ -82,6 +82,7 @@ aifc_eclash6=IPv6 address in row $1 is already in use by interface $2
 aifc_eaddresses6=No IPv6 addresses entered
 
 bifc_create=Create Bootup Interface
+bifc_act=Activate at boot?
 bifc_edit=Edit Bootup Interface
 bifc_desc1=Boot Time Interface Parameters
 bifc_desc2=Boot Time Virtual Interface Parameters

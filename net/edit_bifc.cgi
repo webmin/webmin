@@ -59,8 +59,7 @@ print &ui_hidden("vlan", $in{'vlan'});
 print &ui_hidden("bond", $in{'bond'});
 print &ui_hidden("bridge", $in{'bridge'});
 print &ui_table_start($in{'virtual'} || $b && $b->{'virtual'} ne "" ?
-			$text{'bifc_desc2'} : $text{'bifc_desc1'},
-		      "width=100%", 4);
+			$text{'bifc_desc2'} : $text{'bifc_desc1'}, undef, 2);
 
 # Comment, if allowed
 if (defined(&can_iface_desc) && &can_iface_desc($b)) {
@@ -81,7 +80,7 @@ elsif ($in{'new'}) {
 		$namefield = "auto".&ui_hidden("name", "auto");
 		}
 	elsif ($in{'bridge'}) {
-		$namefield = "br".&ui_textbox("name", ($bmax+1), 3);
+		$namefield = "br ".&ui_textbox("name", ($bmax+1), 3);
 		}
 	else {
 		$namefield = &ui_textbox("name", undef, 6);
@@ -101,7 +100,7 @@ else {
 	$upfield = !$b ? $text{'yes'} :
 		   $b->{'up'} ? $text{'yes'} : $text{'no'};
 	}
-print &ui_table_row($text{'ifcs_act'}, $upfield);
+print &ui_table_row($text{'bifc_act'}, $upfield);
 
 # IP address source. This can either be DHCP, BootP or a fixed IP,
 # netmask and broadcast
@@ -278,7 +277,8 @@ if (($in{'new'} && $in{'virtual'} eq "" && !$in{'bridge'}) ||
 
 # Real interface for bridge
 if ($in{'bridge'} || $b && $b->{'bridge'}) {
-	@ethboot = grep { $_->{'fullname'} =~ /^eth(\d+)$/ } @boot;
+	@ethboot = map { $_->{'fullname'} }
+		       grep { $_->{'fullname'} =~ /^eth(\d+)$/ } @boot;
 	print &ui_table_row($text{'bifc_bridgeto'},
 		&ui_select("bridgeto", $b->{'bridgeto'}, \@ethboot));
 	}

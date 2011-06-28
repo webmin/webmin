@@ -13,7 +13,7 @@ foreach $i ('ifcs', 'routes', 'dns', 'hosts',
 	next if ($i eq "ifcs" && $zone);
 
 	if ($i eq "ifcs") {
-		push(@links, "list_${i}.cgi?mode=active");
+		push(@links, "list_${i}.cgi");
 		}
 	else {
 		push(@links, "list_${i}.cgi");

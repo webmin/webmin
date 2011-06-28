@@ -26,7 +26,7 @@ else {
 print &ui_form_start("save_range.cgi");
 print &ui_hidden("new", $in{'new'});
 print &ui_hidden("idx", $in{'idx'});
-print &ui_table_start($text{'range_header'}, "width=100%", 2);
+print &ui_table_start($text{'range_header'}, undef, 2);
 
 # OS-specific range input
 &range_input($b);
