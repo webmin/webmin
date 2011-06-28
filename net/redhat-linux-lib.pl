@@ -217,14 +217,23 @@ $conf{'NAME'} = $_[0]->{'desc'};
 &write_env_file("$net_scripts_dir/ifcfg-$name", \%conf);
 
 # If this is a bridge, set BRIDGE in real interface
-# XXX fix old one?
 if ($_[0]->{'bridge'}) {
-	local %bconf;
-	&lock_file("$net_scripts_dir/ifcfg-$_[0]->{'bridgeto'}");
-	&read_env_file("$net_scripts_dir/ifcfg-$_[0]->{'bridgeto'}", \%bconf);
-	$bconf{'BRIDGE'} = $_[0]->{'fullname'};
-	&write_env_file("$net_scripts_dir/ifcfg-$_[0]->{'bridgeto'}", \%bconf);
-	&unlock_file("$net_scripts_dir/ifcfg-$_[0]->{'bridgeto'}");
+	foreach my $efile (glob("$net_scripts_dir/ifcfg-eth*")) {
+		local %bconf;
+		&lock_file($efile);
+		&read_env_file($efile, \%bconf);
+		if ($bconf{'DEVICE'} eq $_[0]->{'bridgeto'}) {
+			# Correct device for bridge
+			$bconf{'BRIDGE'} = $_[0]->{'fullname'};
+			&write_env_file($efile, \%bconf);
+			}
+		elsif ($bconf{'BRIDGE'} eq $_[0]->{'fullname'}) {
+			# Was using this bridge, shouldn't be
+			delete($bconf{'BRIDGE'});
+			&write_env_file($efile, \%bconf);
+			}
+		&unlock_file($efile);
+		}
 	}
 
 # Link to devices directory
