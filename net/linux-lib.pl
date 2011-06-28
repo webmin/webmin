@@ -1,10 +1,11 @@
 # linux-lib.pl
 # Active interface functions for all flavours of linux
 
-# active_interfaces()
+# active_interfaces([include-no-address])
 # Returns a list of currently ifconfig'd interfaces
 sub active_interfaces
 {
+local ($empty) = @_;
 local(@rv, @lines, $l);
 &open_execute_command(IFC, "LC_ALL='' LANG='' ifconfig -a", 1, 1);
 while(<IFC>) {
@@ -20,7 +21,7 @@ foreach $l (@lines) {
 	$l =~ /^(\S+)/; $ifc{'fullname'} = $1;
 	if ($l =~ /^(\S+):(\d+)/) { $ifc{'virtual'} = $2; }
 	if ($l =~ /inet addr:(\S+)/) { $ifc{'address'} = $1; }
-	elsif (!$_[0]) { next; }
+	elsif (!$empty) { next; }
 	if ($l =~ /Mask:(\S+)/) { $ifc{'netmask'} = $1; }
 	if ($l =~ /Bcast:(\S+)/) { $ifc{'broadcast'} = $1; }
 	if ($l =~ /HWaddr (\S+)/) { $ifc{'ether'} = $1; }

@@ -3,7 +3,7 @@
 # Edit or create an active interface
 
 require './net-lib.pl';
-@act = &active_interfaces();
+@act = &active_interfaces(1);
 
 &ReadParse();
 if ($in{'new'}) {

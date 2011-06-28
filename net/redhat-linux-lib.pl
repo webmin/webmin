@@ -207,6 +207,9 @@ else {
 		$conf{'IPV6ADDR_SECONDARIES'} = join(" ", @ip6s);
 		}
 	if ($_[0]->{'fullname'} =~ /^br(\d+)$/) {
+		&has_command("brctl") ||
+			&error("Bridges cannot be created unless the brctl ".
+			       "command is installed");
 		$conf{'TYPE'} = 'Bridge';
 		}
 	}

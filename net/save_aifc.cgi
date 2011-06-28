@@ -4,7 +4,7 @@
 
 require './net-lib.pl';
 &ReadParse();
-@acts = &active_interfaces();
+@acts = &active_interfaces(1);
 
 if ($in{'delete'}) {
 	# delete an interface

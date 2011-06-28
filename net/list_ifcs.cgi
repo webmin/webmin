@@ -18,7 +18,7 @@ if (!$access{'bootonly'}) {
 print &ui_tabs_start(\@tabs, "mode", $in{'mode'} || $defmode, 1);
 
 # Show interfaces that are currently active
-@act = &active_interfaces();
+@act = &active_interfaces(1);
 if (!$access{'bootonly'}) {
 	# Table heading and links
 	print &ui_tabs_start_tab("mode", "active");
@@ -57,7 +57,7 @@ if (!$access{'bootonly'}) {
 		local $mod = &module_for_interface($a);
 		local %minfo = $mod ? &get_module_info($mod->{'module'}) : ( );
 		local @cols;
-		if ($a->{'edit'} && &can_iface($a)) {
+		if ($a->{'edit'} && &can_iface($a) && $a->{'address'}) {
 			push(@cols,
 			    "<a href=\"edit_aifc.cgi?idx=$a->{'index'}\">".
 			    &html_escape($a->{'fullname'})."</a>");
@@ -82,8 +82,10 @@ if (!$access{'bootonly'}) {
 		       $mod ? "" : " ($text{'ifcs_virtual'})").
 		      (%minfo ? " ($minfo{'desc'})" : "").
 		      ($a->{'speed'} ? " ".$a->{'speed'} : ""));
-		push(@cols, &html_escape($a->{'address'}));
-		push(@cols, &html_escape($a->{'netmask'}));
+		push(@cols, &html_escape($a->{'address'}) ||
+			    $text{'ifcs_noaddress'});
+		push(@cols, &html_escape($a->{'netmask'}) ||
+			    $text{'ifcs_nonetmask'});
 		if (&supports_address6()) {
 			push(@cols, join("<br>\n", map { &html_escape($_) }
 						    @{$a->{'address6'}}));
@@ -209,9 +211,10 @@ foreach $a (@boot) {
 			    $a->{'dhcp'} ? $text{'ifcs_dhcp'} :
 			    $a->{'address'} ? &html_escape($a->{'address'}) :
 					       $text{'ifcs_noaddress'});
-		push(@cols, $a->{'netmask'} ? &html_escape($a->{'netmask'}) :
-			    !$a->{'address'} ? $text{'ifcs_nonetmask'} :
-					       $text{'ifcs_auto'});
+		push(@cols, $a->{'bootp'} ? $text{'ifcs_bootp'} :
+                            $a->{'dhcp'} ? $text{'ifcs_dhcp'} :
+			    $a->{'netmask'} ? &html_escape($a->{'netmask'}) :
+			    		      $text{'ifcs_nonetmask'});
 		if (&supports_address6()) {
 			push(@cols, $a->{'auto6'} ? $text{'ifcs_auto6'} :
 				      join("<br>\n", map { &html_escape($_) }
