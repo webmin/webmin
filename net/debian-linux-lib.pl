@@ -184,6 +184,9 @@ if ($cfg->{'ether'}) {
 	push(@options, [ 'hwaddr', ($cfg->{'ether_type'} || 'ether').' '.
 				   $cfg->{'ether'} ]);
 	}
+if ($cfg->{'bridge'}) {
+	push(@options, [ 'bridge_ports', $cfg->{'bridgeto'} ]);
+	}
 
 # Set bonding parameters
 if(($cfg->{'bond'} == 1) && ($gconfig{'os_version'} >= 5)) {
