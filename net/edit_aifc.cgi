@@ -34,7 +34,7 @@ print &ui_hidden("idx", $in{'idx'});
 print &ui_table_start(
 	$in{'virtual'} || $a && $a->{'virtual'} ne "" ? $text{'aifc_desc2'}
 						      : $text{'aifc_desc1'},
-	"width=100%", 4);
+	undef, 4);
 
 # Interface name, perhaps editable
 if ($in{'new'} && $in{'virtual'}) {

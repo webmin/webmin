@@ -127,7 +127,7 @@ if ($allow_add && defined(&supports_ranges) && &supports_ranges()) {
 	push(@links, "<a href='edit_range.cgi?new=1'>$text{'ifcs_radd'}</a>");
 	}
 if ($allow_add && defined(&supports_bridges) && &supports_bridges()) {
-	push(@links, "<a href='edit_bifcs.cgi?new=1&bridge=1'>".
+	push(@links, "<a href='edit_bifc.cgi?new=1&bridge=1'>".
 		     "$text{'ifcs_badd'}</a>");
 	}
 print &ui_links_row(\@links);
