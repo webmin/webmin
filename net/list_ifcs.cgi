@@ -125,12 +125,12 @@ if ($allow_add) {
 			     "$text{'vlan_add'}</a>");
 	}
 	}
-if ($allow_add && defined(&supports_ranges) && &supports_ranges()) {
-	push(@links, "<a href='edit_range.cgi?new=1'>$text{'ifcs_radd'}</a>");
-	}
 if ($allow_add && defined(&supports_bridges) && &supports_bridges()) {
 	push(@links, "<a href='edit_bifc.cgi?new=1&bridge=1'>".
 		     "$text{'ifcs_badd'}</a>");
+	}
+if ($allow_add && defined(&supports_ranges) && &supports_ranges()) {
+	push(@links, "<a href='edit_range.cgi?new=1'>$text{'ifcs_radd'}</a>");
 	}
 print &ui_links_row(\@links);
 @tds = ( "width=5 valign=top", "width=20% valign=top", "width=20% valign=top",
