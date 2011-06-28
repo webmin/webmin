@@ -185,6 +185,8 @@ if ($cfg->{'ether'}) {
 				   $cfg->{'ether'} ]);
 	}
 if ($cfg->{'bridge'}) {
+	&has_command("brctl") || &error("Bridges cannot be created unless the ".
+					"brctl command is installed");
 	push(@options, [ 'bridge_ports', $cfg->{'bridgeto'} ]);
 	}
 
@@ -640,14 +642,18 @@ if (!$in{'gateway_def'}) {
 &set_default_gateway($gw, $dev);
 
 # Save IPv6 address
-local ($dev6, $gw6);
-if (!$in{'gateway6_def'}) {
-	&check_ip6address($in{'gateway6'}) ||
-		&error(&text('routes_egateway6', $in{'gateway6'}));
-	$gw6 = $in{'gateway6'};
-	$dev6 = $in{'gatewaydev6'};
+local @ifaces6 = grep { $_->[1] eq 'inet6' && $_->[0] ne 'lo' }
+		      &get_interface_defs();
+if (@ifaces6) {
+	local ($dev6, $gw6);
+	if (!$in{'gateway6_def'}) {
+		&check_ip6address($in{'gateway6'}) ||
+			&error(&text('routes_egateway6', $in{'gateway6'}));
+		$gw6 = $in{'gateway6'};
+		$dev6 = $in{'gatewaydev6'};
+		}
+	&set_default_ipv6_gateway($gw6, $dev6);
 	}
-&set_default_ipv6_gateway($gw6, $dev6);
 
 # Parse static and local routes
 local %st;
