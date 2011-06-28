@@ -116,6 +116,9 @@ elsif ($b && !$b->{'address'} && !$b->{'dhcp'} && !$b->{'bootp'}) {
 	$canno = 1;
 	}
 @opts = ( );
+if ($canno) {
+	push(@opts, [ "none", $text{'ifcs_noaddress'} ]);
+	}
 if ($dhcp) {
 	push(@opts, [ "dhcp", $text{'ifcs_dhcp'} ]);
 	}
@@ -152,9 +155,6 @@ elsif ($b && $b->{'broadcast'}) {
 	push(@grid, $text{'ifcs_broad'}, "<tt>$b->{'broadcast'}</tt>");
 	}
 push(@opts, [ "address", $text{'ifcs_static2'}, &ui_grid_table(\@grid, 2) ]);
-if ($canno) {
-	push(@opts, [ "none", $text{'ifcs_noaddress'} ]);
-	}
 
 # Show the IP field
 if (@opts > 1) {
@@ -280,7 +280,8 @@ if ($in{'bridge'} || $b && $b->{'bridge'}) {
 	@ethboot = map { $_->{'fullname'} }
 		       grep { $_->{'fullname'} =~ /^eth(\d+)$/ } @boot;
 	print &ui_table_row($text{'bifc_bridgeto'},
-		&ui_select("bridgeto", $b->{'bridgeto'}, \@ethboot));
+		&ui_select("bridgeto", $b->{'bridgeto'}, \@ethboot, 1, 0,
+			   $in{'new'} ? 0 : 1));
 	}
 
 print &ui_table_end();

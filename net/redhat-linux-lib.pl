@@ -212,6 +212,19 @@ else {
 	}
 $conf{'NAME'} = $_[0]->{'desc'};
 &write_env_file("$net_scripts_dir/ifcfg-$name", \%conf);
+
+# If this is a bridge, set BRIDGE in real interface
+# XXX fix old one?
+if ($_[0]->{'bridge'}) {
+	local %bconf;
+	&lock_file("$net_scripts_dir/ifcfg-$_[0]->{'bridgeto'}");
+	&read_env_file("$net_scripts_dir/ifcfg-$_[0]->{'bridgeto'}", \%bconf);
+	$bconf{'BRIDGE'} = $_[0]->{'fullname'};
+	&write_env_file("$net_scripts_dir/ifcfg-$_[0]->{'bridgeto'}", \%bconf);
+	&unlock_file("$net_scripts_dir/ifcfg-$_[0]->{'bridgeto'}");
+	}
+
+# Link to devices directory
 if (-d &translate_filename($devices_dir)) {
 	&link_file("$net_scripts_dir/ifcfg-$name",
 		   "$devices_dir/ifcfg-$name");
