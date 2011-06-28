@@ -277,7 +277,8 @@ if (($in{'new'} && $in{'virtual'} eq "" && !$in{'bridge'}) ||
 
 # Real interface for bridge
 if ($in{'bridge'} || $b && $b->{'bridge'}) {
-	@ethboot = map { $_->{'fullname'} }
+	@ethboot = sort { $a cmp $b }
+		     map { $_->{'fullname'} }
 		       grep { $_->{'fullname'} =~ /^eth(\d+)$/ } @boot;
 	print &ui_table_row($text{'bifc_bridgeto'},
 		&ui_select("bridgeto", $b->{'bridgeto'}, \@ethboot, 1, 0,
