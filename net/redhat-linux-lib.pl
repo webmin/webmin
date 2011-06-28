@@ -117,7 +117,7 @@ while($f = readdir(CONF)) {
 			$b->{'address6'} = [ map { $_->[0] } @ip6s ];
 			$b->{'netmask6'} = [ map { $_->[1] } @ip6s ];
 			}
-		elsif ($conf{'IPV6INIT'}) {
+		elsif (lc($conf{'IPV6INIT'}) eq 'yes') {
 			$b->{'auto6'} = 1;
 			}
 		$b->{'edit'} = ($b->{'name'} !~ /^ppp|irlan/);

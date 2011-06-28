@@ -44,6 +44,7 @@ ifcs_range=Range $1
 ifcs_static2=Static configuration
 ifcs_static3=IPv6 enabled
 ifcs_noaddress=No address configured 
+ifcs_nonetmask=None
 ifcs_mode=IPv4 address
 ifcs_mode6=IPv6 addresses
 ifcs_address6=IPv6 address

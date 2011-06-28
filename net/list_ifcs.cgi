@@ -209,8 +209,9 @@ foreach $a (@boot) {
 			    $a->{'dhcp'} ? $text{'ifcs_dhcp'} :
 			    $a->{'address'} ? &html_escape($a->{'address'}) :
 					       $text{'ifcs_noaddress'});
-		push(@cols, $a->{'netmask'} ? &html_escape($a->{'netmask'})
-					    : $text{'ifcs_auto'});
+		push(@cols, $a->{'netmask'} ? &html_escape($a->{'netmask'}) :
+			    !$a->{'address'} ? $text{'ifcs_nonetmask'} :
+					       $text{'ifcs_auto'});
 		if (&supports_address6()) {
 			push(@cols, $a->{'auto6'} ? $text{'ifcs_auto6'} :
 				      join("<br>\n", map { &html_escape($_) }
