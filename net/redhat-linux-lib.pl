@@ -125,7 +125,7 @@ while($f = readdir(CONF)) {
 		$b->{'index'} = scalar(@rv);
 		$b->{'file'} = "$net_scripts_dir/$f";
 		if ($conf{'BRIDGE'}) {
-			$bridge_map{$conf{'BRIDGE'}} = $b->{'fullname};
+			$bridge_map{$conf{'BRIDGE'}} = $b->{'fullname'};
 			}
 		push(@rv, $b);
 		}
