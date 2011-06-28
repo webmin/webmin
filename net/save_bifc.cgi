@@ -130,6 +130,9 @@ else {
 		$b->{$in{'mode'}}++;
 		$auto++;
 		}
+	elsif ($in{'mode'} eq 'none') {
+		delete($b->{'address'});
+		}
 	else {
 		&valid_boot_address($in{'address'}) ||
 			&error(&text('bifc_eip', $in{'address'}));
@@ -141,7 +144,11 @@ else {
 		$b->{'desc'} = $in{'desc'};
 		}
 
-	if ($virtual_netmask && $b->{'virtual'} ne "") {
+	if ($in{'mode'} eq 'none') {
+		# No netmask needed
+		delete($b->{'netmask'});
+		}
+	elsif ($virtual_netmask && $b->{'virtual'} ne "") {
 		# Always use this netmask for virtuals
 		$b->{'netmask'} = $virtual_netmask;
 		}
@@ -152,12 +159,17 @@ else {
 			$oldb->{'netmask'};
 		}
 	elsif (&can_edit("netmask", $b) && $access{'netmask'}) {
-		$auto && !$in{'netmask'} || &check_netmask($in{'netmask'},$in{'address'}) ||
+		$auto && !$in{'netmask'} ||
+		    &check_netmask($in{'netmask'},$in{'address'}) ||
 			&error(&text('bifc_emask', $in{'netmask'}));
 		$b->{'netmask'} = $in{'netmask'};
 		}
 
-	if (!$access{'broadcast'} || $in{'broadcast_def'}) {
+	if ($in{'mode'} eq 'none') {
+		# No broadcast needed
+		delete($b->{'broadcast'});
+		}
+	elsif (!$access{'broadcast'} || $in{'broadcast_def'}) {
 		# Work out broadcast
 		$b->{'broadcast'} = $in{'new'} ? 
 			&compute_broadcast($b->{'address'}, $b->{'netmask'}) :
@@ -171,7 +183,11 @@ else {
 		$b->{'broadcast'} = $in{'broadcast'};
 		}
 
-	if (!$access{'mtu'}) {
+	if ($in{'mode'} eq 'none') {
+		# No MTU needed
+		delete($b->{'mtu'});
+		}
+	elsif (!$access{'mtu'}) {
 		# Use default MTU
 		$b->{'mtu'} = $in{'new'} ? $config{'def_mtu'}
 					 : $oldb->{'mtu'};

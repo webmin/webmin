@@ -199,6 +199,9 @@ else {
 	if ((@ip6s || $b->{'auto6'}) && lc($conf{'IPV6INIT'}) ne 'yes') {
 		$conf{'IPV6INIT'} = 'yes';
 		}
+	elsif (!@ip6s && !$b->{'auto6'}) {
+		$conf{'IPV6INIT'} = 'no';
+		}
 	if (@ip6s) {
 		$conf{'IPV6ADDR'} = shift(@ip6s);
 		$conf{'IPV6ADDR_SECONDARIES'} = join(" ", @ip6s);
