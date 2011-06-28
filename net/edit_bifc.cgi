@@ -162,6 +162,7 @@ if (@opts > 1) {
 	print &ui_table_row($text{'ifcs_mode'},
 		&ui_radio_table("mode", $b && $b->{'dhcp'} ? "dhcp" :
 					$b && $b->{'bootp'} ? "bootp" :
+					$b && !$b->{'address'} ? "none" :
 							      "address",
 				\@opts), 3);
 	}
