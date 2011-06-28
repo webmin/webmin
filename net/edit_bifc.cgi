@@ -16,6 +16,16 @@ elsif ($in{'new'} && $in{'vlan'}) {
 	# New VLAN
 	&ui_print_header(undef, $text{'vlan_create'}, "");
 	}
+elsif ($in{'new'} && $in{'bridge'}) {
+	# New Bridge
+	&ui_print_header(undef, $text{'bridge_create'}, "");
+	$bmax = -1;
+	foreach $b (@boot) {
+		if ($b->{'fullname'} =~ /^br(\d+)$/) {
+			$bmax = $1;
+			}
+		}
+	}
 elsif ($in{'new'}) {
 	# New real or virtual interface
 	&ui_print_header(undef, $text{'bifc_create'}, "");
@@ -47,6 +57,7 @@ print &ui_hidden("new", $in{'new'});
 print &ui_hidden("idx", $in{'idx'});
 print &ui_hidden("vlan", $in{'vlan'});
 print &ui_hidden("bond", $in{'bond'});
+print &ui_hidden("bridge", $in{'bridge'});
 print &ui_table_start($in{'virtual'} || $b && $b->{'virtual'} ne "" ?
 			$text{'bifc_desc2'} : $text{'bifc_desc1'},
 		      "width=100%", 4);
@@ -68,6 +79,9 @@ elsif ($in{'new'}) {
 	# New real interface
 	if ($in{'vlan'} == 1) {
 		$namefield = "auto".&ui_hidden("name", "auto");
+		}
+	elsif ($in{'bridge'}) {
+		$namefield = "br".&ui_textbox("name", ($bmax+1), 3);
 		}
 	else {
 		$namefield = &ui_textbox("name", undef, 6);
@@ -94,12 +108,22 @@ print &ui_table_row($text{'ifcs_act'}, $upfield);
 $virtual = (!$b && $in{'virtual'}) || ($b && $b->{'virtual'} ne "");
 $dhcp = &can_edit("dhcp") && !$virtual;
 $bootp = &can_edit("bootp") && !$virtual;
+if (defined(&supports_no_address) && &supports_no_address()) {
+	# Having no address is allowed
+	$canno = 1;
+	}
+elsif ($b && !$b->{'address'} && !$b->{'dhcp'} && !$b->{'bootp'}) {
+	# Has no address
+	$canno = 1;
+	}
 @opts = ( );
 if ($dhcp) {
 	push(@opts, [ "dhcp", $text{'ifcs_dhcp'} ]);
 	}
 if ($bootp) {
 	push(@opts, [ "bootp", $text{'ifcs_bootp'} ]);
+	}
+if ($canno) {
 	}
 @grid = ( $text{'ifcs_ip'},
 	  &ui_textbox("address", $b ? $b->{'address'} : "", 15) );
@@ -129,6 +153,9 @@ elsif ($b && $b->{'broadcast'}) {
 	push(@grid, $text{'ifcs_broad'}, "<tt>$b->{'broadcast'}</tt>");
 	}
 push(@opts, [ "address", $text{'ifcs_static2'}, &ui_grid_table(\@grid, 2) ]);
+if ($canno) {
+	push(@opts, [ "none", $text{'ifcs_noaddress'} ]);
+	}
 
 # Show the IP field
 if (@opts > 1) {
@@ -147,7 +174,7 @@ if (&supports_address6($b)) {
 	# Multiple IPs allowed
 	$table6 = &ui_columns_start([ $text{'ifcs_address6'},
 				      $text{'ifcs_netmask6'} ], 50);
-	for($i=0; $i<=@{$b->{'address6'}}; $i++) {
+	for($i=0; $i<=($b ? scalar(@{$b->{'address6'}}) : 0); $i++) {
 		$table6 .= &ui_columns_row([
 		    &ui_textbox("address6_$i",
 				$b->{'address6'}->[$i], 40),
@@ -157,6 +184,7 @@ if (&supports_address6($b)) {
 	$table6 .= &ui_columns_end();
 	print &ui_table_row($text{'ifcs_mode6'},
 		&ui_radio_table("mode6",
+			!$b ? "none" :
 			$b->{'auto6'} ? "auto" :
 			@{$b->{'address6'}} ? "address" : "none",
 			[ [ "none", $text{'ifcs_none6'} ],
@@ -238,13 +266,20 @@ if(($in{'vlan'}) or (&iface_type($b->{'name'}) =~ /^(.*) (VLAN)$/)) {
 	}
 
 # Hardware address, if non-virtual
-if (($in{'new'} && $in{'virtual'} eq "") ||
+if (($in{'new'} && $in{'virtual'} eq "" && !$in{'bridge'}) ||
     (!$in{'new'} && $b->{'virtual'} eq "" &&
      defined(&boot_iface_hardware) &&
      &boot_iface_hardware($b->{'name'}))) {
 	$hardfield = &ui_opt_textbox("ether", $b->{'ether'}, 30,
 				     $text{'aifc_default'});
 	print &ui_table_row($text{'aifc_hard'}, $hardfield);
+	}
+
+# Real interface for bridge
+if ($in{'bridge'} || $b && $b->{'bridge'}) {
+	@ethboot = grep { $_->{'fullname'} =~ /^eth(\d+)$/ } @boot;
+	print &ui_table_row($text{'bifc_bridgeto'},
+		&ui_select("bridgeto", $b->{'bridgeto'}, \@ethboot));
 	}
 
 print &ui_table_end();

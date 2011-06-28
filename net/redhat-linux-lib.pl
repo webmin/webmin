@@ -60,7 +60,8 @@ do 'linux-lib.pl';
 # Returns a list of interfaces brought up at boot time
 sub boot_interfaces
 {
-local(@rv, $f);
+local (@rv, $f);
+local %bridge_map;
 opendir(CONF, &translate_filename($net_scripts_dir));
 while($f = readdir(CONF)) {
 	local (%conf, $b);
@@ -89,7 +90,8 @@ while($f = readdir(CONF)) {
 			$b->{'virtual'} = $2;
 			}
 		else { $b->{'name'} = $b->{'fullname'}; }
-		$b->{'up'} = defined($conf{'ONPARENT'}) && $b->{'virtual'} ne '' ?
+		$b->{'up'} = defined($conf{'ONPARENT'}) &&
+			     $b->{'virtual'} ne '' ?
 				($conf{'ONPARENT'} eq 'yes') :
 				($conf{'ONBOOT'} eq 'yes');
 		$b->{'address'} = $conf{'IPADDR'};
@@ -122,10 +124,19 @@ while($f = readdir(CONF)) {
 		$b->{'desc'} = $conf{'NAME'};
 		$b->{'index'} = scalar(@rv);
 		$b->{'file'} = "$net_scripts_dir/$f";
+		if ($conf{'BRIDGE'}) {
+			$bridge_map{$conf{'BRIDGE'}} = $b->{'fullname};
+			}
 		push(@rv, $b);
 		}
 	}
 closedir(CONF);
+foreach my $b (@rv) {
+	if ($b->{'fullname'} =~ /^br\d+$/) {
+		$b->{'bridge'} = 1;
+		$b->{'bridgeto'} = $bridge_map{$b->{'fullname'}};
+		}
+	}
 return @rv;
 }
 
@@ -191,6 +202,9 @@ else {
 	if (@ip6s) {
 		$conf{'IPV6ADDR'} = shift(@ip6s);
 		$conf{'IPV6ADDR_SECONDARIES'} = join(" ", @ip6s);
+		}
+	if ($_[0]->{'fullname'} =~ /^br(\d+)$/) {
+		$conf{'TYPE'} = 'Bridge';
 		}
 	}
 $conf{'NAME'} = $_[0]->{'desc'};
@@ -866,6 +880,19 @@ sub supports_address6
 {
 local ($iface) = @_;
 return !$iface || $iface->{'virtual'} eq '';
+}
+
+# Returns 1, as boot-time interfaces on Redhat can exist without an IP (such as
+# for bridging)
+sub supports_no_address
+{
+return 1;
+}
+
+# Bridge interfaces can be created on redhat
+sub supports_bridges
+{
+return 1;
 }
 
 1;

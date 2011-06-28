@@ -45,6 +45,7 @@ else {
 			if (defined($oldb->{'virtual'}));
 		$b->{'code'} = $oldb->{'code'};
 		$b->{'fullname'} = $oldb->{'fullname'};
+		$b->{'bridge'} = $oldb->{'bridge'};
 		}
 	elsif (defined($in{'virtual'})) {
 		# creating a virtual interface
@@ -78,35 +79,38 @@ else {
 		$b->{'name'} = $1;
 		$b->{'virtual'} = $3;
 		$b->{'fullname'} = $b->{'name'}.":".$b->{'virtual'};
-		&can_create_iface() || &error($text{'ifcs_ecannot'});
-		&can_iface($b) || &error($text{'ifcs_ecannot'});
+		}
+	elsif ($in{'bridge'}) {
+		# Creating a bridge interface
+		$in{'name'} =~ /^\d+$/ || &error($text{'bifc_ebridge'});
+		$b->{'name'} = $b->{'fullname'} = "br".$in{'name'};
 		}
 	elsif ($in{'name'} =~/^[a-z]+\d*(\.\d+)?$/) {
 		# creating a real interface
-		foreach $eb (@boot) {
-			if ($eb->{'fullname'} eq $in{'name'}) {
-				&error(&text('bifc_edup', $in{'name'}));
-				}
-			}
 		$b->{'name'} = $in{'name'};
 		$b->{'fullname'} = $in{'name'};
-		&can_create_iface() || &error($text{'ifcs_ecannot'});
-		&can_iface($b) || &error($text{'ifcs_ecannot'});
+		$b->{'bridge'} = 1;
 		}
 	elsif ($in{'name'} eq 'auto') {
 		# creating a vlan interface
-		foreach $eb (@boot) {
-			if ($eb->{'fullname'} eq $in{'name'}) {
-				&error(&text('bifc_edup', $in{'name'}));
-				}
-			}
 		$b->{'name'} = $in{'name'};
 		$b->{'fullname'} = $in{'name'};
-		&can_create_iface() || &error($text{'ifcs_ecannot'});
-		&can_iface($b) || &error($text{'ifcs_ecannot'});
 		}
 	else {
 		&error($text{'bifc_ename'});
+		}
+
+	if ($in{'new'}) {
+		# Check permissions
+		&can_create_iface() || &error($text{'ifcs_ecannot'});
+		&can_iface($b) || &error($text{'ifcs_ecannot'});
+
+		# Check for clash
+		foreach $eb (@boot) {
+			if ($eb->{'fullname'} eq $b->{'fullname'}) {
+				&error(&text('bifc_edup', $in{'name'}));
+				}
+			}
 		}
 
 	# Check for address clash
@@ -271,6 +275,17 @@ else {
 		if ($in{'vlanid'}) {
 			$b->{'vlanid'} = $in{'vlanid'};
 			}
+		}
+
+	# Save bridge settings
+	if ($b->{'bridge'}) {
+		$in{'bridgeto'} =~ /^eth\d+$/ ||
+			&error($text{'bifc_ebridgeto'});
+		($bt) = grep { $_->{'fullname'} eq $in{'bridgeto'} } @boot;
+		$bt || &error($text{'bifc_ebridgeto'});
+		($bt->{'address'} || $bt->{'dhcp'} || $bt->{'bootp'}) &&
+			&error($text{'bifc_ebridgeto2'});
+		$b->{'bridgeto'} = $in{'bridgeto'};
 		}
 
 	# Save the interface with its final name

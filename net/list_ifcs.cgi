@@ -115,14 +115,20 @@ print &ui_form_start("delete_bifcs.cgi", "post");
 if ($allow_add) {
 	push(@links, "<a href='edit_bifc.cgi?new=1'>$text{'ifcs_add'}</a>");
 	if (defined(&supports_bonding) && &supports_bonding()) {
-		push(@links, "<a href='edit_bifc.cgi?new=1&bond=1'>$text{'bonding_add'}</a>");
+		push(@links, "<a href='edit_bifc.cgi?new=1&bond=1'>".
+			     "$text{'bonding_add'}</a>");
 	}
 	if (defined(&supports_vlans) && &supports_vlans()) {
-		push(@links, "<a href='edit_bifc.cgi?new=1&vlan=1'>$text{'vlan_add'}</a>");
+		push(@links, "<a href='edit_bifc.cgi?new=1&vlan=1'>".
+			     "$text{'vlan_add'}</a>");
 	}
 	}
 if ($allow_add && defined(&supports_ranges) && &supports_ranges()) {
 	push(@links, "<a href='edit_range.cgi?new=1'>$text{'ifcs_radd'}</a>");
+	}
+if ($allow_add && defined(&supports_bridges) && &supports_bridges()) {
+	push(@links, "<a href='edit_bifcs.cgi?new=1&bridge=1'>".
+		     "$text{'ifcs_badd'}</a>");
 	}
 print &ui_links_row(\@links);
 @tds = ( "width=5 valign=top", "width=20% valign=top", "width=20% valign=top",
@@ -202,7 +208,7 @@ foreach $a (@boot) {
 		push(@cols, $a->{'bootp'} ? $text{'ifcs_bootp'} :
 			    $a->{'dhcp'} ? $text{'ifcs_dhcp'} :
 			    $a->{'address'} ? &html_escape($a->{'address'}) :
-					       $text{'ifcs_auto'});
+					       $text{'ifcs_noaddress'});
 		push(@cols, $a->{'netmask'} ? &html_escape($a->{'netmask'})
 					    : $text{'ifcs_auto'});
 		if (&supports_address6()) {

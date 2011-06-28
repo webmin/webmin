@@ -37,6 +37,9 @@ foreach $iface (@ifaces) {
 		else {
 			$cfg->{'name'} = $cfg->{'fullname'};
 			}
+		if ($cfg->{'fullname'} =~ /^br(\d+)$/) {
+			$cfg->{'bridge'} = 1;
+			}
 		if ($gconfig{'os_version'} >= 3 || scalar(@autos)) {
 			$cfg->{'up'} = &indexof($name, @autos) >= 0;
 			}
@@ -76,6 +79,13 @@ foreach $iface (@ifaces) {
 				local @v = split(/\s+/, $value);
 				$cfg->{'ether_type'} = $v[0];
 				$cfg->{'ether'} = $v[1];
+				}
+			elsif ($param eq 'bridge_ports') {
+				$cfg->{'bridgeto'} = $value;
+				}
+			elsif ($param eq 'pre-up' &&
+			       $value =~ /brctl\s+addif\s+br\d+\s+(\S+)/) {
+				$cfg->{'bridgeto'} = $1;
 				}
 			else {
 				$cfg->{$param} = $value;
@@ -147,7 +157,7 @@ if ($cfg->{'dhcp'} == 1) {
 elsif ($cfg->{'bootp'} == 1) {
 	$method = 'bootp';
 	}
-else {
+elsif ($cfg->{'address'}) {
 	$method = 'static';
 	push(@options, ['address', $cfg->{'address'}]);
 	push(@options, ['netmask', $cfg->{'netmask'}]);
@@ -163,6 +173,9 @@ else {
 					($ip4 & int($nm4))&0xff;
 		push(@options, ['network', $network]);
 		}
+	}
+else {
+	$method = 'manual';
 	}
 my @autos = get_auto_defs();
 my $amode = $gconfig{'os_version'} > 3 || scalar(@autos);
@@ -1021,6 +1034,19 @@ sub supports_address6
 {
 local ($iface) = @_;
 return !$iface || $iface->{'virtual'} eq '';
+}
+
+# Returns 1, as boot-time interfaces on Debian can exist without an IP (such as
+# for bridging)
+sub supports_no_address
+{
+return 1;
+}
+
+# Bridge interfaces can be created on debian
+sub supports_bridges
+{
+return 1;
 }
 
 1;
