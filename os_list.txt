@@ -105,6 +105,7 @@ Debian Linux			3.1	debian-linux	3.1	`cat /etc/debian_version 2>/dev/null` =~ /^(
 Debian Linux			4.0	debian-linux	4.0	`cat /etc/debian_version 2>/dev/null` =~ /^(etch)/i
 Debian Linux			5.0	debian-linux	5.0	`cat /etc/debian_version 2>/dev/null` =~ /^(lenny)/i
 Debian Linux			6.0	debian-linux	6.0	`cat /etc/debian_version 2>/dev/null` =~ /^(squeeze)/i
+Debian Linux			7.0	debian-linux	7.0	`cat /etc/debian_version 2>/dev/null` =~ /^(wheezy)/i
 # These change sometimes...
 Debian Linux			5.0	debian-linux	5.0	`cat /etc/debian_version 2>/dev/null` =~ /^(stable)/i
 # These don't have a version number yet, so we use the one from "stable"
