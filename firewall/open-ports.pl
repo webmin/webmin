@@ -102,7 +102,7 @@ PORT: foreach $p (@ARGV) {
 	else {
 		$r->{'dport'} = [ "", $p ];
 		}
-	unshift(@{$filter->{'files'}}, $r);
+	unshift(@{$filter->{'rules'}}, $r);
 	push(@added, $p);
 	}
 
