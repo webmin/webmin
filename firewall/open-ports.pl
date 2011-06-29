@@ -102,7 +102,7 @@ PORT: foreach $p (@ARGV) {
 	else {
 		$r->{'dport'} = [ "", $p ];
 		}
-	splice(@{$filter->{'files'}}, $r);
+	unshift(@{$filter->{'files'}}, $r);
 	push(@added, $p);
 	}
 
@@ -135,4 +135,3 @@ else {
 	print STDERR "Add ports are already open\n";
 	exit(0);
 	}
-
