@@ -67,8 +67,9 @@ PORT: foreach $p (@ARGV) {
 	print STDERR "Checking for port $p ..\n";
 	foreach $r (@{$filter->{'rules'}}) {
 		if ($r->{'chain'} eq 'INPUT' &&
-		    $r->{'j'}->[1] eq 'ACCEPT' &&
-		    $r->{'p'}->[0] eq '' && $r->{'p'}->[1] eq 'tcp') {
+		    $r->{'j'} && $r->{'j'}->[1] eq 'ACCEPT' &&
+		    $r->{'p'} && $r->{'p'}->[0] eq '' &&
+		    $r->{'p'}->[1] eq 'tcp') {
 			# Found tcp rule .. check ports
 			@rports = ( );
 			if ($r->{'dports'} && $r->{'dports'}->[0] eq '') {
