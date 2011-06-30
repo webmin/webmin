@@ -5,7 +5,6 @@ BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
 &foreign_require("cron", "cron-lib.pl");
-&foreign_require("servers", "servers-lib.pl");
 &foreign_require("mailboxes", "mailboxes-lib.pl");
 
 $cron_cmd = "$module_config_directory/copy.pl";
@@ -66,6 +65,7 @@ local @rv;
 local $func = $_[1];
 
 # Work out which servers to run on
+&foreign_require("servers", "servers-lib.pl");
 local @servers = &servers::list_servers_sorted();
 local @groups = &servers::list_all_groups(\@servers);
 local @run;

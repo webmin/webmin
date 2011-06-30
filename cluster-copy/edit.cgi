@@ -3,6 +3,7 @@
 
 require './cluster-copy-lib.pl';
 &ReadParse();
+&foreign_require("servers", "servers-lib.pl");
 
 if (!$in{'new'}) {
 	$copy = &get_copy($in{'id'});
