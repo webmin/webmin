@@ -106,33 +106,6 @@ chmod(0700, "$acl/newcerts");
 $miniserv->{'ca'} = "$acl/ca.pem";
 }
 
-=head2 list_themes
-
-Returns an array of all installed themes, each of which is a hash ref
-corresponding to the theme.info file.
-
-=cut
-sub list_themes
-{
-my @rv;
-opendir(DIR, $root_directory);
-foreach my $m (readdir(DIR)) {
-	my %tinfo;
-	next if ($m =~ /^\./);
-	next if (!&read_file_cached("$root_directory/$m/theme.info", \%tinfo));
-	next if (!&check_os_support(\%tinfo));
-	foreach my $o (@lang_order_list) {
-		if ($tinfo{'desc_'.$o}) {
-			$tinfo{'desc'} = $tinfo{'desc_'.$o};
-			}
-		}
-	$tinfo{'dir'} = $m;
-	push(@rv, \%tinfo);
-	}
-closedir(DIR);
-return sort { lc($a->{'desc'}) cmp lc($b->{'desc'}) } @rv;
-}
-
 =head2 install_webmin_module(file, unlink, nodeps, &users|groups)
 
 Installs a webmin module or theme, and returns either an error message

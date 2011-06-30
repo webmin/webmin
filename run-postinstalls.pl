@@ -5,8 +5,7 @@
 $no_acl_check++;
 use WebminCore;
 &init_config();
-&foreign_require("webmin", "webmin-lib.pl");
-@themes = &webmin::list_themes();
+@themes = &list_themes();
 
 if (@ARGV > 0) {
 	# Running for specified modules
