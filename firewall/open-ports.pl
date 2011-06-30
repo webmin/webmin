@@ -69,11 +69,13 @@ PORT: foreach $p (@ARGV) {
 		if ($r->{'chain'} eq 'INPUT' &&
 		    $r->{'j'} && $r->{'j'}->[1] eq 'ACCEPT' &&
 		    $r->{'p'} && $r->{'p'}->[0] eq '' &&
-		    $r->{'p'}->[1] eq 'tcp') {
+		    		 $r->{'p'}->[1] eq 'tcp') {
 			# Found tcp rule .. check ports
 			@rports = ( );
+			$rrange = undef;
 			if ($r->{'dports'} && $r->{'dports'}->[0] eq '') {
 				push(@rports, split(/,/, $r->{'dports'}->[1]));
+				$rrange = $r->{'dports'}->[1];
 				}
 			if ($r->{'dport'} && $r->{'dport'}->[0] eq '') {
 				($s, $e) = split(":", $r->{'dport'}->[1]);
@@ -83,8 +85,10 @@ PORT: foreach $p (@ARGV) {
 				elsif ($s) {
 					push(@rports, $s);
 					}
+				$rrange = $r->{'dport'}->[1];
 				}
-			if (&indexof($p, @rports) >= 0) {
+			if (&indexof($p, @rports) >= 0 ||
+			    $p eq $rrange) {
 				print STDERR ".. already allowed\n";
 				next PORT;
 				}

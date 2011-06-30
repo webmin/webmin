@@ -36,3 +36,5 @@ Added a button to rename an existing custom chain.
 ---- Changes since 1.510 ----
 Better handle the case where a rule has a --comment format description, but # format comments are enabled.
 Added support for physdev module options, for matching based on the bridged interface.
+---- Changes since 1.550 ----
+Added the open-ports.pl command which can be run from the shell to open ports on the firewall.
