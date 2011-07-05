@@ -66,8 +66,8 @@ return split(/\s+/, $out);
 sub find_file_processes
 {
 local($out, $files);
-$files = join(' ', @_);
-$out = `fuser -f $files`;
+$files = join(' ', map { quotemeta($_) } map { glob($_) } @_);
+$out = &backquote_command("fuser -f $files");
 $out =~ s/[^0-9 ]//g;
 $out =~ s/^\s+//g; $out =~ s/\s+$//g;
 return split(/\s+/, $out);
