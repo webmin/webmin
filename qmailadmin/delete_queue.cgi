@@ -8,7 +8,7 @@ require './qmail-lib.pl';
 -r $in{'file'} || &error($text{'delete_egone'});
 $in{'file'} =~ /(\d+)\/(\d+)$/ || &error($text{'delete_ebogus'});
 $id = "$1/$2";
-($pid) = &find_byname("qmail-send");
+$pid = &is_qmail_running();
 if ($pid) {
 	&stop_qmail();
 	}

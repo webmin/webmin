@@ -8,7 +8,7 @@ require './qmail-lib.pl';
 @files = split(/\0/, $in{'file'});
 if ($in{'confirm'}) {
 	# Delete messages
-	($pid) = &find_byname("qmail-send");
+	$pid = &is_qmail_running();
 	if ($pid) {
 		&stop_qmail();
 		}
