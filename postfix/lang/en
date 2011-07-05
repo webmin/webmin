@@ -282,6 +282,7 @@ opts_smtpd_recipient_restrictions=Restrictions on recipient addresses
 opts_allow_untrusted_routing=Allow untrusted routing
 opts_maps_rbl_domains=DNS domains for blacklist lookups
 opts_relay_domains=Restrict mail relaying
+opts_relay_recipient_maps=Map for allowed addresses for relaying
 opts_access_map_reject_code=SMTP server response on access map violation
 opts_invalid_hostname_reject_code=SMTP server response on invalid hostname reject
 opts_maps_rbl_reject_code=SMTP server response on RBL domains violation
@@ -290,7 +291,7 @@ opts_relay_domains_reject_code=SMTP server response on forbidden relaying
 opts_unknown_address_reject_code=SMTP server response on unknown domain reject
 opts_unknown_client_reject_code=SMTP server response on unknown client reject
 opts_unknown_hostname_reject_code=SMTP server response on unknown hostname reject
-
+smtpd_nomap=No map for allowed addresses for relaying has been entered yet.
 
 smtp_title=SMTP Client Options
 smtp_ecannot=You are not allowed to edit the SMTP client options

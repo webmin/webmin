@@ -46,6 +46,8 @@ print &ui_table_start($text{'smtpd_title'}, "width=100%", 4);
 
 &option_radios_freefield("relay_domains", 65, $default);
 
+&option_mapfield("relay_recipient_maps", 60);
+
 &option_freefield("access_map_reject_code", 15, $default);
 &option_freefield("invalid_hostname_reject_code", 15, $default);
 
@@ -60,6 +62,18 @@ print &ui_table_start($text{'smtpd_title'}, "width=100%", 4);
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'opts_save'} ] ]);
+
+# Current relay map contents
+print &ui_hr();
+if (&get_real_value("relay_recipient_maps") eq "")
+{
+    print ($text{'smtpd_nomap'}."<br><br>");
+}
+else
+{
+    &generate_map_edit("relay_recipient_maps", $text{'map_click'}." ".
+	       &hlink($text{'help_map_format'}, "relay_recipient_maps"));
+}
 
 &ui_print_footer("", $text{'index_return'});
    
