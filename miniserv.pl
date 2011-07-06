@@ -3711,9 +3711,14 @@ return $get_socket_name_cache{$myaddr};
 sub run_login_script
 {
 if ($config{'login_script'}) {
-	system($config{'login_script'}.
-	       " ".join(" ", map { quotemeta($_) || '""' } @_).
-	       " >/dev/null 2>&1 </dev/null");
+	alarm(5);
+	$SIG{'ALRM'} = sub { die "timeout" };
+	eval {
+		system($config{'login_script'}.
+		       " ".join(" ", map { quotemeta($_) || '""' } @_).
+		       " >/dev/null 2>&1 </dev/null");
+		};
+	alarm(0);
 	}
 }
 
@@ -3721,9 +3726,14 @@ if ($config{'login_script'}) {
 sub run_logout_script
 {
 if ($config{'logout_script'}) {
-	system($config{'logout_script'}.
-	       " ".join(" ", map { quotemeta($_) || '""' } @_).
-	       " >/dev/null 2>&1 </dev/null");
+	alarm(5);
+	$SIG{'ALRM'} = sub { die "timeout" };
+	eval {
+		system($config{'logout_script'}.
+		       " ".join(" ", map { quotemeta($_) || '""' } @_).
+		       " >/dev/null 2>&1 </dev/null");
+		};
+	alarm(0);
 	}
 }
 
