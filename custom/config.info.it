@@ -4,4 +4,4 @@ width=Larghezza della finestra del file editor,3,Predefinita (80 caratteri)
 height=Altezza della finestra del file editor,3,Predefinita (20 caratteri)
 wrap=Modalit&#224; di ritorno a capo del file editor,1,-Predefinita (Soft),hard-Hard,off-Disabilitata
 columns=Numero di colonne in cui visualizzare i comandi,1,2-2,1-1
-line2=Configurazione di sistema,11
+sort=Elenca comandi in ordine di,1,desc-Nome comando,html-Descrizione,-Comando di ordinamento
