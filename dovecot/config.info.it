@@ -1,0 +1,4 @@
+dovecot=Programma server Dovecot,0
+dovecot_config=Percorso completo file configurazione Dovecot,0
+init_script=Script di avvio di Dovecot,3,Non esiste
+pid_file=File PID server Dovecot,0
