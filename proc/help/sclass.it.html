@@ -1,0 +1,16 @@
+<header>Classe di scheduling IO</header>
+
+Le opzioni disponibili sono :<p>
+<dl>
+<dt><b>Inattivo</b>
+<dd>Un programmma configurato con questa classe otterrà accesso al disco solo quando nessun altro programma ne farà richiesta in un definito periodo. L'impatto di tali processi sul carico del sistema dovrebbe essere nullo. Questa classe non prende argomenti di priorità.<p>
+
+<li><b>Miglior sforzo</b>
+<dd>Questa è la classe di default per processi che non richiedono scheduling io particolare. I processi saranno eseguiti con il milio sforzo possibile in stile round-robin.
+
+<li><b>Tempo reale</b>
+<dd>Questa è la classe che accede per prima al disco, indipendentemente dallo stato del sistema. Va usata con prudenza poichè rischia di prosciugare le risorse per gli altri processi.
+
+</dl>
+<footer>
+
