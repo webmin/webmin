@@ -1,3 +1,4 @@
+__norefs=1
 doc_epath=Percorso di documentazione pacchetto non valido
 doc_header=File di documentazione pacchetto $1
 doc_title=Documentazione Pacchetto
