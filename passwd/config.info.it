@@ -1,0 +1,4 @@
+max_users=Numero massimo di utenti da mostrare,0
+input_type=Scegli l'utente da,1,1-Lista,0-Campo testo
+sort_mode=Ordina utenti per,1,0-Ordine nel file,1-Nome utente
+passwd_cmd=Comando per cambiare la password,3,Aggiorna files di sistema direttamente
