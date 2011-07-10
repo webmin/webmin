@@ -38,13 +38,13 @@ if (!$in{'login_none'}) {
 %newrecip = map { $_, 1 } split(/\0/, $in{'sasl_recip'});
 foreach $o (&list_smtpd_restrictions()) {
 	if ($newrecip{$o}) {
-		push(@recip, $o);
+		push(@recip, $o) if (&indexof($o, @recip) < 0);
 		}
 	else {
 		@recip = grep { $_ ne $o } @recip;
 		}
 	}
-&set_current_value("smtpd_recipient_restrictions", join(" ", &unique(@recip)));
+&set_current_value("smtpd_recipient_restrictions", join(" ", @recip));
 
 # Save SSL options
 if ($postfix_version >= 2.3) {
