@@ -338,7 +338,8 @@ else {
 	$_[0]->{'line'} = scalar(@$lref);
 	push(@$lref, &cron_job_line($_[0]));
 	&flush_file_lines();
-	system("chown $_[0]->{'user'} $cron_temp_file");
+	&set_ownership_permissions($_[0]->{'user'}, undef, undef,
+				   $cron_temp_file);
 	&copy_crontab($_[0]->{'user'});
 	$_[0]->{'file'} = "$config{'cron_dir'}/$_[0]->{'user'}";
 	$_[0]->{'index'} = scalar(@cron_jobs_cache);

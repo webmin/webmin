@@ -75,6 +75,7 @@ save_eallow=The user '$1' is not allowed to access cron
 save_ecannot=You are not allowed to create or edit cron jobs for '$1'
 save_enone=You did not choose any $1 to execute
 save_ecannot2=You are not allowed to create cron jobs
+save_eidx=Cron job was successfully saved, but cannot be run as it was not found!
 
 allow_title=Control Cron Access
 allow_desc=This form allows you to control which users can create and run cron jobs.

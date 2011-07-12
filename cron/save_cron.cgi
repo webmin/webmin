@@ -79,6 +79,17 @@ if (!$in{'new'}) {
 	else {
 		&delete_cron_job($oldjob);
 		&create_cron_job($job);
+
+		# Find new index, which will change due to user move
+		undef(@cron_jobs_cache);
+		$in{'idx'} = undef;
+		foreach $newjob (&list_cron_jobs()) {
+			if ($newjob->{'user'} eq $job->{'user'} &&
+			    $newjob->{'active'} eq $job->{'active'} &&
+			    $newjob->{'command'} eq $job->{'command'}) {
+				$in{'idx'} = $newjob->{'index'};
+				}
+			}
 		}
 	}
 else {
@@ -96,6 +107,7 @@ else {
 
 if ($in{'saverun'}) {
 	# Redirect to execute form
+	defined($in{'idx'}) || &error($text{'save_eidx'});
 	&redirect("exec_cron.cgi?idx=$in{'idx'}");
 	}
 else {
