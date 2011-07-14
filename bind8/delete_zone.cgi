@@ -137,6 +137,7 @@ foreach $u (keys %wusers) {
 	}
 
 # Also delete from slave servers
+delete($ENV{'HTTP_REFERER'});
 if ($in{'onslave'} && $access{'remote'}) {
 	@slaveerrs = &delete_on_slaves($zconf->{'value'}, undef, $viewname);
 	if (@slaveerrs) {
