@@ -195,7 +195,7 @@ foreach $u (@ulist) {
 # Limit to search
 if ($in{'search'}) {
 	@rows = grep { $_->[@$_-1] =~ /\Q$in{'search'}\E/i ||
-		       $_->[0] =~ /\Q$in{'search'}\E/i } @rows;
+		       $_->[1] =~ /\Q$in{'search'}\E/i } @rows;
 	}
 
 # Show search form
