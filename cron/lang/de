@@ -42,6 +42,7 @@ edit_months=Monate
 edit_range=Zeitraum zum ausf&#252;hren
 edit_return=Cron-Auftrag
 edit_run=Jetzt ausf&#252;hren
+edit_saverun=Speichere und f&#252;hre jetzt aus
 edit_selected=Ausgew&#228;hlte ..
 edit_special0=Zu den unten ausgew&#228;hlten Zeitpunkten ausf&#252;hren ..
 edit_special1=Zu gew&#228;hltem Zeitpunkt ausf&#252;hren ..
