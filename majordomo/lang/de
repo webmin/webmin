@@ -115,8 +115,10 @@ index_digest=Hinzuf&#252;gen einer neuen &#220;bersichtsliste
 index_econfig=Die Majordomo-Konfigurationsdatei $1 gibt es nicht. Vielleicht ist Ihre <a href='$2'>Modulkonfiguration</a> falsch oder Majordomo ist nicht installiert.
 index_ehomedir=Die <tt>$homedir</tt> Variable in Ihrer Majordomo-Konfigurationsdatei ist auf $1 eingestellt. Dieses existiert jedoch nicht.
 index_elistdir=Die <tt>$listdir</tt> Variable in Ihrer Majordomo-Konfigurationsdatei ist auf $1 eingestellt. Dieses existiert jedoch nicht.
+index_epostfix=Postfix ist entweder nicht installiert oder nicht richtig auf Ihrem System eingestellt. Pr&#252;fe die <a href='$1'>Postfix Modul</a> Konfiguration.
 index_eprograms=Das Majordomo-Verzeichnis $1 gibt es nicht. Vielleicht ist Ihre <a href='$2'>Modulkonfiguration</a> falsch oder Majordomo ist nicht installiert.
 index_esendmail2=Sendmail ist entweder nicht nicht installiert oder nicht richtig auf Ihrem System eingerichtet. Pr&#252;fen Sie bitte die <a href=$2>Modulkonfiguration</a>.
+index_esendmail3=Das Sendmail Webmin Modul, welches ben&#246;tigt wird um Alias zu verwalten, ist nicht installiert.
 index_esendmailversion=Ihre Sendmail-Konfigurationsdatei scheint nicht f&#252;r eine neuere Sendmail-Version zu sein. Webmin unterst&#252;tzt Sendmail in der Version 8.8 und dar&#252;ber.
 index_eversion=Ihre Majordomo-Version wird von Webmin nicht unterst&#252;tzt. Erst die Versionen 1.94 und dar&#252;ber k&#246;nnen mit Webmin bearbeitet werden.
 index_eversion2=Die Majordomo-Versionsdatei $1 wurde auf Ihrem System im Programmverzeichnis $2 nicht gefunden. Entweder ist Ihre <a href='$3'>Modulkonfiguration</a> falsch oder Majordomo ist nicht installiert.
