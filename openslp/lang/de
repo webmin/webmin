@@ -1,0 +1,9 @@
+dacfg_title=DA Konfiguration
+index_return=OpenSLP Konfiguration
+index_start=Starte OpenSLP
+index_stop=Stoppe OpenSLP
+index_title=OpenSLP Konfiguration
+index_version=OpenSLP Version $1
+netcfg_multicastTTL=Multicast TTL (0-255)
+netcfg_title=Netzwerkkonfiguration
+slp_stop=Stoppe OpenSLP
