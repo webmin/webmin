@@ -1457,6 +1457,11 @@ if ($method eq 'POST' &&
 	print DEBUG "handle_request: posted_data=$posted_data\n";
 	}
 
+# Reject CONNECT request, which isn't supported
+if ($method eq "CONNECT") {
+	&http_error(405, "Method $method is not supported");
+	}
+
 # work out accepted encodings
 %acceptenc = map { $_, 1 } split(/,/, $header{'accept-encoding'});
 
