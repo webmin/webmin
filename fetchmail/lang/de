@@ -95,6 +95,7 @@ poll_euser=Der entfernte Benutzername fehlt oder stimmt nicht
 poll_eusername=Benutzer existiert nicht!
 poll_evia=Fehlender oder ung&#252;ltiger E-Mailserver-Name
 poll_fetchall=Immer alle Nachrichten abholen?
+poll_foruser=F&#252;r Benutzer $1
 poll_header=E-Mailserver-Optionen
 poll_interface=Pr&#252;fe Zustand
 poll_interface_def=Pr&#252;fe immer
