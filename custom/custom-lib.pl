@@ -543,13 +543,13 @@ if ($a->{'type'} != 9 && $a->{'type'} != 12) {
 		# Quoted default
 		$v = $1;
 		}
-	elsif ($v =~ /^\// && $config{'params_file'}) {
-		# File to read
-		$v = &read_file_contents($v);
-		}
 	elsif ($v =~ /^(.*)\s*\|$/ && $config{'params_cmd'}) {
 		# Command to run
 		$v = &backquote_command("$1 2>/dev/null </dev/null");
+		}
+	elsif ($v =~ /^\// && $config{'params_file'}) {
+		# File to read
+		$v = &read_file_contents($v);
 		}
 	}
 if ($a->{'type'} == 0) {
