@@ -2301,11 +2301,11 @@ print &ui_columns_start([
 	$text{'shell'},
 	$lshow ? ( $text{'lastlogin'} ) : ( )
 	], 100, 0, \@tds);
-local %llogin;
+local $llogin;
 if ($lshow) {
-	local $l;
-	foreach $l (&list_last_logins()) {
-		$llogin{$l->[0]} ||= $l->[3];
+	$llogin = &get_recent_logins();
+	if (&foreign_check("mailboxes")) {
+		&foreign_require("mailboxes");
 		}
 	}
 local $u;
@@ -2320,7 +2320,17 @@ foreach $u (@$users) {
 	push(@cols, &html_escape($u->{'real'}));
 	push(@cols, &html_escape($u->{'home'}));
 	push(@cols, &html_escape($u->{'shell'}));
-	push(@cols, &html_escape($llogin{$u->{'user'}})) if ($lshow);
+	if ($lshow) {
+		# Show last login, in local format after Unix time conversion
+		my $ll = $llogin->{$u->{'user'}};
+		if (defined(&mailboxes::parse_mail_date)) {
+			my $tm = &mailboxes::parse_mail_date($ll);
+			if ($tm) {
+				$ll = &make_date($tm);
+				}
+			}
+		push(@cols, &html_escape($ll));
+		}
 	if ($u->{'noedit'}) {
 		print &ui_columns_row(\@cols, \@tds);
 		}
@@ -2440,6 +2450,25 @@ while(@last = &read_last_line(LAST)) {
 	}
 close(LAST);
 return @rv;
+}
+
+=head2 get_recent_logins()
+
+Returns a hash ref from username to most recent login time/date
+
+=cut
+sub get_recent_logins
+{
+if (defined(&os_most_recent_logins)) {
+	return &os_most_recent_logins();
+	}
+else {
+	my %rv;
+	foreach my $l (&list_last_logins()) {
+		$rv{$l->[0]} ||= $l->[3];
+		}
+	return \%rv;
+	}
 }
 
 =head2 user_link(&user)

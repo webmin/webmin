@@ -68,3 +68,4 @@ Added support for SHA512 format passwords.
 Fixed an XSS vulnerability that can be triggered if an attacker has the ability to change the real name of a Unix user.
 ---- Changes since 1.550 ----
 Updated all links to users and groups to be by name instead of by index, to avoid incorrect links if the passwd or group files are changed manually or by another Webmin session.
+The faster lastlog command is now used to get the most recent login time on Linux, for display in the user list.

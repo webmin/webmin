@@ -43,6 +43,29 @@ while(1) {
 	}
 }
 
+# os_most_recent_logins()
+# Returns hash ref from username to the most recent login as time string
+sub os_most_recent_logins
+{
+my %rv;
+open(LASTLOG, "LANG=C lastlog |");
+while(<LASTLOG>) {
+	s/\r|\n//g;
+	if (/^(\S+)/) {
+		my $user = $1;
+		if (/((\S+)\s+(\S+)\s+\d+\s+(\d+):(\d+):(\d+)\s+([\-\+]\d+)\s+(\d+))/) {
+			# Have a date to parse
+			$rv{$user} = $1;
+			}
+		else {
+			$rv{$user} = undef;
+			}
+		}
+	}
+close(LASTLOG);
+return \%rv;
+}
+
 # logged_in_users()
 # Returns a list of hashes containing details of logged-in users
 sub logged_in_users
