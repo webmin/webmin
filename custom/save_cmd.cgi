@@ -25,6 +25,8 @@ else {
 		}
 
 	# parse and validate inputs
+	$in{'cmd'} =~ s/\r//g;
+	$in{'cmd'} =~ s/\n/ /g;
 	$in{'cmd'} =~ /\S/ || &error($text{'save_ecmd'});
 	if ($in{'dir_def'}) {
 		$cmd->{'cmd'} = $in{'cmd'};
