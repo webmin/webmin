@@ -34,3 +34,4 @@ Added a new parameter type for selecting multiple items from a menu.
 Added an option for custom commands to have their output displayed without any Webmin UI, in a selectable MIME type.
 ---- Changes since 1.550 ----
 A default value for each custom command parameter can now be entered on the Edit Command form. Defaults can also be read from a file or shell command, if this behavior is enabled on the Module Config page. Thanks to Sart Cole for suggesting this feature.
+A command can now be configured to not display any output at all, and instead return to the module index after being run.

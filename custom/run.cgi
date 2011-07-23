@@ -34,13 +34,15 @@ else {
 @servers = &list_servers();
 
 # Run and display output
-if ($cmd->{'format'}) {
-	print "Content-type: ",$cmd->{'format'},"\n";
-	print "\n";
-	}
-else {
-	&ui_print_unbuffered_header($cmd->{'desc'}, $text{'run_title'}, "",
-				    -d "help" ? "run" : undef);
+if ($cmd->{'format'} ne 'redirect') {
+	if ($cmd->{'format'}) {
+		print "Content-type: ",$cmd->{'format'},"\n";
+		print "\n";
+		}
+	else {
+		&ui_print_unbuffered_header($cmd->{'desc'}, $text{'run_title'},
+					    "", -d "help" ? "run" : undef);
+		}
 	}
 
 &remote_error_setup(\&remote_custom_handler);
@@ -61,7 +63,8 @@ foreach $h (@hosts) {
 	if ($h == 0) {
 		# Run locally
 		($got, $out, $timeout) = &execute_custom_command(
-					$cmd, $env, $export, $str, 1);
+					$cmd, $env, $export, $str,
+					$cmd->{'format'} ne 'redirect');
 		}
 	else {
 		# Remote foreign call
@@ -78,7 +81,7 @@ foreach $h (@hosts) {
 		&additional_log('exec', undef, $displaystr);
 		}
 	if (!$remote_custom_error) {
-		print $out if ($h != 0);
+		print $out if ($h != 0 && $cmd->{'format'} ne 'redirect');
 		if (!$got && !$cmd->{'format'}) {
 			print "<i>$text{'run_noout'}</i>\n";
 			}
@@ -108,6 +111,9 @@ foreach $h (@hosts) {
 unlink(@unlink) if (@unlink);
 if (!$cmd->{'format'}) {
 	&ui_print_footer("", $text{'index_return'});
+	}
+elsif ($cmd->{'format'} eq 'redirect') {
+	&redirect("");
 	}
 
 sub remote_custom_handler

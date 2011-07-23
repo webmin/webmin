@@ -81,9 +81,15 @@ print &ui_table_row(&hlink($text{'edit_clear'},"clear"),
 	&ui_yesno_radio("clear", $cmd->{'clear'}));
 
 # Output format
+$fmode = $cmd->{'format'} eq 'redirect' ? 2 :
+	 $cmd->{'format'} ? 1 : 0;
 print &ui_table_row(&hlink($text{'edit_format'}, "format"),
-	&ui_opt_textbox("format", $cmd->{'format'}, 20, $text{'edit_format0'},
-			$text{'edit_format1'}));
+	&ui_radio("format_def", $fmode,
+		  [ [ 0, $text{'edit_format0'} ],
+		    [ 2, $text{'edit_format2'} ],
+		    [ 1, $text{'edit_format1'}." ".
+			 &ui_textbox("format",
+			    $fmode == 1 ? $cmd->{'format'} : "", 20) ] ]));
 
 # Show Webmin servers to run on
 @servers = &list_servers();

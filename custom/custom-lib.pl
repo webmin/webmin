@@ -345,7 +345,7 @@ for(my $i=0; $i<@a; $i++) {
 		push(@opts, [ $j, $text{"edit_type$j"} ]);
 		}
 	push(@cols, &ui_select("type_$i", $a[$i]->{'type'}, \@opts)." ".
-		    &ui_textbox("opts_$i", $a[$i]->{'opts'}, 20));
+		    &ui_textbox("opts_$i", $a[$i]->{'opts'}, 40));
 	if (!$noquote) {
 		push(@cols, &ui_yesno_radio("quote_$i",
 					    int($a[$i]->{'quote'})));
