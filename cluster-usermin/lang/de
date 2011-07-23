@@ -146,8 +146,12 @@ index_nohosts=Es wurden bisher keine Usermin-Server diesem Modul hinzugef&#252;g
 index_refresh=Aktualisiere Benutzer-, Gruppen- und Modullisten
 index_return=Serverliste
 index_sync=Synchronisieren
+index_tdesc=Beschreibung
 index_tedit=Design bearbeiten
+index_thost=Hostname
 index_title=Cluster Usermin-Server
+index_ttype=Betriebssystemtyp
+index_tver=Version
 index_update=Aktualisere Module
 index_updatedesc=Dieses Formular soll Ihnen helfen Module, die Sicherheitsl&#246;cher oder Bugs haben, ganz einfach aus <a href=http://www.webmin.com/updates.html>Usermin Updates</a> oder einer anderen Quelle heraus zu akualisieren.
 index_updateon=Zu aktualisierende Server
