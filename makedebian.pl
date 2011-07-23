@@ -26,17 +26,19 @@ $ucproduct = ucfirst($baseproduct);
 $tmp_dir = "/tmp/debian";
 $debian_dir = "$tmp_dir/DEBIAN";
 $control_file = "$debian_dir/control";
+$doc_dir = "$tmp_dir/usr/share/doc/$baseproduct";
+$copyright_file = "$doc_dir/copyright";
 $usr_dir = "$tmp_dir/usr/share/$baseproduct";
 $pam_dir = "$tmp_dir/etc/pam.d";
 $init_dir = "$tmp_dir/etc/init.d";
-@rc_dirs = ( "$tmp_dir/etc/rc2.d", "$tmp_dir/etc/rc3.d", "$tmp_dir/etc/rc5.d" );
 $pam_file = "$pam_dir/$baseproduct";
 $preinstall_file = "$debian_dir/preinst";
 $postinstall_file = "$debian_dir/postinst";
 $preuninstall_file = "$debian_dir/prerm";
 $postuninstall_file = "$debian_dir/postrm";
-$copyright_file = "$debian_dir/copyright";
+$debian_copyright_file = "$debian_dir/copyright";
 $changelog_file = "$debian_dir/changelog";
+$changelog_doc_file = "$doc_dir/changelog";
 $conffiles_file = "$debian_dir/conffiles";
 
 -d "tarballs" || die "makedebian.pl must be run in the $ucproduct root directory";
@@ -59,10 +61,8 @@ chmod(0755, $tmp_dir);
 mkdir($debian_dir, 0755);
 system("mkdir -p $pam_dir");
 system("mkdir -p $init_dir");
-foreach $d (@rc_dirs) {
-	system("mkdir -p $d");
-	}
 system("mkdir -p $usr_dir");
+system("mkdir -p $doc_dir");
 
 # Un-tar the package to the correct locations
 system("gunzip -c tarballs/$product-$ver.tar.gz | (cd $tmp_dir ; tar xf -)") &&
@@ -82,9 +82,7 @@ if ($product eq "webmin") {
 
 # Create init script
 system("mv $usr_dir/$baseproduct-init $init_dir/$baseproduct");
-foreach $d (@rc_dirs) {
-	system("ln -s ../init.d/$baseproduct $d/S99$baseproduct");
-	}
+chmod(0755, "$init_dir/$baseproduct");
 system("echo deb >$usr_dir/install-type");
 system("echo $product >$usr_dir/deb-name");
 system("cd $usr_dir && chmod -R og-w .");
@@ -94,6 +92,11 @@ if ($< == 0) {
 $size = int(`du -sk $tmp_dir`);
 
 # Create the control file
+@deps = ( "perl", "libnet-ssleay-perl", "openssl", "libauthen-pam-perl", "libpam-runtime", "libio-pty-perl", "apt-show-versions" );
+if ($baseproduct eq "webmin") {
+	push(@deps, "python");
+	}
+$deps = join(", ", @deps);
 open(CONTROL, ">$control_file");
 print CONTROL <<EOF;
 Package: $product
@@ -101,8 +104,8 @@ Version: $ver$rel
 Section: admin
 Priority: optional
 Architecture: all
-Depends: bash, perl, libnet-ssleay-perl, openssl, libauthen-pam-perl, libpam-runtime, libio-pty-perl, apt-show-versions
-Pre-Depends: bash, perl
+Depends: $deps
+Pre-Depends: perl
 Installed-Size: $size
 Maintainer: Jamie Cameron <jcameron\@webmin.com>
 Provides: $baseproduct
@@ -147,11 +150,14 @@ while(<BSD>) {
 	}
 close(BSD);
 close(COPY);
+system("cp $copyright_file $debian_copyright_file");
 
 # Create the config files file, for those we don't want to replace
 open(CONF, ">$conffiles_file");
 print CONF "/etc/pam.d/$baseproduct\n";
+print CONF "/etc/init.d/$baseproduct\n";
 close(CONF);
+chmod(0644, $conffiles_file);
 
 # Get the changes for each module and version
 $changes = { };
@@ -213,6 +219,7 @@ foreach $v (sort { $a <=> $b } (keys %$changes)) {
 	print CHANGELOG "\n";
 	}
 close(CHANGELOG);
+system("iconv -f ISO-8859-1 -t UTF-8 $changelog_file >$changelog_doc_file");
 
 # Get the temp-directory creator script
 open(TEMP, "maketemp.pl");
@@ -256,7 +263,7 @@ inetd=`grep "^inetd=" /etc/$baseproduct/miniserv.conf 2>/dev/null | sed -e 's/in
 if [ "\$1" = "upgrade" ]; then
 	# Upgrading the package, so stop the old webmin properly
 	if [ "\$inetd" != "1" ]; then
-		/etc/init.d/$baseproduct stop >/dev/null 2>&1 </dev/null
+		/etc/$baseproduct/stop >/dev/null 2>&1 </dev/null
 	fi
 fi
 cd /usr/share/$baseproduct
@@ -301,7 +308,7 @@ if [ "$inetd" != "1" ]; then
 	if [ -x "`which invoke-rc.d 2>/dev/null`" ]; then
 		invoke-rc.d $baseproduct start >/dev/null 2>&1 </dev/null
 	else
-		/etc/init.d/$baseproduct start >/dev/null 2>&1 </dev/null
+		/etc/$baseproduct/start >/dev/null 2>&1 </dev/null
 	fi
 fi
 if [ "$product" = "usermin" ]; then
@@ -356,7 +363,6 @@ if [ "\$1" != "upgrade" ]; then
 			echo "Running uninstall scripts .."
 			(cd /usr/share/$baseproduct ; WEBMIN_CONFIG=/etc/$baseproduct WEBMIN_VAR=/var/$baseproduct LANG= /usr/share/$baseproduct/run-uninstalls.pl)
 		fi
-		/etc/init.d/$baseproduct stop >/dev/null 2>&1 </dev/null
 		/etc/$baseproduct/stop >/dev/null 2>&1 </dev/null
 		/bin/true
 	fi
