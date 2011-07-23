@@ -453,7 +453,6 @@ else
 			echo "Webmin does not support being started at boot time on your system."
 		fi
 	fi
-	makeboot=$atboot
 
 	# Copy files to target directory
 	echo "***********************************************************************"

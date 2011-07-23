@@ -285,12 +285,13 @@ fi
 host=`hostname`
 ssl=1
 atboot=1
+makeboot=1
 nochown=1
 autothird=1
 noperlpath=1
 nouninstall=1
 nostart=1
-export config_dir var_dir perl autoos port login crypt host ssl nochown autothird noperlpath nouninstall nostart allow atboot
+export config_dir var_dir perl autoos port login crypt host ssl nochown autothird noperlpath nouninstall nostart allow atboot makeboot
 tempdir=/tmp/.webmin
 if [ ! -d \$tempdir ]; then
 	tempdir=/tmp
