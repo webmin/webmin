@@ -183,6 +183,8 @@ if (open(PARTS, "/proc/partitions")) {
 			}
 		}
 	close(PARTS);
+
+	# Sort IDE first
 	@devs = sort { ($b =~ /\/hd[a-z]+$/ ? 1 : 0) <=>
 		       ($a =~ /\/hd[a-z]+$/ ? 1 : 0) } @devs;
 	}
