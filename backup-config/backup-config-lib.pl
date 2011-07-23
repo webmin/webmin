@@ -68,7 +68,7 @@ at least the following keys :
 sub list_backups
 {
 my (@rv, $f);
-opendir(DIR, $backups_dir);
+opendir(DIR, $backups_dir) || return ();
 foreach $f (sort { $a cmp $b } readdir(DIR)) {
 	next if ($f !~ /^(\S+)\.backup$/);
 	push(@rv, &get_backup($1));
