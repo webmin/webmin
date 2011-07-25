@@ -14,7 +14,7 @@ $backup || die "Failed to find backup $ARGV[0]";
 
 # Run the pre-backup command, if any
 my $err;
-my $premsg;
+my $premsg = "";
 if ($backup->{'pre'} =~ /\S/) {
 	my $preout = &backquote_command("($backup->{'pre'}) 2>&1 </dev/null");
 	$premsg = &text('email_pre', $backup->{'pre'})."\n".
@@ -34,7 +34,7 @@ if (!$err) {
 	}
 
 # Run the post-backup command, if any
-my $postmsg;
+my $postmsg = "";
 if (!$err && $backup->{'post'} =~ /\S/) {
 	my $postout = &backquote_command("($backup->{'post'}) 2>&1 </dev/null");
 	$postmsg = "\n".
@@ -52,10 +52,10 @@ if (($err || $backup->{'emode'} == 0) && $backup->{'email'}) {
 	my $host = &get_system_hostname();
 	my $nice = &nice_dest($backup->{'dest'}, 1);
 	$nice =~ s/<[^>]+>//g;
-	$err =~ s/<[^>]+>//g;
 	my $msg;
 	my $subject;
 	if ($err) {
+		$err =~ s/<[^>]+>//g;
 		$msg = $premsg.
 		       $text{'email_mods'}."\n".
 		       $mlist.

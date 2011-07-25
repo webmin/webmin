@@ -18,9 +18,9 @@ our (%text, $module_config_directory, %config);
 &init_config();
 &foreign_require("cron", "cron-lib.pl");
 
-my $cron_cmd = "$module_config_directory/backup.pl";
-my $backups_dir = "$module_config_directory/backups";
-my $manifests_dir = "/tmp/backup-config-manifests";
+our $cron_cmd = "$module_config_directory/backup.pl";
+our $backups_dir = "$module_config_directory/backups";
+our $manifests_dir = "/tmp/backup-config-manifests";
 
 =head2 list_backup_modules
 
@@ -331,9 +331,11 @@ if ($_[4]) {
 
 # Add other files
 foreach my $f (@{$_[6]}) {
+	next if (!$f);
 	if (-d $f) {
 		# A directory .. recursively expand
 		foreach my $sf (&expand_directory($f)) {
+			next if (!$sf);
 			push(@files, $sf);
 			push(@{$manifestfiles{"other"}}, $sf);
 			}
@@ -360,7 +362,7 @@ foreach $m (@mods, "_others") {
 	}
 
 # Make sure we have something to do
-@files = grep { -e $_ } @files;
+@files = grep { $_ && -e $_ } @files;
 @files || (return $text{'backup_enone'});
 
 if (!$_[5]) {
@@ -669,11 +671,13 @@ if ($mode == 0) {
 	}
 elsif ($mode == 1) {
 	return &text($port ? 'nice_ftpp' : 'nice_ftp',
-		     "<tt>$server</tt>", "<tt>$path</tt>", "<tt>$port</tt>");
+		     "<tt>$server</tt>", "<tt>$path</tt>",
+		     $port ? "<tt>$port</tt>" : "");
 	}
 elsif ($mode == 2) {
 	return &text($port ? 'nice_sshp' : 'nice_ssh',
-		     "<tt>$server</tt>", "<tt>$path</tt>", "<tt>$port</tt>");
+		     "<tt>$server</tt>", "<tt>$path</tt>",
+		     $port ? "<tt>$port</tt>" : "");
 	}
 elsif ($mode == 3) {
 	return $text{'nice_upload'};
