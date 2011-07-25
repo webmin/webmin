@@ -129,9 +129,10 @@ while(1) {
 	}
 
 my $defport = $s->{'ssl'} ? 443 : 80;
-if ($header{'location'} =~ /^(http|https):\/\/$s->{'host'}:$s->{'port'}(.*)$/ ||
-    $header{'location'} =~ /^(http|https):\/\/$s->{'host'}(.*)/ &&
-    $s->{'port'} == $defport) {
+if ($header{'location'} &&
+    ($header{'location'} =~ /^(http|https):\/\/$s->{'host'}:$s->{'port'}(.*)$/||
+     $header{'location'} =~ /^(http|https):\/\/$s->{'host'}(.*)/ &&
+     $s->{'port'} == $defport)) {
 	# fix a redirect
 	&redirect("$url$2");
 	exit;

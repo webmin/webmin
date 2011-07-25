@@ -48,6 +48,10 @@ elsif ($in{'tall'} == 0) {
 	$to = &parse_time('to');
 	$to = $to ? $to + 24*60*60 - 1 : time();
 	}
+else {
+	# All time
+	$from = $to = 0;
+	}
 
 if ($in{'csv'}) {
 	print "Content-type: text/csv\n\n";
@@ -63,6 +67,7 @@ my %index;
 open(LOG, $webmin_logfile);
 while(my ($id, $idx) = each %index) {
 	my ($pos, $time, $user, $module, $sid) = split(/\s+/, $idx);
+	$time ||= 0;
 	if (($in{'uall'} == 1 ||
 	     $in{'uall'} == 0 && $in{'user'} eq $user ||
 	     $in{'uall'} == 3 && $in{'ouser'} eq $user ||
@@ -187,9 +192,9 @@ elsif (@match) {
 		my $desc = &get_action_description($act, 0);
 		my $anno = &get_annotation($act);
 		push(@cols, "<a href='view.cgi?id=$act->{'id'}".
-		      "&return=".&urlize($in{'return'}).
-		      "&returndesc=".&urlize($in{'returndesc'}).
-		      "&search=".&urlize($in).
+		      "&return=".&urlize($in{'return'} || "").
+		      "&returndesc=".&urlize($in{'returndesc'} || "").
+		      "&search=".&urlize($in || "").
 		      "'>$desc</a>");
 		if ($anno) {
 			$cols[$#cols] .= "&nbsp;<img src=images/star.gif>";

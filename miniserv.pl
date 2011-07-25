@@ -2231,7 +2231,7 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 		}
 	$ENV{"QUERY_STRING"} = $querystring;
 	$ENV{"MINISERV_CONFIG"} = $config_file;
-	$ENV{"HTTPS"} = "ON" if ($use_ssl || $config{'inetd_ssl'});
+	$ENV{"HTTPS"} = $use_ssl || $config{'inetd_ssl'} ? "ON" : "";
 	$ENV{"MINISERV_PID"} = $miniserv_main_pid;
 	$ENV{"SESSION_ID"} = $session_id if ($session_id);
 	$ENV{"LOCAL_USER"} = $localauth_user if ($localauth_user);

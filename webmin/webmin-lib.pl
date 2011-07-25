@@ -1751,7 +1751,7 @@ if (!$bf) {
 	}
 my @rv;
 my $fh;
-&open_readfile($fh, $bf);
+&open_readfile($fh, $bf) || return ();
 while(<$fh>) {
 	s/\r|\n//g;
 	my ($type, $who, $fails, $when) = split(/\s+/, $_);
