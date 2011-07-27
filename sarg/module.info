@@ -7,3 +7,4 @@ os_support=!windows
 desc_es=Generador de Informes de An&#225;lisis de Squid
 desc_cz=Generátor analýzy Squid
 desc_nl=Squid Analyze Rapport Generator
+desc_de=Squid Bericht Generator
