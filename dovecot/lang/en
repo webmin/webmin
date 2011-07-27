@@ -188,8 +188,11 @@ log_bootup=Enabled Dovecot at boot time
 log_bootdown=Disabled Dovecot at boot time
 log_manual=Manually edited config file $1
 
-manual_title=Edit Config File
-manual_desc=Editing Dovecot configuration file $1 ..
+manual_title=Edit Config Files
+manual_editsel=Edit Dovecot configuration file
 manual_err=Failed to save config file
 manual_edata=Nothing entered!
+manual_efile=Selected configuration file is not valid
+manual_ok=Edit
+
 __norefs=1
