@@ -43,6 +43,7 @@ index_dir=Ausf&#252;hren im Verzeichnis
 index_exec=Ausf&#252;hren am
 index_header=Neuer geplanter AT-Befehl
 index_id=Auftrags-ID
+index_mail=Verschicke E-Mail nach Abschluss?
 index_noat=Das $1 Kommando wurde auf Ihrem System nicht gefunden. Es ist entweder nicht installiert oder es ist f&#252;r Ihr System nicht verf&#252;gbar.
 index_return=Befehls-Liste
 index_time=Ausf&#252;hren um
