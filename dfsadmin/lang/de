@@ -1,18 +1,43 @@
-#        webmin-1.00     dfsadmin/lang/de
-#
-#        created: ??-??-????                by: ???
-#        last modified: 24-aug-2002          Rev.: 24-08-2002
-#        modified/translated by: Dieter Huerten
-#        for changes, completions, ...  mailto:dieter.huerten@telebel.de
-#
-# erzeugt: ??-??-????                durch: ???
-# letzte &Auml;nderung: 24.08.2002        Rev.: 24.08.2002
-# modifiziert/&uuml;bersetzt durch: Dieter H&uuml;rten
-# f&uuml;r &Auml;nderungen, Erg&auml;nzungen, etc. mailto:dieter.huerten@telebel.de
-#
-
-log_modify=NFS-Freigabe $1 ge&auml;ndert
-log_rename=NFS-Freigabe $1 zu $2 umbenannt
+acl_view=Kann NFS Freigaben editieren?
+delete_enone=Keine ausgew&#228;hlt
+delete_err=Fehlgeschlagen Freigaben zu l&#246;schen
+ecannot=Es ist Ihnen nicht erlaubt NFS Freigaben zu verwalten
+edit_aclok=Erlaube ACLs?
+edit_all=Alle Hosts
+edit_anon=Anonymer Benutzer
+edit_anon0=Nicht gesetzt
+edit_anon1=Kein Zugriff
+edit_des=Clients m&#252;ssen DES nutzen
+edit_desc=Beschreibung
+edit_dir=Verzeichnis
+edit_header1=Freigabendetails
+edit_header2=Freigabenoptionen
+edit_index=WebNFS Indexdatei
+edit_kerberos=Clients m&#252;ssen Kerberos benutzen?
+edit_listed=Aufgelistete Hosts..
+edit_none=Keine
+edit_public=WebNFS Freigabe?
+edit_ro=Nur Lesezugriff
+edit_root=Root Zugriff
+edit_rw=Lesen-schreib Zugriff
+edit_title1=Editiere Freigabe
+edit_title2=Erstelle Freigabe
+index_add=Beginne ein neues Verzeichnis freizugeben.
+index_apply=Wende &#196;nderung an
+index_clients=Clients
+index_delete=L&#246;sche ausgew&#228;hlte Freigaben
+index_dir=Verzeichnis
+index_everyone=Jeder
+index_return=Liste an Freigaben
+index_title=NFS Freigaben
+log_apply=&Auml;nderungen angewandt
 log_create=NFS-Freigabe $1 erstellt
 log_delete=NFS-Freigabe $1 gel&ouml;scht
-log_apply=&Auml;nderungen angewandt
+log_modify=NFS-Freigabe $1 ge&auml;ndert
+log_rename=NFS-Freigabe $1 zu $2 umbenannt
+restart_err=Fehlgeschlagen &#196;nderungen anzuwenden
+save_ealready=Das Verzeichnis '$1' wird bereits freigegeben
+save_edirectory='$1' ist kein g&#252;ltiger Verzeichnisname
+save_edirectory2=Das Verzeichnis '$1' existiert nicht
+save_ehost=Der Host '$1' existiert nicht
+save_err=Fehlgeschlagen Freigabe zu speichern
