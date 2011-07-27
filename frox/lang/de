@@ -70,7 +70,7 @@ edit_VirusScanner=Virenscannerprogramm
 edit_WorkingDir=Verzeichnis f&#252;r tempor&#228;re Dateien
 edit_efrom=Fehlende oder ung&#252;ltige Startportnummer
 edit_egroup=Fehlende oder ung&#252;ltige Unix-Benutzergruppe
-edit_erange=Der Startport mu&#223; kleiner als der Endport sein
+edit_erange=Der Startport muss kleiner als der Endport sein
 edit_eto=Fehlende oder ung&#252;ltige Endportnummer
 edit_euser=Fehlender oder ung&#252;ltiger Unix-Benutzer
 edit_from=Von
@@ -97,13 +97,13 @@ index_startdesc=Klicken Sie auf diesen Button, um den <i>Frox</i>-Serverprozess 
 index_stop=Stoppe Frox-Server
 index_stopdesc=Klicken Sie auf diesen Button, um den <i>Frox</i>-Serverprozess zu stoppen. Wenn Ihre Firewall richtig eingestellt ist, dann d&#252;rften FTP-Verbindungen, die &#252;ber diesen Server geroutet werden, nicht eher funktionieren, als bis <i>Frox</i> neu gestartet wurde.
 index_title=Frox FTP-Proxy
-iptables_desc=Damit <i>Frox</i> richtig arbeiten kann, mu&#223; Netzverkehr vom Port $1 Ihres Systems auf Port $2 umgeleitet werden, welcher von <i>Frox</i> abgeh&#246;rt wird. Sie k&#246;nnen dies als <i>IPtables</i>-Regel einstellen, vorrausgesetzt, da&#223; Sie dies mit dem <a href='$3'>Linux Firewall</a>-Modul tun.
+iptables_desc=Damit <i>Frox</i> richtig arbeiten kann, muss Netzverkehr vom Port $1 Ihres Systems auf Port $2 umgeleitet werden, welcher von <i>Frox</i> abgeh&#246;rt wird. Sie k&#246;nnen dies als <i>IPtables</i>-Regel einstellen, vorrausgesetzt, da&#223; Sie dies mit dem <a href='$3'>Linux Firewall</a>-Modul tun.
 iptables_disabled=Port-Umleitung ist abgeschaltet.
 iptables_eapply=Anwenden fehlgeschlagen : $1
 iptables_eiface=Fehlendes oder ung&#252;ltiges Netzwerk-Interface
 iptables_enabled=Port-Umleitung ist f&#252;r Clients des Netzwerkes $1 eingeschaltet
 iptables_enabled2=Port-Umleitung ist f&#252;r Clients auf dem Interface $1 aktiviert
-iptables_enet=Fehlende oder ung&#252;ltige Netzwerkadresse (mu&#223; z.B. 192.168.1.0/24 sein)
+iptables_enet=Fehlende oder ung&#252;ltige Netzwerkadresse (muss z.B. 192.168.1.0/24 sein)
 iptables_err=Konnte Port-Weiterleitung nicht speichern
 iptables_inst0=Die <i>IPtables</i>-Firewallbefehle, die f&#252;r die Einrichtung der Port-Umleitung ben&#246;tigt werden, scheinen auf Ihrem System nicht installiert zu sein. Bitte schauen Sie sich hierf&#252;r das <a href='$1'>Linux Firewall</a>-Modul n&#228;her an.
 iptables_inst1=Das <a href='$1'>Linux Firewall</a>-Modul scheint nicht vollst&#228;ndig auf Ihrem System initialisiert worden zu sein. Dieses Modul ben&#246;tigt jenes, um die <i>Frox</i>-Portumleitung einrichten zu k&#246;nnen.
