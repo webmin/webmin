@@ -764,7 +764,7 @@ sub get_miniserv_sockets
 {
 my @sockets;
 push(@sockets, [ $_[0]->{'bind'} || "*", $_[0]->{'port'} ]);
-foreach my $s (split(/\s+/, $_[0]->{'sockets'})) {
+foreach my $s (split(/\s+/, $_[0]->{'sockets'} || "")) {
 	if ($s =~ /^(\d+)$/) {
 		# Just listen on another port on the main IP
 		push(@sockets, [ $sockets[0]->[0], $s ]);
