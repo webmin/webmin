@@ -44,7 +44,7 @@ else {
 	# Use pvdisplay command
 	local $pv;
 	local $_;
-	open(DISPLAY, "pvdisplay |");
+	open(DISPLAY, "pvdisplay 2>/dev/null |");
 	while(<DISPLAY>) {
 		s/\r|\n//g;
 		if (/PV\s+Name\s+(.*)/i) {
@@ -88,7 +88,7 @@ return @rv;
 sub get_physical_volume_usage
 {
 local @rv;
-open(DISPLAY, "pvdisplay -m ".quotemeta($_[0]->{'device'})." |");
+open(DISPLAY, "pvdisplay -m ".quotemeta($_[0]->{'device'})." 2>/dev/null |");
 local $lastlen;
 while(<DISPLAY>) {
 	if (/Physical\s+extent\s+(\d+)\s+to\s+(\d+)/) {
@@ -179,7 +179,7 @@ if (-d $lvm_proc) {
 else {
 	# Parse output of vgdisplay
 	local $vg;
-	open(DISPLAY, "vgdisplay |");
+	open(DISPLAY, "vgdisplay 2>/dev/null |");
 	while(<DISPLAY>) {
 		s/\r|\n//g;
 		if (/VG\s+Name\s+(.*)/i) {
@@ -293,7 +293,7 @@ else {
 	local $lv;
 	local $_;
 	local ($vg) = grep { $_->{'name'} eq $_[0] } &list_volume_groups();
-	open(DISPLAY, "lvdisplay -m |");
+	open(DISPLAY, "lvdisplay -m 2>/dev/null |");
 	while(<DISPLAY>) {
 		s/\r|\n//g;
 		if (/LV\s+Name\s+(.*\/(\S+))/i) {
@@ -352,7 +352,7 @@ sub get_logical_volume_usage
 local @rv;
 if (&get_lvm_version() >= 2) {
 	# LVdisplay has new format in version 2
-	open(DISPLAY, "lvdisplay -m ".quotemeta($_[0]->{'device'})." |");
+	open(DISPLAY, "lvdisplay -m ".quotemeta($_[0]->{'device'})." 2>/dev/null |");
 	while(<DISPLAY>) {
 		if (/\s+Physical\s+volume\s+\/dev\/(\S+)/) {
 			push(@rv, [ $1, undef ]);
@@ -365,7 +365,7 @@ if (&get_lvm_version() >= 2) {
 	}
 else {
 	# Old version 1 format
-	open(DISPLAY, "lvdisplay -v ".quotemeta($_[0]->{'device'})." |");
+	open(DISPLAY, "lvdisplay -v ".quotemeta($_[0]->{'device'})." 2>/dev/null |");
 	local $started;
 	while(<DISPLAY>) {
 		if (/^\s*PV\s+Name/i) {
