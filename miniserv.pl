@@ -5270,18 +5270,23 @@ local @substrings = (
     "iPhone",		  # Apple iPhone KHTML browser
     "iPod",		  # iPod touch browser
     "MobileSafari",	  # HTTP client in iPhone
-    "Android",		  # gPhone
     "Opera Mini",	  # Opera Mini
     "HTC_P3700",	  # HTC mobile device
     "Pre/",		  # Palm Pre
     "webOS/",		  # Palm WebOS
     "Nintendo DS",	  # DSi / DSi-XL
     );
+local @regexps = (
+    "Android.*Mobile",	  # Android phone
+    );
 foreach my $p (@prefixes) {
 	return 1 if ($agent =~ /^\Q$p\E/);
 	}
 foreach my $s (@substrings, @mobile_agents) {
 	return 1 if ($agent =~ /\Q$s\E/);
+	}
+foreach my $s (@regexps) {
+	return 1 if ($agent =~ /$s/);
 	}
 return 0;
 }
