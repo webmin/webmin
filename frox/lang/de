@@ -97,7 +97,7 @@ index_startdesc=Klicken Sie auf diesen Button, um den <i>Frox</i>-Serverprozess 
 index_stop=Stoppe Frox-Server
 index_stopdesc=Klicken Sie auf diesen Button, um den <i>Frox</i>-Serverprozess zu stoppen. Wenn Ihre Firewall richtig eingestellt ist, dann d&#252;rften FTP-Verbindungen, die &#252;ber diesen Server geroutet werden, nicht eher funktionieren, als bis <i>Frox</i> neu gestartet wurde.
 index_title=Frox FTP-Proxy
-iptables_desc=Damit <i>Frox</i> richtig arbeiten kann, muss Netzverkehr vom Port $1 Ihres Systems auf Port $2 umgeleitet werden, welcher von <i>Frox</i> abgeh&#246;rt wird. Sie k&#246;nnen dies als <i>IPtables</i>-Regel einstellen, vorrausgesetzt, da&#223; Sie dies mit dem <a href='$3'>Linux Firewall</a>-Modul tun.
+iptables_desc=Damit <i>Frox</i> richtig arbeiten kann, muss Netzverkehr vom Port $1 Ihres Systems auf Port $2 umgeleitet werden, welcher von <i>Frox</i> abgeh&#246;rt wird. Sie k&#246;nnen dies als <i>IPtables</i>-Regel einstellen, vorausgesetzt, da&#223; Sie dies mit dem <a href='$3'>Linux Firewall</a>-Modul tun.
 iptables_disabled=Port-Umleitung ist abgeschaltet.
 iptables_eapply=Anwenden fehlgeschlagen : $1
 iptables_eiface=Fehlendes oder ung&#252;ltiges Netzwerk-Interface
