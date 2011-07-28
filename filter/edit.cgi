@@ -199,7 +199,8 @@ print &ui_table_row(
 # Send autoreply
 if ($amode == 6) {
 	$r = $filter->{'reply'};
-	$period = $r->{'replies'} && $r->{'period'} ? int($r->{'period'}/60) :
+	$period = $in{'new'} ? 60 :
+		  $r->{'replies'} && $r->{'period'} ? int($r->{'period'}/60) :
 		  $r->{'replies'} ? 60 : undef;
 	if ($r->{'autoreply_start'}) {
 		@stm = localtime($r->{'autoreply_start'});

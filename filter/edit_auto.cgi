@@ -45,8 +45,9 @@ print &ui_table_row($text{'auto_charset'},
 
 # Period
 if (!$config{'reply_force'}) {
-	$r = $filter->{'reply'};
-	$period = $r->{'replies'} && $r->{'period'} ? int($r->{'period'}/60) :
+	$r = $filter ? $filter->{'reply'} : undef;
+	$period = !$filter ? 60 :
+		  $r->{'replies'} && $r->{'period'} ? int($r->{'period'}/60) :
 		  $r->{'replies'} ? 60 : undef;
 	if ($config{'reply_min'}) {
 		# Forced on, with a minimum
