@@ -105,6 +105,8 @@ auto_header=Automatic email reply options
 auto_enabled=Automatic response enabled?
 auto_reply=Reply message
 auto_charset=Message character set
+auto_charsetdef=From current language
+auto_charsetother=Other character set
 auto_period=Minimum interval between replies
 auto_err=Failed to save automatic reply
 

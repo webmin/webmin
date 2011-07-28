@@ -25,13 +25,23 @@ print &ui_table_row($text{'auto_enabled'},
 
 # Message
 print &ui_table_row($text{'auto_reply'},
-	&ui_textarea("reply", $filter->{'reply'}->{'autotext'}, 5, 80,
+	&ui_textarea("reply",
+		     $filter ? $filter->{'reply'}->{'autotext'} : "", 5, 80,
 		     undef, $dis));
 
 # Character set
+$cs = $filter ? $filter->{'reply'}->{'charset'} :
+      &get_charset() eq $default_charset ? undef : &get_charset();
+$csmode = $cs eq &get_charset() ? 2 :
+	  $cs ? 0 : 1;
 print &ui_table_row($text{'auto_charset'},
-	&ui_opt_textbox("charset", $filter->{'reply'}->{'charset'}, 20,
-		       $text{'default'}." (iso-8859-1)"));
+	&ui_radio("charset_def", $csmode,
+		  [ [ 1, $text{'default'}." ($default_charset)" ],
+		    &get_charset() eq $default_charset ? ( ) :
+			( [ 2, $text{'auto_charsetdef'}.
+			       " (".&get_charset().")" ] ),
+	 	    [ 0, $text{'auto_charsetother'} ] ])." ".
+	&ui_textbox("charset", $csmode == 0 ? $cs : "", 20));
 
 # Period
 if (!$config{'reply_force'}) {

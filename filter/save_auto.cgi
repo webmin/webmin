@@ -63,8 +63,11 @@ elsif ($in{'enabled'}) {
 		}
 
 	# Save character set
-	if ($in{'charset_def'}) {
+	if ($in{'charset_def'} == 1) {
 		delete($filter->{'reply'}->{'charset'});
+		}
+	elsif ($in{'charset_def'} == 2) {
+		$filter->{'reply'}->{'charset'} = &get_charset();
 		}
 	else {
 		$in{'charset'} =~ /^[a-z0-9\.\-\_]+$/i ||

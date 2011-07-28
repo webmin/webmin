@@ -227,6 +227,8 @@ else {
 			  $text{'index_noperiod'})." ".$text{'index_mins'}.
 		      "</td> </tr>\n";
 	}
+$cs = !$in{'new'} ? $r->{'charset'} :
+      &get_charset() eq $default_charset ? undef : &get_charset();
 print &ui_table_row(
 	&ui_oneradio("amode", 6, $text{'edit_amode6'}, $amode == 6),
 	&ui_textarea("reply", $filter->{'reply'}->{'autotext'}, 5, 60)."<br>".
@@ -241,8 +243,8 @@ print &ui_table_row(
 			       "dend", "mend", "yend")." ".
             &date_chooser_button("dend", "mend", "yend")."</td> </tr>\n".
 	"<tr> <td><b>$text{'index_charset'}</b></td> ".
-	"<td>".&ui_opt_textbox("charset", $r->{'charset'}, 20,
-		       $text{'default'}." (iso-8859-1)")."</td> </tr>\n".
+	"<td>".&ui_opt_textbox("charset", $cs, 20,
+		       $text{'default'}." ($default_charset)")."</td> </tr>\n".
 	"</table>",
 	undef, \@tds);
 
