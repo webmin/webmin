@@ -81,7 +81,7 @@ while($f = readdir(CONF)) {
 		$b->{'file'} = "$net_scripts_dir/$f";
 		push(@rv, $b);
 		}
-	elsif ($f !~ /\.(bak|old)$/i || $f =~ /^ifcfg-([a-z0-9:\.]+)$/) {
+	elsif ($f !~ /\.(bak|old)$/i && $f =~ /^ifcfg-([a-z0-9:\.]+)$/) {
 		# Normal interface
 		&read_env_file("$net_scripts_dir/$f", \%conf);
 		$b->{'fullname'} = $conf{'DEVICE'} || $1;
