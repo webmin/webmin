@@ -4146,6 +4146,11 @@ if (!$main::webmin_script_type) {
 		}
 	}
 
+# If this is a cron job, suppress STDERR warnings
+if ($main::webmin_script_type eq 'cron') {
+	$SIG{__WARN__} = sub { };
+	}
+
 # If debugging is enabled, open the debug log
 if ($gconfig{'debug_enabled'} && !$main::opened_debug_log++) {
 	my $dlog = $gconfig{'debug_file'} || $main::default_debug_log_file;
