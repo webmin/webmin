@@ -1,23 +1,12 @@
-#        webmin-1.00     shell/lang/de
-#
-#        created: ??.??.????                by: ???
-#        last modified: 05-may-2002          Rev.: 08-08-2002
-#        modified/translated by: Dieter Huerten
-#        for changes, completions, ...  mailto:dieter.huerten@telebel.de
-#
-# erzeugt: ??.??.????                durch: ???
-# letzte &Auml;nderung: 05.05.2002        Rev.: 08.08.2002
-# modifiziert/&uuml;bersetzt durch: Dieter H&uuml;rten
-# f&uuml;r &Auml;nderungen, Erg&auml;nzungen, etc. mailto:dieter.huerten@telebel.de
-#
-
-index_title=Befehls-Shell
-
-index_ok=F&uuml;hre Befehl aus:
-index_history=Befehlshistorie
-index_clear=L&ouml;sche Verlauf
-index_desc=Geben Sie einen 'Unix-shell'-Befehl zur Ausf&uuml;hrung in das untenstehende Textfeld ein. Der <tt>cd</tt>-Befehl kann benutzt werden, um das Verzeichnis f&uuml;r nachfolgende Befehle zu &auml;ndern.
-index_pok=F&uuml;hre vorherigen Befehl aus
-
 acl_user=F&uuml;hre Befehl aus als Benutzer
 acl_user_def=Aktueller Webmin-Benutzer
+index_clear=L&ouml;sche Verlauf
+index_clearcmds=L&#246;sche Befehle
+index_desc=Geben Sie einen 'Unix-shell'-Befehl zur Ausf&uuml;hrung in das untenstehende Textfeld ein. Der <tt>cd</tt>-Befehl kann benutzt werden, um das Verzeichnis f&uuml;r nachfolgende Befehle zu &auml;ndern.
+index_edit=Editiere bisherige
+index_history=Befehlshistorie
+index_ok=F&uuml;hre Befehl aus:
+index_pok=F&uuml;hre vorherigen Befehl aus
+index_title=Befehls-Shell
+log_clear=Gel&#246;schter Befehls-Verlauf
+log_run=Ausgef&#252;hrter Befehl $1
