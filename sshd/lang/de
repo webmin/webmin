@@ -1,6 +1,6 @@
 access_all=Alle
 access_allowg=Erlaube nur Mitgliedern der Gruppe
-access_allowh=Erlaune nur Client Rechnern
+access_allowh=Erlaube nur Client Rechnern
 access_allowu=Erlaube nur Benutzern
 access_denyg=Verbiete Mitgliedern der Gruppen
 access_denyh=Verbiete Client Rechnern
@@ -79,7 +79,7 @@ hosts_all=Alle Rechner
 hosts_header=SSH Client Rechner
 hosts_none=Keine Client Rechner Optionen wurden festgelegt. Alle SSH Client Anmeldungen werden die Standardeinstellungen verwenden.
 hosts_return=Liste der Client Rechner
-hosts_title=Optionen f&uuml; Client Rechner
+hosts_title=Client Rechner Optionen
 index_apply=&Auml;nderungen anwenden
 index_applymsg=Durch Anklicken des Knopfes wird die gegenw&auml;rtige Konfiguration durch das Senden des SIGHUP Signals an den laufenden SSHD Prozess angewendet
 index_applymsg2=Klicke diesen Knopf um die aktuelle Konfiguration mit dem Befehl $1 anzuwenden.
