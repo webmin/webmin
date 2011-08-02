@@ -29,6 +29,20 @@ else {
 	&webmin::validate_key_cert($in{'key'}, $in{'cert_def'} ? undef : $in{'cert'});
 	$ipkey->{'key'} = $in{'key'};
 	$ipkey->{'cert'} = $in{'cert_def'} ? undef : $in{'cert'};
+	if ($in{'extracas_mode'} == 0) {
+		delete($ipkey->{'extracas'});
+		}
+	elsif ($in{'extracas_mode'} == 2) {
+		$ipkey->{'extracas'} = 'none';
+		}
+	else {
+		@files = split(/\s+/, $in{'extracas'});
+		@files || &error($text{'ipkey_eextracas'});
+		foreach $f (@files) {
+			-r $f || &error(&text('ipkey_eextraca', $f));
+			}
+		$ipkey->{'extracas'} = join(' ', @files);
+		}
 
 	# Save or add
 	if ($in{'new'}) {
