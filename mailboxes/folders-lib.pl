@@ -7,6 +7,7 @@ $cache_directory = $user_module_config_directory || $module_config_directory;
 
 @index_fields = ( "subject", "from", "to", "date", "size",
 		  "x-spam-status", "message-id" );
+$create_cid_count = 0;
 
 # mailbox_list_mails(start, end, &folder, [headersonly], [&error])
 # Returns an array whose size is that of the entire folder, with messages
@@ -2537,7 +2538,8 @@ sub create_cid
 {
 local ($args, $cidmap) = @_;
 if ($args =~ /attach=(\d+)/) {
-	$cidmap->{$1} = time().$$;
+	$create_cid_count++;
+	$cidmap->{$1} = time().$$.$create_cid_count;
 	return "cid:".$cidmap->{$1};
 	}
 else {
