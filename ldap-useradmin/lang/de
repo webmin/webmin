@@ -1,3 +1,4 @@
+batch_samba=Erstelle Samba-Benutzer f&#252;r neue Benutzer?
 conn_econn=Fehler beim Verbindungsaufbau zum LDAP-Server $1 port $2.
 conn_elogin=Fehler beim Binden an den LDAP-Server $1 port $2: $3
 gdel_group=L&ouml;sche LDAP-Gruppeneintrag ...
@@ -15,28 +16,32 @@ imap_elogin=Fehler beim Login auf dem IMAP-Server $1 als $2: $3
 index_cyrus=IMAP?
 index_econfig=Die LDAP NSS Konfigurationsdatei $1 konnte auf dem System nicht gefunden werden. Sie m&uuml;ssen die <a href='$2'>Modulkonfiguration</a> anpassen.
 index_econfig2=Die LDAP NSS Konfigurationsdatei $1 scheint die LDAP-<i>Server</i>-Konfigurationsdatei zu sein. Sie m&uuml;ssen die <a href='$2'>Modulkonfiguration</a> anpassen, um die NSS-<i>Client</i>-Konfigurationsdatei zu verwenden.
-index_egsearch=Fehler beim Suchen nach Gruppen unter $1: $2
+index_egsearch=Fehler beim Suchen nach Gruppen unter $1 : $2
 index_ehost=Wenn keine LDAP NSS Konfigurationsdatei in der <a href='$1'>Modulkonfiguration</a> gesetzt ist, m&uuml;ssen LDAP-Server, Login, Passwort, Base Nutzer DN und Base Gruppen DN definiert sein.
-index_eimap=$1. Ist Ihre <a href='$2'>Modulkonfiguration</a> korrekt?.
-index_eldap=$1. Ist Ihre <a href='$2'>Modulkonfiguration</a> korrekt?.
+index_eimap=$1. M&#246;glicherweise ist Ihre <a href='$2'>Modulkonfiguration</a> nicht korrekt.
+index_eldap=$1. Klicken Sie hier, um Ihre <a href='$2'>Modulkonfiguration</a> anzupassen.
 index_emd5=Dieses Modul ist <a href='$1'>konfiguriert</a> um MD5-Passwortverschl&uuml;sselung zu benutzen, aber das Perl-Modul $2 ist nicht installiert.
 index_eperl=Das Perl Module $1 das ben&ouml;tigt wird ist nicht installiert oder funktioniert nicht korrekt.
-index_eperl2=Die Fehlermeldung von Perl beim Laden des Modules war:
+index_eperl2=Die Fehlermeldung von Perl beim Laden des Modules war :
 index_eslappasswd=Dieses Modul ist <a href='$1'>konfiguriert</a> um MD5-Passwortverschl&uuml;sselung zu benutzen, aber das Programm <tt>$2</tt> das f&uuml;r die Verschl&uuml;sselung benutzt wird ist nicht installiert.
 index_eusearch=Suche nach Benutzern unter $1 fehlgeschlagen: $2
-index_gadd=Eine neue LDAP Gruppe hinzuf&uuml;gen.
+index_gadd=Eine neue LDAP-Gruppe hinzuf&uuml;gen.
 index_gnone=Es wurde keine LDAP-Gruppe unter $1 gefunden.
-index_return=Benutzerliste.
+index_greturn=Gruppen-Liste
+index_groups=LDAP-Gruppen
+index_return=Benutzerliste
 index_samba=Samba?
 index_title=LDAP Benutzer und Gruppen
-index_uadd=Einen neuen LDAP Benutzer hinzuf&uuml;gen.
+index_uadd=Einen neuen LDAP-Benutzer hinzuf&uuml;gen.
 index_unone=Es wurden keine LDAP-Benutzer unter $1 gefunden.
+index_users=LDAP-Benutzer
 raw_for=F&uuml;r $1
-raw_name=Attributname
+raw_name=Attribut-Name
 raw_title=LDAP-Attribute
 raw_value=Werte
 search_err=Suche nach $1 unter $2 fehlgeschlagen: $3
 udel_book=L&ouml;sche aus Adressbuch ..
+udel_failed=.. fehlgeschlagen! : $1
 udel_imap=L&ouml;sche IMAP-Ordner ...
 udel_pass=L&ouml;sche LDAP-Benutzereintrag ...
 udel_warnimap=Das vorhandene Mailpostfach wird beim L&ouml;schen des Stammverzeichnisses mit gel&ouml;scht!
@@ -44,16 +49,17 @@ uedit_alias=Mailaliase
 uedit_cap=Benutzer darf:
 uedit_classes=LDAP-Objektklassen
 uedit_cyrus=IMAP-Server Login?
-uedit_dn=LDAP DN des Nutzers
+uedit_dn=LDAP DN des Benutzers
 uedit_fields=Zus&auml;tzliche LDAP-Felder:
 uedit_firstname=Vorname
 uedit_lastname=Nachname
+uedit_quota=IMAP Quota
 uedit_raw=LDAP-Attribute
 uedit_return=Benutzer-Details
 uedit_samba=Samba Login?
 usave_eadd=Konnte Benutzer nicht zur LDAP-Datenbank hinzuf&uuml;gen: $1
 usave_ebook=Erstellen des Adressbucheintrags fehlgeschlagen: $1
-usave_ecyruspass=Entweder muss das normale Benutzerpasswort angegeben werden, oder die "Kein Kennwort"-Option muss aktiviert sein, wenn Imap eingeschaltet ist.
+usave_ecyruspass=Entweder muss das normale Benutzerpasswort angegeben werden, oder die "Kein Kennwort"-Option muss aktiviert sein, wenn IMAP eingeschaltet ist.
 usave_edelete=L&ouml;schen des Benutzers aus der LDAP Datenbank fehlgeschlagen: $1
 usave_egone=Benutzer existiert nicht mehr!
 usave_egroupmod=&Auml;ndern der Gruppe $1 fehlgeschlagen: $2
@@ -61,11 +67,11 @@ usave_eiacl=Konnte Admin nicht die erforderlichen Rechte geben.
 usave_eicreate=Erstellen des Benutzers fehlgeschlagen
 usave_eifolder=Konnte Ordner $1 nicht erstellen.
 usave_eimap=Benutzer konnte erfolgreich zur LDAP-Datenbank hinzugef&uuml;gt werden, aber ein IMAP-Fehler ist aufgetreten: $1: $2
-usave_eiquota=Setzen der IMAP-Quota fehlgeschlagen.
-usave_eisub=Konnte den Benutzer nicht zum Ordner $1 hinzuf&uuml;gen.
-usave_emod=&Auml;ndern der Benutzerdaten in der LDAP-Datenbank fehlgeschlagen: $1
-usave_emodbook=&Auml;ndern des Adressbucheintrags fehlgeschlagen: $1
-usave_emodbookdn=Umbenennen des Adressbucheintrags fehlgeschlagen: $1
-usave_emoddn=Umbennen des Benutzers fehlgeschlagen: $1
+usave_eiquota=Setzen der IMAP-Quota fehlgeschlagen
+usave_eisub=Konnte den Benutzer nicht zum Ordner $1 hinzuf&uuml;gen
+usave_emod=&Auml;ndern der Benutzerdaten in der LDAP-Datenbank fehlgeschlagen : $1
+usave_emodbook=&Auml;ndern des Adressbucheintrags fehlgeschlagen : $1
+usave_emodbookdn=Umbenennen des Adressbucheintrags fehlgeschlagen : $1
+usave_emoddn=Umbennen des Benutzers fehlgeschlagen : $1
 usave_esamba=Dieses Modul kann nicht benutzt werden, um das Passwort f&uuml;r einen Samba-Benutzer zu setzen, da das Samba-Modul nicht installiert ist.
-usave_ex86=Dieses Module kann nicht genutzt werden, um das Sambapasswort des Benutzers auf Nicht-Intel-Systemen zu &auml;ndern, da es von einem fuer x86-Systeme kompilierten Programm abh&auml;ngt.
+usave_ex86=Dieses Module kann nicht genutzt werden, um das Sambapasswort des Benutzers auf Nicht-Intel-Systemen zu &auml;ndern, da es von einem f&#252;r x86-Systeme kompilierten Programm abh&auml;ngt.
