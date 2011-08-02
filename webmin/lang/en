@@ -825,7 +825,7 @@ savekey_ecert2=Missing or invalid PEM format key and certificate
 savekey_echain=Missing or invalid PEM format chained certificate
 savekey_title=Upload Existing Key
 savekey_done2=The supplied SSL key has been saved in $1, and the certificate in $2.
-savekey_done=The supplied SSL key and certifcate have been saved in the file $1.
+savekey_done=The supplied SSL key and certificate have been saved in the file $1.
 savekey_done3=The supplied chained SSL certificate has been saved in the file $1.
 
 cache_title=Cached URLs
