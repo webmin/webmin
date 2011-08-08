@@ -19,7 +19,7 @@ our %access = &get_module_acl();
 our %access_mods = map { $_, 1 } split(/\s+/, $access{'mods'});
 our %access_users = map { $_, 1 } split(/\s+/, $access{'users'});
 our %parser_cache;
-our (%text, $module_config_directory, $root_directory);
+our (%text, $module_config_directory, $root_directory, $webmin_logfile);
 
 =head2 list_webmin_log([only-user], [only-module], [start-time, end-time])
 
