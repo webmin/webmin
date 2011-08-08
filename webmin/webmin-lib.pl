@@ -1898,7 +1898,7 @@ foreach my $minfo (&get_all_module_infos()) {
 	next if (defined($installed{$minfo->{'dir'}}) && !$force && !$mod);
 	next if (!&check_os_support($minfo));
 	$@ = undef;
-	my $o = $installed{$minfo->{'dir'}};
+	my $o = $installed{$minfo->{'dir'}} || 0;
 	my $pid = fork();
 	if (!$pid) {
 		# Check in a sub-process
