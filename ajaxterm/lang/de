@@ -1,0 +1,6 @@
+__norefs=1
+index_credits=Verwendet Code von <a href='$1' target=_new>Ajaxterm</a> von Antony Lesuisse.
+index_epython=Ajaxterm ben&#246;tigt Python zum ausf&#252;hren, aber der $1-Befehl wurde nicht auf Ihrem System gefunden.
+index_estart=Ajaxterm aktzeptiert keine Verbindungen auf Port $2 nach $1 Sekunden.
+index_popup=&#214;ffnet ein separates Fenster ..
+index_title=Text Login
