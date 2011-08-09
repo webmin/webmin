@@ -1334,7 +1334,7 @@ else { return " $_[2] $in{$_[0]}"; }
 	'fat32', 'Windows FAT32',
 	'ext2', 'Linux',
 	'HFS', 'MacOS HFS',
-	'linux-swap', 'Linx Swap',
+	'linux-swap', 'Linux Swap',
 	'NTFS', 'Windows NTFS',
 	'reiserfs', 'ReiserFS',
 	'ufs', 'FreeBSD UFS',
