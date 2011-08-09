@@ -745,19 +745,22 @@ if ($init_mode eq "init" || $init_mode eq "local" || $init_mode eq "upstart") {
 	if ($need_links && ($init_mode eq "init" ||
 			    $init_mode eq "upstart")) {
 		local $data = &read_file_contents($fn);
+		my $done = 0;
 		if (&has_command("chkconfig") && !$config{'no_chkconfig'} &&
 		    (@chk && $chk[3] || $data =~ /Default-Start:/i)) {
 			# Call the chkconfig command to link up
 			&system_logged("chkconfig --add ".quotemeta($_[0]));
 			&system_logged("chkconfig ".quotemeta($_[0])." on");
+			$done = 1;
 			}
 		elsif (&has_command("insserv") && !$config{'no_chkconfig'} &&
 		       $data =~ /Default-Start:/i) {
 			# Call the insserv command to enable
-			&system_logged("insserv ".quotemeta($_[0]).
+			my $ex = &system_logged("insserv ".quotemeta($_[0]).
 				       " >/dev/null 2>&1");
+			$done = 1 if (!$ex);
 			}
-		else {
+		if (!$done) {
 			# Just link up the init script
 			local $s;
 			foreach $s (@start) {
