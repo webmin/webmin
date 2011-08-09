@@ -6,8 +6,12 @@ require './lvm-lib.pl';
 &ReadParse();
 
 ($vg) = grep { $_->{'name'} eq $in{'vg'} } &list_volume_groups();
-($pv) = grep { $_->{'name'} eq $in{'pv'} } &list_physical_volumes($in{'vg'})
-	if ($in{'pv'});
+$vg || &error($text{'vg_egone'});
+if ($in{'pv'}) {
+	($pv) = grep { $_->{'name'} eq $in{'pv'} }
+		     &list_physical_volumes($in{'vg'});
+	$pv || &error($text{'pv_egone'});
+	}
 
 if ($in{'confirm'}) {
 	# Delete the physical volume

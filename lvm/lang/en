@@ -106,6 +106,7 @@ lv_free=Free percentage
 lv_freedisk=Free space
 lv_pvs=Physical volumes allocated
 lv_snapusage=Snapshot use percentage
+lv_egone=Logical volume no longer exists!
 
 mkfs_title=Create Filesystem
 mkfs_desc=This form allows you to build a new $2 ($1) filesystem on logical volume $3. All existing data will be erased.
@@ -151,6 +152,7 @@ pv_deleteok=Remove Volume
 pv_eother=Missing or invalid disk device
 pv_raid=RAID device $1
 pv_lvs=Allocation by logical volumes
+pv_egone=Physical volume no longer exists!
 
 vg_edit=Edit Volume Group
 vg_create=Create Volume Group
@@ -169,6 +171,7 @@ vg_cannot=This volume group cannot be deleted because it still has $1 logical vo
 vg_deleteok=Delete Now
 vg_ename=Missing or invalid volume group name
 vg_epesize=Missing or invalid allocation block size
+vg_egone=Volume group no longer exists!
 
 log_create_vg=Created volume group $1
 log_modify_vg=Modified volume group $1

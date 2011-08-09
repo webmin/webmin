@@ -5,11 +5,13 @@
 require './lvm-lib.pl';
 &ReadParse();
 ($vg) = grep { $_->{'name'} eq $in{'vg'} } &list_volume_groups();
+$vg || &error($text{'vg_egone'});
 
 $vgdesc = &text('pv_vg', $vg->{'name'});
 if ($in{'pv'}) {
 	@pvs = &list_physical_volumes($in{'vg'});
 	($pv) = grep { $_->{'name'} eq $in{'pv'} } @pvs;
+	$pv || &error($text{'pv_egone'});
 	&ui_print_header($vgdesc, $text{'pv_edit'}, "");
 	}
 else {

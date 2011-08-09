@@ -5,8 +5,10 @@
 require './lvm-lib.pl';
 &ReadParse();
 
-($vg) = grep { $_->{'name'} eq $in{'vg'} } &list_volume_groups()
-	if ($in{'vg'});
+if ($in{'vg'}) {
+	($vg) = grep { $_->{'name'} eq $in{'vg'} } &list_volume_groups();
+	$vg || &error($text{'vg_egone'});
+	}
 
 if ($in{'confirm'}) {
 	# Delete the volume group

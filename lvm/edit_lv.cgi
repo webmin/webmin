@@ -4,11 +4,13 @@
 require './lvm-lib.pl';
 &ReadParse();
 ($vg) = grep { $_->{'name'} eq $in{'vg'} } &list_volume_groups();
+$vg || &error($text{'vg_egone'});
 @lvs = &list_logical_volumes($in{'vg'});
 
 $vgdesc = &text('lv_vg', $vg->{'name'});
 if ($in{'lv'}) {
 	($lv) = grep { $_->{'name'} eq $in{'lv'} } @lvs;
+	$lv || &error($text{'lv_egone'});
 	&ui_print_header($vgdesc, $lv->{'is_snap'} ? $text{'lv_edit_snap'}
 				 : $text{'lv_edit'}, "");
 	@stat = &device_status($lv->{'device'});

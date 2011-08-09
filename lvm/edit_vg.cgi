@@ -7,6 +7,7 @@ require './lvm-lib.pl';
 
 if ($in{'vg'}) {
 	($vg) = grep { $_->{'name'} eq $in{'vg'} } &list_volume_groups();
+	$vg || &error($text{'vg_egone'});
 	&ui_print_header(undef, $text{'vg_edit'}, "");
 	}
 else {

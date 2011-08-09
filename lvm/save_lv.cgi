@@ -6,8 +6,13 @@ require './lvm-lib.pl';
 &ReadParse();
 
 ($vg) = grep { $_->{'name'} eq $in{'vg'} } &list_volume_groups();
-($lv) = grep { $_->{'name'} eq $in{'lv'} } &list_logical_volumes($in{'vg'})
-	if ($in{'lv'});
+$vg || &error($text{'vg_egone'});
+if ($in{'lv'}) {
+	($lv) = grep { $_->{'name'} eq $in{'lv'} }
+		     &list_logical_volumes($in{'vg'});
+	$lv || &error($text{'lv_egone'});
+	$oldlv = { %$lv };
+	}
 
 if ($in{'confirm'}) {
 	# Delete the logical volume
@@ -188,7 +193,7 @@ else {
 			$lv->{'perm'} = $in{'perm'};
 			$lv->{'alloc'} = $in{'alloc'};
 			$lv->{'readahead'} = $in{'readahead'};
-			$err = &change_logical_volume($lv);
+			$err = &change_logical_volume($lv, $oldlv);
 			&error("<pre>$err</pre>") if ($err);
 			}
 		if ($lv->{'name'} ne $in{'name'}) {
