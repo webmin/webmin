@@ -328,6 +328,9 @@ else {
 				$lv->{'snap_of'} = $1;
 				}
 			}
+		 elsif (/Read ahead sectors\s+(\d+)/) {
+                        $lv->{'readahead'} = $1;
+                        }
 		elsif (/Stripes\s+(\d+)/) {
 			$lv->{'stripes'} = $1;
 			}
@@ -404,6 +407,7 @@ if ($_[0]->{'is_snap'}) {
 else {
 	$cmd .= " -p ".quotemeta($_[0]->{'perm'});
 	$cmd .= " -C ".quotemeta($_[0]->{'alloc'});
+	$cmd .= " -r ".quotemeta($_[0]->{'readahead'});
 	$cmd .= " -i ".quotemeta($_[0]->{'stripe'})
 		if ($_[0]->{'stripe'});
 	$cmd .= " -I ".quotemeta($_[0]->{'stripesize'})
@@ -433,12 +437,16 @@ local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $? ? $out : undef;
 }
 
-# change_logical_volume(&lv)
+# change_logical_volume(&lv, [&old-lv])
 sub change_logical_volume
 {
 local $cmd = "lvchange ";
-$cmd .= " -p ".quotemeta($_[0]->{'perm'});
+$cmd .= " -p ".quotemeta($_[0]->{'perm'})
+	if (!$_[1] || $_[0]->{'perm'} ne $_[1]->{'perm'});
+$cmd .= " -r ".quotemeta($_[0]->{'readahead'});
+	if (!$_[1] || $_[0]->{'readahead'} ne $_[1]->{'readahead'});
 $cmd .= " -C ".quotemeta($_[0]->{'alloc'});
+	if (!$_[1] || $_[0]->{'alloc'} ne $_[1]->{'alloc'});
 $cmd .= " ".quotemeta($_[0]->{'device'});
 local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $? ? $out : undef;

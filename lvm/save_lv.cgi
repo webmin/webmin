@@ -99,6 +99,7 @@ else {
 			$lv->{'alloc'} = $in{'alloc'};
 			$lv->{'stripe'} = $in{'stripe'} if (!$in{'stripe_def'});
 			$lv->{'stripesize'} = $in{'stripesize'};
+			$lv->{'readahead'} = $in{'readahead'};
 			}
 		$err = &create_logical_volume($lv);
 		&error("<pre>$err</pre>") if ($err);
@@ -181,10 +182,12 @@ else {
 			$lv->{'size'} = $realsize;
 			}
 		if ($lv->{'perm'} ne $in{'perm'} ||
-		    $lv->{'alloc'} ne $in{'alloc'}) {
+		    $lv->{'alloc'} ne $in{'alloc'} ||
+		    $lv->{'readahead'} ne $in{'readahead'}) {
 			# Need to change options
 			$lv->{'perm'} = $in{'perm'};
 			$lv->{'alloc'} = $in{'alloc'};
+			$lv->{'readahead'} = $in{'readahead'};
 			$err = &change_logical_volume($lv);
 			&error("<pre>$err</pre>") if ($err);
 			}

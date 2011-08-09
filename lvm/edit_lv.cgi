@@ -190,6 +190,17 @@ elsif (!$lv->{'is_snap'}) {
 		}
 	}
 
+if (!$lv->{'is_snap'}) {
+        # Allow selection of readahead sectors
+        print &ui_table_row($text{'lv_readahead'},
+                &ui_select("readahead", $lv->{'readahead'},
+                           [ [ "auto", "Auto" ], [ 0, "None" ],
+                             map { [ $_, $_."" ] }
+                                 map { 2**$_ } ( 7 .. 16) ]));
+        }
+
+
+
 # Show free disk space
 if (@stat && $stat[2]) {
 	($total, $free) = &mount::disk_space($stat[1], $stat[0]);
