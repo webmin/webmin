@@ -56,5 +56,5 @@ else {
 &unlock_file($usermin_miniserv_config);
 &restart_usermin_miniserv();
 &webmin_log("ipkey");
-&redirect("edit_ssl.cgi");
+&redirect("edit_ssl.cgi?mode=ips");
 

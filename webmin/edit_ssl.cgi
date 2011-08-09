@@ -23,7 +23,7 @@ if ($@) {
 	}
 
 # Show tabs
-@tabs = map { [ $_, $text{'ssl_tab'.$_}, "edit_upgrade.cgi?mode=$_" ] }
+@tabs = map { [ $_, $text{'ssl_tab'.$_}, "edit_ssl.cgi?mode=$_" ] }
 	    ( "ssl", "current", "ips", "create", "upload" );
 print &ui_tabs_start(\@tabs, "mode", $in{'mode'} || $tabs[0]->[0], 1);
 

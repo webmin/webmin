@@ -132,6 +132,7 @@ ssl_desc1=The host on which Usermin is running appears to have the SSLeay Perl m
 ssl_desc2=Warning - only turn on SSL support if you have a browser that supports SSL (such as Netscape or IE), and there is no firewall blocking https requests between your browser and the Usermin host.
 ssl_newkey=This form can be used to create a new SSL key for your Usermin server.
 ssl_hole=Because you are currently using the default Usermin SSL key that everyone has access to, you should generate a new key immediately. Otherwise your SSL connection is not secure!
+ssl_savekey=This form allows you to upload an existing PEM format SSL private key and certificate for your Usermin server to use.
 
 ca_email=Email address
 ca_ou=Department
