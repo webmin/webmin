@@ -727,7 +727,7 @@ enogpg=GnuPG is not installed
 
 standard_failed=Failed to download modules list : $1
 standard_header=Standard Webmin modules
-standard_warn=Warning - you are not running the latest Webmin version $1, so thse modules will probably fail to install.
+standard_warn=Warning - you are not running the latest Webmin version $1, so these modules will probably fail to install.
 standard_eurl=Invalid standard modules URL
 
 third_failed=Failed to download modules list : $1
