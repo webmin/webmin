@@ -1,5 +1,8 @@
+batch_descafter3=In der <b>erstellen</b> und <b>&#228;ndern</b> Zeile, k&#246;nnen Sie optional zus&#228;tzliche Felder mit LDAP Attributen in <i>name</i>=<i>Wert</i>-Format anh&#228;ngen, die die neuen oder ge&#228;nderten Benutzern zugeordnet werden.
+batch_eattr=Ung&#252;ltiges LDAP Attribut in Zeile $1 : $2
 batch_samba=Erstelle Samba-Benutzer f&#252;r neue Benutzer?
 conn_econn=Fehler beim Verbindungsaufbau zum LDAP-Server $1 port $2.
+conn_eldap_host=Keine LDAP-Client-Konfigurations-Datei auf Ihrem System gefunden, so dass der LDAP-Server auf dem Modulkonfigurationsseite eingestellt werden muss
 conn_elogin=Fehler beim Binden an den LDAP-Server $1 port $2: $3
 gdel_group=L&ouml;sche LDAP-Gruppeneintrag ...
 gedit_cap=Gruppenressourcen
@@ -57,6 +60,7 @@ uedit_quota=IMAP Quota
 uedit_raw=LDAP-Attribute
 uedit_return=Benutzer-Details
 uedit_samba=Samba Login?
+uedit_unquota=Nicht &#228;ndern
 usave_eadd=Konnte Benutzer nicht zur LDAP-Datenbank hinzuf&uuml;gen: $1
 usave_ebook=Erstellen des Adressbucheintrags fehlgeschlagen: $1
 usave_ecyruspass=Entweder muss das normale Benutzerpasswort angegeben werden, oder die "Kein Kennwort"-Option muss aktiviert sein, wenn IMAP eingeschaltet ist.
@@ -73,5 +77,7 @@ usave_emod=&Auml;ndern der Benutzerdaten in der LDAP-Datenbank fehlgeschlagen : 
 usave_emodbook=&Auml;ndern des Adressbucheintrags fehlgeschlagen : $1
 usave_emodbookdn=Umbenennen des Adressbucheintrags fehlgeschlagen : $1
 usave_emoddn=Umbennen des Benutzers fehlgeschlagen : $1
+usave_equota=Fehlende oder ung&#252;ltige IMAP Quota
+usave_ereal=Fehlender realer Name
 usave_esamba=Dieses Modul kann nicht benutzt werden, um das Passwort f&uuml;r einen Samba-Benutzer zu setzen, da das Samba-Modul nicht installiert ist.
 usave_ex86=Dieses Module kann nicht genutzt werden, um das Sambapasswort des Benutzers auf Nicht-Intel-Systemen zu &auml;ndern, da es von einem f&#252;r x86-Systeme kompilierten Programm abh&auml;ngt.
