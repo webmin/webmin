@@ -443,9 +443,9 @@ sub change_logical_volume
 local $cmd = "lvchange ";
 $cmd .= " -p ".quotemeta($_[0]->{'perm'})
 	if (!$_[1] || $_[0]->{'perm'} ne $_[1]->{'perm'});
-$cmd .= " -r ".quotemeta($_[0]->{'readahead'});
+$cmd .= " -r ".quotemeta($_[0]->{'readahead'})
 	if (!$_[1] || $_[0]->{'readahead'} ne $_[1]->{'readahead'});
-$cmd .= " -C ".quotemeta($_[0]->{'alloc'});
+$cmd .= " -C ".quotemeta($_[0]->{'alloc'})
 	if (!$_[1] || $_[0]->{'alloc'} ne $_[1]->{'alloc'});
 $cmd .= " ".quotemeta($_[0]->{'device'});
 local $out = &backquote_logged("$cmd 2>&1 </dev/null");
