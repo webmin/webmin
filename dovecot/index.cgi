@@ -24,7 +24,7 @@ if (!&has_command($config{'dovecot'})) {
 	}
 
 # Check for config file
-if (!-r $config{'dovecot_config'}) {
+if (!&get_config_file()) {
 	print &ui_config_link('index_econf',
 		[ "<tt>$config{'dovecot_config'}</tt>", undef ]),"<p>\n";
 	&ui_print_footer("/", $text{'index'});

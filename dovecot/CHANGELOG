@@ -21,3 +21,5 @@ Added fields to the SSL page for an optional CA certificate file and private key
 Added support for Dovecot 2.0, which renames many configuration directives and splits up the config using include files.
 ---- Changes since 1.550 ----
 The Edit Config Files page can now be used to edit any of the Dovecot configuration files, for the case where there are many included configs.
+---- Changes since 1.560 ----
+Fixed support for CentOS 6 and related distributions, which move the Dovecot config to /etc/dovecot/dovecot.conf.

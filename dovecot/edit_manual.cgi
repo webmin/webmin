@@ -4,7 +4,7 @@
 require './dovecot-lib.pl';
 &ui_print_header(undef, $text{'manual_title'}, "");
 &ReadParse();
-$file = $in{'file'} || $config{'dovecot_config'};
+$file = $in{'file'} || &get_config_file();
 $conf = &get_config();
 @files = &unique(map { $_->{'file'} } @$conf);
 &indexof($file, @files) >= 0 || &error($text{'manual_efile'});

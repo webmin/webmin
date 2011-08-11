@@ -9,7 +9,7 @@ do 'dovecot-lib.pl';
 sub is_installed
 {
 return 0 if (!&has_command($config{'dovecot'}) ||
-	     !-r $config{'dovecot_config'});
+	     !&get_config_file());
 return $_[0] ? 2 : 1;
 }
 

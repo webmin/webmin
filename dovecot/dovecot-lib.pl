@@ -9,12 +9,22 @@ use WebminCore;
 @mail_envs = ( undef, "maildir:~/Maildir", "mbox:~/mail/:INBOX=/var/mail/%u",
 	       "maildir:~/Maildir:mbox:~/mail/" );
 
+# get_config_file()
+# Returns the full path to the first valid config file
+sub get_config_file
+{
+foreach my $f (split(/\s+/, $config{'dovecot_config'})) {
+	return $f if (-r $f);
+	}
+return undef;
+}
+
 # get_config()
 # Returns a list of dovecot config entries
 sub get_config
 {
 if (!scalar(@get_config_cache)) {
-	@get_config_cache = &read_config_file($config{'dovecot_config'});
+	@get_config_cache = &read_config_file(&get_config_file());
 	}
 return \@get_config_cache;
 }
@@ -201,7 +211,7 @@ elsif (!$dir && defined($value)) {
 		}
 	else {
 		# Need to put at end of main config
-		local $lref = &read_file_lines($config{'dovecot_config'});
+		local $lref = &read_file_lines(&get_config_file());
 		push(@$lref, $newline);
 		push(@$conf, { 'name' => $name,
 			       'value' => $value,
