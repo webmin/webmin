@@ -143,7 +143,7 @@ for($i=0; defined($path = $in{"$_[0]_path_$i"}); $i++) {
 	$url = $in{"$_[0]_url_${i}_def"} ? "!" : $in{"$_[0]_url_$i"};
 	next if (!$path);
 	$path =~ /^\/\S*$/ || &error(&text('mod_proxy_elurl', $path));
-	$url =~ /^(http|https):\/\/(\S+)$/ || $url eq "!" ||
+	$url =~ /^(http|https|balancer):\/\/(\S+)$/ || $url eq "!" ||
 		&error(&text('mod_proxy_erurl', $url));
 	if ($url eq "!") {
 		push(@notrv, "$path $url");
