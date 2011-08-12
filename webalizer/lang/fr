@@ -1,3 +1,4 @@
+__norefs=1
 acl_add=Peut ajouter des fichiers logs pour l'analyse?
 acl_any=Tous les utilisateurs
 acl_dir=Peut seulement &#233;diter et voir les rapports de logs sous
@@ -105,6 +106,7 @@ index_add=Ajouter un nouveau fichier logs pour l'analyse.
 index_econf=Le fichier de configuration de Webalizer $1 n'existe pas. Il n'est peut-&#234;tre pas install&#233;, ou la <a href='$2'>configuration du module</a> est incorrecte.
 index_egetversion=Impossible d'obtenir la version de Webalizer avec la commande $1 : $2
 index_empty=Vide
+index_enable=Planifier la s&#233;lection
 index_eversion=La commande $1 de Webalizer sur votre syst&#232;me indique la version $2, mais ce module supporte uniquement les versions $3 et sup&#233;rieures.
 index_ewebalizer=La commande d'analyse des fichiers de logs $1 n'existe pas. Elle n'est peut-&#234;tre pas install&#233;e, ou la <a href='$2'>configuration du module</a> est incorrecte.
 index_global=Editer les options globales
@@ -122,7 +124,9 @@ index_type1=Apache
 index_type2=Squid
 index_type3=FTP
 index_version=Version de Webalizer : $1
+index_version_webalizer=Webalizer version $1
 index_view=Voir..
+index_webalizer=Webalizer
 index_when=Oui, $1
 log_create_log=Cr&#233;ation du rapport pour $1
 log_delete_log=Suppression du rapport pour $1
