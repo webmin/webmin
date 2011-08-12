@@ -226,6 +226,8 @@ queue_return=mail queue
 queue_delete=Delete selected messages
 queue_all=Select all
 queue_invert=Invert selection
+queue_refresh=Refresh Mail Queue
+queue_refreshdesc=Reload this page to show the current state of the mail queue.
 
 qview_title=Queued Message
 qview_desc=From file $1

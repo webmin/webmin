@@ -65,6 +65,13 @@ if (@queue) {
 	print &select_invert_link("file", 0, $text{'queue_invert'}),"<p>\n";
 	print "<input type=submit value='$text{'queue_delete'}'><p>\n";
 	print "</form>\n";
+
+	print &ui_hr();
+	print &ui_buttons_start();
+	print &ui_buttons_row("list_queue.cgi?$in",
+			      $text{'queue_refresh'},
+			      $text{'queue_refreshdesc'});
+	print &ui_buttons_end();
 	}
 else {
 	print "<b>$text{'queue_none'}</b> <p>\n";
