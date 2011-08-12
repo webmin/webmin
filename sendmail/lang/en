@@ -433,6 +433,8 @@ mailq_flushquar=Flush Quarantined Queue
 mailq_flushquardesc=Click this button to force the delivery of only quarantined messages in the queue.
 mailq_search=Find queued messages where
 mailq_quar=Quarantined
+mailq_refresh=Refresh Mail Queue
+mailq_refreshdesc=Reload this page to show the current state of the mail queue.
 
 flushq_title=Flush Queue
 flushq_desc=Forcing the attempted delivery of all messages with the command $1 ..

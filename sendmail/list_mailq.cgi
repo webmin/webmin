@@ -101,12 +101,18 @@ if (@qfiles) {
 	if ($access{'flushq'}) {
 		print &ui_hr();
 		print &ui_buttons_start();
-		print &ui_buttons_row("flushq.cgi", $text{'mailq_flush'}, $text{'mailq_flushdesc'});
+		print &ui_buttons_row("flushq.cgi",
+				      $text{'mailq_flush'},
+				      $text{'mailq_flushdesc'});
 		if ($quarcount) {
-			print &ui_buttons_row("flushq.cgi", $text{'mailq_flushquar'},
+			print &ui_buttons_row("flushq.cgi",
+					      $text{'mailq_flushquar'},
 					      $text{'mailq_flushquardesc'},
 					      &ui_hidden("quar", 1));
 			}
+		print &ui_buttons_row("list_mailq.cgi?$in",
+				      $text{'mailq_refresh'},
+				      $text{'mailq_refreshdesc'});
 		print &ui_buttons_end();
 		}
 	}
