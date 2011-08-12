@@ -262,6 +262,9 @@ users_delete=Delete Selected
 users_derr=Failed to delete users
 users_enone=No users selected
 users_ssl=Certificate
+users_dtitle=Delete User Permissions
+users_drusure=Are you sure you want to delete the $1 selected MySQL user permissions?
+users_dok=Delete Users
 
 user_title1=Create User
 user_title2=Edit User
@@ -343,6 +346,9 @@ dbs_none=None
 dbs_return=database permissions
 dbs_derr=Failed to delete database permissions
 dbs_enone=No databases selected
+dbs_dtitle=Delete Database Permissions
+dbs_drusure=Are you sure you want to delete the $1 selected MySQL database permissions?
+dbs_dok=Delete Permissions
 
 db_title1=Create Database Permissions
 db_title2=Edit Database Permissions
@@ -404,6 +410,9 @@ hosts_add=Create new host permissions.
 hosts_empty=No host permissions defined
 hosts_derr=Failed to delete host permissions
 hosts_enone=No hosts selected
+hosts_dtitle=Delete Host Permissions
+hosts_drusure=Are you sure you want to delete the $1 selected MySQL host permissions?
+hosts_dok=Delete Permissions
 
 host_title1=Create Host Permissions
 host_title2=Edit Host Permissions
@@ -497,6 +506,9 @@ tprivs_return=table permissions
 tprivs_none=None
 tprivs_derr=Failed to delete table permissions
 tprivs_enone=No tables selected
+tprivs_dtitle=Delete Table Permissions
+tprivs_drusure=Are you sure you want to delete the $1 selected MySQL table permissions?
+tprivs_dok=Delete Permissions
 
 tpriv_title1=Create Table Permissions
 tpriv_title2=Edit Table Permissions
@@ -531,6 +543,9 @@ cprivs_return=field permissions
 cprivs_none=None
 cprivs_derr=Failed to delete field permissions
 cprivs_enone=No fields selected
+cprivs_dtitle=Delete Column Permissions
+cprivs_drusure=Are you sure you want to delete the $1 selected MySQL column permissions?
+cprivs_dok=Delete Permissions
 
 cpriv_title1=Create Field Permissions
 cpriv_title2=Edit Field Permissions

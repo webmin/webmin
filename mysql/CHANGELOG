@@ -95,3 +95,5 @@ The default MySQL table type can now be set on the MySQL Server Configuration pa
 ---- Changes since 1.510 ----
 Added greater than / less than selectors to the table data search form.
 The SSL / X509 authentication type for a user can be set on the Edit User page.
+---- Changes since 1.560 ----
+Added confirmation before deleting multiple user, host, database, table and column permissions.
