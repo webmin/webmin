@@ -2923,7 +2923,8 @@ foreach my $folder (@$folders) {
 # Returns a short text preview of a message body
 sub mail_preview
 {
-local ($textbody, $htmlbody, $body) = &find_body($_[0], 0);
+local ($mail) = @_;
+local ($textbody, $htmlbody, $body) = &find_body($mail, 0);
 local $data = $body->{'data'};
 $data =~ s/\r?\n/ /g;
 $data = substr($data, 0, 100);
