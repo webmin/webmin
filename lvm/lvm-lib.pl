@@ -407,7 +407,8 @@ if ($_[0]->{'is_snap'}) {
 else {
 	$cmd .= " -p ".quotemeta($_[0]->{'perm'});
 	$cmd .= " -C ".quotemeta($_[0]->{'alloc'});
-	$cmd .= " -r ".quotemeta($_[0]->{'readahead'});
+	$cmd .= " -r ".quotemeta($_[0]->{'readahead'})
+		if ($_[0]->{'readahead'});
 	$cmd .= " -i ".quotemeta($_[0]->{'stripe'})
 		if ($_[0]->{'stripe'});
 	$cmd .= " -I ".quotemeta($_[0]->{'stripesize'})
