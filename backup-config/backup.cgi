@@ -23,7 +23,6 @@ if ($mode != 4) {
 	print &text('backup_doing', &nice_dest($dest, 1)),"<p>\n";
 	my $size;
 	my @files;
-	my @mods;
 	$err = &execute_backup(\@mods, $dest, \$size, \@files,
 			       $configfile, $nofiles,
 			       [ split(/\t+/, $others) ]);
