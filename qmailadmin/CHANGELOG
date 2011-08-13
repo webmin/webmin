@@ -14,3 +14,5 @@ Autoreply messages starting with <html> or <body> will now be sent using the tex
 t/html MIME type.
 ---- Changes since 1.510 ----
 Added spam checking to the autoreply script, if spamassassin is installed.
+---- Changes since 1.560 ----
+Added a refresh button to the mail queue.

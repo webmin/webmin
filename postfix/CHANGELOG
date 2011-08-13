@@ -80,3 +80,5 @@ Added spam checking to the autoreply script, if spamassassin is installed.
 Fixed a bug that prevented editing of server processes with the same name but different types, and add detection of clashes for servers with the same name and type.
 Added an option to the SMTP Authentication page for setting the login and password for Postfix to use when sending email via another mail server.
 Destination email addresses that are allowed for relaying can now be configured on the SMTP Server Options page. This makes use of the Postfix relay_recipient_maps directive.
+---- Changes since 1.560 ----
+Added a refresh button to the mail queue.
