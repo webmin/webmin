@@ -20,6 +20,9 @@ elsif ($type eq "chain") {
 elsif ($type eq "host" || $type eq "group") {
 	return &text("log_${action}_${type}", "<tt>$object</tt>");
 	}
+elsif ($action eq "openports") {
+	return &text('log_openports', join(" ", split(/\0/, $p->{'ports'})));
+	}
 else {
 	return $text{"log_$action"};
 	}

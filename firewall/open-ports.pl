@@ -114,9 +114,9 @@ PORT: foreach $p (@ARGV) {
 if (@added) {
 	# Added some rules .. save them
 	&run_before_command();
-	&unlock_file($iptables_save_file);
-	&save_table($filter);
 	&lock_file($iptables_save_file);
+	&save_table($filter);
+	&unlock_file($iptables_save_file);
 	&run_after_command();
 	&copy_to_cluster();
 	print STDERR "Opened ports ",join(" ", @added),"\n";
@@ -133,10 +133,10 @@ if (@added) {
 			print "Applied configuration successfully\n";
 			}
 		}
-	&webmin_log("openports");
+	&webmin_log("openports", undef, undef, { 'ports' => \@added });
 	exit($ex);
 	}
 else {
-	print STDERR "Add ports are already open\n";
+	print STDERR "All ports are already open\n";
 	exit(0);
 	}
