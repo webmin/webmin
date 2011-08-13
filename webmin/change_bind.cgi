@@ -29,6 +29,7 @@ for($i=0; defined($in{"ip_def_$i"}); $i++) {
 		$port = "*";
 		}
 	push(@sockets, [ $ip, $port ]);
+	push(@ports, $port) if ($port && $port ne "*");
 	}
 @sockets || &error($text{'bind_enone'});
 $in{'listen_def'} || $in{'listen'} =~ /^\d+$/ || &error($text{'bind_elisten'});
@@ -84,8 +85,25 @@ if ($rv) {
 	&system_logged("$config_directory/start >/dev/null 2>&1 </dev/null");
 	&error(&text('bind_erestart', $out));
 	}
+
+# If possible, open the new ports
+if (&foreign_check("firewall") && $in{'firewall'}) {
+	@oldports = split(/\s+/, $in{'oldports'});
+	@newports = &unique(grep { &indexof($_, @oldports) < 0 } @ports);
+	if (@newports) {
+		&clean_environment();
+		$ENV{'WEBMIN_CONFIG'} = $config_directory;
+		&system_logged(&module_root_directory("firewall").
+			       "/open-ports.pl ".
+			       join(" ", map { $_.":".($_+10) } @newports).
+			       " >/dev/null 2>&1");
+		&reset_environment();
+		}
+	}
+
 &webmin_log("bind", undef, undef, \%in);
 
+# Work out redirect URL
 if ($miniserv{'musthost'}) { $miniserv{'musthost'}; }
 elsif ($miniserv{'bind'}) { $url = $miniserv{'bind'}; }
 else { $url = $ENV{'SERVER_NAME'}; }

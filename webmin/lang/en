@@ -38,6 +38,7 @@ bind_title=Ports and Addresses
 bind_desc2=This form can be used to change the port number that Webmin listens on, or have it listen on only a single IP address on your system. You can also configure it to accept connections on multiple ports, or to listen on several IP addresses. Note - your web browser may prompt you to log in again after changing the port or binding address.
 bind_header=IP addresses and ports
 bind_sockets=Listen on IPs and ports
+bind_firewall=Open new ports on firewall?
 bind_sip=Bind to IP address
 bind_sport=Listen on port
 bind_sip1=Any address

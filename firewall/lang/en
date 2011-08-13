@@ -286,6 +286,7 @@ log_add_host=Added cluster server $1
 log_add_group=Added cluster servers from group $1
 log_delete_host=Removed cluster server $1
 log_delete_group=Removed $1 cluster servers
+log_openports=Opened firewall ports $1
 
 setup_eiface=No external network interface entered
 setup_ecannot=You are not allowed to setup the firewall
