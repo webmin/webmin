@@ -714,6 +714,7 @@ Returns HTML for selecting what gets included in a backup.
 sub show_backup_what
 {
 my ($name, $webmin, $nofiles, $others) = @_;
+$others ||= "";
 return &ui_checkbox($name."_webmin", 1, $text{'edit_webmin'}, $webmin)."\n".
        &ui_checkbox($name."_nofiles", 1, $text{'edit_nofiles'}, !$nofiles)."\n".
        &ui_checkbox($name."_other", 1, $text{'edit_other'}, $others)."<br>".
