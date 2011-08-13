@@ -1869,7 +1869,8 @@ my ($nowait) = @_;
 return undef if (&is_readonly_mode());
 my %miniserv;
 &get_miniserv_config(\%miniserv) || return;
-if ($main::webmin_script_type eq 'web' && !$ENV{"MINISERV_CONFIG"}) {
+if ($main::webmin_script_type eq 'web' && !$ENV{"MINISERV_CONFIG"} &&
+    !$ENV{'MINISERV_PID'}) {
 	# Running under some web server other than miniserv, so do nothing
 	return;
 	}
@@ -1949,7 +1950,8 @@ sub reload_miniserv
 return undef if (&is_readonly_mode());
 my %miniserv;
 &get_miniserv_config(\%miniserv) || return;
-if ($main::webmin_script_type eq 'web' && !$ENV{"MINISERV_CONFIG"}) {
+if ($main::webmin_script_type eq 'web' && !$ENV{"MINISERV_CONFIG"} &&
+    !$ENV{'MINISERV_PID'}) {
 	# Running under some web server other than miniserv, so do nothing
 	return;
 	}
