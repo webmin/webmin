@@ -308,8 +308,12 @@ sub start_dovecot
 {
 local $script = &get_initscript();
 local $cmd = $script ? "$script start" : $config{'dovecot'};
-local $out = &backquote_logged("$cmd 2>&1 </dev/null");
-return $? ? "<pre>$out</pre>" : undef;
+local $temp = &transname();
+&system_logged("$cmd >$temp 2>&1 </dev/null &");
+sleep(1);
+local $out = &read_file_contents($temp);
+&unlink_file($temp);
+return &is_dovecot_running() ? undef : "<pre>$out</pre>";
 }
 
 # apply_configration()
