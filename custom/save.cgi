@@ -26,7 +26,7 @@ if ($edit->{'envs'} || @{$edit->{'args'}}) {
 
 # Run the before-command
 if ($edit->{'before'}) {
-	&system_logged("$edit->{'before'} >/dev/null 2>&1 </dev/null");
+	&system_logged("($edit->{'before'}) >/dev/null 2>&1 </dev/null");
 	}
 
 # Save the file
@@ -48,7 +48,7 @@ if ($edit->{'perms'}) {
 
 # Run the after-command
 if ($edit->{'after'}) {
-	&system_logged("$edit->{'after'} >/dev/null 2>&1 </dev/null");
+	&system_logged("($edit->{'after'}) >/dev/null 2>&1 </dev/null");
 	}
 
 &webmin_log("save", "edit", $cmd->{'id'}, $edit);

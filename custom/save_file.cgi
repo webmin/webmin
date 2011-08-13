@@ -48,6 +48,7 @@ else {
 		$in{'perms'} =~ /^[0-7]{3}$/ || &error($text{'file_eperms'});
 		$edit->{'perms'} = $in{'perms'};
 		}
+	$edit->{'beforeedit'} = $in{'beforeedit'};
 	$edit->{'before'} = $in{'before'};
 	$edit->{'after'} = $in{'after'};
 	$edit->{'order'} = $in{'order_def'} ? 0 : int($in{'order'});

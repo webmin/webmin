@@ -50,6 +50,7 @@ while($f = readdir(DIR)) {
 		$cmd{'order'} = int($cmd{'order'});
 		chop($cmd{'usermin'} = <FILE>);
 		chop($cmd{'envs'} = <FILE>);
+		chop($cmd{'beforeedit'} = <FILE>);
 		}
 	elsif ($f =~ /^(\d+)\.sql$/) {
 		# Read SQL file
@@ -150,6 +151,7 @@ if ($c->{'edit'}) {
 	&print_tempfile(FILE, $c->{'order'},"\n");
 	&print_tempfile(FILE, $c->{'usermin'},"\n");
 	&print_tempfile(FILE, $c->{'envs'},"\n");
+	&print_tempfile(FILE, $c->{'beforeedit'},"\n");
 	}
 elsif ($c->{'sql'}) {
 	# Save an SQL command

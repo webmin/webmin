@@ -53,6 +53,8 @@ print &ui_table_row(&hlink($text{'file_perms'}, "perms"),
 			$text{'file_set'}));
 
 # Commands to run before and after
+print &ui_table_row(&hlink($text{'file_beforeedit'}, "beforeedit"),
+	&ui_textbox("beforeedit", $edit->{'beforeedit'}, 60));
 print &ui_table_row(&hlink($text{'file_before'}, "before"),
 	&ui_textbox("before", $edit->{'before'}, 60));
 print &ui_table_row(&hlink($text{'file_after'}, "after"),

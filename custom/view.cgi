@@ -24,6 +24,11 @@ if ($edit->{'envs'} || @{$edit->{'args'}}) {
 	chop($file = `echo "$file"`);
 	}
 
+# Run any before-edit command
+if ($edit->{'beforeedit'}) {
+	&system_logged("($edit->{'beforeedit'}) >/dev/null 2>&1 </dev/null");
+	}
+
 # Show the editor form
 &ui_print_header(undef, $text{'view_title'}, "");
 

@@ -115,6 +115,7 @@ file_group=Group
 file_leave=Leave as is
 file_perms=File permissions
 file_set=Set to octal
+file_beforeedit=Command to run before editing
 file_before=Command to run before saving
 file_after=Command to run after saving
 file_err=Failed to save file editor
