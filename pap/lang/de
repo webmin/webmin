@@ -1,56 +1,93 @@
-#        webmin-0.099     pap/lang/de
-#
-#        created: 09-mar-2001                by: Dieter Huerten
-#        last modified: 05-jul-2001          Rev.: 14-07-2002
-#        modified/translated by: Dieter Huerten
-#        for changes, completions, ...  mailto:dieter.huerten@telebel.de
-#
-# erzeugt: 09.03.2001                  durch: Dieter H&uuml;rten
-# letzte &Auml;nderung: 05.07.2001          Rev.: 14.07.2002
-# modifiziert/&uuml;bersetzt durch: Dieter H&uuml;rten
-# f&uuml;r &Auml;nderungen, Erg&auml;nzungen, etc. mailto:dieter.huerten@telebel.de
-#
-
-index_enopfile=Die PPP-Pa&szlig;wortdatei '$1' existiert nicht auf Ihrem System. M&ouml;glicherweise ist PPP nicht installiert.
-index_table=PPP-Konten (Einwahl und Anwahl)
-index_user=Benutzername
-index_server=Server &nbsp;
-index_uany=Beliebig
-index_sany=Beliebig
+acl_pages=Verf&#252;gbare Seiten
+delete_enone=Nichts ausgew&#228;hlt
+dialin_ad=Aktion
+dialin_all=Alle Nummern
+dialin_allow=Erkauben
+dialin_deny=Verbiete
+dialin_move=Schiebe
+dialin_none=Unbekannte Nummern
+dialin_number=Telefonnummer
+edit_secret_aany=Erlaube alle
+edit_secret_acc=PPP-Konten
+edit_secret_alist=Erlaube angezeigte...
+edit_secret_anone=Erlaube keine
+edit_secret_ctitle=PPP-Konto anlegen
+edit_secret_del=L&ouml;schen
+edit_secret_etitle=PPP-Konto bearbeiten
+edit_secret_ffile=Von Datei
+edit_secret_leave=Unver&auml;ndert lassen
+edit_secret_none=Kein Pa&szlig;wort
+edit_secret_pass=Pa&szlig;wort
+edit_secret_return=Kontenliste
+edit_secret_sany=Beliebig
+edit_secret_save=Speichern
+edit_secret_serv=Server &nbsp;
+edit_secret_setto=Setze auf
+edit_secret_uany=Beliebig
+edit_secret_user=Benutzername
+edit_secret_vaddr=G&uuml;ltige Adresse
+index_apply=Anwenden
 index_create=Erzeuge neues PPP-Konto
+index_enopfile=Die PPP-Pa&szlig;wortdatei '$1' existiert nicht auf Ihrem System. M&ouml;glicherweise ist PPP nicht installiert.
 index_info=Webmin kann so konfiguriert werden, da&szlig; &Auml;nderungen der Unix-Benutzerliste automatisch auf die PPP-Konten angewandt werden. Dies wird nur funktionieren, wenn das Webmin-Modul <tt>Benutzer und Gruppen</tt> zum Hinzuf&uuml;gen, L&ouml;schen oder &Auml;ndern von Benutzern benutzt wird.
 index_onadd=Hinzuf&uuml;gen eines PPP-Kontos, wenn ein Unix-Benutzer f&uuml;r den nebenstehenden Server hinzugef&uuml;gt wird:&nbsp;
 index_onchange=&Auml;ndern des PPP-Kontos, wenn ein Unix-Benutzer ge&auml;ndert wird.
 index_ondelete=L&ouml;schen des PPP-Kontos, wenn ein Unix-Benutzer gel&ouml;scht wird.
-index_apply=Anwenden
 index_return=Index
-
-secrets_title=PPP-Konten
-
-edit_secret_etitle=PPP-Konto bearbeiten
-edit_secret_ctitle=PPP-Konto anlegen
-edit_secret_acc=PPP-Konten
-edit_secret_user=Benutzername
-edit_secret_serv=Server &nbsp;
-edit_secret_sany=Beliebig
-edit_secret_uany=Beliebig
-edit_secret_pass=Pa&szlig;wort
-edit_secret_none=Kein Pa&szlig;wort
-edit_secret_ffile=Von Datei
-edit_secret_leave=Unver&auml;ndert lassen
-edit_secret_setto=Setze auf
-edit_secret_vaddr=G&uuml;ltige Adresse
-edit_secret_aany=Erlaube alle
-edit_secret_anone=Erlaube keine
-edit_secret_alist=Erlaube angezeigte...
-edit_secret_save=Speichern
-edit_secret_del=L&ouml;schen
-edit_secret_return=Kontenliste
-
-save_secret_esave=Fehler beim Speichern des Kontos
-save_secret_enoip='$1' ist keine g&uuml;ltige Adresse
-
+index_sany=Beliebig
+index_server=Server &nbsp;
+index_table=PPP-Konten (Einwahl und Anwahl)
+index_title=PPP Dialin Server
+index_uany=Beliebig
+index_user=Benutzername
 log_create=Angelegter PPP-Benutzer $1
-log_modify=Ge&auml;nderter PPP-Benutzer $1
 log_delete=Gel&ouml;schter PPP-Benutzer $1
+log_modify=Ge&auml;nderter PPP-Benutzer $1
 log_sync=Unix-Benutzersynchronisierung ge&auml;ndert
+mgetty_add=F&#252;ge einen neuen seriellen Port hinzu.
+mgetty_answer=Antworte nach
+mgetty_apply=Wende Konfiguration an
+mgetty_auto=Automatisch
+mgetty_baud=baud
+mgetty_cedit=Editieren..
+mgetty_config=Port PPP Konfiguration
+mgetty_create=F&#252;gen seriellen Port hinzu
+mgetty_d=Nur Daten
+mgetty_df=Daten oder Fax
+mgetty_direct=Direkte Kommunikation
+mgetty_ecannot=Es ist Ihnen nicht erlaubt die seriellen Port Konfiguration zu editieren
+mgetty_eclash=Der serielle Port $1 wird bereits benutzt
+mgetty_edit=Editiere seriellen Port
+mgetty_espeed=Fehlende oder ung&#252;ltige Geschwindigkeit
+mgetty_f=Nur Fax
+mgetty_header=Seriellen Port Konfiguration Optionen
+mgetty_mode=Modem Modus
+mgetty_modem=Modem
+mgetty_other=Anderes Ger&#228;t..
+mgetty_prompt=Login prompt
+mgetty_speed=Port Geschwindigkeit
+mgetty_title=Serial Port Konfiguration
+mgetty_ts=Serial Port $1
+mgetty_tty=Serielles Ger&#228;t
+mgetty_type=Typ
+mgetty_vgetty=Voicemail
+options_auth1=Niemals
+options_auth2=Immer
+options_auto=Von Client
+options_ctrl0=Lokal
+options_ctrl1=Modem
+options_dev=F&#252;r Ger&#228;t $1
+options_dns=DNS Server f&#252;r Clients
+options_edns='$1' ist keine g&#252;ltige DNS Server IP-Adresse
+options_header=PPP Server Optionen
+options_idle_def=Niemals
+options_ip=PPP IP-Adressen
+options_local=Lokale IP
+options_lock=Sperre seriellen Port?
+options_remote=Entfernte IP
+options_serial=F&#252;r seriellen Port $1
+options_title=PPP Optionen
+save_secret_enoip='$1' ist keine g&uuml;ltige Adresse
+save_secret_esave=Fehler beim Speichern des Kontos
+secrets_return=Index
+secrets_title=PPP-Konten
