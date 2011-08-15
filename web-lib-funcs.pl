@@ -4403,6 +4403,7 @@ my @langs = &list_languages();
 my $accepted_lang;
 if ($gconfig{'acceptlang'}) {
 	foreach my $a (split(/,/, $ENV{'HTTP_ACCEPT_LANGUAGE'})) {
+		$a =~ s/;.*//;	# Remove ;q=0.5 or similar
 		my ($al) = grep { $_->{'lang'} eq $a } @langs;
 		if ($al) {
 			$accepted_lang = $al->{'lang'};
