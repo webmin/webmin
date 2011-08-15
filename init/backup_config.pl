@@ -16,6 +16,10 @@ if ($config{'init_base'}) {
 		    -r "$config{'daemons_dir'}/$ac[0]") {
 			push(@rv, "$config{'daemons_dir'}/$ac[0]");
 			}
+		local $ufile = "/etc/init/$ac[0]";
+		if (-r $ufile) {
+			push(@rv, $ufile);
+			}
 		}
 	}
 else {
