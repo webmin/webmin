@@ -1674,12 +1674,12 @@ $ENV{'USERADMIN_SECONDARY'} = join(",", @{$secs}) if (defined($secs));
 $ENV{'USERADMIN_ACTION'} = $action;
 $ENV{'USERADMIN_SOURCE'} = $main::module_name;
 if ($olduser) {
-	$ENV{'USERADMIN_OLD_USER'} = $user->{'user'};
-	$ENV{'USERADMIN_OLD_UID'} = $user->{'uid'};
-	$ENV{'USERADMIN_OLD_REAL'} = $user->{'real'};
-	$ENV{'USERADMIN_OLD_SHELL'} = $user->{'shell'};
-	$ENV{'USERADMIN_OLD_HOME'} = $user->{'home'};
-	$ENV{'USERADMIN_OLD_GID'} = $user->{'gid'};
+	$ENV{'USERADMIN_OLD_USER'} = $olduser->{'user'};
+	$ENV{'USERADMIN_OLD_UID'} = $olduser->{'uid'};
+	$ENV{'USERADMIN_OLD_REAL'} = $olduser->{'real'};
+	$ENV{'USERADMIN_OLD_SHELL'} = $olduser->{'shell'};
+	$ENV{'USERADMIN_OLD_HOME'} = $olduser->{'home'};
+	$ENV{'USERADMIN_OLD_GID'} = $olduser->{'gid'};
 	$ENV{'USERADMIN_OLD_PASS'} = $oldpass if (defined($oldpass));
 	}
 }
