@@ -418,7 +418,7 @@ sub grant_user_module
 # Grant to appropriate users
 my %acl;
 &read_acl(undef, \%acl);
-my $fh;
+my $fh = "GRANTS";
 &open_tempfile($fh, ">".&acl_filename()); 
 my $u;
 foreach $u (keys %acl) {
@@ -740,7 +740,7 @@ sub save_newmodule_users
 {
 &lock_file($newmodule_users_file);
 if ($_[0]) {
-	my $fh;
+	my $fh = "NEWUSERS";
 	&open_tempfile($fh, ">$newmodule_users_file");
 	foreach my $u (@{$_[0]}) {
 		&print_tempfile($fh, "$u\n");
@@ -1182,7 +1182,7 @@ if (&foreign_available($module_name) && !$noupdates &&
 				push(@$allupdates, @$updates);
 				};
 			}
-		my $fh;
+		my $fh = "CACHE";
 		&open_tempfile($fh, ">$update_cache", 1);
 		&print_tempfile($fh, &serialise_variable($allupdates));
 		&close_tempfile($fh);
@@ -1750,7 +1750,7 @@ if (!$bf) {
 	$bf = "$1/blocked";
 	}
 my @rv;
-my $fh;
+my $fh = "BLOCKED";
 &open_readfile($fh, $bf) || return ();
 while(<$fh>) {
 	s/\r|\n//g;
