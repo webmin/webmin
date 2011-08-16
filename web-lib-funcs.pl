@@ -1882,7 +1882,7 @@ if ($gconfig{'os_type'} ne 'windows') {
 	$miniserv{'inetd'} && return;
 	my @oldst = stat($miniserv{'pidfile'});
 	$pid = $ENV{'MINISERV_PID'};
-	if (!$pid) {
+	if (!$pid || !kill(0, $pid)) {
 		if (!open(PID, $miniserv{'pidfile'})) {
 			print STDERR "PID file $miniserv{'pidfile'} does ",
 				     "not exist\n";
@@ -1961,7 +1961,7 @@ if ($gconfig{'os_type'} ne 'windows') {
 	my ($pid, $addr, $i);
 	$miniserv{'inetd'} && return;
 	$pid = $ENV{'MINISERV_PID'};
-	if (!$pid) {
+	if (!$pid || !kill(0, $pid)) {
 		if (!open(PID, $miniserv{'pidfile'})) {
 			print STDERR "PID file $miniserv{'pidfile'} does ",
 				     "not exist\n";
