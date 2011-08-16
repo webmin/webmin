@@ -125,16 +125,17 @@ user, pass, host, page, port (optional)
 =cut
 sub parse_backup_url
 {
-if ($_[0] =~ /^ftp:\/\/([^:]*):([^\@]*)\@([^\/:]+)(:(\d+))?(\/.*)$/) {
+if ($_[0] && $_[0] =~ /^ftp:\/\/([^:]*):([^\@]*)\@([^\/:]+)(:(\d+))?(\/.*)$/) {
 	return (1, $1, $2, $3, $6, $5);
 	}
-elsif ($_[0] =~ /^ssh:\/\/([^:]*):([^\@]*)\@([^\/:]+)(:(\d+))?(\/.*)$/) {
+elsif ($_[0] &&
+       $_[0] =~ /^ssh:\/\/([^:]*):([^\@]*)\@([^\/:]+)(:(\d+))?(\/.*)$/) {
 	return (2, $1, $2, $3, $6, $5);
 	}
-elsif ($_[0] =~ /^upload:(.*)$/) {
+elsif ($_[0] && $_[0] =~ /^upload:(.*)$/) {
 	return (3, undef, undef, undef, $1);
 	}
-elsif ($_[0] =~ /^download:$/) {
+elsif ($_[0] && $_[0] =~ /^download:$/) {
 	return (4, undef, undef, undef, undef);
 	}
 else {

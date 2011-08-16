@@ -59,7 +59,7 @@ print &ui_tabs_start_tab("tab", "backup");
 print &ui_form_start("backup.cgi/backup.tgz", "post");
 print &ui_table_start($text{'index_header'}, undef, 2);
 
-my @dmods = split(/\s+/, $config{'mods'});
+my @dmods = split(/\s+/, $config{'mods'} || "");
 print &ui_table_row($text{'edit_mods'},
 		    &ui_select("mods", \@dmods,
 		       [ map { [ $_->{'dir'}, $_->{'desc'} ] } @mods ],
