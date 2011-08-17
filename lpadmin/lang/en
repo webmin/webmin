@@ -303,7 +303,7 @@ cluster_gadd=Add servers in group
 cluster_need=You must add servers with a login and password in the Webmin Servers Index module before they can be managed here.
 cluster_return=cluster servers
 cluster_delete=Remove Selected
-cluster_ecannot=You are not allowed to manager cluster printer servers
+cluster_ecannot=You are not allowed to manage cluster printer servers
 
 add_title=Add Servers
 add_msg=Adding $1 ..
