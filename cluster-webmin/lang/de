@@ -161,7 +161,7 @@ index_thost=Hostname
 index_title=Cluster Webmin-Server
 index_ttype=Betriebssystemtyp
 index_tver=Version
-index_update=Aktualisere Module
+index_update=Aktualisiere Module
 index_updatedesc=Dieses Formular soll Ihnen helfen Module, die Sicherheitsl&#246;cher oder Bugs haben, ganz einfach aus <a href=http://www.webmin.com/updates.html>Webmin Updates</a> oder einer anderen Quelle heraus zu akualisieren.
 index_updateon=Zu aktualisierende Server
 index_updesc=W&#228;hlen Sie eine Quelle f&#252;r das Webmin-Paket, welches Sie auf allen Servern aufr&#252;sten m&#246;chten ..
@@ -255,7 +255,7 @@ upgrade_mode_rpm=RPM
 upgrade_mode_solaris-pkg=Solaris Paket
 upgrade_ok=Erfolgreiche Aufr&#252;stung des Webmin $1 Paketes auf $2
 upgrade_title=Webmin aufr&#252;sten
-user_acl=Barbeite ACL f&#252;r
+user_acl=Bearbeite ACL f&#252;r
 user_aclh=$1 auf $2
 user_aclhg=Globale ACL auf $1
 user_all=&lt;Alle Server&gt;
