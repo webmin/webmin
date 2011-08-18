@@ -50,9 +50,13 @@ $newmid = &generate_message_id($in{'from'});
 $mail->{'headers'} = [ [ 'From', $in{'from'} ],
 		       [ 'Subject', &encode_mimewords($in{'subject'}) ],
 		       [ 'To', &encode_mimewords($in{'to'}) ],
-		       [ 'Cc', &encode_mimewords($in{'cc'}) ],
-		       [ 'Bcc', &encode_mimewords($in{'bcc'}) ],
 		       [ 'Message-Id', $newmid ] ];
+if ($in{'cc'}) {
+	push(@{$mail->{'headers'}}, [ 'Cc', &encode_mimewords($in{'cc'}) ]);
+	}
+if ($in{'bcc'}) {
+	push(@{$mail->{'headers'}}, [ 'Bcc', &encode_mimewords($in{'bcc'}) ]);
+	}
 &add_mailer_ip_headers($mail->{'headers'});
 push(@{$mail->{'headers'}}, [ 'X-Priority', $in{'pri'} ]) if ($in{'pri'});
 $in{'body'} =~ s/\r//g;
