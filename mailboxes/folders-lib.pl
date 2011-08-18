@@ -2257,6 +2257,11 @@ elsif ($url =~ /^(http:|https:)/) {
 		return $before."_unsafe_link_".$after;
 		}
 	}
+elsif ($url =~ /^mailto:([a-z0-9\.\-\_\@\%]+)/i) {
+	# A mailto link which is URL-escaped
+	return $before."reply_mail.cgi?new=1&to=".
+	       &urlize(&un_urlize($1)).$after;
+	}
 elsif ($url =~ /^mailto:([a-z0-9\.\-\_\@]+)/i) {
 	# A mailto link, which we can convert
 	return $before."reply_mail.cgi?new=1&to=".&urlize($1).$after;
