@@ -837,6 +837,15 @@ push(@{$_[0]->{'headers'}},
 	if (!$header{'date'});
 &reset_time_locale();
 
+# Build list of destination email addresses
+my @dests;
+foreach my $f ("to", "cc", "bcc") {
+	if ($header{$f}) {
+		push(@dests, &address_parts($header{$f}));
+		}
+	}
+my $qdests = join(" ", map { quotemeta($_) } @dests);
+
 local @from = &address_parts($header{'from'});
 local $fromaddr;
 if (@from && $from[0] =~ /\S/) {
@@ -928,16 +937,14 @@ elsif ($sm) {
 
 	&smtp_command(MAIL, "mail from: <$fromaddr>\r\n");
 	local $notify = $_[8] ? " NOTIFY=".join(",", @{$_[8]}) : "";
-	local $u;
-	foreach $u (&address_parts($header{'to'}.",".$header{'cc'}.
-						 ",".$header{'bcc'})) {
+	foreach my $u (@dests) {
 		&smtp_command(MAIL, "rcpt to: <$u>$notify\r\n");
 		}
 	&smtp_command(MAIL, "data\r\n");
 	}
 elsif (defined(&send_mail_program)) {
 	# Use specified mail injector
-	local $cmd = &send_mail_program($fromaddr);
+	local $cmd = &send_mail_program($fromaddr, \@dests);
 	$cmd || &error("No mail program was found on your system!");
 	open(MAIL, "| $cmd >/dev/null 2>&1");
 	}
@@ -950,13 +957,13 @@ elsif ($config{'postfix_control_command'}) {
 	local $cmd = -x "/usr/lib/sendmail" ? "/usr/lib/sendmail" :
 			&has_command("sendmail");
 	$cmd || &error($text{'send_ewrapper'});
-	open(MAIL, "| $cmd -t -f$fromaddr >/dev/null 2>&1");
+	open(MAIL, "| $cmd -f$fromaddr $qdests >/dev/null 2>&1");
 	}
 else {
 	# Start sendmail
 	&has_command($config{'sendmail_path'}) ||
 	    &error(&text('send_epath', "<tt>$config{'sendmail_path'}</tt>"));
-	open(MAIL, "| $config{'sendmail_path'} -t -f$fromaddr >/dev/null 2>&1");
+	open(MAIL, "| $config{'sendmail_path'} -f$fromaddr $qdests >/dev/null 2>&1");
 	}
 local $ctype = "multipart/mixed";
 local $msg_id;
@@ -1557,11 +1564,11 @@ if ($rawstr =~ /^[\x20-\x7E]*$/) {
 ###    We limit such words to 18 characters, to guarantee that the
 ###    worst-case encoding give us no more than 54 + ~10 < 75 characters
 my $word;
-$rawstr =~ s{([ a-zA-Z0-9\x7F-\xFF]{1,18})}{     ### get next "word"
+$rawstr =~ s{([ a-zA-Z0-9\x00-\x1F\x7F-\xFF]{1,18})}{     ### get next "word"
     $word = $1;
-    (($word !~ /(?:[$NONPRINT])|(?:^\s+$)/o)
-     ? $word                                          ### no unsafe chars
-     : encode_mimeword($word, $encoding, $charset));  ### has unsafe chars
+    $word =~ /(?:[$NONPRINT])|(?:^\s+$)/o ?
+	encode_mimeword($word, $encoding, $charset) :	# unsafe chars
+	$word						# OK word
 }xeg;
 $rawstr =~ s/\?==\?/?= =?/g;
 return $rawstr;
