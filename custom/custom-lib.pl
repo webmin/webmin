@@ -446,6 +446,11 @@ foreach my $a (@{$cmd->{'args'}}) {
 			}
 		$rv = join(" ", @vals);
 		}
+	elsif ($a->{'type'} == 13) {
+		$rv = $setin->{$n."_year"}."-".
+		      $setin->{$n."_month"}."-".
+		      $setin->{$n."_day"};
+		}
 	if ($rv eq '' && $a->{'must'} && $a->{'type'} != 7) {
 		&error(&text('run_emust', $a->{'desc'}));
 		}
@@ -585,6 +590,12 @@ elsif ($a->{'type'} == 11) {
 elsif ($a->{'type'} == 12) {
 	return &ui_select($n, undef, [ &read_opts_file($a->{'opts'}) ],
 			  5, 1);
+	}
+elsif ($a->{'type'} == 13) {
+	my ($year, $month, $day) = split(/\-/, $v);
+	return &ui_date_input($day, $month, $year,
+			      $n."_day", $n."_month", $n."_year")."&nbsp;".
+	       &date_chooser_button($n."_day", $n."_month", $n."_year");
 	}
 else {
 	return "Unknown parameter type $a->{'type'}";
