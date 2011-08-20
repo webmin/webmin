@@ -1915,7 +1915,8 @@ foreach my $minfo (&get_all_module_infos()) {
 		}
 	waitpid($pid, 0);
 	$installed{$minfo->{'dir'}} = $? / 256;
-	push(@changed, $minfo->{'dir'}) if ($installed{$minfo->{'dir'}} ne $o);
+	push(@changed, $minfo->{'dir'}) if ($installed{$minfo->{'dir'}} &&
+					    $installed{$minfo->{'dir'}} ne $o);
 	}
 &write_file("$config_directory/installed.cache", \%installed);
 return wantarray ? (\%installed, \@changed) : \%installed;
