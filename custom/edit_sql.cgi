@@ -45,10 +45,6 @@ print &ui_table_row($text{'edit_desc'},
 		    &ui_textbox("desc", $cmd->{'desc'}, 50)."<br>\n".
 		    &ui_textarea("html", $cmd->{'html'}, 2, 50));
 
-# Command ordering on main page
-print &ui_table_row(&hlink($text{'edit_order'},"order"),
-	&ui_opt_textbox("order", $cmd->{'order'} || "", 6, $text{'default'}));
-
 # Show databse type and name
 print &ui_table_row($text{'sql_type'},
 		    &ui_select("type", $cmd->{'type'},
@@ -70,6 +66,10 @@ print &ui_table_row($text{'sql_pass'},
 print &ui_table_row($text{'sql_host'},
 		    &ui_opt_textbox("host", $cmd->{'host'}, 20,
 				    $text{'sql_local'}));
+
+# Command ordering on main page
+print &ui_table_row(&hlink($text{'edit_order'},"order"),
+	&ui_opt_textbox("order", $cmd->{'order'} || "", 6, $text{'default'}));
 
 print &ui_table_end(),"<p>\n";
 
