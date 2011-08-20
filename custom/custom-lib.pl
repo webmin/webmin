@@ -65,6 +65,7 @@ while($f = readdir(DIR)) {
 		chop($cmd{'host'} = <FILE>);
 		chop($cmd{'sql'} = <FILE>);
 		$cmd{'sql'} =~ s/\t/\n/g;
+		chop($cmd{'order'} = <FILE>);
 		}
 	if (%cmd) {
 		# Read common stuff
@@ -165,6 +166,7 @@ elsif ($c->{'sql'}) {
 	local $sql = $c->{'sql'};
 	$sql =~ s/\n/\t/g;
 	&print_tempfile(FILE, $sql,"\n");
+	&print_tempfile(FILE, $c->{'order'},"\n");
 	}
 else {
 	# Save a custom command

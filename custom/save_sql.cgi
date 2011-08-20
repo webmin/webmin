@@ -25,6 +25,9 @@ else {
 
 	# parse and validate inputs
 	$cmd->{'desc'} = $in{'desc'};
+	$in{'order_def'} || $in{'order'} =~ /^\-?(\d+)$/ ||
+		&error($text{'save_eorder'});
+	$cmd->{'order'} = $in{'order_def'} ? 0 : int($in{'order'});
 	$in{'html'} =~ s/\r//g;
         $in{'html'} =~ s/\n*/\n/;
 	$cmd->{'html'} = $in{'html'};
