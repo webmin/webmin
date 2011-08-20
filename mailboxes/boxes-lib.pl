@@ -1552,7 +1552,8 @@ sub encode_mimewords
 {
 my ($rawstr, %params) = @_;
 my $charset  = $params{Charset} || 'ISO-8859-1';
-my $encoding = lc($params{Encoding} || 'q');
+my $defenc = uc($charset) eq 'ISO-2022-JP' ? 'b' : 'q';
+my $encoding = lc($params{Encoding} || $defenc);
 my $NONPRINT = "\\x00-\\x1F\\x7F-\\xFF";
 
 if ($rawstr =~ /^[\x20-\x7E]*$/) {
@@ -1564,7 +1565,7 @@ if ($rawstr =~ /^[\x20-\x7E]*$/) {
 ###    We limit such words to 18 characters, to guarantee that the
 ###    worst-case encoding give us no more than 54 + ~10 < 75 characters
 my $word;
-$rawstr =~ s{([ a-zA-Z0-9\x00-\x1F\x7F-\xFF]{1,18})}{     ### get next "word"
+$rawstr =~ s{([ a-zA-Z0-9\x7F-\xFF]{1,18})}{     ### get next "word"
     $word = $1;
     $word =~ /(?:[$NONPRINT])|(?:^\s+$)/o ?
 	encode_mimeword($word, $encoding, $charset) :	# unsafe chars
@@ -1572,6 +1573,35 @@ $rawstr =~ s{([ a-zA-Z0-9\x00-\x1F\x7F-\xFF]{1,18})}{     ### get next "word"
 }xeg;
 $rawstr =~ s/\?==\?/?= =?/g;
 return $rawstr;
+}
+
+# encode_mimewords_address(string, %params)
+# Given a string containing addresses into one with real names mime-words
+# escaped
+sub encode_mimewords_address
+{
+my ($rawstr, %params) = @_;
+my $charset  = $params{Charset} || 'ISO-8859-1';
+my $defenc = uc($charset) eq 'ISO-2022-JP' ? 'b' : 'q';
+my $encoding = lc($params{Encoding} || $defenc);
+if ($rawstr =~ /^[\x20-\x7E]*$/) {
+	# No encoding needed
+	return $rawstr;
+	}
+my @rv;
+foreach my $addr (&split_addresses($rawstr)) {
+	my ($email, $name, $orig) = @$addr;
+	if ($name =~ /^[\x20-\x7E]*$/) {
+		# No encoding needed
+		push(@rv, $orig);
+		}
+	else {
+		# Re-encode name
+		my $ename = encode_mimeword($name, $encoding, $charset);
+		push(@rv, $ename." <".$email.">");
+		}
+	}
+return join(", ", @rv);
 }
 
 # encode_mimeword(string, [encoding], [charset])

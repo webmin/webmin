@@ -47,15 +47,18 @@ $subs = join("", map { "&sub=$_" } @sub);
 # Construct the email
 $in{'from'} || &error($text{'send_efrom'});
 $newmid = &generate_message_id($in{'from'});
+%enc = ( 'Charset' => $in{'charset'} );
 $mail->{'headers'} = [ [ 'From', $in{'from'} ],
-		       [ 'Subject', &encode_mimewords($in{'subject'}) ],
-		       [ 'To', &encode_mimewords($in{'to'}) ],
+		       [ 'Subject', &encode_mimewords($in{'subject'}, %enc) ],
+		       [ 'To', &encode_mimewords_address($in{'to'}, %enc) ],
 		       [ 'Message-Id', $newmid ] ];
 if ($in{'cc'}) {
-	push(@{$mail->{'headers'}}, [ 'Cc', &encode_mimewords($in{'cc'}) ]);
+	push(@{$mail->{'headers'}},
+	     [ 'Cc', &encode_mimewords_address($in{'cc'}, %enc) ]);
 	}
 if ($in{'bcc'}) {
-	push(@{$mail->{'headers'}}, [ 'Bcc', &encode_mimewords($in{'bcc'}) ]);
+	push(@{$mail->{'headers'}},
+	     [ 'Bcc', &encode_mimewords_address($in{'bcc'}, %enc) ]);
 	}
 &add_mailer_ip_headers($mail->{'headers'});
 push(@{$mail->{'headers'}}, [ 'X-Priority', $in{'pri'} ]) if ($in{'pri'});
