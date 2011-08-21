@@ -215,6 +215,7 @@ if ($out =~ /\s(\d+\.\d+)/) {
 # Force load of quota kernel modules
 &system_logged("modprobe quota_v2 >/dev/null 2>&1");
 
+local $fmt = $version >= 2 ? "vfsv0" : "vfsold";
 if ($_[1]%2 == 1) {
 	# turn on user quotas
 	local $qf = $version >= 2 ? "aquota.user" : "quota.user";
@@ -239,7 +240,11 @@ if ($_[1]%2 == 1) {
 				&set_ownership_permissions(undef, undef, 0600,
 							   "$_[0]/$qf");
 				}
-			&run_quotacheck($_[0]) || &run_quotacheck($_[0], "-u -f") || &run_quotacheck($_[0], "-u -f -m") || &run_quotacheck($_[0], "-u -f -m -c");
+			&run_quotacheck($_[0]) ||
+				&run_quotacheck($_[0], "-u -f") ||
+				&run_quotacheck($_[0], "-u -f -m") ||
+				&run_quotacheck($_[0], "-u -f -m -c");
+				&run_quotacheck($_[0], "-u -f -m -c -F $fmt");
 			}
 		}
 	$out = &backquote_logged("$config{'user_quotaon_command'} $_[0] 2>&1");
@@ -269,7 +274,11 @@ if ($_[1] > 1) {
 				&set_ownership_permissions(undef, undef, 0600,
 							   "$_[0]/$qf");
 				}
-			&run_quotacheck($_[0]) || &run_quotacheck($_[0], "-u -f") || &run_quotacheck($_[0], "-u -f -m") || &run_quotacheck($_[0], "-u -f -m -c");
+			&run_quotacheck($_[0]) ||
+				&run_quotacheck($_[0], "-g -f") ||
+				&run_quotacheck($_[0], "-g -f -m") ||
+				&run_quotacheck($_[0], "-g -f -m -c") ||
+				&run_quotacheck($_[0], "-g -f -m -c -F $fmt");
 			}
 		}
 	$out = &backquote_logged("$config{'group_quotaon_command'} $_[0] 2>&1");
@@ -288,7 +297,7 @@ sub run_quotacheck
 {
 local $out =&backquote_logged(
 	"$config{'quotacheck_command'} $_[1] $_[0] 2>&1");
-return $? || $out =~ /cannot remount|please stop/i ? 0 : 1;
+return $? || $out =~ /cannot guess|cannot remount|cannot find|please stop/i ? 0 : 1;
 }
 
 =head2 quotaoff(filesystem, mode)
