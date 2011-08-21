@@ -48,7 +48,7 @@ $subs = join("", map { "&sub=$_" } @sub);
 $in{'from'} || &error($text{'send_efrom'});
 $newmid = &generate_message_id($in{'from'});
 %enc = ( 'Charset' => $in{'charset'} );
-$mail->{'headers'} = [ [ 'From', $in{'from'} ],
+$mail->{'headers'} = [ [ 'From', &encode_mimewords($in{'from'}, %enc) ],
 		       [ 'Subject', &encode_mimewords($in{'subject'}, %enc) ],
 		       [ 'To', &encode_mimewords_address($in{'to'}, %enc) ],
 		       [ 'Message-Id', $newmid ] ];
