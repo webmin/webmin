@@ -1,3 +1,4 @@
+__norefs=1
 batch_descafter3=In der <b>erstellen</b> und <b>&#228;ndern</b> Zeile, k&#246;nnen Sie optional zus&#228;tzliche Felder mit LDAP Attributen in <i>name</i>=<i>Wert</i>-Format anh&#228;ngen, die die neuen oder ge&#228;nderten Benutzern zugeordnet werden.
 batch_eattr=Ung&#252;ltiges LDAP Attribut in Zeile $1 : $2
 batch_samba=Erstelle Samba-Benutzer f&#252;r neue Benutzer?
@@ -17,6 +18,7 @@ gsave_emoddn=&Auml;ndern des Gruppennamens in der LDAP-Datenbank fehlgeschlagen:
 imap_econn=Fehler beim Verbindungsaufbau zum IMAP-Server $1.
 imap_elogin=Fehler beim Login auf dem IMAP-Server $1 als $2: $3
 index_cyrus=IMAP?
+index_ebase=Keine LDAP-Client-Konfigurations-Datei wurde auf Ihrem System gefunden, so dass die Benutzer- und Gruppenbasis in der <a href='$1'>Modulkonfiguration</a> gesetzt werden muss.
 index_econfig=Die LDAP NSS Konfigurationsdatei $1 konnte auf dem System nicht gefunden werden. Sie m&uuml;ssen die <a href='$2'>Modulkonfiguration</a> anpassen.
 index_econfig2=Die LDAP NSS Konfigurationsdatei $1 scheint die LDAP-<i>Server</i>-Konfigurationsdatei zu sein. Sie m&uuml;ssen die <a href='$2'>Modulkonfiguration</a> anpassen, um die NSS-<i>Client</i>-Konfigurationsdatei zu verwenden.
 index_egsearch=Fehler beim Suchen nach Gruppen unter $1 : $2
@@ -26,6 +28,7 @@ index_eldap=$1. Klicken Sie hier, um Ihre <a href='$2'>Modulkonfiguration</a> an
 index_emd5=Dieses Modul ist <a href='$1'>konfiguriert</a> um MD5-Passwortverschl&uuml;sselung zu benutzen, aber das Perl-Modul $2 ist nicht installiert.
 index_eperl=Das Perl Module $1 das ben&ouml;tigt wird ist nicht installiert oder funktioniert nicht korrekt.
 index_eperl2=Die Fehlermeldung von Perl beim Laden des Modules war :
+index_eschema=Webmin ist mit dem LDAP Server verbunden, konnte jedoch nicht das Schema holen. Stellen Sie sicher, dass der Zugriff nicht im <a href='$1'>LDAP Server</a> Module verweigert wird.
 index_eslappasswd=Dieses Modul ist <a href='$1'>konfiguriert</a> um MD5-Passwortverschl&uuml;sselung zu benutzen, aber das Programm <tt>$2</tt> das f&uuml;r die Verschl&uuml;sselung benutzt wird ist nicht installiert.
 index_eusearch=Suche nach Benutzern unter $1 fehlgeschlagen: $2
 index_gadd=Eine neue LDAP-Gruppe hinzuf&uuml;gen.
@@ -62,6 +65,10 @@ uedit_return=Benutzer-Details
 uedit_samba=Samba Login?
 uedit_unquota=Nicht &#228;ndern
 usave_eadd=Konnte Benutzer nicht zur LDAP-Datenbank hinzuf&uuml;gen: $1
+usave_ealiasdup=Der Alias $1 wird bereits von $2 genutzt
+usave_eattrdup=Das Objekt $1 wird bereits von $2 $3 genutzt
+usave_eattrdupg=Die Gruppe $1 wird bereits von $2 $3 genutzt
+usave_eattrdupu=Der Benutzer $1 wird bereits von $2 $3 genutzt
 usave_ebook=Erstellen des Adressbucheintrags fehlgeschlagen: $1
 usave_ecyruspass=Entweder muss das normale Benutzerpasswort angegeben werden, oder die "Kein Kennwort"-Option muss aktiviert sein, wenn IMAP eingeschaltet ist.
 usave_edelete=L&ouml;schen des Benutzers aus der LDAP Datenbank fehlgeschlagen: $1
@@ -70,6 +77,7 @@ usave_egroupmod=&Auml;ndern der Gruppe $1 fehlgeschlagen: $2
 usave_eiacl=Konnte Admin nicht die erforderlichen Rechte geben.
 usave_eicreate=Erstellen des Benutzers fehlgeschlagen
 usave_eifolder=Konnte Ordner $1 nicht erstellen.
+usave_eilogin=Fehlgeschlagen sich als neuen Benutzer einzuloggen
 usave_eimap=Benutzer konnte erfolgreich zur LDAP-Datenbank hinzugef&uuml;gt werden, aber ein IMAP-Fehler ist aufgetreten: $1: $2
 usave_eiquota=Setzen der IMAP-Quota fehlgeschlagen
 usave_eisub=Konnte den Benutzer nicht zum Ordner $1 hinzuf&uuml;gen
