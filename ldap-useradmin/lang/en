@@ -1,5 +1,5 @@
 index_title=LDAP Users and Groups
-index_ebase=No LDAP client configuration file was found on your system, so the use and group bases must be set on the <a href='$1'>module config</a> page.
+index_ebase=No LDAP client configuration file was found on your system, so the user and group bases must be set on the <a href='$1'>module config</a> page.
 index_eperl=The $1 Perl module that this module requires is not installed or is not working properly. <a href='$2'>Click here</a> to have it downloaded and installed now.
 index_eperl2=The error reported by Perl when trying to load the module was :
 index_eldap=$1. Click here to adjust the <a href='$2'>module configuration</a>.
