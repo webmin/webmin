@@ -1756,8 +1756,15 @@ local ($file) = @_;
 if ($config{'link_dir'}) {
 	local $short = $file;
 	$short =~ s/^.*\///;
-	local $linksrc = "$config{'link_dir'}/$short";
-	&unlink_logged($linksrc);
+	opendir(LINKDIR, $config{'link_dir'});
+	foreach my $f (readdir(LINKDIR)) {
+		if ($f ne "." && $f ne ".." &&
+		    (&resolve_links($config{'link_dir'}."/".$f) eq $file ||
+		     $short eq $f)) {
+			&unlink_logged($config{'link_dir'}."/".$f);
+			}
+		}
+	closedir(LINKDIR);
 	}
 }
 
