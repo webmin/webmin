@@ -122,8 +122,10 @@ if ($_[0]->[4]%2 == 1) {
 			}
 		else {
 			# Fall back to testing by running quotaon
+			&clean_language();
 			$out = &backquote_command(
 				"$config{'user_quotaon_command'} $dir 2>&1");
+			&reset_environment();
 			if ($out =~ /Device or resource busy/i) {
 				# already on..
 				$rv += 1;
@@ -152,8 +154,10 @@ if ($_[0]->[4] > 1) {
 			}
 		else {
 			# Fall back to testing by running quotaon
+			&clean_language();
 			$out = &backquote_command(
 				"$config{'group_quotaon_command'} $dir 2>&1");
+			&reset_environment();
 			if ($out =~ /Device or resource busy/i) {
 				# already on..
 				$rv += 2;
@@ -181,8 +185,10 @@ Internal function to check if the quotaon -p flag is supported.
 sub supports_status
 {
 if (!defined($supports_status_cache{$_[0],$_[1]})) {
+	&clean_language();
 	local $stout = &backquote_command(
 		"$config{$_[1].'_quotaon_command'} -p $_[0] 2>&1");
+	&reset_environment();
 	$supports_status_cache{$_[0],$_[1]} =
 		$stout =~ /is\s+(on|off|enabled|disabled)/ ? $stout : 0;
 	}
@@ -295,8 +301,10 @@ Runs the quotacheck command on some filesytem, and returns 1 on success or
 =cut
 sub run_quotacheck
 {
+&clean_language();
 local $out =&backquote_logged(
 	"$config{'quotacheck_command'} $_[1] $_[0] 2>&1");
+&reset_environment();
 return $? || $out =~ /cannot guess|cannot remount|cannot find|please stop/i ? 0 : 1;
 }
 

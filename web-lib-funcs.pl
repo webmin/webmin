@@ -7082,6 +7082,21 @@ if (%UNCLEAN_ENV) {
 	}
 }
 
+=head2 clean_language
+
+Sets all language and locale-related environment variables to US english, to
+ensure that commands run output in the expected language. Can be reverted by
+reset_environment.
+
+=cut
+sub clean_language
+{
+%UNCLEAN_ENV = %ENV;
+$ENV{'LANG'} = '';
+$ENV{'LC_ALL'} = '';
+$ENV{'LOCALE'} = '';
+}
+
 =head2 progress_callback
 
 Never called directly, but useful for passing to &http_download to print
