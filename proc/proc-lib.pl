@@ -499,7 +499,9 @@ sub get_cpu_info
 if (defined(&os_get_cpu_info)) {
 	return &os_get_cpu_info();
 	}
-local $out = `uptime 2>&1`;
+&clean_language();
+local $out = &backquote_command("uptime 2>&1");
+&reset_environment();
 return $out =~ /average(s)?:\s+([0-9\.]+),?\s+([0-9\.]+),?\s+([0-9\.]+)/i ?
 		( $2, $3, $4 ) : ( );
 }

@@ -22,7 +22,8 @@ our $gpgpath = $config{'gpg'} || "gpg";
 sub list_keys
 {
 my (@rv, %kmap);
-open(GPG, "LC_ALL='' LANG='' $gpgpath --list-keys 2>/dev/null |");
+&clean_language();
+open(GPG, "$gpgpath --list-keys 2>/dev/null |");
 while(<GPG>) {
 	if (/^pub\s+(\S+)\/(\S+)\s+(\S+)\s+(.*)\s+<(\S+)>/ ||
 	    /^pub\s+(\S+)\/(\S+)\s+(\S+)\s+(.*)/) {
@@ -56,13 +57,14 @@ while(<GPG>) {
 		}
 	}
 close(GPG);
-open(GPG, "LC_ALL='' LANG='' $gpgpath --list-secret-keys 2>/dev/null |");
+open(GPG, "$gpgpath --list-secret-keys 2>/dev/null |");
 while(<GPG>) {
 	if (/^sec\s+(\S+)\/(\S+)\s+(\S+)\s+(.*)/ && $kmap{$2}) {
 		$kmap{$2}->{'secret'}++;
 		}
 	}
 close(GPG);
+&reset_environment();
 return @rv;
 }
 
@@ -86,13 +88,15 @@ sub key_fingerprint
 {
 my $fp;
 local $_;
-open(GPG, "LC_ALL='' LANG='' $gpgpath --fingerprint \"$_[0]->{'name'}->[0]\" |");
+&clean_language();
+open(GPG, "$gpgpath --fingerprint \"$_[0]->{'name'}->[0]\" |");
 while(<GPG>) {
 	if (/fingerprint\s+=\s+(.*)/) {
 		$fp = $1;
 		}
 	}
 close(GPG);
+&reset_environment();
 return $fp;
 }
 
@@ -130,7 +134,8 @@ my $dstfile = &transname();
 my $ascii = $_[3] ? "--armor" : "";
 my $comp = $config{'compress'} eq '' ? "" :
 		" --compress-algo $config{'compress'}";
-my $cmd = "LC_ALL='' LANG='' $gpgpath --output $dstfile $rcpt $ascii $comp --encrypt $srcfile";
+&clean_language();
+my $cmd = "$gpgpath --output $dstfile $rcpt $ascii $comp --encrypt $srcfile";
 my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
 while(1) {
 	my $rv = &wait_for($fh, "anyway");
@@ -142,6 +147,7 @@ while(1) {
 		}
 	}
 close($fh);
+&reset_environment();
 unlink($srcfile);
 my $dst = &read_entire_file($dstfile);
 unlink($dstfile);
@@ -162,7 +168,8 @@ sub decrypt_data
 my $srcfile = &transname();
 &write_entire_file($srcfile, $_[0]);
 my $dstfile = &transname();
-my $cmd = "LC_ALL='' LANG='' $gpgpath --output $dstfile --decrypt $srcfile";
+&clean_language();
+my $cmd = "$gpgpath --output $dstfile --decrypt $srcfile";
 my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
 my ($error, $seen_pass, $pass, $key, $keyid);
 while(1) {
@@ -187,6 +194,7 @@ while(1) {
 		}
 	}
 close($fh);
+&reset_environment();
 unlink($srcfile);
 my $dst = &read_entire_file($dstfile);
 unlink($dstfile);
@@ -227,8 +235,9 @@ elsif ($_[3] == 1) {
 elsif ($_[3] == 2) {
 	$cmd = "$gpgpath --armor --output $dstfile --default-key $_[2]->{'key'} --detach-sig $srcfile";
 	}
-$cmd = "LC_ALL='' LANG='' $cmd";
+&clean_language();
 my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
+&reset_environment();
 my ($error, $seen_pass);
 my $pass = &get_passphrase($_[2]);
 if (!defined($pass)) {
@@ -277,18 +286,20 @@ my $datafile = &transname();
 my $cmd;
 my $sigfile;
 if (!$_[1]) {
-	$cmd = "LC_ALL='' LANG='' $gpgpath --verify $datafile";
+	$cmd = "$gpgpath --verify $datafile";
 	}
 else {
 	$sigfile = &transname();
 	&write_entire_file($sigfile, $_[1]);
-	$cmd = "LC_ALL='' LANG='' $gpgpath --verify $sigfile $datafile";
+	$cmd = "$gpgpath --verify $sigfile $datafile";
 	}
 #local ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
 #&wait_for($fh);
 #close($fh);
 #local $out = $wait_for_input;
+&clean_language();
 my $out = &backquote_command("$cmd 2>&1 </dev/null");
+&reset_environment();
 unlink($datafile);
 unlink($sigfile) if ($sigfile);
 if ($out =~ /BAD signature from "(.*)"/i) {
@@ -336,7 +347,8 @@ my $fh;
 # Returns the trust level of a key
 sub get_trust_level
 {
-my $cmd = "LC_ALL='' LANG='' $gpgpath --edit-key \"$_[0]->{'name'}->[0]\"";
+&clean_language();
+my $cmd = "$gpgpath --edit-key \"$_[0]->{'name'}->[0]\"";
 my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
 my $rv = &wait_for($fh, "trust:\\s+(.)", "command>");
 my $tr;
@@ -349,6 +361,7 @@ else {
 	}
 syswrite($fh, "quit\n", length("quit\n"));
 close($fh);
+&reset_environment();
 return $tr;
 }
 
@@ -358,7 +371,8 @@ sub delete_key
 {
 my ($key) = @_;
 if ($key->{'secret'}) {
-	my $cmd = "LC_ALL='' LANG='' $gpgpath --delete-secret-key \"$key->{'name'}->[0]\"";
+	&clean_language();
+	my $cmd = "$gpgpath --delete-secret-key \"$key->{'name'}->[0]\"";
 	my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
 	&wait_for($fh, "\\?");
 	syswrite($fh, "y\n");
@@ -366,13 +380,16 @@ if ($key->{'secret'}) {
 	syswrite($fh, "y\n");
 	sleep(1);
 	close($fh);
+	&reset_environment();
 	}
-my $cmd = "LC_ALL='' LANG='' $gpgpath --delete-key \"$key->{'name'}->[0]\"";
+&clean_language();
+my $cmd = "$gpgpath --delete-key \"$key->{'name'}->[0]\"";
 my ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
 &wait_for($fh, "\\?");
 syswrite($fh, "y\n");
 sleep(1);
 close($fh);
+&reset_environment();
 }
 
 # default_email_address()

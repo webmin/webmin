@@ -171,9 +171,10 @@ if (&foreign_check("net") && $gconfig{'os_type'} =~ /-linux$/) {
 		}
 	my $ifaces = join(" ", @ifaces);
 	foreach my $iname (@ifaces) {
+		&clean_language();
 		my $out = &backquote_command(
-			"LC_ALL='' LANG='' ifconfig ".
-			quotemeta($iname)." 2>/dev/null");
+			"ifconfig ".quotemeta($iname)." 2>/dev/null");
+		&reset_environment();
 		my $rx = $out =~ /RX\s+bytes:\s*(\d+)/i ? $1 : undef;
 		my $tx = $out =~ /TX\s+bytes:\s*(\d+)/i ? $1 : undef;
 		$rxtotal += $rx;

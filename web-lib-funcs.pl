@@ -7093,6 +7093,7 @@ sub clean_language
 {
 %UNCLEAN_ENV = %ENV;
 $ENV{'LANG'} = '';
+$ENV{'LANGUAGE'} = '';
 $ENV{'LC_ALL'} = '';
 $ENV{'LOCALE'} = '';
 }

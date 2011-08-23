@@ -48,7 +48,8 @@ while(1) {
 sub os_most_recent_logins
 {
 my %rv;
-open(LASTLOG, "LANG=C lastlog |");
+&clean_language();
+open(LASTLOG, "lastlog |");
 while(<LASTLOG>) {
 	s/\r|\n//g;
 	if (/^(\S+)/) {
@@ -63,6 +64,7 @@ while(<LASTLOG>) {
 		}
 	}
 close(LASTLOG);
+&reset_environment();
 return \%rv;
 }
 

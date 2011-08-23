@@ -222,7 +222,9 @@ sub list_locks
 {
 local($l, $started, @rv);
 local $out;
-&execute_command("LANG=C $config{samba_status_program} -L", undef, \$out, undef);
+&clean_language();
+&execute_command("$config{samba_status_program} -L", undef, \$out, undef);
+&reset_environment();
 foreach $l (split(/\n/, $out)) {
 	if ($l =~ /^----/) { $started = 1; }
 	if ($started && $l =~ /^(\d+)\s+(\d+)\s+(\S+)\s+(0x\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S.*)\s\s((Mon|Tue|Wed|Thu|Fri|Sat|Sun)\s.*)/i) {

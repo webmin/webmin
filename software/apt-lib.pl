@@ -140,8 +140,8 @@ local (@rv, $pkg, %done);
 
 # Use dump to get versions
 &execute_command("$apt_get_command update");
-&open_execute_command(DUMP,
-	"LANG='' LC_ALL='' apt-cache dump 2>/dev/null", 1, 1);
+&clean_language();
+&open_execute_command(DUMP, "apt-cache dump 2>/dev/null", 1, 1);
 while(<DUMP>) {
 	if (/^\s*Package:\s*(\S+)/) {
 		$pkg = { 'name' => $1 };
@@ -160,6 +160,7 @@ while(<DUMP>) {
 		}
 	}
 close(DUMP);
+&reset_environment();
 
 # Use search to get descriptions
 foreach my $s (&update_system_search('.*')) {
@@ -178,7 +179,8 @@ return @rv;
 sub update_system_search
 {
 local (@rv, $pkg);
-&open_execute_command(DUMP, "LANG='' LC_ALL='' $apt_search_command search ".
+&clean_language();
+&open_execute_command(DUMP, "$apt_search_command search ".
 			    quotemeta($_[0])." 2>/dev/null", 1, 1);
 while(<DUMP>) {
 	if (/^(\S+)\s*-\s*(.*)/) {
@@ -189,6 +191,7 @@ while(<DUMP>) {
 		}
 	}
 close(DUMP);
+&reset_environment();
 return @rv;
 }
 
@@ -201,22 +204,23 @@ sub update_system_updates
 # Find held packages by dpkg
 local %holds;
 if ($config{'package_system'} eq 'debian') {
-	&open_execute_command(HOLDS,
-		"LANG='' LC_ALL='' dpkg --get-selections", 1, 1);
+	&clean_language();
+	&open_execute_command(HOLDS, "dpkg --get-selections", 1, 1);
 	while(<HOLDS>) {
 		if (/^(\S+)\s+hold/) {
 			$holds{$1}++;
 			}
 		}
 	close(HOLDS);
+	&reset_environment();
 	}
 
 if (&has_command("apt-show-versions")) {
 	# This awesome command can give us all updates in one hit, and takes
 	# pinned versions and backports into account
 	local @rv;
-	&open_execute_command(PKGS,
-		"LANG='' LC_ALL='' apt-show-versions 2>/dev/null", 1, 1);
+	&clean_language();
+	&open_execute_command(PKGS, "apt-show-versions 2>/dev/null", 1, 1);
 	while(<PKGS>) {
 		if (/^(\S+)\/(\S+)\s+upgradeable\s+from\s+(\S+)\s+to\s+(\S+)/ &&
 		    !$holds{$1}) {
@@ -230,6 +234,7 @@ if (&has_command("apt-show-versions")) {
 			}
 		}
 	close(PKGS);
+	&reset_environment();
 	return @rv;
 	}
 else {
@@ -258,8 +263,8 @@ else {
 			@somenames = @names;
 			@names = ( );
 			}
-		&open_execute_command(PKGS,
-			"LANG='' LC_ALL='' apt-cache showpkg ".
+		&clean_language();
+		&open_execute_command(PKGS, "apt-cache showpkg ".
 			join(" ", @somenames)." 2>/dev/null", 1, 1);
 		local $pkg = undef;
 		while(<PKGS>) {
@@ -287,6 +292,7 @@ else {
 				}
 			}
 		close(PKGS);
+		&reset_environment();
 		}
 	&set_pinned_versions(\@rv);
 	return @rv;
@@ -300,8 +306,8 @@ sub set_pinned_versions
 {
 local ($pkgs) = @_;
 local %pkgmap = map { $_->{'name'}, $_ } @$pkgs;
-&open_execute_command(PKGS,
-	"LANG='' LC_ALL='' apt-cache policy 2>/dev/null", 1, 1);
+&clean_language();
+&open_execute_command(PKGS, "apt-cache policy 2>/dev/null", 1, 1);
 while(<PKGS>) { 
 	s/\r|\n//g;
 	if (/\s+(\S+)\s+\-\>\s+(\S+)/) {
@@ -317,5 +323,6 @@ while(<PKGS>) {
 		}
 	}
 close(PKGS);
+&reset_environment();
 }
 
