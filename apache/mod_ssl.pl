@@ -88,7 +88,7 @@ return (2, $text{'mod_ssl_cafile'},
 }
 sub save_SSLCACertificateFile
 {
-return &parse_opt("SSLCertificateFile", '\S', $text{'mod_ssl_ecafile'});
+return &parse_opt("SSLCACertificateFile", '\S', $text{'mod_ssl_ecafile'});
 }
 
 
