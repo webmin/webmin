@@ -1,10 +1,14 @@
 apply_err=Die Konfiguration zuzuweisen, ist fehlgeschlagen
 imap_title=IMAP Optionen
 index_apply=Konfiguration zuweisen
+index_applydesc=Aktiviere die aktuelle Dovecot Konfiguration indem der Serverprozess gestoppt und wieder gestartet wird.
 index_boot=Starten beim booten?
 index_dovecot=Dovecot
+index_ecmd=Das Dovecot Serverprogramm $1 wurde auf Ihrem System nicht gefunden. M&#246;glicherweise ist es nicht installiert oder die <a href='$2'>Modulkonfiguration</a> ist ung&#252;ltig.
+index_econf=Die Dovecot Konfigurationsdatei $1 wurde auf Ihrem System nicht gefunden. M&#246;glicherweise ist es nicht installiert oder die <a href='$2'>Modulkonfiguration</a> ist ung&#252;ltig.
 index_return=Modulindex
 index_start=Starte Dovecot Server
+index_startdesc=Starte den Dovecot IMAP/POP3 Serverprozess, sodass die Benutzer ihre E-Mails herunterladen k&#246;nnen.
 index_stop=Stoppe Dovecot Server
 index_version=Version $1
 log_apply=Wende Konfiguration an
@@ -68,6 +72,7 @@ mail_uidl_none=Nicht gesetzt (WARNUNG - Dove startet nicht)
 mail_uidl_other=Andere...
 mail_uidl_tpop3d=tpop3d
 mail_uidl_uw=UW ipop3d
+mail_umask=Rechte umask f&#252;r neue Dateien
 manual_edata=Nichts eingegeben!
 manual_editsel=Editiere Dovecot Konfigurationsdatei
 manual_efile=Ausgew&#228;hlte Konfigurationsdatei ist ung&#252;ltig
@@ -76,9 +81,11 @@ manual_title=Editiere Konfigurationsdatei
 misc_title=Andere Optionen
 net_eimap_listen=Ung&#252;ltige IP Adresse f&#252;r IMAP Verbindungen
 net_eimaps_listen=Ung&#252;ltige IP Adresse f&#252;r IMAP SSL Verbindungen
+net_elisten=Ung&#252;ltige IP-Adresse f&#252;r Nicht-SSL-Verbindungen
 net_epop3_listen=Ung&#252;ltige IP Adresse f&#252;r POP3 Verbindungen
 net_epop3s_listen=Ung&#252;ltige IP Adresse f&#252;r POP3 SSL Verbindungen
 net_essl_listen=Ung&#252;ltige IP-Adresse f&#252;r SSL Verbindungen
+net_header=Dovecot Netzwer- und Mail Protokolloptionen
 net_imap=IMAP
 net_imap_listen=Interface f&#252;r IMAP Verbindungen
 net_imaps=IMAP (SSL)
