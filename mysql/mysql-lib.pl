@@ -491,7 +491,8 @@ else {
 # Returns 1 if some database can be backed up
 sub supports_backup_db
 {
-return $_[0] ne "information_schema";
+return $_[0] ne "information_schema" &&
+       $_[0] ne "performance_schema";
 }
 
 # list_accessible_databases()
