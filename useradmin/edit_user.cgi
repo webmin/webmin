@@ -114,9 +114,9 @@ else {
 
 # Show input for home directory
 if ($access{'autohome'}) {
-	# AUtomatic, cannot be changed
+	# Automatic, cannot be changed
 	$homefield = $text{'uedit_auto'}.
-		     ($n eq "" ? "" : "( <tt>$uinfo{'home'}</tt>" );
+		     ($n eq "" ? "" : " ( <tt>$uinfo{'home'}</tt> )" );
 	}
 else {
 	if ($config{'home_base'}) {
