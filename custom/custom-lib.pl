@@ -555,10 +555,16 @@ if ($a->{'type'} != 9 && $a->{'type'} != 12) {
 	elsif ($v =~ /^(.*)\s*\|$/ && $config{'params_cmd'}) {
 		# Command to run
 		$v = &backquote_command("$1 2>/dev/null </dev/null");
+		if ($a->{'type'} != 11) {
+			$v =~ s/[\r\n]+$//;
+			}
 		}
 	elsif ($v =~ /^\// && $config{'params_file'}) {
 		# File to read
 		$v = &read_file_contents($v);
+		if ($a->{'type'} != 11) {
+			$v =~ s/[\r\n]+$//;
+			}
 		}
 	}
 if ($a->{'type'} == 0) {
