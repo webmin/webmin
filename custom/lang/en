@@ -133,6 +133,9 @@ view_ecannot=You are not allowed to edit this file
 view_title=Edit File
 view_efile=Write to $1 failed : $2
 view_header=Editing file $1
+view_ebeforeedit=Before-editing command failed : $1
+view_ebefore=Before-saving command failed : $1
+view_eafter=After-saving command failed : $1
 
 form_ecannot=You are not allowed to run this command
 form_title=Execute Command

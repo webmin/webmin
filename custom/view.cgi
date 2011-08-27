@@ -26,7 +26,8 @@ if ($edit->{'envs'} || @{$edit->{'args'}}) {
 
 # Run any before-edit command
 if ($edit->{'beforeedit'}) {
-	&system_logged("($edit->{'beforeedit'}) >/dev/null 2>&1 </dev/null");
+	$out = &backquote_logged("($edit->{'beforeedit'}) 2>&1 </dev/null");
+	&error(&text('view_ebeforeedit', &html_escape($out))) if ($?);
 	}
 
 # Show the editor form
