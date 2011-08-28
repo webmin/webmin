@@ -333,6 +333,7 @@ elsif ($init_mode eq "upstart" && $access{'bootup'}) {
 	print &ui_links_row(\@links);
 	print &ui_form_end([ [ "start", $text{'index_start'} ],
 			     [ "stop", $text{'index_stop'} ],
+			     [ "restart", $text{'index_restart'} ],
 			     undef,
 			     [ "addboot", $text{'index_addboot'} ],
 			     [ "delboot", $text{'index_delboot'} ],

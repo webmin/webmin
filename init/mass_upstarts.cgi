@@ -8,13 +8,14 @@ require './init-lib.pl';
 
 $start = 1 if ($in{'start'} || $in{'addboot_start'});
 $stop = 1 if ($in{'stop'} || $in{'delboot_stop'});
+$restart = 1 if ($in{'restart'} || $in{'delboot_restart'});
 $enable = 1 if ($in{'addboot'} || $in{'addboot_start'});
 $disable = 1 if ($in{'delboot'} || $in{'delboot_stop'});
 
 &ui_print_unbuffered_header(undef, $start || $enable ? $text{'mass_ustart'}
 					  : $text{'mass_ustop'}, "");
 
-if ($start || $stop) {
+if ($start || $stop || $restart) {
 	# Starting or stopping a bunch of services
 	$access{'bootup'} || &error($text{'ss_ecannot'});
 	foreach $s (@sel) {
@@ -22,9 +23,13 @@ if ($start || $stop) {
 			print &text('mass_ustarting', "<tt>$s</tt>"),"<p>\n";
 			($ok, $out) = &start_upstart_service($s);
 			}
-		else {
+		elsif ($stop) {
 			print &text('mass_ustopping', "<tt>$s</tt>"),"<p>\n";
 			($ok, $out) = &stop_upstart_service($s);
+			}
+		elsif ($restart) {
+			print &text('mass_urestarting', "<tt>$s</tt>"),"<p>\n";
+			($ok, $out) = &restart_upstart_service($s);
 			}
 		print "<pre>$out</pre>";
 		if (!$ok) {
@@ -34,6 +39,8 @@ if ($start || $stop) {
 			print $text{'mass_ok'},"<p>\n";
 			}
 		}
+	&webmin_log($start ? 'massstart' : $stop ? 'massstop' : 'massrestart',
+		    'upstart', join(" ", @sel));
 	}
 
 if ($enable || $disable) {

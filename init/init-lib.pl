@@ -1651,6 +1651,19 @@ my $out = &backquote_logged(
 return (!$?, $out);
 }
 
+=head2 restart_upstart_service(name)
+
+Restart the upstart service with some name, and return an OK flag and output
+
+=cut
+sub restart_upstart_service
+{
+my ($name) = @_;
+my $out = &backquote_logged(
+	"service ".quotemeta($name)." restart 2>&1 </dev/null");
+return (!$?, $out);
+}
+
 =head2 create_upstart_service(name, description, command, [pre-script], [fork])
 
 Create a new upstart service with the given details.

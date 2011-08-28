@@ -172,6 +172,7 @@ mass_uenable=Enabling service $1 at boot time.
 mass_udisable=Disabling service $1 at boot time.
 mass_ustarting=Starting service $1 ..
 mass_ustopping=Stopping service $1 ..
+mass_urestarting=Restarting service $1 ..
 
 change_err=You are not allowed to switch runlevels
 change_title=Switch Runlevel
