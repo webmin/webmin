@@ -5185,7 +5185,9 @@ if (!$pid) {
 	close(STDIN); close(STDOUT); close(STDERR);
 	untie(*STDIN); untie(*STDOUT); untie(*STDERR);
 	close($PASSINw); close($PASSOUTr);
-	$( = $uinfo[3]; $) = "$uinfo[3] $uinfo[3]";
+	($(, $)) = ( $uinfo[3],
+                     "$uinfo[3] ".join(" ", $uinfo[3],
+                                            &other_groups($uinfo[0])) );
 	($>, $<) = ($uinfo[2], $uinfo[2]);
 
 	close(SUDOw);
@@ -5228,6 +5230,19 @@ if ($PASSINw) {
 	}
 
 return $ok;
+}
+
+sub other_groups
+{
+my ($user) = @_;
+my @rv;
+setgrent();
+while(my @g = getgrent()) {
+        my @m = split(/\s+/, $g[3]);
+        push(@rv, $g[2]) if (&indexof($user, @m) >= 0);
+        }
+endgrent();
+return @rv;
 }
 
 # is_mobile_useragent(agent)
