@@ -253,8 +253,9 @@ else {
 				      &nice_size($size*1024)) :
 				&text('umass_sure2', scalar(@dlist)),
 			\@hids, \@buts,
-			&ui_checkbox("others", 1, $text{'udel_dothers'},
-				     $config{'default_other'}),
+			$access{'dothers'} == 1 ?
+				&ui_checkbox("others", 1, $text{'udel_dothers'},
+					     $config{'default_other'}) : "",
 			$delete_sys && $delete_sys->{'user'} eq 'root' ?
 			   $text{'udel_root'} : "",
 			);
