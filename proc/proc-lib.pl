@@ -610,8 +610,10 @@ if (defined(&os_get_kernel_info)) {
 	return &os_get_kernel_info();
 	}
 else {
-	my $out = &backquote_command(
-	  "uname -r 2>/dev/null ; uname -m 2>/dev/null ; uname -s 2>/dev/null");
+	my $uname = &has_command("uptrack-uname") || &has_command("uname");
+	my $out = &backquote_command("$uname -r 2>/dev/null ; ".
+				     "$uname -m 2>/dev/null ; ".
+				     "$uname -s 2>/dev/null");
 	return split(/\r?\n/, $out);
 	}
 }
