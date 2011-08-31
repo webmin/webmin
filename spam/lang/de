@@ -257,7 +257,6 @@ white_level=Erlaube
 white_level0=Wenig Spam
 white_level1=Mehr Spam
 white_level2=Nur Spam
-white_rcvd=Absender-E-Mail-Adressen, die niemals als Spam gelten sollen, basierend auf der <i>Received</i>-Domaine
 white_rcvd2=Absender niemals als Spam klassifizieren
 white_rcvdhost=Quell-Domain
 white_return=Liste der erlaubten und verbotenen Absender-E-Mail-Adressen
