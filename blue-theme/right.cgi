@@ -19,7 +19,9 @@ foreach $o (split(/\0/, $in{'open'})) {
 	$open{$o} = 1;
 	}
 
-&popup_header(undef, &capture_function_output(\&WebminCore::theme_prehead));
+$prehead = defined(&WebminCore::theme_prehead) ?
+		&capture_function_output(\&WebminCore::theme_prehead) : "";
+&popup_header(undef, $prehead);
 print "<center>\n";
 
 # Webmin logo
