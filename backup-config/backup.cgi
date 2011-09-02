@@ -39,7 +39,6 @@ else {
 	# Output file in browser
 	my $temp = &transname();
 	my $size;
-	my @mods;
 	$err = &execute_backup(\@mods, $temp, \$size, undef,
 			       $configfile, $nofiles);
 	if ($err) {
