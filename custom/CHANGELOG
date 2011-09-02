@@ -37,3 +37,4 @@ A default value for each custom command parameter can now be entered on the Edit
 A command can now be configured to not display any output at all, and instead return to the module index after being run.
 ---- Changes since 1.560 ----
 Added an option to the file editor to run a command before the file is displayed, thanks to a suggestion from Sart Cole.
+Added new date and left-right menu parameter types.

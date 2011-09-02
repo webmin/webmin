@@ -436,8 +436,14 @@ foreach my $a (@{$cmd->{'args'}}) {
 		chown($uinfo->[2], $uinfo->[3], $rv);
 		push(@unlink, $rv);
 		}
-	elsif ($a->{'type'} == 12) {
-		local @vals = split(/\0/, $setin->{$n});
+	elsif ($a->{'type'} == 12 || $a->{'type'} == 13 || $a->{'type'} == 14) {
+		local @vals;
+		if ($a->{'type'} == 14) {
+			@vals = split(/\r?\n/, $setin->{$n});
+			}
+		else {
+			@vals = split(/\0/, $setin->{$n});
+			}
 		local @opts = &read_opts_file($a->{'opts'});
 		foreach my $v (@vals) {
 			local $found;
@@ -448,7 +454,7 @@ foreach my $a (@{$cmd->{'args'}}) {
 			}
 		$rv = join(" ", @vals);
 		}
-	elsif ($a->{'type'} == 13) {
+	elsif ($a->{'type'} == 15) {
 		$rv = $setin->{$n."_year"}."-".
 		      $setin->{$n."_month"}."-".
 		      $setin->{$n."_day"};
@@ -547,7 +553,8 @@ sub show_parameter_input
 local ($a, $form) = @_;
 local $n = $a->{'name'};
 local $v = $a->{'opts'};
-if ($a->{'type'} != 9 && $a->{'type'} != 12) {
+if ($a->{'type'} != 9 && $a->{'type'} != 12 &&
+    $a->{'type'} != 13 && $a->{'type'} != 14) {
 	if ($v =~ /^"(.*)"$/ || $v =~ /^'(.*)'$/) {
 		# Quoted default
 		$v = $1;
@@ -600,6 +607,14 @@ elsif ($a->{'type'} == 12) {
 			  5, 1);
 	}
 elsif ($a->{'type'} == 13) {
+	my @opts = &read_opts_file($a->{'opts'});
+	return &ui_select($n, undef, \@opts, scalar(@opts), 1);
+	}
+elsif ($a->{'type'} == 14) {
+	my @opts = &read_opts_file($a->{'opts'});
+	return &ui_multi_select($n, [ ], \@opts, 5);
+	}
+elsif ($a->{'type'} == 15) {
 	my ($year, $month, $day) = split(/\-/, $v);
 	return &ui_date_input($day, $month, $year,
 			      $n."_day", $n."_month", $n."_year")."&nbsp;".
