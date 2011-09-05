@@ -313,7 +313,7 @@ if [ "$inetd" != "1" ]; then
 	fi
 fi
 if [ "$product" = "usermin" ]; then
-	insserv $baseproduct >/dev/null 2>&1
+	(insserv $baseproduct || update-rc.d $baseproduct defaults) >/dev/null 2>&1
 fi
 cat >/etc/$baseproduct/uninstall.sh <<EOFF
 #!/bin/sh
