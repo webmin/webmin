@@ -18,7 +18,7 @@ index_cmd=Befehl
 index_delete=L&#246;sche Ausgew&#228;hlte
 index_denytitle=Verbotende Hosts
 index_hosts=Hosts
-index_nofile=Datei '$1' existiert nicht - pr&#252;fe die <a href="/config.cgi?tcpwrappers">Modul Konfiguration</a>
+index_nofile=Datei '$1' existiert nicht - pr&#252;fe die <a href="/config.cgi?tcpwrappers">Modulkonfiguration</a>
 index_none=Nichts
 index_norule=Bisher wurde keine Regeln in der <tt>$1</tt> definiert.
 index_return=Index
