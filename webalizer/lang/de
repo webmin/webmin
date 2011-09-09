@@ -106,7 +106,7 @@ global_visit=Dauer eines Besuches
 index_add=Ein neues Logfile zur Analyse hinzuf&uuml;gen.
 index_disable=Ausf&uuml;hrung deaktivieren
 index_econf=Die Webalizer-Konfigurationsdatei $1 wurde auf Ihrem System nicht gefunden. Entweder ist Webalizer nicht installiert oder Ihre <a href='$2'>Modul-Konfiguration</a> ist nicht korrekt.
-index_egetversion=Konnte die Webalizer-Version nicht ermitteln (Command $1: $2)
+index_egetversion=Konnte die Webalizer-Version nicht ermitteln (Befehl $1 : $2)
 index_empty=Leer
 index_enable=Ausf&uuml;hrung aktivieren
 index_eversion=Das Webalizer-Kommando $1 auf Ihrem System ist Version $2. Dieses Modul unterst&uuml;tzt jedoch nur Version $3 und h&ouml;her.
