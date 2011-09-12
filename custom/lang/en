@@ -21,6 +21,7 @@ create_title=Create Command
 edit_ecannot=You are not allowed to edit commands
 edit_details=Command details
 edit_desc=Description
+edit_desc2=HTML description
 edit_id=Command ID
 edit_cmd=Command
 edit_dir=Run in directory

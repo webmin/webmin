@@ -29,7 +29,8 @@ if (!$in{'new'}) {
 
 # Description, text and HTML
 print &ui_table_row(&hlink($text{'edit_desc'}, "desc"),
-	&ui_textbox("desc", $edit->{'desc'}, 60)."<br>".
+	&ui_textbox("desc", $edit->{'desc'}, 60));
+print &ui_table_row(&hlink($text{'edit_desc2'}, "desc2"),
 	&ui_textarea("html", $edit->{'html'}, 2, 60));
 
 # File to edit, and environment checkbox

@@ -42,7 +42,8 @@ if (!$in{'new'}) {
 	print &ui_table_row($text{'edit_id'}, "<tt>$cmd->{'id'}</tt>");
 	}
 print &ui_table_row($text{'edit_desc'},
-		    &ui_textbox("desc", $cmd->{'desc'}, 50)."<br>\n".
+		    &ui_textbox("desc", $cmd->{'desc'}, 50));
+print &ui_table_row($text{'edit_desc2'},
 		    &ui_textarea("html", $cmd->{'html'}, 2, 50));
 
 # Show databse type and name

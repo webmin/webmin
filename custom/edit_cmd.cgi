@@ -31,7 +31,8 @@ if (!$in{'new'}) {
 
 # Description, text and HTML
 print &ui_table_row(&hlink($text{'edit_desc'}, "desc"),
-	&ui_textbox("desc", $cmd->{'desc'}, 60)."<br>".
+	&ui_textbox("desc", $cmd->{'desc'}, 60), 3);
+print &ui_table_row(&hlink($text{'edit_desc2'}, "desc2"),
 	&ui_textarea("html", $cmd->{'html'}, 2, 60), 3);
 
 # Command to run
