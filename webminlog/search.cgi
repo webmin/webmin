@@ -141,7 +141,7 @@ if ($in{'csv'}) {
 			my %minfo = &get_module_info($m);
 			$minfo = $minfo_cache{$m} = \%minfo;
 			}
-		my $desc = &get_action_description($act, 0);
+		my $desc = &get_action_description($act, $in{'long'});
 		$desc =~ s/<[^>]+>//g;
 		@cols = ( $desc, 
 			  $minfo->{'desc'},
@@ -189,7 +189,7 @@ elsif (@match) {
 			}
 
 		my @cols;
-		my $desc = &get_action_description($act, 0);
+		my $desc = &get_action_description($act, $in{'long'});
 		my $anno = &get_annotation($act);
 		push(@cols, "<a href='view.cgi?id=$act->{'id'}".
 		      "&return=".&urlize($in{'return'} || "").

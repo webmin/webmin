@@ -27,6 +27,7 @@ index_dall=Any change
 index_diff=Changes containing
 index_stimes=Actions on dates
 index_shost=Source Webmin server
+index_long=Show full action descriptions?
 index_global=&lt;Not in any module&gt;
 
 search_title=Search Results

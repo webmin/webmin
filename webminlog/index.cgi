@@ -93,6 +93,10 @@ if ($config{'host_search'}) {
 				 &ui_textbox("webmin", undef, 30) ] ]));
 	}
 
+# Show full descriptions?
+print &ui_table_row($text{'index_long'},
+	&ui_yesno_radio("long", 0));
+
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'index_search'} ] ]);
 
