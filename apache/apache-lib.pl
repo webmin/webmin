@@ -1472,6 +1472,7 @@ elsif ($config{'apply_cmd'}) {
 	&clean_environment();
 	local $out = &backquote_logged("$config{'apply_cmd'} 2>&1");
 	&reset_environment();
+	&wait_for_graceful() if ($config{'apply_cmd'} =~ /graceful/);
 	if ($?) {
 		return "<pre>".&html_escape($out)."</pre>";
 		}
@@ -1481,15 +1482,18 @@ elsif (-x &translate_filename($config{'apachectl_path'})) {
 	if ($httpd_modules{'core'} >= 2) {
 		# Do a graceful restart
 		&clean_environment();
-		local $out = &backquote_logged("$config{'apachectl_path'} graceful 2>&1");
+		local $out = &backquote_logged(
+			"$config{'apachectl_path'} graceful 2>&1");
 		&reset_environment();
+		&wait_for_graceful();
 		if ($?) {
 			return "<pre>".&html_escape($out)."</pre>";
 			}
 		}
 	else {
 		&clean_environment();
-		local $out = &backquote_logged("$config{'apachectl_path'} restart 2>&1");
+		local $out = &backquote_logged(
+			"$config{'apachectl_path'} restart 2>&1");
 		&reset_environment();
 		if ($out !~ /httpd restarted/) {
 			return "<pre>".&html_escape($out)."</pre>";
@@ -1502,8 +1506,32 @@ else {
 	<PID> =~ /(\d+)/ || return &text('restart_epid2', $pidfile);
 	close(PID);
 	&kill_logged('HUP', $1) || return &text('restart_esig', $1);
+	&wait_for_graceful();
 	}
 return undef;
+}
+
+# wait_for_graceful([timeout])
+# Wait for some time for Apache to complete a graceful restart
+sub wait_for_graceful
+{
+local $timeout = $_[0] || 10;
+local $errorlog = &get_error_log();
+return -1 if (!$errorlog || !-r $errorlog);
+local @st = stat($errorlog);
+my $start = time();
+while(time() - $start < $timeout) {
+	sleep(1);
+	open(ERRORLOG, $errorlog);
+	seek(ERRORLOG, $st[7], 0);
+	local $/ = undef;
+	local $rest = <ERRORLOG>;
+	close(ERRORLOG);
+	if ($rest =~ /resuming\s+normal\s+operations/i) {
+		return 1;
+		}
+	}
+return 0;
 }
 
 # stop_apache()
@@ -1613,6 +1641,18 @@ if (!&is_apache_running()) {
 		}
 	}
 return undef;
+}
+
+# get_error_log()
+# Returns the path to the global error log, if possible
+sub get_error_log
+{
+local $conf = &get_config();
+local $errorlogstr = &find_directive_struct("ErrorLog", $conf);
+local $errorlog = $errorlogstr ? $errorlogstr->{'words'}->[0]
+			       : "logs/error_log";
+$errorlog = &server_root($errorlog, $conf);
+return $errorlog;
 }
 
 sub is_apache_running
