@@ -4154,7 +4154,8 @@ if ($main::webmin_script_type eq 'cron') {
 	}
 
 # If debugging is enabled, open the debug log
-if ($gconfig{'debug_enabled'} && !$main::opened_debug_log++) {
+if (($ENV{'WEBMIN_DEBUG'} || $gconfig{'debug_enabled'}) &&
+    !$main::opened_debug_log++) {
 	my $dlog = $gconfig{'debug_file'} || $main::default_debug_log_file;
 	if ($gconfig{'debug_size'}) {
 		my @st = stat($dlog);
