@@ -172,10 +172,9 @@ Deletes the Webmin server details identified by the given ID.
 =cut
 sub delete_server
 {
-my ($serv) = @_;
-&unlink_logged("$module_config_directory/$serv->{'id'}.serv");
-delete($main::remote_servers_cache{$serv->{'host'}});
-delete($main::remote_servers_cache{$serv->{'host'}.":".$serv->{'port'}});
+my ($id) = @_;
+&unlink_logged("$module_config_directory/$id.serv");
+undef(%main::remote_servers_cache);
 }
 
 =head2 can_use_server(&server)
