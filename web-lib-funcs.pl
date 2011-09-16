@@ -5614,8 +5614,6 @@ command is safe for read-only mode users to run.
 sub backquote_with_timeout
 {
 my $realcmd = &translate_command($_[0]);
-&webmin_debug_log('CMD', "cmd=$realcmd timeout=$_[1]")
-	if ($gconfig{'debug_what_cmd'});
 my $out;
 my $pid = &open_execute_command(OUT, "($realcmd) <$null_file", 1, $_[2]);
 my $start = time();
