@@ -140,7 +140,7 @@ format as list_serves.
 =cut
 sub get_server
 {
-my $serv;
+my $serv = { };
 $serv->{'id'} = $_[0];
 &read_file("$module_config_directory/$_[0].serv", $serv) || return undef;
 $serv->{'file'} = "$module_config_directory/$_[0].serv";
@@ -155,12 +155,14 @@ which must be in the same format as list_servers.
 =cut
 sub save_server
 {
-$_[0]->{'id'} ||= time().$$;
-&lock_file("$module_config_directory/$_[0]->{'id'}.serv");
-&write_file("$module_config_directory/$_[0]->{'id'}.serv", $_[0]);
-chmod(0600, "$module_config_directory/$_[0]->{'id'}.serv");
-&unlock_file("$module_config_directory/$_[0]->{'id'}.serv");
-undef(%main::remote_servers_cache);
+my ($serv) = @_;
+$serv->{'id'} ||= time().$$;
+&lock_file("$module_config_directory/$serv->{'id'}.serv");
+&write_file("$module_config_directory/$serv->{'id'}.serv", $_[0]);
+chmod(0600, "$module_config_directory/$serv->{'id'}.serv");
+&unlock_file("$module_config_directory/$serv->{'id'}.serv");
+$main::remote_servers_cache{$serv->{'host'}} =
+   $main::remote_servers_cache{$serv->{'host'}.":".$serv->{'port'}} = $serv;
 }
 
 =head2 delete_server(id)
@@ -170,10 +172,10 @@ Deletes the Webmin server details identified by the given ID.
 =cut
 sub delete_server
 {
-&lock_file("$module_config_directory/$_[0].serv");
-unlink("$module_config_directory/$_[0].serv");
-&unlock_file("$module_config_directory/$_[0].serv");
-undef(%main::remote_servers_cache);
+my ($serv) = @_;
+&unlink_logged("$module_config_directory/$serv->{'id'}.serv");
+delete($main::remote_servers_cache{$serv->{'host'}});
+delete($main::remote_servers_cache{$serv->{'host'}.":".$serv->{'port'}});
 }
 
 =head2 can_use_server(&server)
