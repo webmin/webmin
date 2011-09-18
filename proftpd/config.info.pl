@@ -1,5 +1,12 @@
+line1=Opcje konfigurowalne,11
+test_config=Testowaæ plik konfiguracyjny przed zastosowaniem zmian?,1,1-Yes,0-No
+test_manual=Testowaæ plik konfiguracyjny po rêcznej edycji?,1,1-Yes,0-No
+test_always=Testowaæ plik konfiguracyjny po zmianach innych?,1,1-Yes,0-No
+line2=Konfiguracja systemu,11
 proftpd_conf=¦cie¿ka do pliku konfiguracyjnego ProFTPD,0
+add_file=Plik do dodawania nowych hostów wirtualnych,3,Ostatni plik w konfiguracji
 proftpd_path=¦cie¿ka do programu ProFTPD,0
 pid_file=¦cie¿ka do pliku z numerem PID ProFTPD,0
 ftpusers=¦cie¿ka do pliku <tt>ftpusers</tt>,0
 start_cmd=Polecenie uruchamiaj±ce ProFTPD,3,Automatycznie
+stop_cmd=Polecenie do zatrzymania ProFTPd,3,Zabij proces

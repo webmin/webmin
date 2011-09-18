@@ -1,6 +1,6 @@
 name=ProFTPD
 desc=ProFTPD Server
-desc_pl=Serwer ProFTPD
+desc_pl=Serwer ProFTPd
 category=servers
 desc_ca=Servidor ProFTP
 desc_es=Servidor ProFTPD
