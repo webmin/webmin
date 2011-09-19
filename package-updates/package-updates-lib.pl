@@ -275,7 +275,7 @@ if (!scalar(@updates_available_cache)) {
 return @updates_available_cache;
 }
 
-# package_install(package, [system])
+# package_install(package-name, [system])
 # Install some package, either from an update system or from Webmin. Returns
 # a list of updated package names.
 sub package_install
@@ -321,6 +321,43 @@ if (defined(&software::update_system_install)) {
 	}
 else {
 	&error("Don't know how to install package $pkg->{'name'} with type $pkg->{'type'}");
+	}
+# Flush installed cache
+unlink($current_cache_file);
+return @rv;
+}
+
+# package_install_multiple(&package-names, system)
+# Install multiple packages, either from an update system or from Webmin.
+# Returns a list of updated package names.
+sub package_install_multiple
+{
+my ($names, $system) = @_;
+my @rv;
+my $pkg;
+
+if (defined(&software::update_system_install)) {
+	# Using some update system, like YUM or APT
+	&clean_environment();
+	if ($software::update_system eq $system) {
+		# Can use the default system
+		@rv = &software::update_system_install(
+			join(" ", @$names), undef, 1);
+		}
+	else {
+		# Another update system exists!! Use it..
+		if (!$done_rhn_lib++) {
+			do "../software/$pkg->{'system'}-lib.pl";
+			}
+		if (!$done_rhn_text++) {
+			%text = ( %text, %software::text );
+			}
+		@rv = &update_system_install(join(" ", @$names), undef, 1);
+		}
+	&reset_environment();
+	}
+else {
+	&error("Don't know how to install packages");
 	}
 # Flush installed cache
 unlink($current_cache_file);
