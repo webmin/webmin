@@ -621,11 +621,13 @@ else {
 		foreach $g ($rv->all_entries) {
 			local @mems = $g->get_value("memberUid");
 			local $gname = $g->get_value("cn");
+			local $ldap_group_id = $g->get_value("gidNumber");
 			if ($renaming) {
 				local $idx = &indexof($olduser, @mems);
 				if ($ingroup{$gname} && $idx<0) {
 					# Need to add to the group
 					push(@mems, $user);
+					push(@sgids, $ldap_group_id);
 					}
 				elsif (!$ingroup{$gname} && $idx>=0) {
 					# Need to remove from the group
@@ -634,6 +636,7 @@ else {
 				elsif ($idx >= 0) {
 					# Need to rename in group
 					$mems[$idx] = $user;
+					push(@sgids, $ldap_group_id);
 					}
 				else { next; }
 				}
@@ -642,11 +645,17 @@ else {
 				if ($ingroup{$gname} && $idx<0) {
 					# Need to add to the group
 					push(@mems, $user);
+					push(@sgids, $ldap_group_id);
 					}
 				elsif (!$ingroup{$gname} && $idx>=0) {
 					# Need to remove from the group
 					splice(@mems, $idx, 1);
 					}
+				elsif ($ingroup{$gname} && $idx >=0) {
+					# already in this group
+                                        push(@sgids, $ldap_group_id);
+					next;
+				        }
 				else { next; }
 				}
 
@@ -669,7 +678,7 @@ else {
 
 	# Run post-change script
 	&set_user_envs(\%user, $in{'new'} ? 'CREATE_USER' : 'MODIFY_USER',
-		       $in{'passmode'} == 3 ? $in{'pass'} : "", undef);
+		       $in{'passmode'} == 3 ? $in{'pass'} : "", \@sgids);
 	&made_changes();
 
 	# Run other modules' scripts
