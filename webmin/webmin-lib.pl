@@ -183,9 +183,11 @@ elsif ($two eq "BZ") {
 
 # Check if this is an RPM webmin module or theme
 my ($type, $redirect_to);
-open(TYPE, "$root_directory/install-type");
-chop($type = <TYPE>);
-close(TYPE);
+$type = "";
+if (open(TYPE, "$root_directory/install-type")) {
+	chop($type = <TYPE>);
+	close(TYPE);
+	}
 my $out;
 if ($type eq 'rpm' && $file =~ /\.rpm$/i &&
     ($out = &backquote_command("rpm -qp $file 2>/dev/null"))) {
@@ -283,7 +285,7 @@ else {
 			}
 		elsif (!$nodeps) {
 			my $deps = $minfo{'webmin_depends'} ||
-				      $minfo{'depends'};
+				   $minfo{'depends'} || "";
 			foreach my $dep (split(/\s+/, $deps)) {
 				if ($dep =~ /^[0-9\.]+$/) {
 					# Depends on some version of webmin
@@ -314,7 +316,7 @@ else {
 					        "<tt>$m</tt>", "<tt>$dep</tt>");
 					}
 				}
-			foreach my $dep (split(/\s+/, $minfo{'perldepends'})) {
+			foreach my $dep (split(/\s+/, $minfo{'perldepends'} || "")) {
 				eval "use $dep";
 				if ($@) {
 					$err = &text('install_eperldep',
