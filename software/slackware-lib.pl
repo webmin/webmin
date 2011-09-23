@@ -2,22 +2,25 @@
 # Functions for slackware package management
 
 $package_dir = "/var/log/packages";
-%class_map = (	'a',	'Base Linux system',
-		'ap',	'Applications',
-		'd',	'Program development',
-		'des',	'Crypt library',
-		'e',	'GNU Emacs',
-		'f',	'FAQs and documentation',
-		'gtk',	'GTK+ and GNOME programs',
-		'k',	'Linux kernel source',
-		'kde',	'KDE desktop and programs',
-		'n',	'Networking',
-		't',	'TeX',
-		'tcl',	'TcL/Tk',
-		'xap',	'X applications',
-		'xd',	'X server development',
-		'xv',	'XView programs',
-		'y',	'Games' );
+%class_map = (  'a', 'Base Slackware system',
+		'ap', 'Linux applications',
+		'd', 'Program development',
+		'e', 'GNU Emacs',
+		'extra', 'Extra Slackware packages',
+		'f', 'FAQs, howtos, and documentation',
+		'gnome', 'GNOME desktop and programs',
+		'k', 'Linux kernel source',
+		'kde', 'KDE desktop and programs',
+		'kdei', 'Language support of KDE',
+		'l', 'Libraries',
+		'n', 'Networking',
+		'pasture', 'Software put to pasture',
+		't', 'TeX',
+		'testing', 'Software in testing',
+		'tcl', 'TcL/Tk',
+		'x', 'X Windows',
+		'xap', 'X applications',
+		'y', 'Classic BSD console games' );
 use POSIX;
 chop($system_arch = `uname -m`);
 
@@ -43,7 +46,8 @@ foreach $f (@list) {
 	while(<PKG>) {
 		if (/^PACKAGE LOCATION:\s+disk([a-z]+)\d+/i ||
 		    /^PACKAGE LOCATION:\s+\S+\/([a-z]+)\/[^\/]+$/i) {
-			$packages{$i,'class'} = $class_map{$1};
+			$packages{$i,'class'} = $class_map{$1} ||
+						$text{'slack_unclass'};
 			}
 		elsif (/^PACKAGE DESCRIPTION:/i) {
 			local $desc = <PKG>;
