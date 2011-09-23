@@ -13,7 +13,7 @@ require './samba-lib.pl';
 &error("$text{'eacl_np'} $text{'eacl_pufmisc'}")
             unless &can('rwoO', \%access, $in{old_name});
 # save
-$whatfailed = $text{'savefmisc_fail'};
+&error_setup($text{'savefmisc_fail'});
 # Random options
 &setval("mangled map", $in{mangled_map});
 &setval("locking", $in{locking});

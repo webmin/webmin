@@ -10,7 +10,7 @@ require './samba-lib.pl';
 &error("$text{'eacl_np'} $text{'eacl_pmusers'}")
         unless $access{'maint_users'} && $access{'view_users'};
 # save		
-$whatfailed = $text{'saveuser_fail'};
+&error_setup($text{'saveuser_fail'});
 &lock_file($config{'smb_passwd'});
 @list = &list_users();
 $u = $list[$in{'idx'}];

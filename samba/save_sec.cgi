@@ -13,7 +13,7 @@ require './samba-lib.pl';
 &error("$text{'eacl_np'} $text{'eacl_pusec'}")
 	        unless &can('rwsS', \%access, $in{old_name});
 # save				
-$whatfailed = $text{'savesec_fail'};
+&error_setup($text{'savesec_fail'});
 &delval("read only");
 &setval("writeable", $in{writeable});
 if ($in{guest} == 0) {

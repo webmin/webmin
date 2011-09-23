@@ -18,7 +18,7 @@ else {
     &error("$text{'eacl_np'} $text{'eacl_pcrs'}") unless $access{'c_ps'};
     }
 
-$whatfailed = $text{'savepshare_fail'};
+&error_setup($text{'savepshare_fail'});
 if ($in{old_name} eq "global") {
 	$name = "global";
 	}

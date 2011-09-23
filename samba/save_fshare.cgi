@@ -18,7 +18,7 @@ else {
     &error("$text{'eacl_np'} $text{'eacl_pcrs'}") unless $access{'c_fs'};
 	}
 
-$whatfailed = $text{'savefshare_fail'};
+&error_setup($text{'savefshare_fail'});
 # store share options
 if ($in{old_name} eq "global") {
 	$name = "global";

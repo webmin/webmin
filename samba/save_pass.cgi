@@ -12,7 +12,7 @@ $global = &get_share("global");
 &error_setup("<blink><font color=red>$text{'eacl_aviol'}</font></blink>");
 &error("$text{'eacl_np'} $text{'eacl_pcp'}") unless $access{'conf_pass'};
 
-$whatfailed = $text{'savepass_fail'};
+&error_setup($text{'savepass_fail'});
 $nopass = (`$config{samba_password_program} 2>&1 </dev/null` =~ /encryption not selected/);
 if ($in{encrypt_passwords} eq "yes" && $nopass) {
 	&error($text{'savepass_nopass'});

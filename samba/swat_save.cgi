@@ -10,7 +10,7 @@ require './samba-lib.pl';
 &error_setup("<blink><font color=red>$text{'eacl_aviol'}</font></blink>");
 &error("$text{'eacl_np'} $text{'eacl_pcswat'}") unless $access{'swat'};
  
-$whatfailed = $text{'swats_fail'};
+&error_setup($text{'swats_fail'});
 $in{'user'} || &error($text{'swats_user'});
 &write_file("$module_config_directory/swat", { 'user' => $in{'user'},
 					       'pass' => $in{'pass'} });

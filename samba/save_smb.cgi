@@ -12,7 +12,7 @@ $global = &get_share("global");
 &error_setup("<blink><font color=red>$text{'eacl_aviol'}</font></blink>");
 &error("$text{'eacl_np'} $text{'eacl_pcs'}") unless $access{'conf_smb'};
 
-$whatfailed = $text{'savesmb_fail'};
+&error_setup($text{'savesmb_fail'});
 &setval("workgroup", $in{workgroup_def} ? "" : $in{workgroup}, "");
 
 if ($in{'wins'} == 0) {

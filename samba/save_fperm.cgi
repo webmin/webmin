@@ -13,7 +13,7 @@ require './samba-lib.pl';
 &error("$text{'eacl_np'} $text{'eacl_pufperm'}")
             unless &can('rwpP', \%access, $in{old_name});
 # save
-$whatfailed = $text{'savefperm_fail'};
+&error_setup($text{'savefperm_fail'});
 # File nameing options
 $in{create_mode} =~ /^0?[0-7]{3}$/ ||
 	&error(&text('savefperm_mode', $in{create_mode}));

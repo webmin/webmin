@@ -12,7 +12,7 @@ $global = &get_share("global");
 &error_setup("<blink><font color=red>$text{'eacl_aviol'}</font></blink>");
 &error("$text{'eacl_np'} $text{'eacl_pcprint'}") unless $access{'conf_print'};
  
-$whatfailed = $text{'saveprint_fail'};
+&error_setup($text{'saveprint_fail'});
 &setval("printing", $in{printing}, "");
 
 &setval("load printers", $in{load_printers}, "");

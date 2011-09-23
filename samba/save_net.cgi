@@ -12,7 +12,7 @@ $global = &get_share("global");
 &error_setup("<blink><font color=red>$text{'eacl_aviol'}</font></blink>");
 &error("$text{'eacl_np'} $text{'eacl_pcn'}") unless $access{'conf_net'};
 
-$whatfailed = $text{'savenet_fail'};
+&error_setup($text{'savenet_fail'});
 if (!$in{dead_time_def} && $in{dead_time} !~ /^\d+$/) {
 	&error(&text('savenet_timeout', $in{dead_time}));
 	}

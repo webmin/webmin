@@ -13,7 +13,7 @@ require './samba-lib.pl';
 &error("$text{'eacl_np'} $text{'eacl_pupopt'}")
   		unless &can('rwoO', \%access, $in{old_name});
 # save
-$whatfailed = $text{'savepopts_fail'};
+&error_setup($text{'savepopts_fail'});
 # printer options
 $in{min_print_space} =~ /^\d+$/ ||
 	&error($text{'savepopts_number'});

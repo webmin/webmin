@@ -12,7 +12,7 @@ $global = &get_share("global");
 &error_setup("<blink><font color=red>$text{'eacl_aviol'}</font></blink>");
 &error("$text{'eacl_np'} $text{'eacl_pcm'}") unless $access{'conf_misc'};
  
-$whatfailed = $text{'savemisc_fail'};
+&error_setup($text{'savemisc_fail'});
 &setval("debug level", $in{debug_level}, "");
 
 &setval("getwd cache", $in{getwd_cache}, "no");

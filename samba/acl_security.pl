@@ -221,7 +221,6 @@ print "</table> </td> </tr>\n";
 sub acl_security_save
 {
 if ($in{'r_fs'} < $in{'w_fs'} || $in{'r_ps'} < $in{'w_ps'}) {
-	$whatfailed = $text{'acl_err'};
 	&error($text{'acl_ernow'});
 	}
 $_[0]->{'apply'}=$in{'apply'};

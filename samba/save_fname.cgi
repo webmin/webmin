@@ -13,7 +13,7 @@ require './samba-lib.pl';
 &error("$text{'eacl_np'} $text{'eacl_pufname'}")
             unless &can('rwnN', \%access, $in{old_name});
 # save
-$whatfailed = $text{'error_savename'};
+&error_setup($text{'error_savename'});
 # File nameing options
 &setval("mangle case", $in{mangle_case});
 &setval("case sensitive", $in{case_sensitive});
