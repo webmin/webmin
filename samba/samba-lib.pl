@@ -570,6 +570,16 @@ close(PASS);
 return @rv;
 }
 
+# smbpasswd_cmd(args)
+# Returns the full smbpasswd command with extra args
+sub smbpasswd_cmd
+{
+my ($args) = @_;
+return $config{'samba_password_program'}.
+       ($samba_version >= 3 ? " -c " : " -s ").
+       $config{'smb_conf'}." ".$args;
+}
+
 # create_user(&user)
 # Add a user to the samba password file
 sub create_user
@@ -588,12 +598,12 @@ if ($has_pdbedit) {
 else {
 	# Try using smbpasswd -a
 	local $out = &backquote_logged(
-		"cd / && $config{'samba_password_program'} ".
-		"-s $config{'smb_conf'} -a ".
-		(&indexof("D", @{$_[0]->{'opts'}}) >= 0 ? "-d " : "").
-		(&indexof("N", @{$_[0]->{'opts'}}) >= 0 ? "-n " : "").
-		(&indexof("W", @{$_[0]->{'opts'}}) >= 0 ? "-m " : "").
-		quotemeta($_[0]->{'name'}));
+		"cd / && ".&smbpasswd_cmd(
+		  "-a ".
+		  (&indexof("D", @{$_[0]->{'opts'}}) >= 0 ? "-d " : "").
+		  (&indexof("N", @{$_[0]->{'opts'}}) >= 0 ? "-n " : "").
+		  (&indexof("W", @{$_[0]->{'opts'}}) >= 0 ? "-m " : "").
+		  quotemeta($_[0]->{'name'})));
 	if ($?) {
 		# Add direct to Samba password file
 		&open_tempfile(PASS, ">>$config{'smb_passwd'}");
@@ -634,11 +644,10 @@ else {
 	if (!$_[0]->{'oldname'} || $_[0]->{'oldname'} eq $_[0]->{'name'}) {
 		# Try using smbpasswd command
 		local $out = &backquote_logged(
-			"cd / && $config{'samba_password_program'} ".
-			"-s $config{'smb_conf'} ".
-			(&indexof("D", @{$_[0]->{'opts'}}) >= 0 ? "-d "
-								: "-e ").
-			quotemeta($_[0]->{'name'}));
+			"cd / && ".&smbpasswd_cmd(
+			  (&indexof("D", @{$_[0]->{'opts'}}) >= 0 ? "-d "
+			  					  : "-e ").
+			  quotemeta($_[0]->{'name'})));
 		}
 
 	# Also directly update the Samba password file
@@ -661,8 +670,7 @@ if ($has_pdbedit) {
 else {
 	# Try the smbpasswd command
 	local $out = &backquote_logged(
-		"cd / && $config{'samba_password_program'} ".
-		"-s $config{'smb_conf'} -x ".quotemeta($_[0]->{'name'}));
+		"cd / && ".&smbpasswd_cmd("-x ".quotemeta($_[0]->{'name'})));
 	if ($?) {
 		# Just remove from the Samba password file
 		&replace_file_line($config{'smb_passwd'}, $_[0]->{'line'});
@@ -693,12 +701,8 @@ local $qu = quotemeta($_[0]);
 local $qp = quotemeta($_[1]);
 if ($samba_version >= 2) {
 	local $passin = "$_[1]\n$_[1]\n";
-	local $ex = &execute_command("$config{'samba_password_program'} -c $config{'smb_conf'} -s $qu", \$passin, $_[2], $_[2]);
-	if ($ex) {
-		# Try without -c 
-		${$_[2]} = '' if ($_[2]);
-		$rv = &execute_command("$config{'samba_password_program'} -s $qu", \$passin, $_[2], $_[2]);
-		}
+	local $ex = &execute_command(
+		&smbpasswd_cmd("-s $qu"), \$passin, $_[2], $_[2]);
 	unlink($temp);
 	return !$rv;
 	}
