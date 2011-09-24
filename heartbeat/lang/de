@@ -17,17 +17,27 @@ conf_ekeepalive=Fehlende oder ung&#252;ltige Zeit zwischen heartbeats
 conf_elogfile=Fehlender oder ung&#252;ltiger Log Dateiname
 conf_emcast_dev=Fehlendes oder ung&#252;ltiges Multicast-Ger&#228;t
 conf_enabled=Aktiviert
+conf_eudpport=Fehlender oder ung&#252;ltiger Heartbeat-Port
 conf_header=Heartbeat Konfigurationsoptionen
 conf_keepalive=Zeit zwischen heartbeats
+conf_logfile=Heartbeat Logdatei
 conf_mcastv=Ger&#228;t $1, Gruppe $2, Port $3, TTL $4, loopback $5
+conf_node=Hosts in Cluster
 conf_ok=Speichere Optionen
 conf_secs=Sekunden
 conf_serials=Serielle heartbeat Ports
 conf_title=Konfigurationsoptionen
 conf_udpport=UDP heartbeat Port
 index_apply=&#196;nderungen anwenden
+index_applymsg=Klicken Sie auf diese Schaltfl&#228;che, um den laufenden Heartbeat-Monitor-Prozess zu forcieren die aktuelle Konfiguration neu zu laden.
+index_eauthkeys=Die Authentifizierungsschl&#252;ssel Datei $1 wurde nicht auf Ihrem System gefunden. Vielleicht ist diese bisher nicht an den richtigen Ort kopiert worden oder <a href='$2'>Modulkonfiguration</a> ist falsch.
+index_edir=Das Heartbeat-Konfigurationsverzeichnis $1 existiert nicht. Vielleicht ist Heartbeat nicht installiert oder Ihre <a href='$2'>Modulkonfiguration</a> ist falsch.
+index_eha_cf=Die Heartbeat Konfigurationsdatei $1 wurde nicht auf Ihrem System gefunden. Vielleicht ist diese nicht bisher nicht an den richtigen Ort kopiert worden oder die <a href='$2'>Modulkonfiguration</a> ist falsch.
+index_eharesources=Die Ressourcen-Datei $1 nicht auf Ihrem System gefunden. Vielleicht wurde diese bisher nicht an den richtigen Ort kopiert oder die <a href='$2'>Modulkonfiguration</a> ist falsch.
+index_noversion=Warnung - Die Version von Heartbeat, welche auf Ihrem System installiert ist, konnte nicht automatisch erkannt werden. Sie sollten es auf der <a href='$1'>Modulkonfigurations</a>-Seite einstellen.
 index_return=heartbeat Monitor
 index_start=Starte Heartbeat Monitor
+index_startmsg=Klicken Sie auf diese Schaltfl&#228;che, um den Heartbeat-Monitor zu starten. Dies erm&#246;glicht die automatische Service-Failover auf Ihrem System mit der aktuellen Konfiguration.
 index_status=Heartbeat Status
 index_title=Heartbeat Monitor
 index_version=Heartbeat Version $1
