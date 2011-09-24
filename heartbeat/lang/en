@@ -10,7 +10,7 @@ index_eharesources=The resources file $1 was not found on your system. Maybe it 
 index_eauthkeys=The authentication keys file $1 was not found on your system. Maybe it has not been copied into place yet, or the <a href='$2'>module configuration</a> is incorrect.
 index_ereq_resource_cmd=The script to request resources from the other node ($1) was not found on your system. Maybe it has not been copied into place yet, or the <a href='$2'>module configuration</a> is incorrect.
 index_version=Heartbeat version $1
-index_noversion=Warning - The version of Heartbeat installed on your system could not be automatically detected. You should set it on the <a href='$1'>module confguration</a> page.
+index_noversion=Warning - The version of Heartbeat installed on your system could not be automatically detected. You should set it on the <a href='$1'>module configuration</a> page.
 index_status=Heartbeat status
 
 conf_title=Configuration Options
