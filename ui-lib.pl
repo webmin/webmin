@@ -264,7 +264,7 @@ $rv .= "</tr>\n";
 return $rv;
 }
 
-=head2 ui_checked_columns_row(&columns, &tdtags, checkname, checkvalue, [checked?], [disabled])
+=head2 ui_checked_columns_row(&columns, &tdtags, checkname, checkvalue, [checked?], [disabled], [tags])
 
 Returns HTML for a row in a multi-column table, in which the first column 
 contains a checkbox. The parameters are :
@@ -281,15 +281,17 @@ contains a checkbox. The parameters are :
 
 =item disabled - Set to 1 if the checkbox should be disabled and thus un-clickable.
 
+=item tags - Extra HTML tags to include in the radio button.
+
 =cut
 sub ui_checked_columns_row
 {
 return &theme_ui_checked_columns_row(@_) if (defined(&theme_ui_checked_columns_row));
-my ($cols, $tdtags, $checkname, $checkvalue, $checked, $disabled) = @_;
+my ($cols, $tdtags, $checkname, $checkvalue, $checked, $disabled, $tags) = @_;
 my $rv;
 $rv .= "<tr $cb class='ui_checked_columns'>\n";
 $rv .= "<td class='ui_checked_checkbox' ".$tdtags->[0].">".
-       &ui_checkbox($checkname, $checkvalue, undef, $checked, undef, $disabled).
+       &ui_checkbox($checkname, $checkvalue, undef, $checked, $tags, $disabled).
        "</td>\n";
 my $i;
 for($i=0; $i<@$cols; $i++) {
@@ -308,7 +310,7 @@ $rv .= "</tr>\n";
 return $rv;
 }
 
-=head2 ui_radio_columns_row(&columns, &tdtags, checkname, checkvalue, [checked], [disabled])
+=head2 ui_radio_columns_row(&columns, &tdtags, checkname, checkvalue, [checked], [disabled], [tags])
 
 Returns HTML for a row in a multi-column table, in which the first
 column is a radio button. The parameters are :
@@ -325,11 +327,13 @@ column is a radio button. The parameters are :
 
 =item disabled - Set to 1 if the radio button should be disabled and thus un-clickable.
 
+=item tags - Extra HTML tags to include in the radio button.
+
 =cut
 sub ui_radio_columns_row
 {
 return &theme_ui_radio_columns_row(@_) if (defined(&theme_ui_radio_columns_row));
-my ($cols, $tdtags, $checkname, $checkvalue, $checked, $dis) = @_;
+my ($cols, $tdtags, $checkname, $checkvalue, $checked, $dis, $tags) = @_;
 my $rv;
 $rv .= "<tr $cb class='ui_radio_columns'>\n";
 $rv .= "<td class='ui_radio_radio' ".$tdtags->[0].">".
@@ -441,13 +445,15 @@ foreach my $r (@$data) {
 			# Checkbox in non-first column
 			push(@cols, &ui_checkbox($c->{'name'}, $c->{'value'},
 					         $c->{'label'}, $c->{'checked'},
-						 undef, $c->{'disabled'}));
+						 $c->{'tags'},
+						 $c->{'disabled'}));
 			}
 		elsif ($c->{'type'} eq 'radio') {
 			# Radio button in non-first column
 			push(@cols, &ui_oneradio($c->{'name'}, $c->{'value'},
 					         $c->{'label'}, $c->{'checked'},
-						 undef, $c->{'disabled'}));
+						 $c->{'tags'},
+						 $c->{'disabled'}));
 			}
 		elsif ($c->{'type'} eq 'group') {
 			# Header row that spans whole table
@@ -475,12 +481,14 @@ foreach my $r (@$data) {
 	elsif ($c0->{'type'} eq 'checkbox') {
 		$rv .= &ui_checked_columns_row(\@cols, \@rtds, $c0->{'name'},
 					       $c0->{'value'}, $c0->{'checked'},
-					       $c0->{'disabled'});
+					       $c0->{'disabled'},
+					       $c0->{'tags'});
 		}
 	elsif ($c0->{'type'} eq 'radio') {
 		$rv .= &ui_radio_columns_row(\@cols, \@rtds, $c0->{'name'},
 					     $c0->{'value'}, $c0->{'checked'},
-					     $c0->{'disabled'});
+					     $c0->{'disabled'},
+					     $c0->{'tags'});
 		}
 	}
 
