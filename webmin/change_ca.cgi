@@ -6,7 +6,9 @@ require './webmin-lib.pl';
 &ReadParseMime();
 &lock_file($ENV{'MINISERV_CONFIG'});
 &get_miniserv_config(\%miniserv);
-&setup_ca() if (!$miniserv{'ca'});
+if (!$miniserv{'ca'}) {
+	&setup_ca(\%miniserv);
+	}
 
 &lock_file($miniserv{'ca'});
 &open_tempfile(CA, ">$miniserv{'ca'}");
