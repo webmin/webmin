@@ -87,7 +87,7 @@ general_header=Generelle <i>Frox/<i>-Benutzer-, Gruppen- und Dateioptionen
 general_nowhere=Nirgendwo
 general_title=Generelle Optionen
 index_apply=Konfiguration anwenden
-index_applydesc=KLicken Sie auf diesen Button, um die momentane <i>Frox</i>-Konfiguration durch das Senden eines HUP-Signals an seinen Prozess anzuwenden.
+index_applydesc=Klicken Sie auf diesen Button, um die momentane <i>Frox</i>-Konfiguration durch das Senden eines HUP-Signals an seinen Prozess anzuwenden.
 index_ecmd=Das <i>Frox</i>-Serverprogramm $1 wurde auf Ihrem System nicht gefunden. Entweder ist es nicht installiert, oder Ihre <a href='$2'>Modulkonfiguration</a> ist fehlerhaft.
 index_econf=Die <i>Frox</i>-Konfigurationsdatei $1 wurde auf Ihrem System nicht gefunden. Entweder ist es nicht installiert, oder Ihre <a href='$2'>Modulkonfiguration</a> ist fehlerhaft.
 index_inetd=<i>Frox</i> wurde f&#252;r den Start aus <i>inetd</i> konfiguriert und kann deswegen nicht &#252;ber dieses Modul gestartet oder gestoppt werden.
@@ -102,7 +102,7 @@ iptables_disabled=Port-Umleitung ist abgeschaltet.
 iptables_eapply=Anwenden fehlgeschlagen : $1
 iptables_eiface=Fehlendes oder ung&#252;ltiges Netzwerk-Interface
 iptables_enabled=Port-Umleitung ist f&#252;r Clients des Netzwerkes $1 eingeschaltet
-iptables_enabled2=Port-Umleitung ist f&#252;r Clients auf dem Interface $1 aktiviert
+iptables_enabled2=Port-Umleitung ist f&#252;r Clients auf der Schnittstelle $1 aktiviert
 iptables_enet=Fehlende oder ung&#252;ltige Netzwerkadresse (muss z.B. 192.168.1.0/24 sein)
 iptables_err=Konnte Port-Weiterleitung nicht speichern
 iptables_inst0=Die <i>IPtables</i>-Firewallbefehle, die f&#252;r die Einrichtung der Port-Umleitung ben&#246;tigt werden, scheinen auf Ihrem System nicht installiert zu sein. Bitte schauen Sie sich hierf&#252;r das <a href='$1'>Linux Firewall</a>-Modul n&#228;her an.
