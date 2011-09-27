@@ -3,14 +3,25 @@
 
 use Time::Local;
 
+sub get_ps_version
+{
+if (!$get_ps_version_cache) {
+	local $out = &backquote_command("ps V 2>&1");
+	if ($out =~ /version\s+([0-9\.]+)\./) {
+		$get_ps_version_cache = $1;
+		}
+	}
+return $get_ps_version_cache;
+}
+
 sub list_processes
 {
 local($pcmd, $line, $i, %pidmap, @plist, $dummy, @w, $_);
-local $out = &backquote_command("ps V 2>&1");
-if ($out =~ /version\s+([0-9\.]+)\./ && $1 >= 2 || $out =~ /version\s+\./) {
+local $ver = &get_ps_version();
+if ($ver >= 2) {
 	# New version of ps, as found in redhat 6
 	local $width;
-	if ($1 >= 3.2) {
+	if ($ver >= 3.2) {
 		# Use width format character if allowed
 		$width = ":80";
 		}
