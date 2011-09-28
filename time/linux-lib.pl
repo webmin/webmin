@@ -26,6 +26,7 @@ while(<ZONE>) {
 	}
 close(ZONE);
 push(@rv, [ "GMT", "GMT" ]) if (!$done{'GMT'});
+push(@rv, [ "UTC", "UTC" ]) if (!$done{'UTC'});
 return sort { $a->[0] cmp $b->[0] } @rv;
 }
 
