@@ -43,3 +43,5 @@ Hostname, IP address and MAC address clashes are now only checked for in the sam
 Multiple leases can now be deleted at once, thanks to a suggestion from Berni Elbourn.
 ---- Changes since 1.540 ----
 Added a Module Config option to automatically refresh the lease list every few seconds, and a link to force a manual refresh.
+---- Changes since 1.560 ----
+Added a client option for subnets and groups for DNS domains to search.

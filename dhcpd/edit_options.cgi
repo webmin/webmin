@@ -82,6 +82,10 @@ print &option_input($text{'eopt_dnsserv'}, "domain-name-servers", \@opts, 2);
 print "</tr>\n";
 
 print "<tr>\n";
+print &option_input($text{'eopt_domsearch'}, "domain-search", \@opts, 6);
+print "</tr>\n";
+
+print "<tr>\n";
 print &option_input($text{'eopt_timeserv'}, "time-servers", \@opts, 2);
 print &option_input($text{'eopt_logserv'}, "log-servers", \@opts, 2);
 print "</tr>\n";
@@ -230,6 +234,7 @@ print "<input type=submit value=\"$text{'save'}\"></form>\n"
 #		3  - String
 #		4  - Yes/no flag
 #		5  - IP address pairs
+#		6  - String list
 sub option_input
 {
 local($rv, $v, $i);
@@ -240,7 +245,7 @@ for($i=0; $i<@{$_[2]}; $i++) {
 		}
 	}
 $rv = "<td><b>$_[0]</b></td>\n";
-if ($_[3] == 5 || $_[4]) { $rv .= "<td colspan=3 nowrap>"; }
+if ($_[3] == 5 || $_[3] == 6 || $_[4]) { $rv .= "<td colspan=3 nowrap>"; }
 else { $rv .= "<td nowrap>"; }
 $rv .= sprintf "<input type=radio name=$_[1]_def value=1 %s> $text{'default'}\n",
 	$v ? "" : "checked";
@@ -280,6 +285,10 @@ elsif ($_[3] == 5) {
 		$rv .= $vl[$i].",".$vl[$i+1];
 		}
 	$rv .= "\">\n";
+	}
+elsif ($_[3] == 6) {
+	@vl = map { s/,//g; $_ } grep { $_ ne "," } @vl;
+	$rv .= "<input name=$_[1] size=50 value=\"".join(" ", @vl)."\">\n";
 	}
 if ($_[4]) {
 	$rv .= &ui_checkbox($_[1]."_bool", 1, $_[4], lc($bool) eq "true");

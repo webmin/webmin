@@ -49,6 +49,7 @@ else {
 &save_option("broadcast-address", 0, $client, $indent);
 &save_option("domain-name", 3, $client, $indent);
 &save_option("domain-name-servers", 2, $client, $indent);
+&save_option("domain-search", 6, $client, $indent);
 &save_option("time-servers", 2, $client, $indent);
 &save_option("log-servers", 2, $client, $indent);
 &save_option("swap-server", 2, $client, $indent);
@@ -227,8 +228,7 @@ else {
 		$nv =~ /^-?\d+$/ || &error("'$nv' $text{'sopt_invalidint'}");
 		}
 	elsif ($_[1] == 2) {
-		local $ip;
-		foreach $ip (@nv) {
+		foreach my $ip (@nv) {
 			&to_ipaddress($ip) ||
 				&error("'$ip' $text{'sopt_invalidip'}");
 			}
@@ -249,6 +249,9 @@ else {
 			push(@nnv, "$1 $2");
 			}
 		$nv = join(", ", @nnv);
+		}
+	elsif ($_[1] == 6) {
+		$nv = join(", ", map { "\"$_\"" } @nv);
 		}
 	local @bool = !$_[4] ? ( ) :
 		      $in{$_[0]."_bool"} ? ( "true" ) : ( "false" );

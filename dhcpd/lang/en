@@ -277,6 +277,7 @@ eopt_smask=Subnet mask
 eopt_baddr=Broadcast address
 eopt_domname=Domain name
 eopt_dnsserv=DNS servers
+eopt_domsearch=DNS domains to search
 eopt_timeserv=Time servers
 eopt_logserv=Log servers
 eopt_swapserv=Swap server
