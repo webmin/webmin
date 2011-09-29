@@ -200,6 +200,16 @@ else {
 		$in{'quota'} =~ /^\d+$/ || &error($text{'usave_equota'});
 		$quota = $in{'quota'};
 		}
+	
+	#load main user group
+	if ($in{'gid'} =~ /^\d+$/) {
+		$gid = $in{'gid'};
+		}
+	else {
+		$gid = &all_getgrnam($in{'gid'});
+		defined($gid) || &error(&text('usave_egid', $in{'gid'}));
+		}
+	$grp = &all_getgrgid($gid);
 
 	# Compute and validate home directory
 	if ($access{'autohome'}) {
@@ -211,7 +221,7 @@ else {
 			}
 		}
 	elsif ($mconfig{'home_base'} && $in{'home_base'}) {
-		$home = &auto_home_dir($mconfig{'home_base'}, $user);
+		$home = &auto_home_dir($mconfig{'home_base'}, $user, $grp);
 		}
 	else {
 		$home = $in{'home'};
@@ -258,14 +268,6 @@ else {
 	if ($in{'disable'} && ($in{'passmode'} == 2 || $in{'passmode'} == 3)) {
 		$pass = $useradmin::disable_string.$pass;
 		}
-	if ($in{'gid'} =~ /^\d+$/) {
-		$gid = $in{'gid'};
-		}
-	else {
-		$gid = &all_getgrnam($in{'gid'});
-		defined($gid) || &error(&text('usave_egid', $in{'gid'}));
-		}
-	$grp = &all_getgrgid($gid);
 
 	# Build useradmin-style hash of user details
 	local %uhash = ( 'user' => $user,
