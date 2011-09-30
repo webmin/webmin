@@ -433,7 +433,7 @@ how this can be used :
 sub filesystem_users
 {
 return &parse_repquota_output(
-	"$config{'user_repquota_command'} $_[0]", "user");
+	$config{'user_repquota_command'}, \%user, "user", $_[0]);
 }
 
 =head2 filesystem_groups(filesystem)
@@ -446,25 +446,25 @@ documented in the filesystem_users function.
 sub filesystem_groups
 {
 return &parse_repquota_output(
-	"$config{'group_repquota_command'} $_[0]", "group");
+	$config{'group_repquota_command'}, \%group, "group", $_[0]);
 }
 
-=head2 parse_repquota_output(hashname, command)
+=head2 parse_repquota_output(command, hashname, dir)
 
 Internal function to parse the output of the repquota command.
 
 =cut
 sub parse_repquota_output
 {
-local($rep, @rep, $n, $what, $u, @uinfo);
-$what = $_[1];
-$$what = ( );
-$rep = &backquote_command("$_[0] 2>&1");
+local ($cmd, $what, $mode, $dir) = @_;
+local($rep, @rep, $n, $u, @uinfo);
+%$what = ( );
+$rep = &backquote_command("$cmd $dir 2>&1");
 if ($?) { return -1; }
-local $st = &supports_status($_[0], $what);
+local $st = &supports_status($dir, $mode);
 if (!$st) {
 	# Older system, need to build username map to identify truncation
-	if ($what eq 'user') {
+	if ($mode eq 'user') {
 		setpwent();
 		while(@uinfo = getpwent()) {
 			$hasu{$uinfo[0]}++;
@@ -486,30 +486,30 @@ for($n=0; $n<@rep; $n++) {
 	if ($rep[$n] =~ /^\s*(\S.*\S|\S)\s+[\-\+]{2}\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)(.*)/ ||
 	    $rep[$n] =~ /^\s*(\S.*\S|\S)\s+[\-\+]{2}\s+(\S+)\s+(\S+)\s+(\S+)(.{7})\s+(\S+)\s+(\S+)\s+(\S+)(.*)/ ||
 	    $rep[$n] =~ /([^\-\s]\S*)\s*[\-\+]{2}(.{8})(.{8})(.{8})(.{7})(.{8})(.{6})(.{6})(.*)/) {
-		$$what{$nn,$what} = $1;
-		$$what{$nn,'ublocks'} = int($2);
-		$$what{$nn,'sblocks'} = int($3);
-		$$what{$nn,'hblocks'} = int($4);
-		$$what{$nn,'gblocks'} = $5;
-		$$what{$nn,'ufiles'} = int($6);
-		$$what{$nn,'sfiles'} = int($7);
-		$$what{$nn,'hfiles'} = int($8);
-		$$what{$nn,'gfiles'} = $9;
-		if (!$st && $$what{$nn,$what} !~ /^\d+$/ &&
-			    !$hasu{$$what{$nn,$what}}) {
+		$what->{$nn,$mode} = $1;
+		$what->{$nn,'ublocks'} = int($2);
+		$what->{$nn,'sblocks'} = int($3);
+		$what->{$nn,'hblocks'} = int($4);
+		$what->{$nn,'gblocks'} = $5;
+		$what->{$nn,'ufiles'} = int($6);
+		$what->{$nn,'sfiles'} = int($7);
+		$what->{$nn,'hfiles'} = int($8);
+		$what->{$nn,'gfiles'} = $9;
+		if (!$st && $what->{$nn,$mode} !~ /^\d+$/ &&
+			    !$hasu{$what->{$nn,$mode}}) {
 			# User/group name was truncated! Try to find him..
 			foreach $u (keys %hasu) {
-				if (substr($u, 0, length($$what{$nn,$what})) eq
-				    $$what{$nn,$what}) {
+				if (substr($u, 0, length($what->{$nn,$mode})) eq
+				    $what->{$nn,$what}) {
 					# found him..
-					$$what{$nn,$what} = $u;
+					$what->{$nn,$mode} = $u;
 					last;
 					}
 				}
 			}
-		next if ($already{$$what{$nn,$what}}++); # skip dupe users
-		$$what{$nn,'gblocks'} = &trunc_space($$what{$nn,'gblocks'});
-		$$what{$nn,'gfiles'} = &trunc_space($$what{$nn,'gfiles'});
+		next if ($already{$what->{$nn,$mode}}++); # skip dupe users
+		$what->{$nn,'gblocks'} = &trunc_space($what->{$nn,'gblocks'});
+		$what->{$nn,'gfiles'} = &trunc_space($what->{$nn,'gfiles'});
 		$nn++;
 		}
 	}
