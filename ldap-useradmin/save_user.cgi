@@ -863,11 +863,20 @@ if (&in_schema($schema, "shadowLastChange")) {
 	else {
 		push(@rprops, "shadowInactive");
 		}
-	if ($in{'passmode'} == 3 ||
-	    $in{'passmode'} == 2 && $pass ne $oldpass) {
+	if ($in{'forcechange'} == 1){
+	    if ($in{'passmode'} != 1) {
+		push(@props, "shadowLastChange", 0);
+	    }
+	} else {
+	    if ($in{'passmode'} == 3 ||
+		$in{'passmode'} == 2 && $pass ne $oldpass) {
+	
 		$daynow = int(time() / (60*60*24));
 		push(@props, "shadowLastChange", $daynow);
-		}
+	    }
+
+        }
+	
 	return 1;
 	}
 else {

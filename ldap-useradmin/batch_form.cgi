@@ -70,6 +70,10 @@ print &ui_table_row($text{'batch_delhome'},
 print &ui_table_row($text{'batch_crypt'},
         &ui_yesno_radio("crypt", 0));
 
+#Force change password at next login
+print &ui_table_row($text{'uedit_forcechange'},
+        &ui_yesno_radio("forcechange", 0));
+
 # Create Samba account
 print &ui_table_row($text{'batch_samba'},
 	&ui_yesno_radio("samba", $config{'samba_def'} ? 1 : 0));

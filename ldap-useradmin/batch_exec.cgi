@@ -61,8 +61,14 @@ LINE: foreach $line (split(/[\r\n]+/, $data)) {
 			$user{'warn'} = $line[10];
 			$user{'inactive'} = $line[11];
 			$user{'expire'} = $line[12];
-			$user{'change'} = $line[2] eq '' ? '' :
+			&webmin_debug_log('ldap-batch',"going to set shadow last change");
+			if ($in{'forcechange'} == 1){
+			    $user{'change'} = 0;
+			} else {
+			    $user{'change'} = $line[2] eq '' ? '' :
 						int(time() / (60*60*24));
+			}
+			&webmin_debug_log('ldap-batch',"finished to set change");
 			@attrs = @line[13 .. $#line];
 			}
 		else {
@@ -422,8 +428,11 @@ LINE: foreach $line (split(/[\r\n]+/, $data)) {
 			$user{'inactive'}=$line[12]
 				if ($line[12] ne '');
 			$user{'expire'}=$line[13] if ($line[13] ne '');
-			$user{'change'}=int(time() / (60*60*24))
-				if ($line[3] ne '');
+			if ($in{'forcechange'} == 1){
+			    $user{'change'} = 0;
+			} elsif ($line[3] ne ''){
+			    $user{'change'}= int(time() / (60*60*24));
+			    }
 			}
 
 		# Work out Samba properties

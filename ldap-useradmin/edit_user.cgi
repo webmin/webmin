@@ -259,6 +259,12 @@ if (&in_schema($schema, "shadowLastChange")) {
                 &ui_textbox("inactive", $in{'new'} ?$mconfig{'default_inactive'}
 					           : $inactive, 5));
 
+	# Force password change at next login
+	print &ui_table_row(
+		$text{'uedit_forcechange'},
+			&ui_yesno_radio("forcechange", 0));
+
+
 	print &ui_table_end();
 	}
 
