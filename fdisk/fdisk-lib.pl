@@ -27,7 +27,8 @@ elsif ($config{'mode'} eq 'fdisk') {
 	$has_parted = 0;
 	}
 else {
-	$has_parted = !$config{'noparted'} && &has_command("parted");
+	$has_parted = !$config{'noparted'} && &has_command("parted") &&
+		      &get_parted_version() >= 1.8;
 	}
 $| = 1;
 
@@ -1546,6 +1547,14 @@ if ($has_parted) {
 else {
 	return ( 'msdos' );
 	}
+}
+
+# get_parted_version()
+# Returns the version number of parted that is installed
+sub get_parted_version
+{
+my $out = &backquote_command("parted -v 2>&1 </dev/null");
+return $out =~ /parted.*\s([0-9\.]+)/i ? $1 : undef;
 }
 
 1;
