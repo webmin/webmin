@@ -24,12 +24,13 @@ if (&get_product_name() eq 'usermin') {
 %access = &get_module_acl();
 
 # Work out root directory
+local @uinfo = getpwnam($remote_user);
 if (!$access{'root'}) {
-	local @uinfo = getpwnam($remote_user);
 	$rootdir = $uinfo[7] ? $uinfo[7] : "/";
 	}
 else {
 	$rootdir = $access{'root'};
+	$rootdir =~ s/^\~/$uinfo[7]/;
 	}
 
 # Switch to correct Unix user
