@@ -313,6 +313,16 @@ user_ssl=Required certificate type
 user_ssl_=None
 user_ssl_any=SSL
 user_ssl_x509=X509
+user_max_user_connections=Maximum concurrent logins
+user_max_connections=Maximum connections per hour
+user_max_updates=Maximum updates per hour
+user_max_questions=Maximum queries per hour
+user_maxunlimited=Unlimited
+user_maxatmost=At most
+user_emax_user_connections=Maximum concurrent logins must be a number
+user_emax_connections=Maximum connections per hour must be a number
+user_emax_updates=Maximum updates per hour must be a number
+user_emax_questions=Maximum queries per hour must be a number
 
 dbs_title=Database Permissions
 dbs_db=Databases

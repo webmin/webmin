@@ -49,20 +49,35 @@ else {
 	if ($in{'mysqlpass_mode'} == 0) {
 		$esc = &escapestr($in{'mysqlpass'});
 		&execute_sql_logged($master_db,
-		    "update user set password = $password_func('$esc') ".
-		    "where user = '$user' and host = '$host'");
+			"update user set password = $password_func('$esc') ".
+			"where user = ? and host = ?",
+			$user, $host);
 		}
 	elsif ($in{'mysqlpass_mode'} == 2) {
 		&execute_sql_logged($master_db,
 			"update user set password = NULL ".
-			"where user = '$user' and host = '$host'");
+			"where user = ? and host = ?",
+			$user, $host);
+		}
+
+	# Save various limits
+	foreach $f ('max_user_connections', 'max_connections',
+		    'max_questions', 'max_updates') {
+		next if ($mysql_version < 5 || !defined($in{$f.'_def'}));
+		$in{$f.'_def'} || $in{$f} =~ /^\d+$/ ||
+		       &error($text{'user_e'.$f});
+		&execute_sql_logged($master_db,
+			"update user set $f = ? ".
+			"where user = ? and host = ?",
+			$in{$f.'_def'} ? 0 : $in{$f}, $user, $host);
 		}
 
 	# Set SSL fields
 	if ($mysql_version >= 5 && defined($in{'ssl_type'})) {
 		&execute_sql_logged($master_db,
-			"update user set ssl_type = '$in{'ssl_type'}' ".
-			"where user = '$user' and host = '$host'");
+			"update user set ssl_type = ? ".
+			"where user = ? and host = ?",
+			$in{'ssl_type'}, $user, $host);
 		}
 	}
 &execute_sql_logged($master_db, 'flush privileges');

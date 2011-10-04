@@ -64,6 +64,18 @@ for($i=3; $i<=&user_priv_cols()+3-1; $i++) {
 print &ui_table_row($text{'user_perms'},
 	&ui_select("perms", \@sel, \@opts, 10, 1, 1));
 
+# Various per-user limits
+foreach $f ('max_user_connections', 'max_connections',
+	    'max_questions', 'max_updates') {
+	if ($mysql_version >= 5 && $fieldmap{$f}) {
+		print &ui_table_row($text{'user_'.$f},
+			&ui_opt_textbox($f,
+				$u->[$fieldmap{$f}] || undef,
+				5, $text{'user_maxunlimited'},
+				$text{'user_maxatmost'}));
+		}
+	}
+
 # SSL needed?
 if ($mysql_version >= 5 && $fieldmap{'ssl_type'}) {
 	print &ui_table_row($text{'user_ssl'},
