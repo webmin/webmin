@@ -19,6 +19,10 @@ print &ui_table_row($text{'status_interval'},
 print &ui_table_row($text{'status_pkgs'},
 	&ui_yesno_radio("pkgs", $system_status::config{'collect_pkgs'}));
 
+# Collect drive temps?
+print &ui_table_row($text{'status_temp'},
+	&ui_yesno_radio("temp", !$system_status::config{'collect_notemp'}));
+
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 

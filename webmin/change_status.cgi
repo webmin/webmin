@@ -16,8 +16,9 @@ else {
 	$system_status::config{'collect_interval'} = $in{'interval'};
 	}
 
-# Save package collection option
+# Save collection options
 $system_status::config{'collect_pkgs'} = $in{'pkgs'};
+$system_status::config{'collect_notemp'} = !$in{'temp'};
 
 &lock_file($system_status::module_config_file);
 &save_module_config(\%system_status::config, 'system-status');

@@ -919,6 +919,7 @@ status_interval1=Never
 status_interval0=Every
 status_mins=minutes
 status_pkgs=Collect available package updates?
+status_temp=Collect drive temperatures?
 
 sendmail_title=Sending Email
 sendmail_desc=This page controls how Webmin sends email, such as from scheduled backups or background monitoring. It also effects email sent using the Read User Mail module.
