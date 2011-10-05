@@ -84,12 +84,12 @@ else {
 		# Creating a bridge interface
 		$in{'name'} =~ /^\d+$/ || &error($text{'bifc_ebridge'});
 		$b->{'name'} = $b->{'fullname'} = "br".$in{'name'};
+		$b->{'bridge'} = 1;
 		}
 	elsif ($in{'name'} =~/^[a-z]+\d*(\.\d+)?$/) {
 		# creating a real interface
 		$b->{'name'} = $in{'name'};
 		$b->{'fullname'} = $in{'name'};
-		$b->{'bridge'} = 1;
 		}
 	elsif ($in{'name'} eq 'auto') {
 		# creating a vlan interface
