@@ -182,6 +182,10 @@ if (open(PARTS, "/proc/partitions")) {
 			# Promise raid controller
 			push(@devs, "/dev/$1");
 			}
+		elsif (/\d+\s+\d+\s+\d+\s+(vd[a-z]+)\s/) {
+			# Virtio disk from KVM
+			push(@devs, "/dev/$1");
+			}
 		}
 	close(PARTS);
 
@@ -275,6 +279,12 @@ while(<FDISK>) {
 		elsif ($disk->{'device'} =~ /\/xvd([a-z]+)$/) {
 			# Xen virtual disk
 			$disk->{'desc'} = &text('select_device', 'Xen', uc($1));
+			$disk->{'type'} = 'ide';
+			}
+		elsif ($disk->{'device'} =~ /\/vd([a-z]+)$/) {
+			# KVM virtual disk
+			$disk->{'desc'} = &text('select_device',
+						'VirtIO', uc($1));
 			$disk->{'type'} = 'ide';
 			}
 		elsif ($disk->{'device'} =~ /\/(scsi\/host(\d+)\/bus(\d+)\/target(\d+)\/lun(\d+)\/disc)/) {
