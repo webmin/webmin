@@ -1,3 +1,4 @@
+__norefs=1
 acl_all=Alle Benutzer
 acl_allow=Darf die Liste der zu erlaubenden AT-Benutzer bearbeiten?
 acl_except=Alle Benutzer au&#223;er
@@ -49,6 +50,11 @@ index_return=Befehls-Liste
 index_time=Ausf&#252;hren um
 index_title=Geplante AT-Befehle
 index_user=Ausf&#252;hren als Benutzer
+log_allow=Erlaubte Benutzer ge&#228;ndert
+log_create_job=Geplante Befehle f&#252;r $1 erstellt
+log_delete_job=Geplante Befehle f&#252;r $1 abgebrochen
+log_delete_jobs=$1 geplante Befehle abgebrochen
+log_exec_job=Geplante Befehle f&#252;r $1 ausgef&#252;hrt
 run_none=Es wurde keine Ausgabe generiert
 run_output=Ausgabe des AT-Auftrages ...
 run_title=AT-Auftrag ausf&#252;hren
