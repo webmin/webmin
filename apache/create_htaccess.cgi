@@ -3,9 +3,13 @@
 # Creates a new .htaccess file for some directory
 
 require './apache-lib.pl';
+&error_setup($text{'htaccess_err'});
 &ReadParse();
 $access{'global'} || &error($text{'htaccess_ecannot'});
 $conf = &get_config();
+$in{'file'} || &error($text{'htaccess_eempty'});
+$in{'file'} =~ /^\// && $in{'file'} !~ /\.\./ ||
+	&error($text{'htaccess_eabsolute'});
 
 if (-d $in{'file'}) {
 	# user entered a directory.. create a file in that directory
@@ -13,7 +17,9 @@ if (-d $in{'file'}) {
 	if (!$accfile) { $accfile = ".htaccess"; }
 	$file = "$in{'file'}/$accfile";
 	}
-else { $file = $in{'file'}; }
+else {
+	$file = $in{'file'};
+	}
 &allowed_auth_file($file) ||
 	&error($text{'htaccess_ecreate'});
 

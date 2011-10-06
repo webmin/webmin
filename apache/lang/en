@@ -208,6 +208,9 @@ htaccess_return=options file list
 htaccess_edir='$1' is not a valid directory
 htaccess_ecreate=You are not allowed to create this options file
 htaccess_edelete=You are not allowed to delete this options file
+htaccess_eempty=No options file directory entered
+htaccess_eabsolute=Options file directory must be an absolute path
+htaccess_err=Failed to create options file
 
 htindex_ecannot=You are not allowed to edit this options file
 htindex_title=Per-Directory Options File
