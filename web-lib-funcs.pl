@@ -4170,7 +4170,6 @@ if (($ENV{'WEBMIN_DEBUG'} || $gconfig{'debug_enabled'}) &&
 		my $script_name = $0 =~ /([^\/]+)$/ ? $1 : '-';
 		$main::debug_log_start_time = time();
 		&webmin_debug_log("START", "script=$script_name");
-		$main::debug_log_start_module = $module_name;
 		}
 	}
 
@@ -8440,14 +8439,12 @@ $main::end_exit_status ||= $?;
 if ($$ == $main::initial_process_id) {
 	# Exiting from initial process
 	&cleanup_tempnames();
-	if ($gconfig{'debug_what_start'} && $main::debug_log_start_time &&
-	    $main::debug_log_start_module eq &get_module_name()) {
+	if ($gconfig{'debug_what_start'} && $main::debug_log_start_time) {
 		my $len = time() - $main::debug_log_start_time;
 		&webmin_debug_log("STOP", "runtime=$len");
 		$main::debug_log_start_time = 0;
 		}
-	if (!$ENV{'SCRIPT_NAME'} &&
-	    $main::initial_module_name eq &get_module_name()) {
+	if (!$ENV{'SCRIPT_NAME'}) {
 		# In a command-line script - call the real exit, so that the
 		# exit status gets properly propogated. In some cases this
 		# was not happening.
