@@ -461,6 +461,10 @@ foreach $d (@disks) {
 		$d->{'model'} =~ s/\r|\n//g;
 		$d->{'media'} = &read_file_contents("/proc/ide/$short/media");
 		$d->{'media'} =~ s/\r|\n//g;
+		if ($d->{'short'} =~ /^vd/ && !$d->{'model'}) {
+			# Fake up model for KVM VirtIO disks
+			$d->{'model'} = "KVM VirtIO";
+			}
 		}
 	}
 
