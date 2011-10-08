@@ -3,6 +3,8 @@
 #include <sys/param.h>
 #include <sys/ucred.h>
 #include <sys/mount.h>
+#include <stdlib.h>
+#include <string.h>
 
 char *find_type(int t);
 char *expand_flags(int f);
@@ -40,7 +42,9 @@ if (f & MNT_NODEV) strcat(buf, "nodev,");
 if (f & MNT_SYNCHRONOUS) strcat(buf, "sync,");
 if (f & MNT_ASYNC) strcat(buf, "async,");
 if (f & MNT_QUOTA) strcat(buf, "quota,");
+#ifdef MNT_UNION
 if (f & MNT_UNION) strcat(buf, "union,");
+#endif
 if (buf[0] == 0) return "-";
 buf[strlen(buf)-1] = 0;
 return buf;
