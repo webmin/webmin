@@ -1,3 +1,4 @@
+__norefs=1
 editrpc_aliase=Aliase
 editrpc_command=Kommando
 editrpc_default=Vorgabe
@@ -66,7 +67,7 @@ index_apply=&Auml;nderungen anwenden
 index_applymsg=Dr&uuml;cken Sie diese Schaltfl&auml;che, um die aktuelle Konfiguration durch Senden eines SIGHUP-Signals an den laufenden <tt>inetd</tt>-Proze&szlig; anzuwenden.
 index_create=Erstellen
 index_delete=L&ouml;schen
-index_edit=Dienst berarbeiten:
+index_edit=Dienst bearbeiten:
 index_list=Service-Liste
 index_newrpc=ein neues RPC-Programm erstellen
 index_newservice=einen neuen Internet-Service erstellen
