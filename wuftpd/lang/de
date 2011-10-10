@@ -1,3 +1,4 @@
+__norefs=1
 acl_aclass=Erlaube f&#252;r Klassen
 acl_afiles=Zu erlaubende Dateien
 acl_alimit=Grenzwert f&#252;r anonyme Sitzungen
@@ -77,8 +78,8 @@ anon_trivial=Muss @ enthalten
 anon_uids=F&#252;r Unix-Benutzer
 anon_warn=Nur warnen
 class_addrs=&#220;bereinstimmende Adressen
-class_allow_gid=Unix-Gruppen und GIDs, denen der Zugriff </I>nicht</I> verweigert werden soll
-class_allow_uid=Unix-Benutzer und UIDs, denen der Zugriff <I>nicht</I> verweigert werden soll
+class_allow_gid=Unix-Gruppen und GIDs, denen der Zugriff </i>nicht</i> verweigert werden soll
+class_allow_uid=Unix-Benutzer und UIDs, denen der Zugriff <i>nicht</i> verweigert werden soll
 class_anonymous=Anonym
 class_class=Benutzerklassen
 class_deny_gid=Unix-Gruppen und GIDs, denen der Zugriff verweigert werden soll
