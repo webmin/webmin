@@ -1,3 +1,4 @@
+__norefs=1
 acl_error=Sie haben Zugriff auf das Modul Systemzeit, aber Sie haben keine Berechtigung zum &#196;ndern der Systemzeit oder der Hardware-Zeit
 acl_hw=Benutzer darf Hardware-Zeit bearbeiten
 acl_no=Nein
@@ -26,6 +27,9 @@ error_sync=Kann Systemzeit nicht setzen: $1
 hour=Stunde
 hw_title=Hardware-Zeit
 index_addresses=Zeit-Server - Hostnamen oder Adressen
+index_descsync=Diese Form ist f&#252;r das Konfiguration des Systems, um die Zeit automatisch mit einem remoten Server zu synchronisieren. Die Synchronisation wird durchgef&#252;hrt unter Verwendung des Unix <tt>time</tt>-Protokoll oder NTP, je nachdem, welche Befehle installiert sind und was das Remote-System unterst&#252;tzt.
+index_desctime=Dieses Formular ist f&#252;r die &#196;nderung der aktuellen Systemzeit, die von allen laufenden Prozessen verwendet wird. Bei Betriebssystemen, die eine separate Hardware-Uhr haben, kann es verwendet werden, um diese ebenso zu setzen.
+index_desczone=Diese Form erm&#246;glicht es Ihnen, das System der Standard-Zeitzone zu setzen, welche verwendet wird, um die Systemzeit in ein lesbares Format zu konvertieren und das Offset einzustellen.
 index_eformat=<tt>Hardware-Uhr</tt> Ausgabeformat nicht erkannt
 index_ehwclock=$1 fehlgeschlagen : $2
 index_hardware2=Setze Hardwarezeit auf
