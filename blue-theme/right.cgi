@@ -33,9 +33,16 @@ if ($level == 0) {
 	# Show general system information
 	print "<table width=70%>\n";
 
+	# Ask status module for collected info
+	&foreign_require("system-status");
+	$info = &system_status::get_collected_info();
+
 	# Hostname
+	$ip = $info && $info->{'ips'} ? $info->{'ips'}->[0]->[0] :
+				&to_ipaddress(get_system_hostname());
+	$ip = " ($ip)" if ($ip);
 	print "<tr> <td><b>$text{'right_host'}</b></td>\n";
-	print "<td>",&get_system_hostname(),"</td> </tr>\n";
+	print "<td>",&get_system_hostname(),$ip,"</td> </tr>\n";
 
 	# Operating system
 	print "<tr> <td><b>$text{'right_os'}</b></td>\n";
@@ -57,10 +64,6 @@ if ($level == 0) {
 		$tm = "<a href=time/>$tm</a>";
 		}
 	print "<td>$tm</td> </tr>\n";
-
-	# Ask status module for more
-	&foreign_require("system-status");
-	$info = &system_status::get_collected_info();
 
 	# Kernel and CPU
 	if ($info->{'kernel'}) {
