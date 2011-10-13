@@ -4,7 +4,6 @@ BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
 
-@supported_protocols = ( "imap", "pop3", "imaps", "pop3s" );
 @supported_auths = ( "anonymous", "plain", "digest-md5", "cram-md5", "apop" );
 @mail_envs = ( undef, "maildir:~/Maildir", "mbox:~/mail/:INBOX=/var/mail/%u",
 	       "maildir:~/Maildir:mbox:~/mail/" );
@@ -389,6 +388,18 @@ local ($conf) = @_;
 $conf ||= &get_config();
 foreach my $f (reverse(&unique(map { $_->{'file'} } @$conf))) {
 	&unlock_file($f);
+	}
+}
+
+# get_supported_protocols()
+# Returns the list of usable protocols for the current Dovecot version
+sub get_supported_protocols
+{
+if (&get_dovecot_version() >= 2) {
+	return ( "imap", "pop3" );
+	}
+else {
+	return ( "imap", "pop3", "imaps", "pop3s" );
 	}
 }
 

@@ -9,6 +9,7 @@ print &ui_form_start("save_net.cgi", "post");
 print &ui_table_start($text{'net_header'}, "width=100%", 4);
 
 # Mail protocols
+@supported_protocols = &get_supported_protocols();
 @protos = split(/\s+/, &find_value("protocols", $conf));
 print &ui_table_row($text{'net_protocols'},
 	    &ui_select("protocols", \@protos,
