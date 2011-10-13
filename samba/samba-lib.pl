@@ -6,6 +6,7 @@ BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
 %access = &get_module_acl();
+$has_iconv = &has_command("iconv");
 
 # Get the samba version
 if (open(VERSION, "$module_config_directory/version")) {
@@ -57,8 +58,13 @@ while(<SAMBA>) {
 	if (/^\s*\[([^\]]+)\]/) {
 		# Start of share section
 		$first = 1;
-		if ($found) { last; }
-		elsif ($1 eq $_[0]) { $found = 1; $$arr{share_name} = $1; }
+		if ($found) {
+			last;
+			}
+		elsif ($1 eq $_[0]) {
+			$found = 1;
+			$$arr{share_name} = $1;
+			}
 		}
 	elsif ($found && /^\s*([^=]*\S)\s*=\s*(.*)$/) {
 		# Directives inside a section
@@ -66,12 +72,14 @@ while(<SAMBA>) {
 			# bastard special case.. change to writable
 			$$arr{'writable'} = $2 =~ /yes|true|1/i ? "no" : "yes";
 			}
-		else { $$arr{lc($1)} = $2; }
+		else {
+			$$arr{lc($1)} = &from_utf8("$2");
+			}
 		}
 	elsif (!$first && /^\s*([^=]*\S)\s*=\s*(.*)$/ && $_[0] eq "global") {
 		# Directives outside a section! Assume to be part of [global]
 		$$arr{share_name} = "global";
-		$$arr{lc($1)} = $2;
+		$$arr{lc($1)} = &from_utf8("$2");
 		$found = 1;
 		}
 	}
@@ -111,7 +119,8 @@ for($i=0; $i<@conf; $i++) {
 		elsif ($1 eq $_[0]) {
 			&print_tempfile(CONF, "[$_[1]]\n");
 			foreach $k (grep {!/share_name/} (keys %share)) {
-				&print_tempfile(CONF, "\t$k = $share{$k}\n");
+				&print_tempfile(CONF, "\t$k = ",
+					&to_utf8($share{$k}),"\n");
 				}
 			#&print_tempfile(CONF, "\n");
 			$replacing = 1;
@@ -122,7 +131,8 @@ for($i=0; $i<@conf; $i++) {
 		$first = 1;
 		&print_tempfile(CONF, "[$_[1]]\n");
 		foreach $k (grep {!/share_name/} (keys %share)) {
-			&print_tempfile(CONF, "\t$k = $share{$k}\n");
+			&print_tempfile(CONF, "\t$k = ",
+					      &to_utf8($share{$k}),"\n");
 			}
 		&print_tempfile(CONF, "\n");
 		$replacing = 1;
@@ -158,6 +168,45 @@ for($i=0; $i<@conf; $i++) {
 		}
 	}
 &close_tempfile(CONF);
+}
+
+
+# to_utf8(string)
+# Converts a string to UTF-8 if needed
+sub to_utf8
+{
+local ($v) = @_;
+if ($v =~ /^[\000-\177]*$/ || !$has_iconv) {
+	return $v;
+	}
+else {
+	my $temp = &transname();
+	&open_tempfile(TEMP, ">$temp", 0, 1);
+	&print_tempfile(TEMP, $v);
+	&close_tempfile(TEMP);
+	my $out = &backquote_command("iconv -f iso-8859-1 -t UTF-8 <$temp");
+	&unlink_file($temp);
+	return $? || $out eq '' ? $v : $out;
+	}
+}
+
+# from_utf8(string)
+# Converts a string from UTF-8 if needed
+sub from_utf8
+{
+local ($v) = @_;
+if ($v =~ /^[\000-\177]*$/ || !$has_iconv) {
+	return $v;
+	}
+else {
+	my $temp = &transname();
+	&open_tempfile(TEMP, ">$temp", 0, 1);
+	&print_tempfile(TEMP, $v);
+	&close_tempfile(TEMP);
+	my $out = &backquote_command("iconv -f UTF-8 -t iso-8859-1 <$temp");
+	&unlink_file($temp);
+	return $? || $out eq '' ? $v : $out;
+	}
 }
 
 
