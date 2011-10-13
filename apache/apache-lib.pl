@@ -1723,6 +1723,9 @@ return &unique(@rv);
 sub get_httpd_defines
 {
 local ($auto) = @_;
+if (@get_httpd_defines_cache) {
+	return @get_httpd_defines_cache;
+	}
 local @rv;
 if (!$auto) {
 	push(@rv, keys %httpd_defines);
@@ -1769,6 +1772,7 @@ foreach my $md (split(/\t+/, $config{'defines_mods'})) {
 foreach my $d (split(/\s+/, $config{'defines'})) {
 	push(@rv, $d);
 	}
+@get_httpd_defines_cache = @rv;
 return @rv;
 }
 
