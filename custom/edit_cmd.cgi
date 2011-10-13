@@ -40,7 +40,7 @@ if ($cmd->{'cmd'} =~ s/^\s*cd\s+(\S+)\s*;\s*//) {
 	$dir = $1;
 	}
 print &ui_table_row(&hlink($text{'edit_cmd'},"command"),
-	&ui_textarea("cmd", $cmd->{'cmd'}, 5, 60, "hard"), 3);
+	&ui_textarea("cmd", $cmd->{'cmd'}, 5, 60, "soft"), 3);
 
 # Directory to run in
 print &ui_table_row(&hlink($text{'edit_dir'},"dir"),
