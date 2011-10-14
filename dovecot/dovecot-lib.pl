@@ -396,7 +396,7 @@ foreach my $f (reverse(&unique(map { $_->{'file'} } @$conf))) {
 sub get_supported_protocols
 {
 if (&get_dovecot_version() >= 2) {
-	return ( "imap", "pop3" );
+	return ( "imap", "pop3", "lmtp" );
 	}
 else {
 	return ( "imap", "pop3", "imaps", "pop3s" );
