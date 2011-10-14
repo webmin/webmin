@@ -1330,12 +1330,7 @@ return $r;
 # Returns the email addresses in a string
 sub address_parts
 {
-local @rv;
-local $rest = $_[0];
-while($rest =~ /([^<>\s,'"\@]+\@[A-z0-9\-\.\!]+)(.*)/) {
-	push(@rv, $1);
-	$rest = $2;
-	}
+local @rv = map { $_->[0] } &split_addresses($_[0]);
 return wantarray ? @rv : $rv[0];
 }
 
@@ -1754,7 +1749,7 @@ while(1) {
 		#		  Fooey Bar [mailto:foo@bar.com]
 		#		  <foo@bar.com>
 		#		  <group name>
-		#		  foo@bar.com
+		#		  foo@bar.com or foo
 		my ($all, $name, $email, $rest) = ($1, $2, $3, $4);
 		$all =~ s/\0/\\"/g;
 		$name =~ s/\0/"/g;
