@@ -1307,15 +1307,18 @@ if (!scalar(@mail_system_cache)) {
 return wantarray ? @mail_system_cache : $mail_system_cache[0];
 }
 
-# list_queue()
+# list_queue([error-on-failure])
 # Returns a list of strutures, each containing details of one queued message
 sub list_queue
 {
+local ($throw) = @_;
 local @qfiles;
-&open_execute_command(MAILQ, $config{'mailq_cmd'}, 1, 1);
-while(<MAILQ>) {
-	next if (/^(\S+)\s+is\s+empty/i || /^\s+Total\s+requests:/i);
-	if (/^([^\s\*\!]+)[\*\!]?\s*(\d+)\s+(\S+\s+\S+\s+\d+\s+\d+:\d+:\d+)\s+(.*)/) {
+local $out = &backquote_command("$config{'mailq_cmd'} 2>&1 </dev/null");
+&error("$config{'mailq_cmd'} failed : ".&html_escape($out)) if ($? && $throw);
+foreach my $l (split(/\r?\n/, $out)) {
+	next if ($l =~ /^(\S+)\s+is\s+empty/i ||
+		 $l =~ /^\s+Total\s+requests:/i);
+	if ($l =~ /^([^\s\*\!]+)[\*\!]?\s*(\d+)\s+(\S+\s+\S+\s+\d+\s+\d+:\d+:\d+)\s+(.*)/) {
 		local $q = { 'id' => $1, 'size' => $2,
                              'date' => $3, 'from' => $4 };
 		if (defined(&parse_mail_date)) {
@@ -1327,14 +1330,13 @@ while(<MAILQ>) {
 			}
 		push(@qfiles, $q);
 		}
-	elsif (/\((.*)\)/ && @qfiles) {
+	elsif ($l =~ /\((.*)\)/ && @qfiles) {
 		$qfiles[$#qfiles]->{'status'} = $1;
 		}
-	elsif (/^\s+(\S+)/ && @qfiles) {
+	elsif ($l =~ /^\s+(\S+)/ && @qfiles) {
 		$qfiles[$#qfiles]->{'to'} .= "$1 ";
 		}
 	}
-close(MAILQ);
 return @qfiles;
 }
 

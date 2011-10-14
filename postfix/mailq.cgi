@@ -10,7 +10,7 @@ $access{'mailq'} || &error($text{'mailq_ecannot'});
 &ui_print_header(undef, $text{'mailq_title'}, "");
 
 # Get queued messages and sort
-@qfiles = &list_queue();
+@qfiles = &list_queue(1);
 if ($config{'mailq_sort'} == 0) {
 	@qfiles = sort { $a->{'id'} cmp $b->{'id'} } @qfiles;
 	}

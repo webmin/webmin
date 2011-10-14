@@ -101,7 +101,7 @@ foreach $oitem (@onames)
 						   : $text{$oitem . "_title"});
 		if ($oitem eq 'mailq' && !$config{'mailq_count'}) {
 			# Count the queue
-			local @mqueue = &list_queue();
+			local @mqueue = &list_queue(0);
 			local $mcount = scalar(@mqueue);
 			$otitles[$#otitles] .=
 				"<br>".&text('mailq_count', $mcount);
