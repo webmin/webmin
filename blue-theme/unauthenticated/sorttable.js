@@ -81,6 +81,7 @@ function ts_resortTable(lnk,clid) {
     // Special cases for our mailbox lists
     if (itm.match(/^(Empty|Unlimited)$/)) sortfn = ts_sort_filesize;
     if (itm.match(/^[\d\.]+%?$/)) sortfn = ts_sort_numeric;
+    if (itm.match(/^\d+\.\d+\.\d+\.\d+$/)) sortfn = ts_sort_ip;
     SORT_COLUMN_INDEX = column;
     var firstRow = new Array();
     var newRows = new Array();
@@ -238,6 +239,24 @@ function ts_sort_caseinsensitive(a,b) {
     if (aa==bb) return 0;
     if (aa<bb) return -1;
     return 1;
+}
+
+function ts_sort_ip(a,b) {
+    aa = ts_getInnerText(a.cells[SORT_COLUMN_INDEX]).toLowerCase();
+    bb = ts_getInnerText(b.cells[SORT_COLUMN_INDEX]).toLowerCase();
+    var regexp = /^(\d+)\.(\d+)\.(\d+)\.(\d+)$/;
+    var matchA = aa.match(regexp);
+    var matchB = bb.match(regexp);
+    return !matchA ? -1 :
+	   !matchB ? 1 :
+	   parseInt(matchA[1]) < parseInt(matchB[1]) ? -1 :
+           parseInt(matchA[1]) > parseInt(matchB[1]) ? 1 :
+	   parseInt(matchA[2]) < parseInt(matchB[2]) ? -1 :
+           parseInt(matchA[2]) > parseInt(matchB[2]) ? 1 :
+	   parseInt(matchA[3]) < parseInt(matchB[3]) ? -1 :
+           parseInt(matchA[3]) > parseInt(matchB[3]) ? 1 :
+	   parseInt(matchA[4]) < parseInt(matchB[4]) ? -1 :
+           parseInt(matchA[4]) > parseInt(matchB[4]) ? 1 : 0;
 }
 
 function ts_sort_default(a,b) {
