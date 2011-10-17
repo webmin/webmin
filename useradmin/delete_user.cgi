@@ -138,8 +138,8 @@ else {
 	    $access{'delhome'} != 0) {
 		# Has a home directory, so check for files owned by others
 		$size = &disk_usage_kb($user->{'home'});
-		$msg = &text('udel_sure', $user->{'user'},
-                           "<tt>$user->{'home'}</tt>", &nice_size($size*1024));
+		$msg = &text('udel_sure', &html_escape($user->{'user'}),
+                           "<tt>".&html_escape($user->{'home'})."</tt>", &nice_size($size*1024));
 		if ($access{'delhome'} != 1) {
 			push(@buts, [ undef, $text{'udel_del1'} ]);
 			}
@@ -151,7 +151,7 @@ else {
 		}
 	else {
 		# No home directory
-		$msg = &text('udel_sure2', $user->{'user'});
+		$msg = &text('udel_sure2',&html_escape($user->{'user'}));
 		push(@buts, [ undef, $text{'udel_del1'} ]);
 		}
 
@@ -162,11 +162,10 @@ else {
 		$access{'dothers'} == 1 ?
 			&ui_checkbox("others", 1, $text{'udel_dothers'},
                                      $config{'default_other'}) : "",
-		(@others ? &text('udel_others', "<tt>$user->{'home'}</tt>",
+		(@others ? &text('udel_others', "<tt>".&html_escape($user->{'home'})."</tt>",
                                                    scalar(@others))."<p>" : "").
 		($user->{'user'} eq 'root' ? $text{'udel_root'} : ""),
 		);
 
 	&ui_print_footer("", $text{'index_return'});
 	}
-
