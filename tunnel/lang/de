@@ -1,10 +1,11 @@
+__norefs=1
 index_elink=Es wurde bisher noch keine URL zum tunneln angelegt.
 index_open=&#214;ffnen
-index_url=Gib URL zu &#214;ffenen ein:
+index_url=Gib URL zum &#214;ffnen ein:
 link_eautologin=Ung&#252;ltiges Login oder Passwort f&#252;r $1. <a href='$2'>Hier klicken</a> f&#252;r die Anmeldung.
 link_ebadurl=Es ist Ihnen nicht erlaubt auf die URL $1 zuzugreifen
 link_elogin=Konnte nicht nach $1 als $2 einloggen
-link_enouser=Ein Benutzername und Passwort ist f&#252;r das Einloggen auf $1 erfolrderlich. Bisher wurde noch keines konfiguriert.
+link_enouser=Ein Benutzername und Passwort ist f&#252;r das Einloggen auf $1 erforderlich. Bisher wurde noch keines konfiguriert.
 link_eurl=Ung&#252;ltige Tunnel-URL : $1
 login_clear=L&#246;schen
 login_desc=Sie m&#252;ssen einen Benutzernamen und ein Passwort zum Einloggen auf $1 angeben.
