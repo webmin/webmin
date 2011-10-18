@@ -76,7 +76,7 @@ if ($con =~ /^device for \S+:\s+(\S+)\n\s+(remote to:)\s+(\S+)\s+(on)\s+(\S+)/) 
 elsif ($con =~ /^device for \S+:\s+(\S+)/) { $prn{'dev'} = $1; }
 
 # Check if this is the default printer
-if (&backquote_command("$lpstat -d 2>&1", 1) =~ /destination:\s+(\S+)/ &&
+if (&backquote_command("lpstat -d 2>&1", 1) =~ /: (\S+)/ &&
     $1 eq $prn{'name'}) {
 	$prn{'default'} = 1;
 	}

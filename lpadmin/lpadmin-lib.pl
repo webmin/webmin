@@ -165,7 +165,7 @@ else {
 	  $_[1]->{'pass'} ? $_[1]->{'pass'} : "-N",
 	  $_[1]->{'user'} ? " -U $_[1]->{'user'}" : "",
 	  $_[1]->{'workgroup'} ? " -W $_[1]->{'workgroup'}" : "",
-	  " -c \"print /tmp/\$\$.smb\" -P\n");
+	  " -c \"print /tmp/\$\$.smb\"\n");
 &print_tempfile(DRV, "rm /tmp/\$\$.smb\n");
 &close_tempfile(DRV);
 if ($config{'iface_owner'}) {
