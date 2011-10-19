@@ -32,7 +32,7 @@ print &ui_table_start($text{'gedit_details'}, "width=100%", 2, [ "width=30%" ]);
 # Group name
 print &ui_table_row(&hlink($text{'gedit_group'}, "ggroup"),
 	$n eq "" ? &ui_textbox("group", undef, 20)
-		 : "<tt>$group{'group'}</tt>");
+		 : "<tt>".&html_escape($group{'group'})."</tt>");
 
 # Group ID
 if ($n ne "") {
@@ -80,8 +80,8 @@ if ($config{'membox'} == 0) {
 		&ui_multi_select("members",
 			[ map { [ $_, $_ ] }
 			      sort { lc($a) cmp lc($b) }
-				   split(/,/ , $group{'members'}) ],
-			[ map { [ $_->{'user'}, $_->{'user'} ] } @ulist ],
+				   split(/,/ , &html_escape($group{'members'})) ],
+			[ map { [ $_->{'user'}, &html_escape($_->{'user'}) ] } @ulist ],
 			10, 1, 0,
 			$text{'gedit_allu'}, $text{'gedit_selu'}, 150));
 	}
@@ -101,7 +101,7 @@ if ($n ne "") {
 		foreach $u (@upri) {
 			if (&can_edit_user(\%access, $u)) {
 				push(@uprilinks, "<a href='edit_user.cgi?".
-				  "user=$u->{'user'}'>$u->{'user'}</a>");
+				  "user=$u->{'user'}'>".&html_escape($u->{'user'})."</a>");
 				}
 			else {
 				push(@uprilinks, $u->{'user'});
