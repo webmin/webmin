@@ -40,7 +40,7 @@ foreach $l (&list_last_logins($u, $config{'last_count'})) {
 
 # Show the table
 if ($u) {
-	print &ui_subheading(&text('logins_head', $u));
+	print &ui_subheading(&text('logins_head', &html_escape($u)));
 	}
 print &ui_columns_table(
 	[ $u ? ( ) : ( $text{'user'} ), $text{'logins_from'},
