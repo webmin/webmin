@@ -142,8 +142,8 @@ else {
 	foreach $u (&get_groups_list()) {
 		if ($in{'group'} eq $u->[0]) { print "<tr $cb>\n"; }
 		else { print "<tr>\n"; }
-		print "<td width=20%><a href=\"\" onClick='return select(\"$u->[0]\")'>$u->[0]</a></td>\n";
-		print "<td>$u->[3]</td> </tr>\n";
+		print "<td width=20%><a href=\"\" onClick='return select(\"$u->[0]\")'>".&html_escape($u->[0])."</a></td>\n";
+		print "<td>".&html_escape($u->[3])."</td> </tr>\n";
 		}
 	print "</table>\n";
 	&popup_footer();
