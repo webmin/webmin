@@ -452,7 +452,7 @@ if ($config{'secmode'} == 0) {
 	foreach $g (@glist) {
 		next if (!&can_use_group(\%access, $g->{'group'}) &&
 			 !$ingroups{$g->{'group'}});
-		push(@canglist, [ $g->{'group'}, $g->{'group'} ]);
+		push(@canglist, [ $g->{'group'}, &html_escape($g->{'group'}) ]);
 		}
 	@ingroups = map { [ $_, $_ ] } sort { $a cmp $b }
 			grep { $ingroups{$_} } (keys %ingroups);
