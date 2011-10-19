@@ -35,12 +35,16 @@ else {
 	}
 @locks = &list_locks();
 
+@rightlinks = ( "<a href='view_users.cgi?$in'>".
+		$text{'viewu_refresh'}."</a>" );
 if (@cons) {
 	print &ui_form_start("kill_users.cgi");
 	print &ui_hidden("share", $in{'share'});
 	@links = ( &select_all_link("d"),
 		   &select_invert_link("d") );
-	print &ui_links_row(\@links);
+	print &ui_grid_table([ &ui_links_row(\@links),
+			       &ui_links_row(\@rightlinks) ], 2, 100,
+			     [ undef, "align=right" ]);
 
 	# Show table header
 	@tds = ( "width=5" );
@@ -83,13 +87,16 @@ if (@cons) {
 		print &ui_checked_columns_row(\@cols, \@tds, "d", $c->[3]);
 		}
 	print &ui_columns_end();
-	print &ui_links_row(\@links);
+	print &ui_grid_table([ &ui_links_row(\@links),
+			       &ui_links_row(\@rightlinks) ], 2, 100,
+			     [ undef, "align=right" ]);
 	print &ui_form_end([ [ "kill", $text{'viewu_kill'} ] ]);
 
 	print $text{'viewu_msg1'}, "<br>\n";
 	}
 else {
 	print "<b>$text{'viewu_msg2'}</b>.\n";
+	print &ui_links_row(\@rightlinks);
 	}
 print "<p>\n";
 
