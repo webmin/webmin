@@ -8428,6 +8428,11 @@ $fh = &callers_package($fh);
 my $lockfile = $file;
 $lockfile =~ s/^[^\/]*//;
 if ($lockfile =~ /^\//) {
+	while(-l $lockfile) {
+		# If the file is a link, follow it so that locking is done on
+		# the same file that gets unlocked later
+		$lockfile = &resolve_links($lockfile);
+		}
 	$main::open_templocks{$lockfile} = &lock_file($lockfile);
 	}
 return &open_tempfile($fh, $file, $noerror, $notemp, $safe);
