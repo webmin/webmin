@@ -2316,7 +2316,7 @@ foreach $u (@$users) {
 	push(@cols, "") if ($anyedit && $u->{'noedit'});
 	push(@cols, &user_link($u));
 	push(@cols, $u->{'uid'});
-	push(@cols, $gidgrp{$u->{'gid'}} || $u->{'gid'});
+	push(@cols, &html_escape($gidgrp{$u->{'gid'}} || $u->{'gid'}));
 	push(@cols, &html_escape($u->{'real'}));
 	push(@cols, &html_escape($u->{'home'}));
 	push(@cols, &html_escape($u->{'shell'}));
