@@ -10,7 +10,7 @@ do 'records-lib.pl';
 %is_extra = map { $_, 1 } (@extra_forward, @extra_reverse);
 %access = &get_module_acl();
 $zone_names_cache = "$module_config_directory/zone-names";
-$zone_names_version = 2;
+$zone_names_version = 3;
 
 # Where to find root zones file
 $internic_ftp_host = "rs.internic.net";
@@ -2146,16 +2146,18 @@ if ($changed || !$filecount || $znc{'version'} != $zone_names_version ||
 		foreach $z (@vz) {
 			local $type = &find_value("type", $z->{'members'});
 			local $file = &find_value("file", $z->{'members'});
-			$znc{"zone_".($n++)} = "$z->{'value'} $z->{'index'} $type $v->{'value'} $file";
+			$znc{"zone_".($n++)} = join("\t", $z->{'value'},
+				$z->{'index'}, $type, $v->{'value'}, $file);
 			$files{$z->{'file'}}++;
 			}
-		$znc{"view_".($n++)} = "$v->{'value'} $v->{'index'}";
+		$znc{"view_".($n++)} = join("\t", $v->{'value'}, $v->{'index'});
 		$files{$v->{'file'}}++;
 		}
 	foreach $z (&find("zone", $conf)) {
 		local $type = &find_value("type", $z->{'members'});
 		local $file = &find_value("file", $z->{'members'});
-		$znc{"zone_".($n++)} = "$z->{'value'} $z->{'index'} $type * $file";
+		$znc{"zone_".($n++)} = join("\t", $z->{'value'},
+			$z->{'index'}, $type, "*", $file);
 		$files{$z->{'file'}}++;
 		}
 
@@ -2186,7 +2188,7 @@ local (@rv, %viewidx);
 foreach $k (keys %znc) {
 	if ($k =~ /^zone_(\d+)$/) {
 		local ($name, $index, $type, $view, $file) =
-			split(/\s+/, $znc{$k}, 5);
+			split(/\t+/, $znc{$k}, 5);
 		push(@rv, { 'name' => $name,
 			    'type' => $type,
 			    'index' => $index,
@@ -2194,7 +2196,7 @@ foreach $k (keys %znc) {
 			    'file' => $file });
 		}
 	elsif ($k =~ /^view_(\d+)$/) {
-		local ($name, $index) = split(/\s+/, $znc{$k}, 2);
+		local ($name, $index) = split(/\t+/, $znc{$k}, 2);
 		push(@rv, { 'name' => $name,
 			    'index' => $index,
 			    'type' => 'view' });
