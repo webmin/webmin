@@ -77,6 +77,11 @@ else {
 		&error($text{'aifc_ename'});
 		}
 
+	# Validate and store inputs
+	&check_ipaddress_any($in{'address'}) ||
+		&error(&text('aifc_eip', $in{'address'}));
+	$a->{'address'} = $in{'address'};
+
 	# Check for address clash
 	$allow_clash = defined(&allow_interface_clash) ?
 			&allow_interface_clash($a, 0) : 1;
@@ -85,11 +90,6 @@ else {
 		($clash) = grep { $_->{'address'} eq $a->{'address'} } @acts;
 		$clash && &error(&text('aifc_eclash', $clash->{'fullname'}));
 		}
-
-	# Validate and store inputs
-	&check_ipaddress_any($in{'address'}) ||
-		&error(&text('aifc_eip', $in{'address'}));
-	$a->{'address'} = $in{'address'};
 
 	if ($virtual_netmask && $a->{'virtual'} ne "") {
 		# Always use this netmask for virtuals
