@@ -27,7 +27,28 @@ print &ui_table_start($text{'general_title_sensible'}, "width=100%", 4);
 &option_radios_freefield("mydestination", 60, $text{'opts_mydestination_default'},
 			                      '$myhostname, localhost.$mydomain, $mydomain', $text{'opts_mydestination_domainwide'});
 
-&option_radios_freefield("notify_classes", 40, $default);
+$v = &if_default_value("notify_classes") ? "" :
+	&get_current_value("notify_classes");
+@v = split(/[, ]+/, $v);
+print &ui_table_row(&hlink($text{'opts_notify_classes'},
+		 	   'opts_notify_classes'),
+		    &ui_radio("notify_classes_def",
+			      $v ? "__USE_FREE_FIELD__"
+				 : "__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__",
+			      [ [ "__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__",
+				  $text{'default'} ],
+				[ "__USE_FREE_FIELD__",
+				  $text{'opts_notify_classes_sel'} ] ]).
+		    "<br>\n".
+		    &ui_select("notify_classes", \@v,
+		       [ [ "bounce", "bounce - Bounced mail" ],
+			 [ "2bounce", "2bounce - Double-bounced mail" ],
+			 [ "delay", "delay - Delayed mail" ],
+			 [ "policy", "policy - Policy rejected clients" ],
+			 [ "protocol", "protocol - Client protocol errors" ],
+			 [ "resource", "resource - Resource problems" ],
+		  	 [ "software", "software - Software problems" ] ],
+		       7, 1, 1));
 
 print &ui_table_end();
 print &ui_table_start($text{'general_title_others'}, "width=100%", 4);

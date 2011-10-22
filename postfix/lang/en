@@ -144,6 +144,7 @@ opts_mydestination=What domains to receive mail for
 opts_mydestination_default=Local machine
 opts_mydestination_domainwide=Whole domain
 opts_notify_classes=What trouble to report to the postmaster
+opts_notify_classes_sel=Selected below
 opts_queue_directory=Mail queue directory
 opts_mail_owner=Mail owner
 opts_default_privs=Default rights of the delivery agent
