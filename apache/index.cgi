@@ -96,7 +96,7 @@ if (&can_edit_virt()) {
 	push(@vdesc, $text{'index_defdesc1'});
 	push(@vaddr, $text{'index_any'});
 	push(@vport, $text{'index_any'});
-	push(@vserv, &def($sn, $text{'index_auto'}));
+	push(@vserv, $sn);
 	push(@vroot, &def(&find_directive("DocumentRoot", $conf, 1),
 			  $text{'index_auto'}));
 	push(@vproxy, undef);
@@ -196,7 +196,7 @@ foreach $v (@virt) {
 							  : $addr);
 	push(@vport, $port eq "*" ? $text{'index_any'} : $port);
 	local $sn = &find_vdirective("ServerName", $vm, $conf, 1);
-	push(@vserv, &def($sn, $text{'index_auto'}));
+	push(@vserv, $sn);
 	$pp = &find_directive_struct("ProxyPass", $vm);
 	if ($pp->{'words'}->[0] eq "/") {
 		push(@vproxy, $pp->{'words'}->[1]);
@@ -207,8 +207,10 @@ foreach $v (@virt) {
 		push(@vroot, &def(&find_vdirective("DocumentRoot",$vm,$conf,1),
 				  $text{'index_default'}));
 		}
-	$cname{$v} = sprintf "%s:%s (%s)", $vserv[$#vserv], $vport[$#vport],
-					   $vproxy[$#vproxy] || $vroot[$#vroot];
+	$cname{$v} = sprintf "%s:%s (%s)",
+			$vserv[$#vserv] || $text{'index_auto'},
+			$vport[$#vport],
+			$vproxy[$#vproxy] || $vroot[$#vroot];
 	local $sp = $port eq "*" ? $defport : $port;
 	local $prot = "http";
 	if (&find_vdirective("SSLEngine", $vm, $conf, 1) eq "on") {
@@ -332,7 +334,7 @@ elsif ($config{'show_list'} && scalar(@vname)) {
 		push(@cols, "<a href=\"$vlink[$i]\">$vname[$i]</a>");
 		push(@cols, &html_escape($vaddr[$i]));
 		push(@cols, &html_escape($vport[$i]));
-		push(@cols, &html_escape($vserv[$i]));
+		push(@cols, $vserv[$i] || $text{'index_auto'});
 		push(@cols, &html_escape($vproxy[$i]) ||
 			    &html_escape($vroot[$i]));
 		push(@cols, "<a href=$vurl[$i]>$text{'index_view'}</a>");
@@ -374,7 +376,8 @@ else {
 		print "<b>$text{'index_port'}</b> ",
 		      &html_escape($vport[$i]),"</td>\n";
 		print "<td width=70%><b>$text{'index_name'}</b> ",
-		      &html_escape($vserv[$i]),"<br>\n";
+		      (&html_escape($vserv[$i]) || $text{'index_auto'}),
+		      "<br>\n";
 		if ($vproxy[$i]) {
 			print "<b>$text{'index_proxy'}</b> ",
 			      &html_escape($vproxy[$i]),"</td> </tr>\n";
