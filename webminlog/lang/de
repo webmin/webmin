@@ -1,3 +1,4 @@
+__norefs=1
 acl_all=Alle
 acl_mods=Darf Logdateien in Modulen ansehen
 acl_rollback=Darf Aktionen komplett r&#252;ckg&#228;ngig machen?
@@ -9,6 +10,7 @@ index_fall=Welche irgendeine Datei ge&#228;ndert hat
 index_file=Diese modifizierte Datei
 index_global=&lt;Nicht in einem Modul&gt;
 index_header=Das Webmin-Protokoll nach Ereignissen durchsuchen ...
+index_long=Zeige volle Aktionsbeschreibungen?
 index_mall=In jedem Modul
 index_module=In Modul:
 index_nolog=<b>Hinweis</b> - die <a href='$1'>Webmin-Protokollierung</a> ist derzeit nicht aktiviert. Daher ist eine Suche in den Protokollen nicht sinnvoll.
