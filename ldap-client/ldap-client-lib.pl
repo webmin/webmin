@@ -231,7 +231,7 @@ if ($ldap_hosts) {
 elsif ($uri) {
 	# Using uri directive
 	foreach my $u (split(/\s+/, $uri)) {
-		if ($u =~ /^(ldap|ldaps|ldapi):\/\/([a-z0-9\_\-\.]+)(:(\d+))?/) {
+		if ($u =~ /^(ldap|ldaps|ldapi):\/\/([a-z0-9\_\-\.]+)(:(\d+))?/i) {
 			($proto, $host, $port) = ($1, $2, $4);
 			if (!$port && $proto eq "ldap") {
 				$port = 389;
