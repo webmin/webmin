@@ -10,7 +10,7 @@ index_boot=Start at boot time
 index_bootmsg=Change this option to control whether Usermin is started at boot time or not. If it is not currently started at boot and Yes is chosen, a new init script will be created.
 
 access_title=IP アクセス コントロール
-access_desc=The Usermin server can be configured to deny or allow access only from certain IP addresses using this form. Hostnames (like foo.bar.com) and IP networks (like 10.254.3.0 or 10.254.1.0/255.255.255.128) can also be entered. You should limit access to your server to trusted addresses, especially if it is accessible from the Internet. Otherwise, anyone who guesses your password will have complete control of your system.
+access_desc=The Usermin server can be configured to deny or allow access only from certain IP addresses using this form. Hostnames (like foo.bar.com) and IP networks (like 10.254.3.0 or 10.254.1.0/255.255.255.128 or 10.254.1.0/25 or 10.254.1.5-10.254.97.127) can also be entered. You should limit access to your server to trusted addresses, especially if it is accessible from the Internet. Otherwise, anyone who guesses your password will have complete control of your system.
 access_header=アクセス コントロール
 access_all=Allow from all addresses
 access_allow=Only allow from listed addresses

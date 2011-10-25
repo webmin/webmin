@@ -18,7 +18,7 @@ index_restart=Restart Usermin
 index_restartmsg=Click this button to re-start the Usermin server process. This may be necessary if you have recently upgraded Perl.
 
 access_title=IP Access Control
-access_desc=The Usermin server can be configured to deny or allow access only from certain IP addresses using this form. Hostnames (like foo.bar.com) and IP networks (like 10.254.3.0 or 10.254.1.0/255.255.255.128) can also be entered. You should limit access to your server to trusted addresses, especially if it is accessible from the Internet. Otherwise, anyone who guesses your password will have complete control of your system.
+access_desc=The Usermin server can be configured to deny or allow access only from certain IP addresses using this form. Hostnames (like foo.bar.com) and IP networks (like 10.254.3.0 or 10.254.1.0/255.255.255.128 or 10.254.1.0/25 or 10.254.1.5-10.254.97.127) can also be entered. You should limit access to your server to trusted addresses, especially if it is accessible from the Internet. Otherwise, anyone who guesses your password will have complete control of your system.
 
 bind_title=Ports and Addresses
 bind_desc2=This form can be used to change the port number that Usermin listens on, or have it listen on only a single IP address on your system. You can also configure it to accept connections on multiple ports, or to listen on several IP addresses. Note - your web browser may prompt you to log in again after changing the port or binding address.
