@@ -2668,6 +2668,19 @@ for($i=2; $i<@_; $i++) {
 				}
 			}
 		}
+	elsif ($_[$i] =~ /^(\S+)-(\S+)$/) {
+		# Compare with an IPv4 range (separated by a hyphen -)
+		local ($remote, $min, $max);
+		@low = split(/\./, $1); @high = split(/\./, $2);
+		for($j=0; $j<4; $j++) {
+			$remote += $io[$j] << ((3-$j)*8);
+			$min += $low[$j] << ((3-$j)*8);
+			$max += $high[$j] << ((3-$j)*8);
+			}
+		if ($remote < $min || $remote > $max) {
+			$mismatch = 1;
+			}
+		}
 	elsif ($_[$i] =~ /^\*(\S+)$/) {
 		# Compare with hostname regexp
 		$mismatch = 1 if ($hn !~ /$1$/);
