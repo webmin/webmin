@@ -13,7 +13,7 @@ index_refresh=Refresh Modules
 index_refreshmsg=Re-check all Webmin modules for installed servers, and update those that appear in the 'Un-used modules' category.
 
 access_title=IP Access Control
-access_desc=The Webmin server can be configured to deny or allow access only from certain IP addresses using this form. Hostnames (like foo.bar.com) and IP networks (like 10.254.3.0 or 10.254.1.0/255.255.255.128) can also be entered. You should limit access to your server to trusted addresses, especially if it is accessible from the Internet. Otherwise, anyone who guesses your password will have complete control of your system.
+access_desc=The Webmin server can be configured to deny or allow access only from certain IP addresses using this form. Hostnames (like foo.bar.com) and IP networks (like 10.254.3.0 or 10.254.1.0/255.255.255.128 or 10.254.1.0/25 or 10.254.1.5-10.254.97.127) can also be entered. You should limit access to your server to trusted addresses, especially if it is accessible from the Internet. Otherwise, anyone who guesses your password will have complete control of your system.
 access_ip=Allowed IP addresses
 access_local=Include local network in list
 access_header=Access control options
