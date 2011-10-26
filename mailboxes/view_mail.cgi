@@ -147,7 +147,7 @@ if ($body && $body->{'data'} =~ /\S/) {
 						$config{'link_mode'})."\n";
 			}
 		$bodycontents .= "</pre>";
-		if ($htmlbody && $userconfig{'view_html'} == 0) {
+		if ($htmlbody && $userconfig{'view_html'} != 0) {
 			push(@bodyright,
 			    "<a href='$hbase&body=2'>$text{'view_ashtml'}</a>");
 			}
