@@ -169,6 +169,11 @@ if ($bodycontents) {
 	print &ui_table_row(undef, $bodycontents);
 	print &ui_table_end();
 	}
+else {
+	print &ui_table_start($text{'view_body'}, "width=100%", 1);
+	print &ui_table_row(undef, "<b>$text{'view_nobody'}</b>");
+	print &ui_table_end();
+	}
 
 # Show delivery status
 if ($dstatus) {
