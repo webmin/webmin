@@ -2169,7 +2169,19 @@ foreach $a (@{$_[0]->{'attach'}}) {
 		}
 	}
 if ($_[1] == 0) {
-	$body = $textbody;
+	if ($textbody) {
+		$body = $textbody;
+		}
+	elsif ($htmlbody) {
+		local $text = &html_to_text($htmlbody->{'data'});
+		$body = $textbody =
+			{ 'data' => $text };
+		}
+	else {
+		local $text = "<strong>This email has no content.</strong>";
+		$body = $textbody =
+			{ 'data' => $text };
+		}
 	}
 elsif ($_[1] == 1) {
 	$body = $textbody || $htmlbody;
