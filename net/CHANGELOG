@@ -60,3 +60,5 @@ Static IPv6 addresses and default routes on Redhat, CentOS, Fedora, Debian and U
 ---- Changes since 1.550 ----
 The speed, link status and duplex of active ethernet interfaces is now shown on the active interfaces page.
 On Debian, Ubuntu, Redhat, CentOS and Fedora systems boot-time network interfaces with no IP address can now be created. You can also create network bridges that are connected to ethernet interfaces with no address, for use by virtual machines such as KVM.
+---- Changes since 1.570 ----
+If Postfix is installed when the hostname is changed, the mydestination (local hostname) configuration parameter is updated too.

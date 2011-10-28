@@ -81,6 +81,20 @@ if ($in{'hosts'} && $in{'hostname'} ne $old_hostname) {
 		}
 	}
 
+if (&foreign_installed("postfix") && $in{'hostname'} ne $old_hostname) {
+	# Update postfix mydestination too
+	&foreign_require("postfix");
+	$mydest = &postfix::get_current_value("mydestination");
+	if ($mydest eq $old_hostname) {
+		&postfix::lock_postfix_files();
+		&postfix::set_current_value("mydestination", $in{'hostname'});
+		&postfix::unlock_postfix_files();
+		if (&postfix::is_postfix_running()) {
+			&postfix::reload_postfix();
+			}
+		}
+	}
+
 &webmin_log("dns", undef, undef, \%in);
 &redirect("");
 
