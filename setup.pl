@@ -131,6 +131,7 @@ if ($upgrading) {
 	&get_miniserv_config(\%miniserv);
 	$oldwadir = $miniserv{'root'};
 	$path_separator = $gconfig{'os_type'} eq 'windows' ? ';' : ':';
+	$null_file = $gconfig{'os_type'} eq 'windows' ? "NUL" : "/dev/null";
 
 	if (!$miniserv{'inetd'}) {
 		# Stop old version
@@ -224,6 +225,7 @@ else {
 	$gconfig{'real_os_type'} = $real_os_type;
 	$gconfig{'real_os_version'} = $real_os_version;
 	$path_separator = $gconfig{'os_type'} eq 'windows' ? ';' : ':';
+	$null_file = $gconfig{'os_type'} eq 'windows' ? "NUL" : "/dev/null";
 	unlink($temp);
 	print "Operating system name:    $real_os_type\n";
 	print "Operating system version: $real_os_version\n";
