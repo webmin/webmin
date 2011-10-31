@@ -1,3 +1,4 @@
+__norefs=1
 acl_all=Alle Benutzer
 acl_command=Darf Cron-Auftr&#228;ge ansehen und bearbeiten?
 acl_control=Darf Zugriffsrechte f&#252;r Benutzer bearbeiten?
@@ -147,6 +148,7 @@ save_eallow=Der Benutzer '$1' hat keine Berechtigung, auf Cron zuzugreifen
 save_ecannot=Sie haben keine Berechtigung, Cron-Auftr&#228;ge f&#252;r '$1' zu erstellen oder zu bearbeiten
 save_ecannot2=Sie d&#252;rfen keine Cron-Auftr&#228;ge erzeugen
 save_ecmd=Sie haben keinen auszuf&#252;hrenden Befehl angegeben
+save_eidx=Cron-Autrag wurde erfolgreich gespeichert, kann aber nicht ausgef&#252;hrt werden, da dieser nicht gefunden worde!
 save_enone=Sie haben keinen $1 zum Ausf&#252;hren gew&#228;hlt
 save_err=Fehler beim Speichern des Cron-Auftrags
 save_euser=Sie m&#252;ssen einen Benutzer angeben
