@@ -1,16 +1,18 @@
+__norefs=1
 data_doing=Starte Offline-Datenerfassung on $1 ...
 data_failed=... gescheitert!
 data_ok=.. Erfassung erfolgreich gestartet. Beachten Sie bitte die Festplatten-Statusanzeige auf der Hauptseite dieses Modules f&#252;r die Ergebnisse.
 data_title=Datenerfassungs-Test
 ext_doing=Erweiterter Selbsttest von $1 gestartet ..
-ext_failed=$short_failed
-ext_ok=$short_ok
+ext_failed=.. fehlgeschlagen!
+ext_ok=.. Test gestartet OK. Siehe die Festplatten-Status auf der Modul Hauptseite f&#252;r die Ergebnisse.
 ext_title=Erweiterter Selbsttest
 index_attrs=Zus&#228;tzliche SMART Attribute
 index_check=Festplattentest durchgef&#252;hrt?
 index_data=Datenerfassungs-Test
 index_desc=Ort
 index_drive=Status des Laufwerkes $1
+index_drivesub=Status von Festplatte $1, Partition $2
 index_ecmd=Der SMART-Kontrollbefehl $1 wurde auf Ihrem System nicht gefunden oder er ist nicht richtig in der <a href='$2'>Modulkonfiguration</a> angegeben. Er muss installiert werden, bevor das Modul genutzt werden kann.
 index_ecmd2=Der Befehl $1 scheint nicht der SMART-Kontrollbefehl zu sein. Er ist nicht richtig in der <a href='$2'>Modulkonfiguration</a> angegeben. Dies ist jedoch eine Grundvoraussetzung f&#252;r die Funktion dieses Modules.
 index_ecount=$1 Fehler erfasst
@@ -31,7 +33,7 @@ index_version=SMARTsuite Version $1
 monitor_drive=Festplatte zum Pr&#252;fen
 monitor_edrive=Fehlendes oder ung&#252;ltiges Laufwerk f&#252;r Pr&#252;fung
 monitor_errors=Fehlerprotokoll ebenfalls pr&#252;fen?
-monitor_errorsfound=Berichtete $1 Fehler
+monitor_errorsfound=$1 Fehler berichtet
 monitor_errorsinc=Ja, aber nur Warnungen wenn Fehler den Z&#228;hler erh&#246;hen
 monitor_errorsinced=Fehler erh&#246;ht von $2 auf $1
 monitor_nosmart=Keine SMART-Unterst&#252;tzung
