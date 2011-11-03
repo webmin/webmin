@@ -2182,7 +2182,7 @@ elsif ($_[1] == 3) {
 	if ($textbody) {
 		$body = $textbody;
 		}
-	else {
+	elsif ($htmlbody) {
 		local $text = &html_to_text($htmlbody->{'data'});
 		$body = $textbody = 
 			{ 'data' => $text };

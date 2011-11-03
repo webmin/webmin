@@ -120,6 +120,7 @@ view_sent=Message $1 in sent mail list
 view_qdesc=Queued message $1
 view_headers=Mail headers
 view_body=Message contents
+view_nobody=This message has no body contents.
 view_allheaders=View all headers
 view_noheaders=View basic headers
 view_attach=Attachments
