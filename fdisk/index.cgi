@@ -64,6 +64,10 @@ if (@disks) {
 			push(@links, "<a href='../smart-status/index.cgi?".
 			     "drive=$d->{'device'}'>$text{'index_dsmart'}</a>");
 			}
+		if ($ed) {
+			push(@links, "<a href='blink.cgi?".
+                       		"disk=$d->{'index'}'>$text{'index_blink'}</a>");
+                	}
 		print &ui_columns_row([
 			$ed ? "<a href='edit_disk.cgi?device=$d->{'device'}'>".
 			        $d->{'desc'}."</a>"
