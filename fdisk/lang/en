@@ -25,6 +25,7 @@ index_hdparm=Edit IDE parameters
 index_hdparmdesc=Change settings for an IDE drive, such as the DMA mode, standby timeout and number of sectors read.
 index_smart=Show SMART status
 index_smartdesc=Displays the status reported by this drive, including temperature and error rates.
+index_blink=Identify drive
 index_relabel=Wipe Partitions
 index_relabeldesc=Delete all existing partitions and create a new partition table with a different format.
 index_use=Use
@@ -233,6 +234,10 @@ hdparm_performing=Performing
 hdparm_buf1=Buffer cache:
 hdparm_buf2=Buffered:
 hdparm_speedres=Speed test results
+
+blink_title=Identify Drive
+blink_desc=The activity LED of the drive will now light sixty times
+blink_back=Go Back
 
 log_modify=Modified $1
 log_create=Created $1

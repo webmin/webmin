@@ -1571,4 +1571,19 @@ my $out = &backquote_command("parted -v 2>&1 </dev/null");
 return $out =~ /parted.*\s([0-9\.]+)/i ? $1 : undef;
 }
 
+# identify_disk(&disk)
+# Blinks the activity LED of the drive sixty times
+sub identify_disk
+{
+local ($d) = @_;
+$count = 1;
+while ($count <= 60) {
+        &system_logged("dd if=".quotemeta($d->{'device'}).
+		       " of=/dev/null bs=10M count=1");
+	sleep(1);
+	print "$count ";
+	$count ++;
+	}
+}
+
 1;
