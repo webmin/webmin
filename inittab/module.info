@@ -27,3 +27,5 @@ desc_ko_KR.UTF-8=SysV Init 구성
 desc_cz=Konfigurace SysV Inicializace
 desc_nl=Initial Systeem bootup
 desc_ru.UTF-8=Процесс инициализации (init)
+desc_cz.UTF-8=Konfigurace SysV Inicializace
+desc_pl.UTF-8=Konfiguracja inita (System&nbsp;V)

@@ -19,3 +19,6 @@ desc_ja_JP.UTF-8=SSH サーバ
 desc_ru.UTF-8=Сервер SSH
 desc_eu=SSH zerbitzaria
 desc_it=Server SSH
+desc_cz.UTF-8=SSH server
+desc_pl.UTF-8=Serwer SSH
+desc_sk.UTF-8=SSH Server

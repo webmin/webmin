@@ -31,3 +31,6 @@ desc_da=Apache Webserver
 desc_cz=Apache WWW server
 desc_ru.UTF-8=Веб сервер Apache
 desc_pt_BR=Servidor Web Apache
+desc_hu.UTF-8=Apache Webkiszolgáló
+desc_cz.UTF-8=Apache WWW server
+desc_pl.UTF-8=Serwer WWW Apache

@@ -31,3 +31,7 @@ desc_it=Elenco dei server Webmin
 desc_cz=Seznam Webmin server�
 desc_nl=Webmin Servers Index
 desc_ru.UTF-8=Серверы Webmin
+desc_hu.UTF-8=Webmin szerverek
+desc_cz.UTF-8=Seznam Webmin serverů
+desc_pl.UTF-8=Lista serwerów Webmina
+desc_sk.UTF-8=Zoznam Webmin serverov

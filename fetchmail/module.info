@@ -19,3 +19,5 @@ desc_it=Scarica la posta con Fetchmail
 desc_cz=Proch�zen� po�ty p�es FetchMail
 desc_nl=Fetchmail Mail Ontvangen
 desc_ru.UTF-8=Сборщик почты Fetchmail
+desc_cz.UTF-8=Procházení pošty přes FetchMail
+desc_pl.UTF-8=Pobieranie poczty przez fetchmaila

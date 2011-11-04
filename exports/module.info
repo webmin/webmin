@@ -28,3 +28,5 @@ novserver=1
 desc_it=Condivisioni NFS
 desc_cz=NFS Export
 desc_ru.UTF-8=Каталоги NFS
+desc_pl.UTF-8=Udostępnianie po NFS
+desc_cz.UTF-8=NFS Export

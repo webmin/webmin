@@ -26,3 +26,6 @@ desc_ko_KR.UTF-8=SSH/텔넷 로그인
 desc_it=Login SSH
 desc_ru.UTF-8=Вход по SSH
 desc_nl=SSH Login
+desc_cz.UTF-8=SSH přihlášení
+desc_pl.UTF-8=Logowanie przez SSH
+desc_sk.UTF-8=SSH prihlásenie

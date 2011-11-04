@@ -22,3 +22,7 @@ desc_it=Console dei comandi
 desc_cz=P��kazov� ��dek
 desc_nl=Terminal
 desc_ru.UTF-8=Командная оболочка (shell)
+desc_cz.UTF-8=Příkazový řádek
+desc_pl.UTF-8=Linia poleceń
+desc_hu.UTF-8=Parancshéj
+desc_sk.UTF-8=Príkazový riadok

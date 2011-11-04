@@ -22,3 +22,4 @@ desc_zh_CN.UTF-8=NFS 共享
 desc_ja_JP.UTF-8=NFS 共有
 desc_ko_KR.UTF-8=NFS 공유 
 library=dfs-lib.pl
+desc_hu.UTF-8=NFS Megosztások

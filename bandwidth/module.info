@@ -12,3 +12,6 @@ desc_cz=Bandwidth Monitoring
 desc_nl=Bandbreedte Monitor
 desc_ru_RU=Мониторинг сетевого трафика
 desc_pl=Monitorowanie pasma
+desc_cz.UTF-8=Bandwidth Monitoring
+desc_pl.UTF-8=Monitorowanie pasma
+desc_hu.UTF-8=Forgalmi monitor

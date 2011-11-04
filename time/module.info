@@ -32,3 +32,7 @@ noopenvz=1
 desc_it=Ora di sistema
 desc_nl=Systeem Tijd
 desc_ru.UTF-8=Системное время
+desc_hu.UTF-8=Rendszeridő
+desc_cz.UTF-8=Systémový čas
+desc_pl.UTF-8=Czas systemowy 
+desc_sk.UTF-8=Systémový čas

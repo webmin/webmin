@@ -25,3 +25,5 @@ desc_ko_KR.UTF-8=Postfix 구성
 desc_cz=Konfigurace Postfixu
 desc_nl=Postfix Mail Server
 desc_ru.UTF-8=Настройка Postfix
+desc_cz.UTF-8=Konfigurace Postfixu
+desc_pl.UTF-8=Konfiguracja Postfiksa

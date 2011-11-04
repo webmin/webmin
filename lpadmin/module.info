@@ -28,3 +28,6 @@ readonly=1
 desc_cz=Administrace tisk�ren
 desc_ru.UTF-8=Принтеры
 desc_pt_BR=Administra&#231;&#227;o de Impressoras
+desc_hu.UTF-8=Nyomtatók
+desc_cz.UTF-8=Administrace tiskáren
+desc_pl.UTF-8=Zarządzanie drukarkami

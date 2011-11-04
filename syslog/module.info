@@ -30,3 +30,6 @@ desc_it=Registri di sistema
 desc_cz=Syst�mov� logy
 desc_nl=Systeem Logs
 desc_ru.UTF-8=Системный журнал
+desc_hu.UTF-8=Rendszernapló
+desc_cz.UTF-8=Systémové logy
+desc_pl.UTF-8=Logi systemowe

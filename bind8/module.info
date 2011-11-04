@@ -30,3 +30,5 @@ desc_ko_KR.UTF-8=BIND DNS 서버
 desc_cz=DNS BIND Server
 desc_nl=BIND DNS-server
 desc_ru.UTF-8=Сервер DNS BIND
+desc_cz.UTF-8=DNS BIND Server
+desc_pl.UTF-8=Serwer DNS BIND

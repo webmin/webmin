@@ -25,3 +25,4 @@ desc_ja_JP.UTF-8=BIND 4 DNS サーバ
 desc_ko_KR.UTF-8=BIND 4 DNS 서버 
 library=dns-lib.pl
 desc_ru.UTF-8=BIND 4 DNS Сервер
+desc_pl.UTF-8=Serwer DNS BIND&nbsp;4

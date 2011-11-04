@@ -12,3 +12,4 @@ longdesc=Set up a dialin server using mgetty and PPP.
 desc_cz=PPP Dialin server
 desc_ru.UTF-8=Сервер PPP
 desc_nl=PPP Inbel Server
+desc_cz.UTF-8=PPP Dialin server

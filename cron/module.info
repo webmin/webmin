@@ -30,3 +30,7 @@ desc_sk=Cron Pl�nova� �loh
 desc_it=Pianificazione Cron Job
 desc_cz=Cron Pl�nova� �loh
 desc_ru.UTF-8=Расписание заданий Cron
+desc_hu.UTF-8=Tervezett Cron munkák
+desc_cz.UTF-8=Cron Plánovač úloh
+desc_pl.UTF-8=Harmonogram zadań crona
+desc_sk.UTF-8=Cron Plánovač úloh

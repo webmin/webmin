@@ -22,3 +22,5 @@ desc_fr=GRUB - Gestionnaire de d&#233;marrage
 desc_cz=Zavad�� syst�mu GRUB
 desc_it=Boot loader GRUB
 desc_ru.UTF-8=Загрузчик Linux (GRUB)
+desc_cz.UTF-8=Zavaděč systému GRUB
+desc_pl.UTF-8=Inicjator systemu GRUB

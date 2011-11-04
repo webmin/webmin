@@ -11,3 +11,4 @@ library=slp-lib.pl
 desc_cz=OpenSLP server
 desc_nl=OpenSLP Server
 desc_ru.UTF-8=Сервер OpenSLP
+desc_cz.UTF-8=OpenSLP server

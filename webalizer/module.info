@@ -15,3 +15,5 @@ os_support=!windows
 desc_cz=Webalizer - generátor analızy logù
 desc_nl=Webalizer Logfile Analyse
 desc_ru_RU=Àíàëèç ëîã-ôàéëîâ (Webalizer)
+desc_cz.UTF-8=Webalizer - generÃ¡tor analÃ½zy logÅ¯
+desc_hu.UTF-8=Webalizer naplÃ³file elemzÅ‘

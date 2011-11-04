@@ -31,3 +31,6 @@ desc_it=Processi in esecuzione
 desc_cz=Spu�t�n� procesy
 desc_nl=Werkende Processen
 desc_ru.UTF-8=Процессы
+desc_hu.UTF-8=Futó Processzek
+desc_cz.UTF-8=Spuštěné procesy
+desc_pl.UTF-8=Działające procesy

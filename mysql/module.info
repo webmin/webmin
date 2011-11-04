@@ -29,3 +29,6 @@ desc_cz=Datab�zov� server MySQL
 desc_ru.UTF-8=Сервер баз данных MySQL
 desc_nl=MySQL Database Server
 desc_fr=Serveur de Bases de Donn&#233;es MySQL
+desc_hu.UTF-8=MySQL Adatbázis szerver
+desc_cz.UTF-8=Databázový server MySQL
+desc_pl.UTF-8=Serwer baz danych MySQL

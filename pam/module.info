@@ -22,3 +22,5 @@ desc_ko_KR.UTF-8=PAM 인증
 desc_cz=PAM Autentikace
 desc_ru.UTF-8=Аутентификация PAM
 desc_nl=PAM Authenticatie
+desc_cz.UTF-8=PAM Autentikace
+desc_pl.UTF-8=Autoryzacja przez PAM

@@ -26,3 +26,6 @@ desc_ko_KR.UTF-8=DHCP 서버
 desc_sk=DHCP Server
 desc_cz=DHCP Server
 desc_ru.UTF-8=Сервер DHCP
+desc_cz.UTF-8=DHCP Server
+desc_pl.UTF-8=Serwer DHCP
+desc_sk.UTF-8=DHCP Server

@@ -11,3 +11,5 @@ longdesc=Install RPMs, debian and solaris packages across multiple servers from 
 desc_fr=Paquetages logiciels de clusters
 desc_cz=Cluster - Softwarové balíèky
 desc_nl=Cluster Software Pakketten
+desc_cz.UTF-8=Cluster - SoftwarovÃ© balÃ­Äky
+desc_hu.UTF-8=Klaszter szoftver csomag

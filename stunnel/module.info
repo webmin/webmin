@@ -13,3 +13,4 @@ os_support=!windows
 desc_cz=Tunely SSL
 desc_nl=SSL Tunnels
 desc_ru.UTF-8=Туннели SSL
+desc_cz.UTF-8=Tunely SSL

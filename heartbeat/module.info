@@ -9,3 +9,4 @@ desc_de=Heartbeat-Monitor
 longdesc=Configure the Heartbeat package for automatic server failover in a cluster.
 desc_cz=Heartbeat monitor
 desc_nl=Hartslag Monitor
+desc_cz.UTF-8=Heartbeat monitor

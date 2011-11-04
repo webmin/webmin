@@ -9,3 +9,4 @@ desc_es=SpamAssassin - Filtro de Correo
 os_support=!windows
 desc_cz=Spamový filtr SpamAssassin
 desc_nl=SpamAssassin Email Filter
+desc_cz.UTF-8=SpamovÃ½ filtr SpamAssassin
