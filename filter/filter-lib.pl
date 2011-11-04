@@ -113,7 +113,7 @@ foreach my $r (@pmrc) {
 	# Finally create the simple object
 	local $simple = { 'condtype' => $condtype,
 			  'cond' => $cond,
-			  'nocond' => !scalar(@{$r->{'conds'}}),
+			  'nocond' => !scalar(@conds),
 			  'body' => $flags{'B'},
 			  'continue' => $flags{'c'},
 			  'actiontype' => $r->{'type'},
