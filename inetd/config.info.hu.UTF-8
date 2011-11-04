@@ -1,0 +1,14 @@
+services_file=A hálózati szolgáltatások listája,0
+ipv6=IPv6 szolgáltatások támogatva?,1,1-Igen,0-Nem
+rpc_protocols=RPC alprotokollok,0
+restart_command=Az inetd-t újraindító parancs,0
+protocols_file=A hálózati protokollok listája,0
+rpc_inetd=Az inetd támogatja az RPC-t?,1,1-Igen,0-Nem
+allow_file=tcpd allow file teljes ösvénnyel,3
+deny_file=tcpd deny file teljes ösvénnyel,3
+tcpd_path=<tt>tcpd</tt> teljes ösvénnyel,3
+extended_inetd=Kibővített inetd fut?,1,0-Nem,1-Kissé,2-Nagyon
+rpc_file=Az RPC szolgáltatások listája,0
+show_empty=A program nélküli szolgáltatások látsszanak?,1,1-Igen,0-Nem
+sort_mode=Sorbarendezés szempontja,1,0-File,1-ABC,2-Státusz
+inetd_conf_file=Inetd konfigurációs file,0

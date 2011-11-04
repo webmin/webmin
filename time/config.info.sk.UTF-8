@@ -1,0 +1,9 @@
+lease=Akceptovateľný počet sekúnd rozdielu medzi systémovým časom a hardvérovým časom,0
+ntp_only=Používať len NTP pre synchronizáciu času?,1,1-Áno,0-Nie
+timeserver=Štandardný časový server,3,Žiadny
+line1=Nastaviteľné voľby,11
+line2=Systémová konfigurácia,11
+hwtime=Systém podporuje hardvérový čas,1,1-Áno,0-Nie
+seconds=Formát systémového času ,1,1-MMDDHHMMRRRR.SS,0-MMDDHHMMRR,2-RRRRMMDDHHMM.SS
+hwclock_flags=Parametre pre hwclock,10,Žiadne,sysconfig-z /etc/sysconfig/clock
+zone_style=Metóda konfigurácie časovej zóny,4,linux-Linux,freebsd-FreeBSD,solaris-Solaris,-&lt;Nepodporované na tomto OS&gt;

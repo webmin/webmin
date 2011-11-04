@@ -1,0 +1,45 @@
+<header>Pakiety oprogramowania</header>
+
+<h3>Wprowadzenie do pakietów</h3>
+Pakiet oprogramowania jest zbiorem plików, które tworzą program. Pliki te
+mogą być połączone w&nbsp;jeden plik pakietu w&nbsp;celu dystrybucji lub
+pobierania. Są one wydzielane i&nbsp;umieszczane w&nbsp;swoich prawidłowych
+lokalizacjach podczas instalacji pakietu. <p>
+
+System zarządzania pakietami automatyzuje większość pracy podczas instalacji
+i&nbsp;kasowania programów. Ze względu na to, że pakiety zazwyczaj zawierają
+skompilowane progrzmy, nie musisz się prsejmować plikami <tt>Makefile</tt>
+i&nbsp;skryptami <tt>configure</tt> podczas instalacji. A jako że system
+zarządzania pakietami śledzi wszystkie pakiety, może on usunąć wszelkie ślady
+programu podczas jego odinstalowywania. <p>
+
+<h3>Zainstalowane pakiety</h3>
+Pakiety są zorganizowane w&nbsp;klasy i&nbsp;podklasy takie, jak
+<tt>System</tt> lub <tt>X11/Utilities</tt>. W&nbsp;górnej części głównej
+strony znajduje się drzewo folderów i&nbsp;pakietów, w którym każdy folder
+reprezentuje klasę. Aby otworzyć folder, wystarczy kliknąć na nim. Aby
+zobaczyć informacje o&nbsp;pakiecie, kliknij na jego nazwie. <p>
+
+Poniżej drzewa pakietów znajduje się formularz służący do przeszukiwania
+bazy pakietów. Umożliwia on poszukiwanie pakietów, których nazwa lub opis
+pasują do tego co wprowadzono. <p>
+
+<h3>Zainstaluj nowy pakiet</h3>
+Poniżej przycisku poszukiwania pakietów znajduje się formularz do instalacji
+nowych pakietów. Instalację można przeprowadzić zarówno z&nbsp;pliku
+w&nbsp;systemie, pliku na komputerze, na którym działa przeglądarka, jak też
+z&nbsp;zadanego URL-a FTP lub HTTP. W&nbsp;tym ostatnim przypadku, Webmin
+skomunikuje się z&nbsp;serwerem FTP lub witryną i&nbsp;pobierze plik pakietu.
+Jeśli system znajduje się za firewallem, musisz się upewnić, że są
+prawidłowo skonfigurowane w&nbsp;module <i>Konfiguracja Webmina</i> serwery
+proxy. <p>
+
+<h3>Zidentyfikuj plik</h3>
+Na samym dole strony głównej znajduje się formularz do identyfikacji
+wybranego pliku w&nbsp;systemie. Możesz tu podać bezwzględną ścieżkę, np.
+<tt>/etc/inetd.conf</tt> lub polecenie typu <tt>elm</tt>. Webmin podejmie
+próbę znalezienia pliku w&nbsp;systemie zarządzania pakietami,
+a&nbsp;następnie wyświetli informacje o&nbsp;tym pliku i&nbsp;pakietach, do
+których należy. <p>
+<hr>
+

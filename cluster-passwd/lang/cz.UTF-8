@@ -1,0 +1,6 @@
+index_hosts=Všechny změny hesel provedené pomocí tohoto modulu, budou provedeny na všech $1 hostitelích spravovaných pomocí modulu clustru Uživatelé a skupiny.
+index_noservers=V modulu <a href=$1>Cluster - Uživatelé a skupiny</a> nebyli definovány žádné servery pro správu.
+index_title=Změna hesel v clustru
+passwd_err=Chyba při změně hesla
+passwd_on=Měním heslo na $1 ..
+passwd_title=Měním heslo

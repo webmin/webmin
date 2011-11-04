@@ -1,0 +1,103 @@
+# webmin-0.82inetd/lang/hu
+# Translated by <kissg@sztaki.hu>
+
+index_title=Internet szolgáltatások
+index_list=szolgáltatáslista
+index_save=Módosítás
+index_delete=Megszüntetés
+index_create=Létrehozás
+
+index_service=Internet szolgáltatások (az inetd-n keresztül)
+index_newservice=Új szolgáltatás bekonfigurálása
+index_rpc=RPC programok
+index_newrpc=Új RPC program bekonfigurálása
+index_apply=Változtatások életbe léptetése
+index_applymsg=Ezt a gombot megnyomva egy SIGHUP jelzést küldhetsz az <tt>inetd</tt> programnak, aminek következtében az imént beállított konfiguráció azonnal életbe lép. Ellenkező esetben csak a következő rendszerindítástól lesz csak hatása változtatásoknak.
+
+error_restart=Nem sikerült az <tt>inetd</tt>-t újraindítani
+error_saverpc=Nem sikerült bekonfigurálni az új RPC programot
+error_invalidprgname=A '$1' programnév rossz
+error_invalidprgnum=A '$1' azonosítószám rossz
+error_invalidver=A '$1' hibás RPC verziószám
+error_noprotocol=Nem választottál ki egy protokollt sem
+error_notexist=A '$1' program nem létezik
+error_notexecutable=A '$1' program nem végrehajtható
+error_invalidcmd='$1' hibás parancs
+error_nouser=Nem adtál meg felhasználót
+error_prgexist='$1' nevű RPC program már van
+error_prginuse=A '$1' azonosító szám foglalt
+error_saveservice=Nem sikerült elmenteni az internet szolgáltatást
+error_invalidport=A '$1' portszám rossz
+error_invalidservice=A '$1' szolgáltatásnév rossz
+error_portnum=A $1 portszám nem 1 és 65535 közé esik
+error_invalidprg=A '$1' programnév hibás
+error_invalidarg=A '$1' argumentumlista hibás
+error_invalidwrapper='$1' nem lehet a TCP wrapper neve
+error_invalidpermin='$1' nem lehet a percenkénti indítások maximális száma
+error_invalidchildnum='$1' nem lehet a gyerekprocesszek száma
+error_childnum=Ha a percenkénti korlátot megadtad, akkor limitálno kell a gyerekprocesszek számát is
+error_serviceexist=A $1. $2 porton már van egy szolgáltatás
+error_nameexist=Már van egy $1 nevű szolgáltatás $2 protokollal
+error_inetservice=Már van egy $1 nevű szolgáltatás $2 protokollal
+
+editrpc_title1=Új RPC program bekonfigurálása
+editrpc_title2=RPC program módosítása
+editrpc_detail=Az RPC szolgáltatás azonosítása
+editrpc_prgname=Neve
+editrpc_prgnum=Azonosítószám
+editrpc_aliase=Másodlagos nevei
+editrpc_server=Kiszolgálóprogram
+editrpc_noassigned=Nincs program
+editrpc_disable=Program letiltva
+editrpc_enable=Program engedélyezve
+editrpc_socket=Socket típusa
+editrpc_version=Megengedett RPC verziók
+editrpc_protocol=Protokoll
+editrpc_internal=Belső<br>
+editrpc_command=Külső parancs
+editrpc_waitmode=Várjunk míg lefut?
+editrpc_wait=Igen
+editrpc_nowait=Nem
+editrpc_execasuser=Mely felhasználó<br> nevében fusson?
+editrpc_max=Percenként lefutások<br>maximális száma?
+editrpc_default=Szokásos
+editrpc_execasgrp=Mely csoport<br> nevében fusson?
+
+editserv_title1=Új IP szolgáltatás megadása
+editserv_title2=Internet szolgáltatás módosítása
+editserv_detail=Internet szolgáltatás azonosítása
+editserv_name=Név
+editserv_port=Portszám
+editserv_program=Progra&#109;
+editserv_args=<br>Argumentumok
+editserv_maxchild=Gyerekek<br> maximális száma
+editserv_execlogin=Felhasználói osztály
+editserv_wrapper=TCP Wrapper
+editserv_inetd=Az <tt>inetd</tt> beépített szolgáltatása
+
+log_apply=Változások életbe léptetése
+log_create_serv=A $1 szolgáltatás létrehozása
+log_modify_serv=A $1 szolgáltatás módosítása
+log_delete_serv=A $1 szolgáltatás törlése
+log_create_prog=A $1 szolgáltatás és program létrehozása
+log_modify_prog=A $1 szolgáltatás és program módosítása
+log_delete_prog=A $1 szolgáltatás és program törlése
+log_create_serv_l=A $1 szolgáltatás létrehozása a $2. porton
+log_modify_serv_l=A $1 szolgáltatás módosítása a $2. porton
+log_delete_serv_l=A $1 szolgáltatás törlése a $2. porton
+log_create_prog_l=A $3 program által nyújtott $1 szolgáltatás létrehozása a $2. porton
+log_modify_prog_l=A $3 program által nyújtott $1 szolgáltatás módosítása a $2. porton
+log_delete_prog_l=A $3 program által nyújtott $1 szolgáltatás törlése a $2. porton
+
+log_create_rpc=A $1 RPC szolgáltatás létrehozása
+log_modify_rpc=A $1 RPC szolgáltatás módosítása
+log_delete_rpc=A $1 RPC szolgáltatás törlése
+log_create_rprog=A $1 RPC szolgáltatás és program létrehozása
+log_modify_rprog=A $1 RPC szolgáltatás és program módosítása
+log_delete_rprog=A $1 RPC szolgáltatás és program törlése
+log_create_rpc_l=A $1 RPC szolgáltatás létrehozása $2 számmal
+log_modify_rpc_l=A $1 RPC szolgáltatás módosítása $2 számmal
+log_delete_rpc_l=A $1 RPC szolgáltatás törlése $2 számmal
+log_create_rprog_l=A $3 program által nyújtott $1 RPC szolgáltatás létrehozása $2 számmal
+log_modify_rprog_l=A $3 program által nyújtott $1 RPC szolgáltatás módosítása $2 számmal
+log_delete_rprog_l=A $3 program által nyújtott $1 RPC szolgáltatás törlése $2 számmal

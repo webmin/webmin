@@ -1,0 +1,6 @@
+index_title=Logowanie przez SSH/telnet
+index_warn=Uwaga! To połączenie telnetowe <b>nie</b> jest szyfrowane.
+index_nojava=Ten moduł wymaga javy aby działać, zaś Twoja przeglądarka javy nie obsługuje
+index_credits=Aplet na licencji GPL napisany przez <a href='$1' target=_top>Matthiasa L. Jugela &amp; Marcusa Meißnera</a>.
+index_sshcredits=Zawiera oprogramowanie napisane przez Cryptix Development Team (<a href=$1 target=_top>$1</a>).
+index_esocket=Na porcie $2 hosta $1 nie działa serwer telnetu.

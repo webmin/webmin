@@ -1,0 +1,6 @@
+default_mode=Alapértelmezett processz listázási stílus,4,last-Legutóbbi,tree-Processz-fa,user-Felhasználó szerint,size-Méret szerint,cpu-CPU-kihasználtság szerint,search-Keresés,run-Futtatás
+trace_java=Rendszer hívási nyomozás megmutatása,1,1-Java applettel,0-Szövegesen
+cut_length=A parancs levágásának hossza,3,Végtelen
+line1=Konfigurálható beállítások,11
+line2=Rendszer beállítások,11
+ps_style=PS parancs kimenetének stílusa,1,sysv-SYSV,linux-Linux,hpux-HPUX,freebsd-FreeBSD,macos-MacOS

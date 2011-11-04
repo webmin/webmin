@@ -1,0 +1,65 @@
+index_title=GRUB Rendszertöltő
+index_add=Új rendszerindítási opció hozzáadása
+index_global=Globális opciók szerkesztése
+index_globalmsg=Globális rendszerindítási opciók szerkesztése a rendszerindító menüpontok megváltoztatásával, és a GRUB-ot hordozó eszköz kiválasztása.
+index_install=A GRUB telepítése
+index_installmsg=A GRUB rendszertöltő telepítése $1-re a fenti opciók indításkor való megjelenítéséhez. Ez minden egyéb rendszertöltő programot (pl. LILO) felülír, melynek következtében a rendszer elindíthatatlanná válhat.
+index_none=Nincsenek meghatározva indítási opciók. A grub telepítése előtt legalább egyet adjon meg.
+index_efile=A $1 GRUB menüfájl nem található a rendszeren. Előfordulhat, hogy a GRUB nincs telepítve, vagy a <a href='$2'>modul-konfiguráció</a> helytelen.
+index_epath=A $1 GRUB futtatható állomány nem található a rendszeren. Előfordulhat, hogy a GRUB nincs telepítve, vagy a <a href='$2'>modul-konfiguráció</a> helytelen.
+index_return=Opciók listája
+
+title_add=Rendszerindítási opció hozzáadása
+title_edit=Rendszerindítási opció szerkesztése
+title_header=Rendszerindító menüpontok részletei
+title_title=Az opció neve
+title_root=A rendszertöltő képfájl partíciója
+title_other=Egyéb
+title_sel=Kiválasztott
+title_boot=Betöltendő operációs rendszer
+title_kernel=Linux rendszermag
+title_kfile=A rendszermag elérési útvonala
+title_args=A rendszermag beállításai
+title_initrd=Kezdeti ramdiszk fájl
+title_chain=Egyéb operációs rendszer
+title_chain_def=A partíció első szektorából
+title_chain_file=A lánctöltő fájlból
+title_makeactive=Aktívvá teszi a gyökérpartíciót?
+title_none=Semelyik (nem rendszertöltő menüpont)
+title_err=A rendszerindító opció mentése sikertelen
+title_etitle=Hiányzó opciónév
+title_eroot=Hiányzó gyökérpartíció
+title_ekernel=Hiányzó vagy érvénytelen rendszermag elérési útvonal
+title_echain=Hiányzó vagy érvénytelen lánctöltő fájl
+title_edev=Nem támogatott gyökérpartíció eszköz $1
+title_einitrd=Hiányzó kezdeti ramdiszk fájlnév
+title_lock=Zárolt jelszó?
+
+global_title=Globális opciók
+global_header=Globális rendszerindítási menüpontok
+global_default=Alapértelmezett rendszerindítási opció
+global_fallback=Tartalék rendszerindítási opció
+global_first=Az első menüpont
+global_timeout=Várakozási idő az alapértelmezett betöltéséig
+global_secs=Másodperc
+global_install=Telepítse a GRUB-ot a lemezre/partícióra
+global_sel=Kiválasztott
+global_other=Egyéb
+global_password=Rendszerindítási jelszó
+global_none=Egyik sem
+global_password_file=Jelszó beírásakor a menüfájl használata:
+global_pass
+global_err=A globális opciók mentése sikertelen
+global_etimeout=Hiányzó vagy érvénytelen holtidő
+global_edev=Nem támogatott telepítési lemez/partíció $1
+global_eother=Hiányzó vagy érvénytelen lemez/partíció
+global_epassword=Hiányzó vagy érvénytelen rendszerindítási jelszó
+global_epasswordfile=Hiányzó pótmenü fájlnév
+
+install_title=A GRUB telepítése
+install_err=A GRUB telepítése sikertelen
+install_efind=A menüfájl nem található
+install_desc=A GRUB telepítése a(z) $1-re a(z) $2 és $3 parancsokkal ..
+install_ok=.. a telepítés kész.
+install_failed=.. a telepítés sikertelen!
+

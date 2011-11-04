@@ -1,0 +1,19 @@
+<header>Aliasy i&nbsp;ścieżki</header>
+
+Strona umożliwia utworzenie aliasów, które są stosowane gdy użytkownik
+klienta FTP wykonuje polecenia <tt>cd</tt>. Pierwsza tabela zezwala na
+przyporządkowanie aliasów absolutnym ścieżkom kartotek. Na przykład: po
+utworzeniu aliasu <tt>foo</tt> dla <tt>/usr/local/foo</tt> wykonanie
+komendy klienta FTP <tt>cd foo</tt> ustawi użtykownikowi aktualną
+kartotekę <tt>/usr/local/foo</tt>.
+<p>
+
+Druga tabela umożliwa wprowadzenie kartotek, które mają być przeszukiwane po
+wprowadzeniu względnego polecenia <tt>cd</tt>. Na przykład, jeżeli
+wprowadzono kartotekę <tt>/usr/local</tt> i&nbsp;użytkownik wykonał
+polecenie <tt>cd bin</tt>, to zostanie ustawiona aktualna kartoteka
+<tt>/usr/local/bin</tt> (zakładając, że nie ma kartoteki <tt>bin</tt>
+w&nbsp;kartotece aktualnej, ani aliasu o&nbsp;nazwie <tt>bin</tt>). 
+<p>
+
+<hr>

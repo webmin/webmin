@@ -1,0 +1,12 @@
+acl_user=Wykonać polecenie jako użytkownik
+acl_user_def=Aktualny użytkownik Webmina
+index_clear=Wyczyść historię
+index_clearcmds=Wyczyść komendy
+index_desc=Podaj w&nbsp;polu tekstowym poniżej polecenie powłoki Uniksa, które ma być wykonanae. Za pomocą polecenia <tt>cd</tt> można zmienić katalog dla następnych poleceń.
+index_edit=Edytuj poprzednie polecenia
+index_history=Historia poleceń
+index_ok=Wykonaj polecenie:
+index_pok=Uruchom poprzednie polecenie
+index_title=Linia poleceń
+log_clear=Wyczyszczono historie poleceń
+log_run=Uruchom komendę $1

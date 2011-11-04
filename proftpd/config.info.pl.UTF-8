@@ -1,0 +1,12 @@
+start_cmd=Polecenie uruchamiające ProFTPD,3,Automatycznie
+ftpusers=Ścieżka do pliku <tt>ftpusers</tt>,0
+test_always=Testować plik konfiguracyjny po zmianach innych?,1,1-Yes,0-No
+test_manual=Testować plik konfiguracyjny po ręcznej edycji?,1,1-Yes,0-No
+line1=Opcje konfigurowalne,11
+line2=Konfiguracja systemu,11
+stop_cmd=Polecenie do zatrzymania ProFTPd,3,Zabij proces
+pid_file=Ścieżka do pliku z numerem PID ProFTPD,0
+proftpd_path=Ścieżka do programu ProFTPD,0
+test_config=Testować plik konfiguracyjny przed zastosowaniem zmian?,1,1-Yes,0-No
+proftpd_conf=Ścieżka do pliku konfiguracyjnego ProFTPD,0
+add_file=Plik do dodawania nowych hostów wirtualnych,3,Ostatni plik w konfiguracji

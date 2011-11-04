@@ -1,0 +1,91 @@
+index_title=Fetchmail příjemce mailů
+index_poll=Server ke sdružení
+index_proto=Protokol
+index_users=Vzdálení a lokální uživatelé
+index_add=Přidat nový server
+index_run=Kontrolovat všechny servery
+index_global=Editovat výchozí nastavení
+index_user=Unix uživatel
+index_conf=Konfigurace Fetchmailu
+index_ok=Přidat Fetchmail server pro uživatele:
+index_file=Konfigurace Fetchmailu v $1
+index_return=Seznam serverů
+index_start=Spustit démona Fetchmailu
+index_stop=Ukončit démona Fetchmailu
+index_startmsg=Klepnutím na toto tlačítko se spustí na tomto serveru démon Fetchmailu, což umožní kontrolu mailu každých $1 vteřin. Démon poběží pod uživatelem $2 za použití výše uvedené konfigurace.
+index_stopmsg=Klepnutím na toto tlačítko se ukončí démon Fetchmail, který momentálně běží pod uživatelem $1. Od tohoto momentu nebude se nebudou maily automaticky stahovat každých $2 vteřin.
+index_efetchmail=Program Fetchmailu $1 nemůže být nalezen. Možná nemáte Fetchmail ve vašem systému nainstalován, nebo vaše <a href='$2'>konfigurace modulu</a> není správná.
+index_none=Neexistují žádní Unix uživatelé vlastnící <tt>.fetchmailrc</tt> soubory.
+
+poll_create=Přidat server
+poll_edit=Editovat server
+poll_header=Nastavení mail serveru
+poll_poll=Název serveru
+poll_skip=Povoleno sdružování?
+poll_via=Mail server ke kontaktování
+poll_via_def=Shodný s názvem serveru
+poll_proto=Protokol
+poll_port=Port serveru
+poll_uheader=Detauly uživatele mail serveru
+poll_user=Vzdálený uživatel
+poll_pass=Vzdálené heslo
+poll_is=Locální uživatel(é)
+poll_keep=Opustit zprávy na serveru?
+poll_fetchall=Vždy přenés všechny zprávy?
+poll_usually=Většinou ne
+poll_err=Cgyba při ukládání serveru
+poll_epoll=Chybějící nebo nesprávný název serveru
+poll_evia=Nesprávný název mail serveru
+poll_eport=Chybějící nebo nesprávné číslo portu
+poll_euser=Chybějící nebo nesprávné jméno vzdáleného uživatele
+poll_adduser=Přidat jiného uživatele
+poll_check=Zkontrolovat tento server
+poll_interface=Zkontrolovat podmínku
+poll_interface_def=Vždy kontrolovat
+poll_interface_ifc=Pouze v případě, když žije rozhraní
+poll_interface_ip=s adresou / síťovou maskou
+poll_einterface=Chybějící nebo nesprávné síťové rozhraní
+poll_enet=Chybějící nebo nesprávná adresa
+poll_emask=Nesprávná síťová maska
+poll_preconnect=Příkaz, který se spustí před připojením
+poll_postconnect=Příkaz, který se spustí po odpojení
+poll_ecannot=Nemáte oprávnění editovat konfiguraci Fetchmail u tohoto uživatele
+poll_efile=Mohou být editovány pouze konfigurační soubory Fetchmail uživatele
+
+stop_err=Chyba při ukončení Fetchmailu
+stop_ecannot=Nemáte oprávnění ukončit Fetchmail
+start_err=Chyba při spuštění Fetchmailu
+start_einterval=Chybějící nebo nesprávný interval kontroly
+start_ecannot=Nemáte oprávnění spustit Fetchmail
+
+check_title=Kontrola serverů
+check_exec=Kontrola mailů na serveru(ech) pomocí příkazu $1 ..
+check_ok=.. kontrola je ukončena.
+check_failed=.. kontrola nebyla úspěšná!
+
+global_title=Výchozí nastavení
+global_header=Výchozí nastavení pro všechny servery
+global_err=Chyba při ukládání výchozích nastavení
+
+log_create_poll_file=Přidán server $1 v souboru $2
+log_modify_poll_file=Modifikován server $1 v souboru $2
+log_delete_poll_file=Smazán server $1 v souboru $2
+log_create_poll_user=Přidán server $1 pro uživatele $2
+log_modify_poll_user=Modifikován server $1 pro uživatele $2
+log_delete_poll_user=Smazán server $1 pro uživatele $2
+log_check_file_file=Zkontrolovány všechny servery v souboru $1
+log_check_file_server=Zkontrolován server $2 v souboru $1
+log_check_user_file=Zkontrolovány všechny servery pro uživatele $1
+log_check_user_server=Zkontrolován server $2 pro uživatele $1
+log_check_server_l=Zkontrolován server $2 v souboru $1
+log_global_user=Změněna globální nastavení pro uživatele $1
+log_global_file=Změněna globální nastavení v souboru $1
+log_start=Spuštěn démon Fetchmailu
+log_stop=SUkončen démon Fetchmailu
+
+acl_users=Může editovat konfiguraci Fetchmailu pro
+acl_all=Všichni uživatelé
+acl_this=Aktuální Webmin uživatel
+acl_only=Pouze uživatelé
+acl_except=Všichni uživatelé kromě
+

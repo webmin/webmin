@@ -1,0 +1,19 @@
+<header>Numer ID użytkownika</header>
+
+Numer ID użytkownika lub UID jest tym, czego system w&nbsp;rzeczywistości
+używa dla wymuszenia praw do plików i&nbsp;procesów. Jeśli dwóch
+użytkowników ma ten sam numer UID, każdy z&nbsp;nich może uzyskać dostęp do
+plików drugiego - zatem każdy użytkownik powinien mieć unikalny numer UID.
+Podczas tworzenia użytkownika Webmin nada mu taki numer UID, jakiego nie
+używa żaden inny użytkownik. <p>
+
+Użytkownik <tt>root</tt> zawsze posiada UID równu 0. Jeśli utworzysz innego
+użytkownika z&nbsp;UID równym 0, ten użytkownik będzie równie potężny jak
+<tt>root</tt>. <p>
+
+Jeśli zmieniając istniejącego użytkownika zmienisz jego UID, opcja 
+
+<a href=chuid>Zmienić ID użytkownika na plikach?</a> pozwala ci określić
+które pliki (jeśli jakiekolwiek) będą nadal należały do tego użytkownika po
+zmianie UID. <p>
+<hr>

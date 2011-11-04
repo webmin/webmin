@@ -1,0 +1,10 @@
+wrapper_path=Cesta k majordomo wrapper,3,V adresáři programů
+program_dir=Adresář obsahující majordomo programy,0
+dynamic=Použít náhodná čísla pro seznam aliasů?,1,1-ano,0-ne
+line1=Možnosti konfigurace,11
+line2=Konfigurace systému,11
+smrsh_program_dir=Adresář obsahující bezpečnostní programy uložení Sendmailu,3,Kdekoliv
+majordomo_cf=Úplůná cesta ke konfiguračnímu souboru majordomu,0
+aliases_file=Soubor aliasů Sendmail-stylu,3,Vzít z sendmail.cf
+perms=Práva pro soubory majordomu,1,1-zapisovatelné uživateli,0-zapisovatelné uživateli a skupinami
+sort_mode=Třídit mailové seznamy podle,1,1-názvu,0-pořadí vytvoření

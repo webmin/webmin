@@ -1,0 +1,48 @@
+<header>Gyorstár beállítások; fordította: Szakács Gergely</header><p>
+
+<b>A gyorstár könyvtárai</b>: Több elérési útvonalat is megadhat, hogy a gyorstárat különböző partíciókon ossza fel.<p>
+
+A <em>könyvtár</em> egy felső szintű könyvtár, ahol a gyorstár lapozófájljai vannak tárolva. Ha a gyorstárnak egy teljes merevlemezt szán, úgy ez lehet a mountolási pont könyvtára. A könyvtárnak léteznie kell, és hozzáférhetővé kell tenni a Squid számára. A Squid NEM fogja automatikusan létrehozni ezt a könyvtárat.<p>
+
+A <em>méret</em> az e könyvtáron belül felhasználható lemezterületet (MB) határozza meg. Alapértelmezés szerint ez az érték 100 MB. Tetszés szerint változtassa meg a konfigurációjának megfelelő értékre.<p>
+
+Az <em>első szintű könyvtárak</em> a <em>felső szintű könyvtár</em> alatt létrehozandó első szintű könyvtárak számát határozzák meg.  Az alapértelmezett érték 16.<p>
+
+A <em>másodszintű könyvtárak</em> az első szintű könyvtárak mindegyike alatt létrehozandó másodszintű könyvtárak számát határozzák meg. Az alapértelmezett érték 256.<p>
+
+<b>Átlagos objektumméret</em>: Alapértelmezés szerint 13 kB. Az átlagos objektumméret a gyorstár által tárolt objektumok maximumának becslésére szolgál.<p>
+
+<b>Egy tárolóban foglalt objektumok</b>: Alapértelmezés szerint 50. A hash táblában foglalt tárolónkénti objektumok célszáma. Az érték csökkentése növeli a tárolók teljes számát, csakúgy, mint a tárhely karbantartási rátáját.<p>
+
+<b>Az ACL-ekhez ne tároljon URL-eket</b>: Alapértelmezés szerint nem. Válassza ki azon ACL-eleket, amelyekhez nem akarja az adatok gyorstárazását. Ez leginkább akkor hasznos, ha egy belső webkiszolgáló gyorstárazását akarja megelőzni.<p>
+
+<b>Maximális idő a gyorstárban</b>: Alapértelmezés szerint 1 év. Ha ezt az értéket pl. 'egy hétre' állítja, úgy a gyorstárban tárolt objektumok törlődnek, ha legalább egy hétig nem fért hozzájuk senki.<p>
+
+<b>Sikertelen kérés ideje a gyorstárban</b>: Alapértelmezés szerint 5 perc lejárati idő (TTL). Bizonyos hibatípusok (pl. "a kapcsolat elutasítva" és "404 nincs megjeleníthető oldal") negatívan kerülnek a gyorstárba egy meghatározott ideig. Fontos, hogy ez különbözik a DNS-keresések negatív gyorstárazásától.<p>
+
+<b>DNS-keresések ideje a gyorstárban</b>: Alapértelmezés szerint 6 óra (360 perc). A sikeres DNS-keresések  pozitív gyorstárazásának lejárati ideje (TTL). Ha minimalizálni akarja a Squid ipcache használatát, 0 helyett állítsa ezt az értéket 1-re.<p>
+
+<b>Sikertelen DNS ideje a gyorstárban</b>: Alapértelmezés szerint 5 perc. A sikertelen DNS-keresések negatív gyorstárazásának lejárati ideje (TTL).<p>
+
+<b>Kapcsolódási holtidő</b>: Alapértelmezés szerint 120 másodperc. Bizonyos rendszerek (nevezetesen a Linux) nem kezelik megbízhatóan a connect(2) kérések holtidejét. Ezért a Squid folyamat saját holtidejét alkalmazza a kiszolgálóhoz való kapcsolódáskor. Ez a paraméter meghatározza a kapcsolat létrejöttéig várandó időtartamot.<p>
+
+<b>Beolvasási holtidő</b>: Alapértelmezés szerint 15 perc. A read_timeout kiszolgáló-oldali kapcsolatoknál kerül alkalmazásra. Minden sikeres beolvasást követően a holtidőhöz hozzáadódik ez az intervallum. Ha az intervallum letelte után semmilyen adat nem kerül beolvasásra, úgy a kiszolgáló elutasítja a kérést, és bejegyzést tesz az ERR_READ_TIMEOUT-ba.<p>
+
+<b>Site kiválasztási holtidő</b>: Alapértelmezés szerint 4 másodperc.<p>
+
+<b>Kliens-kérési holtidő</b>: Alapértelmezés szerint 15 perc. A read_timeout kiszolgáló-oldali kapcsolatoknák kerül alkalmazásra. Minden sikeres beolvasást követően a holtidőhöz hozzáadódik ez az intervallum. Ha az intervallum letelte után semmilyen adat nem kerül beolvasásra, úgy a kiszolgáló elutasítja a kérést, és bejegyzést tesz az ERR_READ_TIMEOUT-ba.<p>
+
+<b>Kliensek maximális csatlakozási ideje</b>: Alapértelmezés szerint 1 nap. A maximális időtartam, ameddig egy kliens (böngésző) szünetmentesen kapcsolódhat a gyorstárhoz. Ez megelőzi, hogy a gyorstárban több csatoló (így több fájlleíró) várakozzon CLOSE_WAIT állapotban, olyan távoli kliensektől, amelyek helytelenül válnak le a kiszolgálóról (hálózati hiba, vagy helytelen kliens-oldali beállítások miatt).<p>
+
+<b>Maximális leállási idő</b>: Alapértelmezés szerint 30 másodperc. Amikor SIGTERM vagy SIGHUP érkezik, a gyorstár "leállás folyamatban" üzemmódba kerül, míg az összes aktív csatoló le nem zárul. Ez az érték az összes megnyitott leíróra érvényes a leállási üzemmód alatt. Ezen intervallum letelte után minden aktív kliens 'holtidő' üzenetet fog kapni.<p>
+
+<b>Félig lezárt kliensek</b>:  Alapértelmezés szerint bekapcsolva. Egyes kliensek lezárhatják a TCP-kapcsolat küldő oldalát, míg a fogadó oldal nyitva marad. Némelykor a Squid képtelen különbséget tenni egy félig lezárt és egy teljesen lezárt TCP-kapcsolat között. Alapértelmezés szerint a félig lezárt kapcsolatok nyitva maradnak, míg a csatoló egy read(2), vagy write(2) kérése hibaüzenetet nem küld vissza. Ha ezt az opciót kikapcsolja, úgy a Squid azonnal lezárja a kliens kapcsolatát, amint egy read(2) kérésre "nincs beolvasandó adat" válasz érkezik.<p>
+
+<b>Tartós holtidő</b>: Alapértelmezés szerint 120 másodperc. Kliensek, kiszolgálók és egyéb proxy-k tartós tétlen kapcsolatának holtideje. A tartós kapcsolatok letilthatók az opció 10 másodpercnél alacsonyabb értékre állításával.<p>
+
+<b>WAIS továbbítógazda</b>: Alapértelmezés szerint nincs. A gazdanév, illetve a cím, amelyre a WAIS kérések továbbítandók.<p>
+
+<b>WAIS továbbítóport</b>: Alapértelmezés szerint nincs. A port, amelyre a WAIS kérések továbbítandók.
+
+<hr>
+ 

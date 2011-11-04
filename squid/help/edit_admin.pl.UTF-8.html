@@ -1,0 +1,47 @@
+<header>Opcje administracyjne</header>
+
+<b>Uruchom jako użytkownik Uniksa</b>: Domyślnie jest 'nobody' lub 'squid'
+w&nbsp;zależności od systemu. Jeśli proxy jest uruchomione jako root, zmieni
+ono swój efektywny/rzeczywisty UID na tę wartość. <p>
+
+<b>Uruchom jako grupa Uniksa</b>: Domyślnie jest 'nogroup' lub 'squid'
+w&nbsp;zależności od systemu. Jeśli proxy jest uruchomione jako root, zmieni
+ono swój efektywny/rzeczywisty ID grupy na tę wartość. <p>
+
+<b>Dziedzina autoryzacji proxy</b>: Określa nazwę dziedziny, która będzie
+zakomunikowana klientowi dla autoryzacji proxy (część tekstu, którą
+użytkownik zobaczy, gdy zostanie poproszony o&nbsp;nazwę użytkownika
+i&nbsp;hasło). <p>
+
+<b>Adres e-mail zarządcy proxy</b>: Domyślnie jest 'webmaster' or 'root'
+w&nbsp;zależności od systemu. Adres e-mail lokalnego zarządcy proxy, który
+będzie otrzymywał wiadomość w&nbsp;padu proxy. <p>
+
+<b>Widoczna nazwa hosta</b>: Jeśli chcesz przedstawić określoną nazwę hosta
+w&nbsp;komunikatach o&nbsp;błędach itp., to podaj ją tu. W przeciwnym razie
+będzie użyta wartość zwracana przez gethostname(). Jeśli posiadasz wiele
+proxy w&nbsp;klastrze i&nbsp;otrzymujesz błędy dotyczące przekazywania IP,
+musisz nadać im indywidualne nazwy za pomocą tego ustawienia. <p>
+
+<b>Unikalna nazwa hosta</b>: Jeśli chcesz mieć wiele maszyn z&nbsp;tą samą
+<b>Widoczną nazwą hosta</b> to musisz nadać każdej z&nbsp;nich inną
+<b>Unikalną nazwę hosta</b> tak, aby zapętlanie podczas przekazywania mogło
+zostać wykryte. <p>
+
+<b>Host rozgłaszania cache</b>: Nazwa hosta, do którego będą wysyłane
+komunikaty rozgłoszeniowe. Więcej na temat hierarchii proxy znajdziesz
+w&nbsp;<a href="http://www.squid-cache.org/Doc/FAQ/FAQ-4.html"
+target="Reference">FAQ-u Squida</a>. Domyślnie jest to
+'tracker.ircache.net', jeśli rozgłaszanie zostało włączone poprzez podanie
+okresu rozgłaszania. <p>
+
+<b>Port rozgłaszania cache</b>: Port hosta, na który komunikaty
+rozgłoszeniowe będą wysyłane. Domyślnie jest to 3131, gdy rozgłaszanie jest
+włączone. <p>
+
+<b>Częstotliwość rozgłaszania</b>: Częstotliwość rozgłoszeń. Włącz
+rozgłaszanie do hierarchii proxy poprzez ustawienia jej na '1 dzień'.
+Domyślnie jest '0', co wyłącza rozgłaszanie.
+
+<hr>
+

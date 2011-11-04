@@ -1,0 +1,128 @@
+# webmin-0.90xinetd/lang/hu
+# translated by Gabor Keve <gabor.keve@orientp.hu>
+#
+index_title=Kiterjesztett Internetes Szolgáltatások
+index_name=Szolgáltatás neve
+index_type=Típusa
+index_port=Port / szám
+index_rpc=RPC
+index_inet=Internet
+index_proto=Protokol
+index_user=Felhasználó
+index_server=Szerver program
+index_redirect=Átirányítás $1 -ra
+index_enabled=Engedélyezve?
+index_internal=Belső a Xinetd -nek
+index_add_inet=Új internet szolgáltatás készítése
+index_add_rpc=Új RPC szolgáltatás készítése
+index_return=szolgáltatási lista
+index_defaults=Alapértelmezettek szerkesztése
+index_defaultsmsg=Kattinson a gombra ha az összes internet és RPC szolgáltatás alapbeállításait szeretné szerkeszteni
+index_apply=Változások engedélyezése
+index_applymsg=Kattintson a gombra ha az aktuális beállításokat SIGHUP szingnálal érvényesíteni szeretné a futó <tt>xinetd</tt> processznél
+index_start=Xinetd indítása
+index_startmsg=Kattintson a gombra, hogy a Xinetd szerver az aktuális konfigurációval induljon.
+index_econf=A Xinetd konfigurációs file $1 nem létezik. Talán nincs installálva, vagy az Ön <a href='$2'>modul konfigurációja</a> hibás.
+
+serv_create=Internet Szolgáltatás létrehozása
+serv_edit=Internet Szolgátatás szerkesztése
+serv_header1=Szolgáltatás hálózati beállításai
+serv_header2=Szolgáltatás program beállítások
+serv_header3=Szolgáltatás hozzáférési kontroll
+serv_id=Szolgáltatás name
+serv_port=Port szám
+serv_port_def=Általános
+serv_sock=Socket típus
+serv_proto=protokol
+serv_enabled=Szolgáltatás engedélyezve?
+serv_bind=Bind a címhez
+serv_bind_def=Összes
+serv_user=Futás felhasználóként
+serv_group=Futás csoportként
+serv_group_def=felhasználótól
+serv_prog=Szolgáltatást kezelje le
+serv_internal=Belső a Xinetd-nek
+serv_server=Szerver program
+serv_redirect=Átirányítás hosztra
+serv_rport=port
+serv_wait=Befejezés megvárása?
+serv_inst=Maximális konkurens szerverek
+serv_inst_def=Végtelen
+serv_nice=A szerver nice szintje
+serv_cps0=Maximális csatlakozások száma másodpercenként
+serv_cps_def=Végtelen
+serv_cps1=Szüneteltetés ha a maximumot elérte
+serv_sec=másodpercek
+serv_from=Házzáférés elfogadva
+serv_from_def=Minden hosztról
+serv_from_sel=Csak a felsorolt hosztokról..
+serv_access=Hozzáférés megtagadva
+serv_access_def=Sehonnan
+serv_access_sel=Csak a felsorolt hosztokról..
+serv_times=Hozzáférés egyidőben
+serv_times_def=Bármikor
+serv_err=Nem sikerült menteni a szolgáltatás
+serv_eid=Hibás vagy érvénytelen szolgáltatási név
+serv_ebind=Hibás vagy érvénytelen cím a bindhez
+serv_eport=Hibás vagy érvénytelen port szám
+serv_einst=Hibás vagy érvénytelen szám a konkurens szervereknél
+serv_euser=Önnek meg kell adni a felhasználót
+serv_egroup=Önnek meg kell adni a csoportot
+serv_estd=Nincs standard port szám a $1 szolgáltatáshoz
+serv_eproto=Önnek ki kell választania a protokolt ehhez a szolgáltatás
+serv_eserver=Hibás vagy érvénytelen server program
+serv_erhost=Hibás vagy érvénytelen átirányított hoszt
+serv_erport=Hibás vagy érvénytelen átirányított port
+serv_enice=Hibás vagy érvénytelen nice szint
+serv_ecps0=Hibás vagy érvénytelen szám a csatlakozás per másodpercnél
+serv_ecps1=Hibás vagy érvénytelen szünetelés
+serv_etimes=Hozzáférési idő formátuma kötelezően ÓÓ:PP-ÓÓ:PP
+
+sock_stream=Stream
+sock_dgram=Datagram
+sock_raw=Raw
+sock_seqpacket=Szekvenciális datagram
+
+proto_=Általános
+proto_ip=IP (Internet protokol)
+proto_tcp=TCP (Transmission Control protokol)
+proto_udp=UDP (User Datagram protokol)
+
+restart_err=A változtatás érvénybelépése hibás
+restart_ekill=Nem lehet HUP szingált küldeni a PID $1 : $2
+
+start_err=Nem lehet elindítani a Xinetd
+start_estart=$1 hibás : $2
+
+defs_title=Általános beállítások
+defs_header=Általános beállítások a szolgáltatásokhoz
+defs_log=Xinetd naplózási módja
+defs_log_def=Letiltva a naplózás
+defs_facility=Naplózzon a syslog segítségével
+defs_level=szinten
+defs_file=Naplózzon file -ba
+defs_soft=Egyszerű file limitáció
+defs_hard=Kemény file limitáció
+defs_success=A sikeres csatlakozásról napló
+defs_success_pid=Szerver process ID
+defs_success_host=Távoli hoszt
+defs_success_userid=Távoli azonosított felhasználó
+defs_success_exit=Szerver kilépési státusza
+defs_success_duration=Munkafolyamat időhossza
+defs_failure=A sikeres csatlakozásról napló
+defs_failure_host=Távoli hoszt
+defs_failure_userid=Távoli azonosított felhasználó
+defs_failure_attempt=Csatlakozási próba
+defs_failure_record=Távoli információ
+defs_err=Nem lehet menteni az általános beállítások
+defs_efile=Hibás vagy érvénytelen log filenév
+defs_esoft=Hibás vagy érvénytelen egyszerű limitáció
+defs_ehard=Hibás vagy érvénytelen kemény limitáció
+
+log_create_serv=Létrehozva $2 szolgáltatás $1
+log_modify_serv=Módosított $2 szolgáltatás $1
+log_delete_serv=Törölt $2 szolgáltatás $1
+log_start=Futtatott Xinetd szerver
+log_apply=Elfogadott változások
+log_defaults=Módosított általános beállítások
+

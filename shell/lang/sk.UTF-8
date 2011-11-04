@@ -1,0 +1,12 @@
+acl_user=Vykonaj príkazy ako užívateľ
+acl_user_def=Súčasný Webmin užívateľ
+index_clear=Vyčistiť históriu
+index_clearcmds=Zmaž príkaz
+index_desc=Zadaj Unixový príkaz pre vykonanie do textové poľa nižšie. Príkaz <tt>cd</tt> môže byť použitý na zmenu adresára.
+index_edit=Uprav predchádzajúci
+index_history=Archív príkazov
+index_ok=Vykonaj príkaz:
+index_pok=Vykonaj predchádzajúci príkaz
+index_title=Príkazový riadok
+log_clear=Zmazaná história príkazov
+log_run=Spustený príkaz $1

@@ -1,0 +1,14 @@
+<header>Akcja, gdy host jest MX-em o&nbsp;najwyższym priorytecie</header>
+
+<center><tt>best_mx_transport</tt></center>
+<hr>
+
+Ten parametr określa co się dzieje, gdy the lokalny system jest wymieniony
+jako MX o&nbsp;najwyższym priorytecie. Domyślnie, Postfix sygnalizuje błąd
+&quot;mail loops back to myself&quot; i&nbsp;odrzuca wiadomość. <p>
+
+Podaj <tt>local</tt>, aby przekazać poczte lokalnemu programowi
+doręczającemu. Możesz podać dowolną metodę ekspedycji zdefiniowaną
+w&nbsp;pliku Postfiksa <tt>master.cf</tt>.
+
+<hr>

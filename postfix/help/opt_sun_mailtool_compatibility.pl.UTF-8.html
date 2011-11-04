@@ -1,0 +1,14 @@
+<header>Wyłączyć blokowanie przez kernel plików skrzynek pocztowych</header>
+
+<center><tt>sun_mailtool_compatibility</tt></center>
+<hr>
+
+Ten parametr wyłącza blokowanie przez kernel plików skrzynek pocztowych. <p>
+
+Jest to potrzebne na stacjach roboczych SUN, gdyż program <tt>mailtool</tt>
+trzyma wyłączną blokadę poprzez kernel gdy jego okno jest otwarte.
+Oprogramowanie SUN-a wykorzystuje jedynie pliki <tt>user.lock</tt>. Jeśli
+nie usuniesz wszystkich programów pocztowych SUN-a, blokowanie poprzez
+kernel daje jedynie fałszywe poczucie bezpieczeństwa.
+
+<hr>

@@ -1,0 +1,4 @@
+passwd_cmd=Jelszó változtatási parancs,0,Módosítsa a rendszer file -t direktbe
+input_type=Felhasználó kiválasztás típusa,1,1-Lista doboz,0-Szöveges mező
+sort_mode=Felhasználók rendezése,1,0-File rendbe,1-Felhasználói név szerint
+max_users=Maximálisan megjeleníthető felhasználói szám,0

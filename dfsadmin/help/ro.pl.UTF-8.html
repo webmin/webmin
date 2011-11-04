@@ -1,0 +1,39 @@
+<header>Dostęp tylko do odczytu</header>
+
+Określa, które hosty mają uzyskiwać dostęp do tego zasobu w&nbsp;trybie
+tylko do odczytu. Możliwe są trzy ustawienia dla tej opcji&nbsp;: 
+<ul>
+<li><b>Żaden</b><br>
+    Żaden host nie ma dostępu w&nbsp;trybie tylko do odczytu.
+<li><b>Wszystkie hosty</b><br>
+    Dowolny host może zamontować ten zasób w&nbsp;trybie tylko do odczytu
+    Jeśli jesteś podłączony do Internetu, oznacza to, że ktokolwiek
+    z&nbsp;dowolnego miejsca na świecie może czytać pliki 
+    w&nbsp;udostępnionym katalogu.
+<li><b>Wymienione hosty</b><br>
+<if $gconfig{'os_version'} < 7>
+    Z&nbsp;wymienionych poniżej hostów i&nbsp;adresów IP można zamontować
+    ten zasób w&nbsp;trybie tylko do odczytu.
+<else>
+    Hosty spełniające poniższe warunki mogą montować ten zasób
+    w&nbsp;trybie tylko do odczytu. Można je podać w&nbsp;postaci&nbsp;: <p>
+	<dl>
+	<dt><b>Nazwy hosta lub adresu IP</b> (np. <i>ftp.foo.com</i> lub 
+            <i>1.2.3.4</i>)
+	<dd>Spełnia go host o&nbsp;podanej nazwie lub adresie IP
+	<dt><b>Grupy sieciowej</b> (np. <i>inzynieria</i>)
+	<dd>Spełnia go dowolny host będący członkiem grupy sieciowej
+	<dt><b>Domeny DNS-u</b> (np. <i>.foo.com</i>)
+	<dd>Spełnia go dowolny host w&nbsp;domenie
+	<dt><b>Sieci</b> (np. <i>@10.254.1</i>)
+	<dd>Spełnia go dowolny host w&nbsp;sieci
+	<dt><b>Sieci z&nbsp;maską</b> (np. <i>@10.254.1/24</i>)
+	<dd>Spełnia go dowolny host w&nbsp;sieci
+	</dl><p>
+    Dodatkowo, dowolną z&nbsp;powyższych notacji można poprzedzić <i>-</i>,
+    co oznacza że host, grupa sieciowa, domena lub sieć <b>nie</b> może
+    montować tego zasobu. Może to być przydatne do umożliwienia dostępu dla
+    zbioru hostów z&nbsp;wyłączeniem jednego jego członka.
+</if>
+</ul>
+<hr>

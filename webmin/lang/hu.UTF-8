@@ -1,0 +1,133 @@
+index_title=Webmin beállítása
+index_return=a Webmin beállításához
+
+access_title=IP hozzáférés-vezérlés
+access_desc=A Webmin kiszolgáló beállítható úgy, hogy egyes IP címekről tiltja vagy engedélyezi a hozzáférést az alábbi űrlap használatával. Hostnevek (pl. foo.bar.com) és IP hálózatok (pl. 10.254.3.0 vagy 10.254.1.0/255.255.255.128) egyaránt megadhatók. Ajánlott korlátozni a gépéhez történő hozzáférést megbízható címekre, különösen ha az elérhető az Internet-en keresztül, különben bárki, aki megsejti az Ön jelszavát, szabad kezet kap a rendszer irányítása felett.
+access_header=Hozzáférés-vezérlés
+access_all=Engedélyezés minden címről
+access_allow=Csak a listában szereplő címekről engedélyezett
+access_deny=Tiltás a listában szereplő címekről
+access_err=A hozzáférési lista frissítése nem sikerült
+access_enone=Nem lett cím megadva
+access_enet='$1' egy érvénytelen hálózati cím
+access_emask='$1' egy érvénytelen netmaszk
+access_eip=A(z) '$1' nem teljes IP vagy hálózati cím
+access_ehost=Nem sikerült IP címet találni a(z) '$1' hosthoz.
+access_eself=Az Ön jelenlegi IP címe ($1) vélhetőleg le van tiltva.
+
+bind_title=Port és Cím
+bind_desc=Abban az esetben, Ha a host, amelyen a Webmin fut, több IP címmel rendelkezik, akkor ezzel az űrlappal a kiszolgáló beállítható úgy, hogy csak az egyik címet használja. A TCP port, amelyen a Webmin figyel, szintén itt állítható be. Megjegyzés: miután portot vagy címet változtatott, a böngészője újra felkérheti, hogy lépjen be.
+bind_header=IP cím és port
+bind_ip=Figyelendő IP cím
+bind_all=Összesen
+bind_port=Figyelendő port
+bind_err=A cím megváltoztatása nem sikerült.
+bind_eip=A(z) '$1' IP címének lekérése nem sikerült.
+bind_eassign=A(z) '$1' cím nem tartozik ehhez a rendszerhez.
+bind_eport=A(z) $1-es port már használatban van.
+
+log_title=Naplózás
+log_desc=A Webmin beállítható úgy, hogy lejegyezze a web kiszolgáló találatait a szabványos CLF naplófájl-formátumban. Ha a naplózást bekapcsolja, akkor kiválaszthatja, hogy mely IP címeket vagy hostneveket kíván regisztrálni, illetve, hogy milyen gyakorisággal törlődjön a naplófájl. Ha él a lehetőséggel, akkor a bejegyzések a $1 fájlban fognak tárolódni.
+log_header=Web kiszolgáló naplózás
+log_disable=Naplózás kikapcsolása
+log_enable=Naplózás bekapcsolása
+log_resolv=Megfejtett hostnevek regisztrálása
+log_clear=A naplófájl törlése minden $1 . órában
+log_err=A naplózásra vonatkozó opciók elmentése nem sikerült.
+log_ehours='$1' nem megfelő szám óraszám
+
+proxy_title=Proxy kiszolgálók
+proxy_desc=Ha a hoszt, amelyen a Webmin fut, tűzfal mögött van, akkor lehet, hogy szükséges egy proxy kiszolgáló a web és FTP helyek hozzáféréséhez. Egyes modulok, mint például a <tt>Szoftver csomagok</tt>, használni fogják ezeket a proxy-kat fájlok vagy programok letöltéséhez.
+proxy_header=Proxy kiszolgálók
+proxy_http=HTTP proxy
+proxy_ftp=FTP proxy
+proxy_none=Nincs
+proxy_nofor=Nincs proxy-használat az alábbiakra:
+proxy_err=A proxy-beállítás mentése nem sikerült.
+proxy_ehttp=A HTTP proxy kiszolgálót URL-ként kell megadni.
+proxy_eftp=Az FTP proxy kiszolgálót URL-ként kell megadni.
+
+colours_title=Színek
+colours_desc=Ezzel az űrlappal átszerkesztheti az összes modul által használt színeket. Minden szín a szabvány RGB-rendszerben adható meg, ahol az értékek hexadecimális számok 00-tól FF-ig.
+colours_header=Színösszeállítás
+colours_default=Alapértelmezett
+cs_page=Oldal háttér
+cs_text=Normal szöveg
+cs_table=Tábla háttér
+cs_header=Tábla fejléc
+cs_link=Link szöveg
+colours_err=A színek elmentése nem sikerült
+colours_ered=A(z) '$1' vörös összetevőjének értéke nem megfelelő.
+colours_egreen=A(z) '$1' zöld összetevőjének értéke nem megfelelő.
+colours_eblue=A(z) '$1' kék összetevőjének értéke nem megfelő.
+
+mods_title=Webmin modulok
+mods_desc1=Telepítés után a Webminhez további modulok adhatók a jobboldali űrlappal. Az összetevők jellemzően <tt>.wbm</tt> fájlokban terjednek, amelyegy vagy több modult is tartalmazhat. Ha egy modul licensze olyan, hogy csakegy adott hosztról futhat, akkor azt nem telepítheti. 
+mods_install=Modul telepítése
+mods_local=Helyi fájlból
+mods_uploaded=Feltöltött fájlból
+mods_ftp=FTP vagy HTTP URL-ről
+mods_installok=Modul telepítése fájlból
+mods_desc2=Ha ugyanarról a modulról szeretne egynél több másolatot készíteni, de különböző beállításokkal, akkor a jobboldali űrlappal létrehozhatja bármely meglévő modul klónját. A klónnak új neve, új beállításai, új hozzáférést vezérlő kapcsolói által különböző felhasználók számára elérhető lehet.
+mods_clone=Klón modul
+mods_cname=Klónozandó modul
+mods_cnew=Klónozott modul neve
+mods_cloneok=Modul klónozása
+mods_desc3=Létező modulok és ezek klónjai törölhetők az alábbi űrlappal. Ha egy modul a klónjaival együtt törlődik, akkor teljesen eltünik a rendszerről. Ha egy modul egyszer letörlődött, akkor újra kell telepíteni ahhoz, hogy újra használni lehessen. Egy modul nem törölhető ha egy másik rá épül.
+mods_delete=Modulok törlése
+mods_deleteok=Kiválasztott modulok törlése
+install_err1=A(z) $1 fájból modul telepítés nem sikerült
+install_efile=A fájl nem létezik
+install_err2=A feltöltött modul telepítése nem sikerült
+install_ebrowser=Az Ön böngészője nem támogatja a fájlok feltöltését
+install_err3=A(z) $1 címről a modultelepítés nem sikerült
+install_eurl=érvénytelen URL
+install_etar=Érvénytelen modul fájl : $1
+install_einfo=A(z) $1 modulhoz nincs module.info fájl
+install_enone=A file nem tartalmaz modulokat
+install_eos=A(z) $1 modul nem támogatja ezt az operációs rendszert ($2 $3)
+install_ever=A(z) $1 modulhoz $2 vagy nagyobb verziószámú Webmin szükséges
+install_edep=A(z) $1 igényli a(z) $2 modult
+install_eextract=A kicsomagolás nem sikerült : $1
+install_title=Modul telepítése
+install_desc=Az alábbi modulok telepítése sikeresen befejeződött és hozzáadódtak  a hozzáférés-vezérlési listához :
+install_line=$1 a $2 fájlban ($3 kB)
+
+clone_err=A modul klónozása nem sikerült
+clone_elink=sikertelen symlink : $1
+clone_ecopy=a beálítás másolása nem sikerült : $1
+clone_desc=$1 klónja
+
+delete_err=A modulok törlése nem sikerült
+delete_edep=A(z) $1 modul nem törölhető, mert a(z) $2 igényli
+delete_desc1=$1 ($2 klónja)
+delete_desc2=$1 in $2 ($3 kB)
+delete_title=Modulok törlése
+delete_msg=Az alábbi modulok a telepített Webminből sikeresen törlődtek :
+
+os_title=Operációs rendszer
+os_desc=Ezzel az űrlappal megváltoztathatja a Webmin által felügyelt gép operációs rendszerét. Ez hasznos lehet, ha a gépe operációs rendszerét egy újabbra frissítette. Megjegyzésként, a telepített modulok beállításai nem fognak megváltozni, kivéve ha a régi és az új rendszer között különbségek vannak.
+os_header=A Hoszt Operációs Rendszere
+os_curros=Jelenlegi operációs rendszer
+os_currver=Jelenlegi OS verziószám
+os_new=Új operációs rendszer
+
+lang_title=Nyelvezet
+lang_title2=Webmin nyelvezete
+lang_lang=Használandó nyelv
+lang_intro=Ezzel az oldallal beállíthtaja, hogy a Webmin milyen nyelvet használjon a szövegcímek, parancssorok és üzenetek megjelenítéséhez.
+lang_ok=Nyelvezet változtatása
+
+ssl_title=SSL titkosítás
+ssl_desc1=A hoszton, amelyen a Webmin fut, fellelhető az SSLeay Perl modul telepített változata. Ennek használatával a Webmin támogatni fogja a titkosított kommunikációt a böngésző és a kiszolgáló között. Ha Ön a Webmin kiszolgálóját az Internet-en keresztül haszálja, akkor különösen ajánlott az SSL használata, mellyel megakadályozható egy esetleges támadó abban, hogy elcsípje az Ön Webmin jelszavát.
+ssl_desc2=Figyelem! Csak akkor kapcsolja be az SSL támogatást, ha van olyan böngészője, amely támogatja az SSL-t (mint például a Netscape vagy az Internet Explorer), és nincs olyan tűzfal, amely blokkolja a <b>https</b> kéréseket az Ön böngészője és a Webmin hosztja között.
+ssl_header=SSL támogatás
+ssl_enable=SSL támogatás engedélyezése, ha lehetséges
+ssl_disable=SSL támogatás kikapcsolása, ha lehetséges
+
+startpage_title=Index oldali opciók
+startpage_intro=Ezzel az oldallal megadhatja, hogy az index oldalon mennyi ikont szeretne soronkent.
+startpage_tabs=Kategorizálja a modulokat?
+startpage_nocol=Oszlopok száma
+startpage_alt=Alternatív fejléc használata
+startpage_ecols='$1' egy érvénytelen oszlopszám

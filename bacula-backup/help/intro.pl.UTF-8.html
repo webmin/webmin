@@ -1,0 +1,29 @@
+<header>Kopia zapasowa Bacula</header>
+
+Bacula jest zestawem programów komputerowych, które umożliwiają administratorowi systemu zarządzanie, przywracanie i weryfikację kopii zapasowej danych za pomocą sieci. Bacula może być także uruchamiana na pojedynczym komputerze i może wykonywać kopie zapasowe na wiele różnych nośników jak np. tasiemki i dyski twarde.<p>
+
+Z technicznego punktu widzenia Bacula jest systemem kopii zapasowej bazującym na architekturze Klient/Serwer. Bacula jest względnie efektwna i prosta w użyciu, a oferuje wiele zaawansowanych funkcji magazynowania, które umożliwiają proste wyszukania i odzyskanie uszkodzonych plików. Z powodu modularnej budowy Bacula jest skalowalna od pojedynczego systemu komputerowego do systemów obejmujących tysiące komputerów znajdujących się w dużej sieci.<p>
+
+System Bacula jest podzielony na trzy osobne usługi, które można teoretycznie uruchomić na różnych hostach. Są to:<br>
+<dl>
+<dt>Menedżer
+<dd>Menedżer przechowuje zadania, klientów i wiele innych ustawień
+konfiguracyjnych, jest odpowiedzialny za uruchomienie zadań kopii zapasowej.
+Ten moduł Webmina musi być uruchomiony na systemie, który ma zainstalowanego
+menedżera. 
+<dt>Usługa pliku
+<dd>Ta usługa jest odpowiedzialna za odczyt aktualnych plików do skopiowania. 
+Konfiguracja Bacula może zawierać więcej niż jedną usługę pliku, każda z nich
+uruchamiana jest na systemie, z którego chcemy kopiować.
+<dt>Usługa magazynu
+<dd>Usługa magazynu jest odpowiedzialna za zapisywanie danych na nośniki takie
+jak tasiemki lub pliki. Zazwyczaj potrzebujesz mieć tylko jedną usługę magazynu
+uruchomioną na tym samym hoście co menedżer, ale bardziej rozbudowane 
+konfiguracje Bacula mogą zawierać wiele systemów z różnymi rodzajami dysków,
+w celu podziału obciążenia.
+</dl>
+
+Ten moduł Webmina może zarządzać systemem, który posiada zainstalowaną jedną 
+lub więcej usług Bacula. <p>
+
+<footer>

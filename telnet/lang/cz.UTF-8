@@ -1,0 +1,8 @@
+index_title=Přihlášení SSH/Telentem
+index_warn=Pozor! Spojeíi telentem <b>není</b> kryptované.
+index_nojava=Tento modul vyžaduje fungovani javy, ale váš prohlížeč javu nepodporuje :-((
+index_credits=Applet je pod GPL - <a href='$1'>Matthias L. Jugel &amp; Marcus Meißner</a>.
+index_sshcredits=Obsahuje software vyvinutý Cryptix Development Týmem (<a href=$1 target=_top>$1</a>).
+index_esocket=Nenalezen žádný telnetový server bežící na $1 portu $2.
+index_esocket2=Nenalezen žádný SSH server rbežící na $1 portu $2.
+index_elookup=Chyba při odezvě IP addresy pro $1 během tostování telneu nebo SSH serveru.

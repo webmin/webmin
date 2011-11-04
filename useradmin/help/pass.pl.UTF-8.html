@@ -1,0 +1,29 @@
+<header>Hasło</header>
+
+Gdy użytkownik loguje się przez telnet lub na konsoli, zazwyczaj musi podać
+hasło. Są cztery różne możliwości ustawienia hasła&nbsp;:
+<ul>
+<if $config{'empty_mode'} == 1>
+<li><b>Zapytaj przy pierwszym logowaniu</b><br>
+    Gdy użytkownik będzie się logował po raz pierwszy przez telnet lub przy
+    konsoli w&nbsp;trybie tekstowym, system poprosi go o&nbsp;jego hasło. <p>
+</if>
+<if $config{'empty_mode'} == 0>
+<li><b>Hasło nie wymagane</b><br>
+    Użytkownik może się zalogować do systemu bez podawanie hasła. Możliwość
+    ta powinna byc używana ze szczególną ostrożnością. <p>
+</if>
+<li><b>Nie można się zalogować</b><br>
+    Wybranie tej możliwości spowoduje, że użytkownik nie będzie się mógł 
+    w&nbsp;ogóle zalogować do systemu, nawet aby przeczytać poczte używając
+    serwera POP3. <p>
+<li><b>Hasło zaszyfrowane</b><br>
+    Hasła uniksowe są przechowywane w&nbsp;postaci zaszyfrowanej
+    jednokierunkowo. Ta opcja pozwala na wprowadzenie zaszyfrowanej postaci
+    hasła (być może pobranej z&nbsp;pliku haseł innego systemu). <p>
+<li><b>Hasło otwartym tekstem</b><br>
+    Aby ustawić hasło dla użytkownika, wybierz tę opcję i&nbsp;wprowadź je
+    w&nbsp;polu tekstowym. Webmin weźmie to hasło, zaszyfruje je
+    i&nbsp;zapisze do pliku haseł. <p>
+</ul>
+<hr>

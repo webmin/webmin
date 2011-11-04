@@ -1,0 +1,41 @@
+<header>Kontrola dostępu</header>
+
+<b>Listy kontroli dostępu</b>: ACL są to listy terminów, do których
+dopasowywane są wyrażenia regularne lub znakowe. ACL może również być
+plikiem zawierającym jedną pozycję lub wyrażenie regularne w&nbsp;linii.
+Ramka ACL na tej stronie zawira kilka pól, które mogą byc zmieniane. Można
+również utworzyć nową ACL. <p>
+
+Obecne są pola:
+<p>
+
+<em>Nazwa</em> jest nazwą, po której ACL jest identyfikowana. Podczas
+tworzenia <b>Ograniczenia proxy</b> nazwa ta służy do określenia, co jest
+ograniczane. <p>
+
+<em>Typ</em> jest rodzajem informacji, z&nbsp;którą ACL ma byc porównywana.
+<p>
+
+<em>Wzorzec..</em> jest adresem, portem, URL-em, użytkownikiem, itd., który
+jako ACL ma być porównywany. <p>
+
+<b>Ograniczenia proxy</b>: Ograniczenia proxy są regułami, które albo
+dopuszczają albo blokują określone zapytania na podsatawie tego, czy jego
+ACL pasuje do elementów zapytania. Są trzy pola w&nbsp;tej ramce. <p>
+
+<em>Działanie</em> jest albo <em>pozwól</em> albo <em>zabroń</em>. <p>
+
+<em>ACL</em> są ACL-ami, z&nbsp;którymi będą wykonywane porównania, aby
+określić, czy zapytanie zostanie dopuszczone czy zablokowane. Poprzedzenie
+ACL wykrzyknikiem oznacza jej negację, innymi słowy wszystko <em>oprócz</em>
+członków ACL zostanie dopuszczone albo zablokowane. <p>
+
+<em>Przesuń</em> zmienia kolejność ograniczeń na liście. Kolejność,
+w&nbsp;jakiej się one pojawiają, jest ważna, gdyż Squid czyta listę jedynie
+do pierwszego spełnionego trafienia. <p>
+
+<b>Ograniczenia ICP</b>: Ta ramka służy do ograniczania zapytań ICP.
+Zapytania ICP są zapytaniami od innych, sąsiednich proxy. Ta część działa
+tak samo jak <b>Ograniczenia proxy</b>.
+
+<hr>

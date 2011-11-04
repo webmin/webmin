@@ -1,0 +1,2 @@
+resolve=A fellelt szerverek címéből visszakeressük a nevüket?,1,1-Igen,0-Nem
+scan_time=Kereséskor mennyi ideig várjunk a válaszra? [sec],0

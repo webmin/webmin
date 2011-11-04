@@ -1,0 +1,4 @@
+width=Šírka appletu,0
+height=Výška appletu,0
+port=Port na spojenie,0
+host=Kam sa pripojiť,3,Webmin server

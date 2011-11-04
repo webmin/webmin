@@ -1,0 +1,28 @@
+<header>Odczyty i zapisy wielosektorowe</header>
+
+Ustawia liczbę sektorów dla wielosektorowych operacji I/O dla napędu.<p>
+
+Tryb wielosektorowy (inaczej Tryb blokowy IDE), jest właściwością wspieraną
+przez większość nowoczesnych dysków IDE, pozwalając na transmisję wielu
+sektorów na przerwanie I/O, zamiast jednego sektora na przerwanie. <p>
+
+Gdy ta właściwość jest włączona, standardowo zmniejsza się obciążenie
+systemu przez dyskowe operacje I/O o&nbsp;30-50%. W&nbsp;wielu systemach
+zapewnia ona również przepustowość dla danych o jakieś 5% do 50%. Jednakże
+niektóre dyski (szczególnie rodzina WD Caviar) wydają się działać wolniej przy
+włączonym trybie wielosektorowym. Twoje korzyści mogą być różne. <p>
+
+Większość dysków wspiera co najmniej ustawienia 2, 4, 8 lub 16 (sektorów).
+Możliwe mogą być również większe wartości, w&nbsp;zależności od dysku.
+Ustawienie 16 lub 32 wydaje się być optymalne w&nbsp;wielu systemach. <p>
+
+Western Digital zaleca niższe ustawienia, czyli od 4 do 8 dla wielu swoich
+dysków ze względu na niewielki (32kB) bufor oraz nie zoptymalizowane
+algorytmy buforowania. <p>
+
+Niektóre urządzenia zgłaszają, że obsługują tryb wielosektorowy, lecz gubią
+dane przy niektórych ustawieniach. <br>
+W&nbsp;rzadkich przypadkach, takie błędy mogą prowadzić do masowych przekłamań
+w&nbsp;systemach plików.
+
+<hr>

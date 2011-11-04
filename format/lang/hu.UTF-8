@@ -1,0 +1,149 @@
+# webmin-0.90format/lang/hu
+# translated by Gabor Keve <gabor.keve@it-worx.hu>
+#
+index_title=A lok lis lemez partĄci˘i
+index_disk=Lemez
+index_parts=partĄci˘s
+index_location=Elhelyezkeds
+index_model=Modell
+index_unknown=Ismeretlen
+index_cyl=Cilinderek
+index_unknown2=A lemez tĄpusa ismeretlen
+index_no=No.
+index_type=TĄpus
+index_extent=Nagys g
+index_start=Kezdete
+index_end=Vge
+index_use=Felhaszn lva
+index_free=Szabad
+index_format=Ez a lemez nem format lt
+index_return=Lemez lista
+
+edit_ecannot=nnek nincs joga szerkeszteni ezt a lemezt
+edit_title=PartĄci˘ szerkesztse
+edit_header=A partĄci˘ rszletezse
+edit_location=Elhelyezkeds
+edit_dev=Eszkz
+edit_type=TĄpus
+edit_flags=Jelzk
+edit_w=Örhat˘
+edit_m=Csatlakoztathat˘
+edit_extent=Nagys g
+edit_stat=St tusz
+edit_meta=Rsze a Metalemeznek
+edit_metadb=Rsze a Metalemez adatbzsinak
+edit_mount=Csatlakoztatva a(z) $1 mint $2
+edit_mountvm=Csatlakoztatva mint virtu lis mem˘ria
+edit_umount=A(z) $1 mint $2 csatlakoztat s hoz
+edit_umountvm=A virtu lsi mem˘ria csatlakoztat s hoz
+edit_nouse=Nincs haszn lva
+edit_fs=File rendszer
+edit_inuse=Ez a partĄci˘ nem v ltoztathat˘, mert haszn latban van
+edit_setup=Be llĄt s
+edit_change=V ltoztat s
+edit_tasks=partĄci˘ feladat
+edit_newfs=éj file rendszer
+edit_newdesc1=Egy Łj file rendszer ezen a partĄci˘n, rkre letrli az sszes ltez file-t. n ezt az Łj partĄci˘ ltrehoz sa ut n vagy egy meglv m˘dosĄt sa ut n is megteheti.
+edit_newdesc2=n nem tud egy Łj file rendszert ltrehozni ezen a partĄci˘, amĄg az nem let be llĄtva.
+edit_newdesc3=n nem tud egy Łj file rendszert ltrehozni ezen a partĄci˘ ha az csatlakoztatva van. Elszr haszn lja a <a href=/mount/>file rendszer modult</a> hogy lecsatlakoztassa ezt a partĄci˘t.
+edit_fsckfs=File rendszer javĄt sa
+edit_fsck=JavĄt s
+edit_fsckdesc1=Az  <tt>fsck</tt> program hĄv sa a file rendszer javĄt s t vgzi, ha nem lehet csatlakoztattni. Ez nha szksges ha az n rendszere nem lett j˘l le llĄtva.
+edit_fsckdesc2=n nem tudja ellenrizni ezt a file rendszert ezen a partĄci˘n, mert mg nem lett be llĄtva.
+edit_fsckdesc3=n nem tudja ellenrizni ezt a file rendszert ezen a partĄci˘n, mert ez jelenleg csatlakoztatva van.Elszr haszn lja a <a href=/mount/>file rendszer modult</a> hogy lecsatlakoztassa.
+edit_fsckdesc4=n nem tudja ellenrizni ezt a file rendszert ezen a partĄci˘n, mert ezen nincs file rendszer.
+edit_fsckdesc5=n nem tudja ellenrizni ezt a file rendszert ezen a partĄci˘n, mert csak az <tt>UFS</tt> File rendszereket lehet ellenrizni.
+edit_tunefs=File rendszer hangol sa
+edit_tune=Tune
+edit_tunedesc1=Lehetsge van a file rendszer klnbz paramtereit m˘dosĄtani.
+edit_tunedesc2=n nem tudja hangolni a file rendszert ezen a partĄci˘n, mert mg nem lett be llĄtva.
+edit_tunedesc3=n nem tudja hangolni a file rendszert ezen a partĄci˘n, mert ez jelenleg csatlakoztatva van.Elszr haszn lja a <a href=/mount/>file rendszer modult</a> hogy lecsatlakoztassa.
+edit_tunedesc4=n nem tudja hangolni a file rendszert ezen a partĄci˘n, mert ezen nincs file rendszer.
+edit_tunedesc5=n nem tudja hangolni a file rendszert ezen a partĄci˘n, mert csak az <tt>UFS</tt> File rendszereket lehet hangolni.
+
+save_ecannot=nnek nincs joga szerkeszteni ezt a lemezt
+save_edelete=Nem lehet trlni a partĄci˘
+save_esave=Nem lehet menteni a partĄci˘
+save_estart='$1' nem val˘s kezd cilinder
+save_eend='$1' nem val˘s befejez cilinder
+save_estartmin=A kezd cilindernek nagyobbnak kell lenni mint nulla
+save_eendmax=A befejez cilindernek kisebbnek kell lenni mint $1
+save_estartend=A kezd cilindernek kisebbnek kell lenni, mint a befejez cilindernek
+
+newfs_title=File rendszer ltrehoz sa
+newfs_ecannot=nnek nincs joga form zni ezt a lemezt
+newfs_desc=Az als˘ gombra kattintva ez az oldal felpĄt egy Łj $1 -t a $2 eszkzn. Az sszes adat ezen a partĄci˘ vgleg trlve lesz.
+newfs_warn=Ez a  partĄci˘ m r csatlakoztattva van ezen $1. Egy Łj file rendszer ltrehoz sa trlni fogja az sszes file -t ami elzleg hozz frt ehhez a knyvt rhoz.
+newfs_header=File rendszer be llĄt sok
+ufs_a=Tartalk blokk / cilinder
+ufs_b=Logikai blokk mret
+ufs_c=Cilinder / csoport
+ufs_d=Forgat si sznet
+ufs_f=Tredk mret
+ufs_i=Inode mret
+ufs_m=Fentartott rsz
+ufs_n=Forgat si pozĄci˘
+ufs_o=Optimaliz lja
+newfs_space=helyre
+newfs_time=idre
+ufs_r=Lemez sebessg
+ufs_s=File rendszer mret
+ufs_t=S v / cilinder
+ufs_cb=Maxim lis sszefgg blokkok
+newfs_create=File rendszer ltrehoz sa
+newfs_err=Nem lehet ltrehozni a file rendszert
+newfs_exec=Futtatom a  $1 parancsot..
+newfs_failed=.. parancs hib s!
+newfs_ok=.. parancs rendben.
+
+fsck_title=File rendszer javĄt sa
+fsck_ecannot=nnek nincs joga javĄtani ezt a lemez
+fsck_desc=A <b>JavĄt s</b> gombra kattintva ellenrizve s opcion lisan javĄtva lesz a(z) $1 a(z) $2 -n. Az ellenrzsi s  javĄt si szintet az n v laszt sa befoly solja.
+fsck_mode0=Csak jelents a file rendszer  llapot r˘l.
+fsck_mode1=Az egsz file rendszer hibavizsg lata, de ne legyenek kijavĄtva a hib k.
+fsck_mode2=Az egsz file rendszer hibavizsg lata, s hiba esetn a javĄt s.
+fsck_repair=JavĄt s
+fsck_exec=Futtatom a(z) $1 parancsot..
+fsck_0=nem tal ltam hib t
+fsck_1=hib s paramterek
+fsck_32=A file rendszernek szksge van az ellenrzsre
+fsck_34=nem lehet az eszkzt megnyitni
+fsck_36=javĄthatatlan hib t tal ltam
+fsck_37=A processz le lett  llĄtva az ellenrzs sor n
+fsck_39=javĄthatatlan hib t tal ltam!
+fsck_40=nem tal ltam hib t
+fsck_unknown=ismeretlen hiba
+
+tunefs_title=File rendszer hangol s
+tunefs_ecannot=nnek nincs joga ezt a lemez hangolni
+tunefs_desc=Ezen az oldalon nnek lehetsge van be llĄtani bizonyos paramtereket a(z) $1 a(z) $2 -n. A m r meglv file -ok ezen a file rendszer nem lesznek megrong lva.
+tunefs_header=Hangol si paramterek
+tunefs_opt=Optimaliz lja
+tunefs_space=Helyre
+tunefs_time=Idre
+tunefs_tune=File rendszer hangol sa
+tunefs_a=Maxim lis sszefgg blokkok
+tunefs_d=Forgat si sznet
+tunefs_e=Maxim lis file blokk / cilinder csoport
+tunefs_m=Fentartott hely
+tunefs_err=Nem lehet hangolni a file rendszert
+tunefs_exec=Futtatom a $1  parancsot..
+tunefs_failed=.. parancs hib s!
+tunefs_ok=.. parancs rendben.
+
+select_device=SCSI kontroller $1 cl $2 eszkz $3
+select_idedevice=IDE eszkz $1
+select_part=SCSI kontroller $1 cl $2 egysg $3 partĄci˘ $4
+select_idepart=IDE eszkz $1 partĄci˘ $2
+opt_error='$1' nem rvnyes $2
+esun=A partĄci˘s csak Sun hardveren m˘dosĄthat˘
+emounted=A lemeznek csatlakoztatott partĄci˘(i) van(nak)
+elast=Az utols˘ partĄci˘t nem lehet elt volĄtani
+eformat=<tt>format</tt> nem tal l semmilyen lemezt!
+
+fstype_ufs=Solaris Unix file rendszer
+fstype_unknown=Ismeretlen file rendszer
+
+acl_disks=A lemezeket ez a felhaszn l˘ tudja partĄcion lni s form zni
+acl_dall=sszes lemez
+acl_dsel=Kiv lasztott..

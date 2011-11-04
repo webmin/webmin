@@ -1,0 +1,35 @@
+index_title=Zmiany haseł
+index_header=Podaj użytkownika, którego hasło zmienić
+index_return=listy użytkowników
+index_user=Zmiana hasła użytkownika:
+index_euseradmin=Nie można korzystać z&nbsp;tego modułu, gdyż nie zainstalowano w&nbsp;systemie modułu Użytkownicy i&nbsp;grupy.
+index_toomany=W&nbsp;systemie jest zbyt wielu użytkowników, aby ich wszystkich tu pokazać. Podaj poniżej nazwę użytkownika, którego hasło chcesz zmienić.
+
+passwd_title=Zmień hasło
+passwd_header=Zmiana hasła uniksowego
+passwd_for=Zmiana hasła dla
+passwd_old=Poprzednie hasło
+passwd_new=Nowe hasło
+passwd_repeat=Nowe hasło (ponownie)
+passwd_change=Zmień
+passwd_reset=Wyczyść formularz
+passwd_err=Nie udało się zmienić hasła
+passwd_ecannot=Nie masz uprawnień do zmiany haseł użytkowników
+passwd_euser=Taki użytkownik nie istnieje
+passwd_eold=Nieprawidłowe poprzednie hasło
+passwd_erepeat=Nowe hasła nie są identyczne
+passwd_ok=Hasło użytkownika $1 zmieniono pomyślnie. Jeśli jest to użytkownik Webmina jako który pracujesz, możesz być zmuszony do ponownego zalogowania się.
+
+log_passwd=Zmieniono hasło użytkownika $1
+
+acl_repeat=Musi podawać hasło dwukrotnie?
+acl_old=Musi podawać poprzednie hasło?
+acl_old_this=Tylko dla użytkowników
+acl_others=Zmieniać hasło w&nbsp;innych modułach?
+acl_users=Użytkownicy, których hasła można zmieniać
+acl_mode0=Wszyscy
+acl_mode1=Tylko użytkownicy
+acl_mode2=Wszyscy oprócz
+acl_mode3=Tylko ten użytkownik
+acl_mode4=Użytkownicy o&nbsp;nrach UID z&nbsp;zakresu
+acl_mode5=Użytkownicy, których grupą podstawową jest

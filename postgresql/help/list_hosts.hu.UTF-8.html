@@ -1,0 +1,18 @@
+<header>Engedélyezett gazdák</header>
+
+Ezen az oldalon azt szabályozhatja, hogy mely gazdák férhetnek hozzá az adatbázis szerverhez, illetve, hogy milyen autentikációs folyamatokon kell átmenniük ehhez. A hozzáférés-vezérlő szabályok vonatkozhatnak egyetlen gazdára, egy teljes hálózatra, minden hálózati gazdára, vagy kizárólag a helyi gépről csatlakozó felhasználókra. Ezen felül a szabályok vonatkozhatnak egy konkrét adatbázisra, vagy a szerveren található összes adatbázisra. <p>
+
+Az engedélyezett gazdák autentikációjára az alábbi lehetőségek állnak rendelkezésre :
+<dl>
+<dt><b>Egyszerű szövegű jelszó</b>
+<dd>A felhasználónak olyan jelszót kell megadnia, mely megegyezik a <tt>PostgreSQL felhasználók</tt> oldalon beállítottal. <p>
+<dt><b>Titkosított jelszó</b>
+<dd>A felhasználónak olyan jelszót kell megadnia, mely titkosítás után megegyezik a <tt>PostgreSQL felhasználók</tt> oldalon beállítottal. <p>
+<dt><b>Nem szükséges autentikáció</b>
+<dd>Nincs szükség jelszó megadására. <p>
+<dt><b>Kapcsolat megtagadása</b>
+<dd>Az adott gazdától érkező minden kapcsolódási kísérlet megtagadása. Ez a beállítás akkor hasznos, ha konkrét gazdagépektől akarja megtagadni a hozzáférést, miközben a teljes hálózat számára böngészhető az adatbázis. <p>
+</dl>
+
+<hr>
+

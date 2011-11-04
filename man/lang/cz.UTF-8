@@ -1,0 +1,79 @@
+index_title=Manuálové stránky
+index_header=Vyhledávání manuálových stránek
+index_for=Hledat
+# index_exact=Exact match?
+# index_section=Manual section
+# index_all=Vse
+index_where=Hledat v
+index_alldoc=Celé dokumentaci
+index_man=Manuálových stránkách
+index_doc=Dokumentačním balíčku
+index_kernel=Dokumentaci jádra
+index_info=Info stránkách
+index_howto=HOWTO dokumentech
+index_kde=KDE dokumentaci
+index_perl=Dokumentaci Perl modulu
+index_custom=Volitelné dokumentaci
+index_help=Webmin nápovědě
+index_reset=Smazat
+index_search=Vyhledat
+index_return=Vyhledávací formulář
+index_type=Prohledat
+index_name=Pouze názvy
+index_data=Názvy a obsah
+index_google=Google vyhledávání
+index_others=Zatímco se prohledává dokumentace z jiného modulu, povolit další hledání v ..
+index_other_man=Manuálových stránkách
+index_other_help=Webmin nápovědě
+index_other_doc=Dokumentačním balíčku
+index_other_kernel=Dokumentaci jádra
+index_other_howto=HOWTO dokumentech
+index_other_perl=Dokumentaci Perl modulu
+index_other_google=Google vyhledávání
+index_other_kde=KDE dokumentaci
+index_and=Prohledat vše
+index_or=Prohled každý
+
+search_efor=Nebyly zadány žádné manuálové stránky
+search_title=Výsledek hledání
+# search_noentry=Nebyly nalezeny žádné manuálové stránky pro $1.
+# search_page=Manuálová stránka
+# search_section=Sekce
+search_desc=Popis
+search_type=Typ
+search_file=Stránka nabo souobor
+search_man=Manuálová stránka
+search_howto=HOWTO dokument
+search_doc=Dokumentační balíček
+search_kernel=Dokumentace jádra
+search_kde=KDE dokumentace
+search_perl=Dokumentace Perl modulu
+search_help=Webmin nápověda
+search_custom=_Volitelná dokumentace
+search_none=Nebyly nalezeny žádné manuálové stránky obsahující $1.
+search_for=Pro $1
+search_google=Výsledek Google svyhledávání
+
+howto_title=HOWTO Dokument
+howto_header=Soubor HOWTO dokumentu $1
+howto_epath=Chybná cesta k HOWTO dokumentu
+
+doc_title=Dokumentační balíček
+doc_header=Soubor dokumentačního balíčku $1
+doc_epath=Chybná cesta k dokumentačnímu balíčku
+
+man_title=Manuálová stránka
+man_header=Manuálová stránka pro $1($2)
+man_noentry=Manuálová stránka $1 neexistuje!
+
+kernel_title=Dokumentace jádra
+kernel_header=Soubor dokumentace jádra $1
+kernel_epath=Chybná cesta k dokumentaci jádra
+
+kde_title=KDE dokumentace
+kde_header=Soubor KDE dokumentace $1
+kde_epath=Chybná cesta k KDE dokumentaci
+
+perl_title=Perl Modul
+perl_header=Dokumentace pro Perl modul $1
+perl_emod=Chybný název Perl modulu

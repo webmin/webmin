@@ -1,0 +1,123 @@
+# webmin-0.90at/cluster-software/hu
+# translated by Gabor Keve <gabor.keve@orientp.hu>
+#
+index_title=Klaszer szoftver csomag
+index_hosts=Vezérelt szerverek
+index_nohosts=Nincs Webmin szerver reigsztrálva a szoftver vezérléshez.
+index_add=Szerve hozzáadás
+index_gadd=Szorver hozzáadás a csoporthoz
+index_installed=Telepített csomagok
+index_search=Keresés a csomagok közt:
+index_install=Új csomag telepítése
+index_installmsg=Válassza ki a helyet ahonnan telepíteni szeretné a csomagot..
+index_local=Helyi file -ból
+index_uploaded=Feltöltött file-ból
+index_ftp=FTP-ről vagy URL-ről
+index_installok=Telepítés
+index_return=szerverek listája
+index_refresh=Csomag listák frissítése
+index_down=Minden szerver újratöltse a csomagot
+this_server=Aktuális szerver
+
+install_err=Nem lehet telepíteni a csomagot
+install_elocal=Nem lett helyi file megadva
+install_elocal2='$1' nem létezik
+install_eupload=Az Ön böngészője nem támogatja a feltöltést
+install_eurl=Elérhetettelen URL '$1'
+install_edir=$1 nem valós könytár
+install_ezip=$1 nem valós tömörített vagy gzipped file
+install_efile=$1 nem valós file
+install_title=Csomag telepítése
+install_header=Csomag telepítése
+install_packs=Telepített csomagok
+install_ok=Telepítés
+
+add_err=Nem lehet hozzáadni a szervert
+add_gerr=Nem lehet hozzáadni a csoportot
+add_echeck=A(z) $1 szervernek nincs szoftver csomag modulja
+add_esystem=A(z) $1 szerver nem ugyanazt a csomagrendszert használja mint ez a gép.
+
+search_title=Csomag keresés
+search_nomatch=Nincs ilyen csomag $1
+search_none=Semmi
+search_desc=Meghatározás
+search_class=Osztály
+search_pack=Csomag
+search_match=$1 megegyező csomag
+search_return=keresési eredmény
+
+host_title=Szerver vezérlés
+host_header=Szoftver vezérelt szerver részletei
+host_name=Hoszt neve
+host_type=Szerver típusa
+host_delete=Eltávolítva a vezérelt listából
+host_installed=Telepített csomagok
+host_open=Összes nyitva
+host_close=Összes zárva
+host_all=Minden csomag
+host_count=Telepített csomagok
+host_os=OS a Webminből
+
+edit_title=Csomag szerkesztése
+edit_details=Csomag részletei a $1 szerveren
+edit_desc=Meghatározás
+edit_pack=Csomag
+edit_class=Osztály
+edit_none=Nincs
+edit_ver=Verzió
+edit_vend=Eladó
+edit_arch=Felépítés
+edit_inst=Telepítve
+edit_list=File -ok listája innen:
+edit_uninst=Eltávolítás innen:
+edit_return=csomag részletei
+edit_hosts=Telepítve a hoszton
+edit_all=&lt;minden hoszt&gt;
+
+list_title=Csomag file-jai
+list_files=Fil-ok a(z) $1 csomagból a(z) $2 szerveren
+list_path=Útvonal
+list_owner=Tulajdonos
+list_group=Csoport
+list_type=Típus
+list_size=Méret
+list_status=Státusz
+list_ok=OK
+
+refresh_title=Csomag lista frissítése
+refresh_header=Minden szerverről a csomaglista újrakérése ..
+refresh_1=Frissülve $1 (hozzáadva $2 , eltávolítva $3)
+refresh_2=Frissülve $1 (hozzáadva $2)
+refresh_3=Frissülve $1 (eltávolítva $2)
+refresh_4=Frissülve $1 (nincs változás)
+refresh_done=.. rendben
+refresh_del=Eltávolítva $1 a szerverlistából
+
+delete_err=Nem lehet törölni a(z) $1 csomagot
+delete_epack=A(z) $1 csomag nem létezik
+delete_title=csomag törlése
+delete_rusure=Biztos Ön abban, hogy törölni szeretné a(z) $1 csomagot az összes szerverről? Több mint $2 file ($3 byte) fog örökre törlődni.
+delete_rusure2=Biztos Ön abban, hogy törölni szeretné a(z) $1 csomagot a $4 szerverről?  Több mint $2 file ($3 byte) fog örökre törlődni.
+delete_ok=Törlés
+delete_error=Nen lehet törölni $1 : $2
+delete_success=Letörölve $1 -ról(röl).
+delete_done=.. rendben
+delete_header=Törlöm a $1 csomagot ..
+
+do_title=Csomag telepítése
+do_header=Telepítem a(z) $1 az összes hoszton ..
+do_done=.. rendben
+do_failed=Nem lehet telepíteni a(z) $1 : $2
+do_success=Telepítve a(z) $1.
+do_already=Már telepítve a(z) $1.
+do_details=Csomag részletei
+do_desc=Meghatározás
+do_class=Osztály
+do_pack=Csomag
+do_ver=Verzió
+do_vend=Eladó
+do_arch=Felépítés
+do_inst=Telepítve
+do_none=Semmi
+do_edeleted=Telepített file-ok törlődtek - vissza a modul indexhez és próbálja meg újra.
+

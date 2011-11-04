@@ -1,0 +1,24 @@
+<header>Wprowadzenie do zasobów NFS-u</header>
+
+<include nfs>
+
+<h3>NFS Solarisa</h3>
+Za pomocą tego modułu możesz określić katalogi (zwane w&nbsp;Solarisie
+<i>share</i>) udostępniane przez Twój system Solarisa za pośrednictwem NFS-u
+Na pierwszej stronie ukaże się lista katalogów i&nbsp;stacji klienckich,
+dla których następuje udostępnianie. Klikając nazwę katalogu możesz zmienić
+jego opcje lub rozpocząć udostępnianie nowego katalogu. <p>
+
+Poniżej listy zasobów na tej samej stronie znajduje się przycisk uaktywniający
+bieżącą konfigurację. Dzieje się to przez zatrzymanie i&nbsp;ponowne
+uruchomienie działających procesów serwera NFS-u. <p>
+
+Solaris nie pozwala na ponowne udostępnianie katalogu zamontowanego poprzez
+NFS z&nbsp;innego serwera - można udostępniać jedynie katalogi na lokalnych
+systemach plików. Jeżeli udostępniany katalog zawiera punkt montowania
+innego lokalnego sustemu plików, klienci NFS-u dla tego zasobu nie zobaczą
+plików poniżej punktu montowania. Serwer musi udostępniać każdy lokalny
+system plików osobno w&nbsp;celu zamontowania przez stację kliencką we
+właściwym punkcie jej drzewa katalogów. <p>
+
+<hr>

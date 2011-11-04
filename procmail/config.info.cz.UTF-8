@@ -1,0 +1,5 @@
+procmail=Cesta k programu procmail,0
+procmailrc=Cesta k systémovému procmailrc souboru,0
+line1=Nastavení konfigurace,11
+line2=Konfigurace systému,11
+includes=Zobrazit obsah vložených souborů?,1,1-ano,0-ne

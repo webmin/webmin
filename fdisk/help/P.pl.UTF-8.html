@@ -1,0 +1,22 @@
+<header>Ustaw optymalny tryb PIO</header>
+
+Próba przeprogramowania chipsetu kontrolera IDE na odpowiedni tryb PIO lub
+próba automatycznego dobrania "najlepszego" trybu PIO obsługiwanego przez
+urządzenie. <p>
+
+Kernel wspiera tę funkcję jedynie dla kilku "znanych" chipsetów i&nbsp;nawet
+w&nbsp;tych przypadkach obsługa jest co najmniej wątpliwa. Niektóre chipsety
+IDE nie umożliwiają zmiany trybu PIO dla pojedyńczego urządzenia
+i&nbsp;w&nbsp;takiej sytuacji skorzystanie z&nbsp;tej funkcji może
+spowodować ustawienie zadanego trybu PIO dla obu urządzeń IDE. Wiele
+chipsetów IDE obsługuje mniej niż standardowe sześć (od 0 do 5) trybów PIO,
+więc rzeczywiście ustawiona szybkość zależy od umiejętności chipsetu
+i&nbsp;sterownika. <p>
+
+<i>Korzystaj ze szczególną ostrożnością!</i><br>
+
+Ta funkcja nie zawiera żadnych zabezpieczeń przed nieostrożnym użyciem
+i&nbsp;jej niepomyślny wynik może spowodować <i>dotkliwe przekłamania
+w&nbsp;systemach plików!</i>
+
+<hr>

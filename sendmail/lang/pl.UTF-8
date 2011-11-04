@@ -1,0 +1,558 @@
+index_title=Konfiguracja Sendmaila
+index_econfig=Plik konfiguracyjny Sendmaila $1 nie istnieje. Możliwe, że <a href='$2'>konfiguracja modułu</a> jest nieprawidłowa.
+index_eversion=Istniejący plik konfiguracyjny Sendmaila nie jest przeznaczony dla najnowszej wersji Sendmaila. Webmin obsługuje wyłącznie wersję 8.8 i&nbsp;wyższe.
+index_epath=Program Sendmail $1 nie jest zainstalowany na tym komputerze. Możliwe, że <a href='$2'>konfiguracja modułu</a> jest nieprawidłowa lub Sendmail nie został zainstalowany.
+index_return=konfiguracji sendmaila
+index_stop=Zatrzymaj Sendmaila
+index_stopmsg=Naciśnij ten przycisk aby zatrzymać Sendmaila. Spowoduje to zaprzestanie doręczania lokalnym użytkownikom poczty pochodzącej z&nbsp;innych systemów, jak również uniemożliwi używanie tego systemu jako serwera poczty wychodzącej.
+index_start=Uruchom Sendmaila
+index_startmsg=Naciśnij ten przycisk aby uruchomić Sendmaila poleceniem $1. Dopóki tego nie uczynisz, poczta z&nbsp;innych systemów nie będzie doręczana lokalnym użytkownikom oraz stacje klienckie nie będą mogły używać tego systemu jako serwera poczty wychodzącej.
+
+opts_title=Ustawienia Sendmaila
+opts_ecannot=Nie masz uprawnień do zmiany ustawień Sendmaila
+opts_ds=Wysyłaj pocztę za pośrednictwem komputera
+opts_direct=Doręczaj bezpośrednio
+opts_dr=Przekaż pocztę z&nbsp;niepełnym adresem do komputera
+opts_dh=Przekaż pocztę dla użytkowników lokalnych do komputera
+opts_local=Doręczaj lokalnie
+opts_queuela=Maks. obciążenie systemu przy wysyłaniu
+opts_refusela=Maks. obciążenie systemu przy odbieraniu
+opts_maxch=Maks. ilość procesów potomnych
+opts_throttle=Maks. ilość połączeń / sekundę
+opts_minqueueage=Min. czas przed powtórna próbą wysłania
+opts_runsize=Maksymalny rozmiar kolejki
+opts_queuereturn=Czas, po którym wiadomość jest odrzucana
+opts_queuewarn=Czas, po którym wysyłane jest ostrzeżenie
+opts_queue=Katalog kolejkowania poczty
+opts_postmaster=Informacje o&nbsp;błędach wysyłaj do
+opts_forward=Pliki przekazywania poczty użytkownika
+opts_minfree=Min. ilość wolnego miejsca na dysku
+opts_maxmessage=Maks. rozmiar wiadomości
+opts_loglevel=Poziom logowania
+opts_mimebounce=Kodowanie MIME odbitych wiadomości?
+opts_default=Domyślne
+opts_save=Zapisz i zastosuj
+opts_err=Nie udało się zachować ustawień
+opts_ehost='$1' nie jest prawidłową nazwą komputera ani domeny
+opts_einvalid='$1' nie jest prawidłową wartością dla '$2'
+opts_blame=Ustawienia bezpieczeństwa plików
+opts_selected=Wybrano..
+opts_blocks=bloków
+opts_bytes=bajtów
+opts_dmode=Tryb doręczania
+opts_background=W&nbsp;tle
+opts_queue-only=Tylko kolejka
+opts_interactive=Interakcyjnie
+opts_deferred=Odroczone
+opts_gecos=Przyjmować pocztę adresowaną rzeczywistymi nazwami uzytkowników?
+opts_hops=Maksymalna liczba etapów przesyłania poczty
+
+aliases_title=Aliasy pocztowe
+aliases_ecannot=Nie masz uprawnień do modyfikacji aliasów
+aliases_addr=Adres
+aliases_to=Alias..
+aliases_type1=Adres $1
+aliases_type2=Adresy w&nbsp;pliku $1
+aliases_type3=Plik $1
+aliases_type4=Program $1
+aliases_type5=Plik z&nbsp;automatyczną odpowiedzią $1
+aliases_type6=Użyć pliku filtru $1
+aliases_none=Brak
+aliases_return=listy aliasów
+
+aform_type0=Brak
+aform_type1=Adres e-mail
+aform_type2=Adresy w&nbsp;pliku
+aform_type3=Zapisz do pliku
+aform_type4=Przekieruj do programu
+aform_type5=Automatyczna odpowiedź z&nbsp;pliku
+aform_type6=Użyć pliku filtru $1
+aform_edit=Zmień alias
+aform_create=Utwórz alias
+aform_name=Adres
+aform_enabled=Aktywny?
+aform_val=Alias
+aform_afile=Zmień..
+aform_return=aliasu
+
+afile_title=Zmień plik z adresami
+afile_desc=Użyj pola tekstowego poniżej do zmiany adresów w&nbsp;pliku $1.
+afile_efile=Nie masz uprawnień do zmiany $1.
+afile_undo=Cofnij zmiany
+
+ffile_title=Zmień plik filtru
+ffile_desc=Za pomocą poniższego formularza ustaw reguły filtru w&nbsp;pliku $1.
+ffile_efile=Nie masz uprawnień do zmiany $1.
+ffile_line=Jeśli pole $1 $2 do $3, to prześlij do $4
+ffile_from=od
+ffile_to=do
+ffile_subject=temat
+ffile_cc=CC
+ffile_body=treść
+ffile_what0=nie pasuje
+ffile_what1=pasuje
+ffile_other=W&nbsp;przeciwnym przypadku prześlij do $1
+ffile_err=Nie udało się zachować pliku filtru
+ffile_ematch=Brak wzorca
+ffile_eaction=Brak adresu, na ktry przesyłać
+
+rfile_title=Zmień plik automatycznej odpowiedzi
+rfile_desc=Użyj pola tekstowego poniżej do modyfikacji komunikatu automatycznej odpowiedzi w&nbsp;$1. Ten komunikat może zawierać makra $SUBJECT, $FROM, $TO, $DATE i&nbsp;$BODY, które będą rozwinięte podczas aktywacji automatycznek odpowiedzi.
+rfile_efile=Nie masz uprawnień do modyfikacji $1.
+rfile_undo=Cofnij zmiany
+
+asave_err=Nie udało się zachować aliasu
+asave_ecannot2=Nie masz uprawnień do modyfikacji aliasów
+asave_ecannot=Nie masz uprawnień do zmiany tego aliasu
+asave_emax=Nie masz uprawnień, aby utworzyć więcej niż $1 aliasów
+asave_eaddr='$1' nie jest poprawnym adresem
+asave_ealready=Alias dla '$1' już istnieje
+asave_ematch=Wolno ci tworzyć jedynie aliasy wg wzorca '$1'
+asave_etype=Nie możesz tworzyć aliasów tego typu
+asave_etype1='$1' nie jest poprawnym adresem e-mail
+asave_etype2=Plik z&nbsp;adresami '$1' nie jest poprawny lub nie istnieje
+asave_etype3='$1' nie jest poprawną nazwą pliku
+asave_etype4='$1' nie jest poprawnym programem lub nie istnieje
+asave_etype5=Plik automatycznej odpowiedzi '$1' nie jest poprawny
+asave_etype4none=Nie podano programu
+asave_etype6=Plik filtru '$1' nie jest poprawny
+
+cws_title=Domeny lokalne
+cws_ecannot=Nie masz uprawnień do zmian lokalnych domen
+cws_domains=Domeny obsługiwane przez ten serwer
+cws_desc1=Oprócz poczty adresowanej do $1, Sendmail będzie przyjmował w&nbsp;celu lokalnego doręczenia jedynie pocztę adresowaną do domen wymienionych w&nbsp;okienku po lewej. Jeśli chcesz, aby twój serwer pocztowy obsługiwał wiele domen pocztowych, wszystkie one muszą być wymienione w&nbsp;tym formularzu.
+cws_desc2=Zauważ, że dopisanie tu domeny zazwyczaj nie wystarcza. Musisz również upewnić się, że istnieje w&nbsp;DNS wpis dla tej domeny, oraz że wskazuje on na twój system.
+cws_err=Nie udało się zachować domen lokalnych
+cws_ehost='$1' nie jest prawidłową nazwą komputera ani domeny
+cws_eip='$1' jest adresem IP, a&nbsp;nie nazwą domeny
+
+masq_title=Maskowanie domen
+masq_ecannot=Nie masz uprawnień do konfiguracji maskowania
+masq_domain=Zamaskuj jako domenę
+masq_domains=Domeny, które mają być zamaskowane
+masq_desc1=Jeśli podana jest domena powyżej, Sendmail zmodyfikuje adres źródłowy (<tt>From:</tt>) poczty wychodzącej tak, aby wyglądało, że pochodzi ona z&nbsp;tej domeny. Dodatkowo każda wiadomość przechodząca przez ten system, a&nbsp;pochodząca z&nbsp;któregokolwiek z&nbsp;komputerów lub domen wymienionych w&nbsp;okienku po lewej będzie również miała adres źródłowy (pole <tt>From:</tt>) zmodyfikowany w&nbsp;ten sam sposób. Zauważ, że jakiekolwiek maskowanie zdefiniowane tutaj może być nadpisane dla poszczególnych użytkowników przy użyciu strony <a href='$1'>Adresy Wychodzące</a>.
+masq_desc2=Ta funkcja może być użyteczna jeżeli chcesz aby poczta wysłana z&nbsp;twojego systemu wyglądała jak pochodząca z&nbsp;twojej domeny a&nbsp;nie z&nbsp;twojego komputera. A także, jeśli twój system stanowi centrum pocztowe dla pewnej liczby innych komputerów, na których uruchomione są serwery pocztowe.
+masq_err=Nie udało się zachować maskowania domen
+masq_edomain='$1' nie jest prawidłową domeną maskującą
+masq_ehost='$1' nie jest prawidłową nazwą komputera ani domeny
+masq_eip='$1' jest adresem IP, a&nbsp;nie nazwą domeny
+
+trusts_title=Zaufani użytkownicy
+trusts_ecannot=Nie masz uprawnień do modyfikacji listy zaufanych użytkowników
+trusts_users=Lokalni zaufani użytkownicy
+trusts_desc=Jeśli użytkownik lokalny spróbuje wysłać wiadomość, musi on znajdować się na liście po lewej, aby Sendmail pozwolił mu podać inny adres źródłowy (<tt>From:</tt>). To ograniczenie ma na celu uniemożliwienie podawania fałszywego adresu źródłowego (<tt>From:</tt>) użytkownikom wysyłającym pocztę z&nbsp;twojego systemu.
+trusts_err=Nie udało się zachować listy zaufanych użytkowników
+trusts_euser='$1' nie jest prawidłową nazwą użytkownika
+
+virtusers_title=Podstawianie adresów
+virtusers_ecannot=Nie masz uprawnień do modyfikacji podstawiania adresów
+virtusers_edirective=Twój plik konfiguracyjny Sendmaila nie zawiera części niezbędnej dla podstawiania adresów.
+virtusers_efile=Plik teksowy $1, na podstawie którego jest tworzona baza danych podstawień adresów $2 nie istnieje. Być może musisz zmienić <a href='$3'>konfigurację modułu</a> aby korzystał z&nbsp;prawidłowej ścieżki.
+virtusers_desc1=Podstawianie adresów jest podobne do <a href='$1'>aliasów</a>, ale bardziej właściwe dla systemu, który obsługuje wiele domen pocztowych. Można je wykorzystać do przekierowywania poczty dla całych domen na jeden adres, posiadać użytkowników o&nbsp;tej samej nazwie w&nbsp;różnych domenach lub przekierowywać całą pocztę z&nbsp;jednej domeny do innej.
+virtusers_desc2=Zauważ, że musisz mieć wpis w&nbsp;tabeli <a href='$1'>domen lokalnych</a> dla każdej domeny, dla której robisz podstawienie adresu, jak też musi istnieć rekord MX w&nbsp;DNS dla każdej z&nbsp;tych domen wskazujący na twój system.
+virtusers_for=Poczta dla..
+virtusers_to=Wyślij do..
+virtusers_error=Błąd $1
+virtusers_domain=Domena $1
+virtusers_address=Adres $1
+virtusers_return=listy podstawień adresów
+
+vform_edit=Zmień podstawienie
+vform_create=Nowe podstawienie
+vform_for=Poczta dla
+vform_address=Adres
+vform_domain=Domena
+vform_to=Wyślij do
+vform_msg=Wiadomość
+vform_error=Zwróć błąd
+vform_err_nouser=brak użytkownika
+vform_err_nohost=brak komputera
+vform_err_unav=niedostępny
+vform_err_temp=tymczasowy
+vform_err_proto=błąd protokołu
+vform_end=Przenieś na koniec
+vform_ecannot=Nie masz prawa do zmiany podstawienia dla tego adresu
+
+vsave_ecannot=Nie masz uprawnień do modyfikacji podstawiania adresów
+vsave_ecannot2=Nie masz uprawnień do zmiany podstawienia dla tego adresu
+vsave_emax=Nie masz uprawnień do utworzenia więcej niż $1 podstawień adresu
+vsave_err=Nie udało się zachować podstawień adresów
+vsave_efrom='$1' nie jest prawidłowym adresem
+vsave_efromdup=Podstawienie dla adresu '$1' już jest zdefiniowane
+vsave_edom='$1' nie jest prawidłową nazwą domeny
+vsave_edomdup=Podstawienie dla adresu '$1' już jest zdefiniowane
+vsave_ematch=Adres źródłowy nie pasuje do '$1'
+vsave_ecannot3=Nie masz uprawnień do modyfikacji podstawiania adresów
+vsave_eaddr='$1' nie jest prawidłowym adresem
+vsave_ecannot4=Nie masz uprawnień do tworzenia podstawień dla domen
+vsave_edomdom=Jedynie domena może być podstawiona za inną domenę
+vsave_ecannot5=Nie masz uprawnień do tworzenia podstawień, które generują błąd
+
+mailers_title=Routing według domen
+mailers_cannot=routing według domen
+mailers_edirective=Twój plik konfiguracyjny Sendmaila nie zawiera części niezbędnej dla routingu według domen.
+mailers_efile=Plik tekstowy $1, na podstawie którego jest tworzona baza danych routingu według domen $2 nie istnieje. Być może musisz zmienić <a href='$3'>konfigurację modułu</a> aby korzystał z&nbsp;prawidłowej ścieżki.
+mailers_desc1=Routing według domen zapewnia sposób na zdefiniowanie specyficznego sposobu przekazywania poczty dla poszczególnych domen. Może to być użyteczne w&nbsp;przypadku, gdy twój system stanowi bramę do serwerów pocztowych, które są nieosiągalne spoza twojej sieci lub jeśli chcesz wymusić, aby cała poczta skierowana do pewnych domen przechodziła przez pewien inny serwer.
+mailers_desc2=<b>Nie</b> powinieneś mieć wpisu na liście <a href='$1'>domen lokalnych</a> dla żadnej z&nbsp;domen do których routujesz. Jednakże, powinieneś mieć rekord MX w&nbsp;DNS wskazujący na twój system dla każdej domeny, dla której jest on bramą.
+mailers_for=Poczta dla..
+mailers_delivery=Doręczanie
+mailers_to=Wyślij do..
+mailers_return=listy routingu według domen
+
+mform_edit=Popraw routing
+mform_create=Utwórz routing
+mform_for=Poczta dla
+mform_host=Komputer
+mform_domain=Domena
+mform_delivery=Doręczanie
+mform_to=Wyślij do
+mform_ignore=Ignoruj MX przy doręczaniu SMTP
+mform_smtp=SMTP
+mform_esmtp=Rozszerzony SMTP
+mform_smtp8=8-bitowy SMTP
+mform_relay=Komputer pośredniczący SMTP
+mform_local=Użytkownik lokalny
+mform_prog=Przekaż do programu
+mform_uucp=UUCP
+mform_usenet=Wyślij do USENET-u
+mform_fax=HylaFAX
+mform_pop=POP3
+mform_procmail=Procmail
+mform_mail11=DECnet mail11
+mform_error=Błąd
+mform_ecannot=Nie masz uprawnień do modyfikacji routingu według domen
+
+msave_ecannot=Nie masz uprawnień do modyfikacji routingu według domen
+msave_err=Nie udało się zachować routingu według domen
+msave_edomain='$1' nie jest prawidłową nazwą komputera ani domeny
+msave_edup=Routing dla domeny '$1' jest już zdefiniowany
+
+generics_title=Adresy wychodzące
+generics_cannot=Nie masz uprawnień do modyfikacji adresów wychodzących
+generics_econfig=Twój plik konfiguracyjny Sendmaila nie zawiera części niezbędnej dla podstawiania adresów wychodzących.
+generics_efile=Plik tekstowy $1, na podstawie którego jest tworzona baza danych adresów wychodzących $2 nie istnieje. Być może musisz zmienić <a href='$3'>konfigurację modułu</a> aby korzystał z&nbsp;prawidłowej ścieżki.
+generics_desc1=Podstawianie adresów wychodzących pozwala na modyfikację adresu źródłowego (<tt>From:</tt>) poczty wysłanej spoza twojego systemu lub przekazywanej poprzez przez inne komputery w&nbsp;twojej lokalnej sieci. Moze ono być użyteczne jeśli obsługujesz wiele domen w&nbsp;tym systemie i&nbsp;chcesz, aby poczta pochodząca od pewnych użytkowników wyglądała jak pochodząca z&nbsp;innej domeny.
+generics_desc2=Zauważ, że musisz mieć wpis w&nbsp;tabeli <a href='$1'>domen wychodzących</a> dla kazdej domeny, dla adresów z&nbsp;której chcesz dokonać podstawienia adresu wychodzącego. Zauważ, że podstawianie adresów wychodzących nie działa dla poczty doręczanej lokalnym użytkownikom.
+generics_from=Poczta z..
+generics_to=Zmień na..
+generics_return=listy podstawień adresów
+
+gform_edit=Zmień podstawienie
+gform_create=Nowe podstawienie
+gform_from=Poczta z
+gform_to=Zmień na
+gform_ecannot=Nie masz uprawnień do zmiany tego adresu wychodzącego
+
+gsave_ecannot=Nie masz uprawnień do modyfikacji adresów wychodzących
+gsave_ecannot2=Nie masz uprawnień do zmiany tego adresu wychodzącego
+gsave_err=Nie udało sie zachować adresów wychodzących
+gsave_efrom='$1' nie jest prawidłowym adresem źródłowym
+gsave_ematch=Adres żródłowy nie pasuje do '$1'
+gsave_eto='$1' nie jest prawidłowym nowym adresem
+
+cgs_title=Domeny wychodzące
+cgs_ecannot=Nie masz uprawnień do modyfikacji domen wychodzących
+cgs_header=Adresy domen wychodzących
+cgs_desc=Pominąwszy pocztę wysłaną przez lokalnych użytkowników, Sendmail będzie stosował podstawianie <a href='$1'>adresów wychodzących</a> wyłącznie do poczty pochodzącej z komputerów lub domen wymienionych w okienku po prawej. Zatem, aby adres wychodzący działał, domena źródłowa (<tt>From:</tt>) musi być wymieniona na tej liście.
+cgs_err=Nie udało sie zachować domen wychodzących
+cgs_ehost='$1' nie jest prawidłową nazwą komputera ani domeny
+cgs_eip='$1' jest adresem IP, a&nbsp;nie nazwą domeny
+
+domains_title=Podstawianie domen
+domains_ecannot=Nie masz uprawnień do modyfikacji podstawiania domen
+domains_econfig=Twój plik konfiguracyjny Sendmaila nie zawiera części niezbędnej dla podstawiania domen.
+domains_efile=Plik tekstowy $1, na podstawie którego jest tworzona baza danych podstawiania adresów $2 nie istnieje. Być może musisz zmienić <a href='$3'>konfigurację modułu</a> aby korzystał z&nbsp;prawidłowej ścieżki.
+domains_desc=Podstawianie domen zmienia adres docelowy (<tt>To:</tt>) wiadomości wysyłanych, przekazywanych lub doręczanych użytkownikom twojego systemu. Zmieniany jest również adres żródłowy (<tt>From:</tt>) wiadomości przekazywanych lub przeznaczonych dla użytkowników lokalnych. Może to być użyteczne, jeżeli nazwa twojej domeny ulaga zmianie a&nbsp;ty chcesz zmienić starą nazwę domeny na nową we wszystkich miejscach, gdzie ona występuje.
+domains_from=Z domeny..
+domains_to=Do domeny..
+domains_return=listy podstawień domen
+
+dform_edit=Zmień podstawienie
+dform_create=Nowe podstawienie
+dform_from=Z domeny
+dform_to=Do domeny
+dform_ecannot=Nie masz uprawnień do modyfikacji podstawiania domen
+
+dsave_ecannot=Nie masz uprawnień do modyfikacji podstawiania domen
+dsave_err=Nie udało się zachować podstawień domen
+dsave_edomain='$1' nie jest prawidłową nazwą domeny
+
+access_title=Kontrola spamu
+access_ecannot=Nie masz uprawnień do konfigurowania kontroli spamu
+access_econfig=Twój plik konfiguracyjny Sendmaila nie zawiera części niezbędnej dla kontroli spamu.
+access_efile=Plik tekstowy $1, na podstawie którego jest tworzona baza danych kontroli spamu $2 nie istnieje. Być może musisz zmienić <a href='$3'>konfigurację modułu</a> aby korzystał z&nbsp;prawidłowej ścieżki.
+access_desc1=Wbudowane w&nbsp;Sendmaila funkcje kontroli spamu umożliwiają ci zapobieżenie doręczaniu spamu twoim użytkownikom poprzez odrzucenie poczty pochodzącej z&nbsp;pewnych adresów oraz uniemożliwienie spamerom korzystania z&nbsp;twojego systemu w&nbsp;celu rozsyłania poczty. Domyślnie, Sendmail przyjmuje pocztę do użytkowników lokalnych z&nbsp;dowolnego adresu ale uniemożliwia pośredniczenie w&nbsp;przesyłaniu poczty pochodzącej z&nbsp;dowolnej stacji klienckiej czy serwera pocztowego. W&nbsp;typowej konfiguracji powinieneś dodać reguły kontroli spamu odrzucające pocztę od spamerów oraz reguły pozwalające na przekazywanie poczty pochodzącej z&nbsp;innych komputerów w&nbsp;twojej sieci.
+access_desc2=Zauważ, że domyślnie Sendmail pozwoli klientom poczty działającym bezpośrednio na twoim systemie na przesyłanie poczty przy użyciu protokołu SMTP w&nbsp;dowolnym kierunku. Wobec tego nie ma potrzeby dodawać sieci lokalnej <tt>127.0.0</tt> do listy tych, od których poczta będzie przekazywana.
+access_source=Źródło..
+access_action=Akcja..
+access_return=listy reguł kontroli spamu
+
+sform_edit=Popraw regułę
+sform_create=Utwórz regułę
+sform_source=Źródło poczty
+sform_type0=Adres pocztowy
+sform_type1=Sieć
+sform_type2=Użytkownik
+sform_type3=Domena
+sform_action=Akcja
+sform_ok=Przyjmij
+sform_relay=Zezwól na przekazywanie
+sform_reject=Odrzuć
+sform_discard=Zignoruj milcząco
+sform_err=Kod błędu
+sform_msg=Komunikat
+sform_ecannot=Nie masz uprawnień do konfigurowania kontroli spamu
+
+ssave_ecannot=Nie masz uprawnień do konfigurowania kontroli spamu
+ssave_err=Nie udało się zachować reguły kontroli spamu
+ssave_etype0='$1' nie jest prawidłowym adresem
+ssave_etype1='$1' nie jest prawidłowym adresem sieci
+ssave_etype2='$1' nie jest prawidłową nazwą użytkownika
+ssave_etype3='$1' nie jest prawidłową nazwą domeny
+ssave_ecode='$1' nie jest prawidłowym kodem błędu SMTP
+
+relay_title=Przekazywanie poczty
+relay_ecannot=Nie masz uprawnień do zmiany konfiguracji przekazywania poczty
+relay_eversion=Jedynie Sendmail w&nbsp;wersji 8.9 i&nbsp;wyższej posiadają kontrolę przekazywania poczty
+relay_domains=Przekazywanie poczty możliwe do domen
+relay_desc1=Jeśli nie pozwolisz inaczej w&nbsp;<a href='$1'>kontroli spamu</a>, Sendmail umożliwi przekazywanie poczty jedynie do domen wymienionych w&nbsp;okienku po lewej. Poczta przychodząca nie przeznaczona dla lokalnych użytkowników ani do wymienionych domen będzie odrzucana.
+relay_desc2=Jeśli twój system jest bramką dla pewnych domen, które nie są bezpośrednio dostępne z&nbsp;sieci zewnętrznej (przy użyciu <a href='$1'>routingu według domen</a>), wówczas wszystkie te domeny powinny być tu wymienione.
+relay_err=Nie udało się zachować konfiguracji przekazywania poczty
+relay_edomain='$1' nie jest prawidłową nazwą domeny
+
+mailq_title=Kolejka poczty
+mailq_ecannot=Nie masz uprawnień do przeghlądania kolejki poczty
+mailq_id=Nr ID wiadomości
+mailq_sent=Wysłana
+mailq_from=Od
+mailq_to=Do
+mailq_size=Rozmiar
+mailq_status=Status
+mailq_unknown=Nieznany
+mailq_sending=Wysyłanie
+mailq_dmsg=Aby obejrzeć wiadomość z&nbsp;kolejki, naciśnij na jej nr ID na liście powyżej
+mailq_force=Aby wymusić natychmiastowe doręczenie wiadomości z&nbsp;kolejki, <a href='$1'>naciśnij tutaj</a>.
+mailq_none=Brak wiadomości w&nbsp;kolejce
+mailq_delete=Kasuj wybrane wiadomości
+mailq_return=kolejki poczty
+
+flushq_title=Opróżnij kolejkę
+flushq_desc=Wymuszenie próby doręczenia poczty poleceniem $1 ..
+
+delq_err=Nie udało sie skasować wiadomości
+delq_ecannot=Nie masz uprawnień do usuwania wiadomości z&nbsp;kolejki
+delq_locked=Plik jest obecnie zablokowany ze względu na wysyłanie
+delq_enone=Nie wybrano wiadomości do skasowania
+delq_title=Kasowanie wiadomości
+delq_file=Kasowanie pliku poczty $1 ..
+delq_efile=niewłaściwa nazwa pliku!
+delq_egone=już skasowane lub doręczone
+delq_elocked=zablokowane ze względu na wysyłanie
+delq_ok=skasowane pomyślnie
+
+boxes_title=Skrzynki pocztowe
+boxes_user=Użytkownik
+boxes_size=Rozmiar skrzynki
+boxes_none=Brak poczty
+boxes_return=listy skrzynek pocztowych
+boxes_sent=Poczta wysłana
+boxes_ecannot=Nie masz uprawnień do czytania poczty
+
+mail_title=Poczta użytkownika
+mail_from=Od
+mail_date=Wysłano
+mail_subject=Temat
+mail_to=Do
+mail_cc=DW
+mail_bcc=UDW
+mail_pri=Priorytet
+mail_highest=Najwyższy
+mail_high=Wysoki
+mail_normal=Zwykły
+mail_low=Niski
+mail_lowest=Najniższy
+mail_for=W $1
+mail_for2=Dla użytkownika $1
+mail_sent=Na liście poczty wysłanej
+mail_size=Rozmiar
+mail_delete=Skasuj wybrane wiadomości
+mail_compose=Utwórz nową wiadomość
+mail_return=skrzynki użytkownika
+mail_pos=Wiadomości od $1 do $2 z $3
+mail_none=Brak wiadomości w&nbsp;tej skrzynce
+mail_ecannot=Nie masz uprawnień do czytania poczty tego użytkownika
+mail_all=Wybierz wszystko
+mail_invert=Odwróć zaznaczenia
+mail_search=Znajdź wiadomości, w&nbsp;których
+mail_body=Treść
+mail_match=zawiera
+mail_ok=Szukaj
+mail_nonefrom=Brak
+mail_mark=Zaznacz wybrane jako:
+mail_mark0=Nie przeczytane
+mail_mark1=Przeczytane
+mail_mark2=Specjalne
+
+view_title=Czytaj pocztę
+view_desc=Wiadomość $1 w&nbsp;$2
+view_desc2=Wiadomość $1 dla użytkownika $2
+view_desc3=Wiadomość $1
+view_sent=Wiadomość $1 na liście poczty wysłanej
+view_qdesc=Wiadomość w&nbsp;kolejce $1
+view_headers=Nagłówki wiadomości
+view_attach=Załączniki
+view_reply=Odpowiedz
+view_reply2=Odpowiedz wszystkim
+view_enew=Edytuj jako nową
+view_forward=Przekaż dalej
+view_delete=Skasuj
+view_strip=Usuń załączniki
+view_ecannot=Nie masz uprawnień do czytania poczty tego użytkownika
+view_mark=Zaznacz wiadomość jako:
+view_mark0=Nie przeczytaną
+view_mark1=Przeczytaną
+view_mark2=Specjalną
+view_return=pierwotnego adresu e-mail
+
+compose_title=Utwórz wiadomość
+reply_title=Odpowiedz na wiadomość
+forward_title=Przekaż dalej
+reply_headers=Nagłówki wiadomości
+reply_attach=Przekazywane załączniki
+reply_attach2=Załączniki
+reply_send=Wyślij
+reply_ecannot=Nie masz uprawnień do czytania poczty jako ten użytkownik
+
+send_err=Nie udało się wysłać wiadomości
+send_eto=Brak adresu docelowego
+send_efrom=Brak adresu źródłowego
+send_title=Wiadomość wysłana
+send_ok=Wiadomość pomyślnie wysłana do $1
+send_ecannot=Nie masz uprawnień do wysyłania poczty jako ten użytkownik
+send_esmtp=Polecenie SMTP $1 zakończyło sie błędem : $2
+send_efile=Plik załącznika $1 nie istnieje
+send_eattach=Łączny rozmiar załączników nie może przekraczać $1 kB.
+send_eperms=Użytkownik $1 nie ma uprawnień do czytania $2
+send_eperms2=Nie masz uprawnień do wysłania pliku $1
+
+delete_ecannot=Nie masz uprawnień do kasowania poczty tego użytkownika
+delete_enone=Nie wybrano wiadomości do skasowania
+delete_emnone=Nie wybrano wiadomości do zaznaczenia
+
+search_title=Wyniki poszukiwania
+search_ecannot=Nie masz uprawnień do przeszukiwania poczty tego użytkownika
+search_ematch=Musisz wprowadzić poszukiwany tekst
+search_none=Nie znaleziono żadnej wiadomości
+search_results=Wiadomości zawierające "$1" ..
+
+file_title=Zmień plik Sendmaila
+file_desc=Użyj pola tekstowego poniżej do ręcznej zmiany pliku Sendmaila $1.
+file_undo=Cofnij zmiany
+file_edit=Modyfikuj ręcznie $1
+file_ealiases=Plik aliasów możesz zmieniać jedynie gdy masz dostęp do wszystkich aliasów.
+file_evirtusers=Plik podstawiania adresów możesz zmieniać jedynie gdy masz dostęp do do wszystkich podstawień adresów.
+file_emailers=Nie masz uprawnień do modyfikacji pliku routingu według domen.
+file_egenerics=Plik adresów wychodzących możesz zmieniać jedynie gdy masz dostęp do wszystkich adresów wychodzących.
+file_edomains=Nie masz uprawnień do modyfikacji pliku podstawiania domen.
+file_eaccess=Nie masz uprawnień do modyfikacji pliku kontroli spamu.
+file_emode=Nieznany tryb!
+file_err=Nie udało się zmodyfikować pliku
+
+acl_opts=Może zmieniać konfigurację modułu?
+acl_cws=Może zmieniać domeny lokalne?
+acl_masq=Może konfiguować maskowanie domen?
+acl_trusts=Może zmieniać zaufanych użytkowników?
+acl_cgs=Może zmieniać domeny wychodzące?
+acl_relay=Może zmieniać przekazywanie z/do domen?
+acl_mailers=Może konfigurować routing według domen?
+acl_access=Może konfigurować kontrolę spamu?
+acl_domains=Może konfigurować podstawianie domen?
+acl_stop=Może zatrzymywać i uruchamiać Sendmaila?
+acl_mailq=Może zarządzać kolejką poczty?
+acl_viewdel=Przegląd i usuwanie
+acl_view=Tylko przeglądanie
+acl_virtusers=Podstawienia adresów, które ten użytkownik może zmieniać
+acl_none=Żadne
+acl_same=Użytkownika o&nbsp;tej samej nazwie
+acl_all=Wszystkie
+acl_matching=Wg wzorca
+acl_vtypes=Rodzaje podstawień adresów, które użytkownik może zmieniać
+acl_vtype0=Generacja błędu
+acl_vtype1=Dla domeny
+acl_vtype2=Dla adresu
+acl_vmax=Maksymalna ilość podstawień adresów
+acl_unlimited=Bez ograniczeń
+acl_aliases=Aliasy, które ten użytkownik może zmieniać
+acl_atypes=Typy aliasów, które ten użytkownik może zmieniać
+acl_atype1=Adres e-mail
+acl_atype2=Adresy z pliku
+acl_atype3=Zapisz do pliku
+acl_atype4=Przekieruj do programu
+acl_atype5=Automatyczna odpowiedź
+acl_atype6=Plik filtru
+acl_amax=Maksymalna liczba aliasów
+acl_outgoing=Adresy wychodzące, które ten użytkownik może zmieniać
+acl_read=Użytkownicy, których poczta może być czytana
+acl_users=Tylko użytkownicy
+acl_userse=Oprócz użytkowników
+acl_usersg=Członkowie grupy 
+acl_from=Dozwolone adresy źródłowe
+acl_any=Dowolny adres
+acl_fdoms=Skrzynka @ domeny
+acl_faddrs=Wymienione adresy
+acl_fdom=Dowolny adres @ domena
+acl_fromname=Rzeczywista nazwa dla adresu źródłowego
+acl_apath=Ograniczyć pliki i&npsp;programy do umieszczonych w&npsp;katalogu
+acl_attach=Maksymalny łączny rozmiar załączników
+acl_sent=Przechowywać wysłaną pocztę w&nbsp;skrzynce
+acl_canattach=Może dołączać pliki z&nbsp;serwera?
+acl_boxname=Pokaż nazwę skrzynki pocztowej jako
+acl_boxname0=Nazwę pliku
+acl_boxname1=Rzeczywistą nazwę użytkownika
+acl_boxname2=Bez nazwy
+
+log_opts=Zmieniono opcje Sendmaila
+log_alias_create=Utworzono alias $1
+log_alias_modify=Zmieniono alias $1
+log_alias_delete=Usunięto alias $1
+log_alias_manual=Ręcznie zmodyfikowano plik aliasów $1
+log_cws=Zmieniono domeny lokalne
+log_masq=Zmieniono maskowanie domen
+log_trusts=Zmieniono zaufanych użytkowników
+log_virtuser_create=Utworzono podstawienie dla adresu $1
+log_virtuser_modify=Zmieniono podstawienie dla adresu $1
+log_virtuser_delete=Usunięto podstawienie dla adresu $1
+log_virtuser_manual=Ręcznie zmodyfikowano plik podstawień adresów $1
+log_mailer_create=Utworzono routing dla domeny $1
+log_mailer_modify=Zmieniono routing dla domeny $1
+log_mailer_delete=Usunięto routing dla domeny $1
+log_mailer_manual=Ręcznie zmodyfikowano plik routingu wg domen $1
+log_generic_create=Utworzono adres wychodzący $1
+log_generic_modify=Zmieniono adres wychodzący $1
+log_generic_delete=Usunięto adres wychodzący $1
+log_generic_manual=Ręcznie zmodyfikowano plik adresów wychodzących $1
+log_cgs=Zmieniono domeny wychodzące
+log_domain_create=Utworzono podstawienie dla domeny $1
+log_domain_modify=Zmieniono podstawienie dla domeny $1
+log_domain_delete=Usunięto podstawienie dla domeny $1
+log_domain_manual=Ręcznie zmodyfikowano plik podstawień dla domen $1
+log_access_create=Utworzono regułę kontroli spamu dla $1
+log_access_modify=Zmieniono regułę kontroli spamu dla $1
+log_access_delete=Usunięto regułę kontroli spamu dla $1
+log_access_manual=Ręcznie zmodyfikowano plik kontroli spamu $1
+log_relay=Zmieniono przekazywanie poczty wg domen
+log_flushq=Opróżniono kolejkę poczty
+log_delmailq=Usunięto wiadomość $1 z&nbsp;kolejki
+log_delmailqs=Usunięto $1 wiadomości z&nbsp;kolejki
+log_stop=Zatrzymano serwer Sendmaila
+log_start=Uruchomiono serwer Sendmaila
+log_delmail=Usunięto $1 wiadomości z&nbsp;$2
+log_send=Wysłano wiadomość do $1
+
+match_from=From: pasuje
+match_subject=Subject: pasuje
+match_to=To: pasuje
+match_cc=Cc: pasuje
+match_date=Date: pasuje
+match_body=Treść pasuje
+match_size=Rozmiar jest większy niż

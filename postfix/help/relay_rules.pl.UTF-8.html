@@ -1,0 +1,26 @@
+Domyślnie, Postfix przekazuje pocztę:
+
+<ul>
+<li> od zaufanych klientów, których adresy IP pasują do
+     <a href=opt_mynetworks><tt>$mynetworks</tt></a>,
+<li> od zaufanych klientów pasujących do <tt>$relay_domains</tt></a> lub ich
+     poddomen,
+<li> od niezaufanych klientów do miejsc przeznaczenia pasujących do
+     <tt>$relay_domains</tt> lub ich poddomen, oprócz adresów
+     o&nbsp;określonym przez nadawcę routingu.
+</ul>
+
+Domyślną wartością dla <tt>relay_domains</tt> jest
+<a href=opt_mydestination><tt>$mydestination</tt></a>. <p>
+
+Dodatkowo, serwer SMTP Postfiksa domyślnie przyjmuje pocztę, dla której ten
+Postfix jest miejscem przeznaczenia, tzn.:
+
+<ul>
+<li> miejsce przeznaczenia pasuje do
+     <a href=opt_inet_interfaces><tt>$inet_interfaces</tt></a>,
+<li> miejsce przeznaczenia pasuje do
+     <a href=opt_mydestination><tt>$mydestination</tt></a>,
+<li> miejsce przeznaczenia pasuje do
+     <a href=opt_virtual_maps><tt>$virtual_maps</tt></a>.
+</ul>

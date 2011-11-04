@@ -1,0 +1,24 @@
+<header>Segédprogramok; fordította: Szakács Gergely</header><p>
+
+<b>FTP-oszlopszélesség</b>: Alapértelmezés szerint 32. Meghatározza az ftp-listák szélességét. Ennek el kell férnie egy szokványos böngészőablakban. Ha az oszlop túl keskeny, úgy előfordulhat, hogy a hosszabb fájlnevek nem jelennek meg ftp-oldalak böngészése közben.<p>
+
+<b>Névtelen FTP-bejelentkezés</b>: Alapértelmezés szerint 'Squid@'.  Ha azt akarja, hogy a névtelen bejelentkezési jelszó informatívabb legyen (és lehetővé tegye más ftp-kiszolgálók használatát), állítsa ezt olyasmire, ami összefüggésbe hozható a domainjével, pl. wwwfelhasznalo@valahol.hu.<p>
+
+Annak oka, hogy az alapértelmezett beállításban hiányzik a domain az, hogy a felhasználó kérése bármely domainből érkezhet, a gyorstár használatától függően. Egyes ftp-kiszolgálók azt is ellenőrzik, hogy a felhasználó létező email címet adott-e meg (pl. perl.com).<p>
+
+<b>Squid DNS-program</b>: Alapértelmezés szerint a dnsserver. A dnslookup folyamathoz határozza meg a futtatható állomány helyét. Az alapértelmezett beállítás egy nem-blokkoló gyorstárazó névkiszolgáló, mely a Squid részeként automatikusan telepítésre kerül.<p>
+
+<b>DNS-programok száma</b>: Alapértelmezés szerint 5. A DNS névkeresések kiszolgálására indított folyamatok száma. Nagy kiszolgálókon tárolt, igen leterhelt gyorstárak esetén érdemes az értéket legalább 10-re állítani. Az opció maximuma 32.<p>
+
+<b>Domain hozzáfűzése kérésekhez</b>: Alapértelmezés szerint kikapcsolva. Normális esetben a 'dnsserver' kikapcsolja a RES_DEFNAMES feloldó opciót (vö. res_init(3)). Ez megakadályozza a hierarchikusan elrendezett gyorstárakat abban, hogy egytagú gazdaneveket lokálisnak azonosítsanak. Ahhoz, hogy engedélyezze a dnsserver számára az egytagú nevek kezelését, kapcsolja be ezt az opciót.<p>
+
+<b>DNS-kiszolgálók címei</b>: Alapértelmezés szerint a resolv.conf fáljt használjuk. Ezt akkor használja, ha inkább egy DNS-névkiszolgáló (IP-cím) listát akar használni az /etc/resolv.conf fájlban meghatározottak helyett.<p>
+
+<b>Gyorstár-ürítő program</b>: Alapértelmezés szerint 'unlinkd'. Határozza meg a fájlok törléséhez szükséges futtatható állomány elérési útvonalát. Amennyiben aszinkron-io-t használ, úgy erre nem lehet szükség, mivel egyes verziókban ezt külön szál kezeli.<p>
+
+<b>Squid pingelő program</b>: Alapértelmezés szerint 'pinger'. Határozza meg a pingelési folyamathoz szükséges futtatható állomány elérési útvonalát. Ez csak akkor hasznos opció, ha telepítéskor a Squid-et az '--enable-icmp' opcióval konfigurálta.<p>
+
+<b>Egyedi átirányítóprogram</b>: Alapértelmezés szerint nincs. Határozza meg az URL-átirányító futtatható állomány elérési útvonalát. Mivel ezek szinte bármilyen funkciót képesek végrehajtani, egy sem képezi a rendszer részét. Az útmutatóban további információt talál a programok megírásával kapcsolatban.<p>
+
+<b>Átirányítóprogramok száma</b>: Ha az átirányítás be van kapcsolva, úgy az alapértelmezett érték 5. Ha túl kevés ilyen programot indít el, akkor a Squid-nek mindig várakoznia kell, hogy feldolgozzák a folyamatosan felgyülemlő URL-eket. Ha viszont túl sokat indít el, úgy túlzottan igénybe veszi a memóriát és a rendszer egyéb erőforrásait.
+<hr>

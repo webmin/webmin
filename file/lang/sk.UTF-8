@@ -1,0 +1,297 @@
+index_title=Správca Systému Súborov
+index_eremote=&#381;iadny Unixový u&#382;ívate&#318; nezodpovedá hodnotám z Webmin prihláse&#269;nia $1.
+switch_euser=Tento Unixový u&#382;ívate&#318;  nejestvuje!
+
+top_ret=Index
+top_down=Ulo&#382;
+top_edit=Otvor pre zmeny
+top_refresh=Obnov
+top_info=Info
+top_eacl=ACL
+top_attr=Atribúty
+top_ext=EXT
+top_delete=Vyma&#382;
+top_new=Nový(á/é)
+top_upload=Nalo&#382;
+top_rename=Premenuj
+top_copy=Kópia
+top_cut=Vyber
+top_paste=Vlo&#382;
+top_share=Zdie&#318;anie
+top_search=Nájdi
+
+right_name=Meno
+right_size=Ve&#318;kos&#357;
+right_user=U&#382;ívate&#318;
+right_group=Skupina
+right_date=Dátum
+
+edit_enormal=Len normálne súbory mô&#382;u by&#357; menené
+edit_title=Zmeny na $1
+edit_title2=Vytvánie súboru
+edit_filename=Meno súboru:
+edit_eover=$1 nemô&#382;e by&#357; prepísané
+edit_esave=NEmoohol ulo&#382;i&#357; : $1
+edit_eaccess=Nemá&#353; povolenie na ukladanie '$1'
+
+info_file=Súbor
+info_path=Cesta:
+info_type=Typ:
+info_size=Ve&#318;kos&#357;:
+info_mod=Zmenené:
+info_link=Vázba na:
+info_perms=Povolenia
+info_user=U&#382;ívate&#318;:
+info_group=Skupina:
+info_other=Iné:
+info_sticky=Lep&#269;kavé:
+info_sticky2=Len majitelia mô&#382;u vymaza&#357; 
+info_own=Majetok
+info_setuid=Setuid:
+info_setuid2=Vykonaj ako u&#382;ívate&#318;
+info_setgid=Setgid:
+info_setgid2=Súbory dedia skupinu
+info_setgid3=Vykonaj ako skupina
+info_apply=AKtivuj zmeny
+info_apply1=Len tento adresár
+info_apply2=Tento adresár a jeho súbory
+info_apply3=Tento adresár a v&#353;etky jeho priradené adresáre 
+info_efailed=Porucha pri  zmene $1 : $2
+info_read=&#268;ítaj
+info_write=Pí&#353;
+info_list=Zoznam
+info_exec=Exec
+
+eacl_eacls=Na&#269;ítavanie ACL súborov nebolo úspe&#353;né : $1
+eacl_acltype=Typ ACL
+eacl_aclname=Pou&#382;i na
+eacl_aclperms=Povolenia
+eacl_add=Pridaj typ ACL :
+eacl_remove=Odním ACL
+eacl_efs=Súborový systém $1 plne nepodporuje ACLs
+eacl_create=Vytvor ACL
+eacl_edit=Edituj ACL
+eacl_user=Majite&#318; súboru $1
+eacl_group=Skupina súboru $1
+eacl_eowner=U&#382;ívate&#318; alebo skupina súboru neexistuje
+eacl_efailed=Nemohol som nastavi&#357; ACL pre $1 : $2
+eacl_emask=Maximálne mô&#382;e by&#357; pou&#382;itá jedna maskovaná ACL
+eacl_edefmask=Maximálne mô&#382;e by&#357; pou&#382;itá jedna základná maskovaná ACL
+eacl_title=ACL pre $1
+eacl_owner=Majite&#318; súboru
+eacl_edefaults=Ak súbor má základnú ACL, musí tie&#382; ma&#357; základného majite&#318;a, skupinu a ostatné ACL.
+
+acltype_user=U&#382;ívate&#318;
+acltype_group=Skupina
+acltype_other=Iné
+acltype_mask=Maska
+acltype_default_user=Základný u&#382;ívate&#318;
+acltype_default_group=Základná skupina
+acltype_default_other=Základné Iné
+acltype_default_mask=Základná Maska
+
+delete_mtitle=Vyma&#382; viacero súborov
+delete_dtitle=Vyma&#382; adresár
+delete_ftitle=Vyma&#382; súbor
+delete_ddesc=Si si istý &#382;e chce&#353; permanente vymaza&#357; adresár $1 a v&#353;etok jeho obsah?
+delete_fdesc=Si si istý &#382;e chce&#353; permanente vymaza&#357; súbor $1 ?
+delete_mdesc=Si si istý &#382;e chce&#353; permanente vymaza&#357; adresáre a súbory? :
+delete_efailed=Nemo&#382;né vymaza&#357; $1 : $2
+
+mkdir_title=Novo-vytvorený Adresár
+mkdir_dir=Nový Adresár:
+mkdir_eexists=$1 u&#382; jestvuje
+mkdir_efailed=Vytvorenie Adresáru nebolo úspe&#353;né : $1
+mkdir_eaccess=Nemá&#353; povolenie na vytvorenie '$1'
+
+link_title=Vytvor Spojenie
+link_from=Spojenie z:
+link_to=Spojenie na:
+link_eexists=$1 u&#382; jestvuje
+link_efailed=Spojenie nebolo úspe&#353;né : $1
+link_efrom=Nemá&#353; dovolené vytvára&#357; spojenia na '$1'
+link_efollow=Nemá&#353; dostato&#269;né povolenie na vytváranie symbolických spojení
+
+rename_title=Premenuj $1
+rename_old=Pôvodné meno:
+rename_new=Nové meno:
+rename_ok=Premenuj
+rename_eexists=Súbor s menom $1 u&#382; jestvuje
+rename_efailed=Premenovávanie nebolo úspe&#353;né : $1
+rename_eold=Nemá&#353; dovolené premenováva&#357; '$1'
+rename_enew=Nemá&#353; dovolené premenováva&#357; na '$1'
+
+file_type0=Adresár
+file_type1=Textový súbor
+file_type2=Obrázok
+file_type3=Binarny súbor
+file_type4=Súbor
+file_type5=Symbolické spojenie
+file_type6=Súbor ovláda&#269;a
+file_type7=Rúrka
+
+view_enormal=Len normálne súbory mô&#382;u by&#357; prezerané
+view_enormal2=Len normálne súbory mô&#382;u by&#357; s&#357;ahované
+view_eaccess=Nemá&#353; povolený prístup k $1
+view_eopen=Otvorenie nebolo úspe&#353;né $1 : $2
+
+paste_ecopy=Musí&#353; najprv vybra&#357; alebo skopírova&#357; ak chce&#353; vklada&#357;
+paste_egone=Súbor kopírovaný $1 u&#382; neexiststuje
+paste_eover=$1 nemô&#382;e by&#357; prepísaný
+paste_eself=Nemô&#382;e&#353; vklada&#357; súbor do adresára so súborom s rovnakým menom
+paste_emfailed=Premiestnenie nebolo úspe&#353;né : $1
+paste_ecfailed=Vytváranie kópie nebolo úspe&#353;né : $1
+
+over_title=Súbor u&#382; Existstuje
+over_msg=Súbor $1 u&#382; existstuje. Pou&#382;i polí&#269;ko ni&#382;&#353;ie na premenovanie vkladaného súboru.
+over_new=Nové meno súboru:
+over_ok=Ok
+
+upload_efailed=Nalo&#382;ený súbor : $1 sa nepodarilo otvori&#357;
+upload_title=Nalo&#382; súbor
+upload_file=Súbor pre nakladanie
+upload_dir=Nalo&#382; do adresára
+upload_ok=Nalo&#382;
+upload_conv=Kovertuj DOS-ové symboly pre nový riadok?
+upload_efile=Nebol vybratý &#382;iaden súbor na nakladanie.
+upload_edir=Adresár na nakladanie neexistuje.
+upload_eperm=You are not allowed to create $1
+upload_ewrite=Failed to write to $1 : $2.
+
+find_eaccess=You are not allowed to access $1
+find_eexist=$1 does not exist in $2
+find_edir=$1 is not a directory in $2
+
+cancel=Zru&#353;
+
+chmod_eaccess=You are not allowed to access '$1'
+chmod_euser=$1 : no such user
+chmod_egroup=$1 : no such group
+chmod_elink=symlink failed : $1
+chmod_echown=chown failed : $1
+chmod_echmod=chmod failed : $1
+chmod_efollow=You are not allowed to edit symbolic links
+
+copy_efrom=You are not allowed to copy from '$1'
+copy_eto=You are not allowed to copy to '$1'
+copy_elink=symlink failed : $1
+
+delete_eaccess=You are not allowed to delete '$1'
+
+list_eaccess=You are not allowed to access this directory
+list_edir=Failed to list $1 : $2
+
+move_eto=You are not allowed to move to '$1'
+move_afrom=You are not allowed to move '$1'
+
+acl_user=Access files on server as user
+acl_user_def=Same as Webmin login
+acl_umask=Umask for new files
+acl_follow=Always follow symlinks?
+acl_ro=Read-only mode?
+acl_dirs=Only allow access to directories
+acl_home=Include home directory of Webmin user
+acl_log=Log all file modifications?
+acl_goto=Open first allowed directory?
+
+share_title=Sharing
+share_samba=Windows
+share_nfs=NFS
+share_son=Windows file sharing enabled
+share_soff=Windows file sharing disabled
+share_writable=Writable?
+share_available=Currently active?
+share_sheader=Sharing options
+share_only=Only
+share_guest=Guest access?
+share_comment=Comment
+share_nheader=NFS export options
+share_non=NFS file sharing enabled
+share_noff=NFS file sharing disabled
+share_desc=Description
+share_ro=Read-only hosts
+share_rw=Read-write hosts
+share_root=Root access hosts
+share_none=None
+share_all=All
+share_listed=Listed..
+share_host=Hosts
+share_opts=Options
+share_s0=Trust nobody
+share_s1=Trust non-root
+share_s2=Trust everybody
+share_lro=Read-only
+share_lrw=Read-write
+
+log_create_export=Created NFS export $1
+log_modify_export=Modified NFS export $1
+log_delete_export=Deleted NFS export $1
+log_create_share=Created Samba share $1
+log_modify_share=Modified Samba share $1
+log_delete_share=Deleted Samba share $1
+log_save=Saved file $1
+log_chmod=Changed permissions on file $1
+log_mkdir=Created directory $1
+log_upload=Uploaded file $1
+log_link=Created symbolic link $1 to $2
+log_relink=Modified symbolic link $1 to $2
+log_copy=Copied file $1 to $2
+log_move=Moved file $1 to $2
+log_delete=Deleted file $1
+log_attr=Set attributes on file $1
+log_acl=Set ACL on file $1
+
+search_eaccess=You are not allowed to search this directory
+search_title=Find files
+search_ok=Search Now
+search_dir=Search directory
+search_match=For files matching
+search_user=Owned by user
+search_group=Owned by group
+search_any=Any
+search_type=File type
+search_types_=Any
+search_types_f=File
+search_types_d=Directory
+search_types_l=Symbolic link
+search_types_p=Named pipe
+search_size=File size
+search_more=More than
+search_less=Less than
+search_xdev=Search past mounts?
+search_edir=Missing or invalid search directory
+search_ematch=Missing matching regexp
+search_euser=Missing username
+search_egroup=Missing group name
+search_esize=File size must be an integer
+search_crit=Search criteria
+search_list=Search results
+
+facl_eaccess=You are not allowed to set ACLs for this file
+
+attr_eattrs=Failed to get attributes : $1
+attr_efs=The filesystem $1 does not support attributes
+attr_add=Add Attribute
+attr_name=Attribute Name
+attr_value=Attribute Value
+attr_efailed=Failed to set attributes for $1 : $2
+attr_title=File Attributes for $1
+attr_create=Add Attribute
+attr_edit=Edit Attribute
+attr_ename=Missing attribute name
+
+ext_eattrs=Failed to get EXT attributes : $1
+ext_efs=The filesystem $1 does not support EXT attributes
+ext_title=EXT attributes for $1
+ext_header=EXT file attributes
+ext_efailed=Failed to set attributes for $1 : $2
+
+eattr_A=Do not update access times
+eattr_a=Can only append to file
+eattr_c=Compress data on disk
+eattr_d=Do not backup with dump
+eattr_i=Do not allow modification
+eattr_s=Zero blocks when deleting
+eattr_S=Always sync after writing
+eattr_u=Save contents for undeletion
+

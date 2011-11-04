@@ -1,0 +1,8 @@
+start_cmd=A szívverés indító parancs,0
+authkeys=Az autentikációs kulcs file könyvtára,3,Automatikus
+haresources=Az erőforrás file könyvtára,3,Automatikus
+pid_file=A szívverés PID file könyvtára,0
+ha_cf=A szívverés konfigurációs file könyvtára,3,Automatikus
+apply_cmd=A módosulások elfogadásához szükséges parancs,3,Automatikus
+ha_dir=A szívverés konfiguráció könyvtára,0
+resource_d=A szívverés szolgáltatás parancsfile könyvtára,3,Automatikus

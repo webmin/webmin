@@ -1,0 +1,42 @@
+inittab_title=Konfiguracja inita (System V)
+inittab_new=Utwórz nowy proces inita
+inittab_id=Nazwa
+inittab_runlevels=Poziom
+inittab_action=Akcja
+inittab_process=Proces
+inittab_none=Żaden
+inittab_respawn=Odtwórz po zakończeniu
+inittab_wait=Czekaj
+inittab_once=Jednorazowo na poziomie
+inittab_boot=Podczas startu
+inittab_bootwait=Podczas startu, czekaj na zakończenie
+inittab_off=Nic nie rób
+inittab_ondemand=Kiedykolwiek na poziomie A, B, C
+inittab_initdefault=Domyślny poziom
+inittab_sysinit=Podczas startu systemu
+inittab_powerwait=Zanik zasilania
+inittab_powerfail=Zanik zasilania, nie czekać
+inittab_powerokwait=Powrót zasilania
+inittab_powerfailnow=Brak zasilania
+inittab_ctrlaltdel=Ctrl-Alt-Del
+inittab_kbdrequest=Specjalna kombinacja klawiszy
+inittab_return=tablicy inittaba
+
+edit_inittab_err=Nie masz uprawnień do zmiany procesów
+edit_inittab_title=Zmień proces $1
+edit_inittab_details=Dane procesu
+edit_inittab_del=Usuń
+edit_inittab_save=Zachowaj
+
+new_inittab_err=Nie masz uprawnień do tworzenia nowych procesów
+new_inittab_title=Nowy proces
+
+save_inittab_err=Nie masz uprawnień do zachowania procesu
+save_inittab_noid=Błąd, nie podano nazwy procesu
+save_inittab_already=Błąd, ta nazwa procesu już istnieje
+
+log_modify=Zmieniono proces inita $1
+log_rename=Zmieniono nazwę procesu inita $1 na $2
+log_create=Utworzono proces inita $1
+log_delete=Usunięto proces inita $1
+

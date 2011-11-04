@@ -1,0 +1,36 @@
+<header>O&nbsp;jakich kłopotach informować postmastera</header>
+
+<center><tt>notify_classes</tt></center>
+<hr>
+
+Powinieneś ustawic alias <b>postmaster</b>, który wskazuje na jakąś osobę.
+Ten alias musi koniecznie istnieć, aby można było sygnalizować problemy
+z&nbsp;doręczeniem poczty. <p>
+
+System Postfiksa również samodzielnie zgłasza problemy na alias postmastera.
+Możesz nie być zainteresowany wszystkimi rodzajami błędów, więc mechanizm
+ich zgłaszania jest konfigurowalny. Domyślne jest informowanie postmastera
+jedynie o&nbsp;poważnych problemach (resource, software): <p>
+
+<b>Domyślne:</b> <tt>resource, software</tt> <p>
+
+Klasy mają następujące znaczenie:
+
+<ul>
+<li><tt>bounce:</tt> Wysyłaj do postmastera kopie poczty  niedoręczalnej.
+<li><tt>2bounce:</tt> Wysyłaj do postmastera podwójnie odrzucone. 
+<li><tt>delay:</tt> Informuj postmastera o&nbsp;poczcie opóźnionej.
+W&nbsp;tym przypadku postmaster otrzymuje jedynie nagłówki.
+<li><tt>policy:</tt> Informuj postmastera o&nbsp;połączeniach klientów
+odrzuconych ze względu na polityczne ograniczenia (UCE). Postmaster
+otrzymuje kopię całej sesji SMTP.
+<li><tt>protocol:</tt> Informuj postmastera o&nbsp;błędach protokołu (po
+stronie klienta lub serwera) i&nbsp;próbach uruchomienia przez klienta
+niezaimplementowanych poleceń. Postmaster otrzymuje kopię całej sesji SMTP.
+<li><tt>resource:</tt> Informuj postmastera o&nbsp;poczcie niedoręczonej ze
+względu na problemy z&nbsp;zasobami (na przykład, błędy zapisu do kolejki).
+<li><tt>software:</tt> Informuj postmastera o&nbsp;poczcie niedoręczonej ze
+względu na problemy z&nbsp;oprogramowaniem.
+</ul>
+
+<hr>

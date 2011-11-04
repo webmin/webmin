@@ -1,0 +1,18 @@
+<header>Klienci kopii zapasowej</header>
+
+Klient Bacula jest systemem, z którego pliki mogą być kopiowane. Wszyscy 
+klienci, z których chcesz skopiować pliki muszą znajdować się na liście na
+tej stronie i każdy z nich musi mieć uruchomioną usługę pliku Bacula.
+Typowe ustawienia dla pojedynczego systemu zakładają, że aby znaleźć 
+się na liście musi on znajdować się na tym serwerze. <p>
+
+Podczas dodawania zdalnych klientów oprócz nazwy hosta musisz znać nazwę
+usługi pliku Bacula znajdującej się na kliencie oraz hasło do tej usługi. Są one
+ustawiane w pliku <tt>/etc/bacula/bacula-fd.conf</tt> na systemie klienckim. <p>
+
+Jeśli są wyświetlone, opcje TLS na stronie klienta określają czy do komunikacji
+pomiędzy menedżerem i klientem używane jest szyfrowanie. Zanim będzie można
+włączyć TLS należy wygenerować certyfikat SSL i klucz, a następnie wprowadzić ich
+ścieżki we właściwe pola w tym formularzu. <p>
+
+<footer>

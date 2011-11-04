@@ -1,0 +1,19 @@
+<header>Sieci lokalne</header>
+
+<center><tt>mynetworks</tt></center>
+<hr>
+
+Ten parametr definiuje listę sieci, które są lokalne dla tej maszyny. Lista
+jest wykorzystywana przez oprogramowanie przeciw UCE do rozróżniania
+klientów lokalnych od obcych. Zobacz <tt>permit_mynetworks</tt>
+i&nbsp;<a href=opt_smtpd_recipient_restrictions><tt>smtpd_recipient_restrictions</tt></a>
+w&nbsp;konfiguracji SMTP. <p>
+
+Domyślnie jest to lista wszystkich sieci przyłączonych do maszyny: pełna
+sieć klasy A (X.0.0.0/8), pełna sieć klasy B (X.X.0.0/16), i&nbsp;tak dalej.
+Jeśli potrzeba dokładniejszej kontroli, podaj listę wzorców sieć/maska,
+gdzie maska określa liczbę bitów w części sieciowej adresu hosta. Możesz
+również podać bezwzględną ścieżkę do pliku wzorców zamiast podawania wzorców
+tutaj.
+
+<hr>

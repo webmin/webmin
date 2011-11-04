@@ -1,0 +1,7 @@
+simple_sched=Formát pro plánovač,1,1-Jednoduchý,0-Komplexní
+nonewtape=Upozornit na nutnost vložení nové pásky v momentě&#44; kdy je plná?,1,1-Ano,0-Ne
+smtp_server=Odesílat mail přes SMTP server,3,Lokální spouštěč Sendmailu
+always_tar=Při zálohování vždy používat formát TAR?,1,1-Ano,0-Ne
+run_mode=Spouštět zálohování v,1,0-Popředí,1-Pozadí
+date_subs=Vytvořit <tt>strftime</tt> substituce cílů pro zálohování?,1,1-ano,0-ne
+error_email=Poslat zálohovací mail,1,0-Vždy,1-Jen v případě chyby

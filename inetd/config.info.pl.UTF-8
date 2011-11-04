@@ -1,0 +1,15 @@
+services_file=Plik usług sieciowych,0
+ipv6=Wspomaganie dla usług IPv6,1,1-Tak,0-Nie
+rpc_protocols=Podprotokoły RPC,0
+restart_command=Polecenie restartujące inetd,0
+protocols_file=Plik protokołów sieciowych,0
+rpc_inetd=Inetd obsługuje programy RPC,1,1-Tak,0-Nie
+inetd_dir=Katalog konfiguracyjny inetd,3,Brak
+allow_file=Pełna ścieżka do pliku <tt>allow</tt> dla tcpd,3
+deny_file=Pełna ścieżka do pliku <tt>deny</tt> dla tcpd,3
+tcpd_path=Pełna ścieżka do tcpd,3
+extended_inetd=Rozszerzona obsługa inetd,1,0-Pierwotna,1-Podstawowa,2-Wzbogacona
+rpc_file=Plik usług RPC,0
+show_empty=Pokazywać usługi bez programu,1,1-Tak,0-Nie
+sort_mode=Porządek usług i&nbsp;programów,1,0-Porządek w&nbsp;plku,1-Wg nazwy,2-Assignment
+inetd_conf_file=Plik konfiguracyjny inetd,0

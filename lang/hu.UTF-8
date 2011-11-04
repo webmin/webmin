@@ -1,0 +1,221 @@
+# webmin-1.030/lang/hu
+# Translated by <kissg@sztaki.hu> - v0.82
+# Translated by <gabor@jamaga.hu> v0.83 - v1.030
+
+main_return=Vissza --> $1
+main_homepage=Webmin oldal
+main_feedback=Visszajelzés...
+main_switch=Felhasználóváltás...
+main_logout=Kilépés
+main_version=Verziószám: $1. Szerver: $2 ($3)
+main_title=Webmin $1 a(z) $2 ($3) szerveren
+main_title2=Webmin
+main_none=Egyetlen Webmin modulhoz sincs hozzáférésed
+main_skill=Szakértelmi szint
+link_essl=A Net::SSLeay Perl modult szükséges a szerverre telepíteni a HTTPS kapcsolat létrehozásához.
+
+category_servers=Szerverek
+category_hardware=Hardver
+category_system=Rendszer
+category_webmin=Webmin
+category_net=Hálózat
+category_syslet=Sysletek
+category_cluster=Cluster
+category_info=Információ
+category_=Egyéb
+
+longcategory_servers=A web, email, FTP és egyéb szerveralkalmazások konfigurálásához használatos modulok
+longcategory_hardware=A nyomtató, disk és egyéb hardverelem konfigurálásához használatos modulok
+longcategory_system=A felhasználók, filerendszerek, időzített (cron) munkák és egyéb rendszerelemek konfigurálásához használatos modulok
+longcategory_webmin=Magának a Webmin konfigurálásához használatos modulok
+longcategory_net=A hálózat és hálózati alkalmazások konfigurálásához használatos modulok
+longcategory_cluster=Egy felületről több szerver kezelésére használatos modulok
+longcategory_info=A rendszer adatait megjelenítő modulok
+longcategory_=Minden egyéb modul
+
+header_webmin=Webmin főoldal
+header_module=Modul főoldal
+header_help=Súgó...
+header_config=Modul konfigurálás
+header_servers=Webmin szerverek
+
+index=főoldal
+yes=Igen
+no=Nem
+save=Mentés
+create=Létrehozás
+delete=Törlés
+find=Keresés
+error=Hiba
+efilewrite=Nem tudtam írni ezt a filet --> $1 : $2
+default=Alapbeállítás
+modify=Módosítás
+# Nor 'ok' neither 'reset' is used in any situation
+reset=Visszaállítás
+ok=OK
+cancel=Mégsem
+helpsearch=Dokumentáció keresése...
+switch_remote_euser=A(z) $1 felhasználó nem létezik.
+programname=Webmin
+
+chooser_title1=Válassz egy file-t
+chooser_title2=Válassz egy könyvtárat
+chooser_dir=A(z) $1 könyvtár
+chooser_ok=OK
+
+users_title1=Jelöld ki a felhasználókat
+users_title2=Válassz egy felhasználót
+users_sel=Kiválasztott felhasználók
+users_all=Minden felhasználó
+users_ok=OK
+users_cancel=Mégsem
+users_clear=Törlés
+
+groups_title1=Jelöld ki a csoportokat
+groups_title2=Válassz egy csoportot
+groups_all=Minden csoport
+groups_sel=Kiválasztott csoportok
+groups_ok=OK
+groups_cancel=Mégsem
+groups_clear=Törlés
+
+config_ecannot=Nincs jogod konfigurálni ezt a modult
+config_title=Konfiguráció
+config_dir=A(z) "$1" modul számára
+config_header=A(z) "$1" modul konfigurálható opciói
+config_none=Nincs
+config_eaccess=Nincs hozzáférési jogosultságod ehhez a modulhoz
+config_err=Nem sikerült elmenteni a konfigurációt
+config_nochange=Ne változtasd meg
+config_setto=Állítsd be
+
+help_err=Nem sikerült megjeleníteni a helpet
+help_epath=Nincs beállítva a PATH_INFO változó
+help_efile=Nem sikerült olvasni a(z) $1 file-t
+help_eheader=Hiányzik a &lt;header&gt; rész
+help_einclude=Nem sikerült beilleszteni a(z) $1 file-t
+help_eif=$1 nem sikerült: $2
+help_eexec=$1 nem sikerült: $2
+
+referer_title=Biztonsági riadó
+referer_warn=<b>Figyelem!</b> A Webmin észrevette, hogy a $2 programot a $1 URL-en lévő dokumentumba bújtatott link révén akarják indítani, ami kicsit gyanús, mert nem ezen a Webmin szerveren van. Meglehet, hogy ez valami trükkös kísérlet arra, hogy egy veszélyes program induljon el a szerveren.
+referer_ok=Futtasd a kívánt programot!
+referer_again=Máskor nem kérem ezt a figyelmeztetést.
+
+session_header=Belépés a Webminbe
+session_mesg=Add meg az azonosítódat és a jelszavadat a $1 Webmin szerverbe való belépéshez
+session_mesg2=Add meg az azonosítódat és a jelszavadat.
+session_user=Azonosító
+session_pass=Jelszó
+session_login=Belépés
+session_clear=Törlés
+session_failed=Sikertelen belépési kísérlet. Próbáld meg újra!
+session_logout=Kiléptetés végrehajtva. Újabb belépéshez használd az alábbi űrlapot!
+session_timed_out=$1 perces üresjárat után a munkafolyamatot megszakítottam.
+session_save=Megjegyezzem a belépési adataidat?
+
+acl_root=A file-menüben látható gyökérkönyvtár
+acl_home=Felhasználó home könyvtára
+acl_uedit=A felhasználók menüjében ki szerepeljen?
+acl_uedit_all=Minden felhasználó
+acl_uedit_only=Csak a felsoroltak:
+acl_uedit_except=Mindenki, kivéve a felsoroltak:
+acl_uedit_uid=A megadott UID tartományba eső felhasználók:
+acl_uedit_group=A megadott csoportba tartozó felhasználók:
+acl_gedit=A csoportok menüjében mi szerepeljen?
+acl_gedit_all=Minden csoport
+acl_gedit_only=Csak a felsoroltak:
+acl_gedit_except=Mindegyik, kivéve a felsoroltak:
+acl_gedit_gid=A megadott GID tartományba eső felhasználók:
+acl_feedback=Küldhet visszajelző levelet?
+acl_feedback2=Igen
+acl_feedback1=Igen, de csak a konfig adatok nélkül
+acl_feedback0=Nem
+acl_rpc=Fogadhat RPC hívásokat?
+acl_rpc2=Csak a <tt>root</tt> vagy <tt>admin</tt>
+acl_rpc1=Igen
+acl_rpc0=Nem
+
+month_1=január
+month_2=Február
+month_3=Március
+month_4=Április
+month_5=Május
+month_6=Június
+month_7=Július
+month_8=Augusztus
+month_9=Szeptember
+month_10=Október
+month_11=November
+month_12=December
+
+day_0=Vasárnap
+day_1=Hétfő
+day_2=Kedd
+day_3=Szerda
+day_4=Csütörtök
+day_5=Péntek
+day_6=Szombat
+
+smonth_1=Jan
+smonth_2=Febr
+smonth_3=Márc
+smonth_4=Ápr
+smonth_5=Máj
+smonth_6=Jún
+smonth_7=Júl
+smonth_8=Aug
+smonth_9=Szept
+smonth_10=Okt
+smonth_11=Nov
+smonth_12=Dec
+
+sday_0=V
+sday_1=H
+sday_2=K
+sday_3=Sze
+sday_4=Cs
+sday_5=P
+sday_6=Szo
+
+emodule=Hozzáférés megtagadva : A(z) $1 nem használhatja a(z) $2 modult
+elock_tries=Nem sikerült a(z) $1 file lockolása $2 perc elteltével
+
+skill_high=Profi
+skill_medium=Haladó
+skill_low=Kezdő
+
+feedback_title=Webmin visszajezés
+feedback_desc=Ez az űrlap lehetőséget nyújt arra, hogy lejelentsd a hibákat illetve megjegyzéseidet eljuttasd a Webmin fejlesztőihez a talált hibákról illetve hiányzó dolgokról. Amikor az Elküld gombra kattintasz, az űrlapba beírt információk a $1 címre fognak eljutni.
+feedback_desc2=Ez a visszajelzés a Usermin fejlesztőihez fog eljutni, nem a szerver adminisztrátorának. Kérlek, hogy visszajelzésedet ezért angol nyelven írd, mégh amost nem is angolul használod a programot.
+feedback_header=Visszajelzés adatai
+feedback_name=A neved
+feedback_email=E-mail címed
+feedback_module=Hivatkozott modul
+feedback_all=Minden modul
+feedback_text=A probléma illetve megjegyzés leírása
+feedback_os=A rendszeradatokat is csatolod a levélhez?
+feedback_osdesc=Ha ezt az opciót kiválasztod, az automatikus visszajelzés levél tartalmazni fogja a használt szerver operációs rendszerének nevét és verzióját.
+feedback_config=Modul konfiguráció csatolása a levélhez?
+feedback_configdesc=Ha ezt az opciót kiválasztod, az e-mail tartalmazni fogja a hivatkozott modul konfigurációját és minden egyéb konfigurációs file tartalmát amit amodul használ. Például, ha a visszajelzés a <i>Felhasználók és csoportok</i> modulról szól, akkor a szerver <tt>/etc/passwd</tt> és <tt>/etc/shadow</tt> file-jai is bekerülnek a levélbe.
+feedback_attach=Egyéb csatolandó file-ok
+feedback_send=Elküld
+feedback_mailserver=SMTP szerveren keresztüli küldés
+feedback_mailserver_def=Lokális sendmail program
+feedback_err=Nem sikerült elküldenem a visszajelzést
+feedback_emodule=Kiválasztottad a konfigurációs file-ok csatolását, de nem választottál ki egy modult sem.
+feedback_emodule2=A kiválasztott modul nem létezik
+feedback_econfig=Nincs teljes hozzáférésed a modulhoz.
+feedback_via=A visszajelzést elküldtem a(z) $1 címre a(z) $2 SMTP szerveren keresztül
+feedback_prog=A visszajelzést elküldtem a(z) $1 címre a(z) $2 sendmail programján keresztül
+feedback_esend=Nem sikerült a visszajelzést elküldenem a lokális sendmail vagy a lokális SMTP szerveren keresztül.
+feedback_to=Visszajelzés küldése a következő címekre
+feedback_enoto=Egy cím se lett beírva a címzett mezőbe
+feedback_ecannot=Nincs engedélyezve számodra a visszajelzés küldése funkció
+feedback_ecannot2=Nincs engedélyezve számodra a konfigurációk csatolása funkció
+
+progress_size=$1 letöltése ($2 byte) ...
+progress_nosize=$1 letöltése...
+progress_data=$1 byte letöltve ($2 %)
+progress_data2=$1 bytes letöltve
+progress_done=... Letöltés befejezve.

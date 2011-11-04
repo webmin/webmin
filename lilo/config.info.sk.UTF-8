@@ -1,0 +1,3 @@
+lilo_conf=Cesta ku konfiguračnému súboru pre LILO,0
+lilo_cmd=Príkaz pre uskutočnenie zmien v konfigurácii LILO,0
+line2=Systémová konfigurácia,11

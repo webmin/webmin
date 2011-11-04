@@ -1,0 +1,12 @@
+# webmin-0.90shell/lang/hu
+# translated by Gabor Keve <gabor.keve@it-worx.hu>
+#
+index_title=Parancshéj
+index_ok=Futtatandó parancs:
+index_history=Parancsok története
+index_clear=Történetek törlése
+index_desc=Adjon meg a szövegmezőbe egy Unix parancshéjat amit futtatni szeretne. A <tt>cd</tt> parancsot a könyvtár váltásra lehet használni.
+index_pok=Előző parancs futtatása
+
+acl_user=A parancs futtatása mint felhasználó
+acl_user_def=Jelenlegi Webmin felhasználó

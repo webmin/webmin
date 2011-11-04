@@ -1,0 +1,31 @@
+<header>Usługi magazynu</header>
+
+Każdy wpis na tej stronie określa połączenie do urządzenia w usłudze magazynu 
+Bacula. Zazwyczaj usługa uruchamiana jest na tym samym systemie, ale możliwe jest
+zdefiniowanie więcej niż jednej usługi, które mogą znajdować się na zdalnych hostach
+z różnymi rodzajami tasiemek lub dysków twardych. <p>
+
+Najważniejsze atrybuty dla każdej usługi:<br>
+<dl>
+<dt>Nazwa usługi magazynu
+<dd>Unikalna nazwa używana przez ten system do identyfikacji usługi.
+<dt>Hasło Bacula SD
+<dd>Pole to musi zawierać hasło używane przez usługę magazynu na zdalnym systemie, hasło można znaleźć w pliku <tt>/etc/bacula/bacula-sd.conf</tt>.
+<dt>Nazwa hosta lub adres IP
+<dd>Pełna nazwa hosta lub IP systemu z uruchomioną usługą magazynu.
+<dt>Nazwa urządzenia magazynującego
+<dd>Każda usługa magazynu może określać jedno lub więcej urządzeń, z których każde może korespondować z innym katalogiem na tasiemce. Pole to określa, którego urządzenia usługa ma używać.
+<dt>Nazwa rodzaju nośnika
+<dd>Pole to musi zawierać krótką nazwę rodzaju nośnika używanego jako urządzenie magazynujące - np. <i>Plik</i> lub <i>DDS-2</i>. Musi być taka sama jak rodzaj nośnika w sekcji <strong>Urządzenia magazynujące</strong> na serwerze magazynującym.
+</dl>
+
+Często użytecznym jest posiadanie więcej niż jednego wpisu na tym samym hoście,
+który odwołuje się do innego urządzenia magazynującego. Umożliwia to tworzenie
+różnych katalogów lub tasiemek. <p>
+
+Jeśli opcja TLS jest widoczna w formularzu usługi magazynu, można go użyć do zabezpieczenia
+komunikacji pomiędzy menedżerem i zdalnym serwerem magazynu. Zazwyczaj nie
+jest to wymagane w prostej konfiguracji Bacula, gdy usługi magazynu lub menedżera uruchomione
+są na tym samym systemie. <p>
+
+<footer>

@@ -1,0 +1,37 @@
+<header>Użytkownicy i klasy</header>
+
+Serwer WU FTP pozwala na klasyfikację użytkowników w&nbsp;oparciu
+o&nbsp;adres IP, z&nbsp;którego się logują i&nbsp;typ użytkownika. Istnieją
+trzy typy użytkowników:
+<ul>
+<li><b>Uniksa</b> - Normalni użytkownicy systemu Unix.
+<li><b>Goście</b> - Użytkownicy Uniksa sklasyfikowani jako goście.
+<li><b>Anonimowi</b> - Wlogowani jako użytkownik <tt>anonymous</tt> lub
+		      <tt>ftp</tt>, jeżeli system na to pozwala.
+</ul>
+<p>
+
+Pierwsza sekcja strony umożliwia zdefiniowanie nazwanych klas w&nbsp;oparciu
+o&nbsp;typ użytkownika i&nbsp;jego adres IP. Każdy login będzie
+klasyfikowany do pierwszej pasującej klasy, zatem klasy powinny być
+definiowane poczynając od najbardziej specyficznych. Adresy mogą być podane
+w&nbsp;postaci pełnego lub częściowego adresu IP, kombibacji podsieć
+IP/maska, nazw komputerów (z&nbsp;rozwijanymi znakami * i&nbsp;?, jak na
+przykład<tt>*.foo.com</tt>), oraz absolutnych ścieżek do plików
+zawierających adresy. W&nbsp;celu zanegowania każdy adres może być
+poprzedzony wykrzyknikiem !. 
+<p>
+
+Następna sekcja umożliwia określenie, którzy użytkownicy Uniksa mają być
+klasyfikowani jako goście. Gość ma prawa podobne jak zwykły użytkownik
+Uniksa, ale poprzez zastosowanie <tt>chroot</tt> jest ograniczony do
+określonej kartoteki.
+<p>
+
+Ostatnia sekcja umożliwia określenie, którzy użytkownicy Unixa i&nbsp;goście
+nie mogą korzystać z&nbsp;serwera FTP. Można wyspecyfikować użytkowników
+poprzez nazwę, GID (jak <tt>%3000</tt>) lub zakres GID (jak
+<tt>%3000-3010</tt>). 
+<p>
+
+<hr>

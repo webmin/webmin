@@ -1,0 +1,5 @@
+deny_file=Súbor so zoznamom zakázaných užívateľov pre príkaz AT,3,Žiadny
+at_style=Na systéme,1,linux-Linux,solaris-Solaris,freebsd-FreeBSD,irix-Irix,macos-MacOS X,openserver-OpenServer
+line2=Systémová konfigurácia,11
+allow_file=Súbor so zoznamom povolených užívateľov pre príkaz AT,3,Žiadny
+at_dir=V adresári úloh,0

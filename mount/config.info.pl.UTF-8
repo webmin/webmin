@@ -1,0 +1,7 @@
+fstab_file=Plik zawirający listę systemów plików montowanych przy starcie,0
+nmblookup_path=Pełna ścieżka do programu <tt>nmblookup</tt>,3
+auto_file=Plik automatycznych montowań po NFS,3
+browse_server=Serwer, z&nbsp;którego pobierana jest <tt>browse list</tt>,3,localhost
+smbclient_path=Pełna ścieżka do programu <tt>smbclient</tt>,3
+autofs_file=Plik automatycznych montowań kernela,3
+long_fstypes=Używaj długich nazw typów systemów plików,1,1-Tak,0-Nie

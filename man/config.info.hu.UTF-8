@@ -1,0 +1,4 @@
+man_dir=A programdokumentációt tartalmazó katalógus(ok),0
+man_cmd_sect=Adott kategóriába tartozó dokumentumot megjelenítő parancs,0
+man_cmd=Egy programleírást megjelenítő parancs,0
+search_cmd=A dokumentumok közti keresésre szolgáló parancs,0

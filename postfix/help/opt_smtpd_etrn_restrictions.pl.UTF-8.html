@@ -1,0 +1,16 @@
+<header>Ograniczyć polecenie ETRN do...</header>
+
+<center><tt>smtpd_etrn_restrictions</tt></center>
+<hr>
+
+Ten parametr ogranicza klientów, którzy mogą wydać polecenie <tt>ETRN</tt>.
+Obecne <tt>ETRN</tt> Postfiksa różnie się od innych implementacji
+<tt>ETRN</tt> tym, że wysyła oczekującą pocztę do wszystkich miejsc
+przeznaczenia. Zmieni się to w&nbsp;przyszłości. <p>
+
+Domyślne jest pozwalanie na <tt>ETRN</tt> z&nbsp;dowolnego hosta. Możliwe są
+następujące ograniczenia:
+
+<include smtpd_restrictions>
+
+<hr>

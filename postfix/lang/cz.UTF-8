@@ -1,0 +1,429 @@
+index_title=Konfigurace Postfixu
+index_epath=Kontrolní příkaz Postfixu $1 není ve vašem systému nainstalován. Možná vaše <a href='$2'>konfigurace modulu</a> není správná, nebo není Postfix nainstalován.
+
+internal_error=Interní chyba
+index_econfig=Konfigurační příkaz Postfixu $1 neexistuje. Možná vaše <a href='$2'>konfigurace modulu</a> není správná.
+index_stop=Ukončit Postfix
+index_start=Spustit Postfix
+index_stopmsg=Klepnutím na toto tlačítko ukončíte spuštěný Postfix mail server. Tento úkon ukončí možnost předat odeslané maily lokálním uživatelům z jiných systémů a zárověň zabrání používání tohoto systému jako mail server pro odesílání mailů.
+index_startmsg=Klepnutím na toto tlačítko spustíte spuštěný Postfix mail server. Dokud tak neučiníte, není možné předat odeslané maily lokálním uživatelům z jiných systémů a zároveň klienti nemohou použít tento systém jako mail server.
+opts_err=Chyba při uložení nastavení
+
+check_error=Chyba během kontroly aktuální konfigurace Postfixu. Nastavte prosím Postfix konfiguraci ručně.
+
+address_rewriting_title=Přepisování adres a jejich maškaráda
+address_rewriting_ecannot=Nemáte oprávnění editovat přepisování adres a jejich maškarádu
+aliases_title=Aliasy mailů
+aliases_ecannot=Nemáte oprávnění editovat aliasy
+aliases_no_alias_file=Není žádný soubor aliasů
+aliases_failed_delete=Chyba při mazání aliasu: $1
+aliases_cant_write=Nelze zapisovat do souboru aliasů
+aliases_cant_read=Nelze číst ze souboru aliasů
+aliasopts_title=Nastavení aliasů
+aliases_internal_error=Aliasy: interní chyba
+edit_alias_title=Editace vlastností aliasů
+alias_save=Uložit alias
+alias_save_err=Chyba při uložení aliasu
+alias_delete_create=Chcete smazat alias, který právě vytváříte !?
+delete_alias=Smazat alias
+aliases_click=Klepnutím na jakýkoliv alias editujete jeho vlastnosti:
+
+general_title=Hlavní nastavení
+general_title_sensible=Nejpoužívanější hlavní nastavení
+general_title_others=Ostatní hlavní nastavení
+general_ecannot=Nemáte oprávnění editovat hlavní nastavení
+what_is_it=Co je to?
+
+opts_default=Výchozí
+opts_none=Nic
+opts_relayhost=Odeslat odchozí mail přes hosta
+opts_directOdesílat přímo
+opts_myorigin=Jaká doména se použije v mailu směrovaného ven
+opts_myorigin_as_myhostname=Použít jméno hosta
+opts_myorigin_as_mydomain=Použít jméno domény
+opts_mydestination=Jaké domény jsou použiy pro přijímoný mail
+opts_mydestination_default=Lokální počítač
+opts_mydestination_domainwide=Celá doména
+opts_notify_classes=Jaké potíže se oznámí postmasterovi
+opts_queue_directory=Adresář mail fronty
+opts_mail_owner=Vlastník mailu
+opts_default_privs=Výchozí práva agenta pro odesílání
+opts_inet_interfaces=Síťová rozhraní pro přijímání mailu
+opts_all_interfaces=Vše
+
+opts_local_recipient_maps=Odmítnout neznámé lokální uživatele
+opts_no=Ne
+opts_save=Uložit a použít
+
+
+opts_allow_percent_hack=Přepsat "user%domain" na "user@domain"
+opts_append_at_myorigin=Přepsat "user" na "user@$mydomain"
+opts_append_dot_mydomain=Přepsat "user@host" na "user@host.$mydomain"
+opts_empty_address_recipient=Odeslat mail s prázdným přjemcem do...
+opt_empty_recip_default=Výchozí
+opts_swap_bangpath=Přepsat "site!user" na "user@site"
+opts_masquerade_domains=Maškaráda adres
+opts_masquerade_exceptions=Vyjímky pro maškarádu
+index_return=Konfigurace Postfixu
+
+
+opts_alias_maps=Databáze aliasů používaný lokálním agentem pro odesílání
+opts_alias_database=Databáze aliasů vybudovná pomocí &quot;newaliases&quot; příkazu
+aliases_warning=Upozornění: <ul><li>jakmile není první pole prázdné, je použit výchozí příkaz genrátoru Postfix aliasů pro vytvoření odpovídajících databází ; <li>v ostatních případech je použit příkaz pro Sendmail kompatibilitu &quot;newaliases&quot;, který bude použit pro databáze v druhém poli.</ul>
+
+aliases_name=Jméno
+aliases_value=Vytvořit alias na...
+
+new_alias=Vytvořit nový alias
+new_aliasmsg=Klepnutím na toto tlačítko se vytvoří nový alias
+
+
+local_delivery_ecannot=Nemáte oprávnění editovat nastavení lokálního odesílání
+local_delivery_title=Lokální odesílání
+opts_local_transport=Název přenosu pro lokální odesílání
+opts_local_transport_local=Lokální
+opts_local_command_shell=Shell, který se použije pro odeslání do externího příkazu
+opts_local_command_shell_direct=Nic (přímá spuštění příkazů)
+opts_forward_path=Vyhledávací seznam pro předání dál
+opts_allow_mail_to_commands=Platné mail odesílání do externích příkazů
+opts_allow_mail_to_files=Platné mail odesílání do externích souborů
+opts_home_mailbox=Relativní cesta z domovského adreesáře pro mailbox soubor uživatele
+opts_home_mailbox_default=Nic (použít standardně <tt>/var/something</tt>)
+opts_luser_relay=Cílová adresa pro neznámé příjemce
+opts_luser_relay_none=Nic (vyskočit mail)
+opts_mail_spool_directory=Spool adresář
+opts_mailbox_command=Externí příkaz k použití namísto mailbox odeslání
+opts_mailbox_command_none=Nic
+opts_mailbox_transport=Volitelný aktuální transport k použití
+opts_mailbox_transport_none=Nic
+opts_fallback_transportVolitelný transport pro neznámé příjemce
+opts_fallback_transport_none=Nic
+opts_local_destination_concurrency_limit=Maximální počet paralelních odesílání pro stejného lokálního příjemce
+opts_local_destination_recipient_limit=Maximální počet příjemců na jedno lokální zprávu k odeslání
+opts_local_destination_recipient_limit_default=Výchozí
+opts_prepend_delivered_header=Dodatečně přidat <tt>Delivered-To:</tt> když...
+opts__delivered_header_default=Výchozí
+
+
+resource_title=Hlavní kontrola zdrojů
+resource_ecannot=Nemáte oprávnění editovat paramatry kontroly zdrojů
+opts_bounce_size_limit=Maximální velikost odskočené zprávy
+opts_command_time_limit=Maximální doba pro odeslání do externích příkazů
+opts_default_process_limit=Maximální počet Postfix child procesů
+opts_deliver_lock_attempts=Maximální počet pokusů na uzamčnení souboru
+opts_deliver_lock_delay=Čas ve vteřinách mezi pokusy o uzamčení souboru
+opts_duplicate_filter_limit=Maximální pořet adres, které si pamatuje duplikační filter
+opts_fork_attempts=Maximální počet pokusů na rozvětvení procesu
+opts_fork_delay=Čas ve vteřinách mezi pokusy o rozvětvení
+opts_header_size_limit=Maximální používaná paměť pro hlavičky procesů
+opts_line_length_limit=Maximální používaná paměť pro udržení vstupních řádků
+opts_message_size_limit=Maximální velikost zprávy
+opts_qmgr_message_active_limit=Maximální počet zpráv v aktivní frontě
+opts_qmgr_message_recipient_limit=Maximální počet příjemců v paměti
+opts_queue_minfree=Minimální volné místo v souborovém systému s frontou
+opts_stale_lock_time=Maximální čas, po  kterém je provedeno staré uzamčení
+opts_transport_retry_time=Čas ve vteřinách mezi pokusy o kontakt s přerušeným MDT
+
+
+opts_always_bcc=Adresy příjemců bcc v každé zprávě
+opts_always_bcc_none=Nic
+opts_daemon_timeout=Časová prodleva pro pozdržení požadavů
+opts_default_database_type=Výchozí typ databází
+opts_default_transport=Výchozí transport pro zprávy k odeslání
+opts_double_bounce_sender=Adresa odesílatele pro odskočenoý mail
+opts_hash_queue_depth=Počet úrovní podadresářů v adresáři fronty
+opts_hash_queue_names=Název adresářů s frontou rozdělených prostřednictvím podadresářů
+opts_hopcount_limit=Maximální počet <tt>Received:</tt> hlaviček
+opts_ipc_idle=Doba nečinnosti, po které se odpojí interní IPC klient
+opts_ipc_timeout=Časová prodleva pro I/O na interních comm kanálech
+opts_mail_name=Název mail systému
+opts_mail_version=Oficiální verze mail systému
+opts_max_idle=Doba čekání pro požadavek další služby
+opts_max_use=Maximální počet požadavků zlužeb udržitelných pře opuštěním
+opts_mydomain=Název lokální internet domény
+opts_mydomain_default=Výchozí (provedeno systémem)
+opts_myhostname=Jméno internet hosta tohoto mail systému
+opts_myhostname_default=Výchozí (provedeno systémem)
+opts_mynetworks=Lokální sítě
+opts_mynetworks_default=Výchozí (všechny připojené sítě)
+opts_bounce_notice_recipient=Odeslat postmasterovi oznámení o odskočení k...
+opts_2bounce_notice_recipient=Odeslat postmasterovi oznámení o druhém odskočení k...
+opts_delay_notice_recipient=Odeslat postmasterovi oznámení o pozdržení k...
+opts_error_notice_recipient=SOdeslat postmasterovi oznámení o chybě k...
+opts_process_id_directory=Uzamknout adresář se soubory, vztáhnout k adresáři s frontou
+opts_program_directory=Adresář s démony a podpůrnými programy Postfixu
+opts_recipient_delimiter=Separator u přípon uživatelé / adresy
+opts_relocated_maps_default=Výchozí (vypnuto)
+opts_sun_mailtool_compatibility=Vypnout uzamčení souborů jádra v mailboxech
+opts_trigger_timeout=Maximální doba k odeslání triggeru k démonovi
+opts_delay_warning_time=Čas v hodinách před odesláním upozornění o neodeslání
+opts_delay_warning_time_default=Vypnuto
+
+
+smtpd_title=Nastavení SMTP serveru
+smtpd_ecannot=Nemáte oprávnění editovat nastavení SMTP serveru
+opts_disable_vrfy_command=Vypnout SMTP VRFY příkaz
+opts_smtpd_banner=SMTP banner s pozdravem
+opts_smtpd_etrn_restrictions=Omezit ETRN příkaz na...
+opts_smtpd_recipient_limit=Maximální počet příjemců akceptovatelných pro odesílání
+opts_smtpd_timeout=Časová prodleva ve vteřinách pro SMTP transakce
+opts_smtpd_error_sleep_time=Časová prodleva před odesláním reakce na 4xx/5xx chyby
+opts_smtpd_soft_error_limit=Chybý počet pro dočasnou ignoraci klienta
+opts_smtpd_hard_error_limit=Chybný počet pro uzavírání připojení
+opts_smtpd_client_restrictions=Omezení u klienta jména hostů / adresy
+opts_smtpd_helo_required=HELO je požadováno
+opts_smtpd_helo_restrictions=Omezení u posílání HELO příkazů
+opts_smtpd_sender_restrictions=Omezení u adres odesílatelů
+opts_smtpd_recipient_restrictions=Omezení u adres příjemců
+opts_allow_untrusted_routing=Povolit nedůveryhodné routování
+opts_maps_rbl_domains=DNS domény pro zpětnou kontrolu z blacklistu
+opts_relay_domains=Omezit mail předávání
+opts_access_map_reject_code=Reakce SMTP serveru na porušení mapy přístupu
+opts_invalid_hostname_reject_code=Reakce SMTP serveru na odmítnutí neplatného jména hosta
+opts_maps_rbl_reject_code=Reakce SMTP serveru na přístup RBL domén
+opts_reject_code=Reakce SMTP serveru na odmítnutí klienta
+opts_relay_domains_reject_code=Reakce SMTP serveru na zakázané přesměrování
+opts_unknown_address_reject_code=Reakce SMTP serveru na odmítnutí naznámé domény
+opts_unknown_client_reject_code=Reakce SMTP serveru na odmítnutí neznámého klienta
+opts_unknown_hostname_reject_code=Reakce SMTP serveru na odmítnutí neznámého jména hosta
+
+
+smtp_title=Nastavení SMTP klienta
+smtp_ecannot=Nemáte oprávnění to editovat nastavení SMTP klienta
+opts_best_mx_transport=Akce, pokud je uveden jako nejlepší MX host
+opts_best_mx_transport_default=Výchozí (odskočit zprávu)
+opts_fallback_relay=Hosté/domény k propuštění mailu  k neplatnému cíli
+opts_ignore_mx_lookup_error=Ignorovat MX chyby zpětné kontroly
+opts_smtp_skip_4xx_greeting=Přeskočit 4xx pozdrav
+opts_smtp_skip_quit_response=Přeskočit čekání na QUIT příkaz
+opts_smtp_destination_concurrency_limit=Maximální počet paralelních odesílání do stejného cíle
+opts_smtp_destination_recipient_limit=Max imální počet příjemců na jedno odeslání
+opts_smtp_connect_timeout=Časová prodleva pro vytvoření TCP připojení
+opts_smtp_helo_timeout=Časová prodleva, po kterou se bude čekat na banner s pozdravem
+opts_smtp_mail_timeout=Časová prodleva, po kterou se bude čekat na odpověď na MAIL FROM
+opts_smtp_rcpt_timeout=Časová prodleva, po kterou se bude čekat na odpověď na RCPT TO
+opts_smtp_data_init_timeout=Časová prodleva, po kterou se bude čekat na odpověď na DATA
+opts_smtp_data_xfer_timeout=Časová prodleva, po kterou se bude čekat na odpověď na přenesení obsahu zprávy
+opts_smtp_data_done_timeout=Časová prodleva, po kterou se bude čekat na odpověď na ukončení &quot;.&quot;
+opts_smtp_quit_timeout=Časová prodleva, po kterou se bude čekat nna odpověď na QUIT
+
+
+rate_title=Dávky odeslání
+rate_ecannot=Nemáte oprávnění editovat nastavení pro dávky odesílání
+opts_default_destination_concurrency_limit=Maximální počet paralelních odesílání do stejného cíle
+opts_default_destination_recipient_limit=Maximální počet příjemců na jednu odesílanou zprávu
+opts_initial_destination_concurrency=Počáteční úroveň konkurence pro odesílání do stejného cíle
+opts_maximal_backoff_time=Maximální čas (vteřiny) mezi pokusy odeslat odložené zprávy
+opts_maximal_queue_lifetime=Maximální čas (dny) ve frontě před nastavením zprávy jako neodeslatelné
+opts_minimal_backoff_time=Minimální čas (vteřiny) mezi pokusy odeslat odložené zprávy
+opts_queue_run_delay=Čas(vteřiny) mezi skanováním odložené fronty
+opts_defer_transports=Transporty, které nemohou být odeslány
+
+
+debug_title=Příslušenství pro debugging
+debug_ecannot=Nemáte oprávnění editovat příslušenství pro debugging
+opts_debug_peer_list=Seznam domén/síťových masek, pro které je zapnut podrobný log
+opts_debug_peer_level=Úroveň verbose loggingu, pokud vyhovuje výše uvedenému seznamu
+debug_version=Postfix Modul pro Webmin - Verze $1
+
+ldap_title=LDAP zpětné kontroly
+ldap_ecannot=Nemáte oprávnění editovat nastavení LDAP zpětnou kontrolu
+ldap_non_existent=Vypadá to, že LDAP neexistuje ve vašem Postfix systému
+opts_ldap_lookup_timeout=Časová prodleva pro zpětnou kontrolu LDAP databáze
+opts_ldap_search_base=LDAP databáze pro prohledání
+opts_ldap_server_host=Jméno hosta LDAP serveru
+
+canonical_title=Kanonické mapování
+canonical_ecannot=Nemáte oprávnění editovat konfiguraci kanonického mapování
+opts_canonical_maps=Tabulka adres mapovaných zpětnou kontrolou
+opts_recipient_canonical_maps=Tabulky pro RECIPIENT adresy
+opts_sender_canonical_maps=Tabulky pro SENDER adresy
+edit_canonical_maps=Editovat kanonické mapy
+edit_recipient_canonical_maps=Editovat kanonické mapy příjemců
+edit_sender_canonical_maps=Editovat kanonické mapy odesílatelů
+edit_canonical_maps_general=Klepnutím na jedno z těchto tlačítek se editují kanonické mapy
+canonical_edit_title=Editace kanonické mapy
+
+mapping_name=Název
+mapping_value=Mapovat na...
+new_mapping=Nové mapování
+new_mappingmsg=Klepnutím na toto tlačítko se vytvoří nové mapování
+map_save=Uložit mapování
+delete_map=Smazat mapování
+edit_map_title=Editace mapy
+map_save_err=Chyba při ukládání mapování
+mapps_no_map_file=Není definován žádný soubor s mapami
+map_delete_failed=Chyba při mazání mapy: $1
+map_delete_create=Nejde smazat mapu, kterou právě vytváříte
+maps_internal_error=Mapa: interní chyba
+maps_cant_write=Nejde zapsat
+help_map_format=Jaký formát bych mohl použít?
+
+
+virtual_title=Virtuální domény
+virtual_ecannot=Nemáte oprávnění editovat konfiguraci mapování virtuálních domén
+opts_virtual_maps=Tabulky zpětných kontrol mapování domén
+
+transport_title=Mapování transportu
+transport_ecannot=Nemáte oprávnění editovat konfiguraci mapování transportu
+opts_transport_maps=Tabulky zpětných kontrol mapování transportu
+
+relocated_title=Relokační mapování
+relocated_ecannot=Nemáte oprávnění editovat konfiguraci relokační mapování
+opts_relocated_maps=Tabulky zpětných kontrol relokačního mapování
+
+map_click=Klepnutím na kterékoliv mapování editujete jeho vlastnosti
+no_map=(Momentálně není definována žádná mapa. Nejprve definujte mapu, pak ji můžete editovat.)
+no_map2=Momentálně není definována žádná mapa. Nejprve definujte mapu, pak ji můžete editovat.
+
+stop_efailed=Chyba při ukončení Postfixu
+stop_ecannot=Nemáte oprávnění ukončit Postfix
+
+query_get_efailed=Chyba při dotazovacím konfiguračním příkazu, které má získat aktuální hodnotu parametru $1: <tt>$2</tt>
+query_set_efailed=Chyba při dotazovacím konfiguračním příkazu, který má nastavit aktuální hodnotu parametru $1 na $2: <tt>$3</tt>
+reload_ecannot=Nemáte oprávnění znovu nahrát Postfix
+reload_efailed=Chyba při opětovném nahrání Postfix.
+regenerate_ecannot=Nemáte oprávnění regenerovat aliasy
+regenerate_alias_efailed=Chyba při regeneraci aliasů: <tt>$1</tt>
+regenerate_table_efailed=Chyba při regeneraci tabulky $1: <tt>$2</tt>
+
+acl_resource=Může editovat zdroje?
+acl_aliases=Může editovat aliasy?
+acl_aliases_options=Může editovat nastavení aliasů?
+acl_general=Může editovat hlavní nastavení?
+acl_address_rewriting=Může editovat přepisování adres?
+acl_canonical=Může editovat kanonické mapování?
+acl_virtual=Může editovat virtuální mapování?
+acl_transport=Může editovat mapování transportu?
+acl_relocated=Může editovat relokační mapování?
+acl_local_delivery=Může editovat lokální odesílání?
+acl_smtpd=Může editovat smtpd?
+acl_smtp=Může editovat smtp?
+acl_rate=Může editovat dávku?
+acl_debug=Může editovat debug?
+acl_ldap=Může editovat ldap?
+acl_startstop=Může spusti a ukončit Postfix?
+
+boxes_title=Uživatelské mailboxy
+boxes_user=Uživatel
+boxes_size=Velikost mailboxu
+boxes_none=Žádný mail
+boxes_return=mailboxy
+boxes_sent=Odeslaný mail
+boxes_ecannot=Nemáte oprávnění číst email
+boxes_toomany=Máte ve vašem systému přiliš mnoho uživatelů, aby šly vypsat všechny jejich mailboxy.
+boxes_go=Zobrazit mail pro uživatele:
+
+mail_title=Email uživatele
+mail_from=Od
+mail_date=Datum
+mail_subject=Předmět
+mail_to=Komu
+mail_cc=Kopie
+mail_bcc=Skrytá kopie
+mail_pri=Priorita
+mail_highest=Nejvyšší
+mail_high=Vysoká
+mail_normal=Normální
+mail_low=Nízká
+mail_lowest=Nejnižší
+mail_for=V $1
+mail_for2=Pro uživatele $1
+mail_sent=V seznamu odeslaných zpráv
+mail_size=Velikost
+mail_delete=Smazat
+mail_compose=Napsat
+mail_return=Mailbox uživatele
+mail_pos=Zprávy $1 do $2 od $3
+mail_none=Tento mailbox neobsahuje žádné zprávy
+mail_ecannot=Nemáte oprávnění číst tento email uživatele
+mail_all=Vybrat vše
+mail_invert=Invertovat výběr
+mail_search=Najít zprávy, kde
+mail_body=Tělo
+mail_match=obsahuje
+mail_ok=Hledat
+mail_nonefrom=Nic
+mail_mark=Označit jako:
+mail_mark0=Nepřečtená
+mail_mark1=Přečtená
+mail_mark2=Speciální
+mail_forward=Předaná dál
+mail_rfc=Z řádku
+
+view_title=Čtení emailu
+view_desc=Zpráva $1 v $2
+view_desc2=Zpráva $1 pro uživatele $2
+view_desc3=Zpráva $1
+view_sent=Zpráva $1 v seznamu odesláných mailů
+view_qdesc=Zpráva ve frontě $1
+view_headers=Hlavičky mailu
+view_allheaders=Zobrazit všechny hlavičky
+view_noheaders=Zobrazit základní hlavičky
+view_attach=Přílohy
+view_reply=Odpovědět
+view_reply2=Odpovědět všem
+view_enew=Editovat jako novou
+view_forward=Předat dál
+view_delete=Smazat
+view_strip=Odstranit přílohy
+view_ecannot=Nemáte oprávnění číst tento email uživatele
+view_mark=Označit zprávu jako:
+view_mark0=Nepřečtená
+view_mark1=Přečtená
+view_mark2=Speciální
+view_return=originální email
+view_sub=Připojený email
+
+compose_title=Vytvoření emailu
+reply_title=Odpověď na email
+forward_title=Předání emailu dál
+enew_title=Editace emailu
+reply_headers=Hlavičky mailu
+reply_attach=Předané přílohy dál
+reply_mailforward=Předané zprávy dál
+reply_attach2=Klientské a server-side přílohy
+reply_send=Odeslat mail
+reply_ecannot=Nemáte jako tento uživatel oprávnění odeslat mail
+
+send_err=Chyba při odeslání mailu
+send_eto=Chybějící adresa adresáta
+send_efrom=Chybějící adresa odesílatele
+send_title=Odeslaný mail
+send_ok=Mail byl úspěšně odeslán na $1
+send_ecannot=Nemáte jako tento uživatel oprávnění odeslat mail
+send_esmtp=SMTP příkaz $1 neproběhl úspěšně : $2
+send_efile=Připojený soubor $1 neexistuje
+send_eattach=Přílohy nemohou mít více než $1 kB.
+send_eperms=Uživatel $1 nemůže číst $2
+send_eperms2=Nemáte oprávnění odeslat soubor $1
+send_epath=Sendmail spouštěč $1 neexistuje.
+send_ewrapper=Program s rozhraním  pro Postfix a Sendmail neexistuje
+
+delete_ecannot=Nemáte oprávnění smazat mail od tohoto uživatele
+delete_enone=Není označen žádný mail pro smazání
+delete_emnone=Není vybrán žádný mail pro označení
+
+search_title=Výsledky hledání
+search_ecannot=Nemáte oprávnění vyhledávat mail u tohoto uživatele
+search_ematch=Musíte zapsat text, který se bude porovnávat.
+search_none=Nebyly nalezeny žádné zprávy.
+search_results2=$1 mail zpráv vyhovuje $2 ..
+search_results3=$1 mail zpráv nevyhovuje $2 ..
+
+match_from=Od: vyhovuje
+match_subject=Předmět: vyhovuje
+match_to=Komu: vyhovuje
+match_cc=Kopie: vyhovuje
+match_date=Datum: vyhovuje
+match_body=Tělo vyhovuje
+match_size=Velikost je větší než
+match_!from=Od: nevyhovuje
+match_!subject=Předmět: dnevyhovuje
+match_!to=Komu: nevyhovuje
+match_!cc=Kopie: nevyhovuje
+match_!date=Datum: nevyhovuje
+match_!body=Tělo nevyhovuje
+match_!size=Velikost je menší než
+
+

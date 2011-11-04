@@ -1,0 +1,18 @@
+<header>Portok és hálózatkezelés; fordította: Szakács Gergely</header><p>
+
+<b>Proxy port</b>: Alapértelmezés szerint 3128. Ez az opció határozza meg, hogy a Squid melyik portot figyelje HTTP-kérések esetén. A kliensek böngészőit úgy kell konfigurálni, hogy egy ezen a porton lévő proxy-ra csatlakozzanak, ellenkező esetben transzparenssé kell tenni a proxy-t.<p>
+
+<b>ICP port</b>: Az a port, ahová/ahonnan a Squid küldi/fogadja a szomszédos gyorstáraktól/hoz érkező ICP-kéréseket. Az alapértelmezés itt 3130. Az opció kikapcsolásához használja a "0"-t. A parancssorban -u-val felülírható.<p>
+
+<b>Bejövő TCP-cím</b>: Alapértelmezés szerint nincs. Meghatározza azt a HTTP-csatolót, amely fogadja a klienseknél és egyéb gyorstáraknál kezdeményezett kapcsolatokat.<p>
+
+<b>Kimenő TCP-cím</b>: Alapértelmezés szerint nincs. Meghatározza a távoli kiszolgálókhoz és egyéb gyorstárakhoz való kapcsolódáshoz használandó HTTP-csatolót.<p>
+
+<b>Kimenő UDP-cím</b>: Alapértelmezés szerint nincs. Meghatározza az egyéb gyorstáraktól érkező ICP-csomagokat fogadó csatolót.<p>
+
+<b>Bejövő UDP-cím</b>: Alapértelmezés szerint nincs. Meghatározza az egyéb gyorstáraknak küldött ICP-csomagokat továbbító csatolót.<p>
+
+<b>TCP-fogadópuffer</b>: A TCP-puffer mérete. Alapértelmezés szerint megegyezik az operációs rendszer fogadópufferével.<p>
+
+<hr>
+

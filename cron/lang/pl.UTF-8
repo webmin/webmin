@@ -1,0 +1,72 @@
+index_title=Harmonogram zadań crona
+index_user=Użytkownik
+index_active=Aktywne?
+index_command=Polecenie
+index_none=Brak zadań dla crona
+index_create=Utwórz nowe zadanie dla crona
+index_allow=Zarządzaj dostępem użytkowników do zadań crona
+index_return=listy zadań crona
+
+edit_title=Zmień zadanie crona
+create_title=Utwórz zadanie crona
+edit_ecannot=Mie masz uprawnień do zmiany zadań crona tego użytkownika
+edit_details=Dane zadania
+edit_user=Uruchom zadanie crona jako
+edit_active=Aktywne?
+edit_commands=Polecenia
+edit_command=Polecenie
+edit_input=Wejście dla polecenia
+edit_when=Kiedy uruchomić
+edit_mins=Minuty
+edit_hours=Godziny
+edit_days=Dni
+edit_months=Miesiące
+edit_weekdays=Dni tygodnia
+edit_all=Wszystkie
+edit_selected=Wybrane ..
+edit_run=Uruchom teraz
+
+save_err=Nie udało się zachować zadania dla crona
+save_ecmd=Nie podałes polecenia do uruchomienia
+save_euser=Musisz określic użytkownika
+save_euser2=Użytkownik '$1' nie istnieje
+save_eallow=Użytkownik '$1' nie ma prawa dostępu do crona
+save_ecannot=Nie masz uprawnień do tworzenia ani zmieniania zadań crona dla '$1'
+save_enone=Nie wybrałeś żadnego $1 do uruchomienia
+
+allow_title=Zarządzanie dostępem do crona
+allow_desc=Ten formularz pozwala ci określić, którzy użytkownicy mogą tworzyć i uruchamiać zadania crona
+allow_ecannot=Nie masz uprawnień do określania praw dostepu do crona
+allow_all1=Zabroń wszystkim
+allow_all2=Zabroń wszystkim oprócz roota
+allow_all3=Pozwól wszystkim
+allow_allow=Pozwól tylko wymienionym
+allow_deny=Zabroń tylko wymienionym
+
+env_title=Środowisko crona
+env_ecannot=Nie masz uprawnień do zmiany środowiska crona tego użytkownika
+env_desc=Środowisko crona dla $1
+env_name=Nazwa zmiennej
+env_value=Wartość
+env_ename='$1' nie jest poprawną nazwą zmiennej
+
+exec_title=Uruchom zadanie crona
+exec_ecannot=Nie masz uprawnień do uruchamiania zadań crona tego użytkownika
+exec_cmd=Wynik polecenia $1 ..
+exec_none=Nie wygenerowano żadnego wyniku
+
+acl_users=Może zmieniać zadania crona dla
+acl_all=Wszystkich użytkowników
+acl_this=Aktualnego użytkownika Webmina
+acl_only=Tylko dla użytkowników
+acl_except=Wszystkich oprócz
+acl_control=Może określać prawa dostępu użytkowników do crona?
+
+log_modify=Zmieniono zadanie crona dla $1
+log_modify_l=Zmieniono zadanie crona "$2" dla $1
+log_create=Utworzono zadanie crona dla $1
+log_create_l=Utworzono zadanie crona "$2" dla $1
+log_delete=Usunięto zadanie crona dla $1
+log_exec=Wykonano zadanie crona jako $1
+log_exec_l=Wykonaj zadanie crona "$2" jako $1
+log_allow=Zmieniono prawa dostępu do crona

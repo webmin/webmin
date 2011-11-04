@@ -1,0 +1,7 @@
+start_cmd=Príkaz pre spustenie xinetd,0
+pid_file=Cesta k Xinetd PID súboru,3,Žiadny (hľadať radšej proces)
+add_dir=Pridať nové služby k,15,add_dir
+xinetd_conf=Konfiguračný súbor Xinetd,0
+lookup_servs=Vyhľadávať čísla portov na hlavnej stránke,1,1-Áno,0-Nie
+protocols_file=Súbor sieťových protokolov,0
+line2=Systémové nastavenia,11

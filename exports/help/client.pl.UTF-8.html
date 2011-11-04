@@ -1,0 +1,28 @@
+<header>Udostępniaj dla..</header>
+
+Komputery, które będą miały dostęp do wyeksportowanego katalogu. Jest pięć
+możliwych sposobów określenia, którym komputerom wolno montować ten
+katalog&nbsp;:
+<dl>
+<dt><b>Wszystkim</b>
+<dd>Dostęp uzyzska dowolny komputer, który jest w&nbsp;stanie połączyć się
+    z&nbsp;twoim systemem. Ta opcja powinna być używana ze szczególną
+    ostrożnością zwłaszcza, jeżeli twój system jest podłączony do Internetu.
+<dt><b>Komputerom</b>
+<dd>Może to być pojedynczy adres IP, pojedyncza nazwa komputera lub
+    wyrażenie regularne takie, jak <tt>*.foo.com</tt>. W&nbsp;ostatnim
+    przypadku dostęp uzyska dowolny komputer, którego IP rozwiązuje się
+    w&nbsp;odwrotnym DNS-ie do nazwy pasującej do podanego wyrażenia.
+<dt><b>Klienci WebNFS</b>
+<dd>Pozwala na dostęp do katalogu klientom korzystającym z&nbsp;Sun-owskiego
+    protokołu WebNFS.
+<dt><b>Grupa sieciowa</b>
+<dd>Pozwala uzyskać dostęp do tego zasobu wszystkim członkom podanej grupy
+    sieciowej NIS-u.
+<dt><b>Sieci</b> z&nbsp;<b>maską</b>
+<dd>Pozwala na dostęp z&nbsp;dowolnego komputera w&nbsp;określonej sieci.
+    Na przykład, jeśli tą siecią będzie <tt>10.1.2.0</tt> a&nbsp;jej maską
+    <tt>255.255.255.0</tt>, to dostęp uzyskają wszystkie komputery o&nbsp;IP
+    z&nbsp;zakresu od <tt>10.1.2.0</tt> do <tt>10.1.2.255</tt>.
+</dl>
+<hr>

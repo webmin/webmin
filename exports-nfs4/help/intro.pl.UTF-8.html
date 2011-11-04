@@ -1,0 +1,23 @@
+<header>Udostępnianie po NFS</header>
+
+<include nfs>
+
+<h3>NFS w Linuksie</h3>
+
+Ten moduł pozwala ci skonfigurować udostępniane przez twój system po NFS-ie
+katalogi (nazywane w&nbsp;Linuksie <i>exports</i>). Pierwsza strona ukazuje
+listę katalogów oraz klientów, którym są udostępniane. Jeśli naciśniesz na
+klienta, możesz zmienić parametry udostępnianego zasobu. Możesz też
+udostępnić nowy katalog. <p>
+
+Poniżej listy zasobów na pierwszej stronie znajduje się przycisk, który
+służy do zastosowania bieżącej konfiguracji. Dzieje się to poprzez
+zatrzymanie i&nbsp;uruchomienie procesu serwera NFS-u. <p>
+
+Jeśli pewien katalog oraz jeden z&nbsp;jego podkatalogów jest udostępniany,
+dla klientów mają zastosowanie opcje dla głębszego katalogu. Na przykład,
+jeżeli są udostępniane zarówno <tt>/usr</tt> jak i&nbsp;<tt>/usr/local</tt>,
+dla klienta usiłującego uzyskać dostęp do <tt>/usr/local/bin</tt> istotne są
+opcje dla zasobu <tt>/usr/local</tt>. <p>
+
+<hr>

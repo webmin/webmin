@@ -1,0 +1,9 @@
+lease=Dozwolona liczba sekund różnicy pomiędzy czasem systemowym i&nbsp;sprzętowym,0
+ntp_only=Użyć tylko NTP do synchronizacji czasu?,1,1-Tak,0-Nie
+timeserver=Domyślny serwer czasu,3,Brak
+line1=Konfigurowalne opcje,11
+line2=Konfiguracja systemu,11
+hwtime=System obsługuje czas sprzętowy,1,1-Tak,0-Nie
+seconds=Format dla ustawiania czasu systemowego,1,1-MMDDGGMMRRRR.SS,0-MMDDGGMMRR,2-RRRRMMDDGGMM.SS
+hwclock_flags=Flagi linii poleceń dla hwclock,10,-Brak,sysconfig-Z /etc/sysconfig/clock
+zone_style=Metoda konfiguracji strefy czasowej,4,linux-Linux,freebsd-FreeBSD,solaris-Solaris,-&lt;Nie obsługiwany na tym systemie operacyjnym&gt;

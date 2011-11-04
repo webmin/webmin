@@ -1,0 +1,6 @@
+logrotate=Cesta k programu logrotate,0
+line1=Voliteľné možnosti,11
+line2=Systémové nastavenia,11
+sort_mode=Triediť súbory záznamov podľa,1,1-Mena súboru záznamov,0-Poradia v konfiguračnom súbore
+logrotate_conf=Cesta ku konfiguračnému súboru programu logrotate,0
+add_file=Pridať novú sekciu pre logrotate,3,Primárny konfiguračný súbor

@@ -1,0 +1,14 @@
+<header>Nagłówek powitalny SMTP</header>
+
+<center><tt>smtpd_banner</tt></center>
+<hr>
+
+Ten parametr definiuje tekst, który następuje po kodzie stanu 220
+w&nbsp;nagłówku powitalnym SMTP. Niektórzy lubią widzieć tu ogłaszaną wersję
+systemu poczty. Domyślnie, Postfix nie podaje wersji. <p>
+
+Na początku tekstu MUSISZ podać <tt>$myhostname</tt>. Gdy klient SMTP
+zobaczy swoją własną nazwę hosta na początku nagłówka powitalnego SMTP,
+zgłosi on zapętlenie poczty. Jest to lepsze niż przetopienie maszyny.
+
+<hr>

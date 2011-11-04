@@ -1,0 +1,89 @@
+index_title=Heartbeat Monitor
+index_return=Heartbeat monitor
+index_edir=Konfigurační soubor Heartbeatu $1 neexistuje.Možná není Heartbeat nainstalován, nebo vaše <a href='$2'>konfigurace modulu</a> není správná.
+index_start=Spostit Heartbeat Monitor
+index_startmsg=Klepnutím na toto tlačírko se spustí proces Heartbeat monitorování. Tento úkon umožní automaticky sledovat chybovost vašeho systému s využitím aktuální konfigurace.
+index_apply=Použít změny
+index_applymsg=Klepnutím na toto tlačírko se uvede v platnost aktuální konfigurace restartováním běžícího procesu Heartbeat monitoringu.
+index_eha_cf=Konfigurační soubor Heartbeat $1 nebyl ve vašem systému nalezen. Možná doposud nebyl nakopírován na správné místo, nebo <a href='$2'>konfigurace modulu</a> není správná.
+index_eharesources=Soubor zdrojů file $1 nebyl ve vašem systému nalezen. Možná doposud nebyl nakopírován na správné místo, nebo <a href='$2'>konfigurace modulu</a> není správná.
+index_eauthkeys=Soubor s autentikačním klíčem $1 nebyl ve vašem systému nalezen. Možná doposud nebyl nakopírován na správné místo, nebo <a href='$2'>konfigurace modulu</a> není správná.
+
+conf_title=Nastavení konfigurace
+conf_header=Nastavení konfigurace Heartbeatu
+conf_serial=Seriový port Heartbeatu
+conf_baud=Přenosová rychlos (baude rate) pro seriový port
+conf_udp=Ethernet zařízení Heartbeatu
+conf_none=Nic
+conf_udpport=UDP port Heartbeatu
+conf_mcast=Vícenásobná zařízení Heartbeatu
+conf_mcastv=Zařízení $1, skupina $2, port $3, TTL $4, loopback $5
+conf_enabled=Povoleno
+conf_disabled=Nepovoleno
+conf_keepalive=Čas mezi heartbeats
+conf_secs=vteřiny
+conf_deadtime=Čas před potvrzením oohleduplném umrtveni
+conf_watchdog=Soubor Watchdog dzařízení
+conf_node=Hosté v clusteru
+conf_logfile=Log file Heartbeatu
+conf_logfacility=Možnost syslog logu
+conf_initdead=Počáteční čas umrtvení
+conf_ok=Uložit nastavení
+conf_err=Chyba při ukládání nastavení
+conf_ebaud=Chybějící nebo nesprávná přenosová rychlost
+conf_eudp=Chybějící nebo nesprávné heartbeat zařízení
+conf_eudpport=Chybějící nebo nesprávný heartbeat port
+conf_ekeepalive=Chybějící nebo nesprávný čas mezi heartbeats
+conf_edeadtime=Chybějící nebo nesprávný čas umrtvení
+conf_ewatchdog=Chybějící nebo neexistující soubor watchdog zařízení
+conf_enonode=Nebyly vloženy žádné clustery hostů
+conf_ethisnode=Tento host $1 není uveden v clusteru hostů
+conf_elogfile=Chybějící nebo nesprávné jméno log souboru
+conf_einitdead=Chybějící nebo nesprávný počáteční čas umrtvení
+conf_einitdead2=Počáteční čas umrtvení musí být nejméně dvojnásobný než čas před potvrzením oohleduplném umrtveni
+conf_emcast_dev=Chybějící nebo nesprávné vícenásobné zařízení
+conf_emcast_ip=Chybějící nebo nesprávná adresa vícenásobné skupiny
+conf_emcast_port=Chybějící nebo nesprávné číslo vícenásobného portu
+conf_emcast_ttl=Chybějící nebo nesprávný vícenásobný time-to-live
+
+res_title=Cluster zdrojů
+res_node=Primární uzel
+res_ips=IP adresa
+res_servs=Uzel služby
+res_none=Nic
+res_nores=Ve vašem systému nebyly definován žádný cluster zdrojů.
+res_add=Přidat cluster zdroj
+res_return=seznam zdrojů
+
+node_create=Přidat cluster zdroj
+node_edit=Editovat cluster zdroj
+node_header=Detaily cluster zdroj
+node_node=Primární uzel pro zdroj
+node_ips=IP adresy pro zdroj
+node_ip=IP adresa
+node_cidr=Síťová maska CIDR
+node_broad=Broadcast adresa
+node_servs=Služby pro zdroj
+node_serv=Služba
+node_args=Přídavné argumenty
+node_err=Chyba při ukládání cluster zdroje
+node_enone=Chybějící nebo nesprávný primární uzel
+node_eip='$1' není platná IP adresa
+node_ecidr='$1' není platná CIDR
+node_ebroad='$1' není platná broadcast adresa
+
+auth_title=Autentikační klíče
+auth_header=Autentikace cluster uzlu
+auth_mode=Autentikační mód
+auth_crc=CRC (žádné zabezpečení)
+auth_sha1=SHA1 s heslem
+auth_md5=MD5 s heslem
+auth_err=Chyba při ukládání autentikačních klíčů
+auth_emd5=Chybějící nebo nesprávné MD5 heslo
+auth_esha1=Chybějící nebo nesprávné SHA1 heslo
+
+start_err=Chyba při spuštění Heartbeatu
+
+apply_err=Chyba při aplikování změn
+apply_epid=Procesjiž nebeží
+

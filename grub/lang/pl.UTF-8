@@ -1,0 +1,55 @@
+index_title=Inicjator systemu GRUB
+index_add=Dodaj nową opcję startową
+index_global=Zmień opcje ogólne
+index_globalmsg=Zmień ogólne opcje startowe, które dotyczą wszystkich wyborów z&nbsp;menu startowego oraz określ urządzenie, na którym GRUB ma być instalowany.
+index_install=Zainstaluj GRUBa
+index_installmsg=Zainstaluj inicjatora systemu GRUB na $1, aby wyświetlić powyższe opcje podczas startu systemu. Spowoduje to nadpisanie istniejącego inicjatora systemu, takiego jak LILO i&nbsp;może się okazać, że system nie wystartuje!
+index_none=Nie zdefiniowano żadnych opcji startowych. Upewnij się, że dodałeś co najmniej jedną przed zainstalowaniem gruba.
+index_efile=Nie znaleziono w&nbsp;systemie pliku menu GRUBa $1. Prawdopodobnie nie zainstalowano GRUBa lub <a href='$2'>konfiguracja modułu</a> jest nieprawidłowa.
+index_epath=Nie znaleziono w&nbsp;systemie progrzmu GRUBa $1. Prawdopodobnie nie zainstalowano GRUBa lub <a href='$2'>konfiguracja modułu</a> jest nieprawidłowa.
+index_return=listy opcji
+
+title_add=Dodaj opcję startową
+title_edit=Zmień opcję startową
+title_header=Dane opcji menu startowego
+title_title=Tytuł opcji
+title_root=Partycja obrazu systemu
+title_other=Inna
+title_sel=Wybrana
+title_boot=Uruchamiany system operacyjny
+title_kernel=Kernel Linuksa
+title_kfile=Ścieżka do pliku kernela
+title_args=Opcje kernela
+title_chain=Inny OS
+title_chain_def=Z&nbsp;pierwszego sektora partycji
+title_chain_file=Z&nbsp;pliku &quot;chainloader&quot;-a
+title_makeactive=Uczynić partycję aktywną?
+title_none=Brak (nie uruchamialna pozycja menu)
+title_err=Nie udało się zachować opcji startowej
+title_etitle=Nie podano tytułu opcji
+title_eroot=Nie podano partycji
+title_ekernel=Nie podana lub niepoprawna ścieżka do kernela
+title_echain=Nie podany lub niepoprawny plik &quot;chainloader&quot;-a
+title_edev=Urządzenie partycji $1 nie jest obsługiwane
+
+global_title=Opcje ogólne
+global_header=Opcje ogólne menu startowego
+global_default=Domyślna opcja startowa
+global_fallback=Awaryjne opcja startowa  
+global_first=Pierwsza na liście
+global_timeout=Czas oczekiwanie przed ładowaniem domyślnego
+global_secs=sekund
+global_install=Zainstalować GRUBa na dysku/partycji
+global_sel=Zaznaczonej
+global_other=Innej
+global_err=Nie udało się zachować opcji ogólnych
+global_etimeout=Nie podany lub nieporawny czas oczekiwania
+global_edev=Nie obsługiwany(-a) dysk/partycja instalacyjny(-a) $1
+global_eother=Nie podany(-a) lub niepoprawny(-a) dysk/partycja
+
+install_title=Zainstaluj GRUBa
+install_err=Nie udało się zainstalować GRUBa
+install_efind=Nie znaleziono pliku menu
+install_desc=Instalacja GRUBa na $1 za pomocą poleceń $2 i&nbsp;$3 ..
+install_ok=.. zakończona.
+install_failed=.. instalacja się nie powiodła!

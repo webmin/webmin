@@ -1,0 +1,42 @@
+<header>Naplózás; fordította: Szakács Gergely</header><p>
+
+<b>Hozzáférési naplófájl</b>: Alapértelmezés szerint rendszerfüggő, általában a <tt>/var</tt> könyvtárban található. A kliensek kéréseit naplózza, és minden egyes HTTP-, illetve ICP-kérés után tesz a fájlba egy bejegyzést.<p>
+
+<b>Hibakeresési naplófájl</b>: Alapértelmezés szerint rendszerfüggő. A gyorstárban történteket naplózza. Rendszerint ez a fájl tartalmazza a gyorstár viselkedésével kapcsolatos általános információkat. A <b>Hibaelhárítási opcióknál</b> tetszőlegesen megnövelheti a naplófájl méretét.<p>
+
+<b>Tárhely naplófájl</b>: Alapértelmezés szerint rendszerfüggő. A tárhelykezelő tevékenységét naplózza. Megmutatja, hogy mely objektumok lettek eltávolítva a gyorstárból, illetve mely objektumok lettek eltárolva és mennyi ideig. A naplózás kikapcsolásához írja át az opciót "nem"-re. Ezen adatok elemzésére nincsenek speciális eszközök, így nyugodtan kikapcsolhatja ezt a funkciót.<p>
+
+<b>Gyorstár adatleíró-fájl</b>: Alapértelmezés szerint swap.log minden egyes gyorstár-könyvtár alatt. Ez a naplófájl tartalmazza a lemezre mentett objektumok leíró-információit. A gyorstár ennek alapján épül fel minden rendszerindítás alkalmával. Normális esetben egy ilyen fájl megtalálható minden egyes gyorstár-könyvtár alatt, ám lehetőség van ettől eltérő elérési útvonal megadására is. Fontos azonban, hogy egy teljes fájlnevet meg kell adnia, nem csak a naplófájlt tartalmazó könyvtár nevét. Mivel ez a teljes objektumlista indexe, NINCS lehetőség a periodikus rotációra!<p>
+
+Ha a fájlnévben lehet %s-t használni, úgy azt felcseréli a gyorstár-könyvtár nevének valamilyen reprezentációja, ahol minden / helyett '.' fog állni. Erre azért van szükség, hogy egy esetleges új lapozófájl-napló hozzáadásakor tetszőlegesen hozzáadhassunk/eltávolíthassunk egyes könyvtársorokat.<p>
+
+Ha egynél több gyorstár-könyvtár van a rendszeren, és a fájlnevekben nem szerepel %s, úgy a lapozófájl-naplók a következőképp lesznek elnevezve:<p>
+<ul>
+<li>cache_swap_log.00
+<li>cache_swap_log.01
+<li>cache_swap_log.02
+</ul>
+<p>
+Az (automatikusan hozzáadott) számozott kiterjesztések megegyeznek a konfigurációban megadott könyvtársorok sorrendjével. Ha ebben a fájlban megváltoztatja a könyvtársorok sorrendjét, úgy a naplófájlok NEM a megfelelő könyvtárbejegyzéshez fognak tartozni (hacsak manuálisan nem nevezi át mindegyiket). Azt javasoljuk, hogy ezt az opciót NE használja. Jobb, ha minden egyes naplófájl külön könyvtárban van.<p>
+
+<b>HTTPD naplóformátum használata</b>: Alapértelmezés szerint kikapcsolva. A gyorstár képes emulálni a több 'httpd' program által használt naplóformátumot. Az emuláció ki/bekapcsolásához állítsa át az opciót a megfelelő értékre (ki/be). Alapértelmezés szerint a rendszer a natív naplóformátumot használja, mivel az olyan hasznos információkat tartalmaz, amelyek nagy segítségére lehetnek a Squid-specifikus naplóelemzőknek.<p>
+
+<b>MIME fejlécek naplózása</b>: Alapértelmezés szerint kikapcsolva. A gyorstár képes úgy a kérés, mint a válasz MIME-fejlécek rögzítésére az egyes HTTP-műveletek során. A fejlécek biztonságosan kódolva vannak, és a hozzáférési napló végén, két zárójeles mezőben jelennek meg (a natív és a httpd-emulációs naplóformátumban egyaránt). E funkció bekapcsolásához állítsa az opciót a megfelelő értékre (be).<p>
+
+<b>Felhasználói ágens naplófájl</b>: Alapértelmezés szerint nincs. Ha engedélyezzük az "--enable-useragent-log" konfigurációs beállítással, úgy a Squid a HTTP-kérésekből beolvasott felhasználói ágens adatokat az itt megadott fájlba fogja rögzíteni.<p>
+
+<b>PID-fájl</b>: Alapértelmezés szerint rendszerfüggő. Ebbe a fájlba kerülnek a folyamatazonosítók. Kikapcsolásához álltsa "nem"-re az opciót.<p>
+
+<b>RFC931 azonosítókeresés futtatása az ACL-eken</b>: Alapértelmezés szerint kikapcsolva. Kereséseket futtat az ACL-ekben bármihez hozzáférő kliensek felhasználóneveinek azonosítására.<p>
+
+<b>RFC931 azonosító holtidő</b>: Alapértelmezés szerint 30 másodperc. Az IDENT kérések maximális várakozási ideje. Ha ez az érték túl magas, és az azonosítókeresések engedélyezve vannak, úgy a rendszer több ilyen egyidejű kérés miatt sérülékennyé válhat denial-of-service támadásokkal szemben.<p>
+
+<b>Teljes gazdanév naplózása</b>: Alapértelmezés szerint nem. A kliensek teljes gazdanevét naplózza.<p>
+
+<b>Netmaszk naplózása</b>: Alapértelmezés szerint 255.255.255.255.  A naplófájlokban és a gyorstárkezelőben szereplő klienscímek. Ha óvni akarja a kliensek magánjogait, változtassa meg ezt az értéket. Egy 255.255.255.0 netmaszk minden abban a tartományban szereplő IP-t naplózni fog.<p>
+
+<b>Hibakeresési opciók</b>: Alapértelmezés szerint "MIND,1". A naplózási beállítások részleg,szint formában vannak definiálva, ahol minden egyes forrásfájlhoz egyedi részleg van hozzárendelve. A teljes hibakeresés (9-es szint) igen nagy naplófájlt eredményezhet, így e téren körültekintés javasolt. A "MIND" varázsszó az össze részlegre érvényesíti a hibakeresési szinteket. Általában nem érdemes változtatni az alapértelmezett opción.<p>
+
+<b>MIME fejléctábla</b>: A Squid fejléctáblájának elérési útvonala. Alapesetben ezen sem szükséges változtatni, ám az alapértelmezett fájlban további információt és példákat találhat ezzel kapcsolatban.
+
+<hr>

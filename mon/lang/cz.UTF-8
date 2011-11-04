@@ -1,0 +1,201 @@
+TITLES:
+index_title=MON monitor služeb
+index_return=Úvodní stránka MONu
+index_edir=MON adresář $1 neexistuje. Možná není MON nainstalován, nebo vaše <a href='$2'>konfigurace modulu</a> není správná.
+mon_global_title=Globální proménné konfigurace
+mon_conf_title=Základní konfigurace
+mon_status_title=Operativní stav
+hostgroups_title=Skupiny hostů - MON konfigurace
+services_title=Sledované skupiny - definice služby
+
+HEADERS:
+head_hostgroups=Skupiny hostů a služby
+head_groups=Název skupiny hostů
+head_members=Hostgroup Members
+head_services=Služby skupiny hostů ke sledování
+head_service=Služba ke sledování
+head_param=Parametry služby
+head_watch=Sledovat skupinu?
+head_monauth=Provést autentikaci pro MONCMD
+head_usr=Uživatelské jméno
+head_pass=Heslo
+head_mand=( Parametry v "RED COLOR" jsou Mandatory )
+
+ERRORS:
+err_nomon=balíček 'mon' není ve vašem systému nainstalován
+err_nomonconf=Soubor MON konfigurace $1 není ve vašem systému nalezen. Možná není MON nainstalován, nebo vaše <a href='$2'>konfigurace modulu</a> není správná.
+err_nowatch=Nejsou vybrány žádné skupiny ke sledování. Vyberte alespoň jednu skupiny ke sledování.
+err_noserv=Nebyly vybrány žádné služby pro skupinu ke sledování
+err_nomemb=Nebyly vybrání žádní hosté/členové pro skupinu ke sledování
+err_monrun=MON není na vašem počítači spuštěn. Prosím spusťte MON.
+stop_err=Chyba při ukončení MONu
+stop_epid=Již není spuštěn
+start_err=Chyba při spuštění MON
+restart_err=Chyba při restartování MON
+restart_epid=Chyba při získání PID
+
+LABLES:
+other=Jiné(oddělené mezerou)
+next=Další
+mon_stat=MON Stav
+mon_off=MON služby nebyly spuštěny
+mon_start=Spustit MON služby
+mon_stop=Ukončit MON služby
+mon_restart=Restartovat MON služby
+mon_startdesc=Klepnutím na toto tlačítko se spustí MON server. Dokud nebude spuštěn, nebude vykonána žádná nakonfigurovaný monitoring.
+mon_stopdesc==Klepnutím na toto tlačítko se ukončí MON server. Jakmile bude ukončen, nakonfigurovaný monitoring se přeruší.
+mon_restartdesc=Klepnutím na toto tlačítko se aplikuje aktuální MON konfigurace pomocí restartování serverového procesu.
+line=(jedna na kařdém řádku)
+save_apply=Uložit a použít
+watch=Skupina ke sledování
+members=Členové
+def_perargs=víkend {Sob-Ned}
+
+SERVICES DEFINITIONS:
+def_desc=description
+def_inter=interval
+def_mon=monitor
+def_dep=dpend
+def_per=period
+def_alert=alert
+def_alertevr=alertevery
+def_alertaft=alertafter
+def_alertstr=startupalert
+def_allow=allow_empty_group
+def_traptime=traptimeout
+def_trapdur=trapduration
+def_rand=randskew
+def_exclhost=exclude_hosts
+def_exclper=exclude_period
+
+groups_title=Skupiny hostů
+groups_group=Název skupiny
+groups_members=členové hostů
+
+watches_title=Seznamy sledování
+watches_group=Sledovaná skupina
+watches_services=Sledované služby
+watches_sadd=Přidat službu..
+watches_add=Přidat seznam sledování pro skupinu :
+watches_return=Seznamy sledování
+
+global_title=Globální nastavení
+global_header=Globální nastavení MON ckonfigurace
+global_maxprocs=Maximum MON procesů
+global_histlength=Délka historie událostí
+global_alertdir=Adresář varovných programů
+global_mondir=Adresář monitorujících programů
+global_authtype=Typ autentikace
+global_authtype_=Výchozí
+global_authtype_getpwnam=Systémová volání
+global_authtype_userfile=Soubor MON uživatelů
+global_authtype_shadow=Shadow soubor
+global_userfile=Soubor MON uživatele
+global_emaxprocs=Chybějící nebo nesprávný počet MON procesů
+global_ehistlength=Chybějící nebo nesprávná dílka historie událostí
+global_ealertdir=Chybějící nebo nesprávný adresář varovných programů
+global_emondir=Chybějící nebo nesprávný adresář monitorujících programů
+global_euserfile=Chybějící soubor MON uživatelů
+
+watch_title=Editace seznamu sledování
+watch_header=Detaily skupiny hostů ke sledování
+watch_group=Skupina hostů ke sledování
+watch_services=Sledované služby
+watch_service=Název služby
+watch_monitor=Monitorování použít
+watch_interval=Kontrolovat každých
+watch_periods=Perioda monitorování
+
+service_title=Přidání služby
+service_title2=Editace služby
+service_header=Detaily sledované služby
+service_name=Název služby
+service_interval=Kontrolovat každých
+service_desc=Popis
+service_units_s=vteřiny
+service_units_m=minuty
+service_units_h=hodiny
+service_units_d=dny
+service_units_w=týdny
+service_monitor=Použít monitorování
+service_mon1=Standardní monitorování
+service_mon0=Jiné monitoovánír ..
+service_args=Parametry monitorování
+service_period=Perioda monitorování $1
+service_days=Dny ke kontrole
+service_hours=Hodiny ke kontrole
+service_all=Vše
+service_pstr=Specifikace periody
+service_new=Nová perioda monitoringu
+service_alerts=Vyrování pro periodu
+service_alert=Varování
+service_atype=Spustit když
+service_atype_alert=Služba je shazována
+service_atype_upalert=Služba je spouštěna
+service_atype_startupalert=MON se spouští
+service_aargs=Přídavné parametry
+service_every=Poslat varování
+service_every_def=Každý časový monitoring poběží
+service_every_time=Vždy
+service_num=Maximum varování k odeslání
+service_unlimited=Neomezení
+service_after=Chyby před varováním
+service_immediate=Okamžitě
+service_after_num=Po $1 chybách
+service_aftertime=S časovým odstupem
+service_newperiod=Přidat novou periodu
+service_delperiod=Smazat tuto periodu
+service_err=Chyba při ukládání služby
+service_ename=Chybějící nebo nesprávný název služby
+service_einterval=Chybějící nebo nesprávný interval kontroly
+service_eother=Chybějící nebo nesprávný monitoring
+service_ehour=Chybějící nebo nesprávná hodina pro periodu $1 (musí být např. 9am nebo 5pm)
+service_eperiod=Nejsou uvedeny žádné dny nebo hodiny pro periodu $1
+service_eevery=Chybějící nebo nesprávný varovný interval služby
+service_eafter=Chybějící nebo nesprávný počet chyb před varováním
+service_enum=Chybějící nebo nesprávné maximum varování pro odeslání
+service_epstr=Chybějící specifikace periody
+service_known0=<tt>Time::Period</tt> řetězec
+service_known1=Spacifikované dny a hodiny
+service_known2=Definovaná perioda
+
+status_title=MON Stav
+status_ecgi=CGI program pro určení stavu MONu $1 neexistuje. Možná není nainstalován, nebo vaše <a href='$2'>konfigurace modulu</a> není správná.
+status_eperl=CGI program pro určení stavu MONu potřebuje $1 perl modul. <a href='$2'>Klepnutím zde</a> jej nainstalujete přímo z CPAN.
+
+users_title=MON uživatelé
+users_etype=Seznam MON uživatelů nemůže být editován, protože MON není správně nakonfigurován tak, aby mohl být použit pro autentikaci na stránce <a href='$1'>globální nastavení</a>.
+users_header=Povolení MON uživatelé v $1
+users_nousers=Nejsou definování žádní MON uživatelé v $1.
+users_add=Vytvořit nového uživatele.
+users_return=Seznam MON uživatelů
+
+user_create=Vytvořit MON uživatele
+user_edit=Editovat MON uživatele
+user_header=Detaily MON uživatele
+user_user=Uživatelské jméno
+user_pass=Heslo
+user_leave=Opustit beze změny
+user_err=Chyba při ukládání uživatele
+user_euser=Chybějící nebo nesprávné uživatelské jméno
+user_esame=Uživatel shodného jména již existuje
+
+auth_title=Klientské příkazy
+auth_desc=Tato stránka umožňuje kontrolovat, které MON příkazy mohou být spuštěny, a kterými uživateli mohou být použity formou klientských programů.
+auth_cmd=MON příkaz
+auth_users=Povolení uživatelé
+auth_none=Nikdo
+auth_all=Kdokoliv
+auth_sel=Pouze uživatelé
+auth_err=Chyba při ukládání klientských příkazů
+auth_eusers=Nejsou vložení žádní uživatelé pro příkaz $1
+
+periods_title=Definované periody
+periods_period=Název periody
+periods_times=Dny a časy
+periods_alldays=Všechny dny
+periods_allhours=Všechny hodiny
+periods_err=Chyba při ukládání definovaných period
+periods_ename='$1' není platný název periody
+periods_ehour=Chybějící nebo nesprávná hodina pro periodu $1 (musí být např. 9am nebo 5pm)
+

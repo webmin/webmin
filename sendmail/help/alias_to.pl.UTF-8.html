@@ -1,0 +1,23 @@
+<header>Treść aliasu</header>
+
+Każdy z&nbsp;aliasów może przekierowywać pocztę do kilku miejsc, a&nbsp;każde 
+z&nbsp;nich może być jednym z:
+<dl>
+<dt><b>Adresem pocztowym</b>
+<dd>Albo pełny adres, jak np. <tt>foo@bar.com</tt>, albo nazwa innego
+    użytkownika w&nbsp;twoim systemie, np. <tt>jcameron</tt>.
+<dt><b>Listą adresów w&nbsp;pliku</b>
+<dd>W&nbsp;tym przypadku musisz określić pełną ścieżkę do pliku zawierającego
+    listę adresów pocztowych, po jednym w&nbsp;każdej linii. Każdy z&nbsp;nich
+    może być albo pełnym adresem, albo nazwą innego użytkownika w&nbsp;twoim
+    systemie.
+<dt><b>Zapisem do pliku</b>
+<dd>W&nbsp;tym przypadku wiadomość zostanie zapisana w zadanym pliku. Jeśli
+    chcesz wyrzucić całą pocztę skierowaną na pewne adresy, podaj
+    <tt>/dev/null</tt> jako nazwę pliku.
+<dt><b>Przekierowaniem do programu</b>
+<dd>Za każdym razem, kiedy przybędzie wiadomość zaadresowana na ten alias
+    uruchomiony zostanie wymieniony program a&nbsp;cała wiadomość (nagłówki
+    i&nbsp;treść) zostanie przekazana na jego standardowe wejście.
+</dl>
+<hr>

@@ -1,0 +1,2 @@
+default_mode=Domyślny sposób wyświetlania procesów,4,last-Ostatnio wybrany,tree-Drzewo procesów,user-Porządek wg użytkownika,size-Porządek wg rozmiaru,cpu-Porządek wg CPU,search-Formularz szukania,run-Formularz uruchomienia
+ps_style=Styl wyjścia polecenia PS,1,sysv-SYSV,linux-Linux,hpux-HPUX,freebsd-FreeBSD,macos-MacOS

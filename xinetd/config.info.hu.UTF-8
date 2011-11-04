@@ -1,0 +1,4 @@
+start_cmd=A xinetd indítása parancs,0
+pid_file=A Xinetd PID file útvonala,0
+xinetd_conf=Xinetd konfigurációs file,0
+protocols_file=Hálózati protokol file,0

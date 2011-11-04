@@ -1,0 +1,12 @@
+save_file=Umiestnenie súboru s IP tabuľkami,3,Použiť predvolené umiestnenie systému alebo Webminu
+direct=Meniť pravidlá firewallu priamo&#44; namiesto ukladania do súboru?,1,1-Áno,0-Nie
+view_comment=Zobraziť komentáre v zozname pravidiel?,1,1-Áno,0-Nie
+line1=Konfigurácia systému,11
+before_cmd=Príkaz&#44; ktorý sa má spustiť pred zmenou pravidiel,3,Žiadny
+cluster_mode=Aktualizovať cluster serverov,1,0-Pri každej zmene,1-Pri aplikovaní konfigurácie
+before_apply_cmd=Príkaz&#44; ktorý sa má spustiť pred aplikovaním konfigurácie,3,Žiadny
+after_apply_cmd=Príkaz&#44; ktorý sa má spustiť po zmene konfigurácie,3,Žiadny
+after_cmd=Príkaz&#44; ktorý sa má spustiť po zmene pravidiel,3,Žiadny
+comment_mod=Komentáre uložiť pomocou,1,0-# komentáre v uložených súboroch,1-&#45;&#45;voľby komentára
+view_condition=Zobraziť podmienky v zozname pravidiel?,1,1-Áno,0-Nie
+line0=Nastaviteľné možnosti,11

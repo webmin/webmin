@@ -1,0 +1,65 @@
+index_title=GRUB Boot Loader
+index_add=Přidat nové nastavení v bootování
+index_global=Editace globálních nastavení
+index_globalmsg=Editujete takových globálních nastavení bootu, která se použijí ve všech možnostech boot menu, a zároveň voléte zařízení, na kterém je nainstalován GRUB.
+index_install=Instalovat GRUB
+index_installmsg=Instalujete GRUB boot loader na $1, který zobrazí výše uvedené možnosti při bootování. Tím dojde k přehrání existujícího boot loaderu jako například LILO, a může se dokoncxe stát, že váš systém e stane nebootovatelný!
+index_none=Nejsou definována žádná boot nastavení. Ujistěte se, že jste přidali alespoň jednu volbu dříve, než budete instalovat Grub.
+index_efile=Soubor s GRUB menu $1 nebyl ve vašem systému nalezen. Možná není GRUB nainstalován, nebo <a href='$2'>konfigurace modulu</a> není správná.
+index_epath=Spouštěč GRUBu $1 nebyl ve vašem systému nalezen. Možná není GRUB nainstalován, nebo <a href='$2'>konfigurace modulu</a> není správná.
+index_return=seznam nastavení
+
+title_add=Přidání boot nastavení
+title_edit=Editace boot nastavení
+title_header=Detaily nastavení boot menu
+title_title=Titulek volby
+title_root=Boot image oddíl
+title_other=Jiný
+title_sel=Vybrán
+title_boot=Operační systém k bootování
+title_kernel=Jádro Linuxu
+title_kfile=Cesta k jádru
+title_args=Nastavení jádra
+title_initrd=Počáteční ramdisk soubor
+title_chain=Jiný OS
+title_chain_def=Z prvního sektoru oddílu
+title_chain_file=Ze souboru chainloader
+title_makeactive=Vytvořit root oddíl jako aktivní?
+title_none=Nic (zápis non-booting menu)
+title_err=Chyba při ukládáníboot nastavení
+title_etitle=Chybějící titulek nastavení
+title_eroot=Chybějící root oddíl
+title_ekernel=Chybějící nebo nesprávná cesta k jádru
+title_echain=Chybějící nebo nesprávný soubor chainloader
+title_edev=Nepodporované zařízení s root oddílem $1
+title_einitrd=Chybějící název počátečního ramdisk souboru
+title_lock=Uzamkonut heslem?
+
+global_title=Globální nastavení
+global_header=Globální nastavení boot menu
+global_default=Výchozí boot nastavení
+global_fallback=Fallback boot nastavení
+global_first=První v seznamu
+global_timeout=Časová prodleva před nahráním výchozího
+global_secs=vteřiny
+global_install=Instalovat GRUB na disk/oddíl
+global_sel=Vybraný
+global_other=Jiný
+global_password=Boot heslo
+global_none=Nic
+global_password_file=Použít soubor s menu, pokud bylo vloženo heslo:
+global_pass
+global_err=Chyba při ukládání globálních nastavení
+global_etimeout=Chybějící nebo nesprávná časová prodleva
+global_edev=Nepodporovaný disk/oddíl pro instalaci $1
+global_eother=Chybějící nebo nesprávný disk/oddíl
+global_epassword=Chybějící nebo nesprávné boot heslo
+global_epasswordfile=Chybějící název souboru alternativního menu
+
+install_title=Instalace GRUB
+install_err=Chyba při instalaci GRUB
+install_efind=Nemůže být nalezen soubor s menu
+install_desc=Instaluje se GRUB na $1 pomocí příkazů $2 a $3 ..
+install_ok=.. instalace byla úspěšná.
+install_failed=.. instalce byla neúspěšná!
+

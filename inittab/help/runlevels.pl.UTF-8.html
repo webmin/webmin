@@ -1,0 +1,12 @@
+<header>Poziomy</header>
+
+To pole może zawierać kilka znaków określających różne poziomy uruchomienia
+systemu. Na przykład, <tt>123</tt> określa, że proces powinien być
+uruchomiony na poziomach 1, 2 i&nbsp;3. <p>
+
+Gdy poziom uruchomienia systemu ulega zmianie, wszystkie działające,
+a&nbsp;nie wyszczególnione dla nowego poziomu uruchomienia procesy, są
+zabijane. Najpierw poprzez wysłanie do nich sygnału <tt>SIGTERM</tt>,
+a&nbsp;następnie <tt>SIGKILL</tt>. <p>
+
+<hr>

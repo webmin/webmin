@@ -1,0 +1,73 @@
+# webmin-0.81/syslog/lang/hu
+# Translated by <kissg@sztaki.hu>
+
+index_title=Rendszernapló
+index_m4msg=A $1 file szemmel láthatóan <tt>m4</tt> direktívákat tartalmaz. Ahhoz, hogy modósítani lehessen a file-t, előbb át kellene engedni az <tt>m4</tt>-en, korrektül eltávolítva ezáltal a szóban forgó direktívákat.
+index_m4=m4 direktívák törlése a konfigurációs file-ból
+index_active=Aktív?
+index_tag=Küldő program
+index_to=A naplóadatok rendeltetési helye
+index_rule=A naplózandó események
+index_file=A $1 file
+index_pipe=A $1 csővezeték
+index_pipe2=A $1 program bemenete
+index_host=A $1 számítógép
+index_all=Minden felhasználó
+index_users=$1 felhasználó(k)
+index_add=Új napló létrehozása
+index_return=a rendszernaplókhoz
+index_restart=A változások életbe léptetése
+index_restartmsg=Ha megnyomod ezt a gombot, életbe lép a fenti konfiguráció, az éppen futó <tt>syslogd</tt> processz újraindítása révén.
+index_start=A <tt>syslogd</tt> indítása
+index_startmsg=Nyomd meg ezt a gombot, hogy elinduljon a $1 syslog szerver! Amíg a démon nem fut, addig nem történik semmilyen naplózás.
+all=Bármelyik
+
+restart_ekill=Nem sikerült jelzést küldeni a $1 processznek: $2
+
+edit_title=Rendszernapló módosítása
+create_title=Új rendszernapló
+edit_header1=A naplóadatok rendeltetési helye
+edit_logto=Naplózás helye
+edit_file=Fil&#101
+edit_sync=Diszkre mentés minden új üzenet után
+edit_pipe=Nevesített csővezeték
+edit_pipe2=Program bemenete
+edit_host=Másik számítógép
+edit_users=A megadott felhasználók terminálja
+edit_allusers=Minden aktív felhasználó terminálja
+edit_active=Naplózás bekapcsolva?
+edit_header2=A naplózandó üzenetek
+edit_facil=Kategória
+edit_pri=Prioritás
+edit_all=Mind
+edit_one=Csak egy
+edit_many=A következők
+edit_pdir0=Legalább...
+edit_pdir1=Pontosan...
+edit_pdir2=Kisebb, mint...
+edit_pdir3=Minden, kivéve...
+edit_none=Egyik sem
+edit_view=A logfile megtekintése
+edit_tag=Mely programtól származó naplóadatok kerülnek ide?
+
+view_title=Egy logfile megtekintése
+view_header=A $2 file utolsó $1 sora
+view_empty=A logfile üres
+view_refresh=Frissítés
+
+save_err=Nem sikerült elmenteni
+save_efile=A '$1' file nem nyitható meg: $2
+save_epipe=A '$1' csővezeték nem írható
+save_epipe2=Nincs megadva a parancs
+save_ehost=A '$1' nevű gép nem létezik
+save_enousers=A felhasználók listája üres
+save_euser=Nincs '$1' azonosítójú felhasználó
+save_efacils=A kategória nem volt megadva
+save_esel=Nincsenek megadva a naplózandó üzenetfajták
+save_epri=Nincs megadva a prioritás
+
+log_modify=$1 felé irányuló naplózás módosítása
+log_create=$1 felé irányuló naplózás elindítása
+log_delete=$1 felé irányuló naplózás megszüntetése
+log_apply=A változások életbe léptetése
+

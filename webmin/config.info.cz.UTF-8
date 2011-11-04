@@ -1,0 +1,4 @@
+cron_mode=Zobrazit aktualizační časy jako,1,0-Jednoduché rozhraní,1-Výběr šasu jako u Cronu
+third_url=URL seznamu modulů třetích stran,3,Na www.webmin.com
+osdn=Vložit seznam Webmin OSDN zrcadel webů?,1,1-Ano,0-Ne
+standard_url=URL seznamu standardních modulů,3,Na www.webmin.com

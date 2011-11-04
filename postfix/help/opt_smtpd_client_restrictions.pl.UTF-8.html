@@ -1,0 +1,26 @@
+<header>Ograniczenia nazw/adresów klientów</header>
+
+<center><tt>smtpd_client_restrictions</tt></center>
+<hr>
+
+Ten parametr określa fakultatywne ograniczenia nazw hostów i&nbsp;adresów
+klientów SMTP. <p>
+
+Domyślne jest zezwalanie na połączenia z&nbsp;dowolnego hosta. Możliwe są
+następujące ograniczenia:
+
+<include smtpd_restrictions>
+
+Ograniczenia są stosowane w&nbsp;takiej kolejności, w&nbsp;jakiej je podano;
+wygrywa pierwsze pasujące ograniczenie. <p>
+
+Podaj liste ograniczeń rozdzieloną przecinakami i/lub białymi znakami.
+Kontynuuj długie linie rozpoczynając następną od białego znaku. <p>
+
+Rozsądne przykłady:
+<ul>
+<li><tt>permit_mynetworks, reject_unknown_client</tt>
+<li><tt>reject_maps_rbl, reject_unknown_client</tt>
+</ul>
+
+<hr>

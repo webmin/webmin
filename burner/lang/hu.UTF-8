@@ -1,0 +1,121 @@
+index_title=CD-író
+index_profiles=Írási profilok
+index_name=Profilnév
+index_type=Írás típusa
+index_files=Kiírandó fájl(ok)
+index_add=Új típusú profil hozzáadása:
+index_type1=Egyedi ISO képfájl
+index_type2=Fájlok és könyvtárak
+index_type3=Audiosáv
+index_type4=CD másolása
+index_none=Jelenleg nincs megadva írási profil
+index_global=Globális opciók
+index_ecdrecord=A(z) $1 CD-író parancs nem találahtó a rendszeren. Előfordulhat, hogy még nincs telepítve, vagy a <a href='$2'>modul-konfiguráció</a> helytelen.
+index_return=Profillista
+
+edit_title=Írási profil szerkesztése
+create_title=Írási profil létrehozása
+edit_emkisofs=A(z) $1 ISO fájlrendszeralkotó parancs nem található a rendszeren. Előfordulhat, hogy nincs telepítve, vagy a <a href='$2'>modul-konfiguráció</a> helytelen.
+edit_empg123=A(z) $1 MP3 dekódoló parancs nem található a rendszeren. Előfordulhat, hogy nincs telepítve, vagy a <a href='$2'>modul-konfiguráció</a> helytelen.
+edit_ecdrdao=A(z) $1 CD másoló parancs nem található a rendszeren. Előfordulhat, hogy nincs telepítve, vagy a <a href='$2'>modul-konfiguráció</a> helytelen.
+edit_header=Írási profil opciók
+edit_name=Profilnév
+edit_iso=A kiírandó ISO képfájl
+edit_isosize=Lekérdezi az ISO fájl méretét?
+edit_dirs=Felveendő könyvtárak
+edit_source=Forrásfájl vagy könyvtár
+edit_dest=Könyvtár a CD-n
+edit_rock=RockRidge (unix) kiterjesztéseket akar létrehozni?
+edit_rock2=Igen, ésszerű engedélyekkel
+edit_joliet=Joliet (windows) kiterjesztéseket akar létrehozni?
+edit_long=Engedélyezi a hosszú fájlneveket?
+edit_trans=Létrehozza a TRANS.TBL fájlt?
+edit_volid=CD kötet ID
+edit_mp3s=MP3 fájlok és könyvtárak
+edit_burn=Mentés és azonnali írás
+edit_test=Mentés és tesztírás
+edit_return=Írási profil
+edit_ask=Kér megerősítést az írás előtt?
+edit_sdev=Forrás CD eszköz
+edit_other=Más eszköz..
+edit_fly=Másolás üzemmód
+edit_fly1=Közvetlenül a CD-ről az íróra
+edit_fly0=Ideiglenes fájl használata
+edit_srcdrv=A forrás eszközillesztője
+edit_dstdrv=A cél eszközillesztője
+
+save_err=A profil mentése nem sikerült
+save_ename=Hiányzó profilnév
+save_eiso=Hiányzó vagy érvénytelen ISO képfájlnév
+save_esource=Hiányzó vagy érvénytelen forráskönyvtár $1
+save_edest=Hiányzó könyvtár a CD-n a $1-hez
+save_edirs=Nem választott ki forráskönyvtárat
+save_emp3s=Nem választott ki MP3 fájlt vagy könyvtárat
+save_emp3=A(z) $1 MP3 fájl vagy könyvtár nem létezik
+save_eother=A forrás eszközillesztője nem létezik
+
+burn_title=CD kiírása
+burn_rutest1=Biztos benne, hogy tesztelni akarja a(z) $1 ISO képfájl kiírását?
+burn_rusure1=Biztos benne, hogy kiírja CD-re a(z) $1 ISO képfájlt?
+burn_rutest2=Biztos benne, hogy tesztelni akarja a kiválasztott könyvtárak kiírását?
+burn_rusure2=Biztos benne, hogy kiírja CD-re a kiválasztott könyvtárakat?
+burn_rutest3=Biztos benne, hogy tesztelni akarja a kiválasztott audiosávok kiírását?
+burn_rusure3=Biztos benne, hogy kiírja CD-re a kiválasztott audiosávokat?
+burn_rusure4=Biztos benne, hogy $1-ről akar másolni?
+burn_ok=Igen, írás indítása!
+burn_cancel=Nem, töröljük az ideiglenes ISO képfájlt
+burn_eject=CD kiadása az írás befejezésekor
+burn_blank=Letörli a CD-t írás előtt?
+burn_bfast=Gyors törlés
+burn_ball=Teljes törlés
+burn_bg=Írási folyamat indítása a háttérben
+burn_edev=Nem írhat CD-t amíg az <a href='$1'>Eszközök beállításai</a> oldalon ki nem választ egy CD-író eszközt.
+burn_header=CD írása a(z) $1 paranccsal ..
+burn_theader=Tesztírás a(z) $1 paranccsal ..
+burn_header2=CD írása a háttérben a(z) $1 paranccsal ..
+burn_theader2=Tesztírás a háttérben a(z) $1 paranccsal ..
+burn_mheader=ISO fájlrendszer létrehozatala a(z) $1 paranccsal ..
+burn_mfailed=Az ISO fájlrendszer létrehozatala sikertelen!
+burn_egone=Az ISO képfájl törölve - Ismételt létrehozatalához térjen vissza az <a href='$1'>írási profil</a> oldalra.
+burn_egone2=Az ideiglenes audiosávok törölve - Ismételt létrehozatalukhoz térjen vissza az <a href='$1'>írási profil</a> oldalra.
+burn_700=Figyelem! Az ISO képfájl mérete $1 MB, ami még a 80 perces CD-kre írható 700 MB-ot is meghaladja.
+burn_650=Figyelem! Az ISO képfájl mérete $1 MB, ami meghaladja a hagyományos CD-kre írható 650 MB-ot. Az adatok azonban elférnek egy 80 perces CD-n.
+burn_size=A létrehozott ISO képfájl mérete $1 MB, a hagyományos CD-n megengedhető $2 MB-hoz képest.
+burn_nomp3s=A kiválasztott könyvtárak üresek.
+burn_mp3header=MP3 fájlok audiosávokká alakítása a(z) $1 paranccsal ..
+burn_mp3failed=Az MP3 fájlok átalakítása sikertelen!
+burn_mp3format=A(z) $1 fájl nem MP3 formátumú.
+burn_746=Figyelem! Az audiosávok mérete $1 MB, ami meghaladja a hagyományos audio CD-kre írható 746 MB-ot. Az adatok azonban elférnek egy 80 perces CD-n.
+burn_807=Figyelem! Az audiosávok mérete $1 MB, ami még a 80 perces audio CD-kre írható 807 MB-ot is meghaladja.
+burn_mp3size=Az átalakított audiosávok mérete $1 MB, a hagyományos audio CD-n megengedhető $2 MB-hoz képest.
+burn_seconddesc=Helyezze be az üres írható CD-t a meghajtóba, majd kattintson a lenti gombra.
+burn_second=CD írása
+
+dev_title=Eszközök beállításai
+dev_header=CD-író eszköz beállításai
+dev_device=CD-író eszköz
+dev_none=&lt;Nincs kiválasztva&gt;
+dev_speed=Írási sebesség
+dev_other=Egyéb..
+dev_extra=Extra <tt>cdrecord</tt> opciók
+dev_err=Az eszköz beállításainak mentése sikertelen
+dev_eother=Hiányzó vagy érvénytelen írási sebesség
+
+mkisofs_title=ISO fájlrendszer beállításai
+mkisofs_header=ISO fájlrendszer globális beállításai
+mkisofs_novers=Tartalmazzák a fájlnevek a verziószámot?
+mkisofs_notrans=A fájlnevek bármilyen karaktert tartalmazhatnak?
+mkisofs_nobak=Kihagyja a biztonsági fájlokat?
+mkisofs_fsyms=Követi a szimbolikus hivatkozásokat?
+
+config_cdrecord=CD-író parancs
+config_mkisofs=ISO fájlrendszeralkotó parancs
+config_mpg123=MP3 dekódoló parancs
+config_cdrdao=CD-másoló parancs
+config_temp=Ideiglenes fájlok könyvtára
+config_temp_def=A Webmin ideiglenes könyvtára
+config_ecdrecord=Hiányzó vagy érvénytelen CD-író parancs
+config_emkisofs=Hiányzó vagy érvénytelen ISO fájlrendszeralkotó parancs
+config_empg123=Hiányzó vagy érvénytelen MP3 dekódoló parancs
+config_ecdrdao=Hiányzó vagy érvénytelen CD-másoló parancs
+config_etemp=Hiányzó vagy érvénytelen ideiglenes fájl könyvtár

@@ -1,0 +1,34 @@
+Ta strona opisuje opcje zarówno dla pojedynczego hosta, dla hostów
+o&nbsp;nazwach pasujących do pewnego wzorca, jak i dla wszystkich hostów.
+Pewnymi mniej oczywistymi opcjami są&nbsp;:
+
+<dl>
+<dt><b>Logować jako użytkownik</b>
+<dd>Normalnie, gdy w linii polecenia <tt>ssh</tt> nie poda się nazwy
+    użytkownika, do logowania na zdalnym serwerze SSH wykorzystywana jest
+    nazwa aktualnego użytkownika. Jednakże, za pomocą tej opcji można podać
+    inną domyślną nazwę użytkownika dla wybranego hosta lub hostów. <p> 
+
+<dt><b>Znak ucieczki</b>
+<dd>Znak ucieczki służy do przerwania interaktywnego połączenia SSH
+    w&nbsp;celu jego zamkniecia lub wstrzymania. <p>
+
+<dt><b>Kompresja ruchu SSH?</b>
+<dd>Jeśli ta opcja zostanie włączona, klient SSH będzie kompresował wszelkie
+    dane przesyłane do danego hosta za pomocą algorytmu <tt>gzip</tt>. Może to
+    być przydatne, gdy się kopiuje duże pliki za pomocą <tt>scp</tt> poprzez
+    wolne łącze. <p>
+
+<dt><b>Przekazywane do serwera porty lokalne</b>
+<dd>Do tej tablicy można wprowadzić numery portów lokalnych, które będą
+    przekazywane do pewnego hosta i&nbsp;port obsługującego je serwera SSH.
+    Może to być przydatne, gdy masz jedynie dostęp do pewnej sieci logując
+    się przez SSH, a&nbsp;chcesz uzyskać dostęp do innych usług, jak serwery
+    WWW czy POP. <p>
+
+<dt><b>Porty serwera przekazywane lokalnie</b>
+<dd>Do tej tablicy można wprowadzić numery portów na serwerze, które będą
+    przekazywane do pewnego hosta oraz port sieci maszyny klienckiej. <p>
+
+</dl>
+

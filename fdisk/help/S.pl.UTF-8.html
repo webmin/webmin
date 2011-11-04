@@ -1,0 +1,22 @@
+<header>Okres do przejścia w&nbsp;stan oczekiwania</header>
+
+Ustawia czas, po którym dysk przechodzi w&nbsp;stan oczekiwania (wyłącza
+się). <p>
+
+Wartość ta jest wykorzystywana przez dysk dla ojkreślenia jak długo czakać
+(w&nbsp;razie bezczynności) przed wyłączeniem napędu, aby oszczędzać energię. 
+<br>
+
+W&nbsp;takich warunkach odpowiedź dysku na późniejsze żądanie dosępu może
+zająć nawet 30 sekund, jednakże większość dysków jest znacznie szybsza. <p>
+
+Kodowanie czasu jest dość specyficzne. Wartość zerowa oznacza "wyłączone".
+Wartości od 1 do 240 oznaczają czas będący wielokrotnością 5 sekund dla
+okresów od 5 sekund do 20 minut. <br>
+
+Wartości od 241 do 250 oznaczają od 1 do 11 jednostek 30-minutowych, dla
+okresów od 30 minut do 5,5 godziny. Wartość 252 oznacza okres 21 minut, 253
+ustawia okres zdefiniowany przez producenta, zaś 255 jest interpretowana jako
+21 minut i&nbsp;15 sekund.
+
+<hr>

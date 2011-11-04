@@ -1,0 +1,14 @@
+acl_all=Všetci užívatelia
+acl_except=Všetci okrem užívateľov
+acl_only=Iba užívatelia
+create_title=Vytvoriť plánovanú úlohu
+edit_command=Príkaz
+edit_commands=Príkazy
+edit_comment=Popis
+edit_days=Dni
+edit_hours=Hodiny
+edit_mins=Minúty
+edit_months=Mesiace
+edit_run=Spustiť teraz
+index_command=Príkaz
+index_comment=Popis

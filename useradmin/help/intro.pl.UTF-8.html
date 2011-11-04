@@ -1,0 +1,53 @@
+<header>Użytkownicy i&nbsp;grupy</header>
+
+<h3>Wprowadzenie do użytkowników</h3>
+Użytkownikiem Uniksa jest zazwyczaj ktoś, kto może się zalogować do systemu
+zdalnie poprzez telnet lub przy konsoli. Każdy plik ma pewnego użytkownika
+za właściciela, jak też każdy process działa z&nbsp;prawami pewnego
+użytkownika. Dostęp do plików i procesów jest określony przez użytkownika,
+jako który się zalogowałeś. <p>
+
+W&nbsp;typowym systemie uniksowym są zazwyczaj trzy rodzaje
+użytkowników&nbsp;:
+<ul>
+<li><b>Użytkownicy specjalni</b><br>
+    Konta takie jak <tt>bin</tt>, <tt>lp</tt> i&nbsp;<tt>uccp</tt> są
+    właścicielami plików takich jak standardowe polecenia
+    w&nbsp;<tt>/bin</tt>, pliki spool-a drukarki czy dane UUCP.  Zazwyczaj
+    zalogowanie się na którekolwiek z&nbsp;tych kont nie jest możliwe - są
+    one wykorzystywane wyłącznie przez różne procesy systemowe. Użytkownicy
+    ci są tworzeni podczas instalacji systemu operacyjnego. <p>
+<li><b>Zwykli ludzie</b><br>
+    Są to konta posiadane przez zwykłych użytkowników, utworzone przez
+    administratora systemu. Możesz pozwolić tym użytkownikom logować się
+    zdalnie, lub też pozwolić im tylko wysyłać i&nbsp;odbierać pocztę
+    poprzez SMTP i&nbsp;POP3. <p>
+<li><b>Użytkownik <tt>root</tt></b><br>
+    Użytkownik <tt>root</tt> może czytać i zapisywać w dowolnym pliku
+    i&nbsp;katalogu oraz zarządzać dowolnym procesem. To konto jest
+    zazwyczaj wykorzystywane do celów administracyjnych i&nbsp;jest 
+    to konto, z&nbsp;prawami którego działa Webmin. <p>
+</ul>
+
+Na górze głównej strony tego modułu znajduje się tabela istniejących
+w&nbsp;twoim systemie użytkowników. Możesz nacisnąć nazwę użytkownika, aby
+zmienić jego dane lub nacisnąć na dowiązanie pod tabelą, aby utworzyć nowego
+użytkownika. <p>
+
+<h3>Wprowadzenie do grup</h3>
+Grupa jest po prostu listą użytkowników Uniksa. Każdy użytkownik należy do
+co najmniej jednej grupy (jego grupy głównej), oraz ewentualnie do kilku
+innych. Każdy plik jest w&nbsp;posiadaniu pewnej grupy, jak też każdy proces
+działa z prawami pewnej grupy. <p>
+
+Poniżej listy użytkowników znajduje się tabela istniejących grup. Możesz
+nacisnąć nazwę grupy, aby zmienić jej dane, lub nacisnąć na dowiązanie pod
+tabelą, aby utworzyć nową grupę. <p>
+
+<h3>Zapamiętane logowania</h3>
+Za każdym razem, gdy użytkownik się loguje przez telnet, SSH, FTP lub przy
+konsoli, system zapamiętuje to logowanie i&nbsp;późniejsze wylogowanie. Na
+dole głównej strony jest formularzyk pozwalający na obejrzenie logowań
+wszystkich lub wybranego użytkownika. <p>
+
+<hr>

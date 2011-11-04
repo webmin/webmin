@@ -1,0 +1,66 @@
+index_title=SSL tunely
+index_name=SNázev služby
+index_port=TCP port
+index_active=Aktivní?
+index_command=STunel příkaz
+index_add=Přidat nový SSL tunel.
+index_none=Prozatím nebyly připraveny žádné SSL tunely pro spuštění z <tt>inetd</tt> nebo <tt>xinetd</tt>.
+index_estunnel=STunel příkaz $1 nebyl ve vašem ystému nalezen. Možná není STunel mainstalován, nebo vaše <a href='$2'>konfigurace modulu</a> není správná.
+index_apply=Použít změny
+index_applymsg1=Klepnutím na toto tlačítko se stane vaše aktuální konfigurace SSL tunelu aktivní pomocí odeslání HUP signálů do běžících <tt>inetd</tt> a <tt>xinetd</tt> procesů.
+index_applymsg2=Klepnutím na toto tlačítko se stane vaše aktuální konfigurace SSL tunelu aktivní pomocí odeslání HUP signálů do běžícího <tt>inetd</tt> procesu.
+index_applymsg3=Klepnutím na toto tlačítko se stane vaše aktuální konfigurace SSL tunelu aktivní pomocí odeslání HUP signálů do běžícího <tt>xinetd</tt> procesu.
+index_return=Seznam SSL tunelů
+index_action=Cíl tunelu
+index_cmd=Spustit příkaz $1
+index_remote=Připojit se k hostovi $1
+index_rport=Připojit se na port $1
+index_version=STunel verze $1
+
+edit_title=Editace SSL tunelu
+create_title=Vytvoření SSL tunelu
+edit_header1=Nastavení zdroje tunelu
+edit_name=SNázev služby
+edit_port=TCP port
+edit_active=Aktivní?
+edit_header2=Nastavení cíle tunelu
+edit_mode0=Spustit program <tt>inetd</tt> stylu
+edit_mode1=Spustit program v PTY
+edit_mode2=Připojit se ke vzdálenému hostovi
+edit_cmd=Cesta k programu
+edit_args=s argumenty
+edit_rhost=Vzdálené jméno hosta
+edit_rport=Vzdálený port
+edit_header3=Jiná nastavení
+edit_pem=Soubor SSL certifikátu a klíče
+edit_pem0=Vkompilován jako výchozí
+edit_pem1=Použít certifikát pro Webmin
+edit_pem2=Použít certifikát v souboru
+edit_cmode=Tunel mód
+edit_cmode0=Akceptovat SSL a normálně se připojit
+edit_cmode1=Normálně akceptovat a připojit se pomocí SSL
+edit_tcpw=Název TCP-wrappers
+edit_auto=Automaticky
+edit_iface=Odchozí adresa zdroje
+edit_type=Spustit z
+
+save_err=Chyba při ukládání SSL tunelu
+save_enclash=Název služby $2 je již použit na portu $1.
+save_einetd=Již je používána inetd služba s názvem $1.
+save_ename=Chybějící nebo nesprávný název služby
+save_eport=Chybějící nebo nesprávné číslo portu
+save_ecmd=Chybějící nebo nesprávný program pro spuštění
+save_erhost=Neplatné jméno vzdáleného hosta
+save_erport=Neplatný vzdálený port
+save_epclash=Port $1 je již používán pro službu $2.
+save_epem=Soubor SSL certifikátu $1 neexistuje
+save_etcpw=Chybějící nebo nesprávný název TCP-wrappers
+save_eiface=Chybějící nebo nesprávná odchozí adresa zdroje
+save_exinetd=Již je používána xinetd služba s názvem $1.
+save_export=Port $1 je již používán xinetd službou $2
+
+log_apply=Aplikovány změny
+log_create=Vytvořen SSL tunel $1
+log_delete=Smazán SSL tunel $1
+log_modify=Modifikován SSL tunel $1
+

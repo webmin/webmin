@@ -1,0 +1,8 @@
+groups_dir=Adresár pre MSC cluster skupiny,0
+show_status=Zobrazovať stav serverov,1,1-Áno,0-Nie
+resolve=Resolvovať adresy nájdených serverov,1,1-Áno,0-Nie
+line1=Nastaviteľné možnosti,11
+line2=Systémová konfigurácia,11
+display_mode=Zobraziť servre ako,1,1-Tabuľku,0-Ikonky
+sort_mode=Triediť servre podľa,1,4-IP adresy,1-mena,2-popisu,3-OS,5-skupiny,0-poradia vytvorenia
+scan_time=Čas pre čakanie na odpoveď pri skenovaní,0,5

@@ -1,0 +1,43 @@
+<header>Informacje o procesie</header>
+
+Ta strona pokazuje dane działającego procesu. W&nbsp;górnej części znajdują
+się następujące informacje&nbsp;:
+<dl>
+<dt><b>Polecenie</b>
+<dd>Nazwa programu i&nbsp;podane w&nbsp;linii poleceń argumenty dla tego
+    programu
+<dt><b>Nr ID procesu</b>
+<dd>Unikalny numer ID procesu
+<dt><b>Proces rodzica</b>
+<dd>Proces, który dany proces utworzył. Naciśnij na nim, aby obejrzeć dane
+    dotyczące procesu rodzica.
+<dt><b>Właściciel</b>
+<dd>Użytkownik, który jest właścicielem procesu oraz z&nbsp;prawami którego
+    on działa
+<dt><b>Zużycie CPU</b>
+<dd>Procentowe wykorzystanie czasu CPU przez ten proces
+<dt><b>Rozmiar</b>
+<dd>Ilość pamięci zajętej przez ten proces. Jej część może być dzielona
+    z&nbsp;innymi procesami
+<dt><b>Czas działania</b>
+<dd>Całkowita ilość czasu CPU zużyta przez ten proces od chwili
+    uruchomienia, w&nbsp;minutach. Zazwyczaj nie jest to ilość minut, które
+    upłynęły od chwili jego uruchomienia, chyba że proces bardzo intensywnie
+    używa CPU.
+<dt><b>Poziom nice</b>
+<dd>Priorytet, z&nbsp;jakim ten proces działa. Możesz również uzyskać 
+    <a href=nice>więcej informacji</a> na temat poziomu nice.
+</dl>
+Inne informacje mogą również być dostępne w&nbsp;zależności od wersji
+Uniksa, której używasz. <p>
+
+Poniżej informacji o&nbsp;procesie znajduje się przycisk służący do wysłania
+sygnału do procesu. Wybierz sygnał, który chcesz wysłać z&nbsp;listy,
+a&nbsp;następnie naciśnij przycisk <tt>Wyślij sygnał</tt>. Najbardziej 
+przydatne są sygnały <tt>KILL</tt> i&nbsp;<tt>TERM</tt>, służące do zabicia
+procesu. <p>
+
+Jeśli ten proces ma procesy potomne, będą one wyświetlone w&nbsp;dolnej
+części strony. Naciśnij numer ID z&nbsp;listy, aby uzyskać szczegółowe
+informacje o&nbsp;procesie potomnym.
+<hr>

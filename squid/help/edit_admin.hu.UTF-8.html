@@ -1,0 +1,22 @@
+<header>Rendszergazdai beállítások; fordította: Szakács Gergely</header><p>
+
+<b>Futtatás Unix-felhasználóként</b>: A rendszertől függően az alapértelmezés 'nobody' vagy 'squid'. Ha a gyorstárat root-ként futtatjuk, úgy a tényleges/valós azonosító erre az értékre módosul.<p>
+
+<b>Futtatás Unix-csoportként</b>: A rendszertől függően az alapértelmezés 'nogroup' vagy 'squid'. Ha a gyorstárat root-ként futtatjuk, úgy a tényleges/valós csoportazonosító erre az értékre módosul.<p>
+
+<b>Proxy-hitelesítő tartomány</b>: Meghatározza a kliensnek proxy-hitelesítés céljából eljuttatandó tartománynevet (a felhasználó által a felhasználónév/jelszó bevitelekor látható szöveg egy része).<p>
+
+<b>A gyorstár kezelőjének email címe</b>: A rendszertől függően az alapértelmezés 'webmaster' vagy 'root'. Erre a címre érkezik jelentés a gyorstár meghibásodása esetén.<p>
+
+<b>Látható gazdanév</b>: Erre akkor van szükség, ha a hibaüzenetekben, stb. egyedi gazdanevet akarunk megadni. Máskülönben a gethostname() értéke lesz megjelenítve. Ha több gyorstár is van egy klaszterben, és IP-továbbítási hibák jelentkeznek, úgy mindegyiknek külön nevet kell megadni ezzel a beállítással.<p>
+
+<b>Egyedi gazdanév</b>: Ha több gépet is ugyanazzal a <b>Látható gazdanévvel</b> akar ellátni, úgy minden egyes gépnek különböző <b>Egyedi gazdanevet</b> kell megadnia, a továbbítási hurkok kiküszöbölésére.<p>
+
+<b>Gyorstár gazdanév jelentés</b>: Erre a gazdanévre lesznek elküldve a különböző jelentések. A gyorstárak hierarchiájáról további információt <a href="http://www.squid-cache.org/Doc/FAQ/FAQ-4.html" target="Reference">The Squid FAQ</a> tartalmaz. Ha egy jelentési időszakkal engedélyeztük a jelentéseket, úgy alapértelmezésként a 'tracker.ircache.net' jelenik meg.<p>
+
+<b>Gyorstár port jelentés</b>: Az a gazdaport, ahova a jelentések érkeznek. A jelentések engedélyezésekor ez az érték 3131.<p>
+
+<b>Jelentési időszak</b>: A jelentések gyakorisága. Egy gyorstár hierarchiának címzett jelentéseket az '1 nap' opció kiválasztásával engedélyezheti. Az alapértelmezés itt '0', vagyis a jelentések le vannak tiltva.
+
+<hr>
+

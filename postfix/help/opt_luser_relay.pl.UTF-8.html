@@ -1,0 +1,33 @@
+<header>Adres przeznaczenia dla nieznanych odbiorców</header>
+
+<center><tt>luser_relay</tt></center>
+<hr>
+
+Ten parametr określa fakultatywny adres docelowy dla nieznanych odbiorców.
+Domyślnie, poczta do nieznanych odbiorców jest odrzucana. <p>
+
+Wykonywane są następujące rozwinięcia: 
+<ul>
+<li><tt>$user</tt> (nazwa użytkownika będącego odbiorcą),
+<li><tt>$shell</tt> (powłoka odbiorcy), 
+<li><tt>$home</tt> (katalog domowy odbiorcy),
+<li><tt>$recipient</tt> (pełny adres odbiorcy), 
+<li><tt>$extension</tt> (rozszerzenie adresu odbiorcy), 
+<li><tt>$domain</tt> (domena odbiorcy), 
+<li><tt>$local</tt> (pełna lokalna część adresu odbiorcy), 
+<li><tt>$recipient_delimiter</tt>.
+</ul>
+
+Podaj <tt>${nazwa?wartosc}</tt> lub <tt>${nazwa:wartosc}</tt>, aby rozwijać
+wartosc tylko wtedy, gdy <tt>$nazwa</tt> istnieje (nie istnieje).
+
+<p>
+
+Przykłady:
+<ul>
+<li><tt>$user@inny.host</tt>
+<li><tt>$local@inny.host</tt>
+<li><tt>administrator+$local</tt>
+</ul>
+
+<hr>

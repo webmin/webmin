@@ -1,0 +1,38 @@
+<header>Anonimowe FTP</header>
+
+Pierwsza tabela umożliwia zdefiniowanie kartoteki, do której przełączy
+się serwer za pomocą <tt>chroot</tt> gdy loguje się anonimowy użytkownik.
+Dla różnych klas mogą być użyte inne kartoteki. Jeżeli nie zdefiniowano
+żadnej kartoteki, serwer FTP przełączy się do katroteki home użytkownika
+<tt>ftp</tt>.
+<p>
+
+Ponieważ serwer używa zewnętrznych programów, takich jak <tt>ls</tt>
+i&nbsp;<tt>tar</tt>, anonimowa kartoteka "root" musi zawierać kartotekę
+<tt>bin</tt> z&nbsp;tymi programami, kartotekę <tt>lib</tt> zawierającą
+wszystkie niezbędne biblioteki dzielone, oraz kartotekę <tt>etc</tt>
+zawierająca zbiory <tt>passwd</tt> i&nbsp;<tt>group</tt>. Kiedy serwer
+wykonuje <tt>chroot</tt>, by ograniczyć dostęp jedynie do anonimowej
+kartoteki "root", to nie ma możliwości dostępu do żadnych programów poza tą
+kartoteką. 
+<p>
+
+Druga tabela umożliwa zdefiniowanie kartotek, do których serwer wykona
+<tt>chroot</tt> dla gości. Dla każdej kartoteki można określić, których
+użytkowników ona dotyczy poprzez wprowadzenie nazwy, UID (jak <tt>%3000</tt>)
+lub zakresu UID (jak <tt>%3000-3006</tt>). Jeżeli nie wprowadzono
+użytkowników, to kartoteka będzie użyta dla wszystkich gości.
+<p>
+
+Trzecia tabela umożliwia zdefiniowanie grupy Unixa, do której będą
+przełączeni użytkownicy anonimowi (zamiast pierwotnej grupy użytkownika
+<tt>ftp</tt>. Dla każdej takie grupy można wybrać jedną lub więcej
+klas użytkowników, na przykład po to, by umożliwić dostęp do niektórych
+plików tylko spod określonych adresów IP.
+<p>
+
+U&nbsp;dołu strony definiujemy jakie hasła będą wymagane od anonimowych
+użytkowników FTP. Tradycyjnie powinien to być prawidłowy adres email.
+<p>
+
+<hr>

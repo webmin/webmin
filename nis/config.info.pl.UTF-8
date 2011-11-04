@@ -1,0 +1,6 @@
+client_conf=Plik konfiguracyjny klienta NIS,0
+sources=Prawidłowe źródła nsswitch.conf,0
+manual_build=Automatycznie przebudowywać tabele NIS?,1,0-Tak,1-Nie
+securenets=Plik zaufanych sieci,3,Brak
+nsswitch_conf=Plik &quot;nsswitch&quot; klienta NIS,0
+max_size=Maksymalna liczba pokazywanych rekordów,0

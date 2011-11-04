@@ -1,0 +1,20 @@
+index_title=Webmin Help
+index_terms=Hledat nápovědu pro
+index_mods=Prohledávat moduly
+index_all=Všechny
+index_sel=Vybrané moduly ..
+index_search=Hledat
+index_reset=Reset
+index_header=Globální Webmin hledání
+index_return=formulář hledání
+
+search_err=Chyba při hledání
+search_eterms=Chybí podmínka hledání
+search_emods=Nejsou vybrány žádné moduly
+search_title=Výsledky hledání
+search_einclude=Chyba při použití $1
+search_none=Nebyla nalezena žádná nápověda
+search_mod=Modul
+search_page=Strana nápovědy
+search_line=Obsaženo v
+search_results=Stránky nápovědy obsahující $1

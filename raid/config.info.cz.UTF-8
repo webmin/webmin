@@ -1,0 +1,6 @@
+raidtab=Konfigurační soubor RAIDu,0
+mdstat=RAID stavový soubor jádra,0
+refresh=Počet sekund mezi obnovením stavu RAIDu,3,Nikdy
+mdadm=Konfigurační soubor MDADM,0
+line1=Konfigurovatelné volby,11
+line2=Konfigurace systému,11

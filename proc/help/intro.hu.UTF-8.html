@@ -1,0 +1,26 @@
+<header>Unix processzek</header>
+
+A processz nem más, mint egy egyszerű, az Ön rendszerén futó program. A
+webböngésző, az ablakkezelő, a terminál ablak, az X kiszolgáló, mind-mind
+olyan processz, amely közvetlenül érvényesíti hatását. Számos egyéb
+processz a háttérben fut, mint pl. a webkiszolgáló és egyéb rendszerszintű
+munkák. Egy új processz jön létre minden egyes alkalommal, amikor begépel
+egy parancsot, mint amilyen az <tt>ls</tt> vagy a <tt>pwd</tt>, bár ezek
+jellegzetesen rövid életűek.<p>
+
+Minden processz rendelkezik egy egyedi azonosítóval (ID), amelyett processz
+ID-nek vagy PID-nek nevezünk. Egyidőben futó processzeknek különböző
+a PID-jük, de egy idő elteltével a PID-ek újra használatba kerülhetnek.<p>
+
+A kezdeti processztől való leválástól (amit általában <tt>init</tt>nek 
+hívnak) kezdve mindegyiknek van egy szülő processze, amely őt létrehozta.
+Például, ha a <tt>vi</tt>-t a shell parancssorból futtatja, a <tt>vi</tt>
+szülő processze a shell lesz. Egy processznek több gyereke lehet, de csak
+egy szülője.<p>
+
+Minden processz egy(néhány) felhasználó és csoport jogosultságaival fut,
+amely fájlok és könyvtárak hozzáférésekor használatos. A felhasználók és
+a processzek csak azokat processzeket lőhetik ki, amelyeket birtokolnak.
+Ez alól kivétel a <tt>root</tt>, aki bármit kilőhet.<p>
+
+<hr>

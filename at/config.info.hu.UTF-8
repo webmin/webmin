@@ -1,0 +1,5 @@
+deny_file=Tiltott At felhasználói file,3,Nincs
+at_style=At rendszer típusa,1,linux-Linux,solaris-Solaris,freebsd-FreeBSD,irix-Irix,macos-MacOS X,openserver-OpenServer
+line2=Rendszer konfiguráció,11
+allow_file=Engedélyezve az At felhasználói file,3,Nincs
+at_dir=At munkakönyvtár,0

@@ -1,0 +1,50 @@
+Każde polecenie posiada opis (wyświetlany w&nbsp;przycisku na stronie
+głównej) oraz faktycznie uruchamiane polecenie. Linia polecenia może
+zawierać operatory powłoki takie, jak |, &gt; i&nbsp;; w&nbsp;celu
+uruchomienia wielu poleceń w&nbsp;potoku. Linia polecenia może również
+zawierać parametry takie, jak <tt>$foo</tt>, które podczas uruchamiania
+polecenia zostaną zastąpione wartościami podanymi przez użytkownika. <p>
+
+Te parametry można podać w&nbsp;tabeli u&nbsp;dołu strony. Dla każdego
+parametru konieczne jest podanie&nbsp;:
+<dl>
+<dt><b>Nazwy</b>
+<dd>Czyli unikalnego kodu tego parametru. Jeśli nazwą jest <tt>foo</tt>, to
+    podczas uruchamiania polecenia <tt>$foo</tt> zostanie zastąpione
+    wartością paramnetru. <p>
+
+<dt><b>Opisu</b>
+<dd>Opisu następującego po tym parametrze na stronie głównej.<p>
+<dt><b>Rodzaju</b>
+
+<dd>Ta opcja określa sposób wprowadzania parametru. Dostępne są
+    możliwości&nbsp;:
+	<ul>
+	<li><b>Tekstowy</b><br>
+	    Całkowicie dowolny tekst.
+	<li><b>Użytkownik</b><br>
+	    Nazwa użytkownika w&nbsp;systemie.
+	<li><b>UID</b><br>
+	    Numer UID użytkownika w&nbsp;systemie.
+	<li><b>Grupa</b><br>
+	    Nazwa grupy w&nbsp;systemie. 
+	<li><b>GID</b><br>
+	    Numer GID grupy w&nbsp;systemie.
+	<li><b>Plik</b><br>
+	    Pełna ścieżka do pliku.
+	<li><b>Katalog</b><br>
+	    Pełna ścieżka do katalogu.
+	<li><b>Opcja</b><br>
+	    Wprowadzone Tak/Nie ustawi wartość parametru na to, co znajduje
+	    się w&nbsp;następnym polu wyłącznie w&nbsp;przypadku wybrania
+	    Tak.
+	<li><b>Hasło</b><br>
+	    Całkowicie dowolny tekst, lecz podczas wprowadzania wyświetlany
+	    jako *.
+	</ul><p>
+<dt><b>Czy cytować parametr?</b>
+<dd>Jeśli Tak, parametr zostanie zacytowany poprzez " przed podstawieniem, 
+    pozwalając użytkownikowi na podanie wartości zawierających spacje. <p>
+</dl>
+
+<hr>

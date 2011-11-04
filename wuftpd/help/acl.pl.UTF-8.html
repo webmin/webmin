@@ -1,0 +1,42 @@
+<header>Ograniczenia i&nbsp;kontrola dostępu</header>
+
+Strona zawiera tabale umożliwiające ustalenie limitów i&nbsp;kontroli
+dostępu do serwera FTP. 
+<p>
+
+Pierwsza tabela umożliwia wyspecyfikowanie adresów IP, które nie mają prawa
+dostępu do serwera FTP, oraz zbioru zawierającego komunikat błędu
+wyświetlany klientowi w&nbsp;takiej sytuacji. Adresy mogą być podane
+w&nbsp;postaci pełnego lub częściowego adresu IP, kombibacji podsieć
+IP/maska, nazw komputerów (z&nbsp;rozwijanymi znakami * i&nbsp;?, jak na
+przykład<tt>*.foo.com</tt>), oraz absolutnych ścieżek do plików
+zawierających adresy. W&nbsp;celu zanegowania każdy adres może być poprzedzony
+wykrzyknikiem !.
+<p>
+
+Druga tabela umożliwia ograniczenie liczby jednoczesnych użytkowników
+w&nbsp;każdej z&nbsp;klas. Dla każdej klasy można wporowadzić maksymalna
+liczbę wlogowanych użytkowników, czas w&nbsp;którym ograniczenie jest
+obowiązujące (w&nbsp;stylu UUCP: jak na przykład <tt>MoTuTh0800-1700</tt>),
+oraz zbiór z&nbsp;komunikatem błędu wyświetlanym klientowi gdy limit zostanie
+osiągnięty.
+<p>
+
+Trzecia tabela umożliwia wprowadzenie ograniczenia liczby plików oraz bajtów
+przesyłanych podczas jednej sesji. Dla każdego limitu należy określić czy
+dotyczy liczby plików, czy bajtów, jakiego dotyczy kierunku, czy brać pod
+uwagę tylko pliki, czy wszystkie dane, oraz klasę użytkowników, której
+dany limit dotyczy.
+<p>
+ 
+Czwarta tabela pozwala na zakaz dostępu do określonych zbiorów. Dla każdego
+zbioru należy wprowadzić absolutną ścieżkę, określić czy jest ona podana
+względem "chroot" (dla użytkowników anonimowych i&nbsp;gości) oraz klasy
+użytkowników, których dotyczy ograniczenie. Jeżeli zbiór kończy się znakiem
+/, serwer FTP nie zezwoli na dostęp do żadnego pliku z&nbsp;kartoteki
+o&nbsp;tej nazwie. Podobna piąta tabela umożliwia zezwolić na dostęp do
+plików, który w&nbsp;przeciwnym wypadku byłby zakazany przez dotychczasowe
+reguły. 
+<p>
+
+<hr>

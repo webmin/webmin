@@ -1,0 +1,17 @@
+<header>Maksymalna liczba równoległych doręczeń dla jednego lokalnego
+odbiorcy</header>
+
+<center><tt>local_destination_concurrency_limit</tt></center>
+<hr>
+
+Ten parametr ogranicza liczbe równoległych doręczeń dla jednego lokalnego
+odbiorcy. <p>
+
+Domyślne ograniczenie jest pobierane z&nbsp;opcji
+<a href=opt_default_destination_concurrency_limit>
+<tt>default_destination_concurrency_limit</tt></a>. Dokumentacja Postfiksa
+zaleca niski limit wynoszący 2 na wypadek, gdyby ktoś miał kosztowne
+polecenie powłoki w&nbsp;pliku <tt>.forward</tt> lub w&nbsp;aliasie (np.
+zarządcę listy dyskusyjnej). Nie chcesz uruchamiać ich wielu.
+
+<hr>

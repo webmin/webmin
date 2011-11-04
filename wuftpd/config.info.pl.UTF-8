@@ -1,0 +1,7 @@
+ftpusers=Pełna ścieżka do pliku <tt>ftpusers</tt>,0
+ftpgroups=Pełna ścieżka do pliku <tt>ftpgroups</tt>,0
+ftpconversions=Pełna ścieżka do pliku <tt>ftpconversions</tt>,0
+ftpd_path=Pełna ścieżka do <tt>wuftpd</tt>,0
+pid_file=Plik z&nbsp;numerem PID serwera FTP,0
+ftpaccess=Pełna ścieżka do pliku <tt>ftpaccess</tt>,0
+ftphosts=Pełna ścieżka do pliku <tt>ftphosts</tt>,0

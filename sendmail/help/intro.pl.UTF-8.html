@@ -1,0 +1,41 @@
+<header>Konfiguracja Sendmaila</header>
+
+<h3>Wprowadzenie do Sendmaila</h3>
+Sendmail jest standardowym uniksowym programem do przekazywania
+i&nbsp;doręczania poczty. Kiedy któryś z&nbsp;użytkowników twojego systemu
+zechce wysłać wiadomość na inny komputer, sendmail pełni rolę programu
+doręczającego. Podobnie, kiedy ktoś z&nbsp;innego systemu wyśle wiadomość
+do któregoś z&nbsp;twoich użytkowników, sendmail odbierze tę wiadomość
+i&nbsp;zachowa ją w&nbsp;pliku z&nbsp;jego pocztą. <p>
+
+Sendmail jest jedynie MTA (mail transport agent - programem do transportu
+poczty), tzn. że on nie zawiera żadnego interfejsu użytkownika dla osób
+chcących wysłać wiadomóść. Programy takie jak Eudora, elm czy /bin/mail,
+którymi użytkownik się bezpośrednio komunikuje są nazywane MUA (mail user
+agent - program pocztowy użytkownika). MUA nie doręcza wiadomości
+samodzielnie, a&nbsp;jedynie przekazuje ją do sendmaila w&nbsp;celu
+doręczenia. <p>
+
+MUA użytkowników mogą być uruchomione zarównoo bezpośrednio w&nbsp;twoim
+systemie (MUA takie jak: pine, elm, czy /bin/mail), jak też na osobnym
+komputerze, którym może być osobisty PC (w przypadku MUA takich jak: Eudora,
+Exchange, Outlook, czy Netscape Communicator). W&nbsp;pierwszym przypadku
+poczta jest wysyłana poprzez bezpośrednie wywołanie sendmaila
+i&nbsp;przekazanie mu wiadomości, zaś odbierana poprzez odczyt z&nbsp;pliku
+poczty użytkownika. W&nbsp;przypadku MUAs działających na innych komputerach
+poczta jest wysyłana poprzez połączenie się z&nbsp;sendmailem na twoim
+komputerze przy użyciu protokołu SMTP, a odbierana poprzez połączenie
+z&nbsp;osobnym serwerem POP3 lub IMAP. <p>
+
+<h3>Moduł Sendmaila</h3>
+Główna strona tego modułu pokazuje tablicę ikon, każda do konfiguracji
+innego zestawu funkcji sendmaila. Jednakże, funkcje za niektórymi ikonami
+mogą być niedostępne, jeśli nie zostały ustawione w twoim
+<tt>sendmail.cf</tt> podczas instalacji. W czasie instalacji można wybrać,
+które funkcje mają być dostępne poprzez edycję pliku <tt>.mc</tt>
+przetwarzanego później przez program <tt>m4</tt> do postaci
+
+<tt>sendmail.cf</tt>. Wiele funkcji (takich jak: Mapowanie Adresów,
+Maskowanie Domen czy Kontrola Spamu) może być dostępnych jedynie pod
+warunkiem, że zostały włączone podczas instalacji. <p>
+<hr>

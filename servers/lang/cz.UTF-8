@@ -1,0 +1,76 @@
+index_title=Webmin Servery
+index_edit=editovat
+index_noservers=Nejsou registrovány žádné servery.
+index_add=Registrovat server
+index_broad=Hledat servery
+index_findmsg=Po kliknutí na toto tlačítko budou automaticky vyhledány jiné verze 0.75 a vyšší na serverech ve Vaší lokální síti.
+index_scan=Scanovat servery
+index_scanmsg=Klepnutím na toto tlačítko se zkontroluje každá adesa v síti $1 Webmin serverů ve verzi 0.75 a výše.
+index_return=servery
+ndex_host=Hostname a port
+index_desc=Popis
+index_os=Typ serveru
+index_group=Skupina
+index_none=&lt;Nic&gt;
+
+edit_title=Editovat server
+create_title=Registrovat server
+edit_details=Detaily serveru
+edit_host=Jméno počítače
+edit_port=Port
+edit_type=Typ serveru
+edit_ssl=SSL server?
+edit_link=Typ linku
+edit_mode0=Normální link no server
+edit_mode1=Přihlášní pomocí Webminu
+edit_user=jméno
+edit_pass=heslo
+edit_ecannot=Nemáte oprávnění editovat servery
+edit_desc=Popis
+edit_desc_def=Z hostname a portu
+edit_group=Člen skupiny serverů
+edit_none=Nic
+edit_exists=Existující skupina
+edit_new=Nový skupina
+edit_fast=Vytvořit rychlé RPC volání?
+edit_auto=Rozhodnout automaticky
+edit_status=Stav serveru
+edit_timeout=Timeout připojení
+edit_failed=Chyba během připojování
+edit_version=Webmin $1 běží
+
+
+save_err=Chyba při ukládání serveru
+save_ehost=Chybějící nebo nesprávné hostname
+save_eport=Chybějící nebo nesprávný port
+save_euser=Chybějící uživatelské jméno
+save_epass=Chybějící heslo
+save_egroup=Chybějící jméno skupiny
+save_elogin=Nesprávné přihlašovácí jméno nebo heslo pro hosta
+
+find_title=Hledat servery
+find_new=Nalezen nový server na $1
+find_already=Nalezen známý server na $1
+find_me=Nalezen tento server na $1
+find_escan=Scanovaná síť musí mít síťovou adresu třídy C.
+find_none=Žádné servery neodpovídájí na scanování.
+find_ecannot=Nemáte oprávnění hledat servery
+
+log_modify=Modifikován server $1
+log_create=Registrován server $1
+log_delete=Smazán server $1
+log_find=Nalezen server $1
+
+link_elogin=Chyba při přihlačování k $1 jako $2
+link_ecannot=YNemáte oprávnění používat tento server
+link_essl=Nemáte nainstalovánu perl Net::SSLeay knihovnu
+
+lib_other=Jiné
+
+acl_edit=Může editovat servery
+acl_find=Může hledat servery
+acl_servers=Může použít servery
+acl_sall=Všechny servery
+acl_ssel=Vybrané..
+
+

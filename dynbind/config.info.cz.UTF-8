@@ -1,0 +1,6 @@
+show_list=Zobrazit domény jako,1,0-Ikony,1-Seznam
+named_conf=Plná cesta k souboru named.conf,0
+records_order=Zobrazit nabídku záznamů in,1,1-Dle jména,2-Dle hodnoty,0-Dle pořadí
+chroot=Změnit (root) adresář pro běh Bindu na,3,Standartní
+soa_style=Serial number style,1,0-Running number,1-Date based (YYYYMMDDnn)
+named_path=Plná cesta ke spustitelnému souboru named,0

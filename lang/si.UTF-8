@@ -1,0 +1,24 @@
+***********************************************************************
+*            Welcome to the Webmin setup script, version 0.852         *
+***********************************************************************
+Webmin is a web-based interface that allows Unix-like operating
+systems and common Unix services to be easily administered.
+
+Installing Webmin in /usr/libexec/webmin ...
+
+***********************************************************************
+Webmin uses separate directories for configuration files and log files.
+Unless you want to run multiple versions of Webmin at the same time
+you can just accept the defaults.
+
+Config file directory [/etc/webmin]: Log file directory [/var/webmin]: 
+***********************************************************************
+Webmin is written entirely in Perl. Please enter the full path to the
+Perl 5 interpreter on your system.
+
+
+Testing Perl ...
+Perl seems to be installed ok
+
+***********************************************************************
+Failed to detect operating system

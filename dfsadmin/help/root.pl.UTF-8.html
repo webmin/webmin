@@ -1,0 +1,29 @@
+<header>Dostęp dla root-a</header>
+
+Określa, dla których hostów serwer będzie honorować przwa root-a na nich
+Jeśli stacji klienckiej nie ma na liście, to nawet w&nbsp;sytuacji, gdy ma
+ona prawo montować zasób w&nbsp;trybie tylko do odczytu lub do odczytu
+i&nbsp;zapisu, serwer NFS-u będzie traktować użytkownika <tt>root</tt> na
+tej stacji jako <a href=anon>użytkownika anonimowego</a>.
+<if $gconfig{'os_version'} == 7>
+    <br>Hosty można określić na następujące sposoby&nbsp;: <p>
+	<dl>
+	<dt><b>Nazwy hosta lub adresu IP</b> (np. <i>ftp.foo.com</i> lub 
+            <i>1.2.3.4</i>)
+	<dd>Spełnia go host o&nbsp;podanej nazwie lub adresie IP
+	<dt><b>Grupy sieciowej</b> (np. <i>inzynieria</i>)
+	<dd>Spełnia go dowolny host będący członkiem grupy sieciowej
+	<dt><b>Domeny DNS-u</b> (np. <i>.foo.com</i>)
+	<dd>Spełnia go dowolny host w&nbsp;domenie
+	<dt><b>Sieci</b> (np. <i>@10.254.1</i>)
+	<dd>Spełnia go dowolny host w&nbsp;sieci
+	<dt><b>Sieci z&nbsp;maską</b> (np. <i>@10.254.1/24</i>)
+	<dd>Spełnia go dowolny host w&nbsp;sieci
+	</dl><p>
+    Dodatkowo, dowolną z&nbsp;powyższych notacji można poprzedzić <i>-</i>,
+    co oznacza że host, grupa sieciowa, domena lub sieć <b>nie</b> może
+    montować tego zasobu. Może to być przydatne do umożliwienia dostępu dla
+    zbioru hostów z&nbsp;wyłączeniem jednego jego członka.
+</if>
+<hr>
+

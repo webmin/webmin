@@ -1,0 +1,7 @@
+webalizer_conf=A webalizer konfigurációs file útvonala,0
+auto=Automatikusan beillesztendő naplófile az alkalmazásból,2,apache-Apache,squid-Squid
+naked=Webmin fejléc és lábléc ohzzáadása a Webalizer riporthoz?,1,0-Igen,1-Nem
+webalizer=A webalizer parancs útvonala,0
+line1=Konfigurálható beállítások,11
+alt_conf=Minta webalizer konfigurációs file,3,Nincs
+line2=Rendszer beállítások,11

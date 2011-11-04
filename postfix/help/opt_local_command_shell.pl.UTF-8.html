@@ -1,0 +1,23 @@
+<header>Powłoka używana przy przekierowywaniu do programów zewnętrznych</header>
+
+<center><tt>local_command_shell</tt></center>
+<hr>
+
+Ten parametr określa, za pomocą jakiej powłoki będzie się odbywać
+przekierowywanie poczty do zewnętrznych poleceń. Domyślnie, zewnętrzne
+polecenia są uruchamiane bezpośrednio; są one interpretowane przez
+<tt>/bin/sh</tt> tylko wtedy, gdy zawierają metaznaki lub wbudowane
+polecenia powłoki. <p>
+
+Podaj inną powłokę, jeśli potrzebna Ci możliwość kontroli nad tym, jakie
+programy mogą byc uruchamiane np. z&nbsp;plików <tt>.forward</tt>. <p>
+
+Większość będzie korzystać tu z&nbsp; &quot;ograniczonej powłoki
+Sendmaila&quot; (<tt>smrsh</tt> jest częścią dystrybucji Sendmaila). <p>
+
+Uwaga: jeśli jest podana powłoka, jest ona uruchamiana nawet wtedy, gdy
+polecenie nie zawiera żadnego wbudowanego polecenia ani metaznaku. <p>
+
+Przykład: <tt>/gdzies/tam/smrsh -c</tt> <p>
+
+<hr>

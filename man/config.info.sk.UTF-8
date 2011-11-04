@@ -1,0 +1,14 @@
+list_cmd_sect=Príkaz na zobrazenie cesty k manuálovým stránkam zo sekcie,0
+list_cmd=Príkaz na zobrazenie cesty k manuálovým stránkam,0
+man_dir=Adresáre s manuálovými stránkami (MANPATH),0
+kde_dir=Adresár s dokumentáciou KDE,3,Žiadny
+line2=Systémová konfigurácia,11
+man_cmd_sect=Príkaz na zobrazenie manuálových stránok zo sekcie,0
+man2html_path=Cesta k man2html,3,Nepoužívať man2html
+custom_desc=Užívateľská dokumentácia,3,Štandardná
+kernel_dir=Adresár s dokumentáciou jadra,3,Žiadny
+man_cmd=Príkaz na zobrazenie manuálových stránok,0
+howto_dir=Adresáre s HOWTO,3,Žiadny
+doc_dir=Adresár s balíčkami dokumentácie,3,Žiadny
+custom_dir=Adresár s užívateľskou dokumentáciou,3,Žiadny
+search_cmd=Príkaz na prehľadávanie stránok,0

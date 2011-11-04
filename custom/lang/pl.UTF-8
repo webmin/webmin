@@ -1,0 +1,91 @@
+index_title=Wybrane polecenia
+index_edit=Zmień polecenie
+index_fedit=Zmień edytor pliku
+index_none=Nie zdefiniowano poleceń użytkownika
+index_create=Utwórz nowe polecenie użytkownika
+index_ecreate=Utwórz nowy edytor pliku 
+index_return=poleceń
+index_cmd=Polecenie   
+index_desc=Opis
+index_ed=Zmień..
+
+edit_title=Zmień polecenie
+create_title=Utwórz polecenie
+edit_ecannot=Nie masz uprawnień do zmiany poleceń
+edit_details=Informacje o&nbsp;poleceniu
+edit_desc=Opis
+edit_cmd=Polecenie
+edit_user=Uruchamiać jako użytkownik
+edit_raw=Czy polecenie zwraca HTML?
+edit_su=Korzystać ze środowiska użytkownika?
+edit_params=Parametry dla polecenia
+edit_name=Nazwa
+edit_type=Rodzaj
+edit_quote=Cytować parametr?
+edit_type0=Tekstowy
+edit_type1=Użytkownik
+edit_type2=UID
+edit_type3=Grupa
+edit_type4=GID
+edit_type5=Plik
+edit_type6=Katalog
+edit_type7=Opcja..
+edit_type8=Hasło
+
+save_err=Nie udało się zachować polecenia
+save_ecannot=Nie masz uprawnień do zmieniania poleceń
+save_ecmd=Nie podano polecenia
+save_edesc=Nie podano opisu
+save_euser=Nie podano lub niepoprawny użytkownik
+
+run_err=Nie udało sie uruchomic polecenia
+run_ecannot=Nie masz uprawnień do uruchamiania tego polecenia
+run_euser=Nie podano lub niepoprawny użytkownik
+run_egroup=Nie podano lub niepoprawna grupa
+run_title=Uruchom polecenie
+run_out=Wyniki polecenia $1 ..
+run_noout=Nie wygenerowano danych wynikowych
+
+log_modify=Zmieniono polecenie $1
+log_create=Utworzono polecenie $1
+log_delete=Usunięto polecenie $1
+log_exec=Uruchomiono polecenie $1
+log_modify_edit=Zmieniono edytor pliku $1
+log_create_edit=Utworzono edytor pliku $1
+log_delete_edit=Usunięto edytor pliku $1
+log_save_edit=Zachowano plik $1
+
+acl_cmds=Polecenia, które ten użytkownik może uruchamiać
+acl_call=Wszystkie
+acl_csel=Wybrane..
+acl_edit=Czy może tworzyć i&nbsp;zmieniać polecenia?
+
+file_ecannot=Nie masz uprawnień do modyfikacji plików
+fcreate_title=Utwórz edytor pliku
+fedit_title=Zmień edytor pliku
+file_details=Dane edytora plików
+file_desc=Opis
+file_edit=Edytowany plik
+file_owner=Właściciel pliku
+file_user=Użytkownik
+file_group=Grupa
+file_leave=Zachowaj bieżące
+file_perms=Prawa do pliku
+file_set=Ustaw na wartść ósemkową
+file_before=Polecenie uruchamiane przed zachowaniem
+file_after=Polecenie uruchamiane po zachowaniu
+file_err=Nie udało się zachować edytora plików
+file_eedit=Nie podano nazwy edytowanego pliku
+file_edesc=Nie podano opisu
+file_euser=Nie podana lub niepoprawna nazwa użytkownika
+file_egroup=Nie podana lub niepoprawna nazwa grupy
+file_eperms=Nie podana lub niepoprawna ósemkowa wartość praw dostępu
+
+view_err=Nie udało się zmodyfikować pliku
+view_ecannot=Nie masz uprawnień do modyfikacji tego pliku
+view_title=Modyfikuj plik
+view_efile=Nie udało sie zapisać $1&nbsp;: $2
+
+form_ecannot=Nie masz uprawnień do wykonywania tego polecenia
+form_title=Wykonaj polecenie
+form_exec=Wykonaj

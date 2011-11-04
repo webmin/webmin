@@ -1,0 +1,43 @@
+index_enopfile=Plik haseł PPP '$1' nie istnieje w&nbsp;Twoim systemie. Być może PPP nie jest zainstalowane
+index_table=Konta PPP do wdzwaniania i&nbsp;dzwonienia
+index_user=Nazwa użytkownika
+index_server=Serwer
+index_uany=DOWOLNA
+index_sany=DOWOLNY
+index_create=Utwórz nowe konto PPP
+index_info=Webmina można skonfigurować tak, aby jakiekolwiek zmiany użytkowników Uniksa powodowały automatyczne zmiany kont PPP. Będzie to działać jedynie w&nbsp;przypadku, gdy wszelkie zmiany, dodawanie i&nbsp;usuwanie użytkowników odbywają się poprzez moduł Webmina <tt>Użytkownicy i&nbsp;grupy</tt>.
+index_onadd=Dodaj nowe konto PPP przy dodawaniu nowego użytkownika Uniksa, dla serwera
+index_onchange=Zmień konto PPP przy zmianie użytkownika Uniksa
+index_ondelete=Usuń konto PPP przy usuwaniu użytkownika Uniksa
+index_apply=Zastosuj
+
+secrets_title=Konta PPP
+secrets_return=indeksu
+
+edit_secret_etitle=Zmień konto PPP
+edit_secret_ctitle=Utwórz konto PPP
+edit_secret_acc=Konto PPP
+edit_secret_user=Nazwa<br>użytkownika
+edit_secret_serv=Serwer
+edit_secret_sany=Dowolny
+edit_secret_uany=Dowolna
+edit_secret_pass=Hasło
+edit_secret_none=Brak
+edit_secret_ffile=Z&nbsp;pliku 
+edit_secret_leave=Pozostaw niezmienione
+edit_secret_setto=Ustaw na
+edit_secret_vaddr=Dozwolone<br>adresy
+edit_secret_aany=Pozwól wszystkim
+edit_secret_anone=Nie pozwól żadnemu
+edit_secret_alist=Pozwól wymienionym..
+edit_secret_save=Zachowaj
+edit_secret_del=Usuń 
+edit_secret_return=listy kont
+
+save_secret_esave=Nie udało się zachować konta
+save_secret_enoip='$1' nie jest poprawnym adresem
+
+log_create=Utworzono użytkownika PPP $1
+log_modify=Zmieniono użytkownika PPP $1
+log_delete=Usunięto użytkownika PPP $1
+log_sync=Zmieniono synchronizację z&nbsp;użytkownikami uniksowymi

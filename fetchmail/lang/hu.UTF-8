@@ -1,0 +1,92 @@
+index_title=Fetchmail levélletöltés
+index_poll=Vizsgálandó kiszolgáló
+index_proto=Protokoll
+index_users=Távoli és helyi felhasználók
+index_add=Új kiszolgáló hozzáadása
+index_run=Az összes kiszolgáló ellenőrzése
+index_global=Az alapértelmezett beállítások módosítása
+index_user=Unix felhasználó
+index_conf=A Fetchmail konfigurációja
+index_ok=Fetchmail kiszolgáló hozzáadása a következő felhasználónak:
+index_file=Fetchmail konfiguráció a $1-ben
+index_return=Kiszolgálólista
+index_start=A Fetchmail Daemon elindítása
+index_stop=A Fetchmail Daemon leállítása
+index_startmsg=Kattintson ide, hogy elindítsa a fetchmail daemont az aktuális kiszolgálón, és azt követően $1 másodpercenként ellenőrizze a leveleket. A daemon $2 felhasználóként fog futni, a fenti konfigurációt használva.
+index_stopmsg=Kattintson ide a jelenleg $1 felhasználóként futó fetchmail daemon leállításához. A levelek ezután nem töltődnek le $2 másodpercenként.
+index_efetchmail=A $1 fetchmail program nem található. Előfordulhat, hogy a fetchmail nincs telepítve a rendszerre, vagy a <a href='$2'>modul-konfiguráció</a> helytelen.
+index_none=Egy Unix-felhsználónak sincs <tt>.fetchmailrc</tt> fájlja.
+
+poll_create=Kiszolgáló hozzáadása
+poll_edit=Kiszolgáló módosítása
+poll_header=Levelező kiszolgáló beállításai
+poll_poll=A kiszolgáló neve
+poll_skip=Engedélyezve van a lekérdezés?
+poll_via=A keresendő levelező kiszolgáló
+poll_via_def=Megegyezik a kiszolgáló nevével
+poll_proto=Protokoll
+poll_port=Server port
+poll_uheader=A levelező kiszolgáló felhasználói adatai
+poll_user=Távoli felhasználó
+poll_pass=Távoli jelszó
+poll_is=Helyi felhasználó(k)
+poll_keep=A levelek maradjanak a kiszolgálón?
+poll_fetchall=Mindig letölti az összes üzenetet?
+poll_usually=Általában nem
+poll_ssl=SSL módban csatlakozik?
+poll_err=A kiszolgáló mentése sikertelen
+poll_epoll=Hiányzó vagy érvénytelen kiszolgálónév
+poll_evia=Érvénytelen levelező kiszolgálónév
+poll_eport=Hiányzó vagy érvénytelen portszám
+poll_euser=Hiányzó vagy érvénytelen távoli felhasználónév
+poll_adduser=Új felhasználó hozzáadása
+poll_check=A kiszolgáló ellenőrzése
+poll_interface=Állapotellenőrzés
+poll_interface_def=Mindig ellenőrizze
+poll_interface_ifc=Csak ha az illesztőegység elérhető
+poll_interface_ip=címmel / netmaszkkal
+poll_einterface=Hiányzó vagy érvénytelen hálózati illesztőegység
+poll_enet=Hiányzó vagy érvénytelen cím
+poll_emask=Érvénytelen cím netmaszk
+poll_preconnect=A kapcsolódás előtt futtatandó parancs
+poll_postconnect=A leválást követően futtatandó parancs
+poll_ecannot=Nem módosíthatja e felhasználó fetchmail konfigurációját
+poll_efile=Csak a felhasználók fetchmail konfigurációs fájljai módosíthatók
+
+stop_err=A fetchmail leállítása sikertelen
+stop_ecannot=Nem állíthatja le a fetchmail-t
+start_err=A fetchmail elindítása sikertelen
+start_einterval=Hiányzó vagy érvénytelen ellenőrzési intervallum
+start_ecannot=Nem indíthatja el a fetchmail-t
+
+check_title=Kiszolgálók ellenőrzése
+check_exec=Levelek ellenőrzése a kiszolgáló(ko)n a(z) $1 paranccsal ..
+check_ok=.. az ellenőrzés lezárult.
+check_failed=.. az ellenőrzés sikertelen!
+
+global_title=Alapértelmezett beállítások
+global_header=Alapértelmezett beállítások az összes kiszolgálónak
+global_err=Az alapértelmezett beállítások mentése sikertelen
+
+log_create_poll_file=A(z) $1 kiszolgáló hozzáadva a(z) $2 fájlhoz
+log_modify_poll_file=A(z) $1 kiszolgáló módosítva a(z) $2 fájlban
+log_delete_poll_file=A(z) $1 kiszolgáló törölve a(z) $2 fájlból
+log_create_poll_user=A(z) kiszolgáló hozzárendelve a(z) $2 felhasználóhoz
+log_modify_poll_user=A(z) $1 kiszolgáló módosítva a(z) $2 felhasználónak
+log_delete_poll_user=A(z) $1 kiszolgáló törölve a(z) $2 felhasználótól
+log_check_file_file=A(z) $1 fájlban az összes kiszolgáló ellenőrizve
+log_check_file_server=A(z) $2 kiszolgáló ellenőrizve a(z) $1 fájlban
+log_check_user_file=A(z) $1 felhasználó összes kiszolgálója ellenőrizve
+log_check_user_server=A(z) $1 felhasználó $2 kiszolgálója ellenőrizve
+log_check_server_l=A(z) $2 kiszolgáló ellenőrizve a(z) $1 fájlban
+log_global_user=A(z) $1 felhasználó globális beállításai megváltoztatva
+log_global_file=A(z) $1 fájl globális beállításai megváltoztatva
+log_start=Fetchmail daemon elindítva
+log_stop=Fetchmail daemon leállítva
+
+acl_users=A következők fetchmail konfigurációja módosítható
+acl_all=Minden felhasználó
+acl_this=Aktuális webmin felhasználó
+acl_only=Csak felhasználók
+acl_except=A felhasználók kivételével mindenki
+
