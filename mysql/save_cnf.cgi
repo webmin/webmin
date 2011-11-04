@@ -70,7 +70,7 @@ foreach $w (@mysql_set_variables, @mysql_number_variables) {
 		delete($vars{$w});
 		}
 	else {
-		$in{$w} =~ /^\d+$/ || &error($text{"cnf_e".$w});
+		$in{$w} =~ /^\d+$/ && $in{$w} > 0 || &error($text{"cnf_e".$w});
 		$vars{$w} = $in{$w}.$in{$w."_units"};
 		}
 	}
