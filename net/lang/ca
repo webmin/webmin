@@ -24,6 +24,7 @@ ifcs_up=Activa
 ifcs_down=Inactiva
 ifcs_add=Afegeix una nova interfície.
 ifcs_radd=Afegeix un nou rang d'adreces.
+ifcs_badd=Afegeix un nou pont.
 ifcs_boot=Activades en Engegar
 ifcs_act=Activa
 ifcs_bootp=Des de BOOTP
@@ -42,12 +43,19 @@ ifcs_ecannot_this=No tens permís per editar aquesta interfície de xarxa
 ifcs_range=Rang $1
 ifcs_static=Configuració estàtica
 ifcs_static3=IPv6 activat
+ifcs_noaddress=No hi ha cap adreça configurada
+ifcs_nonetmask=Cap
 ifcs_mode=Adreça IPv4
 ifcs_mode6=Adreces IPv6
 ifcs_address6=Adreça IPv6
 ifcs_netmask6=M+ascara de subxarxa
 ifcs_mode6a=Adreces IPv6
 ifcs_none6=IPv6 desactivat
+ifcs_link=Estat de l'enllaç de xarxa
+ifcs_linkyes=Connectat
+ifcs_linkno=Desconnectat
+ifcs_speed=Velocitat de la interfície
+ifcs_duplex=, $1 duplex
 
 aifc_create=Creació d'Interfície Activa
 aifc_edit=Edició d'Interfície Activa
@@ -75,6 +83,7 @@ aifc_eclash6=L'adreça IPv6 de la fila $1 ja està en ús a la interfície $2
 aifc_eaddresses6=No has introduït cap adreça IPv6
 
 bifc_create=Creació d'Interfície d'Engegada
+bifc_act=Activa-la en engegar el sistema
 bifc_edit=Edició d'Interfície d'Engegada
 bifc_desc1=Paràmetres d'Engegada de la Interfície
 bifc_desc2=Paràmetres d'Engegada de la Interfície Virtual
@@ -95,9 +104,12 @@ bifc_err4=No s'ha pogut desactivar la interfície
 bifc_capply=Crea i Aplica
 bifc_eapply=No pots activar una interfície que utilitza DHCP o BOOTP
 bifc_edhcpmain=DHCP només es pot activar a la interfície primària de xarxa
+bifc_bridgeto=Connecta el pont a la interfície
+bifc_ebridgeto=Cal seleccionar una interfície Ethernet existent per a utilitzar-la amb aquest pont
+bifc_ebridgeto2=La interfície seleccionada per al pont no pot tenir cap adreça assignada
 
 bonding_add=Afegeix una nova interfície d'enllaç.
-bonding_create=Crea una Interfície d'Enllaç d'Engegada
+bonding_create=Crea una Interfície d'Enllaç
 bonding_teamparts=Company d'Equip
 bonding_teammode=Mode d'Equip
 bonding_miimon=Interval de Monitorització Mii
@@ -107,7 +119,9 @@ bonding_downdelay=Retard inferior
 vlan_add=Afegeix una Interfície amb Tags Vlan
 vlan_physical=Dispositiu Físic
 vlan_id=ID Vlan
-vlan_create=Crea una interfície amb tags VLAN
+vlan_create=Crea una interfície VLAN
+
+bridge_create=Crea una Interfície Pont
 
 routes_title=Encaminament i Portals
 routes_boot=Configuració de l'encaminament activada <i>en engegar</i>
@@ -311,4 +325,5 @@ dbifcs_err2=No s'han pogut activar les interfícies
 hdelete_err=No s'han pogut suprimir les adreces de host
 hdelete_enone=No n'has seleccionat cap
 idelete_err=No s'han pogut suprimir les adreces de host IPv6
+
 __norefs=1

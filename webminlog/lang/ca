@@ -27,6 +27,7 @@ index_dall=Qualsevol canvi
 index_diff=Canvis que contenen
 index_stimes=Accions en les dates
 index_shost=Servidor Webmin origen
+index_long=Mostra les descripcions llargues de les accions
 index_global=&lt;A cap mòdul&gt;
 
 search_title=Resultats de la Recerca

@@ -226,6 +226,8 @@ queue_return=a la cua de correu
 queue_delete=Suprimeix els missatges seleccionats
 queue_all=Selecciona'ls tots
 queue_invert=Inverteix la selecció
+queue_refresh=Refresca la Cua de Correu
+queue_refreshdesc=Recarrega aquesta pàgina per mostrar l'estat actual de la cua de correu.
 
 qview_title=Missatge en Cua
 qview_desc=Del fitxer $1

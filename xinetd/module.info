@@ -4,3 +4,4 @@ desc=Network Services
 name=Xinetd
 longdesc=Edit servers handled by Xinetd, a replacement for inetd.
 desc_de=Netzwerk-Dienste
+desc_ca=Serveis de Xarxa

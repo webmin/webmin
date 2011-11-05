@@ -171,7 +171,7 @@ masq_ecannot=No tens permís per configurar l'emmascarament
 masq_domain=Emmascara com a domini
 masq_domains=Dominis per emmascarar
 masq_ndomains=Dominis que no s'han d'emmascarar
-masq_desc1=Si es dóna un domini aquí sobre, el sendmail alterarà l'adreça <tt>From</tt> de tots els missatges sortints de manera que sembli que provenen d'aquest domini. A més a més, tots els missatges que passin a través del sistema des d'un dels hosts o dominis llistats a sota, també tindran la seva adreça <tt>From</tt> modificada de la mateixa forma. Tingues en compte que tot emmascarament de dominis definida aquí es pot redefinir per a usuaris específics utilitzant la pàgina <a href='$1'>Adreces de Sortida</a>.
+masq_desc1=Si es dóna un domini aquí sota, el sendmail alterarà l'adreça <tt>From</tt> de tots els missatges sortints de manera que sembli que provenen d'aquest domini. A més a més, tots els missatges que passin a través del sistema des d'un dels hosts o dominis llistats a sota, també tindran la seva adreça <tt>From</tt> modificada de la mateixa forma. Tingues en compte que tot emmascarament de dominis definida aquí es pot redefinir per a usuaris específics utilitzant la pàgina <a href='$1'>Adreces de Sortida</a>.
 masq_desc2=Aquesta característica pot ser útil si vols que el correu del teu sistema aparenti venir del nom del domini, més que no pas del nom del host, o bé si el teu sistema és el concentrador de correu d'un cert nombre d'altres hosts que executen els seus propis servidors de correu.
 masq_err=No s'ha pogut desar l'emmascarament del domini
 masq_edomain='$1' no és un nom de domini vàlid per a un emmascarament
@@ -433,6 +433,8 @@ mailq_flushquar=Buida la Cua de Quarantena
 mailq_flushquardesc=Fes clic sobre aquest botó per forçar el lliurament només dels missatges en quarantena de la cua.
 mailq_search=Busca missatges en cua tals que
 mailq_quar=En quarantena
+mailq_refresh=Refresca la Cua de Correu
+mailq_refreshdesc=Recarrega aquesta pàgina per mostrar l'estat actual de la cua de correu.
 
 flushq_title=Buidat de la Cua
 flushq_desc=S'està forçant el lliurament de tots els missatges amb l'ordre $1...

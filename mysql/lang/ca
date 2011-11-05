@@ -262,6 +262,9 @@ users_delete=Suprimeix els Seleccionats
 users_derr=No s'han pogut suprimir els usuaris
 users_enone=No has seleccionat cap usuari
 users_ssl=Certificat
+users_dtitle=Supressió de Permisos d'Usuari
+users_drusure=Segur que vols suprimir els $1 permisos d'usuari MySQL seleccionts?
+users_dok=Suprimeix els Permisos
 
 user_title1=Creació d'Usuari
 user_title2=Edició d'Usuari
@@ -343,6 +346,9 @@ dbs_none=Cap
 dbs_return=als permisos de la base de dades
 dbs_derr=No s'han pogut suprimir els permisos de les bases de dades
 dbs_enone=No has seleccionat cap base de dades
+dbs_dtitle=Supressió de Permisos de Base de Dades
+dbs_drusure=Segur que vols suprimir els $1 permisos de base de dades MySQL seleccionats?
+dbs_dok=Suprimeix els Permisos
 
 db_title1=Creació de Permisos de Bases de Dades
 db_title2=Edició de Permisos de Base de Dades
@@ -404,6 +410,9 @@ hosts_add=Crea nous permisos de host.
 hosts_empty=No hi ha permisos de host definits
 hosts_derr=No s'han pogut suprimir els permisos del host
 hosts_enone=No has seleccionat cap host
+hosts_dtitle=Supressió de Permisos de Host
+hosts_drusure=Segur que vols suprimir els $1 permisos de host MySQL seleccionats?
+hosts_dok=Suprimeix els Permisos
 
 host_title1=Creació de Permisos de Host
 host_title2=Edició de Permisos de Host
@@ -497,6 +506,9 @@ tprivs_return=als permisos de les taules
 tprivs_none=Cap
 tprivs_derr=No s'ha pogut suprimir els permisos de les taules
 tprivs_enone=No has seleccionat cap taula
+tprivs_dtitle=Supressió de Permisos de Taula
+ tprivs_drusure=Segur que vols suprim,ir els $1 permisos de taula MySQL seleccionats?
+tprivs_dok=Suprimeix els Permisos
 
 tpriv_title1=Creació de Permisos de Taules
 tpriv_title2=Edició de Permisos de Taules
@@ -531,6 +543,9 @@ cprivs_return=als permisos de les columnes
 cprivs_none=Cap
 cprivs_derr=No s'han pogut suprimir els permisos dels camps
 cprivs_enone=No has seleccionat cap camp
+cprivs_dtitle=Supressió de Permisos de Columna
+cprivs_drusure=Segur que vols suprimir els $1 permisos de taula MySQL seleccionats?
+cprivs_dok=Suprimeix els Permisos
 
 cpriv_title1=Creació de  Permisos de Columna
 cpriv_title2=Edició de Permisos de Columna
@@ -746,6 +761,7 @@ cnf_edatadir=Hi falta el directori de fitxers de bases de dades o bé és invàlid
 cnf_key_buffer=Mida del <i>buffer</i> d'índexs
 cnf_max_allowed_packet=Mida màxima de paquet
 cnf_max_connections=Nombre màxim de connexions
+cnf_query_cache_size=Mida del cau de la consulta en bytes
 cnf_table_cache=Taules a posar en el cau
 cnf_sort_buffer=Mida del <i>buffer</i> d'ordenació
 cnf_net_buffer_length=Mida del <i>buffer</i> de xarxa
@@ -826,6 +842,7 @@ kill_ecannot=No tens permís per gestionar connexions de bases de dades
 kill_enone=No n'has seleccionat cap
 
 vars_title=Variables de Sistema MySQL
+vars_desc=Atenció - Les variables establertes en aquesta pàgina es reiniciaran als seus valors per defecte quan es reiniciï MySQL. El valors permanents s'han d'establir a la pàgina de <a href='$1'>Configuració del Servidor MySQL</a>.
 vars_ecannot=No tens permís per editar les variables de sistema
 vars_name=Nom de la variable
 vars_value=Valor actual

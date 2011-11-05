@@ -13,6 +13,7 @@ index_rpm=Instal·la el paquet RPM d'Usermin
 index_tgz=Instal·la el paquet tar.gz d'Usermin
 index_deb=Instal·la el paquet Debian d'Usermin
 index_esame=El directori $1 de configuració d'Usermin establert a la pàgina de <a href='$2'>configuració del mòdul</a> és el mateix que el directori de Webmin, cosa que no és correcta.
+index_eroot=El directori de configuració $1 d'Usermin existeix, però el directori arrel de programes $2 al qual fa referència, no! Has de descarregar i reinstal·lar Usermin manualment.
 index_restart=Reinicia Usermin
 index_restartmsg=Fes clic sobre aquest botó per reiniciar el procés servidor d'Usermin. Això pot ser necessari si has actualitzat Perl fa poc. 
 
@@ -131,6 +132,7 @@ ssl_desc1=No sembla que el host on s'està executant Usermin tingui instal·lat el
 ssl_desc2=Atenció - activa el suport SSL només si tens un navegador que suporti SSL (com ara Netscape o IE), i no hi ha cap tallafocs bloquejant les peticions https entre el navegador i el host Usermin.
 ssl_newkey=Aquest formulari es pot utilitzar per crear una nova clau SSL per al servidor Usermin.
 ssl_hole=Com que actualment estàs utilitzant la clau SSL per defecte d'Usermin a la qual tothom té accés, hauries de generar immediatament una clau nova. Altrament, la teva connexió SSL no serà segura!
+ssl_savekey=Aquest formulari permet carregar un certificat i una clau privada SSL existents en format PEM per a ús del servidor Usermin.
 
 ca_email=Adreça de correu
 ca_ou=Departament
