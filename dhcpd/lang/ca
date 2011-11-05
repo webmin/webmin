@@ -277,6 +277,7 @@ eopt_smask=Màscara de subxarxa
 eopt_baddr=Adreça de retransmissió
 eopt_domname=Nom de domini
 eopt_dnsserv=Servidors DNS
+eopt_domsearch=Dominis DNS a cercar
 eopt_timeserv=Servidors horaris
 eopt_logserv=Servidors de registre
 eopt_swapserv=Servidor d'intercanvi

@@ -26,6 +26,8 @@ index_none=No s'ha trobat cap mòdul Perl instal·lat al sistema.
 index_tabmods=Mòduls existents
 index_tabinstall=Instal·la el mòdule
 index_tabsuggest=Mòduls suggerits
+index_allmods=Tots els mòduls utilitzats per Webmin
+index_wantmods=Mòduls a instal·lar
 
 download_err=No s'ha pogut instal·lar el mòdul
 download_elocal=No s'ha donat cap fitxer local

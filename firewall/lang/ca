@@ -286,6 +286,7 @@ log_add_host=S'ha afegit el servidor de cluster $1
 log_add_group=S'han afegit els servidors de cluster del grup $1
 log_delete_host=S'ha eliminat el servidor de cluster $1
 log_delete_group=S'han eliminat $1 servidors de cluster
+log_openports=S'han obert els ports del tallafocs $1
 
 setup_eiface=No has introduït cap interfície extern de xarxa
 setup_ecannot=No tens permís per configurar el tallafocs

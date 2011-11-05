@@ -75,6 +75,7 @@ save_eallow=L'usuari '$1' no té permís per accedir a cron
 save_ecannot=No tens permís per crear ni editar treballs cron de '$1'
 save_enone=No has triat cap $1 per executar
 save_ecannot2=No tens permís per crear treballs cron
+save_eidx=El treball cron s'ha desat correctament, però no s'ha pogut executar per que no es troba!
 
 allow_title=Control d'Accés a Cron
 allow_desc=Aquest formulari permet controlar quins usuaris poden crear i executar treballs cron.

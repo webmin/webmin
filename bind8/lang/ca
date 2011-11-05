@@ -238,6 +238,7 @@ edit_uprev=Actualitza inversa
 edit_over=Sí (i substitueix l'existent)
 edit_upfwd=Actualitza reemissió
 edit_err=No s'ha pogut desar el registre
+edit_egone=El registre seleccionat ja no existeix!
 edit_ettl='$1' no és un temps de vida vàlid
 edit_eip='$1' no és una adreça IP vàlida
 edit_eip6='$1' no és una adreça IPv6 vàlida

@@ -1,0 +1,2 @@
+autologin=Mode d'entrada,1,0-Demana usuari i contrasenya,1-Obre una shell de root
+timeout=Temps límit d'inactivitat abans de tancar la connexió,0,5,,segons

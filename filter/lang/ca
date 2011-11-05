@@ -105,6 +105,8 @@ auto_header=Opcions de resposta automàtica de correu
 auto_enabled=Resposta automàtica activada
 auto_reply=Missatge de resposta
 auto_charset=Joc de caràcters del missatge
+auto_charsetdef=De l'idioma actual
+auto_charsetother=Un altre joc de caràcters
 auto_period=Interval mínim entre respostes
 auto_err=No s'ha pogut desar la resposta automàtica
 

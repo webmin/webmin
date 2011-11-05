@@ -188,8 +188,11 @@ log_bootup=S'ha activat Dovecot en engegar el sistema
 log_bootdown=S'ha desactivat Dovecot en engegar el sistema
 log_manual=S'ha editat manualment el fitxer de configuració $1
 
-manual_title=Edició del Fitxer de Configuració
-manual_desc=S'està editant el fitxer de configuració $1 de Dovecot...
+manual_title=Edició dels Fitxers de Configuració
+manual_editsel=Edita el fitxer de configuració de Dovecot
 manual_err=No s'ha pogut desar el fitxer de configuració
 manual_edata=No has introduït res!
+manual_efile=El fitxer de configuració seleccionat no és vàlid
+manual_ok=Edita
+
 __norefs=1

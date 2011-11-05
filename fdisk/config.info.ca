@@ -1,0 +1,2 @@
+mode=Ordre de gestió de les particions,1,fdisk-Fdisk,parted-Parted,-Tria-la automàticament
+format=Format per defecte de la taula de particionst,1,msdos-MSDOS,gpt-GPT
