@@ -151,7 +151,7 @@ if ($rbcount) {
 	$fhtml .= &ui_links_row([ &select_all_link("r"),
 			          &select_invert_link("r") ]);
 	}
-print &ui_hidden_table_start($text{'view_files'}, "width=100%", 1, "files", 0);
+print &ui_hidden_table_start($text{'view_files'}, "width=100%", 1, "files", 1);
 $fhtml .= "<b>$text{'view_nofiles'}</b><p>\n" if (!$anydiffs);
 print &ui_table_row(undef, $fhtml, 2);
 print &ui_hidden_table_end("raw");
