@@ -68,10 +68,11 @@ foreach $v (@mysql_set_variables) {
 		&mysql_size_input($v, $vars{$v}), 3);
 	}
 foreach $v (@mysql_number_variables) {
+	$n = &find_value($v, $mems);
 	print &ui_table_row($text{'cnf_'.$v},
-		&ui_radio($v."_def", defined($vars{$v}) ? 0 : 1,
+		&ui_radio($v."_def", defined($n) ? 0 : 1,
 			  [ [ 1, $text{'default'} ], [ 0, " " ] ])."\n".
-		&ui_textbox($v, $vars{$v}, 8), 3);
+		&ui_textbox($v, $n, 8), 3);
 	}
 
 print &ui_table_end();
