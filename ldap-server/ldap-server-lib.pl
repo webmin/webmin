@@ -265,7 +265,7 @@ foreach my $file (&recursive_find_ldif($config{'config_file'})) {
 	while(<CONFIG>) {
 		s/\r|\n//g;
 		s/^#.*$//;
-		if (/^(\S+):\s*(.*)/) {
+		if (/^([^: \t]+):+\s*(.*)/) {
 			# Start of a directive
 			local $dir = { 'file' => $file,
 				       'line' => $lnum,
