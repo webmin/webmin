@@ -65,12 +65,12 @@ if ($fpt || $in{'fpt'}) {
 
 # Save set variables
 %vars = &parse_set_variables(&find_value("set-variable", $mems));
-foreach $w (@mysql_set_variables, @mysql_number_variables) {
+foreach $w (@mysql_set_variables) {
 	if ($in{$w."_def"}) {
 		delete($vars{$w});
 		}
 	else {
-		$in{$w} =~ /^\d+$/ && $in{$w} > 0 || &error($text{"cnf_e".$w});
+		$in{$w} =~ /^\d+$/ || &error($text{"cnf_e".$w});
 		$vars{$w} = $in{$w}.$in{$w."_units"};
 		}
 	}
@@ -79,6 +79,19 @@ foreach $v (keys %vars) {
 	push(@sets, $v."=".$vars{$v});
 	}
 &save_directive($conf, $mysqld, "set-variable", \@sets);
+
+# Save numeric variables
+foreach $w (@mysql_number_variables) {
+	if ($in{$w."_def"}) {
+		delete($vars{$w});
+		&save_directive($conf, $mysqld, $w, [ ]);
+		}
+	else {
+		$in{$w} =~ /^\d+$/ || &error($text{"cnf_e".$w});
+		&save_directive($conf, $mysqld, $w,
+				[ $in{$w}.$in{$w."_units"} ]);
+		}
+	}
 
 # Write out file
 &flush_file_lines($config{'my_cnf'});
