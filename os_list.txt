@@ -342,6 +342,9 @@ Mac OS X			10.2	macos		6.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.2/i
 Mac OS X			10.3	macos		7.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.3/i
 Mac OS X			10.4	macos		8.1	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.4/i
 Mac OS X			10.5	macos		9.2	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.5/i
+Mac OS X			10.6	macos		10.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.6/i
+Mac OS X			10.7	macos		11.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.7/i
+
 
 # Darwin, the open source version of OS X
 Darwin				$1	macos		$1	$uname =~ /Darwin.*\s([0-9\.]+)/
