@@ -137,6 +137,7 @@ if ($in{'new'} && !$access{'gmultiple'}) {
 
 $pfx = $config{'md5'} == 1 || $config{'md5'} == 3 ? "{md5}" :
        $config{'md5'} == 4 ? "{ssha}" :
+       $config{'md5'} == 5 ? "{sha}" :
        $config{'md5'} == 0 ? "{crypt}" : "";
 if ($in{'passmode'} == 0) {
 	$pass = "";
