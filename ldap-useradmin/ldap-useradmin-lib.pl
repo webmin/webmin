@@ -133,6 +133,14 @@ sub encrypt_password
 {
 local ($pass, $salt) = @_;
 &seed_random();
+if ($config{'md5'} == 5) {
+	# SHA encryption
+	local $qp = quotemeta($pass);
+	local $out = `$config{'slappasswd'} -h '{sha}' -s $qp 2>/dev/null`;
+	$out =~ s/\s+$//;
+	$out =~ s/^\{sha\}//i;
+	return $out;
+	}
 if ($config{'md5'} == 4) {
 	# LDAP SSHA encryption
 	local $qp = quotemeta($pass);
