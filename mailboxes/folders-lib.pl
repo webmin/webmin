@@ -2627,11 +2627,11 @@ foreach my $a (@$attach) {
 return @rv;
 }
 
-# quoted_message(&mail, quote-mode, sig, 0=any,1=text,2=html)
+# quoted_message(&mail, quote-mode, sig, 0=any,1=text,2=html, sig-at-top?)
 # Returns the quoted text, html-flag and body attachment
 sub quoted_message
 {
-local ($mail, $qu, $sig, $bodymode) = @_;
+local ($mail, $qu, $sig, $bodymode, $sigtop) = @_;
 local $mode = $bodymode == 1 ? 1 :
 	      $bodymode == 2 ? 2 :
 	      %userconfig ? $userconfig{'view_html'} :
@@ -2667,7 +2667,13 @@ if (($cfg->{'html_edit'} == 2 ||
 			$quote = &html_escape($writer)."\n".
 				 "<blockquote type=cite>\n".
 				 &safe_html($htmlbody->{'data'}).
-				 "</blockquote>".$sig."<br>\n";
+				 "</blockquote>";
+			if ($sigtop) {
+				$quote = $sig."<br>\n".$quote;
+				}
+			else {
+				$quote = $quote.$sig."<br>\n";
+				}
 			}
 		elsif ($qu && $qm == 1) {
 			# Quoted HTML below line
@@ -2677,8 +2683,13 @@ if (($cfg->{'html_edit'} == 2 ||
 			}
 		else {
 			# Un-quoted HTML
-			$quote = &safe_html($htmlbody->{'data'}).
-				 $sig."<br>\n";
+			$quote = &safe_html($htmlbody->{'data'});
+			if ($sigtop) {
+				$quote = $sig."<br>\n".$quote;
+				}
+			else {
+				$quote = $quote.$sig."<br>\n";
+				}
 			}
 		}
 	elsif ($plainbody) {
@@ -2691,7 +2702,13 @@ if (($cfg->{'html_edit'} == 2 ||
 			$quote = &html_escape($writer)."\n".
 				 "<blockquote type=cite>\n".
 				 "<pre>$pd</pre>".
-				 "</blockquote>".$sig."<br>\n";
+				 "</blockquote>";
+			if ($sigtop) {
+				$quote = $sig."<br>\n".$quote;
+				}
+			else {
+				$quote = $quote.$sig."<br>\n";
+				}
 			}
 		elsif ($qu && $qm == 1) {
 			# Quoted plain text as HTML below line
@@ -2701,8 +2718,13 @@ if (($cfg->{'html_edit'} == 2 ||
 			}
 		else {
 			# Un-quoted plain text as HTML
-			$quote = "<pre>$pd</pre>".
-				 $sig."<br>\n";
+			$quote = "<pre>$pd</pre>";
+			if ($sigtop) {
+				$quote = $sig."<br>\n".$quote;
+				}
+			else {
+				$quote = $quote.$sig."<br>\n";
+				}
 			}
 		}
 	$html_edit = 1;
@@ -2722,7 +2744,12 @@ else {
 			&wrap_lines($quote, 78));
 		}
 	$quote = $writer."\n".$quote if ($quote && $qu);
-	$quote .= "$sig\n" if ($sig);
+	if ($sig && $sigtop) {
+		$quote = $sig."\n".$quote;
+		}
+	elsif ($sig && !$sigtop) {
+		$quote = $quote.$sig."\n";
+		}
 	}
 return ($quote, $html_edit, $body);
 }
