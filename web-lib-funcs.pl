@@ -7140,8 +7140,8 @@ elsif ($_[0] == 3) {
 		$progress_step = $st;
 		}
 	else {
-		# No total size .. so only show in 100k jumps
-		if ($_[1] > $last_progress_size+100*1024) {
+		# No total size .. so only show in 1M jumps
+		if ($_[1] > $last_progress_size+1024*1024) {
 			print $sp,&text('progress_data2n',
 					&nice_size($_[1])),"<br>\n";
 			$last_progress_size = $_[1];
