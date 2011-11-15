@@ -34,7 +34,7 @@ else {
 @servers = &list_servers();
 
 # Run and display output
-if ($cmd->{'format'} ne 'redirect') {
+if ($cmd->{'format'} ne 'redirect' && $cmd->{'format'} ne 'form') {
 	if ($cmd->{'format'}) {
 		print "Content-type: ",$cmd->{'format'},"\n";
 		print "\n";
@@ -64,7 +64,8 @@ foreach $h (@hosts) {
 		# Run locally
 		($got, $out, $timeout) = &execute_custom_command(
 					$cmd, $env, $export, $str,
-					$cmd->{'format'} ne 'redirect');
+					$cmd->{'format'} ne 'redirect' &&
+					$cmd->{'format'} ne 'form');
 		}
 	else {
 		# Remote foreign call
@@ -81,7 +82,8 @@ foreach $h (@hosts) {
 		&additional_log('exec', undef, $displaystr);
 		}
 	if (!$remote_custom_error) {
-		print $out if ($h != 0 && $cmd->{'format'} ne 'redirect');
+		print $out if ($h != 0 && $cmd->{'format'} ne 'redirect' &&
+					  $cmd->{'format'} ne 'form');
 		if (!$got && !$cmd->{'format'}) {
 			print "<i>$text{'run_noout'}</i>\n";
 			}
@@ -114,6 +116,9 @@ if (!$cmd->{'format'}) {
 	}
 elsif ($cmd->{'format'} eq 'redirect') {
 	&redirect("");
+	}
+elsif ($cmd->{'format'} eq 'form') {
+	&redirect("form.cgi?id=".$in{'id'}."&idx=".$in{'idx'});
 	}
 
 sub remote_custom_handler

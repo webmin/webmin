@@ -62,6 +62,9 @@ else {
 	elsif ($in{'format_def'} == 2) {
 		$cmd->{'format'} = 'redirect';
 		}
+	elsif ($in{'format_def'} == 3) {
+		$cmd->{'format'} = 'form';
+		}
 	else {
 		$in{'format'} =~ /^[a-z0-9\.\_\-]+\/[a-z0-9\.\_\-]+/i ||
 			&error($text{'save_eformat'});

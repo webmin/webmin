@@ -83,11 +83,13 @@ print &ui_table_row(&hlink($text{'edit_clear'},"clear"),
 
 # Output format
 $fmode = $cmd->{'format'} eq 'redirect' ? 2 :
+	 $cmd->{'format'} eq 'form' ? 3 :
 	 $cmd->{'format'} ? 1 : 0;
 print &ui_table_row(&hlink($text{'edit_format'}, "format"),
 	&ui_radio("format_def", $fmode,
 		  [ [ 0, $text{'edit_format0'} ],
 		    [ 2, $text{'edit_format2'} ],
+		    [ 3, $text{'edit_format3'} ],
 		    [ 1, $text{'edit_format1'}." ".
 			 &ui_textbox("format",
 			    $fmode == 1 ? $cmd->{'format'} : "", 20) ] ]));

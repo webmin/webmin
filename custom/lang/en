@@ -61,6 +61,7 @@ edit_format=Output style
 edit_format0=Show in Webmin UI
 edit_format1=Output with MIME type
 edit_format2=Redirect to index
+edit_format3=Redirect to form
 edit_servers=Run on Webmin servers
 edit_this=this server
 edit_clone=Clone
