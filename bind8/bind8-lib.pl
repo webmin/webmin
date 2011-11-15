@@ -1280,7 +1280,13 @@ sub set_ownership
 {
 local ($user, $group, $perms);
 if ($config{'file_owner'}) {
+	# From config
 	($user, $group) = split(/:/, $config{'file_owner'});
+	}
+elsif ($_[0] =~ /^(.*)\/([^\/]+)$/) {
+	# Match parent dir
+	my @st = stat($1);
+	($user, $group) = ($st[4], $st[5]);
 	}
 if ($config{'file_perms'}) {
 	$perms = oct($config{'file_perms'});
