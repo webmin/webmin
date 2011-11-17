@@ -8,8 +8,8 @@ require './webmin-lib.pl';
 # Validate inputs
 $key = $in{'key'} || $in{'keyfile'};
 $key =~ s/\r//g;
-$key =~ /BEGIN RSA PRIVATE KEY/ &&
-  $key =~ /END RSA PRIVATE KEY/ || &error($text{'savekey_ekey'});
+$key =~ /BEGIN .*PRIVATE KEY/ &&
+  $key =~ /END .*PRIVATE KEY/ || &error($text{'savekey_ekey'});
 if (!$in{'cert_def'}) {
 	# Make sure cert is valid
 	$cert = $in{'cert'} || $in{'certfile'};
