@@ -7824,6 +7824,7 @@ elsif ($gconfig{'hostnamemode'} == 3) {
 	}
 else {
 	my $h = $ENV{'HTTP_HOST'};
+	return &get_system_hostname() if (!$h);
 	$h =~ s/:\d+//g;
 	if ($gconfig{'hostnamemode'} == 2) {
 		$h =~ s/^(www|ftp|mail)\.//i;
