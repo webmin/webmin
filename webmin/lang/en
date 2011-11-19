@@ -148,7 +148,7 @@ ui_sysinfo1=In browser title
 ui_sysinfo2=Above page heading
 ui_sysinfo3=Nowhere
 ui_sysinfo4=Instead of browser title
-ui_err=Failed to save colors
+ui_err=Failed to save user interface options
 ui_ergb=Invalid hexidecimal color value for '$1'
 ui_feedback=Send feedback to
 ui_feedbackmode=Allow sending of feedback?
@@ -178,6 +178,7 @@ ui_dateformat_dd/mon/yyyy=dd/mon/yyyy (ie. 16/Sep/2001)
 ui_dateformat_dd/mm/yyyy=dd/mm/yyyy (ie. 16/09/2001)
 ui_dateformat_mm/dd/yyyy=mm/dd/yyyy (ie. 09/16/2001)
 ui_dateformat_yyyy/mm/dd=yyyy/mm/dd (ie. 2001/09/16)
+ui_ehostnamedisplay=Missing or invalid display hostname
 
 mods_title=Webmin Modules
 mods_desc1=Webmin modules can be added after installation by using the form to the right. Modules are typically distributed in <tt>.wbm</tt> files, each of which can contain one or more modules. Modules can also be installed from RPM files if supported by your operating system.
