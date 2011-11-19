@@ -50,9 +50,11 @@ print &ui_table_row($text{'ssl_cert'},
 print &ui_table_row($text{'ssl_redirect'},
 	&ui_yesno_radio("ssl_redirect", $miniserv{'ssl_redirect'}));
 
-print &ui_table_row($text{'ssl_version'},
-	&ui_opt_textbox("version", $miniserv{'ssl_version'}, 4,
-			$text{'ssl_auto'}));
+if ($miniserv{'ssl_version'}) {
+	print &ui_table_row($text{'ssl_version'},
+		&ui_opt_textbox("version", $miniserv{'ssl_version'}, 4,
+				$text{'ssl_auto'}));
+	}
 
 $clist = $miniserv{'ssl_cipher_list'};
 $cmode = !$clist ? 1 :

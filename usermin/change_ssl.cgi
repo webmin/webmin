@@ -13,12 +13,14 @@ $miniserv{'ssl'} = $in{'ssl'};
 $miniserv{'keyfile'} = $in{'key'};
 $miniserv{'certfile'} = $in{'cert_def'} ? undef : $in{'cert'};
 $miniserv{'ssl_redirect'} = $in{'ssl_redirect'};
-if ($in{'version_def'}) {
-	delete($miniserv{'ssl_version'});
-	}
-else {
-	$in{'version'} =~ /^\d+$/ || &error($text{'ssl_eversion'});
-	$miniserv{'ssl_version'} = $in{'version'};
+if (defined($in{'version_def'})) {
+	if ($in{'version_def'}) {
+		delete($miniserv{'ssl_version'});
+		}
+	else {
+		$in{'version'} =~ /^\d+$/ || &error($text{'ssl_eversion'});
+		$miniserv{'ssl_version'} = $in{'version'};
+		}
 	}
 if ($in{'cipher_list_def'} == 1) {
 	delete($miniserv{'ssl_cipher_list'});
