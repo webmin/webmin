@@ -1,3 +1,4 @@
+__norefs=1
 delete_enone=Nichts ausgew&#228;hlt
 delete_err=Fehlgeschlagen die Logs zu l&#246;schen
 edit_always=Ignoriert
@@ -17,7 +18,7 @@ edit_file=Logdateipfad
 edit_header=Eigenschaften der zu rotierenden Logdatei
 edit_ifempty=Logdatei rotieren, auch wenn sie leer ist?
 edit_mail=Maile die Logdatei bevor sie gel&#246;scht wird?
-edit_mailfirst=Neusteste, die gerade rotiert wurde
+edit_mailfirst=Neueste, die gerade rotiert wurde
 edit_mailfl=Logdatei, der per E-Mail versendet werden soll
 edit_maillast=&#196;lteste, die danach gel&#246;scht wird
 edit_mailno=Nein, keine E-Mail senden
