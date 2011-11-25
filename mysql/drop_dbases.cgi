@@ -48,8 +48,7 @@ else {
 		}
 	print "<input type=submit name=confirm value='$text{'ddrops_ok'}'>\n";
 	print "</form></center>\n";
-	&ui_print_footer("edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
-		"", $text{'index_return'});
+	&ui_print_footer("", $text{'index_return'});
 	}
 
 
