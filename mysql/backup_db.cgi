@@ -52,6 +52,8 @@ if ($cron) {
 		$config{'backup_cmode_'.$in{'db'}} = $in{'cmode'};
 		$cmode = $in{'cmode'};
 		}
+	$config{'backup_email_'.$in{'db'}} = $in{'email'};
+	$config{'backup_notify_'.$in{'db'}} = $in{'notify'};
 
 	&foreign_require("cron", "cron-lib.pl");
 	@jobs = &cron::list_cron_jobs();

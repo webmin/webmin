@@ -20,8 +20,8 @@ if ($cmode) {
 	# Run and check before-backup command (for all DBs)
 	$bok = &execute_before(undef, STDOUT, 0, $config{'backup_'}, undef);
 	if (!$bok) {
-		print "Before-backup command failed!\n";
-		exit(1);
+		$failure = "Before-backup command failed!\n";
+		goto EMAIL;
 		}
 	}
 
@@ -29,13 +29,15 @@ if ($cmode) {
 if (!$config{'host'}) {
 	($r, $out) = &is_mysql_running();
 	if (!$r) {
-		print "MySQL does not appear to be running : $out\n";
-		print "Backups cannot be performed.\n";
-		exit(1);
+		$failure = "MySQL does not appear to be running : $out\n".
+			   "Backups cannot be performed.\n";
+		goto EMAIL;
 		}
 	}
 
 $ex = 0;
+$email = $config{'backup_email_'.($all ? '' : $dbs[0])};
+$notify = $config{'backup_notify_'.($all ? '' : $dbs[0])};
 foreach $db (@dbs) {
 	$sf = $all ? "" : $db;
 	if ($all) {
@@ -49,8 +51,9 @@ foreach $db (@dbs) {
 		$file = &date_subs($config{'backup_'.$db});
 		}
 	if (!$file) {
-		print STDERR "No backup file set for database $db\n";
-		exit(1);
+		push(@status, [ $db, $file, "No backup file set for $db" ]);
+		$ex = 1;
+		next;
 		}
 	@compat = $config{'backup_compatible_'.$sf} ?
 			( $config{'backup_compatible_'.$sf} ) : ( );
@@ -59,9 +62,14 @@ foreach $db (@dbs) {
 
 	if (!$cmode) {
 		# Run and check before-backup command (for one DB)
-		$bok = &execute_before($db, STDOUT, 0, $file, $all ? undef : $db);
+		$temp = &transname();
+		&open_tempfile(TEMP, ">$temp");
+		$bok = &execute_before($db, TEMP, 0, $file, $all ? undef : $db);
+		&close_tempfile(TEMP);
+		$err = &read_file_contents($temp);
+		&unlink_file($temp);
 		if (!$bok) {
-			print "Before-backup command failed!\n";
+			push(@status, [ $db, $file, "Before-backup command failed : $err" ]);
 			$ex = 1;
 			next;
 			}
@@ -78,16 +86,65 @@ foreach $db (@dbs) {
 				"root",
 				$config{'backup_single_'.$sf});
 	if ($err) {
-		print "Backup of database $db to file $file failed:\n";
-		print $out;
 		$ex = 1;
 		}
+	@st = stat($file);
+	push(@status, [ $db, $file, $err, $st[7] ]);
 	if (!$cmode) {
-		&execute_after($db, STDOUT, 0, $file, $all ? undef : $db);
+		&execute_after($db, undef, 0, $file, $all ? undef : $db);
 		}
 	}
 if ($cmode) {
-	&execute_after(undef, STDOUT, 0, $config{'backup_'}, undef);
+	&execute_after(undef, undef, 0, $config{'backup_'}, undef);
 	}
+
+# Send status email
+EMAIL:
+if ($email &&
+    ($notify == 0 || $notify == 1 && $ex || $notify == 2 && !$ex) &&
+    &foreign_check("mailboxes")) {
+	&foreign_require("mailboxes");
+	$host = &get_system_hostname();
+	$msg = $all ? 'backup_allsubject' : 'backup_subject';
+	$msg .= ($ex ? '_failed' : '_ok');
+	$subject = &text($msg, $dbs[0]);
+	$data = &text('backup_body', $host, scalar(@dbs))."\n\n";
+	if ($failure) {
+		$data .= $failure."\n";
+		}
+	$total = 0;
+	foreach $s (@status) {
+		$data .= &text('backup_bodydoing', $s->[0], $s->[1])."\n";
+		if ($s->[2]) {
+			$data .= &text('backup_bodyfailed', $s->[2]);
+			}
+		else {
+			$data .= &text('backup_bodyok', &nice_size($s->[3]));
+			$total += $s->[3];
+			}
+		$data .= "\n\n";
+		}
+	if ($all && $total) {
+		$data .= &text('backup_bodytotal', &nice_size($total))."\n\n";
+		}
+	if (&foreign_check("mount")) {
+		&foreign_require("mount");
+		$dir = $status[0]->[1];
+		while($dir ne "/" && !$total_space) {
+			$dir =~ s/\/[^\/]*$//;
+			$dir = "/" if (!$dir);
+			($total_space, $free_space) =
+				&mount::disk_space(undef, $dir);
+			}
+		if ($total_space) {
+			$data .= &text('backup_bodyspace',
+					&nice_size($total_space*1024),
+					&nice_size($free_space*1024))."\n\n";
+			}
+		}
+	&mailboxes::send_text_mail(&mailboxes::get_from_address(),
+                                   $email, undef, $subject, $data);
+	}
+
 exit($ex);
 

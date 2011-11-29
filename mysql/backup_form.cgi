@@ -149,6 +149,19 @@ if ($cron) {
 	print &ui_hidden_table_start($text{'backup_header3'}, "width=100%", 2,
 				     "sched", 1, [ "width=30%" ]);
 
+	# Who to notify?
+	$email = $c{'backup_email_'.$in{'db'}};
+	print &ui_table_row($text{'backup_email'},
+		&ui_textbox("email", $email, 60));
+
+	# Notification conditions
+	$notify = $c{'backup_notify_'.$in{'db'}};
+	print &ui_table_row($text{'backup_notify'},
+		&ui_radio("notify", int($notify),
+			  [ [ 0, $text{'backup_notify0'} ],
+			    [ 1, $text{'backup_notify1'} ],
+			    [ 2, $text{'backup_notify2'} ] ]));
+
 	# Show cron time
 	&foreign_require("cron", "cron-lib.pl");
 	@jobs = &cron::list_cron_jobs();
