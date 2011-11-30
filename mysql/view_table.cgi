@@ -241,8 +241,9 @@ print $sorthids;
 $check = !defined($in{'row'}) && !$in{'new'} && $keyed;
 if ($total || $in{'new'}) {
 	# Get the rows of data, and show the table header
-	$d = &execute_sql_safe($in{'db'},
-		"select * from ".&quote_table($in{'table'})." $search $sortsql $limitsql");
+	$sql = "select * from ".&quote_table($in{'table'}).
+	       " $search $sortsql $limitsql";
+	$d = &execute_sql_safe($in{'db'}, $sql);
 	@data = @{$d->{'data'}};
 	@tds = $check ? ( "width=5" ) : ( );
 	($has_blob) = grep { &is_blob($_) } @str;
@@ -399,6 +400,7 @@ if ($total || $in{'new'}) {
 		}
 	print &ui_columns_end();
 	print &ui_links_row(\@rowlinks);
+	print &text('view_sqlrun', "<tt>".&html_escape($sql)."</tt>")."<p>\n";
 	}
 else {
 	print "<b>$text{'view_none'}</b> <p>\n";
