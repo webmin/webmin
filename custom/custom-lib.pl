@@ -459,6 +459,9 @@ foreach my $a (@{$cmd->{'args'}}) {
 		      $setin->{$n."_month"}."-".
 		      $setin->{$n."_day"};
 		}
+	elsif ($a->{'type'} == 16) {
+		$rv = $setin->{$n} ? 1 : 0;
+		}
 	if ($rv eq '' && $a->{'must'} && $a->{'type'} != 7) {
 		&error(&text('run_emust', $a->{'desc'}));
 		}
@@ -619,6 +622,9 @@ elsif ($a->{'type'} == 15) {
 	return &ui_date_input($day, $month, $year,
 			      $n."_day", $n."_month", $n."_year")."&nbsp;".
 	       &date_chooser_button($n."_day", $n."_month", $n."_year");
+	}
+elsif ($a->{'type'} == 16) {
+	return &ui_submit($v || $a->{'name'}, $a->{'name'}); 
 	}
 else {
 	return "Unknown parameter type $a->{'type'}";

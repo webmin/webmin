@@ -1,4 +1,3 @@
-line1=Configurable options,11
 display_mode=Main page shows,1,0-All commands and parameters,1-Links to commands
 width=Width of file editor window,3,Default (80 chars)
 height=Height of file editor window,3,Default (20 chars)

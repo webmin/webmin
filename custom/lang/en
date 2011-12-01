@@ -51,6 +51,7 @@ edit_type12=Multi menu..
 edit_type13=Large multi menu..
 edit_type14=Left-right menu..
 edit_type15=Date
+edit_type16=Submit button..
 edit_noshow=Hide command when executing?
 edit_usermin=Available in Usermin?
 edit_timeout=Maximum time to wait for command?

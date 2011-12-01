@@ -35,12 +35,14 @@ print &ui_table_row(undef, $cmd->{'html'}, 4) if ($cmd->{'html'});
 
 foreach $a (@{$cmd->{'args'}}) {
 	print &ui_table_row(&html_escape($a->{'desc'}),
-		&show_parameter_input($a, 0));
+			    &show_parameter_input($a, 0), 1,
+			    [ "valign=top", "valign=top" ]);
+	$got_submit++ if ($a->{'type'} == 16);
 	}
 
 $txt = $cmd->{'edit'} ? $text{'form_edit'} : $text{'form_exec'};
 print &ui_table_end();
-print &ui_form_end([ [ undef, $txt ] ]);
+print &ui_form_end($got_submit ? [ ] : [ [ undef, $txt ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 

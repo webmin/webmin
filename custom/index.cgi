@@ -56,7 +56,11 @@ elsif ($config{'display_mode'} == 0) {
 		$html .= &ui_table_start(undef, undef, $w,
 		   $config{'columns'} == 1 ? [ "width=20%", "width=30%" ]
 					   : [ "width=30%" ]);
-		$html .= &ui_table_row(undef, &ui_submit($c->{'desc'}), $w, []);
+		($got_submit) = grep { $_->{'type'} == 16 } @a;
+		if (!$got_submit) {
+			$html .= &ui_table_row(undef,
+					&ui_submit($c->{'desc'}), $w, []);
+			}
 		if ($c->{'html'}) {
 			$html .= &ui_table_row(undef,
 				&filter_javascript($c->{'html'}), $w, []);
