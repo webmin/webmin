@@ -21,6 +21,7 @@ if ($cmode) {
 	$bok = &execute_before(undef, STDOUT, 0, $config{'backup_'}, undef);
 	if (!$bok) {
 		$failure = "Before-backup command failed!\n";
+		$ex = 1;
 		goto EMAIL;
 		}
 	}
@@ -31,6 +32,7 @@ if (!$config{'host'}) {
 	if (!$r) {
 		$failure = "MySQL does not appear to be running : $out\n".
 			   "Backups cannot be performed.\n";
+		$ex = 1;
 		goto EMAIL;
 		}
 	}
@@ -107,7 +109,7 @@ if ($email &&
 	$host = &get_system_hostname();
 	$msg = $all ? 'backup_allsubject' : 'backup_subject';
 	$msg .= ($ex ? '_failed' : '_ok');
-	$subject = &text($msg, $dbs[0]);
+	$subject = &text($msg, $dbs[0], scalar(@dbs));
 	$data = &text('backup_body', $host, scalar(@dbs))."\n\n";
 	if ($failure) {
 		$data .= $failure."\n";
