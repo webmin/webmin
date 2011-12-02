@@ -27,14 +27,12 @@ if ($cmode) {
 	}
 
 # Check if MySQL is running
-if (!$config{'host'}) {
-	($r, $out) = &is_mysql_running();
-	if (!$r) {
-		$failure = "MySQL does not appear to be running : $out\n".
-			   "Backups cannot be performed.\n";
-		$ex = 1;
-		goto EMAIL;
-		}
+($r, $out) = &is_mysql_running();
+if (!$r) {
+	$failure = "MySQL does not appear to be running : $out\n".
+		   "Backups cannot be performed.\n";
+	$ex = 1;
+	goto EMAIL;
 	}
 
 $ex = 0;
@@ -109,8 +107,10 @@ if ($email &&
 	$host = &get_system_hostname();
 	$msg = $all ? 'backup_allsubject' : 'backup_subject';
 	$msg .= ($ex ? '_failed' : '_ok');
-	$subject = &text($msg, $dbs[0], scalar(@dbs));
-	$data = &text('backup_body', $host, scalar(@dbs))."\n\n";
+	$subject = &text($msg, $dbs[0],
+			 scalar(@dbs) || $text{'backup_bodyall'});
+	$data = &text('backup_body', $host,
+	              scalar(@dbs) || $text{'backup_bodyall'})."\n\n";
 	if ($failure) {
 		$data .= $failure."\n";
 		}

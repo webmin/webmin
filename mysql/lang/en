@@ -734,6 +734,7 @@ backup_bodyfailed=.. backup failed : $1
 backup_bodyok=.. backup of $1 created OK
 backup_bodytotal=Total backup size : $1
 backup_bodyspace=Filesystem size : $1  Free space : $2
+backup_bodyall=all
 
 import_title=Import Data
 import_uploadout=Importing data from uploaded file ..
