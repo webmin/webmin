@@ -72,19 +72,19 @@ $con = &make_http_connection($host, $port, $ssl, $meth, $path);
 
 # Send request headers
 &write_http_connection($con, "Host: $host\r\n");
-&write_http_connection($con, "User-agent: Webmin\r\n");
+&write_http_connection($con, "User-Agent: Webmin\r\n");
 if ($user) {
 	$auth = &encode_base64("$user:$pass");
 	$auth =~ s/\n//g;
-	&write_http_connection($con, "Authorization: basic $auth\r\n");
+	&write_http_connection($con, "Authorization: Basic $auth\r\n");
 	}
 &write_http_connection($con, sprintf(
 			"Webmin-servers: %s://%s:%d/$module_name/\n",
 			$ENV{'HTTPS'} eq "ON" ? "https" : "http",
 			$ENV{'SERVER_NAME'}, $ENV{'SERVER_PORT'}));
 $cl = $ENV{'CONTENT_LENGTH'};
-&write_http_connection($con, "Content-length: $cl\r\n") if ($cl);
-&write_http_connection($con, "Content-type: $ENV{'CONTENT_TYPE'}\r\n")
+&write_http_connection($con, "Content-Length: $cl\r\n") if ($cl);
+&write_http_connection($con, "Content-Type: $ENV{'CONTENT_TYPE'}\r\n")
 	if ($ENV{'CONTENT_TYPE'});
 &write_http_connection($con, "\r\n");
 if ($cl) {
