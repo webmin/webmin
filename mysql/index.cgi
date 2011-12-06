@@ -139,7 +139,10 @@ else {
 		if ($can_create);
 	if (!@icons) {
 		# No databases .. tell user
-		if (@alldbs) {
+		if ($in{'search'}) {
+			print "<b>$text{'index_nodbs3'}</b> <p>\n";
+			}
+		elsif (@alldbs) {
 			print "<b>$text{'index_nodbs'}</b> <p>\n";
 			}
 		else {

@@ -27,6 +27,7 @@ index_setupok=Initialize Database
 index_nomod=Warning: The Perl module $1 is not installed on your system, so Webmin will not be able to reliably access your PostgreSQL database. <a href='$2'>Click here</a> to install it now.
 index_nomods=Warning: The Perl modules $1 and $2 are not installed on your system, so Webmin will not be able to reliably access your PostgreSQL database. <a href='$3'>Click here</a> to install them now.
 index_nodbs=You do not have access to any databases.
+index_nodbs3=No PostgreSQL databases matched your search.
 index_backup=Backup Databases
 index_backupmsg=Click this button to setup the backup of all PostgreSQL databases, either immediately or on a configured schedule.
 index_sch=(With schemas)

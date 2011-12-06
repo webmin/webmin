@@ -27,6 +27,7 @@ index_mysqlver=The command <tt>$1</tt> returned :
 index_eenvpass=The MySQL client program $1 does not accept passwords passed using the <tt>MYSQL_PWD</tt> environment variable. To ensure that Webmin is able to fully communicate with MySQL, this option should be turned off on the <a href='$2'>module configuration</a> page.
 index_nodbs=You do not have access to any MySQL databases.
 index_nodbs2=No MySQL databases were found on your system.
+index_nodbs3=No MySQL databases matched your search.
 index_backup=Backup Databases
 index_backupmsg=Click this button to setup the backup of all MySQL databases, either immediately or on a configured schedule.
 index_drops=Drop Selected Databases

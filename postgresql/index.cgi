@@ -168,7 +168,12 @@ else {
 	push(@rowlinks, "<a href=newdb_form.cgi>$text{'index_add'}</a>")
 		if ($can_create);
 	if (!@icons) {
-		print "<b>$text{'index_nodbs'}</b> <p>\n";
+                if ($in{'search'}) {
+                        print "<b>$text{'index_nodbs3'}</b> <p>\n";
+                        }
+		else {
+			print "<b>$text{'index_nodbs'}</b> <p>\n";
+			}
 		}
 	elsif (@icons > $max_dbs && !$in{'search'}) {
 		# Too many databases to show .. display search and jump forms
