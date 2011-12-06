@@ -8,7 +8,8 @@ $init_script = "$init::config{'init_dir'}/iptables";
 # Returns an error message if something is wrong with iptables on this system
 sub check_iptables
 {
-if (!-r $init_script) {
+if (!-r $init_script &&
+    &backquote_command("service iptables status 2>/dev/null") !~ /Loaded:\s+loaded/) {
 	return &text('redhat_escript', "<tt>$init_script</tt>");
 	}
 return undef if ($gconfig{'os_type'} eq 'trustix-linux');
@@ -32,22 +33,33 @@ $iptables_save_file = "/etc/sysconfig/iptables";
 # Applies the current iptables configuration from the save file
 sub apply_iptables
 {
-local $out = &backquote_logged("cd / ; $init_script restart 2>&1");
-$out =~ s/\033[^m]+m//g;
-return $? || $out =~ /FAILED/ ? "<pre>$out</pre>" : undef;
+if (-r $init_script) {
+	local $out = &backquote_logged("cd / ; $init_script restart 2>&1");
+	$out =~ s/\033[^m]+m//g;
+	return $? || $out =~ /FAILED/ ? "<pre>$out</pre>" : undef;
+	}
+else {
+	local $out = &backquote_logged("cd ; service iptables restart 2>&1");
+	return $? || $out =~ /FAILED/ ? "<pre>$out</pre>" : undef;
+	}
 }
 
 # unapply_iptables()
 # Writes the current iptables configuration to the save file
 sub unapply_iptables
 {
-$out = &backquote_logged("cd / ; $init_script save 2>&1 </dev/null");
-$out =~ s/\033[^m]+m//g;
-if ($? && $out =~ /usage/i) {
-	# 'save' argument not supported .. call iptables-save manually
+if (-r $init_script) {
+	$out = &backquote_logged("cd / ; $init_script save 2>&1 </dev/null");
+	$out =~ s/\033[^m]+m//g;
+	if ($? && $out =~ /usage/i) {
+		# 'save' argument not supported .. call iptables-save manually
+		return &iptables_save();
+		}
+	return $? || $out =~ /FAILED/ ? "<pre>$out</pre>" : undef;
+	}
+else {
 	return &iptables_save();
 	}
-return $? || $out =~ /FAILED/ ? "<pre>$out</pre>" : undef;
 }
 
 # started_at_boot()
