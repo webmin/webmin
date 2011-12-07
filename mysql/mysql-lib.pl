@@ -119,7 +119,7 @@ sub is_mysql_running
 if ($driver_handle && !$config{'nodbi'}) {
 	local $main::error_must_die = 1;
 	local ($data, $rv);
-	eval { $data = &execute_sql_safe(undef, "select version()") };
+	eval { $data = &execute_sql_safe(undef, "select version()"); };
 	local $err = $@;
 	$err =~ s/\s+at\s+\S+\s+line.*$//;
 	if ($@ =~ /denied|password/i) {
@@ -137,7 +137,8 @@ if ($driver_handle && !$config{'nodbi'}) {
 	}
 
 # Fall back to mysqladmin command
-local $out = `"$config{'mysqladmin'}" $authstr status 2>&1`;
+local $out = &backquote_command(
+	"\"$config{'mysqladmin'}\" $authstr status 2>&1");
 local $rv = $out =~ /uptime/i ? 1 :
             $out =~ /denied|password/i ? -1 : 0;
 $out =~ s/^.*\Q$config{'mysqladmin'}\E\s*:\s*//;

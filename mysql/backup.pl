@@ -16,15 +16,9 @@ else {
 	$cmode = 0;
 	}
 
-if ($cmode) {
-	# Run and check before-backup command (for all DBs)
-	$bok = &execute_before(undef, STDOUT, 0, $config{'backup_'}, undef);
-	if (!$bok) {
-		$failure = "Before-backup command failed!\n";
-		$ex = 1;
-		goto EMAIL;
-		}
-	}
+$ex = 0;
+$email = $config{'backup_email_'.($all ? '' : $dbs[0])};
+$notify = $config{'backup_notify_'.($all ? '' : $dbs[0])};
 
 # Check if MySQL is running
 ($r, $out) = &is_mysql_running();
@@ -35,9 +29,16 @@ if (!$r) {
 	goto EMAIL;
 	}
 
-$ex = 0;
-$email = $config{'backup_email_'.($all ? '' : $dbs[0])};
-$notify = $config{'backup_notify_'.($all ? '' : $dbs[0])};
+if ($cmode) {
+	# Run and check before-backup command (for all DBs)
+	$bok = &execute_before(undef, STDOUT, 0, $config{'backup_'}, undef);
+	if (!$bok) {
+		$failure = "Before-backup command failed!\n";
+		$ex = 1;
+		goto EMAIL;
+		}
+	}
+
 foreach $db (@dbs) {
 	$sf = $all ? "" : $db;
 	if ($all) {
