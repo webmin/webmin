@@ -126,7 +126,7 @@ return undef if ($dp =~ /\r|\n/);
 if (!@st) {
 	# Work around a broken stat function on large files on redhat 7.x
 	&has_command("stat") || return undef;
-	local $out = `stat -t '$_[0]'`;
+	local $out = &backquote_command("stat -t ".quotemeta($_[0]));
 	return undef if ($?);
 	$out =~ /^(.*)\s+(\d+)\s+(\d+)\s+(\S+)\s+(\d+)\s+(\d+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/;
 	local $type = defined($icon_map{$ext}) ? $icon_map{$ext} : 4;
