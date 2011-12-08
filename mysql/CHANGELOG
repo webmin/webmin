@@ -99,5 +99,5 @@ The SSL / X509 authentication type for a user can be set on the Edit User page.
 Added confirmation before deleting multiple user, host, database, table and column permissions.
 ---- Changes since 1.570 ----
 Added fields to the Edit User page for setting the maximum concurrent logins and operations per hour for users.
----- Changes since 1.580 ----
 Scheduled MySQL backups can now have their success or failure sent via email, via new options on the Backup Database page.
+When executing SQL or restoring a backup file, the character set can now be selected for the imported data.

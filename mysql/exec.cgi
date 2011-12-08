@@ -7,6 +7,7 @@ require './mysql-lib.pl';
 &can_edit_db($in{'db'}) || &error($text{'dbase_ecannot'});
 $access{'edonly'} && &error($text{'dbase_ecannot'});
 &error_setup($text{'exec_err'});
+$sql_charset = $in{'charset'};
 
 if ($in{'clear'}) {
 	# Delete the history file

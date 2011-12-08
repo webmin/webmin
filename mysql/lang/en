@@ -502,6 +502,7 @@ exec_isource=Text file source
 exec_iheader=Text file import options
 exec_created=$1 tables were created.
 exec_inserted=$1 records were inserted.
+exec_cs=Character set for data
 
 tprivs_title=Table Permissions
 tprivs_table=Table
