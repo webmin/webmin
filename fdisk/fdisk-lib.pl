@@ -193,6 +193,7 @@ if (open(PARTS, "/proc/partitions")) {
 	@devs = sort { ($b =~ /\/hd[a-z]+$/ ? 1 : 0) <=>
 		       ($a =~ /\/hd[a-z]+$/ ? 1 : 0) } @devs;
 	}
+return ( ) if (!@devs);		# No disks, ie on Xen
 
 # Skip cd-rom drive, identified from symlink. Don't do this if we can identify
 # cds by their media type though
