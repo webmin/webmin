@@ -7,12 +7,10 @@ require './mysql-lib.pl';
 
 if ($ARGV[0] eq "--all") {
 	$all = 1;
-	@dbs = grep { &supports_backup_db($_) } &list_databases();
 	$cmode = $config{'backup_cmode_'};
 	}
 else {
 	$ARGV[0] || die "Missing database parameter";
-	@dbs = ( $ARGV[0] );
 	$cmode = 0;
 	}
 
@@ -22,11 +20,19 @@ $notify = $config{'backup_notify_'.($all ? '' : $dbs[0])};
 
 # Check if MySQL is running
 ($r, $out) = &is_mysql_running();
-if (!$r) {
+if ($r != 1) {
 	$failure = "MySQL does not appear to be running : $out\n".
 		   "Backups cannot be performed.\n";
 	$ex = 1;
 	goto EMAIL;
+	}
+
+# Get DBs
+if ($all) {
+	@dbs = grep { &supports_backup_db($_) } &list_databases();
+	}
+else {
+	@dbs = ( $ARGV[0] );
 	}
 
 if ($cmode) {
