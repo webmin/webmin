@@ -343,6 +343,11 @@ $pm = $_[0]->{'members'};
 @newv = @{$_[2]};
 for($i=0; $i<@oldv || $i<@newv; $i++) {
 	local $oldeline = $i<@oldv ? $oldv[$i]->{'eline'} : undef;
+	if ($i < @newv) {
+		# Make sure new directive has 'value' set
+		local @v = @{$newv[$i]->{'values'}};
+		$newv[$i]->{'value'} = @v ? $v[0] : undef;
+		}
 	if ($i >= @oldv && !$_[5]) {
 		# a new directive is being added.. put it at the end of
 		# the parent
