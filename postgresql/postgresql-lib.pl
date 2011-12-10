@@ -695,10 +695,11 @@ return $_[0]->{'type'} eq 'text' || $_[0]->{'type'} eq 'bytea';
 # HUP postmaster if running, so that hosts file changes take effect
 sub restart_postgresql
 {
-if (open(PID, $config{'pid_file'})) {
-	($pid = <PID>) =~ s/\r|\n//g;
-	close(PID);
-	&kill_logged('HUP', $pid) if ($pid);
+foreach my $pidfile (glob($config{'pid_file'})) {
+	local $pid = &check_pid_file($pidfile);
+	if ($pid) {
+		&kill_logged('HUP', $pid);
+		}
 	}
 }
 
@@ -913,13 +914,18 @@ if ($config{'stop_cmd'}) {
 		}
 	}
 else {
-	local $pid;
-	open(PID, $config{'pid_file'});
-	($pid = <PID>) =~ s/\r|\n//g;
-	close(PID);
-	$pid || return &text('stop_epidfile', "<tt>$config{'pid_file'}</tt>");
-	&kill_logged('TERM', $pid) ||
-		return &text('stop_ekill', "<tt>$pid</tt>", "<tt>$!</tt>");
+	local $pidcount = 0;
+	foreach my $pidfile (glob($config{'pid_file'})) {
+		local $pid = &check_pid_file($pidfile);
+		if ($pid) {
+			&kill_logged('TERM', $pid) ||
+				return &text('stop_ekill', "<tt>$pid</tt>",
+					     "<tt>$!</tt>");
+			$pidcount++;
+			}
+		}
+	$pidcount || return &text('stop_epidfile',
+				  "<tt>$config{'pid_file'}</tt>");
 	}
 return undef;
 }
