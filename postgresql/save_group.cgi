@@ -32,7 +32,7 @@ else {
 	# Actually create or update the group
 	if (&get_postgresql_version() >= 8.0) {
 		# Need to use new create group or modify command
-		$s = &execute_sql($config{'basedb'}, "select * from pg_shadow");
+		$s = &execute_sql($config{'basedb'}, "select $pg_shadow_cols from pg_shadow");
 		foreach $u (@{$s->{'data'}}) {
 			$umap{$u->[1]} = $u->[0];
 			}

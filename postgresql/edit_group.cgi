@@ -39,7 +39,7 @@ else {
 	}
 
 # Group members
-$s = &execute_sql($config{'basedb'}, "select * from pg_shadow");
+$s = &execute_sql($config{'basedb'}, "select $pg_shadow_cols from pg_shadow");
 %uidtouser = map { $_->[1], $_->[0] } @{$s->{'data'}};
 if (!$in{'new'}) {
 	@mems = map { [ $_, $uidtouser{$_} || $_ ] } &split_array($group[2]);

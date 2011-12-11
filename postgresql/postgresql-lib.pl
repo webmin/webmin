@@ -13,6 +13,7 @@ if ($config{'psql'} =~ /^(.*)\/bin\/psql$/ && $1 ne '' && $1 ne '/usr') {
 	$ENV{$gconfig{'ld_env'}} .= ':' if ($ENV{$gconfig{'ld_env'}});
 	$ENV{$gconfig{'ld_env'}} .= "$1/lib";
 	}
+$pg_shadow_cols = "usename,usesysid,usecreatedb,usesuper,usecatupd,passwd,valuntil";
 
 if ($module_info{'usermin'}) {
 	# Login and password is set by user in Usermin, and the module always

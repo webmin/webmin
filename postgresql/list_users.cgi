@@ -6,7 +6,7 @@ require './postgresql-lib.pl';
 $access{'users'} || &error($text{'user_ecannot'});
 &ui_print_header(undef, $text{'user_title'}, "", "list_users");
 
-$s = &execute_sql_safe($config{'basedb'}, "select * from pg_shadow");
+$s = &execute_sql_safe($config{'basedb'}, "select $pg_shadow_cols from pg_shadow");
 print &ui_form_start("delete_users.cgi", "post");
 @rowlinks = ( &select_all_link("d", 0),
 	      &select_invert_link("d", 0),
