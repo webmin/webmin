@@ -5202,6 +5202,8 @@ if (!$pid) {
                      "$uinfo[3] ".join(" ", $uinfo[3],
                                             &other_groups($uinfo[0])) );
 	($>, $<) = ($uinfo[2], $uinfo[2]);
+	$ENV{'USER'} = $ENV{'LOGNAME'} = $user;
+	$ENV{'HOME'} = $uinfo[7];
 
 	close(SUDOw);
 	close(SOCK);
