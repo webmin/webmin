@@ -115,7 +115,8 @@ if ($email &&
 	$msg = $all ? 'backup_allsubject' : 'backup_subject';
 	$msg .= ($ex ? '_failed' : '_ok');
 	$subject = &text($msg, $dbs[0],
-			 scalar(@dbs) || $text{'backup_bodyall'});
+			 scalar(@dbs) || $text{'backup_bodyall'},
+			 &get_display_hostname());
 	$data = &text('backup_body', $host,
 	              scalar(@dbs) || $text{'backup_bodyall'})."\n\n";
 	if ($failure) {
