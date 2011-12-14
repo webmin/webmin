@@ -184,6 +184,7 @@ mode_local=Single boot script
 mode_win32=Windows services
 mode_rc=FreeBSD RC scripts
 mode_upstart=Upstart
+mode_systemd=Systemd
 
 upstart_title1=Create Upstart Service
 upstart_title2=Edit Upstart Service

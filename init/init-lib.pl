@@ -38,6 +38,10 @@ This variable is set based on the bootup system in use. Possible values are :
 
 =item win32 - Windows services
 
+=item upstart - Upstart, seend on Ubuntu 11
+
+=item systemd - SystemD, as seen on Fedora 16
+
 =cut
 if ($config{'hostconfig'}) {
 	$init_mode = "osx";
@@ -48,6 +52,10 @@ elsif ($config{'rc_dir'}) {
 elsif ($config{'init_base'} && -d "/etc/init" &&
        &has_command("insserv") && &has_command("initctl")) {
 	$init_mode = "upstart";
+	}
+elsif ($config{'init_base'} && -d "/etc/systemd" &&
+       &has_command("systemctl")) {
+	$init_mode = "systemd";
 	}
 elsif ($config{'init_base'}) {
 	$init_mode = "init";
@@ -496,7 +504,7 @@ such as init.d, OSX and FreeBSD.
 sub action_status
 {
 if ($init_mode eq "upstart") {
-	# Check service status
+	# Check upstart service status
 	local $out = &backquote_command("initctl status ".
 					quotemeta($_[0])." 2>&1");
 	if (!$?) {
@@ -511,7 +519,17 @@ if ($init_mode eq "upstart") {
 		return 1;	# Should never happen
 		}
 	}
-if ($init_mode eq "init" || $init_mode eq "upstart") {
+elsif ($init_mode eq "systemd") {
+	# Check systemd service status
+	local $out = &backquote_command("systemctl show ".
+					quotemeta($_[0])." 2>&1");
+	if ($out =~ /UnitFileState=(\S+)/) {
+		# Exists .. but is it started at boot?
+		return lc($1) eq 'enabled' ? 2 : 1;
+		}
+	}
+if ($init_mode eq "init" || $init_mode eq "upstart" ||
+    $init_mode eq "systemd") {
 	# Look for init script
 	local ($a, $exists, $starting, %daemon);
 	foreach $a (&list_actions()) {
@@ -630,7 +648,14 @@ if ($init_mode eq "upstart" && (!-r "$config{'init_dir'}/$_[0]" ||
 		}
 	return;
 	}
-if ($init_mode eq "init" || $init_mode eq "local" || $init_mode eq "upstart") {
+if ($init_mode eq "upstart" && (!-r "$config{'init_dir'}/$_[0]" ||
+				-r "/etc/init/$_[0].conf")) {
+	# Create systemd unit if missing, as long as this isn't an old-style
+	# init script
+	# XXX
+	}
+if ($init_mode eq "init" || $init_mode eq "local" || $init_mode eq "upstart" ||
+    $init_mode eq "systemd") {
 	# In these modes, we create a script to run
 	if ($config{'daemons_dir'} &&
 	    &read_env_file("$config{'daemons_dir'}/$_[0]", \%daemon)) {
@@ -953,7 +978,13 @@ if ($init_mode eq "upstart") {
 		&flush_file_lines($cfile);
 		}
 	}
-if ($init_mode eq "init" || $init_mode eq "upstart") {
+elsif ($init_mode eq "systemd") {
+	# Use systemctl to disable at boot
+	&system_logged("systemctl disable ".quotemeta($_[0]).
+		       " >/dev/null 2>&1");
+	}
+if ($init_mode eq "init" || $init_mode eq "upstart" ||
+    $init_mode eq "systemd") {
 	# Unlink or disable init script
 	local ($daemon, %daemon);
 	local $file = &action_filename($_[0]);
@@ -1712,6 +1743,169 @@ Delete all traces of some upstart service
 
 =cut
 sub delete_upstart_service
+{
+my ($name) = @_;
+&system_logged("insserv -r ".quotemeta($name)." >/dev/null 2>&1");
+my $cfile = "/etc/init/$name.conf";
+my $ifile = "/etc/init.d/$name";
+&unlink_logged($cfile, $ifile);
+}
+
+=head2 list_systemd_services
+
+Returns a list of all known systemd services, each of which is a hash ref
+with 'name', 'desc', 'boot', 'status' and 'pid' keys.
+
+=cut
+sub list_systemd_services
+{
+# Get all systemd unit names
+my @units = split(/\r?\n/, &backquote_command("systemctl list-units --full"));
+
+# Dump state of all of them
+my @rv;
+my @lines = split(/\r?\n/, &backquote_command("systemctl show ".
+					      join(" ", @units)));
+my $curr;
+my %info;
+foreach my $l (@lines) {
+	my ($n, $v) = split(/=/, $l, 2);
+	next if (!$n);
+	if (lc($n) eq 'id') {
+		$curr = $v;
+		$info{$curr} ||= { };
+		}
+	$info{$curr}->{$n} = $v;
+	}
+
+# Extract info we want
+foreach my $name (keys %info) {
+	my $i = $info->{$name};
+	push(@rv, { 'name' => $name,
+		    'legacy' => 0,
+		    'boot' => $i->{'UnitFileState'} eq 'enabled',
+		    'status' => $i->{'ExecStart'} eq 'active',
+		    'cmd' => $i->{'ExecStart'},
+		    'pid' => $i->{'ExecMainPID'},
+		  });
+	}
+
+# Also add legacy init scripts
+my @rls = &get_inittab_runlevel();
+foreach my $a (&list_actions()) {
+	$a =~ s/\s+\d+$//;
+	next if ($done{$a});
+	my $f = &action_filename($a);
+	my $s = { 'name' => $a,
+		  'legacy' => 1 };
+	$s->{'boot'} = 'stop';
+	foreach my $rl (@rls) {
+		my $l = glob("/etc/rc$rl.d/S*$a");
+		$s->{'boot'} = 'start' if ($l);
+		}
+	$s->{'desc'} = &init_description($f);
+	my $hasarg = &get_action_args($f);
+	if ($hasarg->{'status'}) {
+		my $r = &action_running($f);
+		if ($r == 0) {
+			$s->{'status'} = 'waiting';
+			}
+		elsif ($r == 1) {
+			$s->{'status'} = 'running';
+			}
+		}
+	push(@rv, $s);
+	}
+
+return sort { $a->{'name'} cmp $b->{'name'} } @rv;
+}
+
+=head2 start_systemd_service(name)
+
+Run the systemd service with some name, and return an OK flag and output
+
+=cut
+sub start_systemd_service
+{
+my ($name) = @_;
+my $out = &backquote_logged(
+	"systemctl start ".quotemeta($name)." 2>&1 </dev/null");
+return (!$?, $out);
+}
+
+=head2 stop_systemd_service(name)
+
+Shut down the systemctl service with some name, and return an OK flag and output
+
+=cut
+sub stop_systemd_service
+{
+my ($name) = @_;
+my $out = &backquote_logged(
+	"systemctl stop ".quotemeta($name)." 2>&1 </dev/null");
+return (!$?, $out);
+}
+
+=head2 restart_systemd_service(name)
+
+Restart the systemd service with some name, and return an OK flag and output
+
+=cut
+sub restart_systemd_service
+{
+my ($name) = @_;
+my $out = &backquote_logged(
+	"systemctl restart ".quotemeta($name)." 2>&1 </dev/null");
+return (!$?, $out);
+}
+
+=head2 create_systemd_service(name, description, command, [pre-script], [fork])
+
+Create a new systemd service with the given details.
+
+=cut
+sub create_systemd_service
+{
+# XXX
+my ($name, $desc, $server, $prestart, $forks) = @_;
+my $cfile = "/etc/init/$name.conf";
+&open_lock_tempfile(CFILE, ">$cfile");
+&print_tempfile(CFILE,
+  "# $name\n".
+  "#\n".
+  "# $desc\n".
+  "\n".
+  "description  \"$desc\"\n".
+  "\n".
+  "start on runlevel [2345]\n".
+  "stop on runlevel [!2345]\n".
+  "\n"
+  );
+if ($forks) {
+	&print_tempfile(CFILE,
+	  "expect fork\n".
+	  "\n"
+	  );
+	}
+if ($prestart) {
+	&print_tempfile(CFILE,
+	  "pre-start script\n".
+	  join("\n",
+	    map { "    ".$_."\n" }
+		split(/\n/, $prestart))."\n".
+	  "end script\n".
+	  "\n");
+	}
+&print_tempfile(CFILE, "exec ".$server."\n");
+&close_tempfile(CFILE);
+}
+
+=head2 delete_systemd_service(name)
+
+Delete all traces of some systemd service
+
+=cut
+sub delete_systemd_service
 {
 my ($name) = @_;
 &system_logged("insserv -r ".quotemeta($name)." >/dev/null 2>&1");
