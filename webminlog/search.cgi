@@ -103,6 +103,14 @@ while(my ($id, $idx) = each %index) {
 			}
 		next if (!&can_user($act->{'user'}));
 		next if (!&can_mod($act->{'module'}));
+
+		# Check description
+		if ($in{'desc'} =~ /\S/) {
+			my $desc = &get_action_description($act, $in{'long'});
+			$desc =~ s/<[^>]+>//g;
+			next if ($desc !~ /\Q$in{'desc'}\E/i);
+			}
+
 		push(@match, $act);
 		}
 	}
@@ -126,7 +134,9 @@ my $searchmsg = join(" ",
 		 "<tt>".&html_escape($minfo{'desc'})."</tt>"),
 	$in{'tall'} ? '' : 
 	  $fromstr eq $tostr ? &text('search_critt2', $tostr) :
-	    &text('search_critt', $fromstr, $tostr));
+	    &text('search_critt', $fromstr, $tostr),
+	$in{'desc'} ? &text('search_critd', &html_escape($in{'desc'}))
+		    : "");
 
 my %minfo_cache;
 if ($in{'csv'}) {

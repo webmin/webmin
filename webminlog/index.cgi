@@ -69,6 +69,10 @@ print &ui_table_row($text{'index_stimes'},
 			  [ 0, &text('index_time', &time_input('from'),
 						   &time_input('to')) ] ]));
 
+# Action description to match
+print &ui_table_row($text{'index_sdesc'},
+		    &ui_textbox("desc", undef, 40));
+
 # Search modified files and diff contents
 if ($gconfig{'logfiles'}) {
 	print &ui_table_row($text{'index_sfile'},

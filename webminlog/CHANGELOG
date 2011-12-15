@@ -27,3 +27,5 @@ Converted commands in the module's API file to POD format, and added more detail
 ---- Changes since 1.520 ----
 Actions in Webmin which produce output (like deleting a user or creating a domain) now have that output logged, and it can be viewed on the Action Details page.
 Added a link to export actions log search results as CSV.
+---- Changes since 1.570 ----
+Added a field for searching for actions by their description.
