@@ -5046,6 +5046,7 @@ my $realfile = &translate_filename($_[0]);
 return 0 if (!$_[0] || defined($main::locked_file_list{$realfile}));
 my $no_lock = !&can_lock_file($realfile);
 my $lock_tries_count = 0;
+my $last_lock_err;
 while(1) {
 	my $pid;
 	if (!$no_lock && open(LOCKING, "$realfile.lock")) {
@@ -5059,13 +5060,32 @@ while(1) {
 			# Create the .lock file
 			open(LOCKING, ">$realfile.lock") || return 0;
 			my $lck = eval "flock(LOCKING, 2+4)";
+			my $err = $!;
 			if (!$lck && !$@) {
 				# Lock of lock file failed! Wait till later
+				close(LOCKING);
+				unlink("$realfile.lock");
+				$last_lock_err = "Flock failed : ".($@ || $err);
 				goto tryagain;
 				}
-			print LOCKING $$,"\n";
+			my $ok = (print LOCKING $$,"\n");
+			$err = $!;
+			if (!$ok) {
+				# Failed to write to .lock file ..
+				close(LOCKING);
+				unlink("$realfile.lock");
+				$last_lock_err = "Lock write failed : ".$err;
+				goto tryagain;
+				}
 			eval "flock(LOCKING, 8)";
-			close(LOCKING);
+			$ok = close(LOCKING);
+			$err = $!;
+			if (!$ok) {
+				# Failed to close lock file
+				unlink("$realfile.lock");
+				$last_lock_err = "Lock close failed : ".$err;
+				goto tryagain;
+				}
 			}
 		$main::locked_file_list{$realfile} = int($_[1]);
 		push(@main::temporary_files, "$realfile.lock");
@@ -5099,7 +5119,8 @@ tryagain:
 	sleep(1);
 	if ($lock_tries_count++ > 5*60) {
 		# Give up after 5 minutes
-		&error(&text('elock_tries', "<tt>$realfile</tt>", 5));
+		&error(&text('elock_tries2', "<tt>$realfile</tt>", 5,
+			     $last_lock_err));
 		}
 	}
 return 1;
