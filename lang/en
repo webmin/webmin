@@ -223,7 +223,7 @@ sday_6=Sa
 
 emodule=Access denied : User $1 is not allowed to use the $2 module
 emodulecheck=The $1 module is not available on your system
-elock_tries=Failed to lock file $1 after $2 minutes
+elock_tries2=Failed to lock file $1 after $2 minutes. Last error was : $3
 
 skill_high=Expert
 skill_medium=Intermediate
