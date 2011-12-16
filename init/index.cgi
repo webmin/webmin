@@ -343,6 +343,49 @@ elsif ($init_mode eq "upstart" && $access{'bootup'}) {
 			    ]);
 
 	}
+elsif ($init_mode eq "systemd" && $access{'bootup'}) {
+	# Show systemd actions
+	print &ui_form_start("mass_systemd.cgi", "post");
+	@links = ( &select_all_link("d"),
+		   &select_invert_link("d"),
+		   "<a href='edit_systemd.cgi?new=1'>$text{'index_uadd'}</a>" );
+	print &ui_links_row(\@links);
+	print &ui_columns_start([ "", $text{'index_uname'},
+				  $text{'index_udesc'},
+				  $text{'index_uboot'},
+				  $text{'index_ustatus'}, ]);
+	foreach $u (&list_systemd_services()) {
+		if ($u->{'legacy'}) {
+			$l = "edit_action.cgi?0+".&urlize($u->{'name'});
+			}
+		else {
+			$l = "edit_systemd.cgi?name=".&urlize($u->{'name'});
+			}
+		print &ui_columns_row([
+			&ui_checkbox("d", $u->{'name'}, undef),
+			"<a href='$l'>$u->{'name'}</a>",
+			$u->{'desc'},
+			$u->{'boot'} == 1 ? $text{'yes'} :
+			  $u->{'boot'} == 2 ? $text{'index_always'} :
+			  "<font color=#ff0000>$text{'no'}</font>",
+			$u->{'status'} ? $text{'yes'} :
+			  "<font color=#ff0000>$text{'no'}</font>",
+			]);
+		}
+	print &ui_columns_end();
+	print &ui_links_row(\@links);
+	print &ui_form_end([ [ "start", $text{'index_start'} ],
+			     [ "stop", $text{'index_stop'} ],
+			     [ "restart", $text{'index_restart'} ],
+			     undef,
+			     [ "addboot", $text{'index_addboot'} ],
+			     [ "delboot", $text{'index_delboot'} ],
+			     undef,
+			     [ "addboot_start", $text{'index_addboot_start'} ],
+			     [ "delboot_stop", $text{'index_delboot_stop'} ],
+			    ]);
+
+	}
 
 # reboot/shutdown buttons
 print &ui_hr();

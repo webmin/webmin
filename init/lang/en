@@ -48,6 +48,7 @@ index_udesc=Service description
 index_uboot=Start at boot?
 index_ustatus=Running now?
 index_uadd=Create a new upstart service.
+index_always=Always
 
 edit_title=Edit Action
 create_title=Create Action

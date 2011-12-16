@@ -648,11 +648,20 @@ if ($init_mode eq "upstart" && (!-r "$config{'init_dir'}/$_[0]" ||
 		}
 	return;
 	}
-if ($init_mode eq "upstart" && (!-r "$config{'init_dir'}/$_[0]" ||
-				-r "/etc/init/$_[0].conf")) {
+if ($init_mode eq "systemd" && (!-r "$config{'init_dir'}/$_[0]" ||
+				&is_systemd_service($_[0]))) {
 	# Create systemd unit if missing, as long as this isn't an old-style
 	# init script
-	# XXX
+	my $cfile = "/lib/systemd/system/$_[0]";
+	if (-r $cfile) {
+		&system_logged("systemctl enable ".
+			       quotemeta($_[0])." >/dev/null 2>&1");
+		}
+	else {
+		# Need to create config
+		# XXX
+		}
+	return;
 	}
 if ($init_mode eq "init" || $init_mode eq "local" || $init_mode eq "upstart" ||
     $init_mode eq "systemd") {
@@ -770,7 +779,8 @@ if ($init_mode eq "init" || $init_mode eq "local" || $init_mode eq "upstart" ||
 		}
 
 	if ($need_links && ($init_mode eq "init" ||
-			    $init_mode eq "upstart")) {
+			    $init_mode eq "upstart" ||
+			    $init_mode eq "systemd")) {
 		local $data = &read_file_contents($fn);
 		my $done = 0;
 		if (&has_command("chkconfig") && !$config{'no_chkconfig'} &&
@@ -1760,12 +1770,32 @@ with 'name', 'desc', 'boot', 'status' and 'pid' keys.
 sub list_systemd_services
 {
 # Get all systemd unit names
-my @units = split(/\r?\n/, &backquote_command("systemctl list-units --full"));
+my $out = &backquote_command("systemctl list-units --full --all");
+&error("Failed to list systemd units : $out") if ($?);
+foreach my $l (split(/\r?\n/, $out)) {
+	my ($unit, $loaded, $active, $sub, $desc) = split(/\s+/, $l, 5);
+	if ($unit ne "UNIT" && $loaded eq "loaded") {
+		push(@units, $unit);
+		}
+	}
+
+# Also find unit files for units that may be disabled at boot and not running,
+# and so don't show up in systemctl list-units
+opendir(UNITS, "/lib/systemd/system");
+push(@units, grep { !/\.wants$/ && !/^\./ && !/\@/ } readdir(UNITS));
+closedir(UNITS);
+
+# Skip useless units
+@units = grep { !/^sys-devices-/ &&
+	        !/^\-\.mount/ &&
+		!/^dev-/ &&
+		!/^systemd-/ } @units;
+@units = &unique(@units);
 
 # Dump state of all of them
 my @rv;
-my @lines = split(/\r?\n/, &backquote_command("systemctl show ".
-					      join(" ", @units)));
+$out = &backquote_command("systemctl show -- ".join(" ", @units));
+my @lines = split(/\r?\n/, $out);
 my $curr;
 my %info;
 foreach my $l (@lines) {
@@ -1775,17 +1805,26 @@ foreach my $l (@lines) {
 		$curr = $v;
 		$info{$curr} ||= { };
 		}
-	$info{$curr}->{$n} = $v;
+	if ($curr) {
+		$info{$curr}->{$n} = $v;
+		}
+	}
+if ($? && keys(%info) < 2) {
+	&error("Failed to read systemd units : $out");
 	}
 
 # Extract info we want
 foreach my $name (keys %info) {
-	my $i = $info->{$name};
+	my $i = $info{$name};
 	push(@rv, { 'name' => $name,
+		    'desc' => $i->{'Description'},
 		    'legacy' => 0,
-		    'boot' => $i->{'UnitFileState'} eq 'enabled',
-		    'status' => $i->{'ExecStart'} eq 'active',
-		    'cmd' => $i->{'ExecStart'},
+		    'boot' => $i->{'UnitFileState'} eq 'enabled' ? 1 :
+			      $i->{'UnitFileState'} eq 'static' ? 2 : 0,
+		    'status' => $i->{'ActiveState'} eq 'active',
+		    'start' => $i->{'ExecStart'},
+		    'stop' => $i->{'ExecStop'},
+		    'reload' => $i->{'ExecReload'},
 		    'pid' => $i->{'ExecMainPID'},
 		  });
 	}
@@ -1912,6 +1951,22 @@ my ($name) = @_;
 my $cfile = "/etc/init/$name.conf";
 my $ifile = "/etc/init.d/$name";
 &unlink_logged($cfile, $ifile);
+}
+
+=head2 is_systemd_service(name)
+
+Returns 1 if some service is managed by systemd
+
+=cut
+sub is_systemd_service
+{
+my ($name) = @_;
+foreach my $s (&list_systemd_services()) {
+	if ($s->{'name'} eq $name && !$s->{'legacy'}) {
+		return 1;
+		}
+	}
+return 0;
 }
 
 =head2 reboot_system
