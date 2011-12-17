@@ -48,6 +48,7 @@ index_udesc=Service description
 index_uboot=Start at boot?
 index_ustatus=Running now?
 index_uadd=Create a new upstart service.
+index_sadd=Create a new systemd service.
 index_always=Always
 
 edit_title=Edit Action
@@ -211,5 +212,27 @@ upstart_eserver=No server command entered
 upstart_eserver2=Server command does not exist
 upstart_eserver3=Only one server command can be entered
 upstart_return=upstart service
+
+systemd_title1=Create Systemd Service
+systemd_title2=Edit Systemd Service
+systemd_egone=Service no longer exists!
+systemd_elegacy=Not a systemd service!
+systemd_header=Systemd service details
+systemd_name=Service name
+systemd_desc=Service description
+systemd_start=Commands to run on startup
+systemd_stop=Commands to run on shutdown
+systemd_conf=Systemd configuration
+systemd_boot=Start at boot time?
+systemd_status=Current status
+systemd_status0=Not running
+systemd_status1=Running with PID $1
+systemd_err=Failed to save systemd service
+systemd_ename=Missing or invalid-lookup systemd service name
+systemd_eclash=A service with the same name already exists
+systemd_edesc=Missing service description
+systemd_return=systemd service
+systemd_econf=No systemd configuration entered
+systemd_estart=Missing commands to run on startup
 
 __norefs=1

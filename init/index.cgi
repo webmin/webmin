@@ -348,7 +348,7 @@ elsif ($init_mode eq "systemd" && $access{'bootup'}) {
 	print &ui_form_start("mass_systemd.cgi", "post");
 	@links = ( &select_all_link("d"),
 		   &select_invert_link("d"),
-		   "<a href='edit_systemd.cgi?new=1'>$text{'index_uadd'}</a>" );
+		   "<a href='edit_systemd.cgi?new=1'>$text{'index_sadd'}</a>" );
 	print &ui_links_row(\@links);
 	print &ui_columns_start([ "", $text{'index_uname'},
 				  $text{'index_udesc'},

@@ -652,14 +652,14 @@ if ($init_mode eq "systemd" && (!-r "$config{'init_dir'}/$_[0]" ||
 				&is_systemd_service($_[0]))) {
 	# Create systemd unit if missing, as long as this isn't an old-style
 	# init script
-	my $cfile = "/lib/systemd/system/$_[0]";
+	my $cfile = &get_systemd_root()."/".$_[0];
 	if (-r $cfile) {
 		&system_logged("systemctl enable ".
 			       quotemeta($_[0])." >/dev/null 2>&1");
 		}
 	else {
 		# Need to create config
-		# XXX
+		&create_systemd_service($_[0], $_[1], $_[2], $_[3]);
 		}
 	return;
 	}
@@ -1781,7 +1781,7 @@ foreach my $l (split(/\r?\n/, $out)) {
 
 # Also find unit files for units that may be disabled at boot and not running,
 # and so don't show up in systemctl list-units
-opendir(UNITS, "/lib/systemd/system");
+opendir(UNITS, &get_systemd_root());
 push(@units, grep { !/\.wants$/ && !/^\./ && !/\@/ } readdir(UNITS));
 closedir(UNITS);
 
@@ -1814,6 +1814,7 @@ if ($? && keys(%info) < 2) {
 	}
 
 # Extract info we want
+my $root = &get_systemd_root();
 foreach my $name (keys %info) {
 	my $i = $info{$name};
 	push(@rv, { 'name' => $name,
@@ -1826,6 +1827,7 @@ foreach my $name (keys %info) {
 		    'stop' => $i->{'ExecStop'},
 		    'reload' => $i->{'ExecReload'},
 		    'pid' => $i->{'ExecMainPID'},
+		    'file' => $root."/".$name,
 		  });
 	}
 
@@ -1898,45 +1900,31 @@ my $out = &backquote_logged(
 return (!$?, $out);
 }
 
-=head2 create_systemd_service(name, description, command, [pre-script], [fork])
+=head2 create_systemd_service(name, description, start-script, stop-script, restart-script)
 
 Create a new systemd service with the given details.
 
 =cut
 sub create_systemd_service
 {
-# XXX
-my ($name, $desc, $server, $prestart, $forks) = @_;
-my $cfile = "/etc/init/$name.conf";
+my ($name, $desc, $start, $stop, $restart) = @_;
+$start =~ s/\r?\n/ ; /g;
+$stop =~ s/\r?\n/ ; /g;
+$restart =~ s/\r?\n/ ; /g;
+my $cfile = &get_systemd_root()."/".$name;
 &open_lock_tempfile(CFILE, ">$cfile");
-&print_tempfile(CFILE,
-  "# $name\n".
-  "#\n".
-  "# $desc\n".
-  "\n".
-  "description  \"$desc\"\n".
-  "\n".
-  "start on runlevel [2345]\n".
-  "stop on runlevel [!2345]\n".
-  "\n"
-  );
-if ($forks) {
-	&print_tempfile(CFILE,
-	  "expect fork\n".
-	  "\n"
-	  );
-	}
-if ($prestart) {
-	&print_tempfile(CFILE,
-	  "pre-start script\n".
-	  join("\n",
-	    map { "    ".$_."\n" }
-		split(/\n/, $prestart))."\n".
-	  "end script\n".
-	  "\n");
-	}
-&print_tempfile(CFILE, "exec ".$server."\n");
+&print_tempfile(CFILE, "[Unit]\n");
+&print_tempfile(CFILE, "Description=$desc\n") if ($desc);
+&print_tempfile(CFILE, "\n");
+&print_tempfile(CFILE, "[Service]\n");
+&print_tempfile(CFILE, "ExecStart=$start\n");
+&print_tempfile(CFILE, "ExecStop=$stop\n") if ($stop);
+&print_tempfile(CFILE, "ExecReload=$restart\n") if ($restart);
+&print_tempfile(CFILE, "\n");
+&print_tempfile(CFILE, "[Install]\n");
+&print_tempfile(CFILE, "WantedBy=multi-user.target\n");
 &close_tempfile(CFILE);
+&restart_systemd();
 }
 
 =head2 delete_systemd_service(name)
@@ -1947,10 +1935,8 @@ Delete all traces of some systemd service
 sub delete_systemd_service
 {
 my ($name) = @_;
-&system_logged("insserv -r ".quotemeta($name)." >/dev/null 2>&1");
-my $cfile = "/etc/init/$name.conf";
-my $ifile = "/etc/init.d/$name";
-&unlink_logged($cfile, $ifile);
+&unlink_logged(&get_systemd_root()."/".$name);
+&restart_systemd();
 }
 
 =head2 is_systemd_service(name)
@@ -1967,6 +1953,29 @@ foreach my $s (&list_systemd_services()) {
 		}
 	}
 return 0;
+}
+
+=head2 get_systemd_root()
+
+Returns the base directory for systemd unit config files
+
+=cut
+sub get_systemd_root
+{
+return "/lib/systemd/system";
+}
+
+=head2 restart_systemd()
+
+Tell the systemd daemon to re-read its config
+
+=cut
+sub restart_systemd
+{
+my @pids = &find_byname("systemd");
+if (@pids) {
+	&kill_logged('HUP', @pids);
+	}
 }
 
 =head2 reboot_system
