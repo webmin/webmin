@@ -342,19 +342,29 @@ else {
 sub is_squid_running
 {
 local $conf = &get_config();
-local ($pidstruct, $pidfile);
-$pidstruct = &find_config("pid_filename", $conf);
-if (!$pidstruct) {
-	$pidstruct = &find_config("pid_filename", $conf, 2);
+
+# Find all possible PID files
+local @pidfiles;
+local $pidstruct = &find_config("pid_filename", $conf);
+push(@pidfiles, $pidstruct->{'values'}->[0]) if ($pidstruct);
+local $def_pidstruct = &find_config("pid_filename", $conf);
+push(@pidfiles, $def_pidstruct->{'values'}->[0]) if ($def_pidstruct);
+push(@pidfiles, $config{'pid_file'}) if ($config{'pid_file'});
+@pidfiles = grep { $_ ne "none" } @pidfiles;
+
+# Try check one
+foreach my $pidfile (@pidfiles) {
+	my $pid = &check_pid_file($pidfile);
+	return $pid if ($pid);
 	}
-$pidfile = $pidstruct ? $pidstruct->{'values'}->[0] : $config{'pid_file'};
-if ($pidfile eq "none" || !$pidfile) {
+
+if (!@pidfiles) {
+	# Fall back to checking for Squid process
 	local ($pid) = &find_byname("squid");
 	return $pid;
 	}
-else {
-	return &check_pid_file($pidfile);
-	}
+
+return 0;
 }
 
 # this_url()
