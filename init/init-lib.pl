@@ -653,14 +653,13 @@ if ($init_mode eq "systemd" && (!-r "$config{'init_dir'}/$_[0]" ||
 	# Create systemd unit if missing, as long as this isn't an old-style
 	# init script
 	my $cfile = &get_systemd_root()."/".$_[0];
-	if (-r $cfile) {
-		&system_logged("systemctl enable ".
-			       quotemeta($_[0])." >/dev/null 2>&1");
-		}
-	else {
+	if (!-r $cfile) {
 		# Need to create config
-		&create_systemd_service($_[0], $_[1], $_[2], $_[3]);
+		&create_systemd_service($_[0], $_[1], $_[2], $_[3], undef,
+					$_[5]->{'fork'}, $_[5]->{'pidfile'});
 		}
+	&system_logged("systemctl enable ".
+		       quotemeta($_[0])." >/dev/null 2>&1");
 	return;
 	}
 if ($init_mode eq "init" || $init_mode eq "local" || $init_mode eq "upstart" ||
@@ -1900,14 +1899,15 @@ my $out = &backquote_logged(
 return (!$?, $out);
 }
 
-=head2 create_systemd_service(name, description, start-script, stop-script, restart-script)
+=head2 create_systemd_service(name, description, start-script, stop-script,
+			      restart-script, [forks], [pidfile])
 
 Create a new systemd service with the given details.
 
 =cut
 sub create_systemd_service
 {
-my ($name, $desc, $start, $stop, $restart) = @_;
+my ($name, $desc, $start, $stop, $restart, $forks, $pidfile) = @_;
 $start =~ s/\r?\n/ ; /g;
 $stop =~ s/\r?\n/ ; /g;
 $restart =~ s/\r?\n/ ; /g;
@@ -1920,6 +1920,8 @@ my $cfile = &get_systemd_root()."/".$name;
 &print_tempfile(CFILE, "ExecStart=$start\n");
 &print_tempfile(CFILE, "ExecStop=$stop\n") if ($stop);
 &print_tempfile(CFILE, "ExecReload=$restart\n") if ($restart);
+&print_tempfile(CFILE, "Type=forking\n") if ($forks);
+&print_tempfile(CFILE, "PIDFile=$pidfile\n") if ($pidfile);
 &print_tempfile(CFILE, "\n");
 &print_tempfile(CFILE, "[Install]\n");
 &print_tempfile(CFILE, "WantedBy=multi-user.target\n");

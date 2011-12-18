@@ -62,3 +62,7 @@ elsif ($init_mode eq "upstart") {
 	# Delete upstart service
 	&delete_upstart_service($product);
 	}
+elsif ($init_mode eq "systemd") {
+	# Delete systemd service
+	&delete_systemd_service($product.".service");
+	}
