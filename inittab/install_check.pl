@@ -9,7 +9,10 @@ do 'inittab-lib.pl';
 sub is_installed
 {
 if (-r $config{'inittab_file'}) {
-	return $_[0] ? 2 : 1;
+	my @it = &parse_inittab();
+	if (scalar(@it)) {
+		return $_[0] ? 2 : 1;
+		}
 	}
 return 0;
 }
