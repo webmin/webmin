@@ -120,12 +120,11 @@ elsif ($init_mode eq "win32") {
 elsif ($init_mode eq "rc" || $init_mode eq "upstart" ||
        $init_mode eq "systemd") {
 	# Create RC or upstart script
-	$name = $init_mode eq "systemd" ? $product.".service" : $product;
-	&enable_at_boot($name, $ucproduct, "$config_directory/start",
-			   "$config_directory/stop",
-			   undef,
-			   { 'fork' => 1,
-			     'pidfile' => $var_directory."/miniserv.pid" });
+	&enable_at_boot($product, $ucproduct, "$config_directory/start",
+			"$config_directory/stop",
+			undef,
+			{ 'fork' => 1,
+			  'pidfile' => $var_directory."/miniserv.pid" });
 	}
 
 $config{'atboot_product'} = $product;

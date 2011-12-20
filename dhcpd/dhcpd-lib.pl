@@ -850,7 +850,7 @@ sub restart_dhcpd
 local $out;
 if ($config{'restart_cmd'}) {
 	# Run the restart script
-	$out = &backquote_logged("$config{'restart_cmd'} 2>&1");
+	$out = &backquote_logged("($config{'restart_cmd'} 2>&1)");
 	}
 else {
 	# Kill and re-run the server
@@ -894,7 +894,7 @@ return "<pre>".&html_escape($out)."</pre>".$conftext;
 sub stop_dhcpd
 {
 if ($config{'stop_cmd'}) {
-	local $out = &backquote_logged("$config{'stop_cmd'} 2>&1");
+	local $out = &backquote_logged("($config{'stop_cmd'} 2>&1)");
 	return $? ? "<pre>$out</pre>" : undef;
 	}
 else {
@@ -922,7 +922,7 @@ if (!-r $config{'lease_file'}) {
 	}
 local $out;
 if ($config{'start_cmd'}) {
-	$out = &backquote_logged("$config{'start_cmd'} 2>&1");
+	$out = &backquote_logged("($config{'start_cmd'} 2>&1)");
 	}
 else {
 	$out = &backquote_logged("$config{'dhcpd_path'} -cf $config{'dhcpd_conf'} -lf $config{'lease_file'} $config{'interfaces'} 2>&1");

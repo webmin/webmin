@@ -240,6 +240,7 @@ if ($config{'pid_file'}) {
 	}
 else {
 	($pid) = &find_byname("syslogd");
+	($pid) = &find_byname("rsyslogd") if (!$pid);
 	}
 return $pid;
 }

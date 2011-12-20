@@ -521,8 +521,10 @@ if ($init_mode eq "upstart") {
 	}
 elsif ($init_mode eq "systemd") {
 	# Check systemd service status
+	local $unit = $_[0];
+	$unit .= ".service" if ($unit !~ /\.service$/);
 	local $out = &backquote_command("systemctl show ".
-					quotemeta($_[0])." 2>&1");
+					quotemeta($unit)." 2>&1");
 	if ($out =~ /UnitFileState=(\S+)/) {
 		# Exists .. but is it started at boot?
 		return lc($1) eq 'enabled' ? 2 : 1;
@@ -610,6 +612,8 @@ sub enable_at_boot
 local $st = &action_status($_[0]);
 return if ($st == 2);	# already starting!
 local ($daemon, %daemon);
+local $unit = $_[0];
+$unit .= ".service" if ($unit !~ /\.service$/);
 
 if ($init_mode eq "upstart" && (!-r "$config{'init_dir'}/$_[0]" ||
 				-r "/etc/init/$_[0].conf")) {
@@ -649,17 +653,19 @@ if ($init_mode eq "upstart" && (!-r "$config{'init_dir'}/$_[0]" ||
 	return;
 	}
 if ($init_mode eq "systemd" && (!-r "$config{'init_dir'}/$_[0]" ||
-				&is_systemd_service($_[0]))) {
+				&is_systemd_service($unit))) {
 	# Create systemd unit if missing, as long as this isn't an old-style
 	# init script
-	my $cfile = &get_systemd_root()."/".$_[0];
+	my $cfile = &get_systemd_root()."/".$unit;
 	if (!-r $cfile) {
 		# Need to create config
-		&create_systemd_service($_[0], $_[1], $_[2], $_[3], undef,
+		$_[2] || &error("Systemd service $_[0] cannot be created ".
+				"unless a command is given");
+		&create_systemd_service($unit, $_[1], $_[2], $_[3], undef,
 					$_[5]->{'fork'}, $_[5]->{'pidfile'});
 		}
 	&system_logged("systemctl enable ".
-		       quotemeta($_[0])." >/dev/null 2>&1");
+		       quotemeta($unit)." >/dev/null 2>&1");
 	return;
 	}
 if ($init_mode eq "init" || $init_mode eq "local" || $init_mode eq "upstart" ||
@@ -670,7 +676,8 @@ if ($init_mode eq "init" || $init_mode eq "local" || $init_mode eq "upstart" ||
 		$daemon++;
 		}
 	local $fn;
-	if ($init_mode eq "init" || $init_mode eq "upstart") {
+	if ($init_mode eq "init" || $init_mode eq "upstart" ||
+            $init_mode eq "systemd") {
 		# Normal init.d system
 		$fn = &action_filename($_[0]);
 		}
@@ -961,6 +968,8 @@ sub disable_at_boot
 {
 local $st = &action_status($_[0]);
 return if ($st != 2);	# not currently starting
+local $unit = $_[0];
+$unit .= ".service" if ($unit !~ /\.service$/);
 
 if ($init_mode eq "upstart") {
 	# Just use insserv to disable, and comment out start line in .conf file
@@ -989,7 +998,7 @@ if ($init_mode eq "upstart") {
 	}
 elsif ($init_mode eq "systemd") {
 	# Use systemctl to disable at boot
-	&system_logged("systemctl disable ".quotemeta($_[0]).
+	&system_logged("systemctl disable ".quotemeta($unit).
 		       " >/dev/null 2>&1");
 	}
 if ($init_mode eq "init" || $init_mode eq "upstart" ||
@@ -1838,21 +1847,16 @@ foreach my $a (&list_actions()) {
 	my $f = &action_filename($a);
 	my $s = { 'name' => $a,
 		  'legacy' => 1 };
-	$s->{'boot'} = 'stop';
+	$s->{'boot'} = 0;
 	foreach my $rl (@rls) {
 		my $l = glob("/etc/rc$rl.d/S*$a");
-		$s->{'boot'} = 'start' if ($l);
+		$s->{'boot'} = 1 if ($l);
 		}
 	$s->{'desc'} = &init_description($f);
 	my $hasarg = &get_action_args($f);
 	if ($hasarg->{'status'}) {
 		my $r = &action_running($f);
-		if ($r == 0) {
-			$s->{'status'} = 'waiting';
-			}
-		elsif ($r == 1) {
-			$s->{'status'} = 'running';
-			}
+		$s->{'status'} = $r == 1 ? 1 : 0;
 		}
 	push(@rv, $s);
 	}
