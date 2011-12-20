@@ -70,7 +70,7 @@ Amazon Linux			$1	redhat-linux	20.0	`cat /etc/system-release 2>/dev/null` =~ /Am
 
 # Free Redhat Linux and Fedora
 Redhat Linux			$1	redhat-linux	$1	`cat /etc/redhat-release 2>/dev/null` =~ /red.*hat.*release\s+(\S+)/i && `cat /etc/redhat-release 2>/dev/null` !~ /[eE]nterprise|AS|ES|WS|[aA]dvanced/
-Redhat Linux			"Fedora $1"	redhat-linux	sprintf("%.1f", 9.0+$1)		`cat /etc/redhat-release /etc/fedora-release 2>/dev/null` =~ /Fedora.*\s([0-9\.]+)\s/i || `cat /etc/redhat-release /etc/fedora-release 2>/dev/null` =~ /Fedora.*\sFC(\S+)\s/i
+Fedora Linux			$1	redhat-linux	sprintf("%.1f", 9.0+$1)		`cat /etc/redhat-release /etc/fedora-release 2>/dev/null` =~ /Fedora.*\s([0-9\.]+)\s/i || `cat /etc/redhat-release /etc/fedora-release 2>/dev/null` =~ /Fedora.*\sFC(\S+)\s/i
 
 # Slackware clones
 White Dwarf Linux		2.1.0	slackware-linux	8.1	`cat /tmp/wd/version 2>/dev/null` =~ /2\.1\.0/
