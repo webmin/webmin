@@ -1,0 +1,8 @@
+proftpd_path=/usr/sbin/proftpd
+proftpd_conf=/etc/proftpd.conf
+ftpusers=/etc/ftpusers
+test_config=1
+test_always=0
+test_manual=0
+stop_cmd=systemctl stop proftpd.service
+start_cmd=systemctl start proftpd.service
