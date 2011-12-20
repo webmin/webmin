@@ -525,7 +525,8 @@ elsif ($init_mode eq "systemd") {
 	$unit .= ".service" if ($unit !~ /\.service$/);
 	local $out = &backquote_command("systemctl show ".
 					quotemeta($unit)." 2>&1");
-	if ($out =~ /UnitFileState=(\S+)/) {
+	if ($out =~ /UnitFileState=(\S+)/ &&
+	    $out !~ /Description=LSB:\s/) {
 		# Exists .. but is it started at boot?
 		return lc($1) eq 'enabled' ? 2 : 1;
 		}
@@ -1825,6 +1826,7 @@ if ($? && keys(%info) < 2) {
 my $root = &get_systemd_root();
 foreach my $name (keys %info) {
 	my $i = $info{$name};
+	next if ($i->{'Description'} =~ /^LSB:\s/);
 	push(@rv, { 'name' => $name,
 		    'desc' => $i->{'Description'},
 		    'legacy' => 0,
