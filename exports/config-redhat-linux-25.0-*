@@ -1,0 +1,4 @@
+restart_command=systemctl restart nfs-server.service
+exports_file=/etc/exports
+nfs_server=rpc.nfsd
+apply_cmd=exportfs -r
