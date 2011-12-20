@@ -5620,6 +5620,10 @@ $cmd =~ s/^\((.*)\)\s*$/$1/;
 $cmd .= $and;
 &additional_log('exec', undef, $cmd);
 &webmin_debug_log('CMD', "cmd=$cmd") if ($gconfig{'debug_what_cmd'});
+if ($realcmd !~ /;|\&\&|\|/) {
+	# Force run in shell, to get useful output if command doesn't exist
+	$realcmd = "($realcmd)";
+	}
 return `$realcmd`;
 }
 
@@ -5678,6 +5682,10 @@ if (&is_readonly_mode() && !$_[1]) {
 	}
 my $realcmd = &translate_command($_[0]);
 &webmin_debug_log('CMD', "cmd=$realcmd") if ($gconfig{'debug_what_cmd'});
+if ($realcmd !~ /;|\&\&|\|/) {
+	# Force run in shell, to get useful output if command doesn't exist
+	$realcmd = "($realcmd)";
+	}
 return `$realcmd`;
 }
 
