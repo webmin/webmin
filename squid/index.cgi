@@ -30,12 +30,12 @@ if (!-r $config{'squid_conf'}) {
 	}
 
 # Check the version number
-$fullver = $ver = `$config{'squid_path'} -v 2>&1`;
+$fullver = $ver = &backquote_command("$config{'squid_path'} -v 2>&1");
 if ($ver =~ /version\s+(\S+)/i) {
 	$ver = $1;
 	}
-if ($ver =~ /(1\.1)\.\d+/ || $ver =~ /(1)\.NOVM/ ||
-    $ver =~ /(2\.[01234567])\./ || $ver =~ /(3\.[01])/) {
+if ($ver =~ /^(1\.1)\.\d+/ || $ver =~ /^(1)\.NOVM/ ||
+    $ver =~ /^(2\.[01234567])\./ || $ver =~ /^(3\.[0123])/) {
 	# Save version number
 	open(VERSION, ">$module_config_directory/version");
 	print VERSION $1,"\n";
