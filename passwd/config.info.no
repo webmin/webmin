@@ -8,5 +8,5 @@
 
 max_users=Maksimalt antal viste burkere,0
 input_type=Bruker velger type,1,1-Liste boks,0-Tekst felt
-sort_mode=Sorter bruker etter,1,0-Rekkefølge i fil,1-Etter brukernavn
-passwd_cmd=Kommando for å endre passord,3,Oppdater systemfil katalog
+sort_mode=Sorter bruker etter,1,0-Rekkef&#248;lge i fil,1-Etter brukernavn
+passwd_cmd=Kommando for &#229; endre passord,3,Oppdater systemfil katalog

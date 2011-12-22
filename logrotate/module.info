@@ -17,3 +17,4 @@ desc_ko_KR.UTF-8=로그 파일 전환
 desc_ja_JP.UTF-8=ログローテート
 desc_cz.UTF-8=Rotování log souborů
 desc_sk.UTF-8=Archivácia systémových záznamov
+desc_no=Loggfil rotasjon

@@ -1,0 +1,6 @@
+line1=Konfigurerbare innstillinger,11
+sort_mode=Sorter loggfiler etter,1,1-Logg filnavn,0-Plassering i konfigurasjonsfilen
+add_file=Legg til nye logrotate seksjoner i,3,Prim&#230;r konfigurasjonsfil
+line2=System konfigurasjon,11
+logrotate_conf=Sti ti lkonfigurasjonsfilen for logrotate,0
+logrotate=Sti ti llogrotate programmet,0
