@@ -590,6 +590,7 @@ viewu_msg1=Klicken Sie auf eine Prozess ID aus der Liste, um den Benutzer zu tre
 viewu_msg2=Im Moment ist kein Benutzer angemeldet
 viewu_none=Keine
 viewu_pid=Prozess ID
+viewu_refresh=Seite aktualisieren.
 viewu_share=Freigabe
 viewu_time=Verbunden seit
 viewu_user=Benutzer
