@@ -227,6 +227,7 @@ systemd_boot=Start at boot time?
 systemd_status=Current status
 systemd_status0=Not running
 systemd_status1=Running with PID $1
+systemd_status2=Running
 systemd_err=Failed to save systemd service
 systemd_ename=Missing or invalid-lookup systemd service name
 systemd_eclash=A service with the same name already exists
