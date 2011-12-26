@@ -15,8 +15,8 @@ if (!-r $init_script &&
 return undef if ($gconfig{'os_type'} eq 'trustix-linux');
 return undef if ($gconfig{'os_type'} eq 'redhat-linux' &&
 		 $gconfig{'os_version'} > 10);
-if (!$config{'done_check_iptables'}) {
-	local $out = `$init_script status 2>&1`;
+if (!$config{'done_check_iptables'} && -r $init_script) {
+	local $out = &backquote_command("$init_script status 2>&1");
 	if ($out !~ /table:|INPUT|FORWARD|OUTPUT|is\s+stopped|firewall\s+stopped/) {
 		return &text('redhat_eoutput',
 			     "<tt>$init_script status</tt>");
