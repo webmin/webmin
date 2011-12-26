@@ -1,0 +1,104 @@
+Release Checklist
+-----------------
+
+ x Check all .cgi and .pl files for syntax errors!
+find . -name "*.cgi" | grep -v shellinabox.cgi | grep -v thirdparty-cgi-scripts | grep -v ipweb | grep -v ipcache | grep -v thejax-theme | xargs -l1 perl -c |& grep -v OK
+find . -name "*.pl" | grep -v config.info | grep -v makemodulerpm.pl | grep -v ipcache | grep -v swell-tsunami-theme | grep -v Authen-SolarisRBAC-0.1 | grep -v virtualmin-nuvola | grep -v win32.pl | grep -v asterisk | grep -v server-manager | grep -v thejax-theme | grep -v exim | grep -v Webmin-API-1.0 | xargs -l1 perl -c |& grep -v OK
+
+ x Make sure all cgi programs are executable
+find . -name "*.cgi" | xargs chmod +x
+
+ x Make sure all files are world-readable, but not world-writable
+find . -type f | grep -v shellinabox | grep -v asterisk | xargs chmod +r
+find . -type f | grep -v shellinabox | grep -v asterisk | xargs chmod o-w
+find . -type d | grep -v shellinabox | grep -v asterisk | xargs chmod +rx
+find . -type d | grep -v shellinabox | grep -v asterisk | xargs chmod o-w
+
+ x Delete all ~, .rej and .orig files
+find . -name "*~" -o -name "*.rej" -o -name "*.orig" -o -name ".*.swp" | xargs rm
+
+ x Create and check in UTF-8 translations
+./chinese-to-utf8.pl
+find . -name '*.UTF-8*' | grep -v sccb- | xargs -l1 git add
+git commit ; git push
+
+ x Check language files for clashes
+langcheck.pl lang/en */lang/en | grep -v asterisk/lang | grep -v rae-mpp/lang
+
+ x Update README and version files
+
+ x Run Virtualmin tests
+	x fudu
+	x lentor
+	x xencentos
+
+ x Build .tar.gz, minimal.tar.gz and Solaris, RPM and Debian packages
+
+ x Install on test system
+	vm2 create-system --type kvm --host webmintest --kvm-host fudu.home --ssh-pass smeg --image kvm-centos5.4-base --desc "Webmin install test" --kvm-memory 256
+        vm2 upload-file --host webmintest.home --source /usr/local/webadmin/rpm/webmin-$ver-1.noarch.rpm --dest /tmp/webmin.rpm
+        vm2 run-command --host webmintest.home "/etc/init.d/iptables stop ; chkconfig iptables off"
+        vm2 run-command --host webmintest.home "rpm -U /tmp/webmin.rpm"
+        vm2 refresh-systems --host webmintest.home
+	vm2 reboot-system --host webmintest.home
+        vm2 refresh-systems --host webmintest.home
+        vm2 run-command --host webmintest.home "rpm -U --force /tmp/webmin.rpm"
+        vm2 refresh-systems --host webmintest.home
+	vm2 delete-system --host webmintest.home
+
+ x Upload files to sourceforge
+	/usr/local/webadmin/copy-devels.sh
+	Create new dir at https://sourceforge.net/projects/webadmin/files/webmin/
+	scp /tmp/devel/*/*$ver* jcameron,webadmin@frs.sourceforge.net:/home/frs/project/w/we/webadmin/webmin/$ver/
+	Set default downloads for files at https://sourceforge.net/projects/webadmin/files/webmin/
+
+ x Upload signatures to sourceforge (with copy-sigs.sh)
+
+ x Update .htaccess redirects in download directory on sourceforge
+	scp .htaccess web.sourceforge.net:htdocs/.htaccess
+
+ x Copy module .wbm files to sourceforge (with modules-release.sh)
+
+ x Upload Debian files to site, with :
+	scp deb/webmin_*.dsc deb/webmin_*.diff webadmin@download.webmin.com:domains/download.webmin.com/public_html/download/deb/
+
+ x Generate MD5 checksums with :
+	cd ~/webmin.com ; ./make-md5.pl $ver >md5.html
+
+ x Update and upload website HTML, including lang.html, support.html
+   and standard.html
+   Need to run makestandard.pl, makesupport.pl and lang_table.pl
+
+ x Update freshmeat.net entry
+
+ x Send to mailing list
+
+ x Add new modules to thirdpartymodules.com
+
+ x Update versions on thirdpartymodules.com at https://mysql-w.sourceforge.net/
+    - w30065admin / 1diamond
+    - update webminmodules set version = XXX where standard = 'Y'
+
+ x Add version to bug tracker
+    - https://sourceforge.net/tracker/admin/?group_id=17457
+
+ x Add new modules to bug tracker
+
+ n Notify mirror site owners at webmin-mirrors@webmin.com
+
+ x Copy APT repository with commands (on lentor)
+    /usr/local/download/deb/repository/make-repo.sh
+    rsync -rv --rsh=ssh --delete /usr/local/download/deb/repository webadmin@download.webmin.com:domains/download.webmin.com/public_html/download
+
+ x Create YUM repository with commands
+     /usr/local/download/rpm/yum/make-repo.sh
+     rsync -rv --rsh=ssh /usr/local/download/rpm/yum webadmin@download.webmin.com:domains/download.webmin.com/public_html/download
+
+ - Tell Joe
+
+ x Facebook
+
+ x Update Cloudmin repos
+	x RPM
+	x .wbm
+	x Debian
