@@ -1,5 +1,6 @@
-line1=Konfigurerbare opsjoner,11
-select=Vis bruker modulen i,1,0-Tabell,1-Pulldown meny
-order=Sorter brukere og grupper etter,1,0-Rekef&#248;lge i filen,1-Navn
+line1=Konfigurerbare innstillinger,11
+display=Visningsmodus for bruker og gruppe,1,1-Bare navn,0-Navn og moduler
+select=Vis brukermoduler i,1,0-Tabell,1-Nedtrekksmeny
+order=Sorter brukere og grupper etter,1,0-Rekkef&#248;lge i filen,1-Navn
 line2=System konfigurasjon,11
 ssleay=Stien til openssl eller ssleay program,0

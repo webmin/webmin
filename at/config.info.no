@@ -1,0 +1,4 @@
+at_style=At systemtype,1,linux-Linux,solaris-Solaris,freebsd-FreeBSD,irix-Irix,macos-MacOS X,openserver-OpenServer
+at_dir=Katalog for At jobber,0
+allow_file=Fil med tillatte At brukere,3,Ingen
+deny_file=File med nektede At brukere,3,Ingen

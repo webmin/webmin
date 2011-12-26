@@ -1,0 +1,3 @@
+firewall_system=Brannmur type,4,firewall-IPtables,ipfw-IPFW,ipfilter-IPFilter,shorewall-Shorewall,-Oppdag automatisk
+bandwidth_log=Loggfil som skal opprettes for brannmurmeldinger,0
+bandwidth_dir=Katalog for b&#229;ndbredde data,3,Standard (/etc/webmin/bandwidth/hours)
