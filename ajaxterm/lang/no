@@ -1,0 +1,6 @@
+__norefs=1
+index_credits=Bruker kode fra <a href='$1' target=_new>Ajaxterm</a> av Antony Lesuisse.
+index_epython=Ajaxterm krever Python for &#229; kj&#248;re, men jeg fant ikke kommandoen $1 p&#229; systemet ditt.
+index_estart=Ajaxterm startet ikke med &#229; godta tilkoblinger p&#229; port $2 etter $1 sekunder.
+index_popup=&#197;pne i nytt vindu ..
+index_title=Tekst-terminal

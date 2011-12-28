@@ -6,3 +6,4 @@ os_support=redhat-linux debian-linux mandrake-linux/10.2-* solaris
 desc_ca=Actualitzacions de Paquets de Programes
 desc_ru.UTF-8=Обновление программных пакетов
 desc_nl=Software pakketten Update
+desc_no=Programpakker - oppdateringer

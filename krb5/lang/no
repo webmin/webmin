@@ -1,12 +1,13 @@
-admin_log=Admin server loggfil
-default_admin=Admin server
+__norefs=1
+admin_log=Admin tjener loggfil
+default_admin=Admin tjener
 default_domain=Standard domenenavn
 default_kdc=KDC
 default_log=Standard loggfil
 default_realm=Realm
 dns_kdc=Bruk DNS for oppslag mot KDC
 domain=Domenenavn
-index_econf=Kerberos5 konfigurasjonsfilen $1 ble ikke funnet på maskinen. Kanskje den ikke er installert, eller <a href='$2'>modul konfigurasjonen</a> ikke er riktig.
+index_econf=Kerberos5 konfigurasjonsfilen $1 ble ikke funnet p&#229; maskinen. Kanskje den ikke er installert, eller <a href='$2'>modul konfigurasjonen</a> ikke er riktig.
 index_title=Kerberos5 konfigurasjon
 kdc_log=KDC logg fil
 libdefaults=Standard konfigurasjon

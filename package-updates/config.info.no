@@ -1,0 +1,1 @@
+cache_time=Timer som oppdaterte og tilgjengelige pakker skal mellomlagres,3,Ikke mellomlagre

@@ -1,0 +1,1 @@
+clear_envs=Send Webmin milj&#248;variabler til skall-kommandoer?,1,0-Ja,1-Nei

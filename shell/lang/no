@@ -1,0 +1,13 @@
+__norefs=1
+acl_user=Utf&#248;r kommandoer som brukeren
+acl_user_def=Gjeldende Webmin bruker
+index_clear=Nullstill historikk
+index_clearcmds=Nullstill kommandoer
+index_desc=Skriv inn en skallkommando som skal utf&#248;res i tekstfeltet nedenfor. Du kan bruke <tt>cd</tt> kommandoen til &#229; endre aktiv katalog for etterf&#248;lgende kommandoer.
+index_edit=Rediger forrige
+index_history=Kommando historikk
+index_ok=Utf&#248;r kommando:
+index_pok=Utf&#248;r forrige kommando
+index_title=Kommandoskall
+log_clear=Nullstilte kommandohistorikk
+log_run=Kj&#248;rte kommando $1

@@ -1,0 +1,9 @@
+line1=Konfigurerbare innstillinger,11
+refresh_days=Dager for CPAM modullisten oppfriskes,0,5
+save_partial=Behold nedlastede moduler dersom installasjon feiler?,1,1-Ja,0-Nei
+def_args=Standard argumenter for Makefile.PL,0
+incpackages=Ta med Perl moduler fra programvarepakker?,1,1-Ja,0-Nei
+incyum=Installer Perl moduler fra YUM eller APT hvis tilgjengelig?,1,1-Ja,0-Nei
+line2=System konfigurasjon,11
+packages=CPAM perl modulliste,0
+cpan=CPAN moduler base URL,0

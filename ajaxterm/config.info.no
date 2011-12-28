@@ -1,0 +1,2 @@
+autologin=Innloggingsmetode,1,0-Be om brukernavn og passord,1-&#197;pne root-skall
+timeout=Tid uten aktivitet f&#248;r forbindelsen lukkes,0,5,,sekunder
