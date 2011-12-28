@@ -433,8 +433,7 @@ print &ui_table_row(&hlink($text{'group'}, "group"), $groupfield, 3);
 if ($config{'secmode'} != 1) {
 	@defsecs = &split_quoted_string($config{'default_secs'});
 	@glist = &list_groups();
-	@glist = sort { $a->{'group'} cmp $b->{'group'} } @glist
-		if ($config{'sort_mode'});
+	@glist = &sort_groups(\@glist, $config{'sort_mode'});
 	%ingroups = ( );
 	foreach $g (@glist) {
 		@mems = split(/,/ , $g->{'members'});
