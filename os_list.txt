@@ -103,6 +103,7 @@ Linux Mint			8	debian-linux	6.0	`cat /etc/lsb-release | grep DISTRIB_DESCRIPTION
 Linux Mint			9	debian-linux	6.0	`cat /etc/lsb-release | grep DISTRIB_DESCRIPTION` =~ /^DISTRIB_DESCRIPTION="Linux Mint 9 Isadora"/
 Linux Mint			10	debian-linux	6.0	`cat /etc/lsb-release | grep DISTRIB_DESCRIPTION` =~ /^DISTRIB_DESCRIPTION="Linux Mint 10 Julia"/
 Linux Mint			11	debian-linux	6.0	`cat /etc/lsb-release | grep DISTRIB_DESCRIPTION` =~ /^DISTRIB_DESCRIPTION="Linux Mint 11 Katya"/
+Linux Mint			12	debian-linux	6.0	`cat /etc/lsb-release | grep DISTRIB_DESCRIPTION` =~ /^DISTRIB_DESCRIPTION="Linux Mint 12 Lisa"/
 
 # Debian Linux versions with numbers
 Debian Linux			$1	debian-linux	$1	$etc_issue =~ /Debian.*\s([0-9\.]+)\s/i || `cat /etc/debian_version 2>/dev/null` =~ /([0-9\.]+)/
