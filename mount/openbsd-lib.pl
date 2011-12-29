@@ -128,7 +128,8 @@ sub list_mounted
 {
 # get the list of mounted filesystems
 local(@rv, $_);
-local $cmd = $uname_release =~ /^4\./ ? "openbsd-mounts-4" :
+local $cmd = $uname_release =~ /^5\./ ? "openbsd-mounts-5" :
+	     $uname_release =~ /^4\./ ? "openbsd-mounts-4" :
 	     $uname_release =~ /^3\./ ? "openbsd-mounts-3" :
 					"openbsd-mounts-2";
 &compile_program($cmd, '.*86');
