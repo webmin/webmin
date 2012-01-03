@@ -380,4 +380,6 @@ Generic Linux			3.2	generic-linux	3.2	`uname -r` =~ /3\.2\./
 Windows				XP	windows		xp	(-d "c:/windows" || -d "c:/winnt") && `ver` =~ /XP/
 Windows				2000	windows		2000	(-d "c:/windows" || -d "c:/winnt") && `ver` =~ /2000/
 Windows				2003	windows		2003	(-d "c:/windows" || -d "c:/winnt") && `ver` =~ /2003|\s5\.2/
-
+Windows				Vista	windows		Vista	(-d "c:/windows" || -d "c:/winnt") && `ver` =~ /\s6\.0\.6001/
+Windows				2008	windows		2008	(-d "c:/windows" || -d "c:/winnt") && `ver` =~ /\s6\.0\.6002/
+Windows				7	windows		7	(-d "c:/windows" || -d "c:/winnt") && `ver` =~ /\s6\.0\.76[0-9][0-9]/
