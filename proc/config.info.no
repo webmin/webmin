@@ -1,0 +1,6 @@
+line1=Konfigurerbare innstillinger,11
+default_mode=Standard listestil for prosessliste,,4,last-Sist valgte,tree-Prosess-tre,user-Sorter etter bruker,size-Sorter etter st&#248;rrelse,cpu-Sorter etter CPU,search-S&#248;keskjema,run-Kj&#248;re-skjema
+cut_length=Antall tegn kommandoer skal forkortes til,3,Ubegrenset
+trace_java=Vis sporing av systemkall vha.,1,1-Java applet,0-Tekst
+line2=System konfigurasjon,11
+ps_style=Utdata-stil for PS kommando,1,sysv-SYSV,linux-Linux,hpux-HPUX,freebsd-FreeBSD,macos-MacOS,openbsd-OpenBSD

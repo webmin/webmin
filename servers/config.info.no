@@ -1,18 +1,15 @@
-##################################################
-#line1=Configurable options,11
-#resolve=Resolve found server addresses,1,1-Yes,0-No
-#scan_time=Time to wait for scan responses,0
-#display_mode=Show servers as,1,1-Table,0-Icons
-#sort_mode=Sort servers by,1,4-IP Address,1-Hostname,2-Description,3-OS,5-Group,0-Order created
-#show_status=Show status for servers,1,1-Yes,0-No
-#line2=System configuration,11
-#groups_dir=MSC cluster groups directory,0
-############################################
-line1=Kunfigurerbare optioner,11
-resolve=Løse funnet server adresse,1,1-Ja,0-Nei
-scan_time=Tid å vente på søke respons,0
-display_mode=Vis servere som,1,1-Liste,0-Icon
-sort_mode=Sorter servere etter,1,4-IP Adresse,1-Vertsnavn,2-Beskrivelse,3-OS,5-Gruppe,0-Opprettet rekefølge
-show_status=Vis status for servere,1,1-Ja,0-Nei
+line1=Konfigurerbare innstillinger,11
+resolve=Sl&#229; opp funnet tjener-adresser,1,1-Ja,0-Nei
+scan_time=Tid &#229; vente p&#229; s&#248;ke-svar,0
+listen=Let etter tjenere p&#229; UDP port,3,Samme som dette systemet
+display_mode=Vis tjenere som,1,1-Liste,0-Icon
+sort_mode=Sorter tjenere etter,1,4-IP Adresse,1-Vertsnavn,2-Beskrivelse,3-OS,5-Gruppe,0-Opprettet rekkef&#248;lge
+show_status=Vis status for tjenere,1,1-Ja,0-Nei
+show_ip=Vis alltid adresse og port p&#229; hovedsiden,1,1-Ja,0-Nei
+deflink=Standard innloggingsmodus,1,0-Normal lenke til tjener,1-Logg inn via Webmin,2-Logg inn n&#229;r ikon klikkes,3-Logg inn med samme brukernavn og passord
+deffast=Standard RPC modus,1,1-Hurtig,2-Automatisk,0-Langsom
+auto_type=Standard systemtype,14,show_deftype
+skipips=IPer eller vertsnavn p&#229; system som ikke skal oppdages,9,50,5,\t
+skipifaces=Nettverksgrensesnitt som ikke skal oppdages,0
 line2=System konfigurasjon,11
-groups_dir=MSC gruper gruppe katalog,0
+groups_dir=MSC klynge gruppe katalog,0

@@ -1,0 +1,7 @@
+line1=Konfigurerbare innstillinger,11
+auto=Automatisk ta med loggfiler fra,2,apache-Apache,squid-Squid,proftpd-ProFTPd,wuftpd-WUFTPd
+naked=Legg til Webmin header og footer i Webalizer rapport?,1,0-Ja,1-Nei
+line2=System konfigurasjon,11
+webalizer=Sti ti lwebalizer kommando,0
+webalizer_conf=Sti ti lwebalizer konfigurasjonsfil,0
+alt_conf=Eksempel konfig.fil for webalizer,3,Ingen

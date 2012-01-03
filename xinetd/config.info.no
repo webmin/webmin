@@ -1,0 +1,7 @@
+line2=System konfigurasjon,11
+xinetd_conf=Xinetd konfigurasjonsfil,0
+protocols_file=Fil med nettverksprotokoller,0
+pid_file=Sti til Xinetds PID fil,3,Ingen (se etter prosess i stedet)
+start_cmd=Kommando for &#229; starte xinetd,0
+add_dir=Legg til nye tjenester i,15,add_dir
+lookup_servs=Sl&#229; opp portnumre p&#229; hovedsiden?1,1-Ja,0-Nei

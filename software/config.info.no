@@ -1,0 +1,3 @@
+package_system=Vedlikeholdssystem for pakker,1,rpm-RPM,pkgadd-Solaris,hpux-HPUX,freebsd-FreeBSD,slackware-Slackware,debian-Debian,aix-AIX,emerge-Gentoo,cygwin-Cygwin,msi-Microsoft Installer
+update_system=Oppdateringssystem for pakker,1,-Oppdag automatisk,apt-APT,yum-YUM,rhn-Redhat Network,csw-Blastwave CSW,urpmi-URPMI,emerge-Emerge,*-Ingen
+apt_mode=Kommando som skal brukes i APT installeringer,1,0-apt&#45;get,1-aptitude

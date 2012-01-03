@@ -1,0 +1,6 @@
+line1=Konfigurerbare innstillinger,11
+cvsroot=CVS rot.katalog,7
+view_header=Header-fil for arkiv-browser,0
+cvsenc=Tegnsett for arkivfil,3,Fra Webmin spr&#229;k
+line2=System konfigurasjon,11
+cvs=Sti til cvs program,0
