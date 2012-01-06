@@ -794,7 +794,7 @@ if ($config{'date_subs'}) {
 	&reset_time_locale();
         }
 else {
-        $path = $rv;
+        $rv = $path;
         }
 if ($config{'webmin_subs'}) {
 	$rv = &substitute_template($rv, { });
