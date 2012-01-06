@@ -614,7 +614,7 @@ if ($has_parted) {
 	# Using parted
 	my $pe = $part > 4 ? "logical" : "primary";
 	my $cmd;
-	if ($type) {
+	if ($type && $type ne 'ext2') {
 		$cmd = "parted -s ".$disk." unit cyl mkpartfs ".$pe." ".
 		       $type." ".($start-1)." ".$end;
 		}
