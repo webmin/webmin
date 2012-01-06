@@ -1,4 +1,5 @@
 date_subs=Do <tt>strftime</tt> substitution of backup destinations?,1,1-Yes,0-No
+webmin_subs=Do Webmin variable substitution on backup destinations?,1,1-Yes,0-No
 smtp_server=Send mail via SMTP server,3,Read User Mail module
 run_mode=Run backups in,1,0-Foreground,1-Background
 nonewtape=Prompt for new tape if full?,1,1-Yes,0-No

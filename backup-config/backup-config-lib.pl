@@ -696,15 +696,21 @@ replaces them with the correct values for the current date and time.
 =cut
 sub date_subs
 {
+my ($path) = @_;
+my $rv;
 if ($config{'date_subs'}) {
         eval "use POSIX";
         eval "use posix" if ($@);
         my @tm = localtime(time());
-        return strftime($_[0], @tm);
+        $rv = strftime($path, @tm);
         }
 else {
-        return $_[0];
+	$rv = $path;
         }
+if ($config{'webmin_subs'}) {
+	$rv = &substitute_template($rv, { });
+	}
+return $rv;
 }
 
 =head2 show_backup_what(name, webmin?, nofiles?, others)

@@ -155,3 +155,4 @@ Even more German translation updates, thanks to Raymond Vetter.
 Added UTF-8 encodings for languages using the iso-8859-2, like Czech and Polish.
 Catalan updates, thanks to Jaume Badiella.
 Norwegian translation updates, thanks to Stein-Aksel Basma.
+The MySQL, PostgreSQL, Filesystem Backup and Backup Configuration Files modules now all support the use of Webmin variable substitutions in backup paths (like $HOSTNAME) via a new Module Config option.

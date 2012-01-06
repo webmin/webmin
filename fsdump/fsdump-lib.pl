@@ -102,18 +102,23 @@ return lc($fs1) eq lc($fs2);
 # date_subs(string, [time])
 sub date_subs
 {
+local ($path, $time) = @_;
+local $rv;
 if ($config{'date_subs'}) {
 	eval "use POSIX";
 	eval "use posix" if ($@);
-	local @tm = localtime($_[1] || time());
+	local @tm = localtime($time || time());
 	&clear_time_locale();
-	local $rv = strftime($_[0], @tm);
+	$rv = strftime($path, @tm);
 	&reset_time_locale();
-	return $rv;
 	}
 else {
-	return $_[0];
+	$rv = $_[0];
 	}
+if ($config{'webmin_subs'}) {
+	$rv = &substitute_template($rv, { });
+	}
+return $rv;
 }
 
 # execute_before(&dump, handle, escape)

@@ -22,3 +22,4 @@ max_dbs=50
 simple_sched=0
 access_own=0
 max_text=1000
+webmin_subs=0

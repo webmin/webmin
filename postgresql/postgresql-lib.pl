@@ -708,18 +708,23 @@ foreach my $pidfile (glob($config{'pid_file'})) {
 # Does strftime-style date substitutions on a filename, if enabled
 sub date_subs
 {
+local ($path) = @_;
+local $rv;
 if ($config{'date_subs'}) {
         eval "use POSIX";
 	eval "use posix" if ($@);
         local @tm = localtime(time());
         &clear_time_locale();
-        local $rv = strftime($_[0], @tm);
+        $rv = strftime($path, @tm);
         &reset_time_locale();
-        return $rv;
         }
 else {
-        return $_[0];
+	$rv = $path;
         }
+if ($config{'webmin_subs'}) {
+	$rv = &substitute_template($rv, { });
+	}
+return $rv;
 }
 
 # execute_before(db, handle, escape, path, db-for-config)
