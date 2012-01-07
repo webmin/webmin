@@ -850,7 +850,7 @@ sub restart_dhcpd
 local $out;
 if ($config{'restart_cmd'}) {
 	# Run the restart script
-	$out = &backquote_logged("($config{'restart_cmd'} 2>&1)");
+	$out = &backquote_logged("$config{'restart_cmd'} 2>&1");
 	}
 else {
 	# Kill and re-run the server
