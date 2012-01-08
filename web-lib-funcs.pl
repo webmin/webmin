@@ -806,7 +806,7 @@ if ($charset) {
 	}
 if (@_ > 0) {
 	my $title = &get_html_title($_[0]);
-        print "<title>$title</title>\n";
+        print "<title>$title</title>\n" if ($_[7] !~ /<title>/i);
 	print $_[7] if ($_[7]);
 	print &get_html_status_line(0);
 	}
