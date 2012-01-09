@@ -8,7 +8,9 @@ $lconf = &get_log_config($ARGV[0]);
 $lconf || die "Logfile $ARGV[0] config file does not exist";
 
 open(NULL, ">/dev/null");
+&clean_language();
 $ok = &generate_report($ARGV[0], NULL, 0);
+&reset_environment();
 close(NULL);
 
 if ($ok && $lconf->{'clear'}) {
