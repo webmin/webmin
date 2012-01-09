@@ -58,7 +58,7 @@ our @debug_what_events = ( 'start', 'read', 'write', 'ops', 'procs', 'diff', 'cm
 our $record_login_cmd = "$config_directory/login.pl";
 our $record_logout_cmd = "$config_directory/logout.pl";
 
-our $strong_ssl_ciphers = "ALL:!aNULL:!ADH:!eNULL:!LOW:!EXP:!SSLv2:RC4+RSA:+HIGH:+MEDIUM";
+our $strong_ssl_ciphers = "ECDHE-RSA-AES256-SHA384:AES256-SHA256:AES256-SHA256:RC4:HIGH:MEDIUM:+TLSv1:!MD5:!SSLv2:+SSLv3:!ADH:!aNULL:!eNULL:!NULL:!DH:!ADH:!EDH:!AESGCM";
 
 our $newmodule_users_file = "$config_directory/newmodules";
 
