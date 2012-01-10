@@ -432,6 +432,8 @@ else {
 sub user_to_dn
 {
 local $pfx = $_[0]->{'pass'} =~ /^\{[a-z0-9]+\}/i ? undef :
+	     $_[0]->{'pass'} =~ /^\$1\$/ ? "{md5}" :
+	     $_[0]->{'pass'} =~ /^[a-zA-Z0-9\.\/]{13}$/ ? "{crypt}" :
 	     $config{'md5'} == 1 || $config{'md5'} == 3 ? "{md5}" :
 	     $config{'md5'} == 4 ? "{ssha}" : 
 	     $config{'md5'} == 0 ? "{crypt}" : "";
