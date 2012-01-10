@@ -448,6 +448,7 @@ else
 			read atbootyn
 			if [ "$atbootyn" = "y" -o "$atbootyn" = "Y" ]; then
 				atboot=1
+				makeboot=1
 			fi
 		else
 			echo "Webmin does not support being started at boot time on your system."
