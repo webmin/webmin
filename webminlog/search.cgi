@@ -241,7 +241,7 @@ my $m = $in{"$_[0]_m"};
 my $y = $in{"$_[0]_y"};
 return 0 if (!$d && !$y);
 my $rv;
-eval { $rv = timelocal(0, 0, 0, $d, $m, $y-1900) };
+eval { $rv = timelocal(0, 0, 0, $d, $m-1, $y-1900) };
 &error($text{'search_etime'}) if ($@);
 return $rv;
 }
