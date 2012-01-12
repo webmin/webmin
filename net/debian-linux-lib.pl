@@ -802,6 +802,7 @@ sub modify_auto_defs
 local $lref = &read_file_lines($network_interfaces_config);
 local $i;
 local $found;
+local @ifaces = sort { length($a) <=> length($b) } @_;
 for($i=0; $i<@$lref; $i++) {
 	local $l = $lref->[$i];
 	$l =~ s/\r|\n//g;
@@ -809,7 +810,7 @@ for($i=0; $i<@$lref; $i++) {
 	if ($l =~ /^\s*auto\s*(.*)/) {
 		if (!$found++) {
 			# Replace the auto line
-			$lref->[$i] = "auto ".join(" ", @_);
+			$lref->[$i] = "auto ".join(" ", @ifaces);
 			}
 		else {
 			# Remove another auto line
@@ -818,7 +819,7 @@ for($i=0; $i<@$lref; $i++) {
 		}
 	}
 if (!$found) {
-	splice(@$lref, 0, 0, "auto ".join(" ", @_));
+	splice(@$lref, 0, 0, "auto ".join(" ", @ifaces));
 	}
 &flush_file_lines();
 }
