@@ -91,7 +91,9 @@ foreach $db (@dbs) {
 				\@compat,
 				\@tables,
 				"root",
-				$config{'backup_single_'.$sf});
+				$config{'backup_single_'.$sf},
+				$config{'backup_quick_'.$sf},
+			       );
 	if ($err) {
 		$ex = 1;
 		}

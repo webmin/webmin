@@ -80,6 +80,7 @@ if ($module_info{'usermin'}) {
 	$userconfig{'backup_compress_'.$in{'db'}} = $in{'compress'};
 	$userconfig{'backup_drop_'.$in{'db'}} = $in{'drop'};
 	$userconfig{'backup_single_'.$in{'db'}} = $in{'single'};
+	$userconfig{'backup_quick_'.$in{'db'}} = $in{'quick'};
 	$userconfig{'backup_tables_'.$in{'db'}} = join(" ", @tables);
 	&write_file("$user_module_config_directory/config", \%userconfig);
 	}
@@ -97,6 +98,7 @@ else {
 	$config{'backup_compress_'.$in{'db'}} = $in{'compress'};
 	$config{'backup_drop_'.$in{'db'}} = $in{'drop'};
 	$config{'backup_single_'.$in{'db'}} = $in{'single'};
+	$config{'backup_quick_'.$in{'db'}} = $in{'quick'};
 	$config{'backup_tables_'.$in{'db'}} = join(" ", @tables);
 	&write_file("$module_config_directory/config", \%config);
 	}
@@ -139,7 +141,8 @@ if (!$in{'save'}) {
 		local $err = &backup_database($db, $file, $in{'compress'},
 			$in{'drop'}, $in{'where_def'} ? undef : $in{'where'},
 			$in{'charset_def'} ? undef : $in{'charset'},
-			\@compat, \@tables, $access{'buser'}, $in{'single'});
+			\@compat, \@tables, $access{'buser'}, $in{'single'},
+			$in{'quick'});
 		if ($err) {
 			print "$main::whatfailed : ",
 			      &text('backup_ebackup',"<pre>$err</pre>"),"<p>\n";

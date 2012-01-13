@@ -684,6 +684,7 @@ backup_where=Only backup rows matching <tt>where</tt> clause
 backup_none=All rows
 backup_drop=Add <tt>drop table</tt> statements to backup?
 backup_single=Backup within a transaction?
+backup_quick=Dump rows one at a time?
 backup_charset=Character set for backup
 backup_ok=Backup Now
 backup_ok1=Save and Backup Now

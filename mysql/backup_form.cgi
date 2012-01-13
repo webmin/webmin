@@ -126,6 +126,11 @@ $s = $c{'backup_single_'.$in{'db'}};
 print &ui_table_row($text{'backup_single'},
 	&ui_yesno_radio("single", $s ? 1 : 0));
 
+# Show quick dump mode
+$q = $c{'backup_quick_'.$in{'db'}};
+print &ui_table_row($text{'backup_quick'},
+	&ui_yesno_radio("quick", $q ? 1 : 0));
+
 if ($cron) {
 	# Show before/after commands
 	$b = $c{'backup_before_'.$in{'db'}};
