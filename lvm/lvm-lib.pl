@@ -79,6 +79,7 @@ else {
 		}
 	close(DISPLAY);
 	@rv = grep { $_->{'vg'} eq $_[0] } @rv;
+	@rv = grep { $_->{'name'} ne 'unknown device' } @rv;
 	}
 return @rv;
 }
