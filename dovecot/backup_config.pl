@@ -5,7 +5,11 @@ do 'dovecot-lib.pl';
 # Returns files and directories that can be backed up
 sub backup_config_files
 {
-return split(/\s+/, $config{'dovecot_config'});
+if (&get_config_file()) {
+	local $conf = &get_config();
+	return &unique(map { $_->{'file'} } @$conf);
+	}
+return ( );
 }
 
 # pre_backup(&files)
