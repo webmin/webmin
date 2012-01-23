@@ -90,7 +90,7 @@ elsif ($in{'view'}) {
 			@cats = ( "cat ".quotemeta($file) );
 			}
 		$cat = "(".join(" ; ", @cats).")";
-		$got = &foreign_call("proc", "safe_process_exec",
+		$got = &proc::safe_process_exec(
 			"$cat | grep -i $filter | $tailcmd",
 			0, 0, STDOUT, undef, 1, 0, undef, 1);
 	} else {
@@ -100,25 +100,28 @@ elsif ($in{'view'}) {
 			$fullcmd = $cmd." | ".$tailcmd;
 			}
 		elsif ($config{'compressed'}) {
-			# Find the first non-empty file, newest first
-			$catter = "cat ".quotemeta($file);
-			if (!-s $file) {
-				foreach $l (reverse(&all_log_files($file))) {
-					next if (!-s $l);
-					$c = &catter_command($l);
-					if ($c) {
-						$catter = $c;
-						last;
-						}
+			# Cat all compressed files
+			local @cats;
+			$total = 0;
+			foreach $l (reverse(&all_log_files($file))) {
+				next if (!-s $l);
+				$c = &catter_command($l);
+				if ($c) {
+					$len = int(&backquote_command(
+							"$c | wc -l"));
+					$total += $len;
+					push(@cats, $c);
+					last if ($total > $in{'lines'});
 					}
 				}
-			$fullcmd = $catter." | ".$tailcmd;
+			$cat = "(".join(" ; ", reverse(@cats)).")";
+			$fullcmd = $cat." | ".$tailcmd;
 			}
 		else {
 			# Just run tail on the file
 			$fullcmd = $tailcmd." ".quotemeta($file);
 			}
-		$got = &foreign_call("proc", "safe_process_exec",
+		$got = &proc::safe_process_exec(
 			$fullcmd, 0, 0, STDOUT, undef, 1, 0, undef, 1);
 		}
 	print "<i>$text{'view_empty'}</i>\n" if (!$got);
