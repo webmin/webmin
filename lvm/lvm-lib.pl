@@ -329,7 +329,7 @@ else {
 				$lv->{'snap_of'} = $1;
 				}
 			}
-		 elsif (/Read ahead sectors\s+(\d+)/) {
+		 elsif (/Read ahead sectors\s+(\d+|auto)/) {
                         $lv->{'readahead'} = $1;
                         }
 		elsif (/Stripes\s+(\d+)/) {
