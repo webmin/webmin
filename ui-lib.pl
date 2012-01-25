@@ -1,5 +1,5 @@
 use vars qw($theme_no_table $ui_radio_selector_donejs $module_name 
-	    $ui_multi_select_donejs);
+	    $ui_multi_select_donejs, $ui_formcount);
 
 =head1 ui-lib.pl
 
@@ -597,6 +597,7 @@ parameters are :
 =cut
 sub ui_form_start
 {
+$ui_formcount ||= 0;
 return &theme_ui_form_start(@_) if (defined(&theme_ui_form_start));
 my ($script, $method, $target, $tags) = @_;
 my $rv;
@@ -630,6 +631,7 @@ of array refs, with the following elements :
 =cut
 sub ui_form_end
 {
+$ui_formcount++;
 return &theme_ui_form_end(@_) if (defined(&theme_ui_form_end));
 my ($buttons, $width) = @_;
 my $rv;
@@ -1222,10 +1224,11 @@ $rv .= &ui_radio($name."_def", $value eq '' ? 1 : 0,
 		   [ 0, $opt2 || " ", "onClick='$dis2'" ] ], $dis)."\n";
 $rv .= "<input class='ui_opt_textbox' name=\"".&quote_escape($name)."\" ".
        "size=$size value=\"".&quote_escape($value)."\" ".
-       ($value eq "" || $dis ? "disabled=true" : "").
+       ($dis ? "disabled=true" : "").
        ($max ? " maxlength=$max" : "").
        " ".$tags.
        ">\n";
+$rv .= "<script>if ($ui_formcount < document.forms.length) { document.forms[$ui_formcount].$name.disabled = document.forms[$ui_formcount].${name}_def[0].checked; }</script>\n";
 return $rv;
 }
 
