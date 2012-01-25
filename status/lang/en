@@ -496,6 +496,7 @@ sslcert_file=From file on server
 sslcert_eurl=Missing, invalid or non-SSL URL
 sslcert_efile=Missing or invalid certificate file
 sslcert_ecert=Could not get certificate
+sslcert_edown=Web server is down
 sslcert_days=Days before expiry to fail
 sslcert_when=When expired
 sslcert_mismatch=Also detect hostname mismatch?

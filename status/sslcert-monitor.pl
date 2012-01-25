@@ -17,7 +17,8 @@ if ($_[0]->{'url'}) {
 	local $out = &backquote_with_timeout($cmd, 10);
 	if ($?) {
 		# Connection failed
-		return { 'up' => -1 };
+		return { 'up' => -1,
+			 'desc' => $text{'sslcert_edown'} };
 		}
 
 	# Extract the cert part and save
