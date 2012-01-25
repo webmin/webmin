@@ -1,3 +1,4 @@
+__norefs=1
 backup_doing=Starte Backup der Modulkonfigurationsdateien nach $1 ..
 backup_done=.. fertig. Das gesamte Backup betr&#228;gt $1 mit insgesamt $2 Dateien.
 backup_edest=Fehlende oder ung&#252;ltige Datei mit absolutem Pfad
