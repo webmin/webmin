@@ -40,7 +40,8 @@ else {
 	my $temp = &transname();
 	my $size;
 	$err = &execute_backup(\@mods, $temp, \$size, undef,
-			       $configfile, $nofiles);
+			       $configfile, $nofiles,
+			       [ split(/\t+/, $others) ]);
 	if ($err) {
 		&unlink_file($temp);
 		&error($err);
