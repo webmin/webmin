@@ -1,3 +1,4 @@
+__norefs=1
 global_default=Standard Boot-Optionen
 global_edev=Nicht unterst&#252;tzte Festplatte/Partition $1
 global_eother=Fehlende oder ung&#252;ltige Festplatte/Partition
