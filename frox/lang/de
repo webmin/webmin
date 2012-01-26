@@ -1,3 +1,4 @@
+__norefs=1
 acl_acl=Zugriffskontrollliste
 acl_action=Aktion
 acl_any=Jede
@@ -82,7 +83,7 @@ ftp_title=FTP-Protokolloptionen
 general_edir=Fehlendes oder nicht-existenes Verzeichnis
 general_elevel=Die Eingabe einer Nummer fehlt oder es wurde keine Nummer eingegeben.
 general_epidfile=Fehlender oder nicht-absoluter Pfad
-general_err=Konnte Generelle Optionen nicht speichern
+general_err=Konnte generelle Optionen nicht speichern
 general_header=Generelle <i>Frox/<i>-Benutzer-, Gruppen- und Dateioptionen
 general_nowhere=Nirgendwo
 general_title=Generelle Optionen
@@ -100,7 +101,7 @@ index_title=Frox FTP-Proxy
 iptables_desc=Damit <i>Frox</i> richtig arbeiten kann, muss Netzverkehr vom Port $1 Ihres Systems auf Port $2 umgeleitet werden, welcher von <i>Frox</i> abgeh&#246;rt wird. Sie k&#246;nnen dies als <i>IPtables</i>-Regel einstellen, vorausgesetzt, da&#223; Sie dies mit dem <a href='$3'>Linux Firewall</a>-Modul tun.
 iptables_disabled=Port-Umleitung ist abgeschaltet.
 iptables_eapply=Anwenden fehlgeschlagen : $1
-iptables_eiface=Fehlendes oder ung&#252;ltiges Netzwerk-Interface
+iptables_eiface=Fehlendes oder ung&#252;ltiges Netzwerk-Schnittstelle
 iptables_enabled=Port-Umleitung ist f&#252;r Clients des Netzwerkes $1 eingeschaltet
 iptables_enabled2=Port-Umleitung ist f&#252;r Clients auf der Schnittstelle $1 aktiviert
 iptables_enet=Fehlende oder ung&#252;ltige Netzwerkadresse (muss z.B. 192.168.1.0/24 sein)
