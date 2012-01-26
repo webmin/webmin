@@ -1,87 +1,67 @@
-#        webmin-1.00     man/lang/de
-#
-#        created: ??.??.????                 by:???
-#        last modified: 31-mar-2002          Rev.: 22-08-2002
-#        last modified/translated by: Dieter H&uuml;rten
-#        for changes, completions, ...  mailto:dieter.huerten@telebel.de
-#
-# erzeugt: ??.??.????                     durch: ???
-# letzte &Auml;nderung: 31.03.2002        Rev.: 22.08.2002
-# zuletzt modifiziert/&uuml;bersetzt durch: Dieter H&uuml;rten
-# f&uuml;r &Auml;nderungen, Erg&auml;nzungen, etc. mailto:dieter.huerten@telebel.de
-#
-
-index_title=Systemdokumentation
-
-index_header=Suche in Handb&uuml;chern ('manpages') des Systems
-index_for=Suche nach...
-index_where=Suche in...
+__norefs=1
+doc_epath=Ung&uuml;ltiger Paket-Dokumentenpfad
+doc_header=Paket-Dokumentendatei $1
+doc_title=Paket-Dokumentation
+howto_epath=Ung&uuml;ltiger HOWTO-Pfad
+howto_header=HOWTO-Dokument Datei $1
+howto_title=HOWTO-Dokument
 index_alldoc=Gesamte Dokumentation
-index_man=Handb&uuml;cher
-index_doc=Paket-Dokumentation
-index_kernel=Kernel-Dokumentation
-index_info=Info-Seiten
-index_howto=HOWTO-Dokumente
-index_kde=KDE-Dokumentation
-index_perl=Perl-Modul Dokumentation
+index_and=Alle Worte
 index_custom=angepa&szlig;te Dokumentation
-index_help=Webmin-Hilfe
-index_reset=Zur&uuml;cksetzen
-index_search=Suche
-index_return=Suchformular
-index_type=Durchsuchen:
-index_name=Nur Titel
 index_data=Titel und Inhalt
+index_doc=Paket-Dokumentation
+index_for=Suche nach...
 index_google=Google-Suchmaschine
-index_others=Bei der Suche nach Dokumenten aus einem anderen Modul sollen folgende Dokumente durchsucht werden:
-index_other_man=Handb&uuml;cher
+index_header=Suche in Handb&uuml;chern ('manpages') des Systems
+index_help=Webmin-Hilfe
+index_howto=HOWTO-Dokumente
+index_info=Info-Seiten
+index_kde=KDE-Dokumentation
+index_kernel=Kernel-Dokumentation
+index_man=Handb&uuml;cher
+index_name=Nur Titel
+index_or=Beliebige Worte
 index_other_doc=Paket-Dokumentation
-index_other_kernel=Kernel-Dokumentation
-index_other_howto=HOWTO-Dokumente
-index_other_perl=Perl-Modul Dokumentation
 index_other_google=Google-Suchmaschine
 index_other_help=Webmin-Hilfe
+index_other_howto=HOWTO-Dokumente
 index_other_kde=KDE-Dokumentation
-index_and=Alle Worte
-index_or=Beliebige Worte
-
-search_efor=Es wurde keine Anleitung angegeben, nach der gesucht werden soll
-search_title=Suchergebnisse
-search_desc=Beschreibung
-search_type=Typ
-search_file=Seite oder Datei
-search_man=Handbuch
-search_howto=HOWTO-Dokument
-search_doc=Paket-Dokumentation
-search_kernel=Kernel-Dokumentation
-search_kde=KDE-Dokumentation
-search_perl=Perl-Modul Dokumentation
-search_help=Webmin-Hilfe
-search_custom=angepa&szlig;te Dokumentation  
-search_none=Keine Anleitung passend zu '$1' gefunden
-search_for=F&uuml;r $1
-search_google=Google-Suchergebnis
-
-howto_title=HOWTO-Dokument
-howto_header=HOWTO-Dokument Datei $1
-howto_epath=Ung&uuml;ltiger HOWTO-Pfad
-
-doc_title=Paket-Dokumentation
-doc_header=Paket-Dokumentendatei $1
-doc_epath=Ung&uuml;ltiger Paket-Dokumentenpfad
-
-man_title=Handbuch
+index_other_kernel=Kernel-Dokumentation
+index_other_man=Handb&uuml;cher
+index_other_perl=Perl-Modul Dokumentation
+index_others=Bei der Suche nach Dokumenten aus einem anderen Modul sollen folgende Dokumente durchsucht werden:
+index_perl=Perl-Modul Dokumentation
+index_reset=Zur&uuml;cksetzen
+index_return=Suchformular
+index_search=Suche
+index_title=Systemdokumentation
+index_type=Durchsuchen:
+index_where=Suche in...
+kde_epath=Ung&uuml;ltiger KDE-Dokumentenpfad
+kde_header=KDE-Dokumentendatei $1
+kde_title=KDE-Dokumentation
+kernel_epath=Ung&uuml;ltiger Kernel-Dokumentenpfad
+kernel_header=Kernel-Dokumentendatei $1
+kernel_title=Kernel-Dokument
 man_header=Handbuch f&uuml;r $1 ($2)
 man_noentry=Handbuch f&uuml;r $1 nicht vorhanden!
-
-kernel_title=Kernel-Dokument
-kernel_header=Kernel-Dokumentendatei $1
-kernel_epath=Ung&uuml;ltiger Kernel-Dokumentenpfad
-
-kde_title=KDE-Dokumentation
-kde_header=KDE-Dokumentendatei $1
-kde_epath=Ung&uuml;ltiger KDE-Dokumentenpfad
-
-perl_title=Perl-Modul Dokumentation
-perl_header=Dokumentation f&uuml;r Perl-Modul $1
+man_title=Handbuch
 perl_emod=Ung&uuml;ltiger Perl-Modulname
+perl_header=Dokumentation f&uuml;r Perl-Modul $1
+perl_title=Perl-Modul Dokumentation
+search_custom=angepa&szlig;te Dokumentation
+search_desc=Beschreibung
+search_doc=Paket-Dokumentation
+search_efor=Es wurde keine Anleitung angegeben, nach der gesucht werden soll
+search_file=Seite oder Datei
+search_for=F&uuml;r $1
+search_google=Google-Suchergebnis
+search_help=Webmin-Hilfe
+search_howto=HOWTO-Dokument
+search_kde=KDE-Dokumentation
+search_kernel=Kernel-Dokumentation
+search_man=Handbuch
+search_none=Keine Anleitung passend zu '$1' gefunden
+search_perl=Perl-Modul Dokumentation
+search_title=Suchergebnisse
+search_type=Typ
