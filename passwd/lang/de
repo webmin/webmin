@@ -1,3 +1,4 @@
+__norefs=1
 acl_expire=Darf Benutzer zur &Auml;nderung des Passwortes bei der n&auml;chsten Anmeldung zwingen&#63;
 acl_mode0=Alle Benutzer
 acl_mode1=Nur diese Benutzer
@@ -29,7 +30,7 @@ passwd_eold=Ung&uuml;ltiges altes Passwort
 passwd_erepeat=Die neuen Passworte stimmen nicht &uuml;berein
 passwd_err=Konnte Passwort nicht &auml;ndern
 passwd_euser=Dieser Benutzer existiert nicht
-passwd_expire=Der Benutzer mu&szlig; sein Passwort bei der n&auml;chsten Anmeldung &#228;ndern&#63;
+passwd_expire=Der Benutzer muss sein Passwort bei der n&#228;chsten Anmeldung &#228;ndern?
 passwd_for=&Auml;ndere Passwort f&uuml;r
 passwd_header=Passwort eines Unix-Benutzers &auml;ndern.
 passwd_new=Neues Passwort
