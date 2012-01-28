@@ -74,7 +74,7 @@ edit_burn=Speichern und sofort brennen
 edit_burn2=Jetzt brennen
 edit_cap=CAP-Macintosh-Dateien einbeziehen?
 edit_dest=Verzeichnis auf der CD
-edit_dirs=Einzubeziehende Verzeichnise
+edit_dirs=Einzubeziehende Verzeichnisse
 edit_dstdrv=Brennger&#228;t-Treiber
 edit_ecannot=Sie d&#252;rfen dieses Brenn-Profil nicht &#228;ndern
 edit_ecdrdao=Das CD-Kopierprogramm $1 wurde nicht auf Ihrem System gefunden. Vielleicht ist es nicht installiert oder die <a href='$2'>Modulkonfiguration</a> ist nicht korrekt.
