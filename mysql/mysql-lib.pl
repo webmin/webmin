@@ -908,7 +908,7 @@ for($i=0; defined($in{"field_$i"}); $i++) {
 @fields || &error($text{'table_enone'});
 local @sql;
 local $sql = "create table ".&quotestr($_[1])." (".join(",", @fields).")";
-$sql .= " type = $in{'type'}" if ($in{'type'});
+$sql .= " engine $in{'type'}" if ($in{'type'});
 push(@sql, $sql);
 if (@pri) {
 	# Setup primary fields too
