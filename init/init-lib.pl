@@ -54,7 +54,8 @@ elsif ($config{'init_base'} && -d "/etc/init" &&
 	$init_mode = "upstart";
 	}
 elsif ($config{'init_base'} && -d "/etc/systemd" &&
-       &has_command("systemctl")) {
+       &has_command("systemctl") &&
+       &execute_command("systemctl list-units") == 0) {
 	$init_mode = "systemd";
 	}
 elsif ($config{'init_base'}) {
