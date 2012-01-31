@@ -1,8 +1,9 @@
+__norefs=1
 access_action=Aktion..
 access_desc1=Die Spamkontrolle von Sendmail erlaubt es Ihnen Ihre User auf eine einfache Art vor Spam zu sch&#252;tzen, indem E-Mails von definierten Systemen nicht angenommen und Ihr System f&#252;r Spammer gesperrt wird (Anti-Open-Relay). Normalerweise wird Sendmail E-Mail f&#252;r lokale Benutzer von jeder Adresse akzeptieren, aber jeden Client oder anderen E-Mail-Server f&#252;r den Versand von E-Mail &#252;ber Ihr System sperren. Typischerweise w&#252;rden Sie Spamkontroll-Regeln einf&#252;hren, die E-Mails von Spammern abblockt und es definierten Clients erlaubt, &#252;ber Ihren Server E-Mails zu versenden.
 access_desc2=Bachten Sie bitte, da&#223; Sendmail standardm&#228;&#223;ig so eingerichtet ist, da&#223; lokal installierte E-Mail-Clients jederzeit &#252;ber diesen Server E-Mails versenden d&#252;rfen. Deswegen ist es nicht n&#246;tig das lokale Netzwerk <tt>127.0.0</tt> zu Liste der erlaubten Netzwerke hinzuzuf&#252;gen.
 access_ecannot=Sie haben keine Berechtigung, die Spamkontrolle zu konfigurieren
-access_efeature=Ihre Sendmailkonfiguration hat das (<tt>access_db</tt>)-Feature nicht aktiviert, welches f&#252;r die Spamkontrolle zust&#228;ndig ist. <a href='$1'>Klicken Sie hier</a> um das Feature zu aktivieren.
+access_efeature=Ihre Sendmail-Konfiguration hat das (<tt>access_db</tt>)-Feature nicht aktiviert, welches f&#252;r die Spamkontrolle zust&#228;ndig ist. <a href='$1'>Klicken Sie hier</a> um das Feature zu aktivieren.
 access_efile=Die Textdatei $1, von der die Datenbank $2 f&#252;r die Spamkontrolle generiert wird, existiert nicht. Vielleicht m&#252;ssen Sie die <a href='$3'>Modulkonfiguration</a> anpassen, um den korrekten Pfad zu benutzen.
 access_go=Suche Spamkontrollregeln:
 access_return=Spamkontrollliste
@@ -99,7 +100,7 @@ aform_val=Alias zu
 aliases_addr=Adresse
 aliases_delete=L&#246;sche ausgew&#228;hlte Aliase
 aliases_ecannot=Sie haben keine Berechtigung, Aliases zu bearbeiten.
-aliases_enofile=Es ist kein Aliases Config-File in Ihrer Sendmail Konfiguration definiert!
+aliases_enofile=Es ist kein Aliases Config-File in Ihrer Sendmail-Konfiguration definiert!
 aliases_go=Finde Alises welche mit &#252;bereinstimmen:
 aliases_none=Keine
 aliases_return=Alias-Liste
@@ -135,16 +136,16 @@ boxes_return=Mailboxes
 boxes_sent=Gesendete Mails
 boxes_size=Mailbox-Gr&#246;&#223;e
 boxes_title=Benutzer-Mailboxes
-boxes_toomany=Es sind zu viele Benutzermailboxes auf Ihrem System, sie k&#246;nnen desswegen nicht angezeigt werden.
+boxes_toomany=Es sind zu viele Benutzermailboxes auf Ihrem System, sie k&#246;nnen deswegen nicht angezeigt werden.
 boxes_user=Benutzer
 build_diff=Die folgenden &#196;nderungen werden nun in Ihre Konfiguration eingepielt ..
 build_ebuild=Konnte Konfiguration nicht erstellen: $1
-build_em4=Der Befehl $1 welcher zum erstellen der neuen Konfiguration notwendig ist, wurde auf Ihrem System nicht gefunden.
-build_nodiff=Ihre Sendmail konfiguration ist bereits Up2Date.
+build_em4=Der Befehl $1, welcher zum erstellen der neuen Konfiguration notwendig ist, wurde auf Ihrem System nicht gefunden.
+build_nodiff=Ihre Sendmail-Konfiguration ist bereits auf dem neuesten Stand.
 build_ok=Ja, ersetze dies jetzt!
 build_rusure=Sind Sie sicher, dass Sie die alte Konfigurationsdatei $1 durch die neue Version, erstellt von $2, ersetzten m&#246;chten?
 build_rusure2=Beware that if you have made changes to Sendmail in the Sendmail Options page, rebuilding the config file may overwrite those changes if they have not also been made in the M4 file.
-build_title=Erstelle die Sendmail konfiguration neu
+build_title=Erstelle die Sendmail Lonfiguration neu
 cgs_desc=Abgesehen von E-Mails, die von lokalen Benutzern versendet werden, wird Sendmail <a href='$1'>Verkn&#252;pfung f&#252;r ausgehende Adressen</A> nur bei den Dom&#228;nen durchf&#252;hren, die in dem Textfeld links aufgelistet sind. Also muss die Dom&#228;ne aus der From-Adresse in dieser Liste enthalten sein, damit die Verkn&#252;pfung f&#252;r ausgehende Dom&#228;nen funktioniert.
 cgs_ecannot=Sie haben keine Berechtigung, ausgehende Dom&#228;nen zu bearbeiten
 cgs_ehost='$1' ist kein g&#252;ltiger Host- oder Dom&#228;nenname
@@ -171,7 +172,7 @@ delete_enone=Keine Mail zum L&#246;schen ausgew&#228;hlt
 delete_nobutton=Kein Button angeklickt
 delete_ok=L&#246;sche jetzt
 delete_rusure=Sind Sie sicher, dass Sie die $1 selektierten Nachrichten von $2 l&#246;schen m&#246;chten?<br>Bei grossen Dateien kann dies einen Moment dauern.
-delete_rusure2=Sind Sie sicher, dass Sie die Nachricht von $1 l&#246;schen m&#246;chten? <br>Bei grossen Dateien kann dies einen Moment dauern.
+delete_rusure2=Sind Sie sicher, dass Sie die Nachricht von $1 l&#246;schen m&#246;chten? <br>Bei gro&#223;en Dateien kann dies einen Moment dauern. Bis die L&#246;schung beendet ist, sollten keine weiteren Ma&#223;nahmen durchgef&#252;hrt werden.
 delete_title=L&#246;sche Mail
 delq_confirm=L&#246;sche Nachrichten
 delq_ecannot=Sie haben keine Berechtigung, E-Mails aus der Warteschlagen zu nehmen
@@ -179,12 +180,12 @@ delq_ecannot2=Sie k&#246;nnen diese Nachricht l&#246;schen
 delq_efile=Falscher Dateiname!
 delq_egone=Bereits gel&#246;scht oder gesendet
 delq_elocked=Gesperrt zum senden
-delq_enone=Keine Nachrichten zum l&#246;schen angew&#228;lt.
+delq_enone=Keine Nachrichten zum L&#246;schen ausgew&#228;hlt.
 delq_err=Fehler beim L&#246;schen der Nachricht
 delq_file=L&#246;sche Maildatei $1 ..
-delq_force=Erwzwinge l&#246;schen
+delq_force=Erzwinge l&#246;schen
 delq_locked=Datei ist z. Z. zum Senden gesperrt
-delq_ok=deleted ok
+delq_ok=Gel&#246;scht ok
 delq_title=L&#246;sche Nachricht
 delq_titles=L&#246;sche Nachrichten
 dform_create=Verkn&#252;pfung erstellen
@@ -195,7 +196,7 @@ dform_to=Zu Dom&#228;ne
 domains_desc=Die Dom&#228;nenverkn&#252;pfung ver&#228;ndert die <tt>To:</tt>-Adresse von Mails, die von Ihrem System gesendet oder weitergeleitet werden oder die an lokale Benutzer ausgeliefert werden. Ebenso wird die <TT>From:</TT>-Adresse von weitergeleiteten Nachrichten oder Nachrichten an lokale Benutzer ver&#228;ndert. Dies kann n&#252;tzlich sein, wenn sich Ihr Dom&#228;nenname &#228;ndert und Sie alle Vorkommen des alten Dom&#228;nennamen in den neuen &#228;ndern wollen.
 domains_ecannot=Sie haben keine Berechtigung, die Dom&#228;nenverkn&#252;pfung zu bearbeiten
 domains_econfig=Ihre Sendmail-Konfiguration hat nicht die ben&#246;tigte Direktive f&#252;r Dom&#228;nenverkn&#252;pfung.
-domains_efeature=Ihre Sendmail konfiguration hat das ausgehende Domain-Mapping (<tt>domaintable</tt>) feature nicht aktiviert. <a href='$1'>Klicken Sie hier</a> um das feature zu aktivieren.
+domains_efeature=Ihre Sendmail-Konfiguration hat das ausgehende Domain-Mapping (<tt>domaintable</tt>) feature nicht aktiviert. <a href='$1'>Klicken Sie hier</a> um das feature zu aktivieren.
 domains_efile=Die Textdatei $1, von der die Datenbank $2 f&#252;r Dom&#228;nenverkn&#252;pfung generiert wird, existiert nicht. Vielleicht m&#252;ssen Sie die <a href='$3'>Modulkonfiguration</a> anpassen, um den korrekten Pfad zu benutzen.
 domains_from=Von Dom&#228;ne..
 domains_return=Dom&#228;nenverkn&#252;pfungsliste
@@ -207,7 +208,7 @@ dsave_err=Fehler beim Speichern der Dom&#228;nenverkn&#252;pfung
 enew_title=Bearbeite Email
 feat_access_db=Spamkontolldatei
 feat_domaintable=Domain Mapping
-feat_genericstable=Ausehende Addresses
+feat_genericstable=Ausgehende Adressen
 feat_mailertable=Domain Routing
 feat_virtusertable=Adress Mapping
 feature_add=F&#252;ge Konfigurationseintrag hinzu
@@ -219,11 +220,11 @@ feature_edef=Die Definitionen $1 existiert bereits
 feature_edit=Bearbeite Konfigurationseintrag hinzu
 feature_efeat=Das Feature $1 existiert bereits
 feature_emailer=Der Mailer $1 existiert bereits
-feature_eostype=Der OS Type bereits als $1 definiert
+feature_eostype=Der Betriebssystem-Typ bereits als $1 definiert
 feature_err=Konnte Konfigeintrag nicht speichern
 feature_feat=Feature
 feature_header=M4 Konfigurationseintrag details
-feature_mailer=Mail verteil Methode
+feature_mailer=Mail-Verteil-Methode
 feature_manual=Bearbeite M4 Datei
 feature_mdesc=Diese Seite erm&#246;glicht es Ihnen die manuelle bearbeitung der Sendmail M4 Konfigurationsdatei $1. Seien Sie vorsichtig, es wird kein Syntax Check durchgef&#252;hrt!
 feature_old=Aktuelle Konfigurationslinie
@@ -232,11 +233,11 @@ feature_text=Konfiglinie
 feature_values=Parameters
 features_add=F&#252;ge neuen Eintrag des Types hinzu:
 features_build=Erstelle die Sendmail konfiguration neu
-features_buildmsg=Klicken Sie auf diesen Button um die Sendmailkonfigurationsdatei $1 von der oben aufgelisteten M4 konfiguration neu zu erstellen.
-features_desc=Diese Seite listet die relevanten Entr&#228;ge der Sendmail M4 Konfigurationsdatei $1, welche aus der aktuellen Kofigurationsdatei $2 erstellt wurde.
+features_buildmsg=Klicken Sie auf diesen Button um die Sendmailkonfigurationsdatei $1 von der oben aufgelisteten M4-Konfiguration neu zu erstellen.
+features_desc=Diese Seite listet die relevanten Entr&#228;ge der Sendmail M4 Konfigurationsdatei $1, welche aus der aktuellen Konfigurationsdatei $2 erstellt wurde.
 features_econfig=Die Dateipfade des Sendmail M4 Verzeichnises und die M4 Konfigurationsdatei wurden in der <a href='$1'>Modulkonfiguration</a> nicht angegeben. Wenn Sie Sendmail von der Source installiert haben, so befinden sich die Dateien in dem Original Source Verzeichnis.
-features_efeatures=Das Sendmail M4 Konfigurationsverzeichnis $2 wurde auf Ihrem System nicht gefunden, evtl. ist es nicht vorhanden (wird mit der Sendmail installation erstellt), oder die <a href='$1'>Modulekonfiguration</a> ist fehlerhaft.
-features_emc=Die Sendmail M4 Konfigurationsdatei $2 wurde auf Ihrem System nicht gefunden, evtl. wurde es nicht installiert (kommt mit der Sendmail installation), oder die <a href='$1'>Modulekonfiguration</a> ist fehlerhaft.
+features_efeatures=Das Sendmail M4 Konfigurationsverzeichnis $2 wurde auf Ihrem System nicht gefunden, evtl. ist es nicht vorhanden (wird mit der Sendmail installation erstellt), oder die <a href='$1'>Modulkonfiguration</a> ist fehlerhaft.
+features_emc=Die Sendmail M4 Konfigurationsdatei $2 wurde auf Ihrem System nicht gefunden, evtl. wurde es nicht installiert (kommt mit der Sendmail installation), oder die <a href='$1'>Modulkonfiguration</a> ist fehlerhaft.
 features_manual=Bearbeite Datei manuell
 features_move=Verschieben
 features_return=M4 Konfiguration
@@ -336,14 +337,14 @@ log_domain_create=Erstelltes Domain mapping $1
 log_domain_delete=Gel&#246;schtes Domain mapping $1
 log_domain_manual=Manuell editierte Domain mapping Datei $1
 log_domain_modify=Bearbeitetes Domain mapping $1
-log_feature_create=Hinzugef&#252;ter M4 Eintrag $1
+log_feature_create=Hinzugef&#252;ter M4-Eintrag $1
 log_feature_delete=Gel&#246;schter M4 Eintrag $1
-log_feature_modify=Modfizierter M4 Eintrag $1
-log_feature_move=Verschobener M4 Eintrag $1
+log_feature_modify=Modifizierter M4-Eintrag $1
+log_feature_move=Verschobener M4-Eintrag $1
 log_flushq=Mail queue gep&#252;hlt
 log_generic_create=Erstellte ausgehende Adresse $1
 log_generic_delete=Gel&#246;te ausgehende Adresse $1
-log_generic_manual=Manuell editierte ausgehende address Datei $1
+log_generic_manual=Manuell editierte ausgehende Adress-Datei $1
 log_generic_modify=Bearbeitete ausgehende Adresse $1
 log_mailer_create=Erstelle domain routing $1
 log_mailer_delete=Gel&#246;tes Domain routing $1
@@ -398,14 +399,14 @@ mail_return=Benutzer-E-Mail
 mail_rfc=From-Zeile
 mail_search=Finde Nachrichten, welche in
 mail_sent=In den gesenden Mails
-mail_size=Gr&#246;sse
+mail_size=Gr&#246;&#223;e
 mail_subject=Betreff
 mail_title=Benutzer-E-Mail
 mail_to=An
-mailer_local=Lokale Unix auslieferung
+mailer_local=Lokale Unix Auslieferung
 mailers_cannot=Sie haben keine Berechtigung, das Dom&#228;nen-Routing zu bearbeiten
 mailers_delivery=Auslieferung
-mailers_desc1=Dom&#228;nen-Routing stellt eine Methode zur Verf&#252;gung, um eine spezielle Transfernethode f&#252;r bestimmte Dom&#228;nen festzulegen. Dies kann n&#252;tzlich sein, wenn Ihr System ein Gateway f&#252;r Mailserver ist, die nicht von au&#223;erhalb Ihre Netzwerks erreichbar sind, oder wenn Sie alle E-Mails f&#252;r eine bestimmte Dom&#228;ne &#252;ber einen anderen Server leiten wollen.
+mailers_desc1=Dom&#228;nen-Routing stellt eine Methode zur Verf&#252;gung, um eine spezielle Transfermethode f&#252;r bestimmte Dom&#228;nen festzulegen. Dies kann n&#252;tzlich sein, wenn Ihr System ein Gateway f&#252;r Mailserver ist, die nicht von au&#223;erhalb Ihre Netzwerks erreichbar sind, oder wenn Sie alle E-Mails f&#252;r eine bestimmte Dom&#228;ne &#252;ber einen anderen Server leiten wollen.
 mailers_desc2=Sie sollten f&#252;r eine geroutete Dom&#228;ne <b>keinen</b> Eintrag in der Liste <a href='$1'>lokalen Dom&#228;nen</a> haben. Sie sollten aber f&#252;r alle Dom&#228;nen, f&#252;r die dieses Gateway zust&#228;ndig ist, einen DNS-MX-Eintrag haben, der auf Ihr System zeigt.
 mailers_desc3=F&#228;r jede Domain sollten Sie unter <a href='$1'>relay domains</a> ebenfalls einen Eintrag vornehmen.
 mailers_edirective=Ihre Sendmail-Konfiguration hat nicht die ben&#246;tigte Direktive f&#252;r Dom&#228;nen-Routing.
@@ -535,13 +536,19 @@ opts_save=Speichern und Anwenden
 opts_selected=Ausgew&#228;hlte..
 opts_throttle=Maximale Anzahl von Verbindungen / Sekunde
 opts_title=Sendmail-Einstellungen
+ports_addr=Horche auf Adresse
 ports_all=Alle
+ports_err=Fehlgeschlagen Netzwerk Ports zu speichern
 ports_family=Protokoll
 ports_inet=IPv4
 ports_inet6=IPv6
 ports_ip=IP
+ports_mod_a=Ben&#246;tigt SMTP-Authentifizierung
+ports_mod_b=Verwende dieselbe Schnittstelle f&#252;r ausgehende E-Mail
+ports_mod_h=Verwendet Name der Schnittstelle f&#252;r HELO
 ports_name=Portname
 ports_opts=Port Optionen
+ports_port=Horchen auf Port
 ports_title=Netzwerkports
 relay_desc1=Wenn es nicht durch eine <a href='$1'>Spam-Kontrollregel</a> erlaubt ist, wird Sendmail das Weiterleiten nur von Dom&#228;nen gestatten, die links aufgelistet sind. Eingehende Mail, die nicht f&#252;r einen lokalen Benutzer und nicht f&#252;r eine hier angegebene Dom&#228;ne sind, werden abgewiesen.
 relay_desc2=Wenn Ihr System als Gateway f&#252;r mehrere Dom&#228;nen arbeitet, die nicht direkt (durch Benutzen der <a href='$1'>Dom&#228;nen-Routing</a>-Funktion), von au&#223;erhalb des Netzwerks zu erreichen sind, sollten alle solche Dom&#228;nen hier aufgelistet sein.
@@ -654,6 +661,7 @@ vform_err_nouser=Kein Benutzer
 vform_err_proto=Protokoll
 vform_err_protocol=rotokollfehler
 vform_err_temp=Tempor&#228;rer Fehler
+vform_err_tempfail=Vor&#252;bergehender Ausfall
 vform_err_unav=Nicht Verf&#252;gbar
 vform_err_unavailable=Nicht erreichbar
 vform_error=Fehler zur&#252;ckgeben
@@ -686,12 +694,12 @@ view_reply=Antworten
 view_reply2=Allen antworten
 view_return=Original Mail
 view_sent=Nachricht $1 in den gesendeten Mails
-view_strip=Entferne Attachments
-view_sub=Angef&#252;gtes Email
+view_strip=Entferne Anh&#228;nge
+view_sub=Angef&#252;gte E-Mail
 view_title=E-Mail lesen
 virtusers_address=Adresse $1
 virtusers_cmt=Beschreibung
-virtusers_createfile=Oder das feature wurde gerade eben aktiviert, so <a href='$1'>klicken Sie hier</a> um das Config-File zu erstellen.
+virtusers_createfile=Oder das feature wurde gerade eben aktiviert, so <a href='$1'>klicken Sie hier</a> um das Konfigurationsdatei zu erstellen.
 virtusers_desc1=Adressenverkn&#252;pfungen sind vergleichbar mit <a href='$1'>Aliases</a>, aber sie sind besser geeignet f&#252;r Systeme, die mehrere E-Mail-Dom&#228;nen behandeln. Sie k&#246;nnen benutzt werden, um ganze Dom&#228;nen zu einer einzigen Adresse umzuleiten, um Benutzer mit einem Namen in mehreren Dom&#228;nen zu behandeln oder um alle E-Mails zu einer Dom&#228;ne zu einer anderen umzuleiten.
 virtusers_desc2=Beachten Sie, dass Sie einen Eintrag in der Tabelle f&#252;r <a href='$1'>lokale Dom&#228;nen</a> f&#252;r alle Dom&#228;nen haben m&#252;ssen, f&#252;r die Adressenverkn&#252;pfung benutzt wird. Ebenso muss im DNS-Eintrag f&#252;r jede Dom&#228;ne ein MX-Eintrag vorhanden sein, der auf Ihr System verweist.
 virtusers_domain=Dom&#228;ne $1
@@ -714,7 +722,7 @@ vsave_ecannot5=Sie haben keine Berechtigung, eine Verkn&#252;pfung zu definieren
 vsave_edom='$1' ist keine g&#252;ltige Dom&#228;ne
 vsave_edomdom=Es nur eine Dom&#228;ne kann auf eine andere Dom&#228;ne umgeleitet werden
 vsave_edomdup=Eine Adressenverkn&#252;pfung f&#252;r '$1' ist bereits definiert
-vsave_efrom='$1' ist keine g&#252;tige Adresse
+vsave_efrom='$1' ist keine g&#252;ltige Adresse
 vsave_efromdup=Eine Adressenverkn&#252;pfung f&#252;r '$1' ist bereits definiert
 vsave_ematch=Die Quelladresse entspricht nicht '$1'
 vsave_emax=Sie haben keine Berechtigung, mehr als $1 Adressenverkn&#252;pfungen zu erstellen
