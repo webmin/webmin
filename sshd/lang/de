@@ -1,3 +1,4 @@
+__norefs=1
 access_all=Alle
 access_allowg=Erlaube nur Mitgliedern der Gruppe
 access_allowh=Erlaube nur Client Rechnern
@@ -23,7 +24,7 @@ host_agent=Forward authentication agent?
 host_ask=frage Benutzer
 host_attempts=Anzahl Versuche eine Verbindung herzustelle
 host_batch=Frage nach einem Passwort falls ben&ouml;tigt?
-host_checkip=Pr&uuml;fe IP Adressen in <tt>known_hosts</tt> Datei?
+host_checkip=Pr&uuml;fe IP-Adressen in <tt>known_hosts</tt> Datei?
 host_clevel=Grad der Kompression
 host_clevel_1=(Schlechtester)
 host_clevel_9=(Bester)
@@ -84,8 +85,8 @@ index_apply=&Auml;nderungen anwenden
 index_applymsg=Durch Anklicken des Knopfes wird die gegenw&auml;rtige Konfiguration durch das Senden des SIGHUP Signals an den laufenden SSHD Prozess angewendet
 index_applymsg2=Klicke diesen Knopf um die aktuelle Konfiguration mit dem Befehl $1 anzuwenden.
 index_dsa=DSA (f&#252;r SSH v2)
-index_econfig=Die SSH Server Konfigurationsdatei $1 wurde auf dem Systen nicht gefunden. Vielleicht ist SSHD nicht installiert, oder die <a href='$2'>Module Konfiguation</a> ist fehlerhaft.
-index_esshd=Das SSH Server Programm $1 wurde auf dem Systen nicht gefunden. Vielleicht ist SSHD nicht installiert, oder die <a href='$2'>Module Konfiguation</a> ist fehlerhaft.
+index_econfig=Die SSH Server Konfigurationsdatei $1 wurde auf dem Systen nicht gefunden. Vielleicht ist SSHD nicht installiert, oder die <a href='$2'>Modulkonfiguation</a> ist fehlerhaft.
+index_esshd=Das SSH Server Programm $1 wurde auf dem Systen nicht gefunden. Vielleicht ist SSHD nicht installiert, oder die <a href='$2'>Modulkonfiguation</a> ist fehlerhaft.
 index_eversion=Die Versionsnummer des SSH Server Programms $1 konnte nicht ermittelt werden. Eventuell ist die <a href='$2'>Modul Konfiguation</a> fehlerhaft.
 index_eversion2=Der SSH Server $1 ist Version $2, aber Webmin unterst&uuml;tzt nur SSH version 1.
 index_return=Modul Index
