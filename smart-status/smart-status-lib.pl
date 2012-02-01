@@ -119,7 +119,7 @@ Returns a list, each element of which is a unit, controller and list of subdisks
 sub list_3ware_subdisks
 {
 local ($ctrl) = @_;
-local $out = &backquote_command("tw_cli info $ctrl");
+local $out = &backquote_command("tw_cli info $ctrl 2>/dev/null");
 return () if ($?);
 my @rv;
 foreach my $l (split(/\r?\n/, $out)) {
@@ -144,7 +144,7 @@ Returns a list of 3ware controllers, each of which is just a string like c0
 =cut
 sub list_3ware_controllers
 {
-local $out = &backquote_command("tw_cli show");
+local $out = &backquote_command("tw_cli show 2>/dev/null");
 return () if ($?);
 my @rv;
 foreach my $l (split(/\r?\n/, $out)) {
