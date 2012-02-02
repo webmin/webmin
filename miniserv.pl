@@ -3378,8 +3378,8 @@ if ($use_pam) {
 	local $pamh = new Authen::PAM($config{'pam'}, $pam_username,
 				      \&pam_conv_func);
 	if (ref($pamh)) {
-		$pamh->pam_set_item("PAM_RHOST", $_[2]) if ($_[2]);
-		$pamh->pam_set_item("PAM_TTY", $_[3]) if ($_[3]);
+		$pamh->pam_set_item(PAM_RHOST(), $_[2]) if ($_[2]);
+		$pamh->pam_set_item(PAM_TTY(), $_[3]) if ($_[3]);
 		local $pam_ret = $pamh->pam_authenticate();
 		if ($pam_ret == PAM_SUCCESS()) {
 			# Logged in OK .. make sure password hasn't expired
