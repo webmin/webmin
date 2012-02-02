@@ -322,8 +322,10 @@ save_epam2=Sie k&#246;nnen das Webmin-Modul 'Perl-Module' benutzen um <a href='$
 save_epass=Kennwort ist nicht g&#252;ltig : $1
 save_err=Fehler beim Speichern des Benutzers
 save_eself=Ihrer aktuellen IP-Adresse ($1) w&#252;rde der Zugriff verweigert
+save_etemp=Die Option, ein Kennwort&#228;nderung bei der n&#228;chsten Anmeldung erzwingen, kann nicht benutzt werden, es sei denn <a href='$1'>Benutzer werden aufgefordert ein neue Pass&#246;rder eingeben</a> aktiviert ist
 save_eunix=Der Benutzer '$1' existiert nicht
 save_euser=Sie haben keine Berechtigung diesen Benutzer zu bearbeiten
+schema_desc=Bevor Webmin ein LDAP-Server verwenden kann um Benutzer und Gruppen zu speichern, muss konfiguriert werden, das Schema unten zu verwenden. Dies kann in der Regel durch Speicherung der Schema-Definition in <tt>/etc/ldap/schema</tt> oder <tt>/etc/openldap/schema</tt> als <tt>webmin.schema</tt>, anschlie&#223;end kann die Konfiguration des Servers erfolgen, das Schema-Datei zu laden.
 schema_download=Download Schema-Datei : <a href=$1>$1</a>
 schema_title=Download LDAP Schema
 sessions_desc=Aktuell angemeldete Webmin-Sitzungen sind unten aufgelistet. Zum Abbrechen einer bestehenden Sitzung und um den Benutzer zu zwingen sich neu anzumelden, klicken Sie auf die Sitzungs-ID.
