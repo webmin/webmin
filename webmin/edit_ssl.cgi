@@ -24,7 +24,7 @@ if ($@) {
 
 # Show tabs
 @tabs = map { [ $_, $text{'ssl_tab'.$_}, "edit_ssl.cgi?mode=$_" ] }
-	    ( "ssl", "current", "ips", "create", "upload" );
+	    ( "ssl", "current", "ips", "create", "csr", "upload" );
 print &ui_tabs_start(\@tabs, "mode", $in{'mode'} || $tabs[0]->[0], 1);
 
 # Basic SSL settings
@@ -149,6 +149,42 @@ print &ui_table_end();
 print &ui_form_end([ [ "", $text{'ssl_create'} ] ]);
 print &ui_tabs_end_tab();
 
+# SSL CSR generation form
+$keydata = &read_file_contents("$config_directory/miniserv.newkey");
+$csrdata = &read_file_contents("$config_directory/miniserv.csr");
+print &ui_tabs_start_tab("mode", "csr");
+print "$text{'ssl_newcsr'}<p>\n";
+
+print &ui_form_start("newcsr.cgi");
+print &ui_table_start($text{'ssl_header2'}, undef, 2);
+
+$host = $ENV{'HTTP_HOST'};
+$host =~ s/:.*//;
+print &show_ssl_key_form($host, undef, 
+			 "Webmin Webserver on ".&get_system_hostname());
+
+print &ui_table_row($text{'ssl_newfile'},
+	    &ui_textbox("newfile", "$config_directory/miniserv.newkey", 40));
+
+print &ui_table_row($text{'ssl_csrfile'},
+	    &ui_textbox("csrfile", "$config_directory/miniserv.csr", 40));
+
+print &ui_table_end();
+print &ui_form_end([ [ "", $text{'ssl_create'} ] ]);
+
+if ($keydata) {
+	# Show most recent CSR and key
+	print "<p>\n";
+	print &ui_hidden_start($text{'ssl_csralready'}, "already", 0);
+	print $text{'ssl_already1'},"<p>\n";
+	print "<pre>".&html_escape($keydata)."</pre>\n";
+	print $text{'ssl_already2'},"<p>\n";
+	print "<pre>".&html_escape($csrdata)."</pre>\n";
+	print &ui_hidden_end("already");
+	}
+
+print &ui_tabs_end_tab();
+
 # SSL key upload form
 print &ui_tabs_start_tab("mode", "upload");
 print "$text{'ssl_savekey'}<p>\n";
@@ -156,9 +192,10 @@ print &ui_form_start("savekey.cgi", "form-data");
 print &ui_table_start($text{'ssl_saveheader'}, undef, 2);
 
 print &ui_table_row($text{'ssl_privkey'},
-		    &ui_textarea("key", undef, 7, 70)."<br>\n".
+		    &ui_textarea("key", $keydata, 7, 70)."<br>\n".
 		    "<b>$text{'ssl_upload'}</b>\n".
-		    &ui_upload("keyfile"));
+		    &ui_upload("keyfile").
+		    ($keydata ? "<br>".$text{'ssl_fromcsr'} : ""));
 
 print &ui_table_row($text{'ssl_privcert'},
 		    &ui_radio("cert_def", 1,

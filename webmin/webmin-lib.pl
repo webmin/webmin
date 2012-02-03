@@ -1896,6 +1896,80 @@ else {
 return undef;
 }
 
+=head2 parse_ssl_csr_form(&in, keyfile, csrfile)
+
+Parses the CSR generation form, and creates new key and CSR files.
+Returns undef on success or an error message on failure.
+
+=cut
+sub parse_ssl_csr_form
+{
+my ($in, $keyfile, $csrfile) = @_;
+my %in = %$in;
+
+# Validate inputs
+$in{'commonName_def'} || $in{'commonName'} =~ /^[A-Za-z0-9\.\-\*]+$/ ||
+	return $text{'newkey_ecn'};
+$in{'size_def'} || $in{'size'} =~ /^\d+$/ || return $text{'newkey_esize'};
+$in{'days'} =~ /^\d+$/ || return $text{'newkey_edays'};
+$in{'countryName'} =~ /^\S\S$/ || return $text{'newkey_ecountry'};
+
+# Work out SSL command
+my %aclconfig = &foreign_config('acl');
+&foreign_require("acl", "acl-lib.pl");
+my $cmd = &acl::get_ssleay();
+if (!$cmd) {
+	return &text('newkey_ecmd', "<tt>$aclconfig{'ssleay'}</tt>",
+		     "$gconfig{'webprefix'}/config.cgi?acl");
+	}
+
+# Generate the key
+my $ktemp = &transname();
+my $size = $in{'size_def'} ? $default_key_size : quotemeta($in{'size'});
+my $out = &backquote_command("openssl genrsa -out ".quotemeta($ktemp)." $size 2>&1 </dev/null");
+if (!-r $ktemp || $?) {
+	return $text{'newkey_essl'}."<br>"."<pre>".&html_escape($out)."</pre>";
+	}
+
+# Run openssl and feed it key data
+my $ctemp = &transname();
+my $outtemp = &transname();
+open(CA, "| $cmd req -new -key $ktemp -out $ctemp >$outtemp 2>&1");
+print CA ($in{'countryName'} || "."),"\n";
+print CA ($in{'stateOrProvinceName'} || "."),"\n";
+print CA ($in{'cityName'} || "."),"\n";
+print CA ($in{'organizationName'} || "."),"\n";
+print CA ($in{'organizationalUnitName'} || "."),"\n";
+print CA ($in{'commonName_def'} ? "*" : $in{'commonName'}),"\n";
+print CA ($in{'emailAddress'} || "."),"\n";
+print CA ".\n";
+print CA ".\n";
+close(CA);
+my $rv = $?;
+my $out = &read_file_contents($outtemp);
+unlink($outtemp);
+if (!-r $ctemp || $?) {
+	return $text{'newkey_essl'}."<br>"."<pre>".&html_escape($out)."</pre>";
+	}
+
+# Write to the final files
+my $csrout = &read_file_contents($ctemp);
+my $keyout = &read_file_contents($ktemp);
+unlink($ctemp, $ktemp);
+
+my ($kfh, $cfh);
+&open_lock_tempfile($kfh, ">$keyfile");
+&print_tempfile($kfh, $keyout);
+&close_tempfile($kfh);
+&set_ownership_permissions(undef, undef, 0600, $keyfile);
+&open_lock_tempfile($cfh, ">$csrfile");
+&print_tempfile($cfh, $csrout);
+&close_tempfile($cfh);
+&set_ownership_permissions(undef, undef, 0600, $csrfile);
+
+return undef;
+}
+
 =head2 build_installed_modules(force-all, force-mod)
 
 Calls each module's install_check function, and updates the cache of

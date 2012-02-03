@@ -62,6 +62,12 @@ if (!$in{'chain_def'}) {
 &put_miniserv_config(\%miniserv);
 &unlock_file($ENV{'MINISERV_CONFIG'});
 
+# If uploading a key from a CSR, remove the saved key
+$csrkeydata = &read_file_contents("$config_directory/miniserv.newkey");
+if (&strip_key_spaces($csrkeydata) eq &strip_key_spaces($key)) {
+	&unlink_logged("$config_directory/miniserv.newkey");
+	}
+
 # Tell the user
 &ui_print_header(undef, $text{'savekey_title'}, "");
 
@@ -80,3 +86,13 @@ if (!$in{'chain_def'}) {
 
 &webmin_log("savekey");
 &restart_miniserv(1);
+
+# strip_key_spaces(data)
+# Returns a key or cert with spaces removed and lowercased, for comparison
+sub strip_key_spaces
+{
+my ($key) = @_;
+$key =~ s/\s+//g;
+$key = lc($key);
+return $key;
+}
