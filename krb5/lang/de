@@ -1,3 +1,4 @@
+__norefs=1
 admin_log=Admin-Server-Logdatei
 default_admin=Admin-Server
 default_domain=Standard Domain-Name
