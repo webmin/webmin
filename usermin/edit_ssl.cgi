@@ -168,5 +168,15 @@ print &ui_tabs_end_tab();
 
 print &ui_tabs_end(1);
 
+# Button to copy cert from Webmin
+&get_miniserv_config(\%wminiserv);
+if ($wminiserv{'ssl'}) {
+	print &ui_hr();
+	print &ui_buttons_start();
+	print &ui_buttons_row("copycert.cgi", $text{'ssl_copycert'},
+			      $text{'ssl_copycertdesc'});
+	print &ui_buttons_end();
+	}
+
 &ui_print_footer("", $text{'index_return'});
 

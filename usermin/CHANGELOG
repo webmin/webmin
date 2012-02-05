@@ -49,3 +49,5 @@ Added a field to the Operating System and Environment page for additional Perl m
 IPv6 support for Usermin can now be enabled on the Ports and Addresses page.
 ---- Changes since 1.560 ----
 Updated the SSL Encryption page to have the same UI and features as Webmin.
+---- Changes since 1.580 ----
+Added a button to copy the SSL certificate and other settings from Webmin.

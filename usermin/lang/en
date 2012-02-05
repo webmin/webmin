@@ -133,6 +133,8 @@ ssl_desc2=Warning - only turn on SSL support if you have a browser that supports
 ssl_newkey=This form can be used to create a new SSL key for your Usermin server.
 ssl_hole=Because you are currently using the default Usermin SSL key that everyone has access to, you should generate a new key immediately. Otherwise your SSL connection is not secure!
 ssl_savekey=This form allows you to upload an existing PEM format SSL private key and certificate for your Usermin server to use.
+ssl_copycert=Copy Certificate From Webmin
+ssl_copycertdesc=Copy the SSL certificate, private key, CA cert and other settings that Webmin is using.
 
 ca_email=Email address
 ca_ou=Department
@@ -332,6 +334,7 @@ log_upgrade=Upgraded Usermin to version $1
 log_uinstall=Installed Usermin version $1
 log_session=Changed authentication options
 log_ssl=Changed SSL encryption mode
+log_copycert=Copied SSL settings from Webmin
 log_newkey=Created new SSL key
 log_setupca=Set up certificate authority
 log_changeca=Changed certificate authority
@@ -492,5 +495,9 @@ blocked_user=Usermin user
 blocked_cleardesc=Click this button to clear all current host and user blocks, by restarting the Usermin server process.
 
 mobile_title=Mobile Device Options
+
+copycert_err=Failed to copy SSL settings from Webmin
+copycert_essl=SSL is not enabled
+copycert_ekeyfile=No private key file is set in Webmin
 
 __norefs=1
