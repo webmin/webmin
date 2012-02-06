@@ -308,15 +308,15 @@ foreach $m (@mounted) {
 			# Don't double-count zones
 			next;
 			}
+		if ($donedevice{$m->[0]}++) {
+			# Don't double-count mounts from the same device
+			next;
+			}
 		my ($t, $f) = &mount::disk_space($m->[2], $m->[0]);
 		if (($m->[2] eq "simfs" || $m->[2] eq "vzfs" ||
 		     $m->[0] eq "/dev/vzfs") &&
 		    $donevzfs{$t,$f}++) {
 			# Don't double-count VPS filesystems
-			next;
-			}
-		if ($donedevice{$m->[0]}++) {
-			# Don't double-count mounts from the same device
 			next;
 			}
 		$total += $t*1024;
