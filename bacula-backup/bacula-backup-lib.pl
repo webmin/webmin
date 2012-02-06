@@ -215,7 +215,8 @@ return $config_file_parent_cache{$file};
 sub find
 {
 local ($name, $conf) = @_;
-local @rv = grep { lc($_->{'name'}) eq lc($name) } @$conf;
+local @rv = grep { &normalize_name($_->{'name'}) eq &normalize_name($name) }
+		 @$conf;
 return wantarray ? @rv : $rv[0];
 }
 
@@ -224,6 +225,17 @@ sub find_value
 local ($name, $conf) = @_;
 local @rv = map { $_->{'value'} } &find(@_);
 return wantarray ? @rv : $rv[0];
+}
+
+# normalize_name(name)
+# Convert a Bacula config name like "Run Before" to "runbefore" for comparison
+# purposes
+sub normalize_name
+{
+local ($name) = @_;
+$name = lc($name);
+$name =~ s/\s+//g;
+return $name;
 }
 
 sub find_by
