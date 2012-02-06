@@ -295,6 +295,7 @@ my ($total, $free) = (0, 0);
 my @mounted = &mount::list_mounted();
 my %donezone;
 my %donevzfs;
+my %donedevice;
 foreach $m (@mounted) {
 	if ($m->[2] =~ /^ext/ ||
 	    $m->[2] eq "reiserfs" || $m->[2] eq "ufs" ||
@@ -312,6 +313,10 @@ foreach $m (@mounted) {
 		     $m->[0] eq "/dev/vzfs") &&
 		    $donevzfs{$t,$f}++) {
 			# Don't double-count VPS filesystems
+			next;
+			}
+		if ($donedevice{$m->[0]}++) {
+			# Don't double-count mounts from the same device
 			next;
 			}
 		$total += $t*1024;
