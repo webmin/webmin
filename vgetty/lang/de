@@ -1,14 +1,19 @@
+__norefs=1
 delete_efile=Ung&#252;ltiger Nachrichtendateiname!
 email_body=Voicemail Nachricht erhalten am $1 um $2.
 email_subject=Voicemail Nachricht
-index_ecmd=Der Vgetty Befehl $1 wurde nicht auf Ihrem System gefunden. M&#246;glicherweise ist dieser nicht installiert oder Ihre <a href='$2'>Modul Konfiguration</a> ist ung&#252;ltig.
-index_econfig=Die Vgetty Konfigurationsdatei $1 wurde nicht auf Ihrem System gefunden. M&#246;glicherweise ist diese nicht installiert oder Ihre <a href='$2'>Modul Konfiguration</a> ist ung&#252;ltig.
+index_ecmd=Der Vgetty Befehl $1 wurde nicht auf Ihrem System gefunden. M&#246;glicherweise ist dieser nicht installiert oder Ihre <a href='$2'>Modulkonfiguration</a> ist ung&#252;ltig.
+index_econfig=Die Vgetty Konfigurationsdatei $1 wurde nicht auf Ihrem System gefunden. M&#246;glicherweise ist diese nicht installiert oder Ihre <a href='$2'>Modulkonfiguration</a> ist ung&#252;ltig.
 index_return=voicemail Index
 index_title=Voicemail Server
 listen_efile=Ung&#252;ltiger Dateiname der Nachricht!
 listen_epath=Voicemail Nachricht existiert nicht l&#228;nger
 log_apply=Wende Konfiguration an
+log_delete0=$1 erhaltene Nachrichten gel&#246;scht
+log_delete1=$1 Begr&#252;&#223;ungsnachrichten gel&#246;scht
+log_move=$1 erhaltene Nachrichten konvertiert
 log_options=&#196;ndere voicemail Optionen
+log_upload=Begr&#252;&#223;ungsnachricht $1 hochgeladen
 log_vgetty_create=Seriellen Port $1 hinzugef&#252;gt
 log_vgetty_delete=Seriellen Port $1 gel&#246;scht
 log_vgetty_modify=Seriellen Port $1 modifiziert
@@ -67,6 +72,7 @@ vgetty_default=Globaler Standard
 vgetty_eclash=Die serielle Schnittstelle $1 ist bereits in Benutzung
 vgetty_edit=Editiere seriellen Port
 vgetty_err=Fehlgeschlagen seriellen Port zu speichern
+vgetty_etty=Fehlendes oder nicht vorhandenes serielles Ger&#228;t
 vgetty_header=Serielle Schnittstelle Konfigurationsoptionen
 vgetty_mgetty=Data/Fax
 vgetty_none=Keine serielle Ports f&#252;r Voicemail wurden noch nicht konfiguriert.
