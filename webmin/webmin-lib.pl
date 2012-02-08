@@ -1946,7 +1946,7 @@ print CA ".\n";
 print CA ".\n";
 close(CA);
 my $rv = $?;
-my $out = &read_file_contents($outtemp);
+$out = &read_file_contents($outtemp);
 unlink($outtemp);
 if (!-r $ctemp || $?) {
 	return $text{'newkey_essl'}."<br>"."<pre>".&html_escape($out)."</pre>";
