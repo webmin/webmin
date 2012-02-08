@@ -95,7 +95,7 @@ index_eperl=Das Perl-Modul $1, welches f&#252;r den ausgew&#228;hlten SMTP-Authe
 index_equals=ist gleich
 index_esystem=Keiner der unterst&#252;tzten E-Mailserver (Exim, Qmail, Postfix und Sendmail) wurde auf Ihrem System gefunden. Sie m&#252;ssen die <a href='$1'>Modulkonfiguration</a> manuell anpassen und dort den E-Mailserver und die zugeh&#246;rigen Serverpfade eintragen.
 index_esystem2=Der in der <a href='$1'>Modulkonfiguration</a> gesetzte E-Mailserver wurde auf ihrem System nicht gefunden. Sie m&#252;ssen dort die Konfiguration so anpassen, da&#223; der richtige E-Mailserver benutzt wird.
-index_esystem3=Ein Fehler ist beim Zugriff auf das Mailsystem in <a href='$1'>Modulekonfiguration</a> augetreten: $2.
+index_esystem3=Ein Fehler ist beim Zugriff auf das Mailsystem in <a href='$1'>Modulkonfiguration</a> aufgetreten: $2.
 index_file=Lese E-Mail in Datei:
 index_find=Finde Benutzer deren Benutzername
 index_header=Benutzer-E-Mailboxen
@@ -103,12 +103,12 @@ index_none=Sie d&#252;rfen die E-Mails der Benutzer auf diesem System nicht lese
 index_nousers=Es wurden keine Benutzer gefunden!
 index_nousersmail=Keine Benutzer mit E-Mail gefunden.
 index_return=Benutzerliste
-index_system0=E-Mailserver: Postfix
-index_system1=E-Mailserver: Sendmail
-index_system2=E-Mailserver: Qmail
-index_system4=Mail Server: Qmail+LDAP
-index_system5=Mail Server: Qmail+VPopMail
-index_system6=Mail Server: Exim
+index_system0=Mail-Server: Postfix
+index_system1=Mail-Server: Sendmail
+index_system2=Mail-Server: Qmail
+index_system4=Mail-Server: Qmail+LDAP
+index_system5=Mail-Server: Qmail+VPopMail
+index_system6=Mail-Server: Exim
 index_title=Lese Benutzer-E-Mail
 index_toomany=Es gibt mehr Benutzer auf Ihrem System, als hier angezeigt werden k&#246;nnen.
 ldap_ebase=LDAP base DN in Modulkonfiguration nicht gesetzt
@@ -117,7 +117,7 @@ ldap_ehost=LDAP Server in der Modulkonfiguration nicht gesetzt
 ldap_elogin=Konnte nicht zum LDAP-Server $1 als $2 verbinden : $3
 ldap_emod=Das fehlende Perl-Modul $1 wird ben&#246;tigt, um sich via LDAP zu verbinden
 ldap_eport=Kein g&#252;ltiger LDAP Server Port in der Modulkonfiguration gesetzt
-ldap_euser=Kein LDAP Login in der Modulekonfiguration gesetzt
+ldap_euser=Kein LDAP Login in der Modulkonfiguration gesetzt
 log_copymail=Es wurden $1 E-Mails von $2 nach $3 kopiert
 log_delmail=Es wurden $1 E-Mails von $2 gel&#246;scht
 log_movemail=Es wurden $1 E-Mails von $2 nach $3 kopiert
