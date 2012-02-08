@@ -18,6 +18,7 @@ index_nologfiles=<b>Hinweis</b> - die <a href='$1'>Protokollierung von Datei&#22
 index_nuser=Von jedem Benutzer au&#223;er:
 index_ouser=Von einem nicht-Webmin Benutzer
 index_return=Webmin-Ereignisanzeige
+index_sdesc=Aktionsbeschreibung beinhaltet
 index_sdiff=Datei &#196;nderung oder Kommando Ausf&#252;hrung
 index_search=Suche
 index_sfile=Aktionen die modifizierte Datei
@@ -62,6 +63,7 @@ search_action=Ereignis
 search_config=Ge&#228;nderte Modulkonfiguration
 search_crit=Aufgezeichnete Ereignisse
 search_critall=Alle aufgezeichneten Ereignisse
+search_critd=Beschreibung beinhaltet <tt>$1</tt>
 search_critm=von Modul $1
 search_critnu=von jedem, au&#223;er Benutzer $1
 search_critt=zwischen $1 und $2
