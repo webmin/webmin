@@ -67,7 +67,7 @@ index_defserv=Standard-Server
 index_econf=Die ProFTPd-Konfigurationsdatei $1 konnte auf Ihrem System nicht gefunden werden oder diese ung&uuml;ltig. Entweder ist diese nicht installiert oder Ihre <a href='$2'>Modulkonfiguration</a> ist falsch.
 index_eip=&lt;Unbekannt&gt;
 index_eproftpd=Der ProFTPd-Server $1 konnte auf Ihrem System nicht gefunden werden. Entweder ist er nicht installiert oder Ihre <a href='$2'>Modulkonfiguration</a> ist falsch.
-index_eproftpd2=Das Programm $1 scheint nicht der ProFTPd-Server zu sein. Entweder ist er nicht installiert oder Ihre <a href='$2'>Modul-Konfiguration</a> ist falsch. Ergebnis des Kommandos $3: $4
+index_eproftpd2=Das Programm $1 scheint nicht der ProFTPd-Server zu sein. Entweder ist er nicht installiert oder Ihre <a href='$2'>Modulkonfiguration</a> ist falsch. Ergebnis des Kommandos $3: $4
 index_eversion=Diese Version des ProFTPd-Server $1 wird von Webmin nicht unterst&uuml;tzt. Unterst&uuml;tzt wird nur Version 0.99 und h&ouml;her.
 index_global=Globale Konfiguration
 index_name=Server-Name
@@ -305,7 +305,7 @@ mod_core_pasvr=Min - Max
 mod_core_pathallow=Erlaubte <i>Regular Expressions</i> f&uuml;r hochgeladene Dateien
 mod_core_pathdeny=Verbotene <i>Regular Expressions</i> f&uuml;r hochgeladene Dateien
 mod_core_pidfile=Schreibe PID in Datei
-mod_core_port=Konfiguriert f&#252;r Port
+mod_core_port=Horchen auf Port
 mod_core_quit=<i>Nachricht nach dem Ausloggen</i>-Datei
 mod_core_require=Passwort erforderlich f&uuml;r Anonymous FTP?
 mod_core_restart=Erlaube den Neustart von Downloads?
