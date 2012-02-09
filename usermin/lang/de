@@ -264,7 +264,7 @@ restrict_who=Webminbenutzer
 restrict_who2=Anwenden auf
 session_authmode0=Benutze PAM f&#252;r die Authentifizierung, wenn verf&#252;gbar
 session_authmode1=Authentifizierung mit der Passwortdatei $1 Spalten $2 und $3
-session_authmode2=Benutze externes <tt>squid-&#228;hnliche</tt> Authentifizierungsprogramm
+session_authmode2=Benutze externes, squid-&#228;hnliches Authentifizierungsprogramm
 session_blank=Fordere Benutzer mit leerem Passwort beim ersten Einloggen dazu auf, sich ein eines zu geben.
 session_desc1=Hier k&#246;nnen Sie Authentifizierung und Passwort-Timeouts einstellen. Passwort-Timeouts k&#246;nnen den Usermin-Server vor sog. Brute-Force-Attacken sch&#252;tzen, indem eine sich fortlaufend verl&#228;ngernde Verz&#246;gerung nach einem fehlgeschlagenen Anmeldungsversuch eines Benutzers stattfindet.
 session_desc2=Bei aktiver Authentifizierung werden alle Sitzungen aller Benutzer von Usermin aufgezeichnet, sodass inaktive Benutzer automatisch abgemeldet werden k&#246;nnen. <b>Hinweis:</b> Das Aktivieren oder Deaktivieren der Authentifizierung kann dazu f&#252;hren, dass sich alle Benutzer neu anmelden m&#252;ssen.
@@ -276,7 +276,7 @@ session_eusermap=Fehlende oder nicht-existente Benutzerdatei
 session_homedir=Erzeuge fehlende Heimatverzeichnisse nach der Anmeldung?
 session_homedir_perms=Rechte f&#252;r neue Verzeichnisse
 session_hostname=Zeige Hostnamen auf Anmeldebildschirm?
-session_realname=Zeige den echten Hostnamen anstelle eines Virt&#252;llen Servernamens in der URL?
+session_realname=Zeige den echten Hostnamen anstelle des Servernamens von der URL?
 session_remember="Kennung speichern" anbieten? <tt>NICHT EMPFOHLEN</tt>
 session_strip=Automatisch versuchen einen Domainnamen den Benutzernamen abzuh&#228;ngen?
 session_title=Authentifizierung
@@ -293,7 +293,7 @@ sessions_ok=Schalter
 sessions_switch=Wechsle zu Usermin Benutzer:
 sessions_title=Momentane Sitzungen
 sessions_user=Unix-Benutzer
-ssl_desc1=Auf dem Host, auf dem Usermin l&#228;uft, scheint das Perl-Modul SSLeay  installiert zu sein. Damit unterst&#252;tzt Usermin SSL-verschl&#252;sselte Kommunikationen zwischen Ihrem Browser und dem Server. Wenn Sie auf Ihren Usermin-Server &#252;ber das Internet zugreifen, dann sollten Sie auf jeden Fall in Betracht ziehen, SSL zu benutzen, um zu verhindern, dass ein Eindringling Ihr Usermin-Kennwort abf&#228;ngt.
+ssl_desc1=Auf dem Host, auf dem Usermin l&#228;uft, scheint das Perl-Modul SSLeay installiert zu sein. Damit unterst&#252;tzt Usermin SSL-verschl&#252;sselte Kommunikationen zwischen Ihrem Browser und dem Server. Wenn Sie auf Ihren Usermin-Server &#252;ber das Internet zugreifen, dann sollten Sie auf jeden Fall in Betracht ziehen, SSL zu benutzen, um zu verhindern, dass ein Eindringling Ihr Usermin-Kennwort abf&#228;ngt.
 ssl_desc2=Warnung - aktivieren Sie die SSL-Unterst&#252;tzung nur, wenn Sie einen Browser benutzen, der SSL unterst&#252;tzt (wie z. B. Netscape oder IE) und wenn es keine Firewall zwischen Ihnen und dem Usermin-Server gibt, die <b>https</b> Anfragen blockiert.
 ssl_hole=Da Sie momentan den Standard-SSL-Schl&#252;ssel von Usermin benutzen und jedermann Zugriff auf diesen hat, sollten Sie unverz&#252;glich einen neuen, eigenen Schl&#252;ssel anlegen. Ansonsten ist Ihre SSL-Verbindung nicht sicher!
 ssl_newkey=Dieses Formular kann dazu benutzt werden, um einen neuen SSL-Schl&#252;ssel f&#252;r Ihren Usermin-Server zu erzeugen.
@@ -373,8 +373,8 @@ ui_texttitles=Titel als Text anzeigen?
 ui_title=Benutzerschnittstelle
 umods_title=Usermin Module
 update_apply=Speichern und anwenden
-update_desc1=Dieses Formular erlaubt Ihnen von der <a href=http://www.usermin.com/updates.html>Usermin-Updates</a> Seite oder einer anderen Quelle die Usermin-Module zu aktualisieren, die Fehler enthalten oder bei denen Sicherheitsl&#252;cken gefunden wurden. Dies wird die aktuell installierten Module abgleichen mit den verf&#252;gbaren Update-Modulen und diese optional herunterladen und installieren.
-update_desc2=Dieses Formular erlaubt Ihnen von der <a href=http://www.usermin.com/updates.html>Usermin-Updates</a> Seite oder einer anderen Quelle die Usermin-Module, die Fehler enthalten oder bei denen Sicherheitsl&#252;cken gefunden wurden nach Zeitplan automatisch zu aktualisieren. Auch wenn dieser Dienst n&#252;tzlich ist, sollten Sie ihn vorsichig benutzen, da er Angreifern m&#246;glicherweise erlaubt Ihr System zu &#252;bernehmen, wenn der Update-Server kompromittiert wurde.
+update_desc1=Dieses Formular erlaubt Ihnen von der <a href=http://www.usermin.com/uupdates.html>Usermin-Updates</a> Seite oder einer anderen Quelle die Usermin-Module zu aktualisieren, die Fehler enthalten oder bei denen Sicherheitsl&#252;cken gefunden wurden. Dies wird die aktuell installierten Module abgleichen mit den verf&#252;gbaren Update-Modulen und diese optional herunterladen und installieren.
+update_desc2=Dieses Formular erlaubt Ihnen von der <a href=http://www.usermin.com/uupdates.html>Usermin-Updates</a> Seite oder einer anderen Quelle die Usermin-Module, die Fehler enthalten oder bei denen Sicherheitsl&#252;cken gefunden wurden nach Zeitplan automatisch zu aktualisieren. Auch wenn dieser Dienst n&#252;tzlich ist, sollten Sie ihn vorsichig benutzen, da er Angreifern m&#246;glicherweise erlaubt Ihr System zu &#252;bernehmen, wenn der Update-Server kompromittiert wurde.
 update_edays=Fehlende oder ung&#252;ltige Zeitangabe (Tage)
 update_eemail=Sie m&#252;ssen eine E-Mail-Adresse eingeben, wenn Sie nur zeigen wollen, was aktualisiert w&#252;rde.
 update_efile=Ung&#252;ltige Modul-Aktualisierungs Quelldatei
@@ -432,7 +432,7 @@ upgrade_failed=... Upgrade gescheitert!
 upgrade_ftp=Letzte Version von www.usermin.com
 upgrade_local=Von lokaler Datei
 upgrade_ok=Usermin aktualisieren
-upgrade_setup=Das Skript <tt>setup.sh</tt> wird ausgef&#252;hrt, um Usermin zu aktualisieren. Dieser Vorgang da&#252;rt ungef&#228;hr ein bis zwei Minuten, je nach Leistung Ihres Systems. Bitte haben Sie ein wenig Geduld und warten Sie bis dies geschehen ist und bevor Sie weitermachen.
+upgrade_setup=Upgrade Usermin mit Befehl $1 ..
 upgrade_setup2=Installiere Usermin mit dem Befehl $1 ...
 upgrade_title=Usermin aktualisieren
 upgrade_title2=Installiere Usermin
