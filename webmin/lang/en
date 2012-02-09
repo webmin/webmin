@@ -313,7 +313,7 @@ ssl_essl=The Net::SSLeay perl module does not appear to be installed on your sys
 ssl_cpan=Alternately, you can have Webmin <a href='$1'>download and install</a> the required Net::SSLeay Perl module for you.
 ssl_emessage=The error message from Perl was : $1
 ssl_desc1=The host on which Webmin is running appears to have the SSLeay Perl module installed. Using this, Webmin supports SSL encrypted communication between your browser and the server. If you are accessing your Webmin server over the Internet, then you should definitely consider using SSL to prevent an attacker capturing your Webmin password.
-ssl_desc2=Warning - only turn on SSL support if you have a browser that supports SSL (such as Netscape or IE), and there is no firewall blocking <b>https</b> requests between your browser and the Webmin host.
+ssl_desc2=Warning - only turn on SSL support if you have a browser that supports SSL, and there is no firewall blocking <b>https</b> requests between your browser and the Webmin host.
 ssl_header=SSL support
 ssl_on=Enable SSL if available?
 ssl_key=Private key file
