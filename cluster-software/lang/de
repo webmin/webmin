@@ -1,3 +1,4 @@
+__norefs=1
 add_echeck=Auf dem Server $1 ist das Webmin-Software-Modul nicht installiert.
 add_err=Konnte Server nicht hinzuf&#252;gen
 add_esystem=Der Server $1 benutzt nicht das gleiche Paketsystem wie dieser Rechner
@@ -81,7 +82,7 @@ edit_uninst=Deinstalliere von:
 edit_vend=Lieferant
 edit_ver=Version
 host_all=Alle Pakete
-host_close=Schliesse alle
+host_close=Schlie&#223;e alle
 host_count=Installierte Pakete
 host_delete=Entferne aus dem Software-Management
 host_header=Details zu den Servern im Software-Management
