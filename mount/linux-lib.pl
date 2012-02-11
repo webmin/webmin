@@ -450,8 +450,7 @@ while(<MTAB>) {
 		}
 	elsif ($p[2] eq $smbfs_fs || $p[2] eq "cifs") {
 		# Change from //FOO/BAR to \\foo\bar
-		$p[0] =~ s/\//\\/g;
-		$p[0] = lc($p[0]);
+		$p[0] = &lowercase_share_path($p[0]);
 		$p[3] = $smbopts{$p[1]};
 		}
 	elsif ($p[2] eq "proc") {
@@ -984,13 +983,13 @@ sub generate_location
 {
 if (($_[0] eq "nfs") || ($_[0] eq "nfs4")) {
 	# NFS mount from some host and directory
-	$_[1] =~ /^([^:]+):(.*)$/;
+	local ($host, $dir) = $_[1] =~ /^([^:]+):(.*)$/ ? ( $1, $2 ) : ( );
 	print "<tr> <td>", &hlink("<b>$text{'linux_nfshost'}</b>", "nfshost"), "</td>\n";
-	print "<td><input name=nfs_host size=20 value=\"$1\">\n";
+	print "<td><input name=nfs_host size=20 value=\"$host\">\n";
 	&nfs_server_chooser_button("nfs_host");
 	print "&nbsp;", &hlink("<b>$text{'linux_nfsdir'}</b>", "nfsdir"), "\n";
 	printf "<input name=nfs_dir size=20 value=%s>\n",
-	       ($_[0] eq "nfs4") && ($2 eq "") ? "/" : $2;
+	       ($_[0] eq "nfs4") && ($dir eq "") ? "/" : $dir;
 	&nfs_export_chooser_button("nfs_host", "nfs_dir");
 	print "</td> </tr>\n";
 	}
@@ -1039,8 +1038,8 @@ elsif ($_[0] eq "swap") {
 	}
 elsif ($_[0] eq $smbfs_fs || $_[0] eq "cifs") {
 	# Windows filesystem
-	$_[1] =~ /^\\\\([^\\]*)\\(.*)$/;
-	local ($server, $share) = ($1, $2);
+	local ($server, $share) = $_[1] =~ /^\\\\([^\\]*)\\(.*)$/ ?
+					($1, $2) : ( );
 	print "<tr> <td><b>$text{'linux_smbserver'}</b></td>\n";
 	print "<td><input name=smbfs_server value=\"$server\" size=20>\n";
 	&smb_server_chooser_button("smbfs_server");
@@ -1867,7 +1866,8 @@ elsif ($_[0] eq $smbfs_fs || $_[0] eq "cifs") {
 	# No real checking done
 	$in{'smbfs_server'} =~ /\S/ || &error($text{'linux_eserver'});
 	$in{'smbfs_share'} =~ /\S/ || &error($text{'linux_eshare'});
-	return "\\\\".lc($in{'smbfs_server'})."\\".lc($in{'smbfs_share'});
+	return &lowercase_share_path(
+		"\\\\".$in{'smbfs_server'}."\\".$in{'smbfs_share'});
 	}
 elsif ($_[0] eq "tmpfs") {
 	# No location needed
@@ -2594,6 +2594,18 @@ sub files_to_lock
 {
 return ( $config{'fstab_file'}, $config{'autofs_file'},
 	 split(/\s+/, $config{'auto_file'}) );
+}
+
+# lowercase_share_path(path)
+# Converts a share spec like //FOO/BAR/Smeg to //foo/bar/Smeg
+sub lowercase_share_path
+{
+local ($path) = @_;
+$path =~ s/\//\\/g;
+if ($path =~ /^\\\\([^\\]+)\\([^\\]+)(\\.*)?/) {
+	$path = "\\\\".lc($1)."\\".lc($2).$3;
+	}
+return $path;
 }
 
 1;
