@@ -1399,7 +1399,8 @@ sub get_chroot
 {
 if (!defined($get_chroot_cache)) {
 	if ($config{'auto_chroot'}) {
-		local $out = `$config{'auto_chroot'} 2>/dev/null`;
+		local $out = &backquote_command(
+			"$config{'auto_chroot'} 2>/dev/null");
 		if (!$?) {
 			$out =~ s/\r|\n//g;
 			$get_chroot_cache = $out || "";
