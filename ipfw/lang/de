@@ -1,3 +1,4 @@
+__norefs=1
 action_allow=<font color=#00aa00>Erlauben</font>
 action_count=Aktualisiere Z&#228;hler
 action_deny=<font color=#ff0000>Verwerfen</font>
@@ -46,6 +47,7 @@ desc_to_ports_not=Ziel Port ist nicht $1
 edit_any=&lt;Jede&gt;
 edit_dst-addr=Zu Ziel Adresse..
 edit_dst-port=Zu Ziel Port..
+edit_ignored=Ignoriert
 edit_inout=Paketrichtung
 edit_inout1=Einkommend
 edit_inout2=Ausgehend
@@ -72,6 +74,8 @@ edit_title2=Editiere Regel $1
 edit_to=Ziel Adresse
 edit_unlimited=Unlimitiert
 edit_user=Unix Benutzer oder #UID
+edit_via=Weitergegeben auf Schnittstelle
+edit_xmit=Auf Schnittstelle gesendet
 index_action=Aktion
 index_add=F&#252;ge eine neue Firewall Regel hinzu
 index_add2=F&#252;ge Firewall Regel hinzu
@@ -85,15 +89,22 @@ index_auto3=Blockiere alles ausgenommen SSH und IDENT auf externer Schnittstelle
 index_auto4=Blockiere alles ausgenommen SSH, IDENT, ping und hohe Ports auf Schnittstelle:
 index_boot=Aktiviere beim Booten
 index_cluster=Cluster Server
+index_cmt=Kommentar
 index_count1=Pakete
+index_count2=Daten
 index_delete=L&#246;sche ausgew&#228;hltes
 index_desc=Bedingung
 index_headerex=Bestehende Firewall Konfiguration
 index_move=Verschieben
+index_num=Num
 index_radd=HInzuf&#252;gen
+index_reset=Firewall zur&#252;cksetzen
 index_return=Firewall Regeln
+index_rsetup=Die IPFW Firewall-Konfiguration auf Ihrem System ist im Begriff, wieder eingestellt werden. Webmin wird neue Standard-Regeln festlegen, um in der Datei $1 gespeichert werden, mit den Grundeinstellungen auf Basis Ihrer Auswahl des Firewall-Typ unten..
 index_saveex=Speichere Firewall Regeln
+index_setup=Keine IPFW Firewall wurde auf Ihrem System eingerichtet. Webmin kann f&#252;r Sie dies einrichten, welche in der Datei $1 gespeichert wird, mit den Grundeinstellungen der Basis Ihrer Auswahl von Firewall-Typ unten..
 index_title=BSD Firewall
+index_unapply=Konfiguration wiederhergestellt
 index_version=IPFW version $1
 laction_allow=<font color=#00aa00>Erlaube Paket</font>
 laction_deny=<font color=#ff0000>Verwerfe Paket</font>
