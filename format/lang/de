@@ -1,3 +1,4 @@
+__norefs=1
 acl_dall=Alle Festplatten
 acl_disks=Festplatten, die dieser Benutzer partitionieren und formatieren kann
 acl_dsel=Ausgew&auml;hlte...
@@ -26,7 +27,7 @@ edit_mount=Gemountet auf $1 als $2
 edit_mountvm=Gemountet als virtueller Speicher
 edit_newdesc1=Erstellt ein neues Dateisystem auf dieser Partition und l&ouml;scht alle bestehenden Dateien dauerhaft. Dies mu&szlig; nach dem Erstellen einer neuen Partition oder nach der &Auml;nderung einer bestehenden Partition ausgef&uuml;hrt werden.
 edit_newdesc2=Sie k&ouml;nnen kein neues Dateisystem anlegen, da es nicht erstellt ist.
-edit_newdesc3=Sie k&ouml;nnen kein neues Dateisystem erstellen, da es zur Zeit gemountet ist. Benutzen Sie das <a href=/mount/> Dateisystemmodul</a> um diese Partition zu unmounten
+edit_newdesc3=Sie k&ouml;nnen kein neues Dateisystem erstellen, da es zur Zeit gemountet ist. Benutzen Sie das <a href=/mount/>Dateisystemmodul</a> um diese Partition zu unmounten.
 edit_newfs=Neues Dateisystem
 edit_nouse=unbenutzt
 edit_setup=Einrichten
@@ -35,8 +36,8 @@ edit_tasks=Partitions-Aufgaben
 edit_title=Partition bearbeiten
 edit_tune=Einstellen
 edit_tunedesc1=Erlaubt Ihnen verschiedene Parameter des bestehenden Dateisystems zu &auml;ndern.
-edit_tunedesc2=Sie k&ouml;nnen das Dateisystem auf dieser Partition nicht einstellen, da es bisher nicht erstellt wurde
-edit_tunedesc3=Sie k&ouml;nnen das Dateisystem auf dieser Partition nicht einstellen, da es zur Zeit gemountet ist. Benutzen Sie das <a href=/mount/> Dateisystemmodul </a> zum unmounten.
+edit_tunedesc2=Sie k&ouml;nnen das Dateisystem auf dieser Partition nicht einstellen, da es bisher nicht erstellt wurde.
+edit_tunedesc3=Sie k&ouml;nnen das Dateisystem auf dieser Partition nicht einstellen, da es zur Zeit gemountet ist. Benutzen Sie das <a href=/mount/>Dateisystemmodul</a> zum unmounten.
 edit_tunedesc4=Sie k&ouml;nnen das Dateisystem auf dieser Partition nicht einstellen, da diese Partition kein Dateisystem hat.
 edit_tunedesc5=Sie k&ouml;nnen das Dateisystem auf dieser Partition nicht einstellen, da nur <tt>UFS</tt>-Dateisysteme eingestellt werden k&ouml;nnen.
 edit_tunefs=Dateisystem einstellen
@@ -119,7 +120,7 @@ tunefs_exec=F&uuml;hre Befehl $1 aus ...
 tunefs_failed=... Befehl konnte nicht ausgef&uuml;hrt werden!
 tunefs_header=Einstellbare Parameter
 tunefs_m=Reservierter Bereich
-tunefs_ok=... Befehl beendet .
+tunefs_ok=... Befehl beendet.
 tunefs_opt=Optimiere f&uuml;r
 tunefs_space=Gr&ouml;&szlig;e
 tunefs_time=Zeit
