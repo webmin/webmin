@@ -10,7 +10,7 @@ $dbh = &connect_to_database();
 @files = split(/\r?\n/, $in{'files'});
 @files || &error($text{'restore_efiles'});
 $in{'where'} =~ s/\\/\//g;
-$in{'where_def'} || $in{'where'} =~ /^([a-z]:)?\// ||
+$in{'where_def'} || $in{'where'} =~ /^([a-zA-Z]:)?\// ||
 	&error($text{'restore_ewhere'});
 $in{'client'} || &error($text{'restore_eclient'});
 if ($in{'job'} =~ /^nj_(.*)_(\d+)_(\d+)$/) {
