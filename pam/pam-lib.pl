@@ -116,7 +116,7 @@ else {
 sub list_modules
 {
 local (@rv, %done, %hasmod);
-foreach $d (split(/\s+/, $config{'lib_dirs'})) {
+foreach $d (map { glob($_) } split(/\s+/, $config{'lib_dirs'})) {
 	opendir(DIR, &translate_filename($d));
 	foreach $f (readdir(DIR)) {
 		local @st = stat(&translate_filename("$d/$f"));
