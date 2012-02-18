@@ -131,7 +131,7 @@ foreach $q (split(/\s+/, $config{'mod_equiv'})) {
 		@rv = grep { $_ ne $q1 } @rv;
 		}
 	}
-return &unique(@rv);
+return sort { $a cmp $b } &unique(@rv);
 }
 
 # include_style(&pam)
