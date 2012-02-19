@@ -1,3 +1,4 @@
+__norefs=1
 index_hosts=Alle Passwort&#228;nderungen, die mit diesem Modul get&#228;tigt werden, werden auf allen $1 Rechnern angewendet, die durch das <tt>Cluster-Benutzer und Gruppen</tt>-Modul administriert werden.
 index_noservers=Es wurden keine Rechner zum Betreuen von Benutzern im <a href=$1>Cluster-Benutzer und Gruppen</a>-Modul definiert.
 index_title=Cluster Passw&#246;rter &#228;ndern
