@@ -1,3 +1,4 @@
+__norefs=1
 add_echeck=Der Server $1 hat nicht das gleiche Benutzer- und Gruppenmodul
 add_egft=Der Server $1 hat nicht das gleiche Gruppendateiformat wie dieser
 add_epft=Der Server $1 hat nicht das gleiche Benutzerdateiformat wie dieser
