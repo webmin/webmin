@@ -1,3 +1,4 @@
+__norefs=1
 acl_config=Darf Modul-Konfiguration editieren?
 acl_doing=Setze Zugriffskontrolle f&#252;r $1 auf allen Servern ..
 acl_doing2=Setze Zugriffskontrolle f&#252;r $1 auf $2 ..
