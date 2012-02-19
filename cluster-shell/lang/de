@@ -1,3 +1,4 @@
+__norefs=1
 index_all=&lt;Alle Hosts&gt;
 index_clear=L&#246;sche Verlauf
 index_cmd=Auszuf&#252;hrendes Kommando
@@ -15,5 +16,5 @@ run_ecmd=Kein Kommando eingegeben
 run_enone=Es wurden keine Server ausgew&#228;hlt
 run_err=Konnte Kommando nicht ausf&#252;hren
 run_failed=Konnte Kommando nicht ausf&#252;hren auf $1 : $2
-run_success=Auswurf von $1 ..
+run_success=Output von $1 ..
 run_title=Kommando ausf&#252;hren
