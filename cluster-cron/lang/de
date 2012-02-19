@@ -1,8 +1,9 @@
+__norefs=1
 create_title=Erzeuge einen Cluster-Cron-Auftrag
 delete_enone=Keine ausgew&#228;hlt
 delete_err=Fehlgeschlagen Cluster-Cron-Auftr&#228;ge zu l&#246;schen
 edit_all=&lt;Alle Hosts&gt;
-edit_group=Mitglieder von  $1
+edit_group=Mitglieder von $1
 edit_servers=Laufe auf den Servern
 edit_this=diesem Server
 edit_title=Bearbeite Cluster-Cron-Auftrag
