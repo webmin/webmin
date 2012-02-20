@@ -4656,9 +4656,7 @@ sub text
 {
 my $t = &get_module_variable('%text', 1);
 my $rv = exists($t->{$_[0]}) ? $t->{$_[0]} : $text{$_[0]};
-for(my $i=1; $i<@_; $i++) {
-	$rv =~ s/\$$i/$_[$i]/g;
-	}
+$rv =~ s/\$(\d+)/$1 < @_ ? $_[$1] : '$'.$1/ge;
 return $rv;
 }
 
