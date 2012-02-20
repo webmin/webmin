@@ -17,25 +17,24 @@ if (!@glist) {
 	exit;
 	}
 
-print "<form action=convert.cgi>\n";
 print "$text{'convert_desc'}<p>\n";
-print "<input type=radio name=conv value=0 checked> $text{'convert_0'}<br>\n";
-print "<input type=radio name=conv value=1> $text{'convert_1'} ",
-      "<input name=users size=40> ",&user_chooser_button("users",1),"<br>\n";
-print "<input type=radio name=conv value=2> $text{'convert_2'} ",
-      "<input name=nusers size=40> ",&user_chooser_button("nusers",1),"<br>\n";
-print "<input type=radio name=conv value=3> $text{'convert_3'} ",
-      &unix_group_input("group"),"<br>\n";
-print "<input type=radio name=conv value=4> $text{'convert_4'} ",
-      "<input name=min size=6> - <input name=max size=6><p>\n";
+print &ui_form_start("convert.cgi", "post");
+print &ui_radio_table("conv", 0,
+	[ [ 0, $text{'convert_0'} ],
+	  [ 1, $text{'convert_1'}, &ui_textbox("users", undef, 60)." ".
+				   &user_chooser_button("users", 1) ],
+	  [ 2, $text{'convert_2'}, &ui_textbox("nusers", undef, 60)." ".
+				   &user_chooser_button("nusers", 1) ],
+	  [ 3, $text{'convert_3'}, &unix_group_input("group") ],
+	  [ 4, $text{'convert_4'}, &ui_textbox("min", undef, 6)." - ".
+				   &ui_textbox("max", undef, 6) ]
+	]);
 
-print "$text{'convert_group'} <select name=wgroup>\n";
-foreach $g (@glist) {
-	print "<option>$g->{'name'}\n";
-	}
-print "</select><br>\n";
-print "<input type=checkbox name=sync value=1> $text{'convert_sync'}<br>\n";
-print "<input type=submit value='$text{'convert_ok'}'></form>\n";
+print $text{'convert_group'}," ",
+      &ui_select("wgroup", undef, [ map { $_->{'name'} } @glist ]),"<br>\n";
+print &ui_checkbox("sync", 1, $text{'convert_sync'}, 1),"<p>\n";
+
+print &ui_form_end([ [ undef, $text{'convert_ok'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 

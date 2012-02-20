@@ -43,12 +43,32 @@ if ($in{'conv'} == 3) {
 	@members = split(/\s+/, $ginfo[3]);
 	}
 
+# Build the list of users
+if ($in{'sync'}) {
+	# Can just get from getpw* system calls, as password isn't needed
+	@users = ( );
+	setpwent();
+	while(@uinfo = getpwent()) {
+		push(@users, { 'user' => $uinfo[0],
+			       'pass' => $uinfo[1],
+			       'uid' => $uinfo[2],
+			       'gid' => $uinfo[3],
+			       'real' => $uinfo[6],
+			       'home' => $uinfo[7],
+			       'shell' => $uinfo[8] });
+		}
+	}
+else {
+	# Read /etc/passwd
+	@users = &useradmin::list_users();
+	}
+
 # Convert matching users
 &ui_print_header(undef, $text{'convert_title'}, "");
 print &ui_subheading($text{'convert_msg'});
 print "<table border width=100%><tr><td bgcolor=#c0c0c0><pre>\n";
 map { $exists{$_->{'name'}}++ } &list_users();
-foreach $u (&foreign_call("useradmin", "list_users")) {
+foreach $u (@users) {
 	local $ok;
 	if ($in{'conv'} == 0) {
 		$ok = 1;
