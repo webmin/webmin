@@ -18,5 +18,9 @@ $in{'data'} =~ /\S/ || &error($text{'manual_edata'});
 
 &graceful_apache_restart();
 &webmin_log("manual", $in{'file'});
-&redirect("");
-
+if ($in{'oneini'}) {
+	&redirect("list_ini.cgi?file=".&urlize($in{'file'}));
+	}
+else {
+	&redirect("");
+	}

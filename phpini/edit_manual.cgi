@@ -12,6 +12,7 @@ $access{'manual'} || &error($text{'manual_ecannot'});
 print $text{'manual_desc'},"<p>\n";
 print &ui_form_start("save_manual.cgi", "form-data");
 print &ui_hidden("file", $in{'file'}),"\n";
+print &ui_hidden("oneini", $in{'oneini'}),"\n";
 print &ui_textarea("data", &read_file_contents($in{'file'}), 20, 80);
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 

@@ -15,8 +15,8 @@ if (@files == 1 && !$access{'anyfile'} && $access{'noconfig'}) {
 		 $onefile);
 
 @pages = ( "vars", "dirs", "db", "session", "safe", "limits",
-	   "errors", "misc" );
-@links = map { "edit_${_}.cgi?file=".&urlize($in{'file'}) } @pages;
+	   "errors", "misc", "manual" );
+@links = map { "edit_${_}.cgi?file=".&urlize($in{'file'})."&oneini=1" } @pages;
 @titles = map { $text{$_."_title"} } @pages;
 @icons = map { "images/$_.gif" } @pages;
 &icons_table(\@links, \@titles, \@icons, 4);
