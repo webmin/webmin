@@ -172,6 +172,8 @@ else {
 	$in{'user'} =~ /^[^:\t]+$/ ||
 		&error(&text('usave_ebadname', $in{'user'}));
 	$in{'user'} =~ s/\r//g;
+	$err = &useradmin::check_username_restrictions($in{'user'});
+	&error($err) if ($err);
 	$in{'real'} || &error($text{'usave_ereal'});
 	@users = split(/\n/, $in{'user'});
 	$user = $users[0];
