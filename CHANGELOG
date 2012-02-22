@@ -158,3 +158,4 @@ Norwegian translation updates, thanks to Stein-Aksel Basma.
 The MySQL, PostgreSQL, Filesystem Backup and Backup Configuration Files modules now all support the use of Webmin variable substitutions in backup paths (like $HOSTNAME) via a new Module Config option.
 ---- Changes since 1.580 ----
 Even more German translation updates, thanks to Raymond Vetter.
+More Dutch updates, thanks to Gandyman.
