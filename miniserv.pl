@@ -77,15 +77,18 @@ if ($config{'libwrap'}) {
 	}
 
 # Check if the MD5 perl module is available
-eval "use MD5";
+eval "use MD5; \$dummy = new MD5; \$dummy->add('foo');";
 if (!$@) {
 	$use_md5 = "MD5";
 	}
 else {
-	eval "use Digest::MD5";
+	eval "use Digest::MD5; \$dummy = new Digest::MD5; \$dummy->add('foo');";
 	if (!$@) {
 		$use_md5 = "Digest::MD5";
 		}
+	}
+if ($use_md5) {
+	push(@startup_msg, "Using MD5 module $use_md5");
 	}
 
 # Get miniserv's perl path and location
