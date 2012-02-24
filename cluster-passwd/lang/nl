@@ -1,4 +1,5 @@
-index_hosts=Alle wachtwoord wijzigingen die worden gedaan met deze module zullen worden gedaan op alle $1 hosts die worden beheerd door de Cluster Gebruikers en Groepen module
+__norefs=1
+index_hosts=Alle wachtwoord wijzigingen die worden gedaan met deze module zullen worden gedaan op alle $1 hosts die worden beheerd door de Cluster Gebruikers en de Groepen module
 index_noservers=Er zijn nog geen servers gedefinieerd voor het beheren van gebruikers in de <a href='$1'>Cluster Gebruikers en Groepen</a> module.
 index_title=Cluster Wachtwoord Wijzigen
 passwd_err=Fout bij het wijzigen van het wachtwoord
