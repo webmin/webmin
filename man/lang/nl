@@ -1,3 +1,4 @@
+__norefs=1
 doc_epath=Ongeldig pakket documentatie pad
 doc_header=Pakket document file $1
 doc_title=Pakketten Documentatie
