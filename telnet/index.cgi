@@ -159,10 +159,10 @@ else {
 	print "</applet><br>\n";
 
 	print &text('index_credits',
-		    "http://www.mud.de/se/jta/"),"<br>\n";
+		    "http://javassh.org/space/start"),"<br>\n";
 	if ($config{'mode'}) {
 		print &text('index_sshcredits',
-			    "http://www.systemics.com/docs/cryptix/"),"<br>\n";
+			    "http://www.cryptix.org/"),"<br>\n";
 		}
 	print "</center>\n";
 	}
