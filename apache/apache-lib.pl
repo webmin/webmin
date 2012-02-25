@@ -455,15 +455,46 @@ if ($incdir =~ /^(.*)\[\^([^\]]+)\](.*)$/) {
 return sort { $a cmp $b } glob($incdir);
 }
 
-# get_virtual_config(index)
+# get_virtual_config(index|name)
+# Returns the Apache config block with some index in the main config, or name
 sub get_virtual_config
 {
-local($conf, $c, $v);
-$conf = &get_config();
-if (!$_[0]) { $c = $conf; $v = undef; }
+local ($name) = @_;
+local $conf = &get_config();
+local ($c, $v);
+if (!$name) {
+	# Whole config
+	$c = $conf;
+	$v = undef;
+	}
+elsif ($name =~ /^\d+$/) {
+	# By index
+	$c = $conf->[$name]->{'members'};
+	$v = $conf->[$name];
+	}
 else {
-	$c = $conf->[$_[0]]->{'members'};
-	$v = $conf->[$_[0]];
+	# Find by name, in servername:port format
+	my ($sn, $sp) = split(/:/, $name);
+	VHOST: foreach my $virt (&find_directive_struct("VirtualHost", $conf)) {
+		local $vp = $virt->{'words'}->[0] =~ /:(\d+)$/ ? $1 : 80;
+		next if ($vp != $sp);
+		local $vn = &find_directive("ServerName", $virt->{'members'});
+		if (lc($vn) eq lc($sn) || lc($vn) eq lc("www.".$sn)) {
+			$c = $virt->{'members'};
+			$v = $virt;
+			last VHOST;
+			}
+		foreach my $n (&find_directive_struct("ServerAlias",
+						      $virt->{'members'})) {
+			local @lcw = map { lc($_) } @{$n->{'words'}};
+			if (&indexof($sn, @lcw) >= 0 ||
+			    &indexof("www.".$sn, @lcw) >= 0) {
+				$c = $virt->{'members'};
+				$v = $virt;
+				last VHOST;
+				}
+			}
+		}
 	}
 return wantarray ? ($c, $v) : $c;
 }
