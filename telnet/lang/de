@@ -1,3 +1,4 @@
+__norefs=1
 index_credits=Applet entwickelt unter GPL von <a href='$1' target=_top>Matthias L. Jugel &amp; Marcus Mei&szlig;ner</a>
 index_elookup=Fehlgeschlagen die IP-Adresse f&#252;r $1 nachzuschlagen, um den Telnet- oder SSH-Server zu testen.
 index_esocket=Es l&auml;uft kein Telnet-Server auf $1 (Anschluss $2)
@@ -5,4 +6,4 @@ index_esocket2=Es l&auml;uft kein SSH-Server auf $1 (Anschluss $2)
 index_nojava=Dieses Modul ben&ouml;tigt Java, aber Ihr Browser unterst&uuml;tzt kein Java
 index_sshcredits=Enth&auml;lt Software, die vom 'Cryptix Development Team' (<a href=$1 target=_top>$1</a>) entwickelt wurde.
 index_title=SSH-/Telnet-Anmeldung
-index_warn=Warnung! Diese Telnet-Sitzung ist <B>nicht</B> verschl&uuml;sselt!
+index_warn=Warnung! Diese Telnet-Sitzung ist <B>nicht</B> verschl&uuml;sselt.
