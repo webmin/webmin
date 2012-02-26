@@ -1,3 +1,4 @@
+__norefs=1
 acl_all=Alle
 acl_always=Immer
 acl_any=Beliebig
@@ -294,7 +295,7 @@ logins_still=Immer noch angemeldet
 logins_title=Aufgezeichnete Anmeldungen
 logins_tty=TTY
 many_copy=Kopiere Dateien in Stammverzeichnisse?
-many_desc=Dieses Formular gestattet es Ihnen, mehrere Benutzer auf einmal zu erstellen, entweder mit einer hochgeladenen oder mit einer lokalen Datei. <u>Um Mi&#223;verst&#228;ndnissen vorzubeugen ist die folgende Zeile/sind die folgenden Zeilen <b>nicht &#252;bersetzt</b></u> Jede Zeile in der Datei spezifiziert einen Benutzer im folgenden Format.
+many_desc=Dieses Formular gestattet es Ihnen, mehrere Benutzer auf einmal zu erstellen, entweder mit einer hochgeladenen oder mit einer lokalen Datei. Jede Zeile in der Datei spezifiziert einen Benutzer im folgenden Format&nbsp;:
 many_desc0=username:passwd:uid:gid:realname:homedir:shell
 many_desc1=username:passwd:uid:gid:realname:homedir:shell:class:change:expire
 many_desc2=username:passwd:uid:gid:realname:homedir:shell:min:max:warn:inactive:expire
