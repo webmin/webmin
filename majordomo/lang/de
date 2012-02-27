@@ -1,5 +1,5 @@
 access_adv=Ber&#252;cksichtige diese Liste in der Antwort auf das <tt>lists</tt> Kommando f&#252;r..
-access_adv0=Jederman
+access_adv0=Jedermann
 access_adv1=Adressen, die zu folgendem Ausdruck (regexps) passen..
 access_adv2=Adressen, die nicht zu folgendem Ausdruck (regexps) passen..
 access_closed=Niemand
@@ -161,7 +161,7 @@ members_eedit=Sie haben nicht die Berechtigung die Mitglieder der Liste zu bearb
 members_esub=Sie m&#252;ssen ein Verwalterpasswort ausw&#228;hlen, bevor Sie eine Adresse der Liste hinzuf&#252;gen k&#246;nnen
 members_esubaddr=Die Adresse die hinzugef&#252;gt werden soll, mu&#223; einen kompletten Domainnamen besitzen, z.B. <tt>foo@bar.de</tt>
 members_eunsub=Sie m&#252;ssen ein Verwalterpasswort ausw&#228;hlen, bevor Sie Adressen aus der Liste entfernen k&#246;nnen
-members_eunsubaddr=Die Adresse, die entfernt werden soll mu&#223; einen kompletten Domainnamen besitzen, z.B. <tt>foo@bar.de</tt>
+members_eunsubaddr=Die Adresse, die entfernt werden soll muss einen kompletten Domainnamen besitzen, z.B. <tt>foo@bar.com</tt>
 members_rem=Entfernen
 members_rodesc=Das untere Textfeld enth&#228;lt alle E-Mail-Adressen, die die E-Mails erhalten sollen, die an diese Liste gesendet werden.
 members_sub=Eine E-Mail-Adresse zu der Liste hinzuf&#252;gen
