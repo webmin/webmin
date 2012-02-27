@@ -1,87 +1,87 @@
-batch_descafter3=In <b>gemaakte</b> en <b>gemodificeerde</b> regels, is het optioneel om extra velden toe te voegen met LDAP atttributen in <i>naam</i>=<i>waarde</i> formaat, om dit toe te wijzen aan de nieuwe of gemodificeerde gebruiker.
+__norefs=1
+batch_descafter3=In <b>gemaakte</b> en <b>gemodificeerde</b> regels, kunt optioneel extra velden toe voegen met de LDAP attributen in <i>naam</i>=<i>waarde</i> formaat, om dit toe te wijzen aan de nieuwe of gemodificeerde gebruiker.
 batch_eattr=Ongeldige LDAP attributen op regel $1 : $2
-batch_samba=Maak Samba account voor nieuwe gebruiker?
-conn_eldap_host=Er is geen LDAP client configuratie file gevonden op uw systeem, controleer of de LDAP server aangevinkt staat op de  Module Configuratie pagina.
-conn_elogin=Bind mislukt naar LDAP server $1 als $2 : $3
+batch_samba=Maak een Samba account voor een nieuwe gebruiker?
+conn_eldap_host=Er is geen LDAP client configuratie file gevonden op uw systeem, controleer of de LDAP server aangevinkt staat op de Module Configuratie pagina.
+conn_elogin=Er is geen LDAP client configuratie file gevonden op uw systeem, controleer of de LDAP server aangevinkt staat op de Module Configuratie pagina.
 gdel_group=Verwijderen LDAP groep ingang ..
 gedit_cap=Groep mogelijkheden
-gedit_desc=Omschrijving
 gedit_dn=Groepen LDAP DN
 gedit_return=groep details
 gedit_samba=Samba groep?
-gsave_eadd=Mislukt om groep toe te voegen aan LDAP database : $1
-gsave_edelete=Mislukt om groep te verwijderen van LDAP database : $1
+gsave_eadd=Mislukt om groep toe te voegen aan de LDAP database : $1
+gsave_edelete=Mislukt om groep te verwijderen van de LDAP database : $1
 gsave_egone=Groep bestaat niet langer!
-gsave_emod=Mislukt om groep te modificeren in LDAP database : $1
-gsave_emoddn=Mislukt om groep te hernoemen in LDAP database : $1
-imap_econn=Mislukt te verbinden met IMAP server $1
-imap_elogin=Mislukt in te loggen bij IMAP server $1 als $2 : $3
+gsave_emod=Mislukt om groep te modificeren in de LDAP database : $1
+gsave_emoddn=Mislukt om groep te hernoemen in de LDAP database : $1
+imap_econn=Mislukt te verbinden met de IMAP server $1
+imap_elogin=Mislukt in te loggen bij de IMAP server $1 als $2 : $3
 index_cyrus=IMAP?
 index_ebase=Er is geen LDAP client configuratie file gevonden op uw systeem, controleer of de "gebruik en groep basis" aanstaat op de <a href='$1'>module configuratie</a> pagina.
 index_egsearch=Zoeken naar groepen mislukt in $1 : $2
-index_eimap=$1. Misschien is uw <a href='$2'>module configuratie</a> is niet correct.
-index_eldap=$1. Misschien is uw <a href='$2'>module configuratie</a> is niet correct.
-index_emd5=Deze module is <a href='$1'>geconfigureerd</a> om gebruik te maken van MD5 encryptie voor wachtwoorden, maar de $2 Perl module is niet geinstalleerd. <a href='$3'>Klik hier</a> om de $2 module te downloaden en te installeren.
+index_eimap=$1. Misschien is uw <a href='$2'>module configuratie</a> niet correct.
+index_eldap=$1. Misschien is uw <a href='$2'>module configuratie</a> niet correct.
+index_emd5=Deze module is <a href='$1'>geconfigureerd</a> om gebruik te maken van MD5 encryptie voor wachtwoorden, maar de $2 Perl module is niet geinstalleerd. <a href='$3'>Klik hier</a> om de $2 module te downloaden en nu te installeren.
 index_eperl=De $1 Perl module die deze module nodig heeft is niet geinstalleerd of werkt niet goed. <a href='$3'>Klik hier</a> om hem te downloaden en nu te installeren.
 index_eperl2=De fout die Perl rapporteerde toen de module geladen werd was :
 index_eschema=Webmin is verbonden met de LDAP server, maar opvragen van het schema is mislukt. Controleer of de toegang niet word geweigerd in de <a href='$1'>LDAP Server</a> module.
 index_eslappasswd=Deze module is <a href='$1'>geconfigureerd</a> om gebruik te maken van MD5 encryptie voor wachtwoorden, maar het programma <tt>$2</tt> wat gebruikt word voor wachtwoord encryptie is niet geinstalleerd.
 index_eusearch=Mislukt te zoeken naar gebruikers in $1 : $2
 index_gadd=Toevoegen nieuwe LDAP groep.
-index_gnone=Geen LDAP groepen zijn gevonden in $1.
+index_gnone=Er zijn geen LDAP groepen gevonden in $1.
 index_greturn=groepen lijst
 index_groups=LDAP Groepen
 index_return=gebruikers lijst
 index_samba=Samba?
 index_title=LDAP Gebruikers en Groepen
 index_uadd=Toevoegen nieuwe LDAP gebruiker.
-index_unone=Geen LDAP gebruikers zijn gevonden in $1.
+index_unone=Er zijn geen LDAP gebruikers gevonden in $1.
 index_users=LDAP Gebruikers
 raw_for=Voor $1
 raw_name=Attributen naam
 raw_title=LDAP Attributen
 raw_value=Waardes
-search_err=Zoeken naar $1 in $2 mislukt : $3
+search_err=Zoeken naar $1 in $2 is mislukt : $3
 udel_book=Verwijderen van adresboek ..
 udel_failed=.. mislukt! : $1
-udel_imap=Verwijderen IMAP folder ..
-udel_pass=Verwijderen LDAP gebruiker ingang ..
-udel_warnimap=De bestaande mail postbox zal gewist worden wanneer U de home directorie verwijdert!
+udel_imap=Verwijderen van IMAP folder ..
+udel_pass=Verwijderen van LDAP gebruiker ingang ..
+udel_warnimap=De bestaande mail postbox zal gewist worden wanneer u de home directory verwijdert!
 uedit_alias=Mail aliassen
 uedit_cap=Gebruiker mogelijkheden
 uedit_classes=LDAP object klassen
-uedit_cyrus=IMAP server login?
+uedit_cyrus=IMAP server inlog?
 uedit_dn=Gebruikers LDAP DN
-uedit_fields=Toegevoegde LDAP velden
-uedit_firstname=Eerste naam
-uedit_lastname=Laatste naam
+uedit_fields=Extra LDAP velden
+uedit_firstname=Voornaam
+uedit_lastname=Achternaam
 uedit_quota=IMAP quota
 uedit_raw=LDAP Attributen
 uedit_return=Gebruiker details
 uedit_samba=Samba login?
 uedit_unquota=Niet veranderen
-usave_eadd=Mislukt om gebruiker toe te voegen aan LDAP database : $1
+usave_eadd=Mislukt om gebruiker toe te voegen aan de LDAP database : $1
 usave_ealiasdup=De alias $1 is reeds in gebruik door $2
 usave_eattrdup=Het object $1 gebruikt reeds de $2 $3
 usave_eattrdupg=De groep $1 gebruikt reeds de $2 $3
 usave_eattrdupu=De gebruiker $1 gebruikt reeds de $2 $3
 usave_ebook=Mislukt om een adresboek ingang te maken : $1
-usave_ecyruspass=De gebruikers moeten hun wachtwoorden invullen of de "Geen wachtwoord" optie moet geselecteerd zijn als U IMAP aanzet.
-usave_edelete=Mislukt gebruiker te verwijderen van LDAP database : $1
+usave_ecyruspass=De gebruikers moeten hun wachtwoorden invullen of de "Geen wachtwoord" optie moet geselecteerd zijn als u de IMAP aanzet.
+usave_edelete=Mislukt gebruiker te verwijderen van de LDAP database : $1
 usave_egone=Gebruiker bestaat niet langer!
-usave_egroupmod=Modificeren mislukt van groep $1 in LDAP database : $2
-usave_eiacl=Mislukt om recht toe te kennen aan de administrator
-usave_eicreate=Mislukt om gebruiker te maken
-usave_eifolder=Mislukt om folder $1 te maken
+usave_egroupmod=Modificeren is mislukt van groep $1 in de LDAP database : $2
+usave_eiacl=Mislukt om rechten toe te kennen aan de administrator
+usave_eicreate=Mislukt om gebruiker aan te maken
+usave_eifolder=Mislukt om folder $1 aan te maken
 usave_eilogin=Mislukt om in te loggen als nieuwe gebruiker
 usave_eimap=De gebruiker is succesvol opgeslagen in de LDAP database, maar er ontstond een IMAP fout : $1 : $2
 usave_eiquota=Mislukt om IMAP quota te zetten
 usave_eisub=Mislukt om gebruiker toe te voegen aan folder $1
-usave_emod=Mislukt om gebruiker te modificeren in LDAP database : $1
+usave_emod=Mislukt om gebruiker te modificeren in de LDAP database : $1
 usave_emodbook=Mislukt om adresboek ingang te modificeren : $1
 usave_emodbookdn=Mislukt om adresboek ingang te hernoemen : $1
-usave_emoddn=Mislukt om gebruiker te hernoemen in LDAP database : $1
+usave_emoddn=Mislukt om gebruiker te hernoemen in de LDAP database : $1
 usave_equota=Ontbrekende of ongeldige IMAP quota
 usave_ereal=Ontbrekende echte naam
-usave_esamba=Deze module kan niet gebruikt worden om het wachtwoord te zetten voor een Samba gebruiker, omdat de Samba Windows File Delen module niet is geinstalleerd.
-usave_ex86=Deze module kan niet gebruikt worden om het wachtwoord te zetten voor een Samba gebruiker op niet-Intel systemen, omdat het afhankelijk is van een gecompileerd x86 programma.
+usave_esamba=Deze module kan niet gebruikt worden om het wachtwoord in te stellen voor een Samba gebruiker, omdat de Samba Windows File Delen module niet is geinstalleerd.
+usave_ex86=Deze module kan niet gebruikt worden om het wachtwoord in te stellen voor een Samba gebruiker op niet-Intel systemen, omdat het afhankelijk is van een gecompileerd x86 programma.
