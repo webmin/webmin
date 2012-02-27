@@ -1,0 +1,6 @@
+__norefs=1
+index_credits=Gebruik de code van <a href='$1' target=_new>Ajaxterm</a> van Antony Lesuisse.
+index_epython=Ajaxterm heeft Python nodig om te werken, echter de $1 opdracht is niet gevonden op uw systeem.
+index_estart=Ajaxterm heeft geen verbindingen geaccepteerd op poort $2 na $1  seconden.
+index_popup=Openen in een aparte window ..
+index_title=Tekst Inlog
