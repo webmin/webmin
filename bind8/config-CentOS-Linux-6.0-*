@@ -28,7 +28,6 @@ by_view=0
 confirm_zone=1
 confirm_rec=0
 no_chroot=0
-chroot=/var/named/chroot
 relative_paths=0
 rndc_cmd=rndc
 master_dir=/var/named
