@@ -71,6 +71,7 @@ convert_3=Benutzer mit Gruppe
 convert_4=Benutzer mit UIDs im Bereich
 convert_added=$1 wurde hinzugef&#252;gt
 convert_desc=Dieses Formular erlaubt Ihnen existierende Unixbenutzer zu Webminbenutzern zu konvertieren. Die Rechte jedes neuen Webminbenutzers werden durch die unten ausgew&#228;hlte Gruppe bestimmt.
+convert_done=$1 Benutzer umgewandelt, $2 ung&#252;ltig, $3 gibt es bereits, $4 ausgeschlossen.
 convert_ecannot=Sie sind nicht berechtigt Unixbenutzer zu konvertieren
 convert_egroup=Unix-Gruppe existiert nicht
 convert_emax=Ung&#252;ltige gr&#246;&#223;te UID
@@ -322,12 +323,12 @@ save_epam2=Sie k&#246;nnen das Webmin-Modul 'Perl-Module' benutzen um <a href='$
 save_epass=Kennwort ist nicht g&#252;ltig : $1
 save_err=Fehler beim Speichern des Benutzers
 save_eself=Ihrer aktuellen IP-Adresse ($1) w&#252;rde der Zugriff verweigert
-save_etemp=Die Option, ein Kennwort&#228;nderung bei der n&#228;chsten Anmeldung erzwingen, kann nicht benutzt werden, es sei denn <a href='$1'>Benutzer werden aufgefordert ein neue Pass&#246;rder eingeben</a> aktiviert ist
+save_etemp=Die Option, ein Kennwort&#228;nderung bei der n&#228;chsten Anmeldung erzwingen, kann nicht benutzt werden, es sei denn <a href='$1'>Benutzer werden aufgefordert ein neues Passwort eingeben</a> aktiviert ist
 save_eunix=Der Benutzer '$1' existiert nicht
 save_euser=Sie haben keine Berechtigung diesen Benutzer zu bearbeiten
 schema_desc=Bevor Webmin ein LDAP-Server verwenden kann um Benutzer und Gruppen zu speichern, muss konfiguriert werden, das Schema unten zu verwenden. Dies kann in der Regel durch Speicherung der Schema-Definition in <tt>/etc/ldap/schema</tt> oder <tt>/etc/openldap/schema</tt> als <tt>webmin.schema</tt>, anschlie&#223;end kann die Konfiguration des Servers erfolgen, das Schema-Datei zu laden.
 schema_download=Download Schema-Datei : <a href=$1>$1</a>
-schema_title=Download LDAP Schema
+schema_title=Download LDAP-Schema
 sessions_desc=Aktuell angemeldete Webmin-Sitzungen sind unten aufgelistet. Zum Abbrechen einer bestehenden Sitzung und um den Benutzer zu zwingen sich neu anzumelden, klicken Sie auf die Sitzungs-ID.
 sessions_host=IP-Adresse
 sessions_id=Sitzungs-ID
@@ -357,7 +358,7 @@ sql_euserclass=Fehlende oder ung&#252;ltige Objekt-Klasse f&#252;r Benutzer
 sql_groupclass=Objekt-Klasse f&#252;r Gruppen
 sql_header=Optionen f&#252;r Datenbank-Backend f&#252;r Benutzer und Gruppen
 sql_host=Hostname
-sql_ldap=Benutze LDAP Server
+sql_ldap=Benutze LDAP-Server
 sql_make=Erstelle Tabellen
 sql_makedn=Erstelle DN
 sql_mysql=Benutze MySQL Datenbank
