@@ -5,6 +5,7 @@ sendmail_pid=/var/run/sendmail.pid	/var/run/sm-client.pid
 makemap_path=makemap
 sendmail_command=systemctl start sendmail.service
 sendmail_stop_command=systemctl stop sendmail.service
+sendmail_restart_command=systemctl restart sendmail.service
 sendmail_path=/usr/sbin/sendmail
 mail_dir=/var/spool/mail
 perpage=20
