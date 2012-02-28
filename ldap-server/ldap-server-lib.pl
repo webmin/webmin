@@ -101,7 +101,8 @@ return $ldap;
 sub get_default_db
 {
 local @poss = ( "olcDatabase={1}bdb,cn=config",
-		"olcDatabase={1}hdb,cn=config" );
+		"olcDatabase={1}hdb,cn=config",
+		"olcDatabase={2}hdb,cn=config" );
 foreach my $p (@poss) {
 	local @w = split(/,/, $p);
 	if (-r $config{'config_file'}."/".join("/", reverse(@w)).".ldif") {
