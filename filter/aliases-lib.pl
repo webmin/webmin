@@ -1,1 +1,1 @@
-../../webadmin/sendmail/aliases-lib.pl
+../sendmail/aliases-lib.pl
