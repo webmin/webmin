@@ -65,7 +65,7 @@ foreach $r (@rules) {
 					   $r->{'num'}));
 			}
 		}
-	if ($r->{'time'} ne "*" && !$times{$r->{'time'}}) {
+	if (!$r->{'sep'} && $r->{'time'} ne "*" && !$times{$r->{'time'}}) {
 		push(@cerrs, &text('restore_etime', $r->{'time'},
 				   $r->{'num'}));
 		}
