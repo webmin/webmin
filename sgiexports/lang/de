@@ -1,3 +1,4 @@
+__norefs=1
 edit_access=Montiere Zugriff
 edit_all=Alle Hosts
 edit_anon=Root Benutzer Rechte
@@ -14,10 +15,10 @@ edit_rw=Lese/schreib Zugriff
 edit_sel=Aufgelistete Hosts..
 edit_title1=Erstelle Export
 edit_title2=Editiere Export
-edit_wsync=Synchrinisiere nach Schreiben?
+edit_wsync=Synchronisiere nach Schreiben?
 index_add=F&#252;ge einen neuen NFS Export hinzu
 index_all=Alle Hosts
-index_apply=Wende KOnfiguration an
+index_apply=Wende Konfiguration an
 index_applydesc=Klicke diesen Button um alle oben aufgelisteten Exports, mit deren konfigurierten Optionen, aktiv zu setzen.
 index_dir=Verzeichnis
 index_hosts=Erlaubte Hosts
