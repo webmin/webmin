@@ -38,12 +38,15 @@ printf "<option value=ALL %s>%s\n",
 	$serv{'ALL'} ? 'selected' : '', $text{'edit_all'};
 printf "<option value=* %s>%s\n",
 	$serv{'*'} ? 'selected' : '', $text{'edit_this'};
-foreach $s (grep { $_->{'user'} } &servers::list_servers()) {
+foreach $s (grep { $_->{'user'} }
+		 sort { $a->{'host'} cmp $b->{'host'} }
+		      &servers::list_servers()) {
 	printf "<option value=%s %s>%s\n",
 		$s->{'host'}, $serv{$s->{'host'}} ? "selected" : "",
-		$s->{'desc'} || $s->{'host'};
+		$s->{'host'}.($s->{'desc'} ? " ($s->{'desc'})" : "");
 	}
-foreach $g (&servers::list_all_groups()) {
+foreach $g (sort { $a->{'name'} cmp $b->{'name'} }
+		 &servers::list_all_groups()) {
 	$gn = "group_".$g->{'name'};
 	printf "<option value=%s %s>%s\n",
 		$gn, $serv{$gn} ? "selected" : "",

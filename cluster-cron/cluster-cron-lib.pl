@@ -154,14 +154,14 @@ foreach $s (@run) {
 		local $rv;
 		if ($_[0]->{'cluster_user'} eq 'root') {
 			$rv = &remote_eval($s->{'host'}, "webmin",
-			    "\$x=`($q) <$rtemp 2>&1`");
+			    "\$x=&backquote_command('($_[0]->{'cluster_command'}) <$rtemp 2>&1')");
 			}
 		else {
 			$q = quotemeta($q);
 			$rv = &remote_eval($s->{'host'}, "webmin",
-			    "\$x=`(su $_[0]->{'cluster_user'} -c $q) <$rtemp 2>&1`");
+			    "\$x=&backquote_command(&command_as_user('$_[0]->{'cluster_user'}', 0, '$_[0]->{'cluster_command'}').' <$rtemp 2>&1')");
 			}
-		&remote_eval($s->{'host'}, "unlink('$rtemp')");
+		&remote_eval($s->{'host'}, "webmin", "unlink('$rtemp')");
 
 		print $wh &serialise_variable([ 1, $rv ]);
 		close($wh);

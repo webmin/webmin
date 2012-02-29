@@ -14,14 +14,23 @@ if (@jobs) {
 	print &ui_form_start("delete_jobs.cgi", "post");
 	print &ui_links_row(\@links);
 	print &ui_columns_start([ "",
+				  $cron::text{'index_command'},
 				  $cron::text{'index_user'},
 				  $cron::text{'index_active'},
 				  $text{'index_servers'},
-				  $cron::text{'index_command'} ],
+				  $text{'index_actions'}, ],
 				100, 0,
-				[ "width=5", undef, undef, undef, "colspan=2" ]);
+				[ "width=5" ]);
 	foreach $j (@jobs) {
 		local @cols;
+		local $max = $cron::config{'max_len'} || 10000;
+		local $cmd = $j->{'cluster_command'};
+		push(@cols, 
+		   sprintf "<a href='edit.cgi?id=$j->{'cluster_id'}'>%s</a>%s",
+			length($cmd) > $max ?
+				&html_escape(substr($cmd, 0, $max)) :
+			$cmd !~ /\S/ ? "BLANK" : &html_escape($cmd),
+			length($cmd) > $max ? " ..." : "");
 		push(@cols, "<tt>$j->{'cluster_user'}</tt>");
 		push(@cols, 
 			$j->{'active'} ? $text{'yes'}
@@ -37,14 +46,6 @@ if (@jobs) {
 		else {
 			push(@cols, join(", ", @servers));
 			}
-		local $max = $cron::config{'max_len'} || 10000;
-		local $cmd = $j->{'cluster_command'};
-		push(@cols, 
-		   sprintf "<a href='edit.cgi?id=$j->{'cluster_id'}'>%s</a>%s",
-			length($cmd) > $max ?
-				&html_escape(substr($cmd, 0, $max)) :
-			$cmd !~ /\S/ ? "BLANK" : &html_escape($cmd),
-			length($cmd) > $max ? " ..." : "");
 		push(@cols, "<a href='exec.cgi?id=$j->{'cluster_id'}'>".
 			    "$text{'index_run'}</a>");
 		print &ui_checked_columns_row(

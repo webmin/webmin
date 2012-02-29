@@ -5,6 +5,7 @@ index_servers=Run on servers
 index_return=cluster cron jobs list
 index_more=$1 more ..
 index_run=Run&nbsp;now..
+index_actions=Actions
 
 edit_title=Edit Cluster Cron Job
 create_title=Create Cluster Cron Job

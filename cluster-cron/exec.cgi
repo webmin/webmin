@@ -25,7 +25,8 @@ $job->{'run'} = [ map { $_->{'host'} } @run ];	# for logging
 # callback(error, &server, message)
 sub callback
 {
-local $d = $_[1]->{'desc'} || $_[1]->{'host'};
+local $d = ($_[1]->{'host'} || &get_system_hostname()).
+	   ($_[1]->{'desc'} ? " ($_[1]->{'desc'})" : "");
 if (!$_[0]) {
 	# Failed - show error
 	print "<b>",&text('exec_failed', $d, $_[2]),"</b><p>\n";
