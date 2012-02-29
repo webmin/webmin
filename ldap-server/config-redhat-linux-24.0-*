@@ -1,0 +1,10 @@
+config_file=/etc/openldap/slapd.conf
+schema_dir=/etc/openldap/schema
+slapd=slapd
+ldap_user=ldap
+browse_max=100
+start_cmd=systemctl start slapd.service
+stop_cmd=systemctl stop slapd.service
+apply_cmd=systemctl restart slapd.service
+init_name=slapd
+data_dir=/var/lib/ldap
