@@ -100,9 +100,12 @@ return $ldap;
 # For LDIF format configs, returns the config DN for the default database
 sub get_default_db
 {
-local @poss = ( "olcDatabase={1}bdb,cn=config",
+local @poss = (
 		"olcDatabase={1}hdb,cn=config",
-		"olcDatabase={2}hdb,cn=config" );
+		"olcDatabase={1}bdb,cn=config",
+		"olcDatabase={2}hdb,cn=config",
+		"olcDatabase={2}bdb,cn=config",
+	      );
 foreach my $p (@poss) {
 	local @w = split(/,/, $p);
 	if (-r $config{'config_file'}."/".join("/", reverse(@w)).".ldif") {
