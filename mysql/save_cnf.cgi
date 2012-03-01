@@ -87,7 +87,7 @@ foreach $w (@mysql_number_variables) {
 		&save_directive($conf, $mysqld, $w, [ ]);
 		}
 	else {
-		$in{$w} =~ /^\d+$/ || &error($text{"cnf_e".$w});
+		$in{$w} =~ /^\d+[kmgt]?$/i || &error($text{"cnf_e".$w});
 		&save_directive($conf, $mysqld, $w,
 				[ $in{$w}.$in{$w."_units"} ]);
 		}

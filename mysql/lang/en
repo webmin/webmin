@@ -792,6 +792,7 @@ cnf_key_buffer=Key buffer size
 cnf_max_allowed_packet=Maximum packet size
 cnf_max_connections=Maximum number of connections
 cnf_query_cache_size=Query cache size in bytes
+cnf_equery_cache_size=Invalid query cache size
 cnf_table_cache=Tables to cache
 cnf_sort_buffer=Sort buffer size
 cnf_net_buffer_length=Network buffer size
