@@ -1408,6 +1408,12 @@ if (!defined($get_chroot_cache)) {
 		}
 	if (!defined($get_chroot_cache)) {
 		$get_chroot_cache = $config{'chroot'};
+		if ($gconfig{'real_os_type'} eq 'CentOS Linux' &&
+		    $gconfig{'real_os_version'} >= 6 &&
+		    $get_chroot_cache eq "/var/named/chroot") {
+			# On CentOS 6.x, no chroot is needed
+			$get_chroot_cache = undef;
+			}
 		}
 	}
 return $get_chroot_cache;
