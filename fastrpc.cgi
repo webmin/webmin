@@ -54,7 +54,7 @@ untie(*STDOUT);
 
 # Accept the TCP connection
 $acptaddr = accept(SOCK, MAIN);
-die "accept failed!" if (!$acptaddr);
+die "accept failed : $!" if (!$acptaddr);
 $oldsel = select(SOCK);
 $| = 1;
 select($oldsel);
@@ -307,7 +307,7 @@ while(1) {
 	$$port++;
 	last if (bind($fh, sockaddr_in($$port, INADDR_ANY)));
 	}
-listen($fh, SOMAXCONN);
+listen($fh, SOMAXCONN) || return "listed failed : $!";
 return undef;
 }
 
