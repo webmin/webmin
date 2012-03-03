@@ -35,6 +35,7 @@ our @server_types = (
 		  [ 'ubuntu', 'Ubuntu Linux', undef, 'Ubuntu' ],
 		  [ 'fedora', 'Fedora Linux', undef, 'Fedora' ],
 		  [ 'redflag', 'Red Flag Linux', undef, 'RedFlag' ],
+		  [ 'amazon', 'Amazon Linux', undef, 'Amazon' ],
 
 		  # Linux variants with a type code
 		  [ 'cobalt', 'Cobalt Linux', 'cobalt-linux' ],
