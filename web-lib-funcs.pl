@@ -255,7 +255,7 @@ if (defined($_[0]) && $_[0] !~ /\.\./) {
 else {
 	$main::tempfilecount++;
 	&seed_random();
-	$rv = $tmp_dir."/".int(rand(1000000))."_".
+	$rv = $tmp_dir."/".int(rand(1000000))."_".$$."_".
 	       $main::tempfilecount."_".$scriptname;
 	}
 return $rv;
