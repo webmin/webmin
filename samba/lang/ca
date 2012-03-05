@@ -429,6 +429,7 @@ viewu_none=Cap
 viewu_ecmd=No sembla que el programa d'estat de samba $1 estigui instal·lat al sistema. Pot ser que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 viewu_kill=Desconnecta els Usuaris Seleccionats
 viewu_enone=No has seleccionat cap usuari
+viewu_refresh=Refresca la pàgina.
 
 log_apply=S'han reiniciat els servidors Samba
 log_apply_wb=S'han reiniciat els servidors Winbind

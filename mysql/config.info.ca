@@ -8,6 +8,7 @@ blob_mode=Mostra els camps BLOB i TEXT com a,1,0-Dades de la taula,1-Enllaços a 
 nodbi=Connecta amb DBI si està disponible,1,0-Sí,1-No
 nopwd=Utilitza la variable MYSQL_PWD per a passar la contrasenya,1,0-Sí,1-No
 date_subs=Fes una substitució <tt>strftime</tt> de les destinacions de còpia,1,1-Sí,0-No
+webmin_subs=Fes la substitució de les variables Webmin a les destinacions de còpia,1,1-Sí,0-No
 passwd_mode=Mode de hashing de les contrasenyes,1,1-Antic,0-Per defecte
 encoding=Codificació del contingut de la base de dades,3,Per defecte (de l'idioma actual)
 max_dbs=Nombre màxim de bases de dades i taules a mostrar,0,5

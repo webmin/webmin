@@ -8,6 +8,7 @@ add_mode=Utilitza la interfície vertical d'edició de files,1,1-Sí,0-No
 blob_mode=Mostra els camps <tt>BLOB</tt> i <tt>TEXT</tt> com a,1,0-Dades de la taula,1-Enllaços a descarregar
 nodbi=Connecta amb DBI si està disponible,1,0-Sí,1-No
 date_subs=Fes la substitució <tt>strftime</tt> de les destinacions de còpia,1,1-Sí,0-No
+webmin_subs=Fes la substitució de les variables Webmin a les destinacions de còpia,1,1-Sí,0-No
 simple_sched=Format del selector de planificació,1,1-Simple,0-Complex
 encoding=Codificació del contingut de la base de dades,3,Per defecte (de l'idioma actual)
 max_dbs=Nombre màxim de bases de dades i taules a mostrar,0,5

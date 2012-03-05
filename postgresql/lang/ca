@@ -27,6 +27,7 @@ index_setupok=Inicialitza la Base de Dades
 index_nomod=Atenció: El mòdul Perl $1 no està instal·lat al sistema, de manera que Webmin no podrà accedir de forma fiable a la base de dades PostgreSQL. <a href='$2'>Fes clic aquí</a> per instal·lar-lo ara.
 index_nomods=Atenció: Els mòduls Perl $1 i $2 no està instal·lat al sistema, de manera que Webmin no podrà accedir de forma fiable a la base de dades PostgreSQL. <a href='$3'>Fes clic aquí</a> per instal·lar-lo ara.
 index_nodbs=No tens accés a cap base de dades.
+index_nodbs3=No hi ha cap base de dades PostgreSQL que coincideixi amb la cerca.
 index_backup=Copia les Bases de Dades
 index_backupmsg=Fes clic sobre aquest botó per configurar la còpia de totes les bases de dades PostgreSQL, bé immediatament o bé amb una planificació configurada.
 index_sch=(Amb esquemes)
@@ -205,6 +206,7 @@ view_keep=Deixa-ho tal com està
 view_set=Estableix el contingut del fitxer...
 iew_warn=Atenció - la puja de fitxers i la visualització del contingut de camps <tt>text</tt> o <tt>bytea</tt> no funcionarà a menys que els mòduls Perl $1 i $2 estiguin instal·lats i funcionant.
 view_adv=Cerca Avançada
+view_sqlrun=Resultats generats per la consulta SQL: $1
 
 newdb_title=Creació de Bases de Dades
 newdb_header=Opcions de la nova base de dades

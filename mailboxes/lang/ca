@@ -120,6 +120,7 @@ view_sent=Missatge $1 al la llista de correu enviat
 view_qdesc=Missatge $1 en cua
 view_headers=Capçaleres de correu
 view_body=Contingut del missatge
+view_nobody=Aquest missatge té un cos sense contingut.
 view_allheaders=Mostra totes les capçaleres
 view_noheaders=Mostra les capçaleres bàsiques
 view_attach=Adjuncions

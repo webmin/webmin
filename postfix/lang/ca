@@ -144,6 +144,7 @@ opts_mydestination=De quins dominis es rep correu
 opts_mydestination_default=Màquina local
 opts_mydestination_domainwide=Tot el domini
 opts_notify_classes=De quins problemes s'informa l'administrador
+opts_notify_classes_sel=Seleccionades a sota
 opts_queue_directory=Directori de cua de correu
 opts_mail_owner=Propietari del correu
 opts_default_privs=Drets per defecte de l'agent de lliurament

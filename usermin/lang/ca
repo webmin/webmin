@@ -18,7 +18,7 @@ index_restart=Reinicia Usermin
 index_restartmsg=Fes clic sobre aquest botó per reiniciar el procés servidor d'Usermin. Això pot ser necessari si has actualitzat Perl fa poc. 
 
 access_title=Control d'Accés IP
-access_desc=Amb aquest formulari, el servidor Usermin pot configurar-se per a permetre o denegar l'accés només des de certes adreces IP. Es poden introduir també noms de host (com ara foo.bar.com) i xarxes IP (com 10.254.3.0 o 10.254.1.0/255.255.255.128). Hauries de limitar l'accés al servidor a les adreces fiables, sobretot si és accessible des d'Internet. Altrament, algú que endevini la teva contrasenya tindrà el control complet del sistema.
+access_desc=Amb aquest formulari, el servidor Usermin pot configurar-se per a permetre o denegar l'accés només des de certes adreces IP. Es poden introduir també noms de host (com ara foo.bar.com) i xarxes IP (com 10.254.3.0 o 10.254.1.0/255.255.255.128 o 10.254.1.0/25 o 10.254.1.5-10.254.97.127). Hauries de limitar l'accés al servidor a les adreces fiables, sobretot si és accessible des d'Internet. Altrament, algú que endevini la teva contrasenya tindrà el control complet del sistema.
 
 bind_title=Ports i Adreces
 bind_desc2=Aquest formulari es pot utilitzar per canviar el número de port que Usermin escolta, o fer que escolti només una sola adreça IP del sistema. També el podeu configurar per acceptar connexions a múltiples ports, o escoltar diferents adreces IP. Nota - pot ser que el navegador et demani d'identificar-te cada vegada que canviïs el port o l'adreça.

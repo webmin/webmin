@@ -13,7 +13,7 @@ index_refresh=Refresca els Mòduls
 index_refreshmsg=Recomprova tots els mòduls Webmin dels servidors instal·lats, i actualitza aquells que apareixen a la categoria de 'Mòduls no utilitzats'
 
 access_title=Control d'Accés IP
-access_desc=Amb aquest formulari, es pot configurar el servidor Webmin per a denegar o permetre l'accés només des de certes adreces. També s'hi poden introduir noms de hosts (com ara foo.bar.com) i xarxes IP (com ara  10.254.3.0 o 10.254.1.0/255.255.255.128). Hauries de limitar l'accés al servidor a adreces fiables, sobretot si és accessible des d'Internet. Altrament, qualsevol que endevini la teva contrasenya tindrà el control absolut del sistema.
+access_desc=Amb aquest formulari, es pot configurar el servidor Webmin per a denegar o permetre l'accés només des de certes adreces. També s'hi poden introduir noms de hosts (com ara foo.bar.com) i xarxes IP (com ara  10.254.3.0 o 10.254.1.0/255.255.255.128 o 10.254.1.0/25 o 10.254.1.5-10.254.97.127). Hauries de limitar l'accés al servidor a adreces fiables, sobretot si és accessible des d'Internet. Altrament, qualsevol que endevini la teva contrasenya tindrà el control absolut del sistema.
 access_ip=Adreces IP permeses
 access_local=Inclou la xarxa local a la llista
 access_header=Opcions de control d'accés
@@ -148,7 +148,7 @@ ui_sysinfo1=Al títol del fullejador
 ui_sysinfo2=Sobre la capçalera de la pàgina
 ui_sysinfo3=Enlloc
 ui_sysinfo4=En lloc del títol del navegador
-ui_err=No s'han pogut desar els colors
+ui_err=No s'han pogut desar les opcions d'interfície d'usuari
 ui_ergb=Valor del color hexadecimal invàlid de '$1'
 ui_feedback=Envia les opinions a
 ui_feedbackmode=Permet enviar opinions
@@ -178,6 +178,7 @@ ui_dateformat_dd/mon/yyyy=dd/mes/aaaa (p. ex. 16/Set/2001)
 ui_dateformat_dd/mm/yyyy=dd/mm/aaaa (p. ex. 16/09/2001)
 ui_dateformat_mm/dd/yyyy=mm/dd/aaaa (p. ex. 09/16/2001)
 ui_dateformat_yyyy/mm/dd=aaaa/mm/dd (p. ex. 2001/09/16)
+ui_ehostnamedisplay=Hi falta el nom de host a mostrar o bé és invàlid
 
 mods_title=Mòduls Webmin
 mods_desc1=Es poden afegir mòduls de Webmin després de la instal·lació utilitzant el formulari de la dreta. Els mòduls es distribueixen típicament en fitxers <tt>.wbm</tt>, cadascun dels quals pot contenir un o més mòduls. Els mòduls es poden instal·lar també a partir de fitxers RPM, si el sistema operatiu ho suporta.
@@ -919,6 +920,7 @@ status_interval1=Mai
 status_interval0=Cada
 status_mins=minuts
 status_pkgs=Recol·lecta les actualitzacions de paquets disponibles
+status_temp=Recol·lecta les temperatures de les unitats
 
 sendmail_title=Enviament de Correu
 sendmail_desc=Aquesta pàgina controla la forma d'enviar correus de Webmin, com ara quan es fan còpies planificades o monitorització en segon pla. També afecta el correu enviat utilitzant el mòdul Lectura del Correu d'Usuaris
