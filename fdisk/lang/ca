@@ -25,6 +25,7 @@ index_hdparm=Edita els paràmetres IDE
 index_hdparmdesc=Canvia la configuració d'una unitat IDE, com ara el mode DMA, temps límit d'inactivitat i nombre de sectors llegits.
 index_smart=Mostra l'estat SMART
 index_smartdesc=Mostra l'informe d'estat d'aquesta unitat, incloent-hi la temperatura i les freqüències d'errors.
+index_blink=Identifica la unitat
 index_relabel=Neteja les Particions
 index_relabeldesc=Suprimeix totes les particions existents i crea una nova taula de particions amb un format diferent.
 index_use=Utilitzat
@@ -233,6 +234,10 @@ hdparm_performing=Executant
 hdparm_buf1=Cau del buffer:
 hdparm_buf2=Amb buffer:
 hdparm_speedres=Resultats del test de velocitat
+
+blink_title=Identificació d'Unitat
+blink_desc=Ara el LED d'activitat de la unitat s'encendrà seixanta cops
+blink_back=Torna Eerere
 
 log_modify=S'ha modificat $1
 log_create=S'ha creat $1

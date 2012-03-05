@@ -223,7 +223,7 @@ sday_6=Dss
 
 emodule=Accés denegat : L'usuari $1 no té permís per utilitzar el mòdul $2
 emodulecheck=El mòdul $1 no està disponible en aquest sistema
-elock_tries=No he pogut bloquejar el fitxer $1 després de $2 minuts
+elock_tries2=No he pogut bloquejar el fitxer $1 després de $2 minuts. Darrer error: $3
 
 skill_high=Expert
 skill_medium=Mitjà

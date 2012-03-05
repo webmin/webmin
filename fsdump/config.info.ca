@@ -1,4 +1,5 @@
 date_subs=Fes la substitució <tt>strftime</tt> de les destinacions de la còpia,1,1-Sí,0-No
+webmin_subs=Fes la substitució de les variables Webmin a les destinacions de còpia,1,1-Sí,0-No
 smtp_server=Envia el correu via servidor SMTP,3,Mòdul de Lectura del Correu d'Usuaris
 run_mode=Executa les còpies,1,0-En primer pla,1-En segon pla
 nonewtape=Demana una cinta nova quan estigui plena,1,1-Sí,0-No

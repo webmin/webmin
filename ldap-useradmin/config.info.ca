@@ -35,7 +35,7 @@ home_style=Estil automàtic drl directori arrel,4,0-home/username,1-home/u/userna
 line6=Opcions d'usuari nou,11
 base_uid=UID més baix per a usuaris nous,3,Del mòdul d'Usuaris i Grups
 base_gid=GID més baix per a grups nous,3,Del mòdul d'Usuaris i Grups
-md5=Mètode de xifratge de les contrasenyes,1,3-MD5 LDAP,1-MD5 de Unix,0-crypt,2-Text planer,4-SSHA LDAP
+md5=Mètode de xifratge de les contrasenyes,1,3-MD5 LDAP,1-MD5 de Unix,0-crypt,2-Text planer,4-SSHA LDAP,5-Unix SHA
 shells=Construeix la llista de shells de,2,fixed-Llista integrada,passwd-Usuaris del sistema,shells-/etc/shells
 
 line7=Valors per defecte dels usuaris nous,11

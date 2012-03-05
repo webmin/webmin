@@ -25,6 +25,7 @@ net_pop3=POP3
 net_imap=IMAP
 net_pop3s=POP3 (SSL)
 net_imaps=IMAP (SSL)
+net_lmtp=LMTP
 net_ssl_disable=Accepta connexions SSL
 net_imap_listen=Interfícies per a les connexions IMAP
 net_pop3_listen=Interfícies per a les connexions POP3

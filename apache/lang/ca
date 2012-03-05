@@ -208,6 +208,9 @@ htaccess_return=a la llista de fitxers d'opcions
 htaccess_edir='$1' no és un directori vàlid
 htaccess_ecreate=No tens permís per crear aquest fitxer d'opcions
 htaccess_edelete=No tens permís per suprimir aquest fitxer d'opcions
+htaccess_eempty=No has introduït cap fitxer d'opcions per directori
+htaccess_eabsolute=El fitxer d'opcions per directori ha de ser un camí absolut
+htaccess_err=No s'ha pogut crear el fitxer d'opcions
 
 htindex_title=Fitxer d'Opcions de Directori
 htindex_ecannot=No tens permís per editar aquest fitxer d'opcions

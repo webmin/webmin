@@ -48,6 +48,8 @@ index_udesc=Descripció del servei
 index_uboot=Inicia'l en engegar
 index_ustatus=En execució
 index_uadd=Crea un nou servei d'inici.
+index_sadd=Crea un nou servei <i>systemd</i>.
+index_always=Sempre
 
 edit_title=Edició d'Acció
 create_title=Creació d'Acció
@@ -184,6 +186,7 @@ mode_local=Script d'inici simple
 mode_win32=Serveis Windows
 mode_rc=Scripts RC FreeBSD RC
 mode_upstart=Upstart
+mode_systemd=Systemd
 
 upstart_title1=Creació de Servei <i>Upstart</i>
 upstart_title2=Edició de Servei <i>Upstart</i>
@@ -209,4 +212,28 @@ upstart_eserver=No has introduït cap ordre el servidor
 upstart_eserver2=L'ordre del servidor no existeix
 upstart_eserver3=Només es pot introduir una ordre del servidor
 upstart_return=al servei <i>upstart</i>
+ 
+systemd_title1=Creació de Servei Systemd
+systemd_title2=Edició de Servei Systemd
+systemd_egone=El servei ja no existeix!
+systemd_elegacy=No és un servei systemd!
+systemd_header=Detalls del servei systemd
+systemd_name=Nom del servei
+systemd_desc=Descripció del servei
+systemd_start=Ordres a executar en iniciar
+systemd_stop=Ordres a executar en tancar
+systemd_conf=Configuració de systemd
+systemd_boot=Inicia'l en engegar
+systemd_status=Estat actual
+systemd_status0=Aturat
+systemd_status1=En execució PID $1
+systemd_status2=En execució
+systemd_err=No s'ha pogut desar el servei systemd
+systemd_ename=Hi falta el nom del servei systemd o bé sembla invàlid
+systemd_eclash=Ja existeix un servei amb el mateix nom
+systemd_edesc=Hi falta la descripció del servei
+systemd_return=al servei systemd
+systemd_econf=No has introduït cap configuració de systemd
+systemd_estart=Hi falten les ordres a executar en iniciar
+
 __norefs=1
