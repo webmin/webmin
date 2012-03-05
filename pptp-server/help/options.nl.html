@@ -1,0 +1,20 @@
+<header>PPP Opties</header>
+
+Omdat het PPTP protocol, PPP intern gebruikt om data te transporteren zal
+de PPP deamon configuratie invloed hebben op zijn gedrag.
+De opties op deze pagina bepalen of authenticatie wel of niet nodig is, en indien
+nodig wat voor soort authenticatie geaccepteerd word.
+CHAP word aanbevolen omdat het de standaard is voor PPTP.
+Echter zodra u de authenticatie activeert moet u het inloggen opzetten voor
+cliënten op de "PPP Account" pagina. <p>
+
+De opties onderaan de pagina kunnen worden gebruikt om de MPPE versleuteling
+aan te zetten inclusief de MS-CHAP authenticatie protocollen die standaard gebruikt
+worden door de Windows cliënten.
+MPPE maakt een PPTP verbinding veel veiliger, echter het is noodzakelijk dat zowel
+de PPP deamon als de kernel van het besturing systeem het ondersteunen.
+PPPd versies 2.4.2 en hoger hebben een native MPPE ondersteuning, terwijl er ook
+een pad aanwezig is voor oudere versies.
+Echter de actuele configuratie file opties verschillen tussen deze 2 PPPd versies.
+Deze module zal altijd de correcte opties gebruiken. <p>
+<hr>
