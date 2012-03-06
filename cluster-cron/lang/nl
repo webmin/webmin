@@ -1,3 +1,4 @@
+__norefs=1
 create_title=Cluster Cron Taak Aanmaken
 delete_enone=Niets geselecteerd
 delete_err=Mislukt om cluster cron taken te verwijderen
@@ -6,7 +7,7 @@ edit_group=Leden van $1
 edit_servers=Uitvoeren op servers
 edit_this=deze server
 edit_title=Bewerk Cluster Cron Taak
-exec_cmd=Bezig met uitvoeren van $1 op geselecteerde servers ..
+exec_cmd=Bezig met uitvoeren van $1 op de geselecteerde servers ..
 exec_failed=Uitvoeren mislukt op $1: $2
 exec_nohosts=Geen hosts geselecteerd om de taak op uit te voeren, of de geselecteerde groepen bevatten geen bruikbare hosts.
 exec_success=Resultaat van $1 ..
