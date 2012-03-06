@@ -6,5 +6,5 @@ pid_file=Volledig pad naar de sshd PID file,3,Geen
 start_cmd=Opdracht om sshd te starten,3,Alleen de server laten werken
 restart_cmd=Opdracht om toe te voegen aan de sshd configuratie,3,Verstuur alleen het HUP signaal
 stop_cmd=Opdracht om sshd te stoppen,3,Kill alleen het proces
-keygen_path=Volledig pad naar het ssh&#44;keygen programma,0
+keygen_path=Volledig pad naar het ssh&#45keygen programma,0
 sshd_version=SSH server versie,3,Detecteer automatisch
