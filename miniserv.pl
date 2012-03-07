@@ -3383,24 +3383,27 @@ if ($use_pam) {
 	if (ref($pamh)) {
 		$pamh->pam_set_item(PAM_RHOST(), $_[2]) if ($_[2]);
 		$pamh->pam_set_item(PAM_TTY(), $_[3]) if ($_[3]);
+		local $rcode = 0;
 		local $pam_ret = $pamh->pam_authenticate();
 		if ($pam_ret == PAM_SUCCESS()) {
 			# Logged in OK .. make sure password hasn't expired
 			local $acct_ret = $pamh->pam_acct_mgmt();
+			$pam_ret = $acct_ret;
 			if ($acct_ret == PAM_SUCCESS()) {
 				$pamh->pam_open_session();
-				return 1;
+				$rcode = 1;
 				}
 			elsif ($acct_ret == PAM_NEW_AUTHTOK_REQD() ||
 			       $acct_ret == PAM_ACCT_EXPIRED()) {
-				return 2;
+				$rcode = 2;
 				}
 			else {
 				print STDERR "Unknown pam_acct_mgmt return value : $acct_ret\n";
-				return 0;
+				$rcode = 0;
 				}
 			}
-		return 0;
+		$pamh->pam_end($pam_ret);
+		return $rcode;
 		}
 	}
 elsif ($config{'pam_only'}) {
