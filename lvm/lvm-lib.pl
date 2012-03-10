@@ -297,11 +297,14 @@ else {
 	open(DISPLAY, "lvdisplay -m 2>/dev/null |");
 	while(<DISPLAY>) {
 		s/\r|\n//g;
-		if (/LV\s+Name\s+(.*\/(\S+))/i) {
-			$lv = { 'name' => $2,
-				'device' => $1,
+		if (/LV\s+(Name|Path)\s+(.*\/(\S+))/i) {
+			$lv = { 'name' => $3,
+				'device' => $2,
 				'number' => scalar(@rv) };
 			push(@rv, $lv);
+			}
+		elsif (/LV\s+Name\s+[^\/]/) {
+			# Ignore this, as we got the name from LV Path line
 			}
 		elsif (/VG\s+Name\s+(.*)/) {
 			$lv->{'vg'} = $1;
