@@ -1,0 +1,17 @@
+<header>DNS domeinen zoekacties in de zwarte lijst</header>
+
+<center><tt>smtpd_client_restrictions: reject_rbl_client (smtp_clientbeperkingen: weiger_rbl_client)</tt></center>
+<hr>
+
+Deze parameter specificeert een optionele lijst van DNS-domeinen met de
+netwerk adressen van hosts die op de zwarte lijst staan.<br>
+Standaard zijn de op-zoekacties in de RBL zwarte lijst uitgeschakeld. 
+<p>
+Specificeer een lijst met RBL domeinen, gescheiden door komma's.
+<p>
+
+De real-time blackhole lijst werkt als volgt: omkeren van de cliënt
+netwerkadres, en weiger de service indien het in de lijst staat van
+1 van de volgende domeinen hieronder.
+
+<hr>

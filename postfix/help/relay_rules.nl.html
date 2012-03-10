@@ -1,0 +1,26 @@
+Standaard, Postfix email relais:
+
+<ul>
+<li> van vertrouwde cliënten waarvan het IP adres overeenkomt
+     <a href=opt_mynetworks><tt>$mynetworks</tt></a>,
+<li> van vertrouwde cliënten overeenkomend met <tt>$relay_domains</tt> of subdomeinen,
+<li> van onbetrouwbare cliënten naar bestemmingen die overeenkomen met <tt>$relay_domains</tt>
+     of subdomeinen, behalve adressen met een afzender specifieke route.
+</ul>
+
+De standaard <tt>relay_domains</tt> waarde is
+<a href=opt_mydestination><tt>$mydestination</tt></a>.
+
+<p>
+
+Bovendien tot het bovenstaande, zal de Postfix SMTP server standaard email accepteren
+waar Postfix het eindstation voor is:
+
+<ul>
+<li> bestemmingen die overeenkomen met
+     <a href=opt_inet_interfaces><tt>$inet_interfaces</tt></a>,
+<li> bestemmingen die overeenkomen met
+     <a href=opt_mydestination><tt>$mydestination</tt></a>,
+<li> bestemmingen die overeenkomen met
+     <a href=opt_virtual_maps><tt>$virtual_maps</tt></a>.
+</ul>

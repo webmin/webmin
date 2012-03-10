@@ -1,0 +1,21 @@
+<header>Locale netwerken</header>
+
+<center><tt>mynetworks</tt></center>
+<hr>
+
+Deze parameter specificeert de lijst met netwerken die lokaal voorkomen op deze machine.
+De lijst word gebruikt door de anti-UCE software om locale clients van vreemde clients
+te onderscheiden. Bekijk ook <tt>permit_mynetworks</tt> en
+<a href=opt_smtpd_recipient_restrictions><tt>smtpd_ontvanger_beperkingen</tt></a>
+in de SMTP configuratie.
+
+<p>
+
+Standaard is er een lijst met alle netwerken die verbonden zijn met de machine: 
+een complete class A netwerk (X.0.0.0/8), een complete class B netwerk (X.X.0.0/16) enz enz.
+Indien u een nauwkeurige controle wilt hebben, moet u een lijst met netwerk/mask patronen
+specificeren, waarbij de Mask het aantal bits specificeert in het netwerk gedeelte van een
+host adres. U kunt ook een absolute pad-naam specificeren of een patroon file, in plaats
+dat u de patroon lijst hier neerzet.
+
+<hr>

@@ -1,0 +1,32 @@
+<header>Transport mapping</header>
+
+De optionele transport file specificeert een mapping van de domein hiërarchie
+naar berichten aflever transporten en/of relais hosts. De mapping word gebruikt
+door de trivial-rewrite(8) daemon.
+
+<p>
+
+Het format van de transport tabel is als volgt:
+<ul>
+<li><b><tt>domein</tt></b> gemapt naar.. <b><tt>transport:nexthop</tt></b>: Mail
+voor het domein word afgeleverd door transport naar de nexthop.
+<li><b><tt>.domein</tt></b> gemapt naar.. <b><tt>transport:nexthop</tt></b>: Mail
+voor ieder subdomein of domein word afgeleverd door transport naar nexthop.
+</ul>
+
+Note: transport map ingangen hebben voorrang op de domein specificatie in de
+<tt>mydestination</tt> parameter. Indien u gebruik maakt van de optionele transport map,
+zal het veiliger zijn om explicite ingangen te specificeren voor alle domeinen in de
+mydestination, bijvoorbeeld:
+<ul>
+<li><tt>hostname.my.domain</tt> ... <tt>local:</tt>
+<li><tt>localhost.my.domain</tt> ... <tt>local:</tt>
+</ul>
+
+De interpretatie van het nexthop veld is transport afhankelijk. In het geval van
+SMTP, specificeer dan <tt>host:service</tt> voor een niet-standaard server poort, en gebruik
+<tt>[host]</tt> of <tt>[host:port]</tt> in deze volgorde om MX (mail exchanger)
+DNS opzoeken uit te schakelen . Het <tt>[]</tt> formulier kan ook worden gebruikt met IP adressen
+in plaats van hostnamen.
+
+<hr>

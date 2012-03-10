@@ -1,0 +1,28 @@
+<header>Email beperkt doorgeven</header>
+
+<center><tt>relay_domains</tt></center>
+<hr>
+
+Deze parameter beperkt hoeveel email er word doorgegeven door het email systeem
+van de cliënt hostnaam domein (en subdomeinen), en beperkt naar hoeveel bestemming
+domeinen (en subdomeinen) het word verstuurd.
+
+<p>
+
+<include relay_rules>
+<p>
+
+Specificeer een lijst met hosts of domeinen, <tt>/file/name</tt> patronen of
+<tt>type:name</tt> opzoek tabellen, gescheiden met komma's en/of een spatie. Een file
+naam word vervangen door zijn inhoud; een <tt>type:name</tt> tabel is word vergeleken
+wanneer een (hoofd) domein verschijnt als opzoek sleutel.
+
+<p>
+
+NOTE: Postfix zal niet automatisch email doorsturen voor domeinen die in de lijst staan
+van het systeem als de primaire of backup MX host. Bekijk de <tt>permit_mx_backup</tt>
+beperkingen, in de omschrijving van de <a href=opt_smtpd_recipient_restrictions>
+<tt>smtpd_recipient_restrictions</tt></a> parameter.
+
+
+<hr>

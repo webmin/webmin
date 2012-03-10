@@ -1,0 +1,68 @@
+<header>Canonical Mapping</header>
+
+De optionele canonical file specificeert een adres mapping voor lokale en niet
+lokale adressen. De mapping word gebruikt door de op schoon (cleanup(8)) deamon.
+De adres mapping is recursief.
+
+<p>
+
+De file dient als een input voor de postmap(1) opdracht. Het resultaat, een
+geindexeerde file in dbm of db formaat, word gebruikt om snel te zoeken in het
+mail systeem.
+
+<p>
+
+De canonical mapping heeft effect op zowel het berichten header adres
+(bijv. adressen die verschijnen binnen een bericht) als de berichten envelop
+adressen (bijv. de adressen die worden gebruikt in SMTP protocol opdrachten).
+Denk in de richting van de Sendmail regel set <tt>S3</tt> bijvoorbeeld.
+
+<p>
+
+Normaal gesproken word de canonical tabel vaak gebruikt om inlog namen te
+vervangen door <tt>Voornaam.Achternaam</tt>, of om adressen op te schonen
+die gemaakt zijn door andere mail systemen.
+
+<p>
+
+De canonical mapping mag niet worden verward met virtuele domein ondersteuning.
+Gebruik hiervoor de <a href=virtual>virtuele domein</a> map.
+
+<p>
+
+De canonical mapping mag niet worden verward met lokale aliasing.
+Gebruik hiervoor de <a href=aliases>mail aliassen</a> map.
+
+<p>
+
+Het formaat van de canonical mappings is als volgt,, mappings worden geprobeerd in de
+volgende volgorde :
+
+<ul>
+<li><b><tt>gebruiker@domein</tt></b> word ge-mapped naar... <b><tt>adres</tt></b>:<br><tt>gebruiker@domein</tt> word vervangen door <tt>adres</tt>.
+Deze vorm heeft de hoogste voorrang. Deze vorm is ook erg bruikbaar om adressen
+op te schonen die aangemaakt zijn door andere mail systemen. Het kan ook gebruikt
+worden om <tt>Voornaam.Achternaam</tt> stijl adressen te produceren, maar lees
+hieronder voor een makkelijkere oplossing.
+
+<li><b><tt>gebruiker</tt></b> word ge-mapped naar...<b><tt>adres</tt></b>:<br><tt>gebruiker@site</tt> word vervangen door een site die gelijk is aan <tt>$myorigin</tt>, wanneer site in de lijst
+staat in <tt>$mydestination</tt>, of wanneer het in de lijst staat in <tt>$inet_interfaces</tt>.
+Deze vorm is erg handig om inlog namen te vervangen door <tt>Voornaam.Achternaam</tt>.
+
+<li><b><tt>@domein</tt></b> word ge-mapped naar...<b><tt>adres</tt></b>:<br>Ieder adres in het
+domein word vervangen door het adres. Deze vorm heeft de laagste prioriteit.
+</ul>
+
+In alle bovenstaande vormen geld, wanneer het adres de vorm heeft van <tt>@anderdomein</tt>, zal
+het resultaat hetzelfde zijn voor de gebruiker in 'anderdomein'.
+
+<p>
+
+ADRES UITBREIDING : Wanneer het opzoeken in een tabel mislukt, en het lokale gedeelte van het
+adres bevat een optioneel ontvanger scheidingsteken (bijv., <tt>gebruiker+foo@domein</tt>), zal
+het zoeken worden herhaald naar het niet uitgebreide adres (bijv. <tt>gebruiker@domein</tt>), en
+het niet overeenkomende gedeelte zal worden getoond in het resultaat van de zoekactie. 
+De overeenkomende volgorde is : <tt>gebruiker+foo@domein</tt>, <tt>gebruiker@domein</tt>,
+<tt>gebruiker+foo</tt>, <tt>gebruiker</tt>, en <tt>@domein</tt>.
+
+<hr>

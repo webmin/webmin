@@ -1,0 +1,16 @@
+<header>Uitschakelen van de kernel file slot op mailboxen</header>
+
+<center><tt>sun_mailtool_compatibility</tt></center>
+<hr>
+
+Deze parameter schakelt de kernel file sloten uit op mailboxen.
+
+<p>
+
+Dit is nodig op SUN werkstations omdat het <tt>mailtool</tt> programma een
+exclusief kernel slot vasthoud zolang de window open staat. SUN software
+gebruikt alleen de <tt>user.lock</tt> files. Indien u niet alle SUN email
+software verwijdert zal de kernel sloten u alleen maar een vals gevoel van
+veiligheid geven.
+
+<hr>

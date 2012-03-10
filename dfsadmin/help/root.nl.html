@@ -1,0 +1,27 @@
+<header>Root Toegang</header>
+
+Dit controleert op welke hosts de server de root gebruiker als root zal accepteren.
+Indien een client niet in de lijst voorkomt, zal deze zelfs als die de rechten heeft
+om te kunnen mounten als alleen-lezen of lezen-schrijven de root gebruiker behandelen
+als een <a href=anon>Anonieme Gebruiker</a>.
+<if $gconfig{'os_version'} == 7>
+    <br>Hosts kunnen als volgt worden gespecificeerd :<p>
+	<dl>
+	<dt><b>Hostnaam of IP adres</b> (zoals <i>ftp.foo.com</i> of <i>1.2.3.4</i>)
+	<dd>Komt overeen met de host met de opgegeven naam of adres
+	<dt><b>Netgroep</b> (zoals <i>engineering</i>)
+	<dd>Komt overeen met de host die lid is van de netgroep
+	<dt><b>DNS domein</b> (zoals <i>.foo.com</i>)
+	<dd>Komt overeen met iedere host in het domein
+	<dt><b>Netwerk</b> (zoals <i>@10.254.1</i>)
+	<dd>Komt overeen met iedere host in het netwerk
+	<dt><b>Netwerk/netmask</b> (zoals <i>@10.254.1/24</i>)
+	<dd>Komt overeen met iedere host in het netwerk
+	</dl><p>
+    Als extra kunt u bovenstaande notaties een toevoeging geven met een <i>-</i>,
+    wat betekend dat de host, netgroep, domein of netwerk het <b>niet</b> is toegestaan
+    om deze directory's of files te mounten. Dit kan handig zijn indien u een
+    aantal hosts toegang wilt verlenen en een enkel lid wilt weigeren.
+</if>
+<hr>
+

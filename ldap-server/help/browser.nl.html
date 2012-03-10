@@ -1,0 +1,38 @@
+<header>Doorzoek Database</header>
+
+Met deze pagina kunt u navigeren door de hierarchie van de objecten die zich
+in uw LDAP database bevinden, en attributen en objecten aanmaken en 
+verwijderen.
+De DN van het object wat word beheerd word altijd getoond in het <b>Zoek</b>
+veld. Om snel naar een ander object te kunnen navigeren vult u een nieuwe DN
+in en klikt u op <b>Tonen</b>.
+Om omhoog te gaan in de hierarchie klikt u op <b>Doorzoek Ouder</b>. <p>
+
+De rest van de pagina is verdeeld in 2 delen :
+<dl>
+<dt><b>Kinder objecten</b>
+<dd>Deze tabel geeft een lijst weer van alle objecten onder de huidige.
+    U kunt een sub-object bewerken door te klikken op zijn DN, of objecten
+    verwijderen door een vinkje te zetten met de muis en dan op de
+ <b>Verwijder Geselecteerde Kinderen</b> knop te klikken. Om een DN te wijzigen
+    van een sub-object klikt u op de <b>Hernoem</b> link en vult u een nieuwe
+    DN in het veld dat dan verschijnt. <p>
+    Als u klikt op <b>Nieuw sub-object toevoegen</b> zult u een nieuwe formulier
+    krijgen waar u de details kunt invullen van een nieuw leeg object die zich
+    onder het huidige object bevind. <p>
+
+<dt><b>Object attributen</b>
+<dd>Deze tabel geeft een lijst weer van alle attributen van het huidige.
+    Om de waardes ervan te bewerken klikt u op de <b>Bewerk</b> link aan de
+    rechterzijde. Om attributen te verwijderen zet u een vinkje met de muis
+    in de boxen ernaast en klikt u op de <b>Verwijder Geselecteerde Attributen</b>
+    knop. In beide gevallen zal de LDAP server beperkingen afdwingen op de 
+    toegestane en vereiste kenmerken voor de klasse van het object. <p>
+    Een nieuwe attributen kan worden aangemaakt door te klikken op de
+ <b>Attributen toevoegen aan object</b> link, die een veld zal tonen om een
+    naam en waarde in te vullen.
+    <p>
+</dl>
+
+<footer>
+

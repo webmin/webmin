@@ -1,0 +1,17 @@
+<header>Adres masquerading (verstoppen)</header>
+
+<center><tt>masquerade_domains</tt></center>
+<hr>
+
+Adres masquerading is een methode alle hosts onder een domein te verstoppen achter
+hun mail gateway, zodat het lijkt dat de mail van de gateway zelf komt, 
+in plaats van individuele computers.
+
+<p>
+
+Adres masquerading staat standaard uit. Om het aan te zetten moet u 1 of meerdere
+domein namen, gescheiden met een spatie of een komma, specificeren.
+Bijvoorbeeld: <tt>$mijndomein</tt>; in dit voorbeeld zullen de adressen van het
+formulier <tt>gebruiker@host.$mijndomein</tt> worden omgezet naar <tt>gebruiker@$mijndomein</tt>.
+
+<hr>

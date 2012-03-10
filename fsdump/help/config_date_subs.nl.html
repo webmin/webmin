@@ -1,0 +1,140 @@
+<header>Strftime toevoegingen aan de backup file bestemmingen?</header>
+
+Indien deze optie op<b>Ja</b> is gezet zullen codes zoals %d, %m, %Y en %u
+worden gebruikt in de backup bestemming filenaam. Deze zullen worden vervangen
+met de dag, maand, jaar van de week wanneer de backup word uitgevoerd. Dit kan
+erg handig zijn als u iedere dag een nieuwe backup wilt maken van dezelfde file
+waarna u een backup kunt terug zetten van een bepaalde datum. <p>
+
+Sommige andere codes die gebruikt kunnen worden zijn :<br>
+
+<pre><font size=-1>
+ %a     De afgekorte naam van de dag in de actuele taal die
+        u gebruikt.
+
+ %A     De  volledige naam van de dag in de actuele taal
+        die u gebruikt.
+
+ %b     De afgekorte naam van de maand in de actuele taal
+        die u gebruikt.
+
+ %B     De volledige naam van de maand in de actuele taal
+        die u gebruikt.
+
+ %c     De gewenste presentatie van de datum en tijd voor
+        de taal die u gebruikt.
+
+ %C     De eeuw (Jaar/100) als een 2 cijfermatig getal.
+
+ %d     De dag van de maand als een decimaal getal (range  01
+        tot 31).
+
+ %e     Zelfde als %d, De dag van de maand als een decimaal
+        getal, echter een nul wordt vervangen door een spatie.
+
+ %E     Modificator: gebruik een alternatief formaat, zie
+        hieronder.
+
+ %G     Het ISO 8601 jaar met de eeuw als een decimaal getal.
+        Het 4-cijfermatig jaar overeenkomstig met het ISO week
+        nummer (bekijk %V). Dit heeft hetzelfde formaat en
+        waarde als  %y, behalve indien het ISO week nummer
+        toebehoort aan het vorige of volgende jaar, dat dit
+        jaar in plaats hiervan word gebruikt.
+
+ %g     Zoals %G, echter zonder de eeuw, dus zoals een 2
+        cijfermatig jaar (00-99).
+
+ %h     Hetzelfde als %b.
+
+ %H     Het uur als een decimaal getal als een 24-uur klok
+        (range 00 tot 23).
+
+ %I     Het uur als een decimaal getal als een 24-uur klok
+        (range 01 to 12).
+
+ %j     De dag van het jaar als een decimaal getal (range  001
+        tot 366).
+
+ %k     Het uur (24-uur klok) als een decimaal getal (range
+        0 tot 23); enkele cijfers worden voorafgegaan door een
+        leeg veld (Bekijk ook %H.)
+
+ %l     Het uur (12-uur klok) als een decimaal getal (range
+        1 to 12); enkele cijfers worden voorafgegaan door een
+        leeg veld (Bekijk ook %I.)
+
+ %m     De maand als een decimaal getal (range 01 tot 12).
+
+ %M     De minuten als een decimaal getal (range 00 tot 59).
+
+ %n     Een nieuwe regel karakter.
+
+ %O     Modificator: gebruik een alternatief formaat, zie
+        hieronder.
+
+ %p     Gebruik van `AM' of `PM' afhankelijk van de opgegeven
+        tijd waarde, of de overeenkomende string voor de
+        huidige taal. Middaguur word afgehandeld als `pm'
+        en middernacht als `am'.
+
+ %P     Zoals %p maar in kleine letters: `am' or `pm' of de
+        overeenkomende string voor de huidige taal.
+
+ %r     De  tijd  in  a.m. of p.m. notificatie. In de POSIX
+        lokale is dit hetzelfde als `%I:%M:%S %p'.
+
+ %R     De tijd in een 24-uur notificatie (%H:%M). Voor een
+        uitvoering inclusief de seconden, bekijk %T hieronder.
+
+ %s     Het aantal seconden sinds het tijdperk, bijv. sinds
+        1970-01-01 00:00:00 UTC.
+
+ %S     De seconden als een decimaal getal (range 00 tot 61).
+
+ %t     Een tab karakter.
+
+ %T     De tijd in 24-uur notificatie (%H:%M:%S).
+
+ %u     De dag van de week als een decimaal getal, 
+        (range 1 tot 7), Maandag is 1. Bekijk ook %w.
+
+ %U     Het week nummer van het huidige jaar als een decimaal
+        getal, (range 00 tot 53) starten met de eerste Zondag
+        als de eerste dag van de week 01. Bekijk ook %V en %W.
+
+ %V     Het ISO 8601:1988 week nummer van het huidige jaar
+        als een decimaal getal, (range 01 tot 53) waar week 1
+        de eerste week is die op zijn minst 4 dagen heeft in
+        het huidige jaar, en met Maandag als de eerste dag
+        van de week. Bekijk ook %U en %W.
+
+ %w     De dag van de week als een decimaal getal, 
+        (range 0 tot 6) Zondag is 0. Bekijk ook %u.
+
+ %W     Het week nummer van het huidige jaar als een decimaal
+        getal, (range 00 tot 53) starten met de eerste
+        Maandag als de eerste dag van de week 01.
+
+ %x     De gewenste datum presentatie voor de huidige locale
+        zonder de tijd.
+
+ %X     De gewenste tijd presentatie voor de huidige locale
+        zonder de datum.
+
+ %y     Het jaar als een decimaal getal zonder de eeuw
+        (range 00 tot 99).
+
+ %Y     Het jaar als een decimaal getal met de eeuw.
+
+ %z     De tijd-zone als uur compensatie van GMT. Dan is het
+        nodig om het te tonen in RFC822-conform datums 
+        (met gebruik van "%a, %d  %b  %Y %H:%M:%S %z").
+
+ %Z     De tijd zone of naam of afkorting.
+
+ %%     Een letterlijk `%' karakter.
+</font></pre>
+
+<footer>
+

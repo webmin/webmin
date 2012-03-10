@@ -1,0 +1,19 @@
+<header>Vertrouw remote gebruikers</header>
+
+Deze optie bepaald welke Unix gebruiker op de client worden vertrouwd
+door de server.<br>
+Er zijn 3 opties beschikbaar :
+<dl>
+<dt><b>Iedereen</b>
+<dd>Alle gebruikers op de client worden hetzelfde behandeld door de server.
+<dt><b>Iedereen behalve de root</b>
+<dd>De <tt>root</tt> gebruiker op de client word behandel als een
+    <a href="anonuid">onbetrouwbare gebruiker</a> door de server, en alle
+    andere gebruikers worden behandeld als vertrouwd.
+<dt><b>Niemand</b>
+<dd>Alle gebruikers op de client worden behandeld als <a href="anonuid">onbetrouwbare
+    gebruiker</a>. Deze optie kunt u het beste gebruiken indien u exporteert naar een
+    dat u niet beheerd (zoals een enkel-gebruiker PC), of wanneer u exporteert naar iedereen.
+</dl>
+<i>exportfs opties: root_squash, geen_root_squash, iedereen_squash</i>
+<hr>

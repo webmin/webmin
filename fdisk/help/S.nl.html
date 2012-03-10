@@ -1,0 +1,21 @@
+<header>Klaarstaan time-out</header>
+
+Zet het klaarstaan (de spindown) time-out voor de harddisk.<p>
+
+Deze waarde bepaald hoelang de harddisk moet wachten (indien er geen harddisk activiteit is) voordat
+de schijf motor word uitgezet, om stroom verbruik te besparen.<br>
+Onder sommige omstandigheden kan het wel 30 seconden duren voordat de harddisk reageert op een
+aanvraag voor schrijven of lezen, echter de meeste harddisken zijn veel sneller.<p>
+
+De instelling voor de time-out is een beetje eigenaardig. 
+Een nul waarde betekent dat het "uitstaat".
+
+Waardes tussen de 1 en de 240 moet u vermenigvuldigen met 5 seconden, om een time-out te krijgen
+van 5 seconden tot 20 minuten.<br>
+
+Waardes tussen de 241 tot 251 specificeren tussen de 1 en 11 eenheden van 30 minuten, om een time-out
+te krijgen tussen de 30 minuten en 5,5 uur.
+
+Een waarde van 252 betekent een time-out van 21 minuten, 253 betekent de ingestelde time-out van de
+fabrikant, en 255 betekent een time-out van 21 minuten en 15 seconden.
+<hr>

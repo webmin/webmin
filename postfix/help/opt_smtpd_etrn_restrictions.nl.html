@@ -1,0 +1,18 @@
+<header>Beperkte ETRN opdracht voor...</header>
+
+<center><tt>smtpd_etrn_restrictions</tt></center>
+<hr>
+
+Deze parameter beperkt welke cliënten het is toegestaan om de <tt>ETRN</tt>
+opdracht te gebruiken. De huidige Postfix <tt>ETRN</tt> is anders dan alle
+andere <tt>ETRN</tt> implementaties waarbij alle email word geflusht voor alle
+bestemmingen. Dit gaat in de toekomst veranderen.
+
+<p>
+
+Standaard word de <tt>ETRN</tt> toegestaan van iedere host.
+De volgende beperkingen zijn beschikbaar:
+
+<include smtpd_restrictions>
+
+<hr>

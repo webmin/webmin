@@ -1,0 +1,33 @@
+<header>Exporteer naar..</header>
+
+De hosts die toegang heeft tot de geëxporteerde directory.<br>
+<b>Waarschuwing:</b> wanneer u exporteert met krb5, word de keuze van de clients
+ gemaakt in de configuratie van Kerberos5.<br><br>
+Er zijn 6 mogelijkheden beschikbaar waarmee u kunt bepalen welke hosts toestemming
+heeft om een directory te mounten :
+<dl>
+<dt><b>Iedereen</b>
+<dd>Iedere host die contact kan maken met uw systeem heeft toestemming. Deze
+    optie moet u zeer voorzichtig gebruiken, zeker wanneer uw systeem is
+    verbonden met het internet
+<dt><b>Host(s)</b>
+<dd>Dit kan een enkel IP adres zijn, een enkele hostnaam of een reguliere
+    uitdrukking zoals <tt>*.foo.com</tt>. In het laatste geval zal iedere host
+    die met een omgekeerde DNS zoekt met een IP adres en deze uitdrukking
+    vind toegang krijgen tot uw systeem.
+<dt><b>WebNFS clients</b>
+<dd>Hiermee krijgen clients die gebruik maken van het Sun's WebNFS protocol 
+    toegang tot deze directory.
+<dt><b>NIS Netgroep</b>
+<dd>Hiermee krijgen alle leden van de gespecificeerde NIS netgroep toegang
+    bij deze export.
+<dt>IPv4 <b>Netwerk</b> en <b>Netmask</b>
+<dd>Iedere host in het gespecificeerde subnet krijgt toegang. Bijvoorbeeld, als
+    het network <tt>10.1.2.0</tt> is en de netmask <tt>255.255.255.0</tt>, zullen
+    alle hosts met de IP adressen van <tt>10.1.2.0</tt> tot <tt>10.1.2.255</tt>
+    worden toegelaten.
+<dt>IPv6 <b>Adres</b> en <b>Voorkeur</b>
+<dd>Iedere host in het gespecificeerde subnet heeft toegang.
+</dl>
+<hr>
+

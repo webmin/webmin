@@ -1,0 +1,12 @@
+<header>Symbolische links relatief maken?</header>
+
+<i>Dit is een NFSv2-specifieke optie.</i><br>
+Dit converteert symbolische links, die gezien worden door de clients,
+naar relatieve links.<b>
+Bijvoorbeeld, als de directory <tt>/usr</tt> word geëxporteerd zal de
+link van <tt>/usr/local/bin</tt> naar <tt>/usr/X11R6/bin</tt> worden
+geconverteerd naar <tt>../X11R6/bin</tt>. Dit is erg handig indien de
+client de directory mount vanaf een andere plek, zoals vanaf <tt>/usr</tt>.<br>
+
+<br><i>exportfs optie: link_relatief</i>
+<hr>

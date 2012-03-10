@@ -1,0 +1,12 @@
+<header>Onmiddellijk alle schrijf acties synchroniseren?</header>
+
+Wanneer deze optie word aangezet, zullen alle NFS schrijf acties, die worden
+uitgevoerd door de clients naar deze export direct op de harddisk worden
+geschreven, nog voordat het resultaat word gerapporteerd aan de client.
+Dit werkt iets langzamer, maar verzekerd data integriteit<br>
+Wanneer deze optie is uitgezet, zullen de schrijf acties van de NFS clients
+worden gebufferd.<br>
+<br><i>exportfs opties: sync, async<br>
+Standaard : aangezet (maar dit staat uit bij oudere releases van nfs-utils
+tot versie 1.0.0)</i>
+<hr>

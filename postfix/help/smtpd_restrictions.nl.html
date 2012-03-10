@@ -1,0 +1,13 @@
+<ul>
+<li><tt>reject_unknown_client:</tt> weiger de aanvraag indien de cliënt hostnaam onbekend is.
+<li><tt>permit_mynetworks:</tt> toestaan indien het cliënt adres overeenkomt
+        <a href=opt_mynetworks><tt>$mynetworks</tt></a>.
+<li><tt>check_client_access maptype:mapname:</tt> opzoeken van cliënt naam,
+	hoofd domeinen, cliënt adres, of netwerken verkregen door het strippen van
+	achttallen. Weiger indien het resultaat WEIGER is of &quot;[45]xx tekst&quot;. 
+	Anders toestaan.
+<li><tt>reject_maps_rbl:</tt> weiger indien de cliënt in de lijst staat onder
+        <a href=opt_maps_rbl_domains><tt>$maps_rbl_domains</tt></a>.
+<li><tt>reject:</tt> Weiger de aanvraag. Plaats die aan het einde van een beperking.
+<li><tt>permit:</tt> Aanvraag toestaan. Plaats die aan het einde van een beperking.
+</ul>

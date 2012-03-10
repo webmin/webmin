@@ -1,0 +1,20 @@
+<header>Onbetrouwbare routing toestaan</header>
+
+<center><tt>allow_untrusted_routing</tt></center>
+<hr>
+
+Deze parameter controleert of Postfix de email zal doorsturen met afzender
+gespecificeerde routing (user[@%!]remote[@%!]site) van onbetrouwbare clients
+naar bestemmingen die vertrouwd worden door de <a href=opt_relay_domains><tt>relay_domains</tt></a>
+parameter.
+
+<p>
+
+Standaard hebben onbetrouwbare clients geen toestemming om zelf een
+routing te specificeren.
+Hiermee word een vervelend open relais loop-gat gesloten waar een backup
+MX host voor de gek gehouden kan worden door junk mail door te sturen
+naar een primaire MX host die vervolgens naar de hele wereld gaat spammen.
+
+
+<hr>

@@ -1,34 +1,35 @@
 <header>PPP Inbel Server</header>
 
-Met deze module kunt u uw Linux machine met een modem opzetten
-als een inbel server waardoor andere machines kunnen inbellen, inloggen
-en een PPP sessie kunnen starten. Het kan ook gebruikt worden om
-middels een PPP verbinding in te loggen vanaf een andere machine met
-een nul-modem kabel. <p>
+Met deze module kunt u van uw Linux machine en aangesloten modem een inbel
+server maken waardoor andere machines kunnen inbellen, inloggen en PPP
+sessies kunnen starten. Het kan ook worden gebruikt om inloggen een PPP
+verbindingen te maken vanaf een andere machine die verbonden is met een
+nul-modem kabel. <p>
 
-Om een inbel toegang op te zetten moet u de volgende stappen opvolgen:
+Om een inbel toegang op te zetten moet u de volgende stappen aflopen :
 <ol>
-<li>Op de Seriële Poort Configuratie pagina voegt u een ingang toe voor de
-poort waarmee uw modem is verbonden. Hiermee start u Mgetty op die poort
-om automatisch telefonische oproepen te beantwoorden die binnen komen
-via uw modem, en waarmee een inlog scherm getoond zal worden.
-Indien u alleen maar een tekst gebaseerde of simpele terminal inlog nodig
-heeft is dit het enigste wat u moet doen. <p>
+<li>Op de Seriele Poort Configuratie pagina voegt u een ingang toe voor de
+    poort waar uw modem mee is verbonden. Dit zal Mgetty starten op die
+    poort om automatisch telefoon aanvragen te beantwoorden die worden
+    ontvangen door uw modem, en zal tevens een inlog scherm tonen. Indien
+    u slechts een tekst inlog wilt hebben via het modem of een terminal
+    is dit de enigste stap die u moet uitvoeren. <p>
 
-<li>Op de PPP Optie pagina zet u het IP adres om te verbinden met clients
-met de benodigde andere opties. De meest handige optie is de 
-"Automatisch PPP verbindingen detecteren op seriële poorten?",
-waardoor er voor iedere cliënt onmiddellijk een PPP sessie zal starten en de
-gebruikelijke tekst inlog zal worden overgeslagen. Echter indien deze optie is
-aangezet moet u wel "Authenticatie nodig?" aanzetten om te voorkomen dat
-iedereen zomaar kan verbinden.<p>
+<li>In de PPP Optie pagina zet u het IP adres dat word gebruikt voor het
+    verbinden van clients en zet u alle andere opties die u nodig heeft.
+    Het meest nuttige is 'Automatisch detecteren van PPP verbinding op een
+    seriele poort?', wat ervoor zorgt dat voor iedere client die verbinding
+    maakt er direct een PPP sessie word gestart waarbij er geen Unix inlog
+    word getoond. Echter zodra deze optie is aangezet moet u ook de
+    'Authenticatie nodig?' aanzetten om te voorkomen dat niet vertrouwde
+    clients verbinding kunnen maken. <p>
 
-<li>Zodra authenticatie is aangezet moet u de PPP Account pagina gebruiken
-om accounts aan te maken voor iedere persoon die mag in loggen. Voor ieder
-account moet de server voor "Iedere" gezet worden en de geldige adressen
-moet op "Alles toestaan" gezet worden.<p>
+<li>Indien authenticatie is aangezet gebruikt u de PPP Account pagina om
+    accounts aan te maken voor alle mensen die mogen inloggen. Voor ieder
+    account moet de server worden ingesteld op 'Alle' en de geldige
+    adressen op 'Alle toestaan'
+    <p>
 </ol>
 
 <hr>
-
 

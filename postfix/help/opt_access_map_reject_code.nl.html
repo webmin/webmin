@@ -1,0 +1,21 @@
+<header>SMTP server reactie bij overtreding toegang map</header>
+
+<center><tt>access_map_reject_code</tt></center>
+<hr>
+
+Deze parameter specificeert de SMTP server reactie code wanneer een email de 
+<tt>toegang map</tt> beperking overtreed, dit kan zijn :<br>
+<i>Toegang geweigerd : toegang_map overtreding (bij SMTP client of HELO hostnaam, afzender of ontvanger email adres)</i><br>
+<br>
+Let op dat de postfix standaard waarde die gebruikt word voor de <tt>access_map_reject_code</tt> de code 554 is,
+en deze code betekent in de 'standaard RFC 822' als volgt 'Opgevraagde email actie geweigerd : toegang geweigerd'.
+Dus met Postfix zal een <tt>toegang map</tt> regel overtreding niet precies dezelfde code rapporteren als de
+RFC822 standaard zal doen.<br>
+<p>
+Om verwarring te voorkomen kunt u dit wijzigen in bijvoorbeeld 570, (een andere reden kan zijn dat de code 554
+bij postfix de standaard waarde is of andere soorten fout meldingen), in alle andere gevallen moet u dit niet
+wijzigen als u geen volledige kennis heeft van het RFC 822 protocol.
+</p>
+
+
+<hr>

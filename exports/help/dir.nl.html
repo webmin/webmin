@@ -1,0 +1,17 @@
+<header>Directory om te exporteren</header>
+
+Dit is de directory die geëxporteerd word naar de clients die in de lijst
+staan in de <a href=client>Exporteer naar..</a> sectie.<br>
+<br>
+In plaats van het mounten van een aantal kenmerkende exports, zal een NFSv4 client de
+NFSv4 server's exports zien alsof het in een enkel filesysteem zit, met de naam NFSv4 pseudofilesysteem.<br>
+Dus voor een NFSv4 zal deze directory als eerste ge-mount worden (met <tt>mount --bind</tt>)
+in het NFSv4 Pseudofilesysteem, eerst word dus het pseudofilesysteem geëxporteerd 
+(indien dit nog niet het geval was) en dan pas de directory.<br>
+Het heeft de voorkeur deze directory te exporteren zonder het te verbergen, zodat de client
+erin kan komen zonder dat die het moet mounten.<br>
+<br>
+Anders dan andere NFS servers ondersteund Linux het opnieuw exporteren van een directory
+die reeds NFS ge-mount was van een andere host, en het exporteren van een directory die
+mount punten bevat van andere file systemen.
+<hr>

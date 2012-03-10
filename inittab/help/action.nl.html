@@ -1,0 +1,60 @@
+<header>Actie</header>
+
+Dit omschrijft wel actie moet worden ondernomen.<p>
+
+Geldige acties voor dit veld zijn :<p>
+
+<b>Respawn (Reageer)</b><br>
+Het proces zal worden herstart indien het word beeindigt (bijv. getty).<p>
+
+<b>Wacht</b><br>
+Het proces zal worden gestart wanneer het gespecificeerde werkniveau is ingevuld en <i>init</i> zal wachten op het beeindigen van het proces.<p>
+
+<b>Zodra de tijd op niveau staat</b><br>
+Het proces zal worden uitgevoerd zodra het gespecificeerde werkniveau word ingevuld.<p>
+
+<b>Boot tijd</b><br>
+Het proces zal worden uitgevoerd tijdens een systeem boot. Het werkniveau veld word genegeerd.<p>
+
+<b>Boot tijd, wacht totdat het word beeindigt</b><br>
+Het proces zal worden uitgevoerd tijdens een systeem boot, terwijl <i>init</i> wacht totdat het word beeindigt (bijv. /etc/rc). Het werkniveau veld word genegeerd.<p>
+
+<b>Doe niets</b><br>
+Dit doet niets.<p>
+
+<b>Wanneer het zich in A, B of C bevind</b><br>
+Een proces gemarkeerd met een <tt>ondemand</tt> werkniveau zal worden uitgevoerd wanneer het gespecificeerde <tt>ondemand</tt> werkniveau word aangeroepen. Echter, er zal geen werkniveau verandering optreden (ondemand werkniveaus zijn `a', `b', en `c').<p>
+
+<b>Tijdens standaard niveau</b><br>
+Een <tt>initdefault</tt> ingang specificeert het werkniveau wat moet worden opgegeven na een
+systeem boot. Indien er niets bestaat, zal init vragen voor een werkniveau in het console. 
+Het proces veld word genegeerd.<p>
+
+<b>Tijdens systeem boot</b><br>
+Het proces zal worden uitgevoerd tijdens de systeem boot. Het zal worden uitgevoerd voor iedere
+<tt><b>Boot tijd</b></tt> of <tt><b>Boot tijd, wacht op beeindiging</b></tt> ingang.
+Het werkniveau veld word genegeerd.<p>
+
+<b>Stroom uitval</b><br>
+Het proces zal worden uitgevoerd wanneer de stroom uitvalt. Init word normaal gesproken hierover
+geinformeerd door een proces wat communiceert met de UPS die verbonden is met de computer.  <i>Init</i> zal wachten op de voltooiing van dit proces voordat het verder gaat.<p>
+
+<b>Stroom uitval zonder wachten</b><br>
+Hetzelfde als bij <tt><b>Stroom uitval</b></tt>, behalve dat <i>init</i> niet zal wachten totdat het proces volledig is afgewerkt.<p>
+
+<b>Stroom is hersteld</b><br>
+Dit proces zal worden uitgevoerd zodra <i>init</i> word geinformeerd dat de stroom is hersteld.<p>
+
+<b>Stroom gaat uitvallen</b><br>
+Dit proces zal worden uitgevoerd zodra <i>init</i> word verteld dat de batterij van de externe
+UPS bijna leeg is en de stroom definitief zal uitvallen (ervan uitgaande dat de externe UPS en het proces wat dit controleert, in staat zijn om deze conditie te detecteren).<p>
+
+<b>Ctrl-Alt-Del</b><br>
+Dit proces zal worden uitgevoerd zodra <i>init</i> het <i>SIGINT</i> signaal ontvangt. Dit 
+betekent dat er iemand op het systeem console op de CTRL-ALT-DEL toets combinatie heeft gedrukt.
+Normaal gesproken betekent dit dat iemand een <tt>uitschakel</tt> opdracht wil geven of naar een enkel gebruikers wil gaan of de computer wil herstarten.<p>
+
+<b>Speciale toets combinatie</b><br>
+Dit proces zal worden uitgevoerd zodra <i>init</i> een signaal ontvangt van het toetsenbord omdat er een speciale toetsen combinatie werd ingedrukt.<p>
+
+<hr>

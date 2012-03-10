@@ -1,0 +1,21 @@
+<header>SMTP server reactie op hostnaam afwijzing</header>
+
+<center><tt>invalid_hostname_reject_code</tt></center>
+<hr>
+
+Deze parameter specificeert de SMTP server reactie code wanneer een client de
+<tt>reject_invalid_hostname</tt> anti-UCE beperking regel overtreedt, die ziet
+er als volgt uit :<br>
+<i>Bad syntax for client HELO hostname (Not RFC compliant)</i><br>
+<br>
+Let op dat de Postfix standaard waarde die gebruikt word voor <tt>invalid_hostname_reject_code</tt>
+code 501 is, en deze code betekent in 'standaard RFC 822' wat betekent 'Syntaxis fout in parameters
+of argumenten'.
+Dus met Postfix hoeft een 501 status code niet precies de RFC822 verklaring te zijn.<br>
+<p>
+Om verwarring te voorkomen kunt u dit veranderen in bijvoorbeeld code 574 (een andere reden kan zijn dat
+de code 501 ook de standaard Postfix waarde is voor andere soorten fout meldingen), in alle gevallen moet
+u dit niet wijzigen als de RFC 822 niet volledig begrijpt.
+</p>
+
+<hr>

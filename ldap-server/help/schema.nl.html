@@ -1,0 +1,30 @@
+<header>Beheer Schema</header>
+
+Het LDAP schema bepaald welke object klassen en attributen kunnen worden
+opgeslagen in uw LDAP database. Met deze pagina bepaald u welke schema soorten
+worden ondersteund door uw server door middel van te klikken in de checkbox
+die naast iedere schema file naam staat.
+Zodra u veranderingen heeft gemaakt klikt u op de <b>Opslaan</b> knop om uw
+the OpenLDAP configuratie file te updaten, daarna klikt u op de 
+<b>Configuratie Toevoegen</b> knop op de hoofd pagina om het te activeren. <p>
+
+Wees erg voorzichtig met het de-selecteren van bestaande schema files omdat u
+de werking van de LDAP server breekt indien er reeds objecten bestaan in de
+database die de attributen gebruiken zoals die gedefinieerd zijn in de files.
+Het <b>hoofd</b> schema bevat de meeste basis LDAP klassen en kan niet
+ge-de-selecteert worden. <p>
+
+De volgorde van de schema's is erg belangrijk, omdat schema's die later gemaakt
+worden alleen kunnen verwijzen naar attributen die al eerder gemaakt waren.
+U kunt de volgorde wijzigen op deze pagina met behulp van de pijltjes knoppen
+waarmee u een schema omhoog of omlaag kunt verplaatsen.
+Echter ook hiermee moet u zeer voorzichtig zijn voor bestaande schema's om te
+voorkomen dat u de LDAP database breekt. <p>
+
+Indien u wilt zien welke klassen en attributen een schema definieert kunt u
+klikken op zijn <b>Overzicht</b> link.
+Als u bekent bent met het schema formaat en u een file wilt bewerken kunt u
+klikken op <b>Bewerken</b>. <p>
+
+<footer>
+

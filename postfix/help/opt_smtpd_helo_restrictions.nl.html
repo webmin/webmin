@@ -1,0 +1,41 @@
+<header>Beperkingen in het versturen van HELO opdrachten</header>
+
+<center><tt>smtpd_helo_restrictions</tt></center>
+<hr>
+
+Deze parameter specificeert extra beperkingen waarmee de SMTP cliënten een
+SMTP HELO en EHLO opdracht kunnen versturen.
+
+<p>
+
+Standaard word alles toegestaan.
+De volgende beperkingen zijn beschikbaar:
+
+<ul>
+<li>  <tt>permit_mynetworks:</tt> toestaan indien het cliënt adres overeenkomt
+        <a href=opt_mynetworks><tt>$mynetworks</tt></a>.
+<li>  <tt>reject_unknown_client:</tt> weiger de aanvraag indien de cliënt hostnaam onbekend is.
+<li>  <tt>reject_maps_rbl:</tt> Weiger indien de cliënt in de volgende lijst staat
+        <a href=opt_maps_rbl_domains><tt>$maps_rbl_domains</tt></a>.
+<li>  <tt>reject_invalid_hostname:</tt> Weiger HELO hostnaam met een slechte syntaxis.
+<li>  <tt>reject_unknown_hostname:</tt> Weiger HELO hostnaam zonder een DNS A of MX record.
+<li>  <tt>reject_non_fqdn_hostname:</tt> Weiger HELO hostnaam die niet voorkomt in het FQDN formulier
+<li>  <tt>check_helo_access maptype:mapname:</tt> HELO hostnaam opzoeken of hoofd domeinen.
+	Weiger indien het resultaat WEIGEREN is of &quot;[45]xx tekst&quot;.
+	Anders toestaan.
+<li>  <tt>check_client_access maptype:mapname:</tt> bekijk
+        <a href=opt_smtpd_client_restrictions>smtpd_client_restrictions</a>.
+<li>  <tt>reject:</tt> weiger de aanvraag. Zet dit aan het eind van een beperking.
+<li>  <tt>permit:</tt> aanvraag toestaan. Zet dit aan het eind van een beperking.
+</ul>
+
+Beperkingen worden toegevoegd in de gespecificeerde volgorde;
+De eerste beperking die overeenkomt wint.
+
+<p>
+
+Specificeer een lijst met beperkingen, gescheiden met komma's en/of spaties.
+Maak bij lange regels een scheiding met een spatie.
+
+
+<hr>

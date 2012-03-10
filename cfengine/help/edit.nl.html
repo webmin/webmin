@@ -1,0 +1,34 @@
+<header>Bewerk Class</header>
+
+Met deze pagina kunt u details zetten voor een actie van sommige class.
+Het eerste veld op de pagina is altijd om de "Toevoegen aan class" in
+te vullen, waarmee u kan kiezen aan welke class of classes de settings
+hieronder zullen worden toegevoegd. Standaard staar de class op "Altijd"
+wat betekent dat de actie iedere keer zal worden uitgevoerd wanneer de
+configuratie engine aan het werk gaat. Echter indien u iets anders invult
+in het class veld kan de actie wel of niet worden uitgevoerd, afhankelijk
+van het type Operating Systeem, hostnaam, huidige tijd of andere factoren. <p>
+
+Het effect van de actuele classes worden dynamisch bepaald door de CFengine
+tijdens het uitvoeren. Bruikbare opties zijn bijvoorbeeld om een systeem
+hostnaam waar punten in voorkomen deze te vervangen met een underscore
+(laag streepje) zoals (<tt>foo_bar_com</tt>), een verkorte hostnaam zoals
+(<tt>foo</tt>), het OS type zoals (<tt>linux</tt> of <tt>solaris</tt>),
+de huidige dag van de week zoals (<tt>Maandag</tt>), de dag van de maand
+zoals (<tt>Dag16</tt>) of de maand zoals (<tt>Mei</tt>). 
+U kunt een komplete lijst met beschikbare classes zien indien u de Cfengine
+in verbose mode laat werken. <p>
+
+U kunt diverse classes tegelijk specificeren indien u het | karakter ertussen
+plaatst. Dus indien u de actie uitvoert op beide hosts <tt>foo</tt> en <tt>bar</tt>
+moet u <tt>foo|bar</tt> invullen in het class veld. <p>
+
+De invul velden onder de class hangen af wat voort soort actie moet worden
+bewerkt. Indien het soort actie niet word ondersteund door Webmin zullen de
+zullen de actuele file configuratie regels worden getoont in plaat van de
+mogelijkheid om ze handmatig te kunnen bewerken. U kunt omschakelen naar
+handmatig bewerken door te klikken op knop <i>Bewerk Handmatig</i> aan
+de onderkant van de pagina. <p>
+
+<hr>
+

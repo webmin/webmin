@@ -1,0 +1,31 @@
+<header>Verplaatste Mapping</header>
+
+De optionele verplaatsing file verzorgt de informatie die word gebruikt in de
+&quot;gebruiker is verplaatst naar de nieuwe_locatie (new_location)&quot; berichten.
+
+<p>
+
+Opzoek tabellen zijn hoofdletter gevoelig.
+
+<p>
+
+De &quot;Maps naar...&quot; velden specificeren contact informatie zoals een email
+adres, of misschien een straat adres of telefoon nummer.
+Het is 1 van de volgende:
+<ul>
+<li><tt>user@domain</tt>: Komt overeen met <tt>user@domain</tt>. Dit formulier heeft
+de voorkeur over alle andere formulieren.
+
+<li><tt>user</tt>: Komt overeen met <tt>user@site</tt> wanneer de website <tt>$myorigin</tt> is,
+wanneer website staat in de lijst in <tt>$mydestination</tt>, of wanneer de website in de lijst
+staat van <tt>$inet_interfaces</tt>.
+
+<li><tt>@domain</tt>: Komt overeen met ieder adres in het domein. Dit formulier heeft
+de laagste voorkeur.
+</ul>
+
+ADRES UITBREIDING: Wanneer het opzoeken mislukt, en het locale adres gedeelte bevat
+de optionele ontvanger scheidingsteken (Bijv., <tt>user+foo@domain</tt>), word het zoeken
+herhaald naar het niet uitgebreide adres (Bijv. <tt>user@domain</tt>).
+
+<hr>

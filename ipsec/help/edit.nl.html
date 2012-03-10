@@ -1,0 +1,58 @@
+<header>Een verbinding aanmaken of bewerken</header>
+
+Met deze pagina kunt u een nieuwe IPsec verbinding aanmaken, of de details
+bewerken van een bestaande verbinding. Een verbinding met dezelfde instellingen,
+voor de VPN tunnel, moet aan beide zijde gelijk zijn van de systemen. <p>
+
+Velden in de <b>IPsec VPN verbinding details</b> sectie die gelden voor iedere
+verbinding en de aanbevolen instellingen staan in de lijst hieronder :
+<dl>
+<dt><b>Verbinding naam</b>
+<dd>Een korte naam voor deze verbinding zonder spaties.
+<dt><b>Tijdens IPsec opstarten</b>
+<dd>Indien er voor <b>Verbinding toevoegen</b> is gekozen, zal deze verbinding alleen
+    tot stand komen indien hij gestart word. Indien <b>Start verbinding</b> word
+    gekozen is zal het worden gestart zodra de IPsec server is gestart. De eerste optie
+    is het beste voor tunnels naar remote systemen die maar af en toe actief zijn,
+    en de tweede optie is het beste geschikt voor permanente VPN verbindingen.
+<dt><b>Comprimeer data?</b>
+<dd>Dit moet u op <b>Default</b> laten staan.
+<dt><b>Soort verbinding</b>
+<dd>Dit moet u op <b>Default</b> laten staan.
+</dl>
+
+Extra informatie voor de systemen moet altijd worden toegevoegd aan beide zijde van de
+verbinding. Dus het moet precies hetzelfde zijn op beide systemen, echter over het
+algemeen worden de <b>Lokale</b> en <b>Remote</b> details uitgewisseld zodat de
+instellingen voor deze host altijd in de <b>Lokale of systeem instellingen</b> sectie
+bevinden.
+De velden in iedere sectie en de voorgestelde instellingen zijn :
+<dl>
+<dt><b>Publiek IP adres</b>
+<dd>In dit veld moet het vaste IP adres gezet worden van het systeem, of 
+    <b>Automatisch</b> voor een host waarvan het IP adres dynamisch word
+    toegewezen. Echter u kunt niet de lokale en de remote secties tegelijk
+    op <b>Automatisch</b> zetten.
+<dt><b>Systeem identificatie</b>
+<dd>De <b>Hostnaam</b> optie moet worden geselecteerd en de systeem hostnaam
+    moet worden ingevuld in het tekst veld. FreeSWAN gebruikt deze instelling
+    om te bepalen welke sectie van de verbinding word toegevoegd aan welke host.
+<dt><b>Prive subnet achter het systeem</b>
+<dd>Indien er met dit systeem een intern netwerk is verbonden zodat er een host
+    verbinding mag maken met dit systeem moet u een netwerk adres invullen en
+    een voorkeur lengte in dit veld (zoals <i>192.168.1.0/24</i>).
+<dt><b>Systeem publieke sleutel</b>
+<dd>Normaal gesproken selecteert u <b>Hieronder ingevuld</b> en vult u de
+    RSA publieke sleutel in van het systeem in de tekst box. Dit kan dan worden
+    gezien op de <b>Toon Publieke Sleutel</b> pagina van dat systeem.
+<dt><b>Volgende hop naar ander systeem</b>
+<dd>Als u een normale netwerk setup heeft, moet u dit veld laten staan op
+    <b>Standaard route</b>.
+</dl>
+
+Nadat u een verbinding heeft bewerkt of heeft aangemaakt, moet u op de
+<b>Configuratie Toevoegen</b> knop klikken op de module hoofd pagina om de
+veranderingen te activeren. <p>
+
+<hr>
+

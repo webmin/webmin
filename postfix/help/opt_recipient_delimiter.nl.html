@@ -1,0 +1,15 @@
+<header>Scheiding tussen gebruikersnamen en adres extensies</header>
+
+<center><tt>recipient_delimiter (ontvanger_scheidingsteken)</tt></center>
+<hr>
+
+Deze parameter specificeerd de scheiding tussen gebruikersnamen en adres
+extensies (<tt>gebruiker+foo</tt>). Bekijk <a href=canonical>Canonical Mapping</a>,
+<a href=relocated>Verplaats Mapping</a>, <a href=virtual>Virtuele Domeinen</a>
+en locaal(8) voor de effecten die dit heeft op aliassen, canonical, virtueel,
+verplaatssen en <tt>.doorsturen</tt> file zoekacties. In de basis zal de software
+eerst proberen voor <tt>gebruiker+foo</tt> en dan <tt>.doorsturen+foo</tt> 
+voordat hij <tt>gebruiker</tt> en <tt>.doorsturen</tt> apart probeerd.
+
+
+<hr>

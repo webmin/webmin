@@ -1,0 +1,18 @@
+<header>SMTP server reactie op weigeren van onbekende client</header>
+
+<center><tt>unknown_client_reject_code</tt></center>
+<hr>
+
+Deze parameter specificeert de SMTP server reactie code wanneer een cliënt zonder een adres
+naar naam mapping de <tt>reject_unknown_clients</tt> beperking regel overtreed welke is:<br>
+<i>Toegang geweigerd: Onbekende SMTP client hostnaam (zonder DNS A of MX record)</i><br>
+<br>
+Note: dat de Postfix standaard waarde die gebruikt word voor <tt>unknown_address_reject_code</tt> 
+code 450 is, echter die word ook voor andere fouten gebruikt. Deze code in 'standaard RFC 822' betekend
+'Aangevraagde email actie niet uitgevoerd: mailbox in gebruik of toegang geweigerd' en vraag de afzender
+het later nogmaals te proberen (hopende dat de DNS dan wel correct reageert).<br>
+<p>
+Verander dit niet als u geen volledige kennis heeft van RFC 822.
+</p>
+
+<hr>

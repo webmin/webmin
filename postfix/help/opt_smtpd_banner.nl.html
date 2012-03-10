@@ -1,0 +1,17 @@
+<header>SMTP begroetings banner</header>
+
+<center><tt>smtpd_banner</tt></center>
+<hr>
+
+Deze parameter specificeert de tekst die volgt na de 220 status code in de SMTP
+begroetings banner. Sommige mensen vinden het prettig om de email versie te zien.
+Standaard laat Postfix niet de versie zien.
+
+<p>
+
+U moet de <tt>$myhostname</tt> specificeren tijdens het starten van de tekst.
+Wanneer de SMTP cliënt zijn eigen hostnaam ziet tijdens het starten van een
+begroetings banner zal het een email loop rapporteren. Wat veel beter is dan
+dat de machine volledig vastloopt.
+
+<hr>

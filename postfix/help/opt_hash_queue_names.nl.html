@@ -1,0 +1,18 @@
+<header>Naam van de wachtrij directory's  die verdeeld zijn over subdirectory's</header>
+
+<center><tt>hash_queue_names</tt></center>
+<hr>
+
+Deze parameter specificeert de namen van de wachtrij directory's die verdeeld zijn
+over diverse subdirectory niveaus. Hashing MAG NIET worden gebruikt met een
+maildrop directory die wereld-beschrijfbaar is. Hashing MOET worden gebruikt voor de
+uit te stellen log file directory, anders zal de mail systeem performance langzamer worden.
+
+<p>
+
+Het hashen van de inkomende of de uitgestelde wachtrij kan het mail systeem erg
+langzaam maken.
+Bijvoorbeeld, de <tt>mailq</tt> met een lege rij kan een aantal seconden kosten.
+Dit moet dus alleen in noodsituaties worden gedaan.
+
+<hr>

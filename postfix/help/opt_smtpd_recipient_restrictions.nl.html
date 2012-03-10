@@ -1,0 +1,99 @@
+<header>Beperkingen op ontvangst adressen</header>
+
+<center><tt>smtpd_recipient_restrictions</tt></center>
+<hr>
+
+Deze parameter specificeert de beperkingen op ontvangst adressen die SMTP cliënten
+kunnen versturen in RCPT NAAR opdrachten.
+
+<p>
+
+<include relay_rules>
+
+Deze bestemmingen hoeven niet in de lijst te staan in
+<a href=opt_relay_domains><tt>$relay_domains</tt></a>.
+
+<p>
+
+De volgende beperkingen zijn beschikbaar (* is onderdeel van de standaard instellingen):
+
+<ul>
+<li> <tt>*permit_mynetworks:</tt> toestaan indien het cliënt adres overeenkomt
+        <a href=opt_mynetworks><tt>$mynetworks</tt></a>.
+<li>  <tt>reject_unknown_client:</tt> weiger de aanvraag indien de cliënt hostnaam onbekend is.
+<li>  <tt>reject_maps_rbl:</tt> weiger indien de cliënt in de lijst staat onder
+        <a href=opt_maps_rbl_domains><tt>$maps_rbl_domains</tt></a>.
+<li>  <tt>reject_invalid_hostname:</tt> weiger een HELO hostnaam met een slechte syntaxis.
+<li>  <tt>reject_unknown_hostname:</tt> weiger een HELO hostnaam zonder een DNS A of MX record.
+<li>  <tt>reject_unknown_sender_domain:</tt> weiger afzender domein zonder een A of MX record.
+<li> <tt>*check_relay_domains:</tt> alleen email toestaan:
+<ul>
+<li> naar bestemmingen die overeenkomen met
+	  <a href=opt_inet_interfaces><tt>$inet_interfaces</tt></a>,
+	  <a href=opt_mydestination><tt>$mydestination</tt></a>,
+	  or <a href=opt_virtual_maps><tt>$virtual_maps</tt></a>,
+<li> van vertrouwde cliënten die overeenkomen met
+	  <a href=opt_relay_domains><tt>$relay_domains</tt></a> of subdomein,
+<li> van onbetrouwbare cliënten naar bestemmingen die overeenkomen met
+	  <a href=opt_relay_domains><tt>$relay_domains</tt></a> of
+	  van subdomein (behalve adressen met afzender-gespecificeerde route).
+</ul>
+	Weiger alle het andere.
+<li> <tt>permit_auth_destination:</tt> email toestaan:
+<ul>
+<li> naar bestemmingen die overeenkomen met
+	  <a href=opt_inet_interfaces><tt>$inet_interfaces</tt></a>,
+	  <a href=opt_mydestination><tt>$mydestination</tt></a>,
+	  or <a href=opt_virtual_maps><tt>$virtual_maps</tt></a>,
+<li> naar bestemmingen overeenkomend
+	  <a href=opt_relay_domains><tt>$relay_domains</tt></a> of subdomein,
+	  behalve voor adressen met afzender-gespecificeerde route.
+</ul>
+<li> <tt>reject_unauth_destination:</tt> weiger email indien het niet is verzonden
+<ul>
+<li> naar bestemmingen die overeenkomen met
+	  <a href=opt_inet_interfaces><tt>$inet_interfaces</tt></a>,
+	  <a href=opt_mydestination><tt>$mydestination</tt></a>,
+	  or <a href=opt_virtual_maps><tt>$virtual_maps</tt></a>,
+<li> naar bestemmingen die overeenkomen met
+	  <a href=opt_relay_domains><tt>$relay_domains</tt></a> of subdomein,
+	  behalve voor adressen met afzender-gespecificeerde route.
+</ul>
+<li>  <tt>reject_unauth_pipelining:</tt> weiger email van verkeerde spamware pijplijnen
+<li>  <tt>permit_mx_backup:</tt> accepteer email voor websites die mij lijsten als een MX host.
+<li>  <tt>reject_unknown_recipient_domain:</tt> weiger domeinen zonder een A of MX record.
+<li>  <tt>check_recipient_access maptype:mapname:</tt> opzoeken van ontvanger adres, hoofd domein, of lokalegedeelte@.
+	Weiger indien het resultaat WEIGER is of &quot;[45]xx tekst&quot;.
+	Anders toestaan.
+
+<li>  <tt>check_client_access maptype:mapname:</tt> bekijk
+        <a href=opt_smtpd_client_restrictions>smtpd_client_restrictions</a>.
+<li>  <tt>check_helo_access maptype:mapname:</tt> bekijk
+        <a href=opt_smtpd_helo_restrictions>smtpd_helo_restrictions</a>.
+<li>  <tt>check_sender_access maptype:mapname:</tt> bekijk
+        <a href=opt_smtpd_sender_restrictions>smtpd_sender_restrictions</a>.
+<li>  <tt>reject_non_fqdn_hostname:</tt> weiger een HELO hostnaam die niet in een FQDN vorm is.
+<li>  <tt>reject_non_fqdn_sender:</tt> weiger afzender adres die niet in een FQDN vorm is.
+<li>  <tt>reject_non_fqdn_recipient:</tt> weiger ontvanger adres die niet in een FQDN vorm is.
+<li>  <tt>reject:</tt> weiger de aanvraag. Zet dit aan het einde van een beperking.
+<li>  <tt>permit:</tt> aanvraag toestaan. Zet dit aan het einde van een beperking.
+</ul>
+
+Beperkingen worden toegepast in de gespecificeerde volgorde:
+de eerste beperking die overeenkomt wint.
+
+<p>
+
+Specificeer een lijst met beperkingen, gescheiden door komma's en/of een spatie.
+Ga op lange regels door naar de volgende regel met een spatie.
+
+<p>
+
+NOTE: U MOET OP ZIJN MINST 1 VAN DE VOLGENDE BEPERKINGEN SPECIFICEREN
+ANDERS ZAL POSTFIX WEIGEREN OM EMAIL TE ONTVANGEN:
+<br>
+	<tt>reject, check_relay_domains, reject_unauth_destination</tt>
+
+
+
+<hr>

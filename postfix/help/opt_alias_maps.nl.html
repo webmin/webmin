@@ -1,0 +1,23 @@
+<header>Alias databases die gebruikt worden door de lokale aflever agent </header>
+
+<center><tt>alias_maps</tt></center>
+<hr>
+
+Deze parameter specificeert de lijst met alias databases die gebruikt worden door de
+lokale aflever agent. De standaard lijst is systeem afhankelijk. Op systemen met NIS
+zal er standaard gezocht worden naar de lokale alias database en dan pas de NIS alias
+database.
+Bekijk hier <a href=aliases>aliases</a> voor de syntaxis details.
+
+<p>
+
+Typische configuraties zijn :
+
+<ul>
+<li> <tt>dbm:/etc/aliases</tt>
+<li> <tt>hash:/etc/postfix/aliases</tt>
+<li> <tt>hash:/etc/aliases, nis:mail.aliases</tt>
+</ul>
+
+<hr>
+

@@ -1,0 +1,14 @@
+<header>Unmask onderbreking</header>
+
+Dit zet de unmask-onderbreking vlag voor de harddisk.<p>
+
+Hierdoor kan de driver met unmask andere onderbrekingen tijdens processen onderbreken, wat over het
+algemeen de reactiesnelheid van Linux verbeterd en "overschrijding van de seriële poort" fouten
+voorkomt.<p>
+
+<u>Gebruik deze optie zeer voorzichtig</u> : sommige schijf/controller combinaties laten niet toe
+dat de I/O latentie verhoogd word als deze optie word aangezet, dit kan dus resulteren in een
+<i>volledig corrupt filesysteem</i>.<br>
+In het bijzonder de CMD-640B en RZ1000 (E)IDE interfaces zijn erg onbetrouwbaar (te wijten aan een
+hardware fout) wanneer deze optie word gebruikt met kernel versies lager dan 2.0.13.<br>
+<hr>

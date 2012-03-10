@@ -1,0 +1,33 @@
+<header>Cluster Software Pakketten</header>
+
+Met deze Webmin module kunt u de gebruikers en groepen beheren die opgezet
+zijn op diverse servers in een cluster via 1 interface. Het is vergelijkbaar
+met de "Gebruikers en Groepen" module echter met de mogelijkheid om
+functies uit te voeren (zoals maken, updaten en verwijderen) van gebruikers
+die op diverse Webmin servers staan in 1 handeling. <p>
+
+In het bovenste gedeelte van de hoofd pagina (onder Beheer Servers) ziet u
+een lijst met andere Webmin servers waar gebruikers en groepen kunnen
+worden beheert met deze module. Om een server toe te voegen aan deze lijst
+moet u deze eerst toevoegen aan de Webmin Servers module met een gebrukersnaam
+en wachtwoord om in te loggen bij Webmin op die server. U kunt dan de server
+selecteren van de lijst die naast de "Toevoegen Server" knop staan. <p>
+
+Wanneer een server is toegevoegd zal de module een controle uitvoeren om er
+zeker van te zijn of hetzelfde gebruikersformaat word gebruikt op die server,
+en dan de lijst downloaden met alle gebruikers en groepen om lokaal op te
+slaan in cache.  De server die altijd zal verschijnen in de lijst om toe te
+voegen is 'deze server' zodat u de gebruikers lokaal kunt beheren en of
+vanuit 1 interface de gebruikers kan beheren die op diverse remote servers
+voorkomen. <p>
+
+Zodra er op zijn minst 1 icoon staat onder "Beheer Servers" kunt u het
+gebruikers en groepen formulier gebruiken om te zoeken naar gebruikers en groepen
+die zich bevinden op alle servers en de "Gebruiker Toevoegen" en "Groep Toevoegen"
+knoppen gebruiken om ze toe te voegen aan alle servers.
+De knop "Synchroniseren" kan worden gebruikt om automatisch gebruikers aan
+te maken die reeds bestaan op sommige servers in de cluster maar nog niet
+voorkomen op al de andere servers. <p>
+
+<hr>
+

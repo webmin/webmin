@@ -1,0 +1,27 @@
+
+log_servers=Gewijzigde andere DNS servers
+log_logging=Gewijzigde logs en fouten
+log_acls=Gewijzigde toegangs controle lijst
+log_files=Gewijzigde files en directory's
+log_forwarding=Gewijzigde door sturingen en overdrachten
+log_net=Gewijzigde adressen en topologie
+log_misc=Gewijzigde optionele opties
+log_zonedef=Gewijzigde zone standaarden
+log_apply=Toegevoegde veranderingen
+log_start=Gestarte DNS server
+log_master=Aangemaakte master zone $1
+log_slave=Aangemaakte slaaf zone $1
+log_stub=Aangemaakte stub zone $1
+log_forward=Aangemaakte doorstuur zone $1
+log_delete_master=Verwijderde master zone $1
+log_delete_slave=Verwijderde slaaf zone $1
+log_delete_stub=Verwijderde stub zone $1
+log_delete_forward=Verwijderde doorstuur zone $1
+log_text=Handmatig bewerkte records voor $1
+log_soa=Gewijzigde zone parameters voor $1
+log_opts=Gewijzigde zone opties voor $1
+log_delete_record=Verwijderd $1 record $2 in zone $3
+log_create_record=Aangemaakt $1 record $2 in zone $3
+log_modify_record=Gewijzigd $1 record $2 in zone $3
+log_boot=Primaire configuratie file aangemaakt
+

@@ -1,0 +1,31 @@
+<header>Toegang tabel indeling</header>
+
+De  optionele toegang tabel beperkt de Postfix SMTP server om selectief mail te weigeren of
+te accepteren. Toegang kan worden toegestaan of geweigerd voor specifieke hostnamen, domein
+namen, netwerken, host adressen of mail adressen.
+
+<p><b>E-mail adres indeling</b></p>
+<ul>
+<li> <b><tt>gebruiker@domein</tt></b> overeenkomend met het gespecificeerde mail adres</li>
+<li> <b><tt>domein.tld</tt></b> overeenkomend met domain.tld als het domein gedeelte van een email adres</li>
+<li> <b><tt>gebruiker@</tt></b> komt overeen met alle mail adressen met het gespecificeerde gebruiker gedeelte</li>
+</ul>
+
+<p><b>Hostnaam/IP-adres indelingen</b></p>
+<ul>
+<li> <b><tt>net.work.addr.ess<br>net.work.addr<br>net.work<br>net</tt></b> 
+    overeenkomend met het gespecificeerde IPv4 host adres of subnet-work</li>
+<li> <b><tt>net:work:addr:ess<br>net:work:addr<br>net:work<br>net</tt></b> 
+    overeenkomend met het gespecificeerde IPv6 host adres of subnet-work</li>
+</ul>
+<p>
+
+<p><b>Actie op overeenkomsten</b></p>
+<ul>
+<li> <b><tt>OK</tt></b> Accepteer de e-mail.</li>
+<li> <b><tt>WEIGEREN [bericht]</tt></b> Weigert de e-mail, en antwoord met een [bericht] of een algemene foutmelding.</li>
+<li> <b><tt>VERWIJDER [bericht]</tt></b> Zonder een melding de e-mail verwijderen; optioneel kan er een log [bericht] geschreven worden.</li>
+<li> <B><tt>Omleiden spam@uwdomein.com</tt></b> stuurt de e-mail door naar een ander adres</li>
+</ul>
+
+<hr>

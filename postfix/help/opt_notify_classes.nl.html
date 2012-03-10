@@ -1,0 +1,38 @@
+<header>Welke problemen melden aan de postmaster</header>
+
+<center><tt>notify_classes</tt></center>
+<hr>
+
+U kunt het beste een <b>postmaster</b> alias aanmaken die verwijst naar een echte
+gebruiker. Zodat mensen hun email problemen kunnen rapporteren.
+
+<p>
+
+Het Postfix systeem zelf zal ook problemen rapporteren naar de postmaster alias. 
+Indien u niet geinteresseerd bent in alle soorten foutmeldingen of rapporten kunt
+u dit rapportage mechanisme configureren. Standaard staat het zo ingesteld dat
+alleen serieuze problemen (bronnen, software) worden verzonden naar de postmaster.
+
+<p>
+
+<b>Standaard:</b> <tt>bronnen, software</tt>
+
+<p>
+
+De betekenis van de classes is als volgt: 
+
+<ul>
+<li><tt>bounce:</tt> Verstuur naar de postmaster kopieen van onbestelbare email.
+<li><tt>2bounce:</tt> Verstuur dubbele weigeringen naar de postmaster.
+<li><tt>delay:</tt> Informeer de postmaster over vertraagde email. In dit geval zal de postmaster
+alleen berichten headers ontvangen.
+<li><tt>policy:</tt> Informeer de postmaster van client aanvragen die werden geweigerd door de (UCE) policy beperkingen. De postmaster zal een afschrift ontvangen van de volledige SMTP sessie. 
+<li><tt>protocol:</tt> Informeer de postmaster van protocol fouten (zowel client als server zijde)
+of pogingen van een client die niet geimplanteerde opdrachten wil uitvoeren. De postmaster zal een 
+afschrift ontvangen van de volledige SMTP sessie.
+<li><tt>resource:</tt> Informeer de postmaster van niet afgeleverde mail door bron problemen
+(bijvoorbeeld, wachtrij file schrijf fouten). 
+<li><tt>software:</tt> Informeer de postmaster van niet afgeleverde mail door software problemen. 
+</ul>
+
+<hr>

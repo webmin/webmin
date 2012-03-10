@@ -1,0 +1,26 @@
+<header>LDAP Server Configuratie</header>
+
+Met deze pagina kunt u de LDAP server selecteren waarmee dit client systeem
+contact mee moet maken om gebruikers en groepen informatie op te halen.
+Het meest belangrijke veld is de <b>LDAP server hostnamen</b>, waarin u de
+hostnaam of het IP adres moet invullen van de LDAP server op uw netwerk.
+Indien u meer dan 1 gekopieerde server heeft moet u ze allemaal hier invullen. <p>
+
+De <b>Inlog voor niet-root gebruikers</b> en <b>wachtwoorden voor niet-root gebruikers</b>
+velden moeten worden ingevuld met een gebruikersnaam en wachtwoord wat word
+geaccepteerd door de LDAP server. De inlog moet een typische LDAP
+onderscheiden naam zijn, zoals <i>cn=Manager,dc=mijn-domein,dc=com</i>.<p>
+
+Omdat de inlog en het wachtwoord zichtbaar is voor alle Unix gebruikers op
+uw systeem, word het normaal gesproken op met beperkte rechten ingesteld,
+(zoals alleen-lezen toegang, en geen mogelijkheid om wachtwoorden te zien)
+Omdat wachtwoorden controle in sommige situaties nodig zijn zal de
+<b>Inlog voor root gebruikers</b> en <b>Wachtwoorden voor root gebruikers</b> velden
+moeten worden ingesteld naar een LDAP gebruikersnaam en wachtwoord die
+lees toegang heeft op de gehele LDAP server.
+Dit tweede wachtwoord word opgeslagen in een file die alleen te lezen is door
+de <tt>root</tt> gebruiker, waardoor dit veel veiliger is voor de normale
+niet-vertrouwde Unix gebruikers. <p>
+
+<footer>
+

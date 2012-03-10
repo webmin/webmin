@@ -1,0 +1,62 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.72 [en] (X11; U; Linux 2.2.14-6.1.1 i686) [Netscape]">
+</head>
+<body>
+
+<center>
+<h1>
+DHCPD ACL subsysteem</h1></center>
+
+<h3>
+Doelen:</h3>
+&nbsp;&nbsp;&nbsp; Het hoofddoel van een acl subsysteem is het leveren van een krachtig,
+flexibel en uitbreidbaar mechanisme voor toegangs controle op verschillende objecten
+in een dhcpd configuratie. Deze objecten zijn gedeelde netwerken, subnets, groepen
+van hosts en de hosts zelf.
+<br>&nbsp;&nbsp;&nbsp; Ook kunt u met een acl subsysteem andere dingen controleren
+zoals : unieke object namen, configuraties toevoegen of verwijderen, en het bekijken
+en verwijderen van DHCP leases.
+<h3>
+CONCEPTEN:</h3>
+&nbsp;&nbsp;&nbsp; De Dhcpd configuratie file kunnen we bekijken als een boom structuur.
+Iedere node van deze boom presenteert een configuratie van verschillende dhcp objecten
+(fig. 0).
+<p>&nbsp;&nbsp;&nbsp; Een acl subsysteem heeft 2 niveaus met permissies:
+<ul>
+<li>globaal: lezen, schrijven, maken;</li>
+
+<li>per-object: lezen, schrijven.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Globale permissies bestaan voor ieder type object
+(hosts, groepen, subnets, gedeelde netwerken) en controleert operaties met een hele
+set objecten van het opgegeven type.
+<ul type=circle>
+<li>Globaal aangemaakt</li>
+<li>Globaal lezen</li>
+<li>Globaal schrijven</li>
+</ul>
+<br>&nbsp;&nbsp;&nbsp; Per-object permissies geeft u meer flexibiliteit voor
+toegangs controle. Per-object acl permissies bestaan voor ieder object en of
+individueel object. Op dit moment is voor hosts en subnets alleen per-object acls mogelijk.
+<ul type=circle>
+<li>Per-object lezen</li>
+<li>Per-object schrijven</li>
+</ul>
+<br>&nbsp;&nbsp;&nbsp; Een acl subsysteem kan op 4 verschillende beveiligings niveaus
+(of modes) opereren.
+<br><img SRC="ctree0.gif" ALT="dhcpd configuratie boom, beveiligings niveau 0, check subnetX permissies" height=229 width=314>
+<br>&nbsp;
+<p><img SRC="ctree1.gif" ALT="dhcpd configuratie boom, beveiligings niveau 1, check subnetX permissies" height=229 width=314>
+<p><img SRC="ctree2.gif" ALT="dhcpd configuratie boom, beveiligings niveau 2, check subnetX permissies" height=229 width=314>
+<p><img SRC="ctree3.gif" ALT="dhcpd configuratie boom, beveiligings niveau 3, check subnetX permissies" height=229 width=314>
+<h3>
+GEBRUIKER NOTITIES:</h3>
+&nbsp;
+<h3>
+ONTWIKKELAAR NOTITIES:</h3>
+
+</body>
+</html>

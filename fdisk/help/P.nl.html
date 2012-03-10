@@ -1,0 +1,15 @@
+<header>Herprogrammeren voor de beste PIO</header>
+
+Deze optie zal de IDE interface chipset proberen te herprogrammeren voor de gespecificeerde PIO mode,
+of proberen middels automatisch tunen de beste PIO mode te vinden die word ondersteund door de
+harddisk.<p>
+
+Deze optie word in de kernel ondersteund voor een aantal wel bekende chipsets, en zelfs dan is de
+ondersteuning op zijn hoogst dubieus. Sommige IDE chipsets kunnen niet de PIO mode wijzigen voor een
+enkele harddisk, zodat in dit geval de vlag gezet word voor beide harddisken. Veel IDE chipsets
+ondersteunen minder of meer dan de 6 standaard (0 to 5) PIO modes, dus de juiste instelling die
+mogelijk is voor de harddisk chipset/driver kan heel erg variëren.<p>
+
+<i>Gebruik dit heel voorzichtig !</i><br>
+Deze optie gebruikt ook onachtzaam de nulpunt bescherming waardoor een gebrek in het resultaat kan resulteren in een <i>volledig beschadigt filesysteem !</i>
+<hr>

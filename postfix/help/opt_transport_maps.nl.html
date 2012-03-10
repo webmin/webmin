@@ -1,0 +1,26 @@
+<header>Transport in kaart brengen met opzoek tabellen</header>
+
+<center><tt>transport_maps</tt></center>
+<hr>
+
+
+
+De parameter specificeert de optionele tabellen met domeinen om (transport, nexthop)
+in kaart te brengen. Bekijk <a href=transport>Transport mapping</a> voor syntax details.
+
+<p>
+
+Standaard staat deze optie uitgeschakeld. Specificeer de soorten databases
+die moeten worden gebruikt.
+
+<p>
+
+Verstandige mogelijk waardes:
+<ul>
+<li> <tt>dbm:/etc/postfix/transport</tt> 
+<li> <tt>hash:/etc/postfix/transport</tt> 
+<li> <tt>hash:/etc/postfix/transport, nis:transport</tt> 
+<li> <tt>hash:/etc/postfix/transport, netinfo:/transport</tt> 
+</ul>
+
+<hr>

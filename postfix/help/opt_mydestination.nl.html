@@ -1,0 +1,33 @@
+<header>Voor welk domein email ontvangen</header>
+
+<center><tt>mydestination</tt></center>
+<hr>
+
+Hier specificeert u voor welk domein deze computer lokaal zal afleveren, in plaats
+van doorsturen naar een andere computer. Standaard word er email ontvangen voor de
+computer zelf.
+
+<p>
+
+<b>Lokale computer</b>: <tt>$mijnhostnaam, localhost.$mijndomein</tt>
+<br>
+<b>Gehele Domein</b>: <tt>$mijnhostnaam, localhost.$mijndomein, $mijndomein</tt>
+
+<p>
+
+U kunt ook het volledige pad specificeren van een file, waarin de namen staan van
+de domeinen waar deze computer lokaal email voor moet afleveren.
+
+<p>
+
+Bijvoorbeeld: <tt>/etc/postfix/mydestination</tt>
+
+<hr>
+<br>
+
+<b><u>Opgelet:</u></b> om email aflever loops te voorkomen, moet u een lijst maken
+met alle hostnamen van de computer, inclusief de <tt>$mijnhostnaam</tt>, en
+<tt>localhost.$mijndomein</tt>.
+
+MAAK HIER GEEN LIJST MET VIRTUELE DOMEINEN. DEZE MOET U IN DE VIRTUELE FILE ZETTEN.
+

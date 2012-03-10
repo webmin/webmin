@@ -1,0 +1,361 @@
+<header>MON Help voor Service Definities</header>
+<p>Dit is de tweede en laatste stage voor de MON configuratie.
+<p>Standaard waardes worden getoond voor de Bindende services <marked in RED color>. Bekijk de help topic hieronder voor meer help van de Service Definities.
+<p>Voor <b>"mail.alert"</b>, moet u er zeker van zijn dat sendmail is geconfigureerd en dat de  <b>"sendmail"</b> deamon is gestart op de hostmachine.
+
+<H3>Service Definities</H3>
+
+<P>
+<DL COMPACT>
+<DT><B>service</B><I> servicenaam</I>
+
+<DD>
+Een service definitie begint met het sleutelwoord <B>service</B> gevolgd door een woord
+wat de label is voor deze service.
+<P>
+De componenten van een service zijn de interval, monitor, en
+1 of meerdere tijd periode definities, zoals hieronder gedefinieerd.
+<P>
+Indien een service naam met &quot;standaard&quot; is gedefinieerd in een overzichtsgroep
+ met de naam &quot;standaard&quot; (bekijk hierboven), dan zal de standaard/standaard
+definitie worden gebruikt om onbekende mon traps af te handelen.
+<P>
+<DT><B>interval</B><I> timeval</I>
+
+<DD>
+Het sleutelwoord
+<B>interval</B>
+
+gevolgd door een tijd waarde bepaald de frequentie dat een monitor script
+word getriggerd.
+Tijd waardes worden gedefinieerd als &quot;30s&quot;, &quot;5m&quot;, &quot;1u&quot;, of &quot;1d&quot;, wat betekent 30 seconden, 5 minuten, 1 uur, of 1 dag.
+Het numerieke gedeelte kan ook door elkaar gebruikt worden, zoals &quot;1.5u&quot; of een uur en
+een half uur. Dit formaat van een tijd specificatie word ook wel <I>timeval</I> genoemd.
+
+<P>
+<DT><B>traptimeout</B><I> timeval</I>
+
+<DD>
+Deze sleutelwoorden zijn dezelfde tijd specifieke argumenten als <B>interval</B><I>,</I>
+
+en zorgt ervoor dat de service op zijn minst een trap van een externe bron verwacht,
+anders zal een storing worden geregistreerd. Dit word gebruikt voor een heartbeat-stijl
+service.
+<P>
+<DT><B>trapduration</B><I> timeval</I>
+
+<DD>
+Indien een trap word ontvangen, zal de status van de service waarin de trap werd afgeleverd
+normaal gesproken constant blijven. Indien <B>trapduration</B> is gespecificeerd, zal de status
+van de service in storing blijven voor de tijd die gespecificeerd is door <I>timeval</I>,
+en zal daarna worden gereset naar &quot;succes&quot;.
+<P>
+<DT><B>randskew</B><I> timeval</I>
+
+<DD>
+In plaats van dat u het schema van het monitor script laat uitvoeren bij iedere start van
+een interval, kunt u de interval willekeurig instellen, gespecificeerd door de 
+<B>interval</B>
+
+parameter met plus-of-min
+<B>randskew.</B>
+
+De skew waarde is gespecificeerd als de
+<B>interval</B>
+
+parameter: &quot;30s&quot;, &quot;5m&quot;, enz...
+Bijvoorbeeld
+<B>interval</B>
+
+is 1m, en
+<B>randskew</B>
+
+is &quot;5s&quot;, Dan zal <I>mon</I> het schema van het monitor script een tijd laten pakken
+tussen de 55 seconden en 65 seconden.
+De bedoeling hiervan is de belasting te verdelen op de server zodra veel services zijn gepland
+ op dezelfde interval.
+<P>
+<DT><B>monitor</B><I> monitor-naam [arg...]</I>
+
+<DD>
+Het sleutelwoord <B>monitor</B> gevolgd door een script naam met argumenten bepaald wanneer
+de monitor word uitgevoerd en wanneer de timer expireert. Shell-lijkende quotes worden 
+bijgevoegd wanneer u de argumenten wilt specificeren die worden verzonden naar het monitor
+script.
+Het script word aangeroepen van de directory met een <B>-s</B>
+argument, en alle volgende woorden worden toegevoegd als argumenten voor het monitor
+programma, gevolgd door een lijst met hosts in de groep die verwijst naar de huidige
+overzicht groep.
+Als de monitor regel eindigt met &quot;;;&quot; als een gescheiden woord, worden de host
+groepen niet toegevoegd aan de argumenten lijst wanneer het programma word aangeroepen.
+<P>
+<DT><B>allow_empty_group (lege-groep-toestaan</B>
+
+<DD>
+De <B>allow_empty_group</B>
+
+optie zal ervoor zorgen dat de monitor ook word aangeroepen wanneer de hostgroep voor
+dat overzicht leeg is door uitgeschakelde hosts.
+Standaard is het zo ingesteld dan de monitor niet word aangeroepen wanneer alle hosts
+in een hostgroep zijn uitgeschakeld.
+<P>
+<DT><B>description (omschrijving)</B><I> descriptiontext (omschrijvingtekst)</I>
+
+<DD>
+De tekst gevolgd door een <B>omschrijving</B> word opgevraagd door de client programma's,
+en waarschuwingen worden gemonitord en doorgegeven via een omgevings variabel.
+Het moet een korte omschrijving zijn van de service die geschikt is om in een email toe
+te voegen of aan een webpagina toe te voegen.
+<P>
+<DT><B>exclude_hosts (uitsluiten_hosts)</B><I> host [host...]</I>
+
+<DD>
+Iedere hosts die in de lijst staat na <B>exclude_hosts</B> zal worden uitgesloten van de
+service check.
+
+
+<P>
+<DT><B>exclude_period (uitsluiten_periode)</B><I> periodspec</I>
+
+<DD>
+Voer geen geplande monitor uit op een moment dat er een <I>periodspec</I> word uitgevoerd.
+
+<P>
+<DT><B>depend (afhankelijk)</B><I> dependexpression</I>
+
+<DD>
+Het sleutelwoord <B>depend (afhankelijk)</B>
+
+word gebruikt om een afhankelijke expressie te specificeren, die uitzoekt of het
+waar of nietwaar is, op een boolean manier.
+Afhankelijkheden zijn eigenlijk Perl expressies en moeten aan alle syntactisch regels
+gehoorzamen. De expressies worden geevalueerd in hun eigen pakket ruimte om ongewilde
+zij effecten te voorkomen.
+Indien er een syntax fout word gevonden wanneer er een expressie word geevalueerd zal
+dit gelogd worden via de syslog.
+<P>
+Voor de evaluatie zullen de volgende substituties op de expressie voorkomen :
+uitdrukkingen  die lijken op &quot;group:service&quot; worden toegevoegd met de
+waarde van de huidige operationele status van die gespecificeerde service. Deze
+opstatus toevoegingen worden recursief verwerkt, dus als een service A afhangt van
+service B, en service B hangt af van service C, zal service A ook afhangen van service
+C. Succesvolle operationele statussen waarmee geevalueerd word zijn :
+&quot;1&quot;) zijn &quot;STAT_OK&quot;, &quot;STAT_COLDSTART&quot;, &quot;STAT_WARMSTART&quot;,
+en &quot;STAT_UNKNOWN&quot;.
+
+Het woord &quot;SELF&quot; (in alle caps) kan worden gebruikt voor de groep
+(e.g. &quot;SELF:service&quot;), en is een afkorting voor de huidige toezicht groep.
+
+<P>
+Deze functie kan worden gebruikt om waarschuwingen te controleren voor services die
+afhankelijk zijn van andere services, Bijvoorbeeld een SMTP test die afhankelijk is van een
+machine die ping-bereikbaar moet zijn.
+<P>
+<DT><B>dep_behavior</B><I> {a|m}</I>
+
+<DD>
+De evaluatie van de afhankelijke grafieken kunnen de onderdrukking bepalen van de
+waarschuwing monitoren.
+<P>
+<B>Waarschuwing onderdrukking</B>.
+
+Indien deze optie is aangezet naar &quot;a&quot;, zal de afhankelijke expressie
+worden geevalueerd nadat de monitor voor deze service afsluit of nadat er een trap
+werd ontvangen.
+Een waarschuwing word alleen verzonden indien de evaluatie succesvol word afgerond,
+wat betekent dat geen van de nodes in de afhankelijkheid grafische fouten geeft.
+<P>
+<B>Monitor onderdrukking</B>.
+
+Indien dit is gezet op &quot;m&quot;,
+zal de afhankelijke expressie worden geevalueerd voordat de monitor voor deze service
+word opgestart.
+Indien de evaluatie succesvol is zal de monitor worden gestart. Zo niet zal de monitor
+niet worden gestart en zal de status van deze service hetzelfde blijven.
+<P>
+</DL>
+<A NAME="lbAO">&nbsp;</A>
+<H3>Periode Definities</H3>
+
+<P>
+Periodes worden gebruikt om te definieren wanneer waarschuwingen moeten worden 
+afgeleverd.
+<P>
+<DL COMPACT>
+<DT><B>periode</B><I> [label:] periodspec</I>
+
+<DD>
+Een periode maakt groepen van 1 of meerdere waarschuwingen en bepaald hoe vaak een
+waarschuwing voorkomt wanneer er een foutmelding is.
+
+Het <B>periode</B> sleutelwoord heeft 2 vormen.
+De eerste pakt een argument wat een specifieke periode is van de Patrick Ryan's
+Time::Period Perl 5 module. Die verwijst naar &quot;perldoc Time::Period&quot; voor
+meer informatie.
+<P>
+De tweede vorm heeft een label nodig die gevolgd word door een periode specificatie,
+zoals hierboven is gedefinieerd.
+De label is een tag die bestaat uit een alfabetisch karakter of een onderliggend streepje
+'_' gevolgd door een nul of meerdere alfanumerieke karakters of onderliggende
+streepjes '_' en eindigend met een dubbele punt.
+Met dit formulier kunt u meerdere periodes maken met dezelfde periode definitie.
+Bijvoorbeeld om een periode definitie te maken die geen <B>alertafter</B> heeft of
+een <B>alertevery</B> parameter voor een bepaalde tijd, en een andere voor dezelfde
+tijd periode met een verschillende set alarmeringen die deze parameters hebben.
+<P>
+<DT><B>alertevery</B><I> timeval</I>
+
+<DD>
+De
+<B>alertevery</B>
+
+sleutelwoord (binnen een <B>periode</B> definitie) is hetzelfde soort argument als de
+<B>interval</B>
+
+variabel, en limiteert het aantal keren dat er een waarschuwing word verzonden wanneer de service blijft uitvallen.
+Bijvoorbeeld, als de interval staat op &quot;1h&quot;, dan zullen de waarschuwingen in de periode sectie maar 1x per uur worden getriggerd. Als de
+<B>alertevery</B>
+
+sleutelwoord word weggelaten in een periode ingang zal er iedere keer een waarschuwing worden verzonden als er een fout word ontdekt. Standaard zal de alertevery interval worden genegeerd zodra
+twee succesvolle fouten veranderen.
+Indien het woord 
+&quot;summary (samenvatting)&quot; het laatste argument is, zullen alleen de samenvatting resultaat regels worden bekeken bij het vergelijken van de resultaten van succesvolle fouten.
+<P>
+<DT><B>alertafter</B><I> num</I>
+
+<DD>
+<P>
+<DT><B>alertafter</B><I> num timeval</I>
+
+<DD>
+Het
+<B>alertafter</B>
+
+sleutelwoord (binnen een <B>periode</B> sectie) heeft twee doelen: Alleen met het &quot;num&quot;
+argument, of met de &quot;num timeval&quot; argumenten.
+In de eerste form, zal er na de &quot;num&quot; alleen een waarschuwing worden aangeroepen
+na een aantal opeenvolgende storingen.
+<P>
+In de tweede form, zijn de argumenten een positieve integer gevolgd door een interval,
+zoals word omschreven bij <B>interval</B> variabelen hierboven.
+Indien deze parameters zijn gespecificeerd, zullen de waarschuwingen voor die periode alleen
+worden aangeroepen nadat er veel mislukkingen zijn binnen die interval.
+
+Bijvoorbeeld,
+als
+<B>alertafter</B>
+
+de argumenten &quot;3&nbsp;30m&quot; geeft, zal de waarschuwing worden aangeroepen als er 3
+mislukkingen gebeuren binnen 30 minuten.
+<P>
+<DT><B>numalerts</B><I> num</I>
+
+<DD>
+<P>
+De variabel <I>num</I> verteld de server om niet meer waarschuwingen op te roepen tijdens een
+mislukkingen. De waarschuwing teller word gehouden op een per periode basis,
+en word gereset bij ieder succes.
+<P>
+<DT><B>comp_alerts</B>
+
+<DD>
+<P>
+Indien deze optie is gespecificeerd, zullen de opkomende waarschuwingen alleen worden aangeroepen als de overeenkomende &quot;down&quot; waarschuwing werd opgeroepen.
+<P>
+<DT><B>alert</B><I> alert [arg...]</I>
+
+<DD>
+Een periode mag meerdere waarschuwingen bevatten, die worden getriggerd tijdens een mislukking
+van een service. Een waarschuwing word gespecificeerd met het <B>alert</B>
+
+sleutelwoord, gevolgd door een optionele <B>exit</B>
+
+parameter, en de argumenten die hetzelfde worden geinterpreteerd als de <B>monitor</B>
+
+definitie, maar zonder de &quot;;;&quot; uitzondering. De
+<B>exit</B>
+
+parameter kan de volgende form hebben 
+<B>exit=x</B>
+
+of
+<B>exit=x-y</B>
+
+en heeft het effect dat de waarschuwing alleen word aangeroepen als de 
+exit status van het monitor script mislukt binnen de range
+van de
+<B>exit</B>
+
+parameter. Als, bijvoorbeeld, de waarschuwing regel 
+<I>alert exit=10-20 mail.alert mis</I>
+
+is dan zal
+<I>mail-alert</I>
+
+alleen worden aangeroepen met
+<I>mis</I>
+
+als zijn argument indien het monitor
+programma zijn exit waarde ligt tussen de 10 en 20. Met deze optie kunt u verschillende waarschuwingen triggeren op verschillende prioriteitsniveaus (bijvoorbeeld als de vrije
+schijf ruimte verandert van 8% naar 3%).
+<P>
+Bekijk de
+<B>WAARSCHUWINGS PROGRAMMA'S</B>
+
+sectie hierboven voor een lijst van de parameter mon die automatisch zullen voorbijkomen om te waarschuwen.
+<P>
+<DT><B>upalert</B><I> alert [arg...]</I>
+
+<DD>
+Een
+<B>upalert</B>
+
+is een onderdeel van een
+<B>alert</B>.
+
+Een upalert word aangeroepen wanneer een services de overgang maakt van mislukking naar succes.
+Het
+<B>upalert</B>
+
+script levert dezelfde parameters als het
+<B>alert</B>
+
+script, met de <B>-u</B> parameter als toevoeging
+
+wat simpelweg word gebruikt om een waarschuwing script te laten weten dat het word aangeroepen als een upalert. Meerdere upalerts kunnen worden gespecificeerd voor iedere periode definitie.
+Let wel op dat het standaard gedrag is dat een upalert altijd zal worden verstuurd ongeacht
+of er voorafgaand &quot;down&quot; waarschuwingen werden verstuurd,  
+omdat upalerts worden getriggerd tijdens een overgangsperiode.
+Zet de per-periode <B>comp_alerts</B>
+optie om upalerts samen te laten gaan met &quot;down&quot; waarschuwingen.
+<P>
+<DT><B>startupalert</B><I> alert [arg...]</I>
+
+<DD>
+Een
+<B>startupalert</B>
+
+word alleen aangeroepen wanneer de
+<B>mon</B>
+
+server een uitvoering start.
+<P>
+<DT><B>upalertafter</B><I> timeval</I>
+
+<DD>
+De
+<B>upalertafter</B>
+
+parameter word gespecificeerd als een string die de syntax volgt van de
+<B>interval</B>
+
+parameter (&quot;30s&quot;, &quot;1m&quot;, enz.), en het triggeren controleert van een
+<B>upalert</B>.
+
+Als een service terugkomt nadat hij uit is geweest voor een tijd groter dan of gelijk aan de
+waarde van deze optie, zal er een
+<B>upalert</B>
+
+worden aangeroepen. Gebruik deze optie om te voorkomen dat upalerts worden aangeroepen door
+&quot;blips&quot; (korte onderbrekingen).
+<P>

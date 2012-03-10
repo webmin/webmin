@@ -1,0 +1,49 @@
+<dl>
+<dt><b>Rotatie schema</b>
+<dd>Dit bepaald hoe vaak de log word geroteerd.<p>
+
+<dt><b>Maximum grote voor rotatie</b>
+<dd>Zet een limiet op de grote van de log file voordat het word geroteerd.
+    Dit veld kan worden gebruikt in plaats van het rotatie schema indien uw
+    voorkeur uitgaat naar de grote in plaats van een op tijd gebaseerde limiet.<p>
+
+<dt><b>Aantal oude logs om te bewaren</b>
+<dd>Dit bepaald hoeveel oude log files u wilt bewaren. Deze zullen normaal
+    gesproken dezelfde naam hebben als de originele log, echter met een .0, .1
+    en zo verder als toevoeging. Indien u een <i>0</i> invult, zullen er geen
+    oude log files worden bewaard en dus zal de inhoud van de log file verloren
+    gaan wanneer die word geroteerd. <p>
+
+<dt><b>Comprimeer oude log files?</b>
+<dd>Wanneer deze optie is aangezet, zullen oude logs worden gecomprimeerd met
+<tt>gzip</tt> na de rotatie om schijf ruimte te besparen. <p>
+
+<dt><b>Roteren zelfs als de log file leeg is?</b>
+<dd>Indien dit is aangezet, zal deze optie de <tt>logrotatie</tt> een log
+    file laten roteren, zelfs als deze leeg is, het resultaat zal een oude kopie
+    zijn die word opgeslagen waar niets in staat. <p>
+
+<dt><b>Log file opnieuw aanmaken na de rotatie?</b>
+<dd>Wanneer deze optie is aangezet, zal de log file opnieuw worden aangemaakt na
+    de rotatie in plaats van met rust gelaten voor de server die naar deze file
+    schrijft of opnieuw aanmaakt. Standaard zal de file opnieuw worden aangemaakt
+    met de originele permissies en eigenaar, echter u kunt door middel van de
+    velden naast de <b>Ja</b> optie alternatieve file permissies, gebruikers en
+    groepen specificeren. <p>
+
+<dt><b>Oude geroteerde logs opslaan in</b>
+<dd>Wanneer dit veld is ingesteld naar <b>Zelfde directory als log file</b>,
+    zullen de oude geroteerde kopieen van de log file worden opgeslagen in
+    dezelfde directory als de originele log. De <b>Directory</b> optie kan
+    worden gebruikt om een alternatieve locatie te kiezen - echter, het moet
+    altijd op hetzelfde filesysteem staan als de log file. <p>
+
+<dt><b>Uit te voeren opdrachten na de rotatie</b>
+<dd>Wanneer deze tekst box is ingevuld, zal de ingevulde shell opdracht worden
+    uitgevoerd nadat de lof is geroteerd. Veel servers moeten opnieuw worden
+    gestart als hun log word hernoemd zodat zij netjes naar de nieuwe file kunnen
+    schrijven. In dat geval moet u een opdracht geven zoals <i>killall -HUP
+    httpd</i> om een herstart te triggeren na een rotatie. <p>
+
+</dl>
+

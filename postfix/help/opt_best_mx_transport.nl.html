@@ -1,0 +1,18 @@
+<header>Actie de MX host als beste vermeld word</header>
+
+<center><tt>best_mx_transport</tt></center>
+<hr>
+
+Deze parameter bepaald wat er gebeurt als het lokale systeem als beste
+MX host vermeld word voor een bestemming. Standaard zal Postfix een
+&quot;mail loops back to myself&quot; fout rapporteren en vervolgens het
+bericht afketsen.
+
+<p>
+
+Specificeer <tt>local</tt> om de email te laten passeren naar de lokale
+aflever agent. U kunt ieder soort transport specificeren wat is gedefinieerd
+in de Postfix <tt>master.cf</tt> file.
+
+
+<hr>

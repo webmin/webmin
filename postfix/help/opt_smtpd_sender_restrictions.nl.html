@@ -1,0 +1,45 @@
+<header>Beperkingen op afzender adressen</header>
+
+<center><tt>smtpd_sender_restrictions</tt></center>
+<hr>
+
+Deze parameter specificeert optionele beperkingen op afzender adressen die SMTP
+cliënten kunnen versturen in EMAIL VAN opdrachten.
+
+<p>
+
+Standaard word alles toegestaan van ieder afzender adres.
+De volgende beperkingen zijn beschikbaar:
+
+<ul>
+<li><tt>permit_mynetworks:</tt> toestaan indien het cliënt adres overeenkomt
+        <a href=opt_mynetworks><tt>$mynetworks</tt></a>.
+<li><tt>reject_unknown_client:</tt> weiger de aanvraag indien de cliënt hostnaam onbekend is.
+<li><tt>reject_maps_rbl:</tt> weiger indien de client in de lijst staat onder
+        <a href=opt_maps_rbl_domains><tt>$maps_rbl_domains</tt></a>.
+<li><tt>reject_invalid_hostname:</tt> weiger HELO hostnaam met een slechte syntaxis.
+<li><tt>reject_unknown_hostname:</tt> weiger HELO hostnaam zonder een DNS A of MX record.
+<li><tt>reject_unknown_sender_domain:</tt> weiger afzender domein zonder een A of MX record.
+<li><tt>check_sender_access maptype:mapname:</tt> opzoeken afzender adres, hoofd domein, of lokale gedeelte@.
+    	Weiger indien het resultaat WEIGER is of &quot;[45]xx tekst&quot;
+    	Anders toestaan.
+<li><tt>check_client_access maptype:mapname:</tt> bekijk
+        <a href=opt_smtpd_client_restrictions>smtpd_client_restrictions</a>.
+<li><tt>check_helo_access maptype:mapname:</tt> bekijk
+        <a href=opt_smtpd_helo_restrictions>smtpd_helo_restrictions</a>.
+<li><tt>reject_non_fqdn_hostname:</tt> weiger een HELO hostnaam die niet in een FQDN vorm is
+<li><tt>reject_non_fqdn_sender:</tt> weiger afzender adres die niet in een FQDN vorm is
+<li><tt>reject:</tt> weiger de aanvraag. Zet dit aan het einde van een beperking.
+<li><tt>permit:</tt> aanvraag toestaan. Zet dit aan het einde van een beperking.
+</ul>
+
+Beperkingen worden toegepast in de gespecificeerde volgorde:
+de eerste beperking die overeenkomt wint.
+
+<p>
+
+Specificeer een lijst met beperkingen, gescheiden door komma's en/of een spatie.
+Ga op lange regels door naar de volgende regel met een spatie.
+
+
+<hr>

@@ -1,0 +1,57 @@
+<header>Bandbreedte Monitoren</header>
+
+Deze module kan gebruikt worden om eenvoudige rapporten te maken ofer het
+bandbreedte gebruik van een poort, host, protocol en tijd van data verkeer wat
+is verzonden of gerouteerd is door uw  systeem. Dit is nuttig voor allenstaande
+hosts en de hosts die werken als een gateway (mogelijk met NAT) voor een netwerk. <p>
+
+Voordat het kan worden gebruikt moet de module eerst opgezet worden met diverse
+firewal regels en een syslog ingang om verkeer op te vangen wat verzonden en
+ontvangen word door uw systeem. Tijdens het opstarten moet u de externe netwerk
+interface selecteren van het systeem waarop het data verkeer word bekeken door
+de monitor. Dit is normaal gesproken de PPP interface die word gebruikt voor
+een inbel of ADSL verbinding, of de ethernet interface die verbonden is met uw
+kabel modem of router. <p>
+
+Er moet op zijn minst een uur aan data verkeer worden opgevangen om een summier
+rapport te maken, de module kan ingesteld worden met de volgende categorien:
+<ul>
+<li><b>Uur</b><br>
+    De datum en uur waarin de data werd ontvangen.
+<li><b>Dag</b><br>
+    De datum waarop de data werd ontvangen.
+<li><b>Host</b><br>
+    De host van uw interne netwerk, of de firewal host, die de data verstuurd of ontvangt.
+<li><b>Interne poort</b><br>
+    De poort op uw interne host of firewal host waar de dat naartoe werd gestuurd. Deze
+    mode is erg nuttig om te bepalen hoeveel data verkeer er word gegenereerd door de
+    verbindingen naar iedere server.
+<li><b>Externe poort</b><br>
+    De poort op de server buiten uw netwerk waar data naartoe werd gestuurd. Dit kan worden
+    gebruikt om te bepalen welke services van uw gebruikers toegang hebben.
+<li><b>Poort</b><br>
+    Zowel interne als externe poorten. Erg nuttig om netwerk gebruik te vergelijken van
+    bepaalde soorten service.
+</ul>
+
+U kunt ook het rapport limiteren door alleen een bepaalde host te selecteren, poort
+of protocol. De host kan worden ingevuld als IP adres, hostnaam of netwerk adres zoals
+bijvoorbeeld 192.168.1.0. De poort kan worden ingevuld als naam of nummer en zal
+overeenkomen met TCP and UDP. <p>
+
+Het rapport kan ook verkleind worden door verkeer te verzamelen op geselecteerd uren
+met gebruik van <b>Voor verkeer na</b> en <b>Voor verkeer voor</b> velden. Omdat
+data verkeer word verzameld per uur kunt u het rapport niet kleiner maken dan 1 uur. <p>
+
+De optie <b>Alleen server poorten?</b> kan nuttig zijn als u een rapport wilt hebben
+van inkomende en uitgaand data verkeer op alle poorten. Het tonen word alleen beperkt
+door poorten die gebruikt worden door servers (die onder 1024 of met namen), om te
+voorkomen dat het beeld gaat stuiteren met het optellen voor client zijde poorten die
+niet echt bruikbaar zijn. <p>
+
+De optie <b>Opvragen van hostnamen?</b> kan worden geselecteerd wanneer u per host
+een rapport wilt hebben. Dit zal ervoor zorgen dat alle IP adressen worden omgezet
+naar hostnamen, daar waar mogelijk. <p>
+
+<hr>
+

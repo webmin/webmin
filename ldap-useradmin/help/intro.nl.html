@@ -1,0 +1,36 @@
+<header>LDAP Gebruikers en Groepen</header>
+
+Indien uw systeem zo is geconfigureerd dat een LDAP server Unix gebruikers en
+groepen opslaat kan deze module gebruikt worden om de gebruikers in de LDAP
+database te beheren. LDAP word heel vaak gebruikt als alternatief voor NIS
+om gebruikers informatie te synchroniseren over diverse systemen in een netwerk.
+Omdat een database kan worden gebruikt voor het opslaan van extra attributen
+van iedere gebruiker als toevoeging voor de standaard Unix naam, shell enz. enz.. <p>
+
+Uiteraard moet er wel een LDAP server aan het werk zijn op uw systeem of op
+een host op uw netwerk voordat deze module kan worden gebruikt. Als aanvulling
+moet 1 of meerdere hosts worden geconfigureerd om LDAP te gebruiken voor
+gebruikers en groepen authenticatie. Geen van deze taken kunnen worden
+uitgevoerd vanuit deze module, dit moet handmatig worden uitgevoerd, of
+worden uitgevoerd door andere Webmin modules die hiervoor gemaakt zijn. <p>
+
+Als u Samba heeft geconfigureerd om ook een LDAP server te gebruiken kunt u
+met deze module ook de noodzakelijke wachtwoord attributen aanmaken en beheren
+voor iedere LDAP gebruiker die moet inloggen bij de Samba server. Voordat
+deze functie kan werken moet uw LDAP server zo worden geconfigureerd dat hij
+de extra Samba attributen en object klassen voor iedere gebruiker in het schema
+kan gebruiken.
+Alleen wanneer de <b>Samba inlog?</b> optie op <b>Ja</b> word gezet zullen
+de Samba attributen worden aangemaakt. <p>
+
+De module kan ook gebruikers aanmaken op een Cyrus IMAP server indien deze
+zo is opgezet dat de authenticatie geschikt is voor de LDAP database.
+Hij zal dan mailboxen aanmaken voor iedere nieuwe gebruiker, de gebruiker
+toevoegen aan de mailbox en admin toegang toekennen aan de mailbox.
+Indien een LDAP gebruiker word verwijdert zal ook zijn IMAP mailbox worden
+verwijdert.
+Op dit moment werkt deze functie alleen met een Cyrus IMAP server - dit is
+nog niet getest en is waarschijnlijk ook niet nodig voor andere servers die
+gebruikers home directory's gebruiken voor mail opslag. <p>
+<hr>
+

@@ -1,0 +1,10 @@
+<header>Werkniveaus</header>
+
+Dit veld mag diverse karakters bevatten voor verschillende werkniveaus.
+Bijvoorbeeld, <tt>123</tt> specificeert dat een proces word gestart in de
+werkniveaus 1, 2, en 3.<p>
+
+Wanneer het werkniveau op het systeem word verandert zal ieder proces wat aan het werk is,
+en niet gespecificeerd is voor een nieuw werkniveau worden afgesloten (kil), dit zal eerst
+worden gedaan met <tt>SIGTERM</tt>, dan met <tt>SIGKILL</tt>.<p>
+<hr>

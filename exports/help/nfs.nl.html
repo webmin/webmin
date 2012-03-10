@@ -1,0 +1,24 @@
+<h3>Introductie van NFS</h3>
+
+NFS is het standaard file delen protocol wat gebruikt word door Unix
+systemen. Met NFS kunt u vanaf 1 systeem een directory exporteren over
+het hele netwerk naar 1 of meerdere hosts, waarbij gebruikers en programma's
+op die hosts toegang hebben tot de geëxporteerde files, alsof het lokaal
+opgeslagen was op die hosts. <p>
+
+Een NFS server is het systeem die 1 of meerdere directory's exporteert, terwijl
+een NFS client een systeem is die 1 of meerdere directory's mount van een server.
+Een host kan zowel een NFS server als een NFS client zijn voor andere servers. <p>
+
+Een server bepaald welke clienst een geëxporteerde directory mogen mounten 
+door middel van het controleren van het IP adres van de client tegen een lijst
+met toegestane hosts voor de aangevraagde directory. De server kan ook bepalen
+of een hele export alleen-lezen is, of alleen-lezen voor bepaalde clients. <p>
+
+Anders dan andere netwerk filesystemen hoeft een NFS client niet in te loggen
+bij de server zodra hij een geëxporteerde directory wil mounten. De server
+vertrouwd de client als een geautoriseerde gebruiker (of met Unix credit's,
+of door middel van een Kerberos5 authenticatie) en levert de ID van de gebruiker
+wanneer deze toegang wil hebben bij geëxporteerde files.
+Dus u moet alleen client hosts toegang verlenen tot geëxporteerde directory's
+die u vertrouwd. <p>

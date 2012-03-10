@@ -1,0 +1,102 @@
+<body bgcolor=#ffffff>
+<center><img src=images/dnsadmin.gif></center>
+<h2><i>Deze help pagina is nog niet compleet</i></h2>
+
+<hr>
+<h3>Introductie</h3>
+Met deze module kunt u de BIND (Berkeley Internet Name Daemon) DNS server
+configureren die geinstalleerd is op deze machine. De DNS server is
+verantwoordelijk voor het converteren van hostnamen zoals <i>www.foo.com</i>
+naar een IP adres zoals bijv.<i>10.1.2.3</i>, en IP adressen naar hostnamen.
+
+<hr>
+<h3>DNS Basics</h3>
+Iedere DNS server beheert een aantal doorstuur- en omkeerbare domeinen. Een
+doorstuur domein moet u zien als <i>foo.com</i>, en een omgekeerd domein moet
+u zien als <i>204.165.66</i>. Voor ieder domein, kan de DNS server de primaire
+server zijn (De originele bron met data van het domein), of een secondaire
+server (een backup bron voor het domein). <p>
+
+<dl>
+<dt><b>Doorstuur Domeinen</b>
+<dd>Als uw DNS server een doorstuur domein beheert zoals <i>foo.com</i>, dan
+    zal het in staat zijn om aanvragen te beantwoorden voor hostnamen binnen
+    dit domein.
+    Domeinen waarvoor dit een primaire server is, kunt u deze module gebruiken
+    om hosts toe te voegen (en andere records) aan het domein. Voor secondaire
+    domeinen, kunt u de primaire server(s) specificeren waar de host informatie
+    van moet worden gedownload. <p>
+
+<dt><b>Omkeerbare Domeinen</b>
+<dd>Van omkeerbare domeinen zal het IP adres (zoals <i>203.165.66.77</i>)
+    omgezet worden naar hostnamen (zoals <i>www.foo.com</i>). Een omkeerbaar
+    domein levert de hostnamen voor alle IP adressen in een netwerk 
+    (zoals <i>203.165.66</i>). Voor domeinen waarvoor dit een primaire server
+    is, kunt u met deze module een IP adres toevoegen aan hostnaam records van
+    het domein. Voor secondaire domeinen, Kunt u een DNS server(s) specificeren
+    vanwaar het IP adres gedownload moet worden voor het mappen. <p>
+</dl>
+
+<hr>
+<h3>De DNS Server Opzetten</h3>
+Indien uw systeem reeds een werkende BIND DNS server heeft, kunt u dit gedeelte
+negeren. Echter indien Webmin detecteert dat de primaire DNS server
+configuratie file (normaal gesproken <tt>/etc/named.boot</tt>) ontbreekt op uw
+systeem, word er aangenomen dat de server niet is opgezet. <p>
+
+Voor normaal internet gebruik, heeft een DNS server een lijst van de root 
+naam servers zodat het DNS aanvragen kan beantwoorden die zich buiten zijn domeinen
+bevinden. 
+Indien uw server nog niet is opgezet, kan Webmin :
+<ol>
+<li>Deze lijst downloaden van de Internic FTP server op <tt>rs.internic.net</tt>.
+    Er van uitgaande dat de Webmin host waarin het moet worden uitgevoerd
+    is verbonden met het internet en niet word geblokkeerd door een firewall.
+    Dit is de beste optie. <p>
+<li>Gebruik een lijst die word gedistribueerd door Webmin. Omdat de root
+    naam servers niet vaak veranderen zal dit goed werken. <p>
+<li>De naam server alleen voor intern gebruik opzetten. Indien u op een netwerk
+    zit wat niet is verbonden met het internet is dit de beste optie die
+    u kunt gebruiken.<p>
+</ol>
+
+<hr>
+<h3>Primair Domein Aanmaken</h3>
+Om een nieuw primair domein aan te maken moet u het formulier invullen wat
+zich onder <b>Nieuw Primair Domein Aanmaken</b> bevind op de <a href=/dnsadmin/>DNS Server</a>
+pagina.
+De bedoeling van de velden zijn :
+<ul>
+<li><b>Mapping</b><br>
+    Dit bepaald of het een doorstuur- of omkeerbaar domein is<p>
+<li><b>Domein/Net</b><br>
+    Voor doorstuur domeinen moet het worden ingevuld zoals <tt>foo.com</tt>.
+    Voor omkeerbare domeinen moet het IP netwerk worden ingevuld 
+    zoals <tt>203.123.221</tt>. <p>
+<li><b>File naam</b><br>
+    De naam van de file waarin de domein informatie word opgeslagen. Indien
+    u in dit veld niets invult word er automatisch een beschikbare file naam
+    gegenereerd. <p>
+<li><b>Contact email</b><br>
+    Ieder DNS domein moet een email adres hebben, van de verantwoordelijke
+    persoon van dit domein. <p>
+<li><b>Naam server</b><br>
+    Hier moet de volledig gekwalificeerde naam staan voor de naam server die
+    verantwoordelijk is voor dit domein. Dit zal bijna altijd de naam zijn
+    van de host waarop u Webmin heeft werken. <p>
+</ul>
+
+<hr>
+<h3>Secondair Domein Aanmaken</h3>
+
+<hr>
+<h3>Bewerk een Primair Domein</h3>
+
+<hr>
+<h3>Domein Records Bewerken</h3>
+
+<hr>
+<a href="/"><img alt="<-" align=middle border=0 src=/images/left.gif></a>
+&nbsp;&nbsp;<a href="">Terug naar de module</a><p>
+ 
+

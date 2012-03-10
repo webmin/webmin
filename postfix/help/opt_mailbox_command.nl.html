@@ -1,0 +1,42 @@
+<header>Externe opdracht gebruiken in plaats van afleveren aan de mailbox</header>
+
+<center><tt>mailbox_command</tt></center>
+<hr>
+
+Deze parameter specificeert de optionele externe opdracht die gebruikt kan worden
+in plaats van direct afleveren aan de mailbox. De opdracht moet worden uitgevoerd
+als ontvanger met een bruikbare <tt>HOME</tt>, <tt>SHELL</tt> en <tt>LOGNAME</tt> 
+omgeving's instelling. Bij uitzondering voor het afleveren voor de <tt>root</tt> dit
+word gedaan als <tt>$default_user</tt>.
+
+<p>
+
+Andere omgeving's variabelen die belangrijk zijn : <tt>USER</tt> (ontvanger gebruikersnaam),
+<tt>EXTENSION</tt> (adres extensie), <tt>DOMAIN</tt> (domein gedeelte van het adres),
+en <tt>LOCAL</tt> (het lokale gedeelte van het adres).
+
+<p>
+
+Anders dan andere Postfix configuratie parameters, word deze parameter niet beinvloed door
+andere parameter instellingen. Dit is gedaan om het makkelijker te maken om een shell syntaxis
+te specificeren (bekijk het voorbeeld hieronder).
+
+<p>
+
+Vermijd shell meta karakters omdat die Postfix kunnen laten werken in een uitgebreid shell
+proces. <tt>Procmail</tt> alleen is al intensief genoeg als proces.
+
+<p>
+
+INDIEN U DIT SYSTEEM BREED WILT GEBRUIKEN OM MAIL AF TE LEVEREN, MOET U EEN ALIAS
+AANMAKEN DIE DE MAIL VAN DE ROOT DOORSTUURT NAAR EEN ECHTE GEBRUIKER !
+
+<p>
+
+Voorbeelden :
+<ul>
+<li><tt>/some/where/procmail</tt> 
+<li><tt>/some/where/procmail -a "$EXTENSION"</tt>
+</ul>
+
+<hr>

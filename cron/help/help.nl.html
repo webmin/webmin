@@ -1,66 +1,65 @@
 <body bgcolor=#ffffff>
 <title>Geplande Cron Opdrachten</title>
 <center><img src="images/cron.gif"></center><br>
-<h2><i>Deze help pagina is nog niet compleet</i></h2>
+<h2><i>Deze help pagina is nog niet volledig.</i></h2>
 <hr>
 <h3>Introductie</h3>
-Deze module kan worden gebruikt om opdrachetn automatisch uit te voeren op
+Deze module kan worden gebruikt om opdrachten automatisch uit te voeren op
 gezette tijden. het maakt gebruik van de standaard Unix <tt>cron</tt> daemon,
-welke opdrachten kan uitvoeren als verschillende gebruikers op geselecteerde 
-minuten, urenm dagen of maanden, dag van de week en maanden van het jaar. Iedere
+welke opdrachten kan uitvoeren voor verschillende gebruikers op geselecteerde 
+minuten, uren, dagen of maanden, dag van de week en maanden van het jaar. Iedere
 opdracht is eigendom van een gebruiker, en wanneer het wordt uitgevoerd draait
 het met de rechten van die gebruiker. <p>
 
 De hoofdpagina van de module geeft alle bekende geplande opdrachten weer,
-gegroepeerd op de gebruiker als welke de opdracht wordt uitgevoerd.
-Sommige systemen zullen opdrachten hebben die onderdeel zijn van het besturingssysteem,
-die eigendom zijn van gebruikers als <tt>root</tt> of <tt>sys</tt>.
-Er zijn mogelijk ook opdrachten die met het <tt>crontab</tt> commando zijn aangemaakt 
-door gebruikers op uw systeem, die eigendom zijn van de gebruikers die ze hebben aangemaakt<p>
+gegroepeerd per gebruiker waarvoor de opdracht wordt uitgevoerd.
+Sommige systemen zullen taken uitvoeren die onderdeel zijn van het besturingssysteem,
+en die eigendom zijn van gebruikers zoals <tt>root</tt> of <tt>sys</tt>.
+Er kunnen ook opdrachten staan die met de <tt>crontab</tt> opdracht zijn aangemaakt 
+door gebruikers op uw systeem, deze zijn eigendom van de gebruikers die ze hebben aangemaakt. <p>
 
 <hr>
-<h3>Een Nieuwe Geplande Opdracht aanmaken</h3>
-Om een nieuwe opdracht aan te maken klikt u op <tt>Een nieuwe geplande opdracht aanmaken</tt>
-onder de lijst met bestaande opdrachten. Dit zal een formulier weergeven waarin u de 
+<h3>Nieuwe Geplande Taak aanmaken</h3>
+Om een nieuwe taak aan te maken klikt u op <tt>Nieuwe Geplande Taak Maken</tt>
+onder de lijst met bestaande taken. Dit zal een formulier weergeven waarin u de 
 volgende parameters kunt invoeren :
 	<ul>
-	<li><b>Uitvoeren als gebruiker</b><br>
-	    De loginnaam van de Unix gebruiker als wie de opdracht zal worden uitgevoerd. <p>
+	<li><b>Gebruiker waarvoor het uitgevoerd word</b><br>
+	    De login naam van de Unix gebruiker voor wie de taak zal worden uitgevoerd. <p>
 	<li><b>Actief?</b><br>
-	    Als een opdracht niet actief is zal get nog steed worden weergegeven in de lijst
-	    van bekende opdrachten, maar zal niet gepland worden uitgevoerd. <p>
-	<li><b>Commando</b><br>
-	    Het eigenlijke Unix commando om op gezette tijden uit te voeren.
-	    Dit kan ieder commando zijn die u op de command line zou intypen. <p>
-	<li><b>Invoer voor commando</b><br>
-	    Als dit veld niet leeg is zal hetgeen u hier invoert worden gebruikt
-	    als invoer voor de opdracht wanneer deze wordt uitgevoerd.
-	    Als bijvoorbeeld de opdracht <tt>mail foo@bar.com</tt> en de invoer
-	    <tt>hello world</tt> zou zijn, dan wordt de invoertekst gemaild naar
+	    Als een taak niet actief is zal het wel worden weergegeven in de lijst
+	    van bekende taken, maar zal het niet worden uitgevoerd. <p>
+	<li><b>Opdracht</b><br>
+	    De opdracht die op gezette tijden moet worden uitgevoerd.
+	    Dit kan iedere opdracht zijn die u op de opdracht-regel intypt. <p>
+	<li><b>Invoer voor opdracht</b><br>
+	    Alles wat u invuld in dit veld zal worden meegestuurd met de opdracht.
+	    Als bijvoorbeeld de opdracht <tt>mail foo@bar.com</tt> is en u
+	    <tt>hallo wereld</tt> invult, dan zal deze tekst worden gemaild naar
 	    <tt>foo@bar.com</tt>. <p>
 	<li><b>Wanneer uitvoeren</b><br>
-		De tijden waarop het commando moet worden uitgevoerd worden bepaald 
-		door de minuten, uren, dagen van de maand, maanden van het jaar en de 
-		dagen van de week op te geven. Voor elk van deze kunt u <tt>Alle</tt>
-		selecteren of de tijden waarop het commando moet worden uitgevoerd. <p>
+		De tijd waarop de taak moet worden uitgevoerd kan worden bepaald door
+		op te geven op welke minuten, uren, dagen van de maand, maanden van het jaar
+		en de dagen van de week de taak moet worden uitgevoerd. Voor elk van deze
+		kunt u <tt>Alles</tt> selecteren of u selecteert de tijden waarop deze
+		taak moet worden uitgevoerd. <p>
 
 	    Als u bijvoorbeeld 5 kiest voor het uur en dinsdag voor de dag van de week,
-	    dan wordt het commando iedere dinsdag tussen 05:00 en 05:59 's nachts om de 
-	    minut uitgevoerd. <br>
-	    Wanneer u 30 kiest voor de minuten en 14 voor het uur, dan wordt het commando
-	    iedre dag om 14:30 uitgevoerd. <p>
+	    dan wordt de taak iedere dinsdag om de minuut tussen 05:00 en 05:59 uitgevoerd. <br>
+	    Wanneer u 30 kiest voor de minuten en 14 voor het uur, dan wordt de taak
+	    iedere dag om 14:30 uitgevoerd. <p>
 	</ul><p>
 Wanneer u het formulier volledig heeft ingevuld, klikt u op de knop <tt>Aanmaken</tt> 
 onderaan de pagina. De nieuwe opdracht zal dan direct worden geactiveerd. <p>
 
 <hr>
-<h3>Bewerken van een bestaande Opdracht</h3>
-Om een bestaan de opdracht te bewerken, klikt u op het commando in de lijst op de hoofdpagina.
-Het formulier waarop u een opdracht bewerkt is hetzelfde als degene waarop u een nieuwe
-opdracht aanmaakt, welke hierboven beschreven is. Wanneer u de benodigde wijzigingen heeft 
+<h3>Bewerk een Bestaande Geplande Taak</h3>
+Om een bestaande taak te bewerken, klikt u op het opdracht in de lijst op de hoofdpagina.
+Het formulier waarop u een taak bewerkt is hetzelfde als degene waarop u een nieuwe
+taak aanmaakt, zoals hierboven beschreven is. Wanneer u de benodigde wijzigingen heeft 
 gemaakt klikt u op de knop <tt>Opslaan</tt> onderaan de pagina. <p>
 
-Om een opdracht te verwijderen klikt op de knop <tt>verwijderen</tt>
+Om een taak te verwijderen klikt u op de knop <tt>Verwijderen</tt>
 onderaan de pagina. Dit verwijderd de opdracht direct zonder om bevestiging te vragen. <p>
 
 <hr>

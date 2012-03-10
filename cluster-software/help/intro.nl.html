@@ -1,0 +1,44 @@
+<header>Cluster Software Pakketten</header>
+
+Met deze Webmin module kunt u de software beheren die geinstalleerd is
+op diverse servers in een cluster, vanuit 1 interface. Het is
+vergelijkbaar met de "Software Pakket" module echter met de mogelijkheid
+om diverse functies (zoals installeren, wachtrij en verwijderen van 
+pakketten) uit te voeren op heel veel Webmin servers met 1 handeling. <p>
+
+Het bovenste gedeelte van de hoofdpagina (onder Beheerde Servers) geeft
+een lijst met andere Webmin servers waarvan de software word beheerd
+door deze module. Om een server toe te voegen aan deze lijst moet u die
+server eerst toevoegen aan de "Webmin Servers" module, met een 
+gebruikersnaam en wachtwoord om in te kunnen loggen bij Webmin op die
+server. U kunt daarna de server selecteren die in de lijst staat die
+zich naast de "Toevoegen Server" knop bevind. <p>
+
+Wanneer een server word toegevoegd zal de module controleren of die
+server hetzelfde pakket beheer systeem gebruikt als deze server,
+(Bijvoorbeeld RPM of Debian) en daarna de lijst met geinstalleerde
+pakketten downloaden om de lokaal in cache te zetten. <p>
+
+De server die altijd in de lijst staat van beschikbare servers is
+deze server, zodat u pakketten kan beheren vanuit 1 interface die 
+zowel lokaal op deze server staan als op remote servers indien deze ook
+in de lijst staan. <p>
+
+Zodra er op zijn minst 1 icoon staat onder "Beheer Servers" kunt u het
+"Geinstalleerde Pakketten" formulier gebruiken om te zoeken naar pakketten
+op alle servers, of klik op de "Ververs Pakketten Lijst" knop om de
+pakketten lijst op te halen van alle servers indien er pakketten zijn
+toegevoegd of verwijderd via een andere module of methoden. <p>
+
+Aan de onderkant van de pagina bevind zich een formulier om nieuwe
+pakketten te installeren op alle beheerde servers. U kunt selecteren of
+u wilt installeren vanaf een file van deze server, van een ge-uploaden file
+of van een file die gedownload moet worden middels HTTP of FTP van een
+website. Wanneer u installeert middels een file die gedownload moet worden
+kunt u kiezen of iedere beheerde server dit pakket opnieuw moet downloaden
+van de originele website of dat ze een kopie krijgen van deze server.
+De eerste optie is sneller indien de website waarop het pakket zich bevind
+binnen uw eigen lokale netwerk is. <p>
+
+<hr>
+

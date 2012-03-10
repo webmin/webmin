@@ -1,0 +1,32 @@
+<header>Mail Aliassen</header>
+
+De aliassen leveren een systeem breed mechanisme om mail on te leiden
+voor lokale ontvangers.
+
+<p>
+
+Het <tt>Alias naar...</tt> veld bevat 1 of meer van het volgende,
+komma-gescheiden :
+
+<ul><li><tt>adres</tt>: Mail word doorgestuurd naar <tt>adres</tt>, wat compatibel
+is met de RFC 822 standaard.
+
+<li><tt>/file/name</tt>: Mail word toegevoegd aan <tt>/file/name</tt>. Bekijk
+lokaal(8) voor de details van afleveren aan file. Aflevering is niet gelimiteerd aan
+reguliere files. Bijvoorbeeld, Om ongewenste mail te verwijderen, word het afgebogen
+naar <tt>/dev/null</tt>.
+
+<li><tt>|opdracht</tt>: Mail word ge-piped naar een <tt>opdracht</tt>. Opdrachten die
+speciale karakters bevatten, zoals spaties, moeten worden opgesloten tussen dubbele
+quotes. Bekijk lokaal(8) voor details van afleveren naar opdracht.
+Wanneer de opdracht mislukt, zal er een kort bericht worden verstuurd van het resultaat
+naar de afzender.
+
+<li><tt>:include:/file/name</tt>: Mail word verstuurd naar de bestemmingen die in de
+lijst staan in de genoemde file. Regels in de <tt>:include:</tt> files hebben dezelfde
+syntaxis als de rechterzijde van de alias ingangen.
+
+</ul>
+
+<hr>
+

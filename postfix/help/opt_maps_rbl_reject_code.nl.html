@@ -1,0 +1,21 @@
+<header>SMTP server reactie op een RBL domein schending</header>
+
+<center><tt>maps_rbl_reject_code</tt></center>
+<hr>
+
+Deze parameter specificeert de SMTP server reactie code wanneer een email de
+<a href=opt_maps_rbl_domains><tt>maps_rbl_domains</tt></a> regel schend, welke is:<br>
+<i>Toegang geweigerd: SMTP client staat in de lijst van de RBL</i><br>
+<br>
+Let op dat de Postfix standaard waarde die gebruikt word voor <tt>maps_rbl_reject_code</tt>
+de code 554 is, en deze code in de 'standaard RFC 822' betekend
+'Aangevraagde email actie geweigerd: toegang geweigerd'.
+Dus met Postfix is een <tt>maps_rbl_domains</tt> regel schending niet precies hetzelfde
+als de RFC 822 uitleg van de gerapporteerde code.<br>
+<p>
+Om verwarring te vermijden kunt u deze code bijvoorbeeld veranderen naar 571,
+(een andere reden is dat code 554 ook de Postfix standaard waarde is voor andere foutmeldingen),
+In alle andere gevallen moet u dit niet wijzigen als u geen volledige kennis heeft van RFC 822.
+</p>
+
+<hr>

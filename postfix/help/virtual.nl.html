@@ -1,0 +1,60 @@
+<header>Virtuele Domeinen</header>
+
+De optionele virtuele tabellen specificeren omleidingen voor locale en niet-locale
+ontvangers of domeinen. De omleidingen worden gebruikt door de cleanup(8) daemon.
+De omleidingen zijn recursief.
+
+<p>
+
+De virtuele omleiding word alleen toegevoegd aan de ontvanger enveloppe adres, en
+doet niets met de berichten headers. Denk hierbij aan de Sendmail regel <tt>S0</tt>.
+Gebruik de <a href=canonical>canonical mapping</a> voor het herschrijven van de header
+en enveloppe de adressen in het algemeen.
+
+<p>
+
+Typisch ondersteuning voor een virtueel domein lijkt op het volgende:
+
+<ul>
+<li> <b><tt>virtueel.domein</tt></b> word gemapt naar... <b><tt>alles</tt></b> (rechtse inhoud maakt niet uit)
+<li> <b><tt>gebruiker1@virtueel.domein</tt></b> word gemapt naar... <b><tt>adres1</tt></b>
+<li> <b><tt>gebruiker2@virtueel.domein</tt></b> word gemapt naar... <b><tt>adres2,
+adres3</tt></b>
+</ul>
+
+Hiermee zal de SMTP server email accepteren voor <tt>virtual.domein</tt> en weigert hij email voor
+<tt>onbekend@virtueel.domein</tt> en beschouwt dit als niet afleverbaar.
+
+<p>
+
+Het formaat van de virtuele tabel is als volgt, en mappings worden uitgeprobeerd in de
+volgorde zoals hieronder in de lijst staat:
+
+<ul>
+<li> <b><tt>gebruiker@domein</tt></b> word gemapt naar... <b><tt>adres, adres, ...</tt></b>: Email voor
+<tt>gebruiker@domein</tt> word omgeleid naar <tt>adres</tt>.
+Deze vorm heeft de hoogste prioriteit.
+
+<li> <b><tt>gebruiker</tt></b> word gemapt naar... <b><tt>adres, adres, ...</tt></b>: Email voor <tt>gebruiker@website</tt> word omgeleid naar <tt>adres</tt> wanneer de website gelijk is 
+aan <tt>$myorigin</tt> en wanneer de website in de lijst <tt>$mydestination</tt> staat, of wanneer het in de lijst 
+<tt>$inet_interfaces</tt> staat. Deze functionaliteit overlapt met de functionaliteit van
+de <a href=aliases>locale alias</a> database. Het verschil is dat de virtuele mapping kan worden
+toegevoegd aan niet-locale adressen.
+
+<li> <b><tt>@domein</tt></b> word gemapt naar... <b><tt>adres, adres, ...</tt></b>: Email voor iedere gebruiker
+die in het <tt>domein</tt> is word omgeleid naar <tt>adres</tt>. Deze vorm heeft de laagste prioriteit.
+</ul>
+
+Voor al de bovenstaande formuleringen geld, wanneer een adres de volgende vorm heeft <tt>@anderdomein</tt>, het
+resultaat hetzelfde zal zijn voor de gebruiker in anderdomein. Dit werkt alleen voor het eerste adres in de 
+uitbreiding.
+
+<p>
+ADRES UITBREIDING: Wanneer het zoeken mislukt, en het locale gedeelte van het adres bevat de optionele
+ontvanger scheiding teken (Bijv. <tt>gebruiker+foo@domein</tt>), zal de zoekactie worden herhaald voor het
+niet uitgebreide adres (Bijv. <tt>gebruiker@domein</tt>), en de niet overeenkomende adres uitbreiding word
+overgedragen naar het resultaat van de uitbreiding.
+De overeenkomende volgorde is: <tt>gebruiker+foo@domein</tt>, <tt>gebruiker@domein</tt>,
+<tt>gebruiker+foo</tt>, <tt>gebruiker</tt>, en <tt>@domein</tt>.
+
+<hr>

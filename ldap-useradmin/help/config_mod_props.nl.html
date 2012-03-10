@@ -1,0 +1,23 @@
+<header>LDAP eigenschappen voor alle gemodificeerde gebruikers</header>
+
+Deze optie kan worden gebruikt om eigenschappen te specificeren die worden
+ge-update in de LDAP gebruikers zodra die gemodificeerd worden.
+Dit moet ingevuld worden in het volgende formaat :<p>
+
+naam1: waarde1<br>
+naam2: waarde2<br>
+<p>
+
+De volgende toevoegingen kunnen worden gebruikt, welke worden vervangen zodra
+de gebruiker word opgeslagen :<p>
+
+${USER}	De gebruikers inlog naam<br>
+${PLAINPASS} De niet versleutelde gebruikers wachtwoord, indien die is opgegeven<br>
+${REAL} De echte naam van de gebruiker<br>
+${UID} Het Unix UID nummer van de gebruiker<br>
+${GID} Het Unix groep ID nummer van de gebruiker<br>
+${HOME} De gebruiker zijn home directory<br>
+${SHELL} De inlog shell van de gebruiker<br>
+<p>
+<footer>
+

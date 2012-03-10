@@ -1,0 +1,32 @@
+<header>Beperkingen op de cliënt hostnaam/adressen</header>
+
+<center><tt>smtpd_client_restrictions</tt></center>
+<hr>
+
+Deze parameter specificeert extra beperkingen op de SMTP cliënt host namen en
+adressen.
+
+<p>
+
+Standaard worden alle verbindingen toegestaan van iedere host.
+De volgende beperkingen zijn beschikbaar:
+
+<include smtpd_restrictions>
+
+Beperkingen worden toegevoegd in de opgegeven volgorde; de eerste beperking
+die overeenkomt wint.
+
+<p>
+
+Specificeer een lijst met beperkingen, gescheiden door komma's en of spaties.
+Bij lange regels moet u spaties gebruiken als u naar de volgende regel wilt gaan.
+
+<p>
+
+Verstandige voorbeelden:
+<ul>
+<li><tt>permit_mynetworks, reject_unknown_client</tt>
+<li><tt>reject_maps_rbl, reject_unknown_client</tt>
+</ul>
+
+<hr>

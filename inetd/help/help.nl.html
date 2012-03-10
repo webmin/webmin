@@ -1,0 +1,128 @@
+<body bgcolor=#ffffff>
+<title>Internet Services</title>
+<center><img src="images/inetd.gif"></center><br>
+<h2><i>Deze help pagina is nog niet compleet!</i></h2>
+<hr>
+<h3>Introductie</h3>
+Met deze module kunt u internet services beheren en opzetten zoals <tt>telnet</tt>,
+ <tt>ftp</tt> en <tt>finger</tt>. Iedere internet service heeft een
+naam, poort nummer en protocol (zoals <tt>telnet</tt> op <tt>tcp</tt> port 23).
+Veel services hebben een server programma om voor deze services de
+netwerk verbindingen af te handelen . <p>
+
+Services met een bijbehorend programma worden gecontroleerd door de Unix 
+<tt>inetd</tt> daemon, welke luistert naar netwerk verbindingen voor
+alle services. Wanneer er een verbinding word ontvangen, zal het server
+programma starten om de data af te handelen voor deze nieuwe verbinding. <p>
+
+Niet alle internet services worden beheerd door deze module. Servers die
+heel veel verbindingen ontvangen zoals HTTPD, SMB of NFS werken apart
+om te voorkomen dat er voor iedere aanvraag een nieuw proces word gestart.
+Deze services kan worden geconfigureerd om andere Webmin modules te gebruiken,
+Zoals <a href=/samba/>Samba</a> of <a href=/apache/>Apache</a>. <p>
+
+De hoofdpagina voor deze module geeft een lijst weer met al de internet en
+RPC services van uw systeem. Services waaraan een programma is gekoppeld
+worden getoond in vetgedrukte letters.
+De lijst met internet services, RPC services en programma's worden gehaald
+uit de files <tt>/etc/services</tt>, <tt>/etc/rpc</tt> en <tt>/etc/inetd.conf</tt>. <p>
+
+<hr>
+<h3>Nieuwe Service Aanmaken</h3>
+Om een nieuwe internet service aan te maken klikt u op de <tt>Nieuwe Service Aanmaken</tt>
+link die onder de lijst met actieve services staat. Deze link brengt u naar een
+formulier waar u de details kunt invullen voor de nieuwe service :
+	<ul>
+	<li><b>Service Naam</b><br>
+	    Iedere service moet een unieke naam en protocol combinatie hebben.
+	    Dit betekent dat 2 services alleen dezelfde naam kunnen hebben als
+	    zij verschillende protocollen hebben. <p>
+	<li><b>Protocol</b><br>
+	    Het communicatie protocol wat word gebruikt door deze service. Bijna
+	    alle internet services gebruiken het <tt>TCP</tt> protocol, en de rest
+	    gebruikt <tt>UDP</tt>. <p>
+	<li><b>Poort</b><br>
+	    Iedere service heeft een poort nummer welke uniek moet zijn binnen
+	    het protocol wat gebruikt word door de service. Het poort nummer moet
+	    zich bevinden tussen de 0 en 65535 voor zowel <tt>TCP</tt> als <tt>UDP</tt>. <p>
+	<li><b>Aliases</b><br>
+	    Een lijst met gebruikte alternatieve namen die verwijzen naar deze service.
+	    Een alias kan niet worden gebruikt indien de naam al word gebruikt voor een
+	    bestaande service met hetzelfde protocol. <p>
+	</ul><p>
+Internet service namen kunnen worden gebruikt in plaats van hostnamen in de opdrachten,
+zoals <tt>telnet</tt>. Bijvoorbeeld, u kunt <tt>telnet foo.bar.com smtp</tt> typen om te
+verbinden met poort 25 op de host <tt>foo.bar.com</tt>, er van uitgaand dat de <tt>smtp</tt> internet service correct is gedefinieerd. <p>
+
+Voor services met een bijbehorend programma, moet u de <tt>Gebruik het programma hieronder</tt> optie kiezen ???
+	<ul>
+	<li><b>Programma</b><br>
+	    Sommige zeldzame services worden intern afgehandeld door <tt>inetd</tt>.
+	    Echter, voor bijna alle nieuwe services die u aanmaakt moet u het
+	    volledige pad naar dit programma opgeven wat u wilt gebruiken voor
+	    de service. <p>
+	<li><b>Argumenten</b><br>
+	    Opdracht regel argumenten voor het programma hierboven. Het eerste
+	    argument moet de programma naam zijn, en de rest andere moeten de
+	    parameters zijn voor dit programma. <p>
+	<li><b>Wacht mode</b><br>
+	    Dit bepaald of <tt>inetd</tt> moet wachten totdat het programma
+	    volledig is gestart voordat een ander programma word gestart. Voor
+	    de meest services, moet dit <tt>Niet wachten</tt> zijn. <p>
+	<li><b>Uitvoeren als</b><br>
+	    De gebruikersnaam van de gebruiker waarvoor het server programma
+            moet werken. De meeste servers zullen moeten werken als <tt>root</tt>. <p>
+	</ul><p>
+Wanneer een nieuwe service word toegevoegd, zal deze niet direct gaan werken. U moet
+op de <tt>Herstart Inetd</tt> knop klikken op de hoofdpagina om deze service actief
+te maken en aan het werk te krijgen. <p>
+
+<hr>
+<h3>Bestaande Service Bewerken</h3>
+Om een bestaande service te bewerken klikt u op de service naam in de lijst op de
+hoofd pagina.
+Dan word hetzelfde formulier getoond wat u gebruikt om een nieuwe service te maken,
+Waardoor u de mogelijkheid heeft om alle service details te bewerken. U kunt ook
+op de <tt>Verwijder</tt> knop klikken onderaan deze pagina om de service volledig
+te verwijderen. <p>
+
+Wees erg voorzichtig met het bewerken of verwijderen van bestaande systeem services
+zoals <tt>telnet</tt> of <tt>ftp</tt>. Indien u dit verandert of hier fouten in maakt
+Kan het onmogelijk worden om nog in te loggen op uw machine (of nog erger). <p>
+
+Wanneer een service word gemodificeerd, zal dit niet direct werken. U moet op de
+<tt>Herstart Inetd</tt> knop klikken op de hoofdpagina zodat de wijzigingen worden
+uitgevoerd. <p>
+
+<hr>
+<h3>Aanmaken en Bewerken van RPC Programma's</h3>
+Normaal gesproken zal het nooit nodig zijn om RPC programma's te bewerken op uw
+systeem. Echter, indien u dit toch wilt doen is de procedure hetzelfde als het
+aanmaken of bewerken van een internet service. <p>
+ 
+Het formulier voor het aanmaken of bewerken van RPC programma's zal altijd op zijn
+minst de volgende velden bevatten :
+	<ul>
+	<li><b>Programma Naam</b><br>
+	    Een unieke naam voor dit RPC programma (met hetzelfde protocol). <p>
+	<li><b>Nummer</b><br>
+	    Ieder RPC programma heeft een uniek programma nummer, dit is bepaald
+	    toen het programma werd geschreven. <p>
+	<li><b>Aliassen</b><br>
+	    Andere namen die kunnen worden gebruikt om te verwijzen naar dit
+            RPC programma. <p>
+	</ul><p>
+
+Sommige besturingssysteem (zoals Solaris) laten het toe dat een server programma
+kan worden geassocieerd met een RPC service. Dit programma zal dan werken met
+<tt>inetd</tt> wanneer het een aanvraag ontvangt voor het programma. <p>
+Indien uw systeem ondersteunt dat RPC server programma's worden gestart door inetd,
+zullen de volgende velden ook zichtbaar zijn :
+	<ul>
+	<li>???
+	</ul>
+ 
+<hr>
+<a href="/"><img alt="<-" align=middle border=0 src=/images/left.gif></a>
+&nbsp;&nbsp;<a href="">Terug naar de module</a><p>
+ 

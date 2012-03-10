@@ -1,0 +1,28 @@
+<header>Toegang Controle Regel</header>
+
+Met deze pagina kunt u een enkele toegang controle regel aanmaken of bewerken.
+Het eerste gedeelte <b>Objecten worden toegekend<b> bepaald aan welke DNs in
+uw database de regel word toegevoegd. U kunt kiezen om te selecteren voor
+<b>Alle objecten</b> voor de gehele database of voor <b>Object met DN</b> voor
+objecten die overeenkomen met wat u invult in het aangrenzende veld. <p>
+
+Het <b>overeenkomende soort</b> menu bepaald of de regel word toegevoegd alleen
+aan dit object, de objecten eronder of dat de DN word behandeld als een reguliere
+expressie. Verder kunt u bepalen welke objecten worden toegekend door het
+invullen van een LDAP filter in het <b>Limiet met object filter</b> veld,
+zoals <i>(objectClass=posixAccount)</i>. <p>
+
+<hr>
+
+Het tweede gedeelte van de pagina is een tabel om te selecteren welke LDAP
+gebruiker toegang hebben tot de objecten. Hier kunt u ook kiezen voor de
+algemene gebruikers klassen in het <b>Toegang toekennen aan</b> menu, of
+u kiest <b>Andere</b> en vult vervolgens een specifieke DN in. <p>
+
+Het <b>Toegang niveau</b> menu bepaald wat deze gebruikers mogen doen met
+de objecten. De lagere en krachtigere niveaus mogen alles doen wat daarboven
+uitgevoerd kan worden, dus een gebruiker met <b>Schrijf</b> toegang mag
+ook <b>Lezen</b> en <b>Zoeken</b>. <p>
+
+<footer>
+

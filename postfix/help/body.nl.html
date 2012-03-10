@@ -1,0 +1,18 @@
+<header>Body Controle</header>
+
+Met de optionele header controle tabel kunt u email omleiden op basis van de inhoud van
+de berichten body. Iedere ingang in de tabel heeft een POSIX reguliere expressie aan de
+linkerkant, en een actie plek aan de rechterkant. <p>
+
+Een reguliere expressie kan lijken op  :<br>
+<tt>/snel.geld.maken/</tt><br>
+om overeenkomende berichten te zoeken met de tekst 'snel.geld.maken'. <p>
+
+De actie die ondernomen moet worden kan lijken op :<br>
+<tt>REJECT</tt> (vertaald-> <tt>WEIGER</tt>)<br>
+om de mail simpelweg te weigeren die ergens mee overeenkomt, of :<br>
+<tt>REDIRECT spam@yourdomain.com</tt> (vertaald-><tt>OMLEIDEN spam@uwdomein.com</tt><br>
+om de mail door te sturen naar een ander adres. <p>
+
+<footer>
+

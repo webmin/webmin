@@ -1,0 +1,57 @@
+index_title=NFS File Delen
+index_add=Start delen van een nieuwe directory.
+index_dir=Directory
+index_clients=Clients
+index_everyone=Iedereen
+index_delete=Verwijder Geselecteerde Mappen
+index_none=Er worden op dit moment geen directory's geëxporteerd op dit systeem.
+index_apply=Veranderingen Toevoegen
+index_applydesc=Klik op deze knop om de huidige configuratie voor file delen toe te voegen. Dit zal alle directorys in de lijst hierboven beschikbaar maken met de gespecificeerde opties.
+index_return=lijst met gedeelde files
+
+edit_title1=Bewerk Gedeelde File
+edit_title2=Maak Gedeelde File
+edit_header1=Gedeelde File details
+edit_dir=Directory
+edit_desc=Omschrijving
+edit_ro=Alleen lezen toegang
+edit_rw=Alleen schrijven toegang
+edit_root=Root toegang
+edit_none=Niemand
+edit_all=Alle hosts
+edit_listed=Hosts in lijst..
+edit_header2=Gedeelde file opties
+edit_nosub=Mounten van subdirs toestaan?
+edit_nosuid=Setuid files toestaan?
+edit_des=Clients moeten DES gebruiken?
+edit_kerberos=Clients moeten kerberos gebruiken?
+edit_anon=Anonieme gebruiker
+edit_anon0=Niet gezet
+edit_anon1=Geen toegang
+edit_aclok=ACLs toestaan?
+edit_public=WebNFS delen?
+edit_index=WebNFS index file
+
+save_err=Mislukt om gedeelde file op te slaan
+save_edirectory='$1' is geen geldige directory naam
+save_edirectory2=De directory '$1' bestaat niet
+save_erw=U heeft geen hosts in de lijst gezet waarmee lezen-schrijven gedeeld kan worden
+save_ero=U heeft geen hosts in de lijst gezet waarmee alleen-lezen gedeeld kan worden
+save_eroot=U heeft geen hosts in de lijst gezet waarmee root gedeeld kan worden
+save_ealready=De directory '$1' word reeds gedeeld
+save_ehost=De host '$1' bestaat niet
+
+log_modify=Gemodificeerde NFS deling $1
+log_rename=Veranderde NFS deling $1 naar $2
+log_create=Gemaakte NFS deling $1
+log_delete=Verwijderde NFS deling $1
+log_apply=Veranderingen toegevoegd
+
+acl_view=Mag NFS delingen bewerken?
+
+ecannot=U bent niet bevoegd om NFS delingen te beheren
+
+delete_err=Mislukt om delingen te verwijderen
+delete_enone=Niets geselecteerd
+
+restart_err=Mislukt om veranderingen toe te voegen

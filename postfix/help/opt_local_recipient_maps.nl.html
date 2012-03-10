@@ -1,0 +1,23 @@
+<header>Weiger onbekende lokale gebruikers</header>
+
+<center><tt>local_recipient_maps</tt></center>
+<hr>
+
+Deze parameter specificeert optionele opzoek tabellen met alle gebruikers die lokaal
+bekend zijn in de <tt>$mydestination</tt> (&quot;welke domeinen mail mogen ontvangen
+&quot;) en <tt>$inet_interfaces</tt> (&quot;netwerk interfaces voor het ontvangen van
+mail&quot;). Indien deze parameter word gedefinieerd, zal de SMTP server mail weigeren
+van onbekende lokale gebruikers.
+
+<p>
+
+Gebruik tabellen met klare gebruikersnamen zoals <tt>unix:passwd.metnaam</tt> en alias
+mappen.
+Voorbeeld : <tt>$alias_maps unix:passwd.metnaam</tt>.
+
+<p>
+
+Let op : indien de Postfix SMTP server chrooted werkt, moet de wachtwoord database
+kopieren in de jail. Dit is wel systeem afhankelijk.
+
+<hr>

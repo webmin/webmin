@@ -1,0 +1,39 @@
+<header>OpenLDAP Server Configuratie</header>
+
+Met deze pagina kunt u de globale instellingen configureren voor uw
+OpenLDAP server, zoals de root DN voor de database, administratie inlog,
+cache grote en de SSL certificaten.
+De meest gebruikte velden zijn :
+
+<dl>
+<dt><b>Root DN voor LDAP database</b>
+<dd>Dit veld is om de DN (correcte naam) in te vullen waaronder alle objecten
+    in uw LDAP database moeten worden opgeslagen. Normaal gesproken zou u dit
+    moeten wijzigen in de naam van uw bedrijf of organisatie,
+    zoals <i>dc=uwbedrijf,dc=com</i>. Maar u bent vrij om hier alles in te
+    wat u wilt zolang het maar in het juiste formaat is. <p>
+
+<dt><b>Administratie DN inlog</b>
+<dd>Dit is de <tt>root</tt> gebruiker van uw LDAP database. Het moet een DN
+    zijn die onder uw root is gezet in het veld hierboven,
+    zoals <i>cn=Manager,dc=uwbedrijf,dc=com</i>. <p>
+
+<dt><b>Administratie wachtwoord</b>
+<dd>Dit veld toont het huidige wachtwoord (mogelijk versleuteld), en een optie
+    om een nieuwe in te vullen. Indien u het wachtwoord verandert zal de module
+    deze automatisch gebruiken zodra u verbinding wilt maken met de database
+    om wijzigingen te gaan maken. <p>
+
+</dl>
+
+Alle wijzigingen die u maakt op deze pagina worden niet eerder actief totdat u
+op de <b>Configuratie Toevoegen</b> knop klikt op de module's hoofd pagina. <p>
+
+Als u wilt dat uw LDAP server TLS versleutelde verbindingen accepteert moet u
+eerst een SSL certificaat en publieke sleutel genereren. Dit kan over het
+algemeen automatisch uitgevoerd worden door te klikken op de 
+<b>Genereer SSL Certificaat</b> knop onderaan deze pagina.
+<p>
+
+<footer>
+

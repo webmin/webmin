@@ -1,0 +1,17 @@
+<header>Maximaal aantal parallelle afleveringen aan dezelfde lokale ontvanger</header>
+
+<center><tt>local_destination_concurrency_limit</tt></center>
+<hr>
+
+Deze parameter limiteert het aantal parallelle afleveringen aan dezelfde lokale
+ontvanger.
+
+<p>
+
+Het standaard limiet word genomen van de <a href=opt_default_destination_concurrency_limit>
+<tt>default_destination_concurrency_limit</tt></a> parameter. De Postfix documentatie
+beveelt een laag limiet aan van 2, voor het geval dat iemand een uitgebreide shell opdracht
+heeft in de <tt>.forward</tt> file of in een alias ( bijvoorbeeld, een mail lijst manager).
+U wilt absoluut niet dat er veel van dit soort dingen aan het werk is op uw systeem.
+
+<hr>

@@ -1,0 +1,32 @@
+<header>Shell om te gebruiken voor levering aan externe opdracht</header>
+
+<center><tt>local_command_shell</tt></center>
+<hr>
+
+Deze parameter bepaald welke shell word gebruikt voor het leveren aan externe
+opdrachten. Standaard worden externe opdrachten direct uitgevoerd : 
+de opdrachten worden alleen gegeven aan <tt>/bin/sh</tt> wanneer deze een shell
+meta karakter bevatten of ingebouwde shell opdrachten.
+
+<p>
+
+Specificeer een andere shell wanneer u meer controle wenst over wat voor soort
+programma's moeten worden uitgevoerd van bijvoorbeeld de <tt>.forward</tt> files. 
+
+<p>
+
+&quot;Sendmail zijn beperkte shell&quot; <tt>smrsh</tt> is wat de meeste mensen
+zullen gebruiken. (<tt>smrsh</tt> is een onderdeel van de recente Sendmail distributies)
+
+<p>
+
+Let op : wanneer er een shell word gespecificeerd, word deze altijd aangeroepen, zelfs als
+de opdracht geen ingebouwde shell opdrachten of meta karakters bevat.
+
+<p>
+
+Voorbeeld : <tt>/some/where/smrsh -c</tt>
+
+<p>
+
+<hr>

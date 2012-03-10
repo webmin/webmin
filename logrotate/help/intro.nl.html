@@ -1,0 +1,40 @@
+<header>Log File Rotatie</header>
+
+Log file rotatie verwijst naar het automatisch afkorten, comprimeren en
+verwijderen van log files zodat ze niet teveel harddisk ruimte in beslag nemen.
+De meeste Unix servers (zoals Apache, Squid en Sendmail) genereren log files,
+net zoals diverse systeem daemons logs aanmaken via Syslog. Deze module kan
+worden gebruikt om het <tt>logrotatie</tt> programma te configureren zodat u al
+deze log files kunt te beheren. <p>
+
+Normaal gesproken zal een log file eenmaal per dag, week of maand geroteerd
+worden. De file word meestal verplaatst met een nieuwe filenaam en word
+gecomprimeerd, en op zijn plaats word er een nieuwe lege file gemaakt.
+Al deze oude log files kunnen worden bewaard zodat u kunt zoeken of rapporten
+kunt genereren van deze log files, zelfs na de rotatie. Zodra het aantal oude
+log files een geconfigureerde limiet overschrijd zullen de oudste worden
+verwijderd. <p>
+
+Iedere log file die word geroteerd staat in een lijst op de module hoofdpagina.
+Iedere log heeft zijn eigen set met opties om te bepalen hoe vaak het geroteerd
+moet worden, hoeveel oude kopieen er moeten worden bewaard enz. enz.
+U kunt de opties van een log file bewerken door te klikken op de filenaam, of
+een nieuwe log file toevoegen door te klikken op de link die zich onderaan- en
+bovenaan de tabel bevind. <p>
+
+Veel Linux distributies gebruiken standaard <tt>logrotatie</tt> en komen met
+standaard configuraties voor het roteren van de log files van de geinstalleerde
+server zoals Apache en Squid. Dus zelfs als u nog nooit deze module gebruikt
+heeft zullen er meestal reeds veel log files op de hoofdpagina staan. <p>
+
+Bijna onderaan de pagina bevind zich een knop om de globale configuratie te
+bewerken die vervolgens word toegevoegd aan alle log files, in bijzondere
+gevallen kan een instelling worden overschreven.
+Daaronder bevind zich een knop om de planning in te stellen wanneer <tt>logrotatie</tt>
+moet worden uitgevoerd door Cron. Dit is noodzakelijk om log files echt te
+kunnen roteren. Op de meeste besturingssysteem waar het programma standaard
+op geinstalleerd is zal er reeds een Cron taak zijn aangemaakt tijdens het
+installatie proces. <p>
+
+<hr>
+

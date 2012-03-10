@@ -1,0 +1,21 @@
+<header>DNS domeinen om op te zoeken in de zwarte lijst</header>
+
+<center><tt>maps_rbl_domains</tt></center>
+<hr>
+
+Deze parameter specificeert een optionele lijst met DNS domeinen waarin de
+netwerk adressen staan van de hosts die op de zwarte lijst staan.
+
+<p>
+
+Standaard is het opzoeken in de RBL zwarte lijst uitgeschakeld. Bekijk de
+<a href=opt_smtpd_client_restrictions><tt>smtpd_client_restrictions</tt></a>
+parameter.
+
+<p>
+
+De real-time zwarte lijst werkt als volgt: omkeren van de client
+netwerk adres, en weiger de service indien het in de lijst staat onder 1
+van de volgende domeinen.
+
+<hr>

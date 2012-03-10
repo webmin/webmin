@@ -1,0 +1,55 @@
+<header>IPsec VPN Configuratie</header>
+
+Met deze module kunt u FreeSWAN configureren, dit is een vrije implementatie van
+het IPsec VPN protocol voor Linux. IPsec kan transparant alle data versleutelen
+wat zich beweegt over 2 netwerken, en anders dan bij andere VPN protocollen maakt
+hij gebruik van IP adressen voor VPN in plaats van nieuwe aan te maken.
+Het word normaal gesproken gebruikt om remote clients toegang te geven tot een
+prive interne LAN vanaf het internet. <p>
+
+Om 2 systemen te laten communiceren met gebruik van IPsec moeten beiden een
+verbinding hebben waar het IP adres in gedefinieerd is, identificeerbare hostnaam,
+RSA sleutel en een prive netwerk (als die er is) voor beide systemen.
+Iedere geconfigureerde zal op de module hoofdpagina verschijnen als een icoon.
+Vaak zijn de configuratie details die u invult wanneer u een verbinding aanmaakt
+hetzelfde op beide systemen, waarbij alleen de <b>lokale</b> en de <b>remote</b>
+sectie word uitgewisseld.
+
+Iedere host die wil communiceren met gebruik van IPsec moet een publieke/prive
+sleutel set hebben voor het gebruik van versleuteling en authenticatie.
+Eider eind van de verbinding moet de publieke sleutel weten van het andere eind
+wat kan worden opgeslagen in de verbinding instellingen of worden opgezocht met
+behulp van een DNS server. De <b>Toon Publieke Sleutel</b> optie van deze module
+kan worden gebruikt om deze host sleutel te tonen. <p>
+
+IPsec is complexer om in te stellen dan andere VPN protocollen, maar is veiliger
+en bekwamer en word gezien als een industrie standaard. Helaas kunt u heel veel
+fouten maken in de instellingen waardoor de verbinding niet tot stand kan komen,
+of onzichtbaar geen data verkeer zal overdragen.
+Deze module zal u beschermen tegen het verkeert instellen van kleine foutjes,
+echter het kan niet voorkomen dat er nergens fouten zullen kunnen voorkomen. <p>
+
+<hr>
+
+Op de hoofd pagina van deze module bevinden zich iconen van bestaande IPsec
+verbindingen en een link om nieuwe te maken, in beide situaties zult u een
+formulier met verbinding details krijgen als u erop klikt.
+Daaronder bevinden zich iconen waardoor u globale instellingen kunt bewerken
+(zoals de netwerk interface die u wilt gebruiken), en word u de publieke
+sleutel getoond van het systeem. <p>
+
+Indien u FreeSWAN versie 2 gebruikt ziet u ook iconen voor het bewerken van
+diverse beleid files die bepalen wat voor soort verbinding (versleuteld 
+of normaal) zal worden gebruikt voor de netwerken. Normaal gesproken hoeft
+u niets te veranderen omdat de standaard die aanstaat bepaald om te
+versleutelen indien mogelijk. <p>
+
+Aan de onderkant van de pagina bevinden zich knoppen om het FreeSWAN server
+proces te starten en te stoppen, en de huidige instellingen toe te voegen
+als hij aan het werk is. Uw systeem zal geen IPsec verbindingen kunnen maken
+of ontvangen totdat de server actief is. De <b>Start Verbinding</b> knop in
+deze sectie kan worden gebruikt om een IPsec tunnel te forceren die niet
+automatisch is gestart toen de server werd gestart. <p>
+
+<hr>
+

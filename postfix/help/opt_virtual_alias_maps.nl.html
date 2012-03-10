@@ -1,0 +1,24 @@
+<header>Domein mapping opzoek tabellen</header>
+
+<center><tt>virtual_maps</tt></center>
+<hr>
+
+Deze parameter specificeert optionele opzoek tabellen om specifieke adressen 
+of zelfs complete domeinen om te leiden naar een ander adres. Dit word normaal
+gesproken gebruikt om virtuele domein ondersteuning te implementeren.
+
+<p>
+
+Standaard word er geen adres omleiding uitgevoerd. 
+
+<p>
+
+Voorbeelden:
+<ul>
+<li><tt>dbm:/etc/postfix/virtual</tt>
+<li><tt>hash:/etc/postfix/virtual</tt>
+<li><tt>hash:/etc/postfix/virtual, nis:virtual</tt>
+<li><tt>hash:/etc/postfix/virtual, netinfo:/virtual</tt>
+</ul>
+
+<hr>

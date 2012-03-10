@@ -1,0 +1,18 @@
+<header>Header Controles</header>
+
+De optionele header controle tabel geeft de mogelijkheid om email om te leiden aan de hand van de header. Iedere
+ingang in de tabel heeft een POSIX reguliere expressie aan de linkerkant, en een actie aan de rechterkant. <p>
+
+De reguliere expressie kan bijvoorbeeld dit zijn :<br>
+<tt>/name=[^>]*\.(bat|cmd|exe|com|pif|reg|scr|vb|vbe|vbs)/</tt><br>
+om overeen te komen met bijlages waarvan de filenamen eindigen met extensies wat erg gevaarlijke Windows .exe
+programma's kunnen zijn. <p>
+
+De actie kan bijvoorbeeld dit zijn :<br>
+<tt>REJECT</tt> vertaald-> <tt>WEIGER</tt><br>
+om gewoon deze mail te weigeren die overeenkomt met de expressie, of :<br>
+<tt>REDIRECT spam@uwdomein.com</tt> vertaald-><tt>OMLEIDEN spam@uwdomein.com</tt><br>
+Om deze mail door te sturen naar een ander adres. <p>
+
+<footer>
+

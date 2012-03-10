@@ -1,0 +1,37 @@
+<header>Lezen-Schrijven Toegang</header>
+
+Dit bepaald welke hosts alleen-lezen toegang hebben tot deze gedeelde directory's.
+Er zijn 3 keuzes voor deze optie:
+<ul>
+<li><b>Niets</b><br>
+    Geen enkele hosts heeft lezen-schrijven toegang.
+<li><b>Alle hosts</b><br>
+    Iedere host kan alleen-lezen directory's mounten. Indien u bent verbonden met het
+    Internet, betekend dit dat iedereen in de wereld deze files kan lezen, schrijven en
+    verwijderen in de geëxporteerde directory. Gebruik deze optie zeer voorzichtig.
+<li><b>Hosts in de lijst</b><br>
+<if $gconfig{'os_version'} < 7>
+    De hosts of IP adressen in de lijst hieronder kunnen deze lezen-schrijven directory's
+    mounten.
+<else>
+    Overeenkomende hosts in de lijst hieronder kunnen deze lezen-schrijven directory's
+    mounten. Hosts kunnen als volgt worden gespecificeerd :<p>
+	<dl>
+	<dt><b>Hostnaam of IP adres</b> (zoals <i>ftp.foo.com</i> of <i>1.2.3.4</i>)
+	<dd>Komt overeen met de host met de opgegeven naam of adres.
+	<dt><b>Netgroep</b> (zoals <i>engineering</i>)
+	<dd>Komt overeen met iedere host die lid is van de netgroep.
+	<dt><b>DNS domein</b> (zoals <i>.foo.com</i>)
+	<dd>Komt overeen met iedere host in het domein
+	<dt><b>Netwerk</b> (zoals <i>@10.254.1</i>)
+	<dd>Komt overeen met iedere host in het netwerk
+	<dt><b>Netwerk/netmask</b> (zoals <i>@10.254.1/24</i>)
+	<dd>Komt overeen met iedere host in het netwerk
+	</dl><p>
+    Als extra kunt u bovenstaande notaties een toevoeging geven met een <i>-</i>,
+    wat betekend dat de host, netgroep, domein of netwerk het <b>niet</b> is toegestaan
+    om deze directory's of files te mounten. Dit kan handig zijn indien u een
+    aantal hosts toegang wilt verlenen en een enkel lid wilt weigeren.
+</if>
+</ul>
+<hr>

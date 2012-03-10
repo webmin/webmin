@@ -1,0 +1,27 @@
+<header>Adres mapping opzoek tabellen</header>
+
+<center><tt>canonical_maps</tt></center>
+<hr>
+
+Deze parameter specificeert een optionele adres mapping opzoek tabel. De mapping
+word zowel aan de afzender als aan het ontvanger adres toegevoegd, zowel in de
+enveloppen als in de headers. Dit word normaal gesproken altijd gebruikt om
+vuile of foute adressen op te schonen die een nalatenschap waren van een ander
+email systeem, of om inlog namen te vervangen door <tt>Voornaam.Achternaam</tt>.
+Bekijk de <a href=canonical>Canonical Mapping</a> voor meer details.
+
+<p>
+
+Standaard word er geen canonical adres mapping uitgevoerd.
+
+<p>
+
+Verstandige mogelijke waarden zijn :
+<ul>
+<li> <tt>dbm:/etc/postfix/canonical</tt> 
+<li> <tt>hash:/etc/postfix/canonical</tt> 
+<li> <tt>hash:/etc/postfix/canonical, nis:canonical</tt> 
+<li> <tt>hash:/etc/postfix/canonical, netinfo:/canonical</tt> 
+</ul>
+
+<hr>

@@ -1,0 +1,22 @@
+<header>SMTP server reactie op een fqdn inbreuk</header>
+
+<center><tt>non_fqdn_reject_code</tt></center>
+<hr>
+
+Deze parameter specificeert de SMTP server reactie code wanneer een email inbreuk maakt op de
+<tt>reject_non_fqdn_hostname</tt> of <tt>reject_non_fqdn_sender</tt>
+of <tt>reject_non_fqdn_recipient</tt> regel, dit zijn:<br>
+<i>Toegang geweigerd: Ongeldig domein voor de client HELO hostnaam, afzender of ontvanger email adres (niet FQDN)</i><br>
+<br>
+Let op dat de Postfix standaard waarde die gebruikt word voor de <tt>non_fqdn_reject_code</tt> is
+code 504, en deze code in de 'standaard RFC 822' betekend normaal gesproken 
+'Opdracht parameter is niet geïmplementeerd'.
+Dus zodra Postfix een melding maakt met de <tt>non_fqdn_reject_code</tt> melding betekent deze inbreuk niet
+precies hetzelfde als de RFC822 uitleg van de gerapporteerde code.<br>
+<p>
+Om verwarring te voorkomen kunt u dit bijvoorbeeld veranderen in code 578. Verandert u dit niet als u niet
+volledig op de hoogte bent van RFC 822.
+</p>
+
+
+<hr>

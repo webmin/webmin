@@ -1,0 +1,25 @@
+<header>Introductie van NFS Shares</header>
+
+<include nfs>
+
+<h3>Solaris NFS</h3>
+Met deze module kunt u directory's configureren die <i>shares</i>
+genoemd worden in Solaris en geëxporteerd zijn via NFS vanaf uw Solaris
+systeem. De eerste pagina toont een lijst met directory's en clients
+waarnaar ze geëxporteerd zijn, u kunt klikken op een directory naam
+om opties te bewerken of een nieuwe directory aanmaken om deze te delen. <p>
+
+Onderaan de lijst op de eerste pagina bevind zich een knop waarmee u
+de huidige configuratie actief kunt maken. Dit word gedaan door de
+lopende NFS processen te stoppen en te starten. <p>
+
+Solaris staat niet toe dat u een NFS ge-mounten directory opnieuw exporteert
+van een andere server - alleen directory's van lokale file systemen kunnen
+worden geëxporteerd. Indien een gedeelde directory een mount punt heeft van
+een ander lokaal file systeem zullen NFS clients van die gedeelde directory
+geen files kunnen zien onder dit mount punt. De server moet ieder lokaal
+filesysteem gescheiden en opnieuw exporteren zodat ze ge-mount kunnen worden
+op het juiste punt in de directory hiërarchie. <p>
+
+<hr>
+

@@ -1,0 +1,24 @@
+<header>SMTP server reactie op verboden doorsturen</header>
+
+<center><tt>relay_domains_reject_code</tt></center>
+<hr>
+Deze parameter specificeert de SMTP server reactie code wanneer een email de
+<tt>relay_domains_reject</tt> regel overtreed, met:<br>
+<i>Access denied: Relay not authorized or not local host not a gateway</i><br>
+<i>Toegang geweigerd: Doorgeven is niet toegestaan of locale host is geen gateway</i><br>
+<br>
+
+
+Note: dat de Postfix standaard waarde die gebruikt word voor <tt>relay_domains_reject_code</tt>
+code 554 is, en dat deze code in de 'standaard RFC 822' normaal gesproken betekent
+'Opgevraagde email actie verworpen: toegang geweigerd'.
+Dus een Postfix, <tt>relay_domains_reject</tt> overtreding van de regel reflecteerd niet
+precies de RFC822 uitleg van de gegeven code.<br>
+
+<p>
+Om verwarring te voorkomen kunt u beter deze waarde wijzigen in bijvoorbeeld 572.
+Een andere reden is dat code 554 ook de standaard Postfix waarde is voor allerhande foutmeldingen.
+Let wel op, ga geen zaken wijzigen als u geen volledige kennis heeft van RFC 822.
+</p>
+
+<hr>

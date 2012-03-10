@@ -1,0 +1,20 @@
+<header>SMTP antwoord van de server op de af te wijzen client</header>
+
+<center><tt>reject_code (afwijs_code)</tt></center>
+<hr>
+
+Deze parameter specificeerd de SMTP server reactie wanneer een client de <tt>smtpd_client_restrictions</tt>
+regel overtreed, en die is:<br>
+<i>Toegang geweigerd: SMTP client hostnaam geweigerd</i><br>
+<br>
+Let op dat de standaard postfix waarde die voor de <tt>reject_code</tt> gebruikt word code 554 is,
+en deze code in de 'standaard RFC 822' betekent 'Aangevraagde mail actie geweigerd: toegang geweigerd'.
+Dus een Postfix, <tt>smtpd_client_restrictions</tt> regel overtreding reflecteerd niet precies de
+RFC822 uitleg van de gerapporteerde code.<br>
+<p>
+Om verwarring te voorkomen kunt u dit veranderen bijvoorbeeld naar 575 (een andere reden is dat de
+code 554 een standaard waarde is voor allerhande fouten), In alle gevallen moet u deze waarde niet
+veranderen als u geen volledig begrip heeft van RFC 822.
+</p>
+
+<hr>

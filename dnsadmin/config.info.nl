@@ -1,0 +1,9 @@
+line1=Configureerbare opties,11
+show_list=Toon domeinen als,1,0-Iconen,1-Lijst
+soa_style=Serie nummer stijl,1,0-Lopend nummer,1-Op Datum basis (JJJJMMDDnn)
+records_order=Volgorde om records in te tonen,1,1-Alfabetisch,0-Als toevoeging
+updserial_on=Serie nummers algemeen afhandelen,1,0-Nee,1-Ja
+line2=Systeem configuratie,11
+named_boot_file=Primaire configuratie file,0
+named_pid_file=Proces ID file,3,Geen
+named_pathname=Volledig pad opnoemen,0

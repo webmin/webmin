@@ -1,0 +1,23 @@
+<header>Introductie van NFS bestanden delen</header>
+
+<include nfs>
+
+<h3>Linux NFS</h3>
+Met deze module kunt u directory's in (Linux genoemd <i>exports</i>) delen
+via NFS met uw systeem. De eerste pagina toont een lijst met directory's
+en de clients waarnaar die geëxporteerd worden, hier kunt u tevens op een
+client klikken om zijn opties te bewerken of kunt u een nieuwe directory
+gereed maken om te exporteren. <p>
+
+Onder de lijst met gedeelde zaken op de eerste pagina bevind zich een knop
+waarmee u de huidige configuratie actief kunt maken. De actie die u hiermee
+uitvoert is het stoppen en opnieuw starten van alle lopende NFS processen. <p>
+
+Indien een directory en 1 van zijn sub-directory's word geëxporteerd zullen
+de opties van de primaire directory worden toegevoegd aan de clients.
+Bijvoorbeeld, als de <tt>/usr</tt> en <tt>/usr/local</tt> beide worden
+geëxporteerd zal een client die <tt>/usr/local/bin</tt> opent de opties
+krijgen van de <tt>/usr/local</tt> export. <p>
+
+<hr>
+

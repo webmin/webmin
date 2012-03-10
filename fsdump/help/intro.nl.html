@@ -1,0 +1,22 @@
+<header>Filesysteem Backup</header>
+
+Met deze module kunt u gehele filesystemen back-uppen of herstellen met gebruik
+van de <tt>dump</tt> en <tt>restore</tt> opdrachten. Filesystemen worden
+normaal gesproken geback-upt naar een tape, echter u kunt ze ook maken naar
+een file of een een ander filesysteem indien u geen tape apparaat heeft. <p>
+
+Op sommige besturingssystemen zal hiervoor de <tt>tar</tt> opdracht worden
+gebruikt wanneer u een backup maakt naar een filesysteem die niet de native
+<tt>dump</tt> opdracht kan gebruiken.
+Bijvoorbeeld, NFS, FAT en Reiserfs hebben geen specifieke filesysteem backup
+opdrachten.
+Het <tt>tar</tt> formaat kan niet zulke geavanceerde file informatie opslaan,
+zoals CLs, EXT en XFS attributen, daarom geeft het de voorkeur om de <tt>dump</tt>
+opdracht te geven waar dit mogelijk is. <p>
+
+De hoofdpagina van de module bevat een lijst met geconfigureerde back-ups
+(indien die er zijn), een knop om een nieuwe backup toe te voegen en een knop
+om een backup te herstellen van sommige soorten filesystemen. <p>
+
+<hr>
+

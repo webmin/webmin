@@ -1,0 +1,36 @@
+<header>Bestemming adres voor onbekende ontvangers</header>
+
+<center><tt>luser_relay</tt></center>
+<hr>
+
+Deze parameter specificeert een optioneel bestemming adres voor onbekende
+ontvangers. Standaard word de mail voor onbekende lokale ontvangers afgeketst.
+
+<p>
+
+De onderstaande uitbreidingen worden uitgevoerd : 
+
+<ul>
+<li><tt>$user</tt> (ontvanger gebruikersnaam), 
+<li><tt>$shell</tt> (ontvanger shell), 
+<li><tt>$home</tt> (ontvanger home directory),
+<li><tt>$recipient</tt> (volledig ontvanger adres), 
+<li><tt>$extension</tt> (ontvanger adres extensie), 
+<li><tt>$domain</tt> (ontvanger domein), 
+<li><tt>$local</tt> (volledig ontvanger lokale gedeelte), 
+<li><tt>$recipient_delimiter</tt>.
+</ul>
+
+Specificeer <tt>${naam?waarde}</tt> of <tt>${naam:waarde}</tt> om de waarde uit te
+breiden wanneer de <tt>$naam</tt> wel of niet bestaat.
+
+<p>
+
+Voorbeelden :
+<ul>
+<li><tt>$user@other.host</tt>
+<li><tt>$local@other.host</tt>
+<li><tt>admin+$local</tt>
+</ul>
+
+<hr>
