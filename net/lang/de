@@ -1,3 +1,4 @@
+__norefs=1
 acl_apply=Darf Konfiguartion anwenden?
 acl_bootonly=Kann aktive Schnittstellen editieren?
 acl_broadcast=Kann Broadcast editieren
@@ -197,6 +198,8 @@ mod_pptpc=die PPTP Verbindung $1
 mod_pptps=eine PPTP-Verbindung vom Client $1
 mod_title=Aktives Interface
 mod_virtualmin=der Virtualmin Server <tt>$1</tt>
+range_ebefore=Die Endadresse muss h&#246;her sein als die Startadresse
+range_eclass=Start und Endadressen m&#252;ssen in der gleichen Klasse-C-Netzwerk sein
 range_edit=Editiere Adressbereich
 range_eend=Fehlende oder ung&#252;ltig endende IP-Adresse
 range_ename=Fehlender oder ung&#252;ltiger Bereichsname
