@@ -278,7 +278,7 @@ if ($gconfig{'debug_what_sql'}) {
 		}
 	&webmin_debug_log('SQL', "db=$_[0] sql=$sql".$params);
 	}
-if ($sql !~ /^\s*\\/) {
+if ($sql !~ /^\s*\\/ && !$main::disable_postgresql_escaping) {
 	$sql =~ s/\\/\\\\/g;
 	}
 if ($driver_handle &&

@@ -8,6 +8,7 @@ $access{'users'} || &error($text{'user_ecannot'});
 @d = split(/\0/, $in{'d'});
 @d || &error($text{'user_enone'});
 
+$main::disable_postgresql_escaping = 1;
 foreach $u (@d) {
 	&execute_sql_logged($config{'basedb'}, "drop user \"$u\"");
 	}

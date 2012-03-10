@@ -9,6 +9,7 @@ $access{'users'} || &error($text{'user_ecannot'});
 
 if ($in{'delete'}) {
 	# just delete the user
+	$main::disable_postgresql_escaping = 1;
 	&execute_sql_logged($config{'basedb'}, "drop user \"$in{'user'}\"");
 	&webmin_log("delete", "user", $in{'user'});
 	}
