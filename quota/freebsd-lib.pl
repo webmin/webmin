@@ -152,7 +152,9 @@ $n=0; while(<QUOTA>) {
 	if (/^(\S+)$/) {
 		# Bogus wrapped line
 		$filesys{$n,'filesys'} = $1;
-		<QUOTA>=~/^.{15}(.{8}).(.{7})(.{8}).{8}(.{8}).(.{7})(.{8})/;
+		local $nl = <QUOTA>;
+		$nl =~ /^\s+(\S+)\s+(\S+)\s+(\S+)(.{8}\s+)(\S+)\s+(\S+)\s+(\S+)(.*)/ ||
+		  $nl =~ /^.{15}(.{8}).(.{7})(.{8}).{8}(.{8}).(.{7})(.{8})/;
 		$filesys{$n,'ublocks'} = int($1);
 		$filesys{$n,'sblocks'} = int($2);
 		$filesys{$n,'hblocks'} = int($3);
@@ -161,7 +163,8 @@ $n=0; while(<QUOTA>) {
 		$filesys{$n,'hfiles'} = int($6);
 		$n++;
 		}
-	elsif (/^(.{15})(.{8}).(.{7})(.{8}).{8}(.{8}).(.{7})(.{8})/) {
+	elsif (/^\s*(\S+)\s+(\S+)\s+(\S+)\s+(\S+)(.{8}\s+)(\S+)\s+(\S+)\s+(\S+)(.*)/ ||
+	       /^(.{15})(.{8}).(.{7})(.{8}).{8}(.{8}).(.{7})(.{8})/) {
 		$filesys{$n,'ublocks'} = int($2);
 		$filesys{$n,'sblocks'} = int($3);
 		$filesys{$n,'hblocks'} = int($4);
