@@ -17,11 +17,8 @@ if (!&has_command($config{'sarg'})) {
 	}
 
 # Get the version
-$out = `$config{'sarg'} -v 2>&1 </dev/null`;
-if ($out =~ /sarg-([0-9\.]+)\s/ || $out =~ /Version:\s*([0-9\.]+)/i) {
-	$sarg_version = $1;
-	}
-else {
+$sarg_version = &get_sarg_version();
+if (!$sarg_version) {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 	&ui_print_endpage(
 		&text('index_eversion',

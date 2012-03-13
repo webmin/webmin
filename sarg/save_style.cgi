@@ -8,8 +8,10 @@ $config_prefix = "style_";
 &error_setup($text{'style_err'});
 
 &lock_sarg_files();
-&save_language($conf, "language");
-&save_language($conf, "charset");
+if (&get_sarg_version() < 2.3) {
+	&save_language($conf, "language");
+	&save_language($conf, "charset");
+	}
 &save_opt_textbox($conf, "title", \&check_title);
 &save_opt_textbox($conf, "title_color", \&check_colour);
 &save_opt_textbox($conf, "font_face", \&check_font);

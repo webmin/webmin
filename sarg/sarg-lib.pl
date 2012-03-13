@@ -491,5 +491,14 @@ sub unlock_sarg_files
 &unlock_file($config{'sarg_conf'});
 }
 
+sub get_sarg_version
+{
+local $out = &backquote_command("$config{'sarg'} -v 2>&1 </dev/null");
+if ($out =~ /sarg-([0-9\.]+)\s/ || $out =~ /Version:\s*([0-9\.]+)/i) {
+	return $1;
+	}
+return undef;
+}
+
 1;
 

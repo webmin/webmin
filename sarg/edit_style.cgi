@@ -9,12 +9,13 @@ print &ui_form_start("save_style.cgi", "post");
 print &ui_table_start($text{'style_header'}, "width=100%", 4);
 $config_prefix = "style_";
 
-print &config_language($conf, "language", 3,
-		       "$module_root_directory/languages");
-print &config_language($conf, "charset", 3,
-		       "$module_root_directory/charsets");
-
-print &ui_table_hr();
+if (&get_sarg_version() < 2.3) {
+	print &config_language($conf, "language", 3,
+			       "$module_root_directory/languages");
+	print &config_language($conf, "charset", 3,
+			       "$module_root_directory/charsets");
+	print &ui_table_hr();
+	}
 
 print &config_opt_textbox($conf, "title", 40, 3);
 print &config_opt_textbox($conf, "title_color", 20, 3);
