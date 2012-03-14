@@ -120,6 +120,7 @@ net_notsend=Don't send any
 net_every=Send every
 net_maxpacket=Maximum packet size
 net_listen=Listen on address
+net_ip=IP address
 net_socket=Socket options
 
 passwd_title=Password Options
