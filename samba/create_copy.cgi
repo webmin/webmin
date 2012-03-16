@@ -11,21 +11,19 @@ require './samba-lib.pl';
  
 &ui_print_header(undef, $text{'create_title'}, "");
 
-print $text{'create_msg'};
-print "<p>\n";
-print "<form action=save_copy.cgi>\n";
-print "<table>\n";
-print "<tr> <td><b>$text{'create_from'}</b></td>\n";
-print "<td><select name=copy>\n";
-foreach $c (&list_shares()) {
-	if ($c eq "global") { next; }
-	print "<option>$c\n";
-	}
-print "</select></td> </tr>\n";
-print "<tr> <td><b>$text{'create_name'}</b></td>\n";
-print "<td><input size=15 name=name></td> </tr>\n";
-print "</table>\n";
-print "<input type=submit value=$text{'create'}></form><p>\n";
+print $text{'create_msg'},"<p>\n";
+
+print &ui_form_start("save_copy.cgi", "post");
+print &ui_table_start(undef, undef, 2);
+
+print &ui_table_row($text{'create_from'},
+	&ui_select("copy", undef, [ grep { $_ ne "global" } &list_shares() ]));
+
+print &ui_table_row($text{'create_name'},
+	&ui_textbox("name", undef, 20));
+
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'create'} ] ]);
 
 &ui_print_footer("", $text{'index_sharelist'});
 

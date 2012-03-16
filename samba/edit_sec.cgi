@@ -20,116 +20,86 @@ else {
 	}
 &get_share($s);
 
-print "<form action=save_sec.cgi>\n";
-print "<input type=hidden name=old_name value=\"$s\">\n";
-print "<input type=hidden name=printer value=\"$in{'printer'}\">\n";
+print &ui_form_start("save_sec.cgi", "post");
+print &ui_hidden("old_name", $s);
+print &ui_hidden("printer", $in{'printer'});
+print &ui_table_start($text{'share_security'}, undef, 2);
 
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'share_security'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_table_row($text{'sec_writable'},
+	&yesno_input("writeable"));
 
-print "<tr> <td align=right><b>$text{'sec_writable'}</b></td>\n";
-print "<td>",&yesno_input("writeable"),"</td>\n";
+print &ui_table_row($text{'sec_guest'},
+	&ui_radio("guest", &istrue("public") && &istrue("guest only") ? 2 :
+			   &istrue("public") && !&istrue("guest only") ? 1 : 0,
+		  [ [ 0, $text{'config_none'} ],
+		    [ 1, $text{'yes'} ],
+		    [ 2, $text{'sec_guestonly'} ] ]));
 
-print "<td align=right><b>$text{'sec_guest'}</b></td>\n";
-printf "<td><input type=radio name=guest value=0 %s> $text{'config_none'}\n",
-	&istrue("public") ? "" : "checked";
-printf "<input type=radio name=guest value=1 %s> $text{'yes'}\n",
-	&istrue("public") && !&istrue("guest only") ? "checked" : "";
-printf "<input type=radio name=guest value=2 %s> $text{'sec_guestonly'}</td> </tr>\n",
-	&istrue("public") && &istrue("guest only") ? "checked" : "";
+print &ui_table_row($text{'sec_guestaccount'},
+	&username_input("guest account", "Default"));
 
-print "<tr> <td align=right><b>$text{'sec_guestaccount'}</b></td>\n";
-&username_input("guest account", "Default");
+print &ui_table_row($text{'sec_limit'},
+	&yesno_input("only user"));
 
-print "<td align=right><b>$text{'sec_limit'}</b></td>\n";
-print "<td>",&yesno_input("only user"),"</td> </tr>\n";
+print &ui_table_row($text{'sec_allowhost'},
+	&ui_opt_textbox("allow_hosts", &getval("allow hosts"), 60,
+			$text{'config_all'}, $text{'sec_onlyallow'}));
 
-print "<tr> <td align=right><b>$text{'sec_allowhost'}</b></td>\n";
-printf "<td colspan=3><input type=radio name=allow_hosts_all value=1 %s> $text{'config_all'}\n",
-	&getval("allow hosts") eq "" ? "checked" : "";
-print "&nbsp;&nbsp;\n";
-printf "<input type=radio name=allow_hosts_all value=0 %s> $text{'sec_onlyallow'}:\n",
-	&getval("allow hosts") eq "" ? "" : "checked";
-printf "<input name=allow_hosts size=35 value=\"%s\"></td> </tr>\n",
-	&getval("allow hosts");
+print &ui_table_row($text{'sec_denyhost'},
+	&ui_opt_textbox("deny_hosts", &getval("deny hosts"), 60,
+			$text{'config_none'}, $text{'sec_onlydeny'}));
 
-print "<tr> <td align=right><b>$text{'sec_denyhost'}</b></td>\n";
-printf "<td colspan=3><input type=radio name=deny_hosts_all value=1 %s> $text{'config_none'}\n",
-	&getval("deny hosts") eq "" ? "checked" : "";
-print "&nbsp;&nbsp;\n";
-printf "<input type=radio name=deny_hosts_all value=0 %s> $text{'sec_onlydeny'}:\n",
-	&getval("deny hosts") eq "" ? "" : "checked";
-printf "<input name=deny_hosts size=35 value=\"%s\"></td> </tr>\n",
-	&getval("deny hosts");
+print &ui_table_row($text{'sec_revalidate'},
+	&yesno_input("revalidate"));
 
-print "<tr> <td align=right><b>$text{'sec_revalidate'}</b></td>\n";
-print "<td>",&yesno_input("revalidate"),"</td> </tr>\n";
+foreach $f ("valid users", "invalid users") {
+	@user = &split_users(&getval($f));
+	($uf = $f) =~ s/ /_/g;
+	($pfx) = split(/\s+/, $f);
+	print &ui_table_row($text{'sec_'.$pfx.'user'},
+		&ui_textbox($uf."_u",
+			    join(' ', grep { !/^@/ } @user), 60)." ".
+		&user_chooser_button($uf."_u", 1));
 
-@valid_users = &split_users(&getval("valid users"));
-print "<tr> <td align=right><b>$text{'sec_validuser'}</b></td> <td colspan=3>\n";
-printf "<input name=valid_users_u size=60 value='%s'> %s</td> </tr>\n",
-	join(' ', grep { !/^@/ } @valid_users),
-	&user_chooser_button("valid_users_u", 1);
-print "<tr> <td align=right><b>$text{'sec_validgroup'}</b></td> <td colspan=3>\n";
-printf "<input name=valid_users_g size=60 value='%s'> %s</td> </tr>\n",
-	join(' ', map { s/@//;$_ } grep { /^@/ } @valid_users),
-	&group_chooser_button("valid_users_g", 1);
+	print &ui_table_row($text{'sec_'.$pfx.'group'},
+		&ui_textbox($uf."_g", join(' ', map { s/@//; $_ } grep { /^@/ } @user), 60)." ".
+		&group_chooser_button($uf."_g", 1));
+	}
 
-@invalid_users = &split_users(&getval("invalid users"));
-print "<tr> <td align=right><b>$text{'sec_invaliduser'}</b></td> <td colspan=3>\n";
-printf "<input name=invalid_users_u size=60 value='%s'> %s</td> </tr>\n",
-	join(' ', grep { !/^@/ } @invalid_users),
-	&user_chooser_button("invalid_users_u", 1);
-print "<tr> <td align=right><b>$text{'sec_invalidgroup'}</b></td> <td colspan=3>\n";
-printf "<input name=invalid_users_g size=60 value='%s'> %s</td> </tr>\n",
-	join(' ', map { s/@//;$_ } grep { /^@/ } @invalid_users),
-	&group_chooser_button("invalid_users_g", 1);
+print &ui_table_hr();
 
-print "<tr> <td colspan=4><hr></td> </tr>\n";
+foreach $fp ([ "user", "possible" ],
+	    [ "read list", "ro" ],
+	    [ "write list", "rw" ]) {
+	($f, $pfx) = @$fp;
+	($uf = $f) =~ s/ /_/g;
+	@user = &split_users(&getval($f));
+	print &ui_table_row($text{'sec_'.$pfx.'user'},
+		&ui_textbox($uf."_u", join(' ', grep { !/^@/ } @user), 60)." ".
+		&user_chooser_button($uf."_u"));
+	print &ui_table_row($text{'sec_'.$pfx.'group'},
+		&ui_textbox($uf."_g", join(' ', map { s/@//;$_ } grep { /^@/ } @user), 60)." ".
+		&group_chooser_button($uf."_g"));
+	}
 
-@user = &split_users(&getval("user"));
-print "<tr> <td align=right><b>$text{'sec_possibleuser'}</b></td> <td>\n";
-printf "<input name=user_u size=30 value='%s'> %s</td>\n",
-	join(' ', grep { !/^@/ } @user),
-	&user_chooser_button("user_u", 1);
-print "<td align=right><b>$text{'sec_possiblegroup'}</b></td> <td colspan=3>\n";
-printf "<input name=user_g size=30 value='%s'> %s</td> </tr>\n",
-	join(' ', map { s/@//;$_ } grep { /^@/ } @user),
-	&group_chooser_button("user_g", 1);
+print &ui_table_end();
 
-@read_list = &split_users(&getval("read list"));
-print "<tr> <td align=right><b>$text{'sec_rouser'}</b></td> <td>\n";
-printf "<input name=read_list_u size=30 value='%s'> %s</td>\n",
-	join(' ', grep { !/^@/ } @read_list),
-	&user_chooser_button("read_list_u", 1);
-print "<td align=right><b>$text{'sec_rogroup'}</b></td> <td colspan=3>\n";
-printf "<input name=read_list_g size=30 value='%s'> %s</td> </tr>\n",
-	join(' ', map { s/@//;$_ } grep { /^@/ } @read_list),
-	&group_chooser_button("read_list_g", 1);
-
-@write_list = &split_users(&getval("write list"));
-print "<tr> <td align=right><b>$text{'sec_rwuser'}</b></td> <td>\n";
-printf "<input name=write_list_u size=30 value='%s'> %s</td>\n",
-	join(' ', grep { !/^@/ } @write_list),
-	&user_chooser_button("write_list_u", 1);
-print "<td align=right><b>$text{'sec_rwgroup'}</b></td> <td>\n";
-printf "<input name=write_list_g size=30 value='%s'> %s</td> </tr>\n",
-	join(' ', map { s/@//;$_ } grep { /^@/ } @write_list),
-	&group_chooser_button("write_list_g", 1);
-
-print "</table><table border width=100%>\n";
-
-print "</table> </td></tr></table><p>\n";
-print "<input type=submit value=$text{'save'}>" 
-	if &can('wS', \%access, $in{'share'});
-print "</form>\n";
-
-if (&istrue("printable") || $in{'printer'}) {
-	&ui_print_footer("edit_pshare.cgi?share=".&urlize($s), $text{'index_printershare'}, "", $text{'index_sharelist'});
+if (&can('wS', \%access, $in{'share'})) {
+	print &ui_form_end([ [ undef, $text{'save'} ] ]);
 	}
 else {
-	&ui_print_footer("edit_fshare.cgi?share=".&urlize($s), $text{'index_fileshare'}, "", $text{'index_sharelist'});
+	print &ui_form_end();
+	}
+
+if (&istrue("printable") || $in{'printer'}) {
+	&ui_print_footer("edit_pshare.cgi?share=".&urlize($s),
+			 $text{'index_printershare'},
+			 "", $text{'index_sharelist'});
+	}
+else {
+	&ui_print_footer("edit_fshare.cgi?share=".&urlize($s),
+			 $text{'index_fileshare'},
+			 "", $text{'index_sharelist'});
 	}
 
 

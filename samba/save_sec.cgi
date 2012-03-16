@@ -40,11 +40,11 @@ else {
 &setval("write list",
 	join(',', &split_input($in{'write_list_u'}),
 		  &split_input($in{'write_list_g'}, '@')));
-if (!$in{allow_hosts_all} && $in{allow_hosts} =~ /\S/) {
+if (!$in{allow_hosts_def} && $in{allow_hosts} =~ /\S/) {
 	&setval("allow hosts", $in{allow_hosts});
 	}
 else { &delval("allow hosts"); }
-if (!$in{deny_hosts_all} && $in{deny_hosts} =~ /\S/) {
+if (!$in{deny_hosts_def} && $in{deny_hosts} =~ /\S/) {
 	&setval("deny hosts", $in{deny_hosts});
 	}
 else { &delval("deny hosts"); }
