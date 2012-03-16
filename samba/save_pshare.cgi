@@ -7,6 +7,18 @@ require './samba-lib.pl';
 &lock_file($config{'smb_conf'});
 &get_share($in{old_name}) if $in{old_name};
 
+if ($in{'view'}) {
+	# Redirect to view connections page
+	&redirect("view_users.cgi?share=".&urlize($in{'share'})."&printer=1");
+	exit;
+	}
+elsif ($in{'delete'}) {
+	# Redirect to delete form
+	&redirect("delete_share.cgi?share=".&urlize($in{'share'}).
+		  "&type=pshare");
+	exit;
+	}
+
 # check acls
 
 &error_setup("<blink><font color=red>$text{'eacl_aviol'}</font></blink>");

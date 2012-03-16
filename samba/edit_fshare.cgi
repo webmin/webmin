@@ -25,83 +25,75 @@ else {
 	&ui_print_header(undef, $text{'share_title3'}, "");
 	}
 
-print "<form action=save_fshare.cgi>\n";
-if ($s) { print "<input type=hidden name=old_name value=\"$s\">\n"; }
+print &ui_form_start("save_fshare.cgi", "post");
+if ($s) {
+	print &ui_hidden("old_name", $s);
+	}
 
 # Vital share options..
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'share_info'}</b></td> </tr>\n";
-print "<tr $cb> <td><table cellpadding=2>\n";
+print &ui_table_start($text{'share_info'}, undef, 2);
 if ($s ne "global") {
 	if ($copy = &getval("copy")) {
-		print "<tr> <td colspan=4><b>",&text('share_copy', $copy),
-		      "</b></td> </tr>\n";
+		print &ui_table_row(undef, &text('share_copy', $copy), 2);
 		}
-	print "<tr> <td align=right><b>$text{'share_name'}</b></td>\n";
-	printf "<td colspan=3><input type=radio name=homes value=0 %s>\n",
-		$s eq "homes" ? "" : "checked";
-	printf "<input size=10 name=share value=\"%s\">&nbsp;&nbsp;&nbsp;\n",
-		$s eq "homes" ? "" : $s;
-	printf "<input type=radio name=homes value=1 %s> $text{'share_home'}\n",
-		$s eq "homes" ? "checked" : "";
-	print "</td> </tr>\n";
+
+	print &ui_table_row($text{'share_name'},
+		&ui_radio("homes", $s eq "homes" ? 1 : 0,
+		  [ [ 0, &ui_textbox("share", $s eq "homes" ? "" : $s, 20) ],
+		    [ 1, $text{'share_home'} ] ]));
 	}
 
-print "<tr> <td align=right><b>$text{'share_dir'}</b></td>\n";
-printf "<td colspan=3><input name=path size=40 value=\"%s\">\n",
-	&getval("path");
-print &file_chooser_button("path", 1);
-print "</td> </tr>\n";
+print &ui_table_row($text{'share_dir'},
+	&ui_textbox("path", &getval("path"), 60)." ".
+	&file_chooser_button("path", 1));
 
 if (!$s) {
-	print "<tr> <td align=right><b>$text{'share_create'}</b></td>\n";
-	print "<td>",&yesno_input("create"),"</td>\n";
+	print &ui_table_row($text{'share_create'},
+		&yesno_input("create"));
 
-	print "<td align=right><b>$text{'share_owner'}</b></td>\n";
-	print "<td>",&ui_user_textbox("createowner", "root"),"</td> </tr>\n";
+	print &ui_table_row($text{'share_owner'},
+		&ui_user_textbox("createowner", "root"));
 
-	print "<tr> <td align=right><b>$text{'share_createperms'}</b></td>\n";
-	print "<td>",&ui_textbox("createperms", "755", 5),"</td>\n";
+	print &ui_table_row($text{'share_createperms'},
+		&ui_textbox("createperms", "755", 5));
 
-	print "<td align=right><b>$text{'share_group'}</b></td>\n";
-	print "<td>",&ui_group_textbox("creategroup", "root"),"</td> </tr>\n";
-}
+	print &ui_table_row($text{'share_group'},
+		&ui_group_textbox("creategroup", "root"));
+	}
 
-print "<tr> <td align=right><b>$text{'share_available'}</b></td>\n";
-print "<td>",&yesno_input("available"),"</td>\n";
+print &ui_table_row($text{'share_available'},
+	&yesno_input("available"));
 
-print "<td align=right><b>$text{'share_browseable'}</b></td>\n";
-print "<td>",&yesno_input("browseable"),"</td> </tr>\n";
+print &ui_table_row($text{'share_browseable'},
+	&yesno_input("browseable"));
 
-print "<td align=right><b>$text{'share_comment'}</b></td>\n";
-printf "<td colspan=3><input size=40 name=comment value=\"%s\"></td> </tr>\n",
-	&getval("comment");
+print &ui_table_row($text{'share_comment'},
+	&ui_textbox("comment", &getval("comment"), 60));
 
-print "<tr> <td colspan=4 align=center>$text{'share_samedesc2'}</td> </tr>\n"
-	if ($s eq "global");
-
-print "</table> </td></tr></table><p>\n";
 if ($s eq "global") {
-	print "<input type=submit value=$text{'save'}> </form>\n";
+	print &ui_table_row(undef, $text{'share_samedesc2'}, 2);
+	}
+
+print &ui_table_end();
+@buts = ( );
+if ($s eq "global") {
+	push(@buts, [ undef, $text{'save'} ]);
 	}
 elsif ($s) {
-	print "<table width=100%> <tr>\n";
-	print "<td align=left><input type=submit value=$text{'save'}></td>\n"
-		if &can('rw', \%access, $s);
-	print "</form><form action=view_users.cgi>\n";
-	print "<input type=hidden name=share value=\"$s\">\n";
-	print "<td align=center><input type=submit value=\"$text{'share_view'}\"></td>\n"
-		if &can('rv', \%access, $s);
-	print "</form><form action=delete_share.cgi>\n";
-	print "<input type=hidden name=share value=\"$s\">\n";
-	print "<input type=hidden name=type value=fshare>\n";
-	print "<td align=right><input type=submit value=$text{'delete'}></td>\n"
-		if &can('rw', \%access, $s);
-	print "</form> </tr> </table>\n";
+	if (&can('rw', \%access, $s)) {
+		push(@buts, [ undef, $text{'save'} ]);
+		}
+	if (&can('rv', \%access, $s)) {
+		push(@buts, [ "view", $text{'share_view'} ]);
+		}
+	if (&can('rw', \%access, $s)) {
+		push(@buts, [ "delete", $text{'delete'} ]);
+		}
 	}
 else {
-	print "<input type=submit value=$text{'create'}> </form>\n";
+	push(@buts, [ undef, $text{'create'} ]);
 	}
+print &ui_form_end(\@buts);
 
 if ($s) {
 	# Icons for other share options

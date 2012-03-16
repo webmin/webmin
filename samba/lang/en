@@ -424,7 +424,7 @@ viewu_from=Connected from
 viewu_time=Connected at
 viewu_pid=Process ID
 viewu_msg1=Click on a process ID from the list above to disconnect that user.
-viewu_msg2=There are no currently connected users
+viewu_msg2=There are no currently connected users.
 viewu_locks=Open files
 viewu_none=None
 viewu_ecmd=The Samba status program $1 does not appear to be installed on your system. Maybe the <a href='$2'>module configuration</a> is incorrect.

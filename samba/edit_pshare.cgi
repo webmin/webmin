@@ -25,28 +25,23 @@ else {
 	&ui_print_header(undef, $text{'pshare_title3'}, "");
 	}
 
-print "<form action=save_pshare.cgi>\n";
-if ($s) { print "<input type=hidden name=old_name value=\"$s\">\n"; }
-
-# Vital share options..
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'pshare_info'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
-if ($s ne "global") {
-	if ($copy = &getval("copy")) {
-		print "<tr> <td colspan=4><b>", &text('share_copy',$copy),"</b></td> </tr>\n";
-		}
-	print "<tr> <td><b>$text{'pshare_name'}</b></td>\n";
-	printf "<td colspan=3><input type=radio name=printers value=0 %s>\n",
-		$s eq "printers" ? "" : "checked";
-	printf "<input size=10 name=share value=\"%s\">&nbsp;&nbsp;&nbsp;\n",
-		$s eq "printers" ? "" : $s;
-	printf "<input type=radio name=printers value=1 %s> $text{'pshare_all'}\n",
-		$s eq "printers" ? "checked" : "";
-	print "</td> </tr>\n";
+print &ui_form_start("save_pshare.cgi", "post");
+if ($s) {
+	print &ui_hidden("old_name", $s);
 	}
 
-print "<tr> <td><b>$text{'pshare_unixprn'}</b></td>\n";
+# Vital share options..
+print &ui_table_start($text{'pshare_info'}, undef, 2);
+if ($s ne "global") {
+	if ($copy = &getval("copy")) {
+		print &ui_table_row(undef, &text('share_copy', $copy), 2);
+		}
+	print &ui_table_row($text{'pshare_name'},
+		&ui_radio("printers", $s eq "printers" ? 1 : 0,
+		  [ [ 0, &ui_textbox("share", $s eq "printers" ? "" : $s, 20) ],
+		    [ 1, $text{'pshare_all'} ] ]));
+	}
+
 if (&foreign_check("lpadmin")) {
 	&foreign_require("lpadmin", "lpadmin-lib.pl");
 	@plist = &foreign_call("lpadmin", "list_printers");
@@ -58,86 +53,79 @@ if (@plist) {
 	local $printer = &getval("printer");
 	push(@plist, $printer)
 		if ($printer && &indexof($printer, @plist) == -1);
-	print "<td><select name=printer>\n";
-	printf "<option value=\"\" %s> %s\n",
-		$printer eq "" ? "selected" : "",
-		$s eq "global" ? $text{'config_none'} : $text{'default'};
+	@opts = ( );
+	push(@opts, [ "", $s eq "global" ? $text{'config_none'}
+					 : $text{'default'} ]);
 	foreach $p (@plist) {
-		printf "<option value=\"$p\" %s> $p\n",
-			$p eq $printer ? "selected" : "";
+		push(@opts, [ $p, $p ]);
 		}
-	print "</select></td>\n";
+	print &ui_table_row($text{'pshare_unixprn'},
+		&ui_select("printer", $printer, \@opts));
 	}
 else {
-	print "<td><input name=printer size=8></td>\n";
+	print &ui_table_row($text{'pshare_unixprn'},
+		&ui_textbox("printer", undef, 15));
 	}
 
-print "<td><b>$text{'pshare_spool'}</b></td>\n";
-printf "<td><input name=path size=35 value=\"%s\">\n",
-	&getval("path");
-print &file_chooser_button("path", 1);
-print "</td> </tr>\n";
+print &ui_table_row($text{'pshare_spool'},
+	&ui_textbox("path", &getval("path"), 60)." ".
+	&file_chooser_button("path", 1));
 
-print "<tr> <td><b>$text{'share_available'}</b></td>\n";
-print "<td>",&yesno_input("available"),"</td>\n";
+print &ui_table_row($text{'share_available'},
+	&yesno_input("available"));
 
-print "<td><b>$text{'share_browseable'}</b></td>\n";
-print "<td>",&yesno_input("browseable"),"</td> </tr>\n";
+print &ui_table_row($text{'share_browseable'},
+	&yesno_input("browseable"));
 
-print "<td align=right><b>$text{'share_comment'}</b></td>\n";
-printf "<td colspan=3 align=left>\n";
-printf "<input size=40 name=comment value=\"%s\"></td> </tr>\n",
-	&getval("comment");
-
-print "<tr> <td colspan=4 align=center>$text{'share_samedesc1'}</td> </tr>\n"
-	if ($s eq "global");
-
-print "</table> </td></tr></table><p>\n";
+print &ui_table_row($text{'share_comment'},
+	&ui_textbox("comment", &getval("comment"), 60));
 
 if ($s eq "global") {
-	print "<input type=submit value=$text{'save'}> </form><p>\n";
+	print &ui_table_row(undef, $text{'share_samedesc1'}, 2);
+	}
+print &ui_table_end();
+
+@buts = ( );
+if ($s eq "global") {
+	push(@buts, [ undef, $text{'save'} ]);
 	}
 elsif ($s) {
-	print "<table width=100%> <tr>\n";
-	print "<td align=left><input type=submit value=$text{'save'}></td>\n"
-		if &can('rw', \%access, $s);
-	print "</form><form action=view_users.cgi>\n";
-	print "<input type=hidden name=share value=\"$s\">\n";
-	print "<input type=hidden name=printer value=1>\n";
-	print "<td align=center><input type=submit value=\"$text{'index_view'}\"></td>\n"
-		if &can('rv', \%access, $s);
-	print "</form><form action=delete_share.cgi>\n";
-	print "<input type=hidden name=share value=\"$s\">\n";
-	print "<input type=hidden name=type value=pshare>\n";
-	print "<td align=right><input type=submit value=$text{'delete'}></td>\n"
-		if &can('rw', \%access, $s);
-	print "</form> </tr> </table> <p>\n";
+	if (&can('rw', \%access, $s)) {
+		push(@buts, [ undef, $text{'save'} ]);
+		}
+	if (&can('rv', \%access, $s)) {
+		push(@buts, [ "view", $text{'share_view'} ]);
+		}
+	if (&can('rw', \%access, $s)) {
+		push(@buts, [ "delete", $text{'delete'} ]);
+		}
 	}
 else {
-	print "<input type=submit value=$text{'create'}> </form><p>\n";
+	push(@buts, [ undef, $text{'create'} ]);
 	}
+print &ui_form_end(\@buts);
 
 if ($s) {
 	# Icons for other share options
-    $us = "share=".&urlize($s)."&printer=1";
-    local (@url, @text, @icon, $disp);
-    if (&can('rs',\%access, $s)) {
-        push(@url,  "edit_sec.cgi?$us");
-        push(@text, $text{'share_security'});
-        push(@icon, "images/icon_2.gif");
-        $disp++;
+	$us = "share=".&urlize($s)."&printer=1";
+	local (@url, @text, @icon, $disp);
+	if (&can('rs',\%access, $s)) {
+		push(@url,  "edit_sec.cgi?$us");
+		push(@text, $text{'share_security'});
+		push(@icon, "images/icon_2.gif");
+		$disp++;
+		}
+	if (&can('ro',\%access, $s)) {
+		push(@url,  "edit_popts.cgi?$us");
+		push(@text, $text{'print_option'});
+		push(@icon, "images/icon_3.gif");
+		$disp++;
         }
-    if (&can('ro',\%access, $s)) {
-        push(@url,  "edit_popts.cgi?$us");
-        push(@text, $text{'print_option'});
-        push(@icon, "images/icon_3.gif");
-        $disp++;
-        }
-    if ($disp) {
-        print &ui_hr();
-        print &ui_subheading($text{'share_option'});
-        &icons_table(\@url, \@text, \@icon);
-        }
+	if ($disp) {
+		print &ui_hr();
+		print &ui_subheading($text{'share_option'});
+		&icons_table(\@url, \@text, \@icon);
+		}
 	}
 
 &ui_print_footer("", $text{'index_sharelist'});

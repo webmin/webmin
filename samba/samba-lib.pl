@@ -543,33 +543,29 @@ return join("," , @rv);
 
 sub yesno_input
 {
+local $n;
 ($n = $_[0]) =~ s/ /_/g;
-return sprintf "<input type=radio name=$n value=yes %s> $text{'yes'}\n".
-	       "<input type=radio name=$n value=no %s> $text{'no'}\n",
-		&istrue($_[0]) ? "checked" : "",
-		&isfalse($_[0]) ? "checked" : "";
+return &ui_radio($n, &istrue($_[0]) ? "yes" : "no",
+		 [ [ "yes", $text{'yes'} ],
+		   [ "no", $text{'no'} ] ]);
 }
 
 # username_input(name)
 # Outputs HTML for an username field
 sub username_input
 {
+local $n;
 ($n = $_[0]) =~ s/ /_/g;
-$v = &getval($_[0]);
-print "<td><input name=$n size=8 value=\"$v\"> ",
-	&user_chooser_button($n, 0),"</td>\n";
+return &ui_user_textbox($n, &getval($_[0]));
 }
 
 # username_input(name, default)
 sub groupname_input
 {
+local $n;
 ($n = $_[0]) =~ s/ /_/g;
-$v = &getval($_[0]);
-print "<td><input name=$n size=8 value=\"$v\"> ",
-	&group_chooser_button($n, 0),"</td>\n";
+return &ui_group_textbox($n, &getval($_[0]));
 }
-
-
 
 @sock_opts = ("SO_KEEPALIVE", "SO_REUSEADDR", "SO_BROADCAST", "TCP_NODELAY", 
 	      "IPTOS_LOWDELAY", "IPTOS_THROUGHPUT", "SO_SNDBUF*", "SO_RCVBUF*",

@@ -92,10 +92,10 @@ if (@cons) {
 			     [ undef, "align=right" ]);
 	print &ui_form_end([ [ "kill", $text{'viewu_kill'} ] ]);
 
-	print $text{'viewu_msg1'}, "<br>\n";
+	print $text{'viewu_msg1'},"<p>\n";
 	}
 else {
-	print "<b>$text{'viewu_msg2'}</b>.\n";
+	print "<b>$text{'viewu_msg2'}</b><p>\n";
 	print &ui_links_row(\@rightlinks);
 	}
 print "<p>\n";
