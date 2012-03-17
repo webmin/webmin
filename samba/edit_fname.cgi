@@ -20,46 +20,47 @@ else {
 	}
 &get_share($s);
 
-print "<form action=save_fname.cgi>\n";
-print "<input type=hidden name=old_name value=\"$s\">\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'fname_option'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_form_start("save_fname.cgi", "post");
+print &ui_hidden("old_name", $s);
+print &ui_table_start($text{'fname_option'}, undef, 4);
 
-print "<tr> <td align=right><b>$text{'fname_manglecase'}</b></td>\n";
-print "<td>",&yesno_input("mangle case"),"</td>\n";
+print &ui_table_row($text{'fname_manglecase'},
+	&yesno_input("mangle case"));
 
-print "<td align=right><b>$text{'fname_case'}</b></td>\n";
-print "<td>",&yesno_input("case sensitive"),"</td> </tr>\n";
+print &ui_table_row($text{'fname_case'},
+	&yesno_input("case sensitive"));
 
-print "<tr> <td align=right><b>$text{'fname_defaultcase'}</b></td>\n";
-printf "<td><input type=radio name=default_case value=lower %s> $text{'fname_lower'}\n",
-	&getval("default case") =~ /lower/i ? "checked" : "";
-printf "<input type=radio name=default_case value=upper %s> $text{'fname_upper'}</td>\n",
-	&getval("default case") =~ /upper/i ? "checked" : "";
+print &ui_table_row($text{'fname_defaultcase'},
+	&ui_radio("default_case",
+		  &getval("default case") =~ /lower/i ? "lower" : "upper",
+		  [ [ "lower", $text{'fname_lower'} ],
+		    [ "upper", $text{'fname_upper'} ] ]));
 
-print "<td align=right><b>$text{'fname_preserve'}</b></td>\n";
-print "<td>",&yesno_input("preserve case"),"</td> </tr>\n";
+print &ui_table_row($text{'fname_preserve'},
+	&yesno_input("preserve case"));
 
-print "<tr> <td align=right><b>$text{'fname_shortpreserve'}</b></td>\n";
-print "<td>",&yesno_input("short preserve case"),"</td>\n";
+print &ui_table_row($text{'fname_shortpreserve'},
+	&yesno_input("short preserve case"));
 
-print "<td align=right><b>$text{'fname_hide'}</b></td>\n";
-print "<td>",&yesno_input("hide dot files"),"</td> </tr>\n";
+print &ui_table_row($text{'fname_hide'},
+	&yesno_input("hide dot files"));
 
-print "<tr> <td align=right><b>$text{'fname_archive'}</b></td>\n";
-print "<td>",&yesno_input("map archive"),"</td>\n";
+print &ui_table_row($text{'fname_archive'},
+	&yesno_input("map archive"));
 
-print "<td align=right><b>$text{'fname_hidden'}</b></td>\n";
-print "<td>",&yesno_input("map hidden"),"</td> </tr>\n";
+print &ui_table_row($text{'fname_hidden'},
+	&yesno_input("map hidden"));
 
-print "<tr> <td align=right><b>$text{'fname_system'}</b></td>\n";
-print "<td>",&yesno_input("map system"),"</td>\n";
+print &ui_table_row($text{'fname_system'},
+	&yesno_input("map system"));
 
-print "</table> </td></tr></table><p>\n";
-print "<input type=submit value=$text{'save'}>"
-	if &can('wN', \%access, $in{'share'});
-print "</form>\n";
+print &ui_table_end();
+if (&can('wN', \%access, $in{'share'})) {
+	print &ui_form_end([ [ undef, $text{'save'} ] ]);
+	}
+else {
+	print &ui_form_end();
+	}
 
 &ui_print_footer("edit_fshare.cgi?share=".&urlize($s), $text{'index_fileshare'},
 	"", $text{'index_sharelist'});
