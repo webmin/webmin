@@ -8230,10 +8230,10 @@ else {
 		else {
 			$main::open_temphandles{$fh} = $file;
 			}
-		binmode($fh);
 		if (!$ex && !$noerror) {
 			&error(&text("efileopen", $file, $!));
 			}
+		binmode($fh);
 		return $ex;
 		}
 	elsif ($file =~ /^>\s*(([a-zA-Z]:)?\/.*)$/ && $notemp) {
