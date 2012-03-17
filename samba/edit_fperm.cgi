@@ -20,49 +20,44 @@ else {
 	}
 &get_share($s);
 
-print "<form action=save_fperm.cgi>\n";
-print "<input type=hidden name=old_name value=\"$s\">\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'fperm_option'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_form_start("save_fperm.cgi", "post");
+print &ui_hidden("old_name", $s);
+print &ui_table_start($text{'fperm_option'}, undef, 2);
 
-print "<tr> <td align=right><b>$text{'fperm_filemode'}</b></td>\n";
-printf "<td><input name=create_mode size=5 value=\"%s\"></td>\n",
-	&getval("create mode");
+print &ui_table_row($text{'fperm_filemode'},
+	&ui_textbox("create_mode", &getval("create mode"), 5));
 
-print "<td align=right><b>$text{'fperm_dirmode'}</b></td>\n";
-printf "<td><input name=directory_mode size=5 value=\"%s\"></td> </tr>\n",
-	&getval("directory mode");
+print &ui_table_row($text{'fperm_dirmode'},
+	&ui_textbox("directory_mode", &getval("directory mode"), 5));
 
-print "<tr> <td align=right><b>$text{'fperm_notlist'}</b></td>\n";
-printf "<td colspan=3><input name=dont_descend size=40 value=\"%s\"></td>\n",
-	&getval("dont descend");
-print "</tr>\n";
+print &ui_table_row($text{'fperm_notlist'},
+	&ui_textbox("dont_descend", &getval("dont descend"), 40));
 
-print "<tr> <td align=right><b>$text{'fperm_forceuser'}</b></td>\n";
-&username_input("force user", "None");
+print &ui_table_row($text{'fperm_forceuser'},
+	&username_input("force user", "None"));
 
-print "<td align=right><b>$text{'fperm_forcegrp'}</b></td>\n";
-&groupname_input("force group", "None");
+print &ui_table_row($text{'fperm_forcegrp'},
+	&groupname_input("force group", "None"));
 
-print "<tr> <td align=right><b>$text{'fperm_link'}</b></td>\n";
-print "<td>",&yesno_input("wide links"),"</td>\n";
+print &ui_table_row($text{'fperm_link'},
+	&yesno_input("wide links"));
 
-print "<td align=right><b>$text{'fperm_delro'}</b></td>\n";
-print "<td>",&yesno_input("delete readonly"),"</td> </tr>\n";
+print &ui_table_row($text{'fperm_delro'},
+	&yesno_input("delete readonly"));
 
-print "<tr> <td align=right><b>$text{'fperm_forcefile'}</b></td>\n";
-printf "<td><input name=force_create_mode size=5 value=\"%s\"></td>\n",
-	&getval("force create mode");
+print &ui_table_row($text{'fperm_forcefile'},
+	&ui_textbox("force_create_mode", &getval("force create mode"), 5));
 
-print "<td align=right><b>$text{'fperm_forcedir'}</b></td>\n";
-printf "<td><input name=force_directory_mode size=5 value=\"%s\"></td> </tr>\n",
-	&getval("force directory mode");
+print &ui_table_row($text{'fperm_forcedir'},
+	&ui_textbox("force_directory_mode", &getval("force directory mode"),5));
 
-print "</table> </td></tr></table><p>\n";
-print "<input type=submit value=$text{'save'}>" 
-	if &can('wP', \%access, $in{'share'});
-print "</form>\n";
+print &ui_table_end();
+if (&can('wP', \%access, $in{'share'})) {
+	print &ui_form_end([ [ undef, $text{'save'} ] ]);
+	}
+else {
+	print &ui_form_end();
+	}
 
 &ui_print_footer("edit_fshare.cgi?share=".&urlize($s), $text{'index_fileshare'},
 	"", $text{'index_sharelist'});
