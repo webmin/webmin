@@ -21,7 +21,7 @@ elsif ($in{'delete'}) {
 
 # check acls
 
-&error_setup("<blink><font color=red>$text{'eacl_aviol'}</font></blink>");
+&error_setup("$text{'eacl_aviol'}ask_epass.cgi");
 if ($in{old_name}) {
     &error("$text{'eacl_np'} $text{'eacl_pus'}") 
 		unless &can('rw', \%access, $in{old_name});

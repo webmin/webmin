@@ -4,7 +4,7 @@
 
 require './samba-lib.pl';
 
-&error_setup("<blink><font color=red>$text{'eacl_aviol'}</font></blink>");
+&error_setup("$text{'eacl_aviol'}ask_epass.cgi");
 &error("$text{'eacl_np'} $text{'eacl_papply'}") unless $access{'apply'};
  
 &error_setup($text{'start_err'});

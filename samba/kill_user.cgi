@@ -7,7 +7,7 @@ require './samba-lib.pl';
 
 # check acls
 
-&error_setup("<blink><font color=red>$text{'eacl_aviol'}</font></blink>");
+&error_setup("$text{'eacl_aviol'}ask_epass.cgi");
 if ($in{share}) { # this may be cracked very easy, don't know how to do better :(
 	# per-share acls ...
 	&error("$text{'eacl_np'} $text{'eacl_pkill'}") 

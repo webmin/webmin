@@ -5,7 +5,7 @@
 require './samba-lib.pl';
 # check acls
 
-&error_setup("<blink><font color=red>$text{'eacl_aviol'}</font></blink>");
+&error_setup($text{'eacl_aviol'});
 &error("$text{'eacl_np'} $text{'eacl_pmpass'}")
         unless $access{'maint_makepass'};
 # display
