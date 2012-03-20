@@ -110,6 +110,7 @@ else {
 		}
 
 	# Redirect to nice URL
+	$file =~ s/#/%23/g;
 	if (-d $file) {
 		&redirect("fetch.cgi".$file.".zip?unzip=1");
 		}
