@@ -20,75 +20,62 @@ else {
 	}
 &get_share($s);
 
-print "<form action=save_fmisc.cgi>\n";
-print "<input type=hidden name=old_name value=\"$s\">\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'misc_title'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_form_start("save_fmisc.cgi", "post");
+print &ui_hidden("old_name", $s);
+print &ui_table_start($text{'misc_title'}, undef, 4);
 
-print "<tr> <td align=right><b>$text{'fmisc_lockfile'}</b></td>\n";
-print "<td>",&yesno_input("locking"),"</td>\n";
+print &ui_table_row($text{'fmisc_lockfile'},
+	&yesno_input("locking"));
 
-print "<td align=right><b>$text{'fmisc_maxconn'}</b></td>\n";
-printf "<td><input type=radio name=max_connections_def value=1 %s> $text{'smb_unlimited'}\n",
-	&getval("max connections") == 0 ? "checked" : "";
-printf "<input type=radio name=max_connections_def value=0 %s>\n",
-	&getval("max connections") > 0 ? "checked" : "";
-printf "<input size=6 name=max_connections value=\"%s\"></td> </tr>\n",
-	&getval("max connections") > 0 ? &getval("max connections") : "";
+$max = &getval("max connections");
+print &ui_table_row($text{'fmisc_maxconn'},
+	&ui_opt_textbox("max_connections", $max == 0 ? undef : $max, 6,
+		        $text{'smb_unlimited'}));
 
-print "<tr> <td align=right><b>$text{'fmisc_oplocks'}</b></td>\n";
-print "<td>",&yesno_input("oplocks"),"</td>\n";
+print &ui_table_row($text{'fmisc_oplocks'},
+	&yesno_input("oplocks"));
 
-print "<td align=right><b>$text{'fmisc_level2'}</b></td>\n";
-print "<td>",&yesno_input("level2 oplocks"),"</td> </tr>\n";
+print &ui_table_row($text{'fmisc_level2'},
+	&yesno_input("level2 oplocks"));
 
-print "<tr> <td align=right><b>$text{'fmisc_fake'}</b></td>\n";
-print "<td>",&yesno_input("fake oplocks"),"</td>\n";
+print &ui_table_row($text{'fmisc_fake'},
+	&yesno_input("fake oplocks"));
 
-print "<td align=right><b>$text{'fmisc_sharemode'}</b></td>\n";
-print "<td>",&yesno_input("share modes"),"</td> </tr>\n";
+print &ui_table_row($text{'fmisc_sharemode'},
+	&yesno_input("share modes"));
 
-print "<tr> <td align=right><b>$text{'fmisc_strict'}</b></td>\n";
-print "<td>",&yesno_input("strict locking"),"</td>\n";
+print &ui_table_row($text{'fmisc_strict'},
+	&yesno_input("strict locking"));
 
-print "<td align=right><b>$text{'fmisc_sync'}</b></td>\n";
-print "<td>",&yesno_input("sync always"),"</td> </tr>\n";
+print &ui_table_row($text{'fmisc_sync'},
+	&yesno_input("sync always"));
 
-print "<tr> <td align=right><b>$text{'fmisc_volume'}</b></td>\n";
-printf "<td colspan=3><input type=radio name=volume_def value=1 %s> $text{'fmisc_sameas'}\n",
-	&getval("volume") eq "" ? "checked" : "";
-printf "<input type=radio name=volume_def value=0 %s>\n",
-	&getval("volume") eq "" ? "" : "checked";
-printf "<input size=25 name=volume value=\"%s\"></td> </tr>\n",
-	&getval("volume");
+print &ui_table_row($text{'fmisc_volume'},
+	&ui_opt_textbox("volume", &getval("volume"), 25,
+			$text{'fmisc_sameas'}));
 
-print "</table><table>\n";
+print &ui_table_row($text{'fmisc_unixdos'},
+	&ui_textbox("mangled_map", &getval("mangled map"), 40));
 
-print "<tr> <td align=right><b>$text{'fmisc_unixdos'}</b></td>\n";
-printf"<td><input name=mangled_map size=40 value=\"%s\"></td></tr>\n",
-	&getval("mangled map");
+print &ui_table_row($text{'fmisc_conncmd'},
+	&ui_textbox("preexec", &getval("preexec"), 40));
 
-print "<tr> <td align=right><b>$text{'fmisc_conncmd'}</b></td>\n";
-printf "<td><input name=preexec size=40 value=\"%s\"></td> </tr>\n",
-	&getval("preexec");
+print &ui_table_row($text{'fmisc_disconncmd'},
+	&ui_textbox("postexec", &getval("postexec"), 40));
 
-print "<tr> <td align=right><b>$text{'fmisc_disconncmd'}</b></td>\n";
-printf "<td><input name=postexec size=40 value=\"%s\"></td> </tr>\n",
-	&getval("postexec");
+print &ui_table_row($text{'fmisc_rootconn'},
+	&ui_textbox("root_preexec", &getval("root preexec"), 40));
 
-print "<tr> <td align=right><b>$text{'fmisc_rootconn'}</b></td>\n";
-printf "<td><input name=root_preexec size=40 value=\"%s\"></td> </tr>\n",
-	&getval("root preexec");
+print &ui_table_row($text{'fmisc_rootdisconn'},
+	&ui_textbox("root_postexec", &getval("root postexec"), 40));
 
-print "<tr> <td align=right><b>$text{'fmisc_rootdisconn'}</b></td>\n";
-printf "<td><input name=root_postexec size=40 value=\"%s\"></td> </tr>\n",
-	&getval("root postexec");
-
-print "</table> </td></tr></table><p>\n";
-print "<input type=submit value=$text{'save'}>"
-	if &can('wO', \%access, $in{'share'});
-print "</form>\n";
+print &ui_table_end();
+if (&can('wO', \%access, $in{'share'})) {
+	print &ui_form_end([ [ undef, $text{'save'} ] ]);
+	}
+else {
+	print &ui_form_end();
+	}
 
 &ui_print_footer("edit_fshare.cgi?share=".&urlize($s), $text{'index_fileshare'},
 	"", $text{'index_sharelist'});
