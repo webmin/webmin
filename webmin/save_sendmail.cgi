@@ -16,7 +16,7 @@ elsif ($in{'mode'} == 1) {
 	$mconfig{'send_mode'} = '127.0.0.1';
 	}
 else {
-	&to_ipaddress($in{'smtp'}) && &to_ip6address($in{'smtp'}) ||
+	&to_ipaddress($in{'smtp'}) || &to_ip6address($in{'smtp'}) ||
 		&error($text{'sendmail_esmtp'});
 	$mconfig{'send_mode'} = $in{'smtp'};
 	}
