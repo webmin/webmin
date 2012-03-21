@@ -282,7 +282,7 @@ print_queue=Display queue command
 print_delete=Delete job command
 print_pause=Pause job command
 print_unresume=Unresume job command
-print_driver=Printer Driver
+print_driver=Printer driver
 
 pshare_title1=Printer Share Defaults
 pshare_title2=Edit Printer Share

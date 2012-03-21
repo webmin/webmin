@@ -22,7 +22,7 @@ else {
 
 print &ui_form_start("save_fname.cgi", "post");
 print &ui_hidden("old_name", $s);
-print &ui_table_start($text{'fname_option'}, undef, 4);
+print &ui_table_start($text{'fname_option'}, undef, 2);
 
 print &ui_table_row($text{'fname_manglecase'},
 	&yesno_input("mangle case"));

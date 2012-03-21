@@ -22,7 +22,7 @@ else {
 
 print &ui_form_start("save_fmisc.cgi", "post");
 print &ui_hidden("old_name", $s);
-print &ui_table_start($text{'misc_title'}, undef, 4);
+print &ui_table_start($text{'misc_title'}, undef, 2);
 
 print &ui_table_row($text{'fmisc_lockfile'},
 	&yesno_input("locking"));
