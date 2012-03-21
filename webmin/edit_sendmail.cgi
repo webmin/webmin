@@ -45,7 +45,7 @@ print &ui_table_row($text{'sendmail_auth'},
 		     "Cram-MD5", "Digest-MD5", "Plain", "Login" ]));
 
 # From address
-$from = $mconfig{'webmin_addr'};
+$from = $mconfig{'webmin_from'};
 $fromdef = "webmin\@".&get_system_hostname();
 print &ui_table_row($text{'sendmail_from'},
 	&ui_opt_textbox("from", $from, 40,

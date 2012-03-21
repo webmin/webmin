@@ -46,11 +46,11 @@ $mconfig{'smtp_auth'} = $in{'auth'};
 
 # Save from address
 if ($in{'from_def'}) {
-	delete($mconfig{'webmin_addr'});
+	delete($mconfig{'webmin_from'});
 	}
 else {
 	$in{'from'} =~ /^\S+\@\S+$/ || &error($text{'sendmail_efrom'});
-	$mconfig{'webmin_addr'} = $in{'from'};
+	$mconfig{'webmin_from'} = $in{'from'};
 	}
 
 &save_module_config(\%mconfig, "mailboxes");
