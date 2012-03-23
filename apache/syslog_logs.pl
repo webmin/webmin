@@ -9,7 +9,7 @@ sub syslog_getlogs
 local $conf = &get_config();
 local $errlog = &find_directive("ErrorLog", $conf, 1);
 local @rv;
-if ($errlog) {
+if ($errlog && $errlog !~ /^\|/) {
 	push(@rv, { 'file' => &server_root($errlog),
 		    'desc' => $text{'syslog_desc'},
 		    'active' => 1 });
