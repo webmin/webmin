@@ -101,6 +101,12 @@ elsif ($r == -1) {
 	print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 	print &text('index_emsg', "<tt>$rout</tt>"),"<p>\n";
+
+	# Button to edit user permissions
+	if ($access{'users'}) {
+		print &ui_form_start("list_hosts.cgi");
+		print &ui_form_end([ [ undef, $text{'index_edithosts'} ] ]);
+		}
 	}
 elsif ($r == -2) {
 	# Looks like a shared library problem
@@ -250,38 +256,40 @@ else {
 			    'images/hosts.gif', 'images/grants.gif' );
 		&icons_table(\@links, \@titles, \@images);
 		}
+	}
 
-	print &ui_hr();
-	print &ui_buttons_start();
+print &ui_hr();
+print &ui_buttons_start();
 
-	# Show stop server button
-	if ($access{'stop'} && &is_postgresql_local()) {
-		print &ui_buttons_row("stop.cgi", $text{'index_stop'},
-				      $text{'index_stopmsg'});
-		}
+# Show stop server button
+if ($access{'stop'} && &is_postgresql_local()) {
+	print &ui_buttons_row("stop.cgi", $text{'index_stop'},
+			      $text{'index_stopmsg'});
+	}
 
+if ($r > 0) {
 	# Show backup all button
 	if ($can_all && $access{'backup'}) {
 		print &ui_buttons_row("backup_form.cgi", $text{'index_backup'},
 				      $text{'index_backupmsg'},
 				      &ui_hidden("all", 1));
 		}
+	}
 
-	print &ui_buttons_end();
+print &ui_buttons_end();
 
-	# Check if the optional perl modules are installed
-	if (&foreign_available("cpan")) {
-		eval "use DBI";
-		push(@needs, "DBI") if ($@);
-		$nodbi++ if ($@);
-		eval "use DBD::Pg";
-		push(@needs, "DBD::Pg") if ($@);
-		if (@needs) {
-			$needs = &urlize(join(" ", @needs));
-			print "<center><b>",&text(@needs == 2 ? 'index_nomods' : 'index_nomod', @needs,
-				"/cpan/download.cgi?source=3&cpan=$needs&mode=2&return=/$module_name/&returndesc=".&urlize($text{'index_return'})),
-				"</b></center>\n";
-			}
+# Check if the optional perl modules are installed
+if (&foreign_available("cpan")) {
+	eval "use DBI";
+	push(@needs, "DBI") if ($@);
+	$nodbi++ if ($@);
+	eval "use DBD::Pg";
+	push(@needs, "DBD::Pg") if ($@);
+	if (@needs) {
+		$needs = &urlize(join(" ", @needs));
+		print "<center><b>",&text(@needs == 2 ? 'index_nomods' : 'index_nomod', @needs,
+			"/cpan/download.cgi?source=3&cpan=$needs&mode=2&return=/$module_name/&returndesc=".&urlize($text{'index_return'})),
+			"</b></center>\n";
 		}
 	}
 
