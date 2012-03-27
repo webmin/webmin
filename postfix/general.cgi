@@ -31,7 +31,7 @@ $v = &if_default_value("notify_classes") ? "" :
 	&get_current_value("notify_classes");
 @v = split(/[, ]+/, $v);
 print &ui_table_row(&hlink($text{'opts_notify_classes'},
-		 	   'opts_notify_classes'),
+		 	   'opt_notify_classes'),
 		    &ui_radio("notify_classes_def",
 			      $v ? "__USE_FREE_FIELD__"
 				 : "__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__",
