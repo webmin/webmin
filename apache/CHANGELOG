@@ -49,3 +49,5 @@ Fixed bug that preventing saving of virtual hosts with multiple addresses, one o
 Full Bulgarian translation, thanks to King.
 ---- Changes since 1.510 ----
 The default port on the Create virtual host tab is now set to better match the name-based virtual host ports.
+---- Changes since 1.580 ----
+Apache virtual hosts owned by Virtualmin can no longer have their address, port, name or document directory changed.

@@ -13,6 +13,14 @@ $in{'type'} == 8 && !$access{'vuser'} &&
 if (!$in{'virt'}) {
 	@edit = grep { !$_->{'virtualonly'} } @edit;
 	}
+if ($in{'type'} == 5 && &is_virtualmin_domain($v)) {
+	@edit = grep { $_->{'name'} ne 'DocumentRoot' &&
+		       $_->{'name'} ne 'ServerPath' } @edit;
+	}
+elsif ($in{'type'} == 1 && &is_virtualmin_domain($v)) {
+	@edit = grep { $_->{'name'} ne 'ServerName' &&
+		       $_->{'name'} ne 'ServerAlias' } @edit;
+	}
 
 &error_setup(&text('efailed', $text{"type_$in{'type'}"}));
 &parse_inputs(\@edit, $conf, &get_config());

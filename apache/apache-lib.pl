@@ -827,7 +827,7 @@ else {
 	}
 }
 
-# generate_inputs(&editors, &directives)
+# generate_inputs(&editors, &directives, [&skip])
 # Displays a 2-column list of options, for use inside a table
 sub generate_inputs
 {
@@ -1961,6 +1961,22 @@ if ($gconfig{'os_type'} eq 'debian-linux') {
 else {
 	return "Operating system does not support Apache modules";
 	}
+}
+
+# is_virtualmin_domain(&virt)
+# Returns the domain hash if some virtualhost is managed by Virtualmin
+sub is_virtualmin_domain
+{
+local ($virt) = @_;
+local $n = &find_directive("ServerName", $virt->{'members'});
+return undef if (!$n);
+return undef if (!&foreign_check("virtual-server"));
+&foreign_require("virtual-server");
+local $d = &virtual_server::get_domain_by("dom", $n);
+return $d if ($d);
+$n =~ s/^www\.//i;
+local $d = &virtual_server::get_domain_by("dom", $n);
+return $d;
 }
 
 1;

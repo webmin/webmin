@@ -124,6 +124,7 @@ virt_euser=You are not allowed to change the user or group for this virtual serv
 virt_header2=$1 for $2
 
 vserv_title=Virtual Server Configuration
+vserv_virtualmin=This Apache virtual host belongs to the Virtualmin server <tt>$1</tt>, so the address, port, base directory and hostname cannot be changed here.
 vserv_ecannot=You cannot edit this virtual server's address
 vserv_addr=Address
 vserv_addrs=Addresses

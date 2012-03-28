@@ -85,7 +85,8 @@ print &ui_table_row($text{'virt_path'},
 print &ui_table_end();
 print &ui_form_end([ [ "", $text{'create'} ] ]);
 
-if ($in{'virt'} && $access{'vaddr'}) {
+$d = &is_virtualmin_domain($v);
+if ($in{'virt'} && $access{'vaddr'} && !$d) {
 	# Show form for changing virtual server
 	print &ui_hr();
 	print &ui_form_start("save_vserv.cgi");
@@ -153,6 +154,9 @@ if ($in{'virt'} && $access{'vaddr'}) {
 	print &ui_table_end();
 	print &ui_form_end([ [ undef, $text{'save'} ],
 			     [ "delete", $text{'delete'} ] ]);
+	}
+elsif ($in{'virt'} && $access{'vaddr'} && $d) {
+	print "<b>",&text('vserv_virtualmin', $d->{'dom'}),"</b><p>\n";
 	}
 
 &ui_print_footer("", $text{'index_return'});

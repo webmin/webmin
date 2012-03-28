@@ -28,7 +28,15 @@ print &ui_hidden("virt", $in{'virt'});
 print &ui_hidden("type", $in{'type'});
 print &ui_table_start(&text('virt_header2', $text{"type_$in{'type'}"},
                                &virtual_name($v)), "width=100%", 4);
-&generate_inputs(\@dirs, $conf);
+if ($in{'type'} == 5 && &is_virtualmin_domain($v)) {
+	@dirs = grep { $_->{'name'} ne 'DocumentRoot' &&
+		       $_->{'name'} ne 'ServerPath' } @dirs;
+	}
+elsif ($in{'type'} == 1 && &is_virtualmin_domain($v)) {
+	@dirs = grep { $_->{'name'} ne 'ServerName' &&
+		       $_->{'name'} ne 'ServerAlias' } @dirs;
+	}
+&generate_inputs(\@dirs, $conf, \@skip);
 print &ui_table_end();
 print &ui_form_end([ [ "", $text{'save'} ] ]);
 
