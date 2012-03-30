@@ -54,6 +54,7 @@ passwd_re=Perl regexp to check password against,3,None
 passwd_same=Prevent passwords containing username?,1,1-Yes,0-No
 passwd_prog=External password-checking program,3,None
 passwd_progmode=Pass username and password to program,1,1-As input,0-As parameters
+passwd_mindays=Number of days before password change is allowed,3,None
 
 line0=Before and after commands,11
 pre_command=Command to run before making changes,0

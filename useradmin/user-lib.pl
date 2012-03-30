@@ -1502,7 +1502,7 @@ foreach my $k (keys %group_properties_map) {
 	}
 }
 
-=head2 check_password_restrictions(pass, username)
+=head2 check_password_restrictions(pass, username, [&user-hash|"none"])
 
 Returns an error message if the given password fails length and other
 checks, or undef if it is OK.
@@ -1510,20 +1510,21 @@ checks, or undef if it is OK.
 =cut
 sub check_password_restrictions
 {
+local ($pass, $username, $uinfo) = @_;
 return &text('usave_epasswd_min', $config{'passwd_min'})
-	if (length($_[0]) < $config{'passwd_min'});
+	if (length($pass) < $config{'passwd_min'});
 local $re = $config{'passwd_re'};
 return &text('usave_epasswd_re', $re)
-	if ($re && !eval { $_[0] =~ /^$re$/ });
+	if ($re && !eval { $pass =~ /^$re$/ });
 if ($config{'passwd_same'}) {
-	return &text('usave_epasswd_same') if ($_[0] =~ /\Q$_[1]\E/i);
+	return &text('usave_epasswd_same') if ($pass =~ /\Q$username\E/i);
 	}
-if ($config{'passwd_dict'} && $_[0] =~ /^[A-Za-z\'\-]+$/ &&
+if ($config{'passwd_dict'} && $pass =~ /^[A-Za-z\'\-]+$/ &&
     (&has_command("ispell") || &has_command("spell"))) {
 	# Call spell or ispell to check for dictionary words
 	local $temp = &transname();
 	open(TEMP, ">$temp");
-	print TEMP $_[0],"\n";
+	print TEMP $pass,"\n";
 	close(TEMP);
 	if (&has_command("ispell")) {
 		open(SPELL, "ispell -a <$temp |");
@@ -1547,8 +1548,8 @@ if ($config{'passwd_prog'}) {
 	local $out;
 	if ($config{'passwd_progmode'} == 0) {
 		# Run external validation program with user and password as args
-		local $qu = quotemeta($_[1]);
-		local $qp = quotemeta($_[0]);
+		local $qu = quotemeta($username);
+		local $qp = quotemeta($pass);
 		$out = &backquote_command(
 			"$config{'passwd_prog'} $qu $qp 2>&1 </dev/null");
 		}
@@ -1556,13 +1557,40 @@ if ($config{'passwd_prog'}) {
 		# Run program with password as input on stdin
 		local $temp = &transname();
 		&open_tempfile(TEMP, ">$temp", 0, 1);
-		&print_tempfile(TEMP, $_[1],"\n");
-		&print_tempfile(TEMP, $_[0],"\n");
+		&print_tempfile(TEMP, $username,"\n");
+		&print_tempfile(TEMP, $pass,"\n");
 		&close_tempfile(TEMP);
 		$out = &backquote_command("$config{'passwd_prog'} <$temp 2>&1");
 		}
 	if ($?) {
 		return $out;
+		}
+	}
+if ($config{'passwd_mindays'} && $uinfo ne "none") {
+	# Check if password was changed too recently
+	if (!$uinfo) {
+		($uinfo) = grep { $_->{'user'} eq $username } &list_users();
+		}
+	if ($uinfo) {
+		local $pft = &passfiles_type();
+		local $when;
+		if ($pft == 1 || $pft == 6) {
+			# BSD (unix time)
+			$when = $uinfo->{'change'};
+			}
+		elsif ($pft == 2 || $pft == 5) {
+			# Linux (number of days)
+			$when = $uinfo->{'change'} * 24*60*60;
+			}
+		elsif ($pft == 4) {
+			# AIX (unix time)
+			$when = $uinfo->{'change'};
+			}
+		if ($when && time() - $when <
+				$config{'passwd_mindays'}*24*60*60) {
+			return &text('usave_epasswd_mindays',
+				     $config{'passwd_mindays'});
+			}
 		}
 	}
 return undef;
@@ -1576,12 +1604,13 @@ it is OK.
 =cut
 sub check_username_restrictions
 {
-if ($config{'max_length'} && length($_[0]) > $config{'max_length'}) {
+local ($username) = @_;
+if ($config{'max_length'} && length($username) > $config{'max_length'}) {
 	return &text('usave_elength', $config{'max_length'});
 	}
 local $re = $config{'username_re'};
 return &text('usave_ere', $re)
-	if ($re && !eval { $_[0] =~ /^$re$/ });
+	if ($re && !eval { $username =~ /^$re$/ });
 return undef;
 }
 

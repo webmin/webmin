@@ -246,7 +246,7 @@ else {
 		# Password is blank
 		if (!$mconfig{'empty_mode'}) {
 			local $err = &useradmin::check_password_restrictions(
-					"", $user);
+				"", $user, $in{'new'} ? 'none' : \%ouser);
 			&error($err) if ($err);
 			}
 		$pass = "";
@@ -263,7 +263,8 @@ else {
 	elsif ($in{'passmode'} == 3) {
 		# Normal password entered - check restrictions
 		local $err = &useradmin::check_password_restrictions(
-				$in{'pass'}, $user);
+				$in{'pass'}, $user,
+				$in{'new'} ? 'none' : \%ouser);
 		&error($err) if ($err);
 		$pass = $pfx.&encrypt_password($in{'pass'});
 		$plainpass = $in{'pass'};

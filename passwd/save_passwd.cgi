@@ -68,7 +68,7 @@ else {
 			$in{'new'} eq $in{'repeat'} || &error($text{'passwd_erepeat'});
 			}
 		$err = &useradmin::check_password_restrictions(
-			$in{'new'}, $in{'user'});
+			$in{'new'}, $in{'user'}, $user);
 		&error($err) if ($err);
 
 		&can_edit_passwd([ $user->{'user'}, $user->{'pass'},

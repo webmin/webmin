@@ -46,7 +46,7 @@ $again =~ s/\r|\n//g;
 $pass eq $again || &errordie("Passwords don't match");
 
 # Check password sanity
-$err = &useradmin::check_password_restrictions($pass, $ARGV[0]);
+$err = &useradmin::check_password_restrictions($pass, $ARGV[0], $user);
 &errordie($err) if ($err);
 
 # Do the change!

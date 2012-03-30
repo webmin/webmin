@@ -176,6 +176,7 @@ usave_epasswd_min=Password must be at least $1 letters long
 usave_epasswd_re=Password does not match regexp $1
 usave_epasswd_dict=Password is a dictionary word
 usave_epasswd_same=Password contains or is the same as username
+usave_epasswd_mindays=Password was changed less than $1 days ago
 usave_eothers=The user was successfully saved, but an error occured in another module : $1
 
 gedit_title=Edit Group
