@@ -186,6 +186,10 @@ if (open(PARTS, "/proc/partitions")) {
 			# Virtio disk from KVM
 			push(@devs, "/dev/$1");
 			}
+		elsif (/\d+\s+\d+\s+\d+\s+(xvd[a-z]+)\s/) {
+			# PV disk from Xen
+			push(@devs, "/dev/$1");
+			}
 		}
 	close(PARTS);
 
