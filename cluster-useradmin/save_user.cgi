@@ -62,7 +62,7 @@ $in{'home_def'} || $in{'home'} =~ /^\// ||
 # Validate password
 if ($in{'passmode'} == 3) {
 	local $err = &useradmin::check_password_restrictions(
-			$in{'pass'}, $user{'user'});
+			$in{'pass'}, $user{'user'}, \%user);
 	&error($err) if ($err);
 	}
 

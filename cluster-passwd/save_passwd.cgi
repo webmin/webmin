@@ -22,7 +22,7 @@ if ($access{'repeat'}) {
 	$in{'new'} eq $in{'repeat'} || &error($passwd::text{'passwd_erepeat'});
 	}
 $err = &useradmin::check_password_restrictions(
-	$in{'new'}, $user->{'user'});
+	$in{'new'}, $user->{'user'}, $user);
 &error($err) if ($err);
 
 # Output header
