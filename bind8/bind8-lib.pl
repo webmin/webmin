@@ -92,8 +92,8 @@ while($line = <FILE>) {
 	# strip comments
 	$line =~ s/\r|\n//g;
 	$line =~ s/#.*$//g;
-	$line =~ s/\/\/.*$//g if ($line !~ /".*\/\/.*"/);
 	$line =~ s/\/\*.*\*\///g;
+	$line =~ s/\/\/.*$//g if ($line !~ /".*\/\/.*"/);
 	while(1) {
 		if (!$cmode && $line =~ /\/\*/) {
 			# start of a C-style comment
