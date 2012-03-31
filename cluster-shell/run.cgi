@@ -44,7 +44,7 @@ foreach $s (@sel) {
 		push(@run, grep { $_->{'host'} eq $s } @servers);
 		}
 	}
-@run = &unique(@run);
+@run = grep { !$done{$_->{'id'}}++ } @run;
 @run || &error($text{'run_enone'});
 
 &ui_print_header(undef, $text{'run_title'}, "");
@@ -63,7 +63,7 @@ foreach $s (@run) {
 	pipe($rh, $wh);
 	select($wh); $| = 1; select(STDOUT);
 	if (!fork()) {
-		# Do the install in a subprocess
+		# Run the command in a subprocess
 		close($rh);
 
 		&remote_foreign_require($s->{'host'}, "webmin",
@@ -95,7 +95,7 @@ foreach $s (@run) {
 	close($rh);
 	local $rv = &unserialise_variable($line);
 
-	local $d = $s->{'desc'} || $s->{'host'};
+	local $d = $s->{'host'}.($s->{'desc'} ? " (".$s->{'desc'}.")" : "");
 
 	if (!$line) {
 		# Comms error with subprocess
