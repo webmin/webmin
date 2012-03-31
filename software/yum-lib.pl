@@ -140,7 +140,7 @@ print &ui_form_end([ [ undef, $text{'yum_apply'} ] ]);
 sub update_system_resolve
 {
 local ($name) = @_;
-return $name eq "apache" ? "httpd" :
+return $name eq "apache" ? "httpd mod_.*" :
        $name eq "dhcpd" ? "dhcp" :
        $name eq "mysql" ? "mysql mysql-server mysql-devel" :
        $name eq "openssh" ? "openssh openssh-server" :
