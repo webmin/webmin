@@ -1,0 +1,7 @@
+virtualmin_spam=Full sti til program for oppslag av spam bruker,3,Ikke installert,40
+virtualmin_config=Full sti til Virtualmins konfig.katalog,3,Ikke installert
+warn_procmail=Vis advarsel dersom Procmail ikke er installert?,1,1-Ja,0-Nei
+forward_procmail=Opprett .forward fil for &#229; kj&#248;re procmail?,1,1-Ja,0-Nei
+alias_files=Full sti til globale alias filer,9,40,3,\t
+reply_min=Minimumstid mellom autosvar meldinger,3,Ubegrenset,5,,minutter
+reply_force=Tving gjennom bruk av minimumsintervall for autosvar?,1,1-Ja,0-Nei
