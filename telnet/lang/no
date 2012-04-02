@@ -1,0 +1,9 @@
+__norefs=1
+index_credits=Applet utviklet under GPL av <a href='$1' target=_top>Matthias L. Jugel &amp; Marcus Mei&#223;ner</a>.
+index_elookup=Kunne ikke sl&#229; opp IP adresse for $1 for &#229; teste telnet eller SSH tjener.
+index_esocket=Det kj&#248;rer ikke noen telnet tjener p&#229; $1 p&#229; port $2.
+index_esocket2=Det kj&#248;rer ikke noen SSH tjener p&#229; $1 p&#229; port $2.
+index_nojava=Denne modulen krever Java for &#229; virke, men nettleseren din st&#248;tter ikke Java.
+index_sshcredits=Inneholder programvare utviklet av Cryptix Development Team (<a href=$1 target=_top>$1</a>).
+index_title=SSH innlogging
+index_warn=Advarsel! Denne telnet sesjonen er <b>ikke</b> kryptert.
