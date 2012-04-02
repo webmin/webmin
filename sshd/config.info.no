@@ -1,0 +1,10 @@
+line2=Systemkonfigurasjon,11
+sshd_path=Full sti til sshd program,0
+sshd_config=Full sti til sshd konfig.fil,0
+client_config=Full sti til ssh klient konfig.fil,0
+pid_file=Full sti til sshd PID fil,3,Ingen
+start_cmd=Kommando for &#229; starte sshd,3,Bare kj&#248;r tjener
+restart_cmd=Kommando for &#229; ta i bruk sshd konfigurasjon,3,Bare send HUP signal
+stop_cmd=Kommando for &#229; stoppe sshd,3,Bare drep prosessen
+keygen_path=Full sti til ssh-keygen program,0
+sshd_version=SSH tjener versjon,3,Oppdag automatisk
