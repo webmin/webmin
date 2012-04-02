@@ -1,3 +1,4 @@
+__norefs=1
 del_enone=Keine Regeln zum L&#246;schen markiert
 del_errtitle=Fehler beim L&#246;schen von Regeln
 edit_cmd=Shell Befehle
