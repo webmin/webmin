@@ -541,11 +541,15 @@ return join("," , @rv);
 }
 
 
+# yesno_input(config-name, [input-name])
+# Returns a true / false selector
 sub yesno_input
 {
-local $n;
-($n = $_[0]) =~ s/ /_/g;
-return &ui_radio($n, &istrue($_[0]) ? "yes" : "no",
+local ($c, $n) = @_;
+if (!$n) {
+	($n = $c) =~ s/ /_/g;
+	}
+return &ui_radio($n, &istrue($c) ? "yes" : "no",
 		 [ [ "yes", $text{'yes'} ],
 		   [ "no", $text{'no'} ] ]);
 }
