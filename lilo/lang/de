@@ -1,3 +1,4 @@
+__norefs=1
 apply_exec=Wende LILO-Konfiguration an mit dem Befehl $1 ..
 apply_title=Konfiguration anwenden
 global_any=Jegliches Booten
