@@ -1,0 +1,1 @@
+php_ini=Globale PHP konfigurasjons-filer<br>(P&#229; <i>filnavn</i>=<i>beskrivelse</i> format),9,70,5,\t

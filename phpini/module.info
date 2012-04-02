@@ -10,3 +10,4 @@ desc_ko_KR.UTF-8=PHP 설정
 desc_de=PHP-Konfiguration 
 depends=time
 desc_cz.UTF-8=PHP konfigurace
+desc_no=PHP konfigurasjon
