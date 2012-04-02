@@ -1056,6 +1056,7 @@ vserv_name=Server-Name
 vserv_port=Port
 vserv_root=Dokument-Root
 vserv_title=Konfiguration des Virtuellen Servers
+vserv_virtualmin=Der Apache Virtual Host geh&#246;rt zum Virtualmin Server <tt>$1</tt>, so dass die Adresse, Port, Basisverzeichnis und Hostnamen nicht hier ge&#228;ndert werden kann.
 worker_emaxspare=Maximale spare threads muss eine Ganzzahl sein
 worker_eminspare=Minimale spare threads muss eine Ganzzahl sein
 worker_ethreads=Anzahl der Threads pro Kindprozess muss eine Ganzzahl sein
