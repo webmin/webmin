@@ -1,0 +1,4 @@
+usermin_dir=Usermin konfigurasjonskatalog,0
+cron_mode=Vis oppdateringstider som,1,0-Enkelt grensesnitt,1-Cron tids-velger
+host=Usermin vertsnavn for &#229; bytte brukere,3,Samme som Webmin
+port=Usermin port for &#229; bytte brukere,3,Bestem automatisk
