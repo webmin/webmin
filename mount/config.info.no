@@ -1,0 +1,12 @@
+line1=Konfigurerbare innstillinger,11
+browse_server=Tjener det skal hentes liste fra,3,localhost
+long_fstypes=Vis lange filsystem-type navn,1,1-Ja,0-Nei
+sort_mode=Sorter filsystemer etter,1,2-Monteringspunkt,1-Type,0-Plassering i filer
+show_used=Visk brukt diskplass i liste over filsystemer,1,1-Ja,0-Nei
+delete_under=Slett katalog ved demontering dersom under,3,Aldri slett
+line2=System konfigurasjon,11
+fstab_file=Fil som angir filsystemer som monteres ved oppstart,0
+auto_file=NFS automounts fil,3
+autofs_file=Kernel automounts fil,3
+smbclient_path=Full sti til smbclient,3
+nmblookup_path=Full sti til nmblookup,3
