@@ -205,6 +205,7 @@ host_gsame=Wie Gruppenname
 host_header=PostgreSQL-Client Authentifizierungsdetails
 host_ident=Pr&#252;fe <tt>ident</tt> Server auf dem Host
 host_identarg=Benutze Benutzermapping
+host_identarg1=PostgreSQL und Unix Benutzer sind dieselben
 host_krb4=Kerberos V4
 host_krb5=Kerberos V5
 host_local=Lokale Verbindung
@@ -240,6 +241,7 @@ index_btree=BTREE
 index_clear=L&#246;schen
 index_db=Datenbank Name
 index_dbs=PostgreSQL-Datenbanken
+index_drops=Verwerfe ausgew&#228;hlte Datenbanken
 index_ecannot=Sie sind nicht berechtigt Indexe zu verwalten
 index_ecols=Keine Felder ausgew&#228;hlt
 index_ehba=Die PostgreSQL Hostkonfigurationsdatei konnte auf Ihrem System nicht gefunden werden. Es k&#246;nnte sein, dass PostgreSQL nicht installiert ist oder dass Ihre <a href='$2'>Modulkonfiguration</a> fehlerhaft ist.
