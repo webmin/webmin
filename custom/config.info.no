@@ -1,4 +1,3 @@
-line1=Konfigurerbare innstillinger,11
 display_mode=Hovedsiden viser,1,0-Alle kommandoer og parametere,1-Lenker til kommandoer
 width=Bredde p&#229; fileditor-vindu,3,Standard (80 tegn)
 height=H&#248;yde p&#229; fileditor-vindu,3,Standard (20 tegn)
