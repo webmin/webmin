@@ -5,3 +5,4 @@ desc=Network Services and Protocols
 longdesc=Edit services in /etc/inetd.conf, /etc/services and /etc/rpc.
 desc_ca=Serveis i Protocols de Xarxa
 desc_de=Netzwerk-Dienste und Protokolle
+desc_no=Nettverkstjenester og -protokoller
