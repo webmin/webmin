@@ -1,0 +1,4 @@
+dovecot=Dovecot tjener program,0
+dovecot_config=Full sti til Dovecot konfigurasjonsfil,0
+init_script=Navn p&#229; Dovecot init script,3,Ingen finnes
+pid_file=Dovecot tjener PID fil,0
