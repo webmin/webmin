@@ -1,3 +1,4 @@
+__norefs=1
 acl_user=F&uuml;hre Befehl aus als Benutzer
 acl_user_def=Aktueller Webmin-Benutzer
 index_clear=L&ouml;sche Verlauf
