@@ -1,0 +1,8 @@
+date_subs=Utf&#248;r <tt>strftime</tt> erstatninger p&#229; m&#229;l for sikkerhetskopier?,1,1-Ja,0-Nei
+webmin_subs=Utf&#248;r Webmin variabel-erstatning p&#229; m&#229;l for sikkerhetskopier?,1,1-Ja,0-Nei
+smtp_server=Send e-post via SMTP tjener,3,Modulen Les brukers e-post
+run_mode=Kj&#248;r sikkerhetskopiering i,1,0-Forgrunnen,1-Bakgrunnen
+nonewtape=Be om ny tape dersom tape er full?,1,1-Ja,0-Nei
+always_tar=Bruk alltid TAR format for sikkerhetskopier,1,1-Ja,0-Nei
+error_email=Send e-post om sikkerhetskopiering,1,0-Alltid,1-Bare dersom feil oppst&#229;r
+simple_sched=Format p&#229; tidsplanvelger,1,1-Enkel,0-Kompleks
