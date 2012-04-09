@@ -291,9 +291,9 @@ pass_pass=Kennw&#246;rter
 pass_regdesc=Menschlich lesbare Beschreibung von regul&#228;ren Ausdr&#252;cken
 pass_regexps=&#220;bereinstimmung von Kennw&#246;rtern mit regul&#228;ren Ausdr&#252;cken
 pass_title=Kennwort Einschr&#228;nkungen
-rbac_desc=Die RBAC (Role Based Access Control)-Integration in die Webmin-Software unterst&#252;tzt die Verlagerung von ACLs auf bestimmte oder alle Module in eine RBAC-Datenbank. Wenn RBAC einmal aktiviert wurde, dann werden f&#252;r jeden Benutzer f&#252;r den die <b>$edit_rbacdeny1</b>-Option ausgew&#228;hlt wurde alle M&#246;glichkeiten durch RBAC und nicht mehr durch Webmin geregelt.
+rbac_desc=Die RBAC (Role Based Access Control)-Integration in die Webmin-Software unterst&#252;tzt die Verlagerung von ACLs auf bestimmte oder alle Module in eine RBAC-Datenbank. Wenn RBAC einmal aktiviert wurde, dann werden f&#252;r jeden Benutzer f&#252;r den die <b>RBAC Steuerung aller Module und ACLs</b>-Option ausgew&#228;hlt wurde alle M&#246;glichkeiten durch RBAC und nicht mehr durch Webmin geregelt.
 rbac_ecpan=Sie haben keinen Zugriff auf die Webmin-Perl-Modulseite um das f&#252;r die RBAC-Integration ben&#246;tigte Modul $1 zu installieren.
-rbac_eperl=Das Perl-Modul $1 wird f&#252;r die RBAC-Integration ben&#246;tigt, ist jedoch nicht instlliert. Sie k&#246;nnen dies &#252;ber das <a href='$2'>CPAN-Modul</a> nachholen.
+rbac_eperl=Das Perl-Modul $1 wird f&#252;r die RBAC-Integration ben&#246;tigt, ist jedoch nicht installiert. Sie k&#246;nnen dies &#252;ber das <a href='$2'>CPAN-Modul</a> nachholen.
 rbac_esolaris=RBAC wird derzeit nur von Solaris unterst&#252;tzt und kann auf diesem $1 System nicht genutzt werden.
 rbac_ok=RBAC-Integration ist auf Ihrem System verf&#252;gbar und kann pro Benutzer im Benutzer- und Gruppenmodul angewandt werden
 rbac_title=Setup RBAC
@@ -310,7 +310,7 @@ save_eip='$1' ist keine vollst&#228;ndige IP- oder Netzwerk-Adresse
 save_elogouttime=Fehlende oder ung&#252;ltige nicht-numerische Zeitangabe f&#252;r die Inaktivit&#228;tsabmeldung.
 save_emask='$1' ist keine g&#252;ltige Netzmaske
 save_emd5=Die Option "Dasselbe Kennwort wie bei Unix" kann nicht auf Systemen mit MD5-verschl&#252;sselten Kennw&#246;rtern benutzt werden.
-save_eminsize=Vermisse minimale Kennwortl&#228;nger oder ung&#252;ltiger Wert
+save_eminsize=Vermisse minimale Kennwortl&#228;nge oder ung&#252;ltiger Wert
 save_emod=Sie haben keine Berechtigung den Zugriff auf das Modul '$1' zu gew&#228;hren
 save_ename='$1' ist kein g&#252;ltiger Benutzername
 save_enamewebmin=Der Benutzername 'webmin' ist reserviert f&#252;r interne Zwecke
