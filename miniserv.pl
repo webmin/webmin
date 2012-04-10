@@ -5200,10 +5200,6 @@ if ($pid < 0) {
 	}
 if (!$pid) {
 	setsid();
-	$ptyfh->make_slave_controlling_terminal();
-	close(STDIN); close(STDOUT); close(STDERR);
-	untie(*STDIN); untie(*STDOUT); untie(*STDERR);
-	close($PASSINw); close($PASSOUTr);
 	($(, $)) = ( $uinfo[3],
                      "$uinfo[3] ".join(" ", $uinfo[3],
                                             &other_groups($uinfo[0])) );
@@ -5211,6 +5207,10 @@ if (!$pid) {
 	$ENV{'USER'} = $ENV{'LOGNAME'} = $user;
 	$ENV{'HOME'} = $uinfo[7];
 
+	$ptyfh->make_slave_controlling_terminal();
+	close(STDIN); close(STDOUT); close(STDERR);
+	untie(*STDIN); untie(*STDOUT); untie(*STDERR);
+	close($PASSINw); close($PASSOUTr);
 	close(SUDOw);
 	close(SOCK);
 	close(MAIN);
