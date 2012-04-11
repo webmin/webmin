@@ -4954,8 +4954,24 @@ if (!@main::list_languages_cache) {
 					$l->{$1} = $2;
 					}
 				}
-			$l->{'index'} = scalar(@rv);
+			$l->{'index'} = scalar(@main::list_languages_cache);
 			push(@main::list_languages_cache, $l);
+			my $utf8lang = $l->{'lang'};
+			$utf8lang =~ s/\.(\S+)$//;
+			$utf8lang =~ s/_RU$//;
+			$utf8lang .= ".UTF-8";
+			if ($l->{'charset'} ne 'UTF-8' &&
+			    ($l->{'charset'} eq 'iso-8859-1' ||
+		             $l->{'charset'} eq 'iso-8859-2' ||
+			     -r "$root_directory/lang/$utf8lang")) {
+				# Add UTF-8 variant
+				my $ul = { %$l };
+				$ul->{'charset'} = 'UTF-8';
+				$ul->{'lang'} = $utf8lang;
+				$ul->{'index'} =
+					scalar(@main::list_languages_cache);
+				push(@main::list_languages_cache, $ul);
+				}
 			}
 		}
 	close(LANG);

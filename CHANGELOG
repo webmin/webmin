@@ -161,3 +161,5 @@ Even more German translation updates, thanks to Raymond Vetter.
 More Dutch updates, thanks to Gandyman.
 Catalan updates, thanks to Jaume Badiella.
 Norwegian updates, thanks to Stein-Aksel Basma.
+---- Changes since 1.590 ----
+All languages now have UTF-8 encoded variants, as well as their native character sets.

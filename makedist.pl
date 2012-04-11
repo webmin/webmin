@@ -145,6 +145,11 @@ while($d = readdir(DIR)) {
 	}
 closedir(DIR);
 
+# Create UTF-8 encodings
+print "Creating UTF-8 language encodings\n";
+system("/usr/local/webadmin/koi8-to-cp1251.pl $tardir/$dir");
+system("/usr/local/webadmin/chinese-to-utf8.pl $tardir/$dir");
+
 # Remove useless .bak, test and other files, and create the tar.gz file
 print "Creating webmin-$vfile.tar.gz\n";
 system("find $tardir/$dir -name '*.bak' -o -name test -o -name '*.tmp' -o -name '*.site' -o -name core -o -name .xvpics -o -name .svn | xargs rm -rf");
