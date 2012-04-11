@@ -1,6 +1,0 @@
-sort_mode=邮件列表排序按照,1,1-名称,0-建立顺序
-program_dir=包含 majordomo 程序的目录,0
-aliases_file=Sendmail-style 别名文件,3,从 sendmail.cf 获得
-smrsh_program_dir=包含 sendmail 安全程序的目录,3,任何
-majordomo_cf=配置文件的全路径,0
-dynamic=列表别名使用随即数字,1,1-是,0-否

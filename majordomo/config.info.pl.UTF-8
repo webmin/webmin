@@ -1,7 +1,0 @@
-wrapper_path=Ścieżka do wrappera majordomo,3,W&nbsp;katalogu programów
-program_dir=Katalog zawierający programy majordomo,0
-dynamic=Używać losowych aliasów list,1,1-Tak,0-Nie
-smrsh_program_dir=Katalog zawierający bezpieczne programy sendmail,3,Gdziekolwiek
-majordomo_cf=Pełna ścieżka do pliku konfiguracyjnego majordomo,0
-sort_mode=Porządkuj listy według,1,1-Nazwy,0-Kolejności utworzenia
-aliases_file=Plik aliasów w stylu Sendmaila,3,Pobierz z sendmail.cf

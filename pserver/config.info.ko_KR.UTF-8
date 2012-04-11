@@ -1,6 +1,0 @@
-cvs=cvs 실행 파일 경로,0
-view_header=저장소 브라우저 헤더 파일,0
-line1=설정 가능한 옵션,11
-line2=시스템 설정,11
-cvsenc=저장소 파일의 문자셋,3,Webmin 언어 설정
-cvsroot=CVS 루트 디렉토리,7

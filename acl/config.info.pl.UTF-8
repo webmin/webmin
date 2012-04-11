@@ -1,6 +1,0 @@
-order=Porządkuj użytkowników i grupy wg,1,0-Kolejności w zbiorze,1-Nazwy
-line1=Opcje konfiguracyjne,11
-ssleay=Ścieżka do programu openssl lub ssleay,0
-line2=Konfiguracja systemu,11
-select=Wyświetl moduły użytkownika w,1,0-Tabeli,1-Rozwijanym menu
-display=Tryb wyświetlania użytkowników i grup,1,1-Tylko nazwy,0-Nazwy i moduły

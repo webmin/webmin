@@ -1,5 +1,0 @@
-index_title=VNC 클라이언트
-index_warn=경고! 이 VNC 세션은 암호화되지 <b>않았습니다</b>.
-index_nojava=이 모듈은 자바와 함께 사용해야 하지만 현재 브라우저에서는 자바를 지원하지 않습니다.  
-index_credits=AT&T에서 작성한 VNC 클라이언트 애플릿입니다.  자세한 내용은 <a href=http://www.uk.research.att.com/vnc>http://www.uk.research.att.com/vnc</a>를 참조하십시오.
-index_esocket= $1 포트 $2을(를) 실행 중인 VNC 서버가 없습니다.

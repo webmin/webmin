@@ -1,1 +1,0 @@
-usermin_dir=Каталог конфигурации Usermin,0

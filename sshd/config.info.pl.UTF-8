@@ -1,5 +1,0 @@
-start_cmd=Polecenie uruchamiające sshd,3,Po prostu uruchomić serwer
-client_config=Pełna ścieżka do pliku konfiguracyjnego klienta ssh,0
-pid_file=Pełna ścieżka do pliku z&nbsp;numerem PID sshd,0
-sshd_path=Pełna ścieżka do programu <tt>sshd</tt>,0
-sshd_config=Pełna ścieżka do pliku konfiguracyjnego sshd,0

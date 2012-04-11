@@ -1,2 +1,0 @@
-lilo_conf=到 LILO 組態檔的路徑,0
-lilo_cmd=套用 LILO 組態的指令,0

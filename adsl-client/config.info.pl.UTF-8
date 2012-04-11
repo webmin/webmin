@@ -1,8 +1,0 @@
-start_cmd=Komenda do podniesienia połączenia ADSL,0
-pap_file=Plik kont PPP,0
-status_cmd=Komenda do pobrania stanu połączenia ADSL,0
-pppoe_conf=Plik konfiguracji PPPOE ADSL,0
-conf_style=Format pliku konfiguracyjnego,1,0-Standardowa konfiguracja RP-PPPoE,1-Plik sieciowy Redhat
-line2=Konfiguracja systemu,11
-stop_cmd=Komenda do zamknięcia połączenia ADSL,0
-pppoe_cmd=Pełna ścieżka do komendy pppoe,0

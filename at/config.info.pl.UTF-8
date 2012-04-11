@@ -1,4 +1,0 @@
-deny_file=Plik zabronionych użytkowników At,3,Brak
-at_style=Rodzaj systemu At,1,linux-Linux,solaris-Solaris,freebsd-FreeBSD
-allow_file=Plik dozwolonych użytkowników At,3,Brak
-at_dir=Katalog zadań dla At,0

@@ -1,5 +1,0 @@
-index_title=VNC クライアント
-index_warn=警告この VNC セッションは<b>暗号化されていません</b>。
-index_nojava=このモジュールは動作するのに Java を必要としますが、ご使用のブラウザは Java をサポートしていません
-index_credits=VNC クライアント アプレットは AT&amp;T により作成されました。詳細は <a href=http://www.uk.research.att.com/vnc>http://www.uk.research.att.com/vnc</a> をご覧ください。
-index_esocket=$1 ポート $2 上で実行中の VNC サーバはありません。

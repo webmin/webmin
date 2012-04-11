@@ -1,8 +1,0 @@
-index_credits=<a href='$1' target=_top>Matthias L. Jugel 및 Marcus Meißner</a>가 GPL에 따라 공동으로 개발한 애플릿입니다.
-index_elookup=텔넷 또는 SSH 서버에 $1을 위한 IP 주소 lookup 실패
-index_esocket=$1 포트 $2에서 실행 중인 텔넷 서버가 없습니다.
-index_esocket2=$1의 포트 $2에 실행되는 SSH 서버가 없습니다.
-index_nojava=이 모듈은 자바와 함께 사용해야 하는데, 현재 브라우저는자바를 지원하지 않습니다
-index_sshcredits=Cryptix 개발 팀(<a href=$1 target=_top>$1</a>)에서 개발한 소프트웨어를 포함합니다.
-index_title=SSH/텔넷 로그인
-index_warn=경고! 텔넷 세션이 암호화되지 <b>않았습니다</b>.

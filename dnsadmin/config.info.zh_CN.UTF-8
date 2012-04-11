@@ -1,6 +1,0 @@
-named_pathname=<i>named</i>的全路径,0
-named_pid_file=进程号文件,0
-records_order=显示记录的顺序,1,1-字母,0-添加
-soa_style=系列号风格,1,0-运行号码,1-基于日期 (YYYYMMDDnn)
-show_list=显示域的形式,1,0-图表,1-列表
-named_boot_file=主配置文件,0

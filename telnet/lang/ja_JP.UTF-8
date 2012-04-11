@@ -1,8 +1,0 @@
-index_title=SSH/Telnet ログイン
-index_warn=警告この telnet セッションは<b>暗号化されていません</b>。
-index_nojava=このモジュールは動作するのに Java を必要としますが、ご使用のブラウザは Java をサポートしていません
-index_credits=アプレットは GPL のもとで<a href='$1' target=_top>Matthias L. Jugel &amp; Marcus Meisner</a>によって開発されました。
-index_sshcredits=ソフトウェアはCryptix Development Team (<a href=$1 target=_top>$1</a>) により開発されました。
-index_esocket=$1 ポート $2 上で実行中の telnet サーバはありません。
-index_esocket2=$1 ポート $2 上で実行中の SSH サーバはありません。
-index_elookup=telnet または SSH サーバテストのためのIPアドレス $1 のルックアップに失敗しました。

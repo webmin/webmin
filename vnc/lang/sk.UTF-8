@@ -1,5 +1,0 @@
-index_credits=VNC klientský applet vytvorený AT&amp;T. Viac informácií nájdete na <a href=http://www.uk.research.att.com/vnc>http://www.uk.research.att.com/vnc</a>
-index_esocket=Na $1 a porte $2 nebeží žiadny VNC server.
-index_nojava=Tento modul potrebuje pre svoje fungovanie Javu, no Váš prehliadač nepodporuje Javu.
-index_title=VNC klient
-index_warn=Upozornenie! Toto VNC spojenie <b>nie je</b> šifrované.

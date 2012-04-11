@@ -1,6 +1,0 @@
-order=Zoraď užívateľov a skupiny podľa,1,0-Poradia v súbore,1-Mena
-line1=Nastaviteľné možnosti,11
-ssleay=Cesta k programu openssl alebo ssleay,3,Automatická
-line2=Nastavenie Systému,11
-select=Zobraz užívateľské moduly v ,1,0-Tabuľke,1-Rozbaľovacom menu
-display=Spôsob zobrazenia užívateľov a skupín,1,1-Iba mená,0-Mená a moduly

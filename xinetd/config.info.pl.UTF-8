@@ -1,4 +1,0 @@
-start_cmd=Polecenie uruchamiające,0
-pid_file=Scieżka do pliku z&nbsp;numerem PID Xinetd,0
-xinetd_conf=Plik konfiguracyjny Xinetd,0
-protocols_file=Plik protokołów sieciowych,0

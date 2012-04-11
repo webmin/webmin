@@ -1,4 +1,0 @@
-pid_file=Ścieżka do pliku z&nbsp;numerem PID serwera fetchmail,0
-daemon_user=Użytkownik, jako który serwer fetchmail jest uruchamiany,0
-fetchmail_path=Ścieżka do programu <tt>fetchmail</tt>,0
-config_file=Modyfikowany plik konfiguracyjny fetchmaila,3,Pliki <tt>.fetchmailrc</tt> wszystkich użytkowników

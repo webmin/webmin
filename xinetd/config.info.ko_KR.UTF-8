@@ -1,7 +1,0 @@
-lookup_servs=메인 페이지에 포트 번호를 출력하겠습니까?,1,1-예,0-아니오
-start_cmd=xinetd 시동 명령,0
-pid_file=Xinetd PID 파일 경로,3,없음 (대신 프로세스 확인)
-protocols_file=네트워크 프로토콜 파일,0
-line2=시스템 설정,11
-add_dir=새 서비스 추가,15,add_dir
-xinetd_conf=Xinetd 설정 파일,0

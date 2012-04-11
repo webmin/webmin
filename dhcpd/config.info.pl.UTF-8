@@ -1,9 +1,0 @@
-lease_file=Plik dzierżaw serwera DHCP,0
-lease_tz=Pokazuj czas dzierżawy wg,1,0-GMT,1-Czasu lokalnego
-dhcpd_conf=Plik konfiguracyjny serwera DHCP,0
-pid_file=Ścieżka do pliku z&nbsp;numerem PID serwera DHCP,0
-interfaces=Interfejsy&#44; na których ma pracować DHCP,3,Automatycznie
-dhcpd_nocols=Ilość ikon w&nbsp;wierszu,0
-hostnet_list=Pokaż podsieci i&nbsp;hosty jako,1,0-Ikony,1-Listę
-dhcpd_path=Plik programu serwera DHCP,0
-lease_sort=Uporządkuj dzierżawy wg,1,0-Kolejności w&nbsp;pliku,1-Adresów IP,2-Nazw hostów

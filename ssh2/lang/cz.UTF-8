@@ -1,5 +1,0 @@
-index_title=Prihlaseni Telentem
-index_warn=Pozor! Spojeni telentem <b>neni</b> kryptovane.
-index_nojava=Tento modul vyzaduje fungovani javy, ale vas prohlizec javu nepodporuje :-((
-index_credits=Applet je pod GPL - <a href='$1'>Matthias L. Jugel &amp; Marcus Meißner</a>.
-index_esocket=Nenalezen zadny telnetovy server bezici na $1 portu $2.

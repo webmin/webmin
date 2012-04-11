@@ -1,9 +1,0 @@
-named_pathname=到 <i>named</i> 的完整路徑,0
-updserial_on=產生標頭序號,1,0-否,1-是
-named_pid_file=程序編號檔案,0
-line1=組態選項,11
-line2=系統組態,11
-records_order=顯示紀錄的排列順序,1,1-依據名稱,0-依據增加時間
-soa_style=序號樣式,1,0-遞增的順序,1-以日期為基礎 (YYYYMMDDnn)
-show_list=網域顯示方式,1,0-圖示,1-列表
-named_boot_file=主要組態檔,0

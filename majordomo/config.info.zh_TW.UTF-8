@@ -1,3 +1,0 @@
-program_dir=包含 Majordomo 程式的目錄,0
-aliases_file=Sendmail樣式的別名檔案,3,由 sendmail.cf 取得
-majordomo_cf=到 Majordomo 設定檔的完整路徑,0
