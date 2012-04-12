@@ -53,9 +53,27 @@ print &ui_table_row($text{'net_saddr'},
 	&ui_opt_textbox("saddr", $saddr, 15, $text{'default'},
 			$text{'net_ip'}));
 
-# Source port
+# Source port for queries
 print &ui_table_row($text{'net_sport'},
 	&ui_opt_textbox("sport", $sport, 5, $text{'default'},
+			$text{'net_port'}));
+
+# Source port for transfers
+$src = &find("transfer-source", $mems);
+$srcstr = join(" ", @{$src->{'values'}});
+$tport = $1 if ($srcstr =~ /port\s+(\d+)/i);
+$taddr = $1 if ($srcstr =~ /^([0-9\.]+|\*)/i);
+print &ui_table_row($text{'net_taddr'},
+	&ui_radio("taddr_def", $taddr eq "" ? 1 : $taddr eq "*" ? 2 : 0,
+		  [ [ 1, $text{'default'} ],
+		    [ 2, $text{'net_taddrdef'} ],
+		    [ 0, $text{'net_ip'}." ".
+		      &ui_textbox("taddr", $taddr eq "*" ? "" : $taddr, 15) ],
+		  ]));
+
+# Source port for transfers
+print &ui_table_row($text{'net_tport'},
+	&ui_opt_textbox("tport", $tport, 5, $text{'default'},
 			$text{'net_port'}));
 
 print &addr_match_input($text{'net_topol'}, 'topology', $mems, 1);

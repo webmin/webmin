@@ -20,6 +20,10 @@ $desc = &ip6int_to_net(&arpa_to_ip($zone->{'name'}));
 &ui_print_header($desc, $text{'xfer_title'}, "",
 		 undef, undef, undef, undef, &restart_links($zone));
 
+# Get transfer source IP
+$options = &find("options", $bconf);
+$src = &find("transfer-source", $options->{'members'});
+
 # Get master IPs
 $masters = &find("masters", $zconf);
 foreach $av (@{$masters->{'members'}}) {
@@ -27,7 +31,10 @@ foreach $av (@{$masters->{'members'}}) {
 	}
 print &text('xfer_doing', join(" ", @ips)),"<br>\n";
 $temp = &transname();
-$rv = &transfer_slave_records($zone->{'name'}, \@ips, $temp);
+$rv = &transfer_slave_records($zone->{'name'}, \@ips, $temp,
+			      $src ? $src->{'values'}->[0] : undef,
+			      $src && @{$src->{'values'}} > 2 ?
+				$src->{'values'}->[2] : undef);
 foreach $ip (@ips) {
 	if ($rv->{$ip}) {
 		print &text('xfer_failed', $ip,

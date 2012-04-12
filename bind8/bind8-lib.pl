@@ -3308,12 +3308,19 @@ if (&find_byname("nscd")) {
 	}
 }
 
-# transfer_slave_records(zone, &masters, [file])
+# transfer_slave_records(zone, &masters, [file], [source-ip, [source-port]])
 # Transfer DNS records from a master into some file. Returns a map from master
 # IPs to errors.
 sub transfer_slave_records
 {
-my ($dom, $masters, $file) = @_;
+my ($dom, $masters, $file, $source, $sourceport) = @_;
+my $sourcearg;
+if ($source && $source ne "*") {
+	$sourcearg = "-t ".$source;
+	if ($sourceport) {
+		$sourcearg .= "#".$sourceport;
+		}
+	}
 my %rv;
 my $dig = &has_command("dig");
 foreach my $ip (@$masters) {
@@ -3321,8 +3328,9 @@ foreach my $ip (@$masters) {
 		$rv{$ip} = "Missing dig command";
 		}
 	else {
-		my $out = &backquote_logged("$dig IN AXFR ".quotemeta($dom).
-					    " \@".quotemeta($ip)." 2>&1");
+		my $out = &backquote_logged(
+			"$dig IN $sourcearg AXFR ".quotemeta($dom).
+			" \@".quotemeta($ip)." 2>&1");
 		if ($? || $out =~ /Transfer\s+failed/) {
 			$rv{$ip} = $out;
 			}

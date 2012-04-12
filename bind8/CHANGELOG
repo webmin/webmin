@@ -130,3 +130,5 @@ Added the Test Zone Transfer button to the slave zone page, to check if zone tra
 ---- Changes since 1.550 ----
 Links for editing and deleting records now using the record name instead of an index, which makes editing more reliable if records are also being updated by dynamic DNS or some other tool.
 When a zone is reloaded, it is now frozed first and then thawed afterwards with the rndc command, to better support dynamic DNS.
+---- Changes since 1.580 ----
+The source IP and port for zone transfers can now be specific on the Addresses and Topology page.

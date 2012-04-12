@@ -608,6 +608,10 @@ net_eport='$1' is not a valid port number
 net_eusedport=Only one line of addresses is allowed for port $1
 net_etopology=No topology addresses entered
 net_erecur=No addresses to allow recursion from entered
+net_taddr=Source IP address for transfers
+net_tport=Source port for transfers
+net_taddrdef=Closest IP
+net_etport=A transfer source port cannot be specified without an address
 
 controls_title=Control Interface Options
 controls_ecannot=You are not allowed to edit the control options

@@ -28,6 +28,8 @@ if (!$in{'listen_def'}) {
 		}
 	}
 &save_directive($options, 'listen-on', \@listen, 1);
+
+# Save query source address and port
 if (!$in{'saddr_def'}) {
 	&check_ipaddress($in{'saddr'}) ||
 		&error(&text('net_eaddr', $in{'saddr'}));
@@ -45,6 +47,30 @@ if (@qvals) {
 else {
 	&save_directive($options, 'query-source', [ ], 1);
 	}
+
+# Save transfer source address and port
+if ($in{'taddr_def'} == 0) {
+	&check_ipaddress($in{'taddr'}) ||
+		&error(&text('net_eaddr', $in{'taddr'}));
+	push(@tvals, $in{'taddr'});
+	}
+elsif ($in{'taddr_def'} == 2) {
+	push(@tvals, "*");
+	}
+if ($in{'tport_def'} == 0) {
+	@tvals || &error($text{'net_etport'});
+	$in{'tport'} =~ /^\d+$/ || &error(&text('net_eport', $in{'sport'}));
+	push(@tvals, "port", $in{'tport'});
+	}
+if (tqvals) {
+	&save_directive($options, 'transfer-source',
+			[ { 'name' => 'transfer-source',
+			    'values' => \@tvals } ], 1);
+	}
+else {
+	&save_directive($options, 'transfer-source', [ ], 1);
+	}
+
 $in{'topology_def'} || $in{'topology'} || &error($text{'net_etopology'});
 &save_addr_match('topology', $options, 1);
 $in{'allow-recursion_def'} || $in{'allow-recursion'} ||
