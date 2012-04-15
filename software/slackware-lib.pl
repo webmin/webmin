@@ -203,7 +203,12 @@ sub is_package
 {
 local $count;
 local $qm = quotemeta($_[0]);
-&open_execute_command(TAR, "gunzip -c $qm | tar tf - 2>&1", 1, 1);
+if ($_[0] =~ /\.txz$/) {
+	&open_execute_command(TAR, "tar tf $qm 2>&1", 1, 1);
+	}
+else {
+	&open_execute_command(TAR, "gunzip -c $qm | tar tf - 2>&1", 1, 1);
+	}
 while(<TAR>) {
 	$count++ if (/^[^\/\s]\S+/);
 	}
@@ -216,7 +221,7 @@ return $count < 2 ? 0 : 1;
 #  package description
 sub file_packages
 {
-if ($_[0] !~ /^(.*)\/(([^\/]+)(\.tgz|\.tar\.gz))$/) {
+if ($_[0] !~ /^(.*)\/(([^\/]+)(\.tgz|\.txz|\.tar\.gz))$/) {
 	return "$_[0] $text{'slack_unknown'}";
 	}
 local ($dir, $file, $base) = ($1, $2, $3);
