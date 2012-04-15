@@ -510,6 +510,8 @@ Similar to ui_columns_table, but wrapped in a form. Parameters are :
 
 =item hiddens - An array ref of hidden fields, each of which is a 2-element array ref containing the name and value.
 
+=item formno - Index of this form on the page. Defaults to 0, but should be set if there is more than one form on the page.
+
 All other parameters are the same as ui_columns_table.
 
 =cut
