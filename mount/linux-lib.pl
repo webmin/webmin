@@ -72,7 +72,12 @@ while(<FSTAB>) {
 	local(@o, $at_boot);
 	chop; s/#.*$//g;
 	if (!/\S/ || /\signore\s/) { next; }
-	@p = split(/\s+/, $_);
+	if (/\t/) {
+		@p = split(/\t+/, $_);
+		}
+	else {
+		@p = split(/\s+/, $_);
+		}
 	if ($p[2] eq "proc") { $p[0] = "proc"; }
 	elsif ($p[2] eq "auto") { $p[2] = "*"; }
 	elsif ($p[2] eq "swap") { $p[1] = "swap"; }
@@ -199,7 +204,7 @@ else {
 		$dev =~ s/ /\\040/g;
 		}
 	&open_tempfile(FSTAB, ">> $config{fstab_file}");
-	&print_tempfile(FSTAB, "$dev  $_[0]  $_[2]");
+	&print_tempfile(FSTAB, $dev."\t".$_[0]."\t".$_[2]);
 	local @opts = $_[3] eq "-" ? ( ) : split(/,/, $_[3]);
 	if ($_[5] eq "no") {
 		push(@opts, "noauto");
@@ -210,9 +215,9 @@ else {
 	if ($_[2] eq "bind") {
 		push(@opts, "bind");
 		}
-	if (!@opts) { &print_tempfile(FSTAB, "  defaults"); }
-	else { &print_tempfile(FSTAB, "  ".join(",", @opts)); }
-	&print_tempfile(FSTAB, "  0  ");
+	if (!@opts) { &print_tempfile(FSTAB, "\t"."defaults"); }
+	else { &print_tempfile(FSTAB, "\t".join(",", @opts)); }
+	&print_tempfile(FSTAB, "\t"."0"."\t");
 	&print_tempfile(FSTAB, $_[4] eq "-" ? "0\n" : "$_[4]\n");
 	&close_tempfile(FSTAB);
 	}
@@ -238,7 +243,7 @@ foreach (@fstab) {
 		# Found the line to replace
 		local $dev = $_[2];
 		$dev =~ s/ /\\040/g;
-		&print_tempfile(FSTAB, "$dev  $_[1]  $_[3]");
+		&print_tempfile(FSTAB, $dev."\t".$_[1]."\t".$_[3]);
 		local @opts = $_[4] eq "-" ? ( ) : split(/,/, $_[4]);
 		if ($_[6] eq "no") {
 			push(@opts, "noauto");
@@ -249,9 +254,9 @@ foreach (@fstab) {
 		if ($_[3] eq "bind") {
 			push(@opts, "bind");
 			}
-		if (!@opts) { &print_tempfile(FSTAB, "  defaults"); }
-		else { &print_tempfile(FSTAB, "  ".join(",", @opts)); }
-		&print_tempfile(FSTAB, "  0  ");
+		if (!@opts) { &print_tempfile(FSTAB, "\t"."defaults"); }
+		else { &print_tempfile(FSTAB, "\t".join(",", @opts)); }
+		&print_tempfile(FSTAB, "\t"."0"."\t");
 		&print_tempfile(FSTAB, $_[5] eq "-" ? "0\n" : "$_[5]\n");
 		}
 	else { &print_tempfile(FSTAB, $_,"\n"); }
