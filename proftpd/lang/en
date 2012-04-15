@@ -1,7 +1,7 @@
 index_title=ProFTPD Server
 index_eproftpd=The ProFTPD server $1 could not be found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
 index_eproftpd2=The program $1 does not appear to be the ProFTPD server. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect. Output from the command $3 was : $4
-index_eversion=The version of ProFTPD server $1 is not supported by Webmin. Only versions 0.99 and above are supported.
+index_eversion=Version $1 of the ProFTPD server is not supported by Webmin.
 index_econf=The ProFTPD config file $1 does not exist or is not valid. Maybe your <a href='$2'>module configuration</a> is incorrect.
 index_apply=Apply Changes
 index_applymsg=Click this button to apply the current configuration by sending a SIGHUP signal to the running ProFTPD process.
