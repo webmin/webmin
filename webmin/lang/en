@@ -776,9 +776,12 @@ ipkey_eextraca=Additional certificate file $1 does not exist
 descs_title=Module Titles
 descs_info=This page allows you to specify alternate titles for Webmin modules, to override their standard descriptions.
 descs_mod=Module
+descs_cmod=Original module
 descs_desc=New title
+descs_cdesc=Clone title
 descs_err=Failed to save module titles
 descs_edesc=Missing title for module '$1'
+descs_etitle=Missing title for clone '$1'
 
 export_err=Failed to export modules
 export_ecmd=Missing needed command $1
