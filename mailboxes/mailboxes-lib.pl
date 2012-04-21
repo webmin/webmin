@@ -1256,5 +1256,15 @@ if ($folder) {
 	}
 }
 
+sub user_list_link
+{
+if ($in{'dom'}) {
+	return "../virtual-server/list_users.cgi?dom=$in{'dom'}";
+	}
+else {
+	return "";
+	}
+}
+
 1;
 

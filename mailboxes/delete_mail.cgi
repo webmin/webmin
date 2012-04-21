@@ -26,7 +26,7 @@ if ($in{'mark1'} || $in{'mark2'}) {
 		}
 	dbmclose(%read);
 	$perpage = $folder->{'perpage'} || $config{'perpage'};
-	&redirect("list_mail.cgi?start=$in{'start'}&folder=$in{'folder'}&user=$in{'user'}");
+	&redirect("list_mail.cgi?start=$in{'start'}&folder=$in{'folder'}&user=$in{'user'}&dom=$in{'dom'}");
 	}
 elsif ($in{'move1'} || $in{'move2'}) {
 	# Moving mails to some other user's inbox
@@ -50,7 +50,7 @@ elsif ($in{'move1'} || $in{'move2'}) {
 	&webmin_log("movemail", undef, undef, { 'from' => $folder->{'file'},
 						'to' => $mfolders[0]->{'file'},
 						'count' => scalar(@delete) } );
-	&redirect("list_mail.cgi?start=$in{'start'}&folder=$in{'folder'}&user=$in{'user'}");
+	&redirect("list_mail.cgi?start=$in{'start'}&folder=$in{'folder'}&user=$in{'user'}&dom=$in{'dom'}");
 	}
 elsif ($in{'copy1'} || $in{'copy2'}) {
 	# Copying mails to some other folder
@@ -71,17 +71,18 @@ elsif ($in{'copy1'} || $in{'copy2'}) {
 	&webmin_log("copymail", undef, undef, { 'from' => $folder->{'file'},
 						'to' => $cfolders[0]->{'file'},
 						'count' => scalar(@delete) } );
-	&redirect("list_mail.cgi?start=$in{'start'}&folder=$in{'folder'}&user=$in{'user'}");
+	&redirect("list_mail.cgi?start=$in{'start'}&folder=$in{'folder'}&user=$in{'user'}&dom=$in{'dom'}");
 	}
 elsif ($in{'forward'}) {
 	# Forwarding selected mails .. redirect
 	@delete || &error($text{'delete_efnone'});
-	&redirect("reply_mail.cgi?folder=$in{'folder'}&user=$in{'user'}&".
+	&redirect("reply_mail.cgi?folder=$in{'folder'}&".
+		  "dom=$in{'dom'}&user=$in{'user'}&".
 		  join("&", map { "mailforward=$_" } @delete));
 	}
 elsif ($in{'new'}) {
 	# Need to redirect to compose form
-	&redirect("reply_mail.cgi?new=1&folder=$in{'folder'}&user=$in{'user'}");
+	&redirect("reply_mail.cgi?new=1&folder=$in{'folder'}&user=$in{'user'}&dom=$in{'dom'}");
 	}
 elsif ($in{'black'} || $in{'white'}) {
 	# Deny or allow all senders
@@ -100,7 +101,7 @@ elsif ($in{'black'} || $in{'white'}) {
 	push(@from, @newaddrs);
 	&spam::save_directives($conf, $dir, \@from, 1);
 	&flush_file_lines();
-	&redirect("list_mail.cgi?start=$in{'start'}&folder=$in{'folder'}&user=$in{'user'}");
+	&redirect("list_mail.cgi?start=$in{'start'}&folder=$in{'folder'}&user=$in{'user'}&dom=$in{'dom'}");
 	}
 elsif ($in{'razor'} || $in{'ham'}) {
 	# Report as ham or spam all messages, and show output to the user
@@ -155,7 +156,7 @@ elsif ($in{'razor'} || $in{'ham'}) {
 		print "window.location = 'list_mail.cgi?folder=$in{'folder'}&user=$in{'user'}';\n";
 		print "</script>\n";
 		}
-	&ui_print_footer("list_mail.cgi?folder=$in{'folder'}&user=$in{'user'}", $text{'mail_return'}, "", $text{'index_return'});
+	&ui_print_footer("list_mail.cgi?folder=$in{'folder'}&user=$in{'user'}&dom=$in{'dom'}", $text{'mail_return'}, &user_list_link(), $text{'index_return'});
 	}
 elsif ($in{'delete'} || $in{'deleteall'}) {
 	# Just deleting emails
@@ -175,7 +176,7 @@ elsif ($in{'delete'} || $in{'deleteall'}) {
 			[ [ 'confirm', $text{'confirm_ok'} ] ],
 			);
 		
-		&ui_print_footer("list_mail.cgi?start=$in{'start'}&folder=$in{'folder'}&user=$in{'user'}", $text{'mail_return'});
+		&ui_print_footer("list_mail.cgi?start=$in{'start'}&folder=$in{'folder'}&user=$in{'user'}&dom=$in{'dom'}", $text{'mail_return'});
 		}
 	else {
 		# Go ahead and delete
@@ -202,7 +203,7 @@ elsif ($in{'delete'} || $in{'deleteall'}) {
 			    { 'from' => $folder->{'file'},
 			      'all' => $in{'deleteall'},
 			      'count' => $delcount } );
-		&redirect("list_mail.cgi?start=$in{'start'}&folder=$in{'folder'}&user=$in{'user'}");
+		&redirect("list_mail.cgi?start=$in{'start'}&folder=$in{'folder'}&user=$in{'user'}&dom=$in{'dom'}");
 		}
 	}
 &pop3_logout_all();

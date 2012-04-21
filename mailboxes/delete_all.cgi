@@ -14,7 +14,8 @@ if ($in{'confirm'}) {
 	&mailbox_empty_folder($folder);
 	&webmin_log("delmail", undef, undef, { 'from' => $folder->{'file'},
 					       'count' => $sz });
-	&redirect("list_mail.cgi?user=$in{'user'}&folder=$in{'folder'}");
+	&redirect("list_mail.cgi?user=$in{'user'}&folder=$in{'folder'}".
+		  "&dom=$in{'dom'}");
 	}
 else {
 	# Ask first
@@ -26,12 +27,13 @@ else {
                     &mailbox_folder_size($folder),
                     &nice_size(&folder_size($folder))),
 		[ [ 'user', $in{'user'} ],
+		  [ 'dom', $in{'dom'} ],
 		  [ 'folder', $in{'folder'} ] ],
 		[ [ 'confirm', $text{'delall_ok'} ] ],
 		);
-	&ui_print_footer("list_mail.cgi?user=$in{'user'}&folder=$in{'folder'}",
-			 $text{'mail_return'},
-			 "", $text{'index_return'});
+	&ui_print_footer("list_mail.cgi?user=$in{'user'}&folder=$in{'folder'}".
+			   "&dom=$in{'dom'}", $text{'mail_return'},
+			 &user_list_link(), $text{'index_return'});
 	}
 
 

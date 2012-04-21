@@ -57,6 +57,7 @@ if ($in{'start'} >= @mail && $in{'jump'}) {
 # Start of the deletion / move form
 print &ui_form_start("delete_mail.cgi", "post");
 print &ui_hidden("user", $in{'user'});
+print &ui_hidden("dom", $in{'dom'});
 print &ui_hidden("folder", $folder->{'index'});
 print &ui_hidden("mod", &modification_time($folder));
 print &ui_hidden("start", $in{'start'});
@@ -96,6 +97,7 @@ if (@mail) {
 	# Show simple search form
 	push(@grid, &ui_form_start("mail_search.cgi").
 		    &ui_hidden("user", $in{'user'}).
+		    &ui_hidden("dom", $in{'dom'}).
 		    &ui_hidden("folder", $folder->{'index'}).
 		    &ui_hidden("simple", 1).
 		    &ui_submit($text{'mail_search2'})." ".
@@ -105,6 +107,7 @@ if (@mail) {
 	# Show advanced search button
 	push(@grid, &ui_form_start("search_form.cgi").
 		    &ui_hidden("user", $in{'user'}).
+		    &ui_hidden("dom", $in{'dom'}).
 		    &ui_hidden("folder", $folder->{'index'}).
 		    &ui_submit($text{'mail_advanced'}, "advanced").
 		    &ui_form_end());
@@ -112,6 +115,7 @@ if (@mail) {
 	# Show delete all button
 	push(@grid, &ui_form_start("delete_all.cgi").
 		    &ui_hidden("user", $in{'user'}).
+		    &ui_hidden("dom", $in{'dom'}).
 		    &ui_hidden("folder", $folder->{'index'}).
 		    &ui_submit($text{'mail_delall'}).
 		    &ui_form_end());
@@ -122,6 +126,7 @@ $jumpform = (@mail > $perpage);
 if ($jumpform) {
 	push(@grid, &ui_form_start("list_mail.cgi").
 		    &ui_hidden("user", $in{'user'}).
+		    &ui_hidden("dom", $in{'dom'}).
 		    &ui_hidden("folder", $folder->{'index'}).
 		    &ui_submit($text{'mail_jump'})." ".
 		    &ui_textbox("jump", int($in{'start'} / $perpage)+1, 3)." ".
@@ -142,7 +147,7 @@ if ($config{'log_read'}) {
 	&webmin_log("read", undef, $in{'user'},
 		    { 'file' => $folder->{'file'} });
 	}
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer(&user_list_link(), $text{'index_return'});
 
 sub show_arrows
 {
@@ -160,7 +165,9 @@ my $e = @mail-$in{'start'}-$perpage+1;
 print &ui_page_flipper(
 	@mail ? &text('mail_pos', $s, $e < 1 ? 1 : $e, scalar(@mail), $sel)
 	      : &text('mail_none', $sel),
-	&ui_submit($text{'mail_fchange'}).&ui_hidden("user", $in{'user'}),
+	&ui_submit($text{'mail_fchange'}).
+	  &ui_hidden("user", $in{'user'}).
+	  &ui_hidden("dom", $in{'dom'}),
 	"list_mail.cgi",
 	$left,
 	$right,

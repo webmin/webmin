@@ -107,6 +107,7 @@ else {
 if (@rv) {
 	print &ui_form_start("delete_mail.cgi", "post");
 	print &ui_hidden("user", $in{'user'});
+	print &ui_hidden("dom", $in{'dom'});
 	print &ui_hidden("folder", $in{'folder'});
 	if ($config{'top_buttons'} && !$multi_folder) {
 		&show_buttons(1, \@folders, $folder, \@rv, $in{'user'}, 1);
@@ -123,6 +124,7 @@ else {
 
 &ui_print_footer($in{'simple'} ? ( ) : ( "search_form.cgi?folder=$in{'folder'}",
 				$text{'sform_return'} ),
-	"list_mail.cgi?user=$in{'user'}&folder=$in{'folder'}", $text{'mail_return'},
-	"", $text{'index_return'});
+	"list_mail.cgi?user=$in{'user'}&folder=$in{'folder'}&dom=$in{'dom'}",
+	  $text{'mail_return'},
+	&user_list_link(), $text{'index_return'});
 

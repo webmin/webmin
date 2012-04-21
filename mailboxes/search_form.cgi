@@ -14,6 +14,7 @@ require './mailboxes-lib.pl';
 # Start of form
 print &ui_form_start("mail_search.cgi");
 print &ui_hidden("user", $in{'user'});
+print &ui_hidden("dom", $in{'dom'});
 print &ui_hidden("ofolder", $in{'folder'});
 print &ui_table_start($text{'sform_header'}, "width=100%", 2);
 
@@ -24,7 +25,6 @@ print &ui_table_row($text{'sform_andmode'},
 
 # Criteria table
 $ctable = &ui_columns_start([ ], 50, 1);
-
 for($i=0; $i<=4; $i++) {
 	local @cols;
 	push(@cols, $text{'sform_where'});
@@ -44,7 +44,7 @@ for($i=0; $i<=4; $i++) {
 	$ctable .= &ui_columns_row(\@cols, [ map { "nowrap" } @cols ]);
 	}
 $ctable .= &ui_columns_end();
-print &ui_table_row(" ", $ctable, 1);
+print &ui_table_row(" ", $ctable);
 
 # Folder to search
 print &ui_table_row($text{'sform_folder2'},
@@ -55,6 +55,6 @@ print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'sform_ok'} ] ]);
 
 &ui_print_footer("list_mail.cgi?folder=$in{'folder'}&user=".
-		  &urlize($in{'user'}), $text{'mail_return'},
-		 "", $text{'index_return'});
+		  &urlize($in{'user'})."&dom=$in{'dom'}", $text{'mail_return'},
+		 &user_list_link(), $text{'index_return'});
 

@@ -2347,7 +2347,6 @@ foreach my $f (@$folders) {
 	}
 return &ui_select($name, $byid ? &folder_name($folder) : $folder->{'index'},
 		  \@opts, 1, 0, 0, 0, $auto ? "onChange='form.submit()'" : "");
-return $sel;
 }
 
 # folder_size(&folder, ...)
