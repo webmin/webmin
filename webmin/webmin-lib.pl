@@ -2091,4 +2091,20 @@ foreach my $u (@$allupdates) {
 return \@updates;
 }
 
+# get_clone_source(dir)
+# Given a module dir, returns the dir of its original
+sub get_clone_source
+{
+my ($dir) = @_;
+my $lnk = readlink(&module_root_directory($dir));
+return undef if (!$lnk);
+if ($lnk =~ /\/([^\/]+)$/) {
+	return $1;
+	}
+elsif ($lnk =~ /^[^\/ ]+$/) {
+	return $lnk;
+	}
+return undef;
+}
+
 1;
