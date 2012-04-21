@@ -72,6 +72,7 @@ print &check_clicks_function();
 # Start of the form
 print &ui_form_start("reply_mail.cgi");
 print &ui_hidden("user", $in{'user'});
+print &ui_hidden("dom", $in{'dom'});
 print &ui_hidden("idx", $in{'idx'});
 print &ui_hidden("folder", $in{'folder'});
 print &ui_hidden("mod", &modification_time($folder));
@@ -93,7 +94,7 @@ if ($config{'top_buttons'} == 2 && &editable_mail($mail)) {
 
 # Start of headers section
 $hbase = "view_mail.cgi?idx=$in{'idx'}&body=$in{'body'}&".
-	 "folder=$in{'folder'}&user=$uuser$subs";
+	 "folder=$in{'folder'}&dom=$in{'dom'}&user=$uuser$subs";
 if ($in{'headers'}) {
 	push(@hmode, "<a href='$hbase&headers=0'>$text{'view_noheaders'}</a>");
 	}
@@ -232,10 +233,12 @@ local @sr = !@sub ? ( ) :
 $s = int((@mail - $in{'idx'} - 1) / $config{'perpage'}) *
 	$config{'perpage'};
 &mail_page_footer(
-	@sub ? ("view_mail.cgi?idx=$in{'idx'}&folder=$in{'folder'}&user=$uuser",
-		$text{'view_return'}) : ( ),
-	"list_mail.cgi?folder=$in{'folder'}&user=$uuser", $text{'mail_return'},
-	"", $text{'index_return'});
+	@sub ? ("view_mail.cgi?idx=$in{'idx'}&folder=$in{'folder'}&".
+		"user=$uuser&dom=$in{'dom'}", $text{'view_return'})
+	     : ( ),
+	"list_mail.cgi?folder=$in{'folder'}&user=$uuser&dom=$in{'dom'}",
+	  $text{'mail_return'},
+	&user_list_link(), $text{'index_return'});
 
 # show_mail_buttons(pos, submode)
 sub show_mail_buttons

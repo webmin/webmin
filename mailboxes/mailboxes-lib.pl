@@ -1072,12 +1072,13 @@ if ($sf !~ /^\//) {
 return $sf;
 }
 
-# view_mail_link(user, &folder, index, from-to-text)
+# view_mail_link(user, &folder, index, from-to-text, [dom])
 sub view_mail_link
 {
-local ($user, $folder, $idx, $txt) = @_;
+local ($user, $folder, $idx, $txt, $dom) = @_;
 local $uuser = &urlize($user);
-local $url = "view_mail.cgi?user=$uuser&idx=$idx&folder=$folder->{'index'}";
+local $url = "view_mail.cgi?user=$uuser&idx=$idx&folder=$folder->{'index'}".
+	     "&dom=$dom";
 if ($config{'open_mode'}) {
         return "<a href='' onClick='window.open(\"$url\", \"viewmail\", \"toolbar=no,menubar=no,scrollbars=yes,width=1024,height=768\"); return false'>".
                &simplify_from($txt)."</a>";
@@ -1213,7 +1214,8 @@ foreach my $mail (@mail) {
 	local $from = $mail->{'header'}->{$showto ? 'to' : 'from'};
 	$from = $text{'mail_unknown'} if ($from !~ /\S/);
 	local $mfolder = $mail->{'folder'} || $folder;
-	push(@cols, &view_mail_link($in{'user'}, $mfolder, $idx, $from));
+	push(@cols, &view_mail_link($in{'user'}, $mfolder, $idx, $from,
+				    $in{'dom'}));
 	if ($config{'show_to'}) {
 		push(@cols, &simplify_from(
 	   		$mail->{'header'}->{$showto ? 'from' : 'to'}));

@@ -67,3 +67,5 @@ Mail with HTML and text bodies now uses a multipart/alternative sub-attachment, 
 ---- Changes since 1.490 ----
 Put text/plain alternative body part before text/html, to be compliant with RFC
 2046.
+---- Changes since 1.590 ----
+When reading email via a link from Virtualmin, the "return to user list" link returns you to the mailboxes in the original domain.

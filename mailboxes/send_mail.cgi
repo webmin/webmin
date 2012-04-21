@@ -77,7 +77,8 @@ if ($in{'body'} =~ /\S/) {
 			print map { $_."<p>\n" } @errs;
 			&mail_page_footer(
 			    "javascript:back()", $text{'reply_return'},
-			    "index.cgi?user=$in{'user'}&folder=$in{'folder'}",
+			    "index.cgi?user=$in{'user'}&folder=$in{'folder'}".
+			      "&dom=$in{'dom'}",
 			    $text{'mail_return'});
 			exit;
 			}
@@ -242,16 +243,19 @@ $tos = join(" , ", map { "<tt>".&html_escape($_)."</tt>" } @tos);
 print "<p>",&text($in{'draft'} ? 'send_draft' : 'send_ok', $tos),"<p>\n";
 
 if ($in{'idx'} ne '') {
-	&mail_page_footer("view_mail.cgi?idx=$in{'idx'}&folder=$in{'folder'}&user=$in{'user'}$subs",
-	        $text{'view_return'},
-		"list_mail.cgi?folder=$in{'folder'}&user=$in{'user'}",
-		$text{'mail_return'},
-		"", $text{'index_return'});
+	&mail_page_footer("view_mail.cgi?idx=$in{'idx'}&folder=$in{'folder'}".
+			    "&user=$in{'user'}&dom=$in{'dom'}$subs",
+			  $text{'view_return'},
+			  "list_mail.cgi?folder=$in{'folder'}&user=$in{'user'}".
+			    "&dom=$in{'dom'}",
+			  $text{'mail_return'},
+			  &user_list_link(), $text{'index_return'});
 	}
 else {
-	&mail_page_footer("list_mail.cgi?folder=$in{'folder'}&user=$in{'user'}",
-		$text{'mail_return'},
-		"", $text{'index_return'});
+	&mail_page_footer("list_mail.cgi?folder=$in{'folder'}&user=$in{'user'}".
+			    "&dom=$in{'dom'}",
+			  $text{'mail_return'},
+			  &user_list_link(), $text{'index_return'});
 	}
 
 # write_attachment(&attach)

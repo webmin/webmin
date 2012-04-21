@@ -73,11 +73,11 @@ else {
 				[ &inputs_to_hiddens(\%in) ],
 				[ [ 'confirm', $text{'confirm_ok'} ] ],
 				);
-			&mail_page_footer("view_mail.cgi?idx=$in{'idx'}&folder=$in{'folder'}&user=$euser",
+			&mail_page_footer("view_mail.cgi?idx=$in{'idx'}&folder=$in{'folder'}&user=$euser&dom=$in{'dom'}",
 				$text{'view_return'},
-				"list_mail.cgi?folder=$in{'folder'}&user=$euser",
+				"list_mail.cgi?folder=$in{'folder'}&user=$euser&dom=$in{'dom'}",
 				$text{'mail_return'},
-				"", $text{'index_return'});
+				&user_list_link(), $text{'index_return'});
 			exit;
 			}
 		&lock_folder($folder);
@@ -86,7 +86,8 @@ else {
 		&webmin_log("delmail", undef, undef,
 			    { 'from' => $folder->{'file'},
 			      'count' => 1 } );
-		&redirect("list_mail.cgi?folder=$in{'folder'}&user=$euser");
+		&redirect("list_mail.cgi?folder=$in{'folder'}&user=$euser".
+			  "&dom=$in{'dom'}");
 		exit;
 		}
 	elsif ($in{'print'}) {
@@ -105,7 +106,8 @@ else {
 		&set_mail_read($folder, $mail, $mode);
 		$perpage = $folder->{'perpage'} || $config{'perpage'};
 		$s = int((@mails - $in{'idx'} - 1) / $perpage) * $perpage;
-		&redirect("list_mail.cgi?start=$s&folder=$in{'folder'}&user=$euser");
+		&redirect("list_mail.cgi?start=$s&folder=$in{'folder'}".
+			  "&user=$euser&dom=$in{'dom'}");
 		exit;
 		}
 	elsif ($in{'detach'}) {
@@ -175,9 +177,9 @@ else {
 					  "<tt>$paths[$i]</tt>", $sz),"<p>\n";
 			}
 
-		&mail_page_footer("view_mail.cgi?idx=$in{'idx'}&folder=$in{'folder'}&user=$euser", $text{'view_return'},
-			"list_mail.cgi?folder=$in{'folder'}&user=$euser", $text{'mail_return'},
-			"", $text{'index_return'});
+		&mail_page_footer("view_mail.cgi?idx=$in{'idx'}&folder=$in{'folder'}&user=$euser&dom=$in{'dom'}", $text{'view_return'},
+			"list_mail.cgi?folder=$in{'folder'}&user=$euser&dom=$in{'dom'}", $text{'mail_return'},
+			&user_list_link(), $text{'index_return'});
 		exit;
 		}
 	elsif ($in{'black'}) {
@@ -203,7 +205,7 @@ else {
 					  "<tt>$spamfrom</tt>"),"</b><p>\n";
 			}
 
-		&mail_page_footer("list_mail.cgi?folder=$in{'folder'}&user=$euser", $text{'mail_return'}, "", $text{'index_return'});
+		&mail_page_footer("list_mail.cgi?folder=$in{'folder'}&user=$euser&dom=$in{'dom'}", $text{'mail_return'}, &user_list_link(), $text{'index_return'});
 		exit;
 		}
 	elsif ($in{'razor'}) {
@@ -240,7 +242,7 @@ else {
 				}
 			}
 
-		&mail_page_footer("list_mail.cgi?folder=$in{'folder'}&user=$euser", $text{'mail_return'}, "", $text{'index_return'});
+		&mail_page_footer("list_mail.cgi?folder=$in{'folder'}&user=$euser&dom=$in{'dom'}", $text{'mail_return'}, &user_list_link(), $text{'index_return'});
 		exit;
 		}
 
@@ -264,7 +266,8 @@ else {
 		&lock_folder($folder);
 		&mailbox_modify_mail($mail, $newmail, $folder);
 		&unlock_folder($folder);
-		&redirect("list_mail.cgi?user=$euser&folder=$in{'folder'}");
+		&redirect("list_mail.cgi?user=$euser&folder=$in{'folder'}".
+			  "&dom=$in{'dom'}");
 		exit;
 		}
 
@@ -334,6 +337,7 @@ print &ui_form_start("send_mail.cgi?id=$upid", "form-data", undef, $onsubmit);
 
 # Output various hidden fields
 print &ui_hidden("user", $in{'user'});
+print &ui_hidden("dom", $in{'dom'});
 print &ui_hidden("ouser", $ouser);
 print &ui_hidden("idx", $in{'idx'});
 print &ui_hidden("folder", $in{'folder'});
@@ -509,9 +513,9 @@ if (@fwdmail) {
 
 print &ui_form_end([ [ undef, $text{'reply_send'} ] ]);
 
-&mail_page_footer("list_mail.cgi?folder=$in{'folder'}&user=$in{'user'}",
-	$text{'mail_return'},
-	"", $text{'index_return'});
+&mail_page_footer("list_mail.cgi?folder=$in{'folder'}&user=$in{'user'}".
+		  "&dom=$in{'dom'}", $text{'mail_return'},
+		  &user_list_link(), $text{'index_return'});
 
 sub decode_and_sub
 {
