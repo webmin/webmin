@@ -61,14 +61,7 @@ global_filedefault=File Share Defaults
 global_prndefault=Printer Share Defaults
 global_password=Encrypted Passwords
 global_users=Samba Users
-global_edit=Edit Samba users and passwords
-global_convert=Convert Unix users to Samba users
-global_sync=Configure automatic Unix and Samba user synchronisation
 global_group=Samba Groups
-global_gedit=Add and edit Samba groups
-global_gconvert=Convert Unix groups to Samba groups
-global_gsync=Configure automatic Unix and Samba group synchronisation
-global_winbind=Bind to Domain
 global_bind=Winbind Options
 
 error_nosamba=The Samba server executable <tt>$1</tt> was not found. Either Samba is not installed on your system or your <a href="$2">module configuration</a> is incorrect.

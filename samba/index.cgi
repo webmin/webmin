@@ -219,33 +219,33 @@ if ($disp) {
 
 # Generate table of accessible user and group editing icons
 if ($access{'view_users'}) {
-	push(@utitles, $text{'global_edit'});
+	push(@utitles, $text{'smbuser_title'});
 	push(@ulinks, "edit_epass.cgi");
 	push(@uicons, "images/editepass.gif");
 	}
 if ($access{'maint_makepass'}) {
-	push(@utitles, $text{'global_convert'});
+	push(@utitles, $text{'convert_title'});
 	push(@ulinks, "ask_epass.cgi");
 	push(@uicons, "images/askepass.gif");
 	}
 if ($access{'maint_sync'}) {
-	push(@utitles, $text{'global_sync'});
+	push(@utitles, $text{'esync_title'});
 	push(@ulinks, "edit_sync.cgi");
 	push(@uicons, "images/editsync.gif");
 	}
 if ($samba_version >= 3) {
 	if ($access{'maint_groups'}) {
-		push(@utitles, $text{'global_gedit'});
+		push(@utitles, $text{'groups_title'});
 		push(@ulinks, "list_groups.cgi");
 		push(@uicons, "images/listgroups.gif");
 		}
 	if ($access{'maint_gsync'}) {
-		push(@utitles, $text{'global_gsync'});
+		push(@utitles, $text{'gsync_title'});
 		push(@ulinks, "edit_gsync.cgi");
 		push(@uicons, "images/editgsync.gif");
 		}
 	if ($access{'winbind'} && $has_net) {
-		push(@utitles, $text{'global_winbind'});
+		push(@utitles, $text{'winbind_title'});
 		push(@ulinks, "edit_winbind.cgi");
 		push(@uicons, "images/winbind.gif");
 		}
@@ -255,7 +255,7 @@ if (@utitles) {
 	# We have some icons to show
 	print &ui_hr();
 	print &ui_subheading($text{'global_users'});
-	&icons_table(\@ulinks, \@utitles, \@uicons, 3);
+	&icons_table(\@ulinks, \@utitles, \@uicons, 4);
 	}
 
 if ($access{'apply'}) {
