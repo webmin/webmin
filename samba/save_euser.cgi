@@ -4,11 +4,18 @@
 
 require './samba-lib.pl';
 &ReadParse();
-# check acls
 
+if ($in{'delete'}) {
+	# Just redirect to delete page
+	&redirect("delete_euser.cgi?idx=$in{'idx'}");
+	return;
+	}
+
+# check acls
 &error_setup("$text{'eacl_aviol'}ask_epass.cgi");
 &error("$text{'eacl_np'} $text{'eacl_pmusers'}")
         unless $access{'maint_users'} && $access{'view_users'};
+
 # save		
 &error_setup($text{'saveuser_fail'});
 &lock_file($config{'smb_passwd'});
