@@ -1062,7 +1062,7 @@ sub copy_skel_files
 local ($f, $df);
 local @rv;
 foreach $f (split(/\s+/, $_[0])) {
-	if (-d $f) {
+	if (-d $f && !-l $f) {
 		# copy all files in a directory
 		opendir(DIR, $f);
 		foreach $df (readdir(DIR)) {
