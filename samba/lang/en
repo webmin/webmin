@@ -85,6 +85,9 @@ convert_lock=Account locked
 convert_passwd=Use this password
 convert_convert=Convert Users
 convert_cannot=Unix users cannot be converted to Samba users
+convert_who=Unix users to convert
+convert_who0=Only listed users or UID ranges
+convert_who1=All except listed users and UID ranges
 
 misc_title=Miscellaneous Options
 misc_debug=Debug Level

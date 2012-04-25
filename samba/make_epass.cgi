@@ -23,6 +23,7 @@ map { $suser{$_->{'name'}} = $_ } @ulist;
 
 print "$text{'mkpass_msg'}<p>\n";
 @skip = split(/[ \t,]/ , $in{"skip_list"});
+@include = split(/[ \t,]/ , $in{"include_list"});
 print "<table border width=100%><tr><td bgcolor=#c0c0c0><pre>\n";
 setpwent();
 while(@uinfo = getpwent()) {
@@ -33,22 +34,8 @@ while(@uinfo = getpwent()) {
 	local $su = $suser{$uinfo[0]};
 
 	# Check if this user would be skipped
-	local $skipme;
-	foreach $s (@skip) {
-		if ($s eq $uinfo[0]) { $skipme++; }
-		elsif ($s =~ /^(\d+)$/ && $s == $uinfo[2]) { $skipme++; }
-		elsif ($s =~ /^(\d+)\-(\d+)$/ &&
-		       $uinfo[2] >= $1 && $uinfo[2] <= $2) { $skipme++; }
-		elsif ($s =~ /^(\d+)\-$/ && $uinfo[2] >= $1) { $skipme++; }
-		elsif ($s =~ /^\-(\d+)$/ && $uinfo[2] <= $1) { $skipme++; }
-		elsif ($s =~ /^\@(.*)$/) {
-			local @ginfo = getgrnam($1);
-			local @mems = split(/\s+/, $ginfo[3]);
-			$skipme++ if ($uinfo[3] == $ginfo[2] ||
-				      &indexof($uinfo[0], @mems) >= 0);
-			}
-		}
-	if ($skipme) {
+	if ($in{'who'} == 1 && &check_user_list(\@uinfo, \@skip) ||
+	    $in{'who'} == 0 && !&check_user_list(\@uinfo, \@include)) {
 		$m = "$huinfo $text{'mkpass_skip'}";
 		}
 
@@ -147,3 +134,25 @@ foreach $u (keys %setpass) {
 print "</pre></td></tr></table>\n";
 &ui_print_footer("", $text{'index_sharelist'});
 
+# check_user_list(&uinfo, &list)
+# Checks if some user matches a username / UID list
+sub check_user_list
+{
+local ($uinfo, $skip) = @_;
+local $skipme = 0;
+foreach my $s (@$skip) {
+	if ($s eq $uinfo->[0]) { $skipme++; }
+	elsif ($s =~ /^(\d+)$/ && $s == $uinfo->[2]) { $skipme++; }
+	elsif ($s =~ /^(\d+)\-(\d+)$/ &&
+	       $uinfo->[2] >= $1 && $uinfo->[2] <= $2) { $skipme++; }
+	elsif ($s =~ /^(\d+)\-$/ && $uinfo->[2] >= $1) { $skipme++; }
+	elsif ($s =~ /^\-(\d+)$/ && $uinfo->[2] <= $1) { $skipme++; }
+	elsif ($s =~ /^\@(.*)$/) {
+		local @ginfo = getgrnam($1);
+		local @mems = split(/\s+/, $ginfo[3]);
+		$skipme++ if ($uinfo->[3] == $ginfo[2] ||
+			      &indexof($uinfo->[0], @mems) >= 0);
+		}
+	}
+return $skipme;
+}
