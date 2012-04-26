@@ -15,31 +15,29 @@ require './samba-lib.pl';
 
 print $text{'esync_msg'}, "<p>\n";
 
-print "<form action=save_sync.cgi>\n";
-printf "<input type=checkbox name=add value=1 %s>\n",
-	$config{'sync_add'} ? "checked" : "";
-print "$text{'esync_add'}<p>\n";
+print &ui_form_start("save_sync.cgi", "post");
+print &ui_table_start(undef, undef, 2);
 
-printf "<input type=checkbox name=change value=1 %s>\n",
-	$config{'sync_change'} ? "checked" : "";
-print "$text{'esync_chg'}<p>\n";
+print &ui_table_row($text{'esync_add'},
+	&ui_yesno_radio("add", $config{'sync_add'}));
 
-printf "<input type=checkbox name=delete value=1 %s>\n",
-	$config{'sync_delete'} ? "checked" : "";
-print "$text{'esync_del'}<p>\n";
+print &ui_table_row($text{'esync_chg'},
+	&ui_yesno_radio("change", $config{'sync_change'}));
 
-printf "<input type=checkbox name=delete_profile value=1 %s>\n",
-	$config{'sync_delete_profile'} ? "checked" : "";
-print "$text{'esync_del_profile'}<p>\n";
+print &ui_table_row($text{'esync_del'},
+	&ui_yesno_radio("delete", $config{'sync_delete'}));
 
-printf "<input type=checkbox name=change_profile value=1 %s>\n",
-	$config{'sync_change_profile'} ? "checked" : "";
-print "$text{'esync_chg_profile'}<p>\n";
+print &ui_table_row($text{'esync_del_profile'},
+	&ui_yesno_radio("delete_profile", $config{'sync_delete_profile'}));
 
-print "$text{'esync_gid'}\n",
-      &ui_opt_textbox("gid", $config{'sync_gid'}, 10, $text{'default'}),"<p>\n";
+print &ui_table_row($text{'esync_chg_profile'},
+	&ui_yesno_radio("change_profile", $config{'sync_change_profile'}));
 
-print "<input type=submit value=\"", $text{'esync_apply'}, "\"></form>\n";
+print &ui_table_row($text{'esync_gid'},
+	&ui_opt_textbox("gid", $config{'sync_gid'}, 10, $text{'default'}));
+
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'esync_apply'} ] ]);
 
 &ui_print_footer("", $text{'index_sharelist'});
 
