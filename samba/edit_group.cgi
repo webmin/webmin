@@ -15,74 +15,53 @@ else {
 	$group = $groups[$in{'idx'}];
 	}
 
-print "<form action=save_group.cgi method=post>\n";
-print "<input type=hidden name=idx value='$in{'idx'}'>\n";
-print "<input type=hidden name=new value='$in{'new'}'>\n";
+print &ui_form_start("save_group.cgi", "post");
+print &ui_hidden("idx", $in{'idx'});
+print &ui_hidden("new", $in{'new'});
+print &ui_table_start($text{'gedit_header'}, undef, 2);
 
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'gedit_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_table_row($text{'gedit_name'},
+	$in{'new'} ? &ui_textbox("name", undef, 20)
+		   : "<tt>".&html_escape($group->{'name'})."</tt>");
 
-print "<tr> <td><b>$text{'gedit_name'}</b></td>\n";
-if ($in{'new'}) {
-	print "<td><input name=name size=20></td>\n";
-	}
-else {
-	print "<td><tt>$group->{'name'}</b></td>\n";
-	}
+print &ui_table_row($text{'gedit_type'},
+	&ui_select("type", $group->{'type'},
+		   [ map { [ $_, $text{'groups_type_'.$_} ] }
+		         ('l', 'd', 'b', 'u') ]), 1, 0,
+		   !$in{'new'});
 
-print "<td><b>$text{'gedit_type'}</b></td>\n";
-print "<td><select name=type>\n";
-foreach $t ('l', 'd', 'b', 'u') {
-	printf "<option value=%s %s>%s\n",
-		$t, $group->{'type'} eq $t ? "selected" : "",
-		$text{'groups_type_'.$t};
-	$found++ if ($group->{'type'} eq $t);
-	}
-print "<option selected>$group->{'type'}\n" if (!$found && !$in{'new'});
-print "</select></td> </tr>\n";
+print &ui_table_row($text{'gedit_unix'},
+	$group->{'unix'} == -1 ?
+		&ui_opt_textbox("unix", undef, 20, $text{'gedit_none'},
+				$text{'gedit_unixgr'})." ".
+		  &group_chooser_button("unix") :
+		&ui_textbox("unix", $group->{'unix'}, 20)." ".
+		  &group_chooser_button("unix"));
 
-print "<tr> <td><b>$text{'gedit_unix'}</b></td> <td>\n";
-if ($group->{'unix'} == -1) {
-	printf "<input type=radio name=unix_def value=1 %s> %s\n",
-		$group->{'unix'} == -1 ? "checked" : "", $text{'gedit_none'};
-	printf "<input type=radio name=unix_def value=0 %s> %s\n",
-		$group->{'unix'} == -1 ? "" :"checked", $text{'gedit_unixgr'};
-	}
-print &unix_group_input("unix",
-		       $group->{'unix'} == -1 ? undef : $group->{'unix'});
-print "</td>\n";
-
-print "<td><b>$text{'gedit_desc'}</b></td>\n";
-print "<td><input name=desc size=30 ",
-      "value='$group->{'desc'}'></td> </tr>\n";
+print &ui_table_row($text{'gedit_desc'},
+	&ui_textbox("desc", $group->{'desc'}, 40));
 
 if ($in{'new'}) {
-	print "<tr> <td><b>$text{'gedit_priv'}</b></td> <td colspan=3>\n";
-	print "<input type=radio name=priv_def value=1 checked> $text{'gedit_none'}\n";
-	print "<input type=radio name=priv_def value=0> $text{'gedit_set'}\n";
-	print "<input name=priv size=50></td> </tr>\n";
+	print &ui_table_row($text{'gedit_priv'},
+		&ui_opt_textbox("priv", undef, 50, $text{'gedit_none'},
+				$text{'gedit_set'}));
 	}
 else {
-	print "<tr> <td><b>$text{'gedit_sid'}</b></td>\n";
-	print "<td colspan=3><tt>$group->{'sid'}</tt></td> </tr>\n";
+	print &ui_table_row($text{'gedit_sid'},
+		"<tt>".&html_escape($group->{'sid'})."</tt>");
 
-	print "<tr> <td><b>$text{'gedit_priv'}</b></td>\n";
-	print "<td colspan=3>",$group->{'priv'} || $text{'gedit_none'},"</td> </tr>\n";
+	print &ui_table_row($text{'gedit_priv'},
+		"<tt>".($group->{'priv'} || $text{'gedit_none'})."</tt>");
 	}
 
-print "</table></td></tr></table>\n";
-
-print "<table width=100%><tr>\n";
+print &ui_table_end();
 if ($in{'new'}) {
-	print "<td><input type=submit value='$text{'create'}'></td>\n";
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 else {
-	print "<td><input type=submit value='$text{'save'}'></td>\n";
-	print "<td align=right ><input type=submit name=delete ",
-	      "value='$text{'delete'}'></td>\n";
+	print &ui_form_end([ [ undef, $text{'save'} ],
+			     [ 'delete', $text{'delete'} ] ]);
 	}
-print "</tr></table></form>\n";
 
 &ui_print_footer("list_groups.cgi", $text{'groups_return'});
 

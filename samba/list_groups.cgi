@@ -10,32 +10,32 @@ $access{'maint_groups'} || &error($text{'groups_ecannot'});
 &check_group_enabled($text{'groups_cannot'});
 
 @groups = &list_groups();
+@links = ( "<a href='edit_group.cgi?new=1'>$text{'groups_add'}</a>" );
 if (@groups) {
 	@groups = sort { lc($a->{'name'}) cmp lc($b->{'name'}) } @groups
 		if ($config{'sort_mode'});
-	print "<a href='edit_group.cgi?new=1'>$text{'groups_add'}</a><br>\n";
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'groups_name'}</b></td> ",
-	      "<td><b>$text{'groups_unix'}</b></td> ",
-	      "<td><b>$text{'groups_type'}</b></td> ",
-	      "<td><b>$text{'groups_sid'}</b></td> </tr>\n";
+	print &ui_links_row(\@links);
+	print &ui_columns_start([ $text{'groups_name'},
+				  $text{'groups_unix'},
+				  $text{'groups_type'},
+				  $text{'groups_sid'} ]);
 	foreach $g (@groups) {
-		print "<tr $cb>\n";
-		print "<td><a href='edit_group.cgi?idx=$g->{'index'}'>",
-		      "$g->{'name'}</a></td>\n";
-		print "<td>",$g->{'unix'} == -1 ? $text{'groups_nounix'} :
-			     "<tt>$g->{'unix'}</tt>","</td>\n";
-		print "<td>",$text{'groups_type_'.$g->{'type'}} ||
-			     $g->{'type'},"</td>\n";
-		print "<td><tt>$g->{'sid'}</tt></td>\n";
-		print "</tr>\n";
+		print &ui_columns_row([
+			"<a href='edit_group.cgi?idx=$g->{'index'}'>".
+			  &html_escape($g->{'name'})."</a>",
+			$g->{'unix'} == -1 ? $text{'groups_nounix'} :
+			  "<tt>".&html_escape($g->{'unix'})."</tt>",
+			$text{'groups_type_'.$g->{'type'}} ||
+			  &html_escape($g->{'type'}),
+			"<tt>".&html_escape($g->{'sid'})."</tt>",
+			]);
 		}
-	print "</table>\n";
+	print &ui_columns_end();
 	}
 else {
 	print "<b>$text{'groups_none'}</b><p>\n";
 	}
-print "<a href='edit_group.cgi?new=1'>$text{'groups_add'}</a><p>\n";
+print &ui_links_row(\@links);
 
 &ui_print_footer("", $text{'index_sharelist'});
 
