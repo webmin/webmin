@@ -1115,17 +1115,7 @@ elsif (-l $_[0] && !$config{'copy_symlinks'}) {
 elsif (-d $_[0]) {
 	# A directory .. copy it recursively
 	&system_logged("cp -Rp ".quotemeta($_[0])." ".quotemeta("$_[1]/$base")." >/dev/null 2>/dev/null");
-	local $glob = "$_[1]/$base/*";
-	while(1) {
-		local @g = glob($glob);
-		if (@g && -r $g[0]) {
-			push(@rv, @g);
-			$glob .= "/*";
-			}
-		else {
-			last;
-			}
-		}
+	push(@rv, &recursive_find_files("$_[1]/$base", 1));
 	}
 else {
 	# Just a normal file .. copy it
@@ -1136,6 +1126,33 @@ else {
 	}
 &system_logged("chown $opts -R $_[2]:$_[3] ".quotemeta("$_[1]/$base").
 	       " >/dev/null 2>/dev/null") if (!$nochown);
+return @rv;
+}
+
+=head2 recursive_find_files
+
+Returns a list of all files under some directory, with recursion
+
+=cut
+sub recursive_find_files
+{
+my ($dir, $exclude_links) = @_;
+my @rv;
+if (-l $dir) {
+	push(@rv, $dir) if (!$exclude_links);
+	}
+elsif (!-d $dir) {
+	push(@rv, $dir);
+	}
+else {
+	opendir(DIR, $dir);
+	my @files = readdir(DIR);
+	closedir(DIR);
+	foreach my $f (@files) {
+		next if ($f eq "." || $f eq "..");
+		push(@rv, &recursive_find_files("$dir/$f"));
+		}
+	}
 return @rv;
 }
 
