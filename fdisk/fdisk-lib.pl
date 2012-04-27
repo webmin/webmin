@@ -1175,7 +1175,8 @@ local $any;
 foreach $d (@dlist) {
 	local $dev = $d->{'device'};
 	foreach $p (@{$d->{'parts'}}) {
-		next if ($p->{'type'} ne '83');
+		next if ($p->{'type'} ne '83' &&
+			 $p->{'type'} !~ /^ext/);
 		local $label = &get_label($p->{'device'});
 		next if (!$label);
 		$rv .= sprintf "<option %s value=%s>%s (%s)\n",
@@ -1203,7 +1204,8 @@ foreach my $d (@dlist) {
 	local $dev = $d->{'device'};
 	foreach $p (@{$d->{'parts'}}) {
 		next if ($p->{'type'} ne '83' && $p->{'type'} ne '82' &&
-			 $p->{'type'} ne 'b' && $p->{'type'} ne 'c');
+			 $p->{'type'} ne 'b' && $p->{'type'} ne 'c' &&
+			 $p->{'type'} !~ /^ext/);
 		local $volid = &get_volid($p->{'device'});
 		next if (!$volid);
 		push(@opts, [ $volid, "$volid ($p->{'desc'})" ]);
