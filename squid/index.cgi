@@ -67,6 +67,7 @@ if (!&check_cache($conf, \@caches)) {
 	print "<form action=init_cache.cgi>\n";
 	print "<input type=submit value=\"$text{'index_buttinit'}\">\n";
 	local $def = defined(getpwnam("squid")) ? "squid" :
+		     defined(getpwnam("proxy")) ? "proxy" :
 		     defined(getpwnam("httpd")) ? "httpd" : undef;
 	if (!&find_config("cache_effective_user", $conf)) {
 		print $text{'index_asuser'}," ",&unix_user_input("user", $def),
