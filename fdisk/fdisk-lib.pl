@@ -523,8 +523,10 @@ return @disks;
 sub partition_description
 {
 my ($device) = @_;
-return $device =~ /(.)d([a-z]+)(\d+)$/ ?
-	 &text('select_part', $1 eq 's' ? 'SCSI' : 'IDE', uc($2), "$3") :
+return $device =~ /(s|h|xv|v)d([a-z]+)(\d+)$/ ?
+	 &text('select_part', $1 eq 's' ? 'SCSI' :
+			      $1 eq 'xv' ? 'Xen' :
+			      $1 eq 'v' ? 'VirtIO' : 'IDE', uc($2), "$3") :
        $device =~ /scsi\/host(\d+)\/bus(\d+)\/target(\d+)\/lun(\d+)\/part(\d+)/ ?
 	 &text('select_spart', "$1", "$2", "$3", "$4", "$5") :
        $device =~ /ide\/host(\d+)\/bus(\d+)\/target(\d+)\/lun(\d+)\/part(\d+)/ ?
