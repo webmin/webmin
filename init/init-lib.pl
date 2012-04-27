@@ -49,8 +49,7 @@ if ($config{'hostconfig'}) {
 elsif ($config{'rc_dir'}) {
 	$init_mode = "rc";
 	}
-elsif ($config{'init_base'} && -d "/etc/init" &&
-       &has_command("insserv") && &has_command("initctl")) {
+elsif ($config{'init_base'} && -d "/etc/init" && &has_command("initctl")) {
 	$init_mode = "upstart";
 	}
 elsif ($config{'init_base'} && -d "/etc/systemd" &&
@@ -624,7 +623,10 @@ if ($init_mode eq "upstart" && (!-r "$config{'init_dir'}/$_[0]" ||
 	my $cfile = "/etc/init/$_[0].conf";
 	if (-r $cfile) {
 		# Config file exists, make sure it is enabled
-		&system_logged("insserv ".quotemeta($_[0])." >/dev/null 2>&1");
+		if (&has_command("insserv")) {
+			&system_logged(
+				"insserv ".quotemeta($_[0])." >/dev/null 2>&1");
+			}
 		my $lref = &read_file_lines($cfile);
 		my $foundstart;
 		foreach my $l (@$lref) {
@@ -650,7 +652,10 @@ if ($init_mode eq "upstart" && (!-r "$config{'init_dir'}/$_[0]" ||
 				"unless a command is given");
 		&create_upstart_service($_[0], $_[1], $_[2], undef,
 					$_[5]->{'fork'});
-		&system_logged("insserv ".quotemeta($_[0])." >/dev/null 2>&1");
+		if (&has_command("insserv")) {
+			&system_logged(
+				"insserv ".quotemeta($_[0])." >/dev/null 2>&1");
+			}
 		}
 	return;
 	}
@@ -975,7 +980,10 @@ $unit .= ".service" if ($unit !~ /\.service$/);
 
 if ($init_mode eq "upstart") {
 	# Just use insserv to disable, and comment out start line in .conf file
-	&system_logged("insserv -r ".quotemeta($_[0])." >/dev/null 2>&1");
+	if (&has_command("insserv")) {
+		&system_logged(
+			"insserv -r ".quotemeta($_[0])." >/dev/null 2>&1");
+		}
 	my $cfile = "/etc/init/$_[0].conf";
 	if (-r $cfile) {
 		my $lref = &read_file_lines($cfile);
@@ -1765,7 +1773,9 @@ Delete all traces of some upstart service
 sub delete_upstart_service
 {
 my ($name) = @_;
-&system_logged("insserv -r ".quotemeta($name)." >/dev/null 2>&1");
+if (&has_command("insserv")) {
+	&system_logged("insserv -r ".quotemeta($name)." >/dev/null 2>&1");
+	}
 my $cfile = "/etc/init/$name.conf";
 my $ifile = "/etc/init.d/$name";
 &unlink_logged($cfile, $ifile);
