@@ -11,7 +11,8 @@ $extwidth = 300;
 ($d) = grep { $_->{'device'} eq $in{'device'} } @disks;
 $d || &error($text{'disk_egone'});
 @parts = @{$d->{'parts'}};
-&ui_print_header($d->{'desc'}, $text{'disk_title'}, "");
+&ui_print_header($d->{'desc'}, $text{'disk_title'}, "", undef,
+		 @disks == 1 ? 1 : 0, @disks == 1 ? 1 : 0);
 
 # Work out links to add partitions
 foreach $p (@parts) {
