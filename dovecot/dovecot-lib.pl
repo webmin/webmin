@@ -28,11 +28,11 @@ if (!scalar(@get_config_cache)) {
 return \@get_config_cache;
 }
 
-# read_config_file(filename)
+# read_config_file(filename, [&include-parent-rv])
 # Convert a file into a list od directives
 sub read_config_file
 {
-local ($file) = @_;
+local ($file, $incrv) = @_;
 local $filedir = $file;
 $filedir =~ s/\/[^\/]+$//;
 local $lnum = 0;
@@ -92,6 +92,32 @@ foreach (@lines) {
 			push(@{$section->{'members'}}, $dir);
 			$section->{'eline'} = $lnum;
 			}
+
+		# Fix up references to other variables
+		my @w = split(/\s+/, $dir->{'value'});
+		my $changed;
+		foreach my $w (@w) {
+			if ($w =~ /^\$(\S+)/) {
+				my $var = $1;
+				my ($prev) = grep { $_->{'name'} eq $var } @rv;
+				if (!$prev && $incrv) {
+					($prev) = grep { $_->{'name'} eq $var }
+						       @$incrv;
+					}
+				if ($prev) {
+					$w = $prev->{'value'};
+					$changed = 1;
+					}
+				else {
+					$w = undef;
+					$changed = 1;
+					}
+				}
+			}
+		if ($changed) {
+			@w = grep { defined($_) } @w;
+			$dir->{'value'} = join(" ", @w);
+			}
 		push(@rv, $dir);
 		}
 	elsif (/^\s*!(include|include_try)\s+(\S+)/) {
@@ -101,7 +127,7 @@ foreach (@lines) {
 			$glob = $filedir."/".$glob;
 			}
 		foreach my $i (glob($glob)) {
-			push(@rv, &read_config_file($i));
+			push(@rv, &read_config_file($i, \@rv));
 			}
 		}
 	$lnum++;
@@ -123,7 +149,7 @@ if (defined($sname)) {
 	@rv = grep { $_->{'sectionname'} eq $sname &&
 		     $_->{'sectionvalue'} eq $svalue } @rv;
 	}
-return wantarray ? @rv : $rv[0];
+return wantarray ? @rv : $rv[$#rv];
 }
 
 # find_value(name, &config, [disabled-mode], [sectionname], [sectionvalue])
@@ -134,8 +160,11 @@ local @rv = &find(@_);
 if (wantarray) {
 	return map { $_->{'value'} } @rv;
 	}
+elsif (!@rv) {
+	return undef;
+	}
 else {
-	return $rv[0]->{'value'};
+	return $rv[$#rv]->{'value'};
 	}
 }
 
