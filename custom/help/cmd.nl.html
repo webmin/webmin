@@ -1,7 +1,7 @@
 Elke opdracht heeft een beschrijving (afgebeeld op de knop op de hoofdpagina) 
 en de eigenlijke uit te voeren opdracht. Deze opdracht string kan shell operators 
-bevatten zoals |, &gt; en ; voor het uitvoeren van een aantal opdrachten achter elkaar.
-De string kan ook parameters bevatten zoals <tt>$foo</tt>, 
+bevatten zoals |, &gt; en ; voor het uitvoeren van een aantal commando's na elkaar 
+of het gebruiken van pipes. De string kan ook parameters bevatten zoals <tt>$foo</tt>, 
 die worden vervangen door invoer van de gebruiker wanneer de opdracht wordt 
 uitgevoerd. <p>
 
@@ -11,34 +11,34 @@ Voor ieder parameter voert u in:
 <dl>
 <dt><b>Naam</b>
 <dd>Een unieke code voor deze parameter. Als de naam <tt>foo</tt> is, dan wordt
-    <tt>$foo</tt> vervangen door de parameter tijdens de uitvoering van 
+    <tt>$foo</tt> vervangen door de parameterwaarde tijdens de uitvoering van 
     de opdracht.<p>
 <dt><b>Beschrijving</b>
 <dd>De beschrijving naast de parameter op de hoofdpagina.<p>
 <dt><b>Type</b>
-<dd>Deze optie bepaalt hoe de parameter aan de opdracht wordt aangeboden. 
-     Beschikbare opties zijn:
+<dd>Deze optie bepaalt hoe de parameter aan het commande wordt aangeboden. 
+     De keuzen zijn:
 
 	<ul>
 	<li><b>Tekst</b><br>
 	    Een volledig vrij tekst formaat.
-	<li><b>Gebruiker</b><br>
-	    De gebruikersnaam van uw systeem.
+	<li><b>gebruikerr</b><br>
+	    Een gebruikersnaam in uw systeem.
 	<li><b>UID</b><br>
-	    De UID van een gebruiker van uw systeem.
+	    Dee UID van een gebruiker in uw systeem.
 	<li><b>Groep</b><br>
-	    Een groepsnaam van uw systeem
+	    Een groepsnaam in uw systeem
 	<li><b>GID</b><br>
-	    De GID van een groep van uw systeem.
-	<li><b>File</b><br>
-	    Het volledige pad van een file.
+	    De GID van een groep in uw systeem.
+	<li><b>Bestand</b><br>
+	    Het volledige pad van een bestand.
 	<li><b>Map</b><br>
 	    Het volledige pad van een map.
-	<li><b>Opties</b><br>
-	    Een Ja/Nee keuze, die een parameter zet op hetgeen wat staat in het veld naast
-	    het "soort invoer", dit werkt alleen als "Ja" wordt gekozen.
+	<li><b>Optien</b><br>
+	    Een Ja/Nee invoer, die een parameter zet op de waarde op de volgende 
+            type invoer als "Ja" wordt gekozen.
 	<li><b>Wachtwoord</b><br>
-	    Een volledig vrij tekst formaat, waarbij het wachtwoord wordt getoond als *'s.
+	    Een volledig vrij tekst formaat, waarbij het ingetypte wordt getoond als *'s.
 	</ul><p>
 <dt><b>Met aanhalingsteken?</b>
 <dd>Als hier "Ja" wordt gekozen, wordt de parameter tussen aanhalingstekens gezet met 
