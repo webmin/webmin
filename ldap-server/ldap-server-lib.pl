@@ -269,14 +269,18 @@ foreach my $file (&recursive_find_ldif($config{'config_file'})) {
 	while(<CONFIG>) {
 		s/\r|\n//g;
 		s/^#.*$//;
-		if (/^([^: \t]+):+\s*(.*)/) {
+		if (/^([^: \t]+)(:+)\s*(.*)/) {
 			# Start of a directive
 			local $dir = { 'file' => $file,
 				       'line' => $lnum,
 				       'eline' => $lnum,
 				       'class' => $cls,
 				       'name' => $1 };
-			local $value = $2;
+			local $value = $3;
+			if ($2 eq "::") {
+				# Base-64 decode value
+				$value = &decode_base64($value);
+				}
 			$dir->{'values'} = [ &split_quoted_string($value) ];
 			$dir->{'value'} = $value;
 			push(@rv, $dir);
