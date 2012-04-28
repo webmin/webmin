@@ -262,7 +262,7 @@ print &ui_hr();
 print &ui_buttons_start();
 
 # Show stop server button
-if ($access{'stop'} && &is_postgresql_local()) {
+if ($access{'stop'} && &is_postgresql_local() && $r != 0) {
 	print &ui_buttons_row("stop.cgi", $text{'index_stop'},
 			      $text{'index_stopmsg'});
 	}

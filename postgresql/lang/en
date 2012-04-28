@@ -258,6 +258,7 @@ host_title=Allowed Hosts
 host_desc=When a client connects to the database, hosts listed below are processed in order until one matches and the client is allowed or denied.
 host_header=PostgreSQL client authentication details
 host_local=Local connection
+host_peer=Network peer
 host_address=Host address
 host_db=Database
 host_user=Users

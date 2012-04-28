@@ -82,6 +82,13 @@ else {
 	elsif ($in{'auth'} eq 'ident' && $in{'identarg'} == 2) {
 		$host->{'arg'} = 'sameuser';
 		}
+	elsif ($in{'auth'} eq 'peer' && $in{'peerarg'} == 1) {
+		$in{'peer'} =~ /^\S+$/ || &error($text{'host_eident'});
+		$host->{'arg'} = $in{'peer'};
+		}
+	elsif ($in{'auth'} eq 'peer' && $in{'peerarg'} == 2) {
+		$host->{'arg'} = 'sameuser';
+		}
 	elsif ($in{'auth'} eq 'pam' && $in{'pamarg'}) {
 		$in{'pam'} =~ /^\S+$/ || &error($text{'host_epam'});
 		$host->{'arg'} = $in{'pam'};
