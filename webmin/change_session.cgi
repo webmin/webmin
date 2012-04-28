@@ -73,6 +73,7 @@ else {
 	delete($miniserv{'passwd_pindex'});
 	}
 $miniserv{'pam_conv'} = $in{'pam_conv'};
+$miniserv{'pam_end'} = $in{'pam_end'};
 if ($in{'cmd_def'}) {
 	delete($gconfig{'passwd_cmd'});
 	}

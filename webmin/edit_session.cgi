@@ -93,7 +93,10 @@ print "&nbsp;&nbsp;&nbsp;",&text('session_pfile',
 	"<br>\n";
 print "&nbsp;&nbsp;&nbsp;",
 	ui_checkbox("pam_conv", 1, $text{'session_pamconv'},
-		     $miniserv{'pam_conv'}),"<p>\n";
+		     $miniserv{'pam_conv'}),"<br>\n";
+print "&nbsp;&nbsp;&nbsp;",
+	ui_checkbox("pam_end", 1, $text{'session_pamend'},
+		     $miniserv{'pam_end'}),"<p>\n";
 
 # Unix password change
 print &ui_oneradio("cmd_def", 1, $text{'session_cmddef1'},

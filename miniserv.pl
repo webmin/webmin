@@ -3402,7 +3402,9 @@ if ($use_pam) {
 				$rcode = 0;
 				}
 			}
-		$pamh->pam_end($pam_ret);
+		if ($config{'pam_end'}) {
+			$pamh->pam_end($pam_ret);
+			}
 		return $rcode;
 		}
 	}

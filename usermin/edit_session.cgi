@@ -95,6 +95,9 @@ printf "<input type=radio name=authmode value=0 %s> %s<br>\n",
 print "&nbsp;&nbsp;&nbsp;",
 	&ui_checkbox("pam_conv", 1, $text{'session_pamconv'},
 		     $miniserv{'pam_conv'}),"<br>\n";
+print "&nbsp;&nbsp;&nbsp;",
+	&ui_checkbox("pam_end", 1, $text{'session_pamend'},
+		     $miniserv{'pam_end'}),"<br>\n";
 printf "<input type=radio name=authmode value=1 %s>\n",
 	$authmode == 1 ? "checked" : "";
 print &text('session_authmode1',

@@ -574,6 +574,7 @@ session_pamon=Use PAM for Unix authentication, if available
 session_pamoff=Never use PAM for Unix authentication
 session_pfile=If PAM is unavailable or disabled, read users and passwords from file $1 columns $2 and $3
 session_pamconv=Support full PAM conversations?
+session_pamend=Pass on PAM status to other modules?
 session_cmddef1=Change expired passwords via PAM
 session_cmddef0=Change passwords with command:
 session_ecmd=Missing or invalid password change command

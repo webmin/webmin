@@ -119,6 +119,7 @@ else {
 	$users[0]->{'pass'} = 'e';
 	}
 $miniserv{'pam_conv'} = $in{'pam_conv'};
+$miniserv{'pam_end'} = $in{'pam_end'};
 if ($in{'cmd_def'}) {
 	delete($gconfig{'passwd_cmd'});
 	}
