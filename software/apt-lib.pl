@@ -121,11 +121,14 @@ print &ui_form_end([ [ undef, $text{'apt_apply'} ] ]);
 sub update_system_resolve
 {
 local ($name) = @_;
-return $name eq "dhcpd" ? "dhcp3-server" :
+return $name eq "dhcpd" && $gconfig{'os_version'} >= 7 ?
+		"isc-dhcp-server" :
+       $name eq "dhcpd" && $gconfig{'os_version'} < 7 ?
+		"dhcp3-server" :
        $name eq "bind" ? "bind9" :
-       $name eq "mysql" && $gconfig{'os_type'} >= 7 ?
+       $name eq "mysql" && $gconfig{'os_version'} >= 7 ?
 		"mysql-client mysql-server" :
-       $name eq "mysql" && $gconfig{'os_type'} < 7 ?
+       $name eq "mysql" && $gconfig{'os_version'} < 7 ?
 		"mysql-client mysql-server mysql-admin" :
        $name eq "apache" ? "apache2" :
        $name eq "postgresql" ? "postgresql postgresql-client" :
