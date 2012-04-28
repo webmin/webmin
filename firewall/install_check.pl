@@ -9,7 +9,7 @@ do 'firewall-lib.pl';
 sub is_installed
 {
 return 0 if (&missing_firewall_commands());
-local $out = `iptables -n -t filter -L OUTPUT 2>&1`;
+local $out = &backquote_command("iptables -n -t filter -L OUTPUT 2>&1");
 return 0 if ($?);
 if ($_[0]) {
 	if (!$config{'direct'} &&
