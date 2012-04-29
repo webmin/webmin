@@ -1,7 +1,8 @@
+__norefs=1
 dacfg_isDA=Functie alleen als DA (lees de gebruikers guide voordat je dit verandert)
 dacfg_title=DA Configuratie
 error_flock_off=Fout vernietigen file slot
-error_flock_on=Fout maken file slot
+error_flock_on=Fout aanmaken file slot
 error_hup=Fout herstarten OpenSLP met PID
 error_open=Fout openen file
 index_econf=De OpenSLP configuratie file $1 is niet gevonden op uw systeem. Misschien is het niet geinstalleerd, of uw <a href='$2'>module configuratie</a> is niet correct.
@@ -17,13 +18,13 @@ log_title=Traceren en loggen
 log_traceDATraffic=Print DA verkeers berichten
 log_traceDrop=Print SLP gedropte berichten informatie
 log_traceMsg=Print SLP berichten detail
-log_traceReg=Print DA en SA registratie en unregistratie informatie
+log_traceReg=Print DA en SA registratie en de-registratie informatie
 netcfg_DAActiveDiscoveryInterval=Actief Ontdekken in seconden (0 schakelt Actief Ontdekken uit)
-netcfg_DADiscoveryMaximumWait=Maximum wacht tijd voor DA Ontdekken aanvraag (in milliseconden)
-netcfg_DADiscoveryTimeouts=Succesvolle DA Ontdekken wacht tijd (in milliseconden)
+netcfg_DADiscoveryMaximumWait=Maximum wacht tijd voor DA ontdekken aanvraag (in milliseconden)
+netcfg_DADiscoveryTimeouts=Succesvolle DA ontdekken wacht tijd (in milliseconden)
 netcfg_HintsFile=Pad naar OpenSLP hint file
 netcfg_MTU=MTU pakket grote (in bytes)
-netcfg_activeDADetection=Gebruik actiefe DA detectie (beperk alleen tot DHCP of DAAddresses)
+netcfg_activeDADetection=Gebruik actiefe DA detectie (beperk alleen tot DHCP of DA Adressen)
 netcfg_interfaces=IP adressen of interfaces waar de DA/SA naar moet luisteren
 netcfg_isBroadcastOnly=Forceer broadcast om te gebruiken in plaats van multicast
 netcfg_multicastMaximumWait=Maximum wacht tijd voor multicast (in milliseconden)
