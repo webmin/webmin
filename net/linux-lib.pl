@@ -383,7 +383,7 @@ return 0;
 # Returns a hashtable containing keys nameserver, domain, search & order
 sub get_dns_config
 {
-local $dns;
+local $dns = { };
 local $rc;
 if ($use_suse_dns && ($rc = &parse_rc_config()) && $rc->{'NAMESERVER'}) {
 	# Special case - get DNS settings from SuSE config
@@ -393,7 +393,26 @@ if ($use_suse_dns && ($rc = &parse_rc_config()) && $rc->{'NAMESERVER'}) {
 	$dns->{'domain'} = [ split(/\s+/, $src->{'value'}) ] if ($src);
 	$dnsfile = $rc_config;
 	}
-else {
+elsif ($gconfig{'os_type'} eq 'debian-linux' &&
+       -l "/etc/resolv.conf") {
+	# On Ubuntu 12+, /etc/resolv.conf is auto-generated from network
+	# interface config
+	my @ifaces = &get_interface_defs();
+	foreach my $i (@ifaces) {
+		local ($ns) = grep { $_->[0] eq 'dns-nameservers' } @{$i->[3]};
+		local @dom = grep { $_->[0] eq 'dns-domain' ||
+				    $_->[0] eq 'dns-search' } @{$i->[3]};
+		if ($ns) {
+			$dns->{'nameserver'} = [ split(/\s+/, $ns->[1]) ];
+			$dns->{'domain'} =
+				[ map { split(/\s+/, $_->[1]) } @dom ];
+			$dnsfile = "/etc/network/interfaces";
+			last;
+			}
+		}
+	}
+if (!$dnsfile) {
+	# Just read resolv.conf
 	&open_readfile(RESOLV, "/etc/resolv.conf");
 	while(<RESOLV>) {
 		s/\r|\n//g;
@@ -430,10 +449,17 @@ sub save_dns_config
 {
 local $rc;
 &lock_file($rc_config) if ($suse_dns_config);
+local $use_resolvconf = 0;
+local $need_resolvconf_update = 0;
 if ($use_suse_dns && ($rc = &parse_rc_config()) && $rc->{'NAMESERVER'}) {
 	# Update SuSE config file
 	&save_rc_config($rc, "NAMESERVER", join(" ", @{$_[0]->{'nameserver'}}));
 	&save_rc_config($rc, "SEARCHLIST", join(" ", @{$_[0]->{'domain'}}));
+	}
+elsif ($gconfig{'os_type'} eq 'debian-linux' &&
+       -l "/etc/resolv.conf") {
+	# resolv.conf is auto-generated!
+	$use_resolvconf = 1;
 	}
 else {
 	# Update standard resolv.conf file
@@ -467,11 +493,22 @@ else {
 if ($gconfig{'os_type'} eq 'debian-linux' && defined(&get_interface_defs)) {
 	local @ifaces = &get_interface_defs();
 	foreach my $i (@ifaces) {
-		local ($dns) = grep { $_->[0] eq 'dns-nameservers' } @{$i->[3]};
-		if ($dns) {
-			$dns->[1] = join(' ', @{$_[0]->{'nameserver'}});
+		local ($ns) = grep { $_->[0] eq 'dns-nameservers' } @{$i->[3]};
+		if ($ns) {
+			$ns->[1] = join(' ', @{$_[0]->{'nameserver'}});
+			$i->[3] = [ grep { $_->[0] ne 'dns-domain' &&
+					   $_->[0] ne 'dns-search' } @{$i->[3]} ];
+			if (@{$_[0]->{'domain'}} > 1) {
+				push(@{$i->[3]}, map { [ 'dns-search', $_ ] }
+						     @{$_[0]->{'domain'}});
+				}
+			else {
+				push(@{$i->[3]}, [ 'dns-domain',
+						   $_[0]->{'domain'}->[0] ]);
+				}
 			&modify_interface_def($i->[0], $i->[1], $i->[2],
 					      $i->[3], 0);
+			$need_resolvconf_update = 1;
 			}
 		}
 	}
@@ -503,6 +540,11 @@ if ($suse_dns_config && $rc->{'USE_NIS_FOR_RESOLVING'}) {
 		}
 	}
 &unlock_file($rc_config) if ($suse_dns_config);
+
+# Update resolv.conf from network interfaces config
+if ($need_resolvconf_update) {
+	&apply_network();
+	}
 }
 
 $max_dns_servers = 3;
