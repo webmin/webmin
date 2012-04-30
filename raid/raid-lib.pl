@@ -639,7 +639,7 @@ foreach $d (&fdisk::list_disks_partitions()) {
 			 $skip{$p->{'device'}});
 		local @st = &device_status($p->{'device'});
 		next if (@st);
-		$tag = &fdisk::tag_name($p->{'type'});
+		$tag = $p->{'type'} ? &fdisk::tag_name($p->{'type'}) : undef;
 		$p->{'blocks'} =~ s/\+$//;
 		push(@disks, [ $p->{'device'},
 			       $p->{'desc'}.
