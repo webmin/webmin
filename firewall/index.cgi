@@ -18,7 +18,7 @@ if ($c = &missing_firewall_commands()) {
 	}
 
 # Check if the kernel supports iptables
-$out = `iptables -n -t filter -L OUTPUT 2>&1`;
+$out = &backquote_command("iptables -n -t filter -L OUTPUT 2>&1");
 if ($?) {
 	print "<p>",&text('index_ekernel', "<pre>$out</pre>"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
