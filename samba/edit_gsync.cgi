@@ -11,32 +11,29 @@ $access{'maint_gsync'} || &error($text{'gsync_ecannot'});
 
 print $text{'gsync_msg'}, "<p>\n";
 
-print "<form action=save_gsync.cgi>\n";
-printf "<input type=checkbox name=add value=1 %s>\n",
-	$config{'gsync_add'} ? "checked" : "";
-print "$text{'gsync_add'}\n";
-print "<table>\n";
-print "<tr> <td width=20></td> <td>$text{'gsync_type'}</td>\n";
-print "<td><select name=type>\n";
-foreach $t ('l', 'd', 'b', 'u') {
-	printf "<option value=%s %s>%s\n",
-		$t, $config{'gsync_type'} eq $t ? "selected" : "",
-		$text{'groups_type_'.$t};
-	}
-print "</select></td> </tr>\n";
-print "<tr> <td width=20></td> <td>$text{'gsync_priv'}</td>\n";
-printf "<td><input name=priv size=40 value='%s'></td> </tr>\n",
-	$config{'gsync_priv'};
-print "</table><p>\n";
+print &ui_form_start("save_gsync.cgi", "post");
+print &ui_table_start(undef, undef, 2);
 
-printf "<input type=checkbox name=change value=1 %s>\n",
-	$config{'gsync_change'} ? "checked" : "";
-print "$text{'gsync_chg'}<p>\n";
+@grid = ( $text{'gsync_type'},
+	    &ui_select("type", $config{'gsync_type'},
+		       [ map { [ $_, $text{'groups_type_'.$_} ] }
+			     ('l', 'd', 'b', 'u') ]),
+	  $text{'gsync_priv'},
+	    &ui_textbox("priv", $config{'gsync_priv'}, 40),
+	);
+print &ui_table_row($text{'gsync_add'},
+	&ui_yesno_radio("add", $config{'gsync_add'}).
+	"<br>\n".
+	&ui_grid_table(\@grid, 2));
 
-printf "<input type=checkbox name=delete value=1 %s>\n",
-	$config{'gsync_delete'} ? "checked" : "";
-print "$text{'gsync_del'}<p>\n";
-print "<input type=submit value=\"", $text{'gsync_apply'}, "\"></form>\n";
+print &ui_table_row($text{'gsync_chg'},
+	&ui_yesno_radio("change", $config{'gsync_change'}));
+
+print &ui_table_row($text{'gsync_del'},
+	&ui_yesno_radio("delete", $config{'gsync_delete'}));
+
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'gsync_apply'} ] ]);
 
 &ui_print_footer("", $text{'index_sharelist'});
 

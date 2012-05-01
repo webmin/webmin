@@ -163,3 +163,4 @@ Catalan updates, thanks to Jaume Badiella.
 Norwegian updates, thanks to Stein-Aksel Basma.
 ---- Changes since 1.590 ----
 All languages now have UTF-8 encoded variants, as well as their native character sets.
+Added support for Ubuntu 12.04.
