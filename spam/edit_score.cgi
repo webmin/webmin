@@ -54,6 +54,11 @@ $received = &find("num_check_received", $conf);
 print &ui_table_row($text{'score_received'},
 	&opt_field("num_check_received", $received, 5, 2));
 
+# Trusted networks
+@trusted = &find_value("trusted_networks", $conf);
+print &ui_table_row($text{'score_trusted'},
+	&ui_textarea("trusted_networks", join("\n", @trusted), 5, 70));
+
 if (&indexof("Mail::SpamAssassin::Plugin::TextCat", @plugins) >= 0) {
 	print &ui_table_hr();
 

@@ -22,3 +22,5 @@ Converted all pages to use the new Webmin UI library, for a more consistent look
 Cleaned up the layout of all pages to improve formatted, in particular the Allowed and Denied Addresses page which now uses tabs.
 ---- Changes since 1.520 ----
 Don't show language and character set spam classification options unless the TextCat plugin is enabled, as they won't work without it.
+---- Changes since 1.590 ----
+Added a field for setting the trusted_networks parameter.

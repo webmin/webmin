@@ -63,6 +63,7 @@ score_localessel=Selected character sets ..
 score_auto=Whitelist score factor
 score_timeout=Seconds to wait for RBL queries
 score_received=Number of Received: headers to check with RBL
+score_trusted=Networks and hosts to trust
 score_describe=Test descriptions for report
 score_descr=Description
 score_err=Failed to save message scoring
