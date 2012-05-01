@@ -114,15 +114,25 @@ elsif ($in{'view'}) {
 					last if ($total > $in{'lines'});
 					}
 				}
-			$cat = "(".join(" ; ", reverse(@cats)).")";
-			$fullcmd = $cat." | ".$tailcmd;
+			if (@cats) {
+				$cat = "(".join(" ; ", reverse(@cats)).")";
+				$fullcmd = $cat." | ".$tailcmd;
+				}
+			else {
+				$fullcmd = undef;
+				}
 			}
 		else {
 			# Just run tail on the file
 			$fullcmd = $tailcmd." ".quotemeta($file);
 			}
-		$got = &proc::safe_process_exec(
-			$fullcmd, 0, 0, STDOUT, undef, 1, 0, undef, 1);
+		if ($fullcmd) {
+			$got = &proc::safe_process_exec(
+				$fullcmd, 0, 0, STDOUT, undef, 1, 0, undef, 1);
+			}
+		else {
+			$got = undef;
+			}
 		}
 	print "<i>$text{'view_empty'}</i>\n" if (!$got);
 	print "</pre>\n";
