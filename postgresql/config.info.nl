@@ -8,6 +8,7 @@ add_mode=Gebruik een verticale rij bewerkings interface,1,1-Ja,0-Nee
 blob_mode=Laat blob en tekst velden zien als,1,0-Data in tabel,1-Links om te downloaden
 nodbi=Gebruik DBI om te verbinden indien beschikbaar?,1,0-Ja,1-Nee
 date_subs=Doe <tt>strftime</tt> toevoegingen bij backup bestemmingen?,1,1-Ja,0-Nee
+webmin_subs=Webmin variabele substitutie uitvoeren op backup bestemmingen?,1,1-Ja,0-Nee
 simple_sched=Geplande selectie formaat,1,1-Simpel,0-Complex
 encoding=Decoderen van database inhoud,3,Standaard (van huidige taal)
 max_dbs=Maximum aantal databases en tabellen om te laten zien,0,5
