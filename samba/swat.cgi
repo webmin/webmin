@@ -102,18 +102,20 @@ if (%swat) {
 else {
 	print $text{'swat_msg2'}, " <br>\n";
 	}
-print "<form action=swat_save.cgi>\n";
-print "<center><table border>\n";
-print "<tr $tb> <td><b>$text{'swat_list'}</b></td> </tr>\n";
-print "<tr $cb> <td><table cellpadding=2>\n";
-print "<tr> <td><b>$text{'swat_username'}</b></td>\n";
-print "<td><input name=user size=20 value='$swat{'user'}'></td> </tr>\n";
-print "<tr> <td><b>$text{'swat_password'}</b></td>\n";
-print "<td><input name=pass size=20 type=password></td> </tr>\n";
-print "</table></td></tr></table>\n";
-print "<input type=submit value=\"", $text{'swat_login'},
-      "\"> <input type=reset value=\"", $text{'swat_clear'}, "\">\n";
-print "</center></form>\n";
+print "<center>\n";
+print &ui_form_start("swat_save.cgi");
+print &ui_table_start($text{'swat_list'}, undef, 2);
+
+print &ui_table_row($text{'swat_username'},
+	&ui_textbox("user", $swat{'user'}, 20));
+
+print &ui_table_row($text{'swat_password'},
+	&ui_password("pass", undef, 20));
+
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'swat_login'} ] ]);
+print "</center>\n";
+
 &ui_print_footer("", $text{'index_sharelist'});
 exit;
 }

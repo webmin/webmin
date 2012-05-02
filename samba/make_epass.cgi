@@ -24,7 +24,7 @@ map { $suser{$_->{'name'}} = $_ } @ulist;
 print "$text{'mkpass_msg'}<p>\n";
 @skip = split(/[ \t,]/ , $in{"skip_list"});
 @include = split(/[ \t,]/ , $in{"include_list"});
-print "<table border width=100%><tr><td bgcolor=#c0c0c0><pre>\n";
+print &ui_columns_start([ $text{'mkpass_user'}, $text{'mkpass_action'} ]);
 setpwent();
 while(@uinfo = getpwent()) {
 	# Get new and existing user details
@@ -36,20 +36,20 @@ while(@uinfo = getpwent()) {
 	# Check if this user would be skipped
 	if ($in{'who'} == 1 && &check_user_list(\@uinfo, \@skip) ||
 	    $in{'who'} == 0 && !&check_user_list(\@uinfo, \@include)) {
-		$m = "$huinfo $text{'mkpass_skip'}";
+		$skipcount++;
 		}
 
 	elsif ($su && $in{"update"}) {
 		if ($su->{'opts'}) {
 			# new-style user
 			if ($uinfo[2] == $su->{'uid'}) {
-				$m = "$huinfo $text{'mkpass_same'}";
+				$m = $text{'mkpass_same'};
 				}
 			else {
 				$su->{'uid'} = $uinfo[2];
 				$su->{'real'} = $uinfo[6];
 				&modify_user($su);
-				$m = "$huinfo $text{'mkpass_update'}";
+				$m = $text{'mkpass_update'};
 				$c1 = "<i>"; $c2 = "</i>";
 				$modified++;
 				}
@@ -60,7 +60,7 @@ while(@uinfo = getpwent()) {
 			    $uinfo[6] eq $su->{'real'} &&
 			    $uinfo[7] eq $su->{'home'} &&
 			    $uinfo[8] eq $su->{'shell'}) {
-				$m = "$huinfo $text{'mkpass_same'}";
+				$m = $text{'mkpass_same'};
 				}
 			else {
 				$su->{'uid'} = $uinfo[2];
@@ -68,7 +68,7 @@ while(@uinfo = getpwent()) {
 				$su->{'home'} = $uinfo[7];
 				$su->{'shell'} = $uinfo[8];
 				&modify_user($su);
-				$m = "$huinfo $text{'mkpass_update'}";
+				$m = $text{'mkpass_update'};
 				$c1 = "<i>"; $c2 = "</i>";
 				$modified++;
 				}
@@ -79,7 +79,7 @@ while(@uinfo = getpwent()) {
 			      'uid' => $uinfo[2] };
 		local @flags = ("U");
 		$c1 = "<b>"; $c2 = "</b>";
-		$m = "$huinfo being added";
+		$m = $text{'mkpass_add'};
 		if ($in{'newmode'} == 0) {
 			$nu->{'pass1'} = "NO PASSWORDXXXXXXXXXXXXXXXXXXXXX";
 			$nu->{'pass2'} = $nu->{'pass1'};
@@ -103,7 +103,11 @@ while(@uinfo = getpwent()) {
 		&create_user($nu);
 		$created++;
 		}
-	if ($m) { printf "$c1%-40.40s$c2%s", $m, ++$c%2 ? "" : "\n"; }
+	if ($m) {
+		print &ui_columns_row([
+			&html_escape($uinfo[0]),
+			$c1.$m.$c2 ]);
+		}
 	}
 endpwent() if ($gconfig{'os_type'} ne 'hpux');
 
@@ -112,13 +116,18 @@ if ($in{"delete"}) {
 	foreach $u (@ulist) {
 		if (!$uexists{$u->{'name'}}) {
 			# delete this samba user..
-			$m = &html_escape($u->{'name'})." $text{'mkpass_del'}";
 			&delete_user($u);
-			printf "<b><font color=#ff0000>%-40.40s</font></b>%s",
-				$m, ++$c%2 ? "" : "\n";
+			print &ui_columns_row([
+			    &html_escape($u->{'name'}),
+			    "<font color=#ff0000>$text{'mkpass_del'}</font>",
+			    ]);
 			$deleted++;
 			}
 		}
+	}
+print &ui_columns_end();
+if ($skipcount) {
+	print &text('mkpass_skipcount', $skipcount),"<p>\n";
 	}
 
 # Update the passwords of new users
@@ -131,7 +140,6 @@ foreach $u (keys %setpass) {
 				     'created' => $created,
 				     'deleted' => $deleted } );
 
-print "</pre></td></tr></table>\n";
 &ui_print_footer("", $text{'index_sharelist'});
 
 # check_user_list(&uinfo, &list)

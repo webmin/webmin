@@ -30,3 +30,5 @@ Try to use the smbpasswd command to create or delete users, if installed.
 Add support for the locked account flag for users, thanks to Juan Miguel Corral Cano.
 ---- Changes since 1.550 ----
 Added improved Winbind support, thanks to Caspar Smit.
+---- Changes since 1.590 ----
+Converted all pages to Webmin's new common UI functions, for a more consistent layout. Also reduced the length of icon titles.
