@@ -77,7 +77,7 @@ convert_cannot=Unix-Benutzer k&#246;nnen nicht zu Samba-Benutzern konvertiert we
 convert_convert=Benutzer konvertieren
 convert_delete=Samba Benutzer l&#246;schen, die keine Unix Benutzer sind
 convert_lock=Benutzer gesperrt
-convert_msg=Dieses Formular erlaubt Ihnen, Unix und Samba Benutzer zu syncronisieren. Wenn Sie Samba so konfiguriert haben, dass <a href=$1>verschl&#252;sselte Passw&#246;rter</a> verwendet werden, verwaltet Samba seine Benutzer getrennt vom Betriebssystem.
+convert_msg=Dieses Formular erlaubt Ihnen, Unix und Samba Benutzer zu synchronisieren. Wenn Sie Samba so konfiguriert haben, dass <a href=$1>verschl&#252;sselte Passw&#246;rter</a> verwendet werden, verwaltet Samba seine Benutzer getrennt vom Betriebssystem.
 convert_ncdesc=Die Liste der Benutzer, die nicht konvertiert werden sollen, kann Benutzernamen, UIDs, Gruppennamen mit einem vorgestelltem <tt>@</tt> oder UID-Bereiche wie <i>500-1000</i> or <i>500-</i> beinhalten.
 convert_newuser=Passwort f&#252;r neu erstellte Benutzer:
 convert_noconv=Diese Benutzer nicht konvertieren oder l&#246;schen:
@@ -85,6 +85,9 @@ convert_nopasswd=Kein Passwort
 convert_passwd=Dieses Passwort benutzen
 convert_title=Benutzer konvertieren
 convert_update=Vorhandene Samba Benutzer aus Unix Benutzern aktualisieren
+convert_who=Unix-Benutzer zum konvertieren
+convert_who0=Nur aufgelistete Benutzer oder UID-Bereiche
+convert_who1=Alle au&#223;er aufgelistete Benutzer und UID-Bereiche
 create_from=Zu kopierende Freigabe:
 create_msg=Eine Freigabekopie &#252;bernimmt alle Standardeinstellungen der Vorlage. Wenn die Vorlage ge&#228;ndert wird, &#228;ndert sich auch die Kopie.
 create_name=Neuer Freigabename:
