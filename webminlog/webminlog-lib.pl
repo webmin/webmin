@@ -92,13 +92,17 @@ a hash ref containing the following keys :
 =cut
 sub parse_logline
 {
-if ($_[0] =~ /^(\d+)\.(\S+)\s+\[.*\]\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+"([^"]+)"\s+"([^"]+)"\s+"([^"]+)"(.*)/ ||
-    $_[0] =~ /^(\d+)\.(\S+)\s+\[.*\]\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)(.*)/) {
+local ($line) = @_;
+if (!$line) {
+	return undef;
+	}
+if ($line =~ /^(\d+)\.(\S+)\s+\[.*\]\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+"([^"]+)"\s+"([^"]+)"\s+"([^"]+)"(.*)/ ||
+    $line =~ /^(\d+)\.(\S+)\s+\[.*\]\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)(.*)/) {
 	my $rv = { 'time' => $1, 'id' => "$1.$2",
-		      'user' => $3, 'sid' => $4,
-		      'ip' => $5, 'module' => $6,
-		      'script' => $7, 'action' => $8,
-		      'type' => $9, 'object' => $10 };
+		   'user' => $3, 'sid' => $4,
+		   'ip' => $5, 'module' => $6,
+		   'script' => $7, 'action' => $8,
+		   'type' => $9, 'object' => $10 };
 	my %param;
 	my $p = $11;
 	while($p =~ /^\s*([^=\s]+)='([^']*)'(.*)$/) {

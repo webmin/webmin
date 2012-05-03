@@ -80,6 +80,7 @@ while(my ($id, $idx) = each %index) {
 		seek(LOG, $pos, 0);
 		my $line = <LOG>;
 		my $act = &parse_logline($line);
+		next if (!$act);
 
 		# Check Webmin server
 		next if (!$in{'wall'} && $in{'webmin'} ne $act->{'webmin'});
