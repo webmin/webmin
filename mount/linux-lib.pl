@@ -986,33 +986,32 @@ return ($_[0] eq "nfs" || $_[0] eq "nfs4" || $_[0] eq "auto" ||
 # Output HTML for editing the mount location of some filesystem.
 sub generate_location
 {
-if (($_[0] eq "nfs") || ($_[0] eq "nfs4")) {
+local ($type, $loc) = @_;
+if ($type eq "nfs" || $type eq "nfs4") {
 	# NFS mount from some host and directory
-	local ($host, $dir) = $_[1] =~ /^([^:]+):(.*)$/ ? ( $1, $2 ) : ( );
-	print "<tr> <td>", &hlink("<b>$text{'linux_nfshost'}</b>", "nfshost"), "</td>\n";
-	print "<td><input name=nfs_host size=20 value=\"$host\">\n";
-	&nfs_server_chooser_button("nfs_host");
-	print "&nbsp;", &hlink("<b>$text{'linux_nfsdir'}</b>", "nfsdir"), "\n";
-	printf "<input name=nfs_dir size=20 value=%s>\n",
-	       ($_[0] eq "nfs4") && ($dir eq "") ? "/" : $dir;
-	&nfs_export_chooser_button("nfs_host", "nfs_dir");
-	print "</td> </tr>\n";
+	local ($host, $dir) = $loc =~ /^([^:]+):(.*)$/ ? ( $1, $2 ) : ( );
+	print &ui_table_row(&hlink($text{'linux_nfshost'}, "nfshost"),
+		&ui_textbox("nfs_host", $host, 30).
+		&nfs_server_chooser_button("nfs_host").
+		"&nbsp;".
+		"<b>".&hlink($text{'linux_nfsdir'}, "nfsdir")."</b> ".
+		&ui_textbox("nfs_dir", 
+	       		    ($_[0] eq "nfs4") && ($dir eq "") ? "/" : $dir, 30).
+		&nfs_export_chooser_button("nfs_host", "nfs_dir"));
 	}
-elsif ($_[0] eq "auto") {
+elsif ($type eq "auto") {
 	# Using some automounter map
-	print "<tr> <td><b>$text{'linux_map'}</b></td>\n";
-	print "<td><input name=auto_map size=20 value=\"$_[1]\">\n";
-	print &file_chooser_button("auto_map", 0);
-	print "</td> <td colspan=2></td> </tr>\n";
+	print &ui_table_row($text{'linux_map'},
+		&ui_textbox("auto_map", $loc, 30)." ".
+		&file_chooser_button("auto_map", 0));
 	}
-elsif ($_[0] eq "autofs") {
+elsif ($type eq "autofs") {
 	# Using some kernel automounter map
-	print "<tr> <td><b>$text{'linux_map'}</b></td>\n";
-	print "<td><input name=autofs_map size=20 value=\"$_[1]\">\n";
-	print &file_chooser_button("autofs_map", 0);
-	print "</td> <td colspan=2></td> </tr>\n";
+	print &ui_table_row($text{'linux_map'},
+		&ui_textbox("autofs_map", $loc, 30)." ".
+		&file_chooser_button("autofs_map", 0));
 	}
-elsif ($_[0] eq "swap") {
+elsif ($type eq "swap") {
 	# Swap file or device
 	&foreign_require("fdisk");
 	printf "<tr> <td valign=top><b>$text{'linux_swapfile'}</b></td>\n";
@@ -1041,27 +1040,26 @@ elsif ($_[0] eq "swap") {
 		&file_chooser_button("lnx_other");
 	print "</td> </tr>\n";
 	}
-elsif ($_[0] eq $smbfs_fs || $_[0] eq "cifs") {
+elsif ($type eq $smbfs_fs || $type eq "cifs") {
 	# Windows filesystem
-	local ($server, $share) = $_[1] =~ /^\\\\([^\\]*)\\(.*)$/ ?
+	local ($server, $share) = $loc =~ /^\\\\([^\\]*)\\(.*)$/ ?
 					($1, $2) : ( );
-	print "<tr> <td><b>$text{'linux_smbserver'}</b></td>\n";
-	print "<td><input name=smbfs_server value=\"$server\" size=20>\n";
-	&smb_server_chooser_button("smbfs_server");
-	print "</td>\n";
-	print "<td><b>$text{'linux_smbshare'}</b></td>\n";
-	print "<td><input name=smbfs_share value=\"$share\" size=20>\n";
-	&smb_share_chooser_button("smbfs_server", "smbfs_share");
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'linux_smbserver'},
+		&ui_textbox("smbfs_server", $server, 30)." ".
+		&smb_server_chooser_button("smbfs_server")." ".
+		"&nbsp;".
+		"<b>$text{'linux_smbshare'}</b> ".
+		&ui_textbox("smbfs_share", $share, 30)." ".
+		&smb_share_chooser_button("smbfs_server", "smbfs_share"));
 	}
-elsif ($_[0] eq "tmpfs") {
+elsif ($type eq "tmpfs") {
 	# RAM disk (no location needed)
 	}
-elsif ($_[0] eq "bind") {
+elsif ($type eq "bind") {
 	# Loopback filesystem, mounted from some other directory
-	print "<tr> <td><b>$text{'linux_bind'}</b></td> <td colspan=3>\n";
-	printf "<input name=bind_dir value='%s' size=35> %s</td> </tr>\n",
-		$_[1], &file_chooser_button("bind_dir", 1);
+	print &ui_table_row($text{'linux_bind'},
+		&ui_textbox("bind_dir", $loc, 40)." ".
+		&file_chooser_button("bind_dir", 1));
 	}
 else {
 	# This is some linux disk-based filesystem

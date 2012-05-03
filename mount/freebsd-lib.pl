@@ -379,11 +379,11 @@ if ($_[0] eq "nfs") {
 	$_[1] =~ /^([^:]+):(.*)$/;
 	print "<tr> <td><b>NFS Hostname</b></td>\n";
 	print "<td><input name=nfs_host size=20 value=\"$1\">\n";
-	&nfs_server_chooser_button("nfs_host");
+	print &nfs_server_chooser_button("nfs_host");
 	print "</td>\n";
 	print "<td><b>NFS Directory</b></td>\n";
 	print "<td><input name=nfs_dir size=20 value=\"$2\">\n";
-	&nfs_export_chooser_button("nfs_host", "nfs_dir");
+	print &nfs_export_chooser_button("nfs_host", "nfs_dir");
 	print "</td> </tr>\n";
 	}
 elsif ($_[0] eq "smbfs") {
@@ -391,11 +391,11 @@ elsif ($_[0] eq "smbfs") {
 	$_[1] =~ /^\\\\(.*)\\(.*)$/;
 	print "<tr> <td><b>$text{'linux_smbserver'}</b></td>\n";
 	print "<td><input name=smbfs_server value=\"$1\" size=20>\n";
-	&smb_server_chooser_button("smbfs_server");
+	print &smb_server_chooser_button("smbfs_server");
 	print "</td>\n";
 	print "<td><b>$text{'linux_smbshare'}</b></td>\n";
 	print "<td><input name=smbfs_share value=\"$2\" size=20>\n";
-	&smb_share_chooser_button("smbfs_server", "smbfs_share");
+	print &smb_share_chooser_button("smbfs_server", "smbfs_share");
 	print "</td> </tr>\n";
 	}
 else {

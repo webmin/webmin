@@ -350,11 +350,11 @@ if ($_[0] eq "nfs") {
 	local ($nfshost, $nfspath) = $_[1] =~ /^([^:]+):(.*)/ ? ( $1, $2 ) : ();
 	print "<tr> <td><b>$text{'irix_nhost'}</b></td>\n";
 	print "<td><input name=nfs_host size=20 value=\"$nfshost\">\n";
-	&nfs_server_chooser_button("nfs_host");
+	print &nfs_server_chooser_button("nfs_host");
 	print "</td>\n";
 	print "<td><b>$text{'irix_ndir'}</b></td>\n";
 	print "<td><input name=nfs_dir size=20 value=\"$nfspath\">\n";
-	&nfs_export_chooser_button("nfs_host", "nfs_dir");
+	print &nfs_export_chooser_button("nfs_host", "nfs_dir");
 	print "</td> </tr>\n";
 	}
 elsif ($_[0] eq "autofs") {

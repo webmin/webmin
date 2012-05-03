@@ -333,10 +333,10 @@ if ($_[0] eq "nfs") {
 			$nfsmode == 0 ? "checked" : "";
 		print "<b>NFS Hostname</b></td>\n";
 		print "<td><input name=nfs_host size=20 value=\"$nfshost\">\n";
-		&nfs_server_chooser_button("nfs_host");
+		print &nfs_server_chooser_button("nfs_host");
 		print "&nbsp;<b>NFS Directory</b>\n";
 		print "<input name=nfs_dir size=20 value=\"$nfspath\">\n";
-		&nfs_export_chooser_button("nfs_host", "nfs_dir");
+		print &nfs_export_chooser_button("nfs_host", "nfs_dir");
 		print "</td> </tr>\n";
 
 		print "<tr> <td></td>\n";
@@ -360,11 +360,11 @@ if ($_[0] eq "nfs") {
 	else {
 		print "<tr> <td><b>NFS Hostname</b></td>\n";
 		print "<td><input name=nfs_host size=20 value=\"$nfshost\">\n";
-		&nfs_server_chooser_button("nfs_host");
+		print &nfs_server_chooser_button("nfs_host");
 		print "</td>\n";
 		print "<td><b>NFS Directory</b></td>\n";
 		print "<td><input name=nfs_dir size=20 value=\"$nfspath\">\n";
-		&nfs_export_chooser_button("nfs_host", "nfs_dir");
+		print &nfs_export_chooser_button("nfs_host", "nfs_dir");
 		print "</td> </tr>\n";
 		}
 	}
@@ -516,11 +516,11 @@ elsif ($_[0] eq "rumba") {
 	$_[1] =~ /^\\\\(.*)\\(.*)$/;
 	print "<tr> <td><b>Server Name</b></td>\n";
 	print "<td><input name=rumba_server value=\"$1\" size=20>\n";
-	&smb_server_chooser_button("rumba_server");
+	print &smb_server_chooser_button("rumba_server");
 	print "</td>\n";
 	print "<td><b>Share Name</b></td>\n";
 	print "<td><input name=rumba_share value=\"$2\" size=20>\n";
-	&smb_share_chooser_button("rumba_server", "rumba_share");
+	print &smb_share_chooser_button("rumba_server", "rumba_share");
 	print "</td> </tr>\n";
 	}
 }

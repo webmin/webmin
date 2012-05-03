@@ -117,8 +117,9 @@ sub nfs_server_chooser_button
 local($form);
 $form = @_ > 1 ? $_[1] : 0;
 if ($access{'browse'}) {
-	print "<input type=button onClick='ifield = document.forms[$form].$_[0]; nfs_server = window.open(\"../$module_name/nfs_server.cgi\", \"nfs_server\", \"toolbar=no,menubar=no,scrollbars=yes,width=400,height=300\"); nfs_server.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
+	return "<input type=button onClick='ifield = document.forms[$form].$_[0]; nfs_server = window.open(\"../$module_name/nfs_server.cgi\", \"nfs_server\", \"toolbar=no,menubar=no,scrollbars=yes,width=400,height=300\"); nfs_server.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
 	}
+return undef;
 }
 
 # nfs_export_chooser_button(serverinput, exportinput, [form])
@@ -127,8 +128,9 @@ sub nfs_export_chooser_button
 local($form);
 $form = @_ > 2 ? $_[2] : 0;
 if ($access{'browse'}) {
-	print "<input type=button onClick='if (document.forms[$form].$_[0].value != \"\") { ifield = document.forms[$form].$_[1]; nfs_export = window.open(\"../$module_name/nfs_export.cgi?server=\"+document.forms[$form].$_[0].value, \"nfs_export\", \"toolbar=no,menubar=no,scrollbars=yes,width=500,height=200\"); nfs_export.ifield = ifield; window.ifield = ifield }' value=\"...\">\n";
+	return "<input type=button onClick='if (document.forms[$form].$_[0].value != \"\") { ifield = document.forms[$form].$_[1]; nfs_export = window.open(\"../$module_name/nfs_export.cgi?server=\"+document.forms[$form].$_[0].value, \"nfs_export\", \"toolbar=no,menubar=no,scrollbars=yes,width=500,height=200\"); nfs_export.ifield = ifield; window.ifield = ifield }' value=\"...\">\n";
 	}
+return undef;
 }
 
 # smb_server_chooser_button(serverinput, [form])
@@ -137,8 +139,9 @@ sub smb_server_chooser_button
 local($form);
 $form = @_ > 1 ? $_[1] : 0;
 if (&has_command($config{'smbclient_path'}) && $access{'browse'}) {
-	print "<input type=button onClick='ifield = document.forms[$form].$_[0]; smb_server = window.open(\"../$module_name/smb_server.cgi\", \"smb_server\", \"toolbar=no,menubar=no,scrollbars=yes,width=400,height=300\"); smb_server.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
+	return "<input type=button onClick='ifield = document.forms[$form].$_[0]; smb_server = window.open(\"../$module_name/smb_server.cgi\", \"smb_server\", \"toolbar=no,menubar=no,scrollbars=yes,width=400,height=300\"); smb_server.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
 	}
+return undef;
 }
 
 # smb_share_chooser_button(serverinput, shareinput, [form])
@@ -147,8 +150,9 @@ sub smb_share_chooser_button
 local($form);
 $form = @_ > 2 ? $_[2] : 0;
 if (&has_command($config{'smbclient_path'}) && $access{'browse'}) {
-	print "<input type=button onClick='if (document.forms[$form].$_[0].value != \"\") { ifield = document.forms[$form].$_[1]; smb_share = window.open(\"../$module_name/smb_share.cgi?server=\"+document.forms[$form].$_[0].value, \"smb_share\", \"toolbar=no,menubar=no,scrollbars=yes,width=400,height=300\"); smb_share.ifield = ifield; window.ifield = ifield }' value=\"...\">\n";
+	return "<input type=button onClick='if (document.forms[$form].$_[0].value != \"\") { ifield = document.forms[$form].$_[1]; smb_share = window.open(\"../$module_name/smb_share.cgi?server=\"+document.forms[$form].$_[0].value, \"smb_share\", \"toolbar=no,menubar=no,scrollbars=yes,width=400,height=300\"); smb_share.ifield = ifield; window.ifield = ifield }' value=\"...\">\n";
 	}
+return undef;
 }
 
 # Include the correct OS-specific functions file

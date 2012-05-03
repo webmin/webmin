@@ -284,11 +284,11 @@ if ($_[0] eq "nfs") {
 	$_[1] =~ /^([^:]+):(.*)$/;
 	print "<tr> <td><b>NFS Hostname</b></td>\n";
 	print "<td><input name=nfs_host size=20 value=\"$1\">\n";
-	&nfs_server_chooser_button("nfs_host");
+	print &nfs_server_chooser_button("nfs_host");
 	print "</td>\n";
 	print "<td><b>NFS Directory</b></td>\n";
 	print "<td><input name=nfs_dir size=20 value=\"$2\">\n";
-	&nfs_export_chooser_button("nfs_host", "nfs_dir");
+	print &nfs_export_chooser_button("nfs_host", "nfs_dir");
 	print "</td> </tr>\n";
 	}
 else {
