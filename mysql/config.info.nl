@@ -8,6 +8,7 @@ blob_mode=Laat blob en tekst velden zien als,1,0-Data in tabel,1-Links om te dow
 nodbi=Gebruik DBI om te verbinden indien beschikbaar?,1,0-Ja,1-Nee
 nopwd=Gebruik de MYSQL_PWD variabel voor het wachtwoord?,1,0-Ja,1-Nee
 date_subs=Doe een <tt>strftime</tt> toevoeging van backup bestemmingen?,1,1-Ja,0-Nee
+webmin_subs=Webmin variabele substitutie uitvoeren op backup bestemmingen?,1,1-Ja,0-Nee
 passwd_mode=Wachtwoord hashing mode,1,1-Oud,0-Standaard
 encoding=Versleutelen van database inhoud,3,Standaard ( van huidig taal)
 max_dbs=Maximum aantal databases en tabellen om te laten zien,0,5
