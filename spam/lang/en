@@ -224,6 +224,7 @@ log_priv=Modified miscellaneous privileged options
 log_setup=Setup Procmail for SpamAssassin
 log_procmail=Changed Procmail configuration
 log_import=Imported $1 allowed addresses
+log_manual=Manually edited configuration file
 
 import_title=Import Addresses
 import_err=Failed to import addresses
@@ -381,4 +382,11 @@ dawl_ecannot=You are not allowed to manage the auto-whitelist for this user
 dawl_doing=Deleting auto-whitelists for all users ..
 dawl_done=.. deleted $2 entries from $1 users.
 dawl_title=Delete All Auto-Whitelists
+
+manual_title=Edit Config Files
+manual_file=Edit config file:
+manual_ok=OK
+manual_efile=Invalid configuration file!
+manual_err=Failed to save configuration file
+
 __norefs=1

@@ -24,3 +24,4 @@ Cleaned up the layout of all pages to improve formatted, in particular the Allow
 Don't show language and character set spam classification options unless the TextCat plugin is enabled, as they won't work without it.
 ---- Changes since 1.590 ----
 Added a field for setting the trusted_networks parameter.
+The SpamAssassin config files can now be manually edited by the root user.

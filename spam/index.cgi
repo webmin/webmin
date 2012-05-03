@@ -133,6 +133,7 @@ else {
 		push(@pages, 'procmail') if ($delivery_enabled == 1);
 		push(@pages, 'db') if (!$module_info{'usermin'});
 		push(@pages, 'awl') if (&supports_auto_whitelist());
+		push(@pages, 'manual');
 		@pages = grep { &can_use_page($_) } @pages;
 		$sfolder = $module_info{'usermin'} ? &spam_file_folder()
 						   : undef;
@@ -156,14 +157,13 @@ else {
 		if (!$module_info{'usermin'} &&
 		    (@pids = &get_process_pids())) {
 			print &ui_hr();
-			print "<form action=apply.cgi>\n";
-			print "<table>\n";
-			print "<tr> <td><input type=submit ",
-			      "value='$text{'index_apply'}'></td>\n";
-			print "<td>",&text('index_applydesc',
-				"<tt>".join(" and ", &unique(
-				map { $_->[1] } @pids))."</tt>"),"</td>\n";
-			print "</table>\n";
+			print &ui_buttons_start();
+			print &ui_buttons_row("apply.cgi",
+				$text{'index_apply'},
+				&text('index_applydesc',
+				  "<tt>".join(" and ", &unique(
+				  map { $_->[1] } @pids))."</tt>"));
+			print &ui_buttons_end();
 			}
 		}
 	}
