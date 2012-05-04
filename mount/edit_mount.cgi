@@ -70,12 +70,15 @@ print &ui_table_row(&hlink($text{'edit_dir'}, "edit_dir"),
 		    $mfield);
 
 # Total and free space
-if (!$newm && (($size,$free) = &disk_space($type, $minfo[0]))) {
-	print &ui_table_row($text{'edit_usage'},
-		"<b>$text{'edit_size'}</b> ",
-		&nice_size($size*1024)," ",
-		"<b>$text{'edit_free'}</b> ",
-		&nice_size($free*1024));
+if (!$newm) {
+	($size,$free) = &disk_space($type, $minfo[0]);
+	if ($size) {
+		print &ui_table_row($text{'edit_usage'},
+			"<b>$text{'edit_size'}</b> ".
+			&nice_size($size*1024)." ".
+			"<b>$text{'edit_free'}</b> ".
+			&nice_size($free*1024));
+		}
 	}
 
 # Show save mount options
@@ -133,22 +136,17 @@ if (!defined($access{'opts'}) || $access{'opts'} =~ /$type/) {
 	}
 
 # Save and other buttons
-print "<table width=100%><tr>\n";
 if ($newm) {
-	print "<td><input type=submit value=\"$text{'create'}\"></td>";
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 elsif ($mnow && $minfo[2] ne "swap") {
-	print "<td><input type=submit value=\"$text{'save'}\"></td>\n";
-	print "</form><form action=../proc/index_search.cgi>\n";
-	print "<input type=hidden name=mode value=3>\n";
-	print "<input type=hidden name=fs value=$minfo[0]>\n";
-	print "<td align=right><input type=submit ",
-	      "value=\"$text{'edit_list'}\"></td>\n";
+	print &ui_hidden("lsoffs", $minfo[0]);
+	print &ui_form_end([ [ undef, $text{'save'} ],
+			     [ 'lsof', $text{'edit_list'} ] ]);
 	}
 else {
-	print "<td><input type=submit value=\"$text{'save'}\"></td>";
+	print &ui_form_end([ [ undef, $text{'save'} ] ]);
 	}
-print "</tr></table></form>\n";
 
 &ui_print_footer($in{'return'}, $text{'index_return'});
 

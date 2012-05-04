@@ -8,6 +8,12 @@ require './mount-lib.pl';
 &ReadParse();
 $| = 1;
 
+# Check for redirect to proc module to list processes on the FS
+if ($in{'lsof'}) {
+	&redirect("../proc/index_search.cgi?mode=3&fs=".&urlize($in{'lsoffs'}));
+	return;
+	}
+
 # check inputs
 if ($in{type} ne "swap") {
 	if ($in{directory} !~ /^\//) {
