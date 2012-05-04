@@ -1,4 +1,0 @@
-icons=1
-ignore=proc fd usbdevfs devpts
-opts=smbfs rumba
-simple=1

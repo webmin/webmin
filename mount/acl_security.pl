@@ -29,14 +29,6 @@ print "<td><b>$text{'acl_hide'}</b></td>\n";
 print "<td>",&ui_radio("hide", $_[0]->{'hide'},
 	       [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]),"</td> </tr>\n";
 
-print "<tr> <td><b>$text{'acl_simple'}</b></td>\n";
-print "<td>",&ui_radio("simple", $_[0]->{'simple'},
-	       [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]),"</td>\n";
-
-print "<td><b>$text{'acl_simopts'}</b></td>\n";
-print "<td>",&ui_radio("simopts", $_[0]->{'simopts'},
-	       [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]),"</td> </tr>\n";
-
 print "<tr> <td><b>$text{'acl_browse'}</b></td>\n";
 print "<td>",&ui_radio("browse", $_[0]->{'browse'},
 	       [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]),"</td>\n";
@@ -54,8 +46,6 @@ $_[0]->{'only'} = $in{'only'};
 $_[0]->{'create'} = $in{'create'};
 $_[0]->{'user'} = $in{'user'};
 $_[0]->{'hide'} = $in{'hide'};
-$_[0]->{'simple'} = $in{'simple'};
-$_[0]->{'simopts'} = $in{'simopts'};
 $_[0]->{'browse'} = $in{'browse'};
 }
 

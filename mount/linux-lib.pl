@@ -1014,31 +1014,31 @@ elsif ($type eq "autofs") {
 elsif ($type eq "swap") {
 	# Swap file or device
 	&foreign_require("fdisk");
-	printf "<tr> <td valign=top><b>$text{'linux_swapfile'}</b></td>\n";
-	print "<td colspan=3>\n";
-	local ($found, $ufound);
+	local @opts;
+	local ($found, $ufound, $lnx_dev);
 
 	# Show partitions input
-	local $sel = &fdisk::partition_select("lnx_disk", $_[1], 3, \$found);
-	printf "<input type=radio name=lnx_dev value=0 %s> %s %s<br>\n",
-		$found ? "checked" : "", $text{'linux_disk'}, $sel;
+	local $sel = &fdisk::partition_select("lnx_disk", $loc, 3, \$found);
+	push(@opts, [ 0, $text{'linux_disk'}, $sel ]);
+	$lnx_dev = 0 if ($found);
 
 	# Show UUID input
 	if ($has_volid || -d $uuid_directory) {
-		local $u = $_[1] =~ /UUID=(\S+)/ ? $1 : undef;
+		local $u = $loc =~ /UUID=(\S+)/ ? $1 : undef;
 		local $usel = &fdisk::volid_select("lnx_uuid", $u, \$ufound);
 		if ($usel) {
-			printf "<input type=radio name=lnx_dev value=5 %s> %s %s<br>\n", $ufound ? "checked" : "", $text{'linux_usel'}, $usel;
+			push(@opts, [ 5, $text{'linux_usel'}, $usel ]);
+			$lnx_dev = 5 if ($ufound);
 			}
 		}
 
 	# Show other file input
-	printf "<input type=radio name=lnx_dev value=1 %s> %s\n",
-		$found || $ufound ? "" : "checked", $text{'linux_swapfile'};
-	printf "<input name=lnx_other size=35 value='%s'> %s<br>\n",
-		$found || $ufound ? "" : $_[1],
-		&file_chooser_button("lnx_other");
-	print "</td> </tr>\n";
+	$lnx_dev = 1 if (!$found && !$ufound);
+	push(@opts, [ 1, $text{'linux_swapfile'},
+			 &ui_textbox("lnx_other", $loc, 40)." ".
+			 &file_chooser_button("lnx_other") ]);
+	print &ui_table_row($text{'linux_swapfile'},
+		&ui_radio_table("lnx_dev", $lnx_dev, \@opts));
 	}
 elsif ($type eq $smbfs_fs || $type eq "cifs") {
 	# Windows filesystem
@@ -1535,12 +1535,9 @@ elsif ($_[0] eq "autofs") {
 	}
 elsif ($_[0] eq "swap") {
 	# Swap has no options..
-	print "<tr> <td width=25%><b>$text{'linux_swappri'}</b></td>\n";
-	print "<td width=25%>",&ui_opt_textbox("swap_pri", $options{'pri'}, 6,
-				     $text{'default'}),"</td>\n";
-
-	print "<td width=50% colspan=2></td>\n";
-	print "</tr>\n";
+	print &ui_table_row($text{'linux_swappri'},
+		&ui_opt_textbox("swap_pri", $options{'pri'}, 6,
+				     $text{'default'}));
 	}
 elsif ($_[0] eq $smbfs_fs || $_[0] eq "cifs") {
 	# SMB filesystems have a few options..
@@ -1568,120 +1565,118 @@ elsif ($_[0] eq $smbfs_fs || $_[0] eq "cifs") {
 			}
 		}
 	print "</td>\n";
-	if (!$access{'simopts'}) {
-		if ($support != 2) {
-			print "<tr> <td><b>$text{'linux_uid'}</b></td>\n";
-			printf "<td><input name=smbfs_uid size=8 value=\"%s\">\n",
-				defined($options{"uid"}) ? getpwuid($options{"uid"}) : "";
-			print &user_chooser_button("smbfs_uid", 0),"</td>\n";
+	if ($support != 2) {
+		print "<tr> <td><b>$text{'linux_uid'}</b></td>\n";
+		printf "<td><input name=smbfs_uid size=8 value=\"%s\">\n",
+			defined($options{"uid"}) ? getpwuid($options{"uid"}) : "";
+		print &user_chooser_button("smbfs_uid", 0),"</td>\n";
 
-			print "<td><b>$text{'linux_gid'}</b></td>\n";
-			printf "<td><input name=smbfs_gid size=8 value=\"%s\">\n",
-				defined($options{"gid"}) ? getgrgid($options{"gid"}) : "";
-			print &group_chooser_button("smbfs_gid", 0),"</td>\n";
-			}
+		print "<td><b>$text{'linux_gid'}</b></td>\n";
+		printf "<td><input name=smbfs_gid size=8 value=\"%s\">\n",
+			defined($options{"gid"}) ? getgrgid($options{"gid"}) : "";
+		print &group_chooser_button("smbfs_gid", 0),"</td>\n";
+		}
 
-		if ($support == 1) {
-			print "<tr> <td><b>$text{'linux_sname'}</b></td>\n";
-			printf "<td><input type=radio name=smbfs_sname_def value=1 %s> $text{'linux_auto'}\n",
-				defined($options{"servername"}) ? "" : "checked";
-			printf "<input type=radio name=smbfs_sname_def value=0 %s>\n",
-				defined($options{"servername"}) ? "checked" : "";
-			print "<input size=10 name=smbfs_sname value=\"$options{servername}\"></td>\n";
-			}
-		elsif ($support == 2) {
-			print "<tr> <td><b>$text{'linux_wg'}</b></td>\n";
-			printf "<td><input type=radio name=smbfs_wg_def value=1 %s> $text{'linux_auto'}\n",
-				defined($options{"workgroup"}) ? "" : "checked";
-			printf "<input type=radio name=smbfs_wg_def value=0 %s>\n",
-				defined($options{"workgroup"}) ? "checked" : "";
-			print "<input size=10 name=smbfs_wg value=\"$options{'workgroup'}\"></td>\n";
-			}
+	if ($support == 1) {
+		print "<tr> <td><b>$text{'linux_sname'}</b></td>\n";
+		printf "<td><input type=radio name=smbfs_sname_def value=1 %s> $text{'linux_auto'}\n",
+			defined($options{"servername"}) ? "" : "checked";
+		printf "<input type=radio name=smbfs_sname_def value=0 %s>\n",
+			defined($options{"servername"}) ? "checked" : "";
+		print "<input size=10 name=smbfs_sname value=\"$options{servername}\"></td>\n";
+		}
+	elsif ($support == 2) {
+		print "<tr> <td><b>$text{'linux_wg'}</b></td>\n";
+		printf "<td><input type=radio name=smbfs_wg_def value=1 %s> $text{'linux_auto'}\n",
+			defined($options{"workgroup"}) ? "" : "checked";
+		printf "<input type=radio name=smbfs_wg_def value=0 %s>\n",
+			defined($options{"workgroup"}) ? "checked" : "";
+		print "<input size=10 name=smbfs_wg value=\"$options{'workgroup'}\"></td>\n";
+		}
 
-		if ($support < 3) {
-			print "<td><b>$text{'linux_cname'}</b></td>\n";
-			printf "<td><input type=radio name=smbfs_cname_def value=1 %s> $text{'linux_auto'}\n",
-				defined($options{"clientname"}) ? "" : "checked";
-			printf "<input type=radio name=smbfs_cname_def value=0 %s>\n",
-				defined($options{"clientname"}) ? "checked" : "";
-			print "<input size=10 name=smbfs_cname value=\"$options{clientname}\"></td> </tr>\n";
+	if ($support < 3) {
+		print "<td><b>$text{'linux_cname'}</b></td>\n";
+		printf "<td><input type=radio name=smbfs_cname_def value=1 %s> $text{'linux_auto'}\n",
+			defined($options{"clientname"}) ? "" : "checked";
+		printf "<input type=radio name=smbfs_cname_def value=0 %s>\n",
+			defined($options{"clientname"}) ? "checked" : "";
+		print "<input size=10 name=smbfs_cname value=\"$options{clientname}\"></td> </tr>\n";
 
-			print "<tr> <td><b>$text{'linux_mname'}</b></td>\n";
-			printf "<td colspan=3><input type=radio name=smbfs_mname_def value=1 %s> %s\n",
-				defined($options{"machinename"}) ? "" : "checked", $text{'linux_auto'};
-			printf "<input type=radio name=smbfs_mname_def value=0 %s>\n",
-				defined($options{"machinename"}) ? "checked" : "";
-			print "<input size=30 name=smbfs_mname value=\"$options{machinename}\"></td> </tr>\n";
-			}
-		
-		if ($support == 1) {
-			print "<tr> <td><b>$text{'linux_fmode'}</b></td>\n";
-			printf
-			    "<td><input name=smbfs_fmode size=5 value=\"%s\"></td>\n",
-			    defined($options{'fmode'}) ? $options{'fmode'} : "755";
+		print "<tr> <td><b>$text{'linux_mname'}</b></td>\n";
+		printf "<td colspan=3><input type=radio name=smbfs_mname_def value=1 %s> %s\n",
+			defined($options{"machinename"}) ? "" : "checked", $text{'linux_auto'};
+		printf "<input type=radio name=smbfs_mname_def value=0 %s>\n",
+			defined($options{"machinename"}) ? "checked" : "";
+		print "<input size=30 name=smbfs_mname value=\"$options{machinename}\"></td> </tr>\n";
+		}
+	
+	if ($support == 1) {
+		print "<tr> <td><b>$text{'linux_fmode'}</b></td>\n";
+		printf
+		    "<td><input name=smbfs_fmode size=5 value=\"%s\"></td>\n",
+		    defined($options{'fmode'}) ? $options{'fmode'} : "755";
 
-			print "<td><b>$text{'linux_dmode'}</b></td>\n";
-			printf
-			    "<td><input name=smbfs_dmode size=5 value=\"%s\"></td>\n",
-			    defined($options{'dmode'}) ? $options{'dmode'} : "755";
-			print "</tr>\n";
-			}
-		elsif ($support >= 3) {
-			print "<tr> <td><b>$text{'linux_fmode'}</b></td> <td>\n";
-			printf"<input type=radio name=smbfs_fmask_def value=1 %s> %s\n",
-				defined($options{'fmask'}) ? "" : "checked",
-				$text{'default'};
-			printf"<input type=radio name=smbfs_fmask_def value=0 %s>\n",
-				defined($options{'fmask'}) ? "checked" : "";
-			printf "<input name=smbfs_fmask size=5 value='%s'></td>\n",
-				$options{'fmask'};
+		print "<td><b>$text{'linux_dmode'}</b></td>\n";
+		printf
+		    "<td><input name=smbfs_dmode size=5 value=\"%s\"></td>\n",
+		    defined($options{'dmode'}) ? $options{'dmode'} : "755";
+		print "</tr>\n";
+		}
+	elsif ($support >= 3) {
+		print "<tr> <td><b>$text{'linux_fmode'}</b></td> <td>\n";
+		printf"<input type=radio name=smbfs_fmask_def value=1 %s> %s\n",
+			defined($options{'fmask'}) ? "" : "checked",
+			$text{'default'};
+		printf"<input type=radio name=smbfs_fmask_def value=0 %s>\n",
+			defined($options{'fmask'}) ? "checked" : "";
+		printf "<input name=smbfs_fmask size=5 value='%s'></td>\n",
+			$options{'fmask'};
 
-			print "<td><b>$text{'linux_dmode'}</b></td> <td>\n";
-			printf"<input type=radio name=smbfs_dmask_def value=1 %s> %s\n",
-				defined($options{'dmask'}) ? "" : "checked",
-				$text{'default'};
-			printf"<input type=radio name=smbfs_dmask_def value=0 %s>\n",
-				defined($options{'dmask'}) ? "checked" : "";
-			printf "<input name=smbfs_dmask size=5 value='%s'></td></tr>\n",
-				$options{'dmask'};
+		print "<td><b>$text{'linux_dmode'}</b></td> <td>\n";
+		printf"<input type=radio name=smbfs_dmask_def value=1 %s> %s\n",
+			defined($options{'dmask'}) ? "" : "checked",
+			$text{'default'};
+		printf"<input type=radio name=smbfs_dmask_def value=0 %s>\n",
+			defined($options{'dmask'}) ? "checked" : "";
+		printf "<input name=smbfs_dmask size=5 value='%s'></td></tr>\n",
+			$options{'dmask'};
 
-			print "<tr> <td><b>$text{'linux_ro'}</b></td>\n";
-			printf "<td><input type=radio name=smbfs_ro value=1 %s> $text{'yes'}\n",
-				defined($options{"ro"}) ? "checked" : "";
-			printf "<input type=radio name=smbfs_ro value=0 %s> $text{'no'}</td>\n",
-				defined($options{"ro"}) ? "" : "checked";
-			}
-		if ($support == 4) {
-			print "<td><b>$text{'linux_user'}</b></td>\n";
-			printf "<td><input type=radio name=smbfs_user2 value=1 %s> $text{'yes'}\n",
-				defined($options{"user"}) ? "checked" : "";
-			printf "<input type=radio name=smbfs_user2 value=0 %s> $text{'no'}</td> </tr>\n",
-				defined($options{"user"}) ? "" : "checked";
+		print "<tr> <td><b>$text{'linux_ro'}</b></td>\n";
+		printf "<td><input type=radio name=smbfs_ro value=1 %s> $text{'yes'}\n",
+			defined($options{"ro"}) ? "checked" : "";
+		printf "<input type=radio name=smbfs_ro value=0 %s> $text{'no'}</td>\n",
+			defined($options{"ro"}) ? "" : "checked";
+		}
+	if ($support == 4) {
+		print "<td><b>$text{'linux_user'}</b></td>\n";
+		printf "<td><input type=radio name=smbfs_user2 value=1 %s> $text{'yes'}\n",
+			defined($options{"user"}) ? "checked" : "";
+		printf "<input type=radio name=smbfs_user2 value=0 %s> $text{'no'}</td> </tr>\n",
+			defined($options{"user"}) ? "" : "checked";
 
-			print "<tr> <td><b>$text{'linux_cname'}</b></td>\n";
-			printf "<td colspan=3><input type=radio name=smbfs_cname_def value=1 %s> $text{'linux_auto'}\n",
-				defined($options{"netbiosname"}) ? "" : "checked";
-			printf "<input type=radio name=smbfs_cname_def value=0 %s>\n",
-				defined($options{"netbiosname"}) ? "checked" : "";
-			print "<input size=40 name=smbfs_cname value=\"$options{netbiosname}\"></td> </tr>\n";
+		print "<tr> <td><b>$text{'linux_cname'}</b></td>\n";
+		printf "<td colspan=3><input type=radio name=smbfs_cname_def value=1 %s> $text{'linux_auto'}\n",
+			defined($options{"netbiosname"}) ? "" : "checked";
+		printf "<input type=radio name=smbfs_cname_def value=0 %s>\n",
+			defined($options{"netbiosname"}) ? "checked" : "";
+		print "<input size=40 name=smbfs_cname value=\"$options{netbiosname}\"></td> </tr>\n";
 
-			print "<tr> <td><b>$text{'linux_mname'}</b></td>\n";
-			printf "<td colspan=3><input type=radio name=smbfs_mname_def value=1 %s> %s\n",
-				defined($options{"ip"}) ? "" : "checked", $text{'linux_auto'};
-			printf "<input type=radio name=smbfs_mname_def value=0 %s>\n",
-				defined($options{"ip"}) ? "checked" : "";
-			print "<input size=40 name=smbfs_mname value=\"$options{ip}\"></td> </tr>\n";
+		print "<tr> <td><b>$text{'linux_mname'}</b></td>\n";
+		printf "<td colspan=3><input type=radio name=smbfs_mname_def value=1 %s> %s\n",
+			defined($options{"ip"}) ? "" : "checked", $text{'linux_auto'};
+		printf "<input type=radio name=smbfs_mname_def value=0 %s>\n",
+			defined($options{"ip"}) ? "checked" : "";
+		print "<input size=40 name=smbfs_mname value=\"$options{ip}\"></td> </tr>\n";
 
-			print "<tr> <td><b>$text{'linux_wg'}</b></td>\n";
-			printf "<td><input type=radio name=smbfs_wg_def value=1 %s> $text{'linux_auto'}\n",
-				defined($options{"workgroup"}) ? "" : "checked";
-			printf "<input type=radio name=smbfs_wg_def value=0 %s>\n",
-				defined($options{"workgroup"}) ? "checked" : "";
-			print "<input size=10 name=smbfs_wg value=\"$options{'workgroup'}\"></td>\n";
-			}
-		if ($support >= 3) {
-			print "</tr>\n";
-			}
+		print "<tr> <td><b>$text{'linux_wg'}</b></td>\n";
+		printf "<td><input type=radio name=smbfs_wg_def value=1 %s> $text{'linux_auto'}\n",
+			defined($options{"workgroup"}) ? "" : "checked";
+		printf "<input type=radio name=smbfs_wg_def value=0 %s>\n",
+			defined($options{"workgroup"}) ? "checked" : "";
+		print "<input size=10 name=smbfs_wg value=\"$options{'workgroup'}\"></td>\n";
+		}
+	if ($support >= 3) {
+		print "</tr>\n";
 		}
 
 	if ($_[0] eq "cifs") {
@@ -2135,100 +2130,98 @@ elsif ($_[0] eq $smbfs_fs || $_[0] eq "cifs") {
 			}
 		}
 
-	if (!$access{'simopts'}) {
-		if ($support != 2) {
-			delete($options{uid});
-			if ($in{smbfs_uid} ne "") { $options{uid} = getpwnam($in{smbfs_uid}); }
+	if ($support != 2) {
+		delete($options{uid});
+		if ($in{smbfs_uid} ne "") { $options{uid} = getpwnam($in{smbfs_uid}); }
 
-			delete($options{gid});
-			if ($in{smbfs_gid} ne "") { $options{gid} = getgrnam($in{smbfs_gid}); }
-			}
+		delete($options{gid});
+		if ($in{smbfs_gid} ne "") { $options{gid} = getgrnam($in{smbfs_gid}); }
+		}
 
-		if ($support == 1) {
-			delete($options{servername});
-			if (!$in{smbfs_sname_def})
-				{ $options{servername} = $in{smbfs_sname}; }
-			}
-		elsif ($support == 2 || $support == 4) {
-			delete($options{workgroup});
-			if (!$in{smbfs_wg_def})
-				{ $options{workgroup} = $in{smbfs_wg}; }
-			}
+	if ($support == 1) {
+		delete($options{servername});
+		if (!$in{smbfs_sname_def})
+			{ $options{servername} = $in{smbfs_sname}; }
+		}
+	elsif ($support == 2 || $support == 4) {
+		delete($options{workgroup});
+		if (!$in{smbfs_wg_def})
+			{ $options{workgroup} = $in{smbfs_wg}; }
+		}
 
-		if ($support < 3) {
-			delete($options{clientname});
-			if (!$in{smbfs_cname_def})
-				{ $options{clientname} = $in{smbfs_cname}; }
+	if ($support < 3) {
+		delete($options{clientname});
+		if (!$in{smbfs_cname_def})
+			{ $options{clientname} = $in{smbfs_cname}; }
 
-			delete($options{machinename});
-			if (!$in{smbfs_mname_def})
-				{ $options{machinename} = $in{smbfs_mname}; }
-			elsif (!&to_ipaddress($in{'smbfs_server'})) {
-				# No hostname found for the server.. try to guess
-				local($out, $sname);
-				$sname = $in{'smbfs_server'};
-				$out = &backquote_command("$config{'nmblookup_path'} -d 0 $sname 2>&1");
-				if (!$? && $out =~ /^([0-9\.]+)\s+$sname\n/) {
-					$options{machinename} = $1;
-					}
+		delete($options{machinename});
+		if (!$in{smbfs_mname_def})
+			{ $options{machinename} = $in{smbfs_mname}; }
+		elsif (!&to_ipaddress($in{'smbfs_server'})) {
+			# No hostname found for the server.. try to guess
+			local($out, $sname);
+			$sname = $in{'smbfs_server'};
+			$out = &backquote_command("$config{'nmblookup_path'} -d 0 $sname 2>&1");
+			if (!$? && $out =~ /^([0-9\.]+)\s+$sname\n/) {
+				$options{machinename} = $1;
 				}
 			}
-		elsif ($support == 4) {
-			delete($options{"netbiosname"});
-			if (!$in{"smbfs_cname_def"}) {
-				$in{"smbfs_cname"} =~ /^\S+$/ ||
-					&error($text{'linux_ecname'});
-				$options{"netbiosname"} = $in{"smbfs_cname"};
-				}
-			delete($options{"ip"});
-			if (!$in{"smbfs_mname_def"}) {
-				&to_ipaddress($in{"smbfs_mname"}) ||
-					&error($text{'linux_emname'});
-				$options{"ip"} = $in{"smbfs_mname"};
-				}
+		}
+	elsif ($support == 4) {
+		delete($options{"netbiosname"});
+		if (!$in{"smbfs_cname_def"}) {
+			$in{"smbfs_cname"} =~ /^\S+$/ ||
+				&error($text{'linux_ecname'});
+			$options{"netbiosname"} = $in{"smbfs_cname"};
+			}
+		delete($options{"ip"});
+		if (!$in{"smbfs_mname_def"}) {
+			&to_ipaddress($in{"smbfs_mname"}) ||
+				&error($text{'linux_emname'});
+			$options{"ip"} = $in{"smbfs_mname"};
+			}
+		}
+
+	if ($support == 1) {
+		delete($options{fmode});
+		if ($in{smbfs_fmode} !~ /^[0-7]{3}$/) {
+			&error(&text('linux_efmode', $in{'smbfs_fmode'}));
+			}
+		elsif ($in{smbfs_fmode} ne "755")
+			{ $options{fmode} = $in{smbfs_fmode}; }
+
+		delete($options{dmode});
+		if ($in{smbfs_dmode} !~ /^[0-7]{3}$/) {
+			&error(&text('linux_edmode', $in{'smbfs_dmode'}));
+			}
+		elsif ($in{smbfs_dmode} ne "755")
+			{ $options{dmode} = $in{smbfs_dmode}; }
+		}
+	elsif ($support >= 3) {
+		if ($in{'smbfs_fmask_def'}) {
+			delete($options{'fmask'});
+			}
+		else {
+			$in{'smbfs_fmask'} =~ /^[0-7]{3}$/ ||
+			    &error(&text('linux_efmode', $in{'smbfs_fmask'}));
+			$options{'fmask'} = $in{'smbfs_fmask'};
 			}
 
-		if ($support == 1) {
-			delete($options{fmode});
-			if ($in{smbfs_fmode} !~ /^[0-7]{3}$/) {
-				&error(&text('linux_efmode', $in{'smbfs_fmode'}));
-				}
-			elsif ($in{smbfs_fmode} ne "755")
-				{ $options{fmode} = $in{smbfs_fmode}; }
-
-			delete($options{dmode});
-			if ($in{smbfs_dmode} !~ /^[0-7]{3}$/) {
-				&error(&text('linux_edmode', $in{'smbfs_dmode'}));
-				}
-			elsif ($in{smbfs_dmode} ne "755")
-				{ $options{dmode} = $in{smbfs_dmode}; }
+		if ($in{'smbfs_dmask_def'}) {
+			delete($options{'dmask'});
 			}
-		elsif ($support >= 3) {
-			if ($in{'smbfs_fmask_def'}) {
-				delete($options{'fmask'});
-				}
-			else {
-				$in{'smbfs_fmask'} =~ /^[0-7]{3}$/ ||
-				    &error(&text('linux_efmode', $in{'smbfs_fmask'}));
-				$options{'fmask'} = $in{'smbfs_fmask'};
-				}
-
-			if ($in{'smbfs_dmask_def'}) {
-				delete($options{'dmask'});
-				}
-			else {
-				$in{'smbfs_dmask'} =~ /^[0-7]{3}$/ ||
-				    &error(&text('linux_edmode', $in{'smbfs_dmask'}));
-				$options{'dmask'} = $in{'smbfs_dmask'};
-				}
-
-			delete($options{'ro'}); delete($options{'rw'});
-			if ($in{'smbfs_ro'}) { $options{'ro'} = ''; }
+		else {
+			$in{'smbfs_dmask'} =~ /^[0-7]{3}$/ ||
+			    &error(&text('linux_edmode', $in{'smbfs_dmask'}));
+			$options{'dmask'} = $in{'smbfs_dmask'};
 			}
-		if ($support == 4) {
-			delete($options{'user'});
-			if ($in{'smbfs_user2'}) { $options{'user'} = ''; }
-			}
+
+		delete($options{'ro'}); delete($options{'rw'});
+		if ($in{'smbfs_ro'}) { $options{'ro'} = ''; }
+		}
+	if ($support == 4) {
+		delete($options{'user'});
+		if ($in{'smbfs_user2'}) { $options{'user'} = ''; }
 		}
 
 	if ($_[0] eq "cifs") {

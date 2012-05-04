@@ -8,17 +8,6 @@ require './mount-lib.pl';
 &ReadParse();
 $| = 1;
 
-if ($in{'advanced'}) {
-	# Return to mount form, but force advanced mount option mode
-	if ($in{'old'} eq '') {
-		&redirect("edit_mount.cgi?type=$in{'type'}&advanced=1");
-		}
-	else {
-		&redirect("edit_mount.cgi?temp=$in{'temp'}&index=$in{'old'}&advanced=1");
-		}
-	exit;
-	}
-
 # check inputs
 if ($in{type} ne "swap") {
 	if ($in{directory} !~ /^\//) {
@@ -47,12 +36,11 @@ $access{'create'} || defined($in{'old'}) || &error($text{'edit_ecannot2'});
 @mmodes = &mount_modes($in{type});
 $msave = ($mmodes[0]==0 ? 0 : $in{msave});
 $mnow = ($mmodes[1]==0 ? $msave : $in{mmount});
-$access{'simopts'} = 0 if ($in{'nosimopts'});
 
 foreach $f (&files_to_lock()) {
 	&lock_file($f);
 	}
-if (defined($in{old}) && !$access{'simple'}) {
+if (defined($in{old})) {
 	# Saving an existing mount
 	if ($in{temp}) { @mlist = &list_mounted(); }
 	else { @mlist = &list_mounts(); }
@@ -363,56 +351,6 @@ elsif (defined($in{'old'})) {
 			# Change entry in fstab
 			&change_mount($in{'old'}, @minfo);
 			}
-		}
-	}
-elsif ($access{'simple'}) {
-	# Create and mounting from the simple interface
-	$dev = &check_location($in{type});
-	if (!defined($access{'opts'}) || $access{'opts'} =~ /$in{'type'}/) {
-		$opts = &check_options($in{'type'}, $dev, $in{'directory'});
-		}
-	else {
-		$opts = "-";
-		}
-	@minfo = ($in{directory}, $dev, $in{type}, $opts, 2, 'yes');
-
-	# Check if the device is in use
-	if (!&multiple_mount($minfo[2]) && &get_mounted("*", $dev)>=0) {
-		&error(&text('save_ealready', $dev));
-		}
-	if (!&multiple_mount($minfo[2]) && &get_mount("*", $dev) != -1) {
-		&error(&text('save_ealready2', $dev));
-		}
-
-	# Check if the directory is in use
-	if ($in{type} ne "swap") {
-		if (&get_mounted($in{directory}, "*")>=0) {
-			&error(&text('save_ealready2', $in{'directory'}));
-			}
-		if (&get_mount($in{directory}, "*") != -1) {
-			&error(&text('save_ealready3', $in{'directory'}));
-			}
-		}
-
-	# Create the directory
-	if ($in{type} ne "swap" && !(-d $in{directory})) {
-		&lock_file($in{directory});
-		&make_dir($in{directory}, 0755) ||
-		  &error(&text('save_emkdir', $in{'directory'}, $!));
-		&unlock_file($in{directory});
-		$made_dir = 1;
-		}
-
-	# Mount and save
-	if ($error = &mount_dir($minfo[0], $minfo[1],
-				$minfo[2], $minfo[3])) {
-		if ($made_dir) { rmdir($in{directory}); }
-		&error(&text('save_emount', $error));
-		}
-	$mnow = 1;
-	if ($mmodes[0]) {
-		&create_mount(@minfo);
-		$msave = 1;
 		}
 	}
 else {
