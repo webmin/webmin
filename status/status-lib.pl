@@ -509,5 +509,29 @@ local ($tmpl) = @_;
 &unlink_logged($tmpl->{'file'});
 }
 
+# set_monitor_environment(&serv)
+# Sets environment variables based on some monitor
+sub set_monitor_environment
+{
+local ($serv) = @_;
+foreach my $k (keys %$serv) {
+	if (!ref($serv->{$k})) {
+		$ENV{'STATUS_'.uc($k)} = $serv->{$k};
+		}
+	}
+}
+
+# reset_monitor_environment(&serv)
+# Undoes the call to set_monitor_environment
+sub reset_monitor_environment
+{
+local ($serv) = @_;
+foreach my $k (keys %$serv) {
+	if (!ref($serv->{$k})) {
+		delete($ENV{'STATUS_'.uc($k)});
+		}
+	}
+}
+
 1;
 

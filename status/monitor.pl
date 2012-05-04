@@ -385,39 +385,43 @@ print STDERR "No SNMP perl module found\n";
 # run_on_command(&serv, command)
 sub run_on_command
 {
-return undef if (!$_[1]);
+local ($serv, $cmd) = @_;
+return undef if (!$cmd);
 local $out;
-if ($_[0]->{'runon'} && $_[0]->{'remote'}) {
+if ($serv->{'runon'} && $serv->{'remote'}) {
 	# Run on the remote host
-	local $cmd = quotemeta($_[1]);
 	$remote_error_msg = undef;
+	&remote_foreign_call($serv->{'remote'}, "status",
+		"set_monitor_environment", $serv);
 	&remote_error_setup(\&remote_error_callback);
 	if ($config{'output'}) {
-		$out = &remote_eval($_[0]->{'remote'}, "status",
-			     "`($cmd) 2>&1 </dev/null`");
+		$out = &remote_foreign_call($serv->{'remote'}, "status",
+			"backquote_command", "($cmd) 2>&1 </dev/null");
 		}
 	else {
-		&remote_eval($_[0]->{'remote'}, "status",
-			     "system('($cmd) >/dev/null 2>&1 </dev/null')");
+		&remote_foreign_call($serv->{'remote'}, "status",
+			"execute_command", $cmd);
 		}
 	&remote_error_setup(undef);
+	&remote_foreign_call($serv->{'remote'}, "status",
+		"reset_monitor_environment", $serv);
 	if ($remote_error_msg) {
-		return &text('monitor_runerr', $_[1], $_[0]->{'remote'},
+		return &text('monitor_runerr', $cmd, $serv->{'remote'},
 			     $remote_error_msg);
 		}
-	return &text('monitor_run1', $_[1], $_[0]->{'remote'})."\n";
+	return &text('monitor_run1', $cmd, $serv->{'remote'})."\n".$out;
 	}
 else {
 	# Just run locally
+	&set_monitor_environment($serv);
 	if ($config{'output'}) {
-		$out = `($_[1]) 2>&1 </dev/null`;
-		return &text('monitor_run2', $_[1])."\n".
-		       $out;
+		$out = &backquote_command("($cmd) 2>&1 </dev/null");
 		}
 	else {
-		system("($_[1]) >/dev/null 2>&1 </dev/null");
-		return &text('monitor_run2', $_[1])."\n";
+		&execute_command($cmd);
 		}
+	&reset_monitor_environment($serv);
+	return &text('monitor_run2', $cmd)."\n".$out;
 	}
 }
 
