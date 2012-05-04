@@ -41,7 +41,7 @@ if (&has_command($config{'postfix_config_command'}) &&
 &close_tempfile(VERSION);
 
 # Verify the postfix control command
-if (!-x $config{'postfix_control_command'}) {
+if (!&valid_postfix_command($config{'postfix_control_command'})) {
 	print &text('index_epath',
 		"<tt>$config{'postfix_control_command'}</tt>",
 		"../config.cgi?$module_name"),"<p>\n";
@@ -57,7 +57,7 @@ if (!-x $config{'postfix_control_command'}) {
 	}
 
 # Verify the postfix config command
-if (!-x $config{'postfix_config_command'}) {
+if (!&valid_postfix_command($config{'postfix_config_command'})) {
 	print &text('index_econfig',
 		"<tt>$config{'postfix_config_command'}</tt>",
 		"../config.cgi?$module_name"),"<p>\n";
@@ -66,7 +66,7 @@ if (!-x $config{'postfix_config_command'}) {
 	}
 
 # Verify the postsuper command
-if (!-x $config{'postfix_super_command'}) {
+if (!&valid_postfix_command($config{'postfix_super_command'})) {
 	print &text('index_esuper',
 		"<tt>$config{'postfix_super_command'}</tt>",
 		"../config.cgi?$module_name"),"<p>\n";

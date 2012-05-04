@@ -2196,5 +2196,14 @@ sub rebuild_map_cmd
 return 0;
 }
 
+# valid_postfix_command(cmd)
+# Check if some command exists on the system. Strips off args.
+sub valid_postfix_command
+{
+my ($cmd) = @_;
+($cmd) = &split_quoted_string($cmd);
+return &has_command($cmd);
+}
+
 1;
 
