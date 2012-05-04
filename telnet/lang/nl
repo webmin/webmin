@@ -1,8 +1,9 @@
+__norefs=1
 index_credits=Applet ontwikkeld onder GPL door <a href='$1' target=_top>Matthias L. Jugel &amp; Marcus Mei&#223;ner</a>.
-index_elookup=IP adres opzoeken voor $1 mislukt om telnet of SSH server te testen.
+index_elookup=IP adres opzoeken voor $1 mislukt om de telnet of SSH server te testen.
 index_esocket=Er is geen telnet server aan het werk op $1 poort $2.
 index_esocket2=Er is geen SSH server aan het werk op $1 poort $2.
-index_nojava=Deze module heeft Java nodig om te functioneren, maar uw browser ondersteund geen  Java
+index_nojava=Deze module heeft Java nodig om te functioneren, maar uw browser ondersteund geen Java.
 index_sshcredits=Inclusief software ontwikkeld door het Cryptix Development Team (<a href=$1 target=_top>$1</a>).
 index_title=SSH/Telnet Login
 index_warn=Waarschuwing! Deze telnet sessie is <b>niet</b> versleuteld.
