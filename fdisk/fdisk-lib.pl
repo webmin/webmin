@@ -1119,78 +1119,67 @@ return $text{"fsck_err$_[0]"} ? $text{"fsck_err$_[0]"}
 #      3 = disk partitions
 sub partition_select
 {
+local ($name, $value, $mode, $found, $diskre) = @_;
 local $rv = "<select name=$_[0]>\n";
-local ($found, $d, $p);
-if (($_[2] == 0 || $_[2] == 2) &&
-    (-r "/dev/fd0" || $_[1] =~ /^\/dev\/fd[01]$/)) {
-	$rv .= sprintf "<option %s value=/dev/fd0>%s\n",
-		$_[1] eq "/dev/fd0" ? "selected" : "",
-		&text('select_fd', 0) if (!$_[4] || "/dev/fd0" =~ /$_[4]/);
-	$rv .= sprintf "<option %s value=/dev/fd1>%s\n",
-		$_[1] eq "/dev/fd1" ? "selected" : "",
-		&text('select_fd', 1) if (!$_[4] || "/dev/fd1" =~ /$_[4]/);
-	$found++ if ($_[1] =~ /^\/dev\/fd[01]$/);
+local @opts;
+if (($mode == 0 || $mode == 2) &&
+    (-r "/dev/fd0" || $value =~ /^\/dev\/fd[01]$/)) {
+	push(@opts, [ '/dev/fd0', &text('select_fd', 0) ])
+		if (!$diskre || '/dev/fd0' =~ /$diskre/);
+	push(@opts, [ '/dev/fd1', &text('select_fd', 1) ])
+		if (!$diskre || '/dev/fd1' =~ /$diskre/);
+	${$found}++ if ($found && $value =~ /^\/dev\/fd[01]$/);
 	}
 local @dlist = &list_disks_partitions();
-foreach $d (@dlist) {
+foreach my $d (@dlist) {
 	local $dev = $d->{'device'};
-	next if ($_[4] && $dev !~ /$_[4]/);
-	if ($_[2] == 1 || $_[2] == 2) {
+	next if ($diskre && $dev !~ /$_[4]/);
+	if ($mode == 1 || $mode == 2) {
 		local $name = $d->{'desc'};
 		$name .= " ($d->{'model'})" if ($d->{'model'});
-		$rv .= sprintf "<option value=%s %s>%s\n",
-			$dev, $_[1] eq $dev ? "selected" : "", $name;
-		$found++ if ($dev eq $_[1]);
+		push(@opts, [ $dev, $name ]);
+		${$found}++ if ($found && $dev eq $_[1]);
 		}
-	if ($_[2] == 0 || $_[2] == 2 || $_[2] == 3) {
+	if ($mode == 0 || $mode == 2 || $mode == 3) {
 		foreach $p (@{$d->{'parts'}}) {
 			next if ($p->{'extended'});
 			local $name = $p->{'desc'};
 			$name .= " (".&tag_name($p->{'type'}).")"
 				if (&tag_name($p->{'type'}));
-			$rv .= sprintf "<option %s value=%s>%s\n",
-				  $_[1] eq $p->{'device'} ? "selected" : "",
-				  $p->{'device'}, $name;
-			$found++ if ($_[1] eq $p->{'device'});
+			push(@opts, [ $p->{'device'}, $name ]);
+			${$found}++ if ($found && $value eq $p->{'device'});
 			}
 		}
 	}
-if (!$found && $_[1] && !$_[3]) {
-	$rv .= "<option selected>$_[1]\n";
-	}
-if ($_[3]) {
-	${$_[3]} = $found;
-	}
-$rv .= "</select>\n";
-return $rv;
+return &ui_select($name, $value, \@opts, 1, 0, $value && !$found);
 }
 
 # label_select(name, value, &found)
 # Returns HTML for selecting a filesystem label
 sub label_select
 {
-local $rv = "<select name=$_[0]>\n";
+local ($name, $value, $found) = @_;
+local @opts;
 local @dlist = &list_disks_partitions();
 local $any;
-foreach $d (@dlist) {
+foreach my $d (@dlist) {
 	local $dev = $d->{'device'};
 	foreach $p (@{$d->{'parts'}}) {
 		next if ($p->{'type'} ne '83' &&
 			 $p->{'type'} !~ /^ext/);
 		local $label = &get_label($p->{'device'});
 		next if (!$label);
-		$rv .= sprintf "<option %s value=%s>%s (%s)\n",
-			  $_[1] eq $label ? "selected" : "",
-			  $label, $label, $p->{'desc'};
-		${$_[2]}++ if ($_[1] eq $label);
+		push(@opts, [ $label, $label." (".$p->{'desc'}.")" ]);
+		${$found}++ if ($value eq $label && $found);
 		$any++;
 		}
 	}
-if (!$found && $_[1] && !$_[2]) {
-	$rv .= "<option selected>$_[1]\n";
+if (@opts) {
+	return &ui_select($name, $value, \@opts, 1, 0, $value && !$found);
 	}
-$rv .= "</select>\n";
-return $any ? $rv : undef;
+else {
+	return undef;
+	}
 }
 
 # volid_select(name, value, &found)
@@ -1209,11 +1198,11 @@ foreach my $d (@dlist) {
 		local $volid = &get_volid($p->{'device'});
 		next if (!$volid);
 		push(@opts, [ $volid, "$volid ($p->{'desc'})" ]);
-		$$found++ if ($value eq $volid);
+		${$found}++ if ($value eq $volid && $found);
 		}
 	}
 if (@opts) {
-	return &ui_select($name, $value, \@opts, 1, 0, $value ? 1 : 0);
+	return &ui_select($name, $value, \@opts, 1, 0, $value && !$found);
 	}
 else {
 	return undef;
