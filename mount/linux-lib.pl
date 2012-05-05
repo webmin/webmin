@@ -1064,32 +1064,31 @@ elsif ($type eq "bind") {
 else {
 	# This is some linux disk-based filesystem
 	&foreign_require("fdisk");
-	printf "<tr> <td valign=top><b>%s</b></td>\n", &fstype_name($_[0]);
-	print "<td colspan=3>\n";
 	local ($found, $rfound, $lfound, $vfound, $ufound, $rsel, $c);
+	local ($lnx_dev, @opts);
 
 	# Show regular partition input
-	local $sel = &fdisk::partition_select("lnx_disk", $_[1], 0, \$found);
-	printf "<input type=radio name=lnx_dev value=0 %s> %s %s<br>\n",
-		$found ? "checked" : "", $text{'linux_disk'}, $sel;
+	local $sel = &fdisk::partition_select("lnx_disk", $loc, 0, \$found);
+	push(@opts, [ 0, $text{'linux_disk'}, $sel ]);
+	$lnx_dev = 0 if ($found);
 
 	# Show RAID input
 	if (&foreign_check("raid")) {
 		&foreign_require("raid");
 		local $conf = &raid::get_raidtab();
+		local @ropts;
 		foreach $c (@$conf) {
 			if ($c->{'active'}) {
-				$rsel .= sprintf "<option value=%s %s>%s\n",
-					$c->{'value'},
-					$_[1] eq $c->{'value'} ? 'selected' : '',
-					&text('linux_rdev', substr($c->{'value'}, -1));
-				$rfound++ if ($_[1] eq $c->{'value'});
+				push(@ropts, [ $c->{'value'},
+					&text('linux_rdev',
+					      substr($c->{'value'}, -1)) ]);
+				$rfound++ if ($loc eq $c->{'value'});
 				}
 			}
-		if ($rsel) {
-			printf "<input type=radio name=lnx_dev value=2 %s> %s\n",
-				$rfound ? "checked" : " ", $text{'linux_raid'};
-			print "<select name=lnx_raid>\n",$rsel,"</select><br>\n";
+		$lnx_dev = 2 if ($rfound);
+		if (@ropts) {
+			push(@opts, [ 2, $text{'linux_raid'},
+				&ui_select("lnx_raid", $loc, \@ropts) ]);
 			}
 		}
 
@@ -1101,20 +1100,17 @@ else {
 		foreach $v (@vgs) {
 			push(@lvs, &lvm::list_logical_volumes($v->{'name'}));
 			}
-		if (@lvs) {
-			local $lsel;
-			foreach $l (@lvs) {
-				local $sf = &same_file($_[1], $l->{'device'});
-				$lsel .= sprintf "<option value=%s %s>%s\n",
-					$l->{'device'},
-					$sf ? 'selected' : '',
-					&text('linux_ldev', $l->{'vg'},
-							    $l->{'name'});
-				$vfound++ if ($sf);
-				}
-			printf "<input type=radio name=lnx_dev value=4 %s> %s\n",
-				$vfound ? "checked" : " ", $text{'linux_lvm'};
-			print "<select name=lnx_lvm>\n",$lsel,"</select><br>\n";
+		local @lopts;
+		foreach $l (@lvs) {
+			local $sf = &same_file($loc, $l->{'device'});
+			push(@lopts, [ $l->{'device'},
+			    &text('linux_ldev', $l->{'vg'}, $l->{'name'}) ]);
+			$vfound = $l->{'device'} if ($sf);
+			}
+		$lnx_dev = 4 if ($vfound);
+		if (@lopts) {
+			push(@opts, [ 4, $text{'linux_lvm'},
+				&ui_select("lnx_lvm", $vfound, \@lopts) ]);
 			}
 		}
 
@@ -1123,28 +1119,30 @@ else {
 		local $l = $_[1] =~ /LABEL=(.*)/ ? $1 : undef;
 		local $esel = &fdisk::label_select("lnx_label", $l, \$lfound);
 		if ($esel) {
-			printf "<input type=radio name=lnx_dev value=3 %s> %s %s<br>\n", $lfound ? "checked" : "", $text{'linux_lsel'}, $esel;
+			push(@opts, [ 3, $text{'linux_lsel'}, $esel ]);
+			$lnx_dev = 3 if ($lfound);
 			}
 		}
 
 	# Show UUID input
 	if ($has_volid || -d $uuid_directory) {
-		local $u = $_[1] =~ /UUID=(\S+)/ ? $1 : undef;
+		local $u = $loc =~ /UUID=(\S+)/ ? $1 : undef;
 		local $usel = &fdisk::volid_select("lnx_uuid", $u, \$ufound);
 		if ($usel) {
-			printf "<input type=radio name=lnx_dev value=5 %s> %s %s<br>\n", $ufound ? "checked" : "", $text{'linux_usel'}, $usel;
+			push(@opts, [ 5, $text{'linux_usel'}, $usel ]);
+			$lnx_dev = 5 if ($ufound);
 			}
 		}
 
 	# Show other device input
 	local $anyfound = $found || $rfound || $lfound || $vfound || $ufound;
-	printf "<input type=radio name=lnx_dev value=1 %s> %s\n",
-		$anyfound ? "" : "checked",
-		$text{'linux_other'};
-	printf "<input name=lnx_other size=35 value='%s'> %s<br>\n",
-		$anyfound ? "" : $_[1],
-		&file_chooser_button("lnx_other");
-	print "</td> </tr>\n";
+	$lnx_dev = 1 if (!$anyfound);
+	push(@opts, [ 1, $text{'linux_other'},
+		      &ui_textbox("lnx_other", $anyfound ? "" : $loc, 40).
+		      " ".&file_chooser_button("lnx_other") ]);
+
+	print &ui_table_row(&fstype_name($_[0]),
+		&ui_radio_table("lnx_dev", $lnx_dev, \@opts));
 	}
 }
 
