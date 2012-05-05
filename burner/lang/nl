@@ -1,9 +1,10 @@
+__norefs=1
 acl_all=Alles
-acl_create=Kan nieuw brand profiel aanmaken?
+acl_create=Mag een nieuw brand profiel aanmaken?
 acl_dirs=Directory's toestaan voor source files
-acl_edit=Kan bestaande brand profielen bewerken?
-acl_global=Kan globale settings bewerken?
-acl_profiles=Kan gebruik maken van profielen
+acl_edit=Mag een bestaande brand profielen bewerken?
+acl_global=Mag globale settings bewerken?
+acl_profiles=Mag gebruik maken van profielen
 acl_sel=Hieronder geselecteerd ..
 burn_650=Waarschuwing! Uw ISO image is $1 MB in grote, wat groter is dan de toegestane 650 MB op een normale CD. Maar het past wel op een 80 minuten CD.
 burn_700=Waarschuwing! Uw ISO image is $1 MB in grote, wat groter is dan de toegestane 700 MB op een normale CD. Maar het past wel op een 80 minuten CD.
@@ -13,46 +14,46 @@ burn_ball=Langzaam wissen
 burn_bfast=Snel wissen
 burn_bg=Begin brandproces in de achtergrond
 burn_blank=Lege CD voor het branden?
-burn_cancel=Nee, dus delete de tijdelijk ISO
+burn_cancel=Nee, dus verwijder de tijdelijk ISO
 burn_edev=U kunt geen CD branden totdat er een CD-Brander is geconfigureerd in de <a href='$1'>Apparaat Opties</a> pagina.
 burn_egone=ISO image is verwijdert - U moet terug gaan naar het <a href='$1'>brand profiel</a> om een nieuwe te maken.
 burn_egone2=Tijdelijke audio track's zijn verwijdert - U moet terug gaan naar het <a href='$1'>brand profiel</a> om een nieuwe te maken.
 burn_eject=CD uitwerpen na het branden
-burn_header=Brand CD met het commando $1 ..
-burn_header2=Brand CD in de achtergrond met het commando $1 ..
+burn_header=Brand CD met de opdracht $1 ..
+burn_header2=Brand CD in de achtergrond met de opdracht $1 ..
 burn_mfailed=Mislukt om een ISO filesysteem te maken!
-burn_mheader=ISO filesysteem maken met het commando $1 ..
+burn_mheader=ISO filesysteem maken met de opdracht $1 ..
 burn_mp3failed=Mislukt om de MP3 files te converteren!
 burn_mp3failed2=Waarschuwing - sommige MP3 files konden niet worden geconverteerd, maar de rest is succesvol verlopen.
 burn_mp3format=De file $1 schijnt niet in MP3 formaat te zijn.
-burn_mp3header=MP3 files converteren naar audio track's met commando $1 ..
+burn_mp3header=MP3 files converteren naar audio track's met de opdracht $1 ..
 burn_mp3size=De geconverteerde audio track's zijn $1 MB in grote, van het totaal van $2 MB wat is toegestaan op een normale audio CD.
 burn_nomp3s=Er zijn geen files in de geselecteerde directory's.
 burn_ok=Ja, nu branden!
-burn_rusure1=Weet U zeker dat U de ISO image $1 naar CD wilt branden ?
-burn_rusure2=Weet U zeker dat U de gekozen directory's naar CD wilt branden ?
-burn_rusure3=Weet U zeker dat U de gekozen audio track's naar CD wilt branden ?
-burn_rusure4=Weet U zeker dat U wilt kopi&#235;ren van $1 ?
-burn_rutest1=Weet U zeker dat U een brand-test wilt doen met de ISO image $1 ?
-burn_rutest2=Weet U zeker dat U een brand-test wilt doen met de gekozen directory's ?
-burn_rutest3=Weet U zeker dat U een brand-test wilt doen met de gekozen audio track's ?
+burn_rusure1=Weet u zeker dat u de ISO image $1 naar CD wilt branden ?
+burn_rusure2=Weet u zeker dat u de gekozen directory's naar CD wilt branden ?
+burn_rusure3=Weet u zeker dat u de gekozen audio track's naar CD wilt branden ?
+burn_rusure4=Weet u zeker dat u wilt kopi&#235;ren van $1 ?
+burn_rutest1=Weet u zeker dat u een brand-test wilt doen met de ISO image $1 ?
+burn_rutest2=Weet u zeker dat u een brand-test wilt doen met de gekozen directory's ?
+burn_rutest3=Weet u zeker dat u een brand-test wilt doen met de gekozen audio track's ?
 burn_second=Brand Bestemming CD
 burn_seconddesc=Stop een blanke Bestemming CD in het apparaat en klik op de knop hieronder.
 burn_size=De gegenereerde ISO image is $1 MB in grote, van een totaal van $2 MB wat is toegestaan op een normale CD.
-burn_theader=Brandproces testen met het commando $1 ..
-burn_theader2=Brandproces in de achtergrond uitvoeren met het commando $1 ..
+burn_theader=Brandproces testen met de opdracht $1 ..
+burn_theader2=Brandproces in de achtergrond uitvoeren met de opdracht $1 ..
 burn_title=Brand CD
-config_cdrdao=CD kopieer commando
-config_cdrecord=CD brand commando
-config_ecdrdao=Ontbrekende of ongeldig CD kopieer commando
-config_ecdrecord=Ontbrekende of ongeldig CD brand commando
-config_emkisofs=Ontbrekende of ongeldig commando om een filesysteem ISO te maken
-config_empg123=Ontbrekende of ongeldig MP3 decoder commando
+config_cdrdao=CD kopieer opdracht
+config_cdrecord=CD brand opdracht
+config_ecdrdao=Ontbrekende of ongeldig CD kopieer opdracht
+config_ecdrecord=Ontbrekende of ongeldig CD brand opdracht
+config_emkisofs=Ontbrekende of ongeldige opdracht om een filesysteem ISO te maken
+config_empg123=Ontbrekende of ongeldig MP3 decoder opdracht
 config_esox=Ontbrekende of ongeldig SOX opdracht
 config_etemp=Ontbrekende of ongeldige tijdelijke file directory
 config_mkisofs=Commando om een filesysteem ISO te maken
-config_mpg123=MP3 decoder commando
-config_sox=SOX commando voor WAV en OGG te decoderen
+config_mpg123=MP3 decoder opdracht
+config_sox=SOX opdracht voor WAV en OGG te decoderen
 config_temp=Tijdelijke file directory
 config_temp_def=Webmin's temp directory
 create_title=Maak een brand profiel
@@ -76,9 +77,9 @@ edit_dest=Directory op CD
 edit_dirs=Directory's om bij te voegen
 edit_dstdrv=Driver bestemming's apparaat
 edit_ecannot=U bent niet bevoegd om dit brand profiel te bewerken
-edit_ecdrdao=Het CD kopieer commando $1 is niet gevonden op uw systeem. Misschien is het niet geinstalleerd, of uw <a href='$2'>module configuratie</a> is niet in orde.
-edit_emkisofs=Het maak-filesysteem-ISO commando $1 is niet gevonden op uw systeem. Misschien is het niet geinstalleerd, of uw <a href='$2'>module configuratie</a> is niet in orde.
-edit_empg123=Het MP3 decoder commando $1 is niet gevonden op uw systeem. Misschien is het niet geinstalleerd, of uw <a href='$2'>module configuratie</a> is niet in orde.
+edit_ecdrdao=De CD kopieer opdracht $1 is niet gevonden op uw systeem. Misschien is het niet geinstalleerd, of uw <a href='$2'>module configuratie</a> is niet in orde.
+edit_emkisofs=De maak-filesysteem-ISO opdracht $1 is niet gevonden op uw systeem. Misschien is het niet geinstalleerd, of uw <a href='$2'>module configuratie</a> is niet in orde.
+edit_empg123=De MP3 decoder opdracht $1 is niet gevonden op uw systeem. Misschien is het niet geinstalleerd, of uw <a href='$2'>module configuratie</a> is niet in orde.
 edit_fly=Kopieer mode
 edit_fly0=Gebruik tijdelijk file
 edit_fly1=Direct van CD naar brander
@@ -102,9 +103,9 @@ edit_test2=Nu Test-Branden
 edit_title=Bewerk brand profile
 edit_trans=Genereer TRANS.TBL file?
 edit_volid=CD volume ID
-index_add=Voeg een nieuw profile toe van het type:
+index_add=Voeg een nieuw profile toe van het type :
 index_delete=Verwijder Geselecteerde Profielen
-index_ecdrecord=Het CD schrijf commando $1 is niet gevonden op uw systeem. Misschien is het niet geinstalleerd, of uw <a href='$2'>module configuratie</a> is niet in orde.
+index_ecdrecord=De CD schrijf opdracht $1 is niet gevonden op uw systeem. Misschien is het niet geinstalleerd, of uw <a href='$2'>module configuratie</a> is niet in orde.
 index_files=File(s) om te schrijven
 index_global=Globale Opties
 index_name=Profiel naam
