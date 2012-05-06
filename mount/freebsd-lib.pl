@@ -410,10 +410,10 @@ else {
 		$msg = &fstype_name($type);
 		}
 	local ($disk_dev, $ide_t, $ide_s, $ide_p, $scsi_t, $scsi_s, $scsi_p);
-	if ($_[1] =~ /^\/dev\/ad(\d)s(\d)([a-z]*)$/) {
+	if ($loc =~ /^\/dev\/ad(\d)s(\d)([a-z]*)$/) {
 		$disk_dev = 0; $ide_t = $1; $ide_s = $2; $ide_p = $3;
 		}
-	elsif ($_[1] =~ /^\/dev\/da(\d)s(\d)([a-z]*)$/) {
+	elsif ($loc =~ /^\/dev\/da(\d)s(\d)([a-z]*)$/) {
 		$disk_dev = 1; $scsi_t = $1; $scsi_s = $2; $scsi_p = $3;
 		}
 	else { $disk_dev = 2; }
