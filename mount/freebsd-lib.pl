@@ -374,41 +374,42 @@ return $_[0] eq "nfs" || $_[0] eq "smbfs";
 # Output HTML for editing the mount location of some filesystem.
 sub generate_location
 {
-if ($_[0] eq "nfs") {
+local ($type, $loc) = @_;
+if ($type eq "nfs") {
 	# NFS mount from some host and directory
-	$_[1] =~ /^([^:]+):(.*)$/;
-	print "<tr> <td><b>NFS Hostname</b></td>\n";
-	print "<td><input name=nfs_host size=20 value=\"$1\">\n";
-	print &nfs_server_chooser_button("nfs_host");
-	print "</td>\n";
-	print "<td><b>NFS Directory</b></td>\n";
-	print "<td><input name=nfs_dir size=20 value=\"$2\">\n";
-	print &nfs_export_chooser_button("nfs_host", "nfs_dir");
-	print "</td> </tr>\n";
+        local ($host, $dir) = $loc =~ /^([^:]+):(.*)$/ ? ( $1, $2 ) : ( );
+        print &ui_table_row(&hlink($text{'linux_nfshost'}, "nfshost"),
+                &ui_textbox("nfs_host", $host, 30).
+                &nfs_server_chooser_button("nfs_host").
+                "&nbsp;".
+                "<b>".&hlink($text{'linux_nfsdir'}, "nfsdir")."</b> ".
+                &ui_textbox("nfs_dir",
+                            ($type eq "nfs4") && ($dir eq "") ? "/" : $dir, 30).
+                &nfs_export_chooser_button("nfs_host", "nfs_dir"));
 	}
-elsif ($_[0] eq "smbfs") {
+elsif ($type eq "smbfs") {
 	# SMB mount from some server and share
-	$_[1] =~ /^\\\\(.*)\\(.*)$/;
-	print "<tr> <td><b>$text{'linux_smbserver'}</b></td>\n";
-	print "<td><input name=smbfs_server value=\"$1\" size=20>\n";
-	print &smb_server_chooser_button("smbfs_server");
-	print "</td>\n";
-	print "<td><b>$text{'linux_smbshare'}</b></td>\n";
-	print "<td><input name=smbfs_share value=\"$2\" size=20>\n";
-	print &smb_share_chooser_button("smbfs_server", "smbfs_share");
-	print "</td> </tr>\n";
+        local ($server, $share) = $loc =~ /^\\\\([^\\]*)\\(.*)$/ ?
+                                        ($1, $2) : ( );
+        print &ui_table_row($text{'linux_smbserver'},
+                &ui_textbox("smbfs_server", $server, 30)." ".
+                &smb_server_chooser_button("smbfs_server")." ".
+                "&nbsp;".
+                "<b>$text{'linux_smbshare'}</b> ".
+                &ui_textbox("smbfs_share", $share, 30)." ".
+                &smb_share_chooser_button("smbfs_server", "smbfs_share"));
 	}
 else {
-	if ($_[0] eq "swap") {
+	local $msg;
+	if ($type eq "swap") {
 		# Swap file or device
-		printf "<tr> <td valign=top><b>Swap File</b></td>\n";
+		$msg = $text{'linux_swapfile'};
 		}
 	else {
 		# Disk-based filesystem
-		printf "<tr> <td valign=top><b>%s Disk</b></td>\n",
-			&fstype_name($_[0]);
+		$msg = &fstype_name($type);
 		}
-	print "<td colspan=3>\n";
+	local ($disk_dev, $ide_t, $ide_s, $ide_p, $scsi_t, $scsi_s, $scsi_p);
 	if ($_[1] =~ /^\/dev\/ad(\d)s(\d)([a-z]*)$/) {
 		$disk_dev = 0; $ide_t = $1; $ide_s = $2; $ide_p = $3;
 		}
@@ -417,26 +418,27 @@ else {
 		}
 	else { $disk_dev = 2; }
 
-	printf "<input type=radio name=disk_dev value=0 %s> IDE Hard Disk:\n",
-		$disk_dev == 0 ? "checked" : "";
-	print "Device <input name=ide_t size=3 value=\"$ide_t\">\n";
-	print "Slice <input name=ide_s size=3 value=\"$ide_s\">\n";
-	print "Partition <input name=ide_p size=3 value=\"$ide_p\"><br>\n";
-
-	printf "<input type=radio name=disk_dev value=1 %s> SCSI Disk:\n",
-		$disk_dev == 1 ? "checked" : "";
-	print "Device <input name=scsi_t size=3 value=\"$scsi_t\">\n";
-	print "Slice <input name=scsi_s size=3 value=\"$scsi_s\">\n";
-	print "Partition <input name=scsi_p size=3 value=\"$scsi_p\"><br>\n";
-
-	printf "<input type=radio name=disk_dev value=2 %s> Other Device:\n",
-		$disk_dev == 2 ? "checked" : "";
-	printf "<input size=20 name=dev_path value=\"%s\"><br>\n",
-		$disk_dev == 2 ? $_[1] : "";
-	print "</td> </tr>\n";
+	print &ui_table_row($msg,
+		&ui_radio_table("disk_dev", $disk_dev,
+		  [ [ 0, $text{'freebsd_ide'},
+		      $text{'freebsd_device'}." ".
+		        &ui_textbox("ide_t", $ide_t, 4)." ".
+		      $text{'freebsd_slice'}." ".
+		        &ui_textbox("ide_s", $ide_s, 4)." ".
+		      $text{'freebsd_part'}." ".
+		        &ui_textbox("ide_p", $ide_p, 4) ],
+		    [ 1, $text{'freebsd_scsi'},
+		      $text{'freebsd_device'}." ".
+		        &ui_textbox("scsi_t", $scsi_t, 4)." ".
+		      $text{'freebsd_slice'}." ".
+		        &ui_textbox("scsi_s", $scsi_s, 4)." ".
+		      $text{'freebsd_part'}." ".
+		        &ui_textbox("scsi_p", $scsi_p, 4) ],
+		    [ 2, $text{'freebsd_other'},
+		      &ui_textbox("dev_path", $disk_dev == 2 ? $loc : "", 40).
+		      " ".&file_chooser_button("dev_path", 0) ] ]));
 	}
 }
-
 
 # generate_options(type, newmount)
 # Output HTML for editing mount options for a particular filesystem 

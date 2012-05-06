@@ -996,7 +996,7 @@ if ($type eq "nfs" || $type eq "nfs4") {
 		"&nbsp;".
 		"<b>".&hlink($text{'linux_nfsdir'}, "nfsdir")."</b> ".
 		&ui_textbox("nfs_dir", 
-	       		    ($_[0] eq "nfs4") && ($dir eq "") ? "/" : $dir, 30).
+	       		    ($type eq "nfs4") && ($dir eq "") ? "/" : $dir, 30).
 		&nfs_export_chooser_button("nfs_host", "nfs_dir"));
 	}
 elsif ($type eq "auto") {

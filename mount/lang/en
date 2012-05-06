@@ -461,5 +461,11 @@ ecompile=An error has occurred building a program for listing mounted filesystem
 
 freebsd_eaddr=Missing or invalid server address
 freebsd_eworkgroup=Missing or invalid workgroup
+freebsd_ide=IDE hard disk
+freebsd_device=Device
+freebsd_slice=Slice
+freebsd_part=Partition
+freebsd_scsi=SCSI disk
+freebsd_other=Other device
 
 __norefs=1
