@@ -1,6 +1,0 @@
-nmblookup_path=/usr/local/samba/bin/nmblookup
-smbclient_path=/usr/local/samba/bin/smbclient
-long_fstypes=1
-fstab_file=/etc/fstab
-autofs_file=/etc/auto_master
-show_used=1
