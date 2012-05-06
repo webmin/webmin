@@ -404,8 +404,10 @@ elsif ($gconfig{'os_type'} eq 'debian-linux' &&
 				    $_->[0] eq 'dns-search' } @{$i->[3]};
 		if ($ns) {
 			$dns->{'nameserver'} = [ split(/\s+/, $ns->[1]) ];
-			$dns->{'domain'} =
-				[ map { split(/\s+/, $_->[1]) } @dom ];
+			if (@dom) {
+				$dns->{'domain'} =
+					[ map { split(/\s+/, $_->[1]) } @dom ];
+				}
 			$dnsfile = "/etc/network/interfaces";
 			last;
 			}
@@ -492,23 +494,42 @@ else {
 # On Debian, if dns-nameservers are defined in interfaces, update them too
 if ($gconfig{'os_type'} eq 'debian-linux' && defined(&get_interface_defs)) {
 	local @ifaces = &get_interface_defs();
+	local @dnssearch;
+	if (@{$_[0]->{'domain'}} > 1) {
+		@dnssearch = map { [ 'dns-search', $_ ] } @{$_[0]->{'domain'}};
+		}
+	elsif (@{$_[0]->{'domain'}}) {
+		@dnssearch = ( [ 'dns-domain', $_[0]->{'domain'}->[0] ] );
+		}
 	foreach my $i (@ifaces) {
 		local ($ns) = grep { $_->[0] eq 'dns-nameservers' } @{$i->[3]};
 		if ($ns) {
 			$ns->[1] = join(' ', @{$_[0]->{'nameserver'}});
 			$i->[3] = [ grep { $_->[0] ne 'dns-domain' &&
-					   $_->[0] ne 'dns-search' } @{$i->[3]} ];
-			if (@{$_[0]->{'domain'}} > 1) {
-				push(@{$i->[3]}, map { [ 'dns-search', $_ ] }
-						     @{$_[0]->{'domain'}});
-				}
-			else {
-				push(@{$i->[3]}, [ 'dns-domain',
-						   $_[0]->{'domain'}->[0] ]);
-				}
+					   $_->[0] ne 'dns-search' }
+					 @{$i->[3]} ];
+			push(@{$i->[3]}, @dnssearch);
 			&modify_interface_def($i->[0], $i->[1], $i->[2],
 					      $i->[3], 0);
 			$need_resolvconf_update = 1;
+			}
+		}
+	if (!$need_resolvconf_update && $use_resolvconf) {
+		# Nameservers have to be defined in the interfaces file, but
+		# no interfaces have them yet. Find the first non-local
+		# interface with an IP, and add them there
+		foreach my $i (@ifaces) {
+			next if ($i->[0] =~ /^lo/);
+			local ($a) = grep { $_->[0] eq 'address' &&
+				    &check_ipaddress($_->[1]) } @{$i->[3]};
+			next if (!$a);
+			push(@{$i->[3]}, [ 'dns-nameservers',
+				   join(' ', @{$_[0]->{'nameserver'}}) ]);
+			push(@{$i->[3]}, @dnssearch);
+			&modify_interface_def($i->[0], $i->[1], $i->[2],
+					      $i->[3], 0);
+			$need_resolvconf_update = 1;
+			last;
 			}
 		}
 	}
