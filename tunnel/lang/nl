@@ -1,14 +1,15 @@
-index_elink=Er is nog geen URL naar de tunnel ingevuld
+__norefs=1
+index_elink=Er is nog geen URL naar de tunnel ingesteld.
 index_open=Open
-index_url=Enter een URL naar open:
+index_url=Enter een URL om te openen :
 link_eautologin=Ongeldige loginnaam of wachtwoord voor $1. <a href='$2'>Klik hier</a> om in te loggen.
-link_ebadurl=U bent niet bevoegd om toegang te hebben tot de URL $1
+link_ebadurl=U mag geen toegang hebben tot de URL $1
 link_elogin=Mislukt om in te loggen bij $1 als $2
 link_enouser=Een gebruikersnaam an wachtwoord is nodig om in te loggen bij $1, maar er is nog niets geconfigureerd.
-link_eurl=Ongeldige tunnel URL : $1
-login_clear=Schoon
+link_eurl=Ongeldige URL tunnel : $1
+login_clear=Wissen
 login_desc=U moet een gebruikersnaam an wachtwoord invullen om in te loggen bij $1.
-login_header=Website Identificatie
+login_header=Website authenticatie
 login_login=Login
 login_pass=Wachtwoord
 login_title=Login bij Website
