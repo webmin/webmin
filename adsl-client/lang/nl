@@ -1,18 +1,19 @@
+__norefs=1
 index_boot=Starten tijdens booten
 index_bootdesc=Verander deze optie om te controleren of uw ADSL verbinding tot stand is gekomen tijdens booten of niet.
 index_bytes=bytes
 index_cancel=Annuleer Verbinding
 index_canceldesc=De ADSL client probeert op dit moment een verbinding te maken. Klik op deze knop om dit te stoppen met de opdracht $1.
-index_cdemand=Annuleren In Opdracht
+index_cdemand=Annuleer In Opdracht
 index_cdemanddesc=De ADSL client wacht op dit moment op een opdracht om verbinding te maken. Klik op deze knop om dit te stoppen met de opdracht $1.
 index_connect=Tijd om te proberen verbinding te maken
 index_demand=Verbind in opdracht?
-index_desc=De settings hieronder worden toegevoegd aan elke nieuwe ADSL verbinding die word gestart door uw systeem. Indien U dit verandert moet U de verbinding verbreken en opnieuw verbinding om de veranderingen actief te maken.
+index_desc=De instellingen hieronder worden toegevoegd aan elke nieuwe ADSL verbinding die word gestart door uw systeem. Indien u dit verandert moet u de verbinding verbreken en opnieuw verbinding om de veranderingen actief te maken.
 index_dns=Verkrijg de DNS configuratie van de ISP?
 index_eadsl=De RP-PPPoE opdracht $1 is niet gevonden op uw systeem of is niet geldig. Misschien is het niet geinstalleerd of is uw <a href='$2'>module configuratie</a> niet correct.
 index_econfig=De RP-PPPoE ADSL configuratie file $1 is niet gevonden op uw systeem. Misschien is het niet geinstalleerd of is uw <a href='$2'>module configuratie</a> niet correct.
-index_emodem=De huidige configuratie file is voor een modem op Redhat Linux, en niet voor een ADSL verbinding. Gebruik de <a href='$2'>module configuratie</a> pagina om dit te specificeren, dit kan ook in de <tt>ifcfg-ppp*</tt> files in $1, of indien deze nog niet bestaat kunt U de module deze file automatisch laten maken voor U.
-index_esetup=De Redhat ADSL configuratie file $1 bestaat niet op uw systeem. Echter deze module kan dit voor U maken met standaard settings door te klikken op de knop hieronder.
+index_emodem=De huidige configuratie file is voor een modem op Redhat Linux, en niet voor een ADSL verbinding. Gebruik de <a href='$2'>module configuratie</a> pagina om dit te specificeren, dit kan ook in de <tt>ifcfg-ppp*</tt> files in $1, of indien deze nog niet bestaat kunt u de module deze file automatisch laten maken voor u.
+index_esetup=De Redhat ADSL configuratie file $1 bestaat niet op uw systeem. Echter deze module kan dit voor u maken met de standaard instellingen door te klikken op de knop hieronder.
 index_eth=Ethernet interface
 index_forever=Voor altijd
 index_fw=Firewall om te activeren voor een verbinding
@@ -24,10 +25,10 @@ index_mss=Limiteer pakket grote?
 index_other=Andere..
 index_psize=Ja, naar
 index_return=module index
-index_save=Opslaan configuratie
+index_save=Configuratie opslaan
 index_sec=Login met wachtwoord
 index_secs=seconden
-index_setup=Setup configuratie file
+index_setup=Configuratie file instellen
 index_start=Opstarten ADSL
 index_startdesc=Uw ADSL verbinding is op dit moment niet actief. Klik op deze knop om hem te starten met de opdracht $1.
 index_stop=Uitzetten ADSL
@@ -39,15 +40,15 @@ index_version=RP-PPPoE versie $1
 log_bootdown=Uitgeschakelde ADSL tijdens booten
 log_bootup=Ingeschakelde ADSL tijdens booten
 log_save=Opslaan van client configuratie
-log_setup=Opzetten van standaard configuratie 
+log_setup=Opzetten van standaard configuratie
 log_start=Opgestarte ADSL
 log_stop=Uitzetten ADSL
-save_desc=Uw ADSL client configuratie is succesvol opgeslagen, maar zal niet worden gebruikt totdat U opnieuw verbind.
+save_desc=Uw ADSL client configuratie is succesvol opgeslagen, maar zal niet worden gebruikt totdat u opnieuw verbind.
 save_econnect=Ontbrekende of ongeldige verbinding time-out
 save_eeth=Ontbrekende of ongeldig lijkende ethernet interface
 save_emss=Ontbrekende of ongeldige maximum pakket grote
 save_err=Mislukt om ADSL configuratie op te slaan
-save_etimeout=Ontbrekende of ongeldige time-out voor directe opdracht
+save_etimeout=Ontbrekende of ongeldige time-out voor een directe opdracht
 save_euser=Ontbrekende of ongeldige gebruikersnaam
 save_title=Opslaan Configuratie
 start_bg=De ADSL verbinding is niet gestart in 20 seconden. De ADSL client zal op de achtergrond continu doorgaan met proberen een verbinding te krijgen totdat er een verbinding tot stand is gekomen.
