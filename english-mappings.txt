@@ -1,6 +1,6 @@
 # US		UK
-analyse		analyze
-analysing	analyzing
+analyze		analyse
+analyzing	analysing
 cancelled	canceled
 cancelling	canceling
 center		centre
@@ -21,4 +21,5 @@ licenses	licences
 licensing	licencing
 signalled	signaled
 standardise	standardize
-
+organize	organise
+organization	organisation
