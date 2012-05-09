@@ -1,0 +1,31 @@
+<header>Systeem Log NG</header>
+
+Met deze module kunt u het Syslog-NG programma configureren, wat een vervangend programma is
+voor de klassieke Unix Syslog daemon. Het is verantwoordelijk voor de log berichten van
+diverse bronnen (zoals programma's en andere systemen), om vervolgens deze berichten weg te
+schrijven naar de juiste log files. <p>
+
+De Syslog-NG configuratie is opgebouwd uit een aantal soorten objecten, welke, indien samen
+gecombineerd, bepalen welke log files waar weggeschreven worden.
+Dit zijn :
+<dl>
+<dt>Log Bronnen
+<dd>Iedere bron specificeert 1 of meerdere manieren waarop een log bericht kan worden ontvangen door de server,
+bijvoorbeeld, zoals van een netwerk, Linux kernel of een andere programma wat werkt op uw systeem.
+
+<dt>Log Bestemmingen
+<dd>Een bestemming is een file, remote server, ingelogde gebruiker of programma die log berichten kan ontvangen.
+Alleen een bestemming definiëren zorgt er niet voor dat er ook iets naar toe geschreven word - u moet eerst een
+Log Doel aanmaken.
+
+<dt>Log Filters
+<dd>Een filter bekijkt of er berichten overeenkomen met diverse bepalingen, zoals hun faciliteit (bron programma type),
+prioriteit (prioriteitsniveaus), programma, host en afzenders netwerk adres. Filters worden gebruikt bij log doelen om te bepalen welke berichten naar welke bestemmingen moeten gaan.
+
+<dt>Log Doelen
+<dd>Doelen zijn waar de berichten samenkomen. Ieder doel definieert nul of meerdere bronnen, filters en bestemmingen,
+welke specificeren dat berichten van de opgegeven bron die overeenkomen met de opgegeven filters weggeschreven moeten
+worden naar de gespecificeerde bestemmingen.
+
+</dl>
+
