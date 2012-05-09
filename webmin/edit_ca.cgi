@@ -79,7 +79,7 @@ print ui_form_end([ [ "save", $text{'save'} ] ]);
 if (-r $miniserv{'ca'}) {
 	print ui_hr();
 	print &ui_buttons_start();
-	print &ui_buttons_row("stop_ca", $text{'ca_stop'},
+	print &ui_buttons_row("stop_ca.cgi", $text{'ca_stop'},
 			      $text{'ca_stopmsg'});
 	print &ui_buttons_end();
 	}
