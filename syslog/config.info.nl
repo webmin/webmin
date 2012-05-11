@@ -1,6 +1,6 @@
 line1=Configureerbare opties,11
 lines=Standaard aantal regels laten zien,0,6
-refresh=Seconden tussen log view verversingen,3,Nooit
+refresh=Seconden tussen log verversingen om te tonen,3,Nooit
 compressed=In zoekacties ook gecomprimeerde logs tonen?,1,1-Ja,0-Nee
 others=Laat logs zien van andere modules?,1,1-Ja,0-Nee
 extras=Andere log file om te laten zien<br>(Met optionele omschrijvingen),9,50,4,\t
