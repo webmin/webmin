@@ -204,6 +204,7 @@ if ($rpmdepends) {
 $rdeps = join(", ", @rdeps);
 
 # Create the control file
+$kbsize = int(($size-1) / 1024)+1;
 open(CONTROL, ">$control_file");
 print CONTROL <<EOF;
 Package: $prefix$mod
@@ -214,7 +215,7 @@ Architecture: all
 Essential: no
 Depends: $rdeps
 Pre-Depends: bash, perl
-Installed-Size: $size
+Installed-Size: $kbsize
 Maintainer: $email
 Provides: $prefix$mod
 Description: $desc
