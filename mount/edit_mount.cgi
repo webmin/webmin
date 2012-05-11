@@ -47,7 +47,7 @@ if (!$newm) {
 	print &ui_hidden("oldmnow", $mnow);
 	print &ui_hidden("oldmsave", $msave);
 	}
-print &ui_hidden("type", $in{'type'});
+print &ui_hidden("type", $type);
 print &ui_table_start(&text('edit_header', &fstype_name($type)),
 		      "width=100%", 2, [ "width=20%" ]);
 
