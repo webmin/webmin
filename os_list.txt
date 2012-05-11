@@ -346,6 +346,7 @@ Mac OS X			10.4	macos		8.1	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.4/i
 Mac OS X			10.5	macos		9.2	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.5/i
 Mac OS X			10.6	macos		10.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.6/i
 Mac OS X			10.7	macos		11.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.7/i
+Mac OS X			10.8	macos		12.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.8/i
 
 
 # Darwin, the open source version of OS X
@@ -378,6 +379,7 @@ Generic Linux			3.1	generic-linux	3.1	`uname -r` =~ /3\.1\./
 Generic Linux			3.2	generic-linux	3.2	`uname -r` =~ /3\.2\./
 Generic Linux			3.3	generic-linux	3.3	`uname -r` =~ /3\.3\./
 Generic Linux			3.4	generic-linux	3.4	`uname -r` =~ /3\.4\./
+Generic Linux			3.5	generic-linux	3.5	`uname -r` =~ /3\.5\./
 
 # Windows
 Windows				XP	windows		xp	(-d "c:/windows" || -d "c:/winnt") && `ver` =~ /XP/
