@@ -1,0 +1,2 @@
+mode=Partitions-Management-Befehl,1,fdisk-Fdisk,parted-Parted,-automatisch gew&#228;hlt
+format=Standard Partitionstabellen-Format,1,msdos-MSDOS,GPT-GPT

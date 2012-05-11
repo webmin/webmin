@@ -1,7 +1,7 @@
 host=Verbinden mit Host,3,Automatisch
 port=Verbinden mit Port,3,Default
+proxy=Proxy verwenden, um auf andere Hosts zu verbinden?,1,1-Ja,0-Nein
 mode=Verbindungs-Typ,1,0-Telnet,1-Secure Shell (empfohlen)
-script=Login-Script,3,kein
 sizemode=Fenster-Gr&ouml;&szlig;e,1,0-80x24 Zeichen (in Standard-Schrift),1-Maximal,2-Angepa&szlig;te Gr&ouml;&szlig;e
 size=Angepa&szlig;te Breite x H&ouml;he,0
 fontsize=Schriftgr&ouml;&szlig;e in Punkten,3,Default

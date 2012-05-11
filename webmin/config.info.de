@@ -1,4 +1,4 @@
 standard_url=URL der Standardmodul&#45;Liste,3,Von www.webmin.com
 third_url=URL der Drittanbieter&#45;Webmin&#45;Modulliste,3,Von www.webmin.com
 cron_mode=Zeige Aktualisierungszeiten als,1,0-Einfache Anzeige,1-Cron&#45;Zeit&#45;Auswahl
-osdn=Hole Liste der Webmin-OSDN-Mirrorseiten?,1,1-Ja,0-Nein
+warn_days=Tage vor Ablauf des Passworts zu warnen an Benutzer,0,5

@@ -1,0 +1,4 @@
+line0=Konfigurierbare Optionen,11
+view_comment=Zeige Kommentare in Regelliste an?,1,1-Ja,0-Nein
+line1=System Konfiguration,11
+save_file=IPtables Speicherdatei zum Bearbeiten,3,Verwendung des Betriebssystems oder Webmin Standard
