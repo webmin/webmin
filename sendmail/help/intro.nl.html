@@ -1,0 +1,36 @@
+<header>Sendmail Configuratie</header>
+
+<h3>Introductie van Sendmail</h3>
+Sendmail is het standaard Unix programma voor email transport en aflevering.
+Wanneer een gebruiker email wilt versturen naar een ander op een andere host,
+is Sendmail het programma dat het gehele proces voor email aflevering
+afgehandeld. Ook wanneer iemand van een ander systeem email verstuurd zal
+Sendmail dit ontvangen en opslaan in de gebruikers email box. <p>
+
+Sendmail is alleen een MTA (mail transport agent) programma, wat betekend dat
+er geen gebruikers interface aanwezig is voor mensen die email willen versturen.
+Programma's zoals Eudora, elm of /bin/mail waarmee gebruikers communiceren met een
+aangeroepen MUA (mail user agents). Een MUA levert zelf geen email af, hiervoor
+geeft hij de email aan Sendmail die het dan verstuurd en afhandelt. <p>
+
+MUA voor gebruikers kunnen direct op uw systeem werken (MUA zoals pine, elm
+of /bin/mail), of op een aparte host wat een gebruikers PC kan zijn
+(voor MUA zoals Eudora, Exchange en Netscape Communicator). In de eerste instantie
+zal de email die word verstuurt een beroep doen op Sendmail en word het bericht aan
+Sendmail gegeven, waarbij Sendmail de gebruikers email spool file zal uitlezen.
+Voor werkende MUA's op andere hosts word de verstuurde email verbonden aan het
+Sendmail proces op uw systeem met gebruik van het SMTP protocol, en ontvangen door
+te verbinden naar een gescheiden POP3 server. <p>
+
+<h3>De Sendmail Module</h3>
+
+Op de hoofdpagina van deze module ziet u iconen, met elk icoon kunt u een ander
+onderdeel van Sendmail configureren. Het kan voorkomen dat sommige opties achter
+sommige iconen niet beschikbaar zijn, indien deze niet zijn ingesteld in de
+<tt>sendmail.cf</tt>. Wanneer u Sendmail installeert kunt u kiezen welke opties
+beschikbaar zijn om te bewerken in de <tt>.mc</tt>, en welke worden geconverteerd
+door <tt>m4</tt> in uw <tt>sendmail.cf</tt>. Veel opties (zoals Adres Mapping,
+Domein Maskerade en Spam controle) kunnen niet beschikbaar zijn, of u moet deze
+aangezet hebben tijdens de installatie. <p>
+
+<hr>
