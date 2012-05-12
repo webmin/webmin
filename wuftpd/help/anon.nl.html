@@ -1,0 +1,36 @@
+<header>Anonieme FTP</header>
+
+De eerste tabel op deze pagina geeft u de mogelijkheid te specificeren
+naar welke directory de server doorschakelt met <tt>chroot</tt> wanneer
+er een anonieme gebruiker inlogt. Er kunnen andere directory's gekozen worden
+voor verschillende gebruikers klassen, of u kunt 1 directory gebruiken voor
+alle klassen. Indien er geen directory is gespecificeerd zal de FTP d.m.v.
+<tt>chroot</tt> naar de home directory gaan van de <tt>ftp</tt> gebruiker. <p>
+
+Omdat de server een extern programma oproept zoals <tt>ls</tt> en <tt>tar</tt>,
+moet de anonieme root directory een <tt>bin</tt> directory bevatten met deze
+programma's, een <tt>lib</tt> directory bevatten met de benodigde gedeelde
+bibliotheken, en een <tt>etc</tt> directory die de <tt>passwd</tt> en 
+<tt>group</tt> files bevat. Wanneer de server <tt>chroot</tt> gebruikt om de
+toegang tot de anonieme root directory te beperken heeft hij geen toegang tot
+andere programma's buiten deze directory. <p>
+
+De tweede tabel bepaald voor welke directory de server <tt>chroot</tt> gebruikt
+voor gast gebruikers. Voor iedere directory kunt u specificeren aan welke
+gebruikers deze directory word toegevoegd door het invullen van hun gebruikersnamen,
+UID (zoals <tt>%3000</tt>) of UID reeksen (zoals <tt>%3000-3006</tt>).
+Als er geen gebruikers zijn ingevuld zal de directory worden gebruikt voor
+alle gast gebruikers. <p>
+
+De derde tabel geeft u de controle om te bepalen naar welke Unix groep
+anonieme FTP gebruikers zal worden overgeschakeld, in plaats van de primaire
+groep voor de <tt>ftp</tt> gebruiker. Voor iedere ingevulde groep kunt u 1
+of meerdere gebruikers klassen kiezen, bijvoorbeeld om toegang te verlenen
+aan bepaalde files voor anonieme gebruikers van bepaalde IP adressen. <p>
+
+Tot slot, de selectie onderaan van de pagina geeft mogelijkheden om te bepalen
+welke wachtwoorden worden geaccepteerd voor anonieme FTP login.
+Traditioneel moeten FTP gebruikers een geldig email adres versturen als hun
+anonieme wachtwoord. <p>
+
+<hr>

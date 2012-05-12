@@ -1,0 +1,32 @@
+<header>Gebruikers en Klassen</header>
+
+De WU FTP server geeft u de mogelijkheid om gebruikers te classificeren
+gebaseerd op het adres vanwaar zij inloggen en het type gebruiker.
+De drie gebruikers soorten zijn :
+<ul>
+<li><b>Unix</b> - Normale gebruikers op uw systeem.
+<li><b>Gast</b> - Unix gebruikers die geclassificeerd zijn als gast.
+<li><b>Anoniem</b> - Login's door de <tt>anonymous</tt> of <tt>ftp</tt> gebruiker,
+		     indien toegestaan op uw systeem.
+</ul><p>
+
+De bovenste sectie van deze pagina geeft u de mogelijkheid om de benoemde klassen
+te definiëren, gebaseerd op gebruikers soort en bron adres. Iedere login
+word geclassificeerd in de eerste overeenkomende klasse, dus de klasse moeten
+in de volgorde staan van meest tot minst. De overeenkomstige adressen voor iedere
+klasse kan een volledig of gedeeltelijk IP adres zijn, IP netwerk/netmask, hostnamen,
+host wildcards (zoals <tt>*.foo.com</tt>) of de absolute paden naar de files waar
+de adressen in staan. Ieder type of adres kan opgevolgd worden door een ! om het te
+negeren. <p>
+
+De middelste sectie van deze pagina geeft u de mogelijkheid te bepalen welke Unix
+gebruikers worden geclassificeerd als gast. Een gast gebruiker heeft dezelfde rechten
+als een normale Unix gebruiker maar is beperkt tot een bepaalde directory door
+het gebruik van <tt>chroot</tt>. <p>
+
+De onderste sectie van deze pagina geeft u de mogelijkheid te bepalen welke Unix en
+gast gebruikers de toegang tot de FTP server worden geweigerd. U kunt een gebruiker
+specificeren met de naam, of met de GID (zoals <tt>%3000</tt>) of met de GID reeks
+(zoals <tt>%3000-3010</tt>). <p>
+
+<hr>

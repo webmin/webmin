@@ -1,0 +1,23 @@
+<header>Permissies</header>
+
+De eerste tabel op deze pagina bevat de instellingen die gebruikt kunnen
+worden om toegang te weigeren tot niet-vitale opdrachten. Voor iedere opdracht
+kunt u kiezen voor het toestaan of weigeren van de toegang en kunt u kiezen
+voor welke type klasses het moet worden toegestaan of worden geweigerd.
+Indien er niets word geweigerd zijn alle opdrachten standaard beschikbaar
+voor alle gebruikers. <p>
+
+In de tweede tabel kunt u voorkomen dat er files worden geüpload die bepaalde
+karakters bevatten of overeenkomen met bepaalde reguliere expressies.
+Dit kan erg handig zijn als uw anonieme FTP server een <tt>inkomende</tt>
+directory heeft en u wilt voorkomen dat gebruikers 'verstopte' directory's
+aanmaken om warez in op te slaan.
+
+Het eerste veld in de tabel is een regexp zoals <tt>^[A-z0-9]$</tt> die de
+toegestane karakters definieert, de tweede is een serie met regexp voor
+filenamen die <b>niet</b> zijn toegestaan, de derde geld voor het gebruikers
+type waar de beperking aan word toegevoegd, en de laatste kolom is voor het
+volledige pad naar een fouten berichten file die word verstuurd naar de FTP
+client indien er een illegale file word ge-upload. <p>
+
+<hr>

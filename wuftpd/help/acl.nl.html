@@ -1,0 +1,31 @@
+<header>Limieten en Toegang Controle</header>
+
+Deze pagina bevat diverse tabellen voor limiet instellingen en toegang controle
+opties. Met de eerste tabel kunt u een client IP adres specificeren waarvan de
+toegang geweigerd word op de FTP server en een fouten bericht toont aan de
+geweigerde client. Adressen kunnen opgegeven worden als een volledig of gedeeltelijk
+IP adres, IP netwerk/netmask, hostnaam, host wildcard (zoals <tt>*.foo.com</tt>)
+of het pad naar de files met de extra adressen. Ieder soort adres kan gevolgd
+worden door een !om het te negeren. <p>
+
+In de tweede tabel kunt u het aantal tegelijkertijd login's limieten per
+client voor iedere klasse. Daarbij kunt u voor ieder klasse het maximum van
+gelijktijdige login's, de dagen en tijden wanneer het maximum aan staat 
+( in UUCP stijl zoals <tt>MoTuTh0800-1700</tt>), en een fouten bericht tonen
+aan de client die zijn beperking heeft bereikt. <p>
+
+In de derde tabel kunt u per-sessie file en data overdracht limieten instellen.
+Voor ieder limiet moet u kiezen of het toegevoegd word aan files of bytes die
+worden overgezonden, de overdracht richting waarvoor het limiet geld, of het limiet
+geldig is voor file overdrachten of alle data, en de klasse met gebruikers waar
+het limiet voor geld. <p>
+
+In de vierde tabel kunt u de toegang weigeren tot bepaalde files. Voor iedere
+file moet u een absoluut pad opgeven, kiezen of het pad relatief voor de <tt>chroot</tt>
+directory geld (voor anonieme en gast gebruikers) en selecteren voor welke
+gebruikers klasse deze beperking geld. Indien een geweigerde file eindigt met
+een / zal de FTP server de toegang weigeren voor alle files in die directory.<br>
+Op dezelfde manier werkt de vijfde tabel, met die verstande dat u hier toegang
+kunt verlenen aan files die anders geweigerd zouden worden in de tabel hierboven. <p>
+
+<hr>
