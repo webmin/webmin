@@ -1,0 +1,2 @@
+autologin=Login Modus,1,0-Eingabeaufforderung f&#252;r Benutzername und Passwort,1-Open-Root-Shell
+timeout=Leerlaufzeit vor Beenden der Verbindung,0,5,,Sekunden

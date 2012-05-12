@@ -1,6 +1,9 @@
 line1=Konfigurierbare Optionen,11
-lines=Anzahl der anzuzeigenden Zeilen,0
+lines=Anzahl der anzuzeigenden Zeilen,0,6
 refresh=Logdateiansicht wird nach X Sekunden aktualisiert?,3,Niemals
+compressed=Bezieht komprimierte Logs in Suche ein?,1,1-Ja,0-Nein
+others=Zeige Logs von anderen Modulen?,1,1-Ja,0-Nein
+extras=Andere Logdateien zum Anzeigen<br>(Mit optionaler Beschreibung),9,50,4,\t
 line2=Systemkonfiguration,11
 syslog_conf=Pfad zur Syslog&#45;Konfigurationsdatei,0
 m4_conf=Syslog&#45;Konfiguration wird durch m4 verarbeitet?,1,1-Ja,0-Nein
@@ -16,4 +19,5 @@ syslogd=Pfad zum Syslog&#45;Server,0
 facilities=Unterst&#252;tzte Dienste,0
 start_cmd=Befehl&#44; um Syslog zu starten,3,Einfach Server starten
 restart_cmd=Befehl&#44; um &#196;nderungen zu speichern,3,T&#246;te den Prozess und starte Server neu
+signal_cmd=Befehl zum erneuen &#214;ffnen von Logdateien,3,Sende HUP-Signal
 tail_cmd=Befehlsargumente f&#252;r &quot;tail&quot,3,Standard (tail -n ZEILEN)

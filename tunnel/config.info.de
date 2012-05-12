@@ -1,0 +1,4 @@
+url=URL zum Verbinden nach,3,Frage Benutzer
+loginmode=Login zum Remote-Server,1,0-Nr,1-Ja&#44; mit festen Benutzernamen,2-Ja&#44; durch Anmeldung per Benutzer
+user=Fester Benutzername,0
+pass=Festes Passwort,12
