@@ -432,30 +432,29 @@ elsif ($_[0] eq "swap") {
 	print "<br>\n";
 	print "</td> </tr>\n";
 	}
-elsif ($_[0] eq "cdfs") {
+elsif ($type eq "cdfs") {
 	# Mounting a SCSI cdrom
-	print "<tr> <td valign=top><b>CDROM Disk</b></td>\n";
-	print "<td colspan=3>\n";
+	local ($cdfs_dev, $scsi_c, $scsi_t, $scsi_d, $scsi_path);
 	if ($_[1] =~ /^\/dev\/dsk\/c([0-9]+)t([0-9]+)d([0-9]+)$/) {
 		$cdfs_dev = 0;
 		$scsi_c = $1; $scsi_t = $2; $scsi_d = $3;
 		}
 	else {
-		$cdfs_dev = 1; $scsi_path = $_[1];
+		$cdfs_dev = 1;
+		$scsi_path = $loc;
 		}
-	$scsi_path = $_[1];
-	printf "<input type=radio name=cdfs_dev value=0 %s> SCSI Device:\n",
-		$cdfs_dev == 0 ? "checked" : "";
-	print "Controller <input name=cdfs_c size=3 value=\"$scsi_c\">\n";
-	print "Target <input name=cdfs_t size=3 value=\"$scsi_t\">\n";
-	print "Unit <input name=cdfs_d size=3 value=\"$scsi_d\">\n<BR>";
-
-	printf "<input type=radio name=cdfs_dev value=1 %s> Other Device:\n",
-		$cdfs_dev == 1 ? "checked" : "";
-	print "<input name=cdfs_path size=20 value=\"$scsi_path\">";
-        print &file_chooser_button("cdfs_path", 0);
-	print "<br>\n";
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'solaris_cdrom'},
+		&ui_radio_table("cdfs_dev", $cdfs_dev,
+			[ [ 0, $text{'freebsd_scsi'},
+			    $text{'solaris_ctrlr'}." ".
+			      &ui_textbox("cdfs_c", $scsi_c, 4)." ".
+			    $text{'solaris_target'}." ".
+			      &ui_textbox("cdfs_t", $scsi_t, 4)." ".
+			    $text{'solaris_unit'}." ".
+			      &ui_textbox("cdfs_d", $scsi_d, 4) ],
+			  [ 1, $text{'solaris_otherdev'},
+			    &ui_textbox("cdfs_path", $scsi_path, 40)." ".
+			      &file_chooser_button("cdfs_path", 0) ] ]));
 	}
 elsif ($type eq "lofs") {
 	# Mounting some directory to another location
