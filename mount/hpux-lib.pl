@@ -320,7 +320,7 @@ if ($type eq "nfs") {
                             ($type eq "nfs4") && ($dir eq "") ? "/" : $dir, 30).
                 &nfs_export_chooser_button("nfs_host", "nfs_dir"));
 	}
-elsif ($_[0] eq "hfs") {
+elsif ($type eq "hfs") {
 	# Mounted from a normal disk, LVM device or from
 	# somewhere else
 	print "<tr> <td valign=top><b>HFS Device</b></td>\n";
@@ -359,7 +359,7 @@ elsif ($_[0] eq "hfs") {
         print "<br>\n";
 	print "</td> </tr>\n";
 	}
-elsif ($_[0] eq "vxfs") {
+elsif ($type eq "vxfs") {
 	# Mounted from a normal disk, LVM device or from
 	# somewhere else
 	print "<tr> <td valign=top><b>VXFS Device</b></td>\n";
@@ -398,39 +398,39 @@ elsif ($_[0] eq "vxfs") {
         print "<br>\n";
 	print "</td> </tr>\n";
 	}
-elsif ($_[0] eq "swap") {
+elsif ($type eq "swap") {
 	# Swapping to a disk partition or a file
-	print "<tr> <td valign=top><b>Swap File</b></td>\n";
-	print "<td colspan=3>\n";
-	if ($_[1] =~ /^\/dev\/dsk\/c([0-9]+)t([0-9]+)d([0-9]+)s([0-9]+)$/) {
+	local ($swap_dev, $scsi_c, $scsi_t, $scsi_d, $scsi_s,
+	       $scsi_vg, $scsi_lv, $scsi_path);
+	if ($loc =~ /^\/dev\/dsk\/c([0-9]+)t([0-9]+)d([0-9]+)s([0-9]+)$/) {
 		$swap_dev = 0;
 		$scsi_c = $1; $scsi_t = $2; $scsi_d = $3; $scsi_s = $4;
 		}
-	elsif ($_[1] =~ /^\/dev\/vg([0-9]+)\/(\S+)/) {
+	elsif ($loc =~ /^\/dev\/vg([0-9]+)\/(\S+)/) {
 		$swap_dev = 1; $scsi_vg = $1; $scsi_lv = $2;
 		}
 	else {
-		$swap_dev = 2; $scsi_path = $_[1];
+		$swap_dev = 2; $scsi_path = $loc;
 		}
-	$scsi_path = $_[1];
-	printf "<input type=radio name=swap_dev value=0 %s> SCSI Disk:\n",
-		$swap_dev == 0 ? "checked" : "";
-	print "Controller <input name=swap_c size=3 value=\"$scsi_c\">\n";
-	print "Target <input name=swap_t size=3 value=\"$scsi_t\">\n";
-	print "Unit <input name=swap_d size=3 value=\"$scsi_d\">\n";
-	print "Partition <input name=swap_s size=3 value=\"$scsi_s\"><br>\n";
-
-	printf "<input type=radio name=swap_dev value=1 %s> LVM Device:\n",
-		$swap_dev == 1 ? "checked" : "";
-	print "Volume Group <input name=swap_vg size=2 value=\"$scsi_vg\">\n";
-	print "Logical Volume <input name=swap_lv size=20 value=\"$scsi_lv\"><br>\n";
-
-	printf "<input type=radio name=swap_dev value=2 %s> File:\n",
-		$swap_dev == 2 ? "checked" : "";
-	print "<input name=swap_path size=20 value=\"$scsi_path\">";
-        print &file_chooser_button("swap_path", 0);
-	print "<br>\n";
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'solaris_swapfile'},
+	    &ui_radio_table("swap_dev", 0,
+		[ [ 0, $text{'freebsd_scsi'},
+		    $text{'solaris_ctrlr'}." ".
+		      &ui_textbox("scsi_c", $scsi_c, 4)." ".
+		    $text{'solaris_target'}." ".
+		      &ui_textbox("scsi_t", $scsi_t, 4)." ".
+		    $text{'solaris_unit'}." ".
+		      &ui_textbox("scsi_d", $scsi_d, 4)." ".
+		    $text{'solaris_part'}." ".
+		      &ui_textbox("scsi_s", $scsi_s, 4) ],
+		  [ 1, $text{'solaris_lvm'},
+		    $text{'solaris_vg'}." ".
+		      &ui_textbox("swap_vg", $scsi_vg, 4)." ".
+		    $text{'solaris_lv'}." ".
+		      &ui_textbox("swap_lv", $scsi_lv, 20) ],
+		  [ 2, $text{'solaris_file'},
+		    &ui_textbox("swap_path", $scsi_path, 40)." ".
+		      &file_chooser_button("swap_path", 0) ] ]));
 	}
 elsif ($type eq "cdfs") {
 	# Mounting a SCSI cdrom
