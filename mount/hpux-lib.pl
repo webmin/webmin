@@ -307,17 +307,18 @@ return ($_[0] eq "nfs" || $_[0] eq "lofs");
 # Output HTML for editing the mount location of some filesystem.
 sub generate_location
 {
-if ($_[0] eq "nfs") {
+local ($type, $loc) = @_;
+if ($type eq "nfs") {
 	# NFS mount from some host and directory
-	$onenfs = !$_[1] || $_[1] =~ /^([A-z0-9\-\.]+):([^,]+)$/;
-	print "<tr> <td><b>NFS Hostname</b></td>\n";
-	print "<td><input name=nfs_host size=20 value=\"$1\">\n";
-	print &nfs_server_chooser_button("nfs_host");
-	print "</td>\n";
-	print "<td><b>NFS Directory</b></td>\n";
-	print "<td><input name=nfs_dir size=20 value=\"$2\">\n";
-	print &nfs_export_chooser_button("nfs_host", "nfs_dir");
-	print "</td> </tr>\n";
+        local ($host, $dir) = $loc =~ /^([^:]+):(.*)$/ ? ( $1, $2 ) : ( );
+        print &ui_table_row(&hlink($text{'linux_nfshost'}, "nfshost"),
+                &ui_textbox("nfs_host", $host, 30).
+                &nfs_server_chooser_button("nfs_host").
+                "&nbsp;".
+                "<b>".&hlink($text{'linux_nfsdir'}, "nfsdir")."</b> ".
+                &ui_textbox("nfs_dir",
+                            ($type eq "nfs4") && ($dir eq "") ? "/" : $dir, 30).
+                &nfs_export_chooser_button("nfs_host", "nfs_dir"));
 	}
 elsif ($_[0] eq "hfs") {
 	# Mounted from a normal disk, LVM device or from
@@ -456,32 +457,28 @@ elsif ($_[0] eq "cdfs") {
 	print "<br>\n";
 	print "</td> </tr>\n";
 	}
-elsif ($_[0] eq "lofs") {
+elsif ($type eq "lofs") {
 	# Mounting some directory to another location
-	print "<tr> <td><b>Original Directory</b></td>\n";
-	print "<td><input name=lofs_src size=30 value=\"$_[1]\">\n";
-	print &file_chooser_button("lofs_src", 1);
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'solaris_orig'},
+		&ui_textbox("lofs_src", $loc, 40)." ".
+		&file_chooser_button("lofs_src", 1));
 	}
-elsif ($_[0] eq "swapfs") {
+elsif ($type eq "swapfs") {
 	# Mounting a cached filesystem of some type.. need a location for
 	# the source of the mount
-	print "<tr> <td><b>Cache Source</b></td>\n";
-	print "<td><input name=cfs_src size=20 value=\"$_[1]\"></td> </tr>\n";
+	print &ui_table_row($text{'solaris_cache'},
+		&ui_textbox("cfs_src", $loc, 40));
 	}
-elsif ($_[0] eq "autofs") {
+elsif ($type eq "autofs") {
 	# An automounter entry.. can be -hosts, -xfn or from some mapping
-	print "<tr> <td valign=top><b>Automounter map</b></td>\n";
-	printf "<td><input type=radio name=autofs_type value=0 %s>\n",
-		$_[1] eq "-hosts" || $_[1] eq "-xfn" ? "" : "checked";
-	printf "Use map <input name=autofs_map size=20 value=\"%s\"><br>\n",
-		$_[1] eq "-hosts" || $_[1] eq "-xfn" ? "" : $_[1];
-	printf "<input type=radio name=autofs_type value=1 %s>\n",
-		$_[1] eq "-hosts" ? "checked" : "";
-	print "All NFS exports map<br>\n";
-	printf "<input type=radio name=autofs_type value=2 %s>\n",
-		$_[1] eq "-xfn" ? "checked" : "";
-	print "Federated  Naming  Service map</td> </tr>\n";
+	local $mode = $loc eq "-hosts" ? 1 :
+		      $loc eq "-xfn" ? 2 : 0;
+	print &ui_table_row($text{'solaris_automap'},
+	    &ui_radio_table("autofs_type", $mode,
+		[ [ 0, $text{'linux_map'},
+		    &ui_textbox("autofs_map", 30, $mode == 0 ? $loc : "") ],
+		  [ 1, $text{'solaris_autohosts'} ],
+		  [ 2, $text{'solaris_autoxfn'} ] ]));
 	}
 }
 
