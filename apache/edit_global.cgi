@@ -50,6 +50,6 @@ if ($in{'type'} == 6) {
 	print &ui_links_row(\@links);
 	}
 
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer("index.cgi?mode=global", $text{'index_return2'});
 
 

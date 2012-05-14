@@ -41,6 +41,7 @@ index_proxy=Map to URL
 index_create=Create a New Virtual Server
 index_crnow=Create Now
 index_return=server list
+index_return2=global configuration
 index_toomany=There are too many virtual servers on your system to display on one page
 index_find=Find servers where
 index_equals=equals

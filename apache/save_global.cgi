@@ -14,5 +14,5 @@ $conf = &get_config();
 &parse_inputs(\@edit, $conf, $conf);
 &webmin_log("global", $in{'type'}, undef, \%in);
 
-&redirect("");
+&redirect("index.cgi?mode=global");
 
