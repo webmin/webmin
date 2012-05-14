@@ -80,6 +80,9 @@ else {
 		print &ui_columns_end();
 		}
 	else {
+		# Check if a reboot was required before
+		$reboot_before = &check_reboot_required(0);
+
 		# Do it
 		$msg = $in{'mode'} eq 'new' ? 'update_pkg2' : 'update_pkg';
 		foreach my $ps (@pkgs) {
@@ -105,6 +108,17 @@ else {
 		if (&foreign_check("system-status")) {
 			&foreign_require("system-status");
 			&system_status::refresh_possible_packages(\@got);
+			}
+
+		# Check if a reboot is required now
+		if (!$reboot_before && &check_reboot_required(1) &&
+		    &foreign_check("init")) {
+			print &ui_form_start(
+				"$gconfig{'webprefix'}/init/reboot.cgi");
+			print &ui_hidden("confirm", 1);
+			print "<b>",$text{'update_rebootdesc'},"</b><p>\n";
+			print &ui_form_end(
+				[ [ undef, $text{'update_reboot'} ] ]);
 			}
 
 		&webmin_log("update", "packages", scalar(@got),
