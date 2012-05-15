@@ -362,41 +362,41 @@ elsif ($type eq "hfs") {
 elsif ($type eq "vxfs") {
 	# Mounted from a normal disk, LVM device or from
 	# somewhere else
-	print "<tr> <td valign=top><b>VXFS Device</b></td>\n";
-	print "<td colspan=3>\n";
-	if ($_[1] =~ /^\/dev\/dsk\/c([0-9]+)t([0-9]+)d([0-9]+)s([0-9]+)$/) {
+	local ($jfs_dev, $scsi_c, $scsi_t, $scsi_d, $scsi_s,
+	       $scsi_vg, $scsi_lv, $scsi_path);
+	if ($loc =~ /^\/dev\/dsk\/c([0-9]+)t([0-9]+)d([0-9]+)s([0-9]+)$/) {
 		$jfs_dev = 0;
 		$scsi_c = $1; $scsi_t = $2; $scsi_d = $3; $scsi_s = $4;
 		}
-	elsif ($_[1] eq "") {
+	elsif ($loc eq "") {
 		$jfs_dev = 0; $scsi_c = $scsi_t = $scsi_s = $scsi_d = 0;
 		}
-	elsif ($_[1] =~ /^\/dev\/vg([0-9]+)\/(\S+)/) {
+	elsif ($loc =~ /^\/dev\/vg([0-9]+)\/(\S+)/) {
 		$jfs_dev = 1; $scsi_vg = $1; $scsi_lv = $2;
 		}
 	else {
-		$jfs_dev = 2; $scsi_path = $_[1];
+		$jfs_dev = 2; $scsi_path = $loc;
 		}
-	$scsi_path = $_[1];
+	print &ui_table_row($text{'solaris_vxfs'},
+	    &ui_radio_table("jfs_dev", $jfs_dev,
+		[ [ 0, $text{'freebsd_scsi'},
+		    $text{'solaris_ctrlr'}." ".
+		      &ui_textbox("jfs_c", $scsi_c, 4)." ".
+		    $text{'solaris_target'}." ".
+		      &ui_textbox("jfs_t", $scsi_t, 4)." ".
+		    $text{'solaris_unit'}." ".
+		      &ui_textbox("jfs_d", $scsi_d, 4)." ".
+		    $text{'solaris_part'}." ".
+		      &ui_textbox("jfs_s", $scsi_s, 4) ],
+		  [ 1, $text{'solaris_lvm'},
+		    $text{'solaris_vg'}." ".
+		      &ui_textbox("jfs_vg", $scsi_vg, 4)." ".
+		    $text{'solaris_lv'}." ".
+		      &ui_textbox("jfs_lv", $scsi_lv, 20) ],
+		  [ 2, $text{'solaris_file'},
+		    &ui_textbox("jfs_path", $scsi_path, 40)." ".
+		      &file_chooser_button("jfs_path", 0) ] ]));
 
-	printf "<input type=radio name=jfs_dev value=0 %s> SCSI Disk:\n",
-		$jfs_dev == 0 ? "checked" : "";
-	print "Controller <input name=jfs_c size=3 value=\"$scsi_c\">\n";
-	print "Target <input name=jfs_t size=3 value=\"$scsi_t\">\n";
-	print "Unit <input name=jfs_d size=3 value=\"$scsi_d\">\n";
-	print "Partition <input name=jfs_s size=3 value=\"$scsi_s\"><br>\n";
-
-	printf "<input type=radio name=jfs_dev value=1 %s> LVM Device:\n",
-		$jfs_dev == 1 ? "checked" : "";
-	print "Volume Group <input name=jfs_vg size=2 value=\"$scsi_vg\">\n";
-	print "Logical Volume <input name=jfs_lv size=20 value=\"$scsi_lv\"><br>\n";
-
-	printf "<input type=radio name=jfs_dev value=2 %s> Other Device:\n",
-		$jfs_dev == 2 ? "checked" : "";
-	print "<input name=jfs_path size=20 value=\"$scsi_path\">";
-        print &file_chooser_button("jfs_path", 0);
-        print "<br>\n";
-	print "</td> </tr>\n";
 	}
 elsif ($type eq "swap") {
 	# Swapping to a disk partition or a file
@@ -413,16 +413,16 @@ elsif ($type eq "swap") {
 		$swap_dev = 2; $scsi_path = $loc;
 		}
 	print &ui_table_row($text{'solaris_swapfile'},
-	    &ui_radio_table("swap_dev", 0,
+	    &ui_radio_table("swap_dev", $swap_dev,
 		[ [ 0, $text{'freebsd_scsi'},
 		    $text{'solaris_ctrlr'}." ".
-		      &ui_textbox("scsi_c", $scsi_c, 4)." ".
+		      &ui_textbox("swap_c", $scsi_c, 4)." ".
 		    $text{'solaris_target'}." ".
-		      &ui_textbox("scsi_t", $scsi_t, 4)." ".
+		      &ui_textbox("swap_t", $scsi_t, 4)." ".
 		    $text{'solaris_unit'}." ".
-		      &ui_textbox("scsi_d", $scsi_d, 4)." ".
+		      &ui_textbox("swap_d", $scsi_d, 4)." ".
 		    $text{'solaris_part'}." ".
-		      &ui_textbox("scsi_s", $scsi_s, 4) ],
+		      &ui_textbox("swap_s", $scsi_s, 4) ],
 		  [ 1, $text{'solaris_lvm'},
 		    $text{'solaris_vg'}." ".
 		      &ui_textbox("swap_vg", $scsi_vg, 4)." ".
