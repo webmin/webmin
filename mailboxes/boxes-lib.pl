@@ -1693,7 +1693,10 @@ else {
 		"$user_module_config_directory/$_[0].index" :
 		"$module_config_directory/$_[0].index";
 	}
-return -r $f && !-r "$f.$hn" ? $f : "$f.$hn";
+# Append hostname if requested, unless an index file without the hostname
+# already exists
+return $config{'noindex_hostname'} ? $f :
+       -r $f && !-r "$f.$hn" ? $f : "$f.$hn";
 }
 
 # extract_mail(data)

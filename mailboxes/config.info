@@ -39,6 +39,7 @@ track_read=Keep track of read/unread emails,1,1-Yes,0-No
 show_unread=Show unread messages count?,1,2-Yes,0-No
 check_mod=Check for mailbox modification when deleting mail?,1,1-Yes,0-No
 maildir_deleted=Skip messages flagged as deleted in Maildir?,1,1-Yes,0-No
+noindex_hostname=Include hostname in index files?,1,0-Yes,1-No
 
 line3=Spam options,11
 spam_buttons=Show spam reporting buttons for,2,list-Mailboxes,mail-Messages

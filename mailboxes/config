@@ -50,3 +50,4 @@ show_unread=0
 maildir_deleted=0
 no_orig_ip=0
 no_mailer=0
+noindex_hostname=0
