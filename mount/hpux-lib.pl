@@ -323,41 +323,40 @@ if ($type eq "nfs") {
 elsif ($type eq "hfs") {
 	# Mounted from a normal disk, LVM device or from
 	# somewhere else
-	print "<tr> <td valign=top><b>HFS Device</b></td>\n";
-	print "<td colspan=3>\n";
-	if ($_[1] =~ /^\/dev\/dsk\/c([0-9]+)t([0-9]+)d([0-9]+)s([0-9]+)$/) {
+	local ($hfs_dev, $scsi_c, $scsi_t, $scsi_d, $scsi_s,
+	       $scsi_vg, $scsi_lv, $scsi_path);
+	if ($loc =~ /^\/dev\/dsk\/c([0-9]+)t([0-9]+)d([0-9]+)s([0-9]+)$/) {
 		$hfs_dev = 0;
 		$scsi_c = $1; $scsi_t = $2; $scsi_d = $3; $scsi_s = $4;
 		}
-	elsif ($_[1] eq "") {
+	elsif ($loc eq "") {
 		$hfs_dev = 0; $scsi_c = $scsi_t = $scsi_s = $scsi_d = 0;
 		}
-	elsif ($_[1] =~ /^\/dev\/vg([0-9]+)\/(\S+)/) {
+	elsif ($loc =~ /^\/dev\/vg([0-9]+)\/(\S+)/) {
 		$hfs_dev = 1; $scsi_vg = $1; $scsi_lv = $2;
 		}
 	else {
-		$hfs_dev = 2; $scsi_path = $_[1];
+		$hfs_dev = 2; $scsi_path = $loc;
 		}
-	$scsi_path = $_[1];
-
-	printf "<input type=radio name=hfs_dev value=0 %s> SCSI Disk:\n",
-		$hfs_dev == 0 ? "checked" : "";
-	print "Controller <input name=hfs_c size=3 value=\"$scsi_c\">\n";
-	print "Target <input name=hfs_t size=3 value=\"$scsi_t\">\n";
-	print "Unit <input name=hfs_d size=3 value=\"$scsi_d\">\n";
-	print "Partition <input name=hfs_s size=3 value=\"$scsi_s\"><br>\n";
-
-	printf "<input type=radio name=hfs_dev value=1 %s> LVM Device:\n",
-		$hfs_dev == 1 ? "checked" : "";
-	print "Volume Group <input name=hfs_vg size=2 value=\"$scsi_vg\">\n";
-	print "Logical Volume <input name=hfs_lv size=20 value=\"$scsi_lv\"><br>\n";
-
-	printf "<input type=radio name=hfs_dev value=2 %s> Other Device:\n",
-		$hfs_dev == 2 ? "checked" : "";
-	print "<input name=hfs_path size=20 value=\"$scsi_path\">";
-        print &file_chooser_button("hfs_path", 0);
-        print "<br>\n";
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'solaris_hfs'},
+	    &ui_radio_table("hfs_dev", $hfs_dev,
+		[ [ 0, $text{'freebsd_scsi'},
+		    $text{'solaris_ctrlr'}." ".
+		      &ui_textbox("hfs_c", $scsi_c, 4)." ".
+		    $text{'solaris_target'}." ".
+		      &ui_textbox("hfs_t", $scsi_t, 4)." ".
+		    $text{'solaris_unit'}." ".
+		      &ui_textbox("hfs_d", $scsi_d, 4)." ".
+		    $text{'solaris_part'}." ".
+		      &ui_textbox("hfs_s", $scsi_s, 4) ],
+		  [ 1, $text{'solaris_lvm'},
+		    $text{'solaris_vg'}." ".
+		      &ui_textbox("hfs_vg", $scsi_vg, 4)." ".
+		    $text{'solaris_lv'}." ".
+		      &ui_textbox("hfs_lv", $scsi_lv, 20) ],
+		  [ 2, $text{'solaris_file'},
+		    &ui_textbox("hfs_path", $scsi_path, 40)." ".
+		      &file_chooser_button("hfs_path", 0) ] ]));
 	}
 elsif ($type eq "vxfs") {
 	# Mounted from a normal disk, LVM device or from
@@ -396,7 +395,6 @@ elsif ($type eq "vxfs") {
 		  [ 2, $text{'solaris_file'},
 		    &ui_textbox("jfs_path", $scsi_path, 40)." ".
 		      &file_chooser_button("jfs_path", 0) ] ]));
-
 	}
 elsif ($type eq "swap") {
 	# Swapping to a disk partition or a file
