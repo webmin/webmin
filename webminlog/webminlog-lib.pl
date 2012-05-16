@@ -92,7 +92,7 @@ a hash ref containing the following keys :
 =cut
 sub parse_logline
 {
-local ($line) = @_;
+my ($line) = @_;
 if (!$line) {
 	return undef;
 	}
