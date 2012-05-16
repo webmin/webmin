@@ -14,35 +14,32 @@ if ($ENV{'SSL_USER'}) {
 
 if ($ENV{'HTTP_USER_AGENT'} =~ /Mozilla/i) {
 	# Output a form that works for netscape and mozilla
-	print "<form action=cert_issue.cgi>\n";
-	print "<table border>\n";
-	print "<tr $tb> <td><b>$text{'cert_header'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table>\n";
+	print &ui_form_start("cert_issue.cgi", "post");
+	print &ui_table_start($text{'cert_header'}, undef, 2);
 
-	print "<tr> <td><b>$text{'cert_cn'}</b></td>\n";
-	print "<td><input name=commonName size=30></td> </tr>\n";
+	print &ui_table_row($text{'cert_cn'},
+		&ui_textbox("commonName", undef, 30));
 
-	print "<tr> <td><b>$text{'cert_email'}</b></td>\n";
-	print "<td><input name=emailAddress size=30></td> </tr>\n";
+	print &ui_table_row($text{'cert_email'},
+		&ui_textbox("emailAddress", undef, 30));
 
-	print "<tr> <td><b>$text{'cert_ou'}</b></td>\n";
-	print "<td><input name=organizationalUnitName size=30></td> </tr>\n";
+	print &ui_table_row($text{'cert_ou'},
+		&ui_textbox("organizationalUnitName", undef, 30));
 
-	print "<tr> <td><b>$text{'cert_o'}</b></td>\n";
-	print "<td><input name=organizationName size=30></td> </tr>\n";
+	print &ui_table_row($text{'cert_o'},
+		&ui_textbox("organizationName", undef, 30));
 
-	print "<tr> <td><b>$text{'cert_sp'}</b></td>\n";
-	print "<td><input name=stateOrProvinceName size=15></td> </tr>\n";
+	print &ui_table_row($text{'cert_sp'},
+		&ui_textbox("stateOrProvinceName", undef, 30));
 
-	print "<tr> <td><b>$text{'cert_c'}</b></td>\n";
-	print "<td><input name=countryName size=2></td> </tr>\n";
+	print &ui_table_row($text{'cert_c'},
+		&ui_textbox("countryName", undef, 30));
 
-	print "<tr> <td><b>$text{'cert_key'}</b></td>\n";
-	print "<td><keygen name=key></td> </tr>\n";
+	print &ui_table_row($text{'cert_key'},
+		"<keygen name=key>");
 
-	print "</table></td></tr></table>\n";
-	print "<input type=submit value='$text{'cert_issue'}'>\n";
-	print "</form>\n";
+	print &ui_table_end();
+	print &ui_form_end([ [ undef, $text{'cert_issue'} ] ]);
 	}
 else {
 	# Unsupported browser!
