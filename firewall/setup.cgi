@@ -55,6 +55,9 @@ if ($in{'auto'}) {
 						  : $in{'iface1'};
 		$iface || &error($text{'setup_eiface'});
 		($table) = grep { $_->{'name'} eq 'nat' } @tables;
+		$table ||= { 'name' => 'nat',
+			     'rules' => [ ],
+			     'defaults' => { } };
 		push(@{$table->{'rules'}},
 		     	{ 'chain' => 'POSTROUTING',
 			  'o' => [ "", $iface ],
@@ -70,6 +73,9 @@ if ($in{'auto'}) {
 				 $in{'iface'.$in{'auto'}};
 		$iface || &error($text{'setup_eiface'});
 		($table) = grep { $_->{'name'} eq 'filter' } @tables;
+		$table ||= { 'name' => 'nat',
+			     'rules' => [ ],
+			     'defaults' => { } };
 		$table->{'defaults'}->{'INPUT'} = 'DROP';
 		push(@{$table->{'rules'}},
 		     { 'chain' => 'INPUT',
