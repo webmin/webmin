@@ -41,7 +41,8 @@ if ($config{'ssl'}) {
 			}
 		if (defined(&Net::SSLeay::X509_STORE_CTX_get_current_cert) &&
 		    defined(&Net::SSLeay::CTX_load_verify_locations) &&
-		    defined(&Net::SSLeay::CTX_set_verify)) {
+		    (defined(&Net::SSLeay::CTX_set_verify) ||
+		     defined(&Net::SSLeay::set_verify))) {
 			$client_certs = 1;
 			}
 		}
@@ -4193,8 +4194,14 @@ $ssl_ctx || die "Failed to create SSL context : $!";
 if ($client_certs) {
 	Net::SSLeay::CTX_load_verify_locations(
 		$ssl_ctx, $config{'ca'}, "");
-	Net::SSLeay::CTX_set_verify(
-		$ssl_ctx, &Net::SSLeay::VERIFY_PEER, \&verify_client);
+	eval {
+		Net::SSLeay::set_verify(
+			$ssl_ctx, &Net::SSLeay::VERIFY_PEER, \&verify_client);
+		};
+	if ($@) {
+		Net::SSLeay::CTX_set_verify(
+			$ssl_ctx, &Net::SSLeay::VERIFY_PEER, \&verify_client);
+		}
 	}
 if ($extracas && $extracas ne "none") {
 	foreach my $p (split(/\s+/, $extracas)) {
