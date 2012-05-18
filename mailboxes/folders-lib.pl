@@ -1920,14 +1920,17 @@ foreach $f (keys %imap_login_handle) {
 # unread, and the number special.
 sub imap_login
 {
-local $h = $imap_login_handle{$_[0]->{'id'}};
+local ($folder) = @_;
+local $key = join("/", $folder->{'server'}, $folder->{'port'},
+		       $folder->{'user'});
+local $h = $imap_login_handle{$key};
 local @rv;
 if (!$h) {
 	# Need to open socket
 	$h = "IMAP".time().++$imap_login_count;
 	local $error;
-	print DEBUG "Connecting to IMAP server $_[0]->{'server'}:$_[0]->{'port'}\n";
-	&open_socket($_[0]->{'server'}, $_[0]->{'port'} || $imap_port,
+	print DEBUG "Connecting to IMAP server $folder->{'server'}:$folder->{'port'}\n";
+	&open_socket($folder->{'server'}, $folder->{'port'} || $imap_port,
 		     $h, \$error);
 	print DEBUG "IMAP error=$error\n" if ($error);
 	return (0, $error) if ($error);
@@ -1936,18 +1939,19 @@ if (!$h) {
 	# Login normally
 	@rv = &imap_command($h);
 	return (0, $rv[3]) if (!$rv[0]);
-	local $user = $_[0]->{'user'} eq '*' ? $remote_user : $_[0]->{'user'};
-	local $pass = $_[0]->{'pass'};
+	local $user = $folder->{'user'} eq '*' ? $remote_user
+					       : $folder->{'user'};
+	local $pass = $folder->{'pass'};
 	$pass =~ s/\\/\\\\/g;
 	$pass =~ s/"/\\"/g;
 	@rv = &imap_command($h,"login \"$user\" \"$pass\"");
 	return (2, $rv[3]) if (!$rv[0]);
 
-	$imap_login_handle{$_[0]->{'id'}} = $h;
+	$imap_login_handle{$key} = $h;
 	}
 
 # Select the right folder (if one was given)
-@rv = &imap_command($h, "select \"".($_[0]->{'mailbox'} || "INBOX")."\"");
+@rv = &imap_command($h, "select \"".($folder->{'mailbox'} || "INBOX")."\"");
 return (3, $rv[3]) if (!$rv[0]);
 local $count = $rv[2] =~ /\*\s+(\d+)\s+EXISTS/i ? $1 : undef;
 local $uidnext = $rv[2] =~ /UIDNEXT\s+(\d+)/ ? $1 : undef;
