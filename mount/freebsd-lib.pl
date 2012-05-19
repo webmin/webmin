@@ -943,7 +943,8 @@ return &join_options();
 sub create_swap
 {
 local($out, $bl);
-$bl = $_[1] * ($_[2] eq "g" ? 1024*1024 :
+$bl = $_[1] * ($_[2] eq "t" ? 1024*1024*1024 :
+	       $_[2] eq "g" ? 1024*1024 :
 	       $_[2] eq "m" ? 1024 : 1);
 $out = &backquote_logged("dd if=/dev/zero of=$_[0] bs=1024 count=$bl 2>&1");
 if ($?) { return "dd failed : $out"; }

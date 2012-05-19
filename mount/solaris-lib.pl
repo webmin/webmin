@@ -462,13 +462,11 @@ if ($type eq "nfs") {
 elsif ($type eq "tmpfs" || $type eq "xmemfs") {
 	# Location is irrelevant for tmpfs and xmemfs filesystems
 	}
-elsif ($_[0] eq "ufs") {
+elsif ($type eq "ufs") {
 	# Mounted from a normal disk, raid (MD) device or from
 	# somewhere else
-	print "<tr> <td valign=top><b>$text{'solaris_ufs'}</b></td>\n";
-	print "<td colspan=3>\n";
 	&foreign_require("format");
-
+	local ($ufs_dev, $ufs_md);
 	if ($_[1] =~ /^\/dev\/dsk\/c([0-9]+)t([0-9]+)d([0-9]+)s([0-9]+)$/ ||
 	    $_[1] =~ /^\/dev\/dsk\/c([0-9]+)d([0-9]+)s([0-9]+)$/) {
 		$ufs_dev = 0;
@@ -478,58 +476,59 @@ elsif ($_[0] eq "ufs") {
 		}
 	elsif ($_[1] =~ /^\/dev\/md\/dsk\/d([0-9]+)$/) {
 		$ufs_dev = 1;
+		$ufs_md = $1;
 		}
 	else {
 		$ufs_dev = 2;
 		}
+	local @opts;
 
+	# Regular disk
 	local $found;
 	local $sel = &format::partition_select("ufs_disk", $_[1], 0,
 					       $ufs_dev ? \$found : undef);
-	printf "<input type=radio name=ufs_dev value=0 %s> %s : %s<br>\n",
-		$ufs_dev == 0 ? "checked" : "", $text{'solaris_scsi'}, $sel;
+	push(@opts, [ 0, $text{'solaris_scsi'}, $sel ]);
 
-	printf "<input type=radio name=ufs_dev value=1 %s> %s :\n",
-		$ufs_dev == 1 ? "checked" : "",
-		$text{'solaris_raid'};
-	printf "%s <input name=ufs_md size=3 value=\"%s\"><br>\n",
-		$text{'solaris_unit'},
-		 $_[1] =~ /^\/dev\/md\/dsk\/d([0-9]+)$/ ? $1 : "";
 
-	printf "<input type=radio name=ufs_dev value=2 %s> %s :\n",
-		$ufs_dev == 2 ? "checked" : "", $text{'solaris_otherdev'};
-	printf "<input name=ufs_path size=20 value=\"%s\"><br>\n",
-		$ufs_dev == 2 ? $_[1] : "";
-	print "</td> </tr>\n";
+	# RAID device
+	push(@opts, [ 1, $text{'solaris_raid'},
+		      $text{'solaris_unit'}." ".
+		      &ui_textbox("ufs_md", $ufs_md, 5) ]);
+
+	# Something else
+	push(@opts, [ 2, $text{'solaris_otherdev'},
+		      &ui_textbox("ufs_path", $ufs_dev == 2 ? $loc : "", 40) ]);
+	print &ui_table_row($text{'solaris_ufs'},
+		&ui_radio_table("ufs_dev", $ufs_dev, \@opts));
 	}
-elsif ($_[0] eq "swap") {
+elsif ($type eq "swap") {
 	# Swapping to a disk partition or a file
-	print "<tr> <td valign=top><b>$text{'solaris_swapfile'}</b></td>\n";
-	print "<td colspan=3>\n";
 	&foreign_require("format");
-
-	if ($_[1] =~ /^\/dev\/dsk\/c([0-9]+)t([0-9]+)d([0-9]+)s([0-9]+)$/ ||
-	    $_[1] =~ /^\/dev\/dsk\/c([0-9]+)d([0-9]+)s([0-9]+)$/) {
+	local ($swap_dev);
+	if ($loc =~ /^\/dev\/dsk\/c([0-9]+)t([0-9]+)d([0-9]+)s([0-9]+)$/ ||
+	    $loc =~ /^\/dev\/dsk\/c([0-9]+)d([0-9]+)s([0-9]+)$/) {
 		$swap_dev = 0;
 		}
-	elsif ($_[1] eq "") {
+	elsif ($loc eq "") {
 		$swap_dev = 0;
 		}
 	else {
 		$swap_dev = 1;
 		}
+	local @opts;
 
+	# Regular disk
 	local $found;
 	local $sel = &format::partition_select("swap_disk", $_[1], 0,
 					       $swap_dev ? \$found : undef);
-	printf "<input type=radio name=swap_dev value=0 %s> %s : %s<br>\n",
-		$swap_dev == 0 ? "checked" : "", $text{'solaris_scsi'}, $sel;
+	push(@opts, [ 0, $text{'solaris_scsi'}, $sel ]);
 
-	printf "<input type=radio name=swap_dev value=1 %s> %s :\n",
-		$swap_dev == 1 ? "checked" : "", $text{'solaris_file'};
-	printf "<input name=swap_path size=20 value=\"%s\"><br>\n",
-		$swap_dev == 1 ? $_[1] : "";
-	print "</td> </tr>\n";
+	# Other path
+	push(@opts, [ 1, $text{'solaris_file'},
+		      &ui_textbox("swap_path", $swap_dev == 1 ? $loc : "", 40)
+		    ]);
+	print &ui_table_row($text{'solaris_swapfile'},
+		&ui_radio_table("swap_dev", $swap_dev, \@opts));
 	}
 elsif ($_[0] eq "hsfs" || $_[0] eq "udfs") {
 	# Mounting a SCSI cdrom or DVD

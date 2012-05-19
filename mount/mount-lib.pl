@@ -93,21 +93,20 @@ return @rv ? join(",", @rv) : "-";
 # to a creation program, and then redirected back to the original mount cgi
 sub swap_form
 {
+local ($file) = @_;
 &ui_print_header(undef, "Create Swap File", "");
-print "<form action=create_swap.cgi>\n";
-foreach $k (keys %in) {
-	print "<input type=hidden name=\"$k\" value=\"$in{$k}\">\n";
+print &ui_form_start("create_swap.cgi");
+foreach my $k (keys %in) {
+	print &ui_hidden($k, $in{$k});
 	}
-print "<input type=hidden name=cswap_file value=\"$_[0]\">\n";
-print "The swap file <tt>$_[0]</tt> does not exist.<p>\n";
-print "Create and mount a swap file with size <input name=cswap_size size=6>\n";
-print "<select name=cswap_units>\n";
-print "<option value=k> kB\n";
-print "<option value=m selected> MB\n";
-print "<option value=g> GB\n";
-print "</select>\n";
-print "<input type=submit value=\"Create\"></form>\n";
-&ui_print_footer("", "mount list");
+print &ui_hidden("cswap_file", $file);
+print &text('cswap_file', "<tt>$file</tt>"),"<p>\n";
+print $text{'cswap_size'},"\n";
+print &ui_textbox("cswap_size", undef, 6)," ",
+      &ui_select("cswap_units", "m",
+		 [ [ "m", "MB" ], [ "g", "GB" ], [ "t", "TB" ] ])."\n";
+print &ui_form_end([ [ undef, $text{'create'} ] ]);
+&ui_print_footer("", $text{'index_return'});
 exit;
 }
 
