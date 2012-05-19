@@ -414,56 +414,52 @@ return ($_[0] eq "nfs" || $_[0] eq "tmpfs" || $_[0] eq "cachefs" ||
 # Output HTML for editing the mount location of some filesystem.
 sub generate_location
 {
-if ($_[0] eq "nfs") {
+local ($type, $loc) = @_;
+if ($type eq "nfs") {
 	# NFS mount from some host and directory
-	if ($_[1] =~ /^nfs:/) { $nfsmode = 2; }
-	elsif (!$_[1] || $_[1] =~ /^([A-z0-9\-\.]+):([^,]+)$/) {
+	local ($nfsmode, $nfshost, $nfspath);
+	if ($loc =~ /^nfs:/) { $nfsmode = 2; }
+	elsif (!$loc) {
+		$nfsmode = 0;
+		}
+	elsif ($loc =~ /^([A-z0-9\-\.]+):([^,]+)$/) {
 		$nfsmode = 0; $nfshost = $1; $nfspath = $2;
 		}
 	else { $nfsmode = 1; }
 	if ($gconfig{'os_version'} >= 2.6) {
 		# Solaris 2.6 can list multiple NFS servers in mount
-		print "<tr> <td><b>$text{'solaris_nsource'}</b></td>\n";
-		printf "<td><input type=radio name=nfs_serv value=0 %s>\n",
-			$nfsmode == 0 ? "checked" : "";
-		print "<b>$text{'solaris_nhost'}</b></td>\n";
-		print "<td><input name=nfs_host size=20 value=\"$nfshost\">\n";
-		print &nfs_server_chooser_button("nfs_host");
-		print "&nbsp;<b>$text{'solaris_ndir'}</b>\n";
-		print "<input name=nfs_dir size=20 value=\"$nfspath\">\n";
-		print &nfs_export_chooser_button("nfs_host", "nfs_dir");
-		print "</td> </tr>\n";
+		local @opts;
+		push(@opts, [ 0, $text{'solaris_nhost'},
+			&ui_textbox("nfs_host", $nfshost, 30).
+			&nfs_server_chooser_button("nfs_host").
+			"&nbsp;".
+			"<b>".$text{'solaris_ndir'}."</b> ".
+			&ui_textbox("nfs_dir", $nfspath, 30).
+			&nfs_export_chooser_button("nfs_host", "nfs_dir") ]);
 
-		print "<tr> <td></td>\n";
-		printf "<td><input type=radio name=nfs_serv value=1 %s>\n",
-			$nfsmode == 1 ? "checked" : "";
-		print "<b>$text{'solaris_nmult'}</b></td>\n";
-		printf "<td><input name=nfs_list size=40 value=\"%s\">\n",
-			$nfsmode == 1 ? $_[1] : "";
-		print "</td> </tr>\n";
+		push(@opts, [ 1, $text{'solaris_nmult'},
+			&ui_textbox("nfs_list",
+				    $nfsmode == 1 ? $loc : "", 40) ]);
 
 		if ($gconfig{'os_version'} >= 7) {
-			print "<tr> <td></td> <td>\n";
-			printf "<input type=radio name=nfs_serv value=2 %s>\n",
-				$nfsmode == 2 ? "checked" : "";
-			print "<b>$text{'solaris_webnfs'}</b></td> <td>\n";
-			printf "<input name=nfs_url size=40 value=\"%s\">\n",
-				$nfsmode == 2 ? $_[1] : "";
-			print "</td> </tr>\n";
+			push(@opts, [ 2, $text{'solaris_webnfs'},
+				&ui_textbox("nfs_url",
+					    $nfsmode == 2 ? $loc : "", 40) ]);
 			}
+		print &ui_table_row($text{'solaris_nsource'},
+			&ui_radio_table("nfs_serv", $nfsmode, \@opts));
 		}
 	else {
-		print "<tr> <td><b>$text{'solaris_nhost'}</b></td>\n";
-		print "<td><input name=nfs_host size=20 value=\"$nfshost\">\n";
-		print &nfs_server_chooser_button("nfs_host");
-		print "</td>\n";
-		print "<td><b>$text{'solaris_ndir'}</b></td>\n";
-		print "<td><input name=nfs_dir size=20 value=\"$nfspath\">\n";
-		print &nfs_export_chooser_button("nfs_host", "nfs_dir");
-		print "</td> </tr>\n";
+		print &ui_table_row($text{'solaris_nhost'},
+			&ui_textbox("nfs_host", $nfshost, 30).
+			&nfs_server_chooser_button("nfs_host").
+			"&nbsp;".
+			"<b>".$text{'solaris_ndir'}."</b> ".
+			&ui_textbox("nfs_dir", $nfspath, 30).
+			&nfs_export_chooser_button("nfs_host", "nfs_dir"));
 		}
 	}
-elsif ($_[0] eq "tmpfs" || $_[0] eq "xmemfs") {
+elsif ($type eq "tmpfs" || $type eq "xmemfs") {
 	# Location is irrelevant for tmpfs and xmemfs filesystems
 	}
 elsif ($_[0] eq "ufs") {
@@ -598,42 +594,38 @@ elsif ($_[0] eq "pcfs") {
 	}
 elsif ($_[0] eq "lofs") {
 	# Mounting some directory to another location
-	print "<tr> <td><b>$text{'solaris_orig'}</b></td>\n";
-	print "<td><input name=lofs_src size=30 value=\"$_[1]\">\n";
-	print &file_chooser_button("lofs_src", 1);
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'solaris_orig'},
+		&ui_textbox("lofs_src", 40, $loc)." ".
+		&file_chooser_button("lofs_src", 1));
 	}
-elsif ($_[0] eq "cachefs") {
+elsif ($type eq "cachefs") {
 	# Mounting a cached filesystem of some type.. need a location for
 	# the source of the mount
-	print "<tr> <td><b>$text{'solaris_cache'}</b></td>\n";
-	print "<td><input name=cfs_src size=20 value=\"$_[1]\"></td> </tr>\n";
+	print &ui_table_row($text{'solaris_cache'},
+		&ui_textbox("cfs_src", 40, $loc));
 	}
-elsif ($_[0] eq "autofs") {
+elsif ($type eq "autofs") {
 	# An automounter entry.. can be -hosts, -xfn or from some mapping
-	print "<tr> <td valign=top><b>$text{'solaris_automap'}</b></td>\n";
-	printf "<td><input type=radio name=autofs_type value=0 %s>\n",
-		$_[1] eq "-hosts" || $_[1] eq "-xfn" ? "" : "checked";
-	printf "Use map <input name=autofs_map size=20 value=\"%s\"><br>\n",
-		$_[1] eq "-hosts" || $_[1] eq "-xfn" ? "" : $_[1];
-	printf "<input type=radio name=autofs_type value=1 %s>\n",
-		$_[1] eq "-hosts" ? "checked" : "";
-	print "$text{'solaris_autohosts'}<br>\n";
-	printf "<input type=radio name=autofs_type value=2 %s>\n",
-		$_[1] eq "-xfn" ? "checked" : "";
-	print "$text{'solaris_autoxfn'}</td> </tr>\n";
+	local $mode = $loc eq "-hosts" ? 1 :
+		      $loc eq "-xfn" ? 2 : 0;
+	print &ui_table_row($text{'solaris_automap'},
+	    &ui_radio_table("autofs_type", $mode,
+		[ [ 0, $text{'linux_map'},
+		    &ui_textbox("autofs_map", 30, $mode == 0 ? $loc : "") ],
+		  [ 1, $text{'solaris_autohosts'} ],
+		  [ 2, $text{'solaris_autoxfn'} ] ]));
 	}
-elsif ($_[0] eq "rumba") {
+elsif ($type eq "rumba") {
 	# Windows filesystem
-	$_[1] =~ /^\\\\(.*)\\(.*)$/;
-	print "<tr> <td><b>$text{'solaris_server'}</b></td>\n";
-	print "<td><input name=rumba_server value=\"$1\" size=20>\n";
-	print &smb_server_chooser_button("rumba_server");
-	print "</td>\n";
-	print "<td><b>$text{'solaris_share'}</b></td>\n";
-	print "<td><input name=rumba_share value=\"$2\" size=20>\n";
-	print &smb_share_chooser_button("rumba_server", "rumba_share");
-	print "</td> </tr>\n";
+	local ($server, $share) = $loc =~ /^\\\\([^\\]*)\\(.*)$/ ?
+					($1, $2) : ( );
+	print &ui_table_row($text{'solaris_server'},
+		&ui_textbox("rumba_server", $server, 30)." ".
+		&smb_server_chooser_button("rumba_server")." ".
+		"&nbsp;".
+		"<b>$text{'solaris_share'}</b> ".
+		&ui_textbox("rumba_share", $share, 30)." ".
+		&smb_share_chooser_button("rumba_server", "rumba_share"));
 	}
 }
 
