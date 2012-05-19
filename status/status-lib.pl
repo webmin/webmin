@@ -20,6 +20,8 @@ $templates_dir = "$module_config_directory/templates";
 
 @monitor_statuses = ( 'up', 'down', 'un', 'webmin', 'timed', 'isdown' );
 
+$history_dir = "$module_config_directory/history";
+
 # list_services()
 # Returns a list of all services this module knows how to get status on.
 # If this is the first time the function is called a default set of services
@@ -69,18 +71,19 @@ return $_[0] ne $serv{'id'} ? undef : \%serv;
 # save_service(&serv)
 sub save_service
 {
+local ($serv) = @_;
 mkdir($services_dir, 0755) if (!-d $services_dir);
-&lock_file("$services_dir/$_[0]->{'id'}.serv");
-&write_file("$services_dir/$_[0]->{'id'}.serv", $_[0]);
-&unlock_file("$services_dir/$_[0]->{'id'}.serv");
+&lock_file("$services_dir/$serv->{'id'}.serv");
+&write_file("$services_dir/$serv->{'id'}.serv", $serv);
+&unlock_file("$services_dir/$serv->{'id'}.serv");
 }
 
-# delete_service(serv)
+# delete_service(&serv)
 sub delete_service
 {
-&lock_file("$services_dir/$_[0]->{'id'}.serv");
-unlink("$services_dir/$_[0]->{'id'}.serv");
-&unlock_file("$services_dir/$_[0]->{'id'}.serv");
+local ($serv) = @_;
+&unlink_logged("$services_dir/$serv->{'id'}.serv");
+&unlink_logged("$history_dir/$serv->{'id'}");
 }
 
 # expand_remotes(&service)
@@ -531,6 +534,46 @@ foreach my $k (keys %$serv) {
 		delete($ENV{'STATUS_'.uc($k)});
 		}
 	}
+}
+
+# list_history(&serv, [max-lines])
+# Lists history entries for some service. Each is a hash ref with keys
+# old - Previous status, in host=status format
+# new - New status, in host=status format
+# time - Time at which history was logged
+# value - Optional value at that time (such as memory used)
+# by - Can be 'web' for update from web UI, or 'cron' for background
+sub list_history
+{
+local ($serv, $max) = @_;
+local $hfile = "$history_dir/$serv->{'id'}";
+return ( ) if (!-r $hfield);
+if ($max) {
+	open(HFILE, "tail -".quotemeta($max)." ".quotemeta($hfile)." |");
+	}
+else {
+	open(HFILE, $hfile);
+	}
+local @rv;
+while(my $line = <HFILE>) {
+	$line =~ s/\r|\n//g;
+	my %h = map { split(/=/, $_, 2) } split(/\t+/, $line);
+	push(@rv, \%h);
+	}
+return @rv;
+}
+
+# add_history(&serv, &history)
+# Adds a history entry for some service
+sub add_history
+{
+local ($serv, $h) = @_;
+if (!-d $history_dir) {
+	&make_dir($history_dir, 0700);
+	}
+&open_tempfile(HFILE, ">>$history_dir/$serv->{'id'}", 0, 1);
+&print_tempfile(HFILE, join("\t", map { $_."=".$h->{$_} } keys %$h)."\n");
+&close_tempfile(HFILE);
 }
 
 1;

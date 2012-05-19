@@ -15,9 +15,11 @@ if ($ARGV[0] ne "--force") {
 	!@hours || &indexof($tm[2], @hours) >= 0 || exit;
 	@days = split(/\s+/, $config{'sched_days'});
 	!@days || &indexof($tm[6], @days) >= 0 || exit;
+	$by = "cron";
 	}
 else {
 	shift(@ARGV);
+	$by = "web";
 	}
 
 # Check for list of monitors to limit refresh to
@@ -222,9 +224,18 @@ foreach $serv (@services) {
 			}
 		}
 
+	# Log the status
+	$newstatus = join(" ", map { "$_=$newstats->{$_}" } @remotes);
+	%history = ( 'time' => $nowunix,
+		     'new' => $newstatus,
+		     'by' => $by );
+	if (defined($oldstatus{$serv->{'id'}})) {
+		$history{'old'} = $oldstatus{$serv->{'id'}};
+		}
+	&add_history($serv, \%history);
+
 	# Update old status hash
-	$oldstatus{$serv->{'id'}} =
-		join(" ", map { "$_=$newstats->{$_}" } @remotes);
+	$oldstatus{$serv->{'id'}} = $newstatus;
 	}
 
 # Close oldstatus and fails files
