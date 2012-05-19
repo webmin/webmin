@@ -23,6 +23,7 @@ if ($module_info{'usermin'}) {
 	else {
 		@can_dirs = ( "/" );
 		}
+	@can_dirs = &expand_root_variables(@can_dirs);
 	$can_mode = 3;
 
 	$download_dir = $userconfig{'ddir'};
@@ -283,6 +284,23 @@ if ($module_info{'usermin'}) {
 else {
 	return &command_as_user($user, $env, @args);
 	}
+}
+
+# expand_root_variables(dir, ...)
+# Replaces $USER and $HOME in a list of dirs
+sub expand_root_variables
+{
+local @rv;
+local %hash = ( 'user' => $remote_user_info[0],
+                'home' => $remote_user_info[7],
+                'uid' => $remote_user_info[2],
+                'gid' => $remote_user_info[3] );
+my @ginfo = getgrgid($remote_user_info[3]);
+$hash{'group'} = $ginfo[0];
+foreach my $dir (@_) {
+        push(@rv, &substitute_template($dir, \%hash));
+        }
+return @rv;
 }
 
 1;

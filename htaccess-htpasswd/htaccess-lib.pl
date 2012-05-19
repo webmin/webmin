@@ -17,6 +17,7 @@ if ($module_info{'usermin'}) {
 	foreach $d (split(/\t+/, $config{'dirs'})) {
 		push(@accessdirs, $d =~ /^\// ? $d : "$default_dir/$d");
 		}
+	@accessdirs = &expand_root_variables(@accessdirs);
 	$directories_file = "$user_module_config_directory/directories";
 	$apachemod = "htaccess";
 	$can_htpasswd = $config{'can_htpasswd'};
@@ -117,6 +118,23 @@ if (defined($old_uid)) {
 	$) = $old_gid;
 	$old_uid = $old_gid = undef;
 	}
+}
+
+# expand_root_variables(dir, ...)
+# Replaces $USER and $HOME in a list of dirs
+sub expand_root_variables
+{
+local @rv;
+local %hash = ( 'user' => $remote_user_info[0],
+		'home' => $remote_user_info[7],
+		'uid' => $remote_user_info[2],
+		'gid' => $remote_user_info[3] );
+my @ginfo = getgrgid($remote_user_info[3]);
+$hash{'group'} = $ginfo[0];
+foreach my $dir (@_) {
+	push(@rv, &substitute_template($dir, \%hash));
+	}
+return @rv;
 }
 
 1;
