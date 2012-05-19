@@ -3,3 +3,4 @@ longdesc=Define Webmin module functions that are called on a regular schedule by
 category=webmin
 hidden=1
 desc_ca=Funcions Planificades de Webmin
+desc_nl=Geplande Webmin Functies
