@@ -243,6 +243,54 @@ else {
 		}
 	}
 
+# Show history, in a hidden section
+if (!$in{'type'}) {
+	@history = &list_history($serv, $config{'history_show'});
+	}
+if (@history) {
+	print &ui_hidden_table_start($text{'mon_header4'}, "width=100%", 2,
+				     "history", 0);
+	@links = ( );
+	if ($in{'changes'}) {
+		push(@links, "<a href='edit_mon.cgi?id=$in{'id'}&changes=0'>".
+			     $text{'mon_changes0'}."</a>");
+		}
+	else {
+		push(@links, "<a href='edit_mon.cgi?id=$in{'id'}&changes=1'>".
+			     $text{'mon_changes1'}."</a>");
+		}
+	# XXX
+	$table = &ui_links_row(\@links);
+	$table .= &ui_columns_start([ $text{'mon_hwhen'},
+				     $text{'mon_hold'},
+				     $text{'mon_hnew'},
+				     $text{'mon_hvalue'} ]);
+	foreach $h (reverse(@history)) {
+		my @cols = ( &make_date($h->{'time'}) );
+		foreach my $s ($h->{'old'}, $h->{'new'}) {
+			my @ups;
+			my @statuses = split(/\s+/, $s);
+			foreach my $rs (@statuses) {
+				my ($host, $up) = split(/=/, $rs, 2);
+				$img = "<img src=".&get_status_icon($up).">";
+				if ($host ne "*") {
+					$img = $host.$img;
+					}
+				elsif (@statuses > 1) {
+					$img = &get_display_hostname().$img;
+					}
+				push(@ups, $img);
+				}
+			push(@cols, join(" ", @ups));
+			}
+		push(@cols, $h->{'value_show'} || $h->{'value'});
+		$table .= &ui_columns_row(\@cols);
+		}
+	$table .= &ui_columns_end();
+	print &ui_table_row(undef, $table, 2);
+	print &ui_hidden_table_end();
+	}
+
 # Show create/delete buttons
 if ($in{'type'}) {
 	print &ui_form_end([ [ "create", $text{'create'} ] ]);

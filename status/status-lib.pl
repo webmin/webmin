@@ -547,7 +547,7 @@ sub list_history
 {
 local ($serv, $max) = @_;
 local $hfile = "$history_dir/$serv->{'id'}";
-return ( ) if (!-r $hfield);
+return ( ) if (!-r $hfile);
 if ($max) {
 	open(HFILE, "tail -".quotemeta($max)." ".quotemeta($hfile)." |");
 	}
@@ -558,8 +558,11 @@ local @rv;
 while(my $line = <HFILE>) {
 	$line =~ s/\r|\n//g;
 	my %h = map { split(/=/, $_, 2) } split(/\t+/, $line);
-	push(@rv, \%h);
+	if ($h{'time'}) {
+		push(@rv, \%h);
+		}
 	}
+close(HFILE);
 return @rv;
 }
 
@@ -574,6 +577,19 @@ if (!-d $history_dir) {
 &open_tempfile(HFILE, ">>$history_dir/$serv->{'id'}", 0, 1);
 &print_tempfile(HFILE, join("\t", map { $_."=".$h->{$_} } keys %$h)."\n");
 &close_tempfile(HFILE);
+}
+
+# get_status_icon(up)
+# Given a status code, return the image path to it
+sub get_status_icon
+{
+local ($up) = @_;
+return "images/".($up == 1 ? "up.gif" :
+		  $up == -1 ? "not.gif" :
+		  $up == -2 ? "webmin.gif" :
+		  $up == -3 ? "timed.gif" :
+		  $up == -4 ? "skip.gif" :
+		  	      "down.gif");
 }
 
 1;

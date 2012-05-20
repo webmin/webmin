@@ -148,14 +148,8 @@ foreach $s (@_) {
 			$up = $ups[$i];
 			$h = $remotes[$i];
 			$h = $text{'index_local'} if ($h eq '*');
-			push(@icons, "<img src=images/".
-			      ($up == 1 ? "up.gif" :
-			      $up == -1 ? "not.gif" :
-			      $up == -2 ? "webmin.gif" :
-			      $up == -3 ? "timed.gif" :
-			      $up == -4 ? "skip.gif" :
-					  "down.gif").
-			      " title='".&html_escape($h)."'>");
+			push(@icons, "<img src=".&get_status_icon($up).
+				     " title='".&html_escape($h)."'>");
 			}
 		push(@cols, join("", @icons));
 		}

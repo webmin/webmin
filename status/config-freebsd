@@ -7,3 +7,5 @@ subject_mode=0
 columns=2
 pinger=linux
 sched_offset=0
+history_show=50
+history_purge=30
