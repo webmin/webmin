@@ -569,7 +569,14 @@ sub device_to_uuid
 {
 local ($device, $mounts) = @_;
 local $uuid;
-if ($device =~ /^\/dev\// && ($has_volid || -d $uuid_directory)) {
+if ($device =~ /^\Q$uuid_directory\E\/([^\/]+)$/) {
+	# Device is already under the UUID directory, so ID can be found
+	# immediately from the path
+	$uuid = $1;
+	}
+elsif ($device =~ /^\/dev\// && ($has_volid || -d $uuid_directory)) {
+	# Device is like /dev/sda1, so try to find the UUID for it by either
+	# looking in /dev/disk/by-uuid or using the volid command
 	if (-d $uuid_directory) {
 		# Use UUID mapping directory
 		opendir(DIR, $uuid_directory);
