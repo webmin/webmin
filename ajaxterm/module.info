@@ -3,4 +3,4 @@ name=ajaxterm
 longdesc=Access the shell on your system without the need for a separate SSH client, using Ajaxterm
 desc_ca=Entrada en Mode Text
 desc_no=Tekst-terminal
-desc_nl=Tekst Inlog
+desc_nl=Tekst Login
