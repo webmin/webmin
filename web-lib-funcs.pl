@@ -5056,8 +5056,9 @@ to work OK. The parameters are :
 =cut
 sub lock_file
 {
-my $realfile = &translate_filename($_[0]);
-return 0 if (!$_[0] || defined($main::locked_file_list{$realfile}));
+my ($file, $readonly, $forcefile) = @_;
+my $realfile = &translate_filename($file);
+return 0 if (!$file || defined($main::locked_file_list{$realfile}));
 my $no_lock = !&can_lock_file($realfile);
 my $lock_tries_count = 0;
 my $last_lock_err;
@@ -5101,11 +5102,11 @@ while(1) {
 				goto tryagain;
 				}
 			}
-		$main::locked_file_list{$realfile} = int($_[1]);
+		$main::locked_file_list{$realfile} = int($readonly);
 		push(@main::temporary_files, "$realfile.lock");
 		if (($gconfig{'logfiles'} || $gconfig{'logfullfiles'}) &&
 		    !&get_module_variable('$no_log_file_changes') &&
-		    !$_[1]) {
+		    !$readonly) {
 			# Grab a copy of this file for later diffing
 			my $lnk;
 			$main::locked_file_data{$realfile} = undef;
@@ -5113,7 +5114,7 @@ while(1) {
 				$main::locked_file_type{$realfile} = 1;
 				$main::locked_file_data{$realfile} = '';
 				}
-			elsif (!$_[2] && ($lnk = readlink($realfile))) {
+			elsif (!$forcefile && ($lnk = readlink($realfile))) {
 				$main::locked_file_type{$realfile} = 2;
 				$main::locked_file_data{$realfile} = $lnk;
 				}
@@ -5150,8 +5151,9 @@ called. This can then be viewed in the Webmin Actions Log module.
 =cut
 sub unlock_file
 {
-my $realfile = &translate_filename($_[0]);
-return if (!$_[0] || !defined($main::locked_file_list{$realfile}));
+my ($file) = @_;
+my $realfile = &translate_filename($file);
+return if (!$file || !defined($main::locked_file_list{$realfile}));
 unlink("$realfile.lock") if (&can_lock_file($realfile));
 delete($main::locked_file_list{$realfile});
 if (exists($main::locked_file_data{$realfile})) {
@@ -5239,8 +5241,9 @@ Returns 1 if some file is currently locked, 0 if not.
 =cut
 sub test_lock
 {
-my $realfile = &translate_filename($_[0]);
-return 0 if (!$_[0]);
+my ($file) = @_;
+my $realfile = &translate_filename($file);
+return 0 if (!$file);
 return 1 if (defined($main::locked_file_list{$realfile}));
 return 0 if (!&can_lock_file($realfile));
 my $pid;

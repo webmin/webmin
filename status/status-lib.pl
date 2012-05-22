@@ -536,7 +536,7 @@ foreach my $k (keys %$serv) {
 	}
 }
 
-# list_history(&serv, [max-lines])
+# list_history(&serv, [max-tail-lines], [max-head-lines])
 # Lists history entries for some service. Each is a hash ref with keys
 # old - Previous status, in host=status format
 # new - New status, in host=status format
@@ -545,11 +545,11 @@ foreach my $k (keys %$serv) {
 # by - Can be 'web' for update from web UI, or 'cron' for background
 sub list_history
 {
-local ($serv, $max) = @_;
+local ($serv, $maxtail, $maxhead) = @_;
 local $hfile = "$history_dir/$serv->{'id'}";
 return ( ) if (!-r $hfile);
-if ($max) {
-	open(HFILE, "tail -".quotemeta($max)." ".quotemeta($hfile)." |");
+if ($maxtail) {
+	open(HFILE, "tail -".quotemeta($maxtail)." ".quotemeta($hfile)." |");
 	}
 else {
 	open(HFILE, $hfile);
@@ -561,6 +561,7 @@ while(my $line = <HFILE>) {
 	if ($h{'time'}) {
 		push(@rv, \%h);
 		}
+	last if ($maxhead && scalar(@rv) >= $maxhead);
 	}
 close(HFILE);
 return @rv;
@@ -574,9 +575,27 @@ local ($serv, $h) = @_;
 if (!-d $history_dir) {
 	&make_dir($history_dir, 0700);
 	}
-&open_tempfile(HFILE, ">>$history_dir/$serv->{'id'}", 0, 1);
+local $hfile = "$history_dir/$serv->{'id'}";
+&lock_file($hfile, 1);
+local ($first) = &list_history($serv, undef, 1);
+local $cutoff = time() - $config{'history_purge'}*24*60*60;
+if ($first && $first->{'time'} < $cutoff-(24*60*60)) {
+	# First entry is more than a day older than the cutoff .. remove all
+	# entries older than the custoff
+	local @oldh = &list_history($serv);
+	&open_tempfile(HFILE, ">$hfile", 0, 1);
+	foreach my $oh (@oldh) {
+		if ($oh->{'time'} > $cutoff) {
+			&print_tempfile(HFILE,
+			  join("\t", map { $_."=".$oh->{$_} } keys %$oh)."\n");
+			}
+		}
+	&close_tempfile(HFILE);
+	}
+&open_tempfile(HFILE, ">>$hfile", 0, 1);
 &print_tempfile(HFILE, join("\t", map { $_."=".$h->{$_} } keys %$h)."\n");
 &close_tempfile(HFILE);
+&unlock_file($hfile, 1);
 }
 
 # get_status_icon(up)
