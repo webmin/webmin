@@ -131,8 +131,10 @@ mon_hwhen=Check date
 mon_hold=Old status
 mon_hnew=New status
 mon_hvalue=Value
-mon_changes0=Show all history
+mon_changes0=Show every event type
 mon_changes1=Show only changes
+mon_all=Show all historical events
+mon_nochanges=No status changes happened in the last $1 historical events.
 
 sched_title=Scheduled Monitoring
 sched_header=Scheduled background monitoring options

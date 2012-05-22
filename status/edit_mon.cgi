@@ -245,26 +245,32 @@ else {
 
 # Show history, in a hidden section
 if (!$in{'type'}) {
-	@history = &list_history($serv, $config{'history_show'});
+	@history = &list_history($serv,
+				 $in{'all'} ? undef : $config{'history_show'});
 	}
 if (@history) {
 	print &ui_hidden_table_start($text{'mon_header4'}, "width=100%", 2,
-				     "history", 0);
+		"history", defined($in{'all'}) || defined($in{'changes'}));
 	@links = ( );
 	if ($in{'changes'}) {
-		push(@links, "<a href='edit_mon.cgi?id=$in{'id'}&changes=0'>".
-			     $text{'mon_changes0'}."</a>");
+		push(@links, "<a href='edit_mon.cgi?id=$in{'id'}&changes=0&".
+			     "all=$in{'all'}'>$text{'mon_changes0'}</a>");
 		}
 	else {
-		push(@links, "<a href='edit_mon.cgi?id=$in{'id'}&changes=1'>".
-			     $text{'mon_changes1'}."</a>");
+		push(@links, "<a href='edit_mon.cgi?id=$in{'id'}&changes=1&".
+			     "all=$in{'all'}'>$text{'mon_changes1'}</a>");
 		}
-	# XXX
-	$table = &ui_links_row(\@links);
-	$table .= &ui_columns_start([ $text{'mon_hwhen'},
+	if (!$in{'all'}) {
+		push(@links, "<a href='edit_mon.cgi?id=$in{'id'}&changes=".
+			     "$in{'changes'}&all=1'>$text{'mon_all'}</a>");
+		}
+	if ($in{'changes'}) {
+		@history = grep { $_->{'old'} ne $_->{'new'} } @history;
+		}
+	$links = &ui_links_row(\@links);
+	$table = &ui_columns_start([ $text{'mon_hwhen'},
 				     $text{'mon_hold'},
-				     $text{'mon_hnew'},
-				     $text{'mon_hvalue'} ]);
+				     $text{'mon_hnew'} ]);
 	foreach $h (reverse(@history)) {
 		my @cols = ( &make_date($h->{'time'}) );
 		foreach my $s ($h->{'old'}, $h->{'new'}) {
@@ -287,7 +293,13 @@ if (@history) {
 		$table .= &ui_columns_row(\@cols);
 		}
 	$table .= &ui_columns_end();
-	print &ui_table_row(undef, $table, 2);
+	if (@history) {
+		print &ui_table_row(undef, $links.$table, 2);
+		}
+	else {
+		print &ui_table_row(undef, $links.
+			&text('mon_nochanges', $config{'history_show'}), 2);
+		}
 	print &ui_hidden_table_end();
 	}
 
