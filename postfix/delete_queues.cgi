@@ -10,21 +10,21 @@ if ($in{'move'}) {
 	# Re-queuing messages
 	foreach $f (split(/\0/, $in{'file'})) {
 		&system_logged("$config{'postfix_super_command'} -r ".
-				quotemeta($f));
+				quotemeta($f)." >/dev/null 2>&1 </dev/null");
 		}
 	}
 elsif ($in{'hold'}) {
 	# Holding messages
 	foreach $f (split(/\0/, $in{'file'})) {
 		&system_logged("$config{'postfix_super_command'} -h ".
-				quotemeta($f));
+				quotemeta($f)." >/dev/null 2>&1 </dev/null");
 		}
 	}
 elsif ($in{'unhold'}) {
 	# Un-holding messages
 	foreach $f (split(/\0/, $in{'file'})) {
 		&system_logged("$config{'postfix_super_command'} -H ".
-				quotemeta($f));
+				quotemeta($f)." >/dev/null 2>&1 </dev/null");
 		}
 	}
 else {
@@ -37,14 +37,14 @@ else {
 		foreach $f (@files) {
 			$f =~ /^[A-Za-z0-9]+$/ || next;
 			if ($postfix_version >= 1.1) {
-				&system_logged("$config{'postfix_super_command'} -d ".quotemeta($f));
+				&system_logged("$config{'postfix_super_command'} -d ".quotemeta($f)." >/dev/null 2>&1 </dev/null");
 				}
 			else {
 				&unlink_file(grep { $_ =~ /\/$f$/ } @qfiles);
 				}
 			}
 		if ($postfix_version < 1.1) {
-			&system_logged("$config{'postfix_super_command'} -p >/dev/null 2>&1");
+			&system_logged("$config{'postfix_super_command'} -p >/dev/null 2>&1 </dev/null");
 			}
 		&webmin_log("delqs", undef, scalar(@files));
 		}
