@@ -20,6 +20,8 @@ if ($m) {
 		local $pc = $sp[1] * 100.0 / $sp[0];
 		if ($pc < $1) {
 			return { 'up' => 0,
+				 'value' => $pc,
+				 'nice_value' => $pc.'%',
 				 'desc' => &text('space_perr', int($pc)) };
 			}
 		}
@@ -27,6 +29,8 @@ if ($m) {
 		# Compare absolute size
 		if ($sp[1] < $_[0]->{'min'}) {
 			return { 'up' => 0,
+				 'value' => $sp[1]*1024,
+				 'nice_value' => &nice_size($sp[1]*1024),
 				 'desc' => &text('space_merr',
 						 &nice_size($sp[1]*1024)) };
 			}
@@ -37,11 +41,14 @@ if ($m) {
 		local @isp = &mount::inode_space($m->[2], $m->[0]);
 		if ($isp[1] < $_[0]->{'inode'}) {
 			return { 'up' => 0,
+				 'value' => $isp[1],
 				 'desc' => &text('space_ierr', $isp[1]) };
 			}
 		}
 
 	return { 'up' => 1,
+		 'value' => $sp[1]*1024,
+		 'nice_value' => &nice_size($sp[1]*1024),
 		 'desc' => &text('space_desc', &nice_size($sp[1]*1024)) };
 	}
 else {

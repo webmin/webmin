@@ -7,19 +7,22 @@ local %change;
 &read_file("$module_config_directory/change", \%change);
 local $t = $change{$_[0]->{'file'}};
 local @st = stat($_[0]->{'file'});
-local $rv;
+local $up;
 if ($t && $st[9] != $t) {
-	$rv = { 'up' => 0 };
+	$up = 0;
 	}
 elsif (!$t) {
-	$rv = { 'up' => -1 };
+	$up = -1;
 	}
 else {
-	$rv = { 'up' => 1 };
+	$up = 1;
 	}
 $change{$_[0]->{'file'}} = $st[9];
 &write_file("$module_config_directory/change", \%change);
-return $rv;
+return { 'up' => $up,
+	 'value' => $st[9],
+	 'nice_value' => &make_date($st[9]),
+       };
 }
 
 sub show_change_dialog

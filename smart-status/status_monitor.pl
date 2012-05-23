@@ -48,18 +48,21 @@ elsif (!$st->{'check'}) {
 elsif ($st->{'errors'} && $_[1]->{'errors'} == 1) {
 	# Errors found, and failing on any errors
 	return { 'up' => 0,
+		 'value' => $st->{'errors'},
 		 'desc' => &text('monitor_errorsfound', $st->{'errors'}) };
 	}
 elsif ($st->{'errors'} && $_[1]->{'errors'} == 2 &&
        $st->{'errors'} > $lasterrors{$_[1]->{'drive'}}) {
 	# Errors found and have increased
 	return { 'up' => 0,
+		 'value' => $st->{'errors'},
 		 'desc' => &text('monitor_errorsinced', $st->{'errors'},
 				 $lasterrors{$_[1]->{'drive'}}) };
 	}
 else {
 	# All OK!
-	return { 'up' => 1 };
+	return { 'up' => 1,
+		 'value' => $st->{'errors'} };
 	}
 }
 

@@ -9,13 +9,16 @@ return { 'up' => 1 } if (!$sens);
 if ($_[0]->{'mode'} == 0) {
 	return $sens->{'alarm'} ? { 'up' => 0 } : { 'up' => 1 };
 	}
-elsif ($_[0]->{'mode'} == 1) {
-	return $sens->{'value'} < $_[0]->{'min'} ? { 'up' => 0 }
-						 : { 'up' => 1 };
-	}
-elsif ($_[0]->{'mode'} == 2) {
-	return $sens->{'value'} > $_[0]->{'max'} ? { 'up' => 0 }
-						 : { 'up' => 1 };
+else {
+	local $up;
+	if ($_[0]->{'mode'} == 1) {
+		$up = $sens->{'value'} < $_[0]->{'min'} ? 0 : 1;
+		}
+	elsif ($_[0]->{'mode'} == 2) {
+		$up = $sens->{'value'} > $_[0]->{'max'} ? 0 : 1;
+		}
+	return { 'up' => $up,
+		 'value' => $sens->{'value'} };
 	}
 }
 

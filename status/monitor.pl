@@ -92,6 +92,8 @@ foreach $serv (@services) {
 	# Check for a status change or failure on each monitored host,
 	# and perform the appropriate action
 	$newstats = { };
+	$newvalues = { };
+	$newvalues_nice = { };
 	foreach $r (@remotes) {
 		# Work out the hostname
 		local $host = $r eq "*" ? $thishost : $r;
@@ -191,6 +193,8 @@ foreach $serv (@services) {
 				}
 			}
 		$newstats->{$r} = $up;
+		$newvalues->{$r} = $stat->{'value'};
+		$newvalues_nice->{$r} = $stat->{'nice_value'};
 
 		if ($serv->{'email'} && $thisemail) {
 			# If this service has an extra email address specified,
@@ -225,9 +229,13 @@ foreach $serv (@services) {
 		}
 
 	# Log the status
-	$newstatus = join(" ", map { "$_=$newstats->{$_}" } @remotes);
+	$newstatus_str = join(" ", map { "$_=$newstats->{$_}" } @remotes);
+	$newvalues_str = join("/", map { "$_=$newvalues->{$_}" } @remotes);
+	$newvalues_nice_str = join("/", map { "$_=$newvalues_nice->{$_}" } @remotes);
 	%history = ( 'time' => $nowunix,
-		     'new' => $newstatus,
+		     'new' => $newstatus_str,
+		     'value' => $newvalues_str,
+		     'nice_value' => $newvalues_nice_str,
 		     'by' => $by );
 	if (defined($oldstatus{$serv->{'id'}})) {
 		$history{'old'} = $oldstatus{$serv->{'id'}};
@@ -235,7 +243,7 @@ foreach $serv (@services) {
 	&add_history($serv, \%history);
 
 	# Update old status hash
-	$oldstatus{$serv->{'id'}} = $newstatus;
+	$oldstatus{$serv->{'id'}} = $newstatus_str;
 	}
 
 # Close oldstatus and fails files

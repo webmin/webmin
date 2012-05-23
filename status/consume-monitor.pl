@@ -24,6 +24,8 @@ if ($m) {
 				'desc' => &text('consume_high',
 						&nice_size($diff*1024)) };
 			}
+		$rv->{'value'} = $diff*1024;
+		$rv->{'nice_value'} = &nice_size($diff*1024);
 		}
 	$consume{$_[0]->{'fs'}} = "$sp[1] $now";
 	&write_file("$module_config_directory/consume", \%consume);

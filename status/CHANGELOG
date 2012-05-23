@@ -79,3 +79,4 @@ Enhanced the free memory monitor to be able to check virtual memory as well.
 Update the SSL certificate monitor to check alternate names as well when looking for hostname mismatches.
 ---- Changes since 1.590 ----
 Commands run when a monitor goes up or down can now access details of the monitor via environment variables starting with STATUS_
+A history of the status of each monitor's scheduled checks is now logged for 30 days, and can be viewed on the Edit Monitor page. This also includes the value associated with the monitor (such as free disk space), if any.

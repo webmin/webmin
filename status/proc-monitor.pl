@@ -16,19 +16,20 @@ foreach $p (&foreign_call("proc", "list_processes")) {
 local $thresh = $_[0]->{'thresh'} || 1;
 if ($_[0]->{'not'}) {
 	if ($count >= $thresh) {
-		return { 'up' => 0 };
+		return { 'up' => 0, 'value' => $count };
 		}
 	else {
-		return { 'up' => 1 };
+		return { 'up' => 1, 'value' => $count };
 		}
 	}
 else {
 	if ($count >= $thresh) {
-		return { 'up' => 1, 'desc' => &text('proc_pid',
-						    join(" ", @found)) };
+		return { 'up' => 1,
+			 'desc' => &text('proc_pid', join(" ", @found)),
+			 'value' => $count };
 		}
 	else {
-		return { 'up' => 0 };
+		return { 'up' => 0, 'value' => $count };
 		}
 	}
 }

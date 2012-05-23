@@ -8,11 +8,13 @@ if (!@u) {
 	return { 'up' => -1 }
 	}
 elsif ($u[$_[0]->{'time'}] >= $_[0]->{'max'}) {
-	return { 'up' => 0 }
+	return { 'up' => 0,
+		 'value' => $u[$_[0]->{'time'}] };
 	}
 else {
 	return { 'up' => 1,
-		 'desc' => "Load is $u[$_[0]->{'time'}]" };
+		 'desc' => "Load is $u[$_[0]->{'time'}]",
+		 'value' => $u[$_[0]->{'time'}] };
 	}
 }
 

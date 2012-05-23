@@ -11,11 +11,15 @@ if (!@st) {
 	}
 elsif ($st[9] < time()-$_[0]->{'diff'}) {
 	# File hasn't been changed lately
-	return { 'up' => 0 };
+	return { 'up' => 0,
+		 'value' => $st[9],
+		 'nice_value' => &make_date($st[9]) };
 	}
 else {
 	# File has been changed lately
-	return { 'up' => 1 };
+	return { 'up' => 1,
+		 'value' => $st[9],
+		 'nice_value' => &make_date($st[9]) };
 	}
 }
 

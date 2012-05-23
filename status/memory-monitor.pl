@@ -12,10 +12,14 @@ if ($@) {
 	}
 elsif ($mem[1] < $_[0]->{'min'}) {
 	return { 'up' => 0,
+		 'value' => $mem[1]*1024,
+		 'nice_value' => &nice_size($mem[1]*1024),
 		 'desc' => &text('memory_freelow', &nice_size($mem[1]*1024)) };
 	}
 elsif ($mem[2] && $mem[3] < $_[0]->{'minswap'}) {
 	return { 'up' => 0,
+		 'value' => $mem[3]*1024,
+		 'nice_value' => &nice_size($mem[3]*1024),
 		 'desc' => &text('memory_freelowswap',
 				 &nice_size($mem[3]*1024)) };
 	}
@@ -25,6 +29,8 @@ else {
 		push(@desc, &text('memory_freeswap', &nice_size($mem[2]*1024)));
 		}
 	return { 'up' => 1,
+		 'value' => $mem[1]*1024,
+		 'nice_value' => &nice_size($mem[1]*1024),
 		 'desc' => join(", ", @desc) };
 	}
 }

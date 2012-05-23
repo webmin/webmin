@@ -251,6 +251,8 @@ if (!$in{'type'}) {
 if (@history) {
 	print &ui_hidden_table_start($text{'mon_header4'}, "width=100%", 2,
 		"history", defined($in{'all'}) || defined($in{'changes'}));
+
+	# Build links to switch to changes-only mode or show all history
 	@links = ( );
 	if ($in{'changes'}) {
 		push(@links, "<a href='edit_mon.cgi?id=$in{'id'}&changes=0&".
@@ -267,10 +269,26 @@ if (@history) {
 	if ($in{'changes'}) {
 		@history = grep { $_->{'old'} ne $_->{'new'} } @history;
 		}
+
+	# Check if any history events have a value
+	$anyvalue = 0;
+	foreach $h (@history) {
+		foreach my $hv (split(/\//, $h->{'value'})) {
+			my ($vhost, $v) = split(/=/, $hv, 2);
+			if ($v ne '') {
+				$anyvalue++;
+				last;
+				}
+			}
+		}
+
+	# Show history table
 	$links = &ui_links_row(\@links);
-	$table = &ui_columns_start([ $text{'mon_hwhen'},
-				     $text{'mon_hold'},
-				     $text{'mon_hnew'} ]);
+	$table = &ui_columns_start([
+		$text{'mon_hwhen'},
+		$text{'mon_hold'},
+		$text{'mon_hnew'},
+		$anyvalue ? ( $text{'mon_hvalue'} ) : ( ) ]);
 	foreach $h (reverse(@history)) {
 		my @cols = ( &make_date($h->{'time'}) );
 		foreach my $s ($h->{'old'}, $h->{'new'}) {
@@ -289,7 +307,17 @@ if (@history) {
 				}
 			push(@cols, join(" ", @ups));
 			}
-		push(@cols, $h->{'value_show'} || $h->{'value'});
+		if ($anyvalue) {
+			my @vlist;
+			my @values = split(/\//, $h->{'value'});
+			my @nice_values = split(/\//, $h->{'nice_value'});
+			for(my $i=0; $i<@values; $i++) {
+				my ($vhost, $v) = split(/=/, $values[$i], 2);
+				my ($_, $nv) = split(/=/, $nice_values[$i], 2);
+				push(@vlist, $nv || $v);
+				}
+			push(@cols, join(" ", @vlist));
+			}
 		$table .= &ui_columns_row(\@cols);
 		}
 	$table .= &ui_columns_end();

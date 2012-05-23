@@ -11,6 +11,8 @@ else {
 	@files = ( $_[0]->{'file'} );
 	}
 my $allup = 1;
+my @allfiles;
+my @allsizes;
 foreach my $f (@files) {
 	local @st = stat($f);
 	local $size;
@@ -33,6 +35,7 @@ foreach my $f (@files) {
 		$allup = 0;
 		push(@allfiles, $f);
 		}
+	push(@allsizes, $size) if (defined($size));
 	}
 my $desc;
 if (@files > 1 && @allfiles) {
@@ -44,8 +47,13 @@ if (@files > 1 && @allfiles) {
 		$desc = &text('file_elarge', $desc);
 		}
 	}
-return { 'up' => $up,
-	 'desc' => $desc };
+my $rv = { 'up' => $up,
+	   'desc' => $desc };
+if (@allsizes == 1) {
+	$rv->{'value'} = $allsizes[0];
+	$rv->{'nice_value'} = &nice_size($allsizes[0]);
+	}
+return $rv;
 }
 
 sub show_file_dialog

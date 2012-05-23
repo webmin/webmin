@@ -19,10 +19,12 @@ elsif ($m eq "postfix") {
 	}
 if (@qfiles > $_[0]->{'size'}) {
 	return { 'up' => 0,
+		 'value' => scalar(@qfiles),
 		 'desc' => "<font color=#ff0000>".&text('mailq_toomany', scalar(@qfiles))."</font>" };
 	}
 else {
 	return { 'up' => 1,
+		 'value' => scalar(@qfiles),
 		 'desc' => &text('mailq_ok', scalar(@qfiles)) };
 	}
 }
