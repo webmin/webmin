@@ -53,6 +53,14 @@ untie(*STDIN);
 untie(*STDOUT);
 
 # Accept the TCP connection
+local $rmask;
+vec($rmask, fileno(MAIN), 1) = 1;
+$sel = select($rmask, undef, undef, 60);
+if ($sel <= 0) {
+	print STDERR "fastrpc: accept timed out\n"
+		if ($gconfig{'rpcdebug'});
+	exit;
+	}
 $acptaddr = accept(SOCK, MAIN);
 die "accept failed : $!" if (!$acptaddr);
 $oldsel = select(SOCK);
