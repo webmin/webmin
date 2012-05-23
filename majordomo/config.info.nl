@@ -1,6 +1,6 @@
 line1=Configureerbare opties,11
 dynamic=Gebruik wisselend nummer voor alias lijst?,1,1-Ja,0-Nee
-sort_mode=Sorteer mail lijst op,1,1-Naam,0-Gemaakte volgorde
+sort_mode=Sorteer email lijst op,1,1-Naam,0-Gemaakte volgorde
 perms=Permissies voor de majordomo files,1,1-Gebruiker beschrijfbaar,0-Gebruiker en groep beschrijfbaar
 line2=Systeem configuratie,11
 majordomo_cf=Volledig pad naar de majordomo config file,0
