@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 # Display the contents of a table file
 
 require './shorewall6-lib.pl';

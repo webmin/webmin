@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 # check.cgi
 # Check if the firewall is valid
 

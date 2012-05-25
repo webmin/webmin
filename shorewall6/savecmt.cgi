@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 # Updated, modify or delete a comment
 
 require './shorewall6-lib.pl';

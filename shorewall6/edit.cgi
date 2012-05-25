@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 # edit.cgi
 # Display a form for editing or creating a table entry
 

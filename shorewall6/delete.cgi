@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 # Delete a bunch of table rows
 
 require './shorewall6-lib.pl';

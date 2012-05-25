@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 # save.cgi
 # Updated, modify or delete a table entry
 
