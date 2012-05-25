@@ -1,0 +1,7 @@
+config_dir=Directori de configuració de Shorewall6,0
+shorewall6=Camí de l'ordre shorewall6,0
+actions=Fitxers d'accions estàndards,9,40,5,\t
+macros=Directori de fitxers de macros,0
+before_apply_cmd=Ordre a executar abans d'aplicar la configuració,3,Cap
+after_apply_cmd=Ordre a executar deprés d'aplicar la configuració,3,Cap
+display_zone_descriptions=Mostra les descripcions de zona al fitxer de regles,1,0-No,1-Sí
