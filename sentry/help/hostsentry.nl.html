@@ -1,0 +1,40 @@
+<header>Hostsentry Configuratie</header>
+
+Hostsentry is een host-gebaseerd binnendringend detectie programma die afwijkende
+login detecteert. Dit betekent dat hij gebruikers die inloggen en uitloggen
+op uw server in de gaten houd en van verdacht gedrag een log maakt, zoals u
+kunt definiëren met de gekozen opties op deze pagina. <p>
+
+De beschikbare opties zijn :
+<ul>
+<li><b>Login opname file</b><br>
+    De file op uw systeem waar inloggen en uitloggen word weggeschreven. Normaal
+    gesproken moet u deze optie niet veranderen. <p>
+
+<li><b>Gebruikers negeren om te inloggen bij</b><br>
+    Iedere gebruiker die in dit veld staan zullen niet in de gaten gehouden
+    door Hostsentry. <p>
+
+<li><b>Hostsentry modules in werkende volgorde</b><br>
+    Hostsentry heeft een modulair ontwerp, waarin iedere module een specifieke
+    soort login detecteert. In deze sectie kunt u kiezen welke modules worden
+    gebruikt, en de volgorde waarin zijn het proces van inloggen en uitloggen
+    afwerken. <p>
+
+<li><b>Hosts die geen buitenstaander zijn</b><br>
+    Indien de 'Detecteer login van buitenstaand domein' module is aangezet,
+    zullen alle hosts behalve die in dit veld staan worden beschouwd als 
+    buitenstaander en dus onderwerp worden om te rapporteren. <p>
+
+<li><b>Hosts waarvan meerdere inloggen komen vertrouwen</b><br>
+    Indien de 'Detecteer meerdere gelijktijdige login's module is aangezet, zullen
+    twee of meer login's van dezelfde gebruiker op hetzelfde moment van een host
+    die niet in deze lijst staat worden gerapporteerd. <p>
+</ul>
+
+Aan de onderkant van deze pagina bevind zich een knop voor het starten van
+Hostsentry (indien deze uitstaat) of om te stoppen (indien hij aan het werk is)
+Omdat Hostsentry werkt als een achtergrond proces (of Deamon) zal hij niet het
+inloggen of uitloggen monitoren zodra hij uitstaat. <p>
+
+<hr>

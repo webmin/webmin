@@ -1,0 +1,55 @@
+<header>Portsentry Configuratie</header>
+
+
+Portsentry is een programma dat ontworpen is om real time een poort scan
+te detecteren en hierop te reageren. Hij kan dit op 2 manieren doen -
+door te luisteren op een aantal geselecteerde poorten (basis mode), of
+door op alle poorten te luisteren onder een gekozen getal. Wanneer een
+verbinding op 1 van de poorten word gedetecteerd zal Portsentry het
+gebeuren opslaan in een log en kan optioneel actie ondernemen door bijv.
+al het verkeer van de verbonden host te blokkeren. <p>
+
+The opties op deze pagina zijn :
+<ul>
+<li><b>TCP poorten om te monitoren</b><br>
+    Wanneer er in de basis mode word gewerkt zal Portsentry luisteren op
+    alle TCP poorten die in de lijst staan op de eerste regel van deze optie
+    In geavanceerde mode, zal hij luisteren op alle poorten onder het getal
+    wat ingevuld word op de tweede regel, met uitzondering van de poorten
+    die in de lijst staan van het 'behalve' veld. <p>
+    
+<li><b>UDP poorten om te monitoren</b><br>
+    Net zoals de TCP poorten optie, echter dan voor UDP poorten. <p>
+
+<li><b>Blokkeer TCP probes</b><br>
+    Deze optie bepaald welke actie Portsentry onderneemt wanneer het een
+    TCP verbinding detecteert naar 1 van de poorten die gemonitord worden.
+    De keuzes zijn Ja (blokkeer toekomstige verbindingen van deze ), Nee 
+    (doe niets), of Kill opdracht uitvoeren (Een opdracht uitvoeren die 
+    gespecificeerd is in de config file). In alle gevallen zal de verbinding
+    worden weggeschreven in het systeem log. <p>
+
+<li><b>Blokkeer UDP probes</b><br>
+    Net zoals bij het Blokkeren van de TCP probes optie, echter dan voor UDP poorten. <p>
+
+<li><b>Berichten voor geblokkeerde verbindingen</b><br>
+    Wanneer Portsentry luistert op een poort, zal iedere verbinding een
+    bericht ontvangen voordat de verbinding word afgesloten. <p>
+
+<li><b>Aantal verbindingen voordat blokkeren word getriggerd</b><br>
+    Het aantal 'toegestane' verbindingen die een host mag maken naar een
+    poort die gemonitord word voordat de host word geblokkeerd. Indien dit op nul
+    staat zal direct de eerste verbinding geblokkeerd worden. <p>
+
+<li><b>Hosts om verkeer van te negeren</b><br>
+    De IP adressen, hostnamen of IP adres/netmask of hosts en netwerken
+    vanwaar verkeer word genegeerd. <p>
+
+</ul>
+
+Aan de onderkant van de pagina bevind zich een knop voor het starten van
+Portsentry (indien hij uitstaat), of om hem te stoppen (indien hij aan het werk is).
+Omdat Portsentry op de achtergrond werkt als een aantal achtergrond processen
+(of deamon), zal hij geen poorten scannen als hij uitstaat. <p>
+
+<hr>
