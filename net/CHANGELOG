@@ -62,3 +62,5 @@ The speed, link status and duplex of active ethernet interfaces is now shown on 
 On Debian, Ubuntu, Redhat, CentOS and Fedora systems boot-time network interfaces with no IP address can now be created. You can also create network bridges that are connected to ethernet interfaces with no address, for use by virtual machines such as KVM.
 ---- Changes since 1.570 ----
 If Postfix is installed when the hostname is changed, the mydestination (local hostname) configuration parameter is updated too.
+---- Changes since 1.580 ----
+Allowed the MTU to be set at boot time on Debian Linux, and fixed bugs editing VLANs, thanks to a patch from Caspar Smit.
