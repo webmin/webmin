@@ -109,7 +109,7 @@ else {
 
 	if (!$access{'broadcast'}) {
 		# Compute broadcast
-		$a->{'netmask'} = $in{'new'} ?
+		$a->{'broadcast'} = $in{'new'} ?
 			&compute_broadcast($a->{'address'}, $a->{'netmask'}) :
 			$olda->{'broadcast'};
 		}
