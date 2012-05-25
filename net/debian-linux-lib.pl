@@ -173,6 +173,9 @@ elsif ($cfg->{'address'}) {
 					($ip4 & int($nm4))&0xff;
 		push(@options, ['network', $network]);
 		}
+	if ($cfg->{'mtu'}) {
+		push(@options, ['mtu', $cfg->{'mtu'}]);
+		}
 	}
 else {
 	$method = 'manual';
@@ -206,14 +209,14 @@ elsif ($cfg->{'bond'} == 1) {
 	}
 
 # Set specific lines for vlan tagging
-if(($cfg->{'vlan'} == 1) && ($gconfig{'os_version'} >= 5)) {
-	push(@options, ['vlan_raw_device '.$cfg->{'physical'}]);
-	}
-elsif($cfg->{'vlan'} == 1){
+if(($cfg->{'vlan'} == 1) && ($gconfig{'os_version'} < 5)) {
 	push(@options, ['pre-up', 'vconfig add '.$cfg->{'physical'}.' '.
 				  $cfg->{'vlanid'}]);
 	push(@options, ['post-down', 'vconfig rem '.$cfg->{'physical'}.' '.
 				     $cfg->{'vlanid'}]);
+	}
+if(($cfg->{'vlan'} == 1) && ($cfg->{'mtu'})) {
+	push(@options, ['pre-up', '/sbin/ifconfig '.$cfg->{'physical'}.' mtu '.$cfg->{'mtu'}]);
 	}
 
 # Find the existing interface section
@@ -254,10 +257,7 @@ if (!$found) {
 		&new_interface_def($cfg->{'fullname'},
 				   'inet', $method, \@options);
 		}
-	if ($cfg->{'bond'} == 1 && $gconfig{'os_version'} >= 5) {
-		# Not sure why nothing needs to be done here?
-		}
-	elsif ($cfg->{'bond'} == 1) {
+	if ($cfg->{'bond'} == 1 && $gconfig{'os_version'} < 5) {
 		&new_module_def($cfg->{'fullname'}, $cfg->{'mode'},
 			        $cfg->{'miimon'}, $cfg->{'downdelay'},
 			        $cfg->{'updelay'});
@@ -273,10 +273,7 @@ else {
 		&modify_interface_def($cfg->{'fullname'},
 				      'inet', $method, \@options, 0);
 		}
-	if ($cfg->{'bond'} == 1 && $gconfig{'os_version'} >= 5) {
-		# Not sure why nothing needs to be done here?
-		}
-        elsif ($cfg->{'bond'} == 1) {
+	if ($cfg->{'bond'} == 1 && $gconfig{'os_version'} < 5) {
 		&modify_module_def($cfg->{'fullname'}, 0, $cfg->{'mode'},
 				   $cfg->{'miimon'}, $cfg->{'downdelay'},
 				   $cfg->{'updelay'});
@@ -491,7 +488,7 @@ if ($gconfig{'os_version'} >= 3 || scalar(@autos)) {
 # Can some boot-time interface parameter be edited?
 sub can_edit
 {
-return $_[0] ne "mtu";
+return $_[0];
 }
 
 # valid_boot_address(address)

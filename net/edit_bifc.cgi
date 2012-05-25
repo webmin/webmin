@@ -253,7 +253,7 @@ if(($in{'vlan'}) or (&iface_type($b->{'name'}) =~ /^(.*) (VLAN)$/)) {
 	$vlanid = $2;
 
 	# Phyical device
-	@phys = grep { $_->{'virtual'} eq '' } &active_interfaces();
+	@phys = grep { (($_->{'virtual'} eq '') && ($_->{'vlanid'} eq '')) } &active_interfaces(1);
 	print &ui_table_row($text{'vlan_physical'},
 		$in{'new'} ? &ui_select("physical", $physical,
 					[ map { $_->{'fullname'} } @phys ])

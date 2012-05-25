@@ -22,6 +22,7 @@ foreach $l (@lines) {
 	$l =~ /^([^:\s]+)/; $ifc{'name'} = $1;
 	$l =~ /^(\S+)/; $ifc{'fullname'} = $1;
 	if ($l =~ /^(\S+):(\d+)/) { $ifc{'virtual'} = $2; }
+	if ($l =~ /^(\S+)\.(\d+)/) { $ifc{'vlanid'} = $2; }
 	if ($l =~ /inet addr:(\S+)/) { $ifc{'address'} = $1; }
 	elsif (!$empty) { next; }
 	if ($l =~ /Mask:(\S+)/) { $ifc{'netmask'} = $1; }
