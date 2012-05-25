@@ -1,0 +1,10 @@
+desc=Shorewall6 Firewall
+category=net
+os_support=*-linux
+depends=syslog
+longdesc=Lets you edit the most useful tables of the Shorewall6 Firewall
+desc_ca=Tallafocs Shorewall6
+desc_es=Cortafuegos Shorewall6
+desc_cz=Shorewall Firewall6
+desc_nl=Shorewall Firewall6
+desc_cz.UTF-8=Shorewall Firewall6

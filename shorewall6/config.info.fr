@@ -1,0 +1,7 @@
+config_dir=R&#233;pertoire de configuration de Shorewall6,0
+shorewall6=Chemin vers la commande shorewall6,0
+actions=Fichiers standards des actions,9,40,5,\t
+macros=R&#233;pertoire des fichiers macro,0
+before_apply_cmd=Commande &#224; ex&#233;cuter avant d'appliquer la configuration,3,Aucune
+after_apply_cmd=Commande &#224; ex&#233;cuter apr&#232;s avoir appliqu&#233; la configuration,3,Aucune
+display_zone_descriptions=Afficher les descriptions des zones dans le fichier des r&#232;gles ?,1,0-Non,1-Oui
