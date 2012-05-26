@@ -1159,8 +1159,9 @@ else {
 # under this OS
 sub generate_options
 {
-if ($_[0] ne "swap" && $_[0] ne "auto" &&
-    $_[0] ne "autofs" && $_[0] ne $smbfs_fs && $_[0] ne "cifs") {
+local ($type, $newmount) = @_;
+if ($type ne "swap" && $type ne "auto" &&
+    $type ne "autofs" && $type ne $smbfs_fs && $type ne "cifs") {
 	# Lots of options are common to all linux filesystems
 	print &ui_table_span("<b>$text{'edit_comm_opt'}</b>");
 
@@ -1192,8 +1193,8 @@ if ($_[0] ne "swap" && $_[0] ne "auto" &&
 		&ui_yesno_radio("lnx_noatime", defined($options{"noatime"})));
 	}
 	
-if ($_[0] =~ /^ext\d+$/) {
-	# Ext2 has lots more options..
+if ($type =~ /^ext\d+$/) {
+	# Ext2+ has lots more options..
 	print &ui_table_span("<b>$text{'edit_ext__opt'}</b>");
 
 	if ($no_mount_check) {
@@ -1268,61 +1269,33 @@ elsif ($type eq "nfs" || $type eq "nfs4") {
 
 	local $proto = defined($options{"udp"}) ? "udp" :
 		       defined($options{"tcp"}) ? "tcp" : "";
-	print "<td>", &hlink("<b>$text{'linux_transfert'}</b>", "linux_transfert"), "</td>\n";
-	print "<td nowrap><select name=nfs_transfert>\n";
-	printf "<option value='' %s>Default</option>\n",
-		$proto eq "" ? "selected" : "";
-	printf "<option value=tcp %s>TCP</option>\n",
-		$proto eq "tcp" ? "selected" : "";
-	printf "<option value=udp %s %s>UDP</option>\n",
-	        $proto eq "udp" ? "selected" : "", ($_[0] eq "nfs4") ? "disabled" : "";
-	print "</select></td> </tr>\n";
+	print &ui_table_row(&hlink($text{'linux_transfert'}, "linux_transfert"),
+		&ui_select("nfs_transfert", $proto,
+			   [ [ '', $text{'default'} ],
+			     [ 'tcp', 'TCP' ],
+			     [ 'udp', 'UDP' ] ]));
 
-	print "<tr> <td>", &hlink("<b>$text{'linux_rsize'}</b>", "linux_rsize"), "</td>\n";
-	printf "<td nowrap><input type=radio name=nfs_rsize_def value=1 %s> $text{'default'}\n",
-		defined($options{"rsize"}) ? "" : "checked";
-	printf "<input type=radio name=nfs_rsize_def value=0 %s>\n",
-		defined($options{"rsize"}) ? "checked" : "";
-	printf "<input size=5 name=nfs_rsize value=$options{rsize}></td>\n";
+	print &ui_table_row(&hlink($text{'linux_rsize'}, "linux_rsize"),
+		&ui_opt_textbox("nfs_rsize", $options{"rsize"}, 6,
+				$text{'default'}));
 
-	print "<td>", &hlink("<b>$text{'linux_wsize'}</b>", "linux_wsize"), "</td>\n";
-	printf "<td nowrap><input type=radio name=nfs_wsize_def value=1 %s> $text{'default'}\n",
-		defined($options{"wsize"}) ? "" : "checked";
-	printf "<input type=radio name=nfs_wsize_def value=0 %s>\n",
-		defined($options{"wsize"}) ? "checked" : "";
-	print "<input size=5 name=nfs_wsize value=$options{wsize}></td> </tr>\n";
-	print "<tr> <td>", &hlink("<b>$text{'linux_auth'}</b>", "linux_auth"), "</td>\n";
-	printf "<td nowrap colspan=2><input type=radio name=nfs_auth value=0 %s onclick=enable_sec(0)> sys\n",
-		!defined($options{"sec"}) ? "checked" : "";
-	printf "<input type=radio name=nfs_auth value=1 %s onclick=enable_sec(1)> krb5\n",
-		($options{"sec"} =~ /krb5/) ? "checked" : "";
-	printf "<input type=radio name=nfs_auth value=2 %s disabled> lipkey\n",
-		($options{"sec"} =~ /lipkey/) ? "checked" : "";
-	printf "<input type=radio name=nfs_auth value=3 %s disabled> spkm-3</td></tr>\n",
-		($options{"sec"} =~ /spkm/) ? "checked" : "";
+	print &ui_table_row(&hlink($text{'linux_wsize'}, "linux_wsize"),
+		&ui_opt_textbox("nfs_wsize", $options{"wsize"}, 6,
+				$text{'default'}));
 
-	print "<tr> <td>", &hlink("<b>$text{'linux_sec'}</b>", "linux_sec"), "</td>\n";
-	printf "<td nowrap colspan=2><input type=radio name=nfs_sec value=0 %s> $text{'config_none'}\n",
-		(!defined($options{"sec"}) || ($options{"sec"} !~ /[ip]$/)) ? "checked" : "";
-	printf "<input type=radio name=nfs_sec value=1 %s> $text{'linux_integrity'}\n",
-		($options{"sec"} =~ /i$/) ? "checked" : "";
-	printf "<input type=radio name=nfs_sec value=2 %s> $text{'linux_privacy'}</td></tr>\n",
-		($options{"sec"} =~ /p$/) ? "checked" : "";
-	
-	print "<script type=\"text/javascript\">\n";
-	print "function enable_sec(level) {\n";
-	print " if (level) {\n";
-	print "   document.forms[0].nfs_sec[1].disabled=0;\n";
-	print "   document.forms[0].nfs_sec[2].disabled=0;\n";
-	print "   } else {\n";
-	print "   document.forms[0].nfs_sec[1].disabled=1;\n";
-	print "   document.forms[0].nfs_sec[2].disabled=1;\n";
-	print "   document.forms[0].nfs_sec[0].checked=1;\n";
-	print " } }\n";
-	print "window.onload = function() {;\n";
-	printf "   enable_sec(%d);\n", !defined($options{"sec"}) ? 0 : 1;
-	print "   }\n";
-	print "</script>\n";
+	print &ui_table_row(&hlink($text{'linux_auth'}, "linux_auth"),
+		&ui_radio("nfs_auth", $options{"sec"} =~ /spkm/ ? 3 :
+				      $options{"sec"} =~ /lipkey/ ? 2 :
+				      $options{"sec"} =~ /krb5/ ? 1 : 0,
+			  [ [ 0, 'sys' ], [ 1, 'krb5' ],
+			    [ 2, 'lipkey' ], [ 3, 'spkm-3' ] ]));
+
+	print &ui_table_row(&hlink($text{'linux_sec'}, "linux_sec"),
+		&ui_radio("nfs_sec", $options{"sec"} =~ /i$/ ? 1 :
+				     $options{"sec"} =~ /p$/ ? 2 : 0,
+			  [ [ 0, $text{'config_none'} ],
+			    [ 1, $text{'linux_integrity'} ],
+			    [ 2, $text{'linux_privacy'} ] ]));
 	}
 elsif ($_[0] eq "fat" || $_[0] eq "vfat" || $_[0] eq "msdos" ||
        $_[0] eq "umsdos" || $_[0] eq "fatx"){
