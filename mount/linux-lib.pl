@@ -1244,8 +1244,8 @@ if ($type =~ /^ext\d+$/) {
 	}
 elsif ($type eq "nfs" || $type eq "nfs4") {
 	# Linux nfs has some more options...
-	print &ui_table_span($type eq 'nfs4' ? $text{'edit_nfs_opt'}
-					     : $text{'edit_nfs_opt4'});
+	print &ui_table_span($type eq 'nfs4' ? "<b>$text{'edit_nfs_opt'}</b>"
+					     : "<b>$text{'edit_nfs_opt4'}</b>");
 
 	print &ui_table_row(&hlink($text{'linux_port'}, "linux_port"),
 		&ui_opt_textbox("nfs_port", $options{"port"}, 6,
@@ -1297,69 +1297,51 @@ elsif ($type eq "nfs" || $type eq "nfs4") {
 			    [ 1, $text{'linux_integrity'} ],
 			    [ 2, $text{'linux_privacy'} ] ]));
 	}
-elsif ($_[0] eq "fat" || $_[0] eq "vfat" || $_[0] eq "msdos" ||
-       $_[0] eq "umsdos" || $_[0] eq "fatx"){
+elsif ($type eq "fat" || $type eq "vfat" || $type eq "msdos" ||
+       $type eq "umsdos" || $type eq "fatx"){
 	# All dos-based filesystems share some options
-        print "<tr $tb> <td colspan=4><b>$text{'edit_dos_opt'}</b></td> </tr>\n";
-	print "<tr> <td><b>$text{'linux_uid'}</b></td>\n";
-	printf "<td><input name=fat_uid size=8 value=\"%s\">\n",
-		defined($options{'uid'}) ? getpwuid($options{'uid'}) : "";
-	print &user_chooser_button("fat_uid", 0),"</td>\n";
+	print &ui_table_span("<b>$text{'edit_dos_opt'}</b>");
 
-	print "<td><b>$text{'linux_gid'}</b></td>\n";
-	printf "<td><input name=fat_gid size=8 value=\"%s\">\n",
-		defined($options{'gid'}) ? getgrgid($options{'gid'}) : "";
-	print &group_chooser_button("fat_gid", 0),"</td> </tr>\n";
+	print &ui_table_row($text{'linux_uid'},
+		&ui_user_textbox("fat_uid", defined($options{'uid'}) ?
+					      getpwuid($options{'uid'}) : ""));
 
-	print "<tr> <td><b>$text{'linux_rules'}</b></td>\n";
-	print "<td><select name=fat_check>\n";
-	printf "<option value=\"\" %s> $text{'default'}\n",
-		defined($options{"check"}) ? "" : "selected";
-	printf "<option value=r %s> $text{'linux_relaxed'}\n",
-		$options{"check"} =~ /^r/ ? "selected" : "";
-	printf "<option value=n %s> $text{'linux_normal'}\n",
-		$options{"check"} =~ /^n/ ? "selected" : "";
-	printf "<option value=s %s> $text{'linux_strict'}\n",
-		$options{"check"} =~ /^s/ ? "selected" : "";
-	print "</select></td>\n";
+	print &ui_table_row($text{'linux_gid'},
+		&ui_group_textbox("fat_gid", defined($options{'gid'}) ?
+					      getgrgid($options{'gid'}) : ""));
 
-	print "<td><b>$text{'linux_conv'}</b></td>\n";
-	print "<td><select name=fat_conv>\n";
-	printf "<option value=\"\" %s> $text{'linux_none'}\n",
-		$options{"conv"} =~ /^b/ || !defined($options{"conv"}) ?
-		"selected" : "";
-	printf "<option value=t %s> $text{'linux_allfiles'}\n",
-		$options{"conv"} =~ /^t/ ? "selected" : "";
-	printf "<option value=a %s> $text{'linux_textfiles'}\n",
-		$options{"conv"} =~ /^a/ ? "selected" : "";
-	print "</select></td> </tr>\n";
+	print &ui_table_row($text{'linux_rules'},
+		&ui_select("fat_check", substr($options{"check"}, 0, 1),
+			   [ [ '', $text{'default'} ],
+			     [ 'r', $text{'linux_relaxed'} ],
+			     [ 'n', $text{'linux_normal'} ],
+			     [ 's', $text{'linux_strict'} ] ]));
 
-	print "<tr> <td><b>$text{'linux_umask'}</b></td>\n";
-	printf "<td><input type=radio name=fat_umask_def value=1 %s> $text{'default'}\n",
-		defined($options{"umask"}) ? "" : "checked";
-	printf "<input type=radio name=fat_umask_def value=0 %s>\n",
-		defined($options{"umask"}) ? "checked" : "";
-	print "<input size=5 name=fat_umask value=\"$options{umask}\"></td>\n";
+	$conv = substr($options{"conv"}, 0, 1);
+	$conv = '' if ($conv eq 'b');
+	print &ui_table_row($text{'linux_conv'},
+		&ui_select("fat_conv", $conv,
+			   [ [ 'b', $text{'linux_none'} ],
+			     [ 't', $text{'linux_allfiles'} ],
+			     [ 'a', $text{'linux_textfiles'} ] ]));
 
-	print "<td><b>$text{'linux_quiet'}</b></td>\n";
-	printf "<td nowrap><input type=radio name=fat_quiet value=0 %s> $text{'yes'}\n",
-		defined($options{"quiet"}) ? "" : "checked";
-	printf "<input type=radio name=fat_quiet value=1 %s> $text{'no'}</td> </tr>\n",
-		defined($options{"quiet"}) ? "checked" : "";
+	print &ui_table_row($text{'linux_umask'},
+		&ui_opt_textbox("fat_umask", $options{"umask"}, 6,
+				$text{'default'}));
+
+	print &ui_table_row($text{'linux_quiet'},
+		&ui_yesno_radio("fat_quiet", defined($options{"quiet"}), 0, 1));
+
 
 	if ($_[0] eq "vfat") {
 		# vfat has some extra options beyond fat
-		print "<tr> <td><b>$text{'linux_uni_xlate'}</b></td>\n";
-		printf "<td><input type=radio name=fat_uni_xlate value=1 %s> $text{'yes'}\n",
-			defined($options{"uni_xlate"}) ? "checked" : "";
-		printf "<input type=radio name=fat_uni_xlate value=0 %s> $text{'no'}</td>\n",
-			defined($options{"uni_xlate"}) ? "" : "checked";
+		print &ui_table_row($text{'linux_uni_xlate'},
+			&ui_yesno_radio("fat_uni_xlate",
+					defined($options{"uni_xlate"})));
 
-		print "<td><b>$text{'linux_posix'}</b></td>\n";
-		printf "<td nowrap><input type=radio name=fat_posix value=1 %s> $text{'yes'}\n",
-			defined($options{"posix"}) ? "checked" : "";
-		printf "<input type=radio name=fat_posix value=0 %s> $text{'no'}</td> </tr>\n",
-			defined($options{"posix"}) ? "" : "checked";
+		print &ui_table_row($text{'linux_posix'},
+			&ui_yesno_radio("fat_posix",
+					defined($options{"posix"})));
 		}
 	}
 elsif ($_[0] eq "hpfs") {
@@ -1416,9 +1398,9 @@ elsif ($_[0] eq "iso9660") {
 	printf"<td><input size=10 name=iso9660_mode value=\"%s\"></td> </tr>\n",
 		defined($options{"mode"}) ? $options{"mode"} : "444";
 	}
-elsif ($_[0] eq "auto") {
+elsif ($type eq "auto") {
 	# Don't know how to set options for auto filesystems yet..
-	print "<tr> <td><i>$text{'linux_noopts'}</i></td> </tr>\n";
+	print &ui_table_span("<i>$text{'linux_noopts'}</i>");
 	}
 elsif ($_[0] eq "autofs") {
         print "<tr $tb> <td colspan=4><b>$text{'edit_autofs_opt'}</b></td> </tr>\n";
@@ -1440,7 +1422,7 @@ elsif ($_[0] eq "autofs") {
 	print &file_chooser_button("autofs_pid-file", 1);
 	print "</td> </tr>\n";
 	}
-elsif ($_[0] eq "swap") {
+elsif ($type eq "swap") {
 	# Swap has no options..
 	print &ui_table_row($text{'linux_swappri'},
 		&ui_opt_textbox("swap_pri", $options{'pri'}, 6,
