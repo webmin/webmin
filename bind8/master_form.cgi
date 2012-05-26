@@ -20,6 +20,17 @@ print &ui_table_row($text{'mcreate_type'},
 print &ui_table_row($text{'mcreate_dom'},
 	&ui_textbox("zone", undef, 40), 3);
 
+# Sign zones automatically
+if (&have_dnssec_tools_support()) {
+	print &ui_table_row($text{'mcreate_dnssec_tools_enable'},
+		&ui_yesno_radio("enable_dt", $config{'tmpl_dnssec_dt'} ? 1 : 0));
+
+	# Key algorithm
+	print &ui_table_row($text{'dt_zone_dne'},
+		&ui_select("dne", "NSEC",
+					   [ &list_dnssec_dne() ]));
+}
+
 $conf = &get_config();
 @views = &find("view", $conf);
 if (@views) {

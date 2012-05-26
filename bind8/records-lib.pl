@@ -882,5 +882,27 @@ else {
 	}
 }
 
+# get_dnskey_rrset(&zone, [&records])
+# Returns the DNSKEY recordset for some domain, or an empty array if none 
+sub get_dnskey_rrset
+{
+	local ($z, $recs) = @_;
+	local @rv = ();
+	if (!$recs) {
+		# Need to get zone file and thus records
+		my $fn = &get_zone_file($z);
+		$recs = [ &read_zone_file($fn, $dom) ];
+	}
+	# Find the record
+	local $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
+	foreach my $r (@$recs) {
+		if ($r->{'type'} eq 'DNSKEY' &&
+			$r->{'name'} eq $dom.'.') {
+				push(@rv, $r);
+		}
+	}
+	return @rv;
+}
+
 1;
 

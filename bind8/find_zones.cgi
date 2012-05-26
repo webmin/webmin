@@ -5,6 +5,13 @@
 require './bind8-lib.pl';
 &ReadParse();
 
+if (&have_dnssec_tools_support()) {
+	# Parse the rollrec file to determine zone status
+	&lock_file($config{"dnssectools_rollrec"});
+	rollrec_lock();
+	rollrec_read($config{"dnssectools_rollrec"});
+}
+
 @zones = &list_zone_names();
 foreach $z (@zones) {
 	$v = $z->{'name'};
@@ -26,8 +33,35 @@ foreach $z (@zones) {
 		}
 	push(@zicons, "images/$t.gif");
 	push(@ztypes, $text{"index_$t"});
+	if (&have_dnssec_tools_support()) {
+		my $rrr = rollrec_fullrec($v);
+		if ($rrr) {
+			if($rrr->{'kskphase'} > 0) {
+				if($rrr->{'kskphase'} == 6) {
+					push(@zstatus, $text{"dt_status_waitfords"});
+				} else {
+					push(@zstatus, $text{"dt_status_inKSKroll"});
+				}
+			} elsif($rrr->{'zskphase'} > 0) {
+				push(@zstatus, $text{"dt_status_inZSKroll"});
+			} else {
+				push(@zstatus, $text{"dt_status_signed"});
+			}
+		} else {
+			push(@zstatus, $text{"dt_status_unsigned"});
+		}
+	}
+
 	$len++;
 	}
+
+if (&have_dnssec_tools_support()) {
+	rollrec_close();
+	rollrec_unlock();
+	&unlock_file($config{"dnssectools_rollrec"});
+}
+
+
 if (@zlinks == 1) {
 	&redirect($zlinks[0]);
 	exit;
@@ -44,6 +78,7 @@ if ($len) {
 	@zicons = map { $zicons[$_] } @zorder;
 	@ztypes = map { $ztypes[$_] } @zorder;
 	@zdels = map { $zdels[$_] } @zorder;
+	@zstatus = map { $zstatus[$_] } @zorder;
 
 	if ($config{'show_list'}) {
 		# display as list
@@ -53,15 +88,31 @@ if ($len) {
 			   &select_invert_link("d", 0) );
 		print &ui_links_row(\@links);
 		@grid = ( );
+		if (&have_dnssec_tools_support()) {
 		push(@grid, &zones_table([ @zlinks[0 .. $mid-1] ],
 				      [ @ztitles[0 .. $mid-1] ],
 				      [ @ztypes[0 .. $mid-1] ],
-				      [ @zdels[0 .. $mid-1] ] ));
+									  [ @zdels[0 .. $mid-1] ],
+									  [ @zstatus[0 .. $mid-1] ] ));
+		} else {
+			push(@grid, &zones_table([ @zlinks[0 .. $mid-1] ],
+					  [ @ztitles[0 .. $mid-1] ],
+					  [ @ztypes[0 .. $mid-1] ],
+									  [ @zdels[0 .. $mid-1] ] ));
+		}
 		if ($mid < @zlinks) {
+			if (&have_dnssec_tools_support()) {
 			push(@grid, &zones_table([ @zlinks[$mid .. $#zlinks] ],
 					     [ @ztitles[$mid .. $#ztitles] ],
 					     [ @ztypes[$mid .. $#ztypes] ],
-					     [ @zdels[$mid .. $#zdels] ]));
+											 [ @zdels[$mid .. $#zdels] ],
+											 [ @status[$mid .. $#zstatus] ]));
+			} else {
+			push(@grid, &zones_table([ @zlinks[$mid .. $#zlinks] ],
+						 [ @ztitles[$mid .. $#ztitles] ],
+						 [ @ztypes[$mid .. $#ztypes] ],
+											 [ @zdels[$mid .. $#zdels] ] ));
+			}
 			}
 		print &ui_grid_table(\@grid, 2, 100,
 				     [ "width=50%", "width=50%" ]);

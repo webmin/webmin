@@ -132,3 +132,4 @@ Links for editing and deleting records now using the record name instead of an i
 When a zone is reloaded, it is now frozed first and then thawed afterwards with the rndc command, to better support dynamic DNS.
 ---- Changes since 1.580 ----
 The source IP and port for zone transfers can now be specific on the Addresses and Topology page.
+Added support for zone signing using the DNSSEC-Tools suite, thanks to a patch from Suresh Krishnaswamy.

@@ -163,6 +163,26 @@ if ($in{'onslave'} && $access{'remote'}) {
 		}
 	}
 
+# Automatically sign zone if required 
+if (&have_dnssec_tools_support() && $in{'enable_dt'}) {
+	my $err;
+	my $nsec3 = 0;
+	$zone = &get_zone_name($idx, $in{'view'});
+	#$zone = $in{'zone'}; 
+
+	if ($in{'dne'} eq "NSEC") {
+		$nsec3 = 0;
+	} elsif ($in{'dne'} eq "NSEC3") {
+		$nsec3 = 1;
+	} else {
+		&error($text{'dt_zone_edne'});
+	}
+
+	# Sign zone 
+	$err = &dt_sign_zone($zone, $nsec3);
+	&error($err) if ($err);
+}
+
 &redirect("edit_master.cgi?index=$idx&view=$in{'view'}");
 
 

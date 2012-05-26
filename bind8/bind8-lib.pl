@@ -3,6 +3,16 @@
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
+my $have_dnssec_tools = eval "require Net::DNS::SEC::Tools::dnssectools;";
+
+if ($have_dnssec_tools) {
+	eval "use Net::DNS::SEC::Tools::dnssectools;
+	      use Net::DNS::SEC::Tools::rollmgr;
+	      use Net::DNS::SEC::Tools::rollrec;
+	      use Net::DNS::SEC::Tools::keyrec;
+	      use Net::DNS;";
+	}
+
 &init_config();
 do 'records-lib.pl';
 @extra_forward = split(/\s+/, $config{'extra_forward'});
@@ -36,6 +46,25 @@ $dnssec_dlv_zone = "dlv.isc.org.";
 if ($gconfig{'os_type'} =~ /-linux$/ && -r "/dev/urandom") {
 	$rand_flag = "-r /dev/urandom";
 	}
+
+# have_dnssec_tools_support()
+# Returns 1 if dnssec-tools support is available
+sub have_dnssec_tools_support
+{
+	if ($have_dnssec_tools) {
+		# check that the location for the following essential parameters have been defined
+		# dnssectools_conf
+		# dnssectools_rollrec
+		# dnssectools_keydir
+		# dnssectools_rollmgr_pidfile
+		return undef if (!$config{'dnssectools_conf'} ||
+				 !$config{'dnssectools_rollrec'} ||
+				 !$config{'dnssectools_keydir'} ||
+				 !$config{'dnssectools_rollmgr_pidfile'});
+		return 1;
+	}
+	return undef;
+}
 
 # get_bind_version()
 # Returns the BIND verison number, or undef if unknown
@@ -1137,18 +1166,30 @@ if (!$access{'ro'}) {
 	}
 }
 
-# zones_table(&links, &titles, &types, &deletes)
+# zones_table(&links, &titles, &types, &deletes, &status)
 # Returns a table of zones, with checkboxes to delete
 sub zones_table
 {
 local($i);
 local @tds = ( "width=5" );
 local $rv;
+if (&have_dnssec_tools_support()) {
+$rv .= &ui_columns_start([ "", $text{'index_zone'}, $text{'index_type'}, $text{'index_status'} ],
+			100, 0, \@tds);
+} else {
 $rv .= &ui_columns_start([ "", $text{'index_zone'}, $text{'index_type'} ],
 			100, 0, \@tds);
+}
+
 for($i=0; $i<@{$_[0]}; $i++) {
-	local @cols = ( "<a href=\"$_[0]->[$i]\">$_[1]->[$i]</a>",
-			$_[2]->[$i] );
+	local @cols;
+	if (&have_dnssec_tools_support()) {
+		@cols = ( "<a href=\"$_[0]->[$i]\">$_[1]->[$i]</a>",
+			$_[2]->[$i], $_[4]->[$i]);
+	} else {
+		@cols = ( "<a href=\"$_[0]->[$i]\">$_[1]->[$i]</a>",
+			$_[2]->[$i]);
+	}
 	if (defined($_[3]->[$i])) {
 		$rv .= &ui_checked_columns_row(\@cols, \@tds, "d", $_[3]->[$i]);
 		}
@@ -3111,6 +3152,7 @@ for(my $i=$#recs; $i>=0; $i--) {
 	if ($recs[$i]->{'type'} eq 'NSEC' ||
 	    $recs[$i]->{'type'} eq 'NSEC3' ||
 	    $recs[$i]->{'type'} eq 'RRSIG' ||
+		$recs[$i]->{'type'} eq 'NSEC3PARAM' ||
 	    $recs[$i]->{'type'} eq 'DNSKEY') {
 		&delete_record($fn, $recs[$i]);
 		}
@@ -3181,11 +3223,55 @@ foreach my $r (@signedrecs) {
 return undef;
 }
 
+# check_if_dnssec_tools_managed(&domain)
+# Check if the given domain is managed by dnssec-tools
+# Return 1 if yes, undef if not
+sub check_if_dnssec_tools_managed
+{
+	local ($dom) = @_;
+	my $dt_managed;
+
+	if (&have_dnssec_tools_support()) {
+		my $rrr;
+
+		&lock_file($config{"dnssectools_rollrec"});
+		rollrec_lock();
+		rollrec_read($config{"dnssectools_rollrec"});
+		$rrr = rollrec_fullrec($dom);
+		if ($rrr) {
+			$dt_managed = 1;
+		}
+		rollrec_close();
+		rollrec_unlock();
+		&unlock_file($config{"dnssectools_rollrec"});
+	}
+
+	return $dt_managed;
+}
+
 # sign_dnssec_zone_if_key(&zone|&zone-name, &recs, [bump-soa])
 # If a zone has a DNSSEC key, sign it. Calls error if signing fails
 sub sign_dnssec_zone_if_key
 {
 local ($z, $recs, $bump) = @_;
+
+# Check if zones are managed by dnssec-tools
+local $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
+ 
+# If zone is managed through dnssec-tools use zonesigner for resigning the zone 
+if (&check_if_dnssec_tools_managed($dom)) {
+	# Do the signing
+	local $zonefile = &get_zone_file($z); 
+	local $krfile = "$zonefile".".krf";
+	local $err;
+
+	&lock_file(&make_chroot($zonefile));
+	$err = &dt_resign_zone($dom, $zonefile, $krfile, 0);
+	&unlock_file(&make_chroot($zonefile));
+	&error($err) if ($err);
+	return undef;
+}
+
 local $keyrec = &get_dnskey_record($z, $recs);
 if ($keyrec) {
 	local $err = &sign_dnssec_zone($z, $bump);
@@ -3348,6 +3434,421 @@ foreach my $ip (@$masters) {
 		}
 	}
 return \%rv;
+}
+
+sub get_dnssectools_config
+{ 
+	&lock_file($config{'dnssectools_conf'});
+	my $lref = &read_file_lines($config{'dnssectools_conf'}); 
+	my @rv; 
+	my $lnum = 0; 
+	foreach my $line (@$lref) {
+		my ($n, $v) = split(/\s+/, $line, 2); 
+		# Do basic sanity checking
+		$v =~ /(\S+)/;
+		$v = $1;
+		if ($n) {
+			push(@rv, { 'name' => $n, 'value' => $v, 'line' => $lnum });
+		} 
+		$lnum++;
+	} 
+	&flush_file_lines();
+	&unlock_file($config{'dnssectools_conf'});
+	return \@rv;
+}
+
+# save_dnssectools_directive(&config, name, value)
+# Save new dnssec-tools configuration values to the configuration file
+sub save_dnssectools_directive
+{
+	local $conf = $_[0];
+	local $nv = $_[1];
+
+	&lock_file($config{'dnssectools_conf'});
+	my $lref = &read_file_lines($config{'dnssectools_conf'});
+	
+	foreach my $n (keys %$nv) {
+		my $old = &find($n, $conf);
+		if ($old) {
+			$lref->[$old->{'line'}] = "$n $$nv{$n}";
+		}
+		else {
+		 	push(@$lref, "$n $$nv{$n}");
+		}
+	}
+
+	&flush_file_lines();
+	&unlock_file($config{'dnssectools_conf'});
+}
+
+# list_dnssec_dne()
+# return a list containing the two DNSSEC mechanisms used for
+# proving non-existance
+sub list_dnssec_dne
+{
+	return ("NSEC", "NSEC3");
+}
+
+# list_dnssec_dshash()
+# return a list containing the different DS record hash types 
+sub list_dnssec_dshash
+{
+	return ("SHA1", "SHA256"); 
+}
+
+# schedule_dnssec_cronjob()
+# schedule a cron job to handle periodic resign operations 
+sub schedule_dnssec_cronjob
+{
+	my $job;
+	my $period = $config{'dnssec_period'} || 21;
+
+	# Create or delete the cron job
+	$job = &get_dnssec_cron_job();
+	if (!$job) {
+		# Turn on cron job
+		$job = {'user' => 'root',
+			'active' => 1,
+			'command' => $dnssec_cron_cmd,
+			'mins' => int(rand()*60),
+			'hours' => int(rand()*24),
+			'days' => '*',
+			'months' => '*',
+			'weekdays' => '*' };
+
+		&lock_file(&cron::cron_file($job));
+		&cron::create_cron_job($job);
+		&unlock_file(&cron::cron_file($job));
+	}
+
+
+	&cron::create_wrapper($dnssec_cron_cmd, $module_name, "resign.pl");
+
+	&lock_file($module_config_file);
+	$config{'dnssec_period'} = $in{'period'};
+	&save_module_config();
+	&unlock_file($module_config_file);
+}
+
+# dt_sign_zone(zone, nsec3) 
+# Replaces a zone's file with one containing signed records.
+sub dt_sign_zone
+{
+	local ($zone, $nsec3) = @_;
+	local @recs;
+
+	local $z = &get_zone_file($zone);
+	local $d = $zone->{'name'};
+	local $z_chroot = &make_chroot($z);
+	local $k_chroot = $z_chroot.".krf";
+	local $usz = $z_chroot.".webmin-unsigned";
+	local $cmd;
+	local $out;
+
+	if ((($zonesigner=dt_cmdpath('zonesigner')) eq '')) {
+		return $text{'dt_zone_enocmd'};
+	}
+	if ($nsec3 == 1) {
+		$nsec3param = " -usensec3 -nsec3optout ";
+	} else {
+		$nsec3param = "";
+	}
+
+	&lock_file($z_chroot);
+
+	rollrec_lock();
+
+	# Remove DNSSEC records and save the unsigned zone file
+	@recs = &read_zone_file($z, $dom);
+	for(my $i=$#recs; $i>=0; $i--) {
+		if ($recs[$i]->{'type'} eq 'NSEC' ||
+			$recs[$i]->{'type'} eq 'NSEC3' ||
+			$recs[$i]->{'type'} eq 'NSEC3PARAM' ||
+			$recs[$i]->{'type'} eq 'RRSIG' ||
+			$recs[$i]->{'type'} eq 'DNSKEY') {
+				&delete_record($z, $recs[$i]);
+		}   
+	}
+	&copy_source_dest($z_chroot, $usz); 
+
+	$cmd = "$zonesigner $nsec3param".
+				" -genkeys ".
+				" -kskdirectory ".quotemeta($config{"dnssectools_keydir"}).
+				" -zskdirectory ".quotemeta($config{"dnssectools_keydir"}).
+				" -dsdir ".quotemeta($config{"dnssectools_keydir"}).
+				" -zone ".quotemeta($d).
+				" -krfile ".quotemeta($k_chroot).
+				" ".quotemeta($usz)." ".quotemeta($z_chroot);
+
+	$out = &backquote_logged("$cmd 2>&1");
+
+	if ($?) {
+		rollrec_unlock();
+		&unlock_file($z_chroot);
+		return $out;
+	}
+
+	# Create rollrec entry for zone
+	$rrfile = $config{"dnssectools_rollrec"};
+	&lock_file($rrfile);
+	open(OUT,">> $rrfile") || &error($text{'dt_zone_errfopen'});
+	print OUT "roll \"$d\"\n";
+	print OUT " zonename    \"$d\"\n";
+	print OUT " zonefile    \"$z_chroot\"\n";
+	print OUT " keyrec      \"$k_chroot\"\n";
+	print OUT " kskphase    \"0\"\n";
+	print OUT " zskphase    \"0\"\n";
+	print OUT " ksk_rolldate    \" \"\n";
+	print OUT " ksk_rollsecs    \"0\"\n";
+	print OUT " zsk_rolldate    \" \"\n";
+	print OUT " zsk_rollsecs    \"0\"\n";
+	print OUT " maxttl      \"0\"\n";
+	print OUT " phasestart  \"new\"\n";
+	&unlock_file($rrfile);
+
+	# Setup zone to be auto-resigned every 30 days
+	&schedule_dnssec_cronjob();
+
+	rollrec_unlock();
+	&unlock_file($z_chroot);
+	
+	&dt_rollerd_restart();
+	&restart_bind();
+	return undef;
+}
+
+# dt_resign_zone(zone-name, zonefile, krfile, threshold) 
+# Replaces a zone's file with one containing signed records.
+sub dt_resign_zone
+{
+	local ($d, $z, $k, $t) = @_;
+
+	local $zonesigner;
+	local @recs;
+	local $cmd;
+	local $out;
+	local $threshold = "";
+	local $z_chroot = &make_chroot($z);
+	local $usz = $z_chroot.".webmin-unsigned";
+
+	if ((($zonesigner=dt_cmdpath('zonesigner')) eq '')) {
+		return $text{'dt_zone_enocmd'};
+	}
+
+	rollrec_lock();
+
+	# Remove DNSSEC records and save the unsigned zone file
+	@recs = &read_zone_file($z, $dom);
+	for(my $i=$#recs; $i>=0; $i--) {
+		if ($recs[$i]->{'type'} eq 'NSEC' ||
+			$recs[$i]->{'type'} eq 'NSEC3' ||
+			$recs[$i]->{'type'} eq 'NSEC3PARAM' ||
+			$recs[$i]->{'type'} eq 'RRSIG' ||
+			$recs[$i]->{'type'} eq 'DNSKEY') {
+				&delete_record($z, $recs[$i]);
+		}   
+	}
+	&copy_source_dest($z_chroot, $usz); 
+
+	if ($t > 0) {
+		$threshold = "-threshold ".quotemeta("-$t"."d"." "); 
+	}
+
+	$cmd = "$zonesigner -verbose -verbose".
+		" -kskdirectory ".quotemeta($config{"dnssectools_keydir"}).
+		" -zskdirectory ".quotemeta($config{"dnssectools_keydir"}).
+		" -dsdir ".quotemeta($config{"dnssectools_keydir"}).
+		" -zone ".quotemeta($d).
+		" -krfile ".quotemeta(&make_chroot($k)).
+		" ".$threshold.
+		" ".quotemeta($usz)." ".quotemeta($z_chroot);
+	$out = &backquote_logged("$cmd 2>&1");
+
+	rollrec_unlock();
+
+	return $out if ($?);
+
+	&restart_zone($d);
+
+	return undef;
+}
+
+# dt_zskroll_zone(zone-name)
+# Initates a zsk rollover operation for the zone 
+sub dt_zskroll_zone
+{
+	local ($d) = @_;
+	if (!rollmgr_sendcmd(CHANNEL_WAIT,ROLLCMD_ROLLZSK,$d)) {
+		return $text{'dt_zone_erollctl'};
+	}
+	
+	return undef;
+}
+
+# dt_kskroll_zone(zone-name)
+# Initates a ksk rollover operation for the zone 
+sub dt_kskroll_zone
+{
+	local ($d) = @_;
+	if (!rollmgr_sendcmd(CHANNEL_WAIT,ROLLCMD_ROLLKSK,$d)) {
+		return $text{'dt_zone_erollctl'};
+	}
+	
+	return undef;
+}
+
+# dt_notify_parentzone(zone-name)
+# Notifies rollerd that the new DS record has been published in the parent zone 
+sub dt_notify_parentzone
+{
+	local ($d) = @_;
+	if (!rollmgr_sendcmd(CHANNEL_WAIT,ROLLCMD_DSPUB,$d)) {
+		return $text{'dt_zone_erollctl'};
+	}
+	
+	return undef;
+}
+
+# dt_rollerd_restart()
+# Restart the rollerd daemon 
+sub dt_rollerd_restart
+{
+	local $rollerd;
+	local $r;
+	local $cmd;
+	local $out;
+
+	if ((($rollerd=dt_cmdpath('rollerd')) eq '')) {
+		return $text{'dt_zone_enocmd'};
+	}
+	rollmgr_halt();
+	$r = $config{"dnssectools_rollrec"};   
+	$cmd = "$rollerd -rrfile ".quotemeta($r);
+	&execute_command($cmd);
+	return undef;
+}
+
+# dt_genkrf()
+# Generate a new krf file for the zone
+sub dt_genkrf
+{
+	local ($zone, $z_chroot, $k_chroot) = @_;
+	local $dom = $zone->{'name'};
+	local @keys = &get_dnssec_key($zone);
+	local $usz = $z_chroot.".webmin-unsigned";
+	local $zskcur = "";
+	local $kskcur = "";
+	local $cmd;
+	local $out;
+
+	local $oldkeydir = &get_keys_dir($zone);
+	local $keydir = $config{"dnssectools_keydir"};
+	mkdir($keydir);
+
+	foreach my $key (@keys) {
+		foreach my $f ('publicfile', 'privatefile') {
+			# Identify if this is a zsk or a ksk
+			$key->{$f} =~ /(K\Q$dom\E\.\+\d+\+\d+)/;
+			if ($key->{'ksk'}) {
+				$kskcur = $1; 
+			} else {
+				$zskcur = $1; 
+			}
+			&copy_source_dest($key->{$f}, $keydir);
+			&unlink_file($key->{$f});
+		}
+	}
+
+	if (($zskcur eq "") || ($kskcur eq "")) {
+		return &text('dt_zone_enokey', $dom);
+	}
+
+	# Remove the older dsset file 
+	if ($oldkeydir) {
+		&unlink_file($oldkeydir."/"."dsset-".$dom.".");
+	}
+
+	if ((($genkrf=dt_cmdpath('genkrf')) eq '')) {
+		return $text{'dt_zone_enocmd'};
+	}
+	$cmd = "$genkrf".
+				" -zone ".quotemeta($dom).
+				" -krfile ".quotemeta($k_chroot).
+				" -zskcur=".quotemeta($zskcur).
+				" -kskcur=".quotemeta($kskcur).
+				" -zskdir ".quotemeta($keydir).
+				" -kskdir ".quotemeta($keydir).
+				" ".quotemeta($usz)." ".quotemeta($z_chroot);
+
+	$out = &backquote_logged("$cmd 2>&1");
+
+	return $out if ($?);
+	return undef;
+}
+
+
+# dt_delete_dnssec_state()
+# Delete all DNSSEC-Tools meta-data for a given zone 
+sub dt_delete_dnssec_state
+{
+	local ($zone) = @_;
+
+	local $z = &get_zone_file($zone);
+	local $dom = $zone->{'members'} ? $zone->{'values'}->[0] : $zone->{'name'};
+	local $z_chroot = &make_chroot($z);
+	local $k_chroot = $z_chroot.".krf";
+	local $usz = $z_chroot.".webmin-unsigned";
+	local @recs;
+
+	if (&check_if_dnssec_tools_managed($dom)) {
+		rollrec_lock();
+
+		#remove entry from rollrec file
+		&lock_file($config{"dnssectools_rollrec"});
+		rollrec_read($config{"dnssectools_rollrec"});
+		rollrec_del($dom);
+		rollrec_close();
+		&unlock_file($config{"dnssectools_rollrec"});
+
+		&lock_file($z_chroot);
+
+		# remove key and krf files
+		keyrec_read($k_chroot);
+		@kskpaths = keyrec_keypaths($dom, "all");
+   	foreach (@kskpaths) {
+			# remove any trailing ".key"
+			s/(.*).key$/\1/;
+			&unlink_file("$_.key");
+			&unlink_file("$_.private");
+		}
+		keyrec_close();
+		&unlink_file($k_chroot);
+		&unlink_file($usz);
+
+		# Delete dsset
+		&unlink_file($config{"dnssectools_keydir"}."/"."dsset-".$dom.".");
+
+		# remove DNSSEC records from zonefile
+		@recs = &read_zone_file($z, $dom);
+		for(my $i=$#recs; $i>=0; $i--) {
+			if ($recs[$i]->{'type'} eq 'NSEC' ||
+				$recs[$i]->{'type'} eq 'NSEC3' ||
+				$recs[$i]->{'type'} eq 'NSEC3PARAM' ||
+				$recs[$i]->{'type'} eq 'RRSIG' ||
+				$recs[$i]->{'type'} eq 'DNSKEY') {
+			   	    &delete_record($z, $recs[$i]);
+			}   
+		}
+		&bump_soa_record($z, \@recs);
+	
+		&unlock_file($z_chroot);
+		rollrec_unlock();
+
+		&dt_rollerd_restart(); 
+		&restart_bind();
+	}
+
+	return undef;
 }
 
 1;

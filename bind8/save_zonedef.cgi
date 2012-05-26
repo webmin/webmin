@@ -65,14 +65,19 @@ else {
 	}
 if (defined($in{'dnssec'})) {
 	$config{'tmpl_dnssec'} = $in{'dnssec'};
-	$config{'tmpl_dnssecalg'} = $in{'alg'};
-	($ok, $err) = &compute_dnssec_key_size($in{'alg'}, $in{'size_def'},
-					       $in{'size'});
-	&error($err) if (!$ok);
-	$config{'tmpl_dnssecsizedef'} = $in{'size_def'};
-	$config{'tmpl_dnssecsize'} = $in{'size'};
-	$config{'tmpl_dnssecsingle'} = $in{'single'};
+	$config{'tmpl_dnssec_dt'} = $in{'dnssec_dt'};
+	if ($config{'tmpl_dnssec_dt'}) {
+		$config{'tmpl_dnssec_dne'} = $in{'dnssec_dne'};
+	} else {
+		$config{'tmpl_dnssecalg'} = $in{'alg'};
+		($ok, $err) = &compute_dnssec_key_size($in{'alg'}, $in{'size_def'},
+											   $in{'size'});
+		&error($err) if (!$ok);
+		$config{'tmpl_dnssecsizedef'} = $in{'size_def'};
+		$config{'tmpl_dnssecsize'} = $in{'size'};
+		$config{'tmpl_dnssecsingle'} = $in{'single'};
 	}
+}
 &save_module_config();
 &unlock_file("$module_config_directory/config");
 

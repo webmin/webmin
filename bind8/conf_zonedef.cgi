@@ -72,6 +72,17 @@ if (&supports_dnssec()) {
 	print &ui_table_row($text{'zonedef_dnssec'},
 		&ui_yesno_radio("dnssec", $config{'tmpl_dnssec'}), 3);
 
+	if (&have_dnssec_tools_support()) {
+		# Automate using DNSSEC-Tools
+		print &ui_table_row($text{'zonedef_dnssec_dt'},
+			&ui_yesno_radio("dnssec_dt", $config{'tmpl_dnssec_dt'}), 3);
+
+		# Default DNE
+		print &ui_table_row($text{'zonedef_dne'},
+			&ui_select("dnssec_dne", $config{'tmpl_dnssec_dne'} || "NSEC",
+			[ &list_dnssec_dne() ]), 3);
+	}
+
 	# Default algorithm
 	print &ui_table_row($text{'zonedef_alg'},
 		&ui_select("alg", $config{'tmpl_dnssecalg'} || "RSASHA1",

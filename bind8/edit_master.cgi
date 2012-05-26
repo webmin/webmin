@@ -106,6 +106,13 @@ if ($access{'whois'} && &has_command($config{'whois_cmd'}) &&
 	push(@images, "images/whois.gif");
 	}
 if (&supports_dnssec()) {
+	if (&have_dnssec_tools_support()) {
+		# DNSSEC Automation
+		push(@links, "edit_zonedt.cgi?index=$in{'index'}&view=$in{'view'}");
+		push(@titles, $text{'dt_enable_title'});
+		push(@images, "images/dnssectools.gif");
+	}
+
 	# Zone key
 	push(@links, "edit_zonekey.cgi?index=$in{'index'}&view=$in{'view'}");
 	push(@titles, $text{'zonekey_title'});

@@ -117,6 +117,9 @@ if ($f && $type ne 'hint') {
 # delete any keys
 &delete_dnssec_key($zconf);
 
+# delete all dnssec-tools related state
+&dt_delete_dnssec_state($zconf);
+
 # remove the zone directive
 &lock_file(&make_chroot($zconf->{'file'}));
 &save_directive($parent, [ $zconf ], [ ]);

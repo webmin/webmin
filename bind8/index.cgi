@@ -92,6 +92,7 @@ if ($access{'defaults'}) {
 		   "conf_zonedef.cgi", "list_slaves.cgi",
 		   $bind_version >= 9 ? ( "conf_rndc.cgi" ) : ( ),
 		   &supports_dnssec_client() ? ( "conf_trusted.cgi" ) : ( ),
+				   ((&supports_dnssec()) && (&have_dnssec_tools_support())) ? ( "conf_dnssectools.cgi" ) : ( ),
 		   &supports_dnssec() ? ( "conf_dnssec.cgi" ) : ( ),
 		   &supports_check_conf() ? ( "conf_ncheck.cgi" ) : ( ),
 		   "conf_manual.cgi" );
@@ -144,6 +145,14 @@ if (@zones > $config{'max_zones'}) {
 elsif (@zones && (!@views || !$config{'by_view'})) {
 	# Show all zones
 	print &ui_subheading($text{'index_zones'});
+
+	if (&have_dnssec_tools_support()) {
+		# Parse the rollrec file to determine zone status
+		&lock_file($config{"dnssectools_rollrec"});
+		rollrec_lock();
+		rollrec_read($config{"dnssectools_rollrec"});
+	}
+
 	foreach $z (@zones) {
 		$v = $z->{'name'};
 		$t = $z->{'type'};
@@ -169,13 +178,42 @@ elsif (@zones && (!@views || !$config{'by_view'})) {
 		push(@zsort, $t eq 'hint' ? undef : $ztitles[$#ztitles]);
 		push(@zicons, "images/$t.gif");
 		push(@ztypes, $text{"index_$t"});
+
+		if (&have_dnssec_tools_support()) {
+			my $rrr = rollrec_fullrec($v);
+			if ($rrr) {
+				if($rrr->{'kskphase'} > 0) {
+					if($rrr->{'kskphase'} == 6) {
+						push(@zstatus, $text{"dt_status_waitfords"});
+					} else {        
+						push(@zstatus, $text{"dt_status_inKSKroll"});
+					}
+				} elsif($rrr->{'zskphase'} > 0) {
+					push(@zstatus, $text{"dt_status_inZSKroll"});
+				} else {    
+					push(@zstatus, $text{"dt_status_signed"});
+				}
+			} else {
+				push(@zstatus, $text{"dt_status_unsigned"});
+			}
+		}
+
 		$zhash{$zn} = $z;
 		$ztitlehash{$zn} = $ztitles[$#ztitles];
 		$zlinkhash{$zn} = $zlinks[$#zlinks];
 		$ztypeshash{$zn} = $ztypes[$#ztypes];
-		$zdelhash{$zn} = $zdels[$#ztypes];
+		$zdelhash{$zn} = $zdels[$#zdels];
+		if (&have_dnssec_tools_support()) {
+			$zstatushash{$zn} = $zstatus[$#zstatus];
+		}
 		$len++;
 		}
+
+	if (&have_dnssec_tools_support()) {
+		rollrec_close();
+		rollrec_unlock();
+		&unlock_file($config{"dnssectools_rollrec"});
+	}
 
 	# sort list of zones
 	@zorder = sort { &compare_zones($zsort[$a], $zsort[$b]) } (0 .. $len-1);
@@ -184,6 +222,7 @@ elsif (@zones && (!@views || !$config{'by_view'})) {
 	@zicons = map { $zicons[$_] } @zorder;
 	@ztypes = map { $ztypes[$_] } @zorder;
 	@zdels = map { $zdels[$_] } @zorder;
+	@zstatus = map { $zstatus[$_] } @zorder;
 
 	print &ui_form_start("mass_delete.cgi", "post");
 	@links = ( &select_all_link("d", 0),
@@ -195,15 +234,32 @@ elsif (@zones && (!@views || !$config{'by_view'})) {
 		# display as list
 		$mid = int((@zlinks+1)/2);
 		@grid = ( );
+		if (&have_dnssec_tools_support()) {
+		push(@grid, &zones_table([ @zlinks[0 .. $mid-1] ],
+					  [ @ztitles[0 .. $mid-1] ],
+					  [ @ztypes[0 .. $mid-1] ],
+					  [ @zdels[0 .. $mid-1] ],
+					  [ @zstatus[0 .. $mid-1] ]));
+		} else {
 		push(@grid, &zones_table([ @zlinks[0 .. $mid-1] ],
 				      [ @ztitles[0 .. $mid-1] ],
 				      [ @ztypes[0 .. $mid-1] ],
-				      [ @zdels[0 .. $mid-1] ] ));
+					  [ @zdels[0 .. $mid-1] ]));
+
+		}
 		if ($mid < @zlinks) {
+			if (&have_dnssec_tools_support()) {
 			push(@grid, &zones_table([ @zlinks[$mid .. $#zlinks] ],
 					     [ @ztitles[$mid .. $#ztitles] ],
 					     [ @ztypes[$mid .. $#ztypes] ],
-					     [ @zdels[$mid .. $#zdels] ]));
+						 [ @zdels[$mid .. $#ztypes] ],
+						 [ @zstatus[$mid .. $#ztypes] ]));
+			} else {
+			push(@grid, &zones_table([ @zlinks[$mid .. $#zlinks] ],
+						 [ @ztitles[$mid .. $#ztitles] ],
+						 [ @ztypes[$mid .. $#ztypes] ],
+						 [ @zdels[$mid .. $#ztypes] ]));
+			}
 			}
 		print &ui_grid_table(\@grid, 2, 100,
 				     [ "width=50%", "width=50%" ]);
@@ -241,10 +297,18 @@ elsif (@zones && (!@views || !$config{'by_view'})) {
 			     [ "rdelete", $text{'index_massrdelete'} ] ]);
 	}
 elsif (@zones) {
+
+	if (&have_dnssec_tools_support()) {
+		# Parse the rollrec file to determine zone status
+		&lock_file($config{"dnssectools_rollrec"});
+		rollrec_lock();
+		rollrec_read($config{"dnssectools_rollrec"});
+	}
+
 	# Show zones under views
 	print &ui_subheading($text{'index_zones'});
 	foreach $vw (@views) {
-		local (@zorder, @zlinks, @ztitles, @zicons, @ztypes, @zsort, @zdels, $len);
+		local (@zorder, @zlinks, @ztitles, @zicons, @ztypes, @zsort, @zdels, @zstatus, $len);
 		local @zv = grep { $_->{'view'} eq $vw->{'name'} } @zones;
 		next if (!@zv);
 		print "<b>",&text('index_inview',
@@ -261,6 +325,24 @@ elsif (@zones) {
 			push(@zicons, "images/$t.gif");
 			push(@ztypes, $text{"index_$t"});
 			push(@zdels, $z->{'index'}." ".$z->{'viewindex'});
+			if (&have_dnssec_tools_support()) {
+				my $rrr = rollrec_fullrec($v);
+				if ($rrr) {
+					if($rrr->{'kskphase'} > 0) {
+						if($rrr->{'kskphase'} == 6) {
+							push(@zstatus, $text{"dt_status_waitfords"});
+						} else {
+							push(@zstatus, $text{"dt_status_inKSKroll"});
+						}
+					} elsif($rrr->{'zskphase'} > 0) {
+						push(@zstatus, $text{"dt_status_inZSKroll"});
+					} else {
+						push(@zstatus, $text{"dt_status_signed"});
+					}
+				} else {
+					push(@zstatus, $text{"dt_status_unsigned"});
+				}
+			}
 			$len++;
 			}
 
@@ -272,6 +354,7 @@ elsif (@zones) {
 		@zicons = map { $zicons[$_] } @zorder;
 		@ztypes = map { $ztypes[$_] } @zorder;
 		@zdels = map { $zdels[$_] } @zorder;
+		@zstatus = map { $zstatus[$_] } @zorder;
 
 		print &ui_form_start("mass_delete.cgi", "post");
 		print &ui_links_row(\@crlinks);
@@ -279,16 +362,25 @@ elsif (@zones) {
 			# display as list
 			$mid = int((@zlinks+1)/2);
 			@grid = ( );
+			if (&have_dnssec_tools_support()) {
+			push(@grid, &zones_table([ @zlinks[0 .. $mid-1] ],
+						 [ @ztitles[0 .. $mid-1] ],
+						 [ @ztypes[0 .. $mid-1] ],
+						 [ @zdels[0 .. $mid-1] ],
+						 [ @zstatus[0 .. $mid-1] ]));
+			} else {
 			push(@grid, &zones_table([ @zlinks[0 .. $mid-1] ],
 					     [ @ztitles[0 .. $mid-1] ],
 					     [ @ztypes[0 .. $mid-1] ],
 					     [ @zdels[0 .. $mid-1] ]));
+			}
 			if ($mid < @zlinks) {
 				push(@grid, &zones_table(
 					     [ @zlinks[$mid .. $#zlinks] ],
 					     [ @ztitles[$mid .. $#ztitles] ],
 					     [ @ztypes[$mid .. $#ztypes] ],
-					     [ @zdels[$mid .. $#zdels] ]));
+						 [ @zdels[$mid .. $#zdels] ],
+						 [ @zstatus[$mid .. $#zstatus] ]));
 				}
 			print &ui_grid_table(\@grid, 2, 100,
 					     [ "width=50%", "width=50%" ]);
@@ -308,6 +400,11 @@ elsif (@zones) {
 			[ "create", $text{'index_masscreate'} ],
 			[ "rdelete", $text{'index_massrdelete'} ], ]);
 		}
+	if (&have_dnssec_tools_support()) {
+		rollrec_close();
+		rollrec_unlock();
+		&unlock_file($config{"dnssectools_rollrec"});
+	}
 	}
 else {
 	print "<b>$text{'index_none'}</b><p>\n";
@@ -407,7 +504,11 @@ else {
 if ($zhash{$name}) {
 	local $cb = $zdelhash{$name} ?
 		&ui_checkbox("d", $zdelhash{$name}, "", 0)." " : "";
+	if (&have_dnssec_tools_support()) {
+	print "<td>$cb<a href='$zlinkhash{$name}'>$ztitlehash{$name} ($ztypeshash{$name}) ($zstatushash{$name})</a></td> </tr>\n";
+	} else {
 	print "<td>$cb<a href='$zlinkhash{$name}'>$ztitlehash{$name} ($ztypeshash{$name})</a></td> </tr>\n";
+	}
 	}
 else {
 	print "<td><br></td> </tr>\n";
