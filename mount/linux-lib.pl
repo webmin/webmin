@@ -1344,83 +1344,62 @@ elsif ($type eq "fat" || $type eq "vfat" || $type eq "msdos" ||
 					defined($options{"posix"})));
 		}
 	}
-elsif ($_[0] eq "hpfs") {
+elsif ($type eq "hpfs") {
 	# OS/2 filesystems has some more options..
-        print "<tr $tb> <td colspan=4><b>$text{'edit_hpfs_opt'}</b></td> </tr>\n";
-	print "<tr> <td><b>$text{'linux_uid'}</b></td>\n";
-	printf "<td><input name=hpfs_uid size=8 value=\"%s\">\n",
-		defined($options{"uid"}) ? getpwuid($options{"uid"}) : "";
-	print &user_chooser_button("hpfs_uid", 0),"</td>\n";
+	print &ui_table_span("<b>$text{'edit_hpfs_opt'}</b>");
 
-	print "<td><b>$text{'linux_gid'}</b></td>\n";
-	printf "<td><input name=hpfs_gid size=8 value=\"%s\">\n",
-		defined($options{"gid"}) ? getgrgid($options{"gid"}) : "";
-	print &group_chooser_button("hpfs_gid", 0),"</td> </tr>\n";
+	print &ui_table_row($text{'linux_uid'},
+		&ui_user_textbox("hpfs_uid", defined($options{'uid'}) ?
+					      getpwuid($options{'uid'}) : ""));
 
-	print "<tr> <td><b>$text{'linux_umask'}</b></td>\n";
-	printf"<td><input type=radio name=hpfs_umask_def value=1 %s> Default\n",
-		defined($options{"umask"}) ? "" : "checked";
-	printf "<input type=radio name=hpfs_umask_def value=0 %s>\n",
-		defined($options{"umask"}) ? "checked" : "";
-	print "<input size=5 name=hpfs_umask value=\"$options{umask}\"></td>\n";
+	print &ui_table_row($text{'linux_gid'},
+		&ui_group_textbox("hpfs_gid", defined($options{'gid'}) ?
+					      getgrgid($options{'gid'}) : ""));
 
-	print "<td><b>$text{'linux_conv2'}</b></td>\n";
-	print "<td><select name=hpfs_conv>\n";
-	printf "<option value=b %s> $text{'linux_none'}\n",
-		$options{"conv"} =~ /^b/ || !defined($options{"conv"}) ?
-		"selected" : "";
-	printf "<option value=t %s> $text{'linux_allfiles'}\n",
-		$options{"conv"} =~ /^t/ ? "selected" : "";
-	printf "<option value=a %s> $text{'linux_textfiles'}\n",
-		$options{"conv"} =~ /^a/ ? "selected" : "";
-	print "</select></td> </tr>\n";
+	print &ui_table_row($text{'linux_umask'},
+		&ui_opt_textbox("hpfs_umask", $options{"umask"}, 6,
+				$text{'default'}));
+
+	print &ui_table_row($text{'linux_conv2'},
+		&ui_select("hpfs_conv", substr($options{"conv"}, 0, 1) || "b",
+			   [ [ 'b', $text{'linux_none'} ],
+			     [ 't', $text{'linux_allfiles'} ],
+			     [ 'a', $text{'linux_textfiles'} ] ]));
 	}
-elsif ($_[0] eq "iso9660") {
+elsif ($type eq "iso9660") {
 	# CD-ROM filesystems have some more options..
-        print "<tr $tb> <td colspan=4><b>$text{'edit_iso9660_opt'}</b></td> </tr>\n";
-	print "<tr> <td><b>$text{'linux_uid'}</b></td>\n";
-	printf "<td><input name=iso9660_uid size=8 value=\"%s\">\n",
-		defined($options{"uid"}) ? getpwuid($options{"uid"}) : "";
-	print &user_chooser_button("iso9660_uid", 0),"</td>\n";
+	print &ui_table_span("<b>$text{'edit_iso9660_opt'}</b>");
 
-	print "<td><b>$text{'linux_gid'}</b></td>\n";
-	printf "<td><input name=iso9660_gid size=8 value=\"%s\">\n",
-		defined($options{"gid"}) ? getgrgid($options{"gid"}) : "";
-	print &group_chooser_button("iso9660_gid", 0),"</td>\n";
+	print &ui_table_row($text{'linux_uid'},
+		&ui_user_textbox("iso9660_uid", defined($options{'uid'}) ?
+					      getpwuid($options{'uid'}) : ""));
 
-	print "<tr> <td><b>$text{'linux_rock'}</b></td>\n";
-	printf "<td><input type=radio name=iso9660_norock value=1 %s> $text{'yes'}\n",
-		defined($options{"norock"}) ? "checked" : "";
-	printf "<input type=radio name=iso9660_norock value=0 %s> $text{'no'}</td>\n",
-		defined($options{"norock"}) ? "" : "checked";
+	print &ui_table_row($text{'linux_gid'},
+		&ui_group_textbox("iso9660_gid", defined($options{'gid'}) ?
+					      getgrgid($options{'gid'}) : ""));
 
-	print "<td><b>$text{'linux_mode'}</b></td>\n";
-	printf"<td><input size=10 name=iso9660_mode value=\"%s\"></td> </tr>\n",
-		defined($options{"mode"}) ? $options{"mode"} : "444";
+	print &ui_table_row($text{'linux_rock'},
+		&ui_yesno_radio("iso9660_norock", defined($options{"norock"})));
+
+	print &ui_table_row($text{'linux_mode'},
+		&ui_textbox("iso9660_mode", defined($options{"mode"}) ?
+				$options{"mode"} : "444", 10));
 	}
 elsif ($type eq "auto") {
 	# Don't know how to set options for auto filesystems yet..
 	print &ui_table_span("<i>$text{'linux_noopts'}</i>");
 	}
 elsif ($_[0] eq "autofs") {
-        print "<tr $tb> <td colspan=4><b>$text{'edit_autofs_opt'}</b></td> </tr>\n";
-	print "<tr> <td><b>$text{'linux_timeout'}</b></td> <td>\n";
-	printf"<input type=radio name=autofs_timeout_def value=1 %s> $text{'default'}\n",
-		defined($options{'timeout'}) ? "" : "checked";
-	printf "<input type=radio name=autofs_timeout_def value=0 %s>\n",
-		defined($options{'timeout'}) ? "checked" : "";
-	printf "<input name=autofs_timeout size=5 value=\"%s\"> $text{'linux_secs'}</td>\n",
-		$options{'timeout'};
+	print &ui_table_span("<b>$text{'edit_autofs_opt'}</b>");
 
-	print "<td><b>$text{'linux_pid_file'}</b>?</td>\n";
-	printf"<td><input type=radio name=autofs_pid-file_def value=1 %s> $text{'no'}\n",
-		defined($options{'pid-file'}) ? "" : "checked";
-	printf "<input type=radio name=autofs_pid-file_def value=0 %s> $text{'yes'}\n",
-		defined($options{'pid-file'}) ? "checked" : "";
-	printf "<input name=autofs_pid-file size=20 value=\"%s\">\n",
-		$options{'pid-file'};
-	print &file_chooser_button("autofs_pid-file", 1);
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'linux_timeout'},
+		&ui_opt_textbox("autofs_timeout", $options{'timeout'}, 6,
+				$text{'default'}));
+
+	print &ui_table_row($text{'linux_pid_file'},
+		&ui_opt_textbox("autofs_pid-file", $options{'pid-file'}, 40,
+				$text{'no'}, $text{'yes'})." ".
+		&file_chooser_button("autofs_pid-file", 0), 3);
 	}
 elsif ($type eq "swap") {
 	# Swap has no options..
