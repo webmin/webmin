@@ -1162,180 +1162,109 @@ sub generate_options
 if ($_[0] ne "swap" && $_[0] ne "auto" &&
     $_[0] ne "autofs" && $_[0] ne $smbfs_fs && $_[0] ne "cifs") {
 	# Lots of options are common to all linux filesystems
-        print "<tr $tb> <td colspan=4><b>$text{'edit_comm_opt'}</b></td> </tr>\n";
-	print "<tr> <td>", &hlink("<b>$text{'linux_ro'}</b>", "linux_ro"),"</td>\n";
-	printf "<td nowrap><input type=radio name=lnx_ro value=1 %s> $text{'yes'}\n",
-		defined($options{"ro"}) ? "checked" : "";
-	printf "<input type=radio name=lnx_ro value=0 %s> $text{'no'}</td>\n",
-		defined($options{"ro"}) ? "" : "checked";
+	print &ui_table_span("<b>$text{'edit_comm_opt'}</b>");
 
-	print "<td>", &hlink("<b>$text{'linux_sync'}</b>", "linux_sync"), "</td>\n";
-	printf"<td nowrap><input type=radio name=lnx_sync value=0 %s> $text{'yes'}\n",
-		defined($options{"sync"}) ? "" : "checked";
-	printf "<input type=radio name=lnx_sync value=1 %s> $text{'no'}</td> </tr>\n",
-		defined($options{"sync"}) ? "checked" : "";
+	print &ui_table_row(&hlink($text{'linux_ro'}, "linux_ro"),
+		&ui_yesno_radio("lnx_ro", defined($options{"ro"})));
+
+	print &ui_table_row(&hlink($text{'linux_sync'}, "linux_sync"),
+		&ui_yesno_radio("lnx_sync", defined($options{"sync"}), 0, 1));
 
 	local $nodev = defined($options{"nodev"}) ||
 		       defined($options{"user"}) && !defined($options{"dev"});
-	print "<tr> <td>", &hlink("<b>$text{'linux_nodev'}</b>", "linux_nodev"), "</td>\n";
-	printf "<td nowrap><input type=radio name=lnx_nodev value=0 %s> $text{'yes'}\n",
-		$nodev ? "" : "checked";
-	printf "<input type=radio name=lnx_nodev value=1 %s> $text{'no'}</td>\n",
-		$nodev ? "checked" : "";
+	print &ui_table_row(&hlink($text{'linux_nodev'}, "linux_nodev"),
+		&ui_yesno_radio("lnx_nodev", $nodev, 0, 1));
 
 	local $noexec = defined($options{"noexec"}) ||
 		       defined($options{"user"}) && !defined($options{"exec"});
-	print "<td>", &hlink("<b>$text{'linux_noexec'}</b>", "linux_noexec"), "</td>\n";
-	printf"<td nowrap><input type=radio name=lnx_noexec value=0 %s> $text{'yes'}\n",
-		$noexec ? "" : "checked";
-	printf "<input type=radio name=lnx_noexec value=1 %s> $text{'no'}</td> </tr>\n",
-		$noexec ? "checked" : "";
+	print &ui_table_row(&hlink($text{'linux_noexec'}, "linux_noexec"),
+		&ui_yesno_radio("lnx_noexec", $noexec, 0, 1));
 
 	local $nosuid = defined($options{"nosuid"}) ||
 		       defined($options{"user"}) && !defined($options{"suid"});
-	print "<tr> <td>", &hlink("<b>$text{'linux_nosuid'}</b>", "linux_nosuid"), "</td>\n";
-	printf "<td nowrap><input type=radio name=lnx_nosuid value=1 %s> $text{'yes'}\n",
-		$nosuid ? "checked" : "";
-	printf "<input type=radio name=lnx_nosuid value=0 %s> $text{'no'}</td>\n",
-		$nosuid ? "" : "checked";
+	print &ui_table_row(&hlink($text{'linux_nosuid'}, "linux_nosuid"),
+		&ui_yesno_radio("lnx_nosuid", $nosuid));
 
-	print "<td>", &hlink("<b>$text{'linux_user'}</b>", "linux_user"), "</td>\n";
-	printf"<td nowrap><input type=radio name=lnx_user value=1 %s> $text{'yes'}\n",
-		defined($options{"user"}) ? "checked" : "";
-	printf "<input type=radio name=lnx_user value=0 %s> $text{'no'}</td> </tr>\n",
-		defined($options{"user"}) ? "" : "checked";
+	print &ui_table_row(&hlink($text{'linux_user'}, "linux_user"),
+		&ui_yesno_radio("lnx_user", defined($options{"user"})));
 
-	print "<td>", &hlink("<b>$text{'linux_noatime'}</b>", "linux_noatime"), "</td>\n";
-	printf "<td><input type=radio name=lnx_noatime value=1 %s> %s\n",
-	    defined($options{"noatime"}) ? "checked" : "", $text{'yes'};
-	printf "<input type=radio name=lnx_noatime value=0 %s> %s</td>\n",
-	    defined($options{"noatime"}) ? "" : "checked", $text{'no'};
-
-	print "</tr>\n";
+	print &ui_table_row(&hlink($text{'linux_noatime'}, "linux_noatime"),
+		&ui_yesno_radio("lnx_noatime", defined($options{"noatime"})));
 	}
 	
 if ($_[0] =~ /^ext\d+$/) {
 	# Ext2 has lots more options..
-        print "<tr $tb> <td colspan=4><b>$text{'edit_ext_opt'}</b></td> </tr>\n";
+	print &ui_table_span("<b>$text{'edit_ext__opt'}</b>");
+
 	if ($no_mount_check) {
-		print "<tr> <td><b>$text{'linux_df'}</b></td>\n";
-		printf "<td><input type=radio name=ext2_df value=1 %s> %s\n",
-		    defined($options{"minixdf"}) ? "checked" : "", $text{'yes'};
-		printf "<input type=radio name=ext2_df value=0 %s> %s</td>\n",
-		    defined($options{"minixdf"}) ? "" : "checked", $text{'no'};
+		print &ui_table_row($text{'linux_df'},
+		    &ui_yesno_radio("ext2_df", defined($options{"minixdf"})));
 		}
 	else {
-		print "<tr> <td><b>$text{'linux_check'}</b></td>\n";
-		print "<td><select name=ext2_check>\n";
-		printf "<option value=normal %s> $text{'linux_normal'}\n",
-			$options{"check"} eq "" ||
-			$options{"check"} eq "normal" ?  "selected" : "";
-		printf "<option value=strict %s> $text{'linux_strict'}\n",
-			$options{"check"} eq "strict" ? "selected" : "";
-		printf "<option value=none %s> $text{'linux_none'}\n",
-			$options{"check"} eq "none" ||
-			defined($options{"nocheck"}) ?  "selected" : "";
-		print "</select></td>\n";
+		print &ui_table_row($text{'linux_check'},
+			&ui_select("ext2_check",
+			    $options{"check"} eq "" ? "normal" :
+			    defined($options{"nocheck"}) ? "none" :
+						       $options{"check"},
+			    [ [ "normal", $text{'linux_normal'} ],
+			      [ "strict", $text{'linux_strict'} ],
+			      [ "none", $text{'linux_none'} ] ]));
 		}
 
-	print "<td><b>$text{'linux_errors'}</b></td>\n";
-	print "<td><select name=ext2_errors>\n";
-	printf "<option value=default %s> $text{'default'}\n",
-		!defined($options{"errors"}) ? "selected" : "";
-	printf "<option value=continue %s> $text{'linux_continue'}\n",
-		$options{"error"} eq "continue" ? "selected" : "";
-	printf "<option value=remount-ro %s> $text{'linux_remount_ro'}\n",
-		$options{"error"} eq "remount-ro" ? "selected" : "";
-	printf "<option value=panic %s> $text{'linux_panic'}\n",
-		$options{"error"} eq "panic" ? "selected" : "";
-	print "</select></td> </tr>\n";
+	print &ui_table_row($text{'linux_errors'},
+		&ui_select("ext2_errors",
+			!defined($options{"errors"}) ? "default" :
+			$options{"errors"},
+			[ [ "default", $text{'default'} ],
+			  [ "continue", $text{'linux_continue'} ],
+			  [ "remount-ro", $text{'linux_remount_ro'} ],
+			  [ "panic", $text{'linux_panic'} ] ]));
 
-	print "<tr> <td><b>$text{'linux_grpid'}</b></td>\n";
-	printf "<td nowrap><input type=radio name=ext2_grpid value=1 %s> %s\n",
-		defined($options{"grpid"}) || defined($options{"bsdgroups"}) ?
-			"checked" : "", $text{'yes'};
-	printf "<input type=radio name=ext2_grpid value=0 %s> %s</td>\n",
-		defined($options{"grpid"}) || defined($options{"bsdgroups"}) ?
-			"" : "checked", $text{'no'};
+	print &ui_table_row($text{'linux_grpid'},
+		&ui_yesno_radio("ext2_grpid", defined($options{"grpid"}) ||
+					      defined($options{"bsdgroups"})));
 
-	print "<td><b>$text{'linux_quotas'}</b></td>\n";
-	local $usrquota = defined($options{"usrquota"});
-	local $grpquota = defined($options{"grpquota"});
-	print "<td nowrap><select name=ext2_quota>\n";
-	printf "<option value=0 %s> $text{'no'}\n",
-		$usrquota || $grpquota ? "" : "selected";
-	printf "<option value=1 %s> $text{'linux_usrquota'}\n",
-		$usrquota && !$grpquota ? "selected" : "";
-	printf "<option value=2 %s> $text{'linux_grpquota'}\n",
-		$grpquota && !$usrquota ? "selected" : "";
-	if (`uname -r` =~ /^2\.0\.(\d+)/ && $1 < 31) {
-		printf "<option value=3 %s> $text{'linux_usrgrpquota2'}\n",
-			$usrquota && $grpquota ? "selected" : "";
-		}
-	else {
-		printf "<option value=3 %s> $text{'linux_usrgrpquota'}\n",
-			$usrquota && $grpquota ? "selected" : "";
-		}
-	print "</select></td> </tr>\n";
+	print &ui_table_row($text{'linux_quotas'},
+		&ui_select("ext2_quota", $usrquota && $grpquota ? 3 :
+					 $grpquota ? 2 :
+					 $usrquota ? 1 : 0,
+			   [ [ 0, $text{'no'} ],
+			     [ 1, $text{'linux_usrquota'} ],
+			     [ 2, $text{'linux_grpquota'} ],
+			     [ 3, $text{'linux_usrgrpquota'} ] ]));
 
-	print "<tr> <td><b>$text{'linux_resuid'}</b></td>\n";
-	printf "<td><input name=ext2_resuid size=8 value=\"%s\">\n",
-		defined($options{"resuid"}) ? getpwuid($options{"resuid"}) : "";
-	print &user_chooser_button("ext2_resuid", 0),"</td>\n";
+	print &ui_table_row($text{'linux_resuid'},
+		&ui_user_textbox("ext2_resuid", defined($options{"resuid"}) ?
+				   getpwuid($options{"resuid"}) : ""));
 
-	print "<td><b>$text{'linux_resgid'}</b></td>\n";
-	printf "<td><input name=ext2_resgid size=8 value=\"%s\">\n",
-		defined($options{"resgid"}) ? getgrgid($options{"resgid"}) : "";
-	print &group_chooser_button("ext2_resgid", 0),"</td> </tr>\n";
+	print &ui_table_row($text{'linux_resgid'},
+		&ui_group_textbox("ext2_resgid", defined($options{"resgid"}) ?
+				   getpwgid($options{"resgid"}) : ""));
 	}
-elsif (($_[0] eq "nfs") || ($_[0] eq "nfs4")) {
+elsif ($type eq "nfs" || $type eq "nfs4") {
 	# Linux nfs has some more options...
-        print "<tr $tb> <td colspan=4><b>$text{'edit_nfs_opt'}</b></td> </tr>\n";
+	print &ui_table_span($type eq 'nfs4' ? $text{'edit_nfs_opt'}
+					     : $text{'edit_nfs_opt4'});
+
+	print &ui_table_row(&hlink($text{'linux_port'}, "linux_port"),
+		&ui_opt_textbox("nfs_port", $options{"port"}, 6,
+				$text{'default'}));
+
+	print &ui_table_row(&hlink($text{'linux_bg'}, "linux_bg"),
+		&ui_yesno_radio("nfs_bg", defined($options{"bg"})));
+
+	print &ui_table_row(&hlink($text{'linux_soft'}, "linux_soft"),
+		&ui_yesno_radio("nfs_soft", defined($options{"soft"})));
+
+	print &ui_table_row(&hlink($text{'linux_timeo'}, "linux_timeo"),
+		&ui_opt_textbox("nfs_timeo", $options{"timeo"}, 6,
+				$text{'default'}));
+
+	print &ui_table_row(&hlink($text{'linux_retrans'}, "linux_retrans"),
+		&ui_yesno_radio("retrans", defined($options{"retrans"})));
 	
-	print "<tr> <td>", &hlink("<b>$text{'linux_vers'}</b>", "linux_vers"), "</td>\n";
-	if ($_[0] eq "nfs4") {
-	    print "<td nowrap><input type=radio name=nfs_vers value=4 checked> 4</td>\n";
-	} else {
-	    print "<td nowrap><input type=radio name=nfs_vers value=3 checked> $text{'edit_3_or_lower'}</td>\n";
-	}
-	print "<td>", &hlink("<b>$text{'linux_port'}</b>", "linux_port"), "</td>\n";
-	printf "<td nowrap><input type=radio name=nfs_port_def value=1 %s> $text{'default'}\n",
-		defined($options{"port"}) ? "" : "checked";
-	printf "<input type=radio name=nfs_port_def value=0 %s>\n",
-		defined($options{"port"}) ? "checked" : "";
-	print "<input size=5 name=nfs_port value=$options{port}></td> </tr>\n";
-
-	print "<tr> <td>", &hlink("<b>$text{'linux_bg'}</b>", "linux_bg"), "</td>\n";
-	printf "<td nowrap><input type=radio name=nfs_bg value=1 %s> $text{'yes'}\n",
-		defined($options{"bg"}) ? "checked" : "";
-	printf "<input type=radio name=nfs_bg value=0 %s> $text{'no'}</td>\n",
-		defined($options{"bg"}) ? "" : "checked";
-
-	print "<td>", &hlink("<b>$text{'linux_soft'}</b>", "linux_soft"), "</td>\n";
-	printf "<td nowrap><input type=radio name=nfs_soft value=1 %s> $text{'yes'}\n",
-		defined($options{"soft"}) ? "checked" : "";
-	printf "<input type=radio name=nfs_soft value=0 %s> $text{'no'}</td> </tr>\n",
-		defined($options{"soft"}) ? "" : "checked";
-
-	print "<tr> <td>", &hlink("<b>$text{'linux_timeo'}</b>", "linux_timeo"), "</td>\n";
-	printf "<td nowrap><input type=radio name=nfs_timeo_def value=1 %s> $text{'default'}\n",
-		defined($options{"timeo"}) ? "" : "checked";
-	printf "<input type=radio name=nfs_timeo_def value=0 %s>\n",
-		defined($options{"timeo"}) ? "checked" : "";
-	printf "<input size=5 name=nfs_timeo value=$options{timeo}></td>\n";
-
-	print "<td>", &hlink("<b>$text{'linux_retrans'}</b>", "linux_retrans"), "</td>\n";
-	printf "<td nowrap><input type=radio name=nfs_retrans_def value=1 %s> $text{'default'}\n",
-		defined($options{"retrans"}) ? "" : "checked";
-	printf "<input type=radio name=nfs_retrans_def value=0 %s>\n",
-		defined($options{"retrans"}) ? "checked" : "";
-	print "<input size=5 name=nfs_retrans value=$options{retrans}></td> </tr>\n";
-
-	print "<tr> <td>", &hlink("<b>$text{'linux_intr'}</b>", "linux_intr"), "</td>\n";
-	printf "<td nowrap><input type=radio name=nfs_intr value=1 %s> $text{'yes'}\n",
-		defined($options{"intr"}) ? "checked" : "";
-	printf "<input type=radio name=nfs_intr value=0 %s> $text{'no'}</td>\n",
-		defined($options{"intr"}) ? "" : "checked";
+	print &ui_table_row(&hlink($text{'linux_intr'}, "linux_intr"),
+		&ui_yesno_radio("intr", defined($options{"intr"})));
 
 	local $proto = defined($options{"udp"}) ? "udp" :
 		       defined($options{"tcp"}) ? "tcp" : "";
