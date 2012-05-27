@@ -144,7 +144,6 @@ interfaces_desc=Shorewall将管理系统上的每个网卡界面和对应的区域和连接.本地环回设
 interfaces_add=新建一个网卡界面
 interfaces_none=没有预定义的网卡界面.
 interfaces_0=网卡
-interfaces_1=区域名
 interfaces_2=广播地址
 interfaces_3=选项
 interfaces_detect=自动

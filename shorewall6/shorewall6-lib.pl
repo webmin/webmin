@@ -537,59 +537,42 @@ else {
 
 sub zones_colnames
 {
-if (&new_zones_format()) {
-	return ( $text{'zones_0'}, $text{'zones_1new'}, $text{'zones_2new'},
-# The option fields are not displayed in the main list.
-#		$text{'zones_3new'}, $text{'zones_4new'}, $text{'zones_5new'},
-		$text{'zones_6new'} );
-	}
-else {
-	return ( $text{'zones_0'}, $text{'zones_1'}, $text{'zones_2'} );
-	}
+return ( $text{'zones_0'}, $text{'zones_1new'}, $text{'zones_2new'},
+	$text{'zones_6new'} );
 }
 
 sub zones_form
 {
-if (&new_zones_format()) {
-	# Shorewall 3 zones format
-	print "<tr> <td><b>$text{'zones_0'}</b></td>\n";
-	print "<td>",&ui_textbox("id", $_[0], 8),"</td>\n";
+# Shorewall 3 zones format
+print "<tr> <td><b>$text{'zones_0'}</b></td>\n";
+print "<td>",&ui_textbox("id", $_[0], 8),"</td>\n";
 
-	print "<td><b>$text{'zones_1new'}</b></td>\n";
-	print "<td>\n";
-	&zone_field("parent", $_[1], 0, 1);
-	print "</td> </tr>\n";
+print "<td><b>$text{'zones_1new'}</b></td>\n";
+print "<td>\n";
+&zone_field("parent", $_[1], 0, 1);
+print "</td> </tr>\n";
 
-	print "<td><b>$text{'zones_2new'}</b></td>\n";
-	print "<td>",&ui_select("type", $_[2],
-		[ [ "ipv6", $text{'zones_ipv6'} ],
-		  [ "ipsec", $text{'zones_ipsec'} ],
-		  [ "firewall", $text{'zones_firewall'} ] ]),"</td> </tr>\n";
+print "<td><b>$text{'zones_2new'}</b></td>\n";
+print "<td>",&ui_select("type", $_[2],
+	[ [ "ipv6", $text{'zones_ipv6'} ],
+	  [ "ipsec", $text{'zones_ipsec'} ],
+	  [ "ipsec6", $text{'zones_ipsec6'} ],
+	  [ "bport", $text{'zones_bport'} ],
+	  [ "bport6", $text{'zones_bport6'} ],
+	  [ "firewall", $text{'zones_firewall'} ] ]),"</td> </tr>\n";
 
-	print "<tr> <td><b>$text{'zones_3new'}</b></td>\n";
-	print "<td>",&ui_textbox("opts", $_[3], 50),"</td> </tr>\n";
+print "<tr> <td><b>$text{'zones_3new'}</b></td>\n";
+print "<td>",&ui_textbox("opts", $_[3], 50),"</td> </tr>\n";
 
-	print "<tr> <td><b>$text{'zones_4new'}</b></td>\n";
-	print "<td>",&ui_textbox("opts_in", $_[4], 50),"</td> </tr>\n";
+print "<tr> <td><b>$text{'zones_4new'}</b></td>\n";
+print "<td>",&ui_textbox("opts_in", $_[4], 50),"</td> </tr>\n";
 
-	print "<tr> <td><b>$text{'zones_5new'}</b></td>\n";
-	print "<td>",&ui_textbox("opts_out", $_[5], 50),"</td> </tr>\n";
+print "<tr> <td><b>$text{'zones_5new'}</b></td>\n";
+print "<td>",&ui_textbox("opts_out", $_[5], 50),"</td> </tr>\n";
 
-	print "<tr> <td><b>$text{'zones_6new'}</b></td>\n";
-	print "<td>",&ui_textbox("comment", $_[6], 50),"</td> </tr>\n";
+print "<tr> <td><b>$text{'zones_6new'}</b></td>\n";
+print "<td>",&ui_textbox("comment", $_[6], 50),"</td> </tr>\n";
 
-	}
-else {
-	# Shorewall 2 zones format
-	print "<tr> <td><b>$text{'zones_0'}</b></td>\n";
-	print "<td><input name=id size=8 value='$_[0]'></td> </tr>\n";
-
-	print "<tr> <td><b>$text{'zones_1'}</b></td>\n";
-	print "<td><input name=name size=15 value='$_[1]'></td> </tr>\n";
-
-	print "<tr> <td><b>$text{'zones_2'}</b></td>\n";
-	print "<td><input name=desc size=70 value='$_[2]'></td> </tr>\n";
-	}
 }
 
 sub zones_validate
@@ -629,13 +612,16 @@ return ( $_[1],
 	 $_[3] ? $_[3] : $text{'list_none'} );
 }
 
-@interfaces_opts = ( 'dhcp', 'noping', 'filterping', 'routestopped', 'norfc1918',
-		     'multi', 'routefilter', 'dropunclean', 'logunclean',
-		     'blacklist', 'maclist', 'tcpflags', 'proxyndp' );
-if (&version_atleast(3)) {
-	push(@interfaces_opts, "logmartians", "routeback", "ndp_filter",
-			       "ndp_ignore", "nosmurfs", "detectnets", "upnp");
-	}
+@interfaces_opts = ( 'dhcp', 'forward', 'ignore', 'optional' );
+if (&version_atleast(4, 4, 7)) {
+        push(@interfaces_opts, "bridge");
+        }
+if (&version_atleast(4, 4, 10)) {
+        push(@interfaces_opts, "required");
+        }
+if (&version_atleast(4, 4, 13)) {
+        push(@interfaces_opts, "blacklist");
+        }
 
 sub interfaces_form
 {
@@ -648,22 +634,10 @@ print "<td>\n";
 &zone_field("zone", $_[0], 0, 1);
 print "</td> </tr>\n";
 
-local $bmode = $_[2] eq 'detect' ? 2 :
-	       $_[2] eq '-' || $_[2] eq '' ? 1 : 0;
-print "<tr> <td><b>$text{'interfaces_2'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=broad_mode value=1 %s> %s\n",
-	$bmode == 1 ? "checked" : "", $text{'list_none'};
-printf "<input type=radio name=broad_mode value=2 %s> %s\n",
-	$bmode == 2 ? "checked" : "", $text{'list_auto'};
-printf "<input type=radio name=broad_mode value=0 %s>\n",
-	$bmode == 0 ? "checked" : "";
-printf "<input name=broad size=50 value='%s'></td> </tr>\n",
-	$bmode == 0 ? $_[2] : "";
-
 # options
-local %opts = map { $_, 1 } split(/,/, $_[3]);
-print "<tr> <td valign=top><b>$text{'interfaces_3'}</b></td> <td colspan=3>\n";
-&options_input("opts", $_[3], \@interfaces_opts);
+local %opts = map { $_, 1 } split(/,/, $_[2]);
+print "<tr> <td valign=top><b>$text{'interfaces_2'}</b></td> <td colspan=3>\n";
+&options_input("opts", $_[2], \@interfaces_opts);
 print "</td> </tr>\n";
 }
 
@@ -671,11 +645,7 @@ sub interfaces_validate
 {
 $in{'iface'} =~ /^[a-z]+\d*(\.\d+)?$/ ||
 	$in{'iface'} =~ /^[a-z]+\+$/ || &error($text{'interfaces_eiface'});
-$in{'broad_mode'} || $in{'broad'} =~ /^[0-9\.,]+$/ ||
-	&error($text{'interfaces_ebroad'});
 return ( $in{'zone'}, $in{'iface'},
-	 $in{'broad_mode'} == 2 ? 'detect' :
-	 $in{'broad_mode'} == 1 ? '-' : $in{'broad'},
 	 join(",", split(/\0/, $in{'opts'})) );
 }
 
@@ -692,7 +662,7 @@ return ( $_[0] eq 'all' ? $text{'list_any'} :
 				: $text{'list_none'} );
 }
 
-@policy_list = ( "ACCEPT", "DROP", "REJECT", "CONTINUE" );
+@policy_list = ( "ACCEPT", "DROP", "REJECT", "QUEUE", "NFQUEUE", "CONTINUE", "NONE" );
 
 sub policy_form
 {
@@ -723,9 +693,9 @@ print "<td><b>$text{'policy_3'}</b></td>\n";
 print "<td><select name=log>\n";
 printf "<option value=- %s>%s\n",
 	$_[3] eq '-' || !$_[3] ? "selected" : "", "&lt;$text{'policy_nolog'}&gt;";
-printf "<option value=ULOG %s>%s\n",
-	$_[3] eq 'ULOG' ? "selected" : "", "&lt;$text{'policy_ulog'}&gt;";
-$found = !$_[3] || $_[3] eq '-' || $_[3] eq 'ULOG';
+#printf "<option value=ULOG %s>%s\n",
+#	$_[3] eq 'ULOG' ? "selected" : "", "&lt;$text{'policy_ulog'}&gt;";
+#$found = !$_[3] || $_[3] eq '-' || $_[3] eq 'ULOG';
 &foreign_require("syslog", "syslog-lib.pl");
 foreach $l (&syslog::list_priorities()) {
 	printf "<option value=%s %s>%s\n",
