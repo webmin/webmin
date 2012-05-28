@@ -1264,11 +1264,7 @@ sub hosts_row
 return ( $_[0], $_[1] =~ /^(\S+):(\S+)$/ ? ( $1, $2 ) : ( undef, undef ) );
 }
 
-@host_options = ( "maclist", "routeback" );
-if (&version_atleast(3)) {
-	push(@host_options, "norfc1918", "blacklist", "tcpflags",
-			    "nosmurfs", "ipsec");
-	}
+@host_options = ("routeback", "tcpflags", "ipsec");
 
 sub hosts_form
 {
@@ -1309,7 +1305,7 @@ return ( $_[0] eq '-' ? $text{'blacklist_any'} : $_[0],
 	 $_[2] || $text{'blacklist_any'} );
 }
 
-@blacklist_protos = ( undef, 'tcp', 'udp', 'ipv6-icmp' );
+@blacklist_protos = ( undef, 'tcp', 'udp', 'dccp', 'sctp', 'udplite' );
 
 sub blacklist_form
 {
@@ -1331,9 +1327,8 @@ print &ui_radio("host_def", $mode,
     [ [ 0, &text('hosts_ip', &ui_textbox("host", $ip, 30))."<br>" ],
       [ 1, &text('hosts_mac', &ui_textbox("mac", $mac, 30))."<br>" ],
       [ 3, $text{'hosts_any'}."<br>" ],
-      &version_atleast(3) ?
-       ( [ 2, &text('hosts_ipset', &ui_textbox("ipset", $ipset, 15)) ] ) : ( ),
-	    ]);
+      [ 2, &text('hosts_ipset', &ui_textbox("ipset", $ipset, 15)) ],
+    ]);
 print "</td> </tr>\n";
 
 print "<tr> <td><b>$text{'blacklist_proto'}</b></td>\n";
@@ -1403,7 +1398,7 @@ sub providers_row
 return ( $_[0], $_[1], $_[2], $_[4], $_[5] );
 }
 
-@providers_opts = ( "track", "balance", "loose" );
+@providers_opts = ( "balance", "fallback", "track", "loose", "notrack", "tproxy" );
 
 sub providers_form
 {
