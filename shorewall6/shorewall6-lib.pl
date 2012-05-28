@@ -19,8 +19,7 @@ $shorewall6_version = &get_shorewall6_version(0);
 @shorewall6_files = ( 'zones', 'interfaces', 'policy', 'rules', 'tos',
 	   	     'proxyndp', 'routestopped',
 	   	     'tunnels', 'hosts', 'blacklist',
-		     ( &version_atleast(2, 3) ? ( 'providers' ) : ( ) ),
-	   	     'params', 'shorewall6.conf',
+		     'providers', 'params', 'shorewall6.conf',
 );
 @comment_tables = ( 'rules', 'tcrules' );
 
@@ -79,14 +78,6 @@ sub shorewall6_config
 # return true if new zones format is in use
 sub new_zones_format
 {
-	# Shorewall 3.4.0 - 3.4.4 have a bug that prevents the old format from being used.
-	if (&version_atleast(3, 4)  &&  !&version_atleast(3, 4, 5)) {
-		return 1;
-	}
-	# Zones table is in new format in Shorewall 3, unless shorewall6.conf has IPSECFILE=ipsec
-	if (!&version_atleast(3)  ||  &shorewall6_config('IPSECFILE') eq 'ipsec') {
-		return 0;
-	}
 	return 1;
 }
 
@@ -537,59 +528,42 @@ else {
 
 sub zones_colnames
 {
-if (&new_zones_format()) {
-	return ( $text{'zones_0'}, $text{'zones_1new'}, $text{'zones_2new'},
-# The option fields are not displayed in the main list.
-#		$text{'zones_3new'}, $text{'zones_4new'}, $text{'zones_5new'},
-		$text{'zones_6new'} );
-	}
-else {
-	return ( $text{'zones_0'}, $text{'zones_1'}, $text{'zones_2'} );
-	}
+return ( $text{'zones_0'}, $text{'zones_1new'}, $text{'zones_2new'},
+	$text{'zones_6new'} );
 }
 
 sub zones_form
 {
-if (&new_zones_format()) {
-	# Shorewall 3 zones format
-	print "<tr> <td><b>$text{'zones_0'}</b></td>\n";
-	print "<td>",&ui_textbox("id", $_[0], 8),"</td>\n";
+# Shorewall 3 zones format
+print "<tr> <td><b>$text{'zones_0'}</b></td>\n";
+print "<td>",&ui_textbox("id", $_[0], 8),"</td>\n";
 
-	print "<td><b>$text{'zones_1new'}</b></td>\n";
-	print "<td>\n";
-	&zone_field("parent", $_[1], 0, 1);
-	print "</td> </tr>\n";
+print "<td><b>$text{'zones_1new'}</b></td>\n";
+print "<td>\n";
+&zone_field("parent", $_[1], 0, 1);
+print "</td> </tr>\n";
 
-	print "<td><b>$text{'zones_2new'}</b></td>\n";
-	print "<td>",&ui_select("type", $_[2],
-		[ [ "ipv6", $text{'zones_ipv6'} ],
-		  [ "ipsec", $text{'zones_ipsec'} ],
-		  [ "firewall", $text{'zones_firewall'} ] ]),"</td> </tr>\n";
+print "<td><b>$text{'zones_2new'}</b></td>\n";
+print "<td>",&ui_select("type", $_[2],
+	[ [ "ipv6", $text{'zones_ipv6'} ],
+	  [ "ipsec", $text{'zones_ipsec'} ],
+	  [ "ipsec6", $text{'zones_ipsec6'} ],
+	  [ "bport", $text{'zones_bport'} ],
+	  [ "bport6", $text{'zones_bport6'} ],
+	  [ "firewall", $text{'zones_firewall'} ] ]),"</td> </tr>\n";
 
-	print "<tr> <td><b>$text{'zones_3new'}</b></td>\n";
-	print "<td>",&ui_textbox("opts", $_[3], 50),"</td> </tr>\n";
+print "<tr> <td><b>$text{'zones_3new'}</b></td>\n";
+print "<td>",&ui_textbox("opts", $_[3], 50),"</td> </tr>\n";
 
-	print "<tr> <td><b>$text{'zones_4new'}</b></td>\n";
-	print "<td>",&ui_textbox("opts_in", $_[4], 50),"</td> </tr>\n";
+print "<tr> <td><b>$text{'zones_4new'}</b></td>\n";
+print "<td>",&ui_textbox("opts_in", $_[4], 50),"</td> </tr>\n";
 
-	print "<tr> <td><b>$text{'zones_5new'}</b></td>\n";
-	print "<td>",&ui_textbox("opts_out", $_[5], 50),"</td> </tr>\n";
+print "<tr> <td><b>$text{'zones_5new'}</b></td>\n";
+print "<td>",&ui_textbox("opts_out", $_[5], 50),"</td> </tr>\n";
 
-	print "<tr> <td><b>$text{'zones_6new'}</b></td>\n";
-	print "<td>",&ui_textbox("comment", $_[6], 50),"</td> </tr>\n";
+print "<tr> <td><b>$text{'zones_6new'}</b></td>\n";
+print "<td>",&ui_textbox("comment", $_[6], 50),"</td> </tr>\n";
 
-	}
-else {
-	# Shorewall 2 zones format
-	print "<tr> <td><b>$text{'zones_0'}</b></td>\n";
-	print "<td><input name=id size=8 value='$_[0]'></td> </tr>\n";
-
-	print "<tr> <td><b>$text{'zones_1'}</b></td>\n";
-	print "<td><input name=name size=15 value='$_[1]'></td> </tr>\n";
-
-	print "<tr> <td><b>$text{'zones_2'}</b></td>\n";
-	print "<td><input name=desc size=70 value='$_[2]'></td> </tr>\n";
-	}
 }
 
 sub zones_validate
@@ -629,13 +603,16 @@ return ( $_[1],
 	 $_[3] ? $_[3] : $text{'list_none'} );
 }
 
-@interfaces_opts = ( 'dhcp', 'noping', 'filterping', 'routestopped', 'norfc1918',
-		     'multi', 'routefilter', 'dropunclean', 'logunclean',
-		     'blacklist', 'maclist', 'tcpflags', 'proxyndp' );
-if (&version_atleast(3)) {
-	push(@interfaces_opts, "logmartians", "routeback", "ndp_filter",
-			       "ndp_ignore", "nosmurfs", "detectnets", "upnp");
-	}
+@interfaces_opts = ( 'dhcp', 'forward', 'ignore', 'optional' );
+if (&version_atleast(4, 4, 7)) {
+        push(@interfaces_opts, "bridge");
+        }
+if (&version_atleast(4, 4, 10)) {
+        push(@interfaces_opts, "required");
+        }
+if (&version_atleast(4, 4, 13)) {
+        push(@interfaces_opts, "blacklist");
+        }
 
 sub interfaces_form
 {
@@ -648,22 +625,10 @@ print "<td>\n";
 &zone_field("zone", $_[0], 0, 1);
 print "</td> </tr>\n";
 
-local $bmode = $_[2] eq 'detect' ? 2 :
-	       $_[2] eq '-' || $_[2] eq '' ? 1 : 0;
-print "<tr> <td><b>$text{'interfaces_2'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=broad_mode value=1 %s> %s\n",
-	$bmode == 1 ? "checked" : "", $text{'list_none'};
-printf "<input type=radio name=broad_mode value=2 %s> %s\n",
-	$bmode == 2 ? "checked" : "", $text{'list_auto'};
-printf "<input type=radio name=broad_mode value=0 %s>\n",
-	$bmode == 0 ? "checked" : "";
-printf "<input name=broad size=50 value='%s'></td> </tr>\n",
-	$bmode == 0 ? $_[2] : "";
-
 # options
-local %opts = map { $_, 1 } split(/,/, $_[3]);
-print "<tr> <td valign=top><b>$text{'interfaces_3'}</b></td> <td colspan=3>\n";
-&options_input("opts", $_[3], \@interfaces_opts);
+local %opts = map { $_, 1 } split(/,/, $_[2]);
+print "<tr> <td valign=top><b>$text{'interfaces_2'}</b></td> <td colspan=3>\n";
+&options_input("opts", $_[2], \@interfaces_opts);
 print "</td> </tr>\n";
 }
 
@@ -671,11 +636,7 @@ sub interfaces_validate
 {
 $in{'iface'} =~ /^[a-z]+\d*(\.\d+)?$/ ||
 	$in{'iface'} =~ /^[a-z]+\+$/ || &error($text{'interfaces_eiface'});
-$in{'broad_mode'} || $in{'broad'} =~ /^[0-9\.,]+$/ ||
-	&error($text{'interfaces_ebroad'});
 return ( $in{'zone'}, $in{'iface'},
-	 $in{'broad_mode'} == 2 ? 'detect' :
-	 $in{'broad_mode'} == 1 ? '-' : $in{'broad'},
 	 join(",", split(/\0/, $in{'opts'})) );
 }
 
@@ -692,7 +653,7 @@ return ( $_[0] eq 'all' ? $text{'list_any'} :
 				: $text{'list_none'} );
 }
 
-@policy_list = ( "ACCEPT", "DROP", "REJECT", "CONTINUE" );
+@policy_list = ( "ACCEPT", "DROP", "REJECT", "QUEUE", "NFQUEUE", "CONTINUE", "NONE" );
 
 sub policy_form
 {
@@ -723,9 +684,9 @@ print "<td><b>$text{'policy_3'}</b></td>\n";
 print "<td><select name=log>\n";
 printf "<option value=- %s>%s\n",
 	$_[3] eq '-' || !$_[3] ? "selected" : "", "&lt;$text{'policy_nolog'}&gt;";
-printf "<option value=ULOG %s>%s\n",
-	$_[3] eq 'ULOG' ? "selected" : "", "&lt;$text{'policy_ulog'}&gt;";
-$found = !$_[3] || $_[3] eq '-' || $_[3] eq 'ULOG';
+#printf "<option value=ULOG %s>%s\n",
+#	$_[3] eq 'ULOG' ? "selected" : "", "&lt;$text{'policy_ulog'}&gt;";
+#$found = !$_[3] || $_[3] eq '-' || $_[3] eq 'ULOG';
 &foreign_require("syslog", "syslog-lib.pl");
 foreach $l (&syslog::list_priorities()) {
 	printf "<option value=%s %s>%s\n",
@@ -780,27 +741,15 @@ return ( $_[0] =~ /^(\S+):/ ? "$1" : $_[0],
 	 $_[3] eq 'all' || $_[3] eq 'related' ? "" :
 	  $_[5] eq '-' || $_[5] eq '' ? $text{'list_any'} : $_[5],
 	 $_[4] eq '-' || $_[4] eq '' ? "" : $_[4],
-	 &version_atleast(1, 4, 7) ? (
 		$_[7] eq "-" ? "" : $_[7],
-		$_[8] eq "-" ? "" : $_[8] ) :
-		( )
+		$_[8] eq "-" ? "" : $_[8] 
 	);
 }
 
-@rules_actions = ( 'ACCEPT', 'DROP', 'REJECT', 'DNAT', 'DNAT-', 'REDIRECT' );
-if (&version_atleast(2, 0, 0)) {
-	push(@rules_actions, 'CONTINUE');
-	push(@rules_actions, 'ACCEPT+');
-	push(@rules_actions, 'NONAT');
-	push(@rules_actions, 'REDIRECT-');
-	push(@rules_actions, 'LOG');
-	}
-if (&version_atleast(3)) {
-	push(@rules_actions, 'DNAT-');
-	push(@rules_actions, 'SAME');
-	push(@rules_actions, 'SAME-');
-	push(@rules_actions, 'QUEUE');
-	}
+@rules_actions = ( 'ACCEPT', 'DROP', 'REJECT', 'DNAT', 'DNAT-', 'REDIRECT', 'CONTINUE', 
+                   'ACCEPT+', 'NONAT', 'REDIRECT-', 'LOG', 'DNAT-', 'SAME', 'SAME-' ,
+                   'QUEUE');
+
 @rules_protos = ( 'all', 'related', 'tcp', 'udp', 'ipv6-icmp' );
 
 sub rules_form
@@ -1129,8 +1078,7 @@ sub proxyndp_row
 return ( $_[0],
 	 $_[1] eq '-' || $_[1] eq '' ? $text{'list_auto'} : $_[1],
 	 $_[2],
-	 &version_atleast(2, 0, 0) ?
-		( $_[4] =~ /yes/i ? $text{'yes'} : $text{'no'} ) : ( ) );
+	 $_[4] =~ /yes/i ? $text{'yes'} : $text{'no'} );
 }
 
 sub proxyndp_form
@@ -1158,31 +1106,29 @@ print "<td>";
 &iface_field("ext", $_[2]);
 print "</td> </tr>";
 
-if (&version_atleast(2, 0, 0)) {
-	local $pers = $_[4] =~ /yes/i;
-	print "<tr> <td><b>$text{'proxydnp_pers'}</b></td>\n";
-	printf "<td><input type=radio name=pers value=1 %s> %s\n",
-		$pers ? "checked" : "", $text{'yes'};
-	printf "<input type=radio name=pers value=0 %s> %s</td>\n",
-		$pers ? "" : "checked", $text{'no'};
-	}
+local $pers = $_[4] =~ /yes/i;
+print "<tr> <td><b>$text{'proxyndp_pers'}</b></td>\n";
+printf "<td><input type=radio name=pers value=1 %s> %s\n",
+	$pers ? "checked" : "", $text{'yes'};
+printf "<input type=radio name=pers value=0 %s> %s</td>\n",
+	$pers ? "" : "checked", $text{'no'};
 }
 
-sub proxydnp_validate
+sub proxyndp_validate
 {
 &check_ip6address($in{'addr'}) || &error($text{'proxyndp_eaddr'});
 return ( $in{'addr'},
 	 $in{'int_def'} ? "-" : $in{'int'},
 	 $in{'ext'},
 	 $in{'have'} ? "yes" : "no",
-	 &version_atleast(2, 0, 0) ? ( $in{'pers'} ? "yes" : "no" ) : ( )
+	 $in{'pers'} ? "yes" : "no" 
 	); 
 	 
 }
 
 sub proxyndp_columns
 {
-return &version_atleast(2, 0, 0) ? 4 : 3;
+return 4 ;
 }
 
 ################################ routestopped ##################################
@@ -1239,7 +1185,7 @@ return ( $in{'iface'},
 sub tunnels_row
 {
 local $tt = $_[0];
-$tt =~ s/^(openvpn|generic):.*$/$1/;
+$tt =~ s/^(openvpn|openvpnserver|openvpnclient|generic):.*$/$1/;
 return ( $text{'tunnels_'.$tt} || $tt,
 	 $_[1] eq '-' || $_[1] eq '' ? $text{'routestopped_all'} : $_[1],
 	 $_[2], $_[3] );
@@ -1253,14 +1199,12 @@ local $tt;
 local $found = !$_[0];
 local $ttype = $_[0];
 local $tport;
-if ($ttype =~ s/^(openvpn|generic):(.*)$/$1/) {
+if ($ttype =~ s/^(openvpn|openvpnserver|openvpnclient|generic):(.*)$/$1/) {
 	$tport = $2;
 	}
 foreach $tt ('ipsec', 'ipsecnat',
-	     (&version_atleast(2, 0, 0) ? ( 'ipsec:noah', 'ipsecnat:noah' )
-				       : ( )),
-	     'ip', 'gre', 'pptpclient', 'pptpserver', 'generic',
-	     (&version_atleast(1, 3, 14) ? ( 'openvpn' ) : ( )) ) {
+	     'ipsec:ah',
+	     'gre', 'l2tp', 'openvpn', 'openvpnclient', 'openvpnserver', 'generic') {
 	printf "<option value=%s %s>%s\n",
 		$tt, $ttype eq $tt ? "selected" : "",
 		$text{'tunnels_'.$tt.'_l'} || $text{'tunnels_'.$tt};
@@ -1299,7 +1243,8 @@ sub tunnels_validate
 $in{'gateway_def'} || &check_ip6address($in{'gateway'}) ||
 	($in{'gateway'} =~ /^(\S+)\/(\d+)$/ && &check_ip6address($1)) ||
 		&error($text{'tunnels_egateway'});
-if ($in{'type'} eq "openvpn") {
+if (($in{'type'} eq "openvpn") || ($in{'type'} eq "openvpnclient") || 
+    ($in{'type'} eq "openvpnserver")) {
 	$in{'tport'} =~ /^\d*$/ || &error($text{'tunnels_eopenvpn'});
 	$in{'type'} .= ":".$in{'tport'} if ($in{'tport'});
 	}
@@ -1319,11 +1264,7 @@ sub hosts_row
 return ( $_[0], $_[1] =~ /^(\S+):(\S+)$/ ? ( $1, $2 ) : ( undef, undef ) );
 }
 
-@host_options = ( "maclist", "routeback" );
-if (&version_atleast(3)) {
-	push(@host_options, "norfc1918", "blacklist", "tcpflags",
-			    "nosmurfs", "ipsec");
-	}
+@host_options = ("routeback", "tcpflags", "ipsec");
 
 sub hosts_form
 {
@@ -1364,7 +1305,7 @@ return ( $_[0] eq '-' ? $text{'blacklist_any'} : $_[0],
 	 $_[2] || $text{'blacklist_any'} );
 }
 
-@blacklist_protos = ( undef, 'tcp', 'udp', 'ipv6-icmp' );
+@blacklist_protos = ( undef, 'tcp', 'udp', 'dccp', 'sctp', 'udplite' );
 
 sub blacklist_form
 {
@@ -1386,9 +1327,8 @@ print &ui_radio("host_def", $mode,
     [ [ 0, &text('hosts_ip', &ui_textbox("host", $ip, 30))."<br>" ],
       [ 1, &text('hosts_mac', &ui_textbox("mac", $mac, 30))."<br>" ],
       [ 3, $text{'hosts_any'}."<br>" ],
-      &version_atleast(3) ?
-       ( [ 2, &text('hosts_ipset', &ui_textbox("ipset", $ipset, 15)) ] ) : ( ),
-	    ]);
+      [ 2, &text('hosts_ipset', &ui_textbox("ipset", $ipset, 15)) ],
+    ]);
 print "</td> </tr>\n";
 
 print "<tr> <td><b>$text{'blacklist_proto'}</b></td>\n";
@@ -1458,7 +1398,7 @@ sub providers_row
 return ( $_[0], $_[1], $_[2], $_[4], $_[5] );
 }
 
-@providers_opts = ( "track", "balance", "loose" );
+@providers_opts = ( "balance", "fallback", "track", "loose", "notrack", "tproxy" );
 
 sub providers_form
 {
