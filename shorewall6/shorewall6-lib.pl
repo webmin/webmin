@@ -19,8 +19,7 @@ $shorewall6_version = &get_shorewall6_version(0);
 @shorewall6_files = ( 'zones', 'interfaces', 'policy', 'rules', 'tos',
 	   	     'proxyndp', 'routestopped',
 	   	     'tunnels', 'hosts', 'blacklist',
-		     ( &version_atleast(2, 3) ? ( 'providers' ) : ( ) ),
-	   	     'params', 'shorewall6.conf',
+		     'providers', 'params', 'shorewall6.conf',
 );
 @comment_tables = ( 'rules', 'tcrules' );
 
@@ -79,14 +78,6 @@ sub shorewall6_config
 # return true if new zones format is in use
 sub new_zones_format
 {
-	# Shorewall 3.4.0 - 3.4.4 have a bug that prevents the old format from being used.
-	if (&version_atleast(3, 4)  &&  !&version_atleast(3, 4, 5)) {
-		return 1;
-	}
-	# Zones table is in new format in Shorewall 3, unless shorewall6.conf has IPSECFILE=ipsec
-	if (!&version_atleast(3)  ||  &shorewall6_config('IPSECFILE') eq 'ipsec') {
-		return 0;
-	}
 	return 1;
 }
 
@@ -750,27 +741,15 @@ return ( $_[0] =~ /^(\S+):/ ? "$1" : $_[0],
 	 $_[3] eq 'all' || $_[3] eq 'related' ? "" :
 	  $_[5] eq '-' || $_[5] eq '' ? $text{'list_any'} : $_[5],
 	 $_[4] eq '-' || $_[4] eq '' ? "" : $_[4],
-	 &version_atleast(1, 4, 7) ? (
 		$_[7] eq "-" ? "" : $_[7],
-		$_[8] eq "-" ? "" : $_[8] ) :
-		( )
+		$_[8] eq "-" ? "" : $_[8] 
 	);
 }
 
-@rules_actions = ( 'ACCEPT', 'DROP', 'REJECT', 'DNAT', 'DNAT-', 'REDIRECT' );
-if (&version_atleast(2, 0, 0)) {
-	push(@rules_actions, 'CONTINUE');
-	push(@rules_actions, 'ACCEPT+');
-	push(@rules_actions, 'NONAT');
-	push(@rules_actions, 'REDIRECT-');
-	push(@rules_actions, 'LOG');
-	}
-if (&version_atleast(3)) {
-	push(@rules_actions, 'DNAT-');
-	push(@rules_actions, 'SAME');
-	push(@rules_actions, 'SAME-');
-	push(@rules_actions, 'QUEUE');
-	}
+@rules_actions = ( 'ACCEPT', 'DROP', 'REJECT', 'DNAT', 'DNAT-', 'REDIRECT', 'CONTINUE', 
+                   'ACCEPT+', 'NONAT', 'REDIRECT-', 'LOG', 'DNAT-', 'SAME', 'SAME-' ,
+                   'QUEUE');
+
 @rules_protos = ( 'all', 'related', 'tcp', 'udp', 'ipv6-icmp' );
 
 sub rules_form
@@ -1099,8 +1078,7 @@ sub proxyndp_row
 return ( $_[0],
 	 $_[1] eq '-' || $_[1] eq '' ? $text{'list_auto'} : $_[1],
 	 $_[2],
-	 &version_atleast(2, 0, 0) ?
-		( $_[4] =~ /yes/i ? $text{'yes'} : $text{'no'} ) : ( ) );
+	 $_[4] =~ /yes/i ? $text{'yes'} : $text{'no'} );
 }
 
 sub proxyndp_form
@@ -1128,31 +1106,29 @@ print "<td>";
 &iface_field("ext", $_[2]);
 print "</td> </tr>";
 
-if (&version_atleast(2, 0, 0)) {
-	local $pers = $_[4] =~ /yes/i;
-	print "<tr> <td><b>$text{'proxydnp_pers'}</b></td>\n";
-	printf "<td><input type=radio name=pers value=1 %s> %s\n",
-		$pers ? "checked" : "", $text{'yes'};
-	printf "<input type=radio name=pers value=0 %s> %s</td>\n",
-		$pers ? "" : "checked", $text{'no'};
-	}
+local $pers = $_[4] =~ /yes/i;
+print "<tr> <td><b>$text{'proxyndp_pers'}</b></td>\n";
+printf "<td><input type=radio name=pers value=1 %s> %s\n",
+	$pers ? "checked" : "", $text{'yes'};
+printf "<input type=radio name=pers value=0 %s> %s</td>\n",
+	$pers ? "" : "checked", $text{'no'};
 }
 
-sub proxydnp_validate
+sub proxyndp_validate
 {
 &check_ip6address($in{'addr'}) || &error($text{'proxyndp_eaddr'});
 return ( $in{'addr'},
 	 $in{'int_def'} ? "-" : $in{'int'},
 	 $in{'ext'},
 	 $in{'have'} ? "yes" : "no",
-	 &version_atleast(2, 0, 0) ? ( $in{'pers'} ? "yes" : "no" ) : ( )
+	 $in{'pers'} ? "yes" : "no" 
 	); 
 	 
 }
 
 sub proxyndp_columns
 {
-return &version_atleast(2, 0, 0) ? 4 : 3;
+return 4 ;
 }
 
 ################################ routestopped ##################################
@@ -1209,7 +1185,7 @@ return ( $in{'iface'},
 sub tunnels_row
 {
 local $tt = $_[0];
-$tt =~ s/^(openvpn|generic):.*$/$1/;
+$tt =~ s/^(openvpn|openvpnserver|openvpnclient|generic):.*$/$1/;
 return ( $text{'tunnels_'.$tt} || $tt,
 	 $_[1] eq '-' || $_[1] eq '' ? $text{'routestopped_all'} : $_[1],
 	 $_[2], $_[3] );
@@ -1223,14 +1199,12 @@ local $tt;
 local $found = !$_[0];
 local $ttype = $_[0];
 local $tport;
-if ($ttype =~ s/^(openvpn|generic):(.*)$/$1/) {
+if ($ttype =~ s/^(openvpn|openvpnserver|openvpnclient|generic):(.*)$/$1/) {
 	$tport = $2;
 	}
 foreach $tt ('ipsec', 'ipsecnat',
-	     (&version_atleast(2, 0, 0) ? ( 'ipsec:noah', 'ipsecnat:noah' )
-				       : ( )),
-	     'ip', 'gre', 'pptpclient', 'pptpserver', 'generic',
-	     (&version_atleast(1, 3, 14) ? ( 'openvpn' ) : ( )) ) {
+	     'ipsec:ah',
+	     'gre', 'l2tp', 'openvpn', 'openvpnclient', 'openvpnserver', 'generic') {
 	printf "<option value=%s %s>%s\n",
 		$tt, $ttype eq $tt ? "selected" : "",
 		$text{'tunnels_'.$tt.'_l'} || $text{'tunnels_'.$tt};
@@ -1269,7 +1243,8 @@ sub tunnels_validate
 $in{'gateway_def'} || &check_ip6address($in{'gateway'}) ||
 	($in{'gateway'} =~ /^(\S+)\/(\d+)$/ && &check_ip6address($1)) ||
 		&error($text{'tunnels_egateway'});
-if ($in{'type'} eq "openvpn") {
+if (($in{'type'} eq "openvpn") || ($in{'type'} eq "openvpnclient") || 
+    ($in{'type'} eq "openvpnserver")) {
 	$in{'tport'} =~ /^\d*$/ || &error($text{'tunnels_eopenvpn'});
 	$in{'type'} .= ":".$in{'tport'} if ($in{'tport'});
 	}
