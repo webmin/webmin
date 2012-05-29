@@ -1,0 +1,26 @@
+<header>Authenticatie</header>
+
+Deze pagina is om authenticatie gerelateerde opties te configureren voor uw
+SSH server.
+Sommige minder duidelijk opties zijn :
+
+<dl>
+<dt><b>Authenticatie met wachtwoord toestaan</b>
+<dd>Indien deze optie is ingesteld op Nee, moet bij de gebruikers hun <tt>.ssh</tt> directory
+    worden ingesteld met een publieke sleutel voordat zij kunnen inloggen. Indien dit op Ja
+    staat, zal de gebruiker kunnen inloggen met een wachtwoord voor authenticatie indien
+    de validatie niet kan worden gedaan met een publieke sleutel. <p>
+
+<dt><b>RSA authenticatie toestaan?</b>
+<dd>Indien dit is ingesteld op Nee, moeten gebruikers altijd hun wachtwoord invullen ook al is
+    hun publieke sleutel ingesteld.. <p>
+
+<dt><b>Check permissies op sleutel files?</b>
+<dd>Indien dit is ingesteld op Ja, zal de SSH server iedere gebruikers <tt>.ssh</tt>
+    directory en iedere hoofd directory controleren om er zeker van te zijn dat zij niet de
+    groep schrijf rechten hebben, en de <tt>.ssh/identity</tt> file om er zeker van te zijn
+    dat die niet leesbaar is door andere personen. Indien dit is ingesteld op Nee, zal er
+    geen controle worden uitgevoerd op file permissies. <p>
+
+</dl>
+<hr>

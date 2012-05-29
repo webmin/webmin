@@ -1,0 +1,34 @@
+Deze pagina toont opties voor een enkele host, hosts waarvan de namen
+overeenkomen met sommige patronen, of alle hosts.
+Sommige minder duidelijk opties zijn :
+
+<dl>
+<dt><b>Login als gebruiker</b>
+<dd>Normaal gesproken indien er geen gebruikersnaam is opgegeven op de <tt>ssh</tt>
+    opdracht regel, word de naam van de huidige gebruiker gebruikt om in te
+    loggen bij de remote server. Echter deze optie kan worden gebruikt om een
+    andere standaard gebruikersnaam te specificeren voor een bepaalde host
+    of hosts. <p>
+
+<dt><b>Escape karakter</b>
+<dd>Wanneer u een interactieve SSH login maakt, Kan het escape karakter worden
+    gebruikt om de verbinding te verbreken en af te sluiten of op te schorten. <p>
+
+<dt><b>Comprimeer SSH verkeer?</b>
+<dd>Indien deze optie is aangezet, zal de SSH client alle data comprimeren die
+    naar deze host word verstuurd met het <tt>gzip</tt> algoritme. Dit kan
+    handig zijn indien u grote files kopieert met <tt>scp</tt> over een
+    langzame verbinding. <p>
+
+<dt><b>Lokale poorten om door te sturen naar de server</b>
+<dd>In deze tabel kunt u locale poort nummers invullen die doorgestuurd moeten
+    worden naar sommige host en poorten van de SSH server. Dit kan handig zijn
+    indien uw enige toegang tot het netwerk via een SSH login loopt bij 1
+    machine op dat netwerk, en u ook nog toegang wilt hebben tot andere services
+    zoals web of POP servers. <p>
+
+<dt><b>Server-poorten die lokaal doorgestuurd moeten worden</b>
+<dd>In deze tabel kunt u poort nummers invullen op de server die doorgestuurd 
+    moeten worden naar sommige host en poorten op de client machine's netwerk. <p>
+
+</dl>
