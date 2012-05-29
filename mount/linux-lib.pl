@@ -1409,201 +1409,140 @@ elsif ($type eq "swap") {
 	}
 elsif ($_[0] eq $smbfs_fs || $_[0] eq "cifs") {
 	# SMB filesystems have a few options..
-        print "<tr $tb> <td colspan=4><b>$text{'edit_smbfs_opt'}</b></td> </tr>\n";
+	print &ui_table_span("<b>$text{'edit_smbfs_opt'}</b>");
+
 	$support = $_[0] eq $smbfs_fs ? $smbfs_support : $cifs_support;
 	if (keys(%options) == 0 && !$_[1]) {
-		print "<tr> <td colspan=4><i>$text{'linux_smbwarn'}</i></td> </tr>\n";
+		print &ui_table_span("<i>$text{'linux_smbwarn'}</i>");
 		}
 
-	print "<tr> <td><b>$text{'linux_username'}</b></td>\n";
-	printf "<td><input name=smbfs_user size=15 value=\"%s\"></td>\n",
-		$support == 4 ? $options{'username'} : $options{'user'};
+	print &ui_table_row($text{'linux_username'},
+		&ui_textbox("smbfs_user",
+		$support == 4 ? $options{'username'} : $options{'user'}, 20));
 
-	print "<td><b>$text{'linux_password'}</b></td>\n";
-	printf "<td><input type=password name=smbfs_passwd size=15 value=\"%s\"></td> </tr>\n",
-		$support == 4 ? $options{'password'} : $options{'passwd'};
+	print &ui_table_row($text{'linux_password'},
+		&ui_password("smbfs_passwd",
+		$support == 4 ? $options{'password'} : $options{'passwd'}, 20));
 	
- 	print "<td><b>$text{'linux_credentials'}</b></td>\n";
 	if ($support == 4) {
-		printf "<td><input name=smbfs_creds size=30 value=\"%s\"> ",
-			defined($options{"credentials"}) ? $options{'credentials'} : "";
-		
-		if ($access{'browse'}) {
-			print &file_chooser_button("smbfs_creds", 0);
-			}
+		print &ui_table_row($text{'linux_credentials'},
+			&ui_textbox("smbfs_creds", $options{"credentials"}, 30).
+			" ".
+			($access{'browse'} ?
+			  &file_chooser_button("smbfs_creds", 0) : ""));
 		}
-	print "</td>\n";
-	if ($support != 2) {
-		print "<tr> <td><b>$text{'linux_uid'}</b></td>\n";
-		printf "<td><input name=smbfs_uid size=8 value=\"%s\">\n",
-			defined($options{"uid"}) ? getpwuid($options{"uid"}) : "";
-		print &user_chooser_button("smbfs_uid", 0),"</td>\n";
 
-		print "<td><b>$text{'linux_gid'}</b></td>\n";
-		printf "<td><input name=smbfs_gid size=8 value=\"%s\">\n",
-			defined($options{"gid"}) ? getgrgid($options{"gid"}) : "";
-		print &group_chooser_button("smbfs_gid", 0),"</td>\n";
+	if ($support != 2) {
+		print &ui_table_row($text{'linux_uid'},
+			&ui_user_textbox("smbfs_uid",
+			  defined($options{'uid'}) ? getpwuid($options{'uid'})
+						   : ""));
+
+		print &ui_table_row($text{'linux_gid'},
+			&ui_group_textbox("smbfs_gid",
+			  defined($options{'gid'}) ? getgrgid($options{'gid'})
+						   : ""));
 		}
 
 	if ($support == 1) {
-		print "<tr> <td><b>$text{'linux_sname'}</b></td>\n";
-		printf "<td><input type=radio name=smbfs_sname_def value=1 %s> $text{'linux_auto'}\n",
-			defined($options{"servername"}) ? "" : "checked";
-		printf "<input type=radio name=smbfs_sname_def value=0 %s>\n",
-			defined($options{"servername"}) ? "checked" : "";
-		print "<input size=10 name=smbfs_sname value=\"$options{servername}\"></td>\n";
+		print &ui_table_row($text{'linux_sname'},
+			&ui_opt_textbox("smbfs_sname", $options{"servername"},
+					20, $text{'linux_auto'}));
 		}
 	elsif ($support == 2) {
-		print "<tr> <td><b>$text{'linux_wg'}</b></td>\n";
-		printf "<td><input type=radio name=smbfs_wg_def value=1 %s> $text{'linux_auto'}\n",
-			defined($options{"workgroup"}) ? "" : "checked";
-		printf "<input type=radio name=smbfs_wg_def value=0 %s>\n",
-			defined($options{"workgroup"}) ? "checked" : "";
-		print "<input size=10 name=smbfs_wg value=\"$options{'workgroup'}\"></td>\n";
+		print &ui_table_row($text{'linux_wg'},
+			&ui_opt_textbox("smbfs_wg", $options{"workgroup"},
+					20, $text{'linux_auto'}));
 		}
 
 	if ($support < 3) {
-		print "<td><b>$text{'linux_cname'}</b></td>\n";
-		printf "<td><input type=radio name=smbfs_cname_def value=1 %s> $text{'linux_auto'}\n",
-			defined($options{"clientname"}) ? "" : "checked";
-		printf "<input type=radio name=smbfs_cname_def value=0 %s>\n",
-			defined($options{"clientname"}) ? "checked" : "";
-		print "<input size=10 name=smbfs_cname value=\"$options{clientname}\"></td> </tr>\n";
+		print &ui_table_row($text{'linux_cname'},
+			&ui_opt_textbox("smbfs_cname", $options{"clientname"},
+					20, $text{'linux_auto'}));
 
-		print "<tr> <td><b>$text{'linux_mname'}</b></td>\n";
-		printf "<td colspan=3><input type=radio name=smbfs_mname_def value=1 %s> %s\n",
-			defined($options{"machinename"}) ? "" : "checked", $text{'linux_auto'};
-		printf "<input type=radio name=smbfs_mname_def value=0 %s>\n",
-			defined($options{"machinename"}) ? "checked" : "";
-		print "<input size=30 name=smbfs_mname value=\"$options{machinename}\"></td> </tr>\n";
+		print &ui_table_row($text{'linux_mname'},
+			&ui_opt_textbox("smbfs_mname", $options{"machinename"},
+					20, $text{'linux_auto'}));
 		}
 	
 	if ($support == 1) {
-		print "<tr> <td><b>$text{'linux_fmode'}</b></td>\n";
-		printf
-		    "<td><input name=smbfs_fmode size=5 value=\"%s\"></td>\n",
-		    defined($options{'fmode'}) ? $options{'fmode'} : "755";
+		print &ui_table_row($text{'linux_fmode'},
+		    &ui_textbox("smbfs_fmode",
+			defined($options{'fmode'}) ? $options{'fmode'} : "755",
+			5));
 
-		print "<td><b>$text{'linux_dmode'}</b></td>\n";
-		printf
-		    "<td><input name=smbfs_dmode size=5 value=\"%s\"></td>\n",
-		    defined($options{'dmode'}) ? $options{'dmode'} : "755";
-		print "</tr>\n";
+		print &ui_table_row($text{'linux_dmode'},
+		    &ui_textbox("smbfs_dmode",
+			defined($options{'dmode'}) ? $options{'dmode'} : "755",
+			5));
 		}
 	elsif ($support >= 3) {
-		print "<tr> <td><b>$text{'linux_fmode'}</b></td> <td>\n";
-		printf"<input type=radio name=smbfs_fmask_def value=1 %s> %s\n",
-			defined($options{'fmask'}) ? "" : "checked",
-			$text{'default'};
-		printf"<input type=radio name=smbfs_fmask_def value=0 %s>\n",
-			defined($options{'fmask'}) ? "checked" : "";
-		printf "<input name=smbfs_fmask size=5 value='%s'></td>\n",
-			$options{'fmask'};
+		print &ui_table_row($text{'linux_fmode'},
+			&ui_opt_textbox("smbfs_fmask", $options{'fmask'}, 5,
+					$text{'default'}));
 
-		print "<td><b>$text{'linux_dmode'}</b></td> <td>\n";
-		printf"<input type=radio name=smbfs_dmask_def value=1 %s> %s\n",
-			defined($options{'dmask'}) ? "" : "checked",
-			$text{'default'};
-		printf"<input type=radio name=smbfs_dmask_def value=0 %s>\n",
-			defined($options{'dmask'}) ? "checked" : "";
-		printf "<input name=smbfs_dmask size=5 value='%s'></td></tr>\n",
-			$options{'dmask'};
+		print &ui_table_row($text{'linux_dmode'},
+			&ui_opt_textbox("smbfs_dmask", $options{'dmask'}, 5,
+					$text{'default'}));
 
-		print "<tr> <td><b>$text{'linux_ro'}</b></td>\n";
-		printf "<td><input type=radio name=smbfs_ro value=1 %s> $text{'yes'}\n",
-			defined($options{"ro"}) ? "checked" : "";
-		printf "<input type=radio name=smbfs_ro value=0 %s> $text{'no'}</td>\n",
-			defined($options{"ro"}) ? "" : "checked";
+		print &ui_table_row($text{'linux_ro'},
+			&ui_yesno_radio("smbfs_ro", defined($options{"ro"})));
 		}
 	if ($support == 4) {
-		print "<td><b>$text{'linux_user'}</b></td>\n";
-		printf "<td><input type=radio name=smbfs_user2 value=1 %s> $text{'yes'}\n",
-			defined($options{"user"}) ? "checked" : "";
-		printf "<input type=radio name=smbfs_user2 value=0 %s> $text{'no'}</td> </tr>\n",
-			defined($options{"user"}) ? "" : "checked";
+		print &ui_table_row($text{'linux_user'},
+		    &ui_yesno_radio("smbfs_user2", defined($options{"user"})));
 
-		print "<tr> <td><b>$text{'linux_cname'}</b></td>\n";
-		printf "<td colspan=3><input type=radio name=smbfs_cname_def value=1 %s> $text{'linux_auto'}\n",
-			defined($options{"netbiosname"}) ? "" : "checked";
-		printf "<input type=radio name=smbfs_cname_def value=0 %s>\n",
-			defined($options{"netbiosname"}) ? "checked" : "";
-		print "<input size=40 name=smbfs_cname value=\"$options{netbiosname}\"></td> </tr>\n";
+		print &ui_table_row($text{'linux_cname'},
+			&ui_opt_textbox("smbfs_cname", $options{"netbiosname"},
+					40, $text{'linux_auto'}), 3);
 
-		print "<tr> <td><b>$text{'linux_mname'}</b></td>\n";
-		printf "<td colspan=3><input type=radio name=smbfs_mname_def value=1 %s> %s\n",
-			defined($options{"ip"}) ? "" : "checked", $text{'linux_auto'};
-		printf "<input type=radio name=smbfs_mname_def value=0 %s>\n",
-			defined($options{"ip"}) ? "checked" : "";
-		print "<input size=40 name=smbfs_mname value=\"$options{ip}\"></td> </tr>\n";
+		print &ui_table_row($text{'linux_mname'},
+			&ui_opt_textbox("smbfs_mname", $options{"ip"},
+					40, $text{'linux_auto'}), 3);
 
-		print "<tr> <td><b>$text{'linux_wg'}</b></td>\n";
-		printf "<td><input type=radio name=smbfs_wg_def value=1 %s> $text{'linux_auto'}\n",
-			defined($options{"workgroup"}) ? "" : "checked";
-		printf "<input type=radio name=smbfs_wg_def value=0 %s>\n",
-			defined($options{"workgroup"}) ? "checked" : "";
-		print "<input size=10 name=smbfs_wg value=\"$options{'workgroup'}\"></td>\n";
-		}
-	if ($support >= 3) {
-		print "</tr>\n";
+		print &ui_table_row($text{'linux_wg'},
+			&ui_opt_textbox("smbfs_wg", $options{"workgroup"},
+					10, $text{'linux_auto'}));
+
 		}
 
-	if ($_[0] eq "cifs") {
+	if ($type eq "cifs") {
 		# Show cifs-only options
-		print "<tr> <td><b>$text{'linux_codepage'}</b></td>\n";
-		print "<td>",&ui_opt_textbox("smbfs_codepage",
-		    $options{'codepage'}, 10, $text{'default'}),"</td>\n";
+		print &ui_table_row($text{'linux_codepage'},
+			&ui_opt_textbox("smbfs_codepage",
+			    $options{'codepage'}, 10, $text{'default'}));
 
-		print "<td><b>$text{'linux_iocharset'}</b></td>\n";
-		print "<td>",&ui_opt_textbox("smbfs_iocharset",
-		    $options{'iocharset'}, 10, $text{'default'}),"</td> </tr>\n";
+		print &ui_table_row($text{'linux_iocharset'},
+			&ui_opt_textbox("smbfs_iocharset",
+			    $options{'iocharset'}, 10, $text{'default'}));
 		}
 	}
-elsif ($_[0] eq "reiserfs") {
+elsif ($type eq "reiserfs") {
 	# Reiserfs is a new super-efficient filesystem
-        print "<tr $tb> <td colspan=4><b>$text{'edit_reiserfs_opt'}</b></td> </tr>\n";
-	print "<tr> <td><b>$text{'linux_notail'}</b></td>\n";
-	printf "<td><input type=radio name=lnx_notail value=1 %s> $text{'yes'}\n",
-		defined($options{"notail"}) ? "checked" : "";
-	printf "<input type=radio name=lnx_notail value=0 %s> $text{'no'}</td> </tr>\n",
-		defined($options{"notail"}) ? "" : "checked";
+	print &ui_table_span("<b>$text{'edit_reiserfs_opt'}</b>");
+
+	print &ui_table_row($text{'linux_notail'},
+		&ui_yesno_radio("lnx_notail", defined($options{"notail"})));
 	}
-elsif ($_[0] eq "tmpfs") {
+elsif ($type eq "tmpfs") {
 	# Tmpfs has some size options
-        print "<tr $tb> <td colspan=4><b>$text{'edit_tmpfs_opt'}</b></td> </tr>\n";
-	print "<tr> <td><b>$text{'linux_tmpsize'}</b></td>\n";
-	printf "<td><input type=radio name=lnx_tmpsize_def value=1 %s> %s\n",
-		!defined($options{"size"}) ? "checked" : "",
-		$text{'linux_unlimited'};
-	printf "<input type=radio name=lnx_tmpsize_def value=0 %s>\n",
-		!defined($options{"size"}) ? "" : "checked";
-	printf "<input name=lnx_tmpsize size=6 value='%s'></td>\n",
-		$options{"size"};
+	print &ui_table_span("<b>$text{'edit_tmpfs_opt'}</b>");
 
-	print "<td><b>$text{'linux_nr_blocks'}</b></td>\n";
-	printf "<td><input type=radio name=lnx_nr_blocks_def value=1 %s> %s\n",
-		!defined($options{"nr_blocks"}) ? "checked" : "",
-		$text{'linux_unlimited'};
-	printf "<input type=radio name=lnx_nr_blocks_def value=0 %s>\n",
-		!defined($options{"nr_blocks"}) ? "" : "checked";
-	printf "<input name=lnx_nr_blocks size=6 value='%s'></td> </tr>\n",
-		$options{"nr_blocks"};
+	print &ui_table_row($text{'linux_tmpsize'},
+		&ui_opt_textbox("lnx_tmpsize", $options{"size"}, 10,
+				$text{'linux_unlimited'})." bytes");
 
-	print "<tr> <td><b>$text{'linux_nr_inodes'}</b></td>\n";
-	printf "<td><input type=radio name=lnx_nr_inodes_def value=1 %s> %s\n",
-		!defined($options{"nr_inodes"}) ? "checked" : "",
-		$text{'linux_unlimited'};
-	printf "<input type=radio name=lnx_nr_inodes_def value=0 %s>\n",
-		!defined($options{"nr_inodes"}) ? "" : "checked";
-	printf "<input name=lnx_nr_inodes size=6 value='%s'></td>\n",
-		$options{"nr_inodes"};
+	print &ui_table_row($text{'linux_nr_blocks'},
+		&ui_opt_textbox("lnx_nr_blocks", $options{"nr_blocks"}, 10,
+				$text{'linux_unlimited'}));
 
-	print "<td><b>$text{'linux_tmpmode'}</b></td>\n";
-	printf "<td><input type=radio name=lnx_tmpmode_def value=1 %s> %s\n",
-		!defined($options{"mode"}) ? "checked" : "", $text{'default'};
-	printf "<input type=radio name=lnx_tmpmode_def value=0 %s>\n",
-		!defined($options{"mode"}) ? "" : "checked";
-	printf "<input name=lnx_tmpmode size=3 value='%s'></td> </tr>\n",
-		$options{"mode"};
+	print &ui_table_row($text{'linux_nr_inodes'},
+		&ui_opt_textbox("lnx_nr_inodes", $options{"nr_inodes"}, 10,
+				$text{'linux_unlimited'}));
+
+	print &ui_table_row($text{'linux_tmpmode'},
+		&ui_opt_textbox("lnx_tmpmode", $options{"mode"}, 3,
+				$text{'default'}));
 	}
 elsif ($_[0] eq "xfs") {
 	# Show options for XFS
