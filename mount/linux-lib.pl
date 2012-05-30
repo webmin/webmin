@@ -1163,31 +1163,35 @@ local ($type, $newmount) = @_;
 if ($type ne "swap" && $type ne "auto" &&
     $type ne "autofs" && $type ne $smbfs_fs && $type ne "cifs") {
 	# Lots of options are common to all linux filesystems
-	print &ui_table_span("<b>$text{'edit_comm_opt'}</b>");
-
 	print &ui_table_row(&hlink($text{'linux_ro'}, "linux_ro"),
 		&ui_yesno_radio("lnx_ro", defined($options{"ro"})));
 
 	print &ui_table_row(&hlink($text{'linux_sync'}, "linux_sync"),
 		&ui_yesno_radio("lnx_sync", defined($options{"sync"}), 0, 1));
 
-	local $nodev = defined($options{"nodev"}) ||
-		       defined($options{"user"}) && !defined($options{"dev"});
-	print &ui_table_row(&hlink($text{'linux_nodev'}, "linux_nodev"),
-		&ui_yesno_radio("lnx_nodev", $nodev, 0, 1));
-
-	local $noexec = defined($options{"noexec"}) ||
-		       defined($options{"user"}) && !defined($options{"exec"});
-	print &ui_table_row(&hlink($text{'linux_noexec'}, "linux_noexec"),
-		&ui_yesno_radio("lnx_noexec", $noexec, 0, 1));
-
-	local $nosuid = defined($options{"nosuid"}) ||
-		       defined($options{"user"}) && !defined($options{"suid"});
-	print &ui_table_row(&hlink($text{'linux_nosuid'}, "linux_nosuid"),
-		&ui_yesno_radio("lnx_nosuid", $nosuid));
-
 	print &ui_table_row(&hlink($text{'linux_user'}, "linux_user"),
 		&ui_yesno_radio("lnx_user", defined($options{"user"})));
+
+	print &ui_table_row(&hlink($text{'linux_nodev'}, "linux_nodev"),
+		&ui_radio("lnx_nodev", defined($options{"nodev"}) ? 1 :
+				       defined($options{"dev"}) ? 0 : 2,
+			  [ [ 1, $text{'yes'} ],
+			    [ 0, $text{'no'} ],
+			    [ 2, $text{'linux_ifuser'} ] ]));
+
+	print &ui_table_row(&hlink($text{'linux_noexec'}, "linux_noexec"),
+		&ui_radio("lnx_noexec", defined($options{"noexec"}) ? 1 :
+				       defined($options{"dev"}) ? 0 : 2,
+			  [ [ 1, $text{'yes'} ],
+			    [ 0, $text{'no'} ],
+			    [ 2, $text{'linux_ifuser'} ] ]));
+
+	print &ui_table_row(&hlink($text{'linux_nosuid'}, "linux_nosuid"),
+		&ui_radio("lnx_nosuid", defined($options{"nosuid"}) ? 1 :
+				       defined($options{"dev"}) ? 0 : 2,
+			  [ [ 1, $text{'yes'} ],
+			    [ 0, $text{'no'} ],
+			    [ 2, $text{'linux_ifuser'} ] ]));
 
 	print &ui_table_row(&hlink($text{'linux_noatime'}, "linux_noatime"),
 		&ui_yesno_radio("lnx_noatime", defined($options{"noatime"})));
@@ -1195,7 +1199,7 @@ if ($type ne "swap" && $type ne "auto" &&
 	
 if ($type =~ /^ext\d+$/) {
 	# Ext2+ has lots more options..
-	print &ui_table_span("<b>$text{'edit_ext__opt'}</b>");
+	print &ui_table_hr();
 
 	if ($no_mount_check) {
 		print &ui_table_row($text{'linux_df'},
@@ -1544,47 +1548,42 @@ elsif ($type eq "tmpfs") {
 		&ui_opt_textbox("lnx_tmpmode", $options{"mode"}, 3,
 				$text{'default'}));
 	}
-elsif ($_[0] eq "xfs") {
+elsif ($type eq "xfs") {
 	# Show options for XFS
-        print "<tr $tb> <td colspan=4><b>$text{'edit_xfs_opt'}</b></td> </tr>\n";
-	print "<tr> <td><b>$text{'linux_usrquotas'}</b></td>\n";
-	print "<td colspan=3>\n";
-	printf "<input type=radio name=xfs_usrquota value=1 %s> %s\n",
-		defined($options{"quota"}) || defined($options{"usrquota"}) ?
-		"checked" : "", $text{'yes'};
-	printf "<input type=radio name=xfs_usrquota value=2 %s> %s\n",
-		defined($options{"uqnoenforce"}) ? "checked" : "",
-		$text{'linux_noenforce'};
-	printf "<input type=radio name=xfs_usrquota value=0 %s> %s</td></tr>\n",
-		defined($options{"quota"}) || defined($options{"usrquota"}) ||
-		defined($options{"uqnoenforce"}) ? "" : "checked", $text{'no'};
+	print &ui_table_span("<b>$text{'edit_xfs_opt'}</b>");
 
-	print "<tr> <td><b>$text{'linux_grpquotas'}</b></td>\n";
-	print "<td colspan=3>\n";
-	printf "<input type=radio name=xfs_grpquota value=1 %s> %s\n",
-		defined($options{"grpquota"}) ?  "checked" : "", $text{'yes'};
-	printf "<input type=radio name=xfs_grpquota value=2 %s> %s\n",
-		defined($options{"gqnoenforce"}) ? "checked" : "",
-		$text{'linux_noenforce'};
-	printf "<input type=radio name=xfs_grpquota value=0 %s> %s</td></tr>\n",
-		defined($options{"grpquota"}) ||
-		defined($options{"gqnoenforce"}) ? "" : "checked", $text{'no'};
+	print &ui_table_row($text{'linux_usrquotas'},
+		&ui_radio("xfs_usrquota",
+			defined($options{"quota"}) ||
+			  defined($options{"usrquota"}) ? 1 :
+			defined($options{"uqnoenforce"}) ? 2 : 0,
+			[ [ 1, $text{'yes'} ],
+			  [ 2, $text{'linux_noenforce'} ],
+			  [ 0, $text{'no'} ] ]));
+
+	print &ui_table_row($text{'linux_grpquotas'},
+		&ui_radio("xfs_grpquota",
+			defined($options{"quota"}) ||
+			  defined($options{"grpquota"}) ? 1 :
+			defined($options{"uqnoenforce"}) ? 2 : 0,
+			[ [ 1, $text{'yes'} ],
+			  [ 2, $text{'linux_noenforce'} ],
+			  [ 0, $text{'no'} ] ]));
 	}
-elsif ($_[0] eq "jfs") {
+elsif ($type eq "jfs") {
 	# No other JFS options yet!
 	}
-elsif ($_[0] eq "ntfs") {
+elsif ($type eq "ntfs") {
 	# Windows NT/XP/2000 filesystem
-        print "<tr $tb> <td colspan=4><b>$text{'edit_ntfs_opt'}</b></td> </tr>\n";
-	print "<tr> <td><b>$text{'linux_uid'}</b></td>\n";
-	printf "<td><input name=ntfs_uid size=8 value=\"%s\">\n",
-		defined($options{"uid"}) ? getpwuid($options{"uid"}) : "";
-	print &user_chooser_button("ntfs_uid", 0),"</td>\n";
+	print &ui_table_span("<b>$text{'edit_ntfs_opt'}</b>");
 
-	print "<td><b>$text{'linux_gid'}</b></td>\n";
-	printf "<td><input name=ntfs_gid size=8 value=\"%s\">\n",
-		defined($options{"gid"}) ? getgrgid($options{"gid"}) : "";
-	print &group_chooser_button("ntfs_gid", 0),"</td>\n";
+	print &ui_table_row($text{'linux_uid'},
+		&ui_user_textbox("ntfs_uid", defined($options{'uid'}) ?
+					      getpwuid($options{'uid'}) : ""));
+
+	print &ui_table_row($text{'linux_gid'},
+		&ui_group_textbox("ntfs_gid", defined($options{'gid'}) ?
+					      getgrgid($options{'gid'}) : ""));
 	}
 }
 
@@ -1744,13 +1743,16 @@ if ($_[0] ne "swap" && $_[0] ne "auto" &&
 	if ($in{lnx_sync}) { $options{"sync"} = ""; }
 
 	delete($options{"dev"}); delete($options{"nodev"});
-	if ($in{lnx_nodev}) { $options{"nodev"} = ""; }
+	if ($in{lnx_nodev} == 1) { $options{"nodev"} = ""; }
+	elsif ($in{lnx_nodev} == 0) { $options{"dev"} = ""; }
 
 	delete($options{"exec"}); delete($options{"noexec"});
-	if ($in{lnx_noexec}) { $options{"noexec"} = ""; }
+	if ($in{lnx_noexec} == 1) { $options{"noexec"} = ""; }
+	elsif ($in{lnx_noexec} == 0) { $options{"exec"} = ""; }
 
 	delete($options{"suid"}); delete($options{"nosuid"});
-	if ($in{lnx_nosuid}) { $options{"nosuid"} = ""; }
+	if ($in{lnx_nosuid} == 1) { $options{"nosuid"} = ""; }
+	elsif ($in{lnx_nosuid} == 0) { $options{"suid"} = ""; }
 
 	delete($options{"user"}); delete($options{"nouser"});
 	if ($in{lnx_user}) { $options{"user"} = ""; }
