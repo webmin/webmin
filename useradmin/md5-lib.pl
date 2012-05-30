@@ -30,7 +30,7 @@ if ($salt =~ /^\$1\$([^\$]+)/) {
 	# Extract actual salt from already encrypted password
 	$salt = $1;
 	}
-if ($salt !~ /^[a-z0-9\/]{8}$/i) {
+if ($salt !~ /^[a-z0-9\/\.]{8}$/i) {
 	# Non-MD5 salt
 	$salt = undef;
 	}
