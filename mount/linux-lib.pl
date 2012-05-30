@@ -1248,8 +1248,7 @@ if ($type =~ /^ext\d+$/) {
 	}
 elsif ($type eq "nfs" || $type eq "nfs4") {
 	# Linux nfs has some more options...
-	print &ui_table_span($type eq 'nfs4' ? "<b>$text{'edit_nfs_opt'}</b>"
-					     : "<b>$text{'edit_nfs_opt4'}</b>");
+	print &ui_table_hr();
 
 	print &ui_table_row(&hlink($text{'linux_port'}, "linux_port"),
 		&ui_opt_textbox("nfs_port", $options{"port"}, 6,
@@ -1266,10 +1265,11 @@ elsif ($type eq "nfs" || $type eq "nfs4") {
 				$text{'default'}));
 
 	print &ui_table_row(&hlink($text{'linux_retrans'}, "linux_retrans"),
-		&ui_yesno_radio("retrans", defined($options{"retrans"})));
+		&ui_opt_textbox("nfs_restrans", $options{"restrans"}, 6,
+				$text{'default'}));
 	
 	print &ui_table_row(&hlink($text{'linux_intr'}, "linux_intr"),
-		&ui_yesno_radio("intr", defined($options{"intr"})));
+		&ui_yesno_radio("nfs_intr", defined($options{"intr"})));
 
 	local $proto = defined($options{"udp"}) ? "udp" :
 		       defined($options{"tcp"}) ? "tcp" : "";
@@ -1304,7 +1304,7 @@ elsif ($type eq "nfs" || $type eq "nfs4") {
 elsif ($type eq "fat" || $type eq "vfat" || $type eq "msdos" ||
        $type eq "umsdos" || $type eq "fatx"){
 	# All dos-based filesystems share some options
-	print &ui_table_span("<b>$text{'edit_dos_opt'}</b>");
+	print &ui_table_hr();
 
 	print &ui_table_row($text{'linux_uid'},
 		&ui_user_textbox("fat_uid", defined($options{'uid'}) ?
@@ -1350,7 +1350,7 @@ elsif ($type eq "fat" || $type eq "vfat" || $type eq "msdos" ||
 	}
 elsif ($type eq "hpfs") {
 	# OS/2 filesystems has some more options..
-	print &ui_table_span("<b>$text{'edit_hpfs_opt'}</b>");
+	print &ui_table_hr();
 
 	print &ui_table_row($text{'linux_uid'},
 		&ui_user_textbox("hpfs_uid", defined($options{'uid'}) ?
@@ -1372,7 +1372,7 @@ elsif ($type eq "hpfs") {
 	}
 elsif ($type eq "iso9660") {
 	# CD-ROM filesystems have some more options..
-	print &ui_table_span("<b>$text{'edit_iso9660_opt'}</b>");
+	print &ui_table_hr();
 
 	print &ui_table_row($text{'linux_uid'},
 		&ui_user_textbox("iso9660_uid", defined($options{'uid'}) ?
@@ -1411,10 +1411,8 @@ elsif ($type eq "swap") {
 		&ui_opt_textbox("swap_pri", $options{'pri'}, 6,
 				     $text{'default'}));
 	}
-elsif ($_[0] eq $smbfs_fs || $_[0] eq "cifs") {
+elsif ($type eq $smbfs_fs || $type eq "cifs") {
 	# SMB filesystems have a few options..
-	print &ui_table_span("<b>$text{'edit_smbfs_opt'}</b>");
-
 	$support = $_[0] eq $smbfs_fs ? $smbfs_support : $cifs_support;
 	if (keys(%options) == 0 && !$_[1]) {
 		print &ui_table_span("<i>$text{'linux_smbwarn'}</i>");
@@ -1523,14 +1521,14 @@ elsif ($_[0] eq $smbfs_fs || $_[0] eq "cifs") {
 	}
 elsif ($type eq "reiserfs") {
 	# Reiserfs is a new super-efficient filesystem
-	print &ui_table_span("<b>$text{'edit_reiserfs_opt'}</b>");
+	print &ui_table_hr();
 
 	print &ui_table_row($text{'linux_notail'},
 		&ui_yesno_radio("lnx_notail", defined($options{"notail"})));
 	}
 elsif ($type eq "tmpfs") {
 	# Tmpfs has some size options
-	print &ui_table_span("<b>$text{'edit_tmpfs_opt'}</b>");
+	print &ui_table_hr();
 
 	print &ui_table_row($text{'linux_tmpsize'},
 		&ui_opt_textbox("lnx_tmpsize", $options{"size"}, 10,
@@ -1550,7 +1548,7 @@ elsif ($type eq "tmpfs") {
 	}
 elsif ($type eq "xfs") {
 	# Show options for XFS
-	print &ui_table_span("<b>$text{'edit_xfs_opt'}</b>");
+	print &ui_table_hr();
 
 	print &ui_table_row($text{'linux_usrquotas'},
 		&ui_radio("xfs_usrquota",
@@ -1575,7 +1573,7 @@ elsif ($type eq "jfs") {
 	}
 elsif ($type eq "ntfs") {
 	# Windows NT/XP/2000 filesystem
-	print &ui_table_span("<b>$text{'edit_ntfs_opt'}</b>");
+	print &ui_table_hr();
 
 	print &ui_table_row($text{'linux_uid'},
 		&ui_user_textbox("ntfs_uid", defined($options{'uid'}) ?
@@ -1772,6 +1770,9 @@ if (($_[0] eq "nfs") || ($_[0] eq "nfs4")) {
 
 	delete($options{"timeo"});
 	if (!$in{nfs_timeo_def}) { $options{"timeo"} = $in{nfs_timeo}; }
+
+	delete($options{"retrans"});
+	if (!$in{nfs_retrans_def}) { $options{"retrans"} = $in{nfs_retrans}; }
 
 	delete($options{"port"});
 	if (!$in{nfs_port_def}) { $options{"port"} = $in{nfs_port}; }
