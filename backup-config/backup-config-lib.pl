@@ -316,8 +316,22 @@ if (!$_[5]) {
 	foreach my $m (@mods) {
 		&foreign_require($m, "backup_config.pl");
 		my @mfiles = &foreign_call($m, "backup_config_files");
-		push(@files, @mfiles);
-		push(@{$manifestfiles{$m}}, @mfiles);
+		foreach my $f (@mfiles) {
+			next if (!$f);
+			if (-d $f) {
+				# A directory .. recursively expand
+				foreach my $sf (&expand_directory($f)) {
+					next if (!$sf);
+					push(@files, $sf);
+					push(@{$manifestfiles{$m}}, $sf);
+					}
+				}
+			else {
+				# Just one file
+				push(@files, $f);
+				push(@{$manifestfiles{$m}}, $f);
+				}
+			}
 		}
 	}
 
