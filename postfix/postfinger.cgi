@@ -196,7 +196,7 @@ if ( !$in{'go'} ) {
 		open(MAILQ, "/bin/cat `$config{'postfix_config_command'} -h config_directory`/master.cf 2>/dev/null |");
 		while (my $postfinger = <MAILQ>) { 
 			($postf1,$postf2,$postf3,$postf4,$postf5,$postf6,$postf7,$postf8)=split(/\s+/,$postfinger,8);
-			if ($postfinger =~ /\-\o/) {
+			if ($postfinger =~ /\-o/) {
 				print "<tr><td class='e'> </td><td class='v'> </td>",
 					"<td class='v'> </td><td class='v'> </td>",
 					"<td class='v'> </td><td class='v'> </td>",
