@@ -1,0 +1,13 @@
+line1=LDAP Server Optionen,11
+server=LDAP Server Hostname,3,Dieses System,Entferntes System
+port=LDAP Server Port,3,Automatisch erkennen
+user=Login f&#252;r LDAP-Server,3,Automatisch erkennen
+pass=Passwort f&#252;r LDAP-Server,3,Automatisch erkennen
+ssl=Verwendet Verschl&#252;sselung mit LDAP-Server?,1,-Automatisch erkennen,1-Ja,2-Ja TLS,0-Nein
+slapd=Voller Pfad zum OpenLDAP Server Programm,8
+ldap_user=Benutzer f&#252;hrt OpenLDAP Server aus als,5
+line2=Einstellungen der Benutzeroberfl&#228;che,11
+line3=LDAP Server Befehl,11
+start_cmd=Befehl zum Stoppen des LDAP Server,3,Nur <tt>slapd</tt> ausf&#252;hren
+stop_cmd=Befehl zum Stoppen des LDAP Server,3,Nur Prozess t&#246;ten
+apply_cmd=Befehl zum Anwenden der Konfiguration,3,Nur Stoppen und Neustarten
