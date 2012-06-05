@@ -1,0 +1,56 @@
+<header>Geheugen Gebruik</header>
+
+<b>Geheugen gebruik limiet</b>: Standaard staat dit op 8MB.  <p>
+LET OP: Deze parameter specificeert niet de maximum proces grote.
+Het bepaald een limiet op 1 aspect van Squid's geheugen gebruik.
+Squid gebruikt ook voor andere zaken geheugen.
+Uw proces kan twee of drie keer zo groot worden als de waarde die
+u hier instelt. 
+<p>
+Het specificeert de ideale hoeveelheid geheugen die gebruikt word
+voor:
+<ul>
+<li>In-Transit objects
+<li>Hot Objects
+<li>Negative-Cached objects
+</ul>
+<p>
+Data voor deze objecten worden opgeslagen in 4 kB blokken. Deze
+parameter specificeert het ideale boven limiet op de totale grote van
+de toegewezen 4 kB blokken. In-Transit objecten gebruiken de hoogste
+prioriteit.
+<p>
+In-transit objecten hebben prioriteit boven de andere objecten. Wanneer
+extra ruimte nodig is voor binnen komende data, zullen negatieve-cache
+en 'hot objects' worden losgelaten. Met andere woorden, de negatieve-cache
+en 'hot objects' zullen de ruimte opvullen die niet nodig is voor
+'in-transit' objecten.
+<p>
+Als de omstandigheden dat vereisen, zal deze limiet worden overschreden.
+Speciaal indien uw inkomende aanvragen meer geheugen nodig hebben dan de
+hoeveelheid geheugen die nodig is om 'in-transit' objecten vast te houden,
+zal Squid over het limiet gaan die nodig is voor de nieuwe aanvragen. Wanneer
+de belasting afloopt zullen de blokken bevroren blijven totdat het hoogste punt
+bereikt is. Daarna zullen de blokken weer worden gebruikt om de 'hot objects'
+op te slaan.
+<p>
+
+<b>FQDN cache grote</b>: Standaard is dit 1024.  Maximum aantal van Volledig Gekwalificeerde Domein Naam cache ingangen. <p>
+
+<b>Geheugen hoogste-punt markering</b>: Standaard op 95%. Wanneer dit hoogste punt is bereikt, zullen 'hot objects' en 'in transit objects' worden losgelaten om geheugen vrij te maken. <p>
+
+<b>Geheugen laagste-punt markering</b>: Standaard op 90%. Nadat het hoogste punt is bereikt, zal Squid geheugen vrij maken totdat het gebruik onder dit punt is gekomen. <p>
+
+<b>Harddisk hoogste-punt markering</b>: Standaard op 95%. Wanneer dit hoogste punt is bereikt, zal Squid agressief de harddisk gaan legen. <p>
+
+<b>Harddisk laagste-punt markering</b>: Standaard op 90%. Wanneer dit hoogste punt is bereikt, zal Squid doorgaan met het legen van de harddisk totdat het verbruikt zakt onder deze markering. <p>
+
+<b>Maximum object grote in cache</b>: Standaard op 4096 kB. Deze instelling limiteerd de grote van de objecten die worden opgeslagen in de cache. Alles boven deze grote zal nooit in de cache gezet worden en moet dus iedere opnieuw worden opgehaald van de originele server. <p>
+
+<b>IP adres cache grote</b>: Standaard op 1024. Aantal ingangen die worden opgeslagen in de IP cache. <p>
+
+<b>IP cache hoogste-punt markering</b>: Standaard op 95%. Het punt waarop Squid begint met het legen van de IP cache ingangen. <p>
+
+<b>IP cache laagste-punt markering</b>: Standaard op 90%.  Nadat het leeg maken van de IP cache begint zal hij door blijven gaan totdat het aantal ingangen word bereikt onder dit percentage. <p>
+
+<hr>

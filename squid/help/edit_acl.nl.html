@@ -1,0 +1,24 @@
+<header>Toegang Controle</header>
+
+<b>Toegang Controle lijst</b>: ACL's zijn lijsten met termen die aan te passen zijn met behulp van reguliere expressies met letterlijke uitdrukkingen. Een ACL kan ook een file zijn die 1 item of reguliere expressie per regel bevat. De ACL
+box op de pagina heeft diverse velden die bewerkt kunnen worden. Ook nieuwe ACL's kunnen aangemaakt worden.
+<p>
+De aanwezig velden zijn :
+<p>
+<em>Naam</em> is de naam waarmee de ACL kan worden geidentificeerd.  Wanneer u een <b>Proxy Beperking</b> aanmaakt is dit de naam die gebruikt word om te bepalen wat er word beperkt.
+<p>
+<em>Type</em> is het type informatie waarmee de ACL word vergeleken. 
+<p>
+<em>Overeenkomst..</em> is het adres, poort, URL, gebruiker, enz.. waarmee de ACL word vergeleken.
+<p>
+<b>Proxy beperkingen</b>: Proxy beperkingen zijn regels die de aanvraag toestaan of weigeren gebaseerd op het feit of de ACL overeenkomt met de aanvraag. Er zitten drie velden in deze box.
+<p>
+<em>Actie</em> kan zijn <em>toestaan</em> of <em>weigeren</em>.
+<p>
+<em>ACL's</em> zijn de ACL's waarmee word vergeleken om te beslissen of de aanvraag word toegestaan of word geweigerd.  Als er een uitroepteken overwogen word zal de ACL teniet worden gedaan, Met andere woorden alles <em>behalve</em> de leden van die ACL zullen worden toegestaan of worden geweigerd. 
+<p>
+<em>Verplaats</em> bepaald de volgorde van de beperkingen in de lijst. De volgorde waarin deze verschijnen is erg belangrijk, omdat Squid alleen de lijst leest totdat hij de eerste overeenkomst heeft gevonden.
+<p>
+<b>ICP beperkingen</b>: Deze box is voor ICP aanvraag beperkingen. ICP aanvragen zijn aanvragen van andere buren die in cache staan. Deze sectie werkt hetzelfde als de <b>Proxy beperkingen</b>.
+
+<hr>

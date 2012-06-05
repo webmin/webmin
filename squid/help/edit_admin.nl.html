@@ -1,0 +1,21 @@
+<header>Administratieve Opties</header>
+
+<b>Uitvoeren als Unix gebruiker</b>: Standaard is dit 'nobody' of 'squid' afhankelijk van het systeem. Indien de cache word uitgevoerd als root, zal het zijn effectieve/echte ID wijzigen naar deze waarde.
+<p>
+<b>Uitvoeren als Unix groep</b>: Standaard is dit 'geengroep' of 'squid' afhankelijk van het systeem.  Indien de cache word uitgevoerd als root, zal het zijn effectieve/echte ID wijzigen naar deze waarde.
+<p>
+<b>Proxy authenticatie realm</b>: Geeft de realm-naam die moet worden gemeld bij de client voor proxy-authenticatie (gedeelte van de tekst die de gebruiker zal zien wanneer hun gebruikersnaam en wachtwoord word getoond).
+<p>
+<b>Cache manager email adres</b>: Standaard is dit 'webmaster' of 'root' afhankelijk van het systeem. Email-adres van de locale cache manager die de email ontvangt zodra de cache dood gaat.
+<p>
+<b>Zichtbare hostnaam</b>: Als u een speciale hostnaam wilt presenteren in de fouten berichten, enz.. , moet u dit definieren.  Anders zal de waarde van gethostname() worden gebruikt. Indien u meerdere caches in een cluster heeft en fouten krijgt over IP-doorsturen moet u individuele namen instellen met deze instelling.
+<p>
+<b>Unieke hostnaam</b>: Indien meerdere machines wilt hebben met dezelfde <b>Zichtbare hostnaam</b> moet u iedere machine een andere <b>Unieke hostnaam</b> geven zodat doorstuur loops gedetecteerd kunnen worden.
+<p>
+<b>Host cache aankondiging</b>: Hostnaam waar aangekondigde berichten naar worden verstuurd. Lees meer over cache hierarchie op <a href="http://www.squid-cache.org/Doc/FAQ/FAQ-4.html" target="Reference">De Squid FAQ</a>. Standaard staat dit op  'tracker.ircache.net' wanneer een aankondiging is aangezet door het instellen van een aankondigings periode.
+<p>
+<b>Cache aankondigings poort</b>: Host poort waar aankondigingen naar worden verstuurd. Standaard staat dit op 3131 wanneer de aankondiging is aangezet. 
+<p>
+<b>Aankondigings periode</b>: Frequentie van aankondigingen. Aankondigingen aanzetten bij een cache door het in te stellen op '1 dag'. Standaard is dit '0' wat de aankondiging uitzet.
+
+<hr>

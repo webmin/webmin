@@ -1,0 +1,19 @@
+<header>Authenticatie Programma's</header>
+
+<p>
+<b>Custom Authenticatie programma</b>: Standaard op geen.  Specificeer de opdracht voor de externe authenticator. Dit soort programma's lezen de regel die de "gebruikersnaam wachtwoord" bevatten en reageren dan met "OK" of "FOUT" in een eindeloze loop. Indien u een authenticator gebruikt, wees er dan zeker van dat u minimaal 1 acl heeft van het type proxy_auth.<p>
+Indien u traditionele proxy authenticatie wilt gebruiken, stelt u deze regel in met zoiets als /usr/bin/ncsa_auth /usr/etc/passwd. Ervan uitgaande dat u ncsa_auth heeft gecompileerd en geinstalleerd op uw systeem.
+<p>
+<b>Aantal authenticatie programma's</b>: Standaard staat dit op 5 als er een authenticator is aangezet.
+<p>
+<b>Tijd voor wachtwoorden in cache</b>: Hoe lang Squid een succesvolle login in cache houd voordat een nieuwe opvraging doet bij het authenticatie programma.
+<p>
+<b>Tijd om een gebruiker te verbinden met een IP adres</b>: Als dezelfde gebruiker probeert in te loggen van twee verschillende IP adressen gedurende deze periode word hij geweigerd. Dit kan worden gebruikt om te voorkomen dat een proxy wachtwoord word gedeeld door meerdere gebruikers.
+<p>
+<hr>
+
+Indien u Squid versies 2.5 en hoger gebruikt, kunnen de hier bovenstaande extra opties
+en andere zaken gescheiden ingesteld worden voor verschillende soorten authenticatie zoals
+Digest en NTLM. Echter indien u wilt dat Webmin de proxy gebruikers lijst bewerkt moet u een Basis authenticatie in stellen. <p>
+
+<hr>

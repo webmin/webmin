@@ -1,0 +1,17 @@
+<header>Poorten en Netwerken</header>
+
+<b>Proxy poort</b>: Standaard staat dit op 3128. Met deze waarde steld u in op welke poort de Squid server luistert voor http aanvragen. Het is nodig dat de client browsers is geconfigureerd om te verbinden met een proxy voor deze poort, anders zal er ook transparantie moeten worden ingesteld. <p>
+
+<b>ICP poort</b>: Het poort nummer waar Squid ICP aanvragen op verstuurd en verzend naar en van buren caches. Standaard is dit 3130. Om dit uit te schakelen zet u dit op "0". Dit kan worden opgeheven met -u op de opdrachtregel. <p>
+
+<b>Inkomende TCP Adres</b>: Standaard is dit "geen". Dit definieert de HTTP socket die verbindingen accepteert van andere clients en andere caches. <p>
+
+<b>Uitgaand TCP Adres</b>: Standaard is dit "geen". Dit definieert de HTTP socket die verbindingen maakt naar remote servers en andere caches. <p>
+
+<b>Uitgaand UDP Adres</b>: Standaard is dit "geen". Dit definieert de ICP socket die pakketten ontvangt van andere caches. <p>
+
+<b>Inkomend UDP Adres</b>: Standaard is dit "geen". Dit definieert de socket voor ICP pakketten die worden verstuurd naar andere caches. <p>
+
+<b>TCP ontvangst buffer</b>: Grote van de TCP buffer. Dit staat standaard op de OS ontvangst buffer. <p>
+
+<hr>

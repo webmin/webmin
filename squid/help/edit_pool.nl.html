@@ -1,0 +1,16 @@
+<header>Bewerk Vertraging Pool</header>
+
+<p>
+<b>Pool nummer</b>
+<br>
+  Dit is een nummer wat begint bij 1, wat is gekozen voor u door Webmin. Dit is een label voor de pool zodat er meer dan 1 pool kan worden geconfigureerd an anders afgehandeld kan worden door Squid.
+<p>
+<b>Pool klasse</b>
+<br>
+Dit definieert het soort klasse van de pool. Iedere vertraagde pool kan een geselecteerde klasse hebben van klasses 1, 2 of 3. De klasses hebben de volgende betekenissen: "1-Samenvoegen", "2-Samenvoegen en Individueel", "3-Samenvoegen, Individueel, en Netwerk". De simpelste klasse 1, specificeert een bandbreedte voor alle clienten waaraan deze pool toebehoort en waar zij niet overheen kunnen gaan. Klasse 2 specificeert zowel het samenvoegen van de bandbreedte als een bandbreedte wat ieder individu kan gebruiken, een hierarchie aanmaken met limieten waarbij alle individuen gecombineerd moeten passen in het samenvoegen terwijl ieder individu word gelimiteerd door zijn eigen limiet. Tot slot, Klasse 3 specificeert een samenvoeging en een individuele bandbreedte naast een netwerk bandbreedte wat word toegevoegd tot een geheel subnet. Klasse 3 is normaal gesproken alleen bruikbaar op zeer grote netwerken die meer dan 1 subnetten heeft.
+<p>
+Limieten kunnen worden gespecificeerd in iedere gewenste eenheid, echter het zal worden opgeslagen in de Squid configuratie file in bytes. Het eerste veld is de gemiddelde doorvoercapaciteit dat word toegewezen aan de pool, terwijl de tweede de grote van de bak is die word gebruikt, wat grofweg overeenkomt met een gemiddelde bandbreedte maximum.
+<p>
+Nadat u voor de eerste keer een pool heeft aangemaakt zal er een nieuwe sectie verschijnen onderaan de pagina, waar u een selectie kunt doen welke ACL's aan de pool worden toegevoegd. ACL's worden aangemaakt op de <b>Toegang Controle</b> pagina, en iedere ACL mag worden gebruikt om te selecteren welke verbindingen aan een vertraagde pool worden toegevoegd. Een ACL <b>toestaan</b> zal de vertraagde pool toevoegen aan de overeenkomende verbindingen, terwijl een ACL <b>negeren</b> ervoor zal zorgen dat de overeenkomende verbinding word omgeleid bij de vertraagde pool. Dus, tenzij alle verbindingen alle verbindingen dezelfde vertraagde pool bevatten zult u 2 ACL.s moeten toevoegen, de eerste zal de ACL zijn die u toevoegt aan de vertraagde pool en de tweede zal een <tt>alles</tt> ACL zijn zodat alleen uw geselecteerde client's worden beperkt.
+<p>
+Vergeet niet om de wijzigingen toe te voegen nadat u een nieuwe pool heeft aangemaakt met overeenkomende ACL's.
