@@ -21,23 +21,27 @@ our @cs_names = map { $text{$_} } @cs_codes;
 our $osdn_host = "prdownloads.sourceforge.net";
 our $osdn_port = 80;
 
-our $update_host = "www.webmin.com";
+our $update_host = "download.webmin.com";
 our $update_port = 80;
 our $update_page = "/updates/updates.txt";
 our $update_url = "http://$update_host:$update_port$update_page";
-our $redirect_url = "http://$update_host/cgi-bin/redirect.cgi";
+our $redirect_host = "www.webmin.com";
+our $redirect_url = "http://$redirect_host/cgi-bin/redirect.cgi";
 our $update_cache = "$module_config_directory/update-cache";
+
+our $primary_host = "www.webmin.com";
+our $primary_port = 80;
 
 our $webmin_key_email = "jcameron\@webmin.com";
 our $webmin_key_fingerprint = "1719 003A CE3E 5A41 E2DE  70DF D97A 3AE9 11F6 3C51";
 
-our $standard_host = $update_host;
-our $standard_port = $update_port;
+our $standard_host = $primary_host;
+our $standard_port = $primary_port;
 our $standard_page = "/download/modules/standard.txt";
 our $standard_ssl = 0;
 
-our $third_host = $update_host;
-our $third_port = $update_port;
+our $third_host = $primary_host;
+our $third_port = $primary_port;
 our $third_page = "/cgi-bin/third.cgi";
 our $third_ssl = 0;
 
@@ -2022,7 +2026,7 @@ sub get_latest_webmin_version
 {
 my $file = &transname();
 my ($error, $version);
-&http_download($update_host, $update_port, '/', $file, \$error);
+&http_download($primary_host, $primary_port, '/', $file, \$error);
 return (0, $error) if ($error);
 open(FILE, $file);
 while(<FILE>) {
@@ -2034,7 +2038,7 @@ while(<FILE>) {
 close(FILE);
 unlink($file);
 return $version ? (1, $version)
-		: (0, "No version number found at $update_host");
+		: (0, "No version number found at $primary_host");
 }
 
 =head2 filter_updates(&updates, [version], [include-third], [include-missing])
