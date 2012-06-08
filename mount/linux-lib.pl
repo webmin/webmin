@@ -72,7 +72,8 @@ while(<FSTAB>) {
 	local(@o, $at_boot);
 	chop; s/#.*$//g;
 	if (!/\S/ || /\signore\s/) { next; }
-	if (/\t/) {
+	if (/\t+[^\t]+\t+[^\t+]\t+/) {
+		# Contains at least 3 tabs .. assume tab separation
 		@p = split(/\t+/, $_);
 		}
 	else {
