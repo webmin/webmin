@@ -598,8 +598,6 @@ sub interfaces_row
 {
 return ( $_[1],
 	 $_[0] eq '-' ? $text{'list_any'} : $_[0],
-	 $_[2] eq 'detect' ? $text{'list_auto'} :
-	  $_[2] eq '-' || $_[2] eq '' ? $text{'list_none'} : $_[2],
 	 $_[3] ? $_[3] : $text{'list_none'} );
 }
 
@@ -625,10 +623,11 @@ print "<td>\n";
 &zone_field("zone", $_[0], 0, 1);
 print "</td> </tr>\n";
 
+
 # options
-local %opts = map { $_, 1 } split(/,/, $_[2]);
+local %opts = map { $_, 1 } split(/,/, $_[3]);
 print "<tr> <td valign=top><b>$text{'interfaces_2'}</b></td> <td colspan=3>\n";
-&options_input("opts", $_[2], \@interfaces_opts);
+&options_input("opts", $_[3], \@interfaces_opts);
 print "</td> </tr>\n";
 }
 
@@ -636,7 +635,7 @@ sub interfaces_validate
 {
 $in{'iface'} =~ /^[a-z]+\d*(\.\d+)?$/ ||
 	$in{'iface'} =~ /^[a-z]+\+$/ || &error($text{'interfaces_eiface'});
-return ( $in{'zone'}, $in{'iface'},
+return ( $in{'zone'}, $in{'iface'}, '-',
 	 join(",", split(/\0/, $in{'opts'})) );
 }
 
