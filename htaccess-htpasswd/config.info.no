@@ -1,0 +1,9 @@
+htaccess=Filnavn for Apache opsjoner,0
+htpasswd=Filnavn for brukere-fil,0
+htgroups=Filnavn for gruppefil,0
+sort=Sorter brukere etter,1,1-Brukernavn,0-Plassering i filen
+md5=Tilby MD5 krypteringsvalg,1,1-Ja,0-Nei
+sha1=Tilby SHA1 krypteringsvalg,1,1-Ja,0-Nei
+digest=Tilby digest krypteringsvalg,1,1-Ja,0-Nei
+extra_directives=Ekstra direktiver som skal tas med i .htaccess,9,0,0,\t
+perms=Tillatelser for opprettede filer,3,Standard (644)

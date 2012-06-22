@@ -1,0 +1,2 @@
+sort_mode=Sorter verter etter,1,1-Vertsnavn,0-Rekkef&#248;lgen de ble lagt inn i,2-Beskrivelse
+table_mode=Vis verter som,1,1-Tabell,0-Ikoner
