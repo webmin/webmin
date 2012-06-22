@@ -8,6 +8,7 @@ blob_mode=Vis blob og tekstfelter som,1,0-Data i tabell,1-Lenker for nedlasting
 nodbi=Bruk DBI for tilkobling hvis tilgjengelig,1,0=Ja,1=Nei
 nopwd=Bruk MYSQL_PWD for &#229; sende passord?,1,0-Ja,1-Nei
 date_subs=Utf&#248;r <tt>strftime</tt> erstatning p&#229; mal for sikkerhetskopier,1,1-Ja,0-Nei
+webmin_subs=Utf&#248;r Webmin variabel-erstatning p&#229; backup destinasjoner?,1,1-Ja,0-Nei
 passwd_mode=Type passord-hashing,1,1-Gammel,0-Standard
 encoding=Koding for databaseinnhold,3,Standard (fra gjeldende spr&#229;k)
 max_dbs=Maks. antall databaser og tabeller som skal vises,0,5
