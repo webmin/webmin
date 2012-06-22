@@ -533,7 +533,7 @@ else
 	if [ "$?" = "0" ]; then
 		# We can generate a new SSL key for this host
 		host=`hostname`
-		openssl req -newkey rsa:512 -x509 -nodes -out $tempdir/cert -keyout $tempdir/key -days 1825 >/dev/null 2>&1 <<EOF
+		openssl req -newkey rsa:2048 -x509 -nodes -out $tempdir/cert -keyout $tempdir/key -days 1825 >/dev/null 2>&1 <<EOF
 .
 .
 .
