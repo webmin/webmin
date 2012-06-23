@@ -258,6 +258,7 @@ index_boot=Starte beim Booten
 index_dir=Director Konfiguration
 index_echeck=$1 ist m&#246;glicherweise nicht installiert oder die <a href='$2'>Modul Konfiguration</a> ist nicht korrekt.
 index_eversion=Ihr System benutzt Bacula Version $2, aber dieses Webmin Modul unterst&#252;tzt nur Version $1 und dar&#252;ber.
+index_fd=Datei Daemon Konfiguration
 index_fixpass=Klicke hier, um das Konsolen Passwort zu fixen
 index_groups=Bacula Gruppen Konfiguration
 index_ocmin=Beigesteuert von <a href=$2 target=_new>Linmin <img align=middle border=0 src='$1'></a>
@@ -265,8 +266,10 @@ index_restart=Starte Bacula neu
 index_return=Modulindex
 index_sd=Storage Daemon Konfiguration
 index_start=Starte Bacula
+index_startdesc=Klicken Sie auf diesen Button zum Starten des Bacula-Daemon wie oben aufgef&#252;hrt.
 index_status=Prozessstatus:
 index_stop=Stoppe Bacula
+index_stopdesc=Klicken Sie auf diesen Button zum Stoppen des Bacula-Daemon wie oben aufgef&#252;hrt.
 index_version=Bacula $1
 job_after=Befehl nach Job
 job_before=Befehl vor Job
