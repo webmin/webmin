@@ -226,6 +226,7 @@ if (&has_command("apt-show-versions")) {
 	# pinned versions and backports into account
 	local @rv;
 	&clean_language();
+	&execute_command("apt-show-versions -i");
 	&open_execute_command(PKGS, "apt-show-versions 2>/dev/null", 1, 1);
 	while(<PKGS>) {
 		if (/^(\S+)\/(\S+)\s+upgradeable\s+from\s+(\S+)\s+to\s+(\S+)/ &&
