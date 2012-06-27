@@ -1,0 +1,9 @@
+<header>Vertraagde Pools</header>
+<p>
+Vertraagde pools biedt de mogelijkheid een beperkt bandbreedtegebruik van de clienten. Met vertraagde pools, kunnen clienten worden beperkt op individueel niveau, of in groepen. ACL's worden gebruikt om bandbreedte limieten toe te voegen aan gebruikers.
+<p>
+Deze pagina toont alle bestaande pool's, en hun limieten. Er is ook een sectie voor globale opties, die, op het moment van schrijven, nu nog maar 1 optie heeft.
+<p>
+<b>Eerste bucket niveau</b>
+<br>
+Door de manier waarop vertraagde pools werken kan een nieuwe client meer gebruiken dan hun aangewezen bandbreedte omdat hun nieuwe bucket leeg is. In een overbelast netwerk zal dit betekenen dat andere verbindingen van client's met een bijna volle bucket hun bandbreedte word afgeknepen voor een bepaalde tijd. Deze optie heeft een standaard instellingen van 50% en hoeft normaal gesproken niet worden gewijzigd, of uw <b>max</b> waardes moeten erg hoog staan (de maximale ingestelde waarde bij de configuratie die werd toegevoegd aan de bucket grote voor de pool).

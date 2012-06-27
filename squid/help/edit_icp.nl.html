@@ -1,0 +1,15 @@
+<header>Andere Cache zaken</header>
+
+<b>Andere proxy cache servers</b>: Dit is een lijst met alle huidige geconfigureerde sibling, hoofd, en multicast, caches. Klik op de hostnaam of adres om dit te bewerken of bekijk de complete configuratie. <p>
+
+<b>Direct op te halen URL's</b>: Standaard is dit ".cgi" en "?". Hiermee kunt u forceren dat Squid altijd een bepaalde type inhoud ophaalt van de originele server. Normaal gesproken hoeft u dit niet te veranderen omdat de meeste zaken automatisch door Squid zonder hulp worden afgehandeld. <p>
+
+<b>ICP wachttijd time-out</b>: Standaard staat dit op de 'optimale' waarde. Indien u wilt dat Squid de waarde bepaald moet u dit op een niet-nul waarde zetten. In de oude versie van Squid stand deze waarde op 2000. <p>
+
+<b>Multicast ICP time-out</b>: Standaard staat dit op 2000 m/sec of 2 seconden. Voor Multicast peers verstuurd Squid regelmatig een ICP "probes" om te tellen hoeveel andere peers aan het luisteren zijn op het opgegeven multicast adres.  Deze waarde bepaald hoe lang Squid blijft wachten om alle antwoorden op te tellen.<p>
+
+<b>Dode peer time-out</b>: Standaard staat dit op 10 seconden. Dit bepaald hoe lang Squid wacht voordat hij een peer cache "dood" verklaart. Als er geen ICP reacties worden ontvangen in de opgegeven tijd zal Squid de peer dood verklaren en zal daarna geen ICP reacties meer verwachten van deze peer. Hij blijft echter wel ICP opvragingen versturen en zal de peer als levend markeren na ontvangst van het eerstvolgende ICP antwoord. <p>
+
+Deze time-out heeft ook effect op de tijd waarop Squid een ICP antwoord verwacht van de peers. Indien er meer dan de  'dead_peer' seconden zijn gepasseerd sinds het laatste ICP antwoord werd ontvangen, zal Squid geen volgende ICP reactie meer verwachten bij het opvragen tijdens de volgende zoekopdracht. Dus als uw tijd tussen de opvragingen groter is dan deze time-out zullen u veel aanvragen DIRECT naar de oorspronkelijke server verstuurd worden in plaats van naar uw hoofd server. <p>
+
+<hr>

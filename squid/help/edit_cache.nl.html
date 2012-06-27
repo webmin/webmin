@@ -1,0 +1,48 @@
+<header>Cache Opties</header>
+
+<b>Cache Directory's</b>: U kunt meerdere cache directory regels specificeren om de cache te spreiden over verschillende harddisk partities.<p>
+
+<em>Directory</em> is een top-niveau directory waar de cache swap files worden opgeslagen. Indien u een gehele harddisk
+wilt gebruiken voor de cache, dan kan dit de mount-punt directory zijn. De directory moet bestaan en beschrijfbaar zijn door het Squid proces. Squid zal NIET deze directory aanmaken voor u.
+<p>
+<em>Grote</em> is de hoeveelheid harddisk ruimte in (MB) om te gebruiken onder deze directory. Standaard is dit 100 MB. Verander dit naar de behoefte voor uw configuratie.
+<p>
+<em>1e niveau dirs</em> is het aantal eerste-niveau subdirectory's die worden aangemaakt onder de <em>Directory</em>.  Standaard is dit 16.
+<p>
+<em>2e niveau dirs</em> is het aantal tweede-niveau subdirectory's die worden aangemaakt onder iedere eerste-niveau directory. Standaard is dit 256.
+<P>
+<b>Gemiddelde Object Grote</b>: Standaard is dit 13 kB. Gemiddelde object grote die word gebruikt voor het gemiddeld aantal objecten die in het cache bewaard worden.
+<p>
+<b>Objecten per bucket</b>: Standaard is dit 50. Doel aantal objecten per bucket in de opslag hash tabel. Verlagen van deze waarde zorgt voor een verhoging van het aantal bucket's en ook van de opslag onderhoud ratio.
+<p>
+<b>Cache geen URL's voor ACL's</b>: Standaard staat dit op "Geen". Selecteer de ACL's waarvoor u niet wilt dat Squid de data in cache zet. Dit is handig omdat u hiermee voor een interne web server kunt bepalen dat die niet in cache gezet hoeft te worden.
+<p>
+<b>Maximum cache tijd</b>: Standaard is dit 1 jaar. Deze parameter definieert de maximum LRU leeftijd. Bijvoorbeeld, Indien u dit instelt op '1 week' zullen de objecten worden verwijdert wanneer zij een week of langer niet meer worden geraadpleegd.
+<p>
+<b>Mislukte verzoek cache tijd</b> Standaard is dit 5 minuten. Time-to-Live (TTL) voor mislukte aanvragen. bepaalde  types van aanvragen (zoals "verbinding geweigerd" en "404 Niet Gevonden") worden negatief in cache gezet voor een configureerbare tijd. Let op dat iets anders is dan negatieve cache van DNS opzoek acties.
+<p>
+<b>DNS opzoek cache tijd</b>: Standaard is dit 6 uur (360 minuten). Time-to-Live (TTL) voor positieve in cache zetten van een succesvolle DNS opzoek actie. Indien u dit gebruik van Squid ipcache op minimum wilt zetten moet u dit instellen op 1, en niet op 0.
+<p>
+<b>Mislukte DNS cache tijd</b>: Standaard is dit 5 minuten.  Time-to-Live (TTL) voor negatief in cache zetten of mislukte DNS opzoek acties.
+<p>
+<b>Verbinding Time-out</b>: Standaard is dit 120 seconden. Sommige systemen (met name Linux) kan niet erop vertrouwen dat de juiste Time-out bij verbinding(2) word gevraagd. Daarom zal het Squid proces zijn eigen time-out forceren bij server verbindingen. Deze parameter specificeert hoe lang er gewacht moet worden tot een verbinding compleet is.
+<p>
+<b>Lees time-out</b>: Standaard is dit 15 minuten. De lees_time-out is toegevoegd aan de server-zijde verbindingen. Na iedere succesvolle leesactie(), zal de time-out worden verlengt met deze hoeveelheid. Indien er niet opnieuw data word gelezen na deze verstreken tijd, zal de aanvraag worden afgebroken en worden gelogd met een ERR_READ_TIMEOUT.
+<p>
+<b>Site selectie time-out</b>: Standaard is dit 4 seconden.  Voor URN naar meerdere URL's URL selecties.
+<p>
+<b>Client aanvraag time-out</b>: Standaard is dit 15 minuten. De lees_time-out is toegevoegd aan de server-zijde verbindingen. Na iedere succesvolle leesactie(), zal de time-out worden verlengt met deze hoeveelheid. Indien er niet opnieuw data word gelezen na deze verstreken tijd, zal de aanvraag worden afgebroken en worden gelogd met een ERR_READ_TIMEOUT.
+<p>
+<b>Max client verbinding tijd</b>: Standaard is dit 1 dag. Dit is de maximum tijd dat een client (browser) is toegestaan om verbonden te blijven met het cache proces. Dit voorkomt dat de Cache een heleboel sockets bevat (en dus file descriptors) die vast zitten in een CLOSE_WAIT status van remote clients die weg zijn gegaan zonder netjes af te sluiten (door een netwerk fout of door een slechte client implementatie).
+<p>
+<b>Max afsluit tijd</b>: Standaard is dit 30 seconden. Wanneer de SIGTERM of SIGHUP word ontvangen, zal de cache worden ingesteld naar een "uitschakeling in afwachting van" mode totdat alle actieve sockets worden gesloten. Deze waarde is de ingestelde levensduur voor alle open descriptors gedurende de uitschakel mode. Iedere actieve client zal na deze hoeveelheid seconden een 'time-out' bericht krijgen.
+<p>
+<b>Half-afgesloten clients</b>: Standaard is dit 'aan'.  Sommige client's kunnen de verzend zijde van hun TCP verbindingen afsluiten, terwijl hun ontvangst zijde open blijft staan. Soms kan Squid niet het verschil zien tussen een half-gesloten verbinding of een volledig-gesloten TCP verbinding. Standaard blijven half-gesloten client verbindingen openstaan totdat er een lees(2) of schrijf(2) op de socket een fout terug geeft. Verander deze optie naar 'uit' en Squid zal onmiddellijk de client verbindingen afsluiten wanneer er een lees(2) terugkomt "geen data meer om te lezen".
+<p>
+<b>Aanhoudende time-out</b>: Standaard is dit 120 seconden. Time-out voor stationaire permanente verbindingen van client's, servers en andere proxies. Aanhoudende verbindingen zullen worden uitgeschakeld indien dit minder is dan 10 seconden.
+<p>
+<b>WAIS relais host</b>: Standaard is dit niets.  Hostnaam of een adres om een WAIS verzoek bij te doen.
+<p>
+<b>WAIS relais poort</b>: Standaard is dit niets.  Poort om een WAIS verzoek naar door te sturen.
+
+<hr>

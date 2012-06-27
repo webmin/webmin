@@ -1,0 +1,46 @@
+<header>Extra Opties</header>
+
+<b>Start DNS test adressen</b>: DNS servers waar Squid aanvragen bij uitvoert om te testen of DNS opzoekacties correct werken.
+<p>
+<b>SIGUSR1 logfiles rotaties</b>: Standaard staat dit op 10 of 0, afhankelijk van het systeem. Dit Specificeert het aantal logfiles rotaties die gemaakt moeten worden als u 'squid -k rotate' ingeeft. Standaard is dit 10, waardoor er geroteerd word met extensies van 0 tot 9. Indien u de logfile_rotate instelt op 0 zal dit de rotatie uitzetten, echter de logfiles zullen wel worden geopend en gesloten. Hierdoor kunt u de logfiles hernoemen net voordat u het log rotatie signaal geeft.
+<p>
+Let op, De 'squid -k rotate' opdracht word normaal gesproken verstuurd met een USR1 signaal naar de werkende squid processen. In bepaalde situaties (Bijv. in Linux met Async I/O), word USR1 gebruikt voor andere doeleinde, dus -k rotate gebruikt een ander signaal. U kunt er het beste een gewoonte van maken om 'squid -k rotate' te gebruiken in plaats van 'kill -USR1 <pid>'.
+<p>
+<b>Fouten berichten tekst</b>: HTML tekst om bij fouten berichten te voegen. Maak hiervan een "mailto" URL naar uw admin adres, of misschien alleen een link naar de Web pagina van uw organisatie.
+<p>
+Om dit toe te voegen in uw fouten berichten, moet u de fouten template files herschrijven (deze vind u in de "errors" directory). Als u de 'err_html_text' wilt laten verschijnen moet u een %L tag in de fouten template file zetten.
+<p>
+<b>Per-client statistieken</b>: Indien u de per-client statistieken wilt uitschakelen moet u hier de client_db uitschakelen.
+<p>
+<b>X-Doorgestuurd-Voor header</b>: Standaard is dit 'aan'. Indien dit is ingesteld zal Squid uw systeem's IP adres of naam in de HTTP aanvraag meegeven. Standaard het lijkt erop dat het in de HTTP-verzoeken word doorgestuurd. Standaard lijkt het hierop:
+<p>
+<center>X-Forwarded-For: 192.1.2.3</center>
+<p>
+Indien u dit uitschakelt, zal het getoond worden als:
+<p>
+<center>X-Forwarded-For: unknown</center>
+<p>
+<b>ICP aanvragen loggen</b>: Standaard is dit 'aan'. Indien dit is ingesteld zullen ICP aanvragen worden gelogd naar de access.log. U kunt dit uitschakelen indien uw ICP belasting erg hoog is om de snelheid te behouden of om de log analyse simpel te houden.
+<p>
+<b>Minimum van directe sprongen</b>: Standaard is dit 4. Indien u de ICMP ping zaken gebruikt, doe dan direct ophalen voor websites die niet meer dan deze hoeveelheid sprongen verwijderd zijn.
+<p>
+<b>Bewaar geheugen voor toekomstig gebruik</b>: Standaard is dit 'Ja'. Indien dit is ingesteld zal Squid pools met toegewezen (maar ongebruikt) geheugen beschikbaar houden voor toekomstig gebruik. Als u weinig geheugen heeft op uw systeem en u bent ervan overtuigd dat uw malloc library beter presteert dan de Squid routines, zet u dit uit.
+<p>
+<b>Hoeveelheid geheugen om apart te houden</b>: Standaard is dit 'Ongelimiteerd'. Indien dit is ingesteld op een waarde hoger dan nul zal Squid op zijn hoogst het gespecificeerde limiet van toegewezen (maar ongebruikt) geheugen bewaren in de geheugen pools. Alles vrij() aanvragen die boven dit limiet zitten worden afgehandeld door uw malloc library. Squid gaat niet vooraf geheugen toewijzen, alleen veilig te behouden objecten die anders vrij gemaakt zouden zijn. Dus het is veilig om de memory_pools_limit in te stellen op een redelijk hoge waarde zelf indien uw configuratie weinig geheugen gebruikt.
+<p>
+Indien het niet is ingesteld (standaard) of is ingesteld op nul, zal Squid al het geheugen bewaren wat mogelijk is. Er is dus geen limiet op de totale hoeveelheid gebruikt geheugen voor veilig-bewaren.
+<p>
+<b>Headers om door te laten naar</b>: Standaard is dit 'Alle headers'. Deze optie vervangt de oude 'http_anonymizer' optie met iets wat meer mogelijkheden geeft om te configureren. U kunt nu precies specificeren welke headers worden toegestaan en welke worden verwijdert van uitgaande aanvragen.
+<p>
+Er zijn twee methoden om deze optie te gebruiken. U kunt specifieke headers toestaan (dus alle andere weigeren), of u kunt specifieke headers weigeren (dus alle andere toestaan). 
+<p>
+<b>Namaak Gebruiker-Agent</b>: Standaard is dit 'geen'. Indien u de Gebruiker-Agent header filtert met de <b>Headers om door te laten naar</b> optie kan dit ervoor zorgen dat sommige Web servers uw aanvraag weigeren. Gebruik dit dan om ze te misleiden.
+<p>
+<b>WCCP Router Adres</b>: Gebruik deze optie om uw WCCP ``home'' router te definieren voor Squid.
+<p>
+<b>WCCP Inkomend Adres</b>: Gebruik deze optie indien u WCCP berichten nodig heeft als u maar op 1 interface kunt ontvangen. Gebruik deze optie niet als u niet zeker weet hoeveel interfaces u heeft, of indien u weet dat u maar 1 interface heeft.
+<p>
+<b>WCCP Uitgaand Adres</b>: Gebruik deze optie indien het nodig is dat WCCP berichten verstuurd moeten worden over 1  interface. Gebruik deze optie niet als u niet zeker weet hoeveel interfaces u heeft, of indien u weet dat u maar 1 interface heeft.
+<p>
+
+<hr>

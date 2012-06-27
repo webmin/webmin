@@ -478,6 +478,7 @@ pft_6=MacOS NetInfo database
 umass_title=Delete Users
 umass_err=Failed to delete users
 umass_sure=Are you sure you want to delete the $1 selected users? Their home directories contain $2 of files.
+umass_others=WARNING! Some home directories contain $1 files owned by other users.
 umass_sure2=Are you sure you want to delete the $1 selected users?
 umass_euser=You are not allowed to delete the user $1
 umass_enone=No users selected

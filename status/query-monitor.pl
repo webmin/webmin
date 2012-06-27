@@ -37,7 +37,7 @@ if (!$cmd->execute()) {
 local @r = $cmd->fetchrow();
 $cmd->finish();
 
-if ($_[0]->{'result'} && $r[0] ne $_[0]->{'result'}) {
+if ($_[0]->{'result'} ne '' && $r[0] ne $_[0]->{'result'}) {
 	return { 'up' => 0,
 		 'desc' => &text('query_ewrong', $r[0]) };
 	}

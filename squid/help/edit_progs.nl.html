@@ -1,0 +1,23 @@
+<header>Help Programma's</header>
+
+<b>FTP kolom breedte</b>: Standaard is dit 32. Stelt de breedte in waarop FTP luistert. Dit moet zo worden ingesteld dat het past in een standaard browser. Als u dit te smal instelt worden lange namen afgekapt wanneer u een FTP site afzoekt.
+<p>
+<b>Anonieme FTP login</b>: Standaard is dit 'Squid@'. Indien u wilt dat het anonieme login wachtwoord meer informatief is (en het gebruik van kieskeurig FTP servers aanzet), Stelt u dit tot iets redelijks in voor uw domein, bijvoorbeeld  www.gebruiker@ergens.net.<p>
+ De reden waarom dit standaard niet is ingevuld komt omdat het kan worden opgevraagd namens een gebruiker vanuit ieder domein, afhankelijk van hoe de cache word gebruikt. Sommige ftp server's zullen ook controleren of het email adres geldig is (bijvoorbeeld perl.com).
+<p>
+<b>Squid DNS programma</b>: Standaard is dit dnsserver. Dit specificeert de locatie van het uitvoerbare programma voor het dns opzoek proces. Standaard is dit een niet-blokkerende caching naamserver die standaard word geinstalleerd in Squid.
+<p>
+<b>Aantal DNS programma's</b>: Standaard is dit 5. Het aantal processen die worden voortgebracht bij de DNS naam opzoek service. Voor zwaar belaste caches op grote servers zult u waarschijnlijk deze waarde moeten verhogen naar 10. Het maximum is 32.
+<p>
+<b>Domein toevoegen bij de aanvraag</b>: Standaard staat dit uit. Normaal gesproken zet de 'dnsserver' de RES_DEFNAMES naamomzetting optie uit (bekijk res_init(3)). Dit voorkomt dat caches die in een hierarchie zitten de enkel-component  hostnamen lokaal gaan interpreteren. Om de dnsserver enkele-component namen te laten afhandelen moet u deze optie aanzetten.
+<p>
+<b>DNS server adressen</b>: Standaard word de resolv.conf file gebruikt. Gebruik dit indien u een lijst wilt specificeren met DNS naam servers (IP adressen) om te gebruiken inplaats van die in de /etc/resolv.conf file.
+<p>
+<b>Cache opschoon programma</b>: Standaard is dit 'unlinkd'. Specificeer de locatie van het uitvoerbare programma voor het file verwijdering proces. Dit moet niet nodig zijn indien er gebruik word gemaakt van async-io omdat dit al gebruikt word in sommige versies.
+<p>
+<b>Squid ping programma</b>: Standaard staat dit op 'pinger'. Specificeer de locatie van het uitvoerbare programma voor het pinger proces. Dit is alleen bruikbaar indien u Squid heeft geconfigureerd (tijdens de compilatie) met de '--enable-icmp' optie.
+<p>
+<b>Custom omleiding programma</b>: Standaard staat dit op 'geen'. Specificeer de locatie van het uitvoerbare programma voor de URL omleider. Omdat ze kunnen bijna elke functie kunnen uitvoeren is er niet 1 standaard ingevoegd. Bekijk de  Release-Notes voor informatie hoe u er 1 kunt schrijven.
+<p>
+<b>Aantal omleiding programma's</b>: Standaard staat dit op 5 indien een omleiding is geconfigureerd. Het aantal omleiding processen om uit te voeren. Indien u dit te laag instelt zal Squid gaan wachten om alle URL's af te handelen en zal alles heel langzaam gaan werken, Indien u dit te hoog instelt zal er onnodig RAM en andere systeem bronnen worden gebruikt.
+<hr>

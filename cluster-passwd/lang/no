@@ -1,0 +1,8 @@
+index_title=Klynge - endre passord
+index_noservers=Ingen tjenere som brukere skal administreres p&#229; er definert i modulen
+passwd_euser=Bruker finnes ikke!
+index_hosts=Alle passordendringer som gj&#248;res med denne modulen vil bli utf&#248;re p&#229; alle $1 verter administrert av modulen Klynge - Brukere og grupper
+passwd_title=Endrer passord
+passwd_err=Kunne ikke endre passord
+__norefs=1
+passwd_on=Endrer passord p&#229; $1 ..

@@ -228,6 +228,10 @@ else {
 		foreach $user (@dlist) {
 			if ($user->{'home'} ne "/" && -d $user->{'home'}) {
 				$size += &disk_usage_kb($user->{'home'});
+				@uothers = &backquote_command(
+				    "find ".quotemeta($user->{'home'}).
+				    " ! -user $user->{'uid'} 2>/dev/null", 1);
+				push(@others, @uothers);
 				}
 			}
 
@@ -256,8 +260,10 @@ else {
 			$access{'dothers'} == 1 ?
 				&ui_checkbox("others", 1, $text{'udel_dothers'},
 					     $config{'default_other'}) : "",
-			$delete_sys && $delete_sys->{'user'} eq 'root' ?
-			   $text{'udel_root'} : "",
+			(@others ? &text('umass_others', scalar(@others))."<p>"
+				 : "").
+			($delete_sys && $delete_sys->{'user'} eq 'root' ?
+			   $text{'udel_root'} : ""),
 			);
 				
 

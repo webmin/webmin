@@ -24,3 +24,4 @@ desc_it=Boot loader GRUB
 desc_ru.UTF-8=Загрузчик Linux (GRUB)
 desc_cz.UTF-8=Zavaděč systému GRUB
 desc_pl.UTF-8=Inicjator systemu GRUB
+desc_no=GRUB Oppstartslaster

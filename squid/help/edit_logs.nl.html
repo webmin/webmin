@@ -1,0 +1,42 @@
+<header>Loggen</header>
+
+<b>Toegang log file</b>: Standaard is dit systeem afhankelijk, gebruikelijk staat dit ergens in de <tt>/var</tt>. Loggen van de client aanvraag activiteit. Bevat een ingang van iedere HTTP en ICP aanvraag die ontvangen is. <p>
+
+<b>Debug log file</b>: Standaard is dit systeem afhankelijk. Cache log file. Dit is waar algemene informatie over uw cache's gedrag word neergezet. U kunt de hoeveelheid data die gelogd word in deze file verhogen bij de <b>Debug opties</b>. <p>
+
+<b>Opslag log file</b>: Standaard is dit systeem afhankelijk. Dit Logt de activiteiten van de opslag manager. Dit toont tevens welke objecten zijn geweigerd van de cache, en welke objecten zijn opgeslagen en voor hoelang. Om dit uit te schakelen vult u "none" in. Er zijn niet echt hulpprogramma's om deze data te analyseren dus u kunt dit veilig uit zetten.<p>
+
+<b>Cache metadata file</b>: Standaard is dit de swap.log in iedere cache directory. Deze log file bewaard de metadata van objecten die opgeslagen zijn op de harddisk. Dit word gebruikt om de cache opnieuw op te bouwen tijdens het opstarten. Normaal staat deze file in iedere cache directory, maar u kunt hier een alternatieve padnaam invullen. Let op dat u wel een volledige filenaam opgeeft en niet alleen een directory. Omdat dit een index is voor de gehele object lijst kunt u dit NIET periodiek roteren! <p>
+
+Indien een ' % ' gebruikt kan worden in de file naam zal dit vervangen worden met de weergave van de cache directory naam waar iedere ' / ' word vervangen met een '.'. Dit is nodig om toevoegen/verwijderen toe te staan van cache directory regels wanneer er een alternatieve cache swap log word gebruikt. <p>
+
+Indien u meer dan 1 cache directory heeft, en de ' %s ' worden niet gebruikt in de naam zullen deze swap log's namen hebben zoals: <p>
+<ul>
+<li>cache_swap_log.00
+<li>cache_swap_log.01
+<li>cache_swap_log.02
+</ul>
+<p>
+De genummerde extensie (die automatisch word toegevoegd) correspondeert met de volgorde van de cache directory regels in de configuratie. Indien u de volgorde cache directory regels in deze file wijzigt corresponderen deze log files NIET meer met de juiste cache directory ingangen (totdat u deze handmatig hernoemd). Wij bevelen aan dat u deze optie NIET gebruikt. Het is beter dat u deze log files in iedere cache directory houd. <p>
+
+<b>Gebruik HTTPD log formaat</b>: Standaard is dit nee. De Cache het log file formaat emuleren wat door veel 'httpd' programma's word gebruikt. Om deze emulatie aan- of uit te zetten kunt u deze waarde instellen op uit of aan. De standaard is het native log formaat te gebruiken omdat dit zeer bruikbare informatie bevat die gebruikt word door de Squid-specifieke log analyse routines.
+<p>
+<b>Log MIME headers</b>: Standaard is dit nee. De Cache kan zowel de aanvragen als de reactie van de MIME headers opslaan van iedere HTTP transactie. De headers worden veilig gecodeerd en zullen verschijnen in velden tussen 2 haakjes aan het einde van de toegang log (voor zowel de native als de httpd-geemuleerde log formaten). Om dit soort loggen aan te zetten moet u dit op 'aan' zetten.
+<p>
+<b>Gebruiker agent log file</b>: Standaard is dit geen. Indien dit geconfigureerd is met de "--enable-useragent-log" configuratie optie, zal Squid de Gebruiker-Agent velden van de HTTP aanvragen schrijven naar de hier gespecificeerde filenaam.
+<p>
+<b>PID file</b>: Standaard is dit systeem afhankelijk. Een filenaam om het proces-id naar toe te schrijven. Om het uit te schakelen vult u "geen" in.
+<p>
+<b>RFC931 identiteit opzoekactie uitvoeren voor ACL's</b>: Standaard is dit geen. identiteit opzoek actie uitvoeren om de gebruikersnaam van client's te vinden die naar binnen komen bij deze ACL's.
+<p>
+<b>RFC931 identiteit time-out</b>: Standaard is dit 30 seconden. Maximale tijd om te wachten op een IDENT aanvraag. Indien u dit te hoog zet en u zet identiteit opzoeken aan, kunt u regelmatig een denial-of-service krijgen bij een hoog aantal identiteit aanvragen die tegelijkertijd worden uitgevoerd.
+<p>
+<b>Log volledige hostnamen</b>: Standaard is dit nee. Dit logt de volledige hostnaam van de client's. 
+<p>
+<b>Loggen van netmask</b>: Standaard is dit 255.255.255.255. Een netmask voor client adressen in de logfiles en het cachemgr resultaat. Verander dit om de privacy van uw cache client's te beschermen. Een netmask van 255.255.255.0 zal alle IP's loggen in deze reeks waarin het laatste cijfer op '0' staat.
+<p>
+<b>Debug opties</b>: Standaard is dit "ALLES,1". Log opties zijn ingesteld als sectie, dit is het niveau waar iedere bron file een uniek onderdeel is. Lagere niveau's resulteren in minder VOLLEDIGE fout opsporingen (niveau 9) en dit kan resulteren in een zeer grote log file, dus wees voorzichtig. Het magische woord "ALLES" stelt de fout opsporing niveau's in voor alle secties. Wij bevelen aan om normaal te werken met "ALLES,1".
+<p>
+<b>MIME headers tabel</b>: Padnaam naar de Squid's MIME tabel. U zou dit niet moeten hoeven te veranderen, echter indien u dit wel wenst te doen moet u de standaard file lezen waarin voorbeelden en formaat informatie staat.
+
+<hr>

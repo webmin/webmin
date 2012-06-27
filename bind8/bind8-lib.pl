@@ -3,6 +3,7 @@
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
+my $dnssec_tools_minver = 1.13;
 my $have_dnssec_tools = eval "require Net::DNS::SEC::Tools::dnssectools;";
 
 if ($have_dnssec_tools) {
@@ -48,11 +49,13 @@ if ($gconfig{'os_type'} =~ /-linux$/ && -r "/dev/urandom") {
 	}
 
 # have_dnssec_tools_support()
-# Returns 1 if dnssec-tools support is available
+# Returns 1 if dnssec-tools support is available and we meet minimum version
 sub have_dnssec_tools_support
 {
-	if ($have_dnssec_tools) {
-		# check that the location for the following essential parameters have been defined
+	if ($have_dnssec_tools &&
+	    $Net::DNS::SEC::Tools::rollrec::VERSION >= $dnssec_tools_minver) {
+		# check that the location for the following essential
+		# parameters have been defined :
 		# dnssectools_conf
 		# dnssectools_rollrec
 		# dnssectools_keydir

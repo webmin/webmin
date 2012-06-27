@@ -1,0 +1,5 @@
+mode=Visningsmodus,1,1-En disk,0-Alle disker
+attribs=Vis alle attributter,1,1-Ja,0-Nei
+smartctl=Full sti til smartctl kommando,0
+ata=Tving ATA sp&#248;rre modus?,1,1-Ja,0-Nei
+extra=Ekstra kommandolinje parametere til smartctl,3,Ingen
