@@ -155,7 +155,7 @@ usave_eworkph=le num&#233;ro de t&#233;l&#233;phone professionnel ne peut pas co
 usave_ehomeph=le num&#233;ro de t&#233;l&#233;phone personnel ne peut pas contenir de caract&#232;re &#171; : &#187;
 usave_edigestmd5=Les mots de passe MD5 sont activ&#233;s sur votre syst&#232;me, mais ni le module Perl MD5 ni le module Digest::MD5 ne sont install&#233;s.<p>Pour forcer l'utilisation des mots de passe chiffr&#233;s normalement, ajustez votre <a href='$1'>configuration du module</a>.<p>Sinon, demandez &#224; Webmin de <a href='$2'>t&#233;l&#233;charger et installer</a> le module Digest::MD5 pour vous.
 usave_emaking=La commande avant la mise &#224; jour a &#233;chou&#233; : $1
-usave_epasswd_min=Le mot de paase doit avoir une longueur d'au moins $1 lettres
+usave_epasswd_min=Le mot de passe doit avoir une longueur d'au moins $1 lettres
 usave_epasswd_re=Le mot de passe ne doit pas correspondre &#224; l'expression r&#233;guli&#232;re $1
 usave_epasswd_dict=Le mot de passe est un mot du dictionnaire
 usave_epasswd_same=Le mot de passe contient ou est identique au nom d'utilisateur
