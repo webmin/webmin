@@ -51,6 +51,7 @@ line5=Password restrictions,11
 passwd_min=Minimum password length,3,No minimum
 passwd_dict=Prevent dictionary word passwords?,1,1-Yes,0-No
 passwd_re=Perl regexp to check password against,3,None
+passwd_redesc=Human-readable description of regexp,3,Just use regexp
 passwd_same=Prevent passwords containing username?,1,1-Yes,0-No
 passwd_prog=External password-checking program,3,None
 passwd_progmode=Pass username and password to program,1,1-As input,0-As parameters

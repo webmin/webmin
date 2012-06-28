@@ -1531,8 +1531,9 @@ local ($pass, $username, $uinfo) = @_;
 return &text('usave_epasswd_min', $config{'passwd_min'})
 	if (length($pass) < $config{'passwd_min'});
 local $re = $config{'passwd_re'};
-return &text('usave_epasswd_re', $re)
-	if ($re && !eval { $pass =~ /^$re$/ });
+if ($re && !eval { $pass =~ /^$re$/ }) {
+	return $config{'passwd_redesc'} || &text('usave_epasswd_re', $re);
+	}
 if ($config{'passwd_same'}) {
 	return &text('usave_epasswd_same') if ($pass =~ /\Q$username\E/i);
 	}
