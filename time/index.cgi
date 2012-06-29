@@ -160,10 +160,14 @@ if ( ( !$access{ 'sysdate' } && &has_command( "date" ) || !$access{ 'hwdate' } &
 				     $config{'timeserver_hardware'}));
 		}
 
-	# Show schedule input
+	# Show boot-time checkbox
 	$job = &find_webmin_cron_job();
+	print &ui_table_row($text{'index_boot'},
+		&ui_yesno_radio("boot", $job && $job->{'boot'}));
+
+	# Show schedule input
 	print &ui_table_row($text{'index_sched'},
-		&ui_radio("sched", $job ? 1 : 0,
+		&ui_radio("sched", $job && !$job->{'disabled'} ? 1 : 0,
 		  [ [ 0, $text{'no'} ], [ 1, $text{'index_schedyes'} ] ]));
 	&seed_random();
 	$job ||= { 'mins' => int(rand()*60),

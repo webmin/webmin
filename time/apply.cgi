@@ -64,15 +64,18 @@ if( $in{ 'action' } eq $text{ 'action_apply' } )
 
   # Create, update or delete the syncing cron job
   $job = &find_webmin_cron_job();
-  if ($in{'sched'}) {
+  if ($in{'sched'} || $in{'boot'}) {
 	$job ||= { 'module' => $module_name,
-		     'func' => 'sync_time_cron' };
+		   'func' => 'sync_time_cron' };
+	$job->{'disabled'} = $in{'sched'} ? 0 : 1;
+	$job->{'boot'} = $in{'boot'};
 	&webmincron::parse_times_input($job, \%in);
 	&webmincron::create_webmin_cron($job);
 	}
   elsif ($job) {
 	&webmincron::delete_webmin_cron($job);
 	}
+
   &webmin_log("remote", $in{'action'} eq $text{'action_timeserver_sys'} ?  "date" : "hwclock", $rawtime, \%in);
   $mode = "sync";
 }

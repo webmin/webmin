@@ -22,3 +22,5 @@ The default NTP sync time is now set randomly instead of at midnight, and any ex
 Support for setting the hardware clock is now detected automatically on Linux.
 ---- Changes since 1.510 ----
 Switched background time syncing to use the new Webmin Cron service.
+---- Changes since 1.580 ----
+Added an option to have the time synced when Webmin starts at system boot.

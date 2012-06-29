@@ -7,6 +7,7 @@ index_sched=Synchronize on schedule?
 index_schedyes=Yes, at times below ..
 index_sync=Sync and Apply
 index_hardware2=Set hardware time too
+index_boot=Synchronize when Webmin starts?
 index_tzheader=Time Zone
 index_tz=Change timezone to
 index_ehwclock=$1 failed : $2

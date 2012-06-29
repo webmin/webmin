@@ -678,7 +678,11 @@ $SIG{'USR1'} = 'miniserv::trigger_reload';
 $SIG{'PIPE'} = 'IGNORE';
 local $remove_session_count = 0;
 $need_pipes = $config{'passdelay'} || $config{'session'};
+$cron_runs = 0;
 while(1) {
+	# Check if any webmin cron jobs are ready to run
+	&execute_ready_webmin_crons($cron_runs++);
+
 	# wait for a new connection, or a message from a child process
 	local ($i, $rmask);
 	if (@childpids <= $config{'maxconns'}) {
@@ -768,9 +772,6 @@ while(1) {
 	if ($unblocked) {
 		&write_blocked_file();
 		}
-
-	# Check if any webmin cron jobs are ready to run
-	&execute_ready_webmin_crons();
 
 	if ($config{'session'} && (++$remove_session_count%50) == 0) {
 		# Remove sessions with more than 7 days of inactivity,
@@ -5572,16 +5573,25 @@ foreach $k (keys %{$_[1]}) {
 close(ARFILE);
 }
 
-# execute_ready_webmin_crons()
+# execute_ready_webmin_crons(run-count)
 # Find and run any cron jobs that are due, based on their last run time and
 # execution interval
 sub execute_ready_webmin_crons
 {
+my ($runs) = @_;
 my $now = time();
 my $changed = 0;
 foreach my $cron (@webmincrons) {
 	my $run = 0;
-	if (!$webmincron_last{$cron->{'id'}}) {
+	if ($runs == 0 && $cron->{'boot'}) {
+		# If cron job wants to be run at startup, run it now
+		$run = 1;
+		}
+	elsif ($cron->{'disabled'}) {
+		# Explicitly disabled
+		$run = 0;
+		}
+	elsif (!$webmincron_last{$cron->{'id'}}) {
 		# If not ever run before, don't run right away
 		$webmincron_last{$cron->{'id'}} = $now;
 		$changed = 1;
