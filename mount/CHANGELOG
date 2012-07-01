@@ -22,3 +22,5 @@ SMBFS authentication credentials can be stored in a separate file, thanks to a p
 ---- Changes since 1.440 ----
 Improved support for filesystems on partitions identified by volume ID when the vol_id command is missing.
 Show the used disk space for each filesystem on the main page.
+---- Changes since 1.580 ----
+Updated the UI for Linux and most other operating systems to use Webmin's new UI functions, for a more consistent look.
