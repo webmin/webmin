@@ -214,7 +214,7 @@ index_return=Seznam pravidel
 index_rsetup=Konfigurace IP tabulek firewallu má být ve va¹em systému pøenastavena. Webmin nastaví nová výchozí pravidla, uchová je do ulo¾eného souboru $1. Tento soubor bude obsahovat inicializaèní nastavení, vycházející z typu firewallu, který si následnì vyberete..
 index_saveex=Ulo¾it firewall pravidla
 index_setup=Doposud nejsou nastaveny va va¹em systému ¾ádné IP tabulky. Webmin mù¾e to mù¾e pro vás nastavit a uschovat do úlo¾ného souboru $1 s poèáteèním nastavením, které je zalo¾eno na typu firewallu uvedeného ní¾e ..
-index_shorewall=Pozor! Vypadá to, ¾e pro generování va¹eho systémového firewallu se pou¾ívá Shorewall. Asi byste mìli radìji vyu¾ívat <a href='$1'>Modul Shorewall Firewall</a>.
+index_shorewall=Pozor! Vypadá to, ¾e pro generování va¹eho systémového firewallu se pou¾ívá Shorewall. Asi byste mìli radìji vyu¾ívat <a href='$1'>Modul Shoreline Firewall</a>.
 index_table_filter=Filtrování packetù (filter)
 index_table_mangle=Zmìna paketù (mangle)
 index_table_nat=Pøeklad sí»ové adresy (nat)

@@ -1,4 +1,4 @@
-index_title=Shorewall Firewall
+index_title=Shoreline Firewall
 index_ecmd=The command $1 was not found on your system. Maybe it is not installed, or the <a href='$2'>module configuration</a> is incorrect.
 index_edir=The Shorewall configuration directory $1 was not found on your system. Maybe it is not installed, or the <a href='$2'>module configuration</a> is incorrect.
 index_version=Shorewall version $1
@@ -10,11 +10,11 @@ index_refreshdesc=Click this button to activate just the Blacklist and Traffic S
 index_start=Start Firewall
 index_startdesc=Click this button to start Shorewall with the current configuration with the <tt>shorewall start</tt> command.
 index_clear=Clear Firewall
-index_cleardesc=Click this button to clear the Shorewall firewall with the <tt>shorewall clear</tt> command. This will allow access from all hosts without restriction.
+index_cleardesc=Click this button to clear Shorewall with the <tt>shorewall clear</tt> command. This will allow access from all hosts without restriction.
 index_stop=Stop Firewall
 index_stopdesc=Click this button to shut down Shorewall with the <tt>shorewall stop</tt> command. This will block access from all hosts except those in the When Stopped table.
 index_status=Show Status
-index_statusdesc=Click this button to view Shorewall's tables and rules from the <tt>shorewall status</tt> command.
+index_statusdesc=Click this button to check whether Shorewall has been started on this system, using the <tt>shorewall status</tt> command.
 index_dump=Show Dump
 index_dumpdesc=Click this button to view Shorewall tracing information from the <tt>shorewall dump</tt> command.
 index_check=Check Firewall
@@ -245,7 +245,7 @@ proxyarp_eaddr=Missing or invalid address to ARP
 proxyarp_pers=Leave route even when firewall stopped?
 
 routestopped_title=When Stopped
-routestopped_desc=By default, when the Shorewall firewall is stopped it will deny access from all hosts. This page allows you to define hosts or networks that will still be accessible.
+routestopped_desc=By default, when Shorewall is stopped it will deny access from all hosts. This page allows you to define hosts or networks that will still be accessible.
 routestopped_add=Add a new stopped address.
 routestopped_none=No addresses to be accessible when stopped have been defined yet.
 routestopped_0=Interface
