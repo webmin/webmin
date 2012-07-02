@@ -1,0 +1,7 @@
+config_dir=Shorewall6 Konfigurationsverzeichnis,0
+shorewall6=Pfad zum shorewall6 Befehl,0
+actions=Standard&#45;Aktionen-Dateien,9,40,5,\t
+macros=Makro Datei&#45;Verzeichnis,0
+before_apply_cmd=Befehl&#44; der vor Anwendung der Konfiguration ausgef&#252;hrt wird,3,Kein
+after_apply_cmd=Befehl&#44; der nach Anwendung der Konfiguration ausgef&#252;hrt wird,3,Kein
+display_zone_descriptions=Zeige Zone Beschreibungen in rules&#45;Datei?,1,0-Nein,1-Ja
