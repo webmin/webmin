@@ -465,6 +465,7 @@ index_nv=F&#252;ge den Name einer virtuellen Serveradresse hinzu (wenn ben&#246;
 index_port=Port
 index_proxy=Zuordnung zu URL
 index_return=Server-Liste
+index_return2=Globale Konfiguration
 index_root=Dokument-Root
 index_tabcreate=Erzeuge virtuellen Host
 index_tabglobal=Globale Konfiguration
