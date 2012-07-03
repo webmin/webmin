@@ -9723,6 +9723,21 @@ if ($str =~ /^([a-z]+):\/\/([^:]*):([^\@]*)\@([a-z0-9\.\-\_]+)\/([^\?]+)(\?(.*))
 return ( );
 }
 
+=head2 uniquelc(string, ...)
+
+Returns the unique elements of some array using a lowercase comparison,
+passed as its parameters.
+
+=cut
+sub uniquelc
+{
+my (%found, @rv);
+foreach my $e (@_) {
+	if (!$found{lc($e)}++) { push(@rv, $e); }
+	}
+return @rv;
+}
+
 $done_web_lib_funcs = 1;
 
 1;

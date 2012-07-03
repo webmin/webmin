@@ -207,7 +207,7 @@ local $schema = $ldap->schema();
 if ($schema->objectclass("person") && $config{'person'}) {
 	push(@classes, "person");
 	}
-@classes = &unique(@classes);
+@classes = &uniquelc(@classes);
 @classes = grep { /\S/ } @classes;	# Remove empty
 local @attrs = &user_to_dn($_[0]);
 push(@attrs, &split_props($config{'props'}, $_[0]));
@@ -325,7 +325,7 @@ local $base = &get_group_base();
 $_[0]->{'dn'} = "cn=$_[0]->{'group'},$base";
 local @classes = ( "posixGroup" );
 push(@classes, split(/\s+/, $config{'gother_class'}));
-@classes = &unique(@classes);
+@classes = &uniquelc(@classes);
 local @attrs = &group_to_dn($_[0]);
 push(@attrs, @{$_[0]->{'ldap_attrs'}});
 push(@attrs, "objectClass" => \@classes);
