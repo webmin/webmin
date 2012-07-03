@@ -19,7 +19,8 @@ $shorewall_version = &get_shorewall_version(0);
 @shorewall_files = ( 'zones', 'interfaces', 'policy', 'rules', 'tos',
 	   	     'masq', 'nat', 'proxyarp', 'routestopped',
 	   	     'tunnels', 'hosts', 'blacklist',
-		     ( &version_atleast(2, 3) ? ( 'providers' ) : ( ) ),
+		     ( &version_atleast(2, 3) ? ( 'providers', 'route_rules' )
+					      : ( ) ),
 	   	     'params', 'shorewall.conf',
 );
 @comment_tables = ( 'masq', 'nat', 'rules', 'tcrules' );
@@ -1683,6 +1684,57 @@ return ( $in{'name'}, $in{'number'}, $in{'mark'},
 	 join(",", split(/\0/, $in{'opts'})) || "-",
 	 $in{'copy'} || "-" );
 }
+
+############################## route_rules ################################
+
+sub route_rules_row
+{
+return ( $_[0] eq "-" ? $text{'list_any'} : $_[0],
+	 $_[1] eq "-" ? $text{'list_any'} : $_[1],
+	 $_[2], $_[3], $_[4] );
+}
+
+sub route_rules_form
+{
+print "<tr> <td><b>$text{'route_rules_src'}</b></td>\n";
+print "<td>",&ui_opt_textbox("src", $_[0] eq "-" ? "" : $_[0],
+			     20, $text{'list_any'}, $text{'route_rules_ip'}),
+      "</td> </tr>\n";
+
+print "<tr> <td><b>$text{'route_rules_dst'}</b></td>\n";
+print "<td>",&ui_opt_textbox("dst", $_[1] eq "-" ? "" : $_[1],
+			     20, $text{'list_any'}, $text{'route_rules_ip'}),
+      "</td> </tr>\n";
+
+local @ptable = &read_table_file("providers", \&standard_parser);
+print "<tr> <td><b>$text{'route_rules_prov'}</b></td>\n";
+print "<td>",&ui_select("prov", $_[2] eq "254" ? "main" : $_[2],
+		[ [ "main", $text{'route_rules_main'} ],
+		  map { $_->[0] } @ptable ]),"</td> </tr>\n";
+
+print "<tr> <td><b>$text{'route_rules_pri'}</b></td>\n";
+print "<td>",&ui_textbox("pri", $_[3], 10),"</td> </tr>\n";
+
+print "<tr> <td><b>$text{'route_rules_mark'}</b></td>\n";
+print "<td>",&ui_opt_textbox("mark", $_[4] eq "-" ? $_[4] : "", 10,
+			     $text{'route_rules_nomark'}),"</td> </tr>\n";
+}
+
+sub route_rules_validate
+{
+$in{'src_def'} || $in{'src'} =~ /^\S+$/ || &error($text{'route_rules_esrc'});
+$in{'dst_def'} || $in{'dst'} =~ /^\S+$/ || &error($text{'route_rules_edst'});
+$in{'pri'} =~ /^\d+$/ || &error($text{'route_rules_epri'});
+$in{'mark_def'} || $in{'mark'} =~ /^\d+(\/\d+)?$/ ||
+	&error($text{'route_rules_emark'});
+return ( $in{'src_def'} ? "-" : $in{'src'},
+	 $in{'dst_def'} ? "-" : $in{'dst'},
+	 $in{'prov'},
+	 $in{'pri'},
+         $in{'mark_def'} ? ( ) : ( $in{'mark'} ) );
+}
+
+
 
 ################################ shorewall.conf ##################################
 
