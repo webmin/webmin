@@ -313,7 +313,7 @@ if (@history) {
 			my @nice_values = split(/\//, $h->{'nice_value'});
 			for(my $i=0; $i<@values; $i++) {
 				my ($vhost, $v) = split(/=/, $values[$i], 2);
-				my ($_, $nv) = split(/=/, $nice_values[$i], 2);
+				my (undef, $nv) = split(/=/, $nice_values[$i], 2);
 				push(@vlist, $nv || $v);
 				}
 			push(@cols, join(" ", @vlist));
