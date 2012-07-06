@@ -380,6 +380,8 @@ Generic Linux			3.2	generic-linux	3.2	`uname -r` =~ /3\.2\./
 Generic Linux			3.3	generic-linux	3.3	`uname -r` =~ /3\.3\./
 Generic Linux			3.4	generic-linux	3.4	`uname -r` =~ /3\.4\./
 Generic Linux			3.5	generic-linux	3.5	`uname -r` =~ /3\.5\./
+Generic Linux			3.6	generic-linux	3.6	`uname -r` =~ /3\.6\./
+Generic Linux			3.7	generic-linux	3.7	`uname -r` =~ /3\.7\./
 
 # Windows
 Windows				XP	windows		xp	(-d "c:/windows" || -d "c:/winnt") && `ver` =~ /XP/
