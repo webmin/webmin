@@ -711,7 +711,7 @@ Rounds a version number down to the nearest .01
 =cut
 sub base_version
 {
-return sprintf("%.2f0", $_[0] - 0.005);
+return sprintf("%.2f0", $_[0]);
 }
 
 =head2 get_newmodule_users
