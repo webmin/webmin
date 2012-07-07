@@ -1,3 +1,4 @@
+__norefs=1
 left_feedback=Feedback versenden
 left_home=Systeminformation
 left_login=Login: $1
