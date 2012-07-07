@@ -2,5 +2,5 @@ desc=Simple Firewall Creator
 os_support=*-linux freebsd
 category=net
 depends=init cron net acl 1.121
-version=2.59
+version=2.60
 desc_de=Einfacher Firewall Ersteller
