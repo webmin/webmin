@@ -61,3 +61,7 @@ no_pid_chroot=PID&#45;Datei liegt unter chroot&#45;Verzeichnis?,1,0-Ja,1-Nein
 start_cmd=Befehl zum Start von BIND,3,Vorgabe
 stop_cmd=Befehl um BIND zu beenden,3,T&#246;te den Prozess
 restart_cmd=Befehl um die BIND&#45;Konfiguration zu &#252;bernehmen,10,-Sende einfach ein HUP-Signal,Restart-Stop und Neustart,Anderer Befehl
+dnssectools_conf=Vollst&#228;ndige Pfad zu der dnssec&#45;tools.conf Datei,0
+dnssectools_rollmgr_pidfile=Vllst&#228;ndige Pfad zur dnssec&#45;tools rollmgr pid&#45;Datei, 0
+dnssectools_rollrec=Vollst&#228;ndige Pfad zur dnssec&#45;tools rollrec Datei,0
+dnssectools_keydir=Vollst&#228;ndige Pfad zum dnssec&#45;tools Schl&#252;ssel&#45;Verzeichnis,0
