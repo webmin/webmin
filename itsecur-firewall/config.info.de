@@ -1,5 +1,5 @@
 line1=Konfigurierbare Optionen,11
-fw_any=Bezieht Firewall in <b>Jedem</b> Ziel iein?,1,1-Ja,0-Nein
+fw_any=Bezieht Firewall in <b>Jedem</b> Ziel ein?,1,1-Ja,0-Nein
 frags=Fragmentierte Pakete blockieren?,1,1-Ja,0-Nein
 auto_dir=Automatisches Backup-Verzeichnis,3,Keins
 rusure=Frage nach einer Best&#228;tigung vor dem Speichern der Regel?,1,1-Ja,0-Nein
