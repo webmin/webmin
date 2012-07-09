@@ -1,10 +1,10 @@
 line0=Konfigurierbare Optionen,11
 wait=Standardwarteverhalten,1,1-Warte vollst&#228;ndig ab,0-Laufe im Hintergrund
-apply=Automatisch Sevrerkonfiguration anwenden?,1,1-Ja,0-Nein
+apply=Automatisch Serverkonfiguration anwenden?,1,1-Ja,0-Nein
 groupmode=Beziehe Gruppeninformationen von,1,webmin-Webminserver&#45;Indexmodul,oc-OCM Managerdatenbank,-Nirgends
 showdirs=Zeige immer entfernte Server?,1,1-Ja,0-Nein
 line1=Bacula&#45;Datenbankeinstellungen,11
-driver=Datenbankart,1,Pg-PostgreSQL,mysql-MySQL,SQLite-SQLite
+driver=Datenbanktyp,1,Pg-PostgreSQL,mysql-MySQL,SQLite-SQLite
 user=Username f&#252;r die Anmeldung,0
 pass=Passwort f&#252;r die Anmeldung,0
 host=Bacula&#45;Datenbankserver,3,Dieses System
