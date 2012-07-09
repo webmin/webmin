@@ -10,11 +10,13 @@ $access{'acl'} || &error($text{'acl_ecannot'});
 if (&get_config_type() == 1) {
 	$conf = &get_config();
 	@access = &find("access", $conf);
+	$hasorder = 0;
 	}
 else {
 	$defdb = &get_default_db();
 	$conf = &get_ldif_config();
 	@access = &find_ldif("olcAccess", $conf, $defdb);
+	$hasorder = 1;
 	}
 
 # Page header
@@ -34,6 +36,12 @@ print &ui_form_start("acl_save.cgi", "post");
 print &ui_hidden("new", $in{'new'});
 print &ui_hidden("idx", $in{'idx'});
 print &ui_table_start($text{'eacl_header'}, undef, 2);
+
+# Rule ordering
+if ($hasorder && !$in{'new'}) {
+	print &ui_table_row($text{'eacl_order'},
+		$p->{'order'} eq '' ? $text{'eacl_noorder'} : $p->{'order'});
+	}
 
 # Granting to what object
 $what = $p->{'what'} eq '*' || $p->{'what'} eq '' ? 1 : 0;

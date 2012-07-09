@@ -100,6 +100,7 @@ schema_ecannot=You are not allowed to manage the LDAP schema
 acl_title=LDAP Access Control
 acl_ecannot=You are not allowed to configure LDAP access control
 acl_what=Objects
+acl_order=Order
 acl_who=Access granted
 acl_move=Move
 acl_none=No access control rules have been defined yet. All objects in the LDAP database will be readable by all users.
@@ -322,4 +323,7 @@ eacl_efilter=Missing or invalid filter - should be like <tt>(objectClass=posixAc
 eacl_eattrs=Missing or invalid comma-separated list of attributes
 eacl_ewho=Missing or invalid-looking DN in row $1
 eacl_eaccess=Missing or invalid access level in row $1
+eacl_order=Rule order
+eacl_noorder=None set
+
 __norefs=1
