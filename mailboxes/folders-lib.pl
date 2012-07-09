@@ -3244,7 +3244,7 @@ foreach my $a (@$attach) {
 		push(@links, $detachfile."&attach=$a->{'idx'}");
 		}
 	push(@a, "<a href='$links[$#links]'>$text{'view_aview'}</a>");
-	push(@a, "<a href='$links[$#links]' target=_new>$text{'view_aopen'}</a>");
+	push(@a, "<a href='$links[$#links]' target=_blank>$text{'view_aopen'}</a>");
 	if ($a->{'type'}) {
 		push(@a, "<a href='$detachfile&attach=$a->{'idx'}&save=1'>$text{'view_asave'}</a>");
 		}

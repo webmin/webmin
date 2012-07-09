@@ -1339,7 +1339,7 @@ return wantarray ? @rv : $rv[0];
 sub link_urls
 {
 local $r = $_[0];
-local $tar = $_[1] ? "target=link".int(rand()*100000) : "";
+local $tar = $_[1] ? "target=_blank" : "";
 $r =~ s/((http|ftp|https|mailto):[^><"'\s]+[^><"'\s\.\)])/<a href="$1" $tar>$1<\/a>/g;
 return $r;
 }
@@ -1350,7 +1350,7 @@ sub link_urls_and_escape
 {
 local $l = $_[0];
 local $rv;
-local $tar = $_[1] ? " target=link".int(rand()*100000) : "";
+local $tar = $_[1] ? " target=_blank" : "";
 while($l =~ /^(.*?)((http|ftp|https|mailto):[^><"'\s]+[^><"'\s\.\)])(.*)/) {
 	local ($before, $url, $after) = ($1, $2, $4);
 	$rv .= &eucconv_and_escape($before)."<a href='$url' $tar>".
@@ -1370,7 +1370,7 @@ local $rv;
 while($l =~ s/^([\0-\377]*?)<\s*a\s+([^>]*href[^>]*)>//i) {
 	local ($before, $a) = ($1, $2);
 	if ($a !~ /target\s*=/i) {
-		$a .= " target=link".int(rand()*100000);
+		$a .= " target=_blank";
 		}
 	$rv .= $before."<a ".$a.">";
 	}
