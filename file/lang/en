@@ -168,6 +168,7 @@ view_ecmd=The command $1 needed to create an archive is not installed
 view_ecomp=Failed to create archive : $1
 view_earchive=You are not allowed to download archives
 view_earchmax=The selected directory is larger than the maximum allowed for archiving ($1 bytes)
+view_epathinfo=Path contains invalid characters
 
 paste_ecopy=You must cut or copy before pasting
 paste_egone=Copied file $1 no longer exists
