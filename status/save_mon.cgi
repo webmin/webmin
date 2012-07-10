@@ -6,6 +6,7 @@ require './status-lib.pl';
 $access{'edit'} || &error($text{'mon_ecannot'});
 &ReadParse();
 if ($in{'type'}) {
+	$in{'type'} =~ /^[a-zA-Z0-9\_\-\.]+$/ || &error($text{'mon_etype'});
 	$serv->{'type'} = $in{'type'};
 	$serv->{'id'} = time();
 	}
