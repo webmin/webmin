@@ -65,3 +65,8 @@ no_pid_chroot=El fitxer de PID està sota el directori chroot,1,0-Sí,1-No
 start_cmd=Ordre per iniciar BIND,3,Defecte
 stop_cmd=Ordre per aturar BIND,3,Mata el procés
 restart_cmd=Ordre per aplicar la configuració de BIND,10,-Envia el senyal HUP,restart-Atura ireinicia,Una altra ordre
+dnssectools_conf=Camí complet del fitxer dnssec-tools.conf,0
+dnssectools_rollmgr_pidfile=Camí complet del fitxer de pid rollmgr de dnssec-tools,0
+dnssectools_rollrec=Camí complet del fitxer dnssec-tools rollrec,0
+dnssectools_keydir=Camí complet del directori de claus de dnssec-tools,0
+

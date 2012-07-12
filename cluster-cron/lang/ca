@@ -5,6 +5,7 @@ index_servers=Executa'l als servidors
 index_return=a la llista de treballs cron de cluster
 index_more=$1 més...
 index_run=Executa&nbsp;l&#039;Ordre&nbsp;ara...
+index_actions=Accions
 
 edit_title=Edició de Treball Cron de Cluster
 create_title=Creació de Treball Cron de Cluster
