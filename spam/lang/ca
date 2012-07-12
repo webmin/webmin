@@ -63,6 +63,7 @@ score_localessel=Els jocs de caràcters seleccionats...
 score_auto=Factor de puntuació de la llista blanca
 score_timeout=Segons d'espera entre consultes RBL
 score_received=Nombre de capçaleres Received: a comprovar amb RBL
+score_trusted=Xarxes i hosts fiables
 score_describe=Descripció del test per a l'informe
 score_descr=Descripció
 score_err=No s'ha pogut desar la puntuació del missatge
@@ -223,6 +224,7 @@ log_priv=S'han modificat les opcions miscel·lànies privilegiades
 log_setup=S'ha configurat Procmail per a SpamAssassin
 log_procmail=S'ha canviat la configuració de Procmail
 log_import=S'han importat $1 adreces permeses
+log_manual=Fitxer de configuració editat manualment
 
 import_title=Importació d'Adreces
 import_err=No s'han pogut importar les adreces
@@ -380,4 +382,11 @@ dawl_ecannot=No tens permès de gestionar la llista blanca automàtica d'aquest us
 dawl_doing=S'estan suprimint les llistes blanques automàtiques de tots els usuaris...
 dawl_done=...s'han suprimit $2 entrades de $1 usuaris.
 dawl_title=Suprimeix Totes les Llistes Blanques Automàtiques
+
+manual_title=Edició de Fitxers de Configuaració
+manual_file=Edita el fitxer de configuració:
+manual_ok=Bé
+manual_efile=Fitxer de configuració invàlid!
+manual_err=No s'ha pogut desar el fitxer de configuració
+
 __norefs=1

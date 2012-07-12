@@ -129,10 +129,12 @@ acl_desc=Utilitza aquesta pàgina per seleccionar quins mòduls instal·lats d'User
 
 ssl_title=Xifratge SSL
 ssl_desc1=No sembla que el host on s'està executant Usermin tingui instal·lat el mòdul perl SSLeay. Amb això, Usermin suporta comunicació xifrada SSL entre el navegador i el servidor. Si els usuaris accedeixen al servidor Usermin a través d'Internet, llavors has de considerar seriosament utilitzar SSL per evitar que un atacant els prengui les contrasenyes.
-ssl_desc2=Atenció - activa el suport SSL només si tens un navegador que suporti SSL (com ara Netscape o IE), i no hi ha cap tallafocs bloquejant les peticions https entre el navegador i el host Usermin.
+ssl_desc2=Atenció - activa el suport SSL només si tens un navegador que suporti SSL, i no hi ha cap tallafocs bloquejant les peticions <tt>https</tt> entre el navegador i el host Usermin.
 ssl_newkey=Aquest formulari es pot utilitzar per crear una nova clau SSL per al servidor Usermin.
 ssl_hole=Com que actualment estàs utilitzant la clau SSL per defecte d'Usermin a la qual tothom té accés, hauries de generar immediatament una clau nova. Altrament, la teva connexió SSL no serà segura!
 ssl_savekey=Aquest formulari permet carregar un certificat i una clau privada SSL existents en format PEM per a ús del servidor Usermin.
+ssl_copycert=Copia el Certificat de Webmin
+ssl_copycertdesc=Copia el Certificat SSL, clau privada, certificat CA i altres paràmetres que estigui utilitzant Webmin.
 
 ca_email=Adreça de correu
 ca_ou=Departament
@@ -332,6 +334,7 @@ log_upgrade=S'ha actualitzat Usermin a la versió $1
 log_uinstall=S'ha instal·lat la versió $1 d'Usermin
 log_session=S'han canviat les opcions d'autenticació
 log_ssl=S'ha canviat el mode de xifratge SSL
+log_copycert=S'han copiat els paràmetres SSL de Webmin
 log_newkey=S'ha creat la nova clau SSL
 log_setupca=S'ha establert l'autoritat certificadora
 log_changeca=S'ha canviat l'autoritat certificadora
@@ -492,5 +495,9 @@ blocked_user=Usuari Usermin
 blocked_cleardesc=Fes clic sobre aquest botó per esborrar tot els bloqueigs actuals de hosts i usuaris reiniciant el procés servidor d'Usermin.
 
 mobile_title=Opcions del Dispositiu Mòbil
+
+copycert_err=No s'han pogut copiar els paràmetres SSL de Webmin
+copycert_essl=SSL no està activat
+copycert_ekeyfile=No ha cap fitxer de clau privada configurat a Webmin
 
 __norefs=1

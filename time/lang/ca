@@ -7,6 +7,7 @@ index_sched=Sincronitza de forma planificada
 index_schedyes=Sí, a les hores de sota...
 index_sync=Sincronitza i Aplica
 index_hardware2=Estableix també el rellotge del maquinari
+index_boot=Sincronitza quan s'iniciï Webmin
 index_tzheader=Zona Horària
 index_tz=Canvia la zona horària a
 index_ehwclock=$1 ha fallat: $2

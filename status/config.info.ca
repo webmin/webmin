@@ -1,4 +1,3 @@
-line1=Opcions configurables,11
 index_status=Estat a mostrar a la llista,1,1-Estat actual,0-A partir de la darrera verificació programada
 pager_cmd=Ordre per enviar el missatge a un buscapersones,3,Cap
 refresh=Segons entre el refresc de pàgines,3,No refresquis
@@ -12,3 +11,5 @@ snmp_server=Envia trampes SNMP al servidor,3,Cap
 snmp_version=Versió del protocol SNMP,1,3-v3,2-v2,1-v1
 snmp_community=Cadena de la comunitat SNMP,0
 snmp_trap=OID SNMP de les trampes,0
+history_show=Nombre d'estats històrics a mostrar,0
+history_purge=Dies a mantenir els estats històrics,0

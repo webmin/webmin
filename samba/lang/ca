@@ -35,10 +35,11 @@ index_startmsg_wb=No sembla que els servidors Winbind estiguin en execució al si
 index_restart=Reinicia els Servidors Samba
 index_restartmsg_wb=Fes clic sobre aquest botó per reiniciar els servidors Winbind en execució al sistema.
 index_restartmsg=Fes clic sobre aquest botó per reiniciar els servidors Samba en execució al sistema. Això forçarà l'aplicació de la configuració actual.
+index_restartmsg_wb=Fes clic sobre aquest botó per reiniciar els servidors Winbind en execució al sistema.
 index_restartmsg2=Això també desconnectarà totes les connexions del servidor, així que si no vols que la configuració actual s'apliqui immediatament, hauries d'esperar 1 minut fins que Samba recarregui automàticament la configuració.
 index_stop=Atura els Servidors Samba
-index_stopmsg=Fes clic sobre aquest botó per tancar els servidors Samba en execució al sistema. Tots els usuaris connectats seran desconnectats per força.
 index_stop_wb=Atura els Servidors Winbind
+index_stopmsg=Fes clic sobre aquest botó per tancar els servidors Samba en execució al sistema. Tots els usuaris connectats seran desconnectats per força.
 index_einclude=Atenció - El fitxer de configuració $1 de Samba conté la directiva $2 o $3. Això pot provocar que Webmin modifiqui el fitxer incorrectament.
 index_stopmsg_wb=Fes clic sobre aquest botó per tancar els servidors Winbind en execució al sistema.
 index_delete=Suprimeix els Recursos Seleccionats
@@ -60,14 +61,7 @@ global_filedefault=Valors per defecte dels directoris compartits
 global_prndefault=Valors per defecte de les impressores compartides
 global_password=Contrasenyes xifrades
 global_users=Usuaris Samba
-global_edit=Edita els usuaris i les contrasenyes de Samba
-global_convert=Converteix els usuaris Unix a usuaris Samba
-global_sync=Configura la sincronització automàtica d'usuaris Unix i usuaris Samba
 global_group=Grups Samba
-global_gedit=Afegeix i Edita els grups Samba
-global_gconvert=Converteix els grups Unix a grups Samba
-global_gsync=Configura la sincronització automàtica dels grups Unix i els grups Samba
-global_winbind=Vincula'l al Domini
 global_bind=Opcions Winbind
 
 error_nosamba=No s'ha trobat l'executable servidor de samba <tt>$1</tt>. O bé el Samba no està instal·lats, o bé la <a href="$2">configuració del mòdul</a> és incorrecta.
@@ -91,6 +85,9 @@ convert_lock=Compte bloquejat
 convert_passwd=Utilitza aquesta contrasenya
 convert_convert=Converteix els Usuaris
 convert_cannot=Els usuaris Unix no es poden convertir a usuaris Samba
+convert_who=Usuaris Unix a convertir
+convert_who0=Només els usuaris o rangs d'UIDs llistats
+convert_who1=Tots excepte els usuaris o rangs d'UIDs llistats
 
 misc_title=Opcions Miscel·lànies
 misc_debug=Nivell de Depuració
@@ -119,6 +116,7 @@ net_notsend=No n'enviïs cap
 net_every=Envia'ls cada
 net_maxpacket=Mida màxima de paquet
 net_listen=Escolta l'adreça
+net_ip=Adreça IP
 net_socket=Opcions del sòcol
 
 passwd_title=Opcions de Contrasenya
@@ -280,7 +278,7 @@ print_queue=Ordre de mostra de la cua
 print_delete=Ordre de supressió de treball
 print_pause=Ordre de suspensió de treball
 print_unresume=Ordre de represa de treball
-print_driver=Controlador d'Impressora
+print_driver=Controlador d'impressora
 
 pshare_title1=Impressora Compartida
 pshare_title2=Edició d'Impressora Compartida
@@ -329,11 +327,15 @@ esync_egid=Hi falta el SID o RID del grup o bé és invàlid
 mkpass_title=Conversió d'Usuaris
 mkpass_convfail=No s'ha pogut convertir l'usuari
 mkpass_msg=S'estan convertint els usuaris Unix...
-mkpass_skip=ometent
-mkpass_same=és el mateix
-mkpass_update=actualitzant
-mkpass_del=suprimint
+mkpass_skip=Omès
+mkpass_same=Ja és el mateix
+mkpass_update=Actualitzat
+mkpass_added=Afegit
+mkpass_del=Suprimit
 mkpass_passfail=No s'ha pogut establir la contrasenya
+mkpass_user=Usuari
+mkpass_action=Acció presa
+mkpass_skipcount=S'han omès $1 usuaris en la conversió.
 
 savecopy_fail=No s'ha pogut crear la còpia
 savecopy_global=El nom 'global' no es pot utilitzar per a cap recurs
@@ -405,7 +407,6 @@ savesmb_server=Has d'introduir un servidor de contrasenyes
 
 start_err=No s'han pogut iniciar els servidors Samba
 start_fail=$1 ha fallat
-
 start_err_wb=No s'han pogut iniciar els servidors Winbind
 
 restart_err=No s'han pogut reiniciar els servidors Samba
@@ -423,7 +424,7 @@ viewu_from=Connectat des de
 viewu_time=Connectat des de
 viewu_pid=ID del Procés
 viewu_msg1=Fes clic sobre un ID de procés de la llista per desconnectar aquest usuari.
-viewu_msg2=Actualment no hi ha cap usuari connectat
+viewu_msg2=No hi ha cap usuari actualment connectat
 viewu_locks=Fitxers oberts
 viewu_none=Cap
 viewu_ecmd=No sembla que el programa d'estat de samba $1 estigui instal·lat al sistema. Pot ser que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.

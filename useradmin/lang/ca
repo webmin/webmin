@@ -176,6 +176,7 @@ usave_epasswd_min=La contrasenya ha de tenir almenys $1 lletres
 usave_epasswd_re=La contrasenya no coincideix amb l'expressió $1
 usave_epasswd_dict=La contrasenya és una paraula del diccionari
 usave_epasswd_same=La contrasenya conté o és igual que el nom de l'usuari
+usave_epasswd_mindays=La contrasenya s'ha canviat fa menys de $1 dies
 usave_eothers=L'usuari s'ha desat correctament, però s'ha produït un error en una altre mòdul: $1
 
 gedit_title=Edició de Grup
@@ -477,6 +478,7 @@ pft_6=Base de dades NetInfo de MacOS
 umass_title=Supressió d'Usuaris
 umass_err=No s'han pogut suprimir els usuaris
 umass_sure=Segur que vols suprimir els $1 usuaris seleccionats? Els seus directoris arrel contenen $2 de fitxers.
+umass_others=ATENCIÓ! Alguns directoris arrel contenen fitxers $1 propietat d'altres usuaris.
 umass_sure2=Segur que vols suprimir els $1 iusuaris seleccionats?
 umass_euser=No tens permís per suprimir l'usuari $1
 umass_enone=No hi ha cap usuari seleccionat

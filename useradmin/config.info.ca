@@ -51,11 +51,13 @@ line5=Restriccions de les contrasenyes,11
 passwd_min=Llargària mínima de la contrasenya,3,Sense mínims
 passwd_dict=Evita contrasenyes amb paraules de diccionari,1,1-Sí,0-No
 passwd_re=Expressió regular Perl per a verificar la contrasenya,3,Cap
+passwd_redesc=Descripció de l'expressió regular humanament llegible,3,No, només l'expressió
 passwd_same=Evita que les contrasenyes continguin noms d'usuari,1,1-Sí,0-No
 passwd_prog=Prograna extern de comprovació de contrasenyes,3,Cap
-passwd_progmode=Passa el nom i la contrasenya de l'usuari al programa,1,1-COm a entrada,0-Com a paràmetres
+passwd_progmode=Passa el nom i la contrasenya de l'usuari al programa,1,1-Com a entrada,0-Com a paràmetres
+passwd_mindays=Nombre de dies abans de permetre el canvi de contrasenya,3,Cap
 
-line0=Ordres 'd'abans i després,11
+line0=Ordres d'abans i després,11
 pre_command=Orde a executar abans de fer els canvis,0
 post_command=Orde a executar després de fer els canvis,0
 

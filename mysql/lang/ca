@@ -792,6 +792,7 @@ cnf_key_buffer=Mida del <i>buffer</i> d'índexs
 cnf_max_allowed_packet=Mida màxima de paquet
 cnf_max_connections=Nombre màxim de connexions
 cnf_query_cache_size=Mida del cau de la consulta en bytes
+cnf_equery_cache_size=La mida del cau de la consulta és invàlida
 cnf_table_cache=Taules a posar en el cau
 cnf_sort_buffer=Mida del <i>buffer</i> d'ordenació
 cnf_net_buffer_length=Mida del <i>buffer</i> de xarxa
