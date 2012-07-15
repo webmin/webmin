@@ -96,6 +96,18 @@ if ($st->{'support'} && $st->{'enabled'}) {
 			    $st->{'check'} ? $text{'yes'} :
 				"<font color=#ff0000>$text{'no'}</font>");
 	}
+if ($st->{'family'}) {
+	print &ui_table_row($text{'index_family'}, $st->{'family'});
+	}
+if ($st->{'model'}) {
+	print &ui_table_row($text{'index_model'}, $st->{'model'});
+	}
+if ($st->{'serial'}) {
+	print &ui_table_row($text{'index_serial'}, $st->{'serial'});
+	}
+if ($st->{'capacity'}) {
+	print &ui_table_row($text{'index_capacity'}, $st->{'capacity'});
+	}
 print &ui_table_end();
 
 # Show extra attributes
