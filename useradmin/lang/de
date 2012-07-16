@@ -421,6 +421,7 @@ umass_enone=Kein Benutzer ausgew&#228;hlt
 umass_eroot=Sie d&#252;rfen keine Systembenutzer l&#246;schen (solche mit einer User-ID kleinergleich 10).
 umass_err=Fehler beim L&#246;schen von Benutzern
 umass_euser=Sie d&#252;rfen den Benutzer $1 nicht l&#246;schen
+umass_others=WARNUNG! Einige Home-Verzeichnisse enthalten $1 Dateien, die andere Benutzer geh&#246;ren.
 umass_sure=Sind Sie sicher, da&#223; Sie die $1 ausgew&#228;hlten Benutzer l&#246;schen m&#246;chten? Deren Heimatverzeichnisse beinhalten $2 Dateien.
 umass_sure2=Sind Sie sich sicher, dass Sie die $1 ausgew&#228;hlten Benutzer l&#246;schen wollen?
 umass_title=Benutzer l&#246;schen
