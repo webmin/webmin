@@ -5608,7 +5608,7 @@ foreach my $cron (@webmincrons) {
 		# Older than interval .. time to run
 		$run = 1;
 		}
-	elsif ($cron->{'mins'}) {
+	elsif ($cron->{'mins'} ne '') {
 		# Check if current time matches spec, and we haven't run in the
 		# last minute
 		my @tm = localtime($now);
@@ -5746,7 +5746,8 @@ foreach my $f (readdir(CRONS)) {
 				$broken = 1;
 				}
 			}
-		if (!$cron{'interval'} && !$cron{'mins'} && !$cron{'special'}) {
+		if (!$cron{'interval'} && $cron{'mins'} eq '' &&
+		    $cron{'special'} eq '') {
 			print STDERR "Cron $1 missing any time spec\n";
 			$broken = 1;
 			}
