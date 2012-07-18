@@ -1,3 +1,4 @@
+__norefs=1
 create_title=Export erstellen
 edit_active=Aktiv?
 edit_all=Jedem
@@ -59,7 +60,7 @@ index_to=Exportiert nach ...
 log_apply=Angewandte Konfiguration
 log_create=Erstellte NFS-Exporte $1
 log_create_l=Erstellte NFS-Exporte $1 bis $2
-log_delete=Gel&#246;schte NFS-Exporte 
+log_delete=Gel&#246;schte NFS-Exporte
 log_delete_l=Gel&#246;schte NFS-Exporte $1 bis $2
 log_modify=Modifizierte NFS-Exporte $1
 log_modify_l=Modifizierte NFS-Exporte $1 bis $2
