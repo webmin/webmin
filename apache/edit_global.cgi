@@ -51,5 +51,3 @@ if ($in{'type'} == 6) {
 	}
 
 &ui_print_footer("index.cgi?mode=global", $text{'index_return2'});
-
-

@@ -36,6 +36,6 @@ if ($changed && &is_apache_running()) {
 
 &webmin_log("mods");
 
-&redirect("");
+&redirect("index.cgi?mode=global");
 
 

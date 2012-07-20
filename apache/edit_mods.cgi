@@ -32,5 +32,5 @@ foreach my $ms ([ @mods[0..$sp] ], [ @mods[$sp+1..$#mods] ]) {
 print &ui_grid_table(\@grid, 2, 100);
 print &ui_form_end([ [ undef, $text{'mods_save'} ] ]);
 
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer("index.cgi?mode=global", $text{'index_return2'});
 

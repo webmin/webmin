@@ -29,5 +29,4 @@ print &ui_textarea("data", $data, 20, 80, undef, undef,
 		   "style='width:100%'"),"<br>\n";
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 
-&ui_print_footer("", $text{'index_return'});
-
+&ui_print_footer("index.cgi?mode=global", $text{'index_return2'});
