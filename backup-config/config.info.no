@@ -1,2 +1,3 @@
 date_subs=Utf&#248;r <tt>strftime</tt> erstatning p&#229; m&#229;lfiler for sikkerhetskopi?,1,1-Ja,0-Nei
+webmin_subs=Utf&#248;r Webmin variabel-erstatning p&#229; sikkerhetskopi-destinasjoner,1,1-Ja,0-Nei
 from_addr=Fra: adresse for e-post meldinger,3,webmin@vertsnavn

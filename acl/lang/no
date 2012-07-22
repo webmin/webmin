@@ -71,6 +71,7 @@ convert_3=Brukere med grupper
 convert_4=Brukere med brukerid (UID) i rekkef&#248;lge
 convert_added=$1 er lagt til
 convert_desc=Denne Dette feltet lar deg konvertere eksisterende Unix brukere til Webmin brukere. Rettighetene til hver nye Webmin bruker vil bestemmes av rettighetene til gruppen som valgt over.
+convert_done=$1 brukere konvertert, $2 ugyldig, $3 finnes allerede, $4 ekskludert.
 convert_ecannot=Du har ikke tilgang til &#229; konvertere Unix brukere
 convert_egroup=Unix gruppe eksisterer ikke
 convert_emax=Ugyldig maksimum bruker ID (UID)
