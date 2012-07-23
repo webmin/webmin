@@ -857,7 +857,7 @@ foreach $o (@$opts) {
 	$o = [ $o ] if (!ref($o));
 	$rv .= "<option value=\"".&quote_escape($o->[0])."\"".
 	       ($sel{$o->[0]} ? " selected" : "")." ".$o->[2].">".
-	       &html_escape($o->[1] || $o->[0])."\n";
+	       ($o->[1] || $o->[0])."\n";
 	$opt{$o->[0]}++;
 	}
 foreach $s (keys %sel) {
