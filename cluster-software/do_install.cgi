@@ -141,7 +141,8 @@ foreach $h (@hosts) {
 			else {
 				local @resp = &remote_foreign_call($s->{'host'},
 					"software", "capture_function_output",
-					"update_system_install", $in{'file'});
+					"software::update_system_install",
+					$in{'file'});
 				if (@{$resp[1]}) {
 					# Worked .. get package details
 					foreach $p (@{$resp[1]}) {
@@ -149,7 +150,17 @@ foreach $h (@hosts) {
 						}
 					}
 				else {
-					push(@rv, $text{'install_eupdate'});
+					# May have failed
+					($first) = split(/\s+/, $in{'file'});
+					local @info = &remote_foreign_call(
+						$s->{'host'}, "software",
+						"package_info", $first);
+					if (@info && $info[0] eq $first) {
+						push(@rv, $text{'install_ealready'});
+						}
+					else {
+						push(@rv, $text{'install_eupdate'});
+						}
 					}
 				}
 			}
