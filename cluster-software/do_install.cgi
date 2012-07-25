@@ -8,13 +8,19 @@ require './cluster-software-lib.pl';
 &ReadParse();
 
 # Work out package names, for display to use
-@packages = $in{'source'} == 3 ? split(/\s+/, $in{'file'}) :
-	    $in{'unknownfile'} ? ( $in{'unknownfile'} ) :
-				 &software::file_packages($in{'file'});
-foreach $p (@packages) {
-	local ($n, $d) = split(/\s+/, $p, 2);
-	push(@names, $n);
-	push(@descs, $d || $n);
+if ($in{'source'} == 3) {
+	# Package names are from YUM
+	@packages = @names = @descs = split(/\s+/, $in{'file'});
+	}
+else {
+	# Get package names and descriptions from file
+	@packages = $in{'unknownfile'} ? ( $in{'unknownfile'} ) :
+					 &software::file_packages($in{'file'});
+	foreach $p (@packages) {
+		local ($n, $d) = split(/\s+/, $p, 2);
+		push(@names, $n);
+		push(@descs, $d || $n);
+		}
 	}
 
 $in{'source'} == 3 || -r $in{'file'} || &error($text{'do_edeleted'});
@@ -143,6 +149,7 @@ foreach $h (@hosts) {
 					"software", "capture_function_output",
 					"software::update_system_install",
 					$in{'file'});
+				print STDERR "resp[1]=",join(" ", @{$resp[1]}),"\n";
 				if (@{$resp[1]}) {
 					# Worked .. get package details
 					foreach $p (@{$resp[1]}) {
@@ -194,7 +201,7 @@ foreach $h (@hosts) {
 		foreach $r (@$rv) {
 			if (ref($r)) {
 				# Install went ok!
-				print &text('do_success', $d),"<br>\n";
+				print &text('do_success2', $r->[0],$d),"<br>\n";
 				$pinfo[$i] = $r if (!$pinfo[$i] && @$r);
 				if (!@$r) {
 					# Failed to get info! Need a refresh..
