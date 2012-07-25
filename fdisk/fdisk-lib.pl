@@ -435,19 +435,40 @@ while(<FDISK>) {
 		$part->{'desc'} = &partition_description($part->{'device'});
 		push(@{$disk->{'parts'}}, $part);
 		}
-	elsif (/^\s*(\d+)\s+(\d+)cyl\s+(\d+)cyl\s+(\d+)cyl(\s+(primary|logical|extended))?\s*(\S*)\s*(\S*)/) {
-		# Partition within the current disk from parted
+	elsif (/^\s*(\d+)\s+(\d+)cyl\s+(\d+)cyl\s+(\d+)cyl\s+(primary|logical|extended)\s*(\S*)\s*(\S*)/) {
+		# Partition within the current disk from parted (msdos format)
 		local $part = { 'number' => $1,
 				'device' => $disk->{'device'}.$1,
-				'type' => $7,
+				'type' => $6 || 'ext2',
 				'start' => $2+1,
 				'end' => $3+1,
 				'blocks' => $4 * $disk->{'cylsize'},
-				'extended' => $6 eq 'extended' ? 1 : 0,
+				'extended' => $5 eq 'extended' ? 1 : 0,
+				'raid' => $7 eq 'raid' ? 1 : 0,
 				'index' => scalar(@{$disk->{'parts'}}),
-			        'name' => $8,
 				'edittype' => 0, };
 		$part->{'type'} = 'ext2' if ($part->{'type'} =~ /^ext/);
+		$part->{'type'} = 'raid' if ($part->{'type'} eq 'ext2' &&
+					     $part->{'raid'});
+		$part->{'desc'} = &partition_description($part->{'device'});
+		push(@{$disk->{'parts'}}, $part);
+		}
+	elsif (/^\s*(\d+)\s+(\d+)cyl\s+(\d+)cyl\s+(\d+)cyl\s+(\S+)\s+(\S+)\s+(\S+)/) {
+		# Partition within the current disk from parted (gpt format)
+		local $part = { 'number' => $1,
+				'device' => $disk->{'device'}.$1,
+				'type' => $5 || 'ext2',
+				'start' => $2+1,
+				'end' => $3+1,
+				'blocks' => $4 * $disk->{'cylsize'},
+				'extended' => 0,
+				'raid' => $7 eq 'raid' ? 1 : 0,
+				'index' => scalar(@{$disk->{'parts'}}),
+			        'name' => $6,
+				'edittype' => 0, };
+		$part->{'type'} = 'ext2' if ($part->{'type'} =~ /^ext/);
+		$part->{'type'} = 'raid' if ($part->{'type'} eq 'ext2' &&
+					     $part->{'raid'});
 		$part->{'desc'} = &partition_description($part->{'device'});
 		push(@{$disk->{'parts'}}, $part);
 		}
@@ -620,7 +641,12 @@ if ($has_parted) {
 	# Using parted
 	my $pe = $part > 4 ? "logical" : "primary";
 	my $cmd;
-	if ($type && $type ne 'ext2') {
+	if ($type eq "raid") {
+		$cmd = "parted -s ".$disk." unit cyl mkpartfs ".$pe." ".
+		       "ext2 ".($start-1)." ".$end;
+		$cmd .= " ; parted -s ".$disk." set $part raid on";
+		}
+	elsif ($type && $type ne 'ext2') {
 		$cmd = "parted -s ".$disk." unit cyl mkpartfs ".$pe." ".
 		       $type." ".($start-1)." ".$end;
 		}
@@ -742,7 +768,7 @@ if ($has_parted) {
 	elsif ($tag eq "fat32") {
 		@rv = ( "vfat" );
 		}
-	elsif ($tag eq "ext2") {
+	elsif ($tag eq "ext2" || $tag eq "raid") {
 		@rv = ( "ext3", "ext4", "ext2", "xfs", "reiserfs" );
 		}
 	elsif ($tag eq "hfs") {
@@ -1346,6 +1372,7 @@ else { return " $_[2] $in{$_[0]}"; }
 	'fat16', 'Windows FAT16',
 	'fat32', 'Windows FAT32',
 	'ext2', 'Linux',
+	'raid', 'Linux RAID',
 	'HFS', 'MacOS HFS',
 	'linux-swap', 'Linux Swap',
 	'NTFS', 'Windows NTFS',
