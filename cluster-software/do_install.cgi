@@ -149,7 +149,6 @@ foreach $h (@hosts) {
 					"software", "capture_function_output",
 					"software::update_system_install",
 					$in{'file'});
-				print STDERR "resp[1]=",join(" ", @{$resp[1]}),"\n";
 				if (@{$resp[1]}) {
 					# Worked .. get package details
 					foreach $p (@{$resp[1]}) {
@@ -163,7 +162,7 @@ foreach $h (@hosts) {
 						$s->{'host'}, "software",
 						"package_info", $first);
 					if (@info && $info[0] eq $first) {
-						push(@rv, $text{'install_ealready'});
+						push(@rv, &text('install_ealready', $info[4]));
 						}
 					else {
 						push(@rv, $text{'install_eupdate'});
@@ -207,7 +206,8 @@ foreach $h (@hosts) {
 					# Failed to get info! Need a refresh..
 					$refresh{$s->{'id'}} = 1;
 					}
-				elsif (&indexof($names[$i],
+				elsif ($names[$i] &&
+				       &indexof($names[$i],
 					     @{$h->{'packages'}}) < 0) {
 					push(@{$h->{'packages'}},
 					     { 'name' => $names[$i],
