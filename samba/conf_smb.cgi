@@ -80,6 +80,7 @@ print &ui_table_row($text{'smb_master'},
 		    [ "no", $text{'no'} ],
 		    [ "auto", $text{'smb_master_auto'} ] ]));
 
+$security = &getval("security");
 print &ui_table_row($text{'smb_security'},
 	&ui_select("security", $security,
 		   [ [ "", $text{'default'} ],
