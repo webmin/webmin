@@ -37,7 +37,7 @@ install_servers=Server(s) to install on
 install_ok=Install
 install_erus=This server uses a different update system to the master server ($1 versus $2)
 install_eupdate=An error occurred installing the specified updates
-install_ealready=Already installed
+install_ealready=Version $1 is already installed
 
 add_title=Add Servers
 add_msg=Adding $1 ..
