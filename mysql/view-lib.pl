@@ -1,4 +1,5 @@
-# Functions used by view_table.cgi and siblings
+# Functions used by view_table.cgi and siblings, and shared between the
+# MySQL and PostgreSQL modules
 
 # get_search_args(&in)
 # Returns the search SQL, search URL arguments and search hidden fields
@@ -90,6 +91,29 @@ return $match == 0 ? "like $qu%$for%$qu" :
        $match == 4 ? "> $for" :
        $match == 5 ? "< $for" :
 		     " = \"\"";
+}
+
+# get_databases_return_link(db-name)
+# Returns a link back to the DB list, which may be in Virtualmin
+sub get_databases_return_link
+{
+my ($dbname) = @_;
+if (&foreign_check("virtual-server") &&
+    &foreign_available("virtual-server")) {
+	$virtual_server::no_virtualmin_plugins = 1;
+	&foreign_require("virtual-server", "virtual-server-lib.pl");
+	my $type = $module_name =~ /^mysql/ ? 'mysql' : 'postgres';
+	foreach my $d (grep { &virtual_server::can_edit_domain($_) }
+			    &virtual_server::list_domains()) {
+		my @dbs = &virtual_server::domain_databases($d, [ $type ]);
+		my ($got) = grep { $_->{'name'} eq $dbname } @dbs;
+		if ($got) {
+			return "../virtual-server/list_databases.cgi?".
+			       "dom=$d->{'id'}";
+			}
+		}
+	}
+return "";
 }
 
 1;

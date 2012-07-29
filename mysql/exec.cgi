@@ -50,6 +50,6 @@ else {
 
 	&ui_print_footer("exec_form.cgi?db=$in{'db'}", $text{'exec_return'},
 		"edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
-		"", $text{'index_return'});
+		&get_databases_return_link($in{'db'}), $text{'index_return'});
 	}
 

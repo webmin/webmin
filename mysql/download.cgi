@@ -8,7 +8,6 @@ if (-r 'mysql-lib.pl') {
 else {
 	require './postgresql-lib.pl';
 	}
-require './view-lib.pl';
 
 &ReadParse();
 &can_edit_db($in{'db'}) || &error($text{'dbase_ecannot'});

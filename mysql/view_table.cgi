@@ -8,7 +8,6 @@ if (-r 'mysql-lib.pl') {
 else {
 	require './postgresql-lib.pl';
 	}
-require './view-lib.pl';
 
 if ($config{'charset'}) {
 	$main::force_charset = $config{'charset'};
@@ -467,14 +466,14 @@ if (!$in{'field'} && $total > $displayconfig{'perpage'}) {
 
 if ($access{'edonly'}) {
 	&ui_print_footer("edit_dbase.cgi?db=$in{'db'}",$text{'dbase_return'},
-		"", $text{'index_return'});
+		 &get_databases_return_link($in{'db'}), $text{'index_return'});
 	}
 else {
 	&ui_print_footer("edit_table.cgi?db=$in{'db'}&table=".
 			 &urlize($in{'table'}),
 			$text{'table_return'},
 			"edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
-			"", $text{'index_return'});
+			&get_databases_return_link($in{'db'}), $text{'index_return'});
 	}
 
 # column_sort_link(name)

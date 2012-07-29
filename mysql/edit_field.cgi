@@ -151,5 +151,5 @@ else {
 &ui_print_footer("edit_table.cgi?db=$in{'db'}&table=".&urlize($in{'table'}),
 		 $text{'table_return'},
 		 "edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
-		 "", $text{'index_return'});
+		 &get_databases_return_link($in{'db'}), $text{'index_return'});
 

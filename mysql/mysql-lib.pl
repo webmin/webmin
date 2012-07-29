@@ -4,6 +4,7 @@
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
+require 'view-lib.pl';
 if ($config{'mysql_libs'}) {
 	$ENV{$gconfig{'ld_env'}} .= ':' if ($ENV{$gconfig{'ld_env'}});
 	$ENV{$gconfig{'ld_env'}} .= $config{'mysql_libs'};
