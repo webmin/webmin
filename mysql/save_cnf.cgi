@@ -81,7 +81,7 @@ foreach $v (keys %vars) {
 &save_directive($conf, $mysqld, "set-variable", \@sets);
 
 # Save numeric variables
-foreach $w (@mysql_number_variables) {
+foreach $w (@mysql_number_variables, @mysql_byte_variables) {
 	if ($in{$w."_def"}) {
 		delete($vars{$w});
 		&save_directive($conf, $mysqld, $w, [ ]);

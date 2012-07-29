@@ -84,11 +84,10 @@ EOF
 $old_user_priv_cols = $mysql_version >= 4 ? 21 : 14;
 $old_db_priv_cols = $mysql_version >= 4 ? 12 : 10;
 
-@mysql_set_variables = ( "key_buffer", "max_allowed_packet",
-			 "sort_buffer", "net_buffer_length",
+@mysql_set_variables = ( "key_buffer", "sort_buffer", "net_buffer_length",
 			 "myisam_sort_buffer_size" );
-@mysql_number_variables = ( "table_cache", "max_connections",
-			    "query_cache_size" );
+@mysql_number_variables = ( "table_cache", "max_connections" );
+@mysql_byte_variables = ( "query_cache_size", "max_allowed_packet" );
 
 # make_authstr([login], [pass], [host], [port], [sock])
 sub make_authstr
