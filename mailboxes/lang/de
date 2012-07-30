@@ -394,12 +394,12 @@ view_nobody=Diese Meldung hat keine Inhalte.
 view_noheaders=Einfache Headeranzeige
 view_print=Drucken
 view_qdesc=E-Mail $1 in Warteschlange
-view_raw=Zeige Nachricht im Rohformat an
+view_raw=Zeige Roh-Nachricht an
 view_razor=Als Spam melden
 view_razordel=Spam-Report und L&#246;schen
 view_recv=<a href='$2'>Hole Schl&#252;ssel-ID $1 vom Keyserver</a>.
 view_remote-mta=Entfernter E-Mail-Server
-view_reply=Anworten
+view_reply=Antworten
 view_reply2=Allen antworten
 view_reporting-mta=Berichtender E-Mail-Server
 view_return=Original-E-Mail
