@@ -1695,20 +1695,20 @@ sub start_upstart_service
 {
 my ($name) = @_;
 my $out = &backquote_logged(
-	"service ".quotemeta($name)." start 2>&1 </dev/null");
+	"initctl start ".quotemeta($name)." 2>&1 </dev/null");
 return (!$?, $out);
 }
 
 =head2 stop_upstart_service(name)
 
-Shut down the upstop service with some name, and return an OK flag and output
+Shut down the upstart service with some name, and return an OK flag and output
 
 =cut
 sub stop_upstart_service
 {
 my ($name) = @_;
 my $out = &backquote_logged(
-	"service ".quotemeta($name)." stop 2>&1 </dev/null");
+	"initctl stop ".quotemeta($name)." 2>&1 </dev/null");
 return (!$?, $out);
 }
 
