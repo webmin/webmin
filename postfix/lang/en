@@ -636,6 +636,11 @@ body_eregexp=The body checks map must be in the format <tt>regexp:</tt><i>filena
 opts_body_checks=Message body checking tables
 body_return=body checks
 
+dependent_ecannot=Sender Dependent Addresses
+dependent_ecannot=You are not allowed to edit sender dependent addresses
+dependent_eregexp=The sender dependent addresses map must be in the format <tt>regexp:</tt><i>filename</i>
+dependent_return=sender dependent addresses
+
 manual_title=Edit Map File
 manual_file=Select a map file to edit:
 manual_change=Change
@@ -712,6 +717,7 @@ log_canonical=Changing canonical mapping options
 log_virtual=Changed virtual domain options
 log_bcc=Changed BCC map options
 log_transport=Changed transport mapping options
+log_dependent=Changed sender dependent address options
 log_relocated=Changed relocate mapping options
 log_header=Changed header check options
 log_body=Changed body check options
@@ -782,6 +788,11 @@ log_flushq=Flushed mail queue
 log_backend=Updated configuration file for map $1
 log_sasl=Changed SMTP authentication and encryption
 log_client=Changed SMTP client restrictions
+log_sender_dependent_default_transport_maps_create=Created sender dependent address $1
+log_sender_dependent_default_transport_maps_modify=Modified sender dependent address $1
+log_sender_dependent_default_transport_maps_delete=Deleted sender dependent address $1
+log_delete_sender_dependent_default_transport_mapss=Deleted $1 sender dependent addresses
+log_manual_sender_dependent_default_transport_mapss=Manually edited sender dependent addresses in $1
 
 sasl_title=SMTP Authentication And Encryption
 opts_smtpd_sasl_auth_enable=Enable SASL SMTP authentication?
