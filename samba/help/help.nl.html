@@ -1,0 +1,197 @@
+<body bgcolor=#ffffff>
+<title>Samba Manager</title>
+<center><img src="images/samba.gif"></center><br>
+<h2><i>Deze help pagina is niet compleet</i></h2>
+<hr>
+<h3>Introductie</h3>
+Samba is een vrij te gebruiken programma waarmee u PC's waarop Windows werkt
+toegang kan geven naar files en printers op uw Unix systeem, net alsof het
+een Windows file/printer server is. Sommige Unix systemen zoals Redhat Linux 
+voegen Samba toe als onderdeel van de standaard installatie, terwijl de meeste
+andere u het apart laten downloaden en installeren. <p>
+
+Indien u geen Samba heeft geinstalleerd op uw systeem, zal de module's hoofd
+pagina klagen dat het niet de Samba configuratie file kan vinden en dat
+u geen files en directory's kunt delen. Als u wel Samba heeft geinstalleerd en
+toch deze foutmelding krijgt, controleert u dan de <a href="/config.cgi?samba">module configuratie</a>
+om er zeker van te zijn dat Webmin op de juiste plek kijkt voor de configuratie
+file en het Samba programma. <p>
+
+Ervan uitgaande dat Samba correct is geinstalleerd, zal de module hoofd pagina
+een lijst tonen van alle file's en printer delingen die zijn gedefinieerd
+op uw systeem. 
+Als Webmin bepaald dat de Samba server niet aan het werk is krijgt u de optie
+om de Samba server te starten. Dit kan nodig zijn als Samba niet is opgestart
+tijdens het booten van uw systeem. <p>
+
+<hr>
+<h3>Een File Deling Aanmaken</h3>
+Een Samba file deling is een directory kan gemound worden door een client PC.
+Iedere deling heeft een korte naam zoals <tt>docs</tt> of <tt>www</tt>, die
+gericht is naar een directory op uw Unix systeem. Een deling word normaal
+gesproken verwezen naar een client met de <tt>\\server\share</tt> notatie. <p>
+
+Om een deling aan te maken klikt u op de <tt>Aanmaken File Deling</tt> link
+onderaan de lijst met bestaande delingen op de hoofdpagina. Dit toont u een
+formulier waarin u de details van de nieuwe deling kunt invullen. Ondanks
+dat Samba een groot aantal parameters ondersteunt voor iedere deling, zijn
+dit de meest belangrijke :<p>
+<table border width=100%>
+<tr> <td><b>Deling Naam</b></td>
+<td>Iedere deling moet een naam hebben, die gebruikt word door clients om naar
+te verwijzen. Een speciaal geval is de <tt>Alle home directory's</tt> deling,
+wat later word uitgelegd.
+</td> </tr>
+<tr> <td><b>Pad</b></td>
+<td>De directory die gedeeld moet worden. Clients die deze deling gebruiken
+hebben alleen toegang tot de file in deze directory.</td> </tr>
+<tr> <td><b>Beschrijfbaar</b></td>
+<td>Bepaald of clients kunnen schrijven naar files en directory's in deze
+deling.</td> </tr>
+<tr> <td><b>Gast toegang</b></td>
+<td>Als een gedeelde directory gast gebruikers toelaat hebben gebruikers
+toegang zonder dat ze een geldige naam of wachtwoord hoeven in te vullen.
+Een deling kan gast gebruikers weigeren, gast en gewone gebruikers toestaan,
+of alleen gast gebruikers toestaan.</td></tr>
+</table>
+Voor informatie over andere deling opties leest u de <b>Geavanceerde Opties</b>
+ sectie hieronder. <p>
+
+Wanneer u de details van de nieuwe deling heeft ingevuld en heeft geklikt
+op de <tt>Aanmaken</tt> knop word het direct beschikbaar voor de client PC.
+Ervan uitgaande dat alles correct is opgezet op uw netwerk kunnen gebruikers
+de <tt>Netwerk Omgeving</tt> functie in Windows gebruiken om uw server te
+zien met alle gedeelde directory's en files. De nieuw aangemaakte deling kan
+vervolgens worden gemapt naar een schijf letter op de PC. <p>
+
+<hr>
+<h3>Printer Deling Aanmaken</h3>
+Een Samba printer deling is een locale of remote Unix printer die u 
+beschikbaar wilt maken voor andere clients. Net zoals files delen heeft
+iedere printer deling een korte naam (zoals <tt>hp5si</tt>), en word
+verwezen om de <tt>\\server\share</tt> notatie te gebruiken. <p>
+
+Om een nieuwe printer deling aan te maken klikt u op de <tt>Aanmaken Printer Deling</tt>
+op de hoofd pagina. Dit toont een formulier wat gelijk is aan het formulier
+wat u gebruikt om files te delen, waarin u details kunt invullen van de
+nieuwe printer. De meest belangrijke opties voor een nieuwe printer deling zijn :<p>
+<table border width=100%>
+<tr> <td><b>Gedeelde Naam</b></td>
+<td>Iedere deling moet een naam hebben voor clients om naar te verwijzen. Een
+speciaal geval is de <tt>Alle printers</tt> deling, dit word later uitgelegd.
+</td> </tr>
+<tr> <td><b>Printer</b></td>
+<td>De Unix printer die word gedeeld. Dit kan iedere printer zijn die gaat printen
+door de <tt>lpr</tt> opdracht.</td> </tr>
+<tr> <td><b>Pad</b></td>
+<td>De directory waar de tijdelijke files staan</td> </tr>
+<tr> <td><b>Gast toegang</b></td>
+<td>Als een deling gast gebruikers toelaat hebben gebruikers
+toegang zonder dat ze een geldige naam of wachtwoord hoeven in te vullen.
+Een deling kan ook gast gebruikers weigeren, gast en normale gebruikers
+toestaan of alleen gast gebruikers toestaan.</td></tr>
+<tr> <td><b>Printer type</b></td>
+<td>De naam van de printer driver die moet worden gebruikt voor deze printer.
+Als u een waarde invult voor deze optie en het komt overeen met een printer
+op een client PC hoeven gebruikers geen printer driver te kiezen wanneer zij
+deze printer toevoegen.</td> </tr>
+</table><p>
+
+Hetzelfde als voor file delingen zijn er nog veel meer opties beschikbaar voor
+printer delingen. Zodra er een printer deling word toegevoegd word deze
+direct beschikbaar voor de clients. Onder Windows kan een printer worden
+toegevoegd met gebruik van de <tt>Printer Toevoegen</tt> optie in het printer
+configuratie scherm. Eenmaal toegevoegd kan de gebruiker ermee printen net
+zoals bij een locale netwerk printer. <p>
+
+<hr>
+<h3>Kopie Aanmaken</h3>
+
+
+<hr>
+<h3>Een Deling Bewerken</h3>
+Om een bestaande deling te bewerken klikt u op de naam in de lijst met delingen
+op de hoofd pagina. Dit zal hetzelfde formulier tonen als voor het aanmaken
+van een deling, waarmee u alle optie en parameters kunt modificeren. Om uw
+wijzigingen op te slaan klikt u op de <tt>Toevoegen</tt> knop aan de linker
+onderkant van de pagina. <p>
+
+Om een deling te verwijderen klikt u op de <tt>Verwijder</tt> knop aan de
+rechter onderkant van de pagina. Bestaande gebruikers zullen niet direct
+verbroken worden - echter nieuwe gebruikers kunnen geen verbinding meer
+maken met de gedeelde directory of files. <p>
+
+
+<hr>
+<h3>Gebruikers en Veiligheid</h3>
+Voor delingen die geen gasten toelaten verwacht Samba van de client dat die
+een gebruikersnaam en wachtwoord opgeeft. Normaal gesproken word die
+gecontroleerd met de Unix gebruikers lijst die kan worden ge-update met de
+<a href=/useradmin/>Gebruiker Manager</a> module. Samba kan ook zijn eigen
+gebruikersnaam en wachtwoorden lijst bewaren - bekijk de 
+<b>Versleutelde Wachtwoorden</b> sectie voor meer details. <p>
+
+Sommige versies van Windows geven niet de mogelijkheid voor de gebruiker om
+een gebruikersnaam op te geven zodra ze toegang willen tot een deling -
+in plaats daarvan word de gebruikersnaam gebruikt waarmee werd ingelogd bij
+Windows. Als alle client gebruikers inloggen bij Windows met dezelfde
+gebruikersnaam als zij gebruiken voor Unix is het geen probleem. 
+Als dit niet het geval is heeft u 2 opties :
+<ol>
+<li>Windows 95 en NT kunnen handmatig een deling mounten, door het typen van
+    <tt>net gebruik <i>drive:</i> <i>deling</i></tt> op de opdrachtprompt of
+    door te klikken op de map netwerk schijf knop in een file venster en
+    vervolgens het gedeelde pad op te geven. In beide gevallen kan de deling
+    in het formaat <tt>\\server\deling%gebruiker</tt>, waar <i>gebruiker</i>
+    de gebruikersnaam is om in te loggen bij de server. <p>
+<li>Samba kan worden geconfigureerd om te proberen de wachtwoorden overeen
+    te laten komen met een gebruikerslijst zodat de juiste gebruikersnaam
+    gevonden word bij het inloggen. De <tt>Unix gebruikers</tt> gedeelde
+    optie geeft u de mogelijkheid gebruikers of groepen te specificeren om
+    mee te vergelijken. Wees ervan bewust dat als u deze optie gebruikt met
+    een heel groot aantal gebruikers het niet erg veilig is, omdat het altijd
+    kan voorkomen dat 2 mensen hetzelfde wachtwoord gebruiken. <p>
+</ul>
+
+<hr>
+<h3>Versleutelde Wachtwoorden</h3>
+Normaal zijn wachtwoorden die verstuurd worden over het netwerk tussen een
+Samba server en een pc van een client niet versleuteld. 
+Dit is slecht om 2 redenen :
+<ol>
+<li>Iedereen kan luisteren op uw netwerk en zo wachtwoorden opvangen
+    van andere mensen. <br>
+<li>De laatste versies van Windows 9x en NT weigeren om niet versleutelde
+    wachtwoorden te versturen. Gebruikers die verbinding willen maken met
+    uw Samba server van deze systemen krijgen een fouten bericht zoals <tt>???</tt>.
+    De eerste veranderingen verschenen in NT service pakket 3. <br>
+</ol><p>
+
+Gelukkig kan Samba met versleutelde wachtwoorden werken. Echter het is
+niet mogelijk om wachtwoorden die verstuurd worden door clients en te
+vergelijken met een normale Unix wachtwoorden file omdat er verschillende
+vormen van versleuteling worden gebruikt. Daarom moet Samba zijn eigen
+lijst met gebruikers en wachtwoorden onderhouden. <p>
+
+Om Samba over te schakelen naar de versleutelde wachtwoorden mode, moet u :
+<ol>
+<li>Er zeker van zijn dat uw Samba versie versleutelde wachtwoorden ondersteund.
+    Zet vervolgens op de <tt>Wachtwoorden Optie</tt> pagina de <tt>Versleutelde
+    wachtwoorden</tt> optie Ja. Als dit mislukt moet u een versie downloaden
+    of compileren die versleutelde wachtwoorden ondersteund. <p>
+<li>Klik op de <tt>Converteer Unix gebruikers naar Samba gebruikers</tt> link op
+    de onderkant van de hoofd pagina. Dit brengt u naar een pagina waar u alle
+    of sommige bestaande Unix gebruikers kunt converteren naar Samba gebruikers.
+    Gebruikersnamen, echte namen, UID's en shell's zullen worden geconverteerd -
+    maar de wachtwoorden niet. <p>
+<li>Om wachtwoorden toe te kennen aan gebruikers moet u de <tt>Bewerk Samba 
+    gebruiker lijst</tt> optie gebruiken op de hoofd pagina. Dit toont een lijst
+    met alle Samba gebruikers waaruit u de gebruiker kunt kiezen die u wilt
+    bewerken. De wachtwoorden van alle gebruikers kan op <tt>Slot</tt> gezet
+    worden (login is niet toegestaan), <tt>Geen Wachtwoord</tt> (geen wachtwoord
+    nodig) of een wachtwoord dat u kunt invullen. <p>
+</ul>
+
+<hr>
+<a href="/"><img alt="<-" align=middle border=0 src=/images/left.gif></a>
+&nbsp;&nbsp;<a href="">Keer terug naar de module</a><p>
