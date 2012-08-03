@@ -12,6 +12,7 @@ exec_failed=Uitvoeren mislukt op $1: $2
 exec_nohosts=Geen hosts geselecteerd om de taak op uit te voeren, of de geselecteerde groepen bevatten geen bruikbare hosts.
 exec_success=Resultaat van $1 ..
 exec_title=Cluster Cron Taak Uitvoeren
+index_actions=Acties
 index_add=Nieuwe cluster cron taak aanmaken.
 index_more=$1 meer ..
 index_none=Er zijn geen cluster cron taken gedefinieerd.
