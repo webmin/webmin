@@ -808,7 +808,7 @@ if ($init_mode eq "init" || $init_mode eq "local" || $init_mode eq "upstart" ||
 			# Call the insserv command to enable
 			my $ex = &system_logged("insserv ".quotemeta($_[0]).
 				       " >/dev/null 2>&1");
-			$done = 1 if (!$ex);
+			$done = 1 if (!$ex && &action_status($_[0]) == 2);
 			}
 		if (!$done) {
 			# Just link up the init script
