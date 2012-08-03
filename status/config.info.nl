@@ -1,4 +1,3 @@
-line1=Configureerbare opties,11
 index_status=Status om de lijst te laten zien,1,1-Huidige status,0-Van laatste geplande controle
 pager_cmd=Opdracht om bericht te sturen naar een pager,3,Geen
 refresh=Seconden tussen pagina verversen,3,Niet verversen
@@ -12,3 +11,5 @@ snmp_server=SNMP traps naar server,3,Geen
 snmp_version=SNMP protocol versie,1,3-v3,2-v2,1-v1
 snmp_community=SNMP community string,0
 snmp_trap=SNMP OID voor traps,0
+history_show=Aantal historische statussen tonen,0
+history_purge=Dagen om historische statussen te bewaren,0
