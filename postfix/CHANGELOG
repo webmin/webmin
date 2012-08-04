@@ -82,3 +82,5 @@ Added an option to the SMTP Authentication page for setting the login and passwo
 Destination email addresses that are allowed for relaying can now be configured on the SMTP Server Options page. This makes use of the Postfix relay_recipient_maps directive.
 ---- Changes since 1.560 ----
 Added a refresh button to the mail queue.
+---- Changes since 1.590 ----
+Added a new page, visible for Postfix 2.7 and later, for editing sender dependent transport mappings.
