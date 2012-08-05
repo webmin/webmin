@@ -1,0 +1,29 @@
+<header>Toegestane Hosts</header>
+
+Op deze pagina kunt u bepalen welke hosts toegang mogen hebben tot uw
+database server en wat voor soort authenticatie zij nodig hebben. Iedere
+toegang controle regel kan worden toegevoegd aan een enkele host, aan een
+geheel netwerk, aan alle netwerk hosts of alleen aan gebruikers die 
+verbinding maken vanaf deze machine. Bovendien kan iedere regel toegevoegd
+worden aan een enkele geselecteerde database of aan alle databases op de
+server. <p>
+
+Wanneer u een authenticatie mode kiest voor toegestane hosts, zijn de
+volgende opties beschikbaar :
+<dl>
+<dt><b>Platte tekst wachtwoord</b>
+<dd>De gebruiker moet een wachtwoord opgeven dat overeenkomt met het
+    wachtwoord wat ingesteld is op de <tt>PostgreSQL Gebruikers</tt> pagina. <p>
+<dt><b>Versleuteld wachtwoord</b>
+<dd>De gebruiker moet een wachtwoord opgeven die versleuteld overeenkomt met
+    het wachtwoord wat is ingesteld in <tt>PostgreSQL Gebruikers</tt>. <p>
+<dt><b>Geen authenticatie nodig</b>
+<dd>Er hoeft geen wachtwoord te worden opgegeven. <p>
+<dt><b>Weiger verbinding</b>
+<dd>Sta geen verbindingen toe vanaf deze host. Dit is handig om toegang te
+    weigeren van een specifieke host indien een heel netwerk toegang heeft
+    gekregen.
+    <p>
+</dl>
+
+<hr>
