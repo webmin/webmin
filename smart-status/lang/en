@@ -22,7 +22,6 @@ index_attrs=Additional SMART attributes
 index_raw=Full SMART status report
 index_return=module index
 index_family=Model family
-index_model=Model name
 index_serial=Serial number
 index_capacity=Capacity
 
