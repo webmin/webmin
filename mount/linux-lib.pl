@@ -1266,7 +1266,7 @@ elsif ($type eq "nfs" || $type eq "nfs4") {
 				$text{'default'}));
 
 	print &ui_table_row(&hlink($text{'linux_retrans'}, "linux_retrans"),
-		&ui_opt_textbox("nfs_restrans", $options{"restrans"}, 6,
+		&ui_opt_textbox("nfs_retrans", $options{"restrans"}, 6,
 				$text{'default'}));
 	
 	print &ui_table_row(&hlink($text{'linux_intr'}, "linux_intr"),
