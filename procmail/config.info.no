@@ -1,0 +1,5 @@
+line1=Konfigurerbare innstillinger,11
+includes=Vis innhold av include filer?<br>(Dersom ingen variabler brukes i filnavn),1,1-Ja,0-Nei
+line2=System konfigurasjon,11
+procmailrc=Sti til system procmailrc fil,0
+procmail=Sti til procmail program,0
