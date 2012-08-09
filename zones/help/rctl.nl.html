@@ -1,0 +1,21 @@
+<header>Bron Controle</header>
+
+Een bron controle is een aantal limieten die gebruikt worden voor sommige bronnen
+binnen de zone en de bijbehorende maatregelen wanneer zij worden overschreden. De
+beschikbare bronnen toen dit werd geschreven zijn :
+<dl>
+<dt><b>zone.max-lwps</b>
+<dd>Stelt een limiet in op het aantal processen die tegelijkertijd mogen werken in de zone.
+<dt><b>zone.cpu-shares</b>
+<dd>Stelt een limiet in op het aantal eerlijk gedeelde processen (FSS) en CPU aandeel voor
+een zone.
+</dl>
+
+Voor iedere bron kunt u een aantal limieten invullen. Ieder limiet heeft een privilege
+type (wat altijd een <b>Privilege</b> is), een numeriek limiet en een actie die genomen
+moet worden als het limiet word overschreden. Normaal gesproken is de actie <b>Weigeren</b>,
+waardoor word voorkomen dat iedere volgende aanvraag ervoor kan zorgen dat het limiet
+word overschreden. <p>
+
+<footer>
+

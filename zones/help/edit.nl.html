@@ -1,0 +1,33 @@
+<header>Bewerk Zone</header>
+
+Met deze pagina kunt u de globale configuratie wijzigen naar een zone, diverse acties uitvoeren zoals rebooten
+en verwijderen en de zone configureerbare objecten beheren zoals netwerk interfaces en filesystemen. <p>
+
+De eerste sectie toont de huidige zone status en geeft de mogelijkheid om te selecteren of hij tijdens een systeem
+boot moet starten en om de bron pool te bewerken. De nieuwe instellingen kunt u toevoegen door op de <b>Opslaan</b>
+knop te klikken. <p>
+
+Afhankelijk van de zone status kunnen diverse acties worden uitgevoerd, zoals <b>Reboot</b>, <b>Uitschakelen</b> en
+<b>Booten</b>, op de zone met gebruik van de knoppen onder het gedeelte van de algemene zone configuratie. Wanneer
+een zone zich in een <b>Gestopt</b> status bevind kunt u de <b>De-installeer</b> knop gebruiken om alle prive
+configuratie files te verwijderen zodat er nieuwe pakket directory's kunnen worden toegevoegd. Wanneer een zone nog
+niet is geinstalleerd zal het gebruik van de <b>Installeer</b> knop systeem software toevoegen die onbruikbaar word. <p>
+
+Iedere zone heeft diverse types met configureerbare objecten die in de lijst staan op de rest van de pagina.
+Deze objecten zijn :
+<ul>
+<li><b>Netwerk interfaces</b><br>
+    Virtuele IP adressen die prive zijn voor de zone.
+<li><b>Overgenomen pakket directory's</b><br>
+    Alleen-lezen directory's die zijn gedeeld tussen het globale systeem en de zone.
+<li><b>Extra filesystemen</b><br>
+    Partities op harddisken in het echte systeem die zijn gemount door de zone, en
+    alleen hierdoor toegankelijk zijn.
+<li><b>Bron controle</b><br>
+    Beperkingen op CPU tijd en andere bronnen die worden toegevoegd aan de zone.
+<li><b>Algemene zone attributen</b><br>
+    Commentaar en andere gebruiker gedefinieerde informatie die bij de zone hoort.
+</ul>
+
+<footer>
+

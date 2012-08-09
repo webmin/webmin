@@ -1,0 +1,14 @@
+<header>Solaris Zones</header>
+
+De zone faciliteiten in Solaris geven een geisoleerde omgeving om applicatie in te laten werken. Processen die aan het werk zijn in een zone worden niet gestoord door andere activiteiten van het systeem. Toegang tot andere processen, netwerk interfaces, file systemen, apparaten en interne proces communicatie zijn beperkt om te voorkomen dat er een interactie ontstaat tussen de processen in de verschillende zone's. <p>
+
+Zone's geven een uitstekende mogelijkheid om virtuele systemen te maken waar mensen volledige root toegang bij hebben zonder compromissen te moeten maken voor de integriteit van het hele systeem of andere zone's. Zij kunnen ook gebruikt worden om gebruik te maken van een enkel krachtig systeem verdeeld in meerdere virtuele servers, bijvoorbeeld om te testen en voor in productie-omgevingen. <p>
+
+Iedere zone heeft zijn eigen root directory waarin de lopende processen van die zone zijn beperkt. Dit is vergelijkbaar met de standaard Unix chroot faciliteit maar veel simpeler om op te zetten omdat alle benodigde systeem bibliotheken en programma directory's automatisch gelinkt worden in de zone zodra die word aangemaakt. <p>
+
+Virtuele netwerk interfaces kunnen worden toegekend aan zone's om ze hun eigen IP adres te geven, zodat verschillende servers kunnen werken in verschillende zone's net zoals dit mogelijk is op meerdere echte fysieke systemen. <p>
+
+Met deze module kunt u zone's aanmaken, onafhankelijk van het hoofd besturing systeem booten en rebooten en hun netwerk interfaces, pakket directory's, filesystemen en andere attributen beheren. <p>
+
+<footer>
+
