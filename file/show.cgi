@@ -133,7 +133,7 @@ else {
 	print "X-no-links: 1\n";
 	print "Content-length: $st[7]\n";
 	print "Content-Disposition: Attachment\n" if ($download);
-	print "Content-type: $type\n\n";
+	&print_content_type($type);
 	if ($type =~ /^text\/html/i && !$in{'edit'}) {
 		while(read(FILE, $buf, 1024)) {
 			$data .= $buf;

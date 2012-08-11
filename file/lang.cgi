@@ -4,7 +4,7 @@
 
 require './file-lib.pl';
 
-print "Content-type: text/plain\n\n";
+&print_content_type();
 
 if (&get_charset() eq $default_charset) {
 	# Convert any HTML entities to their 'real' single-byte forms,
