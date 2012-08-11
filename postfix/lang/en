@@ -636,10 +636,10 @@ body_eregexp=The body checks map must be in the format <tt>regexp:</tt><i>filena
 opts_body_checks=Message body checking tables
 body_return=body checks
 
-dependent_ecannot=Sender Dependent Addresses
-dependent_ecannot=You are not allowed to edit sender dependent addresses
-dependent_eregexp=The sender dependent addresses map must be in the format <tt>regexp:</tt><i>filename</i>
-dependent_return=sender dependent addresses
+dependent_title=Sender Dependent Transport Mapping
+dependent_ecannot=You are not allowed to edit sender dependent transport mappings
+dependent_eregexp=The sender dependent transports map must be in the format <tt>regexp:</tt><i>filename</i>
+dependent_return=sender dependent transport mappings
 
 manual_title=Edit Map File
 manual_file=Select a map file to edit:
