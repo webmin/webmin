@@ -142,7 +142,6 @@ if ($in{'onslave'}) {
 
 # create the zone
 &create_zone($dir, $conf, $in{'view'});
-&set_ownership(&make_chroot($config{'named_conf'}));
 &webmin_log("create", "master", $in{'zone'}, \%in);
 
 &add_zone_access($in{'zone'});

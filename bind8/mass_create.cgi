@@ -271,7 +271,6 @@ foreach $l (@lines) {
 	if ($dir) {
 		# Add the zone structure
 		&create_zone($dir, $conf, $in{'view'});
-		&set_ownership(&make_chroot($named_conf));
 		&add_zone_access($dom);
 		$taken{$dom}++;
 		&line_ok($dom, $type);
