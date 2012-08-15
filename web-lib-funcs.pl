@@ -3285,6 +3285,8 @@ foreach my $f (@files) {
 	}
 my @OLDINC = @INC;
 my $mdir = &module_root_directory($mod);
+$mdir =~ /^(.*)$/; # untaint, part 1
+$mdir = $1; 	   # untaint, part 2
 @INC = &unique($mdir, @INC);
 -d $mdir || &error("Module $mod does not exist");
 if (!&get_module_name() && $mod) {
