@@ -11,9 +11,16 @@ require './webmin-lib.pl';
 foreach $url (@urls) {
 	# Get updates from this URL, and filter to those for this system
 	$checksig = $config{'upchecksig'} ? 2 : $url eq $update_url ? 2 : 1;
-	($updates, $host, $port, $page, $ssl) =
-		&fetch_updates($url, $config{'upuser'}, $config{'uppass'},
-			       $checksig);
+	eval {
+		$main::error_must_die = 1;
+		($updates, $host, $port, $page, $ssl) =
+		    &fetch_updates($url, $config{'upuser'}, $config{'uppass'},
+			           $checksig);
+		};
+	if ($@) {
+		print STDERR "Failed to fetch updates : $@\n";
+		exit(0);
+		}
 	$updates = &filter_updates($updates, undef, $config{'upthird'},
 				   $config{'upmissing'});
 
