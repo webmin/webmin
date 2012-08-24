@@ -187,8 +187,10 @@ if ($still) {
 sub use_ifup_command
 {
 local ($iface) = @_;
-return $gconfig{'os_type'} eq 'debian-linux' &&
-       $gconfig{'os_version'} >= 5 &&
+return ($gconfig{'os_type'} eq 'debian-linux' &&
+	$gconfig{'os_version'} >= 5 ||
+	$gconfig{'os_type'} eq 'redhat-linux' &&
+	$gconfig{'os_version'} >= 14) &&
        $iface->{'name'} !~ /^(eth|lo)/ &&
        $iface->{'virtual'} eq '';
 }

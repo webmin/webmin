@@ -11,6 +11,12 @@ require './net-lib.pl';
 if ($in{'new'} && $in{'bond'}) {
 	# New bonding interface
 	&ui_print_header(undef, $text{'bonding_create'}, "");
+	$bmax = -1;
+	foreach $b (@boot) {
+		if ($b->{'fullname'} =~ /^bond(\d+)$/) {
+			$bmax = $1;
+			}
+		}
 	}
 elsif ($in{'new'} && $in{'vlan'}) {
 	# New VLAN
@@ -81,6 +87,9 @@ elsif ($in{'new'}) {
 		}
 	elsif ($in{'bridge'}) {
 		$namefield = "br ".&ui_textbox("name", ($bmax+1), 3);
+		}
+	elsif ($in{'bond'}) {
+		$namefield = "bond ".&ui_textbox("name", ($bmax+1), 3);
 		}
 	else {
 		$namefield = &ui_textbox("name", undef, 6);
@@ -225,7 +234,7 @@ if ($b && $b->{'virtual'} eq "") {
 if ($in{'bond'} || &iface_type($b->{'name'}) eq 'Bonded') {
 	# Select bonding teampartner
 	print &ui_table_row($text{'bonding_teamparts'},
-		&ui_textbox("partner", $b->{'partner'}, 10));
+		&ui_textbox("partner", $b->{'partner'}, 10)." ".$text{'bonding_teampartsdesc'});
 	
 	# Select teaming mode
 	@mode = ("balance-rr", "activebackup", "balance-xor", "broadcast", "802.3ad", "balance-tlb", "balance-alb");

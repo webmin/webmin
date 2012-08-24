@@ -86,6 +86,12 @@ else {
 		$b->{'name'} = $b->{'fullname'} = "br".$in{'name'};
 		$b->{'bridge'} = 1;
 		}
+	elsif ($in{'bond'}) {
+		# Creating a bond interface
+		$in{'name'} =~ /^\d+$/ || &error($text{'bifc_ebond'});
+		$b->{'name'} = $b->{'fullname'} = "bond".$in{'name'};
+		$b->{'bond'} = 1;
+		}
 	elsif ($in{'name'} =~/^[a-z]+\d*(\.\d+)?$/) {
 		# creating a real interface
 		$b->{'name'} = $in{'name'};
