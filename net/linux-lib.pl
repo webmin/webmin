@@ -190,7 +190,7 @@ local ($iface) = @_;
 return ($gconfig{'os_type'} eq 'debian-linux' &&
 	$gconfig{'os_version'} >= 5 ||
 	$gconfig{'os_type'} eq 'redhat-linux' &&
-	$gconfig{'os_version'} >= 14) &&
+	$gconfig{'os_version'} >= 13) &&
        $iface->{'name'} !~ /^(eth|lo)/ &&
        $iface->{'virtual'} eq '';
 }
