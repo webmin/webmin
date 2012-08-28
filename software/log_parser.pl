@@ -17,12 +17,12 @@ elsif ($action eq 'apt') {
 		     "<tt>".join(" ",@p)."</tt>", scalar(@p));
 	}
 elsif ($action eq 'rhn') {
-	local @p = @{$p->{'packages'}};
+	local @p = split(/\0/, $p->{'packages'});
 	return &text($long || @p < 2 ? "log_${type}_rhn_l" : "log_${type}_rhn",
 		     "<tt>".join(" ",@p)."</tt>", scalar(@p));
 	}
 elsif ($action eq "yum") {
-	local @p = @{$p->{'packages'}};
+	local @p = split(/\0/, $p->{'packages'});
 	return &text($long || @p < 2 ? "log_${type}_yum_l" : "log_${type}_yum",
 		     "<tt>".join(" ",@p)."</tt>", scalar(@p));
 	}
