@@ -66,3 +66,4 @@ If Postfix is installed when the hostname is changed, the mydestination (local h
 Allowed the MTU to be set at boot time on Debian Linux, and fixed bugs editing VLANs, thanks to a patch from Caspar Smit.
 ---- Changes since 1.590 ----
 Bonding interfaces can now be created on CentOS, Redhat and Fedora Linuxes, thanks to a patch from Caspar Smit.
+VLAN interfaces can now be created on CentOS, Redhat and Fedora Linuxes, thanks to a patch from Caspar Smit.

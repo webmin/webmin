@@ -178,9 +178,9 @@ $conf{'USERCTL'} = "no";
 sub save_interface
 {
 local(%conf);
-local $name = $_[0]->{'range'} ne "" ? $_[0]->{'name'}."-range".
-				       $_[0]->{'range'} :
-	      $_[0]->{'virtual'} ne "" ? $_[0]->{'name'}.":".$_[0]->{'virtual'}
+local $name = $_[0]->{'range'} ne "" ? $_[0]->{'name'}."-range".$_[0]->{'range'} :
+	      $_[0]->{'virtual'} ne "" ? $_[0]->{'name'}.":".$_[0]->{'virtual'} :
+	      $_[0]->{'vlanid'} ne "" ? $_[0]->{'physical'}.".".$_[0]->{'vlanid'}
 				       : $_[0]->{'name'};
 &lock_file("$net_scripts_dir/ifcfg-$name");
 &read_env_file("$net_scripts_dir/ifcfg-$name", \%conf);
@@ -261,6 +261,9 @@ else {
 		foreach my $val (@values) {
 			&save_bond_interface($val, $_[0]->{'fullname'});
 			}
+		}
+	if ($_[0]->{'vlan'} == 1) {
+		$conf{'VLAN'} = "yes";
 		}
 	}
 $conf{'NAME'} = $_[0]->{'desc'};
@@ -863,6 +866,14 @@ return $gconfig{'os_type'} eq 'redhat-linux' &&
        $gconfig{'os_version'} >= 13.0 &&
        &has_command("ifenslave");
 }
+
+sub supports_vlans
+{
+return $gconfig{'os_type'} eq 'redhat-linux' &&
+	$gconfig{'os_version'} >= 13.0 &&
+	&has_command("vconfig");
+}
+
 
 # range_input([&interface])
 # Print HTML for a IP range interface
