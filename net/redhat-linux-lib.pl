@@ -90,6 +90,12 @@ while($f = readdir(CONF)) {
 			$b->{'virtual'} = $2;
 			}
 		else { $b->{'name'} = $b->{'fullname'}; }
+		if ($b->{'fullname'} =~ /(\S+)\.(\d+)/) {
+			my ($k, $v) = split(/\./, $b->{'fullname'});
+			$b->{'physical'} = $k;
+			$b->{'vlanid'} = $v;
+			$b->{'vlan'} = 1;
+			}
 		$b->{'up'} = defined($conf{'ONPARENT'}) &&
 			     $b->{'virtual'} ne '' ?
 				($conf{'ONPARENT'} eq 'yes') :
