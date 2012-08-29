@@ -199,7 +199,8 @@ return ($gconfig{'os_type'} eq 'debian-linux' &&
 	$gconfig{'os_version'} >= 5 ||
 	$gconfig{'os_type'} eq 'redhat-linux' &&
 	$gconfig{'os_version'} >= 13) &&
-       $iface->{'name'} !~ /^(eth|lo|\S+\.\d+)/ &&
+       ($iface->{'name'} !~ /^(eth|lo)/ ||
+ 	$iface->{'name'} =~ /^(\S+)\.(\d+)/) &&
        $iface->{'virtual'} eq '';
 }
 
