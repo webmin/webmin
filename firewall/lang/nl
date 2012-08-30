@@ -227,7 +227,7 @@ index_return=regels lijst
 index_rsetup=De IPtables firewall configuratie op uw systeem zal worden gereset. Webmin zal een nieuwe standaard regel maken, die word opgeslagen in de file $1, met de instellingen gebaseerd op uw type firewall hieronder geselecteerd..
 index_saveex=Opslaan Firewall Regels
 index_setup=Er is nog geen IPtables firewall opgezet op uw systeem. Webmin kan er &#233;&#233;n opzetten voor u, die word opgeslagen in de file $1, met de instellingen gebaseerd op uw type firewall hieronder geselecteerd..
-index_shorewall=Waarschuwing! Het lijkt erop dat Shorewall word gebruikt om uw systeem's firewall settings te genereren. Misschien kunt u beter de <a href='$1'>Shorewall Firewall module</a> gebruiken.
+index_shorewall=Waarschuwing! Het lijkt erop dat Shorewall word gebruikt om uw systeem's firewall settings te genereren. Misschien kunt u beter de <a href='$1'>Shoreline Firewall module</a> gebruiken.
 index_table_filter=Pakket filteren (filter)
 index_table_mangle=Pakket wijziging (mangle)
 index_table_nat=Netwerk adres vertaling (NAT)

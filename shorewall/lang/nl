@@ -64,7 +64,7 @@ hosts_title=Zone Hosts
 index_check=Controleer Firewall
 index_checkdesc=Klik op deze knop om Shorewall uw firewall configuratie te laten valideren met de <tt>shorewall check</tt> opdracht.
 index_clear=Opschonen Firewall
-index_cleardesc=Klik op deze knop om de Shorewall firewall op te schonen met de <tt>shorewall clear</tt> opdracht. Hiermee krijg je toegang van alle hosts zonder beperkingen.
+index_cleardesc=Klik op deze knop om shorewall op te schonen met de <tt>shorewall clear</tt> opdracht. Hiermee krijg je toegang van alle hosts zonder beperkingen.
 index_dump=Laat Dump Zien
 index_dumpdesc=Klik op deze knop om een overzicht te krijgen van de Shorewall opsporings informatie die verkregen is met de <tt>shorewall dump</tt> opdracht.
 index_ecmd=De opdracht $1 is niet gevonden op uw systeem. Misschien is het niet geinstalleerd, of de <a href='$2'>module configuratie</a> is niet correct.
@@ -80,7 +80,7 @@ index_status=Laat Status Zien
 index_statusdesc=Klik op deze knop om Shorewall's tabellen en regels te bekijken met de <tt>shorewall status</tt> opdracht.
 index_stop=Stop Firewall
 index_stopdesc=Klik op deze knop om Shorewall uit te schakelen met de <tt>shorewall stop</tt> opdracht. Dit zal de toegang van alle host blokkeren, behalve van die in de -Wanneer Gestopt Tabel.
-index_title=Shorewall Firewall
+index_title=Shoreline Firewall
 index_version=Shorewall versie $1
 interfaces_0=Interface
 interfaces_1=Zone naam

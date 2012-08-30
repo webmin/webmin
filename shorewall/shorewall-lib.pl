@@ -1871,7 +1871,7 @@ foreach my $a ($config{'config_dir'}, $config{'macros'}) {
 		}
 	closedir(DIR);
 	}
-return &unique(@rv);
+return &unique(sort(@rv));
 }
 
 $BETA_STR = "-Beta";

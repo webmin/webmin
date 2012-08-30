@@ -1,10 +1,10 @@
-desc=Shorewall Firewall
+desc=Shoreline Firewall
 category=net
 os_support=*-linux
 depends=syslog
-longdesc=Lets you edit the most useful tables of the Shorewall Firewall
-desc_ca=Tallafocs Shorewall
-desc_es=Cortafuegos Shorewall
-desc_cz=Shorewall Firewall
-desc_nl=Shorewall Firewall
-desc_cz.UTF-8=Shorewall Firewall
+longdesc=Lets you edit the most useful tables of the Shoreline Firewall
+desc_ca=Tallafocs Shoreline
+desc_es=Cortafuegos Shoreline
+desc_cz=Shoreline Firewall
+desc_nl=Shoreline Firewall
+desc_cz.UTF-8=Shoreline Firewall

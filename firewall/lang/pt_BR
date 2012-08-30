@@ -215,7 +215,7 @@ index_return=Lista de Regras.
 index_rsetup=A configura&#231;&#227;o de Firewall em seu sistema ser&#225; reiniciada. Webmin configurar&#225; novas regras, que ser&#227;o salvas no arquivo $1, com as configura&#231;&#245;es iniciais baseadas em sua sele&#231;&#227;o de firewall abaixo..
 index_saveex=Salvar regras de Firewall
 index_setup=Nenhum firewall Iptables est&#225; configurado em seu sistema. Webmin pode configurar um para voc&#234; e ser&#225; salvo no arquivo $1, com configura&#231;&#245;es iniciais baseados no tipo de firewall abaixo..
-index_shorewall=Aviso! Parece que o Shorewall est&#225; sendo usado para gerar seu sistema de Firewall. Talvez voc&#234; deva usar a <a href='$1'> M&#243;dulo Shorewall Firewall</a>.
+index_shorewall=Aviso! Parece que o Shorewall est&#225; sendo usado para gerar seu sistema de Firewall. Talvez voc&#234; deva usar a <a href='$1'> M&#243;dulo Shoreline Firewall</a>.
 index_table_filter=Filtragem de pacotes (filter)
 index_table_mangle=Altera&#231;&#227;o de pacotes (mangle)
 index_table_nat=Tradu&#231;&#227;o de endere&#231;o de rede (nat)
