@@ -1,10 +1,10 @@
 line1=Konfigurierbare Optionen,11
 dynamic=Benutze zuf&#228;llige Zahl als Listen&#45;Alias,1,1-Ja,0-Nein
-sort_mode=Sortiere Mailinglisten nach,1,1-Name,0-erzeugter Reihenfolge
-perms=Berechtigungen f&#252;r die Majordomo&#45;Dateien,1,1-beschreibbar durch Benutzer,0-beschreibbar f&#252;r Benutzer und Gruppen
+sort_mode=Sortiere Mailinglisten nach,1,1-Name,0-Erzeugter Reihenfolge
+perms=Berechtigungen f&#252;r die Majordomo&#45;Dateien,1,1-Beschreibbar durch Benutzer,0-Beschreibbar f&#252;r Benutzer und Gruppen
 line2=Systemkonfiguration,11
 majordomo_cf=Absoluter Pfad zur Majordomo&#45;Konfigurationsdatei,0
 program_dir=Verzeichnis&#44; das die Majordomo&#45;Programme enth&#228;lt,0
 wrapper_path=Pfad zum Majordomo&#45;Wrapper,3,Im Programm&#45;Verzeichnis
 aliases_file=Alias&#45;Datei in Sendmail&#45;Form,3,Ermittle aus sendmail.cf
-smrsh_program_dir=Verzeichnis&#44; das die Sendmail&#45;"Safe"&#45;Programme enth&#228;lt,3,beliebig
+smrsh_program_dir=Verzeichnis&#44; das die Sendmail&#45;"Safe"&#45;Programme enth&#228;lt,3,Beliebig
