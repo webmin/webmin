@@ -227,7 +227,7 @@ index_return=regelliste
 index_rsetup=Konfigurasjonen av IPtables brannmuren p&#229; ditt system er i ferd med &#229; bli tilbakestilt. Webmin vil sette opp nye standardregler, som lagres i lagringsfilen $1, med initielle innstillinger basert p&#229; ditt valg av brannmurtype nednfor..
 index_saveex=Lagre brannmurregler
 index_setup=Ingen IPtables brannmur er satt opp p&#229; ditt system. Webmin kan sette opp brannmuren for deg, og lagre den i lagringsfilen $1, med initielle innstillinger basert p&#229; ditt valg av brannmurtype nednfor..
-index_shorewall=Warning! It appears that Shorewall is being used to generate your system's firewall. Maybe you should use the <a href='$1'>Shorewall Firewall module</a> instead.
+index_shorewall=Warning! It appears that Shorewall is being used to generate your system's firewall. Maybe you should use the <a href='$1'>Shoreline Firewall module</a> instead.
 index_table_filter=Pakkefiltrering (filter)
 index_table_mangle=Pakke endring (mangle)
 index_table_nat=Nettverksadresse oversetting (nat)
