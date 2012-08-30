@@ -10,7 +10,7 @@ index_refreshdesc=Click this button to activate just the Blacklist and Traffic S
 index_start=Start Firewall
 index_startdesc=Click this button to start Shorewall with the current configuration with the <tt>shorewall6 start</tt> command.
 index_clear=Clear Firewall
-index_cleardesc=Click this button to clear the Shorewall firewall with the <tt>shorewall6 clear</tt> command. This will allow access from all hosts without restriction.
+index_cleardesc=Click this button to clear Shorewall with the <tt>shorewall6 clear</tt> command. This will allow access from all hosts without restriction.
 index_stop=Stop Firewall
 index_stopdesc=Click this button to shut down Shorewall with the <tt>shorewall6 stop</tt> command. This will block access from all hosts except those in the When Stopped table.
 index_status=Show Status
@@ -247,7 +247,7 @@ proxyndp_eaddr=Missing or invalid address to NDP
 proxyndp_pers=Leave route even when firewall stopped?
 
 routestopped_title=When Stopped
-routestopped_desc=By default, when the Shorewall firewall is stopped it will deny access from all hosts. This page allows you to define hosts or networks that will still be accessible.
+routestopped_desc=By default, when Shorewall is stopped it will deny access from all hosts. This page allows you to define hosts or networks that will still be accessible.
 routestopped_add=Add a new stopped address.
 routestopped_none=No addresses to be accessible when stopped have been defined yet.
 routestopped_0=Interface

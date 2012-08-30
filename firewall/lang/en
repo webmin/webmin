@@ -65,7 +65,7 @@ index_auto4=Block all except SSH, IDENT, ping and high ports on interface:
 index_auto5=Block all except ports used for virtual hosting, on interface:
 index_auto=Setup Firewall
 index_add=Add
-index_shorewall=Warning! It appears that Shorewall is being used to generate your system's firewall. Maybe you should use the <a href='$1'>Shorewall Firewall module</a> instead.
+index_shorewall=Warning! It appears that Shorewall is being used to generate your system's firewall. Maybe you should use the <a href='$1'>Shoreline Firewall module</a> instead.
 index_reset=Reset Firewall
 index_resetdesc=Click this button to clear all existing firewall rules and set up new rules for a basic initial configuration.
 index_cluster=Cluster Servers
