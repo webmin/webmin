@@ -1,4 +1,4 @@
-index_title=Shorewall Firewall
+index_title=Shoreline Firewall
 index_ecmd=$1 komutu sistemde bulunamadý. Bu komut sistemde yüklü olmayabilir ya da <a href='$2'>modül konfigurasyonu</a> hatalý olabilir.
 index_edir=Shorewall konfigurasyon dizini olan $1 dizini sistemde bulunamadý. Bu dizin sistemde yüklü olmayabilir ya da <a href='$2'>modül konfigurasyonu</a> hatalý olabilir.
 index_version=Shorewall Versiyon $1

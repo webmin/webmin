@@ -168,7 +168,7 @@ index_radd=ルールを追加する
 index_return=ルールリスト
 index_saveex=ファイヤウォールルールを保存する
 index_setup=IPtablesファイヤウォールがまだ設定されていません。Webminは下で選択したファイヤウォールのタイプに合わせた基本的な初期設定をファイル $1 に保存することができます。
-index_shorewall=注意! ファイヤウォールの生成に Shorewall が使われています。 こちら<a href='$1'>Shorewall Firewall module</a>を使用してください
+index_shorewall=注意! ファイヤウォールの生成に Shorewall が使われています。 こちら<a href='$1'>Shoreline Firewall module</a>を使用してください
 index_table_filter=パケットフィルタリング (filter)
 index_table_mangle=パケット変換
 index_table_nat=ネットワークアドレス変換 (nat)
