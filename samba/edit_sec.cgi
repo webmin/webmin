@@ -76,10 +76,10 @@ foreach $fp ([ "user", "possible" ],
 	@user = &split_users(&getval($f));
 	print &ui_table_row($text{'sec_'.$pfx.'user'},
 		&ui_textbox($uf."_u", join(' ', grep { !/^@/ } @user), 60)." ".
-		&user_chooser_button($uf."_u"));
+		&user_chooser_button($uf."_u", 1));
 	print &ui_table_row($text{'sec_'.$pfx.'group'},
 		&ui_textbox($uf."_g", join(' ', map { s/@//;$_ } grep { /^@/ } @user), 60)." ".
-		&group_chooser_button($uf."_g"));
+		&group_chooser_button($uf."_g", 1));
 	}
 
 print &ui_table_end();
