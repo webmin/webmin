@@ -75,6 +75,7 @@ if (@titles+@indexes+@views > $max_dbs && !$in{'search'}) {
 		print &ui_submit($text{'index_jumpok'}),"<br>\n";
 		print &ui_form_end();
 		}
+	print "<p>\n";
 	}
 elsif (@titles || @indexes) {
 	@icons = ( ( map { "images/table.gif" } @titles ),
@@ -164,34 +165,12 @@ else {
 	}
 &show_buttons();
 
-# Check if the user is from Virtualmin, and if so link back to his DB list
-if (&foreign_check("virtual-server")) {
-	$virtual_server::no_virtualmin_plugins = 1;
-	&foreign_require("virtual-server", "virtual-server-lib.pl");
-	if (!&virtual_server::master_admin() &&
-	    !&virtual_server::reseller_admin()) {
-		# Is a domain owner .. which domain is this DB in?
-		foreach my $d (grep { &virtual_server::can_edit_domain($_) }
-				    &virtual_server::list_domains()) {
-			@dbs = &virtual_server::domain_databases($d);
-			($got) = grep { $_->{'name'} eq $in{'db'} &&
-					$_->{'type'} eq 'mysql' } @dbs;
-			if ($got) {
-				$virtualmin = $d->{'id'};
-				}
-			}
-		}
-	}
-
-if ($virtualmin) {
-	&ui_print_footer("../virtual-server/list_databases.cgi?dom=$virtualmin",
-			 $text{'index_return'});
-	}
-elsif ($single) {
+if ($single) {
 	&ui_print_footer("/", $text{'index'});
 	}
 else {
-	&ui_print_footer("", $text{'index_return'});
+	&ui_print_footer(&get_databases_return_link($in{'db'}),
+			 $text{'index_return'});
 	}
 
 sub show_buttons

@@ -8,13 +8,19 @@ require './cluster-software-lib.pl';
 &ReadParse();
 
 # Work out package names, for display to use
-@packages = $in{'source'} == 3 ? split(/\s+/, $in{'file'}) :
-	    $in{'unknownfile'} ? ( $in{'unknownfile'} ) :
-				 &software::file_packages($in{'file'});
-foreach $p (@packages) {
-	local ($n, $d) = split(/\s+/, $p, 2);
-	push(@names, $n);
-	push(@descs, $d || $n);
+if ($in{'source'} == 3) {
+	# Package names are from YUM
+	@packages = @names = @descs = split(/\s+/, $in{'file'});
+	}
+else {
+	# Get package names and descriptions from file
+	@packages = $in{'unknownfile'} ? ( $in{'unknownfile'} ) :
+					 &software::file_packages($in{'file'});
+	foreach $p (@packages) {
+		local ($n, $d) = split(/\s+/, $p, 2);
+		push(@names, $n);
+		push(@descs, $d || $n);
+		}
 	}
 
 $in{'source'} == 3 || -r $in{'file'} || &error($text{'do_edeleted'});
@@ -141,7 +147,8 @@ foreach $h (@hosts) {
 			else {
 				local @resp = &remote_foreign_call($s->{'host'},
 					"software", "capture_function_output",
-					"update_system_install", $in{'file'});
+					"software::update_system_install",
+					$in{'file'});
 				if (@{$resp[1]}) {
 					# Worked .. get package details
 					foreach $p (@{$resp[1]}) {
@@ -149,7 +156,17 @@ foreach $h (@hosts) {
 						}
 					}
 				else {
-					push(@rv, $text{'install_eupdate'});
+					# May have failed
+					($first) = split(/\s+/, $in{'file'});
+					local @info = &remote_foreign_call(
+						$s->{'host'}, "software",
+						"package_info", $first);
+					if (@info && $info[0] eq $first) {
+						push(@rv, &text('install_ealready', $info[4]));
+						}
+					else {
+						push(@rv, $text{'install_eupdate'});
+						}
 					}
 				}
 			}
@@ -183,13 +200,14 @@ foreach $h (@hosts) {
 		foreach $r (@$rv) {
 			if (ref($r)) {
 				# Install went ok!
-				print &text('do_success', $d),"<br>\n";
+				print &text('do_success2', $r->[0],$d),"<br>\n";
 				$pinfo[$i] = $r if (!$pinfo[$i] && @$r);
 				if (!@$r) {
 					# Failed to get info! Need a refresh..
 					$refresh{$s->{'id'}} = 1;
 					}
-				elsif (&indexof($names[$i],
+				elsif ($names[$i] &&
+				       &indexof($names[$i],
 					     @{$h->{'packages'}}) < 0) {
 					push(@{$h->{'packages'}},
 					     { 'name' => $names[$i],

@@ -3285,6 +3285,8 @@ foreach my $f (@files) {
 	}
 my @OLDINC = @INC;
 my $mdir = &module_root_directory($mod);
+$mdir =~ /^(.*)$/; # untaint, part 1
+$mdir = $1; 	   # untaint, part 2
 @INC = &unique($mdir, @INC);
 -d $mdir || &error("Module $mod does not exist");
 if (!&get_module_name() && $mod) {
@@ -9721,6 +9723,21 @@ if ($str =~ /^([a-z]+):\/\/([^:]*):([^\@]*)\@([a-z0-9\.\-\_]+)\/([^\?]+)(\?(.*))
 	return ($proto, $user, $pass, $host, $prefix, \%args);
 	}
 return ( );
+}
+
+=head2 uniquelc(string, ...)
+
+Returns the unique elements of some array using a lowercase comparison,
+passed as its parameters.
+
+=cut
+sub uniquelc
+{
+my (%found, @rv);
+foreach my $e (@_) {
+	if (!$found{lc($e)}++) { push(@rv, $e); }
+	}
+return @rv;
 }
 
 $done_web_lib_funcs = 1;

@@ -78,6 +78,8 @@ update_newver=Versió nova
 update_confirm=Instal·la-ho Ara
 update_none=Cap
 update_ops=S'està construint la llista completa d'actualitzacions...
+update_rebootdesc=Un dels paquets actualitzats necessita reeengegar el sistema per a aplicar-se completament.
+update_reboot=Reengega Ara
 
 sched_title=Actualització Periòdica
 sched_yes=La comprovació periòdica d'actualitzacions està activa.

@@ -356,7 +356,7 @@ if (&foreign_check("syslog")) {
 	@facils = map { uc($_) } split(/\s+/, $sconfig{'facilities'});
 	}
 if (!@facils) {
-	@facils = ( 'DAEMON', 'USER', 'AUTH', 'LOCAL0', 'LOCAL1', 'LOCAL2',
+	@facils = ( 'DAEMON', 'USER', 'AUTH', 'AUTHPRIV', 'LOCAL0', 'LOCAL1', 'LOCAL2',
 		    'LOCAL3', 'LOCAL4', 'LOCAL5', 'LOCAL6', 'LOCAL7' );
 	}
 return @facils;

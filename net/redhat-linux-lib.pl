@@ -90,6 +90,12 @@ while($f = readdir(CONF)) {
 			$b->{'virtual'} = $2;
 			}
 		else { $b->{'name'} = $b->{'fullname'}; }
+		if ($b->{'fullname'} =~ /(\S+)\.(\d+)/) {
+			my ($k, $v) = split(/\./, $b->{'fullname'});
+			$b->{'physical'} = $k;
+			$b->{'vlanid'} = $v;
+			$b->{'vlan'} = 1;
+			}
 		$b->{'up'} = defined($conf{'ONPARENT'}) &&
 			     $b->{'virtual'} ne '' ?
 				($conf{'ONPARENT'} eq 'yes') :
@@ -104,6 +110,23 @@ while($f = readdir(CONF)) {
 		$b->{'gateway'} = $conf{'GATEWAY'};
 		$b->{'gateway6'} = $conf{'IPV6_DEFAULTGW'};
 		$b->{'mtu'} = $conf{'MTU'};
+		$b->{'partner'} = &get_teaming_partner($conf{'DEVICE'});
+                my @values = split(/\s+/, $conf{'BONDING_OPTS'});
+                foreach my $val (@values) {
+                         my ($k, $v) = split(/=/, $val, 2);
+				if ($k eq "mode") {
+					$b->{'mode'} = $v;
+					}
+				elsif ($k eq "miimon") {
+					$b->{'miimon'} = $v;
+					}
+				elsif ($k eq "updelay") {
+					$b->{'updelay'} = $v;
+					}
+				elsif ($k eq "downdelay") {
+					$b->{'downdelay'} = $v;
+					}
+                        }
 		$b->{'ether'} = $conf{'MACADDR'};
 		$b->{'dhcp'} = ($conf{'BOOTPROTO'} eq 'dhcp');
 		$b->{'bootp'} = ($conf{'BOOTPROTO'} eq 'bootp');
@@ -140,14 +163,30 @@ foreach my $b (@rv) {
 return @rv;
 }
 
+# save_bond_interface(device, master)
+# Create or update a boot-time bond slave interface
+sub save_bond_interface
+{
+local(%conf);
+&lock_file("$net_scripts_dir/ifcfg-$_[0]");
+$conf{'DEVICE'} = $_[0];
+$conf{'BOOTPROTO'} = none;
+$conf{'ONBOOT'} = yes;
+$conf{'MASTER'} = $_[1];
+$conf{'SLAVE'} = "yes";
+$conf{'USERCTL'} = "no";
+&write_env_file("$net_scripts_dir/ifcfg-$_[0]", \%conf);
+&unlock_file("$net_scripts_dir/ifcfg-$_[0]");
+}
+
 # save_interface(&details)
 # Create or update a boot-time interface
 sub save_interface
 {
 local(%conf);
-local $name = $_[0]->{'range'} ne "" ? $_[0]->{'name'}."-range".
-				       $_[0]->{'range'} :
-	      $_[0]->{'virtual'} ne "" ? $_[0]->{'name'}.":".$_[0]->{'virtual'}
+local $name = $_[0]->{'range'} ne "" ? $_[0]->{'name'}."-range".$_[0]->{'range'} :
+	      $_[0]->{'virtual'} ne "" ? $_[0]->{'name'}.":".$_[0]->{'virtual'} :
+	      $_[0]->{'vlanid'} ne "" ? $_[0]->{'physical'}.".".$_[0]->{'vlanid'}
 				       : $_[0]->{'name'};
 &lock_file("$net_scripts_dir/ifcfg-$name");
 &read_env_file("$net_scripts_dir/ifcfg-$name", \%conf);
@@ -211,6 +250,26 @@ else {
 			&error("Bridges cannot be created unless the brctl ".
 			       "command is installed");
 		$conf{'TYPE'} = 'Bridge';
+		}
+	if ($_[0]->{'fullname'} =~ /^bond(\d+)$/) {
+		$conf{'BONDING_OPTS'} = "mode=$_[0]->{'mode'}";
+		if ($_[0]->{'miimon'}) {
+			$conf{'BONDING_OPTS'} .= " miimon=$_[0]->{'miimon'}";
+			}
+		if ($_[0]->{'updelay'}) {
+			$conf{'BONDING_OPTS'} .= " updelay=$_[0]->{'updelay'}";
+			}
+		if ($_[0]->{'downdelay'}) {
+			$conf{'BONDING_OPTS'} .= " downdelay=$_[0]->{'downdelay'}";
+			}
+
+		my @values = split(/\s+/, $_[0]->{'partner'});
+		foreach my $val (@values) {
+			&save_bond_interface($val, $_[0]->{'fullname'});
+			}
+		}
+	if ($_[0]->{'vlan'} == 1) {
+		$conf{'VLAN'} = "yes";
 		}
 	}
 $conf{'NAME'} = $_[0]->{'desc'};
@@ -807,6 +866,21 @@ return ($gconfig{'os_type'} eq 'redhat-linux' &&
 	$gconfig{'os_version'} >= 3.0);
 }
 
+sub supports_bonding
+{
+return $gconfig{'os_type'} eq 'redhat-linux' &&
+       $gconfig{'os_version'} >= 13.0 &&
+       &has_command("ifenslave");
+}
+
+sub supports_vlans
+{
+return $gconfig{'os_type'} eq 'redhat-linux' &&
+	$gconfig{'os_version'} >= 13.0 &&
+	&has_command("vconfig");
+}
+
+
 # range_input([&interface])
 # Print HTML for a IP range interface
 sub range_input
@@ -895,6 +969,24 @@ return $eth{'DHCP_HOSTNAME'} ne &get_system_hostname();
 # DHCP. If called with 1, the hostname is chosen by DHCP.
 sub save_dhcp_hostname
 {
+}
+
+# get_teaming_partner(devicename)
+# Gets the teamingpartners of a configured bond interface
+sub get_teaming_partner
+{
+local ($g, $return);
+opendir(CONF2, &translate_filename($net_scripts_dir));
+while($g = readdir(CONF2)) {
+        local %conf2;
+        if ($g !~ /\.(bak|old)$/i && $g =~ /^ifcfg-([a-z0-9:\.]+)$/) {
+                &read_env_file("$net_scripts_dir/$g", \%conf2);
+                if ($conf2{'MASTER'} eq "$_[0]") {
+			$return .= $conf2{'DEVICE'}." ";
+                	}
+        	}
+	}
+return $return;
 }
 
 sub boot_iface_hardware

@@ -118,7 +118,7 @@ if (@previous) {
 	print "<td width=10%>",&ui_submit($text{'index_pok'}, "doprev"),
 	      "</td>\n";
 	print "<td>",&ui_select("pcmd", undef,
-			[ reverse(@previous) ]);
+		[ map { [ $_, &html_escape($_) ] } reverse(@previous) ]);
 	print "<input type=button name=movecmd ",
 	      "value='$text{'index_edit'}' ",
 	      "onClick='cmd.value = pcmd.options[pcmd.selectedIndex].value'>\n";

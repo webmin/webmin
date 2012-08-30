@@ -15,7 +15,7 @@ if (!$ENV{'GATEWAY_INTERFACE'}) {
 	chop($pwd = `pwd`);
 	$0 = "$pwd/xmlrpc.pl";
 	$command_line = 1;
-	$< == 0 || die "xmlrpc.pl must be run as root";
+	$> == 0 || die "xmlrpc.cgi must be run as root";
 	}
 BEGIN { push(@INC, ".."); };
 use WebminCore;

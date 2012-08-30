@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# Show the left-side menu of Virtualmin domains, plus modules
+# Show the left-side menu of Webmin modules
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;

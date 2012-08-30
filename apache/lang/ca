@@ -41,6 +41,7 @@ index_proxy=Mapeja-ho a l'URL
 index_create=Crea un nou Servidor Virtual
 index_crnow=Crea'l Ara
 index_return=a la llista de servidors
+index_return2=a la configuració global
 index_toomany=Hi ha massa servidors virtuals al sistema com per mostrar-los en una pàgina
 index_find=Busca els servidors que
 index_equals=siguin iguals que
@@ -124,6 +125,7 @@ virt_euser=No tens permís per canviar l'usuari o el grup d'aquest servidor virtu
 virt_header2=$1 de $2
 
 vserv_title=Configuració de Servidor Virtual
+vserv_virtualmin=Aquest host virtual Apache pertany al servidor Virtualmin <tt>$1</tt>, així que l'adreça, el port, el directori base i el nom de host no es poden canviar des d'aquí.
 vserv_ecannot=No pots editar l'adreça d'aquest servidor virtual
 vserv_addr=Adreça
 vserv_addrs=Adreces

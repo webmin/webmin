@@ -386,6 +386,7 @@ view_edir=Ein Archiv kann nur f&#252;r ein Verzeichnis angelegt werden
 view_enormal=Nur normale Dateien k&#246;nnen betrachtet werden
 view_enormal2=Nur normale Dateien k&#246;nnen lokal gespeichert werden.
 view_eopen=Fehler beim &#214;ffnen von $1 : $2
+view_epathinfo=Pfad enth&#228;lt ung&#252;ltige Zeichen
 zip_ecmd=Fehlendes $1 Kommando
 zip_ename=Scheint keine ZIP-, TAR- oder TAR.GZ-Datei zu sein.
 zip_err=Konnte Datei nicht auspacken: $1

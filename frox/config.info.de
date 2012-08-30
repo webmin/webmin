@@ -1,5 +1,5 @@
 frox=Voller Pfad zum <i>Frox</i>-Serverprogramm,0
 frox_conf=Voller Pfad zur <i>Frox</i>-Konfigurationsdatei,0
-start_cmd=Befehl<code>&#44;</code> um <i>Frox</i> zu starten,3,Lasse einfach das Serverprogramm laufen
-stop_cmd=Befehl<code>&#44;</code> um <i>Frox</i> zu stoppen,3,T&#246;te den Prozess
-apply_cmd=Befehl<code>&#44;</code> um Konfiguration anzuwenden,3,Sende HUP<code>&#45;</code>signal
+start_cmd=Befehl&#44; um <i>Frox</i> zu starten,3,Lasse einfach das Serverprogramm laufen
+stop_cmd=Befehl&#44; um <i>Frox</i> zu stoppen,3,T&#246;te den Prozess
+apply_cmd=Befehl&#44; um Konfiguration anzuwenden,3,Sende HUP&#45;signal

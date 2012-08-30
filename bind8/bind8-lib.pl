@@ -1442,6 +1442,13 @@ return $out !~ /\[-f\]/ && $out !~ /\[-f\|/ ? $out : undef;
 sub get_chroot
 {
 if (!defined($get_chroot_cache)) {
+	if ($gconfig{'real_os_type'} eq 'CentOS Linux' &&
+	    $gconfig{'real_os_version'} >= 6 &&
+	    $config{'auto_chroot'} =~ /\/etc\/sysconfig\/named/) {
+		# Special case hack - on CentOS 6, chroot path in
+		# /etc/sysconfig/named isn't really used
+		$config{'auto_chroot'} = undef;
+		}
 	if ($config{'auto_chroot'}) {
 		local $out = &backquote_command(
 			"$config{'auto_chroot'} 2>/dev/null");

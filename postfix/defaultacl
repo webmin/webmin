@@ -11,6 +11,7 @@ debug=1
 canonical=1
 virtual=1
 transport=1
+dependent=1
 relocated=1
 ldap=1
 mailq=1

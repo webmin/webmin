@@ -12,11 +12,13 @@ $access{'acl'} || &error($text{'acl_ecannot'});
 if (&get_config_type() == 1) {
 	$conf = &get_config();
 	@access = &find("access", $conf);
+	$hasorder = 0;
 	}
 else {
 	$defdb = &get_default_db();
 	$conf = &get_ldif_config();
 	@access = &find_ldif("olcAccess", $conf, $defdb);
+	$hasorder = 1;
 	}
 
 # Get the ACL object
@@ -89,6 +91,18 @@ else {
 		push(@by, $by);
 		}
 	$p->{'by'} = \@by;
+
+	# Set order to end of list, if we are using orders
+	if ($hasorder && $in{'new'}) {
+		$maxorder = -1;
+		foreach $oa (@access) {
+			$op = &parse_ldap_access($oa);
+			if ($op->{'order'} > $maxorder) {
+				$maxorder = $op->{'order'};
+				}
+			}
+		$p->{'order'} = $maxorder + 1;
+		}
 
 	# Add to access directive list
 	if ($in{'new'}) {

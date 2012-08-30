@@ -9,6 +9,7 @@ $access{'edit'} || &error($text{'mon_ecannot'});
 @handlers = &list_handlers();
 if ($in{'type'}) {
 	# Create a new monitor
+	$in{'type'} =~ /^[a-zA-Z0-9\_\-\.]+$/ || &error($text{'mon_etype'});
 	$type = $in{'type'};
 	$title = $text{'mon_create'};
 	if ($in{'clone'}) {
@@ -313,7 +314,7 @@ if (@history) {
 			my @nice_values = split(/\//, $h->{'nice_value'});
 			for(my $i=0; $i<@values; $i++) {
 				my ($vhost, $v) = split(/=/, $values[$i], 2);
-				my ($_, $nv) = split(/=/, $nice_values[$i], 2);
+				my (undef, $nv) = split(/=/, $nice_values[$i], 2);
 				push(@vlist, $nv || $v);
 				}
 			push(@cols, join(" ", @vlist));

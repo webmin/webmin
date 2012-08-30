@@ -1,6 +1,6 @@
 line1=Configureerbare opties,11
 cal_all=Genereer alle Calamaris rapporten?,1,1-Ja,0-Nee
-cal_fmt=Calamaris output formaat,1,w-HTML,m-Tekst
+cal_fmt=Calamaris resultaat formaat,1,w-HTML,m-Tekst
 cal_extra=Extra Calamaris opdracht-regel parameters,0
 cal_max=Maximum log regels toe te voegen aan Calamaris,3,ongelimiteerd
 crypt_conf=Encryptie methode voor proxy wachtwoorden,1,0-crypt,1-md5base64

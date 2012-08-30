@@ -22,4 +22,4 @@ print &ui_table_row($text{'defines_list'},
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer("index.cgi?mode=global", $text{'index_return2'});

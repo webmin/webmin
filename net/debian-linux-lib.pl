@@ -13,6 +13,7 @@ if (!-d $modules_config) {
 	($modules_config) = glob('/etc/modprobe.d/arch/*');
 	}
 $network_interfaces = '/proc/net/dev';
+$sysctl_config = "/etc/sysctl.conf";
 
 do 'linux-lib.pl';
 
@@ -542,7 +543,7 @@ local %conf;
 
 sub routing_config_files
 {
-return ( $network_interfaces_config );
+return ( $network_interfaces_config, $sysctl_config );
 }
 
 sub network_config_files
@@ -579,6 +580,13 @@ if (@ifaces6) {
 				 &ui_select("gatewaydev6", $router6,
 					[ map { $_->[0] } @ifaces6 ]) ] ]));
 	}
+
+# Act as router?
+local %sysctl;
+&read_env_file($sysctl_config, \%sysctl);
+print &ui_table_row($text{'routes_forward'},
+	&ui_yesno_radio("forward",
+			$sysctl{'net.ipv4.ip_forward'} ? 1 : 0));
 
 # Get static routes
 local ($d, @st, @hr);
@@ -696,6 +704,14 @@ foreach $iface (@ifaces) {
 	&modify_interface_def($iface->[0], $iface->[1], $iface->[2],
 			      $iface->[3], 0);
 	}
+
+# Save routing flag
+local %sysctl;
+&lock_file($sysctl_config);
+&read_env_file($sysctl_config, \%sysctl);
+$sysctl{'net.ipv4.ip_forward'} = $in{'forward'};
+&write_env_file($sysctl_config, \%sysctl);
+&unlock_file($sysctl_config);
 }
 
 

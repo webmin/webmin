@@ -1,0 +1,15 @@
+index_status=Status som skal vises i listen,1,1-Gjeldende status,0-Fra siste tidsplanlagte sjekk
+pager_cmd=Kommando for &#229; sende melding til en persons&#248;ker,3,Ingen
+refresh=Sekunder mellom side-oppfriskinger,3,Ikke oppfrisk
+sort_mode=Vis overv&#229;kere sortert etter,1,0-N&#229;r de ble opprettet,1-Beskrivelse,2-Vert,3-Siste status
+columns=Kolonner for tjenster-tabell,1,2-2,1-1
+output=Ta mot resultat fra programmer som kj&#248;res n&#229;r nede?,1,1-Ja,0-Nei
+subject_mode=Type e-post emne,1,0-Ny stil,1-Gammel stil
+def_tmpl=Standard mal,10,-Ingen,Navngitt mal
+pinger=Send pings med kommando,10,-Bruk innebygd kode,linux-Bruk kommando som passer for Linux eller FreeBSD,Annen kommando
+snmp_server=Send SNMP traps til tjener,3,Ingen
+snmp_version=SNMP protokoll versjon,1,3-v3,2-v2,1-v1
+snmp_community=SNMP community string,0
+snmp_trap=SNMP OID for traps,0
+history_show=Antall historiske statuser som skal vises,0
+history_purge=Antall dager historiske statuser skal beholdes,0

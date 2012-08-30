@@ -1,0 +1,12 @@
+line1=Konfigurerbare innstillinger,11
+test_config=Test konfig-fil f&#248;r endringer tas i bruk?,1,1-Ja,0-Nei
+test_manual=Test konfig-fil etter manuelle endringer?,1,1-Ja,0-Nei
+test_always=Test konfig-fil etter annen endring?,1,1-Ja,0-Nei
+line2=System konfigurasjon,11
+proftpd_conf=Sti til ProFTPD konfig-fil,0
+add_file=Fil som nye virtuelle verter skal legges inn i,3,Siste fil i konfigurasjonen
+proftpd_path=Sti til ProFTPD program,0
+pid_file=Sti til ProFTPD PID filen,3,Ingen
+ftpusers=Sti til ftpusers filen,0
+start_cmd=Kommando for &#229; starte ProFTPD,3,Automatisk
+stop_cmd=Kommando for &#229; stoppe ProFTPD,3,Bare stopp prosessen

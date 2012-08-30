@@ -551,9 +551,9 @@ sub save_options
 
     foreach $key (keys %options)
     {
-	if ($key =~ /_def/)
+	if ($key =~ /_def$/)
 	{
-	    (my $param = $key) =~ s/_def//;
+	    (my $param = $key) =~ s/_def$//;
 	    my $value = $options{$key} eq "__USE_FREE_FIELD__" ?
 			$options{$param} : $options{$key};
 	    $value =~ s/\0/, /g;
@@ -653,6 +653,13 @@ sub regenerate_canonical_table
 sub regenerate_transport_table
 {
     &regenerate_any_table("transport_maps");
+}
+
+# regenerate_dependent_table
+#
+sub regenerate_dependent_table
+{
+    &regenerate_any_table("sender_dependent_default_transport_maps");
 }
 
 
@@ -1650,7 +1657,10 @@ return ($prog->{'enabled'} ? "" : "#").
 sub redirect_to_map_list
 {
 local ($map_name) = @_;
-if ($map_name =~ /transport/) { &redirect("transport.cgi"); }
+if ($map_name =~ /sender_dependent_default_transport_maps/) {
+	redirect("dependent.cgi");
+	}
+elsif ($map_name =~ /transport/) { &redirect("transport.cgi"); }
 elsif ($map_name =~ /canonical/) { &redirect("canonical.cgi"); }
 elsif ($map_name =~ /virtual/) { &redirect("virtual.cgi"); }
 elsif ($map_name =~ /relocated/) { &redirect("relocated.cgi"); }
@@ -1679,6 +1689,9 @@ if ($map_name =~ /smtpd_client_restrictions:(\S+)/) {
 	}
 if ($map_name =~ /relay_recipient_maps/) {
 	&regenerate_relay_recipient_table();
+	}
+if ($map_name =~ /sender_dependent_default_transport_maps/) {
+	&regenerate_dependent_table();
 	}
 }
 

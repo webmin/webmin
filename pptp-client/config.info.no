@@ -1,0 +1,7 @@
+line1=Konfigurerbare innstillinger,11
+timeout=Ventetid for tunnel tilkobling,0,5
+line2=System konfigurasjon,11
+pptp=Full sti til PPTP klient program,0
+peers_dir=Katalog som inneholder PPP tilkoblingsfiler,0
+pap_file=Fil med PPP kontoer,0
+pptp_options=Fil med globale PPTP PPP innstillinger,0

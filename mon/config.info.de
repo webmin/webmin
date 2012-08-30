@@ -4,5 +4,5 @@ cfbasedir=Vollst&auml;ndiger Pfad zu allen gespeicherten Konfigurationsdateien (
 mon_cgi=Vollst&auml;ndiger Pfad zum MON cgi-Programm,0
 monshow=Voller Pfad zum monshow Programm,0
 start_cmd=Befehl zum Start von MON,0
-stop_cmd=Befehl zum Stopp von MON,3,Beende Prozess;
+stop_cmd=Befehl zum Stopp von MON,3,Beende Prozess
 restart_cmd=Befehl zum Neustart von MON,3,Sende HUP&#045Signal

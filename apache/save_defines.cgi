@@ -10,4 +10,4 @@ $site{'defines'} = join(" ", split(/\s+/, $in{'defines'}));
 &write_file("$module_config_directory/site", \%site);
 &unlock_file("$module_config_directory/site");
 &webmin_log("defines", undef, undef, \%in);
-&redirect("");
+&redirect("index.cgi?mode=global");

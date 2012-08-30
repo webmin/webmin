@@ -1,0 +1,13 @@
+<header>Sender dependent transport mappings</header>
+
+The optional sender dependent addresses file allows the relay host for 
+for outgoing SMTP connections to be set on a per-address or per-domain basis. The left
+hand side of each entry can be either a full email address like
+<tt>foo@bar.com</tt>, or just a domain like <tt>@bar.com</tt>. <p>
+
+The right hand side must be in the format <i>transport:nexthop</i>. In the 
+typical case where you want to relay mail via a specific mail server, 
+<i>transport</i> should be <tt>smtp</tt> and <i>nexthop</i> the hostname or
+IP address of the mail server. <p>
+
+<hr>

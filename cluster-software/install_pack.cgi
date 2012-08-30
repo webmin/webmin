@@ -75,7 +75,7 @@ elsif ($in{source} == 2) {
 elsif ($in{source} == 3) {
 	# installing from some update system, so nothing to do here
 	$pfile = $in{'update'};
-	@rv = split(/\s+/, $in{'update'});
+	@rv = map { $_." ".$_ } split(/\s+/, $in{'update'});
 	}
 
 # Check if any remote systems are using the same package system
@@ -151,11 +151,11 @@ print &ui_table_start($text{'install_header'}, undef, 4);
 $plist = "";
 foreach (@rv) {
 	($p, $d) = split(/\s+/, $_, 2);
-	if ($d) {
-		$plist .= &html_escape($d)," (",&html_escape($p),")<br>\n";
+	if ($d && $d ne $p) {
+		$plist .= &html_escape($d)." (".&html_escape($p).")<br>\n";
 		}
 	else {
-		$plist .= &html_escape($p),"<br>\n";
+		$plist .= &html_escape($p)."<br>\n";
 		}
 	}
 print &ui_table_row($text{'install_packs'}, $plist, 3);

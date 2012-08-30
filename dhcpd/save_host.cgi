@@ -48,7 +48,7 @@ else {
 	&error_setup($text{'shost_failsave'});
 
 	# Validate and save inputs
-	$in{'name'} =~ /^[a-z0-9\.\-]+$/i ||
+	$in{'name'} =~ /^[a-z0-9\.\-\_]+$/i ||
 		&error("'$in{'name'}' $text{'shost_invalidhn'}");
 	$host->{'comment'} = $in{'desc'};
 

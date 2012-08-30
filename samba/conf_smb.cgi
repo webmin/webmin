@@ -80,12 +80,13 @@ print &ui_table_row($text{'smb_master'},
 		    [ "no", $text{'no'} ],
 		    [ "auto", $text{'smb_master_auto'} ] ]));
 
+$security = &getval("security");
 print &ui_table_row($text{'smb_security'},
 	&ui_select("security", $security,
 		   [ [ "", $text{'default'} ],
 		     map { [ $_, $text{'smb_'.$_.'level'} ||
 				 $text{'smb_'.$_} ] }
-			 ( "share", "user", "passwd", "domain", "ads" ) ],
+			 ( "share", "user", "server", "domain", "ads" ) ],
 		   1, 0, 1));
 
 print &ui_table_row($text{'smb_passwdserver'},

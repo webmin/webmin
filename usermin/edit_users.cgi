@@ -7,12 +7,6 @@ $access{'users'} || &error($text{'acl_ecannot'});
 &ui_print_header(undef, $text{'users_title'}, "");
 &get_usermin_miniserv_config(\%miniserv);
 
-if (&get_usermin_version() < 0.76) {
-	print "<p>$text{'users_eversion'}<p>\n";
-	&ui_print_footer("", $text{'index_return'});
-	exit;
-	}
-
 print $text{'users_desc'}," ",$text{'users_desc2'},"<p>\n";
 
 print "<form action=change_users.cgi method=post>\n";

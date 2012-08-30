@@ -21,6 +21,9 @@ index_ecount=$1 errors detected
 index_attrs=Additional SMART attributes
 index_raw=Full SMART status report
 index_return=module index
+index_family=Model family
+index_serial=Serial number
+index_capacity=Capacity
 
 monitor_type=SMART Drive Check
 monitor_drive=Drive to check

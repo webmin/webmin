@@ -351,7 +351,7 @@ else {
 		push(@classes, split(' ',$cyrus_class)) if ($in{'cyrus'});
 		@classes = grep { /\S/ } @classes;	# Remove empty
 		&name_fields();
-		@classes = &unique(@classes);
+		@classes = &uniquelc(@classes);
 		$base = &get_user_base();
 		$newdn = "uid=$user,$base";
 		@allprops = ( "cn" => $real,
@@ -523,7 +523,7 @@ else {
 			}
 		push(@classes, "shadowAccount") if ($shadow);
 		&name_fields();
-		@classes = &unique(@classes);
+		@classes = &uniquelc(@classes);
 		@classes = grep { /\S/ } @classes;	# Remove empty
 		@rprops = grep { defined($uinfo->get_value($_)) } @rprops;
 

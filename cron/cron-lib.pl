@@ -1042,11 +1042,12 @@ local $perl_path = &get_perl_path();
 &open_tempfile(CMD, ">$_[0]");
 &print_tempfile(CMD, <<EOF
 #!$perl_path
-open(CONF, "$config_directory/miniserv.conf");
+open(CONF, "$config_directory/miniserv.conf") || die "Failed to open $config_directory/miniserv.conf : \$!";
 while(<CONF>) {
         \$root = \$1 if (/^root=(.*)/);
         }
 close(CONF);
+\$root || die "No root= line found in $config_directory/miniserv.conf";
 \$ENV{'PERLLIB'} = "\$root";
 \$ENV{'WEBMIN_CONFIG'} = "$ENV{'WEBMIN_CONFIG'}";
 \$ENV{'WEBMIN_VAR'} = "$ENV{'WEBMIN_VAR'}";

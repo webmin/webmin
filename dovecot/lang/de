@@ -1,6 +1,6 @@
-apply_err=Die Konfiguration zuzuweisen, ist fehlgeschlagen
+apply_err=Die Konfiguration anzuwenden, ist fehlgeschlagen
 imap_title=IMAP Optionen
-index_apply=Konfiguration zuweisen
+index_apply=Konfiguration anwenden
 index_applydesc=Aktiviere die aktuelle Dovecot Konfiguration indem der Serverprozess gestoppt und wieder gestartet wird.
 index_boot=Starten beim booten?
 index_bootdesc=&#196;ndert diese Einstellung um den Dovecot-Server beim Systemstart zu aktivieren oder zu deaktivieren.
@@ -23,7 +23,7 @@ log_net=Ge&#228;nderte Netzwerke und Protokolle
 log_ssl=&#196;ndere SSL Konfiguration
 log_start=Gestarteter Dovecot Server
 log_stop=Gestoppter Dovecot Server
-login_anonymous=Anonyous
+login_anonymous=Anonymous
 login_apop=APOP
 login_checkpassword=Externes Programm $1
 login_count=Initialer Loginprozess

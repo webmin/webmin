@@ -30,6 +30,8 @@ if ($in{'delete'}) {
 else {
 	# Validate and store inputs
 	if ($config{'comment_mod'}) {
+		$in{'cmt'} =~ s/^\s+//;
+		$in{'cmt'} =~ s/\s+$//;
 		if ($in{'cmt'}) {
 			$rule->{'comment'} = [ "", $in{'cmt'} ];
 			push(@mods, "comment");

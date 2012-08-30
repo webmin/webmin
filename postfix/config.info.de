@@ -1,7 +1,7 @@
 line1=Konfigurierbare Optionen,11
 perpage=Mailnachrichten f&#252;r die Anzeige pro Seite,0,6
 wrap_width=Breite f&#252;r Zeilenumbruch der Nachrichten,0
-sort_mode=Sotiere Tabellen nach,1,0-Reihenfolge in Datei,1-Name
+sort_mode=Sortiere Tabellen nach,1,0-Reihenfolge in Datei,1-Name
 columns=Spalten f&#252;r Aliase und andere Tabellen,1,2-2,1-1
 show_cmts=Zeige Beschreibungen in Tabellen?,1,1-Ja,0-Nein
 prefix_cmts=Beginne alle beschreibenden Kommentare mit <tt>Webmin</tt>?,1,1-Ja,0-Nein
@@ -24,7 +24,7 @@ mailq_dir=Basisverzeichnis der Mailqueue,0
 mailq_cmd=Mailqueue Anzeigekommando,0
 postcat_cmd=Mailqueue Dekodierkommando,0
 start_cmd=Startbefehl f&#252;r Postfix,3,Benutze Kontrollbefehl
-stop_cmd=Stopbefehl f&#252;r Postfix,3,Benutze Kontrollbefehl
+stop_cmd=Stoppbefehl f&#252;r Postfix,3,Benutze Kontrollbefehl
 reload_cmd=Kommando um Postfix Konfiguration anzuwenden,3,Benutze Kontrollbefehl
 line3=MySQL Optionen,11
 line4=LDAP Optionen,11

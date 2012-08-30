@@ -39,6 +39,7 @@ line0.5=Opcions de carpeta,11
 track_read=Porta el compte dels correus llegits/no llegits,1,1-Sí,0-No
 check_mod=Comprova la modificació de la bústia en esborrar correu,1,1-Sí,0-No
 maildir_deleted=Omet els missatges marcats com a suprimits al directori de correu,1,1-Sí,0-No
+noindex_hostname=Inclou el nom de host als fitxers d'índex?,1,0-Yes,1-No
 
 line3=Opcions de spam,11
 spam_buttons=Mostra els botons d'informe de spam de,2,list-Les bústies,mail-Els missatges

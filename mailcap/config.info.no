@@ -1,0 +1,1 @@
+mailcap=File med MIME Type Programmer

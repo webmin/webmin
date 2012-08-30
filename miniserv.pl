@@ -1222,6 +1222,7 @@ if ($config{'loghost'}) {
 else {
 	$acpthost = $acptip;
 	}
+$loghost = $acpthost;
 $datestr = &http_date(time());
 $ok_code = 200;
 $ok_message = "Document follows";
@@ -1384,6 +1385,12 @@ while(1) {
 	else {
 		&http_error(400, "Bad Header $headline");
 		}
+	}
+if ($header{'x-forwarded-for'}) {
+	$loghost = $header{'x-forwarded-for'};
+	}
+elsif ($header{'x-real-ip'}) {
+	$loghost = $header{'x-real-ip'};
 	}
 if (defined($header{'host'})) {
 	if ($header{'host'} =~ /^([^:]+):([0-9]+)$/) {
@@ -1899,7 +1906,7 @@ if ($config{'userfile'}) {
 				&write_data("A password is required to access this\n");
 				&write_data("web server. Please try again. <p>\n");
 				&write_data("</body></html>\n");
-				&log_request($acpthost, undef, $reqline, 401, &byte_count());
+				&log_request($loghost, undef, $reqline, 401, &byte_count());
 				return 0;
 				}
 			}
@@ -2122,7 +2129,7 @@ if (-d _) {
 		&write_data("Location: $prot://$host$portstr$page/\r\n");
 		&write_keep_alive(0);
 		&write_data("\r\n");
-		&log_request($acpthost, $authuser, $reqline, 302, 0);
+		&log_request($loghost, $authuser, $reqline, 302, 0);
 		return 0;
 		}
 	# A directory.. check for index files
@@ -2173,7 +2180,7 @@ if (-d _) {
 		 $df, $df, $fdate, $stbuf[7]);
 		}
 	closedir(DIR);
-	&log_request($acpthost, $authuser, $reqline, $ok_code, &byte_count());
+	&log_request($loghost, $authuser, $reqline, $ok_code, &byte_count());
 	return 0;
 	}
 
@@ -2532,7 +2539,7 @@ else {
 	}
 
 # log the request
-&log_request($acpthost, $authuser, $reqline,
+&log_request($loghost, $authuser, $reqline,
 	     $logged_code ? $logged_code :
 	     $cgiheader{"location"} ? "302" : $ok_code, &byte_count());
 return $rv;
@@ -2569,7 +2576,7 @@ else {
 		&write_data("<pre>$_[2]</pre>\n");
 		}
 	}
-&log_request($acpthost, $authuser, $reqline, $_[0], &byte_count())
+&log_request($loghost, $authuser, $reqline, $_[0], &byte_count())
 	if ($reqline);
 &log_error($_[1], $_[2] ? " : $_[2]" : "");
 shutdown(SOCK, 1);
@@ -3265,7 +3272,7 @@ if ($doing_cgi_eval && $$ == $main_process_id) {
 	shutdown(SOCK, 1);
 	close(SOCK);
 	close($PASSINw); close($PASSOUTw);
-	&log_request($acpthost, $authuser, $reqline,
+	&log_request($loghost, $authuser, $reqline,
 		     $cgiheader{"location"} ? "302" : $ok_code, &byte_count());
 	}
 }
@@ -3906,7 +3913,7 @@ if ($ok && (!$expired ||
 		&write_data("Location: $rurl\r\n");
 		&write_keep_alive(0);
 		&write_data("\r\n");
-		&log_request($acpthost, $authuser, $reqline, 302, 0);
+		&log_request($loghost, $authuser, $reqline, 302, 0);
 		}
 	else {
 		# Set cookie and redirect to originally requested page
@@ -3932,7 +3939,7 @@ if ($ok && (!$expired ||
 		&write_data("Location: $prot://$host$portstr$in{'page'}\r\n");
 		&write_keep_alive(0);
 		&write_data("\r\n");
-		&log_request($acpthost, $authuser, $reqline, 302, 0);
+		&log_request($loghost, $authuser, $reqline, 302, 0);
 		syslog("info", "%s", "Successful login as $authuser from $acpthost") if ($use_syslog);
 		&write_login_utmp($authuser, $acpthost);
 		}
@@ -5073,7 +5080,7 @@ if ($config{'dav_debug'}) {
 	}
 
 # Log it
-&log_request($acpthost, $authuser, $reqline, $response->code(), 
+&log_request($loghost, $authuser, $reqline, $response->code(), 
 	     length($response->content()));
 }
 
@@ -5601,7 +5608,7 @@ foreach my $cron (@webmincrons) {
 		# Older than interval .. time to run
 		$run = 1;
 		}
-	elsif ($cron->{'mins'}) {
+	elsif ($cron->{'mins'} ne '') {
 		# Check if current time matches spec, and we haven't run in the
 		# last minute
 		my @tm = localtime($now);
@@ -5739,7 +5746,8 @@ foreach my $f (readdir(CRONS)) {
 				$broken = 1;
 				}
 			}
-		if (!$cron{'interval'} && !$cron{'mins'} && !$cron{'special'}) {
+		if (!$cron{'interval'} && $cron{'mins'} eq '' &&
+		    $cron{'special'} eq '') {
 			print STDERR "Cron $1 missing any time spec\n";
 			$broken = 1;
 			}

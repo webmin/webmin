@@ -42,6 +42,7 @@ Added a button to create a shorewall dump, thanks to a patch by Paul Gear.
 ---- Changes since 1.500 ----
 New rules are added after the SECTION NEW line, if there is one.
 ---- Changes since 1.590 ----
-(Updates by Paul Gear <paul@gear.dyndns.org>.)
-Further corrections to the official name.
-Sort macros in the list of possible actions.
+Added a new page for editing routing rules.
+Updates by Paul Gear <paul@gear.dyndns.org>:
+- Further corrections to the official name.
+- Sort macros in the list of possible actions.

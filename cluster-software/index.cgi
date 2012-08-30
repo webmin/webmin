@@ -74,9 +74,9 @@ if (@addservers && $access{'add'}) {
 	print "<td width=33%>\n";
 	print "<input type=submit name=add value='$text{'index_add'}'>\n";
 	print "<select name=server>\n";
-	foreach $s (@addservers) {
+	foreach $s (sort { $a->{'host'} cmp $b->{'host'} } @addservers) {
 		print "<option value=$s->{'id'}>",
-			$s->{'desc'} || $s->{'realhost'} || $s->{'host'},"\n";
+		    $s->{'host'}.($s->{'desc'} ? " ($s->{'desc'})" : ""),"\n";
 		}
 	print "</select></td>\n";
 	print "</form>\n";

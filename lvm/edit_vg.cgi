@@ -55,7 +55,6 @@ if ($in{'vg'}) {
 else {
 	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
-print "</tr></table>\n";
 
 &ui_print_footer("index.cgi?mode=vgs", $text{'index_return'});
 

@@ -7,6 +7,8 @@ require './file-lib.pl';
 &ReadParse();
 use POSIX;
 $p = $ENV{'PATH_INFO'};
+($p =~ /^\s*\|/ || $p =~ /\|\s*$/ || $p =~ /\0/) &&
+	&error_exit($text{'view_epathinfo'});
 if ($in{'type'}) {
 	# Use the supplied content type
 	$type = $in{'type'};
@@ -116,7 +118,7 @@ if ($in{'format'}) {
 	close(FILE);
 	}
 else {
-	if (!open(FILE, $p)) {
+	if (!open(FILE, "<", $p)) {
 		# Unix permissions prevent access
 		&error_exit(&text('view_eopen', $p, $!));
 		}
@@ -131,7 +133,7 @@ else {
 	print "X-no-links: 1\n";
 	print "Content-length: $st[7]\n";
 	print "Content-Disposition: Attachment\n" if ($download);
-	print "Content-type: $type\n\n";
+	&print_content_type($type);
 	if ($type =~ /^text\/html/i && !$in{'edit'}) {
 		while(read(FILE, $buf, 1024)) {
 			$data .= $buf;

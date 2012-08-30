@@ -74,6 +74,13 @@ foreach $v (@mysql_number_variables) {
 			  [ [ 1, $text{'default'} ], [ 0, " " ] ])."\n".
 		&ui_textbox($v, $n, 8), 3);
 	}
+foreach $v (@mysql_byte_variables) {
+	$n = &find_value($v, $mems);
+	print &ui_table_row($text{'cnf_'.$v},
+		&ui_radio($v."_def", defined($n) ? 0 : 1,
+			  [ [ 1, $text{'default'} ], [ 0, " " ] ])."\n".
+		&mysql_size_input($v, $n), 3);
+	}
 
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ],

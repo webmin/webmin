@@ -107,10 +107,13 @@ bifc_edhcpmain=DHCP can only be enabled on the primary network interface
 bifc_bridgeto=Connect bridge to interface
 bifc_ebridgeto=An existing Ethernet interface must be selected for this bridge to use
 bifc_ebridgeto2=The selected interface for the bridge must not have any address assigned
+bifc_ebridge=Bridge interface must be a number
+bifc_ebond=Bond interface must be a number
 
 bonding_add=Add a new bonding Interface.
 bonding_create=Create Bonding Interface
-bonding_teamparts=Teaming Partner
+bonding_teamparts=Teaming Partners
+bonding_teampartsdesc=Seperate partners with whitespaces e.g. "eth2 eth4"
 bonding_teammode=Teaming Mode
 bonding_miimon=Mii-Monitoring Interval
 bonding_updelay=Updelay

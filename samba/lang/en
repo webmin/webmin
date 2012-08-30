@@ -161,6 +161,7 @@ smb_security=Security
 smb_sharelevel=Share level
 smb_userlevel=User level
 smb_passwdserver=Password server
+smb_server=Password server
 smb_domain=Domain
 smb_ads=Active directory
 smb_announce=Remote announce to

@@ -44,5 +44,4 @@ print &ui_textbox("dir", $access{'dir'}, 30)." ".
 	&file_chooser_button("dir", 1, 1);
 print &ui_form_end();
 
-&ui_print_footer("", $text{'index_return'});
-
+&ui_print_footer("index.cgi?mode=global", $text{'index_return2'});

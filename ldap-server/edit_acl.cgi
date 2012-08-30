@@ -10,11 +10,17 @@ $access{'acl'} || &error($text{'acl_ecannot'});
 if (&get_config_type() == 1) {
 	$conf = &get_config();
 	@access = &find("access", $conf);
+	$hasorder = 0;
 	}
 else {
 	$defdb = &get_default_db();
 	$conf = &get_ldif_config();
 	@access = &find_ldif("olcAccess", $conf, $defdb);
+	@access = sort { 
+		$pa = &parse_ldap_access($a);
+		$pb = &parse_ldap_access($b);
+		$pa->{'order'} <=> $pb->{'order'} } @access;
+	$hasorder = 1;
 	}
 
 @crlinks = ( "<a href='acl_form.cgi?new=1'>$text{'acl_add'}</a>" );
@@ -24,8 +30,11 @@ if (@access) {
 	@links = ( &select_all_link("d"), &select_invert_link("d"), @crlinks );
 	print &ui_links_row(\@links);
 	@tds = ( "width=5", "width=30%", "width=65%", "width=5%" );
-	print &ui_columns_start([ "", $text{'acl_what'},
-				  $text{'acl_who'}, $text{'acl_move'} ],
+	print &ui_columns_start([ "",
+				  $text{'acl_what'},
+				  $text{'acl_who'},
+				  $hasorder ? ( $text{'acl_order'} ) : ( ),
+				  $text{'acl_move'} ],
 				100, 0, \@tds);
 	$i = 0;
 	foreach $a (@access) {
@@ -38,6 +47,7 @@ if (@access) {
 		print &ui_checked_columns_row([
 			"<a href='acl_form.cgi?idx=$i'>$p->{'whatdesc'}</a>",
 			$p->{'bydesc'},
+			$hasorder ? ( $p->{'order'} ) : ( ),
 			$mover,
 			], \@tds, "d", $i);
 		$i++;

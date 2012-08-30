@@ -1,0 +1,5 @@
+hosts_file=Fil med liste over verter og adresser,0
+ipnodes_file=Fil med liste over IPv6 verter og adresser,0
+def_netmask=Standard nettmaske,0
+def_broadcast=Standard broadcast adresse,0
+def_mtu=Standard MTU,0

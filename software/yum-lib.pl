@@ -50,10 +50,15 @@ while(<CMD>) {
 				}
 			}
 		}
-	elsif (/^\s+Updating\s+:\s+(\S+)/) {
+	elsif (/^\s+(Updating|Installing)\s+:\s+(\S+)/) {
 		# Line like :
 		#   Updating       : wbt-virtual-server-theme       1/2 
-		push(@rv, $1);
+		# or
+		#   Installing : 2:nmap-5.51-2.el6.i686             1/1
+		local $pkg = $2;
+		$pkg =~ s/^\d://;	# Strip epoch from front
+		$pkg =~ s/\-\d.*$//;	# Strip version number from end
+		push(@rv, $pkg);
 		}
 	if (!/ETA/ && !/\%\s+done\s+\d+\/\d+\s*$/) {
 		print &html_escape($_."\n");

@@ -86,6 +86,12 @@ else {
 		$b->{'name'} = $b->{'fullname'} = "br".$in{'name'};
 		$b->{'bridge'} = 1;
 		}
+	elsif ($in{'bond'}) {
+		# Creating a bond interface
+		$in{'name'} =~ /^\d+$/ || &error($text{'bifc_ebond'});
+		$b->{'name'} = $b->{'fullname'} = "bond".$in{'name'};
+		$b->{'bond'} = 1;
+		}
 	elsif ($in{'name'} =~/^[a-z]+\d*(\.\d+)?$/) {
 		# creating a real interface
 		$b->{'name'} = $in{'name'};
@@ -305,8 +311,13 @@ else {
 		}
 
 	# Save the interface with its final name
-	$b->{'fullname'} = $b->{'name'}.
-		( $b->{'virtual'} eq '' ? '' : ':'.$b->{'virtual'});
+	if ($in{'vlan'} == 1) {
+		$b->{'fullname'} = $in{'physical'}.".".$in{'vlanid'};
+		}
+	else {
+		$b->{'fullname'} = $b->{'name'}.
+				( $b->{'virtual'} eq '' ? '' : ':'.$b->{'virtual'});
+	}
 	&save_interface($b);
 
 	if ($in{'activate'}) {

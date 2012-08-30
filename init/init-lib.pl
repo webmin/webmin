@@ -808,7 +808,7 @@ if ($init_mode eq "init" || $init_mode eq "local" || $init_mode eq "upstart" ||
 			# Call the insserv command to enable
 			my $ex = &system_logged("insserv ".quotemeta($_[0]).
 				       " >/dev/null 2>&1");
-			$done = 1 if (!$ex);
+			$done = 1 if (!$ex && &action_status($_[0]) == 2);
 			}
 		if (!$done) {
 			# Just link up the init script
@@ -1695,20 +1695,20 @@ sub start_upstart_service
 {
 my ($name) = @_;
 my $out = &backquote_logged(
-	"service ".quotemeta($name)." start 2>&1 </dev/null");
+	"initctl start ".quotemeta($name)." 2>&1 </dev/null");
 return (!$?, $out);
 }
 
 =head2 stop_upstart_service(name)
 
-Shut down the upstop service with some name, and return an OK flag and output
+Shut down the upstart service with some name, and return an OK flag and output
 
 =cut
 sub stop_upstart_service
 {
 my ($name) = @_;
 my $out = &backquote_logged(
-	"service ".quotemeta($name)." stop 2>&1 </dev/null");
+	"initctl stop ".quotemeta($name)." 2>&1 </dev/null");
 return (!$?, $out);
 }
 

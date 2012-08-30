@@ -1,5 +1,12 @@
 index_status=In der Liste anzuzeigender Status,1,1-Aktueller Status,0-Vom letzten &Uuml;berwachungszeitpunkt
 pager_cmd=Befehl&#044 um Nachrichten an einen Pager zu senden,3,Keiner
-ping_cmd=Befehl zum ping an einen Host,3,Keiner
-refresh=Sekunden zwischen Seiten-Auffrischungen,3,nicht auffrischen
-sort_mode=zeige Monitore sortiert nach,1,0-erzeugter Reihenfolge,1-Beschreibung,2-Host
+refresh=Sekunden zwischen Seiten-Auffrischungen,3,Nicht auffrischen
+sort_mode=Zeige Monitore sortiert nach,1,0-Erzeugter Reihenfolge,1-Beschreibung,2-Host,3-Letzten Status
+columns=Spalten f&#252;r Dienste Tabelle,1,2-2,1-1
+subject_mode=E-Mail Betreffmodus,1,0-Neuer Stil,1-Alter Stil
+def_tmpl=Standard Template,10,-Keiner,Benanntes Template
+pinger=Sende Pings mit Befehl,10,-Verwende eingebauten Code,linux-Benutze Befehl f&#252;r Linux oder FreeBSD,Anderer Befehl
+snmp_version=SNMP Protokoll Version,1,3-v3,2-v2,1-v1
+snmp_community=SNMP community string,0
+history_show=Anzahl an historischen Stati zum Anzeigen,0
+history_purge=Tage&#44; um historische Stati zu behalten,0

@@ -467,17 +467,18 @@ else {
 	}
 }
 
-# print_content_type()
+# print_content_type([type])
 # Prints the content-type header, with a charset
 sub print_content_type
 {
+local $type = $_[0] || "text/plain";
 if ($userconfig{'nocharset'} || $config{'nocharset'}) {
 	# Never try to use charset
-	print "Content-type: text/plain\n\n";
+	print "Content-type: $type\n\n";
 	}
 else {
 	$charset = &get_charset();
-	print "Content-type: text/plain; charset=$charset\n\n";
+	print "Content-type: $type; charset=$charset\n\n";
 	}
 }
 

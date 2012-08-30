@@ -73,7 +73,7 @@ if ($in{'dest'}) {
 	&ui_print_footer(
 	   "$gconfig{'webprefix'}/$module_name/edit_dbase.cgi?db=$in{'db'}",
 	   $text{'dbase_return'},
-	   "", $text{'index_return'});
+	   &get_databases_return_link($in{'db'}), $text{'index_return'});
 	}
 
 sub quote_csv

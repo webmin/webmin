@@ -46,4 +46,4 @@ print &ui_table_end();
 print &ui_form_end([ [ "ok", $text{'csv_ok'} ] ]);
 
 &ui_print_footer("edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
-	"", $text{'index_return'});
+		 &get_databases_return_link($in{'db'}), $text{'index_return'});

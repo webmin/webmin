@@ -79,10 +79,18 @@ if(($a->{'vlan'} == 1) && !(($gconfig{'os_type'} eq 'debian-linux') && ($gconfig
 
 local $cmd;
 if (&use_ifup_command($a)) {
-	# Use Debian ifup command
+	# Use Debian / Redhat ifup command
 	if($a->{'vlan'} == 1) {
 		# name and fullname for VLAN tagged interfaces are "auto" so we need to ifup using physical and vlanid. 
-		if ($a->{'up'}) { $cmd .= "ifup $a->{'physical'}" . "." . $a->{'vlanid'}; }
+		if ($a->{'up'}) {
+			if(($a->{'mtu'}) && (($gconfig{'os_type'} eq 'redhat-linux') && ($gconfig{'os_version'} >= 13))) {
+                        	local $cmd2;
+                        	$cmd2 .= "ifconfig $a->{'physical'} mtu $a->{'mtu'}";
+                        	local $out = &backquote_logged("$cmd2 2>&1");
+                        	if ($?) { &error($out); }
+                        	}
+			$cmd .= "ifup $a->{'physical'}" . "." . $a->{'vlanid'};
+			}
 	        else { $cmd .= "ifdown $a->{'physical'}" . "." . $a->{'vlanid'}; }
 	}
         elsif ($a->{'up'}) { $cmd .= "ifup $a->{'fullname'}"; }
@@ -187,9 +195,12 @@ if ($still) {
 sub use_ifup_command
 {
 local ($iface) = @_;
-return $gconfig{'os_type'} eq 'debian-linux' &&
-       $gconfig{'os_version'} >= 5 &&
-       $iface->{'name'} !~ /^(eth|lo)/ &&
+return ($gconfig{'os_type'} eq 'debian-linux' &&
+	$gconfig{'os_version'} >= 5 ||
+	$gconfig{'os_type'} eq 'redhat-linux' &&
+	$gconfig{'os_version'} >= 13) &&
+       ($iface->{'name'} !~ /^(eth|lo)/ ||
+ 	$iface->{'name'} =~ /^(\S+)\.(\d+)/) &&
        $iface->{'virtual'} eq '';
 }
 

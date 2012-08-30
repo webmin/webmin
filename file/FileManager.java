@@ -1470,6 +1470,7 @@ class EditorWindow extends FixedFrame implements CbButtonCallback
 	FileManager filemgr;
 	GotoWindow goto_window;
 	FindReplaceWindow find_window;
+	String charset;
 
 	// Editing an existing file
 	EditorWindow(RemoteFile f, FileManager p)
@@ -1490,6 +1491,7 @@ class EditorWindow extends FixedFrame implements CbButtonCallback
 		filemgr.set_cookie(uc);
 		int len = uc.getContentLength();
 		InputStream is = uc.getInputStream();
+		charset = filemgr.get_charset(uc.getContentType());
 		byte buf[];
 		if (len >= 0) {
 			// Length is known
@@ -1513,7 +1515,8 @@ class EditorWindow extends FixedFrame implements CbButtonCallback
 			    buf = nbuf;
 			    }
 			}
-		String s = new String(buf, 0);
+		String s = charset == null ? new String(buf, 0)
+					   : new String(buf, charset);
 		if (s.indexOf("\r\n") != -1) {
 			dosmode.setState(true);
 			s = FileManager.replace_str(s, "\r\n", "\n");
@@ -1619,8 +1622,16 @@ class EditorWindow extends FixedFrame implements CbButtonCallback
 			filemgr.set_cookie(uc);
 			uc.setDoOutput(true);
 			OutputStream os = uc.getOutputStream();
-			byte buf[] = new byte[s.length()];
-			s.getBytes(0, buf.length, buf, 0);
+			byte buf[];
+			if (charset == null) {
+				// Assume ascii
+				buf = new byte[s.length()];
+				s.getBytes(0, buf.length, buf, 0);
+				}
+			else {
+				// Convert back to original charset
+				buf = s.getBytes(charset);
+				}
 			os.write(buf);
 			os.close();
 			BufferedReader is =

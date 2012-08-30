@@ -305,6 +305,18 @@ if ($config{'attribs'}) {
 	open(OUT, "$config{'smartctl'} $extra_args -a $qd |");
 	while(<OUT>) {
 		s/\r|\n//g;
+		if (/Model\s+Family:\s+(.*)/i) {
+			$rv{'family'} = $1;
+			}
+		elsif (/Device\s+Model:\s+(.*)/i) {
+			$rv{'model'} = $1;
+			}
+		elsif (/Serial\s+Number:\s+(.*)/i) {
+			$rv{'serial'} = $1;
+			}
+		elsif (/User\s+Capacity:\s+(.*)/i) {
+			$rv{'capacity'} = $1;
+			}
 		if (/^\((\s*\d+)\)(.*)\s(0x\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)/) {
 			# An old-style vendor attribute
 			$doneknown = 1;
