@@ -43,3 +43,4 @@ Added a button to create a shorewall dump, thanks to a patch by Paul Gear.
 New rules are added after the SECTION NEW line, if there is one.
 ---- Changes since 1.590 ----
 Added a new page for editing routing rules.
+Sort macros in the list of possible actions.
