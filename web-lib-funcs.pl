@@ -8797,7 +8797,7 @@ if (&is_readonly_mode() && !$safe) {
 		}
 	}
 # Really run it
-&webmin_debug_log('CMD', "cmd=$realcmd mode=$mode")
+&webmin_debug_log('CMD', "mode=$mode cmd=$realcmd")
 	if ($gconfig{'debug_what_cmd'});
 if ($mode == 0) {
 	return open($fh, "| $cmd");
