@@ -166,3 +166,4 @@ Added support for Ubuntu 12.04.
 ---- Changes since 1.590 ----
 Even more German translation updates, thanks to Raymond Vetter.
 Norwegian updates, thanks to Stein-Aksel Basma.
+Switch order of command and mode in debug logs to make it clear that "mode=X" is part of the log, not part of the command.
