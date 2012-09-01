@@ -189,12 +189,8 @@ else {
 		$b->{'broadcast'} = $in{'broadcast'};
 		}
 
-	if ($in{'mode'} eq 'none') {
-		# No MTU needed
-		delete($b->{'mtu'});
-		}
-	elsif (!$access{'mtu'}) {
-		# Use default MTU
+	if (!$access{'mtu'}) {
+		# Use default MTU or leave unchanged
 		$b->{'mtu'} = $in{'new'} ? $config{'def_mtu'}
 					 : $oldb->{'mtu'};
 		}
