@@ -128,10 +128,11 @@ for($i=0; $i<@o || $i<@n; $i++) {
 			}
 		}
 	elsif ($n[$i] && !$before) {
-		# Adding a line at the end, but before the last Match directive
+		# Adding a line at the end, but before the first Match directive
 		local $ll = $_[1]->[@{$_[1]}-1]->{'line'};
 		foreach my $m (&find("Match", $_[1])) {
 			$ll = $m->{'line'} - 1;
+			last;
 			}
 		splice(@$lref, $ll+1, 0, "$id$_[0] $n[$i]");
 		}
