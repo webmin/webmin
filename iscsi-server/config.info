@@ -1,0 +1,2 @@
+targets_file=iSCSI server targets file,0
+iscsi_server=Full path to iSCSI server,0

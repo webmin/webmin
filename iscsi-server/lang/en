@@ -1,0 +1,17 @@
+check_etargets=The iSCSI server configuration file $1 was not found on your system.
+check_eserver=The iSCSI server program $1 was not found on your system.
+
+index_title=iSCSI Server
+index_clink=Maybe it is not installed, or your <a href='$1'>module configuration</a> is incorrect.
+index_stop=Stop iSCSI Server
+index_stopdesc=Click this button to stop the running iSCSI server. All shared devices will no longer be accessible to clients.
+index_start=Start iSCSI Server
+index_startdesc=Click this button to start the iSCSI server, so that shared devices are accessible to clients.
+index_restart=Click this button to apply the current configuration by restarting the iSCSI server.
+index_restart=Restart iSCSI Server
+index_atboot=Start at boot?
+index_atbootdesc=Change this option to control whether the iSCSI server is started at boot time or not. If it is not currently started at boot and Yes is chosen, a new init script will be created.
+
+extents_title=Devices to Share
+devices_title=Devices Combinations
+targets_title=Sharing Targets
