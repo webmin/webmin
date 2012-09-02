@@ -35,10 +35,10 @@ while(<$fh>) {
 	s/\r|\n//g;
 	s/#.*$//;
 	my @w = split(/\s+/, $_);
-	if ($w[0] =~ /^extent(\S+)/) {
+	if ($w[0] =~ /^extent(\d+)/) {
 		# An extent is a sub-section of some file or device
 		my $ext = { 'type' => 'extent',
-			    'name' => $1,
+			    'num' => $1,
 			    'line' => $lnum,
 			    'device' => $w[1],
 			    'start' => &parse_bytes($w[2]),
@@ -46,22 +46,29 @@ while(<$fh>) {
 			   };
 		push(@rv, $ext);
 		}
-	elsif ($w[0] =~ /^device(\S+)/) {
+	elsif ($w[0] =~ /^device(\d+)/) {
 		# A device is a collection of extents
+		my $dev = { 'type' => 'device',
+			    'num' => $1,
+			    'line' => $lnum,
+			    'mode' => $w[1],
+			    'extents' => [ @w[2..$#w] ],
+			  };
+		push(@rv, $dev);
 		}
-	elsif ($w[0] =~ /^target(\S+)/) {
+	elsif ($w[0] =~ /^target(\d+)/) {
 		# A target is the export of an extent
 		if (@w == 3) {
 			# If flags are missing, assume read/write
 			@w = ( $w[0], "ro", $w[1], $w[2] );
 			}
-		my $ext = { 'type' => 'target',
-			    'name' => $1,
+		my $tar = { 'type' => 'target',
+			    'num' => $1,
 			    'line' => $lnum,
 			    'flags' => $w[1],
                             'export' => $w[2],
 			    'network' => $w[3] };
-		push(@rv, $ext);
+		push(@rv, $tar);
 		}
 	$lnum++;
 	}
@@ -92,6 +99,13 @@ elsif ($str =~ /^\d+$/) {
 else {
 	&error("Unknown size number $str");
 	}
+}
+
+# is_iscsi_server_running()
+# Returns the PID if the server process is running, or 0 if not
+sub is_iscsi_server_running
+{
+return &check_pid_file($config{'pid_file'});
 }
 
 1;
