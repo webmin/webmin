@@ -11,7 +11,36 @@ index_restart=Click this button to apply the current configuration by restarting
 index_restart=Restart iSCSI Server
 index_atboot=Start at boot?
 index_atbootdesc=Change this option to control whether the iSCSI server is started at boot time or not. If it is not currently started at boot and Yes is chosen, a new init script will be created.
+index_return=module index
 
 extents_title=Devices to Share
+extents_none=No devices to share have been created yet.
+extents_name=Device name
+extents_file=File or device path
+extents_start=Start of extent
+extents_size=Size of extent
+extents_add=Add a new device to share.
+extents_delete=Delete Selected Devices
+
 devices_title=Devices Combinations
+devices_none=No device combinations have been created yet.
+devices_name=Combination name
+devices_mode=Combination type
+devices_mode_raid0=Linear (RAID0)
+devices_mode_raid1=Replicted (RAID1)
+devices_extents=Member devices
+devices_add=Add a new device combination.
+devices_delete=Delete Selected Combinations
+
 targets_title=Sharing Targets
+targets_none=No sharing targets have been created yet.
+targets_name=Target name
+targets_flags=Sharing mode
+targets_flags_ro=Read-only
+targets_flags_rw=Read/write
+targets_export=Device to share
+targets_network=Share with network
+targets_add=Add a new sharing target.
+targets_delete=Delete Selected Targets
+
+

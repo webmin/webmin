@@ -76,6 +76,18 @@ close($fh);
 return \@rv;
 }
 
+# find(&config, type, [number])
+# Returns all config objects with the given type and optional number
+sub find
+{
+my ($conf, $type, $num) = @_;
+my @t = grep { $_->{'type'} eq $type } @$conf;
+if (defined($num)) {
+	@t = grep { $_->{'num'} eq $num } @t;
+	}
+return wantarray ? @t : $t[0];
+}
+
 # parse_bytes(str)
 # Converts a string like 100MB into a number of bytes
 sub parse_bytes
