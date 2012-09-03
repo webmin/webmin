@@ -1194,10 +1194,10 @@ if ($config{'apply_cmd'} && !$config{'smf'}) {
 	$out = &backquote_logged("$config{'apply_cmd'} 2>&1 </dev/null");
 	}
 else {
-	&system_logged("$config{'ipf'} -F a >/dev/null 2>&1");
+	&system_logged("$config{'ipf'} -F a -f $config{'ipf_conf'} >/dev/null 2>&1");
 	$out = &backquote_logged("$config{'ipf'} -f $config{'ipf_conf'} 2>&1 </dev/null");
 	if (-r $config{'ipnat_conf'} && !$?) {
-		&system_logged("$config{'ipnat'} -C -F >/dev/null 2>&1");
+		&system_logged("$config{'ipnat'} -C -F -f $config{'ipnat_conf'} >/dev/null 2>&1");
 		$out = &backquote_logged("$config{'ipnat'} -f $config{'ipnat_conf'} 2>&1 </dev/null");
 		}
 	}
