@@ -767,7 +767,7 @@ if ($config{'vixie_cron'} && (!$_[1] || $_[0]->{'special'})) {
 	print "<tr $cb> <td colspan=6>\n";
 	printf "<input type=radio name=special_def value=1 %s> %s\n",
 		$job->{'special'} ? "checked" : "", $text{'edit_special1'};
-	print "<select name=special>\n";
+	print "<select name=special onChange='change_special_mode(form, 1)'>\n";
 	local $s;
 	local $sp = $job->{'special'} eq 'midnight' ? 'daily' :
 	    $job->{'special'} eq 'annually' ? 'yearly' : $job->{'special'};
@@ -791,6 +791,13 @@ els.disabled = !ena;
 for(i=0; i<els.length; i++) {
   els[i].disabled = !ena;
   }
+change_special_mode(form, 0);
+}
+
+function change_special_mode(form, special)
+{
+form.special_def[0].checked = special;
+form.special_def[1].checked = !special;
 }
 </script>
 EOF
@@ -851,12 +858,13 @@ foreach $arr ("mins", "hours", "days", "months", "weekdays") {
                 $jj = $j+($arr eq "mins" && $hourly_only ? 59 : 11);
 		if ($jj >= @$arr) { $jj = @$arr - 1; }
 		@sec = @$arr[$j .. $jj];
-                printf "<td valign=top><select %s size=%d name=$arr %s>\n",
+                printf "<td valign=top><select %s size=%d name=$arr %s %s>\n",
                         $arr eq "mins" && $hourly_only ? "" : "multiple",
                         @sec > 12 ? ($arr eq "mins" && $hourly_only ? 1 : 12)
 				  : scalar(@sec),
 			$job->{$arr} eq "*" ||  $job->{$arr} eq "" ?
-				"disabled" : "";
+				"disabled" : "",
+			"onChange='change_special_mode(form, 0)'";
 		foreach $v (@sec) {
 			if ($v =~ /^(.*)=(.*)$/) { $disp = $1; $code = $2; }
 			else { $disp = $code = $v; }
