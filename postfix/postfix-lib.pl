@@ -23,7 +23,7 @@ if (&open_readfile(VERSION, "$module_config_directory/version")) {
 if (!$postfix_version) {
 	# Not there .. work it out
 	if (&has_command($config{'postfix_config_command'}) &&
-	    &backquote_command("$config{'postfix_config_command'} mail_version 2>&1", 1) =~ /mail_version\s*=\s*(.*)/) {
+	    &backquote_command("$config{'postfix_config_command'} -d mail_version 2>&1", 1) =~ /mail_version\s*=\s*(.*)/) {
 		# Got the version
 		$postfix_version = $1;
 		}
