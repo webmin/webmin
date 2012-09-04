@@ -168,11 +168,14 @@ else {
 					}
 				}
 			
+			# Delete the user from /etc/passwd
 			&lock_user_files();
 			print "$text{'udel_pass'}<br>\n";
 			&delete_user($user);
 			print "$text{'udel_done'}<p>\n";
 
+			# Delete the user as a secondary member from groups
+			$mygroup = undef;
 			print "$text{'udel_groups'}<br>\n";
 			foreach $g (&list_groups()) {
 				@mems = split(/,/, $g->{'members'});
@@ -187,12 +190,31 @@ else {
 				}
 			print "$text{'udel_done'}<p>\n";
 
+			# Delete the user's personal group, if nobody else is
+			# a member
 			if ($mygroup && !$mygroup->{'members'}) {
 				local $another;
 				foreach $ou (&list_users()) {
-					$another = $ou if ($ou->{'gid'} == $mygroup->{'gid'});
+					$another = $ou if ($ou->{'gid'} ==
+							   $mygroup->{'gid'});
+					}
+				if (!$another && $others) {
+					# Delete in other modules
+					print "$text{'udel_ugroupother'}<br>\n";
+					local $error_must_die = 1;
+					eval { &other_modules(
+						"useradmin_delete_group",
+						$mygroup); };
+					if ($@) {
+						print &text('udel_failed', $@),
+						      "<p>\n";
+						}
+					else {
+						print "$text{'gdel_done'}<p>\n";
+						}
 					}
 				if (!$another) {
+					# Delete from /etc/group
 					print "$text{'udel_ugroup'}<br>\n";
 					&delete_group($mygroup);
 					print "$text{'udel_done'}<p>\n";
