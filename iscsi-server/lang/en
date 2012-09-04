@@ -22,6 +22,23 @@ extents_size=Size of extent
 extents_add=Add a new device to share.
 extents_delete=Delete Selected Devices
 
+extent_create=Create Device to Share
+extent_edit=Edit Device to Share
+extent_egone=Device to share $1 does not exist!
+extent_header=Details of device to share
+extent_name=Device name
+extent_device=File or disk device to share
+extent_start=Start of extent to share
+extent_size=Size of extent to share
+extent_size_def1=Entire file or device
+extent_size_def0=Specified size
+extent_part=Local disk partition
+extent_raid=RAID device
+extent_md=RAID device $1
+extent_lvm=LVM logical volume
+extent_lv=LVM VG $1, LV $2
+extent_other=Other file or device
+
 devices_title=Devices Combinations
 devices_none=No device combinations have been created yet.
 devices_name=Combination name
@@ -42,5 +59,4 @@ targets_export=Device to share
 targets_network=Share with network
 targets_add=Add a new sharing target.
 targets_delete=Delete Selected Targets
-
 

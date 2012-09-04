@@ -120,5 +120,68 @@ sub is_iscsi_server_running
 return &check_pid_file($config{'pid_file'});
 }
 
+# find_free_num(&config, type)
+# Returns the max used device number of some type, plus 1
+sub find_free_num
+{
+my ($conf, $type) = @_;
+my $max = -1;
+foreach my $c (&find($conf, $type)) {
+	if ($c->{'num'} > $max) {
+		$max = $c->{'num'};
+		}
+	}
+return $max + 1;
+}
+
+# get_device_size(device, "part"|"raid"|"lvm"|"other")
+# Returns the size in bytes of some device, which can be a partition, RAID
+# device, logical volume or regular file
+sub get_device_size
+{
+my ($dev, $type) = @_;
+if ($type eq "part") {
+	# A partition or whole disk
+	foreach my $d (&fdisk::list_disks_partitions()) {
+		if ($d->{'device'} eq $dev) {
+			# Whole disk
+			return $d->{'cylinders'} * $d->{'cylsize'};
+			}
+		foreach my $p (@{$d->{'parts'}}) {
+			if ($p->{'device'} eq $dev) {
+				return ($p->{'end'} - $p->{'start'} + 1) *
+				       $d->{'cylsize'};
+				}
+			}
+		}
+	return undef;
+	}
+elsif ($type eq "raid") {
+	# A RAID device
+	my $conf = &raid::get_raidtab();
+	foreach my $c (@$conf) {
+		if ($c->{'value'} eq $dev) {
+			return $c->{'size'}*1024;
+			} 
+		}
+	return undef;
+	}
+elsif ($type eq "lvm") {
+	# LVM volume group
+	foreach my $v (&lvm::list_volume_groups()) {
+		foreach my $l (&lvm::list_logical_volumes($v->{'name'})) {
+			if ($l->{'device'} eq $dev) {
+				return $l->{'size'} * 1024;
+				}
+			}
+		}
+	}
+else {
+	# A regular file
+	my @st = stat($dev);
+	return @st ? $st[7] : undef;
+	}
+}
+
 1;
 
