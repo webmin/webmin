@@ -42,10 +42,12 @@ extent_other=Other file or device
 extents_rusure=Are you sure you want to delete the shared device $1? Its contents will be preserved, but it will no longer be accessible to iSCSI clients.
 extent_sure=Delete Device
 extent_err=Failed to save device to share
+extent_derr=Failed to delete device to share
 extent_eother=File to share does not exist
 extent_estart=Start of extent must be a number
 extent_esize=Size of extent must be a number
 extent_esizemax=End of extent cannot be larger than the device size of $1
+extent_einuse=This device cannot be deleted, as it is in use by : $1
 
 devices_title=Devices Combinations
 devices_none=No device combinations have been created yet.
@@ -68,3 +70,6 @@ targets_network=Share with network
 targets_add=Add a new sharing target.
 targets_delete=Delete Selected Targets
 
+desc_extent=Device to share $1
+desc_device=Device combination $1
+desc_target=Sharing target $1

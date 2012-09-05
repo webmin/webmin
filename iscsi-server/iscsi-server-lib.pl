@@ -265,5 +265,43 @@ else {
 	}
 }
 
+# find_extent_users(&config, &extent|&device)
+# Returns a list of all targets or devices using some extent or device
+sub find_extent_users
+{
+my ($conf, $obj) = @_;
+my $name = $obj->{'type'}.$obj->{'num'};
+my @rv;
+foreach my $c (@$conf) {
+	if ($c->{'type'} eq 'target' && $c->{'export'} eq $name) {
+		push(@rv, $c);
+		}
+	elsif ($c->{'type'} eq 'device' &&
+	       &indexof($name, @{$c->{'extents'}}) >= 0) {
+		push(@rv, $c);
+		}
+	}
+return @rv;
+}
+
+# describe_object(&object)
+# Returns a human-readable description of some extent, device or target
+sub describe_object
+{
+my ($obj) = @_;
+if ($obj->{'type'} eq 'extent') {
+	return &text('desc_extent', &mount::device_name($obj->{'device'}));
+	}
+elsif ($obj->{'type'} eq 'device') {
+	return &text('desc_device', "<tt>$obj->{'type'}$obj->{'num'}</tt>");
+	}
+elsif ($obj->{'type'} eq 'target') {
+	return &text('desc_target', $obj->{'network'});
+	}
+else {
+	return "Unknown $obj->{'type'} object";
+	}
+}
+
 1;
 
