@@ -21,6 +21,7 @@ extents_start=Start of extent
 extents_size=Size of extent
 extents_add=Add a new device to share.
 extents_delete=Delete Selected Devices
+extents_return=list of devices to share
 
 extent_create=Create Device to Share
 extent_edit=Edit Device to Share
@@ -38,6 +39,13 @@ extent_md=RAID device $1
 extent_lvm=LVM logical volume
 extent_lv=LVM VG $1, LV $2
 extent_other=Other file or device
+extents_rusure=Are you sure you want to delete the shared device $1? Its contents will be preserved, but it will no longer be accessible to iSCSI clients.
+extent_sure=Delete Device
+extent_err=Failed to save device to share
+extent_eother=File to share does not exist
+extent_estart=Start of extent must be a number
+extent_esize=Size of extent must be a number
+extent_esizemax=End of extent cannot be larger than the device size of $1
 
 devices_title=Devices Combinations
 devices_none=No device combinations have been created yet.

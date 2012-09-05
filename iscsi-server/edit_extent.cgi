@@ -57,10 +57,11 @@ if (@ropts) {
 	}
 
 # Then add LVM logical volumes
-my @vgs = &lvm::list_volume_groups();
+my @vgs = sort { $a->{'name'} cmp $b->{'name'} } &lvm::list_volume_groups();
 my @lvs;
 foreach my $v (@vgs) {
-	push(@lvs, &lvm::list_logical_volumes($v->{'name'}));
+	push(@lvs, sort { $a->{'name'} cmp $b->{'name'} }
+			&lvm::list_logical_volumes($v->{'name'}));
 	}
 my @lopts;
 my $lvm_found = 0;

@@ -25,7 +25,7 @@ if (@extents) {
 		print &ui_checked_columns_row([
 			"<a href='edit_extent.cgi?num=$e->{'num'}'>".
 			  $e->{'type'}.$e->{'num'}."</a>",
-			$e->{'device'},
+			&mount::device_name($e->{'device'}),
 			&nice_size($e->{'start'}),
 			&nice_size($e->{'size'}),
 			], \@tds, "d", $e->{'num'});

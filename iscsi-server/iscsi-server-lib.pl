@@ -9,6 +9,7 @@ use WebminCore;
 &foreign_require("raid");
 &foreign_require("fdisk");
 &foreign_require("lvm");
+&foreign_require("mount");
 our (%text, %config);
 
 # check_config()
@@ -88,6 +89,65 @@ if (defined($num)) {
 return wantarray ? @t : $t[0];
 }
 
+# save_directive(&config, &old, &new)
+# Creates, updates or deletes some directive
+sub save_directive
+{
+my ($conf, $o, $n) = @_;
+my $lref = &read_file_lines($config{'targets_file'});
+my $line = $n ? &make_directive_line($n) : undef;
+if ($o && $n) {
+	# Update a line
+	$lref->[$o->{'line'}] = $line;
+	}
+elsif ($o && !$n) {
+	# Remove a line
+	splice(@$lref, $o->{'line'}, 1);
+	foreach my $c (@$conf) {
+		if ($c->{'line'} > $o->{'line'}) {
+			$c->{'line'}--;
+			}
+		}
+	my $idx = &indexof($o, @$conf);
+	if ($idx >= 0) {
+		splice(@$conf, $idx, 1);
+		}
+	}
+elsif (!$o && $n) {
+	# Add a line
+	$n->{'line'} = scalar(@$lref);
+	push(@$lref, $line);
+	push(@$conf, $n);
+	}
+&flush_file_lines($config{'targets_file'});
+}
+
+# make_directive_line(&dir)
+# Returns the line of text for some directive
+sub make_directive_line
+{
+my ($dir) = @_;
+my @rv;
+if ($dir->{'type'} eq 'extent') {
+	@rv = ( $dir->{'type'}.$dir->{'num'},
+		$dir->{'device'},
+		&convert_bytes($dir->{'start'}),
+		&convert_bytes($dir->{'size'}) );
+	}
+elsif ($dir->{'type'} eq 'device') {
+	@rv = ( $dir->{'type'}.$dir->{'num'},
+		$dir->{'mode'},
+		@{$dir->{'extents'}} );
+	}
+elsif ($dir->{'type'} eq 'target') {
+	@rv = ( $dir->{'type'}.$dir->{'num'},
+		$dir->{'flags'},
+		$dir->{'export'},
+		$dir->{'network'} );
+	}
+return join(" ", @rv);
+}
+
 # parse_bytes(str)
 # Converts a string like 100MB into a number of bytes
 sub parse_bytes
@@ -110,6 +170,28 @@ elsif ($str =~ /^\d+$/) {
 	}
 else {
 	&error("Unknown size number $str");
+	}
+}
+
+# convert_bytes(num)
+# Converts a number into a smaller number with a suffix like MB or GB
+sub convert_bytes
+{
+my ($n) = @_;
+if ($n % (1024*1024*1024*1024) == 0) {
+	return ($n / (1024*1024*1024*1024))."TB";
+	}
+elsif ($n % (1024*1024*1024) == 0) {
+	return ($n / (1024*1024*1024))."GB";
+	}
+elsif ($n % (1024*1024) == 0) {
+	return ($n / (1024*1024))."MB";
+	}
+elsif ($n % (1024) == 0) {
+	return ($n / (1024))."KB";
+	}
+else {
+	return $n;
 	}
 }
 
