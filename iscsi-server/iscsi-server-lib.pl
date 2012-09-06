@@ -202,6 +202,31 @@ sub is_iscsi_server_running
 return &check_pid_file($config{'pid_file'});
 }
 
+# start_iscsi_server()
+# Launch the iscsi server process, and return undef if successful
+sub start_iscsi_server
+{
+my $out = &backquote_logged("$config{'iscsi_server'} -f $config{'targets_file'} 2>&1 </dev/null");
+return $? ? $out : undef;
+}
+
+# stop_iscsi_server()
+# Kill the running iscsi server process
+sub stop_iscsi_server
+{
+my $pid = &is_iscsi_server_running();
+return "Not running" if (!$pid);
+return kill('TERM', $pid) ? undef : "Kill failed : $!";
+}
+
+# restart_iscsi_server()
+# Kill and re-start the iscsi server process
+sub restart_iscsi_server
+{
+&stop_iscsi_server();
+return &start_iscsi_server();
+}
+
 # find_free_num(&config, type)
 # Returns the max used device number of some type, plus 1
 sub find_free_num

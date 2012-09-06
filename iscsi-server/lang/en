@@ -7,8 +7,8 @@ index_stop=Stop iSCSI Server
 index_stopdesc=Click this button to stop the running iSCSI server. All shared devices will no longer be accessible to clients.
 index_start=Start iSCSI Server
 index_startdesc=Click this button to start the iSCSI server, so that shared devices are accessible to clients.
-index_restart=Click this button to apply the current configuration by restarting the iSCSI server.
 index_restart=Restart iSCSI Server
+index_restartdesc=Click this button to apply the current configuration by restarting the iSCSI server.
 index_atboot=Start at boot?
 index_atbootdesc=Change this option to control whether the iSCSI server is started at boot time or not. If it is not currently started at boot and Yes is chosen, a new init script will be created.
 index_return=module index
@@ -78,3 +78,7 @@ targets_delete=Delete Selected Targets
 desc_extent=Device to share $1
 desc_device=Device combination $1
 desc_target=Sharing target $1
+
+start_err=Failed to start iSCSI server
+stop_err=Failed to stop iSCSI server
+restart_err=Failed to restart iSCSI server

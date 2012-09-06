@@ -28,8 +28,8 @@ print &ui_buttons_start();
 # Show start/stop/restart buttons
 my $pid = &is_iscsi_server_running();
 if ($pid) {
-	print &ui_buttons_row("stop.cgi", $text{'index_stop'},
-			      $text{'index_stopdesc'});
+	print &ui_buttons_row("restart.cgi", $text{'index_restart'},
+			      $text{'index_restartdesc'});
 	print &ui_buttons_row("stop.cgi", $text{'index_stop'},
 			      $text{'index_stopdesc'});
 	}
