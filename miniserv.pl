@@ -1393,7 +1393,10 @@ elsif ($header{'x-real-ip'}) {
 	$loghost = $header{'x-real-ip'};
 	}
 if (defined($header{'host'})) {
-	if ($header{'host'} =~ /^([^:]+):([0-9]+)$/) {
+	if ($header{'host'} =~ /^\[(.+)\]:([0-9]+)$/) {
+		($host, $port) = ($1, $2);
+		}
+	elsif ($header{'host'} =~ /^([^:]+):([0-9]+)$/) {
 		($host, $port) = ($1, $2);
 		}
 	else {
@@ -1404,6 +1407,10 @@ if (defined($header{'host'})) {
 		&http_error(400, "Invalid HTTP hostname");
 		}
 	}
+$portstr = $port == 80 && !$ssl ? "" :
+	   $port == 443 && $ssl ? "" : ":$port";
+$hostport = &check_ip6address($host) ? "[".$host."]".$portstr
+				     : $host.$portstr;
 undef(%in);
 if ($page =~ /^([^\?]+)\?(.*)$/) {
 	# There is some query string information
@@ -1527,10 +1534,8 @@ if (defined($redir)) {
 	&write_data("Date: $datestr\r\n");
 	&write_data("Server: $config{'server'}\r\n");
 	local $ssl = $use_ssl || $config{'inetd_ssl'};
-	$portstr = $port == 80 && !$ssl ? "" :
-		   $port == 443 && $ssl ? "" : ":$port";
 	$prot = $ssl ? "https" : "http";
-	&write_data("Location: $prot://$host$portstr$redir\r\n");
+	&write_data("Location: $prot://$hostport$redir\r\n");
 	&write_keep_alive(0);
 	&write_data("\r\n");
 	return 0;
@@ -2126,7 +2131,7 @@ if (-d _) {
 		&write_data("Date: $datestr\r\n");
 		&write_data("Server: $config{server}\r\n");
 		$prot = $ssl ? "https" : "http";
-		&write_data("Location: $prot://$host$portstr$page/\r\n");
+		&write_data("Location: $prot://$hostport$page/\r\n");
 		&write_keep_alive(0);
 		&write_data("\r\n");
 		&log_request($loghost, $authuser, $reqline, 302, 0);
@@ -3936,7 +3941,7 @@ if ($ok && (!$expired ||
 		else {
 			&write_data("Set-Cookie: $sidname=$sid; path=/$sec\r\n");
 			}
-		&write_data("Location: $prot://$host$portstr$in{'page'}\r\n");
+		&write_data("Location: $prot://$hostport$in{'page'}\r\n");
 		&write_keep_alive(0);
 		&write_data("\r\n");
 		&log_request($loghost, $authuser, $reqline, 302, 0);
