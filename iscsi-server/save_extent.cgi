@@ -42,7 +42,7 @@ if ($in{'delete'}) {
 
 		print &ui_confirmation_form(
 			"save_extent.cgi",
-			&text('extents_rusure',
+			&text('extent_rusure',
 			      &mount::device_name($extent->{'device'})),
 			[ [ 'num', $in{'num'} ],
 			  [ 'delete', 1 ] ],
