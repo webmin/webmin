@@ -24,7 +24,7 @@ extents_delete=Delete Selected Devices
 extents_return=list of devices to share
 extents_derr=Failed to delete devices
 extents_denone=None selected
-extents_einuse=Device $1 cannot be deleted, as it is in use by $2
+extents_einuse=Device $1 cannot be deleted, as it is in use by : $2
 extents_drusure=Are you sure you want to remove the following devices : $1? Their contents will be preserved, but they will no longer be accessible to iSCSI clients.
 extents_sure=Delete Devices
 
@@ -52,7 +52,7 @@ extent_eother=File to share does not exist
 extent_estart=Start of extent must be a number
 extent_esize=Size of extent must be a number
 extent_esizemax=End of extent cannot be larger than the device size of $1
-extent_einuse=This device cannot be deleted, as it is in use by $1
+extent_einuse=This device cannot be deleted, as it is in use by : $1
 
 devices_title=Devices Combinations
 devices_none=No device combinations have been created yet.
@@ -64,6 +64,11 @@ devices_extents=Member devices
 devices_add=Add a new device combination.
 devices_delete=Delete Selected Combinations
 devices_return=list of device combinations
+devices_derr=Failed to delete device combinations
+devices_denone=None selected
+devices_einuse=Combination $1 cannot be deleted, as it is in use by : $2
+devices_drusure=Are you sure you want to remove the following device combinations : $1? Their contents will be preserved, but they will no longer be accessible to iSCSI clients.
+devices_sure=Delete Device Combinations
 
 device_create=Create Device Combination
 device_edit=Edit Device Combination
@@ -78,6 +83,8 @@ device_err=Failed to save device combination
 device_derr=Failed to delete device combination
 device_rusure=Are you sure you want to delete the device combination $1? Its contents will be preserved, but it will no longer be accessible to iSCSI clients.
 device_sure=Delete Device Combination
+device_einuse=This device combination cannot be deleted, as it is in use by : $1
+device_eextents=No member devices selected
 
 targets_title=Sharing Targets
 targets_none=No sharing targets have been created yet.

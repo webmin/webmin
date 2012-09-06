@@ -20,13 +20,15 @@ if (@devices) {
 				  $text{'devices_name'},
 				  $text{'devices_mode'},
 				  $text{'devices_extents'} ], 100, 0, \@tds);
+	my %omap = map { $_->{'type'}.$_->{'num'}, $_ } @$conf;
 	foreach my $e (@devices) {
 		print &ui_checked_columns_row([
 			"<a href='edit_device.cgi?num=$e->{'num'}'>".
 			  $e->{'type'}.$e->{'num'}."</a>",
 			$text{'devices_mode_'.$e->{'mode'}} ||
 			  uc($e->{'mode'}),
-			join("&nbsp;|&nbsp;", @{$e->{'extents'}}),
+			join("&nbsp;|&nbsp;",
+				map { &describe_object($omap{$_}) } @{$e->{'extents'}}),
 			], \@tds, "d", $e->{'num'});
 		}
 	print &ui_columns_end();
