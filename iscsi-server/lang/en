@@ -82,3 +82,4 @@ desc_target=Sharing target $1
 start_err=Failed to start iSCSI server
 stop_err=Failed to stop iSCSI server
 restart_err=Failed to restart iSCSI server
+atboot_err=Failed to enable at boot
