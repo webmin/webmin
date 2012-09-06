@@ -22,6 +22,11 @@ extents_size=Size of extent
 extents_add=Add a new device to share.
 extents_delete=Delete Selected Devices
 extents_return=list of devices to share
+extents_derr=Failed to delete devices
+extents_denone=None selected
+extents_einuse=Device $1 cannot be deleted, as it is in use by $2
+extents_drusure=Are you sure you want to remove the following devices : $1? Their contents will be preserved, but they will no longer be accessible to iSCSI clients.
+extents_sure=Delete Devices
 
 extent_create=Create Device to Share
 extent_edit=Edit Device to Share
@@ -47,7 +52,7 @@ extent_eother=File to share does not exist
 extent_estart=Start of extent must be a number
 extent_esize=Size of extent must be a number
 extent_esizemax=End of extent cannot be larger than the device size of $1
-extent_einuse=This device cannot be deleted, as it is in use by : $1
+extent_einuse=This device cannot be deleted, as it is in use by $1
 
 devices_title=Devices Combinations
 devices_none=No device combinations have been created yet.
