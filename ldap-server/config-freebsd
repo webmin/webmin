@@ -1,4 +1,4 @@
-config_file=/usr/local/etc/openldap/slapd.conf
+config_file=/usr/local/etc/openldap/lapd.conf
 schema_dir=/usr/local/etc/openldap/schema
 slapd=slapd
 ldap_user=ldap
