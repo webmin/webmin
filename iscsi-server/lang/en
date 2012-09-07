@@ -97,6 +97,10 @@ targets_network=Share with network
 targets_add=Add a new sharing target.
 targets_delete=Delete Selected Targets
 targets_return=list of sharing targets
+targets_derr=Failed to delete sharing targets
+targets_denone=None selected
+targets_drusure=Are you sure you want to remove the following sharing targets : $1? No data will be lost, but they will no longer be accessible to iSCSI clients.
+targets_sure=Delete Sharing Targets
 
 target_create=Create Sharing Targets
 target_edit=Edit Sharing Targets

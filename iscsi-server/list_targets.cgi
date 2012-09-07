@@ -29,7 +29,10 @@ if (@targets) {
 			$text{'targets_flags_'.$e->{'flags'}} ||
 			  uc($e->{'flags'}),
 			&describe_object($omap{$e->{'export'}}),
-			$e->{'network'},
+			$e->{'network'} eq "any" ||
+			  $e->{'network'} eq "all" ||
+			  $e->{'network'} =~ /^0(\.0)*\/0$/ ?
+			    $text{'target_network_all'} : $e->{'network'},
 			], \@tds, "d", $e->{'num'});
 		}
 	print &ui_columns_end();
