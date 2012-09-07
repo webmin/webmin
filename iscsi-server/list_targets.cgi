@@ -21,13 +21,14 @@ if (@targets) {
 				  $text{'targets_flags'},
 				  $text{'targets_export'},
 				  $text{'targets_network'} ], 100, 0, \@tds);
+	my %omap = map { $_->{'type'}.$_->{'num'}, $_ } @$conf;
 	foreach my $e (@targets) {
 		print &ui_checked_columns_row([
 			"<a href='edit_target.cgi?num=$e->{'num'}'>".
 			  $e->{'type'}.$e->{'num'}."</a>",
 			$text{'targets_flags_'.$e->{'flags'}} ||
 			  uc($e->{'flags'}),
-			$e->{'export'},
+			&describe_object($omap{$e->{'export'}}),
 			$e->{'network'},
 			], \@tds, "d", $e->{'num'});
 		}

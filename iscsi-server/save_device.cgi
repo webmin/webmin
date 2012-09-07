@@ -65,5 +65,5 @@ else {
 
 &unlock_file($config{'targets_file'});
 &webmin_log($in{'new'} ? 'create' : $in{'delete'} ? 'delete' : 'modify',
-	    'device', $device->{'device'});
+	    'device', $device->{'type'}.$device->{'num'});
 &redirect("list_devices.cgi");
