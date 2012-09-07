@@ -85,6 +85,7 @@ device_rusure=Are you sure you want to delete the device combination $1? Its con
 device_sure=Delete Device Combination
 device_einuse=This device combination cannot be deleted, as it is in use by : $1
 device_eextents=No member devices selected
+device_eself=One of the member devices selected contains this device!
 
 targets_title=Sharing Targets
 targets_none=No sharing targets have been created yet.
@@ -118,6 +119,9 @@ target_rusure=Are you sure you want to delete the sharing target $1? No data wil
 target_sure=Delete Target
 target_enetwork=Missing or invalid network to share with
 target_emask=Missing or invalid netmask to share with
+
+manual_title=Edit Configuration File
+manual_desc=Use the text box below to edit the iSCSI server configuration file $1. Be careful, as no validation will be performed on your input!
 
 desc_extent=Device to share $1
 desc_device=Device combination $1

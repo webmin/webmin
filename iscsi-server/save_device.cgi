@@ -58,6 +58,11 @@ else {
 	my @extents = split(/\r?\n/, $in{'extents'});
 	@extents || &error($text{'device_eextents'});
 	$device->{'extents'} = \@extents;
+	if (&indexof($device->{'type'}.$device->{'num'},
+		     &expand_extents($conf, { }, @extents)) >= 0) {
+		# Contains self!?
+		&error($text{'device_eself'});
+		}
 
 	# Write out the config
 	&save_directive($conf, $old_device, $device);

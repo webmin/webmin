@@ -36,7 +36,7 @@ while(<$fh>) {
 	s/\r|\n//g;
 	s/#.*$//;
 	my @w = split(/\s+/, $_);
-	if ($w[0] =~ /^extent(\d+)/) {
+	if (@w && $w[0] =~ /^extent(\d+)/) {
 		# An extent is a sub-section of some file or device
 		my $ext = { 'type' => 'extent',
 			    'num' => $1,
@@ -47,7 +47,7 @@ while(<$fh>) {
 			   };
 		push(@rv, $ext);
 		}
-	elsif ($w[0] =~ /^device(\d+)/) {
+	elsif (@w && $w[0] =~ /^device(\d+)/) {
 		# A device is a collection of extents
 		my $dev = { 'type' => 'device',
 			    'num' => $1,
@@ -57,7 +57,7 @@ while(<$fh>) {
 			  };
 		push(@rv, $dev);
 		}
-	elsif ($w[0] =~ /^target(\d+)/) {
+	elsif (@w && $w[0] =~ /^target(\d+)/) {
 		# A target is the export of an extent
 		if (@w == 3) {
 			# If flags are missing, assume read/write
@@ -326,6 +326,25 @@ elsif ($obj->{'type'} eq 'target') {
 else {
 	return "Unknown $obj->{'type'} object";
 	}
+}
+
+# expand_extents(&config, &seen, name, ...)
+# Returns the recursively expanded list of sub-devices of the listed devices
+sub expand_extents
+{
+my ($conf, $seen, @names) = @_;
+my @rv;
+foreach my $n (@names) {
+	push(@rv, $n);
+	if ($n =~ /^device(\d+)$/) {
+		my $d = &find($conf, "device", $1);
+		if ($d && !$seen->{$n}++) {
+			push(@rv, &expand_extents($conf, $seen,
+						  @{$d->{'extents'}}));
+			}
+		}
+	}
+return @rv;
 }
 
 1;
