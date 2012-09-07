@@ -28,7 +28,7 @@ if ($in{'confirm'}) {
 
 	&unlock_file($config{'targets_file'});
 	if (@targets == 1) {
-		&webmin_log('delete', 'target', $targets[0]->{'device'});
+		&webmin_log('delete', 'target', $targets[0]->{'network'});
 		}
 	else {
 		&webmin_log('delete', 'targets', scalar(@targets));
