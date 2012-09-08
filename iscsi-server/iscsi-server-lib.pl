@@ -114,9 +114,32 @@ elsif ($o && !$n) {
 		}
 	}
 elsif (!$o && $n) {
-	# Add a line
-	$n->{'line'} = scalar(@$lref);
-	push(@$lref, $line);
+	# Add a line. Extents should come before any devices, and devices 
+	# before any targets
+	my @allsame = &find($conf, $n->{'type'});
+	my $lastsame = @allsame ? pop(@allsame) : undef;
+	my $addline = scalar(@$lref);
+	if ($lastsame) {
+		# Add after last of the same type
+		$addline = $lastsame->{'line'}+1;
+		}
+	elsif ($n->{'type'} eq 'device') {
+		# Add before any targets
+		my $firsttarget = &find($conf, "target");
+		$addline = $firsttarget->{'line'} if ($addline);
+		}
+	elsif ($n->{'type'} eq 'extent') {
+		# Add before any devices
+		my $firstdevice = &find($conf, "device");
+		$addline = $firstdevice->{'line'} if ($addline);
+		}
+	$n->{'line'} = $addline;
+	splice(@$lref, $addline, 0, $line);
+	foreach my $c (@$conf) {
+		if ($c->{'line'} >= $addline) {
+			$c->{'line'}++;
+			}
+		}
 	push(@$conf, $n);
 	}
 &flush_file_lines($config{'targets_file'});
@@ -154,10 +177,10 @@ sub parse_bytes
 {
 my ($str) = @_;
 if ($str =~ /^(\d+)TB/i) {
-	return $1 * 1024 * 1204 * 1024 * 1024;
+	return $1 * 1024 * 1024 * 1024 * 1024;
 	}
 elsif ($str =~ /^(\d+)GB/i) {
-	return $1 * 1204 * 1024 * 1024;
+	return $1 * 1024 * 1024 * 1024;
 	}
 elsif ($str =~ /^(\d+)MB/i) {
 	return $1 * 1024 * 1024;
@@ -178,7 +201,10 @@ else {
 sub convert_bytes
 {
 my ($n) = @_;
-if ($n % (1024*1024*1024*1024) == 0) {
+if ($n == 0) {
+	return $n;
+	}
+elsif ($n % (1024*1024*1024*1024) == 0) {
 	return ($n / (1024*1024*1024*1024))."TB";
 	}
 elsif ($n % (1024*1024*1024) == 0) {
@@ -268,17 +294,18 @@ elsif ($type eq "raid") {
 	my $conf = &raid::get_raidtab();
 	foreach my $c (@$conf) {
 		if ($c->{'value'} eq $dev) {
-			return $c->{'size'}*1024;
+			return $c->{'size'} * 1024;
 			} 
 		}
 	return undef;
 	}
 elsif ($type eq "lvm") {
-	# LVM volume group
+	# LVM volume group. Leave 1 MB free, as it seems to be needed for
+	# some kind of overhead?
 	foreach my $v (&lvm::list_volume_groups()) {
 		foreach my $l (&lvm::list_logical_volumes($v->{'name'})) {
 			if ($l->{'device'} eq $dev) {
-				return $l->{'size'} * 1024;
+				return ($l->{'size'} * 1024) - (1024 * 1024);
 				}
 			}
 		}

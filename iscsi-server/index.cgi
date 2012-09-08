@@ -6,7 +6,7 @@ use warnings;
 require './iscsi-server-lib.pl';
 our (%text, %config, $module_name);
 
-&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
+&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1);
 
 my $err = &check_config();
 if ($err) {

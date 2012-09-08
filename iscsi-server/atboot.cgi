@@ -16,6 +16,8 @@ if ($old != 2 && $in{'boot'}) {
 		"Start or stop the iSCSI server",
 		"$config{'iscsi_server'} -f $config{'targets_file'}",
 		"kill `cat $config{'pid_file'}`",
+		undef,
+		{ 'fork' => 1 },
 		);
 	&webmin_log("atboot");
 	}
