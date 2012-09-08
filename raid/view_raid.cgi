@@ -29,6 +29,7 @@ print &ui_table_row($text{'view_level'},
 @st = &device_status($raid->{'value'});
 print &ui_table_row($text{'view_status'},
       $st[1] eq 'lvm' ? &text('view_lvm', "<tt>$st[0]</tt>") :
+      $st[1] eq 'iscsi' ? &text('view_iscsi', "<tt>$st[0]</tt>") :
       $st[2] ? &text('view_mounted', "<tt>$st[0]</tt>") :
       @st ? &text('view_mount', "<tt>$st[0]</tt>") :
       $raid->{'active'} ? $text{'view_active'} :

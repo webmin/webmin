@@ -103,6 +103,12 @@ if (@parts) {
 				$stat = "LVM VG $statdesc";
 				}
 			}
+		elsif ($stat[1] eq 'iscsi') {
+			$stat = &text('disk_iscsi', $stat[0]);
+			if (&foreign_available("iscsi-server")) {
+				$stat = "<a href='../iscsi-server/'>$stat</a>";
+				}
+			}
 		elsif ($stat[0] && !&foreign_available("mount")) {
 			$stat = $statdesc;
 			}

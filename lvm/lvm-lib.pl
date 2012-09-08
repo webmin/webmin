@@ -671,27 +671,9 @@ return %rv;
 # Returns an array of  directory, type, mounted
 sub device_status
 {
-@mounted = &mount::list_mounted() if (!@mounted);
-@mounts = &mount::list_mounts() if (!@mounts);
-my $label = &fdisk::get_label($_[0]);
-
-my ($mounted) = grep { &same_file($_->[1], $_[0]) ||
-			  $_->[1] eq "LABEL=$label" } @mounted;
-my ($mount) = grep { &same_file($_->[1], $_[0]) ||
-			$_->[1] eq "LABEL=$label" } @mounts;
-if ($mounted) { return ($mounted->[0], $mounted->[2], 1,
-			&indexof($mount, @mounts),
-			&indexof($mounted, @mounted)); }
-elsif ($mount) { return ($mount->[0], $mount->[2], 0,
-			 &indexof($mount, @mounts)); }
-elsif ($has_raid) {
-	$raidconf = &raid::get_raidtab() if (!$raidconf);
-	foreach my $c (@$raidconf) {
-		foreach my $d (&raid::find_value('device', $c->{'members'})) {
-			return ( $c->{'value'}, "raid", 1 ) if ($d eq $_[0]);
-			}
-		}
-	}
+local ($dev) = @_;
+local @st = &fdisk::device_status($dev);
+return @st if (@st);
 if (&foreign_check("server-manager")) {
 	# Look for Cloudmin systems using the disk, hosted on this system
 	if (!@server_manager_systems) {
@@ -730,10 +712,11 @@ if ($_[1] eq 'cloudmin') {
 	return &text($msg, "<tt>$_[0]</tt>");
 	}
 else {
-	# Used by filesystem or RAID
+	# Used by filesystem or RAID or iSCSI
 	$msg = $_[2] ? 'lv_mount' : 'lv_umount';
 	$msg .= 'vm' if ($_[1] eq 'swap');
 	$msg .= 'raid' if ($_[1] eq 'raid');
+	$msg .= 'iscsi' if ($_[1] eq 'iscsi');
 	return &text($msg, "<tt>$_[0]</tt>", "<tt>$_[1]</tt>");
 	}
 }

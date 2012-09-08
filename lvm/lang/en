@@ -63,6 +63,7 @@ lv_umountvm=For mounting as virtual memory
 lv_mountraid=Part of RAID device $1
 lv_mountcm=Used by Cloudmin system $1
 lv_umountcm=For use by Cloudmin system $1
+lv_mountiscsi=iSCSI shared device $1
 lv_notused=Not in use
 lv_cannot=This logical volume cannot be renamed or resized as it is currently in use.
 lv_perm=Volume access

@@ -6,12 +6,16 @@ use WebminCore;
 &init_config();
 &foreign_require("mount", "mount-lib.pl");
 if (&foreign_check("raid")) {
-	&foreign_require("raid", "raid-lib.pl");
+	&foreign_require("raid");
 	$raid_module++;
 	}
 if (&foreign_check("lvm")) {
-	&foreign_require("lvm", "lvm-lib.pl");
+	&foreign_require("lvm");
 	$lvm_module++;
+	}
+if (&foreign_check("iscsi-server")) {
+	&foreign_require("iscsi-server");
+	$iscsi_module++;
 	}
 &foreign_require("proc", "proc-lib.pl");
 %access = &get_module_acl();
@@ -1085,7 +1089,7 @@ if ($mounted) { return ($mounted->[0], $mounted->[2], 1,
 elsif ($mount) { return ($mount->[0], $mount->[2], 0,
 			 &indexof($mount, @mounts)); }
 if ($raid_module) {
-	$raidconf = &foreign_call("raid", "get_raidtab") if (!$raidconf);
+	my $raidconf = &foreign_call("raid", "get_raidtab") if (!$raidconf);
 	foreach $c (@$raidconf) {
 		foreach $d (&raid::find_value('device', $c->{'members'})) {
 			return ( $c->{'value'}, "raid", 1 ) if ($d eq $_[0]);
@@ -1101,9 +1105,17 @@ if ($lvm_module) {
 						     $vg->{'name'}));
 			}
 		}
-	foreach $pv (@physical_volumes) {
+	foreach my $pv (@physical_volumes) {
 		return ( $pv->{'vg'}, "lvm", 1)
 			if ($pv->{'device'} eq $_[0]);
+		}
+	}
+if ($iscsi_module) {
+	my $iscsiconf = &iscsi_server::get_iscsi_config();
+	foreach my $c (@$iscsiconf) {
+		if ($c->{'type'} eq 'extent' && $c->{'device'} eq $_[0]) {
+			return ( $c->{'type'}.$c->{'num'}, "iscsi", 1);
+			}
 		}
 	}
 return ();

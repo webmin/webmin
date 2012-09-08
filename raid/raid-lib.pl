@@ -585,34 +585,7 @@ else { return $v[0]->{'value'}; }
 # Returns an array of  directory, type, mounted
 sub device_status
 {
-@mounted = &mount::list_mounted() if (!@mounted);
-@mounts = &mount::list_mounts() if (!@mounts);
-local $label = &fdisk::get_label($_[0]);
-local $volid = &fdisk::get_volid($_[0]);
-
-local ($mounted) = grep { &same_file($_->[1], $_[0]) ||
-			  $_->[1] eq "LABEL=$label" ||
-			  $_->[1] eq "UUID=$volid" } @mounted;
-local ($mount) = grep { &same_file($_->[1], $_[0]) ||
-			$_->[1] eq "LABEL=$label" ||
-		        $_->[1] eq "UUID=$volid" } @mounts;
-if ($mounted) { return ($mounted->[0], $mounted->[2], 1,
-			&indexof($mount, @mounts),
-			&indexof($mounted, @mounted)); }
-elsif ($mount) { return ($mount->[0], $mount->[2], 0,
-			 &indexof($mount, @mounts)); }
-if (!scalar(@physical_volumes)) {
-	@physical_volumes = ();
-	foreach $vg (&lvm::list_volume_groups()) {
-		push(@physical_volumes,
-			&lvm::list_physical_volumes($vg->{'name'}));
-		}
-	}
-foreach $pv (@physical_volumes) {
-	return ( $pv->{'vg'}, "lvm", 1)
-		if ($pv->{'device'} eq $_[0]);
-	}
-return ();
+return &fdisk::device_status($_[0]);
 }
 
 # find_free_partitions(&skip, showtype, showsize)

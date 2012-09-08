@@ -67,6 +67,7 @@ view_bad=$1 disks have failed
 view_mounted=Mounted on $1
 view_mount=For mounting on $1
 view_lvm=Used in LVM VG $1
+view_iscsi=Used by iSCSI shared device $1
 view_active=Active but not mounted
 view_inactive=Inactive and not mounted
 view_super=Persistent superblock?

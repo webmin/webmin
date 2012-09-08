@@ -269,7 +269,8 @@ return $max + 1;
 
 # get_device_size(device, "part"|"raid"|"lvm"|"other")
 # Returns the size in bytes of some device, which can be a partition, RAID
-# device, logical volume or regular file
+# device, logical volume or regular file. For devices, removes 1 MB as this
+# seems to be needed for overhead or rounding or something.
 sub get_device_size
 {
 my ($dev, $type) = @_;
@@ -283,7 +284,7 @@ if ($type eq "part") {
 		foreach my $p (@{$d->{'parts'}}) {
 			if ($p->{'device'} eq $dev) {
 				return ($p->{'end'} - $p->{'start'} + 1) *
-				       $d->{'cylsize'};
+				       $d->{'cylsize'} - (1024 * 1024);
 				}
 			}
 		}
@@ -294,14 +295,13 @@ elsif ($type eq "raid") {
 	my $conf = &raid::get_raidtab();
 	foreach my $c (@$conf) {
 		if ($c->{'value'} eq $dev) {
-			return $c->{'size'} * 1024;
+			return ($c->{'size'} * 1024) - (1024 * 1024);
 			} 
 		}
 	return undef;
 	}
 elsif ($type eq "lvm") {
-	# LVM volume group. Leave 1 MB free, as it seems to be needed for
-	# some kind of overhead?
+	# LVM volume group
 	foreach my $v (&lvm::list_volume_groups()) {
 		foreach my $l (&lvm::list_logical_volumes($v->{'name'})) {
 			if ($l->{'device'} eq $dev) {

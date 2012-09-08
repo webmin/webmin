@@ -164,6 +164,7 @@ elsif (!$in{'new'}) {
 		$msg .= 'vm' if ($stat[1] eq 'swap');
 		$msg .= 'raid' if ($stat[1] eq 'raid');
 		$msg .= 'lvm' if ($stat[1] eq 'lvm');
+		$msg .= 'iscsi' if ($stat[1] eq 'iscsi');
 		$stat = &text($msg, "<tt>$stat[0]</tt>",
 				    "<tt>$stat[1]</tt>");
 		}
