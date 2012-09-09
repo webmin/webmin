@@ -1,0 +1,16 @@
+line2=System konfigurasjon,11
+ha_dir=Heartbeat konfig katalog,0
+ha_cf=Sti til heartbeat konfig fil,3,Automatisk
+haresources=Sti ti fil med ressurser,3,Automatisk
+authkeys=Sti til fil med autentiseringsn&#248;kler,3,Automatisk
+resource_d=Katalog for heartbeat tjeneste script,3,Automatisk
+heartbeat=Sti til heartbeat kommando,0
+pid_file=Sti til heartbeat PID fil,0
+start_cmd=Kommando for &#229; starte heartbeat,0
+apply_cmd=Kommando for &#229; ta i bruk endringer,3,Automatisk
+serials=M&#248;nster for serieport filer,0
+alt_ha_cf=Eksempel heartbeat konfigfil,3,Ingen
+req_resource_cmd=Script for &#229; ta Ressurs,0
+alt_haresources=Eksempel resources fil
+alt_authkeys=Eksempelfil for autentiseringsn&#248;kler,3,Ingen
+version=Versjon av Heartbeat som er installert,3,Finn ut automatisk
