@@ -1,0 +1,3 @@
+sarg=Full sti til sarg program,0
+sarg_conf=Full sti til SARG konfigurasjonsfile,0
+naked=Legg til Webmin sidehode og sidehale i SARG rapport?,1,0-Ja,1-Nei
