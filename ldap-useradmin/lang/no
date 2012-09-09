@@ -1,0 +1,87 @@
+__norefs=1
+batch_descafter3=Op <b>create</b> og <b>modify</b> linjene kan du legge inn ekstra felt som inneholder LDAP attributter p&#229; <i>navn</i>=<i>verdi</i> format, som skal tilordnes nye og/eller endrede brukere.
+batch_eattr=Ugyldig LDAP attributt p&#229; linje $1 : $2
+batch_samba=Opprett Samba konto for nye brukere?
+conn_eldap_host=Fant ingen LDAP klientkonfigurasjonsfil p&#229; systemet ditt, s&#229; LDAP tjeneren m&#229; angis p&#229; modulens konfigurasjonsside.
+conn_elogin=Fant ingen LDAP klientkonfigurasjonsfil p&#229; systemet ditt, s&#229; LDAP innlogging m&#229; settes p&#229; konfigsiden for modulen
+gdel_group=Sletter LDAP gruppe-oppf&#248;ring ..
+gedit_cap=Gruppe funksjoner
+gedit_dn=Gruppens LDAP DN
+gedit_return=gruppedetaljer
+gedit_samba=Samba gruppe?
+gsave_eadd=Kunne ikke legge til gruppe i LDAP database : $1
+gsave_edelete=Kunne ikke slette gruppe fra LDAP database : $1
+gsave_egone=Gruppen finnes ikke lenger!
+gsave_emod=Kunne ikke endre gruppe i LDAP database : $1
+gsave_emoddn=Kunne ikke omd&#248;pe gruppe i LDAP database : $1
+imap_econn=Kunne ikke koble til IMAP tjener $1
+imap_elogin=Kunne ikke logge inn p&#229; IMAP tjener $1 som &#164;2 : $3
+index_cyrus=IMAP?
+index_ebase=Fant ingen LDAP klien konfigurasjonsfil p&#229; systemet ditt, s&#229; bruker- og gruppe-basis m&#229; settes m&#229; modulens <a href='$1'>konfigurasjonsside</a>.
+index_egsearch=Kunne ikke s&#248;ke etter grupper under $1 : $2
+index_eimap=$1. Kanskje <a href='$2'>modulkonfigurasjonen</a> er feil.
+index_eldap=$1. Klikk her for &#229; endre <a href='$2'>modulkonfigurasjonen</a>.
+index_emd5=Denne modulen er <a href='$1'>konfigurert</a> til &#229; bruke MD5 kryptering for passord, men Perl modulen $2 er ikke installert. <a href='$3'>Klikk her</a> for &#229; laste ned og installere $2 modulen..
+index_eperl=Perl modulen $1 som denne modulen krever, er ikke installert, eller den virker ikke ordentlig. <a href='$2'>Klikk her</a> for &#229; laste den ned og installere den.
+index_eperl2=Feilen som Perl rapporterte n&#229;r den fors&#248;kte &#229; laste modulen var :
+index_eschema=Webmin er koblet til LDAP tjeneren, men klarte ikke &#229; hente skjemaet. Forsikre deg om at tilgang ikke er nektet i <a href='$1'>LDAP Tjener</a> modulen.
+index_eslappasswd=Denne modulen er <a href='$1'>konfigurert</a> til &#229; bruke LDAP MD5 kryptering for passord, men <tt>$2</tt> programmet som brukes til denne krypteringen, er ikke installert.
+index_eusearch=Kunne ikke s&#248;ke etter brukere under $1 : $2
+index_gadd=Legg til en ny LDAP gruppe
+index_gnone=Fant ingen LDAP grupper under $1.
+index_greturn=gruppeliste
+index_groups=LDAP grupper
+index_return=brukerliste
+index_samba=Samba?
+index_title=LDAP brukere og grupper
+index_uadd=Legg ti lny LDAP bruker.
+index_unone=Fant ingen LDAP brukere under $1.
+index_users=LDAP brukere
+raw_for=For $1
+raw_name=Attributt navn
+raw_title=LDAP attributter
+raw_value=Verdier
+search_err=S&#248;k etter $1 under $2 feilet : $3
+udel_book=Sletter fra adressebok ..
+udel_failed=.. feilet! : $1
+udel_imap=Sletter IMAP mappe ..
+udel_pass=Sletter LDAP brukeroppf&#248;ring ..
+udel_warnimap=Eksisterede e-post postboks vil bli slettet ved sletting av hjemmekatalogen!
+uedit_alias=E-post aliaser
+uedit_cap=Bruker egenskaper
+uedit_classes=LDAP objektklasser
+uedit_cyrus=IMAP tjener innloggging?
+uedit_dn=Brukers LDAP DN
+uedit_fields=Ytterligere LDAP felt
+uedit_firstname=Fornavn
+uedit_lastname=Etternavn
+uedit_quota=IMAP kvote
+uedit_raw=LDAP attributter
+uedit_return=brukerdetaljer
+uedit_samba=Samba innloggging?
+uedit_unquota=Ikke endre
+usave_eadd=Kunne ikke legge til bruker i LDAP database : $1
+usave_ealiasdup=Aliaset $1 brukes allerede av $2
+usave_eattrdup=Objektet $1 bruker allerede $2 $3
+usave_eattrdupg=Gruppen $1 bruker allerede $2 $3
+usave_eattrdupu=Brukeren $1 bruker allerede $2 $3
+usave_ebook=Kunne ikke opprette adressebok-oppf&#248;ring : $1
+usave_ecyruspass=Brukerens normale passord m&#229; angis eller &#229; m&#229; du velge innstillingen Ingen passord p&#229;krevd n&#229;r du aktiverer IMAP.
+usave_edelete=Kunne ikke slette bruker fra LDAP database : $1
+usave_egone=Brukeren finnes ikke lenger!
+usave_egroupmod=Kunne ikke endre gruppe $1 i LDAP database : $2
+usave_eiacl=Kunne ikke gi rettigheter til admin
+usave_eicreate=Kunne ikke opprette bruker
+usave_eifolder=Kunne ikke opprette mappen $1
+usave_eilogin=Kunne ikke logge inn som ny bruker
+usave_eimap=Brukeren ble lagret i LDAP databasen, men det oppstod en IMAP feil : $1 : $2
+usave_eiquota=Kunne ikke sette IMAP kvote
+usave_eisub=Kunne ikke abonnere bruker til mappe $1
+usave_emod=Kunne ikke endre bruker i LDAP databasen : $1
+usave_emodbook=Kunne ikke endre adressebok oppf&#248;ring : $1
+usave_emodbookdn=Kunne ikke omd&#248;pe adressebok oppf&#248;ring : $1
+usave_emoddn=Kunne ikke omd&#248;pe bruker i LDAP databasen : $1
+usave_equota=Manglende eller ugyldig IMAP kvote
+usave_ereal=Manglende fullt navn
+usave_esamba=Denne modulen kan ikke brukes til &#229; sette passord for en Samba bruker, siden Samba Windows Fildelings modulen ikke er installert
+usave_ex86=Denne modulen kan ikke brukes til &#229; sette passord for en Samba bruker p&#229; ikke-Intel systemer, siden den er avhengig av et kompilert x86 program.
