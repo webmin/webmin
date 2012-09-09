@@ -61,3 +61,7 @@ no_pid_chroot=PID er under chroot katalogen?,1,0-Ja,1-Nei
 start_cmd=Kommando for &#229; starte BIND,3,Standard
 stop_cmd=Kommando for &#229; stoppe BIND,3,Bare stopp prosessen
 restart_cmd=Kommando for &#229; ta i bruk BIND konfigurasjon,10,-Bare send HUP signal,restart-Stopp og omstart,Annen kommando
+dnssectools_conf=Full sti til filen dnssec-tools.conf,0
+dnssectools_rollmgr_pidfile=Full sti til dnssec-tools rollmgr pid fil,0
+dnssectools_rollrec=Full sti til dnssec-tools rollrec fil,0
+dnssectools_keydir=Full sti til til dnssec-tools n&#248;kkel katalog,0
