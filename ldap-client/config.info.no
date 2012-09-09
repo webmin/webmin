@@ -1,0 +1,9 @@
+auth_ldap=LDAP klient konfigurasjonsfil,8
+pam_ldap=PAM LDAP konfigurasjonsfil,3,Samme som LDAP klient fil
+secret=Root LDAP klient passordfiler,9,50,2,\t
+line0=Innstillinger for LDAP utforsker og validering,11
+ldap_hosts=LDAP tjener verter,3,Fra konfig fil,50
+ldap_port=LDAP tjener port,3,Fra konfig fil,5
+ldap_tls=Bruk SSL forbindelse,1,-Fra konfig fil,1-Ja,2-Ja med TLS,0-Nei
+ldap_user=Logg inn med brukernavn,3,Fra konfig fil
+ldap_pass=Logg inn med passord,3,Fra konfig fil
