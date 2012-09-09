@@ -2,3 +2,4 @@ targets_file=/etc/iscsi/targets
 iscsi_server=/usr/sbin/iscsi-target
 pid_file=/var/run/iscsi-target.pid
 init_name=netbsd-iscsi
+opts_file=/etc/sysconfig/netbsd-iscsi

@@ -12,9 +12,14 @@ our (%text, %config, %in);
 my $old = &init::action_status($config{'init_name'});
 if ($old != 2 && $in{'boot'}) {
 	# Enable at boot
+	if (!-r $config{'opts_file'}) {
+		my $fh = "OPTS";
+		&open_tempfile($fh, ">$config{'opts_file'}");
+		&close_tempfile($fh);
+		}
 	&init::enable_at_boot($config{'init_name'},
 		"Start or stop the iSCSI server",
-		"$config{'iscsi_server'} -f $config{'targets_file'}",
+		"source $config{'opts_file'} ; $config{'iscsi_server'} -f $config{'targets_file'} \$NETBSD_ISCSI_OPTS",
 		"kill `cat $config{'pid_file'}`",
 		undef,
 		{ 'fork' => 1 },

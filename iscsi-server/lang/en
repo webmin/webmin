@@ -120,8 +120,23 @@ target_sure=Delete Target
 target_enetwork=Missing or invalid network to share with
 target_emask=Missing or invalid netmask to share with
 
+opts_title=iSCSI Server Options
+opts_header=Options for all iSCSI targets
+opts_ip4=Accept IPv4 connections
+opts_ip6=Accept IPv6 connections
+opts_name=Name visible to clients
+opts_namedef=Default (system hostname)
+opts_port=Listen on port
+opts_sess=Maximum concurrent sessions
+opts_err=Failed to save options
+opts_ename=Missing or invalid name - only letters, numbers, dash, dot and underscore are allowed
+opts_eport=Missing or non-numeric port number
+opts_esess=Missing or non-numeric maximum sessions
+
 manual_title=Edit Configuration File
 manual_desc=Use the text box below to edit the iSCSI server configuration file $1. Be careful, as no validation will be performed on your input!
+manual_err=Failed to save configuration file
+manual_edata=No contents entered!
 
 desc_extent=Device to share $1
 desc_device=Device combination $1

@@ -2,3 +2,4 @@ targets_file=iSCSI server targets file,0
 iscsi_server=Full path to iSCSI server,0
 pid_file=Full path to PID file,0
 init_name=Bootup script name,0
+opts_file=File listing command line options,0

@@ -10,7 +10,7 @@ use WebminCore;
 &foreign_require("fdisk");
 &foreign_require("lvm");
 &foreign_require("mount");
-our (%text, %config);
+our (%text, %config, $module_config_file);
 
 # check_config()
 # Returns undef if the iSCSI server is installed, or an error message if
@@ -232,7 +232,8 @@ return &check_pid_file($config{'pid_file'});
 # Launch the iscsi server process, and return undef if successful
 sub start_iscsi_server
 {
-my $out = &backquote_logged("$config{'iscsi_server'} -f $config{'targets_file'} 2>&1 </dev/null");
+my $str = &get_iscsi_options_string();
+my $out = &backquote_logged("$config{'iscsi_server'} -f $config{'targets_file'} $str 2>&1 </dev/null");
 return $? ? $out : undef;
 }
 
@@ -372,6 +373,64 @@ foreach my $n (@names) {
 		}
 	}
 return @rv;
+}
+
+# get_iscsi_options_string()
+# Returns all flags as a string
+sub get_iscsi_options_string
+{
+my %env;
+&read_env_file($config{'opts_file'}, \%env);
+return $env{'NETBSD_ISCSI_OPTS'};
+}
+
+# get_iscsi_options()
+# Returns a hash ref of command line options
+sub get_iscsi_options
+{
+my $str = &get_iscsi_options_string();
+my %opts;
+while($str =~ /\S/) {
+	if ($str =~ /^\s*\-(b|f|p|m|t|v)\s+(\S+)(.*)/) {
+		$str = $3;
+		$opts{$1} = $2;
+		}
+	elsif ($str =~ /^\s*\-((4|6|D|V)+)(.*)/) {
+		$str = $3;
+		foreach my $o (split(//, $1)) {
+			$opts{$o} = "";
+			}
+		}
+	else {
+		&error("Unknown option $str");
+		}
+	}
+return \%opts;
+}
+
+# save_iscsi_options(&opts)
+# Update the options file or init script and built-in config
+sub save_iscsi_options
+{
+my ($opts) = @_;
+my @str;
+foreach my $o (keys %$opts) {
+	if ($opts->{$o} eq "") {
+		push(@str, "-".$o);
+		}
+	else {
+		push(@str, "-".$o." ".$opts->{$o});
+		}
+	}
+my $str = join(" ", @str);
+
+# Save in an environment file
+my %env;
+&lock_file($config{'opts_file'});
+&read_env_file($config{'opts_file'}, \%env);
+$env{'NETBSD_ISCSI_OPTS'} = $str;
+&write_env_file($config{'opts_file'}, \%env);
+&unlock_file($config{'opts_file'});
 }
 
 1;
