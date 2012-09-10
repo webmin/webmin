@@ -1,0 +1,8 @@
+line2=System konfigurasjon,11
+pid_file=Full sti til MON pid fil,0
+cfbasedir=Full sti hvor alle konfig filer (som mon.cf, auth.cf osv.) er lagret,0
+mon_cgi=Full sti til MON cgi program,0
+monshow=Full sti til monshow program,0
+start_cmd=Kommando for &#229; starte MON,0
+stop_cmd=Kommando for &#229; stoppe MON,3,Stopp prosessen
+restart_cmd=Kommando for &#229; omstarte MON,3,Send HUP signal
