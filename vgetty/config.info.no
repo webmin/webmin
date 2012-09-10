@@ -1,0 +1,3 @@
+line2=System konfigurasjon,11
+vgetty_cmd=Sti til vgetty program,0
+vgetty_config=Sti til vgetty konfig.fil,0
