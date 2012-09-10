@@ -375,6 +375,13 @@ foreach my $n (@names) {
 return @rv;
 }
 
+# get_iscsi_options_file()
+# Returns the file containing command-line options, for use when locking
+sub get_iscsi_options_file
+{
+return $config{'opts_file'};
+}
+
 # get_iscsi_options_string()
 # Returns all flags as a string
 sub get_iscsi_options_string
@@ -408,8 +415,21 @@ while($str =~ /\S/) {
 return \%opts;
 }
 
+# save_iscsi_options_string(str)
+# Update the options file with command line options from a string
+sub save_iscsi_options_string
+{
+my ($str) = @_;
+my %env;
+&lock_file($config{'opts_file'});
+&read_env_file($config{'opts_file'}, \%env);
+$env{'NETBSD_ISCSI_OPTS'} = $str;
+&write_env_file($config{'opts_file'}, \%env);
+&unlock_file($config{'opts_file'});
+}
+
 # save_iscsi_options(&opts)
-# Update the options file or init script and built-in config
+# Update the options file with command line options from a hash
 sub save_iscsi_options
 {
 my ($opts) = @_;
@@ -422,15 +442,7 @@ foreach my $o (keys %$opts) {
 		push(@str, "-".$o." ".$opts->{$o});
 		}
 	}
-my $str = join(" ", @str);
-
-# Save in an environment file
-my %env;
-&lock_file($config{'opts_file'});
-&read_env_file($config{'opts_file'}, \%env);
-$env{'NETBSD_ISCSI_OPTS'} = $str;
-&write_env_file($config{'opts_file'}, \%env);
-&unlock_file($config{'opts_file'});
+&save_iscsi_options_string(join(" ", @str));
 }
 
 1;

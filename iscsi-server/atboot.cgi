@@ -12,10 +12,10 @@ our (%text, %config, %in);
 my $old = &init::action_status($config{'init_name'});
 if ($old != 2 && $in{'boot'}) {
 	# Enable at boot
-	if (!-r $config{'opts_file'}) {
-		my $fh = "OPTS";
-		&open_tempfile($fh, ">$config{'opts_file'}");
-		&close_tempfile($fh);
+	my $str = &get_iscsi_options_string();
+	if (!$str) {
+		# Force creation of environment variable file
+		&save_iscsi_options_string("");
 		}
 	&init::enable_at_boot($config{'init_name'},
 		"Start or stop the iSCSI server",

@@ -4,9 +4,11 @@
 use strict;
 use warnings;
 require './iscsi-server-lib.pl';
-our (%text, %config);
+our (%text, %config, %in);
+&ReadParse();
 &error_setup($text{'opts_err'});
 
+&lock_file(&get_iscsi_options_file());
 my $opts = &get_iscsi_options();
 
 # IPv4 enabled?
@@ -55,8 +57,8 @@ else {
 	$opts->{'s'} = $in{'sess'};
 	}
 
-# XXX locking?
 &save_iscsi_options($opts);
+&unlock_file(&get_iscsi_options_file());
 &webmin_log("opts");
 &redirect("");
 
