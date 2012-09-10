@@ -10,7 +10,7 @@ use WebminCore;
 &foreign_require("fdisk");
 &foreign_require("lvm");
 &foreign_require("mount");
-our (%text, %config, $module_config_file);
+our (%text, %config, %gconfig, $module_config_file);
 
 # check_config()
 # Returns undef if the iSCSI server is installed, or an error message if
@@ -379,16 +379,35 @@ return @rv;
 # Returns the file containing command-line options, for use when locking
 sub get_iscsi_options_file
 {
-return $config{'opts_file'};
+if ($gconfig{'os_type'} eq 'freebsd') {
+	my %iconfig = &foreign_config("init");
+	return $iconfig{'rc_dir'}."/".$config{'init_name'}.".sh";
+	}
+else {
+	return $config{'opts_file'};
+	}
 }
 
 # get_iscsi_options_string()
 # Returns all flags as a string
 sub get_iscsi_options_string
 {
-my %env;
-&read_env_file($config{'opts_file'}, \%env);
-return $env{'NETBSD_ISCSI_OPTS'};
+my $file = &get_iscsi_options_file();
+if ($gconfig{'os_type'} eq 'freebsd') {
+	# Stored in FreeBSD rc script, in command_args line
+	my $lref = &read_file_lines($file, 1);
+	foreach my $l (@$lref) {
+		if ($l =~ /^\s*command_args\s*=\s*"(.*)"/) {
+			return $1;
+			}
+		}
+	}
+else {
+	# Stored in an environment variables file
+	my %env;
+	&read_env_file($file, \%env);
+	return $env{'NETBSD_ISCSI_OPTS'};
+	}
 }
 
 # get_iscsi_options()
@@ -420,12 +439,22 @@ return \%opts;
 sub save_iscsi_options_string
 {
 my ($str) = @_;
-my %env;
-&lock_file($config{'opts_file'});
-&read_env_file($config{'opts_file'}, \%env);
-$env{'NETBSD_ISCSI_OPTS'} = $str;
-&write_env_file($config{'opts_file'}, \%env);
-&unlock_file($config{'opts_file'});
+my $file = &get_iscsi_options_file();
+if ($gconfig{'os_type'} eq 'freebsd') {
+	my $lref = &read_file_lines($file);
+	foreach my $l (@$lref) {
+		if ($l =~ /^\s*command_args\s*=\s*"(.*)"/) {
+			$l = "command_args=\"$str\"";
+			}
+		}
+	&flush_file_lines($file);
+	}
+else {
+	my %env;
+	&read_env_file($file, \%env);
+	$env{'NETBSD_ISCSI_OPTS'} = $str;
+	&write_env_file($file, \%env);
+	}
 }
 
 # save_iscsi_options(&opts)
