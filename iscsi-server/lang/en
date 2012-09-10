@@ -54,7 +54,7 @@ extent_esize=Size of extent must be a number
 extent_esizemax=End of extent cannot be larger than the device size of $1
 extent_einuse=This device cannot be deleted, as it is in use by : $1
 
-devices_title=Devices Combinations
+devices_title=Device Combinations
 devices_none=No device combinations have been created yet.
 devices_name=Combination name
 devices_mode=Combination type

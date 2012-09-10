@@ -1,0 +1,30 @@
+<header>iSCSI Server</header>
+
+This module allows you to export disk devices to other systems over the network
+using the iSCSI protocol. Configuration is done primarily by creating three
+types of objects - <b>Devices to Share</b>, <b>Devices Combinations</b> and <b>Sharing Targets</b>, described below. You can also edit settings that apply
+to the entire iSCSI server using the <b>iSCSI Server Options</b> page. <p>
+
+<dl>
+<dt><b>Devices to Share</b> (<tt>extents</tt> in the config file)
+<dd>Each of these is a partition, RAID device, logical volume or file that
+can be fully or partially exported via iSCSI. Shared devices should not be
+used for any othe purpose on this system. <p>
+
+<dt><b>Device Combinations</b> (<tt>devices</tt> in the config file)
+<dd>These allow you to combine multiple <b>Devices to share</b> into a larger
+device for export. Devices can either be joined in RAID0-style to add their
+sizes together, or mirrored RAID1-style for redundancy and improved read
+performance. <p>
+
+<dt><b>Sharing Targets</b> (<tt>target</tt> in the config file)
+<dd>Each entry in this list exports either a device or device combination to
+all systems on a selected network. A share can be either read-only or
+read/write. <p>
+</dl>
+
+At the bottom of the module's main page are buttons to stop, start and restart
+the iSCSI server. Configuration changes will not be applied until the server
+is restarted. <p>
+
+<footer>
