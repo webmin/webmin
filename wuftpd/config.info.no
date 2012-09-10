@@ -1,0 +1,9 @@
+line2=System konfigurasjon,11
+ftpd_path=Ful sti til wuftpd,0
+ftpaccess=Ful sti til ftpaccess filen,0
+ftpconversions=Ful sti til ftpconversions filen,0
+ftpgroups=Ful sti til ftpgroups filen,0
+ftphosts=Ful sti til ftphosts filen,0
+ftpusers=Ful sti til ftpusers filen,0
+pid_file=PID fil for FTP tjener,0
+log_file=Loggfil for FTP tjener,0
