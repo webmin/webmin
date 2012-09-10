@@ -4,7 +4,7 @@
 # home directory or changing file ownerships, do that as well
 
 require './user-lib.pl';
-require 'timelocal.pl';
+use Time::Local;
 &error_setup($text{'usave_err'});
 &ReadParse();
 

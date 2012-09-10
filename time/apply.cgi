@@ -4,7 +4,7 @@ local $format;
 local $out;
 
 require "./time-lib.pl";
-require 'timelocal.pl';
+use Time::Local;
 
 &ReadParse();
 

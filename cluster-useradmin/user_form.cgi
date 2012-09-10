@@ -3,7 +3,7 @@
 # Display a form for creating a new user
 
 require './cluster-useradmin-lib.pl';
-require 'timelocal.pl';
+use Time::Local;
 &ReadParse();
 &foreign_require("useradmin", "user-lib.pl");
 

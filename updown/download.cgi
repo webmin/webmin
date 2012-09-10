@@ -3,7 +3,7 @@
 # Save a download or start it right now
 
 require './updown-lib.pl';
-require 'timelocal.pl';
+use Time::Local;
 &ReadParse();
 &error_setup($text{'download_err'});
 

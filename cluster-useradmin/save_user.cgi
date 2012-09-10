@@ -3,7 +3,7 @@
 # Updates an existing user across multiple servers
 
 require './cluster-useradmin-lib.pl';
-require 'timelocal.pl';
+use Time::Local;
 &error_setup($text{'usave_err'});
 &ReadParse();
 &foreign_require("useradmin", "user-lib.pl");

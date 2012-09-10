@@ -3,7 +3,7 @@
 # Edit a NIS password/shadow files entry
 
 require './nis-lib.pl';
-require 'timelocal.pl';
+use Time::Local;
 &ReadParse();
 &ui_print_header(undef, $text{'passwd_title'}, "");
 $mode = ($0 =~ /passwd_shadow_full.cgi$/ ? 2 :

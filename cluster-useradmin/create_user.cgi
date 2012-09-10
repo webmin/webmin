@@ -3,7 +3,7 @@
 # Creates a new user on multiple machines
 
 require './cluster-useradmin-lib.pl';
-require 'timelocal.pl';
+use Time::Local;
 &foreign_require("useradmin", "user-lib.pl");
 &error_setup($text{'usave_err'});
 &ReadParse();

@@ -3,7 +3,7 @@
 # Display a form for editing a user, or creating a new user
 
 require './user-lib.pl';
-require 'timelocal.pl';
+use Time::Local;
 &ReadParse();
 
 # Show header and get the user

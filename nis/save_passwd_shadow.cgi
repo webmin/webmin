@@ -3,7 +3,7 @@
 # Create, update or delete a password/shadow files entry
 
 require './nis-lib.pl';
-require 'timelocal.pl';
+use Time::Local;
 &ReadParse();
 
 ($t, $lnums, $passwd, $shadow) =

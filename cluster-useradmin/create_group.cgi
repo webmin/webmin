@@ -3,7 +3,7 @@
 # Creates a new group on all servers
 
 require './cluster-useradmin-lib.pl';
-require 'timelocal.pl';
+use Time::Local;
 &error_setup($text{'gsave_err'});
 &ReadParse();
 @hosts = &list_useradmin_hosts();

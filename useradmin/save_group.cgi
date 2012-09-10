@@ -3,7 +3,7 @@
 # Saves or creates a new group
 
 require './user-lib.pl';
-require 'timelocal.pl';
+use Time::Local;
 &error_setup($text{'gsave_err'});
 &ReadParse();
 

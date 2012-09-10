@@ -3,7 +3,7 @@
 # List all active leases
 
 require './dhcpd-lib.pl';
-require 'timelocal.pl';
+use Time::Local;
 &ReadParse();
 $timenow = time();
 

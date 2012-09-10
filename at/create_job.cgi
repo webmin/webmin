@@ -2,9 +2,8 @@
 # create_job.cgi
 # Create a new at job
 
-require 'timelocal.pl';
-
 require './at-lib.pl';
+use Time::Local;
 &ReadParse();
 &error_setup($text{'create_err'});
 
