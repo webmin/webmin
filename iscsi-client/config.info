@@ -1,0 +1,2 @@
+config_file=Full path to Open-iSCSI client configuration file,0
+iscsiadm=Full path to iscsiadm command,0
