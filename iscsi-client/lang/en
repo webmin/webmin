@@ -1,0 +1,13 @@
+index_title=iSCSI Client
+index_clink=Maybe it is not installed, or your <a href='$1'>module configuration</a> is incorrect.
+
+check_econfig=The iSCSI client configuration file $1 was not found on your system.
+check_eiscsiadm=The iSCSI client administration program $1 was not found on your system.
+
+auth_title=Authentication Options
+
+timeout_title=iSCSI Timeouts
+
+iscsi_title=iSCSI Options
+
+conns_title=iSCSI Connections

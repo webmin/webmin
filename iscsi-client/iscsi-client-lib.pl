@@ -24,11 +24,26 @@ return undef;
 }
 
 # get_iscsi_config()
-# XXX
+# Parses the iscsi client config file into an array ref of directives
 sub get_iscsi_config
 {
-# XXX
+my @rv;
+my $fh = "CONFIG";
+my $lnum = 0;
+&open_readfile($fh, $config{'config_file'}) || return [ ];
+while(<$fh>) {
+        s/\r|\n//g;
+        s/#.*$//;
+	if (/^(\S+)\s*=\s*(.*)/) {
+		my $dir = { 'name' => $1,
+			    'value' => $2,
+			    'line' => $lnum };
+		push(@rv, $dir);
+		}
+	$lnum++;
+	}
+close($fh);
+return \@rv;
 }
-
 
 1;
