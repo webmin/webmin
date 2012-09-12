@@ -1,0 +1,50 @@
+index_title=NFS Exports
+index_add=Een nieuwe export toevoegen.
+index_dirs=Directory's
+index_clients=Clients
+index_everyone=Iedereen
+index_none=Er zijn nog geen export's gedefinieerd.
+index_delete=Verwijder Geselecteerde Exports
+index_apply=Wijzigingen Toevoegen
+index_applydesc=Klik op deze knop om de huidige file exports configuratie toe te voegen. Hierdoor worden alle directories in de lijst hierboven beschikbaar met de gespecificeerde opties.
+index_return=export lijst
+
+delete_err=Mislukt om exports te verwijderen
+delete_enone=Niets geselecteerd
+
+edit_title1=Export Bewerken
+edit_title2=Export Aanmaken
+edit_header1=Export opties
+edit_dirs=Directory's om te exporteren
+edit_alldirs=Export subdirectory's?
+edit_ro=Alleen lezen?
+edit_kerb=Gebruik Kerberos?
+edit_header2=Remote gebruikers mapping
+edit_maproot=Map root gebruiker naar
+edit_mapusers=Map alle gebruikers naar
+edit_unpriv=gebruiker zonder privileges
+edit_uid=Gebruiker / UID
+edit_gids=En groepen / GID's
+edit_mapall=Map alle gebruikers naar
+edit_header3=Clients voor deze export
+edit_clients=Clients
+edit_hosts=Hosts / netgroepen
+edit_network=Netwerk
+edit_mask=Mask
+
+save_err=Mislukt om export op te slaan
+save_edir='$1' is geen directory of bestaat niet
+save_enone=U moet op zijn minst 1 directory invullen om te exporteren
+save_esub=Er kan maar 1 directory worden gegeven als de <b>export subdirectory's</b> optie is gekozen
+save_eroot=Wanneer u de <b>export subdirectory's</b> optie gebruikt, moet de geexporteerde directory de root zijn van een <i>lokaal</i> filesysteem
+save_euser='$1' is geen geldige gebruiker of UID
+save_egroup='$1' is geen geldige groep of GID
+save_ekerb=De map root gebruiker is een map met alle exclusieve gebruikers en Kerberos-opties
+save_ehosts=U moet op zijn minst 1 host invullen om naar te exporteren
+save_enetwork='$1' is geen geldig netwerk
+save_enetmask='$1' is geen geldige netmask
+save_esame1=De directory <tt>$1</tt> is reeds geexporteerd naar <tt>$2</tt>. Uw besturing systeem staat niet toe dat directory's op hetzelfde <i>locale</i> filesysteem apart worden geexporteerd naar dezelfde host
+save_esame2=De directory <tt>$1</tt> is reeds geexporteerd naar <tt>$2</tt>. Uw besturing systeem staat niet toe dat directory's op hetzelfde <i>locale</i> filesysteem apart worden geexporteerd naar hetzelfde netwerk
+
+restart_err=Mislukt om wijzigingen toe te voegen
+__norefs=1
