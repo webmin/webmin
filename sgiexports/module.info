@@ -5,3 +5,4 @@ os_support=irix
 desc_de=NFS-Exporte
 desc_ca=Recursos NFS
 longdesc=Edit file shares as defined in the Irix /etc/exports file
+desc_nl=NFS Exports
