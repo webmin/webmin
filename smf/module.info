@@ -4,3 +4,4 @@ category=system
 os_support=solaris/10-*
 desc=Service Management Facility Configuration
 desc_ca=Configuració d'Utilitats de Gestió de Serveis
+desc_nl=Service Management Faciliteit Configuratie

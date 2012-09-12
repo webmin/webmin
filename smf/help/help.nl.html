@@ -1,0 +1,82 @@
+<header>SMF Module</header>
+<h2><i>Deze help pagina is niet compleet</i></h2>
+<hr>
+<h3>Introductie</h3>
+Deze module geeft u de mogelijkheid om SMF services te bekijken/modificeren/
+update/toevoegen aan Solaris 10. De hoofdpagina bevat een lijst met services
+waar u een specifieke categorie kunt selecteren, uitgeschakelde services bekijken,
+ingangen sorteren enz. Vanaf die plek kunt u ook een wizard achtige tool starten
+waarmee u aangemaakte services kunt beheren, de service status kunt bekijken,
+afhankelijkheden/afhankelijkheid, en bekijk de eigenschappen van de 
+groeps/eigenschappen van iedere service. </p>
+
+<h3>Hoofd Venster</h3>
+Standaard zal de hoofd SMF module venster een lijst tonen met services die
+aangezet zijn op het systeem, de status tonen, de FMRI tonen waarmee de service
+geindentificeerd kan worden en de omschrijving die is gegeven bij de service.
+U kunt status wijzigingen toevoegen aan meerdere services door de service aan
+te vinken en te klikken op aanzetten/uitzetten enz. U kunt ook een service
+instantie verwijderen, maar u moet hier voorzichtig mee zijn omdat u services
+kunt verwijderen die erg belangrijk zijn. <p>
+
+<h3>Instantie Venster Viewer</h3>
+Door te klikken op de FMRI van een bepaalde instantie in het hoofd venster krijgt
+u de instantie viewer die de instantie naam/omschrijving toont, de status, een
+bijbehorende handleiding pagina (die u kunt aanklikken en bekijken), uitleg van
+ongebruikelijke statussen (die u kunt aanklikken en bekijken), referenties naar
+geassocieerde logfiles (die u kunt aanklikken en bekijken). Hiervandaan is het
+ook mogelijk om de afhankelijkheid/afhankelijkheden boom te bekijken van de
+instantie door te klikken op de bijbehorende link, en bekijk/bewerk de
+eigenschappen van de groeps/eigenschappen door te klikken op de bijbehorende link.
+
+<h3>Eigenschap Groeps/Eigenschappen Bewerk Venster</h3>
+Door te klikken op de Bekijk/Bewerk Eigenschap Groeps/Eigenschappen link in de
+instantie viewer krijgt u de eigenschap groep bewerken te zien, die de groeps
+eigenschappen toont welke geassocieerd zijn met de geselecteerde FMRI. U kunt
+daar meteen de groeps eigenschappen toevoegen/verwijderen/modificeren en hetzelfde
+doen met de geassocieerde eigenschappen door te klikken op de relevante groep
+eigenschap in de eigenschap groep bewerker. <p>
+
+<h3>Afhankelijkheden/Afhankelijkheid Viewer Venster</h3>
+Door te klikken op de Toon Afhankelijkheden/Afhankelijkheid Boom link in de
+instantie viewer krijgt u de afhankelijkheden/afhankelijkheid boom te zien van die
+instantie. 
+Standaard toont het overzicht het eerste-niveau afhankelijkheden/afhankelijkheid,
+maar door op de + knop te klikken kunt u de boom uitklappen om te bekijken wat
+van de service afhangt die weer van een andere service afhangt enz. Tegelijk kunt
+u in het hoofd venster de status wijzigingen toevoegen aan meerdere services met
+gebruik van de aanvink hokjes om te bepalen welke services u wilt wijzigen. Door
+te klikken op een FMRI instantie krijgt u de afhankelijkheden/afhankelijkheid boom
+te zien van die instantie. <p>
+
+<h3>Service Aanmaak Wizard</h3>
+Door te klikken op de "Nieuwe Service Aanmaken" knop krijgt u de SMF service
+aanmaak wizard, deze zal de benodigde informatie verzamelen om een nieuwe SMF
+service aan te maken, deze omzet en importeert in een SMF repository. Als de
+import geslaagd is zal de service verschijnen in de hoofd service lijst.<p>
+
+<h3>Service Instantie Zoek Formulier</h3>
+Een primitieve FMRI zoek functie is voorhanden, waarbij het invullen van een deel
+van een FMRI service voldoende is om alle overeenkomende FMRI's te vinden,
+bijvoorbeeld, "nfs" geeft alle services met "nfs" in FMRI. Er is ook een "blader"
+faciliteit beschikbaar. <p>
+
+<h3>Voor meer informatie</h3>
+Raadpleeg dan de volgende handleiding pagina's waardoor u SMF beter zult leren
+kennen:
+
+<ul>
+<li><a href="/man/view_man.cgi?page=smf&sec=5">smf(5)</a>
+<li><a href="/man/view_man.cgi?page=service_bundle&sec=4">service_bundle(4)</a>
+<li><a href="/man/view_man.cgi?page=svccfg&sec=1M">svccfg(1M)</a>
+<li><a href="/man/view_man.cgi?page=svcadm&sec=1M">svcadm(1M)</a>
+<li><a href="/man/view_man.cgi?page=svc.startd&sec=1M">svc.startd(1M)</a>
+<li><a href="/man/view_man.cgi?page=svc.configd&sec=1M">svc.configd(1M)</a>
+<li><a href="/man/view_man.cgi?page=svcprop&sec=1M">svcprop(1M)</a>
+<li><a href="/man/view_man.cgi?page=svcs&sec=1M">svcs(1M)</a> <p>
+</ul><p>
+
+<hr>
+<form>
+<input type="button" onClick='window.close()' value="Close Window">
+</form>
