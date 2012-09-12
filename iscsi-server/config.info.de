@@ -1,0 +1,5 @@
+targets_file=iSCSI Server Targets Datei,0
+iscsi_server=Voller Pfad zum iSCSI&#45;Server,0
+pid_file=Voller Pfad zur PID&#45;Datei,0
+init_name=Bootup Skript Name,0
+opts_file=Dateiliste Befehlszeilenoptionen,0

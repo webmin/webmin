@@ -3,3 +3,4 @@ category=hardware
 os_support=*-linux freebsd
 depends=fdisk lvm raid init
 longdesc=Share disk devices across the network using the iSCSI protocol.
+desc_de=iSCSI-Server 
