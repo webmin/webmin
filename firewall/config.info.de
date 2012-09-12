@@ -1,4 +1,12 @@
 line0=Konfigurierbare Optionen,11
+view_condition=Zeige Zustand in Regelliste?,1,1-Ja,0-Nein
 view_comment=Zeige Kommentare in Regelliste an?,1,1-Ja,0-Nein
+comment_mod=Speichere Kommentare als,1,0-# Kommentar in Datei speichern,1-&#45;&#45; Kommentaroption
+cluster_mode=Aktualisieren der Cluster-Servern,1,0-Immer&#44; wenn eine &#196;nderung vorgenommen wird,1-Wenn Konfiguration angewendet wird
+before_cmd=Befehle zum Ausf&#252;hren vor &#196;nderung der Regeln,3,Keiner
+after_cmd=Befehle zum Ausf&#252;hren nach &#196;nderung der Regeln,3,Keiner
+before_apply_cmd=Befehle zum Ausf&#252;hren vor Anwenden der Konfiguration,3,Keiner
+after_apply_cmd=Befehle zum Anwendung der Konfiguration,3,Keiner
 line1=System Konfiguration,11
 save_file=IPtables Speicherdatei zum Bearbeiten,3,Verwendung des Betriebssystems oder Webmin Standard
+direct=Direktes Bearbeiten der Firewall-Regeln anstatt von gespeierter Datei?,1,1-Ja,0-Nein
