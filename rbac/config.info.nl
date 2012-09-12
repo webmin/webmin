@@ -1,0 +1,10 @@
+user_attr=Gebruiker attributen file,0
+prof_attr=Profiel omschrijving file,0
+auth_attr=Autorisatie file,0
+exec_attr=Uitvoer profielen file,0
+policy_conf=Beleid configuratie file,0
+project=Projecten file,0
+base_id=Basis ID voor projecten,0,6
+crypt_conf=Versleutel algoritme file,0
+auth_help_dir=Autorisatie help files directory,0
+prof_help_dir=Profielen help files directory,0

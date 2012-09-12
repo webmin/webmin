@@ -1,0 +1,45 @@
+<header>Projecten</header>
+
+Projecten geven de mogelijkheid om limieten te forceren op bronnen die gebruikt worden voor
+verschillende gebruikers en groepen. Ze kunnen gebruikt worden om een beperking op te 
+leggen aan het aantal files die een proces mag openen, de maximale file grote, CPU gebruik,
+geheugen toewijzen en nog veel meer. <p>
+
+Ieder proces en de gebruiker behoort aan 1 of meerdere projecten. De gebruiker zijn eerste
+project word bepaald bij het inloggen en zal dan de <tt>standaard</tt> voor het project zijn
+wat ingesteld is in de <b>Gebruiker Attributen</b> sectie van deze module. Gebruikers kunnen
+overschakelen naar andere projecten met behulp van de <tt>newtask</tt> opdracht. <p>
+
+Ieder project heeft een lijst met gebruikers en groepen die toegang hebben, bijvoorbeeld
+door over te schakelen met de <tt>newtask</tt> opdracht. Omdat een gebruiker lid is van een
+project wil dit nog niet zeggen dat hij er automatisch bijhoort na het inloggen - dit moet
+worden ingesteld in de <b>Gebruiker Attributen</b> sectie. <p>
+
+De meest belangrijke attributen van een project zijn de bron limieten die worden toegevoegd
+aan zijn gebruikers. Ieder lid heeft de volgende attributen :<br>
+<dl>
+<dt><b>Bron</b><br>
+<dd>De bron die het controleert, zoals <tt>process.max-file-descriptor</tt> voor de maximale
+aan te maken file grote, of <tt>process.max-cpu-time</tt> voor de hoeveelheid CPU tijd die
+dit proces mag hebben.
+
+<dt><b>Bron type</b><br>
+<dd>Bepaald wie deze bron limieten mag modificeren, en is bijna altijd ingesteld op <b>Privileged</b>.
+Deze attributen zijn optioneel - als <b>&lt;Geen&gt;</b> is geselecteerd, zal de systeem globale
+limiet voor de bron worden toegevoegd. De betekenis van de andere opties zijn :
+	<ul>
+	<li><b>Privileged</b> - Kan alleen maar gemodificeerd worden door de bevoorrechte (superuser) oproepers.
+	<li><b>Systeem</b> - Vastgezet voor de duur van het besturingssysteem proces.
+	<li><b>Basis</b> - Kan worden gemodificeerd door de eigenaar van het aanroepende proces.
+	</ul>
+
+<dt><b>Bovenste limiet</b><br>
+<dd>Het bovenste limiet wat het proces mag gebruiken voordat er actie word ondernomen. Dit moet ingevuld worden in bytes, seconden of het aantal onderwerpen, afhankelijk van het bron type.
+
+<dt><b>Actie wanneer het word overschreden</b><br>
+<dd>Bepaald wat er gebeurt met een proces als het limiet word overschreden. Normaal gesproken staat dit ingesteld op <b>Negeren</b>, waardoor simpelweg het systeem die het oproept waardoor het limiet word overschreden de oproep niet beantwoord zal worden. Echter, de opties om een ​​signaal te sturen naar het betrokken proces is ook bruikbaar.
+
+</dl>
+
+<footer>
+
