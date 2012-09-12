@@ -3,7 +3,7 @@
 
 use strict;
 use warnings;
-require './iscsi-server-lib.pl';
+require './iscsi-client-lib.pl';
 our (%text, %config, $module_name);
 
 &ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1);

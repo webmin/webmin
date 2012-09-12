@@ -46,4 +46,22 @@ close($fh);
 return \@rv;
 }
 
+# find(&config, name)
+# Returns all config objects with the given name
+sub find
+{
+my ($conf, $name) = @_;
+my @t = grep { $_->{'name'} eq $name } @$conf;
+return wantarray ? @t : $t[0];
+}
+
+# find_value(&config, name)
+# Returns all config values with the given name
+sub find_value
+{
+my ($conf, $name) = @_;
+my @rv = map { $_->{'value'} } &find($conf, $name);
+return wantarray ? @rv : $rv[0];
+}
+
 1;

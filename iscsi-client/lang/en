@@ -1,10 +1,22 @@
 index_title=iSCSI Client
 index_clink=Maybe it is not installed, or your <a href='$1'>module configuration</a> is incorrect.
+index_return=module index
 
 check_econfig=The iSCSI client configuration file $1 was not found on your system.
 check_eiscsiadm=The iSCSI client administration program $1 was not found on your system.
 
 auth_title=Authentication Options
+auth_header=iSCSI client and server authentication
+auth_method=Authentication method
+auth_method_none=Don't authenticate
+auth_userpass=Login to server
+auth_userpass_def=None needed
+auth_userpass_user=Username
+auth_userpass_pass=and password
+auth_userpass_in=Login to client
+auth_dmethod=Discovery authentication method
+auth_duserpass=Discovery login to server
+auth_duserpass_in=Discovery login to client
 
 timeout_title=iSCSI Timeouts
 
