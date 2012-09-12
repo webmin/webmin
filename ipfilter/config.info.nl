@@ -1,0 +1,14 @@
+line0=Configureerbare opties,11
+view_condition=Toon de condities?,1,1-Ja,0-Nee
+view_comment=Toon commentaar?,1,1-Ja,0-Nee
+cluster_mode=Update cluster servers,1,0-Bij iedere wijziging,1-Bij het toevoegen van de configuratie
+cluster_nat=Verstuur de NAT configuratie ook naar de clusters?,1,1-Ja,0-Nee
+line1=Systeem configuratie,11
+ipf_conf=IPfilter firewall configuratie file om te bewerken,0
+ipnat_conf=IPfilter NAT configuratie file om te bewerken,0
+ipf=Volledig pad naar de ipf opdracht,0
+ipfstat=Volledig pad naar de ipfstat opdracht,0
+ipnat=Volledig pad naar de ipnat opdracht,0
+apply_cmd=Opdracht om de configuratie toe te voegen,3,Gewoon ipf uitvoeren
+init=IPfilter bootup script naam,3,Automatisch
+smf=IPfilter SMF service naam,3,Geen
