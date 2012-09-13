@@ -108,4 +108,35 @@ elsif (!$o && defined($value)) {
 	}
 }
 
+# list_iscsi_connections()
+# Returns a list of hash refs with details of active sessions
+sub list_iscsi_connections
+{
+my @rv;
+my $out = &backquote_command(
+		"$config{'iscsiadm'} -m session -o show -P 3 2>/dev/null");
+my $conn;
+foreach my $l (split(/\r?\n/, $out)) {
+	if ($l =~ /^Target:\s+(\S+):(\S+)/) {
+		$conn = { 'name' => $1,
+			  'target' => $2 };
+		push(@rv, $conn);
+		}
+	elsif ($l =~ /Current\s+Portal:\s+(\S+):(\d+)/) {
+		$conn->{'ip'} = $1;
+		$conn->{'port'} = $2;
+		}
+	elsif ($l =~ /SID:\s+(\d+)/) {
+		$conn->{'num'} = $1;
+		}
+	elsif ($l =~ /Iface\s+Transport:\s+(\S+)/) {
+		$conn->{'proto'} = $1;
+		}
+	elsif ($l =~ /Attached\s+scsi\s+disk\s+(\S+)/) {
+		$conn->{'device'} = "/dev/$1";
+		}
+	}
+return @rv;
+}
+
 1;

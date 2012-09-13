@@ -22,9 +22,24 @@ auth_eusername=Missing username for server
 auth_epassword=Missing password for server
 auth_eusername_in=Missing username for client
 auth_epassword_in=Missing password for client
+auth_edusername=Missing discovery username for server
+auth_edpassword=Missing discovery password for server
+auth_edusername_in=Missing discovery username for client
+auth_edpassword_in=Missing discovery password for client
 
 timeout_title=iSCSI Timeouts
 
 iscsi_title=iSCSI Options
 
 conns_title=iSCSI Connections
+conns_ip=Server IP
+conns_sport=Server port
+conns_name=Server name
+conns_target=Share name
+conns_device=Local device
+conns_delete=Disconnect Selected
+conns_none=No iSCSI connections are currently active.
+conns_header=Add iSCSI connection
+conns_host=iSCSI server hostname or IP
+conns_port=iSCSI server port
+conns_start=Connect..
