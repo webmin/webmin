@@ -71,7 +71,7 @@ sub save_directive
 my ($conf, $name, $value) = @_;
 my $lref = &read_file_lines($config{'config_file'});
 my $line = defined($value) ? $name." = ".$value : undef;
-my $o = &find($name, $conf);
+my $o = &find($conf, $name);
 if ($o && defined($value)) {
 	# Update a line
 	$lref->[$o->{'line'}] = $line;

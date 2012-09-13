@@ -5,6 +5,7 @@ use strict;
 use warnings;
 require './iscsi-client-lib.pl';
 our (%text, %config, %in);
+&ReadParse();
 &lock_file($config{'config_file'});
 my $conf = &get_iscsi_config();
 &error_setup($text{'auth_err'});
@@ -38,7 +39,36 @@ else {
 			$in{'password_in'});
 	}
 
-# XXX more
+# Authentication method
+&save_directive($conf, "discovery.sendtargets.auth.authmethod", $in{'dmethod'});
+
+# Discovery login and password to iSCSI server
+if ($in{'dusername_def'}) {
+	&save_directive($conf, "discovery.sendtargets.auth.username", undef);
+	&save_directive($conf, "discovery.sendtargets.auth.password", undef);
+	}
+else {
+	$in{'dusername'} =~ /\S/ || &error($text{'auth_edusername'});
+	$in{'dpassword'} =~ /\S/ || &error($text{'auth_edpassword'});
+	&save_directive($conf, "discovery.sendtargets.auth.username",
+			$in{'dusername'});
+	&save_directive($conf, "discovery.sendtargets.auth.password",
+			$in{'dpassword'});
+	}
+
+# Discovery login and password by the iSCSI server to the client
+if ($in{'dusername_in_def'}) {
+	&save_directive($conf, "discovery.sendtargets.auth.username_in", undef);
+	&save_directive($conf, "discovery.sendtargets.auth.password_in", undef);
+	}
+else {
+	$in{'dusername_in'} =~ /\S/ || &error($text{'auth_edusername_in'});
+	$in{'dpassword_in'} =~ /\S/ || &error($text{'auth_edpassword_in'});
+	&save_directive($conf, "discovery.sendtargets.auth.username_in",
+			$in{'dusername_in'});
+	&save_directive($conf, "discovery.sendtargets.auth.password_in",
+			$in{'dpassword_in'});
+	}
 
 &flush_file_lines($config{'targets_file'});
 &unlock_file($config{'config_file'});
