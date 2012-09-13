@@ -113,10 +113,16 @@ elsif (!$o && defined($value)) {
 sub list_iscsi_connections
 {
 my @rv;
+&clean_language();
 my $out = &backquote_command(
 		"$config{'iscsiadm'} -m session -o show -P 3 2>/dev/null");
+&reset_environment();
+my @lines = split(/\r?\n/, $out);
+if ($?) {
+	return $lines[0];
+	}
 my $conn;
-foreach my $l (split(/\r?\n/, $out)) {
+foreach my $l (@lines) {
 	if ($l =~ /^Target:\s+(\S+):(\S+)/) {
 		$conn = { 'name' => $1,
 			  'target' => $2 };
@@ -132,11 +138,67 @@ foreach my $l (split(/\r?\n/, $out)) {
 	elsif ($l =~ /Iface\s+Transport:\s+(\S+)/) {
 		$conn->{'proto'} = $1;
 		}
+	elsif ($l =~ /Iface\s+Initiatorname:\s+(\S+)/) {
+		$conn->{'initiator'} = $1;
+		}
+	elsif ($l =~ /iSCSI\s+Connection\s+State:\s+(\S+)/) {
+		$conn->{'connection'} = $1;
+		}
+	elsif ($l =~ /iSCSI\s+Session\s+State:\s+(\S+)/) {
+		$conn->{'session'} = $1;
+		}
 	elsif ($l =~ /Attached\s+scsi\s+disk\s+(\S+)/) {
 		$conn->{'device'} = "/dev/$1";
 		}
+	elsif ($l =~ /(username|password|username_in|password_in):\s+(\S+)/ &&
+	       $2 ne "<empty>") {
+		$conn->{$1} = $2;
+		}
 	}
-return @rv;
+return \@rv;
+}
+
+# list_iscsi_targets(host, [port])
+# Returns an array ref listing available targets on some host, or an error 
+# message string
+sub list_iscsi_targets
+{
+my ($host, $port) = @_;
+my $cmd = "$config{'iscsiadm'} -m discovery -t sendtargets -p ".
+	  quotemeta($host).($port ? ":".quotemeta($port) : "");
+&clean_language();
+my $out = &backquote_command("$cmd 2>&1");
+&reset_environment();
+my @lines = split(/\r?\n/, $out);
+if ($? || $out =~ /Could not perform SendTargets discovery/i) {
+	return $lines[0];
+	}
+my @rv;
+foreach my $l (@lines) {
+	if ($l =~ /^(\S+):(\d+),(\d+)\s+(\S+):(\S+)/) {
+		push(@rv, { 'ip' => $1,
+			    'port' => $2,
+			    'name' => $4,
+			    'target' => $5 });
+		}
+	}
+return \@rv;
+}
+
+# create_iscsi_connection(host, [port], [&target])
+# Attempts to connect to an iscsi server for the given target (or all targets)
+sub create_iscsi_connection
+{
+my ($host, $port, $target) = @_;
+my $cmd = "$config{'iscsiadm'} -m node".
+	  ($target ? " -T ".quotemeta($target->{'name'}).":".
+			    quotemeta($target->{'target'}) : "").
+	  " -p ".quotemeta($host).($port ? ":".quotemeta($port) : "").
+	  " --login";
+&clean_language();
+my $out = &backquote_command("$cmd 2>&1");
+&reset_environment();
+return $? ? $out : undef;
 }
 
 1;
