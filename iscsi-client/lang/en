@@ -17,6 +17,11 @@ auth_userpass_in=Login to client
 auth_dmethod=Discovery authentication method
 auth_duserpass=Discovery login to server
 auth_duserpass_in=Discovery login to client
+auth_err=Failed to save authentication options
+auth_eusername=Missing username for server
+auth_epassword=Missing password for server
+auth_eusername_in=Missing username for client
+auth_epassword_in=Missing password for client
 
 timeout_title=iSCSI Timeouts
 

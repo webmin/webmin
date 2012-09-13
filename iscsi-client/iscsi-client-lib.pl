@@ -64,4 +64,48 @@ my @rv = map { $_->{'value'} } &find($conf, $name);
 return wantarray ? @rv : $rv[0];
 }
 
+# save_directive(&config, name, value)
+# Creates, updates or deletes some directive
+sub save_directive
+{
+my ($conf, $name, $value) = @_;
+my $lref = &read_file_lines($config{'config_file'});
+my $line = defined($value) ? $name." = ".$value : undef;
+my $o = &find($name, $conf);
+if ($o && defined($value)) {
+	# Update a line
+	$lref->[$o->{'line'}] = $line;
+	$o->{'value'} = $value;
+	}
+elsif ($o && !defined($value)) {
+	# Commenting out a line
+	$lref->[$o->{'line'}] = "# ".$lref->[$o->{'line'}];
+	}
+elsif (!$o && defined($value)) {
+	# Check if exists, but commented out
+	my $cline;
+	my $clnum = 0;
+	foreach my $l (@$lref) {
+		if ($l =~ /^#+\s*\Q$name\E\s*=/) {
+			$cline = $clnum;
+			last;
+			}
+		$clnum++;
+		}
+	my $dir = { 'name' => $name,
+		    'value' => $value };
+	if (defined($cline)) {
+		# Comment back in
+		$dir->{'line'} = $cline;
+		$lref->[$cline] = $line;
+		}
+	else {
+		# Add at end
+		$dir->{'line'} = scalar(@$lref);
+		push(@$lref, $line);
+		}
+	push(@$conf, $dir);
+	}
+}
+
 1;
