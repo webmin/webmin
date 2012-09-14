@@ -53,4 +53,4 @@ print &ui_table_row($text{'add_target'},
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'add_ok'} ] ]);
 
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer("list_conns.cgi", $text{'conns_return'});

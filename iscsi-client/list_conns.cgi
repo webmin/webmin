@@ -21,8 +21,9 @@ if (@$conns) {
 		100, 0, \@tds);
 	foreach my $c (@$conns) {
 		print &ui_checked_columns_row([
-			$c->{'ip'}, $c->{'port'},
-			$c->{'name'}, $c->{'target'},
+			"<a href='view_conn.cgi?num=$c->{'num'}'>".
+			  $c->{'ip'}."</a>",
+			$c->{'port'}, $c->{'name'}, $c->{'target'},
 			$c->{'username'} || "<i>$text{'conns_nouser'}</i>",
 			$c->{'device'},
 			], \@tds, "d", $c->{'num'});
@@ -35,7 +36,6 @@ else {
 	}
 
 # Show form to add
-# XXX targets are on next page
 print &ui_form_start("add_form.cgi", "post");
 print &ui_table_start($text{'conns_header'}, undef, 2);
 

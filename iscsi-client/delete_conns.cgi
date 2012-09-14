@@ -61,12 +61,14 @@ if (!$in{'confirm'}) {
 	# Ask the user if he is sure
 	print &ui_confirmation_form(
 		"delete_conns.cgi",
-		&text('dconns_rusure', scalar(@delconns)),
+		@delconns == 1 ?
+			&text('dconns_rusure1', $delconns[0]->{'ip'}) :
+			&text('dconns_rusure', scalar(@delconns)),
 		[ map { [ "d", $_ ] } @d ],
 		[ [ "confirm", $text{'dconns_confirm'} ] ],
 		$utable);
 
-	&ui_print_footer("", $text{'index_return'});
+	&ui_print_footer("list_conns.cgi", $text{'conns_return'});
 	}
 else {
 	# Delete each one
