@@ -241,4 +241,32 @@ foreach my $part (@{$disk->{'parts'}}) {
 return @users;
 }
 
+# get_initiator_name()
+# Returns the local iSCSI initiator name
+sub get_initiator_name
+{
+my $data = &read_file_contents($config{'initiator_file'});
+return $data =~ /InitiatorName=(\S+)/ ? $1 : undef;
+}
+
+# save_initiator_name(name)
+# Writes out the initiator name file
+sub save_initiator_name
+{
+my ($name) = @_;
+my $fh = "INIT";
+&open_tempfile($fh, ">$config{'initiator_file'}");
+&print_tempfile($fh, "InitiatorName=$name\n");
+&close_tempfile($fh);
+}
+
+# generate_initiator_name()
+# Create a new initiator name with the iscsi-iname command
+sub generate_initiator_name
+{
+my $out = &backquote_command("$config{'iscsiiname'} 2>/dev/null");
+$out =~ s/\r?\n//;
+return $out;
+}
+
 1;

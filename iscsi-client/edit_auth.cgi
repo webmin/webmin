@@ -12,6 +12,12 @@ my $conf = &get_iscsi_config();
 print &ui_form_start("save_auth.cgi", "post");
 print &ui_table_start($text{'auth_header'}, undef, 2);
 
+# Initiator name
+print &ui_table_row($text{'auth_name'},
+	&ui_textbox("name", &get_initiator_name(), 40)." ".
+	&ui_checkbox("newname", 1, $text{'auth_newname'}, 0,
+		     "onChange='form.name.disabled = checked'"));
+
 # Authentication method
 my $method = &find_value($conf, "node.session.auth.authmethod");
 print &ui_table_row($text{'auth_method'},

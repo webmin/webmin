@@ -1,12 +1,16 @@
 index_title=iSCSI Client
 index_clink=Maybe it is not installed, or your <a href='$1'>module configuration</a> is incorrect.
 index_return=module index
+index_atboot=Start at boot?
+index_atbootdesc=Change this option to control whether the iSCSI client is started at boot time or not. This is required for filesystems mounted from iSCSI servers to be automatically mounted.
 
 check_econfig=The iSCSI client configuration file $1 was not found on your system.
 check_eiscsiadm=The iSCSI client administration program $1 was not found on your system.
 
 auth_title=Authentication Options
 auth_header=iSCSI client and server authentication
+auth_name=Local system initiator name
+auth_newname=Generate a new random name
 auth_method=Authentication method
 auth_method_none=Don't authenticate
 auth_userpass=Login to server
@@ -26,6 +30,7 @@ auth_edusername=Missing discovery username for server
 auth_edpassword=Missing discovery password for server
 auth_edusername_in=Missing discovery username for client
 auth_edpassword_in=Missing discovery password for client
+auth_egen=Failed to generate a new name!
 
 timeout_title=iSCSI Timeouts
 
@@ -90,3 +95,6 @@ vconn_device2=Local device name
 vconn_delete=Disconnect Connection
 vconn_users=Current users
 vconn_size=Disk size
+
+atboot_err=Failed to enable at boot time
+atboot_einit=No boot action named $1 exists

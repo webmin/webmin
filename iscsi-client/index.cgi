@@ -22,4 +22,23 @@ my @icons = ( "images/auth.gif", "images/timeout.gif",
 	      "images/iscsi.gif", "images/conns.gif" );
 &icons_table(\@links, \@titles, \@icons, 4);
 
+print &ui_hr();
+print &ui_buttons_start();
+
+# Show start at boot button
+&foreign_require("init");
+my $all_starting = 1;
+foreach my $i (split(/\s+/, $config{'init_name'})) {
+	my $starting = &init::action_status($i);
+	$all_starting = 0 if ($starting != 2);
+	}
+print &ui_buttons_row("atboot.cgi",
+		      $text{'index_atboot'},
+		      $text{'index_atbootdesc'},
+		      undef,
+		      &ui_radio("boot", $all_starting,
+				[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
+
+print &ui_buttons_end();
+
 &ui_print_footer("/", $text{'index'});

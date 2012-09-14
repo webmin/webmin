@@ -3,7 +3,7 @@
 
 use strict;
 use warnings;
-require './iscsi-server-lib.pl';
+require './iscsi-client-lib.pl';
 &foreign_require("init");
 our (%text, %config, %in);
 &ReadParse();

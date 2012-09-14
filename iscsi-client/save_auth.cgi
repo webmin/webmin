@@ -6,6 +6,7 @@ use warnings;
 require './iscsi-client-lib.pl';
 our (%text, %config, %in);
 &ReadParse();
+&lock_file($config{'initiator_file'});
 &lock_file($config{'config_file'});
 my $conf = &get_iscsi_config();
 &error_setup($text{'auth_err'});
@@ -70,8 +71,22 @@ else {
 			$in{'dpassword_in'});
 	}
 
+# Initiator name
+if ($in{'newname'}) {
+	my $gen = &generate_initiator_name();
+	$gen || &error($text{'auth_egen'});
+	&save_initiator_name($gen);
+	}
+elsif ($in{'name'} ne &get_initiator_name()) {
+	# Validate and save name
+	$in{'name'} =~ /^[a-z0-9\.\-\:]+$/ && length($in{'name'}) <= 223 ||
+		&error($text{'auth_ename'});
+	&save_initiator_name($in{'name'});
+	}
+
 &flush_file_lines($config{'targets_file'});
 &unlock_file($config{'config_file'});
+&unlock_file($config{'initiator_file'});
 &webmin_log("auth");
 &redirect("");
 
