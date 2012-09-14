@@ -9,6 +9,7 @@ use WebminCore;
 &init_config();
 &foreign_require("fdisk");
 &foreign_require("mount");
+&foreign_require("lvm");
 our (%text, %config, %gconfig, $module_config_file);
 
 # check_config()
@@ -118,6 +119,10 @@ my $out = &backquote_command(
 		"$config{'iscsiadm'} -m session -o show -P 3 2>/dev/null");
 &reset_environment();
 my @lines = split(/\r?\n/, $out);
+if ($?/256 == 21) {
+	# Code 21 means no sessions
+	return [ ];
+	}
 if ($?) {
 	return $lines[0];
 	}
@@ -195,6 +200,21 @@ my $cmd = "$config{'iscsiadm'} -m node".
 			    quotemeta($target->{'target'}) : "").
 	  " -p ".quotemeta($host).($port ? ":".quotemeta($port) : "").
 	  " --login";
+&clean_language();
+my $out = &backquote_command("$cmd 2>&1");
+&reset_environment();
+return $? ? $out : undef;
+}
+
+# delete_iscsi_connection(&connection)
+# Remove an existing connection to some target
+sub delete_iscsi_connection
+{
+my ($conn) = @_;
+my $cmd = "$config{'iscsiadm'} -m node".
+	  " -T ".quotemeta($conn->{'name'}).":".quotemeta($conn->{'target'}).
+	  " -p ".quotemeta($conn->{'ip'}).":".quotemeta($conn->{'port'}).
+	  " --logout";
 &clean_language();
 my $out = &backquote_command("$cmd 2>&1");
 &reset_environment();
