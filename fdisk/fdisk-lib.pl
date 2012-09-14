@@ -414,6 +414,7 @@ while(<FDISK>) {
 		$disk->{'bytes'} = $2;
 		$disk->{'cylsize'} = $disk->{'heads'} * $disk->{'sectors'} *
 				     $disk->{'bytes'};
+		$disk->{'size'} = $disk->{'cylinders'} * $disk->{'cylsize'};
 		}
 	elsif (/BIOS\s+cylinder,head,sector\s+geometry:\s+(\d+),(\d+),(\d+)\.\s+Each\s+cylinder\s+is\s+(\d+)(b|kb|mb)/i) {
 		# Unit size for disk from parted
@@ -424,6 +425,7 @@ while(<FDISK>) {
 					   lc($5) eq "kb" ? 1024 : 1024*1024);
 		$disk->{'bytes'} = $disk->{'cylsize'} / $disk->{'heads'} /
 						        $disk->{'sectors'};
+		$disk->{'size'} = $disk->{'cylinders'} * $disk->{'cylsize'};
 		}
 	elsif (/(\/dev\/\S+?(\d+))[ \t*]+\d+\s+(\d+)\s+(\d+)\s+(\S+)\s+(\S{1,2})\s+(.*)/ || /(\/dev\/\S+?(\d+))[ \t*]+(\d+)\s+(\d+)\s+(\S+)\s+(\S{1,2})\s+(.*)/) {
 		# Partition within the current disk from fdisk
@@ -437,6 +439,8 @@ while(<FDISK>) {
 				'index' => scalar(@{$disk->{'parts'}}),
 			 	'edittype' => 1, };
 		$part->{'desc'} = &partition_description($part->{'device'});
+		$part->{'size'} = ($part->{'end'} - $part->{'start'} + 1) *
+				  $disk->{'cylsize'};
 		push(@{$disk->{'parts'}}, $part);
 		}
 	elsif (/^\s*(\d+)\s+(\d+)cyl\s+(\d+)cyl\s+(\d+)cyl\s+(primary|logical|extended)\s*(\S*)\s*(\S*)/) {
@@ -455,6 +459,8 @@ while(<FDISK>) {
 		$part->{'type'} = 'raid' if ($part->{'type'} eq 'ext2' &&
 					     $part->{'raid'});
 		$part->{'desc'} = &partition_description($part->{'device'});
+		$part->{'size'} = ($part->{'end'} - $part->{'start'} + 1) *
+				  $disk->{'cylsize'};
 		push(@{$disk->{'parts'}}, $part);
 		}
 	elsif (/^\s*(\d+)\s+(\d+)cyl\s+(\d+)cyl\s+(\d+)cyl\s+(\S+)\s+(\S+)\s+(\S+)/) {
@@ -474,6 +480,8 @@ while(<FDISK>) {
 		$part->{'type'} = 'raid' if ($part->{'type'} eq 'ext2' &&
 					     $part->{'raid'});
 		$part->{'desc'} = &partition_description($part->{'device'});
+		$part->{'size'} = ($part->{'end'} - $part->{'start'} + 1) *
+				  $disk->{'cylsize'};
 		push(@{$disk->{'parts'}}, $part);
 		}
 	elsif (/Partition\s+Table:\s+(\S+)/) {

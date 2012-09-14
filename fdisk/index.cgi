@@ -72,8 +72,7 @@ if (@disks) {
 			$ed ? "<a href='edit_disk.cgi?device=$d->{'device'}'>".
 			        $d->{'desc'}."</a>"
 			    : $d->{'desc'},
-			$d->{'cylsize'} ?
-			  &nice_size($d->{'cylinders'}*$d->{'cylsize'}) : "",
+			$d->{'size'} ? &nice_size($d->{'size'}) : "",
 			$d->{'model'},
 			scalar(@{$d->{'parts'}}),
 			$hasctrl ? ( join(" ", @ctrl) ) : ( ),

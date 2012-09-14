@@ -128,7 +128,8 @@ if (@parts) {
 			"<a href='$url'>".($p->{'extended'} ?
 			  $text{'extended'} : &tag_name($p->{'type'}))."</a>",
 			$ext,
-			$d->{'cylsize'} ? &nice_size(($p->{'end'} - $p->{'start'} + 1) * $d->{'cylsize'}) : &text('edit_blocks', $p->{'blocks'}),
+			$p->{'size'} ? &nice_size($p->{'size'})
+				     : &text('edit_blocks', $p->{'blocks'}),
 			$p->{'start'},
 			$p->{'end'},
 			$stat,

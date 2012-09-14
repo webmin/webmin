@@ -179,7 +179,8 @@ if ($stat) {
 # Partition size
 if (!$in{'new'}) {
 	print &ui_table_row($text{'edit_size'},
-		$dinfo->{'cylsize'} ? &nice_size(($pinfo->{'end'} - $pinfo->{'start'} + 1) * $dinfo->{'cylsize'}) : &text('edit_blocks', $pinfo->{'blocks'}));
+		$pinfo->{'size'} ? &nice_size($pinfo->{'size'})
+				 : &text('edit_blocks', $pinfo->{'blocks'}));
 	}
 
 # Show field for editing filesystem label
