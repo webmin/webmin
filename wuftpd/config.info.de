@@ -6,3 +6,4 @@ ftpgroups=Vollst&#228;ndiger Pfad zur ftpgroups-Datei,0
 ftphosts=Vollst&#228;ndiger Pfad zur ftphosts-Datei,0
 ftpusers=Vollst&#228;ndiger Pfad zur ftpusers-Datei,0
 pid_file=FTP-Server PID-Datei,0
+log_file=FTP-Server Log-Datei,0

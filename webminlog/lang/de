@@ -1,6 +1,6 @@
 __norefs=1
 acl_all=Alle
-acl_mods=Darf Logdateien in Modulen ansehen
+acl_mods=Darf Logs in Modulen ansehen
 acl_rollback=Darf Aktionen komplett r&#252;ckg&#228;ngig machen?
 acl_sel=Unten ausgew&#228;hlte ..
 acl_users=Darf Aktionen nach Benutzern ausw&#228;hlen
