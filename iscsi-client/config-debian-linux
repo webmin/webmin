@@ -1,0 +1,5 @@
+config_file=/etc/iscsi/iscsid.conf
+initiator_file=/etc/iscsi/initiatorname.iscsi
+iscsiadm=iscsiadm
+iscsiiname=iscsi-iname
+init_name=open-iscsi
