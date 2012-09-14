@@ -221,4 +221,24 @@ my $out = &backquote_command("$cmd 2>&1");
 return $? ? $out : undef;
 }
 
+# get_connection_users(&conn)
+# Returns a list of partitions in the device for some connection, and their
+# users (like raid, mount, lvm)
+sub get_connection_users
+{
+my ($conn) = @_;
+return ( ) if (!$conn->{'device'});
+my @users;
+my @disks = &fdisk::list_disks_partitions();
+my ($disk) = grep { $_->{'device'} eq $conn->{'device'} } @disks;
+next if (!$disk);
+foreach my $part (@{$disk->{'parts'}}) {
+	my @st = &fdisk::device_status($part->{'device'});
+	if (@st) {
+		push(@users, [ $conn, $part, @st ]);
+		}
+	}
+return @users;
+}
+
 1;

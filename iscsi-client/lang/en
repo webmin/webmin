@@ -70,6 +70,7 @@ dconns_rusure1=Are you sure you want to remove the connection to $1?
 dconns_users=Some partitions from these connections are currently in use, and will fail to operate when the connections are removed :
 dconns_part=Partition
 dconns_use=Used by
+dconns_size=Partition size
 dconns_confirm=Remove Connections
 
 vconn_title=iSCSI Connection
@@ -87,3 +88,5 @@ vconn_none=None required
 vconn_device=Local device file
 vconn_device2=Local device name
 vconn_delete=Disconnect Connection
+vconn_users=Current users
+vconn_size=Disk size

@@ -50,7 +50,30 @@ if ($conn->{'device'}) {
 	print &ui_table_row($text{'vconn_device2'},
 		&mount::device_name($conn->{'device'}));
 
-	# XXX
+	my @disks = &fdisk::list_disks_partitions();
+	my ($disk) = grep { $_->{'device'} eq $conn->{'device'} } @disks;
+	if ($disk) {
+		print &ui_table_row($text{'vconn_size'},
+			&nice_size($disk->{'size'}));
+		}
+
+	my @users = &get_connection_users($conn);
+	if (@users) {
+		my $utable = &ui_columns_start([
+			$text{'dconns_part'},
+			$text{'dconns_size'},
+			$text{'dconns_use'},
+			]);
+		foreach my $u (@users) {
+			$utable .= &ui_columns_row([
+				&mount::device_name($u->[1]->{'device'}),
+				&nice_size($u->[1]->{'size'}),
+				&lvm::device_message($u->[2], $u->[3], $u->[4]),
+				], "50");
+			}
+		$utable .= &ui_columns_end();
+		print &ui_table_row($text{'vconn_users'}, $utable);
+		}
 	}
 
 print &ui_table_end();

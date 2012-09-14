@@ -24,18 +24,8 @@ if (!$in{'confirm'}) {
 
 	# Find users of each device
 	my @users;
-	my @disks = &fdisk::list_disks_partitions();
 	foreach my $conn (@delconns) {
-		next if (!$conn->{'device'});
-		my ($disk) = grep { $_->{'device'} eq $conn->{'device'} }
-				  @disks;
-		next if (!$disk);
-		foreach my $part (@{$disk->{'parts'}}) {
-			my @st = &fdisk::device_status($part->{'device'});
-			if (@st) {
-				push(@users, [ $conn, $part->{'device'}, @st ]);
-				}
-			}
+		push(@users, &get_connection_users($conn));
 		}
 
 	# Build table of users
@@ -51,7 +41,7 @@ if (!$in{'confirm'}) {
 			$utable .= &ui_columns_row([
 				$u->[0]->{'ip'},
 				$u->[0]->{'target'},
-				&mount::device_name($u->[1]),
+				&mount::device_name($u->[1]->{'device'}),
 				&lvm::device_message($u->[2], $u->[3], $u->[4]),
 				], "50");
 			}
