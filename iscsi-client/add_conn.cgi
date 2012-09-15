@@ -25,5 +25,5 @@ my $err = &create_iscsi_connection($in{'host'}, $in{'port'}, $target);
 &webmin_log("add", "connection", $in{'host'},
 	    { 'host' => $in{'host'},
 	      'port' => $in{'port'},
-	      'target' => $in{'target'} });
+	      'target' => $target->{'target'} });
 &redirect("list_conns.cgi");

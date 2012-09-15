@@ -51,6 +51,9 @@ if (!$in{'confirm'}) {
 	# Ask the user if he is sure
 	print &ui_confirmation_form(
 		"delete_conns.cgi",
+		@delconns == 1 && $delconns[0]->{'device'} ?
+			&text('dconns_rusure2', $delconns[0]->{'ip'},
+						$delconns[0]->{'device'}) :
 		@delconns == 1 ?
 			&text('dconns_rusure1', $delconns[0]->{'ip'}) :
 			&text('dconns_rusure', scalar(@delconns)),
@@ -68,6 +71,14 @@ else {
 			     $conn->{'target'}, $err)) if ($err);
 		}
 
-	&webmin_log("delete", "connection", scalar(@delconns));
+	if (@delconns == 1) {
+		&webmin_log("delete", "connection", $delconns[0]->{'ip'},
+			    { 'host' => $delconns[0]->{'ip'},
+			      'port' => $delconns[0]->{'port'},
+			      'target' => $delconns[0]->{'target'} });
+		}
+	else {
+		&webmin_log("delete", "connection", scalar(@delconns));
+		}
 	&redirect("list_conns.cgi");
 	}

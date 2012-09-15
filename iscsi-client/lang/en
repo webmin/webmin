@@ -33,6 +33,28 @@ auth_edpassword_in=Missing discovery password for client
 auth_egen=Failed to generate a new name!
 
 timeout_title=iSCSI Timeouts
+timeout_header=iSCSI client timeout options
+timeout_timeout=Time to wait before failing SCSI commands
+timeout_immediate=Fail immediately
+timeout_forever=Wait forever
+timeout_wait=Wait for
+timeout_secs=seconds
+timeout_login_timeout=Time to wait for login
+timeout_logout_timeout=Time to wait for logout
+timeout_noop_out_interval=Time to wait before pinging
+timeout_noop_out_timeout=Time to wait for ping before failing
+timeout_abort_timeout=Time to wait for abort response before failing
+timeout_lu_reset_timeout=Time to wait for logical unit response before failing
+timeout_tgt_reset_timeout=Time to wait for target response before failing
+timeout_err=Failed to save timeouts
+timeout_etimeout=Missing or non-numeric time to wait before failing SCSI commands
+timeout_elogin_timeout=Missing or non-numeric time to wait for login
+timeout_elogout_timeout=Missing or non-numeric time to wait for logout
+timeout_enoop_out_interval=Missing or non-numeric time to wait before pinging
+timeout_enoop_out_timeout=Missing or non-numeric time to wait for ping before failing
+timeout_eabort_timeout=Missing or non-numeric time to wait for abort response before failing
+timeout_elu_reset_timeout=Missing or non-numeric time to wait for logical unit response before failing
+timeout_etgt_reset_timeout=Missing or non-numeric time to wait for target response before failing
 
 iscsi_title=iSCSI Options
 
@@ -72,6 +94,7 @@ dconns_edelete=Removal of target $2 from host $1 failed : $3
 dconns_title=Disconnect iSCSI Connections
 dconns_rusure=Are you sure you want to remove the $1 selected connections?
 dconns_rusure1=Are you sure you want to remove the connection to $1?
+dconns_rusure2=Are you sure you want to remove the connection to $1 for device $2?
 dconns_users=Some partitions from these connections are currently in use, and will fail to operate when the connections are removed :
 dconns_part=Partition
 dconns_use=Used by
@@ -98,3 +121,12 @@ vconn_size=Disk size
 
 atboot_err=Failed to enable at boot time
 atboot_einit=No boot action named $1 exists
+
+log_auth=Saved authentication options
+log_timeout=Saved timeout options
+log_iscsi=Saved iSCSI options
+log_add_connection=Added connection to $1 for $2
+log_delete_connection=Removed connection to $1 for $2
+log_delete_connections=Removed $1 connections
+log_atboot=Enabled iSCSI client at boot time
+log_delboot=Disabled iSCSI client at boot time

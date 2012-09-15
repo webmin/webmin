@@ -116,7 +116,7 @@ sub list_iscsi_connections
 my @rv;
 &clean_language();
 my $out = &backquote_command(
-		"$config{'iscsiadm'} -m session -o show -P 3 2>/dev/null");
+		"$config{'iscsiadm'} -m session -o show -P 3 -S 2>/dev/null");
 &reset_environment();
 my @lines = split(/\r?\n/, $out);
 if ($?/256 == 21) {

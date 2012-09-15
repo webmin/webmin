@@ -37,7 +37,7 @@ print &ui_table_row($text{'vconn_session'}, $conn->{'session'});
 
 print &ui_table_hr();
 
-foreach my $f ("username", "username_in") {
+foreach my $f ("username", "password", "username_in", "password_in") {
 	print &ui_table_row($text{'vconn_'.$f},
 		$conn->{$f} || "<i>$text{'vconn_none'}</i>");
 	}
