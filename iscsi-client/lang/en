@@ -57,6 +57,14 @@ timeout_elu_reset_timeout=Missing or non-numeric time to wait for logical unit r
 timeout_etgt_reset_timeout=Missing or non-numeric time to wait for target response before failing
 
 iscsi_title=iSCSI Options
+iscsi_header=Other iSCSI options
+iscsi_retry=Number of times to re-try login
+iscsi_cmds=Maximum commands queued per session
+iscsi_queue=Maximum commands queued per device
+iscsi_err=Failed to save iSCSI options
+iscsi_eretry=Missing or non-numeric number of times to re-try login
+iscsi_ecmds=Missing or non-numeric maximum commands queued per session
+iscsi_equeue=Missing or non-numeric maximum commands queued per device
 
 conns_title=iSCSI Connections
 conns_elist=Failed to list connections : $1
