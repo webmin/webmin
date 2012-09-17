@@ -1,5 +1,6 @@
 config_file=Full path to Open-iSCSI client configuration file,0
 initiator_file=Full path to initiator name file,0
+ifaces_dir=Full path to interfaces directory,0
 init_name=Bootup script names,0
 iscsiadm=Full path to iscsiadm command,0
 iscsiiname=Full path to iscsi-iname command,0
