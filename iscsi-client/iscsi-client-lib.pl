@@ -163,14 +163,15 @@ foreach my $l (@lines) {
 return \@rv;
 }
 
-# list_iscsi_targets(host, [port])
+# list_iscsi_targets(host, [port], [iface])
 # Returns an array ref listing available targets on some host, or an error 
 # message string
 sub list_iscsi_targets
 {
-my ($host, $port) = @_;
+my ($host, $port, $iface) = @_;
 my $cmd = "$config{'iscsiadm'} -m discovery -t sendtargets -p ".
-	  quotemeta($host).($port ? ":".quotemeta($port) : "");
+	  quotemeta($host).($port ? ":".quotemeta($port) : "").
+	  ($iface ? " -I ".quotemeta($iface) : "");
 &clean_language();
 my $out = &backquote_command("$cmd 2>&1");
 &reset_environment();
@@ -190,15 +191,16 @@ foreach my $l (@lines) {
 return \@rv;
 }
 
-# create_iscsi_connection(host, [port], [&target])
+# create_iscsi_connection(host, [port], [iface], [&target])
 # Attempts to connect to an iscsi server for the given target (or all targets)
 sub create_iscsi_connection
 {
-my ($host, $port, $target) = @_;
+my ($host, $port, $iface, $target) = @_;
 my $cmd = "$config{'iscsiadm'} -m node".
 	  ($target ? " -T ".quotemeta($target->{'name'}).":".
 			    quotemeta($target->{'target'}) : "").
 	  " -p ".quotemeta($host).($port ? ":".quotemeta($port) : "").
+	  ($iface ? " -I ".quotemeta($iface) : "").
 	  " --login";
 &clean_language();
 my $out = &backquote_command("$cmd 2>&1");
@@ -267,6 +269,39 @@ sub generate_initiator_name
 my $out = &backquote_command("$config{'iscsiiname'} 2>/dev/null");
 $out =~ s/\r?\n//;
 return $out;
+}
+
+# list_iscsi_ifaces()
+# Returns an array ref of details of all existing interfaces
+sub list_iscsi_ifaces
+{
+&clean_language();
+my $out = &backquote_command(
+		"$config{'iscsiadm'} -m iface -o show -P 1 2>/dev/null");
+&reset_environment();
+my @lines = split(/\r?\n/, $out);
+if ($?) {
+	return $lines[0];
+	}
+my @rv;
+my ($iface, $target);
+foreach my $l (@lines) {
+	if ($l =~ /^Iface:\s+(\S+)/) {
+		$iface = { 'name' => $1,
+			   'targets' => [ ] };
+		push(@rv, $iface);
+		}
+	elsif ($l =~ /Target:\s+(\S+):(\S+)/) {
+		$target = { 'name' => $1,
+			    'target' => $2 };
+		push(@{$iface->{'targets'}}, $target);
+		}
+	elsif ($l =~ /Portal:\s+(\S+):(\d+)/) {
+		$target->{'ip'} = $1;
+		$target->{'port'} = $2;
+		}
+	}
+return \@rv;
 }
 
 1;

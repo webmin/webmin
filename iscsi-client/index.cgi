@@ -15,12 +15,15 @@ if ($err) {
 	}
 
 my @links = ( "edit_auth.cgi", "edit_timeout.cgi",
-	      "edit_iscsi.cgi", "list_conns.cgi" );
+	      "edit_iscsi.cgi", "list_ifaces.cgi",
+	      "list_conns.cgi" );
 my @titles = ( $text{'auth_title'}, $text{'timeout_title'},
-	       $text{'iscsi_title'}, $text{'conns_title'} );
+	       $text{'iscsi_title'}, $text{'ifaces_title'},
+	       $text{'conns_title'} );
 my @icons = ( "images/auth.gif", "images/timeout.gif",
-	      "images/iscsi.gif", "images/conns.gif" );
-&icons_table(\@links, \@titles, \@icons, 4);
+	      "images/iscsi.gif", "images/ifaces.gif",
+	      "images/conns.gif" );
+&icons_table(\@links, \@titles, \@icons, 5);
 
 if ($config{'init_name'}) {
 	# Show start at boot button

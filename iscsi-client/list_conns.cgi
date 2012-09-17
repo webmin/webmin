@@ -47,6 +47,19 @@ print &ui_table_row($text{'conns_host'},
 print &ui_table_row($text{'conns_port'},
 	&ui_opt_textbox("port", undef, 5, $text{'default'}." (3260)"));
 
+# Interface to use
+my $ifaces = &list_iscsi_ifaces();
+if (ref($ifaces)) {
+	print &ui_table_row($text{'conns_iface'},
+		&ui_select("iface", undef,
+			   [ [ undef, "&lt;".$text{'conns_ifacedef'}."&gt;" ],
+			     map { $_->{'name'} } @$ifaces ]));
+	}
+else {
+	print &ui_table_row($text{'conns_iface'},
+			    &text('conns_ifaceerr', $ifaces));
+	}
+
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'conns_start'} ] ]);
 

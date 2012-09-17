@@ -18,7 +18,7 @@ $in{'port_def'} || $in{'port'} =~ /^\d+$/ ||
 
 # Get list of targets from the host
 my $targets = &list_iscsi_targets(
-	$in{'host'}, $in{'port_def'} ? undef : $in{'port'});
+	$in{'host'}, $in{'port_def'} ? undef : $in{'port'}, $in{'iface'});
 ref($targets) || &error(&text('add_etargets', $in{'host'}, $targets));
 @$targets || &error(&text('add_etargets2', $in{'host'}));
 
@@ -32,11 +32,14 @@ my %used = map { $_->{'name'}.":".$_->{'target'}, $_ }
 print &ui_form_start("add_conn.cgi", "post");
 print &ui_hidden("host", $in{'host'});
 print &ui_hidden("port", $in{'port_def'} ? undef : $in{'port'});
+print &ui_hidden("iface", $in{'iface'});
 print &ui_table_start($text{'conns_header'}, undef, 2);
 
 print &ui_table_row($text{'conns_host'}, $in{'host'});
 print &ui_table_row($text{'conns_port'},
 	$in{'port_def'} ? $text{'default'} : $in{'port'});
+print &ui_table_row($text{'conns_iface'},
+	$in{'iface'} || "<i>$text{'conns_ifacedef'}</i>");
 
 print &ui_table_row($text{'add_target'},
 	&ui_select("target", undef,

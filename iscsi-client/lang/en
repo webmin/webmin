@@ -66,6 +66,8 @@ iscsi_eretry=Missing or non-numeric number of times to re-try login
 iscsi_ecmds=Missing or non-numeric maximum commands queued per session
 iscsi_equeue=Missing or non-numeric maximum commands queued per device
 
+ifaces_title=iSCSI Interfaces
+
 conns_title=iSCSI Connections
 conns_elist=Failed to list connections : $1
 conns_ip=Server IP
@@ -82,6 +84,9 @@ conns_host=iSCSI server hostname or IP
 conns_port=iSCSI server port
 conns_start=Connect..
 conns_return=list of connections
+conns_iface=iSCSI interface
+conns_ifacedef=Choose automatically
+conns_ifaceerr=Failed to fetch interfaces : $1
 
 add_title=Add iSCSI Connection
 add_err=Failed to add iSCSI connection

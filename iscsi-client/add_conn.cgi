@@ -9,7 +9,7 @@ our (%text, %in);
 &error_setup($text{'add_err'});
 
 # Re-check the list of targets
-my $targets = &list_iscsi_targets($in{'host'}, $in{'port'});
+my $targets = &list_iscsi_targets($in{'host'}, $in{'port'}, $in{'iface'});
 ref($targets) || &error(&text('add_etargets', $in{'host'}, $targets));
 my $target = undef;
 if ($in{'target'}) {
@@ -19,7 +19,8 @@ if ($in{'target'}) {
 	}
 
 # Try to make the connection
-my $err = &create_iscsi_connection($in{'host'}, $in{'port'}, $target);
+my $err = &create_iscsi_connection($in{'host'}, $in{'port'},
+				   $in{'iface'}, $target);
 &error($err) if ($err);
 
 &webmin_log("add", "connection", $in{'host'},
