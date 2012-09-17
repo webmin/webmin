@@ -5,3 +5,4 @@ depends=net
 longdesc=Configure a firewall using the IPFilter package, by creating and editing rules.
 desc_ca=Tallafocs IPFIlter
 desc_nl=IPFilter Firewall
+desc_de=IPFilter-Firewall 

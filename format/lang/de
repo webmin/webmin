@@ -13,7 +13,7 @@ edit_fs=Dateisystem
 edit_fsck=Reparieren
 edit_fsckdesc1=Ruft das <tt>FSCK</tt> Programm auf, um das Dateisystem zu reparieren, damit es gemountet werden kann. Dies kann notwendig sein, wenn das System nicht korrekt heruntergefahren wurde.
 edit_fsckdesc2=Sie k&ouml;nnen das Dateisystem auf dieser Partition nicht pr&uuml;fen, es wurde bisher nicht erstellt.
-edit_fsckdesc3=Sie k&ouml;nnen das Dateisystem auf dieser Partition  nicht pr&uuml;fen, da es zur Zeit gemountet ist. Benutzen Sie das <a href=/mount/> Dateisystemmodul </a> um es erst zu unmounten.
+edit_fsckdesc3=Sie k&ouml;nnen das Dateisystem auf dieser Partition  nicht pr&uuml;fen, da es zur Zeit gemountet ist. Benutzen Sie das <a href=/mount/>Dateisystemmodul</a> um es erst zu unmounten.
 edit_fsckdesc4=Sie k&ouml;nnen das Dateisystem auf dieser Partition nicht pr&uuml;fen, sie hat kein Dateisystem.
 edit_fsckdesc5=Sie k&ouml;nnen das Dateisystem auf dieser Partition nicht pr&uuml;fen, da nur <tt>UFS</tt> Dateisysteme gepr&uuml;ft werden k&ouml;nnen.
 edit_fsckfs=Dateisystem reparieren
@@ -110,10 +110,10 @@ select_device=SCSI-Controller $1 Ziel $2 Ger&auml;t $3
 select_idedevice=IDE-Ger&auml;t $1
 select_idepart=IDE-Ger&auml;t $1 Partition $2
 select_part=SCSI-Controller $1 Ziel $2 Ger&auml;t $3 Partition $4
-tunefs_a=max. Anzahl zusammenh&auml;ngender Bl&ouml;cke
+tunefs_a=Max. Anzahl zusammenh&auml;ngender Bl&ouml;cke
 tunefs_d=Rotationsverz&ouml;gerung
 tunefs_desc=Dieses Formular erlaubt Ihnen einige Parameter von $1 auf $2 einzustellen. Vorhandene Dateien auf diesem Dateisystem werden nicht besch&auml;digt.
-tunefs_e=max. Dateibl&ouml;cke pro Zylindergruppe
+tunefs_e=Max. Dateibl&ouml;cke pro Zylindergruppe
 tunefs_ecannot=Sie sind nicht berechtigt die Einstellungen auf dieser Festplatte zu ver&auml;ndern.
 tunefs_err=Dateisystem konnte nicht eingestellt werden
 tunefs_exec=F&uuml;hre Befehl $1 aus ...

@@ -48,4 +48,4 @@ save_ehost=Der Host '$1' existiert nicht
 save_ero=Sie haben keine Hosts gelistet, um Nur-Lese freizugeben mit
 save_eroot=Sie haben keine Hosts aufgelistet, um root freizugegeben mit
 save_err=Fehlgeschlagen Freigabe zu speichern
-save_erw=Sie haben keine Liste alle Hosts zu Lese-und Schreibzugriff freigeben
+save_erw=Sie haben keine Liste alle Hosts zu Lese- und Schreibzugriff freigeben
