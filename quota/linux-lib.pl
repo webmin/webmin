@@ -766,7 +766,7 @@ if ($_[2] =~ /^ext\d+$/) {
 	#		}
 	#	}
 	}
-elsif ($_[0] eq "xfs") {
+elsif ($_[2] eq "xfs") {
 	return 1024;
 	}
 return undef;
