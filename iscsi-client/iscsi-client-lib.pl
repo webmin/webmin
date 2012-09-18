@@ -288,6 +288,7 @@ my ($iface, $target);
 foreach my $l (@lines) {
 	if ($l =~ /^Iface:\s+(\S+)/) {
 		$iface = { 'name' => $1,
+			   'builtin' => ($1 eq "default" || $1 eq "iser"),
 			   'targets' => [ ] };
 		push(@rv, $iface);
 		}
@@ -301,7 +302,60 @@ foreach my $l (@lines) {
 		$target->{'port'} = $2;
 		}
 	}
+# Fetch more info for each interface
+foreach my $iface (@rv) {
+	&clean_language();
+	my $out = &backquote_command(
+		"$config{'iscsiadm'} -m iface -I $iface->{'name'} 2>/dev/null");
+	&reset_environment();
+	foreach my $il (split(/\r?\n/, $out)) {
+		if ($il !~ /^#/ && $il =~ /^(iface.\S+)\s*=\s*(\S+)/) {
+			$iface->{$1} = $2 eq "<empty>" ? undef : $2;
+			}
+		}
+	}
 return \@rv;
+}
+
+# create_iscsi_interface(&iface)
+# Create a new interface from the given hash
+sub create_iscsi_interface
+{
+my ($iface) = @_;
+
+# Create the initial interface
+my $cmd = "$config{'iscsiadm'} -m iface -o create".
+	  " -I ".quotemeta($iface->{'name'});
+&clean_language();
+my $out = &backquote_command("$cmd 2>&1");
+&reset_environment();
+return $out if ($?);
+
+# Apply various params
+foreach my $k (grep { /^iface\./ } keys %$iface) {
+	my $cmd = "$config{'iscsiadm'} -m iface -o update".
+          " -I ".quotemeta($iface->{'name'}).
+	  " -n ".quotemeta($k)." -v ".quotemeta($iface->{$k});
+	&clean_language();
+	my $out = &backquote_command("$cmd 2>&1");
+	&reset_environment();
+	return "Failed to set $k : $out" if ($?);
+	}
+
+return undef;
+}
+
+# delete_iscsi_iface(&iface)
+# Delete one iSCSI interface
+sub delete_iscsi_iface
+{
+my ($iface) = @_;
+my $cmd = "$config{'iscsiadm'} -m iface -o delete".
+	  " -I ".quotemeta($iface->{'name'});
+&clean_language();
+my $out = &backquote_command("$cmd 2>&1");
+&reset_environment();
+return $? ? $out : undef;
 }
 
 1;

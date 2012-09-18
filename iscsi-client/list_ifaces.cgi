@@ -15,14 +15,16 @@ if (@$ifaces) {
 	my @tds = ( "width=5" );
 	print &ui_form_start("delete_ifaces.cgi");
 	print &ui_columns_start(
-		[ "", $text{'ifaces_name'}, $text{'ifaces_uses'} ],
+		[ "", $text{'ifaces_name'}, $text{'ifaces_transport'},
+		  $text{'ifaces_uses'} ],
 		100, 0, \@tds);
 	foreach my $c (@$ifaces) {
 		my $uses = join(" | ", map { &text('ifaces_on', $_->{'target'}, $_->{'ip'}) } @{$c->{'targets'}});
 		print &ui_checked_columns_row([
 			$c->{'name'},
+			uc($c->{'iface.transport_name'}),
 			$uses || "<i>$text{'ifaces_nouses'}</i>",
-			], \@tds, "d", $c->{'name'});
+			], \@tds, "d", $c->{'name'}, 0, $c->{'builtin'});
 		}
 	print &ui_columns_end();
 	print &ui_form_end([ [ undef, $text{'ifaces_delete'} ] ]);
@@ -39,7 +41,35 @@ print &ui_table_start($text{'ifaces_header'}, undef, 2);
 print &ui_table_row($text{'ifaces_name'},
 	&ui_textbox("name", undef, 40));
 
-# XXX??
+# Transport type
+print &ui_table_row($text{'ifaces_transport'},
+	&ui_select("transport", "tcp",
+		   [ [ "tcp", "TCP" ],
+		     [ "iser", "ISER" ],
+		     [ "cxgb3i", "Chelsio CXGB3I" ],
+		     [ "bnx2i", "Broadcom BNX2I" ],
+		     [ "be2iscsi", "ServerEngines BE2ISCSI" ] ]));
+
+# Source IP address
+print &ui_table_row($text{'ifaces_ipaddress'},
+	&ui_opt_textbox("ipaddress", undef, 20, $text{'ifaces_ipaddressdef'}));
+
+# MAC address
+print &ui_table_row($text{'ifaces_hwaddress'},
+	&ui_opt_textbox("hwaddress", undef, 30, $text{'ifaces_ipaddressdef'}));
+
+# Source interface
+my @active;
+if (&foreign_check("net")) {
+	&foreign_require("net");
+	@active = grep { $_->{'name'} ne 'lo' } &net::active_interfaces();
+	}
+if (@active) {
+	print &ui_table_row($text{'ifaces_ifacename'},
+		&ui_select("ifacename", undef,
+			   [ map { $_->{'fullname'} }
+				 grep { $_->{'virtual'} eq '' } @active ]));
+	}
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'create'} ] ]);

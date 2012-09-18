@@ -15,6 +15,12 @@ if ($type eq "connection") {
 elsif ($type eq "connections") {
 	return &text('log_'.$action.'_'.$type, $object);
 	}
+elsif ($type eq "iface") {
+	return &text('log_'.$action.'_'.$type, &html_escape($object));
+	}
+elsif ($type eq "ifaces") {
+	return &text('log_'.$action.'_'.$type, $object);
+	}
 else {
 	return $text{'log_'.$action};
 	}
