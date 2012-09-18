@@ -67,6 +67,15 @@ iscsi_ecmds=Missing or non-numeric maximum commands queued per session
 iscsi_equeue=Missing or non-numeric maximum commands queued per device
 
 ifaces_title=iSCSI Interfaces
+ifaces_elist=Failed to list interfaces : $1
+ifaces_name=Interface name
+ifaces_uses=Used by
+ifaces_none=No iSCSI interfaces are currently active.
+ifaces_return=interfaces list
+ifaces_header=Add iSCSI interface
+ifaces_delete=Remove Selected Interfaces
+ifaces_on=Target $1 on $2
+ifaces_nouses=No connections
 
 conns_title=iSCSI Connections
 conns_elist=Failed to list connections : $1
