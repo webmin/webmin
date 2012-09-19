@@ -20,7 +20,7 @@ function toggleview (id1,id2) {
 		var obj1 = document.getElementById(id1);
 		var obj2 = document.getElementById(id2);
 		(obj1.className=="itemshown") ? obj1.className="itemhidden" : obj1.className="itemshown"; 
-		(obj1.className=="itemshown") ? obj2.innerHTML="<img border='0' src='images/open.gif' alt='[&ndash;]'>" : obj2.innerHTML="<img border='0' src='images/closed.gif' alt='[+]'>"; 
+		(obj1.className=="itemshown") ? obj2.innerHTML="<img border='0' src='images/gray-open.gif' alt='[&ndash;]'>" : obj2.innerHTML="<img border='0' src='images/gray-closed.gif' alt='[+]'>"; 
 	}
 
 // Show the logs for the current module in the right
@@ -158,7 +158,7 @@ sub print_category_opener
 {
 local ($c, $status, $label) = @_;
 $label = $c eq "others" ? $text{'left_others'} : $label;
-local $img = $status ? "open.gif" : "closed.gif";
+local $img = $status ? "gray-open.gif" : "gray-closed.gif";
 
 # Show link to close or open catgory
 print "<div class='linkwithicon'>";
