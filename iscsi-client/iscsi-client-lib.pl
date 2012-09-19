@@ -1,6 +1,4 @@
 # Functions for editing the Open-iSCSI configuration file
-#
-# http://www.server-world.info/en/note?os=CentOS_6&p=iscsi&f=2
 
 BEGIN { push(@INC, ".."); };
 use strict;
@@ -206,7 +204,7 @@ my $cmd = "$config{'iscsiadm'} -m node".
 	  ($iface ? " -I ".quotemeta($iface) : "").
 	  " --login";
 &clean_language();
-my $out = &backquote_command("$cmd 2>&1");
+my $out = &backquote_logged("$cmd 2>&1");
 &reset_environment();
 return $? ? $out : undef;
 }
@@ -221,7 +219,7 @@ my $cmd = "$config{'iscsiadm'} -m node".
 	  " -p ".quotemeta($conn->{'ip'}).":".quotemeta($conn->{'port'}).
 	  " --logout";
 &clean_language();
-my $out = &backquote_command("$cmd 2>&1");
+my $out = &backquote_logged("$cmd 2>&1");
 &reset_environment();
 return $? ? $out : undef;
 }
@@ -330,7 +328,7 @@ my ($iface) = @_;
 my $cmd = "$config{'iscsiadm'} -m iface -o new".
 	  " -I ".quotemeta($iface->{'name'});
 &clean_language();
-my $out = &backquote_command("$cmd 2>&1");
+my $out = &backquote_logged("$cmd 2>&1");
 &reset_environment();
 return $out if ($?);
 
@@ -340,7 +338,7 @@ foreach my $k (grep { /^iface\./ } keys %$iface) {
           " -I ".quotemeta($iface->{'name'}).
 	  " -n ".quotemeta($k)." -v ".quotemeta($iface->{$k});
 	&clean_language();
-	my $out = &backquote_command("$cmd 2>&1");
+	my $out = &backquote_logged("$cmd 2>&1");
 	&reset_environment();
 	return "Failed to set $k : $out" if ($?);
 	}
@@ -356,7 +354,7 @@ my ($iface) = @_;
 my $cmd = "$config{'iscsiadm'} -m iface -o delete".
 	  " -I ".quotemeta($iface->{'name'});
 &clean_language();
-my $out = &backquote_command("$cmd 2>&1");
+my $out = &backquote_logged("$cmd 2>&1");
 &reset_environment();
 return $? ? $out : undef;
 }
