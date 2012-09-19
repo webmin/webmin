@@ -22,6 +22,34 @@ foreach my $d (@d) {
 if (!$in{'confirm'}) {
 	&ui_print_header(undef, $text{'difaces_title'}, "");
 
+	# Find interface users
+	my @users;
+	foreach my $iface (@delifaces) {
+		foreach my $target (@{$iface->{'targets'}}) {
+			$target->{'iface'} = $iface->{'name'};
+			push(@users, $target);
+			}
+		}
+
+	# Build list of users
+	my $utable = "";
+	if (@users) {
+		$utable = $text{'difaces_users'}."<p>\n";
+		$utable .= &ui_columns_start([
+			$text{'ifaces_name'},
+			$text{'difaces_ip'},
+			$text{'difaces_target'},
+			], 50);
+		foreach my $u (@users) {
+                        $utable .= &ui_columns_row([
+				$u->{'iface'},
+				$u->{'ip'},
+				$u->{'target'},
+				]);
+			}
+		$utable .= &ui_columns_end();
+		}
+
 	# Ask the user if he is sure
 	print &ui_confirmation_form(
 		"delete_ifaces.cgi",
@@ -30,7 +58,8 @@ if (!$in{'confirm'}) {
 			      "<tt>".$delifaces[0]->{'name'}."</tt>") :
 			&text('difaces_rusure', scalar(@delifaces)),
 		[ map { [ "d", $_ ] } @d ],
-		[ [ "confirm", $text{'difaces_confirm'} ] ]);
+		[ [ "confirm", $text{'difaces_confirm'} ] ],
+		$utable);
 
 	&ui_print_footer("list_ifaces.cgi", $text{'ifaces_return'});
 	}
@@ -43,7 +72,8 @@ else {
 		}
 
 	if (@delifaces == 1) {
-		&webmin_log("delete", "iface", $delifaces[0]->{'name'});
+		&webmin_log("delete", "iface", $delifaces[0]->{'name'},
+			    $delifaces[0]);
 		}
 	else {
 		&webmin_log("delete", "ifaces", scalar(@delifaces));

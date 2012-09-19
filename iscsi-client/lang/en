@@ -81,6 +81,13 @@ ifaces_ipaddress=Source IP address
 ifaces_hwaddress=MAC address
 ifaces_ifacename=Source interface
 ifaces_ipaddressdef=Automatic
+ifaces_notset=Automatic
+
+iadd_err=Failed to add interface
+iadd_eclash=An interface named $1 already exists
+iadd_eipaddress=Missing or invalid source IP address
+iadd_ehwaddress=Missing or invalid MAC address
+iadd_ename=Interface name is missing or contains invalid characters
 
 difaces_err=Failed to remove interfaces
 difaces_enone=None selected
@@ -89,6 +96,9 @@ difaces_title=Remove iSCSI Interfaces
 difaces_rusure=Are you sure you want to remove the $1 selected interfaces?
 difaces_rusure1=Are you sure you want to remove the interface $1?
 difaces_confirm=Remove Interfaces
+difaces_target=iSCSI target
+difaces_ip=iSCSI server
+difaces_users=Some connection using these interfaces are currently active, and will fail to operate when the interfaces are removed :
 
 conns_title=iSCSI Connections
 conns_elist=Failed to list connections : $1

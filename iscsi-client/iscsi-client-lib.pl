@@ -140,6 +140,9 @@ foreach my $l (@lines) {
 	elsif ($l =~ /SID:\s+(\d+)/) {
 		$conn->{'num'} = $1;
 		}
+	elsif ($l =~ /Iface\s+Name:\s+(\S+)/) {
+		$conn->{'iface'} = $1;
+		}
 	elsif ($l =~ /Iface\s+Transport:\s+(\S+)/) {
 		$conn->{'proto'} = $1;
 		}
@@ -324,7 +327,7 @@ sub create_iscsi_interface
 my ($iface) = @_;
 
 # Create the initial interface
-my $cmd = "$config{'iscsiadm'} -m iface -o create".
+my $cmd = "$config{'iscsiadm'} -m iface -o new".
 	  " -I ".quotemeta($iface->{'name'});
 &clean_language();
 my $out = &backquote_command("$cmd 2>&1");

@@ -16,6 +16,7 @@ if (@$ifaces) {
 	print &ui_form_start("delete_ifaces.cgi");
 	print &ui_columns_start(
 		[ "", $text{'ifaces_name'}, $text{'ifaces_transport'},
+		  $text{'ifaces_ifacename'}, $text{'ifaces_ipaddress'},
 		  $text{'ifaces_uses'} ],
 		100, 0, \@tds);
 	foreach my $c (@$ifaces) {
@@ -23,6 +24,10 @@ if (@$ifaces) {
 		print &ui_checked_columns_row([
 			$c->{'name'},
 			uc($c->{'iface.transport_name'}),
+			$c->{'iface.net_ifacename'} ||
+				"<i>$text{'ifaces_notset'}</i>",
+			$c->{'iface.ipaddress'} ||
+				"<i>$text{'ifaces_notset'}</i>",
 			$uses || "<i>$text{'ifaces_nouses'}</i>",
 			], \@tds, "d", $c->{'name'}, 0, $c->{'builtin'});
 		}
@@ -67,7 +72,8 @@ if (&foreign_check("net")) {
 if (@active) {
 	print &ui_table_row($text{'ifaces_ifacename'},
 		&ui_select("ifacename", undef,
-			   [ map { $_->{'fullname'} }
+			   [ [ '', "&lt;$text{'ifaces_ipaddressdef'}&gt;" ],
+			     map { $_->{'fullname'} }
 				 grep { $_->{'virtual'} eq '' } @active ]));
 	}
 

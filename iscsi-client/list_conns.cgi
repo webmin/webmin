@@ -16,14 +16,18 @@ if (@$conns) {
 	print &ui_form_start("delete_conns.cgi");
 	print &ui_columns_start(
 		[ "", $text{'conns_ip'}, $text{'conns_sport'},
-		      $text{'conns_name'}, $text{'conns_target'},
-		      $text{'conns_username'}, $text{'conns_device'} ],
+		      $text{'conns_iface'}, $text{'conns_name'},
+		      $text{'conns_target'}, $text{'conns_username'},
+		      $text{'conns_device'} ],
 		100, 0, \@tds);
 	foreach my $c (@$conns) {
 		print &ui_checked_columns_row([
 			"<a href='view_conn.cgi?num=$c->{'num'}'>".
 			  $c->{'ip'}."</a>",
-			$c->{'port'}, $c->{'name'}, $c->{'target'},
+			$c->{'port'},
+			$c->{'iface'},
+			$c->{'name'},
+			$c->{'target'},
 			$c->{'username'} || "<i>$text{'conns_nouser'}</i>",
 			$c->{'device'},
 			], \@tds, "d", $c->{'num'});
