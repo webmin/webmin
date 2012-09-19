@@ -1,0 +1,23 @@
+left_login=ログイン名: $1
+left_home=システム情報
+left_oc=提供：OpenCountry
+
+right_header0=システム情報
+right_host=ホスト名
+right_os=オペレーティングシステム
+right_login=ログイン中のユーザ
+right_from=接続元
+right_webmin=Webmin バージョン
+right_usermin=Usermin バージョン
+right_cpu=CPU 平均負荷
+right_load=$1 (1分) $2 (5分) $3 (15分)
+right_real=実メモリ
+right_virt=仮想メモリ
+right_procs=走行プロセス数
+right_disk=ローカルディスク容量
+right_used=合計 $1 , 使用 $2
+right_out=$1&nbsp;of&nbsp;$2
+right_quota=ディスク使用量とクオータ
+right_header5=アカウント情報
+right_uquota=ディスククオータと使用量
+right_time=サーバ上の時刻

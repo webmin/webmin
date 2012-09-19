@@ -1,0 +1,16 @@
+cs_header=D0E0FC class='maintitle'
+cs_table=f5f5f5 class='mainbody'
+cs_link=376ebd
+texttitles=1
+functions=theme.pl
+applet_body=e8e8ea
+applet_text=333333
+applet_light_edge=D0E0F0
+applet_dark_edge=333366
+applet_light_edge_hi=D0E0FC
+applet_dark_edge_hi=333350
+applet_dark_bg=8888aa
+applet_light_bg=ffffff
+noindex=1
+inframe=1
+framed=1

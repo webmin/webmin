@@ -72,7 +72,7 @@ else {
 	  "mailcap", "blue-theme", "ldap-client", "phpini", "filter",
 	  "bacula-backup", "ldap-server", "exim", "tcpwrappers",
 	  "package-updates", "system-status", "webmincron", "ajaxterm",
-	  "shorewall6", "iscsi-server", "iscsi-client",
+	  "shorewall6", "iscsi-server", "iscsi-client", "gray-theme",
 	  );
 	}
 @dirlist = ( "Webmin" );
