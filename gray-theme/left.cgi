@@ -54,7 +54,10 @@ else {
 EOF
 
 # Show login
+print "<div class='wrapper'>\n";
+print "<table id='main' width='100%'><tbody><tr><td>\n";
 print &text('left_login', $remote_user),"<br>\n";
+print "<hr>\n";
 
 if ($gconfig{"notabs_${base_remote_user}"} == 2 ||
     $gconfig{"notabs_${base_remote_user}"} == 0 && $gconfig{'notabs'} ||
@@ -150,6 +153,8 @@ if ($ENV{'HTTP_WEBMIN_SERVERS'}) {
 	print "<div class='aftericon'><a target=_top href='$ENV{'HTTP_WEBMIN_SERVERS'}'>$text{'header_servers'}</a></div>";
 	}
 
+print "</td></tr></tbody></table>\n";
+print "</div>\n";
 &popup_footer();
 
 # print_category_opener(name, &allcats, label)
