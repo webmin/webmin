@@ -1,0 +1,6 @@
+config_file=Voller Pfad zur Open-iSCSI-Client-Konfigurationsdatei,0
+initiator_file=Voller Pfad zur initiator name Datei,0
+ifaces_dir=Voller Pfad zum Schnittstellen Verzeichnis,0
+init_name=Boot-Script-Namen,0
+iscsiadm=Voller Pfad zum iscsiadm Befehl,0
+iscsiiname=Voller Pfad zum iscsi-iname Befehl,0

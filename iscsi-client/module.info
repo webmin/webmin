@@ -3,3 +3,4 @@ os_support=*-linux
 category=hardware
 longdesc=Access disk devices across the network using the iSCSI protocol.
 depends=fdisk mount lvm
+desc_de=iSCSI-Client 
