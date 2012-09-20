@@ -31,7 +31,7 @@ if (&get_product_name() eq 'webmin') {
 
 if ($level == 0) {
 	# Show general system information
-	print "<table width=70%>\n";
+	print &ui_table_start(undef, undef, 2);
 
 	# Ask status module for collected info
 	&foreign_require("system-status");
@@ -41,45 +41,39 @@ if ($level == 0) {
 	$ip = $info && $info->{'ips'} ? $info->{'ips'}->[0]->[0] :
 				&to_ipaddress(get_system_hostname());
 	$ip = " ($ip)" if ($ip);
-	print "<tr> <td><b>$text{'right_host'}</b></td>\n";
-	print "<td>",&get_system_hostname(),$ip,"</td> </tr>\n";
+	print &ui_table_row($text{'right_host'},
+		&get_system_hostname().$ip);
 
 	# Operating system
-	print "<tr> <td><b>$text{'right_os'}</b></td>\n";
-	if ($gconfig{'os_version'} eq '*') {
-		print "<td>$gconfig{'real_os_type'}</td> </tr>\n";
-		}
-	else {
-		print "<td>$gconfig{'real_os_type'} $gconfig{'real_os_version'}</td> </tr>\n";
-		}
+	print &ui_table_row($text{'right_os'},
+		$gconfig{'os_version'} eq '*' ?
+		    $gconfig{'real_os_type'} :
+		    $gconfig{'real_os_type'}." ".$gconfig{'real_os_version'});
 
 	# Webmin version
-	print "<tr> <td><b>$text{'right_webmin'}</b></td>\n";
-	print "<td>",&get_webmin_version(),"</td> </tr>\n";
+	print &ui_table_row($text{'right_webmin'},
+		&get_webmin_version());
 
 	# System time
 	$tm = localtime(time());
-	print "<tr> <td><b>$text{'right_time'}</b></td>\n";
-	if (&foreign_available("time")) {
-		$tm = "<a href=time/>$tm</a>";
-		}
-	print "<td>$tm</td> </tr>\n";
+	print &ui_table_row($text{'right_time'},
+		&foreign_available("time") ? "<a href=time/>$tm</a>" : $tm);
 
 	# Kernel and CPU
 	if ($info->{'kernel'}) {
-		print "<tr> <td><b>$text{'right_kernel'}</b></td>\n";
-		print "<td>",&text('right_kernelon',
-				   $info->{'kernel'}->{'os'},
-				   $info->{'kernel'}->{'version'},
-				   $info->{'kernel'}->{'arch'}),"</td> </tr>\n";
+		print &ui_table_row($text{'right_kernel'},
+			&text('right_kernelon',
+			      $info->{'kernel'}->{'os'},
+			      $info->{'kernel'}->{'version'},
+			      $info->{'kernel'}->{'arch'}));
 		}
 
 	# CPU type and cores
 	if ($info->{'load'}) {
 		@c = @{$info->{'load'}};
 		if (@c > 3) {
-			print "<tr> <td><b>$text{'right_cpuinfo'}</b></td>\n";
-			print "<td>",&text('right_cputype', @c),"</td> </tr>\n";
+			print &ui_table_row($text{'right_cpuinfo'},
+				&text('right_cputype', @c));
 			}
 		}
 
@@ -97,78 +91,66 @@ if ($level == 0) {
 		$uptime = &text('right_upmins', $m);
 		}
 	if ($uptime) {
-		print "<tr> <td><b>$text{'right_uptime'}</b></td>\n";
-		print "<td>$uptime</td> </tr>\n";
+		print &ui_table_row($text{'right_uptime'}, $uptime);
 		}
 
 	# Running processes
 	if (&foreign_check("proc")) {
 		@procs = &proc::list_processes();
 		$pr = scalar(@procs);
-		print "<tr> <td><b>$text{'right_procs'}</b></td>\n";
-		if (&foreign_available("proc")) {
-			$pr = "<a href=proc/>$pr</a>";
-			}
-		print "<td>$pr</td> </tr>\n";
+		print &ui_table_row($text{'right_procs'},
+			&foreign_available("proc") ? "<a href=proc/>$pr</a>"
+						   : $pr);
 		}
 
 	# Load averages
 	if ($info->{'load'}) {
 		@c = @{$info->{'load'}};
 		if (@c) {
-			print "<tr> <td><b>$text{'right_cpu'}</b></td>\n";
-			print "<td>",&text('right_load', @c),"</td> </tr>\n";
+			print &ui_table_row($text{'right_cpu'},
+				&text('right_load', @c));
 			}
 		}
 
 	# CPU usage
 	if ($info->{'cpu'}) {
 		@c = @{$info->{'cpu'}};
-		print "<tr> <td><b>$text{'right_cpuuse'}</b></td>\n";
-		print "<td>",&text('right_cpustats', @c),"</td> </tr>\n";
+		print &ui_table_row($text{'right_cpuuse'},
+			&text('right_cpustats', @c));
 		}
 
 	# Memory usage
 	if ($info->{'mem'}) {
 		@m = @{$info->{'mem'}};
 		if (@m && $m[0]) {
-			print "<tr> <td><b>$text{'right_real'}</b></td>\n";
-			print "<td>",&text('right_used',
-				&nice_size($m[0]*1024),
-				&nice_size(($m[0]-$m[1])*1024)),
-			      "</td> </tr>\n";
-			print "<tr> <td></td>\n";
-			print "<td>",&bar_chart($m[0], $m[0]-$m[1], 1),
-			      "</td> </tr>\n";
+			print &ui_table_row($text{'right_real'},
+				&text('right_used',
+				      &nice_size($m[0]*1024),
+				      &nice_size(($m[0]-$m[1])*1024))."<br>\n".
+				&bar_chart($m[0], $m[0]-$m[1], 1));
 			}
 
 		if (@m && $m[2]) {
-			print "<tr> <td><b>$text{'right_virt'}</b></td>\n";
-			print "<td>",&text('right_used',
-				&nice_size($m[2]*1024),
-				&nice_size(($m[2]-$m[3])*1024)),
-			      "</td> </tr>\n";
-			print "<tr> <td></td>\n";
-			print "<td>",&bar_chart($m[2], $m[2]-$m[3], 1),
-			      "</td> </tr>\n";
+			print &ui_table_row($text{'right_virt'},
+				&text('right_used',
+			 	      &nice_size($m[2]*1024),
+				      &nice_size(($m[2]-$m[3])*1024))."<br>\n".
+				&bar_chart($m[2], $m[2]-$m[3], 1));
 			}
 		}
 
 	# Disk space on local drives
 	if ($info->{'disk_total'}) {
 		($total, $free) = ($info->{'disk_total'}, $info->{'disk_free'});
-		print "<tr> <td><b>$text{'right_disk'}</b></td>\n";
-		print "<td>",&text('right_used',
-			   &nice_size($total),
-			   &nice_size($total-$free)),"</td> </tr>\n";
-		print "<tr> <td></td>\n";
-		print "<td>",&bar_chart($total, $total-$free, 1),
-		      "</td> </tr>\n";
+		print &ui_table_row($text{'right_disk'},
+			&text('right_used',
+			      &nice_size($total),
+			      &nice_size($total-$free))."<br>\n".
+			&bar_chart($total, $total-$free, 1));
 		}
 
 	# Package updates
 	if ($info->{'poss'}) {
-		print "<tr> <td><b>$text{'right_updates'}</b></td>\n";
 		@poss = @{$info->{'poss'}};
 		@secs = grep { $_->{'security'} } @poss;
 		if (@poss && @secs) {
@@ -184,10 +166,10 @@ if ($level == 0) {
 		if (&foreign_available("package-updates")) {
 			$msg = "<a href='package-updates/index.cgi?mode=updates'>$msg</a>";
 			}
-		print "<td>$msg</td> </tr>\n";
+		print &ui_table_row($text{'right_updates'}, $msg);
 		}
 
-	print "</table>\n";
+	print &ui_table_end();
 
 	# Check for incorrect OS
 	if (&foreign_check("webmin")) {
@@ -198,27 +180,26 @@ if ($level == 0) {
 elsif ($level == 3) {
 	# Show Usermin user's information
 	print "<h3>$text{'right_header5'}</h3>\n";
-	print "<table width=70%>\n";
+	print &ui_table_start(undef, undef, 2);
 
 	# Host and login info
-	print "<tr> <td><b>$text{'right_host'}</b></td>\n";
-	print "<td>",&get_system_hostname(),"</td> </tr>\n";
+	print &ui_table_row($text{'right_host'},
+		&get_system_hostname());
 
-	print "<tr> <td><b>$text{'right_os'}</b></td>\n";
-	if ($gconfig{'os_version'} eq '*') {
-		print "<td>$gconfig{'real_os_type'}</td> </tr>\n";
-		}
-	else {
-		print "<td>$gconfig{'real_os_type'} $gconfig{'real_os_version'}</td> </tr>\n";
-		}
+	# Operating system
+	print &ui_table_row($text{'right_os'},
+		$gconfig{'os_version'} eq '*' ?
+		    $gconfig{'real_os_type'} :
+		    $gconfig{'real_os_type'}." ".$gconfig{'real_os_version'});
 
-	print "<tr> <td><b>$text{'right_usermin'}</b></td>\n";
-	print "<td>",&get_webmin_version(),"</td> </tr>\n";
+	# Webmin version
+	print &ui_table_row($text{'right_usermin'},
+		&get_webmin_version());
 
 	# System time
 	$tm = localtime(time());
-	print "<tr> <td><b>$text{'right_time'}</b></td>\n";
-	print "<td>$tm</td> </tr>\n";
+	print &ui_table_row($text{'right_time'},
+		&foreign_available("time") ? "<a href=time/>$tm</a>" : $tm);
 
 	# Disk quotas
 	if (&foreign_installed("quota")) {
@@ -238,16 +219,14 @@ elsif ($level == 3) {
 			}
 		if ($quota) {
 			$bsize = $quota::config{'block_size'};
-			print "<tr> <td><b>$text{'right_uquota'}</b></td>\n";
-			print "<td>",&text('right_out',
-				&nice_size($usage*$bsize),
-				&nice_size($quota*$bsize)),"</td> </tr>\n";
-			print "<tr> <td></td>\n";
-			print "<td>",&bar_chart($quota, $usage, 1),
-			      "</td> </tr>\n";
+			print &ui_table_row($text{'right_uquota'},
+				&text('right_out',
+				      &nice_size($usage*$bsize),
+				      &nice_size($quota*$bsize))."<br>\n".
+				&bar_chart($quota, $usage, 1));
 			}
 		}
-	print "</table>\n";
+	print &ui_table_end();
 	}
 
 print "</center>\n";
