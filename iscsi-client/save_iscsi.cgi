@@ -10,6 +10,10 @@ our (%text, %config, %in);
 my $conf = &get_iscsi_config();
 &error_setup($text{'iscsi_err'});
 
+# Start sessions at boot?
+&save_directive($conf, "node.startup",
+		$in{'startup'} ? 'automatic' : 'manual');
+
 # Login re-try limit
 $in{'retry_def'} || $in{'retry'} =~ /^[1-9]\d*/ ||
 	&error($text{'iscsi_eretry'});

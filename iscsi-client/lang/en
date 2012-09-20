@@ -58,6 +58,7 @@ timeout_etgt_reset_timeout=Missing or non-numeric time to wait for target respon
 
 iscsi_title=iSCSI Options
 iscsi_header=Other iSCSI options
+iscsi_startup=Connect sessions at boot time?
 iscsi_retry=Number of times to re-try login
 iscsi_cmds=Maximum commands queued per session
 iscsi_queue=Maximum commands queued per device

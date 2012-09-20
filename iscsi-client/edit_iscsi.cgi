@@ -12,6 +12,11 @@ my $conf = &get_iscsi_config();
 print &ui_form_start("save_iscsi.cgi", "post");
 print &ui_table_start($text{'iscsi_header'}, undef, 2);
 
+# Start sessions at boot?
+my $startup = &find_value($conf, "node.startup");
+print &ui_table_row($text{'iscsi_startup'},
+	&ui_yesno_radio("startup", $startup eq "automatic" ? 1 : 0));
+
 # Login re-try limit
 my $retry = &find_value($conf, "node.session.initial_login_retry_max");
 print &ui_table_row($text{'iscsi_retry'},
