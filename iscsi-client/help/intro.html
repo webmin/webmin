@@ -1,0 +1,25 @@
+<header>iSCSI Client</header>
+
+This module allows you to access disk devices shared using the iSCSI protocol 
+by other systems on your network. Once a device has been connnected, it can
+be partitioned, mounted or used for RAID or LVM just like a locally attached
+disk. <p> 
+
+If the iSCSI server you plan to access requires authentication, first visit
+the <b>Authentication Options</b> page to set a username and password to be
+used for subsequent connections. <p>
+
+To attach a new device, go to the <b>iSCSI Connections</b> page and enter the
+hostname or IP of the iSCSI server in the form at the bottom of the page. 
+Webmin will fetch available target devices from the specified server, and allow
+you to select one or all to connect. Assuming that connection completes 
+successfully, a local SCSI device like <tt>/dev/sdb</tt> will be created and
+made available in the <b>Partitions on Local Disks</b> and <b>Disk and Network
+Filesystems</b> modules. <p>
+
+Existing connections can be removed by checking the box next to their entries
+on the <b>iSCSI Connections</b> page, and clicking the <b>Disconnect</b> button.
+Removing a connection that is currently mounted or used in a RAID or LVM volume
+is not recommended. <p>
+
+<footer>
