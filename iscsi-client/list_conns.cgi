@@ -29,7 +29,10 @@ if (@$conns) {
 			$c->{'name'},
 			$c->{'target'},
 			$c->{'username'} || "<i>$text{'conns_nouser'}</i>",
-			$c->{'device'},
+			$c->{'device'} ?
+				"<a href='../fdisk/edit_disk.cgi?".
+				  "device=$c->{'device'}'>$c->{'device'}</a>" :
+				"<i>$text{'conns_nodevice'}</i>",
 			], \@tds, "d", $c->{'num'});
 		}
 	print &ui_columns_end();

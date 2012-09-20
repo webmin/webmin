@@ -109,6 +109,7 @@ conns_target=Target name
 conns_device=Local device
 conns_username=Login username
 conns_nouser=None
+conns_nodevice=None mapped
 conns_delete=Disconnect Selected
 conns_none=No iSCSI connections are currently active.
 conns_header=Add iSCSI connection

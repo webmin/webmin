@@ -45,7 +45,9 @@ foreach my $f ("username", "password", "username_in", "password_in") {
 if ($conn->{'device'}) {
 	print &ui_table_hr();
 
-	print &ui_table_row($text{'vconn_device'}, $conn->{'device'});
+	print &ui_table_row($text{'vconn_device'},
+		"<a href='../fdisk/edit_disk.cgi?device=$conn->{'device'}'>".
+		"$conn->{'device'}</a>");
 
 	print &ui_table_row($text{'vconn_device2'},
 		&mount::device_name($conn->{'device'}));
@@ -63,7 +65,7 @@ if ($conn->{'device'}) {
 			$text{'dconns_part'},
 			$text{'dconns_size'},
 			$text{'dconns_use'},
-			]);
+			], undef, 0, [ "", "nowrap", "" ]);
 		foreach my $u (@users) {
 			$utable .= &ui_columns_row([
 				&mount::device_name($u->[1]->{'device'}),
