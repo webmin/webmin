@@ -4456,12 +4456,17 @@ if ($module_name && !$main::no_acl_check &&
 my @referers = split(/\s+/, $gconfig{'referers'});
 my $referer_site;
 my $r = $ENV{'HTTP_REFERER'};
-if ($r =~ /^(http|https|ftp):\/\/([^:\/]+:[^@\/]+@)?\[([^\]]+)\]/ ||
-    $r =~ /^(http|https|ftp):\/\/([^:\/]+:[^@\/]+@)?([^\/:@]+)/) {
+my $referer_port = $r =~ /^https:/ ? 443 : 80;
+if ($r =~ /^(http|https|ftp):\/\/([^:\/]+:[^@\/]+@)?\[([^\]]+)\](:(\d+))?/ ||
+    $r =~ /^(http|https|ftp):\/\/([^:\/]+:[^@\/]+@)?([^\/:@]+)(:(\d+))?/) {
 	$referer_site = $3;
+	$referer_port = $5;
 	}
 my $http_host = $ENV{'HTTP_HOST'};
-$http_host =~ s/:\d+$//;
+my $http_port = 80;
+if ($http_host =~ s/:(\d+)$//) {
+	$http_port = $1;
+	}
 $http_host =~ s/^\[(\S+)\]$/$1/;
 my $unsafe_index = $unsafe_index_cgi ||
 		   &get_module_variable('$unsafe_index_cgi');
@@ -4474,7 +4479,8 @@ if ($0 &&
     $ENV{'HTTP_USER_AGENT'} !~ /^Webmin/i &&
     ($referer_site && $referer_site ne $http_host &&
      &indexof($referer_site, @referers) < 0 ||
-    !$referer_site && $gconfig{'referers_none'}) &&
+    !$referer_site && $gconfig{'referers_none'} ||
+    $referer_port && $http_port && $referer_port != $http_port) &&
     !$trust_unknown_referers &&
     !&get_module_variable('$trust_unknown_referers')) {
 	# Looks like a link from elsewhere .. show an error
