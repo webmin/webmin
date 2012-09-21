@@ -8,3 +8,4 @@ stop_cmd=systemctl stop slapd.service
 apply_cmd=systemctl restart slapd.service
 init_name=slapd
 data_dir=/var/lib/ldap
+attr_count=6

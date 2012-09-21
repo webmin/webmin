@@ -8,3 +8,4 @@ stop_cmd=/etc/init.d/slapd stop
 apply_cmd=/etc/init.d/slapd restart
 init_name=ldap
 data_dir=/var/lib/ldap
+attr_count=6

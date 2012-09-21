@@ -33,7 +33,9 @@ else {
 	# Under some object
 	$base = $in{'base'};
 	$dn1 = "cn";
-	@attrs = ( [ ], [ ], [ ], [ ], [ ] );
+	for($i=0; $i<$config{'attr_count'}; $i++) {
+		push(@attrs, [ ]);
+		}
 	}
 
 &ui_print_header(undef, $text{'oadd_title'}, "", "oadd");

@@ -3,3 +3,4 @@ schema_dir=/usr/local/etc/openldap/schema
 slapd=slapd
 ldap_user=ldap
 browse_max=100
+attr_count=6

@@ -13,6 +13,7 @@ data_dir=OpenLDAP database directory,3,Not known
 
 line2=User interface settings,11
 browse_max=Maximum number of sub-objects to display,3,Unlimited
+attr_count=Number of attribute fields for new objects,0
 
 line3=LDAP server commands,11
 start_cmd=Command to start LDAP server,3,Just run <tt>slapd</tt>

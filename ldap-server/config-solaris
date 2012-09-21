@@ -4,3 +4,4 @@ schema_dir=/opt/csw/etc/openldap/schema
 slapd=/opt/csw/libexec/slapd
 ldap_user=ldap
 browse_max=100
+attr_count=6

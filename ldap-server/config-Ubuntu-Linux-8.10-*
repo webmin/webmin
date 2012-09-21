@@ -7,3 +7,4 @@ start_cmd=/etc/init.d/slapd start
 stop_cmd=/etc/init.d/slapd stop
 apply_cmd=/etc/init.d/slapd restart
 init_name=slapd
+attr_count=6
