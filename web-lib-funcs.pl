@@ -4460,10 +4460,10 @@ my $referer_port = $r =~ /^https:/ ? 443 : 80;
 if ($r =~ /^(http|https|ftp):\/\/([^:\/]+:[^@\/]+@)?\[([^\]]+)\](:(\d+))?/ ||
     $r =~ /^(http|https|ftp):\/\/([^:\/]+:[^@\/]+@)?([^\/:@]+)(:(\d+))?/) {
 	$referer_site = $3;
-	$referer_port = $5;
+	$referer_port = $5 if ($5);
 	}
 my $http_host = $ENV{'HTTP_HOST'};
-my $http_port = 80;
+my $http_port = $ENV{'SERVER_PORT'} || 80;
 if ($http_host =~ s/:(\d+)$//) {
 	$http_port = $1;
 	}
@@ -4474,7 +4474,8 @@ if ($0 &&
     ($ENV{'SCRIPT_NAME'} !~ /^\/(index.cgi)?$/ || $unsafe_index) &&
     ($ENV{'SCRIPT_NAME'} !~ /^\/([a-z0-9\_\-]+)\/(index.cgi)?$/i ||
      $unsafe_index) &&
-    $0 !~ /(session_login|pam_login)\.cgi$/ && !$gconfig{'referer'} &&
+    $0 !~ /(session_login|pam_login)\.cgi$/ &&
+    !$gconfig{'referer'} &&
     $ENV{'MINISERV_CONFIG'} && !$main::no_referers_check &&
     $ENV{'HTTP_USER_AGENT'} !~ /^Webmin/i &&
     ($referer_site && $referer_site ne $http_host &&
