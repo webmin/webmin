@@ -282,7 +282,7 @@ if (@rv) {
 	print &ui_columns_end();
 	}
 else {
-	print "<p><b>",&text('search_none', "<tt>$in{'for'}</tt>"),"</b><p>\n";
+	print "<p><b>",&text('search_none', "<tt>".&html_escape($in{'for'})."</tt>"),"</b><p>\n";
 	}
 
 &ui_print_footer("", $text{'index_return'});
