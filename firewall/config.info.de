@@ -9,4 +9,4 @@ before_apply_cmd=Befehle zum Ausf&#252;hren vor Anwenden der Konfiguration,3,Kei
 after_apply_cmd=Befehle zum Anwendung der Konfiguration,3,Keiner
 line1=System Konfiguration,11
 save_file=IPtables Speicherdatei zum Bearbeiten,3,Verwendung des Betriebssystems oder Webmin Standard
-direct=Direktes Bearbeiten der Firewall-Regeln anstatt von gespeierter Datei?,1,1-Ja,0-Nein
+direct=Direktes Bearbeiten der Firewall-Regeln anstatt von gespeicherter Datei?,1,1-Ja,0-Nein
