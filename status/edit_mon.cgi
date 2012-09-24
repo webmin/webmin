@@ -9,7 +9,7 @@ $access{'edit'} || &error($text{'mon_ecannot'});
 @handlers = &list_handlers();
 if ($in{'type'}) {
 	# Create a new monitor
-	$in{'type'} =~ /^[a-zA-Z0-9\_\-\.]+$/ || &error($text{'mon_etype'});
+	$in{'type'} =~ /^[a-zA-Z0-9\_\-\.\:]+$/ || &error($text{'mon_etype'});
 	$type = $in{'type'};
 	$title = $text{'mon_create'};
 	if ($in{'clone'}) {
