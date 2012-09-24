@@ -1,7 +1,7 @@
 line1=LDAP&#45;Serveroptionen,11
 ldap_host=LDAP&#45;Server,3,Aus der NSS&#45;Konfigurationsdatei
 ldap_port=LDAP&#45;Server&#45;Port,3,Aus der NSS&#45;Konfigurationsdatei
-ldap_tls=TLS f&#252;r LDAP?,1,1-Ja,0-Nein
+ldap_tls=LDAP&#45;Server benutzt Verschl&#252;sselung?,1,1-Ja SSL,2-Ja TLS,0-Nein
 login=Binde an LDAP&#45;Server als,3,Name aus der NSS&#45;Konfigurationsdatei
 pass=Zugang f&#252;r den zu bindenden obig benannten Namen,12
 user_base=Basis f&#252;r Benutzer,3,Aus der NSS&#45;Konfigurationsdatei
@@ -20,7 +20,7 @@ group_props=LDAP&#45;Eigenschaften f&#252;r alle neuen Gruppen<br>(im <i>fieldna
 group_mod_props=LDAP&#45;Eigenschaften f&#252;r ver&#228;nderte Gruppen<br>(im <i>fieldname</i>: <i>value</i> Format),9,40,3,\t
 group_fields=Zus&#228;tzliche LDAP&#45;Gruppeneigenschaften&#44; um das Editieren von<br>(Im <i>Feldname</i> <i>Beschreibung</i>&#45;Format) zu erlauben,9,40,3,\t
 multi_fields=Erlaube mehrfache Werte f&#252;r zus&#228;tzliche Eigenschaften?,1,1-Ja,0-Nein
-noclash=Attribute, f&#252;r die Duplikate nicht zul&#228;ssig sind,0
+noclash=Attribute&#44; f&#252;r die Duplikate nicht zul&#228;ssig sind,0
 person=Gibt allen Unix-Benutzer die <tt>Person</tt>Objekt-Klasse?,1,1-Ja,0-Nein
 user_filter=Zus&#228;tzliche LDAP-Filter f&#252;r Benutzer,3,Keine,,,,Attribut=Wert
 group_filter=Zus&#228;tzliche LDAP-Filter f&#252;r Gruppen,3,Keine,,,,Attribut=Wert
@@ -57,7 +57,7 @@ samba_def=Aktiviere Samba Account standardm&#228;&#223;ig?,1,1-Ja,0-Nein
 samba_domain=Domain&#45;SID f&#252;r Samba3,0
 samba_props=LDAP&#45;Eigenschaften f&#252;r neue Samba&#45;Benutzer,9,40,3,\t
 samba_gclass=LDAP&#45;ObjectClass f&#252;r Samba&#45;Gruppen,10,-sambaGroup (Samba 2),sambaSamGroup-sambaSamGroup (Samba 3 old schema),sambaGroupMapping-sambaGroupMapping (Samba 3 new schema),Andere
-samba_gid=Prim&#228;re Gruppen SID,10,none-None,-Funktionert automatisch
+samba_gid=Prim&#228;re Gruppen SID,10,none-None,-Funktioniert automatisch
 line3=Cyrus&#45;IMAP&#45;Server&#45;Optionen,11
 imap_class=LDAP&#45;ObjectClasses f&#252;r IMAP&#45;Benutzer,0
 imap_def=IMAP&#45;Account standardm&#228;&#223;ig aktivieren?,1,1-Ja,0-Nein
@@ -71,7 +71,7 @@ imap_foldersep=Ordner Trenner,1,-..,/-/
 domain=E&#45;Mail&#45;Domaine f&#252;r das Mail&#45;Attribut,0,Keines hinzuf&#252;gen
 mailfmt=E&#45;Mail&#45;Adressformat,1,0-Vorname.Nachname@domain,1-Benutzername@domain
 addressbook=Adressbuchbasis,3,Keine
-quota_support=IMAP Server unterst&#252;tzt Quotas?,1,1-Ja,0-Nein
+quota_support=IMAP-Server unterst&#252;tzt Quotas?,1,1-Ja,0-Nein
 quota=Standard&#45;Quota f&#252;r neue Cyrus&#45;Benutzer,3,Keines,,,kB
 maillocaladdress=Attribute f&#252;r E&#45;Mail&#45;Aliase,3,Standard (Alias)
 alias_same=Zwei Benutzer k&#246;nnen den gleichen Alias&#8203; haben&#8203;?,1,1-Ja,0-Nein
