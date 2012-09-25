@@ -1,4 +1,3 @@
-
 #!/usr/local/bin/perl
 # Remove the signing key records for a zone
 
@@ -14,6 +13,7 @@ $zone = &get_zone_name($in{'index'}, $in{'view'});
 $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
+$access{'dnssec'} || &error($text{'dnssec_ecannot'});
 $desc = &ip6int_to_net(&arpa_to_ip($dom));
 
 &ui_print_unbuffered_header($desc, $text{'dt_enable_title'}, "",

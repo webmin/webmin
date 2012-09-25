@@ -148,6 +148,12 @@ printf "<input type=radio name=slaves value=1 %s> $text{'yes'}\n",
 printf "<input type=radio name=slaves value=0 %s> $text{'no'}</td>\n",
 	$_[0]->{'slaves'} ? "" : "checked";
 
+print "<td><b>$text{'acl_dnssec'}</b></td> <td nowrap>\n";
+printf "<input type=radio name=dnssec value=1 %s> $text{'yes'}\n",
+	$_[0]->{'dnssec'} ? "checked" : "";
+printf "<input type=radio name=dnssec value=0 %s> $text{'no'}</td> </tr>\n",
+	$_[0]->{'dnssec'} ? "" : "checked";
+
 print "</tr>\n";
 
 print "<tr> <td><b>$text{'acl_views'}</b></td> <td colspan=3>\n";
@@ -218,6 +224,7 @@ $_[0]->{'findfree'} = $in{'findfree'};
 $_[0]->{'slaves'} = $in{'slaves'};
 $_[0]->{'views'} = $in{'views'};
 $_[0]->{'remote'} = $in{'remote'};
+$_[0]->{'dnssec'} = $in{'dnssec'};
 $_[0]->{'gen'} = $in{'gen'};
 $_[0]->{'whois'} = $in{'whois'};
 $_[0]->{'vlist'} = $in{'vlist_def'} == 1 ? "*" :

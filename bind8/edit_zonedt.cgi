@@ -1,4 +1,3 @@
-
 #!/usr/local/bin/perl
 # Display the signing key for a zone, or offer to set one up
 
@@ -14,6 +13,7 @@ $zone = &get_zone_name($in{'index'}, $in{'view'});
 $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
+$access{'dnssec'} || &error($text{'dnssec_ecannot'});
 $desc = &ip6int_to_net(&arpa_to_ip($dom));
 
 &ui_print_header($desc, $text{'dt_zone_title'}, "",

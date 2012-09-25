@@ -105,7 +105,7 @@ if ($access{'whois'} && &has_command($config{'whois_cmd'}) &&
 	push(@titles, $text{'master_whois'});
 	push(@images, "images/whois.gif");
 	}
-if (&supports_dnssec()) {
+if ($access{'dnssec'} && &supports_dnssec()) {
 	if (&have_dnssec_tools_support()) {
 		# DNSSEC Automation
 		push(@links, "edit_zonedt.cgi?index=$in{'index'}&view=$in{'view'}");

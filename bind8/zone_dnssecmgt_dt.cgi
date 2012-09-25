@@ -1,4 +1,3 @@
-
 #!/usr/local/bin/perl
 # Perform one of a number of DNSSEC-related operations for the zone 
 
@@ -14,6 +13,7 @@ $zone = &get_zone_name($in{'index'}, $in{'view'});
 $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
+$access{'dnssec'} || &error($text{'dnssec_ecannot'});
 
 if (&have_dnssec_tools_support()) {
 	my $optype = $in{'optype'};

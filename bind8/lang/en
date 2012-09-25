@@ -488,6 +488,7 @@ acl_slaves=Can manage cluster slave servers?
 acl_views=Can create and edit views?
 acl_edonly=Edit only
 acl_remote=Can create slave zones on remote servers?
+acl_dnssec=Can configure DNSSEC for zones?
 acl_gen=Can edit record generators?
 acl_whois=Can lookup WHOIS information?
 acl_vlist=Views this user can edit and add zones to
