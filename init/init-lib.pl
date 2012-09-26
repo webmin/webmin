@@ -663,7 +663,7 @@ if ($init_mode eq "systemd" && (!-r "$config{'init_dir'}/$_[0]" ||
 				&is_systemd_service($unit))) {
 	# Create systemd unit if missing, as long as this isn't an old-style
 	# init script
-	my $cfile = &get_systemd_root()."/".$unit;
+	my $cfile = &get_systemd_root($_[0])."/".$unit;
 	if (!-r $cfile) {
 		# Need to create config
 		$_[2] || &error("Systemd service $_[0] cannot be created ".
@@ -1834,8 +1834,8 @@ if ($? && keys(%info) < 2) {
 	}
 
 # Extract info we want
-my $root = &get_systemd_root();
 foreach my $name (keys %info) {
+	my $root = &get_systemd_root($name);
 	my $i = $info{$name};
 	next if ($i->{'Description'} =~ /^LSB:\s/);
 	push(@rv, { 'name' => $name,
@@ -1928,7 +1928,7 @@ my ($name, $desc, $start, $stop, $restart, $forks, $pidfile) = @_;
 $start =~ s/\r?\n/ ; /g;
 $stop =~ s/\r?\n/ ; /g;
 $restart =~ s/\r?\n/ ; /g;
-my $cfile = &get_systemd_root()."/".$name;
+my $cfile = &get_systemd_root($name)."/".$name;
 &open_lock_tempfile(CFILE, ">$cfile");
 &print_tempfile(CFILE, "[Unit]\n");
 &print_tempfile(CFILE, "Description=$desc\n") if ($desc);
@@ -1954,7 +1954,8 @@ Delete all traces of some systemd service
 sub delete_systemd_service
 {
 my ($name) = @_;
-&unlink_logged(&get_systemd_root()."/".$name);
+&unlink_logged(&get_systemd_root($name)."/".$name);
+&unlink_logged(&get_systemd_root($name)."/".$name.".service");
 &restart_systemd();
 }
 
@@ -1974,13 +1975,18 @@ foreach my $s (&list_systemd_services()) {
 return 0;
 }
 
-=head2 get_systemd_root()
+=head2 get_systemd_root([name])
 
 Returns the base directory for systemd unit config files
 
 =cut
 sub get_systemd_root
 {
+my ($name) = @_;
+if ($name && (-r "/etc/systemd/system/$name.service" ||
+	      -r "/etc/systemd/system/$name")) {
+	return "/etc/systemd/system";
+	}
 return "/lib/systemd/system";
 }
 
