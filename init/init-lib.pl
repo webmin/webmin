@@ -1812,28 +1812,34 @@ closedir(UNITS);
 		!/^systemd-/ } @units;
 @units = &unique(@units);
 
-# Dump state of all of them
-my @rv;
-$out = &backquote_command("systemctl show -- ".join(" ", @units));
-my @lines = split(/\r?\n/, $out);
-my $curr;
+# Dump state of all of them, 100 at a time
 my %info;
-foreach my $l (@lines) {
-	my ($n, $v) = split(/=/, $l, 2);
-	next if (!$n);
-	if (lc($n) eq 'id') {
-		$curr = $v;
-		$info{$curr} ||= { };
+while(@units) {
+	my @args;
+	while(@args < 100 && @units) {
+		push(@args, shift(@units));
 		}
-	if ($curr) {
-		$info{$curr}->{$n} = $v;
+	$out = &backquote_command("systemctl show -- ".join(" ", @args));
+	my @lines = split(/\r?\n/, $out);
+	my $curr;
+	foreach my $l (@lines) {
+		my ($n, $v) = split(/=/, $l, 2);
+		next if (!$n);
+		if (lc($n) eq 'id') {
+			$curr = $v;
+			$info{$curr} ||= { };
+			}
+		if ($curr) {
+			$info{$curr}->{$n} = $v;
+			}
 		}
-	}
-if ($? && keys(%info) < 2) {
-	&error("Failed to read systemd units : $out");
+	if ($? && keys(%info) < 2) {
+		&error("Failed to read systemd units : $out");
+		}
 	}
 
 # Extract info we want
+my @rv;
 foreach my $name (keys %info) {
 	my $root = &get_systemd_root($name);
 	my $i = $info{$name};
