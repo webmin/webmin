@@ -393,6 +393,7 @@ eacl_papply=restart this service
 acl_apply=Can apply changes?
 acl_r_leases=Can view leases?
 acl_w_leases=Can remove leases?
+acl_zones=Can edit dynamic DNS zones?
 acl_global=Can edit global options?
 acl_uniq_hst=Uniq host names?
 acl_uniq_sub=Uniq subnet IP addresses?
@@ -432,7 +433,7 @@ lookup_esubnetname=No subnet address or address/netmask entered
 lookup_eshared=No shared network with the name $1 exists
 lookup_esharedname=No shared network name entered
 
-zone_key=DNS-zones
+zone_key=DNS Zones
 index_addzone=Add a new DNS zone.
 index_zone=Zone
 index_nozones=No DNS zones have been defined yet.
@@ -446,6 +447,7 @@ zone_return=main menu
 zone_faildel=Failed to delete zone
 zone_failsave=Failed to save zone
 zone_tsigkey=TSIG key
+zone_ecannot=You are not allowed to edit DNS zones
 
 plib_clientupdates=Can clients update their own records?
 

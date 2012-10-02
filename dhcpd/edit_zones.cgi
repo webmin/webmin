@@ -8,6 +8,7 @@
 require './dhcpd-lib.pl';
 require './params-lib.pl';
 &ReadParse();
+$access{'zones'} || &error($text{'zone_ecannot'});
 $conf = &get_config();
 $in{'new'} || (($par, $zone) = &get_branch('zone'));
 $sconf = $zone->{'members'};

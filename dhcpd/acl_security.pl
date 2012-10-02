@@ -33,6 +33,13 @@ printf "<input type=radio name=w_leases value=0 %s> $text{'no'}</td>\n",
 		$_[0]->{'w_leases'} ? "" : "checked";
 print "</tr>\n";
 
+print "<tr>\n<td><b>$text{'acl_zones'}</b></td> <td>\n";
+printf "<input type=radio name=zones value=1 %s> $text{'yes'}\n",
+		$_[0]->{'zones'} ? "checked" : "";
+printf "<input type=radio name=zones value=0 %s> $text{'no'}</td>\n",
+		$_[0]->{'zones'} ? "" : "checked";
+print "</tr>\n";
+
 print "<tr> <td colspan=4><hr></td> </tr>\n";
 
 # uniqs
@@ -170,6 +177,7 @@ $_[0]->{'apply'}=$in{'apply'};
 $_[0]->{'global'}=$in{'global'};
 $_[0]->{'r_leases'}=$in{'r_leases'};
 $_[0]->{'w_leases'}=$in{'w_leases'};
+$_[0]->{'zones'}=$in{'zones'};
 $_[0]->{'uniq_hst'}=$in{'uniq_hst'};
 $_[0]->{'uniq_sub'}=$in{'uniq_sub'};
 $_[0]->{'uniq_sha'}=$in{'uniq_sha'};

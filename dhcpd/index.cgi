@@ -443,7 +443,7 @@ print &ui_hr();
 
 ############ START ZONES #####
 
-if ($config{'dhcpd_version'} >= 3) {
+if ($config{'dhcpd_version'} >= 3 && $access{'zones'}) {
 	print &ui_subheading($text{'zone_key'});
 
 	# get zones
