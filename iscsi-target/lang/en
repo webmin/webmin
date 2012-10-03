@@ -1,0 +1,3 @@
+
+config_econfig=The iSCSI target configuration file $1 was not found on your system.
+config_eietadm=The iSCSI target administration command $1 was not found on your system.

@@ -1,0 +1,3 @@
+config_file=iSCSI target configuration file,0
+ietadm=Full path to ietadm command,0
+init_name=Bootup script name,0

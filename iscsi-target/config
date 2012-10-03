@@ -1,0 +1,3 @@
+config_file=/etc/ietd.conf
+ietadm=ietadm
+init_name=iscsitarget
