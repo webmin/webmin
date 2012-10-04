@@ -21,3 +21,4 @@ r_leases=1
 w_leases=1
 global=1
 apply=1
+zones=1
