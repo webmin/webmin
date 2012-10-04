@@ -1,0 +1,30 @@
+<header>iSCSI Server</header>
+
+Aquest mòdul permet exportar dispositius de disc a altres sistemes de la xarxa
+utilitzant el protocol iSCSI, La configuració es fa en primer lloc creant tres
+tipus d'objectes - <b>Dispositius Compartits</b>, <b>Combinacions de Dispositius</b> i <b>Objectius Compartits</b>, que es descriuen més avall. També pots
+editar paràmetres que s'apliquin a tot el servidor iSCSI utilitzant la pàgina d'<b>Opcions del Servidor iSCSI</b>, <p>
+
+<dl>
+<dt><b>Dispositius Compartits</b> (<tt>extents</tt> al fitxer de configuració)
+<dd>Cadascun d'aquests és una partició, un dispositiu RAID, un volum lògic o un
+fitxer que es pot exportar total o parcialment a través de iSCSI. Els dispositius
+compartits no s'haurien d'utilitzar per a cap altre propòsit dins del sistema.<p>
+
+<dt><b>Combinacions de Dispositius</b> (<tt>devices</tt> al fitxer de configuració)
+<dd>Aquests permeten combinar múltiples <b>Dispositius Compartits</b> en un
+dispositiu més gran per exportar. Els dispositius es poden unir a l'estil de
+RAID0 per sumar les seves mides, o a l'estil RAID1 per a redundància i
+un millor rendiment de lectura. <p>
+
+<dt><b>Objectius Compartits</b> (<tt>target</tt> al fitxer de configuració)
+<dd>Cada entrada d'aquesta llista exporta o bé un dispositiu o bé una combinació
+de dispositius a tots els sistemes d'una xarxa seleccionada. El recurs compartit
+pot ser de només lectura o de lectura/escriptura. <p>
+</dl>
+
+Al peu de la pàgina principal del mòdul hi ha botons per aturar, iniciar i
+reiniciar el servidor iSCSI. Els canvis de configuració no s'aplicaran fins que
+el servidor es reiniciï. <p>
+
+<footer>

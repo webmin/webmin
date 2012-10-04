@@ -37,6 +37,7 @@ install_servers=Servidor(s) on s'ha d'instal·lar
 install_ok=Instal·la-ho
 install_erus=Aquest servidor utilitza un sistema d'actualització diferents cap al servidor mestre ($1 versus $2)
 install_eupdate=S'ha produït un error en instal·lar les actualitzacions especificades
+install_ealready=La versió $1 ja està instal·lada
 
 add_title=Addició de Servidors
 add_msg=S'està afegint $1...
@@ -136,7 +137,7 @@ do_header5=S'està instal·lant $1 a $2 ..
 do_header6=S'està instal·lant $1 als hosts que ja ho tenen...
 do_done=... fet
 do_failed=No s'ha pogut instal·lar a $1: $2
-do_success=Instal·lat a $1.
+do_success=S'ha instal·lat $1 a $2.
 do_already=Ja està instal·lat a $1.
 do_details=Detalls del Paquet
 do_desc=Descripció

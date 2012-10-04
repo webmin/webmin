@@ -65,7 +65,7 @@ index_auto4=Bloqueja-les totes excepte SSH, IDENT, ping i ports alts a la interf
 index_auto5=Bloqueja-les totes excepte els ports utilitzats per a hostalatge virtual a la interfície:
 index_auto=Configura el Tallafocs
 index_add=Afegeix
-index_shorewall=Atenció! Sembla que s'està utilitzant Shorewall per generar el tallafocs del sistema. Pot ser que hagis d'utilitzar el <a href='$1'>mòdul de Tallafocs Shorewall</a> en lloc d'aquest.
+index_shorewall=Atenció! Sembla que s'està utilitzant Shorewall per generar el tallafocs del sistema. Pot ser que hagis d'utilitzar el <a href='$1'>mòdul de Tallafocs Shoreline</a> en lloc d'aquest.
 index_reset=Reinicia el Tallafocs
 index_resetdesc=Fes clic sobre aquest botó per eliminar totes les regles existents del tallafocs i establir-ne de noves per a una configuració inicial bàsica.
 index_cluster=Servidors del Cluster

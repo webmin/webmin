@@ -100,6 +100,7 @@ schema_ecannot=No tens permís per gestionar l'esquema LDAP
 acl_title=Control d'Accés LDAP
 acl_ecannot=No tens permís per configurar el control d'accés LDAP
 acl_what=Objectes
+acl_order=Ordre
 acl_who=Accés permès
 acl_move=Desplaça
 acl_none=Encara no s'ha definit cap regla de control d'accés. Tots els objectes de la base de dades LDAP són llegibles per tots els usuaris.
@@ -322,4 +323,7 @@ eacl_efilter=Hi falta el filtre o bé és invàlid - ha de ser de la forma <tt>(obj
 eacl_eattrs=Hi falta la llista separada per comes d'atributs
 eacl_ewho=Hi falta el DN o bé sembla invàlid a la fila $1
 eacl_eaccess=Hi falta el nivell d'accés o bé és invàlid a la fila $1
+eacl_order=Ordre de les regles
+eacl_noorder=Cap d'establert
+
 __norefs=1

@@ -168,6 +168,7 @@ view_ecmd=L'ordre $1 necessària per a crear un arxiu no està instal·lada
 view_ecomp=No s'ha pogut crear l'arxiu: $1
 view_earchive=No tens permís per descarregar arxius
 view_earchmax=El directori seleccionat és més gran que el màxim permès per arxivar ($1 bytes)
+view_epathinfo=El camí conté caràcters invàlids
 
 paste_ecopy=Has de copiar o retallar abans d'enganxar
 paste_egone=El fitxer copiat $1 ja no existeix

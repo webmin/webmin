@@ -1,0 +1,6 @@
+config_file=Camí complet del fitxer de configuració del client Open-iSCSI,0
+initiator_file=Camí complet del fitxer del nom de l'iniciador,0
+ifaces_dir=Camí complet del directori d'interfícies,0
+init_name=Noms dels scripts d'engegada,0
+iscsiadm=Camí complet de l'ordre iscsiadm,0
+iscsiiname=Camí complet de l'ordre iscsi-iname,0

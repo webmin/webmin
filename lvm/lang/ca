@@ -63,6 +63,7 @@ lv_umountvm=Per muntar com a memòria virtual
 lv_mountraid=Part del dispositiu RAID $1
 lv_mountcm=Utilitzat pel sistema Cloudmin $1
 lv_umountcm=A utilitzar per part pel sistema Cloudmin $1
+lv_mountiscsi=Dispositiu compartit iSCSI $1
 lv_notused=No està en ús
 lv_cannot=Aquest volum lògic no es pot canviar de nom ni de mida, ja que actualment està en ús.
 lv_perm=Accés al volum

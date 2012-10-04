@@ -1,0 +1,25 @@
+<header>Client iSCSI</header>
+
+Aquest mòdul permet accedir a dispositius de disc compartits utilitzant el
+protocol iSCSI en altres sistemes o a la xarxa. Un cop s'ha connectat un
+dispositiu, es pot particionar, muntar o utilitzar per a RAID o LVM igual que
+un disc connectat localment. <p>
+
+Si el servidor iSCSI que penses fer servir necessita autenticació, primer ves
+a la pàgina d'<b>Opcions d'Autenticació</b> per establir l'usuari i la
+contrasenya a utilitzar en les subsegüents sessions. <p>
+
+Per adjuntar un nou dispositiu, ves a la pàgina de <b>Connexions iSCSI</b> i
+introdueix el nom de host o la IP del servidor SCSI al formulari del peu de la
+pàgina. Webmin trobarà els dispositius objectius disponibles al servidor
+especificat i et permetrà seleccionar-ne un o tots a connectar. Assumint que la
+connexió reïxi, es crearà un dispositiu SCSI local com ara <tt>/dev/sdb</tt> i
+estarà disponible als mòduls de <b>Particions dels Discs Locals</b> i
+<b>Sistemes de Fitxers en Disc i en Xarxa</b>. <p>
+
+Les connexions existents es poden eliminar marcant la casella del costat de les
+entrades a la pàgina de <b>Connexions iSCSI</b> i fent clic al botó
+<b>Desconnecta</b>. No és recomanable eliminar una connexió que estigui
+actualment muntada o utilitzada en un volum RAID o LVM. <p>
+
+<footer>

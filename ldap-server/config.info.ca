@@ -13,6 +13,7 @@ data_dir=Directori de la base de dades OpenLDAP,3,Desconegut
 
 line2=Configuració de la interfície d'usuari,11
 browse_max=Nombre màxim de subobjectes a mostrar,3,Il·limitat
+attr_count=Nombre de camps d'atribut dels nous objectes,0
 
 line3=Ordres del servidor LDAP,11
 start_cmd=Ordre per iniciar el servidor LDAP,3,Executa <tt>slapd</tt>
