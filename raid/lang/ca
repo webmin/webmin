@@ -67,6 +67,7 @@ view_bad=$1 discs han fallat
 view_mounted=Muntat a $1
 view_mount=Per muntar sobre $1
 view_lvm=Utilitzat al GV LVM $1
+view_iscsi=Utilitzat pel dispositiu compartit iSCSI $1
 view_active=Actiu però no muntat
 view_inactive=Inactiu i no muntat
 view_super=Superbloc persistent

@@ -1,4 +1,4 @@
-index_title=Sistemes de Fitxers
+index_title=Sistemes de Fitxers en Disc i en Xarxa
 index_dir=Muntat com
 index_type=Tipus
 index_dev=Ubicació
@@ -361,6 +361,7 @@ linux_grpquotas=Activa les quotes de grup
 linux_noenforce=Sí, però no les forcis
 linux_df=Inclou els blocs reservats a la mida del sistema de fitxers
 linux_noatime=Evita actualitzar els darrers temps d'accés
+linux_netdev=Espera fins que les interfícies de xarxa estiguin actives
 linux_ecname=Hi falta el nom netbios del client o bé és invàlid
 linux_emname=Hi falta el nom de host o l'adreça IP del servidor o bé és incorrecta
 linux_bind=Directori Original

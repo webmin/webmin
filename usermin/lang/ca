@@ -163,14 +163,12 @@ users_err=No s'ha pogut actualitzar la llista d'usuaris
 users_none=No has introduït cap usuari
 users_euser='$1' no és un nom d'usuari vàlid
 users_egroup='$1' no és un nom de grup vàlid
-users_eversion=El control d'accés d'usuaris i grups només està suportat per les versions 0.76 d'Usermin i superiors.
 users_shells=Denega els usuaris la shell dels quals no sigui al fitxer
 users_eshells=Hi falta el fitxer de shells o bé no existeix
 
 defacl_title=Opcions de Control d'Accés
 defacl_desc=Aquesta pàgina permet configurar diverses opcions de control d'accés que s'apliquen als mòduls i usuaris d'Usermin. Aquestes opcions són semblants a les d'ACLs globals per a cada usuari del mòdul d'usuaris de Webmin.
 defacl_header=Opcions de control d'accés del usuaris Usermin
-defacl_eversion=L'edició d'opcions de control d'accés només està suportada per les version 0.76 d'Usermin i superiors.
 defacl_err=No s'han pogut desar les opcions de control d'accés
  
 install_err1=No s'ha pogut instal·lar el mòdul de $1

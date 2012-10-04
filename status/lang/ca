@@ -104,6 +104,7 @@ mon_eremote2=No es pot contactar amb el servidor Webmin $1: $2
 mon_estatus=El servidor Webmin $1 no té el mòdul d'Estat del Sistema i Servidors
 mon_ecannot=No tens permís per editar monitors
 mon_ertype=Aquest tipus de monitor no està disponible a $1
+mon_etype=El nom del tipus de monitor és invàlid
 mon_runon=Executa les ordres en
 mon_runon0=Aquest servidor
 mon_runon1=El host remot

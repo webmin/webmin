@@ -161,6 +161,7 @@ smb_master_auto=Automàtic
 smb_sharelevel=A nivell de recurs
 smb_userlevel=A nivell d'usuari
 smb_passwdserver=Servidor de contrasenyes
+smb_server=Servidor de contrasenyes
 smb_domain=Domini
 smb_ads=Directori actiu
 smb_announce=Anunci remot a

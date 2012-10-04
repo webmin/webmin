@@ -636,6 +636,11 @@ body_eregexp=El mapa de comprovacions del cos ha d'estar en el format <tt>expreg
 opts_body_checks=Taules de comprovació de cossos de missatges
 body_return=a les comprovacions del cos
 
+dependent_title=Mapeigs de Transport Dependents del Remitent
+dependent_ecannot=No tens permís per editar els mapeigs de transport dependents del remitent
+dependent_eregexp=El mapa de transport dependent del remitent ha d'estar en el format <tt>regexp:</tt><i>nom_fitxer</i>
+dependent_return=als mapeigs de transport dependents del remitent
+
 manual_title=Edició de Fitxer de Mapa
 manual_file=Selecciona el fitxer de mapa a editar:
 manual_change=Canvia
@@ -712,6 +717,7 @@ log_canonical=Canvi de les opcions de mapejat canònic
 log_virtual=S'han canviat les opcions de dominis virtuals
 log_bcc=S'han canviat les opcions de mapejat BCC
 log_transport=S'han canviat les opcions de mapejat de transport
+log_dependent=S'han canviat les opcions d'adreces dependents del remitent
 log_relocated=S'han canviat les opcions de mapejat de reubicacions
 log_header=S'han canviat les opcions de comprovaió de capçaleres
 log_body=S'han canviat les opcions de comprovació de cossos
@@ -782,6 +788,11 @@ log_flushq=S'ha buidat la cua de correu
 log_backend=S'ha actualitzat el fitxer de configuracio del mapa $1
 log_sasl=S'ha canviat l'autenticació i el xifratge de SMTP
 log_client=S'han canviat les restriccions del client SMTP
+log_sender_dependent_default_transport_maps_create=S'ha creat l'adreça $1 dependent del remitent
+log_sender_dependent_default_transport_maps_modify=S'ha modificat l'adreça $1 dependent del remitent
+log_sender_dependent_default_transport_maps_delete=S'ha suprimit l'adreça $1 dependent del remitent
+log_delete_sender_dependent_default_transport_mapss=S'han suprimit $1 adreces dependents del remitent
+log_manual_sender_dependent_default_transport_mapss=S'han editat manualment edited les adreces dependents del remitent a $1
 
 sasl_title=Autenticació i Xifratge de SMTP
 opts_smtpd_sasl_auth_enable=Activa l'autenticació SASL de SMTP

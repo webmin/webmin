@@ -15,7 +15,7 @@ index_deactdesc=El servidor CVS està configurat per executar-se a partir de $1 a
 index_deactdesc2=El servidor CVS està configurat per executar-se a partir de $1 al teu sistema per a l'arrel CVS $2, i està actiu. Fes clic sobre aquest botó si vols desactivar-lo i evitar que els usuaris remots accedeixin al repositori CVS.
 index_return=a l'índex del mòdul
 index_asuser=Executa com a usuari:
-> index_einetroot=Atenció" L'arrel CVS establerta a la configuració del mòdul no coincideix amb l'arrel del servidor CVS. Això es pot arreglar desactivant i reactivant el servidor CVS.
+index_einetroot=Atenció! L'arrel CVS establerta a la configuració del mòdul no coincideix amb l'arrel del servidor CVS. Això es pot arreglar desactivant i reactivant el servidor CVS.
 
 setup_einet=No sembla que ni <tt>inetd</tt> ni <tt>xinetd</tt> estiguin instal·lats al sistema.
 setup_ecannot=No tens permís per configurar el servidor CVS

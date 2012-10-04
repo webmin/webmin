@@ -107,10 +107,13 @@ bifc_edhcpmain=DHCP només es pot activar a la interfície primària de xarxa
 bifc_bridgeto=Connecta el pont a la interfície
 bifc_ebridgeto=Cal seleccionar una interfície Ethernet existent per a utilitzar-la amb aquest pont
 bifc_ebridgeto2=La interfície seleccionada per al pont no pot tenir cap adreça assignada
+bifc_ebridge=La interfície pont ha de ser un número
+bifc_ebond=La interfície d'enllaç ha de ser un número
 
 bonding_add=Afegeix una nova interfície d'enllaç.
 bonding_create=Crea una Interfície d'Enllaç
-bonding_teamparts=Company d'Equip
+bonding_teamparts=Companys d'Equip
+bonding_teampartsdesc=Companys separats per espais, p. ex. "eth2 eth4"
 bonding_teammode=Mode d'Equip
 bonding_miimon=Interval de Monitorització Mii
 bonding_updelay=Retard superior

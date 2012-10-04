@@ -1,7 +1,7 @@
 index_title=Registres del Sistema
 index_m4msg=Sembla que el fitxer de configuració de registres del sistema $1 conté directives <tt>m4</tt>. Abans de poder-lo editar, Webmin necessita processar el fitxer amb <tt>m4</tt> per treure aquestes directives sense problemes.
 index_m4=Treu les directives m4 del fitxer de configuració
-> index_econf=No s'ha trobat al sistema el fitxer $1 de configuració de syslog. Pot ser que syslog no estigui instal·lat, que hi hagi una nova versió en ús com ara syslog-ng, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
+index_econf=No s'ha trobat al sistema el fitxer $1 de configuració de syslog. Pot ser que syslog no estigui instal·lat, que hi hagi una nova versió en ús com ara syslog-ng, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_active=Actiu
 index_tag=Programa
 index_to=Destinació del registre

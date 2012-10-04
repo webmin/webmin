@@ -164,7 +164,7 @@ index_euserdesc=Introdueix o selecciona un usuari i fes clic sobre aquest botó p
 index_egroup=Edita les Quotes de Grup:
 index_egroupdesc=Introdueix o selecciona un grup i fes clic sobre aquest botó per visualitzar-ne les quotes a tots els sistemes de fitxers
 index_nosupport=No hi ha cap sistema de fitxers local que suporti quotes.
-index_mountmod=Pots activar les quotes d'un sistema de fitxers al mòdul <a href='$1'>Sistemes de Fitxers en Xarxa i Disc</a>.
+index_mountmod=Pots activar les quotes d'un sistema de fitxers al mòdul <a href='$1'>Sistemes de Fitxers en Disc en Xarxa</a>.
 
 lgroups_failed=No s'han pogut llistar els grups
 lgroups_tablist=Llista de grups

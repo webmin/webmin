@@ -17,7 +17,7 @@ index_find=Busca usuaris tals que el nom d'usuari
 index_equals=sigui igual que
 index_contains=contingui
 index_eperl=El mòdul Perl $1 necessari per al mode d'autenticació SMTP seleccionat no està instal·lat o està mancat d'un mòdul dependent. <a href='$2'>Fes clic aquí</a> per instal·lar-lo ara.
-index_file=Llegeix el Correu del Fitxer:
+index_file=Llegeix el Correu del Fitxer o Directori:
 index_nousers=No s'ha trobat cap usuari!
 index_nousersmail=No s'ha trobat cap usuari amb correu.
 

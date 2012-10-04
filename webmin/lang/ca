@@ -924,7 +924,7 @@ notif_passlock=La teva contrasenya de Webmin es va canviar per darrer cop el $1,
 notif_changenow=Pots <a href='$1'>canviar la teva contrasenya ara</a> al mòdul de Canvi d'Idioma i Tema.
 notif_unixwarn=La teva contrasenya Unix es va canviar per darrer cop el $1, i cal tornar-la a canviar abans de $2 dies.
 notif_unixexpired=La teva contrasenya Unix ha expirat! Se t'obligarà a canviar-la a la propera connexió.
-> notif_upgrade=Webmin version $1 is now available, but you are running version $2.
+notif_upgrade=Hi ha disponible la versió $1 de Webmin, però estàs executant la versió $2.
 notif_upgradeok=Actualitza Webmin Ara
 notif_updatemsg=Estan disponibles les $1 següents actualitzacions de mòduls de Webmin...
 notify_updatemod=Mòdul
@@ -960,7 +960,7 @@ sendmail_fromaddr=Adreça
 sendmail_err=No s'han pogut desar les opcions d'enviament
 sendmail_esmtp=Hi falta el nom de host del servidor SMTP p bé no es pot resoldre
 sendmail_elogin=Hi falta l'usuari del servidor SMTP
-> sendmail_esasl=No es pot activar l'autenticació SMTP si no s'instal·la el mòdul Perl <a href=$1>$2</a>.
+sendmail_esasl=No es pot activar l'autenticació SMTP si no s'instal·la el mòdul Perl <a href=$1>$2</a>.
 sendmail_efrom=Hi falta l'adreça origen o bé no està ben formada
 
 web_title=Opcions del Servidor Web

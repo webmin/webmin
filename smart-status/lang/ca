@@ -21,6 +21,9 @@ index_ecount=$1 errors detectats
 index_attrs=Atributs SMART addicionals
 index_raw=Informe d'estat SMART complet
 index_return=a l'índex de mòduls
+index_family=Família del model
+index_serial=Número de sèrie
+index_capacity=Capacitat
 
 monitor_type=Comprovació d'Unitat SMART Drive Check
 monitor_drive=Unitat a comprovar
