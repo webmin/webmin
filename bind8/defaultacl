@@ -21,3 +21,4 @@ vlist=*
 delegation=1
 slaves=1
 findfree=1
+dnssec=1
