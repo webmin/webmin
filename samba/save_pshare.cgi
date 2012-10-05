@@ -59,7 +59,7 @@ if ($name ne "global") {
 	elsif ($in{old_name} ne $name && $exists{$name}) {
 	        &error(&text('savepshare_exist', $name));
 	        }
-	elsif ($name !~ /^[A-Za-z0-9_\$\- ]+$/) {
+	elsif ($name !~ /^[A-Za-z0-9_\$\-\. ]+$/) {
 		&error(&text('savepshare_name', $name));
 		}
 	elsif ($name eq "global") {
