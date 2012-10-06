@@ -21,6 +21,29 @@ index_delete=Delete Selected Targets
 index_noluns=None
 index_nousers=Any
 
+target_title1=Create iSCSI Target
+target_title2=Edit iSCSI Target
+target_header=iSCSI shared device options
+target_part=Local disk partition
+target_raid=RAID device
+target_md=RAID device $1
+target_lvm=LVM logical volume
+target_lv=LVM VG $1, LV $2
+target_other=Other file or device
+target_lun=Device to share $1
+target_name=Target name
+target_egone=Selected target no longer exists!
+target_none=Nothing
+target_null=Temporary RAM disk of size
+target_sectors=sectors
+target_type=IO type
+target_fileio=File based
+target_blockio=Block based (no caching, for devics only)
+target_iomode=IO mode
+target_wt=Write-through caching
+target_wb=Write-back caching
+target_ro=Read-only
+
 auth_title=Authentication Settings
 
 manual_title=Edit Configuration File
