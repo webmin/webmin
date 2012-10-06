@@ -37,10 +37,12 @@ while(<$fh>) {
         s/\r|\n//g;
         s/#.*$//;
         my @w = split(/\s+/, $_);
+	shift(@w) if ($w[0] eq '');	# Due to indentation
 	my $dir;
 	if (@w) {
 		$dir = { 'name' => $w[0],
-			 'value' => $w[1],
+			 'value' => join(" ", @w[1..$#w]),
+			 'values' => [ @w[1..$#w] ],
 			 'line' => $lnum };
 		}
 	if (/^\S/) {
@@ -58,6 +60,31 @@ while(<$fh>) {
 	}
 close($fh);
 return \@rv;
+}
+
+# find(&config, name)
+# Returns all config objects with the given name
+sub find
+{
+my ($conf, $name) = @_;
+my @t = grep { lc($_->{'name'}) eq lc($name) } @$conf;
+return wantarray ? @t : $t[0];
+}
+
+# find_value(&config, name)
+# Returns config values with the given name
+sub find_value
+{
+my ($conf, $name) = @_;
+return map { $_->{'value'} } &find($conf, $name);
+}
+
+
+# is_iscsi_target_running()
+# Returns the PID if the server process is running, or 0 if not
+sub is_iscsi_target_running
+{
+return &check_pid_file($config{'pid_file'});
 }
 
 1;

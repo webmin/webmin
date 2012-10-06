@@ -1,3 +1,29 @@
+check_econfig=The iSCSI target configuration file $1 was not found on your system.
+check_eietadm=The iSCSI target administration command $1 was not found on your system.
 
-config_econfig=The iSCSI target configuration file $1 was not found on your system.
-config_eietadm=The iSCSI target administration command $1 was not found on your system.
+index_title=iSCSI Target
+index_clink=Maybe it is not installed, or your <a href='$1'>module configuration</a> is incorrect.
+index_stop=Stop iSCSI Target
+index_stopdesc=Click this button to stop the running iSCSI target. All shared devices will no longer be accessible to clients.
+index_start=Start iSCSI Target
+index_startdesc=Click this button to start the iSCSI target, so that shared devices are accessible to clients.
+index_restart=Restart iSCSI Target
+index_restartdesc=Click this button to apply the current configuration by restarting the iSCSI target.
+index_atboot=Start at boot?
+index_atbootdesc=Change this option to control whether the iSCSI target is started at boot time or not. If it is not currently started at boot and Yes is chosen, a new init script will be created.
+index_return=list of targets
+index_none=No iSCSI targets to export have been defined yet.
+index_add=Add a new iSCSI target.
+index_target=Target name
+index_lun=Disk devices
+index_users=Allowed users
+index_delete=Delete Selected Targets
+index_noluns=None
+index_nousers=Any
+
+auth_title=Authentication Settings
+
+manual_title=Edit Configuration File
+manual_desc=Use the text box below to edit the iSCSI server configuration file $1. Be careful, as no validation will be performed on your input!
+manual_err=Failed to save configuration file
+manual_edata=No contents entered!

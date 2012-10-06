@@ -1,5 +1,5 @@
 #!/usr/local/bin/perl
-# Display a list of iSCSI targets?
+# Display a list of iSCSI targets
 
 use strict;
 use warnings;
@@ -14,16 +14,54 @@ if ($err) {
 		$err." ".&text('index_clink', "../config.cgi?$module_name"));
 	}
 
-my @links = ( "list_extents.cgi", "list_devices.cgi",
-	      "list_targets.cgi", "edit_opts.cgi",
+# Find and show targets
+my $conf = &get_iscsi_config();
+my @targets = &find($conf, "Target");
+my @links = ( "<a href='edit_target.cgi?new=1'>$text{'index_add'}</a>" );
+if (@targets) {
+	unshift(@links, &select_all_link("d"), &select_invert_link("d"));
+	print &ui_form_start("delete_targets.cgi");
+	print &ui_links_row(\@links);
+	my @tds = ( "width=5" );
+	print &ui_columns_start([
+		"", $text{'index_target'}, $text{'index_lun'},
+		$text{'index_users'},
+		], 100, 0, \@tds);
+	foreach my $t (@targets) {
+		my @luns;
+		foreach my $l (&find($t->{'members'}, "Lun")) {
+			if ($l->{'value'} =~ /Path=([^, ]+)/) {
+				push(@luns, &mount::device_name("$1"));
+				}
+			}
+		my @users = map { $_->{'values'}->[0] }
+				&find($t->{'members'}, "IncomingUser");
+		print &ui_checked_columns_row([
+			"<a href='edit_target.cgi?name=".
+			  &urlize($t->{'value'})."'>".$t->{'value'}."</a>",
+			join(" , ", @luns) || "<i>$text{'index_noluns'}</i>",
+			join(" , ", @users) || "<i>$text{'index_nousers'}</i>"
+			],
+			\@tds, "d", $t->{'value'});
+		}
+	print &ui_columns_end();
+	print &ui_links_row(\@links);
+	print &ui_form_end([ [ undef, $text{'index_delete'} ] ]);
+	}
+else {
+	print "<b>$text{'index_none'}</b><p>\n";
+	print &ui_links_row(\@links);
+	}
+
+# Icons for global settings
+print &ui_hr();
+my @links = ( "edit_auth.cgi",
 	      "edit_manual.cgi" );
-my @titles = ( $text{'extents_title'}, $text{'devices_title'},
-	       $text{'targets_title'}, $text{'opts_title'},
+my @titles = ( $text{'auth_title'},
 	       $text{'manual_title'} );
-my @icons = ( "images/extents.gif", "images/devices.gif",
-	      "images/targets.gif", "images/opts.gif",
+my @icons = ( "images/auth.gif",
 	      "images/manual.gif" );
-&icons_table(\@links, \@titles, \@icons, 5);
+&icons_table(\@links, \@titles, \@icons);
 
 print &ui_hr();
 print &ui_buttons_start();
