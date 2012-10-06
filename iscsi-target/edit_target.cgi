@@ -132,10 +132,37 @@ for(my $i=0; $i<@luns+1; $i++) {
 	}
 
 # Incoming user(s)
-# XXX
+my @iusers = &find_value($conf, "IncomingUser");
+my $utable = &ui_columns_start([
+		$text{'target_uname'},
+		$text{'target_upass'},
+		]);
+my $i = 0;
+foreach my $u (@iusers, "", "") {
+	my ($uname, $upass) = split(/\s+/, $u);
+	$utable .= &ui_columns_row([
+		&ui_textbox("uname_$i", $uname, 30),
+		&ui_textbox("upass_$i", $upass, 20),
+		]);
+	$i++;
+	}
+$utable .= &ui_columns_end();
+print &ui_table_row($text{'target_iuser'},
+	&ui_radio("iuser_def", @iusers ? 0 : 1,
+		  [ [ 1, $text{'target_iuserall'} ],
+		    [ 0, $text{'target_iuserbelow'} ] ])."<br>\n".
+	$utable);
 
 # Outgoing user
-# XXX
+my $u = &find_value($conf, "OutgoingUser");
+my ($uname, $upass) = split(/\s+/, $u);
+print &ui_table_row($text{'target_ouser'},
+	&ui_radio("ouser_def", $u ? 0 : 1,
+		  [ [ 1, $text{'target_ousernone'} ],
+		    [ 0, $text{'target_ousername'} ] ])." ".
+	&ui_textbox("ouser", $uname, 30)." ".
+	$text{'target_ouserpass'}." ".
+	&ui_textbox("opass", $upass, 20));
 
 print &ui_table_end();
 if ($in{'new'}) {

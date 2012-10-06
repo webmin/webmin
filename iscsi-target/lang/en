@@ -43,6 +43,15 @@ target_iomode=IO mode
 target_wt=Write-through caching
 target_wb=Write-back caching
 target_ro=Read-only
+target_iuser=Authentication by clients
+target_iuserall=No authentication needed
+target_iuserbelow=Allow logins below ..
+target_uname=Username
+target_upass=Password
+target_ouser=Authentication to clients
+target_ousernone=Don't authenticate
+target_ousername=Login with username
+xt{'target_ouser=and password
 
 auth_title=Authentication Settings
 
