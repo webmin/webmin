@@ -1135,6 +1135,10 @@ elsif ($init_mode eq "upstart") {
 	# Run upstart action
 	return &start_upstart_service($name);
 	}
+elsif ($init_mode eq "systemd") {
+	# Start systemd service
+	return &start_systemd_service($name);
+	}
 else {
 	return (0, "Bootup mode $init_mode not supported");
 	}
@@ -1179,6 +1183,10 @@ elsif ($init_mode eq "upstart") {
 	# Stop upstart action
 	return &stop_upstart_service($name);
 	}
+elsif ($init_mode eq "systemd") {
+	# Stop systemd service
+	return &stop_systemd_service($name);
+	}
 else {
 	return (0, "Bootup mode $init_mode not supported");
 	}
@@ -1193,7 +1201,7 @@ sub restart_action
 {
 local ($name) = @_;
 &stop_action($name);
-&start_action($name);
+return &start_action($name);
 }
 
 =head2 tab_indent(lines)
