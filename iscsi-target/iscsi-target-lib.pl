@@ -21,6 +21,9 @@ return &text('check_econfig', "<tt>$config{'config_file'}</tt>")
 	if (!-r $config{'config_file'});
 return &text('check_eietadm', "<tt>$config{'ietadm'}</tt>")
 	if (!&has_command($config{'ietadm'}));
+&foreign_require("init");
+return &text('check_einit', "<tt>$config{'init_name'}</tt>")
+	if (&init::action_status($config{'init_name'}) == 0);
 return undef;
 }
 
@@ -147,8 +150,8 @@ return ($indent ? "\t" : "").$dir->{'name'}." ".$dir->{'value'};
 sub find
 {
 my ($conf, $name) = @_;
-my @t = grep { lc($_->{'name'}) eq lc($name) } @$conf;
-return wantarray ? @t : $t[0];
+my @rv = grep { lc($_->{'name'}) eq lc($name) } @$conf;
+return wantarray ? @rv : $rv[0];
 }
 
 # find_value(&config, name)
@@ -156,9 +159,9 @@ return wantarray ? @t : $t[0];
 sub find_value
 {
 my ($conf, $name) = @_;
-return map { $_->{'value'} } &find($conf, $name);
+my @rv = map { $_->{'value'} } &find($conf, $name);
+return wantarray ? @rv : $rv[0];
 }
-
 
 # is_iscsi_target_running()
 # Returns the PID if the server process is running, or 0 if not
@@ -172,6 +175,7 @@ return &check_pid_file($config{'pid_file'});
 sub find_host_name
 {
 my ($conf) = @_;
+my %hcount;
 foreach my $t (&find_value($conf, "Target")) {
 	my ($host) = split(/:/, $t);
 	$hcount{$host}++;
@@ -187,6 +191,33 @@ sub generate_host_name
 my @tm = localtime(time());
 return sprintf("iqn.%.4d-%.2d.%s", $tm[5]+1900, $tm[4]+1,
 	       join(".", reverse(split(/\./, &get_system_hostname()))));
+}
+
+# start_iscsi_server()
+# Run the init script to start the server
+sub start_iscsi_server
+{
+&foreign_require("init");
+my ($ok, $out) = &init::start_action($config{'init_name'});
+return $ok ? undef : $out;
+}
+
+# stop_iscsi_server()
+# Run the init script to stop the server
+sub stop_iscsi_server
+{
+&foreign_require("init");
+my ($ok, $out) = &init::stop_action($config{'init_name'});
+return $ok ? undef : $out;
+}
+
+# restart_iscsi_server()
+# Run the init script to stop and then start the server
+sub restart_iscsi_server
+{
+&foreign_require("init");
+my ($ok, $out) = &init::restart_action($config{'init_name'});
+return $ok ? undef : $out;
 }
 
 1;

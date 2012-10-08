@@ -7,6 +7,7 @@ require './iscsi-target-lib.pl';
 our (%text, %in);
 &ReadParse();
 &error_setup($text{'target_err'});
+&lock_file($config{'config_file'});
 my $conf = &get_iscsi_config();
 
 # Get the target
@@ -22,7 +23,7 @@ else {
 
 if ($in{'delete'}) {
 	# Delete the target
-	# XXX
+	&save_directive($conf, $conf, [ $target ], [ ]);
 	}
 else {
 	# Validate and save directives, starting with target name
@@ -48,3 +49,9 @@ else {
 	# Save the target
 	# XXX
 	}
+
+&flush_file_lines($config{'config_file'});
+&unlock_file($config{'config_file'});
+&webmin_log($in{'delete'} ? 'delete' : $in{'new'} ? 'create' : 'modify',
+	    'target', $target->{'value'});
+&redirect("");

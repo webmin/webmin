@@ -154,7 +154,7 @@ print &ui_table_row($text{'target_iuser'},
 	$utable);
 
 # Outgoing user
-my $u = &find_value($conf, "OutgoingUser");
+my $u = &find_value($target->{'members'}, "OutgoingUser");
 my ($uname, $upass) = split(/\s+/, $u);
 print &ui_table_row($text{'target_ouser'},
 	&ui_radio("ouser_def", $u ? 0 : 1,
