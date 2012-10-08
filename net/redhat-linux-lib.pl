@@ -277,7 +277,8 @@ $conf{'NAME'} = $_[0]->{'desc'};
 
 # If this is a bridge, set BRIDGE in real interface
 if ($_[0]->{'bridge'}) {
-	foreach my $efile (glob("$net_scripts_dir/ifcfg-eth*")) {
+	foreach my $efile (glob("$net_scripts_dir/ifcfg-eth*"),
+			   glob("$net_scripts_dir/ifcfg-em*")) {
 		local %bconf;
 		&lock_file($efile);
 		&read_env_file($efile, \%bconf);
@@ -957,7 +958,7 @@ sub get_dhcp_hostname
 return -1 if ($gconfig{'os_type'} ne 'redhat-linux' ||
 	      $gconfig{'os_version'} < 11);
 local @boot = &boot_interfaces();
-local ($eth) = grep { $_->{'fullname'} =~ /^eth\d+$/ } @boot;
+local ($eth) = grep { $_->{'fullname'} =~ /^(eth|em)\d+$/ } @boot;
 return -1 if (!$eth);
 local %eth;
 &read_env_file($eth->{'file'}, \%eth);
@@ -991,7 +992,7 @@ return $return;
 
 sub boot_iface_hardware
 {
-return $_[0] =~ /^eth/;
+return $_[0] =~ /^(eth|em)/;
 }
 
 # supports_address6([&iface])

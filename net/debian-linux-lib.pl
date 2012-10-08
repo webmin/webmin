@@ -1048,7 +1048,7 @@ return $gconfig{'os_type'} eq 'debian-linux' && &has_command("vconfig");
 
 sub boot_iface_hardware
 {
-return $_[0] =~ /^eth/;
+return $_[0] =~ /^(eth|em)/;
 }
 
 # supports_address6([&iface])
