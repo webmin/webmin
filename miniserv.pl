@@ -783,9 +783,14 @@ while(1) {
 				&run_logout_script($s, $user);
 				&write_logout_utmp($user, $lip);
 				delete($sessiondb{$s});
-				if ($use_syslog) {
+				if ($use_syslog && $user) {
 					syslog("info", "%s",
 					      "Timeout of session for $user");
+					}
+				elsif ($use_syslog) {
+					syslog("info", "%s",
+					      "Timeout of unknown session $s ".
+					      "with value $sessiondb{$s}");
 					}
 				}
 			}
