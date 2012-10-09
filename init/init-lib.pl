@@ -1114,13 +1114,8 @@ if ($action_mode eq "init" || $action_mode eq "local") {
 	if (!-x $fn) {
 		return (0, "$fn does not exist");
 		}
-	local $temp = &transname();
-	&foreign_require("proc", "proc-lib.pl");
-	open(TEMP, ">$temp");
-	&proc::safe_process_exec_logged("$fn start", 0, 0, TEMP);
-	close(TEMP);
+	local $out = &backquote_logged("$fn start 2>&1 </dev/null");
 	local $ex = $?;
-	local $out = &read_file_contents($temp);
 	return (!$ex, $out);
 	}
 elsif ($action_mode eq "rc") {
@@ -1163,13 +1158,8 @@ if ($action_mode eq "init" || $action_mode eq "local") {
 	if (!-x $fn) {
 		return (0, "$fn does not exist");
 		}
-	local $temp = &transname();
-	&foreign_require("proc", "proc-lib.pl");
-	open(TEMP, ">$temp");
-	&proc::safe_process_exec_logged("$fn stop", 0, 0, TEMP);
-	close(TEMP);
+	local $out = &backquote_logged("$fn stop 2>&1 </dev/null");
 	local $ex = $?;
-	local $out = &read_file_contents($temp);
 	return (!$ex, $out);
 	}
 elsif ($action_mode eq "rc") {
