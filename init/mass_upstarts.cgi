@@ -21,15 +21,15 @@ if ($start || $stop || $restart) {
 	foreach $s (@sel) {
 		if ($start) {
 			print &text('mass_ustarting', "<tt>$s</tt>"),"<p>\n";
-			($ok, $out) = &start_upstart_service($s);
+			($ok, $out) = &start_action($s);
 			}
 		elsif ($stop) {
 			print &text('mass_ustopping', "<tt>$s</tt>"),"<p>\n";
-			($ok, $out) = &stop_upstart_service($s);
+			($ok, $out) = &stop_action($s);
 			}
 		elsif ($restart) {
 			print &text('mass_urestarting', "<tt>$s</tt>"),"<p>\n";
-			($ok, $out) = &restart_upstart_service($s);
+			($ok, $out) = &restart_action($s);
 			}
 		print "<pre>$out</pre>";
 		if (!$ok) {

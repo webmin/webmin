@@ -316,8 +316,7 @@ elsif ($init_mode eq "upstart" && $access{'bootup'}) {
 			$l = "edit_upstart.cgi?name=".&urlize($u->{'name'});
 			}
 		print &ui_columns_row([
-			&ui_checkbox("d", $u->{'name'}, undef, 0, undef,
-			    	     $u->{'legacy'}),
+			&ui_checkbox("d", $u->{'name'}, undef, 0),
 			"<a href='$l'>$u->{'name'}</a>",
 			$u->{'desc'},
 			$u->{'boot'} eq 'start' ? $text{'yes'} :

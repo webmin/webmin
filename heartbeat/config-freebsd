@@ -1,6 +1,6 @@
-ha_cf=
+ha_cf=/usr/local/etc/ha.d/ha.cf
 authkeys=
-haresources=
+haresources=/usr/local/etc/ha.d/harc
 resource_d=
 stop_cmd=/usr/local/etc/rc.d/heartbeat.sh stop
 start_cmd=/usr/local/etc/rc.d/heartbeat.sh start

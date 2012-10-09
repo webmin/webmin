@@ -1,0 +1,7 @@
+slpd_conf=/usr/local/etc/slp.conf
+slpd_reg=/usr/local/etc/slp.reg
+slpd_log=/var/log/slpd.log
+slpd_pid=/var/run/slpd.pid
+slpd=/usr/sbin/slpd
+start_cmd=/usr/local/etc/rc.d/slpd start
+stop_cmd=/usr/local/etc/rc.d/slpd stop

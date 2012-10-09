@@ -1106,9 +1106,10 @@ success) and all output from the action script.
 sub start_action
 {
 local ($name) = @_;
-if ($init_mode eq "init" || $init_mode eq "local") {
+local $action_mode = &get_action_mode($name);
+if ($action_mode eq "init" || $action_mode eq "local") {
 	# Run the init script or Webmin-created wrapper
-	local $fn = $init_mode eq "init" ? &action_filename($name) :
+	local $fn = $action_mode eq "init" ? &action_filename($name) :
 			"$module_config_directory/$name.sh";
 	if (!-x $fn) {
 		return (0, "$fn does not exist");
@@ -1122,25 +1123,25 @@ if ($init_mode eq "init" || $init_mode eq "local") {
 	local $out = &read_file_contents($temp);
 	return (!$ex, $out);
 	}
-elsif ($init_mode eq "rc") {
+elsif ($action_mode eq "rc") {
 	# Run FreeBSD RC script
 	return &start_rc_script($name);
 	}
-elsif ($init_mode eq "win32") {
+elsif ($action_mode eq "win32") {
 	# Start Windows service
 	local $err = &start_win32_service($name);
 	return (!$err, $err);
 	}
-elsif ($init_mode eq "upstart") {
+elsif ($action_mode eq "upstart") {
 	# Run upstart action
 	return &start_upstart_service($name);
 	}
-elsif ($init_mode eq "systemd") {
+elsif ($action_mode eq "systemd") {
 	# Start systemd service
 	return &start_systemd_service($name);
 	}
 else {
-	return (0, "Bootup mode $init_mode not supported");
+	return (0, "Bootup mode $action_mode not supported");
 	}
 }
 
@@ -1154,9 +1155,10 @@ success) and all output from the action script.
 sub stop_action
 {
 local ($name) = @_;
-if ($init_mode eq "init" || $init_mode eq "local") {
+local $action_mode = &get_action_mode($name);
+if ($action_mode eq "init" || $action_mode eq "local") {
 	# Run the init script or Webmin-created wrapper
-	local $fn = $init_mode eq "init" ? &action_filename($name) :
+	local $fn = $action_mode eq "init" ? &action_filename($name) :
 			"$module_config_directory/$name.sh";
 	if (!-x $fn) {
 		return (0, "$fn does not exist");
@@ -1170,25 +1172,25 @@ if ($init_mode eq "init" || $init_mode eq "local") {
 	local $out = &read_file_contents($temp);
 	return (!$ex, $out);
 	}
-elsif ($init_mode eq "rc") {
+elsif ($action_mode eq "rc") {
 	# Run FreeBSD RC script
 	return &stop_rc_script($name);
 	}
-elsif ($init_mode eq "win32") {
+elsif ($action_mode eq "win32") {
 	# Start Windows service
 	local $err = &stop_win32_service($name);
 	return (!$err, $err);
 	}
-elsif ($init_mode eq "upstart") {
+elsif ($action_mode eq "upstart") {
 	# Stop upstart action
 	return &stop_upstart_service($name);
 	}
-elsif ($init_mode eq "systemd") {
+elsif ($action_mode eq "systemd") {
 	# Stop systemd service
 	return &stop_systemd_service($name);
 	}
 else {
-	return (0, "Bootup mode $init_mode not supported");
+	return (0, "Bootup mode $action_mode not supported");
 	}
 }
 
@@ -1200,8 +1202,41 @@ Calls a stop then a start for some named action.
 sub restart_action
 {
 local ($name) = @_;
-&stop_action($name);
-return &start_action($name);
+local $action_mode = &get_action_mode($name);
+if ($action_mode eq "upstart") {
+	return &restart_upstart_service($name);
+	}
+elsif ($action_mode eq "systemd") {
+	return &restart_systemd_service($name);
+	}
+else {
+	&stop_action($name);
+	return &start_action($name);
+	}
+}
+
+=head2 get_action_mode(name)
+
+Returns the init mode used by some action. May be different from the global
+default on systems with mixed modes
+
+=cut
+sub get_action_mode
+{
+local ($name) = @_;
+if ($init_mode eq "systemd") {
+	# If classic init script exists but no systemd unit, assume init
+	if (-r "$config{'init_dir'}/$name" && !&is_systemd_service($name)) {
+		return "init";
+		}
+	}
+elsif ($init_mode eq "upstart") {
+	# If classic init script exists but not upstart config, assume init
+	if (-r "$config{'init_dir'}/$name" && !-r "/etc/init/$name.conf") {
+		return "init";
+		}
+	}
+return $init_mode;
 }
 
 =head2 tab_indent(lines)
