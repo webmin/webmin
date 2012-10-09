@@ -114,12 +114,14 @@ for(my $i=0; $i<@n || $i<@o; $i++) {
 		}
 	elsif (!$o && $n) {
 		# Add a directive at end of parent
-		my @lines = &make_directive_line($n, $o->{'parent'});
-		splice(@$lref, $parent->{'eline'}+1, 0, @lines);
+		if (defined($parent->{'line'})) {
+			my @lines = &make_directive_lines($n, $o->{'parent'});
+			splice(@$lref, $parent->{'eline'}+1, 0, @lines);
+			$n->{'line'} = $parent->{'eline'} + 1;
+			$n->{'eline'} = $n->{'line'} + scalar(@lines) - 1;
+			$parent->{'eline'} = $n->{'eline'};
+			}
 		push(@{$parent->{'members'}}, $n);
-		$n->{'line'} = $parent->{'eline'} + 1;
-		$n->{'eline'} = $n->{'line'} + scalar(@lines) - 1;
-		$parent->{'eline'} = $n->{'eline'};
 
 		# XXX renumber
 		}
@@ -139,10 +141,25 @@ for(my $i=0; $i<@n || $i<@o; $i++) {
 }
 
 # make_directive_line(&directive, indent?)
+# Returns the first line of a config object
 sub make_directive_line
 {
 my ($dir, $indent) = @_;
 return ($indent ? "\t" : "").$dir->{'name'}." ".$dir->{'value'};
+}
+
+# make_directive_lines(&directive, indent?)
+# Returns the all lines of a config object
+sub make_directive_lines
+{
+my ($dir, $indent) = @_;
+my @rv = ( &make_directive_line($dir, $indent) );
+if ($dir->{'members'}) {
+	foreach my $m (@{$dir->{'members'}}) {
+		push(@rv, &make_directive_line($m, $indent+1));
+		}
+	}
+return @rv;
 }
 
 # find(&config, name)

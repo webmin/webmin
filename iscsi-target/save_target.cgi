@@ -4,16 +4,18 @@
 use strict;
 use warnings;
 require './iscsi-target-lib.pl';
-our (%text, %in);
+our (%text, %in, %config);
 &ReadParse();
 &error_setup($text{'target_err'});
 &lock_file($config{'config_file'});
-my $conf = &get_iscsi_config();
+my $pconf = &get_iscsi_config_parent();
+my $conf = $pconf->{'members'};
 
 # Get the target
 my $target;
 if ($in{'new'}) {
-	$target = { 'members' => [ ] };
+	$target = { 'name' => 'Target',
+		    'members' => [ ] };
 	}
 else {
 	($target) = grep { $_->{'value'} eq $in{'oldname'} }
@@ -23,7 +25,7 @@ else {
 
 if ($in{'delete'}) {
 	# Delete the target
-	&save_directive($conf, $conf, [ $target ], [ ]);
+	&save_directive($conf, $pconf, [ $target ], [ ]);
 	}
 else {
 	# Validate and save directives, starting with target name
@@ -34,11 +36,66 @@ else {
 	else {
 		($host) = split(/:/, $target->{'value'});
 		}
-	$in{'name'} =~ /^[a-z0-9\.\_\-\]+$/i || &error($text{'target_ename'});
-	$target->{'name'} = $host.":".$in{'name'};
+	$in{'name'} =~ /^[a-z0-9\.\_\-]+$/i || &error($text{'target_ename'});
+	$target->{'value'} = $host.":".$in{'name'};
 
 	# Validate logical units
-	# XXX
+	my @luns = &find_value($target->{'members'}, "Lun");
+	my @newluns;
+	my $lastlunid = 0;
+	for(my $i=0; defined($in{"mode".$i}); $i++) {
+		my ($lunid, $lunstr) = split(/\s+/, $luns[$i]);
+		$lunid ||= $lastlunid + 1;
+		$lastlunid = $lunid;
+		my %lunopts = map { split(/=/, $_) } split(/,/, $lunstr);
+
+		# Clear variables that we will set below
+		delete($lunopts{"Path"});
+		delete($lunopts{"Type"});
+		delete($lunopts{"Sectors"});
+
+		if ($in{"mode".$i} eq "none") {
+			# Nothing to do
+			next;
+			}
+		elsif ($in{"mode".$i} eq "part") {
+			# Regular partition
+			$lunopts{"Path"} = $in{"part".$i};
+			}
+		elsif ($in{"mode".$i} eq "raid") {
+			# RAID device
+			$lunopts{"Path"} = $in{"raid".$i};
+			}
+		elsif ($in{"mode".$i} eq "lvm") {
+			# LVM logical volume
+			$lunopts{"Path"} = $in{"lvm".$i};
+			}
+		elsif ($in{"mode".$i} eq "other") {
+			# Some other file
+			$in{"other".$i} =~ /^\/\S+$/ && -r $in{"other".$i} ||
+				&error(&text('target_eother', $i+1));
+			$lunopts{"Path"} = $in{"other".$i};
+			}
+		elsif ($in{"mode".$i} eq "null") {
+			# Null-IO device
+			$lunopts{"Type"} = "nullio";
+			$in{"null".$i} =~ /^\d+$/ && $in{"null".$i} > 0 ||
+				&error(&text('target_esectors', $i+1));
+			$lunopts{"Sectors"} = $in{"null".$i};
+			}
+
+		if ($in{"mode".$i} ne "null") {
+			# Save IO mode
+			$lunopts{"Type"} = $in{"type".$i};
+			$lunopts{"IOMode"} = $in{"iomode".$i};
+			}
+
+		push(@newluns, $lunid." ".
+			       join(",", map { $_."=".$lunopts{$_} }
+					     grep { $lunopts{$_} ne "" }
+						  (keys %lunopts)));
+		}
+	&save_directive($conf, $target, "Lun", \@newluns);
 
 	# Validate incoming user(s)
 	# XXX
@@ -47,7 +104,8 @@ else {
 	# XXX
 
 	# Save the target
-	# XXX
+	&save_directive($conf, $pconf, $in{'new'} ? [ ] : [ $target ],
+			[ $target ]);
 	}
 
 &flush_file_lines($config{'config_file'});

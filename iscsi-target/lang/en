@@ -52,7 +52,9 @@ target_upass=Password
 target_ouser=Authentication to clients
 target_ousernone=Don't authenticate
 target_ousername=Login with username
-xt{'target_ouser=and password
+target_err=Failed to save target
+target_esectors=Missing or non-numeric number of sectors for device $1
+target_eother=Missing or invalid file for device $1
 
 auth_title=Authentication Settings
 
