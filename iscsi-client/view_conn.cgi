@@ -59,19 +59,21 @@ if ($conn->{'device'}) {
 			&nice_size($disk->{'size'}));
 		}
 
-	my @users = &get_connection_users($conn);
+	my @users = &get_connection_users($conn, 1);
 	if (@users) {
 		my $utable = &ui_columns_start([
 			$text{'dconns_part'},
 			$text{'dconns_size'},
 			$text{'dconns_use'},
-			], undef, 0, [ "", "nowrap", "" ]);
+			], 100, 0, [ "nowrap", "nowrap", "nowrap" ]);
 		foreach my $u (@users) {
 			$utable .= &ui_columns_row([
-				&mount::device_name($u->[1]->{'device'}),
-				&nice_size($u->[1]->{'size'}),
-				&lvm::device_message($u->[2], $u->[3], $u->[4]),
-				], "50");
+			    &mount::device_name($u->[1]->{'device'}),
+			    &nice_size($u->[1]->{'size'}),
+			    $u->[2] ?
+				&lvm::device_message($u->[2], $u->[3], $u->[4])
+				: "<i>$text{'dconns_unused'}</i>",
+			    ], "50");
 			}
 		$utable .= &ui_columns_end();
 		print &ui_table_row($text{'vconn_users'}, $utable);
