@@ -33,9 +33,15 @@ if (@targets) {
 			if ($l->{'value'} =~ /Path=([^, ]+)/) {
 				push(@luns, &mount::device_name("$1"));
 				}
+			elsif ($l->{'value'} =~ /Sectors=(\d+)/) {
+				push(@luns, &text('index_nullio', "$1"));
+				}
 			}
 		my @users = map { $_->{'values'}->[0] }
 				&find($t->{'members'}, "IncomingUser");
+		if (@users > 5) {
+			@users = (@users[0 .. 4], "...");
+			}
 		print &ui_checked_columns_row([
 			"<a href='edit_target.cgi?name=".
 			  &urlize($t->{'value'})."'>".$t->{'value'}."</a>",

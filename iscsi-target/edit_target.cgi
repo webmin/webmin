@@ -132,7 +132,7 @@ for(my $i=0; $i<@luns+1; $i++) {
 	}
 
 # Incoming user(s)
-my @iusers = &find_value($conf, "IncomingUser");
+my @iusers = &find_value($target->{'members'}, "IncomingUser");
 my $utable = &ui_columns_start([
 		$text{'target_uname'},
 		$text{'target_upass'},

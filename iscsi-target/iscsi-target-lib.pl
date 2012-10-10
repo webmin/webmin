@@ -51,6 +51,7 @@ while(<$fh>) {
 		}
 	if (/^\S/) {
 		# Top-level directive
+		$dir->{'indent'} = 0;
 		$parent = $dir;
 		push(@rv, $parent);
 		}
@@ -60,6 +61,7 @@ while(<$fh>) {
 		$parent->{'members'} ||= [ ];
 		push(@{$parent->{'members'}}, $dir);
 		$dir->{'parent'} = $parent;
+		$dir->{'indent'} = 1;
 		$parent->{'eline'} = $dir->{'line'};
 		}
 	$lnum++;
@@ -75,6 +77,7 @@ sub get_iscsi_config_parent
 my $conf = &get_iscsi_config();
 my $lref = &read_file_lines($config{'config_file'}, 1);
 return { 'members' => $conf,
+	 'indent' => -1,
 	 'line' => 0,
 	 'eline' => scalar(@$lref)-1 };
 }
@@ -107,7 +110,7 @@ for(my $i=0; $i<@n || $i<@o; $i++) {
 		# Update a directive
 		if (defined($o->{'line'})) {
 			$lref->[$o->{'line'}] = &make_directive_line(
-							$n, $o->{'parent'});
+							$n, $o->{'indent'});
 			}
 		$o->{'name'} = $n->{'name'};
 		$o->{'value'} = $n->{'value'};
@@ -115,27 +118,42 @@ for(my $i=0; $i<@n || $i<@o; $i++) {
 	elsif (!$o && $n) {
 		# Add a directive at end of parent
 		if (defined($parent->{'line'})) {
-			my @lines = &make_directive_lines($n, $o->{'parent'});
-			splice(@$lref, $parent->{'eline'}+1, 0, @lines);
+			my @lines = &make_directive_lines($n,
+					$parent->{'indent'} + 1);
+			&renumber($conf, $parent->{'eline'}, scalar(@lines));
+			splice(@$lref, $parent->{'eline'} + 1, 0, @lines);
 			$n->{'line'} = $parent->{'eline'} + 1;
 			$n->{'eline'} = $n->{'line'} + scalar(@lines) - 1;
 			$parent->{'eline'} = $n->{'eline'};
 			}
 		push(@{$parent->{'members'}}, $n);
-
-		# XXX renumber
 		}
 	elsif ($o && !$n) {
 		# Remove a directive
 		if (defined($o->{'line'})) {
 			splice(@$lref, $o->{'line'},
 			       $o->{'eline'} - $o->{'line'} + 1);
-			# XXX renumber
+			&renumber($conf, $o->{'line'} - 1, 
+				  -($o->{'eline'} - $o->{'line'} + 1));
 			}
 		my $idx = &indexof($o, @{$parent->{'members'}});
 		if ($idx >= 0) {
 			splice(@{$parent->{'members'}}, $idx, 1);
 			}
+		}
+	}
+}
+
+# renumber(&config, line, offset)
+# Moves directives after some line by the given offset
+sub renumber
+{
+my ($conf, $line, $offset) = @_;
+foreach my $c (@$conf) {
+	$c->{'line'} += $offset if ($c->{'line'} > $line);
+	$c->{'eline'} += $offset if ($c->{'eline'} > $line);
+	if ($c->{'members'}) {
+		&renumber($c->{'members'}, $line, $offset);
 		}
 	}
 }

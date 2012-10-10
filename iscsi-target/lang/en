@@ -21,6 +21,7 @@ index_users=Allowed users
 index_delete=Delete Selected Targets
 index_noluns=None
 index_nousers=Any
+index_nullio=RAM disk of $1 sectors
 
 target_title1=Create iSCSI Target
 target_title2=Edit iSCSI Target
@@ -52,9 +53,15 @@ target_upass=Password
 target_ouser=Authentication to clients
 target_ousernone=Don't authenticate
 target_ousername=Login with username
+target_ouserpass=and password
 target_err=Failed to save target
 target_esectors=Missing or non-numeric number of sectors for device $1
 target_eother=Missing or invalid file for device $1
+target_eiuser=Invalid name for user $1 - no spaces are allowed
+target_eipass=Invalid password for user $1 - no spaces are allowed
+target_eouser=Missing or invalid username for authentication to clients - no spaces are allowed
+target_eopass=Missing or invalid password for authentication to clients - no spaces are allowed
+target_eiusernone=No client usernames entered
 
 auth_title=Authentication Settings
 
