@@ -234,6 +234,7 @@ elsif ($config{'hwtime'} == 0) {
 	}
 else {
 	return &has_command("hwclock") &&
+	       &execute_command("hwclock") == 0 &&
 	       !&running_in_xen() && !&running_in_vserver() &&
 	       !&running_in_openvz() && !&running_in_zone();
 	}
