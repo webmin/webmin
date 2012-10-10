@@ -131,6 +131,8 @@ for(my $i=0; $i<@luns+1; $i++) {
 		&ui_grid_table(\@grid, 2));
 	}
 
+print &ui_table_hr();
+
 # Incoming user(s)
 my @iusers = &find_value($target->{'members'}, "IncomingUser");
 my $utable = &ui_columns_start([
@@ -163,6 +165,27 @@ print &ui_table_row($text{'target_ouser'},
 	&ui_textbox("ouser", $uname, 30)." ".
 	$text{'target_ouserpass'}." ".
 	&ui_textbox("opass", $upass, 20));
+
+print &ui_table_hr();
+
+# Optional alias name
+my $a = &find_value($target->{'members'}, "Alias");
+print &ui_table_row($text{'target_alias'},
+	&ui_opt_textbox("alias", $a, 20, $text{'target_noalias'}));
+
+# Header digest mode
+my $h = &find_value($target->{'members'}, "HeaderDigest");
+print &ui_table_row($text{'target_hdigest'},
+	&ui_select("hdigest", $h,
+		   [ [ "", $text{'target_nodigest'} ],
+		     [ "CRC32C" ] ], 1, 0, 1));
+
+# Data digest mode
+my $h = &find_value($target->{'members'}, "DataDigest");
+print &ui_table_row($text{'target_ddigest'},
+	&ui_select("ddigest", $h,
+		   [ [ "", $text{'target_nodigest'} ],
+		     [ "CRC32C" ] ], 1, 0, 1));
 
 print &ui_table_end();
 if ($in{'new'}) {

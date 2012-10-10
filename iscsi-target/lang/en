@@ -62,6 +62,11 @@ target_eipass=Invalid password for user $1 - no spaces are allowed
 target_eouser=Missing or invalid username for authentication to clients - no spaces are allowed
 target_eopass=Missing or invalid password for authentication to clients - no spaces are allowed
 target_eiusernone=No client usernames entered
+target_alias=Alias name for target
+target_noalias=None
+target_hdigest=Header checksum
+target_ddigest=Data checksum
+target_nodigest=None
 
 auth_title=Authentication Settings
 

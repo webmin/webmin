@@ -124,6 +124,22 @@ else {
 			[ $in{"ouser"}." ".$in{"opass"} ]);
 		}
 
+	# Save alias
+	if ($in{'alias_def'}) {
+		&save_directive($conf, $target, "Alias", [ ]);
+		}
+	else {
+		$in{'alias'} =~ /^[a-z0-9\.\_\-]+$/i ||
+			&error($text{'target_ealias'});
+		&save_directive($conf, $target, "Alias", [ $in{'alias'} ]);
+		}
+
+	# Save digest modes
+	&save_directive($conf, $target, "HeaderDigest",
+			$in{'hdigest'} ? [ $in{'hdigest'} ] : [ ]);
+	&save_directive($conf, $target, "DataDigest",
+			$in{'ddigest'} ? [ $in{'ddigest'} ] : [ ]);
+
 	# Save the target
 	&save_directive($conf, $pconf, $in{'new'} ? [ ] : [ $target ],
 			[ $target ]);
