@@ -134,6 +134,7 @@ add_ok=Add Connection
 add_etarget=No target $1 found
 add_dev=Connected as $1
 add_used=Already connected
+add_on=$1 on $2
 
 dconns_err=Failed to disconnect connections
 dconns_enone=None selected

@@ -46,7 +46,7 @@ print &ui_table_row($text{'add_target'},
 		[ [ "", "&lt;".$text{'add_alltargets'}."&gt;" ],
 		  map { my $u = $used{$_->{'name'}.":".$_->{'target'}};
 			[ $_->{'name'}.":".$_->{'target'},
-			  $_->{'target'}.
+			  &text('add_on', $_->{'target'}, $_->{'ip'}).
 			  (!$u ? "" :
 			   $u->{'device'} ? " (".&text('add_dev',
 						       $u->{'device'}).")"
