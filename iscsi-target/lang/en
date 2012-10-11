@@ -69,6 +69,10 @@ target_ddigest=Data checksum
 target_nodigest=None
 
 auth_title=Authentication Settings
+auth_header=Default authentication options for all targets
+auth_iuser=Authentication by clients
+auth_ouser=Authentication to clients
+auth_err=Failed to save authentication settings
 
 manual_title=Edit Configuration File
 manual_desc=Use the text box below to edit the iSCSI server configuration file $1. Be careful, as no validation will be performed on your input!
@@ -90,3 +94,4 @@ log_restart=Restarted iSCSI server
 log_atboot=Enabled iSCSI server at boot time
 log_delboot=Disabled iSCSI server at boot time
 log_manual=Manually edited configuration file
+log_auth=Changed authentication settings
