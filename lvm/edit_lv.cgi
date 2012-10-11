@@ -178,7 +178,7 @@ if (!$in{'lv'} && !$lv->{'is_snap'}) {
 		&ui_select("stripesize", undef,
 			   [ [ undef, $text{'default'} ],
 			     map { [ $_, $_." kB" ] }
-				 map { 2**$_ } (2 .. 9) ]));
+				 map { 2**$_ } (2 .. 12) ]));
 	}
 elsif (!$lv->{'is_snap'}) {
 	# Show current striping
