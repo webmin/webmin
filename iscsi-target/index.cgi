@@ -62,10 +62,16 @@ else {
 # Icons for global settings
 print &ui_hr();
 my @links = ( "edit_auth.cgi",
+	      "edit_conn.cgi",
+	      "edit_timeout.cgi",
 	      "edit_manual.cgi" );
 my @titles = ( $text{'auth_title'},
+	       $text{'conn_title'},
+	       $text{'timeout_title'},
 	       $text{'manual_title'} );
 my @icons = ( "images/auth.gif",
+	      "images/conn.gif",
+	      "images/timeout.gif",
 	      "images/manual.gif" );
 &icons_table(\@links, \@titles, \@icons);
 

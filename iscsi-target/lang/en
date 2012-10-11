@@ -74,6 +74,21 @@ auth_iuser=Authentication by clients
 auth_ouser=Authentication to clients
 auth_err=Failed to save authentication settings
 
+conn_title=Connection Settings
+conn_header=Default connection options for all targets
+conn_sessions=Maximum concurrent sessions
+conn_sessions1=Unlimited
+conn_sessions0=At most
+conn_initial=Allow clients to send data after commands?
+conn_immediate=Allow clients to append data to commands?
+conn_maxrecv=Maximum receive segment length
+conn_bytes=bytes
+conn_maxxmit=Maximum transmit segment length
+conn_maxburst=Maximum client burst size
+conn_firstburst=Maximum client unsolicited data size
+
+timeout_title=Timeout Settings
+
 manual_title=Edit Configuration File
 manual_desc=Use the text box below to edit the iSCSI server configuration file $1. Be careful, as no validation will be performed on your input!
 manual_err=Failed to save configuration file

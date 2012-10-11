@@ -78,6 +78,7 @@ my $conf = &get_iscsi_config();
 my $lref = &read_file_lines($config{'config_file'}, 1);
 return { 'members' => $conf,
 	 'indent' => -1,
+	 'top' => 1,
 	 'line' => 0,
 	 'eline' => scalar(@$lref)-1 };
 }
@@ -103,6 +104,9 @@ $values = [ $values ] if (ref($values) ne 'ARRAY');
 my @n = map { ref($_) ? $_ : { 'name' => $name_or_old,
 			       'value' => $_ } } @$values;
 
+# Find first target, to insert before
+my ($first_target) = &find($parent->{'members'}, "Target");
+
 for(my $i=0; $i<@n || $i<@o; $i++) {
 	my $o = $i<@o ? $o[$i] : undef;
 	my $n = $i<@n ? $n[$i] : undef;
@@ -114,6 +118,17 @@ for(my $i=0; $i<@n || $i<@o; $i++) {
 			}
 		$o->{'name'} = $n->{'name'};
 		$o->{'value'} = $n->{'value'};
+		}
+	elsif (!$o && $n && $parent->{'top'} && $n->{'name'} ne 'Target' &&
+	       $first_target) {
+		# Add before first Target
+		my @lines = &make_directive_lines($n,
+                                        $parent->{'indent'} + 1);
+		splice(@$lref, $first_target->{'line'}, 0, @lines);
+		&renumber($conf, $first_target->{'line'} - 1, scalar(@lines));
+		$n->{'line'} = $first_target->{'line'} - 1;
+		$n->{'eline'} = $n->{'line'} + scalar(@lines) - 1;
+		push(@{$parent->{'members'}}, $n);
 		}
 	elsif (!$o && $n) {
 		# Add a directive at end of parent
