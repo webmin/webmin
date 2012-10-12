@@ -104,6 +104,21 @@ timeout_secs=seconds
 timeout_nopt=Time to wait for ping response
 timeout_noptnone=Same as ping time
 
+addr_title=Server Address
+addr_header=iSCSI server networking options
+addr_addr=Listen on IP address
+addr_any=Any address
+addr_ip=IP
+addr_port=Listen on port
+addr_debug=Debug level
+addr_debugnone=Debugging disabled
+addr_err=Failed to save server address
+addr_eaddr=Address to listen on must be an IP address
+addr_eport=Port to listen on must be a number
+addr_edebug=Debug level must be a number
+
+clients_title=Client Connections
+
 manual_title=Edit Configuration File
 manual_desc=Use the text box below to edit the iSCSI server configuration file $1. Be careful, as no validation will be performed on your input!
 manual_err=Failed to save configuration file
@@ -127,3 +142,4 @@ log_manual=Manually edited configuration file
 log_auth=Changed global authentication settings
 log_conn=Changed global connection settings
 log_timeout=Changed global timeout settings
+log_addr=Changed server address

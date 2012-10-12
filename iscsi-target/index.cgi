@@ -64,14 +64,20 @@ print &ui_hr();
 my @links = ( "edit_auth.cgi",
 	      "edit_conn.cgi",
 	      "edit_timeout.cgi",
+	      "edit_addr.cgi",
+	      "list_clients.cgi",
 	      "edit_manual.cgi" );
 my @titles = ( $text{'auth_title'},
 	       $text{'conn_title'},
 	       $text{'timeout_title'},
+	       $text{'addr_title'},
+	       $text{'clients_title'},
 	       $text{'manual_title'} );
 my @icons = ( "images/auth.gif",
 	      "images/conn.gif",
 	      "images/timeout.gif",
+	      "images/addr.gif",
+	      "images/clients.gif",
 	      "images/manual.gif" );
 &icons_table(\@links, \@titles, \@icons);
 

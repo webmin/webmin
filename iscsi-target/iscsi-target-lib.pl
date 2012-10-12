@@ -270,4 +270,86 @@ my ($ok, $out) = &init::restart_action($config{'init_name'});
 return $ok ? undef : $out;
 }
 
+# get_iscsi_options_file()
+# Returns the file containing command-line options, for use when locking
+sub get_iscsi_options_file
+{
+return $config{'opts_file'};
+}
+
+# get_iscsi_options_string()
+# Returns all flags as a string
+sub get_iscsi_options_string
+{
+my $file = &get_iscsi_options_file();
+my %env;
+&read_env_file($file, \%env);
+return $env{'OPTIONS'};
+}
+
+# get_iscsi_options()
+# Returns a hash ref of command line options
+sub get_iscsi_options
+{
+my $str = &get_iscsi_options_string();
+my %opts;
+while($str =~ /\S/) {
+	if ($str =~ /^\s*\-(c|d|g|a|p|u)\s+(\S+)(.*)/) {
+		# Short arg, like -p 123
+		$str = $3;
+		$opts{$1} = $2;
+		}
+	elsif ($str =~ /^\s*\--(config|debug|address|port)=(\S+)(.*)/) {
+		# Long arg, like --address=5.5.5.5
+		$str = $3;
+		$opts{$1} = $2;
+		}
+	elsif ($str =~ /^\s*\-((f)+)(.*)/) {
+		# Arg with no value, like -f
+		$str = $3;
+		foreach my $o (split(//, $1)) {
+			$opts{$o} = "";
+			}
+		}
+	else {
+		&error("Unknown option $str");
+		}
+	}
+return \%opts;
+}
+
+# save_iscsi_options_string(str)
+# Update the options file with command line options from a string
+sub save_iscsi_options_string
+{
+my ($str) = @_;
+my $file = &get_iscsi_options_file();
+my %env;
+&read_env_file($file, \%env);
+$env{'OPTIONS'} = $str;
+&write_env_file($file, \%env);
+}
+
+# save_iscsi_options(&opts)
+# Update the options file with command line options from a hash
+sub save_iscsi_options
+{
+my ($opts) = @_;
+my @str;
+foreach my $o (keys %$opts) {
+	if ($opts->{$o} eq "") {
+		push(@str, "-".$o);
+		}
+	elsif (length($o) == 1) {
+		push(@str, "-".$o." ".$opts->{$o});
+		}
+	else {
+		push(@str, "--".$o."=".$opts->{$o});
+		}
+	}
+&save_iscsi_options_string(join(" ", @str));
+}
+
+
+
 1;
