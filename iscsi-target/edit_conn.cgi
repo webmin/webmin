@@ -15,7 +15,7 @@ print &ui_table_start($text{'conn_header'}, undef, 2);
 # Max sessions per target
 my $s = &find_value($conf, "MaxSessions");
 print &ui_table_row($text{'conn_sessions'},
-	&ui_opt_textbox("sessions", $s || undef, 5,
+	&ui_opt_textbox("sessions", $s, 5,
 			$text{'conn_sessions1'}, $text{'conn_sessions0'}));
 
 # Allow initiator to send data with command?
