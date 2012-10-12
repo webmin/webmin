@@ -23,6 +23,9 @@ index_noluns=None
 index_nousers=Any
 index_nullio=RAM disk of $1 sectors
 
+dtargets_err=Failed to delete targets
+dtargets_enone=None selected!
+
 target_title1=Create iSCSI Target
 target_title2=Edit iSCSI Target
 target_header=iSCSI shared device options
