@@ -120,16 +120,24 @@ addr_edebug=Debug level must be a number
 initiators_title=Allowed Client Addresses
 initiators_none=No allowed client address have been defined yet. No clients will be able to connect.
 initiators_ips=Allowed clients
+initiators_title1=Add Allowed Client Addresses
+initiators_title2=Edit Allowed Client Addresses
+initiators_header=Allowed iSCSI clients for target
 
 targets_title=Allowed Server Addresses
 targets_none=No allowed server address have been defined yet. No clients will be able to connect.
 targets_ips=Allowed server interfaces
+targets_title1=Add Allowed Server Addresses
+targets_title2=Edit Allowed Server Addresses
+targets_header=Allowed iSCSI server interface for target
 
 allow_target=Target name
 allow_delete=Delete Selected
 allow_all1=All targets
 allow_all2=All addresses
-allow_add=Add a new target to allow.
+allow_add=Add a new target and addresses to allow.
+allow_below=Listed below ..
+allow_return=allowed targets and addresses
 
 manual_title=Edit Configuration File
 manual_desc=Use the text box below to edit the iSCSI server configuration file $1. Be careful, as no validation will be performed on your input!
