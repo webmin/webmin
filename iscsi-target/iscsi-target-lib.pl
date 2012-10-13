@@ -350,6 +350,33 @@ foreach my $o (keys %$opts) {
 &save_iscsi_options_string(join(" ", @str));
 }
 
+# get_allow_config("targets"|"initiators")
+# Parses a file listing allowed IPs into an array ref
+sub get_allow_config
+{
+my ($mode) = @_;
+my $file = $mode eq "targets" ? $config{'targets_file'}
+			      : $config{'initiators_file'};
+my $fh = "CONFIG";
+my $lnum = 0;
+my @rv;
+&open_readfile($fh, $file) || return [ ];
+while(<$fh>) {
+        s/\r|\n//g;
+        s/#.*$//;
+        my @w = split(/[ ,]+/, $_);
+	if (@w) {
+		push(@rv, { 'name' => $w[0],
+			    'addrs' => [ @w[1..$#w] ],
+			    'index' => scalar(@rv),
+			    'file' => $file,
+			    'line' => $lnum });
+		}
+	$lnum++;
+	}
+close($fh);
+return \@rv;
+}
 
 
 1;
