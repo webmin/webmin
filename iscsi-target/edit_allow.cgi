@@ -1,5 +1,5 @@
 #!/usr/local/bin/perl
-# Display a list of targets and allowed IPs
+# Display an allowed target and IP list
 
 use strict;
 use warnings;

@@ -350,13 +350,26 @@ foreach my $o (keys %$opts) {
 &save_iscsi_options_string(join(" ", @str));
 }
 
+sub get_allow_file
+{
+my ($mode) = @_;
+if ($mode eq "targets") {
+	return $config{'targets_file'};
+	}
+elsif ($mode eq "initiators") {
+	return $config{'initiators_file'};
+	}
+else {
+	&error("Unknown allow file type $mode");
+	}
+}
+
 # get_allow_config("targets"|"initiators")
 # Parses a file listing allowed IPs into an array ref
 sub get_allow_config
 {
 my ($mode) = @_;
-my $file = $mode eq "targets" ? $config{'targets_file'}
-			      : $config{'initiators_file'};
+my $file = &get_allow_file($mode);
 my $fh = "CONFIG";
 my $lnum = 0;
 my @rv;
@@ -369,6 +382,7 @@ while(<$fh>) {
 		push(@rv, { 'name' => $w[0],
 			    'addrs' => [ @w[1..$#w] ],
 			    'index' => scalar(@rv),
+			    'mode' => $mode,
 			    'file' => $file,
 			    'line' => $lnum });
 		}
@@ -376,6 +390,47 @@ while(<$fh>) {
 	}
 close($fh);
 return \@rv;
+}
+
+# create_allow(&allow)
+# Add some target or initiator allow to the appropriate file
+sub create_allow
+{
+my ($a) = @_;
+my $file = &get_allow_file($a->{'mode'});
+my $lref = &read_file_lines($file);
+push(@$lref, &make_allow_line($a));
+&flush_file_lines($file);
+}
+
+# delete_allow(&delete)
+# Delete some target or initiator allow from the appropriate file
+sub delete_allow
+{
+my ($a) = @_;
+my $file = &get_allow_file($a->{'mode'});
+my $lref = &read_file_lines($file);
+splice(@$lref, $a->{'line'}, 1);
+&flush_file_lines($file);
+}
+
+# modify_allow(&delete)
+# Update some target or initiator allow in the appropriate file
+sub modify_allow
+{
+my ($a) = @_;
+my $file = &get_allow_file($a->{'mode'});
+my $lref = &read_file_lines($file);
+$lref->[$a->{'line'}] = &make_allow_line($a);
+&flush_file_lines($file);
+}
+
+# make_allow_line(&allow)
+# Returns the line of text for an allow file entry
+sub make_allow_line
+{
+my ($a) = @_;
+return $a->{'name'}." ".join(", ", @{$a->{'addrs'}});
 }
 
 

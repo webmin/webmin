@@ -17,8 +17,9 @@ if (@$allow) {
 	print &ui_form_start("delete_allows.cgi", "post");
 	print &ui_links_row(\@links);
 	print &ui_columns_start([ "", $text{'allow_target'},
-				  $text{$in{'mode'}.'_ips'} ], 100, 0,
-				[ "width=5" ]);
+				  $text{$in{'mode'}.'_ips'},
+				  $text{'allow_move'} ], 100, 0,
+				[ "width=5", undef, undef, "width=32" ]);
 	foreach my $a (@$allow) {
 		my @addrs = @{$a->{'addrs'}};
 		if (@addrs > 5) {
@@ -31,6 +32,12 @@ if (@$allow) {
 			  "mode=$in{'mode'}'>$name</a>",
 			$addrs[0] eq 'ALL' ? "<i>$text{'allow_all2'}</i>"
 					   : join(" , ", @addrs),
+			&ui_up_down_arrows(
+			  "up_allow.cgi?mode=$in{'mode'}&idx=$a->{'index'}",
+			  "down_allow.cgi?mode=$in{'mode'}&idx=$a->{'index'}",
+			  $a ne $allow->[0],
+			  $a ne $allow->[@$allow-1]
+			  )
 			]);
 		}
 	print &ui_table_end();
