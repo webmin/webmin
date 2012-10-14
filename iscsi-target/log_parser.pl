@@ -8,7 +8,7 @@ do 'iscsi-target-lib.pl';
 sub parse_webmin_log
 {
 my ($user, $script, $action, $type, $object, $p) = @_;
-if ($type eq "target") {
+if ($type eq "target" || $type eq "targets" || $type eq "initiators") {
 	return &text('log_'.$action.'_'.$type, &html_escape($object));
 	}
 else {

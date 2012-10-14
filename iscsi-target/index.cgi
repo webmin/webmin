@@ -33,9 +33,15 @@ if (@targets) {
 			if ($l->{'value'} =~ /Path=([^, ]+)/) {
 				push(@luns, &mount::device_name("$1"));
 				}
+			elsif ($l->{'value'} =~ /Sectors=(\d+)/) {
+				push(@luns, &text('index_nullio', "$1"));
+				}
 			}
 		my @users = map { $_->{'values'}->[0] }
 				&find($t->{'members'}, "IncomingUser");
+		if (@users > 5) {
+			@users = (@users[0 .. 4], "...");
+			}
 		print &ui_checked_columns_row([
 			"<a href='edit_target.cgi?name=".
 			  &urlize($t->{'value'})."'>".$t->{'value'}."</a>",
@@ -56,12 +62,27 @@ else {
 # Icons for global settings
 print &ui_hr();
 my @links = ( "edit_auth.cgi",
+	      "edit_conn.cgi",
+	      "edit_timeout.cgi",
+	      "list_allow.cgi?mode=initiators",
+	      "list_allow.cgi?mode=targets",
+	      "edit_addr.cgi",
 	      "edit_manual.cgi" );
 my @titles = ( $text{'auth_title'},
+	       $text{'conn_title'},
+	       $text{'timeout_title'},
+	       $text{'initiators_title'},
+	       $text{'targets_title'},
+	       $text{'addr_title'},
 	       $text{'manual_title'} );
 my @icons = ( "images/auth.gif",
+	      "images/conn.gif",
+	      "images/timeout.gif",
+	      "images/initiators.gif",
+	      "images/targets.gif",
+	      "images/addr.gif",
 	      "images/manual.gif" );
-&icons_table(\@links, \@titles, \@icons);
+&icons_table(\@links, \@titles, \@icons, 5);
 
 print &ui_hr();
 print &ui_buttons_start();

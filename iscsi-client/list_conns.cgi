@@ -13,7 +13,9 @@ ref($conns) || &error(&text('conns_elist', $conns));
 if (@$conns) {
 	# Show current connections
 	my @tds = ( "width=5" );
+	my @links = ( &select_all_link("d"), &select_invert_link("d") );
 	print &ui_form_start("delete_conns.cgi");
+	print &ui_links_row(\@links);
 	print &ui_columns_start(
 		[ "", $text{'conns_ip'}, $text{'conns_sport'},
 		      $text{'conns_iface'}, $text{'conns_name'},
@@ -36,6 +38,7 @@ if (@$conns) {
 			], \@tds, "d", $c->{'num'});
 		}
 	print &ui_columns_end();
+	print &ui_links_row(\@links);
 	print &ui_form_end([ [ undef, $text{'conns_delete'} ] ]);
 	}
 else {

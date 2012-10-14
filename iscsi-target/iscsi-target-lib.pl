@@ -51,6 +51,7 @@ while(<$fh>) {
 		}
 	if (/^\S/) {
 		# Top-level directive
+		$dir->{'indent'} = 0;
 		$parent = $dir;
 		push(@rv, $parent);
 		}
@@ -60,6 +61,7 @@ while(<$fh>) {
 		$parent->{'members'} ||= [ ];
 		push(@{$parent->{'members'}}, $dir);
 		$dir->{'parent'} = $parent;
+		$dir->{'indent'} = 1;
 		$parent->{'eline'} = $dir->{'line'};
 		}
 	$lnum++;
@@ -75,6 +77,8 @@ sub get_iscsi_config_parent
 my $conf = &get_iscsi_config();
 my $lref = &read_file_lines($config{'config_file'}, 1);
 return { 'members' => $conf,
+	 'indent' => -1,
+	 'top' => 1,
 	 'line' => 0,
 	 'eline' => scalar(@$lref)-1 };
 }
@@ -100,6 +104,9 @@ $values = [ $values ] if (ref($values) ne 'ARRAY');
 my @n = map { ref($_) ? $_ : { 'name' => $name_or_old,
 			       'value' => $_ } } @$values;
 
+# Find first target, to insert before
+my ($first_target) = &find($parent->{'members'}, "Target");
+
 for(my $i=0; $i<@n || $i<@o; $i++) {
 	my $o = $i<@o ? $o[$i] : undef;
 	my $n = $i<@n ? $n[$i] : undef;
@@ -107,35 +114,61 @@ for(my $i=0; $i<@n || $i<@o; $i++) {
 		# Update a directive
 		if (defined($o->{'line'})) {
 			$lref->[$o->{'line'}] = &make_directive_line(
-							$n, $o->{'parent'});
+							$n, $o->{'indent'});
 			}
 		$o->{'name'} = $n->{'name'};
 		$o->{'value'} = $n->{'value'};
 		}
+	elsif (!$o && $n && $parent->{'top'} && $n->{'name'} ne 'Target' &&
+	       $first_target) {
+		# Add before first Target
+		my @lines = &make_directive_lines($n,
+                                        $parent->{'indent'} + 1);
+		splice(@$lref, $first_target->{'line'}, 0, @lines);
+		&renumber($conf, $first_target->{'line'} - 1, scalar(@lines));
+		$n->{'line'} = $first_target->{'line'} - 1;
+		$n->{'eline'} = $n->{'line'} + scalar(@lines) - 1;
+		push(@{$parent->{'members'}}, $n);
+		}
 	elsif (!$o && $n) {
 		# Add a directive at end of parent
 		if (defined($parent->{'line'})) {
-			my @lines = &make_directive_lines($n, $o->{'parent'});
-			splice(@$lref, $parent->{'eline'}+1, 0, @lines);
+			my @lines = &make_directive_lines($n,
+					$parent->{'indent'} + 1);
+			&renumber($conf, $parent->{'eline'}, scalar(@lines));
+			splice(@$lref, $parent->{'eline'} + 1, 0, @lines);
 			$n->{'line'} = $parent->{'eline'} + 1;
 			$n->{'eline'} = $n->{'line'} + scalar(@lines) - 1;
 			$parent->{'eline'} = $n->{'eline'};
 			}
 		push(@{$parent->{'members'}}, $n);
-
-		# XXX renumber
 		}
 	elsif ($o && !$n) {
 		# Remove a directive
 		if (defined($o->{'line'})) {
 			splice(@$lref, $o->{'line'},
 			       $o->{'eline'} - $o->{'line'} + 1);
-			# XXX renumber
+			&renumber($conf, $o->{'line'} - 1, 
+				  -($o->{'eline'} - $o->{'line'} + 1));
 			}
 		my $idx = &indexof($o, @{$parent->{'members'}});
 		if ($idx >= 0) {
 			splice(@{$parent->{'members'}}, $idx, 1);
 			}
+		}
+	}
+}
+
+# renumber(&config, line, offset)
+# Moves directives after some line by the given offset
+sub renumber
+{
+my ($conf, $line, $offset) = @_;
+foreach my $c (@$conf) {
+	$c->{'line'} += $offset if ($c->{'line'} > $line);
+	$c->{'eline'} += $offset if ($c->{'eline'} > $line);
+	if ($c->{'members'}) {
+		&renumber($c->{'members'}, $line, $offset);
 		}
 	}
 }
@@ -236,5 +269,169 @@ sub restart_iscsi_server
 my ($ok, $out) = &init::restart_action($config{'init_name'});
 return $ok ? undef : $out;
 }
+
+# get_iscsi_options_file()
+# Returns the file containing command-line options, for use when locking
+sub get_iscsi_options_file
+{
+return $config{'opts_file'};
+}
+
+# get_iscsi_options_string()
+# Returns all flags as a string
+sub get_iscsi_options_string
+{
+my $file = &get_iscsi_options_file();
+my %env;
+&read_env_file($file, \%env);
+return $env{'OPTIONS'};
+}
+
+# get_iscsi_options()
+# Returns a hash ref of command line options
+sub get_iscsi_options
+{
+my $str = &get_iscsi_options_string();
+my %opts;
+while($str =~ /\S/) {
+	if ($str =~ /^\s*\-(c|d|g|a|p|u)\s+(\S+)(.*)/) {
+		# Short arg, like -p 123
+		$str = $3;
+		$opts{$1} = $2;
+		}
+	elsif ($str =~ /^\s*\--(config|debug|address|port)=(\S+)(.*)/) {
+		# Long arg, like --address=5.5.5.5
+		$str = $3;
+		$opts{$1} = $2;
+		}
+	elsif ($str =~ /^\s*\-((f)+)(.*)/) {
+		# Arg with no value, like -f
+		$str = $3;
+		foreach my $o (split(//, $1)) {
+			$opts{$o} = "";
+			}
+		}
+	else {
+		&error("Unknown option $str");
+		}
+	}
+return \%opts;
+}
+
+# save_iscsi_options_string(str)
+# Update the options file with command line options from a string
+sub save_iscsi_options_string
+{
+my ($str) = @_;
+my $file = &get_iscsi_options_file();
+my %env;
+&read_env_file($file, \%env);
+$env{'OPTIONS'} = $str;
+&write_env_file($file, \%env);
+}
+
+# save_iscsi_options(&opts)
+# Update the options file with command line options from a hash
+sub save_iscsi_options
+{
+my ($opts) = @_;
+my @str;
+foreach my $o (keys %$opts) {
+	if ($opts->{$o} eq "") {
+		push(@str, "-".$o);
+		}
+	elsif (length($o) == 1) {
+		push(@str, "-".$o." ".$opts->{$o});
+		}
+	else {
+		push(@str, "--".$o."=".$opts->{$o});
+		}
+	}
+&save_iscsi_options_string(join(" ", @str));
+}
+
+sub get_allow_file
+{
+my ($mode) = @_;
+if ($mode eq "targets") {
+	return $config{'targets_file'};
+	}
+elsif ($mode eq "initiators") {
+	return $config{'initiators_file'};
+	}
+else {
+	&error("Unknown allow file type $mode");
+	}
+}
+
+# get_allow_config("targets"|"initiators")
+# Parses a file listing allowed IPs into an array ref
+sub get_allow_config
+{
+my ($mode) = @_;
+my $file = &get_allow_file($mode);
+my $fh = "CONFIG";
+my $lnum = 0;
+my @rv;
+&open_readfile($fh, $file) || return [ ];
+while(<$fh>) {
+        s/\r|\n//g;
+        s/#.*$//;
+        my @w = split(/[ ,]+/, $_);
+	if (@w) {
+		push(@rv, { 'name' => $w[0],
+			    'addrs' => [ @w[1..$#w] ],
+			    'index' => scalar(@rv),
+			    'mode' => $mode,
+			    'file' => $file,
+			    'line' => $lnum });
+		}
+	$lnum++;
+	}
+close($fh);
+return \@rv;
+}
+
+# create_allow(&allow)
+# Add some target or initiator allow to the appropriate file
+sub create_allow
+{
+my ($a) = @_;
+my $file = &get_allow_file($a->{'mode'});
+my $lref = &read_file_lines($file);
+push(@$lref, &make_allow_line($a));
+&flush_file_lines($file);
+}
+
+# delete_allow(&delete)
+# Delete some target or initiator allow from the appropriate file
+sub delete_allow
+{
+my ($a) = @_;
+my $file = &get_allow_file($a->{'mode'});
+my $lref = &read_file_lines($file);
+splice(@$lref, $a->{'line'}, 1);
+&flush_file_lines($file);
+}
+
+# modify_allow(&delete)
+# Update some target or initiator allow in the appropriate file
+sub modify_allow
+{
+my ($a) = @_;
+my $file = &get_allow_file($a->{'mode'});
+my $lref = &read_file_lines($file);
+$lref->[$a->{'line'}] = &make_allow_line($a);
+&flush_file_lines($file);
+}
+
+# make_allow_line(&allow)
+# Returns the line of text for an allow file entry
+sub make_allow_line
+{
+my ($a) = @_;
+return $a->{'name'}." ".join(", ", @{$a->{'addrs'}});
+}
+
 
 1;

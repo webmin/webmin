@@ -134,6 +134,7 @@ add_ok=Add Connection
 add_etarget=No target $1 found
 add_dev=Connected as $1
 add_used=Already connected
+add_on=$1 on $2
 
 dconns_err=Failed to disconnect connections
 dconns_enone=None selected
@@ -147,6 +148,7 @@ dconns_part=Partition
 dconns_use=Used by
 dconns_size=Partition size
 dconns_confirm=Remove Connections
+dconns_unused=Unused
 
 vconn_title=iSCSI Connection
 vconn_egone=Selected connection no longer exists!
