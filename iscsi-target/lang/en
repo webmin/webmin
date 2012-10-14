@@ -143,6 +143,9 @@ allow_err=Failed to save allowed addresses
 allow_eaddr=Address $1 is not valid. It must be either an IPv4 address, IPv4 network/mask, or IPv6 address in square brackets.
 allow_eaddrs=No addresses to allow entered
 
+dallow_err=Failed to delete allowed addresses
+dallow_enone=None selected
+
 manual_title=Edit Configuration File
 manual_desc=Use the text box below to edit the iSCSI server configuration file $1. Be careful, as no validation will be performed on your input!
 manual_err=Failed to save configuration file
@@ -171,7 +174,9 @@ log_create_targets=Created allowed server address $1
 log_delete_targets=Deleted allowed server address $1
 log_modify_targets=Modified allowed server address $1
 log_move_targets=Moved allowed server address $1
+log_multidelete_targets=Deleted $1 allowed server addresses
 log_create_initiators=Created allowed client address $1
 log_delete_initiators=Deleted allowed client address $1
 log_modify_initiators=Modified allowed client address $1
 log_move_initiators=Moved allowed client address $1
+log_multidelete_initiators=Deleted $1 allowed client addresses

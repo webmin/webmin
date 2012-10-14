@@ -15,6 +15,7 @@ my @links = ( "<a href='edit_allow.cgi?new=1&mode=$in{'mode'}'>".
 if (@$allow) {
 	unshift(@links, &select_all_link("d"), &select_invert_link("d"));
 	print &ui_form_start("delete_allows.cgi", "post");
+	print &ui_hidden("mode", $in{'mode'});
 	print &ui_links_row(\@links);
 	print &ui_columns_start([ "", $text{'allow_target'},
 				  $text{$in{'mode'}.'_ips'},
@@ -38,7 +39,7 @@ if (@$allow) {
 			  $a ne $allow->[0],
 			  $a ne $allow->[@$allow-1]
 			  )
-			]);
+			], undef, "d", $a->{'index'});
 		}
 	print &ui_table_end();
 	print &ui_links_row(\@links);
