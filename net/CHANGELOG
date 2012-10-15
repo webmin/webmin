@@ -67,3 +67,5 @@ Allowed the MTU to be set at boot time on Debian Linux, and fixed bugs editing V
 ---- Changes since 1.590 ----
 Bonding interfaces can now be created on CentOS, Redhat and Fedora Linuxes, thanks to a patch from Caspar Smit.
 VLAN interfaces can now be created on CentOS, Redhat and Fedora Linuxes, thanks to a patch from Caspar Smit.
+---- Changes since 1.600 ----
+Added support for the new ifconfig -a output format, as seen on Fedora 17.

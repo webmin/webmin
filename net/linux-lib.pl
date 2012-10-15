@@ -20,20 +20,32 @@ my $ethtool = &has_command("ethtool");
 foreach $l (@lines) {
 	local %ifc;
 	$l =~ /^([^:\s]+)/; $ifc{'name'} = $1;
-	$l =~ /^(\S+)/; $ifc{'fullname'} = $1;
+	$l =~ /^(\S+)/; $ifc{'fullname'} = $1; $ifc{'fullname'} =~ s/:$//;
 	if ($l =~ /^(\S+):(\d+)/) { $ifc{'virtual'} = $2; }
 	if ($l =~ /^(\S+)\.(\d+)/) { $ifc{'vlanid'} = $2; }
 	if ($l =~ /inet addr:(\S+)/) { $ifc{'address'} = $1; }
+	elsif ($l =~ /inet (\S+)/) { $ifc{'address'} = $1; }
 	elsif (!$empty) { next; }
 	if ($l =~ /Mask:(\S+)/) { $ifc{'netmask'} = $1; }
+	elsif ($l =~ /netmask (\S+)/) { $ifc{'netmask'} = $1; }
 	if ($l =~ /Bcast:(\S+)/) { $ifc{'broadcast'} = $1; }
+	elsif ($l =~ /broadcast (\S+)/) { $ifc{'broadcast'} = $1; }
 	if ($l =~ /HWaddr (\S+)/) { $ifc{'ether'} = $1; }
+	elsif ($l =~ /ether (\S+)/) { $ifc{'ether'} = $1; }
 	if ($l =~ /MTU:(\d+)/) { $ifc{'mtu'} = $1; }
+	elsif ($l =~ /mtu (\d+)/) { $ifc{'mtu'} = $1; }
 	if ($l =~ /P-t-P:(\S+)/) { $ifc{'ptp'} = $1; }
-	$ifc{'up'}++ if ($l =~ /\sUP\s/);
+	elsif ($l =~ /ptp (\S+)/) { $ifc{'ptp'} = $1; }
+	$ifc{'up'}++ if ($l =~ /\sUP\s|<\S*UP\S*>/);
 	$ifc{'promisc'}++ if ($l =~ /\sPROMISC\s/);
 	local (@address6, @netmask6, @scope6);
 	while($l =~ s/inet6 addr:\s*(\S+)\/(\d+)\s+Scope:(Global)//i) {
+		local ($address6, $netmask6, $scope6) = ($1, $2, $3);
+		push(@address6, $address6);
+		push(@netmask6, $netmask6);
+		push(@scope6, $scope6);
+		}
+	while($l =~ s/inet6 (\S+)\s+prefixlen (\d+)\s+scopeid\s+(\S+)<global>//i) {
 		local ($address6, $netmask6, $scope6) = ($1, $2, $3);
 		push(@address6, $address6);
 		push(@netmask6, $netmask6);
@@ -590,7 +602,7 @@ my @o = split(/\s+/, $_[0]->{'order'});
 @o = map { s/nis\+/nisplus/; s/yp/nis/; $_; } @o;
 my @opts = ( [ "files", "Hosts file" ], [ "dns", "DNS" ], [ "nis", "NIS" ],
 	     [ "nisplus", "NIS+" ], [ "ldap", "LDAP" ], [ "db", "DB" ],
-	     [ "mdns4", "Multicast DNS" ] );
+	     [ "mdns4", "Multicast DNS" ], [ "myhostname", "Local hostname" ] );
 if (&indexof("mdns4_minimal", @o) >= 0) {
 	push(@opts, [ "mdns4_minimal", "Multicast DNS (minimal)" ]);
 	}
