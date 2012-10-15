@@ -1,0 +1,28 @@
+<header>iSCSI Target</header>
+
+This module allows you to export disk devices to other systems over the network
+using the iSCSI protocol. Each exported disk is called a <i>target</i>, and
+existing targets are listing on the module's main page. To create a new target,
+click the <b>Add a new iSCSI target</b> button, enter a name, and select the
+disk device or file to be exported. <p>
+
+Logins and passwords required from clients can either be set on a per-target
+basis, or for all targets on the <b>Authentication Settings</b> page. The iSCSI
+protocol also allows targets to authenticate themselves to clients (also known
+as initiators). <p>
+
+Global settings related to packet sizes and the iSCSI protocol can be changed
+on the <b>Connection Settings</b> page. Timeouts for communication with clients
+can be changed on the <b>Timeout Settings</b> page. <p>
+
+By default, any client with a valid login can connect to your exported targets.
+However, you can limit the IPs clients can connect from using the <b>Allowed Client Addresses</b> page. Alternately, you can restrict the IPs on the server that
+clients can connect to using the <b>Allowed Server Addresses</b> page. <p>
+
+At the bottom of the module's main page are buttons to stop, start and restart
+the iSCSI server. Configuration changes will not be applied until the server
+is restarted. <p>
+
+
+
+<footer>
