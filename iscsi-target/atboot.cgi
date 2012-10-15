@@ -9,6 +9,18 @@ our (%text, %config, %in);
 &ReadParse();
 &error_setup($text{'atboot_err'});
 
+# On Debian, a flag needs to be set in /etc/default/iscsitarget
+if ($in{'boot'}) {
+	&lock_file($config{'opts_file'});
+	my %env;
+	&read_env_file($config{'opts_file'}, \%env);
+	if (lc($env{'ISCSITARGET_ENABLE'}) eq 'false') {
+		$env{'ISCSITARGET_ENABLE'} = 'true';
+		&write_env_file($config{'opts_file'}, \%env);
+		}
+	&unlock_file($config{'opts_file'});
+	}
+
 my $old = &init::action_status($config{'init_name'});
 if ($old != 2 && $in{'boot'}) {
 	# Enable at boot
