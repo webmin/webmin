@@ -153,6 +153,7 @@ pclinuxos Linux			2006	mandrake-linux	10.2	`cat /etc/mandrake-release 2>/dev/nul
 pclinuxos Linux			2007	mandrake-linux	10.3	`cat /etc/mandrake-release 2>/dev/null` =~ /PCLinuxOS\s+release\s+2007/i
 pclinuxos Linux			2008	mandrake-linux	10.4	`cat /etc/mandrake-release 2>/dev/null` =~ /PCLinuxOS\s+release\s+2008/i
 pclinuxos Linux			2009	mandrake-linux	10.5	`cat /etc/mandrake-release 2>/dev/null` =~ /PCLinuxOS\s+release\s+2009/i
+Mageia Linux			$2	mandrake-linux	2011	`cat /etc/mageia-release 2>/dev/null` =~ /Mageia\s+release\s+(\d+)/i
 
 # Mandrake Linux
 Mandrake Linux			5.3	redhat-linux	5.0	$etc_issue =~ /Mandrake\s+release\s+5\.3/i
