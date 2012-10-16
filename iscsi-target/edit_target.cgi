@@ -181,7 +181,7 @@ print &ui_table_row($text{'target_hdigest'},
 		     [ "CRC32C" ] ], 1, 0, 1));
 
 # Data digest mode
-my $h = &find_value($target->{'members'}, "DataDigest");
+$h = &find_value($target->{'members'}, "DataDigest");
 print &ui_table_row($text{'target_ddigest'},
 	&ui_select("ddigest", $h,
 		   [ [ "", $text{'target_nodigest'} ],

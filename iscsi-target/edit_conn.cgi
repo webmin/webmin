@@ -24,7 +24,7 @@ print &ui_table_row($text{'conn_initial'},
 	&ui_yesno_radio("initial", lc($i) eq "no" ? 0 : 1));
 
 # Allow initiator to send data immediately?
-my $i = &find_value($conf, "ImmediateData");
+$i = &find_value($conf, "ImmediateData");
 print &ui_table_row($text{'conn_immediate'},
 	&ui_yesno_radio("immediate", lc($i) eq "yes" ? 1 : 0));
 

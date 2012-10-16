@@ -17,11 +17,11 @@ if ($err) {
 # Find and show targets
 my $conf = &get_iscsi_config();
 my @targets = &find($conf, "Target");
-my @links = ( "<a href='edit_target.cgi?new=1'>$text{'index_add'}</a>" );
+my @crlinks = ( "<a href='edit_target.cgi?new=1'>$text{'index_add'}</a>" );
 if (@targets) {
-	unshift(@links, &select_all_link("d"), &select_invert_link("d"));
+	unshift(@crlinks, &select_all_link("d"), &select_invert_link("d"));
 	print &ui_form_start("delete_targets.cgi");
-	print &ui_links_row(\@links);
+	print &ui_links_row(\@crlinks);
 	my @tds = ( "width=5" );
 	print &ui_columns_start([
 		"", $text{'index_target'}, $text{'index_lun'},
@@ -51,12 +51,12 @@ if (@targets) {
 			\@tds, "d", $t->{'value'});
 		}
 	print &ui_columns_end();
-	print &ui_links_row(\@links);
+	print &ui_links_row(\@crlinks);
 	print &ui_form_end([ [ undef, $text{'index_delete'} ] ]);
 	}
 else {
 	print "<b>$text{'index_none'}</b><p>\n";
-	print &ui_links_row(\@links);
+	print &ui_links_row(\@crlinks);
 	}
 
 # Icons for global settings

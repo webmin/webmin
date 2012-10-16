@@ -19,7 +19,7 @@ print &ui_table_row($text{'timeout_nopi'},
 	$text{'timeout_secs'});
 
 # Time to respond to ping before disconnecting
-my $n = &find_value($conf, "NOPTimeout");
+$n = &find_value($conf, "NOPTimeout");
 print &ui_table_row($text{'timeout_nopt'},
 	&ui_opt_textbox("nopt", $n, 5, $text{'timeout_noptnone'})." ".
 	$text{'timeout_secs'});
