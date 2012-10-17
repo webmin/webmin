@@ -106,7 +106,7 @@ if (@parts) {
 		elsif ($stat[1] eq 'iscsi') {
 			$stat = &text('disk_iscsi', $stat[0]);
 			if (&foreign_available("iscsi-server")) {
-				$stat = "<a href='../iscsi-server/'>$stat</a>";
+				$stat = "<a href='../$stat[3]/'>$stat</a>";
 				}
 			}
 		elsif ($stat[0] && !&foreign_available("mount")) {

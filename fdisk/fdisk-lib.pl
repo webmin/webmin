@@ -15,7 +15,11 @@ if (&foreign_check("lvm")) {
 	}
 if (&foreign_check("iscsi-server")) {
 	&foreign_require("iscsi-server");
-	$iscsi_module++;
+	$iscsi_server_module++;
+	}
+if (&foreign_check("iscsi-target")) {
+	&foreign_require("iscsi-target");
+	$iscsi_target_module++;
 	}
 &foreign_require("proc", "proc-lib.pl");
 %access = &get_module_acl();
@@ -1077,7 +1081,7 @@ return $un =~ /^2\.0\./ || $un =~ /^1\./ || $un =~ /^0\./;
 }
 
 # device_status(device)
-# Returns an array of  directory, type, mounted
+# Returns an array of  directory, type, mounted, module
 sub device_status
 {
 @mounted = &foreign_call("mount", "list_mounted") if (!@mounted);
@@ -1100,7 +1104,8 @@ if ($raid_module) {
 	my $raidconf = &foreign_call("raid", "get_raidtab") if (!$raidconf);
 	foreach $c (@$raidconf) {
 		foreach $d (&raid::find_value('device', $c->{'members'})) {
-			return ( $c->{'value'}, "raid", 1 ) if ($d eq $_[0]);
+			return ( $c->{'value'}, "raid", 1, "raid" )
+				if ($d eq $_[0]);
 			}
 		}
 	}
@@ -1114,15 +1119,27 @@ if ($lvm_module) {
 			}
 		}
 	foreach my $pv (@physical_volumes) {
-		return ( $pv->{'vg'}, "lvm", 1)
+		return ( $pv->{'vg'}, "lvm", 1, "lvm")
 			if ($pv->{'device'} eq $_[0]);
 		}
 	}
-if ($iscsi_module) {
+if ($iscsi_server_module) {
 	my $iscsiconf = &iscsi_server::get_iscsi_config();
 	foreach my $c (@$iscsiconf) {
 		if ($c->{'type'} eq 'extent' && $c->{'device'} eq $_[0]) {
-			return ( $c->{'type'}.$c->{'num'}, "iscsi", 1);
+			return ( $c->{'type'}.$c->{'num'}, "iscsi", 1,
+				 "iscsi-server");
+			}
+		}
+	}
+if ($iscsi_target_module) {
+	my $iscsiconf = &iscsi_target::get_iscsi_config();
+	foreach my $t (&iscsi_target::find($iscsiconf, "Target")) {
+		foreach my $l (&iscsi_target::find($t->{'members'}, "Lun")) {
+			if ($l->{'value'} =~ /Path=([^, ]+)/ && $1 eq $_[0]) {
+				return ( $t->{'value'}, "iscsi", 1,
+					 "iscsi-target");
+				}
 			}
 		}
 	}
