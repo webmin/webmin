@@ -25,13 +25,15 @@ if (@targets) {
 	my @tds = ( "width=5" );
 	print &ui_columns_start([
 		"", $text{'index_target'}, $text{'index_lun'},
-		$text{'index_users'},
+		$text{'index_size'}, $text{'index_users'},
 		], 100, 0, \@tds);
 	foreach my $t (@targets) {
 		my @luns;
+		my $size = 0;
 		foreach my $l (&find($t->{'members'}, "Lun")) {
 			if ($l->{'value'} =~ /Path=([^, ]+)/) {
 				push(@luns, &mount::device_name("$1"));
+				$size += &get_device_size("$1");
 				}
 			elsif ($l->{'value'} =~ /Sectors=(\d+)/) {
 				push(@luns, &text('index_nullio', "$1"));
@@ -46,6 +48,7 @@ if (@targets) {
 			"<a href='edit_target.cgi?name=".
 			  &urlize($t->{'value'})."'>".$t->{'value'}."</a>",
 			join(" , ", @luns) || "<i>$text{'index_noluns'}</i>",
+			$size ? &nice_size($size) : "",
 			join(" , ", @users) || "<i>$text{'index_nousers'}</i>"
 			],
 			\@tds, "d", $t->{'value'});

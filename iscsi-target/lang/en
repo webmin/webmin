@@ -22,6 +22,7 @@ index_delete=Delete Selected Targets
 index_noluns=None
 index_nousers=Any
 index_nullio=RAM disk of $1 sectors
+index_size=Total size
 
 dtargets_err=Failed to delete targets
 dtargets_enone=None selected!
