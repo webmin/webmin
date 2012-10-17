@@ -65,10 +65,6 @@ if (ref($ifaces)) {
 			   [ [ undef, "&lt;".$text{'conns_ifacedef'}."&gt;" ],
 			     map { $_->{'name'} } @$ifaces ]));
 	}
-else {
-	print &ui_table_row($text{'conns_iface'},
-			    &text('conns_ifaceerr', $ifaces));
-	}
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'conns_start'} ] ]);

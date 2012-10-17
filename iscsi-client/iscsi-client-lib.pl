@@ -277,12 +277,16 @@ return $out;
 sub list_iscsi_ifaces
 {
 &clean_language();
+my $errtemp = &transname();
 my $out = &backquote_command(
-		"$config{'iscsiadm'} -m iface -o show -P 1 2>/dev/null");
+		"$config{'iscsiadm'} -m iface -o show -P 1 2>$errtemp");
 &reset_environment();
 my @lines = split(/\r?\n/, $out);
+my $err = &read_file_contents($errtemp);
 if ($?) {
-	return $lines[0];
+	return "Interfaces are not supported by this OpenISCSI version"
+		if ($err =~ /Invalid\s+info\s+level/);
+	return $err || $lines[0];
 	}
 my @rv;
 my ($iface, $target);
