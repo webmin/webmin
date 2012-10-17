@@ -62,7 +62,7 @@ if ($in{'tport_def'} == 0) {
 	$in{'tport'} =~ /^\d+$/ || &error(&text('net_eport', $in{'sport'}));
 	push(@tvals, "port", $in{'tport'});
 	}
-if (tqvals) {
+if (@tvals) {
 	&save_directive($options, 'transfer-source',
 			[ { 'name' => 'transfer-source',
 			    'values' => \@tvals } ], 1);
