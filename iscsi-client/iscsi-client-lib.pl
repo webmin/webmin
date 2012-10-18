@@ -153,12 +153,25 @@ foreach my $l (@lines) {
 	elsif ($l =~ /iSCSI\s+Session\s+State:\s+(\S+)/) {
 		$conn->{'session'} = $1;
 		}
+	elsif ($l =~ /scsi(\d+)\s+Channel\s+(\d+)\s+Id\s+(\d+)\s+Lun:\s+(\d+)/) {
+		$conn->{'scsihost'} = $1;
+		$conn->{'scsichannel'} = $2;
+		$conn->{'scsiid'} = $3;
+		$conn->{'scsilun'} = $4;
+		}
 	elsif ($l =~ /Attached\s+scsi\s+disk\s+(\S+)/) {
 		$conn->{'device'} = "/dev/$1";
 		}
 	elsif ($l =~ /(username|password|username_in|password_in):\s+(\S+)/ &&
 	       $2 ne "<empty>") {
 		$conn->{$1} = $2;
+		}
+	}
+foreach my $c (@rv) {
+	my $dev = "/dev/disk/by-path/ip-$c->{'ip'}:$c->{'port'}-".
+		  "iscsi-$c->{'name'}:$c->{'target'}-lun-$c->{'scsilun'}";
+	if (-e $dev) {
+		$conn->{'longdevice'} = $dev;
 		}
 	}
 return \@rv;

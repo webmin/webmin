@@ -164,6 +164,7 @@ vconn_password_in=Client password
 vconn_none=None required
 vconn_device=Local device file
 vconn_device2=Local device name
+vconn_device3=Constant device name
 vconn_delete=Disconnect Connection
 vconn_users=Current users
 vconn_size=Disk size

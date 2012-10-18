@@ -52,6 +52,11 @@ if ($conn->{'device'}) {
 	print &ui_table_row($text{'vconn_device2'},
 		&mount::device_name($conn->{'device'}));
 
+	if ($conn->{'longdevice'}) {
+		print &ui_table_row($text{'vconn_device3'},
+			"<tt>$conn->{'longdevice'}</tt>");
+		}
+
 	my @disks = &fdisk::list_disks_partitions();
 	my ($disk) = grep { $_->{'device'} eq $conn->{'device'} } @disks;
 	if ($disk) {
