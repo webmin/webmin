@@ -3,4 +3,4 @@ category=hardware
 os_support=*-linux
 depends=fdisk lvm raid init
 longdesc=Share disk devices across the network using the iSCSI protocol with the iscsitarget package.
-desc_de=iSCSI Target 
+desc_de=iSCSI-Target 

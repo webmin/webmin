@@ -1,4 +1,4 @@
-config_file=iSCSI target Konfigurationsdatei,0
+config_file=iSCSI-target Konfigurationsdatei,0
 ietadm=Voller Pfad zum ietadm Befehl,0
 pid_file=Voller Pfad zur PID&#45;Datei,0
 init_name=Bootup-Skript-Name,0
