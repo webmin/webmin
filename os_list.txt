@@ -14,6 +14,9 @@ Pardus Linux			2011			pardus-linux	2011	`cat /etc/pardus-release 2>/dev/null` =~
 Pardus Linux			2011.1 Dama Dama	pardus-linux	2011	`cat /etc/pardus-release 2>/dev/null` =~ /Pardus\s+2011\s+/i
 Pardus Linux			2011.2 Cervus elaptus	pardus-linux	2011	`cat /etc/pardus-release 2>/dev/null` =~ /Pardus\s+2011\s+/i
 
+# Solaris forks
+SmartOS				$2	solaris		$2	$uname =~ /SunOS.*\s5\.(\S+)\s(joyent_\d{8}T\d{6}Z)/i
+
 # Sun Solaris
 Sun Solaris			2.5.1	solaris		2.5.1	$uname =~ /SunOS.*\s5\.5\.1\s/i
 Sun Solaris			2.6	solaris		2.6	$uname =~ /SunOS.*\s5\.6\s/i
