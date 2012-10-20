@@ -126,8 +126,8 @@ Debian Linux			8.0	debian-linux	8.0	`cat /etc/debian_version 2>/dev/null` =~ /^(
 Debian Linux			6.0	debian-linux	6.0	`cat /etc/debian_version 2>/dev/null` =~ /^(stable)/i
 # These don't have a version number yet, so we use the one from "stable"
 Debian Linux			7.0	debian-linux	7.0	`cat /etc/debian_version 2>/dev/null` =~ /^(testing)/i
-Debian Linux			6.0	debian-linux	6.0	`cat /etc/debian_version 2>/dev/null` =~ /^(unstable)/i
-Debian Linux			6.0	debian-linux	6.0	`cat /etc/debian_version 2>/dev/null` =~ /^(sid)/i
+Debian Linux			7.0	debian-linux	7.0	`cat /etc/debian_version 2>/dev/null` =~ /^(unstable)/i
+Debian Linux			7.0	debian-linux	7.0	`cat /etc/debian_version 2>/dev/null` =~ /^(sid)/i
 
 # SuSE enterprise versions
 SuSE OpenExchange Linux		$1	suse-linux	8.2	`cat /etc/SLOX-release 2>/dev/null` =~ /VERSION\s+=\s+(\S+)/i
