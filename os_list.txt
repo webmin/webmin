@@ -121,8 +121,9 @@ Debian Linux			4.0	debian-linux	4.0	`cat /etc/debian_version 2>/dev/null` =~ /^(
 Debian Linux			5.0	debian-linux	5.0	`cat /etc/debian_version 2>/dev/null` =~ /^(lenny)/i
 Debian Linux			6.0	debian-linux	6.0	`cat /etc/debian_version 2>/dev/null` =~ /^(squeeze)/i
 Debian Linux			7.0	debian-linux	7.0	`cat /etc/debian_version 2>/dev/null` =~ /^(wheezy)/i
+Debian Linux			8.0	debian-linux	8.0	`cat /etc/debian_version 2>/dev/null` =~ /^(jessie)/i
 # These change sometimes...
-Debian Linux			5.0	debian-linux	5.0	`cat /etc/debian_version 2>/dev/null` =~ /^(stable)/i
+Debian Linux			6.0	debian-linux	6.0	`cat /etc/debian_version 2>/dev/null` =~ /^(stable)/i
 # These don't have a version number yet, so we use the one from "stable"
 Debian Linux			5.0	debian-linux	5.0	`cat /etc/debian_version 2>/dev/null` =~ /^(testing)/i
 Debian Linux			6.0	debian-linux	6.0	`cat /etc/debian_version 2>/dev/null` =~ /^(unstable)/i
