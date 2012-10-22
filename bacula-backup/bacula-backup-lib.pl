@@ -396,7 +396,7 @@ if ($dir->{'type'}) {
 else {
 	# A single line
 	local $qstr = $dir->{'value'} =~ /^\S+$/ ||
-		       $dir->{'value'} =~ /^\d+\s+(secs|mins|hours|days|weeks|months|years)$/i ||
+		       $dir->{'value'} =~ /^\d+\s+(secs|seconds|mins|minutes|hours|days|weeks|months|years)$/i ||
 		       $dir->{'name'} eq 'Run' ? $dir->{'value'} :
 		      $dir->{'value'} =~ /"/ ? "'$dir->{'value'}'" :
 					       "\"$dir->{'value'}\"";
