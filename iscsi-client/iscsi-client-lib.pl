@@ -205,21 +205,50 @@ foreach my $l (@lines) {
 return \@rv;
 }
 
-# create_iscsi_connection(host, [port], [iface], [&target])
+# create_iscsi_connection(host, [port], [iface], [&target],
+# 			  [method, username, password])
 # Attempts to connect to an iscsi server for the given target (or all targets)
 sub create_iscsi_connection
 {
-my ($host, $port, $iface, $target) = @_;
+my ($host, $port, $iface, $target, $method, $user, $pass) = @_;
 my $cmd = "$config{'iscsiadm'} -m node".
 	  ($target ? " -T ".quotemeta($target->{'name'}).":".
 			    quotemeta($target->{'target'}) : "").
 	  " -p ".quotemeta($host).($port ? ":".quotemeta($port) : "").
-	  ($iface ? " -I ".quotemeta($iface) : "").
-	  " --login";
+	  ($iface ? " -I ".quotemeta($iface) : "");
+
+# Create the session
 &clean_language();
 my $out = &backquote_logged("$cmd 2>&1");
 &reset_environment();
-return $? ? $out : undef;
+return $out if ($?);
+
+# Set session username and password
+if ($method) {
+	&clean_language();
+	my $out = &backquote_logged("$cmd --op=update --name=node.session.auth.authmethod --value=$method 2>&1");
+	&reset_environment();
+	return $out if ($?);
+	}
+if ($user) {
+	&clean_language();
+	my $out = &backquote_logged("$cmd --op=update --name=node.session.auth.username --value=".quotemeta($user)." 2>&1");
+	&reset_environment();
+	return $out if ($?);
+
+	&clean_language();
+	my $out = &backquote_logged("$cmd --op=update --name=node.session.auth.password --value=".quotemeta($pass)." 2>&1");
+	&reset_environment();
+	return $out if ($?);
+	}
+
+# Connect the session with --login
+&clean_language();
+my $out = &backquote_logged("$cmd --login 2>&1");
+&reset_environment();
+return $out if ($?);
+
+return undef;
 }
 
 # delete_iscsi_connection(&connection)

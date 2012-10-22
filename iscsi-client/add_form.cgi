@@ -41,6 +41,7 @@ print &ui_table_row($text{'conns_port'},
 print &ui_table_row($text{'conns_iface'},
 	$in{'iface'} || "<i>$text{'conns_ifacedef'}</i>");
 
+# Target to mount
 print &ui_table_row($text{'add_target'},
 	&ui_select("target", undef,
 		[ [ "", "&lt;".$text{'add_alltargets'}."&gt;" ],
@@ -52,6 +53,17 @@ print &ui_table_row($text{'add_target'},
 						       $u->{'device'}).")"
 					  : " (".$text{'add_used'}.")"),
 			] } @$targets ]));
+
+# Username, password and authentication method
+print &ui_table_row($text{'add_auth'},
+	&ui_radio("auth_def", 1,
+		[ [ 1, $text{'add_auth1'}."<br>" ],
+		  [ 0, &text('add_auth0',
+			&ui_select("authmethod", "CHAP",
+			   [ [ "None", $text{'auth_method_none'} ],
+			     [ "CHAP" ] ]),
+			&ui_textbox("authuser", undef, 15),
+			&ui_textbox("authpass", undef, 15)) ] ]));
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'add_ok'} ] ]);

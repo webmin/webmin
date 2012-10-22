@@ -18,9 +18,17 @@ if ($in{'target'}) {
 	$target || &error(&text('add_etarget', $in{'target'}));
 	}
 
+# Validate username and password
+my @auth;
+if (!$in{'auth_def'}) {
+	$in{'authuser'} =~ /\S/ || &error($text{'auth_eusername'});
+	$in{'authpass'} =~ /\S/ || &error($text{'auth_epassword'});
+	@auth = ( $in{'authmethod'}, $in{'authuser'}, $in{'authpass'} );
+	}
+
 # Try to make the connection
 my $err = &create_iscsi_connection($in{'host'}, $in{'port'},
-				   $in{'iface'}, $target);
+				   $in{'iface'}, $target, @auth);
 &error($err) if ($err);
 
 &webmin_log("add", "connection", $in{'host'},

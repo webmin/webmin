@@ -135,6 +135,9 @@ add_etarget=No target $1 found
 add_dev=Connected as $1
 add_used=Already connected
 add_on=$1 on $2
+add_auth=Login to server
+add_auth1=Use default authentication method
+add_auth0=Login as $2 with password $3 using method $1
 
 dconns_err=Failed to disconnect connections
 dconns_enone=None selected
