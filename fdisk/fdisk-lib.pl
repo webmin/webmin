@@ -238,7 +238,7 @@ if ($has_parted) {
 		      "fdisk -l $_ 2>/dev/null" } @devs)." |");
 	}
 else {
-	open(FDISK, "fdisk -l -u=cylinders $devs || fdisk -l $devs 2>/dev/null |");
+	open(FDISK, "fdisk -l -u=cylinders $devs 2>/dev/null || fdisk -l $devs 2>/dev/null |");
 	}
 while(<FDISK>) {
 	if (/Disk\s+([^ :]+):\s+(\d+)\s+\S+\s+(\d+)\s+\S+\s+(\d+)/ ||
