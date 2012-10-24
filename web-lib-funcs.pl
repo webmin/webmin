@@ -4481,7 +4481,8 @@ if ($0 &&
     ($referer_site && $referer_site ne $http_host &&
      &indexof($referer_site, @referers) < 0 ||
     !$referer_site && $gconfig{'referers_none'} ||
-    $referer_port && $http_port && $referer_port != $http_port) &&
+    $referer_port && $http_port && $referer_port != $http_port &&
+    &indexof($referer_site, @referers) < 0) &&
     !$trust_unknown_referers &&
     !&get_module_variable('$trust_unknown_referers')) {
 	# Looks like a link from elsewhere .. show an error
