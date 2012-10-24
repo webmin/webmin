@@ -17,3 +17,4 @@ defines_file=/etc/sysconfig/daemons/httpd
 defines_name=OPTIONS
 auto_mods=1
 show_names=0
+allow_virtualmin=0

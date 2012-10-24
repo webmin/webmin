@@ -12,6 +12,7 @@ test_apachectl=Test configuration with command,1,1-<tt>apachectl configtest</tt>
 show_names=Show Apache directive names?,1,1-Yes,0-No
 apache_docbase=Base directory for Apache documentation,3,Apache website
 auto_mods=Always detect Apache modules automatically?,1,1-Yes,0-No
+allow_virtualmin=Allow editing of domains managed by Virtualmin?,1,1-Yes,0-No
 line2=System configuration,11
 httpd_dir=Apache server root directory,0
 httpd_path=Path to httpd executable,0

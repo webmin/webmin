@@ -16,3 +16,4 @@ auto_mods=1
 show_names=0
 defines_file=/etc/conf.d/apache2
 defines_name=APACHE2_OPTS
+allow_virtualmin=0

@@ -15,3 +15,4 @@ test_apachectl=1
 auto_mods=1
 pid_file=/var/run/httpd.pid
 show_names=0
+allow_virtualmin=0

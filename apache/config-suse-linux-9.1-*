@@ -19,3 +19,4 @@ defines_file=/etc/sysconfig/apache2
 defines_name=APACHE_SERVER_FLAGS
 auto_mods=1
 show_names=0
+allow_virtualmin=0

@@ -16,3 +16,4 @@ test_manual=0
 test_always=0
 test_apachectl=1
 show_names=0
+allow_virtualmin=0

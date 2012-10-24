@@ -12,3 +12,4 @@ test_apachectl=1
 defines_mods=/usr/lib/apache	/usr/lib/apache2	/usr/lib/apache-extramodules	/usr/lib/apache2-extramodules	/etc/httpd/modules
 auto_mods=1
 show_names=0
+allow_virtualmin=0

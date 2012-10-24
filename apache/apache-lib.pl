@@ -1968,6 +1968,7 @@ else {
 sub is_virtualmin_domain
 {
 local ($virt) = @_;
+return 0 if ($config{'allow_virtualmin'});
 local $n = &find_directive("ServerName", $virt->{'members'});
 return undef if (!$n);
 return undef if (!&foreign_check("virtual-server"));

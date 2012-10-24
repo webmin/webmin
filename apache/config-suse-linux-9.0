@@ -17,3 +17,4 @@ apachectl_path=/usr/sbin/apachectl
 virt_file=/etc/apache2/vhosts.d
 auto_mods=1
 show_names=0
+allow_virtualmin=0
