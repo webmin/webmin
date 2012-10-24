@@ -1173,7 +1173,7 @@ if (!$done_dbmopen_read++) {
 $read{$mail->{'header'}->{'message-id'}} = $read;
 }
 
-# show_mail_table(&mails, &folder, formno)
+# show_mail_table(&mails, &folder, formno, [&read])
 # Output a full table of messages
 sub show_mail_table
 {
@@ -1229,6 +1229,12 @@ foreach my $mail (@mail) {
 	local @icons = &message_icons($mail, $mfolder->{'sent'}, $mfolder);
 	push(@cols, &simplify_subject($mail->{'header'}->{'subject'}).
 		    join("&nbsp;", @icons));
+
+	# Flag unread mails
+	local $hid = $mail->{'header'}->{'message-id'};
+	if ($_[3] && !$_[3]->{$hid}) {
+		@cols = map { "<b>$_</b>" } @cols;
+		}
 
 	# Generate the row
 	if (!$folder) {

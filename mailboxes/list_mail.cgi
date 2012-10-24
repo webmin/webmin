@@ -82,7 +82,8 @@ for($i=$in{'start'}; $i<@mail && $i<$in{'start'}+$perpage; $i++) {
 
 # Show them
 if (@mail) {
-	&show_mail_table(\@showmail, $folder, 1);
+	&show_mail_table(\@showmail, $folder, 1,
+			 $config{'track_read'} ? \%read : undef);
 	}
 
 &show_buttons(2, \@folders, $folder, \@mail, $in{'user'});
