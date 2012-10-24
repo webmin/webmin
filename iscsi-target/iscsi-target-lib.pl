@@ -40,7 +40,7 @@ while(<$fh>) {
         s/\r|\n//g;
         s/#.*$//;
         my @w = split(/\s+/, $_);
-	shift(@w) if ($w[0] eq '');	# Due to indentation
+	shift(@w) if (@w && $w[0] eq '');	# Due to indentation
 	my $dir;
 	if (@w) {
 		$dir = { 'name' => $w[0],
@@ -60,7 +60,6 @@ while(<$fh>) {
 		$parent || &error("Sub-directive with no parent at line $lnum");
 		$parent->{'members'} ||= [ ];
 		push(@{$parent->{'members'}}, $dir);
-		$dir->{'parent'} = $parent;
 		$dir->{'indent'} = 1;
 		$parent->{'eline'} = $dir->{'line'};
 		}
