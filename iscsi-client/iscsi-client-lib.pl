@@ -237,14 +237,14 @@ if ($user) {
 	return $out if ($?);
 
 	&clean_language();
-	my $out = &backquote_logged("$cmd --op=update --name=node.session.auth.password --value=".quotemeta($pass)." 2>&1");
+	$out = &backquote_logged("$cmd --op=update --name=node.session.auth.password --value=".quotemeta($pass)." 2>&1");
 	&reset_environment();
 	return $out if ($?);
 	}
 
 # Connect the session with --login
 &clean_language();
-my $out = &backquote_logged("$cmd --login 2>&1");
+$out = &backquote_logged("$cmd --login 2>&1");
 &reset_environment();
 return $out if ($?);
 
