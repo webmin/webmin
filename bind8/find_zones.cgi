@@ -20,14 +20,14 @@ foreach $z (@zones) {
 		 &arpa_to_ip($v) !~ /\Q$in{'search'}\E/i);
 	$t = $z->{'type'};
 	if ($z->{'view'}) {
-		push(@zlinks, "edit_$t.cgi?index=$z->{'index'}".
+		push(@zlinks, "edit_$t.cgi?zone=$z->{'name'}".
 			      "&view=$z->{'viewindex'}");
 		push(@ztitles, &ip6int_to_net(&arpa_to_ip($v))." ".
 		       &text('index_view', "<tt>$z->{'view'}</tt>"));
 		push(@zdels, $z->{'index'}." ".$z->{'view'});
 		}
 	else {
-		push(@zlinks, "edit_$t.cgi?index=$z->{'index'}");
+		push(@zlinks, "edit_$t.cgi?zone=$z->{'name'}");
 		push(@ztitles, &ip6int_to_net(&arpa_to_ip($v)));
 		push(@zdels, $z->{'index'});
 		}

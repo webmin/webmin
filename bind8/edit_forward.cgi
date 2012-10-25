@@ -4,14 +4,24 @@
 
 require './bind8-lib.pl';
 &ReadParse();
+
+if ($in{'zone'}) {
+	$zone = &get_zone_name($in{'zone'}, $in{'view'} || 'any');
+	$in{'index'} = $zone->{'index'};
+	$in{'view'} = $zone->{'viewindex'};
+	}
+else {
+	$zone = &get_zone_name($in{'index'}, $in{'view'});
+	}
+
 $bconf = $conf = &get_config();
 if ($in{'view'} ne '') {
 	$view = $conf->[$in{'view'}];
 	$conf = $view->{'members'};
 	}
 $zconf = $conf->[$in{'index'}]->{'members'};
-$dom = $conf->[$in{'index'}]->{'value'};
-&can_edit_zone($conf->[$in{'index'}], $view) ||
+$dom = $zone->{'name'};
+&can_edit_zone($zone, $view) ||
 	&error($text{'fwd_ecannot'});
 $desc = &ip6int_to_net(&arpa_to_ip($dom));
 &ui_print_header($desc, $text{'fwd_title'}, "",

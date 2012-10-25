@@ -55,7 +55,7 @@ if (@zones == 1 && $access{'zones'} ne '*' && !$access{'defaults'} &&
     !$access{'slave'} && !$access{'forward'} && $access{'noconfig'}) {
 	# Only one zone, so go direct to it
 	$z = $zones[0];
-	&redirect("edit_master.cgi?index=$z->{'index'}".
+	&redirect("edit_master.cgi?zone=$z->{'name'}".
 		  ($z->{'viewindex'} eq '' ? '' : '&view='.$z->{'viewindex'}));
 	exit;
 	}
@@ -162,7 +162,7 @@ elsif (@zones && (!@views || !$config{'by_view'})) {
 				      : &ip6int_to_net(&arpa_to_ip($v));
 		if ($z->{'view'}) {
 			local $vw = $z->{'viewindex'};
-			push(@zlinks, "edit_$t.cgi?index=$z->{'index'}".
+			push(@zlinks, "edit_$t.cgi?zone=$z->{'name'}".
 				      "&view=$vw");
 			push(@ztitles, $zn." ".
 			       &text('index_view', "<tt>$z->{'view'}</tt>"));
@@ -170,7 +170,7 @@ elsif (@zones && (!@views || !$config{'by_view'})) {
 				$z->{'index'}." ".$z->{'viewindex'} : undef);
 			}
 		else {
-			push(@zlinks, "edit_$t.cgi?index=$z->{'index'}");
+			push(@zlinks, "edit_$t.cgi?zone=$z->{'name'}");
 			push(@ztitles, $zn);
 			push(@zdels, &can_edit_zone($z) ?
 				$z->{'index'} : undef);
@@ -318,7 +318,7 @@ elsif (@zones) {
 			$t = $z->{'type'};
 			local $zn = $v eq "." ? "<i>$text{'index_root'}</i>"
 					      : &ip6int_to_net(&arpa_to_ip($v));
-			push(@zlinks, "edit_$t.cgi?index=$z->{'index'}".
+			push(@zlinks, "edit_$t.cgi?zone=$z->{'name'}".
 				      "&view=$z->{'viewindex'}");
 			push(@ztitles, $zn);
 			push(@zsort, $t eq 'hint' ? undef : $ztitles[$#ztitles]);

@@ -5,7 +5,7 @@
 require './bind8-lib.pl';
 &ReadParse();
 if ($in{'zone'}) {
-	$zone = &get_zone_name($in{'zone'}, 'any');
+	$zone = &get_zone_name($in{'zone'}, $in{'view'} || 'any');
 	$in{'index'} = $zone->{'index'};
 	$in{'view'} = $zone->{'viewindex'};
 	}
