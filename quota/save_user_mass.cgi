@@ -16,7 +16,7 @@ $access{'ro'} && &error(&text('euser_eallowus', $u));
 
 # Validate inputs
 foreach $t ('sblocks', 'hblocks', 'sfiles', 'hfiles') {
-	$in{$t."_def"} != 2 || $in{$t} =~ /^\d+$/ ||
+	$in{$t."_def"} != 2 || $in{$t} =~ /^\d+(\.\d+)?$/ ||
 		&error($text{'umass_e'.$t});
 	}
 
