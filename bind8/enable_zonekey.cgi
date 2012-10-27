@@ -4,7 +4,7 @@
 require './bind8-lib.pl';
 &error_setup($text{'zonekey_err'});
 &ReadParse();
-$zone = &get_zone_name($in{'index'}, $in{'view'});
+$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
@@ -41,6 +41,6 @@ else {
 
 &unlock_file(&make_chroot(&absolute_path($zone->{'file'})));
 &webmin_log("zonekeyon", undef, $dom);
-&ui_print_footer("edit_master.cgi?index=$in{'index'}&view=$in{'view'}",
+&ui_print_footer("edit_master.cgi?zone=$in{'zone'}&view=$in{'view'}",
 		 $text{'master_return'});
 

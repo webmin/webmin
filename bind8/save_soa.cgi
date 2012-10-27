@@ -5,7 +5,7 @@
 require './bind8-lib.pl';
 &ReadParse();
 &error_setup($text{'master_err2'});
-$zone = &get_zone_name($in{'index'}, $in{'view'});
+$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
@@ -74,5 +74,5 @@ elsif ($defttl && $in{'defttl_def'}) {
 
 &unlock_file(&make_chroot($file));
 &webmin_log("soa", undef, $in{'origin'}, \%in);
-&redirect("edit_master.cgi?index=$in{'index'}&view=$in{'view'}");
+&redirect("edit_master.cgi?zone=$in{'zone'}&view=$in{'view'}");
 

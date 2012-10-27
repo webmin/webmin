@@ -9,7 +9,7 @@ local $err;
 
 &error_setup($text{'dt_zone_err'});
 &ReadParse();
-$zone = &get_zone_name($in{'index'}, $in{'view'});
+$zone = &get_zone_name_on_error($in{'zone'}, $in{'view'});
 $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
@@ -44,5 +44,5 @@ if (&have_dnssec_tools_support()) {
 }
 
 # Return to master page
-&redirect("edit_master.cgi?index=$in{'index'}&view=$in{'view'}");
+&redirect("edit_master.cgi?zone=$in{'zone'}&view=$in{'view'}");
 

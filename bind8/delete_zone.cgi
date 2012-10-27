@@ -4,24 +4,17 @@
 
 require './bind8-lib.pl';
 &ReadParse();
-$conf = &get_config();
-$parent = &get_config_parent();
-if ($in{'view'} ne '') {
-	$view = $conf->[$in{'view'}];
-	$conf = $view->{'members'};
-	$viewname = $view->{'values'}->[0];
-	$parent = $view;
-	}
-else {
-	$viewname = undef;
-	}
-$zconf = $conf->[$in{'index'}];
+
+$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+($zconf, $conf, $parent) = &zone_to_config($zone);
 &can_edit_zone($zconf, $view) ||
 	&error($text{'master_edelete'});
+
 $access{'ro'} && &error($text{'master_ero'});
 $access{'delete'} || &error($text{'master_edeletecannot'});
 
-$rev = ($zconf->{'value'} =~ /in-addr\.arpa/i || $zconf->{'value'} =~ /\.$ipv6revzone/i);
+$rev = ($zconf->{'value'} =~ /in-addr\.arpa/i ||
+	$zconf->{'value'} =~ /\.$ipv6revzone/i);
 $type = &find("type", $zconf->{'members'})->{'value'};
 if (!$in{'confirm'} && $config{'confirm_zone'}) {
 	# Ask the user if he is sure ..
@@ -42,7 +35,7 @@ if (!$in{'confirm'} && $config{'confirm_zone'}) {
 		$type eq 'hint' ? $text{'delete_mesg2'} :
 		$type eq 'master' ? &text('delete_mesg', $zdesc) :
 				    &text('delete_mesg3', $zdesc),
-		[ [ 'index', $in{'index'} ],
+		[ [ 'zone', $in{'zone'} ],
 		  [ 'view', $in{'view'} ] ],
 		[ [ 'confirm', $text{'master_del'} ] ],
 		($type eq 'master' ?
@@ -142,7 +135,7 @@ foreach $u (keys %wusers) {
 # Also delete from slave servers
 delete($ENV{'HTTP_REFERER'});
 if ($in{'onslave'} && $access{'remote'}) {
-	@slaveerrs = &delete_on_slaves($zconf->{'value'}, undef, $viewname);
+	@slaveerrs = &delete_on_slaves($zone->{'name'}, undef, $zone->{'view'});
 	if (@slaveerrs) {
 		&error(&text('delete_errslave',
 		     "<p>".join("<br>", map { "$_->[0]->{'host'} : $_->[1]" }

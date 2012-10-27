@@ -167,13 +167,13 @@ elsif (@zones && (!@views || !$config{'by_view'})) {
 			push(@ztitles, $zn." ".
 			       &text('index_view', "<tt>$z->{'view'}</tt>"));
 			push(@zdels, &can_edit_zone($z, $vw) ?
-				$z->{'index'}." ".$z->{'viewindex'} : undef);
+				$z->{'name'}." ".$z->{'viewindex'} : undef);
 			}
 		else {
 			push(@zlinks, "edit_$t.cgi?zone=$z->{'name'}");
 			push(@ztitles, $zn);
 			push(@zdels, &can_edit_zone($z) ?
-				$z->{'index'} : undef);
+				$z->{'name'} : undef);
 			}
 		push(@zsort, $t eq 'hint' ? undef : $ztitles[$#ztitles]);
 		push(@zicons, "images/$t.gif");
@@ -235,18 +235,18 @@ elsif (@zones && (!@views || !$config{'by_view'})) {
 		$mid = int((@zlinks+1)/2);
 		@grid = ( );
 		if (&have_dnssec_tools_support()) {
-		push(@grid, &zones_table([ @zlinks[0 .. $mid-1] ],
-					  [ @ztitles[0 .. $mid-1] ],
-					  [ @ztypes[0 .. $mid-1] ],
-					  [ @zdels[0 .. $mid-1] ],
-					  [ @zstatus[0 .. $mid-1] ]));
-		} else {
-		push(@grid, &zones_table([ @zlinks[0 .. $mid-1] ],
-				      [ @ztitles[0 .. $mid-1] ],
-				      [ @ztypes[0 .. $mid-1] ],
-					  [ @zdels[0 .. $mid-1] ]));
-
-		}
+			push(@grid, &zones_table([ @zlinks[0 .. $mid-1] ],
+						  [ @ztitles[0 .. $mid-1] ],
+						  [ @ztypes[0 .. $mid-1] ],
+						  [ @zdels[0 .. $mid-1] ],
+						  [ @zstatus[0 .. $mid-1] ]));
+			}
+		else {
+			push(@grid, &zones_table([ @zlinks[0 .. $mid-1] ],
+					         [ @ztitles[0 .. $mid-1] ],
+					         [ @ztypes[0 .. $mid-1] ],
+						 [ @zdels[0 .. $mid-1] ]));
+			}
 		if ($mid < @zlinks) {
 			if (&have_dnssec_tools_support()) {
 			push(@grid, &zones_table([ @zlinks[$mid .. $#zlinks] ],

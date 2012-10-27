@@ -4,7 +4,7 @@
 
 require './bind8-lib.pl';
 &ReadParse();
-$zone = &get_zone_name($in{'index'}, $in{'view'});
+$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'hint_ecannot'});
@@ -20,7 +20,7 @@ print &ui_buttons_start();
 print &ui_buttons_row("refetch.cgi",
 		      $text{'hint_refetch'},
 		      $text{'hint_refetchdesc'},
-		      &ui_hidden("index", $in{'index'}).
+		      &ui_hidden("zone", $in{'zone'}).
 		      &ui_hidden("view", $in{'view'}));
 
 # Delete button
@@ -28,7 +28,7 @@ print &ui_buttons_row(
 	"delete_zone.cgi",
         $text{'hint_delete'},
         $text{'hint_deletedesc'},
-        &ui_hidden("index", $in{'index'}).
+        &ui_hidden("zone", $in{'zone'}).
         &ui_hidden("view", $in{'view'}));
 
 print &ui_buttons_end();

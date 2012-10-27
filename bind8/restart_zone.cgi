@@ -6,7 +6,7 @@ require './bind8-lib.pl';
 &ReadParse();
 $access{'ro'} && &error($text{'restart_ecannot'});
 $access{'apply'} || &error($text{'restart_ecannot'});
-$zone = &get_zone_name($in{'index'}, $in{'view'});
+$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 &can_edit_zone($zone) || &error($text{'restart_ecannot'});
 $err = &restart_zone($zone->{'name'}, $zone->{'view'});
 &error($err) if ($err);
@@ -19,6 +19,6 @@ if ($in{'return'}) {
 else {
 	&redirect(($tv eq "master" ? "edit_master.cgi" :
 		  $tv eq "forward" ? "edit_forward.cgi" : "edit_slave.cgi").
-		  "?index=$in{'index'}&view=$in{'view'}");
+		  "?zone=$in{'zone'}&view=$in{'view'}");
 	}
 

@@ -3,13 +3,12 @@
 
 require './bind8-lib.pl';
 &ReadParse();
-$conf = &get_config();
 &error_setup($text{'rmass_err'});
 
 # Get the zones
 foreach $d (split(/\0/, $in{'d'})) {
-	($idx, $viewidx) = split(/\s+/, $d);
-	$zone = &get_zone_name($idx, $viewidx);
+	($zonename, $viewidx) = split(/\s+/, $d);
+	$zone = &get_zone_name_or_error($zonename, $viewidx);
 	$zone || &error($text{'umass_egone'});
 	&can_edit_zone($zone) ||
 		&error($text{'master_edelete'});

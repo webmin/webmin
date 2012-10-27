@@ -3,25 +3,18 @@
 
 require './bind8-lib.pl';
 &ReadParse();
-$zone = &get_zone_name($in{'index'}, $in{'view'});
+$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+$z = &zone_to_config($zone);
+$zconf = $z->{'members'};
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
-
-# Get config object
-$bconf = $conf = &get_config();
-if ($in{'view'} ne '') {
-	$view = $conf->[$in{'view'}];
-	$conf = $view->{'members'};
-	}
-$zconf = $conf->[$in{'index'}]->{'members'};
-$file = &find_value("file", $zconf);
 
 $desc = &ip6int_to_net(&arpa_to_ip($zone->{'name'}));
 &ui_print_header($desc, $text{'xfer_title'}, "",
 		 undef, undef, undef, undef, &restart_links($zone));
 
 # Get transfer source IP
-$options = &find("options", $bconf);
+$options = &find("options", $zconf);
 $src = &find("transfer-source", $options->{'members'});
 
 # Get master IPs
@@ -54,5 +47,5 @@ if (-r $temp) {
 	}
 &unlink_file($temp);
 
-&ui_print_footer("edit_slave.cgi?index=$in{'index'}&view=$in{'view'}",
+&ui_print_footer("edit_slave.cgi?zone=$in{'zone'}&view=$in{'view'}",
 		 $text{'master_return'});

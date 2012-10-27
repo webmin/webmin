@@ -899,7 +899,7 @@ sub can_edit_reverse
 return $access{'reverse'} || &can_edit_zone($_[0]);
 }
 
-# record_input(zoneindex, view, type, file, origin, [num], [record],
+# record_input(zone-name, view, type, file, origin, [num], [record],
 #	       [new-name, new-value])
 # Display a form for editing or creating a DNS record
 sub record_input
@@ -907,7 +907,7 @@ sub record_input
 local(%rec, @recs, $ttl, $ttlunit);
 local $type = $_[6] ? $_[6]->{'type'} : $_[2];
 print &ui_form_start("save_record.cgi");
-print &ui_hidden("index", $_[0]);
+print &ui_hidden("zone", $_[0]);
 print &ui_hidden("view", $_[1]);
 print &ui_hidden("file", $_[3]);
 print &ui_hidden("origin", $_[4]);
@@ -2308,6 +2308,37 @@ foreach $z (@zones) {
 return undef;
 }
 
+# get_zone_name_or_error(index|name, [viewindex|"any"])
+# Looks up a zone by name and view, or calls error
+sub get_zone_name_or_error
+{
+local $zone = &get_zone_name(@_);
+if (!$zone) {
+	my $msg = $_[1] eq 'any' ? 'master_egone' :
+		  $_[1] eq '' ? 'master_egone2' : 'master_egone3';
+	&error(&text($msg, @_));
+	}
+return $zone;
+}
+
+# zone_to_config(&zone)
+# Given a zone name object, return the config file object for the zone. In an
+# array context, also returns the main config list and parent object
+sub zone_to_config
+{
+my ($zone) = @_;
+my $parent = &get_config_parent();
+my $bconf = &get_config();
+my $conf = $bconf;
+if ($zone->{'viewindex'} ne '') {
+        my $view = $conf->[$zone->{'viewindex'}]; 
+        $conf = $view->{'members'};
+	$parent = $view;
+        }
+my $z = $conf->[$zone->{'index'}];
+return wantarray ? ( $z, $bconf, $parent ) : $z;
+}
+
 # list_slave_servers()
 # Returns a list of Webmin servers on which slave zones are created / deleted
 sub list_slave_servers
@@ -2838,17 +2869,17 @@ if (-r $signfile) {
 	}
 }
 
-# move_zone_button(&config, current-view, zone-index)
+# move_zone_button(&config, current-view-index, zone-name)
 # If possible, returns a button row for moving this zone to another view
 sub move_zone_button
 {
-local ($conf, $view, $index) = @_;
+local ($conf, $view, $zonename) = @_;
 local @views = grep { &can_edit_view($_) } &find("view", $conf);
 if ($view eq '' && @views || $view ne '' && @views > 1) {
 	return &ui_buttons_row("move_zone.cgi",
                 $text{'master_move'},
                 $text{'master_movedesc'},
-                &ui_hidden("index", $index).
+                &ui_hidden("zone", $zonename).
                 &ui_hidden("view", $view),
                 &ui_select("newview", undef,
                         [ map { [ $_->{'index'}, $_->{'value'} ] }
@@ -2909,7 +2940,7 @@ if (!$access{'ro'} && $access{'apply'}) {
 			# Apply this zone
 			push(@rv, "<a href='restart_zone.cgi?return=$r&".
 				  "view=$zone->{'viewindex'}&".
-				  "index=$zone->{'index'}'>".
+				  "zone=$zone->{'name'}'>".
 				  "$text{'links_apply'}</a>");
 			}
 		# Apply whole config

@@ -4,7 +4,7 @@
 
 require './bind8-lib.pl';
 &ReadParse();
-$zone = &get_zone_name($in{'index'}, $in{'view'});
+$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 $file = &absolute_path($zone->{'file'});
 $tv = $zone->{'type'};
 &can_edit_zone($zone) ||
@@ -27,4 +27,4 @@ else {
 
 &ui_print_footer(($tv eq "master" ? "edit_master.cgi" :
 	 $tv eq "forward" ? "edit_forward.cgi" : "edit_slave.cgi").
-	"?index=$in{'index'}&view=$in{'view'}", $text{'master_return'});
+	"?zone=$in{'zone'}&view=$in{'view'}", $text{'master_return'});

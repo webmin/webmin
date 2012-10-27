@@ -4,14 +4,13 @@
 
 require './bind8-lib.pl';
 &ReadParse();
-$conf = &get_config();
-if ($in{'view'} ne '') {
-	$conf = $conf->[$in{'view'}]->{'members'};
-	}
-$zconf = $conf->[$in{'index'}];
 &error_setup($text{'convert_err'});
-&lock_file(&make_chroot($zconf->{'file'}));
+
+$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+$zconf = &zone_to_config($zone);
+
 $access{'slave'} || &error($text{'screate_ecannot1'});
+&lock_file(&make_chroot($zconf->{'file'}));
 
 # Change the type directive
 &save_directive($zconf, 'type', [ { 'name' => 'type',

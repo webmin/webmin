@@ -4,7 +4,7 @@
 
 require './bind8-lib.pl';
 &ReadParse();
-$zone = &get_zone_name($in{'index'}, $in{'view'});
+$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
@@ -24,7 +24,7 @@ $v = $soa->{'values'};
 print &ui_form_start("save_soa.cgi", "post");
 print &ui_hidden("num", $soa->{'num'});
 print &ui_hidden("origin", $dom);
-print &ui_hidden("index", $in{'index'});
+print &ui_hidden("zone", $in{'zone'});
 print &ui_hidden("view", $in{'view'});
 print &ui_table_start($text{'master_params'}, "width=100%", 4);
 
@@ -76,6 +76,6 @@ if (!$config{'updserial_on'}) {
 print &ui_table_end();
 print &ui_form_end($access{'ro'} ? [ ] : [ [ undef, $text{'save'} ] ]);
 
-&ui_print_footer("edit_master.cgi?index=$in{'index'}&view=$in{'view'}",
+&ui_print_footer("edit_master.cgi?zone=$in{'zone'}&view=$in{'view'}",
 	$text{'master_return'});
 

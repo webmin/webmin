@@ -135,5 +135,5 @@ if ($in{'onslave'} && $access{'remote'}) {
 	}
 
 &redirect(($in{'type'} ? "edit_slave.cgi" : "edit_stub.cgi").
-	  "?index=$idx&view=$in{'view'}");
+	  "?zone=$in{'zone'}&view=$in{'view'}");
 

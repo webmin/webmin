@@ -5,12 +5,13 @@
 require './bind8-lib.pl';
 &ReadParse();
 $access{'whois'} || &error($text{'whois_ecannot'});
-$zone = &get_zone_name($in{'index'}, $in{'view'});
+
+$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 $dom = $zone->{'name'};
+&can_edit_zone($zone) || &error($text{'master_ecannot'});
+
 $tv = $zone->{'type'};
 $dom =~ s/\.$//;
-&can_edit_zone($zone) ||
-	&error($text{'master_ecannot'});
 $desc = &ip6int_to_net(&arpa_to_ip($dom));
 &ui_print_header($desc, $text{'whois_title'}, "",
 		 undef, undef, undef, undef, &restart_links($zone));
@@ -50,5 +51,5 @@ print &ui_table_end();
 
 &ui_print_footer(($tv eq "master" ? "edit_master.cgi" :
 	 $tv eq "forward" ? "edit_forward.cgi" : "edit_slave.cgi").
-	"?index=$in{'index'}&view=$in{'view'}", $text{'master_return'});
+	"?zone=$in{'zone'}&view=$in{'view'}", $text{'master_return'});
 

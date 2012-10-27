@@ -4,36 +4,33 @@
 
 require './bind8-lib.pl';
 &ReadParse();
-$conf = &get_config();
-if ($in{'view'} ne '') {
-	$view = $conf->[$in{'view'}];
-	$conf = $view->{'members'};
-	$indent = 2;
-	}
-else {
-	$indent = 1;
-	}
-$zconf = $conf->[$in{'index'}];
-&lock_file(&make_chroot($zconf->{'file'}));
 &error_setup($text{'slave_err'});
-&can_edit_zone($zconf, $view) ||
-	&error($text{'slave_ecannot'});
+
+$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+$z = &zone_to_config($zone);
+$zconf = $z->{'members'};
+$dom = $zone->{'name'};
+&can_edit_zone($zone) ||
+	&error($text{'master_ecannot'});
+$indent = $zone->{'view'} ? 2 : 1;
+
 $access{'ro'} && &error($text{'master_ero'});
 $access{'opts'} || &error($text{'master_eoptscannot'});
+&lock_file(&make_chroot($z->{'file'}));
 
-&save_port_address("masters", "port", $zconf, $indent);
-&save_opt("max-transfer-time-in", \&mtti_check, $zconf, $indent);
-&save_opt("file", \&file_check, $zconf, $indent);
-&save_choice("check-names", $zconf, $indent);
-&save_choice("notify", $zconf, $indent);
-&save_addr_match("allow-update", $zconf, $indent);
-&save_addr_match("allow-transfer", $zconf, $indent);
-&save_addr_match("allow-query", $zconf, $indent);
-&save_address("also-notify", $zconf, $indent);
+&save_port_address("masters", "port", $z, $indent);
+&save_opt("max-transfer-time-in", \&mtti_check, $z, $indent);
+&save_opt("file", \&file_check, $z, $indent);
+&save_choice("check-names", $z, $indent);
+&save_choice("notify", $z, $indent);
+&save_addr_match("allow-update", $z, $indent);
+&save_addr_match("allow-transfer", $z, $indent);
+&save_addr_match("allow-query", $z, $indent);
+&save_address("also-notify", $z, $indent);
 &flush_file_lines();
-&unlock_file(&make_chroot($zconf->{'file'}));
-&webmin_log("opts", undef, $zconf->{'value'}, \%in);
-&redirect("edit_slave.cgi?index=$in{'index'}&view=$in{'view'}");
+&unlock_file(&make_chroot($z->{'file'}));
+&webmin_log("opts", undef, $dom, \%in);
+&redirect("edit_slave.cgi?zone=$in{'zone'}&view=$in{'view'}");
 
 sub mtti_check
 {

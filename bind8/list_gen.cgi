@@ -5,10 +5,11 @@
 require './bind8-lib.pl';
 &ReadParse();
 $access{'gen'} || &error($text{'gen_ecannot'});
-$zone = &get_zone_name($in{'index'}, $in{'view'});
+
+$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 $dom = $zone->{'name'};
-&can_edit_zone($zone) ||
-	&error($text{'recs_ecannot'});
+&can_edit_zone($zone) || &error($text{'master_ecannot'});
+
 $desc = &text('recs_header', &ip6int_to_net(&arpa_to_ip($dom)));
 &ui_print_header($desc, $text{'gen_title'}, "",
 		 undef, undef, undef, undef, &restart_links($zone));
@@ -16,7 +17,7 @@ $desc = &text('recs_header', &ip6int_to_net(&arpa_to_ip($dom)));
 @gens = grep { $_->{'generate'} } &read_zone_file($zone->{'file'}, $dom);
 print "$text{'gen_desc'}<p>\n";
 print &ui_form_start("save_gen.cgi", "post");
-print &ui_hidden("index", $in{'index'});
+print &ui_hidden("zone", $in{'zone'});
 print &ui_hidden("view", $in{'view'});
 
 print &ui_columns_start([ $text{'gen_type'}, $text{'gen_range'},
@@ -52,6 +53,6 @@ if (@gens) {
 	}
 print &ui_form_end(\@buts);
 
-&ui_print_footer("edit_master.cgi?index=$in{'index'}&view=$in{'view'}",
+&ui_print_footer("edit_master.cgi?zone=$in{'zone'}&view=$in{'view'}",
 	$text{'master_return'});
 

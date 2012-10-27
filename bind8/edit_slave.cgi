@@ -4,17 +4,11 @@
 
 require './bind8-lib.pl';
 &ReadParse();
-if ($in{'zone'}) {
-	$zone = &get_zone_name($in{'zone'}, 'any');
-	$in{'index'} = $zone->{'index'};
-	$in{'view'} = $zone->{'viewindex'};
-	}
-else {
-	$zone = &get_zone_name($in{'index'}, $in{'view'});
-	}
+
+$in{'view'} = 'any' if (!defined($in{'view'}));
+$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 $dom = $zone->{'name'};
-&can_edit_zone($zone) ||
-	&error($text{'slave_ecannot'});
+&can_edit_zone($zone) || &error($text{'master_ecannot'});
 
 $desc = &ip6int_to_net(&arpa_to_ip($dom));
 if ($zone->{'file'}) {
@@ -53,7 +47,7 @@ if ($zone->{'file'}) {
 	else {
 		# display as icons
 		for($i=0; $i<@rcodes; $i++) {
-			push(@rlinks, "edit_recs.cgi?index=$in{'index'}".
+			push(@rlinks, "edit_recs.cgi?zone=$in{'zone'}".
 				      "&view=$in{'view'}&type=$rcodes[$i]");
 			push(@rtitles, $text{"type_$rcodes[$i]"}.
 				       " ($rnum{$rcodes[$i]})");
@@ -66,22 +60,22 @@ if ($zone->{'file'}) {
 
 # Shut buttons for editing, options and whois
 if ($access{'file'} && $zone->{'file'}) {
-	push(@links, "view_text.cgi?index=$in{'index'}&view=$in{'view'}");
+	push(@links, "view_text.cgi?zone=$in{'zone'}&view=$in{'view'}");
 	push(@titles, $text{'slave_manual'});
 	push(@images, "images/text.gif");
 	}
 if ($access{'opts'}) {
-	push(@links, "edit_soptions.cgi?index=$in{'index'}&view=$in{'view'}");
+	push(@links, "edit_soptions.cgi?zone=$in{'zone'}&view=$in{'view'}");
 	push(@titles, $text{'master_options'});
 	push(@images, "images/options.gif");
 	}
 if ($access{'whois'} && &has_command($config{'whois_cmd'}) &&
     $dom !~ /in-addr\.arpa/i) {
-	push(@links, "whois.cgi?index=$in{'index'}&view=$in{'view'}");
+	push(@links, "whois.cgi?zone=$in{'zone'}&view=$in{'view'}");
 	push(@titles, $text{'master_whois'});
 	push(@images, "images/whois.gif");
 	}
-push(@links, "xfer.cgi?index=$in{'index'}&view=$in{'view'}");
+push(@links, "xfer.cgi?zone=$in{'zone'}&view=$in{'view'}");
 push(@titles, $text{'slave_xfer'});
 push(@images, "images/xfer.gif");
 if (@links) {
@@ -96,14 +90,14 @@ if (!$access{'ro'} && ($access{'delete'} || $apply)) {
 
 	# Move to other view
 	$conf = &get_config();
-	print &move_zone_button($conf, $in{'view'}, $in{'index'});
+	print &move_zone_button($conf, $zone->{'viewindex'}, $in{'zone'});
 
 	# Convert to master zone
 	if ($access{'master'} && $st[7]) {
 		print &ui_buttons_row("convert_slave.cgi",
 			$text{'slave_convert'},
 			$text{'slave_convertdesc'},
-			&ui_hidden("index", $in{'index'}).
+			&ui_hidden("zone", $in{'zone'}).
 			&ui_hidden("view", $in{'view'}));
 		}
 
@@ -111,7 +105,7 @@ if (!$access{'ro'} && ($access{'delete'} || $apply)) {
 	if ($access{'delete'}) {
 		print &ui_buttons_row("delete_zone.cgi",
 			$text{'master_del'}, $text{'slave_delmsg'},
-			&ui_hidden("index", $in{'index'}).
+			&ui_hidden("zone", $in{'zone'}).
 			&ui_hidden("view", $in{'view'}));
 		}
 
@@ -130,7 +124,7 @@ if ($_[0]) {
 		], 100);
 	for(my $i=0; $_[$i]; $i++) {
 		local @cols = ( "<a href=\"edit_recs.cgi?".
-		      "index=$in{'index'}&view=$in{'view'}&type=$_[$i]\">".
+		      "zone=$in{'zone'}&view=$in{'view'}&type=$_[$i]\">".
 		      ($text{"recs_$_[$i]"} || $_[$i])."</a>",
 		      $rnum{$_[$i]} );
 		$rv .= &ui_columns_row(\@cols);

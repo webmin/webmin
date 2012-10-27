@@ -5,10 +5,11 @@
 require './bind8-lib.pl';
 &ReadParse();
 $access{'gen'} || &error($text{'gen_ecannot'});
-$zone = &get_zone_name($in{'index'}, $in{'view'});
+
+$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 $dom = $zone->{'name'};
-&can_edit_zone($zone) ||
-	&error($text{'recs_ecannot'});
+&can_edit_zone($zone) || &error($text{'master_ecannot'});
+
 $file = $zone->{'file'};
 @recs = &read_zone_file($file, $dom);
 @gens = grep { $_->{'generate'} } @recs;
@@ -54,7 +55,7 @@ if ($in{'show'}) {
 		}
 	print &ui_columns_end();
 
-	&ui_print_footer("edit_master.cgi?index=$in{'index'}&view=$in{'view'}",
+	&ui_print_footer("edit_master.cgi?zone=$in{'zone'}&view=$in{'view'}",
 		$text{'master_return'});
 	exit;
 	}
@@ -104,5 +105,5 @@ for($i=0; defined($in{"type_$i"}); $i++) {
 	}
 &bump_soa_record($file, \@recs);
 &sign_dnssec_zone_if_key($zone, \@recs);
-&redirect("edit_master.cgi?index=$in{'index'}&view=$in{'view'}");
+&redirect("edit_master.cgi?zone=$in{'zone'}&view=$in{'view'}");
 

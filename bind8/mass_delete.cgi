@@ -24,13 +24,14 @@ elsif ($in{'rdelete'}) {
 
 # Get the zones
 foreach $d (split(/\0/, $in{'d'})) {
-	($idx, $viewidx) = split(/\s+/, $d);
-	if ($viewidx ne '') {
-		$view = $conf->[$viewidx];
-		$zconf = $view->{'members'}->[$idx];
+	($zonename, $viewidx) = split(/\s+/, $d);
+	$zone = &get_zone_name_or_error($zonename, $viewidx);
+	if ($zone->{'viewindex'} ne '') {
+		$view = $conf->[$zone->{'viewindex'}];
+		$zconf = $view->{'members'}->[$zone->{'index'}];
 		}
 	else {
-		$zconf = $conf->[$idx];
+		$zconf = $conf->[$zone->{'index'}];
 		}
 	&can_edit_zone($zconf, $view) ||
 		&error($text{'master_edelete'});

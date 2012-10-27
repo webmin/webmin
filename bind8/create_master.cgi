@@ -182,6 +182,6 @@ if (&have_dnssec_tools_support() && $in{'enable_dt'}) {
 	&error($err) if ($err);
 }
 
-&redirect("edit_master.cgi?index=$idx&view=$in{'view'}");
+&redirect("edit_master.cgi?zone=$in{'zone'}&view=$in{'view'}");
 
 

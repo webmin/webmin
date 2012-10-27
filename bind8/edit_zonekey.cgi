@@ -3,7 +3,7 @@
 
 require './bind8-lib.pl';
 &ReadParse();
-$zone = &get_zone_name($in{'index'}, $in{'view'});
+$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
@@ -49,13 +49,13 @@ if ($keyrec) {
 	print &ui_buttons_row("disable_zonekey.cgi", $text{'zonekey_disable'},
 			      $text{'zonekey_disabledesc'},
 			      &ui_hidden("view", $in{'view'}).
-			      &ui_hidden("index", $in{'index'}));
+			      &ui_hidden("zone", $in{'zone'}));
 
 	# Offer to sign now
 	print &ui_buttons_row("sign_zone.cgi", $text{'zonekey_sign'},
 			      $text{'zonekey_signdesc'},
 			      &ui_hidden("view", $in{'view'}).
-			      &ui_hidden("index", $in{'index'}));
+			      &ui_hidden("zone", $in{'zone'}));
 
 	# Offer to re-generate now, for zones with a KSK
 	if (@keys == 2) {
@@ -63,7 +63,7 @@ if ($keyrec) {
 				      $text{'zonekey_resign'},
 				      $text{'zonekey_resigndesc'},
 				      &ui_hidden("view", $in{'view'}).
-				      &ui_hidden("index", $in{'index'}));
+				      &ui_hidden("zone", $in{'zone'}));
 		}
 
 	print &ui_buttons_end();
@@ -73,7 +73,7 @@ else {
 	print $text{'zonekey_desc'},"<p>\n";
 
 	print &ui_form_start("enable_zonekey.cgi", "post");
-	print &ui_hidden("index", $in{'index'});
+	print &ui_hidden("zone", $in{'zone'});
 	print &ui_hidden("view", $in{'view'});
 	print &ui_table_start($text{'zonekey_header'}, undef, 2);
 
@@ -98,5 +98,5 @@ else {
 	print &ui_form_end([ [ undef, $text{'zonekey_enable'} ] ]);
 	}
 
-&ui_print_footer("edit_master.cgi?index=$in{'index'}&view=$in{'view'}",
+&ui_print_footer("edit_master.cgi?zone=$in{'zone'}&view=$in{'view'}",
 	$text{'master_return'});

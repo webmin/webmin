@@ -6,7 +6,7 @@ require './bind8-lib.pl';
 &ReadParse();
 
 # Work out the filename
-$zone = &get_zone_name($in{'index'}, $in{'view'});
+$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 &can_edit_zone($zone, $view) ||
 	&error($text{'hint_ecannot'});
 $file = $zone->{'file'};

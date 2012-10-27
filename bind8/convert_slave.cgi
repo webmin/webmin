@@ -4,14 +4,9 @@
 
 require './bind8-lib.pl';
 &ReadParse();
-$conf = &get_config();
-if ($in{'view'} ne '') {
-	$conf = $conf->[$in{'view'}]->{'members'};
-	}
-$zconf = $conf->[$in{'index'}];
 &error_setup($text{'convert_err'});
-$access{'master'} || &error($text{'mcreate_ecannot'});
 
+$access{'master'} || &error($text{'mcreate_ecannot'});
 $file = &find("file", $zconf->{'members'});
 if (!$file) {
 	&error($text{'convert_efile'});

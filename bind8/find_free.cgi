@@ -5,21 +5,18 @@
 
 require './bind8-lib.pl';
 &ReadParse();
-$zone = &get_zone_name($in{'index'}, $in{'view'});
-$conf = &get_config();
-if ($in{'view'} ne '') {
-	$conf = $conf->[$in{'view'}]->{'members'};
-	}
-$zconf = $conf->[$in{'index'}]->{'members'};
-$type = &find("type", $zconf)->{'value'};
-$file = &find("file", $zconf)->{'value'};
-$dom = $conf->[$in{'index'}]->{'value'};
+
+$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+$dom = $zone->{'name'};
+$file = $zone->{'file'};
+$type = $zone->{'type'};
+
 if (!$access{'findfree'}) {&error($text{'findfree_nofind'})};
 $desc = &text('findfree_header', &arpa_to_ip($dom));
 &ui_print_header($desc, &text('findfree_title'), "",
 		 undef, undef, undef, undef, &restart_links($zone));
 
-&find_ips($in{'index'}, $in{'from'}, $in{'to'}, $in{'cf'});
+&find_ips($in{'zone'}, $in{'from'}, $in{'to'}, $in{'cf'});
 
 if ($in{'from'} && $in{'to'}) {
    # Do the search
@@ -75,7 +72,7 @@ if ($in{'from'} && $in{'to'}) {
     } # if(@recs)
 } # if(@in >= 3)
 
-&ui_print_footer("edit_$type.cgi?index=$in{'index'}&view=$in{'view'}",
+&ui_print_footer("edit_$type.cgi?zone=$in{'zone'}&view=$in{'view'}",
 	$text{'recs_return'});
 
 # build_iprange(fromIP, toIP)
@@ -121,12 +118,12 @@ for ($byte0=$from[0]; $byte0<=$to[0]; $byte0++) {
 return %frecs;
 } # sub build_iprange
 
-# find_ips (zoneindex, from_ip, to_ip, consider_freeXX_names)
+# find_ips (zonename, from_ip, to_ip, consider_freeXX_names)
 # Display a form for searching for free IP nos
 sub find_ips
 {
 print &ui_form_start("find_free.cgi");
-print &ui_hidden("index", $_[0]);
+print &ui_hidden("zone", $_[0]);
 print &ui_hidden("view", $in{'view'});
 print &ui_table_start($text{'findfree_sopt'}, undef, 2);
 
@@ -150,7 +147,7 @@ print &ui_form_end([ [ undef, $text{'findfree_search'} ] ]);
 sub frecs_table
 {
 print &ui_grid_table(
-	[ map { "<a href='edit_recs.cgi?index=$in{'index'}&view=$in{'view'}".
+	[ map { "<a href='edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}".
 		"&type=A&newvalue=$_->{'ip'}'>$_->{'ip'}</a>" } @_ ],
 	4, 100, [ "width=25%", "width=25%", "width=25%", "width=25%" ]);
 }

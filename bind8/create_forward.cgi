@@ -73,5 +73,5 @@ $dir = { 'name' => 'zone',
 $idx = &get_zone_index($in{'zone'}, $in{'view'});
 
 &add_zone_access($in{'zone'});
-&redirect("edit_forward.cgi?index=$idx&view=$in{'view'}");
+&redirect("edit_forward.cgi?zone=$in{'zone'}&view=$in{'view'}");
 

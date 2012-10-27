@@ -9,7 +9,7 @@ local $desc;
 local $rrr;
 
 &ReadParse();
-$zone = &get_zone_name($in{'index'}, $in{'view'});
+$zone = &get_zone_name_on_error($in{'zone'}, $in{'view'});
 $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
@@ -80,7 +80,7 @@ if (&have_dnssec_tools_support()) {
 								  $text{'dt_zone_rollerdrst'},
 								  $text{'dt_zone_rollerdrstdesc'},
 								  &ui_hidden("view", $in{'view'}).
-								  &ui_hidden("index", $in{'index'}).
+								  &ui_hidden("zone", $in{'zone'}).
 								  &ui_hidden("optype", "rollerdrst"));
 			print &ui_buttons_end();
 			print "<br>\n<br>\n";
@@ -94,13 +94,13 @@ if (&have_dnssec_tools_support()) {
 									  $text{'dt_zone_zskroll'},
 									  $text{'dt_zone_zskrolldesc'},
 									  &ui_hidden("view", $in{'view'}).
-									  &ui_hidden("index", $in{'index'}).
+									  &ui_hidden("zone", $in{'zone'}).
 									  &ui_hidden("optype", "zskroll"));
 				print &ui_buttons_row("zone_dnssecmgt_dt.cgi",
 									  $text{'dt_zone_kskroll'},
 									  $text{'dt_zone_kskrolldesc'},
 									  &ui_hidden("view", $in{'view'}).
-									  &ui_hidden("index", $in{'index'}).
+									  &ui_hidden("zone", $in{'zone'}).
 									  &ui_hidden("optype", "kskroll"));
 				print &ui_buttons_end();
 				print "<br>\n<br>\n";
@@ -114,7 +114,7 @@ if (&have_dnssec_tools_support()) {
 									  $text{'dt_zone_ksknotify'},
 									  $text{'dt_zone_ksknotifydesc'},
 									  &ui_hidden("view", $in{'view'}).
-									  &ui_hidden("index", $in{'index'}).
+									  &ui_hidden("zone", $in{'zone'}).
 									  &ui_hidden("optype", "notify"));
 				print &ui_buttons_end();
 				print "<br>\n<br>\n";
@@ -146,7 +146,7 @@ if (&have_dnssec_tools_support()) {
 							  $text{'dt_zone_resign'},
 							  $text{'dt_zone_resigndesc'},
 							  &ui_hidden("view", $in{'view'}).
-							  &ui_hidden("index", $in{'index'}).
+							  &ui_hidden("zone", $in{'zone'}).
 							  &ui_hidden("optype", "resign"));
 		print &ui_buttons_end();
 		print "<br>\n<br>\n";
@@ -158,7 +158,7 @@ if (&have_dnssec_tools_support()) {
 		print &ui_buttons_row("disable_zonedt.cgi", $text{'dt_zone_disable'},
 							  $text{'dt_zone_disabledesc'},
 							  &ui_hidden("view", $in{'view'}).
-							  &ui_hidden("index", $in{'index'}));
+							  &ui_hidden("zone", $in{'zone'}));
 		print &ui_buttons_end();
 		print "<br>\n<br>\n";
 		print "<br>\n<br>\n";
@@ -180,13 +180,13 @@ if (&have_dnssec_tools_support()) {
 			print &ui_buttons_row("zone_dnssecmigrate_dt.cgi", $text{'dt_zone_migrate'},
 								  $text{'dt_zone_migratedesc'},
 								  &ui_hidden("view", $in{'view'}).
-								  &ui_hidden("index", $in{'index'}));
+								  &ui_hidden("zone", $in{'zone'}));
 	
 			# Offer to remove existing keys
 			print &ui_buttons_row("disable_zonekey.cgi", $text{'zonekey_disable'},
 								  $text{'zonekey_disabledesc'},
 								  &ui_hidden("view", $in{'view'}).
-								  &ui_hidden("index", $in{'index'}));
+								  &ui_hidden("zone", $in{'zone'}));
 	
 			print &ui_buttons_end();
 	
@@ -197,7 +197,7 @@ if (&have_dnssec_tools_support()) {
 			print $text{'dt_zone_desc'},"<p>\n";
 	
 			print &ui_form_start("enable_zonedt.cgi", "post");
-			print &ui_hidden("index", $in{'index'});
+			print &ui_hidden("zone", $in{'zone'});
 			print &ui_hidden("view", $in{'view'});
 	
 			print &ui_table_start($text{'dt_zone_header'}, undef, 2);
@@ -215,5 +215,5 @@ if (&have_dnssec_tools_support()) {
 	&unlock_file($rrfile);
 }
 
-&ui_print_footer("edit_master.cgi?index=$in{'index'}&view=$in{'view'}",
+&ui_print_footer("edit_master.cgi?zone=$in{'zone'}&view=$in{'view'}",
 	$text{'master_return'});

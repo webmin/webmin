@@ -4,14 +4,8 @@
 
 require './bind8-lib.pl';
 &ReadParse();
-if ($in{'zone'}) {
-	$zone = &get_zone_name($in{'zone'}, $in{'view'} || 'any');
-	$in{'index'} = $zone->{'index'};
-	$in{'view'} = $zone->{'viewindex'};
-	}
-else {
-	$zone = &get_zone_name($in{'index'}, $in{'view'});
-	}
+$in{'view'} = 'any' if (!defined($in{'view'}));
+$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 $dom = $zone->{'name'};
 &can_edit_zone($zone) || &error($text{'master_ecannot'});
 $desc = &ip6int_to_net(&arpa_to_ip($dom));
@@ -57,7 +51,7 @@ if ($config{'show_list'}) {
 else {
 	# display as icons
 	for($i=0; $i<@rcodes; $i++) {
-		push(@rlinks, "edit_recs.cgi?index=$in{'index'}&".
+		push(@rlinks, "edit_recs.cgi?zone=$in{'zone'}&".
 			      "view=$in{'view'}&type=$rcodes[$i]");
 		push(@rtitles, ($text{"type_$rcodes[$i]"} || $rcodes[$i]).
 			       (defined(%rnum) ? " ($rnum{$rcodes[$i]})" : ""));
@@ -70,51 +64,51 @@ else {
 # links to forms editing text, soa and zone options
 if ($access{'file'}) {
 	# Manually edit zone
-	push(@links, "edit_text.cgi?index=$in{'index'}&view=$in{'view'}");
+	push(@links, "edit_text.cgi?zone=$in{'zone'}&view=$in{'view'}");
 	push(@titles, $text{'master_manual'});
 	push(@images, "images/text.gif");
 	}
 if ($access{'params'}) {
 	# SOA values
-	push(@links, "edit_soa.cgi?index=$in{'index'}&view=$in{'view'}");
+	push(@links, "edit_soa.cgi?zone=$in{'zone'}&view=$in{'view'}");
 	push(@titles, $text{'master_soa'});
 	push(@images, "images/soa.gif");
 	}
 if ($access{'opts'}) {
 	# Zone options in named.conf
-	push(@links, "edit_options.cgi?index=$in{'index'}&view=$in{'view'}");
+	push(@links, "edit_options.cgi?zone=$in{'zone'}&view=$in{'view'}");
 	push(@titles, $text{'master_options'});
 	push(@images, "images/options.gif");
 	}
 if ($access{'findfree'}) {
 	# Find free IPs
-	push(@links, "find_free.cgi?index=$in{'index'}&view=$in{'view'}");
+	push(@links, "find_free.cgi?zone=$in{'zone'}&view=$in{'view'}");
 	push(@titles, $text{'findfree_desc'});
 	push(@images, "images/findfree.gif");
 	}
 if ($access{'gen'}) {
 	# Generators
-	push(@links, "list_gen.cgi?index=$in{'index'}&view=$in{'view'}");
+	push(@links, "list_gen.cgi?zone=$in{'zone'}&view=$in{'view'}");
 	push(@titles, $text{'gen_title'});
 	push(@images, "images/gen.gif");
 	}
 if ($access{'whois'} && &has_command($config{'whois_cmd'}) &&
     $dom !~ /in-addr\.arpa/i) {
 	# Whois lookup
-	push(@links, "whois.cgi?index=$in{'index'}&view=$in{'view'}");
+	push(@links, "whois.cgi?zone=$in{'zone'}&view=$in{'view'}");
 	push(@titles, $text{'master_whois'});
 	push(@images, "images/whois.gif");
 	}
 if ($access{'dnssec'} && &supports_dnssec()) {
 	if (&have_dnssec_tools_support()) {
 		# DNSSEC Automation
-		push(@links, "edit_zonedt.cgi?index=$in{'index'}&view=$in{'view'}");
+		push(@links, "edit_zonedt.cgi?zone=$in{'zone'}&view=$in{'view'}");
 		push(@titles, $text{'dt_enable_title'});
 		push(@images, "images/dnssectools.gif");
 	}
 
 	# Zone key
-	push(@links, "edit_zonekey.cgi?index=$in{'index'}&view=$in{'view'}");
+	push(@links, "edit_zonekey.cgi?zone=$in{'zone'}&view=$in{'view'}");
 	push(@titles, $text{'zonekey_title'});
 	push(@images, "images/zonekey.gif");
 	}
@@ -134,7 +128,7 @@ if (!$access{'ro'} && ($access{'delete'} || $apply)) {
 		print &ui_buttons_row(
 			"freeze_zone.cgi", $text{'master_freeze'},
 			$text{'master_freezemsg2'},
-			&ui_hidden("index", $in{'index'}).
+			&ui_hidden("zone", $in{'zone'}).
 			&ui_hidden("view", $in{'view'})
 			);
 
@@ -142,7 +136,7 @@ if (!$access{'ro'} && ($access{'delete'} || $apply)) {
 		print &ui_buttons_row(
 			"unfreeze_zone.cgi", $text{'master_unfreeze'},
 			$text{'master_unfreezemsg2'},
-			&ui_hidden("index", $in{'index'}).
+			&ui_hidden("zone", $in{'zone'}).
 			&ui_hidden("view", $in{'view'})
 			);
 		}
@@ -152,21 +146,21 @@ if (!$access{'ro'} && ($access{'delete'} || $apply)) {
 		print &ui_buttons_row(
 			"check_zone.cgi", $text{'master_checkzone'},
 			$text{'master_checkzonemsg'},
-			&ui_hidden("index", $in{'index'}).
+			&ui_hidden("zone", $in{'zone'}).
 			&ui_hidden("view", $in{'view'})
 			);
 		}
 
 	# Move zone button
 	$conf = &get_config();
-	print &move_zone_button($conf, $in{'view'}, $in{'index'});
+	print &move_zone_button($conf, $zone->{'viewindex'}, $in{'zone'});
 
 	# Convert to slave zone
 	if ($access{'slave'}) {
 		print &ui_buttons_row("convert_master.cgi",
 			$text{'master_convert'},
 			$text{'master_convertdesc'},
-			&ui_hidden("index", $in{'index'}).
+			&ui_hidden("zone", $in{'zone'}).
 			&ui_hidden("view", $in{'view'}));
 		}
 
@@ -178,7 +172,7 @@ if (!$access{'ro'} && ($access{'delete'} || $apply)) {
 			($dom !~ /in-addr\.arpa/i &&
 			 $dom !~ /\.$ipv6revzone/i ? $text{'master_delrev'}
 						   : ""),
-			&ui_hidden("index", $in{'index'}).
+			&ui_hidden("zone", $in{'zone'}).
 			&ui_hidden("view", $in{'view'})
 			);
 		}
@@ -198,7 +192,7 @@ if ($_[0]) {
 		], 100);
 	for(my $i=0; $_[$i]; $i++) {
 		local @cols = ( "<a href=\"edit_recs.cgi?".
-		      "index=$in{'index'}&view=$in{'view'}&type=$_[$i]\">".
+		      "zone=$in{'zone'}&view=$in{'view'}&type=$_[$i]\">".
 		      ($text{"recs_$_[$i]"} || $_[$i])."</a>" );
 		if (defined(%rnum)) {
 			push(@cols, $rnum{$_[$i]});

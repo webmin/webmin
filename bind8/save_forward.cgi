@@ -4,27 +4,24 @@
 
 require './bind8-lib.pl';
 &ReadParse();
-$conf = &get_config();
-if ($in{'view'} ne '') {
-	$view = $conf->[$in{'view'}];
-	$conf = $view->{'members'};
-	$indent = 2;
-	}
-else {
-	$indent = 1;
-	}
-$zconf = $conf->[$in{'index'}];
-&lock_file(&make_chroot($zconf->{'file'}));
 &error_setup($text{'fwd_err'});
-&can_edit_zone($zconf, $view) ||
-	&error($text{'fwd_ecannot'});
+
+$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+$z = &zone_to_config($zone);
+$zconf = $z->{'members'};
+$dom = $zone->{'name'};
+&can_edit_zone($zone) ||
+	&error($text{'master_ecannot'});
+$indent = $zone->{'view'} ? 2 : 1;
+
+&lock_file(&make_chroot($z->{'file'}));
 $access{'ro'} && &error($text{'master_ero'});
 
-&save_forwarders("forwarders", $zconf, $indent);
-&save_choice("check-names", $zconf, $indent);
-&save_choice("forward", $zconf, $indent);
+&save_forwarders("forwarders", $z, $indent);
+&save_choice("check-names", $z, $indent);
+&save_choice("forward", $z, $indent);
 &flush_file_lines();
-&unlock_file(&make_chroot($zconf->{'file'}));
-&webmin_log("opts", undef, $zconf->{'value'}, \%in);
+&unlock_file(&make_chroot($z->{'file'}));
+&webmin_log("opts", undef, $dom, \%in);
 &redirect("");
 

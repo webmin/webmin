@@ -63,6 +63,9 @@ index_bind=BIND
 
 master_title=Edit Master Zone
 master_ecannot=You are not allowed to edit this zone
+master_egone=Zone $1 does not exist in any view
+master_egone2=Zone $1 does not exist!
+master_egone3=Zone $1 in view $2 does not exist!
 master_eviewcannot=You are not allowed to create a zone in that view
 master_manual=Edit Records File
 master_soa=Edit Zone Parameters

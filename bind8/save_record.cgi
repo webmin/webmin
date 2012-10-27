@@ -5,7 +5,7 @@
 require './bind8-lib.pl';
 &ReadParse();
 &error_setup($text{'edit_err'});
-$zone = &get_zone_name($in{'index'}, $in{'view'});
+$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 $dom = $zone->{'name'};
 @zl = &list_zone_names();
 $reverse = ($in{'origin'} =~ /\.in-addr\.arpa/i ||
@@ -45,7 +45,7 @@ if ($in{'delete'}) {
 			[ [ 'confirm', $text{'edit_dok'} ] ],
 			);
 
-		&ui_print_footer("edit_recs.cgi?index=$in{'index'}&view=$in{'view'}&type=$in{'redirtype'}&sort=$in{'sort'}", $text{'recs_return'});
+		&ui_print_footer("edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'redirtype'}&sort=$in{'sort'}", $text{'recs_return'});
 		}
 	else {
 		# Delete the record
@@ -90,7 +90,7 @@ if ($in{'delete'}) {
 			&sign_dnssec_zone_if_key($ofwdconf, \@ofrecs);
 			}
 
-		&redirect("edit_recs.cgi?index=$in{'index'}&view=$in{'view'}&type=$in{'redirtype'}&sort=$in{'sort'}");
+		&redirect("edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'redirtype'}&sort=$in{'sort'}");
 		&unlock_all_files();
 		&webmin_log('delete', 'record', $in{'origin'}, $r);
 		}
@@ -543,7 +543,7 @@ else {
 &unlock_all_files();
 $r->{'newvalues'} = $vals;
 &webmin_log($in{'new'} ? 'create' : 'modify', 'record', $in{'origin'}, $r);
-&redirect("edit_recs.cgi?index=$in{'index'}&view=$in{'view'}&".
+&redirect("edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&".
 	  "type=$in{'redirtype'}&sort=$in{'sort'}");
 
 # valname(name)

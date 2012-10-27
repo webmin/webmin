@@ -4,7 +4,7 @@
 
 require './bind8-lib.pl';
 &ReadParse();
-$zone = &get_zone_name($in{'index'}, $in{'view'});
+$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'recs_ecannot'});
@@ -20,7 +20,7 @@ $type = $zone->{'type'};
 $file = $zone->{'file'};
 $form = 0;
 if (!$access{'ro'} && $type eq 'master' && $in{'type'} ne 'ALL') {
-	&record_input($in{'index'}, $in{'view'}, $in{'type'}, $file, $dom,
+	&record_input($in{'zone'}, $in{'view'}, $in{'type'}, $file, $dom,
 		      undef, undef, $in{'newname'}, $in{'newvalue'});
 	$form++;
 	$shown_create_form = 1;
@@ -29,7 +29,7 @@ if (!$access{'ro'} && $type eq 'master' && $in{'type'} ne 'ALL') {
 if ($config{'largezones'}) {
 	# Show search form
 	print &ui_form_start("edit_recs.cgi");
-	print &ui_hidden("index", $in{'index'}),"\n";
+	print &ui_hidden("zone", $in{'zone'}),"\n";
 	print &ui_hidden("view", $in{'view'}),"\n";
 	print &ui_hidden("type", $in{'type'}),"\n";
 	print "<b>$text{'recs_find'}</b>\n";
@@ -82,7 +82,7 @@ if (@recs) {
 	@links = ( );
 	if (!$access{'ro'} && $type eq 'master') {
 		print &ui_form_start("delete_recs.cgi", "post");
-		print &ui_hidden("index", $in{'index'}),"\n";
+		print &ui_hidden("zone", $in{'zone'}),"\n";
 		print &ui_hidden("view", $in{'view'}),"\n";
 		print &ui_hidden("type", $in{'type'}),"\n";
 		print &ui_hidden("sort", $in{'sort'}),"\n";
@@ -122,7 +122,7 @@ elsif (!$shown_create_form) {
 	}
 
 &ui_print_footer("", $text{'index_return'},
-	"edit_$type.cgi?index=$in{'index'}&view=$in{'view'}",
+	"edit_$type.cgi?zone=$in{'zone'}&view=$in{'view'}",
 	$text{'recs_return'});
 
 sub recs_table
@@ -136,18 +136,18 @@ if (!$access{'ro'} && $type eq 'master') {
 	push(@hcols, "");
 	push(@tds, "width=5");
 	}
-push(@hcols, "<a href='edit_recs.cgi?index=$in{'index'}&view=$in{'view'}&type=$in{'type'}&sort=1'>".($in{'type'} eq "PTR" ? $text{'recs_addr'} : $text{'recs_name'})."</a>");
-push(@hcols, "<a href='edit_recs.cgi?index=$in{'index'}&view=$in{'view'}&type=$in{'type'}&sort=5'>$text{'recs_type'}</a>") if ($in{'type'} eq "ALL");
+push(@hcols, "<a href='edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'type'}&sort=1'>".($in{'type'} eq "PTR" ? $text{'recs_addr'} : $text{'recs_name'})."</a>");
+push(@hcols, "<a href='edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'type'}&sort=5'>$text{'recs_type'}</a>") if ($in{'type'} eq "ALL");
 push(@hcols, $text{'recs_ttl'});
 @hmap = @{$hmap{$in{'type'}}};
 foreach $h (@hmap) {
-	push(@hcols, "<a href='edit_recs.cgi?index=$in{'index'}&view=$in{'view'}&type=$in{'type'}&sort=2'>$h</a>");
+	push(@hcols, "<a href='edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'type'}&sort=2'>$h</a>");
 	}
 if ($in{'type'} eq "ALL" || $is_extra{$in{'type'}}) {
 	push(@hcols, $text{'recs_vals'});
 	}
 if ($config{'allow_comments'} && $in{'type'} ne "WKS") {
-	push(@hcols, "<a href='edit_recs.cgi?index=$in{'index'}&view=$in{'view'}&type=$in{'type'}&sort=4'>$text{'recs_comment'}</a>");
+	push(@hcols, "<a href='edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'type'}&sort=4'>$text{'recs_comment'}</a>");
 	}
 $rv .= &ui_columns_start(\@hcols, 100);
 
@@ -170,8 +170,8 @@ for($i=0; $i<@_; $i++) {
 	$id = &record_id($r);
 	if (!$access{'ro'} && $type eq 'master') {
 		push(@cols, 
-		      "<a href=\"edit_record.cgi?index=".
-		      "$in{'index'}&id=".&urlize($id)."&num=$r->{'num'}&".
+		      "<a href=\"edit_record.cgi?zone=".
+		      "$in{'zone'}&id=".&urlize($id)."&num=$r->{'num'}&".
 		      "type=$in{'type'}&sort=$in{'sort'}&view=$in{'view'}\">".
 		      "$name</a>");
 		}

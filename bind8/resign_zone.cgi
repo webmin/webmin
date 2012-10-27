@@ -4,7 +4,7 @@
 require './bind8-lib.pl';
 &error_setup($text{'resign_err'});
 &ReadParse();
-$zone = &get_zone_name($in{'index'}, $in{'view'});
+$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
@@ -17,5 +17,5 @@ $err = &resign_dnssec_key($zone);
 
 # Return to master page
 &webmin_log("resign", undef, $dom);
-&redirect("edit_master.cgi?index=$in{'index'}&view=$in{'view'}");
+&redirect("edit_master.cgi?zone=$in{'zone'}&view=$in{'view'}");
 

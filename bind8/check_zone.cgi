@@ -4,7 +4,7 @@
 require './bind8-lib.pl';
 &ReadParse();
 $access{'apply'} || &error($text{'check_ecannot'});
-$zone = &get_zone_name($in{'index'}, $in{'view'});
+$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 &can_edit_zone($zone) || &error($text{'master_ecannot'});
 $desc = &ip6int_to_net(&arpa_to_ip($dom));
 
@@ -27,6 +27,6 @@ else {
 	print "<b>",&text('check_allok', "<tt>$file</tt>"),"</b><p>\n";
 	}
 
-&ui_print_footer("edit_master.cgi?index=$in{'index'}&view=$in{'view'}",
+&ui_print_footer("edit_master.cgi?zone=$in{'zone'}&view=$in{'view'}",
 		 $text{'master_return'});
 

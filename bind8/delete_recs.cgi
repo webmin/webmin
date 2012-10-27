@@ -4,7 +4,7 @@
 require './bind8-lib.pl';
 &ReadParse();
 &error_setup($text{'drecs_err'});
-$zone = &get_zone_name($in{'index'}, $in{'view'});
+$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'recs_ecannot'});
@@ -22,14 +22,14 @@ if (!$in{'confirm'} && $config{'confirm_rec'}) {
 
 	print &ui_confirmation_form("delete_recs.cgi",
 		&text('drecs_rusure', scalar(@d), $dom),
-		[ [ 'index', $in{'index'} ],
+		[ [ 'zone', $in{'zone'} ],
 		  [ 'view', $in{'view'} ],
 		  [ 'rev', $in{'rev'} ],
 		  map { [ 'd', $_ ] } @d ],
 		[ [ 'confirm', $text{'drecs_ok'} ] ],
 		);
 
-	&ui_print_footer("edit_recs.cgi?index=$in{'index'}&view=$in{'view'}&type=$in{'type'}&sort=$in{'sort'}", $text{'recs_return'});
+	&ui_print_footer("edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'type'}&sort=$in{'sort'}", $text{'recs_return'});
 	}
 else {
 	# Delete them
@@ -75,7 +75,7 @@ else {
 	&unlock_all_files();
 
 	&webmin_log("delete", "recs", scalar(@d));
-	&redirect("edit_recs.cgi?index=$in{'index'}&view=$in{'view'}&type=$in{'type'}&sort=$in{'sort'}");
+	&redirect("edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'type'}&sort=$in{'sort'}");
 	}
 
 
