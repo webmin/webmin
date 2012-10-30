@@ -66,6 +66,7 @@ index_nullio=RAM Disk von $1 Sektoren
 index_restart=iSCSI Target neustarten
 index_restartdesc=Klicken Sie auf diese Schaltfl&#228;che, um die aktuelle Konfiguration durch einen Neustart des iSCSI target anzuwenden.
 index_return=Liste an targets
+index_size=Gesamtgr&#246;&#223;e
 index_start=Starte iSCSI Target
 index_startdesc=Klicken Sie auf diese Taste, um das iSCSI target zu starten, so dass gemeinsam genutzte Ger&#228;ten zug&#228;nglich f&#252;r Clients sind.
 index_stop=Stoppe iSCSI Target
