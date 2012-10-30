@@ -211,6 +211,10 @@ return \@rv;
 sub create_iscsi_connection
 {
 my ($host, $port, $iface, $target, $method, $user, $pass) = @_;
+
+# Re-discover targets, so that this function works when called remotely
+&list_iscsi_targets($host, $port, $iface);
+
 my $cmd = "$config{'iscsiadm'} -m node".
 	  ($target ? " -T ".quotemeta($target->{'name'}).":".
 			    quotemeta($target->{'target'}) : "").
