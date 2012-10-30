@@ -171,7 +171,7 @@ foreach my $c (@rv) {
 	my $dev = "/dev/disk/by-path/ip-$c->{'ip'}:$c->{'port'}-".
 		  "iscsi-$c->{'name'}:$c->{'target'}-lun-$c->{'scsilun'}";
 	if (-e $dev) {
-		$conn->{'longdevice'} = $dev;
+		$c->{'longdevice'} = $dev;
 		}
 	}
 return \@rv;
@@ -205,7 +205,7 @@ foreach my $l (@lines) {
 return \@rv;
 }
 
-# create_iscsi_connection(host, [port], [iface], [&target],
+# create_iscsi_connection(host, [port], [iface], &target,
 # 			  [method, username, password])
 # Attempts to connect to an iscsi server for the given target (or all targets)
 sub create_iscsi_connection
