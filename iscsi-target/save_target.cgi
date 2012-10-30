@@ -48,7 +48,6 @@ else {
 		$lunid ||= ($lastlunid + 1);
 		$lastlunid = $lunid;
 		my %lunopts = map { split(/=/, $_) } split(/,/, $lunstr);
-		print STDERR "lunid=$lunid lastlunid=$lastlunid\n";
 
 		# Clear variables that we will set below
 		delete($lunopts{"Path"});
