@@ -46,7 +46,7 @@ else {
 		}
 	else {
 		print &ui_table_row($text{'lv_name'},
-				    &ui_textbox("name", $lv->{'name'}, 20));
+				    &ui_textbox("name", $lv->{'name'}, 30));
 		}
 
 	if (!$in{'lv'}) {
