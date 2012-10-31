@@ -4471,6 +4471,7 @@ $http_host =~ s/^\[(\S+)\]$/$1/;
 my $unsafe_index = $unsafe_index_cgi ||
 		   &get_module_variable('$unsafe_index_cgi');
 if ($0 &&
+    !$ENV{'DISABLE_REFERERS_CHECK'} &&
     ($ENV{'SCRIPT_NAME'} !~ /^\/(index.cgi)?$/ || $unsafe_index) &&
     ($ENV{'SCRIPT_NAME'} !~ /^\/([a-z0-9\_\-]+)\/(index.cgi)?$/i ||
      $unsafe_index) &&
@@ -6393,18 +6394,23 @@ if ($serv->{'fast'} || !$sn) {
 			while($stuff = &read_http_connection($con)) {
 				$line .= $stuff;
 				}
-			return &$main::remote_error_handler("Bad response from fastrpc.cgi : $line");
+			return &$main::remote_error_handler(
+				"Bad response from fastrpc.cgi : $line");
 			}
 		}
 	elsif (!$fast_fh_cache{$sn}) {
 		# Open the connection by running fastrpc.cgi locally
 		pipe(RPCOUTr, RPCOUTw);
+		pipe(RPCERRr, RPCERRw);
 		if (!fork()) {
 			untie(*STDIN);
 			untie(*STDOUT);
+			untie(*STDERR);
 			open(STDOUT, ">&RPCOUTw");
+			open(STDERR, ">&RPCERRw");
 			close(STDIN);
 			close(RPCOUTr);
+			close(RPCERRr);
 			$| = 1;
 			$ENV{'REQUEST_METHOD'} = 'GET';
 			$ENV{'SCRIPT_NAME'} = '/fastrpc.cgi';
@@ -6420,6 +6426,7 @@ if ($serv->{'fast'} || !$sn) {
 				}
 			delete($ENV{'FOREIGN_MODULE_NAME'});
 			delete($ENV{'FOREIGN_ROOT_DIRECTORY'});
+			$ENV{'DISABLE_REFERERS_CHECK'} = 1;
 			chdir($root_directory);
 			if (!exec("$root_directory/fastrpc.cgi")) {
 				print "exec failed : $!\n";
@@ -6427,29 +6434,40 @@ if ($serv->{'fast'} || !$sn) {
 				}
 			}
 		close(RPCOUTw);
+		close(RPCERRw);
 		my $line;
 		do {
 			($line = <RPCOUTr>) =~ tr/\r\n//d;
 			} while($line);
 		$line = <RPCOUTr>;
-		#close(RPCOUTr);
 		if ($line =~ /^0\s+(.*)/) {
+			close(RPCOUTr);
+			close(RPCERRr);
 			return &$main::remote_error_handler("RPC error : $2");
 			}
 		elsif ($line =~ /^1\s+(\S+)\s+(\S+)/) {
 			# Started ok .. connect and save SID
 			close(SOCK);
+			close(RPCOUTr);
+			close(RPCERRr);
 			my ($port, $sid, $error) = ($1, $2, undef);
 			&open_socket("localhost", $port, $sid, \$error);
 			return &$main::remote_error_handler("Failed to connect to fastrpc.cgi : $error") if ($error);
 			$fast_fh_cache{$sn} = $sid;
 			}
 		else {
+			# Unexpected response
 			local $_;
 			while(<RPCOUTr>) {
 				$line .= $_;
 				}
-			&error("Bad response from fastrpc.cgi : $line");
+			close(RPCOUTr);
+			while(<RPCERRr>) {
+				$line .= $_;
+				}
+			close(RPCERRr);
+			return &$main::remote_error_handler(
+				"Bad response from fastrpc.cgi : $line");
 			}
 		}
 	# Got a connection .. send off the request
