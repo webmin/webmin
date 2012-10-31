@@ -11,6 +11,8 @@ use WebminCore;
 &foreign_require("lvm");
 &foreign_require("mount");
 our (%text, %config, %gconfig, $module_config_file);
+our ($list_disks_partitions_cache, $get_raidtab_cache,
+     $list_logical_volumes_cache);
 
 # check_config()
 # Returns undef if the iSCSI server is installed, or an error message if
@@ -445,7 +447,7 @@ if (!$type) {
 	}
 if ($type eq "part") {
 	# A partition or whole disk
-	foreach my $d (&fdisk::list_disks_partitions()) {
+	foreach my $d (&list_disks_partitions_cached()) {
 		if ($d->{'device'} eq $dev) {
 			# Whole disk
 			return $d->{'cylinders'} * $d->{'cylsize'};
@@ -461,7 +463,7 @@ if ($type eq "part") {
 	}
 elsif ($type eq "raid") {
 	# A RAID device
-	my $conf = &raid::get_raidtab();
+	my $conf = &get_raidtab_cached();
 	foreach my $c (@$conf) {
 		if ($c->{'value'} eq $dev) {
 			return $c->{'size'} * 1024;
@@ -471,11 +473,9 @@ elsif ($type eq "raid") {
 	}
 elsif ($type eq "lvm") {
 	# LVM volume group
-	foreach my $v (&lvm::list_volume_groups()) {
-		foreach my $l (&lvm::list_logical_volumes($v->{'name'})) {
-			if ($l->{'device'} eq $dev) {
-				return $l->{'size'} * 1024;
-				}
+	foreach my $l (&list_logical_volumes_cached()) {
+		if ($l->{'device'} eq $dev) {
+			return $l->{'size'} * 1024;
 			}
 		}
 	}
@@ -484,6 +484,30 @@ else {
 	my @st = stat($dev);
 	return @st ? $st[7] : undef;
 	}
+}
+
+sub list_disks_partitions_cached
+{
+$list_disks_partitions_cache ||= [ &fdisk::list_disks_partitions() ];
+return @$list_disks_partitions_cache;
+}
+
+sub get_raidtab_cached
+{
+$get_raidtab_cache ||= &raid::get_raidtab();
+return $get_raidtab_cache;
+}
+
+sub list_logical_volumes_cached
+{
+if (!$list_logical_volumes_cache) {
+	$list_logical_volumes_cache = [ ];
+	foreach my $v (&lvm::list_volume_groups()) {
+		push(@$list_logical_volumes_cache,
+		     &lvm::list_logical_volumes($v->{'name'}));
+		}
+	}
+return @$list_logical_volumes_cache;
 }
 
 1;
