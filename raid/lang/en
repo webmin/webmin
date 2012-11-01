@@ -143,7 +143,7 @@ log_notif=Updated RAID problem notification options
 notif_err=Failed to save RAID problem notification options
 notif_emailaddr=Missing or invalid notification address
 notif_emailfrom=Missing or invalid From address
-notif_eprogram=Missing or non-existant program to run
+notif_eprogram=Missing or non-existent program to run
 
 delete_title=Delete RAID Array
 delete_rusure=Are you sure you want to delete the RAID array $1, which uses $2 of disk space?
