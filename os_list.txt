@@ -101,7 +101,7 @@ Mepis Linux			$1	debian-linux	$1	$etc_issue =~ /MEPIS/ && `cat /etc/debian_versi
 Mepis Linux			$1	debian-linux	4.0	$etc_issue =~ /MEPIS/ && `cat /etc/debian_version 2>/dev/null` =~ /(stable)/
 
 # Linux Mint (Mint should be before Debian to avoid false-positive)
-Linux Mint			6	debian-linux	5.0	`cat /etc/lsb-release | grep DISTRIB_DESCRIPTION` =~ /^DISTRIB_DESCRIPTION="Linux Mint 6 Felicia"/
+Linux Mint			6	debian-linux	5.0	`cat /etc/lsb-release 2>/dev/null | grep DISTRIB_DESCRIPTION` =~ /^DISTRIB_DESCRIPTION="Linux Mint 6 Felicia"/
 Linux Mint			7	debian-linux	5.0	`cat /etc/lsb-release 2>/dev/null | grep DISTRIB_DESCRIPTION` =~ /^DISTRIB_DESCRIPTION="Linux Mint 7 Gloria"/
 Linux Mint			8	debian-linux	6.0	`cat /etc/lsb-release 2>/dev/null | grep DISTRIB_DESCRIPTION` =~ /^DISTRIB_DESCRIPTION="Linux Mint 8 Helena"/
 Linux Mint			9	debian-linux	6.0	`cat /etc/lsb-release 2>/dev/null | grep DISTRIB_DESCRIPTION` =~ /^DISTRIB_DESCRIPTION="Linux Mint 9 Isadora"/
