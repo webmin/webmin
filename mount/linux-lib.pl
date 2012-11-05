@@ -1197,7 +1197,7 @@ if ($type ne "swap" && $type ne "auto" &&
 	print &ui_table_row(&hlink($text{'linux_noatime'}, "linux_noatime"),
 		&ui_yesno_radio("lnx_noatime", defined($options{"noatime"})));
 
-	print &ui_table_row($text{'linux_netdev'},
+	print &ui_table_row(&hlink($text{'linux_netdev'}, "linux_netdev"),
 		&ui_yesno_radio("lnx_netdev", defined($options{"_netdev"})));
 	}
 	
