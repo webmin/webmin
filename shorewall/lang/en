@@ -90,7 +90,7 @@ policy_header=Default policy details
 policy_err=Failed to save default policy
 policy_nolog=Logging disabled
 policy_ulog=Log to ULOG
-policy_efw=&lt;Firewall&gt; cann be selected for both the source and destination zones
+policy_efw=&lt;Firewall&gt; can be selected for both the source and destination zones
 policy_elimit=Missing or invalid traffic limit number
 policy_eburst=Missing or invalid traffic burst number
 
