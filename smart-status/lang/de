@@ -17,7 +17,7 @@ index_drivesub=Status von Festplatte $1, Partition $2
 index_ecmd=Der SMART-Kontrollbefehl $1 wurde auf Ihrem System nicht gefunden oder er ist nicht richtig in der <a href='$2'>Modulkonfiguration</a> angegeben. Er muss installiert werden, bevor das Modul genutzt werden kann.
 index_ecmd2=Der Befehl $1 scheint nicht der SMART-Kontrollbefehl zu sein. Er ist nicht richtig in der <a href='$2'>Modulkonfiguration</a> angegeben. Dies ist jedoch eine Grundvoraussetzung f&#252;r die Funktion dieses Modules.
 index_ecount=$1 Fehler erfasst
-index_eidescsi=Es wurde kein IDE- oder SCSI-Laufwerk auf Ihrem System gefunden
+index_eidescsi=Es wurden keine IDE- oder SCSI-Laufwerke auf Ihrem System gefunden.
 index_enabled=SMART eingeschaltet?
 index_errors=Gespeicherte Fehler
 index_ext=Erweiterter Selbsttest

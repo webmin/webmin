@@ -1,6 +1,6 @@
 line0=Konfigurierbare Optionen,11
 wrap_width=Zeilenumbruch bei Zeichen,0,6
-wrap_compose=Breite des Zeilenumbruch erverfassten Mail-Nachrichten,10,-Keinen Zeilenumbruch,80-80 Spalten (Standard),Andere Gr&#246;&#223;e
+wrap_compose=Breite des Zeilenumbruch der verfassten Mail-Nachrichten,10,-Keinen Zeilenumbruch,80-80 Spalten (Standard),Andere Gr&#246;&#223;e
 perpage=Anzahl von anzuzeigenden E&#45;Mails pro Seite,0,6
 show_to=Zeige To:&#45;E&#45;Mail&#45;Adressen in E&#45;Mailboxen?,1,1-Ja,0-Nein
 top_buttons=Zeige Buttons oben an f&#252;r,1,2-E&#45;Mailboxen und E&#45;Mails,1-Nur f&#252;r E&#45;Mailboxen,0-Niemals
