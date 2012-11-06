@@ -50,7 +50,7 @@ else {
 	$target->{'export'} = $in{'export'};
 	$target->{'flags'} = $in{'flags'};
 	if ($in{'network_def'}) {
-		$target->{'network'} = 'any';
+		$target->{'network'} = '0/0';
 		}
 	else {
 		&check_ipaddress($in{'network'}) ||
