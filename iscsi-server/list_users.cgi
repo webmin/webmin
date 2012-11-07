@@ -12,7 +12,7 @@ my @users = &list_iscsi_users();
 my @links = ( "<a href='edit_user.cgi?new=1'>$text{'users_add'}</a>" );
 if (@users) {
 	unshift(@links, &select_all_link("d"), &select_invert_link("d"));
-	print &ui_form_start("delete_devices.cgi");
+	print &ui_form_start("delete_users.cgi");
 	print &ui_links_row(\@links);
 	my @tds = ( "width=5" );
 	print &ui_columns_start([ undef, 

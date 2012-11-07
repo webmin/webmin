@@ -13,7 +13,8 @@ if ($type eq 'extent' || $type eq 'device' || $type eq 'target' ||
 	return &text('log_'.$action.'_'.$type,
 		     "<tt>".&html_escape($object)."</tt>");
 	}
-elsif ($type eq 'extents' || $type eq 'devices' || $type eq 'targets') {
+elsif ($type eq 'extents' || $type eq 'devices' || $type eq 'targets' ||
+       $type eq 'users') {
 	return &text('log_'.$action.'_'.$type, $object);
 	}
 else {
