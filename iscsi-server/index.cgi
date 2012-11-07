@@ -16,14 +16,14 @@ if ($err) {
 
 my @links = ( "list_extents.cgi", "list_devices.cgi",
 	      "list_targets.cgi", "edit_opts.cgi",
-	      "edit_manual.cgi" );
+	      "list_users.cgi", "edit_manual.cgi" );
 my @titles = ( $text{'extents_title'}, $text{'devices_title'},
 	       $text{'targets_title'}, $text{'opts_title'},
-	       $text{'manual_title'} );
+	       $text{'users_title'}, $text{'manual_title'} );
 my @icons = ( "images/extents.gif", "images/devices.gif",
 	      "images/targets.gif", "images/opts.gif",
-	      "images/manual.gif" );
-&icons_table(\@links, \@titles, \@icons, 5);
+	      "images/users.gif", "images/manual.gif" );
+&icons_table(\@links, \@titles, \@icons);
 
 print &ui_hr();
 print &ui_buttons_start();

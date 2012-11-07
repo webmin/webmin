@@ -500,5 +500,40 @@ close($fh);
 return @rv;
 }
 
+# create_iscsi_user(&user)
+# Add a new iSCSI user
+sub create_iscsi_user
+{
+my ($user) = @_;
+my $fh = "AUTHS";
+&open_tempfile($fh, ">>$config{'auths_file'}", 0, 1);
+&print_tempfile($fh, join(":", $user->{'user'},
+			       $user->{'mode'},
+			       $user->{'pass'})."\n");
+&close_tempfile($fh);
+}
+
+# modify_iscsi_user(&user)
+# Update an existing user
+sub modify_iscsi_user
+{
+my ($user) = @_;
+my $lref = &read_file_lines($config{'auths_file'});
+$lref->[$user->{'line'}] = join(":", $user->{'user'},
+				     $user->{'mode'},
+				     $user->{'pass'})."\n";
+&flush_file_lines($config{'auths_file'});
+}
+
+# delete_iscsi_user(&user)
+# Remove one user
+sub delete_iscsi_user
+{
+my ($user) = @_;
+my $lref = &read_file_lines($config{'auths_file'});
+splice(@$lref, $user->{'line'}, 1);
+&flush_file_lines($config{'auths_file'});
+}
+
 1;
 

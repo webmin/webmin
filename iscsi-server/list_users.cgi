@@ -17,7 +17,7 @@ if (@users) {
 	my @tds = ( "width=5" );
 	print &ui_columns_start([ undef, 
 				  $text{'users_name'},
-				  $text{'users_mode'} ], 100, 0, \@tds);
+				  $text{'users_mode'} ], 50, 0, \@tds);
 	foreach my $e (@users) {
 		print &ui_checked_columns_row([
 			"<a href='edit_user.cgi?user=$e->{'user'}'>".
