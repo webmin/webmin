@@ -138,6 +138,10 @@ manual_desc=Use the text box below to edit the iSCSI server configuration file $
 manual_err=Failed to save configuration file
 manual_edata=No contents entered!
 
+users_title=iSCSI Authentication
+users_none=No iSCSI users have been created yet. Clients will be able to access shared devices without authenticating.
+users_add=Add a new iSCSI user.
+
 desc_extent=Device to share $1
 desc_device=Device combination $1
 desc_target=Sharing target $1

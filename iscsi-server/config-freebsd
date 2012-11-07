@@ -1,4 +1,5 @@
 targets_file=/usr/local/etc/iscsi/targets
+auths_file=/usr/local/etc/iscsi/auths
 iscsi_server=/usr/local/bin/iscsi-target
 pid_file=/var/run/iscsi-target.pid
 init_name=iscsi_target

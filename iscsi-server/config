@@ -1,4 +1,5 @@
 targets_file=/etc/iscsi/targets
+auths_file=/etc/iscsi/auths
 iscsi_server=/usr/sbin/iscsi-target
 pid_file=/var/run/iscsi-target.pid
 init_name=netbsd-iscsi

@@ -474,5 +474,31 @@ foreach my $o (keys %$opts) {
 &save_iscsi_options_string(join(" ", @str));
 }
 
+# list_iscsi_users()
+# Parses the auths file and returns an array of users
+sub list_iscsi_users
+{
+my @rv;
+my $fh = "AUTHS";
+my $lnum = 0;
+&open_readfile($fh, $config{'auths_file'}) || return ( );
+while(<$fh>) {
+	s/\r|\n//;
+	s/\s+$//;
+	my ($user, $mode, $pass, @rest) = split(/:/, $_);
+	if ($user) {
+		my $uinfo = { 'user' => $user,
+			      'mode' => $mode,
+			      'pass' => $pass,
+			      'rest' => \@rest,
+			      'line' => $lnum };
+		push(@rv, $uinfo);
+		}
+	$lnum++;
+	}
+close($fh);
+return @rv;
+}
+
 1;
 
