@@ -21,7 +21,7 @@ else {
 	&error_setup($text{'ipkey_err'});
 	@ips = split(/\s+/, $in{'ips'});
 	foreach $i (@ips) {
-		&check_ipaddress($i) ||
+		&check_ipaddress($i) || &check_ip6address($i) ||
 			&error(&text('ipkey_eip', $i));
 		}
 	@ips || &error(&text('ipkey_eips'));
