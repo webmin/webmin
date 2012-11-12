@@ -59,6 +59,7 @@ while(<PWFILE>) {
 		$user{'cert'} = $user[3];
 		if ($user[4] =~ /^(allow|deny)\s+(.*)/) {
 			$user{$1} = $2;
+			$user{$1} =~ s/;/:/g;
 			}
 		if ($user[5] =~ /days\s+(\S+)/) {
 			$user{'days'} = $1;
@@ -446,10 +447,14 @@ else {
 		if ($user{'hoursfrom'});
 	&lock_file($miniserv{'userfile'});
 	&open_tempfile(PWFILE, ">>$miniserv{'userfile'}");
+	my $allow = $user{'allow'};
+	$allow =~ s/:/;/g;
+	my $deny = $user{'deny'};
+	$deny =~ s/:/;/g;
 	&print_tempfile(PWFILE,
 		"$user{'name'}:$user{'pass'}:$user{'sync'}:$user{'cert'}:",
-		($user{'allow'} ? "allow $user{'allow'}" :
-		 $user{'deny'} ? "deny $user{'deny'}" : ""),":",
+		($allow ? "allow $allow" :
+		 $deny ? "deny $deny" : ""),":",
 		join(" ", @times),":",
 		$user{'lastchange'},":",
 		join(" ", @{$user{'olds'}}),":",
@@ -624,14 +629,18 @@ else {
 	@pwfile = <PWFILE>;
 	close(PWFILE);
 	&open_tempfile(PWFILE, ">$miniserv{'userfile'}");
+	my $allow = $user{'allow'};
+	$allow =~ s/:/;/g;
+	my $deny = $user{'deny'};
+	$deny =~ s/:/;/g;
 	foreach (@pwfile) {
 		if (/^([^:]+):([^:]*)/ && $1 eq $username) {
 			&add_old_password(\%user, "$2", \%miniserv);
 			&print_tempfile(PWFILE,
 				"$user{'name'}:$user{'pass'}:",
 				"$user{'sync'}:$user{'cert'}:",
-				($user{'allow'} ? "allow $user{'allow'}" :
-				 $user{'deny'} ? "deny $user{'deny'}" : ""),":",
+				($allow ? "allow $allow" :
+				 $deny ? "deny $deny" : ""),":",
 				join(" ", @times),":",
 				$user{'lastchange'},":",
 				join(" ", @{$user{'olds'}}),":",

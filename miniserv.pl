@@ -2808,6 +2808,24 @@ sub trigger_reload
 $need_reload = 1;
 }
 
+# to_ip46address(address, ...)
+# Convert hostnames to v4 and v6 addresses, if possible
+sub to_ip46address
+{
+local @rv;
+foreach my $i (@_) {
+	if (&check_ipaddress($i) || &check_ip6address($i)) {
+		push(@rv, $i);
+		}
+	else {
+		my $addr = &to_ipaddress($i);
+		$addr ||= &to_ip6address($i);
+		push(@rv, $addr) if ($addr);
+		}
+	}
+return @rv;
+}
+
 # to_ipaddress(address, ...)
 sub to_ipaddress
 {
@@ -4407,14 +4425,18 @@ if ($config{'userfile'}) {
 		$users{$user[0]} = $user[1];
 		$certs{$user[0]} = $user[3] if ($user[3]);
 		if ($user[4] =~ /^allow\s+(.*)/) {
+			my $allow = $1;
+			$allow =~ s/;/:/g;
 			$allow{$user[0]} = $config{'alwaysresolve'} ?
-				[ split(/\s+/, $1) ] :
-				[ &to_ipaddress(split(/\s+/, $1)) ];
+				[ split(/\s+/, $allow) ] :
+				[ &to_ip46address(split(/\s+/, $allow)) ];
 			}
 		elsif ($user[4] =~ /^deny\s+(.*)/) {
+			my $deny = $1;
+			$deny =~ s/;/:/g;
 			$deny{$user[0]} = $config{'alwaysresolve'} ?
-				[ split(/\s+/, $1) ] :
-				[ &to_ipaddress(split(/\s+/, $1)) ];
+				[ split(/\s+/, $deny) ] :
+				[ &to_ip46address(split(/\s+/, $deny)) ];
 			}
 		if ($user[5] =~ /days\s+(\S+)/) {
 			$allowdays{$user[0]} = [ split(/,/, $1) ];
