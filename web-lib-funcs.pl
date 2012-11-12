@@ -2365,7 +2365,7 @@ if (!ref($h)) {
 	if ($error) { $$error = $h; return; }
 	else { &error($h); }
 	}
-&write_http_connection($content."\r\n");
+&write_http_connection($h, $content."\r\n");
 &complete_http_download($h, $dest, $error, $cbfunc, $osdn, $host, $port,
 			$headers, $ssl, $nocache);
 if ((!$error || !$$error) && !$nocache) {
