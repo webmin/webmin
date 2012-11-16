@@ -249,6 +249,7 @@ exec_clear=History l&#246;schen
 exec_created=$1 Tabellen wurden erstellt.
 exec_cs=Zeichensatz f&#252;r Daten
 exec_delete=Vorhandene Daten vorher l&#246;schen?
+exec_ecompress=Die SQL-Datei ist komprimiert, aber das Programm $1, welches ben&#246;tigt wird, um es zu dekomprimieren, ist nicht installiert.
 exec_ecompress2=Dekomprimierung fehlgeschlagen : $1
 exec_edit=Bearbeiten Vorherige
 exec_efile=Lokale Datei existiert nicht
@@ -261,10 +262,13 @@ exec_fileout=Ausgabe der SQL Befehle in Datei $1 ..
 exec_format=Dateiformat
 exec_header=Geben Sie den SQL Befehl ein, der auf der Datenbank $1 ausgef&#252;hrt werden soll ..
 exec_header2=W&#228;hlen Sie ein Datei mit SQL Befehlen aus, die auf der Datenbank $1 ausgef&#252;hrt werden ..
+exec_header2a=Dies kann auch verwendet werden, um eine MySQL-Backup wiederherzustellen, welches nur eine Datei von SQL-Befehlen ist.
 exec_header3=W&#228;hlen Sie eine Textdatei, deren Daten in die MySQL-Datenbank $1 importiert werden ..
 exec_header4=Diese Datei muss pro Zeile einen Datensatz enthalten sein. Die Felder m&#252;ssen durch Tabs getrennt sind.
 exec_ignore=Doppelte Datens&#228;tze ignorieren?
+exec_iheader=Text-Datei-Import-Optionen
 exec_import=Tabelle in die die Daten importiert werden
+exec_isource=Text-Datei-Quelle
 exec_none=Es wurden keine Daten zur&#252;ckgegeben
 exec_noout=Keine Ausgabe erzeugt
 exec_old=Oder w&#228;hlen Sie einen schon einmal benutzten SQL Befehl aus :
@@ -376,6 +380,7 @@ index_dbs=MySQL-Datenbanken
 index_drops=Verwerfe ausgew&#228;hlte Datenbanken
 index_eadmin=Das MySQL-Administrationsprogramm $1 konnte auf Ihrem System nicht gefunden werden. Es k&#246;nnte sein, dass MySQL nicht installiert ist oder dass Ihre <a href='$2'>Modulkonfiguration</a> fehlerhaft ist.
 index_ecols=Keine Felder ausgew&#228;hlt
+index_eenvpass=Das MySQL-Client-Programm $1 akzeptiert nicht Passw&#246;rter, die mit der <tt>MYSQL_PWD</tt> Umgebungsvariable &#252;bergeben wurde. Um sicherzustellen, dass Webmin vollst&#228;ndig mit MySQL kommunizieren kann, sollten Sie diese Option auf der <a href='$2'>Modulkonfiguration</a> Seite deaktivieren.
 index_elibrary=Das MySQL-Client-Programm $1 konnte nicht gestartet werden, da es die MySQL Shared-Libraries nicht finden konnte. Pr&#252;fen Sie die <a href='$2'>Modulkonfiguration</a> und stellen Sie sicher das der <i>Pfad zu den MySQL Shared-Libraries</i> gesetzt ist.
 index_emsg=Die komplette MySQL Fehlermeldung lautet: $1
 index_ename=Fehlender oder ung&#252;ltiger Indexname
@@ -398,6 +403,7 @@ index_mysqlver=Der Befehl <tt>$1</tt> gab zur&#252;ck :
 index_name=Indexname
 index_nodbs=Sie d&#252;rfen auf keine MySQL-Datenbanken zugreifen.
 index_nodbs2=Keine MySQL-Datenbanken wurden auf Ihrem System gefunden.
+index_nodbs3=Keine MySQL-Datenbanken stimmen Ihrer Suche &#252;berein.
 index_nomod=Warnung: Das Perl-Modul $1 ist auf Ihrem System nicht installiert. Webmin ist deshalb nicht in der Lage zuverl&#228;ssig auf Ihre MySQL-Datenbank zuzugreifen. <a href='$2'>Klicken Sie hier</a> um es jetzt zu installieren.
 index_nomods=Warnung: Die Perl-Module $1 und $2 sind auf Ihrem System nicht installiert. Webmin ist deshalb nicht in der Lage zuverl&#228;ssig auf Ihre MySQL-Datenbank zuzugreifen. <a href='$3'>Klicken Sie hier</a> um sie jetzt zu installieren.
 index_nopass=Webmin muss Ihre Administrationsanmeldung und das dazugeh&#246;rige Passwort kennen, um die Datenbanken zu verwalten. Bitte tragen Sie Ihren Adminstrationsbenutzernamen (normalerweise <TT>root</TT>) und Passwort unten ein.
@@ -414,6 +420,7 @@ index_tables=Tabellen
 index_title=MySQL Datenbank-Server
 index_title1=Erstelle Index
 index_title2=Editiere Index
+index_toomany=Es gibt zu viele Datenbanken zum anzeigen. Findet die passenden Datenbanken:
 index_type=Indextyp
 index_version=MySQL-Version $1
 kill_ecannot=Sie sind nicht berechtigt Datenbank-Verbindungen zu verwalten
@@ -578,6 +585,9 @@ tprivs_add=F&#252;ge neue Rechte zu Datenbank hinzu :
 tprivs_all=Alle
 tprivs_anon=Anonym
 tprivs_db=Datenbank
+tprivs_derr=Fehlgeschlagen Tabellenrechte zu l&#246;schen
+tprivs_dok=L&#246;sche Rechte
+tprivs_dtitle=L&#246;sche Tabellenrechte
 tprivs_enone=Keine Tabellen ausgew&#228;hlt
 tprivs_host=Hosts
 tprivs_none=Keines

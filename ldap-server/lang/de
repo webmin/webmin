@@ -120,10 +120,14 @@ index_econnect=Ein Fehler ist aufgetreten beim Verbinden zum LDAP-Server : $1. M
 index_eslapd=Die OpenLDAP-Server-Programm $1 wurde auf Ihrem System nicht gefunden. Vielleicht ist der Pfad auf dem <a href='$2'>Modulkonfiguration</a> Seite falsch?
 index_openldap=OpenLDAP
 index_perms=Behebe Eigent&#252;mer
+index_permsdesc=Das LDAP-Server-Daten-Verzeichnis $1 enth&#228;lt Dateien nicht vom richtigen Benutzer $2, was bedeutet, dass es wahrscheinlich ist, nicht richtig gestartet zu werden. Allerdings kann Webmin dies f&#252;r Sie beheben, indem Sie auf den Button unten klicken.
 index_return=Modulindex
 index_setup=Erstelle Root DN
+index_setupdesc=Ihre LDAP-Server-Datenbank enth&#228;lt bisher nicht die root DN $1, was bedeutet, dass keine Daten hinzugef&#252;gt werden k&#246;nnen, bis Sie es erstellt haben. Allerdings kann Webmin dies f&#252;r Sie tun, indem Sie auf den Button unten klicken.
 index_start=Starte Server
+index_startdesc=Klicken Sie auf diese Schaltfl&#228;che, um den OpenLDAP-Server mit der aktuellen Konfiguration zu starten. Benutzerkonten und Mail-Aliase, die in der Datenbank gespeichert sind, sind nicht zug&#228;nglich sein, bis dieser gestartet ist.
 index_stop=Stoppe Server
+index_stopdesc=Klicken Sie auf diese Schaltfl&#228;che, um den laufenden OpenLDAP-Server herunterzufahren. Beachten Sie, dass dies Benutzerkonten oder E-Mail-Aliase, die in der LDAP-Datenbank gespeichert sind, vom Funktionieren abhalten.
 index_version=OpenLDAP $1
 ldif_title=OpenLDAP-Server Konfiguration
 log_all=Alle Objekte
@@ -164,7 +168,11 @@ slapd_bind_v2=Erlaube LDAP v2 Clients
 slapd_ca=TLS CA-Zertifikatsdatei
 slapd_cachesize=Index zum Cachen
 slapd_cert=TLS-Zertifikat-Datei
+slapd_ecachesize=Fehlende oder nicht-numerische Index-Cache-Gr&#246;&#223;e
 slapd_ecannot=Es ist Ihnen nicht erlaubt den LDAP-Server zu konfigurieren
+slapd_ecert=Fehlende oder falsch formatierte TLS-Zertifikats-Datei
+slapd_edbcachesize=Fehlende oder nicht-numerische Datenbank-Eintr&#228;ge Cache-Gr&#246;&#223;e
+slapd_ekey=Fehlender oder falsch formatierter privater TLS-Schl&#252;ssel
 slapd_elocal=Kein LDAP-Server ist auf Ihrem System installiert
 slapd_erootdn=Fehlende oder ung&#252;ltig aussehende Administrationslogin - sollte wie <tt>cn=Manager,dc=your-domain,dc=com</tt> aussehen
 slapd_erootpw=Fehlendes neues Administrationspasswort
