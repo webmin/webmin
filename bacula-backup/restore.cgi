@@ -90,6 +90,8 @@ foreach $clientjob (@clients) {
 		}
 
 	# Select the files
+	&wait_for($h->{'outfh'}, "\\\$");	# Wait for first prompt
+	print $wait_for_input;
 	foreach $f (@files) {
 		$f = &unix_to_dos($f);
 		if ($f eq "/") {
