@@ -732,7 +732,7 @@ local($conf, @zl, $rev, $z, $revconf, $revfile, $revrec, @revrecs, $addr, $rr,
 
 # find reverse domain
 local @zl = grep { $_->{'type'} ne 'view' } &list_zone_names();
-if ($_[1] ne '') {
+if ($_[1] ne '' && $_[1] ne 'any') {
 	@zl = grep { $_->{'view'} && $_->{'viewindex'} == $_[1] } @zl;
 	}
 else {
@@ -808,7 +808,7 @@ local ($fwdconf, $i, $fwdfile, $fwdrec, $fr, $ipv6);
 # find forward domain
 local $host = $_[0]; $host =~ s/\.$//;
 local @zl = grep { $_->{'type'} ne 'view' } &list_zone_names();
-if ($_[1] ne '') {
+if ($_[1] ne '' && $_[1] ne 'any') {
 	@zl = grep { $_->{'view'} && $_->{'viewindex'} == $_[1] } @zl;
 	}
 else {
