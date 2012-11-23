@@ -1304,6 +1304,11 @@ elsif ($type eq "nfs" || $type eq "nfs4") {
 			  [ [ 0, $text{'config_none'} ],
 			    [ 1, $text{'linux_integrity'} ],
 			    [ 2, $text{'linux_privacy'} ] ]));
+
+	print &ui_table_row(&hlink($text{'linux_nfsvers'}, "linux_nfsvers"),
+		&ui_select("nfs_nfsvers", $options{"nfsvers"},
+			   [ [ "", $text{'linux_nfsdefault'} ],
+			     2, 3, 4 ]));
 	}
 elsif ($type eq "fat" || $type eq "vfat" || $type eq "msdos" ||
        $type eq "umsdos" || $type eq "fatx"){
@@ -1802,11 +1807,18 @@ if (($_[0] eq "nfs") || ($_[0] eq "nfs4")) {
 	if (!$in{nfs_rsize_def}) { $options{"rsize"} = $in{nfs_rsize}; }
 
 	delete($options{"sec"});
+
 	# Only sys and krb5 for the moment
 	if ($in{nfs_auth}) {
 	    if ($in{nfs_sec} == 0) { $options{"sec"} = "krb5"; }
 	    if ($in{nfs_sec} == 1) { $options{"sec"} = "krb5i"; }
 	    if ($in{nfs_sec} == 2) { $options{"sec"} = "krb5p"; }
+	}
+
+	if ($in{'nfs_nfsvers'}) {
+		$options{'nfsvers'} = $in{'nfs_nfsvers'};
+	} else {
+		delete($options{'nfsvers'});
 	}
     }
 elsif ($_[0] =~ /^ext\d+$/) {
