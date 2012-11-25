@@ -59,7 +59,7 @@ else {
 		}
 	print &ui_hidden("sure", 1);
 	print &ui_hidden("search", $in{'search'});
-	print &ui_submit($text{'deletes_ok'});
+	print &ui_submit($text{'deletes_ok'}),"<p>\n";
 	if (defined(&delete_options)) {
 		&delete_options($packs[0]);
 		}
