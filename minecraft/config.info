@@ -1,0 +1,4 @@
+minecraft_dir=Base directory for Minecraft server,0
+minecraft_jar=Full path to Minecraft JAR file,3,In the base directory
+java_cmd=Full path to java command,0
+init_script=Name of init script,0

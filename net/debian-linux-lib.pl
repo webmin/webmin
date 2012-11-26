@@ -191,7 +191,12 @@ if ($cfg->{'ether'}) {
 if ($cfg->{'bridge'}) {
 	&has_command("brctl") || &error("Bridges cannot be created unless the ".
 					"brctl command is installed");
-	push(@options, [ 'bridge_ports', $cfg->{'bridgeto'} ]);
+	if ($cfg->{'bridgeto'}) {
+		push(@options, [ 'bridge_ports', $cfg->{'bridgeto'} ]);
+		}
+	else {
+		push(@options, [ 'pre-up', 'brctl addbr '.$name ]);
+		}
 	}
 
 # Set bonding parameters

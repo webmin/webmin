@@ -297,10 +297,13 @@ else {
 
 	# Save bridge settings
 	if ($b->{'bridge'}) {
-		$in{'bridgeto'} =~ /^eth\d+$/ ||
-			&error($text{'bifc_ebridgeto'});
-		($bt) = grep { $_->{'fullname'} eq $in{'bridgeto'} } @boot;
-		$bt || &error($text{'bifc_ebridgeto'});
+		if ($in{'bridgeto'}) {
+			$in{'bridgeto'} =~ /^eth\d+$/ ||
+				&error($text{'bifc_ebridgeto'});
+			($bt) = grep { $_->{'fullname'} eq $in{'bridgeto'} }
+				     @boot;
+			$bt || &error($text{'bifc_ebridgeto'});
+			}
 		($bt->{'address'} || $bt->{'dhcp'} || $bt->{'bootp'}) &&
 			&error($text{'bifc_ebridgeto2'});
 		$b->{'bridgeto'} = $in{'bridgeto'};

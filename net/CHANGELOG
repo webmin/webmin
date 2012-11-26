@@ -69,3 +69,5 @@ Bonding interfaces can now be created on CentOS, Redhat and Fedora Linuxes, than
 VLAN interfaces can now be created on CentOS, Redhat and Fedora Linuxes, thanks to a patch from Caspar Smit.
 ---- Changes since 1.600 ----
 Added support for the new ifconfig -a output format, as seen on Fedora 17.
+---- Changes since 1.610 ----
+A bridge that is not connected to any real interface can now be created.

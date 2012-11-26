@@ -105,6 +105,7 @@ bifc_capply=Create and Apply
 bifc_eapply=You cannot activate an interface that uses DHCP or BOOTP
 bifc_edhcpmain=DHCP can only be enabled on the primary network interface
 bifc_bridgeto=Connect bridge to interface
+bifc_nobridge=&lt;None&gt;
 bifc_ebridgeto=An existing Ethernet interface must be selected for this bridge to use
 bifc_ebridgeto2=The selected interface for the bridge must not have any address assigned
 bifc_ebridge=Bridge interface must be a number

@@ -282,12 +282,14 @@ if ($_[0]->{'bridge'}) {
 		local %bconf;
 		&lock_file($efile);
 		&read_env_file($efile, \%bconf);
-		if ($bconf{'DEVICE'} eq $_[0]->{'bridgeto'}) {
+		if ($bconf{'DEVICE'} eq $_[0]->{'bridgeto'} &&
+		    $_[0]->{'bridgeto'}) {
 			# Correct device for bridge
 			$bconf{'BRIDGE'} = $_[0]->{'fullname'};
 			&write_env_file($efile, \%bconf);
 			}
-		elsif ($bconf{'BRIDGE'} eq $_[0]->{'fullname'}) {
+		elsif ($bconf{'BRIDGE'} eq $_[0]->{'fullname'} &&
+		       $bconf{'BRIDGE'}) {
 			# Was using this bridge, shouldn't be
 			delete($bconf{'BRIDGE'});
 			&write_env_file($efile, \%bconf);

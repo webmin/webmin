@@ -290,8 +290,10 @@ if ($in{'bridge'} || $b && $b->{'bridge'}) {
 		     map { $_->{'fullname'} }
 		       grep { $_->{'fullname'} =~ /^eth(\d+)$/ } @boot;
 	print &ui_table_row($text{'bifc_bridgeto'},
-		&ui_select("bridgeto", $b->{'bridgeto'}, \@ethboot, 1, 0,
-			   $in{'new'} ? 0 : 1));
+		&ui_select("bridgeto", $b->{'bridgeto'},
+			   [ [ "", $text{'bifc_nobridge'} ],
+			     @ethboot ],
+			   1, 0, $in{'new'} ? 0 : 1));
 	}
 
 print &ui_table_end();
