@@ -34,38 +34,26 @@ elsif ($in{'source'} == 1) {
 elsif ($in{'source'} == 2) {
 	# find latest version at www.webmin.com by looking at index page
 	&error_setup($webmin::text{'upgrade_err3'});
-	$file = &tempname();
-	&http_download($webmin::update_host, $webmin::update_port, '/', $file, \$error);
-	$error && &inst_error($error);
-	open(FILE, $file);
-	while(<FILE>) {
-		if (/webmin-([0-9\.]+)\.tar\.gz/) {
-			$site_version = $1;
-			last;
-			}
-		}
-	close(FILE);
-	unlink($file);
+	($ok, $site_version) = &webmin::get_latest_webmin_version();
+	$ok || &inst_error($site_version);
 	if ($in{'mode'} eq 'rpm') {
-		$progress_callback_url = "http://$webmin::update_host/download/rpm/webmin-$site_version-1.noarch.rpm";
-		&http_download($webmin::update_host, $webmin::update_port,
-		  "/download/rpm/webmin-$site_version-1.noarch.rpm", $file,
-		  \$error, \&progress_callback);
+		$progress_callback_url = &convert_osdn_url(
+			"http://$webmin::osdn_host/webadmin/webmin-${site_version}-1.noarch.rpm");
 		}
         elsif ($in{'mode'} eq 'deb') {
                 # Downloading Debian package
-		$progress_callback_url = "http://$webmin::update_host/download/deb/webmin_${site_version}_all.deb";
-		&http_download($webmin::update_host, $webmin::update_port,
-		  "/download/deb/webmin_${site_version}_all.deb", $file,
-		  \$error, \&progress_callback);
+		$progress_callback_url = &convert_osdn_url(
+			"http://$webmin::osdn_host/webadmin/webmin_${site_version}_all.deb");
                 }
 	else {
-		$progress_callback_url = "http://$webmin::update_host/download/webmin-$site_version.tar.gz";
-		&http_download($webmin::update_host, $webmin::update_port,
-		  "/download/webmin-$site_version.tar.gz", $file,
-		  \$error, \&progress_callback);
+		$progress_callback_url = &convert_osdn_url(
+			"http://$webmin::osdn_host/webadmin/webmin-${site_version}.tar.gz");
 		}
-	$error && &inst_error($error);
+	$file = &tempname();
+	($host, $port, $page, $ssl) = &parse_http_url($progress_callback_url);
+	&http_download($host, $port, $page, $file,
+			\$error, \&progress_callback);
+	$error && &inst_error($progress_callback_url." : ".$error);
 	$need_unlink = 1;
 	}
 elsif ($in{'source'} == 5) {
@@ -231,11 +219,11 @@ if ($two eq "\037\213") {
 	}
 
 # Setup error handler for down hosts
-sub inst_error
+sub inst_error_callback
 {
 $inst_error_msg = join("", @_);
 }
-&remote_error_setup(\&inst_error);
+&remote_error_setup(\&inst_error_callback);
 
 # Build list of selected hosts
 @hosts = &list_webmin_hosts();
@@ -522,7 +510,7 @@ print "<p><b>$text{'upgrade_done'}</b><p>\n";
 sub inst_error
 {
 unlink($file) if ($need_unlink);
-print "<br><b>$whatfailed : $_[0]</b> <p>\n";
+print "<br><b>$main::whatfailed : $_[0]</b> <p>\n";
 &ui_print_footer("", $text{'index_return'});
 exit;
 }
