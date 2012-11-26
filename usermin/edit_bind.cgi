@@ -42,7 +42,7 @@ $stable .= &ui_columns_end();
 print &ui_table_row($text{'bind_sockets'}, $stable);
 
 # IPv6 enabled?
-print &ui_table_row($webmin::text{'bind_ipv6'},
+print &ui_table_row($text{'bind_ipv6'},
 	&ui_yesno_radio("ipv6", $miniserv{'ipv6'}));
 
 # Show web server hostname

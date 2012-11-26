@@ -37,7 +37,7 @@ $in{'hostname_def'} || $in{'hostname'} =~ /^[a-z0-9\.\-]+$/i ||
 	&error($text{'bind_ehostname'});
 if ($in{'ipv6'}) {
 	eval "use Socket6";
-	$@ && &error(&webmin::text('bind_eipv6', "<tt>Socket6</tt>"));
+	$@ && &error(&text('bind_eipv6', "<tt>Socket6</tt>"));
 	}
 
 # Update config file
