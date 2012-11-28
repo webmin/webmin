@@ -1,0 +1,3 @@
+desc=Minecraft Server
+depends=init
+category=servers

@@ -1,0 +1,23 @@
+index_title=Minecraft Server
+index_cerr=An error was detected with your Minecraft server : $1. You may need to adjust the <a href='$2'>module configuration</a>.
+index_stop=Stop Minecraft Server
+index_stopdesc=Click this button to stop the running Minecraft server. All clients will be immediately disconnected.
+index_start=Start Minecraft Server
+index_startdesc=Click this button to start the Minecraft server, so that clients can connect.
+index_restart=Restart Minecraft Server
+index_restartdesc=Click this button to apply the current configuration by restarting the Minecraft server.
+index_atboot=Start at boot?
+index_atbootdesc=Change this option to control whether the Minecraft server is started at boot time or not. If it is not currently started at boot and Yes is chosen, a new init script will be created.
+index_return=module index
+
+check_edir=The base directory $1 does not exist
+check_ejar=The server JAR file $1 does not exist
+check_ejava=The Java executable $1 was not found
+
+conf_title=Server Configuration
+
+users_title=Users and Operators
+
+logs_title=View Log File
+
+manual_title=Edit Configuration File
