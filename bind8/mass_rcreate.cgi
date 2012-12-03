@@ -38,6 +38,7 @@ elsif ($in{'type'} eq 'CNAME') {
 elsif ($in{'type'} eq 'MX') {
 	$in{'value'} =~ /^(\d+)\s+(\S+)$/ && &valname("$2") ||
 		&error(&text('emass_emx', $in{'value'}));
+	$mxpri = $1;
 	}
 elsif ($in{'type'} eq 'TXT') {
 	$in{'value'} = "\"$in{'value'}\"";
@@ -65,8 +66,17 @@ foreach $zi (@zones) {
 	@recs = &read_zone_file($zi->{'file'}, $zi->{'name'});
 	if ($in{'type'} eq 'CNAME' || $in{'clash'}) {
 		# Check if a record with the same name exists
-		($clash) = grep { $_->{'name'} eq $fullname &&
-				  $_->{'type'} eq $in{'type'} } @recs;
+		if ($in{'type'} eq 'MX') {
+			# MX has to clash on priority too
+			($clash) = grep { $_->{'name'} eq $fullname &&
+					  $_->{'type'} eq $in{'type'} &&
+					  $_->{'values'}->[0] == $mxpri } @recs;
+			}
+		else {
+			# Other types clash on name
+			($clash) = grep { $_->{'name'} eq $fullname &&
+					  $_->{'type'} eq $in{'type'} } @recs;
+			}
 		if ($clash) {
 			print &text('rmass_eclash',
 			    "<tt>".join(" ", @{$clash->{'values'}})."</tt>"),
