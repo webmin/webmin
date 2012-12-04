@@ -549,6 +549,7 @@ smb_passwdserver=Password server
 smb_priority=Master browser priority
 smb_protocol=Highest protocol
 smb_security=Security
+smb_server=Passord tjener
 smb_sharelevel=Share level
 smb_show=Always show services
 smb_title=Windows Networking Options
