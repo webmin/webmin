@@ -1,0 +1,1 @@
+show_table=Vis volumer og grupper som,1,1-Tabell,0-Ikoner
