@@ -1,0 +1,30 @@
+<header>Objectius iSCSI</header>
+
+Aquest mòdul permet exportar dispositius de disc a altres sistemes a través de
+la xarxa utilitzant el protocol iSCSI. Cada disc exportat s'anomena un 
+<i>objectiu</i>, i els objectius existents es llisten a la pàgina principal 
+del mòdul. Per crear un nou objectiu, fes clic al botó <b>Afegeix un nou objectiu iSCSI</b>,
+introdueix un nom i selecciona el dispositiu de disc que vols exportar. <p>
+
+Els usuaris i contrasenyes que necessitin els clients es poden establir en base
+a l'objectiu o bé per a tots els objectius a la pàgina de <b>Paràmetres d'Autenticació</b>.
+El protocol iSCSI també permet que els objectius s'identifiquin als clients
+(també coneguts com a iniciadors). <p>
+
+Els paràmetres globals relacionats amb les mides de paquets i el protocol iSCSI
+es poden canviar a la pàgina de <b>Paràmetres de Connexió</b>. Els temps límit
+de comunicació amb els clients es poden canviar a la pàgina de <b>Paràmetres de Temps Límit</b>. <p>
+
+Per defecte, tot client amb una entrada vàlida es pot connectar als objectius
+exportats. No obstant, pots limitar les IPs clients que s'hi poden connectar 
+utilitzant la pàgina d'<b>Adreces Client Permeses</b>. Alternativament, pots
+restringir les IPs del servidor a les quals es poden connectar els clients 
+utilitzant la pàgina d'<b>Adreces Permeses del Servidor</b>. <p>
+
+Al peu de la pàgina principal del mòdul hi ha els botons per aturar, iniciar i
+reiniciar el servidor iSCSI. Els canvis a la configuració no s'aplicaran fins
+que no es reiniciï el servidor. <p>
+
+
+
+<footer>

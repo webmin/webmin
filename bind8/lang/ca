@@ -63,6 +63,9 @@ index_bind=BIND
 
 master_title=Edició de Zona Mestra
 master_ecannot=No tens permís per editar aquesta zona
+master_egone=La zona $1 no existeix a cap vista
+master_egone2=La zona $1 no existeix!
+master_egone3=La zona $1 de la vista $2 no existeix!
 master_eviewcannot=No tens permís per crear una zona en aquesta vista
 master_manual=Edita el Fitxer de Registres
 master_soa=Edita els Paràmetres de Zona
@@ -488,6 +491,7 @@ acl_slaves=Pot gestionar servidors esclaus del cluster
 acl_views=Pot crear i editar vistes
 acl_edonly=Només editar
 acl_remote=Pot crear zones esclaves als servidors remots
+acl_dnssec=Pot configure DNSSEC per a les zones
 acl_gen=Pot editar els generadors de registres
 acl_whois=Pot consultar la informació WHOIS
 acl_vlist=Vistes a les quals aquest usuari pot afegir i editar zones

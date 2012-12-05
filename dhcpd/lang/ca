@@ -393,6 +393,7 @@ eacl_papply=reiniciar aquest servei
 acl_apply=Pot aplicar els canvis
 acl_r_leases=Pot veure els préstecs
 acl_w_leases=Pot treure els préstecs
+acl_zones=Pot editar zones DNS dinàmiques
 acl_global=Pot editar les opcions globals
 acl_uniq_hst=Noms de host únics
 acl_uniq_sub=Adreces IP de subxarxa úniques
@@ -446,6 +447,7 @@ zone_return=al menú principal
 zone_faildel=No s'ha pogut suprimir la zona
 zone_failsave=No s'ha pogut desar la zona
 zone_tsigkey=Clau TSIG
+zone_ecannot=No tens permís per editar zones DNS
 
 plib_clientupdates=Els clients poden actualitzar els seus propis registres
 

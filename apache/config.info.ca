@@ -12,6 +12,7 @@ test_apachectl=Prova la configuració amb l'ordre,1,1-<tt>apachectl configtest</t
 show_names=Mostra els noms de directives Apache,1,1-Sí,0-No
 apache_docbase=Directori base de la documentació d'Apache,3,Web d'Apache
 auto_mods=Detecta els mòduls Apache automàticament,1,1-Sí,0-No
+allow_virtualmin=Permet l'edició de dominis gestionats per Virtualmin,1,1-Sí,0-No
 line2=Configuració del sistema,11
 httpd_dir=Directori arrel del servidor Apache,0
 httpd_path=Camí de l'executable httpd,0

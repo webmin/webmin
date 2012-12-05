@@ -1,4 +1,5 @@
 targets_file=Fitxer d'objectius del servidor iSCSI,0
+auths_file=Fitxer d'autenticació del servidor iSCSI,0
 iscsi_server=Camí complet del servidor iSCSI,0
 pid_file=Camí complet del fitxer de PID,0
 init_name=Nom de l'script d'engegada,0

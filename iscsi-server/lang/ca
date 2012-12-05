@@ -68,7 +68,6 @@ devices_derr=No s'han pogut suprimir les combinacions de dispositius
 devices_denone=No n'hi ha cap de seleccionada
 devices_einuse=No es pot suprimir la combinació $1, ja que està en ús per part de: $2
 devices_drusure=Segur que vols suprimir les combinacions de dispositius següents?: $1 El seu contingut es preservarà, però ja no seran accessibles als clients iSCSI.
-
 devices_sure=Suprimeix les Combinacions de Dispositius
 
 device_create=Crea una Combinació de Dispositius
@@ -83,7 +82,6 @@ device_got=Dispositius membres
 device_err=No s'ha pogut desar la combinació de dispositius
 device_derr=No s'ha pogut suprimir la combinació de dispositius
 device_rusure=Segur que vols suprimir la combinació de dispositius $1? El seu contingut es preservarà, però ja no serà accessible als clients iSCSI.
-
 device_sure=Suprimeix la Combinació de Dispositius
 device_einuse=Aquesta combinació de dispositius no es pot suprimir, ja que està en ús per part de: $1
 device_eextents=No has seleccionat cap dispositiu membre
@@ -140,6 +138,25 @@ manual_desc=Utilitza la caixa de text de sota per editar el fitxer de configurac
 manual_err=No s'ha pogut desar el fitxer de configuració
 manual_edata=No has introduït cap contingut!
 
+users_title=Autenticació iSCSI
+users_none=Encara no s'ha creat cap usuari iSCSI. Els clients podran accedir els dispositius compartits sense autenticar-se.
+users_add=Afegeix un nou usuari iSCSI.
+users_delete=Suprimeix els Usuaris Seleccionats
+users_name=Usuari
+users_mode=Mètode d'autenticació
+users_return=a la llista d'usuaris
+
+user_create=Creació d'usuari iSCSI
+user_edit=Edició d'usuari iSCSI
+user_header=Detalls de l'usuari iSCSI
+user_user=Usuari client
+user_mode=Mètode d'autenticació
+user_pass=Contrasenya client
+user_egone=L'usuari ja no existeix!
+user_err=No s'ha pogut desar l'usuari iSCSI
+user_euser=Hi falta l'usuari o bé és invàlid - no es permeten espais ni dos punts (:)
+user_epass=Hi falta la contrasenya o bé és invàlida - no es permeten espais ni dos punts (:)
+
 desc_extent=Dispositiu compartit $1
 desc_device=Combinació de dispositius $1
 desc_target=Objectiu compartit $1
@@ -167,3 +184,7 @@ log_restart=S'ha reiniciat el servidor iSCSI
 log_atboot=S'ha activat el servidor iSCSI en engegar el sistema
 log_delboot=S'ha desactivat el servidor iSCSI en engegar el sistema
 log_manual=S'ha editat manualment el fitxer de configuració
+log_create_user=S'ha creat l'usuari iSCSI $1
+log_modify_user=S'ha actualitzat l'usuari iSCSI $1
+log_delete_user=S'ha suprimit l'usuari iSCSI $1
+log_delete_users=S'han suprimit $1 usuaris iSCSI

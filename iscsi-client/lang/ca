@@ -134,6 +134,10 @@ add_ok=Afegeix Connexió
 add_etarget=No s'ha trobat l'objectiu $1
 add_dev=Connectat com $1
 add_used=Ja està connectat
+add_on=$1 a $2
+add_auth=Entrada al servidor
+add_auth1=Utilitza el mètode d'autenticació per defecte
+add_auth0=Entra com a $2 amb contrasenya $3 utilitzant el mètode $1
 
 dconns_err=No s'han pogut desconnectar les connexions
 dconns_enone=No n'hi ha cap de seleccionada
@@ -147,6 +151,7 @@ dconns_part=Partició
 dconns_use=Utilitzada per
 dconns_size=Mida de la partició
 dconns_confirm=Elimina les Connexions
+dconns_unused=No utilitzada
 
 vconn_title=Connexió iSCSI
 vconn_egone=La connexió seleccionada ja no existeix!
@@ -162,6 +167,7 @@ vconn_password_in=Contrasenya del client
 vconn_none=No en cal cap
 vconn_device=Fitxer de dispositiu local
 vconn_device2=Nom de dispositiu local
+vconn_device3=Nom de dispositiu constant
 vconn_delete=Desconnecta la Connexió
 vconn_users=Usuaris actual
 vconn_size=Mida del disc
