@@ -242,12 +242,15 @@ if (!$in{'new'}) {
 	elsif ($olddesc) {
 		push(@rprops, "description");
 		}
+	if (!$pass) {
+		push(@rprops, "userPassword");
+		}
 
 	# Update group properties
 	$rv = $ldap->modify($newdn, replace =>
 			    { "gidNumber" => $gid,
 			      "cn" => $group,
-			      "userPassword" => $pass,
+			      $pass ? ( "userPassword" => $pass ) : ( ),
 			      @members ? ( "memberUid" => \@members ) : ( ),
 			      @props,
 			      "objectClass" => \@classes },
@@ -302,7 +305,7 @@ else {
 	$rv = $ldap->add($newdn, attr =>
 			 [ "cn" => $group,
 			   "gidNumber" => $gid,
-			   "userPassword" => $pass,
+			   $pass ? ( "userPassword" => $pass ) : ( ),
 			   @members ? ( "memberUid" => \@members ) : ( ),
 			   @props,
 			   "objectClass" => \@classes ] );
