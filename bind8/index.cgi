@@ -290,11 +290,15 @@ elsif (@zones && (!@views || !$config{'by_view'})) {
 			     undef, undef, \@befores);
 		}
 	print &ui_links_row(\@links);
-	print &ui_form_end([ $access{'delete'} ?
-			      ( [ "delete", $text{'index_massdelete'} ] ) : ( ),
-			     [ "update", $text{'index_massupdate'} ],
-			     [ "create", $text{'index_masscreate'} ],
-			     [ "rdelete", $text{'index_massrdelete'} ] ]);
+	print &ui_form_end([
+		$access{'delete'} ?
+		      ( [ "delete", $text{'index_massdelete'} ] ) : ( ),
+		[ "update", $text{'index_massupdate'}, undef, 0,
+		  "onClick='form.action=\"mass_update_form.cgi\"'" ],
+		[ "create", $text{'index_masscreate'}, undef, 0,
+		  "onClick='form.action=\"mass_rcreate_form.cgi\"'" ],
+		[ "rdelete", $text{'index_massrdelete'}, undef, 0,
+		  "onClick='form.action=\"mass_rdelete_form.cgi\"'" ] ]);
 	}
 elsif (@zones) {
 
@@ -396,9 +400,12 @@ elsif (@zones) {
 		print &ui_form_end([
 			$access{'delete'} ?
 			  ( [ "delete", $text{'index_massdelete'} ] ) : ( ),
-			[ "update", $text{'index_massupdate'} ],
-			[ "create", $text{'index_masscreate'} ],
-			[ "rdelete", $text{'index_massrdelete'} ], ]);
+			[ "update", $text{'index_massupdate'}, undef, 0,
+			  "onClick='form.action=\"mass_update_form.cgi\"'" ],
+			[ "create", $text{'index_masscreate'}, undef, 0,
+			  "onClick='form.action=\"mass_rcreate_form.cgi\"'" ],
+			[ "rdelete", $text{'index_massrdelete'}, undef, 0,
+			  "onClick='form.action=\"mass_rdelete_form.cgi\"'" ]]);
 		}
 	if (&have_dnssec_tools_support()) {
 		rollrec_close();
