@@ -2119,7 +2119,7 @@ print DEBUG "handle_request: full=$full\n";
 # check filename against denyfile regexp
 local $denyfile = $config{'denyfile'};
 if ($denyfile && $full =~ /$denyfile/) {
-	&http_error(403, "Access denied to $page");
+	&http_error(403, "Access denied to ".&html_escape($page));
 	return 0;
 	}
 
@@ -2187,7 +2187,7 @@ if (-d _) {
 		$len = length($df); $rest = " "x(35-$len);
 		&write_data(sprintf 
 		 "<a href=\"%s\">%-${len}.${len}s</a>$rest %-20.20s %-10.10s\n",
-		 $df, $df, $fdate, $stbuf[7]);
+		 &urlize($df), &html_escape($df), $fdate, $stbuf[7]);
 		}
 	closedir(DIR);
 	&log_request($loghost, $authuser, $reqline, $ok_code, &byte_count());
@@ -5938,3 +5938,14 @@ foreach my $pe (@expires_paths) {
 return $config{'expires'};
 }
 
+sub html_escape
+{
+my ($tmp) = @_;
+$tmp =~ s/&/&amp;/g;
+$tmp =~ s/</&lt;/g;
+$tmp =~ s/>/&gt;/g;
+$tmp =~ s/\"/&quot;/g;
+$tmp =~ s/\'/&#39;/g;
+$tmp =~ s/=/&#61;/g;
+return $tmp;
+}
