@@ -2892,7 +2892,7 @@ sub read_line
 local ($nowait, $nolimit) = @_;
 local($idx, $more, $rv);
 while(($idx = index($main::read_buffer, "\n")) < 0) {
-	if (length($main::read_buffer) > 10000 && !$nolimit) {
+	if (length($main::read_buffer) > 100000 && !$nolimit) {
 		&http_error(414, "Request too long",
 		    "Received excessive line <pre>$main::read_buffer</pre>");
 		}
