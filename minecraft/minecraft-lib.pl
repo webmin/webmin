@@ -1,4 +1,8 @@
 # Functions for editing the minecraft config
+#
+# XXX java param options
+# XXX plugins?
+# XXX world reset
 
 BEGIN { push(@INC, ".."); };
 use strict;
@@ -28,6 +32,41 @@ return undef;
 # If the minecraft server is running, return the PID
 sub is_minecraft_server_running
 {
+&foreign_require("proc");
+my @procs = &proc::list_processes();
+my $jar = $config{'minecraft_jar'} ||
+	  $config{'minecraft_dir'}."/"."minecraft_server.jar";
+my $shortjar = $jar;
+$shortjar =~ s/^.*\///;
+foreach my $p (@procs) {
+	if ($p->{'args'} =~ /\Q$config{'java_cmd'}\E.*(\Q$jar\E|\Q$shortjar\E)/) {
+		return $p->{'pid'};
+		}
+	}
+return undef;
+}
+
+# get_minecraft_config()
+# Parses the config into an array ref of hash refs
+sub get_minecraft_config
+{
+my @rv;
+my $fh = "CONFIG";
+my $lnum = 0;
+&open_readfile($fh, $config{'minecraft_dir'}."/server.properties") ||
+	return [ ];
+while(<$fh>) {
+	s/\r|\n//g;
+	s/#.*$//;
+	if (/^([^=]+)=(.*)/) {
+		push(@rv, { 'name' => $1,
+			    'value' => $2,
+			    'line' => $lnum });
+		}
+	$lnum++;
+	}
+close($fh);
+return \@rv;
 }
 
 1;

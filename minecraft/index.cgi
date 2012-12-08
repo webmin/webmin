@@ -49,5 +49,5 @@ print &ui_buttons_row("atboot.cgi",
 
 print &ui_buttons_end();
 
-&ui_print_footer("/", $text{'index_return'});
+&ui_print_footer("/", $text{'index'});
 

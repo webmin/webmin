@@ -19,5 +19,8 @@ conf_title=Server Configuration
 users_title=Users and Operators
 
 logs_title=View Log File
+logs_lines=Show last
+logs_matching=lines matching
+logs_ok=Search
 
 manual_title=Edit Configuration File
