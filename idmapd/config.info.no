@@ -1,0 +1,4 @@
+line2=System konfigurasjon,11
+idmapd_conf=Stil til id mapping konfigurasjonsfil,0
+idmapd_path=Sti til rpc.idmapd daemon,0
+restart_command=Kommando for &#229; omstarte idmapd daemon,0
