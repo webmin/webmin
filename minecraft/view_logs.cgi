@@ -37,6 +37,7 @@ my $fh = "OUT";
 while(<$fh>) {
 	print &html_escape($_);
 	}
+close($fh);
 print "</pre>";
 
 &ui_print_footer("", $text{'index_return'});

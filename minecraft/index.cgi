@@ -14,11 +14,14 @@ if ($err) {
 	}
 
 my @links = ( "edit_conf.cgi", "edit_users.cgi",
-	      "view_logs.cgi", "edit_manual.gif" );
+	      "view_logs.cgi", "list_conns.cgi",
+	      "console.cgi", "edit_manual.gif" );
 my @titles = ( $text{'conf_title'}, $text{'users_title'},
-	       $text{'logs_title'}, $text{'manual_title'} );
+	       $text{'logs_title'}, $text{'conns_title'},
+	       $text{'console_title'}, $text{'manual_title'} );
 my @icons = ( "images/conf.gif", "images/users.gif",
-	      "images/logs.gif", "images/manual.gif" );
+	      "images/logs.gif", "images/conns.gif",
+	      "images/console.gif", "images/manual.gif" );
 &icons_table(\@links, \@titles, \@icons);
 
 print &ui_hr();

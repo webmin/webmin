@@ -18,9 +18,59 @@ conf_title=Server Configuration
 
 users_title=Users and Operators
 
-logs_title=View Log File
+conns_title=Connected Players
+conns_desc=The following players are currently connected to your server. Click on a player name to perform actions on it.
+conns_edown=Connected players cannot be managed unless the server is running
+conns_none=No players are currently connected to the server.
+conns_disc=Disconnect Selected
+conns_enter=Manage player named:
+conns_ok=OK
+conns_return=player list
+
+logs_title=Search Log File
 logs_lines=Show last
 logs_matching=lines matching
 logs_ok=Search
+
+console_title=Server Console
+console_run=Enter command
+console_ok=OK
+console_old=or select previous
+console_edown=The Minecraft server console cannot be used unless the server is running
+
+conn_title=Manage Player
+conn_header=Player details and actions
+conn_name=Player name
+conn_state=Current state
+conn_yes=Connected
+conn_no=Disconnected
+conn_lastin=Logged in from
+conn_lastin2=Last logged in from
+conn_lastout=Logged out at
+conn_at=$1 at $2
+conn_msg=Send direct message
+conn_pos=Position at login
+conn_msgb=Send
+conn_kill=Terminate player
+conn_killb=Kill Now
+conn_ename=Missing or invalid player name
+conn_give=Grant item with ID
+conn_count=count
+conn_giveb=Give
+conn_never=This player has not logged into the server recently, and may not even exist.
+conn_err=Player action failed
+conn_etext=Missing message text
+conn_msgdone=Sent message to player
+conn_killdone=Killed player
+conn_eid=Missing or invalid item ID
+conn_ecount=Missing or non-numeric item count
+conn_givedone=Gave $2 of item $1 to player
+
+chooser_title=Select Item
+chooser_id=Item ID
+chooser_name=Item name
+chooser_none=No items matched your search
+chooser_search=Show items matching
+chooser_ok=Search
 
 manual_title=Edit Configuration File
