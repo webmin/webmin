@@ -163,13 +163,13 @@ else {
 		if ($sec->{'server'} ne '*' && $newremote ne '*') {
 			$sec->{'server'} = $newremote;
 			}
-		$sec->{'secret'} = $in{'pass'};
+		$sec->{'secret'} = $in{'spass'};
 		&change_secret($sec);
 		}
 	else {
 		# Need to create a new secret
 		$sec = { 'client' => $newname,
-			 'secret' => $in{'pass'},
+			 'secret' => $in{'spass'},
 			 'server' => $newremote };
 		&create_secret($sec);
 		}

@@ -41,7 +41,7 @@ printf "<input name=login size=15 value='%s'></td>\n",
 	$login->{'value'};
 
 print "<td><b>$text{'edit_pass'}</b></td>\n";
-printf "<td><input name=pass type=password value='%s'></td> </tr>\n",
+printf "<td><input name=spass type=password value='%s'></td> </tr>\n",
 	$sec->{'secret'};
 
 $remote = &find("remotename", $tunnel->{'opts'});
