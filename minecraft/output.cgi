@@ -8,11 +8,12 @@ our (%config);
 my $logfile = $config{'minecraft_dir'}."/server.log";
 
 $| = 1;
-print "Content-type: text/plain\n\n";
+&popup_header();
 my $fh = "OUT";
 &open_execute_command($fh, "tail -20f ".$logfile, 1, 1);
 select($fh); $| = 1; select(STDOUT);
+print "<pre>\n";
 while(<$fh>) {
-	print $_;
+	print &html_escape($_);
 	}
 close($fh);

@@ -17,6 +17,12 @@ check_ejava=The Java executable $1 was not found
 conf_title=Server Configuration
 
 users_title=Users and Operators
+users_tabwhite=Allowed users
+users_tabop=Operators
+users_apply=Save and Apply
+users_whitedesc=When enabled, only users listed here will be allowed to connect to this Minecraft server.
+users_opdesc=Only users listed here are allowed to run administration commands on this Minecraft server.
+users_enable=Whitelist enforcement enabled?
 
 conns_title=Connected Players
 conns_desc=The following players are currently connected to your server. Click on a player name to perform actions on it.
@@ -36,6 +42,7 @@ console_title=Server Console
 console_run=Enter command
 console_ok=OK
 console_old=or select previous
+console_edit=Edit Previous
 console_edown=The Minecraft server console cannot be used unless the server is running
 
 conn_title=Manage Player
@@ -65,6 +72,21 @@ conn_killdone=Killed player
 conn_eid=Missing or invalid item ID
 conn_ecount=Missing or non-numeric item count
 conn_givedone=Gave $2 of item $1 to player
+conn_spawn=Change spawn point
+conn_spawnb=Set
+conn_tp=Teleport to point
+conn_tpb=Move
+conn_tpp=Teleport to player
+conn_banlist=Ban list state
+conn_banned=Banned!
+conn_pardoned=Allowed
+conn_pardonb=Pardon Player
+conn_banb=Ban Player
+conn_oplist=Operator state
+conn_opb=Grant Operator
+conn_deopb=Revoke Operator
+
+worlds_title=Manage Worlds
 
 chooser_title=Select Item
 chooser_id=Item ID

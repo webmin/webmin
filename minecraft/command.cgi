@@ -4,7 +4,7 @@
 use strict;
 use warnings;
 require './minecraft-lib.pl';
-our (%in, %text);
+our (%in, %text, %config);
 &ReadParse();
 
 my @history = &get_command_history();
@@ -13,7 +13,7 @@ if ($in{'command'}) {
 	# Run the given command
 	&send_server_command($in{'command'});
 	@history = &unique($in{'command'}, @history);
-	while(@history > 10) {
+	while(@history > $config{'history_size'}) {
 		pop(@history);
 		}
 	&save_command_history(\@history);
@@ -27,7 +27,9 @@ my @grid = ( "<b>$text{'console_run'}</b>",
 	     &ui_submit($text{'console_ok'}) );
 if (@history) {
 	push(@grid, "<b>$text{'console_old'}</b>",
-		    &ui_select("old", undef, \@history));
+		    &ui_select("old", undef, \@history)." ".
+		    &ui_button($text{'console_edit'}, undef, 0,
+			"onClick='form.command.value = form.old.value'"));
 	}
 print &ui_grid_table(\@grid, 2);
 print &ui_form_end();

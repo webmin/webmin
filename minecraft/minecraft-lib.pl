@@ -167,8 +167,8 @@ my $fh = "LOG";
 seek($fh, 0, 2);
 my $pos = tell($fh);
 &send_server_command($cmd);
-for(my $i=0; $i<10; $i++) {
-	sleep(1);
+for(my $i=0; $i<100; $i++) {
+	select(undef, undef, undef, 0.1);
 	my @st = stat($logfile);
 	last if ($st[7] > $pos);
 	}
@@ -270,5 +270,71 @@ while(<$fh>) {
 close($fh);
 return @rv;
 }
+
+# list_banned_players()
+# Returns a list of players who are banned
+sub list_banned_players
+{
+my @out = &execute_minecraft_command("/banlist");
+my @rv;
+foreach my $l (@out) {
+	if ($l =~ /\[INFO\]\s+(\S+)$/) {
+		push(@rv, $1);
+		}
+	}
+return @rv;
+}
+
+# list_whitelisted_players()
+# Returns a list of players who are whitelisted
+sub list_whitelisted_players
+{
+my @out = &execute_minecraft_command("/whitelist");
+my @rv;
+foreach my $l (@out) {
+	if ($l =~ /\[INFO\]\s+(\S+)$/) {
+		push(@rv, $1);
+		}
+	}
+return @rv;
+}
+
+# list_whitelist_users()
+# Returns a list of usernames on the whitelist
+sub list_whitelist_users
+{
+my $lref = &read_file_lines($config{'minecraft_dir'}.'/white-list.txt', 1);
+return @$lref;
+}
+
+# save_whitelist_users(&users)
+# Update the usernames on the whitelist
+sub save_whitelist_users
+{
+my ($users) = @_;
+my $lref = &read_file_lines($config{'minecraft_dir'}.'/white-list.txt');
+@$lref = @$users;
+&flush_file_lines($config{'minecraft_dir'}.'/white-list.txt');
+}
+
+# list_op_users()
+# Returns a list of usernames on the operator list
+sub list_op_users
+{
+my $lref = &read_file_lines($config{'minecraft_dir'}.'/ops.txt', 1);
+return @$lref;
+}
+
+# save_op_users(&users)
+# Update the usernames on the operator list
+sub save_op_users
+{
+my ($users) = @_;
+my $lref = &read_file_lines($config{'minecraft_dir'}.'/ops.txt');
+@$lref = @$users;
+&flush_file_lines($config{'minecraft_dir'}.'/ops.txt');
+}
+
+
 
 1;

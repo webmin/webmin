@@ -12,6 +12,6 @@ our (%in, %text, %config);
 &is_minecraft_server_running() || &error($text{'console_edown'});
 
 print "<iframe src=output.cgi width=100% height=70%></iframe>\n";
-print "<iframe src=command.cgi width=100% height=70 border=0></iframe>\n";
+print "<iframe src=command.cgi width=100% height=100 frameborder=0></iframe>\n";
 
 &ui_print_footer("", $text{'index_return'});

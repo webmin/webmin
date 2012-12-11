@@ -11,6 +11,11 @@ our (%in, %text);
 
 $in{'name'} =~ /^\S+$/ || &error($text{'conn_ename'});
 
+# Show message from action
+if ($in{'msg'}) {
+	print "<b><font color=green>$in{'msg'}</font></b><p>\n";
+	}
+
 print &ui_form_start("save_conn.cgi", "post");
 print &ui_hidden("name", $in{'name'});
 print &ui_table_start($text{'conn_header'}, undef, 2);
@@ -59,6 +64,49 @@ if ($c || 1) {
 		$text{'conn_count'}." ".
 		&ui_textbox("count", 1, 5)." ".
 		&ui_submit($text{'conn_giveb'}, 'give'));
+
+	# Clear inventory
+	# XXX
+
+	# Change spawn point
+	print &ui_table_row($text{'conn_spawn'},
+		"X:".&ui_textbox("spawnx", $x, 20)." ".
+		"Y:".&ui_textbox("spawny", $y, 20)." ".
+		"Z:".&ui_textbox("spawnz", $z, 20)." ".
+		&ui_submit($text{'conn_spawnb'}, 'spawn'));
+
+	# Teleport to location
+	print &ui_table_row($text{'conn_tp'},
+		"X:".&ui_textbox("tpx", $x, 20)." ".
+		"Y:".&ui_textbox("tpy", $y, 20)." ".
+		"Z:".&ui_textbox("tpz", $z, 20)." ".
+		&ui_submit($text{'conn_tpb'}, 'tp'));
+
+	# Teleport to player
+	if (@conns) {
+		print &ui_table_row($text{'conn_tpp'},
+			&ui_select("player", \@conns, undef)." ".
+			&ui_submit($text{'conn_tpb'}, 'tpp'));
+		}
+
+	# Ban or un-ban player
+	my @banlist = &list_banned_players();
+	my ($b) = grep { $_ eq $in{'name'} } @banlist;
+	if ($b) {
+		print &ui_table_row($text{'conn_banlist'},
+			"<font color=red>$text{'conn_banned'}</font> ".
+			&ui_submit($text{'conn_pardonb'}, 'pardon'));
+		}
+	else {
+		print &ui_table_row($text{'conn_banlist'},
+			$text{'conn_pardoned'}." ".
+			&ui_submit($text{'conn_banb'}, 'ban'));
+		}
+
+	# Op or de-op player
+	print &ui_table_row($text{'conn_oplist'},
+		&ui_submit($text{'conn_opb'}, 'op')." ".
+		&ui_submit($text{'conn_deopb'}, 'deop'));
 	}
 
 print &ui_table_end();

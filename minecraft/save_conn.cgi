@@ -28,7 +28,8 @@ elsif ($in{'give'}) {
 		       &list_minecraft_items();
 	my $out = &execute_minecraft_command(
 		"/give $in{'name'} $in{'id'} $in{'count'}");
-	&error($out);
+	$out =~ /Given.*\Q$in{'name'}\E/ ||
+		&error(&html_escape($out));
 	$msg = &text('conn_givedone', $i ? $i->{'name'} : $in{'id'},
 				      $in{'count'});
 	}
@@ -37,6 +38,6 @@ else {
 	&error($text{'conn_ebutton'});
 	}
 &redirect("view_conn.cgi?name=".&urlize($in{'name'})."&msg=".
-	  &urlize($in{'msg'}));
+	  &urlize($msg));
 
 
