@@ -360,7 +360,7 @@ else {
                               "loginShell" => $shell,
                               "homeDirectory" => $home,
                               "gidNumber" => $gid,
-                              "userPassword" => $pass,
+                              $pass ? ( "userPassword" => $pass ) : ( ),
                               "objectClass" => \@classes,
 			      @props );
 		if (&indexoflc("person", @classes) >= 0 &&
@@ -548,13 +548,16 @@ else {
 			      "loginShell" => $shell,
 			      "homeDirectory" => $home,
 			      "gidNumber" => $gid,
-			      "userPassword" => $pass,
+			      $pass ? ( "userPassword" => $pass ) : ( ),
 			      "objectClass" => \@classes,
 			      @props );
 		if (&indexoflc("person", @classes) >= 0 &&
 		    !$allprops{'sn'}) {
 			# Person needs 'sn'
 			$allprops{'sn'} = $real;
+			}
+		if (!$pass) {
+			push(@rprops, "userPassword");
 			}
 		$rv = $ldap->modify($newdn, 'replace' => \%allprops,
 					    'delete' => \@rprops);

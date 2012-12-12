@@ -75,3 +75,5 @@ Added a field for editing the description for LDAP groups.
 The list of groups now includes descriptions, if any are set.
 ---- Changes since 1.520 ----
 Added Module Config options for additional LDAP filters to find users and groups, in addition to the posixAccount / posixGroup object class filters.
+---- Changes since 1.610 ----
+The userPassword attribute is now removed for users or groups that don't have a password set.
