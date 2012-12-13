@@ -22,7 +22,7 @@ users_tabop=Operators
 users_apply=Save and Apply
 users_whitedesc=When enabled, only users listed here will be allowed to connect to this Minecraft server.
 users_opdesc=Only users listed here are allowed to run administration commands on this Minecraft server.
-users_enable=Whitelist enforcement enabled?
+users_enabled=Whitelist enforcement enabled?
 
 conns_title=Connected Players
 conns_desc=The following players are currently connected to your server. Click on a player name to perform actions on it.
@@ -85,6 +85,21 @@ conn_banb=Ban Player
 conn_oplist=Operator state
 conn_opb=Grant Operator
 conn_deopb=Revoke Operator
+conn_ex=X position must be an integer
+conn_ey=Y position must be an integer
+conn_ez=Z position must be an integer
+conn_spawndone=Moved spawn point to $1, $2, $3
+conn_tpdone=Teleported player to $1, $2, $3
+conn_tppdone=Teleported player to location of $1
+conn_bandone=Banned player $1
+conn_pardondone=Pardoned player $1
+conn_reason=for reason
+conn_opdone=Granted operator status
+conn_deopdone=Revoked operator status
+conn_ebutton=No button clicked!
+conn_kick=Disconnect player
+conn_kickb=Kick Now
+conn_kickdone=Disconnected player
 
 worlds_title=Manage Worlds
 

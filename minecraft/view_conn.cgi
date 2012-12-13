@@ -57,6 +57,10 @@ if ($c || 1) {
 	print &ui_table_row($text{'conn_kill'},
 		&ui_submit($text{'conn_killb'}, 'kill'));
 
+	# Disconnect player
+	print &ui_table_row($text{'conn_kick'},
+		&ui_submit($text{'conn_kickb'}, 'kick'));
+
 	# Grant item
 	print &ui_table_row($text{'conn_give'},
 		&ui_textbox("id", undef, 5).
@@ -70,22 +74,22 @@ if ($c || 1) {
 
 	# Change spawn point
 	print &ui_table_row($text{'conn_spawn'},
-		"X:".&ui_textbox("spawnx", $x, 20)." ".
-		"Y:".&ui_textbox("spawny", $y, 20)." ".
-		"Z:".&ui_textbox("spawnz", $z, 20)." ".
+		"X:".&ui_textbox("spawnx", int($x), 20)." ".
+		"Y:".&ui_textbox("spawny", int($y), 20)." ".
+		"Z:".&ui_textbox("spawnz", int($z), 20)." ".
 		&ui_submit($text{'conn_spawnb'}, 'spawn'));
 
 	# Teleport to location
 	print &ui_table_row($text{'conn_tp'},
-		"X:".&ui_textbox("tpx", $x, 20)." ".
-		"Y:".&ui_textbox("tpy", $y, 20)." ".
-		"Z:".&ui_textbox("tpz", $z, 20)." ".
+		"X:".&ui_textbox("tpx", int($x), 20)." ".
+		"Y:".&ui_textbox("tpy", int($y), 20)." ".
+		"Z:".&ui_textbox("tpz", int($z), 20)." ".
 		&ui_submit($text{'conn_tpb'}, 'tp'));
 
 	# Teleport to player
 	if (@conns) {
 		print &ui_table_row($text{'conn_tpp'},
-			&ui_select("player", \@conns, undef)." ".
+			&ui_select("player", undef, \@conns)." ".
 			&ui_submit($text{'conn_tpb'}, 'tpp'));
 		}
 
@@ -100,7 +104,9 @@ if ($c || 1) {
 	else {
 		print &ui_table_row($text{'conn_banlist'},
 			$text{'conn_pardoned'}." ".
-			&ui_submit($text{'conn_banb'}, 'ban'));
+			&ui_submit($text{'conn_banb'}, 'ban')." ".
+			$text{'conn_reason'}." ".
+			&ui_textbox("reason", undef, 30));
 		}
 
 	# Op or de-op player

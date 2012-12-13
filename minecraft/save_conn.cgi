@@ -20,6 +20,11 @@ elsif ($in{'kill'}) {
 	&send_server_command("/kill $in{'name'}");
 	$msg = $text{'conn_killdone'};
 	}
+elsif ($in{'kick'}) {
+	# Disconnect this player
+	&send_server_command("/kick $in{'name'}");
+	$msg = $text{'conn_kickdone'};
+	}
 elsif ($in{'give'}) {
 	# Give an item
 	$in{'id'} =~ /^\d+$/ || &error($text{'conn_eid'});
@@ -32,6 +37,62 @@ elsif ($in{'give'}) {
 		&error(&html_escape($out));
 	$msg = &text('conn_givedone', $i ? $i->{'name'} : $in{'id'},
 				      $in{'count'});
+	}
+elsif ($in{'spawn'}) {
+	# Change spawn point
+	$in{'spawnx'} =~ /^\-?([0-9]+)$/ || &error($text{'conn_ex'});
+	$in{'spawny'} =~ /^\-?([0-9]+)$/ || &error($text{'conn_ey'});
+	$in{'spawnz'} =~ /^\-?([0-9]+)$/ || &error($text{'conn_ez'});
+	my $out = &execute_minecraft_command(
+		"/spawnpoint $in{'name'} $in{'spawnx'} $in{'spawny'} $in{'spawnz'}");
+	$out =~ /Set\s+\Q$in{'name'}\E/ ||
+		&error(&html_escape($out));
+	$msg = &text('conn_spawndone', $in{'spawnx'}, $in{'spawny'}, $in{'spawnz'});
+	}
+elsif ($in{'tp'}) {
+	$in{'tpx'} =~ /^\~?\-?([0-9]+)$/ || &error($text{'conn_ex'});
+	$in{'tpy'} =~ /^\~?\-?([0-9]+)$/ || &error($text{'conn_ey'});
+	$in{'tpz'} =~ /^\~?\-?([0-9]+)$/ || &error($text{'conn_ez'});
+	my $out = &execute_minecraft_command(
+		"/tp $in{'name'} $in{'tpx'} $in{'tpy'} $in{'tpz'}");
+	$out =~ /Teleported\s+\Q$in{'name'}\E/ ||
+		&error(&html_escape($out));
+	$msg = &text('conn_tpdone', $in{'tpx'}, $in{'tpy'}, $in{'tpz'});
+	}
+elsif ($in{'tpp'}) {
+	my $out = &execute_minecraft_command(
+		"/tp $in{'name'} $in{'player'}");
+	$out =~ /Teleported\s+\Q$in{'name'}\E/ ||
+		&error(&html_escape($out));
+	$msg = &text('conn_tppdone', $in{'player'});
+	}
+elsif ($in{'ban'}) {
+	my $out = &execute_minecraft_command(
+                "/ban $in{'name'} $in{'reason'}");
+	$out =~ /Banned\s+player\s+\Q$in{'name'}\E/ ||
+                &error(&html_escape($out));
+	$msg = &text('conn_bandone');
+	}
+elsif ($in{'pardon'}) {
+	my $out = &execute_minecraft_command(
+                "/pardon $in{'name'}");
+	$out =~ /Unbanned\s+player\s+\Q$in{'name'}\E/ ||
+                &error(&html_escape($out));
+	$msg = &text('conn_pardondone');
+	}
+elsif ($in{'op'}) {
+	my $out = &execute_minecraft_command(
+                "/op $in{'name'}");
+	$out =~ /Opped\s+\Q$in{'name'}\E/ ||
+                &error(&html_escape($out));
+	$msg = &text('conn_opdone');
+	}
+elsif ($in{'deop'}) {
+	my $out = &execute_minecraft_command(
+                "/deop $in{'name'}");
+	$out =~ /De-opped\s+\Q$in{'name'}\E/ ||
+                &error(&html_escape($out));
+	$msg = &text('conn_deopdone');
 	}
 else {
 	# No button clicked!

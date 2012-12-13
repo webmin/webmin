@@ -48,6 +48,11 @@ foreach my $p (@procs) {
 return undef;
 }
 
+sub get_minecraft_config_file
+{
+return $config{'minecraft_dir'}."/server.properties";
+}
+
 # get_minecraft_config()
 # Parses the config into an array ref of hash refs
 sub get_minecraft_config
@@ -55,8 +60,7 @@ sub get_minecraft_config
 my @rv;
 my $fh = "CONFIG";
 my $lnum = 0;
-&open_readfile($fh, $config{'minecraft_dir'}."/server.properties") ||
-	return [ ];
+&open_readfile($fh, &get_minecraft_config_file()) || return [ ];
 while(<$fh>) {
 	s/\r|\n//g;
 	s/#.*$//;
@@ -69,6 +73,57 @@ while(<$fh>) {
 	}
 close($fh);
 return \@rv;
+}
+
+# find(name, &config)
+# Returns all objects with some name in the config
+sub find
+{
+my ($name, $conf) = @_;
+my @rv = grep { lc($_->{'name'}) eq lc($name) } @$conf;
+return wantarray ? @rv : $rv[0];
+}
+
+# find_value(name, &config)
+# Returns the values of all objects with some name in the config
+sub find_value
+{
+my ($name, $conf) = @_;
+my @rv = map { $_->{'value'} } &find($name, $conf);
+return wantarray ? @rv : $rv[0];
+}
+
+# save_directive(name, value, &config)
+# Update one directive in the config
+sub save_directive
+{
+my ($name, $value, $conf) = @_;
+my $old = &find($name, $conf);
+my $lref = &read_file_lines(&get_minecraft_config_file());
+if ($old && defined($value)) {
+	# Update existing line
+	$lref->[$old->{'line'}] = $name."=".$value;
+	$old->{'value'} = $value;
+	}
+elsif ($old && !defined($value)) {
+	# Delete existing line
+	splice(@$lref, $old->{'line'}, 1);
+	my $idx = &indexof($old, @$conf);
+	splice(@$conf, $idx, 1) if ($idx >= 0);
+	foreach my $c (@$conf) {
+		if ($c->{'line'} > $old->{'line'}) {
+			$c->{'line'}--;
+			}
+		}
+	}
+elsif (!$old && defined($value)) {
+	# Add new line
+	my $n = { 'name' => $name,
+		  'value' => $value,
+		  'line' => scalar(@$lref) };
+	push(@$lref, $name."=".$value);
+	push(@$conf, $n);
+	}
 }
 
 # get_start_command()
@@ -299,11 +354,16 @@ foreach my $l (@out) {
 return @rv;
 }
 
+sub get_whitelist_file
+{
+return $config{'minecraft_dir'}.'/white-list.txt';
+}
+
 # list_whitelist_users()
 # Returns a list of usernames on the whitelist
 sub list_whitelist_users
 {
-my $lref = &read_file_lines($config{'minecraft_dir'}.'/white-list.txt', 1);
+my $lref = &read_file_lines(&get_whitelist_file(), 1);
 return @$lref;
 }
 
@@ -312,16 +372,21 @@ return @$lref;
 sub save_whitelist_users
 {
 my ($users) = @_;
-my $lref = &read_file_lines($config{'minecraft_dir'}.'/white-list.txt');
+my $lref = &read_file_lines(&get_whitelist_file());
 @$lref = @$users;
-&flush_file_lines($config{'minecraft_dir'}.'/white-list.txt');
+&flush_file_lines(&get_whitelist_file());
+}
+
+sub get_op_file
+{
+return $config{'minecraft_dir'}.'/ops.txt';
 }
 
 # list_op_users()
 # Returns a list of usernames on the operator list
 sub list_op_users
 {
-my $lref = &read_file_lines($config{'minecraft_dir'}.'/ops.txt', 1);
+my $lref = &read_file_lines(&get_op_file(), 1);
 return @$lref;
 }
 
@@ -330,11 +395,9 @@ return @$lref;
 sub save_op_users
 {
 my ($users) = @_;
-my $lref = &read_file_lines($config{'minecraft_dir'}.'/ops.txt');
+my $lref = &read_file_lines(&get_op_file());
 @$lref = @$users;
-&flush_file_lines($config{'minecraft_dir'}.'/ops.txt');
+&flush_file_lines(&get_op_file());
 }
-
-
 
 1;

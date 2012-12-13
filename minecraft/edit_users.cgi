@@ -20,7 +20,7 @@ my @white = &list_whitelist_users();
 print &ui_form_start("save_users.cgi", "post");
 print &ui_hidden('mode', 'white');
 print $text{'users_whitedesc'},"<p>\n";
-print &ui_textarea('white', join("\n", @white), 10, 80);
+print &ui_textarea('white', join("\n", @white), 10, 80),"<br>\n";
 my $enabled = &find_value("white-list", $conf);
 print &ui_checkbox("enabled", 1, $text{'users_enabled'},
 		   $enabled =~ /true|yes/i);
