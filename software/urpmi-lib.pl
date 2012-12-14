@@ -16,6 +16,7 @@ sub update_system_install {
     &additional_log('exec', undef, "$cmd $update");
     my $qm = join(" ", map { quotemeta($_) } split(/\s+/, $update));
     &open_execute_command(my $CMD, "$cmd $qm </dev/null", 2);
+    local $_;
     while (<$CMD>) {
 	s/\r|\n//g;
 	if (/installing\s+(\S+)\s+from/) {
@@ -66,6 +67,7 @@ sub update_system_resolve {
 sub update_system_available() {
     my @rv;
     &open_execute_command(my $PKG, "urpmq -f --list|sort -u", 1, 1);
+    local $_;
     while (<$PKG>) {
 	if (/^(\S+)\-(\d[^\-]*)\-([^\.]+)\.(\S+)/) {
 	    push(@rv, { 'name' => $1,

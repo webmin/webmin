@@ -20,8 +20,8 @@ print "<pre>";
 &additional_log("exec", undef, $cmd);
 &clean_environment();
 open(my $CMD, "$cmd 2>&1 </dev/null |");
-while (<$CMD>) {
-	print &html_escape($_);
+while (my $s = <$CMD>) {
+    print &html_escape($s);
 }
 close($CMD);
 &reset_environment();
