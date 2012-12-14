@@ -74,15 +74,13 @@ sub update_system_resolve {
 sub update_system_available() {
     my @rv;
     &open_execute_command(my $PKG, "urpmq -f --list|sort -u", 1, 1);
-    local $_;
-    while (<$PKG>) {
-	if (/^(\S+)\-(\d[^\-]*)\-([^\.]+)\.(\S+)/) {
-	    push(@rv, { 'name' => $1,
-			'version' => $2,
-			'release' => $3,
-			'arch' => $4 });
-	}
-    }
-    return @rv;
+    map {
+	/^(\S+)\-(\d[^\-]*)\-([^\.]+)\.(\S+)/ ?
+	    +{ 'name' => $1,
+	       'version' => $2,
+	       'release' => $3,
+	       'arch' => $4,
+	     } : ();
+    } <$PKG>;
 }
 
