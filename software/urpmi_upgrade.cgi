@@ -20,11 +20,11 @@ print "<b>", &text('urpmi_updatedesc', "<tt>$cmd</tt>"), "</b><p>\n";
 print "<pre>";
 &additional_log("exec", undef, $cmd);
 &clean_environment();
-open(CMD, "$cmd 2>&1 </dev/null |");
-while (<CMD>) {
+open(my $CMD, "$cmd 2>&1 </dev/null |");
+while (<$CMD>) {
 	print &html_escape($_);
 	}
-close(CMD);
+close($CMD);
 &reset_environment();
 print "</pre>\n";
 if ($?) {
