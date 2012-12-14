@@ -1,5 +1,6 @@
 # urpmi-lib.pl
 # Functions for installing packages with Mageia/Mandriva urpmi
+use urpm::util;
 
 sub list_update_system_commands() {
     return "urpmi";
@@ -53,10 +54,16 @@ sub update_system_form() {
 # the name used by urpmi.
 sub update_system_resolve {
     my ($name) = @_;
+    my $is_mageia = cat_('/etc/release') =~ /Mageia/;
     my %pkgs = (
-		apache => 'apache2',
+		apache => $is_mageia ? 'apache' : 'apache2',
 		dhcpd => 'dhcp-server',
-		mysql => 'MySQL MySQL-client MySQL-common',
+		mysql => $is_mageia ? 'mariadb' : 'MySQL MySQL-client MySQL-common',
+		($is_mageia ? (
+			       openldap => 'openldap openldap-servers',
+			       samba => 'samba-client samba-server',
+			      ) : ()
+		),
 		'postgresql' => 'postgresql postgresql-server',
 	       );
     return $pkgs{name} || $name;
