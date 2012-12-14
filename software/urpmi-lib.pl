@@ -52,11 +52,13 @@ sub update_system_form() {
 # the name used by YUM.
 sub update_system_resolve {
     my ($name) = @_;
-    return $name eq "apache" ? "apache2" :
-	$name eq "dhcpd" ? "dhcp-server" :
-	$name eq "mysql" ? "MySQL MySQL-client MySQL-common" :
-	$name eq "postgresql" ? "postgresql postgresql-server" :
-	$name;
+    my %pkgs = (
+		apache => 'apache2',
+		dhcpd => 'dhcp-server',
+		mysql => 'MySQL MySQL-client MySQL-common',
+		'postgresql' => 'postgresql postgresql-server',
+	       );
+    return $pkgs{name} || $name;
 }
 
 # update_system_available()
