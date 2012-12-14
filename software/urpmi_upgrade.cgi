@@ -8,11 +8,10 @@ require './software-lib.pl';
 if ($in{upgrade}) {
 	$cmd = "urpmi --force --auto-select";
 	$mode = "upgrade";
-	}
-else {
+} else {
 	$cmd = "urpmi.update main updates contrib";
 	$mode = "update";
-	}
+}
 	
 &ui_print_unbuffered_header(undef, $text{'urpmi_title_' . $mode}, "");
 
@@ -23,17 +22,16 @@ print "<pre>";
 open(my $CMD, "$cmd 2>&1 </dev/null |");
 while (<$CMD>) {
 	print &html_escape($_);
-	}
+}
 close($CMD);
 &reset_environment();
 print "</pre>\n";
 if ($?) {
 	print "<b>$text{uprmi_upgradefailed}</b><p>\n";
-	}
-else {
+} else {
 	print "<b>$text{urpmi_upgradeok}</b><p>\n";
 	&webmin_log("urpmi", $mode);
-	}
+}
 
 &ui_print_footer("", $text{index_return});
 
