@@ -1,7 +1,7 @@
 # urpmi-lib.pl
 # Functions for installing packages with Mageia/Mandriva urpmi
 
-sub list_update_system_commands
+sub list_update_system_commands()
 {
 return "urpmi";
 }
@@ -41,7 +41,7 @@ else {
 
 # update_system_form()
 # Shows a form for updating all packages on the system
-sub update_system_form
+sub update_system_form()
 {
 print &ui_subheading($text{urpmi_form});
 print &ui_form_start("urpmi_upgrade.cgi");
@@ -65,7 +65,7 @@ return $name eq "apache" ? "apache2" :
 
 # update_system_available()
 # Returns a list of package names and versions that are available from URPMI
-sub update_system_available
+sub update_system_available()
 {
 local @rv;
 &open_execute_command(PKG, "urpmq -f --list|sort -u", 1, 1);

@@ -5,7 +5,7 @@ require './software-lib.pl';
 &ReadParse();
 
 # Work out what we are doing
-if ($in{'upgrade'}) {
+if ($in{upgrade}) {
 	$cmd = "urpmi --force --auto-select";
 	$mode = "upgrade";
 	}
