@@ -3,22 +3,22 @@
 
 sub list_update_system_commands
 {
-return ("urpmi");
+return "urpmi";
 }
 
 # update_system_install([package])
 # Install some package with urpmi
 sub update_system_install
 {
-local $update = $_[0] || $in{'update'};
+local $update = $_[0] || $in{update};
 local (@rv, @newpacks);
 local $cmd = "urpmi --force --auto --media main";
-print "<b>",&text('urpmi_install', "<tt>$cmd $update</tt>"),"</b><p>\n";
+print "<b>", &text('urpmi_install', "<tt>$cmd $update</tt>"), "</b><p>\n";
 print "<pre>";
 &additional_log('exec', undef, "$cmd $update");
 local $qm = join(" ", map { quotemeta($_) } split(/\s+/, $update));
-&open_execute_command(CMD, "$cmd $qm </dev/null", 2);
-while(<CMD>) {
+&open_execute_command(my $CMD, "$cmd $qm </dev/null", 2);
+while (<$CMD>) {
 	s/\r|\n//g;
 	if (/installing\s+(\S+)\s+from/) {
 		# Found a package
@@ -26,16 +26,15 @@ while(<CMD>) {
 		$pkg =~ s/\-\d.*//;	# remove version
 		push(@rv, $pkg);
 		}
-	print &html_escape($_."\n");
+	print &html_escape($_ . "\n");
 	}
-close(CMD);
 print "</pre>\n";
 if ($?) {
-	print "<b>$text{'urpmi_failed'}</b><p>\n";
-	return ( );
+	print "<b>$text{urpmi_failed}</b><p>\n";
+	return ();
 	}
 else {
-	print "<b>$text{'urpmi_ok'}</b><p>\n";
+	print "<b>$text{urpmi_ok}</b><p>\n";
 	return &unique(@rv);
 	}
 }
@@ -44,10 +43,10 @@ else {
 # Shows a form for updating all packages on the system
 sub update_system_form
 {
-print &ui_subheading($text{'urpmi_form'});
+print &ui_subheading($text{urpmi_form});
 print &ui_form_start("urpmi_upgrade.cgi");
-print &ui_submit($text{'urpmi_update'}, "update"),"<br>\n";
-print &ui_submit($text{'urpmi_upgrade'}, "upgrade"),"<br>\n";
+print &ui_submit($text{urpmi_update}, "update"), "<br>\n";
+print &ui_submit($text{urpmi_upgrade}, "upgrade"), "<br>\n";
 print &ui_form_end();
 }
 
@@ -71,7 +70,7 @@ sub update_system_available
 local @rv;
 local %done;
 &open_execute_command(PKG, "urpmq -f --list", 1, 1);
-while(<PKG>) {
+while (<PKG>) {
 	if (/^(\S+)\-(\d[^\-]*)\-([^\.]+)\.(\S+)/) {
 		next if ($done{$1,$2}++);
 		push(@rv, { 'name' => $1,
