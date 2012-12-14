@@ -49,7 +49,7 @@ sub update_system_form() {
 
 # update_system_resolve(name)
 # Converts a standard package name like apache, sendmail or squid into
-# the name used by YUM.
+# the name used by urpmi.
 sub update_system_resolve {
     my ($name) = @_;
     my %pkgs = (
