@@ -1,15 +1,13 @@
 # urpmi-lib.pl
 # Functions for installing packages with Mageia/Mandriva urpmi
 
-sub list_update_system_commands()
-{
+sub list_update_system_commands() {
 return "urpmi";
 }
 
 # update_system_install([package])
 # Install some package with urpmi
-sub update_system_install
-{
+sub update_system_install {
 local $update = $_[0] || $in{update};
 local (@rv, @newpacks);
 local $cmd = "urpmi --force --auto --media main";
@@ -41,8 +39,7 @@ else {
 
 # update_system_form()
 # Shows a form for updating all packages on the system
-sub update_system_form()
-{
+sub update_system_form() {
 print &ui_subheading($text{urpmi_form});
 print &ui_form_start("urpmi_upgrade.cgi");
 print &ui_submit($text{urpmi_update}, "update"), "<br>\n";
@@ -53,8 +50,7 @@ print &ui_form_end();
 # update_system_resolve(name)
 # Converts a standard package name like apache, sendmail or squid into
 # the name used by YUM.
-sub update_system_resolve
-{
+sub update_system_resolve {
 local ($name) = @_;
 return $name eq "apache" ? "apache2" :
        $name eq "dhcpd" ? "dhcp-server" :
@@ -65,8 +61,7 @@ return $name eq "apache" ? "apache2" :
 
 # update_system_available()
 # Returns a list of package names and versions that are available from URPMI
-sub update_system_available()
-{
+sub update_system_available() {
 local @rv;
 &open_execute_command(my $PKG, "urpmq -f --list|sort -u", 1, 1);
 while (<$PKG>) {
