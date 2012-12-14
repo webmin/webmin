@@ -68,11 +68,9 @@ return $name eq "apache" ? "apache2" :
 sub update_system_available
 {
 local @rv;
-local %done;
 &open_execute_command(PKG, "urpmq -f --list", 1, 1);
 while (<PKG>) {
 	if (/^(\S+)\-(\d[^\-]*)\-([^\.]+)\.(\S+)/) {
-		next if ($done{$1,$2}++);
 		push(@rv, { 'name' => $1,
 			    'version' => $2,
 			    'release' => $3,
