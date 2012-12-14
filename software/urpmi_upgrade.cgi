@@ -32,7 +32,7 @@ if ($?) {
 	}
 else {
 	print "<b>$text{urpmi_upgradeok}</b><p>\n";
-	&webmin_log("urpmi", $mode)
+	&webmin_log("urpmi", $mode);
 	}
 
 &ui_print_footer("", $text{index_return});
