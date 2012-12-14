@@ -1,5 +1,5 @@
 # urpmi-lib.pl
-# Functions for installing packages with Mandrake urpmi
+# Functions for installing packages with Mageia/Mandriva urpmi
 
 sub list_update_system_commands
 {
