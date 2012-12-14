@@ -20,6 +20,9 @@ sub update_system_install {
     local $_;
     while (<$CMD>) {
 	s/\r|\n//g;
+	# FIXME: this is bogus:
+	# 1) urpmi can actually print "installing pkg1 pkg2 pkg3... pkgX from"
+	# 2) urpmi may not print the "from" part
 	if (/installing\s+(\S+)\s+from/) {
 	    # Found a package
 	    my $pkg = $1;
