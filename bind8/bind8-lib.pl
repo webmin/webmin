@@ -2779,7 +2779,7 @@ local $rndc_args = $_[1] || $_[0];
 local $out;
 if (&has_ndc() == 2) {
 	# Try with rndc
-	$out = &backquote_logged("$config{'rndc_cmd'} $rndc_args 2>&1 </dev/null");
+	$out = &backquote_logged("$config{'rndc_cmd'} -c $config{'rndc_conf'} $rndc_args 2>&1 </dev/null");
 	}
 if (&has_ndc() != 2 || $out =~ /connect\s+failed/i) {
 	if (&has_ndc(2)) {
