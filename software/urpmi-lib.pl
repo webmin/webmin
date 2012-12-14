@@ -10,7 +10,7 @@ sub list_update_system_commands() {
 sub update_system_install {
     my $update = $_[0] || $in{update};
     my (@rv, @newpacks);
-    my $cmd = "urpmi --force --auto --media main";
+    my $cmd = "urpmi --force --auto";
     print "<b>", &text('urpmi_install', "<tt>$cmd $update</tt>"), "</b><p>\n";
     print "<pre>";
     &additional_log('exec', undef, "$cmd $update");

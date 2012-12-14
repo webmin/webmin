@@ -9,7 +9,7 @@ if ($in{upgrade}) {
 	$cmd = "urpmi --force --auto-select";
 	$mode = "upgrade";
 } else {
-	$cmd = "urpmi.update main updates contrib";
+	$cmd = "urpmi.update -a";
 	$mode = "update";
 }
 	
