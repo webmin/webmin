@@ -800,8 +800,11 @@ if ($init_mode eq "init" || $init_mode eq "local" || $init_mode eq "upstart" ||
 		    (@chk && $chk[3] || $data =~ /Default-Start:/i)) {
 			# Call the chkconfig command to link up
 			&system_logged("chkconfig --add ".quotemeta($_[0]));
-			&system_logged("chkconfig ".quotemeta($_[0])." on");
-			$done = 1;
+			my $ex = &system_logged(
+				"chkconfig ".quotemeta($_[0])." on");
+			if (!$ex) {
+				$done = 1;
+				}
 			}
 		elsif (&has_command("insserv") && !$config{'no_chkconfig'} &&
 		       $data =~ /Default-Start:/i) {
