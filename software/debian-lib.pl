@@ -120,7 +120,7 @@ sub installed_file
 {
 local $qm = quotemeta($_[0]);
 local $out = &backquote_command("dpkg --search $qm 2>&1", 1);
-return 0 if ($out =~ /not found/i);
+return 0 if ($out =~ /not\s+found|no\s+path\s+found/i);
 $out =~ s/:\s+\S+\n$//;
 local @pkgin = split(/[\s,]+/, $out);
 local $real = &translate_filename($_[0]);
