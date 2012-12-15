@@ -12,5 +12,5 @@ status_check=0
 order=0
 sort_mode=0
 boot_levels=2 3 5
-no_chkconfig=0
+no_chkconfig=1
 init_info=1
