@@ -3,6 +3,7 @@
 # XXX java param options
 # XXX plugins?
 # XXX world reset
+# XXX world create / clone
 
 BEGIN { push(@INC, ".."); };
 use strict;
@@ -41,7 +42,7 @@ my $jar = $config{'minecraft_jar'} ||
 my $shortjar = $jar;
 $shortjar =~ s/^.*\///;
 foreach my $p (@procs) {
-	if ($p->{'args'} =~ /\Q$config{'java_cmd'}\E.*(\Q$jar\E|\Q$shortjar\E)/) {
+	if ($p->{'args'} =~ /^\S*\Q$config{'java_cmd'}\E.*(\Q$jar\E|\Q$shortjar\E)/) {
 		return $p->{'pid'};
 		}
 	}
@@ -195,6 +196,12 @@ if (&is_minecraft_server_running()) {
 # Fatal kill
 if (&is_minecraft_server_running()) {
 	kill('KILL', $pid);
+	}
+
+# Clean up FIFO tailer
+my $fpid = int(&backquote_command("fuser ".&get_input_fifo()." 2>/dev/null"));
+if ($fpid) {
+	kill('TERM', $fpid);
 	}
 return undef;
 }
@@ -398,6 +405,26 @@ my ($users) = @_;
 my $lref = &read_file_lines(&get_op_file());
 @$lref = @$users;
 &flush_file_lines(&get_op_file());
+}
+
+# list_worlds()
+# Returns a list of possible world directories
+sub list_worlds
+{
+my @rv;
+foreach my $dat (glob("$config{'minecraft_dir'}/*/level.dat")) {
+	$dat =~ /^(.*\/([^\/]+))\/level.dat$/ || next;
+	my $path = $1;
+	my $name = $2;
+	my @players = map { s/^.*\///; s/\.dat$//; $_ }
+			  glob("$path/players/*");
+	push(@rv, { 'path' => $path,
+		    'name' => $name,
+		    'size' => &disk_usage_kb($path)*1024,
+		    'lock' => (-r "$path/session.lock"),
+		    'players' => \@players });
+	}
+return @rv;
 }
 
 1;
