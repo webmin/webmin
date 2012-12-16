@@ -1,0 +1,3 @@
+line2=System konfigurasjon,11
+stunnel_path=Sti til stunnel program,0
+pem_path=Sti til standard stunnel PEM fil,3,Ingen
