@@ -947,7 +947,7 @@ return ( $network_interfaces_config, "/etc/nsswitch.conf", "/etc/resolv.conf",
 # Apply the interface and routing settings
 sub apply_network
 {
-&system_logged("(cd / ; /etc/init.d/networking stop ; /etc/init.d/networking start) >/dev/null 2>&1");
+&system_logged("(cd / ; /etc/init.d/networking restart) >/dev/null 2>&1");
 }
 
 # get_default_gateway()
