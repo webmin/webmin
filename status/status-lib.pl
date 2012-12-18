@@ -457,6 +457,9 @@ return ( { 'id' => 'tmobile',
 	 { 'id' => 'telus',
 	   'desc' => 'Telus Canada',
 	   'domain' => 'msg.telus.com' },
+         { 'id' => 'cricket',
+           'desc' => 'Cricket',
+           'domain' => 'sms.mycricket.com' },
         );
 }
 
