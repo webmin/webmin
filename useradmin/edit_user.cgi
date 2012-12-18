@@ -592,7 +592,8 @@ if ($n ne "") {
 		local %uminiserv;
 		&usermin::get_usermin_miniserv_config(\%uminiserv);
 		if ($uminiserv{'session'}) {
-			push(@buts, [ "switch", $text{'uedit_swit'} ]);
+			push(@buts, [ "switch", $text{'uedit_swit'}, undef, 0,
+				"onClick='form.target=\"_blank\"'" ]);
 			}
 		}
 

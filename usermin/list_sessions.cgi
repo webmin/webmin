@@ -47,7 +47,7 @@ else {
 
 # Show quick switch form
 print &ui_hr();
-print &ui_form_start("switch.cgi", "get", "_new");
+print &ui_form_start("switch.cgi", "get", "_blank");
 print $text{'sessions_switch'},"\n";
 print &ui_user_textbox("user");
 print &ui_submit($text{'sessions_ok'});
