@@ -92,7 +92,7 @@ run_ecmduser=User '$1' to run command as does not exist
 run_eopt=Invalid option selected
 run_eupload=No file to upload selected
 run_emust=Missing value for parameter '$1'
-run_timeout=Command terminated after $1 second timeout.
+run_timeout=Command failed to complete before $1 second timeout.
 
 log_modify=Modified command $1
 log_create=Created command $1

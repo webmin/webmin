@@ -69,14 +69,22 @@ foreach $h (@hosts) {
 		}
 	else {
 		# Remote foreign call
-		&remote_foreign_require($server->{'host'}, "custom",
-					"custom-lib.pl");
-		&remote_foreign_call($server->{'host'}, "custom",
+		eval {
+			$SIG{'ALRM'} = sub { die "timeout" };
+			alarm($cmd->{'timeout'} ? $cmd->{'timeout'} + 5 : 60);
+			&remote_foreign_require($server->{'host'}, "custom",
+						"custom-lib.pl");
+			&remote_foreign_call($server->{'host'}, "custom",
 				     "set_parameter_envs", $cmd, $cmd->{'cmd'},
 				     \@user_info, \%in, 1);
-		($got, $out, $timeout) = &remote_foreign_call(
-			$server->{'host'}, "custom", "execute_custom_command",
-			$cmd, $env, $export, $str);
+			($got, $out, $timeout) = &remote_foreign_call(
+			   $server->{'host'}, "custom",
+			   "execute_custom_command", $cmd, $env, $export, $str);
+			};
+		if ($@ =~ /timeout/) {
+			$timeout = 1;
+			}
+		alarm(0);
 		}
 	if ($h == 0) {
 		&additional_log('exec', undef, $displaystr);
@@ -96,7 +104,7 @@ foreach $h (@hosts) {
 			}
 		elsif ($timeout) {
 			print "<b>",&text('run_timeout',
-					  $cmd->{'timeout'}),"</b><p>\n";
+					  $cmd->{'timeout'} || 60),"</b><p>\n";
 			}
 		}
 
