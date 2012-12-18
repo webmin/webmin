@@ -1,0 +1,8 @@
+line2=System konfigurasjon,11
+jabber_config=Jabber XML konfigfil,0
+jabber_dir=Jabber grunnkatalog,0
+jabber_daemon=Sti ti lJabber tjenerprogram,3,Under grunnkatalog
+jabber_spool=Jabber hosts katalog,3,Under grunnkatalog
+jabber_lib=Jabber katalog for delte biblioteker,3,Ingen
+start_cmd=Kommando for &#229; starte jabber,0
+stop_cmd=Kommandoe for &#229; stoppe jabber,3,Stopp prosess
