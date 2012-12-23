@@ -39,6 +39,11 @@ $miniserv{'ssl_redirect'} = $wminiserv{'ssl_redirect'};
 $miniserv{'ssl_version'} = $wminiserv{'ssl_version'};
 $miniserv{'ssl_cipher_list'} = $wminiserv{'ssl_cipher_list'};
 $miniserv{'extracas'} = $wminiserv{'extracas'};
+
+# Copy per-IP certs
+@ipkeys = &webmin::get_ipkeys(\%wminiserv);
+&webmin::save_ipkeys(\%miniserv, \@ipkeys);
+
 &put_usermin_miniserv_config(\%miniserv);
 &unlock_file($usermin_miniserv_config);
 
