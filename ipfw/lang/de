@@ -1,8 +1,12 @@
 __norefs=1
 action_allow=<font color=#00aa00>Erlauben</font>
+action_check-state=&#220;berpr&#252;fe dynamischen Regelsatz
 action_count=Aktualisiere Z&#228;hler
 action_deny=<font color=#ff0000>Verwerfen</font>
+action_divert=Umleiten auf Port
 action_fwd=Leite auf IP und Port weiter
+action_pipe=Leite an Pipe weiter
+action_queue=Leite an Warteschlange weiter
 action_reject=<font color=#ff4400>Ablehnen</font>
 action_reset=<font color=#ff4400>Zur&#252;cksetzen</font>
 action_skipto=Weiter zu
@@ -67,29 +71,44 @@ desc_to=Ziel ist $1
 desc_to_not=Ziel ist nicht $1
 desc_to_ports=Ziel Port ist $1
 desc_to_ports_not=Ziel Port ist nicht $1
+desc_uid=gesendet von UID $1
+desc_via=&#252;berge &#252;ber $1
+desc_via_not=nicht &#252;bergeben &#252;ber $1
+desc_where=wo $1
 desc_xmit=&#252;bermittelt an $1
 desc_xmit_not=nicht &#252;bermittelt an $1
 edit_action=Aktion zum ausf&#252;hren
 edit_any=&lt;Jede&gt;
+edit_bridged=Entspricht &#252;berbr&#252;ckte Pakete?
 edit_cmt=Regel Kommentar
+edit_desc=Die Aktion, die oben ausgew&#228;hlte sind, erfolgt nur, wenn <b>alle</b> die nachstehenden Bedingungen erf&#252;llt sind.
 edit_dst-addr=Zu Ziel Adresse..
 edit_dst-port=Zu Ziel Port..
 edit_dstport=Optionale Zielports sind
+edit_established=Entspricht aufgebaute TCP-Verbindungen?
+edit_frag=Entspricht fragmentierte Pakete?
 edit_from=Quelladresse
+edit_gid=Senden oder Empfangen der Gruppe
 edit_group=UNIX Gruppe oder #GID
 edit_header1=Regel Aktion
 edit_header2=Andere Regeloptionen
 edit_header3=Regel Bedingung
 edit_headerfrom=Paket Quell Bedingungen
 edit_headerto=Paket Ziel Bedingungen
+edit_icmptypes=Entspricht ICMP Typ
 edit_ignored=Ignoriert
 edit_inout=Paketrichtung
 edit_inout1=Einkommend
 edit_inout2=Ausgehend
+edit_keep-state=Lassen Pausieren der Verbindung?
+edit_limit=Maximale passenden Anschl&#252;sse
+edit_log=Logge &#252;bereinstimmende Pakete?
+edit_logyes=Ja, am meisten $1 mal (lassen Sie es leer f&#252;r kein)
 edit_mac1=Quelle MAC Adresse
 edit_mac2=Ziel MAC Adresse
 edit_macaddr=Ethernet Adresse
 edit_not=Nicht $1
+edit_num=Ordnungsnummer
 edit_oifc=Andere..
 edit_orblock=IPFW Ausdruck
 edit_pany=Jede Ports
@@ -102,11 +121,13 @@ edit_proto_not=Jedes Protokoll ausgenommen ausgew&#228;hlte
 edit_recv=Empfangen auf Schnittstelle
 edit_saddr=Adresse, Host oder Netzwerk
 edit_sany=Jede Adresse
+edit_setup=Entspricht TCP Verbindungeinstellungen?
 edit_sme=Firewall Systemadressen
 edit_snot=Alle Adressen ausgenommen diese ausgew&#228;hlten
 edit_src-addr=Von Quell Adresse..
 edit_src-port=Von Quell Port..
 edit_srcport=Optionale Quellports sind
+edit_tcpflags=Trifft zu, wenn TCP-Flags gesetzt sind
 edit_title1=Erstelle Regel
 edit_title2=Editiere Regel $1
 edit_to=Ziel Adresse
@@ -120,6 +141,7 @@ index_add=F&#252;ge eine neue Firewall Regel hinzu
 index_add2=F&#252;ge Firewall Regel hinzu
 index_apply=Wende Konfiguration an
 index_applydesc=Klicken Sie auf diese Schaltfl&#228;che, um die Firewall-Konfiguration aktiv zu setzen. Alle Firewall-Regeln, die derzeit aktiv sind, werden geleert und ersetzt
+index_applydesc2=Klicke auf diese Schaltfl&#228;che, um die Firewall-Konfiguration auf allen Servern, die im Cluster aufgelistet sind, aktiv zu setzen. Alle Firewall-Regeln, die  derzeit aktiv sind, werden verworfen und ersetzt.
 index_atboot=Aktiviere Firewall beim Booten?
 index_auto=Firewall Setup
 index_auto0=Erlaube gesamten Traffic
@@ -138,11 +160,13 @@ index_delete=L&#246;sche ausgew&#228;hltes
 index_desc=Bedingung
 index_eipfw=Die BSD Firewall Befehl $1 wurde nicht auf Ihrem System gefunden. Vielleicht ist es nicht installiert ist oder die <a href='$2'>Modulkonfiguration</a> ist falsch.
 index_elist=Ein Fehler ist beim Abrufen der aktiven Firewall-Regeln mit dem Befehl $1 : $ 2 aufgetreten. Vielleicht ist der Kernel nicht konfiguriert, dass dieser die Firewall unterst&#252;tzt oder die <a href='$3'>Modulkonfiguration</a> ist falsch.
+index_existing=Webmin hat erkannt, dass $1 IPFW Firewall-Regeln derzeit in Benutzung sind, die nicht in der Datei $2 aufgezeichnet sind. Diese Regeln waren wahrscheinlich von einem Skript erstellt worden, das dieses Modul nicht kennt und wei&#223;, wie zu lesen und zu bearbeiten ist.<p>Wenn Sie dieses Modul benutzen, um Ihre IPFW Firewall verwalten zu lassen, klicken Sie auf die Schaltfl&#228;che unten, um die bestehenden Regeln zu konvertieren und in einer Sicherungsdatei zu speichern, und deaktivieren Sie dann Ihr bestehende Firewall-Skript.
 index_headerex=Bestehende Firewall Konfiguration
 index_move=Verschieben
 index_num=Num
 index_radd=HInzuf&#252;gen
 index_reset=Firewall zur&#252;cksetzen
+index_resetdesc=Klicke auf diese Schaltfl&#228;che, um alle bestehenden Firewall-Regeln zu l&#246;schen und die Einrichtung neuer Regeln f&#252;r eine grundlegende Erstkonfiguration.
 index_return=Firewall Regeln
 index_rsetup=Die IPFW Firewall-Konfiguration auf Ihrem System ist im Begriff, wieder eingestellt werden. Webmin wird neue Standard-Regeln festlegen, um in der Datei $1 gespeichert werden, mit den Grundeinstellungen auf Basis Ihrer Auswahl des Firewall-Typ unten..
 index_saveex=Speichere Firewall Regeln
@@ -153,6 +177,8 @@ index_unapplydesc=Klicke auf diese Schaltfl&#228;che, um die Konfiguration wie o
 index_version=IPFW version $1
 laction_allow=<font color=#00aa00>Erlaube Paket</font>
 laction_deny=<font color=#ff0000>Verwerfe Paket</font>
+laction_reject=<font color=#ff4400>Zur&#252;ck zur ICMP Verwerfung</font>
+laction_reset=<font color=#ff4400>Zur&#252;cksetzen der TCP-Verbindung</font>
 laction_skipto=Weiter zu Regel
 log_apply=Wende firewall Konfiguration an
 log_bootdown=Deaktiviere Firewall beim Booten
