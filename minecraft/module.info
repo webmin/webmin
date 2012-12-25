@@ -1,3 +1,4 @@
 desc=Minecraft Server
 depends=init proc
 category=servers
+desc_de=Minecraft Server
