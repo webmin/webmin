@@ -27,8 +27,10 @@ if ($in{'new'}) {
 	# Create world directory
 	if ($in{'src'} == 0) {
 		# Empty world
-		# XXX .dat file?
-		&make_dir_logged($dir, 0755);
+		&make_dir($dir, 0755);
+		my $fh = "EMPTY";
+		&open_tempfile($fh, ">$dir/level.dat", 0, 1);
+		&close_tempfile($fh);
 		}
 	elsif ($in{'src'} == 1) {
 		# Clone existing world
@@ -67,7 +69,6 @@ if ($in{'new'}) {
 		-r $dat && $dat =~ /^(.*)\/level.dat$/ ||
 			&error($text{'world_edat'});
 		my $copysrc = $1;
-		print STDERR "dat=$dat copysrc=$copysrc\n";
 		&copy_source_dest($copysrc, $dir);
 		}
 	&redirect("list_worlds.cgi");

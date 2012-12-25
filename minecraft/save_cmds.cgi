@@ -11,9 +11,43 @@ our (%in, %text);
 my $msg;
 if ($in{'gamemode'}) {
 	# Change game mode
+	my $out = &execute_minecraft_command(
+                "/defaultgamemode $in{'defmode'}");
+	$out =~ /The\s+world's\s+default\s+game\s+mode/ ||
+                &error(&html_escape($out));
+	$msg = &text('cmds_gamemodedone', $in{'defmode'});
 	}
 elsif ($in{'difficulty'}) {
 	# Change game mode
+	&send_server_command("/difficulty $in{'diff'}");
+	$msg = $text{'cmds_difficultydone'};
+	}
+elsif ($in{'time'}) {
+	# Change game time
+	my $mode;
+	if ($in{'time_mode'} == 0) {
+		$mode = 'set day';
+		}
+	elsif ($in{'time_mode'} == 1) {
+		$mode = 'set night';
+		}
+	elsif ($in{'time_mode'} == 2) {
+		$in{'timeset'} =~ /^\d+$/ &&
+		  $in{'timeset'} >= 0 && $in{'timeset'} <= 24000 ||
+		    &error($text{'cmds_etimeset'});
+		$mode = 'set '.$in{'timeset'};
+		}
+	elsif ($in{'time_mode'} == 3) {
+		$in{'timeadd'} =~ /^\d+$/ &&
+		  $in{'timeadd'} >= 0 && $in{'timeadd'} <= 24000 ||
+		    &error($text{'cmds_etimeadd'});
+		$mode = 'add '.$in{'timeadd'};
+		}
+	my $out = &execute_minecraft_command(
+                "/time $mode");
+	$out =~ /Set\s+the\s+time/ || $out =~ /Added.*to\s+the\s+time/ ||
+                &error(&html_escape($out));
+	$msg = &text('cmds_timedone');
 	}
 elsif ($in{'downfall'}) {
 	# Start rain
@@ -22,6 +56,16 @@ elsif ($in{'downfall'}) {
 	$out =~ /Toggled\s+downfall/ ||
                 &error(&html_escape($out));
 	$msg = &text('cmds_downfalldone');
+	}
+elsif ($in{'weather'}) {
+	# Change weather
+	$in{'secs'} =~ /^[1-9][0-9]*$/ ||
+		&error($text{'cmds_esecs'});
+	my $out = &execute_minecraft_command(
+                "/weather $in{'wtype'} $in{'secs'}");
+	$out =~ /Changing\s+to/ ||
+                &error(&html_escape($out));
+	$msg = &text('cmds_weatherdone', $in{'wtype'}, $in{'secs'});
 	}
 else {
 	&error($text{'conn_ebutton'});

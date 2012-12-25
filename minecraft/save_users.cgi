@@ -16,7 +16,7 @@ if ($in{'mode'} eq 'white') {
 	my @users = split(/\r?\n/, $in{'white'});
 	&save_whitelist_users(\@users);
 	&save_directive("white-list", $in{'enabled'} ? 'true' : 'false', $conf);
-	&flush_file_lines();
+	&flush_file_lines(&get_minecraft_config_file());
 	&unlock_file(&get_whitelist_file());
 	&unlock_file(&get_minecraft_config_file());
 

@@ -2,8 +2,7 @@
 #
 # XXX java param options
 # XXX plugins?
-# XXX world reset
-# XXX world create / clone
+# XXX configuration page, with seed field
 
 BEGIN { push(@INC, ".."); };
 use strict;
@@ -266,8 +265,8 @@ sub list_connected_players
 my @out = &execute_minecraft_command("/list");
 my @rv;
 foreach my $l (@out) {
-	if ($l =~ /\[INFO\]\s+(\S+)$/) {
-		push(@rv, $1);
+	if ($l !~ /players\s+online:/ && $l =~ /\[INFO\]\s+(\S.*)$/) {
+		push(@rv, split(/,\s+/, $1));
 		}
 	}
 return @rv;
@@ -340,8 +339,8 @@ sub list_banned_players
 my @out = &execute_minecraft_command("/banlist");
 my @rv;
 foreach my $l (@out) {
-	if ($l =~ /\[INFO\]\s+(\S+)$/) {
-		push(@rv, $1);
+	if ($l !~ /banned\s+players:/ && $l =~ /\[INFO\]\s+(\S.*)$/) {
+		push(@rv, split(/,\s+/, $1));
 		}
 	}
 return @rv;
@@ -351,11 +350,11 @@ return @rv;
 # Returns a list of players who are whitelisted
 sub list_whitelisted_players
 {
-my @out = &execute_minecraft_command("/whitelist");
+my @out = &execute_minecraft_command("/whitelist list");
 my @rv;
 foreach my $l (@out) {
-	if ($l =~ /\[INFO\]\s+(\S+)$/) {
-		push(@rv, $1);
+	if ($l !~ /whitelisted\s+players:/ && $l =~ /\[INFO\]\s+(\S.*)$/) {
+		push(@rv, split(/,\s+/, $1));
 		}
 	}
 return @rv;

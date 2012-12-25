@@ -174,5 +174,12 @@ cmds_for=for time
 cmds_weatherb=Change
 cmds_err=World command failed
 cmds_downfalldone=Started rain or snow
+cmds_esecs=Time to change weather for must be a positive number of seconds
+cmds_weatherdone=Changed weather to $1 for $2 seconds
+cmds_etimeset=Time to set must be a number between 0 and 24000
+cmds_etimeadd=Time to add must be a number between 0 and 24000
+cmds_timedone=Changed game time
+cmds_gamemodedone=Changed default game mode to $1
+cmds_difficultydone=Changed game difficulty
 
 manual_title=Edit Configuration File

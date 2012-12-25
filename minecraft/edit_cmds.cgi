@@ -27,7 +27,7 @@ print &ui_table_row($text{'cmds_gamemode'},
 
 # Change difficulty level
 print &ui_table_row($text{'cmds_difficulty'},
-	&ui_select("defmode", 2,
+	&ui_select("diff", 2,
 		   [ [ 0, $text{'cmds_peaceful'} ],
 		     [ 1, $text{'cmds_easy'} ],
 		     [ 2, $text{'cmds_normal'} ],

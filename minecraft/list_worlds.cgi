@@ -39,7 +39,8 @@ if (@worlds) {
 		}
 	print &ui_columns_end();
 	print &ui_links_row(\@links);
-	print &ui_form_end([ [ undef, $text{'worlds_change'} ] ]);
+	print &ui_form_end([ [ undef, $text{'worlds_change'} ],
+			     [ 'apply', $text{'worlds_change2'} ] ]);
 	}
 else {
 	print "<b>$text{'worlds_none'}</b><p>\n";

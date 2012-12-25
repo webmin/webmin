@@ -53,9 +53,9 @@ if ($c || 1) {
 		&ui_textbox("text", undef, 40)." ".
 		&ui_submit($text{'conn_msgb'}, 'msg'));
 
-	# Kill player
-	print &ui_table_row($text{'conn_kill'},
-		&ui_submit($text{'conn_killb'}, 'kill'));
+	# Kill player (not possible?)
+	#print &ui_table_row($text{'conn_kill'},
+	#	&ui_submit($text{'conn_killb'}, 'kill'));
 
 	# Disconnect player
 	print &ui_table_row($text{'conn_kick'},
