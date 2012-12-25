@@ -3,3 +3,4 @@ os_support=*-linux freebsd macos solaris openbsd
 desc=PKI Certificate and Key Management
 name=certmgr
 version=1.8
+desc_de=PKI-Zertifikat und Schl&#252;ssel-Management

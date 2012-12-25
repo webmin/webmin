@@ -1,6 +1,6 @@
 __norefs=1
 acl_elink=Fehlende URL umleiten
 acl_link=Umleiten auf URL
-index_econfig=Keine URL zum Verkn&#252;pfen wurden konfiguriert. <a href='$1'>Klicken Sie hier</ a>, um eine URL angeben.
+index_econfig=Keine URL zum Verkn&#252;pfen wurden konfiguriert. <a href='$1'>Klicken Sie hier</a>, um eine URL angeben.
 index_evirtualmin=Die URL enth&#228;lt Virtualmin-spezifische Variablen, aber kein Server wurde f&#252;r den aktuellen Benutzer gefunden.
 index_title=Custom Link
