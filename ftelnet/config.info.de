@@ -1,0 +1,3 @@
+telnetport=Port f&#252;r Telnet-Server,3,Standard (23)
+rows=Anzahl der Textzeilen,3,Standard (25)
+cols=Anzahl der Textspalten,3,Standard (80)

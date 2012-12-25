@@ -1,0 +1,5 @@
+__norefs=1
+index_eport=Port $1 ist bereits im Einsatz, vielleicht von einem anderen Flash-Policy-Server
+index_esocket=Socket fehlgeschlagen : $1
+index_etelnet=Auf diesem System l&#228;uft kein Telnet-Server auf Port $1.
+index_title=FTelnet
