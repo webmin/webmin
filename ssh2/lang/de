@@ -1,21 +1,9 @@
-#        webmin-1.00     telnet/lang/de
-#
-#        created: ?????                      by: ???
-#        last modified: 21-jul-2002          Rev.: 21-08-2002
-#        modified/translated by: Dieter Huerten
-#        for changes, completions, ...  mailto:dieter.huerten@telebel.de
-#
-# erzeugt: ?????                          durch: ???
-# letzte &Auml;nderung: 21.07.2002             Rev.: 21.08.2002
-# modifiziert/&uuml;bersetzt durch: Dieter H&uuml;rten
-# f&uuml;r &Auml;nderungen, Erg&auml;nzungen, etc. mailto:dieter.huerten@telebel.de
-#
-
-index_title=SSH-/Telnet-Anmeldung
-
-index_warn=Warnung! Diese Telnet-Sitzung ist <B>nicht</B> verschl&uuml;sselt!
-index_nojava=Dieses Modul ben&ouml;tigt Java, aber Ihr Browser unterst&uuml;tzt kein Java
+__norefs=1
 index_credits=Applet entwickelt unter GPL von <a href='$1' target=_top>Matthias L. Jugel &amp; Marcus Mei&szlig;ner</a>
-index_sshcredits=Enth&auml;lt Software, die vom 'Cryptix Development Team' (<a href=$1 target=_top>$1</a>) entwickelt wurde.
+index_elookup=Konnte die IP-Adresse f&#252;r $1, um Telnet- oder SSH-Server zu testen, nicht finden.
 index_esocket=Es l&auml;uft kein Telnet-Server auf $1 (Anschluss $2)
 index_esocket2=Es l&auml;uft kein SSH-Server auf $1 (Anschluss $2)
+index_nojava=Dieses Modul ben&ouml;tigt Java, aber Ihr Browser unterst&uuml;tzt kein Java
+index_sshcredits=Enth&auml;lt Software, die vom 'Cryptix Development Team' (<a href=$1 target=_top>$1</a>) entwickelt wurde.
+index_title=SSH-/Telnet-Anmeldung
+index_warn=Warnung! Diese Telnet-Sitzung ist <B>nicht</B> verschl&uuml;sselt!

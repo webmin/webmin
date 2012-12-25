@@ -2,3 +2,4 @@ desc=DHCP and DNS Hosts
 category=servers
 depends=bind8 dhcpd net
 version=1.6
+desc_de=DHCP und DNS Hosts 

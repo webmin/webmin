@@ -1,47 +1,43 @@
-index_ebind8=Der DNS Server ist auf diesem System nicht installiert, oder läuft nicht. Nutze Webmin's <a href='$1'>BIND DNS Server</a> Module um ihn zu konfigurieren.
-index_edhcpd=Der DHCP Server ist auf diesem System nicht installiert, oder läuft nicht. Nutze Webmin's <a href='$1'>DHCP Server</a> Module um ihn zu konfigurieren.
+__norefs=1
+chooser_ip=Selektiere freie IP Adresse
+chooser_none=Keine freie IP Adressen wurden in ihren Subnetzen gefunden!
+delete_enone=Nichts selektiert
+delete_err=Fehler beim l&#246;schen des Hosts
+edit_egone=Selektierter Host existiert nicht mehr!
+edit_title=Editiere Host
+form_comment=Hostbeschreibung
+form_ethernet=Ethernet
+form_fddi=FDDI
+form_header=DHCP / DNS Hostdetails
+form_host=Hostname
+form_ip=Feste IP Adresse
+form_mac=MAC Adresse
+form_nosubnet=&lt;keins&gt;
+form_subnet=DHCP Subnetz
+form_tr=Token ring
+index_apply=Aktiviere die Konfiguration
+index_applydesc=Dr&#252;cke diesen Button um die aktuelle Konfiguration durch Neustart des DHCP und DNS Servers zu aktivieren.
+index_cheader=F&#252;ge einen neuen Host hinzu
+index_delete=L&#246;sche selektierte Hosts
+index_desc=Beschreibung
+index_ebind8=Der DNS Server ist auf diesem System nicht installiert, oder l&#228;uft nicht. Nutze Webmin's <a href='$1'>BIND DNS Server</a> Module um ihn zu konfigurieren.
+index_edhcpd=Der DHCP Server ist auf diesem System nicht installiert, oder l&#228;uft nicht. Nutze Webmin's <a href='$1'>DHCP Server</a> Module um ihn zu konfigurieren.
 index_edomain=Es ist keine DNS Domain um Hosts zu addieren auf der <a href='$1'>module configuration</a> Seite gesetzt.
 index_edomain2=Die DNS Domain auf der <a href='$1'>module configuration</a> Seite wurde nicht im lokalen <a href='$2'>BIND DNS server</a> gefunden.
 index_esubnets=Die DHCP Subnetze um Hosts zu addieren sind auf der <a href='$1'>module configuration</a> Seite zu setzten.
-index_cheader=Füge einen neuen Host hinzu
 index_host=Hostname
-index_subnet=Subnetz
 index_ip=IP Adresse
 index_mac=MAC Adresse
-index_desc=Beschreibung
-index_delete=Lösche selektierte Hosts
-index_none=Host hosts wurde nicht dem konfigurierten Subnetz zugefügt.
+index_none=Host hosts wurde nicht dem konfigurierten Subnetz zugef&#252;gt.
 index_none2=Keine Treffer ihrer Suche.
-index_return=Liste der Hosts
-index_apply=Aktiviere die Konfiguration
-index_applydesc=Drücke diesen Button um die aktuelle Konfiguration durch Neustart des DHCP und DNS Servers zu aktivieren.
-index_search=Finde Host mit Übereinstimmung:
 index_ok=Suche
-
-form_header=DHCP / DNS Hostdetails
-form_comment=Hostbeschreibung
-form_host=Hostname
-form_ip=Feste IP Adresse
-form_subnet=DHCP Subnetz
-form_nosubnet=&lt;keins&gt;
-form_mac=MAC Adresse
-form_ethernet=Ethernet
-form_tr=Token ring
-form_fddi=FDDI
-
-edit_title=Editiere Host
-edit_egone=Selektierter Host existiert nicht mehr!
-
-save_err=Fehler beim Speichern des Hosts
-save_ehost=Fehlender oder ungültiger Hostname
+index_return=Liste der Hosts
+index_search=Finde Host mit &#220;bereinstimmung:
+index_subnet=Subnetz
 save_eclash=Ein Host mit dem gleichen Namen existiert schon
 save_eclaship=Ein Host mit gleicher IP Adresse existiert schon ($1)
 save_eclashmac=Ein Host mit gleicher MAC Adresse existiert schon ($1)
+save_ehost=Fehlender oder ung&#252;ltiger Hostname
 save_eip=Fehlende oder falsche IPv4 Adresse
 save_emac=Fehlende oder falsche MAC Adresse
-
-delete_err=Fehler beim löschen des Hosts
-delete_enone=Nichts selektiert
-
-chooser_ip=Selektiere freie IP Adresse
-chooser_none=Keine freie IP Adressen wurden in ihren Subnetzen gefunden!
+save_err=Fehler beim Speichern des Hosts
