@@ -727,7 +727,8 @@ foreach $d (@{$_[0]}) {
 	}
 }
 
-# server_root(path, &directives)
+# server_root(path)
+# Convert a relative path to being under the server root
 sub server_root
 {
 if (!$_[0]) { return undef; }
