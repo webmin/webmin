@@ -3,3 +3,4 @@ desc=Manage HTPasswd File
 category=servers
 depends=useradmin
 version=1.4
+desc_de=Verwalte HTPasswd Datei
