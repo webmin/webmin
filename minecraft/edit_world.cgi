@@ -61,6 +61,14 @@ else {
 	print &ui_table_row($text{'worlds_size'},
 		&nice_size($world->{'size'}));
 
+	# Seed, if active
+	if (&is_minecraft_server_running() && $def eq $world->{'name'}) {
+		my $out = &execute_minecraft_command("/seed");
+		if ($out =~ /Seed:\s+(\S+)/) {
+			print &ui_table_row($text{'worlds_seed'}, $1);
+			}
+		}
+
 	# All players
 	if (@{$world->{'players'}}) {
 		my @grid = map { "<a href='view_conn.cgi?name=".&urlize($_).

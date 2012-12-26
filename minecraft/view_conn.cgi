@@ -74,16 +74,16 @@ if ($c || 1) {
 
 	# Change spawn point
 	print &ui_table_row($text{'conn_spawn'},
-		"X:".&ui_textbox("spawnx", int($x), 20)." ".
-		"Y:".&ui_textbox("spawny", int($y), 20)." ".
-		"Z:".&ui_textbox("spawnz", int($z), 20)." ".
+		"X:".&ui_textbox("spawnx", int($x), 10)." ".
+		"Y:".&ui_textbox("spawny", int($y), 10)." ".
+		"Z:".&ui_textbox("spawnz", int($z), 10)." ".
 		&ui_submit($text{'conn_spawnb'}, 'spawn'));
 
 	# Teleport to location
 	print &ui_table_row($text{'conn_tp'},
-		"X:".&ui_textbox("tpx", int($x), 20)." ".
-		"Y:".&ui_textbox("tpy", int($y), 20)." ".
-		"Z:".&ui_textbox("tpz", int($z), 20)." ".
+		"X:".&ui_textbox("tpx", int($x), 10)." ".
+		"Y:".&ui_textbox("tpy", int($y), 10)." ".
+		"Z:".&ui_textbox("tpz", int($z), 10)." ".
 		&ui_submit($text{'conn_tpb'}, 'tp'));
 
 	# Teleport to player

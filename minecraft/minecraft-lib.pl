@@ -3,6 +3,7 @@
 # XXX java param options
 # XXX plugins?
 # XXX configuration page, with seed field
+# XXX IP ban-list
 
 BEGIN { push(@INC, ".."); };
 use strict;
