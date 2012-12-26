@@ -201,8 +201,8 @@ return undef;
 # Returns -1 if ver1 is older than ver2, 1 if newer, 0 if same
 sub compare_versions
 {
-local @sp1 = split(/[\.\-]/, $_[0]);
-local @sp2 = split(/[\.\-]/, $_[1]);
+local @sp1 = split(/[\.\-\+]/, $_[0]);
+local @sp2 = split(/[\.\-\+]/, $_[1]);
 for(my $i=0; $i<@sp1 || $i<@sp2; $i++) {
 	local $v1 = $sp1[$i];
 	local $v2 = $sp2[$i];
