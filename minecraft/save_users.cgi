@@ -36,6 +36,26 @@ elsif ($in{'mode'} eq 'op') {
 	&unlock_file(&get_op_file());
 	&webmin_log('op');
 	}
+elsif ($in{'mode'} eq 'ip') {
+	# Update banned IP list
+	my @newips = split(/\s+/, $in{'ip'});
+	foreach my $ip (@newips) {
+		&check_ipaddress(@newips) ||
+			&error(&text('users_eip', $ip));
+		}
+	@newips = &unique(@newips);
+	my %oldips = map { $_, 1 } &list_banned_ips();
+	foreach my $ip (@newips) {
+		if (!$oldips{$ip}) {
+			&send_server_command("/ban-ip $ip");
+			}
+		delete($oldips{$ip});
+		}
+	foreach my $ip (keys %oldips) {
+		&send_server_command("/pardon-ip $ip");
+		}
+	&webmin_log('ip');
+	}
 else {
 	&error($text{'users_emode'});
 	}

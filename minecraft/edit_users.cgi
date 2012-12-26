@@ -11,7 +11,8 @@ my $conf = &get_minecraft_config();
 &ui_print_header(undef, $text{'users_title'}, "");
 
 my @tabs = ( [ 'white', $text{'users_tabwhite'} ],
-	     [ 'op', $text{'users_tabop'} ] );
+	     [ 'op', $text{'users_tabop'} ],
+	     [ 'ip', $text{'users_tabip'} ] );
 print &ui_tabs_start(\@tabs, 'mode', $in{'mode'} || 'white', 1);
 
 # Whitelisted users
@@ -37,6 +38,16 @@ print $text{'users_opdesc'},"<p>\n";
 print &ui_textarea('op', join("\n", @op), 10, 80);
 print &ui_form_end([ [ undef, $text{'save'} ] ]);
 print &ui_tabs_end_tab('mode', 'op');
+
+# Banned IPs
+print &ui_tabs_start_tab('mode', 'ip');
+my @ip = &list_banned_ips();
+print &ui_form_start("save_users.cgi", "post");
+print &ui_hidden('mode', 'ip');
+print $text{'users_ipdesc'},"<p>\n";
+print &ui_textarea('ip', join("\n", @ip), 10, 80);
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
+print &ui_tabs_end_tab('mode', 'ip');
 
 print &ui_tabs_end(1);
 

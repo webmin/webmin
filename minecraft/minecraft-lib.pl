@@ -2,8 +2,8 @@
 #
 # XXX java param options
 # XXX plugins?
-# XXX configuration page, with seed field
-# XXX IP ban-list
+# XXX run as Unix user
+# XXX log commands run, call webmin_log for all actions
 
 BEGIN { push(@INC, ".."); };
 use strict;
@@ -341,7 +341,7 @@ my @out = &execute_minecraft_command("/banlist");
 my @rv;
 foreach my $l (@out) {
 	if ($l !~ /banned\s+players:/ && $l =~ /\[INFO\]\s+(\S.*)$/) {
-		push(@rv, split(/,\s+/, $1));
+		push(@rv, grep { $_ ne "and" } split(/[, ]+/, $1));
 		}
 	}
 return @rv;
@@ -355,7 +355,7 @@ my @out = &execute_minecraft_command("/whitelist list");
 my @rv;
 foreach my $l (@out) {
 	if ($l !~ /whitelisted\s+players:/ && $l =~ /\[INFO\]\s+(\S.*)$/) {
-		push(@rv, split(/,\s+/, $1));
+		push(@rv, grep { $_ ne "and" } split(/[, ]+/, $1));
 		}
 	}
 return @rv;
@@ -423,6 +423,20 @@ foreach my $dat (glob("$config{'minecraft_dir'}/*/level.dat")) {
 		    'size' => &disk_usage_kb($path)*1024,
 		    'lock' => (-r "$path/session.lock"),
 		    'players' => \@players });
+	}
+return @rv;
+}
+
+# list_banned_ips()
+# Returns an array of banned addresses
+sub list_banned_ips
+{
+my @out = &execute_minecraft_command("/banlist ips");
+my @rv;
+foreach my $l (@out) {
+	if ($l !~ /banned\s+IP\s+addresses:/ && $l =~ /\[INFO\]\s+(\S.*)$/) {
+		push(@rv, grep { $_ ne "and" } split(/[, ]+/, $1));
+		}
 	}
 return @rv;
 }
