@@ -56,6 +56,7 @@ conf_eport=Fehlende oder nicht-numerische Portnummer
 conf_eprotect=Spawn Schutz Radius muss eine Zahl sein
 conf_err=Fehlgeschlagen Server Konfiguration zu speichern
 conf_eseen=Fehlende oder ung&#252;ltig-ausschauene Samen
+conf_flags=Java Kommandozeilen-Flags
 conf_flight=Erlaube fliegen im &#220;berlebens-Modus?
 conf_gamemode=Standard Spielmodus
 conf_hardcore=Hardcore (permanenter Tod) Modus?
