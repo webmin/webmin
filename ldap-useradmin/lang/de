@@ -1,6 +1,7 @@
 __norefs=1
 batch_descafter3=In der <b>erstellen</b> und <b>&#228;ndern</b> Zeile, k&#246;nnen Sie optional zus&#228;tzliche Felder mit LDAP Attributen in <i>name</i>=<i>Wert</i>-Format anh&#228;ngen, die die neuen oder ge&#228;nderten Benutzern zugeordnet werden.
 batch_eattr=Ung&#252;ltiges LDAP Attribut in Zeile $1 : $2
+batch_imap=Erstelle IMAP-Konto f&#252;r neue Benutzer?
 batch_samba=Erstelle Samba-Benutzer f&#252;r neue Benutzer?
 conn_econn=Fehler beim Verbindungsaufbau zum LDAP-Server $1 port $2.
 conn_eldap_host=Keine LDAP-Client-Konfigurations-Datei auf Ihrem System gefunden, so dass der LDAP-Server auf der Modulkonfigurationsseite eingestellt werden muss
