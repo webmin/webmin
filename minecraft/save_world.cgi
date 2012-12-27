@@ -96,6 +96,34 @@ elsif ($in{'delete'}) {
 
 	&ui_print_footer("list_worlds.cgi", $text{'worlds_return'});
 	}
+elsif ($in{'download'} && !$ENV{'PATH_INFO'}) {
+	# Redirect to download with a nice path
+	&redirect("save_world.cgi/$in{'name'}.zip?name=$in{'name'}&download=1");
+	}
+elsif ($in{'download'} && $ENV{'PATH_INFO'}) {
+	# Download world as ZIP file
+	$in{'name'} || &error("Missing world name");
+	my $temp = &transname().".zip";
+	my $out = &backquote_command(
+		"cd ".quotemeta($config{'minecraft_dir'})." && ".
+	        "zip -r $temp ".quotemeta($in{'name'}));
+	my @st = stat($temp);
+	!$? && @st ||
+	    &error(&text('world_ezip', "<tt>".&html_escape($out)."</tt>"));
+	print "Content-type: application/zip\n";
+	print "Content-length: $st[7]\n";
+	print "X-no-links: 1\n";
+	print "Content-Disposition: Attachment\n";
+	print "\n";
+	my $fh = "ZIP";
+	my $buf;
+        &open_readfile($fh, $temp);
+        &unlink_file($temp);
+        while(read($fh, $buf, 1024)) {
+                print $buf;
+                }
+        close($fh);
+	}
 else {
 	&error("No button clicked");
 	}

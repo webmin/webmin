@@ -82,7 +82,8 @@ else {
 print &ui_table_end();
 print &ui_form_end(
 	$in{'new'} ? [ [ undef, $text{'create'} ] ]
-		   : [ [ 'delete', $text{'world_delete'} ] ],
+		   : [ [ 'delete', $text{'world_delete'} ],
+		       [ 'download', $text{'world_download'} ] ],
 	);
 
 &ui_print_footer("list_worlds.cgi", $text{'worlds_return'});

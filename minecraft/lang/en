@@ -180,6 +180,7 @@ world_eupload=No world data to upload selected
 world_ezip=Uploaded world data does not appear to be in ZIP format
 world_eunzip=Failed to unzip world data : $1
 world_edat=ZIP file does not contain a level.dat file
+world_download=Download ZIP File
 
 chooser_title=Select Item
 chooser_id=Item ID
