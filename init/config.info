@@ -5,6 +5,7 @@ order=Show boot order of actions?,1,1-Yes,0-No
 status_check=Show current status of actions,1,2-On index and action pages,1-On action page only,0-No
 sort_mode=Sort actions by,1,1-Boot order,0-Name
 line2=System configuration,11
+init_mode=Boot system,4,-Detect automatically,init-SysV init,upstart-Upstart,systemd-Systemd,osx-MacOS,rc-FreeBSD RC scripts,win32-Windows services,local-Single boot script
 init_base=Directory in which runlevel directories are located,0
 init_dir=Directory containing master init scripts,0
 soft_links=Link type to use for runlevel files,1,0-Hard,1-Soft

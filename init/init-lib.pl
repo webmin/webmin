@@ -43,7 +43,10 @@ This variable is set based on the bootup system in use. Possible values are :
 =item systemd - SystemD, as seen on Fedora 16
 
 =cut
-if ($config{'hostconfig'}) {
+if ($config{'init_mode'}) {
+	$init_mode = $config{'init_mode'};
+	}
+elsif ($config{'hostconfig'}) {
 	$init_mode = "osx";
 	}
 elsif ($config{'rc_dir'}) {
