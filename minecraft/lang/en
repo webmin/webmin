@@ -54,6 +54,7 @@ conf_rcon=Enable remote console?
 conf_eprotect=Spawn protection radius must be a number
 conf_eip=Missing or invalid IP address
 conf_eport=Missing on non-numeric port number
+conf_flags=Java command-line flags
 
 users_title=Users and Operators
 users_tabwhite=Allowed users
@@ -231,8 +232,7 @@ manual_econf=Nothing entered!
 
 download_title=Download Minecraft Server
 download_already=Your system is already running the latest version of the Minecraft server.
-download_done=Your system has been upgraded to the latest version of the Minecr
-aft server.
+download_done=Your system has been upgraded to the latest version of the Minecraft server.
 download_restart=The new version will only be used when the server is restarted.
 
 log_conf=Changed server configuration
