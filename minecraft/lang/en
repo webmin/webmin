@@ -243,3 +243,5 @@ log_white=Updated allowed users
 log_op=Updated operator users
 log_ip=Updated banned IPs
 log_manual=Manually edited configuration file
+log_atboot=Enabled server at boot time
+log_delboot=Disabled server at boot time

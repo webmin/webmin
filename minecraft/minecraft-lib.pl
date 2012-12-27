@@ -4,7 +4,6 @@
 # XXX plugins?
 # XXX run as Unix user
 # XXX initial setup mode
-# XXX enable at boot button
 
 BEGIN { push(@INC, ".."); };
 use strict;
@@ -162,13 +161,20 @@ return $config{'minecraft_dir'}."/input.fifo";
 sub start_minecraft_server
 {
 my $cmd = &get_start_command();
+my $pidfile = &get_pid_file();
+&unlink_file($pidfile);
 &system_logged("$cmd &");
 sleep(1);
-if (!&is_minecraft_server_running()) {
+my $pid = &is_minecraft_server_running();
+if (!$pid) {
 	my $out = &backquote_command(
 		"tail -2 ".$config{'minecraft_dir'}."/server.out");
 	return $out || "Unknown error - no output produced";
 	}
+my $fh = "PID";
+&open_tempfile($fh, ">$pidfile");
+&print_tempfile($fh, $pid."\n");
+&close_tempfile($fh);
 return undef;
 }
 
@@ -455,6 +461,13 @@ my ($file) = @_;
 return undef if (!-r $file);
 my $out = &backquote_command("md5sum ".quotemeta($file));
 return $out =~ /^([a-f0-9]+)\s/ ? $1 : undef;
+}
+
+# get_pid_file()
+# Returns the file in which the server PID is stored
+sub get_pid_file
+{
+return $config{'minecraft_dir'}."/server.pid";
 }
 
 1;
