@@ -16,7 +16,7 @@ if ($err) {
 my @links = ( "edit_conf.cgi", "edit_users.cgi",
 	      "view_logs.cgi", "list_conns.cgi",
 	      "list_worlds.cgi", "edit_cmds.cgi",
-	      "console.cgi", "edit_manual.gif" );
+	      "console.cgi", "edit_manual.cgi" );
 my @titles = ( $text{'conf_title'}, $text{'users_title'},
 	       $text{'logs_title'}, $text{'conns_title'},
 	       $text{'worlds_title'}, $text{'cmds_title'},
@@ -42,6 +42,10 @@ else {
 	print &ui_buttons_row("start.cgi", $text{'index_start'},
 			      $text{'index_startdesc'});
 	}
+
+# Show download button
+print &ui_buttons_row("download.cgi", $text{'index_download'},
+		      $text{'index_downloaddesc'});
 
 # Show start at boot button
 &foreign_require("init");

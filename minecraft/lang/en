@@ -9,6 +9,8 @@ index_restartdesc=Click this button to apply the current configuration by restar
 index_atboot=Start at boot?
 index_atbootdesc=Change this option to control whether the Minecraft server is started at boot time or not. If it is not currently started at boot and Yes is chosen, a new init script will be created.
 index_return=module index
+index_download=Download Server
+index_downloaddesc=Click this button to download and install the latest version of the Minecraft server JAR file.
 
 check_edir=The base directory $1 does not exist
 check_ejar=The server JAR file $1 does not exist
@@ -223,10 +225,21 @@ cmds_gamemodedone=Changed default game mode to $1
 cmds_difficultydone=Changed game difficulty
 
 manual_title=Edit Configuration File
+manual_desc=This page allows you to manually edit the Minecraft server configuration file <tt>$1</tt>. Be careful, as no validation will be done on your input. Any changes will not be activated until the server is restarted.
+manual_err=Failed to save configuration file
+manual_econf=Nothing entered!
+
+download_title=Download Minecraft Server
+download_already=Your system is already running the latest version of the Minecraft server.
+download_done=Your system has been upgraded to the latest version of the Minecr
+aft server.
+download_restart=The new version will only be used when the server is restarted.
 
 log_conf=Changed server configuration
 log_stop=Stopped Minecraft server
 log_start=Started Minecraft server
+log_restart=Restarted Minecraft server
 log_white=Updated allowed users
 log_op=Updated operator users
 log_ip=Updated banned IPs
+log_manual=Manually edited configuration file

@@ -3,7 +3,8 @@
 # XXX java param options
 # XXX plugins?
 # XXX run as Unix user
-# XXX log commands run, call webmin_log for all actions
+# XXX initial setup mode
+# XXX enable at boot button
 
 BEGIN { push(@INC, ".."); };
 use strict;
@@ -15,6 +16,7 @@ our ($module_root_directory, %text, %gconfig, $root_directory, %config,
      $module_name, $remote_user, $base_remote_user, $gpgpath,
      $module_config_directory, @lang_order_list, @root_directories);
 our $history_file = "$module_config_directory/history.txt";
+our $server_jar_url = "https://s3.amazonaws.com/MinecraftDownload/launcher/minecraft_server.jar";
 
 # check_minecraft_server()
 # Returns an error message if the Minecraft server is not installed
@@ -206,29 +208,32 @@ if ($fpid) {
 return undef;
 }
 
-# send_server_command(command)
+# send_server_command(command, [no-log])
 # Just sends a command to the server
 sub send_server_command
 {
-my ($cmd) = @_;
+my ($cmd, $nolog) = @_;
 my $ififo = &get_input_fifo();
 my $fh = "FIFO";
 &open_tempfile($fh, ">$ififo", 1, 1, 1);
 &print_tempfile($fh, $cmd."\n");
 &close_tempfile($fh);
+if (!$nolog) {
+	&additional_log('minecraft', 'server', $cmd);
+	}
 }
 
-# execute_minecraft_command(command)
+# execute_minecraft_command(command, [no-log])
 # Run a command, and return output from the server log
 sub execute_minecraft_command
 {
-my ($cmd) = @_;
+my ($cmd, $nolog) = @_;
 my $logfile = $config{'minecraft_dir'}."/server.log";
 my $fh = "LOG";
 &open_readfile($fh, $logfile);
 seek($fh, 0, 2);
 my $pos = tell($fh);
-&send_server_command($cmd);
+&send_server_command($cmd, $nolog);
 for(my $i=0; $i<100; $i++) {
 	select(undef, undef, undef, 0.1);
 	my @st = stat($logfile);
@@ -263,7 +268,7 @@ my $lref = &read_file_lines($history_file);
 # Returns a list of players currently online
 sub list_connected_players
 {
-my @out = &execute_minecraft_command("/list");
+my @out = &execute_minecraft_command("/list", 1);
 my @rv;
 foreach my $l (@out) {
 	if ($l !~ /players\s+online:/ && $l =~ /\[INFO\]\s+(\S.*)$/) {
@@ -337,7 +342,7 @@ return @rv;
 # Returns a list of players who are banned
 sub list_banned_players
 {
-my @out = &execute_minecraft_command("/banlist");
+my @out = &execute_minecraft_command("/banlist", 1);
 my @rv;
 foreach my $l (@out) {
 	if ($l !~ /banned\s+players:/ && $l =~ /\[INFO\]\s+(\S.*)$/) {
@@ -351,7 +356,7 @@ return @rv;
 # Returns a list of players who are whitelisted
 sub list_whitelisted_players
 {
-my @out = &execute_minecraft_command("/whitelist list");
+my @out = &execute_minecraft_command("/whitelist list", 1);
 my @rv;
 foreach my $l (@out) {
 	if ($l !~ /whitelisted\s+players:/ && $l =~ /\[INFO\]\s+(\S.*)$/) {
@@ -431,7 +436,7 @@ return @rv;
 # Returns an array of banned addresses
 sub list_banned_ips
 {
-my @out = &execute_minecraft_command("/banlist ips");
+my @out = &execute_minecraft_command("/banlist ips", 1);
 my @rv;
 foreach my $l (@out) {
 	if ($l !~ /banned\s+IP\s+addresses:/ && $l =~ /\[INFO\]\s+(\S.*)$/) {
@@ -439,6 +444,17 @@ foreach my $l (@out) {
 		}
 	}
 return @rv;
+}
+
+# md5_checksum(file)
+# Returns a checksum for a file
+sub md5_checksum
+{
+my ($file) = @_;
+&has_command("md5sum") || &error("md5sum command not installed!");
+return undef if (!-r $file);
+my $out = &backquote_command("md5sum ".quotemeta($file));
+return $out =~ /^([a-f0-9]+)\s/ ? $1 : undef;
 }
 
 1;
