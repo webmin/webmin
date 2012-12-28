@@ -9,7 +9,7 @@ local $desc;
 local $rrr;
 
 &ReadParse();
-$zone = &get_zone_name_on_error($in{'zone'}, $in{'view'});
+$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
