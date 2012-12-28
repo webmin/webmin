@@ -1,5 +1,6 @@
 minecraft_dir=Base directory for Minecraft server,0
 minecraft_jar=Full path to Minecraft JAR file,3,minecraft_server.jar in the base directory
 java_cmd=Full path to java command,0
+unix_user=Run Minecraft server as user,5
 init_name=Name of init script,0
 history_size=Command history size,0

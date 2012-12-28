@@ -4,7 +4,7 @@
 use strict;
 use warnings;
 require './minecraft-lib.pl';
-our (%in, %text);
+our (%in, %text, %config);
 my $conf = &get_minecraft_config();
 
 &ui_print_header(undef, $text{'conf_title'}, "");
@@ -147,6 +147,11 @@ print &ui_table_row($text{'conf_query'},
 my $rcon = &find_value("enable-rcon", $conf) || "false";
 print &ui_table_row($text{'conf_rcon'},
 	&ui_yesno_radio("rcon", lc($rcon) eq "true"));
+
+#### Server command-line flags
+
+print &ui_table_row($text{'conf_args'},
+	&ui_textbox("args", $config{'java_args'}, 70), 3);
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'save'} ] ]);

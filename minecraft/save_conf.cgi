@@ -4,7 +4,7 @@
 use strict;
 use warnings;
 require './minecraft-lib.pl';
-our (%in, %text, %config);
+our (%in, %text, %config, $module_config_file);
 &ReadParse();
 &lock_file(&get_minecraft_config_file());
 my $conf = &get_minecraft_config();
@@ -88,5 +88,15 @@ $in{'port_def'} || $in{'port'} =~ /^\d+$/ ||
 # Write out the file
 &flush_file_lines(&get_minecraft_config_file());
 &unlock_file(&get_minecraft_config_file());
+
+# Java command-line flags
+if ($config{'java_args'} ne $in{'args'}) {
+	&lock_file($module_config_file);
+	$config{'java_args'} = $in{'args'};
+	&save_module_config(\%config);
+	&update_init_script_args($in{'args'});
+	&unlock_file($module_config_file);
+	}
+
 &webmin_log("conf");
 &redirect("");

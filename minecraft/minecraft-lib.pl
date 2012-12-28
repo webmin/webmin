@@ -1,6 +1,5 @@
 # Functions for editing the minecraft config
 #
-# XXX java param options
 # XXX plugins?
 # XXX run as Unix user
 # XXX initial setup mode
@@ -468,6 +467,63 @@ return $out =~ /^([a-f0-9]+)\s/ ? $1 : undef;
 sub get_pid_file
 {
 return $config{'minecraft_dir'}."/server.pid";
+}
+
+# update_init_script_args(&args)
+# Updates all Java command-line args in the init script
+sub update_init_script_args
+{
+my ($args) = @_;
+my $mode;
+&foreign_require("init");
+if (defined(&init::get_action_mode)) {
+	$mode = &init::get_action_mode($config{'init_name'});
+	}
+$mode ||= $init::init_mode;
+
+# Find the init script file
+my $file;
+if ($mode eq "init") {
+	$file = &init::action_filename($config{'init_name'});
+	}
+elsif ($mode eq "upstart") {
+	$file = "/etc/init/$config{'init_name'}.conf";
+	}
+elsif ($mode eq "systemd") {
+	my $unit = $config{'init_name'};
+	$unit .= ".service" if ($unit !~ /\.service$/);
+	$file = &init::get_systemd_root($config{'init_name'})."/".$unit;
+	}
+elsif ($mode eq "local") {
+	$file = "$init::module_config_directory/$config{'init_name'}.sh";
+	}
+elsif ($mode eq "osx") {
+	my $ucfirst = ucfirst($config{'init_name'});
+	$file = "$init::config{'darwin_setup'}/$ucfirst/$init::config{'plist'}";
+	}
+elsif ($mode eq "rc") {
+	my @dirs = split(/\s+/, $init::config{'rc_dir'});
+	$file = $dirs[$#dirs]."/".$config{'init_name'}.".sh";
+	}
+else {
+	return 0;
+	}
+return 0 if (!-r $file);	# Not enabled?
+
+# Find and edit the Java command
+&lock_file($file);
+my $lref = &read_file_lines($file);
+my $found = 0;
+foreach my $l (@$lref) {
+	if ($l =~ /^(.*\Q$config{'java_cmd'}\E)\s+(.*)(-jar.*)/) {
+		$l = $1." ".$args." ".$3;
+		$found = 1;
+		}
+	}
+&flush_file_lines($file);
+&unlock_file($file);
+
+return $found;
 }
 
 1;

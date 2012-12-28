@@ -4,3 +4,4 @@ init_name=minecraft
 java_args=-Xms1G -Xmx1G -Djava.net.preferIPv4Stack=true
 jar_args=
 history_size=20
+unix_user=root

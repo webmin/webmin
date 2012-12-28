@@ -54,7 +54,7 @@ conf_rcon=Enable remote console?
 conf_eprotect=Spawn protection radius must be a number
 conf_eip=Missing or invalid IP address
 conf_eport=Missing on non-numeric port number
-conf_flags=Java command-line flags
+conf_args=Java command-line flags
 
 users_title=Users and Operators
 users_tabwhite=Allowed users
