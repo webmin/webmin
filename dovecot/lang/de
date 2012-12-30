@@ -1,5 +1,5 @@
 __norefs=1
-apply_err=Die Konfiguration anzuwenden, ist fehlgeschlagen
+apply_err=Fehlgeschlagen die Konfiguration anzuwenden
 imap_title=IMAP Optionen
 index_apply=Konfiguration anwenden
 index_applydesc=Aktiviere die aktuelle Dovecot Konfiguration indem der Serverprozess gestoppt und wieder gestartet wird.
