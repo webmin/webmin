@@ -4,7 +4,7 @@ user_files=Copy files into new home directories from,9,40,3
 home_base=Automatic home directory base,3,Not set
 real_base=Real home directory base,3,Same as above
 home_style=Automatic home directory style,4,0-home/username,1-home/u/username,2-home/u/us/username,3-home/u/s/username,4-Just base directory,5-home/primary_group/username
-selinux_con=SElinux context for new home directories,3,None
+selinux_con=SElinux context for new home directories,10,-None,*-System default
 
 line2=New user options,11
 base_uid=Lowest UID for new users,0,5
