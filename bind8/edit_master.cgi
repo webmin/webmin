@@ -4,7 +4,7 @@
 
 require './bind8-lib.pl';
 &ReadParse();
-$in{'view'} = 'any' if (!defined($in{'view'}));
+$in{'view'} = 'any' if ($in{'view'} eq '');
 $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 $dom = $zone->{'name'};
 &can_edit_zone($zone) || &error($text{'master_ecannot'});
