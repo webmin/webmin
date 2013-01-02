@@ -230,7 +230,7 @@ if ($section{'google'}) {
 		       \$grv, \$error);
 	if (!$error) {
 		# Parse the results
-		while($grv =~ /(<p[^>]*>|<div[^>]*>)<a[^>]+href=([^>]+)>([\000-\377]+?)<\/a>([\000-\377]*)$/i) {
+		while($grv =~ /(<p[^>]*>|<div[^>]*>|<h3[^>]*>)<a[^>]+href=([^>]+)>([\000-\377]+?)<\/a>([\000-\377]*)$/i) {
 			$grv = $4;
 			local ($url = $2, $desc = $3);
 			$url =~ s/^"(.*)".*$/$1/;
@@ -239,6 +239,14 @@ if ($section{'google'}) {
 			local $matches = 0;
 			foreach $f (@for) {
 				$matches++ if ($desc =~ /\Q$f\E/i);
+				}
+			next if ($url =~ /^\/search/);	# More results
+			if ($url =~ /^\/url\?(.*)/) {
+				# Extract real URL
+				local $qs = $1;
+				if ($qs =~ /q=([^&]+)/) {
+					$url = &un_urlize("$1");
+					}
 				}
 			if (!$in{'exact'} ||
 			    ($in{'and'} && $matches == @for) ||
@@ -268,7 +276,7 @@ if (@rv) {
 	foreach $r (@rv) {
 		local @cols;
 		if ($r->[1] =~ /^(http|ftp|https):/) {
-			push(@cols, "<a href='$r->[1]'>".
+			push(@cols, "<a href='$r->[1]' target=_blank>".
 				    &html_escape($r->[2])."</a>");
 			}
 		else {
