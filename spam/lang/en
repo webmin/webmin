@@ -19,6 +19,7 @@ white_from=Senders to never classify as spam
 white_gfrom=System-wide senders to never classify as spam
 white_unfrom=Exceptions for senders to never classify as spam
 white_addr=Sender's address
+white_addr2=Recipient's address
 white_rcvd2=Sender to never classify as spam
 white_rcvdhost=Domain in Received header
 white_gunfrom=System-wide exceptions for senders to never classify as spam

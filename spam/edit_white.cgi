@@ -108,7 +108,7 @@ push(@to, map { [ $_, 2 ] } map { @{$_->{'words'}} }
 	      &find("all_spam_to", $conf));
 print &ui_table_row($text{'white_to'},
 	&edit_table("whitelist_to",
-		    [ $text{'white_addr'}, $text{'white_level'} ],
+		    [ $text{'white_addr2'}, $text{'white_level'} ],
 		    \@to, [ 40, 0 ], \&whitelist_to_conv, 3));
 
 print &ui_table_end();
