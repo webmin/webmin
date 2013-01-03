@@ -38,3 +38,4 @@ keygen=/usr/bin/dnssec-keygen
 signzone=/usr/bin/dnssec-signzone
 checkconf=/usr/bin/named-checkconf
 other_slaves=1
+force_random=0

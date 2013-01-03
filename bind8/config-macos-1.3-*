@@ -38,3 +38,4 @@ signzone=dnssec-signzone
 checkconf=named-checkconf
 other_slaves=1
 pid_file=/var/run/named/named.pid /private/var/run/named/named.pid
+force_random=0

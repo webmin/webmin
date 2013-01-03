@@ -42,3 +42,4 @@ keygen=dnssec-keygen
 signzone=dnssec-signzone
 checkconf=named-checkconf
 other_slaves=1
+force_random=0
