@@ -69,9 +69,6 @@ if ($c || 1) {
 		&ui_textbox("count", 1, 5)." ".
 		&ui_submit($text{'conn_giveb'}, 'give'));
 
-	# Clear inventory
-	# XXX
-
 	# Change spawn point
 	print &ui_table_row($text{'conn_spawn'},
 		"X:".&ui_textbox("spawnx", int($x), 10)." ".

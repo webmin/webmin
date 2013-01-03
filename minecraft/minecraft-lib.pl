@@ -1,7 +1,4 @@
 # Functions for editing the minecraft config
-#
-# XXX run as Unix user
-#	XXX how to edit init script java args
 
 BEGIN { push(@INC, ".."); };
 use strict;
@@ -536,7 +533,17 @@ return 0 if (!-r $file);	# Not enabled?
 my $lref = &read_file_lines($file);
 my $found = 0;
 foreach my $l (@$lref) {
-	if ($l =~ /^(.*\Q$config{'java_cmd'}\E)\s+(.*)(-jar.*)/) {
+	if ($l =~ /^(.*su.*-c\s+)(.*)/) {
+		# May be wrapped in an su command
+		my $su = $1;
+		my $cmd = &unquotemeta($2);
+		if ($cmd =~ /^(.*\Q$config{'java_cmd'}\E)\s+(.*)(-jar.*)/) {
+			$cmd = $1." ".$args." ".$3;
+			$l = $su.quotemeta($cmd);
+			$found = 1;
+			}
+		}
+	elsif ($l =~ /^(.*\Q$config{'java_cmd'}\E)\s+(.*)(-jar.*)/) {
 		$l = $1." ".$args." ".$3;
 		$found = 1;
 		}
@@ -545,6 +552,13 @@ foreach my $l (@$lref) {
 &unlock_file($file);
 
 return $found;
+}
+
+sub unquotemeta
+{
+my ($str) = @_;
+eval("\$str = \"$str\"");
+return $str;
 }
 
 1;
