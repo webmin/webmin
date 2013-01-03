@@ -22,7 +22,13 @@ elsif ($err) {
 	if (&has_command($config{'java_cmd'})) {
 		print &ui_form_start("download.cgi");
 		print &ui_hidden("new", 1);
-		print &text('index_offer', $config{'minecraft_dir'}),"<p>\n";
+		print $text{'index_offer'},"<p>\n";
+		print &ui_table_start(undef, undef, 2);
+		print &ui_table_row($text{'index_dir'},
+			&ui_textbox("dir", $config{'minecraft_dir'}, 40));
+		print &ui_table_row($text{'index_user'},
+			&ui_user_textbox("user", "nobody"));
+		print &ui_table_end();
 		print &ui_form_end([ [ undef, $text{'index_install'} ] ]);
 		}
 	else {

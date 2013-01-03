@@ -23,7 +23,7 @@ else {
 	}
 
 print &ui_form_start("save_world.cgi", "form-data");
-print &ui_table_start($text{'world_header'}, "width=50%", 2);
+print &ui_table_start($text{'world_header'}, undef, 2);
 print &ui_hidden("new", $in{'new'});
 
 if ($in{'new'}) {

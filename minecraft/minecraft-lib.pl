@@ -1,8 +1,8 @@
 # Functions for editing the minecraft config
 #
-# XXX plugins?
 # XXX run as Unix user
-# XXX initial setup mode
+#	XXX which user to write PID as?
+#	XXX how to edit init script java args
 
 BEGIN { push(@INC, ".."); };
 use strict;
@@ -28,6 +28,23 @@ my $jar = $config{'minecraft_jar'} ||
 	return &text('check_ejar', $jar);
 &has_command($config{'java_cmd'}) ||
 	return &text('check_ejava', $config{'java_cmd'});
+return undef;
+}
+
+# is_minecraft_port_in_use()
+# If any server is using the default Minecraft port or looks like it is running
+# minecraft_server.jar, return the PID.
+sub is_minecraft_port_in_use
+{
+&foreign_require("proc");
+my ($pid) = &proc::find_socket_processes("tcp:25565");
+return $pid if ($pid);
+my @procs = &proc::list_processes();
+foreach my $p (@procs) {
+	if ($p->{'args'} =~ /^java.*minecraft_server.jar/) {
+		return $p->{'pid'};
+		}
+	}
 return undef;
 }
 
@@ -142,6 +159,9 @@ my $rv = "(test -e ".$ififo." || mkfifo ".$ififo.") ; ".
 	 " -jar ".$jar." nogui ".
 	 $config{'jar_args'}." ".
 	 ">> server.out 2>&1 )";
+if ($config{'unix_user'} ne 'root') {
+	$rv = &command_as_user($config{'unix_user'}, 0, $rv);
+	}
 return $rv;
 }
 
@@ -174,6 +194,7 @@ my $fh = "PID";
 &open_tempfile($fh, ">$pidfile");
 &print_tempfile($fh, $pid."\n");
 &close_tempfile($fh);
+&set_ownership_permissions($config{'unix_user'}, undef, undef, $pidfile);
 return undef;
 }
 
@@ -392,6 +413,8 @@ my ($users) = @_;
 my $lref = &read_file_lines(&get_whitelist_file());
 @$lref = @$users;
 &flush_file_lines(&get_whitelist_file());
+&set_ownership_permissions($config{'unix_user'}, undef, undef,
+			    &get_whitelist_file());
 }
 
 sub get_op_file
@@ -415,6 +438,8 @@ my ($users) = @_;
 my $lref = &read_file_lines(&get_op_file());
 @$lref = @$users;
 &flush_file_lines(&get_op_file());
+&set_ownership_permissions($config{'unix_user'}, undef, undef,
+			    &get_op_file());
 }
 
 # list_worlds()

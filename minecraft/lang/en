@@ -2,7 +2,9 @@ index_title=Minecraft Server
 index_cerr=An error was detected with your Minecraft server : $1. You may need to adjust the <a href='$2'>module configuration</a>.
 index_cerr2=The Minecraft server does not appear to be installed on your system. If it is already running, you will need to adjust the <a href='$2'>module configuration</a> to use the correct paths.
 index_nojava=Also, the Java command at <tt>$1</tt> needed to run Minecraft was not found.
-index_offer=Alternatively, Webmin can automatically download and install the Minecraft server for you, into the directory <tt>$1</tt>.
+index_offer=Alternatively, Webmin can automatically download and install the Minecraft server for you.
+index_dir=Install into directory
+index_user=Run as Unix user
 index_install=Download and Install
 index_stop=Stop Minecraft Server
 index_stopdesc=Click this button to stop the running Minecraft server. All clients will be immediately disconnected.
@@ -243,6 +245,9 @@ download_restart=The new version will only be used when the server is restarted.
 download_start=The server must be started before it can be used.
 download_mkdir=Creating base directory $1 ..
 download_emkdir=Directory creation failed!
+download_err=Failed to setup Minecraft server
+download_edir=Missing or non-absolute install directory
+download_euser=User to run as does not exist
 
 log_conf=Changed server configuration
 log_stop=Stopped Minecraft server

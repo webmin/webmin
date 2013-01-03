@@ -31,6 +31,8 @@ if ($in{'new'}) {
 		my $fh = "EMPTY";
 		&open_tempfile($fh, ">$dir/level.dat", 0, 1);
 		&close_tempfile($fh);
+		&set_ownership_permissions($config{'unix_user'}, undef, 0755,
+					   $dir, "$dir/level.dat");
 		}
 	elsif ($in{'src'} == 1) {
 		# Clone existing world
@@ -42,6 +44,8 @@ if ($in{'new'}) {
 			}
 		&copy_source_dest("$config{'minecraft_dir'}/$in{'world'}",
 				  $dir);
+		&system_logged(
+			"chown -R $config{'unix_user'} ".quotemeta($dir));
 		if (&is_minecraft_server_running() &&
 		    $def eq $in{'world'}) {
 			# Re-enable world writes
@@ -70,6 +74,8 @@ if ($in{'new'}) {
 			&error($text{'world_edat'});
 		my $copysrc = $1;
 		&copy_source_dest($copysrc, $dir);
+		&system_logged(
+			"chown -R $config{'unix_user'} ".quotemeta($dir));
 		}
 	&redirect("list_worlds.cgi");
 	}
