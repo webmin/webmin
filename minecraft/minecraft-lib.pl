@@ -1,7 +1,6 @@
 # Functions for editing the minecraft config
 #
 # XXX run as Unix user
-#	XXX which user to write PID as?
 #	XXX how to edit init script java args
 
 BEGIN { push(@INC, ".."); };
@@ -144,10 +143,11 @@ elsif (!$old && defined($value)) {
 	}
 }
 
-# get_start_command()
+# get_start_command([suffix])
 # Returns a command to start the server
 sub get_start_command
 {
+my ($suffix) = @_;
 my $jar = $config{'minecraft_jar'} ||
 	  $config{'minecraft_dir'}."/"."minecraft_server.jar";
 my $ififo = &get_input_fifo();
@@ -159,15 +159,11 @@ my $rv = "(test -e ".$ififo." || mkfifo ".$ififo.") ; ".
 	 " -jar ".$jar." nogui ".
 	 $config{'jar_args'}." ".
 	 ">> server.out 2>&1 )";
+$rv .= " ".$suffix if ($suffix);
 if ($config{'unix_user'} ne 'root') {
 	$rv = &command_as_user($config{'unix_user'}, 0, $rv);
 	}
 return $rv;
-}
-
-sub get_output_fifo
-{
-return $config{'minecraft_dir'}."/output.fifo";
 }
 
 sub get_input_fifo
@@ -206,7 +202,7 @@ my $pid = &is_minecraft_server_running();
 $pid || return "Not running!";
 
 # Try graceful shutdown
-&send_server_command("stop");
+&send_server_command("/stop");
 for(my $i=0; $i<10; $i++) {
 	last if (!&is_minecraft_server_running());
 	sleep(1);
