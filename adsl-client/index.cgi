@@ -7,7 +7,7 @@
 require './adsl-client-lib.pl';
 $vers = &get_pppoe_version(\$out);
 &ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
-	&help_search_link("pppoe", "man", "doc"), undef, undef,
+	&help_search_link("pppoe", "man", "doc", "google"), undef, undef,
 	$vers ? &text('index_version', $vers) : undef);
 
 if (!$vers) {

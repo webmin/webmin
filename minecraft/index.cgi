@@ -6,7 +6,8 @@ use warnings;
 require './minecraft-lib.pl';
 our (%in, %text, %config, $module_name);
 
-&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
+&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
+		 &help_search_link("minecraft", "google"));
 
 my $err = &check_minecraft_server();
 if ($err) {
