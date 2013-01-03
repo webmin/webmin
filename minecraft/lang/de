@@ -45,6 +45,7 @@ cmds_weatherb=&#196;ndere
 cmds_weatherdone=Wetter auf $1 f&#252;r $2 Sekunden ge&#228;ndert
 conf_allip=Jede Adresse
 conf_animals=Tiere spawnen?
+conf_args=Java Kommandozeilen-Flags
 conf_build=Maximale Hauh&#246;he
 conf_command=Erlaube Befehlsblock?
 conf_desc=Diese Einstellungen werden nicht aktiviert, bis der Minecraft Server neu gestartet wird.

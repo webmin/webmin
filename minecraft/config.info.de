@@ -1,5 +1,6 @@
 minecraft_dir=Basisverzeichnis f&#252;r Minecraft Server,0
 minecraft_jar=Voller Pfad zur Minecraft JAR Datei,3,minecraft_server.jar im Basisverzeichnis
 java_cmd=Voller Pfad zum java Befehl,0
+unix_user=F&#252;hre Minecraft Server als Benutzer aus,5
 init_name=Name des initialen Skripts,0
 history_size=Befehlshistorie Gr&#246;&#223;e,0
