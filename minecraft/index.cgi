@@ -10,8 +10,25 @@ our (%in, %text, %config, $module_name);
 		 &help_search_link("minecraft", "google"));
 
 my $err = &check_minecraft_server();
-if ($err) {
-	&ui_print_endpage(&text('index_cerr', $err, "../config.cgi?$module_name"));
+if ($err && &is_minecraft_port_in_use()) {
+	# Not found, but server appears to be running
+	&ui_print_endpage(&text('index_cerr', $err,
+			  "../config.cgi?$module_name"));
+	}
+elsif ($err) {
+	# Not found, and not running. Offer to setup.
+	print &text('index_cerr2', "../config.cgi?$module_name"),"<p>\n";
+
+	if (&has_command($config{'java_cmd'})) {
+		print &ui_form_start("download.cgi");
+		print &ui_hidden("new", 1);
+		print &text('index_offer', $config{'minecraft_dir'}),"<p>\n";
+		print &ui_form_end([ [ undef, $text{'index_install'} ] ]);
+		}
+	else {
+		print &text('index_nojava', $config{'java_cmd'}),"<p>\n";
+		}
+	return;
 	}
 
 my @links = ( "edit_conf.cgi", "edit_users.cgi",
