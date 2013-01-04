@@ -298,13 +298,15 @@ return @rv;
 }
 
 # get_login_logout_times(player)
-# Returns the last login IP, time, X, Y, Z and logout time (if any)
+# Returns the last login IP, time, X, Y, Z, logout time (if any) and list of
+# recent events.
 sub get_login_logout_times
 {
 my ($name) = @_;
 my ($ip, $intime, $xx, $yy, $zz, $outtime);
 my $logfile = $config{'minecraft_dir'}."/server.log";
 my $fh = "TAIL";
+my @events;
 &open_execute_command($fh, "tail -10000 $logfile", 1, 1);
 while(<$fh>) {
 	if (/^(\d+)\-(\d+)\-(\d+)\s+(\d+):(\d+):(\d+)\s+\[\S+\]\s+(.*)/) {
@@ -315,14 +317,21 @@ while(<$fh>) {
 			($xx, $yy, $zz) = ($3, $4, $5);
 			$intime = &parse_log_time($y, $m, $d, $h, $mo, $s);
 			}
-		elsif ($msg =~ /^\Q$name\E\s+lost/) {
+		elsif ($msg =~ /^\Q$name\E\s+(\[.*\]\s+)?lost/ ||
+		       $msg =~ /^Disconnecting\s+\Q$name\E/) {
 			# Logout message
 			$outtime = &parse_log_time($y, $m, $d, $h, $mo, $s);
+			}
+		elsif ($msg =~ /^(\S+\s+)?\Q$name\E(\s|\[)/) {
+			# Some player event
+			push(@events,
+			   { 'time' => &parse_log_time($y, $m, $d, $h, $mo, $s),
+			     'msg' => $msg });
 			}
 		}
 	}
 close($fh);
-return ( $ip, $intime, $xx, $yy, $zz, $outtime );
+return ( $ip, $intime, $xx, $yy, $zz, $outtime, \@events );
 }
 
 sub parse_log_time

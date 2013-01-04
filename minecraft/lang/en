@@ -148,6 +148,9 @@ conn_ebutton=No button clicked!
 conn_kick=Disconnect player
 conn_kickb=Kick Now
 conn_kickdone=Disconnected player
+conn_edate=Date and time
+conn_emsg=Event message
+conn_events=Recent events
 
 worlds_title=Manage Worlds
 worlds_def=Active?

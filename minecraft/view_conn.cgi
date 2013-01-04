@@ -31,7 +31,8 @@ print &ui_table_row($text{'conn_state'},
 	$c ? $text{'conn_yes'} : "<font color=red>$text{'conn_no'}</font>");
 
 # Last login IP and time
-my ($ip, $intime, $x, $y, $z, $outtime) = &get_login_logout_times($in{'name'});
+my ($ip, $intime, $x, $y, $z, $outtime, $events) =
+	&get_login_logout_times($in{'name'});
 if ($ip) {
 	print &ui_table_row($c ? $text{'conn_lastin'} : $text{'conn_lastin2'},
 		&text('conn_at', $ip, &make_date($intime)));
@@ -110,6 +111,23 @@ if ($c || 1) {
 	print &ui_table_row($text{'conn_oplist'},
 		&ui_submit($text{'conn_opb'}, 'op')." ".
 		&ui_submit($text{'conn_deopb'}, 'deop'));
+	}
+
+
+# Show recent events, if any
+if (@$events) {
+	my $etable = &ui_columns_start([
+			$text{'conn_edate'},
+			$text{'conn_emsg'},
+			], undef, 0, [ "nowrap", "nowrap" ]);
+	foreach my $e (reverse(@$events)) {
+		$etable .= &ui_columns_row([
+			&make_date($e->{'time'})."&nbsp;&nbsp;",
+			&html_escape($e->{'msg'}),
+			]);
+		}
+	$etable .= &ui_columns_end();
+	print &ui_table_row($text{'conn_events'}, $etable);
 	}
 
 print &ui_table_end();

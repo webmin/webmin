@@ -72,7 +72,7 @@ else {
 	# All players
 	if (@{$world->{'players'}}) {
 		my @grid = map { "<a href='view_conn.cgi?name=".&urlize($_).
-				 "'>".&html_escape($_)."</a>" }
+				 "'>".&html_escape($_)."</a>&nbsp;&nbsp;" }
 			       @{$world->{'players'}};
 		print &ui_table_row($text{'world_players'},
 			&ui_grid_table(\@grid, 4, 100));
