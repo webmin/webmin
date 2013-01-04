@@ -7,8 +7,6 @@ index_inetd=Because Webmin is currently being run by <tt>inetd</tt>, you probabl
 index_apache=Because Webmin is currently running under Apache, you probably do not want to enable this option.
 index_restart=Restart Webmin
 index_restartmsg=Click this button to re-start the Webmin server process. This may be necessary if you have recently upgraded Perl.
-index_submit=Submit OS Information
-index_submitmsg=Clicking this button will send information about your operating system and Perl version to the Webmin developers. This data will be strictly anonymous, and will provide information about which operating systems to best focus the development of Webmin on.
 index_refresh=Refresh Modules
 index_refreshmsg=Re-check all Webmin modules for installed servers, and update those that appear in the 'Un-used modules' category.
 
@@ -789,12 +787,6 @@ export_ecmd=Missing needed command $1
 export_efile=Missing or invalid export file
 export_done=Successfully exported the selected modules to $1.
 export_title=Export Modules
-
-submit_err=Failed to submit OS info
-submit_edone=You can only submit once for each system
-submit_title=Submit OS Information
-submit_ok=Thank you for sending information about your server's operating system to the Webmin developers!
-submit_emailboxes=The Read User Mail module is not installed or not configured
 
 advanced_title=Advanced Options
 advanced_header=Advanced and experimental options
