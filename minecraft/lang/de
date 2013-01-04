@@ -93,10 +93,13 @@ conn_deopb=Widerrufe Operator
 conn_deopdone=Widerrufe Operator Status
 conn_ebutton=Keine Button geklickt!
 conn_ecount=Fehlende oder nicht-numerische item Anzahl
+conn_edate=Datum und Zeit
 conn_eid=Fehlende oder ung&#252;ltige item ID
+conn_emsg=Event Nachricht
 conn_ename=Fehlender oder ung&#252;ltiger Spieler Name
 conn_err=Spieler Aktion fehlgeschlagen
 conn_etext=Fehlender Nachrichtentext
+conn_events=Letzte Events
 conn_ex=X Position muss eine Zahl sein
 conn_ey=Y Position muss eine Zahl sein
 conn_ez=Z Position muss eine Zahl sein
@@ -166,12 +169,12 @@ download_title=Download Minecraft Server
 index_atboot=Starte beim Booten?
 index_atbootdesc=&#196;ndere diese Option, um zu kontrollieren, ob der Minecraft Server beim Systemstart gestartet werden soll oder nicht. Wenn es nicht gerade beim Booten gestartet und Ja gew&#228;hlt wurde, wird ein neues Init-Skript erstellt werden.
 index_cerr=Es wurde ein Fehler mit Ihrem Minecraft Server erkannt : $1. M&#246;glicherweise m&#252;ssen Sie die <a href='$2'>Modulkonfiguration</a> anpassen.
-index_cerr2=Der Minecraft Server scheint nicht auf Ihrem System installiert sein. Wenn dieser bereits l&#228;uft, m&#252;ssen Sie die <a anzupassen href='$2'>Modulkonfiguration</a> anpassen, um die richtigen Pfade zu verwenden.
+index_cerr2=Der Minecraft Server scheint nicht auf Ihrem System installiert sein. Wenn dieser bereits l&#228;uft, m&#252;ssen Sie die <a href='$1'>Modulkonfiguration</a> anpassen, um die richtigen Pfade zu verwenden.
 index_dir=Installiere in Verzeichnis
 index_download=Download Server
 index_downloaddesc=Klicken Sie diese Schaltfl&#228;che um die neuesten Version der Minecraft-Server JAR-Datei herunterladen und zu installieren.
 index_install=Downloade und Installiere
-index_nojava=Auch der Java-Befehl an <tt>$1</tt>, der zum Ausf&#252;hren von Minecraft ben&#246;tigt wird, wurde nicht gefunden.
+index_nojava=Auch der Java-Befehl <tt>$1</tt>, der zum Ausf&#252;hren von Minecraft ben&#246;tigt wird, wurde nicht gefunden.
 index_offer=Alternativ kann Webmin die Minecraft Server f&#252;r Sie automatisch heruntergeladen und installieren.
 index_restart=Starte Minecraft Server neu
 index_restartdesc=Klicke auf diese Schaltfl&#228;che, um die aktuelle Konfiguration durch einen Neustart des Minecraft Server anwenden.
