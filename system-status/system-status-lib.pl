@@ -388,7 +388,8 @@ if (!$config{'collect_notemp'} &&
 			if ($a->[0] =~ /^Temperature\s+Celsius$/i &&
 			    $a->[1] > 0) {
 				push(@rv, { 'device' => $d->{'device'},
-					    'temp' => int($a->[1]) });
+					    'temp' => int($a->[1]),
+					    'errors' => $st->{'errors'} });
 				}
 			}
 		}

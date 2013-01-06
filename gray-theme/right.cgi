@@ -77,6 +77,33 @@ if ($level == 0) {
 			}
 		}
 
+	# Temperatures, if available
+	if ($info->{'cputemps'}) {
+		my @temps;
+		foreach my $t (@{$info->{'cputemps'}}) {
+			push(@temps, $t->{'core'}.": ".
+				     int($t->{'temp'})."&#8451;");
+			}
+		print &ui_table_row($text{'right_cputemps'},
+			join(", ", @temps));
+		}
+	if ($info->{'drivetemps'}) {
+		my @temps;
+		foreach my $t (@{$info->{'drivetemps'}}) {
+			my $short = $t->{'device'};
+			$short =~ s/^\/dev\///;
+			my $emsg;
+			if ($t->{'errors'}) {
+				$emsg .= " (<font color=red>".
+					 &text('right_driveerr', $t->{'errors'}).
+					 "</font>)";
+				}
+			push(@temps, $short.": ".$t->{'temp'}."&#8451;".$emsg);
+			}
+		print &ui_table_row($text{'right_drivetemps'},
+			join(", ", @temps));
+		}
+
 	# System uptime
 	&foreign_require("proc");
 	my $uptime;
