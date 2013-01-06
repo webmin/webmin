@@ -77,7 +77,8 @@ if ($_[0]->{'fs'} eq 'tar') {
 			    &ui_select("gzip", int($_[0]->{'gzip'}),
 				[ [ 0, $text{'no'} ],
 				  [ 1, $text{'dump_gzip1'} ],
-				  [ 2, $text{'dump_gzip2'} ] ]), 1, $tds);
+				  [ 2, $text{'dump_gzip2'} ],
+				  [ 3, $text{'dump_gzip3'} ] ]), 1, $tds);
 
 	print &ui_table_row(&hlink($text{'dump_multi'},"multi"),
 			    &ui_yesno_radio("multi", int($_[0]->{'multi'})),
@@ -354,6 +355,7 @@ if ($_[0]->{'fs'} eq 'tar') {
 	$cmd .= " -L $_[0]->{'blocks'}" if ($_[0]->{'blocks'});
 	$cmd .= " -z" if ($_[0]->{'gzip'} == 1);
 	$cmd .= " --bzip" if ($_[0]->{'gzip'} == 2);
+	$cmd .= " -J" if ($_[0]->{'gzip'} == 3);
 	$cmd .= " -M" if ($_[0]->{'multi'});
 	$cmd .= " -h" if ($_[0]->{'links'});
 	$cmd .= " --one-file-system" if ($_[0]->{'xdev'});
@@ -479,6 +481,7 @@ if ($_[0]->{'fs'} eq "tar") {
 	$vcmd = "tar -t -v";
 	$vcmd .= " -z" if ($_[0]->{'gzip'} == 1);
 	$vcmd .= " --bzip" if ($_[0]->{'gzip'} == 2);
+	$vcmd .= " -J" if ($_[0]->{'gzip'} == 3);
 	$vcmd .= " -M" if ($_[0]->{'multi'});
 	}
 elsif ($_[0]->{'fs'} eq "xfs") {
@@ -572,7 +575,8 @@ if ($_[0] eq 'tar') {
 		      &ui_select("gzip", $_[1]->{'gzip'},
 				[ [ 0, $text{'no'} ],
 				  [ 1, $text{'dump_gzip1'} ],
-				  [ 2, $text{'dump_gzip2'} ] ]), 1, $tds);
+				  [ 2, $text{'dump_gzip2'} ],
+				  [ 3, $text{'dump_gzip3'} ] ]), 1, $tds);
 
 	print &ui_table_row(&hlink($text{'restore_keep'},"keep"),
 		      &ui_yesno_radio("keep", 0), 1, $tds);
@@ -681,6 +685,7 @@ if ($_[0] eq 'tar') {
 	$cmd .= " -p" if ($in{'perms'});
 	$cmd .= " -z" if ($in{'gzip'} == 1);
 	$cmd .= " --bzip" if ($in{'gzip'} == 2);
+	$cmd .= " -J" if ($in{'gzip'} == 3);
 	$cmd .= " -k" if ($in{'keep'});
 	if ($in{'multi'}) {
 		!-c $in{'file'} && !-b $in{'file'} ||

@@ -89,6 +89,7 @@ dump_dumpfs=$1 filesystem dump
 dump_gzip=Compress archive?
 dump_gzip1=Yes, with gzip
 dump_gzip2=Yes, with bzip2
+dump_gzip3=Yes, with XZ
 dump_bcomp=Buffer compressed data into blocks?
 dump_xdev=Limit backup to one filesystem?
 dump_update2=Just add new files to archive?
