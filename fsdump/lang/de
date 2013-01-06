@@ -71,6 +71,7 @@ dump_fs=Dateisystem
 dump_gzip=Komprimiere Archive mit <tt>gzip</tt>?
 dump_gzip1=Ja, mit gzip
 dump_gzip2=Ja, mit bzip2
+dump_gzip3=Ja, mit XZ
 dump_honour=Markierte Dateien immer auslassen?
 dump_host=Host $1 als Benutzer $2 in Datei oder Ger&#228;t $3
 dump_ignoreread=Ignoriere Lesefehler von Dateien?
