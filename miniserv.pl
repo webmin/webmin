@@ -37,7 +37,12 @@ if ($config{'ssl'}) {
 		eval "Net::SSLeay::SSLeay_add_ssl_algorithms()";
 		eval "Net::SSLeay::load_error_strings()";
 		if ($config{'no_ssl2'}) {
-			eval "Net::SSLeay::CTX_set_options($ctx,&Net::SSLeay::OP_NO_SSLv2)";
+			eval "Net::SSLeay::CTX_set_options($ctx,
+				&Net::SSLeay::OP_NO_SSLv2)";
+			}
+		if ($config{'no_sslcompression'}) {
+			eval "Net::SSLeay::CTX_set_options($ctx,
+				&Net::SSLeay::OP_NO_COMPRESSION)";
 			}
 		if (defined(&Net::SSLeay::X509_STORE_CTX_get_current_cert) &&
 		    defined(&Net::SSLeay::CTX_load_verify_locations) &&

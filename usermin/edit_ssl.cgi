@@ -41,6 +41,9 @@ if ($miniserv{'ssl_version'}) {
 				$text{'ssl_auto'}));
 	}
 
+print &ui_table_row($text{'ssl_compression'},
+	&ui_yesno_radio("ssl_compression", !$miniserv{'no_sslcompression'}));
+
 $clist = $miniserv{'ssl_cipher_list'};
 $cmode = !$clist ? 1 :
 	 $clist eq $webmin::strong_ssl_ciphers ? 2 : 0;

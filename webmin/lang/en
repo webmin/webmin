@@ -319,6 +319,7 @@ ssl_cert=Certificate file
 ssl_cert_def=Same file as private key
 ssl_cert_oth=Separate file
 ssl_redirect=Redirect non-SSL requests to SSL mode?
+ssl_compression=Allow compressed SSL connections?
 ssl_extracas=Additional certificate files<br>(for chained certificates)
 ssl_extracasdef=Same as global SSL settings
 ssl_extracasnone=None for this IP address
