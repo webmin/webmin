@@ -968,4 +968,14 @@ web_expirespath=Path regular expression
 web_expirestime=Cache time in seconds
 web_eexpires2=Missing or non-numeric client side cache time in row $1
 
+webmincron_title=Webmin Scheduled Functions
+webmincron_emodule=The Webmin Cron Jobs module is not installed!
+webmincron_module=Webmin module
+webmincron_func=Function name
+webmincron_args=Parameters
+webmincron_when=Run at
+webmincron_none=No Webmin scheduled functions have been created yet. These are typically created by other modules, not by users.
+webmincron_delete=Delete Selected Functions
+webmincron_run=Run Selected Functions Now
+
 __norefs=1

@@ -90,7 +90,7 @@ if ($wcron{'args'}) {
 &write_file($file, \%wcron);
 &unlock_file($file);
 eval {
-	# Reload may fail in Webmin isn't running
+	# Reload may fail if Webmin isn't running
 	$main::error_must_die = 1;
 	&reload_miniserv();
 	};

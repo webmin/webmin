@@ -20,7 +20,8 @@ my (@wlinks, @wtitles, @wicons);
 	    "edit_categories.cgi", "edit_descs.cgi", "edit_themes.cgi",
 	    "edit_referers.cgi", "edit_anon.cgi", "edit_lock.cgi",
 	    "edit_mobile.cgi", "edit_blocked.cgi", "edit_status.cgi",
-            "edit_advanced.cgi", "edit_debug.cgi", "edit_web.cgi", );
+            "edit_advanced.cgi", "edit_debug.cgi", "edit_web.cgi",
+	    "edit_webmincron.cgi", );
 @wtitles = ( $text{'access_title'}, $text{'bind_title'},
 	     $text{'log_title'}, $text{'proxy_title'},
 	     $text{'ui_title'}, $text{'mods_title'},
@@ -32,7 +33,8 @@ my (@wlinks, @wtitles, @wicons);
 	     $text{'anon_title'}, $text{'lock_title'},
 	     $text{'mobile_title'}, $text{'blocked_title'},
 	     $text{'status_title'}, $text{'advanced_title'},
-	     $text{'debug_title'}, $text{'web_title'}, );
+	     $text{'debug_title'}, $text{'web_title'},
+	     $text{'webmincron_title'}, );
 @wicons = ( "images/access.gif", "images/bind.gif", "images/log.gif",
 	    "images/proxy.gif", "images/ui.gif", "images/mods.gif",
 	    "images/os.gif", "images/lang.gif", "images/startpage.gif",
@@ -41,7 +43,8 @@ my (@wlinks, @wtitles, @wicons);
 	    "images/descs.gif", "images/themes.gif", "images/referers.gif",
 	    "images/anon.gif", "images/lock.gif", "images/mobile.gif",
 	    "images/blocked.gif", "images/status.gif",
-	    "images/advanced.gif", "images/debug.gif", "images/web.gif", );
+	    "images/advanced.gif", "images/debug.gif", "images/web.gif",
+	    "images/webmincron.gif", );
 if ($gconfig{'eazel'}) {
 	push(@wlinks, "edit_syslet.cgi");
 	push(@wtitles, $text{'syslet_title'});

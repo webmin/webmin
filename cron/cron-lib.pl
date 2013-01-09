@@ -1104,7 +1104,10 @@ Returns a human-readable text string describing when a cron job is run.
 sub when_text
 {
 local $pfx = $_[1] ? "uc" : "";
-if ($_[0]->{'special'}) {
+if ($_[0]->{'interval'}) {
+	return &text($pfx.'when_interval', $_[0]->{'interval'});
+	}
+elsif ($_[0]->{'special'}) {
 	$pfx = $_[1] ? "" : "lc";
 	return $text{$pfx.'edit_special_'.$_[0]->{'special'}};
 	}
