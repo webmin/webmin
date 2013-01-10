@@ -648,6 +648,8 @@ log_clearcache=Cleared all URLs from cache
 log_lock=Changed file locking
 log_sendmail=Changed mail sending options
 log_debug=Changed debugging log file options
+log_delete_webmincron=Deleted $1 scheduled functions
+log_run_webmincron=Ran $1 scheduled functions
 
 themes_title=Webmin Themes
 themes_desc=Themes control the appearance of the Webmin user interface, including icons, colours, backgrounds and the layout of pages. The selection box below can be used to choose one of the themes installed on your system.
@@ -977,5 +979,11 @@ webmincron_when=Run at
 webmincron_none=No Webmin scheduled functions have been created yet. These are typically created by other modules, not by users.
 webmincron_delete=Delete Selected Functions
 webmincron_run=Run Selected Functions Now
+webmincron_derr=Failed to delete scheduled functions
+webmincron_enone=None selected
+webmincron_rerr=Failed to run delete scheduled functions
+webmincron_running=Running function $2 in $1 ..
+webmincron_failed=.. failed : $1
+webmincron_done=.. done
 
 __norefs=1

@@ -113,3 +113,5 @@ Chained certificate files can now be set for per-IP address SSL keys, rather tha
 Added a tab to the SSL Encryption page for generating a certificate signing request.
 ---- Changes since 1.590 ----
 The titles for existing clone modules can now be changed on the Module Titles page.
+---- Changes since 1.610 ----
+Added a page for viewing and running Webmin scheduled functions.

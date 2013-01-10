@@ -10,8 +10,9 @@ $cron = $ARGV[0];
 # Require the module, call the function
 &foreign_require($cron->{'module'}, $cron->{'file'});
 if ($cron->{'args'}) {
-	&foreign_call($cron->{'module'}, $cron->{'func'});
+	&foreign_call($cron->{'module'}, $cron->{'func'},
+		      @{$cron->{'args'}});
 	}
 else {
-	&foreign_call($cron->{'module'}, $cron->{'func'}, @{$cron->{'args'}});
+	&foreign_call($cron->{'module'}, $cron->{'func'});
 	}
