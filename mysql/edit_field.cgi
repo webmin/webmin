@@ -79,9 +79,11 @@ else {
 
 if ($type =~ /int$/) {
 	# Display unsigned/zerofill option
+	$opts = $extra =~ /unsigned/ ? 'unsigned' :
+		$extra =~ /zerofill/ ? 'zerofill' : '';
+	print &ui_hidden("oldopts", $opts);
 	print &ui_table_row($text{'field_opts'},
-		&ui_radio("opts", $extra =~ /unsigned/ ? 'unsigned' :
-				  $extra =~ /zerofill/ ? 'zerofill' : '',
+		&ui_radio("opts", $opts,
 			  [ [ '', $text{'field_none'} ],
 			    [ 'unsigned', $text{'field_unsigned'} ],
 			    [ 'zerofill', $text{'field_zerofill'} ] ]));
@@ -95,15 +97,19 @@ if ($type =~ /int$/) {
 	}
 elsif ($type eq 'float' || $type eq 'double' || $type eq 'decimal') {
 	# Display zerofill option
+	$opts = $extra =~ /zerofill/ ? 'zerofill' : '';
+	print &ui_hidden("oldopts", $opts);
 	print &ui_table_row($text{'field_opts'},
-		&ui_radio("opts", $extra =~ /zerofill/ ? 'zerofill' : '',
+		&ui_radio("opts", $opts,
 			  [ [ '', $text{'field_none'} ],
 			    [ 'zerofill', $text{'field_zerofill'} ] ]));
 	}
 elsif ($type eq 'char' || $type eq 'varchar') {
 	# Display binary option
+	$opts = $extra =~ /binary/ ? 'binary' : '';
+	print &ui_hidden("oldopts", $opts);
 	print &ui_table_row($text{'field_opts'},
-		&ui_radio("opts", $extra =~ /binary/ ? 'binary' : '',
+		&ui_radio("opts", $opts,
 			  [ [ '', $text{'field_ascii'} ],
 			    [ 'binary', $text{'field_binary'} ] ]));
 	}

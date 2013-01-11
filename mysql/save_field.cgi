@@ -54,9 +54,11 @@ else {
 			$in{'ext'};
 	&execute_sql_logged($in{'db'}, $sql);
 	if ($in{'old'} ne $in{'field'} ||
-	    $in{'type'} ne $in{'newtype'}) {
+	    $in{'type'} ne $in{'newtype'} ||
+	    $in{'oldopts'} ne $in{'opts'}) {
 		# Rename or retype field as well
-		if ($in{'type'} ne $in{'newtype'}) {
+		if ($in{'type'} ne $in{'newtype'} ||
+		    $in{'oldopts'} ne $in{'opts'}) {
 			# Type has changed .. fix size
 			if ($in{'newtype'} eq 'enum' ||
 			    $in{'newtype'} eq 'set') {
