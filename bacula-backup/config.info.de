@@ -12,5 +12,5 @@ db=Datenbank oder Datei mit Baculainformationen,0
 line2=Dateieinstellungen,11
 bacula_dir=Bacula&#45;Konfigurationsverzeichnis,0
 bextract=Voller Pfad zu <tt>bextract</tt>,0
-bls=Voller Pfad zu <tt>bls</tt>,0
-btape=Voller Pfad zu <tt>btape</tt>,0
+bls=Voller Pfad zum <tt>bls</tt> Befehl,0
+btape=Voller Pfad zum <tt>btape</tt> Befehl,0
