@@ -1,0 +1,3 @@
+line2=System konfigurasjon,11
+lilo_conf=Stt til LILO konfig fil,0
+lilo_cmd=Kommando for &#229; ta i bruk LILO konfigurasjon,0
