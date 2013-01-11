@@ -40,6 +40,18 @@ if ($in{'ipv6'}) {
 	$@ && &error(&text('bind_eipv6', "<tt>Socket6</tt>"));
 	}
 
+# For any new ports, check if they are already in use
+@oldports = split(/\s+/, $in{'oldports'});
+@newports = &unique(grep { &indexof($_, @oldports) < 0 } @ports);
+if (&has_command("lsof")) {
+	foreach my $p (@newports) {
+		$out = &backquote_command("lsof -t -i tcp:$p 2>/dev/null");
+		if ($out =~ /\d+/) {
+			&error(&text('bind_elsof', $p));
+			}
+		}
+	}
+
 # Update config file
 &lock_file($ENV{'MINISERV_CONFIG'});
 $first = shift(@sockets);
@@ -73,7 +85,7 @@ $SIG{'TERM'} = 'ignore';
 &system_logged("$config_directory/stop >/dev/null 2>&1 </dev/null");
 $temp = &transname();
 $rv = &system_logged("$config_directory/start >$temp 2>&1 </dev/null");
-$out = `cat $temp`;
+$out = &read_file_contents($temp);
 $out =~ s/^Starting Webmin server in.*\n//;
 $out =~ s/at.*line.*//;
 unlink($temp);
@@ -88,8 +100,6 @@ if ($rv) {
 
 # If possible, open the new ports
 if (&foreign_check("firewall") && $in{'firewall'}) {
-	@oldports = split(/\s+/, $in{'oldports'});
-	@newports = &unique(grep { &indexof($_, @oldports) < 0 } @ports);
 	if (@newports) {
 		&clean_environment();
 		$ENV{'WEBMIN_CONFIG'} = $config_directory;
