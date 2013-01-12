@@ -9,7 +9,7 @@ eval {
 	&foreign_require("webmincron");
 	local $cron = { 'module' => $module_name,
 		        'func' => 'cleanup_temp_files',
-			'interval' => 60 };
+			'interval' => 3600 };
 	&webmincron::create_webmin_cron($cron, $temp_delete_cmd);
 	};
 if ($@) {
