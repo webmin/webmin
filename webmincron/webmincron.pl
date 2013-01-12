@@ -7,12 +7,12 @@ $main::webmin_script_type = 'cron';
 do './webmincron-lib.pl';
 $cron = $ARGV[0];
 
+# Build list of args
+my @args;
+for(my $i=0; defined($cron->{'arg'.$i}); $i++) {
+	push(@args, $cron->{'arg'.$i});
+	}
+
 # Require the module, call the function
 &foreign_require($cron->{'module'}, $cron->{'file'});
-if ($cron->{'args'}) {
-	&foreign_call($cron->{'module'}, $cron->{'func'},
-		      @{$cron->{'args'}});
-	}
-else {
-	&foreign_call($cron->{'module'}, $cron->{'func'});
-	}
+&foreign_call($cron->{'module'}, $cron->{'func'}, @args);
