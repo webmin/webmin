@@ -1062,6 +1062,7 @@ my %miniserv;
 my %realos = &detect_operating_system(undef, 1);
 if (($realos{'os_version'} ne $gconfig{'os_version'} ||
      $realos{'os_type'} ne $gconfig{'os_type'}) &&
+    $realos{'os_version'} && $realos{'os_type'} &&
     &foreign_available("webmin")) {
 	push(@notifs, 
 		&ui_form_start("$gconfig{'webprefix'}/webmin/fix_os.cgi").
