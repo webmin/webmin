@@ -5661,13 +5661,15 @@ foreach my $cron (@webmincrons) {
 
 	if ($run) {
 		print DEBUG "Running cron id=$cron->{'id'} ".
-			    "module=$cron->{'module'} func=$cron->{'func'}\n";
+			    "module=$cron->{'module'} func=$cron->{'func'} ".
+			    "arg0=$cron->{'arg0'}\n";
 		$webmincron_last{$cron->{'id'}} = $now;
 		$changed = 1;
 		my $pid = fork();
 		if (!$pid) {
 			# Run via a wrapper command, which we run like a CGI
 			dbmclose(%sessiondb);
+			open(STDOUT, ">&STDERR");
 
 			# Setup CGI-like environment
 			$envtz = $ENV{"TZ"};
@@ -5837,7 +5839,7 @@ foreach my $f (readdir(CRONS)) {
 			delete($cron{'special'});
 			}
 		if (!$broken) {
-			print DEBUG "adding cron id=$cron{'id'} module=$cron{'module'} func=$cron{'func'}\n";
+			print DEBUG "Adding cron id=$cron{'id'} module=$cron{'module'} func=$cron{'func'} arg0=$cron{'arg0'}\n";
 			push(@webmincrons, \%cron);
 			}
 		}
