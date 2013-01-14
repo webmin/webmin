@@ -269,7 +269,7 @@ if ($gconfig{'debug_what_sql'}) {
 		}
 	&webmin_debug_log('SQL', "db=$_[0] sql=$sql".$params);
 	}
-$sql =~ s/\\/\\\\/g;
+$sql = &escape_backslashes_in_quotes($sql);
 if ($driver_handle && !$config{'nodbi'}) {
 	# Use the DBI interface
 	local $cstr = "database=$_[0]";
@@ -609,6 +609,22 @@ sub escapestr
 {
 local $rv = $_[0];
 $rv =~ s/'/''/g;
+return $rv;
+}
+
+# escape_backslashes_in_quotes(string)
+# Escapes backslashes, but only inside quoted strings
+sub escape_backslashes_in_quotes
+{
+local ($str) = @_;
+local $rv;
+while($str =~ /^([^"]*)"([^"]*)"(.*)$/) {
+	local ($before, $quoted, $after) = ($1, $2, $3);
+	$quoted =~ s/\\/\\\\/g;
+	$rv .= $before.'"'.$quoted.'"';
+	$str = $after;
+	}
+$rv .= $str;
 return $rv;
 }
 
