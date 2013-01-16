@@ -10,6 +10,10 @@ if (!&foreign_check("webmincron")) {
 &foreign_require("webmincron");
 &foreign_require("cron");
 my @wcrons = &webmincron::list_webmin_crons();
+@wcrons = sort { $a->{'module'} cmp $b->{'module'} ||
+		 $a->{'func'} cmp $b->{'func'} ||
+		 join(" ", @{$a->{'args'}}) cmp join(" ", @{$b->{'args'}}) }
+	       @wcrons;
 if (@wcrons) {
 	my @tds = ( "width=5" );
 	print &ui_form_start("delete_webmincron.cgi");
