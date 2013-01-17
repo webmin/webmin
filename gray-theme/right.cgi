@@ -41,8 +41,12 @@ if ($level == 0) {
 	$ip = $info && $info->{'ips'} ? $info->{'ips'}->[0]->[0] :
 				&to_ipaddress(get_system_hostname());
 	$ip = " ($ip)" if ($ip);
+	$host = &get_system_hostname().$ip;
+	if (&foreign_available("net")) {
+		$host = "<a href=net/list_dns.cgi>$host</a>";
+		}
 	print &ui_table_row($text{'right_host'},
-		&get_system_hostname().$ip);
+		$host);
 
 	# Operating system
 	print &ui_table_row($text{'right_os'},
@@ -118,6 +122,9 @@ if ($level == 0) {
 		$uptime = &text('right_upmins', $m);
 		}
 	if ($uptime) {
+		if (&foreign_available("init")) {
+			$uptime = "<a href=init/>$uptime</a>";
+			}
 		print &ui_table_row($text{'right_uptime'}, $uptime);
 		}
 
@@ -169,10 +176,14 @@ if ($level == 0) {
 	# Disk space on local drives
 	if ($info->{'disk_total'}) {
 		($total, $free) = ($info->{'disk_total'}, $info->{'disk_free'});
-		print &ui_table_row($text{'right_disk'},
-			&text('right_used',
+		$disk = &text('right_used',
 			      &nice_size($total),
-			      &nice_size($total-$free))."<br>\n".
+			      &nice_size($total-$free));
+		if (&foreign_available("mount")) {
+			$disk = "<a href=mount/>$disk</a>";
+			}
+		print &ui_table_row($text{'right_disk'},
+			$disk."<br>\n".
 			&bar_chart($total, $total-$free, 1));
 		}
 
