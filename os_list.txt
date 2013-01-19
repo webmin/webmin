@@ -375,21 +375,7 @@ Sun Java Desktop System		3.0 (Linux)	suse-linux	9.2	`cat /etc/SuSE-release 2>/de
 Sun Java Desktop System		2.0 (Solaris)	solaris		9	$uname =~ /SunOS.*\s5\.9\s/i && `cat /etc/sun-release 2>/dev/null` =~ /Sun\s+Java\s+Desktop/
 
 # All other Linux variants, identified by kernel version
-Generic Linux			2.0	generic-linux	2.0	`uname -r` =~ /2\.0\./
-Generic Linux			2.2	generic-linux	2.2	`uname -r` =~ /2\.2\./
-Generic Linux			2.4	generic-linux	2.4	`uname -r` =~ /2\.4\./
-Generic Linux			2.5	generic-linux	2.5	`uname -r` =~ /2\.4\./
-Generic Linux			2.6	generic-linux	2.6	`uname -r` =~ /2\.6\./
-Generic Linux			2.7	generic-linux	2.7	`uname -r` =~ /2\.7\./
-Generic Linux			3.0	generic-linux	3.0	`uname -r` =~ /3\.0\./
-Generic Linux			3.1	generic-linux	3.1	`uname -r` =~ /3\.1\./
-Generic Linux			3.2	generic-linux	3.2	`uname -r` =~ /3\.2\./
-Generic Linux			3.3	generic-linux	3.3	`uname -r` =~ /3\.3\./
-Generic Linux			3.4	generic-linux	3.4	`uname -r` =~ /3\.4\./
-Generic Linux			3.5	generic-linux	3.5	`uname -r` =~ /3\.5\./
-Generic Linux			3.6	generic-linux	3.6	`uname -r` =~ /3\.6\./
-Generic Linux			3.7	generic-linux	3.7	`uname -r` =~ /3\.7\./
-Generic Linux			3.8	generic-linux	3.8	`uname -r` =~ /3\.8\./
+Generic Linux			$1	generic-linux	$1	`uname -r` =~ /^([0-9]+\.[0-9+])\./
 
 # Windows
 Windows				XP	windows		xp	(-d "c:/windows" || -d "c:/winnt") && `ver` =~ /XP/
