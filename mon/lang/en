@@ -166,7 +166,7 @@ status_eperl=The MON status CGI program requires the $1 perl module. <a href='$2
 status_esame=The MON status CGI program $1 has been set to the <tt>mon.cgi</tt> script in this Webmin module, not the CGI program that comes with MON. Adjust the <a href='$2'>module configuration</a> to use the correct path.
 
 users_title=MON Users
-users_etype=The MON users list cannot be edited because MON is not currenly configured to use it for authentication on the <a href='$1'>Global Options</a> page.
+users_etype=The MON users list cannot be edited because MON is not currently configured to use it for authentication on the <a href='$1'>Global Options</a> page.
 users_header=Allowed MON users in $1
 users_nousers=No MON users have been defined in $1.
 users_add=Create a new user.
