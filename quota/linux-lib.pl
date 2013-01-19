@@ -783,7 +783,7 @@ foreach $k (keys %name_to_unit) {
 
 =head2 get_mtab_map
 
-Returns a hash mapping mount points to devices. For internal use.
+Returns a hash mapping devices to mount points. For internal use.
 
 =cut
 sub get_mtab_map
@@ -799,6 +799,7 @@ foreach $m (&foreign_call($mm, "list_mounted", 1)) {
 		$mtab{&resolve_and_simplify($m->[1])} ||= $m->[0];
 		}
 	}
+$mtab{"/dev/root"} = "/";
 return %mtab;
 }
 
