@@ -168,7 +168,7 @@ sub list_mounted
 {
 # get the list of mounted filesystems
 local(@rv, $_);
-local $cmd = $uname_release =~ /^[789]\.[0-9]/ ? "freebsd-mounts-7" :
+local $cmd = $uname_release =~ /^(\d+)\.[0-9]/ && $1 > 6 ? "freebsd-mounts-7" :
 	     $uname_release =~ /^[56]\.[0-9]/ ? "freebsd-mounts-5" :
 	     $uname_release =~ /^4\.[0-9]/ ? "freebsd-mounts-4" :
 	     $uname_release =~ /^3\.[1-9]/ ? "freebsd-mounts-3" :
