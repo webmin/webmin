@@ -574,14 +574,17 @@ if ($access{'perms'} == 2 && $access{'dbs'} ne '*') {
 else {
 	# Can select any databases
 	local $ind = &indexof($_[0],@dbs) >= 0;
+	local $js1 = "onChange='form.db_def[1].checked = true'";
+	local $js2 = "onClick='form.db_def[2].checked = true'";
 	$rv = &ui_radio("db_def", $_[0] eq '%' || $_[0] eq '' ? 1 :
 				  $ind ? 2 : 0,
 			[ [ 1, $text{'host_any'} ],
 			  [ 2, $text{'host_sel'}."&nbsp;".
-			       &ui_select("dbs", $_[0], \@dbs) ],
+			    &ui_select("dbs", $_[0], \@dbs, 1, 0, 0, 0, $js1) ],
 			  [ 0, $text{'host_otherdb'}."&nbsp;".
 			       &ui_textbox("db", $_[0] eq '%' || $_[0] eq '' ||
-						 $ind ? '' : $_[0], 30) ] ]);
+						 $ind ? '' : $_[0], 30, 0,
+					   undef, $js2) ] ]);
 	}
 return $rv;
 }
