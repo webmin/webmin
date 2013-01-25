@@ -467,7 +467,7 @@ while(<FDISK>) {
 				  $disk->{'cylsize'};
 		push(@{$disk->{'parts'}}, $part);
 		}
-	elsif (/^\s*(\d+)\s+(\d+)cyl\s+(\d+)cyl\s+(\d+)cyl\s+(\S+)\s+(\S+)\s+(\S+)/) {
+	elsif (/^\s*(\d+)\s+(\d+)cyl\s+(\d+)cyl\s+(\d+)cyl\s+(\S+)\s+(\S+)\s+(\S*)/) {
 		# Partition within the current disk from parted (gpt format)
 		local $part = { 'number' => $1,
 				'device' => $disk->{'device'}.$1,
