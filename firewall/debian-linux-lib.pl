@@ -3,7 +3,8 @@
 
 if ($gconfig{'os_version'} >= 3.1 &&
     !-r "/etc/init.d/iptables" &&
-    !-r "/etc/init.d/webmin-iptables") {
+    !-r "/etc/init.d/webmin-iptables" &&
+    !$config{'force_init'}) {
 	# In newer Debians, IPtable is started by the network init script
 	$has_new_debian_iptables = 1;
 	$iptables_save_file = "/etc/iptables.up.rules";

@@ -3,3 +3,4 @@ view_comment=0
 view_condition=1
 cluster_mode=1
 comment_mod=0
+force_init=0
