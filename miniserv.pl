@@ -5670,6 +5670,9 @@ foreach my $cron (@webmincrons) {
 			# Run via a wrapper command, which we run like a CGI
 			dbmclose(%sessiondb);
 			open(STDOUT, ">&STDERR");
+			&close_all_sockets();
+			&close_all_pipes();
+			close(LISTEN);
 
 			# Setup CGI-like environment
 			$envtz = $ENV{"TZ"};
