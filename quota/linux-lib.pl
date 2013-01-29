@@ -103,6 +103,8 @@ sub quota_now
 local $rv = 0;
 local $dir = $_[0]->[0];
 local %opts = map { $_, 1 } split(/,/, $_[0]->[3]);
+local $ufile = $_[1]->[3] =~ /(usrquota|usrjquota)=([^, ]+)/ ? $2 : undef;
+local $gfile = $_[1]->[3] =~ /(grpquota|grpjquota)=([^, ]+)/ ? $2 : undef;
 if ($_[0]->[2] eq "xfs") {
 	# For XFS, assume enabled if setup in fstab
 	$rv += 1 if ($opts{'quota'} || $opts{'usrquota'} ||
@@ -112,7 +114,8 @@ if ($_[0]->[2] eq "xfs") {
 	}
 if ($_[0]->[4]%2 == 1) {
 	# test user quotas
-	if (-r "$dir/quota.user" || -r "$dir/aquota.user") {
+	if (-r "$dir/quota.user" || -r "$dir/aquota.user" ||
+	    $ufile && -r "$dir/$ufile") {
 		local $stout = &supports_status($dir, "user");
 		if ($stout =~ /is\s+(on|off|enabled|disabled)/) {
 			# Can use output from -p mode
@@ -144,7 +147,8 @@ if ($_[0]->[4]%2 == 1) {
 	}
 if ($_[0]->[4] > 1) {
 	# test group quotas
-	if (-r "$dir/quota.group" || -r "$dir/aquota.group") {
+	if (-r "$dir/quota.group" || -r "$dir/aquota.group" ||
+	    $gfile && -r "$dir/$gfile") {
 		local $stout = &supports_status($dir, "group");
 		if ($stout =~ /is\s+(on|off|enabled|disabled)/) {
 			# Can use output from -p mode
