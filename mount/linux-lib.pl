@@ -915,8 +915,8 @@ return ( );
 # generate_options() will not be called for it.
 sub list_fstypes
 {
-local @sup = ("ext2", "minix", "msdos", "nfs", "nfs4", "iso9660", "ext",
-	      "xiafs", "hpfs", "fat", "vfat", "umsdos", "sysv", "reiserfs",
+local @sup = ("ext2", "msdos", "nfs", "nfs4", "iso9660", "ext",
+	      "hpfs", "fat", "vfat", "umsdos", "sysv", "reiserfs",
 	      "ntfs", "hfs", "fatx");
 push(@sup, $smbfs_fs) if ($smbfs_support);
 push(@sup, "cifs") if ($cifs_support);
