@@ -1209,6 +1209,7 @@ if (&supports_pgpass()) {
 		local $temphome = &transname();
 		&make_dir($temphome, 0755);
 		$pgpass = "$temphome/.pgpass";
+		push(@main::temporary_files, $pgpass);
 		$ENV{'HOME'} = $temphome;
 		}
 	$ENV{'PGPASSFILE'} = $pgpass;
