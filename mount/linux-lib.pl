@@ -38,6 +38,9 @@ if (!$no_check_support) {
 	if (&has_command("mkfs.jfs")) {
 		$jfs_support = 1;
 		}
+	if (&has_command("mkfs.btrfs")) {
+		$btrfs_support = 1;
+		}
 	}
 
 # We always need to check this, to fix up LABEL= mounts
@@ -871,7 +874,7 @@ elsif ($_[0] eq $smbfs_fs)
 	{ return ($smbfs_support >= 3 ? 2 : 0, 1, 0, 0); }
 elsif ($_[0] eq "cifs") { return (2, 1, 0, 0); }
 elsif ($_[0] =~ /^ext\d+$/ || $_[0] eq "minix" ||
-       $_[0] eq "xiafs" || $_[0] eq "xfs" || $_[0] eq "jfs")
+       $_[0] eq "xiafs" || $_[0] eq "xfs" || $_[0] eq "jfs" || $_[0] eq "btrfs")
 	{ return (2, 1, 1, 0); }
 else
 	{ return (2, 1, 0, 0); }
@@ -926,6 +929,7 @@ push(@sup, "tmpfs") if ($tmpfs_support);
 push(@sup, "ext3") if ($ext3_support);
 push(@sup, "ext4") if ($ext4_support);
 push(@sup, "xfs") if ($xfs_support);
+push(@sup, "btrfs") if ($btrfs_support);
 push(@sup, "jfs") if ($jfs_support);
 push(@sup, "bind") if ($bind_support);
 push(@sup, "swap");
@@ -976,6 +980,7 @@ local(%fsmap);
 	  "bind","Loopback Filesystem",
 	  "hfs","Apple Filesystem",
 	  "fatx","XBOX Filesystem",
+	  "btrfs","BTR Filesystem",
 	  );
 return $config{long_fstypes} && $fsmap{$_[0]} ? $fsmap{$_[0]} : uc($_[0]);
 }

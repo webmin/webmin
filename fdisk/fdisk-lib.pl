@@ -809,7 +809,7 @@ if ($has_parted) {
 		@rv = ( "vfat" );
 		}
 	elsif ($tag =~ /^ext/ || $tag eq "raid") {
-		@rv = ( "ext3", "ext4", "ext2", "xfs", "reiserfs" );
+		@rv = ( "ext3", "ext4", "ext2", "xfs", "reiserfs", "btrfs" );
 		}
 	elsif ($tag eq "hfs" || $tag eq "HFS") {
 		@rv = ( "hfs" );
@@ -839,7 +839,7 @@ else {
 		@rv = ( "vfat" );
 		}
 	elsif ($tag eq "83") {
-		@rv = ( "ext3", "ext4", "ext2", "xfs", "reiserfs" );
+		@rv = ( "ext3", "ext4", "ext2", "xfs", "reiserfs", "btrfs" );
 		}
 	elsif ($tag eq "82") {
 		@rv = ( "swap" );
@@ -865,16 +865,7 @@ return $text{"fs_".$_[0]};
 
 sub mkfs_options
 {
-if ($_[0] eq "ext2") {
-	&opt_input("ext2_b", $text{'bytes'}, 1);
-	&opt_input("ext2_f", $text{'bytes'}, 0);
-	&opt_input("ext2_i", "", 1);
-	&opt_input("ext2_m", "%", 0);
-	&opt_input("ext2_g", "", 1);
-	print &ui_table_row($text{'ext2_c'},
-		&ui_yesno_radio("ext2_c", 0));
-	}
-elsif ($_[0] eq "msdos" || $_[0] eq "vfat") {
+if ($_[0] eq "msdos" || $_[0] eq "vfat") {
 	&opt_input("msdos_ff", "", 1);
 	print &ui_table_row($text{'msdos_F'},
 	     &ui_select("msdos_F", undef,
@@ -928,6 +919,11 @@ elsif ($_[0] eq "fatx") {
 	# Has no options!
 	print &ui_table_row(undef, $text{'fatx_none'}, 4);
 	}
+elsif ($_[0] eq "btrfs") {
+	&opt_input("btrfs_l", $text{'bytes'}, 0);
+	&opt_input("btrfs_n", $text{'bytes'}, 0);
+	&opt_input("btrfs_s", $text{'bytes'}, 0);
+	}
 }
 
 # mkfs_parse(type, device)
@@ -936,18 +932,7 @@ elsif ($_[0] eq "fatx") {
 sub mkfs_parse
 {
 local($cmd);
-if ($_[0] eq "ext2") {
-	$cmd = "mkfs -t ext2";
-	$cmd .= &opt_check("ext2_b", '\d+', "-b");
-	$cmd .= &opt_check("ext2_f", '\d+', "-f");
-	$cmd .= &opt_check("ext2_i", '\d{4,}', "-i");
-	$cmd .= &opt_check("ext2_m", '\d+', "-m");
-	$cmd .= &opt_check("ext2_g", '\d+', "-g");
-	$cmd .= $in{'ext2_c'} ? " -c" : "";
-	$cmd .= " -q";
-	$cmd .= " $_[1]";
-	}
-elsif ($_[0] eq "msdos" || $_[0] eq "vfat") {
+if ($_[0] eq "msdos" || $_[0] eq "vfat") {
 	$cmd = "mkfs -t $_[0]";
 	$cmd .= &opt_check("msdos_ff", '[1-2]', "-f");
 	if ($in{'msdos_F'} eq '*') {
@@ -1025,6 +1010,13 @@ elsif ($_[0] eq "jfs") {
 	}
 elsif ($_[0] eq "fatx") {
 	$cmd = "mkfs -t $_[0] $_[1]";
+	}
+elsif ($_[0] eq "btrfs") {
+	$cmd = "mkfs -t $_[0]";
+	$cmd .= " -l $in{'btrfs_l'}" if (!$in{'btrfs_l_def'});
+	$cmd .= " -n $in{'btrfs_n'}" if (!$in{'btrfs_n_def'});
+	$cmd .= " -s $in{'btrfs_s'}" if (!$in{'btrfs_s_def'});
+	$cmd .= " $_[1]";
 	}
 if (&has_command("partprobe")) {
 	$cmd = "partprobe ; $cmd";
@@ -1486,6 +1478,7 @@ push(@fstypes, "reiserfs") if (&has_command("mkreiserfs"));
 push(@fstypes, "xfs") if (&has_command("mkfs.xfs"));
 push(@fstypes, "jfs") if (&has_command("mkfs.jfs"));
 push(@fstypes, "fatx") if (&has_command("mkfs.fatx"));
+push(@fstypes, "btrfs") if (&has_command("mkfs.btrfs"));
 push(@fstypes, "msdos");
 push(@fstypes, "vfat");
 push(@fstypes, "minix");

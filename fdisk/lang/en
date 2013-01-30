@@ -200,6 +200,10 @@ xfs_b=Block size
 jfs_s=Log size
 jfs_c=Check for bad blocks?
 
+btrfs_l=Leaf size
+btrfs_n=Node size
+btrfs_s=Sector size
+
 fatx_none=No options are available for FATX filesystems.
 
 acl_disks=Disks this user can partition and format
@@ -257,6 +261,7 @@ fs_ext3=Linux Native
 fs_ext4=New Linux Native
 fs_xfs=SGI
 fs_jfs=IBM Journalling
+fs_btrfs=BTR
 
 delete_title=Delete Partition
 delete_rusure=Are you sure you want to delete $1 ( $2 ) ? Data on this partition may be lost forever.
