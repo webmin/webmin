@@ -467,20 +467,44 @@ while(<FDISK>) {
 				  $disk->{'cylsize'};
 		push(@{$disk->{'parts'}}, $part);
 		}
-	elsif (/^\s*(\d+)\s+(\d+)cyl\s+(\d+)cyl\s+(\d+)cyl\s+(\S+)\s+(\S+)\s+(\S*)/) {
+	elsif (/^\s*(\d+)\s+(\d+)cyl\s+(\d+)cyl\s+(\d+)cyl\s(.*)/) {
 		# Partition within the current disk from parted (gpt format)
 		local $part = { 'number' => $1,
 				'device' => $disk->{'device'}.$1,
-				'type' => $5 || 'ext2',
 				'start' => $2+1,
 				'end' => $3+1,
 				'blocks' => $4 * $disk->{'cylsize'},
 				'extended' => 0,
-				'raid' => $7 eq 'raid' ? 1 : 0,
 				'index' => scalar(@{$disk->{'parts'}}),
-			        'name' => $6,
 				'edittype' => 0, };
-		$part->{'type'} = 'ext2' if ($part->{'type'} =~ /^ext/);
+
+		# Work out partition type, name and flags
+		local $rest = $5;
+		$rest =~ s/^\s+//;
+		$rest =~ s/,//g;	# Remove commas in flags list
+		local @rest = split(/\s+/, $rest);
+
+		# If first word is a known partition type, assume it is the type
+		if (@rest && &conv_type($rest[0])) {
+			$part->{'type'} = shift(@rest);
+			}
+
+		# Remove flag words from the end
+		local %flags;
+		while(@rest && $rest[$#rest] =~ /boot|lba|root|swap|hidden|raid|LVM/i) {
+			$flags{lc(pop(@rest))} = 1;
+			}
+
+		# Anything left in the middle should be the name
+		if (@rest) {
+			$part->{'name'} = $rest[0];
+			}
+		if ($flags{'raid'}) {
+			# RAID flag is set
+			$part->{'raid'} = 1;
+			}
+		$part->{'type'} = 'ext2' if (!$part->{'type'} ||
+					     $part->{'type'} =~ /^ext/);
 		$part->{'type'} = 'raid' if ($part->{'type'} eq 'ext2' &&
 					     $part->{'raid'});
 		$part->{'desc'} = &partition_description($part->{'device'});
@@ -784,10 +808,10 @@ if ($has_parted) {
 	elsif ($tag eq "fat32") {
 		@rv = ( "vfat" );
 		}
-	elsif ($tag eq "ext2" || $tag eq "raid") {
+	elsif ($tag =~ /^ext/ || $tag eq "raid") {
 		@rv = ( "ext3", "ext4", "ext2", "xfs", "reiserfs" );
 		}
-	elsif ($tag eq "hfs") {
+	elsif ($tag eq "hfs" || $tag eq "HFS") {
 		@rv = ( "hfs" );
 		}
 	elsif ($tag eq "linux-swap") {
