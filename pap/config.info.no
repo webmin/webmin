@@ -1,0 +1,9 @@
+line2=System konfigurasjon,11
+pppd=Sti til pppd tjener,0
+pap_file=Fil med PPP kontoer,0
+encrypt_pass=Krypter passord i secrets fil,1,1-Ja,0-Nei
+ppp_options=Fil med PPP innstillinger,0
+mgetty=Sti til mgetty program,0
+login_config=Mgetty login konfigurasjonsfil,0
+dialin_config=Mgetty dialin konfigurasjonsfil,0
+serials=Serieport m&#248;nster,0
