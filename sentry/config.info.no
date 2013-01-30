@@ -1,0 +1,16 @@
+sec1=Portsentry innstillinger,11
+portsentry=Sti til portsentry daemon,0
+portsentry_config=Sti til portsentry konfig fil,0
+portsentry_pid=Portsentry PID fil,3,Ingen
+portsentry_ignore=File med verter som Portsentry ignorerer,3,Finn fra konfig
+portsentry_start=Kommando for &#229; starte portsentry,3,Kj&#248;r daemoner i modi angitt nedenfor
+portsentry_stop=Kommando for &#229; stoppe portsentry,3,Stopp prosesser
+portsentry_tmode=Portsentry TCP modus,1,tcp-Grunnleggende modus,stcp-Skjult modus,atcp-Avansert skjult modus
+portsentry_umode=Portsentry UDP modus,1,udp-Grunnleggende modus,sudp-Skjult modus,audp-Avansert skjult modus
+sec2=Hostsentry innstillinger,11
+hostsentry=Sti til hostsentry.py python script,0
+hostsentry_config=Sti til hostsentry konfig fil,0
+hostsentry_start=Kommando for &#229; starte hostsentry,3,Kj&#248;r python script
+hostsentry_stop=Kommando for &#229; stoppe hostsentry,3,Stopp prosesser
+sec3=Innstillinger for loggsjekk,11
+logcheck=Sti til logcheck.sh script,0
