@@ -12,6 +12,7 @@ test_apachectl=Testuj konfiguracjê z komendami,1,1-<tt>apachectl configtest</tt>
 show_names=Wy¶wietlaæ nazwy dyrektyw Apache?,1,1-Tak,0-Nie
 apache_docbase=Katalog bazowy dla dokumentacji Apache,3,witryna Apache
 auto_mods=Wykrywaæ automatycznie modu³y Apache?,1,1-Tak,0-Nie
+allow_virtualmin=Zezwalaæ na edycjê domen zarz±dzanych przez Virtualmin?,1,1-Tak,0-Nie
 line2=Konfiguracja systemu,11
 httpd_dir=Katalog g³ówny serwera Apache,0
 httpd_path=¦cie¿ka do pliku programu httpd,0

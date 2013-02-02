@@ -71,6 +71,7 @@ convert_3=U¿ytkowników z grupy
 convert_4=U¿ytkowników z zakresu UID-ów
 convert_added=Dodawanie $1
 convert_desc=Za pomoc± tego formularza mo¿esz przekszta³ciæ istniej±cych u¿ytkowników Unixa w u¿ytkowników Webmina. Uprawnienia ka¿dego z nowych u¿ytkowników Webmina bêd± okre¶lone przez podanie poni¿ej grupy.
+convert_done=$1 skonwertowanych u¿ytkowników, $2 nieprawid³owych, $3 ju¿ istnieje, $4 wykluczonych.
 convert_ecannot=Nie masz uprawnieñ do przekszta³cania u¿ytkownika Unixa
 convert_egroup=Grupa Unixa nie istnieje
 convert_emax=Niepoprawny maksymalny UID

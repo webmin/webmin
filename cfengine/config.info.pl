@@ -1,0 +1,10 @@
+line2=Konfiguracja serwera,11
+cfengine_dir=¦cie¿ka do plików i katalogów,0
+cfengine=¦cie¿ka do programu cfengine,0
+cfengine_conf=¦cie¿ka do pliku cfengine.conf,3,Automatycznie
+cfrun=¦cie¿ka do programu cfrun,0
+cfrun_hosts=¦cie¿ka do pliku opcji serwera ,3,Automatycznie
+cfd=¦cie¿ka do programu cfd,0
+cfd_conf=¦cie¿ka do pliku cfd.conf,3,Automatycznie
+start_cmd=¦cie¿ka do uruchomienia cfd,3,Uruchom tylko daemona
+stop_cmd=¦cie¿ka do zatrzymania cfd,3,Tylko ubij proces

@@ -1,3 +1,4 @@
+__norefs=1
 acl_all=Wszystkich u¿ytkowników
 acl_allow=Mo¿e edytowaæ u¿ytkowników At?
 acl_except=Oprócz u¿ytkowników

@@ -1,3 +1,4 @@
+__norefs=1
 index_boot=Uruchom podczas uruchamiania systemu
 index_bootdesc=Opcja ta pozwala zadecydowaæ czy po³±czenie ADSL powinno byæ uruchamiane lub nie uruchamiane podczas uruchamiania systemu.
 index_bytes=bajtów
