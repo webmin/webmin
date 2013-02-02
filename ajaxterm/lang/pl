@@ -1,0 +1,6 @@
+__norefs=1
+index_credits=Wykorzystywany jest kod z <a href='$1' target=_new> Ajaxterm </ a> napisany przez Antony Lesuisse.
+index_epython=Ajaxterm wymaga uruchomienia Python, ale komenda $1 nie zosta³a znaleziona w systemie.
+index_estart=Ajaxterm nie rozpocz±³ przyjmowania po³±czenia na porcie $2 przez $1 sekund.
+index_popup=Otwórz w oddzielnym oknie ..
+index_title=Tryb tekstowy (konsola)
