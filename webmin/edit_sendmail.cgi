@@ -55,5 +55,30 @@ print &ui_table_row($text{'sendmail_from'},
 print &ui_table_end();
 print &ui_form_end([ [ "", $text{'save'} ] ]);
 
+print &ui_hr();
+
+print $text{'sendmail_desc2'},"<p>\n";
+
+print &ui_form_start("test_sendmail.cgi", "post");
+print &ui_table_start($text{'sendmail_header2'}, undef, 2);
+
+print &ui_table_row($text{'sendmail_to'},
+		    &ui_textbox("to", undef, 40));
+
+print &ui_table_row($text{'sendmail_subject'},
+		    &ui_textbox("subject", "Test email from Webmin", 40));
+
+$msg = "This is a test message from Webmin, sent with the settings :\n".
+       "\n".
+       "Mail server: ".$mailboxes::text{'index_system'.$ms}."\n".
+       "Sent via: ".($smtp || "Local mail server")."\n".
+       "SMTP login: ".($user || "None")."\n".
+       "SMTP authentication: ".($auth || "Default")."\n";
+print &ui_table_row($text{'sendmail_body'},
+		    &ui_textarea("body", $msg, 8, 80));
+
+print &ui_table_end();
+print &ui_form_end([ [ "", $text{'sendmail_send'} ] ]);
+
 &ui_print_footer("", $text{'index_return'});
 

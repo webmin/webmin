@@ -115,3 +115,4 @@ Added a tab to the SSL Encryption page for generating a certificate signing requ
 The titles for existing clone modules can now be changed on the Module Titles page.
 ---- Changes since 1.610 ----
 Added a page for viewing and running Webmin scheduled functions.
+Added a section to the Sending Email page to verify that the configured mail server settings work.

@@ -958,6 +958,19 @@ sendmail_esmtp=Missing or un-resolvable SMTP server hostname
 sendmail_elogin=Missing SMTP server login
 sendmail_esasl=SMTP authentication cannot be enabled unless the <a href=$1>$2</a> Perl module is installed.
 sendmail_efrom=Missing or incorrectly formatted from address
+sendmail_header2=Send test message
+sendmail_to=Send message to
+sendmail_subject=Message subject
+sendmail_body=Message contents
+sendmail_desc2=This form can be used to send a test email with the settings above, to ensure that mail is being delivered correctly.
+sendmail_send=Send Email
+
+testmail_title=Send Test Email
+testmail_err=Failed to send test message
+testmail_eto=No destination address entered
+testmail_sending=Sending message from $1 to $2 ..
+testmail_done=.. message sent. Check the destination address's mailbox to ensure that it was actually delivered.
+testmail_failed=.. sending failed : $1
 
 web_title=Web Server Options
 web_header=Options for Webmin's built-in webserver
