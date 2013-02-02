@@ -2091,9 +2091,12 @@ return \%hasarg;
 sub action_running
 {
 my ($file) = @_;
-my $out = &backquote_command("$file status");
-if ($out =~ /not\s+running/i ||
-    $out =~ /no\s+server\s+running/i) {
+my ($out, $timedout) = &backquote_with_timeout("$file status", 5);
+if ($timedout) {
+	return -1;
+	}
+elsif ($out =~ /not\s+running/i ||
+       $out =~ /no\s+server\s+running/i) {
 	return 0;
 	}
 elsif ($out =~ /running/i) {
