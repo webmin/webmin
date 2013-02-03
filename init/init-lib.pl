@@ -2091,7 +2091,7 @@ return \%hasarg;
 sub action_running
 {
 my ($file) = @_;
-my ($out, $timedout) = &backquote_with_timeout("$file status", 5);
+my ($out, $timedout) = &backquote_with_timeout("$file status", 2);
 if ($timedout) {
 	return -1;
 	}
