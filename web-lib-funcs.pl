@@ -4211,7 +4211,7 @@ if (&get_miniserv_config(\%miniserv)) {
 
 # Work out which module we are in, and read the per-module config file
 $0 =~ s/\\/\//g;	# Force consistent path on Windows
-if (defined($ENV{'FOREIGN_MODULE_NAME'})) {
+if (defined($ENV{'FOREIGN_MODULE_NAME'}) && $ENV{'FOREIGN_ROOT_DIRECTORY'}) {
 	# In a foreign call - use the module name given
 	$root_directory = $ENV{'FOREIGN_ROOT_DIRECTORY'};
 	$module_name = $ENV{'FOREIGN_MODULE_NAME'};
