@@ -71,7 +71,7 @@ elsif ($in{'ban'}) {
                 "/ban $in{'name'} $in{'reason'}");
 	$out =~ /Banned\s+player\s+\Q$in{'name'}\E/ ||
                 &error(&html_escape($out));
-	$msg = &text('conn_bandone');
+	$msg = &text('conn_bandone', $in{'name'});
 	}
 elsif ($in{'pardon'}) {
 	my $out = &execute_minecraft_command(
