@@ -6484,9 +6484,16 @@ if ($serv->{'fast'} || !$sn) {
 	my $rlen = int($rstr);
 	my ($fromstr, $got);
 	while(length($fromstr) < $rlen) {
-		return &$main::remote_error_handler(
-			"Failed to read from fastrpc.cgi : $!")
-			if (read($fh, $got, $rlen - length($fromstr)) <= 0);
+		my $want = $rlen - length($fromstr);
+		my $readrv = read($fh, $got, $want);
+		if ($readrv < 0 || !defined($readrv)) {
+			return &$main::remote_error_handler(
+				"Failed to read from fastrpc.cgi : $!")
+			}
+		elsif ($readrv == 0) {
+			return &$main::remote_error_handler(
+				"Read of $want bytes from fastrpc.cgi failed")
+			}
 		$fromstr .= $got;
 		}
 	my $from = &unserialise_variable($fromstr);
