@@ -490,7 +490,7 @@ local $tmpl = $serv->{'tmpl'} ? &get_template($serv->{'tmpl'}) : undef;
 if ($tmpl && $tmpl->{$type}) {
 	# Construct from template
 	local %hash = ( 'DESC' => $serv->{'desc'},
-			'HOST' => $host,
+			'HOST' => $host || &get_system_hostname(),
 			'DATE' => $nowdate,
 			'TIME' => $nowtime,
 			'STATUS' => $text{'mon_'.$suffix},
