@@ -1624,7 +1624,7 @@ else {
 	if ($root_directory eq "/usr/libexec/webmin") {
 		$mode = "rpm";
 		}
-	elsif ($root_directory eq "/usr/shard/webmin") {
+	elsif ($root_directory eq "/usr/share/webmin") {
 		$mode = "deb";
 		}
 	elsif ($root_directory eq "/opt/webmin") {
