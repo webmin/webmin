@@ -16,6 +16,7 @@ print &ui_table_start($text{'sasl_title'}, "width=100%", 4);
 
 # Enabled, accept broken clients
 &option_yesno("smtpd_sasl_auth_enable");
+&option_yesno("smtpd_tls_auth_only");
 &option_yesno("broken_sasl_auth_clients");
 
 # Anonymous and plain-text options

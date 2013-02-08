@@ -796,6 +796,7 @@ log_manual_sender_dependent_default_transport_mapss=Manually edited sender depen
 
 sasl_title=SMTP Authentication And Encryption
 opts_smtpd_sasl_auth_enable=Enable SASL SMTP authentication?
+opts_smtpd_tls_auth_only=Disallow SASL authentication over insecure connections?
 opts_broken_sasl_auth_clients=Handle non-compliant SMTP clients?
 sasl_opts=SMTP security options
 sasl_noanonymous=Reject anonymous logins
