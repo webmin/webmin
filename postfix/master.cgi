@@ -18,7 +18,7 @@ print &ui_columns_start([ $text{'master_name'},
 foreach $m (@$master) {
 	print &ui_columns_row([
 		"<a href='edit_master.cgi?name=".&urlize($m->{'name'}).
-		 "&type=".&urlize($m->{'type'})."'>".
+		 "&type=".&urlize($m->{'type'})."&enabled=$m->{'enabled'}'>".
 		 $m->{'name'}."</a>",
 		$m->{'enabled'} ? $text{'yes'} :
 			"<font color=#ff0000>$text{'no'}</font>",

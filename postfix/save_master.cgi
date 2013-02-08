@@ -11,7 +11,8 @@ if ($in{'new'}) {
 	}
 else {
 	($prog) = grep { $_->{'name'} eq $in{'old'} &&
-			 $_->{'type'} eq $in{'oldtype'} } @$master;
+			 $_->{'type'} eq $in{'oldtype'} &&
+			 $_->{'enabled'} == $in{'oldenabled'} } @$master;
 	$prog || &error($text{'master_egone'});
 	}
 &lock_file($config{'postfix_master'});
