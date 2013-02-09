@@ -1551,6 +1551,7 @@ class EditorWindow extends FixedFrame implements CbButtonCallback
 		add("North", np);
 		}
 	add("Center", edit = new TextArea(20, 80));
+	edit.setEditable(true);
 	edit.setFont(filemgr.fixed);
 	Panel bot = new Panel();
 	bot.setLayout(new FlowLayout(FlowLayout.RIGHT));
