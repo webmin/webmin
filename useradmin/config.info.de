@@ -46,6 +46,7 @@ membox=Bearbeite die Gruppenmitglieder mit,1,1-Textfeld,0-Benutzer-Auswahl
 line5=Passwort-Einstellungen,11
 passwd_min=Minimale Passwortl&#228;nge,3,Kein Minimum
 passwd_dict=W&#246;rterbuchpassworte verhindern (wenn m&#246;glich)?,1,1-Ja,0-Nein
+dict_file=Dateien beinhalten W&#246;rter aus dem W&#246;rterbuch,3,Systemstandards verwenden
 passwd_re=Folgende &quot;Regular Expression (Perl)&quot; benutzen&#44; um Passworte zu pr&#252;fen,3,Keine
 passwd_redesc=Lesbare Beschreibung der regexp,3,Verwendet einfach regexp
 passwd_same=Passworte&#44; die den Benutzernamen beinhalten&#44; verhindern?,1,1-Ja,0-Nein
