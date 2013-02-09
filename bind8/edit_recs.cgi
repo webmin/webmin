@@ -90,7 +90,7 @@ if (@recs) {
 			   &select_invert_link("d", $form) );
 		}
 	print &ui_links_row(\@links);
-	if ($in{'type'} =~ /HINFO|WKS|RP|KEY|LOC|SPF/ ||
+	if ($in{'type'} =~ /HINFO|WKS|RP|KEY|LOC|SPF|TXT/ ||
 	    $config{'allow_comments'}) {
 		# One-column table
 		print &recs_table(@recs);

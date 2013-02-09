@@ -217,9 +217,14 @@ else {
 		$vals = $in{'value0'}." ".$in{'value1'};
 		}
 	elsif ($in{'type'} eq "TXT") {
-		$vals = $in{'value0'};
-		$vals =~ s/((?:^|[^\\])(?:\\\\)*)[\"]/$1\\\"/g;
-		$vals = "\"$vals\"";
+		$fullvals = $in{'value0'};
+		$fullvals =~ s/((?:^|[^\\])(?:\\\\)*)[\"]/$1\\\"/g;
+		@splitvals = ( );
+		while($fullvals) {
+			push(@splitvals, substr($fullvals, 0, 255));
+			$fullvals = substr($fullvals, 255);
+			}
+		$vals = join(" ", map { "\"$_\"" } @splitvals);
 		}
 	elsif ($in{'type'} eq "WKS") {
 		&check_ipaddress($in{'value0'}) ||
