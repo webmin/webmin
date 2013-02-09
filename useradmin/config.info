@@ -50,6 +50,7 @@ membox=Edit group members using,1,1-Text box,0-User selector
 line5=Password restrictions,11
 passwd_min=Minimum password length,3,No minimum
 passwd_dict=Prevent dictionary word passwords?,1,1-Yes,0-No
+dict_file=Files containing dictionary words,3,Use system defaults
 passwd_re=Perl regexp to check password against,3,None
 passwd_redesc=Human-readable description of regexp,3,Just use regexp
 passwd_same=Prevent passwords containing username?,1,1-Yes,0-No

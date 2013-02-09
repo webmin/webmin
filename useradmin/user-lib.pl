@@ -1537,30 +1537,9 @@ if ($re && !eval { $pass =~ /^$re$/ }) {
 if ($config{'passwd_same'}) {
 	return &text('usave_epasswd_same') if ($pass =~ /\Q$username\E/i);
 	}
-if ($config{'passwd_dict'} && $pass =~ /^[A-Za-z\'\-]+$/ &&
-    (&has_command("ispell") || &has_command("spell"))) {
-	# Call spell or ispell to check for dictionary words
-	local $temp = &transname();
-	open(TEMP, ">$temp");
-	print TEMP $pass,"\n";
-	close(TEMP);
-	if (&has_command("ispell")) {
-		open(SPELL, "ispell -a <$temp |");
-		while(<SPELL>) {
-			if (/^(#|\&|\?)/) {
-				$unknown++;
-				}
-			}
-		close(SPELL);
-		}
-	else {
-		open(SPELL, "spell <$temp |");
-		local $line = <SPELL>;
-		$unknown++ if ($line);
-		close(SPELL);
-		}
-	unlink($temp);
-	return &text('usave_epasswd_dict') if (!$unknown);
+if ($config{'passwd_dict'} && $pass =~ /^[A-Za-z\'\-]+$/) {
+	# Check if dictionary word
+	return &text('usave_epasswd_dict') if (&is_dictionary_word($pass));
 	}
 if ($config{'passwd_prog'}) {
 	local $out;
@@ -1612,6 +1591,40 @@ if ($config{'passwd_mindays'} && $uinfo ne "none") {
 		}
 	}
 return undef;
+}
+
+=head2 is_dictionary_word(word)
+
+Returns 1 if some file can be found in a dictionary words file
+
+=cut
+sub is_dictionary_word
+{
+my ($word) = @_;
+$word = lc($word);
+my @files;
+if ($config{'dict_file'}) {
+	@files = split(/\s+/, $config{'dict_file'});
+	}
+else {
+	@files = ( "/usr/share/dict/words",
+		   "/usr/dict/words" );
+	}
+foreach my $f (@files) {
+	my $found = 0;
+	&open_readfile(WORDS, $f);
+	while(<WORDS>) {
+		s/#.*//;
+		s/\s//;
+		if (lc($_) eq $word) {
+			$found = 1;
+			last;
+			}
+		}
+	close(WORDS);
+	return 1 if ($found);
+	}
+return 0;
 }
 
 =head2 check_username_restrictions(username)
