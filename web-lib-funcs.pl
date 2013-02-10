@@ -6486,7 +6486,11 @@ if ($serv->{'fast'} || !$sn) {
 	while(length($fromstr) < $rlen) {
 		my $want = $rlen - length($fromstr);
 		my $readrv = read($fh, $got, $want);
-		if ($readrv < 0 || !defined($readrv)) {
+		if (!defined($readrv) && $! == EINTR) {
+			# Interrupted read .. re-try
+			next;
+			}
+		elsif ($readrv < 0 || !defined($readrv)) {
 			return &$main::remote_error_handler(
 				"Failed to read from fastrpc.cgi : $!")
 			}
