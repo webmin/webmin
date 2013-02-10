@@ -1593,40 +1593,6 @@ if ($config{'passwd_mindays'} && $uinfo ne "none") {
 return undef;
 }
 
-=head2 is_dictionary_word(word)
-
-Returns 1 if some file can be found in a dictionary words file
-
-=cut
-sub is_dictionary_word
-{
-my ($word) = @_;
-$word = lc($word);
-my @files;
-if ($config{'dict_file'}) {
-	@files = split(/\s+/, $config{'dict_file'});
-	}
-else {
-	@files = ( "/usr/share/dict/words",
-		   "/usr/dict/words" );
-	}
-foreach my $f (@files) {
-	my $found = 0;
-	&open_readfile(WORDS, $f);
-	while(<WORDS>) {
-		s/#.*//;
-		s/\s//;
-		if (lc($_) eq $word) {
-			$found = 1;
-			last;
-			}
-		}
-	close(WORDS);
-	return 1 if ($found);
-	}
-return 0;
-}
-
 =head2 check_username_restrictions(username)
 
 Returns an error message if a username fails some restriction, or undef if
