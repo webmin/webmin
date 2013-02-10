@@ -67,6 +67,12 @@ elsif ($in{'weather'}) {
                 &error(&html_escape($out));
 	$msg = &text('cmds_weatherdone', $in{'wtype'}, $in{'secs'});
 	}
+elsif ($in{'say'}) {
+	# Broadcast message
+	$in{'text'} =~ /\S/ || &error($text{'conn_etext'});
+	&send_server_command("/say $in{'text'}");
+	$msg = $text{'cmds_msgdone'};
+	}
 else {
 	&error($text{'conn_ebutton'});
 	}

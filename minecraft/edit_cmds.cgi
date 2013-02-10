@@ -59,6 +59,11 @@ print &ui_table_row($text{'cmds_weather'},
 	&ui_textbox("secs", 5, 5)." ".
 	&ui_submit($text{'cmds_weatherb'}, 'weather'));
 
+# Broadcast message
+print &ui_table_row($text{'cmds_say'},
+	&ui_textbox("text", undef, 40)." ".
+	&ui_submit($text{'cmds_sayb'}, 'say'));
+
 print &ui_table_end();
 print &ui_form_end();
 

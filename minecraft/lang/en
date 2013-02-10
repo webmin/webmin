@@ -234,6 +234,9 @@ cmds_etimeadd=Time to add must be a number between 0 and 24000
 cmds_timedone=Changed game time
 cmds_gamemodedone=Changed default game mode to $1
 cmds_difficultydone=Changed game difficulty
+cmds_say=Broadcast message
+cmds_sayb=Send
+cmds_msgdone=Sent message to all players
 
 manual_title=Edit Configuration File
 manual_desc=This page allows you to manually edit the Minecraft server configuration file <tt>$1</tt>. Be careful, as no validation will be done on your input. Any changes will not be activated until the server is restarted.
