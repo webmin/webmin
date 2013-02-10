@@ -71,3 +71,5 @@ Updated all links to users and groups to be by name instead of by index, to avoi
 The faster lastlog command is now used to get the most recent login time on Linux, for display in the user list.
 ---- Changes since 1.580 ----
 Added a new password restriction for the minimum number of days before a password can be changed.
+---- Changes since 1.620 ----
+Replace use of ispell and aspell commands with reading of /usr/share/dict/words to validate passwords.
