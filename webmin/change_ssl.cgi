@@ -14,6 +14,7 @@ $miniserv{'keyfile'} = $in{'key'};
 $miniserv{'certfile'} = $in{'cert_def'} ? undef : $in{'cert'};
 $miniserv{'ssl_redirect'} = $in{'ssl_redirect'};
 $miniserv{'no_sslcompression'} = !$in{'ssl_compression'};
+$miniserv{'ssl_honorcipherorder'} = $in{'ssl_honorcipherorder'};
 if (defined($in{'version_def'})) {
 	if ($in{'version_def'}) {
 		delete($miniserv{'ssl_version'});

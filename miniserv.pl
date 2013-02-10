@@ -44,6 +44,10 @@ if ($config{'ssl'}) {
 			eval "Net::SSLeay::CTX_set_options($ctx,
 				&Net::SSLeay::OP_NO_COMPRESSION)";
 			}
+		if ($config{'ssl_honorcipherorder'}) {
+			eval "Net::SSLeay::CTX_set_options($ctx,
+				&Net::SSLeay::OP_CIPHER_SERVER_PREFERENCE)";
+			}
 		if (defined(&Net::SSLeay::X509_STORE_CTX_get_current_cert) &&
 		    defined(&Net::SSLeay::CTX_load_verify_locations) &&
 		    (defined(&Net::SSLeay::CTX_set_verify) ||

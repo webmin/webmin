@@ -59,6 +59,10 @@ if ($miniserv{'ssl_version'}) {
 print &ui_table_row($text{'ssl_compression'},
 	&ui_yesno_radio("ssl_compression", !$miniserv{'no_sslcompression'}));
 
+print &ui_table_row($text{'ssl_honorcipherorder'},
+	&ui_yesno_radio("ssl_honorcipherorder",
+			$miniserv{'no_honorcipherorder'}));
+
 $clist = $miniserv{'ssl_cipher_list'};
 $cmode = !$clist ? 1 :
 	 $clist eq $strong_ssl_ciphers ? 2 : 0;
