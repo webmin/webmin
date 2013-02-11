@@ -46,7 +46,7 @@ print &ui_table_row($text{'ssl_compression'},
 
 print &ui_table_row($text{'ssl_honorcipherorder'},
 	&ui_yesno_radio("ssl_honorcipherorder",
-			$miniserv{'no_honorcipherorder'}));
+			$miniserv{'ssl_honorcipherorder'}));
 
 $clist = $miniserv{'ssl_cipher_list'};
 $cmode = !$clist ? 1 :
