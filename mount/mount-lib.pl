@@ -299,6 +299,19 @@ my @mounted = &mount::list_mounted();
 my %donezone;
 my %donevzfs;
 my %donedevice;
+
+# Get list of zone pools
+my %zpools;
+if (&has_command("zpool")) {
+	my @out = &backquote_command("zpool list");
+	foreach my $l (@out) {
+		if (/^(\S+)\s+\d/) {
+			$zpools{$1} = 1;
+			}
+		}
+	}
+
+# Add up all local filesystems
 foreach $m (@mounted) {
 	if ($m->[2] =~ /^ext/ ||
 	    $m->[2] eq "reiserfs" || $m->[2] eq "ufs" ||
@@ -306,9 +319,9 @@ foreach $m (@mounted) {
 	    $m->[2] eq "xfs" || $m->[2] eq "jfs" ||
 	    $m->[1] =~ /^\/dev\// ||
 	    &indexof($m->[1], @$always) >= 0) {
-		if ($m->[1] =~ /^zones\/([^\/]+)/ &&
-                    $m->[2] eq "zfs" && $donezone{$1}++) {
-			# Don't double-count zones
+		if ($m->[1] =~ /^([^\/]+)\/([^\/]+)/ &&
+                    $m->[2] eq "zfs" && $zpools{$1} && $donezone{$1,$2}++) {
+			# Don't double-count maps from the same zone pool
 			next;
 			}
 		if ($donedevice{$m->[0]}++) {
