@@ -301,7 +301,7 @@ my %donevzfs;
 my %donedevice;
 
 # Get list of zone pools
-my %zpools;
+my %zpools = ( 'zones' => 1, 'zroot' => 1 );
 if (&has_command("zpool")) {
 	my @out = &backquote_command("zpool list");
 	foreach my $l (@out) {
