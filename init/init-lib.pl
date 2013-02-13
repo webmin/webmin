@@ -2091,7 +2091,9 @@ return \%hasarg;
 sub action_running
 {
 my ($file) = @_;
+&clean_language();
 my ($out, $timedout) = &backquote_with_timeout("$file status", 2);
+&reset_environment();
 if ($timedout) {
 	return -1;
 	}
