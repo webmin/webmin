@@ -156,6 +156,7 @@ mon_eremote2=Fikk ikke kontakt med Webmin tjener $1 : $2
 mon_err=Kunne ikke lagre overv&#229;ker
 mon_ertype=Denne overv&#229;ker-typen er ikke tilgjengelig p&#229; $1
 mon_estatus=Webmin tjener $1 har ikke modulen System og tjener status
+mon_etype=Ugyldig overv&#229;ker typenavn
 mon_fails=Ant. feil f&#248;r rapport sendes
 mon_header=Overv&#229;ker detaljer
 mon_header2=Kommandoer som skal kj&#248;res
