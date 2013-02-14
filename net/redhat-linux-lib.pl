@@ -102,6 +102,9 @@ while($f = readdir(CONF)) {
 				($conf{'ONBOOT'} eq 'yes');
 		$b->{'address'} = $conf{'IPADDR'};
 		$b->{'netmask'} = $conf{'NETMASK'};
+		if (!$conf{'NETMASK'} && $conf{'PREFIX'}) {
+			$b->{'netmask'} = &prefix_to_mask($conf{'PREFIX'});
+			}
 		$b->{'broadcast'} = $conf{'BROADCAST'};
 		if (!$b->{'broadcast'} && $b->{'address'} && $b->{'netmask'}) {
 			$b->{'broadcast'} = &compute_broadcast($b->{'address'},
@@ -201,6 +204,7 @@ else {
 	$conf{'DEVICE'} = $name;
 	$conf{'IPADDR'} = $_[0]->{'address'};
 	$conf{'NETMASK'} = $_[0]->{'netmask'};
+	delete($conf{'PREFIX'});
 	if ($_[0]->{'address'} && $_[0]->{'netmask'}) {
 		$conf{'NETWORK'} = &compute_network($_[0]->{'address'},
 						    $_[0]->{'netmask'});
