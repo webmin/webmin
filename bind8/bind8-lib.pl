@@ -1447,8 +1447,11 @@ if (!defined($get_chroot_cache)) {
 	    $gconfig{'real_os_version'} >= 6 &&
 	    $config{'auto_chroot'} =~ /\/etc\/sysconfig\/named/) {
 		# Special case hack - on CentOS 6, chroot path in
-		# /etc/sysconfig/named isn't really used
-		$config{'auto_chroot'} = undef;
+		# /etc/sysconfig/named isn't really used. Instead, files
+		# in the chroot are loopback mounted to the real paths.
+		if (-r $config{'named_conf'} && !-l $config{'named_conf'}) {
+			$config{'auto_chroot'} = undef;
+			}
 		}
 	if ($config{'auto_chroot'}) {
 		local $out = &backquote_command(
