@@ -139,6 +139,14 @@ foreach $k (keys %config) {
 					}
 				}
 
+			local $cc = $config{'gemail_cc_'.$f};
+			if (!$to && $cc) {
+				# No to address, such as when a virtualmin
+				# domain was not found. So still send to the 
+				# CC address
+				$to = $cc;
+				$cc = undef;
+				}
 			if ($to) {
 				# Email the responsible person
 				if ($to !~ /\@/) {
@@ -157,7 +165,7 @@ foreach $k (keys %config) {
 					$config{'gemail_from_'.$f},
 					$group{$i,'gblocks'},
 					'gemail',
-					$config{'gemail_cc_'.$f},
+					$cc,
 					);
 				}
 
