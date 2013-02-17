@@ -27,6 +27,7 @@ error_sync=Kan ikke synke med systemtid : $1
 hour=Time
 hw_title=Maskinvare tid
 index_addresses=Tidstjener vertsnavn og adresser
+index_boot=Synkroniser n&#229;r Webmin starter?
 index_descsync=Her kan du konfigurere systemet til &#229; synkronisere automatisk med klokken p&#229; en ekstern tjener. Synkronisering vil bli utf&#248;rt med Unix <tt>time</tt> protokollen eller NTP, avhengig av hvilke kommandoer som er installert og hva den eksterne tjeneren st&#248;tter.
 index_desctime=Her kan du endre systemets klokketid. Denne brukes av alle kj&#248;rende prosesser. P&#229; operativsystemer som har separat maskinvareklokke, kan du sette ogs&#229; denne her.
 index_desczone=Her kan du endre systemets standard tidssone. Denne brukes til &#229; endre systemtiden til menneske-lesbart format.
