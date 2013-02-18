@@ -135,11 +135,11 @@ foreach (@lines) {
 return @rv;
 }
 
-# find(name, &config, [disabled-mode], [sectionname], [sectionvalue])
+# find(name, &config, [disabled-mode], [sectionname], [sectionvalue], [first])
 # Mode 0=enabled, 1=disabled, 2=both
 sub find
 {
-local ($name, $conf, $mode, $sname, $svalue) = @_;
+local ($name, $conf, $mode, $sname, $svalue, $first) = @_;
 local @rv = grep { !$_->{'section'} &&
 		   $_->{'name'} eq $name &&
 		   ($mode == 0 && $_->{'enabled'} ||
@@ -149,7 +149,7 @@ if (defined($sname)) {
 	@rv = grep { $_->{'sectionname'} eq $sname &&
 		     $_->{'sectionvalue'} eq $svalue } @rv;
 	}
-return wantarray ? @rv : $rv[$#rv];
+return wantarray ? @rv : $first ? $rv[0] : $rv[$#rv];
 }
 
 # find_value(name, &config, [disabled-mode], [sectionname], [sectionvalue])
@@ -190,7 +190,7 @@ return wantarray ? @rv : $rv[0];
 sub save_directive
 {
 local ($conf, $name, $value, $sname, $svalue) = @_;
-local $dir = ref($name) ? $name : &find($name, $conf, 0, $sname, $svalue);
+local $dir = ref($name) ? $name : &find($name, $conf, 0, $sname, $svalue, 1);
 local $newline = ref($name) ? "$name->{'name'} = $value" : "$name = $value";
 if ($sname) {
 	$newline = "  ".$newline;
