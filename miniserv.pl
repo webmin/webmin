@@ -2513,13 +2513,14 @@ else {
 	binmode(FILE);
 
 	# Build common headers
+	local $etime = &get_expires_time($simple);
 	local $resp = "HTTP/1.0 $ok_code $ok_message\r\n".
 		      "Date: $datestr\r\n".
 		      "Server: $config{server}\r\n".
 		      "Content-type: ".&get_type($full)."\r\n".
 		      "Last-Modified: ".&http_date($stopen[9])."\r\n".
-		      "Expires: ".
-			&http_date(time()+&get_expires_time($simple))."\r\n";
+		      "Expires: ".&http_date(time()+$etime)."\r\n".
+		      "Cache-Control: public; max-age=".$etime."\r\n";
 
 	if (!$gzipped && $use_gzip && $acceptenc{'gzip'} &&
 	    &should_gzip_file($full)) {
