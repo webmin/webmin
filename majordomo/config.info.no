@@ -1,0 +1,10 @@
+line1=Konfigurerbare innstillinger,11
+dynamic=Bruk tilfeldig tall for liste alias,1,1-Ja,0-Nei
+sort_mode=Sorter utsendelseslister etter,1,1-Navn,0-Tidspunkt opprettet
+perms=Tillatelser for majordomo filer,1,1-Skrivbar for bruker,0-Skrivbar for bruker og gruppe
+line2=System konfigurasjon,11
+majordomo_cf=Full sti til majordomo konfig fil,0
+program_dir=Katalog som inneholder majordomo programmer,0
+wrapper_path=Sti til majordomo wrapper,3,I program katalogen
+aliases_file=Sti til aliases fil,10,postfix-Hent fra Postfix,-Hent fra Sendmail,Annen fil
+smrsh_program_dir=Katalog som inneholder sendmail safe programmer,3,Hvor som helst
