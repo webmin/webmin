@@ -71,6 +71,7 @@ dump_fs=Filsystem
 dump_gzip=Komprimer arkiv?
 dump_gzip1=Ja, med gzip
 dump_gzip2=Ja, med bzip
+dump_gzip3=Ja, med XZ
 dump_honour=Ekskluder alltid merkede filer?
 dump_host=Vert $1 som bruker $2 i fil eller enhet $3
 dump_ignoreread=Ignorer lese-feil p&#229; filer?
