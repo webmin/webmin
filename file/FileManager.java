@@ -2036,7 +2036,7 @@ class PropertiesWindow extends FixedFrame implements CbButtonCallback
 		Panel rec = new LinedPanel(filemgr.text("info_apply"));
 		rec.setLayout(new BorderLayout());
 		rec_mode = new Choice();
-		for(int i=1; i<=3; i++)
+		for(int i=1; i<=5; i++)
 			rec_mode.addItem(filemgr.text("info_apply"+i));
 		rec.add("Center", rec_mode);
 		mid = add_panel(mid, rec);
@@ -2086,17 +2086,27 @@ class PropertiesWindow extends FixedFrame implements CbButtonCallback
 			// Update all changed file objects
 			if (linkto != null)
 				file.linkto = linkto.getText();
-			else if (rec == 0)
+			else if (rec == 0) {
+				// This file or directory only
 				update_file(file, perms, false);
+				}
 			else if (rec == 1) {
 				// Update files in this directory
 				update_file(file, perms, false);
-				recurse_files(file, perms, false);
+				recurse_files(file, perms, false, false, true);
 				}
 			else if (rec == 2) {
 				// Update files and subdirs
                                 update_file(file, perms, false);
-				recurse_files(file, perms, true);
+				recurse_files(file, perms, true, true, true);
+				}
+			else if (rec == 3) {
+				// Update files only in dir and subdirs
+				recurse_files(file, perms, true, false, true);
+				}
+			else if (rec == 4) {
+				// Update dir and subdirs but not files
+				recurse_files(file, perms, true, true, false);
 				}
 
 			// Update directory list
@@ -2135,7 +2145,8 @@ class PropertiesWindow extends FixedFrame implements CbButtonCallback
 		f.perms = perms;
 	}
 
-	void recurse_files(RemoteFile f, int perms, boolean do_subs)
+	void recurse_files(RemoteFile f, int perms, boolean do_subs,
+			   boolean do_dirs, boolean do_files)
 	{
 	if (f.list == null) return;
 	for(int i=0; i<f.list.length; i++) {
@@ -2143,11 +2154,17 @@ class PropertiesWindow extends FixedFrame implements CbButtonCallback
 		if (ff.type == 5) continue;
 		else if (ff.type == 0) {
 			if (do_subs) {
-				update_file(ff, perms, false);
-				recurse_files(ff, perms, true);
+				if (do_dirs) {
+					update_file(ff, perms, false);
+					}
+				recurse_files(ff, perms, true, do_dirs, do_files);
 				}
 			}
-		else update_file(ff, perms, true);
+		else {
+			if (do_files) {
+				update_file(ff, perms, true);
+				}
+			}
 		}
 	}
 
