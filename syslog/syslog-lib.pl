@@ -233,9 +233,12 @@ sub get_syslog_pid
 {
 local $pid;
 if ($config{'pid_file'}) {
-	if (&open_readfile(PID, $config{'pid_file'}) &&
-	    <PID> =~ /^(\d+)$/ && kill(0, $1)) {
-		$pid = $1;
+	foreach my $pfile (glob($config{'pid_file'})) {
+		my $poss = &check_pid_file($pfile);
+		if ($poss) {
+			$pid = $poss;
+			last;
+			}
 		}
 	}
 else {
