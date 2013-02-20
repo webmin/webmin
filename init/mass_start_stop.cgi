@@ -62,7 +62,9 @@ if ($start || $stop || $restart) {
 						         "stop");
 		print &text('ss_exec', "<tt>$cmd</tt>"),"<p>\n";
 		print "<pre>";
+		&clean_environment();
 		&foreign_call("proc", "safe_process_exec_logged", $cmd, 0, 0, STDOUT, undef, 1);
+		&reset_environment();
 		print "</pre>\n";
 		push(@selacts, $acts[$idx]);
 		}

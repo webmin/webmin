@@ -1120,7 +1120,9 @@ if ($action_mode eq "init" || $action_mode eq "local") {
 	if (!-x $fn) {
 		return (0, "$fn does not exist");
 		}
+	&clean_environment();
 	local $out = &backquote_logged("$fn start 2>&1 </dev/null");
+	&reset_environment();
 	local $ex = $?;
 	return (!$ex, $out);
 	}
