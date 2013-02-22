@@ -43,6 +43,7 @@ confirm_zone=Confirm before deleting zones?,1,1-Yes,0-No
 confirm_rec=Confirm before deleting records?,1,1-Yes,0-No
 free_nets=IP networks for free addresses,3,Automatic
 force_random=Entropy source for DNSSEC keys,1,1-/dev/random (Secure but slow),0-/dev/urandom (Possibly insecure but fast)
+spf_record=Real record type for Sender Permitted From,1,1-SPF,0-TXT
 
 line2.5=Cluster slave servers,11
 this_ip=Default master server IP for remote slave zones,3,IP address of hostname

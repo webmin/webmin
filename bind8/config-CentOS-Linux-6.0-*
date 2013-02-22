@@ -52,3 +52,4 @@ dnssectools_rollrec=/var/named/system.rollrec
 dnssectools_keydir=/var/named/dtkeys
 dnssectools_rollmgr_pidfile=/var/run/rollmgr.pid
 force_random=0
+spf_record=0

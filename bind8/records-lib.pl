@@ -382,7 +382,7 @@ splice(@$lref, $_[1]->{'line'}, 1);
 # Returns a string for some zone record
 sub make_record
 {
-local $type = $_[3] eq "SPF" ? "TXT" : $_[3];
+local $type = $_[3] eq "SPF" && !$config{'spf_record'} ? "TXT" : $_[3];
 return $_[0] . ($_[1] ? "\t$_[1]" : "") . "\t$_[2]\t$type\t$_[4]" .
        ($_[5] ? "\t;$_[5]" : "");
 }
@@ -710,15 +710,15 @@ foreach my $s ("a", "mx", "ip4", "ip6", "ptr", "include", "exists") {
 		}
 	}
 push(@rv, @{$spf->{'other'}});
-if ($spf->{'all'} == 3) { push(@rv, "-all"); }
-elsif ($spf->{'all'} == 2) { push(@rv, "~all"); }
-elsif ($spf->{'all'} == 1) { push(@rv, "?all"); }
-elsif ($spf->{'all'} eq '0') { push(@rv, "all"); }
 foreach my $m ("redirect", "exp") {
 	if ($spf->{$m}) {
 		push(@rv, $m."=".$spf->{$m});
 		}
 	}
+if ($spf->{'all'} == 3) { push(@rv, "-all"); }
+elsif ($spf->{'all'} == 2) { push(@rv, "~all"); }
+elsif ($spf->{'all'} == 1) { push(@rv, "?all"); }
+elsif ($spf->{'all'} eq '0') { push(@rv, "all"); }
 local @rvwords;
 local $rvword;
 while(@rv) {

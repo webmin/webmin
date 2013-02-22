@@ -45,3 +45,4 @@ checkconf=named-checkconf
 other_slaves=1
 restart_cmd=restart
 force_random=0
+spf_record=0
