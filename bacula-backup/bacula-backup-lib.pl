@@ -568,7 +568,7 @@ return @pids ? 1 : 0;
 sub start_bacula
 {
 undef($bacula_status_cache);
-if (&has_command($bacula_cmd)) {
+if (&has_command($bacula_cmd) && !$config{'init_start'}) {
 	local $out = &backquote_logged("$bacula_cmd start 2>&1 </dev/null");
 	return $? || $out =~ /failed|error/i ? "<pre>$out</pre>" : undef;
 	}
@@ -583,7 +583,7 @@ else {
 sub stop_bacula
 {
 undef($bacula_status_cache);
-if (&has_command($bacula_cmd)) {
+if (&has_command($bacula_cmd) && !$config{'init_start'}) {
 	local $out = &backquote_logged("$bacula_cmd stop 2>&1 </dev/null");
 	return $? || $out =~ /failed|error/i ? "<pre>$out</pre>" : undef;
 	}
@@ -598,7 +598,7 @@ else {
 sub restart_bacula
 {
 undef($bacula_status_cache);
-if (&has_command($bacula_cmd)) {
+if (&has_command($bacula_cmd) && !$config{'init_start'}) {
 	local $out = &backquote_logged("$bacula_cmd restart 2>&1 </dev/null");
 	return $? || $out =~ /failed|error/i ? "<pre>$out</pre>" : undef;
 	}

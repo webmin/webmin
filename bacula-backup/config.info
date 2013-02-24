@@ -14,3 +14,4 @@ bacula_dir=Bacula configuration directory,0
 bextract=Full path to <tt>bextract</tt> command,0
 bls=Full path to <tt>bls</tt> command,0
 btape=Full path to <tt>btape</tt> command,0
+init_start=Start and stop Bacula using,1,1-Init scripts,0-<tt>bacula</tt> command

@@ -9,3 +9,4 @@ btape=btape
 wait=1
 apply=1
 showdirs=0
+init_start=0
