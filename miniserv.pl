@@ -3978,7 +3978,7 @@ if ($ok && (!$expired ||
 		&write_keep_alive(0);
 		&write_data("\r\n");
 		&log_request($loghost, $authuser, $reqline, 302, 0);
-		syslog("info", "%s", "Successful login as $authuser from $acpthost") if ($use_syslog);
+		syslog("info", "%s", "Successful login as $authuser from $loghost") if ($use_syslog);
 		&write_login_utmp($authuser, $acpthost);
 		}
 	return 0;
@@ -3999,7 +3999,7 @@ elsif ($ok && $expired &&
 	$miniserv_internal = 2;
 	syslog("crit", "%s",
 		"Expired login as $vu ".
-		"from $acpthost") if ($use_syslog);
+		"from $loghost") if ($use_syslog);
 	}
 else {
 	# Login failed, or password has expired. The login form will be
@@ -4012,7 +4012,7 @@ else {
 	syslog("crit", "%s",
 		($nonexist ? "Non-existent" :
 		 $expired ? "Expired" : "Invalid").
-		" login as $vu from $acpthost")
+		" login as $vu from $loghost")
 		if ($use_syslog);
 	}
 return undef;
