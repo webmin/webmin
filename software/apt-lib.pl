@@ -242,6 +242,7 @@ if (&has_command("apt-show-versions")) {
 		}
 	close(PKGS);
 	&reset_environment();
+	@rv = &filter_held_packages(@rv);
 	return @rv;
 	}
 else {
@@ -301,6 +302,7 @@ else {
 		close(PKGS);
 		&reset_environment();
 		}
+	@rv = &filter_held_packages(@rv);
 	&set_pinned_versions(\@rv);
 	return @rv;
 	}
@@ -333,3 +335,36 @@ close(PKGS);
 &reset_environment();
 }
 
+# filter_held_packages(package, ...)
+# Returns a list of package updates, minus those that are held
+sub filter_held_packages
+{
+my @pkgs = @_;
+my %hold;
+
+# Get holds from dpkg
+&clean_language();
+&open_execute_command(PKGS, "dpkg --get-selections 2>/dev/null", 1, 1);
+while(<PKGS>) { 
+	if (/^(\S+)\s+hold/) {
+		$hold{$1} = 1;
+		}
+	}
+close(PKGS);
+&reset_environment();
+
+# Get holds from aptitude
+if (&has_command("aptitude")) {
+	&clean_language();
+	&open_execute_command(PKGS, "aptitude search '~ahold' 2>/dev/null", 1, 1);
+	while(<PKGS>) { 
+		if (/^\.h\s+(\S+)/) {
+			$hold{$1} = 1;
+			}
+		}
+	close(PKGS);
+	&reset_environment();
+	}
+
+return grep { !$hold{$_->{'name'}} } @pkgs;
+}
