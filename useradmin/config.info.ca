@@ -4,7 +4,7 @@ user_files=Copia els fitxers als nous directoris arrel a partir de,9,40,3
 home_base=Base automàtica del directori arrel,3,No establerta
 real_base=Base real del directori arrel,3,La mateixa que abans
 home_style=Estil automàtic del directori arrel,4,0-home/usuari,1-home/u/usuari,2-home/u/us/usuari,3-home/u/s/usuari,4-Només el directori base,5-home/grup_primari/usuari
-selinux_con=Context SElinux per als nous directoris arrel,3,Cap
+selinux_con=Context SElinux per als nous directoris arrel,10,-Cap,*-Per defecte del sistema
  
 line2=Opcions d'usuari nou,11
 base_uid=UID més baix per a nous usuaris,0,5

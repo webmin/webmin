@@ -105,6 +105,7 @@ bifc_capply=Crea i Aplica
 bifc_eapply=No pots activar una interfície que utilitza DHCP o BOOTP
 bifc_edhcpmain=DHCP només es pot activar a la interfície primària de xarxa
 bifc_bridgeto=Connecta el pont a la interfície
+bifc_nobridge=&lt;Cap&gt;
 bifc_ebridgeto=Cal seleccionar una interfície Ethernet existent per a utilitzar-la amb aquest pont
 bifc_ebridgeto2=La interfície seleccionada per al pont no pot tenir cap adreça assignada
 bifc_ebridge=La interfície pont ha de ser un número

@@ -19,6 +19,7 @@ white_from=Remitents que no s'han de classificar mai com a spam
 white_gfrom=Remitents que no s'han de classificar mai com a spam a tot el sistema
 white_unfrom=Exceptions dels remitents que no s'han de classificar com a spam
 white_addr=Adreça del remitent
+white_addr2=Adreça del destinatari
 white_rcvd2=Remitent que no s'ha de classificar com a spam
 white_rcvdhost=Domini de la capçalera Received
 white_gunfrom=Excepcions de remitents que no s'han de classificar com a spam a tot el sistema

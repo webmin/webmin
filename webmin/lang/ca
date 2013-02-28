@@ -7,8 +7,6 @@ index_inetd=Com que Webmin actualment és executat per <tt>inetd</tt>, segurament
 index_apache=Com que Webmin actualment s'està executant sota Apache, segurament no et convé activar aquesta opció.
 index_restart=Reinicia Webmin
 index_restartmsg=Fes clic sobre aquest botó per reiniciar el procés servidor de Webmin. Això pot ser necessari si has actualitzat Perl fa poc.
-index_submit=Envia la Informació del SO
-index_submitmsg=Fent clic sobre aquest botó s'enviarà la informació del teu sistema operatiu i versió Perl als desenvolupadors de Webmin. Aquestes dades seran estrictament anònimes, i proporcionaran informació sobre quins sistemes operatius són millor per centrar-hi el desenvolupament de Webmin.
 index_refresh=Refresca els Mòduls
 index_refreshmsg=Recomprova tots els mòduls Webmin dels servidors instal·lats, i actualitza aquells que apareixen a la categoria de 'Mòduls no utilitzats'
 
@@ -60,6 +58,7 @@ bind_resolv_myname=Resol l'adreça IP connectada inversament
 bind_ipv6=Accepta connexions IPv6
 bind_eipv6=No es pot activar IPv6 a menys que s'instal·li el mòdul Perl $1
 bind_redirecting=S'està redireccionant al nou URL...
+bind_elsof=El nou port $1 ja està en ús per part d'un altre procés
 
 log_title=Registres
 log_desc=Webmin es pot configurar per escriure un registre d'impactes del servidor web, en el format estàndard CLF de fitxers de registre. Si el registre està activat, també pots triar si s'enregistren els noms de host o les adreces IP, i amb quina freqüència es neteja el fitxer de registre. Quan està activat, els registres s'escriuen al fitxer $1.
@@ -321,6 +320,7 @@ ssl_cert=Fitxer de certificat
 ssl_cert_def=El mateix de la clau privada
 ssl_cert_oth=Fitxer a part
 ssl_redirect=Redirecciona les peticions no SSL a mode SSL
+ssl_compression=Permet les connexions SSL comprimides
 ssl_extracas=Fitxers addicionals de certificat<br>(per a certificats encadenats)
 ssl_extracasdef=Les mateixes que els paràmetres SSL globals
 ssl_extracasnone=Cap per a aquesta adreça IP
@@ -649,6 +649,8 @@ log_clearcache=S'han eliminat tots els URLs del cau
 log_lock=S'ha canviat el bloqueig de fitxers
 log_sendmail=S'han canviat les opcions d'enviament de correu
 log_debug=S'han canviat les opcions de depuració del fitxer de registre
+log_delete_webmincron=S'han suprimit $1 funcions planificades
+log_run_webmincron=S'han executat $1 funcions planificades
 
 themes_title=Temes Webmin
 themes_desc=Temes controla l'aparença de la interfície d'usuari de Webmin, incloent-hi les icones, els colors, els fons i la disposició de les pàgines. La caixa de selecció de sota es pot utilitzar per triar un dels temes instal·lats al sistema.
@@ -789,12 +791,6 @@ export_ecmd=Hi falta l'ordre necessària $1
 export_efile=Hi falta el fitxer d'exportació o bé és invàlid
 export_done=S'ha exportat correctament els mòduls a $1.
 export_title=Exportació de Mòduls
-
-submit_err=No s'ha pogut enviar la informació del SO
-submit_edone=Només pots fer una tramesa per cada sistema
-submit_title=Envia la Informació del SO
-submit_ok=Gràcies per enviar la informació del sistema operatiu del teu servidor als desenvolupadors de Webmin!
-submit_emailboxes=El mòdul de Lectura del Correu d'Usuari no està instal·flat o no està configurat
 
 advanced_title=Opcions Avançades
 advanced_header=Opcions avançades i experimentals
@@ -962,6 +958,19 @@ sendmail_esmtp=Hi falta el nom de host del servidor SMTP p bé no es pot resoldre
 sendmail_elogin=Hi falta l'usuari del servidor SMTP
 sendmail_esasl=No es pot activar l'autenticació SMTP si no s'instal·la el mòdul Perl <a href=$1>$2</a>.
 sendmail_efrom=Hi falta l'adreça origen o bé no està ben formada
+sendmail_header2=Envia un missatge de prova
+sendmail_to=Envia un missatge a
+sendmail_subject=Assumpte del missatge
+sendmail_body=Contingut del missatge
+sendmail_desc2=Aquest formulari es pot utilitzar per enviar un missatge de prova amb els paràmetres de sobre, per assegurar-se que el correu s'està lliurant correctament.
+sendmail_send=Envia el Missatge
+
+testmail_title=Tramesa de Missatge de Prova
+testmail_err=No s'ha pogut enviar el missatge
+testmail_eto=No has introduït cap adreça de destí
+testmail_sending=S'està enviant el missatge de $1 a $2...
+testmail_done=...s'ha enviat el missatge. Comprova la bústia de destí per assegurar que el missatge ha estat realment rebut.
+testmail_failed=...la tramesa ha fallat: $1
 
 web_title=Opcions del Servidor Web
 web_header=Opcions del servidor web integrat de Webmin
@@ -974,4 +983,20 @@ web_expirespaths=Temps de cau de la part de client basat en el camí de l'URL
 web_expirespath=Expressió regular del camí
 web_expirestime=Temps de cau en segons
 web_eexpires2=Hi falta el temps de cau de la part de client a la fila $1 o bé no és numèric
+
+webmincron_title=FUncions Planificades Webmin
+webmincron_emodule=El mòdul de Treballs Cron de Webmin no està instal·lat!
+webmincron_module=Mòdul Webmin
+webmincron_func=Nom de la funció
+webmincron_args=Paràmetres
+webmincron_when=Executa
+webmincron_none=Encara no s'ha creat cap funció planificada Webmin. Aquestes, típicament, són creades per altres mòduls, no pels usuaris.
+webmincron_delete=Suprimeix les Funcions Seleccionades
+webmincron_run=Executa Ara les Funcions Seleccionades
+webmincron_derr=No s'han pogut suprimir les funcions seleccionades
+webmincron_enone=No n'has seleccionat cap
+webmincron_rerr=No s'han pogut executar les funcions seleccionades
+webmincron_running=S'està executant la funció $2 a $1...
+webmincron_failed=...ha fallat: $1
+webmincron_done=...fet
 __norefs=1
