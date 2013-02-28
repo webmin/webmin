@@ -135,3 +135,5 @@ The source IP and port for zone transfers can now be specific on the Addresses a
 Added support for zone signing using the DNSSEC-Tools suite, thanks to a patch from Suresh Krishnaswamy.
 ---- Changes since 1.600 ----
 Changed all links to zones to use the zone name instead of an index, to prevent incorrect modification during concurrent access to the module.
+---- Changes since 1.620 ----
+Added a module configuration option to use the SPF type for Sender Permitted From records.

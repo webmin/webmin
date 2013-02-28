@@ -265,6 +265,7 @@ while($i < @tok) {
 		# If this is an SPF record .. adjust the class
 		local $spf;
 		if ($dir{'type'} eq 'TXT' &&
+		    !$config{'spf_record'} &&
 		    ($spf=&parse_spf(@{$dir{'values'}}))) {
 			if (!@{$spf->{'other'}}) {
 				$dir{'type'} = 'SPF';
