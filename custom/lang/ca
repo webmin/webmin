@@ -92,7 +92,7 @@ run_ecmduser=L'usuari '$1' sota el qual s'ha d'executar l'ordre no existeix
 run_eopt=Has seleccionat una opció invàlida
 run_eupload=No has seleccionat cap fitxer per pujar
 run_emust=Hi falta el valor del paràmetre '$1'
-run_timeout=L'ordre s'ha tallat després d'un temps màxim d'espera de $1 segons.
+run_timeout=No s'ha pogut completar l'ordre al cap d'un temps màxim de $1 segons.
 
 log_modify=S'ha modificat l'ordre $1
 log_create=S'ha creat l'ordre $1

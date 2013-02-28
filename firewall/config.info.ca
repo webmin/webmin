@@ -3,6 +3,7 @@ view_condition=Mostra la condició a la llista de regles,1,1-Sí,0-No
 view_comment=Mostra el comentari a la llista de regles,1,1-Sí,0-No
 comment_mod=Emmagatzema els comentaris com a,1,0-# comentaris en un fitxer desat,1-&#45;&#45;opció de comentari
 cluster_mode=Actualitza els servidors del cluster,1,0-Quan es faci un canvi,1-En aplicar la configuració
+force_init=Inicia sempre el talla foc des del script d'inicialització a Debian,1,1-Sí,0-No
 before_cmd=Ordre a executar abans de canviar les regles,3,Cap
 after_cmd=Ordre a executar després de canviar les regles,3,Cap
 before_apply_cmd=Ordre a executar abans d'aplicar la configuració,3,Cap

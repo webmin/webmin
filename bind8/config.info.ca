@@ -40,13 +40,14 @@ default_master=Servidor(s) mestre(s) per defecte de les zones esclaves,0
 updserial_on=Actualitza automàticament els números de sèrie,1,1-Sí,0-No
 ipv6_mode=Domini de les adreces IPv6 inverses,1,1-ip6.arpa,0-ip6.int
 confirm_zone=Confirmació abans de suprimir zones,1,1-Sí,0-No
+confirm_rec=Confirmació abans de suprimir registres,1,1-Sí,0-No
+free_nets=Xarxes IP networks per a adreces lliures,3,Automàtic
+force_random=Font d'entropia per a les claus DNSSEC,1,1-/dev/random (Segur però lent),0-/dev/urandom (Possiblement insegur però ràpid)
 
 line2.5=Servidors esclaus del <i>cluster,</i>11
 this_ip=IP del servidor mestre per defecte per a les zones esclaves remotes,3,Adreça IP o nom de host
 other_slaves=Afegeix altres adreces IP esclaves a la llista dels mestres als esclaus,1,1-Sí,0-No
 extra_slaves=Adreces IP mestres addicionals per a les zones esclaves,3,Cap
-confirm_rec=Confirmació abans de suprimir registres,1,1-Sí,0-No
-free_nets=Xarxes IP d'adreces lliures,3,Automàtic
 
 line3=Configuració del sistema,11
 named_conf=Camí complet del fitxer named.conf,0

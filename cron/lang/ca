@@ -150,6 +150,7 @@ when_day=cada dia a les $2:$1
 when_month=el dia $3 de cada mes a les $2:$1
 when_weekday=cada $3 a les $2:$1
 when_cron=a l'hora $1 de cron
+when_interval=cada $1 segons
 
 ucwhen_min=Cada minut
 ucwhen_hour=Cada hora a $1 minuts passada l'hora
@@ -157,6 +158,7 @@ ucwhen_day=Cada dia a les $2:$1
 ucwhen_month=El dia $3 de cada mes a les $2:$1
 ucwhen_weekday=Cada $3 a les $2:$1
 ucwhen_cron=A l'hora $1 de cron
+ucwhen_interval=Cada $1 segons
 
 move_err=No s'ha pogut desplaçar el treball Cron
 move_etype=Aquest treball cron no es pot desplaçar

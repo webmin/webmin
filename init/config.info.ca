@@ -5,6 +5,7 @@ order=Mostra l'ordre d'engegada de les accions,1,1-Sí,0-No
 status_check=Mostra l'estat actual de les accions,1,2-A les pàgines d'índex i de l'acció,1-Només a la pàgina de l'acció,0-No
 sort_mode=Ordena les accions per,1,1-Ordre d'engegada,0-Nom
 line2=Configuració del sistema,11
+init_mode=ENgegada del sistema,4,-Detecta-ho automàticament,init-Init de SysV,upstart-Upstart,systemd-Systemd,osx-MacOS,rc-Scripts RC de FreeBSD,win32-Serveis Windows,local-Script únic d'engegada
 init_base=Directori on s'allotgen els directoris de nivells d'execució,0
 init_dir=Directori que conté els scripts init mestres,0
 soft_links=Tipus d'enllaç pels fitxers de nivell d'execució,1,0-Real,1-Simbòlic

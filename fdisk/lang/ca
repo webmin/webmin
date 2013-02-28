@@ -200,6 +200,10 @@ xfs_b=Mida del bloc
 jfs_s=Mida del registre
 jfs_c=Verifica els blocks dolents
 
+btrfs_l=Mida de la fulla
+btrfs_n=Mida del node
+btrfs_s=Mida del sector
+
 fatx_none=No hi ha cap opció disponible per als sistemes de fitxers FATX.
 
 acl_disks=Discs que aquest usuari pot particionar i formatar
@@ -257,6 +261,7 @@ fs_ext3=Natiu Linux
 fs_ext4=Natiu Linux Nou
 fs_xfs=SGI
 fs_jfs=Fitxers de diari IBM
+fs_btrfs=BTR
 
 delete_title=Supressió de Partició
 delete_rusure=Segur que vols suprimir $1 ($2)? Les dades d'aquesta partició es perdran per sempre.
