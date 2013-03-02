@@ -109,12 +109,24 @@ elsif ($in{'download'} && !$ENV{'PATH_INFO'}) {
 elsif ($in{'download'} && $ENV{'PATH_INFO'}) {
 	# Download world as ZIP file
 	$in{'name'} || &error("Missing world name");
+	if (&is_minecraft_server_running() &&
+	    $def eq $in{'name'}) {
+		# Flush state to disk
+		&execute_minecraft_command("save-all");
+		&execute_minecraft_command("save-off");
+		}
 	my $temp = &transname().".zip";
 	my $out = &backquote_command(
 		"cd ".quotemeta($config{'minecraft_dir'})." && ".
 	        "zip -r $temp ".quotemeta($in{'name'}));
+	my $ex = $?;
+	if (&is_minecraft_server_running() &&
+	    $def eq $in{'name'}) {
+		# Re-enable world writes
+		&execute_minecraft_command("save-on");
+		}
 	my @st = stat($temp);
-	!$? && @st ||
+	!$ex && @st ||
 	    &error(&text('world_ezip', "<tt>".&html_escape($out)."</tt>"));
 	print "Content-type: application/zip\n";
 	print "Content-length: $st[7]\n";
