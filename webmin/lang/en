@@ -294,6 +294,7 @@ os_eversion=Missing operating system version
 os_eiversion=Missing internal operating system version
 os_incorrect=Warning - Your system is actually running $1 version $2.
 os_fix=Update Detected Operating System
+os_usermin=Also update Usermin OS
 
 lang_title=Language
 lang_title2=Webmin Language
