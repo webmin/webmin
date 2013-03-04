@@ -835,7 +835,7 @@ return $fn;
 }
 
 # get_dnskey_record(&zone|&zonename, [&records])
-# Returns the DNSKEY record for some domain, or undef if none
+# Returns the DNSKEY record(s) for some domain, or undef if none
 sub get_dnskey_record
 {
 local ($z, $recs) = @_;
@@ -849,10 +849,10 @@ local $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
 foreach my $r (@$recs) {
 	if ($r->{'type'} eq 'DNSKEY' &&
 	    $r->{'name'} eq $dom.'.') {
-		return $r;
+		push(@rv, $r);
 		}
 	}
-return undef;
+return wantarray ? @rv : $rv[0];
 }
 
 # record_id(&r)

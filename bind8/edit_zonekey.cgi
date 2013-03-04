@@ -14,11 +14,9 @@ $desc = &ip6int_to_net(&arpa_to_ip($dom));
 		 undef, undef, undef, undef, &restart_links($zone));
 
 # Check if the zone already has a key, from a DNSKEY record
-$keyrec = &get_dnskey_record($zone);
-if ($keyrec) {
+@keyrecs = &get_dnskey_record($zone);
+if (@keyrecs) {
 	# Tell the user we already have it
-	$keyline = join(" ", $keyrec->{'name'}, $keyrec->{'class'},
-			     $keyrec->{'type'}, @{$keyrec->{'values'}});
 	print &text('zonekey_already'),"\n";
 	print $text{'zonekey_webmin'},"\n";
 	print "<p>\n";
@@ -27,6 +25,10 @@ if ($keyrec) {
 	foreach $key (@keys) {
 		# Collapsible section for key details
 		$kt = $key->{'ksk'} ? 'ksk' : 'zone';
+		($keyrec) = grep { $_->{'values'}->[0] ==
+				 ($key->{'ksk'} ? 257 : 256) } @keyrecs;
+		$keyline = join(" ", $keyrec->{'name'}, $keyrec->{'class'},
+				     $keyrec->{'type'}, @{$keyrec->{'values'}});
 		print &ui_hidden_start($text{'zonekey_expand'.$kt},
 				       $kt, 0, "edit_zonekey.cgi?$in");
 		print $text{'zonekey_public'},"<br>\n";
