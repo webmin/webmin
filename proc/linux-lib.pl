@@ -231,7 +231,7 @@ if (open(BEAN, "/proc/user_beancounters")) {
 	# If we are running under Virtuozzo, there may be a limit on memory
 	# use in force that is less than the real system's memory.
 	while(<BEAN>) {
-		if (/^privvmpages\s+(\d+)\s+(\d+)\s+(\d+)/) {
+		if (/privvmpages\s+(\d+)\s+(\d+)\s+(\d+)/) {
 			return ($3, $3-$1, undef, undef);
 			}
 		}
