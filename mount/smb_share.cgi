@@ -39,21 +39,20 @@ if ($out =~ /Sharename\s+Type\s+Comment\n((.+\n)+)/) {
 		}
 	}
 if (@names) {
-	print "<b>$text{'smb_sel2'}</b><br>\n";
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'smb_share'}</b></td> ",
-	      "<td><b>$text{'smb_comment'}</b></td> </tr>\n";
+	print "<b>$text{'smb_sel2'}</b><p>\n";
+	print &ui_columns_start([ $text{'smb_share'},
+				  $text{'smb_comment'} ]);
 	for($i=0; $i<@names; $i++) {
-		print "<tr $cb> <td><a href=\"\" ",
-		      "onClick='choose(\"$names[$i]\"); ".
-		      "return false'>$names[$i]</a></td>\n";
-		printf "<td>%s</td> </tr>\n",
-			$comms[$i] =~ /\S/ ? $comms[$i] : "<br>";
+		print &ui_columns_row([
+			"<a href=\"\" onClick='choose(\"$names[$i]\"); ".
+			"return false'>$names[$i]</a>",
+			&html_escape($comms[$i]),
+			]);
 		}
-	print "</table>\n";
+	print &ui_columns_end();
 	}
 else {
-	print "<b>",&text('smb_noshares', $in{'server'}),"</b>\n";
+	print "<b>",&text('smb_noshares', $in{'server'}),"</b><p>\n";
 	}
 
 &popup_footer();

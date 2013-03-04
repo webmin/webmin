@@ -1,5 +1,6 @@
 line1=Configurable options,11
-browse_server=Server to request browse list from,3,localhost
+browse_server=Server to request CIFS browse list from,10,-localhost,*-Workgroup below,Other server
+browse_group=CIFS workgroup for browse list,0
 long_fstypes=Show long filesystem type names,1,1-Yes,0-No
 sort_mode=Sort filesystems by,1,2-Mount point,1-Type,0-Order in files
 show_used=Show used disk space in filesystems list,1,1-Yes,0-No

@@ -18,7 +18,35 @@ window.close();
 EOF
 
 # call smbclient
-$host = $config{'browse_server'} ? $config{'browse_server'} : "localhost";
+if ($config{'browse_server'} eq "*") {
+	# Get from workgroup
+	if ($config{'browse_group'}) {
+		# Find master for workgroup
+		$out = &backquote_command(
+			$config{'nmblookup_path'}." -N ".
+			$config{'browse_group'}." 2>&1 </dev/null");
+		if ($out =~ /(^|\n)([0-9\.]+)\s/) {
+			$host = $2;
+			}
+		else {
+			print "<b>",&text('smb_emaster', $config{'browse_group'}),"</b>\n";
+			exit;
+			}
+		}
+	else {
+		# No idea what to do
+		print "<b>",&text('smb_eworkgroup'),"</b>\n";
+		exit;
+		}
+	}
+elsif ($config{'browse_server'}) {
+	# Fixed host
+	$host = $config{'browse_server'};
+	}
+else {
+	# Poll local samba
+	$host = "localhost";
+	}
 &execute_command("$config{'smbclient_path'} -d 0 -L $host -N",
 		 undef, \$out, \$out);
 if ($?) {
@@ -45,17 +73,16 @@ if ($out =~ /Server\s+Comment\n.*\n((.+\n)+)/) {
 	}
 
 if (@names) {
-	print "<b>$text{'smb_sel'}</b><br>\n";
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'smb_name'}</b></td> ",
-	      "<td><b>$text{'smb_desc'}</b></td> </tr>\n";
+	print "<b>$text{'smb_sel'}</b><p>\n";
+	print &ui_columns_start([ $text{'smb_name'}, $text{'smb_desc'} ]);
 	for($i=0; $i<@names; $i++) {
-		print "<tr $cb>\n";
-		print "<td><a href=\"\" onClick='choose(\"$names[$i]\"); ",
-		      "return false'>$names[$i]</a></td>\n";
-		print "<td>$comms[$i]</td> </tr>\n";
+		print &ui_columns_row([
+			"<a href=\"\" onClick='choose(\"$names[$i]\"); ".
+			"return false'>$names[$i]</a></td>\n",
+			&html_escape($comms[$i]),
+			]);
 		}
-	print "</table>\n";
+	print &ui_columns_end();
 	}
 else {
 	print "<b>$text{'smb_none'}</b>.<p>\n";
