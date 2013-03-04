@@ -1,5 +1,5 @@
 reboot_command=reboot
-shutdown_command=shutdown
+shutdown_command=shutdown -h now
 local_script=/etc/rc
 startup_dirs=/System/Library/StartupItems:/Library/StartupItems
 darwin_setup=/Library/StartupItems
