@@ -1,5 +1,6 @@
 line1=Konfigurierbare Optionen,11
-browse_server=Server&#44; von dem Browser&#45;Liste geholt werden soll,3,localhost
+browse_server=Server&#44; von dem Browser&#45;Liste geholt werden soll,10,-localhost,*-Arbeitsgruppe unten, Anderer Server
+browse_group=CIFS-Arbeitsgruppe f&#252;r Suchliste,0
 long_fstypes=Benutze lange Dateisystem&#45;Typen,1,1-Ja,0-Nein
 sort_mode=Sortiere Dateisysteme nach,1,2-Einh&#228;ngepunkt,1-Art,0-Reihenfolge in Datei
 show_used=Zeige benutzten Plattenspeicher in Dateisystemliste,1,1-Ja,0-Nein
