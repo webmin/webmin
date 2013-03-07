@@ -218,6 +218,8 @@ else {
 		}
 	elsif ($in{'type'} eq "TXT") {
 		$fullvals = $in{'value0'};
+		$fullvals =~ s/\r//g;
+		$fullvals =~ s/\n/ /g;
 		$fullvals =~ s/((?:^|[^\\])(?:\\\\)*)[\"]/$1\\\"/g;
 		@splitvals = ( );
 		while($fullvals) {

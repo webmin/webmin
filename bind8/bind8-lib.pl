@@ -1013,7 +1013,7 @@ elsif ($type eq "HINFO") {
 	}
 elsif ($type eq "TXT") {
 	print &ui_table_row($text{'value_TXT1'},
-	    &ui_textbox("value0", join("", @v), 80), 3);
+	    &ui_textarea("value0", join("", @v), 5, 80, "soft"), 3);
 	}
 elsif ($type eq "WKS") {
 	# Well known server
