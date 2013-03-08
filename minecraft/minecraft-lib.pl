@@ -570,4 +570,39 @@ eval("\$str = \"$str\"");
 return $str;
 }
 
+# check_server_download_size()
+# Returns the size in bytes of the minecraft server that is available 
+# for download
+sub check_server_download_size
+{
+my ($host, $port, $page, $ssl) = &parse_http_url($server_jar_url);
+
+# Make HTTP connection
+my @headers;
+push(@headers, [ "Host", $host ]);
+push(@headers, [ "User-agent", "Webmin" ]);
+push(@headers, [ "Accept-language", "en" ]);
+alarm(5);
+my $h = &make_http_connection($host, $port, $ssl, "HEAD", $page, \@headers);
+alarm(0);
+return undef if (!ref($h));
+
+# Read headers
+my $line;
+($line = &read_http_connection($_[0])) =~ tr/\r\n//d;
+if ($line !~ /^HTTP\/1\..\s+(200)(\s+|$)/) {
+	return undef;
+	}
+my %header;
+while(1) {
+	$line = &read_http_connection($_[0]);
+	$line =~ tr/\r\n//d;
+	$line =~ /^(\S+):\s+(.*)$/ || last;
+	$header{lc($1)} = $2;
+	}
+
+&close_http_connection($h);
+return $header{'content-length'};
+}
+
 1;

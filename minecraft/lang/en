@@ -17,6 +17,8 @@ index_atbootdesc=Change this option to control whether the Minecraft server is s
 index_return=module index
 index_download=Download Server
 index_downloaddesc=Click this button to download and install the latest version of the Minecraft server JAR file.
+index_upgradedesc=A new Minecraft server version is now available for download.
+index_upgrade=Upgrade Now
 
 check_edir=The base directory $1 does not exist
 check_ejar=The server JAR file $1 does not exist

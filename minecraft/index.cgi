@@ -37,6 +37,23 @@ elsif ($err) {
 	return;
 	}
 
+# Check if new version is out, if we haven't checked in the last 6 hours
+if (time() - $config{'last_check'} > 6*60*60) {
+	my $sz = &check_server_download_size();
+	$config{'last_check'} = time();
+	&save_module_config();
+	my $jar = $config{'minecraft_jar'} ||
+		  $config{'minecraft_dir'}."/"."minecraft_server.jar";
+	my @st = stat($jar);
+	if (@st && $sz && $st[7] != $sz) {
+		print "<center>\n";
+		print &ui_form_start("download.cgi");
+		print "<b>$text{'index_upgradedesc'}</b>\n";
+		print &ui_form_end([ [ undef, $text{'index_upgrade'} ] ]);
+		print "</center>\n";
+		}
+	}
+
 my @links = ( "edit_conf.cgi", "edit_users.cgi",
 	      "view_logs.cgi", "list_conns.cgi",
 	      "list_worlds.cgi", "edit_cmds.cgi",
