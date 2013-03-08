@@ -247,7 +247,7 @@ else {
 	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 
-if ($in{'lv'} && !$stat[2] && !$lv->{'is_snap'}) {
+if ($in{'lv'} && !$stat[2] && !$lv->{'is_snap'} && $stat[1] ne 'cloudmin') {
 	# Show button for creating filesystems
 	print &ui_hr();
 	print &ui_buttons_start();
