@@ -41,16 +41,20 @@ elsif ($err) {
 if (time() - $config{'last_check'} > 6*60*60) {
 	my $sz = &check_server_download_size();
 	$config{'last_check'} = time();
+	$config{'last_size'} = $sz;
 	&save_module_config();
+	}
+if ($config{'last_size'}) {
 	my $jar = $config{'minecraft_jar'} ||
 		  $config{'minecraft_dir'}."/"."minecraft_server.jar";
 	my @st = stat($jar);
-	if (@st && $sz && $st[7] != $sz) {
-		print "<center>\n";
+	if (@st && $st[7] != $config{'last_size'}) {
+		print "<table width=100%><tr bgcolor=#ff8888>".
+		      "<td align=center><br>";
 		print &ui_form_start("download.cgi");
 		print "<b>$text{'index_upgradedesc'}</b>\n";
 		print &ui_form_end([ [ undef, $text{'index_upgrade'} ] ]);
-		print "</center>\n";
+		print "</td></tr></table>\n";
 		}
 	}
 

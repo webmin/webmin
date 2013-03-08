@@ -589,13 +589,13 @@ return undef if (!ref($h));
 
 # Read headers
 my $line;
-($line = &read_http_connection($_[0])) =~ tr/\r\n//d;
+($line = &read_http_connection($h)) =~ tr/\r\n//d;
 if ($line !~ /^HTTP\/1\..\s+(200)(\s+|$)/) {
 	return undef;
 	}
 my %header;
 while(1) {
-	$line = &read_http_connection($_[0]);
+	$line = &read_http_connection($h);
 	$line =~ tr/\r\n//d;
 	$line =~ /^(\S+):\s+(.*)$/ || last;
 	$header{lc($1)} = $2;
