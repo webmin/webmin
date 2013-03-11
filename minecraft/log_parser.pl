@@ -8,6 +8,11 @@ do 'minecraft-lib.pl';
 sub parse_webmin_log
 {
 my ($user, $script, $action, $type, $object, $p) = @_;
-return $text{'log_'.$action};
+if ($object eq 'backup') {
+	return &text('log_'.$action.'_backup', $object);
+	}
+else {
+	return $text{'log_'.$action};
+	}
 }
 

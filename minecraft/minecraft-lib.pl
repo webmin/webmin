@@ -5,6 +5,7 @@ use strict;
 use warnings;
 use WebminCore;
 use Time::Local;
+use POSIX;
 &init_config();
 our ($module_root_directory, %text, %gconfig, $root_directory, %config,
      $module_name, $remote_user, $base_remote_user, $gpgpath,
@@ -199,6 +200,7 @@ my $pid = &is_minecraft_server_running();
 $pid || return "Not running!";
 
 # Try graceful shutdown
+&send_server_command("/save-all");
 &send_server_command("/stop");
 for(my $i=0; $i<10; $i++) {
 	last if (!&is_minecraft_server_running());
@@ -603,6 +605,117 @@ while(1) {
 
 &close_http_connection($h);
 return $header{'content-length'};
+}
+
+# get_backup_job()
+# Returns the webmincron job to backup worlds
+sub get_backup_job
+{
+&foreign_require("webmincron");
+my @jobs = &webmincron::list_webmin_crons();
+my ($job) = grep { $_->{'module'} eq $module_name &&
+		   $_->{'func'} eq "backup_worlds" } @jobs;
+return $job;
+}
+
+# backup_worlds()
+# This function is called by webmincron to perform a backup
+sub backup_worlds
+{
+# Get worlds to include
+my @allworlds = &list_worlds();
+my @worlds;
+if ($config{'backup_worlds'}) {
+	my %names = map { $_, 1 } split(/\s+/, $config{'backup_worlds'});
+	@worlds = grep { $names{$_->{'name'}} } @allworlds;
+	}
+else {
+	@worlds = @allworlds;
+	}
+if (!@worlds) {
+	&send_backup_email("No worlds were found to backup!", 1);
+	return;
+	}
+
+# Get destination dir, with strftime
+my @tm = localtime(time());
+&clear_time_locale();
+my $dir = strftime($config{'backup_dir'}, @tm);
+&reset_time_locale();
+
+# Create destination dir
+if (!-d $dir) {
+	if (!&make_dir($dir, 0700)) {
+		&send_backup_email(
+			"Failed to create destination directory $dir : $!");
+		return;
+		}
+	if ($config{'unix_user'} ne 'root') {
+		&set_ownership_permissions($config{'unix_user'}, undef, undef,
+					   $dir);
+		}
+	}
+
+# Find active world
+my $conf = &get_minecraft_config();
+my $def = &find_value("level-name", $conf);
+
+# Backup each world
+my @out;
+my $failed = 0;
+foreach my $w (@worlds) {
+	my $file = "$dir/$w->{'name'}.zip";
+	push(@out, "Backing up $w->{'name'} to $file ..");
+	if ($w->{'name'} eq $def &&
+	    &is_minecraft_server_running()) {
+		# World is live, flush state to disk
+		&execute_minecraft_command("save-off");
+		&execute_minecraft_command("save-all");
+		}
+	my $out = &backquote_command(
+		"cd ".quotemeta($config{'minecraft_dir'})." && ".
+	        "zip -r ".quotemeta($file)." ".quotemeta($w->{'name'}));
+	my $ex = $?;
+	if ($w->{'name'} eq $def &&
+	    &is_minecraft_server_running()) {
+		# Re-enable world writes
+		&execute_minecraft_command("save-on");
+		}
+	my @st = stat($file);
+	if (@st && $config{'unix_user'} ne 'root') {
+		&set_ownership_permissions($config{'unix_user'}, undef, undef,
+					   $file);
+		}
+	if ($ex) {
+		push(@out, " .. ZIP of $w->{'name'} failed : $out");
+		$failed++;
+		}
+	elsif (!@st) {
+		push(@out, " .. ZIP of $w->{'name'} produced no output : $out");
+		$failed++;
+		}
+	else {
+		push(@out, " .. done (".&nice_size($st[7]).")");
+		}
+	push(@out, "");
+	}
+&send_backup_email(join("\n", @out)."\n", $failed);
+}
+
+# send_backup_email(msg, error)
+# Sends a backup report email, if configured
+sub send_backup_email
+{
+my ($msg, $err) = @_;
+return 0 if (!$config{'backup_email'});
+return 0 if ($config{'backup_email_err'} && !$err);
+&foreign_require("mailboxes");
+&mailboxes::send_text_mail(
+	&mailboxes::get_from_address(),
+	$config{'backup_email'},
+	undef,
+	"Minecraft backup ".($err ? "FAILED" : "succeeded"),
+	$msg);
 }
 
 1;

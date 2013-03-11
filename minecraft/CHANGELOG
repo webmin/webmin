@@ -1,0 +1,5 @@
+---- Changes since 1.0 ----
+Added a page for setting up scheduled backups of some or all worlds on the server.
+Added a warning message on the main page if the server version is out of date.
+German translations from Raymond Vetter.
+Added a list of recent events for a player to the Manage Player page.

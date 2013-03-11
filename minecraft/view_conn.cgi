@@ -93,7 +93,7 @@ if ($c || 1) {
 
 	# Ban or un-ban player
 	my @banlist = &list_banned_players();
-	my ($b) = grep { $_ eq $in{'name'} } @banlist;
+	my ($b) = grep { lc($_) eq lc($in{'name'}) } @banlist;
 	if ($b) {
 		print &ui_table_row($text{'conn_banlist'},
 			"<font color=red>$text{'conn_banned'}</font> ".

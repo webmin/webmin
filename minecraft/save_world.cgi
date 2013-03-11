@@ -112,8 +112,8 @@ elsif ($in{'download'} && $ENV{'PATH_INFO'}) {
 	if (&is_minecraft_server_running() &&
 	    $def eq $in{'name'}) {
 		# Flush state to disk
-		&execute_minecraft_command("save-all");
 		&execute_minecraft_command("save-off");
+		&execute_minecraft_command("save-all");
 		}
 	my $temp = &transname().".zip";
 	my $out = &backquote_command(
