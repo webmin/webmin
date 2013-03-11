@@ -116,3 +116,5 @@ The titles for existing clone modules can now be changed on the Module Titles pa
 ---- Changes since 1.610 ----
 Added a page for viewing and running Webmin scheduled functions.
 Added a section to the Sending Email page to verify that the configured mail server settings work.
+---- Changes since 1.620 ----
+Added a setting to the Web Server Options page to control if redirects use just a path, or the full URL.

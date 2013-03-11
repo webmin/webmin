@@ -1232,14 +1232,29 @@ if ($_[0] =~ /^(http|https|ftp|gopher):/) {
 	}
 elsif ($_[0] =~ /^\//) {
 	# Absolute path (like /foo/bar.cgi)
-	$url = "$prot://$ENV{'SERVER_NAME'}$port$wp$_[0]";
+	if ($gconfig{'relative_redir'}) {
+		$url = "$wp$_[0]";
+		}
+	else {
+		$url = "$prot://$ENV{'SERVER_NAME'}$port$wp$_[0]";
+		}
 	}
 elsif ($ENV{'SCRIPT_NAME'} =~ /^(.*)\/[^\/]*$/) {
 	# Relative URL (like foo.cgi)
-	$url = "$prot://$ENV{'SERVER_NAME'}$port$wp$1/$_[0]";
+	if ($gconfig{'relative_redir'}) {
+		$url = "$wp$1/$_[0]";
+		}
+	else {
+		$url = "$prot://$ENV{'SERVER_NAME'}$port$wp$1/$_[0]";
+		}
 	}
 else {
-	$url = "$prot://$ENV{'SERVER_NAME'}$port/$wp$_[0]";
+	if ($gconfig{'relative_redir'}) {
+		$url = "$wp$_[0]";
+		}
+	else {
+		$url = "$prot://$ENV{'SERVER_NAME'}$port/$wp$_[0]";
+		}
 	}
 &load_theme_library();
 if (defined(&theme_redirect)) {

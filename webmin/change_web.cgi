@@ -44,6 +44,9 @@ if ($in{'gzip'} == 1) {
 	}
 $miniserv{'gzip'} = $in{'gzip'};
 
+# Save redirect type
+$gconfig{'relative_redir'} = $in{'redir'};
+
 # Save global config
 &lock_file("$config_directory/config");
 &write_file("$config_directory/config", \%gconfig);

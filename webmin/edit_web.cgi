@@ -54,6 +54,12 @@ print &ui_table_row($text{'advanced_gzip'},
 		    [ 0, $text{'advanced_gzip0'} ],
 		    [ 1, $text{'advanced_gzip1'} ] ]));
 
+# Redirect type
+print &ui_table_row($text{'advanced_redir'},
+	&ui_radio("redir", $gconfig{'relative_redir'} ? 1 : 0,
+		  [ [ 1, $text{'advanced_redir1'} ],
+		    [ 0, $text{'advanced_redir0'} ] ]));
+
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 
