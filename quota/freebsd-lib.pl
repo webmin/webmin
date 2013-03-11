@@ -19,9 +19,14 @@ return 3;
 sub free_space
 {
 local(@out, @rv);
+my $oldsize = $ENV{'BLOCKSIZE'};
 $ENV{'BLOCKSIZE'} = 512;
-`df -i $_[0]` =~ /Mounted on\n\S+\s+(\d+)\s+\d+\s+(\d+)\s+\S+\s+(\d+)\s+(\d+)/;
-return ($1, $2, $3+$4, $4);
+my $out = &backquote_command("df -i ".quotemeta($_[0]));
+$ENV{'BLOCKSIZE'} = $oldsize;
+if ($out =~ /Mounted on\n\S+\s+(\d+)\s+\d+\s+(\d+)\s+\S+\s+(\d+)\s+(\d+)/) {
+	return ($1, $2, $3+$4, $4);
+	}
+return ( );
 }
 
 # quota_can(&mnttab, &fstab)
@@ -104,7 +109,6 @@ return undef;
 sub user_filesystems
 {
 local($n, $_, %mtab);
-$ENV{'BLOCKSIZE'} = 512;
 open(QUOTA, "$config{'user_quota_command'} ".quotemeta($_[0])." |");
 $n=0; while(<QUOTA>) {
 	chop;
@@ -146,7 +150,6 @@ return $n;
 sub group_filesystems
 {
 local($n, $_, %mtab);
-$ENV{'BLOCKSIZE'} = 512;
 open(QUOTA, "$config{'group_quota_command'} ".quotemeta($_[0])." |");
 $n=0; while(<QUOTA>) {
 	chop;
@@ -188,7 +191,6 @@ return $n;
 sub filesystem_users
 {
 local($rep, @rep, $n, $what);
-$ENV{'BLOCKSIZE'} = 512;
 $rep = `$config{'user_repquota_command'} $_[0] 2>&1`;
 if ($?) { return -1; }
 @rep = split(/\n/, $rep);
@@ -217,7 +219,6 @@ return $n;
 sub filesystem_groups
 {
 local($rep, @rep, $n, $what);
-$ENV{'BLOCKSIZE'} = 512;
 $rep = `$config{'group_repquota_command'} $_[0] 2>&1`;
 if ($?) { return -1; }
 @rep = split(/\n/, $rep);
@@ -365,6 +366,13 @@ return ($text{'grace_seconds'}, $text{'grace_minutes'}, $text{'grace_hours'},
 sub fs_block_size
 {
 return 512;
+}
+
+# quota_block_size(dir, device, filesystem)
+# Always returns 1024, as that's the block size BSD appears to use
+sub quota_block_size
+{
+return 1024;
 }
 
 %name_to_unit = ( "second", 0, "seconds", 0,
