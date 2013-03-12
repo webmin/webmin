@@ -363,7 +363,7 @@ else {
 	print &ui_links_row(\@links);
 	print "<table width=100% cellpadding=5>\n";
 	for($i=0; $i<@vname; $i++) {
-		print "<tr> <td valign=top align=center nowrap>";
+		print "<tr class='mainbody ".($i % 2 ? 'row0' : 'row1')."'> <td valign=top align=center nowrap>";
 		&generate_icon("images/virt.gif", $vname[$i], $vlink[$i],
 			       undef, undef, undef,
 			       $vidx[$i] && $access{'vaddr'} ?
