@@ -830,8 +830,7 @@ if ($print) {
 	$| = 1;
 	select($old);
 	while(<OUT>) {
-		s/\r|\n//g;
-		print &html_escape($_),"<br>\n";
+		print &html_escape($_);
 		}
 	my $ex = close(OUT);
 	return $? ? "Failed" : undef;
