@@ -108,6 +108,10 @@ lv_freedisk=Free space
 lv_pvs=Physical volumes allocated
 lv_snapusage=Snapshot use percentage
 lv_egone=Logical volume no longer exists!
+lv_moveheader=Move off physical volume
+lv_pvfrom=Move blocks from physical volume
+lv_pvto=To physical volume
+lv_moveok=Move Blocks
 
 mkfs_title=Create Filesystem
 mkfs_desc=This form allows you to build a new $2 ($1) filesystem on logical volume $3. All existing data will be erased.
@@ -173,6 +177,12 @@ vg_deleteok=Delete Now
 vg_ename=Missing or invalid volume group name
 vg_epesize=Missing or invalid allocation block size
 vg_egone=Volume group no longer exists!
+
+pvmove_err=Failed to move logical volume
+pvmove_title=Move Logical Volume
+pvmove_start=Moving logical volume $1 from $2 to $3 ..
+pvmove_failed=.. move failed!
+pvmove_done=.. move complete
 
 log_create_vg=Created volume group $1
 log_modify_vg=Modified volume group $1

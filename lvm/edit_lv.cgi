@@ -6,6 +6,7 @@ require './lvm-lib.pl';
 ($vg) = grep { $_->{'name'} eq $in{'vg'} } &list_volume_groups();
 $vg || &error($text{'vg_egone'});
 @lvs = &list_logical_volumes($in{'vg'});
+@pvs = &list_physical_volumes($in{'vg'});
 
 $vgdesc = &text('lv_vg', $vg->{'name'});
 if ($in{'lv'}) {
@@ -218,12 +219,12 @@ if (@stat && $stat[2]) {
 if ($in{'lv'}) {
 	@pvinfo = &get_logical_volume_usage($lv);
 	if (@pvinfo) {
-		@pvs = &list_physical_volumes($in{'vg'});
 		foreach $p (@pvinfo) {
 			($pv) = grep { $_->{'name'} eq $p->[0] } @pvs;
 			push(@pvlist, "<a href='edit_pv.cgi?vg=$in{'vg'}&pv=$pv->{'name'}'>$pv->{'name'}</a> ".&nice_size($p->[1]*$pv->{'pe_size'}*1024));
 			}
-		print &ui_table_row($text{'lv_pvs'}, join(" , ", @pvlist), 3);
+		print &ui_table_row($text{'lv_pvs'},
+			&ui_grid_table(\@pvlist, 4), 3);
 		}
 	}
 
@@ -249,10 +250,10 @@ else {
 
 if ($in{'lv'} && !$stat[2] && !$lv->{'is_snap'} &&
     $stat[1] ne 'cloudmin' && $stat[1] ne 'iscsi') {
-	# Show button for creating filesystems
 	print &ui_hr();
 	print &ui_buttons_start();
 
+	# Show button for creating filesystems
 	if ($stat[1]) {
 		# Use FS from fstab
 		print &ui_buttons_row("mkfs_form.cgi", $text{'lv_mkfs2'},
@@ -282,6 +283,26 @@ if ($in{'lv'} && !$stat[2] && !$lv->{'is_snap'} &&
 		}
 
 	print &ui_buttons_end();
+	}
+
+# Show PV move form
+if ($in{'lv'} && @pvs > 1) {
+	print &ui_form_start("pvmove.cgi");
+	print &ui_hidden("vg", $in{'vg'});
+	print &ui_hidden("lv", $in{'lv'});
+	print &ui_table_start($text{'lv_moveheader'}, undef, 2);
+
+	@names = map { $_->{'name'} } @pvs;
+	print &ui_table_row($text{'lv_pvfrom'},
+		&ui_select("from", $pvinfo[0]->[0],
+			   [ &unique(map { $_->[0] } @pvinfo) ]));
+
+	($defto) = grep { $_ ne $pvinfo[0]->[0] } @names;
+	print &ui_table_row($text{'lv_pvto'},
+		&ui_select("to", $defto, \@names));
+
+	print &ui_table_end();
+	print &ui_form_end([ [ undef, $text{'lv_moveok'} ] ]);
 	}
 
 &ui_print_footer("index.cgi?mode=lvs", $text{'index_return'});

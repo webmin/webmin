@@ -817,5 +817,30 @@ else {
 return int($bytes / $units) * $units;
 }
 
+# move_logical_volume(&lv, from, to, [print])
+# Moves blocks on an LV from one PV to another. Returns an error message on
+# failure, or undef on success
+sub move_logical_volume
+{
+local ($lv, $from, $to, $print) = @_;
+local $cmd = "pvmove -n $lv->{'name'} /dev/$from /dev/$to";
+if ($print) {
+	open(OUT, "$cmd 2>&1 </dev/null |");
+	my $old = select(OUT);
+	$| = 1;
+	select($old);
+	while(<OUT>) {
+		s/\r|\n//g;
+		print &html_escape($_),"<br>\n";
+		}
+	my $ex = close(OUT);
+	return $? ? "Failed" : undef;
+	}
+else {
+	local $out = &backquote_logged("$cmd 2>&1 </dev/null");
+	return $? ? $out : undef;
+	}
+}
+
 1;
 
