@@ -197,11 +197,12 @@ if ($_[0]->{'fs'} eq 'tar') {
 	$cmd .= " -h" if ($_[0]->{'links'});
 	$cmd .= " -l" if ($_[0]->{'xdev'});
 	$cmd .= " -F \"$tapecmd $_[0]->{'id'}\""
-		if (!$_[0]->{'gzip'});
+		if (!$_[0]->{'gzip'} && ($_[0]->{'file'} =~ /^\/dev/ ||
+					 $_[0]->{'hfile'} =~ /^\/dev/));
 	$cmd .= " --rsh-command=$_[0]->{'rsh'}"
 		if ($_[0]->{'rsh'} && $_[0]->{'host'});
 	$cmd .= " $_[0]->{'extra'}" if ($_[0]->{'extra'});
-	$cmd .= " '$_[0]->{'dir'}'";
+	$cmd .= " ".quotemeta($_[0]->{'dir'});
 	}
 else {
 	# Construct ufs dump command
@@ -215,7 +216,7 @@ else {
 		}
 	$cmd .= " -h 0" if ($_[0]->{'honour'});
 	$cmd .= " $_[0]->{'extra'}" if ($_[0]->{'extra'});
-	$cmd .= " '$_[0]->{'dir'}'";
+	$cmd .= " ".quotemeta($_[0]->{'dir'});
 	}
 
 &system_logged("sync");
