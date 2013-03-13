@@ -229,7 +229,7 @@ if (($pft == 1 || $pft == 6) && $access{'peopt'}) {
 	print &ui_table_row(&hlink($text{'change2'}, "change2"),
 		&date_input($cday, $cmon, $cyear, 'change').
 		" ".&ui_textbox("changeh", $chour, 3).
-		":".&ui_textbox("changemi", $cmin, 3));
+		":".&ui_textbox("changemi", $cmin, 3), 3);
 
 	# Expiry date
 	if ($n eq "") {
@@ -253,7 +253,7 @@ if (($pft == 1 || $pft == 6) && $access{'peopt'}) {
 	print &ui_table_row(&hlink($text{'expire2'}, "expire2"),
 		&date_input($eday, $emon, $eyear, 'expire').
 		" ".&ui_textbox("expireh", $ehour, 3).
-		":".&ui_textbox("expiremi", $emin, 3));
+		":".&ui_textbox("expiremi", $emin, 3), 3);
 
 	# BSD login class
 	print &ui_table_row(&hlink($text{'class'}, "class"),
