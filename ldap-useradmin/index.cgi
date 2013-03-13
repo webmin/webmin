@@ -14,7 +14,7 @@ if (!$got_net_ldap) {
 		eval "use $m";
 		push(@needs, $m) if ($@);
 		}
-	$missing = &urlize(join(" ", @needs));
+	$missing = &html_escape(join(" ", @needs));
 	print &text('index_eperl', "<tt>$missing</tt>",
 		    "/cpan/download.cgi?source=3&cpan=$missing&mode=2&".
 		    "return=/$module_name/&returndesc=".
