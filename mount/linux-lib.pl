@@ -89,6 +89,7 @@ while(<FSTAB>) {
 		$p[0] =~ s/\\040/ /g;
 		$p[0] =~ s/\//\\/g;
 		}
+	$p[1] = &simplify_path($p[1]);
 	$rv[$i] = [ $p[1], $p[0], $p[2] ];
 	$rv[$i]->[5] = "yes";
 	@o = split(/,/ , $p[3] eq "defaults" ? "" : $p[3]);
@@ -441,6 +442,7 @@ while(<MTAB>) {
 	chop;
 	s/#.*$//g; if (!/\S/) { next; }
 	@p = split(/\s+/, $_);
+	$p[1] = &simplify_path($p[1]);
 	if ($p[2] eq "auto" || $p[0] =~ /^\S+:\(pid\d+\)$/) {
 		# Automounter map.. turn the map= option into the device
 		@o = split(/,/ , $p[3]);
