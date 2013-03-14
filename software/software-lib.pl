@@ -20,7 +20,10 @@ elsif ($config{'update_system'}) {
 	}
 else {
 	# Guess which update system we are using
-	if (&has_command($config{'apt_mode'} ? "aptitude" : "apt-get")) {
+	if ($gconfig{'os_type'} eq 'freebsd') {
+		$update_systme = "ports";
+		}
+	elsif (&has_command($config{'apt_mode'} ? "aptitude" : "apt-get")) {
 		$update_system = "apt";
 		}
 	elsif (&has_command("yum") && -r "/etc/yum.conf") {
