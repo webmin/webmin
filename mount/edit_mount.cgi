@@ -143,7 +143,7 @@ elsif ($mnow && $minfo[2] ne "swap") {
 	&foreign_require("proc");
 	print &ui_hidden("lsoffs", $minfo[0]);
 	print &ui_form_end([ [ undef, $text{'save'} ],
-			     $proc::has_fuser_command (
+			     $proc::has_fuser_command ?
 				( [ 'lsof', $text{'edit_list'} ] ) : ( ) ]);
 	}
 else {
