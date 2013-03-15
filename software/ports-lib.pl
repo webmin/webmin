@@ -17,19 +17,32 @@ print "<b>",&text('ports_install', "<tt>$update</tt>"),"</b><p>\n";
 print "<pre>";
 my $err = 0;
 foreach my $w (@want) {
-	my $cmd = "cd /usr/ports/$w && make package";
+	# Build the packages
+	my ($dir) = grep { !/\/distfiles\// } glob("/usr/ports/*/$w");
+	my $cmd = "cd $dir && make package";
 	&additional_log('exec', undef, $cmd);
 	$ENV{'BATCH'} = 1;
+	my @newrv;
 	&open_execute_command(CMD, "$cmd </dev/null", 2);
 	while(<CMD>) {
 		s/\r|\n//g;
 		if (/Building\s+package\s+(\S+)/) {
-			push(@rv, $2);
+			push(@newrv, $2);
 			}
+		print &html_escape($_."\n");
 		}
-	print &html_escape($_."\n");
 	close(CMD);
+	if (@newrv) {
+		# Install the packages
+		&open_execute_command(CMD, "cd $dir && pkg_add ".join(" ", @newrv), 2);
+		while(<CMD>) {
+			s/\r|\n//g;
+			print &html_escape($_."\n");
+			}
+		close(CMD);
+		}
 	$err++ if ($?);
+	push(@rv, @newrv);
 	}
 print "</pre>\n";
 if ($err) {
@@ -55,9 +68,10 @@ if ($out =~ /make\s+fetchindex/) {
 	$out = &backquote_command("$cmd 2>&1 </dev/null");
 	}
 foreach my $line (split(/\r?\n/, $out)) {
-	if ($line =~ /Path:\s+\/usr\/ports\/(\S+)/) {
-		my $p = { 'name' => $1 };
-		push(@rv, $1);
+	if ($line =~ /Path:\s+\/usr\/ports\/(\S+\/(\S+))/) {
+		my $p = { 'name' => $2,
+			  'fullname' => $1 };
+		push(@rv, $p);
 		}
 	elsif ($line =~ /Info:\s+(.*)/ && @rv) {
 		$rv[$#rv]->{'desc'} = $1;
@@ -67,6 +81,41 @@ foreach my $line (split(/\r?\n/, $out)) {
 return @rv;
 }
 
+# update_system_resolve(name)
+# Converts a standard package name like apache, sendmail or squid into
+# the name used by ports.
+sub update_system_resolve
+{
+local ($name) = @_;
+return $name eq "apache" ? "apache22 ap22-mod_.*" :
+       $name eq "dhcpd" ? "isc-dhcp-42-server" :
+       $name eq "mysql" ? "mysql-server" :
+       $name eq "openssh" ? "openssh-portable" :
+       $name eq "postgresql" ? "postgresql-server" :
+       $name eq "openldap" ? "openldap-server openldap-client" :
+       			  $name;
+}
 
+# update_system_available()
+# Returns a list of package names and versions that are available from ports
+sub update_system_available
+{
+local @rv;
+&execute_command("cd /usr/ports && make fetchindex");
+&open_execute_command(PKG, "cd /usr/ports && make search 'key=*'", 2, 1);
+my @rv;
+while(my $line = <PKG>) {
+	s/\r|\n//g;
+	if ($line =~ /Path:\s+\/usr\/ports\/(\S+\/(\S+))/) {
+		my $p = { 'name' => $2,
+			  'fullname' => $1 };
+		push(@rv, $p);
+		}
+	elsif ($line =~ /Info:\s+(.*)/ && @rv) {
+		$rv[$#rv]->{'desc'} = $1;
+		}
+	}
+return @rv;
+}
 
 1;

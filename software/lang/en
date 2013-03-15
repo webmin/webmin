@@ -393,4 +393,10 @@ hpux_enforce_scripts=Enforce scripts?
 hpux_enforce_dsa=Enforce disk space analysis?
 hpux_root=Root directory
 
+ports_install=Installing FreeBSD ports $1 ..
+ports_failed=.. some ports failed
+ports_ok=.. install complete
+ports_input=Package from ports
+ports_find=Search Ports
+
 __norefs=1
