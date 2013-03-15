@@ -1,4 +1,7 @@
 # Functions for FreeBSD ports / package management
+#
+# XXX uninstall package doesn't un-install port
+# XXX check with software package updates module
 
 sub list_update_system_commands
 {
@@ -17,9 +20,19 @@ print "<b>",&text('ports_install', "<tt>$update</tt>"),"</b><p>\n";
 print "<pre>";
 my $err = 0;
 foreach my $w (@want) {
+	# Find the package dir
+	my ($pkg) = grep { $_->{'name'} eq $w }
+			 &update_system_search($w);
+	if (!$pkg) {
+		print "No port named $w found!\n";
+		$err++;
+		next;
+		}
+	my $dir = "/usr/ports/".$pkg->{'fullname'};
+
 	# Build the packages
-	my ($dir) = grep { !/\/distfiles\// } glob("/usr/ports/*/$w");
-	my $cmd = "cd $dir && make package";
+	my $cmd = "cd $dir && make reinstall";
+	print $cmd,"\n";
 	&additional_log('exec', undef, $cmd);
 	$ENV{'BATCH'} = 1;
 	my @newrv;
@@ -32,15 +45,6 @@ foreach my $w (@want) {
 		print &html_escape($_."\n");
 		}
 	close(CMD);
-	if (@newrv) {
-		# Install the packages
-		&open_execute_command(CMD, "cd $dir && pkg_add ".join(" ", @newrv), 2);
-		while(<CMD>) {
-			s/\r|\n//g;
-			print &html_escape($_."\n");
-			}
-		close(CMD);
-		}
 	$err++ if ($?);
 	push(@rv, @newrv);
 	}
@@ -68,10 +72,13 @@ if ($out =~ /make\s+fetchindex/) {
 	$out = &backquote_command("$cmd 2>&1 </dev/null");
 	}
 foreach my $line (split(/\r?\n/, $out)) {
-	if ($line =~ /Path:\s+\/usr\/ports\/(\S+\/(\S+))/) {
-		my $p = { 'name' => $2,
-			  'fullname' => $1 };
+	if ($line =~ /Port:\s+(\S+)\-(\d\S+)/) {
+		my $p = { 'name' => $1,
+			  'version' => $2 };
 		push(@rv, $p);
+		}
+	elsif ($line =~ /Path:\s+\/usr\/ports\/(\S+\/(\S+))/ && @rv) {
+		$rv[$#rv]->{'fullname'} = $1;
 		}
 	elsif ($line =~ /Info:\s+(.*)/ && @rv) {
 		$rv[$#rv]->{'desc'} = $1;
@@ -106,10 +113,13 @@ local @rv;
 my @rv;
 while(my $line = <PKG>) {
 	s/\r|\n//g;
-	if ($line =~ /Path:\s+\/usr\/ports\/(\S+\/(\S+))/) {
-		my $p = { 'name' => $2,
-			  'fullname' => $1 };
+	if ($line =~ /Port:\s+(\S+)\-(\d\S+)/) {
+		my $p = { 'name' => $1,
+			  'version' => $2 };
 		push(@rv, $p);
+		}
+	elsif ($line =~ /Path:\s+\/usr\/ports\/(\S+\/(\S+))/ && @rv) {
+		$rv[$#rv]->{'fullname'} = $1;
 		}
 	elsif ($line =~ /Info:\s+(.*)/ && @rv) {
 		$rv[$#rv]->{'desc'} = $1;
