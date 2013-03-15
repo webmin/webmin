@@ -6,6 +6,7 @@ if (&has_command("mount_smbfs")) {
 	$smbfs_support = 1;
 	$nsmb_conf = "/etc/nsmb.conf";
 	}
+$ide_device_prefix = $uname_release > 9 ? "ada" : "ad";
 
 # Return information about a filesystem, in the form:
 #  directory, device, type, options, fsck_order, mount_at_boot
@@ -410,7 +411,7 @@ else {
 		$msg = &fstype_name($type);
 		}
 	local ($disk_dev, $ide_t, $ide_s, $ide_p, $scsi_t, $scsi_s, $scsi_p);
-	if ($loc =~ /^\/dev\/ad(\d)s(\d)([a-z]*)$/) {
+	if ($loc =~ /^\/dev\/\Q$ide_device_prefix\E(\d)s(\d)([a-z]*)$/) {
 		$disk_dev = 0; $ide_t = $1; $ide_s = $2; $ide_p = $3;
 		}
 	elsif ($loc =~ /^\/dev\/da(\d)s(\d)([a-z]*)$/) {
@@ -764,7 +765,7 @@ else {
 			&error("'$in{ide_s}' is not a valid slice number");
 		$in{'ide_p'} =~ /^[a-z]*$/ ||
 			&error("'$in{ide_p}' is not a valid partition letter");
-		$dv = "/dev/ad$in{ide_t}s$in{ide_s}$in{ide_p}";
+		$dv = "/dev/$ide_device_prefix$in{ide_t}s$in{ide_s}$in{ide_p}";
 		}
 	elsif ($in{'disk_dev'} == 1) {
 		$in{'scsi_t'} =~ /^\d+$/ ||
@@ -983,7 +984,16 @@ return "255.255.255.255";
 
 sub device_name
 {
-return $_[0];
+my ($dev) = @_;
+if ($dev =~ /^\/dev\/(ad|ada)(\d)s(\d)([a-z]*)$/) {
+	return &text('freebsd_idedev', "$2", "$3", "$4");
+	}
+elsif ($dev =~ /^\/dev\/(da)(\d)s(\d)([a-z]*)$/) {
+	return &text('freebsd_scsidev', "$2", "$3", "$4");
+	}
+else {
+	return $dev;
+	}
 }
 
 sub files_to_lock

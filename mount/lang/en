@@ -479,6 +479,8 @@ freebsd_slice=Slice
 freebsd_part=Partition
 freebsd_scsi=SCSI disk
 freebsd_other=Other device
+freebsd_idedev=IDE device $1, slice $2, partition $3
+freebsd_scsidev=SCSI device $1, slice $2, partition $3
 
 cswap_file=The swap file $1 does not exist.
 cswap_size=Create and mount a swap file with size
