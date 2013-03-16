@@ -7190,7 +7190,9 @@ reset_environment.
 =cut
 sub clean_language
 {
-%UNCLEAN_ENV = %ENV;
+if (!%UNCLEAN_ENV) {
+	%UNCLEAN_ENV = %ENV;
+	}
 $ENV{'LANG'} = '';
 $ENV{'LANGUAGE'} = '';
 $ENV{'LC_ALL'} = '';
