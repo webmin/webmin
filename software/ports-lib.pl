@@ -2,6 +2,8 @@
 #
 # XXX uninstall package doesn't un-install port
 # XXX check with software package updates module
+# XXX need make fetchindex to update DB?
+# XXX CHANGELOG
 
 sub list_update_system_commands
 {

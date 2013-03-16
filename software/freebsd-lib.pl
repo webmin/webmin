@@ -19,10 +19,11 @@ local $arg = @_ ? join(" ", map { quotemeta($_) } @_) : "-a";
 %packages = ( );
 &open_execute_command(PKGINFO, "pkg_info -I $arg", 1, 1);
 while(<PKGINFO>) {
-	if (/^(\S+)\s+(.*)/) {
+	if (/^(\S+)\-(\d\S+)\s+(.*)/) {
 		$packages{$i,'name'} = $1;
+		$packages{$i,'version'} = $2;
 		$packages{$i,'class'} = "";
-		$packages{$i,'desc'} = $2;
+		$packages{$i,'desc'} = $3;
 		$i++;
 		}
 	}
@@ -30,33 +31,33 @@ close(PKGINFO);
 return $i;
 }
 
-# package_info(package)
+# package_info(package, version)
 # Returns an array of package information in the order
 #  name, class, description, arch, version, vendor, installtime
 sub package_info
 {
-local $qm = quotemeta($_[0]);
+local $qm = quotemeta($_[0].'='.$_[1]);
 local $out = &backquote_command("pkg_info $qm 2>&1", 1);
 return () if ($?);
 local @rv = ( $_[0] );
 push(@rv, "");
 push(@rv, $out =~ /Description:\n([\0-\177]*\S)/i ? $1 : $text{'bsd_unknown'});
 push(@rv, $system_arch);
-push(@rv, $_[0] =~ /-([^\-]+)$/ ? $1 : $text{'bsd_unknown'});
+push(@rv, $_[1]);
 push(@rv, "FreeBSD");
 local @st = stat(&translate_filename("$package_dir/$_[0]"));
 push(@rv, @st ? ctime($st[9]) : $text{'bsd_unknown'});
 return @rv;
 }
 
-# check_files(package)
+# check_files(package, version)
 # Fills in the %files array with information about the files belonging
 # to some package. Values in %files are  path type user group mode size error
 sub check_files
 {
 local $i = 0;
 local $file;
-local $qm = quotemeta($_[0]);
+local $qm = quotemeta($_[0].'='.$_[1]);
 &open_execute_command(PKGINFO, "pkg_info -L $qm", 1, 1);
 while($file = <PKGINFO>) {
 	$file =~ s/\r|\n//g;
@@ -76,12 +77,12 @@ while($file = <PKGINFO>) {
 return $i;
 }
 
-# package_files(package)
+# package_files(package, version)
 # Returns a list of all files in some package
 sub package_files
 {
-local ($pkg) = @_;
-local $qn = quotemeta($pkg);
+local ($pkg, $v) = @_;
+local $qn = quotemeta($pkg.'='.$v);
 local @rv;
 &open_execute_command(RPM, "pkg_info -L $qn", 1, 1);
 while(<RPM>) {
@@ -271,11 +272,12 @@ if ($?) {
 return undef;
 }
 
-# delete_package(package)
+# delete_package(package, &in, version)
 # Totally remove some package
 sub delete_package
 {
-local $out = &backquote_logged("pkg_delete $_[0] 2>&1");
+local $qm = quotemeta($_[0].'='.$_[2]);
+local $out = &backquote_logged("pkg_delete $qm 2>&1");
 if ($?) { return "<pre>$out</pre>"; }
 return undef;
 }
