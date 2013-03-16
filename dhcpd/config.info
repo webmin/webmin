@@ -18,5 +18,5 @@ restart_cmd=Command to apply configuration,3,Kill and re-start
 stop_cmd=Command to stop DHCP server,3,Kill process
 pid_file=Path to DHCP server PID file,3,None
 lease_file=DHCP server lease file,0
-interfaces_type=Interfaces file type,4,redhat-Redhat,mandrake-Mandrake,suse-SuSE,debian-Debian,caldera-Caldera,gentoo-Gentoo,-Webmin
+interfaces_type=Interfaces file type,4,redhat-Redhat,mandrake-Mandrake,suse-SuSE,debian-Debian,caldera-Caldera,gentoo-Gentoo,freebsd-FreeBSD,-Webmin
 version=DHCP server version,3,Work out automatically

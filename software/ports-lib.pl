@@ -98,7 +98,7 @@ sub update_system_resolve
 {
 local ($name) = @_;
 return $name eq "apache" ? "apache22 ap22-mod_.*" :
-       $name eq "dhcpd" ? "isc-dhcp-42-server" :
+       $name eq "dhcpd" ? "isc-dhcp42-server" :
        $name eq "mysql" ? "mysql-server" :
        $name eq "openssh" ? "openssh-portable" :
        $name eq "postgresql" ? "postgresql-server" :

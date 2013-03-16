@@ -73,6 +73,15 @@ elsif ($config{'interfaces_type'} eq 'gentoo') {
 	&read_env_file("/etc/conf.d/dhcp", \%dhcp);
 	$iface = $dhcp{'IFACE'};
 	}
+elsif ($config{'interfaces_type'} eq 'freebsd') {
+	# From FreeBSD rc.conf file
+	&foreign_require("init");
+	my $rcconf = &init::get_rc_conf();
+	my ($c) = grep { $_->{'name'} eq 'dhcpd_ifaces' } @$rcconf;
+	if ($c) {
+		$iface = $c->{'value'};
+		}
+	}
 else {
 	# Just use the configuration
 	$iface = $config{'interfaces'};

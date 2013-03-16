@@ -98,6 +98,11 @@ elsif ($config{'interfaces_type'} eq 'gentoo') {
 	$dhcp{'IFACE'} = $iface;
 	&write_env_file("/etc/conf.d/dhcp", \%dhcp);
 	}
+elsif ($config{'interfaces_type'} eq 'freebsd') {
+	# Update FreeBSD rc.conf file
+	&foreign_require("init");
+	&init::save_rc_conf('dhcpd_ifaces', $iface);
+	}
 
 &redirect("");
 
