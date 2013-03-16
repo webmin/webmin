@@ -38,6 +38,23 @@ elsif ($in{'give'}) {
 	$msg = &text('conn_givedone', $i ? $i->{'name'} : $in{'id'},
 				      $in{'count'});
 	}
+elsif ($in{'xp'}) {
+	# Grant XP
+	$in{'xpadd'} =~ /^\d+$/ || &error($text{'conn_exp'});
+	my $xp;
+	if ($in{'xpmode'} == 0) {
+		$xp = $in{'xpadd'};
+		}
+	else {
+		$xp = &level_to_orbs($in{'xpadd'});
+		$xp || &error($text{'conn_explevel'});
+		}
+	my $out = &execute_minecraft_command(
+		"/xp $xp $in{'name'}");
+	$out =~ /Given.*experience.*\Q$in{'name'}\E/ ||
+		&error(&html_escape($out));
+	$msg = &text('conn_xpdone', $xp);
+	}
 elsif ($in{'spawn'}) {
 	# Change spawn point
 	$in{'spawnx'} =~ /^\-?([0-9]+)$/ || &error($text{'conn_ex'});

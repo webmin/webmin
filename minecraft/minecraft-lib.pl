@@ -718,4 +718,27 @@ return 0 if ($config{'backup_email_err'} && !$err);
 	$msg);
 }
 
+# level_to_orbs(level)
+# Converts a desired level to a number of orbs. From :
+# http://www.minecraftwiki.net/wiki/Experience
+sub level_to_orbs
+{
+my ($lvl) = @_;
+if ($lvl < 17) {
+	return $lvl * 17;
+	}
+my @xpmap = split(/\s+/,
+	"17 292 18 315 19 341 20 370 21 402 22 437 23 475 24 516 ".
+	"25 560 26 607 27 657 28 710 29 766 30 825 31 887 32 956 ".
+	"33 1032 34 1115 35 1205 36 1302 37 1406 38 1517 39 1635 ".
+	"40 1760 41 3147 42 3297 43 3451 44 3608 45 3769 46 3933 ".
+	"47 4101 48 4272 49 4447 50 4625");
+for(my $i=0; $i<@xpmap; $i+=2) {
+	if ($xpmap[$i] == $lvl) {
+		return $xpmap[$i+1];
+		}
+	}
+return undef;
+}
+
 1;

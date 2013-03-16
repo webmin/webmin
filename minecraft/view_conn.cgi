@@ -70,6 +70,14 @@ if ($c || 1) {
 		&ui_textbox("count", 1, 5)." ".
 		&ui_submit($text{'conn_giveb'}, 'give'));
 
+	# Grant XP
+	print &ui_table_row($text{'conn_xp'},
+		&ui_textbox("xpadd", undef, 5)." ".
+		&ui_select("xpmode", 0,
+			   [ [ 0, $text{'conn_xp0'} ],
+			     [ 1, $text{'conn_xp1'} ] ])." ".
+		&ui_submit($text{'conn_xpb'}, 'xp'));
+
 	# Change spawn point
 	print &ui_table_row($text{'conn_spawn'},
 		"X:".&ui_textbox("spawnx", int($x), 10)." ".
