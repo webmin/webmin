@@ -31,19 +31,20 @@ close(PKGINFO);
 return $i;
 }
 
-# package_info(package, version)
+# package_info(package, [version])
 # Returns an array of package information in the order
 #  name, class, description, arch, version, vendor, installtime
 sub package_info
 {
-local $qm = quotemeta($_[0].'='.$_[1]);
+local ($name, $ver) = @_;
+local $qm = quotemeta($name.($ver ? '='.$ver : '>=0'));
 local $out = &backquote_command("pkg_info $qm 2>&1", 1);
 return () if ($?);
-local @rv = ( $_[0] );
+local @rv = ( $name );
 push(@rv, "");
 push(@rv, $out =~ /Description:\n([\0-\177]*\S)/i ? $1 : $text{'bsd_unknown'});
 push(@rv, $system_arch);
-push(@rv, $_[1]);
+push(@rv, $out =~ /Information\s+for\s+(\S+)\-(\d\S+)/ ? $2 : $ver);
 push(@rv, "FreeBSD");
 local @st = stat(&translate_filename("$package_dir/$_[0]"));
 push(@rv, @st ? ctime($st[9]) : $text{'bsd_unknown'});
@@ -55,9 +56,10 @@ return @rv;
 # to some package. Values in %files are  path type user group mode size error
 sub check_files
 {
+local ($name, $ver) = @_;
 local $i = 0;
 local $file;
-local $qm = quotemeta($_[0].'='.$_[1]);
+local $qm = quotemeta($name.($ver ? '='.$ver : '>=0'));
 &open_execute_command(PKGINFO, "pkg_info -L $qm", 1, 1);
 while($file = <PKGINFO>) {
 	$file =~ s/\r|\n//g;
@@ -82,7 +84,7 @@ return $i;
 sub package_files
 {
 local ($pkg, $v) = @_;
-local $qn = quotemeta($pkg.'='.$v);
+local $qn = quotemeta($pkg.($v ? '='.$v : '>=0'));
 local @rv;
 &open_execute_command(RPM, "pkg_info -L $qn", 1, 1);
 while(<RPM>) {
@@ -276,7 +278,8 @@ return undef;
 # Totally remove some package
 sub delete_package
 {
-local $qm = quotemeta($_[0].'='.$_[2]);
+local ($name, $ver) = @_;
+local $qm = quotemeta($name.($ver ? '='.$ver : '>=0'));
 local $out = &backquote_logged("pkg_delete $qm 2>&1");
 if ($?) { return "<pre>$out</pre>"; }
 return undef;

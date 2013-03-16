@@ -35,3 +35,5 @@ Fixed several bugs related to YUM available package updates.
 Added the update_system_updates function to more efficiently find available packages for YUM and APT.
 ---- Changes since 1.530 ----
 Debian packages marked as "hold" are no longer offered as possible updates. This is visible in the Software Package Updates module.
+---- Changes since 1.620 ----
+Added support for updating and installing packages from FreeBSD ports.

@@ -1,9 +1,5 @@
 # Functions for FreeBSD ports / package management
-#
-# XXX uninstall package doesn't un-install port
-# XXX check with software package updates module
-# XXX need make fetchindex to update DB?
-# XXX CHANGELOG
+
 
 sub list_update_system_commands
 {
@@ -32,8 +28,13 @@ foreach my $w (@want) {
 		}
 	my $dir = "/usr/ports/".$pkg->{'fullname'};
 
+	# Check if already installed
+	my @info = &package_info($pkg->{'name'});
+	my $upgrade = scalar(@info) ? 1 : 0;
+
 	# Build the packages
-	my $cmd = "cd $dir && make reinstall";
+	my $cmd = $upgrade ? "cd $dir && make reinstall"
+			   : "cd $dir && make install";
 	print $cmd,"\n";
 	&additional_log('exec', undef, $cmd);
 	$ENV{'BATCH'} = 1;
@@ -41,8 +42,8 @@ foreach my $w (@want) {
 	&open_execute_command(CMD, "$cmd </dev/null", 2);
 	while(<CMD>) {
 		s/\r|\n//g;
-		if (/Building\s+package\s+(\S+)/) {
-			push(@newrv, $2);
+		if (/Registering\s+installation\s+for\s+(\S+)\-(\d\S+)/) {
+			push(@newrv, $1);
 			}
 		print &html_escape($_."\n");
 		}
@@ -111,7 +112,7 @@ sub update_system_available
 {
 local @rv;
 &execute_command("cd /usr/ports && make fetchindex");
-&open_execute_command(PKG, "cd /usr/ports && make search 'key=*'", 2, 1);
+&open_execute_command(PKG, "cd /usr/ports && make search 'key=.*'", 2, 1);
 my @rv;
 while(my $line = <PKG>) {
 	s/\r|\n//g;

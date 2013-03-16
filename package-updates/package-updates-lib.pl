@@ -522,6 +522,10 @@ if ($software::update_system eq "yum") {
 elsif ($software::update_system eq "apt") {
 	&execute_command("apt-get update");
 	}
+elsif ($software::update_system eq "ports") {
+	&execute_command("portsnap fetch");
+	&execute_command("portsnap update || portsnap extract");
+	}
 }
 
 # split_epoch(version)
