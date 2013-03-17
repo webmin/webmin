@@ -346,11 +346,16 @@ else {
 local @rv;
 foreach my $a (@avail) {
 	if ($a->{'name'} =~ /^lib(\S+)-perl$/ ||	# Debian
-	    $a->{'name'} =~ /^perl-(\S+)$/) {		# Redhat
+	    $a->{'name'} =~ /^perl-(\S+)$/ ||		# Redhat
+	    $a->{'name'} =~ /^p5-(\S+)$/) {		# FreeBSD
 		local $mod = $1;
 		$mod =~ s/-/::/g;
 		if ($mod eq "LDAP") {
 			# Special case for redhat-ish systems
+			$mod = "Net::LDAP";
+			}
+		elsif ($mod eq "perl::ldap") {
+			# Special case for FreeBSD
 			$mod = "Net::LDAP";
 			}
 		push(@rv, { 'mod' => $mod,
