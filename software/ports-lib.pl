@@ -19,7 +19,13 @@ print "<pre>";
 my $err = 0;
 foreach my $w (@want) {
 	# Find the package dir
-	my ($pkg) = grep { $_->{'name'} eq $w }
+	my $v;
+	if ($w =~ /^(\S+)\-(\d\S+)$/) {
+		$w = $1;
+		$v = $2;
+		}
+	my ($pkg) = grep { $_->{'name'} eq $w &&
+			   (!$v || $_->{'version'} eq $v) }
 			 &update_system_search($w);
 	if (!$pkg) {
 		print "No port named $w found!\n";
@@ -77,7 +83,8 @@ if ($out =~ /make\s+fetchindex/) {
 foreach my $line (split(/\r?\n/, $out)) {
 	if ($line =~ /Port:\s+(\S+)\-(\d\S+)/) {
 		my $p = { 'name' => $1,
-			  'version' => $2 };
+			  'version' => $2,
+			  'select' => $1."-".$2 };
 		push(@rv, $p);
 		}
 	elsif ($line =~ /Path:\s+\/usr\/ports\/(\S+\/(\S+))/ && @rv) {
@@ -118,7 +125,8 @@ while(my $line = <PKG>) {
 	s/\r|\n//g;
 	if ($line =~ /Port:\s+(\S+)\-(\d\S+)/) {
 		my $p = { 'name' => $1,
-			  'version' => $2 };
+			  'version' => $2,
+			  'select' => $1."-".$2 };
 		push(@rv, $p);
 		}
 	elsif ($line =~ /Path:\s+\/usr\/ports\/(\S+\/(\S+))/ && @rv) {
