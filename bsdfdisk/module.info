@@ -1,0 +1,4 @@
+desc=Partitions on Local Disks
+os_support=freebsd
+category=hardware
+depends=mount
