@@ -398,5 +398,6 @@ ports_failed=.. some ports failed
 ports_ok=.. install complete
 ports_input=Package from ports
 ports_find=Search Ports
+ports_name=FreeBSD ports
 
 __norefs=1
