@@ -6,10 +6,15 @@ require './mysql-lib.pl';
 &ReadParse();
 
 # Check for MySQL programs
+if ($config{'start_cmd'} =~ /^(\S+)/) {
+	$start = $1;
+	}
 foreach $p ( [ $config{'mysqladmin'}, 'index_eadmin', 'index_mysqladmin' ],
 	     [ $config{'mysql'}, 'index_esql', 'index_mysql' ],
-	     [ $config{'mysqlshow'}, 'index_eshow', 'index_mysqlshow' ]) {
-	if (!-x $p->[0]) {
+	     [ $config{'mysqlshow'}, 'index_eshow', 'index_mysqlshow' ],
+	     $start ? ( [ $start, 'index_estart', 'index_mysqlstart' ] )
+		    : ( )) {
+	if (!&has_command($p->[0])) {
 		&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
 			&help_search_link("mysql", "man", "doc", "google"));
 		print &text($p->[1], "<tt>$p->[0]</tt>",

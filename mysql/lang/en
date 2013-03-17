@@ -15,6 +15,8 @@ index_global=Global Options
 index_return=database list
 index_eadmin=The MySQL admin program $1 was not found on your system. Maybe MySQL is not installed, or your <a href='$2'>module configuration</a> is incorrect.
 index_esql=The MySQL client program $1 was not found on your system. Maybe MySQL is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_eshow=The MySQL status program $1 was not found on your system. Maybe MySQL is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_estart=The MySQL startup script $1 was not found on your system. Maybe MySQL is not installed, or your <a href='$2'>module configuration</a> is incorrect.
 index_ever=The MySQL client program $1 does not appear to be the correct version. Webmin only supports MySQL versions 3 and above.
 index_nouser=Your Webmin account is configured to connect to the MySQL server as user $1, but this user has been denied access. 
 index_db=Database name
@@ -34,6 +36,7 @@ index_drops=Drop Selected Databases
 index_mysqladmin=MySQL administration program
 index_mysql=MySQL client program
 index_mysqlshow=MySQL status program
+index_mysqlstatus=MySQL startup script
 index_toomany=There are too many databases to display. Find databases matching:
 index_search=Search
 index_showing=Showing databases matching $1 ..
