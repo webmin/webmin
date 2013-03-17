@@ -1,0 +1,5 @@
+frox=/usr/local/sbin/frox
+frox_conf=/usr/local/etc/frox.conf
+alt_frox_conf=/usr/local/share/examples/frox/frox.conf
+start_cmd=/usr/local/etc/rc.d/frox forcestart
+stop_cmd=/usr/local/etc/rc.d/frox forcestop
