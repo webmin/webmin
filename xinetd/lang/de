@@ -35,9 +35,11 @@ index_disable=Ausgew&auml;hlte deaktivieren
 index_econf=Die Xinetd-Konfigurationsdatei $1 existiert nicht. Entweder ist es nicht installiert, oder die <a href='$2'>Modulkonfiguration</a> ist falsch.
 index_enable=Ausgew&auml;hlte aktivieren
 index_enabled=Aktiviert?
+index_estart=Der Befehl zum Starten von Xinetd $1 existiert nicht. Vielleicht ist es nicht installiert, oder Ihre <a href='$2'>Modulkonfiguration</a> ist falsch.
 index_inet=Internet
 index_internal=Intern zu Xinetd
 index_name=Dienstname
+index_none=Keine Netzwerk-Dienste wurden bisher definiert.
 index_noport=Unbekannt
 index_port=Port / Nummer
 index_proto=Protokoll
@@ -47,7 +49,7 @@ index_rpc=RPC
 index_server=Serverprogramm
 index_start=Starte Xinetd
 index_startmsg=Klicken Sie auf diesen Button um den Xinetd-Server mit der aktuellen Konfiguration zu starten
-index_title=Erweiterte Internetdienste
+index_title=Netzwerk-Dienste
 index_type=Art
 index_user=Benutzer
 log_apply=Angewandte &#196;nderungen
