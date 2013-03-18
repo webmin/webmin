@@ -177,5 +177,11 @@ else {
 	}
 }
 
+sub get_start_binary
+{
+my ($cmd) = split(/\s+/, $config{'start_cmd'});
+return &has_command($cmd);
+}
+
 1;
 

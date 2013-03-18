@@ -8,7 +8,8 @@ do 'xinetd-lib.pl';
 # For mode 0, returns 1 if installed, 0 if not
 sub is_installed
 {
-return 0 if (!-r $config{'xinetd_conf'});
+return 0 if (!-r $config{'xinetd_conf'} && !$config{'allow_missing'});
+return 0 if (!&get_start_binary());
 return $_[0] ? 2 : 1;
 }
 

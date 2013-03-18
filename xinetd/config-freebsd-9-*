@@ -1,0 +1,6 @@
+xinetd_conf=/usr/local/etc/xinetd.conf
+protocols_file=/etc/protocols
+pid_file=/var/run/xinetd.pid
+start_cmd=/usr/local/etc/rc.d/xinetd forcestart
+lookup_servs=1
+allow_missing=1

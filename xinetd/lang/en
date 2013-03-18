@@ -1,4 +1,5 @@
-index_title=Extended Internet Services
+index_title=Network Services
+index_none=No network services have been defined yet.
 index_name=Service name
 index_type=Type
 index_port=Port / number
@@ -20,6 +21,7 @@ index_applymsg=Click this button to apply the current configuration by sending a
 index_start=Start Xinetd
 index_startmsg=Click this button to start the Xinetd server with the current configuration
 index_econf=The Xinetd configuration file $1 does not exist. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_estart=The command to start Xinetd $1 does not exist. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
 index_noport=Unknown
 index_enable=Enable Selected
 index_disable=Disable Selected
