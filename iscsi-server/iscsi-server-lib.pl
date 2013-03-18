@@ -381,7 +381,14 @@ sub get_iscsi_options_file
 {
 if ($gconfig{'os_type'} eq 'freebsd') {
 	my %iconfig = &foreign_config("init");
-	return $iconfig{'rc_dir'}."/".$config{'init_name'}.".sh";
+	my @rcdirs = split(/\s+/, $iconfig{'rc_dir'});
+	foreach my $d (@rcdirs) {
+		my $file = $d."/".$config{'init_name'}.".sh";
+		return $file if (-r $file);
+		$file = $d."/".$config{'init_name'};
+		return $file if (-r $file);
+		}
+	return $rcdirs[$#rcdirs]."/".$config{'init_name'}.".sh";
 	}
 else {
 	return $config{'opts_file'};
@@ -485,6 +492,7 @@ my $lnum = 0;
 while(<$fh>) {
 	s/\r|\n//;
 	s/\s+$//;
+	s/#.*$//;
 	my ($user, $mode, $pass, @rest) = split(/:/, $_);
 	if ($user) {
 		my $uinfo = { 'user' => $user,
