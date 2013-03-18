@@ -24,14 +24,15 @@ foreach my $w (@want) {
 		$w = $1;
 		$v = $2;
 		}
-	my ($pkg) = grep { $_->{'name'} eq $w &&
-			   (!$v || $_->{'version'} eq $v) }
-			 &update_system_search($w);
-	if (!$pkg) {
+	my @pkgs = grep { $_->{'name'} eq $w &&
+			  (!$v || $_->{'version'} eq $v) }
+			&update_system_search($w);
+	if (!@pkgs) {
 		print "No port named $w found!\n";
 		$err++;
 		next;
 		}
+	my $pkg = $pkgs[$#pkgs];
 	my $dir = "/usr/ports/".$pkg->{'fullname'};
 
 	# Check if already installed
