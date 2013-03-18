@@ -24,7 +24,7 @@ if ($in{'page'}) {
 
 # Show frameset
 $title = &get_html_framed_title();
-$cols = &get_product_name() eq 'usermin' ? 180 : 230;
+$cols = &get_product_name() eq 'usermin' ? 180 : 250;
 &popup_header($title, undef, undef, 1);
 
 print <<EOF;
