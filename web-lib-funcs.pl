@@ -7654,7 +7654,7 @@ foreach my $minfo (&get_all_module_infos($_[0])) {
 
 # Check usermod restrictions
 my @usermods = &list_usermods();
-@rv = sort { $a->{'desc'} cmp $b->{'desc'} }
+@rv = sort { lc($a->{'desc'}) cmp lc($b->{'desc'}) }
 	    &available_usermods(\@rv, \@usermods);
 
 # Check RBAC restrictions
