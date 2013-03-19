@@ -822,7 +822,7 @@ $host || &error($text{'update_eurl'});
 
 # Download the file
 my $temp = &transname();
-&http_download($host, $port, $page, $temp, undef, undef, $ssl, $user, $pass,
+&retry_http_download($host, $port, $page, $temp, undef, undef, $ssl, $user, $pass,
 	       0, 0, 1);
 
 # Download the signature, if we can check it
@@ -830,7 +830,7 @@ my ($ec, $emsg) = &gnupg_setup();
 if (!$ec && $sigmode) {
 	my $err;
 	my $sig;
-	&http_download($host, $port, $page."-sig.asc", \$sig,
+	&retry_http_download($host, $port, $page."-sig.asc", \$sig,
 		       \$err, undef, $ssl, $user, $pass, 0, 0, 1);
 	if ($err) {
 		$sigmode == 2 && &error(&text('update_enosig', $err));
@@ -2110,6 +2110,36 @@ elsif ($lnk =~ /^[^\/ ]+$/) {
 	return $lnk;
 	}
 return undef;
+}
+
+# retry_http_download(host, port, etc..)
+# Calls http_download until it succeeds
+sub retry_http_download
+{
+my ($host, $port, $page, $dest, $error, $cbfunc, $ssl, $user, $pass,
+    $timeout, $osdn, $nocache, $headers) = @_;
+my $tries = 5;
+my $i = 0;
+my $tryerror;
+while($i < $tries) {
+	$tryerror = undef;
+	&http_download($host, $port, $page, $dest, \$tryerror, $cbfunc, $ssl, $user,
+		       $pass, $timeout, $osdn, $nocache, $headers);
+	if (!$tryerror) {
+		last;
+		}
+	$i++;
+	sleep($i);
+	}
+if ($tryerror) {
+	# Failed every time
+	if (ref($error)) {
+		$$error = $tryerror;
+		}
+	else {
+		&error($tryerror);
+		}
+	}
 }
 
 1;

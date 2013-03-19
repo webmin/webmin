@@ -47,7 +47,7 @@ foreach $url (@urls) {
 				&parse_http_url($u->[2], $host, $port, $page, $ssl);
 			($mfile = $mpage) =~ s/^(.*)\///;
 			$mtemp = &transname($mfile);
-			&http_download($mhost, $mport, $mpage, $mtemp, \$error,
+			&retry_http_download($mhost, $mport, $mpage, $mtemp, \$error,
 				       undef, $mssl,
 				       $config{'upuser'}, $config{'uppass'});
 			if ($error) {

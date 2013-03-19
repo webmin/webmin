@@ -53,7 +53,7 @@ foreach $url (@urls) {
 			$mtemp = &transname($mfile);
 			$progress_callback_url = $u->[2];
 			$progress_callback_prefix = "&nbsp;" x 10;
-			&http_download($mhost, $mport, $mpage, $mtemp, undef,
+			&retry_http_download($mhost, $mport, $mpage, $mtemp, undef,
 				       \&progress_callback, $mssl,
 				       $in{'upuser'}, $in{'uppass'});
 			$irv = &check_update_signature($mhost, $mport, $mpage,
