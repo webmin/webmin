@@ -18,5 +18,5 @@ restart_cmd=Befehl zum Anwenden der Konfiguration,3,Beenden und Neustart
 stop_cmd=Befehlt zum Stoppen des DHCP-Servers,3,T&#246;te Prozess
 pid_file=Pfad zur DHCP-Server PID-Datei,3,Keine
 lease_file=DHCP-Server Lease-Datei,0
-interfaces_type=Schnittstellen Dateityp,4,redhat-Redhat,mandrake-Mandrake,suse-SuSE,debian-Debian,caldera-Caldera,gentoo-Gentoo,-Webmin
+interfaces_type=Schnittstellen Dateityp,4,redhat-Redhat,mandrake-Mandrake,suse-SuSE,debian-Debian,caldera-Caldera,gentoo-Gentoo,freebsd-FreeBSD,-Webmin
 version=DHCP-Server Version,3,Automatisch
