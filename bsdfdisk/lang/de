@@ -1,0 +1,8 @@
+index_dmodel=Marke und Modell
+index_dname=Festplattenname
+index_dparts=Partitionen
+index_dsize=Gesamtgr&#246;&#223;e
+index_ecmd=Die erforderliche Befehl $1 fehlt
+index_none=Keine Festplatten wurden auf diesem System gefunden!
+index_problem=Dieses Modul kann nicht verwendet werden : $1
+index_title=Partitionen auf lokalen Festplatten
