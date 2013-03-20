@@ -54,14 +54,16 @@ if ($config{'sync_delete_profile'}) {
 	if (&get_share("Profiles")) {
 		local $ppath = &getval("path");
 		if ($ppath) {
-			local $upath = "$ppath/$_[0]->{'user'}";
-			if (-d $upath) {
-				&system_logged("rm -rf ".quotemeta($upath));
-				}
-			else {
-				&lock_file($upath);
-				unlink($upath);
-				&unlock_file($upath);
+			foreach my $upath ("$ppath/$_[0]->{'user'}",
+					   "$ppath/$_[0]->{'user'}.v2") {
+				if (-d $upath) {
+					&system_logged("rm -rf ".quotemeta($upath));
+					}
+				elsif (-r $upath) {
+					&lock_file($upath);
+					unlink($upath);
+					&unlock_file($upath);
+					}
 				}
 			}
 		}
