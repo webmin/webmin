@@ -1,1 +1,8 @@
 index_title=Partitions on Local Disks
+index_ecmd=The required command $1 is missing
+index_problem=This module cannot be used : $1
+index_none=No disks were found on this system!
+index_dname=Disk name
+index_dsize=Total size
+index_dmodel=Make and model
+index_dparts=Partitions
