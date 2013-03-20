@@ -111,7 +111,7 @@ return $name eq "apache" ? "apache22 ap22-mod_.*" :
        $name eq "openssh" ? "openssh-portable" :
        $name eq "postgresql" ? "postgresql-server" :
        $name eq "openldap" ? "openldap-server openldap-client" :
-       $name eq "samba" ? "samba36 samba36-nmblookup samba36-smbclient" :
+       $name eq "samba" ? "samba36 samba36-smbclient samba36-nmblookup" :
        			  $name;
 }
 
