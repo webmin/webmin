@@ -25,6 +25,11 @@ if (!-x $config{'psql'} || -d $config{'psql'}) {
 # Check for alternate config file, and use
 if (!$hba_conf_file && -r $config{'alt_hba_conf'} && &is_postgresql_local()) {
 	($hba_conf_file) = split(/\t+/, $config{'hba_conf'});
+	my $hba_conf_dir = $hba_conf_file;
+	$hba_conf_dir =~ s/\/([^\/]+)$//;
+	if (!-d $hba_conf_dir) {
+		&make_dir($hba_conf_dir, 0777);
+		}
 	&copy_source_dest($config{'alt_hba_conf'}, $hba_conf_file);
 	}
 
