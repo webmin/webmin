@@ -28,3 +28,5 @@ disk_table=<b>Partition format:</b> $1
 disk_return=list of partitions
 disk_add=Add primary partition.
 
+select_device=$1 device $2
+select_part=$1 device $2 partition $3

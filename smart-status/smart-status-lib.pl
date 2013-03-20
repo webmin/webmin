@@ -34,6 +34,9 @@ sub list_smart_disks_partitions
 if (&foreign_check("fdisk")) {
 	return &list_smart_disks_partitions_fdisk();
 	}
+elsif (&foreign_check("bsdfdisk")) {
+	return &list_smart_disks_partitions_bsdfdisk();
+	}
 elsif (&foreign_check("mount")) {
 	return &list_smart_disks_partitions_fstab();
 	}
@@ -185,7 +188,7 @@ sub list_smart_disks_partitions_fstab
 &foreign_require("mount");
 my @rv;
 foreach my $m (&mount::list_mounted(1)) {
-	if ($m->[1] =~ /^(\/dev\/(da|ad)([0-9]+))/ &&
+	if ($m->[1] =~ /^(\/dev\/(da|ad|ada)([0-9]+))/ &&
 	    $m->[2] ne 'cd9660') {
 		# FreeBSD-style disk name
 		push(@rv, { 'device' => $1,
@@ -209,6 +212,25 @@ foreach my $m (&mount::list_mounted(1)) {
 my %done;
 @rv = grep { !$done{$_->{'device'}}++ } @rv;
 return @rv;
+}
+
+=head2 list_smart_disks_partitions_bsdfdisk
+
+Returns a sorted list of disks that can support SMART, using the FreeBSD
+fdisk module
+
+=cut
+sub list_smart_disks_partitions_bsdfdisk
+{
+&foreign_require("bsdfdisk");
+local @rv;
+foreach my $d (sort { $a->{'device'} cmp $b->{'device'} }
+		    &bsdfdisk::list_disks_partitions()) {
+	if ($d->{'type'} eq 'scsi' || $d->{'type'} eq 'ide') {
+		push(@rv, $d);
+		}
+	}
+return sort { $a->{'device'} cmp $b->{'device'} } @rv;
 }
 
 =head2 get_drive_status(device-name, [&drive])

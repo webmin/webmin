@@ -13,15 +13,15 @@ my @disks = &list_disks_partitions();
 my ($disk) = grep { $_->{'device'} eq $in{'device'} } @disks;
 $disk || &error($text{'disk_egone'});
 
-&ui_print_header($disk->{'device'}, $text{'disk_title'}, "");
+&ui_print_header($disk->{'desc'}, $text{'disk_title'}, "");
 
 # Show disk details
 my @info = ( );
-push(@info, &text('disk_dsize', &nice_size($d->{'size'}));
-if ($d->{'model'}) {
-        push(@info, &text('disk_model', $d->{'model'}));
+push(@info, &text('disk_dsize', &nice_size($disk->{'size'})));
+if ($disk->{'model'}) {
+        push(@info, &text('disk_model', $disk->{'model'}));
         }
-push(@info, &text('disk_cylinders', $d->{'cylinders'}));
+push(@info, &text('disk_cylinders', $disk->{'cylinders'}));
 print &ui_links_row(\@info),"<p>\n";
 
 # Show partitions table
@@ -54,7 +54,7 @@ if (@{$disk->{'parts'}}) {
 
 		# Create usage description
 		my @stat = &fdisk::device_status($p->{'device'});
-		my $stat = &device_status_link(@stat);
+		my $stat = &fdisk::device_status_link(@stat);
 
 		# Add row for the partition
 		my $url = "edit_part.cgi?device=".&urlize($disk->{'device'}).

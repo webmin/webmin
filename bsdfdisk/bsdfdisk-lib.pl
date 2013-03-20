@@ -3,6 +3,9 @@
 # XXX call from mount module
 # XXX include in makedist.pl
 # XXX exclude from Solaris, RPM, Deb
+# XXX editing parititions and slices
+# XXX top-level is really called slice?
+# XXX disk cylinders don't match slice size
 
 use strict;
 use warnings;
@@ -33,10 +36,16 @@ foreach my $dev (glob("/dev/ada[0-9]"),
 	next if (!-r $dev || -l $dev);
 	my $disk = { 'device' => $dev,
 		     'prefix' => $dev,
+		     'type' => $dev =~ /^\/dev\/da/ ? 'scsi' : 'ide',
 		     'parts' => [ ] };
 	if ($dev =~ /^\/dev\/(.*)/) {
 		$disk->{'short'} = $1;
 		}
+	if ($dev =~ /^\/dev\/([a-z]+)(\d+)/) {
+		$disk->{'desc'} = &text('select_device',
+					uc($disk->{'type'}), "$2");
+		}
+	$disk->{'index'} = scalar(@rv);
 	push(@rv, $disk);
 
 	# Get size and partitions
@@ -44,26 +53,28 @@ foreach my $dev (glob("/dev/ada[0-9]"),
 	my @lines = split(/\r?\n/, $out);
 	my $part;
 	for(my $i=0; $i<@lines; $i++) {
-		if ($lines[$i] =~ /cylinders=(\d+)\s+heads=(\d+)\s+sectors\/tracks=(\d+)\s+\((\d+)/) {
+		if ($lines[$i] =~ /cylinders=(\d+)\s+heads=(\d+)\s+sectors\/track=(\d+)\s+\((\d+)/) {
 			# Disk information
-			# XXX model and size?
 			$disk->{'cylinders'} = $1;
 			$disk->{'heads'} = $2;
 			$disk->{'sectors'} = $3;
 			$disk->{'blksper'} = $4;
 			$disk->{'size'} = $disk->{'cylinders'} *
 					  $disk->{'blksper'} * 512;
-			$disk->{'index'} = scalar(@rv);
 			}
-		elsif ($lines[$i] =~ /data\s+for\s+partition\s+(\d+)/ &&
-		       $lines[$i+1] !~ /<UNUSED>/) {
+		elsif ($lines[$i+1] !~ /<UNUSED>/ &&
+		       $lines[$i] =~ /data\s+for\s+partition\s+(\d+)/) {
 			# Start of a partition
-			$part = { 'number' => $2,
-				  'device' => $dev."p".$2,
+			$part = { 'number' => $1,
+				  'device' => $dev."s".$1,
 				  'index' => scalar(@{$disk->{'parts'}}) };
+			if ($part->{'device'} =~ /^\/dev\/([a-z]+)(\d+)s(\d+)/){
+				$part->{'desc'} = &text('select_part',
+					uc($disk->{'type'}), "$2", "$3");
+				}
 			push(@{$disk->{'parts'}}, $part);
 			}
-		elsif ($lines[$i] =~ /sysid\s+(\d+)/ && $part) {
+		elsif ($lines[$i] =~ /sysid\s+(\d+)\s+\(0x([0-9a-f]+)/ && $part) {
 			# Partition type
 			$part->{'type'} = $2;
 			}
