@@ -141,4 +141,13 @@ while(my $line = <PKG>) {
 return @rv;
 }
 
+# update_system_form()
+# Show a form for updating the ports DB
+sub update_system_form
+{
+print &ui_subheading($text{'ports_form'});
+print &ui_form_start("ports_upgrade.cgi");
+print &ui_form_end([ [ undef, $text{'ports_apply'} ] ]);
+}
+
 1;

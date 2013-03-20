@@ -399,5 +399,9 @@ ports_ok=.. install complete
 ports_input=Package from ports
 ports_find=Search Ports
 ports_name=FreeBSD ports
+ports_form=Update Ports Database
+ports_apply=Download Latest Snapshot
+ports_upgrade=Downloading Ports Snapshot
+ports_running=Running command $1 ..
 
 __norefs=1
