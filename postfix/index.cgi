@@ -87,7 +87,8 @@ if ($config{'index_check'} && ($err = &check_postfix())) {
 
 @onames =  ( "general", "address_rewriting", "aliases", "canonical",
 	     "virtual", "transport", "relocated", "header", "body", "bcc",
-	     $postfix_version >= 2.7 ? ( "dependent" ) : ( ),
+	     $postfix_version =~ /^3\./ ||
+	      $postfix_version =~ /^2\.(\d+)/ && $1 > 7 ? ( "dependent" ) : ( ),
 	     "local_delivery", "resource",
 	     "smtpd", "smtp", "sasl", "client",
 	     "rate", "debug", $postfix_version > 2 ? ( ) : ( "ldap" ),
