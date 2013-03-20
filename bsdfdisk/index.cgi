@@ -22,7 +22,7 @@ if (@disks) {
                                   $text{'index_dparts'} ]);
 	foreach my $d (@disks) {
 		print &ui_columns_row([
-			"<a href='edit_disk.cgi?dev=".&urlize($d->{'device'}).
+			"<a href='edit_disk.cgi?device=".&urlize($d->{'device'}).
 			  "'>".&html_escape($d->{'device'})."</a>",
 			&nice_size($d->{'size'}),
 			$d->{'model'},

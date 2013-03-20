@@ -10,6 +10,7 @@ BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
 &foreign_require("mount");
+&foreign_require("fdisk");
 
 sub check_fdisk
 {

@@ -1162,6 +1162,48 @@ if ($iscsi_target_module) {
 return ();
 }
 
+# device_status_link(directory, type, mounted, module)
+# Converts the list returned by device_status to a link
+sub device_status_link
+{
+my @stat = @_;
+my $stat = "";
+my $statdesc = $stat[0] =~ /^swap/ ? "<i>$text{'disk_vm'}</i>"
+				   : "<tt>$stat[0]</tt>";
+if ($stat[1] eq 'raid') {
+	$stat = $statdesc;
+	}
+elsif ($stat[1] eq 'lvm') {
+	if (&foreign_available("lvm")) {
+		$stat = "<a href='../lvm/'>".
+			"LVM VG $statdesc</a>";
+		}
+	else {
+		$stat = "LVM VG $statdesc";
+		}
+	}
+elsif ($stat[1] eq 'iscsi') {
+	$stat = &text('disk_iscsi', $stat[0]);
+	if (&foreign_available("iscsi-server")) {
+		$stat = "<a href='../$stat[3]/'>$stat</a>";
+		}
+	}
+elsif ($stat[0] && !&foreign_available("mount")) {
+	$stat = $statdesc;
+	}
+elsif ($stat[0] && $stat[3] == -1) {
+	$stat = "<a href='../mount/edit_mount.cgi?".
+		"index=$stat[4]&temp=1&return=/$module_name/'>".
+		"$statdesc</a>";
+	}
+elsif ($stat[0]) {
+	$stat = "<a href='../mount/edit_mount.cgi?".
+		"index=$stat[3]&return=/$module_name/'>".
+		"$statdesc</a>";
+	}
+return $stat;
+}
+
 # can_fsck(type)
 # Returns 1 if some filesystem type can fsck'd
 sub can_fsck

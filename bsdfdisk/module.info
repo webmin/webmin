@@ -1,5 +1,5 @@
 desc=Partitions on Local Disks
 os_support=freebsd
 category=hardware
-depends=mount
+depends=mount fdisk
 desc_de=Partitionen auf lokalen Festplatten
