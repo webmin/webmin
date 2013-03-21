@@ -5,3 +5,5 @@ longdesc=Access disk devices across the network using the iSCSI protocol.
 depends=fdisk mount lvm
 desc_de=iSCSI-Client 
 desc_ca=Client iSCSI
+longdesc_no=F&#229; tilgang til disk-enheter over nettverket ved hjelp av iSCSI protokollen
+desc_no=iSCSI klient 

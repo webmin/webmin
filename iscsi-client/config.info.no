@@ -1,0 +1,6 @@
+config_file=Full sti til konfigurasjonsfil for Open-iSCSI klient,0
+initiator_file=Full sti til initiator navnefil,0
+ifaces_dir=Full sti til katalog med grensesnitt,0
+init_name=Navn p&#229; oppstartsscript,0
+iscsiadm=Full sti til iscsiadm kommando,0
+iscsiiname=Full sti til iscsi-iname kommando,0
