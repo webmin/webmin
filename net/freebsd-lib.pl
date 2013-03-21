@@ -48,6 +48,17 @@ foreach $l (@lines) {
 		}
 	push(@rv, \%ifc);
 
+	# Add v6 addresses
+	local (@address6, @netmask6, @scope6);
+	while($l =~ s/inet6\s+([0-9a-f:]+)(%\S+)?\s+prefixlen\s+(\d+)(\s+scopeid\s+(\S+))?//) {
+		push(@address6, $1);
+		push(@netmask6, $3);
+		push(@scope6, $5);
+		}
+	$ifc{'address6'} = \@address6;
+	$ifc{'netmask6'} = \@netmask6;
+	$ifc{'scope6'} = \@scope6;
+
 	# Add aliases as virtual interfaces. Try to match boot-time interface
 	# numbers where possible
 	local %vtaken = map { $_->{'virtual'}, 1 }
@@ -143,6 +154,15 @@ foreach $a (sort { $a->{'fullname'} cmp $b->{'fullname'} }
 		else { $out = &backquote_logged("$ifconfig $a->{'name'} down 2>&1"); }
 		&error($out) if ($?);
 		}
+
+	# Add IPv6 addresses
+	local @a6 = @{$a->{'address6'}};
+	local @n6 = @{$a->{'netmask6'}};
+	for(my $i=0; $i<@a6; $i++) {
+		local $cmd = "$ifconfig $a->{'name'} inet6 $a6[$i] prefixlen $n6[$i]";
+		local $out = &backquote_logged("$cmd 2>&1");
+		&error($out) if ($?);
+		}
 	}
 }
 
@@ -152,7 +172,7 @@ sub boot_interfaces
 {
 local %rc = &get_rc_conf();
 local @rv;
-foreach $r (keys %rc) {
+foreach my $r (keys %rc) {
 	local $v = $rc{$r};
 	local %ifc;
 	if ($r =~ /^ifconfig_([a-z0-9]+)$/) {
@@ -171,7 +191,9 @@ foreach $r (keys %rc) {
 	if ($v =~ /^inet\s+(\S+)/ || /^([0-9\.]+)/) {
 		$ifc{'address'} = $1;
 		}
-	else { next; }
+	elsif ($v eq 'DHCP') {
+		$ifc{'dhcp'} = 1;
+		}
 	local @a = split(/\./, $ifc{'address'});
 	if ($v =~ /netmask\s+(0x\S+)/) {
 		$ifc{'netmask'} = &parse_hex($1);
@@ -203,6 +225,19 @@ foreach $r (keys %rc) {
 	$ifc{'edit'} = 1;
 	$ifc{'index'} = scalar(@rv);
 	$ifc{'file'} = "/etc/rc.conf";
+
+	# Check for IPv6 params
+	local $v6 = $rc{'ipv6_ifconfig_'.$ifc{'fullname'}};
+	if ($v6 =~ /^inet6\s+(\S+)/ || $v6 =~ /^([0-9a-f:]+)/) {
+		$ifc{'address6'} = [ $1 ];
+		}
+	elsif (!$v6 && $rc{'ipv6_enable'}) {
+		$ifc{'auto6'} = 1;
+		}
+	if ($v6 =~ /prefixlen\s+(\d+)/) {
+		$ifc{'netmask6'} = [ $1 ];
+		}
+
 	push(@rv, \%ifc);
 	}
 return @rv;
@@ -212,9 +247,15 @@ return @rv;
 # Create or update a boot-time interface
 sub save_interface
 {
-local $str = "inet $_[0]->{'address'}";
-$str .= " netmask $_[0]->{'netmask'}" if ($_[0]->{'netmask'});
-$str .= " broadcast $_[0]->{'broadcast'}" if ($_[0]->{'broadcast'});
+local $str;
+if ($_[0]->{'dhcp'}) {
+	$str = "DHCP";
+	}
+else {
+	$str = "inet $_[0]->{'address'}";
+	$str .= " netmask $_[0]->{'netmask'}" if ($_[0]->{'netmask'});
+	$str .= " broadcast $_[0]->{'broadcast'}" if ($_[0]->{'broadcast'});
+	}
 &lock_file("/etc/rc.conf");
 if ($_[0]->{'virtual'} eq '') {
 	&save_rc_conf('ifconfig_'.$_[0]->{'name'}, $str);
@@ -238,6 +279,23 @@ else {
 	&save_rc_conf('ifconfig_'.$_[0]->{'name'}.'_alias'.$_[0]->{'virtual'},
 		      $str);
 	}
+
+# Update IPv6 settings
+if ($_[0]->{'virtual'} eq '') {
+	local @a = @{$_[0]->{'address6'}};
+	local @n = @{$_[0]->{'netmask6'}};
+	if (@a || $_[0]->{'auto6'}) {
+		&save_rc_conf('ipv6_enable', 'YES');
+		}
+	if (@a) {
+		&save_rc_conf('ipv6_ifconfig_'.$_[0]->{'name'},
+			      'inet6 '.$a[0].' prefixlen '.$n[0]);
+		}
+	else {
+		&save_rc_conf('ipv6_ifconfig_'.$_[0]->{'name'}, undef);
+		}
+	}
+
 &unlock_file("/etc/rc.conf");
 }
 
@@ -249,6 +307,7 @@ sub delete_interface
 if ($_[0]->{'virtual'} eq '') {
 	# Remove the real interface
 	&save_rc_conf('ifconfig_'.$_[0]->{'name'});
+	&save_rc_conf('ipv6_ifconfig_'.$_[0]->{'name'});
 	}
 else {
 	# Remove a virtual interface, and shift down all aliases above it
@@ -283,7 +342,7 @@ return	$_[0] =~ /^tun/ ? "Loopback tunnel" :
 	$_[0] =~ /^(wlan|athi|ral)/ ? "Wireless ethernet" :
 	$_[0] =~ /^(bge|em|myk)/ ? "Gigabit ethernet" :
 	$_[0] =~ /^(ax|mx|nve|pn|rl|tx|wb|nfe|sis)/ ? "Fast ethernet" :
-	$_[0] =~ /^(cs|dc|de|ed|el|ex|fe|fxp|ie|le|lnc|tl|vr|vx|xl|ze|zp)/ ? "Ethernet" : $text{'ifcs_unknown'};
+	$_[0] =~ /^(cs|dc|de|ed|el|ex|fe|fxp|ie|le|lnc|tl|vr|vx|xl|ze|zp|re)/ ? "Ethernet" : $text{'ifcs_unknown'};
 }
 
 # iface_hardware(name)
@@ -297,7 +356,7 @@ return 0;
 # Can some boot-time interface parameter be edited?
 sub can_edit
 {
-return $_[0] =~ /netmask|broadcast/;
+return $_[0] =~ /netmask|broadcast|dhcp/;
 }
 
 # valid_boot_address(address)
@@ -582,7 +641,7 @@ return ( "/etc/rc.conf", "/etc/resolv.conf", "/etc/host.conf",
 sub supports_address6
 {
 local ($iface) = @_;
-return 0;
+return $gconfig{'os_version'} >= 8;
 }
 
 1;

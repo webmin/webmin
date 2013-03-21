@@ -71,3 +71,5 @@ VLAN interfaces can now be created on CentOS, Redhat and Fedora Linuxes, thanks 
 Added support for the new ifconfig -a output format, as seen on Fedora 17.
 ---- Changes since 1.610 ----
 A bridge that is not connected to any real interface can now be created.
+---- Changes since 1.620 ----
+Added support for IPv6, DHCP and new ethernet device names on FreeBSD.
