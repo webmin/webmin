@@ -14,7 +14,7 @@ if ($cmd) {
 	}
 
 # Get the version number
-$vout = `$config{'ipf'} -V 2>&1`;
+$vout = &backquote_command("$config{'ipf'} -V 2>&1");
 if ($vout =~ /IP\s+Filter:\s+v?(\S+)/i) {
 	$ipf_version = $1;
 	}
