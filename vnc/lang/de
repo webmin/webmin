@@ -4,4 +4,4 @@ index_ecmd=Das ben&ouml;tigte VNC&#8722;Serverprogramm $1 f&uuml;r ein spezifisc
 index_esocket=Es l&auml;uft kein VNC&#8722;Server auf $1 Port $2.
 index_nojava=Dieses Module ben&ouml;tigt JAVA, aber Ihr Browser unterst&uuml;tzt kein JAVA.
 index_title=VNC&#8722;Client
-index_warn=Achtungg! Diese VNC&#8722;Sitzung ist <b>NICHT</b> verschl&uuml;sselt!
+index_warn=Achtung! Diese VNC&#8722;Sitzung ist <b>NICHT</b> verschl&uuml;sselt.
