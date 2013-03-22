@@ -285,6 +285,21 @@ if ($?) { return "<pre>$out</pre>"; }
 return undef;
 }
 
+# delete_packages(&packages, &in, &versions)
+# Totally remove some list of packages
+sub delete_packages
+{
+local ($names, $in, $vers) = @_;
+local @qm;
+for(my $i=0; $i<@$names; $i++) {
+	local $qm = quotemeta($names[$i].($vers[$i] ? '='.$vers[$i] : '>=0'));
+	push(@qm, $qm);
+	}
+local $out = &backquote_logged("pkg_delete ".join(" ", @qm)." 2>&1");
+if ($?) { return "<pre>$out</pre>"; }
+return undef;
+}
+
 sub package_system
 {
 return &text('bsd_manager', "FreeBSD");
