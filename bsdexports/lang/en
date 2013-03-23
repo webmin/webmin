@@ -8,6 +8,9 @@ index_delete=Delete Selected Exports
 index_apply=Apply Changes
 index_applydesc=Click this button to apply the current file exports configuration. This will make all the directories listed above available with the options specified.
 index_return=exports list
+index_echeck=The NFS server cannot be used on this system : $1
+
+check_ecmd=NFS server command $1 is not installed
 
 delete_err=Failed to delete exports
 delete_enone=None selected

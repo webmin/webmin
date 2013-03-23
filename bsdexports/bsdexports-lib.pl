@@ -5,6 +5,22 @@ BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
 
+# check_exports()
+# Returns an error message if the NFS exports package is missing
+sub check_exports
+{
+if ($gconfig{'os_type'} eq 'freebsd') {
+	foreach my $c ("mountd", "nfsd", "portmap") {
+		&has_command($c) || return &text('check_ecmd', $c);
+		}
+	return undef;
+	}
+else {
+	# Don't know
+	return undef;
+	}
+}
+
 # list_exports()
 # Returns the current exports list
 sub list_exports

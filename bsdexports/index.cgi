@@ -5,6 +5,14 @@
 require './bsdexports-lib.pl';
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 
+# Check if installed
+my $err = &check_exports();
+if ($err) {
+	print "<b>",&text('index_echeck', $err),"</b><p>\n";
+	&ui_print_footer("/", $text{'index'});
+	return;
+	}
+
 @exp = &list_exports();
 if (@exp) {
 	print &ui_form_start("delete_exports.cgi", "post");
