@@ -115,7 +115,8 @@ map { $act{$_->{'fullname'}} = $_ } @act;
 &interface_sync(\%act, $_[0]->{'name'}, $_[0]->{'fullname'});
 }
 
-# interface_sync(interfaces, name, changee)
+# interface_sync(&interfaces-hash, name, changee)
+# Given a hash from interface name to details, make them live
 sub interface_sync
 {
 # Remove all IP addresses except for the primary one (unless it is being edited)
@@ -289,7 +290,7 @@ if ($_[0]->{'virtual'} eq '') {
 		}
 	if (@a) {
 		&save_rc_conf('ipv6_ifconfig_'.$_[0]->{'name'},
-			      'inet6 '.$a[0].' prefixlen '.$n[0]);
+			      $a[0].' prefixlen '.$n[0]);
 		}
 	else {
 		&save_rc_conf('ipv6_ifconfig_'.$_[0]->{'name'}, undef);
@@ -543,6 +544,14 @@ print &ui_table_row($text{'routes_default'},
 	&ui_opt_textbox("defr", $defr eq 'NO' ? '' : $defr, 20,
 			$text{'routes_none'}));
 
+if (&supports_address6()) {
+	# IPv6 efault router
+	local $defr = $rc{'ipv6_defaultrouter'};
+	print &ui_table_row($text{'routes_default6'},
+		&ui_opt_textbox("defr6", $defr eq 'NO' ? '' : $defr, 20,
+				$text{'routes_none'}));
+	}
+
 # Act as router?
 local $gw = $rc{'gateway_enable'};
 print &ui_table_row($text{'routes_forward'},
@@ -562,6 +571,12 @@ sub parse_routing
 $in{'defr_def'} || &check_ipaddress($in{'defr'}) ||
 	&error(&text('routes_edefault', $in{'defr'}));
 &save_rc_conf('defaultrouter', $in{'defr_def'} ? 'NO' : $in{'defr'});
+if (&supports_address6()) {
+	$in{'defr6_def'} || &check_ip6address($in{'defr6'}) ||
+		&error(&text('routes_edefault6', $in{'defr6'}));
+	&save_rc_conf('ipv6_defaultrouter',
+		      $in{'defr6_def'} ? 'NO' : $in{'defr6'});
+	}
 &save_rc_conf('gateway_enable', $in{'gw'});
 &save_rc_conf('router_enable', $in{'rd'});
 &unlock_file("/etc/rc.conf");
