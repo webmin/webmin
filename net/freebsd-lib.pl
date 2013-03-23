@@ -251,6 +251,20 @@ foreach my $r (keys %rc) {
 		$ifc{'netmask6'} = [ $1 ];
 		}
 
+	# Add IPv6 aliases
+	foreach my $rr (keys %rc) {
+		if ($rr =~ /^ipv6_ifconfig_(\S+)_alias\d+$/ &&
+		    $1 eq $ifc{'fullname'}) {
+			local $v6 = $rc{$rr};
+			if ($v6 =~ /^inet6\s+(\S+)/ || $v6 =~ /^([0-9a-f:]+)/) {
+				push(@{$ifc{'address6'}}, $1);
+				}
+			if ($v6 =~ /prefixlen\s+(\d+)/) {
+				push(@{$ifc{'netmask6'}}, $1);
+				}
+			}
+		}
+
 	push(@rv, \%ifc);
 	}
 return @rv;
@@ -307,6 +321,24 @@ if ($_[0]->{'virtual'} eq '') {
 	else {
 		&save_rc_conf('ipv6_ifconfig_'.$_[0]->{'name'}, undef);
 		}
+
+	# Delete any IPv6 aliases
+	local %rc = &get_rc_conf();
+	foreach my $r (keys %rc) {
+		if ($r =~ /^ipv6_ifconfig_(\S+)_alias\d+$/ &&
+		    $1 eq $_[0]->{'fullname'}) {
+			&save_rc_conf($r, undef);
+			}
+		}
+
+	# Re-create IPv6 aliases
+	shift(@a);
+	shift(@n);
+	for(my $i=0; $i<@a; $i++) {
+		&save_rc_conf(
+			"ipv6_config_".$_[0]->{'fullname'}."_alias".$i,
+			$a[$i]." prefixlen ".$n[$i]);
+		}
 	}
 
 &unlock_file("/etc/rc.conf");
@@ -321,6 +353,7 @@ if ($_[0]->{'virtual'} eq '') {
 	# Remove the real interface
 	&save_rc_conf('ifconfig_'.$_[0]->{'name'});
 	&save_rc_conf('ipv6_ifconfig_'.$_[0]->{'name'});
+	# XXX ipv6 too
 	}
 else {
 	# Remove a virtual interface, and shift down all aliases above it
