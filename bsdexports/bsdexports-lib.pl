@@ -10,6 +10,7 @@ use WebminCore;
 sub check_exports
 {
 if ($gconfig{'os_type'} eq 'freebsd') {
+	# Check for commands on FreeBSD
 	foreach my $c ("mountd", "nfsd", "portmap") {
 		&has_command($c) || return &text('check_ecmd', $c);
 		}
