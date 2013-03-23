@@ -1,4 +1,5 @@
 local_cf=/usr/local/etc/mail/spamassassin/local.cf
+alt_local_cf=/usr/local/etc/mail/spamassassin/local.cf.sample
 spamassassin=spamassassin
 sa_learn=sa-learn
 procmailrc=/usr/local/etc/procmailrc

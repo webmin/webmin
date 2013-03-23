@@ -1,0 +1,12 @@
+show_empty=0
+rpc_inetd=0
+inetd_conf_file=/etc/inetd.conf
+rpc_protocols=tcp udp
+restart_command=/etc/rc.d/inetd forcerestart
+services_file=/etc/services
+protocols_file=/etc/protocols
+rpc_file=/etc/rpc
+extended_inetd=2
+sort_mode=0
+ipv6=0
+qm_mode=0

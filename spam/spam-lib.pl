@@ -33,6 +33,11 @@ else {
 		&set_config_file($access{'file'});
 		}
 	else {
+		if (!-r $config{'local_cf'} && -r $config{'alt_local_cf'}) {
+			# Copy in default config file
+			&copy_source_dest($config{'alt_local_cf'},
+					  $config{'local_cf'});
+			}
 		&set_config_file($config{'local_cf'});
 		}
 	if ($access{'nocheck'}) {
