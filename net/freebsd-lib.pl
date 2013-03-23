@@ -92,11 +92,29 @@ return @rv;
 # Create or modify an interface
 sub activate_interface
 {
-local %act;
-map { $act{$_->{'fullname'}} = $_ } &active_interfaces();
+local %act = map { $_->{'fullname'}, $_ } &active_interfaces();
 local $old = $act{$_[0]->{'fullname'}};
 $act{$_[0]->{'fullname'}} = $_[0];
 &interface_sync(\%act, $_[0]->{'name'}, $_[0]->{'fullname'});
+
+if ($_[0]->{'virtual'} eq '') {
+	# Remove old IPv6 addresses
+	local $l = &backquote_command("ifconfig $_[0]->{'name'}");
+	while($l =~ s/inet6\s*(\S+)\s+prefixlen\s+(\d+)//) {
+		local $cmd = "ifconfig $_[0]->{'name'} inet6 $1 -alias 2>&1";
+		$out = &backquote_logged($cmd);
+		&error("Failed to remove old IPv6 address : $out") if ($?);
+		}
+
+	# Add IPv6 addresses
+	for(my $i=0; $i<@{$_[0]->{'address6'}}; $i++) {
+		local $cmd = "ifconfig $_[0]->{'name'} inet6 ".
+			     $_[0]->{'address6'}->[$i].
+			     " prefixlen ".$_[0]->{'netmask6'}->[$i]." 2>&1";
+		$out = &backquote_logged($cmd);
+		&error("Failed to add IPv6 address : $out") if ($?);
+		}
+	}
 }
 
 # deactivate_interface(&details)
@@ -116,7 +134,9 @@ map { $act{$_->{'fullname'}} = $_ } @act;
 }
 
 # interface_sync(&interfaces-hash, name, changee)
-# Given a hash from interface name to details, make them live
+# Given a hash from interface name to details, make them live. This is needed
+# because on FreeBSD, alias interfaces are just IPs on the main interface, 
+# rather than separate eth0:N interfaces like on Linux.
 sub interface_sync
 {
 # Remove all IP addresses except for the primary one (unless it is being edited)
@@ -155,16 +175,8 @@ foreach $a (sort { $a->{'fullname'} cmp $b->{'fullname'} }
 		else { $out = &backquote_logged("$ifconfig $a->{'name'} down 2>&1"); }
 		&error($out) if ($?);
 		}
-
-	# Add IPv6 addresses
-	local @a6 = @{$a->{'address6'}};
-	local @n6 = @{$a->{'netmask6'}};
-	for(my $i=0; $i<@a6; $i++) {
-		local $cmd = "$ifconfig $a->{'name'} inet6 $a6[$i] prefixlen $n6[$i]";
-		local $out = &backquote_logged("$cmd 2>&1");
-		&error($out) if ($?);
-		}
 	}
+
 }
 
 # boot_interfaces()
