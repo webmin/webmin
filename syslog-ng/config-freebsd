@@ -1,0 +1,7 @@
+lines=20
+compressed=1
+syslogng_conf=/usr/local/etc/syslog-ng.conf
+syslogng_cmd=syslog-ng
+pid_file=/var/run/syslog.pid
+start_cmd=/usr/local/etc/rc.d/syslog-ng forcestart
+restart_cmd=/usr/local/etc/rc.d/syslog-ng forcerestart
