@@ -1,4 +1,5 @@
 __norefs=1
+check_ecmd=NFS-Server Befehl $1 ist nicht installiert
 delete_enone=Nicht ausgew&#228;hlt
 delete_err=Fehlgeschlagen Exports zu l&#246;schen
 edit_alldirs=Export Unterverzeichnisse?
@@ -26,6 +27,7 @@ index_applydesc=Klicken Sie auf diese Schaltfl&#228;che, um die aktuelle Datei E
 index_clients=Clients
 index_delete=L&#246;sche ausgew&#228;hlte Exporte
 index_dirs=Verzeichnisse
+index_echeck=Der NFS-Server kann auf diesem System nicht verwendet werden : $1
 index_everyone=Jeder
 index_none=Keine Exports wurden bisher definiert.
 index_return=Export Liste
