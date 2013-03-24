@@ -252,7 +252,7 @@ foreach my $r (keys %rc) {
 		}
 
 	# Add IPv6 aliases
-	foreach my $rr (keys %rc) {
+	foreach my $rr (sort { $a cmp $b } keys %rc) {
 		if ($rr =~ /^ipv6_ifconfig_(\S+)_alias\d+$/ &&
 		    $1 eq $ifc{'fullname'}) {
 			local $v6 = $rc{$rr};
@@ -319,7 +319,7 @@ if ($_[0]->{'virtual'} eq '') {
 			      $a[0].' prefixlen '.$n[0]);
 		}
 	else {
-		&save_rc_conf('ipv6_ifconfig_'.$_[0]->{'name'}, undef);
+		&save_rc_conf('ipv6_ifconfig_'.$_[0]->{'name'});
 		}
 
 	# Delete any IPv6 aliases
@@ -327,7 +327,7 @@ if ($_[0]->{'virtual'} eq '') {
 	foreach my $r (keys %rc) {
 		if ($r =~ /^ipv6_ifconfig_(\S+)_alias\d+$/ &&
 		    $1 eq $_[0]->{'fullname'}) {
-			&save_rc_conf($r, undef);
+			&save_rc_conf($r);
 			}
 		}
 
@@ -336,7 +336,7 @@ if ($_[0]->{'virtual'} eq '') {
 	shift(@n);
 	for(my $i=0; $i<@a; $i++) {
 		&save_rc_conf(
-			"ipv6_config_".$_[0]->{'fullname'}."_alias".$i,
+			"ipv6_ifconfig_".$_[0]->{'fullname'}."_alias".$i,
 			$a[$i]." prefixlen ".$n[$i]);
 		}
 	}
