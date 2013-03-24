@@ -23,10 +23,10 @@ if (@disks) {
 	foreach my $d (@disks) {
 		print &ui_columns_row([
 			"<a href='edit_disk.cgi?device=".&urlize($d->{'device'}).
-			  "'>".&html_escape($d->{'device'})."</a>",
+			  "'>".&partition_description($d->{'device'})."</a>",
 			&nice_size($d->{'size'}),
 			$d->{'model'},
-			scalar(@{$d->{'parts'}}),
+			scalar(@{$d->{'slices'}}),
 			]);
 		}
 	print &ui_columns_end();

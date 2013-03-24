@@ -24,7 +24,7 @@ return undef;
 }
 
 # list_disks_partitions()
-# Returns a list of all disks, partitions and slices
+# Returns a list of all disks, slices and partitions
 sub list_disks_partitions
 {
 my @rv;
@@ -37,7 +37,7 @@ foreach my $dev (glob("/dev/ada[0-9]"),
 	my $disk = { 'device' => $dev,
 		     'prefix' => $dev,
 		     'type' => $dev =~ /^\/dev\/da/ ? 'scsi' : 'ide',
-		     'parts' => [ ] };
+		     'slices' => [ ] };
 	if ($dev =~ /^\/dev\/(.*)/) {
 		$disk->{'short'} = $1;
 		}
@@ -48,10 +48,10 @@ foreach my $dev (glob("/dev/ada[0-9]"),
 	$disk->{'index'} = scalar(@rv);
 	push(@rv, $disk);
 
-	# Get size and partitions
+	# Get size and slices
 	my $out = &backquote_command("fdisk $dev");
 	my @lines = split(/\r?\n/, $out);
-	my $part;
+	my $slice;
 	for(my $i=0; $i<@lines; $i++) {
 		if ($lines[$i] =~ /cylinders=(\d+)\s+heads=(\d+)\s+sectors\/track=(\d+)\s+\((\d+)/) {
 			# Disk information
@@ -59,37 +59,39 @@ foreach my $dev (glob("/dev/ada[0-9]"),
 			$disk->{'heads'} = $2;
 			$disk->{'sectors'} = $3;
 			$disk->{'blksper'} = $4;
-			$disk->{'size'} = $disk->{'cylinders'} *
-					  $disk->{'blksper'} * 512;
+			$disk->{'blocks'} = $disk->{'cylinders'} *
+					    $disk->{'blksper'};
+			$disk->{'size'} = $disk->{'blocks'} * 512;
 			}
 		elsif ($lines[$i+1] !~ /<UNUSED>/ &&
 		       $lines[$i] =~ /data\s+for\s+partition\s+(\d+)/) {
-			# Start of a partition
-			$part = { 'number' => $1,
-				  'device' => $dev."s".$1,
-				  'index' => scalar(@{$disk->{'parts'}}) };
-			if ($part->{'device'} =~ /^\/dev\/([a-z]+)(\d+)s(\d+)/){
-				$part->{'desc'} = &text('select_part',
+			# Start of a slice
+			$slice = { 'number' => $1,
+				   'device' => $dev."s".$1,
+				   'index' => scalar(@{$disk->{'slices'}}) };
+			if ($slice->{'device'} =~ /^\/dev\/([a-z]+)(\d+)s(\d+)/){
+				$slice->{'desc'} = &text('select_slice',
 					uc($disk->{'type'}), "$2", "$3");
 				}
-			push(@{$disk->{'parts'}}, $part);
+			push(@{$disk->{'slices'}}, $slice);
 			}
-		elsif ($lines[$i] =~ /sysid\s+(\d+)\s+\(0x([0-9a-f]+)/ && $part) {
-			# Partition type
-			$part->{'type'} = $2;
+		elsif ($lines[$i] =~ /sysid\s+(\d+)\s+\(0x([0-9a-f]+)/ && $slice) {
+			# Slice type
+			$slice->{'type'} = $2;
 			}
-		elsif ($lines[$i] =~ /start\s+(\d+),\s+size\s+(\d+)\s+\((.*)\)/ && $part) {
-			# Partition start and size
-			$part->{'blocks'} = $2;
-			$part->{'size'} = &string_to_size("$3");
+		elsif ($lines[$i] =~ /start\s+(\d+),\s+size\s+(\d+)\s+\((.*)\)/ && $slice) {
+			# Slice start and size
+			$slice->{'startblock'} = $1;
+			$slice->{'blocks'} = $2;
+			$slice->{'size'} = &string_to_size("$3");
 			}
-		elsif ($lines[$i] =~ /beg:\s+cyl\s+(\d+)/ && $part) {
-			# Partition start
-			$part->{'start'} = $1;
+		elsif ($lines[$i] =~ /beg:\s+cyl\s+(\d+)/ && $slice) {
+			# Slice start
+			$slice->{'start'} = $1;
 			}
-		elsif ($lines[$i] =~ /end:\s+cyl\s+(\d+)/ && $part) {
-			# Partition end
-			$part->{'end'} = $1;
+		elsif ($lines[$i] =~ /end:\s+cyl\s+(\d+)/ && $slice) {
+			# Slice end
+			$slice->{'end'} = $1;
 			}
 		}
 
@@ -107,8 +109,23 @@ foreach my $dev (glob("/dev/ada[0-9]"),
 		}
 	close(DMESG);
 
-	# Get slices within partitions
-	# XXX
+	# Get partitions within slices
+	foreach my $slice (@{$disk->{'slices'}}) {
+		$slice->{'parts'} = [ ];
+		my $out = &backquote_command("disklabel ".$slice->{'device'});
+		my @lines = split(/\r?\n/, $out);
+		foreach my $l (@lines) {
+			if ($l =~ /^\s*([a-z]):\s+(\d+)\s+(\d+)\s+(\S+)/ &&
+			    $4 ne 'unused') {
+				my $part = { 'letter' => $1,
+					     'size' => $2,
+					     'offet' => $3,
+					     'type' => $4,
+					     'device' =>$slice->{'device'}.$1 };
+				push(@{$slice->{'parts'}}, $part);
+				}
+			}
+		}
 	}
 
 return @rv;
@@ -136,6 +153,58 @@ if ($pfx =~ /^t/i) {
 	return $n * 1024 * 1024 * 1024 * 1024;
 	}
 return undef;
+}
+
+# partition_select(...)
+# Returns HTML for a selector for a slice. The mode parameter means :
+# 1 = disks
+# 2 = disks and partitions
+# 3 = disk partitions
+sub partition_select
+{
+my ($name, $value, $mode, $found, $diskre) = @_;
+my @opts;
+my @dlist = &list_disks_partitions();
+foreach my $d (@dlist) {
+	my $dev = $d->{'device'};
+        next if ($diskre && $dev !~ /$diskre/);
+	if ($mode == 1 || $mode == 2) {
+		push(@opts, [ $dev, &partition_description($dev) ]);
+		}
+	foreach my $s (@{$d->{'slices'}}) {
+		foreach my $p (@{$s->{'parts'}}) {
+			push(@opts, [ $p->{'device'},
+				    &partition_description($p->{'device'}) ]);
+			}
+		}
+	}
+return &ui_select($name, $value, \@opts);
+}
+
+# partition_description(device)
+# Returns a human-readable description for a device name
+sub partition_description
+{
+my ($dev) = @_;
+if ($dev =~ /^\/dev\/([a-z]+)(\d+)$/) {
+	# A whole disk of some type
+	return &text('select_device',
+		$1 eq 'da' ? 'SCSI' : 'IDE', "$2");
+	}
+elsif ($dev =~ /^\/dev\/([a-z]+)(\d+)s(\d+)$/) {
+	# A slice within a disk
+	return &text('select_slice',
+		$1 eq 'da' ? 'SCSI' : 'IDE', "$2", "$3");
+	}
+elsif ($dev =~ /^\/dev\/([a-z]+)(\d+)s(\d+)([a-z])$/) {
+	# A partition within a slice
+	return &text('select_part',
+		$1 eq 'da' ? 'SCSI' : 'IDE', "$2", "$3", uc($4));
+	}
+else {
+	# No idea
+	return $dev;
+	}
 }
 
 1;
