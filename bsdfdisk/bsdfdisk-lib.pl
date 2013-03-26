@@ -61,7 +61,9 @@ foreach my $dev (glob("/dev/ada[0-9]"),
 			$disk->{'blksper'} = $4;
 			$disk->{'blocks'} = $disk->{'cylinders'} *
 					    $disk->{'blksper'};
-			$disk->{'size'} = $disk->{'blocks'} * 512;
+			$disk->{'blocksize'} = 512;	# Guessed?
+			$disk->{'size'} = $disk->{'blocks'} *
+					  $disk->{'blocksize'};
 			}
 		elsif ($lines[$i+1] !~ /<UNUSED>/ &&
 		       $lines[$i] =~ /data\s+for\s+partition\s+(\d+)/) {
@@ -122,7 +124,8 @@ foreach my $dev (glob("/dev/ada[0-9]"),
 					     'startblock' => $3,
 					     'type' => $4,
 					     'device' =>$slice->{'device'}.$1 };
-				# XXX how to get size?
+				$part->{'size'} = $part->{'blocks'} *
+						  $disk->{'blocksize'};
 				push(@{$slice->{'parts'}}, $part);
 				}
 			}

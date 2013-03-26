@@ -31,3 +31,26 @@ disk_add=Add a new slice.
 select_device=$1 device $2
 select_slice=$1 device $2 slice $3
 select_part=$1 device $2 slice $3 partition $4
+
+slice_title=Edit Slice
+slice_egone=Selected slice does not exist!
+slice_ssize=<b>Slice size:</b> $1
+slice_sstart=<b>Starting block:</b> $1
+slice_sblocks=<b>Number of blocks:</b> $1
+slice_stype=<b>Slice type:</b> $1
+slice_add=Add a new partition.
+slice_letter=Partition
+slice_type=Type
+slice_extent=Extent
+slice_size=Size
+slice_start=Start block
+slice_end=End block
+slice_use=Used by
+slice_none=This slice has no partitions yet.
+slice_delete=Delete Slice
+slice_deletedesc=Delete this slice and all partitions and filesystems within it. Any data on those filesystem will be almost certainly unrecoverable.
+
+dslice_title=Delete Slice
+dslice_rusure=Are you sure you want to delete the slice $1? Any partitions and filesystems within it will also be deleted.
+dslice_warn=Warning - this slice is currently used by : $1
+dslice_confirm=Delete Now

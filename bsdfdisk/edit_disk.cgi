@@ -1,5 +1,5 @@
 #!/usr/local/bin/perl
-# Show partitions on one disk
+# Show details of a disk, and slices on it
 
 use strict;
 use warnings;
@@ -26,7 +26,7 @@ push(@info, &text('disk_device', "<tt>$disk->{'device'}</tt>"));
 print &ui_links_row(\@info),"<p>\n";
 
 # Show partitions table
-my @links = ( "<a href='edit_part.cgi?device=".&urlize($disk->{'device'}).
+my @links = ( "<a href='slice_form.cgi?device=".&urlize($disk->{'device'}).
 	      "&new=1'>".$text{'disk_add'}."</a>" );
 if (@{$disk->{'slices'}}) {
 	print &ui_links_row(\@links);
@@ -55,7 +55,7 @@ if (@{$disk->{'slices'}}) {
 
 		# Add row for the slice
 		my $url = "edit_slice.cgi?device=".&urlize($disk->{'device'}).
-			  "&part=".$p->{'number'};
+			  "&slice=".$p->{'number'};
 		print &ui_columns_row([
 			"<a href='$url'>$p->{'number'}</a>",
 			"<a href='$url'>".&fdisk::tag_name($p->{'type'})."</a>",
