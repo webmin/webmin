@@ -1,12 +1,13 @@
 # freebsd-lib.pl
 # Mount table functions for freebsd
 
-$uname_release = `uname -r`;
+$uname_release = &backquote_command("uname -r");
 if (&has_command("mount_smbfs")) {
 	$smbfs_support = 1;
 	$nsmb_conf = "/etc/nsmb.conf";
 	}
 $ide_device_prefix = $uname_release > 9 ? "ada" : "ad";
+&foreign_require("bsdfdisk");
 
 # Return information about a filesystem, in the form:
 #  directory, device, type, options, fsck_order, mount_at_boot
@@ -410,34 +411,18 @@ else {
 		# Disk-based filesystem
 		$msg = &fstype_name($type);
 		}
-	local ($disk_dev, $ide_t, $ide_s, $ide_p, $scsi_t, $scsi_s, $scsi_p);
-	if ($loc =~ /^\/dev\/\Q$ide_device_prefix\E(\d)s(\d)([a-z]*)$/) {
-		$disk_dev = 0; $ide_t = $1; $ide_s = $2; $ide_p = $3;
-		}
-	elsif ($loc =~ /^\/dev\/da(\d)s(\d)([a-z]*)$/) {
-		$disk_dev = 1; $scsi_t = $1; $scsi_s = $2; $scsi_p = $3;
-		}
-	else { $disk_dev = 2; }
 
+	# Generate disk selection options
+	my @opts;
+	my $found;
+	my $sel = &bsdfdisk::partition_select(
+		"disk_select", $loc, 3, \$found);
+	push(@opts, [ 0, $text{'freebsd_select'}, $sel ]);
+	push(@opts, [ 1, $text{'freebsd_other'},
+		      &ui_textbox("dev_path", $found ? "" : $loc, 40).
+		      " ".&file_chooser_button("dev_path", 0) ]);
 	print &ui_table_row($msg,
-		&ui_radio_table("disk_dev", $disk_dev,
-		  [ [ 0, $text{'freebsd_ide'},
-		      $text{'freebsd_device'}." ".
-		        &ui_textbox("ide_t", $ide_t, 4)." ".
-		      $text{'freebsd_slice'}." ".
-		        &ui_textbox("ide_s", $ide_s, 4)." ".
-		      $text{'freebsd_part'}." ".
-		        &ui_textbox("ide_p", $ide_p, 4) ],
-		    [ 1, $text{'freebsd_scsi'},
-		      $text{'freebsd_device'}." ".
-		        &ui_textbox("scsi_t", $scsi_t, 4)." ".
-		      $text{'freebsd_slice'}." ".
-		        &ui_textbox("scsi_s", $scsi_s, 4)." ".
-		      $text{'freebsd_part'}." ".
-		        &ui_textbox("scsi_p", $scsi_p, 4) ],
-		    [ 2, $text{'freebsd_other'},
-		      &ui_textbox("dev_path", $disk_dev == 2 ? $loc : "", 40).
-		      " ".&file_chooser_button("dev_path", 0) ] ]));
+		&ui_radio_table("disk_dev", $found ? 0 : 1, \@opts));
 	}
 }
 
@@ -759,25 +744,13 @@ elsif ($_[0] eq "smbfs") {
 else {
 	# This is some kind of disk-based filesystem.. get the device name
 	if ($in{'disk_dev'} == 0) {
-		$in{'ide_t'} =~ /^\d+$/ ||
-			&error("'$in{ide_t}' is not a valid device number");
-		$in{'ide_s'} =~ /^\d+$/ ||
-			&error("'$in{ide_s}' is not a valid slice number");
-		$in{'ide_p'} =~ /^[a-z]*$/ ||
-			&error("'$in{ide_p}' is not a valid partition letter");
-		$dv = "/dev/$ide_device_prefix$in{ide_t}s$in{ide_s}$in{ide_p}";
-		}
-	elsif ($in{'disk_dev'} == 1) {
-		$in{'scsi_t'} =~ /^\d+$/ ||
-			&error("'$in{scsi_t}' is not a valid device number");
-		$in{'scsi_s'} =~ /^\d+$/ ||
-			&error("'$in{scsi_s}' is not a valid slice number");
-		$in{'scsi_p'} =~ /^[a-z]*$/ ||
-			&error("'$in{scsi_p}' is not a valid partition letter");
-		$dv = "/dev/da$in{scsi_t}s$in{scsi_s}$in{scsi_p}";
+		# From menu
+		$dv = $in{'disk_select'};
 		}
 	else {
+		# Manually entered
 		$dv = $in{'dev_path'};
+		$dv =~ /^\// || &error($text{'freebsd_edevpath'});
 		}
 
 	# If the device entered is a symlink, follow it
@@ -789,7 +762,7 @@ else {
 		}
 
 	# Check if the device actually exists and uses the right filesystem
-	(-r $dv) || &error("The device file '$dv' does not exist");
+	(-r $dv) || &error(&text('freebsd_edevfile', $dv));
 	return $dv;
 	}
 }
@@ -986,10 +959,10 @@ sub device_name
 {
 my ($dev) = @_;
 if ($dev =~ /^\/dev\/(ad|ada)(\d)s(\d)([a-z]*)$/) {
-	return &text('freebsd_idedev', "$2", "$3", "$4");
+	return &text('freebsd_idedev', "$2", "$3", uc($4));
 	}
 elsif ($dev =~ /^\/dev\/(da)(\d)s(\d)([a-z]*)$/) {
-	return &text('freebsd_scsidev', "$2", "$3", "$4");
+	return &text('freebsd_scsidev', "$2", "$3", uc($4));
 	}
 else {
 	return $dev;

@@ -4,8 +4,6 @@
 # XXX include in makedist.pl
 # XXX exclude from Solaris, RPM, Deb
 # XXX editing parititions and slices
-# XXX top-level is really called slice?
-# XXX disk cylinders don't match slice size
 
 use strict;
 use warnings;
@@ -17,8 +15,10 @@ use WebminCore;
 
 sub check_fdisk
 {
-if (!&has_command("fdisk")) {
-	return &text('index_ecmd', "<tt>fdisk</tt>");
+foreach my $cmd ("fdisk", "disklabel", "gpart") {
+	if (!&has_command($cmd)) {
+		return &text('index_ecmd', "<tt>$cmd</tt>");
+		}
 	}
 return undef;
 }
@@ -118,10 +118,11 @@ foreach my $dev (glob("/dev/ada[0-9]"),
 			if ($l =~ /^\s*([a-z]):\s+(\d+)\s+(\d+)\s+(\S+)/ &&
 			    $4 ne 'unused') {
 				my $part = { 'letter' => $1,
-					     'size' => $2,
-					     'offet' => $3,
+					     'blocks' => $2,
+					     'startblock' => $3,
 					     'type' => $4,
 					     'device' =>$slice->{'device'}.$1 };
+				# XXX how to get size?
 				push(@{$slice->{'parts'}}, $part);
 				}
 			}
@@ -155,7 +156,7 @@ if ($pfx =~ /^t/i) {
 return undef;
 }
 
-# partition_select(...)
+# partition_select(name, value, mode, &found, disk-regexp)
 # Returns HTML for a selector for a slice. The mode parameter means :
 # 1 = disks
 # 2 = disks and partitions
@@ -177,6 +178,9 @@ foreach my $d (@dlist) {
 				    &partition_description($p->{'device'}) ]);
 			}
 		}
+	}
+if ($found && &indexof($value, map { $_->[0] } @opts) >= 0) {
+	$$found = 1;
 	}
 return &ui_select($name, $value, \@opts);
 }
