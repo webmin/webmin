@@ -18,6 +18,14 @@ $slice || &error($text{'slice_egone'});
 
 if ($in{'confirm'}) {
 	# Delete it
+	print &text('dslice_deleting', $slice->{'desc'}),"<p>\n";
+	my $err = &delete_slice($disk, $slice);
+	if ($err) {
+		print &text('dslice_failed', $err),"<p>\n";
+		}
+	else {
+		print $text{'dslice_done'},"<p>\n";
+		}
 	}
 else {
 	# Ask first

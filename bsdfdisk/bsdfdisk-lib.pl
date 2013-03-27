@@ -1,9 +1,9 @@
 # Functions for FreeBSD disk management
 #
-# XXX call from mount module
 # XXX include in makedist.pl
 # XXX exclude from Solaris, RPM, Deb
 # XXX editing parititions and slices
+# XXX active slice
 
 use strict;
 use warnings;
@@ -212,6 +212,32 @@ else {
 	# No idea
 	return $dev;
 	}
+}
+
+# execute_fdisk_commands(&disk, &commands)
+# Run a series of commands on a disk via the fdisk config file
+sub execute_fdisk_commands
+{
+my ($disk, $cmds) = @_;
+my $temp = &transname();
+&open_tempfile(TEMP, ">$temp");
+foreach my $c (@$cmds) {
+	&print_tempfile(TEMP, $c."\n");
+	}
+&close_tempfile(TEMP);
+my $out = &backquote_logged("fdisk -f $temp $disk->{'device'} </dev/null 2>&1");
+my $ex = $?;
+&unlink_file($temp);
+return $ex ? $out : undef;
+}
+
+# delete_slice(&disk, &slice)
+# Delete one slice from a disk
+sub delete_slice
+{
+my ($disk, $slice) = @_;
+return &execute_fdisk_commands($disk,
+	[ "p $slice->{'number'} 0 0 0" ]);
 }
 
 1;

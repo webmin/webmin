@@ -54,3 +54,6 @@ dslice_title=Delete Slice
 dslice_rusure=Are you sure you want to delete the slice $1? Any partitions and filesystems within it will also be deleted.
 dslice_warn=Warning - this slice is currently used by : $1
 dslice_confirm=Delete Now
+dslice_deleting=Deleting slice $1 ..
+dslice_failed=.. deletion failed : $1
+dslice_done=.. done
