@@ -220,11 +220,12 @@ sub execute_fdisk_commands
 {
 my ($disk, $cmds) = @_;
 my $temp = &transname();
-&open_tempfile(TEMP, ">$temp");
+my $fh = "TEMP";
+&open_tempfile($fh, ">$temp");
 foreach my $c (@$cmds) {
-	&print_tempfile(TEMP, $c."\n");
+	&print_tempfile($fh, $c."\n");
 	}
-&close_tempfile(TEMP);
+&close_tempfile($fh);
 my $out = &backquote_logged("fdisk -f $temp $disk->{'device'} </dev/null 2>&1");
 my $ex = $?;
 &unlink_file($temp);
@@ -238,6 +239,19 @@ sub delete_slice
 my ($disk, $slice) = @_;
 return &execute_fdisk_commands($disk,
 	[ "p $slice->{'number'} 0 0 0" ]);
+}
+
+# create_slice(&disk, &slice)
+# Add a slice to a disk
+sub create_slice
+{
+my ($disk, $slice) = @_;
+my $type = hex($slice->{'type'});
+my $start = int(($slice->{'startblock'} * $disk->{'blocksize'}) / 1024);
+my $end = int((($slice->{'startblock'} + $slice->{'blocks'}) *
+	      $disk->{'blocksize'}) / 1024);
+return &execute_fdisk_commands($disk,
+	[ "p $slice->{'number'} $type ${start}K ${end}K" ]);
 }
 
 1;

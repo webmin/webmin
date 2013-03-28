@@ -15,11 +15,12 @@ $disk || &error($text{'disk_egone'});
 &ui_print_header($disk->{'desc'}, $text{'nslice_title'}, "");
 
 print &ui_form_start("create_slice.cgi", "post");
+print &ui_hidden("device", $in{'device'});
 print &ui_table_start($text{'nslice_header'}, undef, 2);
 
 # Slice number (first free)
 my %used = map { $_->{'number'}, $_ } @{$disk->{'slices'}};
-my $n = 0;
+my $n = 1;
 while($used{$n}) {
 	$n++;
 	}
@@ -31,12 +32,11 @@ print &ui_table_row($text{'nslice_diskblocks'},
 	$disk->{'blocks'});
 
 # Start and end blocks (defaults to last slice+1)
-my ($start, $end);
+my ($start, $end) = (0, $disk->{'blocks'});
 foreach my $s (sort { $a->{'startblock'} cmp $b->{'startblock'} }
 		    @{$disk->{'slices'}}) {
 	$start = $s->{'startblock'} + $s->{'blocks'} + 1;
 	}
-$end = $disk->{'blocks'} - 1;
 print &ui_table_row($text{'nslice_start'},
 	&ui_textbox("start", $start, 10));
 print &ui_table_row($text{'nslice_end'},
