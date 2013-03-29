@@ -44,7 +44,14 @@ else {
 
 if (!$err && $in{'makepart'}) {
 	# Also create a partition
-	# XXX
+	print &text('nslice_parting', $in{'number'}, $disk->{'desc'}),"<p>\n";
+	my $err = &initialize_slice($disk, $slice);
+	if ($err) {
+		print &text('nslice_pfailed', $err),"<p>\n";
+		}
+	else {
+		print &text('nslice_pdone'),"<p>\n";
+		}
 	}
 
 &ui_print_footer("edit_disk.cgi?device=$in{'device'}",

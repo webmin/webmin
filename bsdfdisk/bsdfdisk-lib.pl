@@ -4,6 +4,9 @@
 # XXX exclude from Solaris, RPM, Deb
 # XXX editing parititions and slices
 # XXX active slice
+# XXX change slice type
+# XXX slice start and end overlap?
+# XXX does this work on MacOS?
 
 use strict;
 use warnings;
@@ -15,7 +18,7 @@ use WebminCore;
 
 sub check_fdisk
 {
-foreach my $cmd ("fdisk", "disklabel", "gpart") {
+foreach my $cmd ("fdisk", "disklabel") {
 	if (!&has_command($cmd)) {
 		return &text('index_ecmd', "<tt>$cmd</tt>");
 		}
@@ -250,8 +253,36 @@ my $type = hex($slice->{'type'});
 my $start = int(($slice->{'startblock'} * $disk->{'blocksize'}) / 1024);
 my $end = int((($slice->{'startblock'} + $slice->{'blocks'}) *
 	      $disk->{'blocksize'}) / 1024);
-return &execute_fdisk_commands($disk,
+my $err = &execute_fdisk_commands($disk,
 	[ "p $slice->{'number'} $type ${start}K ${end}K" ]);
+if (!$err) {
+	$slice->{'device'} = $disk->{'device'}."s".$slice->{'number'};
+	}
+return $err;
+}
+
+# initialize_slice(&disk, &slice)
+# After a slice is created, put a default label on it
+sub initialize_slice
+{
+my ($disk, $slice) = @_;
+my $err = &backquote_logged("bsdlabel -w $slice->{'device'}");
+return $? ? $err : undef;
+}
+
+sub list_partition_types
+{
+return ( '4.2BSD', 'swap', 'unused', 'vinum' );
+}
+
+# create_partition(&disk, &slice, &part)
+# Create a new partition on some slice
+sub create_partition
+{
+my ($disk, $slice, $part) = @_;
+# XXX initialize with
+# XXX bsdlabel -w /dev/ada2s1
+# XXX if "no valid label found"
 }
 
 1;
