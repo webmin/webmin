@@ -22,6 +22,7 @@ if ($disk->{'model'}) {
         push(@info, &text('disk_model', $disk->{'model'}));
         }
 push(@info, &text('disk_cylinders', $disk->{'cylinders'}));
+push(@info, &text('disk_blocks', $disk->{'blocks'}));
 push(@info, &text('disk_device', "<tt>$disk->{'device'}</tt>"));
 print &ui_links_row(\@info),"<p>\n";
 

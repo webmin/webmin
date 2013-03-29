@@ -32,7 +32,7 @@ print &ui_table_row($text{'nslice_diskblocks'},
 	$disk->{'blocks'});
 
 # Start and end blocks (defaults to last slice+1)
-my ($start, $end) = (0, $disk->{'blocks'});
+my ($start, $end) = (63, $disk->{'blocks'});
 foreach my $s (sort { $a->{'startblock'} cmp $b->{'startblock'} }
 		    @{$disk->{'slices'}}) {
 	$start = $s->{'startblock'} + $s->{'blocks'} + 1;

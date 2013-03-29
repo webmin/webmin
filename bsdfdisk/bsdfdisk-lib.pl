@@ -6,7 +6,6 @@
 # XXX active slice
 # XXX change slice type
 # XXX slice start and end overlap?
-# XXX does this work on MacOS?
 
 use strict;
 use warnings;
@@ -280,9 +279,78 @@ return ( '4.2BSD', 'swap', 'unused', 'vinum' );
 sub create_partition
 {
 my ($disk, $slice, $part) = @_;
-# XXX initialize with
-# XXX bsdlabel -w /dev/ada2s1
-# XXX if "no valid label found"
+my $out = &backquote_command("bsdlabel $slice->{'device'}");
+if ($? && $out =~ /no\s+valid\s+label/) {
+	# No label at all yet .. initialize
+	my $err = &initialize_slice($disk, $slice);
+	return "Failed to create initial disk label : $err" if ($err);
+	}
+
+# Edit or add a line in the existing label
+my $wantline = "  ".$part->{'letter'}.": ".$part->{'blocks'}." ".
+	       $part->{'startblock'}." ".$part->{'type'};
+my @lines = split(/\r?\n/, $out);
+my $found = 0;
+for(my $i=0; $i<@lines; $i++) {
+	if ($lines[$i] =~ /^\s+(\S+):/ && $1 eq $part->{'letter'}) {
+		$lines[$i] = $wantline;
+		$found++;
+		last;
+		}
+	}
+if (!$found) {
+	push(@lines, $wantline);
+	}
+
+# Write to a temp file
+my $fh = "TEMP";
+my $temp = &transname();
+&open_tempfile($fh, ">$temp");
+foreach my $l (@lines) {
+	&print_tempfile($fh, $l."\n");
+	}
+&close_tempfile($fh);
+
+# Apply the new label
+$out = &backquote_logged("bsdlabel -R $slice->{'device'} $temp");
+my $ex = $?;
+&unlink_file($temp);
+if (!$ex) {
+	$part->{'device'} = $slice->{'device'}.$part->{'letter'};
+	}
+return $ex ? $out : undef;
+}
+
+# delete_partition(&disk, &slice, &part)
+# Delete a partition on some slice
+sub delete_partition
+{
+my ($disk, $slice, $part) = @_;
+
+# Fix up the line for the part being deleted
+my $out = &backquote_command("bsdlabel $slice->{'device'}");
+my @lines = split(/\r?\n/, $out);
+my $found = 0;
+for(my $i=0; $i<@lines; $i++) {
+	if ($lines[$i] =~ /^\s+(\S+):/ && $1 eq $part->{'letter'}) {
+		splice(@lines, $i, 1);
+		}
+	}
+
+# Write to a temp file
+my $fh = "TEMP";
+my $temp = &transname();
+&open_tempfile($fh, ">$temp");
+foreach my $l (@lines) {
+	&print_tempfile($fh, $l."\n");
+	}
+&close_tempfile($fh);
+
+# Apply the new label
+$out = &backquote_logged("bsdlabel -R $slice->{'device'} $temp");
+my $ex = $?;
+&unlink_file($temp);
+return $ex ? $out : undef;
 }
 
 1;
