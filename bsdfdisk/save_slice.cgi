@@ -1,0 +1,24 @@
+#!/usr/local/bin/perl
+# Change the type of a slice
+
+use strict;
+use warnings;
+require './bsdfdisk-lib.pl';
+our (%in, %text, $module_name);
+&ReadParse();
+&error_setup($text{'slice_err'});
+
+# Get the disk and slice
+my @disks = &list_disks_partitions();
+my ($disk) = grep { $_->{'device'} eq $in{'device'} } @disks;
+$disk || &error($text{'disk_egone'});
+my ($slice) = grep { $_->{'number'} eq $in{'slice'} } @{$disk->{'slices'}};
+$slice || &error($text{'slice_egone'});
+
+# Change the type
+my $oldslice = { %$slice };
+$slice->{'type'} = $in{'type'};
+my $err = &modify_slice($disk, $oldslice, $slice);
+&error($err) if ($err);
+
+&redirect("edit_disk.cgi?device=$in{'device'});
