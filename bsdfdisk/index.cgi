@@ -6,7 +6,8 @@ use warnings;
 require './bsdfdisk-lib.pl';
 our (%in, %text, %config, $module_name);
 
-&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0);
+&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
+		 &help_search_link("fdisk", "man"));
 
 my $err = &check_fdisk();
 if ($err) {

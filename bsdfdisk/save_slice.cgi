@@ -15,10 +15,14 @@ $disk || &error($text{'disk_egone'});
 my ($slice) = grep { $_->{'number'} eq $in{'slice'} } @{$disk->{'slices'}};
 $slice || &error($text{'slice_egone'});
 
-# Change the type
+# Apply changes
 my $oldslice = { %$slice };
 $slice->{'type'} = $in{'type'};
+if (!$slice->{'active'}) {
+	$slice->{'active'} = $in{'active'};
+	}
 my $err = &modify_slice($disk, $oldslice, $slice);
 &error($err) if ($err);
 
-&redirect("edit_disk.cgi?device=$in{'device'});
+&webmin_log("modify", "slice", $slice->{'device'}, $slice);
+&redirect("edit_disk.cgi?device=$in{'device'}");

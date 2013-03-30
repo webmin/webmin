@@ -27,6 +27,7 @@ if ($in{'confirm'}) {
 		}
 	else {
 		print $text{'dpart_done'},"<p>\n";
+		&webmin_log("delete", "part", $part->{'device'}, $part);
 		}
 	}
 else {

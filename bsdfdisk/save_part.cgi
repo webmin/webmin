@@ -29,4 +29,5 @@ $part->{'type'} = $in{'type'};
 my $err = &save_partition($disk, $slice, $part);
 &error($err) if ($err);
 
+&webmin_log("modify", "part", $part->{'device'}, $part);
 &redirect("edit_slice.cgi?device=$in{'device'}&slice=$in{'slice'}");

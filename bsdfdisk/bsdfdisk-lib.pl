@@ -2,11 +2,6 @@
 #
 # XXX include in makedist.pl
 # XXX exclude from Solaris, RPM, Deb
-# XXX editing parititions and slices
-# XXX active slice
-# XXX change slice type
-# XXX slice start and end overlap?
-# XXX logging
 
 use strict;
 use warnings;
@@ -69,7 +64,8 @@ foreach my $dev (glob("/dev/ada[0-9]"),
 			$disk->{'size'} = $disk->{'blocks'} *
 					  $disk->{'blocksize'};
 			}
-		elsif ($lines[$i+1] !~ /<UNUSED>/ &&
+		elsif ($i+1 < @lines &&
+		       $lines[$i+1] !~ /<UNUSED>/ &&
 		       $lines[$i] =~ /data\s+for\s+partition\s+(\d+)/) {
 			# Start of a slice
 			$slice = { 'number' => $1,
@@ -90,6 +86,7 @@ foreach my $dev (glob("/dev/ada[0-9]"),
 			$slice->{'startblock'} = $1;
 			$slice->{'blocks'} = $2;
 			$slice->{'size'} = &string_to_size("$3");
+			$slice->{'active'} = $lines[$i] =~ /\(active\)/ ? 1 : 0;
 			}
 		elsif ($lines[$i] =~ /beg:\s+cyl\s+(\d+)/ && $slice) {
 			# Slice start
@@ -121,8 +118,7 @@ foreach my $dev (glob("/dev/ada[0-9]"),
 		my $out = &backquote_command("disklabel ".$slice->{'device'});
 		my @lines = split(/\r?\n/, $out);
 		foreach my $l (@lines) {
-			if ($l =~ /^\s*([a-z]):\s+(\d+)\s+(\d+)\s+(\S+)/ &&
-			    $4 ne 'unused') {
+			if ($l =~ /^\s*([a-z]):\s+(\d+)\s+(\d+)\s+(\S+)/) {
 				my $part = { 'letter' => $1,
 					     'blocks' => $2,
 					     'startblock' => $3,
@@ -135,6 +131,8 @@ foreach my $dev (glob("/dev/ada[0-9]"),
 							$disk->{'number'},
 							$slice->{'number'},
 							uc($part->{'letter'}));
+				next if ($part->{'type'} eq 'unused' &&
+					 $part->{'startblock'} == 0);
 				push(@{$slice->{'parts'}}, $part);
 				}
 			}
@@ -256,15 +254,38 @@ sub create_slice
 {
 my ($disk, $slice) = @_;
 my $type = hex($slice->{'type'});
-my $start = int(($slice->{'startblock'} * $disk->{'blocksize'}) / 1024);
-my $end = int((($slice->{'startblock'} + $slice->{'blocks'}) *
-	      $disk->{'blocksize'}) / 1024);
+my $start = int($slice->{'startblock'} * $disk->{'blocksize'} / 1024);
+my $length = int($slice->{'blocks'} * $disk->{'blocksize'} / 1024);
 my $err = &execute_fdisk_commands($disk,
-	[ "p $slice->{'number'} $type ${start}K ${end}K" ]);
+	[ "p $slice->{'number'} $type ${start}K ${length}K" ]);
 if (!$err) {
 	$slice->{'device'} = $disk->{'device'}."s".$slice->{'number'};
 	}
 return $err;
+}
+
+# modify_slice(&disk, &old-slice, &slice)
+# Apply type or size changes to a slice
+sub modify_slice
+{
+my ($disk, $oldslice, $slice) = @_;
+if ($oldslice->{'type'} ne $slice->{'type'}) {
+	# Change the type
+	my $type = hex($slice->{'type'});
+	my $start = int(($slice->{'startblock'} * $disk->{'blocksize'}) / 1024);
+	my $end = int((($slice->{'startblock'} + $slice->{'blocks'}) *
+		      $disk->{'blocksize'}) / 1024);
+	my $err = &execute_fdisk_commands($disk,
+		[ "p $slice->{'number'} $type ${start}K ${end}K" ]);
+	return $err if ($err);
+	}
+if (!$oldslice->{'active'} && $slice->{'active'}) {
+	# Make active
+	my $err = &execute_fdisk_commands($disk,
+                [ "a $slice->{'number'}" ]);
+	return $err if ($err);
+	}
+return undef;
 }
 
 # initialize_slice(&disk, &slice)
@@ -376,6 +397,32 @@ my @cmd = "newfs";
 push(@cmd, "-m", $newfs->{'free'}) if ($newfs->{'free'} ne '');
 push(@cmd, "-t") if ($newfs->{'trim'});
 push(@cmd, "-L", quotemeta($newfs->{'label'})) if ($newfs->{'label'} ne '');
+push(@cmd, $part->{'device'});
+return join(" ", @cmd);
+}
+
+# check_filesystem(&disk, &slice, &part)
+# Checks the filesystem on some partition,  and returns undef on success or
+# the error output on failure.
+sub check_filesystem
+{
+my ($disk, $slice, $part) = @_;
+my $cmd = &get_check_filesystem_command($disk, $slice, $part);
+my $out = &backquote_logged("$cmd 2>&1 </dev/null");
+return $? ? $out : undef;
+}
+
+# get_check_filesystem_command(&disk, &slice, &part)
+# Returns the command to check a filesystem on some partition
+sub get_check_filesystem_command
+{
+my ($disk, $slice, $part) = @_;
+my @cmd = "fsck";
+my @st = &fdisk::device_status($part->{'device'});
+if (!@st) {
+	# Assume UFS type
+	push(@cmd, "-t", "ufs");
+	}
 push(@cmd, $part->{'device'});
 return join(" ", @cmd);
 }

@@ -33,6 +33,7 @@ $newfs->{'label'} = $in{'label_def'} ? undef : $in{'label'};
 print &text('newfs_creating', "<tt>$part->{'device'}</tt>"),"<br>\n";
 print "<pre>\n";
 my $cmd = &get_create_filesystem_command($disk, $slice, $part, $newfs);
+&additional_log('exec', undef, $cmd);
 my $fh = "CMD";
 &open_execute_command($fh, $cmd, 2);
 while(<$fh>) {
@@ -45,6 +46,7 @@ if ($?) {
 	}
 else {
 	print $text{'newfs_done'},"<p>\n";
+	&webmin_log("newfs", "part", $part->{'device'}, $part);
 	}
 
 &ui_print_footer(

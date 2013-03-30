@@ -57,13 +57,15 @@ if (@{$disk->{'slices'}}) {
 		# Add row for the slice
 		my $url = "edit_slice.cgi?device=".&urlize($disk->{'device'}).
 			  "&slice=".$p->{'number'};
+		my $nlink = "<a href='$url'>$p->{'number'}</a>";
+		$nlink = "<b>$nlink</b>" if ($p->{'active'});
 		print &ui_columns_row([
-			"<a href='$url'>$p->{'number'}</a>",
+			$nlink,
 			"<a href='$url'>".&fdisk::tag_name($p->{'type'})."</a>",
 			$ext,
 			&nice_size($p->{'size'}),
 			$p->{'startblock'},
-			$p->{'startblock'} + $p->{'blocks'},
+			$p->{'startblock'} + $p->{'blocks'} - 1,
 			scalar(@{$p->{'parts'}}),
 			]);
 		}
@@ -73,5 +75,18 @@ else {
 	print "<b>$text{'disk_none'}</b><p>\n";
 	}
 print &ui_links_row(\@links);
+
+print &ui_hr();
+print &ui_buttons_start();
+
+if (&foreign_installed("smart-status")) {
+	print &ui_buttons_row(
+		"../smart-status/index.cgi",
+		$text{'disk_smart'},
+		$text{'disk_smartdesc'},
+		&ui_hidden("drive", $disk->{'device'}.":"));
+	}
+
+print &ui_buttons_end();
 
 &ui_print_footer("", $text{'index_return'});

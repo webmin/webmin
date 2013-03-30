@@ -54,6 +54,10 @@ if (!$err && $in{'makepart'}) {
 		}
 	}
 
+if (!$err) {
+	&webmin_log("create", "slice", $slice->{'device'}, $slice);
+	}
+
 &ui_print_footer("edit_disk.cgi?device=$in{'device'}",
 		 $text{'disk_return'});
 

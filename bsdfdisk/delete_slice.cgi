@@ -25,6 +25,7 @@ if ($in{'confirm'}) {
 		}
 	else {
 		print $text{'dslice_done'},"<p>\n";
+		&webmin_log("delete", "slice", $slice->{'device'}, $slice);
 		}
 	}
 else {

@@ -43,6 +43,7 @@ if ($err) {
 	}
 else {
 	print &text('npart_done'),"<p>\n";
+	&webmin_log("create", "part", $part->{'device'}, $part);
 	}
 
 &ui_print_footer("edit_slice.cgi?device=$in{'device'}&slice=$in{'slice'}",

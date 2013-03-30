@@ -45,9 +45,9 @@ print &ui_table_row($text{'nslice_end'},
 # Slice type
 print &ui_table_row($text{'nslice_type'},
 	&ui_select("type", 'a5',
-	   [ map { [ $_, &fdisk::tag_name($_) ] }
-		   (sort { &fdisk::tag_name($a) cmp &fdisk::tag_name($b) }
-			 &fdisk::list_tags()) ]));
+	   [ sort { $a->[1] cmp $b->[1] }
+		  map { [ $_, &fdisk::tag_name($_) ] }
+		      &fdisk::list_tags() ]));
 
 # Also create partition?
 print &ui_table_row($text{'nslice_makepart'},
