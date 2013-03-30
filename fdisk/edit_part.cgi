@@ -259,8 +259,9 @@ if (!$in{'new'} && !$pinfo->{'extended'}) {
 		if ($types[0] eq "swap") {
 			# Swap partition
 			print &ui_buttons_row("../mount/edit_mount.cgi",
-				$text{'edit_newmount2'}, $text{'edit_mountmsg2'},
-				&ui_hidden("type", $types[0]));
+				$text{'edit_newmount2'},$text{'edit_mountmsg2'},
+				&ui_hidden("type", $types[0]).
+				&ui_hidden("newdev", $dev));
 			}
 		else {
 			# For some filesystem
@@ -274,7 +275,8 @@ if (!$in{'new'} && !$pinfo->{'extended'}) {
 				}
 			print &ui_buttons_row("../mount/edit_mount.cgi",
 				$text{'edit_newmount'}, $text{'edit_mountmsg'},
-				undef, $dirsel);
+				&ui_hidden("newdev", $dev),
+				$dirsel);
 			}
 		}
 

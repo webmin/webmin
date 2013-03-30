@@ -1170,6 +1170,10 @@ my @stat = @_;
 my $stat = "";
 my $statdesc = $stat[0] =~ /^swap/ ? "<i>$text{'disk_vm'}</i>"
 				   : "<tt>$stat[0]</tt>";
+my $ret = $main::initial_module_name;
+if ($ret !~ /fdisk$/) {
+	$ret = $module_name;
+	}
 if ($stat[1] eq 'raid') {
 	$stat = $statdesc;
 	}
@@ -1193,12 +1197,12 @@ elsif ($stat[0] && !&foreign_available("mount")) {
 	}
 elsif ($stat[0] && $stat[3] == -1) {
 	$stat = "<a href='../mount/edit_mount.cgi?".
-		"index=$stat[4]&temp=1&return=/$module_name/'>".
+		"index=$stat[4]&temp=1&return=/$ret/'>".
 		"$statdesc</a>";
 	}
 elsif ($stat[0]) {
 	$stat = "<a href='../mount/edit_mount.cgi?".
-		"index=$stat[3]&return=/$module_name/'>".
+		"index=$stat[3]&return=/$ret/'>".
 		"$statdesc</a>";
 	}
 return $stat;
