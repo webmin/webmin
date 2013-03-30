@@ -91,7 +91,7 @@ rm -f mount/freebsd-mounts*
 rm -f mount/openbsd-mounts*
 rm -f mount/macos-mounts*
 rm -f webmin-gentoo-init
-rm -rf format bsdexports hpuxexports sgiexports zones rbac
+rm -rf format bsdexports hpuxexports sgiexports zones rbac bsdfdisk
 rm -rf acl/Authen-SolarisRBAC-0.1*
 chmod -R og-w .
 

@@ -1,7 +1,4 @@
 # Functions for FreeBSD disk management
-#
-# XXX include in makedist.pl
-# XXX exclude from Solaris, RPM, Deb
 
 use strict;
 use warnings;
