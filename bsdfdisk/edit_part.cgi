@@ -19,6 +19,16 @@ $part || &error($text{'part_egone'});
 &ui_print_header($part->{'desc'}, $text{'part_title'}, "");
 
 # Show current details
+my @st = &fdisk::device_status($part->{'device'});
+my $use = &fdisk::device_status_link(@st);
+my $canedit = !@st || !$st[2];
+my $hiddens = &ui_hidden("device", $in{'device'})."\n".
+	      &ui_hidden("slice", $in{'slice'})."\n".
+	      &ui_hidden("part", $in{'part'})."\n";
+if ($canedit) {
+	print &ui_form_start("save_part.cgi", "post");
+	print $hiddens;
+	}
 print &ui_table_start($text{'part_header'}, undef, 2);
 
 print &ui_table_row($text{'part_device'},
@@ -27,8 +37,15 @@ print &ui_table_row($text{'part_device'},
 print &ui_table_row($text{'part_size'},
 	&nice_size($part->{'size'}));
 
-print &ui_table_row($text{'part_type'},
-	$part->{'type'});
+if ($canedit) {
+	print &ui_table_row($text{'part_type'},
+		&ui_select("type", $part->{'type'},
+			   [ &list_partition_types() ], 1, 0, 1));
+	}
+else {
+	print &ui_table_row($text{'part_type'},
+		$part->{'type'});
+	}
 
 print &ui_table_row($text{'part_start'},
 	$part->{'startblock'});
@@ -36,18 +53,16 @@ print &ui_table_row($text{'part_start'},
 print &ui_table_row($text{'part_end'},
 	$part->{'startblock'} + $part->{'blocks'});
 
-my @st = &fdisk::device_status($part->{'device'});
-my $use = &fdisk::device_status_link(@st);
 print &ui_table_row($text{'part_use'},
 	@st ? $use : $text{'part_nouse'});
 
 print &ui_table_end();
+if ($canedit) {
+	print &ui_form_end([ [ undef, $text{'save'} ] ]);
+	}
 
 # Show newfs and mount buttons
-if (!@st || !$st[2]) {
-	my $hiddens = &ui_hidden("device", $in{'device'}).
-		      &ui_hidden("slice", $in{'slice'}).
-		      &ui_hidden("part", $in{'part'});
+if ($canedit) {
 	print &ui_hr();
 
 	print &ui_buttons_start();

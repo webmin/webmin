@@ -6,6 +6,7 @@
 # XXX active slice
 # XXX change slice type
 # XXX slice start and end overlap?
+# XXX logging
 
 use strict;
 use warnings;
@@ -44,6 +45,7 @@ foreach my $dev (glob("/dev/ada[0-9]"),
 		$disk->{'short'} = $1;
 		}
 	if ($dev =~ /^\/dev\/([a-z]+)(\d+)/) {
+		$disk->{'number'} = $2;
 		$disk->{'desc'} = &text('select_device',
 					uc($disk->{'type'}), "$2");
 		}
@@ -128,6 +130,11 @@ foreach my $dev (glob("/dev/ada[0-9]"),
 					     'device' =>$slice->{'device'}.$1 };
 				$part->{'size'} = $part->{'blocks'} *
 						  $disk->{'blocksize'};
+				$part->{'desc'} = &text('select_part',
+							uc($disk->{'type'}),
+							$disk->{'number'},
+							$slice->{'number'},
+							uc($part->{'letter'}));
 				push(@{$slice->{'parts'}}, $part);
 				}
 			}
@@ -274,9 +281,9 @@ sub list_partition_types
 return ( '4.2BSD', 'swap', 'unused', 'vinum' );
 }
 
-# create_partition(&disk, &slice, &part)
-# Create a new partition on some slice
-sub create_partition
+# save_partition(&disk, &slice, &part)
+# Create or update a partition on some slice
+sub save_partition
 {
 my ($disk, $slice, $part) = @_;
 my $out = &backquote_command("bsdlabel $slice->{'device'}");
@@ -301,24 +308,11 @@ for(my $i=0; $i<@lines; $i++) {
 if (!$found) {
 	push(@lines, $wantline);
 	}
-
-# Write to a temp file
-my $fh = "TEMP";
-my $temp = &transname();
-&open_tempfile($fh, ">$temp");
-foreach my $l (@lines) {
-	&print_tempfile($fh, $l."\n");
-	}
-&close_tempfile($fh);
-
-# Apply the new label
-$out = &backquote_logged("bsdlabel -R $slice->{'device'} $temp");
-my $ex = $?;
-&unlink_file($temp);
-if (!$ex) {
+my $err = &save_partition_lines($slice, \@lines);
+if (!$err && !$part->{'device'}) {
 	$part->{'device'} = $slice->{'device'}.$part->{'letter'};
 	}
-return $ex ? $out : undef;
+return $err;
 }
 
 # delete_partition(&disk, &slice, &part)
@@ -336,21 +330,54 @@ for(my $i=0; $i<@lines; $i++) {
 		splice(@lines, $i, 1);
 		}
 	}
+return &save_partition_lines($slice, \@lines);
+}
+
+# save_partition_lines(&slice, &lines)
+# Feed the given lines to the bsdlabel command to update a slice's partition
+# list. Returns undef on success or an error message on failure.
+sub save_partition_lines
+{
+my ($slice, $lines) = @_;
 
 # Write to a temp file
 my $fh = "TEMP";
 my $temp = &transname();
 &open_tempfile($fh, ">$temp");
-foreach my $l (@lines) {
+foreach my $l (@$lines) {
 	&print_tempfile($fh, $l."\n");
 	}
 &close_tempfile($fh);
 
 # Apply the new label
-$out = &backquote_logged("bsdlabel -R $slice->{'device'} $temp");
+my $out = &backquote_logged("bsdlabel -R $slice->{'device'} $temp");
 my $ex = $?;
 &unlink_file($temp);
 return $ex ? $out : undef;
+}
+
+# create_filesystem(&disk, &slice, &part, &fs-details)
+# Creates a new filesystem, and returns undef on success or the error output
+# on failure.
+sub create_filesystem
+{
+my ($disk, $slice, $part, $newfs) = @_;
+my $cmd = &get_create_filesystem_command($disk, $slice, $part, $newfs);
+my $out = &backquote_logged("$cmd 2>&1 </dev/null");
+return $? ? $out : undef;
+}
+
+# get_create_filesystem_command(&disk, &slice, &part, &fs-details)
+# Returns the command to create a new filesystem on some partition
+sub get_create_filesystem_command
+{
+my ($disk, $slice, $part, $newfs) = @_;
+my @cmd = "newfs";
+push(@cmd, "-m", $newfs->{'free'}) if ($newfs->{'free'} ne '');
+push(@cmd, "-t") if ($newfs->{'trim'});
+push(@cmd, "-L", quotemeta($newfs->{'label'})) if ($newfs->{'label'} ne '');
+push(@cmd, $part->{'device'});
+return join(" ", @cmd);
 }
 
 1;

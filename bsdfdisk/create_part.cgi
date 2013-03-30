@@ -37,7 +37,7 @@ $part->{'type'} = $in{'type'};
 &ui_print_header($slice->{'desc'}, $text{'npart_title'}, "");
 
 print &text('npart_creating', $in{'letter'}, $slice->{'desc'}),"<p>\n";
-my $err = &create_partition($disk, $slice, $part);
+my $err = &save_partition($disk, $slice, $part);
 if ($err) {
 	print &text('npart_failed', $err),"<p>\n";
 	}

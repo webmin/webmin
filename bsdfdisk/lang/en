@@ -26,7 +26,7 @@ disk_model=<b>Make and model:</b> $1
 disk_cylinders=<b>Cylinders:</b> $1
 disk_blocks=<b>Blocks:</b> $1
 disk_device=<b>Device file:</b> $1
-disk_return=list of slices
+disk_return=disk details and list of slices
 disk_add=Create a new slice.
 
 select_device=$1 device $2
@@ -50,7 +50,7 @@ slice_use=Used by
 slice_none=This slice has no partitions yet.
 slice_delete=Delete Slice
 slice_deletedesc=Delete this slice and all partitions and filesystems within it. Any data on those filesystem will be almost certainly unrecoverable.
-slice_return=list of partitions
+slice_return=slice details and list of partitions
 
 dslice_title=Delete Slice
 dslice_rusure=Are you sure you want to delete the slice $1? Any partitions and filesystems within it will also be deleted.
@@ -96,6 +96,7 @@ npart_failed=.. partition creation failed : $1
 npart_done=.. partition added
 
 part_title=Edit Partition
+part_egone=Partition no longer exists!
 part_header=Partition details
 part_device=Device file
 part_size=Partition size
@@ -110,3 +111,29 @@ part_fsck=Check Filesystem
 part_fsckdesc=Click this button to check the UFS filesystem on this partition, and repair any errors found.
 part_delete=Delete Partition
 part_deletedesc=Click this button to remove this partition from the slice. Any data on the partition will be lost forever.
+part_return=partition details
+part_err=Failed to save partition
+part_esave=Currently in use by $1
+
+dpart_title=Delete Partition
+dpart_rusure=Are you sure you want to delete the partition $1? Any filesystems within it will also be deleted.
+dpart_warn=Warning - this partition is currently used by $1
+dpart_confirm=Delete Now
+dpart_deleting=Deleting partition $1 ..
+dpart_failed=.. deletion failed : $1
+dpart_done=.. done
+
+newfs_title=Create Filesystem
+newfs_header=New filesystem details
+newfs_free=Space to reserve for root
+newfs_deffree=Default (8%)
+newfs_trim=Enable TRIM mode for SSDs
+newfs_label=Filesystem label
+newfs_none=None
+newfs_create=Create Now
+newfs_err=Failed to create filesystem
+newfs_efree=Space to reserve for root must be a percentage
+newfs_elabel=Missing or invalid label
+newfs_creating=Creating filesystem on $1 ..
+newfs_failed=.. creation failed!
+newfs_done=.. created successfully
