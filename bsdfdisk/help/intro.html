@@ -1,0 +1,28 @@
+<header>Partitions on Local Disks</header>
+
+This module allows you to create slices and partitions on disks attached to
+a FreeBSD system. There are three levels of objects that have to be taken
+managed on a FreeBSD system, compared to only two on Linux :<p>
+
+<dl>
+<dt><b>Disks</b>
+<dd>A disk is a physical drive attached to the system, either internally or via
+    an external bus like USB. Disks can be either SCSI or IDE. <p>
+
+<dt><b>Slices</b>
+<dd>A slice is part of a disk whose extents are stored in the disk's partition
+    table. On a Linux or Windows system these are called "Partitions". <p>
+
+<dt><b>Partition</b>
+<dd>A slice can contain up to four partitions, each of which can contain either
+    a filesystem or be used for virtual memory. <p>
+</dl>
+
+After adding a new disk to a system, you will need to first add a slice
+to it (or change the existing slice type to BSD/386), and then add a partition
+of type 4.2BSD within that slice. <p>
+
+The sizes and ranges of disks, slices and partitions are all measured in blocks,
+which are typically 512 bytes in size. <p>
+
+<footer>

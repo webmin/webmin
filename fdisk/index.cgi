@@ -62,7 +62,7 @@ if (@disks) {
 		if (&supports_smart($d)) {
 			# Display link to smart module
 			push(@links, "<a href='../smart-status/index.cgi?".
-			     "drive=$d->{'device'}'>$text{'index_dsmart'}</a>");
+			    "drive=$d->{'device'}:'>$text{'index_dsmart'}</a>");
 			}
 		if ($ed) {
 			push(@links, "<a href='blink.cgi?".
