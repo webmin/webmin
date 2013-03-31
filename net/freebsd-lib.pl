@@ -704,5 +704,38 @@ local ($iface) = @_;
 return $gconfig{'os_version'} >= 8;
 }
 
+# list_routes()
+# Returns a list of active routes
+sub list_routes
+{
+local @rv;
+&open_execute_command(ROUTES, "netstat -rn", 1, 1);
+while(<ROUTES>) {
+	s/\s+$//;
+	if (/^([0-9\.]+|default)(\/\d+)?\s+([0-9\.]+|link\S+)\s+\S+\s+\S+\s+\S+\s+(\S+)/) {
+		my $r = { 'dest' => $1,
+			  'gateway' => $3,
+			  'netmask' => $2,
+			  'iface' => $4 };
+		if ($r->{'gateway'} =~ /^link/) {
+			$r->{'gateway'} = '0.0.0.0';
+			}
+		if ($r->{'dest'} eq 'default' &&
+		    &check_ip6address($r->{'gateway'})) {
+			$r->{'dest'} = '::';
+			}
+		elsif ($r->{'dest'} eq 'default') {
+			$r->{'dest'} = '0.0.0.0';
+			}
+		if ($r->{'netmask'} =~ /^\/(\d+)$/) {
+			$r->{'netmask'} = &prefix_to_mask($1);
+			}
+		push(@rv, $r);
+		}
+	}
+close(ROUTES);
+return @rv;
+}
+
 1;
 
