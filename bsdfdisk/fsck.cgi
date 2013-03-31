@@ -1,12 +1,12 @@
 #!/usr/local/bin/perl
-# Create a filesystem on a partition
+# Check the filesystem on a partition
 
 use strict;
 use warnings;
 require './bsdfdisk-lib.pl';
 our (%in, %text, $module_name);
 &ReadParse();
-&error_setup($text{'newfs_err'});
+&error_setup($text{'fsck_err'});
 
 # Get the disk and slice
 my @disks = &list_disks_partitions();
@@ -17,22 +17,12 @@ $slice || &error($text{'slice_egone'});
 my ($part) = grep { $_->{'letter'} eq $in{'part'} } @{$slice->{'parts'}};
 $part || &error($text{'part_egone'});
 
-# Validate inputs
-my $newfs = { };
-$in{'free_def'} || $in{'free'} =~ /^\d+$/ && $in{'free'} <= 100 ||
-	&error($text{'newfs_efree'});
-$newfs->{'free'} = $in{'free_def'} ? undef : $in{'free'};
-$newfs->{'trim'} = $in{'trim'};
-$in{'label_def'} || $in{'label'} =~ /^\S+$/ ||
-	&error($text{'newfs_elabel'});
-$newfs->{'label'} = $in{'label_def'} ? undef : $in{'label'};
-
-&ui_print_unbuffered_header($part->{'desc'}, $text{'newfs_title'}, "");
+&ui_print_unbuffered_header($part->{'desc'}, $text{'fsck_title'}, "");
 
 # Do the creation
-print &text('newfs_creating', "<tt>$part->{'device'}</tt>"),"<br>\n";
+print &text('fsck_checking', "<tt>$part->{'device'}</tt>"),"<br>\n";
 print "<pre>\n";
-my $cmd = &get_create_filesystem_command($disk, $slice, $part, $newfs);
+my $cmd = &get_check_filesystem_command($disk, $slice, $part);
 &additional_log('exec', undef, $cmd);
 my $fh = "CMD";
 &open_execute_command($fh, $cmd, 2);
@@ -42,12 +32,12 @@ while(<$fh>) {
 close($fh);
 print "</pre>";
 if ($?) {
-	print $text{'newfs_failed'},"<p>\n";
+	print $text{'fsck_failed'},"<p>\n";
 	}
 else {
-	print $text{'newfs_done'},"<p>\n";
-	&webmin_log("newfs", "part", $part->{'device'}, $part);
+	print $text{'fsck_done'},"<p>\n";
 	}
+&webmin_log("fsck", "part", $part->{'device'}, $part);
 
 &ui_print_footer(
     "edit_part.cgi?device=$in{'device'}&slice=$in{'slice'}&part=$in{'part'}",
