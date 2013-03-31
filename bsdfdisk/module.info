@@ -4,3 +4,4 @@ category=hardware
 depends=mount fdisk
 desc_de=Partitionen auf lokalen Festplatten
 longdesc=Create and edit paritions on local SCSI and IDE disks on FreeBSD.
+longdesc_de=Erstellt und bearbeitet Partitionen auf lokalen SCSI- und IDE-Festplatten auf FreeBSD.
