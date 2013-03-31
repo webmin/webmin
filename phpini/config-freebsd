@@ -1,1 +1,2 @@
 php_ini=/usr/local/etc/php.ini
+alt_php_ini=/usr/local/etc/php.ini-production

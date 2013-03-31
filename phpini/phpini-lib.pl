@@ -151,9 +151,16 @@ return &indexof($file, map { $_->[0] } &list_php_configs()) >= 0 ||
 # Returns the first php.ini that exists
 sub get_default_php_ini
 {
-foreach my $ai (split(/\t+/, $config{'php_ini'})) {
+local @inis = split(/\t+/, $config{'php_ini'});
+foreach my $ai (@inis) {
 	local ($f, $d) = split(/=/, $ai);
 	return $f if (-r $f);
+	}
+if (-r $config{'alt_php_ini'} && @inis) {
+	# Fall back to default file
+	local ($f) = split(/=/, $inis[0]);
+	&copy_source_dest($config{'alt_php_ini'}, $f);
+	return $f;
 	}
 return undef;
 }
@@ -163,6 +170,7 @@ return undef;
 sub list_php_configs
 {
 local @rv;
+&get_default_php_ini();		# Force copy of sample ini file
 if ($access{'global'}) {
 	foreach my $ai (split(/\t+/, $config{'php_ini'})) {
 		local ($f, $d) = split(/=/, $ai);
