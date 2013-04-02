@@ -4,3 +4,5 @@ os_support=*-linux freebsd
 depends=fdisk lvm raid init
 longdesc=Share disk devices across the network using the iSCSI protocol with the netbsd-iscsi package.
 desc_de=iSCSI-Server 
+desc_no=iSCSI tjener
+longdesc_no=Del disk-enheter over nettverket ved hjelp av iSCSI protokollen med netbsd-iscsi pakken.

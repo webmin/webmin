@@ -1,0 +1,6 @@
+targets_file=Fil med iSCSI tjener m&#229;l,0
+auths_file=iSCSI tjener autentiseringsfil,0
+iscsi_server=Full sti til iSCSI tjener,0
+pid_file=Full sti til PID fil,0
+init_name=Navn p&#229; oppstartsscript,0
+opts_file=Innstillinger for fillisting kommandolinje,0
