@@ -31,11 +31,14 @@ if ($in{'confirm'}) {
 else {
 	# Ask first
 	my @warn;
+	my @st = &fdisk::device_status($slice->{'device'});
+	if (@st) {
+		push(@warn, &fdisk::device_status_link(@st));
+		}
 	foreach my $p (@{$slice->{'parts'}}) {
 		my @st = &fdisk::device_status($p->{'device'});
 		if (@st) {
-			my $use = &fdisk::device_status_link(@st);
-			push(@warn, $use);
+			push(@warn, &fdisk::device_status_link(@st));
 			}
 		}
 	print &ui_confirmation_form(

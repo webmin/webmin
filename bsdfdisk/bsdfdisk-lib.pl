@@ -7,6 +7,7 @@ use WebminCore;
 &init_config();
 &foreign_require("mount");
 &foreign_require("fdisk");
+our (%text);
 
 sub check_fdisk
 {
@@ -166,8 +167,8 @@ return undef;
 # partition_select(name, value, mode, &found, disk-regexp)
 # Returns HTML for a selector for a slice. The mode parameter means :
 # 1 = disks
-# 2 = disks and partitions
-# 3 = disk partitions
+# 2 = disks, slices and partitions
+# 3 = slices and partitions
 sub partition_select
 {
 my ($name, $value, $mode, $found, $diskre) = @_;
@@ -179,10 +180,14 @@ foreach my $d (@dlist) {
 	if ($mode == 1 || $mode == 2) {
 		push(@opts, [ $dev, &partition_description($dev) ]);
 		}
-	foreach my $s (@{$d->{'slices'}}) {
-		foreach my $p (@{$s->{'parts'}}) {
-			push(@opts, [ $p->{'device'},
+	if ($mode >= 2) {
+		foreach my $s (@{$d->{'slices'}}) {
+			push(@opts, [ $s->{'device'},
+			    &partition_description($s->{'device'}) ]);
+			foreach my $p (@{$s->{'parts'}}) {
+				push(@opts, [ $p->{'device'},
 				    &partition_description($p->{'device'}) ]);
+				}
 			}
 		}
 	}
@@ -394,7 +399,7 @@ my @cmd = "newfs";
 push(@cmd, "-m", $newfs->{'free'}) if ($newfs->{'free'} ne '');
 push(@cmd, "-t") if ($newfs->{'trim'});
 push(@cmd, "-L", quotemeta($newfs->{'label'})) if ($newfs->{'label'} ne '');
-push(@cmd, $part->{'device'});
+push(@cmd, $part ? $part->{'device'} : $slice->{'device'});
 return join(" ", @cmd);
 }
 
@@ -414,14 +419,47 @@ return $? ? $out : undef;
 sub get_check_filesystem_command
 {
 my ($disk, $slice, $part) = @_;
+my $dev = $part ? $part->{'device'} : $slice->{'device'};
 my @cmd = "fsck";
-my @st = &fdisk::device_status($part->{'device'});
+my @st = &fdisk::device_status($dev);
 if (!@st) {
 	# Assume UFS type
 	push(@cmd, "-t", "ufs");
 	}
-push(@cmd, $part->{'device'});
+push(@cmd, $dev);
 return join(" ", @cmd);
+}
+
+# show_filesystem_buttons(hiddens, &status, &part-or-slice)
+# Show buttons to create a filesystem on a partition or slice
+sub show_filesystem_buttons
+{
+my ($hiddens, $st, $object) = @_;
+print &ui_buttons_row(
+	"newfs_form.cgi", $text{'part_newfs'}, $text{'part_newfsdesc'},
+	$hiddens);
+
+if (!@$st || $st->[1] ne 'swap') {
+	print &ui_buttons_row(
+		"fsck.cgi", $text{'part_fsck'}, $text{'part_fsckdesc'},
+		$hiddens);
+	}
+
+if (!@$st) {
+	if ($object->{'type'} eq 'swap' || $object->{'type'} eq '82') {
+		print &ui_buttons_row("../mount/edit_mount.cgi",
+		    $text{'part_newmount2'}, $text{'part_mountmsg2'},
+		    &ui_hidden("newdev", $object->{'device'}).
+		    &ui_hidden("type", "swap"));
+		}
+	else {
+		print &ui_buttons_row("../mount/edit_mount.cgi",
+		    $text{'part_newmount'}, $text{'part_mountmsg'},
+		    &ui_hidden("newdev", $object->{'device'}).
+		    &ui_hidden("type", "ufs"),
+		    &ui_textbox("newdir", undef, 20));
+		}
+	}
 }
 
 1;

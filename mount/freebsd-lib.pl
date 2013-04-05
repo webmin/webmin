@@ -958,15 +958,7 @@ return "255.255.255.255";
 sub device_name
 {
 my ($dev) = @_;
-if ($dev =~ /^\/dev\/(ad|ada)(\d)s(\d)([a-z]*)$/) {
-	return &text('freebsd_idedev', "$2", "$3", uc($4));
-	}
-elsif ($dev =~ /^\/dev\/(da)(\d)s(\d)([a-z]*)$/) {
-	return &text('freebsd_scsidev', "$2", "$3", uc($4));
-	}
-else {
-	return $dev;
-	}
+return &bsdfdisk::partition_description($dev);
 }
 
 sub files_to_lock

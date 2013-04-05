@@ -14,8 +14,16 @@ my ($disk) = grep { $_->{'device'} eq $in{'device'} } @disks;
 $disk || &error($text{'disk_egone'});
 my ($slice) = grep { $_->{'number'} eq $in{'slice'} } @{$disk->{'slices'}};
 $slice || &error($text{'slice_egone'});
-my ($part) = grep { $_->{'letter'} eq $in{'part'} } @{$slice->{'parts'}};
-$part || &error($text{'part_egone'});
+my ($object, $part);
+if ($in{'part'} ne '') {
+	($part) = grep { $_->{'letter'} eq $in{'part'} }
+		       @{$slice->{'parts'}};
+	$part || &error($text{'part_egone'});
+	$object = $part;
+	}
+else {
+	$object = $slice;
+	}
 
 # Validate inputs
 my $newfs = { };
@@ -27,10 +35,10 @@ $in{'label_def'} || $in{'label'} =~ /^\S+$/ ||
 	&error($text{'newfs_elabel'});
 $newfs->{'label'} = $in{'label_def'} ? undef : $in{'label'};
 
-&ui_print_unbuffered_header($part->{'desc'}, $text{'newfs_title'}, "");
+&ui_print_unbuffered_header($object->{'desc'}, $text{'newfs_title'}, "");
 
 # Do the creation
-print &text('newfs_creating', "<tt>$part->{'device'}</tt>"),"<br>\n";
+print &text('newfs_creating', "<tt>$object->{'device'}</tt>"),"<br>\n";
 print "<pre>\n";
 my $cmd = &get_create_filesystem_command($disk, $slice, $part, $newfs);
 &additional_log('exec', undef, $cmd);
@@ -46,9 +54,17 @@ if ($?) {
 	}
 else {
 	print $text{'newfs_done'},"<p>\n";
-	&webmin_log("newfs", "part", $part->{'device'}, $part);
+	&webmin_log("newfs", $in{'part'} ne '' ? "part" : "object",
+		    $object->{'device'}, $object);
 	}
 
-&ui_print_footer(
-    "edit_part.cgi?device=$in{'device'}&slice=$in{'slice'}&part=$in{'part'}",
-    $text{'part_return'});
+if ($in{'part'} ne '') {
+	&ui_print_footer("edit_part.cgi?device=$in{'device'}&".
+			   "slice=$in{'slice'}&part=$in{'part'}",
+			 $text{'part_return'});
+	}
+else {
+	&ui_print_footer("edit_slice.cgi?device=$in{'device'}&".
+			   "slice=$in{'slice'}",
+			 $text{'slice_return'});
+	}

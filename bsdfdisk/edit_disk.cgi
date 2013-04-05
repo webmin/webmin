@@ -38,7 +38,7 @@ if (@{$disk->{'slices'}}) {
 		$text{'disk_size'},
 		$text{'disk_start'},
 		$text{'disk_end'},
-		$text{'disk_parts'},
+		$text{'disk_use'},
 		]);
 	foreach my $p (@{$disk->{'slices'}}) {
 		# Create images for the extent
@@ -54,6 +54,11 @@ if (@{$disk->{'slices'}}) {
                   $extwidth*($disk->{'blocks'} - $p->{'startblock'} -
 			     $p->{'blocks'}) / $disk->{'blocks'};
 
+		# Work out use
+		my @st = &fdisk::device_status($p->{'device'});
+		my $use = &fdisk::device_status_link(@st);
+		my $n = scalar(@{$p->{'parts'}});
+
 		# Add row for the slice
 		my $url = "edit_slice.cgi?device=".&urlize($disk->{'device'}).
 			  "&slice=".$p->{'number'};
@@ -66,7 +71,8 @@ if (@{$disk->{'slices'}}) {
 			&nice_size($p->{'size'}),
 			$p->{'startblock'},
 			$p->{'startblock'} + $p->{'blocks'} - 1,
-			scalar(@{$p->{'parts'}}),
+			$use ? $use :
+			  $n ? &text('disk_scount', $n) : "",
 			]);
 		}
 	print &ui_columns_end();

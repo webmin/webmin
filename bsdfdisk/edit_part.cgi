@@ -37,6 +37,12 @@ print &ui_table_row($text{'part_device'},
 print &ui_table_row($text{'part_size'},
 	&nice_size($part->{'size'}));
 
+print &ui_table_row($text{'part_start'},
+	$part->{'startblock'});
+
+print &ui_table_row($text{'part_end'},
+	$part->{'startblock'} + $part->{'blocks'} - 1);
+
 if ($canedit) {
 	print &ui_table_row($text{'part_type'},
 		&ui_select("type", $part->{'type'},
@@ -46,12 +52,6 @@ else {
 	print &ui_table_row($text{'part_type'},
 		$part->{'type'});
 	}
-
-print &ui_table_row($text{'part_start'},
-	$part->{'startblock'});
-
-print &ui_table_row($text{'part_end'},
-	$part->{'startblock'} + $part->{'blocks'} - 1);
 
 print &ui_table_row($text{'part_use'},
 	!@st ? $text{'part_nouse'} :
@@ -69,31 +69,7 @@ if ($canedit) {
 
 	print &ui_buttons_start();
 
-	print &ui_buttons_row(
-		"newfs_form.cgi", $text{'part_newfs'}, $text{'part_newfsdesc'},
-		$hiddens);
-
-	if (!@st || $st[1] ne 'swap') {
-		print &ui_buttons_row(
-			"fsck.cgi", $text{'part_fsck'}, $text{'part_fsckdesc'},
-			$hiddens);
-		}
-
-	if (!@st) {
-		if ($part->{'type'} eq 'swap') {
-			print &ui_buttons_row("../mount/edit_mount.cgi",
-			    $text{'part_newmount2'}, $text{'part_mountmsg2'},
-			    &ui_hidden("newdev", $part->{'device'}).
-			    &ui_hidden("type", "swap"));
-			}
-		else {
-			print &ui_buttons_row("../mount/edit_mount.cgi",
-			    $text{'part_newmount'}, $text{'part_mountmsg'},
-			    &ui_hidden("newdev", $part->{'device'}).
-			    &ui_hidden("type", "ufs"),
-			    &ui_textbox("newdir", undef, 20));
-			}
-		}
+	&show_filesystem_buttons($hiddens, \@st, $part);
 
 	print &ui_buttons_row(
 		"delete_part.cgi", $text{'part_delete'},
