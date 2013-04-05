@@ -1,0 +1,12 @@
+line1=Konfigurerbare innstillinger,11
+lines=Standard antall linjer som skal vises,0,6
+refresh=Sekunder mellom oppfrisking av loggvisning,3,Aldri
+compressed=Ta med komprimerte logger i s&#248;k?,1,1-Ja,0-Nei
+line2=System konfigurasjon,11
+syslogng_conf=Stil til Syslog-NG konfig fil,0
+alt_syslogng_conf=Sti til alternativ konfig.gil,3,Ingen
+syslogng_cmd=Stil til Syslog-NG program,0
+pid_file=Syslog-NG PID fil,3,Ingen
+start_cmd=Kommando for &#229; starte Syslog-NG,3,Bare kj&#248;r tjener
+restart_cmd=Kommando for &#229; ta i bruk endringer,3,Stopp og omstart tjener
+tail_cmd=Tail kommando og argumenter,3,Standard (tail -n LINES)
