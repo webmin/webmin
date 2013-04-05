@@ -124,7 +124,9 @@ if ($canedit) {
 	print &ui_hr();
 	print &ui_buttons_start();
 
-	&show_filesystem_buttons($hiddens, \@st, $slice);
+	if (!@{$slice->{'parts'}}) {
+		&show_filesystem_buttons($hiddens, \@st, $slice);
+		}
 
 	# Button to delete slice
 	print &ui_buttons_row(
