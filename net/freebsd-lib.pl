@@ -737,5 +737,26 @@ close(ROUTES);
 return @rv;
 }
 
+# get_default_gateway()
+# Returns the default gateway IP (if one is set) and device (if set) boot time
+# settings.
+sub get_default_gateway
+{
+local %rc = &get_rc_conf();
+return ( $rc{'defaultrouter'} eq 'NO' ? undef : $rc{'defaultrouter'},
+	 undef );
+}
+
+# set_default_gateway(gateway, device)
+# Sets the default gateway to the given IP accessible via the given device,
+# in the boot time settings.
+sub set_default_gateway
+{
+local ($gw, $gwdev) = @_;
+&lock_file("/etc/rc.conf");
+&save_rc_conf('defaultrouter', $gw || "NO");
+&unlock_file("/etc/rc.conf");
+}
+
 1;
 
