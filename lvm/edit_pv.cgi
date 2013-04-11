@@ -58,7 +58,15 @@ if ($in{'pv'}) {
 		@lvs = &list_logical_volumes($in{'vg'});
 		foreach $l (@lvinfo) {
 			($lv) = grep { $_->{'name'} eq $l->[0] } @lvs;
-			push(@lvlist, "<a href='edit_lv.cgi?vg=$in{'vg'}&lv=$lv->{'name'}'>$lv->{'name'}</a> ".&nice_size($l->[1]*$pv->{'pe_size'}*1024));
+			$nice = &nice_size($l->[1]*$pv->{'pe_size'}*1024);
+			if ($lv) {
+				push(@lvlist,
+				  "<a href='edit_lv.cgi?vg=$in{'vg'}&".
+				  "lv=$lv->{'name'}'>$lv->{'name'}</a> ".$nice);
+				}
+			else {
+				push(@lvlist, $l->[0]." ".$nice);
+				}
 			}
 		print &ui_table_row($text{'pv_lvs'},
 			&ui_grid_table(\@lvlist, 4), 3);
