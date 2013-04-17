@@ -114,8 +114,20 @@ my $mem_cache = $sysctl->{"vm.stats.vm.v_cache_count"} *
 		$sysctl->{"hw.pagesize"};
 my $mem_free = $sysctl->{"vm.stats.vm.v_free_count"} *
 	       $sysctl->{"hw.pagesize"};
+
+my ($swapinfo_output) = &backquote_command("/usr/sbin/swapinfo");
+my ($swap_total, $swap_free) = (0, 0);
+foreach my $line (split(/\n/, $swapinfo_output)) {
+	if ($line =~ /^(\S+)\s+(\d+)\s+(\d+)\s+(\d+)/) {
+		$swap_total += $2 * 1024;
+		$swap_free += $4 * 1024;
+		}
+	}
+
 return ( $sysctl->{"hw.physmem"} / 1024,
-	 ($mem_inactive + $mem_cache + $mem_free) / 1024 );
+	 ($mem_inactive + $mem_cache + $mem_free) / 1024,
+	 $swap_total,
+	 $swap_free );
 }
 
 1;
