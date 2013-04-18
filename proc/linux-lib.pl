@@ -222,8 +222,8 @@ ioctl($ttyfh, 0x540e, 0);
 }
 
 # get_memory_info()
-# Returns a list containing the real mem, free real mem, swap and free swap
-# (In kilobytes).
+# Returns a list containing the real mem, free real mem, swap and free swap,
+# and possibly cached memory (In kilobytes).
 sub get_memory_info
 {
 local %m;
@@ -246,7 +246,8 @@ while(<MEMINFO>) {
 close(MEMINFO);
 return ( $m{'memtotal'}, $m{'cached'} > $m{'memtotal'} ? $m{'memfree'}
 				: $m{'memfree'}+$m{'buffers'}+$m{'cached'},
-	 $m{'swaptotal'}, $m{'swapfree'} );
+	 $m{'swaptotal'}, $m{'swapfree'},
+	 $m{'buffers'} + $m{'cached'} );
 }
 
 # os_get_cpu_info()
