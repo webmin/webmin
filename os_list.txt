@@ -111,6 +111,7 @@ Linux Mint			11	debian-linux	6.0	`cat /etc/lsb-release 2>/dev/null | grep DISTRI
 Linux Mint			12	debian-linux	6.0	`cat /etc/lsb-release 2>/dev/null | grep DISTRIB_DESCRIPTION` =~ /^DISTRIB_DESCRIPTION="Linux Mint 12 Lisa"/
 Linux Mint			13	debian-linux	6.0	`cat /etc/lsb-release 2>/dev/null | grep DISTRIB_DESCRIPTION` =~ /^DISTRIB_DESCRIPTION="Linux Mint 13 Maya"/
 Linux Mint			14	debian-linux	6.0	`cat /etc/lsb-release 2>/dev/null | grep DISTRIB_DESCRIPTION` =~ /^DISTRIB_DESCRIPTION="Linux Mint 14 Nadia"/
+Linux Mint			15	debian-linux	7.0	`cat /etc/lsb-release 2>/dev/null | grep DISTRIB_DESCRIPTION` =~ /^DISTRIB_DESCRIPTION="Linux Mint 15 Olivia"/
 
 # Debian Linux versions with numbers
 Debian Linux			$1	debian-linux	$1	$etc_issue =~ /Debian.*\s([0-9\.]+)\s/i || `cat /etc/debian_version 2>/dev/null` =~ /([0-9\.]+)/
