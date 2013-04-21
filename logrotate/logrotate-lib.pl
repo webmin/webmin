@@ -349,11 +349,16 @@ local $out = &backquote_logged("$config{'logrotate'} -f $temp 2>&1");
 return ($?, $out);
 }
 
-# get_add_file()
+# get_add_file([filename])
 # Returns the file to which new logrotate sections should be added
 sub get_add_file
 {
-if ($config{'add_file'}) {
+local ($filename) = @_;
+if ($config{'add_file'} && -d $config{'add_file'} && $filename) {
+	# Adding to a new file in a directory
+	return "$config{'add_file'}/$filename.conf";
+	}
+elsif ($config{'add_file'} && !-d $config{'add_file'}) {
 	# Make sure file is valid
 	local ($conf, $lnum, $files) = &get_config();
 	if (&indexof($config{'add_file'}, @$files) >= 0) {

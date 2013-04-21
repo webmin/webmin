@@ -6,14 +6,16 @@ require './logrotate-lib.pl';
 &ReadParse();
 $parent = &get_config_parent();
 $conf = $parent->{'members'};
+@files = split(/\s+/, $in{'file'});
 if ($in{'global'}) {
 	# Editing the global options
 	$log = $parent;
 	}
 elsif ($in{'new'}) {
 	# Adding a new section
+	$cfilename = $files[0] =~ /\/([^\/]+)$/ ? $1 : undef;
 	$log = { 'members' => [ ],
-		 'file' => &get_add_file() };
+		 'file' => &get_add_file($cfilename) };
 	$logfile = $in{'file'};
 	}
 else {
@@ -50,7 +52,6 @@ else {
 	&lock_file($log->{'file'});
 	&error_setup($text{'save_err'});
 	if (!$in{'global'}) {
-		@files = split(/\s+/, $in{'file'});
 		foreach $f (@files) {
 			$f =~ /^\/\S+$/ || &error($text{'save_efile'});
 			}
