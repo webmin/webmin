@@ -68,6 +68,9 @@ print &ui_table_hr();
 # Outgoing authentication options
 &option_radios_freefield("relayhost", 45, $text{'opts_direct'});
 
+# Use SASL for outgoing authentication?
+&option_yesno("smtp_sasl_auth_enable");
+
 # Get the current map value for the relayhost
 $rh = &get_current_value("relayhost");
 $rh =~ s/^\[(.*)\]$/$1/g;
