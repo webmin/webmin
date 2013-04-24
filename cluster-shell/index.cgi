@@ -18,6 +18,9 @@ close(COMMANDS);
 if (@commands) {
 	print &ui_table_row($text{'index_old'},
 		&ui_select("old", undef, [ &unique(@commands) ])." ".
+		&ui_button($text{'index_edit'}, "clear", undef,
+			   "onClick='form.cmd.value = form.old.value'").
+		" ".
 		&ui_button($text{'index_clear'}, "clear", undef,
 			   "onClick='window.location = \"run.cgi?clear=1\"'"));
 	}

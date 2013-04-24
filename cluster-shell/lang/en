@@ -8,6 +8,7 @@ index_this=this server
 index_all=&lt;All hosts&gt;
 index_group=Members of $1
 index_clear=Clear History
+index_edit=Edit Previous
 
 run_title=Run Command
 run_err=Failed to run command
