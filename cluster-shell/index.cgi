@@ -18,7 +18,8 @@ close(COMMANDS);
 if (@commands) {
 	print &ui_table_row($text{'index_old'},
 		&ui_select("old", undef, [ &unique(@commands) ])." ".
-		&ui_submit($text{'index_clear'}, "clear"));
+		&ui_button($text{'index_clear'}, "clear", undef,
+			   "onClick='window.location = \"run.cgi?clear=1\"'"));
 	}
 
 @opts = ( [ "ALL", $text{'index_all'} ],
