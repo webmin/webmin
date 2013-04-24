@@ -31,6 +31,10 @@ if (!-r $config{'squid_conf'}) {
 
 # Check the version number
 $fullver = $ver = &backquote_command("$config{'squid_path'} -v 2>&1");
+if ($ver =~ /LUSCA/) {
+	# Special Squid variant, actually equivalent to 2.7
+	$ver = "Squid Cache: Version 2.7.STABLE.LUSCA.2012";
+	}
 if ($ver =~ /version\s+(\S+)/i) {
 	$ver = $1;
 	}
