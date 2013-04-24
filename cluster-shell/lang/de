@@ -2,6 +2,7 @@ __norefs=1
 index_all=&lt;Alle Hosts&gt;
 index_clear=L&#246;sche Verlauf
 index_cmd=Auszuf&#252;hrendes Kommando
+index_edit=Editiere Vorheriges
 index_group=Mitglied von $1
 index_old=oder
 index_return=Modulindex
