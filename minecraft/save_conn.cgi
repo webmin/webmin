@@ -12,7 +12,7 @@ my $msg;
 if ($in{'msg'}) {
 	# Send a message
 	$in{'text'} =~ /\S/ || &error($text{'conn_etext'});
-	&send_server_command("/say $in{'name'} $in{'text'}");
+	&send_server_command("/msg $in{'name'} $in{'text'}");
 	$msg = $text{'conn_msgdone'};
 	}
 elsif ($in{'kill'}) {
