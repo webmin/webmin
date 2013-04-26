@@ -647,6 +647,19 @@ else {
 	}
 }
 
+# supports_mysqldump_events()
+# Returns 1 if running mysqldump 5.1.8 or later, which supports (and needs)
+# the events flag
+sub supports_mysqldump_events
+{
+if ($mysql_version >= 6 ||
+    $mysql_version =~ /^(\d+)\.(\d+)/ && $1 == 5 && $2 >= 2 ||
+    $mysql_version =~ /^(\d+)\.(\d+)\.(\d+)/ && $1 == 5 && $2 == 1 && $3 >= 8) {
+	return 1;
+	}
+return 0;
+}
+
 # supports_routines()
 # Returns 1 if mysqldump supports routines
 sub supports_routines
@@ -1400,7 +1413,8 @@ local $compatiblesql = @$compatible ?
 local $quotingsql = &supports_quoting() ? "--quote-names" : "";
 local $routinessql = &supports_routines() ? "--routines" : "";
 local $tablessql = join(" ", map { quotemeta($_) } @$tables);
-local $cmd = "$config{'mysqldump'} $authstr $dropsql $singlesql $quicksql $wheresql $charsetsql $compatiblesql $quotingsql $routinessql ".quotemeta($db)." $tablessql 2>&1 $writer";
+local $eventssql = &supports_mysqldump_events() ? "--events" : "";
+local $cmd = "$config{'mysqldump'} $authstr $dropsql $singlesql $quicksql $wheresql $charsetsql $compatiblesql $quotingsql $routinessql ".quotemeta($db)." $tablessql $eventssql 2>&1 $writer";
 if ($user && $user ne "root") {
 	$cmd = &command_as_user($user, undef, $cmd);
 	}
