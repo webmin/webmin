@@ -1975,6 +1975,15 @@ my ($name, $desc, $start, $stop, $restart, $forks, $pidfile) = @_;
 $start =~ s/\r?\n/ ; /g;
 $stop =~ s/\r?\n/ ; /g;
 $restart =~ s/\r?\n/ ; /g;
+if ($start =~ /<|>/) {
+	$start = "sh -c '$start'";
+	}
+if ($restart =~ /<|>/) {
+	$restart = "sh -c '$restart'";
+	}
+if ($stop =~ /<|>/) {
+	$stop = "sh -c '$stop'";
+	}
 my $cfile = &get_systemd_root($name)."/".$name;
 &open_lock_tempfile(CFILE, ">$cfile");
 &print_tempfile(CFILE, "[Unit]\n");
