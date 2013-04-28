@@ -1418,7 +1418,7 @@ else {
 		}
 	print "<hr>\n";
 	if ($ENV{'HTTP_REFERER'} && $main::completed_referers_check) {
-		&footer($ENV{'HTTP_REFERER'}, $text{'error_previous'});
+		&footer("javascript:history.back()", $text{'error_previous'});
 		}
 	else {
 		&footer();
