@@ -2056,6 +2056,7 @@ sub restart_systemd
 my @pids = &find_byname("systemd");
 if (@pids) {
 	&kill_logged('HUP', @pids);
+	&system_logged("systemctl --system daemon-reload >/dev/null 2>&1");
 	}
 }
 
