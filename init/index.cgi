@@ -43,7 +43,7 @@ elsif ($init_mode eq "init" && $access{'bootup'}) {
 		@ac = split(/\s+/, $a);
 		$nodemap{$ac[1]} = $ac[0];
 		push(@acts, $ac[0]);
-		push(@actsl, "0+$ac[0]");
+		push(@actsl, "0+".&urlize($ac[0]));
 		push(@actsf, $ac[0] =~ /^\// ? $ac[0]
 					     : "$config{'init_dir'}/$ac[0]");
 		}
