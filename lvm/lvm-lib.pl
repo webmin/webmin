@@ -331,6 +331,12 @@ else {
 			if (/destination\s+for\s+\/dev\/[^\/]+\/(\S+)/) {
 				$lv->{'snap_of'} = $1;
 				}
+			if (/active\s+destination/i) {
+				$lv->{'snap_active'} = 1;
+				}
+			elsif (/INACTIVE\s+destination/i) {
+				$lv->{'snap_active'} = 0;
+				}
 			}
 		 elsif (/Read ahead sectors\s+(\d+|auto)/) {
                         $lv->{'readahead'} = $1;
