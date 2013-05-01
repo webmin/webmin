@@ -31,7 +31,8 @@ if (!$done_web_lib_funcs) {
 	}
 
 # Has to be set after error is defined
-$remote_error_handler = \&error;
+$remote_error_handler ||= \&error;
+$main::remote_error_handler ||= \&error;
 
 1;
 
