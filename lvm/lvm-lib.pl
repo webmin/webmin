@@ -315,6 +315,9 @@ else {
 		elsif (/Current\s+LE\s+(\d+)/ && $vg) {
 			$lv->{'size'} = $1 * $vg->{'pe_size'};
 			}
+		elsif (/COW-table\s+LE\s+(\d+)/ && $vg) {
+			$lv->{'cow_size'} = $1 * $vg->{'pe_size'};
+			}
 		elsif (/LV\s+Write\s+Access\s+(\S+)/i) {
 			$lv->{'perm'} = $1 eq 'read/write' ? 'rw' : 'r';
 			}
