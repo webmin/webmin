@@ -21,7 +21,7 @@ if ($type eq "minecraft_up") {
 			 'desc' => $text{'monitor_down'} };
 		}
 	my $out = &execute_minecraft_command("/seed", 0, 5);
-	if ($out !~ /^\d+/) {
+	if ($out !~ /Seed:\s+[0-9\-]+/i) {
 		return { 'up' => 0,
 			 'desc' => $text{'monitor_noreply'} };
 		}
