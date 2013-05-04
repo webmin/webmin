@@ -293,3 +293,11 @@ log_atboot=Enabled server at boot time
 log_delboot=Disabled server at boot time
 log_enable_backup=Enabled scheduled backups to $1
 log_disable_backup=Disabled scheduled backups
+
+monitor_up=Minecraft Server Alive
+monitor_latest=Minecraft Server Up To Date
+monitor_down=Server process is down
+monitor_noreply=Server is not responding
+monitor_notype=Unknown monitor type!
+monitor_newversion=New version is available
+monitor_nojar=JAR file $1 does not exist

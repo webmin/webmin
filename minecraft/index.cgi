@@ -38,12 +38,7 @@ elsif ($err) {
 	}
 
 # Check if new version is out, if we haven't checked in the last 6 hours
-if (time() - $config{'last_check'} > 6*60*60) {
-	my $sz = &check_server_download_size();
-	$config{'last_check'} = time();
-	$config{'last_size'} = $sz;
-	&save_module_config();
-	}
+&update_last_check();
 if ($config{'last_size'}) {
 	my $jar = $config{'minecraft_jar'} ||
 		  $config{'minecraft_dir'}."/"."minecraft_server.jar";

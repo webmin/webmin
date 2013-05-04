@@ -244,18 +244,19 @@ if (!$nolog) {
 	}
 }
 
-# execute_minecraft_command(command, [no-log])
+# execute_minecraft_command(command, [no-log], [wait-time])
 # Run a command, and return output from the server log
 sub execute_minecraft_command
 {
-my ($cmd, $nolog) = @_;
+my ($cmd, $nolog, $wait) = @_;
+$wait ||= 100;
 my $logfile = $config{'minecraft_dir'}."/server.log";
 my $fh = "LOG";
 &open_readfile($fh, $logfile);
 seek($fh, 0, 2);
 my $pos = tell($fh);
 &send_server_command($cmd, $nolog);
-for(my $i=0; $i<100; $i++) {
+for(my $i=0; $i<$wait; $i++) {
 	select(undef, undef, undef, 0.1);
 	my @st = stat($logfile);
 	last if ($st[7] > $pos);
@@ -645,7 +646,7 @@ my $dir = strftime($config{'backup_dir'}, @tm);
 
 # Create destination dir
 if (!-d $dir) {
-	if (!&make_dir($dir, 0700)) {
+	if (!&make_dir($dir, 0755)) {
 		&send_backup_email(
 			"Failed to create destination directory $dir : $!");
 		return;
@@ -676,6 +677,7 @@ foreach my $w (@worlds) {
 		"cd ".quotemeta($config{'minecraft_dir'})." && ".
 	        "zip -r ".quotemeta($file)." ".quotemeta($w->{'name'}));
 	my $ex = $?;
+	&set_ownership_permissions(undef, undef, 0755, $file);
 	if ($w->{'name'} eq $def &&
 	    &is_minecraft_server_running()) {
 		# Re-enable world writes
@@ -739,6 +741,18 @@ for(my $i=0; $i<@xpmap; $i+=2) {
 		}
 	}
 return undef;
+}
+
+# update_last_check()
+# If the last check time is too old, check for the latest version
+sub update_last_check
+{
+if (time() - $config{'last_check'} > 6*60*60) {
+	my $sz = &check_server_download_size();
+	$config{'last_check'} = time();
+	$config{'last_size'} = $sz;
+	&save_module_config();
+	}
 }
 
 1;
