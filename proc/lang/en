@@ -9,6 +9,7 @@ index_zone=Zone
 index_run=Run..
 index_return=process list
 index_mem2=<b>Real memory:</b> $1 total / $2 free
+index_mem3=<b>Real memory:</b> $1 total / $2 free / $3 cached
 index_swap2=<b>Swap space:</b> $1 total / $2 free
 index_loadname=CPU load averages:
 index_loadnums=$1 (1 mins) , $2 (5 mins) , $3 (15 mins)

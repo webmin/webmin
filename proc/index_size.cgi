@@ -8,8 +8,10 @@ require './proc-lib.pl';
 if (defined(&get_memory_info)) {
 	@m = &get_memory_info();
 	if (@m) {
-		print &text('index_mem2', &nice_size($m[0]*1024),
-			    &nice_size($m[1]*1024)),"\n";
+		$msg = $m[4] ? 'index_mem3' : 'index_mem2';
+		print &text($msg, &nice_size($m[0]*1024),
+			    &nice_size($m[1]*1024),
+			    &nice_size($m[4]*1024)),"\n";
 		print "&nbsp;&nbsp;",
 			&text('index_swap2', &nice_size($m[2]*1024),
 					     &nice_size($m[3]*1024)),"<p>\n";
