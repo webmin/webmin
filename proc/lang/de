@@ -57,6 +57,7 @@ index_loadname=CPU-Last im Durchschnitt:
 index_loadnums=$1 (1 Minute) , $2 (5 Minuten) , $3 (15 Minuten)
 index_mem=<b>Realer Speicher:</b> $1 KiB total / $2 KiB frei
 index_mem2=<b>Realer Speicher:</b> $1 Total / $2 frei
+index_mem3=<b>Realer Speicher:</b> $1 Total / $2 frei / $3 gecached
 index_return=Prozessliste
 index_run=Ausf&uuml;hren..
 index_search=Suche
