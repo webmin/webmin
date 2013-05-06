@@ -127,7 +127,8 @@ foreach $f (sort { lc($a) cmp lc($b) } readdir(DIR)) {
 	    $f eq "core" || $f eq "README" || $f eq "rc" || $f eq "rcS" ||
 	    -d "$dir/$f" || $f =~ /\.swp$/ || $f eq "skeleton" ||
 	    $f =~ /\.lock$/ || $f =~ /\.dpkg-(old|dist)$/ ||
-	    $f =~ /^\.depend\./ || $f eq '.legacy-bootordering') { next; }
+	    $f =~ /^\.depend\./ || $f eq '.legacy-bootordering' ||
+	    $f =~ /^mandrake/) { next; }
 	if (@stbuf = stat("$dir/$f")) {
 		push(@rv, "$f $stbuf[1]");
 		}
