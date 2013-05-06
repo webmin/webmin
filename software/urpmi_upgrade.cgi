@@ -10,7 +10,7 @@ if ($in{'upgrade'}) {
 	$mode = "upgrade";
 	}
 else {
-	$cmd = "urpmi.update main updates contrib";
+	$cmd = "urpmi.update -a";
 	$mode = "update";
 	}
 	

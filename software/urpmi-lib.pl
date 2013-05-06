@@ -12,7 +12,7 @@ sub update_system_install
 {
 local $update = $_[0] || $in{'update'};
 local (@rv, @newpacks);
-local $cmd = "urpmi --force --auto --media main";
+local $cmd = "urpmi --force --auto";
 print "<b>",&text('urpmi_install', "<tt>$cmd $update</tt>"),"</b><p>\n";
 print "<pre>";
 &additional_log('exec', undef, "$cmd $update");
@@ -57,11 +57,12 @@ print &ui_form_end();
 sub update_system_resolve
 {
 local ($name) = @_;
-return $name eq "apache" ? "apache2" :
-       $name eq "dhcpd" ? "dhcp-server" :
-       $name eq "mysql" ? "MySQL MySQL-client MySQL-common" :
+return $name eq "dhcpd" ? "dhcp-server" :
+       $name eq "mysql" ? "mariadb" :
+       $name eq "openldap" ? "openldap openldap-servers" :
        $name eq "postgresql" ? "postgresql postgresql-server" :
-			   $name;
+       $name eq "samba" ? "samba-client samba-server" :
+                          $name;
 }
 
 # update_system_available()
