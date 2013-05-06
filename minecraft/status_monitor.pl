@@ -20,6 +20,12 @@ if ($type eq "minecraft_up") {
 		return { 'up' => 0,
 			 'desc' => $text{'monitor_down'} };
 		}
+	my $logfile = $config{'minecraft_dir'}."/server.log";
+	my @st = stat($logfile);
+	if (time() - $st[9] < 5*60) {
+		# Server has logged something recently, so assume it is alive
+		return { 'up' => 1 };
+		}
 	my $out = &execute_minecraft_command("/seed", 0, 5);
 	if ($out !~ /\S/) {
 		return { 'up' => 0,
