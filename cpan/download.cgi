@@ -74,7 +74,14 @@ elsif ($in{'source'} == 3) {
 		@yum = &list_packaged_modules();
 		foreach $c (@cpan) {
 			($yum) = grep { lc($_->{'mod'}) eq lc($c) } @yum;
-			push(@cpanyum, $yum) if ($yum);
+			if ($yum) {
+				# Module name is known
+				push(@cpanyum, $yum);
+				}
+			elsif ($software::config{'package_system'} eq "rpm") {
+				# Try to install from perl dependency
+				push(@cpanyum, { 'package' => "perl($c)" });
+				}
 			}
 		}
 	if (scalar(@cpan) == scalar(@cpanyum)) {
