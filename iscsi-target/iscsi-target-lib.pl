@@ -263,12 +263,16 @@ return $ok ? undef : $out;
 }
 
 # restart_iscsi_server()
-# Run the init script to stop and then start the server
+# Sends a HUP signal to re-read the configuration
 sub restart_iscsi_server
 {
-&foreign_require("init");
-my ($ok, $out) = &init::restart_action($config{'init_name'});
-return $ok ? undef : $out;
+&stop_iscsi_server();
+# Wait for process to exit
+for(my $i=0; $i<20; $i++) {
+	last if (!&is_iscsi_target_running());
+	sleep(1);
+	}
+return &start_iscsi_server();
 }
 
 # get_iscsi_options_file()
