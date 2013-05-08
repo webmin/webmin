@@ -20,16 +20,18 @@ if ($type eq "minecraft_up") {
 		return { 'up' => 0,
 			 'desc' => $text{'monitor_down'} };
 		}
-	my $logfile = $config{'minecraft_dir'}."/server.log";
-	my @st = stat($logfile);
-	if (time() - $st[9] < 5*60) {
-		# Server has logged something recently, so assume it is alive
-		return { 'up' => 1 };
-		}
-	my $out = &execute_minecraft_command("/seed", 0, 5);
-	if ($out !~ /\S/) {
-		return { 'up' => 0,
-			 'desc' => $text{'monitor_noreply'} };
+	if ($monitor->{'checklog'}) {
+		my $logfile = $config{'minecraft_dir'}."/server.log";
+		my @st = stat($logfile);
+		if (time() - $st[9] < 5*60) {
+			# Server has logged something recently, so assume OK
+			return { 'up' => 1 };
+			}
+		my $out = &execute_minecraft_command("/seed", 0, 5);
+		if ($out !~ /\S/) {
+			return { 'up' => 0,
+				 'desc' => $text{'monitor_noreply'} };
+			}
 		}
 	return { 'up' => 1 };
 	}
@@ -61,13 +63,24 @@ else {
 # Return form for selecting a drive
 sub status_monitor_dialog
 {
-return undef;
+my ($type, $mon) = @_;
+if ($type eq "minecraft_up") {
+	return &ui_table_row($text{'monitor_checklog'},
+		&ui_yesno_radio("checklog", $mon->{'checklog'} ? 1 : 0));
+	}
+else {
+	return undef;
+	}
 }
 
 # status_monitor_parse(type, &monitor, &in)
 # Parse form for selecting a rule
 sub status_monitor_parse
 {
+my ($type, $mon, $in) = @_;
+if ($type eq "minecraft_up") {
+	$mon->{'checklog'} = $in->{'checklog'};
+	}
 }
 
 1;

@@ -301,3 +301,4 @@ monitor_noreply=Server is not responding
 monitor_notype=Unknown monitor type!
 monitor_newversion=New version is available
 monitor_nojar=JAR file $1 does not exist
+monitor_checklog=Check server response to commands?
