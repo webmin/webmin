@@ -273,7 +273,7 @@ else {
 			&error(&text('edit_etarget', $in{'value3'}));
 		}
 	elsif ($in{'type'} eq 'KEY') {
-		$in{'value0'} =~ /^(\d+|0x[0-9a-f]+)$/i ||
+		$in{'value0'} =~ /^(\d+|0x[0-9a-f]+={0,2})$/i ||
 			&error(text('edit_eflags', $in{'value0'}));
 		$in{'value1'} =~ /^\d+$/ ||
 			&error(text('edit_eproto', $in{'value1'}));
