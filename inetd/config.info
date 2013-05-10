@@ -1,6 +1,6 @@
 line1=Configurable options,11
-show_empty=Show services with no program,1,1-Yes,0-No
 sort_mode=Sort services and programs by,1,0-Order in file,1-Name,2-Assignment
+display_max=Maximum number of services to display,0
 line2=System configuration,11
 inetd_conf_file=Inetd configuration file,0
 inetd_dir=Inetd configuration directory,3,None

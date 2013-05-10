@@ -4,10 +4,11 @@
 # from the services file
 
 require './inetd-lib.pl';
+&ReadParse();
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 	&help_search_link("inetd", "man", "doc", "howto"));
 
-# break down into rpc and internet services
+# Break down into rpc and internet services
 $j = 0;
 foreach $i (&list_inets()) {
 	if ($i->[2]) {
@@ -24,11 +25,8 @@ foreach $i (&list_inets()) {
 	$j++;
 	}
 
-print "<form action=edit_serv.cgi>\n";
-print "<a href=\"edit_serv.cgi?new=1\">$text{'index_newservice'}</a>.<br>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'index_service'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+# Get and sort entries from /etc/services
+@links = ( "<a href=\"edit_serv.cgi?new=1\">$text{'index_newservice'}</a>" );
 $i = 0;
 @slist = &list_services();
 if ($config{'sort_mode'} == 1) {
@@ -41,38 +39,62 @@ elsif ($config{'sort_mode'} == 2) {
 			 defined($int_disabled{$a->[1],$a->[3]}) ? 1 : 0) }
 		      @slist;
 	}
-foreach $s (@slist) {
-	$ia = $int_active{$s->[1],$s->[3]};
-	$id = $int_disabled{$s->[1],$s->[3]};
-	if ($ia =~ /\d/) { $op = "<b>"; $cl = "</b>"; $ip = $ia; }
-	elsif ($id =~ /\d/) { $op = "<i><b>"; $cl = "</b></i>"; $ip = $id; }
-	elsif (!$config{'show_empty'}) { next; }
-	else { $op = $cl = $ip = ""; }
-	if ($i%4 == 0) { print "<tr>\n"; }
-	print "<td>$op";
-	print "<a href=\"edit_serv.cgi?spos=$s->[5]&ipos=$ip\">",
-	      &html_escape($s->[1]),"</a>(",&html_escape($s->[3]),")";
-	print "$cl</td>\n";
-	if ($i++%4 == 3) { print "</tr>\n"; }
-	}
-print "</table></td></tr></table>\n";
 
-print "<table width=100%><tr>\n";
-print "<td><a href='edit_serv.cgi?new=1'>$text{'index_newservice'}</a></td>\n";
-if (!$config{'show_empty'}) {
-	print "<td align=right>\n";
-	print "<input type=submit value='$text{'index_edit'}'>\n";
-	print "<input name=name size=12>\n";
-	print "<select name=proto>\n";
-	foreach $p (&list_protocols()) {
-		printf "<option value=%s %s>%s\n",
-			$p, $p eq "tcp" ? "selected" : "", $p;
-		}
-	print "</select></td>\n";
+# Show search form if too many
+if (@slist > $config{'display_max'}) {
+	print &ui_form_start("index.cgi");
+	print "<b>$text{'index_search'}</b> ",
+	      &ui_textbox("search", $in{'search'}, 30)," ",
+	      &ui_submit($text{'index_sok'}),"<p>\n";
+	print &ui_form_end();
 	}
-print "</tr></table></form>\n";
+
+# Apply search
+if ($in{'search'}) {
+	@slist = grep { $_->[1] =~ /\Q$in{'search'}\E/i } @slist;
+	}
+
+if (!@slist) {
+	# Nothing found!
+	print "<b>$text{'index_none'}</b><p>\n";
+	}
+elsif (@slist <= $config{'display_max'} || $in{'search'}) {
+	# Show services
+	@grid = ( );
+	foreach $s (@slist) {
+		$ia = $int_active{$s->[1],$s->[3]};
+		$id = $int_disabled{$s->[1],$s->[3]};
+		if ($ia =~ /\d/) { $op = "<b>"; $cl = "</b>"; $ip = $ia; }
+		elsif ($id =~ /\d/) { $op = "<i><b>"; $cl = "</b></i>"; $ip = $id; }
+		elsif (!$config{'show_empty'}) { next; }
+		else { $op = $cl = $ip = ""; }
+		push(@grid, $op.
+		     "<a href=\"edit_serv.cgi?spos=$s->[5]&ipos=$ip\">".
+		       &html_escape($s->[1])."</a> (".&html_escape($s->[3]).")".
+		     $cl);
+		}
+	print &ui_links_row(\@links);
+	print &ui_grid_table(\@grid, 4, 100, undef, undef,
+			     $text{'index_service'});
+	}
+else {
+	# Too many to show
+	print "<b>$text{'index_toomany'}</b><p>\n";
+	}
+print &ui_links_row(\@links);
+
+if (!$config{'show_empty'}) {
+	# If only services with commands are shown, use this form to jump
+	# to editing a named service
+	print &ui_form_start("edit_serv.cgi");
+	print &ui_submit($text{'index_edit'})," ",
+	      &ui_textbox("name", undef, 20)," ",
+	      &ui_select("proto", "tcp", [ &list_protocols() ]),"\n";
+	print &ui_form_end();
+	}
 
 print &ui_hr();
+
 print "<a href=\"edit_rpc.cgi?new=1\">$text{'index_newrpc'}</a>. <br>\n";
 print "<table border width=100%>\n";
 print "<tr $tb> <td><b>$text{'index_rpc'}</b></td> </tr>\n";
@@ -108,11 +130,12 @@ print "</table></td></tr></table>\n";
 print "<a href=\"edit_rpc.cgi?new=1\">$text{'index_newrpc'}</a>. <p>\n";
 
 print &ui_hr();
-print "<form action=restart_inetd.cgi>\n";
-print "<table width=100%> <tr>\n";
-print "<td><input type=submit value=\"$text{'index_apply'}\"></td>\n";
-print "<td valign=top> $text{'index_applymsg'}</td>\n";
-print "</tr> </table> </form>\n";
+print &ui_buttons_start();
+
+print &ui_buttons_row("restart_inetd.cgi",
+	$text{'index_apply'}, $text{'index_applymsg'});
+
+print &ui_buttons_end();
 
 &ui_print_footer("/", $text{'index'});
 

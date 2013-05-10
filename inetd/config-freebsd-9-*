@@ -10,3 +10,4 @@ extended_inetd=2
 sort_mode=0
 ipv6=0
 qm_mode=0
+display_max=100

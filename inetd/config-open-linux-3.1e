@@ -14,3 +14,4 @@ sort_mode=0
 ipv6=0
 inetd_dir=/etc/inet.d
 qm_mode=0
+display_max=100

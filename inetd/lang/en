@@ -1,15 +1,19 @@
-index_title=Internet Services
+index_title=Network Services and Protocols
 index_list=service list
 index_save=Save
 index_delete=Delete
 index_create=Create
 index_edit=Edit service:
 index_service=Internet Services
-index_newservice=Create a new internet service
+index_newservice=Create a new internet service.
 index_rpc=RPC Programs
 index_newrpc=Create a new RPC program
 index_apply=Apply Changes
 index_applymsg=Click this button to apply the current configuration by sending a SIGHUP signal to the running <tt>inetd</tt> process
+index_search=Display services matching:
+index_sok=Search
+index_toomany=There are too many internet services to display on this page.
+index_none=No internet services matched your search.
 
 error_restart=Failed to restart Inetd
 error_saverpc=Failed to save RPC program
