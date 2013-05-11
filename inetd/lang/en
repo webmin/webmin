@@ -52,6 +52,7 @@ editrpc_prgname=Program Name
 editrpc_prgnum=Program Number
 editrpc_aliase=Aliases
 editrpc_server=Server Program
+editrpc_act=Program state
 editrpc_noassigned=No program assigned
 editrpc_disable=Program disabled..
 editrpc_enable=Program enabled..

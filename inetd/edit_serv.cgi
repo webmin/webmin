@@ -61,7 +61,7 @@ print &ui_table_end();
 print &ui_table_start($text{'editrpc_server'}, "width=100%", 4);
 
 # Server enabled?
-print &ui_table_row(undef,
+print &ui_table_row($text{'editrpc_act'},
 	&ui_radio("act", $inet[1] ? 2 : @inet && !$inet[1] ? 1 : 0,
 		  [ [ 0, $text{'editrpc_noassigned'} ],
 		    [ 1, $text{'editrpc_disable'} ],
@@ -111,59 +111,36 @@ print &ui_table_row($text{'editrpc_waitmode'},
 		    [ "nowait", $text{'editrpc_nowait'} ] ]));
 
 print &ui_table_row($text{'editrpc_execasuser'},
-	&ui_userbox("user", $op2[0]));
+	&ui_user_textbox("user", $op2[0]));
 
 if ($config{'extended_inetd'} == 1) {
 	# Display max per minute and group options
 	# This is for systems like Linux
-	print "<tr> <td nowrap><b>$text{'editrpc_max'}</b></td> <td nowrap>\n";
-	printf "<input type=radio name=permin_def value=1 %s> $text{'editrpc_default'}\n",
-		@op1 < 2 ? "checked" : "";
-	printf "&nbsp; <input type=radio name=permin_def value=0 %s>\n",
-		@op1 < 2 ? "" : "checked";
-	printf "<input name=permin size=5 value=\"%s\"></td>\n",
-		@op1 < 2 ? "" : $op1[1];
+	print &ui_table_row($text{'editrpc_max'},
+		&ui_opt_textbox("permin", @op1 < 2 ? "" : $op1[1], 5,
+				$text{'editrpc_default'}));
 
-	print "<td nowrap><b>$text{'editrpc_execasgrp'}</b></td> <td nowrap>\n";
-	printf "<input type=radio name=group_def value=1 %s> %s\n",
-		$op2[1] ? "" : "checked", $text{'default'};
-	printf "<input type=radio name=group_def value=0 %s>\n",
-		$op2[1] ? "checked" : "";
-	print &unix_group_input("group", $op2[1]),"</td> </tr>\n";
+	print &ui_table_row($text{'editrpc_execasgrp'},
+		&ui_opt_textbox("group", $op2[1], 13, $text{'default'}).
+		&group_chooser_button("group"));
 	}
 elsif ($config{'extended_inetd'} == 2) {
 	# Display max child, max per minute, group and login class options
 	# This is for systems like FreeBSD
-	print "<tr> <td nowrap><b>$text{'editrpc_max'}</b></td> <td nowrap>\n";
-	printf "<input type=radio name=permin_def value=1 %s> $text{'editrpc_default'}\n",
-		@op1 < 3 ? "checked" : "";
-	printf "&nbsp; <input type=radio name=permin_def value=0 %s>\n",
-		@op1 < 3 ? "" : "checked";
-	printf "<input name=permin size=5 value=\"%s\"></td>\n",
-		@op1 < 3 ? "" : $op1[2];
+	print &ui_table_row($text{'editrpc_max'},
+		&ui_opt_textbox("permin", @op1 < 3 ? "" : $op1[2], 5,
+				$text{'editrpc_default'}));
 
-	print "<td nowrap><b>$text{'editrpc_execasgrp'}</b></td>\n";
-	print "<td nowrap><select name=group>\n";
-	printf "<option value=\"\" %s> $text{'editrpc_default'}",
-		$op2[1] ? "" : "selected";
-	setgrent();
-	while(@ginfo = getgrent()) {
-		printf "<option value=\"$ginfo[0]\" %s>$ginfo[0]\n",
-			$ginfo[0] eq $op2[1] ? "selected" : "";
-		}
-	print "</select></td> </tr>\n";
-	endgrent() if ($gconfig{'os_type'} ne 'hpux');
+	print &ui_table_row($text{'editrpc_execasgrp'},
+		&ui_opt_textbox("group", $op2[1], 13, $text{'default'}).
+		&group_chooser_button("group"));
 
-	print "<tr> <td nowrap><b>$text{'editserv_maxchild'}</b></td> <td nowrap>\n";
-	printf "<input type=radio name=child_def value=1 %s> $text{'editrpc_default'}\n",
-		@op1 < 2 ? "checked" : "";
-	printf "&nbsp; <input type=radio name=child_def value=0 %s>\n",
-		@op1 < 2 ? "" : "checked";
-	printf "<input name=child size=5 value=\"%s\"></td>\n",
-		@op1 < 2 ? "" : $op1[1];
+	print &ui_table_row($text{'editserv_maxchild'},
+		&ui_opt_textbox("child", @op1 < 2 ? "" : $op1[1], 5,
+				$text{'editrpc_default'}));
 
-	print "<td nowrap><b>$text{'editserv_execlogin'}</b></td>\n";
-	print "<td><input name=class size=10 value=\"$op2[2]\"></td> </tr>\n";
+	print &ui_table_row($text{'editserv_execlogin'},
+		&ui_textbox("class", $op2[2], 10));
 	}
 
 print &ui_table_end();
