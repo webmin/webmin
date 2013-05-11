@@ -233,6 +233,7 @@ manual_desc=Diese Seite erlaubt manuell die Minecraft Server Konfigurationsdatei
 manual_econf=Nichts eingegeben!
 manual_err=Fehlgeschlagen Konfigurationsdatei zu speichern
 manual_title=Editiere Konfigurationsdatei
+monitor_checklog=Pr&#252;fe Server-Antwort auf Befehle?
 monitor_down=Server-Prozess ist unten
 monitor_latest=Minecraft Server ist aktuell
 monitor_newversion=Neue Version ist verf&#252;gbar
