@@ -10,6 +10,12 @@ require './inetd-lib.pl';
 &error_setup($text{'error_saveservice'});
 &ReadParse();
 
+# Delete button clicked, redirect to correct CGI
+if ($in{'delete'}) {
+	&redirect("delete_serv.cgi?spos=$in{'spos'}&ipos=$in{'ipos'}");
+	return;
+	}
+
 # Check inputs
 $in{'name'} =~ /^[A-z][A-z0-9\_\-]+$/ ||
 	&error(&text('error_invalidservice' ,$in{'name'}));

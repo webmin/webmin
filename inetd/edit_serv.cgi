@@ -30,97 +30,74 @@ else {
 		}
 	}
 
-print "<form action=\"save_serv.cgi\" method=post>\n";
+print &ui_form_start("save_serv.cgi", "post");
 if (@serv) {
-	print "<input type=hidden name=spos value=$in{'spos'}>\n";
-	print "<input type=hidden name=ipos value=$in{'ipos'}>\n";
+	print &ui_hidden("spos", $in{'spos'});
+	print &ui_hidden("ipos", $in{'ipos'});
 	}
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'editserv_detail'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_table_start($text{'editserv_detail'}, "width=100%", 4);
 
-print "<tr> <td nowrap><b>$text{'editserv_name'}</b></td>\n";
-print "<td><input size=20 name=name value=\"$serv[1]\"></td>\n";
+# Service name
+print &ui_table_row($text{'editserv_name'},
+	&ui_textbox("name", $serv[1], 20));
 
-print "<td nowrap><b>$text{'editserv_port'}</b></td>\n";
-print "<td nowrap><input size=10 name=port value=\"$serv[2]\"></td> </tr>\n";
+# Port number
+print &ui_table_row($text{'editserv_port'},
+	&ui_textbox("port", $serv[2], 10));
 
-print "<tr> <td valign=top><b>$text{'editrpc_protocol'}</b></td>\n";
-print "<td valign=top><select name=protocol>\n";
-foreach $p (&list_protocols()) {
-	printf "<option value=$p %s>%s %s\n",
-		$serv[3] eq $p || (!@serv && $p eq "tcp") ? "selected" : "",
-		uc($p), $prot_name{$p} ? "($prot_name{$p})" : "";
-	}
-print "</select></td>\n";
+# Protocol
+print &ui_table_row($text{'editrpc_protocol'},
+	&ui_select("protocol", @serv ? $serv[3] : "tcp",
+		   [ map { [ $_, uc($_).($prot_name{$_} ? " ($prot_name{$_})"
+						      : "") ] }
+			 &list_protocols() ]));
 
-print "<td valign=top><b>$text{'editrpc_aliase'}</b></td>\n";
-printf "<td valign=top><textarea name=aliases ".
-       "rows=3 cols=20>%s</textarea></td> </tr>\n",
-	join("\n", split(/\s+/, $serv[4]));
+# Name aliases
+print &ui_table_row($text{'editrpc_aliase'},
+	&ui_textarea("aliases", join("\n", split(/\s+/, $serv[4])), 3, 20));
 
-print "</table></td> </tr></table><p>\n";
+print &ui_table_end();
 
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'editrpc_server'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_table_start($text{'editrpc_server'}, "width=100%", 4);
 
-print "<tr> <td colspan=4>\n";
-printf "<input type=radio name=act value=0 %s> $text{'editrpc_noassigned'}\n",
-	@inet ? "" : "checked";
-printf "<input type=radio name=act value=1 %s> $text{'editrpc_disable'}\n",
-	@inet && !$inet[1] ? "checked" : "";
-printf "<input type=radio name=act value=2 %s> $text{'editrpc_enable'}\n",
-	$inet[1] ? "checked" : "";
-print "</td> </tr>\n";
+# Server enabled?
+print &ui_table_row(undef,
+	&ui_radio("act", $inet[1] ? 2 : @inet && !$inet[1] ? 1 : 0,
+		  [ [ 0, $text{'editrpc_noassigned'} ],
+		    [ 1, $text{'editrpc_disable'} ],
+		    [ 2, $text{'editrpc_enable'} ] ]), 3);
+@opts = ( );
 
-print "<tr> <td><b>$text{'editserv_program'}</b></td>\n";
-print "<td colspan=3>";
+# Handled internally
 if (!$config{'no_internal'}) {
-	printf "<input type=radio name=serv value=1 %s>\n",
-		$inet[8] eq "internal" ? "checked" : "";
-	print "$text{'editserv_inetd'}</td> </tr>\n";
+	push(@opts, [ 1, $text{'editserv_inetd'} ]);
 	}
 
 $qm = ($inet[8] =~ s/^\?//);
 $tcpd = (-x $config{'tcpd_path'} && $inet[8] eq $config{'tcpd_path'});
-print "<tr> <td></td>\n";
-print "<td colspan=3>";
-if (!$config{'no_internal'}) {
-	printf "<input type=radio name=serv value=2 %s> $text{'editrpc_command'}\n",
-		$inet[8] ne "internal" && !$tcpd ? "checked" : "";
-	printf "<input name=program size=30 value=\"%s\">\n",
-		$inet[8] ne "internal" && !$tcpd ? $inet[8] : "";
-	print &file_chooser_button("program", 0);
-	printf "$text{'editserv_args'} <input name=args size=30 value=\"%s\">\n",
- 	       $inet[5] ne "internal" && !$tcpd ? $inet[9] : "";
-
-} else {
-	printf "<input type=radio name=serv value=2 %s> $text{'editrpc_command'}\n",
-		!$tcpd ? "checked" : "";
-	printf "<input name=program size=30 value=\"%s\">\n",
-		!$tcpd ? $inet[8] : "";
-	print &file_chooser_button("program", 0);
-	printf "$text{'editserv_args'} <input name=args size=30 value=\"%s\">\n",
-        	!$tcpd ? $inet[9] : "";
-	}
+$mode = $inet[8] eq "internal" && !$config{'no_internal'} ? 1 : $tcpd ? 3 : 2;
+push(@opts, [ 2, $text{'editrpc_command'},
+	      &ui_textbox("program", $mode == 2 ? $inet[8] : "", 30).
+	      &file_chooser_button("program", 0)." ".
+	      $text{'editserv_args'}." ".
+	      &ui_textbox("args", $mode == 2 ? $inet[9] : "", 30) ]);
 if ($config{'qm_mode'}) {
-	print "<br>","&nbsp;" x 5;
-	printf "<input type=checkbox name=qm value=1 %s> %s\n",
-		$qm ? "checked" : "", $text{'editserv_qm'};
+	# Server program doesn't exist
+	$opts[$#opts]->[2] .= "<br>\n".
+			      &ui_checkbox("qm", 1, $text{'editserv_qm'}, $qm);
 	}
-print "</td> </tr>\n";
 
 if (-x $config{'tcpd_path'}) {
-	print "<tr> <td></td>\n";
-	printf "<td colspan=3><input type=radio name=serv value=3 %s>\n",
-		$tcpd ? "checked" : "";
- 	print "$text{'editserv_wrapper'}\n";
-	$inet[9] =~ /^(\S+)\s*(.*)$/;
-	printf "<input name=tcpd size=15 value=\"%s\">\n", $tcpd ? $1 : "";
-	printf "$text{'editserv_args'} <input name=args2 size=30 value=\"%s\"></td> </tr>\n",
-		$tcpd ? $2 : "";
+	($tcpserv, $tcpargs) = $tcpd && $inet[9] =~ /^(\S+)\s*(.*)$/ ?
+				($1, $2) : ( );
+	push(@opts, [ 3, $text{'editserv_wrapper'},
+		      &ui_textbox("tcpd", $tcpserv, 15)." ".
+		      $text{'editserv_args'}." ".
+		      &ui_textbox("args2", $tcpargs, 15) ]);
 	}
+
+print &ui_table_row($text{'editserv_program'},
+	&ui_radio_table("serv", $mode, \@opts), 3);
 
 @op1 = split(/[:\.\/]/, $inet[6]);
 @op2 = split(/[:\.\/]/, $inet[7]);
@@ -128,15 +105,13 @@ if ($inet[7] =~ /\// && $inet[7] !~ /:/) {
 	# class but no group!
 	splice(@op2, 1, 0, undef);
 	}
-print "<tr> <td nowrap><b>$text{'editrpc_waitmode'}</b></td> <td nowrap>\n";
-printf "<input type=radio name=wait value=wait %s> $text{'editrpc_wait'}\n",
-	$op1[0] eq "wait" ? "checked" : "";
-printf "<input type=radio name=wait value=nowait %s> $text{'editrpc_nowait'}</td>\n",
-	$op1[0] ne "wait" ? "checked" : "";
+print &ui_table_row($text{'editrpc_waitmode'},
+	&ui_radio("wait", $op1[0] eq "wait" ? "wait" : "nowait",
+		  [ [ "wait", $text{'editrpc_wait'} ],
+		    [ "nowait", $text{'editrpc_nowait'} ] ]));
 
-print "<td nowrap><b>$text{'editrpc_execasuser'}</b></td>\n";
-print "<td nowrap><input name=user size=8 value=\"$op2[0]\"> ",
-      &user_chooser_button("user", 0),"</td> </tr>\n";
+print &ui_table_row($text{'editrpc_execasuser'},
+	&ui_userbox("user", $op2[0]));
 
 if ($config{'extended_inetd'} == 1) {
 	# Display max per minute and group options
@@ -191,18 +166,13 @@ elsif ($config{'extended_inetd'} == 2) {
 	print "<td><input name=class size=10 value=\"$op2[2]\"></td> </tr>\n";
 	}
 
-print "</table></td></tr></table>\n";
+print &ui_table_end();
 if (!$in{'new'}) {
-	print "<table width=100%>\n";
-	print "<tr> <td><input type=submit value=$text{'index_save'}></td>\n";
-	print "</form><form action=\"delete_serv.cgi\">\n";
-	print "<input type=hidden name=spos value=\"$in{'spos'}\">\n";
-	print "<input type=hidden name=ipos value=\"$in{'ipos'}\">\n";
-	print "<td align=right><input type=submit value=$text{'index_delete'}></td> </tr>\n";
-	print "</form></table><p>\n";
+	print &ui_form_end([ [ undef, $text{'save'} ],
+			     [ 'delete', $text{'delete'} ] ]);
 	}
 else {
-	print "<input type=submit value=$text{'index_create'}></form><p>\n";
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 
 &ui_print_footer("", $text{'index_list'});

@@ -95,10 +95,8 @@ if (!$config{'show_empty'}) {
 
 print &ui_hr();
 
-print "<a href=\"edit_rpc.cgi?new=1\">$text{'index_newrpc'}</a>. <br>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'index_rpc'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+# Get and sort RPC services
+@links = ( "<a href=\"edit_rpc.cgi?new=1\">$text{'index_newrpc'}</a>" );
 $i = 0;
 @rlist = &list_rpcs();
 if ($config{'sort_mode'} == 1) {
@@ -110,8 +108,8 @@ elsif ($config{'sort_mode'} == 2) {
 			($rpc_active{$a->[1]} ? 2 :
 			 $rpc_disabled{$a->[1]} ? 1 : 0) } @rlist;
 	}
+@grid = ( );
 foreach $r (@rlist) {
-	if ($i%4 == 0) { print "<tr $cb>\n"; }
 	$ra = $rpc_active{$r->[1]};
 	$rd = $rpc_disabled{$r->[1]};
 	$ranum = $rpc_active{$r->[2]};
@@ -121,13 +119,14 @@ foreach $r (@rlist) {
 	elsif ($rd =~ /\d/) { $op = "<i>"; $cl = "</i>"; $rp = $rd; }
 	elsif ($rdnum =~ /\d/) { $op = "<i>"; $cl = "</i>"; $rp = $rdnum; }
 	else { $op = $cl = $rp = ""; }
-	print "<td>$op";
-	print "<a href=\"edit_rpc.cgi?rpos=$r->[4]&ipos=$rp\">",
-	      &html_escape($r->[1]),"</a>$cl</td>\n";
-	if ($i++%4 == 3) { print "</tr>\n"; }
+	push(@grid, $op.
+		    "<a href=\"edit_rpc.cgi?rpos=$r->[4]&ipos=$rp\">".
+		    &html_escape($r->[1])."</a>".$cl);
 	}
-print "</table></td></tr></table>\n";
-print "<a href=\"edit_rpc.cgi?new=1\">$text{'index_newrpc'}</a>. <p>\n";
+print &ui_links_row(\@links);
+print &ui_grid_table(\@grid, 4, 100, undef, undef,
+		     $text{'index_rpc'});
+print &ui_links_row(\@links);
 
 print &ui_hr();
 print &ui_buttons_start();
