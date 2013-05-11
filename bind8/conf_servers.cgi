@@ -20,7 +20,7 @@ print &ui_columns_start([ $text{'servers_ip'},
 for($i=0; $i<@servers; $i++) {
 	$s = $servers[$i];
 	@cols = ( );
-	push(@cols, &ui_textbox("ip_$i", $s->{'value'}, 15));
+	push(@cols, &ui_textbox("ip_$i", $s->{'value'}, 30));
 
 	$bogus = &find_value("bogus", $s->{'members'});
 	push(@cols, &ui_radio("bogus_$i", lc($bogus) eq 'yes' ? 1 : 0,

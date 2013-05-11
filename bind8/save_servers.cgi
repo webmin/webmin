@@ -12,7 +12,8 @@ $conf = &get_config();
 @old = &find("server", $conf);
 for($i=0; defined($ip = $in{"ip_$i"}); $i++) {
 	next if (!$ip);
-	&check_ipaddress($ip) || &error(&text('servers_eip', $ip));
+	&check_ipaddress($ip) || &check_ip6address($ip) ||
+		&error(&text('servers_eip', $ip));
 	$in{"trans_$i"} =~ /^\d*$/ ||
 		&error(&text('servers_etrans', $in{"trans_$i"}));
 	local $s = { 'name' => 'server',
