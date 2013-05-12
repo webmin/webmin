@@ -16,41 +16,38 @@ else {
 		}
 	}
 
-print "<form action=\"save_rpc.cgi\" method=post>\n";
+print &ui_form_start("save_rpc.cgi", "post");
 if (@rpc) {
-	print "<input type=hidden name=rpos value=$in{'rpos'}>\n";
-	print "<input type=hidden name=ipos value=$in{'ipos'}>\n";
-	}
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'editrpc_detail'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+        print &ui_hidden("rpos", $in{'rpos'});
+        print &ui_hidden("ipos", $in{'ipos'});
+        }
+print &ui_table_start($text{'editrpc_detail'}, "width=100%", 4);
 
-print "<tr> <td nowrap><b>$text{'editrpc_prgname'}</b></td>\n";
-print "<td><input size=10 name=name value=\"$rpc[1]\"></td>\n";
+# Service name
+print &ui_table_row($text{'editrpc_prgname'},
+	&ui_textbox("name", $rpc[1], 20));
 
-print "<td><b>$text{'editrpc_prgnum'}</b></td>\n";
-print "<td><input size=7 name=number value=\"$rpc[2]\"></td> </tr>\n";
+# RPC number
+print &ui_table_row($text{'editrpc_prgnum'},
+	&ui_textbox("number", $rpc[2], 7));
 
-print "<tr> <td><b>$text{'editrpc_aliase'}</b></td> <td colspan=3>\n";
-print "<input size=40 name=aliases value=\"$rpc[3]\"></td> </tr>\n";
+# Alias names
+print &ui_table_row($text{'editrpc_aliase'},
+        &ui_textarea("aliases", join("\n", split(/\s+/, $rpc[3])), 3, 20));
 
-print "</table></td></tr></table><p>\n";
+print &ui_table_end();
 
 if ($config{'rpc_inetd'}) {
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'editrpc_server'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table width=100%>\n";
+	print &ui_table_start($text{'editrpc_server'}, "width=100%", 4);
 
-	print "<tr> <td colspan=4>\n";
-	printf "<input type=radio name=act value=0 %s> $text{'editrpc_noassigned'}\n",
-		@inet ? "" : "checked";
-	printf "<input type=radio name=act value=1 %s> $text{'editrpc_disable'}\n",
-		@inet && !$inet[1] ? "checked" : "";
-	printf "<input type=radio name=act value=2 %s> $text{'editrpc_enable'}\n",
-		$inet[1] ? "checked" : "";
-	print "</td> </tr>\n";
+	# Server enabled?
+	print &ui_table_row($text{'editrpc_act'},
+		&ui_radio("act", $inet[1] ? 2 : @inet && !$inet[1] ? 1 : 0,
+			  [ [ 0, $text{'editrpc_noassigned'} ],
+			    [ 1, $text{'editrpc_disable'} ],
+			    [ 2, $text{'editrpc_enable'} ] ]), 3);
 
-	print "<td><b>$text{'editrpc_version'}</b></td>\n";
+	# RPC versions
 	if ($inet[3] =~ /^[^\/]+\/([0-9]+)\-([0-9]+)$/) {
 		$vfrom = $1; $vto = $2;
 		}
@@ -58,111 +55,91 @@ if ($config{'rpc_inetd'}) {
 		$vfrom = $1; $vto = $1;
 		}
 	else { $vfrom = $vto = ""; }
-	print "<td><input size=1 name=vfrom value=\"$vfrom\"> -\n";
-	print "<input size=1 name=vto value=\"$vto\"></td>\n";
+	print &ui_table_row($text{'editrpc_version'},
+		&ui_textbox("vfrom", $vfrom, 2)." - ".
+		&ui_textbox("vto", $vto, 2));
 
-	print "<td><b>$text{'editrpc_socket'}</b></td>\n";
-	print "<td><select name=type>\n";
-	printf "<option value=stream %s>Stream\n",
-		$inet[4] eq "stream" || !@inet ? "selected" : "";
-	printf "<option value=dgram %s>Datagram\n",
-		$inet[4] eq "dgram" ? "selected" : "";
-	printf "<option value=tli %s>TLI\n",
-		$inet[4] eq "tli" ? "selected" : "";
-	print "</select></td> </tr>\n";
+	# Socket type
+	print &ui_table_row($text{'editrpc_socket'},
+		&ui_select("type", $inet[4] || "stream",
+			   [ [ "stream", $text{'editrpc_stream'} ],
+			     [ "dgram", $text{'editrpc_dgram'} ],
+			     [ "tli", $text{'editrpc_tli'} ] ]));
 
-	print "<tr> <td><b>$text{'editrpc_protocol'}</b></td>\n";
+	# Protocol
 	$inet[5] =~ /^[^\/]+\/(.*)$/;
 	if ($1 eq "*") { @usedpr = split(/\s+/, $config{'rpc_protocols'}); }
 	else { @usedpr = split(/,/, $1); }
-	print "<td colspan=3>\n";
-	foreach $upr (split(/\s+/, $config{rpc_protocols})) {
-		printf "<input name=protocols type=checkbox value=\"$upr\" %s>".
-		       " $upr\n", &indexof($upr,@usedpr)<0?"":"checked";
+	@cbs = ( );
+	foreach $upr (split(/\s+/, $config{'rpc_protocols'})) {
+		push(@cbs, &ui_checkbox("protocols", $upr, uc($upr),
+					&indexof($upr, @usedpr) >= 0));
 		}
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'editrpc_protocol'}, join(" ", @cbs));
 
+	# RPC server
 	$qm = ($inet[8] =~ s/^\?//);
-	print "<tr> <td nowrap><b>$text{'editrpc_server'}</b></td>\n";
 	if (!$config{'no_internal'}) {
-		printf "<td colspan=3><input type=radio name=internal value=1 %s> $text{'editrpc_internal'}\n",
-			$inet[8] eq "internal" ? "checked" : "";
-		printf "<input type=radio name=internal value=0 %s>\n",
-			$inet[8] ne "internal" || !@inet ? "checked" : "";
-		printf "<input name=program size=40 value=\"%s\">\n",
-		$inet[8] ne "internal" || !@inet ? $inet[8] : "";
-	} else {
-		printf "<td colspan=3>\n";
-		printf "<input name=program size=40 value=\"%s\">\n",
-			@inet ? $inet[8] : "";
+		$server = &ui_radio("internal", $inet[8] eq "internal" ? 1 : 0,
+			    [ [ 1, $text{'editrpc_internal'} ],
+			      [ 0, &ui_textbox("program", $inet[8] ne "internal" || !@inet ? $inet[8] : "", 40) ] ]);
 		}
-	print &file_chooser_button("program", 0);
+	else {
+		$server = &ui_textbox("program", @inet ? $inet[8] : "", 40);
+		}
+	$server .= &file_chooser_button("program", 0);
 	if ($config{'qm_mode'}) {
-		print "<br>","&nbsp;" x 5;
-		printf "<input type=checkbox name=qm value=1 %s> %s\n",
-			$qm ? "checked" : "", $text{'editserv_qm'};
+		$server .= "<br>".
+			   &ui_checkbox("qm", 1, $text{'editserv_qm'}, $qm);
 		}
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'editrpc_server'}, $server, 3);
 
-	print "<tr> <td nowrap><b>$text{'editrpc_command'}</b></td> <td colspan=3>\n";
+	# RPC command
 	if (!$config{'no_internal'}) {
-		printf "<input name=args size=40 value=\"%s\"></td> </tr>\n",
-			$inet[8] eq "internal" ? "" : $inet[9];
+		print &ui_table_row($text{'editrpc_command'},
+			&ui_textbox("args", $inet[8] eq "internal" ? "" : $inet[9], 40));
 	} else {
-		printf "<input name=args size=40 value=\"%s\"></td> </tr>\n",
-			$inet[9];
+		print &ui_table_row($text{'editrpc_command'},
+			&ui_textbox("args", $inet[9], 40));
 		}
+
+	# Extract wait mode and group
 	if ($inet[6] =~ /^(\S+)\.(\d+)$/) { $waitmode = $1; $permin = $2; }
 	else { $waitmode = $inet[6]; $permin = -1; }
 	if ($inet[7] =~ /^(\S+)\.(\S+)$/) { $user = $1; $group = $2; }
 	else { $user = $inet[7]; undef($group); }
 
-	print "<tr> <td nowrap><b>$text{'editrpc_waitmode'}</b></td>\n";
-	printf "<td nowrap><input type=radio name=wait value=wait %s> $text{'editrpc_wait'}\n",
-		$waitmode eq "wait" || !@inet ? "checked" : "";
-	printf "<input type=radio name=wait value=nowait %s> $text{'editrpc_nowait'}</td>\n",
-		$waitmode eq "nowait" ? "checked" : "";
+	# Wait for completion?
+	print &ui_table_row($text{'editrpc_waitmode'},
+		&ui_radio("wait", $waitmode || "wait",
+			  [ [ "wait", $text{'editrpc_wait'} ],
+			    [ "nowait", $text{'editrpc_nowait'} ] ]));
 
-	print "<td nowrap><b>$text{'editrpc_execasuser'}</b></td>\n";
-	print "<td nowrap><input name=user size=8 value=\"$user\"> ",
-	      &user_chooser_button("user", 0),"</td> </tr>\n";
+	# Run as user
+	print &ui_table_row($text{'editrpc_execasuser'},
+		&ui_user_textbox("user", $user));
 
-	if ($config{extended_inetd}) {
-		print "<tr> <td nowrap><b>$text{'editrpc_max'}</b></td> <td nowrap>\n";
-		printf "<input type=radio name=permin_def value=1 %s> $text{'editrpc_default'}\n",
-			$permin<0 ? "checked" : "";
-		printf "&nbsp; <input type=radio name=permin_def value=0 %s>\n",
-			$permin<0 ? "" : "checked";
-		printf "<input name=permin size=5 value=\"%s\"></td>\n",
-			$permin<0 ? "" : $permin;
+	if ($config{'extended_inetd'}) {
+		# Max per minute
+		print &ui_table_row($text{'editrpc_max'},
+			&ui_opt_textbox("permin", $permin<0 ? "" : $permin, 5,
+					$text{'editrpc_default'}));
 
-		print "<td nowrap><b>$text{'editrpc_execasgrp'}</b></td>\n";
-		print "<td nowrap><select name=group>\n";
-		printf "<option value=\"\" %s> $text{'editrpc_default'}",
-			$group ? "" : "selected";
-		setgrent();
-		while(@ginfo = getgrent()) {
-			printf "<option value=\"$ginfo[0]\" %s>$ginfo[0]\n",
-				$ginfo[0] eq $group ? "selected" : "";
-			}
-		print "</select></td> </tr>\n";
-		endgrent() if ($gconfig{'os_type'} ne 'hpux');
+		# Run as group
+		print &ui_table_row($text{'editrpc_execasgrp'},
+			&ui_opt_textbox("group", $group, 13, $text{'default'}).
+			&group_chooser_button("group"));
 		}
 
-	print "</table></td></tr></table><p>\n";
+	print &ui_table_end();
 	}
 
-if (@rpc) {
-	print "<table width=100%>\n";
-	print "<tr> <td><input type=submit value=$text{'index_save'}></td>\n";
-	print "</form><form action=\"delete_rpc.cgi\">\n";
-	print "<input type=hidden name=rpos value=\"$in{'rpos'}\">\n";
-	print "<input type=hidden name=ipos value=\"$in{'ipos'}\">\n";
-	print "<td align=right><input type=submit value=$text{'index_delete'}></td> </tr>\n";
-	print "</form></table><p>\n";
+if (!$in{'new'}) {
+        print &ui_form_end([ [ undef, $text{'save'} ],
+                             [ 'delete', $text{'delete'} ] ]);
 	}
 else {
-	print "<input type=submit value=$text{'index_create'}></form><p>\n";
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 
 &ui_print_footer("", $text{'index_list'});

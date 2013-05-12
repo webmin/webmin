@@ -5,6 +5,12 @@ require './inetd-lib.pl';
 &error_setup($text{'error_saverpc'});
 &ReadParse();
 
+# Delete button clicked, redirect to correct CGI
+if ($in{'delete'}) {
+        &redirect("delete_rpc.cgi?rpos=$in{'rpos'}&ipos=$in{'ipos'}");
+        return;
+        }
+
 # Check inputs
 $in{name} =~ /^[A-z][A-z0-9\_\-]+$/ ||
 	&error(&text('error_invalidprgname', $in{name}));
