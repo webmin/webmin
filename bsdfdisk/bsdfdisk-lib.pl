@@ -99,8 +99,8 @@ foreach my $dev (glob("/dev/ada[0-9]"),
 	# Get disk model from dmesg
 	open(DMESG, "/var/run/dmesg.boot");
 	while(<DMESG>) {
-		if (/^(\S+):\s+<(.*)>/ && $1 eq $disk->{'short'}) {
-			$disk->{'model'} = $2;
+		if (/^(\S+):\s+(\S+\s+)?<(.*)>/ && $1 eq $disk->{'short'}) {
+			$disk->{'model'} = $3;
 			}
 		elsif (/^(\S+):\s+(\d+)(\S+)\s+\((\d+)\s+(\d+)\s+byte\s+sectors/ &&
 		       $1 eq $disk->{'short'}) {
