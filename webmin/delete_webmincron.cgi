@@ -31,6 +31,7 @@ elsif ($in{'run'}) {
 		print &text('webmincron_running',
 			    $minfo{'desc'} || $w->{'module'},
 			    "<tt>$w->{'func'}</tt>"),"<br>\n";
+		print "<pre>\n";
 		eval {
 			local $main::error_must_die = 1;
 			&foreign_require($w->{'module'}, $w->{'file'});
@@ -42,6 +43,7 @@ elsif ($in{'run'}) {
 				&foreign_call($w->{'module'}, $w->{'func'});
 				}
 			};
+		print "</pre>\n";
 		if ($@) {
 			print &text('webmincron_failed',
 				    &html_escape($@)),"<p>\n";
