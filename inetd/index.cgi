@@ -116,8 +116,8 @@ foreach $r (@rlist) {
 	$rdnum = $rpc_disabled{$r->[2]};
 	if ($ra =~ /\d/) { $op = "<b>"; $cl = "</b>"; $rp = $ra; }
 	elsif ($ranum =~ /\d/) { $op = "<b>"; $cl = "</b>"; $rp = $ranum; }
-	elsif ($rd =~ /\d/) { $op = "<i>"; $cl = "</i>"; $rp = $rd; }
-	elsif ($rdnum =~ /\d/) { $op = "<i>"; $cl = "</i>"; $rp = $rdnum; }
+	elsif ($rd =~ /\d/) { $op = "<i><b>"; $cl = "</b></i>"; $rp = $rd; }
+	elsif ($rdnum =~ /\d/) { $op = "<i><b>"; $cl = "</b></i>"; $rp = $rdnum; }
 	else { $op = $cl = $rp = ""; }
 	push(@grid, $op.
 		    "<a href=\"edit_rpc.cgi?rpos=$r->[4]&ipos=$rp\">".
