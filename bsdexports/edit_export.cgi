@@ -36,7 +36,8 @@ print "<tr> <td><b>$text{'edit_kerb'}</b></td>\n";
 print "<td>",&ui_yesno_radio("kerb", $exp{'kerb'} ? 1 : 0),
       "</td> </tr>\n";
 
-print &ui_table_end(),"<p>\n";
+print &ui_table_end();
+
 print &ui_table_start($text{'edit_header2'}, "width=100%", 2);
 
 $user = $exp{'maproot'} =~ /^([^:]+)/ ? $1 : "";
@@ -61,7 +62,8 @@ print &ui_table_row($text{'edit_mapall'},
 				 $exp{'mapall'} =~ /:/)."\n".
 		    &ui_textbox("mapallg", $groups, 30));
 
-print &ui_table_end(),"<p>\n";
+print &ui_table_end();
+
 print &ui_table_start($text{'edit_header3'}, "width=100%", 2);
 
 print &ui_table_row($text{'edit_clients'},
@@ -74,7 +76,7 @@ print &ui_table_row($text{'edit_clients'},
 		     $text{'edit_mask'}." ".
 		     &ui_textbox("mask", $exp{'mask'}, 20) ] ]));
 
-print &ui_table_end(),"<p>\n";
+print &ui_table_end();
 
 if (%exp) {
 	print &ui_form_end([ [ "save", $text{'save'} ],
