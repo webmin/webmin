@@ -1,0 +1,2 @@
+restart_command=/etc/rc.d/rpcbind forcerestart ; /etc/rc.d/nfsd forcerestart ; /etc/rc.d/mountd forcerestart
+exports_file=/etc/exports
