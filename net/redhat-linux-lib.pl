@@ -758,7 +758,12 @@ return $rv;
 # Apply the interface and routing settings
 sub apply_network
 {
-&system_logged("(cd / ; /etc/init.d/network stop ; /etc/init.d/network start) >/dev/null 2>&1");
+if ($gconfig{'os_type'} eq 'mandrake-linux') {
+	&system_logged("(cd / ; service network stop ; service network start) >/dev/null 2>&1");
+	}
+else {
+	&system_logged("(cd / ; /etc/init.d/network stop ; /etc/init.d/network start) >/dev/null 2>&1");
+	}
 }
 
 # apply_interface(&iface)
