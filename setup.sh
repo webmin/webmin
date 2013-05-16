@@ -778,7 +778,7 @@ if [ "$nochown" = "" ]; then
 	chmod -R og-w "$wadir"
 	chmod -R a+rx "$wadir"
 fi
-if [ $var_dir != "/var" ]; then
+if [ $var_dir != "/var" -a "$upgrading" != 1 ]; then
 	# Make log directory non-world-readable or writable
 	chown -R root $var_dir
 	chgrp -R bin $var_dir
