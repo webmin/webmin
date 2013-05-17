@@ -242,7 +242,7 @@ if (!$in{'new'}) {
 	elsif ($olddesc) {
 		push(@rprops, "description");
 		}
-	if (!$pass) {
+	if (!$pass && $ginfo->get_value("userPassword")) {
 		push(@rprops, "userPassword");
 		}
 
