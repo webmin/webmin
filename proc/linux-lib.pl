@@ -229,9 +229,11 @@ sub get_memory_info
 local %m;
 if (open(BEAN, "/proc/user_beancounters")) {
 	# If we are running under Virtuozzo, there may be a limit on memory
-	# use in force that is less than the real system's memory.
+	# use in force that is less than the real system's memory. Use this,
+	# unless it is unreasonably high (like 1TB)
 	while(<BEAN>) {
-		if (/privvmpages\s+(\d+)\s+(\d+)\s+(\d+)/) {
+		if (/privvmpages\s+(\d+)\s+(\d+)\s+(\d+)/ &&
+                    $3 < 1024*1024*1024*1024) {
 			return ($3, $3-$1, undef, undef);
 			}
 		}
