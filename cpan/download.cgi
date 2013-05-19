@@ -84,7 +84,8 @@ elsif ($in{'source'} == 3) {
 				}
 			}
 		}
-	if (scalar(@cpan) == scalar(@cpanyum)) {
+	if (scalar(@cpan) == scalar(@cpanyum) &&
+	    defined(&software::update_system_install)) {
 		# Can install from YUM or APT .. do it!
 		$i = 0;
 		foreach $yum (@cpanyum) {
