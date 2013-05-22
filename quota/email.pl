@@ -219,8 +219,16 @@ else {
 	}
 &mailboxes::send_text_mail($from || &mailboxes::get_from_address(),
 			   $addr,
-			   $ccaddr,
+			   undef,
 			   $subject,
 			   $body);
+if ($ccaddr) {
+	# Also send to other address (like the domain owner)
+	&mailboxes::send_text_mail($from || &mailboxes::get_from_address(),
+				   $ccaddr,
+				   undef,
+				   $subject,
+				   $body);
+	}
 }
 

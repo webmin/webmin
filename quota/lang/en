@@ -281,8 +281,8 @@ lusers_domain=Domain for user addresses
 luser_virtualmin=Get domain from Virtualmin?
 lusers_from=From: address for email
 lusers_mass=Update Selected Users
-lusers_cc=Also Cc: email to
-lusers_nocc=Don't Cc
+lusers_cc=Also send email to
+lusers_nocc=Nobody
 
 grace_seconds=Seconds
 grace_minutes=Minutes
