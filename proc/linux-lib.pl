@@ -231,10 +231,16 @@ if (open(BEAN, "/proc/user_beancounters")) {
 	# If we are running under Virtuozzo, there may be a limit on memory
 	# use in force that is less than the real system's memory. Use this,
 	# unless it is unreasonably high (like 1TB)
+	local $pagesize = 1024;
+	eval {
+		use POSIX;
+		$pagesize = POSIX::sysconf(POSIX::_SC_PAGESIZE);
+		};
 	while(<BEAN>) {
 		if (/privvmpages\s+(\d+)\s+(\d+)\s+(\d+)/ &&
                     $3 < 1024*1024*1024*1024) {
-			return ($3, $3-$1, undef, undef);
+			return ($3 * $pagesize / 1024,
+				($3-$1) * $pagesize / 1024, undef, undef);
 			}
 		}
 	close(BEAN);
