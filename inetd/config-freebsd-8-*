@@ -1,5 +1,5 @@
-show_empty=0
-rpc_inetd=0
+show_empty=1
+rpc_inetd=1
 inetd_conf_file=/etc/inetd.conf
 rpc_protocols=tcp udp
 restart_command=/etc/rc.d/inetd forcerestart
