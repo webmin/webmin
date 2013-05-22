@@ -8,12 +8,13 @@ our (%in, %text, %config);
 
 &ui_print_header(undef, $text{'playtime_title'}, "");
 
-my $playtime = &get_current_day_usage();
+my ($playtime, $limit_playtime) = &get_current_day_usage();
 my @conns = &list_connected_players();
 
 if (keys %$playtime) {
 	print &ui_columns_start([ $text{'playtime_user'},
 				  $text{'playtime_time'},
+				  $text{'playtime_ltime'},
 				  $text{'playtime_now'} ]);
 	foreach my $u (sort { $playtime->{$b} <=> $playtime->{$a} }
 			    keys %$playtime) {
@@ -21,9 +22,10 @@ if (keys %$playtime) {
 			"<a href='view_conn.cgi?name=".&urlize($u)."'>".
 			  &html_escape($u)."</a>",
 			&nice_seconds($playtime->{$u}),
+			&nice_seconds($limit_playtime->{$u} || 0),
 			&indexof($u, @conns) >= 0 ?
 			    "<font color=green><b>$text{'playtime_on'}</b></font>" :
-			    $text{'playtime_off'},
+			    "<font color=red>$text{'playtime_off'}</a>",
 			]);
 		}
 	print &ui_columns_end();
@@ -64,6 +66,7 @@ print &ui_table_row($text{'playtime_ips'},
 	&ui_opt_textbox("ips", $config{'playtime_ips'}, 40,
 		        $text{'playtime_all2'}, $text{'playtime_sel2'}));
 
+print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});

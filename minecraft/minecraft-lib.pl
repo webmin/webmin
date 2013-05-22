@@ -13,6 +13,8 @@ our ($module_root_directory, %text, %gconfig, $root_directory, %config,
 our $history_file = "$module_config_directory/history.txt";
 our $server_jar_url = "https://s3.amazonaws.com/MinecraftDownload/launcher/minecraft_server.jar";
 
+&foreign_require("webmin");
+
 # check_minecraft_server()
 # Returns an error message if the Minecraft server is not installed
 sub check_minecraft_server
@@ -756,7 +758,8 @@ if (time() - $config{'last_check'} > 6*60*60) {
 }
 
 # get_current_day_usage()
-# Returns a hash ref from usernames to usage over the last day
+# Returns a hash ref from usernames to total usage over the last day, and
+# usage that counts towards any limits
 sub get_current_day_usage
 {
 my $logfile = $config{'minecraft_dir'}."/server.log";
@@ -783,15 +786,20 @@ while(1) {
 	}
 
 # Read forwards, looking for logins and logouts for today
-my %rv;
-my %lastlogin;
+my (%rv, %limit_rv);
+my (%lastlogin, %limit_lastlogin);
 while(my $line = <LOGFILE>) {
 	$line =~ /^((\d+)\-(\d+)\-(\d+))\s+(\d+):(\d+):(\d+)/ || next;
-	$1 eq $wantday || next;
+	my $day = $1;
+	$day eq $wantday || next;
 	my $secs = $5*60*60 + $6*60 + $7;
-	if ($line =~ /\s(\S+)\s*\[[^\]]+\]\s+logged\s+in\s/) {
+	if ($line =~ /\s(\S+)\[.*\/([0-9\.]+):(\d+)\]\s+logged\s+in\s/) {
 		# Login by a user
-		$lastlogin{$1} = $secs;
+		my ($u, $ip) = ($1, $2);
+		$lastlogin{$u} = $secs;
+		if (&limit_user($ip, $u, $day)) {
+			$limit_lastlogin{$u} = $secs;
+			}
 		}
 	elsif ($line =~ /\s(\S+)(\s*\[[^\]]+\])?\s+lost\s+connection/) {
 		# Logout .. count time
@@ -799,6 +807,11 @@ while(my $line = <LOGFILE>) {
 			# Add time from last login
 			$rv{$1} += $secs - $lastlogin{$1};
 			delete($lastlogin{$1});
+			}
+		if (defined($limit_lastlogin{$1})) {
+			# Also for login that counts towards limits
+			$limit_rv{$1} += $secs - $limit_lastlogin{$1};
+			delete($limit_lastlogin{$1});
 			}
 		}
 	}
@@ -809,8 +822,11 @@ my $now = $tm[2]*60*60 + $tm[1]*60 + $tm[0];
 foreach my $u (keys %lastlogin) {
 	$rv{$u} += $now - $lastlogin{$u};
 	}
+foreach my $u (keys %limit_lastlogin) {
+	$limit_rv{$u} += $now - $limit_lastlogin{$u};
+	}
 
-return \%rv;
+return (\%rv, \%limit_rv);
 }
 
 # nice_seconds(secs)
@@ -831,6 +847,30 @@ elsif ($hours) {
 else {
 	return "$mins mins";
 	}
+}
+
+# limit_user(ip, user, date)
+# Returns 1 if some usage should be counted for limiting purposes
+sub limit_user
+{
+my ($ip, $user, $date) = @_;
+my @users = split(/\s+/, $config{'playtime_users'});
+if (@users && &indexoflc($user, @users) < 0) {
+	return 0;
+	}
+my @ips = split(/\s+/, $config{'playtime_ips'});
+if (@ips && !&webmin::ip_match($ip, @ips)) {
+	return 0;
+	}
+my @days = split(/\s+/, $config{'playtime_days'});
+if (@days > 0 && @days < 7) {
+	my ($y, $m, $d) = split(/\-/, $date);
+	my @tm = localtime(timelocal(0, 0, 0, $d, $m-1, $y-1900));
+	if (@tm && &indexof($tm[6], @days) < 0) {
+		return 0;
+		}
+	}
+return 1;
 }
 
 1;
