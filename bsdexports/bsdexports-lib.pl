@@ -11,7 +11,7 @@ sub check_exports
 {
 if ($gconfig{'os_type'} eq 'freebsd') {
 	# Check for commands on FreeBSD
-	foreach my $c ("mountd", "nfsd", "portmap") {
+	foreach my $c ("mountd", "nfsd") {
 		&has_command($c) || return &text('check_ecmd', $c);
 		}
 	return undef;
