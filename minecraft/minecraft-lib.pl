@@ -755,4 +755,82 @@ if (time() - $config{'last_check'} > 6*60*60) {
 	}
 }
 
+# get_current_day_usage()
+# Returns a hash ref from usernames to usage over the last day
+sub get_current_day_usage
+{
+my $logfile = $config{'minecraft_dir'}."/server.log";
+
+# Seek back till we find a day line from a previous day
+my @st = stat($logfile);
+return { } if (!@st);
+my $pos = $st[7];
+open(LOGFILE, $logfile);
+my @tm = localtime(time());
+my $wantday = sprintf("%4.4d-%2.2d-%2.2d", $tm[5]+1900, $tm[4]+1, $tm[3]);
+while(1) {
+	$pos -= 4096;
+	$pos = 0 if ($pos < 0);
+	seek(LOGFILE, $pos, 0);
+	last if ($pos == 0);
+	my $dummy = <LOGFILE>;	# Skip partial line
+	my $line = <LOGFILE>;
+	$line =~ /^((\d+)\-(\d+)\-(\d+))/ || next;
+	if ($1 ne $wantday) {
+		# Found a line for another day
+		last;
+		}
+	}
+
+# Read forwards, looking for logins and logouts for today
+my %rv;
+my %lastlogin;
+while(my $line = <LOGFILE>) {
+	$line =~ /^((\d+)\-(\d+)\-(\d+))\s+(\d+):(\d+):(\d+)/ || next;
+	$1 eq $wantday || next;
+	my $secs = $5*60*60 + $6*60 + $7;
+	if ($line =~ /\s(\S+)\s*\[[^\]]+\]\s+logged\s+in\s/) {
+		# Login by a user
+		$lastlogin{$1} = $secs;
+		}
+	elsif ($line =~ /\s(\S+)(\s*\[[^\]]+\])?\s+lost\s+connection/) {
+		# Logout .. count time
+		if (defined($lastlogin{$1})) {
+			# Add time from last login
+			$rv{$1} += $secs - $lastlogin{$1};
+			delete($lastlogin{$1});
+			}
+		}
+	}
+close(LOGFILE);
+
+# Add any active sessions
+my $now = $tm[2]*60*60 + $tm[1]*60 + $tm[0];
+foreach my $u (keys %lastlogin) {
+	$rv{$u} += $now - $lastlogin{$u};
+	}
+
+return \%rv;
+}
+
+# nice_seconds(secs)
+# Converts a number of seconds into HH:MM format
+sub nice_seconds
+{
+my ($time) = @_;
+my $days = int($time / (24*60*60));
+my $hours = int($time / (60*60)) % 24;
+my $mins = sprintf("%d", int($time / 60) % 60);
+my $secs = sprintf("%d", int($time) % 60);
+if ($days) {
+	return "$days days, $hours hours, $mins mins";
+	}
+elsif ($hours) {
+	return "$hours hours, $mins mins";
+	}
+else {
+	return "$mins mins";
+	}
+}
+
 1;
