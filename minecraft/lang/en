@@ -293,6 +293,7 @@ log_atboot=Enabled server at boot time
 log_delboot=Disabled server at boot time
 log_enable_backup=Enabled scheduled backups to $1
 log_disable_backup=Disabled scheduled backups
+log_playtime=Changed play time limits
 
 monitor_up=Minecraft Server Alive
 monitor_latest=Minecraft Server Up To Date
@@ -323,3 +324,8 @@ playtime_all=All users
 playtime_ips=Apply to connections from
 playtime_sel2=Listed IPs and networks
 playtime_all2=All addresses
+playtime_err=Failed to save play time limits
+playtime_emax=Maximum time must be a number
+playtime_eusers=No users to limit entered
+playtime_edays=No days of the week selected
+playtime_eips=No IP addresses entered
