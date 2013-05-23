@@ -15,7 +15,7 @@ if (keys %$playtime) {
 	print &ui_columns_start([ $text{'playtime_user'},
 				  $text{'playtime_time'},
 				  $text{'playtime_ltime'},
-				  $text{'playtime_now'} ]);
+				  $text{'playtime_now'} ], 100);
 	foreach my $u (sort { $playtime->{$b} <=> $playtime->{$a} }
 			    keys %$playtime) {
 		print &ui_columns_row([

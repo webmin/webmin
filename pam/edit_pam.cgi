@@ -42,7 +42,7 @@ foreach $t ('auth', 'account', 'session', 'password') {
 					       $text{'edit_desc'},
 					       $text{'edit_control'},
 					       $text{'edit_args'},
-					       $text{'edit_move'} ], \@tds);
+					       $text{'edit_move'} ], 100, \@tds);
 		foreach $m (@mods) {
 			local $mn = $m->{'module'};
 			$mn =~ s/^.*\///;
