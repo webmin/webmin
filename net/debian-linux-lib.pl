@@ -754,6 +754,10 @@ while (defined $line) {
 			next;
 			}
 		}
+	elsif ($line =~ /^\s*source/) {
+		# Skip includes
+		$line = <CFGFILE>;
+		}
 	elsif (my ($name, $addrfam, $method) = ($line =~ /^\s*iface\s+(\S+)\s+(\S+)\s+(\S+)\s*$/) ) {
 		# only lines starting with "iface" are expected here
 		my @iface_options;
