@@ -22,6 +22,7 @@ if ($in{'midx'} ne '') {
 else {
 	$module = $in{'module'};
 	$type = $in{'type'};
+	$mod = { 'type' => $type };
 	&ui_print_header(undef, $text{'mod_create'}, "");
 	}
 
