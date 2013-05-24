@@ -227,6 +227,7 @@ ioctl($ttyfh, 0x540e, 0);
 sub get_memory_info
 {
 local %m;
+local $memtotal;
 if (open(BEAN, "/proc/user_beancounters")) {
 	# If we are running under Virtuozzo, there may be a limit on memory
 	# use in force that is less than the real system's memory. Use this,
@@ -239,8 +240,7 @@ if (open(BEAN, "/proc/user_beancounters")) {
 	while(<BEAN>) {
 		if (/privvmpages\s+(\d+)\s+(\d+)\s+(\d+)/ &&
                     $3 < 1024*1024*1024*1024) {
-			return ($3 * $pagesize / 1024,
-				($3-$1) * $pagesize / 1024, undef, undef);
+			$memtotal = $3 * $pagesize / 1024;
 			}
 		}
 	close(BEAN);
@@ -252,8 +252,10 @@ while(<MEMINFO>) {
 		}
 	}
 close(MEMINFO);
-return ( $m{'memtotal'}, $m{'cached'} > $m{'memtotal'} ? $m{'memfree'}
-				: $m{'memfree'}+$m{'buffers'}+$m{'cached'},
+$memtotal ||= $m{'memtotal'};
+return ( $memtotal,
+	 $m{'cached'} > $memtotal ? $m{'memfree'} :
+		$m{'memfree'}+$m{'buffers'}+$m{'cached'},
 	 $m{'swaptotal'}, $m{'swapfree'},
 	 $m{'buffers'} + $m{'cached'} );
 }
