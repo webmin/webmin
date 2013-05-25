@@ -12,6 +12,7 @@ our ($module_root_directory, %text, %gconfig, $root_directory, %config,
      $module_config_directory, @lang_order_list, @root_directories);
 our $history_file = "$module_config_directory/history.txt";
 our $server_jar_url = "https://s3.amazonaws.com/MinecraftDownload/launcher/minecraft_server.jar";
+our $playtime_dir = "$module_config_directory/playtime";
 
 &foreign_require("webmin");
 
@@ -872,5 +873,63 @@ if (@days > 0 && @days < 7) {
 	}
 return 1;
 }
+
+# check_playtime_limits()
+# Function called by webmincron to update and enforce playtime usage
+sub check_playtime_limits
+{
+# Get usage for today, and update today's files
+my ($usage, $limit_usage) = &get_current_day_usage();
+if (!-d $playtime_dir) {
+	&make_dir($playtime_dir, 0700);
+	}
+my $today = strftime("%Y-%m-%d", localtime(time()));
+my (@bans, @unbans);
+foreach my $u (keys %$usage) {
+	my $ufile = "$playtime_dir/$u";
+	my %days;
+	&read_file($ufile, \%days);
+	$days{"total_".$today} = $usage->{$u};
+	$days{"limit_".$today} = $limit_usage->{$u};
+	if ($config{'playtime_max'} &&
+            $limit_usage->{$u} > $config{'playtime_max'}) {
+		# Flag as banned
+		if (!$days{"banned_".$today}) {
+			$days{"banned_".$today} = 1;
+			push(@bans, $u);
+			}
+		}
+	else {
+		# Not banned
+		if ($days{"banned_".$today}) {
+			push(@unbans, $u);
+			}
+		}
+	&write_file($ufile, \%days);
+	}
+
+# Band and un-ban players
+my @banned = &list_banned_players();
+foreach my $u (@bans) {
+	&execute_minecraft_command(
+	    "/ban $u Exceeded $config{'playtime_max'} minutes of play time");
+	}
+foreach my $u (@unbans) {
+	&execute_minecraft_command("/pardon $u");
+	}
+}
+
+# get_playtime_job()
+# Returns the webmincron job to enforce play time limits
+sub get_playtime_job
+{
+&foreign_require("webmincron");
+my @jobs = &webmincron::list_webmin_crons();
+my ($job) = grep { $_->{'module'} eq $module_name &&
+		   $_->{'func'} eq "check_playtime_limits" } @jobs;
+return $job;
+}
+
+
 
 1;

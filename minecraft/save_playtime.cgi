@@ -4,8 +4,9 @@
 use strict;
 use warnings;
 require './minecraft-lib.pl';
-our (%in, %text, %config, $module_config_file);
+our (%in, %text, %config, $module_config_file, $module_name);
 &ReadParse();
+&foreign_require("webmincron");
 &error_setup($text{'playtime_err'});
 
 # Validate and save inputs
@@ -27,7 +28,19 @@ $config{'playtime_ips'} = $in{'ips_def'} ? undef : $in{'ips'};
 &save_module_config(\%config);
 &unlock_file($module_config_file);
 
-# XXX setup cron job
+# Setup or disable cron job
+my $job = &get_playtime_job();
+if (!$in{'enabled'}) {
+	if ($job) {
+		&webmincron::delete_webmin_cron($job);
+		}
+	}
+else {
+	$job ||= { 'module' => $module_name,
+		   'interval' => 6*60,
+		   'func' => 'check_playtime_limits' };
+	&webmincron::save_webmin_cron($job);
+	}
 
 &webmin_log("playtime");
 &redirect("");
