@@ -50,6 +50,7 @@ membox=Edita els membres dels grups utilitzant,1,1-Una caixa de text,0-Selector 
 line5=Restriccions de les contrasenyes,11
 passwd_min=Llargària mínima de la contrasenya,3,Sense mínims
 passwd_dict=Evita contrasenyes amb paraules de diccionari,1,1-Sí,0-No
+dict_file=Fitxers que contenen paraules de diccionari,3,Per defecte del sistema
 passwd_re=Expressió regular Perl per a verificar la contrasenya,3,Cap
 passwd_redesc=Descripció de l'expressió regular humanament llegible,3,No, només l'expressió
 passwd_same=Evita que les contrasenyes continguin noms d'usuari,1,1-Sí,0-No

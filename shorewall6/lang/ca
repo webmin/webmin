@@ -93,7 +93,7 @@ policy_header=Detalls de la política per defecte
 policy_err=No s'ha pogut desar la política per defecte
 policy_nolog=Enregistrament desactivat
 policy_ulog=Enregistra a ULOG
-policy_efw=&lt;Tallafocs&gt; es pot seleccionar tant per la zona origen com la destí
+policy_efw=El &lt;Tallafocs&gt; es pot seleccionar tant per la zona origen com la destí
 policy_elimit=Hi falta el nombre del trànsit límit o bé és invàlid
 policy_eburst=Hi falta el nombre del trànsit pic o bé és invàlid
 

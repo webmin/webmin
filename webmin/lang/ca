@@ -294,6 +294,7 @@ os_eversion=Hi falta la versió del sistema operatiu
 os_eiversion=Hi falta la versió interna del sistema operatiu
 os_incorrect=Atenció - Actualment el sistema està executant $1 versió $2.
 os_fix=Actualitza el Sistema Operatiu Detectat
+os_usermin=Actualitza també el SO d'Usermin
 
 lang_title=Idioma
 lang_title2=Idioma de Webmin
@@ -321,6 +322,7 @@ ssl_cert_def=El mateix de la clau privada
 ssl_cert_oth=Fitxer a part
 ssl_redirect=Redirecciona les peticions no SSL a mode SSL
 ssl_compression=Permet les connexions SSL comprimides
+ssl_honorcipherorder=Força l'ús de l'ordre de xifratge definit pel servidor
 ssl_extracas=Fitxers addicionals de certificat<br>(per a certificats encadenats)
 ssl_extracasdef=Les mateixes que els paràmetres SSL globals
 ssl_extracasnone=Cap per a aquesta adreça IP
@@ -828,6 +830,9 @@ advanced_gzipauto=Només si existeix un fitxer .gz pre-comprimit
 advanced_gzip0=Mai
 advanced_gzip1=Utilitza un fitxer pre-comprimit i comprimeix-lo dinàmicament
 advanced_egzip=No es pot activar la compressió gzip a menys que s'instal·li el mòdul perl $1
+advanced_redir=Format de l'URL per a redireccions
+advanced_redir1=Només el camí
+advanced_redir0=Protocol, host, port i camí
 
 syslog_errorlog=Registre d'errors de Webmin
 

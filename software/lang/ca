@@ -392,4 +392,16 @@ hpux_enforce_dependencies=Força les dependències
 hpux_enforce_scripts=Força els scripts
 hpux_enforce_dsa=Força l'anàlisi d'espai al disc
 hpux_root=Directori arrel
+
+ports_install=S'estan instal·lant els ports FreeBSD $1...
+ports_failed=...alguns ports han fallat
+ports_ok=...instal·lació completada
+ports_input=Paquet dels ports
+ports_find=Busca Ports
+ports_name=Ports FreeBSD
+ports_form=Actualitza la Base de Dades de Ports
+ports_apply=Descarrega la Darrera Versió
+ports_upgrade=S'està Descarregant la Darrera Versió
+ports_running=S'està executant l'ordre $1...
+
 __norefs=1

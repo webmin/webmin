@@ -1,5 +1,6 @@
 line1=Opcions configurables,11
-browse_server=Demana la llista d'exploració al servidor,3,localhost
+browse_server=Demana la llista d'exploració CIFS al servidor,10,-localhost,*-Grup de treball de sota,Un altre servidor
+browse_group=Grup de treball CIFS de la llista d'exploració,0
 long_fstypes=Utilitza tipus llargs de sistemes de fitxers,1,1-Sí,0-No
 sort_mode=Ordena els sistemes de fitxers per,1,2-Punt de Muntatge,1-Tipus,0-Ordre en els fitxers
 show_used=Mostra l'espai en disc utilitzat a les llistes de sistemes de fitxers,1,1-Sí,0-No

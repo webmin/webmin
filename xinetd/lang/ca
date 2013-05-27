@@ -1,4 +1,5 @@
-index_title=Serveis Estesos d'Internet
+index_title=Serveis de Xarxa
+index_none=Encara no s'ha definit cap servei de xarxa.
 index_name=Nom del servei
 index_type=Tipus
 index_port=Port / número
@@ -20,6 +21,7 @@ index_applymsg=Fes clic sobre aquest botó per aplicar la configuració actual env
 index_start=Inicia Xinetd
 index_startmsg=Fes clic sobre aquest botó per iniciar el servidor Xinetd amb la configuració actual
 index_econf=El fitxer $1 de configuració de Xinetd no existeix. Pot ser que no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
+index_estart=L'ordre $1 per a iniciar Xinetd no existeix. Pot ser que no estigui instal·lada o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_noport=Desconegut
 index_enable=Activa els Seleccionats
 index_disable=Desactiva els Seleccionats

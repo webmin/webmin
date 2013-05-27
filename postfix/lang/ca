@@ -795,7 +795,9 @@ log_delete_sender_dependent_default_transport_mapss=S'han suprimit $1 adreces de
 log_manual_sender_dependent_default_transport_mapss=S'han editat manualment edited les adreces dependents del remitent a $1
 
 sasl_title=Autenticació i Xifratge de SMTP
-opts_smtpd_sasl_auth_enable=Activa l'autenticació SASL de SMTP
+opts_smtpd_sasl_auth_enable=Requereix l'autenticació SMTP SASL
+opts_smtp_sasl_auth_enable=Utilitza l'autenticació SMTP SASL
+opts_smtpd_tls_auth_only=No permetis l'autenticació SASL sobre connexions insegures
 opts_broken_sasl_auth_clients=Gestiona els clients que no compleixen amb SMTP
 sasl_opts=Opcions de seguretat de SMTP
 sasl_noanonymous=Rebutja les entrades anònimes
