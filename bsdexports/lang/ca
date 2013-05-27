@@ -8,6 +8,9 @@ index_delete=Suprimeix les Exportacions Seleccionades
 index_apply=Aplica els Canvis
 index_applydesc=Fes clic sobre aquest botó per alicar la configuració actual d'exportacions de fitxers. Això farà que tots els directoris llistats més amunt quedin disponibles amb les opcions especificades.
 index_return=a la llista d'exportacions
+index_echeck=No es pot utilitzar el servidor NFS en aquest sistema: $1
+
+check_ecmd=L'ordre $1 del servidor NFS no està instal·lada
 
 delete_err=No s'han pogut suprimir les exportacions
 delete_enone=No n'has seleccionat cap

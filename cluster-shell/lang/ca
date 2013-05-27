@@ -8,6 +8,7 @@ index_this=aquest servidor
 index_all=&lt;Tots els hosts&gt;
 index_group=Membres de $1
 index_clear=Neteja l'historial
+index_edit=Edita l'Anterior
 
 run_title=Executa l'Ordre
 run_err=No s'ha pogut executar l'ordre

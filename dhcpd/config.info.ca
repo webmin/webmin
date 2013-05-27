@@ -18,5 +18,5 @@ restart_cmd=Ordre per aplicar la configuració,3,Mata'l i reinicia'l
 stop_cmd=Ordre per aturar el servidor DHCP,3,Mata el procés
 pid_file=Camí del fitxer de PID del servidor DHCP,3,Cap
 lease_file=Fitxer de <i>lease</i> del servidor DHCP,0
-interfaces_type=Tipus de fitxer d'interfície,4,redhat-Redhat,mandrake-Mandrake,suse-SuSE,debian-Debian,caldera-Caldera,gentoo-Gentoo,-Webmin
+interfaces_type=Tipus de fitxer d'interfície,4,redhat-Redhat,mandrake-Mandrake,suse-SuSE,debian-Debian,caldera-Caldera,gentoo-Gentoo,freebsd-FreeBSD,-Webmin
 version=Versió del servidor DHCP,3,Troba-la automàticament

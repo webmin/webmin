@@ -1,0 +1,28 @@
+<header>Particions de Discs Locals</header>
+
+Aquest mòdul permet crear llesques i particions als discs connectats a un 
+sistema FreeBSD. Hi ha tres nivells d'objectes que s'han de gestionar en un
+sistema FreeBSD, camparat amb només dos en Linux: <p>
+
+<dl>
+<dt><b>Discs</b>
+<dd>Un disc és una unitat física connectada al sistema, bé internament, bé a
+    través d'un bus extern com ara USB. Els discs poden ser SCSI o IDE. <p>
+
+<dt><b>Llesques</b>
+<dd>Una llesca és una part del disc l'extensió de la qual està emmagatzemada a
+   la taula de particions del disc. En un sistema Linux o Windows, s'anomenen "Particions". <p>
+
+<dt><b>Partició</b>
+<dd>Una llesca pot contenir fins a quatre particions, cadascuna de les quals pot
+   contenir un sistema de fitxers o bé es pot utilitzar com a memòria virtual.<p>
+</dl>
+
+Després d'afegir un nou disc al sistema, primer cal que li afegeixis una llesca
+(o canviar la llesca existent al tipus BSD/386), i llavors afegir-li una
+partició del tipus 4.2BSD dins de la llesca. <p>
+
+Les mides i rangs dels discs, llesques i particions es medeixen totes en blocs,
+que típicament tenen una mida de 512 bytes. <p>
+
+<footer>

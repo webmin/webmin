@@ -14,3 +14,4 @@ bacula_dir=Directori de configuració de Bacula,0
 bextract=Camí complet de l'ordre <tt>bextract</tt>,0
 bls=Camí complet de l'ordre <tt>bls</tt>,0
 btape=Camí complet de l'ordre <tt>btape</tt>,0
+init_start=Inicia i atura Bacula utilitzant,1,1-Scripts init,0-L'ordre <tt>bacula</tt>

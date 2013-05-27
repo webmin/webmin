@@ -96,9 +96,8 @@ lv_petotal=Blocs allotjats per al grup de volums
 lv_petotals=$1 de $2
 lv_mkfs=Crea un Sistema de Fitxers del Tipus:
 lv_mkfs2=Crea Sistema de Fitxers
-
-lv_mkfsdesc2=Fes clic sobre aquest botó per crear un nou sistema de fitxers $1 en aquest volum lògic. Això esborrarà totes les dades que hi ha actualment al volum.
 lv_mkfsdesc=Selecciona un tipus de sistema de fitxers i fes clic sobre aquest botó per crear un sistema de fitxers nou en aquest volum lògic. Això esborrarà totes les dades que actualment puguin haver-hi al volum.
+lv_mkfsdesc2=Fes clic sobre aquest botó per crear un nou sistema de fitxers $1 en aquest volum lògic. Això esborrarà totes les dades que hi ha actualment al volum.
 lv_toobig=La nova mida del volum és de $1 blocs (de $2 cadascun), però només en queden $3 de lliures al grup de volums.
 lv_snapof=Instantània del volum lògic
 lv_nosnap=No s'ha pogut determinar!
@@ -107,8 +106,12 @@ lv_mountmsg=Munta aquest VL en un directori nou del sistema, de manera que es pu
 lv_free=Percentage lliure
 lv_freedisk=Espai lliure
 lv_pvs=Volums físics allotjats
-lv_egone=El volum lògic ja no existeix!
 lv_snapusage=Percentatge d'ús d'instantànies
+lv_egone=El volum lògic ja no existeix!
+lv_moveheader=Retira el volum físic
+lv_pvfrom=Desplaça blocs del volum físic
+lv_pvto=Al volum físic
+lv_moveok=Desplaça els Blocs
 
 mkfs_title=Creació de Sistema de Fitxers
 mkfs_desc=Aquest formulari permet crear un nou sistema de fitxers $2 ($1) a volum lògic $3. Totes les dades existents s'esborraran.
@@ -153,8 +156,8 @@ pv_rusure=Segur que vols treure el volum físic $1 del seu grup de volums? Això c
 pv_deleteok=Treu el Volum
 pv_eother=Hi falta el dispositiu e disc o bé és invàlid
 pv_raid=Dispositiu RAID $1
-pv_egone=El volum físic ja no existeix!
 pv_lvs=Allotjament dels volums lògics
+pv_egone=El volum físic ja no existeix!
 
 vg_edit=Edita el Grup de Volums
 vg_create=Crea un Grup de Volums
@@ -172,8 +175,14 @@ vg_rusure=Segur que vols suprimir el grup de volums $1?
 vg_cannot=Aquest grup de volums no es pot suprimir perquè encara té $1 volums lògics.
 vg_deleteok=Suprimeix-lo Ara
 vg_ename=Hi falta el nom del grup de volums o bé és invàlid
-vg_egone=El grup de volums ja no existeix!
 vg_epesize=Hi falta la mida del bloc d'allotjament o bé és invàlid
+vg_egone=El grup de volums ja no existeix!
+
+pvmove_err=No s'ha pogut desplaçar el volum lògic
+pvmove_title=Desplaça el Volum Lògic
+pvmove_start=S'està desplaçant el volum lògic $1 de $2 a $3...
+pvmove_failed=...el desplaçament ha fallat!
+pvmove_done=...desplaçament completat
 
 log_create_vg=S'ha creat el grup de volums $1
 log_modify_vg=S'ha modificat el grup de volums $1
@@ -188,4 +197,5 @@ log_resize_pv=S'ha canviat la mida del volum físic $1 al GV $2
 log_delete_pv=S'ha tret el volum físic $1 del GV $2
 
 blocks=blocs
+
 __norefs=1

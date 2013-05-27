@@ -1,6 +1,6 @@
 line1=Opcions configurables,11
-show_empty=Mostra els serveis sense cap programa,1,1-Sí,0-No
 sort_mode=Ordena els serveis i programes per,1,0-Ordre del fitxer,1-Nom,2-Assignació
+display_max=Nombre màxim de serveis a mostrar,0
 line2=Configuració del sistema,11
 inetd_conf_file=Fitxer de configuració d'inetd,0
 inetd_dir=Directori de configuració d'inetd,3,Cap
