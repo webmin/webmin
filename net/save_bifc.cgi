@@ -41,6 +41,7 @@ else {
 		$b->{'name'} = $oldb->{'name'};
 		$b->{'file'} = $oldb->{'file'};
 		$b->{'gateway'} = $oldb->{'gateway'};
+		$b->{'gateway6'} = $oldb->{'gateway6'};
 		$b->{'virtual'} = $oldb->{'virtual'}
 			if (defined($oldb->{'virtual'}));
 		$b->{'code'} = $oldb->{'code'};
