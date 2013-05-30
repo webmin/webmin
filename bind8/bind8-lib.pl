@@ -1205,18 +1205,6 @@ $rv .= &ui_columns_end();
 return $rv;
 }
 
-# convert_illegal(text)
-# Convert text containing special HTML characters to properly display it.
-sub convert_illegal
-{
-$_[0] =~ s/&/&amp;/g;
-$_[0] =~ s/>/&gt;/g;
-$_[0] =~ s/</&lt;/g;
-$_[0] =~ s/"/&quot;/g;
-$_[0] =~ s/ /&nbsp;/g;
-return $_[0];
-}
-
 sub check_net_ip
 {
 local($j, $arg = $_[0]);
