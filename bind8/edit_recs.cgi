@@ -192,27 +192,27 @@ for($i=0; $i<@_; $i++) {
 	for($j=0; $j<@hmap; $j++) {
 		local $v;
 		if ($in{'type'} eq "RP" && $j == 0) {
-			$v .= &convert_illegal(
-				&dotted_to_email($r->{'values'}->[$j]));
+			$v .= &dotted_to_email($r->{'values'}->[$j]);
 			}
 		elsif ($in{'type'} eq "WKS" && $j == @hmap-1) {
 			for($k=$j; $r->{'values'}->[$k]; $k++) {
-				$v .= &convert_illegal($r->{'values'}->[$k]);
+				$v .= $r->{'values'}->[$k];
 				$v .= ' ';
 				}
 			}
 		elsif ($in{'type'} eq "LOC") {
-			$v = &convert_illegal(join(" ", @{$r->{'values'}}));
+			$v = join(" ", @{$r->{'values'}});
 			}
 		elsif ($in{'type'} eq "KEY" && $j == 3) {
 			$v = substr($r->{'values'}->[$j], 0, 20)."...";
 			}
 		else {
-			$v = &convert_illegal($r->{'values'}->[$j]);
+			$v = $r->{'values'}->[$j];
 			}
 		if (length($v) > 80) {
 			$v = substr($v, 0, 80)." ...";
 			}
+		$v = &html_escape($v);
 		push(@cols, $v);
 		}
 	if ($in{'type'} eq "ALL" || $is_extra{$in{'type'}}) {
