@@ -58,6 +58,7 @@ opts_esess=Fehlende oder nicht-numerische maximale Anzahl an Sessions
 opts_header=Optionen f&#252;r alle iSCSI targets
 opts_ip4=Akzeptiere IPv4 Verbindungen
 opts_ip6=Akzeptiere IPv6 Verbindungen
+opts_name=Name sichtbar f&#252;r Clients
 opts_namedef=Standard (System Hostname)
 opts_port=Auf Port horchen
 opts_sess=Maximale gleichzeitige Sessions
