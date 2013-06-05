@@ -36,18 +36,6 @@ if ($config{'ssl'}) {
 		# These functions only exist for SSLeay 1.0
 		eval "Net::SSLeay::SSLeay_add_ssl_algorithms()";
 		eval "Net::SSLeay::load_error_strings()";
-		if ($config{'no_ssl2'}) {
-			eval "Net::SSLeay::CTX_set_options($ctx,
-				&Net::SSLeay::OP_NO_SSLv2)";
-			}
-		if ($config{'no_sslcompression'}) {
-			eval "Net::SSLeay::CTX_set_options($ctx,
-				&Net::SSLeay::OP_NO_COMPRESSION)";
-			}
-		if ($config{'ssl_honorcipherorder'}) {
-			eval "Net::SSLeay::CTX_set_options($ctx,
-				&Net::SSLeay::OP_CIPHER_SERVER_PREFERENCE)";
-			}
 		if (defined(&Net::SSLeay::X509_STORE_CTX_get_current_cert) &&
 		    defined(&Net::SSLeay::CTX_load_verify_locations) &&
 		    (defined(&Net::SSLeay::CTX_set_verify) ||
@@ -4262,6 +4250,19 @@ Net::SSLeay::CTX_use_RSAPrivateKey_file(
 Net::SSLeay::CTX_use_certificate_file(
 	$ssl_ctx, $certfile || $keyfile,
 	&Net::SSLeay::FILETYPE_PEM) || die "Failed to open SSL cert $certfile";
+
+if ($config{'no_ssl2'}) {
+	eval 'Net::SSLeay::CTX_set_options($ssl_ctx,
+		&Net::SSLeay::OP_NO_SSLv2)';
+	}
+if ($config{'no_sslcompression'}) {
+	eval 'Net::SSLeay::CTX_set_options($ssl_ctx,
+		&Net::SSLeay::OP_NO_COMPRESSION)';
+	}
+if ($config{'ssl_honorcipherorder'}) {
+	eval 'Net::SSLeay::CTX_set_options($ssl_ctx,
+		&Net::SSLeay::OP_CIPHER_SERVER_PREFERENCE)';
+	}
 
 return $ssl_ctx;
 }
