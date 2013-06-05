@@ -113,6 +113,7 @@ foreach my $dev (glob("/dev/ada[0-9]"),
 	# Get partitions within slices
 	foreach my $slice (@{$disk->{'slices'}}) {
 		$slice->{'parts'} = [ ];
+		next if (!-e $slice->{'device'});
 		my $out = &backquote_command("disklabel ".$slice->{'device'});
 		my @lines = split(/\r?\n/, $out);
 		foreach my $l (@lines) {
