@@ -239,7 +239,7 @@ print SCRIPT <<EOF;
 perl <<EOD;
 $maketemp
 EOD
-if [ "\$1" != "upgrade" ]; then
+if [ "\$1" != "upgrade" -a "\$1" != "abort-upgrade" ]; then
 	if [ "\$WEBMIN_PORT\" != \"\" ]; then
 		port=\$WEBMIN_PORT
 	else
@@ -260,7 +260,7 @@ open(SCRIPT, ">$postinstall_file");
 print SCRIPT <<EOF;
 #!/bin/sh
 inetd=`grep "^inetd=" /etc/$baseproduct/miniserv.conf 2>/dev/null | sed -e 's/inetd=//g'`
-if [ "\$1" = "upgrade" ]; then
+if [ "\$1" = "upgrade" -a "\$1" != "abort-upgrade" ]; then
 	# Upgrading the package, so stop the old webmin properly
 	if [ "\$inetd" != "1" ]; then
 		/etc/$baseproduct/stop >/dev/null 2>&1 </dev/null
@@ -355,7 +355,7 @@ system("chmod 755 $postinstall_file");
 open(SCRIPT, ">$preuninstall_file");
 print SCRIPT <<EOF;
 #!/bin/sh
-if [ "\$1" != "upgrade" ]; then
+if [ "\$1" != "upgrade" -a "\$1" != "abort-upgrade" ]; then
 	grep root=/usr/share/$baseproduct /etc/$baseproduct/miniserv.conf >/dev/null 2>&1
 	if [ "\$?" = 0 ]; then
 		# Package is being removed, and no new version of webmin
@@ -376,7 +376,7 @@ system("chmod 755 $preuninstall_file");
 open(SCRIPT, ">$postuninstall_file");
 print SCRIPT <<EOF;
 #!/bin/sh
-if [ "\$1" != "upgrade" ]; then
+if [ "\$1" != "upgrade" -a "\$1" != "abort-upgrade" ]; then
 	grep root=/usr/share/$baseproduct /etc/$baseproduct/miniserv.conf >/dev/null 2>&1
 	if [ "\$?" = 0 ]; then
 		# Package is being removed, and no new version of webmin
