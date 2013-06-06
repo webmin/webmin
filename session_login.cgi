@@ -75,10 +75,11 @@ print &ui_table_row(undef,
 	    "<tt>$host</tt>"), 2, [ "align=center", "align=center" ]);
 
 # Username and password
+$tags = $gconfig{'noremember'} ? "autocomplete=off" : "";
 print &ui_table_row($text{'session_user'},
-	&ui_textbox("user", $in{'failed'}, 20));
+	&ui_textbox("user", $in{'failed'}, 20, 0, undef, $tags));
 print &ui_table_row($text{'session_pass'},
-	&ui_password("pass", undef, 20));
+	&ui_password("pass", undef, 20, 0, undef, $tags));
 if (!$gconfig{'noremember'}) {
 	print &ui_table_row(" ",
 		&ui_checkbox("save", 1, $text{'session_save'}, 0));
