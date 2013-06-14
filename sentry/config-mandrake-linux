@@ -1,12 +1,12 @@
 portsentry=/usr/sbin/portsentry
 portsentry_config=/etc/portsentry/portsentry.conf
 portsentry_umode=udp
-portsentry_start=/etc/rc.d/init.d/portsentry start
-portsentry_stop=/etc/rc.d/init.d/portsentry stop
+portsentry_start=service portsentry start
+portsentry_stop=service portsentry stop
 portsentry_pid=
 portsentry_tmode=tcp
 hostsentry=/usr/lib/hostsentry/hostsentry.py
 hostsentry_config=/etc/hostsentry/hostsentry.conf
-hostsentry_start=/etc/rc.d/init.d/hostsentry start
-hostsentry_stop=/etc/rc.d/init.d/hostsentry stop
+hostsentry_start=service hostsentry start
+hostsentry_stop=service hostsentry stop
 logcheck=/usr/bin/logcheck.sh

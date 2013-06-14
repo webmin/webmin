@@ -1,4 +1,4 @@
-restart_command=if (killall -HUP rpc.nfsd && killall -HUP rpc.mountd); then /bin/true; else (/etc/rc.d/init.d/nfs-server stop ; /etc/rc.d/init.d/nfs-server start) fi
+restart_command=if (killall -HUP rpc.nfsd && killall -HUP rpc.mountd); then /bin/true; else (service nfs-server stop ; service nfs-server start) fi
 exports_file=/etc/exports
 nfs_server=rpc.nfsd
 apply_cmd=exportfs -r

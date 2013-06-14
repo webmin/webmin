@@ -1,9 +1,9 @@
 login=postgres
 psql=/usr/bin/psql
 basedb=template1
-start_cmd=/etc/rc.d/init.d/postgresql start
-stop_cmd=/etc/rc.d/init.d/postgresql stop
-setup_cmd=/etc/rc.d/init.d/postgresql start
+start_cmd=service postgresql start
+stop_cmd=service postgresql stop
+setup_cmd=service postgresql start
 pid_file=/var/run/postmaster.pid
 perpage=25
 hba_conf=/var/lib/pgsql/data/pg_hba.conf

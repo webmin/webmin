@@ -5,5 +5,5 @@ cfd=/usr/sbin/cfd
 cfengine_dir=/etc/cfengine
 cfrun=/usr/sbin/cfrun
 cfengine=/usr/sbin/cfengine
-start_cmd=/etc/rc.d/init.d/cfd start
-stop_cmd=/etc/rc.d/init.d/cfd stop
+start_cmd=service cfd start
+stop_cmd=service cfd stop

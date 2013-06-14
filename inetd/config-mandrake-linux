@@ -1,7 +1,7 @@
 show_empty=1
 services_file=/etc/services
 extended_inetd=1
-restart_command=killall -HUP inetd || /etc/rc.d/init.d/inet start
+restart_command=killall -HUP inetd || service inet start
 rpc_file=/etc/rpc
 protocols_file=/etc/protocols
 tcpd_path=/usr/sbin/tcpd
