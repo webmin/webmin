@@ -1,8 +1,8 @@
 sendmail_cf=/etc/mail/sendmail.cf
 sendmail_pid=/var/run/sendmail.pid
 makemap_path=makemap
-sendmail_command=/etc/rc.d/init.d/sendmail start
-sendmail_stop_command=/etc/rc.d/init.d/sendmail stop
+sendmail_command=service sendmail start
+sendmail_stop_command=service sendmail stop
 sendmail_path=/usr/lib/sendmail
 mail_dir=/var/spool/mail
 perpage=20
