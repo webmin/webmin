@@ -389,7 +389,8 @@ if (!$config{'collect_notemp'} &&
 			    $a->[1] > 0) {
 				push(@rv, { 'device' => $d->{'device'},
 					    'temp' => int($a->[1]),
-					    'errors' => $st->{'errors'} });
+					    'errors' => $st->{'errors'},
+					    'failed' => !$st->{'check'} });
 				}
 			}
 		}

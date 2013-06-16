@@ -99,8 +99,13 @@ if ($level == 0) {
 			my $emsg;
 			if ($t->{'errors'}) {
 				$emsg .= " (<font color=red>".
-					 &text('right_driveerr', $t->{'errors'}).
-					 "</font>)";
+				    &text('right_driveerr', $t->{'errors'}).
+				    "</font>)";
+				}
+			elsif ($t->{'failed'}) {
+				$emsg .= " (<font color=red>".
+				    $text{'right_drivefailed'}.
+				    "</font>)";
 				}
 			push(@temps, $short.": ".$t->{'temp'}."&#8451;".$emsg);
 			}
