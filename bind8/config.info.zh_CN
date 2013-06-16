@@ -13,5 +13,5 @@ master_dir=主区文件目录,3,默认
 slave_dir=slave/stub 区文件目录,3,默认
 support_aaaa=DNS 至此 IPv6 地址,1,0-否,1-是
 allow_comments=允许注释记录,1,0-否,1-是
-allow_wild=允许通配符 (不推荐),1,0-否,1-是
+allow_wild=允许通配符 (,1,0-否,1-是
 allow_long=允许长主机名,1,0-否,1-是

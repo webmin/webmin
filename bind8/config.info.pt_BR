@@ -18,7 +18,7 @@ file_owner=Propriet&#225;rio dos arquivos de zona (usu&#225;rio:grupo),3,Padr&#2
 file_perms=Permiss&#245;es dos arquivos de zona (em octal),3,Padr&#227;o
 support_aaaa=Suporte para endere&#231;os IPv6,1,0-N&#227;o,1-Sim
 allow_comments=Permitir coment&#225;rios nos registros,1,0-N&#227;o,1-Sim
-allow_wild=Permitir wildcards (n&#227;o recomendado),1,0-N&#227;o,1-Sim
+allow_wild=Permitir wildcards,1,0-N&#227;o,1-Sim
 allow_long=permitir nomes longos,1,0-N&#227;o,1-Sim
 zones_file=Adicionar novas zonas ao arquivo,3,named.conf
 

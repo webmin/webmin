@@ -15,5 +15,5 @@ master_dir=Katalog f&#246;r master-zonfiler,3,Standard
 slave_dir=Katalog f&#246;r slav/&#229;terv&#228;ndszonfiler,3,Standard
 support_aaaa=St&#246;djer DNS f&#246;r IPv6-adresser,1,0-Nej,1-Ja
 allow_comments=Till&#229;ta kommentarer f&#246;r poster,1,0-Nej,1-Ja
-allow_wild=Till&#229;ta jokertecken (rekommenderas inte),1,0-Nej,1-Ja
+allow_wild=Till&#229;ta jokertecken,1,0-Nej,1-Ja
 allow_long=Till&#229;ta l&#229;nga datornamn,1,0-Nej,1-Ja
