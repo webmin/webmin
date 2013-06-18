@@ -53,8 +53,8 @@ if ($ENV{'PATH_INFO'}) {
 		print "Content-type: application/zip\n\n";
 		open(FILE, $temp);
 		unlink($temp);
-		while(<FILE>) {
-			print $_;
+		while(read(FILE, $buffer, 1000000)) {
+			print("$buffer");
 			}
 		close(FILE);
 		}
@@ -83,8 +83,8 @@ if ($ENV{'PATH_INFO'}) {
 		@st = stat($file);
 		print "Content-length: $st[7]\n";
 		print "Content-type: $type\n\n";
-		while(<FILE>) {
-			print $_;
+		while(read(FILE, $buffer, 1000000)) {
+			print("$buffer");
 			}
 		close(FILE);
 		}
