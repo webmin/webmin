@@ -1231,6 +1231,18 @@ if (&foreign_available($module_name) && !$noupdates &&
 		}
 	}
 
+# Reboot needed
+if (&foreign_check("package-updates") && &foreign_available("init")) {
+	&foreign_require("package-updates");
+	if (&package_updates::check_reboot_required()) {
+		push(@notifs,
+		     &ui_form_start("$gconfig{'webprefix'}/init/reboot.cgi",
+				    "form-data").
+		     $text{'notif_reboot'}."<p>\n".
+		     &ui_form_end([ [ undef, $text{'notif_rebootok'} ] ]));
+		}
+	}
+
 return @notifs;
 }
 

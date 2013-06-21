@@ -52,6 +52,7 @@ if (&foreign_installed("package-updates") && $config{'collect_pkgs'}) {
 	&foreign_require("package-updates");
 	my @poss = &package_updates::list_possible_updates(2, 1);
 	$info->{'poss'} = \@poss;
+	$info->{'reboot'} = &package_updates::check_reboot_required();
 	}
 
 # CPU and drive temps

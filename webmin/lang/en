@@ -932,6 +932,8 @@ notify_updatemod=Module
 notify_updatever=Version
 notify_updatedesc=Fixes problem
 notif_updateok=Install Updates Now
+notif_reboot=Recent package updates (such as a new kernel version) require a reboot to be fully applied.
+notif_rebootok=Reboot Now
 
 status_title=Background Status Collection
 status_header=Status collection job settings
