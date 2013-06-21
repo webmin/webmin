@@ -2981,7 +2981,8 @@ return $bind_version >= 9.4 ? 2 :
 sub dnssec_size_range
 {
 local ($alg) = @_;
-return $alg eq 'RSAMD5' || $alg eq 'RSASHA1' ? ( 512, 2048 ) :
+return $alg eq 'RSAMD5' || $alg eq 'RSASHA1' ||
+	$alg eq 'RSASHA256' ? ( 512, 2048 ) :
        $alg eq 'DH' ? ( 128, 4096 ) :
        $alg eq 'DSA' ? ( 512, 1024, 64 ) :
        $alg eq 'HMAC-MD5' ? ( 1, 512 ) :
@@ -2991,7 +2992,7 @@ return $alg eq 'RSAMD5' || $alg eq 'RSASHA1' ? ( 512, 2048 ) :
 
 sub list_dnssec_algorithms
 {
-return ("RSASHA1", "RSAMD5", "DSA", "DH", "HMAC-MD5",
+return ("RSASHA1", "RSASHA256", "RSAMD5", "DSA", "DH", "HMAC-MD5",
 	"NSEC3RSASHA1", "NSEC3DSA");
 }
 
