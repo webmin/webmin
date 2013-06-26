@@ -324,8 +324,10 @@ foreach $m (@mounted) {
 			# Don't double-count maps from the same zone pool
 			next;
 			}
-		if ($donedevice{$m->[0]}++) {
-			# Don't double-count mounts from the same device
+		if ($donedevice{$m->[0]}++ ||
+		    $donedevice{$m->[1]}++) {
+			# Don't double-count mounts from the same device, or
+			# on the same directory.
 			next;
 			}
 		my ($t, $f) = &mount::disk_space($m->[2], $m->[0]);
