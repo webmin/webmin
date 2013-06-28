@@ -46,7 +46,7 @@ push(@rv, $out =~ /Description:\n([\0-\177]*\S)/i ? $1 : $text{'bsd_unknown'});
 push(@rv, $system_arch);
 push(@rv, $out =~ /Information\s+for\s+(\S+)\-(\d\S+)/ ? $2 : $ver);
 push(@rv, "FreeBSD");
-local @st = stat(&translate_filename("$package_dir/$_[0]"));
+local @st = stat(&translate_filename("$package_dir/$name-$ver"));
 push(@rv, @st ? ctime($st[9]) : $text{'bsd_unknown'});
 return @rv;
 }
