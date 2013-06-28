@@ -12,6 +12,10 @@ if (defined(&get_memory_info)) {
 		print &text($msg, &nice_size($m[0]*1024),
 			    &nice_size($m[1]*1024),
 			    &nice_size($m[4]*1024)),"\n";
+		if ($m[5]) {
+			print "&nbsp;&nbsp;",
+				&text('index_burst', &nice_size($m[5]*1024));
+			}
 		print "&nbsp;&nbsp;",
 			&text('index_swap2', &nice_size($m[2]*1024),
 					     &nice_size($m[3]*1024)),"<p>\n";
