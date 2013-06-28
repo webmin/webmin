@@ -161,7 +161,18 @@ if ($level == 0) {
 	# Memory usage
 	if ($info->{'mem'}) {
 		@m = @{$info->{'mem'}};
-		if (@m && $m[0]) {
+		if (@m && $m[0] && $m[5]) {
+			# Show memory usage with bursting
+			print &ui_table_row($text{'right_real'},
+				&text('right_used2',
+				      &nice_size($m[0]*1024),
+				      &nice_size(($m[0]-$m[1])*1024),
+				      &nice_size($m[5]*1024))."<br>\n".
+				&bar_chart_three($m[5], $m[1], $m[0]-$m[1],
+						 $m[5]-$m[0]));
+			}
+		elsif (@m && $m[0] && !$m[5]) {
+			# Show memory usage on a regular system
 			print &ui_table_row($text{'right_real'},
 				&text('right_used',
 				      &nice_size($m[0]*1024),
@@ -214,7 +225,7 @@ if ($level == 0) {
 
 	print &ui_table_end();
 
-	# Check for incorrect OS
+	# Show other webmin-generated notifications
 	if (&foreign_check("webmin")) {
 		&foreign_require("webmin", "webmin-lib.pl");
 		&webmin::show_webmin_notifications();
