@@ -147,7 +147,7 @@ else {
 			elsif (/^\s*State\s*:\s*(.*)/) {
 				$md->{'state'} = $1;
 				}
-			elsif ((/^\s*Rebuild\s+Status\s*:\s*(\d+)\s*\%/) || (/^\s*Reshape\s+Status\s*:\s*(\d+)\s*\%/)) {
+			elsif ((/^\s*Rebuild\s+Status\s*:\s*([0-9\.]+)\s*\%/) || (/^\s*Reshape\s+Status\s*:\s*(\d+)\s*\%/)) {
 				$md->{'rebuild'} = $1;
 				}
 			elsif (/^\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+|\-)\s+(.*\S)\s+(\/\S+)/) {
