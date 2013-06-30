@@ -56,7 +56,8 @@ foreach $v (@virt) {
 	push(@vname, $text{'index_virt'});
 	push(@vlink, "virt_index.cgi?virt=".&indexof($v, @$conf));
 	$sname = scalar(&find_directive("ServerName", $vm));
-	if ($addr ne "_default_" && $addr ne "*" && $nv{&to_ipaddress($addr)}) {
+	if ($addr ne "_default_" && $addr ne "*" &&
+	    ($nv{&to_ipaddress($addr)} || $httpd_modules{'core'} >= 2.4)) {
 		push(@vdesc, &text('index_vname', "<tt>$sname</tt>",
 				   "<tt>$addr</tt>"));
 		}
