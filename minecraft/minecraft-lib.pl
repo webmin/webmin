@@ -11,7 +11,7 @@ our ($module_root_directory, %text, %gconfig, $root_directory, %config,
      $module_name, $remote_user, $base_remote_user, $gpgpath,
      $module_config_directory, @lang_order_list, @root_directories);
 our $history_file = "$module_config_directory/history.txt";
-our $server_jar_url = "https://s3.amazonaws.com/MinecraftDownload/launcher/minecraft_server.jar";
+our $download_page_url = "https://minecraft.net/download";
 our $playtime_dir = "$module_config_directory/playtime";
 
 &foreign_require("webmin");
@@ -576,12 +576,25 @@ eval("\$str = \"$str\"");
 return $str;
 }
 
+# get_server_jar_url()
+# Returns the URL for downloading the server JAR file
+sub get_server_jar_url
+{
+my ($host, $port, $page, $ssl) = &parse_http_url($download_page_url);
+return undef if (!$host);
+my ($out, $err);
+&http_download($host, $port, $page, \$out, \$err, undef, $ssl);
+return undef if (!$err);
+$out =~ /"((http|https):[^"]+minecraft_server[^"]+\.jar)"/ || return undef;
+return $1;
+}
+
 # check_server_download_size()
 # Returns the size in bytes of the minecraft server that is available 
 # for download
 sub check_server_download_size
 {
-my ($host, $port, $page, $ssl) = &parse_http_url($server_jar_url);
+my ($host, $port, $page, $ssl) = &parse_http_url(&get_server_jar_url());
 
 # Make HTTP connection
 my @headers;

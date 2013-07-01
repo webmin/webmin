@@ -5,7 +5,6 @@ use strict;
 use warnings;
 require './minecraft-lib.pl';
 our (%text, %config, %in);
-our $server_jar_url;
 our $progress_callback_url;
 &ReadParse();
 
@@ -35,8 +34,8 @@ if ($in{'new'} && !-d $config{'minecraft_dir'}) {
 
 # Download to temp file
 my $temp = &transname();
-my ($host, $port, $page, $ssl) = &parse_http_url($server_jar_url);
-$progress_callback_url = $server_jar_url;
+$progress_callback_url = &get_server_jar_url();
+my ($host, $port, $page, $ssl) = &parse_http_url($progress_callback_url);
 &http_download($host, $port, $page, $temp, undef, \&progress_callback, $ssl);
 
 # Check if different
