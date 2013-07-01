@@ -632,12 +632,13 @@ else {
 # Changes the type of an existing partition
 sub change_type
 {
-&open_fdisk("$_[0]");
+my ($disk, $part, $type) = @_;
+&open_fdisk($disk);
 &wprint("t\n");
 local $rv = &wait_for($fh, 'Partition.*:', 'Selected partition');
-&wprint("$_[1]\n") if ($rv == 0);
+&wprint("$part\n") if ($rv == 0);
 &wait_for($fh, 'Hex.*:');
-&wprint("$_[2]\n");
+&wprint("$type\n");
 &wait_for($fh, 'Command.*:');
 &wprint("w\n"); sleep(1);
 &close_fdisk();
@@ -1340,7 +1341,8 @@ else {
 sub open_fdisk
 {
 local $fpath = &check_fdisk();
-($fh, $fpid) = &foreign_call("proc", "pty_process_exec", join(" ",$fpath, @_));
+($fh, $fpid) = &foreign_call("proc", "pty_process_exec",
+			     join(" ", $fpath, "-u=cylinders", @_));
 }
 
 sub open_sfdisk
