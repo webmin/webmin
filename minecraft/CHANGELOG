@@ -5,3 +5,4 @@ German translations from Raymond Vetter.
 Added a list of recent events for a player to the Manage Player page.
 ---- Changes since 1.1 ----
 Added a button to grant XP orbs / levels to a player.
+Created the Daily Play Time page for displaying usage by user, and the ability to ban users who exceed daily limits.
