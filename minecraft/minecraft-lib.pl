@@ -905,7 +905,7 @@ foreach my $u (keys %$usage) {
 	$days{"total_".$today} = $usage->{$u};
 	$days{"limit_".$today} = $limit_usage->{$u};
 	if ($config{'playtime_max'} &&
-            $limit_usage->{$u} > $config{'playtime_max'}) {
+            $limit_usage->{$u} > $config{'playtime_max'}*60) {
 		# Flag as banned
 		if (!$days{"banned_".$today}) {
 			$days{"banned_".$today} = 1;
