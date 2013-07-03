@@ -1,8 +1,6 @@
 #!/usr/local/bin/perl
 # Handles xml-rpc requests from arbitrary clients. Each is a call to a
 # function in a Webmin module. 
-# XXX special function for file transfer?
-# XXX command-line mode
 
 if (!$ENV{'GATEWAY_INTERFACE'}) {
 	# Command-line mode
