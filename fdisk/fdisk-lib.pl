@@ -716,16 +716,22 @@ else {
 		}
 	&wait_for($fh, 'First.*:') if ($wf != 1);
 	&wprint("$start\n");
-	&wait_for($fh, 'Last.*:');
+	$wf = &wait_for($fh, 'Last.*:', 'First.*:');
+	$wf < 0 && &error("End of input waiting for first cylinder response");
+	$wf == 1 && &error("First cylinder is invalid : $wait_for_input");
 	&wprint("$end\n");
-	&wait_for($fh, 'Command.*:');
+	$wf = &wait_for($fh, 'Command.*:', 'Last.*:');
+	$wf < 0 && &error("End of input waiting for last cylinder response");
+	$wf == 1 && &error("Last cylinder is invalid : $wait_for_input");
 
 	&wprint("t\n");
 	local $rv = &wait_for($fh, 'Partition.*:', 'Selected partition');
 	&wprint("$part\n") if ($rv == 0);
 	&wait_for($fh, 'Hex.*:');
 	&wprint("$type\n");
-	&wait_for($fh, 'Command.*:');
+	$wf = &wait_for($fh, 'Command.*:', 'Hex.*:');
+	$wf < 0 && &error("End of input waiting for partition type response");
+	$wf == 1 && &error("Partition type is invalid : $wait_for_input");
 	&wprint("w\n");
 	&wait_for($fh, 'Syncing'); sleep(3);
 	&close_fdisk();
@@ -1341,8 +1347,15 @@ else {
 sub open_fdisk
 {
 local $fpath = &check_fdisk();
+my $cylarg;
+if ($fpath =~ /\/fdisk/) {
+	my $out = &backquote_command("$fpath -h 2>&1 </dev/null");
+	if ($out =~ /-u\s+<size>/) {
+		$cylarg = "-u=cylinders";
+		}
+	}
 ($fh, $fpid) = &foreign_call("proc", "pty_process_exec",
-			     join(" ", $fpath, "-u=cylinders", @_));
+			     join(" ", $fpath, $cylarg, @_));
 }
 
 sub open_sfdisk
