@@ -4175,12 +4175,12 @@ if ($main::webmin_script_type eq 'cron') {
 if (($ENV{'WEBMIN_DEBUG'} || $gconfig{'debug_enabled'}) &&
     !$main::opened_debug_log++) {
 	my $dlog = $gconfig{'debug_file'} || $main::default_debug_log_file;
-	if ($gconfig{'debug_size'}) {
-		my @st = stat($dlog);
-		if ($st[7] > $gconfig{'debug_size'}) {
-			rename($dlog, $dlog.".0");
-			}
+	my $dsize = $gconfig{'debug_size'} || $main::default_debug_log_size;
+	my @st = stat($dlog);
+	if ($dsize && $st[7] > $dsize) {
+		rename($dlog, $dlog.".0");
 		}
+
 	open(main::DEBUGLOG, ">>$dlog");
 	$main::opened_debug_log = 1;
 
