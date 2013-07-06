@@ -18,63 +18,46 @@ else {
 		}
 	}
 
-print "<form action=save_serv.cgi method=post>\n";
-print "<input type=hidden name=new value='$in{'new'}'>\n";
-print "<input type=hidden name=idx value='$in{'idx'}'>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'serv_header1'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_form_start("save_serv.cgi", "post");
+print &ui_hidden("new", $in{'new'});
+print &ui_hidden("idx", $in{'idx'});
+print &ui_table_start($text{'serv_header1'}, "width=100%", 4);
 
-print "<tr> <td><b>$text{'serv_id'}</b></td>\n";
-printf "<td><input name=id size=10 value='%s'></td>\n",
-	$xinet->{'value'};
+# Service name
+print &ui_table_row($text{'serv_id'},
+	&ui_textbox("id", $xinetd->{'value'}, 10));
 
+# Currently enabled
 $id = $q->{'id'}->[0] || $xinet->{'value'};
 $dis = $q->{'disable'}->[0] eq 'yes' || $ddisable{$id};
-print "<td><b>$text{'serv_enabled'}</b></td>\n";
-printf "<td><input type=radio name=disable value=0 %s> %s\n",
-	$dis ? '' : 'checked', $text{'yes'};
-printf "<input type=radio name=disable value=1 %s> %s</td> </tr>\n",
-	$dis ? 'checked' : '', $text{'no'};
+print &ui_table_row($text{'serv_enabled'},
+	&ui_radio("disable", $dis ? 1 : 0,
+		  [ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]));
 
-print "<td><b>$text{'serv_bind'}</b></td>\n";
-printf "<td><input type=radio name=bind_def value=1 %s> %s\n",
-	$q->{'bind'} ? '' : 'checked', $text{'serv_bind_def'};
-printf "<input type=radio name=bind_def value=0 %s>\n",
-	$q->{'bind'} ? 'checked' : '';
-printf "<input name=bind size=20 value='%s'></td>\n",
-	$q->{'bind'}->[0];
+# BIND to IP
+print &ui_table_row($text{'serv_bind'},
+	&ui_opt_textbox("bind", $q->{'bind'} ? $q->{'bind'}->[0] : undef,
+			20, $text{'serv_bind_def'}));
 
-print "<td><b>$text{'serv_port'}</b></td>\n";
-printf "<td><input type=radio name=port_def value=1 %s> %s\n",
-	$q->{'port'} ? '' : 'checked', $text{'serv_port_def'};
-printf "<input type=radio name=port_def value=0 %s>\n",
-	$q->{'port'} ? 'checked' : '';
-printf "<input name=port size=8 value='%s'></td> </tr>\n",
-	$q->{'port'}->[0];
+# Listen on port
+print &ui_table_row($text{'serv_port'},
+	&ui_opt_textbox("port", $q->{'port'} ? $q->{'port'}->[0] : undef,
+			8, $text{'serv_port_def'}));
 
-print "<tr> <td><b>$text{'serv_sock'}</b></td>\n";
-print "<td><select name=sock>\n";
-foreach $s ('stream', 'dgram', 'raw', 'seqpacket') {
-	printf "<option value=%s %s>%s\n",
-		$s, $q->{'socket_type'}->[0] eq $s ? 'selected' : '',
-		$text{"sock_$s"};
-	}
-print "</select></td>\n";
+# Socket type
+print &ui_table_row($text{'serv_sock'},
+	&ui_select("sock", $q->{'socket_type'}->[0],
+		   [ map { [ $_, $text{'sock_'.$_} ] }
+			 ('stream', 'dgram', 'raw', 'seqpacket') ]));
 
-print "<td><b>$text{'serv_proto'}</b></td>\n";
-print "<td><select name=proto>\n";
-foreach $p ('', &list_protocols()) {
-	printf "<option value='%s' %s>%s\n",
-		$p, $q->{'protocol'}->[0] eq $p ? 'selected' : '',
-		$text{"proto_$p"} ? $text{"proto_$p"} : uc($p);
-	}
-print "</select></td> </tr>\n";
+# Network protocol
+print &ui_table_row($text{'serv_proto'},
+	&ui_select("proto", $q->{'protocol'}->[0],
+		   [ map { [ $_, $text{'proto_'.$_} || uc($_) ] }
+			 ('', &list_protocols()) ]));
 
-print "</table></td></tr></table><p>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'serv_header2'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_table_end();
+print &ui_table_start($text{'serv_header2'}, "width=100%", 4);
 
 $prog = &indexof('INTERNAL', @{$q->{'type'}}) >= 0 ? 0 :
 	$q->{'redirect'} ? 2 : 1;
@@ -141,10 +124,8 @@ print "<td><b>$text{'serv_cps1'}</b></td>\n";
 printf "<td><input name=cps1 size=5 value='%s'> $text{'serv_sec'}</td> </tr>\n",
 	$q->{'cps'}->[1];
 
-print "</table></td></tr></table><p>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'serv_header3'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_table_end();
+print &ui_table_start($text{'serv_header3'}, "width=100%", 4);
 
 print "<tr> <td valign=top><b>$text{'serv_from'}</b></td>\n";
 printf "<td><input type=radio name=from_def value=1 %s> %s\n",
@@ -170,17 +151,14 @@ printf "<input type=radio name=times_def value=0 %s>\n",
 printf "<input name=times size=40 value='%s'></td> </tr>\n",
 	join(" ", @{$q->{'access_times'}});
 
-print "</table></td></tr></table>\n";
-print "<table width=100%><tr>\n";
+print &ui_table_end();
 if ($in{'new'}) {
-	print "<td><input type=submit value='$text{'create'}'></td>\n";
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 else {
-	print "<td><input type=submit value='$text{'save'}'></td>\n";
-	print "<td align=right><input type=submit name=delete ",
-	      "value='$text{'delete'}'></td>\n";
+	print &ui_form_end([ [ undef, $text{'save'} ],
+			     [ 'delete', $text{'delete'} ] ]);
 	}
-print "</tr></table></form>\n";
 
 &ui_print_footer("", $text{'index_return'});
 
