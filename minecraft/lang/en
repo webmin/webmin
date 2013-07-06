@@ -263,6 +263,7 @@ download_emkdir=Directory creation failed!
 download_err=Failed to setup Minecraft server
 download_edir=Missing or non-absolute install directory
 download_euser=User to run as does not exist
+download_eurl=Failed to get server download URL
 
 backup_title=Scheduled Backup
 backup_header=Options for scheduled world backup

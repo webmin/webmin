@@ -35,6 +35,7 @@ if ($in{'new'} && !-d $config{'minecraft_dir'}) {
 # Download to temp file
 my $temp = &transname();
 $progress_callback_url = &get_server_jar_url();
+$progress_callback_url || &error($text{'download_eurl'});
 my ($host, $port, $page, $ssl) = &parse_http_url($progress_callback_url);
 &http_download($host, $port, $page, $temp, undef, \&progress_callback, $ssl);
 
