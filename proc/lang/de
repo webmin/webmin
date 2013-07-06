@@ -48,6 +48,7 @@ hpuxstat_S=Schl&auml;ft
 hpuxstat_T=Gestoppt
 hpuxstat_W=Wartet
 hpuxstat_Z=Zombie
+index_burst=<b>Dynamischer Speicher:</b> $1 Total
 index_cpu=CPU
 index_cpuname=CPU Typ
 index_display=Anzeige
