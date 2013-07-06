@@ -25,7 +25,7 @@ print &ui_table_start($text{'serv_header1'}, "width=100%", 4);
 
 # Service name
 print &ui_table_row($text{'serv_id'},
-	&ui_textbox("id", $xinetd->{'value'}, 10));
+	&ui_textbox("id", $xinet->{'value'}, 10));
 
 # Currently enabled
 $id = $q->{'id'}->[0] || $xinet->{'value'};
@@ -61,19 +61,17 @@ print &ui_table_start($text{'serv_header2'}, "width=100%", 4);
 
 $prog = &indexof('INTERNAL', @{$q->{'type'}}) >= 0 ? 0 :
 	$q->{'redirect'} ? 2 : 1;
-print "<tr> <td valign=top><b>$text{'serv_prog'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=prog value=0 %s> %s<br>\n",
-	$prog == 0 ? 'checked' : '', $text{'serv_internal'};
-printf "<input type=radio name=prog value=1 %s> %s\n",
-	$prog == 1 ? 'checked' : '', $text{'serv_server'};
-printf "<input name=server size=50 value='%s'><br>\n",
-	join(" ", $q->{'server'}->[0], @{$q->{'server_args'}});
-printf "<input type=radio name=prog value=2 %s> %s\n",
-	$prog == 2 ? 'checked' : '', $text{'serv_redirect'};
-printf "<input name=rhost size=20 value='%s'> %s\n",
-	$prog == 2 ? $q->{'redirect'}->[0] : "", $text{'serv_rport'};
-printf "<input name=rport size=6 value='%s'></td> </tr>\n",
-	$prog == 2 ? $q->{'redirect'}->[1] : "";
+print &ui_table_row($text{'serv_prog'},
+    &ui_radio_table("prog", $prog,
+	[ [ 0, $text{'serv_internal'} ],
+	  [ 1, $text{'serv_server'},
+	    &ui_textbox("server", join(" ", $q->{'server'}->[0],
+				    	    @{$q->{'server_args'}}), 50) ],
+	  [ 2, $text{'serv_redirect'},
+	    &ui_textbox("rhost", $prog == 2 ? $q->{'redirect'}->[0] : "", 20).
+	    " ".$text{'serv_rport'}." ".
+	    &ui_textbox("rport", $prog == 2 ? $q->{'redirect'}->[1] : "", 6)
+	  ] ]), 3);
 
 # Run as user
 print &ui_table_row($text{'serv_user'},
@@ -95,11 +93,6 @@ $inst = uc($q->{'instances'}->[0]) eq 'UNLIMITED' ? '' : $q->{'instances'}->[0];
 print &ui_table_row($text{'serv_inst'},
 	&ui_opt_textbox("inst", $inst, 5, $text{'serv_inst_def'}));
 
-# Nice level
-print &ui_table_row($text{'serv_nice'},
-	&ui_opt_textbox("nice", $q->{'nice'} ? $q->{'nice'}->[0] : "",
-			5, $text{'default'}));
-
 # Max connections / second
 $cps = uc($q->{'cps'}->[0]) eq 'UNLIMITED' ? '' : $q->{'cps'}->[0];
 print &ui_table_row($text{'serv_cps0'},
@@ -109,32 +102,34 @@ print &ui_table_row($text{'serv_cps0'},
 print &ui_table_row($text{'serv_cps1'},
 	&ui_textbox("cps1", $q->{'cps'}->[1], 5)." ".$text{'serv_sec'});
 
+# Nice level
+print &ui_table_row($text{'serv_nice'},
+	&ui_opt_textbox("nice", $q->{'nice'} ? $q->{'nice'}->[0] : "",
+			5, $text{'default'}));
+
 print &ui_table_end();
 print &ui_table_start($text{'serv_header3'}, "width=100%", 4);
 
-print "<tr> <td valign=top><b>$text{'serv_from'}</b></td>\n";
-printf "<td><input type=radio name=from_def value=1 %s> %s\n",
-	$q->{'only_from'} ? '' : 'checked', $text{'serv_from_def'};
-printf "<input type=radio name=from_def value=0 %s> %s<br>\n",
-	$q->{'only_from'} ? 'checked' : '', $text{'serv_from_sel'};
-print "<textarea name=from rows=4 cols=20>",
-	join("\n", @{$q->{'only_from'}}),"</textarea></td>\n";
+# Allow access from
+print &ui_table_row($text{'serv_from'},
+	&ui_radio("from_def", $q->{'only_from'} ? 0 : 1,
+		  [ [ 1, $text{'serv_from_def'} ],
+		    [ 0, $text{'serv_from_sel'} ] ])."<br>\n".
+	&ui_textarea("from", join("\n", @{$q->{'only_from'}}), 4, 20));
 
-print "<td valign=top><b>$text{'serv_access'}</b></td>\n";
-printf "<td><input type=radio name=access_def value=1 %s> %s\n",
-	$q->{'no_access'} ? '' : 'checked', $text{'serv_access_def'};
-printf "<input type=radio name=access_def value=0 %s> %s<br>\n",
-	$q->{'no_access'} ? 'checked' : '', $text{'serv_access_sel'};
-print "<textarea name=access rows=4 cols=20>",
-	join("\n", @{$q->{'no_access'}}),"</textarea></td> </tr>\n";
+# Deny access from
+print &ui_table_row($text{'serv_access'},
+	&ui_radio("access_def", $q->{'no_access'} ? 0 : 1,
+		  [ [ 1, $text{'serv_access_def'} ],
+		    [ 0, $text{'serv_access_sel'} ] ])."<br>\n".
+	&ui_textarea("access", join("\n", @{$q->{'no_access'}}), 4, 20));
 
-print "<tr> <td valign=top><b>$text{'serv_times'}</b></td>\n";
-printf "<td colspan=3><input type=radio name=times_def value=1 %s> %s\n",
-	$q->{'access_times'} ? '' : 'checked', $text{'serv_times_def'};
-printf "<input type=radio name=times_def value=0 %s>\n",
-	$q->{'access_times'} ? 'checked' : '';
-printf "<input name=times size=40 value='%s'></td> </tr>\n",
-	join(" ", @{$q->{'access_times'}});
+# Allow access at times
+print &ui_table_row($text{'serv_times'},
+	&ui_radio("times_def", $q->{'access_times'} ? 0 : 1,
+		  [ [ 1, $text{'serv_times_def'} ],
+		    [ 0, &ui_textbox("times",
+			   join(" ", @{$q->{'access_times'}}), 40) ] ]), 3);
 
 print &ui_table_end();
 if ($in{'new'}) {
