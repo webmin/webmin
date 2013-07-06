@@ -75,54 +75,39 @@ printf "<input name=rhost size=20 value='%s'> %s\n",
 printf "<input name=rport size=6 value='%s'></td> </tr>\n",
 	$prog == 2 ? $q->{'redirect'}->[1] : "";
 
-print "<tr> <td><b>$text{'serv_user'}</b></td>\n";
-printf "<td><input name=user size=10 value='%s'> %s</td>\n",
-	$q->{'user'}->[0], &user_chooser_button('user');
+# Run as user
+print &ui_table_row($text{'serv_user'},
+	&ui_user_textbox("user", $q->{'user'}->[0]));
 
-print "<td><b>$text{'serv_group'}</b></td>\n";
-printf "<td><input type=radio name=group_def value=1 %s> %s\n",
-	$q->{'group'} ? '' : 'checked', $text{'serv_group_def'};
-printf "<input type=radio name=group_def value=0 %s>\n",
-	$q->{'group'} ? 'checked' : '';
-printf "<input name=group size=10 value='%s'> %s</td> </tr>\n",
-	$q->{'group'}->[0], &group_chooser_button('group');
+# Run as group
+print &ui_table_row($text{'serv_group'},
+	&ui_opt_textbox("group", $q->{'group'} ? $q->{'group'}->[0] : "",
+			10, $text{'serv_group_def'})." ".
+	&group_chooser_button("group"));
 
-print "<tr> <td><b>$text{'serv_wait'}</b></td>\n";
-printf "<td><input type=radio name=wait value=1 %s> %s\n",
-	$q->{'wait'}->[0] eq 'yes' ? 'checked' : '', $text{'yes'};
-printf "<input type=radio name=wait value=0 %s> %s</td>\n",
-	$q->{'wait'}->[0] eq 'yes' ? '' : 'checked', $text{'no'};
+# Wait to finish?
+print &ui_table_row($text{'serv_wait'},
+	&ui_radio("wait", $q->{'wait'}->[0] eq 'yes' ? 1 : 0,
+		  [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 
+# Max instances to run at once
 $inst = uc($q->{'instances'}->[0]) eq 'UNLIMITED' ? '' : $q->{'instances'}->[0];
-print "<td><b>$text{'serv_inst'}</b></td>\n";
-printf "<td><input type=radio name=inst_def value=1 %s> %s\n",
-	$inst ? '' : 'checked', $text{'serv_inst_def'};
-printf "<input type=radio name=inst_def value=0 %s>\n",
-	$inst ? 'checked' : '';
-printf "<input name=inst size=5 value='%s'></td> </tr>\n",
-	$inst;
+print &ui_table_row($text{'serv_inst'},
+	&ui_opt_textbox("inst", $inst, 5, $text{'serv_inst_def'}));
 
-print "<tr> <td><b>$text{'serv_nice'}</b></td>\n";
-printf "<td><input type=radio name=nice_def value=1 %s> %s\n",
-	$q->{'nice'} ? '' : 'checked', $text{'default'};
-printf "<input type=radio name=nice_def value=0 %s>\n",
-	$q->{'nice'} ? 'checked' : '';
-printf "<input name=nice size=5 value='%s'></td>\n",
-	$q->{'nice'}->[0];
+# Nice level
+print &ui_table_row($text{'serv_nice'},
+	&ui_opt_textbox("nice", $q->{'nice'} ? $q->{'nice'}->[0] : "",
+			5, $text{'default'}));
 
+# Max connections / second
 $cps = uc($q->{'cps'}->[0]) eq 'UNLIMITED' ? '' : $q->{'cps'}->[0];
-print "<td><b>$text{'serv_cps0'}</b></td>\n";
-printf "<td><input type=radio name=cps_def value=1 %s> %s\n",
-	$cps ? '' : 'checked', $text{'serv_cps_def'};
-printf "<input type=radio name=cps_def value=0 %s>\n",
-	$cps ? 'checked' : '';
-printf "<input name=cps0 size=5 value='%s'> %s</td> </tr>\n",
-	$cps;
+print &ui_table_row($text{'serv_cps0'},
+	&ui_opt_textbox("cps", $cps, 5, $text{'serv_cps_def'}));
 
-print "<tr> <td colspan=2></td>\n";
-print "<td><b>$text{'serv_cps1'}</b></td>\n";
-printf "<td><input name=cps1 size=5 value='%s'> $text{'serv_sec'}</td> </tr>\n",
-	$q->{'cps'}->[1];
+# Delay if max connections reached
+print &ui_table_row($text{'serv_cps1'},
+	&ui_textbox("cps1", $q->{'cps'}->[1], 5)." ".$text{'serv_sec'});
 
 print &ui_table_end();
 print &ui_table_start($text{'serv_header3'}, "width=100%", 4);
