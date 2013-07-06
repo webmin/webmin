@@ -55,7 +55,7 @@ else {
 	$in{'nice_def'} || $in{'nice'} =~ /^\d+$/ ||
 		&error($text{'serv_enice'});
 	if (!$in{'cps_def'}) {
-		$in{'cps0'} =~ /^\d+$/ || &error($text{'serv_ecps0'});
+		$in{'cps'} =~ /^\d+$/ || &error($text{'serv_ecps0'});
 		$in{'cps1'} =~ /^\d+$/ || &error($text{'serv_ecps1'});
 		}
 	if (!$in{'times_def'}) {
@@ -118,7 +118,7 @@ else {
 	&set_member_value($xinet, 'nice',
 			  $in{'nice_def'} ? undef : $in{'nice'});
 	&set_member_value($xinet, 'cps',
-			  $in{'cps_def'} ? ( ) : ( $in{'cps0'},$in{'cps1'} ) );
+			  $in{'cps_def'} ? ( ) : ( $in{'cps'},$in{'cps1'} ) );
 	&set_member_value($xinet, 'only_from', $in{'from_def'} ? undef :
 			  $in{'from'} ? split(/\s+/, $in{'from'}) : ("") );
 	&set_member_value($xinet, 'no_access', $in{'access_def'} ? undef :
