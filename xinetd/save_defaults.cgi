@@ -35,8 +35,8 @@ elsif ($in{'log_mode'} == 2) {
 	$in{'soft'} =~ /^\d*$/ || &error($text{'defs_esoft'});
 	$in{'hard'} =~ /^\d*$/ || &error($text{'defs_ehard'});
 	&set_member_value($defs, 'log_type', 'FILE', $in{'file'},
-			  $in{'soft'} ? ( $in{'soft'} ) : ( ),
-			  $in{'hard'} ? ( $in{'hard'} ) : ( ) );
+		  $in{'soft'} ? ( $in{'soft'}*$in{'soft_units'} ) : ( ),
+		  $in{'hard'} ? ( $in{'hard'}*$in{'hard_units'} ) : ( ) );
 	}
 &set_member_value($defs, 'log_on_success', split(/\0/, $in{'success'}));
 &set_member_value($defs, 'log_on_failure', split(/\0/, $in{'failure'}));
