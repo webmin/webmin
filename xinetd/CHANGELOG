@@ -2,3 +2,5 @@
 Added buttons to the module's main page for enabling or disabling multiple services at once.
 ---- Changes since 1.300 ----
 Added support for IPv6 addresses.
+---- Changes since 1.620 ----
+Re-wrote the UI to use Webmin's standard UI library.
