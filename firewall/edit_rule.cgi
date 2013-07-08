@@ -169,64 +169,64 @@ print &ui_table_end();
 
 # Display conditions section
 print "$text{'edit_desc'}<br>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'edit_header2'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_table_start($text{'edit_header2'}, "width=100%", 2);
 
-print "<tr> <td><b>$text{'edit_source'}</b></td>\n";
-print "<td>",&print_mode("source", $rule->{'s'}),"\n";
-printf "<input name=source size=30 value='%s'></td> </tr>\n",
-	$rule->{'s'}->[1];
+# Packet source
+print &ui_table_row($text{'edit_source'},
+	&print_mode("source", $rule->{'s'})." ".
+	&ui_textbox("source", $rule->{'s'}->[1], 40));
 
-print "<tr> <td><b>$text{'edit_dest'}</b></td>\n";
-print "<td>",&print_mode("dest", $rule->{'d'}),"\n";
-printf "<input name=dest size=30 value='%s'></td> </tr>\n",
-	$rule->{'d'}->[1];
+# Packet destination
+print &ui_table_row($text{'edit_dest'},
+	&print_mode("dest", $rule->{'d'})." ".
+	&ui_textbox("dest", $rule->{'d'}->[1], 40));
 
-print "<tr> <td><b>$text{'edit_in'}</b></td>\n";
-print "<td>",&print_mode("in", $rule->{'i'}),"\n";
-print &interface_choice("in", $rule->{'i'}->[1]),"</td> </tr>\n";
+# Incoming interface
+print &ui_table_row($text{'edit_in'},
+	&print_mode("in", $rule->{'i'})." ".
+	&interface_choice("in", $rule->{'i'}->[1]));
 
-print "<tr> <td><b>$text{'edit_out'}</b></td>\n";
-print "<td>",&print_mode("out", $rule->{'o'}),"\n";
-print &interface_choice("out", $rule->{'o'}->[1]),"</td> </tr>\n";
+# Outgoing interface
+print &ui_table_row($text{'edit_out'},
+	&print_mode("out", $rule->{'o'})." ".
+	&interface_choice("out", $rule->{'o'}->[1]));
 
+# Packet fragmentation
 $f = !$rule->{'f'} ? 0 : $rule->{'f'}->[0] eq "!" ? 2 : 1;
-print "<tr> <td><b>$text{'edit_frag'}</b></td>\n";
-printf "<td><input type=radio name=frag value=0 %s> %s\n",
-	$f == 0 ? "checked" : "", $text{'edit_ignore'};
-printf "<input type=radio name=frag value=1 %s> %s\n",
-	$f == 1 ? "checked" : "", $text{'edit_fragis'};
-printf "<input type=radio name=frag value=2 %s> %s</td> </tr>\n",
-	$f == 2 ? "checked" : "", $text{'edit_fragnot'};
+print &ui_table_row($text{'edit_frag'},
+	&ui_radio("frag", $f, [ [ 0, $text{'edit_ignore'} ],
+				[ 1, $text{'edit_fragis'} ],
+				[ 2, $text{'edit_fragnot'} ] ]));
 
-print "<tr> <td><b>$text{'edit_proto'}</b></td>\n";
-print "<td>",&print_mode("proto", $rule->{'p'}),"\n";
-print &protocol_input("proto", $rule->{'p'}->[1]),"</td> </tr>\n";
+# IP protocol
+print &ui_table_row($text{'edit_proto'},
+	&print_mode("proto", $rule->{'p'})." ".
+	&protocol_input("proto", $rule->{'p'}->[1]));
 
-print "<tr> <td colspan=2><hr></td> </tr>\n";
+print &ui_table_hr();
 
-print "<tr> <td><b>$text{'edit_sport'}</b></td>\n";
-print "<td>",&print_mode("sport", $rule->{'sports'} || $rule->{'sport'}),"\n";
-print &port_input("sport", $rule->{'sports'}->[1] || $rule->{'sport'}->[1]),
-      "</td> </tr>\n";
+# Source port
+print &ui_table_row($text{'edit_sport'},
+	&print_mode("sport", $rule->{'sports'} || $rule->{'sport'})." ".
+	&port_input("sport", $rule->{'sports'}->[1] || $rule->{'sport'}->[1]));
 
-print "<tr> <td><b>$text{'edit_dport'}</b></td>\n";
-print "<td>",&print_mode("dport", $rule->{'dports'} || $rule->{'dport'}),"\n";
-print &port_input("dport", $rule->{'dports'}->[1] || $rule->{'dport'}->[1]),
-      "</td> </tr>\n";
+# Destination port
+print &ui_table_row($text{'edit_dport'},
+	&print_mode("dport", $rule->{'dports'} || $rule->{'dport'})." ".
+	&port_input("dport", $rule->{'dports'}->[1] || $rule->{'dport'}->[1]));
 
-print "<tr> <td><b>$text{'edit_ports'}</b></td>\n";
-print "<td>",&print_mode("ports", $rule->{'ports'}),"\n";
-printf "<input name=ports size=20 value='%s'></td> </tr>\n",
-	$rule->{'ports'}->[1];
+# Source and destination ports
+print &ui_table_row($text{'edit_ports'},
+	&print_mode("ports", $rule->{'ports'})." ".
+	&ui_textbox("ports", $rule->{'ports'}->[1], 30));
 
-print "<tr> <td><b>$text{'edit_tcpflags'}</b></td>\n";
-print "<td><table><tr><td>",&print_mode("tcpflags", $rule->{'tcp-flags'}),"\n";
-print "</td> <td>",&text('edit_flags',
+# TCP flags
+print &ui_table_row($text{'edit_tcpflags'},
+	"<table><tr><td>".&print_mode("tcpflags", $rule->{'tcp-flags'}).
+	"</td> <td>".&text('edit_flags',
 	    &tcpflag_input("tcpflags0", $rule->{'tcp-flags'}->[1]),
-	    &tcpflag_input("tcpflags1", $rule->{'tcp-flags'}->[2])),
-      "</td></tr></table> </td> </tr>\n";
+	    &tcpflag_input("tcpflags1", $rule->{'tcp-flags'}->[2])).
+	"</td></tr></table>");
 
 print "<tr> <td><b>$text{'edit_tcpoption'}</b></td>\n";
 print "<td>",&print_mode("tcpoption", $rule->{'tcp-option'}),"\n";
@@ -363,51 +363,45 @@ else {
 # print_mode(name, &value, [yes-option, no-option], [no-no-option])
 sub print_mode
 {
-local $m = !$_[1] ? 0 :
-	   $_[1]->[0] eq "!" ? 2 : 1;
-local $rv = "<select name=$_[0]_mode>\n";
-$rv .= sprintf "<option value=0 %s> &lt;%s&gt;\n",
-	$m == 0 ? "selected" : "", $text{'edit_ignore'};
-$rv .= sprintf "<option value=1 %s> %s\n",
-	$m == 1 ? "selected" : "", $_[2] || $text{'edit_is'};
-if (!$_[4] || $m == 2) {
-	$rv .= sprintf "<option value=2 %s> %s\n",
-		$m == 2 ? "selected" : "", $_[3] || $text{'edit_not'};
-	}
-$rv .= "</select>\n";
-return $rv;
+local ($name, $value, $yes_opt, $no_opt, $no_no_opt);
+local $m = !$value ? 0 :
+	   $value->[0] eq "!" ? 2 : 1;
+return &ui_select($name, $m,
+	[ [ 0, "&lt;$text{'edit_ignore'}&gt;" ],
+	  [ 1, $yes_opt || $text{'edit_is'} ],
+	  !$no_no_opt || $m == 2 ? ( [ 2, $no_opt || $text{'edit_not'} ] )
+				 : ( ) ]);
 }
 
 # port_input(name, value)
 sub port_input
 {
+local ($name, $value) = @_;
 local ($s, $e, $p);
-if ($_[1] =~ /^(\d*):(\d*)$/) {
+if ($value =~ /^(\d*):(\d*)$/) {
 	$s = $1; $e = $2;
 	}
 else {
-	$p = $_[1] || "";
+	$p = $value || "";
 	}
-local $rv = sprintf "<input type=radio name=$_[0]_type value=0 %s> %s\n",
-		defined($p) ? "checked" : "", $text{'edit_port0'};
-$rv .= "<input name=$_[0] size=15 value='$p'>\n";
-$rv .= sprintf "<input type=radio name=$_[0]_type value=1 %s>\n",
-		defined($p) ? "" : "checked";
-$rv .= &text('edit_port1', "<input name=$_[0]_from size=5 value='$s'>",
-			   "<input name=$_[0]_to size=5 value='$e'>");
-return $rv;
+return &ui_radio($name."_type", defined($p) ? 0 : 1,
+		 [ [ 0, $text{'edit_port0'}." ".
+			&ui_textbox($name, $p, 15) ],
+		   [ 1, &text('edit_port1',
+			      &ui_textbox($name."_from", $s, 15),
+			      &ui_textbox($name."_to", $e, 15)) ] ]);
 }
 
 # tcpflag_input(name, value)
 sub tcpflag_input
 {
-local %flags = map { $_, 1 } split(/,/, $_[1]);
+local ($name, $value) = @_;
+local %flags = map { $_, 1 } split(/,/, $value);
 local $f;
 local $rv = "<font size=-1>\n";
 foreach $f ('SYN', 'ACK', 'FIN', 'RST', 'URG', 'PSH') {
-	$rv .= sprintf "<input type=checkbox name=$_[0] value=%s %s> %s\n",
-		$f, $flags{$f} || $flags{'ALL'} ? "checked" : "",
-		"<tt>$f</tt>";
+	$rv .= &ui_checkbox($name, $f, "<tt>$f</tt>",
+			    $flags{$f} || $flags{'ALL'})."\n";
 	}
 $rv .= "</font>\n";
 return $rv;
@@ -448,6 +442,7 @@ else {
 # protocol_input(name, value)
 sub protocol_input
 {
+local ($name, $value) = @_;
 local @stdprotos = ( 'tcp', 'udp', 'icmp', undef );
 local @otherprotos;
 open(PROTOS, "/etc/protocols");
@@ -459,19 +454,12 @@ while(<PROTOS>) {
 close(PROTOS);
 @otherprotos = sort { lc($a) cmp lc($b) } @otherprotos;
 local $p;
-local $rv = "<select name=$_[0]>\n";
-local $found = $rule->{'p'}->[1] ? 0 : 1;
-foreach $p (&unique(@stdprotos, @otherprotos)) {
-	$rv .= sprintf "<option value='%s' %s>%s\n",
-			$p, $rule->{'p'}->[1] eq $p && $p ? "selected" : "",
-			uc($p) || "-------";
-	$found++ if ($rule->{'p'}->[1] eq $p && $p);
-	}
-$rv .= sprintf "<option value='%s' %s>%s\n",
-		'', !$found ? "selected" : "", $text{'edit_oifc'};
-$rv .= "</select>\n";
-$rv .= &ui_textbox($_[0]."_other", $found ? undef : $rule->{'p'}->[1], 5);
-return $rv;
+local @allprotos = &unique(@stdprotos, @otherprotos);
+local $found = &indexof($value, @allprotos) >= 0;
+return &ui_select($name, $found ? $value : "",
+	[ (map { [ $_, uc($_) || "-------" ] } @allprotos),
+	  [ '', $text{'edit_oifc'} ] ])." ".
+       &ui_textbox($name."_other", $found ? undef : $value, 5);
 }
 
 # tos_input(name, value)
