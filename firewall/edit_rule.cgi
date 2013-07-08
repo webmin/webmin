@@ -23,33 +23,31 @@ else {
 	&can_jump($rule) || &error($text{'ejump'});
 	}
 
-print "<form action=save_rule.cgi method=post>\n";
+print &ui_form_start("save_rule.cgi", "post");
 foreach $f ('table', 'idx', 'new', 'chain', 'before', 'after') {
 	print &ui_hidden($f, $in{$f});
 	}
 
 # Display action section
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'edit_header1'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_table_start($text{'edit_header1'}, "width=100%", 2);
 
-print "<tr> <td><b>$text{'edit_chain'}</b></td>\n";
-print "<td>",$text{"index_chain_".lc($rule->{'chain'})} ||
-	     &text('index_chain', "<tt>$rule->{'chain'}</tt>"),"</td> </tr>\n";
+print &ui_table_row(text{'edit_chain'},
+	$text{"index_chain_".lc($rule->{'chain'})} ||
+	&text('index_chain', "<tt>$rule->{'chain'}</tt>"));
 
-print "<tr> <td><b>$text{'edit_cmt'}</b></td>\n";
+# Rule comment
 if ($config{'comment_mod'} || $rule->{'comment'}) {
 	# Get comment from --comment option
-	printf "<td><input name=cmt size=50 value='%s'></td> </tr>\n",
-		&html_escape($rule->{'comment'}->[1]);
+	$cmt = $rule->{'comment'}->[1];
 	}
 else {
 	# Get comment from # at end of line
-	printf "<td><input name=cmt size=50 value='%s'></td> </tr>\n",
-		&html_escape($rule->{'cmt'});
+	$cmt = $rule->{'cmt'};
 	}
+print &ui_table_row($text{'edit_cmt'},
+	&ui_textbox("cmt", $cmt, 50));
 
-print "<tr> <td valign=top><b>$text{'edit_jump'}</b></td> <td>\n";
+# Action to take or chain to jump to
 if ($table->{'name'} eq 'nat') {
 	@jumps = ( undef, 'ACCEPT', 'DROP' );
 	if ($rule->{'chain'} eq 'POSTROUTING') {
@@ -66,41 +64,31 @@ if ($table->{'name'} eq 'nat') {
 else {
 	@jumps = ( undef, 'ACCEPT', 'DROP', 'REJECT', 'QUEUE', 'RETURN', 'LOG' );
 	}
-print "<table>\n";
-$i = 0;
+@grid = ( );
 foreach $j (grep { &can_jump($_) } @jumps) {
-	print "<tr>\n" if ($i%5 == 0);
-	printf "<td><input type=radio name=jump value='%s' %s>&nbsp;%s</td>\n",
-		$j, $rule->{'j'}->[1] eq $j ? "checked" : "",
-		$text{"index_jump_".lc($j)};
-	$found++ if ($rule->{'j'}->[1] eq $j);
-	$i++;
-	print "</tr>\n" if ($i%5 == 0);
+	push(@grid, &ui_oneradio("jump", $j, $text{"index_jump_".lc($j)},
+				 $rule->{'j'}->[1] eq $j));
 	}
-print "<td colspan=2>\n";
-printf "<input type=radio name=jump value=* %s>&nbsp;%s&nbsp;",
-	$found ? "" : "checked", $text{'edit_jump_other'};
-printf "<input name=other size=12 value='%s'></td> </tr>\n",
-	$found ? "" : $rule->{'j'}->[1];
-print "</table></td></tr>\n";
+push(@grid, &ui_oneradio("jump", "*", $text{'edit_jump_other'}, !$found));
+push(@grid, &ui_textbox("other", $found ? "" : $rule->{'j'}->[1], 12));
+print &ui_table_row($text{'edit_jump'},
+	&ui_grid_table(\@grid, 6, undef));
 
 if (&indexof('REJECT', @jumps) >= 0 && &can_jump("REJECT")) {
 	# Show input for REJECT icmp type
 	if ($rule->{'j'}->[1] eq 'REJECT') {
 		$rwith = $rule->{'reject-with'}->[1];
 		}
-	print "<tr> <td><b>$text{'edit_rwith'}</b></td>\n";
-	printf "<td><input type=radio name=rwithdef value=1 %s> %s\n",
-		$rwith eq "" ? "checked" : "", $text{'default'};
-	printf "<input type=radio name=rwithdef value=0 %s>\n",
-		$rwith eq "" ? "" : "checked";
 	local @rtypes = ( "icmp-net-unreachable", "icmp-host-unreachable",
 			  "icmp-port-unreachable", "icmp-proto-unreachable",
 			  "icmp-net-prohibited", "icmp-host-prohibited",
 			  "echo-reply", "tcp-reset" );
-	print &text('edit_rwithtype',
-		    &icmptype_input("rwithtype", $rwith, \@rtypes)),
-	            "</td> </tr>\n";
+	priunt &ui_table_row($text{'edit_rwith'},
+		&ui_radio("rwithdef", $rwith eq "" ? 1 : 0,
+			  [ [ 1, $text{'default'} ],
+			    [ 0, &text('edit_rwithtype',
+			      &icmptype_input("rwithtype", $rwith, \@rtypes)) ],
+			  ]));
 	}
 
 if (($table->{'name'} eq 'nat' && $rule->{'chain'} ne 'POSTROUTING') &&
@@ -109,14 +97,12 @@ if (($table->{'name'} eq 'nat' && $rule->{'chain'} ne 'POSTROUTING') &&
 	if ($rule->{'j'}->[1] eq 'REDIRECT') {
 		($rtofrom, $rtoto) = split(/\-/, $rule->{'to-ports'}->[1]);
 		}
-	print "<tr> <td><b>$text{'edit_rtoports'}</b></td>\n";
-	printf "<td><input type=radio name=rtodef value=1 %s> %s\n",
-		$rtofrom eq "" ? "checked" : "", $text{'default'};
-	printf "<input type=radio name=rtodef value=0 %s>\n",
-		$rtofrom eq "" ? "" : "checked";
-	print &text('edit_prange',
-		    "<input name=rtofrom size=6 value='$rtofrom'>",
-		    "<input name=rtoto size=6 value='$rtoto'>"),"</td> </tr>\n";
+	print &ui_table_row($text{'edit_rtoports'},
+		&ui_radio("rtodef", rtofrom eq "" ? 1 : 0,
+			  [ [ 1, $text{'default'} ],
+			    [ 0, &text('edit_prange',
+				       &ui_textbox("rtofrom", $rtofrom, 6),
+				       &ui_textbox("rtoto", $rtoto, 6)) ] ]));
 	}
 
 if (($table->{'name'} eq 'nat' && $rule->{'chain'} ne 'PREROUTING' &&
@@ -126,14 +112,12 @@ if (($table->{'name'} eq 'nat' && $rule->{'chain'} ne 'PREROUTING' &&
 	if ($rule->{'j'}->[1] eq 'MASQUERADE') {
 		($mtofrom, $mtoto) = split(/\-/, $rule->{'to-ports'}->[1]);
 		}
-	print "<tr> <td><b>$text{'edit_mtoports'}</b></td>\n";
-	printf "<td><input type=radio name=mtodef value=1 %s> %s\n",
-		$mtofrom eq "" ? "checked" : "", $text{'edit_any'};
-	printf "<input type=radio name=mtodef value=0 %s>\n",
-		$mtofrom eq "" ? "" : "checked";
-	print &text('edit_prange',
-		    "<input name=mtofrom size=6 value='$mtofrom'>",
-		    "<input name=mtoto size=6 value='$mtoto'>"),"</td> </tr>\n";
+	print &ui_table_row($text{'edit_mtoports'},
+		&ui_radio("mtodef", $mtofrom eq "" ? 1 : 0,
+			  [ [ 1, $text{'edit_any'} ],
+			    [ 0, &text('edit_prange',
+				       &ui_textbox("mtofrom", $mtofrom, 6),
+				       &ui_textbox("mtoto", $mtoto, 6)) ] ]));
 	}
 
 if (($table->{'name'} eq 'nat' && $rule->{'chain'} ne 'POSTROUTING') &&
@@ -147,17 +131,15 @@ if (($table->{'name'} eq 'nat' && $rule->{'chain'} ne 'POSTROUTING') &&
 			$dpto = $7;
 			}
 		}
-	print "<tr> <td><b>$text{'edit_dnat'}</b></td>\n";
-	printf "<td><input type=radio name=dnatdef value=1 %s> %s\n",
-		$dipfrom eq "" ? "checked" : "", $text{'default'};
-	printf "<input type=radio name=dnatdef value=0 %s>\n",
-		$dipfrom eq "" ? "" : "checked";
-	print &text('edit_dnatip',
-		    "<input name=dipfrom size=15 value='$dipfrom'>",
-		    "<input name=dipto size=15 value='$dipto'>"),"\n";
-	print &text('edit_prange',
-		    "<input name=dpfrom size=6 value='$dpfrom'>",
-		    "<input name=dpto size=6 value='$dpto'>"),"</td> </tr>\n";
+	print &ui_table_row($text{'edit_dnat'},
+		&ui_radio("dnatdef", $dipfrom eq "" ? 1 : 0,
+			  [ [ 1, $text{'default'} ],
+			    [ 0, &text('edit_dnatip',
+				   &ui_textbox("dipfrom", $dipfrom, 15),
+				   &ui_textbox("dipto", $dipto, 15))." ".
+				 &text('edit_prange',
+				   &ui_textbox("dpfrom", $dpfrom, 6),
+				   &ui_textbox("dpto", $dpto, 6)) ] ]));
 	}
 
 if (($table->{'name'} eq 'nat' && $rule->{'chain'} ne 'PREROUTING' &&
@@ -172,20 +154,18 @@ if (($table->{'name'} eq 'nat' && $rule->{'chain'} ne 'PREROUTING' &&
 			$spto = $7;
 			}
 		}
-	print "<tr> <td><b>$text{'edit_snat'}</b></td>\n";
-	printf "<td><input type=radio name=snatdef value=1 %s> %s\n",
-		$sipfrom eq "" ? "checked" : "", $text{'default'};
-	printf "<input type=radio name=snatdef value=0 %s>\n",
-		$sipfrom eq "" ? "" : "checked";
-	print &text('edit_dnatip',
-		    "<input name=sipfrom size=15 value='$sipfrom'>",
-		    "<input name=sipto size=15 value='$sipto'>"),"\n";
-	print &text('edit_prange',
-		    "<input name=spfrom size=6 value='$spfrom'>",
-		    "<input name=spto size=6 value='$spto'>"),"</td> </tr>\n";
+	print &ui_table_row($text{'edit_snat'},
+		&ui_radio("snatdef", $sipfrom eq "" ? 1 : 0,
+			  [ [ 1, $text{'default'} ],
+			    [ 0, &text('edit_snatip',
+				   &ui_textbox("sipfrom", $sipfrom, 15),
+				   &ui_textbox("sipto", $sipto, 15))." ".
+				 &text('edit_prange',
+				   &ui_textbox("spfrom", $spfrom, 6),
+				   &ui_textbox("spto", $spto, 6)) ] ]));
 	}
 
-print "</table></td></tr></table><br>\n";
+print &ui_table_end();
 
 # Display conditions section
 print "$text{'edit_desc'}<br>\n";
@@ -369,18 +349,14 @@ printf "<td colspan=3><input name=args size=50 value='%s'></td> </tr>\n",
 	$rule->{'args'};
 
 print "</table></td></tr></table>\n";
-print "<table width=100%><tr>\n";
 if ($in{'new'}) {
-	print "<td><input type=submit value='$text{'create'}'></td>\n";
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 else {
-	print "<td><input type=submit value='$text{'save'}'></td>\n";
-	print "<td align=center><input type=submit name=clone ",
-	      "value='$text{'edit_clone'}'></td>\n";
-	print "<td align=right><input type=submit name=delete ",
-	      "value='$text{'delete'}'></td>\n";
+	print &ui_form_end([ [ undef, $text{'save'} ],
+			     [ 'clone', $text{'edit_clone'} ],
+			     [ 'delete', $text{'delete'} ] ]);
 	}
-print "</tr></table>\n";
 
 &ui_print_footer("index.cgi?table=$in{'table'}", $text{'index_return'});
 
@@ -440,10 +416,11 @@ return $rv;
 # icmptype_input(name, value, [&types])
 sub icmptype_input
 {
+local ($name, $value, $types) = @_;
 local ($started, @types, $major, $minor);
 $major = -1;
-if ($_[2]) {
-	@types = @{$_[2]};
+if ($types) {
+	@types = @$types;
 	}
 else {
 	open(IPTABLES, "iptables -p icmp -h 2>/dev/null |");
@@ -460,17 +437,11 @@ else {
 		}
 	close(IPTABLES);
 	}
-if (@types && $_[1] !~ /^\d+$/ && $_[1] !~ /^\d+\/\d+$/) {
-	local $rv = "<select name=$_[0]>\n";
-	foreach $t (@types) {
-		$rv .= sprintf "<option value=%s %s>%s\n",
-				$t, $_[1] eq $t ? "selected" : "", $t;
-		}
-	$rv .= "</select>\n";
-	return $rv;
+if (@types && $value !~ /^\d+$/ && $value !~ /^\d+\/\d+$/) {
+	return &ui_select($name, $value, \@types);
 	}
 else {
-	return "<input name=$_[0] size=6 value='$_[1]'>";
+	return &ui_textbox($name, $value, 6);
 	}
 }
 
@@ -506,6 +477,7 @@ return $rv;
 # tos_input(name, value)
 sub tos_input
 {
+local ($name, $value) = @_;
 local ($started, @opts);
 open(IPTABLES, "iptables -m tos -h 2>/dev/null |");
 while(<IPTABLES>) {
@@ -518,17 +490,11 @@ while(<IPTABLES>) {
 	}
 close(IPTABLES);
 if (@opts) {
-	local $rv = "<select name=$_[0]>\n";
-	foreach $o (@opts) {
-		$rv .= sprintf "<option value=%s %s>%s\n",
-			$o->[0], $o->[0] eq $_[1] ? "selected" : "",
-			"$o->[0] ($o->[1])";
-		}
-	$rv .= "</select>\n";
-	return $rv;
+	return &ui_select($name, $value,
+		[ map { [ $o->[0], "$o->[0] ($o->[1])" ] } @opts ]);
 	}
 else {
-	return "<input name=$_[0] size=20 value='$_[1]'>\n";
+	return &ui_textbox($name, $value, 20);
 	}
 }
 
