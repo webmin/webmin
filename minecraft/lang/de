@@ -187,6 +187,7 @@ download_done2=Die neueste Version des Minecraft Servers wurde auf Ihr System he
 download_edir=Fehlendes oder nicht absolutes Installationsverzeichnis
 download_emkdir=Verzeichnis anlegen fehlgeschlagen!
 download_err=Konnte Minecraft Server einrichten
+download_eurl=Fehlgeschlagen Server Download URL zu erhalten
 download_euser=Benutzer zum ausf&#252;hren existiert nicht
 download_mkdir=Erstelle Basisverzeichnis $1 ..
 download_restart=Die neue Version wird nur verwendet, wenn der Server neu gestartet wird.

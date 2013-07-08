@@ -12,84 +12,70 @@ foreach $xi (&get_xinetd_config()) {
 	}
 $q = $defs->{'quick'};
 
-print "<form action=save_defaults.cgi>\n";
-print "<input type=hidden name=idx value='$defs->{'index'}'>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'defs_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_form_start("save_defaults.cgi", "post");
+print &ui_hidden("idx", $defs->{'index'});
+print &ui_table_start($text{'defs_header'}, "width=100%", 4);
 
-print "<tr> <td valign=top><b>$text{'serv_from'}</b></td>\n";
-printf "<td><input type=radio name=from_def value=1 %s> %s\n",
-	$q->{'only_from'} ? '' : 'checked', $text{'serv_from_def'};
-printf "<input type=radio name=from_def value=0 %s> %s<br>\n",
-	$q->{'only_from'} ? 'checked' : '', $text{'serv_from_sel'};
-print "<textarea name=from rows=4 cols=20>",
-	join("\n", @{$q->{'only_from'}}),"</textarea></td>\n";
+# Allow access from
+print &ui_table_row($text{'serv_from'},
+	&ui_radio("from_def", $q->{'only_from'} ? 0 : 1,
+		  [ [ 1, $text{'serv_from_def'} ],
+		    [ 0, $text{'serv_from_sel'} ] ])."<br>\n".
+	&ui_textarea("from", join("\n", @{$q->{'only_from'}}), 4, 20));
 
-print "<td valign=top><b>$text{'serv_access'}</b></td>\n";
-printf "<td><input type=radio name=access_def value=1 %s> %s\n",
-	$q->{'no_access'} ? '' : 'checked', $text{'serv_access_def'};
-printf "<input type=radio name=access_def value=0 %s> %s<br>\n",
-	$q->{'no_access'} ? 'checked' : '', $text{'serv_access_sel'};
-print "<textarea name=access rows=4 cols=20>",
-	join("\n", @{$q->{'no_access'}}),"</textarea></td> </tr>\n";
+# Deny access from
+print &ui_table_row($text{'serv_access'},
+	&ui_radio("access_def", $q->{'no_access'} ? 0 : 1,
+		  [ [ 1, $text{'serv_access_def'} ],
+		    [ 0, $text{'serv_access_sel'} ] ])."<br>\n".
+	&ui_textarea("access", join("\n", @{$q->{'no_access'}}), 4, 20));
 
-print "<tr> <td colspan=4><hr></td> </tr>\n";
+print &ui_table_hr();
 
+# Logging type
 $lt = $q->{'log_type'}->[0] eq 'SYSLOG' ? 1 :
       $q->{'log_type'}->[0] eq 'FILE' ? 2 : 0;
-print "<tr> <td valign=top><b>$text{'defs_log'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=log_mode value=0 %s> %s<br>\n",
-	$lt == 0 ? 'checked' : '', $text{'defs_log_def'};
 
-printf "<input type=radio name=log_mode value=1 %s> %s\n",
-	$lt == 1 ? 'checked' : '', $text{'defs_facility'};
-%sconfig = &foreign_config("syslog");
-&foreign_require("syslog", "syslog-lib.pl");
-print "<select name=facility>\n";
-foreach $f (split(/\s+/, $sconfig{'facilities'})) {
-	printf "<option %s>%s\n",
-		$lt == 1 && $q->{'log_type'}->[1] eq $f ? 'selected' : '', $f;
-	}
-print "</select> $text{'defs_level'}\n";
-print "<select name=level>\n";
-printf "<option value='' %s>%s\n",
-	$lt != 1 || !$q->{'log_type'}->[2] ? 'selected' : '', $text{'default'};
-foreach $l (&foreign_call("syslog", "list_priorities")) {
-	printf "<option %s>%s\n",
-		$lt == 1 && $q->{'log_type'}->[2] eq $l ? 'selected' : '', $l;
-	}
-print "</select><br>\n";
+# Default
+@table = ( [ 0, $text{'defs_log_def'} ] );
 
-printf "<input type=radio name=log_mode value=2 %s> %s\n",
-	$lt == 2 ? 'checked' : '', $text{'defs_file'};
-printf "<input name=file size=35 value='%s'> %s<br>\n",
-	$lt == 2 ? $q->{'log_type'}->[1] : '', &file_chooser_button("file");
-printf "&nbsp;&nbsp;&nbsp;%s <input name=soft size=6 value='%s'>\n",
-	$text{'defs_soft'}, $lt == 2 ? $q->{'log_type'}->[2] : '';
-printf "&nbsp;&nbsp;%s <input name=hard size=6 value='%s'></td> </tr>\n",
-	$text{'defs_hard'}, $lt == 2 ? $q->{'log_type'}->[3] : '';
+# Log to syslog
+&foreign_require("syslog");
+push(@table, [ 1, $text{'defs_facility'},
+       &ui_select("facility", $lt == 1 ? $q->{'log_type'}->[1] : "",
+		  [ split(/\s+/, $syslog::config{'facilities'}) ]).
+       " ".$text{'defs_level'}." ".
+       &ui_select("level", $lt == 1 ? $q->{'log_type'}->[2] : "",
+		  [ [ "", $text{'default'} ],
+		    &syslog::list_priorities() ]) ]);
 
-print "<tr> <td valign=top><b>$text{'defs_success'}</b></td>\n";
-print "<td><select name=success multiple size=5>\n";
-foreach $s ('PID', 'HOST', 'USERID', 'EXIT', 'DURATION') {
-	printf "<option value=%s %s>%s\n",
-		$s, &indexof($s, @{$q->{'log_on_success'}})<0 ? '' : 'selected',
-		$text{"defs_success_".lc($s)};
-	}
-print "</select></td>\n";
+# Log to file
+push(@table, [ 2, $text{'defs_file'},
+	&ui_textbox("file", $lt == 2 ? $q->{'log_type'}->[1] : "", 60)." ".
+	&file_chooser_button("file")."<br>\n".
+	$text{'defs_soft'}." ".
+	&ui_bytesbox("soft", $lt == 2 ? $q->{'log_type'}->[2] : "").
+	" ".$text{'defs_hard'}." ".
+	&ui_bytesbox("hard", $lt == 2 ? $q->{'log_type'}->[3] : "") ]);
 
-print "<td valign=top><b>$text{'defs_failure'}</b></td>\n";
-print "<td><select name=failure multiple size=5>\n";
-foreach $s ('HOST', 'USERID', 'ATTEMPT') {
-	printf "<option value=%s %s>%s\n",
-		$s, &indexof($s, @{$q->{'log_on_failure'}})<0 ? '' : 'selected',
-		$text{"defs_failure_".lc($s)};
-	}
-print "</select></td> </tr>\n";
+print &ui_table_row($text{'defs_log'},
+	&ui_radio_table("log_mode", $lt, \@table), 3);
 
-print "</table></td></tr></table>\n";
-print "<input type=submit value='$text{'save'}'></form>\n";
+# On success log
+print &ui_table_row($text{'defs_success'},
+	&ui_select("success", $q->{'log_on_success'},
+		   [ map { [ $_, $text{'defs_success_'.lc($_)} ] }
+			 ('PID', 'HOST', 'USERID', 'EXIT', 'DURATION') ],
+		   5, 1));
+
+# On failed connection log
+print &ui_table_row($text{'defs_failure'},
+	&ui_select("failure", $q->{'log_on_failure'},
+		   [ map { [ $_, $text{'defs_failure_'.lc($_)} ] }
+			 ('HOST', 'USERID', 'ATTEMPT') ], 5, 1));
+			 
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 
