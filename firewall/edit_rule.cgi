@@ -228,67 +228,64 @@ print &ui_table_row($text{'edit_tcpflags'},
 	    &tcpflag_input("tcpflags1", $rule->{'tcp-flags'}->[2])).
 	"</td></tr></table>");
 
-print "<tr> <td><b>$text{'edit_tcpoption'}</b></td>\n";
-print "<td>",&print_mode("tcpoption", $rule->{'tcp-option'}),"\n";
-printf "<input name=tcpoption size=6 value='%s'></td> </tr>\n",
-	$rule->{'tcp-option'}->[1];
+# TCP options
+print &ui_table_row($text{'edit_tcpoption'},
+	&print_mode("tcpoption", $rule->{'tcp-option'})." ".
+	&ui_textbox("tcpoption", $rule->{'tcp-option'}->[1], 6));
 
-print "<tr> <td colspan=2><hr></td> </tr>\n";
+print &ui_table_hr();
 
-print "<tr> <td><b>$text{'edit_icmptype'}</b></td>\n";
-print "<td>",&print_mode("icmptype", $rule->{'icmp-type'}),"\n";
-print &icmptype_input("icmptype", $rule->{'icmp-type'}->[1]),"</td> </tr>\n";
+# ICMP packet type
+print &ui_table_row($text{'edit_icmptype'},
+	&print_mode("icmptype", $rule->{'icmp-type'})." ".
+	&icmptype_input("icmptype", $rule->{'icmp-type'}->[1]));
 
-print "<tr> <td><b>$text{'edit_mac'}</b></td>\n";
-print "<td>",&print_mode("macsource", $rule->{'mac-source'}),"\n";
-printf "<input name=macsource size=18 value='%s'></td> </tr>\n",
-	$rule->{'mac-source'}->[1];
+# MAC address
+print &ui_table_row($text{'edit_mac'},
+	&print_mode("macsource", $rule->{'mac-source'})." ".
+	&ui_textbox("macsource", $rule->{'mac-source'}->[1], 18));
 
-print "<tr> <td colspan=2><hr></td> </tr>\n";
+print &ui_table_hr();
 
-print "<tr> <td><b>$text{'edit_limit'}</b></td>\n";
-print "<td>",&print_mode("limit", $rule->{'limit'},
-			 $text{'edit_below'}, $text{'edit_above'}, 1),"\n";
+# Packet flow limit
 ($n, $u) = $rule->{'limit'}->[1] =~ /^(\d+)\/(\S+)$/ ? ($1, $2) : ();
-print "<input name=limit0 size=6 value='$n'>\n";
-print "/ <select name=limit1>\n";
-foreach $l ('second', 'minute', 'hour', 'day') {
-	printf "<option value=%s %s>%s\n",
-		$l, $u eq $l ? "selected" : "", $l;
-	}
-print "</select></td> </tr>\n";
+print &ui_table_row($text{'edit_limit'},
+	&print_mode("limit", $rule->{'limit'},
+		    $text{'edit_below'}, $text{'edit_above'}, 1)." ".
+	&ui_textbox("limit0", $n, 6)." / ".
+	&ui_select("limit1", $u, ['second', 'minute', 'hour', 'day']));
 
-print "<tr> <td><b>$text{'edit_limitburst'}</b></td>\n";
-print "<td>",&print_mode("limitburst", $rule->{'limit-burst'},
-			 $text{'edit_below'}, $text{'edit_above'}, 1),"\n";
-printf "<input name=limitburst size=6 value='%s'></td> </tr>\n",
-	$rule->{'limit-burst'}->[1];
+# Packet burst rate
+print &ui_table_row($text{'edit_limitburst'},
+	&print_mode("limitburst", $rule->{'limit-burst'},
+		    $text{'edit_below'}, $text{'edit_above'}, 1)." ".
+	&ui_textbox("limitburst", $rule->{'limit-burst'}->[1], 6));
 
 if ($rule->{'chain'} eq 'OUTPUT') {
-	print "<tr> <td colspan=2><hr></td> </tr>\n";
+	print &ui_table_hr();
 
-	print "<tr> <td><b>$text{'edit_uidowner'}</b></td>\n";
-	print "<td>",&print_mode("uidowner", $rule->{'uid-owner'}),"\n";
-	printf "<input name=uidowner size=13 value='%s'> %s</td> </tr>\n",
-		$rule->{'uid-owner'}->[1], &user_chooser_button("uidowner");
+	# Sending UID
+	print &ui_table_row($text{'edit_uidowner'},
+		&print_mode("uidowner", $rule->{'uid-owner'})." ".
+		&ui_user_textbox("uidowner", $rule->{'uid-owner'}->[1]));
 
-	print "<tr> <td><b>$text{'edit_gidowner'}</b></td>\n";
-	print "<td>",&print_mode("gidowner", $rule->{'gid-owner'}),"\n";
-	printf "<input name=gidowner size=13 value='%s'> %s</td> </tr>\n",
-		$rule->{'gid-owner'}->[1], &group_chooser_button("gidowner");
+	# Sending GID
+	print &ui_table_row($text{'edit_gidowner'},
+		&print_mode("gidowner", $rule->{'gid-owner'})." ".
+		&ui_group_textbox("gidowner", $rule->{'gid-owner'}->[1]));
 
-	print "<tr> <td><b>$text{'edit_pidowner'}</b></td>\n";
-	print "<td>",&print_mode("pidowner", $rule->{'pid-owner'}),"\n";
-	printf "<input name=pidowner size=6 value='%s'></td> </tr>\n",
-		$rule->{'pid-owner'}->[1];
+	# Sending process ID
+	print &ui_table_row($text{'edit_pidowner'},
+		&print_mode("pidowner", $rule->{'pid-owner'})." ".
+		&ui_textbox("pidowner", $rule->{'pid-owner'}->[1], 6));
 
-	print "<tr> <td><b>$text{'edit_sidowner'}</b></td>\n";
-	print "<td>",&print_mode("sidowner", $rule->{'sid-owner'}),"\n";
-	printf "<input name=sidowner size=6 value='%s'></td> </tr>\n",
-		$rule->{'sid-owner'}->[1];
+	# Sending process group
+	print &ui_table_row($text{'edit_sidowner'},
+		&print_mode("sidowner", $rule->{'sid-owner'})." ".
+		&ui_textbox("sidowner", $rule->{'sid-owner'}->[1], 6));
 	}
 
-print "<tr> <td colspan=2><hr></td> </tr>\n";
+print &ui_table_hr();
 
 # Connection states
 print "<tr> <td valign=top><b>$text{'edit_state'}</b></td>\n";
@@ -308,7 +305,7 @@ print "<tr> <td><b>$text{'edit_tos'}</b></td>\n";
 print "<td>",&print_mode("tos", $rule->{'tos'}),"\n";
 print &tos_input("tos", $rule->{'tos'}->[1]),"</td> </tr>\n";
 
-print "<tr> <td colspan=2><hr></td> </tr>\n";
+print &ui_table_hr();
 
 # Input physical device
 print "<tr> <td><b>$text{'edit_physdevin'}</b></td>\n";
