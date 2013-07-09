@@ -6,3 +6,5 @@ desc_ca=Funcions Planificades de Webmin
 desc_nl=Geplande Webmin Functies
 desc_de=Geplante Webmin Funktionen
 desc_no=Tidsplanlagte Webmin funksjoner
+desc_pl=Zaplanowane Funkcje Webmina
+longdesc_pl=Okre¶l funkcje Webmina, które maj± byæ uruchamiane wed³ug regularnego harmonogramu przez serwer Webmin

@@ -18,6 +18,7 @@ index_nologfiles=<b>Uwaga</b> - <a href='$1'>Logowanie zmian w&nbsp;plikach</a> 
 index_nuser=Dowolnego u¿ytkownika oprócz
 index_ouser=U¿ytkownika nie bêd±cego u¿ytkownikiem Webmina
 index_return=formularza szukania
+index_sdesc=Opis dzia³ania zawiera
 index_sdiff=Zmian w plikach lub uruchomionych poleceñ
 index_search=Szukaj
 index_sfile=Zdarzeñ modyfikacji plików
@@ -62,6 +63,7 @@ search_action=Zdarzenie
 search_config=Zmieniono konfiguracjê modu³u
 search_crit=Zarejestrowane zdarzenia
 search_critall=Wszystkie zarejestrowane zdarzenia
+search_critd=gdzie opis zawiera  <tt>$1</tt>
 search_critm=w&nbsp;module $1
 search_critnu=dowolnego u¿ytkownika oprócz $1
 search_critt=pomiêdzy $1 a&nbsp;$2

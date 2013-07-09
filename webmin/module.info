@@ -36,3 +36,4 @@ desc_hu.UTF-8=Webmin be√°ll√≠t√°sok
 desc_cz.UTF-8=Konfigurace Webminu
 desc_pl.UTF-8=Konfiguracja Webmina
 desc_sk.UTF-8=Konfigur√°cia Webminu
+longdesc_pl=Skonfiguruj Webmina dla siebie przez np. ustawienie dozwolonych hostÛw, SSL instalowanie modu≥Ûw i szablonÛw.

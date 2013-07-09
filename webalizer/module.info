@@ -18,3 +18,5 @@ desc_ru_RU=Àíàëèç ëîã-ôàéëîâ (Webalizer)
 desc_cz.UTF-8=Webalizer - generÃ¡tor analÃ½zy logÅ¯
 desc_hu.UTF-8=Webalizer naplÃ³file elemzÅ‘
 desc_no=Webalizer Loggfilanalyse
+desc_pl=Webalizer - Analiza logów
+longdesc_pl=Generuje raporty z serwera www, proxy i FTP
