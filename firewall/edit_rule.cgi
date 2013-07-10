@@ -288,64 +288,57 @@ if ($rule->{'chain'} eq 'OUTPUT') {
 print &ui_table_hr();
 
 # Connection states
-print "<tr> <td valign=top><b>$text{'edit_state'}</b></td>\n";
-print "<td><table cellpadding=0 cellspacing=0><tr><td valign=top>",
-      &print_mode("state", $rule->{'state'}),"</td>\n";
-print "<td>&nbsp;<select name=state multiple size=4>\n";
-%states = map { $_,1 } split(/,/, $rule->{'state'}->[1]);
-foreach $s ('NEW', 'ESTABLISHED', 'RELATED', 'INVALID', 'UNTRACKED') {
-	printf "<option value=%s %s>%s (%s)\n",
-		$s, $states{$s} ? "selected" : "",
-		$text{"edit_state_".lc($s)}, $s;
-	}
-print "</select></td></tr></table></td> </tr>\n";
+print &ui_table_row($text{'edit_state'},
+	"<table cellpadding=0 cellspacing=0><tr><td valign=top>".
+	&print_mode("state", $rule->{'state'})."</td>\n".
+	"<td>&nbsp;".
+	&ui_select("state", [ split(/,/, $rule->{'state'}->[1]) ],
+	   [ map { [ $_, $text{"edit_state_".lc($_)} ] }
+		 ('NEW', 'ESTABLISHED', 'RELATED', 'INVALID', 'UNTRACKED') ]).
+	"</td></tr></table>");
 
 # Type of service
-print "<tr> <td><b>$text{'edit_tos'}</b></td>\n";
-print "<td>",&print_mode("tos", $rule->{'tos'}),"\n";
-print &tos_input("tos", $rule->{'tos'}->[1]),"</td> </tr>\n";
+print &ui_table_row($text{'edit_tos'},
+	&print_mode("tos", $rule->{'tos'})." ".
+	&tos_input("tos", $rule->{'tos'}->[1]));
 
 print &ui_table_hr();
 
 # Input physical device
-print "<tr> <td><b>$text{'edit_physdevin'}</b></td>\n";
-print "<td>",&print_mode("physdevin", $rule->{'physdev-in'}),"\n";
-print &interface_choice("physdevin", $rule->{'physdev-in'}->[1]);
-print "</td> </tr>\n";
+print &ui_table_row($text{'edit_physdevin'},
+	&print_mode("physdevin", $rule->{'physdev-in'})." ".
+	&interface_choice("physdevin", $rule->{'physdev-in'}->[1]));
 
 # Output physical device
-print "<tr> <td><b>$text{'edit_physdevout'}</b></td>\n";
-print "<td>",&print_mode("physdevout", $rule->{'physdev-out'}),"\n";
-print &interface_choice("physdevout", $rule->{'physdev-out'}->[1]);
-print "</td> </tr>\n";
+print &ui_table_row($text{'edit_physdevout'},
+	&print_mode("physdevout", $rule->{'physdev-out'})." ".
+	&interface_choice("physdevout", $rule->{'physdev-out'}->[1]));
 
 # Physdev match modes
-print "<tr> <td><b>$text{'edit_physdevisin'}</b></td>\n";
-print "<td>",&print_mode("physdevisin", $rule->{'physdev-is-in'},
-			 $text{'yes'}, $text{'no'}),"</td> </tr>\n";
-print "<tr> <td><b>$text{'edit_physdevisout'}</b></td>\n";
-print "<td>",&print_mode("physdevisout", $rule->{'physdev-is-out'},
-			 $text{'yes'}, $text{'no'}),"</td> </tr>\n";
-print "<tr> <td><b>$text{'edit_physdevisbridged'}</b></td>\n";
-print "<td>",&print_mode("physdevisbridged", $rule->{'physdev-is-bridged'},
-			 $text{'yes'}, $text{'no'}),"</td> </tr>\n";
+print &ui_table_row($text{'edit_physdevisin'},
+	&print_mode("physdevisin", $rule->{'physdev-is-in'},
+		    $text{'yes'}, $text{'no'}));
+print &ui_table_row($text{'edit_physdevisout'},
+	&print_mode("physdevisout", $rule->{'physdev-is-out'},
+		    $text{'yes'}, $text{'no'}));
+print &ui_table_row($text{'edit_physdevisbridged'},
+	&print_mode("physdevisbridged", $rule->{'physdev-is-bridged'},
+		    $text{'yes'}, $text{'no'}));
 
-print "<tr> <td colspan=2><hr></td> </tr>\n";
+print &ui_table_hr();
 
 # Show unknown modules
 @mods = grep { !/^(tcp|udp|icmp|multiport|mac|limit|owner|state|tos|comment|physdev)$/ } map { $_->[1] } @{$rule->{'m'}};
-print "<tr> <td><b>$text{'edit_mods'}</b></td>\n";
-printf "<td colspan=3><input name=mods size=50 value='%s'></td> </tr>\n",
-	join(" ", @mods);
+print &ui_table_row($text{'edit_mods'},
+	&ui_textbox("mods", join(" ", @mods), 60));
 
 # Show unknown parameters
 $rule->{'args'} =~ s/^\s+//;
 $rule->{'args'} =~ s/\s+$//;
-print "<tr> <td><b>$text{'edit_args'}</b></td>\n";
-printf "<td colspan=3><input name=args size=50 value='%s'></td> </tr>\n",
-	$rule->{'args'};
+print &ui_table_row($text{'edit_args'},
+	&ui_textbox("args", $rule->{'args'}, 60));
 
-print "</table></td></tr></table>\n";
+print &ui_table_end();
 if ($in{'new'}) {
 	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
