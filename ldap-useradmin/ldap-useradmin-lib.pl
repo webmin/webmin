@@ -137,7 +137,13 @@ if ($config{'md5'} == 5) {
 	# SHA encryption
 	local $qp = quotemeta($pass);
 	local $out = &backquote_command("$config{'slappasswd'} -h '{sha}' -s $qp 2>/dev/null");
-	$out =~ s/\s+$//;
+	if ($out && !$?) {
+		$out =~ s/\s+$//;
+		$out =~ s/^\{sha\}//i;
+		return $out;
+		}
+	# Fall back to built-in code
+	$out = &useradmin::encrypt_sha1($pass);
 	$out =~ s/^\{sha\}//i;
 	return $out;
 	}
