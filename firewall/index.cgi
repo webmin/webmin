@@ -64,43 +64,43 @@ if (!$config{'direct'} &&
 		}
 	if (!$in{'reset'} && ($rules || $chains)) {
 		# Offer to save the current rules
-		print &text('index_existing', $rules,
-			    "<tt>$iptables_save_file</tt>"),"<p>\n";
-		print "<form action=convert.cgi>\n";
-		print "<center><input type=submit ",
-		      "value='$text{'index_saveex'}'><p>\n";
-		if ($init_support && !$atboot) {
-			print "<input type=checkbox name=atboot value=1> ",
-			      "$text{'index_atboot'}\n";
-			}
-		print "</center></form><p>\n";
+		print &ui_confirmation_form("convert.cgi",
+			&text('index_existing', $rules,
+			      "<tt>$iptables_save_file</tt>"),
+			undef,
+			[ [ undef, $text{'index_saveex'} ] ],
+			$init_support && !$atboot ?
+			  &ui_checkbox("atboot", 1, $text{'index_atboot'}, 0) :
+			  "",
+			);
 
 		print &ui_table_start($text{'index_headerex'}, "width=100%", 2);
 		$out = &backquote_command("iptables-save 2>/dev/null");
-		print &ui_table_row(undef, "<pre>".&html_escape($out)."</pre>", 2);
+		print &ui_table_row(undef,
+			"<pre>".&html_escape($out)."</pre>", 2);
 		print &ui_table_end();
 		}
 	else {
 		# Offer to set up a firewall
 		print &text($in{'reset'} ? 'index_rsetup' : 'index_setup',
 			    "<tt>$iptables_save_file</tt>"),"<p>\n";
-		print "<form action=setup.cgi>\n";
+		print &ui_form_start("setup.cgi");
 		print &ui_hidden("reset", $in{'reset'});
 		print "<center><table><tr><td>\n";
-		print "<input type=radio name=auto value=0 checked> ",
-		      "$text{'index_auto0'}<p>\n";
+		print &ui_oneradio("auto", 0, $text{'index_auto0'}, 1),"<p>\n";
 		foreach $a (1 .. 5) {
-			print "<input type=radio name=auto value=$a> ",
-			      "$text{'index_auto'.$a} ",
-			      &interface_choice("iface".$a),"<p>\n";
+			print &ui_oneradio("auto", $a,
+					   $text{'index_auto'.$a}, 0)." ";
+			print &interface_choice("iface".$a),"<p>\n";
 			}
 		print "</td></tr></table>\n";
-		print "<input type=submit value='$text{'index_auto'}'><p>\n";
+		print &ui_submit($text{'index_auto'}),"<p>\n";
 		if ($init_support && !$atboot) {
-			print "<input type=checkbox name=atboot value=1> ",
-			      "$text{'index_atboot'}\n";
+			print &ui_checkbox("atboot", 1,
+					   $text{'index_atboot'}, 0);
 			}
-		print "</center></form>\n";
+		print "</center>\n";
+		print &ui_form_end();
 		}
 	}
 else {

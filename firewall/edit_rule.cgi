@@ -250,7 +250,8 @@ print &ui_table_row($text{'edit_mac'},
 print &ui_table_hr();
 
 # Packet flow limit
-($n, $u) = $rule->{'limit'}->[1] =~ /^(\d+)\/(\S+)$/ ? ($1, $2) : ();
+($n, $u) = $rule->{'limit'} &&
+	   $rule->{'limit'}->[1] =~ /^(\d+)\/(\S+)$/ ? ($1, $2) : ();
 print &ui_table_row($text{'edit_limit'},
 	&print_mode("limit", $rule->{'limit'},
 		    $text{'edit_below'}, $text{'edit_above'}, 1)." ".
@@ -358,7 +359,7 @@ sub print_mode
 local ($name, $value, $yes_opt, $no_opt, $no_no_opt) = @_;
 local $m = !$value ? 0 :
 	   $value->[0] eq "!" ? 2 : 1;
-return &ui_select($name, $m,
+return &ui_select($name."_mode", $m,
 	[ [ 0, "&lt;$text{'edit_ignore'}&gt;" ],
 	  [ 1, $yes_opt || $text{'edit_is'} ],
 	  !$no_no_opt || $m == 2 ? ( [ 2, $no_opt || $text{'edit_not'} ] )
@@ -380,8 +381,8 @@ return &ui_radio($name."_type", defined($p) ? 0 : 1,
 		 [ [ 0, $text{'edit_port0'}." ".
 			&ui_textbox($name, $p, 15) ],
 		   [ 1, &text('edit_port1',
-			      &ui_textbox($name."_from", $s, 15),
-			      &ui_textbox($name."_to", $e, 15)) ] ]);
+			      &ui_textbox($name."_from", $s, 6),
+			      &ui_textbox($name."_to", $e, 6)) ] ]);
 }
 
 # tcpflag_input(name, value)
