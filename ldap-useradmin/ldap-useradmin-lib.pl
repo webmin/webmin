@@ -136,15 +136,21 @@ local ($pass, $salt) = @_;
 if ($config{'md5'} == 5) {
 	# SHA encryption
 	local $qp = quotemeta($pass);
-	local $out = `$config{'slappasswd'} -h '{sha}' -s $qp 2>/dev/null`;
-	$out =~ s/\s+$//;
+	local $out = &backquote_command("$config{'slappasswd'} -h '{sha}' -s $qp 2>/dev/null");
+	if ($out && !$?) {
+		$out =~ s/\s+$//;
+		$out =~ s/^\{sha\}//i;
+		return $out;
+		}
+	# Fall back to built-in code
+	$out = &useradmin::encrypt_sha1($pass);
 	$out =~ s/^\{sha\}//i;
 	return $out;
 	}
 if ($config{'md5'} == 4) {
 	# LDAP SSHA encryption
 	local $qp = quotemeta($pass);
-	local $out = `$config{'slappasswd'} -h '{ssha}' -s $qp 2>/dev/null`;
+	local $out = &backquote_command("$config{'slappasswd'} -h '{ssha}' -s $qp 2>/dev/null");
 	$out =~ s/\s+$//;
 	$out =~ s/^\{ssha\}//i;
 	return $out;
@@ -152,7 +158,7 @@ if ($config{'md5'} == 4) {
 if ($config{'md5'} == 3) {
 	# LDAP MD5 encryption
 	local $qp = quotemeta($pass);
-	local $out = `$config{'slappasswd'} -h '{md5}' -s $qp 2>/dev/null`;
+	local $out = &backquote_command("$config{'slappasswd'} -h '{md5}' -s $qp 2>/dev/null");
 	$out =~ s/\s+$//;
 	$out =~ s/^\{md5\}//i;
 	return $out;

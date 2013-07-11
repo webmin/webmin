@@ -361,6 +361,16 @@ foreach my $ext (".dir", ".pag", ".db") {
 return 0;
 }
 
+# delete_dbm_index(user|file)
+# Deletes all DBM indexes for a user or file
+sub delete_dbm_index
+{
+local $ifile = &user_index_file($_[0]);
+foreach my $ext (".dir", ".pag", ".db") {
+	&unlink_file($ifile.$ext);
+	}
+}
+
 # empty_mail(user|file)
 # Truncate a mail file to nothing
 sub empty_mail
