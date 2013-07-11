@@ -31,7 +31,7 @@ foreach $f ('table', 'idx', 'new', 'chain', 'before', 'after') {
 # Display action section
 print &ui_table_start($text{'edit_header1'}, "width=100%", 2);
 
-print &ui_table_row(text{'edit_chain'},
+print &ui_table_row($text{'edit_chain'},
 	$text{"index_chain_".lc($rule->{'chain'})} ||
 	&text('index_chain', "<tt>$rule->{'chain'}</tt>"));
 
@@ -65,9 +65,11 @@ else {
 	@jumps = ( undef, 'ACCEPT', 'DROP', 'REJECT', 'QUEUE', 'RETURN', 'LOG' );
 	}
 @grid = ( );
+$found = 0;
 foreach $j (grep { &can_jump($_) } @jumps) {
 	push(@grid, &ui_oneradio("jump", $j, $text{"index_jump_".lc($j)},
 				 $rule->{'j'}->[1] eq $j));
+	$found++ if ($rule->{'j'}->[1] eq $j);
 	}
 push(@grid, &ui_oneradio("jump", "*", $text{'edit_jump_other'}, !$found));
 push(@grid, &ui_textbox("other", $found ? "" : $rule->{'j'}->[1], 12));
@@ -294,7 +296,7 @@ print &ui_table_row($text{'edit_state'},
 	"<td>&nbsp;".
 	&ui_select("state", [ split(/,/, $rule->{'state'}->[1]) ],
 	   [ map { [ $_, $text{"edit_state_".lc($_)} ] }
-		 ('NEW', 'ESTABLISHED', 'RELATED', 'INVALID', 'UNTRACKED') ]).
+		 ('NEW', 'ESTABLISHED', 'RELATED', 'INVALID', 'UNTRACKED') ], 5, 1).
 	"</td></tr></table>");
 
 # Type of service
@@ -353,7 +355,7 @@ else {
 # print_mode(name, &value, [yes-option, no-option], [no-no-option])
 sub print_mode
 {
-local ($name, $value, $yes_opt, $no_opt, $no_no_opt);
+local ($name, $value, $yes_opt, $no_opt, $no_no_opt) = @_;
 local $m = !$value ? 0 :
 	   $value->[0] eq "!" ? 2 : 1;
 return &ui_select($name, $m,
@@ -434,6 +436,7 @@ sub protocol_input
 {
 local ($name, $value) = @_;
 local @stdprotos = ( 'tcp', 'udp', 'icmp', undef );
+$value ||= "tcp";
 local @otherprotos;
 open(PROTOS, "/etc/protocols");
 while(<PROTOS>) {

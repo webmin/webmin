@@ -1391,6 +1391,9 @@ sub ui_buttons_row
 {
 return &theme_ui_buttons_row(@_) if (defined(&theme_ui_buttons_row));
 my ($script, $label, $desc, $hiddens, $after, $before) = @_;
+if (ref($hiddens)) {
+	$hiddens = join("\n", map { &ui_hidden(@$_) } @$hiddens);
+	}
 return "<form action=$script class='ui_buttons_form'>\n".
        $hiddens.
        "<tr class='ui_buttons_row'> ".
