@@ -75,15 +75,10 @@ if (!$config{'direct'} &&
 			}
 		print "</center></form><p>\n";
 
-		print "<table border width=100%>\n";
-		print "<tr $tb><td><b>$text{'index_headerex'}</b></td></tr>\n";
-		print "<tr $cb> <td><pre>";
-		open(OUT, "iptables-save 2>/dev/null |");
-		while(<OUT>) {
-			print &html_escape($_);
-			}
-		close(OUT);
-		print "</pre></td> </tr></table>\n";
+		print &ui_table_start($text{'index_headerex'}, "width=100%", 2);
+		$out = &backquote_command("iptables-save 2>/dev/null");
+		print &ui_table_row(undef, "<pre>".&html_escape($out)."</pre>", 2);
+		print &ui_table_end();
 		}
 	else {
 		# Offer to set up a firewall
