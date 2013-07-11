@@ -6,7 +6,8 @@ use warnings;
 require './minecraft-lib.pl';
 our (%in, %text, %config, $module_config_file);
 &ReadParse();
-&lock_file(&get_minecraft_config_file());
+my $cfile = &get_minecraft_config_file();
+&lock_file($cfile);
 my $conf = &get_minecraft_config();
 &error_setup($text{'conf_err'});
 
@@ -86,8 +87,9 @@ $in{'port_def'} || $in{'port'} =~ /^\d+$/ ||
 &save_directive("enable-rcon", $in{'rcon'} ? 'true' : 'false', $conf);
 
 # Write out the file
-&flush_file_lines(&get_minecraft_config_file());
-&unlock_file(&get_minecraft_config_file());
+&flush_file_lines($cfile);
+&unlock_file($cfile);
+&set_ownership_permissions($config{'unix_user'}, undef, undef, $cfile);
 
 # Java command-line flags
 if ($config{'java_args'} ne $in{'args'}) {
