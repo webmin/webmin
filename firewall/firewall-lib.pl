@@ -262,13 +262,14 @@ local $stop = "$ipt -t filter -F\n".
 # interface_choice(name, value)
 sub interface_choice
 {
+local ($name, $value) = @_;
 local @ifaces;
 if (&foreign_check("net")) {
 	&foreign_require("net", "net-lib.pl");
-	return &net::interface_choice($_[0], $_[1], undef, 0, 1);
+	return &net::interface_choice($name, $value, undef, 0, 1);
 	}
 else {
-	return "<input name=$_[0] size=6 value='$_[1]'>";
+	return &ui_textbox($name, $value, 6);
 	}
 }
 
