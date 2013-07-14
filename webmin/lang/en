@@ -949,6 +949,7 @@ sendmail_desc=This page controls how Webmin sends email, such as from scheduled 
 sendmail_header=Mail sending options
 sendmail_system=Local mail server
 sendmail_smtp=Send email using
+sendmail_port=on port
 sendmail_smtp0=Local mail server command
 sendmail_smtp1=Via SMTP to local mail server
 sendmail_smtp2=Via SMTP to remote mail server
@@ -962,6 +963,7 @@ sendmail_fromdef=Default ($1)
 sendmail_fromaddr=Address
 sendmail_err=Failed to save mail sending options
 sendmail_esmtp=Missing or un-resolvable SMTP server hostname
+sendmail_eport=Missing or non-numeric SMTP port
 sendmail_elogin=Missing SMTP server login
 sendmail_esasl=SMTP authentication cannot be enabled unless the <a href=$1>$2</a> Perl module is installed.
 sendmail_efrom=Missing or incorrectly formatted from address

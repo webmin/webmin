@@ -19,6 +19,13 @@ else {
 	&to_ipaddress($in{'smtp'}) || &to_ip6address($in{'smtp'}) ||
 		&error($text{'sendmail_esmtp'});
 	$mconfig{'send_mode'} = $in{'smtp'};
+	$in{'port'} =~ /^\d+$/ || &error($text{'sendmail_eport'});
+	if ($in{'port'} == 25) {
+		delete($mconfig{'smtp_port'});
+		}
+	else {
+		$mconfig{'smtp_port'} = $in{'port'};
+		}
 	}
 
 # Save login and password
