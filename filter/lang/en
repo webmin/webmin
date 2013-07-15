@@ -105,6 +105,7 @@ auto_title=Email Automatic Reply
 auto_header=Automatic email reply options
 auto_enabled=Automatic response enabled?
 auto_reply=Reply message
+auto_subject=Email subject
 auto_charset=Message character set
 auto_charsetdef=From current language
 auto_charsetother=Other character set
