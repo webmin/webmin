@@ -41,6 +41,7 @@ index_mins=minutes
 index_astart=Don't send autoreply before
 index_aend=Don't send autoreply after
 index_charset=Autoreply message character set
+index_subject=Autoreply message subject
 index_nowebmin=This module is only for use in Usermin. If it is visible in Webmin, the theme you are using is incomplete.
 
 edit_title1=Create Filter

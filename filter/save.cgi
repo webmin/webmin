@@ -192,6 +192,13 @@ else {
 				error($text{'save_echarset'});
 			$filter->{'reply'}->{'charset'} = $in{'charset'};
 			}
+		# Save subject
+		if ($in{'subject_def'}) {
+			delete($filter->{'reply'}->{'subject'});
+			}
+		else {
+			$filter->{'reply'}->{'subject'} = $in{'subject'};
+			}
 		}
 	elsif ($in{'amode'} == 7) {
 		# Create a new folder for saving (always in Maildir format)
