@@ -75,6 +75,14 @@ elsif ($in{'enabled'}) {
 		$filter->{'reply'}->{'charset'} = $in{'charset'};
 		}
 
+	# Save subject
+	if ($in{'subject_def'}) {
+		delete($filter->{'reply'}->{'subject'});
+		}
+	else {
+		$filter->{'reply'}->{'subject'} = $in{'subject'};
+		}
+
 	if ($old) {
 		&modify_filter($filter);
 		}

@@ -29,6 +29,12 @@ print &ui_table_row($text{'auto_reply'},
 		     $filter ? $filter->{'reply'}->{'autotext'} : "", 5, 80,
 		     undef, $dis));
 
+# Subject line
+print &ui_table_row($text{'auto_subject'},
+	&ui_opt_textbox("subject",
+		$filter ? $filter->{'reply'}->{'subject'} : "", 60,
+		$text{'default'}." (Autoreply to \$SUBJECT)"));
+
 # Character set
 $cs = $filter ? $filter->{'reply'}->{'charset'} :
       &get_charset() eq $default_charset ? undef : &get_charset();
