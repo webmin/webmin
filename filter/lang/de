@@ -92,6 +92,7 @@ index_noperiod=Kein Minimum
 index_nowebmin=Dieses Modul ist nur f&#252;r die Verwendung in Usermin bestimmt. Wenn es in Webmin sichtbar ist, ist das verwendete Webmin Theme nicht komplett.
 index_period=Minimum Zeit zwischen Autoantworten
 index_return=Filter Liste
+index_subject=Autoreply Nachricht Betreff
 index_title=Filter und Mailweiterleitung
 index_warn=Warnung - Das Programm <tt>procmail</tt> zur Mailfilterung ist auf diesem System nicht installiert.  Alle definierten Filter werden nicht funktionieren.
 save_echarset=Fehlender oder ung&#252;ltiger autoreply Zeichensatz
