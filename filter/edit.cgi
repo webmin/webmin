@@ -246,6 +246,9 @@ print &ui_table_row(
 	"<tr> <td><b>$text{'index_charset'}</b></td> ".
 	"<td>".&ui_opt_textbox("charset", $cs, 20,
 		       $text{'default'}." ($default_charset)")."</td> </tr>\n".
+	"<tr> <td><b>$text{'index_subject'}</b></td> ".
+	"<td>".&ui_opt_textbox("subject", $in{'new'} ? "" : $r->{'subject'}, 20,
+		       $text{'default'}." (Autoreply to \$SUBJECT)")."</td> </tr>\n".
 	"</table>",
 	undef, \@tds);
 
