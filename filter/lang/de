@@ -17,6 +17,7 @@ auto_err=Fehler beim speichern der automatischen Antwort
 auto_header=Optionen der automatischen E-Mail Antwort
 auto_period=Minimaler Intervall zwischen Antworten
 auto_reply=Antwortnachricht
+auto_subject=E-Mail Betreff
 auto_title=Automatische E-Mail Antwort
 delete_enone=Keine Selektion
 delete_err=Fehler beim l&#246;schen von Filtern
