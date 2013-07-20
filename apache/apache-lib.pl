@@ -381,7 +381,7 @@ push(@get_config_cache, &get_config_file($acc, \%seenfiles));
 foreach $v (@virt) {
 	my %seenfiles;
 	$mref = $v->{'members'};
-	foreach $idn ("ResourceConfig", "AccessConfig", "Include") {
+	foreach $idn ("ResourceConfig", "AccessConfig", "Include", "IncludeOptional") {
 		foreach $inc (&find_directive_struct($idn, $mref)) {
 			local @incs = &expand_apache_include(
 					$inc->{'words'}->[0]);
@@ -424,7 +424,8 @@ else {
 	}
 
 # Expand Include directives
-foreach $inc (&find_directive_struct("Include", \@rv)) {
+foreach $inc (&find_directive_struct("Include", \@rv),
+	      &find_directive_struct("IncludeOptional", \@rv)) {
 	local @incs = &expand_apache_include($inc->{'words'}->[0]);
 	foreach my $ginc (@incs) {
 		push(@rv, &get_config_file($ginc, $seen));
