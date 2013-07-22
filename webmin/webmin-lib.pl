@@ -141,7 +141,8 @@ if ($two eq "\037\235") {
 		}
 	my $temp = $file =~ /\/([^\/]+)\.Z/i ? &transname("$1")
 						: &transname();
-	my $out = `uncompress -c "$file" 2>&1 >$temp`;
+	my $out = &backquote_command("uncompress -c ".&quote_path($file).
+				     " 2>&1 >$temp");
 	unlink($file) if ($need_unlink);
 	if ($?) {
 		unlink($temp);
@@ -175,7 +176,8 @@ elsif ($two eq "BZ") {
 		}
 	my $temp = $file =~ /\/([^\/]+)\.gz/i ? &transname("$1")
 						 : &transname();
-	my $out = `bunzip2 -c "$file" 2>&1 >$temp`;
+	my $out = &backquote_command("bunzip2 -c ".&quote_path($file).
+				     " 2>&1 >$temp");
 	unlink($file) if ($need_unlink);
 	if ($?) {
 		unlink($temp);
@@ -349,7 +351,9 @@ else {
 		}
 
 	# Extract all the modules and update perl path and ownership
-	my $out = `cd $install_root_directory ; tar xf "$file" 2>&1 >/dev/null`;
+	my $out = &backquote_command(
+		"cd $install_root_directory ; tar xf ".&quote_path($file).
+		" 2>&1 >/dev/null");
 	chdir($oldpwd);
 	if ($?) {
 		unlink($file) if ($need_unlink);
@@ -387,10 +391,14 @@ else {
 
 	# Set correct permissions on *new* config directory
 	if (&supports_users()) {
+		my @mydir = stat($module_config_directory);
+		my $myuser = @mydir ? $mydir[4] : "root";
+		my $mygroup = @mydir ? $mydir[5] : "bin";
+		my $myperms = @mydir ? sprintf("%o", $mydir[2] & 0777) : "og-rw";
 		foreach my $m (@permmods) {
-			system("chown -R root $config_directory/$m");
-			system("chgrp -R bin $config_directory/$m");
-			system("chmod -R og-rw $config_directory/$m");
+			system("chown -R $myuser $config_directory/$m");
+			system("chgrp -R $mygroup $config_directory/$m");
+			system("chmod -R $myperms $config_directory/$m");
 			}
 		}
 
