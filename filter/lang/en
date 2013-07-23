@@ -68,6 +68,7 @@ edit_continue=Continue with other filter rules, even after applying this action
 edit_amode6=Send automatic reply
 edit_amode7=Save to new folder named
 edit_nobounce=Suppress forwarding of bounce messages
+edit_apply=Show Matching Email In Folder:
 
 save_err=Failed to save filter
 save_econdheader=Missing or invalid email header

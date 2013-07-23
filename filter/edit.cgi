@@ -105,7 +105,7 @@ print &ui_table_row(
 			   [ 1, $text{'edit_modecont'} ],
 			   [ 2, $text{'edit_modeend'} ] ]),
 	      &ui_textbox("condvalue", $condvalue, 40, 0, undef,
-			  "onFocus='form.cmode[3].checked = true'")." ".
+			  "onFocus='form.cmode[3].checked = true'")."<br>\n".
 	      &ui_checkbox("condregexp", 1, $text{'edit_regexp'}, $regexp)),
 	undef, \@tds);
 
@@ -261,12 +261,19 @@ print &ui_table_end();
 
 # End of the form, with buttons
 if ($in{'new'}) {
-	print &ui_form_end([ [ "create", $text{'create'} ] ]);
+	@buts = ( [ "create", $text{'create'} ] );
 	}
 else {
-	print &ui_form_end([ [ "save", $text{'save'} ],
-			     [ "delete", $text{'delete'} ] ]);
+	@buts = ( [ "save", $text{'save'} ],
+		  [ "delete", $text{'delete'} ] );
+	($inbox) = grep { $_->{'inbox'} } @folders;
+	push(@buts, undef,
+		    [ "apply", $text{'edit_apply'},
+		      &ui_select("movefrom",
+			 $inbox ? &mailbox::folder_name($inbox) : "",
+			 [ map { [ &mailbox::folder_name($_), $_->{'name'} ] } @folders ]) ]);
 	}
+print &ui_form_end(\@buts);
 
 # Show page footer
 &ui_print_footer("", $text{'index_return'});
