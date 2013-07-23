@@ -952,8 +952,9 @@ if ($folder->{'type'} != 4 &&
 			local $iff = $if->[0];
 			local ($neg) = ($iff =~ s/^\!//);
 			next if ($kf ne $iff);
-			if (!$neg && $v =~ /\Q$if->[1]\E/i ||
-			    $neg && $v !~ /\Q$if->[1]\E/i) {
+			local $re = $if->[2] ? $if->[1] : "\Q$if->[1]\E";
+			if (!$neg && $v =~ /$re/i ||
+			    $neg && $v !~ /$re/i) {
 				push(@{$idxmatches{"$if->[0]/$if->[1]"}}, $ki);
 				}
 			}

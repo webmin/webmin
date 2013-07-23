@@ -266,12 +266,14 @@ if ($in{'new'}) {
 else {
 	@buts = ( [ "save", $text{'save'} ],
 		  [ "delete", $text{'delete'} ] );
-	($inbox) = grep { $_->{'inbox'} } @folders;
-	push(@buts, undef,
-		    [ "apply", $text{'edit_apply'},
-		      &ui_select("movefrom",
-			 $inbox ? &mailbox::folder_name($inbox) : "",
-			 [ map { [ &mailbox::folder_name($_), $_->{'name'} ] } @folders ]) ]);
+	if ($cmode == 4 || $cmode == 5 || $cmode == 6) {
+		($inbox) = grep { $_->{'inbox'} } @folders;
+		push(@buts, undef,
+			    [ "apply", $text{'edit_apply'},
+			      &ui_select("movefrom",
+				 $inbox ? &mailbox::folder_name($inbox) : "",
+				 [ map { [ &mailbox::folder_name($_), $_->{'name'} ] } @folders ]) ]);
+		}
 	}
 print &ui_form_end(\@buts);
 

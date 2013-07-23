@@ -2478,10 +2478,11 @@ foreach $f (@{$_[0]}) {
 	local $field = $f->[0];
 	local $what = $f->[1];
 	local $neg = ($field =~ s/^\!//);
+	local $re = $f->[2] ? $what : "\Q$what\E";
 	if ($field eq 'body') {
 		$count++
-		    if (!$neg && $_[2]->{'body'} =~ /\Q$what\E/i ||
-		         $neg && $_[2]->{'body'} !~ /\Q$what\E/i);
+		    if (!$neg && $_[2]->{'body'} =~ /$re/i ||
+		         $neg && $_[2]->{'body'} !~ /$re/i);
 		}
 	elsif ($field eq 'size') {
 		$count++
@@ -2493,28 +2494,28 @@ foreach $f (@{$_[0]}) {
 			join("", map { $_->[0].": ".$_->[1]."\n" }
 				     @{$_[2]->{'headers'}});
 		$count++
-		    if (!$neg && $headers =~ /\Q$what\E/i ||
-			 $neg && $headers !~ /\Q$what\E/i);
+		    if (!$neg && $headers =~ /$re/i ||
+			 $neg && $headers !~ /$re/i);
 		}
 	elsif ($field eq 'all') {
 		local $headers = $_[2]->{'rawheaders'} ||
 			join("", map { $_->[0].": ".$_->[1]."\n" }
 				     @{$_[2]->{'headers'}});
 		$count++
-		    if (!$neg && ($_[2]->{'body'} =~ /\Q$what\E/i ||
-				  $headers =~ /\Q$what\E/i) ||
-		         $neg && ($_[2]->{'body'} !~ /\Q$what\E/i &&
-				  $headers !~ /\Q$what\E/i));
+		    if (!$neg && ($_[2]->{'body'} =~ /$re/i ||
+				  $headers =~ /$re/i) ||
+		         $neg && ($_[2]->{'body'} !~ /$re/i &&
+				  $headers !~ /$re/i));
 		}
 	elsif ($field eq 'status') {
 		$count++
-		    if (!$neg && $_[2]->{$field} =~ /\Q$what\E/i||
-		         $neg && $_[2]->{$field} !~ /\Q$what\E/i);
+		    if (!$neg && $_[2]->{$field} =~ /$re/i||
+		         $neg && $_[2]->{$field} !~ /$re/i);
 		}
 	else {
 		$count++
-		    if (!$neg && $_[2]->{'header'}->{$field} =~ /\Q$what\E/i||
-		         $neg && $_[2]->{'header'}->{$field} !~ /\Q$what\E/i);
+		    if (!$neg && $_[2]->{'header'}->{$field} =~ /$re/i||
+		         $neg && $_[2]->{'header'}->{$field} !~ /$re/i);
 		}
 	return 1 if ($count && !$_[1]);
 	}

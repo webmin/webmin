@@ -304,6 +304,7 @@ search_results5=$1 mail messages where $2 matches $3
 search_msg2=Search results for $1
 search_msg4=Search results
 search_msg5=Search results for spam with score $1
+search_msg6=Search results for $1 in $2 field
 search_local=In local folders
 search_all=In all folders
 search_limit=(from last $1 messages)
