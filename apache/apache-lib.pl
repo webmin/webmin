@@ -1723,14 +1723,14 @@ local ($ver, $mods) = &httpd_info(&find_httpd());
 local @rv;
 local $m;
 
-# add compiled-in modules
+# Add compiled-in modules
 foreach $m (@$mods) {
 	if (-r "$module_root_directory/$m.pl") {
 		push(@rv, $m);
 		}
 	}
 
-# add dynamically loaded modules
+# Add dynamically loaded modules
 local $conf = &get_config();
 foreach $l (&find_directive_struct("LoadModule", $conf)) {
 	if ($l->{'words'}->[1] =~ /(mod_\S+)\.(so|dll)/ &&
@@ -1747,6 +1747,15 @@ foreach $l (&find_directive_struct("LoadModule", $conf)) {
 		}
 	}
 undef(@get_config_cache);	# Cache is no longer valid
+
+# Add dynamically loaded modules
+&open_execute_command(APACHE, "$config{'apachectl_path'} -l 2>/dev/null", 1);
+while(<APACHE>) {
+	if (/(\S+)\.c/ && -r "$module_root_directory/$1.pl") {
+		push(@rv, $1);
+		}
+	}
+close(APACHE);
 
 return &unique(@rv);
 }
