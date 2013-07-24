@@ -358,7 +358,7 @@ my ($index) = @_;
 my $ifile = "$module_config_directory/logindex";
 dbmopen(%$index, $ifile, 0600);
 my @st = stat($webmin_logfile);
-if ($st[9] > $index->{'lastchange'}) {
+if (@st && $st[9] > $index->{'lastchange'}) {
 	# Log has changed .. perhaps need to rebuild
 	open(LOG, $webmin_logfile);
 	if ($index->{'lastsize'} && $st[7] >= $index->{'lastsize'}) {

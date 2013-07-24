@@ -106,7 +106,7 @@ while(my ($id, $idx) = each %index) {
 		next if (!&can_mod($act->{'module'}));
 
 		# Check description
-		if ($in{'desc'} =~ /\S/) {
+		if (defined($in{'desc'}) && $in{'desc'} =~ /\S/) {
 			my $desc = &get_action_description($act, $in{'long'});
 			$desc =~ s/<[^>]+>//g;
 			next if ($desc !~ /\Q$in{'desc'}\E/i);
