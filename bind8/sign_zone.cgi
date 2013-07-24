@@ -14,6 +14,8 @@ $dom = $zone->{'name'};
 $err = &sign_dnssec_zone($zone, 1);
 &error($err) if ($err);
 &unlock_file(&make_chroot(&absolute_path($zone->{'file'})));
+$err = &restart_zone($zone->{'name'}, $zone->{'view'});
+&error($err) if ($err);
 
 # Return to master page
 &webmin_log("sign", undef, $dom);

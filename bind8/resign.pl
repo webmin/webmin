@@ -16,6 +16,7 @@ my $period = $config{'dnssec_period'} || 21;
 
 @zones = &list_zone_names();
 $errcount = 0;
+$donecount = 0;
 foreach $z (@zones) {
 	# Get the key
 	next if ($z->{'type'} ne 'master');
@@ -70,6 +71,10 @@ foreach $z (@zones) {
 		elsif ($debug) {
 			print STDERR "  Re-signed $z->{'name'} OK\n";
 			}
+		$donecount++ if (!$err);
 		}
+	}
+if ($donecount) {
+	&restart_bind();
 	}
 exit($errcount);
