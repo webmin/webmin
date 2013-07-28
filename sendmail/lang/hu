@@ -1,0 +1,844 @@
+index_title=Sendmail Mail Server
+index_econfig=The sendmail config file $1 does not exist. Maybe Sendmail is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_eversion=Your sendmail config file does not appear to be for the latest sendmail version. Webmin only supports versions 8.8 and above.
+index_epath=The sendmail executable $1 is not installed on your system. Maybe your <a href='$2'>module configuration</a> is incorrect, or sendmail is not installed.
+index_return=sendmail configuration
+index_stop=Stop Sendmail
+index_stopmsg=Click this button to stop the running sendmail process. This will stop mail from being delivered to local users from other systems, and prevent clients using this system as a mail server from sending mail.
+index_start=Start Sendmail
+index_startmsg=Click this button to start sendmail with the command $1. Until this is done mail will not be delivered to local users from other systems, and clients will not be able to use this system as a mail server.
+index_version2=Sendmail version $1, config $2
+index_xversion=Sendmail version $1
+index_version=Sendmail config $1
+index_sendmail=Sendmail
+
+opts_title=Sendmail Options
+opts_ecannot=You are not allowed to edit sendmail options
+opts_ds=Send outgoing mail via host
+opts_direct=Deliver directly
+opts_dr=Forward unqualified usernames to host
+opts_dh=Forward mail for local users to host
+opts_local=Deliver locally
+opts_queuela=Max load average for sending
+opts_refusela=Max load average for receiving
+opts_maxch=Max child processes
+opts_throttle=Max connections / second
+opts_minqueueage=Min time before retrying send
+opts_runsize=Maximum queue size
+opts_queuereturn=Time before giving up
+opts_queuewarn=Time before sending warning
+opts_queue=Mail queue directory
+opts_postmaster=Send error messages to
+opts_forward=User forward files
+opts_minfree=Min free disk space
+opts_maxmessage=Max message size
+opts_loglevel=Log level
+opts_mimebounce=MIME-encode bounce messages?
+opts_default=Default
+opts_save=Save and Apply
+opts_err=Failed to save options
+opts_ehost='$1' is not a valid host or domain name
+opts_einvalid='$1' is not a valid value for '$2'
+opts_blame=File security options
+opts_selected=Selected..
+opts_blocks=blocks
+opts_bytes=bytes
+opts_dmode=Delivery mode
+opts_background=Background
+opts_queue-only=Queue only
+opts_interactive=Interactive
+opts_deferred=Deferred
+opts_gecos=Accept mail for users' real names?
+opts_hops=Maximum mail hop count
+opts_daemon=SMTP port options
+opts_maxbad=Maximum bad recipients
+opts_maxrcpt=Maximum recipients per message
+opts_below=Entered below ..
+opts_qso=Sort mail queue by
+opts_priority=Priority
+opts_host=Hostname
+opts_time=Time received
+
+aliases_title=Mail Aliases
+aliases_ecannot=You are not allowed to edit aliases
+aliases_enofile=No aliases file is defined in your Sendmail configuration
+aliases_addr=Address
+aliases_to=Alias to..
+aliases_type1=Address $1
+aliases_type2=Addresses in file $1
+aliases_type3=File $1
+aliases_type4=Program $1
+aliases_type5=Autoreply file $1
+aliases_type6=Apply filter file $1
+aliases_none=None
+aliases_return=alias list
+aliases_toomany=There are too many mail aliases on your system to display on this page.
+aliases_go=Find aliases matching:
+aliases_delete=Delete Selected Aliases
+
+aform_ecannot=You are not allowed to edit this alias
+aform_type0=None
+aform_type1=Email address
+aform_type2=Addresses in file
+aform_type3=Write to file
+aform_type4=Feed to program
+aform_type5=Autoreply from file
+aform_type6=Apply filter file
+aform_edit=Edit Alias
+aform_create=Create Alias
+aform_name=Address
+aform_enabled=Enabled?
+aform_file=Add to aliases file
+aform_val=Alias to
+aform_afile=Edit..
+aform_return=alias
+aform_cmt=Description
+
+afile_title=Edit Address File
+afile_desc=Use the text area below to edit the addresses in the file $1.
+afile_efile=You are not allowed to edit $1.
+afile_undo=Undo Changes
+afile_ewrite=Failed to write to addresses file : $1
+
+ffile_title=Edit Filter File
+ffile_desc=Use the form below to setup filter rules in the file $1.
+ffile_efile=You are not allowed to edit $1.
+ffile_line=If the $1 field $2 $3 then forward to $4
+ffile_from=from
+ffile_to=to
+ffile_subject=subject
+ffile_cc=CC
+ffile_body=body
+ffile_what0=doesn't match
+ffile_what1=matches
+ffile_other=Otherwise forward to $1
+ffile_err=Failed to save filter file
+ffile_ematch=Missing match
+ffile_eaction=Missing forwarding address
+
+rfile_title=Edit Autoreply File
+rfile_desc=Use the text area below to edit the autoreply message in $1. The message may contain the macros $SUBJECT, $FROM, $TO, $DATE and $BODY which will be expanded when the autoreply is activated.
+rfile_desc2=You can also set mail headers that add to or replace the defaults used in the autoreply by putting lines like:<br><tt>From: foo@bar.com</tt><br><tt>Subject: On holiday</tt><br>at the top of the message, separated from the body by a single blank line.
+rfile_efile=You are not allowed to edit $1.
+rfile_undo=Undo Changes
+rfile_replies=Track replies to prevent mail loops?
+rfile_none=No
+rfile_file=Yes, using log file
+rfile_period=Minimum interval between replies
+rfile_default=Default (1 hour)
+rfile_secs=seconds
+rfile_ereplies=Missing reply tracking log file
+rfile_eperiod=Missing or invalid number of seconds between replies
+rfile_no_autoreply=Don't send autoreplies to
+rfile_no_regexp=Don't send autoreplies to messages matching regexps
+rfile_from=From: address for reply
+rfile_auto=Automatic (based on recipient's address)
+rfile_efrom=Missing From: address
+rfile_fromdesc=A From: address should always be specified where possible, as the automatic method may not be reliable.
+
+asave_err=Failed to save alias
+asave_ecannot2=You are not allowed to edit aliases
+asave_ecannot=You are not allowed to edit this alias
+asave_emax=You are not allowed to create more than $1 aliases
+asave_eaddr='$1' is not a valid address
+asave_ealready=An alias for '$1' already exists
+asave_ematch=You are only allowed to create aliases matching '$1'
+asave_etype=You cannot create aliases of this type
+asave_etype1='$1' is not a valid email address
+asave_etype2=Addresses file '$1' is not valid or does not exist
+asave_etype3='$1' is not a valid filename
+asave_etype4='$1' is not a valid program or does not exist
+asave_etype5=Autoreply file '$1' is not valid
+asave_etype4none=No program given
+asave_etype6=Filter file '$1' is not valid
+asave_esame=You are only allowed to create an alias with the same name as your webmin login
+
+adelete_err=Failed to delete aliases
+adelete_enone=None selected
+adelete_ecannot=You are not allowed to delete the alias $1
+
+cws_title=Local Domains
+cws_ecannot=You are not allowed to edit local domains
+cws_domains=Domains handled by this server
+cws_desc1=Apart from mail to $1, sendmail will only accept for local delivery mail for domains and hostnames listed in the text box below. If you want your mail server to handle multiple email domains, they must all be listed on this form.
+cws_desc2=Note that merely including a domain in the list is not usually enough. You must also make sure that a DNS record for the domain exists, and points to your system.
+cws_err=Failed to save local domains
+cws_ehost='$1' is not a valid host or domain name
+cws_eip='$1' is an IP address, not a domain
+
+masq_title=Domain Masquerading
+masq_ecannot=You are not allowed to configure masquerading
+masq_domain=Masquerade as domain
+masq_domains=Domains to be masqueraded
+masq_ndomains=Domains not to masquerade
+masq_desc1=If a domain is given below, sendmail will alter the <tt>From</tt> address of all outgoing messages to appear to come from that domain. In addition, any email messages passing through your system from one of the hosts or domains listed below will also have their <tt>From</tt> addresses modified in the same way. Note that any domain masquerading defined here can be overriden for specific users using the <a href='$1'>Outgoing Addresses</a> page.
+masq_desc2=This feature can be useful if you want email from your system to appear to come from your domain name rather than your hostname, or if your system is the mail hub for number of other hosts running their own mailservers.
+masq_err=Failed to save domain masquerading
+masq_edomain='$1' is not a valid domain to masquerade as
+masq_ehost='$1' is not a valid host or domain name
+masq_eip='$1' is an IP address, not a domain
+
+trusts_title=Trusted Users
+trusts_ecannot=You are not allowed to edit trusted users
+trusts_users=Local users trusted by sendmail
+trusts_desc=If a local user tries to send email, sendmail will only allow the user to provide a different <tt>From:</tt> address if the user is on the list below. This restriction exists to prevent users from forging email with faked <tt>From:</tt> addresses origination from your system.
+trusts_err=Failed to save trusted users
+trusts_euser='$1' is not a valid user
+
+virtusers_title=Address Mappings
+virtusers_ecannot=You are not allowed to edit address mappings
+virtusers_efeature=Your sendmail configuration does not have the address mapping (<tt>virtuser</tt>) feature enabled. <a href='$1'>Click here</a> to setup sendmail features.
+virtusers_efile=The text file $1 from which the address mapping database $2 is built does not exist. Maybe you need to modify the <a href='$3'>module configuration</a> to use the correct path.
+virtusers_createfile=Or if this feature has just been enabled, <a href='$1'>click here</a> to create the file.
+virtusers_desc1=Address mappings are similar to <a href='$1'>aliases</a>, but are more suited to a system that handles multiple email domains. They can be used to redirect mail for an entire domain to one address, handle users with the same name in different domains, or map all mail from one domain to another.
+virtusers_desc2=Note that you must have an entry in the <a href='$1'>local domains</a> table for any domains used for address mapping, and there must be a DNS MX record for each domain pointing to your system.
+virtusers_for=Mail for..
+virtusers_to=Send to..
+virtusers_error=Error $1
+virtusers_domain=Domain $1
+virtusers_address=Address $1
+virtusers_cmt=Description
+virtusers_return=address mapping list
+virtusers_toomany=There are too many address mappings on your system to display on this page.
+virtusers_go=Find address mappings matching:
+virtusers_delete=Delete Selected Address Mappings
+
+vform_edit=Edit Address Mapping
+vform_create=Create Address Mapping
+vform_for=Mail for
+vform_address=Address
+vform_domain=Domain
+vform_to=Send to
+vform_msg=message
+vform_error=Return error
+vform_cmt=Description
+vform_err_nouser=No such user
+vform_err_nohost=No such host
+vform_err_unavailable=Unavailable
+vform_err_tempfail=Temporary failure
+vform_err_protocol=Protocol error
+vform_end=Move to end
+vform_ecannot=You are not allowed to edit this address mapping
+
+vsave_ecannot=You are not allowed to edit address mappings
+vsave_ecannot2=You are not allowed to edit this address mapping
+vsave_emax=You are not allowed to create more than $1 address mappings
+vsave_err=Failed to save address mapping
+vsave_efrom='$1' is not a valid address
+vsave_efromdup=Address mapping for '$1' is already defined
+vsave_edom='$1' is not a valid domain
+vsave_edomdup=Address mapping for '$1' is already defined
+vsave_ematch=The source address does not match '$1'
+vsave_esame=You are only allowed to create address mappings for your username
+vsave_ecannot3=You are not allowed to create mappings to addresses
+vsave_eaddr='$1' is not a valid address
+vsave_ecannot4=You are not allowed to create mappings to domains
+vsave_edomdom=Only a domain can be mapped to another domain
+vsave_ecannot5=You are not allowed to create mappings that return an error
+
+vdelete_err=Failed to delete address mappings
+vdelete_ecannot=You are not allowed to delete the mapping for $1
+
+mailers_title=Domain Routing
+mailers_cannot=You are not allowed to edit domain routing
+mailers_edirective=Your sendmail configuration file does not have the necessary directive for domain routing.
+mailers_efeature=Your sendmail configuration does not have the domain routing (<tt>mailertable</tt>) feature enabled. <a href='$1'>Click here</a> to setup sendmail features.
+mailers_efile=The text file $1 from which the domain routing database $2 is built does not exist. Maybe you need to modify the <a href='$3'>module configuration</a> to use the correct path.
+mailers_desc1=Domain routing provides a way to define a special transfer method for mail to certain domains. This can be useful if your system is a gateway for mail servers that cannot be reached from outside your network, or if you want to force all mail for a particular domain to be routed through some other server.
+mailers_desc2=You should <b>not</b> have an entry in the <a href='$1'>local domains</a> list for any routed domains. However, you should have a DNS MX record pointing to your system for any domains that it is a gateway for.
+mailers_desc3=You should also have an entry in the <a href='$1'>relay domains</a> list for each domain as well.
+mailers_for=Mail for..
+mailers_delivery=Delivery
+mailers_to=Send to..
+mailers_return=domain routing list
+mailers_delete=Delete Selected Domain Routes
+
+mform_edit=Edit Routing
+mform_create=Create Routing
+mform_for=Mail for
+mform_host2=Host or domain
+mform_domain2=All hosts in domain
+mform_domain3=Domain and all its hosts
+mform_delivery=Delivery
+mform_to=Send to
+mform_ignore=Ignore MX for SMTP delivery
+mform_smtp=SMTP
+mform_esmtp=Extended SMTP
+mform_smtp8=8-bit SMTP
+mform_relay=SMTP relay
+mform_local=Local user
+mform_prog=Feed to program
+mform_uucp=UUCp
+mform_usenet=Post to USENET
+mform_fax=HylaFAX
+mform_pop=POP3
+mform_procmail=Procmail
+mform_mail11=DECnet mail11
+mform_error=Error
+mform_ecannot=You are not allowed to edit domain routing
+
+msave_ecannot=You are not allowed to edit domain routing
+msave_err=Failed to save domain routing
+msave_edomain='$1' is not a valid host or domain
+msave_edup=Domain routing for '$1' is already defined
+
+mdelete_err=Failed to delete domain router
+mdelete_ecannot=You are not allowed to delete the route for $1
+
+generics_title=Outgoing Addresses
+generics_cannot=You are not allowed to edit outgoing addresses
+generics_econfig=Your sendmail configuration file does not have the necessary directive for outgoing address mapping.
+generics_efeature=Your sendmail configuration does not have the outgoing address mapping (<tt>generics</tt>) feature enabled. <a href='$1'>Click here</a> to setup sendmail features.
+generics_efile=The text file $1 from which the outgoing address database $2 is built does not exist. Maybe you need to modify the <a href='$3'>module configuration</a> to use the correct path.
+generics_desc1=Outgoing address mapping allows you to modify the <tt>From:</tt> addresses of mail send out from your system, or through your system by other hosts on your local network. This can be useful if you are hosting multiple domains on the one system, and want mail from some users to appear to come from a different domain.
+generics_desc2=Note that you must have an entry in the <a href='$1'>outgoing domains</a> table for each domain which there are addresses you want outgoing mapping done for. Also note that outgoing address mapping does not work for mail being delivered to local users.
+generics_from=Mail from..
+generics_to=Change to..
+generics_return=address mapping list
+generics_toomany=There are too many outgoing addresses on your system to display on this page.
+generics_go=Find outgoing addresses matching:
+generics_delete=Delete Selected Outgoing Addresses
+
+gform_edit=Edit Mapping
+gform_create=Create Mapping
+gform_from=Mail from
+gform_to=Change to
+gform_ecannot=You are not allowed to edit this outgoing address
+
+gsave_ecannot=You are not allowed to edit outgoing addresses
+gsave_ecannot2=You are not allowed to edit this outgoing address
+gsave_ecannot3=You are not allowed to save this outgoing address
+gsave_err=Failed to save outgoing address
+gsave_efrom='$1' is not a valid from address
+gsave_ematch=The from address does not match '$1'
+gsave_eto='$1' is not a valid new address
+gsave_ealready=An outgoing address mapping for '$1' already exists
+
+gdelete_err=Failed to delete outgoing address mappings
+gdelete_ecannot=You are not allowed to delete the mapping for $1
+
+cgs_title=Outgoing Domains
+cgs_ecannot=You are not allowed to edit outgoing domains
+cgs_header=Outgoing address domains
+cgs_desc=Apart from mail sent by local users, sendmail will only perform <a href='$1'>outgoing address</a> mapping for mail from hosts or domains listed in the text box below. Thus for an outgoing address entry to work the domain in the from address must be included in this list.
+cgs_err=Failed to save outgoing domains
+cgs_ehost='$1' is not a valid host or domain name
+cgs_eip='$1' is an IP address, not a domain
+
+domains_title=Domain Mapping
+domains_ecannot=You are not allowed to edit domain mapping
+domains_econfig=Your sendmail configuration file does not have the necessary directive for domain mapping.
+domains_efeature=Your sendmail configuration does not have the domain mapping (<tt>domaintable</tt>) feature enabled. <a href='$1'>Click here</a> to setup sendmail features.
+domains_efile=The text file $1 from which the domain mapping database $2 is built does not exist. Maybe you need to modify the <a href='$3'>module configuration</a> to use the correct path.
+domains_desc=Domain mapping modifies the <tt>To:</tt> address of messages sent out from, relayed through or delivered to users on your system. The <tt>From:</tt> address of relayed messages or messages to local users is also modified. This can be useful if your domain name changes, and you want to change all occurrances of the old domain to the new one.
+domains_from=From domain..
+domains_to=To domain..
+domains_return=domain mapping list
+domains_delete=Delete Selected Domain Mappings
+
+dform_edit=Edit Mapping
+dform_create=Create Mapping
+dform_from=From domain
+dform_to=To domain
+dform_ecannot=You are not allowed to edit domain mapping
+
+dsave_ecannot=You are not allowed to edit domain mapping
+dsave_err=Failed to save domain mapping
+dsave_edomain='$1' is not a valid domain name
+dsave_ealready=A domain mapping for '$1' already exists
+
+ddelete_err=Failed to delete domain mappings
+ddelete_ecannot=You are not allowed to delete the mapping for $1
+
+access_title=Spam Control
+access_ecannot=You are not allowed to configure spam control
+access_efeature=Your sendmail configuration does not have the spam control (<tt>access_db</tt>) feature enabled. <a href='$1'>Click here</a> to setup sendmail features.
+access_efile=The text file $1 from which the spam control database $2 is built does not exist. Maybe you need to modify the <a href='$3'>module configuration</a> to use the correct path.
+access_desc1=Sendmail's spam control feature allows you to prevent spam from reaching your users by rejecting mail from certain addresses, and to prevent spammers from using your system to relay mail. By default sendmail will accept mail from any address for a local user, but prevent any client or mail server from relaying mail through your system. Typically you would add spam control rules to reject mail from spammers, and rules to allow other machines on your network to relay mail through your system.
+access_desc2=Note that sendmail will by default allow mail clients running on your system to relay mail via SMTP to any destination. Thus there is no need to add the local <tt>127.0.0</tt> network to the list of those allowed to relay.
+access_source=Source..
+access_action=Action..
+access_return=spam control list
+access_toomany=There are too many spam control rules on your system to display on this page.
+access_go=Find spam control rules matching:
+access_delete=Delete Selected Spam Control Rules
+
+sform_edit=Edit Spam Control Rule
+sform_create=Create Spam Control Rule
+sform_source=Mail source
+sform_type0=Email Address
+sform_type1=Network
+sform_type2=User
+sform_type3=Domain
+sform_tag=Match against
+sform_tag_=Everything
+sform_tag_from=From: address
+sform_tag_to=To: address
+sform_tag_connect=Connection information
+sform_tag_spam=Spam information
+sform_action=Action
+sform_ok=Accept
+sform_relay=Allow relaying
+sform_reject=Reject
+sform_discard=Discard silently
+sform_err=Error code
+sform_msg=Message
+sform_ecannot=You are not allowed to edit this spam control rule
+
+ssave_err=Failed to save spam control rule
+ssave_etype0='$1' is not a valid address
+ssave_etype1='$1' is not a valid network address
+ssave_etype2='$1' is not a valid username
+ssave_etype3='$1' is not a valid domain
+ssave_ecode='$1' is not a valid SMTP error code
+ssave_ealready=A spam control rule for '$1' already exists
+ssave_ecannot2=You are not allowed to save this spam control rule
+
+sdelete_err=Failed to delete spam control rules
+sdelete_ecannot=You are not allowed to delete the rule for $1
+
+relay_title=Relay Domains
+relay_ecannot=You are not allowed to edit relay domains
+relay_eversion=Only sendmail versions 8.9 and above support the relay domains feature.
+relay_domains=Domains to which relaying is allowed
+relay_desc1=Unless allowed by the <a href='$1'>spam control</a> rules, sendmail will only permit relaying to domains listed in the text box below. Incoming mail messages that are not for a local user and not for one of the listed domains will be rejected.
+relay_desc2=If your system is serving as a gateway for several domains that are not directly accessible from outside your network (using the <a href='$1'>domain routing</a> feature), then all those domains should be listed here.
+relay_err=Failed to save relay domains
+relay_edomain='$1' is not a valid domain name
+
+mailq_title=Mail Queue
+mailq_count=$1 messages
+mailq_ecannot=You are not allowed to view the mail queue
+mailq_id=Mail ID
+mailq_sent=Sent
+mailq_from=From
+mailq_to=To
+mailq_size=Size
+mailq_status=Status
+mailq_cc=Cc
+mailq_subject=Subject
+mailq_dir=Directory
+mailq_unknown=Unknown
+mailq_sending=Sending
+mailq_dmsg=To view a message from the mail queue, click on its ID in the list above.
+mailq_force=To force the immediate delivery of queued of mail, <a href='$1'>click here</a>.
+mailq_none=No mail messages are currently queued for delivery
+mailq_delete=Delete selected messages
+mailq_locked=Even if locked
+mailq_return=mail queue
+mailq_flush=Flush Mail Queue
+mailq_flushsel=Flush Selected Messages
+mailq_flushdesc=Click this button to force the immediate delivery of all messages in the queue, and display the results.
+mailq_flushquar=Flush Quarantined Queue
+mailq_flushquardesc=Click this button to force the delivery of only quarantined messages in the queue.
+mailq_search=Find queued messages where
+mailq_quar=Quarantined
+mailq_refresh=Refresh Mail Queue
+mailq_refreshdesc=Reload this page to show the current state of the mail queue.
+
+flushq_title=Flush Queue
+flushq_desc=Forcing the attempted delivery of all messages with the command $1 ..
+flushq_desc2=Forcing the attempted delivery of $1 selected messages ..
+flushq_ecannot=You are not allowed to flush the mail queue
+
+searchq_title=Queue Search Results
+searchq_none=No queued messages found.
+
+delq_err=Failed to delete message
+delq_ecannot=You are not allowed to dequeue messages
+delq_locked=File is currently locked for sending
+delq_enone=No messages to delete selected
+delq_titles=Deleting Messages
+delq_file=Deleting mail file $1 ..
+delq_efile=invalid filename!
+delq_egone=already deleted or delivered
+delq_elocked=locked for sending
+delq_ok=deleted ok
+delq_title=Delete Message
+delq_force=Force deletion anyway
+delq_ecannot2=you cannot delete this message
+delq_rusure=Are you sure you want to delete the $1 selected queued messages?
+delq_confirm=Delete Messages
+
+boxes_title=User Mailboxes
+boxes_user=User
+boxes_size=Mailbox size
+boxes_none=No mail
+boxes_return=mailboxes
+boxes_sent=Sent mail
+boxes_ecannot=You are not allowed to read email
+boxes_toomany=There are too many users on your system to list all their mailboxes.
+boxes_go=View mail for user:
+
+mail_title=User Email
+mail_from=From
+mail_date=Date
+mail_subject=Subject
+mail_to=To
+mail_cc=Cc
+mail_bcc=Bcc
+mail_pri=Priority
+mail_highest=Highest
+mail_high=High
+mail_normal=Normal
+mail_low=Low
+mail_lowest=Lowest
+mail_for=In $1
+mail_for2=For user $1
+mail_sent=In sent mail list
+mail_size=Size
+mail_delete=Delete
+mail_compose=Compose
+mail_return=user mailbox
+mail_pos=Messages $1 to $2 of $3
+mail_none=This mailbox has no messages
+mail_euserexists=This Unix user does not exist
+mail_ecannot=You are not allowed to read this user's email
+mail_all=Select all
+mail_invert=Invert selection
+mail_search=Find messages where
+mail_body=Body
+mail_match=matches
+mail_ok=Search
+mail_nonefrom=None
+mail_mark=Mark as:
+mail_mark0=Unread
+mail_mark1=Read
+mail_mark2=Special
+mail_forward=Forward
+mail_move=Move to:
+mail_copy=Copy to:
+mail_rfc=From line
+mail_eexists=Message no longer exists!
+
+view_title=Read Email
+view_desc=Message $1 in $2
+view_desc2=Message $1 for user $2
+view_desc3=Message $1
+view_sent=Message $1 in sent mail list
+view_qdesc=Queued message $1
+view_headers=Mail headers
+view_body=Message text
+view_allheaders=View all headers
+view_noheaders=View basic headers
+view_attach=Attachments
+view_reply=Reply
+view_reply2=Reply to all
+view_enew=Edit as new
+view_forward=Forward
+view_delete=Delete
+view_flush=Flush
+view_print=Print
+view_strip=Remove Attachments
+view_ecannot=You are not allowed to read this user's email
+view_mark=Mark message as:
+view_mark0=Unread
+view_mark1=Read
+view_mark2=Special
+view_return=original email
+view_sub=Attached Email
+view_egone=This message no longer exists
+view_afile=Attachment name
+view_atype=Attachment type
+view_asize=File size
+
+compose_title=Compose Email
+reply_title=Reply to Email
+forward_title=Forward Email
+enew_title=Edit Email
+reply_headers=Mail headers
+reply_attach=Forwarded attachments
+reply_mailforward=Forwarded messages
+reply_attach2=Client and server-side attachments
+reply_send=Send Mail
+reply_ecannot=You are not allowed to send mail as this user
+reply_body=Message text
+
+send_err=Failed to send mail
+send_eto=Missing To address
+send_efrom=Missing From address
+send_title=Mail Sent
+send_ok=Mail sent successfully to $1
+send_ecannot=You are not allowed to send mail as this user
+send_esmtp=SMTP command $1 failed : $2
+send_efile=Attached file $1 does not exist
+send_eattach=Attachments cannot total more that $1 kB in size.
+send_eperms=User $1 cannot read $2
+send_eperms2=You are not allowed to send file $1
+send_epath=Sendmail executable $1 does not exist.
+
+delete_title=Delete Mail
+delete_rusure=Are you sure you want to delete the $1 selected messages from $2? This may take some time for a large mail file. Until the deletion has finished, no other action should be performed.
+delete_rusure2=Are you sure you want to delete this message from $1? This may take some time for a large mail file. Until the deletion has finished, no other action should be performed.
+delete_ok=Delete Now
+delete_ecannot=You are now allowed to delete mail from this user
+delete_enone=No mail selected to delete
+delete_emnone=No mail selected to mark
+delete_efnone=No mail selected to forward
+delete_emoveuser=User to move mail to does not exist
+delete_emovecannot=You are not allowed to move mail to the specified user
+delete_emovenone=No mail selected to move
+delete_nobutton=No button clicked
+
+search_title=Search Results
+search_ecannot=You are not allowed to search this user's email
+search_ematch=You must enter text to match against.
+search_efield=You must select a search type.
+search_ewhat=No text to match against entered for row $1
+search_enone=No search criteria entered
+search_none=No messages found.
+search_results2=$1 mail messages matching $2 ..
+search_results3=$1 mail messages not matching $2 ..
+search_results4=$1 mail messages matching your search ..
+search_local=In local folders
+search_all=In all folders
+search_eboolean=Boolean searches using both 'and' and 'or' are not supported
+
+file_title=Edit Sendmail File
+file_desc=Use the text box below to manually edit the Sendmail file $1.
+file_undo=Undo Changes
+file_edit=Manually edit $1
+file_ealiases=You can only edit an aliases file if you have access to all aliases.
+file_evirtusers=You can only edit the address mappings file if you have access to all address mappings.
+file_emailers=You are not allowed to edit the domain routing file.
+file_egenerics=You can only edit the outgoing addresses file if you have access to all outgoing addresses.
+file_edomains=You are not allowed to edit the domain mapping file.
+file_eaccess=You are not allowed to edit the spam control file.
+file_ecannot=You are not allowed to edit this file
+file_emode=Unknown mode!
+file_err=Failed to edit file
+file_ealias=Invalid format for aliases file line : $1
+file_etab=Invalid format for map file line : $1
+
+acl_opts=Can edit sendmail options?
+acl_ports=Can edit network ports?
+acl_cws=Can edit local domains?
+acl_masq=Can configure domain masquerading?
+acl_trusts=Can edit trusted users?
+acl_cgs=Can edit outgoing domains?
+acl_relay=Can edit relay domains?
+acl_mailers=Can configure domain routing?
+acl_access=Can configure spam control?
+acl_domains=Can configure domain mapping?
+acl_stop=Can start and stop sendmail?
+acl_manual=Can manually edit files?
+acl_flushq=Can flush the mail queue?
+acl_mailq=Can manage mail queue?
+acl_viewdel=View and delete
+acl_view=View only
+acl_vcatchall=Can create catchall mappings?
+acl_qdoms=Addresses visible in queue
+acl_qdomsmode=Queue address to match
+acl_qdomsmode0=From: address
+acl_qdomsmode1=To: address
+acl_qdomsmode2=Either address
+acl_virtusers=Address mappings this user can edit
+acl_none=None
+acl_same=User with same name
+acl_all=All
+acl_vsame=Starting with username@
+acl_matching=Matching regular expression
+acl_vtypes=Address mapping types this user can edit
+acl_vtype0=Return error
+acl_vtype1=To domain
+acl_vtype2=To address
+acl_vmax=Maximum number of address mappings
+acl_unlimited=Unlimited
+acl_aliases=Aliases this user can edit
+acl_atypes=Alias types this user can edit
+acl_atype1=Email address
+acl_atype2=Addresses in file
+acl_atype3=Write to file
+acl_atype4=Feed to program
+acl_atype5=Autoreply
+acl_atype6=Filter file
+acl_amax=Maximum number of aliases
+acl_outgoing=Outgoing addresses this user can edit
+acl_read=Users whose mail can be read
+acl_users=Only users
+acl_userse=All except users
+acl_usersg=Members of group
+acl_from=Allowable From addresses
+acl_any=Any address
+acl_fdoms=Mailbox @ domains
+acl_faddrs=Listed addresses
+acl_fdom=Any address @ domain
+acl_fromname=Real name for From address
+acl_apath=Limit files and program to directory
+acl_attach=Maximum total attachments size
+acl_sent=Store sent mail in mailbox
+acl_canattach=Can attach server-side files?
+acl_boxname=Show mailbox name as
+acl_boxname0=Filename
+acl_boxname1=User's real name
+acl_boxname2=Nothing
+acl_usersm=Users matching
+acl_asame=Same as username
+acl_usersu=With UID in range
+acl_spam=Spam control addresses this user can edit
+
+log_opts=Changed sendmail options
+log_ports=Change network ports
+log_alias_create=Created alias $1
+log_alias_modify=Modified alias $1
+log_alias_delete=Deleted alias $1
+log_alias_manual=Manually edited alias file $1
+log_cws=Changed local domains
+log_masq=Changed domain masquerading
+log_trusts=Changed trusted users
+log_virtuser_create=Created address mapping $1
+log_virtuser_modify=Modified address mapping $1
+log_virtuser_delete=Deleted address mapping $1
+log_virtuser_manual=Manually edited address mapping file $1
+log_mailer_create=Created domain routing $1
+log_mailer_modify=Modified domain routing $1
+log_mailer_delete=Deleted domain routing $1
+log_mailer_manual=Manually edited domain routing file $1
+log_generic_create=Created outgoing address $1
+log_generic_modify=Modified outgoing address $1
+log_generic_delete=Deleted outgoing address $1
+log_generic_manual=Manually edited outgoing address file $1
+log_cgs=Changed outgoing domains
+log_domain_create=Created domain mapping $1
+log_domain_modify=Modified domain mapping $1
+log_domain_delete=Deleted domain mapping $1
+log_domain_manual=Manually edited domain mapping file $1
+log_access_create=Created spam control for $1
+log_access_modify=Modified spam control for $1
+log_access_delete=Deleted spam control for $1
+log_access_manual=Manually edited spam control file $1
+log_relay=Changed relay domains
+log_flushq=Flushed mail queue
+log_delmailq=Deleted mail from $1 from queue
+log_delmailqs=Deleted $1 mails from queue
+log_stop=Stopped sendmail daemon
+log_start=Started sendmail daemon
+log_delmail=Deleted $1 messages from $2
+log_movemail=Moved $1 messages from $2 to $3
+log_send=Sent mail to $1
+log_feature_create=Added M4 entry $1
+log_feature_modify=Modified M4 entry $1
+log_feature_delete=Deleted M4 entry $1
+log_feature_move=Moved M4 entry $1
+log_build=Rebuilt sendmail configuration
+log_delete_aliases=Deleted $1 aliases
+log_delete_virtusers=Deleted $1 address mappings
+log_delete_domains=Deleted $1 domain mappings
+log_delete_accesses=Deleted $1 spam control entries
+log_delete_generics=Deleted $1 outgoing addresses
+log_delete_mailers=Deleted $1 domain routes
+
+match_from=From: matches
+match_subject=Subject: matches
+match_to=To: matches
+match_cc=Cc: matches
+match_date=Date: matches
+match_status=Status matches
+match_body=Body matches
+match_size=Size is greater than
+match_headers=Headers match
+match_=-----------------
+match_!from=From: doesn't match
+match_!subject=Subject: doesn't match
+match_!to=To: doesn't match
+match_!cc=Cc: doesn't match
+match_!date=Date: doesn't match
+match_!status=Status doesn't match
+match_!body=Body doesn't match
+match_!size=Size is less than
+match_!headers=Headers don't match
+
+features_title=Sendmail M4 Configuration
+features_desc=This page lists the relevant entries from the Sendmail M4 configuration file $1, from which the actual configuration file $2 is built.
+features_type=Entry type
+features_value=Line in configuration file
+features_type0=Other
+features_type1=Feature
+features_type2=Define
+features_type3=Undefine
+features_type4=Mailer
+features_type5=OS Type
+features_add=Add new entry of type:
+features_build=Rebuild Sendmail Configuration
+features_buildmsg=Click this button to rebuild your Sendmail configuration file $1 from the M4 configuration entries listed above.
+features_return=M4 configuration
+features_emc=The Sendmail M4 configuration file $2 was not found on your system. Maybe it has not been installed (common for packaged installs of Sendmail), or the <a href='$1'>module config</a> is incorrect.
+features_efeatures=The Sendmail M4 configuration base directory $2 was not found on your system, or is not the correct directory. Maybe it has not been installed (common for packaged installs of Sendmail), or the <a href='$1'>module config</a> is incorrect.
+features_econfig=The locations of the Sendmail M4 base directory and M4 config file have not been set yet in your <a href='$1'>module configuration</a>. If you have installed Sendmail from the source, these should be under the original source directory.
+features_move=Move
+features_manual=Edit file manually
+
+feature_add=Add Configuration Entry
+feature_edit=Edit Configuration Entry
+feature_header=M4 configuration entry details
+feature_text=Configuration line
+feature_feat=Feature
+feature_values=Parameters
+feature_def=Definition name
+feature_defval=Value
+feature_defmode1=Set to ..
+feature_defmode0=Undefine
+feature_mailer=Mail delivery method
+feature_ostype=Operating system type
+feature_old=Current configuration line
+feature_err=Failed to save configuration entry
+feature_efeat=The feature $1 already exists
+feature_edef=The definition $1 already exists
+feature_emailer=The mailer $1 already exists
+feature_eostype=The OS type is already defined as $1
+feature_manual=Edit M4 File
+feature_mdesc=The page allowes you to manually edit the Sendmail M4 configuration file $1. Be careful, as no syntax checking will be done on your edits.
+
+feat_access_db=Spam control file
+feat_virtusertable=Address Mapping
+feat_mailertable=Domain Routing
+feat_genericstable=Outgoing Addresses
+feat_domaintable=Domain Mapping
+
+mailer_local=Local Unix delivery
+
+build_title=Rebuild Sendmail Configuration
+build_em4=The command $1 needed for rebuilding the Sendmail configuration file was not found on your system.
+build_ebuild=Failed to build configuration : $1
+build_rusure=Are you sure you want to replace the Sendmail configuration file $1 with a new version built from $2 ?
+build_rusure2=Be aware that if you have made changes to Sendmail in the Sendmail Options page, rebuilding the config file may overwrite those changes if they have not also been made in the M4 file.
+build_ok=Yes, replace it now
+build_diff=The following changes will be made to your Sendmail configuration file ..
+build_nodiff=Your sendmail configuration file is already up to date.
+
+stop_err=Failed to stop sendmail
+stop_ecannot=You are not allowed to stop sendmail
+stop_epid=Sendmail does not appear to be running
+restart_epids=Could not find sendmail processes
+restart_ekill=Failed to signal sendmail processes : $1
+
+start_err=Failed to start sendmail
+start_ecannot=You are not allowed to start sendmail
+
+ports_title=Network Ports
+ports_name=Port name
+ports_addr=Listen on address
+ports_all=All
+ports_ip=IP
+ports_family=Protocol
+ports_inet=IPv4
+ports_inet6=IPv6
+ports_port=Listen on port
+ports_opts=Port options
+ports_mod_a=Require SMTP authentication
+ports_mod_b=Use same interface for outgoing email
+ports_mod_c=Perform hostname canonification
+ports_mod_f=Require fully qualified hostname
+ports_mod_h=Use name of interface for HELO
+ports_mod_C=Don't perform hostname canonification
+ports_mod_E=Disallow ETRN
+ports_def1=Accept email on port 25 and all addresses
+ports_def0=Accept email only on ports below ..
+ports_err=Failed to save network ports
+ports_ecannot=You are not allowed to manage network ports
+ports_ename=Invalid port name in row $1
+ports_eclash=Duplicate port name in row $1
+ports_eaddress=Missing or invalid IP address in row $1
+ports_eport=Missing or invalid port number in row $1
+
+__norefs=1

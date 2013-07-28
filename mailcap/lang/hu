@@ -1,0 +1,47 @@
+index_title=MIME Type Programs
+index_none=No MIME type handler programs have been defined yet.
+index_add=Add a new MIME type program.
+index_type=MIME type
+index_program=Handler program
+index_cmt=Description
+index_delete=Delete Selected
+index_disable=Disable Selected
+index_enable=Enable Selected
+index_enabled=Enabled?
+index_return=list of programs
+
+edit_title1=Create MIME Type Program
+edit_title2=Edit MIME Type Program
+edit_header=MIME type handler program details
+edit_type=MIME type
+edit_enabled=Enabled?
+edit_program=Handler program
+edit_cmt=Description
+edit_egone=Program no longer exists!
+edit_test=Test command
+edit_none=None (always use program)
+edit_term=Display output in terminal?
+edit_copious=Produces lots of output?
+edit_desc=MIME type description
+
+save_err=Failed to save MIME type program
+save_etype=Missing or invalid MIME type
+save_eprogram=Missing handler program
+save_eclash=An enabled program for the entered MIME type already exists
+save_etest=Missing or invalid test command
+save_edesc=Invalid MIME type description
+
+delete_err=Failed to delete MIME type programs
+disable_err=Failed to disable MIME type programs
+disable_eclash=A disabled MIME type program for $1 already exists
+enable_err=Failed to enable MIME type programs
+enable_eclash=An enabled MIME type program for $1 already exists
+delete_enone=None selected
+
+log_delete_mailcap=Delete MIME type program for $1
+log_create_mailcap=Created MIME type program for $1
+log_modify_mailcap=Modified MIME type program for $1
+log_delete_mailcaps=Deleted $1 MIME type programs
+log_disable_mailcaps=Disabled $1 MIME type programs
+log_enable_mailcaps=Enabled $1 MIME type programs
+__norefs=1

@@ -1,0 +1,6 @@
+index_title=Text Login
+index_epython=Ajaxterm requires Python to run, but the $1 command was not found on your system.
+index_estart=Ajaxterm did not start accepting connections on port $2 after $1 seconds.
+index_popup=Open in separate window ..
+index_credits=Uses code from <a href='$1' target=_new>Ajaxterm</a> by Antony Lesuisse.
+__norefs=1

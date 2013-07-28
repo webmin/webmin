@@ -1,0 +1,406 @@
+index_title=QMail Mail Server
+index_edir=The QMail base directory $1 does not exist. Maybe QMail is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_edir2=The directory $1 does not appear to be the QMail base directory. Maybe QMail is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_return=QMail configuration
+index_stop=Stop QMail Processes
+index_stopmsg=Click this button to stop the background QMail processes responsible for delivering queued mail. Without these processes, mail will not be sent out from or delivered to your system properly.
+index_start=Start QMail Processes
+index_startmsg=Click this button to start the background QMail processes responsible for delivering queued mail. Without these processes, mail will not be sent out from or delivered to your system properly.
+
+opts_title=QMail Options
+opts_me=Local host name
+opts_helo=Hostname for SMTP HELO
+opts_toconnect=SMTP connection timeout
+opts_secs=seconds
+opts_toremote=SMTP outgoing response timeout
+opts_bytes=Maximum message size
+opts_unlimited=Unlimited
+opts_timeout=SMTP incoming data timeout
+opts_localip=Hostname for email to local IP address
+opts_greet=SMTP greeting message
+opts_err=Failed to save QMail options
+opts_eme=Invalid local host name
+opts_etoconnect=Invalid SMTP connection timeout
+opts_etoremote=Invalid SMTP outgoing response timeout
+opts_ebytes=Invalid maximum message size
+opts_etimeout=Invalid SMTP incoming data timeout
+opts_elocalip=Invalid local IP address hostname
+
+aliases_title=Mail Aliases
+aliases_addr=Address
+aliases_to=Alias to..
+aliases_type1=Address $1
+aliases_type2=Mail directory $1
+aliases_type3=Mail file $1
+aliases_type4=Program $1
+aliases_type5=Autoreply file $1
+aliases_type6=Apply filter file $1
+aliases_none=None
+aliases_return=alias list
+aliases_toomany=There are too many mail aliases on your system to display on this page.
+aliases_go=Find aliases matching:
+aliases_delete=Delete Selected Aliases
+
+aform_type0=None
+aform_type1=Email address
+aform_type2=Mail directory
+aform_type3=Mail file
+aform_type4=Feed to program
+aform_type5=Autoreply from file
+aform_type6=Apply filter file
+aform_edit=Edit Alias
+aform_create=Create Alias
+aform_name=Address
+aform_val=Alias to
+aform_afile=Edit..
+aform_novirt=&lt;All domains&gt;
+aform_return=alias
+
+asave_err=Failed to save alias
+asave_eaddr='$1' is not a valid address
+asave_ealready=An alias for '$1' already exists
+asave_etype1='$1' is not a valid email address
+asave_etype2='$1' is not a valid mail directory
+asave_etype3='$1' is not a valid mail filename
+asave_etype4='$1' is not a valid program or does not exist
+asave_etype5=Autoreply file '$1' is not valid
+asave_etype4none=No program given
+asave_etype6=Filter file '$1' is not valid
+
+adelete_err=Failed to delete aliases
+adelete_enone=None selected
+
+locals_title=Local Domains
+locals_domains=Local domains for this server
+locals_desc=Qmail will accept for delivery to local users email to the domains and hostnames listed in the text box to the left. If you want your mail server to handle multiple email domains, they should all be listed on this form.
+locals_only=Only local hostname $1
+locals_sel=Domains listed below ..
+
+rcpts_title=Accepted Domains
+rcpts_domains=Accepted local and relay domains
+rcpts_all=Any domain
+rcpts_sel=Domains listed below ..
+rcpts_desc=Qmail will accept for relaying or local delivery only mail to domains and hostnames listed in the text box to the left. You can also enter wildcards that match all hosts in a domain like <tt>.foo.com</tt>. If you want your mail server to relay email for clients, you must accept mail from any domain.
+rcpts_domains2=Additional local and relay domains
+rcpts_desc2=If you have a large number of accepted domains, less commonly used ones should be entered into this text box. In general, your first 50 allowed domains should be entered into the upper text box, and the rest into this one.
+
+bads_title=Rejected Addresses
+bads_addresses=Rejected email addresses
+bads_desc=QMail will reject mail for delivery or relaying from any of the addresses listed in the text box to the left, which must be entered as <tt>username@domainname</tt>. If you want to reject mail from an entire domain, it should be entered as <tt>@domainname</tt>.
+
+routes_title=Domain Routing
+routes_toomany=There are too many domain routes on your system to display on this page.
+routes_go=Find domain routes matching:
+routes_from=Mail for domain
+routes_to=Send via server
+routes_direct=Deliver directly
+routes_defroute=Deliver all other outgoing mail via: 
+routes_return=domain routes
+routes_delete=Delete Selected Domain Routes
+
+rform_edit=Edit Domain Route
+rform_create=Create Domain Route
+rform_from=Mail for host or domain
+rform_to=Send via SMTP server
+rform_port=SMTP port
+
+rsave_err=Failed to save domain route
+rsave_efrom='$1' is not a valid domain name
+rsave_eto='$1' is not a valid SMTP server
+rsave_eport='$1' is not a valid port number
+
+rdelete_err=Failed to delete domain routes
+
+percents_title=% Address Domains
+percents_domains=Domains which support % addresses
+percents_desc=QMail will accept email with addresses in the format <tt>user%firstdomain@seconddomain</tt> if the <tt>seconddomain</tt> is listed in the text box to the left. Messages in this format will then be forwarded on to <tt>user@firstdomain</tt> by this mail server.
+
+virts_title=Virtual Mappings
+virts_toomany=There are too many virtual mappings on your system to display on this page.
+virts_go=Find virtual mappings matching:
+virts_from=Mail for
+virts_prepend=Prepend prefix
+virts_all=All addresses
+virts_none=Not virtual
+virts_desc=Virtual mappings are used by QMail to handle email to different domains on your server, by prepending text to the user part of the email address before further processing. You can use them to setup virtual mail domains by creating a new virtual mapping for a domain, then using the <a href='$1'>Mail Aliases</a> page to create aliases within that domain.
+virts_return=virtual mappings
+virts_delete=Delete Selected Virtual Mappings
+
+vform_edit=Edit Virtual Mapping
+vform_create=Create Virtual Mapping
+vform_from=Mail for address
+vform_all=Any address not matching another virtual mapping
+vform_domain=Addresses with domain
+vform_user=Address
+vform_to=Prepend to username
+vform_none=Nothing
+vform_prepend=Specified prefix
+vform_auto=Automatically chosen prefix
+
+vsave_err=Failed to save virtual mapping
+vsave_edomain='$1' is not a valid email domain
+vsave_euser='$1' is not a valid email username
+vsave_eprepend='$1' is not a valid mapping prefix
+vsave_eboth=You cannot select both 'Any address not matching another virtual mapping' and 'Nothing'
+
+vdelete_err=Failed to delete virtual mappings
+
+stop_err=qmail-send process no longer running
+
+log_stop=Stopped QMail processes
+log_start=Started QMail processes
+log_opts=Changed QMail options
+log_alias_create=Created alias $1
+log_alias_delete=Delete alias $1
+log_alias_modify=Modified alias $1
+log_delete_aliases=Deleted $1 aliases
+log_virt_create=Created virtual mapping $1
+log_virt_delete=Deleted virtual mapping $1
+log_virt_modify=Modified virtual mapping $1
+log_delete_virts=Deleted $1 virtual mappings
+log_virtall_create=Created catchall virtual mapping
+log_virtall_delete=Deleted catchall virtual mapping
+log_virtall_modify=Modified catchall virtual mapping
+log_locals=Changed local domains
+log_rcpts=Changed accepted domains
+log_bads=Changed rejected addresses
+log_percents=Changed % address domains
+log_route_create=Created route for $1
+log_route_delete=Deleted route for $1
+log_route_modifed=Modified route for $1
+log_delete_routes=Deleted $1 routes
+log_defroute=Modified default route
+log_assign_create=Created mail user $1
+log_assign_delete=Deleted mail user $1
+log_assign_modifed=Modified mail user $1
+log_delete_assigns=Deleted $1 mail users
+log_delmail=Deleted $1 messages from $2
+log_movemail=Moved $1 messages from $2 to $3
+log_send=Sent mail to $1
+
+rfile_title=Edit Autoreply File
+rfile_desc=Use the text area below to edit the autoreply message in $1. The message may contain the macros $SUBJECT, $FROM, $TO, $DATE and $BODY which will be expanded when the autoreply is activated.
+rfile_desc2=You can also set mail headers that add to or replace the defaults used in the autoreply by putting lines like:<br><tt>From: foo@bar.com</tt><br><tt>Subject: On holiday</tt><br>at the top of the message, separated from the body by a single blank line.
+rfile_efile=You are not allowed to edit $1.
+rfile_undo=Undo Changes
+rfile_replies=Track replies to prevent mail loops?
+rfile_none=No
+rfile_file=Yes, using log file
+rfile_period=Minimum interval between replies
+rfile_default=Default (1 hour)
+rfile_secs=seconds
+rfile_ereplies=Missing reply tracking log file
+rfile_eperiod=Missing or invalid number of seconds between replies
+rfile_no_autoreply=Don't send autoreplies to
+rfile_from=From: address for reply
+rfile_auto=Automatic (based on recipient's address)
+rfile_efrom=Missing From: address
+rfile_fromdesc=A From: address should always be specified where possible, as the automatic method may not be reliable.
+
+ffile_title=Edit Filter File
+ffile_desc=Use the form below to setup filter rules in the file $1.
+ffile_efile=You are not allowed to edit $1.
+ffile_line=If the $1 field $2 $3 then forward to $4
+ffile_from=from
+ffile_to=to
+ffile_subject=subject
+ffile_cc=CC
+ffile_body=body
+ffile_what0=doesn't match
+ffile_what1=matches
+ffile_other=Otherwise forward to $1
+ffile_err=Failed to save filter file
+ffile_ematch=Missing match
+ffile_eaction=Missing forwarding address
+
+queue_title=Mail Queue
+queue_count=$1 messages
+queue_none=No mail messages are currently queued for delivery
+queue_id=Mail ID
+queue_date=Sent
+queue_from=From
+queue_to=To
+queue_cc=Cc
+queue_subject=Subject
+queue_return=mail queue
+queue_delete=Delete selected messages
+queue_all=Select all
+queue_invert=Invert selection
+queue_refresh=Refresh Mail Queue
+queue_refreshdesc=Reload this page to show the current state of the mail queue.
+
+qview_title=Queued Message
+qview_desc=From file $1
+qview_headers=Mail headers
+qview_attach=Attachments
+
+assigns_title=Mail User Assignments
+assigns_return=mail user assignments
+assigns_toomany=There are too many mail users on your system to display on this page.
+assigns_go=Find mail users matching:
+assigns_address=Mail to address
+assigns_user=Unix user
+assigns_uid=UID
+assigns_gid=GID
+assigns_home=Home directory
+assigns_desc=Mail user assignments allow you to create mailboxes for users that are not defined in the Unix user list. Each assignment will deliver mail for a chosen username or username pattern, as though it was being delivered to a real Unix user's mailbox.
+assigns_delete=Delete Selected Mail Users
+
+sform_edit=Edit mail user
+sform_create=Create mail user
+sform_address=Address username
+sform_mode0=Exact username
+sform_mode1=Usernames starting with
+sform_user=Unix user
+sform_uid=UID
+sform_gid=GID
+sform_home=Home directory
+
+ssave_err=Failed to save mail user
+ssave_eaddress=Missing or invalid address username
+ssave_euser=Missing or invalid Unix user
+ssave_euid=Missing or invalid UID
+ssave_egid=Missing or invalid GID
+ssave_ehome=Missing or invalid home directory
+
+sdelete_err=Failed to delete mail users
+
+delete_egone=Queued message no longer exists
+delete_ebogus=Invalid queue filename
+
+boxes_title=User Mailboxes
+boxes_user=User
+boxes_size=Mailbox size
+boxes_none=No mail
+boxes_return=mailboxes
+boxes_sent=Sent mail
+boxes_ecannot=You are not allowed to read email
+boxes_toomany=There are too many users on your system to list all their mailboxes.
+boxes_go=View mail for user:
+
+mail_title=User Email
+mail_from=From
+mail_date=Date
+mail_subject=Subject
+mail_to=To
+mail_cc=Cc
+mail_bcc=Bcc
+mail_pri=Priority
+mail_highest=Highest
+mail_high=High
+mail_normal=Normal
+mail_low=Low
+mail_lowest=Lowest
+mail_for=In $1
+mail_for2=For user $1
+mail_sent=In sent mail list
+mail_size=Size
+mail_delete=Delete
+mail_compose=Compose
+mail_return=user mailbox
+mail_pos=Messages $1 to $2 of $3
+mail_none=This mailbox has no messages
+mail_ecannot=You are not allowed to read this user's email
+mail_all=Select all
+mail_invert=Invert selection
+mail_search=Find messages where
+mail_body=Body
+mail_match=matches
+mail_ok=Search
+mail_nonefrom=None
+mail_mark=Mark as:
+mail_mark0=Unread
+mail_mark1=Read
+mail_mark2=Special
+mail_forward=Forward
+mail_rfc=From line
+mail_move=Move to:
+mail_eexists=Message no longer exists!
+
+view_title=Read Email
+view_desc=Message $1 in $2
+view_desc2=Message $1 for user $2
+view_desc3=Message $1
+view_sent=Message $1 in sent mail list
+view_qdesc=Queued message $1
+view_headers=Mail headers
+view_allheaders=View all headers
+view_noheaders=View basic headers
+view_attach=Attachments
+view_reply=Reply
+view_reply2=Reply to all
+view_enew=Edit as new
+view_forward=Forward
+view_delete=Delete
+view_strip=Remove Attachments
+view_ecannot=You are not allowed to read this user's email
+view_mark=Mark message as:
+view_mark0=Unread
+view_mark1=Read
+view_mark2=Special
+view_return=original email
+view_sub=Attached Email
+
+compose_title=Compose Email
+reply_title=Reply to Email
+forward_title=Forward Email
+enew_title=Edit Email
+reply_headers=Mail headers
+reply_attach=Forwarded attachments
+reply_mailforward=Forwarded messages
+reply_attach2=Client and server-side Attachments
+reply_send=Send Mail
+reply_ecannot=You are not allowed to send mail as this user
+
+send_err=Failed to send mail
+send_eto=Missing To address
+send_efrom=Missing From address
+send_title=Mail Sent
+send_ok=Mail sent successfully to $1
+send_ecannot=You are not allowed to send mail as this user
+send_esmtp=SMTP command $1 failed : $2
+send_efile=Attached file $1 does not exist
+send_eattach=Attachments cannot total more that $1 kB in size.
+send_eperms=User $1 cannot read $2
+send_eperms2=You are not allowed to send file $1
+send_epath=Sendmail executable $1 does not exist.
+
+delete_title=Delete Mail
+delete_rusure=Are you sure you want to delete the $1 selected messages from $2? This may take some time for a large mail file. Until the deletion has finished, no other action should be performed.
+delete_rusure2=Are you sure you want to delete this message from $1? This may take some time for a large mail file. Until the deletion has finished, no other action should be performed.
+delete_ok=Delete Now
+delete_ecannot=You are now allowed to delete mail from this user
+delete_enone=No mail selected to delete
+delete_emnone=No mail selected to mark
+delete_nobutton=No button clicked
+
+search_title=Search Results
+search_ecannot=You are not allowed to search this user's email
+search_ematch=You must enter text to match against.
+search_efield=You must select a search type.
+search_none=No messages found.
+search_results2=$1 mail messages matching $2 ..
+search_results3=$1 mail messages not matching $2 ..
+
+match_from=From: matches
+match_subject=Subject: matches
+match_to=To: matches
+match_cc=Cc: matches
+match_date=Date: matches
+match_body=Body matches
+match_size=Size is greater than
+match_headers=Headers match
+match_=-----------------
+match_!from=From: doesn't match
+match_!subject=Subject: doesn't match
+match_!to=To: doesn't match
+match_!cc=Cc: doesn't match
+match_!date=Date: doesn't match
+match_!body=Body doesn't match
+match_!size=Size is less than
+match_!headers=Headers don't match
+
+delq_titles=Deleting Messages
+delq_rusure=Are you sure you want to delete the $1 selected queued messages?
+delq_confirm=Delete Messages
+__norefs=1

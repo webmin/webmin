@@ -22,3 +22,5 @@ desc_ru.UTF-8=Ð¡Ð±Ð¾Ñ€Ñ‰Ð¸Ðº Ð¿Ð¾Ñ‡Ñ‚Ñ‹ Fetchmail
 desc_cz.UTF-8=ProchÃ¡zenÃ­ poÅ¡ty pÅ™es FetchMail
 desc_pl.UTF-8=Pobieranie poczty przez fetchmaila
 desc_no=Fetchmail e-posthenting
+longdesc_hu=Levelek automatikus letöltése fetchmail segítségével másik szerverekrõl
+desc_hu=Levelek lekérdezése (FetchMail)

@@ -28,3 +28,4 @@ desc_ru.UTF-8=Настройка Postfix
 desc_cz.UTF-8=Konfigurace Postfixu
 desc_pl.UTF-8=Konfiguracja Postfiksa
 desc_no=Postfix E-post tjener
+desc_hu=MTA szerver (Postfix)

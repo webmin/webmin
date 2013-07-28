@@ -10,3 +10,5 @@ desc_nl=HTTP Tunnel
 desc_ko_KR.euc=HTTP ÅÍ³Î
 desc_ko_KR.UTF-8=HTTP í„°ë„
 desc_cz.UTF-8=Tunel HTTP
+longdesc_hu=Webmin szerveren keresztül alagúton keresztül egy másik HTTP-kiszolgálóhoz kapcsolódás.
+desc_hu=HTTP alagút (Tunnel)

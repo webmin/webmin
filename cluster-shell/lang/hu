@@ -1,0 +1,22 @@
+index_title=Cluster Shell Commands
+index_cmd=Command to run
+index_old=or
+index_server=Run on servers
+index_run=Run Command Now
+index_return=module index
+index_this=this server
+index_all=&lt;All hosts&gt;
+index_group=Members of $1
+index_clear=Clear History
+
+run_title=Run Command
+run_err=Failed to run command
+run_ecmd=No command entered
+run_failed=Failed to run on $1 : $2
+run_success=Output from $1 ..
+run_enone=No servers to run on selected
+
+log_clear=Cleared command history
+log_run=Ran $1 on $2 servers
+log_run_l=Ran $1 on $2
+__norefs=1

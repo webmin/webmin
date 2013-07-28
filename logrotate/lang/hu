@@ -1,0 +1,111 @@
+index_title=Log File Rotation
+index_econf=The log rotation configuration file $1 was not found on your system. Maybe logrotate is not installed, or the <a href='$2'>module configuration</a> is incorrect.
+index_ecmd=The log rotation program $1 was not found on your system. Maybe it is not installed, or the <a href='$2'>module configuration</a> is incorrect.
+index_eversion=Failed to get the version of logrotate with the command $1 : $2
+index_version=Logrotate version $1
+index_add=Add a new log file to rotate.
+index_file=Log file
+index_period=Rotation period
+index_post=Post-rotation command
+index_none=No log files have been defined yet.
+index_global=Edit Global Options
+index_globaldesc=Click this button to edit setting that apply to all log files, and define the defaults for logs.
+index_sched=Edit Schedule
+index_scheddesc=Click this button to edit the schedule on which logrotate is run by Cron, or enable or disable it.
+index_nocmd=None
+index_notset=Not set
+index_return=log files list
+index_force=Force Log Rotation
+index_forcedesc=Force the immediate rotation of all log files, even if it is not yet time.
+index_logrotate=Logrotate
+index_delete=Delete Selected Log Rotations
+
+period_daily=Daily
+period_weekly=Weekly
+period_monthly=Monthly
+period_never=Never
+period_bytes=bytes
+
+edit_title1=Edit Log File
+edit_title2=Create Log File
+edit_header=Rotated log file details
+edit_file=Log file paths
+edit_sched=Rotation schedule
+edit_rotate=Number of old logs to keep
+edit_compress=Compress old log files?
+edit_delaycompress=Delay compression till next cycle?
+edit_copytruncate=Truncate log file in place?
+edit_ifempty=Rotate even if log file is empty?
+edit_missingok=Ignore log file if missing?
+edit_size=Maximum size before rotating
+edit_always=Ignored
+edit_ext=Extension for rotated filenames
+edit_mail=Email log file before deleting?
+edit_mailto=Yes, to address
+edit_mailno=No, don't email
+edit_mailfl=Log file to email
+edit_mailfirst=Newest that was just rotated
+edit_maillast=Oldest that is about to be deleted
+edit_create=Re-create log file after rotation?
+edit_createas=Yes, with mode $1 and owned by user $2 and group $3
+edit_createno=No, don't re-create
+edit_createsame=Yes, with old permissions
+edit_olddir=Store old rotated logs in
+edit_olddirto=Directory
+edit_olddirsame=Same directory as log file
+edit_errors=Email error messages to
+edit_errorsno=Nobody
+edit_errorsto=Address or user
+edit_post=Commands to run after rotation
+edit_pre=Commands to run before rotation
+edit_default=Default ($1)
+edit_sharedscripts=Only run scripts once for all files?
+edit_now=Rotate Now
+
+global_title=Global Options
+global_header=Default options for all log files
+
+save_err=Failed to save log
+save_efile=Missing or invalid log filename
+save_esize=Missing or invalid maximum size
+save_erotate=Missing or invalid maximum number of old logs to keep
+save_ecreatemode=Missing or invalid 3 or 4 digit octal creation mode
+save_ecreateuser=Missing or invalid creation user
+save_ecreategroup=Missing or invalid creation group
+save_emust1=You must enter a creation mode when entering a creation user
+save_emust2=You must enter a creation user when entering a creation group
+save_eolddirto=Missing or invalid directory for old rotated logs
+save_eext=Missing extension for rotated log filenames
+save_emailto=Missing email address for rotated logs
+save_eerrors=Missing email address for error messages
+save_epre=Pre-rotation script cannot contain an <tt>endscript</tt> or <tt>endrotate</tt> line
+save_epost=Post-rotation script cannot contain an <tt>endscript</tt> or <tt>endrotate</tt> line
+
+log_modify_sched=Changed log rotation Cron job
+log_create_sched=Created log rotation Cron job
+log_delete_sched=Deleted log rotation Cron job
+log_global=Modified global options
+log_create=Added rotation for log file $1
+log_modify=Modified rotation for log file $1
+log_delete=Deleted rotation for log file $1
+log_delete_logs=Deleted rotation for $1 log files
+
+sched_title=Log Rotation Schedule
+sched_desc=For log rotation configured using this module to be performed, the command $1 must be run on a regular schedule (usually daily) by Cron.
+sched_runparts=Currently, the log rotation command is being run from the script $1 $2, and cannot be adjusted.
+sched_sched=Log rotation cron job
+sched_disabled=Disabled
+sched_enabled=Enabled, at times below ..
+sched_save=Update Cron Job
+sched_err=Failed to save rotation schedule
+
+force_title=Force Log Rotation
+force_doing=Forcing the immediate rotation of all log files ..
+force_doingone=Forcing the immediate rotation of one log file ..
+force_done=.. done.
+force_failed=.. failed! See the output above for the reason why.
+
+delete_err=Failed to delete logs
+delete_enone=None selected
+
+__norefs=1

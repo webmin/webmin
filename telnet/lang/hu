@@ -1,0 +1,9 @@
+index_title=SSH Belépés
+index_warn=Warning! This telnet session is <b>not</b> encrypted.
+index_nojava=This module requires java to function, but your browser does not support java
+index_credits=Applet developed under GPL by <a href='$1' target=_top>Matthias L. Jugel &amp; Marcus Mei&#223;ner</a>.
+index_sshcredits=Includes software developed by the Cryptix Development Team (<a href=$1 target=_top>$1</a>).
+index_esocket=There is no telnet server running on $1 port $2.
+index_esocket2=There is no SSH server running on $1 port $2.
+index_elookup=Failed to lookup IP address for $1 to test telnet or SSH server.
+__norefs=1

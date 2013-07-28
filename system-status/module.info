@@ -4,3 +4,4 @@ hidden=1
 category=system
 depends=proc cron
 desc_ca=Estat del Sistema
+desc_hu=Rendszerállapot

@@ -1,0 +1,54 @@
+inittab_new=Create a new init process.
+inittab_id=ID
+inittab_active=Active?
+inittab_runlevels=Bootup runlevel
+inittab_action=Action
+inittab_process=Process
+inittab_none=None
+inittab_respawn=Respawn process
+inittab_wait=Wait
+inittab_once=Once time at level
+inittab_boot=Boot time
+inittab_bootwait=Boot time, wait until termination
+inittab_off=Do nothing
+inittab_ondemand=Whenever in A, B, C
+inittab_initdefault=After system boot
+inittab_sysinit=During system boot
+inittab_powerwait=Power goes down
+inittab_powerfail=Power goes down without waiting
+inittab_powerokwait=Power is restored
+inittab_powerfailnow=Power fail
+inittab_ctrlaltdel=Ctrl-Alt-Del
+inittab_kbdrequest=Special key combination
+inittab_kbrequest=Special key combination
+inittab_return=process list
+inittab_apply=Apply Init Configuration
+inittab_applymsg=Click this button to apply the current SysV Init Configuration by running the command <tt>telinit q</tt>. Be aware that any mistakes in your configuration may make the system unusable when this command is run.
+index_delete=Delete Selected Processes
+
+edit_inittab_err=Your not allowed to edit a process
+edit_inittab_title=Edit Process $1
+edit_inittab_details=Process Details
+edit_inittab_del=Delete
+edit_inittab_save=Save
+
+new_inittab_err=Your not allowed to create a new process
+new_inittab_title=New Process
+
+save_inittab_err=Your not allowed to save a process
+save_inittab_noid=Error, no name process entered
+save_inittab_already=Error, the name process already exist
+
+log_modify=Modified init process $1
+log_rename=Renamed init process $1 to $2
+log_create=Created init process $1
+log_delete=Deleted init process $1
+log_apply=Applied configuration
+log_deletes=Deleted $1 init processes
+
+apply_err=Failed to apply configuration
+
+delete_err=Failed to delete processes
+delete_enone=None selected
+
+__norefs=1

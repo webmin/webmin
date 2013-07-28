@@ -1,4 +1,5 @@
-acl_setup=Beállítva legyen és letiltva a monitorozás?
+__norefs=1
+acl_setup=Beállíthatja és letilthatja a monitorozást?
 index_all=&lt;minden&gt;
 index_by=Mutassa a forgalmat
 index_edir=A könyvtár, ahol tárolásra kerülnek a forgalmi adatok $1 nem létezik, vagy nem könyvtár. Kérem ellenõrizze a <a href='$2'>modul beállítások</a> hogy helyes könyvtárat állítson be.
@@ -40,6 +41,7 @@ index_missing3=Néhány tûzfal szabály hozzá lett adva, és a Syslog konfigurációs 
 index_nomatch=Nincs a kiválasztott kritériumoknak megfelelõ forgalom.
 index_none=Még nem készített forgalmi adatot ez a modul. Ha éppen most állította be, akkor több mint egy órát fog igénybe venni a mûvelet.
 index_oport=külsõ port
+index_other=Egyéb..
 index_port=port
 index_proto=protokoll
 index_resolv=Hosztnév feloldás?
@@ -54,8 +56,7 @@ index_title=Forgalmi monitor
 index_to=A forgalomhoz elõbb
 index_turnoff=Monitorozás kikapcsolása
 index_turnoffdesc=Kattintson erre a gombra hogy eltávolítsa a tûzfal szabályokat, syslog konfigurációkat és Cron munkákat amiket a forgalmi monitor használt. Minden meglévõ gyûjtött adat érintetlen marad.
-index_usage=Hálózati forgalom  <font color=#ff0000>letöltött</font> és <font color=#0000ff>feltöltött</font>	
-
+index_usage=Hálózati forgalom  <font color=#ff0000>letöltött</font> és <font color=#0000ff>feltöltött</font>
 log_rotate=Statisztika frissítése
 log_setup=Forgalom monitorozás beállítása a(z) $1 interfészre
 log_turnoff=Forgalmi monitorozás kikapcsolása
@@ -64,6 +65,8 @@ rotate_done=.. rendben.
 rotate_title=Statisztika frissítése
 setup_ecannot=Önnek nincs joga engedélyezni a monitorozást
 setup_ezone=Nem találom a Shorewall zónát a kiválasztott interfészhez
+syslog_syslog=Rendszernapló
+syslog_syslog-ng=Rendszernapló-NG
 system_firewall=IPtables
 system_ipfilter=IPFilter
 system_ipfw=IPFW

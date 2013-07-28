@@ -33,3 +33,4 @@ desc_ru.UTF-8=Сервер DNS BIND
 desc_cz.UTF-8=DNS BIND Server
 desc_pl.UTF-8=Serwer DNS BIND
 desc_no=BIND DNS-tjener
+desc_hu=DNS szerver (Bind)

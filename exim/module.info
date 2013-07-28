@@ -5,3 +5,4 @@ desc_ca=Servidor de Correu Exim
 desc=Exim Mailserver
 desc_nl=Exim Mailserver
 desc_pl=Serwer poczty Exim
+desc_hu=Levelezõ szerver (Exim)
