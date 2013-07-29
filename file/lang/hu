@@ -1,0 +1,436 @@
+index_title=File Manager
+index_nojava=This module requires java to function, but your browser does not support java
+index_eremote=There is no Unix user matching the Webmin login $1.
+index_index=Return to <a href='$1'>Webmin index</a>.
+switch_euser=Unix user does not exist!
+
+top_ret=Index
+top_down=Save
+top_preview=Preview
+top_edit=Edit
+top_html=HTML
+top_refresh=Refresh
+top_info=Info
+top_eacl=ACL
+top_attr=Attrs
+top_ext=EXT
+top_delete=Delete
+top_new=New
+top_upload=Upload
+top_extract=Extract
+top_rename=Rename
+top_copy=Copy
+top_cut=Cut
+top_paste=Paste
+top_share=Sharing
+top_mount=Mount
+top_search=Find
+top_config=Config
+top_efile=No file selected
+
+right_name=Name
+right_size=Size
+right_user=User
+right_group=Group
+right_date=Date
+
+edit_enormal=Only normal files can be edited
+edit_title=Editing $1
+edit_title2=Creating file
+edit_filename=Filename:
+edit_goto=Goto
+edit_find=Find
+edit_gotoline=Go to line
+edit_replace=Replace
+edit_all=Replace all
+edit_searchfor=Search for
+edit_replaceby=Replace by
+edit_eover=$1 cannot be overwritten
+edit_esave=Failed to save file : $1
+edit_eaccess=You are not allowed to save '$1'
+edit_efollow=You are not allowed to write to the symbolic link '$1'
+edit_notfound=The text $1 was not found
+edit_saveclose=Save & Close
+edit_elength=File was truncated!
+edit_textmode=Switch to plain text mode
+
+info_file=File
+info_path=Path:
+info_type=Type:
+info_size=Size:
+info_mod=Modified:
+info_link=Link to:
+info_perms=Permissions
+info_user=User:
+info_group=Group:
+info_other=Other:
+info_octal=Octal:
+info_sticky=Sticky:
+info_sticky2=Only owners can delete files
+info_own=Ownership
+info_setuid=Setuid:
+info_setuid2=Execute as user
+info_setgid=Setgid:
+info_setgid2=Files inherit group
+info_setgid3=Execute as group
+info_apply=Apply changes to
+info_apply1=This directory only
+info_apply2=This directory and its files
+info_apply3=This directory and all subdirectories
+info_efailed=Failed to update $1 : $2
+info_read=Read
+info_write=Write
+info_list=List
+info_exec=Exec
+info_sizeheader=Directory size
+info_bytes=Total bytes:
+info_files=Total files:
+info_dirs=Total directories:
+info_getsize=Get Size
+info_esize=Failed to get sizes : $1
+
+eacl_eacls=Failed to read ACLs : $1
+eacl_acltype=ACL Type
+eacl_aclname=Apply to
+eacl_aclperms=Permissions
+eacl_add=Add ACL of type :
+eacl_remove=Remove ACL
+eacl_efs=The filesystem $1 does not support ACLs
+eacl_create=Create ACL
+eacl_edit=Edit ACL
+eacl_user=File owner $1
+eacl_group=File group $1
+eacl_eowner=Missing user or group to apply to
+eacl_efailed=Failed to set ACL for $1 : $2
+eacl_emask=There can be at most one mask ACL entry
+eacl_edefmask=There can be at most one default mask ACL entry
+eacl_title=ACL for $1
+eacl_owner=File owner
+eacl_edefaults=If a file has any default ACL, it must have default user, group and other ACLs.
+
+acltype_user=User
+acltype_group=Group
+acltype_other=Others
+acltype_mask=Mask
+acltype_default_user=Default User
+acltype_default_group=Default Group
+acltype_default_other=Default Others
+acltype_default_mask=Default Mask
+
+delete_mtitle=Delete multiple files
+delete_dtitle=Delete directory
+delete_ftitle=Delete file
+delete_ddesc=Are you sure you want to permanently delete the directory $1 and all its contents?
+delete_fdesc=Are you sure you want to permanently delete the file $1 ?
+delete_mdesc=Are you sure you want to permanently delete these files and directories? :
+delete_efailed=Failed to delete $1 : $2
+
+mkdir_title=New Directory
+mkdir_dir=New directory:
+mkdir_eexists=$1 already exists
+mkdir_efailed=Create directory failed : $1
+mkdir_eaccess=You are not allowed to create '$1'
+
+link_title=Create Link
+link_from=Link from:
+link_to=Link to:
+link_eexists=$1 already exists
+link_efrom=Link source must be an absolute path
+link_efailed=Link failed : $1
+link_efrom2=You are not allowed to link from '$1'
+link_efollow=You are not allowed to create symlinks
+
+rename_title=Rename $1
+rename_old=Old name:
+rename_new=New name:
+rename_ok=Rename
+rename_eexists=A file called $1 already exists
+rename_eslash=The new file name $1 contains a /
+rename_efailed=Rename failed : $1
+rename_eold=You are not allowed to rename '$1'
+rename_enew=You are not allowed to rename to '$1'
+
+file_type0=Directory
+file_type1=Text file
+file_type2=Image file
+file_type3=Binary file
+file_type4=File
+file_type5=Symbolic link
+file_type6=Device file
+file_type7=Pipe
+
+view_enormal=Only normal files can be viewed
+view_enormal2=Only normal files can be downloaded
+view_eaccess=You are not allowed to access $1
+view_eopen=Failed to open $1 : $2
+view_edir=An archive can only be created for a directory
+view_ecmd=The command $1 needed to create an archive is not installed
+view_ecomp=Failed to create archive : $1
+view_earchive=You are not allowed to download archives
+view_earchmax=The selected directory is larger than the maximum allowed for archiving ($1 bytes)
+
+paste_ecopy=You must cut or copy before pasting
+paste_egone=Copied file $1 no longer exists
+paste_eover=$1 cannot be overwritten
+paste_eself=You cannot paste a file over itself
+paste_emfailed=Move failed : $1
+paste_ecfailed=Copy failed : $1
+
+over_title=File Exists
+over_msg=The file $1 already exists. Use the field below to enter a new filename for the pasted file.
+over_new=New filename:
+over_ok=Ok
+
+upload_efailed=Failed to open upload : $1
+upload_title=Upload File
+upload_file=File to upload
+upload_dir=Upload to directory
+upload_ok=Upload
+upload_conv=Convert Windows newlines?
+upload_efile=No file selected to upload.
+upload_edir=Upload directory does not exist.
+upload_euser=Selected user does not exist.
+upload_eperm=You are not allowed to create $1
+upload_ewrite=Failed to write to $1 : $2.
+upload_already=The file $1 already exists. Are you sure that you want to overwrite it?
+upload_elink=Cannot upload to a symbolic link
+upload_zip=Uncompress ZIP or TAR file?
+upload_yes=Yes, then delete
+upload_user=Upload as user
+
+find_eaccess=You are not allowed to access $1
+find_eexist=$1 does not exist in $2
+find_edir=$1 is not a directory in $2
+
+cancel=Cancel
+close=Close
+eopen=Download failed : $1
+
+chmod_eaccess=You are not allowed to access '$1'
+chmod_euser=$1 : no such user
+chmod_egroup=$1 : no such group
+chmod_elink=symlink failed : $1
+chmod_echown=chown failed : $1
+chmod_echmod=chmod failed : $1
+chmod_efollow=You are not allowed to edit symbolic links
+
+copy_efrom=You are not allowed to copy from '$1'
+copy_eto=You are not allowed to copy to '$1'
+copy_elink=symlink failed : $1
+
+delete_eaccess=You are not allowed to delete '$1'
+delete_eroot=The directory '$1' is one of those that you are limited to, and so cannot be deleted
+
+list_eaccess=You are not allowed to access this directory
+list_edir=Failed to list $1 : $2
+
+move_eto=You are not allowed to move to '$1'
+move_afrom=You are not allowed to move '$1'
+
+
+
+
+acl_user=Access files on server as user
+acl_user_def=Same as Webmin login
+acl_umask=Umask for new files
+acl_follow=Always follow symlinks?
+acl_fyes=If owners match
+acl_ro=Read-only mode?
+acl_dirs=Only allow access to directories
+acl_nodirs=Deny access to directories
+acl_home=Include home directory of Webmin user
+acl_log=Log all file modifications?
+acl_goto=Open first allowed directory?
+acl_max=Maximum upload size
+acl_unlim=Unlimited
+acl_b=bytes
+acl_archive=Can download archives of directories?
+acl_archmax=Yes, if smaller than
+acl_buttons=Available buttons on toolbar
+acl_button_save=Save (download file)
+acl_button_preview=Preview (view scaled-down image)
+acl_button_edit=Szerkesztés (szöveg fájlok szerkesztése)
+acl_button_info=Info (edit file permissions and ownership)
+acl_button_acl=ACL (edit Posix ACL)
+acl_button_attr=Attr (edit XFS attributes)
+acl_button_ext=EXT (edit EXT attributes)
+acl_button_search=Find (find files)
+acl_button_delete=Törlés (fájlok törlése)
+acl_button_new=New (create text file)
+acl_button_upload=Upload (upload file from client, or extract on server)
+acl_button_mkdir=New (create directory)
+acl_button_makelink=New (create symbolic link)
+acl_button_rename=Rename (rename file)
+acl_button_sharing=Sharing (setup Samba and NFS file sharing)
+acl_button_mount=Mount (mount or un-mount filesystem)
+acl_button_copy=Copy, Cut and Paste
+acl_unarchive=Can extract uploaded archive files?
+acl_unarchive2=Always attempt to
+acl_unarchive1=Yes
+acl_unarchive0=No
+acl_dostounix=Can have Windows newlines converted?
+acl_chroot=Chroot directory for entire file manager
+acl_relto=(relative to any chroot directory)
+acl_noperms=Can change file permissions?
+acl_nousers=Can change file ownership?
+acl_filesystems=Can see filesystem mount points?
+acl_contents=Allow searching of file contents?
+
+share_title=Sharing
+share_samba=Windows
+share_nfs=NFS
+share_son=Windows file sharing enabled
+share_soff=Windows file sharing disabled
+share_writable=Writable?
+share_available=Currently active?
+share_sheader=Sharing options
+share_only=Only
+share_guest=Guest access?
+share_comment=Comment
+share_nheader=NFS export options
+share_non=NFS file sharing enabled
+share_noff=NFS file sharing disabled
+share_desc=Description
+share_ro=Read-only hosts
+share_rw=Read-write hosts
+share_root=Root access hosts
+share_none=None
+share_all=All
+share_listed=Listed..
+share_host=Hosts
+share_opts=Options
+share_s0=Trust nobody
+share_s1=Trust non-root
+share_s2=Trust everybody
+share_lro=Read-only
+share_lrw=Read-write
+
+log_create_export=Created NFS export $1
+log_modify_export=Modified NFS export $1
+log_delete_export=Deleted NFS export $1
+log_create_share=Created Samba share $1
+log_modify_share=Modified Samba share $1
+log_delete_share=Deleted Samba share $1
+log_save=Saved file $1
+log_chmod=Changed permissions on file $1
+log_mkdir=Created directory $1
+log_upload=Uploaded file $1
+log_link=Created symbolic link $1 to $2
+log_relink=Modified symbolic link $1 to $2
+log_copy=Copied file $1 to $2
+log_move=Moved file $1 to $2
+log_delete=Deleted file $1
+log_attr=Set attributes on file $1
+log_acl=Set ACL on file $1
+
+search_eaccess=You are not allowed to search this directory
+search_title=Find files
+search_ok=Search Now
+search_dir=Search directory
+search_match=For files matching
+search_cont=Containing text
+search_user=Owned by user
+search_group=Owned by group
+search_any=Any
+search_type=File type
+search_types_=Any
+search_types_f=File
+search_types_d=Directory
+search_types_l=Symbolic link
+search_types_p=Named pipe
+search_size=File size
+search_more=More than
+search_less=Less than
+search_xdev=Search past mounts?
+search_edir=Missing or invalid search directory
+search_ematch=Missing matching regexp
+search_euser=Missing username
+search_egroup=Missing group name
+search_esize=File size must be an integer
+search_crit=Search criteria
+search_list=Search results
+search_down=Download
+search_edown=No search result file to download selected
+
+facl_eaccess=You are not allowed to set ACLs for this file
+
+attr_eattrs=Failed to get attributes : $1
+attr_efs=The filesystem $1 does not support attributes
+attr_add=Add Attribute
+attr_name=Attribute Name
+attr_value=Attribute Value
+attr_efailed=Failed to set attributes for $1 : $2
+attr_title=File Attributes for $1
+attr_create=Add Attribute
+attr_edit=Edit Attribute
+attr_ename=Missing attribute name
+
+ext_eattrs=Failed to get EXT attributes : $1
+ext_efs=The filesystem $1 does not support EXT attributes
+ext_title=EXT attributes for $1
+ext_header=EXT file attributes
+ext_efailed=Failed to set attributes for $1 : $2
+
+eattr_A=Do not update access times
+eattr_a=Can only append to file
+eattr_c=Compress data on disk
+eattr_d=Do not backup with dump
+eattr_i=Do not allow modification
+eattr_s=Zero blocks when deleting
+eattr_S=Always sync after writing
+eattr_u=Save contents for undeletion
+
+mount_eaccess=You are not allowed to mount filesystems
+mount_efstab=No filesystem exists at this mount point
+mount_epoint=$1 is not a mount point
+mount_rusure1=Are you sure you want to mount $1 from $2 ?
+mount_rusure2=Are you sure you want to un-mount $1 from $2 ?
+mount_err1=Failed to mount $1 : $2
+mount_err2=Failed to un-mount $1 : $2
+mount_title1=Mount filesystem
+mount_title2=Un-mount filesystem
+
+zip_err=Could not extract file : $1
+zip_ecmd=Missing $1 command
+zip_eunzip=Unzip failed : $1
+zip_ename=Does not appear to be a zip, tar or tar.gz file
+zip_euntar=Un-tar failed : $1
+zip_euntar2=Un-compress and un-tar failed : $1
+
+ddir_title=Download Directory
+ddir_rusure=To download the contents of $1 as an archive file, click on one of the archive type buttons below.
+ddir_zip=ZIP
+ddir_tgz=TAR.GZ
+ddir_tar=TAR
+
+ebutton=This feature is not available
+
+preview_etype=Could not work out file type for $1
+preview_etype2=$1 is not in a supported image format
+preview_ecmd=The command $1 needed to scale this image is not installed
+preview_eimage=Only images can be previewed
+preview_title=Preview of $1
+preview_bad=Could not load image to preview
+preview_egd=Failed to load image with GD
+
+html_efailed=Failed to open HTML editor : $1
+html_title=Edit HTML File
+html_title2=Create HTML File
+html_save=Save and Close
+html_err=Failed to save HTML file
+
+history_title=Path History
+history_ok=Go To
+history_button=History
+
+extract_etype=Only files can be extracted
+extract_title=Extract Compressed File
+extract_rusure=Are you sure you want to extract the compressed file :
+extract_rusure2=Existing files in the same directory may be overwritten.
+extract_err=Failed to extract file : $1
+extract_yes=Yes, then delete
+extract_show=Show contents
+extract_err2=Failed to get file contents : $1
+extract_shown=Contents of compressed file
+__norefs=1
+

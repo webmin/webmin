@@ -23,3 +23,4 @@ desc_cz.UTF-8=SSH server
 desc_pl.UTF-8=Serwer SSH
 desc_sk.UTF-8=SSH Server
 desc_no=SSH tjener
+desc_hu=SSH szerver (OpenSSH)

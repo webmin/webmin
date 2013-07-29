@@ -5,3 +5,4 @@ desc_ca=Entrada en Mode Text
 desc_no=Tekst-terminal
 desc_nl=Tekst Login
 desc_pl=Tryb tekstowy (konsola)
+desc_hu=Shell hozzáférés (Ajaxterm)

@@ -1,0 +1,9 @@
+index_title=Cluster Change Passwords
+index_noservers=No servers to manage users on have been defined in the <a href=$1>Cluster Users and Groups</a> module.
+index_hosts=All password changes made using this module will be done on all $1 hosts managed by the Cluster Users and Groups module.
+
+passwd_err=Failed to change password
+passwd_title=Changing Password
+passwd_on=Changing password on $1 ..
+passwd_euser=User does not exist!
+__norefs=1

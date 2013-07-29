@@ -6,3 +6,5 @@ longdesc=Configure the TCP wrappers networking access control files
 desc_ca=Embolcalls TCP
 desc_nl=TCP Wrappers
 desc_no=TCP Wrappere
+longdesc_hu=Hálózati szolgáltatások szabályozása
+desc_hu=Hálózati szabályozások (TCP)

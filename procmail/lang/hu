@@ -1,0 +1,130 @@
+index_title=Procmail Mail Filter
+index_procmail=Procmail mail filter
+index_desc_other=The procmail actions below from $1 will apply to <b>all</b> email delivered to users on your system. However, they will only be used if Procmail is installed and your mail server is configured to use it.
+index_mserr=Warning - any rules defined below will not be used : $1
+index_action=Action to take
+index_conds=Conditions
+index_move=Move
+index_ba=Add
+index_act6=Set variable $1
+index_act5=Execute conditional block
+index_act4=Feed to program $1
+index_act3=Forward to $1
+index_act2=Write to maildir $1
+index_act1=Write to MH folder $1
+index_act0=Append to file $1
+index_noconds=Always execute action
+index_re=Match regexp $1
+index_nre=Don't match regexp $1
+index_shell=Evaluate command $1
+index_exit=Exit status of command $1
+index_lt=Size is < $1
+index_gt=Size is > $1
+index_add=Add a new filter action.
+index_eadd=Add a new variable setting.
+index_badd=Add a new conditional block.
+index_iadd=Add a new include file.
+index_none=No Procmail actions have been configured yet.
+index_return=actions list
+index_env=Set variable $1 to $2
+index_include=Process include file $1
+index_man=Manually Edit Configuration
+index_mandesc=Directly edit the primary Procmail configuration file, to create your own rules, variables and blocks.
+index_ecmd=The Procmail program $1 was not found on your system. Either it is not installed, or the <a href='$2'>module configuration</a> is incorrect.
+index_delete=Delete Selected Actions
+
+edit_title2=Edit Action
+edit_title1=Create Action
+edit_header1=Delivery action details
+edit_header2=Action conditions
+edit_action=Delivery mode
+edit_block=Procmail code to execute
+edit_amode_0=Append to file
+edit_amode_1=Write to MH folder
+edit_amode_2=Write to maildir
+edit_amode_3=Forward to address
+edit_amode_4=Feed to program
+edit_amode_6=Set variable
+edit_flag_H=Apply conditions to headers
+edit_flag_B=Apply conditions to body
+edit_flag_D=Case-sensitive matching
+edit_flag_h=Feed headers to destination
+edit_flag_b=Feed body to destination
+edit_flag_c=Continue processing even if conditions match
+edit_flag_w=Wait for action program to finish, and check result
+edit_flag_W=Wait for action program to finish, but ignore result
+edit_flag_i=Ignore write errors on delivery
+edit_flag_r=Write out mail in raw mode
+edit_flag_f=Action program is a filter
+edit_lockfile=Delivery lock file
+edit_cmode_re=Matches regular expression
+edit_cmode_nre=Doesn't match regular expression
+edit_cmode_shell=Evaluate output of command
+edit_cmode_exit=Check exit status of command
+edit_cmode_lt=Mail is smaller than
+edit_cmode_gt=Mail is bigger than
+edit_conddesc=For the above action to be carried out, all the conditions below must match. If there are no conditions, the action will always be executed.
+edit_none=None
+edit_lock=Specific file
+edit_ctype=Condition type
+edit_cvalue=Regular expression or command
+
+save_err=Failed to save action
+save_eaction_0=Missing file to append to
+save_eaction_1=Missing MH folder to write to
+save_eaction_2=Missing maildir to write to
+save_eaction_3=Missing address to forward to
+save_eaction_4=Missing program to feed to
+save_eaction_6=Missing variable to set
+save_eactionvar=Variable to set must be entered like NAME=value
+save_elockfile=Missing lock file name
+save_esize=Missing or invalid mail size for condition $1
+save_ere=Missing regular expression for condition $1
+save_eshell=Missing command for condition $1
+
+env_title1=Create Variable
+env_title2=Edit Variable
+env_header=Procmail environment variable
+env_name=Variable name
+env_value=Value
+env_err=Failed to save variable
+env_ename=Missing or invalid variable name
+
+inc_title1=Add Include File
+inc_title2=Edit Include File
+inc_header=Included procmail rules file
+inc_inc=Included file
+inc_einc=No include file entered
+
+config_eline=Unknown line $1 in $2 : $3
+
+manual_title=Edit Configuration
+manual_desc=This page can be used to manually edit the Procmail configuration file $1. Be careful, as no syntax checking will be done.
+manual_edata=No data was supplied by your browser!
+
+log_create_rec=Created recipe to $1
+log_delete_rec=Deleted recipe to $1
+log_modify_rec=Modified recipe to $1
+log_delete_recs=Deleted $1 recipes
+log_act5=execute conditional block
+log_act4=feed to progam $1
+log_act3=forward to $1
+log_act2=write to maildir $1
+log_act1=write to MH folder $1
+log_act0=append to file $1
+log_create_env=Created environment variable $1
+log_modify_env=Modified environment variable $1
+log_delete_env=Deleted environment variable $1
+log_create_inc=Created include file $1
+log_modify_inc=Modified include file $1
+log_delete_inc=Deleted include file $1
+log_manual=Manually edited configuration
+log_up=Moved an entry up
+log_down=Moved an entry down
+
+delete_err=Failed to delete actions
+delete_enone=None selected
+
+check_epostfix=Procmail is not enabled in your Postfix configuration. The configuration file <tt>$2</tt> must have the <tt>$1</tt> option set to <tt>$3</tt>.
+check_esendmail=Sendmail is not setup to use Procmail for local delivery. This can be configured in Webmin's <a href='$1'>Sendmail Mail Server</a> module.
+__norefs=1
