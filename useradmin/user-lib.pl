@@ -1708,6 +1708,12 @@ if ($olduser) {
 	$ENV{'USERADMIN_OLD_GID'} = $olduser->{'gid'};
 	$ENV{'USERADMIN_OLD_PASS'} = $oldpass if (defined($oldpass));
 	}
+foreach my $f ("quota", "uquota", "mquota", "umquota") {
+	$ENV{'USERADMIN_'.uc($f)} = $user->{$f};
+	if ($olduser) {
+		$ENV{'USERADMIN_OLD_'.uc($f)} = $olduser->{$f};
+		}
+	}
 }
 
 =head2 set_group_envs(&group, action, [&oldgroup])
