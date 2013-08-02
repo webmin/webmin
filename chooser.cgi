@@ -50,6 +50,14 @@ if (&supports_users()) {
 	}
 
 &ReadParse(undef, undef, 1);
+
+# If a chroot is forced which is under the allowed root, there is no need for
+# a restrictred root
+if ($in{'chroot'} && $in{'chroot'} ne '/' && $rootdir && $rootdir ne '/' &&
+    $in{'chroot'} =~ /^\Q$rootdir\E/) {
+	$rootdir = undef;
+	}
+
 if ($gconfig{'os_type'} eq 'windows') {
 	# On Windows, chroot should be empty if not use, and default path
 	# should be c:/
