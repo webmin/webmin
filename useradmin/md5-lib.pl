@@ -264,6 +264,7 @@ if ($config{'dict_file'}) {
 	}
 else {
 	@files = ( "/usr/share/dict/words",
+		   "/usr/share/dict/linux.words",
 		   "/usr/dict/words" );
 	}
 foreach my $f (@files) {
