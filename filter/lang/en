@@ -69,7 +69,7 @@ edit_amode6=Send automatic reply
 edit_amode7=Save to new folder named
 edit_nobounce=Suppress forwarding of bounce messages
 edit_apply=Show Matching Email In Folder:
-edit_move=Apply to Email In Folder:
+edit_move=Apply To Email In Folder:
 
 save_err=Failed to save filter
 save_egone=Filter no longer exists!
@@ -123,8 +123,11 @@ forward_cont=Also deliver normally?
 forward_err=Failed to save email forwarding
 
 move_err=Failed to apply filter
-move_esrc=Source folder does not exist!
-move_edest=Destination folder does not exist!
+move_esrc=Source folder $1 does not exist!
+move_edest=Destination folder $1 does not exist!
 move_esame=Source and destination folder are the same
-
+move_title=Apply Filter
+move_finding=Searching for messages matching the filter in $1 ..
+move_none=.. none found!
+move_found=.. found $1 messages
 __norefs=1

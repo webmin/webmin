@@ -14,7 +14,35 @@ $filter || &error($text{'save_egone'});
 # Get the source and destination folders
 @folders = &mailbox::list_folders();
 $src = &mailbox::find_named_folder($in{'movefrom'}, \@folders);
-$src || &error($text{'move_esrc'});
-$dest = &mailbox::find_named_folder($filter->{'action'}, \@folders);
-$dest || &error($text{'move_edest'});
-&folder_name($src) eq &folder_name($dest) || &error($text{'move_esame'});
+$src || &error(&text('move_esrc', $in{'movefrom'}));
+$dest = &file_to_folder($filter->{'action'}, \@folders);
+$dest || &error(&text('move_edest', $filter->{'action'}));
+&mailbox::folder_name($src) eq &mailbox::folder_name($dest) &&
+	&error($text{'move_esame'});
+
+&ui_print_unbuffered_header(undef, $text{'move_title'}, "");
+
+# Find matching messages
+if ($filter->{'condspam'}) {
+	@fields = ( [ "X-Spam-Status", "Yes" ] );
+	}
+elsif ($filter->{'condlevel'}) {
+	# XXX
+	}
+else {
+	@fields = ( [ lc($filter->{'condheader'}),
+		      $filter->{'condvalue'}, 1 ] );
+	}
+print &text('move_finding', &mailbox::folder_name($src)),"<br>\n";
+@mails = &mailbox::mailbox_search_mail(\@fields, 1, $src, undef, 1);
+if (!@mails) {
+	print $text{'move_none'},"<p>\n";
+	}
+else {
+	print &text('move_found', scalar(@mails)),"<p>\n";
+
+	# XXX actually move
+	}
+
+&ui_print_footer("", $text{'index_return'});
+
