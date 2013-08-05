@@ -69,8 +69,10 @@ edit_amode6=Send automatic reply
 edit_amode7=Save to new folder named
 edit_nobounce=Suppress forwarding of bounce messages
 edit_apply=Show Matching Email In Folder:
+edit_move=Apply to Email In Folder:
 
 save_err=Failed to save filter
+save_egone=Filter no longer exists!
 save_econdheader=Missing or invalid email header
 save_econdlevel=Minimum spam score must be an integer greater than zero
 save_esmall=Missing or invalid maximum mail size
@@ -119,4 +121,10 @@ forward_enabled=Email forwarding enabled?
 forward_to=Forward to addresses
 forward_cont=Also deliver normally?
 forward_err=Failed to save email forwarding
+
+move_err=Failed to apply filter
+move_esrc=Source folder does not exist!
+move_edest=Destination folder does not exist!
+move_esame=Source and destination folder are the same
+
 __norefs=1

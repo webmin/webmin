@@ -10,6 +10,7 @@ use Time::Local;
 @filters = &list_filters();
 if (!$in{'new'}) {
 	($filter) = grep { $_->{'index'} == $in{'idx'} } @filters;
+	$filter || &error($text{'save_egone'});
 	}
 else {
 	$filter = { 'index' => scalar(@filters) };
@@ -27,14 +28,14 @@ elsif ($in{'apply'}) {
 	if ($filter->{'condspam'}) {
 		# Is spam or not?
 		&redirect("../mailbox/mail_search.cgi?".
-			  "id=".&urlize($in{'movefrom'})."&".
+			  "id=".&urlize($in{'applyfrom'})."&".
 			  "field_0=X-Spam-Status&".
 			  "what_0=Yes");
 		}
 	elsif ($filter->{'condlevel'}) {
 		# Spam level at least
 		&redirect("../mailbox/mail_search.cgi?".
-			  "id=".&urlize($in{'movefrom'})."&".
+			  "id=".&urlize($in{'applyfrom'})."&".
 			  "spam=1&score=".$filter->{'condlevel'});
 		}
 	else {
@@ -44,11 +45,15 @@ elsif ($in{'apply'}) {
 		$field = lc($field);
 		# XXX regexp checkbox?
 		&redirect("../mailbox/mail_search.cgi?".
-			  "id=".&urlize($in{'movefrom'})."&".
+			  "id=".&urlize($in{'applyfrom'})."&".
 			  "field_0=".&urlize($field)."&".
 			  "what_0=".&urlize($what)."&".
 			  "re_0=1");
 		}
+	}
+elsif ($in{'move'}) {
+	# Redirect to move CGI
+	&redirect("move.cgi?idx=$in{'idx'}");
 	}
 else {
 	# Validate and store inputs
