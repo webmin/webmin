@@ -35,3 +35,5 @@ Added a checkbox (on by default) to not forward bounce emails, which can cause m
 Text for rules that match on headers is now automatically escaped unless the new "Regular expression" box is checked, which makes creation of simple substring matching rules easier for users.
 ---- Changes since 1.470 ----
 The time between autoreplies to the same address now defaults to 1 hour.
+---- Changes since 1.560 ----
+Added buttons on the Edit Filter page to show all email matching a filter, or apply the filter to email in some folder.

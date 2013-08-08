@@ -27,7 +27,8 @@ if ($filter->{'condspam'}) {
 	@fields = ( [ "X-Spam-Status", "Yes" ] );
 	}
 elsif ($filter->{'condlevel'}) {
-	# XXX
+	$stars = "*" x $filter->{'condlevel'};
+	@fields = ( [ "X-Spam-Level", $stars ] );
 	}
 else {
 	@fields = ( [ lc($filter->{'condheader'}),
@@ -41,7 +42,15 @@ if (!@mails) {
 else {
 	print &text('move_found', scalar(@mails)),"<p>\n";
 
-	# XXX actually move
+	print &text('move_moving', scalar(@mails),
+		    &mailbox::folder_name($dest)),"<br>\n";
+	&mailbox::mailbox_move_mail($src, $dest, reverse(@mails));
+	print $text{'move_done'},"<p>\n";
+	}
+
+if (defined(&theme_post_save_folder)) {
+	&theme_post_save_folder($src);
+	&theme_post_save_folder($dest);
 	}
 
 &ui_print_footer("", $text{'index_return'});

@@ -130,4 +130,7 @@ move_title=Apply Filter
 move_finding=Searching for messages matching the filter in $1 ..
 move_none=.. none found!
 move_found=.. found $1 messages
+move_moving=Moving $1 messages to $2 ..
+move_done=.. done
+
 __norefs=1
