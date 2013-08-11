@@ -520,7 +520,7 @@ if ($gconfig{'os_type'} eq 'debian-linux' && defined(&get_interface_defs)) {
 	local @ifaces = &get_interface_defs();
 	local @dnssearch;
 	if (@{$_[0]->{'domain'}} > 1) {
-		@dnssearch = map { [ 'dns-search', $_ ] } @{$_[0]->{'domain'}};
+		@dnssearch = ( [ 'dns-domain', join(" ", @{$_[0]->{'domain'}}) ] );
 		}
 	elsif (@{$_[0]->{'domain'}}) {
 		@dnssearch = ( [ 'dns-domain', $_[0]->{'domain'}->[0] ] );
