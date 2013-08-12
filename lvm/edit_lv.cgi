@@ -85,7 +85,10 @@ else {
 		if ($nice) {
 			# Show nicely
 			print &ui_table_row($text{'lv_size'},
-				&ui_bytesbox("size", $size, 8));
+				&ui_radio_table("size_mode", 0,
+				    [ [ 0, $text{'lv_sizesimple'},
+					&ui_bytesbox("size", $size, 8) ],
+				      [ 2, $text{'lv_sizeallfree'} ] ]));
 			}
 		else {
 			# Show in exactly kB
@@ -95,7 +98,8 @@ else {
 					&ui_textbox("sizekb", $lv->{'size'}, 8).
 					" kB" ],
 				      [ 0, $text{'lv_sizesimple'},
-					&ui_bytesbox("size", $size, 8) ] ]));
+					&ui_bytesbox("size", $size, 8) ],
+				      [ 2, $text{'lv_sizeallfree'} ] ]));
 			}
 		}
 	}

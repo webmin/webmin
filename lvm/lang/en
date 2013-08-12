@@ -54,6 +54,7 @@ lv_size3=Percentage of PV free space
 lv_size3a=$1 of $2
 lv_sizeabs=Exact size
 lv_sizesimple=Size with units
+lv_sizeallfree=Use all free VG space
 lv_device=Device file
 lv_status=Current status
 lv_mount=Mounted on $1 as $2

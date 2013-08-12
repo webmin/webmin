@@ -34,3 +34,5 @@ LVs being used by Cloudmin on the same system are now shown on the Logical Volum
 When editing an LV whose size is not a round number of GB, MB or TB and is instead shown in kB, sizing can now be done to a size in GB, MB or TB.
 ---- Changes since 1.620 ----
 Added a button to the logical volume page for moving blocks from one physical volume to another.
+---- Changes since 1.630 ----
+When resizing a logical volume, you can now select to have it use up all space in the volume group (thanks to a patch from Caspar Smit).
