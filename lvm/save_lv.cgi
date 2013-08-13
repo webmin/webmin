@@ -63,12 +63,11 @@ else {
 		}
 	elsif ($in{'size_mode'} == 2) {
 		# Size of free space
-		if ($in{'lv'} && !$in{'freesize'}) {
-			$in{'freesize'} = 100;
+		if (!$in{'lv'}) {
+			$in{'freesize'} =~ /^\d+$/ &&
+				$in{'freesize'} > 0 &&
+				$in{'freesize'} <= 100 || &error($text{'lv_efreesize'});
 			}
-		$in{'freesize'} =~ /^\d+$/ &&
-			$in{'freesize'} > 0 &&
-			$in{'freesize'} <= 100 || &error($text{'lv_efreesize'});
 		$size = $in{'freesize'};
 		$sizeof = 'FREE';
 		}
@@ -143,18 +142,13 @@ else {
 			local $realsize = $nblocks * $vg->{'pe_size'};
 
 			if ($in{'size_mode'} == 2) {
-				$realsize = $vg->{'pe_total'}*$vg->{'pe_size'};
+				# Calculate free VG space and add current LV size to get the actual new LV size
+				$realsize = ($vg->{'pe_total'}*$vg->{'pe_size'})-($vg->{'pe_alloc'}*$vg->{'pe_size'})+$lv->{'size'};
 				}
 
 			if ($in{'sizeconfirm'}) {
-				if ($in{'size_mode'} == 2) {
-	                                # Extend the logical volume with 100% of the free VG space
-       		                        $err = &resize_logical_volume_allfree($lv);
-					}
-				else {
-					# Just resize the logical volume
-					$err = &resize_logical_volume($lv, $realsize);
-					}
+				# Just resize the logical volume
+				$err = &resize_logical_volume($lv, $realsize);
 				&error("<pre>$err</pre>") if ($err);
 				}
 			else {

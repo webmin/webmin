@@ -451,15 +451,6 @@ local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $? ? $out : undef;
 }
 
-# resize_logical_volume_allfree(&lv)
-sub resize_logical_volume_allfree
-{
-local $cmd = "lvextend -l +100%FREE";
-$cmd .= " ".quotemeta($_[0]->{'device'});
-local $out = &backquote_logged("$cmd 2>&1 </dev/null");
-return $? ? $out : undef;
-}
-
 # change_logical_volume(&lv, [&old-lv])
 sub change_logical_volume
 {
