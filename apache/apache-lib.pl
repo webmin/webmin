@@ -797,7 +797,9 @@ sub editable_directives
 local($m, $func, @rv, %done);
 foreach $m (keys %httpd_modules) {
 	$func = $m."_directives";
-	push(@rv, &$func($httpd_modules{$m}));
+	if (defined(&$func)) {
+		push(@rv, &$func($httpd_modules{$m}));
+		}
 	}
 @rv = grep { $_->{'type'} == $_[0] && $_->{$_[1]} &&
 	     !$done{$_->{'name'}}++ } @rv;
@@ -1111,8 +1113,10 @@ sub config_icons
 local($m, $func, $e, %etype, $i, $c);
 foreach $m (sort { $a cmp $b } (keys %httpd_modules)) {
         $func = $m."_directives";
-	foreach $e (&$func($httpd_modules{$m})) {
-		if ($e->{$_[0]}) { $etype{$e->{'type'}}++; }
+	if (defined(&$func)) {
+		foreach $e (&$func($httpd_modules{$m})) {
+			if ($e->{$_[0]}) { $etype{$e->{'type'}}++; }
+			}
 		}
         }
 local (@titles, @links, @icons);
@@ -1751,8 +1755,8 @@ undef(@get_config_cache);	# Cache is no longer valid
 # Add dynamically loaded modules
 &open_execute_command(APACHE, "$config{'apachectl_path'} -M 2>/dev/null", 1);
 while(<APACHE>) {
-	if (/(\S+)_module/ && -r "$module_root_directory/$1.pl") {
-		push(@rv, $1);
+	if (/(\S+)_module/ && -r "$module_root_directory/mod_${1}.pl") {
+		push(@rv, "mod_${1}");
 		}
 	}
 close(APACHE);
