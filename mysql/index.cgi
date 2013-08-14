@@ -6,7 +6,7 @@ require './mysql-lib.pl';
 &ReadParse();
 
 # Check for MySQL programs
-if ($config{'start_cmd'} =~ /^(\S+)/) {
+if ($config{'start_cmd'} =~ /^(\S+)/ && &is_mysql_local()) {
 	$start = $1;
 	}
 foreach $p ( [ $config{'mysqladmin'}, 'index_eadmin', 'index_mysqladmin' ],
