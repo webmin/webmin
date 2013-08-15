@@ -20,7 +20,7 @@ $package_dir = "/var/db/pkg";
 
 sub list_package_system_commands
 {
-return ("$pkg_info", "$pkg_add");
+return ($pkg_info, $pkg_add);
 }
 
 # list_packages([package]*)
