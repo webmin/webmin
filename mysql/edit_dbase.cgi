@@ -107,25 +107,32 @@ elsif (@titles || @indexes) {
 		# Show table names, fields and row counts
 		foreach $t (@titles) {
 			local $c = &execute_sql($in{'db'},
+					"show create table ".quotestr($t));
+			push(@types, &text('dbase_typetable',
+				$c->{'data'}->[0]->[1] =~ /ENGINE=(\S+)/i ?
+				  "$1" : "Unknown"));
+			local $c = &execute_sql($in{'db'},
 					"select count(*) from ".quotestr($t));
 			push(@rows, $c->{'data'}->[0]->[0]);
 			local @str = &table_structure($in{'db'}, $t);
 			push(@fields, scalar(@str));
 			}
 		foreach $t (@indexes) {
+			push(@types, $text{'dbase_typeindex'});
 			$str = &index_structure($in{'db'}, $t);
 			push(@rows, "<i>$text{'dbase_index'}</i>");
 			push(@fields, scalar(@{$str->{'cols'}}));
 			}
-		foreach $v (@indexes) {
-			push(@rows, "<i>$text{'dbase_view'}</i>");
+		foreach $v (@views) {
+			push(@types, $text{'dbase_typeview'});
+			push(@rows, undef);
 			push(@fields, undef);
 			}
 		@dtitles = map { &html_escape($_) }
 			       ( @titles, @indexes, @views );
-		&split_table([ "", $text{'dbase_table'}, $text{'dbase_rows'},
-			       $text{'dbase_cols'} ],
-			     \@checks, \@links, \@dtitles,
+		&split_table([ "", $text{'dbase_name'}, $text{'dbase_type'},
+			           $text{'dbase_rows'}, $text{'dbase_cols'} ],
+			     \@checks, \@links, \@dtitles, \@types,
 			     \@rows, \@fields) if (@titles);
 		}
 	elsif ($displayconfig{'style'} == 2) {
