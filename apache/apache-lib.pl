@@ -1783,7 +1783,7 @@ if ($config{'defines_file'}) {
 	# or regular name=value format
 	local %def;
 	&read_env_file($config{'defines_file'}, \%def);
-	if ($config{'defines_name'}) {
+	if ($config{'defines_name'} && $def{$config{'defines_name'}}) {
 		# Looking for var like OPTIONS='-Dfoo -Dbar'
 		local $var = $def{$config{'defines_name'}};
 		foreach my $v (split(/\s+/, $var)) {
