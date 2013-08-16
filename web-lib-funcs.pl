@@ -3004,7 +3004,7 @@ else {
 return $main::file_cache{$realfile};
 }
 
-=head2 flush_file_lines([file], [eol])
+=head2 flush_file_lines([file], [eol], [ignore-unloaded])
 
 Write out to a file previously read by read_file_lines to disk (except
 for those marked readonly). The parameters are :
@@ -3019,8 +3019,14 @@ sub flush_file_lines
 my @files;
 if ($_[0]) {
 	local $trans = &translate_filename($_[0]);
-	$main::file_cache{$trans} ||
-		&error("flush_file_lines called on non-loaded file $trans");
+	if (!$main::file_cache{$trans}) {
+		if ($_[2]) {
+			return 0;
+			}
+		else {
+			&error("flush_file_lines called on non-loaded file $trans");
+			}
+		}
 	push(@files, $trans);
 	}
 else {
@@ -3040,6 +3046,7 @@ foreach my $f (@files) {
 	delete($main::file_cache{$f});
 	delete($main::file_cache_noflush{$f});
         }
+return scalar(@files);
 }
 
 =head2 unflush_file_lines(file)
