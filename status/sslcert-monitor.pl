@@ -17,6 +17,13 @@ if ($_[0]->{'url'}) {
 		     " -port ".quotemeta($port)." </dev/null 2>&1";
 	local $out = &backquote_with_timeout($cmd, 10);
 	if ($?) {
+		# Try again without -servername, as some openssl versions
+		# don't support it
+		$cmd = "openssl s_client -host ".quotemeta($host).
+		       " -port ".quotemeta($port)." </dev/null 2>&1";
+		$out = &backquote_with_timeout($cmd, 10);
+		}
+	if ($?) {
 		# Connection failed
 		return { 'up' => -1,
 			 'desc' => $text{'sslcert_edown'} };
