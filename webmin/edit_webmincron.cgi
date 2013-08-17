@@ -27,7 +27,8 @@ if (@wcrons) {
 	foreach my $w (@wcrons) {
 		my %minfo = &get_module_info($w->{'module'});
 		print &ui_checked_columns_row([
-			$minfo{'desc'} || $w->{'module'},
+			"<a href='view_webmincron.cgi?id=$w->{'id'}'>".
+			  ($minfo{'desc'} || $w->{'module'})."</a>",
 			$w->{'func'},
 			join(" ", @{$w->{'args'}}),
 			&cron::when_text($w, 1),

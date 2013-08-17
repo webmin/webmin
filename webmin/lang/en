@@ -1008,5 +1008,11 @@ webmincron_rerr=Failed to run delete scheduled functions
 webmincron_running=Running function $2 in $1 ..
 webmincron_failed=.. failed : $1
 webmincron_done=.. done
+webmincron_return=list of scheduled functions
+webmincron_header=Scheduled Function Details
+webmincron_egone=Scheduled function does not exist!
+webmincron_when0=Regular interval
+webmincron_when1=Specific times
+wcron_secs=seconds
 
 __norefs=1
