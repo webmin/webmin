@@ -4,19 +4,27 @@
 use POSIX;
 chop($system_arch = `uname -m`);
 
-if (-e "/usr/sbin/pkg") {
-  # check whether the new pkg manager is available and use that.
-  $pkg_info    = "pkg info";
-  $pkg_add     = "pkg add";
-  $pkg_delete  = "pkg delete";
-} else {
-  # If not, default to the previous pkg manager tools
-  $pkg_info    = "pkg_info";
-  $pkg_add     = "pkg_add";
-  $pkg_delete  = "pkg_delete";
-}
+if (&use_pkg_ng()) {
+	# check whether the new pkg manager is available and use that.
+	$pkg_info    = "pkg info";
+	$pkg_add     = "pkg add";
+	$pkg_delete  = "pkg delete";
+	}
+else {
+	# If not, default to the previous pkg manager tools
+	$pkg_info    = "pkg_info";
+	$pkg_add     = "pkg_add";
+	$pkg_delete  = "pkg_delete";
+	}
 
 $package_dir = "/var/db/pkg";
+
+sub use_pkg_ng
+{
+return 0 if (!-x "/usr/sbin/pkg");
+local @lines = &backquote_command("/usr/sbin/pkg info 2>/dev/null </dev/null");
+return @lines > 1 ? 1 : 0;
+}
 
 sub list_package_system_commands
 {
