@@ -8,7 +8,6 @@ if (!&foreign_check("webmincron")) {
 	&ui_print_endpage($text{'webmincron_emodule'});
 	}
 &foreign_require("webmincron");
-&foreign_require("cron");
 my @wcrons = &webmincron::list_webmin_crons();
 my ($wcron) = grep { $_->{'id'} eq $in{'id'} } @wcrons;
 $wcron || &error($text{'webmincron_egone'});
@@ -16,6 +15,7 @@ $wcron || &error($text{'webmincron_egone'});
 &ui_print_header(undef, $text{'webmincron_title'}, "");
 
 print &ui_form_start("save_webmincron.cgi", "post");
+print &ui_hidden("id", $in{'id'});
 print &ui_table_start($text{'webmincron_header'}, undef, 2);
 
 # Run from module
@@ -39,7 +39,7 @@ print &ui_table_row($text{'webmincron_when'},
 	&ui_radio_table("whenmode", $wcron->{'interval'} ? 0 : 1,
 			[ [ 0, $text{'webmincron_when0'},
 			    &ui_textbox("interval", $wcron->{'interval'}, 5)." ".
-			    $text{'wcron_secs'} ],
+			    $text{'webmincron_secs'} ],
 			  [ 1, $text{'webmincron_when1'},
 			    &webmincron::show_times_input($wcron) ] ]));
 

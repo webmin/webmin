@@ -653,6 +653,8 @@ log_sendmail=Changed mail sending options
 log_debug=Changed debugging log file options
 log_delete_webmincron=Deleted $1 scheduled functions
 log_run_webmincron=Ran $1 scheduled functions
+log_save_webmincron=Updated scheduled function in module $1
+log_onedelete_webmincron=Deleted scheduled function in module $1
 
 themes_title=Webmin Themes
 themes_desc=Themes control the appearance of the Webmin user interface, including icons, colours, backgrounds and the layout of pages. The selection box below can be used to choose one of the themes installed on your system.
@@ -1013,6 +1015,8 @@ webmincron_header=Scheduled Function Details
 webmincron_egone=Scheduled function does not exist!
 webmincron_when0=Regular interval
 webmincron_when1=Specific times
-wcron_secs=seconds
+webmincron_secs=seconds
+webmincron_err=Failed to save scheduled function
+webmincron_einterval=Interval must be a number of seconds greater than zero
 
 __norefs=1
