@@ -302,6 +302,10 @@ sub delete_package
 local ($name, $in, $ver) = @_;
 local $qm = quotemeta($name.($ver ? '='.$ver : '>=0'));
 local $out = &backquote_logged("$pkg_delete $qm 2>&1");
+if ($? && $ver) {
+	$qm = quotemeta($name..'-'.$ver);
+	$out = &backquote_logged("$pkg_delete $qm 2>&1");
+	}
 if ($?) { return "<pre>$out</pre>"; }
 return undef;
 }
