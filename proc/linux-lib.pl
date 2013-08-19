@@ -228,7 +228,7 @@ sub get_memory_info
 {
 local %m;
 local $memburst;
-if (open(BEAN, "/proc/user_beancounters")) {
+if (&running_in_openvz() && open(BEAN, "/proc/user_beancounters")) {
 	# If we are running under Virtuozzo, there may be a limit on memory
 	# use in force that is less than the real system's memory. Or it may be
 	# a higher 'burstable' limit. Use this, unless it is unreasonably
@@ -242,6 +242,7 @@ if (open(BEAN, "/proc/user_beancounters")) {
 		if (/privvmpages\s+(\d+)\s+(\d+)\s+(\d+)/ &&
                     $3 < 1024*1024*1024*1024) {
 			$memburst = $3 * $pagesize / 1024;
+			last;
 			}
 		}
 	close(BEAN);
