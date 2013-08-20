@@ -67,6 +67,7 @@ bifc_err3=Kunne ikke aktivere grensesnitt
 bifc_err4=Kunne ikke deaktivere grensesnitt
 bifc_evirt=Manglende eller ugyldig nummer for virtuelt grensesnitt
 bifc_evirtdup=Det virtuelle grensesnittet $1 finnes allerede
+bifc_nobridge=&lt;Ingen&gt;
 bonding_add=Legg til et nytt bonding grensesnitt.
 bonding_create=Opprett binding grensesnitt
 bonding_downdelay=Downdelay

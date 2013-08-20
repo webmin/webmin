@@ -1,0 +1,7 @@
+config_dir=Shorewall konfigurasjonskatalog,0
+shorewall=Stil til shorewall kommando,0
+actions=Standard handlingsfiler,9,40,5,\t
+macros=Katalog for makro-filer,0
+before_apply_cmd=Kommando som skal kj&#248;res f&#248;r konfigurasjon tas i bruk,3,Ingen
+after_apply_cmd=Kommando som skal kj&#248;res etter at konfigurasjon er tatt i bruk,3,Ingen
+display_zone_descriptions=Vis noen beskrivelser i regelfil?,1,0-Nei,1-Ja
