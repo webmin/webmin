@@ -1,0 +1,69 @@
+<body bgcolor=#ffffff>
+<title>Tidsplanlagte kommandoer og jobber</title>
+<center><img src="images/cron.gif"></center><br>
+<h2><i>Denne hjelpesiden er ufullstendig</i></h2>
+<hr>
+<h3>Introduksjon</h3>
+This module can be used to setup commands to be run automatically at
+scheduled times. It uses the standard Unix <tt>cron</tt> daemon,
+which can run commands as various users at selected minutes, hours, days
+of the month, days of the week and months of the year. Every job is owned
+by a user, and when executed runs with the permissions of that user. <p>
+
+The module's main page lists all the known scheduled jobs, grouped by the
+user to run as. Some systems will have jobs that are part of the
+operating system, owned by users like <tt>root</tt> or <tt>sys</tt>.
+There may also be jobs created by users on your system using the
+<tt>crontab</tt> command, owned by the users who created them. <p>
+
+<hr>
+<h3>Opprett en ny tidsplanlagt jobb</h3>
+To create a new job, click on the <tt>Create new Scheduled Job</tt> below
+the list of existing jobs. This will display a form for entering the
+following parameters :
+	<ul>
+	<li><b>User to run as</b><br>
+	    The login name of the Unix users the job will be run as. <p>
+	<li><b>Active?</b><br>
+	    If a job is not active, it will still be displayed in the list
+	    of known jobs, but will not be run on schedule. <p>
+	<li><b>Command</b><br>
+	    The actual Unix command to run at the schedules time. This can
+	    be any command that you would type at the command line. <p>
+	<li><b>Input to command</b><br>
+	    If this field is not empty, then whatever you enter will be
+	    provided as input to the command when it is run. For example,
+	    if the command was <tt>mail foo@bar.com</tt> and the input
+	    <tt>hello world</tt>, then the input text would be emailed to
+	    <tt>foo@bar.com</tt>. <p>
+	<li><b>Times to run</b><br>
+	    The times when a command is run are chosen by specifying the
+	    minutes, hours, days of the month, months of the year and
+	    days of week to run. For each of these you can either choose
+	    <tt>All</tt>, or select the times when the command should be
+	    run. <p>
+
+	    For example, if you chose 5 for the hour and tuesday for the
+	    day of the week then the command would be run every minute from
+	    5:00am to 5:59am on tuesdays. <br>
+	    Alternatively, if you chose 30 for the minute and 14 for the hour,
+	    then the command would be run every day at 2:30pm. <p>
+	</ul><p>
+Once you have filled in the form, click on the <tt>Create</tt> button on
+the bottom on the page. The new job will take effect immediately. <p>
+
+<hr>
+<h3>Editing an Existing Scheduled Job</h3>
+To edit an existing job, click on the command from the list of jobs
+on the main page. The form for editing an existing job is the same as
+the form for creating a new job, described above. One you have made
+whatever changes are needed, click on the <tt>Save</tt> button at
+the bottom of the page. <p>
+
+To delete a job, click on the <tt>Delete</tt> button at the bottom
+of the job editing form. This will immediately delete the job without
+asking for confirmation. <p>
+
+<hr>
+<a href="/"><img alt="<-" align=middle border=0 src=/images/left.gif></a>
+&nbsp;&nbsp;<a href="">Return to module</a><p>

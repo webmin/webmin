@@ -3,6 +3,7 @@ view_condition=Vis betingelse i regelliste?,1,1-Ja,0-Nei
 view_comment=Vis kommentarer i regelliste?1,1-Ja,0-Nei
 comment_mod=Lagre kommentarer som,1,0-# kommentarer i lagringsfil,1-&#45;&#45;kommentar innstilling
 cluster_mode=Oppdater klynge-tjenere,1,0-N&#229;r en endring er gjort,1-N&#229;r konfigurasjonen tas i bruk
+force_init=Start alltid brannmur fra init-script p&#229; Debian,1,1-Ja,0-Nei
 before_cmd=Kommando som kj&#248;res f&#248;r endrnig av regler,3,Ingen
 after_cmd=Kommando som kj&#248;res etter endrnig av regler,3,Ingen
 before_apply_cmd=Kommando som kj&#248;res f&#248;r konfigurasjon tas i bruk,3,Ingen

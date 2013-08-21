@@ -2,6 +2,7 @@ __norefs=1
 index_all=&lt;Alle verter&gt;
 index_clear=Fjern historikk
 index_cmd=Kommando som skal kj&#248;res
+index_edit=Rediger forrige
 index_group=Medlemmer i $1
 index_old=eller
 index_return=modulindeks
