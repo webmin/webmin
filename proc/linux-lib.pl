@@ -266,6 +266,7 @@ elsif ($memburst && $memburst < $m{'memtotal'}) {
 	}
 elsif ($memburst && $memburst == $m{'memtotal'}) {
 	# Same as actual RAM
+	$memtotal = $memburst;
 	$memburst = undef;
 	}
 elsif (!$memburst) {
