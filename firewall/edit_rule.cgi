@@ -159,7 +159,7 @@ if (($table->{'name'} eq 'nat' && $rule->{'chain'} ne 'PREROUTING' &&
 	print &ui_table_row($text{'edit_snat'},
 		&ui_radio("snatdef", $sipfrom eq "" ? 1 : 0,
 			  [ [ 1, $text{'default'} ],
-			    [ 0, &text('edit_snatip',
+			    [ 0, &text('edit_dnatip',
 				   &ui_textbox("sipfrom", $sipfrom, 15),
 				   &ui_textbox("sipto", $sipto, 15))." ".
 				 &text('edit_prange',
