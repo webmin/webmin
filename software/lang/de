@@ -138,7 +138,7 @@ file_owner=Besitzer
 file_pack=Paket
 file_path=Pfad
 file_perms=Rechte
-file_size=Gr&ouml;&szlig;e
+file_size=Gr&#246;&#223;e
 file_title=Dateiinformationen
 file_type=Typ
 find_desc=Beschreibung
@@ -155,9 +155,9 @@ hpux_reinstall_files=Neuinstalliere Dateien?
 hpux_reinstall_files_use_cksum=Neuinstalliere Dateien mit checksum?
 hpux_root=Root Verzeichnis
 index_all=Alle Pakete
-index_close=Alle schlie&szlig;en
+index_close=Alle schlie&#223;en.
 index_epackagecmd=Das $1 Paketsystem ben&#246;tigt den $2 Befehl
-index_eupdatecheck=Das ausgew&#228;hlte Update-System ist nicht g&#252;ltig: $1.<br>Sie m&#252;ssen sich eine andere Update-Methode auf der <a href='$2'>Modulkonfiguration</a> Seite w&#228;hlen.
+index_eupdatecheck=Das ausgew&#228;hlte Update-System ist nicht g&#252;ltig : $1.<br>Sie m&#252;ssen sich eine andere Update-Methode auf der <a href='$2'>Modulkonfiguration</a> Seite w&#228;hlen.
 index_eupdatecmd=Das $1 Update-System erfordert den $2 Befehl
 index_ftp=Von FTP- oder HTTP-URL
 index_ident=Datei identifizieren
@@ -214,7 +214,7 @@ log_install_rhn_l=Paket(e) $1 vom Redhat Netzwerk installiert
 log_upgrade_yum_l=Paket(e) $1 von YUM upgegraded
 log_urpmi_update=Verf&#252;gbare URPMI Pakete aktualisiert
 log_urpmi_upgrade=Installierte URPMI Pakete upgegraded
-missing_link=Das $2 Paket kann automatisch von Webmin installiert werden. <a href='$2'>Klicken Sie hier</a>, um es mit $3 herunterzuladen und zu installieren.
+missing_link=Das $1 Paket kann automatisch von Webmin installiert werden. <a href='$2'>Klicken Sie hier</a>, um es mit $3 herunterzuladen und zu installieren.
 msi_missing=Existiert nicht
 msi_size=Falsche Gr&#246;&#223;e
 msi_users=Mache neue Anwendung verf&#252;gbar f&#252;r
@@ -268,7 +268,7 @@ rpm_erpm=RPM $1 nicht gefunden : $2
 rpm_excludedocs=Dokumentation installieren?
 rpm_find=Suche rpmfind.net ..
 rpm_finddesc=Beschreibung
-rpm_finddistro=Beschreibung
+rpm_finddistro=Distribution
 rpm_findrpm=Paket Dateiname
 rpm_fsize=Dateigr&#246;&#223;e
 rpm_group=Gruppenzugeh&#246;rigkeit
@@ -279,7 +279,7 @@ rpm_mtime=Zeitpunkt der letzten &#196;nderung
 rpm_nodeps=Abh&auml;ngigkeiten ignorieren?
 rpm_none=Keine Pakete entsprechen Ihrer Suche.
 rpm_noscripts=F&uuml;hre Installations-Skripts aus?
-rpm_oldpackage=Ersetze neue Version mit alter?
+rpm_oldpackage=Ersetze neue Version mit Alte?
 rpm_perm=Rechte
 rpm_replacefiles=Dateien &uuml;berschreiben?
 rpm_replacepkgs=Paket &uuml;berschreiben?

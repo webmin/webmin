@@ -3,9 +3,9 @@ add_echeck=Auf dem Server $1 ist das Webmin-Modul f&#252;r den Konfigurationsaut
 add_err=Konnte Server nicht hinzuf&#252;gen.
 add_eversion=CFengine auf dem Server $1 ist Version $2, jedoch unterst&#252;tzt dieses Webmin Modul nur Version $3.
 add_gerr=Fehlgeschlagen die Gruppe hinzuzuf&#252;gen
-add_gmsg=F&#252;ge Server in Gruppe $1 zu ...
-add_msg=F&#252;ge $1 hinzu ...
-add_ok=F&#252;ge Server $1 ($2 $2) hinzu
+add_gmsg=F&#252;ge Server in Gruppe $1 zu ..
+add_msg=F&#252;ge $1 hinzu ..
+add_ok=F&#252;ge Server $1 ($2 $3) hinzu
 add_title=Server hinzuf&#252;gen
 cfd_ecmd=Die Configuration Engine daemon Befehl $1 wurde auf Ihrem System nicht gefunden. Vielleicht ist es nicht installiert, oder Ihre <a href='$2'>Modulkonfiguration</ a> ist falsch.
 cfd_none=Keine Einstellungen f&#252;r die Configuration Engine Daemon wurde noch erstellt.
@@ -213,7 +213,7 @@ log_stop=Daemon gestoppt
 push_domain=Domain-Namen
 push_ecmd=Der Konfigurations-Automat Entfernte-Ausf&#252;hrungs-Befehl $1 wurde nicht auf Ihrem System gefunden. Vielleicht ist es nicht installiert, oder Ihre <a href='$2'>Modulkonfiguration</a> ist falsch.
 push_edomain=Fehlender oder ung&#252;ltiger Domain-Namen
-push_ehost='$' ist kein g&#252;ltiger Hostname
+push_ehost='$1' ist kein g&#252;ltiger Hostname
 push_err=Fehlgeschlagen Server Optionen zu speichern
 push_ethis='$1' ist dieser Host!
 push_host=Client Hostname
