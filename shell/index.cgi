@@ -65,14 +65,33 @@ if (!$in{'clear'}) {
 							# programs get the right
 							# module, not this one!
 			if (&supports_users()) {
-				$out = &backquote_logged(
-				    &command_as_user($user, 0, $cmd)." 2>&1");
+				$cmd = &command_as_user($user, 0, $cmd)." 2>&1";
 				}
 			else {
-				$out = &backquote_logged("($cmd) 2>&1");
+				$cmd = "($cmd) 2>&1";
 				}
+			&open_execute_command(OUTPUT, $cmd, 1, 0);
+			$out = "";
+			$trunc = 0;
+			$total = 0;
+			while(<OUTPUT>) {
+				$total += length($_);
+				if ($config{'max_output'} &&
+				    length($out) < $config{'max_output'}) {
+					$out .= $_;
+					}
+				else {
+					$trunc = 1;
+					}
+				}
+			close(OUTPUT);
 			&reset_environment() if ($config{'clear_envs'});
 			$out = &html_escape($out, 1);
+			if ($trunc) {
+				$out .= "<i>".&text('index_trunced', 
+					&nice_size($config{'max_output'}),
+					&nice_size($total))."</i><p>\n";
+				}
 			$history .= $out;
 			}
 		@previous = &unique(@previous, $fullcmd);

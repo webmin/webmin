@@ -1,0 +1,2 @@
+---- Changes since 1.650 ----
+The output from commands is now limited to 100k by default, to reduce memory consumption in Webmin and in the browser if a large command is executed.

@@ -6,6 +6,7 @@ index_clearcmds=Clear commands
 index_desc=Enter a shell command to execute in the text field below. The <tt>cd</tt> command may be used to change directory for subsequent commands.
 index_pok=Execute previous command
 index_edit=Edit previous
+index_trunced=Total output of $2 was truncated at $1.
 
 acl_user=Execute commands as user
 acl_user_def=Current Webmin user
