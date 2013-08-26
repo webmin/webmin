@@ -195,13 +195,22 @@ if ($?) {
 return undef;
 }
 
-# delete_package(package)
+# delete_options(package)
+# Outputs HTML for package uninstall options
+sub delete_options
+{
+print "<b>$text{'delete_purge'}</b>\n";
+print &ui_yesno_radio("purge", 0),"<br>\n";
+}
+
+# delete_package(package, [&options], version)
 # Totally remove some package
 sub delete_package
 {
 local $qm = quotemeta($_[0]);
 $ENV{'DEBIAN_FRONTEND'} = 'noninteractive';
-local $out = &backquote_logged("dpkg --remove $qm 2>&1 </dev/null");
+local $flag = $_[1]->{'purge'} ? "--purge" : "--remove";
+local $out = &backquote_logged("dpkg $flag $qm 2>&1 </dev/null");
 if ($? || $out =~ /which isn.t installed/i) {
 	return "<pre>$out</pre>";
 	}
