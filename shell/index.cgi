@@ -70,27 +70,63 @@ if (!$in{'clear'}) {
 			else {
 				$cmd = "($cmd) 2>&1";
 				}
-			&open_execute_command(OUTPUT, $cmd, 1, 0);
+			$pid = &open_execute_command(OUTPUT, $cmd, 1, 0);
 			$out = "";
 			$trunc = 0;
 			$total = 0;
-			while(<OUTPUT>) {
-				$total += length($_);
+			$timedout = 0;
+			$start = time();
+			$max = $config{'max_runtime'};
+			while(1) {
+				$elapsed = time() - $start;
+				if ($config{'max_runtime'}) {
+					# Wait for some output, up to timeout
+					if ($elapsed >= $max) {
+						$timedout = 1;
+						last;
+						}
+					local $rmask;
+					vec($rmask, fileno(OUTPUT), 1) = 1;
+					$sel = select($rmask, undef, undef,
+					    $config{'max_runtime'} - $elapsed);
+					$elapsed = time() - $start;
+					if (!$sel || $sel < 0) {
+						# Select didn't find anything
+						if ($elapsed >= $max) {
+							$timedout = 1;
+							}
+						last;
+						}
+					}
+				local $buf;
+				$got = sysread(OUTPUT, $buf, 1024);
+				last if ($got <= 0);
+				$total += length($buf);
 				if ($config{'max_output'} &&
 				    length($out) < $config{'max_output'}) {
-					$out .= $_;
+					$out .= $buf;
 					}
 				else {
 					$trunc = 1;
 					}
 				}
+			if ($timedout && $pid) {
+				kill('TERM', $pid);
+				}
 			close(OUTPUT);
 			&reset_environment() if ($config{'clear_envs'});
+			if ($out && $out !~ /\n$/) {
+				$out .= "\n";
+				}
 			$out = &html_escape($out, 1);
 			if ($trunc) {
 				$out .= "<i>".&text('index_trunced', 
 					&nice_size($config{'max_output'}),
 					&nice_size($total))."</i><p>\n";
+				}
+			if ($timedout) {
+				$out .= "<i>".&text('index_timedout', 
+					$config{'max_runtime'})."</i><p>\n";
 				}
 			$history .= $out;
 			}
