@@ -1,1 +1,2 @@
 clear_envs=Pass Webmin environment variables to shell commands?,1,0-Yes,1-No
+max_output=Maximum output to capture from commands,0,10,,bytes
