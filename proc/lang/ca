@@ -11,6 +11,7 @@ index_return=a la llista de processos
 index_mem2=<b>Memòria real:</b> $1 total / $2 lliures
 index_mem3=<b>Memòria real:</b> $1 total / $2 lliures / $3 en cau
 index_swap2=<b>Àrea d'intercanvi:</b> $1 total / $2 lliures
+index_burst=<b>Memòria explotable:</b> $1 total
 index_load=<b>Càrrega mitjana de la CPU:</b> $1 (1 mins) , $2 (5 mins) , $3 (15 mins)
 index_loadname=Mitjanes de càrrega de la CPU:
 index_loadnums=$1 (1 mins) , $2 (5 mins) , $3 (15 mins)

@@ -281,8 +281,8 @@ lusers_domain=Domini de les adreces d'usuari
 luser_virtualmin=Obtingues el domini de Virtualmin
 lusers_from=Adreça From: del correu
 lusers_mass=Actualitza els Usuaris Seleccionats
-lusrs_cc=Fes també Cc: a
-lusers_nocc=No facis Cc
+lusrs_cc=Envia correu també a
+lusers_nocc=Ningú
 
 grace_seconds=Segons
 grace_minutes=Minuts

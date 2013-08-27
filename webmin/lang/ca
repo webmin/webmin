@@ -653,6 +653,8 @@ log_sendmail=S'han canviat les opcions d'enviament de correu
 log_debug=S'han canviat les opcions de depuració del fitxer de registre
 log_delete_webmincron=S'han suprimit $1 funcions planificades
 log_run_webmincron=S'han executat $1 funcions planificades
+log_save_webmincron=S'ha actualitzat la funció planificada al mòdul $1
+log_onedelete_webmincron=S'ha suprimit la funció planificada del mòdul $1
 
 themes_title=Temes Webmin
 themes_desc=Temes controla l'aparença de la interfície d'usuari de Webmin, incloent-hi les icones, els colors, els fons i la disposició de les pàgines. La caixa de selecció de sota es pot utilitzar per triar un dels temes instal·lats al sistema.
@@ -932,6 +934,8 @@ notify_updatemod=Mòdul
 notify_updatever=Versió
 notify_updatedesc=Arranja el problema
 notif_updateok=Instal·la Ara les Actualitzacions
+notif_reboot=Les actualitzacions recents de paquets (com ara una nova versió del kernel) requereixen reengegar per a a plicar-se completament.
+notif_rebootok=Reengega Ara
 
 status_title=Recol·lecció d'Estats en Segon Pla
 status_header=Configuració del treball de recol·lecció d'estats
@@ -947,6 +951,7 @@ sendmail_desc=Aquesta pàgina controla la forma d'enviar correus de Webmin, com a
 sendmail_header=Opcions d'enviament de correu
 sendmail_system=Servidor de correu local
 sendmail_smtp=Envia el correu utilitzant
+sendmail_port=al port
 sendmail_smtp0=Ordre del servidor de correu local
 sendmail_smtp1=Via SMTP al servidor de correu local
 sendmail_smtp2=Via SMTP a un servidor de correu remot
@@ -960,6 +965,7 @@ sendmail_fromdef=Per defecte ($1)
 sendmail_fromaddr=Adreça
 sendmail_err=No s'han pogut desar les opcions d'enviament
 sendmail_esmtp=Hi falta el nom de host del servidor SMTP p bé no es pot resoldre
+sendmail_eport=Hi falta el port SMTP o bé no és numèric
 sendmail_elogin=Hi falta l'usuari del servidor SMTP
 sendmail_esasl=No es pot activar l'autenticació SMTP si no s'instal·la el mòdul Perl <a href=$1>$2</a>.
 sendmail_efrom=Hi falta l'adreça origen o bé no està ben formada
@@ -1004,4 +1010,13 @@ webmincron_rerr=No s'han pogut executar les funcions seleccionades
 webmincron_running=S'està executant la funció $2 a $1...
 webmincron_failed=...ha fallat: $1
 webmincron_done=...fet
+webmincron_return=a la llista de funcions planificades
+webmincron_header=Detalls de la Funció Planificada
+webmincron_egone=La funció planificada no existeix!
+webmincron_when0=Interval regular
+webmincron_when1=Hores específiques
+webmincron_secs=segons
+webmincron_err=No s'ha pogut desar la funció planificada
+webmincron_einterval=L'interval ha de ser un nombre de segons més gran que zero
+
 __norefs=1
