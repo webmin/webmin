@@ -41,6 +41,7 @@ index_mins=minuts
 index_astart=No enviïs autorespostes abans de
 index_aend=No enviïs autorespostes després de
 index_charset=Joc de caràcters del missatge d'autoresposta
+index_subject=Assumpte del missatge d'autoresposta
 index_nowebmin=Aquest mòdul és per utilitzar només a Usermin. Si està visible a Webmin, el tema que estàs utilitzant és incomplet.
 
 edit_title1=Creació de Filtre
@@ -67,8 +68,11 @@ edit_continue=Continua amb les altres regles de filtratge, fins i tot després d'
 edit_amode6=Envia una resposta automàtica
 edit_amode7=Desa'l a una nova carpeta anomenada
 edit_nobounce=Suprimeix el reenviament de missatges rebotats
+edit_apply=Mostra el Correu Coincident de la Carpeta:
+edit_move=Aplica-ho al Correu de la Carpeta:
 
 save_err=No s'ha pogut desar el filtre
+save_egone=El filtre ja no existeix!
 save_econdheader=Hi falta la capçalera de correu o bé és invàlida
 save_econdlevel=La puntuació mínima de spam ha de ser un enter més gran de zero
 save_esmall=Hi falta la mida màxima del correu o bé és invàlida
@@ -104,6 +108,7 @@ auto_title=Resposta Automàtica de Correu
 auto_header=Opcions de resposta automàtica de correu
 auto_enabled=Resposta automàtica activada
 auto_reply=Missatge de resposta
+auto_subject=Assumpte del missatge
 auto_charset=Joc de caràcters del missatge
 auto_charsetdef=De l'idioma actual
 auto_charsetother=Un altre joc de caràcters
@@ -116,4 +121,16 @@ forward_enabled=Reenviament de correu activat
 forward_to=Reenvia a les adreces
 forward_cont=Lliura'l també normalment
 forward_err=No s'ha pogut desar el reenviament de correu
+
+move_err=No s'ha pogut aplicar el filtre
+move_esrc=La carpeta origen $1 no existeix!
+move_edest=La carpeta de destí $1 no existeix!
+move_esame=La carpeta origen i desti són la mateixa
+move_title=Aplica el Filtre
+move_finding=S'estan buscant els missatges que coincideixen amb el filtre a $1...
+move_none=...no se n'ha trobat cap!
+move_found=...s'han trobat $1 missatges
+move_moving=S'estan desplaçant $1 missatges a $2...
+move_done=...fet
+
 __norefs=1
