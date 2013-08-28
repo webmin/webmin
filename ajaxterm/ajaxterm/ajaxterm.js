@@ -234,6 +234,12 @@ ajaxterm.Terminal_ctor=function(id,width,height) {
 	}
 	function keydown(ev) {
 		if (!ev) var ev=window.event;
+		if (ev.keyCode == 8 || ev.keyCode == 27 || ev.keyCode == 17 ||
+                    ev.ctrlKey) {
+			// In chrome, keypress isn't called for backspace,
+			// escape or ctrl-something
+			return keypress(ev);
+			}
 		if (ie) {
 //			s="kd keyCode="+ev.keyCode+" which="+ev.which+" shiftKey="+ev.shiftKey+" ctrlKey="+ev.ctrlKey+" altKey="+ev.altKey;
 //			debug(s);
