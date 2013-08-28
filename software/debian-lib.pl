@@ -201,6 +201,11 @@ sub delete_options
 {
 print "<b>$text{'delete_purge'}</b>\n";
 print &ui_yesno_radio("purge", 0),"<br>\n";
+
+if ($update_system eq "apt") {
+	print "<b>$text{'delete_depstoo'}</b>\n";
+	print &ui_yesno_radio("depstoo", 0),"<br>\n";
+	}
 }
 
 # delete_package(package, [&options], version)
@@ -209,8 +214,17 @@ sub delete_package
 {
 local $qm = quotemeta($_[0]);
 $ENV{'DEBIAN_FRONTEND'} = 'noninteractive';
-local $flag = $_[1]->{'purge'} ? "--purge" : "--remove";
-local $out = &backquote_logged("dpkg $flag $qm 2>&1 </dev/null");
+local $out;
+if ($_[1]->{'depstoo'}) {
+	# Use apt-get
+	local $flag = $_[1]->{'purge'} ? "--purge" : "";
+	$out = &backquote_logged("apt-get autoremove $flag $qm 2>&1 </dev/null");
+	}
+else {
+	# Use dpkg command
+	local $flag = $_[1]->{'purge'} ? "--purge" : "--remove";
+	$out = &backquote_logged("dpkg $flag $qm 2>&1 </dev/null");
+	}
 if ($? || $out =~ /which isn.t installed/i) {
 	return "<pre>$out</pre>";
 	}
