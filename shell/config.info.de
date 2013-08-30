@@ -1,0 +1,2 @@
+clear_envs=Leite Webmin Umgebungsvariablen an Shell&#45;Befehle weiter?,1,0-Ja,1-Nein
+max_output=Maximales Output von Befehlen zum aufnehmen,0,10,,bytes
