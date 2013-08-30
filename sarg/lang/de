@@ -128,7 +128,7 @@ sched_esfile=Kein Squid Log-Datei auf dem <a href='$1'>Log Quelle und Bericht-Zi
 sched_header=Geplante Reporting-Optionen
 sched_rall=Alle Aufzeichnungen in Log Datei
 sched_range=Erzeuge Bericht f&#252;r Datumsbereich
-sched_rsel=Jene von $1 bis $2 days
+sched_rsel=Jene von $1 bis $2 Tage
 sched_sched=Geplanten Bericht aktiviert?
 sched_title=Geplante Bericht Generation
 sched_yes=Ja, zu ausgew&#228;hlten Zeiten unten ..
