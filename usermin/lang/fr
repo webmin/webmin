@@ -85,7 +85,6 @@ dav_users0=Utilisateurs et les groupes &#233;num&#233;r&#233;s ci-dessous ..
 dav_users1=Tous les utilisateurs
 defacl_desc=Cette page vous permet de configurer diverses options de contr&#244;le d'acc&#232;s qui s'appliquent aux modules et utilisateurs Usermin. Ces options sont similaires &#224; celles qui existent pour l'ACL globale de chaque utilisateur dans le module Utilisateurs Webmin.
 defacl_err=Impossible d'enregister les options de contr&#244;le d'acc&#232;s
-defacl_eversion=La modification des options de contr&#244;le d'acc&#232;s Usermin n'est prise en charge que dans les versions 0.76 et sup&#233;rieures de Usermin.
 defacl_header=Options de contr&#244;le d'acc&#232;s des utilisateurs Usermin
 defacl_title=Options de contr&#244;le d'acc&#232;s
 delete_desc1=$1 (Clone de $2)

@@ -158,7 +158,6 @@ users_eversion=使用者和群組進入控制只支援 Usermin 版本 0.76 或更高
 defacl_title=進入控制選項
 defacl_desc=此頁可讓你設定不同的進入控制來套用到Usermin 模組和使用者，此選項對使用者的權限小於在 Webmin 使用者模組中的Global ACL 。
 defacl_header=Usermin使用者進入控制選項
-defacl_eversion=編輯 Usermin 進入控制選項只支援 Usermin 版本 0.76 或更高
 defacl_err=儲存進入控制選項失敗
 
 install_err1=無法從 $1 安裝模組

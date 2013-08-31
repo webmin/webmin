@@ -89,7 +89,6 @@ dav_users0=Brukere og grupper angitt nedenfor ..
 dav_users1=Alle brukere
 defacl_desc=Her kan du konfigurere forskjellige tilgangskontroll innstillinger som gjelder for Usermin moduler og brukere. Disse innstillingene er lik de du finne i Global ACL for hver bruker i modulen Webmin Brukere.
 defacl_err=Kunne ikke lagre innstillinger for tilgangskontroll
-defacl_eversion=Redigering av Usermin tilgangskontroll innstillinger st&#248;ttes bare i Usermin versjon 0.76 og nyere.
 defacl_header=Tilgangskontroll innstillinger for Usermin brukere
 defacl_title=Innstillinger for tilgangskontroll
 delete_desc1=$1 (Klone av $2)
