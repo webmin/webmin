@@ -46,13 +46,13 @@ if ($tconfig{'inframe'}) {
 
 print "<center>\n";
 if (defined($in{'failed'})) {
-	print "<h3>$text{'session_failed'}</h3><p>\n";
+	print "<h3>$text{'session_failed'}</h3><p></p>\n";
 	}
 elsif ($in{'logout'}) {
-	print "<h3>$text{'session_logout'}</h3><p>\n";
+	print "<h3>$text{'session_logout'}</h3><p></p>\n";
 	}
 elsif ($in{'timed_out'}) {
-	print "<h3>",&text('session_timed_out', int($in{'timed_out'}/60)),"</h3><p>\n";
+	print "<h3>",&text('session_timed_out', int($in{'timed_out'}/60)),"</h3><p></p>\n";
 	}
 print "$text{'session_prefix'}\n";
 
