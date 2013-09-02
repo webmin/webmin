@@ -55,6 +55,7 @@ else {
 		foreach $f (@files) {
 			$f =~ /^\/\S+$/ || &error($text{'save_efile'});
 			}
+		@files || &error($text{'save_enofiles'});
 		$in{'file'} =~ s/\r//g;
 		$log->{'name'} = [ split(/\n/, $in{'file'}) ];
 		}

@@ -80,6 +80,7 @@ save_emailto=Missing email address for rotated logs
 save_eerrors=Missing email address for error messages
 save_epre=Pre-rotation script cannot contain an <tt>endscript</tt> or <tt>endrotate</tt> line
 save_epost=Post-rotation script cannot contain an <tt>endscript</tt> or <tt>endrotate</tt> line
+save_enofiles=No files to rotate entered
 
 log_modify_sched=Changed log rotation Cron job
 log_create_sched=Created log rotation Cron job
