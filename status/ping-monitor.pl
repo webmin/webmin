@@ -32,9 +32,20 @@ if ($config{'pinger'} || $ipv6) {
 	else {
 		$cmd = $config{'pinger'};
 		}
-	local $rv = system("$cmd ".quotemeta($_[0]->{'host'}).
-			   " >/dev/null 2>&1 </dev/null");
-	return { 'up' => $rv ? 0 : 1 };
+	local $rv;
+	eval {
+		local $sig{'ALRM'} = sub { die "timeout" };
+		alarm($wait + 1);
+		$rv = system("$cmd ".quotemeta($_[0]->{'host'}).
+			     " >/dev/null 2>&1 </dev/null");
+		alarm(0);
+		};
+	if ($@) {
+		return { 'up' => 0 };
+		}
+	else {
+		return { 'up' => $rv ? 0 : 1 };
+		}
 	}
 else {
 	# Use builtin code
