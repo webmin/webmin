@@ -1873,7 +1873,7 @@ sub put_miniserv_config
 	    $_[0]);
 }
 
-=head2 restart_miniserv([nowait])
+=head2 restart_miniserv([nowait], [ignore-errors])
 
 Kill the old miniserv process and re-start it, then optionally waits for
 it to restart. This will apply all configuration settings.
@@ -1881,7 +1881,7 @@ it to restart. This will apply all configuration settings.
 =cut
 sub restart_miniserv
 {
-my ($nowait) = @_;
+my ($nowait, $ignore) = @_;
 return undef if (&is_readonly_mode());
 my %miniserv;
 &get_miniserv_config(\%miniserv) || return;
@@ -1901,24 +1901,27 @@ if ($gconfig{'os_type'} ne 'windows') {
 	if (!$pid || !kill(0, $pid)) {
 		if (!open(PID, $miniserv{'pidfile'})) {
 			print STDERR "PID file $miniserv{'pidfile'} does ",
-				     "not exist\n";
+				     "not exist\n" if (!$ignore);
 			return;
 			}
 		chop($pid = <PID>);
 		close(PID);
 		if (!$pid) {
-			print STDERR "Invalid PID file $miniserv{'pidfile'}\n";
+			print STDERR "Invalid PID file $miniserv{'pidfile'}\n"
+				if (!$ignore);
 			return;
 			}
 		if (!kill(0, $pid)) {
 			print STDERR "PID $pid from file $miniserv{'pidfile'} ",
-			             "is not valid\n";
+			             "is not valid\n" if (!$ignore);
 			return;
 			}
 		}
 
 	# Just signal miniserv to restart
-	&kill_logged('HUP', $pid) || &error("Incorrect Webmin PID $pid");
+	if (!&kill_logged('HUP', $pid)) {
+		&error("Incorrect Webmin PID $pid") if (!$ignore);
+		}
 
 	# Wait till new PID is written, indicating a restart
 	for($i=0; $i<60; $i++) {
@@ -1926,7 +1929,7 @@ if ($gconfig{'os_type'} ne 'windows') {
 		my @newst = stat($miniserv{'pidfile'});
 		last if ($newst[9] != $oldst[9]);
 		}
-	$i < 60 || &error("Webmin server did not write new PID file");
+	$i < 60 || $ignore || &error("Webmin server did not write new PID file");
 
 	## Totally kill the process and re-run it
 	#$SIG{'TERM'} = 'IGNORE';
@@ -1950,11 +1953,11 @@ if (!$nowait) {
 		close(STEST);
 		last if (!$err && ++$ok >= 2);
 		}
-	$i < 20 || &error("Failed to restart Webmin server!");
+	$i < 20 || $ignore || &error("Failed to restart Webmin server!");
 	}
 }
 
-=head2 reload_miniserv
+=head2 reload_miniserv([ignore-errors])
 
 Sends a USR1 signal to the miniserv process, telling it to read-read it's
 configuration files. Not all changes will be applied though, such as the 
@@ -1963,6 +1966,7 @@ IP addresses and ports to accept connections on.
 =cut
 sub reload_miniserv
 {
+my ($ignore) = @_;
 return undef if (&is_readonly_mode());
 my %miniserv;
 &get_miniserv_config(\%miniserv) || return;
@@ -1980,27 +1984,31 @@ if ($gconfig{'os_type'} ne 'windows') {
 	if (!$pid || !kill(0, $pid)) {
 		if (!open(PID, $miniserv{'pidfile'})) {
 			print STDERR "PID file $miniserv{'pidfile'} does ",
-				     "not exist\n";
+				     "not exist\n" if (!$ignore);
 			return;
 			}
 		chop($pid = <PID>);
 		close(PID);
 		if (!$pid) {
-			print STDERR "Invalid PID file $miniserv{'pidfile'}\n";
+			print STDERR "Invalid PID file $miniserv{'pidfile'}\n"
+				if (!$ignore);
 			return;
 			}
 		if (!kill(0, $pid)) {
 			print STDERR "PID $pid from file $miniserv{'pidfile'} ",
-			             "is not valid\n";
+			             "is not valid\n" if (!$ignore);
 			return;
 			}
 		}
-	&kill_logged('USR1', $pid) || &error("Incorrect Webmin PID $pid");
+	if (!&kill_logged('USR1', $pid)) {
+		&error("Incorrect Webmin PID $pid") if (!$ignore);
+		}
 
 	# Make sure this didn't kill Webmin!
 	sleep(1);
 	if (!kill(0, $pid)) {
-		print STDERR "USR1 signal killed Webmin - restarting\n";
+		print STDERR "USR1 signal killed Webmin - restarting\n"
+			if (!$ignore);
 		&system_logged("$config_directory/start >/dev/null 2>&1 </dev/null");
 		}
 	}
