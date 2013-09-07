@@ -120,3 +120,5 @@ Added a section to the Sending Email page to verify that the configured mail ser
 Added a setting to the Web Server Options page to control if redirects use just a path, or the full URL.
 ---- Changes since 1.640 ----
 Actions on the Webmin Scheduled Functions page can now be clicked on to change the time the function runs at.
+---- Changes since 1.650 ----
+Added an SSL option to use only ciphers with perfect forward secrecy.

@@ -50,11 +50,14 @@ print &ui_table_row($text{'ssl_honorcipherorder'},
 
 $clist = $miniserv{'ssl_cipher_list'};
 $cmode = !$clist ? 1 :
-	 $clist eq $webmin::strong_ssl_ciphers ? 2 : 0;
+	 $clist eq $webmin::strong_ssl_ciphers ? 2 :
+	 $clist eq $webmin::pfs_ssl_ciphers ? 3 :
+	 0;
 print &ui_table_row($text{'ssl_cipher_list'},
 	&ui_radio("cipher_list_def", $cmode,
 		  [ [ 1, $text{'ssl_auto'}."<br>" ],
 		    [ 2, $text{'ssl_strong'}."<br>" ],
+		    [ 3, $text{'ssl_pfs'}."<br>" ],
 		    [ 0, $text{'ssl_clist'}." ".
 			 &ui_textbox("cipher_list",
 				     $cmode == 0 ? $clist : "", 30) ] ]));
