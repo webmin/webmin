@@ -86,6 +86,7 @@ save_efile=Fehlender oder ung&#252;ltiger Dateiname
 save_emailto=Fehlende E-Mail-Adresse f&#252;r rotierte Logdateien
 save_emust1=Sie m&#252;ssen einen Kreationsmodus angeben, wenn Sie einen Kreationsbenutzer angeben.
 save_emust2=Sie m&#252;ssen einen Kreationsbenutzer angeben, denn Sie eine Kreationsgruppe angeben.
+save_enofiles=Keine Dateien zum rotieren eingegeben
 save_eolddirto=Fehlendes oder ung&#252;ltiges Verzeichnis f&#252;r alte rotierte Logdateien
 save_epost=Das Nach-Rotation-Skript darf keine <tt>endscript</tt>- oder <tt>endrotate</tt>-Zeile enthalten.
 save_epre=Das Vor-Rotation-Skript darf keine <tt>endscript</tt>- oder <tt>endrotate</tt>-Zeile enthalten.
