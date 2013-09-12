@@ -231,7 +231,8 @@ else {
 $cs = !$in{'new'} ? $r->{'charset'} :
       &get_charset() eq $default_charset ? undef : &get_charset();
 print &ui_table_row(
-	&ui_oneradio("amode", 6, $text{'edit_amode6'}, $amode == 6),
+	&ui_oneradio("amode", 6, $text{'edit_amode6'}, $amode == 6,
+		     "onClick='form.continue.checked = true'"),
 	&ui_textarea("reply", $filter->{'reply'}->{'autotext'}, 5, 60)."<br>".
 	"<table>\n".
 	$replyblock.
