@@ -2288,6 +2288,40 @@ $rv .= "</center>\n";
 return $rv;
 }
 
+=head2 ui_alert_box(text, class)
+
+Returns HTML for an alert box, with background color determined by class.
+
+Classes of alert:
+
+success - green
+info - blue
+warning - yellow
+danger - red
+
+=cut
+
+sub ui_alert_box
+{
+my ($text, $class) = @_;
+if (defined (&theme_ui_alert)) {
+    return &theme_ui_alert(@_);
+    }
+
+if ($class eq "success") { $color = "DFF0D8"; }
+elsif ($class eq "info") { $color = "D9EDF7"; }
+elsif ($class eq "warn") { $color = "FCF8E3"; }
+elsif ($class eq "danger") { $color = "F2DEDE"; }
+
+my $rv; 
+
+$rv .= "<table width=100%><tr bgcolor=$color><td align=center><p>\n";
+$rv .= "$text\n";
+$rv .= "</td></tr></table>\n";
+
+return $rv;
+}
+
 ####################### javascript functions
 
 =head2 js_disable_inputs(&disable-inputs, &enable-inputs, [tag])
