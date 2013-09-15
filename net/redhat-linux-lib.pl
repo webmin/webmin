@@ -739,19 +739,15 @@ return ( (map { "$net_scripts_dir/$_" } grep { /^ifcfg-/ } @f),
 # Returns a menu for all boot-time interfaces
 sub interface_sel
 {
-local $rv = "<select name=$_[0]>\n";
-$rv .= sprintf "<option value='' %s>&nbsp;\n",
-	$_[1] eq "" ? "selected" : "";
-$rv .= sprintf "<option value='*' %s>%s\n",
-	$_[1] eq "*" ? "selected" : "", $text{'routes_any'};
-@boot_interfaces_cache = &boot_interfaces() if (!@boot_interfaces_cache);
+local ($name, $value) = @_;
+local @opts = ( [ "", "&nbsp;" ],
+		[ "*", $text{'routes_any'} ] );
+@boot_interfaces_cache = sort { $a->{'fullname'} cmp $b->{'fullname'} }
+	&boot_interfaces() if (!@boot_interfaces_cache);
 foreach $b (@boot_interfaces_cache) {
-	next if ($b->{'virtual'} ne '');
-	$rv .= sprintf "<option value=%s %s>%s\n",
-	    $b->{'name'}, $b->{'name'} eq $_[1] ? "selected" : "", $b->{'name'};
+	push(@opts, [ $b->{'fullname'}, $b->{'fullname'} ]);
 	}
-$rv .= "</select>\n";
-return $rv;
+return &ui_select($name, $value, \@opts);
 }
 
 # apply_network()
