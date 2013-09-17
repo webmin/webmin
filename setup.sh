@@ -6,6 +6,8 @@
 # Find install directory
 LANG=
 export LANG
+LANGUAGE=
+export LANGUAGE
 cd `dirname $0`
 if [ -x /bin/pwd ]; then
 	wadir=`/bin/pwd`
