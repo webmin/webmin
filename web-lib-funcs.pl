@@ -6432,16 +6432,12 @@ if ($serv->{'fast'} || !$sn) {
 	elsif (!$fast_fh_cache{$sn}) {
 		# Open the connection by running fastrpc.cgi locally
 		pipe(RPCOUTr, RPCOUTw);
-		pipe(RPCERRr, RPCERRw);
 		if (!fork()) {
 			untie(*STDIN);
 			untie(*STDOUT);
-			untie(*STDERR);
 			open(STDOUT, ">&RPCOUTw");
-			open(STDERR, ">&RPCERRw");
 			close(STDIN);
 			close(RPCOUTr);
-			close(RPCERRr);
 			$| = 1;
 			$ENV{'REQUEST_METHOD'} = 'GET';
 			$ENV{'SCRIPT_NAME'} = '/fastrpc.cgi';
@@ -6465,7 +6461,6 @@ if ($serv->{'fast'} || !$sn) {
 				}
 			}
 		close(RPCOUTw);
-		close(RPCERRw);
 		my $line;
 		do {
 			($line = <RPCOUTr>) =~ tr/\r\n//d;
@@ -6473,14 +6468,12 @@ if ($serv->{'fast'} || !$sn) {
 		$line = <RPCOUTr>;
 		if ($line =~ /^0\s+(.*)/) {
 			close(RPCOUTr);
-			close(RPCERRr);
 			return &$main::remote_error_handler("RPC error : $2");
 			}
 		elsif ($line =~ /^1\s+(\S+)\s+(\S+)/) {
 			# Started ok .. connect and save SID
 			close(SOCK);
 			close(RPCOUTr);
-			close(RPCERRr);
 			my ($port, $sid, $error) = ($1, $2, undef);
 			&open_socket("localhost", $port, $sid, \$error);
 			return &$main::remote_error_handler("Failed to connect to fastrpc.cgi : $error") if ($error);
@@ -6493,10 +6486,6 @@ if ($serv->{'fast'} || !$sn) {
 				$line .= $_;
 				}
 			close(RPCOUTr);
-			while(<RPCERRr>) {
-				$line .= $_;
-				}
-			close(RPCERRr);
 			return &$main::remote_error_handler(
 				"Bad response from fastrpc.cgi : $line");
 			}
