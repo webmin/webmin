@@ -54,7 +54,7 @@ else {
 		push(@rlinks, "edit_recs.cgi?zone=$in{'zone'}&".
 			      "view=$in{'view'}&type=$rcodes[$i]");
 		push(@rtitles, ($text{"type_$rcodes[$i]"} || $rcodes[$i]).
-			       (defined(%rnum) ? " ($rnum{$rcodes[$i]})" : ""));
+			       (%rnum ? " ($rnum{$rcodes[$i]})" : ""));
 		push(@ricons, $is_extra{$rcodes[$i]} ?
 				"images/extra.gif" : "images/$rcodes[$i].gif");
 		}
@@ -188,13 +188,13 @@ my $rv;
 if ($_[0]) {
 	$rv .= &ui_columns_start([
 		$text{'master_type'},
-		defined(%rnum) ? ( $text{'master_records'} ) : ( )
+		%rnum ? ( $text{'master_records'} ) : ( )
 		], 100);
 	for(my $i=0; $_[$i]; $i++) {
 		local @cols = ( "<a href=\"edit_recs.cgi?".
 		      "zone=$in{'zone'}&view=$in{'view'}&type=$_[$i]\">".
 		      ($text{"recs_$_[$i]"} || $_[$i])."</a>" );
-		if (defined(%rnum)) {
+		if (%rnum) {
 			push(@cols, $rnum{$_[$i]});
 			}
 		$rv .= &ui_columns_row(\@cols);
