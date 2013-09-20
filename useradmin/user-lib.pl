@@ -1560,7 +1560,7 @@ if ($config{'passwd_prog'}) {
 		$out = &backquote_command("$config{'passwd_prog'} <$temp 2>&1");
 		}
 	if ($?) {
-		return $out;
+		return $out || $text{'usave_epasswd_cmd'};
 		}
 	}
 if ($config{'passwd_mindays'} && $uinfo ne "none") {
