@@ -1020,4 +1020,6 @@ webmincron_secs=seconds
 webmincron_err=Failed to save scheduled function
 webmincron_einterval=Interval must be a number of seconds greater than zero
 
+twofactor_title=Two-Factor Authentication
+
 __norefs=1

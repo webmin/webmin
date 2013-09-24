@@ -49,8 +49,6 @@ if ($access{'command'}) {
 else {
 	$job->{'command'} = $oldjob->{'command'};
 	}
-$job->{'comment'} = $in{'comment'};
-&unconvert_comment($job);
 
 if (&supports_users()) {
 	# Check if this user is allowed to execute cron jobs
@@ -64,6 +62,9 @@ if (defined($in{'range_def'})) {
 	&parse_range_input($job, \%in);
 	&unconvert_range($job);
 	}
+
+$job->{'comment'} = $in{'comment'};
+&unconvert_comment($job);
 
 # Check module access control
 &can_edit_user(\%access, $in{'user'}) ||
