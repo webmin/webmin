@@ -165,6 +165,15 @@ if ($access{'chcert'}) {
 		&ui_opt_textbox("cert", $user{'cert'}, 50, $text{'edit_none'}));
 	}
 
+# Two-factor details
+if ($user{'twofactor_provider'}) {
+	($prov) = grep { $_->[0] eq $user{'twofactor_provider'} }
+		       &webmin::list_twofactor_providers();
+	print &ui_table_row($text{'edit_twofactor'},
+		&text('edit_twofactorprov', "<i>$prov->[1]</i>",
+		      "<tt>$user{'twofactor_id'}</tt>"));
+	}
+
 if ($access{'lang'}) {
 	# Current language
 	print &ui_table_row($text{'edit_lang'},

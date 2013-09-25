@@ -4,7 +4,8 @@ index_modules=Modules
 index_create=Create a new Webmin user.
 index_rcreate=Create a new risk-level user.
 index_convert=Convert Unix To Webmin Users
-index_cert=Request an SSL certificate
+index_cert=Request an SSL Sertificate
+index_twofactor=Two-Factor Authentication
 index_certmsg=Click this button to request an SSL certificate that will allow you to securely login to Webmin without having to enter a username and password.
 index_return=user list
 index_none=None
@@ -48,6 +49,8 @@ edit_passold=Password was last changed $1 days ago
 edit_passtoday=Password was changed less than a day ago
 edit_modules=Modules
 edit_clone=Clone
+edit_twofactor=Two-factor authentication type
+edit_twofactorprov=Using provider $1 with ID $2
 edit_lang=Language
 edit_notabs=Categorise modules?
 edit_logout=Inactivity logout time
@@ -449,4 +452,14 @@ makedn_still=Some problems were found even after DN creation : $1
 schema_title=Download LDAP Schema
 schema_desc=Before Webmin can use an LDAP server to store users and groups it must be configured to use the schema below. This can typically be done by saving the schema definition in <tt>/etc/ldap/schema</tt> or <tt>/etc/openldap/schema</tt> as <tt>webmin.schema</tt>, then configuring the server to load that schema file.
 schema_download=Download schema file : <a href=$1>$1</a>
+
+twofactor_err=Failed to setup two-factor authentication
+twofactor_euser=Your Webmin user was not found!
+twofactor_title=Two-Factor Authentication
+twofactor_disable=Disable Two-Factor Authentication
+twofactor_already=Your Webmin login already has two-factor authentication enabled with provider $1 and account ID $2.
+twofactor_desc=This page allows you to enable two-factor authentication for your Webmin login using <a href='$2' target=_blank>$1</a>. Once active, an additional authentication token will be required when logging into Webmin.
+twofactor_enable=Enroll For Two-Factor Authentication
+twofactor_header=Two-factor authentication enrollment details
+
 __norefs=1

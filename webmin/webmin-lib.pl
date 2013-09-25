@@ -2163,10 +2163,51 @@ if ($tryerror) {
 	}
 }
 
+# list_twofactor_providers()
+# Returns a list of all supported providers, each of which is an array ref
+# containing an ID, name and URL for more info
 sub list_twofactor_providers
 {
 return ( [ 'authy', $text{'twofactor_authy'},
 	   'http://www.authy.com/' ] );
+}
+
+# show_twofactor_form_authy(&webmin-user)
+# Returns HTML for a form for enrolling for Authy two-factor
+sub show_twofactor_form_authy
+{
+my ($user) = @_;
+my $rv;
+$rv .= &ui_table_row($text{'twofactor_email'},
+	&ui_textbox("email", undef, 40));
+$rv .= &ui_table_row($text{'twofactor_country'},
+	&ui_textbox("country", undef, 3));
+$rv .= &ui_table_row($text{'twofactor_phone'},
+	&ui_textbox("phone", undef, 20));
+return $rv;
+}
+
+# parse_twofactor_form_authy(&in, &user)
+# Parses inputs from show_twofactor_form_authy, and returns a hash ref with enrollment
+# details on success, or an error message on failure.
+sub parse_twofactor_form_authy
+{
+my ($in, $user) = @_;
+$in->{'email'} =~ /^\S+\@\S+$/ || return $text{'twofactor_eemail'};
+$in->{'country'} =~ s/^\+//;
+$in->{'country'} =~ /^\d{1,3}$/ || return $text{'twofactor_ecountry'};
+$in->{'phone'} =~ /^[0-9\- ]+$/ || return $text{'twofactor_ephone'};
+return { 'email' => $in->{'email'},
+	 'country' => $in->{'country'},
+	 'phone' => $in->{'phone'} };
+}
+
+# enroll_twofactor_authy(&details, &user)
+# Attempts to enroll a user for Authy two-factor. Returns undef on success and sets
+# twofactor_id in &user, or an error message on failure.
+sub enroll_twofactor_authy
+{
+my ($details, $user) = @_;
 }
 
 1;
