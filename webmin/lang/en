@@ -1021,5 +1021,14 @@ webmincron_err=Failed to save scheduled function
 webmincron_einterval=Interval must be a number of seconds greater than zero
 
 twofactor_title=Two-Factor Authentication
+twofactor_header=Two-factor authentication sessions
+twofactor_provider=Authentication provider
+twofactor_none=None
+twofactor_apikey=Provider API key
+twofactor_desc=Two-factor authentication allows Webmin users to enable use of an additional authentication device when logging in, such as a one-time passcode generator. Users must individually enroll with the selected authentication provider after it is enabled on this page.
+twofactor_err=Failed to save two-factor authentication
+twofactor_eprovider=Invalid provider!
+twofactor_eapikey=Missing or invalid-looking API key
+twofactor_authy=Authy
 
 __norefs=1

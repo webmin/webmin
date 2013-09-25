@@ -2163,4 +2163,10 @@ if ($tryerror) {
 	}
 }
 
+sub list_twofactor_providers
+{
+return ( [ 'authy', $text{'twofactor_authy'},
+	   'http://www.authy.com/' ] );
+}
+
 1;
