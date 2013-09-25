@@ -409,7 +409,7 @@ return undef;
 
 # fetch_gpg_key(id)
 # Imports a key by ID from the configured keyserver. Returns 0 on success,
-# 1 on failure, 2 if there was no change, 3 if the import appeared to success
+# 1 on failure, 2 if there was no change, 3 if the import appeared to succeed
 # but the key isn't visible.
 sub fetch_gpg_key
 {
