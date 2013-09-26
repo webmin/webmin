@@ -230,6 +230,8 @@ log_pass=Changed password restrictions
 log_unix=Changed unix user authentication
 log_sync=Changed unix user synchronization
 log_sql=Changed user and group database
+log_twofactor=Enrolled user $1 with two-factor provider $2
+log_onefactor=Dis-enrolled user $1 for two-factor authentication
 
 gedit_ecannot=You are not allowed to edit groups
 gedit_title=Edit Webmin Group
@@ -461,5 +463,8 @@ twofactor_already=Your Webmin login already has two-factor authentication enable
 twofactor_desc=This page allows you to enable two-factor authentication for your Webmin login using <a href='$2' target=_blank>$1</a>. Once active, an additional authentication token will be required when logging into Webmin.
 twofactor_enable=Enroll For Two-Factor Authentication
 twofactor_header=Two-factor authentication enrollment details
+twofactor_enrolling=Enrolling for two-factor authentication with provider $1 ..
+twofactor_failed=.. enrollment failed : $1
+twofactor_done=.. complete. Your ID with this provider is $1.
 
 __norefs=1

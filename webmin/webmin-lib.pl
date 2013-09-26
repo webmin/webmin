@@ -2188,8 +2188,8 @@ return $rv;
 }
 
 # parse_twofactor_form_authy(&in, &user)
-# Parses inputs from show_twofactor_form_authy, and returns a hash ref with enrollment
-# details on success, or an error message on failure.
+# Parses inputs from show_twofactor_form_authy, and returns a hash ref with
+# enrollment details on success, or an error message on failure.
 sub parse_twofactor_form_authy
 {
 my ($in, $user) = @_;
@@ -2203,11 +2203,26 @@ return { 'email' => $in->{'email'},
 }
 
 # enroll_twofactor_authy(&details, &user)
-# Attempts to enroll a user for Authy two-factor. Returns undef on success and sets
-# twofactor_id in &user, or an error message on failure.
+# Attempts to enroll a user for Authy two-factor. Returns undef on success and
+# sets twofactor_id in &user, or an error message on failure.
 sub enroll_twofactor_authy
 {
 my ($details, $user) = @_;
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+my $host = $miniserv{'twofactor_test'} ? "sandbox-api.authy.com" : "api.authy.com";
+my $port = $miniserv{'twofactor_test'} ? 80 : 443;
+my $page = "/protected/xml/users/new?api_key=".$miniserv{'twofactor_apikey'};
+my $ssl = $miniserv{'twofactor_test'} ? 0 : 1;
+my $content = "user[email]=".&urlize($details->{'email'})."&".
+	      "user[country_code]=".&urlize($details->{'country'})."&".
+	      "user[cellphone]=".&urlize($details->{'phone'});
+my ($out, $err);
+&http_post($host, $port, $page, $content, \$out, \$err, undef, $ssl, undef,
+	   undef, 60, 0, 1);
+return $err if ($err);
+print STDERR $out;
+return undef;
 }
 
 1;

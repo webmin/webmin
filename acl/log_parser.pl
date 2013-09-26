@@ -51,6 +51,9 @@ elsif ($action eq 'cert') {
 elsif ($action eq 'switch') {
 	return &text('log_switch', "<tt>".&html_escape($object)."</tt>");
 	}
+elsif ($action eq 'twofactor') {
+	return &text('log_twofactor', $object, $p->{'provider'}, $p->{'id'});
+	}
 else {
 	return $text{'log_'.$action};
 	}

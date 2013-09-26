@@ -1026,6 +1026,7 @@ twofactor_header=Two-factor authentication sessions
 twofactor_provider=Authentication provider
 twofactor_none=None
 twofactor_apikey=Provider API key
+twofactor_test=Use provider's test mode?
 twofactor_desc=Two-factor authentication allows Webmin users to enable use of an additional authentication device when logging in, such as a one-time passcode generator. Users must individually enroll with the selected authentication provider after it is enabled on this page.
 twofactor_err=Failed to save two-factor authentication
 twofactor_eprovider=Invalid provider!

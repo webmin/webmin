@@ -22,6 +22,7 @@ if ($in{'twofactor_provider'}) {
 &get_miniserv_config(\%miniserv);
 $miniserv{'twofactor_provider'} = $in{'twofactor_provider'};
 $miniserv{'twofactor_apikey'} = $in{'twofactor_apikey'};
+$miniserv{'twofactor_test'} = $in{'twofactor_test'};
 
 &put_miniserv_config(\%miniserv);
 &unlock_file($ENV{'MINISERV_CONFIG'});

@@ -21,6 +21,10 @@ print ui_table_row($text{'twofactor_provider'},
 print ui_table_row($text{'twofactor_apikey'},
 	ui_textbox("twofactor_apikey", $miniserv{'twofactor_apikey'}, 40));
 
+# Test mode?
+print ui_table_row($text{'twofactor_test'},
+	ui_yesno_radio("twofactor_test", $miniserv{'twofactor_test'}));
+
 print ui_table_end();
 print ui_form_end([ [ "save", $text{'save'} ] ]);
 
