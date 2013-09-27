@@ -2244,13 +2244,59 @@ my ($out, $err);
 &http_post($host, $port, $page, $content, \$out, \$err, undef, $ssl, undef,
 	   undef, 60, 0, 1);
 return $err if ($err);
-if ($out =~ /<id[^>]+>([^<]+)<\/id>/) {
+if ($out =~ /<id[^>]*>([^<]+)<\/id>/i) {
 	$user->{'twofactor_id'} = $1;
 	return undef;
 	}
 else {
 	return &text('twofactor_eauthyenroll',
 		     "<pre>".&html_escape($out)."</pre>");
+	}
+}
+
+# validate_twofactor_authy(id, token)
+# Checks the validity of some token for a user ID
+sub validate_twofactor_authy
+{
+my ($id, $token) = @_;
+$id =~ /^\d+$/ || return $text{'twofactor_eauthyid'};
+$token =~ /^\d+$/ || return $text{'twofactor_eauthytoken'};
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+my $host = $miniserv{'twofactor_test'} ? "sandbox-api.authy.com"
+				       : "api.authy.com";
+my $port = $miniserv{'twofactor_test'} ? 80 : 443;
+my $page = "/protected/xml/verify/$token/$id?api_key=".
+	   &urlize($miniserv{'twofactor_apikey'});
+my $ssl = $miniserv{'twofactor_test'} ? 0 : 1;
+my ($out, $err);
+&http_download($host, $port, $page, \$out, \$err, undef, $ssl, undef, undef,
+	       60, 0, 1);
+if ($err && $err =~ /401/) {
+	# Token rejected
+	return $text{'twofactor_eauthyotp'};
+	}
+elsif ($err) {
+	# Some other error
+	return $err;
+	}
+elsif ($out && $out =~ /<success[^>]*>([^<]+)<\/success>/i) {
+	if (lc($1) eq "true") {
+		# Worked!
+		return undef;
+		}
+	elsif ($out =~ /<message[^>]*>([^<]+)<\/message>/i) {
+		# Failed, but with a message
+		return $1;
+		}
+	else {
+		# Failed, not sure why
+		return $out;
+		}
+	}
+else {
+	# Unknown output
+	return $out;
 	}
 }
 
