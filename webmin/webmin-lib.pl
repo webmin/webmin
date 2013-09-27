@@ -2172,6 +2172,27 @@ return ( [ 'authy', $text{'twofactor_authy'},
 	   'http://www.authy.com/' ] );
 }
 
+# validate_twofactor_apikey_authy(apikey, test-mode)
+# Check that an API key is valid
+sub validate_twofactor_apikey_authy
+{
+my ($key, $test) = @_;
+my $host = $test ? "sandbox-api.authy.com" : "api.authy.com";
+my $port = $test ? 80 : 443;
+my $page = "/protected/xml/app/details?api_key=".&urlize($key);
+my $ssl = $test ? 0 : 1;
+my ($out, $err);
+&http_download($host, $port, $page, \$out, \$err, undef, $ssl, undef, undef,
+	       60, 0, 1);
+if ($err =~ /401/) {
+	return $text{'twofactor_eauthykey'};
+	}
+elsif ($err) {
+	return &text('twofactor_eauthy', $err);
+	}
+return undef;
+}
+
 # show_twofactor_form_authy(&webmin-user)
 # Returns HTML for a form for enrolling for Authy two-factor
 sub show_twofactor_form_authy
@@ -2210,9 +2231,11 @@ sub enroll_twofactor_authy
 my ($details, $user) = @_;
 my %miniserv;
 &get_miniserv_config(\%miniserv);
-my $host = $miniserv{'twofactor_test'} ? "sandbox-api.authy.com" : "api.authy.com";
+my $host = $miniserv{'twofactor_test'} ? "sandbox-api.authy.com"
+				       : "api.authy.com";
 my $port = $miniserv{'twofactor_test'} ? 80 : 443;
-my $page = "/protected/xml/users/new?api_key=".$miniserv{'twofactor_apikey'};
+my $page = "/protected/xml/users/new?api_key=".
+	   &urlize($miniserv{'twofactor_apikey'});
 my $ssl = $miniserv{'twofactor_test'} ? 0 : 1;
 my $content = "user[email]=".&urlize($details->{'email'})."&".
 	      "user[country_code]=".&urlize($details->{'country'})."&".
@@ -2221,8 +2244,14 @@ my ($out, $err);
 &http_post($host, $port, $page, $content, \$out, \$err, undef, $ssl, undef,
 	   undef, 60, 0, 1);
 return $err if ($err);
-print STDERR $out;
-return undef;
+if ($out =~ /<id[^>]+>([^<]+)<\/id>/) {
+	$user->{'twofactor_id'} = $1;
+	return undef;
+	}
+else {
+	return &text('twofactor_eauthyenroll',
+		     "<pre>".&html_escape($out)."</pre>");
+	}
 }
 
 1;

@@ -1038,5 +1038,8 @@ twofactor_phone=Cellphone phone number
 twofactor_eemail=Missing or invalid email address - must be formatted like user@domain.com
 twofactor_ecountry=Missing or invalid country code - must be a number, like 65
 twofactor_ephone=Missing or invalid phone number - only digits, dashes and spaces are allowed
+twofactor_eauthykey=Authy API key is not valid, or is for the wrong mode
+twofactor_eauthy=Error validating API key with Authy : $1
+twofactor_eauthyenroll=Enrollment failed : $1
 
 __norefs=1

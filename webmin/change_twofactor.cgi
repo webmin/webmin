@@ -13,7 +13,8 @@ if ($in{'twofactor_provider'}) {
 	$in{'twofactor_apikey'} =~ /^\S+$/ ||
 		&error($text{'twofactor_eapikey'});
 	$vfunc = "validate_twofactor_apikey_".$in{'twofactor_provider'};
-	$err = defined(&$vfunc) && &$vfunc($in{'twofactor_apikey'});
+	$err = defined(&$vfunc) && &$vfunc($in{'twofactor_apikey'},
+					   $in{'twofactor_test'});
 	&error($err) if ($err);
 	}
 
