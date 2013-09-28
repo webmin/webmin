@@ -324,6 +324,12 @@ elsif ($in{'lock'} && $user{'pass'} !~ /^\!/ && $in{'pass_def'} <= 1) {
 # Check for force change
 $user{'temppass'} = $in{'temp'};
 
+# Cancel two-factor if requested
+if ($in{'cancel'}) {
+	$user->{'twofactor_provider'} = undef;
+	$user->{'twofactor_id'} = undef;
+	}
+
 if ($in{'old'}) {
 	# update user and all ACLs
 	&modify_user($in{'old'}, \%user);

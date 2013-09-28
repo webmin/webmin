@@ -5921,6 +5921,9 @@ return $tmp;
 sub validate_twofactor
 {
 my ($user, $token) = @_;
+$token =~ s/^\s+//;
+$token =~ s/\s+$//;
+$token || return "No two-factor token entered";
 my $tf = $twofactor{$user};
 $tf || return undef;
 pipe(TOKENr, TOKENw);

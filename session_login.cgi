@@ -90,7 +90,8 @@ print &ui_table_row($text{'session_pass'},
 # Two-factor token, for users that have it
 if ($miniserv{'twofactor_provider'}) {
 	print &ui_table_row($text{'session_twofactor'},
-		&ui_textbox("twofactor", undef, 20, 0, undef, $tags));
+		&ui_textbox("twofactor", undef, 20, 0, undef,
+			    "autocomplete=off"));
 	}
 
 # Remember session cookie?

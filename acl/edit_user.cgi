@@ -301,7 +301,8 @@ if ($user{'twofactor_provider'}) {
 		       &webmin::list_twofactor_providers();
 	print &ui_table_row($text{'edit_twofactor'},
 		&text('edit_twofactorprov', "<i>$prov->[1]</i>",
-		      "<tt>$user{'twofactor_id'}</tt>"));
+		      "<tt>$user{'twofactor_id'}</tt>")."<br>\n".
+		&ui_checkbox('cancel', 1, $text{'edit_twofactorcancel'}, 0));
 	}
 
 print &ui_hidden_table_end("security");

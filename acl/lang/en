@@ -51,6 +51,7 @@ edit_modules=Modules
 edit_clone=Clone
 edit_twofactor=Two-factor authentication type
 edit_twofactorprov=Using provider $1 with ID $2
+edit_twofactorcancel=Remove two-factor authentication requirement
 edit_lang=Language
 edit_notabs=Categorise modules?
 edit_logout=Inactivity logout time

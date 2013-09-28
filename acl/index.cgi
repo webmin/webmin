@@ -289,6 +289,7 @@ return ($config{'select'} ? "" : &ui_checkbox("d", $_[0]->{'name'}, "", 0)).
        ($ro ? "<b>" : "").
        "<a href='$_[1]?$_[2]=".&urlize($_[0]->{'name'})."'>".
 	$_[0]->{'name'}."</a>".
+       ($_[0]->{'twofactor_id'} ? "*" : "").
        ($ro ? "</b>" : "").
        ($lck ? "</i>" : "");
 }
