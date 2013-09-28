@@ -46,7 +46,13 @@ if ($tconfig{'inframe'}) {
 
 print "<center>\n";
 if (defined($in{'failed'})) {
-	print "<h3>$text{'session_failed'}</h3><p></p>\n";
+	if ($in{'twofactor_msg'}) {
+		print "<h3>",&text('session_twofailed',
+			&html_escape($in{'twofactor_msg'})),"</h3><p></p>\n";
+		}
+	else {
+		print "<h3>$text{'session_failed'}</h3><p></p>\n";
+		}
 	}
 elsif ($in{'logout'}) {
 	print "<h3>$text{'session_logout'}</h3><p></p>\n";
@@ -80,6 +86,14 @@ print &ui_table_row($text{'session_user'},
 	&ui_textbox("user", $in{'failed'}, 20, 0, undef, $tags));
 print &ui_table_row($text{'session_pass'},
 	&ui_password("pass", undef, 20, 0, undef, $tags));
+
+# Two-factor token, for users that have it
+if ($miniserv{'twofactor_provider'}) {
+	print &ui_table_row($text{'session_twofactor'},
+		&ui_textbox("twofactor", undef, 20, 0, undef, $tags));
+	}
+
+# Remember session cookie?
 if (!$gconfig{'noremember'}) {
 	print &ui_table_row(" ",
 		&ui_checkbox("save", 1, $text{'session_save'}, 0));

@@ -1682,6 +1682,15 @@ if ($config{'userfile'}) {
 			local ($vu, $expired, $nonexist) =
 				&validate_user($in{'user'}, $in{'pass'}, $host,
 					       $acptip, $port);
+			if ($vu && $twofactor{$vu}) {
+				# Check two-factor token ID
+				$err = &validate_twofactor(
+					$vu, $in{'twofactor'});
+				if ($err) {
+					$twofactor_msg = $err;
+					$vu = undef;
+					}
+				}
 			local $hrv = &handle_login(
 					$vu || $in{'user'}, $vu ? 1 : 0,
 				      	$expired, $nonexist, $in{'pass'},
@@ -1889,8 +1898,12 @@ if ($config{'userfile'}) {
 					$querystring = "page=".&urlize($rpage);
 					}
 				$method = "GET";
-				$querystring .= "&failed=$failed_user" if ($failed_user);
-				$querystring .= "&timed_out=$timed_out" if ($timed_out);
+				$querystring .= "&failed=$failed_user"
+					if ($failed_user);
+				$querystring .= "&twofactor_msg=".&urlize($twofactor_msg)
+					if ($twofactor_msg);
+				$querystring .= "&timed_out=$timed_out"
+					if ($timed_out);
 				$queryargs = "";
 				$page = $config{'session_login'};
 				$miniserv_internal = 1;
@@ -4413,6 +4426,9 @@ if (!$config{'webmincron_wrapper'}) {
 	$config{'webmincron_wrapper'} = $config{'root'}.
 					"/webmincron/webmincron.pl";
 	}
+if (!$config{'twofactor_wrapper'}) {
+	$config{'twofactor_wrapper'} = $config{'root'}."/acl/twofactor.pl";
+	}
 }
 
 # read_users_file()
@@ -4428,6 +4444,7 @@ undef(%allowhours);
 undef(%lastchanges);
 undef(%nochange);
 undef(%temppass);
+undef(%twofactor);
 if ($config{'userfile'}) {
 	open(USERS, $config{'userfile'});
 	while(<USERS>) {
@@ -4458,6 +4475,10 @@ if ($config{'userfile'}) {
 		$lastchanges{$user[0]} = $user[6];
 		$nochange{$user[0]} = $user[9];
 		$temppass{$user[0]} = $user[10];
+		if ($user[11] && $user[12]) {
+			$twofactor{$user[0]} = { 'provider' => $user[11],
+						 'id' => $user[12] };
+			}
 		}
 	close(USERS);
 	}
@@ -5671,80 +5692,8 @@ foreach my $cron (@webmincrons) {
 			    "arg0=$cron->{'arg0'}\n";
 		$webmincron_last{$cron->{'id'}} = $now;
 		$changed = 1;
-		my $pid = fork();
-		if (!$pid) {
-			# Run via a wrapper command, which we run like a CGI
-			dbmclose(%sessiondb);
-			open(STDOUT, ">&STDERR");
-			&close_all_sockets();
-			&close_all_pipes();
-			close(LISTEN);
-
-			# Setup CGI-like environment
-			$envtz = $ENV{"TZ"};
-			$envuser = $ENV{"USER"};
-			$envpath = $ENV{"PATH"};
-			$envlang = $ENV{"LANG"};
-			$envroot = $ENV{"SystemRoot"};
-			$envperllib = $ENV{'PERLLIB'};
-			foreach my $k (keys %ENV) {
-				delete($ENV{$k});
-				}
-			$ENV{"PATH"} = $envpath if ($envpath);
-			$ENV{"TZ"} = $envtz if ($envtz);
-			$ENV{"USER"} = $envuser if ($envuser);
-			$ENV{"OLD_LANG"} = $envlang if ($envlang);
-			$ENV{"SystemRoot"} = $envroot if ($envroot);
-			$ENV{'PERLLIB'} = $envperllib if ($envperllib);
-			$ENV{"HOME"} = $user_homedir;
-			$ENV{"SERVER_SOFTWARE"} = $config{"server"};
-			$ENV{"SERVER_ADMIN"} = $config{"email"};
-			$root0 = $roots[0];
-			$ENV{"SERVER_ROOT"} = $root0;
-			$ENV{"SERVER_REALROOT"} = $root0;
-			$ENV{"SERVER_PORT"} = $config{'port'};
-			$ENV{"WEBMIN_CRON"} = 1;
-			$ENV{"DOCUMENT_ROOT"} = $root0;
-			$ENV{"DOCUMENT_REALROOT"} = $root0;
-			$ENV{"MINISERV_CONFIG"} = $config_file;
-			$ENV{"HTTPS"} = "ON" if ($use_ssl);
-			$ENV{"MINISERV_PID"} = $miniserv_main_pid;
-			$ENV{"SCRIPT_FILENAME"} = $config{'webmincron_wrapper'};
-			if ($ENV{"SCRIPT_FILENAME"} =~ /^\Q$root0\E(\/.*)$/) {
-				$ENV{"SCRIPT_NAME"} = $1;
-				}
-			$config{'webmincron_wrapper'} =~ /^(.*)\//;
-			$ENV{"PWD"} = $1;
-			foreach $k (keys %config) {
-				if ($k =~ /^env_(\S+)$/) {
-					$ENV{$1} = $config{$k};
-					}
-				}
-			chdir($ENV{"PWD"});
-			$SIG{'CHLD'} = 'DEFAULT';
-			eval {
-				# Have SOCK closed if the perl exec's something
-				use Fcntl;
-				fcntl(SOCK, F_SETFD, FD_CLOEXEC);
-				};
-
-			# Run the wrapper script by evaling it
-			$pkg = "webmincron";
-			$0 = $config{'webmincron_wrapper'};
-			@ARGV = ( $cron );
-			$main_process_id = $$;
-			eval "
-				\%pkg::ENV = \%ENV;
-				package $pkg;
-				do \$miniserv::config{'webmincron_wrapper'};
-				die \$@ if (\$@);
-				";
-			if ($@) {
-				print STDERR "Perl cron failure : $@\n";
-				}
-
-			exit(0);
-			}
+		my $pid = &execute_webmin_command($config{'webmincron_wrapper'},
+						  [ $cron ]);
 		push(@childpids, $pid);
 		}
 	}
@@ -5964,4 +5913,115 @@ $tmp =~ s/\"/&quot;/g;
 $tmp =~ s/\'/&#39;/g;
 $tmp =~ s/=/&#61;/g;
 return $tmp;
+}
+
+# validate_twofactor(username, token)
+# Checks if a user's two-factor token is valid or not. Returns undef on success
+# or the error message on failure.
+sub validate_twofactor
+{
+my ($user, $token) = @_;
+my $tf = $twofactor{$user};
+$tf || return undef;
+pipe(TOKENr, TOKENw);
+my $pid = &execute_webmin_command($config{'twofactor_wrapper'},
+		[ $user, $tf->{'provider'}, $tf->{'id'}, $token ], TOKENw);
+close(TOKENw);
+waitpid($pid, 0);
+my $ex = $?;
+my $out = <TOKENr>;
+close(TOKENr);
+if ($ex) {
+	return $out || "Unknown two-factor authentication failure";
+	}
+return undef;
+}
+
+# execute_webmin_command(command, &argv, [stdout-fd])
+# Run some Webmin script in a sub-process, like webmincron.pl
+# Returns the PID of the new process.
+sub execute_webmin_command
+{
+my ($cmd, $argv, $fd) = @_;
+my $pid = fork();
+if (!$pid) {
+	# Run via a wrapper command, which we run like a CGI
+	dbmclose(%sessiondb);
+	if ($fd) {
+		open(STDOUT, ">&$fd");
+		}
+	else {
+		open(STDOUT, ">&STDERR");
+		}
+	&close_all_sockets();
+	&close_all_pipes();
+	close(LISTEN);
+
+	# Setup CGI-like environment
+	$envtz = $ENV{"TZ"};
+	$envuser = $ENV{"USER"};
+	$envpath = $ENV{"PATH"};
+	$envlang = $ENV{"LANG"};
+	$envroot = $ENV{"SystemRoot"};
+	$envperllib = $ENV{'PERLLIB'};
+	foreach my $k (keys %ENV) {
+		delete($ENV{$k});
+		}
+	$ENV{"PATH"} = $envpath if ($envpath);
+	$ENV{"TZ"} = $envtz if ($envtz);
+	$ENV{"USER"} = $envuser if ($envuser);
+	$ENV{"OLD_LANG"} = $envlang if ($envlang);
+	$ENV{"SystemRoot"} = $envroot if ($envroot);
+	$ENV{'PERLLIB'} = $envperllib if ($envperllib);
+	$ENV{"HOME"} = $user_homedir;
+	$ENV{"SERVER_SOFTWARE"} = $config{"server"};
+	$ENV{"SERVER_ADMIN"} = $config{"email"};
+	$root0 = $roots[0];
+	$ENV{"SERVER_ROOT"} = $root0;
+	$ENV{"SERVER_REALROOT"} = $root0;
+	$ENV{"SERVER_PORT"} = $config{'port'};
+	$ENV{"WEBMIN_CRON"} = 1;
+	$ENV{"DOCUMENT_ROOT"} = $root0;
+	$ENV{"DOCUMENT_REALROOT"} = $root0;
+	$ENV{"MINISERV_CONFIG"} = $config_file;
+	$ENV{"HTTPS"} = "ON" if ($use_ssl);
+	$ENV{"MINISERV_PID"} = $miniserv_main_pid;
+	$ENV{"SCRIPT_FILENAME"} = $cmd;
+	if ($ENV{"SCRIPT_FILENAME"} =~ /^\Q$root0\E(\/.*)$/) {
+		$ENV{"SCRIPT_NAME"} = $1;
+		}
+	$cmd =~ /^(.*)\//;
+	$ENV{"PWD"} = $1;
+	foreach $k (keys %config) {
+		if ($k =~ /^env_(\S+)$/) {
+			$ENV{$1} = $config{$k};
+			}
+		}
+	chdir($ENV{"PWD"});
+	$SIG{'CHLD'} = 'DEFAULT';
+	eval {
+		# Have SOCK closed if the perl exec's something
+		use Fcntl;
+		fcntl(SOCK, F_SETFD, FD_CLOEXEC);
+		};
+
+	# Run the wrapper script by evaling it
+	if ($cmd =~ /\/([^\/]+)\/([^\/]+)$/) {
+		$pkg = $1;
+		}
+	$0 = $cmd;
+	@ARGV = @$argv;
+	$main_process_id = $$;
+	eval "
+		\%pkg::ENV = \%ENV;
+		package $pkg;
+		do \"$cmd\";
+		die \$@ if (\$@);
+		";
+	if ($@) {
+		print STDERR "Perl failure : $@\n";
+		}
+	exit(0);
+	}
+return $pid;
 }

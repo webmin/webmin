@@ -1,7 +1,8 @@
 #!/usr/local/bin/perl
 # Validate the OTP for some user
 
-$no_acl_check++;
+$main::no_acl_check = 1;
+$main::no_referers_check = 1;
 $ENV{'WEBMIN_CONFIG'} = "/etc/webmin";
 $ENV{'WEBMIN_VAR'} = "/var/webmin";
 if ($0 =~ /^(.*\/)[^\/]+$/) {
