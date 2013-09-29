@@ -1743,9 +1743,11 @@ my $divid = "hiddendiv_$name";
 my $openerid = "hiddenopener_$name";
 my $defimg = $status ? "open.gif" : "closed.gif";
 my $defclass = $status ? 'opener_shown' : 'opener_hidden';
-$rrv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='$gconfig{'webprefix'}/images/$defimg'></a>\n";
-$rrv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\">$title</a><br>\n";
-$rv .= &ui_table_row(undef, $rrv, $main::ui_table_cols);
+if ($title) {
+	$rrv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='$gconfig{'webprefix'}/images/$defimg'></a>\n";
+	$rrv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\">$title</a><br>\n";
+	$rv .= &ui_table_row(undef, $rrv, $main::ui_table_cols);
+	}
 $rv .= "</table>\n";
 $rv .= "<div class='$defclass' id='$divid'>\n";
 $rv .= "<table width=100%>\n";

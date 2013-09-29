@@ -1022,7 +1022,7 @@ webmincron_err=Failed to save scheduled function
 webmincron_einterval=Interval must be a number of seconds greater than zero
 
 twofactor_title=Two-Factor Authentication
-twofactor_header=Two-factor authentication sessions
+twofactor_header=Two-factor authentication options
 twofactor_provider=Authentication provider
 twofactor_none=None
 twofactor_apikey=Authy API key

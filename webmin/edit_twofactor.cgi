@@ -18,7 +18,7 @@ EOF
 print "<script>\n";
 print "function show_prov(name) {\n";
 foreach $p (@provs) {
-	print "d = document.getElementById(\"$p->[0]\");\n";
+	print "d = document.getElementById(\"hiddendiv_$p->[0]\");\n";
 	print "d.className = name == \"$p->[0]\" ? \"opener_shown\" : \"opener_hidden\";\n";
 	}
 print "}\n";
@@ -28,7 +28,6 @@ print ui_form_start("change_twofactor.cgi", "post");
 print ui_table_start($text{'twofactor_header'}, undef, 2);
 
 # Two-factor provider
-my ($name, $value, $opts, $size, $multiple, $missing, $dis, $js) = @_;
 print ui_table_row($text{'twofactor_provider'},
 	ui_select("twofactor_provider", $miniserv{'twofactor_provider'},
 		  [ [ "", "&lt;".$text{'twofactor_none'}."&gt;" ],
@@ -38,12 +37,13 @@ print ui_table_row($text{'twofactor_provider'},
 foreach $p (@provs) {
 	$dis = $p->[0] eq $miniserv{'twofactor_provider'} ? "opener_shown"
 							  : "opener_hidden";
-	print "<div id=$p->[0] name=$p->[0] class='$dis'>\n";
+	print &ui_hidden_table_row_start(undef, $p->[0],
+		$p->[0] eq $miniserv{'twofactor_provider'}, undef);
 	$sfunc = "show_twofactor_apikey_".$p->[0];
 	if (defined(&$sfunc)) {
 		print &$sfunc(\%miniserv);
 		}
-	print "</div>\n";
+	print &ui_hidden_table_row_end($p->[0]);
 	}
 
 print ui_table_end();
