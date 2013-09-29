@@ -177,6 +177,7 @@ edit_themeglobal=Aus der Webminkonfiguration
 edit_title=Webminbenutzer bearbeiten
 edit_title2=Webminbenutzer anlegen
 edit_twofactor=2-Faktor-Authentifizierungstyp
+edit_twofactorcancel=Entferne die 2-Faktor-Authentifizierung Anforderung
 edit_twofactorprov=Benutze Provider $1 mit ID $2
 edit_ui=Optionen des Benutzerinterfaces
 edit_unix=Unix-Authentifizierung
@@ -392,6 +393,9 @@ sync_nogroups=Es wurden keine Webmingruppen auf Ihrem System definiert. Wenigste
 sync_title=Unixbenutzer-Synchronisation
 sync_unix=Setze Passwort f&#252;r neue Benutzer auf das Unixpasswort
 sync_update=Aktualisiere den passenden Webminbenutzer wenn ein Unixbenutzer aktualisiert wird.
+twofactor_already=Ihr Webmin Login hat bereits die 2-Faktor-Authentifizierung mit Provider $1 und Konto-ID $2 aktiviert.
+twofactor_desc=Auf dieser Seite k&#246;nnen Sie die 2-Faktor-Authentifizierung f&#252;r Webmin-Logins <a href='$2' target=_blank>$1</a> erm&#246;glichen. Einmal aktiviert, wird eine zus&#228;tzliche Authentifizierungs-Token ben&#246;tigt, wenn Sie sich in Webmin einloggen.
+twofactor_disable=Deaktiviere 2-Faktor-Authentifizierung
 twofactor_done=.. komplett. Ihre ID mit diesem Provider ist $1
 twofactor_err=Fehlgeschlagen 2-Faktor-Authentifizierung einzustellen
 twofactor_euser=Ihr Webmin Benutzer wurde nicht gefunden!
