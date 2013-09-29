@@ -1025,13 +1025,14 @@ twofactor_title=Two-Factor Authentication
 twofactor_header=Two-factor authentication sessions
 twofactor_provider=Authentication provider
 twofactor_none=None
-twofactor_apikey=Provider API key
+twofactor_apikey=Authy API key
 twofactor_test=Use provider's test mode?
 twofactor_desc=Two-factor authentication allows Webmin users to enable use of an additional authentication device when logging in, such as a one-time passcode generator. Users must individually enroll with the selected authentication provider after it is enabled on this page.
 twofactor_err=Failed to save two-factor authentication
 twofactor_eprovider=Invalid provider!
 twofactor_eapikey=Missing or invalid-looking API key
 twofactor_authy=Authy
+twofactor_topt=Google Authenticator
 twofactor_email=Your email address
 twofactor_country=Cellphone country code
 twofactor_phone=Cellphone phone number
@@ -1044,5 +1045,7 @@ twofactor_eauthyenroll=Enrollment failed : $1
 twofactor_eauthyid=Authy user ID must be a number
 twofactor_eauthytoken=Authy token must be a number
 twofactor_eauthyotp=Authy token is invalid
+twofactor_enrolllink=You can now enroll for two-factor authentication in the <a href='$1'>Webmin Users</a> module.
+twofactor_url=To learn more about $1, see it's website at <a href='$2' target=_blank>$2</a>.
 
 __norefs=1

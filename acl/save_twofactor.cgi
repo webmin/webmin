@@ -47,6 +47,7 @@ elsif ($in{'disable'}) {
 	# Turn off for this user
 	$user->{'twofactor_provider'} = undef;
 	$user->{'twofactor_id'} = undef;
+	$user->{'twofactor_apikey'} = undef;
 	&modify_user($user->{'name'}, $user);
 	&reload_miniserv();
 	&webmin_log("onefactor", "user", $user->{'name'});

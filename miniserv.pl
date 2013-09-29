@@ -4477,7 +4477,8 @@ if ($config{'userfile'}) {
 		$temppass{$user[0]} = $user[10];
 		if ($user[11] && $user[12]) {
 			$twofactor{$user[0]} = { 'provider' => $user[11],
-						 'id' => $user[12] };
+						 'id' => $user[12],
+						 'apikey' => $user[13] };
 			}
 		}
 	close(USERS);
@@ -5928,7 +5929,8 @@ my $tf = $twofactor{$user};
 $tf || return undef;
 pipe(TOKENr, TOKENw);
 my $pid = &execute_webmin_command($config{'twofactor_wrapper'},
-		[ $user, $tf->{'provider'}, $tf->{'id'}, $token ], TOKENw);
+	[ $user, $tf->{'provider'}, $tf->{'id'}, $token, $tf->{'apikey'} ],
+	TOKENw);
 close(TOKENw);
 waitpid($pid, 0);
 my $ex = $?;

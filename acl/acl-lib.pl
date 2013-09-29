@@ -75,6 +75,7 @@ while(<PWFILE>) {
 		$user{'temppass'} = int($user[10]);
 		$user{'twofactor_provider'} = $user[11];
 		$user{'twofactor_id'} = $user[12];
+		$user{'twofactor_apikey'} = $user[13];
 		$user{'modules'} = $acl{$user[0]};
 		$user{'lang'} = $gconfig{"lang_$user[0]"};
 		$user{'notabs'} = $gconfig{"notabs_$user[0]"};
@@ -464,7 +465,8 @@ else {
 		$user{'nochange'},":",
 		$user{'temppass'},":",
 		$user{'twofactor_provider'},":",
-		$user{'twofactor_id'},
+		$user{'twofactor_id'},":",
+		$user{'twofactor_apikey'},
 		"\n");
 	&close_tempfile(PWFILE);
 	&unlock_file($miniserv{'userfile'});
@@ -652,7 +654,8 @@ else {
 				$user{'nochange'},":",
 				$user{'temppass'},":",
 				$user{'twofactor_provider'},":",
-				$user{'twofactor_id'},
+				$user{'twofactor_id'},":",
+				$user{'twofactor_apikey'},
 				"\n");
 			}
 		else {

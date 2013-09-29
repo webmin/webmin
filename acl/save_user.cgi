@@ -328,6 +328,7 @@ $user{'temppass'} = $in{'temp'};
 if ($in{'cancel'}) {
 	$user->{'twofactor_provider'} = undef;
 	$user->{'twofactor_id'} = undef;
+	$user->{'twofactor_apikey'} = undef;
 	}
 
 if ($in{'old'}) {

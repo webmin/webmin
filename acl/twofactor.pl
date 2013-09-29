@@ -12,13 +12,13 @@ require './acl-lib.pl';
 $module_name eq 'acl' || die "Command must be run with full path";
 
 # Check command-line args
-@ARGV == 4 || die "Usage: $0 user provider id token";
-($user, $provider, $id, $token) = @ARGV;
+@ARGV == 5 || die "Usage: $0 user provider id token api-key";
+($user, $provider, $id, $token, $apikey) = @ARGV;
 
 # Call the provider validation function
 &foreign_require("webmin");
 $func = "webmin::validate_twofactor_".$provider;
-$err = &$func($id, $token);
+$err = &$func($id, $token, $apikey);
 if ($err) {
 	$err =~ s/\r|\n/ /g;
 	print $err,"\n";

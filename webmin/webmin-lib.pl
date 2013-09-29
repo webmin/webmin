@@ -2168,15 +2168,32 @@ if ($tryerror) {
 # containing an ID, name and URL for more info
 sub list_twofactor_providers
 {
-return ( [ 'authy', $text{'twofactor_authy'},
+return ( [ 'topt', $text{'twofactor_topt'},
+	   'http://en.wikipedia.org/wiki/Google_Authenticator' ],
+	 [ 'authy', $text{'twofactor_authy'},
 	   'http://www.authy.com/' ] );
 }
 
-# validate_twofactor_apikey_authy(apikey, test-mode)
-# Check that an API key is valid
+# show_twofactor_apikey_authy(&miniserv)
+# Returns HTML for the form for authy-specific provider inputs
+sub show_twofactor_apikey_authy
+{
+my ($miniserv) = @_;
+my $rv;
+$rv .= ui_table_row($text{'twofactor_apikey'},
+	ui_textbox("authy_apikey", $miniserv->{'twofactor_apikey'}, 40));
+return $rv;
+}
+
+# validate_twofactor_apikey_authy(&in, &miniserv)
+# Validates inputs from show_twofactor_apikey_authy, and stores them. Returns undef
+# if OK, or an error message on failure
 sub validate_twofactor_apikey_authy
 {
-my ($key, $test) = @_;
+my ($in, $miniserv) = @_;
+my $key = $in->{'authy_apikey'};
+my $test = $miniserv->{'twofactor_test'};
+$key =~ /^\S+$/ || return $text{'twofactor_eapikey'};
 my $host = $test ? "sandbox-api.authy.com" : "api.authy.com";
 my $port = $test ? 80 : 443;
 my $page = "/protected/xml/app/details?api_key=".&urlize($key);
@@ -2190,6 +2207,7 @@ if ($err =~ /401/) {
 elsif ($err) {
 	return &text('twofactor_eauthy', $err);
 	}
+$miniserv->{'twofactor_apikey'} = $key;
 return undef;
 }
 
@@ -2246,6 +2264,7 @@ my ($out, $err);
 return $err if ($err);
 if ($out =~ /<id[^>]*>([^<]+)<\/id>/i) {
 	$user->{'twofactor_id'} = $1;
+	$user->{'twofactor_apikey'} = $miniserv{'twofactor_apikey'};
 	return undef;
 	}
 else {
@@ -2254,11 +2273,11 @@ else {
 	}
 }
 
-# validate_twofactor_authy(id, token)
+# validate_twofactor_authy(id, token, apikey)
 # Checks the validity of some token for a user ID
 sub validate_twofactor_authy
 {
-my ($id, $token) = @_;
+my ($id, $token, $apikey) = @_;
 $id =~ /^\d+$/ || return $text{'twofactor_eauthyid'};
 $token =~ /^\d+$/ || return $text{'twofactor_eauthytoken'};
 my %miniserv;
@@ -2266,8 +2285,8 @@ my %miniserv;
 my $host = $miniserv{'twofactor_test'} ? "sandbox-api.authy.com"
 				       : "api.authy.com";
 my $port = $miniserv{'twofactor_test'} ? 80 : 443;
-my $page = "/protected/xml/verify/$token/$id?api_key=".
-	   &urlize($miniserv{'twofactor_apikey'});
+my $page = "/protected/xml/verify/$token/$id?api_key=".&urlize($apikey).
+	   "&force=true";
 my $ssl = $miniserv{'twofactor_test'} ? 0 : 1;
 my ($out, $err);
 &http_download($host, $port, $page, \$out, \$err, undef, $ssl, undef, undef,
@@ -2298,6 +2317,19 @@ else {
 	# Unknown output
 	return $out;
 	}
+}
+
+# validate_twofactor_apikey_topt()
+# Checks that the needed Perl module for TOPT is installed
+sub validate_twofactor_apikey_topt
+{
+# XXX
+}
+
+# show_twofactor_form_topt()
+# XXX is this even needed?
+sub show_twofactor_form_topt
+{
 }
 
 1;
