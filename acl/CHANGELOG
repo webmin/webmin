@@ -57,3 +57,5 @@ If any theme overlays are installed, users' overlays can be selected on the Edit
 Converted commands in the module's API file to POD format, and added more details about each function.
 ---- Changes since 1.520 ----
 Added the User and Group Database page, for configuring Webmin to store all new users, groups and access control lists in a MySQL, PostgreSQL or LDAP database. This allows Webmin permissions to be shared between multiple systems.
+---- Changes since 1.650 ----
+Added support for two-factor authentication using Authy or Google Authenticator.
