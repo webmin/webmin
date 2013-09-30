@@ -188,11 +188,9 @@ if (uc($ENV{'HTTPS'}) eq "ON" && $miniserv{'ca'}) {
 	push(@links, "cert_form.cgi");
 	push(@titles, $text{'index_cert'});
 	}
-if ($miniserv{'twofactor_provider'}) {
-	push(@icons, "images/twofactor.gif");
-	push(@links, "twofactor_form.cgi");
-	push(@titles, $text{'index_twofactor'});
-	}
+push(@icons, "images/twofactor.gif");
+push(@links, "twofactor_form.cgi");
+push(@titles, $text{'index_twofactor'});
 if ($access{'rbacenable'}) {
 	push(@icons, "images/rbac.gif");
 	push(@links, "edit_rbac.cgi");

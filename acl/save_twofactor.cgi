@@ -13,9 +13,12 @@ $user || &error($twxt{'twofactor_euser'});
 
 if ($in{'enable'}) {
 	# Validate enrollment inputs
-	$vfunc = "webmin::parse_twofactor_form_".$miniserv{'twofactor_provider'};
-	$details = &$vfunc(\%in, $user);
-	&error($details) if (!ref($details));
+	$vfunc = "webmin::parse_twofactor_form_".
+		 $miniserv{'twofactor_provider'};
+	if (defined(&$vfunc)) {
+		$details = &$vfunc(\%in, $user);
+		&error($details) if (!ref($details));
+		}
 
 	&ui_print_header(undef, $text{'twofactor_title'}, "");
 	($prov) = grep { $_->[0] eq $miniserv{'twofactor_provider'} }
@@ -31,6 +34,12 @@ if ($in{'enable'}) {
 		}
 	else {
 		print &text('twofactor_done', $user->{'twofactor_id'}),"<p>\n";
+
+		# Print provider-specific message
+		$mfunc = "webmin::message_twofactor_".$miniserv{'twofactor_provider'};
+		if (defined(&$mfunc)) {
+			print &$mfunc($user);
+			}
 
 		# Save user
 		$user->{'twofactor_provider'} = $miniserv{'twofactor_provider'};

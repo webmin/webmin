@@ -26,7 +26,11 @@ $msg = $text{'restart_done'}."<p>\n";
 if ($in{'twofactor_provider'}) {
 	$msg .= &text('twofactor_enrolllink',
 		      "../acl/twofactor_form.cgi")."<p>\n";
-	if ($prov->[2]) {
+	$mfunc = "message_twofactor_apikey_".$in{'twofactor_provider'};
+	if (defined(&$mfunc)) {
+		$msg .= &$mfunc(\%miniserv)."<p>\n";
+		}
+	elsif ($prov->[2]) {
 		$msg .= &text('twofactor_url', $prov->[1], $prov->[2])."<p>\n";
 		}
 	}

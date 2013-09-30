@@ -6,6 +6,12 @@ require './acl-lib.pl';
 &error_setup($text{'twofactor_err'});
 &get_miniserv_config(\%miniserv);
 
+if (!$miniserv{'twofactor_provider'}) {
+	&ui_print_endpage(&text('twofactor_setup',
+				'../webmin/edit_twofactor.cgi'));
+	return;
+	}
+
 # Get the user
 ($user) = grep { $_->{'name'} eq $base_remote_user } &list_users();
 $user || &error($twxt{'twofactor_euser'});
@@ -24,10 +30,12 @@ else {
 	($prov) = grep { $_->[0] eq $miniserv{'twofactor_provider'} }
 		       &webmin::list_twofactor_providers();
 	print &text('twofactor_desc', $prov->[1], $prov->[2]),"<p>\n";
-	print &ui_table_start($text{'twofactor_header'}, undef, 2);
 	$ffunc = "webmin::show_twofactor_form_".$miniserv{'twofactor_provider'};
-	print &$ffunc($user);
-	print &ui_table_end();
+	if (defined(&$ffunc)) {
+		print &ui_table_start($text{'twofactor_header'}, undef, 2);
+		print &$ffunc($user);
+		print &ui_table_end();
+		}
 	@buts = ( [ "enable", $text{'twofactor_enable'} ] );
 	}
 print &ui_form_end(\@buts);

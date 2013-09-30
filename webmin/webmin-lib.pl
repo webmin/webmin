@@ -2186,8 +2186,8 @@ return $rv;
 }
 
 # validate_twofactor_apikey_authy(&in, &miniserv)
-# Validates inputs from show_twofactor_apikey_authy, and stores them. Returns undef
-# if OK, or an error message on failure
+# Validates inputs from show_twofactor_apikey_authy, and stores them. Returns
+# undef if OK, or an error message on failure
 sub validate_twofactor_apikey_authy
 {
 my ($in, $miniserv) = @_;
@@ -2320,16 +2320,67 @@ else {
 }
 
 # validate_twofactor_apikey_topt()
-# Checks that the needed Perl module for TOPT is installed
+# Checks that the needed Perl module for TOPT is installed.
 sub validate_twofactor_apikey_topt
 {
-# XXX
+my ($miniserv, $in) = @_;
+eval "use Authen::OATH";
+if ($@) {
+	return &text('twofactor_etoptmodule', 'Authen::OATH',
+	    "../cpan/download.cgi?source=3&cpan=Authen::OATH&mode=2&".
+	    "return=/$module_name/&returndesc=".&urlize($text{'index_return'}))
+	}
+return undef;
 }
 
-# show_twofactor_form_topt()
-# XXX is this even needed?
-sub show_twofactor_form_topt
+# enroll_twofactor_topt(&in, &user)
+# Generate a secret for this user, based-32 encoded
+sub enroll_twofactor_topt
 {
+my ($in, $user) = @_;
+&seed_random();
+my $secret = "";
+while(length($secret) < 10) {
+	$secret .= chr(rand()*256);
+	}
+$user->{'twofactor_id'} = &encode_base32($secret);
+return undef;
 }
+
+# message_twofactor_topt(&user)
+# Returns HTML to display after a user enrolls
+sub message_twofactor_topt
+{
+my ($user) = @_;
+my $url = "https://chart.googleapis.com/chart".
+	  "?chs=200x200&chld=M|0&cht=qr&chl=otpauth://totp/".
+	  $user->{'name'}."%3Fsecret%3D".$user->{'twofactor_id'};
+my $rv;
+$rv .= &text('twofactor_qrcode', "<tt>$user->{'twofactor_id'}</tt>")."<p>\n";
+$rv .= "<img src='$url' border=0><p>\n";
+return $rv;
+}
+
+# validate_twofactor_totp(id, token, apikey)
+# Checks the validity of some token with google authenticator
+sub validate_twofactor_totp
+{
+my ($id, $token, $apikey) = @_;
+$id =~ /^[A-Z0-9=]+$/ || return $text{'twofactor_etoptid'};
+$token =~ /^\d+$/ || return $text{'twofactor_etotptoken'};
+eval "use Authen::OATH";
+if ($@) {
+	return &text('twofactor_etoptmodule2', 'Authen::OATH');
+	}
+my $secret = &decode_base32($id);
+my $oauth = Authen::OATH->new();
+my $now = time();
+foreach my $t ($now - 30, $now, $now + 30) {
+	my $expected = $oauth->totp($secret, $t);
+	return undef if ($expected eq $token);
+	}
+return $text{'twofactor_etoptmatch'};
+}
+
 
 1;

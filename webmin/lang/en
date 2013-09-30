@@ -1047,5 +1047,11 @@ twofactor_eauthytoken=Authy token must be a number
 twofactor_eauthyotp=Authy token is invalid
 twofactor_enrolllink=You can now enroll for two-factor authentication in the <a href='$1'>Webmin Users</a> module.
 twofactor_url=To learn more about $1, see it's website at <a href='$2' target=_blank>$2</a>.
+twofactor_etoptmodule=The Perl module <tt>$1</tt> needed for two-factor authentication is not installed. Use the <a href='$2'>Perl Modules</a> page in Webmin to install it.
+twofactor_qrcode=Enter the secret code $1 in the Google Authenticator app, or scan the QR code below.
+twofactor_etoptid=Invalid TOPT base32-encoded secret
+twofactor_etotptoken=Google Authenticator token must be a number
+twofactor_etoptmodule2=Missing Perl module $1
+twofactor_etoptmatch=Incorrect OTP code
 
 __norefs=1
