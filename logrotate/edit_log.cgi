@@ -106,6 +106,8 @@ print &ui_table_row($text{'edit_ext'},
     &ui_opt_textbox("ext", $ext, 10,
 		    &deftext(&find_default("ext"))));
 
+&yesno_option("dateext", "nodateext", $lconf);
+
 print &ui_table_hr();
 
 $mail = &find_value("mail", $lconf);
