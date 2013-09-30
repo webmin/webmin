@@ -458,7 +458,7 @@ schema_download=Download schema file : <a href=$1>$1</a>
 
 twofactor_err=Failed to setup two-factor authentication
 twofactor_euser=Your Webmin user was not found!
-twofactor_title=Your Two-Factor Authentication
+twofactor_title=Two-Factor Authentication
 twofactor_disable=Disable Two-Factor Authentication
 twofactor_already=Your Webmin login already has two-factor authentication enabled with provider $1 and account ID $2.
 twofactor_desc=This page allows you to enable two-factor authentication for your Webmin login using <a href='$2' target=_blank>$1</a>. Once active, an additional authentication token will be required when logging into Webmin.

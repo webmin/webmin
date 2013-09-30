@@ -2168,7 +2168,7 @@ if ($tryerror) {
 # containing an ID, name and URL for more info
 sub list_twofactor_providers
 {
-return ( [ 'topt', $text{'twofactor_topt'},
+return ( [ 'totp', $text{'twofactor_totp'},
 	   'http://en.wikipedia.org/wiki/Google_Authenticator' ],
 	 [ 'authy', $text{'twofactor_authy'},
 	   'http://www.authy.com/' ] );
@@ -2319,37 +2319,76 @@ else {
 	}
 }
 
-# validate_twofactor_apikey_topt()
+# validate_twofactor_apikey_totp()
 # Checks that the needed Perl module for TOPT is installed.
-sub validate_twofactor_apikey_topt
+sub validate_twofactor_apikey_totp
 {
 my ($miniserv, $in) = @_;
 eval "use Authen::OATH";
 if ($@) {
-	return &text('twofactor_etoptmodule', 'Authen::OATH',
+	return &text('twofactor_etotpmodule', 'Authen::OATH',
 	    "../cpan/download.cgi?source=3&cpan=Authen::OATH&mode=2&".
 	    "return=/$module_name/&returndesc=".&urlize($text{'index_return'}))
 	}
 return undef;
 }
 
-# enroll_twofactor_topt(&in, &user)
-# Generate a secret for this user, based-32 encoded
-sub enroll_twofactor_topt
+# show_twofactor_form_totp(&user)
+# Show form allowing the user to choose a twofactor secret
+sub show_twofactor_form_totp
+{
+my ($user) = @_;
+my $secret = $user->{'twofactor_id'};
+$secret = undef if ($secret !~ /^[A-Z0-9=]{16}$/i);
+my $rv;
+$rv .= &ui_table_row($text{'twofactor_secret'},
+	&ui_opt_textbox("totp_secret", $secret, 20, $text{'twofactor_secret1'},
+			$text{'twofactor_secret0'}));
+return $rv;
+}
+
+# parse_twofactor_form_totp(&in, &user)
+# Generate or use a secret key for this user
+sub parse_twofactor_form_totp
 {
 my ($in, $user) = @_;
+if ($in->{'totp_secret_def'}) {
+	$user->{'twofactor_id'} = &encode_base32(&generate_base32_secret());
+	}
+else {
+	$in{'totp_secret'} =~ /^[A-Z0-9=]{16}$/i ||
+		return $text{'twofactor_esecret'};
+	$user->{'twofactor_id'} = $in{'totp_secret'};
+	}
+return { };
+}
+
+# generate_base32_secret([length])
+# Returns a base-32 encoded secret of by default 10 bytes
+sub generate_base32_secret
+{
+my ($length) = @_;
+$length ||= 10;
 &seed_random();
 my $secret = "";
-while(length($secret) < 10) {
+while(length($secret) < $length) {
 	$secret .= chr(rand()*256);
 	}
-$user->{'twofactor_id'} = &encode_base32($secret);
+return $secret;
+}
+
+# enroll_twofactor_totp(&in, &user)
+# Generate a secret for this user, based-32 encoded
+sub enroll_twofactor_totp
+{
+my ($in, $user) = @_;
+$user->{'twofactor_id'} ||= &encode_base32(&generate_base32_secret());
 return undef;
 }
 
-# message_twofactor_topt(&user)
+# message_twofactor_totp(&user)
 # Returns HTML to display after a user enrolls
-sub message_twofactor_topt
+sub message_twofactor_totp
 {
 my ($user) = @_;
 my $url = "https://chart.googleapis.com/chart".
@@ -2366,11 +2405,11 @@ return $rv;
 sub validate_twofactor_totp
 {
 my ($id, $token, $apikey) = @_;
-$id =~ /^[A-Z0-9=]+$/ || return $text{'twofactor_etoptid'};
+$id =~ /^[A-Z0-9=]+$/i || return $text{'twofactor_etotpid'};
 $token =~ /^\d+$/ || return $text{'twofactor_etotptoken'};
 eval "use Authen::OATH";
 if ($@) {
-	return &text('twofactor_etoptmodule2', 'Authen::OATH');
+	return &text('twofactor_etotpmodule2', 'Authen::OATH');
 	}
 my $secret = &decode_base32($id);
 my $oauth = Authen::OATH->new();
@@ -2379,7 +2418,7 @@ foreach my $t ($now - 30, $now, $now + 30) {
 	my $expected = $oauth->totp($secret, $t);
 	return undef if ($expected eq $token);
 	}
-return $text{'twofactor_etoptmatch'};
+return $text{'twofactor_etotpmatch'};
 }
 
 

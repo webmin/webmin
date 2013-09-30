@@ -36,7 +36,8 @@ if ($in{'enable'}) {
 		print &text('twofactor_done', $user->{'twofactor_id'}),"<p>\n";
 
 		# Print provider-specific message
-		$mfunc = "webmin::message_twofactor_".$miniserv{'twofactor_provider'};
+		$mfunc = "webmin::message_twofactor_".
+			 $miniserv{'twofactor_provider'};
 		if (defined(&$mfunc)) {
 			print &$mfunc($user);
 			}
