@@ -4744,6 +4744,46 @@ while ($str =~ /(.{1,60})/gs) {
 return $res;
 }
 
+=head2 encode_base32(string)
+
+Encodes a string into base32 format.
+
+=cut
+sub encode_base32
+{
+$_ = shift @_;
+my ($buffer, $l, $e);
+$_ = unpack('B*', $_);
+s/(.....)/000$1/g;
+$l = length;
+if ($l & 7) {
+	$e = substr($_, $l & ~7);
+	$_ = substr($_, 0, $l & ~7);
+	$_ .= "000$e" . '0' x (5 - length $e);
+	}
+$_ = pack('B*', $_);
+tr|\0-\37|A-Z2-7|;
+$_;
+}
+
+=head2 decode_base32(string)
+
+Converts a base32-encoded string into plain text. The opposite of encode_base32.
+
+=cut
+sub decode_base32
+{
+$_ = shift;
+my ($l);
+tr|A-Z2-7|\0-\37|;
+$_ = unpack('B*', $_);
+s/000(.....)/$1/g;
+$l = length;
+$_ = substr($_, 0, $l & ~7) if $l & 7;
+$_ = pack('B*', $_);
+return $_;
+}
+
 =head2 get_module_info(module, [noclone], [forcache])
 
 Returns a hash containg details of the given module. Some useful keys are :
