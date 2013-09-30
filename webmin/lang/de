@@ -781,6 +781,7 @@ twofactor_country=Mobiltelefon Landesvorwahl
 twofactor_desc=2-Faktor-Authentifizierung erm&#246;glicht Webmin Benutzern die Verwendung eines zus&#228;tzlichen Authentifizierungs-Ger&#228;tes zum aktivieren, wie ein Einmal-Zugangscode Generator. Benutzer m&#252;ssen sich individuell mit dem ausgew&#228;hlten Authentifizierungs-Provider anmelden, nachdem es auf dieser Seite aktiviert ist.
 twofactor_eapikey=Fehlender oder ung&#252;ltiger ausschauender API-Schl&#252;ssel
 twofactor_eauthy=Fehler beim Validieren des API Schl&#252;ssels mit Authy : $1
+twofactor_eauthyenroll=Einschreiben fehlgeschlagen : $1
 twofactor_eauthyid=Authy Benutzer-ID muss eine Zahl sein
 twofactor_eauthykey=Authy API Schl&#252;ssen ist nicht g&#252;ltig oder es ist im falschen Modus
 twofactor_eauthyotp=Authy Token ist ung&#252;ltig
@@ -788,21 +789,31 @@ twofactor_eauthytoken=Authy Token muss eine Zahl sein
 twofactor_ecountry=Fehlende oder ung&#252;ltige Landesvorwahl - muss eine Zahl sein, wie 65
 twofactor_eemail=Fehlende oder ung&#252;ltige E-Mail-Adresse - muss wie user@domain.com formatiert werden
 twofactor_email=Ihre E-Mail-Adresse
+twofactor_enrolllink=Sie k&#246;nnen jetzt f&#252;r die 2-Faktor-Authentifizierung in dem <a href='$1'>Webmin Benutzer</a>-Modul einschreiben .
 twofactor_ephone=Fehlende oder ung&#252;ltige Telefonnummer - nur Ziffern, Bindestriche und Leerzeichen sind erlaubt
 twofactor_eprovider=Ung&#252;ltiger Provider!
 twofactor_err=Fehler beim Speichern der 2-Faktor-Authentifizierung
+twofactor_esecret=Geheimer Schl&#252;ssel muss genau 16 Zeichen lang sein und darf nur Buchstaben und Zahlen enthalten
 twofactor_etoptmatch=Ung&#252;ltiger OTP Code
 twofactor_etoptmodule=Das Perl-Modul <tt>$1</tt>, welches f&#252;r 2-Faktor-Authentifizierung erforderlich ist, ist nicht installiert. Verwenden Sie die Seite <a href='$2'>Perl Module</a> in Webmin, um es zu installieren.
 twofactor_etoptmodule2=Fehlendes Perl-Modul $1
+twofactor_etotpid=Ung&#252;ltiger TOPT base32-enkodierter Schl&#252;ssel
+twofactor_etotpmatch=Ung&#252;ltiger OTP Code
+twofactor_etotpmodule=Das Perl-Modul <tt>$1</tt>, welches f&#252;r die 2-Faktor-Authentifizierung erforderlich ist, ist nicht installiert. Verwenden Sie die <a href='$2'>Perl Module</a> Seite in Webmin um es zu installieren.
+twofactor_etotpmodule2=Fehlendes Per-Modul $1
 twofactor_etotptoken=Google Authenticator Token muss eine Zahl sein
 twofactor_header=2-Faktor-Authentifizierung Optionen
 twofactor_none=Keine
 twofactor_phone=Mobiltelefon Telefonnummer
 twofactor_provider=Authentifizierungsprovider
 twofactor_qrcode=Geben Sie den Geheimcode $1 in der Google Authenticator App ein, oder scannen Sie den QR-Code unten.
+twofactor_secret=Pers&#246;nlicher geheimer Schl&#252;ssel
+twofactor_secret0=Benutze 16-Zeichen-Schl&#252;ssel
+twofactor_secret1=Zuf&#228;llig generiert
 twofactor_test=Verwende Testmodus des Providers?
 twofactor_title=2-Faktor-Authentifizierung
 twofactor_topt=Google Authenticator
+twofactor_totp=Google Authenticator
 twofactor_url=Um mehr &#252;ber $1 zu erfahren, besuche Webseite unter <a href='$2' target=_blank>$2</a>.
 ui_dateformat=Format f&#252;r anzuzeigendes Datum
 ui_dateformat_dd/mm/yyyy=dd/mm/yyyy (z.B. 16/09/2001)

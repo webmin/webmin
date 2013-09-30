@@ -400,7 +400,7 @@ twofactor_done=.. komplett. Ihre ID mit diesem Provider ist <tt>$1</tt>.
 twofactor_err=Fehlgeschlagen 2-Faktor-Authentifizierung einzustellen
 twofactor_euser=Ihr Webmin Benutzer wurde nicht gefunden!
 twofactor_setup=2-Faktor-Authentifizierung auf diesem System ist nicht noch aktiviert, kann aber &#252;ber das <a href='$1'>Webmin Konfiguration</a>-Modul eingeschaltet werden.
-twofactor_title=Ihre 2-Faktor-Authentifizierung
+twofactor_title=2-Faktor-Authentifizierung
 udeletes_enone=Nichts ausgew&#228;hlt
 udeletes_ereadonly=Einer der ausgew&#228;hlten Benutzer ist als nicht bearbeitbar markiert.
 udeletes_err=Konnte Benutzer nicht l&#246;schen
