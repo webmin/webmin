@@ -304,6 +304,11 @@ if ($user{'twofactor_provider'}) {
 		      "<tt>$user{'twofactor_id'}</tt>")."<br>\n".
 		&ui_checkbox('cancel', 1, $text{'edit_twofactorcancel'}, 0));
 	}
+elsif ($miniserv{'twofactor_provider'}) {
+	print &ui_table_row($text{'edit_twofactor'},
+		$text{'edit_twofactornone'}." ".
+		&ui_submit($text{'edit_twofactoradd'}, "twofactor"));
+	}
 
 print &ui_hidden_table_end("security");
 

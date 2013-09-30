@@ -52,6 +52,8 @@ edit_clone=Clone
 edit_twofactor=Two-factor authentication type
 edit_twofactorprov=Using provider $1 with ID $2
 edit_twofactorcancel=Remove two-factor authentication requirement
+edit_twofactornone=None setup yet
+edit_twofactoradd=Enable Two-Factor For User
 edit_lang=Language
 edit_notabs=Categorise modules?
 edit_logout=Inactivity logout time
@@ -461,7 +463,9 @@ twofactor_euser=Your Webmin user was not found!
 twofactor_title=Two-Factor Authentication
 twofactor_disable=Disable Two-Factor Authentication
 twofactor_already=Your Webmin login already has two-factor authentication enabled with provider $1 and account ID $2.
+twofactor_already2=Webmin login $3 already has two-factor authentication enabled with provider $1 and account ID $2.
 twofactor_desc=This page allows you to enable two-factor authentication for your Webmin login using <a href='$2' target=_blank>$1</a>. Once active, an additional authentication token will be required when logging into Webmin.
+twofactor_desc2=This page allows you to enable two-factor authentication for Webmin login $3 using <a href='$2' target=_blank>$1</a>. Once active, an additional authentication token will be required when logging into Webmin.
 twofactor_enable=Enroll For Two-Factor Authentication
 twofactor_header=Two-factor authentication enrollment details
 twofactor_enrolling=Enrolling for two-factor authentication with provider $1 ..

@@ -8,7 +8,14 @@ require './acl-lib.pl';
 &ReadParse();
 
 # Get the user
-($user) = grep { $_->{'name'} eq $base_remote_user } &list_users();
+@users = &list_users();
+if ($in{'user'}) {
+	&can_edit_user($in{'user'}) || &error($text{'edit_euser'});
+	($user) = grep { $_->{'name'} eq $in{'user'} } @users;
+	}
+else {
+	($user) = grep { $_->{'name'} eq $base_remote_user } @users;
+	}
 $user || &error($twxt{'twofactor_euser'});
 
 if ($in{'enable'}) {

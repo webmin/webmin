@@ -24,6 +24,10 @@ elsif ($in{'but_delete'}) {
 	&redirect("delete_user.cgi?user=".&urlize($in{'old'}));
 	exit;
 	}
+elsif ($in{'twofactor'}) {
+	&redirect("twofactor_form.cgi?user=".&urlize($in{'old'}));
+	exit;
+	}
 
 # Get the user object
 if ($in{'old'}) {
