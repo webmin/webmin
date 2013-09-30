@@ -63,10 +63,13 @@ while(<CMD>) {
 	if (!/ETA/ && !/\%\s+done\s+\d+\/\d+\s*$/) {
 		print &html_escape($_."\n");
 		}
+	if ($update =~ /perl\(/ && /No\s+package\s+.*available/i) {
+		$nopackage = 1;
+		}
 	}
 close(CMD);
 print "</pre>\n";
-if ($?) {
+if ($? || $nopackage) {
 	print "<b>$text{'yum_failed'}</b><p>\n";
 	return ( );
 	}
