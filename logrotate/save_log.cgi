@@ -126,6 +126,8 @@ else {
 		&error($text{'save_eext'});
 	&save_directive($log, "extension", $in{'ext_def'} ? undef : $in{'ext'});
 
+	&parse_yesno("dateext", "nodateext", $log);
+
 	if ($in{'mail'} == 2) {
 		$in{'mailto'} =~ /^\S+$/ || &error($text{'save_emailto'});
 		&save_directive($log, "mail", $in{'mailto'});
