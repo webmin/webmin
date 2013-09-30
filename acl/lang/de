@@ -396,10 +396,11 @@ sync_update=Aktualisiere den passenden Webminbenutzer wenn ein Unixbenutzer aktu
 twofactor_already=Ihr Webmin Login hat bereits die 2-Faktor-Authentifizierung mit Provider $1 und Konto-ID $2 aktiviert.
 twofactor_desc=Auf dieser Seite k&#246;nnen Sie die 2-Faktor-Authentifizierung f&#252;r Webmin-Logins <a href='$2' target=_blank>$1</a> erm&#246;glichen. Einmal aktiviert, wird eine zus&#228;tzliche Authentifizierungs-Token ben&#246;tigt, wenn Sie sich in Webmin einloggen.
 twofactor_disable=Deaktiviere 2-Faktor-Authentifizierung
-twofactor_done=.. komplett. Ihre ID mit diesem Provider ist $1
+twofactor_done=.. komplett. Ihre ID mit diesem Provider ist <tt>$1</tt>.
 twofactor_err=Fehlgeschlagen 2-Faktor-Authentifizierung einzustellen
 twofactor_euser=Ihr Webmin Benutzer wurde nicht gefunden!
-twofactor_title=2-Faktor-Authentifizierung
+twofactor_setup=2-Faktor-Authentifizierung auf diesem System ist nicht noch aktiviert, kann aber &#252;ber das <a href='$1'>Webmin Konfiguration</a>-Modul eingeschaltet werden.
+twofactor_title=Ihre 2-Faktor-Authentifizierung
 udeletes_enone=Nichts ausgew&#228;hlt
 udeletes_ereadonly=Einer der ausgew&#228;hlten Benutzer ist als nicht bearbeitbar markiert.
 udeletes_err=Konnte Benutzer nicht l&#246;schen
