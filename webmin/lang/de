@@ -158,6 +158,8 @@ categories_langok=&#196;ndern
 categories_name=Angezeigte Beschreibung
 categories_ok=Kategorien speichern
 categories_title=Kategorien bearbeiten
+clear_done=Der Webmin-Cache enth&#228;lt $1 von Dateien von $2 URLs, welche erfolgreich gel&#246;scht wurde.
+clear_none=Es gibt keine URLs derzeit in dem Webmin Download-Cache.
 clear_title=L&#246;sche Download Cache
 clone_desc=Klon von $1
 clone_ecopy=Fehler beim Kopieren der Konfiguration : $1
@@ -800,7 +802,7 @@ twofactor_etoptmodule2=Fehlendes Perl-Modul $1
 twofactor_etotpid=Ung&#252;ltiger TOPT base32-enkodierter Schl&#252;ssel
 twofactor_etotpmatch=Ung&#252;ltiger OTP Code
 twofactor_etotpmodule=Das Perl-Modul <tt>$1</tt>, welches f&#252;r die 2-Faktor-Authentifizierung erforderlich ist, ist nicht installiert. Verwenden Sie die <a href='$2'>Perl Module</a> Seite in Webmin um es zu installieren.
-twofactor_etotpmodule2=Fehlendes Per-Modul $1
+twofactor_etotpmodule2=Fehlendes Perl-Modul $1
 twofactor_etotptoken=Google Authenticator Token muss eine Zahl sein
 twofactor_header=2-Faktor-Authentifizierung Optionen
 twofactor_none=Keine
