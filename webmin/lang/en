@@ -59,6 +59,7 @@ bind_ipv6=Accept IPv6 connections?
 bind_eipv6=IPv6 cannot be enabled unless the $1 Perl module is installed
 bind_redirecting=Redirecting to new URL ..
 bind_elsof=New port $1 is already in use by another process
+bind_eonsystem=The IP address $1 is not active on this system, and so cannot be used
 
 log_title=Logging
 log_desc=Webmin can be configured to write a log of web server hits, in the standard CLF log file format. If logging is enabled, you can also choose whether IP addresses or hostnames are recorded, and how often the log file is cleared. When enabled, logs are written to the file $1.
