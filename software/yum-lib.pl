@@ -22,6 +22,7 @@ local (@rv, @newpacks);
 print "<b>",&text('yum_install', "<tt>yum $enable -y install $update</tt>"),"</b><p>\n";
 print "<pre>";
 &additional_log('exec', undef, "yum $enable -y install $update");
+$SIG{'TERM'} = 'ignore';	# Installing webmin itself may kill this script
 local $qm = join(" ", map { quotemeta($_) } split(/\s+/, $update));
 &open_execute_command(CMD, "yum $enable -y install $qm </dev/null", 2);
 while(<CMD>) {
