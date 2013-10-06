@@ -1635,6 +1635,10 @@ if ($config{'userfile'}) {
 			&http_error(500, "Invalid password",
 				    "Password contains invalid characters");
 			}
+		if ($twofactor{$authuser}) {
+			&http_error(500, "No two-factor support",
+				    "HTTP authentication cannot be used when two-factor is enabled");
+			}
 
 		if ($config{'passdelay'} && !$config{'inetd'} && $authuser) {
 			# check with main process for delay
