@@ -79,6 +79,7 @@ bind_eipv6=IPv6 kann nicht aktiviert werden bis das $1 Perl Modul installiert is
 bind_elisten=Fehlender oder ung&#252;ltiger Port um auf UDP-Broadcasts zu achten
 bind_elsof=Neuer Port $1 wird von einem andere Prozess bereits benutzt
 bind_enone=Es wurde keine IP-Adresse oder Port angegeben, auf welchem Webmin horchen soll
+bind_eonsystem=Die IP-Adresse $1 ist nicht aktiv auf diesem System und kann daher nicht verwendet werden
 bind_eport2='$1' ist keine g&#252;ltige Port-Nummer
 bind_erestart=Beim Starten von Webmin mit den neuen IP- und Port-Einstellungen ist ein Fehler aufgetreten : $1
 bind_err=Fehler beim &#196;ndern der Adresse
