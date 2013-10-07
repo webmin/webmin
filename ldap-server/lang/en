@@ -161,7 +161,7 @@ sdelete_edn=Object $1 was not found
 sdelete_edel=LDAP delete of $1 failed : $2
 
 rename_err=Failed to rename object
-rename_eget=Could not fine object with DN $1
+rename_eget=Could not find object with DN $1
 rename_enew=New name does not appear to be valid
 rename_erename=LDAP newdn to $2 from $1 failed : $3
 
