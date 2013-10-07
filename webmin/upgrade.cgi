@@ -532,6 +532,10 @@ else {
 			# Can delete the temporary source directory
 			system("rm -rf \"$extract\"");
 			}
+		&lock_file("$config_directory/config");
+		$gconfig{'upgrade_delete'} = $in{'delete'};
+		&write_file("$config_directory/config", \%gconfig);
+		&unlock_file("$config_directory/config");
 		}
 	}
 &webmin_log("upgrade", undef, undef, { 'version' => $version,

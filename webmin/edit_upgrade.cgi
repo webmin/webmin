@@ -60,8 +60,8 @@ if (!$skip_upgrade) {
 	print "<p>\n";
 	if (!$mode && !$dir) {
 		# Checkbox to delete original directory
-		print "<input type=checkbox name=delete value=1> ",
-			"$text{'upgrade_delete'}<br>\n";
+		print &ui_checkbox("delete", 1, $text{'upgrade_delete'},
+				   $gconfig{'upgrade_delete'}),"<br>\n";
 		}
 	if ((!$mode || $mode eq "rpm") && &foreign_check("proc")) {
 		# Checkbox to check signature
