@@ -1058,5 +1058,6 @@ twofactor_secret=Personal secret key
 twofactor_secret1=Generated randomly
 twofactor_secret0=Use 16-character key
 twofactor_esecret=Secret key must be exactly 16 characters long and contain only letters and numbers
+twofactor_esession=Two-factor authentication cannot be used unless session-based authentication is active
 
 __norefs=1

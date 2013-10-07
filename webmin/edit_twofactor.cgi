@@ -4,6 +4,7 @@
 require './webmin-lib.pl';
 ui_print_header(undef, $text{'twofactor_title'}, "", "twofactor");
 get_miniserv_config(\%miniserv);
+$miniserv{'session'} || &error($text{'twofactor_esession'});
 
 print "$text{'twofactor_desc'}<p>\n";
 
