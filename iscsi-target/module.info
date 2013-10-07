@@ -5,3 +5,4 @@ depends=fdisk lvm raid init
 longdesc=Share disk devices across the network using the iSCSI protocol with the iscsitarget package.
 desc_de=iSCSI-Target 
 desc_ca=Objectius iSCSI
+desc_no=iSCSI-m&#229;l
