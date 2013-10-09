@@ -1659,6 +1659,9 @@ else {
 }
 
 # mail_file_style(user, basedir, style)
+# Given a directory and username, returns the path to that user's mail file
+# under the directory based on the style (which may force use of parts of
+# the username).
 sub mail_file_style
 {
 if ($_[2] == 0) {

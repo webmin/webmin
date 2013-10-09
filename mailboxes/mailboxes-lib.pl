@@ -99,10 +99,12 @@ else {
 			    'index' => scalar(@rv) } );
 		}
 
-	# Check for /var/mail/USERNAME file
+	# Check for /var/mail/USERNAME file or directory
 	if ($dir) {
+		$dir =~ s/\/$//;	# Trailing / means maildir format.
+					# Postfix sometimes does this.
 		local $mf = &mail_file_style($uinfo[0], $dir, $style);
-		push(@rv, { 'type' => 0,
+		push(@rv, { 'type' => -d $mf ? 1 : 0,
 			    'name' => $mf,
 			    'file' => $mf,
 			    'user' => $uinfo[0],
