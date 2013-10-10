@@ -615,6 +615,7 @@ categories_code=ID
 categories_name=Displayed description
 categories_lang=Edit categories in language:
 categories_langok=Change
+categories_custom=Custom
 
 log_access=Changed IP access control
 log_bind=Changed port and address
