@@ -520,12 +520,8 @@ else {
 	my $can = &can_resize_filesystem($type);
 	if ($can && $mounted) {
 		# If currently mounted, check if resizing is possible
-		if ($dir eq "/") {
-			# Cannot resize root
-			$can = 0;
-			}
-		elsif ($type =~ /^ext[3-9]$/ || $type eq "xfs" ||
-		       $type eq "reiserfs" || $type eq "jfs") {
+		if ($type =~ /^ext[3-9]$/ || $type eq "xfs" ||
+		    $type eq "reiserfs" || $type eq "jfs") {
 			# ext*, xfs, jfs and reiserfs can be resized up
 			$can = 1;
 			}
