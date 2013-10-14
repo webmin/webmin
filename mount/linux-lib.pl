@@ -1496,11 +1496,13 @@ elsif ($type eq $smbfs_fs || $type eq "cifs") {
 		}
 	elsif ($support >= 3) {
 		print &ui_table_row($text{'linux_fmode'},
-			&ui_opt_textbox("smbfs_fmask", $options{'fmask'}, 5,
+			&ui_opt_textbox("smbfs_file_mode",
+					$options{'file_mode'}, 5,
 					$text{'default'}));
 
 		print &ui_table_row($text{'linux_dmode'},
-			&ui_opt_textbox("smbfs_dmask", $options{'dmask'}, 5,
+			&ui_opt_textbox("smbfs_dir_mode",
+					$options{'dir_mode'}, 5,
 					$text{'default'}));
 
 		print &ui_table_row($text{'linux_ro'},
@@ -2038,22 +2040,22 @@ elsif ($_[0] eq $smbfs_fs || $_[0] eq "cifs") {
 			{ $options{dmode} = $in{smbfs_dmode}; }
 		}
 	elsif ($support >= 3) {
-		if ($in{'smbfs_fmask_def'}) {
-			delete($options{'fmask'});
+		if ($in{'smbfs_file_mode_def'}) {
+			delete($options{'file_mode'});
 			}
 		else {
-			$in{'smbfs_fmask'} =~ /^[0-7]{3}$/ ||
-			    &error(&text('linux_efmode', $in{'smbfs_fmask'}));
-			$options{'fmask'} = $in{'smbfs_fmask'};
+			$in{'smbfs_file_mode'} =~ /^0?[0-7]{3}$/ ||
+			  &error(&text('linux_efmode', $in{'smbfs_file_mode'}));
+			$options{'file_mode'} = $in{'smbfs_file_mode'};
 			}
 
-		if ($in{'smbfs_dmask_def'}) {
-			delete($options{'dmask'});
+		if ($in{'smbfs_dir_mode_def'}) {
+			delete($options{'dir_mode'});
 			}
 		else {
-			$in{'smbfs_dmask'} =~ /^[0-7]{3}$/ ||
-			    &error(&text('linux_edmode', $in{'smbfs_dmask'}));
-			$options{'dmask'} = $in{'smbfs_dmask'};
+			$in{'smbfs_dir_mode'} =~ /^0?[0-7]{3}$/ ||
+		    	  &error(&text('linux_edmode', $in{'smbfs_dir_mode'}));
+			$options{'dir_mode'} = $in{'smbfs_dir_mode'};
 			}
 
 		delete($options{'ro'}); delete($options{'rw'});
