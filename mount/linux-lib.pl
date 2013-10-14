@@ -1535,6 +1535,10 @@ elsif ($type eq $smbfs_fs || $type eq "cifs") {
 		print &ui_table_row($text{'linux_iocharset'},
 			&ui_opt_textbox("smbfs_iocharset",
 			    $options{'iocharset'}, 10, $text{'default'}));
+
+		print &ui_table_row($text{'linux_nounix'},
+			&ui_yesno_radio("smbfs_nounix",
+					defined($options{"nounix"})));
 		}
 	}
 elsif ($type eq "reiserfs") {
@@ -2081,6 +2085,9 @@ elsif ($_[0] eq $smbfs_fs || $_[0] eq "cifs") {
 				&error($text{'linux_eiocharset'});
 			$options{'iocharset'} = $in{'smbfs_iocharset'};
 			}
+
+		delete($options{'nounix'});
+		if ($in{'smbfs_nounix'}) { $options{'nounix'} = ''; }
 		}
 	}
 elsif ($_[0] eq "reiserfs") {
