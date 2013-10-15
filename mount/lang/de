@@ -220,6 +220,7 @@ linux_noopts=Keine Einstellungen verf&uuml;gbar
 linux_normal=Normal
 linux_nosuid=Verbiete Setuid-Programme?
 linux_notail=Speicherplatz f&#252;r Geschwindigkeitsvorteil abgleichen?
+linux_nounix=Deaktiviere CIFS-Unix-Erweiterungen?
 linux_nr_blocks=Maximale Anzahl der verf&#252;gbaren Bl&#246;cke
 linux_nr_inodes=Maximale Anzahl der verf&#252;gbaren Knoten
 linux_other=Anderes Ger&auml;t
