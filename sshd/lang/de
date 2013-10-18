@@ -199,6 +199,7 @@ users_authkeys_def=Standard (~/.ssh/authorized_keys)
 users_authkeys_set=Datei im Home-Verzeichnis
 users_banner=Meldungsdatei vor dem Anmelden
 users_banner_def=Keiner
+users_chal=Verwende Challenge-Response-Authentifizierung?
 users_dsa=Erlaube DSA (SSH 2) Authentifikation?
 users_eauthkeys=Fehlende oder ung&#252;ltige ausschauende authorized keys Datei
 users_ebanner=Fehlende oder ung&uuml;ltige Datei f&uuml;r Meldung vor dem Anmelden
