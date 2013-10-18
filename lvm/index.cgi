@@ -196,7 +196,7 @@ if (@vgs) {
 			  "<a href='edit_lv.cgi?vg=".&urlize($v->{'name'}).
 		            "&lv=".&urlize($l->{'name'})."'>$l->{'name'}</a>",
 			  $v->{'name'},
-			  &nice_size($l->{'size'}*1024),
+			  &nice_size(($l->{'cow_size'} || $l->{'size'})*1024),
 			  $usedmsg,
 			  (@stat ? &device_message(@stat) : undef).
 			  ($snap ? " ".&text('index_snapof', $snap->{'name'})
