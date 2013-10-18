@@ -22,6 +22,14 @@ if ($in{'confirm'}) {
 	&webmin_log("delete", "lv", $in{'lv'}, $lv);
 	&redirect("index.cgi?mode=lvs");
 	}
+elsif ($in{'confirm_rollback'}) {
+	# Rollback the Snapshot
+	&error_setup($text{'lv_err3'});
+	$err = &rollback_snapshot($lv);
+	&error("<pre>$err</pre>") if ($err);
+	&webmin_log("rollback", "lv", $in{'lv'}, $lv);
+	&redirect("index.cgi?mode=lvs");
+	}
 elsif ($in{'delete'}) {
 	# Ask the user if he is sure
 	&ui_print_header(undef, $text{'lv_delete'}, "");
@@ -32,6 +40,19 @@ elsif ($in{'delete'}) {
 	print "<b>",&text($lv->{'is_snap'} ? 'lv_rusnap' : 'lv_rusure',
 			  "<tt>$lv->{'device'}</tt>"),"</b><p>\n";
 	print &ui_form_end([ [ 'confirm', $text{'lv_deleteok'} ] ]);
+	print "</center>\n";
+	&ui_print_footer("index.cgi?mode=lvs", $text{'index_return'});
+	}
+elsif ($in{'rollback'}) {
+	# Ask the user if he is sure
+	&ui_print_header(undef, $text{'lv_snaprollback'}, "");
+	print "<center>\n";
+	print &ui_form_start("save_lv.cgi");
+	print &ui_hidden("vg", $in{'vg'});
+	print &ui_hidden("lv", $in{'lv'});
+	print "<b>",&text('lv_rusnaprb',
+			"<tt>$lv->{'device'}</tt>"),"</b><p>\n";
+	print &ui_form_end([ [ 'confirm_rollback', $text{'lv_snaprollbackok'} ] ]);
 	print "</center>\n";
 	&ui_print_footer("index.cgi?mode=lvs", $text{'index_return'});
 	}

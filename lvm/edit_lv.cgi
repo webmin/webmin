@@ -243,9 +243,17 @@ elsif ($stat[2]) {
 	print &ui_form_end([ [ undef, $text{'save'} ] ]);
 	}
 elsif ($in{'lv'}) {
-	# Can be resized or deleted
-	print &ui_form_end([ [ undef, $text{'save'} ],
-			     [ 'delete', $text{'delete'} ] ]);
+	if ($lv->{'is_snap'}) {
+		# Can be resized, deleted or rolled back
+			print &ui_form_end([ [ undef, $text{'save'} ],
+					   [ 'delete', $text{'delete'} ],
+					   [ 'rollback', $text{'lv_snaprollback'} ] ]);
+		}
+	else {
+		# Can be resized or deleted
+		print &ui_form_end([ [ undef, $text{'save'} ],
+				   [ 'delete', $text{'delete'} ] ]);
+		}
 	}
 else {
 	# Can be created

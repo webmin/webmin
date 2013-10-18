@@ -475,6 +475,14 @@ local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $? ? $out : undef;
 }
 
+# rollback_snapshot(&lv)
+sub rollback_snapshot
+{
+local $cmd = "lvconvert --merge ".quotemeta($_[0]->{'device'});
+local $out = &backquote_logged("$cmd 2>&1 </dev/null");
+return $? ? $out : undef;
+}
+
 # can_resize_filesystem(type)
 # 0 = no, 1 = enlarge only, 2 = enlarge or shrink
 sub can_resize_filesystem
