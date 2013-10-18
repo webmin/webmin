@@ -135,7 +135,8 @@ else {
 		}
 	elsif ($lv->{'is_snap'}) {
 		# Modifying a snapshot
-		if ($lv->{'size'} != $size) {
+		$oldsize = $lv->{'cow_size'} || $lv->{'size'};
+		if ($oldsize != $size) {
 			$err = &resize_logical_volume($lv, $size);
 			&error("<pre>$err</pre>") if ($err);
 			$lv->{'size'} = $size;
