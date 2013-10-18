@@ -113,6 +113,11 @@ if ($version{'type'} eq 'openssh' && $version{'number'} < 3.7 ||
 			$in{'rhostsrsa'} ? 'yes' : 'no');
 	}
 
+if ($version{'type'} eq 'openssh' && $version{'number'} >= 5) {
+	&save_directive("ChallengeResponseAuthentication", $conf,
+			$in{'chal'} ? 'yes' : 'no');
+	}
+
 &save_directive("IgnoreRhosts", $conf, $in{'rhosts'} ? 'yes' : 'no');
 
 if ($version{'type'} eq 'ssh') {
