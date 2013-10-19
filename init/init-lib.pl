@@ -673,7 +673,8 @@ if ($init_mode eq "systemd" && (!-r "$config{'init_dir'}/$_[0]" ||
 		$_[2] || &error("Systemd service $_[0] cannot be created ".
 				"unless a command is given");
 		&create_systemd_service($unit, $_[1], $_[2], $_[3], undef,
-					$_[5]->{'fork'}, $_[5]->{'pidfile'});
+					$_[5]->{'fork'}, $_[5]->{'pidfile'},
+					$_[5]->{'exit'});
 		}
 	&system_logged("systemctl enable ".
 		       quotemeta($unit)." >/dev/null 2>&1");
@@ -1972,7 +1973,7 @@ Create a new systemd service with the given details.
 =cut
 sub create_systemd_service
 {
-my ($name, $desc, $start, $stop, $restart, $forks, $pidfile) = @_;
+my ($name, $desc, $start, $stop, $restart, $forks, $pidfile, $exits) = @_;
 $start =~ s/\r?\n/ ; /g;
 $stop =~ s/\r?\n/ ; /g;
 $restart =~ s/\r?\n/ ; /g;
@@ -1995,6 +1996,8 @@ my $cfile = &get_systemd_root($name)."/".$name;
 &print_tempfile(CFILE, "ExecStop=$stop\n") if ($stop);
 &print_tempfile(CFILE, "ExecReload=$restart\n") if ($restart);
 &print_tempfile(CFILE, "Type=forking\n") if ($forks);
+&print_tempfile(CFILE, "Type=oneshot\n",
+		       "RemainAfterExit=yes\n") if ($exits);
 &print_tempfile(CFILE, "PIDFile=$pidfile\n") if ($pidfile);
 &print_tempfile(CFILE, "\n");
 &print_tempfile(CFILE, "[Install]\n");

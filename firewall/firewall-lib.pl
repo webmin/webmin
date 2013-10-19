@@ -256,7 +256,7 @@ local $stop = "$ipt -t filter -F\n".
 	      "$ipt -t mangle -P OUTPUT ACCEPT";
 &foreign_require("init", "init-lib.pl");
 &init::enable_at_boot("webmin-iptables", "Load IPtables save file",
-		      $start, $stop);
+		      $start, $stop, undef, { 'exit' => 1 });
 }
 
 # interface_choice(name, value)
