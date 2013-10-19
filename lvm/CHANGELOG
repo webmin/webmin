@@ -36,3 +36,6 @@ When editing an LV whose size is not a round number of GB, MB or TB and is inste
 Added a button to the logical volume page for moving blocks from one physical volume to another.
 ---- Changes since 1.630 ----
 When resizing a logical volume, you can now select to have it use up all space in the volume group (thanks to a patch from Caspar Smit).
+---- Changes since 1.660 ----
+Added support for rolling back snapshots (thanks to a patch from Caspar Smit).
+Fixed the display of snapshot sizes.
