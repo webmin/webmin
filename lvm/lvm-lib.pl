@@ -854,5 +854,15 @@ else {
 	}
 }
 
+# supports_snapshot_rollback()
+# Only newer kernels safely support this (2.6.35 and above)
+sub supports_snapshot_rollback
+{
+my $out = &backquote_command("uname -r 2>/dev/null </dev/null");
+return $out =~ /^(\d+)\./ && $1 >= 3 ||
+       $out =~ /^(\d+)\.(\d+)/ && $1 == 2 && $2 >= 7 ||
+       $out =~ /^(\d+)\.(\d+)\.(\d+)/ && $1 == 2 && $2 == 6 && $3 >= 35;
+}
+
 1;
 

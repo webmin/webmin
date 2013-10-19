@@ -244,7 +244,7 @@ elsif ($stat[2]) {
 	print &ui_form_end([ [ undef, $text{'save'} ] ]);
 	}
 elsif ($in{'lv'}) {
-	if ($lv->{'is_snap'}) {
+	if ($lv->{'is_snap'} && &supports_snapshot_rollback()) {
 		# Can be resized, deleted or rolled back
 			print &ui_form_end([ [ undef, $text{'save'} ],
 					   [ 'delete', $text{'delete'} ],
