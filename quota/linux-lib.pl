@@ -760,17 +760,15 @@ Consult the dumpe2fs command where possible.
 sub fs_block_size
 {
 if ($_[2] =~ /^ext\d+$/) {
+	# Quota block size on ext filesystems is always 1k
 	return 1024;
-	# This code isn't needed, because the quota block size is
-	# not the same as the filesystem block size!!
-	#if (&has_command("dumpe2fs")) {
-	#	local $out = `dumpe2fs -h $_[1] 2>&1`;
-	#	if (!$? && $out =~ /block size:\s+(\d+)/i) {
-	#		return $1;
-	#		}
-	#	}
 	}
 elsif ($_[2] eq "xfs") {
+	# Quota block size on XFS filesystems is always 1k
+	return 1024;
+	}
+elsif ($_[1] eq "/dev/simfs") {
+	# Size is also 1k on OpenVZ
 	return 1024;
 	}
 return undef;
