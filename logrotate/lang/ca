@@ -40,6 +40,7 @@ edit_missingok=Ignora el fitxer de registre si no hi és
 edit_size=Mida màxima abans de rotar
 edit_always=Ignorada
 edit_ext=Extensió dels noms de fitxer rotats
+edit_dateext=Utilitza l'extensió de la data per als fitxers rotats
 edit_mail=Envia el fitxer de registre per correu abans d'esborrar-lo
 edit_mailto=Sí, a l'adreça
 edit_mailno=No, no l'enviïs
@@ -80,6 +81,7 @@ save_emailto=Hi falta l'adreça de correu per als registres rotats
 save_eerrors=Hi falta l'adreça de correu per als missatges d'error
 save_epre=El script de pre-rotació no pot contenir cap línia <tt>endscript</tt> ni <tt>endrotate</tt>
 save_epost=El script de post-rotació no pot contenir cap línia <tt>endscript</tt> ni <tt>endrotate</tt>
+save_enofiles=No has introduït cap fitxer per rotar
 
 log_modify_sched=S'ha canviat el treball cron de rotació de registres
 log_create_sched=S'ha creat el treball cron de rotació de registres

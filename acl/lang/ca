@@ -5,6 +5,7 @@ index_create=Crea un nou usuari Webmin.
 index_rcreate=Crea un nou usuari de nivell de risc.
 index_convert=Converteix els Usuaris Unix a Usuaris Webmin
 index_cert=Demana un certificat SSL
+index_twofactor=Autenticació de Dos Factors
 index_certmsg=Fes clic en aquest botó per demanar un certificat SSL que et permetrà de connectar a Webmin de forma segura sense haver d'introduir un nom d'usuari i una contrasenya.
 index_return=a la llista d'usuaris
 index_none=Cap
@@ -48,6 +49,11 @@ edit_passold=La contrasenya es va canviar per darrer cop fa $1 dies
 edit_passtoday=La contrasenya es va canviar fa menys d'un dia
 edit_modules=Mòduls
 edit_clone=Clona
+edit_twofactor=Tipus d'autenticació de dos factors
+edit_twofactorprov=S'està utilitzant el proveïdor $1 amb ID $2
+edit_twofactorcancel=Elimina el requeriment d'autenticació de dos factors
+edit_twofactornone=Encara no n'hi ha cap de configurada
+edit_twofactoradd=Activa Dos Factors Per a l'Usuari
 edit_lang=Idioma
 edit_notabs=Categorització de mòduls
 edit_logout=Temps d'expulsió per inactivitat
@@ -227,6 +233,8 @@ log_pass=S'han canviat les restriccions de contrasenyes
 log_unix=S'ha canviat l'autenticació d'usuari Unix
 log_sync=S'ha canviat la sincronització d'usuari Unix
 log_sql=S'ha canviat la base de dades d'usuaris i grups
+log_twofactor=S'ha assignat l'usuari $1 amb el proveïdor de dos factors $2
+log_onefactor=S'ha desassignat l'usuari $1 de l'autenticació de dos factors
 
 gedit_ecannot=No tens permís per editar grups
 gedit_title=Edició de Grups Webmin
@@ -449,4 +457,20 @@ makedn_still=S'han trobat alguns problemes, tot i que s'ha creat el DN: $1
 schema_title=Descàrrega de l'Esquema LDAP
 schema_desc=Abans que Webmin pugui utilitzar un servidor LDAP per a emmagatzemar usuaris i grups, cal configurar-lo per a utilitzar l'esquema de sota. Habitualment, això es pot fer desant la definició de l'esquema a <tt>/etc/ldap/schema</tt> o <tt>/etc/openldap/schema</tt> com a <tt>webmin.schema</tt>, i configurant llavors el servidor per a utilitzar aquest fitxer d'esquema.
 schema_download=Descarrega el fitxer d'esquema: <a href=$1>$1</a>
+
+twofactor_err=La configuració de l'autenticació de dos factors ha fallat
+twofactor_euser=No s'ha trobat el teu usuari Webmin!
+twofactor_title=Autenticació de Dos Factors
+twofactor_disable=Desactiva l'Autenticació de Dos Factors
+twofactor_already=El teu usuari Webmin ja té activada l'autenticació de dos factors amb el proveïdor $1 i l'ID de compte $2.
+twofactor_already2=L'usuari Webmin $3 ja té activada l'autenticació de dos factors amb el proveïdor $1 i l'ID de compte $2.
+twofactor_desc=Aquesta pàgina et permet d'activar l'autenticació de dos factors per al teu usuari Webmin utilitzant <a href='$2' target=_blank>$1</a>. Un cop activa, es demanarà un testimoni d'autenticació addicional en entrar a Webmin.
+twofactor_desc2=Aquesta pàgina et permet d'activar l'autenticació de dos factors per a l'usuari Webmin $3 utilitzant <a href='$2' target=_blank>$1</a>. Un cop activa, es demanarà un testimoni d'autenticació addicional en entrar a Webmin.
+twofactor_enable=Assigna Autenticació de Dos Factors
+twofactor_header=Detalls de l'assignació de l'autenticació de dos factors
+twofactor_enrolling=S'està assignant l'autenticació de dos factors amb el proveïdor ...
+twofactor_failed=...l'assignació ha fallat: $1
+twofactor_done=...completa. El teu ID amb aquest proveïdor és <tt>$1</tt>.
+twofactor_setup=L'autenticació de dos factors encara no s'ha activat al sistema, però es pot activar utilitzant el mòdul de <a href='$1'>Configuració de Webmin</a>.
+
 __norefs=1
