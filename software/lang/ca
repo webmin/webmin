@@ -70,6 +70,8 @@ delete_ok=Suprimeix
 delete_nodeps=Ignora les dependències
 delete_noscripts=Salta't els scripts de desinstal·lació
 delete_efile=Fitxer temporal a esborrar invàlid
+delete_purge=Depura els fitxers de configuració
+delete_depstoo=Elimina també les dependències no utilitzades
 
 file_title=Informació de Fitxer
 file_notfound=No hi ha cap informació disponible sobre $1

@@ -6,6 +6,8 @@ index_clearcmds=Neteja les ordres
 index_desc=Introdueix una ordre shell a executar en el camp de sota. L'ordre <tt>cd</tt> es pot utilitzar per a canviar el directori per a ordres subsegüents.
 index_pok=Executa l'ordre anterior
 index_edit=Edita l'anterior
+index_trunced=La sortida total de $2 s'ha truncat a $1.
+index_timedout=S'ha cancel·lat l'ordre després de $1 segons d'execució.
 
 acl_user=Executa les ordres com a usuari
 acl_user_def=Usuari Webmin actual
