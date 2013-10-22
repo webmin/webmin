@@ -1187,7 +1187,11 @@ else {
 	$rv = $db;
 	}
 if ($host) {
+	($host, $port) = split(/:/, $host);
 	$rv .= ";host=$host";
+	if ($port) {
+		$rv .= ";port=$port";
+		}
 	}
 return $rv;
 }
