@@ -17,9 +17,6 @@ for($i=0; $i<@cs_names; $i++) {
 				$text{'ui_rgb'}));
 	}
 
-print &ui_table_row($text{'ui_texttitles'},
-	&ui_yesno_radio("texttitles", int($gconfig{'texttitles'})));
-
 print &ui_table_row($text{'ui_sysinfo'},
 	&ui_select("sysinfo", int($gconfig{'sysinfo'}),
 		   [ map { [ $_, $text{'ui_sysinfo'.$_} ] } (0, 1, 4, 2, 3) ]));
