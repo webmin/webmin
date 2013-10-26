@@ -55,7 +55,7 @@ if (!$in{'new'} && $feature->{'type'}) {
 if ($feature->{'type'} == 0) {
 	# Unsupported text line
 	print "<tr> <td><b>$text{'feature_text'}</b></td>\n";
-	printf "<td><input name=text size=50 value='%s'></td> </tr>\n",
+	printf "<td><input name=text size=80 value='%s'></td> </tr>\n",
 		&html_escape($feature->{'text'});
 	}
 elsif ($feature->{'type'} == 1) {
