@@ -21,7 +21,7 @@ if ($type eq "minecraft_up") {
 			 'desc' => $text{'monitor_down'} };
 		}
 	if ($monitor->{'checklog'}) {
-		my $logfile = $config{'minecraft_dir'}."/server.log";
+		my $logfile = &get_minecraft_log_file();
 		my @st = stat($logfile);
 		if (time() - $st[9] < 5*60) {
 			# Server has logged something recently, so assume OK

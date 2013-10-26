@@ -247,13 +247,25 @@ if (!$nolog) {
 	}
 }
 
+# get_minecraft_log_file()
+sub get_minecraft_log_file
+{
+my $newfile = $config{'minecraft_dir'}."/logs/latest.log";
+if (-r $newfile) {
+	return $newfile;
+	}
+else {
+	return $config{'minecraft_dir'}."/server.log";
+	}
+}
+
 # execute_minecraft_command(command, [no-log], [wait-time])
 # Run a command, and return output from the server log
 sub execute_minecraft_command
 {
 my ($cmd, $nolog, $wait) = @_;
 $wait ||= 100;
-my $logfile = $config{'minecraft_dir'}."/server.log";
+my $logfile = &get_minecraft_log_file();
 my $fh = "LOG";
 &open_readfile($fh, $logfile);
 seek($fh, 0, 2);
@@ -310,7 +322,7 @@ sub get_login_logout_times
 {
 my ($name) = @_;
 my ($ip, $intime, $xx, $yy, $zz, $outtime);
-my $logfile = $config{'minecraft_dir'}."/server.log";
+my $logfile = &get_minecraft_log_file();
 my $fh = "TAIL";
 my @events;
 &open_execute_command($fh, "tail -10000 $logfile", 1, 1);
@@ -776,7 +788,7 @@ if (time() - $config{'last_check'} > 6*60*60) {
 # usage that counts towards any limits
 sub get_current_day_usage
 {
-my $logfile = $config{'minecraft_dir'}."/server.log";
+my $logfile = &get_minecraft_log_file();
 
 # Seek back till we find a day line from a previous day
 my @st = stat($logfile);
