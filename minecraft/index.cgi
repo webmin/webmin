@@ -4,10 +4,16 @@
 use strict;
 use warnings;
 require './minecraft-lib.pl';
-our (%in, %text, %config, $module_name);
+our (%in, %text, %config, $module_name, $module_root_directory);
 
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 		 &help_search_link("minecraft", "google"));
+
+# Check for sane root dir
+if ($config{'minecraft_dir'} eq $module_root_directory) {
+	&ui_print_endpage(&text('index_rooterr', $module_root_directory,
+			  "../config.cgi?$module_name"));
+	}
 
 my $err = &check_minecraft_server();
 if ($err && &is_minecraft_port_in_use()) {

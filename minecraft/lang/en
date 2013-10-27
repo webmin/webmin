@@ -1,6 +1,7 @@
 index_title=Minecraft Server
 index_cerr=An error was detected with your Minecraft server : $1. You may need to adjust the <a href='$2'>module configuration</a>.
 index_cerr2=The Minecraft server does not appear to be installed on your system. If it is already running, you will need to adjust the <a href='$1'>module configuration</a> to use the correct paths.
+index_rooterr=The Minecraft root directory is set on the <a href='$1'>module configuration</a> page to <tt>$2</tt>, but this is the same as the Webmin module directory!
 index_nojava=Also, the Java command <tt>$1</tt> needed to run Minecraft was not found.
 index_offer=Alternatively, Webmin can automatically download and install the Minecraft server for you.
 index_dir=Install into directory
