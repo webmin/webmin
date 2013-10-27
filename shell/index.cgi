@@ -64,13 +64,13 @@ if (!$in{'clear'}) {
 			delete($ENV{'SCRIPT_NAME'});	# So that called Webmin
 							# programs get the right
 							# module, not this one!
-			if (&supports_users()) {
-				$cmd = &command_as_user($user, 0, $cmd)." 2>&1";
+			if (&supports_users() && $user ne "root") {
+				$cmd = &command_as_user($user, 0, $cmd);
 				}
 			else {
-				$cmd = "($cmd) 2>&1";
+				$cmd = "($cmd)";
 				}
-			$pid = &open_execute_command(OUTPUT, $cmd, 1, 0);
+			$pid = &open_execute_command(OUTPUT, $cmd, 2, 0);
 			$out = "";
 			$trunc = 0;
 			$total = 0;
