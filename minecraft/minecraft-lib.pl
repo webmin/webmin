@@ -308,7 +308,7 @@ sub list_connected_players
 my @out = &execute_minecraft_command("/list", 1);
 my @rv;
 foreach my $l (@out) {
-	if ($l !~ /players\s+online:/ && $l =~ /INFO\]\s+(\S.*)$/) {
+	if ($l !~ /players\s+online:/ && $l =~ /INFO\]:?\s+(\S.*)$/) {
 		push(@rv, split(/,\s+/, $1));
 		}
 	}
@@ -448,7 +448,7 @@ sub list_banned_players
 my @out = &execute_minecraft_command("/banlist", 1);
 my @rv;
 foreach my $l (@out) {
-	if ($l !~ /banned\s+players:/ && $l =~ /INFO\]\s+(\S.*)$/) {
+	if ($l !~ /banned\s+players:/ && $l =~ /INFO\]:?\s+(\S.*)$/) {
 		push(@rv, grep { $_ ne "and" } split(/[, ]+/, $1));
 		}
 	}
@@ -462,7 +462,7 @@ sub list_whitelisted_players
 my @out = &execute_minecraft_command("/whitelist list", 1);
 my @rv;
 foreach my $l (@out) {
-	if ($l !~ /whitelisted\s+players:/ && $l =~ /INFO\]\s+(\S.*)$/) {
+	if ($l !~ /whitelisted\s+players:/ && $l =~ /INFO\]:?\s+(\S.*)$/) {
 		push(@rv, grep { $_ ne "and" } split(/[, ]+/, $1));
 		}
 	}
@@ -546,7 +546,7 @@ sub list_banned_ips
 my @out = &execute_minecraft_command("/banlist ips", 1);
 my @rv;
 foreach my $l (@out) {
-	if ($l !~ /banned\s+IP\s+addresses:/ && $l =~ /INFO\]\s+(\S.*)$/) {
+	if ($l !~ /banned\s+IP\s+addresses:/ && $l =~ /INFO\]:?\s+(\S.*)$/) {
 		push(@rv, grep { $_ ne "and" } split(/[, ]+/, $1));
 		}
 	}
