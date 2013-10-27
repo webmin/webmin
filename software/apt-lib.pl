@@ -134,6 +134,7 @@ return $name eq "dhcpd" && $gconfig{'os_version'} >= 7 ?
        $name eq "postgresql" ? "postgresql postgresql-client" :
        $name eq "openssh" ? "ssh" :
        $name eq "openldap" ? "slapd" :
+       $name eq "ldap" ? "libnss-ldap libpam-ldap" :
        $name eq "dovecot" ? "dovecot-common dovecot-imapd dovecot-pop3d" :
 			       $name;
 }

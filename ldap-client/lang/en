@@ -5,6 +5,7 @@ index_return=module index
 index_fixpam=<b>Warning</b> - Webmin has detected two separate LDAP configuration files on your system. NSS-LDAP is configured using $1, while PAM-LDAP uses $2. This may cause in-consistencies between the two services.
 index_fix=Fix by Linking Files
 index_ignore=Don't Show This Message
+index_ldapmod=LDAP Client
 
 server_title=LDAP Server Configuration
 server_header=LDAP server and login options

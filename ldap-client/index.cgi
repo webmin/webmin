@@ -6,9 +6,13 @@ require './ldap-client-lib.pl';
 
 # Make sure the config file exists
 if (!-r $config{'auth_ldap'}) {
+	&foreign_require("software");
+	$lnk = &software::missing_install_link("ldap", $text{'index_ldapmod'},
+                        "../$module_name/", $module_info{'desc'});
 	&ui_print_endpage(
 		&ui_config_link('index_econf',
-			[ "<tt>$config{'auth_ldap'}</tt>", undef ]));
+			[ "<tt>$config{'auth_ldap'}</tt>", undef ]).
+		($lnk ? "<p>\n".$lnk : ""));
 	}
 
 # Check for separate config files for PAM and NSS
