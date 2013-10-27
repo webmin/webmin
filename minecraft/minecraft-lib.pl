@@ -308,7 +308,7 @@ sub list_connected_players
 my @out = &execute_minecraft_command("/list", 1);
 my @rv;
 foreach my $l (@out) {
-	if ($l !~ /players\s+online:/ && $l =~ /\[INFO\]\s+(\S.*)$/) {
+	if ($l !~ /players\s+online:/ && $l =~ /INFO\]\s+(\S.*)$/) {
 		push(@rv, split(/,\s+/, $1));
 		}
 	}
@@ -326,26 +326,37 @@ my $logfile = &get_minecraft_log_file();
 my $fh = "TAIL";
 my @events;
 &open_execute_command($fh, "tail -10000 $logfile", 1, 1);
+my @tm = localtime(time());
 while(<$fh>) {
+	my ($y, $mo, $d, $h, $m, $s, $msg);
 	if (/^(\d+)\-(\d+)\-(\d+)\s+(\d+):(\d+):(\d+)\s+\[\S+\]\s+(.*)/) {
-		my ($y, $mo, $d, $h, $m, $s, $msg) =($1, $2, $3, $4, $5, $6, $7);
-		if ($msg =~ /^\Q$name\E\[.*\/([0-9\.]+):(\d+)\]\s+logged\s+in.*\((\-?[0-9\.]+),\s+(\-?[0-9\.]+),\s+(\-?[0-9\.]+)\)/) {
-			# Login message
-			$ip = $1;
-			($xx, $yy, $zz) = ($3, $4, $5);
-			$intime = &parse_log_time($y, $m, $d, $h, $mo, $s);
-			}
-		elsif ($msg =~ /^\Q$name\E\s+(\[.*\]\s+)?lost/ ||
-		       $msg =~ /^Disconnecting\s+\Q$name\E/) {
-			# Logout message
-			$outtime = &parse_log_time($y, $m, $d, $h, $mo, $s);
-			}
-		elsif ($msg =~ /^(\S+\s+)?\Q$name\E(\s|\[)/) {
-			# Some player event
-			push(@events,
-			   { 'time' => &parse_log_time($y, $m, $d, $h, $mo, $s),
-			     'msg' => $msg });
-			}
+		# Old log format
+		($y, $mo, $d, $h, $m, $s, $msg) = ($1, $2, $3, $4, $5, $6, $7);
+		}
+	elsif (/^\[(\d+):(\d+):(\d+)\]\s+\[[^\[]+\]:\s*(.*)/) {
+		# New log format
+		($h, $m, $s, $msg) = ($1, $2, $3, $4);
+		($y, $mo, $d) = ($tm[5]+1900, $tm[4]+1, $tm[3]);
+		}
+	else {
+		next;
+		}
+	if ($msg =~ /^\Q$name\E\[.*\/([0-9\.]+):(\d+)\]\s+logged\s+in.*\((\-?[0-9\.]+),\s+(\-?[0-9\.]+),\s+(\-?[0-9\.]+)\)/) {
+		# Login message
+		$ip = $1;
+		($xx, $yy, $zz) = ($3, $4, $5);
+		$intime = &parse_log_time($y, $m, $d, $h, $mo, $s);
+		}
+	elsif ($msg =~ /^\Q$name\E\s+(\[.*\]\s+)?lost/ ||
+	       $msg =~ /^Disconnecting\s+\Q$name\E/) {
+		# Logout message
+		$outtime = &parse_log_time($y, $m, $d, $h, $mo, $s);
+		}
+	elsif ($msg =~ /^(\S+\s+)?\Q$name\E(\s|\[)/) {
+		# Some player event
+		push(@events,
+		   { 'time' => &parse_log_time($y, $m, $d, $h, $mo, $s),
+		     'msg' => $msg });
 		}
 	}
 close($fh);
@@ -391,7 +402,7 @@ sub list_banned_players
 my @out = &execute_minecraft_command("/banlist", 1);
 my @rv;
 foreach my $l (@out) {
-	if ($l !~ /banned\s+players:/ && $l =~ /\[INFO\]\s+(\S.*)$/) {
+	if ($l !~ /banned\s+players:/ && $l =~ /INFO\]\s+(\S.*)$/) {
 		push(@rv, grep { $_ ne "and" } split(/[, ]+/, $1));
 		}
 	}
@@ -405,7 +416,7 @@ sub list_whitelisted_players
 my @out = &execute_minecraft_command("/whitelist list", 1);
 my @rv;
 foreach my $l (@out) {
-	if ($l !~ /whitelisted\s+players:/ && $l =~ /\[INFO\]\s+(\S.*)$/) {
+	if ($l !~ /whitelisted\s+players:/ && $l =~ /INFO\]\s+(\S.*)$/) {
 		push(@rv, grep { $_ ne "and" } split(/[, ]+/, $1));
 		}
 	}
@@ -489,7 +500,7 @@ sub list_banned_ips
 my @out = &execute_minecraft_command("/banlist ips", 1);
 my @rv;
 foreach my $l (@out) {
-	if ($l !~ /banned\s+IP\s+addresses:/ && $l =~ /\[INFO\]\s+(\S.*)$/) {
+	if ($l !~ /banned\s+IP\s+addresses:/ && $l =~ /INFO\]\s+(\S.*)$/) {
 		push(@rv, grep { $_ ne "and" } split(/[, ]+/, $1));
 		}
 	}
@@ -815,10 +826,18 @@ while(1) {
 my (%rv, %limit_rv);
 my (%lastlogin, %limit_lastlogin);
 while(my $line = <LOGFILE>) {
-	$line =~ /^((\d+)\-(\d+)\-(\d+))\s+(\d+):(\d+):(\d+)/ || next;
-	my $day = $1;
-	$day eq $wantday || next;
-	my $secs = $5*60*60 + $6*60 + $7;
+	my ($day, $secs);
+	if ($line =~ /^((\d+)\-(\d+)\-(\d+))\s+(\d+):(\d+):(\d+)/) {
+		# Old log format, which contains the day and time
+		$day = $1;
+		$day eq $wantday || next;
+		$secs = $5*60*60 + $6*60 + $7;
+		}
+	elsif ($line =~ /^\[(\d+):(\d+):(\d+)\]/) {
+		# New log format, assume that it is for the current day
+		$day = $wantday;
+		$secs = $1*60*60 + $2*60 + $3;
+		}
 	if ($line =~ /\s(\S+)\[.*\/([0-9\.]+):(\d+)\]\s+logged\s+in\s/) {
 		# Login by a user
 		my ($u, $ip) = ($1, $2);
