@@ -323,43 +323,89 @@ sub get_login_logout_times
 my ($name) = @_;
 my ($ip, $intime, $xx, $yy, $zz, $outtime);
 my $logfile = &get_minecraft_log_file();
-my $fh = "TAIL";
 my @events;
-&open_execute_command($fh, "tail -10000 $logfile", 1, 1);
-my @tm = localtime(time());
-while(<$fh>) {
-	my ($y, $mo, $d, $h, $m, $s, $msg);
-	if (/^(\d+)\-(\d+)\-(\d+)\s+(\d+):(\d+):(\d+)\s+\[\S+\]\s+(.*)/) {
-		# Old log format
-		($y, $mo, $d, $h, $m, $s, $msg) = ($1, $2, $3, $4, $5, $6, $7);
+my @files = ( $logfile );
+if ($logfile =~ /^(.*)\/latest.log$/) {
+	# New server version keeps old rotated log files in gzip format
+	my $dir = $1;
+	my @extras;
+	opendir(DIR, $dir);
+	foreach my $f (readdir(DIR)) {
+		if ($f =~ /^(\d+\-\d+\-\d+-\d+)\.log\.gz$/) {
+			push(@extras, $f);
+			}
 		}
-	elsif (/^\[(\d+):(\d+):(\d+)\]\s+\[[^\[]+\]:\s*(.*)/) {
-		# New log format
-		($h, $m, $s, $msg) = ($1, $2, $3, $4);
-		($y, $mo, $d) = ($tm[5]+1900, $tm[4]+1, $tm[3]);
+	closedir(DIR);
+	@extras = sort { $a cmp $b } @extras;
+	unshift(@files, map { "$dir/$_" } @extras);
+
+	# To avoid reading too much, limit to newest 100k of logs
+	my @small;
+	my $total = 0;
+	foreach my $f (reverse(@files)) {
+		push(@small, $f);
+		my @st = stat($f);
+		$total += $st[7];
+		last if ($total > 100000);
+		}
+	@files = reverse(@small);
+	}
+foreach my $f (@files) {
+	my $fh = "TAIL";
+	if ($f =~ /\/latest.log$/) {
+		# Latest log, read all of it
+		&open_readfile($fh, $f);
+		}
+	elsif ($f =~ /\.gz$/) {
+		# Read whole compressed log
+		&open_execute_command($fh, "gunzip -c $f", 1, 1);
 		}
 	else {
-		next;
+		# Old single log file, read only the last 10k lines
+		&open_execute_command($fh, "tail -10000 $f", 1, 1);
 		}
-	if ($msg =~ /^\Q$name\E\[.*\/([0-9\.]+):(\d+)\]\s+logged\s+in.*\((\-?[0-9\.]+),\s+(\-?[0-9\.]+),\s+(\-?[0-9\.]+)\)/) {
-		# Login message
-		$ip = $1;
-		($xx, $yy, $zz) = ($3, $4, $5);
-		$intime = &parse_log_time($y, $m, $d, $h, $mo, $s);
+	my @tm = localtime(time());
+	while(<$fh>) {
+		my ($y, $mo, $d, $h, $m, $s, $msg);
+		if (/^(\d+)\-(\d+)\-(\d+)\s+(\d+):(\d+):(\d+)\s+\[\S+\]\s+(.*)/) {
+			# Old log format
+			($y, $mo, $d, $h, $m, $s, $msg) = ($1, $2, $3, $4, $5, $6, $7);
+			}
+		elsif (/^\[(\d+):(\d+):(\d+)\]\s+\[[^\[]+\]:\s*(.*)/) {
+			# New log format
+			($h, $m, $s, $msg) = ($1, $2, $3, $4);
+			if ($f =~ /\/(\d+)\-(\d+)\-(\d+)/) {
+				# Get date from old rotated log
+				($y, $mo, $d) = ($1, $2, $3);
+				}
+			else {
+				# Assume latest.log, which is for today
+				($y, $mo, $d) = ($tm[5]+1900, $tm[4]+1, $tm[3]);
+				}
+			}
+		else {
+			next;
+			}
+		if ($msg =~ /^\Q$name\E\[.*\/([0-9\.]+):(\d+)\]\s+logged\s+in.*\((\-?[0-9\.]+),\s+(\-?[0-9\.]+),\s+(\-?[0-9\.]+)\)/) {
+			# Login message
+			$ip = $1;
+			($xx, $yy, $zz) = ($3, $4, $5);
+			$intime = &parse_log_time($y, $m, $d, $h, $mo, $s);
+			}
+		elsif ($msg =~ /^\Q$name\E\s+(\[.*\]\s+)?lost/ ||
+		       $msg =~ /^Disconnecting\s+\Q$name\E/) {
+			# Logout message
+			$outtime = &parse_log_time($y, $m, $d, $h, $mo, $s);
+			}
+		elsif ($msg =~ /^(\S+\s+)?\Q$name\E(\s|\[)/) {
+			# Some player event
+			push(@events,
+			   { 'time' => &parse_log_time($y, $m, $d, $h, $mo, $s),
+			     'msg' => $msg });
+			}
 		}
-	elsif ($msg =~ /^\Q$name\E\s+(\[.*\]\s+)?lost/ ||
-	       $msg =~ /^Disconnecting\s+\Q$name\E/) {
-		# Logout message
-		$outtime = &parse_log_time($y, $m, $d, $h, $mo, $s);
-		}
-	elsif ($msg =~ /^(\S+\s+)?\Q$name\E(\s|\[)/) {
-		# Some player event
-		push(@events,
-		   { 'time' => &parse_log_time($y, $m, $d, $h, $mo, $s),
-		     'msg' => $msg });
-		}
+	close($fh);
 	}
-close($fh);
 return ( $ip, $intime, $xx, $yy, $zz, $outtime, \@events );
 }
 
