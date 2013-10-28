@@ -206,6 +206,7 @@ index_offer=Alternativ kann Webmin die Minecraft Server f&#252;r Sie automatisch
 index_restart=Starte Minecraft Server neu
 index_restartdesc=Klicke auf diese Schaltfl&#228;che, um die aktuelle Konfiguration durch einen Neustart des Minecraft Server anwenden.
 index_return=Modulindex
+index_rooterr=Das Minecraft Root-Verzeichnis ist auf der <a href='$1'>Modulkonfiguration</a> Seite nach <tt>$2</tt> gesetzt, aber das ist das selbe wie das Webmin-Modul Verzeichnis!
 index_start=Starte Minecraft Server
 index_startdesc=Klicken diese Taste, um den Minecraft Server zu starten, so dass Clients sich verbinden k&#246;nnen.
 index_stop=Stoppe Minecraft Server
