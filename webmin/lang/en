@@ -28,6 +28,7 @@ access_emask='$1' is not a valid netmask
 access_ecidr='$1' is not a valid CIDR number
 access_eip='$1' is not a complete IP or network address
 access_eip6='$1' is not a complete IPv6 or network address
+access_ecidr6='$1' is not a valid IPv6 newtwork size
 access_ehost=Failed to find IP address for '$1'
 access_eself=Your current IP address ($1) would be denied
 access_always=Resolve hostnames on every request?

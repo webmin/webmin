@@ -1517,22 +1517,33 @@ sub valid_allow
 {
 my ($h) = @_;
 if ($h =~ /^([0-9\.]+)\/(\d+)$/) {
+	# IPv4 address/cidr
 	&check_ipaddress($1) ||
 		return &text('access_enet', "$1");
 	$2 >= 0 && $2 <= 32 ||
 		return &text('access_ecidr', "$2");
 	}
 elsif ($h =~ /^([0-9\.]+)\/([0-9\.]+)$/) {
+	# IPv4 address/netmask
 	&check_ipaddress($1) ||
 		return &text('access_enet', "$1");
 	&check_ipaddress($2) ||
 		return &text('access_emask', "$2");
 	}
 elsif ($h =~ /^[0-9\.]+$/) {
+	# IPv4 address
 	&check_ipaddress($h) ||
 		return &text('access_eip', $h);
 	}
+elsif ($h =~ /^([a-f0-9:]+)\/(\d+)$/) {
+	# IPv6 address/prefix
+	&check_ip6address($1) ||
+		return &text('access_eip6', $1);
+	$2 >= 0 && $2 <= 128 ||
+		return &text('access_ecidr6', "$2");
+	}
 elsif ($h =~ /^[a-f0-9:]+$/) {
+	# IPv6 address
 	&check_ip6address($h) ||
 		return &text('access_eip6', $h);
 	}
