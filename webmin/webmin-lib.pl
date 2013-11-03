@@ -1430,11 +1430,11 @@ else {
 for(my $i=1; $i<@_; $i++) {
 	my $mismatch = 0;
 	my $ip = $_[$i];
-        if ($ip =~ /^(\S+)\/(\d+)$/) {
+        if ($ip =~ /^([0-9\.]+)\/(\d+)$/) {
                 # Convert CIDR to netmask format
                 $ip = $1."/".&prefix_to_mask($2);
                 }
-	if ($ip =~ /^(\S+)\/(\S+)$/) {
+	if ($ip =~ /^([0-9\.]+)\/([0-9\.]+)$/) {
 		# Compare with IPv4 network/mask
 		my @mo = split(/\./, $1);
 		my @ms = split(/\./, $2);
@@ -1476,10 +1476,19 @@ for(my $i=1; $i<@_; $i++) {
 			}
 		}
 	elsif ($_[$i] =~ /^[a-f0-9:]+$/) {
-		# Compare with IPv6 address or network
-		my @mo = split(/:/, $_[$i]);
-		while(@mo && !$mo[$#mo]) { pop(@mo); }
-		for(my $j=0; $j<@mo; $j++) {
+		# Compare with a full IPv6 address
+		if (&canonicalize_ip6($_[$i]) ne canonicalize_ip6($_[0])) {
+			$mismatch = 1;
+			}
+		}
+	elsif ($_[$i] =~ /^([a-f0-9:]+)\/(\d+)$/) {
+		# Compare with an IPv6 network
+		my $v6size = $2;
+		my $v6addr = &canonicalize_ip6($1);
+		my $bytes = $v6size / 16;
+		my @mo = split(/:/, $v6addr);
+		my @io = split(/:/, &canonicalize_ip6($_[0]));
+		for(my $j=0; $j<$bytes; $j++) {
 			if ($mo[$j] ne $io[$j]) {
 				$mismatch = 1;
 				}
@@ -1541,6 +1550,8 @@ elsif ($h =~ /^([a-f0-9:]+)\/(\d+)$/) {
 		return &text('access_eip6', $1);
 	$2 >= 0 && $2 <= 128 ||
 		return &text('access_ecidr6', "$2");
+	$2 % 16 == 0 ||
+		return &text('access_ecidr16', "$2");
 	}
 elsif ($h =~ /^[a-f0-9:]+$/) {
 	# IPv6 address
@@ -2432,5 +2443,31 @@ foreach my $t ($now - 30, $now, $now + 30) {
 return $text{'twofactor_etotpmatch'};
 }
 
+# canonicalize_ip6(address)
+# Converts an address to its full long form. Ie. 2001:db8:0:f101::20 to
+# 2001:0db8:0000:f101:0000:0000:0000:0020
+sub canonicalize_ip6
+{
+my ($addr) = @_;
+return $addr if (!&check_ip6address($addr));
+my @w = split(/:/, $addr);
+my $idx = &indexof("", @w);
+if ($idx >= 0) {
+	# Expand ::
+	my $mis = 8 - scalar(@w);
+	my @nw = @w[0..$idx];
+	for(my $i=0; $i<$mis; $i++) {
+		push(@nw, 0);
+		}
+	push(@nw, @w[$idx+1 .. $#w]);
+	@w = @nw;
+	}
+foreach my $w (@w) {
+	while(length($w) < 4) {
+		$w = "0".$w;
+		}
+	}
+return lc(join(":", @w));
+}
 
 1;

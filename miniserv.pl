@@ -2692,11 +2692,11 @@ if ($needhn && !defined($hn = $ip_match_cache{$_[0]})) {
 	}
 for($i=2; $i<@_; $i++) {
 	local $mismatch = 0;
-	if ($_[$i] =~ /^(\S+)\/(\d+)$/) {
+	if ($_[$i] =~ /^([0-9\.]+)\/(\d+)$/) {
 		# Convert CIDR to netmask format
 		$_[$i] = $1."/".&prefix_to_mask($2);
 		}
-	if ($_[$i] =~ /^(\S+)\/(\S+)$/) {
+	if ($_[$i] =~ /^([0-9\.]+)\/([0-9\.]+)$/) {
 		# Compare with IPv4 network/mask
 		@mo = split(/\./, $1);
 		@ms = split(/\./, $2);
@@ -2764,7 +2764,16 @@ for($i=2; $i<@_; $i++) {
 		}
 	elsif ($_[$i] =~ /^([a-f0-9:]+)\/(\d+)$/) {
 		# Compare with an IPv6 network
-		# XXX
+		local $v6size = $2;
+		local $v6addr = &canonicalize_ip6($1);
+		local $bytes = $v6size / 16;
+		@mo = split(/:/, $v6addr);
+		local @io6 = split(/:/, &canonicalize_ip6($_[0]));
+		for($j=0; $j<$bytes; $j++) {
+			if ($mo[$j] ne $io6[$j]) {
+				$mismatch = 1;
+				}
+			}
 		}
 	elsif ($_[$i] !~ /^[0-9\.]+$/) {
 		# Compare with hostname
