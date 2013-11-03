@@ -2698,7 +2698,8 @@ for($i=2; $i<@_; $i++) {
 		}
 	if ($_[$i] =~ /^(\S+)\/(\S+)$/) {
 		# Compare with IPv4 network/mask
-		@mo = split(/\./, $1); @ms = split(/\./, $2);
+		@mo = split(/\./, $1);
+		@ms = split(/\./, $2);
 		for($j=0; $j<4; $j++) {
 			if ((int($io[$j]) & int($ms[$j])) != int($mo[$j])) {
 				$mismatch = 1;
@@ -2746,7 +2747,7 @@ for($i=2; $i<@_; $i++) {
 			}
 		}
 	elsif ($_[$i] =~ /^[0-9\.]+$/) {
-		# Compare with IPv4 address or network
+		# Compare with a full or partial IPv4 address
 		@mo = split(/\./, $_[$i]);
 		while(@mo && !$mo[$#mo]) { pop(@mo); }
 		for($j=0; $j<@mo; $j++) {
@@ -2756,14 +2757,14 @@ for($i=2; $i<@_; $i++) {
 			}
 		}
 	elsif ($_[$i] =~ /^[a-f0-9:]+$/) {
-		# Compare with IPv6 address or network
-		@mo = split(/:/, $_[$i]);
-		while(@mo && !$mo[$#mo]) { pop(@mo); }
-		for($j=0; $j<@mo; $j++) {
-			if ($mo[$j] ne $io[$j]) {
-				$mismatch = 1;
-				}
+		# Compare with a full IPv6 address
+		if (&canonicalize_ip6($_[$i]) ne canonicalize_ip6($_[0])) {
+			$mismatch = 1;
 			}
+		}
+	elsif ($_[$i] =~ /^([a-f0-9:]+)\/(\d+)$/) {
+		# Compare with an IPv6 network
+		# XXX
 		}
 	elsif ($_[$i] !~ /^[0-9\.]+$/) {
 		# Compare with hostname
@@ -6033,4 +6034,31 @@ if (!$pid) {
 	exit(0);
 	}
 return $pid;
+}
+
+# canonicalize_ip6(address)
+# Converts an address to its full long form. Ie. 2001:db8:0:f101::20 to
+# 2001:0db8:0000:f101:0000:0000:0000:0020
+sub canonicalize_ip6
+{
+my ($addr) = @_;
+return $addr if (!&check_ip6address($addr));
+my @w = split(/:/, $addr);
+my $idx = &indexof("", @w);
+if ($idx >= 0) {
+	# Expand ::
+	my $mis = 8 - scalar(@w);
+	my @nw = @w[0..$idx];
+	for(my $i=0; $i<$mis; $i++) {
+		push(@nw, 0);
+		}
+	push(@nw, @w[$idx+1 .. $#w]);
+	@w = @nw;
+	}
+foreach my $w (@w) {
+	while(length($w) < 4) {
+		$w = "0".$w;
+		}
+	}
+return lc(join(":", @w));
 }
