@@ -1,3 +1,4 @@
-file.jar:		FileManager.java Util.java
+file.jar:		FileManager.java Util.java manifest.txt
 			CLASSPATH=plugin.jar:. javac -target 1.2 -source 1.2 *.java
-			jar cf file.jar *.class
+			jar cfm file.jar manifest.txt *.class
+			jarsigner -keystore ~/webmin-keystore file.jar me
