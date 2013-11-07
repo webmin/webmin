@@ -976,7 +976,8 @@ $rv = "<select name=\"$_[1]\">\n";
 for($i=3; $i<@_; $i++) {
 	$_[$i] =~ /^([^,]*),(.*)$/;
 	$rv .= sprintf "<option value=\"$2\" %s> $1\n",
-		lc($2) eq lc($_[0]) || !defined($_[0]) && lc($2) eq lc($_[2]) ? "selected" : "";
+		lc($2) eq lc($_[0]) || !defined($_[0]) && lc($2) eq lc($_[2]) ? "selected" : "",
+		"</option>";
 	}
 $rv .= "</select>\n";
 return $rv;
@@ -1004,10 +1005,12 @@ if (&indexof($_[0], @hl) < 0) { push(@hl, $_[0]); }
 $rv = "<select name=$_[1]>\n";
 foreach $h (&unique(@hl)) {
 	$rv .= sprintf "<option value=\"$h\" %s>$h\n",
-		$h eq $_[0] ? "selected" : "";
+		$h eq $_[0] ? "selected" : "",
+		"</option>";
 	}
 $rv .= sprintf "<option value=\"None\" %s>&lt;$text{'core_none'}&gt;\n",
-	$_[0] eq "None" ? "selected" : "";
+	$_[0] eq "None" ? "selected" : "",
+	"</option>";
 $rv .= "</select>\n";
 return $rv;
 }
