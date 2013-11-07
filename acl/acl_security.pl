@@ -20,12 +20,14 @@ map { $ucan{$_}++ } split(/\s+/, $o->{'users'});
 foreach $u (&list_users()) {
 	printf "<option %s>%s\n",
 		$ucan{$u->{'name'}} ? 'selected' : '',
-		$u->{'name'};
+		$u->{'name'},
+		"</option>";
 	}
 foreach $g (&list_groups()) {
 	printf "<option %s value=%s>%s\n",
 		$ucan{'_'.$g->{'name'}} ? 'selected' : '',
-		'_'.$g->{'name'}, &text('acl_gr', $g->{'name'});
+		'_'.$g->{'name'}, &text('acl_gr', $g->{'name'}),
+		"</option>";
 	}
 print "</select></td>\n";
 
@@ -42,7 +44,8 @@ map { $mcan{$_}++ } split(/\s+/, $o->{'mods'});
 foreach $m (&list_module_infos()) {
 	printf "<option value=%s %s>%s\n",
 		$m->{'dir'}, $mcan{$m->{'dir'}} ? 'selected' :'',
-		$m->{'desc'};
+		$m->{'desc'},
+		"</option>";
 	}
 print "</select></td> </tr>\n";
 
@@ -179,10 +182,12 @@ printf "<input type=radio name=gassign_def value=0 %s> %s<br>\n",
 print "<select name=gassign multiple size=3 width=150>\n";
 map { $gcan{$_}++ } split(/\s+/, $o->{'gassign'});
 printf "<option value=_none %s>&lt;%s&gt;\n",
-	$gcan{'_none'} ? 'selected' : '', $text{'acl_gnone'};
+	$gcan{'_none'} ? 'selected' : '', $text{'acl_gnone'},
+	"</option>";
 foreach $g (&list_groups()) {
 	printf "<option %s>%s\n",
-		$gcan{$g->{'name'}} ? 'selected' : '', $g->{'name'};
+		$gcan{$g->{'name'}} ? 'selected' : '', $g->{'name'},
+		"</option>";
 	}
 print "</select></td> </tr>\n";
 }

@@ -27,7 +27,8 @@ print "$text{'sync_group'} <select name=group>\n";
 foreach $g (@glist) {
 	printf "<option %s>%s\n",
 		$g->{'name'} eq $config{'sync_group'} ? "selected" : "",
-		$g->{'name'};
+		$g->{'name'},
+		"</option>";
 	}
 print "</select><p>\n";
 

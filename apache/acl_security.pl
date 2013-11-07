@@ -23,24 +23,29 @@ foreach $v (@virts) {
 	local $vn = $can || $vn[0];
 	printf "<option value=\"%s\" %s>%s\n",
 		$vn, $can ? "selected" : "",
-		$vn eq "__default__" ? $text{'acl_defserv'} : $vn;
+		$vn eq "__default__" ? $text{'acl_defserv'} : $vn,
+		"</option>";
 	delete($vcan{$can}) if ($can);
 	}
 foreach $vn (keys %vcan) {
 	next if ($vn eq "*");
 	printf "<option value=\"%s\" %s>%s\n",
 		$vn, "selected",
-		$vn eq "__default__" ? $text{'acl_defserv'} : $vn;
+		$vn eq "__default__" ? $text{'acl_defserv'} : $vn,
+		"</option>";
 	}
 print "</select></td>\n";
 
 print "<td><b>$text{'acl_global'}</b></td> <td><select name=global>\n";
 printf "<option value=1 %s> $text{'yes'}\n",
-	$_[0]->{'global'} == 1 ? "selected" : "";
+	$_[0]->{'global'} == 1 ? "selected" : "",
+	"</option>";
 printf "<option value=2 %s> $text{'acl_htaccess'}\n",
-	$_[0]->{'global'} == 2 ? "selected" : "";
+	$_[0]->{'global'} == 2 ? "selected" : "",
+	"</option>";
 printf "<option value=0 %s> $text{'no'}</select></td> </tr>\n",
-	$_[0]->{'global'} == 0 ? "selected" : "";
+	$_[0]->{'global'} == 0 ? "selected" : "",
+	"</option>";
 
 print "<tr> <td><b>$text{'acl_create'}</b></td> <td>\n";
 printf "<input type=radio name=create value=1 %s> $text{'yes'}\n",
@@ -102,7 +107,8 @@ map { $types{$_}++ } split(/\s+/, $_[0]->{'types'});
 print "<select name=types size=5 multiple>\n";
 for($i=0; $text{"type_$i"}; $i++) {
 	printf "<option value=\"%d\" %s>%s\n",
-		$i, $types{$i} ? "selected" : "", $text{"type_$i"};
+		$i, $types{$i} ? "selected" : "", $text{"type_$i"},
+		"</option>";
 	}
 print "</select></td> </tr>\n";
 

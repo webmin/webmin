@@ -226,10 +226,9 @@ EOF
 	print &ui_form_start(undef, undef, undef,
 		"onSubmit='filechosen(); return false'");
 	print &ui_table_start(undef, "width=100%", 2);
-	print &ui_table_row(undef,
-		&ui_submit($text{'chooser_ok'})." ".
+	print &ui_table_row(&ui_submit($text{'chooser_ok'}),
 		&ui_textbox("path", $dir.$file, 45, 0, undef,
-			    "style='width:90%'"), 2);
+			    "style='width:100%'"), 1);
 	print &ui_table_end();
 	print &ui_form_end();
 	&popup_footer();
