@@ -18,16 +18,16 @@ for($i=0; $i<=@serials; $i++) {
 	local $sfound;
 	print "<select name=serial_$i>\n";
 	opendir(DIR, "/dev");
-	printf "<option value='' %s>%s\n",
+	printf "<option value='' %s>%s</option>\n",
 		$serials[$i] ? "" : "selected",
 		$i ? "&nbsp;" : $text{'conf_none'};
 	foreach $p (glob($config{'serials'})) {
-		printf "<option %s>%s\n",
+		printf "<option %s>%s</option>\n",
 			$p eq $serials[$i] ? "selected" : "", $p;
 		$sfound++ if ($p eq $serials[$i]);
 		}
 	closedir(DIR);
-	print "<option selected>$serials[$i]\n" if ($serials[$i] && !$sfound);
+	print "<option selected>$serials[$i]</option>\n" if ($serials[$i] && !$sfound);
 	print "</select>\n";
 	}
 print "</td> </tr>\n";
@@ -67,9 +67,9 @@ printf "<input type=radio name=mcast_def value=0 %s>\n",
 	$mcast ? "checked" : "";
 @mcast = split(/\s+/, $mcast);
 $mloop = "<select name=mcast_loop>\n";
-$mloop .= sprintf "<option value=0 %s>%s\n",
+$mloop .= sprintf "<option value=0 %s>%s</option>\n",
 		$mcast[4] ? "" : "selected", $text{'conf_disabled'};
-$mloop .= sprintf "<option value=1 %s>%s\n",
+$mloop .= sprintf "<option value=1 %s>%s</option>\n",
 		$mcast[4] ? "selected" : "", $text{'conf_enabled'};
 $mloop .= "</select>\n";
 print &text('conf_mcastv',
@@ -129,7 +129,7 @@ if (&foreign_check("syslog")) {
 	local %sconfig = &foreign_config("syslog");
 	print "<select name=logfacility>\n";
 	foreach $f (split(/\s+/, $sconfig{'facilities'})) {
-		printf "<option %s>%s\n",
+		printf "<option %s>%s</option>\n",
 			$f eq $logfacility ? "selected" : "", $f;
 		}
 	print "</select>\n";

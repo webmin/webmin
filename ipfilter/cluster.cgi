@@ -45,7 +45,7 @@ if (@addservers) {
 	print "<select name=server>\n";
 	foreach $s (@addservers) {
 		print "<option value=$s->{'id'}>",
-			$s->{'desc'} ? $s->{'desc'} : $s->{'host'},"\n";
+			$s->{'desc'} ? $s->{'desc'} : $s->{'host'},"</option>\n";
 		}
 	print "</select></td>\n";
 	}
@@ -55,7 +55,7 @@ if (@groups) {
 	      "value='$text{'cluster_gadd'}'>\n";
 	print "<select name=group>\n";
 	foreach $g (@groups) {
-		print "<option>$g->{'name'}\n";
+		print "<option>$g->{'name'}</option>\n";
 		}
 	print "</select></td>\n";
 	}

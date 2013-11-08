@@ -36,7 +36,7 @@ print "<td><input name=host size=20 value=\"$ch[0]\"></td>\n";
 print "<td><b>$text{'ech_t'}</b></td>\n";
 print "<td><select name=type>\n";
 foreach $t (keys %ts) {
-	printf "<option value=$t %s>$ts{$t}\n", $t eq $ch[1] ? "selected" : "";
+	printf "<option value=$t %s>$ts{$t}</option>\n", $t eq $ch[1] ? "selected" : "";
 	}
 print "</select></td> </tr>\n";
 

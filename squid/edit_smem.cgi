@@ -70,11 +70,11 @@ for($i=0; $i<=@dirs; $i++) {
 		print "<td><input name=cache_dir_$i size=30 ",
 		      "value=\"$dv[1]\"></td>\n";
 		print "<td><select name=cache_type_$i>\n";
-		printf "<option value=ufs %s>$text{'ec_u'}\n",
+		printf "<option value=ufs %s>$text{'ec_u'}</option>\n",
 			$dv[0] eq 'ufs' ? 'selected' : '';
-		printf "<option value=diskd %s>$text{'ec_diskd'}\n",
+		printf "<option value=diskd %s>$text{'ec_diskd'}</option>\n",
 			$dv[0] eq 'diskd' ? 'selected' : '';
-		printf "<option value=aufs %s>$text{'ec_ua'}\n",
+		printf "<option value=aufs %s>$text{'ec_ua'}</option>\n",
 			$dv[0] eq 'aufs' ? 'selected' : '';
 		print "</select></td>\n";
 		print "<td><input name=cache_size_$i size=8 ",
@@ -90,9 +90,9 @@ for($i=0; $i<=@dirs; $i++) {
 		print "<td><input name=cache_dir_$i size=30 ",
 		      "value=\"$dv[1]\"></td>\n";
 		print "<td><select name=cache_type_$i>\n";
-		printf "<option value=ufs %s>$text{'ec_u'}\n",
+		printf "<option value=ufs %s>$text{'ec_u'}</option>\n",
 			$dv[0] eq 'ufs' ? 'selected' : '';
-		printf "<option value=asyncufs %s>$text{'ec_ua'}\n",
+		printf "<option value=asyncufs %s>$text{'ec_ua'}</option>\n",
 			$dv[0] eq 'asyncufs' ? 'selected' : '';
 		print "</select></td>\n";
 		print "<td><input name=cache_size_$i size=8 ",

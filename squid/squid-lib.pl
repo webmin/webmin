@@ -42,7 +42,7 @@ $vv = $v ? $v->{'value'} : $_[3];
 $rv = "<td><b>$_[0]</b></td> <td valign=top><select name=$_[1]>";
 for($i=4; $i<@_; $i+=2) {
 	$rv .= "<option value=\"".$_[$i+1]."\" ".
-		($vv eq $_[$i+1] ? "selected" : "")."> $_[$i]\n";
+		($vv eq $_[$i+1] ? "selected" : "").">$_[$i]</option>\n";
 	}
 return $rv."</select></td>\n";
 }
@@ -205,7 +205,7 @@ local ($rv, %ts);
 $rv .= sprintf "<input name=$_[0] size=$_[1] value=\"%s\">\n", $_[2];
 $rv .= "<select name=$_[0]_u>\n";
 foreach $u (keys %ts) {
-	$rv .= sprintf "<option value=$u %s>$ts{$u}\n",
+	$rv .= sprintf "<option value=$u %s>$ts{$u}</option>\n",
 		$_[3] =~ /^$u/ ? "selected" : "";
 	}
 $rv .= "</select>\n";
@@ -253,10 +253,10 @@ $rv .= sprintf "<input name=$_[1] size=$_[4] value=\"%s\">\n",
 	$v ? $v->{'values'}->[0] : "";
 $rv .= "<select name=$_[1]_u>\n";
 foreach $u (@ss) {
-	$rv .= sprintf "<option value=$u->[0] %s>$u->[1]\n",
+	$rv .= sprintf "<option value=$u->[0] %s>$u->[1]</option>\n",
 		$v && $v->{'values'}->[1] eq $u->[0] ? "selected" : "";
 	}
-$rv .= sprintf "<option value='' %s>bytes\n",
+$rv .= sprintf "<option value='' %s>bytes</option>\n",
 	$v && $v->{'values'}->[1] eq "" ? "selected" : "";
 $rv .= "</select></td>\n";
 return $rv;

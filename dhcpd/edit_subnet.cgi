@@ -71,10 +71,10 @@ print "</td> </tr>\n";
 if (!defined($in{'ret'})) {
 	print "<tr> <td><b>$text{'esub_shnet'}</b></td>\n";
 	print "<td><select name=parent>\n";
-	printf "<option value=\"\" '%s'>&lt;%s&gt;\n",
+	printf "<option value=\"\" '%s'>&lt;%s&gt;</option>\n",
 		$s_parent ? "" : "checked", $text{'esub_none'};
 	foreach $s (&find("shared-network", $conf)) {
-		printf "<option value=\"%s\" %s>%s\n",
+		printf "<option value=\"%s\" %s>%s</option>\n",
 			$s->{'index'},
 			$s eq $s_parent ? "selected" : "",
 			$s->{'values'}->[0]
@@ -116,7 +116,7 @@ print "<tr> <td valign=top><b>$text{'esub_hosts'}</b></td>\n";
 print "<td><select name=hosts size=3 multiple>\n";
 foreach $h (@host) {
 	next if !&can('r', \%access, $h);
-	printf "<option value=\"%s,%s\" %s>%s\n",
+	printf "<option value=\"%s,%s\" %s>%s</option>\n",
 		$h->{'index'}, $insubn{$h},
 		(!$in{'new'}) && $insubn{$h} eq $sub->{'index'} ? "selected" : "",
 		$h->{'values'}->[0];
@@ -131,7 +131,7 @@ foreach $g (@group) {
 	foreach $h (@{$g->{'members'}}) {
 		if ($h->{'name'} eq "host") { $gm++; }
 		}
-	printf "<option value=\"%s,%s\" %s>%s\n",
+	printf "<option value=\"%s,%s\" %s>%s</option>\n",
 		$g->{'index'}, $insubn{$g},
 		(!$in{'new'}) && $insubn{$g} eq $sub->{'index'} ? "selected" : "",
 		&group_name($gm, $g);

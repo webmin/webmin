@@ -64,10 +64,10 @@ for($i=0; $i<$len; $i++) {
 	else { $meth = $cgi = ""; }
 	$rv .= "<tr $cb><td><select name=Script_meth_$i>\n";
 	foreach $m ("", "GET", "POST", "PUT", "DELETE") {
-		$rv .= sprintf "<option %s>$m\n", $meth eq $m ? "selected" : "";
+		$rv .= sprintf "<option %s>$m</option>\n", $meth eq $m ? "selected" : "";
 		$found++ if ($meth eq $m);
 		}
-	printf "<option selected>$meth\n" if (!$found);
+	printf "<option selected>$meth</option>\n" if (!$found);
 	$rv .= "</select></td>\n";
 	$rv .= "<td><input name=Script_cgi_$i size=40 value=\"$cgi\"></td>\n";
 	$rv .= "</tr>\n";

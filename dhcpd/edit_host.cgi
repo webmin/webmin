@@ -185,7 +185,7 @@ if (!defined($in{'ret'})) {
 	else {
 		print "<select name=assign onChange='setparent(0)'>\n";
 		for ($i = 0; $i <= 3; $i++) {
-			printf "<option value=$i %s>%s\n",
+			printf "<option value=$i %s>%s</option>\n",
 				$assign == $i ? "selected" : "",
 				$labels[$i];
 			}
@@ -195,7 +195,7 @@ if (!defined($in{'ret'})) {
 	if ($assign == 3) {
 		$ig = 0;
 		foreach $g (@group) {
-			printf "<option value=\"%s\" %s>%s\n",
+			printf "<option value=\"%s\" %s>%s</option>\n",
 				(defined($shared{$g}) ? "$shared{$g}," : "").
 				(defined($subnet{$g}) ? "$subnet{$g}," : "").
 				$g->{'index'},
@@ -208,7 +208,7 @@ if (!defined($in{'ret'})) {
 	elsif ($assign == 2) {
 		$iu = 0;
 		foreach $u (@subn) {
-			printf "<option value=\"%s\" %s>%s\n",
+			printf "<option value=\"%s\" %s>%s</option>\n",
 				defined($shared{$u}) ? "$shared{$u},$u->{'index'}" : $u->{'index'},
 				$iu == $sel_parent ? "selected" : "",
 				$subn_desc[$iu]
@@ -219,7 +219,7 @@ if (!defined($in{'ret'})) {
 	elsif ($assign == 1) {
 		$is = 0;
 		foreach $s (@shar) {
-			printf "<option value=\"%s\" %s>%s\n",
+			printf "<option value=\"%s\" %s>%s</option>\n",
 				$s->{'index'},
 				$is == $sel_parent ? "selected" : "",
 				$shar_desc[$is]
@@ -240,11 +240,11 @@ else {
 $hard = $hconf ? &find("hardware", $hconf) : undef;
 print "<td><b>$text{'ehost_hwaddr'}</b></td>\n";
 print "<td nowrap><select name=hardware_type>\n";
-printf "<option %s>ethernet\n",
+printf "<option %s>ethernet</option>\n",
 	$hard && $hard->{'values'}->[0] eq "ethernet" ? "selected" : "";
-printf "<option %s>token-ring\n",
+printf "<option %s>token-ring</option>\n",
 	$hard && $hard->{'values'}->[0] eq "token-ring" ? "selected" : "";
-printf "<option %s>fddi\n",
+printf "<option %s>fddi</option>\n",
 	$hard && $hard->{'values'}->[0] eq "fddi" ? "selected" : "";
 print "</select>";
 printf "<input name=hardware size=18 value=\"%s\"></td> </tr>\n",

@@ -100,7 +100,7 @@ if (&foreign_check("net")) {
 	print "<td><select name=iface multiple size=$sz>\n";
 	foreach $i (@ifaces) {
 		$n = $i->{'fullname'};
-		printf "<option value=%s %s>%s (%s)\n",
+		printf "<option value=%s %s>%s (%s)</option>\n",
 			$n, $got{$n} ? 'selected' : '', $n, &net::iface_type($n);
 		}
 	print "</select></td>\n";

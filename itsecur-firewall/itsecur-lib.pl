@@ -332,13 +332,13 @@ return undef if (!@groups);
 local $rv = $_[3] ? "<select name=$_[0] size=5 multiple>"
 		  : "<select name=$_[0]>\n";
 if ($_[2]) {
-	$rv .= sprintf "<option value='' %s>%s\n",
+	$rv .= sprintf "<option value='' %s>%s</option>\n",
 		$_[1] ? "" : "selected", $_[2] == 2 ? $text{'other'} : "&nbsp;";
 	}
 local $g;
 local %vals = map { $_, 1 } split(/\s+/, $_[1]);
 foreach $g (@groups) {
-	$rv .= sprintf "<option value=%s %s>%s\n",
+	$rv .= sprintf "<option value=%s %s>%s</option>\n",
 		$g->{'name'}, $vals{$g->{'name'}} ? "selected" : "",
 		$g->{'name'};
 	}
@@ -354,7 +354,7 @@ local %got = map { $_, 1 } split(/,/, $_[1]);
 local $rv = $_[3] ? "<select name=$_[0] size=5 multiple>"
 		  : "<select name=$_[0]>\n";
 if ($_[2]) {
-	$rv .= sprintf "<option value='' %s>%s\n",
+	$rv .= sprintf "<option value='' %s>%s</option>\n",
 		$_[1] ? "" : "selected", $_[2] == 2 ? $text{'other'} : "&nbsp;";
 	}
 local $s;
@@ -376,7 +376,7 @@ foreach $s (@servs) {
 		$desc .= ", " if ($desc);
 		$desc .= $s->{'others'}->[$i];
 		}
-	$rv .= sprintf "<option value=%s %s>%s%s\n",
+	$rv .= sprintf "<option value=%s %s>%s%s</option>\n",
 		$s->{'name'}, $got{$s->{'name'}} ? "selected" : "",
 		$s->{'name'}, $_[4] ? "" : " ($desc)";
 	}
@@ -392,7 +392,7 @@ local $a;
 if ($_[2]) {
 	$rv .= "<select name=$_[0]>\n";
 	foreach $a (@actions) {
-		$rv .= sprintf "<option value=%s %s>%s\n",
+		$rv .= sprintf "<option value=%s %s>%s</option>\n",
 			$a, $_[1] eq $a ? "selected" : "",
 			$text{"rule_".$a};
 		}
@@ -422,10 +422,10 @@ local @protos = ( 'tcp', 'udp', 'icmp', 'ip' );
 #close(PROTOS);
 local $p;
 local $rv = "<select name=$_[0]>\n";
-$rv .= sprintf "<option value='' %s>&nbsp;\n",
+$rv .= sprintf "<option value='' %s>&nbsp;</option>\n",
 		$_[1] eq '' ? "selected" : "";
 foreach $p (&unique(@protos)) {
-        $rv .= sprintf "<option value='%s' %s>%s\n",
+        $rv .= sprintf "<option value='%s' %s>%s</option>\n",
                         $p, $_[1] eq $p && $p ? "selected" : "",
                         uc($p) || "-------";
         }
@@ -471,20 +471,20 @@ if (@ifaces) {
 	local $rv = "<select name=$_[0]>\n";
 	local ($i, $found);
 	if ($_[4]) {
-		$rv .= sprintf "<option value='' %s>%s\n",
+		$rv .= sprintf "<option value='' %s>%s</option>\n",
 			$_[1] eq "" ? "selected" : "", "&lt;None&gt;";
 		$found++ if ($_[1] eq "");
 		}
 	foreach $i (@ifaces) {
-		$rv .= sprintf "<option value=%s %s>%s\n",
+		$rv .= sprintf "<option value=%s %s>%s</option>\n",
 			$i, $_[1] eq $i ? "selected" : "", $i;
 		$found++ if ($_[1] eq $i);
 		}
 	if ($_[3]) {
-		$rv .= "<option value=$_[1] selected>$_[1]\n" if (!$found && $_[1]);
+		$rv .= "<option value=$_[1] selected>$_[1]</option>\n" if (!$found && $_[1]);
 		}
 	else {
-		$rv .= sprintf "<option value='' %s> %s\n",
+		$rv .= sprintf "<option value='' %s>%s</option>\n",
 				!$found && $_[1] ? "selected" : "", $text{'rule_oifc'};
 		$rv .= "</select>\n";
 		$rv .= sprintf "<input name=$_[0]_other size=6 value='%s'>\n",
@@ -505,7 +505,7 @@ return undef if (!@times);
 local $rv = "<select name=$_[0]>\n";
 local $t;
 foreach $t (@times) {
-	$rv .= sprintf "<option value=%s %s>%s\n",
+	$rv .= sprintf "<option value=%s %s>%s</option>\n",
 		$t->{'name'}, $t->{'name'} eq $_[1] ? "selected" : "",
 		$t->{'name'};
 	}

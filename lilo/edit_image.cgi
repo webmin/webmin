@@ -70,26 +70,26 @@ printf "<input name=initrd size=30 value='%s'> %s</td> </tr>\n",
 $readonly = &find("read-only", $members);
 $readwrite = &find("read-write", $members);
 print "<tr> <td><b>$text{'image_mode'}</b></td> <td><select name=ro>\n";
-printf "<option value=0 %s>$text{'image_fromkern'}\n",
+printf "<option value=0 %s>$text{'image_fromkern'}</option>\n",
 	$readonly || $readwrite ? "" : "selected";
-printf "<option value=1 %s>$text{'image_ro'}\n",
+printf "<option value=1 %s>$text{'image_ro'}</option>\n",
 	$readonly ? "selected" : "";
-printf "<option value=2 %s>$text{'image_rw'}\n",
+printf "<option value=2 %s>$text{'image_rw'}</option>\n",
 	$readwrite ? "selected" : "";
 print "</select></td>\n";
 
 $vga = lc(&find_value("vga", $members));
 print "<td><b>$text{'image_vga'}</b></td>\n";
 print "<td><select name=vga>\n";
-printf "<option value='' %s>$text{'image_fromkern'}\n",
+printf "<option value='' %s>$text{'image_fromkern'}</option>\n",
 	$vga ? "" : "selected";
-printf "<option value=normal %s>80x25\n",
+printf "<option value=normal %s>80x25</option>\n",
 	$vga eq "normal" ? "selected" : "";
-printf "<option value=ext %s>80x50\n",
+printf "<option value=ext %s>80x50</option>\n",
 	$vga eq "ext" || $vga eq "extended" ? "selected" : "";
-printf "<option value=ask %s>$text{'image_ask'}\n",
+printf "<option value=ask %s>$text{'image_ask'}</option>\n",
 	$vga eq "ask" ? "selected" : "";
-printf "<option value=other %s>$text{'image_other'}\n",
+printf "<option value=other %s>$text{'image_other'}</option>\n",
 	$vga =~ /\d/ ? "selected" : "";
 printf "</select><input name=vgaother size=6 value='%s'></td> </tr>\n",
 	$vga =~ /\d/ ? $vga : "";

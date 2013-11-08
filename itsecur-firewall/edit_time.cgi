@@ -58,7 +58,7 @@ printf "<input type=radio name=days_def value=0 %s> %s<br>\n",
 %days = map { $_, 1 } split(/,/, $time->{'days'});
 print "<select name=days size=7 multiple>\n";
 for($i=0; $i<7; $i++) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$i, $days{$i} ? "selected" : "", $text{'day_'.$i};
 	}
 print "</select></td> </tr>\n";

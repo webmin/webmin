@@ -19,7 +19,7 @@ local ($z, %zcan);
 map { $zcan{$_}++ } split(/\s+/, $_[0]->{'zones'});
 foreach $z (sort { $a->{'value'} cmp $b->{'value'} } @zones) {
 	local $v = $z->{'values'}->[0];
-	printf "<option value='%s' %s>%s\n",
+	printf "<option value='%s' %s>%s</option>\n",
 		$v, $zcan{$v} ? "selected" : "",
 		&arpa_to_ip($v);
 	}

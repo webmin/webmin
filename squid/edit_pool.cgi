@@ -43,7 +43,7 @@ $cls = $pool->{'values'}->[1] || 1;
 print "<tr> <td><b>$text{'pool_class'}</b></td>\n";
 print "<td><select name=class>\n";
 foreach $c (1 .. ($squid_version >= 3 ? 5 : 3)) {
-	printf "<option value=%s %s>%s - %s\n",
+	printf "<option value=%s %s>%s - %s</option>\n",
 		$c, $cls == $c ? "selected" : "",
 		$c, $text{"delay_class_$c"};
 	}
@@ -169,7 +169,7 @@ $rv .= sprintf "<input name=%s_n size=8 value='%s'>\n",
 		$_[0], $_[1] > 0 ? $_[1]/$ud[$u] : $_[1];
 $rv .= "<select name=$_[0]_u>\n";
 for($i=0; $i<@ud; $i++) {
-	$rv .= sprintf "<option value=%s %s>%s\n",
+	$rv .= sprintf "<option value=%s %s>%s</option>\n",
 		$i, $i == $u ? "selected" : "", $text{'pool_unit'.$i};
 	}
 $rv .= "</select>\n";

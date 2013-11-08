@@ -1132,11 +1132,14 @@ if ($label =~ /^([^<]*)(<[\000-\377]*)$/) {
 	$label = $1;
 	$after = $2;
 	}
-return "<input class='ui_radio' type=radio name=\"".&quote_escape($name)."\" ".
+my $ret = "<input class='ui_radio' type=radio name=\"".&quote_escape($name)."\" ".
        "value=\"".&quote_escape($value)."\" ".
        ($sel ? " checked" : "").($dis ? " disabled=true" : "").
        " id=\"$id\"".
-       " $tags> <label for=\"$id\">$label</label>$after\n";
+       " $tags>";
+    $ret .= "<label for=\"$id\">$label</label>" if ($label ne '');
+    $ret .= "$after\n";
+    return $ret;
 }
 
 =head2 ui_textarea(name, value, rows, cols, [wrap], [disabled?], [tags])

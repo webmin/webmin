@@ -71,7 +71,7 @@ if (@addservers) {
 	print "<select name=server>\n";
 	foreach $s (@addservers) {
 		print "<option value=$s->{'id'}>",
-			$s->{'desc'} ? $s->{'desc'} : $s->{'host'},"\n";
+			$s->{'desc'} ? $s->{'desc'} : $s->{'host'},"</option>\n";
 		}
 	print "</select></td>\n";
 	}
@@ -81,7 +81,7 @@ if (@groups) {
 	      "value='$text{'index_gadd'}'>\n";
 	print "<select name=group>\n";
 	foreach $g (@groups) {
-		print "<option>$g->{'name'}\n";
+		print "<option>$g->{'name'}</option>\n";
 		}
 	print "</select></td>\n";
 	}
@@ -95,17 +95,17 @@ if (@hosts) {
 	print "<table width=100%><tr>\n";
 	print "<form action=search_user.cgi><td>\n";
 	print "<b>$text{'index_finduser'}</b> <select name=field>\n";
-	print "<option value=user checked>$text{'user'}\n";
-	print "<option value=real>$text{'real'}\n";
-	print "<option value=shell>$text{'shell'}\n";
-	print "<option value=home>$text{'home'}\n";
-	print "<option value=uid>$text{'uid'}\n";
+	print "<option value=user checked>$text{'user'}</option>\n";
+	print "<option value=real>$text{'real'}</option>\n";
+	print "<option value=shell>$text{'shell'}</option>\n";
+	print "<option value=home>$text{'home'}</option>\n";
+	print "<option value=uid>$text{'uid'}</option>\n";
 	print "</select> <select name=match>\n";
-	print "<option value=0 checked>$text{'index_equals'}\n";
-	print "<option value=4>$text{'index_contains'}\n";
-	print "<option value=1>$text{'index_matches'}\n";
-	print "<option value=5>$text{'index_ncontains'}\n";
-	print "<option value=3>$text{'index_nmatches'}\n";
+	print "<option value=0 checked>$text{'index_equals'}</option>\n";
+	print "<option value=4>$text{'index_contains'}</option>\n";
+	print "<option value=1>$text{'index_matches'}</option>\n";
+	print "<option value=5>$text{'index_ncontains'}</option>\n";
+	print "<option value=3>$text{'index_nmatches'}</option>\n";
 	print "</select> <input name=what size=15>&nbsp;&nbsp;\n";
 	print "<input type=submit value=\"$text{'find'}\"></td></form>\n";
 
@@ -116,15 +116,15 @@ if (@hosts) {
 
 	print "<tr><form action=search_group.cgi><td>\n";
 	print "<b>$text{'index_findgroup'}</b> <select name=field>\n";
-	print "<option value=group checked>$text{'gedit_group'}\n";
-	print "<option value=members>$text{'gedit_members'}\n";
-	print "<option value=gid>$text{'gedit_gid'}\n";
+	print "<option value=group checked>$text{'gedit_group'}</option>\n";
+	print "<option value=members>$text{'gedit_members'}</option>\n";
+	print "<option value=gid>$text{'gedit_gid'}</option>\n";
 	print "</select> <select name=match>\n";
-	print "<option value=0 checked>$text{'index_equals'}\n";
-	print "<option value=4>$text{'index_contains'}\n";
-	print "<option value=1>$text{'index_matches'}\n";
-	print "<option value=5>$text{'index_ncontains'}\n";
-	print "<option value=3>$text{'index_nmatches'}\n";
+	print "<option value=0 checked>$text{'index_equals'}</option>\n";
+	print "<option value=4>$text{'index_contains'}</option>\n";
+	print "<option value=1>$text{'index_matches'}</option>\n";
+	print "<option value=5>$text{'index_ncontains'}</option>\n";
+	print "<option value=3>$text{'index_nmatches'}</option>\n";
 	print "</select> <input name=what size=15>&nbsp;&nbsp;\n";
 	print "<input type=submit value=\"$text{'find'}\"></td></form>\n";
 

@@ -40,7 +40,7 @@ foreach $f (@search_fields) {
 	print "<td><select name=${f}_mode>\n";
 	if ($f eq "first" || $f eq "last") {
 		foreach $m (0 .. 1) {
-			printf "<option value=%d %s>%s\n",
+			printf "<option value=%d %s>%s</option>\n",
 				$m, $in{"${f}_mode"} == $m ? "selected" : "",
 				$text{'report_mode'.$m.$f} ||
 				$text{'report_mode'.$m};
@@ -48,7 +48,7 @@ foreach $f (@search_fields) {
 		}
 	else {
 		foreach $m (0 .. 2) {
-			printf "<option value=%d %s>%s\n",
+			printf "<option value=%d %s>%s</option>\n",
 				$m, $in{"${f}_mode"} == $m ? "selected" : "",
 				$text{'report_mode'.$m};
 			}
@@ -108,10 +108,10 @@ if (@searches) {
 	print "<tr> <td></td> </tr>\n";
 	print "<tr> <td><b>$text{'report_usesaved'}</b></td>\n";
 	print "<td colspan=3><select name=save_name>\n";
-	printf "<option value='' %s>%s\n",
+	printf "<option value='' %s>%s</option>\n",
 		$in{'save_name'} eq "" ? "selected" : "", "&nbsp;";
 	foreach $s ( @searches) {
-		printf "<option value='%s' %s>%s\n",
+		printf "<option value='%s' %s>%s</option>\n",
 			$s->{'save_name'},
 			$in{'save_name'} eq $s->{'save_name'} ? "selected" : "",
 			$s->{'save_name'};
@@ -274,7 +274,7 @@ print "<input name=$_[3]_day size=2 value='$_[0]'>";
 print "/<select name=$_[3]_month>\n";
 local $m;
 foreach $m (1..12) {
-	printf "<option value=%d %s>%s\n",
+	printf "<option value=%d %s>%s</option>\n",
 		$m, $_[1] eq $m ? 'selected' : '', $text{"smonth_$m"};
 	}
 print "</select>";

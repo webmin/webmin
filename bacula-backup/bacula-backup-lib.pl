@@ -417,9 +417,9 @@ sub tape_select
 local $t;
 print "<select name=tape>\n";
 foreach $t (split(/\s+/, $config{'tape_device'})) {
-	print "<option>",&text('index_tapedev', $t),"\n";
+	print "<option>",&text('index_tapedev', $t),"</option>\n";
 	}
-print "<option value=''>$text{'index_other'}\n";
+print "<option value=''>$text{'index_other'}</option>\n";
 print "</select>\n";
 print "<input name=other size=40> ",&file_chooser_button("other", 1),"\n";
 }
@@ -444,10 +444,10 @@ else {
 	}
 $cmd->execute();
 print "<select name=job>\n";
-print "<option value=''>$text{'job_any'}\n";
+print "<option value=''>$text{'job_any'}</option>\n";
 while(my ($id, $name, $when) = $cmd->fetchrow()) {
 	$when =~ s/ .*$//;
-	print "<option value=$id>$name ($id) ($when)\n";
+	print "<option value=$id>$name ($id) ($when)</option>\n";
 	}
 print "</select>\n";
 }
@@ -459,7 +459,7 @@ local $cmd = $_[0]->prepare("select ClientId,Name from Client order by ClientId 
 $cmd->execute();
 print "<select name=client>\n";
 while(my ($id, $name) = $cmd->fetchrow()) {
-	print "<option value=$name>$name ($id)\n";
+	print "<option value=$name>$name ($id)</option>\n";
 	}
 print "</select>\n";
 }

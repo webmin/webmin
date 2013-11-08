@@ -15,7 +15,7 @@ printf "<input type=radio name=disks_def value=0 %s> %s<br>\n",
 	$_[0]->{'disks'} eq '*' ? '' : 'checked', $text{'acl_dsel'};
 print "<select name=disks size=4 multiple>\n";
 foreach $d (@dlist) {
-	printf "<option value='%s' %s>%s\n",
+	printf "<option value='%s' %s>%s</option>\n",
 		$d->{'device'},
 		$dcan{$d->{'device'}} ? "selected" : "",
 		&text('select_device', uc($d->{'type'}), uc(substr($d->{'device'}, -1))).($d->{'model'} ? " ($d->{'model'})" : "");

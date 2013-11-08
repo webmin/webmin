@@ -39,7 +39,7 @@ $r = @acls; $r = 10 if ($r > 10);
 print "<tr> <td valign=top><b>$text{'aicp_ma'}</b></td>\n";
 print "<td><select name=yes multiple rows=$r width=100>\n";
 foreach $a (@acls) {
-	printf "<option %s>%s\n",
+	printf "<option %s>%s</option>\n",
 		$match{$a->{'values'}->[0]} ? "selected" : "",
 		$a->{'values'}->[0];
 	}
@@ -48,7 +48,7 @@ print "</select></td>\n";
 print "<td valign=top><b>$text{'aicp_dma'}</b></td>\n";
 print "<td><select name=no multiple rows=$r width=100>\n";
 foreach $a (@acls) {
-	printf "<option %s>%s\n",
+	printf "<option %s>%s</option>\n",
 		$match{"!$a->{'values'}->[0]"} ? "selected" : "",
 		$a->{'values'}->[0];
 	}

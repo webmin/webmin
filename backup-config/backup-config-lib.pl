@@ -152,7 +152,7 @@ sub show_backup_destination
 {
 my ($mode, $user, $pass, $server, $path, $port) = &parse_backup_url($_[1]);
 my $rv;
-$rv .= "<table cellpadding=1 cellspacing=0>";
+$rv .= "<table id='show_backup_destination' cellpadding=1 cellspacing=0>";
 
 # Local file field
 $rv .= "<tr><td>".&ui_oneradio("$_[0]_mode", 0, undef, $mode == 0)."</td>\n";

@@ -193,12 +193,12 @@ if ($drv->{'mode'} == 2 || 1) {
 
 	print "<tr> <td valign=top><b>$text{'suse_printer'}</b></td>\n";
 	print "<td colspan=3><select size=10 name=device>\n";
-	printf "<option value=ps %s>Postscript\n",
+	printf "<option value=ps %s>Postscript</option>\n",
 		$drv->{'device'} =~ /^PS_/ ? 'selected' : '';
 	$found++ if ($drv->{'device'} =~ /^PS_/);
 	foreach $d (&list_uniprint()) {
 		local $u = "$d->[0].upp";
-		printf "<option value=%s %s>%s\n",
+		printf "<option value=%s %s>%s</option>\n",
 			$u, $drv->{'device'} eq $u ? 'selected' : '', $d->[1];
 		$found++ if ($drv->{'device'} eq $u);
 		}
@@ -206,13 +206,13 @@ if ($drv->{'mode'} == 2 || 1) {
 	$out =~ /Available devices:\n((\s+.*\n)+)/i;
 	foreach $d (split(/\s+/, $1)) {
 		if ($driver{$d}) {
-			printf "<option value=%s %s>%s\n",
+			printf "<option value=%s %s>%s</option>\n",
 				$d, $drv->{'device'} eq $d ? 'selected' : '',
 				$driver{$d};
 			$found++ if ($drv->{'device'} eq $d);
 			}
 		}
-	print "<option selected value=$drv->{'device'}>$drv->{'device'}\n"
+	print "<option selected value=$drv->{'device'}>$drv->{'device'}</option>\n"
 		if (!$found && $drv->{'device'});
 	print "</select></td> </tr>\n";
 
@@ -228,7 +228,7 @@ if ($drv->{'mode'} == 2 || 1) {
 	print "<tr> <td><b>$text{'suse_paper'}</b></td>\n";
 	print "<td><select name=paper>\n";
 	foreach $p (@paper_sizes) {
-		printf "<option value=%s %s>%s\n",
+		printf "<option value=%s %s>%s</option>\n",
 			$p->[0], $drv->{'paper'} eq $p->[0] ? 'selected' : '',
 			$p->[1];
 		}
@@ -252,14 +252,14 @@ else {
 
 	print "<tr> <td valign=top><b>$text{'suse_printer'}</b></td>\n";
 	print "<td colspan=3><select size=10 name=device>\n";
-	printf "<option value=ps %s>Postscript\n",
+	printf "<option value=ps %s>Postscript</option>\n",
 		$drv->{'device'} eq 'PS' ? 'selected' : '';
 	$found++ if ($drv->{'device'} eq 'PS');
 	local $out = &backquote_command("$config{'gs_path'} -help 2>&1", 1);
 	$out =~ /Available devices:\n((\s+.*\n)+)/i;
 	foreach $d (split(/\s+/, $1)) {
 		if ($d ne 'stp' && $driver{$d}) {
-			printf "<option value=%s %s>%s\n",
+			printf "<option value=%s %s>%s</option>\n",
 				$d, $drv->{'device'} eq $d ? 'selected' : '',
 				$driver{$d};
 			$found++ if ($drv->{'device'} eq $d);
@@ -267,18 +267,18 @@ else {
 		}
 	foreach $d (&list_uniprint()) {
 		local $u = "$d->[0].upp";
-		printf "<option value=%s %s>%s\n",
+		printf "<option value=%s %s>%s</option>\n",
 			$u, $drv->{'device'} eq $u ? 'selected' : '', $d->[1];
 		$found++ if ($drv->{'device'} eq $u);
 		}
 	foreach $s (sort { $a cmp $b } keys %stp) {
-		printf "<option value=%s.stp %s>%s\n",
+		printf "<option value=%s.stp %s>%s</option>\n",
 			$s, $drv->{'device'} eq 'stp' &&
 			    $drv->{'model'} eq $s ? 'selected' : '', $stp{$s};
 		$found++ if ($drv->{'device'} eq 'stp' &&
 			     $drv->{'model'} eq $s);
 		}
-	print "<option selected value=$drv->{'device'}>$drv->{'device'}\n"
+	print "<option selected value=$drv->{'device'}>$drv->{'device'}</option>\n"
 		if (!$found && $drv->{'device'});
 	print "</select></td> </tr>\n";
 
@@ -291,7 +291,7 @@ else {
 	print "<td><b>$text{'suse_paper'}</b></td>\n";
 	print "<td><select name=paper>\n";
 	foreach $p (@paper_sizes) {
-		printf "<option value=%s %s>%s\n",
+		printf "<option value=%s %s>%s</option>\n",
 			$p->[0], $drv->{'paper'} eq $p->[0] ? 'selected' : '',
 			$p->[1];
 		}
@@ -307,7 +307,7 @@ else {
 	print "<td><b>$text{'suse_method'}</b></td>\n";
 	print "<td><select name=method>\n";
 	foreach $m ('auto', 'ascii', 'raw') {
-		printf "<option value=%s %s>%s\n",
+		printf "<option value=%s %s>%s</option>\n",
 			$m, $drv->{'method'} eq $m ? 'selected' : '',
 			$text{"suse_$m"};
 		}

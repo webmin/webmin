@@ -76,10 +76,10 @@ if ($access{'create'}) {
 	print "<form action=edit_profile.cgi>\n";
 	print "<input type=submit value='$text{'index_add'}'>\n";
 	print "<select name=type>\n";
-	print "<option value=1 checked> $text{'index_type1'}\n";
-	print "<option value=2> $text{'index_type2'}\n";
-	print "<option value=3> $text{'index_type3'}\n";
-	print "<option value=4> $text{'index_type4'}\n";
+	print "<option value=1 checked>$text{'index_type1'}</option>\n";
+	print "<option value=2>$text{'index_type2'}</option>\n";
+	print "<option value=3>$text{'index_type3'}</option>\n";
+	print "<option value=4>$text{'index_type4'}</option>\n";
 	print "</select></form>\n";
 	}
 }

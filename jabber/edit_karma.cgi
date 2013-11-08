@@ -44,15 +44,15 @@ for($i=0; $i<@karma_presets; $i++) {
 
 print "<tr> <td valign=top><b>$text{'karma_mode'}</b></td>\n";
 print "<td><select name=mode>\n";
-printf "<option value=-1 %s> %s\n",
+printf "<option value=-1 %s>%s</option>\n",
 	$mode == -1 ? "selected" : "", $text{'karma_none'};
-printf "<option value=0 %s> %s\n",
+printf "<option value=0 %s>%s</option>\n",
 	$mode == 0 ? "selected" : "", $text{'karma_low'};
-printf "<option value=1 %s> %s\n",
+printf "<option value=1 %s>%s</option>\n",
 	$mode == 1 ? "selected" : "", $text{'karma_medium'};
-printf "<option value=2 %s> %s\n",
+printf "<option value=2 %s>%s</option>\n",
 	$mode == 2 ? "selected" : "", $text{'karma_high'};
-printf "<option value=3 %s> %s\n",
+printf "<option value=3 %s>%s</option>\n",
 	$mode == 3 ? "selected" : "", $text{'karma_sel'};
 print "</select><br><table width=100%>\n";
 

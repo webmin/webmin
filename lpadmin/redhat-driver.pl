@@ -258,7 +258,7 @@ foreach $r (@rhs) {
 					     $drv->{'rhsname'} eq $r->{'name'});
 			}
 		}
-	printf "<option value='%s' %s>%s\n",
+	printf "<option value='%s' %s>%s</option>\n",
 		$r->{'name'}.";".join(";", @res),
 		$drv->{'rhsname'} eq $r->{'name'} ? 'selected' : '',
 		$r->{'desc'};
@@ -274,7 +274,7 @@ printf "<input type=radio name=eof value=no %s> $text{'no'}</td>\n",
 
 print "<td><b>$text{'redhat_paper'}</b></td> <td><select name=paper>\n";
 foreach $p (sort { $a cmp $b } keys %paper_sizes) {
-	printf "<option value='%s' %s>%s\n",
+	printf "<option value='%s' %s>%s</option>\n",
 		$p, $drv->{'paper'} eq $p ? 'selected' : '',
 		$paper_sizes{$p};
 	}
@@ -283,7 +283,7 @@ print "</select></td> </tr>\n";
 print "<tr> <td><b>$text{'redhat_pages'}</b></td>\n";
 print "<td><select name=nup>\n";
 foreach $p (1, 2, 4, 8) {
-	printf "<option %s>%s\n",
+	printf "<option %s>%s</option>\n",
 		$drv->{'nup'} == $p ? 'selected' : '', $p;
 	}
 print "</select></td>\n";

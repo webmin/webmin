@@ -23,9 +23,9 @@ print "<tr $cb> <td><table width=100%>\n";
 &opt_input("tunefs_m", "%", 0);
 print "<tr> <td align=right><b>$text{'tunefs_opt'}</b></td>\n";
 print "<td><select name=tunefs_o>\n";
-print "<option value=''> $text{'default'}\n";
-print "<option value=space> $text{'tunefs_space'}\n";
-print "<option value=time> $text{'tunefs_time'}\n";
+print "<option value=''>$text{'default'}</option>\n";
+print "<option value=space>$text{'tunefs_space'}</option>\n";
+print "<option value=time>$text{'tunefs_time'}</option>\n";
 print "</select></td>\n";
 print "</table></td></tr></table><br>\n";
 

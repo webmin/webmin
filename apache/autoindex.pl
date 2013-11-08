@@ -29,7 +29,7 @@ for($i=0; $i<=@all; $i++) {
 	$rv .="<td><input name=AddIcon_alt_$i size=10 value=\"$alt\"></td>\n";
 	$rv .="<td><select name=AddIcon_mode_$i>\n";
 	for($j=0; $j<@AddIcon_descs; $j++) {
-		$rv .= sprintf "<option value=$j %s>%s\n",
+		$rv .= sprintf "<option value=$j %s>%s</option>\n",
 		        $mode == $j ? "selected" : "", $AddIcon_descs[$j];
 		}
 	$rv .="</select></td>\n";
@@ -89,7 +89,7 @@ for($i=0; $i<=@all; $i++) {
 	$rv .="<td><input name=AddAlt_alt_$i size=20 value=\"$alt\"></td>\n";
 	$rv .="<td><select name=AddAlt_mode_$i>\n";
 	for($j=0; $j<@AddAlt_descs; $j++) {
-		$rv .= sprintf "<option value=$j %s>%s\n",
+		$rv .= sprintf "<option value=$j %s>%s</option>\n",
 		        $mode == $j ? "selected" : "", $AddAlt_descs[$j];
 		}
 	$rv .="</select></td>\n";

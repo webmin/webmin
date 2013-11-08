@@ -112,7 +112,7 @@ elsif ($type eq "control" && !$in{'cfd'}) {
 		next if ($s eq "control");
 		local $t = $text{"section_".$s."_".$in{'cfd'}};
 		$t = $text{"section_".$s} if (!$t);
-		printf "<option value=$s>$t ($s)\n";
+		printf "<option value=$s>$t ($s)</option>\n";
 		}
 	print "</select><br>\n";
 	print "<input type=button value='$text{'edit_actionadd'}' onClick='document.forms[0].seq.value += document.forms[0].add.options[document.forms[0].add.selectedIndex].value+\"\\n\"'>\n";
@@ -354,14 +354,14 @@ elsif ($type eq "files") {
 		local @acts = ( "fixall", "fixdirs", "fixplain", "warnall", "warndirs", "warnplain", "touch", "linkchildren", "create", "compress", "alert" );
 		print "<td><b>$text{'edit_filesact'}</b></td>\n";
 		print "<td><select name=act_$i>\n";
-		printf "<option value='' %s> %s\n",
+		printf "<option value='' %s>%s</option>\n",
 			$action ? "" : "selected", $text{'default'};
 		foreach $a (@acts) {
-			printf "<option value=%s %s> %s\n",
+			printf "<option value=%s %s>%s</option>\n",
 				$a, $action eq $a ? "selected" : "",
 				$text{"edit_files_$a"};
 			}
-		print "<option selected>$action\n"
+		print "<option selected>$action</option>\n"
 			if ($action && &indexof($action, @acts) < 0);
 		print "</select></td> </tr>\n";
 		
@@ -490,14 +490,14 @@ elsif ($type eq "copy") {
 		local @acts = ( "fix", "silent", "warn" );
 		print "<td><b>$text{'edit_copyact'}</b></td>\n";
 		print "<td><select name=act_$i>\n";
-		printf "<option value='' %s> %s\n",
+		printf "<option value='' %s>%s</option>\n",
 			$action ? "" : "selected", $text{'default'};
 		foreach $a (@acts) {
-			printf "<option value=%s %s> %s\n",
+			printf "<option value=%s %s>%s</option>\n",
 				$a, $action eq $a ? "selected" : "",
 				$text{"edit_copy_$a"};
 			}
-		print "<option selected>$action\n"
+		print "<option selected>$action</option>\n"
 			if ($action && &indexof($action, @acts) < 0);
 		print "</select></td> </tr>\n";
 
@@ -539,14 +539,14 @@ elsif ($type eq "disable") {
 		local @types = ( "plain", "file", "link" );
 		print "<tr> <td><b>$text{'edit_distype'}</b></td>\n";
 		print "<td><select name=type_$i>\n";
-		printf "<option value='' %s> %s\n",
+		printf "<option value='' %s>%s</option>\n",
 			$type ? "" : "selected", $text{'edit_dis_all'};
 		foreach $t (@types) {
-			printf "<option value=%s %s> %s\n",
+			printf "<option value=%s %s>%s</option>\n",
 				$t, $type eq $t ? "selected" : "",
 				$text{"edit_dis_$t"};
 			}
-		print "<option selected>$type\n"
+		print "<option selected>$type</option>\n"
 			if ($type && &indexof($type, @types) < 0);
 		print "</select></td>\n";
 
@@ -647,10 +647,10 @@ elsif ($type eq "processes") {
 		local $sig = &sname("signal", $p);
 		print "<tr> <td><b>$text{'edit_procsig'}</b></td>\n";
 		print "<td><select name=sig_$i>\n";
-		printf "<option value='' %s>%s\n",
+		printf "<option value='' %s>%s</option>\n",
 			$sig ? "" : "selected", $text{'edit_none'};
 		foreach $s (split(/\s+/, $Config{sig_name})) {
-			printf "<option value=%s %s> $s\n",
+			printf "<option value=%s %s>$s</option>\n",
 				lc($s), lc($s) eq $sig ? "selected" : "", $s;
 			}
 		print "</select></td>\n";
@@ -658,13 +658,13 @@ elsif ($type eq "processes") {
 		local $act = &sname("action", $p);
 		print "<td><b>$text{'edit_procact'}</b></td>\n";
 		print "<td><select name=act_$i>\n";
-		printf "<option value='' %s>%s\n",
+		printf "<option value='' %s>%s</option>\n",
 			!$act || $act eq 'signal' || $act eq 'do' ?
 				"selected" : "", $text{"edit_proc_signal"};
-		printf "<option value=bymatch %s>%s\n",
+		printf "<option value=bymatch %s>%s</option>\n",
 			$act eq "bymatch" ? "selected" : "",
 			$text{"edit_proc_bymatch"};
-		printf "<option value=warn %s>%s\n",
+		printf "<option value=warn %s>%s</option>\n",
 			$act eq "warn" ? "selected" : "",
 			$text{"edit_proc_warn"};
 		print "</select></td> </tr>\n";
@@ -798,12 +798,12 @@ elsif ($type eq "tidy") {
 		printf "<input type=radio name=age_def_$i value=0 %s>\n",
 			$age eq '' ? "" : "checked";
 		local $asel = "<select name=type_$i>";
-		$asel .= sprintf "<option value='' %s>%s\n",
+		$asel .= sprintf "<option value='' %s>%s</option>\n",
 				$type eq 'atime' || !$type ? "selected" : "",
 				$text{'edit_tidyatime'};
-		$asel .= sprintf "<option value=mtime %s>%s\n",
+		$asel .= sprintf "<option value=mtime %s>%s</option>\n",
 		    $type eq 'mtime' ? "selected" : "", $text{'edit_tidymtime'};
-		$asel .= sprintf "<option value=ctime %s>%s\n",
+		$asel .= sprintf "<option value=ctime %s>%s</option>\n",
 		    $type eq 'ctime' ? "selected" : "", $text{'edit_tidyctime'};
 		$asel .= "</select>\n";
 		local $afield = "<input name=age_$i size=5 value='$age'>\n";

@@ -29,13 +29,13 @@ foreach $v (@views) {
 local ($z, %zcan);
 map { $zcan{$_}++ } split(/\s+/, $_[0]->{'zones'});
 foreach $z (sort { $a->{'value'} cmp $b->{'value'} } @zones) {
-	printf "<option value='%s' %s>%s\n",
+	printf "<option value='%s' %s>%s</option>\n",
 		$z->{'value'},
 		$zcan{$z->{'value'}} ? "selected" : "",
 		&arpa_to_ip($z->{'value'});
 	}
 foreach $v (sort { $a->{'value'} cmp $b->{'value'} } @views) {
-	printf "<option value='%s' %s>%s\n",
+	printf "<option value='%s' %s>%s</option>\n",
 		'view_'.$v->{'value'},
 		$zcan{'view_'.$v->{'value'}} ? "selected" : "",
 		&text('acl_inview', $v->{'value'});
@@ -183,7 +183,7 @@ if (@views) {
 	local ($v, %vcan);
 	map { $vcan{$_}++ } split(/\s+/, $_[0]->{'vlist'});
 	foreach $v (sort { $a->{'value'} cmp $b->{'value'} } @views) {
-		printf "<option value='%s' %s>%s\n",
+		printf "<option value='%s' %s>%s</option>\n",
 			$v->{'value'},
 			$vcan{$v->{'value'}} ? "selected" : "", $v->{'value'};
 		}

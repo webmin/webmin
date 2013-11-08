@@ -86,7 +86,7 @@ print "<td align=right>",&ui_submit($text{'show_edit'}),"\n";
 print "<select name=type>\n";
 foreach $e (@elist) {
 	print "<option value=",$e->{'edit'}->{'type'},">",
-	      $e->{'name'},"\n";
+	      $e->{'name'},"</option>\n";
 	}
 print "</select></td>\n";
 print "</form></tr></table>\n";

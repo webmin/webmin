@@ -182,9 +182,9 @@ print "<input type=hidden name=type value=\"$type\">\n";
 print "<input type=hidden name=mod value=\"$name\">\n";
 print "<td><input type=submit value='",$text{"edit_uninst_$type"},"'>\n";
 print "<select name=server>\n";
-print "<option value=-1>$text{'edit_all'}\n";
+print "<option value=-1>$text{'edit_all'}</option>\n";
 foreach $s (@got) {
-	print "<option value='$s->{'id'}'>",&server_name($s),"\n";
+	print "<option value='$s->{'id'}'>",&server_name($s),"</option>\n";
 	}
 print "</select></td></form>\n";
 
@@ -216,14 +216,14 @@ if ($type eq 'mod') {
 			local @m = $ingroup{$u->{'name'}} ? @{$u->{'ownmods'}}
 							  : @{$u->{'modules'}};
 			print "<option value='$h->{'id'},$u->{'name'}'>",
-			      &text('edit_uacl', $u->{'name'}, $d),"\n"
+			      &text('edit_uacl', $u->{'name'}, $d),"</option>\n"
 				if (&indexof($name, @m) >= 0);
 			}
 		foreach $g (@{$h->{'groups'}}) {
 			local @m = $ingroup{$g->{'name'}} ? @{$g->{'ownmods'}}
 							  : @{$g->{'modules'}};
 			print "<option value='$h->{'id'},$g->{'name'}'>",
-			      &text('edit_gacl', $g->{'name'}, $d),"\n"
+			      &text('edit_gacl', $g->{'name'}, $d),"</option>\n"
 				if (&indexof($name, @m) >= 0);
 			}
 		}

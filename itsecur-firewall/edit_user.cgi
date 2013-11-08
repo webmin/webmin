@@ -72,7 +72,7 @@ print "<tr> <td valign=top nowrap><b>$text{'user_mods'}</b></td>\n";
 @mymods = grep { $acl{$base_remote_user,$_->{'dir'}} } &get_all_module_infos();
 print "<td><select name=mods size=5 multiple>\n";
 foreach $m (sort { $a->{'desc'} cmp $b->{'desc'} } @mymods) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$m->{'dir'}, $gotmods{$m->{'dir'}} ? "selected" : "",
 		$m->{'desc'};
 	}

@@ -40,25 +40,25 @@ foreach $ifc (@iflist, "") {
 
 	$found = 0;
 	print "<td><select name=ri_$n>\n";
-	print "<option value=''>&nbsp;\n";
+	print "<option value=''>&nbsp;</option>\n";
 	foreach $r (@allifaces) {
 		next if ($r =~ /^ipsec/ || $r =~ /:/);
-		printf "<option value=%s %s>%s (%s)\n",
+		printf "<option value=%s %s>%s (%s)</option>\n",
 			$r, $ri eq $r ? "selected" : "", $r,
 			&net::iface_type($r);
 		$found++ if ($ri eq $r);
 		}
-	print "<option value=$ri selected>$ri\n" if (!$found && $ri);
+	print "<option value=$ri selected>$ri</option>\n" if (!$found && $ri);
 	print "</select></td>\n";
 
 	$found = 0;
 	print "<td><select name=ii_$n>\n";
 	foreach $k (0 .. 4) {
-		printf "<option value=ipsec%d %s>ipsec%d\n",
+		printf "<option value=ipsec%d %s>ipsec%d</option>\n",
 			$k, $ii eq "ipsec$k" ? "selected" : "", $k;
 		$found++ if ($ii eq "ipsec$k");
 		}
-	print "<option value=$ii selected>$ii\n" if (!$found && $ii);
+	print "<option value=$ii selected>$ii</option>\n" if (!$found && $ii);
 	print "</select></td>\n";
 
 	print "</tr>\n";
@@ -80,12 +80,12 @@ $pri =~ s/panic$/emerg/;
 $pri =~ s/error$/err/;
 print "<select name=fac>\n";
 foreach $f (split(/\s+/, $syslog::config{'facilities'})) {
-	printf "<option %s>%s\n", $f eq $fac ? "selected" : "", $f;
+	printf "<option %s>%s</option>\n", $f eq $fac ? "selected" : "", $f;
 	}
 print "</select> $text{'config_pri'}\n";
 print "<select name=pri>\n";
 foreach $p (&syslog::list_priorities()) {
-	printf "<option %s>%s\n", $p eq $pri ? "selected" : "", $p;
+	printf "<option %s>%s</option>\n", $p eq $pri ? "selected" : "", $p;
 	}
 print "</select></td> </tr>\n";
 

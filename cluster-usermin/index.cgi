@@ -62,16 +62,16 @@ else {
 # Build common selectors
 @wgroups = &all_groups(\@hosts);
 $modsel2 = $modsel = "<select name=mod>\n";
-$modsel2 .= "<option value=''>$text{'index_gacl'}\n";
+$modsel2 .= "<option value=''>$text{'index_gacl'}</option>\n";
 foreach $m (&all_modules(\@hosts)) {
-	$modsel .= "<option value=$m->{'dir'}>$m->{'desc'}\n";
-	$modsel2 .= "<option value=$m->{'dir'}>$m->{'desc'}\n";
+	$modsel .= "<option value=$m->{'dir'}>$m->{'desc'}</option>\n";
+	$modsel2 .= "<option value=$m->{'dir'}>$m->{'desc'}</option>\n";
 	}
 $modsel .= "</select>\n";
 $modsel2 .= "</select>\n";
 $themesel = "<select name=theme>\n";
 foreach $t (&all_themes(\@hosts)) {
-	$themesel .= "<option value=$t->{'dir'}>$t->{'desc'}\n";
+	$themesel .= "<option value=$t->{'dir'}>$t->{'desc'}</option>\n";
 	}
 $themesel .= "</select>\n";
 
@@ -83,7 +83,7 @@ if (@addservers) {
 	print "<input type=submit name=add value='$text{'index_add'}'>\n";
 	print "<select name=server>\n";
 	foreach $s (@addservers) {
-		print "<option value=$s->{'id'}>",&server_name($s),"\n";
+		print "<option value=$s->{'id'}>",&server_name($s),"</option>\n";
 		}
 	print "</select>\n";
 	print "</td></form>\n";
@@ -98,7 +98,7 @@ if (@groups) {
 	print "<input type=submit name=gadd value='$text{'index_gadd'}'>\n";
 	print "<select name=group>\n";
 	foreach $g (@groups) {
-		print "<option>$g->{'name'}\n";
+		print "<option>$g->{'name'}</option>\n";
 		}
 	print "</select>\n";
 	print "</td></form>\n";

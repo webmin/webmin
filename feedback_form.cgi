@@ -35,7 +35,7 @@ print "<td><input name=email size=25 value='$gconfig{'feedback_email'}'></td> </
 
 print "<tr> <td><b>$text{'feedback_module'}</b></td>\n";
 print "<td><select name=module>\n";
-printf "<option value='' %s>%s\n",
+printf "<option value='' %s>%s</option>\n",
 	$in{'module'} ? "" : "selected", $text{'feedback_all'};
 @modules = ( );
 foreach $minfo (&get_all_module_infos()) {
@@ -45,7 +45,7 @@ foreach $minfo (&get_all_module_infos()) {
 		}
 	}
 foreach $m (sort { $a->{'desc'} cmp $b->{'desc'} } @modules) {
-	printf "<option %s value=%s>%s\n",
+	printf "<option %s value=%s>%s</option>\n",
 		$in{'module'} eq $m->{'dir'} ? "selected" : "",
 		$m->{'dir'}, $m->{'desc'};
 	}

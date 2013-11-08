@@ -34,7 +34,7 @@ if (@addservers) {
 	print "<td><input type=submit name=add value='$text{'hosts_add'}'>\n";
 	print "<select name=server>\n";
 	foreach $s (@addservers) {
-		print "<option value=$s->{'id'}>",&server_name($s),"\n";
+		print "<option value=$s->{'id'}>",&server_name($s),"</option>\n";
 		}
 	print "</select></td>\n";
 	}
@@ -44,7 +44,7 @@ if (@groups) {
 	      "value='$text{'hosts_gadd'}'>\n";
 	print "<select name=group>\n";
 	foreach $g (@groups) {
-		print "<option>$g->{'name'}\n";
+		print "<option>$g->{'name'}</option>\n";
 		}
 	print "</select></td>\n";
 	}

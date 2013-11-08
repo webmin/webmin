@@ -263,7 +263,7 @@ print &ui_table_row($text{'edit_gid'},
 $icmptypes = "<select name=icmptypes size=5 multiple>\n";
 for($i=0; $i<@icmptypes; $i++) {
 	if ($icmptypes[$i] || $gottypes{$i}) {
-		$icmptypes .= sprintf "<option value=%d %s>%s\n",
+		$icmptypes .= sprintf "<option value=%d %s>%s</option>\n",
 			$i, $gottypes{$i} ? "selected" : "",
 			$icmptypes[$i] || "Type $i";
 		}
@@ -275,11 +275,11 @@ print &ui_table_row($text{'edit_icmptypes'}, $icmptypes, 1, \@tds);
 %gotflags = map { $_, 1 } split(/,/, $rule->{'tcpflags'});
 $tcpflags = "<select name=tcpflags size=5 multiple>\n";
 foreach $i (@tcpflags) {
-	$tcpflags .= sprintf "<option value=%s %s>%s\n",
+	$tcpflags .= sprintf "<option value=%s %s>%s</option>\n",
 		$i, $gotflags{$i} ? "selected" : "", $i;
 	}
 foreach $i (@tcpflags) {
-	$tcpflags .= sprintf "<option value=!%s %s>%s\n",
+	$tcpflags .= sprintf "<option value=!%s %s>%s</option>\n",
 		$i, $gotflags{"!$i"} ? "selected" : "", &text('edit_not', $i);
 	}
 $tcpflags .= "</select>\n";
