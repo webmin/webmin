@@ -73,9 +73,9 @@ if ($st[7] != $config{'dhcpd_size'} || $st[9] != $config{'dhcpd_mtime'}) {
 # Create lookup type HTML
 # XXX change text, add to lookup_*
 $match = "<select name=match>\n";
-$match .= "<option value=0 checked>$text{'index_match0'}\n";
-$match .= "<option value=1>$text{'index_match1'}\n";
-$match .= "<option value=2>$text{'index_match2'}\n";
+$match .= "<option value=0 checked>$text{'index_match0'}</option>\n";
+$match .= "<option value=1>$text{'index_match1'}</option>\n";
+$match .= "<option value=2>$text{'index_match2'}</option>\n";
 $match .= "</select>\n";
 
 # get top-level hosts

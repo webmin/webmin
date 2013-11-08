@@ -140,7 +140,7 @@ elsif ($type eq "time") {
 		      'A', $text{'acl_dsat'} );
 	print "<select name=day multiple size=7>\n";
 	foreach $d ('S', 'M', 'T', 'W', 'H', 'F', 'A') {
-		printf "<option value=$d %s> $day_name{$d}\n",
+		printf "<option value=$d %s>$day_name{$d}</option>\n",
 			$day{$d} ? "selected" : "";
 		}
 	print "</select></td> </tr>\n";
@@ -320,7 +320,7 @@ elsif ($type eq "external") {
 	print "<tr> <td valign=top><b>$text{'acl_extclass'}</b></td>\n";
 	print "<td><select name=class>\n";
 	foreach $c (&find_config("external_acl_type", $conf)) {
-		printf "<option %s>%s\n",
+		printf "<option %s>%s</option>\n",
 			$c->{'values'}->[0] eq $vals[0] ? "selected" : "",
 			$c->{'values'}->[0];
 		}

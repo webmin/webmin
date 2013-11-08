@@ -881,7 +881,7 @@ sub edit_AuthType
 local($rv, $a);
 $rv = "<select name=AuthType>\n";
 foreach $a ("", "Basic", "Digest") {
-	$rv .= sprintf "<option %s>$a\n",
+	$rv .= sprintf "<option %s>$a</option>\n",
 	        lc($_[0]->{'value'}) eq lc($a) ? "selected" : "";
 	}
 $rv .= "</select>";

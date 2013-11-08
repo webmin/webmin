@@ -74,7 +74,7 @@ print "<td valign=top align=right><b>$text{'esh_hosts'}</b></td>\n";
 print "<td><select name=hosts size=3 multiple>\n";
 foreach $h (@host) {
 	next if !&can('r', \%access, $h);
-	printf "<option value=\"%s,%s\" %s>%s\n",
+	printf "<option value=\"%s,%s\" %s>%s</option>\n",
 		$h->{'index'}, $inshar{$h},
 		(!$in{'new'}) && $inshar{$h} eq $sha->{'index'} ? "selected" : "",
 		$h->{'values'}->[0];
@@ -89,7 +89,7 @@ foreach $g (@group) {
 	foreach $h (@{$g->{'members'}}) {
 		if ($h->{'name'} eq "host") { $gm++; }
 		}
-	printf "<option value=\"%s,%s\" %s>%s\n",
+	printf "<option value=\"%s,%s\" %s>%s</option>\n",
 		$g->{'index'}, $inshar{$g},
 		(!$in{'new'}) && $inshar{$g} eq $sha->{'index'} ? "selected" : "",
 		&group_name($gm, $g);
@@ -100,7 +100,7 @@ print "<td valign=top align=right><b>$text{'esh_subn'}</b></td>\n";
 print "<td><select name=subnets size=3 multiple>\n";
 foreach $s (@subn) {
 	next if !&can('r', \%access, $s);
-	printf "<option value=\"%s,%s\" %s>%s\n",
+	printf "<option value=\"%s,%s\" %s>%s</option>\n",
 		$s->{'index'}, $inshar{$s},
 		(!$in{'new'}) && $inshar{$s} eq $sha->{'index'} ? "selected" : "",
 		$s->{'values'}->[0];

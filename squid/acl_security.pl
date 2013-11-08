@@ -12,7 +12,7 @@ sub acl_security_form
 print "<tr> <td valign=top><b>$text{'acl_sections'}</b></td>\n";
 print "<td colspan=3><select name=sections multiple size=6>\n";
 foreach $s (@accopts) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$s, $_[0]->{$s} ? 'selected' : '', $text{"index_${s}"};
 	}
 print "</select></td> </tr>\n";

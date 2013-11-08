@@ -155,14 +155,14 @@ print "<select name=pos>\n";
 foreach $br (@rules) {
 	next if ($br eq $rule);
 	if ($br->{'sep'}) {
-		printf "<option value=%s %s>%s\n",
+		printf "<option value=%s %s>%s</option>\n",
 			$br->{'index'},
 			!$in{'new'} &&
 			$rule->{'index'} == $br->{'index'}-1 ? "selected" : "",
 			&text('rule_spos', $br->{'desc'});
 		}
 	else {
-		printf "<option value=%s %s>%s\n",
+		printf "<option value=%s %s>%s</option>\n",
 			$br->{'index'},
 			!$in{'new'} &&
 			$rule->{'index'} == $br->{'index'}-1 ? "selected" : "",
@@ -171,7 +171,7 @@ foreach $br (@rules) {
 			      &group_name($br->{'dest'}));
 		}
 	}
-printf "<option value=%s %s>%s\n",
+printf "<option value=%s %s>%s</option>\n",
 	-1, $in{'new'} || $rule eq $rules[$#rules] ? "selected" : "",
 	$text{'rule_end'};
 print "</select></td> </tr>\n";

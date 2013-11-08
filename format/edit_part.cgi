@@ -29,7 +29,7 @@ print "<tr> <td><b>$text{'edit_dev'}</b></td> <td><tt>$dev</tt></td> </tr>\n";
 
 print "<tr> <td><b>$text{'edit_type'}</b></td> <td><select name=tag>\n";
 foreach $t (&list_tags()) {
-	printf "<option %s>$t\n", $t eq $pinfo->{'tag'} ? "selected" : "";
+	printf "<option %s>$t</option>\n", $t eq $pinfo->{'tag'} ? "selected" : "";
 	}
 print "</select></td> </tr>\n";
 

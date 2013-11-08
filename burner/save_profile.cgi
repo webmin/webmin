@@ -321,9 +321,9 @@ if ($in{'burn'} || $in{'test'}) {
 
 		if ($profile->{'type'} != 4) {
 			print "<br>$text{'burn_blank'} <select name=blank>\n";
-			print "<option value='' selected> $text{'no'}\n";
-			print "<option value=fast> $text{'burn_bfast'}\n";
-			print "<option value=all> $text{'burn_ball'}\n";
+			print "<option value='' selected>$text{'no'}</option>\n";
+			print "<option value=fast>$text{'burn_bfast'}</option>\n";
+			print "<option value=all>$text{'burn_ball'}</option>\n";
 			print "</select>\n";
 			}
 		print "</form></center>\n";

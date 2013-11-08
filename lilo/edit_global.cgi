@@ -34,7 +34,7 @@ print "<select name=default>\n";
 foreach $i (@images) {
 	$l = &find_value("label", $i->{'members'});
 	if ($l) {
-		printf "<option %s>$l\n",
+		printf "<option %s>$l</option>\n",
 			$default eq $l ? "selected" : "";
 		}
 	}

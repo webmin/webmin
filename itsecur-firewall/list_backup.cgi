@@ -73,7 +73,7 @@ printf "<input type=radio name=sched_def value=0 %s> %s\n",
 	$job ? "checked" : "", $text{'backup_interval'};
 print "<select name=sched>\n";
 foreach $s ("hourly", "daily", "weekly", "monthly", "yearly") {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$s, $job && $job->{'special'} eq $s ? "selected" : "",
 		ucfirst($s);
 	}

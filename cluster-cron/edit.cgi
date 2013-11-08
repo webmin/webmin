@@ -34,21 +34,21 @@ print "<td><input name=user size=8 value=\"$job->{'cluster_user'}\"> ",
 %serv = map { $_, 1 } split(/ /, $job->{'cluster_server'});
 print "<td rowspan=4 valign=top><b>$text{'edit_servers'}</b></td>\n";
 print "<td rowspan=4 valign=top><select multiple size=8 name=server>\n";
-printf "<option value=ALL %s>%s\n",
+printf "<option value=ALL %s>%s</option>\n",
 	$serv{'ALL'} ? 'selected' : '', $text{'edit_all'};
-printf "<option value=* %s>%s\n",
+printf "<option value=* %s>%s</option>\n",
 	$serv{'*'} ? 'selected' : '', $text{'edit_this'};
 foreach $s (grep { $_->{'user'} }
 		 sort { $a->{'host'} cmp $b->{'host'} }
 		      &servers::list_servers()) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$s->{'host'}, $serv{$s->{'host'}} ? "selected" : "",
 		$s->{'host'}.($s->{'desc'} ? " ($s->{'desc'})" : "");
 	}
 foreach $g (sort { $a->{'name'} cmp $b->{'name'} }
 		 &servers::list_all_groups()) {
 	$gn = "group_".$g->{'name'};
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$gn, $serv{$gn} ? "selected" : "",
 		&text('edit_group', $g->{'name'});
 	}

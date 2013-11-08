@@ -181,16 +181,16 @@ if ($_[3]) {
 else {
 	print "<select name=server>\n";
 	}
-print "<option value=-1>$text{'user_all'}\n";
-print "<option value=-2>$text{'user_donthave'}\n" if (!$_[1]);
-print "<option value=-3>$text{'user_have'}\n" if (!$_[2]);
+print "<option value=-1>$text{'user_all'}</option>\n";
+print "<option value=-2>$text{'user_donthave'}</option>\n" if (!$_[1]);
+print "<option value=-3>$text{'user_have'}</option>\n" if (!$_[2]);
 local @groups = &servers::list_all_groups(\@servers);
 local $h;
 foreach $h (@hosts) {
         local ($s) = grep { $_->{'id'} == $h->{'id'} } @servers;
 	if ($s) {
 		print "<option value='$s->{'id'}'>",
-			$s->{'desc'} ? $s->{'desc'} : $s->{'host'},"\n";
+			$s->{'desc'} ? $s->{'desc'} : $s->{'host'},"</option>\n";
 		$gothost{$s->{'host'}}++;
 		}
         }
@@ -201,7 +201,7 @@ foreach $g (@groups) {
                 ($found++, last) if ($gothost{$m});
                 }
         print "<option value='group_$g->{'name'}'>",
-                &text('user_ofgroup', $g->{'name'}),"\n" if ($found);
+                &text('user_ofgroup', $g->{'name'}),"</option>\n" if ($found);
         }
 print "</select>\n";
 if ($_[0]) {

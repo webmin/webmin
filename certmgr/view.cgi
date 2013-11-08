@@ -142,8 +142,10 @@ print "<table border>\n<tr $tb> <td><center><b>$text{'view_select'}</b></center>
 print "<tr $cb><td><table border=0><td>$text{'view_wildcard'}:</td><td><input name=wildcard value=\"$in{'wildcard'}\"></td>";
 print "<td><input type=submit name=update value=\"$text{'view_update'}\"></td></tr>\n";
 print "<tr><td colspan=2><select name=filename>\n";
-print "<option value='' selected>$text{'view_choose'}\n";
-foreach $f ( grep { /^(.*\/)*$wildcard_pattern$/ && -f "$config{'ssl_dir'}/$_" } &getfiles($config{'ssl_dir'})) { print "<option value=\"$f\">$config{'ssl_dir'}/$f\n"; }
+print "<option value='' selected>$text{'view_choose'}</option>\n";
+foreach $f ( grep { /^(.*\/)*$wildcard_pattern$/ && -f "$config{'ssl_dir'}/$_" } &getfiles($config{'ssl_dir'})) { 
+	print "<option value=\"$f\">$config{'ssl_dir'}/$f</option>\n"; 
+}
 print "</select>\n";
 print "</td><td><input type=submit name=view value=\"$text{'view_view'}\"></td></tr></table></td></tr></table>\n";
 print "</form>\n";

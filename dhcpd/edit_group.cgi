@@ -107,7 +107,7 @@ foreach $g (&find("group", $mems)) {
 @host = sort { $a->{'values'}->[0] cmp $b->{'values'}->[0] } @host;
 foreach $h (@host) {
 	next if !&can('r', \%access, $h);
-	printf "<option value=\"%s,%s\" %s>%s\n",
+	printf "<option value=\"%s,%s\" %s>%s</option>\n",
 		$h->{'index'}, $ingroup{$h},
 		(!$in{'new'}) && $ingroup{$h} eq $group->{'index'} ? "selected" : "",
 		$h->{'values'}->[0];
@@ -140,7 +140,7 @@ if (!defined($in{'ret'})) {
 	else {
 		print "<select name=assign onChange='setparent(0)'>\n";
 		for ($i = 0; $i <= 2; $i++) {
-			printf "<option value=$i %s>%s\n",
+			printf "<option value=$i %s>%s</option>\n",
 				$assign == $i ? "selected" : "",
 				$labels[$i];
 			}
@@ -150,7 +150,7 @@ if (!defined($in{'ret'})) {
 	if ($assign == 2) {
 		$iu = 0;
 		foreach $u (@subn) {
-			printf "<option value=\"%s\" %s>%s\n",
+			printf "<option value=\"%s\" %s>%s</option>\n",
 				defined($shared{$u}) ? "$shared{$u},$u->{'index'}" : $u->{'index'},
 				$iu == $sel_parent ? "selected" : "",
 				$subn_desc[$iu]
@@ -161,7 +161,7 @@ if (!defined($in{'ret'})) {
 	elsif ($assign == 1) {
 		$is = 0;
 		foreach $s (@shar) {
-			printf "<option value=\"%s\" %s>%s\n",
+			printf "<option value=\"%s\" %s>%s</option>\n",
 				$s->{'index'},
 				$is == $sel_parent ? "selected" : "",
 				$shar_desc[$is]

@@ -152,7 +152,7 @@ else {
 	print "<select name=table onChange='form.submit()'>\n";
 	foreach $t (@tables) {
 		if (&can_edit_table($t->{'name'})) {
-			printf "<option value=%s %s>%s\n",
+			printf "<option value=%s %s>%s</option>\n",
 			    $t->{'index'}, $t eq $table ? "selected" : "",
 			    &text('index_table_'.$t->{'name'}) || $t->{'name'};
 			}
@@ -289,7 +289,7 @@ else {
 				      &ui_submit($text{'index_policy'}),"\n";
 				print "<select name=policy>\n";
 				foreach $t ('ACCEPT','DROP','QUEUE','RETURN') {
-					printf "<option value=%s %s>%s\n",
+					printf "<option value=%s %s>%s</option>\n",
 						$t, $d eq $t ? "selected" : "",
 						$text{"index_policy_".lc($t)};
 					}

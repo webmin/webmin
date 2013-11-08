@@ -52,12 +52,12 @@ close();
 <tr> <td colspan=7 align=center><select name=year onChange='newyear(this)'>
 EOF
 for($i=$in{'year'}-10; $i<=$in{'year'}+10; $i++) {
-	printf "<option %s>%s\n",
+	printf "<option %s>%s</option>\n",
 		$i == $in{'year'} ? 'selected' : '', $i;
 	}
 print "</select> <select name=month onChange='newmonth(this)'>\n";
 for($i=0; $i<12; $i++) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$i, $i == $in{'month'} ? 'selected' : '',
 		$text{"month_".($i+1)};
 	}

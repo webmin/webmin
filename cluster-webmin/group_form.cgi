@@ -19,9 +19,9 @@ print "<td><input name=name size=15></td>\n";
 
 print "<td><b>$text{'user_group'}</b></td>\n";
 print "<td><select name=group>\n";
-print "<option selected value=''>$text{'user_nogroup'}\n";
+print "<option selected value=''>$text{'user_nogroup'}</option>\n";
 foreach $g (@wgroups) {
-	print "<option>$g->{'name'}\n";
+	print "<option>$g->{'name'}</option>\n";
 	}
 print "</select></td> </tr>\n";
 
@@ -30,17 +30,17 @@ print "<tr> <td valign=top><b>$text{'user_mods'}</b><br>",
       "$text{'user_groupmods'}</td> <td colspan=3 nowrap>\n";
 print "<select name=mods1 size=$mp multiple>\n";
 for($i=0; $i<$mp; $i++) {
-	print "<option value=$mods[$i]->{'dir'}>$mods[$i]->{'desc'}\n";
+	print "<option value=$mods[$i]->{'dir'}>$mods[$i]->{'desc'}</option>\n";
 	}
 print "</select>\n";
 print "<select name=mods2 size=$mp multiple>\n";
 for($i=$mp; $i<$mp*2; $i++) {
-	print "<option value=$mods[$i]->{'dir'}>$mods[$i]->{'desc'}\n";
+	print "<option value=$mods[$i]->{'dir'}>$mods[$i]->{'desc'}</option>\n";
 	}
 print "</select>\n";
 print "<select name=mods3 size=$mp multiple>\n";
 for($i=$mp*2; $i<@mods; $i++) {
-	print "<option value=$mods[$i]->{'dir'}>$mods[$i]->{'desc'}\n";
+	print "<option value=$mods[$i]->{'dir'}>$mods[$i]->{'desc'}</option>\n";
 	}
 print "</select>\n";
 

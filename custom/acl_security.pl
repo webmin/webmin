@@ -19,7 +19,7 @@ local @cmds = &sort_commands(&list_commands());
 local ($c, %ccan);
 map { $ccan{$_}++ } split(/\s+/, $_[0]->{'cmds'});
 foreach $c (@cmds) {
-	printf "<option value=%s %s> %s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$c->{'id'},
 		$ccan{$c->{'id'}} ? "selected" : "",
 		$c->{'desc'};

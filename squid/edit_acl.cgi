@@ -49,7 +49,7 @@ print "<form action=acl.cgi>\n";
 print "<input type=submit value=\"$text{'eacl_buttcreate'}\">\n";
 print "<select name=type>\n";
 foreach $t (sort { $acl_types{$a} cmp $acl_types{$b} } keys %acl_types) {
-	print "<option value=$t>$acl_types{$t}\n";
+	print "<option value=$t>$acl_types{$t}</option>\n";
 	}
 print "</select></form>\n";
 print &ui_tabs_end_tab();

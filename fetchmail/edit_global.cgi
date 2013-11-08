@@ -33,14 +33,14 @@ print "<tr $cb> <td><table width=100%>\n";
 
 print "<tr> <td><b>$text{'poll_proto'}</b></td>\n";
 print "<td><select name=proto>\n";
-printf "<option value='' %s> %s\n",
+printf "<option value='' %s>%s</option>\n",
 	$poll->{'proto'} ? '' : 'selected', $text{'default'};
 foreach $p ('pop3', 'pop2', 'imap', 'imap-k4', 'imap-gss', 'apop', 'kpop') {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$p, lc($poll->{'proto'}) eq $p ? 'selected' : '', uc($p);
 	$found++ if (lc($poll->{'proto'}) eq $p);
 	}
-printf "<option value=%s selected>%s\n", $poll->{'proto'}, uc($poll->{'proto'})
+printf "<option value=%s selected>%s</option>\n", $poll->{'proto'}, uc($poll->{'proto'})
 	if (!$found && $poll->{'proto'});
 print "</select></td>\n";
 

@@ -59,10 +59,10 @@ print <<EOF;
 EOF
 print "  <option value='' ";
 if (!$in{'cert_directory'}) {print "selected";}
-print ">$text{'import_choose'}";
+print ">$text{'import_choose'}</option>";
 foreach $f ( &getdirs($config{'ssl_dir'})) {
-        if ($config{'ssl_dir'}."/".$f eq $in{'cert_directory'}) {print "  <option selected>$config{'ssl_dir'}/$f\n";}
-        else {print "  <option>$config{'ssl_dir'}/$f\n";}
+        if ($config{'ssl_dir'}."/".$f eq $in{'cert_directory'}) {print "  <option selected>$config{'ssl_dir'}/$f</option>\n";}
+        else {print "  <option>$config{'ssl_dir'}/$f</option>\n";}
         }
 print <<EOF;
  </select></td> </tr>
@@ -81,10 +81,10 @@ print <<EOF;
 EOF
 print "  <option value='' ";
 if (!$in{'key_directory'}) {print "selected";}
-print ">$text{'import_choose'}";
+print ">$text{'import_choose'}</option>";
 foreach $f ( &getdirs($config{'ssl_dir'})) {
-        if ($config{'ssl_dir'}."/".$f eq $in{'key_directory'}) {print "  <option selected>$config{'ssl_dir'}/$f\n";}
-        else {print "  <option>$config{'ssl_dir'}/$f\n";}
+        if ($config{'ssl_dir'}."/".$f eq $in{'key_directory'}) {print "  <option selected>$config{'ssl_dir'}/$f</option>\n";}
+        else {print "  <option>$config{'ssl_dir'}/$f</option>\n";}
         }
 print <<EOF;
  </select></td> </tr>

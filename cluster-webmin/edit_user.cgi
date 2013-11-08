@@ -57,19 +57,19 @@ printf "<input type=radio name=group_def value=1 checked> %s (%s)\n",
 printf "<input type=radio name=group_def value=0> %s\n",
 	$text{'user_set'};
 print "<select name=group>\n";
-print "<option selected value=''>$text{'user_nogroup'}\n";
+print "<option selected value=''>$text{'user_nogroup'}</option>\n";
 foreach $g (@wgroups) {
-	print "<option>$g->{'name'}\n";
+	print "<option>$g->{'name'}</option>\n";
 	}
 print "</select></td> </tr>\n";
 
 print "<tr> <td><b>$text{'user_pass'}</b></td> <td>\n";
 print "<select name=pass_def>\n";
-print "<option value=1 checked> $text{'user_leave'}\n";
-print "<option value=0> $text{'user_set'} ..\n";
-print "<option value=3> $text{'user_unix'}\n";
-print "<option value=4> $text{'user_lock'}\n";
-print "<option value=5> $text{'user_extauth'}\n";
+print "<option value=1 checked>$text{'user_leave'}</option>\n";
+print "<option value=0>$text{'user_set'} ..</option>\n";
+print "<option value=3>$text{'user_unix'}</option>\n";
+print "<option value=4>$text{'user_lock'}</option>\n";
+print "<option value=5>$text{'user_extauth'}</option>\n";
 print "</select><input type=password name=pass size=25></td> </tr>\n";
 
 @langs = &list_languages();
@@ -81,9 +81,9 @@ printf "<input type=radio name=lang_def value=1 checked> %s (%s)\n",
 printf "<input type=radio name=lang_def value=0> %s\n",
 	$text{'user_set'};
 print "<select name=lang>\n";
-print "<option value='' selected>$text{'user_default'}\n";
+print "<option value='' selected>$text{'user_default'}</option>\n";
 foreach $l (@langs) {
-	printf "<option value=%s>%s (%s)\n",
+	printf "<option value=%s>%s (%s)</option>\n",
 		$l->{'lang'},
 		$l->{'desc'}, uc($l->{'lang'});
 	}
@@ -98,9 +98,9 @@ printf "<input type=radio name=theme_def value=1 checked> %s (%s)\n",
 printf "<input type=radio name=theme_def value=0> %s\n",
 	$text{'user_set'};
 print "<select name=theme>\n";
-print "<option value=webmin selected>$text{'user_default'}\n";
+print "<option value=webmin selected>$text{'user_default'}</option>\n";
 foreach $t ( { 'desc' => $text{'user_themedef'} }, @themes) {
-	printf "<option value='%s'>%s\n", $t->{'dir'}, $t->{'desc'};
+	printf "<option value='%s'>%s</option>\n", $t->{'dir'}, $t->{'desc'};
 	}
 print "</select></td> </tr>\n";
 
@@ -142,21 +142,21 @@ print "<input type=radio name=mods_def value=0> $text{'user_moddel'}\n";
 print "<br>\n";
 print "<select name=mods1 size=$mp multiple>\n";
 for($i=0; $i<$mp; $i++) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$mods[$i]->{'dir'}, $umods{$mods[$i]->{'dir'}} ? "selected" : "",
 		$mods[$i]->{'desc'};
 	}
 print "</select>\n";
 print "<select name=mods2 size=$mp multiple>\n";
 for($i=$mp; $i<$mp*2; $i++) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$mods[$i]->{'dir'}, $umods{$mods[$i]->{'dir'}} ? "selected" : "",
 		$mods[$i]->{'desc'};
 	}
 print "</select>\n";
 print "<select name=mods3 size=$mp multiple>\n";
 for($i=$mp*2; $i<@mods; $i++) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$mods[$i]->{'dir'}, $umods{$mods[$i]->{'dir'}} ? "selected" : "",
 		$mods[$i]->{'desc'};
 	}
@@ -183,14 +183,14 @@ foreach $h (@hosts) {
 	next if (!$u);
 	local ($s) = grep { $_->{'id'} == $h->{'id'} } @servers;
 	local $d = &server_name($s);
-	$sel .= "<option value='$h->{'id'},'>".&text('user_aclhg', $d)."\n"
+	$sel .= "<option value='$h->{'id'},'>".&text('user_aclhg', $d)."</option>\n"
 		if (!$ingroup{$in{'user'}});
 	foreach $m (@{$h->{'modules'}}) {
 		local @um = $ingroup{$in{'user'}} ? @{$u->{'ownmods'}}
 						  : @{$u->{'modules'}};
 		next if (&indexof($m->{'dir'}, @um) < 0);
 		$sel .= "<option value='$h->{'id'},$m->{'dir'}'>".
-			&text('user_aclh', $m->{'desc'}, $d)."\n";
+			&text('user_aclh', $m->{'desc'}, $d)."</option>\n";
 		}
 	}
 if ($sel) {

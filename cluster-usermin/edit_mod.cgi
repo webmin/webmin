@@ -175,9 +175,9 @@ print "<input type=hidden name=type value=\"$type\">\n";
 print "<input type=hidden name=mod value=\"$name\">\n";
 print "<td><input type=submit value='",$text{"edit_uninst_$type"},"'>\n";
 print "<select name=server>\n";
-print "<option value=-1>$text{'edit_all'}\n";
+print "<option value=-1>$text{'edit_all'}</option>\n";
 foreach $s (@got) {
-	print "<option value='$s->{'id'}'>",&server_name($s),"\n";
+	print "<option value='$s->{'id'}'>",&server_name($s),"</option>\n";
 	}
 print "</select></td></form>\n";
 

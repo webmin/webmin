@@ -772,7 +772,7 @@ if ($config{'vixie_cron'} && (!$_[1] || $_[0]->{'special'})) {
 	local $sp = $job->{'special'} eq 'midnight' ? 'daily' :
 	    $job->{'special'} eq 'annually' ? 'yearly' : $job->{'special'};
 	foreach $s ('hourly', 'daily', 'weekly', 'monthly', 'yearly', 'reboot'){
-		printf "<option value=%s %s>%s\n",
+		printf "<option value=%s %s>%s</option>\n",
 		    $s, $sp eq $s ? "selected" : "", $text{'edit_special_'.$s};
 		}
 	print "</select>\n";
@@ -868,7 +868,7 @@ foreach $arr ("mins", "hours", "days", "months", "weekdays") {
 		foreach $v (@sec) {
 			if ($v =~ /^(.*)=(.*)$/) { $disp = $1; $code = $2; }
 			else { $disp = $code = $v; }
-			printf "<option value=\"$code\" %s>$disp\n",
+			printf "<option value=\"$code\" %s>$disp</option>\n",
 				$inuse{$code} ? "selected" : "";
 			}
 		print "</select></td>\n";

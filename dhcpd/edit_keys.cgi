@@ -41,10 +41,10 @@ for($i=0; $i<@keys; $i++) {
 	print "<td><select name=alg_$i>\n";
 	local $found;
 	foreach $a (@algs) {
-		printf "<option %s>%s\n", $alg eq $a ? "selected" : "", $a;
+		printf "<option %s>%s</option>\n", $alg eq $a ? "selected" : "", $a;
 		$found++ if ($alg eq $a);
 		}
-	print "<option selected>$alg\n" if (!$found && $alg);
+	print "<option selected>$alg</option>\n" if (!$found && $alg);
 	print "</select></td>\n";
 
 	printf "<td><input name=secret_$i size=64 value='%s'></td> </tr>\n",

@@ -35,7 +35,7 @@ foreach $w ([ \@edit, "features", "all" ],
 	printf "<select name=$w->[1] multiple size=%d>\n",
 		scalar(@opts);
 	foreach $o (@opts, 'apply', 'bootup') {
-		printf "<option value=%s %s>%s\n",
+		printf "<option value=%s %s>%s</option>\n",
 			$o, $can{$o} ? "selected" : "",
 			$text{"acl_".$o} || $text{$o."_title"};
 		}

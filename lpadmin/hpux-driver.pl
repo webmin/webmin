@@ -56,7 +56,7 @@ opendir(DIR, $config{'model_path'});
 while($f = readdir(DIR)) {
 	if ($f =~ /^\./) { next; }
 	$path = "$config{'model_path'}/$f";
-	printf "<option value=\"$path\" %s>$f\n",
+	printf "<option value=\"$path\" %s>$f</option>\n",
 		$path eq $prn{'iface'} ? "selected" : "";
 	}
 closedir(DIR);
@@ -73,17 +73,17 @@ if (&has_ghostscript()) {
 		print "<select name=driver size=7>\n";
 		foreach $d (&list_webmin_drivers()) {
 			if ($drvsupp{$d->[0]}) {
-				printf "<option %s>%s\n",
+				printf "<option %s>%s</option>\n",
 				    $d->[1] eq $drv->{'type'} ? "selected" : "",
 				    $d->[1];
 				}
 			}
 		print "</select>&nbsp;&nbsp;";
 		print "<select name=dpi size=7>\n";
-		printf "<option value=\"\" %s>Default\n",
+		printf "<option value=\"\" %s>Default</option>\n",
 			$drv->{'dpi'} ? "" : "selected";
 		foreach $d (75, 100, 150, 200, 300, 600) {
-			printf "<option value=\"$d\" %s>$d DPI\n",
+			printf "<option value=\"$d\" %s>$d DPI</option>\n",
 				$drv->{'dpi'} == $d ? "selected" : "";
 			}
 		print "</select></td> </tr>\n";

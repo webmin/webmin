@@ -319,7 +319,7 @@ foreach $d (@dlist) {
 	if ($_[0] > 2) {
 		local $name = $d->{'desc'};
 		$name .= " ($d->{'type'})" if ($d->{'type'});
-		$rv .= sprintf "<option value=%s %s>%s\n",
+		$rv .= sprintf "<option value=%s %s>%s</option>\n",
 			$d->{'device'},
 			$_[1] eq $d->{'device'} ? "selected" : "", $name;
 		$found++ if ($_[1] eq $d->{'device'});
@@ -330,7 +330,7 @@ foreach $d (@dlist) {
 			local $name = $p->{'desc'};
 			next if (!$p->{'end'});
 			$name .= " ($p->{'tag'})" if ($p->{'tag'});
-			$rv .= sprintf "<option %s value=%s>%s\n",
+			$rv .= sprintf "<option %s value=%s>%s</option>\n",
 				$_[1] eq $p->{'device'} ? "selected" : "",
 				$p->{'device'}, $name;
 			$found++ if ($_[1] eq $p->{'device'});
@@ -338,7 +338,7 @@ foreach $d (@dlist) {
 		}
 	}
 if (!$found && $_[1] && !$_[3]) {
-	$rv .= "<option selected>$_[1]\n";
+	$rv .= "<option selected>$_[1]</option>\n";
 	}
 if ($_[3]) {
 	${$_[3]} = $found;

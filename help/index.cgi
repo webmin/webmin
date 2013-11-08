@@ -16,7 +16,7 @@ print "<td><input type=radio name=all value=1 checked> $text{'index_all'}\n";
 print "&nbsp;<input type=radio name=all value=0> $text{'index_sel'}<br>\n";
 print "&nbsp;&nbsp;&nbsp;<select name=mods size=5 multiple>\n";
 foreach $m (&list_modules()) {
-	printf "<option value=%s>%s\n",
+	printf "<option value=%s>%s</option>\n",
 		$m->[0], $m->[1]->{'desc'};
 	}
 print "</select></td> </tr>\n";
