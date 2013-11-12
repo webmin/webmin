@@ -451,6 +451,16 @@ local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $? ? $out : undef;
 }
 
+# resize_snapshot_volume(&lv, size)
+sub resize_snapshot_volume
+{
+local $cmd = $_[1] > $_[0]->{'cow_size'} ? "lvextend" : "lvreduce -f";
+$cmd .= " -L".quotemeta($_[1])."k";
+$cmd .= " ".quotemeta($_[0]->{'device'});
+local $out = &backquote_logged("$cmd 2>&1 </dev/null");
+return $? ? $out : undef;
+}
+
 # change_logical_volume(&lv, [&old-lv])
 sub change_logical_volume
 {

@@ -206,14 +206,14 @@ if (@vgs) {
 		print &ui_columns_end();
 		}
 	else {
-		# Show PV icons
+		# Show LV icons
 		print &ui_links_row(\@links);
 		foreach $l (@alllvs) {
 			($v) = grep { $_->{'name'} eq $l->{'vg'} } @vgs;
 			push(@lvicons, "edit_lv.cgi?vg=".&urlize($v->{'name'}).
 				       "&lv=".&urlize($l->{'name'}));
 			push(@lvtitles, &html_escape($l->{'name'}).
-					"<br>".&nice_size($l->{'size'}*1024));
+					"<br>".&nice_size(($l->{'cow_size'} || $l->{'size'})*1024));
 			push(@lvlinks, "images/lv.gif");
 			}
 		&icons_table(\@lvicons, \@lvtitles, \@lvlinks);
