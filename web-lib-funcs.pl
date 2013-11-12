@@ -2529,13 +2529,27 @@ if (!$connected) {
 			&$cbfunc(2, int($size));
 			}
 
-		# request the file
-		my $pasv = &ftp_command("PASV", 2, $_[3]);
-		defined($pasv) || return 0;
-		$pasv =~ /\(([0-9,]+)\)/;
-		@n = split(/,/ , $1);
-		&open_socket("$n[0].$n[1].$n[2].$n[3]",
-			$n[4]*256 + $n[5], "CON", $_[3]) || return 0;
+		# are we using IPv6?
+		my $v6 = !&to_ipaddress($host) &&
+			 &to_ip6address($host);
+
+		if ($v6) {
+			# request the file over a EPSV port
+			my $epsv = &ftp_command("EPSV", 2, $_[3]);
+			defined($epsv) || return 0;
+			$epsv =~ /\|(\d+)\|/ || return 0;
+			my $epsvport = $1;
+			&open_socket($host, $epsvport, CON, $_[3]) || return 0;
+			}
+		else {
+			# request the file over a PASV connection
+			my $pasv = &ftp_command("PASV", 2, $_[3]);
+			defined($pasv) || return 0;
+			$pasv =~ /\(([0-9,]+)\)/ || return 0;
+			@n = split(/,/ , $1);
+			&open_socket("$n[0].$n[1].$n[2].$n[3]",
+				$n[4]*256 + $n[5], "CON", $_[3]) || return 0;
+			}
 		&ftp_command("RETR $_[1]", 1, $_[3]) || return 0;
 
 		# transfer data
@@ -2636,12 +2650,25 @@ if ($cbfunc) {
 	&$cbfunc(2, $st[7]);
 	}
 
-# send the file
-my $pasv = &ftp_command("PASV", 2, $_[3]);
-defined($pasv) || return 0;
-$pasv =~ /\(([0-9,]+)\)/;
-@n = split(/,/ , $1);
-&open_socket("$n[0].$n[1].$n[2].$n[3]", $n[4]*256 + $n[5], "CON", $_[3]) || return 0;
+# are we using IPv6?
+my $v6 = !&to_ipaddress($_[0]) && &to_ip6address($_[0]);
+
+if ($v6) {
+	# send the file over a EPSV port
+	my $epsv = &ftp_command("EPSV", 2, $_[3]);
+	defined($epsv) || return 0;
+	$epsv =~ /\|(\d+)\|/ || return 0;
+	my $epsvport = $1;
+	&open_socket($_[0], $epsvport, "CON", $_[3]) || return 0;
+	}
+else {
+	# send the file over a PASV connection
+	my $pasv = &ftp_command("PASV", 2, $_[3]);
+	defined($pasv) || return 0;
+	$pasv =~ /\(([0-9,]+)\)/ || return 0;
+	@n = split(/,/ , $1);
+	&open_socket("$n[0].$n[1].$n[2].$n[3]", $n[4]*256 + $n[5], "CON", $_[3]) || return 0;
+	}
 &ftp_command("STOR $_[1]", 1, $_[3]) || return 0;
 
 # transfer data
