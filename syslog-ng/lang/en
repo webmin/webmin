@@ -55,7 +55,7 @@ options_etime_reap=Missing or non-numeric time to wait for idea connections
 options_esync=Missing or invalid number of messages to buffer before writing
 options_estats=Missing or non-numeric time to wait between statistics messages
 options_elog_fifo_size=Missing or invalid number of messages to buffer
-options_elog_msg_size=issing or non-numeric maximum log message size
+options_elog_msg_size=Missing or non-numeric maximum log message size
 
 destinations_title=Log Destinations
 destinations_name=Destination name
