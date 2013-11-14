@@ -247,7 +247,10 @@ foreach (@fstab) {
 	if ($line =~ /\S/ && $line !~ /\signore\s/ && $i++ == $_[0]) {
 		# Found the line to replace
 		local $dev = $_[2];
-		$dev =~ s/ /\\040/g;
+		if ($_[3] eq $smbfs_fs || $_[3] eq "cifs") {
+			$dev =~ s/\\/\//g;
+			$dev =~ s/ /\\040/g;
+			}
 		&print_tempfile(FSTAB, $dev."\t".$_[1]."\t".$_[3]);
 		local @opts = $_[4] eq "-" ? ( ) : split(/,/, $_[4]);
 		if ($_[6] eq "no") {
@@ -679,7 +682,7 @@ elsif ($_[2] eq $smbfs_fs || $_[2] eq "cifs") {
 		# SMB filesystem mounted with mount command
 		local $temp = &transname();
 		local $ex = &system_logged("mount -t $_[2] $opts $qshar $_[0] >$temp 2>&1 </dev/null");
-		local $out = `cat $temp`;
+		local $out = &read_file_contents($temp);
 		unlink($temp);
 		if ($ex || $out =~ /failed|error/i) {
 			&system_logged("umount $_[0] >/dev/null 2>&1");
