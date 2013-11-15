@@ -33,6 +33,7 @@ lang=uk_UA,titles=0,charset=windows-1251		Ukranian
 lang=ar,titles=0,charset=iso-8859-6-I,rtl=1	Arabic
 lang=tl,titles=1	Klingon
 lang=ms,titles=1	Malay
+lang=ms_MY,titles=1	Bahasa Malaysia
 lang=fa,titles=0,dir=rtl,charset=UTF-8	Persian
 lang=ro,titles=1	Romanian
 lang=fi,titles=1	Finnish
