@@ -18,3 +18,5 @@ desc_ru.UTF-8=Почтовый фильтр Procmail
 desc_cz.UTF-8=Procmail poštovní filtry
 desc_no=Procmail E-post filter
 desc_hu=Levelez� sz�r� (Procmail)
+longdesc_ms_MY=Sunting bahagian dalam fail global /etc/procmailrc, yang terpakai kepada semua emel masuk.
+desc_ms_MY=Penapis Mel Procmail

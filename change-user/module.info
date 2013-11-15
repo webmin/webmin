@@ -33,3 +33,5 @@ desc_cz.UTF-8=ZmÄ›na jazyka a vzhledu
 desc_sk.UTF-8=Zmena jazyka a vzhÄ¾adu
 desc_no=Endre spr&#229;k og tema
 longdesc_hu=Webmin nyelvezetésnek és témájának módosítása
+longdesc_ms_MY=Membolehkan pengguna Webmin untuk menukar bahasa, tema dan mungkin kata laluan.
+desc_ms_MY=Tukar Bahasa dan Tema

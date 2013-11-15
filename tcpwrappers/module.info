@@ -8,3 +8,5 @@ desc_nl=TCP Wrappers
 desc_no=TCP Wrappere
 longdesc_hu=Hálózati szolgáltatások szabályozása
 desc_hu=Hálózati szabályozások (TCP)
+desc_ms_MY=Pelindung TCP
+longdesc_ms_MY=Mengkonfigurasi fail kawalan pelindung capaian rangkaian TCP

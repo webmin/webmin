@@ -11,3 +11,5 @@ desc_nl=IPsec VPN Configuratie
 desc_de=IPsec VPN Konfiguration 
 desc_cz.UTF-8=Konfiguace IPsec VPN
 desc_no=IPsec VPN konfigurasjon
+desc_ms_MY=Mengkonfigurasi IPSec VPN
+longdesc_ms_MY=Menyediakan klien atau pelayan untuk IPSec VPN dengan menggunakan FreeSWAN.

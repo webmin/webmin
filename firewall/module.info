@@ -19,3 +19,5 @@ desc_cz.UTF-8=Firewall Linuxu
 desc_sk.UTF-8=Firewall Linuxu
 desc_no=Linux brannmur
 desc_hu=Linux tûzfal (Iptables)
+longdesc_ms_MY=Mengkonfigurasi firewall linux menggunakan iptables. Membenarkan untuk mengubah kesemua jadual, kunci, aturan dan pilihan.
+desc_ms_MY=Firewall Linux

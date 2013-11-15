@@ -33,3 +33,5 @@ desc_cz.UTF-8=Diskov√© kv√≥ty
 desc_pl.UTF-8=Quota na dyskach
 desc_no=Diskkvoter
 desc_hu=LemezkvÛt·k (Quota)
+longdesc_ms_MY=Menyediakan dan menyunting kuota disk pengguna atau grup bagi fail sistem setempat.
+desc_ms_MY=Kuota disk

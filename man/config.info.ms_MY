@@ -1,0 +1,14 @@
+line2=Konfigurasi sistem,11
+man_cmd=Arahan untuk paparkan laman manual,0
+man_cmd_sect=Arahan untuk paparkan lamanmanual daripada seksyen,0
+search_cmd=Arahan untuk cari laman,0
+man_dir=Direktori laman manual (MANPATH(,0
+list_cmd=Arahan untuk paparkan laluan laman manual,0
+list_cmd_sect=Arahan untuk paparkan laluan laman manual dari seksyen,0
+man2html_path=Laluan ke man2html,3,Jangan guna man2html
+doc_dir=Direktori dokumentasi pakej,3,Tiada
+howto_dir=Direktori dokumentasi HOWTO,3,Tiada
+kernel_dir=Direktori dokumentasi kernel,3,Tiada
+kde_dir=Direktori dokumentasi KDE,3,Tiada
+custom_dir=Direktori dokumentasi kelaziman,3,Tiada
+custom_desc=Nama dokumentasi kelaziman,3,Default

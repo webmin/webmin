@@ -1,0 +1,15 @@
+__norefs=1
+acl_user=Laksanakan arahan sebagai pengguna
+acl_user_def=Pengguna Webmin semasa
+index_clear=Padamkan sejarah
+index_clearcmds=Padamkan arahan
+index_desc=Masukkan arahan shell Unix untuk dilaksana di dalam medan teks di bawah. Arahan <tt>cd</tt> boleh digunakan untuk menukar direktori untuk arahan berikut.
+index_edit=Sunting sebelum
+index_history=Sejarah arahan
+index_ok=Lansana arahan:
+index_pok=Laksanakan arahan sebelumnya
+index_timedout=Arahan telah ditamatkan selepas berlari untuk $1 saat.
+index_title=Arahan Shell
+index_trunced=Jumlah pengeluaran sebanyak $2 telah disatukan di $1.
+log_clear=Padamkan sejarah arahan
+log_run=Telah larikan arahan $1

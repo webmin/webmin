@@ -10,3 +10,5 @@ desc_no=Programpakker - oppdateringer
 desc_hu=Szoftvercsomagok frissítése
 longdesc_de=Zeigt die verf&#252;gbaren Paket-Updates von YUM, APT oder andere Update-Systemen
 desc_de=Software Pakete Updates
+desc_ms_MY=Kemaskini Pakej Perisian
+longdesc_ms_MY=Memaparkan kemas kini pakej yang boleh didapati daripada YUM, APT atau  sistem kemaskini yang lain

@@ -26,3 +26,5 @@ desc_nl=PostgreSQL Database Server
 desc_pl.UTF-8=Serwer baz danych PostgreSQL
 desc_no=PostgreSQL databasetjener
 desc_hu=Adatbázis szerver (PostgresSQL)
+longdesc_ms_MY=Mengurus 'databases', 'tables' dan 'users' dalam pelayan pangkalan data PostgreSQL anda.
+desc_ms_MY=Pelayan Pangkalan Data PostgreSQL 

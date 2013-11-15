@@ -22,3 +22,5 @@ desc_pl=Klient ADSL
 desc_cz.UTF-8=Klient ADSL
 desc_pl.UTF-8=Klient ADSL
 desc_no=ADSL klient
+longdesc_ms_MY=Sediakan klien PPP dengan pakej RP-PPPoE.
+desc_ms_MY=Klien ADSL

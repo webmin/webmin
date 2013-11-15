@@ -33,3 +33,5 @@ desc_cz.UTF-8=OddÃ­ly na lokÃ¡lnÃ­ch discÃ­ch
 desc_no=Partisjoner p&#229; lokale disker
 longdesc_hu=Particiók létrehozása és módosítása
 desc_hu=Lemezparticiók
+longdesc_ms_MY=Mencipta dan mengubah partisyen SCSI setempat dan disk IDE pada Linux.
+desc_ms_MY=Partisyen pada disk setempat

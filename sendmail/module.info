@@ -31,3 +31,5 @@ desc_pl.UTF-8=Konfiguracja Sendmaila
 desc_no=Sendmail e-post tjener
 desc_nl=Sendmail Email Server
 desc_hu=Levelezõ szerver (Sendmail)
+longdesc_ms_MY=Mengurus sendmail untuk alias,masquerading, alamat menulis semula dan ciri-ciri lain.
+desc_ms_MY=Pelayan Mel Sendmail

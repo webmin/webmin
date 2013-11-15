@@ -30,3 +30,5 @@ desc_cz.UTF-8=DHCP Server
 desc_pl.UTF-8=Serwer DHCP
 desc_sk.UTF-8=DHCP Server
 desc_no=DHCP tjener
+longdesc_ms_MY=Mengurus perkongsian rangkaian, subnet, dan grup untuk ISC DHCPD.
+desc_ms_MY=Pelayan DHCP

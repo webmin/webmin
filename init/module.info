@@ -34,3 +34,5 @@ desc_pl.UTF-8=Start i&nbsp;zamykanie systemu
 desc_sk.UTF-8=Å tart a vypnutie
 desc_no=Oppstart og avstenging
 desc_hu=Betöltés és leállítás (Boot)
+longdesc_ms_MY=Skrip Persediaan untuk dijalankan pada masa boot dari /etc/init.d atau /etc/rc.local.
+desc_ms_MY=Bootup dan Shutdown

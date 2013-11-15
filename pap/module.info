@@ -14,3 +14,5 @@ desc_ru.UTF-8=Сервер PPP
 desc_nl=PPP Inbel Server
 desc_cz.UTF-8=PPP Dialin server
 desc_no=PPP oppringings tjener
+longdesc_ms_MY=Mencipta pelayan dialin dengan menggunakan mgetty dan PPP.
+desc_ms_MY=Pelayan PPP Dialin

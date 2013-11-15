@@ -36,3 +36,5 @@ desc_cz.UTF-8=Apache WWW server
 desc_pl.UTF-8=Serwer WWW Apache
 desc_no=Apache Webtjener
 longdesc_hu=Apache direktívák és szolgáltatások beállítása
+longdesc_ms_MY=Mengkonfigurasi hampir kesemua arahan Apache dan ciri-ciri yang ada.
+desc_ms_MY=Pelayan Web Apache

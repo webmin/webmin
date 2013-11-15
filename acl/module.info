@@ -36,3 +36,5 @@ desc_hu.UTF-8=Webmin felhasználók
 desc_cz.UTF-8=Uživatelé Webminu
 desc_pl.UTF-8=Użytkownicy Webmina
 desc_sk.UTF-8=Užívatelia Webminu
+longdesc_ms_MY=Cipta pengguna Webmin dan konfigurasikan modul dan ciri-ciri yang dibenarkan akses.
+desc_ms_MY=Pengguna Webmin

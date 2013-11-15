@@ -11,3 +11,5 @@ desc_nl=PPTP VPN Server
 desc_pt_BR=Servidor VPN PPTP
 desc_cz.UTF-8=PPTP VPN server
 desc_no=PPTP VPN Tjener
+desc_ms_MY=Pelayan PPTP VPN
+longdesc_ms_MY=Menyediakan sistem anda sebagai pelayan PPTP supaya klien Linux atau Windows VPN boleh bersambung.

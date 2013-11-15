@@ -15,3 +15,5 @@ desc_no=Dovecot IMAP/POP3 tjener
 desc_de=Dovecot IMAP/POP3 Server
 desc_pl=Dovecot - serwer IMAP/POP3
 desc_hu=Levelezõ szerver (Dovecot)
+longdesc_ms_MY=Mengkonfigurasi Dovecot IMAP dan POP3 sebagai pelayan menarik mel.
+desc_ms_MY=Pelayan Dovecot IMAP/POP3

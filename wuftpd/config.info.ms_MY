@@ -1,0 +1,9 @@
+line2=Konfigurasi sistem,11
+ftpd_path=Lokasi penuh wuftpd,0
+ftpaccess=Lokasi penuh fail ftpaccess,0
+ftpconversions=Lokasi penuh fail ftpconversions,0
+ftpgroups=Lokasi penuh fail ftpgroups,0
+ftphosts=Lokasi penuh fail ftphosts,0
+ftpusers=Lokasi penuh fail ftpusers,0
+pid_file=Fail PID pelayan FTP,0
+log_file=Fail log pelayan FTP,0

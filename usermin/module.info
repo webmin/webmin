@@ -27,3 +27,5 @@ desc_no=Usermin konfigurasjon
 desc_pl=Konfiguracja Usermina
 longdesc_pl=Skonfiguruj globalne opcje dla Usermina - serwera zarz±dzania u¿ytkownikami
 desc_hu=Usermin beállítások
+longdesc_ms_MY=Mengkonfigurasi pilihan global untuk akaun pengguna pelayan pengurusan Usermin.
+desc_ms_MY=Konfigurasi Usermin

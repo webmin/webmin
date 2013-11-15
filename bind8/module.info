@@ -34,3 +34,5 @@ desc_cz.UTF-8=DNS BIND Server
 desc_pl.UTF-8=Serwer DNS BIND
 desc_no=BIND DNS-tjener
 desc_hu=DNS szerver (Bind)
+longdesc_ms_MY=Membuat dan mengubah domain, rekod DNS, 'options' dan 'views' pada BIND.
+desc_ms_MY=Pelayan DNS BIND

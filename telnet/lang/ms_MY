@@ -1,0 +1,8 @@
+index_title=Login ke SSH/Telnet
+index_warn=Amaran! Sessi telnet ini <b>tidak</b> dienkrip.
+index_nojava=Modul ini memerlukan java untuk berfungsi, tetapi pelayar anda tidak menyokong java
+index_credits=Aplet dibangunkan dibawah GPL oleh <a href='$1' target=_top>Matthias L. Jugel &amp; Marcus Mei&#223;ner</a>.
+index_sshcredits=Termasuk perisian yang dibangunkan oleh Cryptix Development Team (<a href=$1 target=_top>$1</a>).
+index_esocket=Tidak terdapat pelayan telnet pada $1 liang $2.
+index_esocket2=Tidak terdapat pelayan SSH pada $1 liang $2.
+index_elookup=Gagal melihat alamat IP $1 untuk mencuba pelayan telnet atau SSH

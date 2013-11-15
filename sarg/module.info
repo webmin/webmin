@@ -10,3 +10,5 @@ desc_nl=Squid Analyze Rapport Generator
 desc_de=Squid Bericht Generator
 desc_cz.UTF-8=Generátor analýzy Squid
 desc_no=Squid Rapportgenerator
+desc_ms_MY=Penjana Laporan Squid
+longdesc_ms_MY=Mengkonfigurasi dan jadualkan SARG, alat untuk menjana laporan daripada log akses Squid.

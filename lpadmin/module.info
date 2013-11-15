@@ -32,3 +32,5 @@ desc_hu.UTF-8=Nyomtatók
 desc_cz.UTF-8=Administrace tiskáren
 desc_pl.UTF-8=Zarządzanie drukarkami
 desc_no=Skriver administrasjon
+longdesc_ms_MY=Mencipta dan menyunting pencetak lokal dan capaian jauh. Menyokong Windows print servers dan driver Ghostscript.
+desc_ms_MY=Pentadbir pencetak

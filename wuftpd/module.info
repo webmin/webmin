@@ -29,3 +29,5 @@ desc_cz.UTF-8=WU-FTP server
 desc_pl.UTF-8=Serwer WU-FTP
 desc_no=WU-FTP tjener
 longdesc_pl=Konfiguracja dostêpu, anonimowego FTP i innych opcji WU-FTPd.
+longdesc_ms_MY=Mengkonfigurasi kawalan capaian, anonymous FTP dan pilihan lain WU-ftpd.
+desc_ms_MY=Pelayan WU-FTP

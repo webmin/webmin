@@ -19,3 +19,5 @@ desc_cz.UTF-8=Rotování log souborů
 desc_sk.UTF-8=Archivácia systémových záznamov
 desc_no=Loggfil rotasjon
 desc_hu=Napl�f�jlok-forgat�sa (Logrotate)
+longdesc_ms_MY=Menyediakan putaran automatik untuk Apache, Squid, syslog dan fail log yang lain.
+desc_ms_MY=Putaran Fail Log

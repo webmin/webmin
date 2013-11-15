@@ -26,3 +26,5 @@ desc_cz.UTF-8=PAM Autentikace
 desc_pl.UTF-8=Autoryzacja przez PAM
 desc_no=PAM autentisering
 desc_hu=PAM hitelesítések
+longdesc_ms_MY=Mengkonfigurasi langkah-langkah pengesahan PAM yang digunakan oleh servis seperti telnet, POP dan FTP.
+desc_ms_MY=Pengesahan PAM

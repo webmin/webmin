@@ -6,3 +6,5 @@ longdesc=Share disk devices across the network using the iSCSI protocol with the
 desc_de=iSCSI-Target 
 desc_ca=Objectius iSCSI
 desc_no=iSCSI-m&#229;l
+desc_ms_MY=Sasaran iSCSI
+longdesc_ms_MY=Berkongsi peranti disk di seluruh rangkaian menggunakan protokol iSCSI dengan pakej iscsitarget.

@@ -9,3 +9,5 @@ desc_cz=PPP Dialup klient
 desc_nl=PPP Inbel Client
 desc_cz.UTF-8=PPP Dialup klient
 desc_no=PPP oppringingsklient
+desc_ms_MY=Klien PPP Dialup
+longdesc_ms_MY=Mengkonfigurasi pakej WV-Dial untuk sambungan ke Internet dengan menggunakan sambungan modem PPP

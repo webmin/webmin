@@ -10,3 +10,5 @@ desc_cz=Démon idmapd
 desc_nl=IDmapd Deamon
 desc_cz.UTF-8=DÃ©mon idmapd
 desc_no=idmapd Daemon
+desc_ms_MY=daemon idmapd
+longdesc_ms_MY=Mengurus pemetaan ID NFS daemon.

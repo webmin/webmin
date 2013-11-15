@@ -27,3 +27,5 @@ desc_cz.UTF-8=NIS klient a server
 desc_pl.UTF-8=Klient i&nbsp;serwer NIS
 desc_no=NIS klient og tjener
 desc_hu=NIS szerver és ügyfelek
+longdesc_ms_MY=Menyediakan sistem sebagai klien NIS,master atau slave master. Ambil perhatian bahawa NIS+ tidak disokong.
+desc_ms_MY=Klien NIS dan Pelayan

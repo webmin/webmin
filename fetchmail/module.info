@@ -24,3 +24,5 @@ desc_pl.UTF-8=Pobieranie poczty przez fetchmaila
 desc_no=Fetchmail e-posthenting
 longdesc_hu=Levelek automatikus letöltése fetchmail segítségével másik szerverekrõl
 desc_hu=Levelek lekérdezése (FetchMail)
+longdesc_ms_MY=Konfigurasi program fetchmail yang popular secara automatik menarik mel dari pelayan yang lain.
+desc_ms_MY=Fetchmail Menarik Mel

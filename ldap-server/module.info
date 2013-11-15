@@ -9,3 +9,5 @@ desc_ru_RU=Сервер LDAP
 desc_pt_BR=Servidor LDAP
 desc_de=LDAP-Server 
 desc_no=LDAP tjener
+desc_ms_MY=Pelayan LDAP
+longdesc_ms_MY=Menguruskan klien OpenLDAP dan objek didalam pangkalan datanya

@@ -16,3 +16,5 @@ desc_nl=Logisch Volume Management
 desc_ru.UTF-8=Управление логическими томами
 desc_cz.UTF-8=Správa logických svazků
 desc_no=Administrer logiske volumer
+longdesc_ms_MY=Mengkonfigurasi volume groups, physical volumes and logical volumes pada LVM Linux.
+desc_ms_MY=Pengurusan Logical Volume

@@ -29,3 +29,5 @@ desc_cz.UTF-8=Linux RAID
 desc_pl.UTF-8=RAID w&nbsp;Linuksie
 desc_no=Linux RAID
 desc_hu=Linux RAID
+longdesc_ms_MY=Cipta RAID 0, 1, 4, 5 dan peranti linear pada sistem Linux.
+desc_ms_MY=RAID Linux

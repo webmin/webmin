@@ -15,3 +15,5 @@ desc_nl=Beveiligings Sentries (Schildwachten)
 desc_ru.UTF-8=Система безопасности
 desc_cz.UTF-8=Bezpečnostní hlídač
 desc_no=Sikkerhets-tjeneste
+longdesc_ms_MY=Mengkonfigurasi portsentry, hostsentry dan pemantauan sistem keselamatan logcheck.
+desc_ms_MY=Sentri Keselamatan
