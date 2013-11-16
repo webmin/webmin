@@ -137,6 +137,21 @@ else {
 # read back the rest of the page
 if ($header{'content-type'} =~ /text\/html/ && !$header{'x-no-links'}) {
 	while($_ = &read_http_connection($con)) {
+		# fix protocol relative src like <iframe src='//foo.com' />
+		s/src='(\/\/[^']*)'/src='$protocol:$1'/gi;
+		s/src="(\/\/[^"]*)"/src="$protocol:$1"/gi;
+		s/src=(\/\/[^ "'>]*)/src=$protocol:$1/gi;
+
+		# Fix protocol relative hrefs like <a href=//foo.com/foo.html>
+		s/href='(\/\/[^']*)'/href='$protocol:$1'/gi;
+		s/href="(\/\/[^"]*)"/href="$protocol:$1"/gi;
+		s/href=(\/\/[^ "'>]*)/href=$protocol:$1/gi;
+
+		# Fix protocol relative form actions like <form action=//foo.com>
+		s/action='(\/\/[^']*)'/action='$protocol:$1'/gi;
+		s/action="(\/\/[^"]*)"/action="$protocol:$1"/gi;
+		s/action=(\/\/[^ "'>]*)/action=$protocol:$1/gi;
+
 		# Fix absolute image links like <img src=/foo.gif>
 		s/src='(\/[^']*)'/src='$baseurl$1'/gi;
 		s/src="(\/[^"]*)"/src="$baseurl$1"/gi;
