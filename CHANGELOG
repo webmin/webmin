@@ -192,4 +192,4 @@ Norwegian updates, thanks to Stein-Aksel Basma.
 Catalan updates, thanks to Jaume Badiella.
 IPv6 access control now match an address exactly, unless a network size is entered.
 FTP uploads and downloads to IPv6-only servers now work properly, thanks to support for the EPSV protocol command.
-Added a Bahasa Malaysia translation, thanks to Nizam Adnan, Weldan Jamili and nawawi.
+Added a Bahasa Malaysia translation, thanks to Nawawi Jamili, Nizam Adnan and Weldan Jamili.
