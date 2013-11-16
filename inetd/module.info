@@ -8,5 +8,5 @@ desc_de=Netzwerk-Dienste und Protokolle
 desc_no=Nettverkstjenester og -protokoller
 desc_nl=Netwerk Services en Protocollen
 desc_hu=Hálózati szolgáltatások (Inetd)
-desc_ms_MY=Servis Rangkain dan Protokol
+desc_ms_MY=Servis Rangkaian dan Protokol
 longdesc_ms_MY=Mengubah servis dalam /etc/inetd.conf, /etc/services dan /etc/rpc.
