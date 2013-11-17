@@ -26,19 +26,24 @@ Senarai Istilah:
 ================
 access          = Capaian -- capai digunakan berbanding akses, cth: access control -> kawalan capaian
 arguments       = anjuran -- http://prpm.dbp.gov.my/Search.aspx?k=ajuan
-authority       = penguatkuasaan -- digunakan pada SSL, cth: certificate authority -> Penguatkuasaan Sijil
+authority       = penguatkuasaan diguna berbanding autoriti -- digunakan pada SSL, cth: certificate authority -> Penguatkuasaan Sijil
 backup          = backup -- dikekalkan inggeris, berbanding istilah melayu "sandar"
 broadcast       = siar
 browser         = pelayar
+boot            = boot
 change          = ubah
 connection      = sambungan
+cookie          = kuki -- http://prpm.dbp.gov.my/Search.aspx?k=cookie
+cipher          = sifer -- http://prpm.dbp.gov.my/Search.aspx?k=cipher 
 debug           = nyah-pijat
 defined         = dinyatakan
 delete          = padam
+details         = perincian / butiran
 device          = peranti
 disabled        = dinyah-aktifkan
 download        = muat turun
 edit            = sunting / ubah
+email           = emel
 enabled         = diaktifkan
 encryption      = penyulitan -- http://prpm.dbp.gov.my/Search.aspx?k=encryption
 error           = ralat
@@ -46,21 +51,24 @@ executable      = Pelaksana
 execute         = Laksana
 group           = grup / kumpulan -- http://prpm.dbp.gov.my/Search.aspx?k=grup
 hits            = popular
-installation    = pemasangan / installasi -- http://prpm.dbp.gov.my/Search.aspx?k=instalasi
-install         = pasangan
+installation    = pemasangan / instalasi -- http://prpm.dbp.gov.my/Search.aspx?k=instalasi
+install         = pasang
 interface       = antara muka
 jobs            = Tugas -- cth: Cron Jobs -> Tugas Cron, Scheduled Cron, Tugas berjadul Cron
+kernel          = kernel
 library         = arkib / pustaka
 loader          = pemuat
 logging         = meng-log
 login           = log masuk
 log             = log
 logout          = log keluar
+mail            = mel
+message         = mesej
 module          = modul
 network         = rangkaian
 new             = baharu -- http://prpm.dbp.gov.my/Search.aspx?k=baharu
 parameter       = parameter
-partition       = partisyen
+partition       = pemetakan / petak -- http://prpm.dbp.gov.my/Search.aspx?k=partition
 password        = kata laluan
 path            = lokasi / laluan
 port            = port -- dikekalkan inggeris, berbanding istilah melayu "liang"
@@ -68,6 +76,7 @@ prompt          = prom -- http://prpm.dbp.gov.my/Search.aspx?k=prom
 provider        = pembekal
 referrer        = perujuk -- cth: Trusted Referrers -> Perujuk dipercayai
 refresh         = segar semula / penyegaran
+remote          = capaian jauh
 remove          = buang
 repository      = repositori -- http://prpm.dbp.gov.my/Search.aspx?k=repositori
 restart         = mula semula
@@ -85,8 +94,8 @@ update          = kemaskini
 upload          = muat naik
 username        = nama pengguna
 user            = pengguna
-
-
+cache           = cache -- http://prpm.dbp.gov.my/Search.aspx?k=cache
+client-side     = pihak klien -- http://prpm.dbp.gov.my/Search.aspx?k=client-side
 
 Kemaskini:
 =========
