@@ -1,8 +1,8 @@
 line0=Pilihan dikonfigurasikan,11
-wait=Mod menunggu sandar lalai,1,1-Tunggu hingga selesai,0-Larikan di proses belakang
+wait=Mod menunggu backup lalai,1,1-Tunggu hingga selesai,0-Larikan di proses belakang
 apply=Menerapkan konfigurasi 'director' secara automatik?,1,1-Ya,0-Tidak
 groupmode=Dapatkan maklumat grup nod dari,1,webmin-Module pelayan Indeks Webmin,oc-Pengurus pangkalan data OCM,-Tidak ada tempat
-showdirs=Sentiada memaparkan directors capaian jauh?,1,1-Ya,0-Tidak
+showdirs=Sentiasa memaparkan directors capaian jauh?,1,1-Ya,0-Tidak
 line1=Tetapan pangkalan data Bacula,11
 driver=Jenis Pangkalan data,1,Pg-PostgreSQL,mysql-MySQL,SQLite-SQLite
 user=Pengguna untuk log masuk ke pangkalan data sebagai,0
