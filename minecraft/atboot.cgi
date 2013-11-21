@@ -4,7 +4,7 @@
 use strict;
 use warnings;
 require './minecraft-lib.pl';
-our (%text, %in, %config);
+our (%text, %in, %config, $module_config_directory);
 &ReadParse();
 
 &foreign_require("init");
@@ -18,10 +18,26 @@ if ($starting != 2 && $in{'boot'}) {
 	if ($config{'unix_user'} ne 'root') {
 		$stopcmd = &command_as_user($config{'unix_user'}, 0, $stopcmd);
 		}
+
+	# Run via wrapper scripts, as some boot systems don't like a lot of
+	# shell meta-chars
+	my $startscript = "$module_config_directory/start.sh";
+	my $stopscript = "$module_config_directory/stop.sh";
+	my $startfh = "START";
+	&open_tempfile($startfh, ">$startscript");
+	&print_tempfile($startfh, $startcmd,"\n");
+	&close_tempfile($startfh);
+	&set_ownership_permissions(undef, undef, 0755, $startscript);
+	my $stopfh = "STOP";
+	&open_tempfile($stopfh, ">$stopscript");
+	&print_tempfile($stopfh, $stopcmd,"\n");
+	&close_tempfile($stopfh);
+	&set_ownership_permissions(undef, undef, 0755, $stopscript);
+
 	&init::enable_at_boot($config{'init_name'},
 		"Start Minecraft server",
-		$startcmd,
-		$stopcmd,
+		$startscript,
+		$stopscript,
 		undef,
 		{ 'fork' => 1 },
 		);
