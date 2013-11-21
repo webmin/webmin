@@ -1,0 +1,11 @@
+__norefs=1
+acl_setup=Boleh menetapkan dan mematikan pemantauan?
+index_all=&lt;segala-galanya&gt;
+index_by=Memaparkan trafik dengan
+syslog_syslog=Syslog
+syslog_syslog-ng=Syslog-NG
+system_firewall=IPtables
+system_ipfilter=IPFilter
+system_ipfw=IPFW
+system_shorewall=Shorewall
+turnoff_ecannot=Anda tidak dibenarkan untuk menyah-aktifkan pemantauan
