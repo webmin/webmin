@@ -186,57 +186,9 @@ if ($header{'content-type'} =~ /text\/html/ && !$header{'x-no-links'}) {
 		#s/\.location\s*=\s*"$page([^']*)"/.location="$url\/$1"/gi;
 		#s/window.open\("$page([^"]*)"/window.open\("$url\/$1"/gi;
 		#s/name=return\s+value="$page([^"]*)"/name=return value="$url\/$1"/gi;
-
-        # fix href like <a href=aa.html>
-        if ( m/\<(a|link).*href=(?!#|javascript:|https:|http:|\/|'|").*[ >]/gi ) {
-            s/href=([^ "'>]*)/href=$linkurl$baseurl\/$1/gi;
-        }
-
-        # fix href like <a href="aa.html">
-        if ( m/\<(a|link).*href="(?!#|javascript:|https:|http:|\/).*"[ >]/gi ) {
-            s/href="([^"]*)"/href="$linkurl$baseurl\/$1"/gi;
-        }
-
-        # fix href like <a href='aa.html'>
-        if ( m/\<(a|link).*href='(?!#|javascript:|https:|http:|\/).*'[ >]/gi ) {
-            s/href='([^']*)'/href='$linkurl$baseurl\/$1'/gi;
-        }
-
-        # fix src like <img src=aa.html>
-        if ( m/\<(img|script).*src=(?!https:|http:|\/|'|").*[ >]/gi ) {
-            s/src=([^ "'>]*)/src=$linkurl$baseurl\/$1/gi;
-        }
-
-        # fix src like <img src="aa.html">
-        if ( m/\<(img|script).*src="(?!https:|http:|\/).*"[ >]/gi ) {
-            s/src="([^"]*)"/src="$linkurl$baseurl\/$1"/gi;
-        }
-
-        # fix href like <img src='aa.html'>
-        if ( m/\<(img|script).*src='(?!https:|http:|\/).*'[ >]/gi ) {
-            s/src='([^']*)'/src='$linkurl$baseurl\/$1'/gi;
-        }
-
 		print;
+		}
 	}
-
-} elsif ($header{'content-type'} =~ /text\/css/) {
-    my $s;
-    my $pathinfo = $ENV{'PATH_INFO'};
-    while($_ = &read_http_connection($con)) {
-        if ( m/url\("(.*?)"\)/i ) {
-            $s = &resolv_path($pathinfo, $1);
-            s/url\("$1"\)/url\("$linkurl$s"\)/gi;
-        } elsif ( m/url\('(.*?)'\)/i ) {
-            $s = &resolv_path($pathinfo, $1);
-            s/url\('$1'\)/url\('$linkurl$s'\)/gi;
-        } elsif ( m/url\((.*?)\)/i ) {
-            $s = &resolv_path($pathinfo, $1);
-            s/url\($1\)/url\($linkurl$s\)/gi;
-        }
-        print;
-    }
-}
 else {
 	while($buf = &read_http_connection($con, 1024)) {
 		print $buf;
