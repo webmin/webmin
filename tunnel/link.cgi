@@ -25,6 +25,7 @@ $url = $gconfig{'webprefix'}."/$module_name/link.cgi/$openurl";
 $| = 1;
 $meth = $ENV{'REQUEST_METHOD'};
 if ($config{'url'}) {
+    $config{'url'} = &fix_end_url($config{'url'}) || &error($text{'seturl_eurl'});
 	$openurl =~ /^\Q$config{'url'}\E/ ||
 		&error(&text('link_ebadurl', $openurl));
 	}
@@ -190,7 +191,7 @@ if ($header{'content-type'} =~ /text\/html/ && !$header{'x-no-links'}) {
 		}
 	}
 else {
-	while($buf = &read_http_connection($con, 1024)) {
+	while($buf = &read_http_connection($con,1024)) {
 		print $buf;
 		}
 	}
