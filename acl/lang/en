@@ -350,7 +350,7 @@ rbac_desc=Webmin's RBAC integration provides a way for user module and ACL permi
 rbac_esolaris=RBAC is only supported on Solaris at the moment, and so cannot be used on this $1 system.
 rbac_eperl=The Perl module $1 needed for RBAC integration is not installed. <a href='$2'>Click here</a> to have it installed now.
 rbac_ecpan=You do not have access to Webmin's Perl Modules page in order to install the necessary $1 module for RBAC integration.
-rbac_ok=RBAC integration is available on this sytem, and can be enabled on a per-user basis on the Edit Webmin User page.
+rbac_ok=RBAC integration is available on this system, and can be enabled on a per-user basis on the Edit Webmin User page.
 
 udeletes_err=Failed to delete users
 udeletes_enone=None selected
