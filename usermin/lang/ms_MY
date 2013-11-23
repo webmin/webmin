@@ -1,0 +1,7 @@
+__norefs=1
+access_title=Kawalan Capaian IP
+acl_all=Kesemua modul
+users_header=Kawalan capaian log masuk Usermin
+users_none=Tiada pengguna yang dimasukkan
+users_shells=Halang pengguna yang shell tidak ada dalam fail
+users_title=Membenarkan Pengguna dan Grup

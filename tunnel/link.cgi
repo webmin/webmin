@@ -27,6 +27,7 @@ $meth = $ENV{'REQUEST_METHOD'};
 if ($config{'url'}) {
 	$openurl =~ /^\Q$config{'url'}\E/ ||
 		&error(&text('link_ebadurl', $openurl));
+    $openurl = &fix_end_url($openurl) || &error($text{'seturl_eurl'});
 	}
 
 if ($config{'loginmode'} == 2) {
@@ -190,7 +191,7 @@ if ($header{'content-type'} =~ /text\/html/ && !$header{'x-no-links'}) {
 		}
 	}
 else {
-	while($buf = &read_http_connection($con, 1024)) {
+	while($buf = &read_http_connection($con,1024)) {
 		print $buf;
 		}
 	}

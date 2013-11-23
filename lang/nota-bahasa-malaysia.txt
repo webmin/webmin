@@ -34,7 +34,10 @@ boot            = boot
 change          = ubah
 connection      = sambungan
 cookie          = kuki -- http://prpm.dbp.gov.my/Search.aspx?k=cookie
+column          = lajur -- http://prpm.dbp.gov.my/Search.aspx?k=column
 cipher          = sifer -- http://prpm.dbp.gov.my/Search.aspx?k=cipher 
+custom          = suai langgan -- cth; custom application -> aplikasi suai langgan -- http://prpm.dbp.gov.my/Search.aspx?k=custom
+daemon          = daemon - nama khas
 debug           = nyah-pijat
 defined         = dinyatakan
 delete          = padam
@@ -74,6 +77,7 @@ path            = lokasi / laluan
 port            = port -- dikekalkan inggeris, berbanding istilah melayu "liang"
 prompt          = prom -- http://prpm.dbp.gov.my/Search.aspx?k=prom
 provider        = pembekal
+raw data        = data mentah
 referrer        = perujuk -- cth: Trusted Referrers -> Perujuk dipercayai
 refresh         = segar semula / penyegaran
 remote          = capaian jauh
@@ -81,14 +85,19 @@ remove          = buang
 repository      = repositori -- http://prpm.dbp.gov.my/Search.aspx?k=repositori
 restart         = mula semula
 restore         = restore -- dikekalkan inggeris, berbanding maksud melayu "kembalikan"
+reset           = Tetapkan/Set semula
 running         = Larikan / Jalankan
+rollback        = undur - digabungkan dengan kata kerja -- http://prpm.dbp.gov.my/Search.aspx?k=rollback
 save            = simpan
 scan            = imbas
 scheduled       = Berjadual
 server          = pelayan
 service         = servis
+set             = Tetapkan semula / Set
 start           = mula / memulakan
 stop            = henti / menghentikan
+symlink         = symlink
+sync            = segerak -- http://prpm.dbp.gov.my/Search.aspx?k=sync
 TCP-wrappers    = pelindung-TCP
 update          = kemaskini
 upload          = muat naik

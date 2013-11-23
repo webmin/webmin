@@ -1,0 +1,18 @@
+__norefs=1
+index_elink=Tiada URL ke terowong yang telah ditetapkan lagi.
+index_open=Buka
+index_url=Masukkan URL untuk buka:
+link_eautologin=Log masuk atau kata laluan untuk $1 tidak sah. <a href='$2'>Klik disini</a> untuk log masuk.
+link_ebadurl=Anda tidak dibenarkan untuk mencapai URL $1
+link_elogin=Gagal untuk log masuk ke $1 sebagai $2
+link_enouser=Nama pengguna dan kata laluan diperlukan untuk log masuk ke $1, tetapi tiada yang dikonfigurasikan.
+link_eurl=URL terowong tidak sah : $1
+login_clear=Bersihkan
+login_desc=Anda mesti membekalkan nama pengguna dan kata laluan untuk log masuk ke $1.
+login_header=Pengesahan laman web
+login_login=Log masuk
+login_pass=Kata laluan
+login_title=Log masuk ke Laman web
+login_user=Nama pengguna
+seturl_err=Gagal untuk buka URL
+seturl_eurl=URL yang dimasukkan tidak sah

@@ -3,6 +3,7 @@
 
 require './tunnel-lib.pl';
 if ($config{'url'}) {
+    $config{'url'} = &fix_end_url($config{'url'}) || &error($text{'seturl_eurl'});
 	&redirect("link.cgi/$config{'url'}");
 	}
 else {
