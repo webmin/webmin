@@ -60,7 +60,8 @@ index_massupdate=Update Records in Selected
 index_masscreate=Add Record to Selected
 index_massrdelete=Delete Records in Selected
 index_bind=BIND
-
+index_ewrongchroot=Warning : The chroot directory $2 that Webmin thinks BIND is using may be incorrect. The zone files for $1 domains could not be found.
+index_emissingchroot=Warning : Webmin thinks that BIND is not using a chroot directory, but that may be incorrect. The zone files for $1 domains could not be found.
 master_title=Edit Master Zone
 master_ecannot=You are not allowed to edit this zone
 master_egone=Zone $1 does not exist in any view

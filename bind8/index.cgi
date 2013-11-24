@@ -83,6 +83,27 @@ if ($need_create) {
 	exit;
 	}
 
+# Check for possibly invalid chroot, which shows up as missing zone files
+if (@zones && $access{'zones'} eq '*' && !$access{'ro'}) {
+	my @missing;
+	foreach my $z (@zones) {
+		if ($z->{'type'} eq 'master' && $z->{'file'} &&
+		    !-r $z->{'file'}) {
+			push(@missing, $z->{'file'});
+			}
+		}
+	if (scalar(@missing) >= scalar(@zones)/2) {
+		if ($chroot && $chroot ne '/') {
+			print "<b>",&text('index_ewrongchroot',
+			    scalar(@missing), "<tt>$chroot</tt>"),"</b><p>\n";
+			}
+		else {
+			print "<b>",&text('index_emissingchroot',
+					  scalar(@missing)),"</b><p>\n";
+			}
+		}
+	}
+
 if ($access{'defaults'}) {
 	# display global options
 	print &ui_subheading($text{'index_opts'});
