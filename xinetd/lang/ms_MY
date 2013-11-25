@@ -35,7 +35,7 @@ index_disable=Nyah-aktif Pilihan
 index_econf=Fail konfigurasi Xinetd $1 tiada. Mungkin tidak dipasang, atau <a href='$2'>konfigurasi modul</a> anda adalah tidak betul.
 index_enable=Aktifkan Pilihan
 index_enabled=Aktifkan?
-index_estart=Arahan untuk memulakan xinetd $1 tidak wujud. Mungkin ia tidak dipasang, atau <a href='$2'> konfigurasi modul </ a> adalah tidak betul.
+index_estart=Arahan untuk memulakan xinetd $1 tidak wujud. Mungkin ia tidak dipasang, atau <a href='$2'> konfigurasi modul </a> adalah tidak betul.
 index_inet=Internet
 index_internal=Dalaman kepada Xinetd
 index_name=Nama servis

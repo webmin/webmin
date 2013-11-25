@@ -12,7 +12,7 @@ index_desc=Tetapan di bawah terpakai bagi semua sambungan ADSL baharu yang dimul
 index_dns=Dapatkan konfigurasi DNS dari ISP?
 index_eadsl=Arahan RP-PPPoE $1 tidak dijumpai pada sistem anda atau tidak sah. Mungkin ia tidak dipasang, atau <a anda href='$2'> modul konfigurasi </a> adalah tidak betul.
 index_econfig=Fail konfigurasi RP-PPPoE ADSL $1 tidak dijumpai pada sistem anda. Mungkin ia tidak dipasang, atau <a anda href='$2'> modul konfigurasi </a> adalah tidak betul.
-index_emodem=Fail konfigurasi terkini adalah untuk modem pada Redhat Linux, bukan untuk sambungan ADSL. Gunakan <a href='$2'>modul konfigurasi </a> untuk menentukan salah satu fail <tt>ifcfg-PPP*</ tt> dalam $1, atau salah satu yang tidak digunakan lagi supaya modul boleh menciptakannya untuk anda.
+index_emodem=Fail konfigurasi terkini adalah untuk modem pada Redhat Linux, bukan untuk sambungan ADSL. Gunakan <a href='$2'>modul konfigurasi </a> untuk menentukan salah satu fail <tt>ifcfg-PPP*</tt> dalam $1, atau salah satu yang tidak digunakan lagi supaya modul boleh menciptakannya untuk anda.
 index_esetup=Fail konfigurasi redhat ADSL $1 tidak wujud pada sistem anda. Walau bagaimanapun, modul ini boleh membinanya untuk anda secara lalai  dengan mengklik butang di bawah.
 index_eth=Antaramuka Ethernet
 index_forever=selama-lamanya

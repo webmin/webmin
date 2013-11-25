@@ -5,7 +5,7 @@ acl_apply=Boleh menerapkan perubahan?
 acl_create=Boleh cipta Pelayan Maya?
 acl_defserv=Pelayan lalai
 acl_dir=Had fail ke direktori
-acl_dirs=Arahan Apache yang tersedia <br> <font size=-1> (Tertakluk kepada jenis had seperti diatas) </ font>
+acl_dirs=Arahan Apache yang tersedia <br> <font size=-1> (Tertakluk kepada jenis had seperti diatas) </font>
 acl_dirs0=Semua
 acl_dirs1=Hanya disenaraikan ..
 acl_dirs2=Semua kecuali yang disenaraikan ..
@@ -60,7 +60,7 @@ authu_return=senarai pengguna
 authu_screate=Tambah pengguna apabila pengguna Unix ditambah
 authu_sdelete=Padam pengguna apabila pengguna Unix dipadam
 authu_smodify=Ubah pengguna apabila pengguna Unix diubah
-authu_sync=Pilihan di bawah membenarkan anda untuk menetapkan Webmin secara automatik menambah, mengemaskini atau memadam pengguna dari fail kata laluan ini apabila pengguna ditambah, diubah suai atau dipindahkan dalam modul <tt>Pengguna dan Grup</ tt>.
+authu_sync=Pilihan di bawah membenarkan anda untuk menetapkan Webmin secara automatik menambah, mengemaskini atau memadam pengguna dari fail kata laluan ini apabila pengguna ditambah, diubah suai atau dipindahkan dalam modul <tt>Pengguna dan Grup</tt>.
 authu_title=Senarai Pengguna
 authu_user=Nama pengguna
 autoindex_alt=Teks Alt

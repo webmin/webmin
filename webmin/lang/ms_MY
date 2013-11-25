@@ -18,7 +18,7 @@ access_err=Gagal untuk mengemaskini senarai capaian
 access_eself=Alamat IP terkini anda ($1) akan dinafikan
 access_header=Pilihan kawalan capaian
 access_ip=Membernarkan Alamat IP
-access_libwrap=Semak juga fail pelindung-TCP <tt>hosts.allow</ tt> dan <tt>hosts.deny</ tt>?
+access_libwrap=Semak juga fail pelindung-TCP <tt>hosts.allow</tt> dan <tt>hosts.deny</tt>?
 access_libwrapcpan=<a href='$1'>Klik di sini</a> untuk membolehkan Webmin memasang secara automatik modul Perl yang hilang.
 access_local=Termasuk rangkaian tempatan dalam senarai
 access_title=Kawalan Capaian IP
@@ -38,7 +38,7 @@ advanced_gzipauto=Hanya jika fail pra-mampat .gz wujud
 advanced_header=Pilihan lanjutan dan eksperimen
 advanced_nice=Keutamaan CPU untuk tugas berjadual
 advanced_nodelete=Tiada had
-advanced_pass=Jadikan kata laluan yang ada untuk program Webmin? <br> <font Size=-1> (Tidak berfungsi apabila pengesahan sesi diaktifkan) </ font>
+advanced_pass=Jadikan kata laluan yang ada untuk program Webmin? <br> <font Size=-1> (Tidak berfungsi apabila pengesahan sesi diaktifkan) </font>
 advanced_precache=Fail teks untuk pre-cache?
 advanced_precache0=Tiada
 advanced_precache1=Fail teks Bahasa Inggeris
@@ -234,7 +234,7 @@ export_title=Eksport modul
 index_apache=Oleh kerana Webmin sedang dijalankan didalam Apache, anda mungkin tidak mahu untuk mengaktifkan pilihan ini.
 index_boot=Mulakan pada masa boot
 index_bootmsg=Tukar pilihan ini untuk mengawal sama ada Webmin mula pada masa boot atau tidak. Jika tidak sila pilih Ya dan skrip INIT baharu akan diwujudkan.
-index_inetd=Oleh kerana Webmin sedang dijalankan oleh <tt>inetd</ tt>, anda tidak perlu untuk aktifkan pilihan ini.
+index_inetd=Oleh kerana Webmin sedang dijalankan oleh <tt>inetd</tt>, anda tidak perlu untuk aktifkan pilihan ini.
 index_refresh=Penyegaran Modul
 index_refreshmsg=Semak semula kesemua modul Webmin yang dipasang pada pelayan, dan mengemas kini kegunaan modul yang sebelumnya dalam kategori 'Modul yang tidak digunakan'.
 index_restart=Mula semula Webmin
@@ -262,7 +262,7 @@ install_eneither=RPM tidak mengandungi modul atau tema webmin
 install_enone=Fail dilihat tidak mengandungi sebarang modul
 install_enotar=Arahan <tt>tar</tt>, yang diperlukan untuk mengeluarkan modul Webmin, tidak dijumpai pada sistem anda
 install_eos=Modul $1 tidak menyokong sistem operasi ini ($ 2 $ 3)
-install_eperldep=Modul $1 memerlukan modul Perl $2. Walau bagaimanapun, anda boleh menggunakan Webmin untuk <a href='$3'>memuat turun dan memasang </ a> modul Perl untuk anda.
+install_eperldep=Modul $1 memerlukan modul Perl $2. Walau bagaimanapun, anda boleh menggunakan Webmin untuk <a href='$3'>memuat turun dan memasang </a> modul Perl untuk anda.
 install_erpm=Bukan modul Webmin atau tema dari RPM
 install_err1=Gagal untuk memasang modul dari $1
 install_err2=Gagal untuk memasang modul yang dimuat naik
@@ -272,7 +272,7 @@ install_etar=Bukan fail modul yang sah : $1
 install_eurl=URL tidak sah
 install_eusermin=Modul $1 adalah untuk Usermin, bukan Webmin
 install_ever=Modul $1 memerlukan versi Webmin $2 atau keatas
-install_line2=<a href='$5'> $1 </ a> pada $2 ($3 kB) di bawah kategori $4
+install_line2=<a href='$5'> $1 </a> pada $2 ($3 kB) di bawah kategori $4
 install_line3=$1 $2 ($3 kB), tersembunyi dari pandangan
 install_title=Pasang Modul
 ipkey_eextraca=Fail sijil tambahan $1 tidak wujud
@@ -426,10 +426,10 @@ mods_uploaded=Dari fail yang telah dimuat naik
 newcsr_efile=Hilang nama fail CSR
 newcsr_err=Gagal untuk mencipta SSL CSR
 newcsr_ok=Berjaya menjana permintaan sijil SSL berikut :
-newcsr_ok2=CSR ini hendaklah dihantar kepada penguatkuasaan sijil, yang mana mengesahkan sijil. Ia boleh dipasang dengan kunci di atas dengan menggunakan tab <b>Muat naik sijil</ b>.
+newcsr_ok2=CSR ini hendaklah dihantar kepada penguatkuasaan sijil, yang mana mengesahkan sijil. Ia boleh dipasang dengan kunci di atas dengan menggunakan tab <b>Muat naik sijil</b>.
 newcsr_title=Menjana CSR
 newkey_ecat=Terdapat ralat ketika menulis pada fail kunci baharu :
-newkey_ecmd=Arahan SSL $1 tidak dijumpai pada sistem anda. Sama ada ia tidak dipasang, atau konfigurasi modul <a href='$2'>Pengguna Webmin</ a> adalah tidak betul.
+newkey_ecmd=Arahan SSL $1 tidak dijumpai pada sistem anda. Sama ada ia tidak dipasang, atau konfigurasi modul <a href='$2'>Pengguna Webmin</a> adalah tidak betul.
 newkey_ecn=Hilang atau nama pelayan tidak sah
 newkey_ecountry=Kod negara mestilah 2 abjad
 newkey_edays=Hilang atau nombor hari sebelum tamat tidak sah
@@ -591,7 +591,7 @@ session_ecmd=Hilang atau arahan mengubah kata laluan tidak sah
 session_ecookie=Pelayar anda tidak menyokong kuki, dimana diperlukan bagi pengesahan sesi
 session_eextauth=Hilang atau program pengesahan luar tidak sah
 session_elogouttime=Hilang atau masa log keluar tidak sah
-session_elsof=Pengesahan setempat memerlukan progran <tt>lsof</ tt>
+session_elsof=Pengesahan setempat memerlukan progran <tt>lsof</tt>
 session_emd5mod=Penyulitan MD5 tidak boleh digunakan, seperti modul Perl $1 tidak dipasang.
 session_enable=Aktifkan pengesahan sesi
 session_epasswd_file=Fail pengguna unix tidak sah
@@ -810,7 +810,7 @@ twofactor_esecret=Kunci rahsia mesti mempunyai 16 huruf dan hanya mengandungi hu
 twofactor_esession=Pengesahan dua-faktor tidak boleh digunakan kecuali pengesahan berasaskan sesi aktif
 twofactor_etotpid=TOPT base32-encoded rahsia tidak sah
 twofactor_etotpmatch=Kod OTP tidak betul
-twofactor_etotpmodule=Modul Perl <tt>$1</ tt> diperlukan untuk pengesahan dua-faktor, tidak dipasang. Gunakan <a href='$2'>Modul Perl</a> dalam halaman Webmin untuk memasangnya.
+twofactor_etotpmodule=Modul Perl <tt>$1</tt> diperlukan untuk pengesahan dua-faktor, tidak dipasang. Gunakan <a href='$2'>Modul Perl</a> dalam halaman Webmin untuk memasangnya.
 twofactor_etotpmodule2=Modul Perl $1 hilang
 twofactor_etotptoken=Token Pengesah Google mestilah nombor
 twofactor_header=Pilihan pengesahan dua-faktor
@@ -824,7 +824,7 @@ twofactor_secret1=Dijana secara rawak
 twofactor_test=Gunakan mod ujian pembekal?
 twofactor_title=Pengesahan Dua-Faktor
 twofactor_totp=Pengesah Google
-twofactor_url=Untuk mengetahui lebih lanjut tentang $1, sila ke laman web <a href='$2' target=_blank>$2</ a>.
+twofactor_url=Untuk mengetahui lebih lanjut tentang $1, sila ke laman web <a href='$2' target=_blank>$2</a>.
 ui_dateformat=Format untuk dipaparkan tarikh
 ui_dateformat_dd/mm/yyyy=dd/mm/yyyy (cth. 16/09/2001)
 ui_dateformat_dd/mon/yyyy=dd/mon/yyyy (cth. 16/sep/2001)
@@ -912,7 +912,7 @@ update_title=Mengemaskini modul
 update_user=Log masuk ke pelayan kemaskini
 update_version=Keluaran baharu Webmin (versi $1) kini boleh didapati untuk muat turun. Kemas kini masa hadapan akan dikeluarkan hanya untuk versi terkini.
 update_webmin=Kemaskini dari www.webmin.com
-upgrade_cup=Versi terbaru dari Caldera alat <tt>cupdate</ tt>
+upgrade_cup=Versi terbaru dari Caldera alat <tt>cupdate</tt>
 upgrade_delete=Padam versi lama direktori selepas menaik taraf?
 upgrade_desc=Borang ini membolehkan anda untuk menaik taraf pemasangan Webmin anda kepada versi baharu. Anda boleh memasang dari fail lokal, fail yang dimuat naik atau dari versi terbaru di <a href=http://www.webmin.com/>www.webmin.com</a>. Sama seperti menaik taraf manual, semua tetapan konfigurasi anda dan modul pihak ketiga akan disimpan.
 upgrade_desccaldera=Borang ini membolehkan anda untuk menaik taraf pemasangan Webmin anda secara keseluruhan kepada versi baharu dengan menggunakan pilihan naik taraf dari RPM. Anda boleh memasang dari fail RPM tempatan, fail yang dimuat naik atau dari versi terbaru dari Caldera.
