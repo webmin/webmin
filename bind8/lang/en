@@ -1196,5 +1196,6 @@ xfer_doing=Testing transfer of slave zone from $1 ..
 xfer_failed=.. from $1 : Failed : $2
 xfer_done=.. from $1 : Completed OK
 xfer_count=Test transfer successfully fetched $1 records from at least one nameserver. Actual transfers by BIND should also succeed.
+xfer_none=Test transfer appeared to succeed, but didn't actually fetch any records!
 
 __norefs=1
