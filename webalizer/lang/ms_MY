@@ -1,0 +1,6 @@
+__norefs=1
+view_efile=Nam fail laporan tidak sah
+view_elog=Fail log tidak sah
+view_eopen=Gagal untuk membuka fail laporan
+view_epath=PATH_INFO tidak sah
+view_title=Lihat laporan
