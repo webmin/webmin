@@ -851,7 +851,7 @@ ui_hnm2=Nama domain dari URL
 ui_hnm3=Nama lain ..
 ui_hostnamemode=Nama hos untuk dipaparkan dalam Webmin
 ui_rgb=<font color=#ff0000>RR</font><font color=#00ff00>GG</font><font color=#0000ff>BB</font> warna hex
-ui_showhost=Masukkan nama host ke dalam tajuk halaman?
+ui_showhost=Masukkan nama hos ke dalam tajuk halaman?
 ui_showlogin=Masukkan nama pengguna ke dalam tajuk halaman?
 ui_sizedate=Saiz pemilih tarikh
 ui_sizefile=Saiz pemilih fail
