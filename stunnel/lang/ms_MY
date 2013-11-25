@@ -36,7 +36,7 @@ index_cmd=Larikan arahan $1
 index_command=Arahan STunnel
 index_conf=Dari fail config $1
 index_delete=Padam terowong terpilih
-index_einetd=Sama ada <tt>inetd</ tt> atau <tt>xinetd</ tt> telah dipasang pada sistem anda. Hanya satu diperlukan untuk menerima sambungan rangkaian ke <tt>stunnel</tt>.
+index_einetd=Sama ada <tt>inetd</tt> atau <tt>xinetd</tt> telah dipasang pada sistem anda. Hanya satu diperlukan untuk menerima sambungan rangkaian ke <tt>stunnel</tt>.
 index_estunnel=Arahan STunnel $1 tidak dijumpai dalam sistem anda. Mungkin STunnel tidak dipasang, atau <a href='$2'>modul konfigurasi</a> anda tidak betul.
 index_eversion=Versi STunnel yang terpasang pada sistem anda ialah $1, tetapi modul ini tidak  menyokong versi $2 dan ke atas.
 index_name=Nama servis

@@ -61,7 +61,7 @@ cert_key=Saiz kunci
 cert_msg=Borang ini membolehkan anda untuk meminta sijil klien SSL yang akan digunakan pada masa akan datang. Membolehkan anda akses kepada Webmin tanpa menggunakan nama pengguna dan kata laluan. Ini adalah lebih selamat, oleh kerana pengesahan dilakukan secara automatik, anda tidak boleh menukar kepada pengguna yang lain apabila menggunakan sijil ini.
 cert_o=Organisasi
 cert_ou=Jabatan
-cert_pickup=<a href='$1'>Klik di sini untuk mengambil sijil anda dan pasang dalam pelayar anda</ a>
+cert_pickup=<a href='$1'>Klik di sini untuk mengambil sijil anda dan pasang dalam pelayar anda</a>
 cert_sp=Negeri
 cert_title=Permintaan Sijil
 convert_0=Kesemua Pengguna
@@ -442,7 +442,7 @@ unix_restrict=Sekatan tambahan berikut akan dikenakan kepada pengguna Unix seper
 unix_same=&lt;Pengguna atau Grup yang sama&gt;
 unix_sel=Membolehkan pengguna Unix yang disenaraikan di bawah untuk login ..
 unix_shells=Halang pengguna Unix yang shells tidak berada dalam fail
-unix_sudo=Benarkan pengguna yang boleh menjalankan semua arahan melalui <tt> sudo </ tt> untuk login sebagai root <tt> </ tt>
+unix_sudo=Benarkan pengguna yang boleh menjalankan semua arahan melalui <tt>sudo</tt> untuk login sebagai root
 unix_title=Pengesahan Pengguna Unix
 unix_to=Sebagai Pengguna Webmin
 unix_user=Pengguna Unix ..
