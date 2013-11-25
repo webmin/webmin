@@ -10,16 +10,16 @@ index_connect=Masa untuk cuba sambungan bagi
 index_demand=Sambung atas permintaan?
 index_desc=Tetapan di bawah terpakai bagi semua sambungan ADSL baharu yang dimulakan oleh sistem anda. Jika anda menukar, sambungan perlu ditutup dan dimula semula untuk pengubahsuaian terpakai serta merta.
 index_dns=Dapatkan konfigurasi DNS dari ISP?
-index_eadsl=Arahan RP-PPPoE $1 tidak dijumpai pada sistem anda atau tidak sah. Mungkin ia tidak dipasang, atau <a anda href='$2'> modul konfigurasi </ a> adalah tidak betul.
-index_econfig=Fail konfigurasi RP-PPPoE ADSL $1 tidak dijumpai pada sistem anda. Mungkin ia tidak dipasang, atau <a anda href='$2'> modul konfigurasi </ a> adalah tidak betul.
-index_emodem=Fail konfigurasi terkini adalah untuk modem pada Redhat Linux, bukan untuk sambungan ADSL. Gunakan <a href='$2'>modul konfigurasi / a> untuk menentukan salah satu fail <tt>ifcfg-PPP*</ tt> dalam $1, atau salah satu yang tidak digunakan lagi supaya modul boleh menciptakannya untuk anda.
+index_eadsl=Arahan RP-PPPoE $1 tidak dijumpai pada sistem anda atau tidak sah. Mungkin ia tidak dipasang, atau <a anda href='$2'> modul konfigurasi </a> adalah tidak betul.
+index_econfig=Fail konfigurasi RP-PPPoE ADSL $1 tidak dijumpai pada sistem anda. Mungkin ia tidak dipasang, atau <a anda href='$2'> modul konfigurasi </a> adalah tidak betul.
+index_emodem=Fail konfigurasi terkini adalah untuk modem pada Redhat Linux, bukan untuk sambungan ADSL. Gunakan <a href='$2'>modul konfigurasi </a> untuk menentukan salah satu fail <tt>ifcfg-PPP*</tt> dalam $1, atau salah satu yang tidak digunakan lagi supaya modul boleh menciptakannya untuk anda.
 index_esetup=Fail konfigurasi redhat ADSL $1 tidak wujud pada sistem anda. Walau bagaimanapun, modul ini boleh membinanya untuk anda secara lalai  dengan mengklik butang di bawah.
-index_eth=Antaramuka Ethernet 
+index_eth=Antaramuka Ethernet
 index_forever=selama-lamanya
 index_fw=Firewall untuk mengaktifkan pada sambungan
 index_fw_masquerade=Untuk NAT gateway
 index_fw_none=Tiada
-index_fw_standalone=Untuk host tunggal
+index_fw_standalone=Untuk hos tunggal
 index_header=Pilihan konfigurasi klien ADSL
 index_mss=Had saiz paket?
 index_other=Lain ..
@@ -49,7 +49,7 @@ save_eeth=Hilang atau tidak sah carian antaramuka ethernet
 save_emss=Tiada atau tidak sah maksimum saiz paket
 save_err=Gagal untuk menyimpan konfigurasi ADSL
 save_etimeout=Tiada atau tidak sah masa tamat atas permintaan
-save_euser=Id pengguna hilang atau tidak sah
+save_euser=Nama pengguna hilang atau tidak sah
 save_title=Simpan Konfigurasi
 start_bg=Sambungan ADSL tidak dimulakan dalam masa 20 saat. Klien ADSL akan terus cuba untuk menyambung di latar belakang sehingga berjaya.
 start_demand=Kerana menyambung mod atas permintaan diaktifkan, sambungan ADSL anda hanya akan bermula apabila diperlukan.
