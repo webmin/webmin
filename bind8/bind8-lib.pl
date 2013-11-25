@@ -2190,6 +2190,7 @@ foreach $k (keys %znc) {
 	}
 if ($changed || !$filecount || $znc{'version'} != $zone_names_version ||
     !$donefile{$config{'named_conf'}} ||
+    $config{'no_chroot'} != $znc{'no_chroot_config'} ||
     $config{'pid_file'} ne $znc{'pidfile_config'}) {
 	# Yes .. need to rebuild
 	%znc = ( );
@@ -2221,6 +2222,7 @@ if ($changed || !$filecount || $znc{'version'} != $zone_names_version ||
 	$znc{'base'} = &base_directory($conf, 1);
 	$znc{'pidfile'} = &get_pid_file(1);
 	$znc{'pidfile_config'} = $config{'pid_file'};
+	$znc{'no_chroot_config'} = $config{'no_chroot'};
 
 	# Store source files
 	foreach $f (keys %files) {
