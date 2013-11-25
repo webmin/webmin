@@ -68,7 +68,7 @@ turnoff_ecannot=You are not allowed to disable monitoring
 
 setup_ecannot=You are not allowed to enable monitoring
 setup_eiface=Missing or invalid interface name
-setup_ezone=Failed to fine Shorewall zone for the selected interface
+setup_ezone=Failed to find Shorewall zone for the selected interface
 
 system_firewall=IPtables
 system_ipfw=IPFW
