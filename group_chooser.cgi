@@ -33,7 +33,13 @@ if ($in{'multi'}) {
 		for($i=0; $i<$len; $i++) {
 			print "sel[$i] = \"".
 			      &quote_escape($ul[$i], '"')."\";\n";
-			@ginfo = getgrnam($ul[$i]);
+
+			# samba valid system group can start with @ + &
+			$gn = $ul[$i];
+			$gn =~ s/^(@|\+|&)+//g;
+			@ginfo = getgrnam($gn);
+
+			#@ginfo = getgrnam($ul[$i]);
 			if (@ginfo) {
 				@mems = &unique( split(/ /, $ginfo[3]),
 						 @{$members{$ginfo[2]}} );
