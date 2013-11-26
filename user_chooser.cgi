@@ -26,7 +26,13 @@ if ($in{'multi'}) {
 		for($i=0; $i<$len; $i++) {
 			print "sel[$i] = \"".
 			      &quote_escape($ul[$i], '"')."\";\n";
-			@uinfo = getpwnam($ul[$i]);
+            
+			# samba valid system user can start with @ + &
+			$gn = $ul[$i];
+			$gn =~ s/^(@|\+|&)+//g;
+			@uinfo = getpwnam($gn);
+
+			#@uinfo = getpwnam($ul[$i]);
 			if (@uinfo) {
 				print "selr[$i] = \"".
 				      &quote_escape($uinfo[6])."\";\n";
