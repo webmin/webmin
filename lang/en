@@ -303,6 +303,7 @@ ui_edate=Invalid date
 ui_etime=Invalid time
 ui_paging=Showing rows $1 to $2 of $3
 ui_rowlabel=$2 in row $1 :
+ui_filterbox=Type to filter..
 
 header_statusmsg=$1 logged into $2 $3 on $4 ($5)
 
