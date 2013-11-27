@@ -9,6 +9,10 @@ if (!ref($mods)) {
 	print "<b>",&text('standard_failed', $mods),"</b><p>\n";
 	}
 else {
+    print "<script type='text/javascript' src='$gconfig{'webprefix'}/unauthenticated/filter_match.js'></script>";
+	print "<div id='filter_box' style='display:none;margin:0px;padding:0px;width:100%;clear:both;">
+	print &ui_textbox("filter",$text{'ui_filterbox'}, 50, 0, undef,"style='width:100%;' onkeyup=\"filter_match(this.value,'row',true);\" onfocus=\"if (this.value == '".$text{'ui_filterbox'}."') {this.value = '';}\" onblur=\"if (this.value == '') {this.value = '".$text{'ui_filterbox'}."';}\"");
+	print "<hr></div>";
 	print "<b>$text{'standard_header'}</b><br>\n";
 	if ($mods->[0]->[1] > &get_webmin_version()) {
 		print &text('standard_warn', $mods->[0]->[1]),"<br>\n";
@@ -22,6 +26,7 @@ else {
 	print "}\n";
 	print "</script>\n";
 	@table = ( );
+    my $cnt = 0;
 	foreach $m (@$mods) {
 		my $minfo = { 'os_support' => $m->[3] };
 		next if (!&check_os_support($minfo));
@@ -29,8 +34,12 @@ else {
 		 "<a href='' onClick='return select(\"$m->[0]\")'>$m->[0]</a>",
 		 &html_escape($m->[4]),
 		 ]);
+        $cnt++;
 		}
 	print &ui_columns_table(undef, 100, \@table);
 	}
+    if ( $cnt >= 10 ) {
+        print "<script type='text/javascript'>filter_match_box();</script>";
+    }
 &ui_print_footer();
 
