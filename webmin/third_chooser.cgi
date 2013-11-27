@@ -10,6 +10,10 @@ if (!ref($mods)) {
 	print "<b>",&text('third_failed', $mods),"</b><p>\n";
 	}
 else {
+    print "<script type='text/javascript' src='$gconfig{'webprefix'}/unauthenticated/filter_match.js'></script>";
+	print "<div id='filter_box' style='display:none;margin:0px;padding:0px;width:100%;clear:both;">
+	print &ui_textbox("filter",$text{'ui_filterbox'}, 50, 0, undef,"style='width:100%;' onkeyup=\"filter_match(this.value,'row',true);\" onfocus=\"if (this.value == '".$text{'ui_filterbox'}."') {this.value = '';}\" onblur=\"if (this.value == '') {this.value = '".$text{'ui_filterbox'}."';}\"");
+	print "<hr></div>";
 	print "<b>$text{'third_header'}</b><br>\n";
 	print "<script>\n";
 	print "function select(f)\n";
@@ -20,14 +24,19 @@ else {
 	print "}\n";
 	print "</script>\n";
 	@table = ( );
+    my $cnt = 0;
 	foreach $m (@$mods) {
 		push(@table, [
 		 "<a href='' onClick='return select(\"$m->[2]\")'>$m->[0]</a>",
 		 $m->[1] eq "NONE" ? "" : &html_escape($m->[1]),
 		 $m->[3],
 		 ]);
+        $cnt++;
 		}
 	print &ui_columns_table(undef, 100, \@table);
 	}
+    if ( $cnt >= 10 ) {
+        print "<script type='text/javascript'>filter_match_box();</script>";
+    }
 &popup_footer();
 
