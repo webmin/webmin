@@ -63,7 +63,7 @@ print "<input type=submit value='$text{'messages_upload'}'>\n";
 print "<input name=wav type=file>\n";
 print "$text{'messages_fmt'} <select name=format>\n";
 foreach $f (&list_rmd_formats()) {
-	printf "<option value='%s' %s>%s\n",
+	printf "<option value='%s' %s>%s</option>\n",
 		$f->{'index'},
 		$f->{'index'} == $config{'format'} ? "selected" : "",
 		$f->{'desc'};

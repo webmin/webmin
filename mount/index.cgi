@@ -143,7 +143,7 @@ local $fs;
 foreach $fs (sort { &fstype_name($a) cmp &fstype_name($b) } &list_fstypes()) {
 	local $nm = &fstype_name($fs);
 	if (!$donefs{$nm}++ && &can_fstype($fs)) {
-		print "<option value=\"$fs\">$nm ($fs)\n";
+		print "<option value=\"$fs\">$nm ($fs)</option>\n";
 		}
 	}
 print "</select></form>\n";

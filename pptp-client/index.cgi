@@ -58,7 +58,7 @@ else {
 		print "<input type=submit value='$text{'index_conn'}'>\n";
 		print "<select name=tunnel>\n";
 		foreach $t (@notconns) {
-			printf "<option %s>%s\n",
+			printf "<option %s>%s</option>\n",
 			  $config{'tunnel'} eq $t->{'name'} ? "selected" : "",
 			  $t->{'name'};
 			}
@@ -74,7 +74,7 @@ else {
 		print "<input type=submit value='$text{'index_disc'}'>\n";
 		print "<select name=tunnel>\n";
 		foreach $t (@conns) {
-			printf "<option %s>%s\n",
+			printf "<option %s>%s</option>\n",
 				$config{'tunnel'} eq $t->[0] ? "selected" : "",
 				$t->[0];
 			}
@@ -92,11 +92,11 @@ else {
 		print "<input type=hidden name=starting value='$starting'>\n";
 		print "<td nowrap><input type=submit value='$text{'index_boot'}'>\n";
 		print "<select name=tunnel>\n";
-		printf "<option value='' %s>%s\n",
+		printf "<option value='' %s>%s</option>\n",
 			$config{'boot'} ? "" : "selected",
 			$text{'index_noboot'};
 		foreach $t (@tunnels) {
-			printf "<option value='%s' %s>%s\n",
+			printf "<option value='%s' %s>%s</option>\n",
 			  $t->{'name'},
 			  $t->{'name'} eq $config{'boot'} ?
 				"selected" : "",

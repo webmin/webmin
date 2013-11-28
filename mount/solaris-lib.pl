@@ -682,12 +682,12 @@ if ($_[0] eq "nfs") {
 
 	print "<tr> <td><b>$text{'solaris_proto'}</b></td>\n";
 	print "<td nowrap><select name=proto>\n";
-	printf "<option value=\"\" %s> $text{'default'}\n",
+	printf "<option value=\"\" %s>$text{'default'}</option>\n",
 		defined($options{"proto"}) ? "" : "selected";
 	&open_tempfile(NETCONFIG, "/etc/netconfig");
 	while(<NETCONFIG>) {
 		if (!/^([A-z0-9\_\-]+)\s/) { next; }
-		printf "<option value=\"$1\" %s> $1\n",
+		printf "<option value=\"$1\" %s>$1</option>\n",
 			$options{"proto"} eq $1 ? "selected" : "";
 		}
 	&close_tempfile(NETCONFIG);
@@ -719,11 +719,11 @@ if ($_[0] eq "nfs") {
 		    defined($options{"secure"}) ? "dh" :
 		    defined($options{"kerberos"}) ? "krb" : "";
 	print "<td><select name=nfs_auth>\n";
-	printf "<option value=\"\" %s> $text{'solaris_none'}\n",
+	printf "<option value=\"\" %s>$text{'solaris_none'}</option>\n",
 		$nfs_auth eq "" ? "selected" : "";
-	printf "<option value=dh %s> $text{'solaris_des'}\n",
+	printf "<option value=dh %s>$text{'solaris_des'}</option>\n",
 		$nfs_auth eq "dh" ? "selected" : "";
-	printf "<option value=krb %s> $text{'solaris_krb'}\n",
+	printf "<option value=krb %s>$text{'solaris_krb'}</option>\n",
 		$nfs_auth eq "krb" ? "selected" : "";
 	print "</select></td>\n";
 
@@ -769,7 +769,7 @@ if ($_[0] eq "ufs") {
 	print "<td><select name=ufs_onerror>\n";
 	foreach ('panic', 'lock', 'umount', 'repair') {
 		next if ($_ eq "repair" && $gconfig{'os_version'} >= 10);
-		printf "<option value=\"$_\" %s> $_\n",
+		printf "<option value=\"$_\" %s>$_</option>\n",
 		 $options{onerror} eq $_ ||
 		 !defined($options{onerror}) && $_ eq "panic" ? "selected" : "";
 		}
@@ -817,7 +817,7 @@ if ($_[0] eq "ufs") {
 		print "<td nowrap><input size=5 name=ufs_toosoon_time value='$1'>\n";
 		print "<select name=ufs_toosoon_units>\n";
 		foreach $u ('s', 'm', 'h', 'd', 'w', 'y') {
-			printf "<option value=%s %s> %s\n",
+			printf "<option value=%s %s>%s</option>\n",
 				$u, $2 eq $u ? "selected" : "", $text{"solaris_time_$u"};
 			}
 		print "</select></td> </tr>\n";
@@ -892,11 +892,11 @@ if ($_[0] eq "tmpfs") {
 	($tmpsz = $options{size}) =~ s/[A-z]+$//g;
 	print "<input name=tmpfs_size size=6 value=\"$tmpsz\">\n";
 	print "<select name=tmpfs_unit>\n";
-	printf "<option value=m %s> MB\n",
+	printf "<option value=m %s>MB</option>\n",
 		$options{"size"} =~ /m$/ ? "selected" : "";
-	printf "<option value=k %s> kB\n",
+	printf "<option value=k %s>kB</option>\n",
 		$options{"size"} =~ /k$/ ? "selected" : "";
-	printf "<option value=b %s> bytes\n",
+	printf "<option value=b %s>bytes</option>\n",
 		$options{"size"} !~ /(k|m)$/ ? "selected" : "";
 	print "</select></td>\n";
 
@@ -921,7 +921,7 @@ if ($_[0] eq "cachefs") {
 	if (!defined($options{backfstype})) { $options{backfstype} = "nfs"; }
 	foreach (&list_fstypes()) {
 		if ($_ eq "cachefs") { next; }
-		printf "<option value=\"$_\" %s>$_\n",
+		printf "<option value=\"$_\" %s>$_</option>\n",
 			$_ eq $options{backfstype} ? "selected" : "";
 		}
 	print "</select></td>\n";
@@ -946,10 +946,10 @@ if ($_[0] eq "cachefs") {
 
 	print "<tr> <td><b>$text{'solaris_con'}</b></td>\n";
 	print "<td><select name=cfs_con>\n";
-	print "<option value=1> $text{'solaris_period'}\n";
-	printf "<option value=0 %s> $text{'solaris_never'}\n",
+	print "<option value=1>$text{'solaris_period'}</option>\n";
+	printf "<option value=0 %s>$text{'solaris_never'}</option>\n",
 		defined($options{"noconst"}) ? "selected" : "";
-	printf "<option value=2 %s> $text{'solaris_demand'}\n",
+	printf "<option value=2 %s>$text{'solaris_demand'}</option>\n",
 		defined($options{"demandconst"}) ? "selected" : "";
 	print "</select></td>\n";
 
@@ -1075,11 +1075,11 @@ if ($_[0] eq "xmemfs") {
 	($tmpsz = $options{size}) =~ s/[A-z]+$//g;
 	print "<input name=xmemfs_size size=6 value=\"$tmpsz\">\n";
 	print "<select name=xmemfs_unit>\n";
-	printf "<option value=m %s> MB\n",
+	printf "<option value=m %s>MB</option>\n",
 		$options{"size"} =~ /m$/ ? "selected" : "";
-	printf "<option value=k %s> kB\n",
+	printf "<option value=k %s>kB</option>\n",
 		$options{"size"} =~ /k$/ ? "selected" : "";
-	printf "<option value=b %s> bytes\n",
+	printf "<option value=b %s>bytes</option>\n",
 		$options{"size"} !~ /(k|m)$/ ? "selected" : "";
 	print "</select></td>\n";
 

@@ -127,7 +127,7 @@ print "<input name=$_[3]d size=3 value='$_[0]'>";
 print "/<select name=$_[3]m>\n";
 local $m;
 foreach $m (1..12) {
-	printf "<option value=%d %s>%s\n",
+	printf "<option value=%d %s>%s</option>\n",
 		$m, $_[1] eq $m ? 'selected' : '', $text{"smonth_$m"};
 	}
 print "</select>";

@@ -170,7 +170,7 @@ if ($access{'edit'}) {
 	print "<input type=submit value='$text{'index_add'}'> ",
 	      "<select name=type>\n";
 	foreach $h (sort { $a->[1] cmp $b->[1] } &list_handlers()) {
-		printf "<option value=%s>%s\n",
+		printf "<option value=%s>%s</option>\n",
 			$h->[0], $h->[1] || $h->[0];
 		}
 	print "</select></form>\n";

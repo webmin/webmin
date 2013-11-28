@@ -42,9 +42,9 @@ $i = 0;
 foreach $l (@limit) {
 	print "<tr $cb>\n";
 	print "<td><select name=lclass_$i>\n";
-	printf "<option value='' %s>&nbsp;\n", $l->[0] ? '' : 'checked';
+	printf "<option value='' %s>&nbsp;</option>\n", $l->[0] ? '' : 'checked';
 	foreach $c (@class) {
-		printf "<option %s>%s\n",
+		printf "<option %s>%s</option>\n",
 			$l->[0] eq $c->[0] ? 'selected' : '', $c->[0];
 		}
 	print "</select></td>\n";
@@ -87,22 +87,22 @@ foreach $l (@fblimit) {
 	splice(@$f, 0, 0, '0') if ($f->[0] ne 'raw');
 	print "<tr $cb>\n";
 	print "<td><select name=fblimit_$i>\n";
-	printf "<option value='' %s>&nbsp;\n",
+	printf "<option value='' %s>&nbsp;</option>\n",
 		$l->{'name'} ? '' : 'selected';
-	printf "<option value=file-limit %s>%s\n",
+	printf "<option value=file-limit %s>%s</option>\n",
 		$l->{'name'} eq 'file-limit' ? 'selected' : '',
 		$text{'acl_flimit'};
-	printf "<option value=byte-limit %s>%s\n",
+	printf "<option value=byte-limit %s>%s</option>\n",
 		$l->{'name'} eq 'byte-limit' ? 'selected' : '',
 		$text{'acl_blimit'};
 	print "</select></td>\n";
 
 	print "<td><select name=fbinout_$i>\n";
-	printf "<option value=total %s>%s\n",
+	printf "<option value=total %s>%s</option>\n",
 		$f->[1] eq 'total' ? 'selected' : '', $text{'acl_total'};
-	printf "<option value=in %s>%s\n",
+	printf "<option value=in %s>%s</option>\n",
 		$f->[1] eq 'in' ? 'selected' : '', $text{'acl_in'};
-	printf "<option value=out %s>%s\n",
+	printf "<option value=out %s>%s</option>\n",
 		$f->[1] eq 'out' ? 'selected' : '', $text{'acl_out'};
 	print "</select></td>\n";
 
@@ -114,10 +114,10 @@ foreach $l (@fblimit) {
 	print "<td><input name=fbcount_$i size=10 value='$f->[2]'></td>\n";
 
 	print "<td><select name=fbclass_$i>\n";
-	printf "<option value='' %s> %s\n",
+	printf "<option value='' %s>%s</option>\n",
 		$f->[3] ? '' : 'selected', $text{'acl_all'};
 	foreach $c (@class) {
-		printf "<option %s>%s\n",
+		printf "<option %s>%s</option>\n",
 			$f->[3] eq $c->[0] ? 'selected' : '', $c->[0];
 		}
 	print "</select></td>\n";

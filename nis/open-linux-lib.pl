@@ -121,7 +121,7 @@ foreach $d (@domains) {
 	print "<td valign=top><b>$text{'server_tables'}</b></td>\n";
 	print "<td><select name=tables_$n size=6 multiple>\n";
 	foreach $c (@conf) {
-		printf "<option value=%s %s>%s\n",
+		printf "<option value=%s %s>%s</option>\n",
 			$c->{'table'}, $c->{'active'} ? 'selected' : '',
 			$c->{'table'};
 		}

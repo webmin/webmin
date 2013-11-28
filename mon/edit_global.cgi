@@ -23,7 +23,7 @@ $authtype = &find_value("authtype", $conf);
 print "<tr> <td><b>$text{'global_authtype'}</b></td>\n";
 print "<td><select name=authtype>\n";
 foreach $t ('', 'getpwnam', 'userfile', 'shadow') {
-	printf "<option value='%s' %s>%s\n",
+	printf "<option value='%s' %s>%s</option>\n",
 		$t, $authtype eq $t ? "selected" : "",
 		$text{"global_authtype_$t"};
 	}

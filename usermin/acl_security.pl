@@ -8,7 +8,7 @@ sub acl_security_form
 print "<tr> <td valign=top><b>$text{'acl_icons'}</b></td>\n";
 print "<td colspan=3><select name=icons multiple size=10>\n";
 foreach $i (&get_icons()) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$i, $_[0]->{$i} ? "selected" : "", $text{"${i}_title"};
 	}
 print "</select></td> </tr>\n";
@@ -21,7 +21,7 @@ printf "<input type=radio name=mods_def value=0 %s> %s<br>\n",
 local %mods = map { $_, 1 } split(/\s+/, $_[0]->{'mods'});
 print "<select name=mods multiple size=10>\n";
 foreach $m (&list_modules()) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$m->{'dir'}, $mods{$m->{'dir'}} ? "selected" : "", $m->{'desc'};
 	}
 print "</select></td> </tr>\n";

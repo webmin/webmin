@@ -34,7 +34,7 @@ print "<form action=create_watch.cgi>\n";
 print "<input type=submit value='$text{'watches_add'}'>\n";
 print "<select name=group>\n";
 foreach $s (&find("hostgroup", $conf)) {
-	print "<option>$s->{'values'}->[0]\n";
+	print "<option>$s->{'values'}->[0]</option>\n";
 	}
 print "</select></form>\n";
 

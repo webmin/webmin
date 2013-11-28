@@ -51,7 +51,7 @@ print "<tr> <td><b>$text{'edit_type'}</b></td> <td>\n";
 if ($in{'new'}) {
 	print "<select name=type>\n";
 	for($i=1; defined($t = $text{'index_type'.$i}); $i++) {
-		print "<option value=$i>$t\n";
+		print "<option value=$i>$t</option>\n";
 		}
 	print "</select>\n";
 	}

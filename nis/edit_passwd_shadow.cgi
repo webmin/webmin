@@ -46,11 +46,11 @@ print "<td><input name=home size=25 value=\"$passwd->[5]\"> ",
 print "<tr> <td valign=top><b>$text{'passwd_shell'}</b></td>\n";
 print "<td valign=top><select name=shell>\n";
 foreach $s (&unique(@shlist)) {
-	printf "<option %s>%s\n",
+	printf "<option %s>%s</option>\n",
 		$passwd->[6] eq $s ? 'selected' : '', $s;
 	$found++ if ($passwd->[6] eq $s);
 	}
-printf "<option value='' %s>%s\n",
+printf "<option value='' %s>%s</option>\n",
 	$found ? '' : 'selected', $text{'passwd_other'};
 print "</select><br>\n";
 printf "<input name=other size=20 value='%s'> %s</td>\n",
