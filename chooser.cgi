@@ -164,10 +164,9 @@ location = "chooser.cgi?frame=1&chroot=$uchroot&type=$utype&file="+p;
 }
 </script>
 EOF
-    print "<script type='text/javascript' src='$gconfig{'webprefix'}/unauthenticated/filter_match.js'></script>";
-	print "<div id='filter_box' style='display:none;margin:0px;padding:0px;width:100%;clear:both;">
+	print "<div id='filter_box' style='display:none;margin:0px;padding:0px;width:100%;clear:both;'>";
 	print &ui_textbox("filter",$text{'ui_filterbox'}, 50, 0, undef,"style='width:100%;' onkeyup=\"filter_match(this.value,'row',true);\" onfocus=\"if (this.value == '".$text{'ui_filterbox'}."') {this.value = '';}\" onblur=\"if (this.value == '') {this.value = '".$text{'ui_filterbox'}."';}\"");
-	print "<hr></div>";
+	print "<hr style='width:100%;'></div>";
 	print "<b>",&text('chooser_dir', &html_escape($dir)),"</b>\n";
 	opendir(DIR, $in{'chroot'}.$dir) ||
 		&popup_error(&text('chooser_eopen', "$!"));
@@ -207,6 +206,7 @@ EOF
 	closedir(DIR);
 	print &ui_columns_end();
     if ( $cnt >= 10 ) {
+        print "<script type='text/javascript' src='$gconfig{'webprefix'}/unauthenticated/filter_match.js?28112013'></script>";
         print "<script type='text/javascript'>filter_match_box();</script>";
     }
 	&popup_footer();
