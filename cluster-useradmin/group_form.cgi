@@ -39,7 +39,7 @@ print "<input name=pass size=15></td>\n";
 print "<td valign=top><b>$text{'gedit_members'}</b></td>\n";
 print "<td><table><tr><td><textarea wrap=auto name=members rows=5 cols=10>",
       "</textarea></td>\n";
-print "<td valign=top><input type=button onClick='ifield = document.forms[0].members; chooser = window.open(\"my_user_chooser.cgi?multi=1&user=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=500,height=200\"); chooser.ifield = ifield' value=\"...\"></td></tr></table></td> </tr>\n";
+print "<td valign=top><input type=button onClick='ifield = document.forms[0].members; chooser = window.open(\"/useradmin/my_user_chooser.cgi?multi=1&user=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=500,height=200\"); chooser.ifield = ifield' value=\"...\"></td></tr></table></td> </tr>\n";
 print "</table></td></tr></table><p>\n";
 
 print "<table border width=100%>\n";
