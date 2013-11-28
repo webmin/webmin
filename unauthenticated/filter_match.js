@@ -1,4 +1,4 @@
-/* filter_match: show/hide table row when match string in achor tag (<a>)
+/* filter_match: show/hide table row when match string in anchor tag (<a>string</a>)
  * 28-Nov-2013: nawawi jamili <nawawi@rutweb.com>
  */
 
@@ -13,7 +13,7 @@ function filter_match(str, _cname, _match) {
     _cname = _cname || "filter_match";
     _match = _match || false;
 
-    var show_hide = function(n,clear) {
+    var show_hide = function(clear) {
         clear = clear || false;
         var ls = document.getElementsByTagName("tr");
         if ( ls.length > 0 ) {
@@ -22,23 +22,19 @@ function filter_match(str, _cname, _match) {
                 var cl = tt.className;
                 if ( !_match && cl !== _cname ) continue;
                 if ( _match && cl.match(_cname) === null ) continue;
-                if ( n === null ) {
-                    if ( clear ) {
-                        tt.style.display='';
-                    } else {
-                        tt.style.display='none';
-                    }
-                } else if ( x === n ) {
+                if ( clear ) {
                     tt.style.display='';
+                } else {
+                    tt.style.display='none';
                 }
             }
         }
+        return ls;
     };
 
     str = str.trim();
     if ( str !== '' ) {
-        show_hide(null,false);
-        var ls = document.getElementsByTagName("tr");
+        var ls = show_hide(false);
         if ( ls.length > 0 ) {
             for(var x=0; x < ls.length; x++) {
                 var cl = ls[x].className;
@@ -46,16 +42,19 @@ function filter_match(str, _cname, _match) {
                 if ( _match && cl.match(_cname) === null ) continue;
                 var y = ls[x].getElementsByTagName("a");
                 for(var t=0; t < y.length; t++) {
-                    var strm = y[t].innerHTML;
-                    strm = strm.toLowerCase();
-                    if ( strm.match(str.toLowerCase()) ) {
-                        show_hide(x);
+                    var strm = y[t].innerHTML.trim();
+                    strm = strm.replace(/<\/?([a-z][a-z0-9]*)\b[^>]*>/gi,''); /* remove html tags */
+                    if ( strm !== '' ) {
+                        strm = strm.toLowerCase();
+                        if ( strm.match(str.toLowerCase()) ) {
+                            ls[x].style.display='';
+                        }
                     }
                 }
             }
         }
     } else {
-        show_hide(null,true);
+        show_hide(true);
     }
 };
 /* show/hide filter box */
