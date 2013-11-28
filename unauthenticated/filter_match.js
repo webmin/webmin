@@ -62,9 +62,9 @@ function filter_match(str, _cname, _match) {
 function filter_match_box(show) {
     show = show || true;
     if ( true ) {
-        document.getElementsBy('filter_box').style.display='';
+        document.getElementById('filter_box').style.display='';
     } else {
-       document.getElementsBy('filter_box').style.display='none';
+       document.getElementById('filter_box').style.display='none';
     }
 };
 

@@ -63,11 +63,10 @@ if ($in{'multi'}) {
 		print "return false;\n";
 		print "}\n";
 		print "</script>\n";
-        print "<script type='text/javascript' src='$gconfig{'webprefix'}/unauthenticated/filter_match.js'></script>";
 		print "<font size=+1>$text{'users_all'}</font>\n";
-		print "<div id='filter_box' style='display:none;margin:0px;padding:0px;width:100%;clear:both;">
+		print "<div id='filter_box' style='display:none;margin:0px;padding:0px;width:100%;clear:both;'>";
 		print &ui_textbox("filter",$text{'ui_filterbox'}, 50, 0, undef,"style='width:100%;' onkeyup=\"filter_match(this.value);\" onfocus=\"if (this.value == '".$text{'ui_filterbox'}."') {this.value = '';}\" onblur=\"if (this.value == '') {this.value = '".$text{'ui_filterbox'}."';}\"");
-		print "<hr></div>";
+		print "<hr style='width:100%;'></div>";
 		print "<table width=100%>\n";
         my $cnt = 0;
 		foreach $u (&get_users_list()) {
@@ -80,6 +79,7 @@ if ($in{'multi'}) {
 			}
 		print "</table>\n";
         if ( $cnt >= 10 ) {
+            print "<script type='text/javascript' src='$gconfig{'webprefix'}/unauthenticated/filter_match.js?28112013'></script>";
             print "<script type='text/javascript'>filter_match_box();</script>";
         }
 		&popup_footer();
@@ -152,10 +152,9 @@ else {
 	print "return false;\n";
 	print "}\n";
 	print "</script>\n";
-    print "<script type='text/javascript' src='$gconfig{'webprefix'}/unauthenticated/filter_match.js'></script>";
-    print "<div id='filter_box' style='display:none;margin:0px;padding:0px;width:100%;clear:both;">
+    print "<div id='filter_box' style='display:none;margin:0px;padding:0px;width:100%;clear:both;'>";
     print &ui_textbox("filter",$text{'ui_filterbox'}, 50, 0, undef,"style='width:100%;' onkeyup=\"filter_match(this.value);\" onfocus=\"if (this.value == '".$text{'ui_filterbox'}."') {this.value = '';}\" onblur=\"if (this.value == '') {this.value = '".$text{'ui_filterbox'}."';}\"");
-    print "<hr></div>";
+    print "<hr style='width:100%;'></div>";
 	print "<table width=100%>\n";
     my $cnt  = 0;
 	foreach $u (&get_users_list()) {
@@ -167,6 +166,7 @@ else {
 		}
 	print "</table>\n";
     if ( $cnt >= 10 ) {
+        print "<script type='text/javascript' src='$gconfig{'webprefix'}/unauthenticated/filter_match.js?28112013'></script>";
         print "<script type='text/javascript'>filter_match_box();</script>";
     }
 	&popup_footer();
