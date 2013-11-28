@@ -38,16 +38,16 @@ foreach $f (@filter, [ 1, '', '', '' ],
 		     [ 1, '', '', '' ]) {
 	$field = "<select name=field_$i>\n";
 	foreach $ft ('', 'from', 'to', 'subject', 'cc', 'body') {
-		$field .= sprintf "<option value='%s' %s>%s\n",
+		$field .= sprintf "<option value='%s' %s>%s</option>\n",
 			$ft, $f->[2] eq $ft ? "selected" : "",
 			$ft ? $text{"ffile_$ft"} : "&nbsp";
 		}
 	$field .= "</select>\n";
 
 	$what = "<select name=what_$i>\n";
-	$what .= sprintf "<option value=0 %s>%s\n",
+	$what .= sprintf "<option value=0 %s>%s</option>\n",
 		$f->[0] == 0 ? "selected" : "", $text{"ffile_what0"};
-	$what .= sprintf "<option value=1 %s>%s\n",
+	$what .= sprintf "<option value=1 %s>%s</option>\n",
 		$f->[0] == 1 ? "selected" : "", $text{"ffile_what1"};
 	$what .= "</select>\n";
 

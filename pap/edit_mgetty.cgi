@@ -31,13 +31,13 @@ foreach $t (sort { "$a$b" =~ /^\/dev\/ttyS(\d+)\/dev\/ttyS(\d+)$/ ? $1 <=> $2 : 
 		 glob($config{'serials'})) {
 	$t =~ s/^\/dev\///;
 	local $f = $init->{'tty'} eq $t || $init->{'tty'} eq "/dev/$t";
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$t, $f ? "selected" : "",
 		$t =~ /^ttyS(\d+)$/ ? &text('mgetty_ts', $1+1) :
 		$t =~ /^term\/(\S+)$/ ? &text('mgetty_ts', uc($1)) : "/dev/$t";
 	$found++ if ($f);
 	}
-printf "<option value='' %s>%s\n",
+printf "<option value='' %s>%s</option>\n",
 	$found ? "" : "selected", $text{'mgetty_other'};
 print "</select>\n";
 printf "<input name=other size=20 value='%s'> %s</td>\n",

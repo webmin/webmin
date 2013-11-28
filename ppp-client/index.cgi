@@ -88,7 +88,7 @@ else {
 				      "value='$text{'index_connect'}'>\n";
 				print "<select name=section>\n";
 				foreach $c (@dials) {
-					printf "<option value='%s' %s>%s\n",
+					printf "<option value='%s' %s>%s</option>\n",
 					  $c->{'name'},
 					  $c->{'name'} eq $config{'dialer'} ?
 						"selected" : "",
@@ -110,11 +110,11 @@ else {
 			print "<input type=hidden name=starting value='$starting'>\n";
 			print "<td nowrap><input type=submit value='$text{'index_boot'}'>\n";
 			print "<select name=section>\n";
-			printf "<option value='' %s>%s\n",
+			printf "<option value='' %s>%s</option>\n",
 				$config{'boot'} ? "" : "selected",
 				$text{'index_noboot'};
 			foreach $c (@dials) {
-				printf "<option value='%s' %s>%s\n",
+				printf "<option value='%s' %s>%s</option>\n",
 				  $c->{'name'},
 				  $c->{'name'} eq $config{'boot'} ?
 					"selected" : "",

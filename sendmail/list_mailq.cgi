@@ -90,7 +90,7 @@ if (@qfiles) {
 	print "<select name=field>\n";
 	foreach $f ('from', 'subject', 'to', 'cc', 'date', 'status', 'body', 'headers', 'size', '',
 	    '!from', '!subject', '!to', '!cc', '!date', '!status', '!body', '!headers', '!size') {
-		printf "<option value='%s'>%s\n", $f, $text{"match_$f"};
+		printf "<option value='%s'>%s</option>\n", $f, $text{"match_$f"};
 		}
 	print "</select>\n";
 	print "<input name=match size=20>\n";

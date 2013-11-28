@@ -24,10 +24,10 @@ foreach $t (@tcp) {
 	print "<tr $cb>\n";
 	print "<td><input name=tsize_$i size=5 value='$t->[0]'></td>\n";
 	print "<td><select name=tclass_$i>\n";
-	printf "<option value='' %s>%s\n",
+	printf "<option value='' %s>%s</option>\n",
 		$t->[1] ? '' : 'checked', $text{'net_tall'};
 	foreach $c (@class) {
-		printf "<option %s>%s\n",
+		printf "<option %s>%s</option>\n",
 			$t->[1] eq $c->[0] ? 'selected' : '', $c->[0];
 		}
 	print "</select></td> </tr>\n";

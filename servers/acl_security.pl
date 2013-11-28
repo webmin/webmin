@@ -16,7 +16,7 @@ local @servers = sort { $a->{'host'} cmp $b->{'host'} } &list_servers();
 local ($z, %zcan);
 map { $zcan{$_}++ } split(/\s+/, $_[0]->{'servers'});
 foreach $z (sort { $a->{'value'} cmp $b->{'value'} } @servers) {
-        printf "<option value='%s' %s>%s\n",
+        printf "<option value='%s' %s>%s</option>\n",
                 $z->{'id'},
                 $zcan{$z->{'host'}} || $zcan{$z->{'id'}} ? "selected" : "",
                 $z->{'host'} ;

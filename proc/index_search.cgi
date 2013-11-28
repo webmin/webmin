@@ -199,7 +199,7 @@ if (%in) {
 			join(" ", @pidlist);
 		print "<select name=signal>\n";
 		foreach $s (&supported_signals()) {
-			printf "<option value=\"$s\" %s> $s\n",
+			printf "<option value=\"$s\" %s>$s</option>\n",
 				$s eq "HUP" ? "selected" : "";
 			}
 		print "</select>\n";

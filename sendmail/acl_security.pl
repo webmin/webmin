@@ -72,11 +72,11 @@ printf "<input type=radio name=manual value=0 %s> $text{'no'}</td>\n",
 	$_[0]->{'manual'} ? "" : "checked";
 
 print "<td><b>$text{'acl_mailq'}</b></td> <td><select name=mailq>\n";
-printf "<option value=2 %s> $text{'acl_viewdel'}\n",
+printf "<option value=2 %s>$text{'acl_viewdel'}</option>\n",
 	$_[0]->{'mailq'} == 2 ? "selected" : "";
-printf "<option value=1 %s> $text{'acl_view'}\n",
+printf "<option value=1 %s>$text{'acl_view'}</option>\n",
 	$_[0]->{'mailq'} == 1 ? "selected" : "";
-printf "<option value=0 %s> $text{'no'}\n",
+printf "<option value=0 %s>$text{'no'}</option>\n",
 	$_[0]->{'mailq'} == 0 ? "selected" : "";
 print "</select></td> </tr>\n";
 

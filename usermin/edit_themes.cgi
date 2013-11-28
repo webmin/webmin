@@ -14,7 +14,7 @@ if (@themes) {
 	print "<form action=change_theme.cgi>\n";
 	print "<b>$text{'themes_sel'}</b> <select name=theme>\n";
 	foreach $t ( { 'desc' => $text{'themes_default'} }, @themes) {
-		printf "<option value='%s' %s>%s\n",
+		printf "<option value='%s' %s>%s</option>\n",
 			$t->{'dir'},
 			$uconfig{'theme'} eq $t->{'dir'} ? 'selected' : '',
 			$t->{'desc'};
@@ -52,7 +52,7 @@ if (@themes) {
 	print "<b>$text{'themes_delok'}</b>\n";
 	print "<select name=mod>\n";
 	foreach $t (@themes) {
-		printf "<option value=%s>%s\n",
+		printf "<option value=%s>%s</option>\n",
 			$t->{'dir'}, $t->{'desc'};
 		}
 	print "</select>\n";

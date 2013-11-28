@@ -427,7 +427,7 @@ local($i, $rv);
 $rv = "<select name=\"$_[1]\">\n";
 for($i=3; $i<@_; $i++) {
 	$_[$i] =~ /^([^,]*),(.*)$/;
-	$rv .= sprintf "<option value=\"$2\" %s> $1\n",
+	$rv .= sprintf "<option value=\"$2\" %s>$1</option>\n",
 		lc($2) eq lc($_[0]) || !defined($_[0]) && lc($2) eq lc($_[2]) ? "selected" : "";
 	}
 $rv .= "</select>\n";

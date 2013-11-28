@@ -38,7 +38,7 @@ print "<tr> <td nowrap><b>$text{'mods_cname'}</b></td>\n";
 print "<td><select name=mod>\n";
 foreach $m (@mlist) {
 	if (!$m->{'clone'}) {
-		printf "<option value='%s'>%s\n",
+		printf "<option value='%s'>%s</option>\n",
 			$m->{'dir'}, $m->{'desc'};
 		}
 	}
@@ -48,7 +48,7 @@ print "<tr> <td nowrap><b>$text{'mods_cnew'}</b></td>\n";
 print "<td><input name=desc size=30></td> </tr>\n";
 print "<tr> <td nowrap><b>$text{'mods_ccat'}</b></td>\n";
 print "<td><select name=cat>\n";
-print "<option value=* selected>$text{'mods_csame'}\n";
+print "<option value=* selected>$text{'mods_csame'}</option>\n";
 &get_usermin_miniserv_config(\%miniserv);
 &read_file("$miniserv{'root'}/lang/en", \%utext);
 &read_file("$miniserv{'root'}/ulang/en", \%utext);
@@ -62,7 +62,7 @@ foreach $t (keys %catnames) {
 	$cats{$t} = $catnames{$t};
 	}
 foreach $c (sort { $cats{$a} cmp $cats{$b} } keys %cats) {
-	print "<option value=$c>$cats{$c}\n";
+	print "<option value=$c>$cats{$c}</option>\n";
 	}
 print "</select></td> </tr>\n";
 print "</table></td></tr> </table>\n";
@@ -88,7 +88,7 @@ foreach $m (@mlist) {
 			      $home ? "" :
 			      sprintf "(%d/%d/%d)",
 				      $tm[3], $tm[4]+1, $tm[5]+1900;
-		printf "<option value='%s'>%s %s\n",
+		printf "<option value='%s'>%s %s</option>\n",
 			$m->{'dir'}, $m->{'desc'}, $vstr;
 		}
 	}

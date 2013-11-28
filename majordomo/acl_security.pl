@@ -17,7 +17,7 @@ print "<select name=lists multiple size=3 width=150>\n";
 local (%lcan, $l);
 map { $lcan{$_}++ } split(/\s+/, $_[0]->{'lists'});
 foreach $l (@lists) {
-	printf "<option %s>%s\n",
+	printf "<option %s>%s</option>\n",
 		$lcan{$l} ? "selected" : "", $l;
 	}
 print "</select></td>\n";

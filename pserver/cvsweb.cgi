@@ -709,11 +709,11 @@ elsif (-d $fullname) {
 	    print "<SELECT NAME=only_with_tag";
 	    print " onchange=\"submit()\"" if ($use_java_script);
 	    print ">";
-	    print "<OPTION VALUE=\"\">All tags / default branch\n";
+	    print "<OPTION VALUE=\"\">All tags / default branch</OPTION>\n";
 	    foreach my $tag (reverse sort { lc $a cmp lc $b } keys %tags) {
 		print "<OPTION",defined($input{only_with_tag}) && 
 		       $input{only_with_tag} eq $tag ? " SELECTED":"",
-		       ">$tag\n";
+		       ">$tag</OPTION>\n";
 	    }
 	    print "</SELECT>\n";
 	    print "<INPUT TYPE=SUBMIT VALUE=\"Go\">\n";
@@ -731,18 +731,18 @@ elsif (-d $fullname) {
 	    print "<center><table cellpadding=0 cellspacing=0>";
 	    print "<tr bgcolor=\"$columnHeaderColorDefault\"><th colspan=2>Preferences</th></tr>";
 	    print "<tr><td>Sort files by <SELECT name=\"sortby\">";
-	    print "<OPTION VALUE=\"\">File";
-	    print "<OPTION",$bydate ? " SELECTED" : ""," VALUE=date>Age";
-	    print "<OPTION",$byauthor ? " SELECTED" : ""," VALUE=author>Author"
+	    print "<OPTION VALUE=\"\">File</OPTION>";
+	    print "<OPTION",$bydate ? " SELECTED" : ""," VALUE=date>Age</OPTION>";
+	    print "<OPTION",$byauthor ? " SELECTED" : ""," VALUE=author>Author</OPTION>"
 		if ($show_author);
-	    print "<OPTION",$byrev ? " SELECTED" : ""," VALUE=rev>Revision";
-	    print "<OPTION",$bylog ? " SELECTED" : ""," VALUE=log>Log message";
+	    print "<OPTION",$byrev ? " SELECTED" : ""," VALUE=rev>Revision</OPTION>";
+	    print "<OPTION",$bylog ? " SELECTED" : ""," VALUE=log>Log message</OPTION>";
 	    print "</SELECT></td>";
 	    print "<td>revisions by: \n";
 	    print "<SELECT NAME=logsort>\n";
-	    print "<OPTION VALUE=cvs",$logsort eq "cvs" ? " SELECTED" : "", ">Not sorted";
-	    print "<OPTION VALUE=date",$logsort eq "date" ? " SELECTED" : "", ">Commit date";
-	    print "<OPTION VALUE=rev",$logsort eq "rev" ? " SELECTED" : "", ">Revision";
+	    print "<OPTION VALUE=cvs",$logsort eq "cvs" ? " SELECTED" : "", ">Not sorted</OPTION>";
+	    print "<OPTION VALUE=date",$logsort eq "date" ? " SELECTED" : "", ">Commit date</OPTION>";
+	    print "<OPTION VALUE=rev",$logsort eq "rev" ? " SELECTED" : "", ">Revision</OPTION>";
 	    print "</SELECT></td></tr>";
 	    print "<tr><td>Diff format: ";
 	    printDiffSelect(0);
@@ -842,11 +842,11 @@ sub printDiffSelect($) {
     print "<SELECT NAME=\"f\"";
     print " onchange=\"submit()\"" if ($use_java_script);
     print ">\n";
-    print "<OPTION VALUE=h",$f eq "h" ? " SELECTED" : "", ">Colored Diff";
-    print "<OPTION VALUE=H",$f eq "H" ? " SELECTED" : "", ">Long Colored Diff";
-    print "<OPTION VALUE=u",$f eq "u" ? " SELECTED" : "", ">Unidiff";
-    print "<OPTION VALUE=c",$f eq "c" ? " SELECTED" : "", ">Context Diff";
-    #print "<OPTION VALUE=s",$f eq "s" ? " SELECTED" : "", ">Side by Side";
+    print "<OPTION VALUE=h",$f eq "h" ? " SELECTED" : "", ">Colored Diff</OPTION>";
+    print "<OPTION VALUE=H",$f eq "H" ? " SELECTED" : "", ">Long Colored Diff</OPTION>";
+    print "<OPTION VALUE=u",$f eq "u" ? " SELECTED" : "", ">Unidiff</OPTION>";
+    print "<OPTION VALUE=c",$f eq "c" ? " SELECTED" : "", ">Context Diff</OPTION>";
+    #print "<OPTION VALUE=s",$f eq "s" ? " SELECTED" : "", ">Side by Side</OPTION>";
     print "</SELECT>";
 }
 
@@ -1856,7 +1856,7 @@ sub readLog($;$) {
 	    }
 	    $revsym{$rev} .= ", " if ($revsym{$rev});
 	    $revsym{$rev} .= $_;
-	    $sel .= "<OPTION VALUE=\"${rev}:${_}\">$_\n";
+	    $sel .= "<OPTION VALUE=\"${rev}:${_}\">$_</OPTION>\n";
 	}
 	print "Done associating revisions with branches\n" if ($verbose);
 
@@ -2127,7 +2127,7 @@ sub doLog($) {
 	}
 	print "Diffs between \n";
 	print "<SELECT NAME=\"r1\">\n";
-	print "<OPTION VALUE=\"text\" SELECTED>Use Text Field\n";
+	print "<OPTION VALUE=\"text\" SELECTED>Use Text Field</OPTION>\n";
 	print $sel;
 	print "</SELECT>\n";
 	$diffrev = $revdisplayorder[$#revdisplayorder];
@@ -2135,7 +2135,7 @@ sub doLog($) {
 	print "<INPUT TYPE=\"TEXT\" SIZE=\"$inputTextSize\" NAME=\"tr1\" VALUE=\"$diffrev\" onChange='document.diff_select.r1.selectedIndex=0'>\n";
 	print " and \n";
 	print "<SELECT NAME=\"r2\">\n";
-	print "<OPTION VALUE=\"text\" SELECTED>Use Text Field\n";
+	print "<OPTION VALUE=\"text\" SELECTED>Use Text Field</OPTION>\n";
 	print $sel;
 	print "</SELECT>\n";
 	$diffrev = $revdisplayorder[0];
@@ -2165,12 +2165,12 @@ sub doLog($) {
 	    print "<OPTION VALUE=\"\"";
 	    print " SELECTED" if (defined($input{"only_with_tag"}) &&
 		$input{"only_with_tag"} eq "");
-	    print ">Show all branches\n";
+	    print ">Show all branches</OPTION>\n";
 	    foreach (reverse sort @branchnames) {
 		print "<OPTION";
 		print " SELECTED" if (defined($input{"only_with_tag"})
 			&& $input{"only_with_tag"} eq $_);
-		print ">${_}\n";
+		print ">${_}</OPTION>\n";
 	    }
 	    print "</SELECT>\n";
 	    print "<INPUT TYPE=SUBMIT VALUE=\"  View Branch  \">\n";
@@ -2191,9 +2191,9 @@ sub doLog($) {
 	print "<SELECT NAME=\"logsort\"";
 	print " onchange=\"submit()\"" if ($use_java_script);
 	print ">\n";
-	print "<OPTION VALUE=cvs",$logsort eq "cvs" ? " SELECTED" : "", ">Not sorted";
-	print "<OPTION VALUE=date",$logsort eq "date" ? " SELECTED" : "", ">Commit date";
-	print "<OPTION VALUE=rev",$logsort eq "rev" ? " SELECTED" : "", ">Revision";
+	print "<OPTION VALUE=cvs",$logsort eq "cvs" ? " SELECTED" : "", ">Not sorted</OPTION>";
+	print "<OPTION VALUE=date",$logsort eq "date" ? " SELECTED" : "", ">Commit date</OPTION>";
+	print "<OPTION VALUE=rev",$logsort eq "rev" ? " SELECTED" : "", ">Revision</OPTION>";
 	print "</SELECT>\n";
 	print "<INPUT TYPE=SUBMIT VALUE=\"  Sort  \">\n";
 	print "</FORM>\n";

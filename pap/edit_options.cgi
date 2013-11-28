@@ -104,11 +104,11 @@ $modem = &find("modem", \@opts);
 $local = &find("local", \@opts);
 print "<td><b>$text{'options_ctrl'}</b></td>\n";
 print "<td><select name=ctrl>\n";
-printf "<option value=0 %s> %s\n",
+printf "<option value=0 %s>%s</option>\n",
 	$local ? "selected" : "", $text{'options_ctrl0'};
-printf "<option value=1 %s> %s\n",
+printf "<option value=1 %s>%s</option>\n",
 	$modem ? "selected" : "", $text{'options_ctrl1'};
-printf "<option value=2 %s> %s\n",
+printf "<option value=2 %s>%s</option>\n",
 	$modem || $local ? "" : "selected", $text{'default'};
 print "</select></td> </tr>\n";
 

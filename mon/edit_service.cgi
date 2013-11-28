@@ -49,7 +49,7 @@ printf "<input type=radio name=monitor_def value=1 %s> %s\n",
 	$in{'new'} || $idx >= 0 ? "checked" : "", $text{'service_mon1'};
 print "<select name=monitor>\n";
 foreach $m (@mons) {
-	printf "<option %s>%s\n", $m eq $mon ? "selected" : "", $m;
+	printf "<option %s>%s</option>\n", $m eq $mon ? "selected" : "", $m;
 	}
 print "</select>\n";
 printf "<input type=radio name=monitor_def value=0 %s> %s\n",
@@ -123,7 +123,7 @@ foreach $p (@periods) {
 		print "<td><select name=name_$i>\n";
 		foreach $p (@defperiods) {
 			$p->{'value'} =~ /^(\S+):/;
-			printf "<option %s>%s\n",
+			printf "<option %s>%s</option>\n",
 				$name eq $1 ? "selected" : "", $1;
 			}
 		print "</select></td> </tr>\n";
@@ -149,18 +149,18 @@ foreach $p (@periods) {
 		if ($a->{'value'} =~ /^(\S+)\s*(.*)/) {
 			$al = $1; $ar = $2;
 			}
-		printf "<option value='' %s>&nbsp;\n",
+		printf "<option value='' %s>&nbsp;</option>\n",
 			$al ? "" : "selected";
 		foreach $av (@avail) {
-			printf "<option %s>%s\n",
+			printf "<option %s>%s</option>\n",
 			    $al eq $av ? "selected" : "", $av;
 			$found++ if ($al eq $av);
 			}
-		print "<option selected>$al\n" if (!$found && $al);
+		print "<option selected>$al</option>\n" if (!$found && $al);
 		print "</select></td>\n";
 		print "<td><select name=atype_${i}_${j}>\n";
 		foreach $t ('alert', 'upalert', 'startupalert') {
-			printf "<option value=%s %s>%s\n",
+			printf "<option value=%s %s>%s</option>\n",
 				$t, $a->{'name'} eq $t ? "selected" : "",
 				$text{"service_atype_$t"};
 			}

@@ -147,7 +147,7 @@ map { $inall{$_}++ } split(/\s+/,&expand_vars($rule->{'all'}->{'value'}, $var));
 print "<tr> <td rowspan=2 valign=top><b>$text{'server_tables'}</b></td>\n";
 print "<td rowspan=2><select multiple size=5 name=tables>\n";
 foreach $t (grep { $rule->{$_} } @nis_tables) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$t, $inall{$t} ? 'selected' : '', $t;
 	}
 print "</select></td>\n";

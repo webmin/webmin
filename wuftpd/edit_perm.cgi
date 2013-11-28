@@ -31,9 +31,9 @@ foreach $p (@perms) {
 	print "<tr $cb>\n";
 
 	print "<td><select name=type_$i>\n";
-	printf "<option %s>\n", $p->{'name'} ? '' : 'checked';
+	printf "<option %s></option>\n", $p->{'name'} ? '' : 'checked';
 	foreach $t (@permtypes) {
-		printf "<option %s>%s\n",
+		printf "<option %s>%s</option>\n",
 			$p->{'name'} eq $t ? 'selected' : '', $t;
 		}
 	print "</select></td>\n";

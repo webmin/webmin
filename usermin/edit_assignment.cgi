@@ -44,7 +44,7 @@ sub cats {
 	$cats{$_} = $catnames{$_};
 	}
     foreach $c (sort { $cats{$a} cmp $cats{$b} } keys %cats) {
-	$cats .= sprintf "<option value='%s' %s>%s\n",
+	$cats .= sprintf "<option value='%s' %s>%s</option>\n",
 			$c, $_[1] eq $c ? 'selected' : '', $cats{$c};
 	}
     $cats = qq(<select name="$_[0]">$cats\n</select>\n);

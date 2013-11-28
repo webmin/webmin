@@ -97,7 +97,7 @@ local ($i, $rv);
 for($i=0; $i<3; $i++) {
 	$rv .= "<select name=$_[1]_$i>\n";
 	foreach $m (@modes) {
-		$rv .= sprintf "<option value='%s' %s>%s\n",
+		$rv .= sprintf "<option value='%s' %s>%s</option>\n",
 		    $m, $am[$i] eq $m ? "selected" : "", $text{"vgetty_ans_$m"};
 		}
 	$rv .= "</select>&nbsp;";
