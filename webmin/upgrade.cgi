@@ -356,30 +356,6 @@ elsif ($in{'mode'} eq 'solaris-pkg' || $in{'mode'} eq 'sun-pkg') {
 		"$config_directory/start", 0, 0, STDOUT, undef, 1,1);
 	print "</pre>\n";
 	}
-elsif ($in{'mode'} eq 'caldera') {
-	# Check if it is a Caldera RPM of Webmin
-	$out = `rpm -qp $file`;
-	$out =~ /^webmin-(\d+\.\d+)/ ||
-		&inst_error($text{'upgrade_erpm'});
-	if ($1 <= &get_webmin_version() && !$in{'force'}) {
-		&inst_error(&text('upgrade_eversion', "$1"));
-		}
-	my $wfound = 0;
-	open(OUT, "rpm -qpl $file |");
-	while(<OUT>) {
-		$wfound++ if (/^\/etc\/webmin/);
-		}
-	close(OUT);
-	$wfound || &inst_error($text{'upgrade_ecaldera'});
-
-	# Install the RPM
-	print "<p>",$text{'upgrade_setuprpm'},"<p>\n";
-	print "<pre>";
-	&proc::safe_process_exec("rpm -U --ignoreos --ignorearch '$file'", 0, 0,
-			   STDOUT, undef, 1, 1);
-	unlink($file) if ($need_unlink);
-	print "</pre>\n";
-	}
 elsif ($in{'mode'} eq 'gentoo') {
 	# Check if it is a gentoo .tar.gz or .ebuild file of webmin
 	open(EMERGE, "emerge --pretend '$file' 2>/dev/null |");

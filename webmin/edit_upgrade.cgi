@@ -40,51 +40,47 @@ if (!$skip_upgrade) {
 	print ui_hidden("mode", $mode);
 	print ui_hidden("dir", $dir);
 	print ui_table_start($text{'upgrade_title'}, undef, 1);
-	print "<tr $cb> <td nowrap>\n";
-	print "<input type=radio name=source value=0> $text{'upgrade_local'}\n";
-	print "<input name=file size=40>\n";
-	print file_chooser_button("file", 0),"<br>\n";
-	print "<input type=radio name=source value=1> $text{'upgrade_uploaded'}\n";
-	print "<input name=upload type=file size=30><br>\n";
-	print "<input type=radio name=source value=5> $text{'upgrade_url'}\n";
-	print "<input name=url size=40><br>\n";
-	if ($mode eq 'caldera') {
-		print "<input type=radio name=source value=3 checked> $text{'upgrade_cup'}\n";
+
+	@opts = ( [ 0, $text{'upgrade_local'},
+		    &ui_filebox("file", undef, 60) ],
+		  [ 1, $text{'upgrade_uploaded'},
+		    &ui_upload("file") ],
+		  [ 5, $text{'upgrade_url'},
+		    &ui_textbox("url", undef, 60) ] );
+	if ($mode eq "gentoo") {
+		push(@opts, [ 4, $text{'upgrade_emerge'} ]);
 		}
-	elsif ($mode eq "gentoo") {
-		print "<input type=radio name=source value=4 checked> $text{'upgrade_emerge'}\n";
+	elsif ($mode eq "sun-pkg") {
+		push(@opts, [ 2, $text{'upgrade_ftp'} ]);
 		}
-	elsif ($mode ne "sun-pkg") {
-		print "<input type=radio name=source value=2 checked> $text{'upgrade_ftp'}\n";
-		}
-	print "<p>\n";
+	print &ui_table_row($text{'upgrade_src'},
+		&ui_radio_table("source", $opts[$#opts]->[0], \@opts));
+
+	@cbs = ( );
 	if (!$mode && !$dir) {
 		# Checkbox to delete original directory
-		print &ui_checkbox("delete", 1, $text{'upgrade_delete'},
-				   $gconfig{'upgrade_delete'}),"<br>\n";
+		push(@cbs, &ui_checkbox("delete", 1, $text{'upgrade_delete'},
+					$gconfig{'upgrade_delete'}));
 		}
 	if ((!$mode || $mode eq "rpm") && &foreign_check("proc")) {
 		# Checkbox to check signature
 		($ec, $emsg) = &gnupg_setup();
-		printf "<input type=checkbox name=sig value=1 %s> %s<br>\n",
-			$ec ? "" : "checked", $text{'upgrade_sig'};
+		push(@cbs, &ui_checkbox("sig", 1, $text{'upgrade_sig'}, $ec));
 		}
 	if (!$mode) {
 		# Checkbox to not install missing modules
-		printf "<input type=checkbox name=only value=1 %s> %s<br>\n",
-			-r "$root_directory/minimal-install" ? "checked" : "",
-			$text{'upgrade_only'};
+		push(@cbs, &ui_checkbox("only", 1, $text{'upgrade_only'},
+					-r "$root_directory/minimal-install"));
 		}
-	printf "<input type=checkbox name=force value=1> %s<br>\n",
-		$text{'upgrade_force'};
+	push(@cbs, &ui_checkbox("force", 1, $text{'upgrade_force'}, 0));
 	if ($main::session_id) {
 		# Checkbox to disconnect other sessions
-		printf "<input type=checkbox name=disc value=1> %s<br>\n",
-			$text{'upgrade_disc'};
+		push(@cbs, &ui_checkbox("disc", 1, $text{'upgrade_disc'}, 0));
 		}
+	print &ui_table_row($text{'upgrade_opts'},
+		join("<br>\n", @cbs));
 	print ui_table_end();
-	print "<input type=submit value=\"$text{'upgrade_ok'}\">\n";
-	print "</form>\n";
+	print &ui_form_end([ [ undef, $text{'upgrade_ok'} ] ]);
 	print ui_tabs_end_tab();
 	}
 

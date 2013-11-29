@@ -47,11 +47,6 @@ my (@wlinks, @wtitles, @wicons);
 	    "images/blocked.gif", "images/status.gif",
 	    "images/advanced.gif", "images/debug.gif", "images/web.gif",
 	    "images/webmincron.gif", );
-if ($gconfig{'eazel'}) {
-	push(@wlinks, "edit_syslet.cgi");
-	push(@wtitles, $text{'syslet_title'});
-	push(@wicons, "images/syslet.gif");
-	}
 if (&foreign_check("mailboxes")) {
 	push(@wlinks, "edit_sendmail.cgi");
 	push(@wtitles, $text{'sendmail_title'});

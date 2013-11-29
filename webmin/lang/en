@@ -428,7 +428,6 @@ upgrade_title=Upgrade Webmin
 upgrade_desc=This form allows you to upgrade your entire Webmin installation to a new version. You can install from a local file, an uploaded file or from the latest version at <a href=http://www.webmin.com/>www.webmin.com</a>. Just as with a manual upgrade, all your config settings and third-party modules will be kept.
 upgrade_descrpm=This form allows you to upgrade your entire webmin installation to a new version using RPM's upgrade option. You can install from a local RPM file, an uploaded file or from the latest version at <a href=http://www.webmin.com/>www.webmin.com</a>. Just as with a manual upgrade, all your config settings and third-party modules will be kept.
 upgrade_descdeb=This form allows you to upgrade your entire Webmin installation to a new version by upgrading its Debian package. You can install from a local .deb file, an uploaded file or from the latest version at <a href=http://www.webmin.com/>www.webmin.com</a>. Just as with a manual upgrade, all your config settings and third-party modules will be kept.
-upgrade_desccaldera=This form allows you to upgrade your entire Webmin installation to a new version using RPM's upgrade option. You can install from a local RPM file, an uploaded file or from the latest version from Caldera.
 upgrade_descsolaris-pkg=This form allows you to upgrade your entire Webmin installation to a new version by removing the current Solaris package and installing a new one. You can install from a local Solaris package file, an uploaded file or from the latest version at <a href=http://www.webmin.com/>www.webmin.com</a>. Just as with a manual upgrade, all your config settings and third-party modules will be kept.
 upgrade_descsun-pkg=This form allows you to upgrade your entire Webmin installation to a new version from the Solaris package supplied by Sun. You can install from a local Solaris package file, or an uploaded file. The latest packages can be found at <a href=http://www.sun.com/bigadmin/content/webmin/>http://www.sun.com/bigadmin/content/webmin/</a>. Just as with a manual upgrade, all your config settings and third-party modules will be kept.
 upgrade_descgentoo=This form allows you to upgrade your entire Webmin installation to a new version by removing the current Gentoo Emerge package and installing a new one. You can install from a local Gentoo package file, an uploaded file or from the latest version in the Emerge repository. Just as with a manual upgrade, all your config settings and third-party modules will be kept.
@@ -463,7 +462,6 @@ upgrade_setupdeb=Running DPKG to upgrade Webmin .. Please wait a minute until it
 upgrade_setuppackage=Running pkgadd to upgrade Webmin .. Please wait a minute until it is complete before continuing.
 upgrade_esolaris=Webmin's upgrade feature does not currently work when you have installed from a Solaris package. Please upgrade manually instead.
 upgrade_ezip=Webmin's upgrade feature does not currently work when you have installed on Windows. Please upgrade manually instead.
-upgrade_ecaldera=RPM file does not appear to be the Caldera version of Webmin.
 upgrade_eusermin=File is Usermin version $1, not a Webmin update.
 upgrade_updates=There are $1 updates for this new version of Webmin. <a href='$2'>Click here</a> to automatically download and install them now.
 upgrade_epackage=Not a valid Solaris package
@@ -487,6 +485,8 @@ upgrade_tabupgrade=Upgrade Webmin
 upgrade_tabgrants=New module grants
 upgrade_tabupdate=Update modules
 upgrade_tabsched=Scheduled update
+upgrade_src=Upgrade Webmin from
+upgrade_opts=Upgrade options
 
 newmod_desc=When Webmin is upgraded, any new modules in the new version will be granted to one or more users. This form allows you to set the users who receive new modules. This setting will apply when upgrading at the command line or using the form above.
 newmod_header=New module grants
@@ -715,13 +715,6 @@ referers_none=Trust links from unknown referrers
 referers_referer=Referrer checking enabled?
 referers_err=Failed to save referers
 referers_ehost='$1' is not a valid trusted hostname
-
-syslet_title=Syslet Auto-Download
-syslet_desc=This page is for configuring the automatic download and install of missing Eazel Syslets to your Webmin server.
-syslet_auto=Automatically download syslets?
-syslet_base=Base URLs for syslet RPMs
-syslet_err=Failed to save syslet options
-syslet_ebase=Invalid base URL
 
 update_err=Failed to update modules
 update_eurl=Missing or invalid update URL
