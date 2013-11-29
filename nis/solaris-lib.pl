@@ -137,7 +137,7 @@ map { $inall{$_}++ } @all;
 print "<tr> <td rowspan=4 valign=top><b>$text{'server_tables'}</b></td>\n";
 print "<td rowspan=4><select multiple size=6 name=tables>\n";
 foreach $t (&unique(@nis_tables, @all)) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$t, $inall{$t} ? 'selected' : '', $t;
 	}
 print "</select></td>\n";

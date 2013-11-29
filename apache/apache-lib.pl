@@ -975,9 +975,8 @@ local($i, $rv);
 $rv = "<select name=\"$_[1]\">\n";
 for($i=3; $i<@_; $i++) {
 	$_[$i] =~ /^([^,]*),(.*)$/;
-	$rv .= sprintf "<option value=\"$2\" %s> $1\n",
-		lc($2) eq lc($_[0]) || !defined($_[0]) && lc($2) eq lc($_[2]) ? "selected" : "",
-		"</option>";
+	$rv .= sprintf "<option value=\"$2\" %s>$1</option>\n",
+		lc($2) eq lc($_[0]) || !defined($_[0]) && lc($2) eq lc($_[2]) ? "selected" : "";
 	}
 $rv .= "</select>\n";
 return $rv;
@@ -1004,13 +1003,11 @@ foreach $m (keys %httpd_modules) {
 if (&indexof($_[0], @hl) < 0) { push(@hl, $_[0]); }
 $rv = "<select name=$_[1]>\n";
 foreach $h (&unique(@hl)) {
-	$rv .= sprintf "<option value=\"$h\" %s>$h\n",
-		$h eq $_[0] ? "selected" : "",
-		"</option>";
+	$rv .= sprintf "<option value=\"$h\" %s>$h</option>\n",
+		$h eq $_[0] ? "selected" : "";
 	}
-$rv .= sprintf "<option value=\"None\" %s>&lt;$text{'core_none'}&gt;\n",
-	$_[0] eq "None" ? "selected" : "",
-	"</option>";
+$rv .= sprintf "<option value=\"None\" %s>&lt;$text{'core_none'}&gt;</option>\n",
+	$_[0] eq "None" ? "selected" : "";
 $rv .= "</select>\n";
 return $rv;
 }

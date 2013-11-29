@@ -31,13 +31,13 @@ foreach $t (sort { "$a$b" =~ /^ttyS(\d+)ttyS(\d+)$/ ? $1 <=> $2 : 0 }
 		 readdir(DEV)) {
 	if ($t =~ /^ttyS(\d+)$/) {
 		local $f = $init->{'tty'} eq $t || $init->{'tty'} eq "/dev/$t";
-		printf "<option value=%s %s>%s\n",
+		printf "<option value=%s %s>%s</option>\n",
 			$t, $f ? "selected" : "", &text('vgetty_ts', $1+1);
 		$found++ if ($f);
 		}
 	}
 closedir(DEV);
-printf "<option value='' %s>%s\n",
+printf "<option value='' %s>%s</option>\n",
 	$found ? "" : "selected", $text{'vgetty_other'};
 print "</select>\n";
 printf "<input name=other size=20 value='%s'> %s</td> </tr>\n",

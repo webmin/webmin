@@ -55,7 +55,7 @@ if (@features) {
 	print "<input type=submit value='$text{'features_add'}'>\n";
 	print "<select name=type>\n";
 	foreach $i (0, 1, 2, 4, 5) {
-		print "<option value=$i>",$text{'features_type'.$i},"\n";
+		print "<option value=$i>",$text{'features_type'.$i},"</option>\n";
 		}
 	print "</select></td>\n";
 	print "<td align=right><input type=submit name=manual ",

@@ -65,6 +65,8 @@ sub split_input
 {
 local @rv;
 local $str = $_[0];
+# remove '@' if smb.conf was manually edited
+$str =~ s/(@)+//g;
 while($str =~ /^\s*(\S*"[^"]+"\S*)(.*)$/ || $str =~ /^\s*(\S+)(.*)$/) {
 	push(@rv, $_[1].$1);
 	$str = $2;

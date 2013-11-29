@@ -18,12 +18,12 @@ print "<tr $cb> <td><table width=100%>\n";
 print "<tr> <td><b>$text{'watch_group'}</b></td>\n";
 print "<td><select name=group>\n";
 foreach $s (&find("hostgroup", $conf)) {
-	printf "<option %s>%s\n",
+	printf "<option %s>%s</option>\n",
 		$s eq $watch->{'values'}->[0] ? "selected" : "",
 		$s->{'values'}->[0];
 	$found++ if ($s eq $watch->{'values'}->[0]);
 	}
-print "<option selected>$watch->{'values'}->[0]\n" if (!$found);
+print "<option selected>$watch->{'values'}->[0]</option>\n" if (!$found);
 print "</select></td> </tr>\n";
 
 print "<tr> <td valign=top><b>$text{'watch_services'}</b></td>\n";

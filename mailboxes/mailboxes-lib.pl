@@ -974,9 +974,9 @@ if (@$mail) {
 	# Mark as
 	print "<input type=submit name=mark$_[0] value=\"$text{'mail_mark'}\">";
 	print "<select name=mode$_[0]>\n";
-	print "<option value=1 checked>$text{'mail_mark1'}\n";
-	print "<option value=0>$text{'mail_mark0'}\n";
-	print "<option value=2>$text{'mail_mark2'}\n";
+	print "<option value=1 checked>$text{'mail_mark1'}</option>\n";
+	print "<option value=0>$text{'mail_mark0'}</option>\n";
+	print "<option value=2>$text{'mail_mark2'}</option>\n";
 	print "</select>";
 	print $spacer;
 

@@ -393,11 +393,11 @@ foreach $c (@{$_[0]}, { }) {
 	$rv .= "<tr $cb>\n";
 	$rv .= "<td><input name=Class_n_$i size=10 value='$w[0]'></td>\n";
 	$rv .= "<td><select name=Class_t_$i>\n";
-	$rv .= sprintf "<option value=limit %s>%s\n",
+	$rv .= sprintf "<option value=limit %s>%s</option>\n",
 		$w[1] eq 'limit' ? 'selected' : '', $text{'mod_core_climit'};
-	$rv .= sprintf "<option value=regex %s>%s\n",
+	$rv .= sprintf "<option value=regex %s>%s</option>\n",
 		$w[1] eq 'regex' ? 'selected' : '', $text{'mod_core_cregex'};
-	$rv .= sprintf "<option value=ip %s>%s\n",
+	$rv .= sprintf "<option value=ip %s>%s</option>\n",
 		$w[1] eq 'ip' ? 'selected' : '', $text{'mod_core_cip'};
 	$rv .= "</select>\n";
 	$rv .= "<input name=Class_v_$i size=20 value='$w[2]'></td>\n";

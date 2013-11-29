@@ -44,8 +44,8 @@ if (!$in{'new'}) {
 elsif ($has_inetd && $has_xinetd) {
 	print "<td><b>$text{'edit_type'}</b></td>\n";
 	print "<td><select name=type>\n";
-	print "<option selected>xinetd\n";
-	print "<option>inetd\n";
+	print "<option selected>xinetd</option>\n";
+	print "<option>inetd</option>\n";
 	print "</select></td>\n";
 	}
 print "</tr>\n";

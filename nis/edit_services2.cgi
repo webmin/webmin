@@ -23,7 +23,7 @@ print "<td><input name=name size=15 value='$name'></td>\n";
 print "<td><b>$text{'services_proto'}</b></td>\n";
 print "<td><select name=proto>\n";
 foreach $p (&foreign_call("inetd", "list_protocols")) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$p, $proto eq $p || !$proto && $p eq 'tcp' ? 'selected' : '',
 		uc($p);
 	}

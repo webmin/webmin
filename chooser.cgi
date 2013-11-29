@@ -164,11 +164,14 @@ location = "chooser.cgi?frame=1&chroot=$uchroot&type=$utype&file="+p;
 }
 </script>
 EOF
-
+	print "<div id='filter_box' style='display:none;margin:0px;padding:0px;width:100%;clear:both;'>";
+	print &ui_textbox("filter",$text{'ui_filterbox'}, 50, 0, undef,"style='width:100%;' onkeyup=\"filter_match(this.value,'row',true);\" onfocus=\"if (this.value == '".$text{'ui_filterbox'}."') {this.value = '';}\" onblur=\"if (this.value == '') {this.value = '".$text{'ui_filterbox'}."';}\"");
+	print "<hr style='width:100%;'></div>";
 	print "<b>",&text('chooser_dir', &html_escape($dir)),"</b>\n";
 	opendir(DIR, $in{'chroot'}.$dir) ||
 		&popup_error(&text('chooser_eopen', "$!"));
 	print &ui_columns_start(undef, 100);
+    my $cnt = 0;
 	foreach $f (sort { $a cmp $b } readdir(DIR)) {
 		$path = "$in{'chroot'}$dir$f";
 		if ($f eq ".") { next; }
@@ -198,9 +201,14 @@ EOF
 			$tm[3], $text{'smonth_'.($tm[4]+1)}, $tm[5]+1900);
 		push(@cols, sprintf "<tt>%.2d:%.2d</tt>", $tm[2], $tm[1]);
 		print &ui_columns_row(\@cols);
+        $cnt++;
 		}
 	closedir(DIR);
 	print &ui_columns_end();
+    if ( $cnt >= 10 ) {
+        print "<script type='text/javascript' src='$gconfig{'webprefix'}/unauthenticated/filter_match.js?28112013'></script>";
+        print "<script type='text/javascript'>filter_match_box();</script>";
+    }
 	&popup_footer();
 	}
 elsif ($in{'frame'} == 2) {

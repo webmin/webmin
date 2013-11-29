@@ -38,13 +38,13 @@ foreach $s (@switch) {
 			print "<td><select name=order_${sv}_${i}>\n";
 			foreach $sc (@sources) {
 				if ($sc =~ /(\S+)=(\S+)/ && $1 eq $sv) {
-					printf "<option value='%s' %s>%s\n",
+					printf "<option value='%s' %s>%s</option>\n",
 					    $2,
 					    $o[$i-1] eq $2 ? 'selected' : '',
 					    $text{"order_$2"};
 					}
 				elsif ($sc !~ /=/) {
-					printf "<option value='%s' %s>%s\n",
+					printf "<option value='%s' %s>%s</option>\n",
 					    $sc,
 					    $o[$i-1] eq $sc ? 'selected' : '',
 					    $text{"order_$sc"};

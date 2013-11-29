@@ -72,7 +72,7 @@ printf "<input type=radio name=inherits_def value=0 %s> %s\n",
 print "<select name=inherits>\n";
 foreach $c (@$conf) {
 	next if ($c eq $dialer);
-	printf "<option value='%s' %s>%s\n",
+	printf "<option value='%s' %s>%s</option>\n",
 		$c->{'name'}, lc($inherits) eq lc($c->{'name'}) ? "selected":"",
 		&dialer_name($c->{'name'});
 	}
@@ -86,20 +86,20 @@ $dm = &get_default("Modem");
 local $found = !$modem || $modem eq "/dev/modem";
 print "<tr> <td><b>$text{'edit_serial'}</b></td>\n";
 print "<td nowrap><select name=modem>\n";
-printf "<option value='' %s>%s %s\n",
+printf "<option value='' %s>%s %s</option>\n",
 	$modem ? "" : "selected",
 	$defs ? $text{'edit_none'} : $text{'edit_def'},
 	$dm ? "($dm)" : "";
-printf "<option value=/dev/modem %s>%s (%s)\n",
+printf "<option value=/dev/modem %s>%s (%s)</option>\n",
 	$modem eq "/dev/modem" ? "selected" : "", $text{'edit_modem'},
 	"/dev/modem";
 foreach $t (sort { "$a$b" =~ /^\/dev\/ttyS(\d+)\/dev\/ttyS(\d+)$/ ? $1 <=> $2 : 0 } glob("/dev/ttyS[0-9]*")) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$t, $modem eq $t ? "selected" : "",
 		$t =~ /ttyS(\d+)$/ ? &text('edit_port', $1+1) : $t;
 	$found++ if ($modem eq $t);
 	}
-printf "<option value=* %s>%s\n",
+printf "<option value=* %s>%s</option>\n",
 	$found ? "" : "selected", $text{'edit_otherm'};
 print "</select>\n";
 printf "<input name=otherm size=15 value='%s'></td>\n",

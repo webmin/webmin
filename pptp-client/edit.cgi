@@ -147,7 +147,7 @@ foreach $r (@kroutes, [ 0, undef, undef, 'GW' ]) {
 	print "<tr $cb>\n";
 	print "<td><select name=type_$i>\n";
 	foreach $o (0 .. 2) {
-		printf "<option value=%d %s>%s\n",
+		printf "<option value=%d %s>%s</option>\n",
 			$o, $r->[0] == $o ? "selected" : "",
 			$text{'edit_type'.$o};
 		}

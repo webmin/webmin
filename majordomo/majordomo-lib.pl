@@ -328,7 +328,7 @@ local $v = &find_value($_[0], $_[2]);
 local $rv = "<td><b>$_[1]</b></td> <td nowrap><select name=$_[0]>";
 for($i=3; $i<@_; $i+=2) {
 	local $ch = $v eq $_[$i] ? "selected" : "";
-	$rv .= "<option value='$_[$i]' $ch> ".$_[$i+1];
+	$rv .= "<option value='$_[$i]' $ch>".$_[$i+1]."</option>";
 	}
 $rv .= "</select></td>\n";
 return $rv;

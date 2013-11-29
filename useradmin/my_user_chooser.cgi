@@ -52,15 +52,24 @@ if ($in{'multi'}) {
 		print "}\n";
 		print "</script>\n";
 		print "<font size=+1>$text{'users_all'}</font>\n";
+		print "<div id='filter_box' style='display:none;margin:0px;padding:0px;width:100%;clear:both;'>";
+		print &ui_textbox("filter",$text{'ui_filterbox'}, 50, 0, undef,"style='width:100%;' onkeyup=\"filter_match(this.value);\" onfocus=\"if (this.value == '".$text{'ui_filterbox'}."') {this.value = '';}\" onblur=\"if (this.value == '') {this.value = '".$text{'ui_filterbox'}."';}\"");
+		print "<hr style='width:100%;'></div>";
 		print "<table width=100%>\n";
+        $cnt = 0;
 		foreach $u (&get_users_list()) {
-			if ($in{'user'} eq $u->[0]) { print "<tr $cb>\n"; }
-			else { print "<tr>\n"; }
+			if ($in{'user'} eq $u->[0]) { print "<tr class='filter_match' $cb>\n"; }
+			else { print "<tr class='filter_match'>\n"; }
 			$u->[6] =~ s/'/&#39;/g;
 			print "<td width=20%><a href=\"\" onClick='return adduser(\"$u->[0]\", \"$u->[6]\")'>$u->[0]</a></td>\n";
 			print "<td>$u->[6]</td> </tr>\n";
+            $cnt++;
 			}
 		print "</table>\n";
+        if ( $cnt >= 10 ) {
+            print "<script type='text/javascript' src='$gconfig{'webprefix'}/unauthenticated/filter_match.js?28112013'></script>";
+            print "<script type='text/javascript'>filter_match_box();</script>";
+        }
 		&popup_footer();
 		}
 	elsif ($in{'frame'} == 2) {
@@ -131,14 +140,23 @@ else {
 	print "return false;\n";
 	print "}\n";
 	print "</script>\n";
+    print "<div id='filter_box' style='display:none;margin:0px;padding:0px;width:100%;clear:both;'>";
+    print &ui_textbox("filter",$text{'ui_filterbox'}, 50, 0, undef,"style='width:100%;' onkeyup=\"filter_match(this.value);\" onfocus=\"if (this.value == '".$text{'ui_filterbox'}."') {this.value = '';}\" onblur=\"if (this.value == '') {this.value = '".$text{'ui_filterbox'}."';}\"");
+    print "<hr style='width:100%;'></div>";
 	print "<table width=100%>\n";
+    my $cnt = 0;
 	foreach $u (&get_users_list()) {
-		if ($in{'user'} eq $u->[0]) { print "<tr $cb>\n"; }
-		else { print "<tr>\n"; }
+		if ($in{'user'} eq $u->[0]) { print "<tr class='filter_match' $cb>\n"; }
+		else { print "<tr class='filter_match'>\n"; }
 		print "<td width=20%><a href=\"\" onClick='return select(\"$u->[0]\")'>$u->[0]</a></td>\n";
 		print "<td>$u->[6]</td> </tr>\n";
+        $cnt++;
 		}
 	print "</table>\n";
+    if ( $cnt >= 10 ) {
+        print "<script type='text/javascript' src='$gconfig{'webprefix'}/unauthenticated/filter_match.js?28112013'></script>";
+        print "<script type='text/javascript'>filter_match_box();</script>";
+    }
 	&popup_footer();
 	}
 

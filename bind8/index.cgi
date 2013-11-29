@@ -88,19 +88,21 @@ if (@zones && $access{'zones'} eq '*' && !$access{'ro'}) {
 	my @missing;
 	foreach my $z (@zones) {
 		if ($z->{'type'} eq 'master' && $z->{'file'} &&
-		    !-r $z->{'file'}) {
-			push(@missing, $z->{'file'});
+		    !-r &make_chroot($z->{'file'})) {
+			push(@missing, $z);
 			}
 		}
 	if (scalar(@missing) >= scalar(@zones)/2) {
 		if ($chroot && $chroot ne '/') {
-			print "<b>",&text('index_ewrongchroot',
+			print "<p><b>",&text('index_ewrongchroot',
 			    scalar(@missing), "<tt>$chroot</tt>"),"</b><p>\n";
 			}
 		else {
-			print "<b>",&text('index_emissingchroot',
+			print "<p><b>",&text('index_emissingchroot',
 					  scalar(@missing)),"</b><p>\n";
 			}
+		print "<b>",&text('index_checkconfig',
+				  "../config.cgi?$module_name"),"</b><p>\n";
 		}
 	}
 

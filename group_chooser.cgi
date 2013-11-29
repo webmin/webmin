@@ -33,7 +33,13 @@ if ($in{'multi'}) {
 		for($i=0; $i<$len; $i++) {
 			print "sel[$i] = \"".
 			      &quote_escape($ul[$i], '"')."\";\n";
-			@ginfo = getgrnam($ul[$i]);
+
+			# samba valid system group can start with @ + &
+			$gn = $ul[$i];
+			$gn =~ s/^(@|\+|&)+//g;
+			@ginfo = getgrnam($gn);
+
+			#@ginfo = getgrnam($ul[$i]);
 			if (@ginfo) {
 				@mems = &unique( split(/ /, $ginfo[3]),
 						 @{$members{$ginfo[2]}} );
@@ -66,14 +72,23 @@ if ($in{'multi'}) {
 		print "}\n";
 		print "</script>\n";
 		print "<font size=+1>$text{'groups_all'}</font>\n";
+		print "<div id='filter_box' style='display:none;margin:0px;padding:0px;width:100%;clear:both;'>";
+		print &ui_textbox("filter",$text{'ui_filterbox'}, 50, 0, undef,"style='width:100%;' onkeyup=\"filter_match(this.value);\" onfocus=\"if (this.value == '".$text{'ui_filterbox'}."') {this.value = '';}\" onblur=\"if (this.value == '') {this.value = '".$text{'ui_filterbox'}."';}\"");
+		print "<hr style='width:100%;'></div>";
 		print "<table width=100%>\n";
+		my $cnt = 0;
 		foreach $u (&get_groups_list()) {
-			if ($in{'group'} eq $u->[0]) { print "<tr $cb>\n"; }
-			else { print "<tr>\n"; }
+			if ($in{'group'} eq $u->[0]) { print "<tr class='filter_match' $cb>\n"; }
+			else { print "<tr class='filter_match'>\n"; }
 			print "<td width=20%><a href=\"\" onClick='return addgroup(\"$u->[0]\", \"$u->[3]\")'>$u->[0]</a></td>\n";
 			print "<td>$u->[3]</td> </tr>\n";
+			$cnt++;
 			}
 		print "</table>\n";
+        if ( $cnt >= 10 ) {
+            print "<script type='text/javascript' src='$gconfig{'webprefix'}/unauthenticated/filter_match.js?28112013'></script>";
+            print "<script type='text/javascript'>filter_match_box();</script>";
+        }
 		&popup_footer();
 		}
 	elsif ($in{'frame'} == 2) {
@@ -145,14 +160,23 @@ else {
 	print "return false;\n";
 	print "}\n";
 	print "</script>\n";
+	print "<div id='filter_box' style='display:none;margin:0px;padding:0px;width:100%;clear:both;>'";
+	print &ui_textbox("filter",$text{'ui_filterbox'}, 50, 0, undef,"style='width:100%;' onkeyup=\"filter_match(this.value);\" onfocus=\"if (this.value == '".$text{'ui_filterbox'}."') {this.value = '';}\" onblur=\"if (this.value == '') {this.value = '".$text{'ui_filterbox'}."';}\"");
+	print "<hr style='width:100%;'></div>";
 	print "<table width=100%>\n";
+	my $cnt = 0;
 	foreach $u (&get_groups_list()) {
-		if ($in{'group'} eq $u->[0]) { print "<tr $cb>\n"; }
-		else { print "<tr>\n"; }
+		if ($in{'group'} eq $u->[0]) { print "<tr class='filter_match' $cb>\n"; }
+		else { print "<tr class='filter_match'>\n"; }
 		print "<td width=20%><a href=\"\" onClick='return select(\"$u->[0]\")'>$u->[0]</a></td>\n";
 		print "<td>$u->[3]</td> </tr>\n";
+		$cnt++;
 		}
 	print "</table>\n";
+    if ( $cnt >= 10 ) {
+        print "<script type='text/javascript' src='$gconfig{'webprefix'}/unauthenticated/filter_match.js?28112013'></script>";
+        print "<script type='text/javascript'>filter_match_box();</script>";
+    }
 	&popup_footer();
 	}
 

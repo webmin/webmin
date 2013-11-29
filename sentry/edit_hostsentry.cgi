@@ -56,15 +56,15 @@ print "<td colspan=3 nowrap>\n";
 for($i=0; $i<@allmods || $i<@mods; $i++) {
 	print $i+1,". ";
 	print "<select name=mod_$i>\n";
-	printf "<option value='' %s>%s\n",
+	printf "<option value='' %s>%s</option>\n",
 		$mods[$i] ? "" : "selected", "&nbsp;";
 	foreach $a (@allmods) {
 		local $t = $text{'mod_'.$a};
-		printf "<option value=%s %s>%s\n",
+		printf "<option value=%s %s>%s</option>\n",
 			$a, $mods[$i] eq $a ? "selected" : "",
 			$t ? $t : $a;
 		}
-	print "<option selected>$mods[$i]\n"
+	print "<option selected>$mods[$i]</option>\n"
 		if ($mods[$i] && &indexof($mods[$i], @allmods) < 0);
 	print "</select>\n";
 	print "<br>\n" if ($i%2);

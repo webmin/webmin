@@ -18,7 +18,7 @@ if (@listdb) {
 	print "<select name=dbs size=5 multiple width=100>\n";
 		map { $dcan{$_}++ } split(/\s+/, $_[0]->{'dbs'});
 	foreach $d (@listdb) {
-		printf "<option %s>%s\n",
+		printf "<option %s>%s</option>\n",
 			$dcan{$d} ? 'selected' : '', $d;
 		}
 	print "</select>";

@@ -300,7 +300,7 @@ foreach my $arr ("mins", "hours", "days", "months", "weekdays") {
 		foreach my $v (@sec) {
 			if ($v =~ /^(.*)=(.*)$/) { $disp = $1; $code = $2; }
 			else { $disp = $code = $v; }
-			$rv .= sprintf "<option value=\"$code\" %s>$disp\n",
+			$rv .= sprintf "<option value=\"$code\" %s>$disp</option>\n",
 				$inuse{$code} ? "selected" : "";
 			}
 		$rv .= "</select></td>\n";
