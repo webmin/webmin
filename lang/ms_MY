@@ -270,6 +270,7 @@ ui_checkmandatory=Tiada apa yang dipilih
 ui_edate=Tarikh tidak sah
 ui_errors=Pelbagai ralat telah dikesan :
 ui_etime=Masa tidak sah
+ui_filterbox=Taip untuk tapis..
 ui_mandatory=Medan ini adalah wajib
 ui_nothing=Tiada yang dimasukkan
 ui_paging=Memaparkan baris $1 ke $2 $3
