@@ -222,7 +222,7 @@ local $out;
 if ($_[1]->{'depstoo'}) {
 	# Use apt-get
 	local $flag = $_[1]->{'purge'} ? "--purge" : "";
-	$out = &backquote_logged("apt-get autoremove $flag $qm 2>&1 </dev/null");
+	$out = &backquote_logged("apt-get -y autoremove $flag $qm 2>&1 </dev/null");
 	}
 else {
 	# Use dpkg command
