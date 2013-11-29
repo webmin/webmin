@@ -21,31 +21,26 @@ foreach $v (@virts) {
 	local @vn = &virt_acl_name($v);
 	local ($can) = grep { $vcan{$_} } @vn;
 	local $vn = $can || $vn[0];
-	printf "<option value=\"%s\" %s>%s\n",
+	printf "<option value=\"%s\" %s>%s</option>\n",
 		$vn, $can ? "selected" : "",
-		$vn eq "__default__" ? $text{'acl_defserv'} : $vn,
-		"</option>";
+		$vn eq "__default__" ? $text{'acl_defserv'} : $vn;
 	delete($vcan{$can}) if ($can);
 	}
 foreach $vn (keys %vcan) {
 	next if ($vn eq "*");
-	printf "<option value=\"%s\" %s>%s\n",
+	printf "<option value=\"%s\" %s>%s</option>\n",
 		$vn, "selected",
-		$vn eq "__default__" ? $text{'acl_defserv'} : $vn,
-		"</option>";
+		$vn eq "__default__" ? $text{'acl_defserv'} : $vn;
 	}
 print "</select></td>\n";
 
 print "<td><b>$text{'acl_global'}</b></td> <td><select name=global>\n";
-printf "<option value=1 %s> $text{'yes'}\n",
-	$_[0]->{'global'} == 1 ? "selected" : "",
-	"</option>";
-printf "<option value=2 %s> $text{'acl_htaccess'}\n",
-	$_[0]->{'global'} == 2 ? "selected" : "",
-	"</option>";
-printf "<option value=0 %s> $text{'no'}</select></td> </tr>\n",
-	$_[0]->{'global'} == 0 ? "selected" : "",
-	"</option>";
+printf "<option value=1 %s>$text{'yes'}</option>\n",
+	$_[0]->{'global'} == 1 ? "selected" : "";
+printf "<option value=2 %s>$text{'acl_htaccess'}</option>\n",
+	$_[0]->{'global'} == 2 ? "selected" : "";
+printf "<option value=0 %s>$text{'no'}</option></select></td> </tr>\n",
+	$_[0]->{'global'} == 0 ? "selected" : "";
 
 print "<tr> <td><b>$text{'acl_create'}</b></td> <td>\n";
 printf "<input type=radio name=create value=1 %s> $text{'yes'}\n",
@@ -106,9 +101,8 @@ printf "<input type=radio name=types_def value=0 %s> $text{'acl_sel'}<br>\n",
 map { $types{$_}++ } split(/\s+/, $_[0]->{'types'});
 print "<select name=types size=5 multiple>\n";
 for($i=0; $text{"type_$i"}; $i++) {
-	printf "<option value=\"%d\" %s>%s\n",
-		$i, $types{$i} ? "selected" : "", $text{"type_$i"},
-		"</option>";
+	printf "<option value=\"%d\" %s>%s</option>\n",
+		$i, $types{$i} ? "selected" : "", $text{"type_$i"};
 	}
 print "</select></td> </tr>\n";
 
