@@ -171,7 +171,7 @@ EOF
 	opendir(DIR, $in{'chroot'}.$dir) ||
 		&popup_error(&text('chooser_eopen', "$!"));
 	print &ui_columns_start(undef, 100);
-    my $cnt = 0;
+    	my $cnt = 0;
 	foreach $f (sort { $a cmp $b } readdir(DIR)) {
 		$path = "$in{'chroot'}$dir$f";
 		if ($f eq ".") { next; }
@@ -201,7 +201,7 @@ EOF
 			$tm[3], $text{'smonth_'.($tm[4]+1)}, $tm[5]+1900);
 		push(@cols, sprintf "<tt>%.2d:%.2d</tt>", $tm[2], $tm[1]);
 		print &ui_columns_row(\@cols);
-        $cnt++;
+        	$cnt++;
 		}
 	closedir(DIR);
 	print &ui_columns_end();
