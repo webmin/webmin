@@ -25,9 +25,9 @@ $url = $gconfig{'webprefix'}."/$module_name/link.cgi/$openurl";
 $| = 1;
 $meth = $ENV{'REQUEST_METHOD'};
 if ($config{'url'}) {
-	$openurl =~ /^\Q$config{'url'}\E/ ||
-		&error(&text('link_ebadurl', $openurl));
-    $openurl = &fix_end_url($openurl) || &error($text{'seturl_eurl'});
+	#$openurl =~ /^\Q$config{'url'}\E/ ||
+	#	&error(&text('link_ebadurl', $openurl));
+    $openurl = &fix_end_url($config{'url'}) || &error($text{'seturl_eurl'});
 	}
 
 if ($config{'loginmode'} == 2) {
