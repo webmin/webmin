@@ -91,15 +91,13 @@ print ui_form_start("save_newmod.cgi", "post");
 print ui_table_start($text{'newmod_header'});
 
 $newmod = &get_newmodule_users();
-printf "<input type=radio name=newmod_def value=1 %s> %s<br>\n",
-	$newmod ? "" : "checked", $text{'newmod_def'};
-printf "<input type=radio name=newmod_def value=0 %s> %s\n",
-	$newmod ? "checked" : "", $text{'newmod_users'};
-printf "<input name=newmod size=30 value='%s'><br>\n",
-	join(" ", @$newmod);
+print &ui_table_row(undef,
+	&ui_opt_textbox("newmod", $newmod ? join(" ", @$newmod) : "", 60,
+			$text{'newmod_def'}."<br>\n",
+			$text{'newmod_users'}), 2);
 
 print ui_table_end();
-print "<input type=submit value='$text{'save'}'></form>\n";
+print ui_form_end([ [ undef, $text{'save'} ] ]);
 print ui_tabs_end_tab();
 
 # Display module update form
