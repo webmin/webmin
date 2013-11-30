@@ -517,6 +517,8 @@ update_enosig=Could not download signature file for updates : $1
 update_ebadsig=Updates signature check failed : $1
 update_enomodsig=Could not download signature file for module : $1
 update_ebadmodsig=Module signature check failed : $1
+update_src=Upgrade modules from
+update_opts=Module update options
 
 ca_title=Certificate Authority
 ca_old=Existing certificate

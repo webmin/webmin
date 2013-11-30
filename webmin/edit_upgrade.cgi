@@ -105,35 +105,34 @@ print ui_tabs_start_tab("mode", "update");
 print "$text{'update_desc1'}<p>\n";
 print ui_form_start("update.cgi", "post");
 print ui_table_start($text{'update_header1'});
-print "<tr $cb> <td nowrap>\n";
 
-printf "<input type=radio name=source value=0 %s> %s<br>\n",
-	$config{'upsource'} ? "" : "checked", $text{'update_webmin'};
-printf "<input type=radio name=source value=1 %s> %s<br>\n",
-	$config{'upsource'} ? "checked" : "", $text{'update_other'};
-print "&nbsp;" x 4;
-print &ui_textarea("other", join("\n", split(/\t+/, $config{'upsource'})),
-		   2, 50),"<br>\n";
+print &ui_table_row($text{'update_src'},
+	&ui_radio("source", $config{'upsource'} ? 1 : 0,
+		  [ [ 0, $text{'update_webmin'} ],
+		    [ 1, $text{'update_other'} ] ])."<br>\n".
+	&ui_textarea("other", join("\n", split(/\t+/, $config{'upsource'})),
+		     2, 50));
 
-printf "<input type=checkbox name=show value=1 %s> %s<br>\n",
-	$config{'upshow'} ? "checked" : "", $text{'update_show'};
-printf "<input type=checkbox name=missing value=1 %s> %s<br>\n",
-	$config{'upmissing'} ? "checked" : "", $text{'update_missing'};
-printf "<input type=checkbox name=third value=1 %s> %s<br>\n",
-	$config{'upthird'} ? "checked" : "", $text{'update_third'};
-printf "<input type=checkbox name=checksig value=1 %s> %s<br>\n",
-        $config{'upchecksig'} ? 'checked' : '', $text{'update_checksig'};
+print &ui_table_row($text{'update_opts'},
+	&ui_checkbox("show", 1, $text{'update_show'},
+		     $config{'upshow'}).
+	"<br>\n".
+	&ui_checkbox("missing", 1, $text{'update_missing'},
+	             $config{'upmissing'}).
+	"<br>\n".
+	&ui_checkbox("third", 1, $text{'update_third'},
+		     $config{'upthird'}).
+	"<br>\n".
+	&ui_checkbox("checksig", 1, $text{'update_checksig'},
+		     $config{'upchecksig'}));
 
-print "<table>\n";
-print "<tr> <td>$text{'update_user'}</td>\n";
-print "<td>",&ui_textbox("upuser", $config{'upuser'}, 30),"</td> </tr>\n";
-print "<tr> <td>$text{'update_pass'}</td>\n";
-print "<td>",&ui_password("uppass", $config{'uppass'}, 30),"</td> </tr>\n";
-print "</table>\n";
+print &ui_table_row($text{'update_user'},
+	&ui_textbox("upuser", $config{'upuser'}, 30));
+print &ui_table_row($text{'update_pass'},
+	&ui_password("uppass", $config{'uppass'}, 30));
 
 print ui_table_end();
-print "<input type=submit value=\"$text{'update_ok'}\">\n";
-print "</form>\n";
+print ui_form_end([ [ undef, $text{'update_ok'} ] ]);
 print ui_tabs_end_tab();
 
 # Display scheduled update form
