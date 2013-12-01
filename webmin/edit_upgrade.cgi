@@ -104,11 +104,11 @@ print ui_tabs_end_tab();
 print ui_tabs_start_tab("mode", "update");
 print "$text{'update_desc1'}<p>\n";
 print ui_form_start("update.cgi", "post");
-print ui_table_start($text{'update_header1'});
+print ui_table_start($text{'update_header1'}, undef, 2);
 
 print &ui_table_row($text{'update_src'},
 	&ui_radio("source", $config{'upsource'} ? 1 : 0,
-		  [ [ 0, $text{'update_webmin'} ],
+		  [ [ 0, $text{'update_webmin'}."<br>" ],
 		    [ 1, $text{'update_other'} ] ])."<br>\n".
 	&ui_textarea("other", join("\n", split(/\t+/, $config{'upsource'})),
 		     2, 50));
@@ -139,25 +139,25 @@ print ui_tabs_end_tab();
 print ui_tabs_start_tab("mode", "sched");
 print "$text{'update_desc2'}<p>\n";
 print ui_form_start("update_sched.cgi", "post");
-print ui_table_start($text{'update_header2'});
-print "<tr $cb> <td nowrap>\n";
-printf "<input type=checkbox name=enabled value=1 %s> %s<p>\n",
-	$config{'update'} ? 'checked' : '', $text{'update_enabled'};
-	
-printf "<input type=radio name=source value=0 %s> %s<br>\n",
-	$config{'upsource'} ? "" : "checked", $text{'update_webmin'};
-printf "<input type=radio name=source value=1 %s> %s<br>\n",
-	$config{'upsource'} ? "checked" : "", $text{'update_other'};
-print "&nbsp;" x 4;
-print &ui_textarea("other", join("\n", split(/\t+/, $config{'upsource'})),
-		   2, 50),"<br>\n";
+print ui_table_start($text{'update_header2'}, undef, 2);
+
+print &ui_table_row($text{'update_enabled'},
+	&ui_yesno_radio("enabled", $config{'update'}));
+
+print &ui_table_row($text{'update_src'},
+	&ui_radio("source", $config{'upsource'} ? 1 : 0,
+		  [ [ 0, $text{'update_webmin'}."<br>" ],
+		    [ 1, $text{'update_other'} ] ])."<br>\n".
+	&ui_textarea("other", join("\n", split(/\t+/, $config{'upsource'})),
+		     2, 50));
 
 if ($config{'cron_mode'} == 0) {
 	$upmins = sprintf "%2.2d", $config{'upmins'};
-	print &text('update_sched2',
-		    "<input name=hour size=2 value='$config{'uphour'}'>",
-		    "<input name=mins size=2 value='$upmins'>",
-		    "<input name=days size=3 value='$config{'updays'}'>"),"<br>\n";
+	print &ui_table_row("", 
+		&text('update_sched2',
+		      &ui_textbox("hour", $config{'uphour'}, 2),
+		      &ui_textbox("mins", $upmins, 2),
+		      &ui_textbox("days", $config{'updays'}, 3)));
 	}
 else {
 	&foreign_require("cron", "cron-lib.pl");
@@ -168,34 +168,35 @@ else {
 		   'days' => "*/$config{'updays'}",
 		   'months' => '*',
 		   'weekdays' => '*' };
-	print "<br><table border=1>\n";
-	&cron::show_times_input($job, 1);
-	print "</table><br>\n";
+	print &ui_table_row(undef,
+		&capture_function_output(\&cron::show_times_input, $job, 1), 2);
 	}
 
-printf "<input type=checkbox name=show value=1 %s> %s<br>\n",
-      $config{'upshow'} ? 'checked' : '', $text{'update_show'};
-printf "<input type=checkbox name=missing value=1 %s> %s<br>\n",
-      $config{'upmissing'} ? 'checked' : '', $text{'update_missing'};
-printf "<input type=checkbox name=third value=1 %s> %s<br>\n",
-	$config{'upthird'} ? "checked" : "", $text{'update_third'};
-printf "<input type=checkbox name=quiet value=1 %s> %s<br>\n",
-      $config{'upquiet'} ? 'checked' : '', $text{'update_quiet'};
-printf "<input type=checkbox name=checksig value=1 %s> %s<br>\n",
-      $config{'upchecksig'} ? 'checked' : '', $text{'update_checksig'};
+print &ui_table_row($text{'update_opts'},
+	&ui_checkbox("show", 1, $text{'update_show'},
+		     $config{'upshow'}).
+	"<br>\n".
+	&ui_checkbox("missing", 1, $text{'update_missing'},
+	             $config{'upmissing'}).
+	"<br>\n".
+	&ui_checkbox("third", 1, $text{'update_third'},
+		     $config{'upthird'}).
+	"<br>\n".
+	&ui_checkbox("quiet", 1, $text{'update_quiet'},
+		     $config{'upquiet'}).
+	"<br>\n".
+	&ui_checkbox("checksig", 1, $text{'update_checksig'},
+		     $config{'upchecksig'}));
 
-print "<table>\n";
-print "<tr> <td>$text{'update_email'}</td>\n";
-print "<td>",&ui_textbox("email", $config{'upemail'}, 30),"</td> </tr>\n";
-print "<tr> <td>$text{'update_user'}</td>\n";
-print "<td>",&ui_textbox("upuser", $config{'upuser'}, 30),"</td> </tr>\n";
-print "<tr> <td>$text{'update_pass'}</td>\n";
-print "<td>",&ui_password("uppass", $config{'uppass'}, 30),"</td> </tr>\n";
-print "</table>\n";
+print &ui_table_row($text{'update_email'},
+	&ui_textbox("upemail", $config{'upemail'}, 30));
+print &ui_table_row($text{'update_user'},
+	&ui_textbox("upuser", $config{'upuser'}, 30));
+print &ui_table_row($text{'update_pass'},
+	&ui_password("uppass", $config{'uppass'}, 30));
 
 print ui_table_end();
-print "<input type=submit value=\"$text{'update_apply'}\">\n";
-print "</form>\n";
+print ui_form_end([ [ undef, $text{'update_apply'} ] ]);
 print ui_tabs_end_tab();
 
 print &ui_tabs_end(1);
