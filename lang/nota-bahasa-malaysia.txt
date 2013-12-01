@@ -2,7 +2,7 @@ Terjemahan Webmin ke Bahasa Malaysia
 =====================================
 
 Terjemahan Webmin ini adalah projek dalaman yang diusahakan
-oleh Kelab Sumber Terbuka Malaysia http://www.sumbu.org
+oleh Kelab Pengguna Sumber Terbuka Malaysia http://www.sumbu.org
 
 Matlamat terjemahan adalah untuk menterjemah bahasa inggeris yang digunakan pada
 Webmin ke Bahasa Melayu Malaysia yang hampir kepada standard.
