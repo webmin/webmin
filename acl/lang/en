@@ -317,7 +317,7 @@ unix_euser='$1' is not a valid username
 unix_egroup='$1' is not a valid group name
 unix_shells=Deny Unix users whose shells are not in file
 unix_eshells=Missing or non-existant shells file
-unix_restrict=The following additional restrictions apply to Unix users selected above.
+unix_restrict2=Additional restrictions
 unix_ewhogroup=Missing group to allow in row $1
 unix_ewhouser=Missing user to allow in row $1
 unix_enone=No Unix users or groups to allow entered
@@ -326,6 +326,8 @@ unix_sudo=Allow users who can run all commands via <tt>sudo</tt> to login as <tt
 unix_pamany=Treat logins that only pass PAM validation as $1
 unix_esudo=The $1 command is not installed
 unix_esudomod=The Perl module $1 needed for <tt>sudo</tt> authentication is not installed
+unix_header=Unix user authentication settings
+unix_utable=Allowed Unix users
 
 sessions_title=Current Login Sessions
 sessions_desc=Current Webmin session logins are listed below. To cancel an existing session and force the user to login again, click on its session ID.
