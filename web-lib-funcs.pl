@@ -823,12 +823,12 @@ my $link = defined($tconfig{'cs_link'}) ? $tconfig{'cs_link'} :
 	      defined($gconfig{'cs_link'}) ? $gconfig{'cs_link'} : "0000ee";
 my $text = defined($tconfig{'cs_text'}) ? $tconfig{'cs_text'} : 
 	      defined($gconfig{'cs_text'}) ? $gconfig{'cs_text'} : "000000";
-my $bgimage = defined($tconfig{'bgimage'}) ? "background=$tconfig{'bgimage'}"
-					      : "";
-my $dir = $current_lang_info->{'dir'} ? "dir=\"$current_lang_info->{'dir'}\""
-					 : "";
-print "<body bgcolor=#$bgcolor link=#$link vlink=#$link text=#$text ",
-      "$bgimage $tconfig{'inbody'} $dir $_[8]>\n";
+my $bgimage = defined($tconfig{'bgimage'}) ? "background=$tconfig{'bgimage'}" : "";
+my $dir = $current_lang_info->{'dir'} ? "dir=\"$current_lang_info->{'dir'}\"" : "";
+my $html_body = "<body bgcolor=#$bgcolor link=#$link vlink=#$link text=#$text $bgimage $tconfig{'inbody'} $dir $_[8]>\n";
+$html_body =~ s/\s+\>/>/g;
+print $html_body;
+
 if (defined(&theme_prebody)) {
 	&theme_prebody(@_);
 	}
