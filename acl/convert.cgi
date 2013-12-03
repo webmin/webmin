@@ -65,8 +65,8 @@ else {
 
 # Convert matching users
 &ui_print_header(undef, $text{'convert_title'}, "");
-print &ui_subheading($text{'convert_msg'});
-print "<table border width=100%><tr><td bgcolor=#c0c0c0><pre>\n";
+print $text{'convert_msg'},"<p>\n";
+print &ui_columns_start([ $text{'convert_user'}, $text{'convert_action'} ]);
 map { $exists{$_->{'name'}}++ } &list_users();
 $skipped = $exists = $invalid = $converted = 0;
 foreach $u (@users) {
@@ -90,19 +90,20 @@ foreach $u (@users) {
 		}
 	if (!$ok) {
 		#print &text('convert_skip', $u->{'user'}),"\n";
+		$msg = undef;
 		$skipped++;
 		}
 	elsif ($exists{$u->{'user'}}) {
-		print "<i>",&text('convert_exists', $u->{'user'}),"</i>\n";
+		$msg = "<i>".&text('convert_exists', $u->{'user'})."</i>";
 		$exists++;
 		}
 	elsif ($u->{'user'} !~ /^[A-z0-9\-\_\.]+$/) {
-		print "<i>",&text('convert_invalid', $u->{'user'}),"</i>\n";
+		$msg = "<i>".&text('convert_invalid', $u->{'user'})."</i>";
 		$invalid++;
 		}
 	else {
 		# Actually add the user
-		print "<b>",&text('convert_added', $u->{'user'}),"</b>\n";
+		$msg = "<b>".&text('convert_added', $u->{'user'})."</b>";
 		local $user = { 'name' => $u->{'user'},
 				'pass' => $in{'sync'} ? 'x' : $u->{'pass'},
 				'modules' => $group->{'modules'} };
@@ -121,8 +122,10 @@ foreach $u (@users) {
 		$exists{$u->{'user'}}++;
 		$converted++;
 		}
+	print &ui_columns_row([ $u->{'user'}, $msg ]) if ($msg);
 	}
-endpwent() if ($gconfig{'os_type'} ne 'hpux');
+endpwent();
+print &ui_columns_end();
 
 # Finish off
 &modify_group($group->{'name'}, $group);
@@ -131,6 +134,5 @@ endpwent() if ($gconfig{'os_type'} ne 'hpux');
 # Print summary
 print &text('convert_done', $converted, $invalid, $exists, $skipped),"<p>\n";
 
-print "</pre></td></tr></table><br>\n";
 &ui_print_footer("", $text{'index_return'});
 

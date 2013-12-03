@@ -284,6 +284,8 @@ convert_exists=$1 already exists
 convert_invalid=$1 is not a valid Webmin username
 convert_added=$1 being added
 convert_msg=Converting Unix users...
+convert_user=Unix user
+convert_action=Action taken
 convert_done=$1 users converted, $2 invalid, $3 already exist, $4 excluded.
 
 sync_title=Unix User Synchronization
