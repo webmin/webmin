@@ -1753,13 +1753,16 @@ foreach $l (&find_directive_struct("LoadModule", $conf)) {
 undef(@get_config_cache);	# Cache is no longer valid
 
 # Add dynamically loaded modules
-&open_execute_command(APACHE, "$config{'apachectl_path'} -M 2>/dev/null", 1);
-while(<APACHE>) {
-	if (/(\S+)_module/ && -r "$module_root_directory/mod_${1}.pl") {
-		push(@rv, "mod_${1}");
+if ($config{'apachectl_path'}) {
+	&open_execute_command(APACHE,
+		"$config{'apachectl_path'} -M 2>/dev/null", 1);
+	while(<APACHE>) {
+		if (/(\S+)_module/ && -r "$module_root_directory/mod_${1}.pl") {
+			push(@rv, "mod_${1}");
+			}
 		}
+	close(APACHE);
 	}
-close(APACHE);
 
 return &unique(@rv);
 }
