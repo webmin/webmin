@@ -864,7 +864,7 @@ my %sel = ref($value) ? ( map { $_, 1 } @$value ) : ( $value, 1 );
 foreach $o (@$opts) {
 	$o = [ $o ] if (!ref($o));
 	$rv .= "<option value=\"".&quote_escape($o->[0])."\"".
-	       ($sel{$o->[0]} ? " selected" : "")." ".$o->[2].">".
+	       ($sel{$o->[0]} ? " selected" : "").($o->[2] ne '' ? " ".$o->[2] : "").">".
 	       ($o->[1] || $o->[0])."</option>\n";
 	$opt{$o->[0]}++;
 	}
