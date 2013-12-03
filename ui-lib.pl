@@ -1265,11 +1265,10 @@ return "<input class='ui_submit' type=submit".
        ($name ne '' ? " name=\"".&quote_escape($name)."\"" : "").
        " value=\"".&quote_escape($label)."\"".
        ($dis ? " disabled=true" : "").
-       ($tags ? " ".$tags : "").">\n";
-			
+       ($tags ? " ".$tags : "").">\n";	
 }
 
-=head2 ui_reset(label, [disabled?])
+=head2 ui_reset(label, [disabled?], [tags])
 
 Returns HTML for a form reset button, which clears all fields when clicked.
 Parameters are :
@@ -1278,14 +1277,16 @@ Parameters are :
 
 =item disabled - Set to 1 if this button should be disabled by default.
 
+=item tags - Additional HTML attributes for the <input> tag.
+
 =cut
 sub ui_reset
 {
 return &theme_ui_reset(@_) if (defined(&theme_ui_reset));
-my ($label, $dis) = @_;
-return "<input type=reset value=\"".&quote_escape($label)."\"".
-       ($dis ? " disabled=true" : "").">\n";
-			
+my ($label, $dis, $tags) = @_;
+return "<input class='ui_reset' type=reset value=\"".&quote_escape($label)."\"".
+       ($dis ? " disabled=true" : "").
+       ($tags ? " ".$tags : "").">\n";		
 }
 
 =head2 ui_button(label, [name], [disabled?], [tags])
