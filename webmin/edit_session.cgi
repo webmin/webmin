@@ -8,65 +8,70 @@ ui_print_header(undef, $text{'session_title'}, "");
 get_miniserv_config(\%miniserv);
 
 print "$text{'session_desc1'}<p>\n";
-print "$text{'session_desc2'}<p>\n";
 
 print ui_form_start("change_session.cgi", "post");
-print ui_table_start($text{'session_header'});
-print "<tr $cb> <td nowrap>\n";
+print ui_table_start($text{'session_header'}, undef, 2);
 
 # Bad password delay
-printf "<input type=radio name=passdelay value=0 %s> %s<br>\n",
-	$miniserv{'passdelay'} ? '' : 'checked', $text{'session_pdisable'};
-printf "<input type=radio name=passdelay value=1 %s> %s<br>\n",
-	$miniserv{'passdelay'} ? 'checked' : '', $text{'session_penable'};
+print &ui_table_row($text{'session_ptimeout'},
+	&ui_radio("passdelay", $miniserv{'passdelay'} ? 1 : 0,
+		  [ [ 0, $text{'session_pdisable'}."<br>\n" ],
+		    [ 1, $text{'session_penable'} ] ]));
 
 # Block bad hosts
-printf "&nbsp;&nbsp;&nbsp;<input type=checkbox name=blockhost_on value=1 %s>\n",
-	$miniserv{'blockhost_failures'} ? "checked" : "";
-print text('session_blockhost',
-    ui_textbox("blockhost_failures", $miniserv{'blockhost_failures'}, 4),
-    ui_textbox("blockhost_time", $miniserv{'blockhost_time'}, 4)),"<br>\n";
+print &ui_table_row($text{'session_pblock'},
+    &ui_checkbox("blockhost_on", 1, 
+	text('session_blockhost',
+	  ui_textbox("blockhost_failures", $miniserv{'blockhost_failures'}, 4),
+	  ui_textbox("blockhost_time", $miniserv{'blockhost_time'}, 4)),
+	$miniserv{'blockhost_failures'} ? 1 : 0));
 
 # Block bad users
-printf "&nbsp;&nbsp;&nbsp;<input type=checkbox name=blockuser_on value=1 %s>\n",
-	$miniserv{'blockuser_failures'} ? "checked" : "";
-print text('session_blockuser',
-    ui_textbox("blockuser_failures", $miniserv{'blockuser_failures'}, 4),
-    ui_textbox("blockuser_time", $miniserv{'blockuser_time'}, 4)),"<br>\n";
+print &ui_table_row("",
+    &ui_checkbox("blockuser_on", 1, 
+	text('session_blockuser',
+	  ui_textbox("blockuser_failures", $miniserv{'blockuser_failures'}, 4),
+	  ui_textbox("blockuser_time", $miniserv{'blockuser_time'}, 4)),
+	$miniserv{'blockuser_failures'} ? 1 : 0));
 
-# Lock bad users
-print "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n",
-      ui_checkbox("blocklock", 1, $text{'session_blocklock'},
-		   $miniserv{'blocklock'}),"<br>\n";
+# Lock Webmin users who failed login too many times
+print &ui_table_row("",
+    ui_checkbox("blocklock", 1, $text{'session_blocklock'},
+		$miniserv{'blocklock'}));
 
 # Log to syslog
 eval "use Sys::Syslog qw(:DEFAULT setlogsock)";
 if (!$@) {
-	print ui_checkbox('syslog', 1, $text{'session_syslog2'},
-	  $miniserv{'syslog'});
+	print &ui_table_row($text{'session_syslog3'},
+		&ui_yesno_radio("syslog", $miniserv{'syslog'}));
 	}
 else {
 	print ui_hidden('syslog', $miniserv{'syslog'});
 	}
-print "<p>\n";
 
-printf "<input type=radio name=session value=0 %s> %s<br>\n",
-	!$miniserv{'session'} ? "checked" : "", $text{'session_disable'};
-printf "<input type=radio name=session value=1 %s> %s<br>\n",
-	$miniserv{'session'} ? "checked" : "", $text{'session_enable'};
-printf "&nbsp;&nbsp;&nbsp;<input type=checkbox name=logouttime_on value=1 %s>\n",
-	$miniserv{'logouttime'} ? "checked" : "";
-print text('session_logouttime',
-	"<input name=logouttime value='$miniserv{'logouttime'}' size=10>"),"<br>\n";
-#printf "&nbsp;&nbsp;&nbsp;<input type=checkbox name=locking value=1 %s>\n",
-#	$gconfig{'locking'} ? "checked" : "";
-#print "$text{'session_locking'}<br>\n";
-print '&nbsp;&nbsp;&nbsp;', ui_checkbox('remember', 1, $text{'session_remember'},
-       !$gconfig{'noremember'}), "<br>\n";
-print '&nbsp;&nbsp;&nbsp;', ui_checkbox('realname', 1,
-       $text{'session_realname'}, $gconfig{'realname'}), "<br>\n";
-print '&nbsp;&nbsp;&nbsp;', ui_checkbox('utmp', 1, $text{'session_utmp'},
-       $miniserv{'utmp'}), "<br>\n";
+# Session authentication
+print &ui_table_row($text{'session_stype'},
+	&ui_radio("session", $miniserv{'session'} ? 1 : 0,
+		  [ [ 0, $text{'session_disable'}."<br>" ],
+		    [ 1, $text{'session_enable'} ] ]));
+
+# Session auth options
+print &ui_table_row($text{'session_sopts'},
+	&ui_checkbox("logouttime_on", 1, 
+		&text('session_logouttime',
+			&ui_textbox("logouttime", $miniserv{'logouttime'}, 10)),
+		 $miniserv{'logouttime'} ? 1 : 0).
+	"<br>\n".
+	&ui_checkbox("remember", 1, $text{'session_remember'},
+		     $gconfig{'noremember'} ? 0 : 1).
+	"<br>\n".
+	&ui_checkbox("realname", 1, $text{'session_realname'},
+		     $gconfig{'realname'} ? 1 : 0).
+	"<br>\n".
+	&ui_checkbox("utmp", 1, $text{'session_utmp'},
+		     $miniserv{'utmp'} ? 1 : 0));
+
+# XXX
 printf "&nbsp;&nbsp;&nbsp;<input type=radio name=banner_def value=1 %s> %s\n",
 	$gconfig{'loginbanner'} ? "" : "checked", $text{'session_banner1'};
 printf "<input type=radio name=banner_def value=0 %s> %s\n",
