@@ -27,7 +27,7 @@ print &ui_form_start("save.cgi", "post");
 print &ui_hidden("new", $in{'new'});
 print &ui_hidden("id", $in{'id'});
 
-my @tds = ( "width=30%" );
+my @tds = ( "width=20% nowrap" );
 print &ui_hidden_table_start($text{'edit_header'}, "width=100%", 2,
 			     "main", 1, \@tds);
 
