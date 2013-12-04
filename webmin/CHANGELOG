@@ -123,3 +123,5 @@ Actions on the Webmin Scheduled Functions page can now be clicked on to change t
 ---- Changes since 1.650 ----
 Added an SSL option to use only ciphers with perfect forward secrecy.
 Added support for two-factor authentication using Authy or Google Authenticator.
+---- Changes since 1.660 ----
+Updated the UI on several pages to use the standard Webmin library, for a more consistent look.
