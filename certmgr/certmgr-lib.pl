@@ -41,7 +41,7 @@ sub print_cert_form{
     print &ui_table_row($text{'ou'}, &ui_textbox("ou", $in{'ou'}, 40));
     print &ui_table_row($text{'l'}, &ui_textbox("l", $in{'l'}, 40));
     print &ui_table_row($text{'st'}, &ui_textbox("st", $in{'st'}, 40));
-    print &ui_table_row($text{'c'}, &ui_textbox("c", $in{'c'}, 40));
+    print &ui_table_row($text{'c'}, &ui_textbox("c", $in{'c'}, 40, undef, 2));
     print &ui_table_row($text{'emailAddress'}, &ui_textbox("emailAddress", $in{'emailAddress'}, 40));
     print &ui_table_row("&nbsp;",
         &ui_reset($text{'reset'})." ".&ui_submit($text{$form.'_generate'}) );
