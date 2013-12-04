@@ -71,62 +71,63 @@ print &ui_table_row($text{'session_sopts'},
 	&ui_checkbox("utmp", 1, $text{'session_utmp'},
 		     $miniserv{'utmp'} ? 1 : 0));
 
-# XXX
-printf "&nbsp;&nbsp;&nbsp;<input type=radio name=banner_def value=1 %s> %s\n",
-	$gconfig{'loginbanner'} ? "" : "checked", $text{'session_banner1'};
-printf "<input type=radio name=banner_def value=0 %s> %s\n",
-	$gconfig{'loginbanner'} ? "checked" : "", $text{'session_banner0'};
-printf "<input name=banner size=30 value='%s'> %s<br>\n",
-	$gconfig{'loginbanner'}, &file_chooser_button("banner");
-print "<p>\n";
+# Pre-login banner
+print &ui_table_row($text{'session_banner'},
+	&ui_radio("banner_def", $gconfig{'loginbanner'} ? 0 : 1,
+		  [ [ 1, $text{'session_banner1'}."<br>" ],
+		    [ 0, $text{'session_banner0'} ] ]).
+	&ui_filebox("banner", $gconfig{'loginbanner'}, 50));
 
-printf "<input type=radio name=localauth value=0 %s> %s<br>\n",
-	!$miniserv{'localauth'} ? "checked" : "", $text{'session_localoff'};
-printf "<input type=radio name=localauth value=1 %s> %s<br>\n",
-	$miniserv{'localauth'} ? "checked" : "", $text{'session_localon'};
-print "<p>\n";
+# Local authentication
+print &ui_table_row($text{'session_local'},
+	&ui_radio("localauth", $miniserv{'localauth'} ? 1 : 0,
+		  [ [ 0, $text{'session_localoff'}."<br>" ],
+		    [ 1, $text{'session_localon'} ] ]));
 
 # Use PAM or shadow file?
-printf "<input type=radio name=no_pam value=0 %s> %s<br>\n",
-	!$miniserv{'no_pam'} ? "checked" : "", $text{'session_pamon'};
-printf "<input type=radio name=no_pam value=1 %s> %s<br>\n",
-	$miniserv{'no_pam'} ? "checked" : "", $text{'session_pamoff'};
-print "&nbsp;&nbsp;&nbsp;",&text('session_pfile',
-	"<input name=passwd_file size=20 value='$miniserv{'passwd_file'}'>",
-	"<input name=passwd_uindex size=2 value='$miniserv{'passwd_uindex'}'>",
-	"<input name=passwd_pindex size=2 value='$miniserv{'passwd_pindex'}'>"),
-	"<br>\n";
-print "&nbsp;&nbsp;&nbsp;",
+print &ui_table_row($text{'session_pam'},
+	&ui_radio("no_pam", $miniserv{'no_pam'} ? 1 : 0,
+		  [ [ 0, $text{'session_pamon'}."<br>" ],
+		    [ 1, $text{'session_pamoff'} ] ]));
+
+print &ui_table_row($text{'session_popts'},
 	ui_checkbox("pam_conv", 1, $text{'session_pamconv'},
-		     $miniserv{'pam_conv'}),"<br>\n";
-print "&nbsp;&nbsp;&nbsp;",
+		     $miniserv{'pam_conv'}).
+	"<br>".
 	ui_checkbox("pam_end", 1, $text{'session_pamend'},
-		     $miniserv{'pam_end'}),"<p>\n";
+		     $miniserv{'pam_end'}).
+	"<br>\n".
+	&text('session_pfile',
+	      &ui_textbox("passwd_file", $miniserv{'passwd_file'}, 20),
+	      &ui_textbox("passwd_uindex", $miniserv{'passwd_uindex'}, 2),
+	      &ui_textbox("passwd_pindex", $miniserv{'passwd_pindex'}, 2)));
 
 # Unix password change
-print &ui_oneradio("cmd_def", 1, $text{'session_cmddef1'},
-		   !$gconfig{'passwd_cmd'}),"<br>\n";
-print &ui_oneradio("cmd_def", 0, $text{'session_cmddef0'},
-		   $gconfig{'passwd_cmd'})," ",
-      &ui_textbox("cmd", $gconfig{'passwd_cmd'}, 40),"<p>\n";
+print &ui_table_row($text{'session_cmddef'},
+	&ui_oneradio("cmd_def", 1, $text{'session_cmddef1'},
+		     !$gconfig{'passwd_cmd'}).
+	"<br>".
+	&ui_oneradio("cmd_def", 0, $text{'session_cmddef0'},
+		     $gconfig{'passwd_cmd'}).
+	" ".
+	&ui_textbox("cmd", $gconfig{'passwd_cmd'}, 60));
 
-print "$text{'session_pmodedesc3'}<br>\n";
-foreach $m (0 .. 2) {
-	printf "<input type=radio name=passwd_mode value=%d %s> %s\n",
-		$m, $miniserv{'passwd_mode'} == $m ? "checked" : "",
-		$text{'session_pmode'.$m};
-	print $m == 2 ? "<p>\n" : "<br>\n";
-	}
+# Password expiry policy
+print &ui_table_row($text{'session_pmodedesc3'},
+	&ui_radio("passwd_mode", $miniserv{'passwd_mode'} || 0,
+		  [ [ 0, $text{'session_pmode0'}."<br>" ],
+		    [ 1, $text{'session_pmode1'}."<br>" ],
+		    [ 2, $text{'session_pmode2'} ] ]));
 
 # Squid-style authentication program
-print "$text{'session_extauth'} ",
-      "<input name=extauth size=40 value='$miniserv{'extauth'}'><p>\n";
+print &ui_table_row($text{'session_extauth'},
+	&ui_textbox("extauth", $miniserv{'extauth'}, 60));
 
 # Password encryption format
-printf "<input type=radio name=md5pass value=0 %s> %s<br>\n",
-	!$gconfig{'md5pass'} ? "checked" : "", $text{'session_md5off'};
-printf "<input type=radio name=md5pass value=1 %s> %s<br>\n",
-	$gconfig{'md5pass'} ? "checked" : "", $text{'session_md5on'};
+print &ui_table_row($text{'session_md5'},
+	&ui_radio("md5pass", $gconfig{'md5pass'} ? 1 : 0,
+		  [ [ 0, $text{'session_md5off'}."<br>" ],
+		    [ 1, $text{'session_md5on'} ] ]));
 
 print ui_table_end();
 print ui_form_end([ [ "save", $text{'save'} ] ]);
