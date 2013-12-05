@@ -43,60 +43,49 @@ if (!$in{'cert_directory'}) { $in{'cert_directory'}=$config{'ssl_cert_dir'}; }
 if (!$in{'key_directory'}) { $in{'key_directory'}=$config{'ssl_key_dir'}; }
 if (!$in{'cert_file_filename'}) { $in{'cert_file_filename'}=$config{'cert_filename'}; }
 if (!$in{'key_file_filename'}) { $in{'key_file_filename'}=$config{'key_filename'}; }
-	
-print <<EOF;
-<hr>
-<form action="import.cgi" enctype=multipart/form-data method=post>
-<input type=hidden name="submitted" value="import">
-<table border>
-<tr $tb> <td><center><b>$text{'import_header'}</b></center></td> </tr>
-<tr $cb> <td>
- <table width=100%>
- <tr> <td width=35%><b>$text{'import_cert_file'}</b></td>
- <td width=65%><input name="cert_file_upload" type="file" size="48" value="$in{'cert_file_upload_filename'}"></td></tr>
- <tr> <td><b>$text{'import_cert_destination'}</b></td>
- <td><select name=cert_directory>
-EOF
-print "  <option value='' ";
-if (!$in{'cert_directory'}) {print "selected";}
-print ">$text{'import_choose'}</option>";
-foreach $f ( &getdirs($config{'ssl_dir'})) {
-        if ($config{'ssl_dir'}."/".$f eq $in{'cert_directory'}) {print "  <option selected>$config{'ssl_dir'}/$f</option>\n";}
-        else {print "  <option>$config{'ssl_dir'}/$f</option>\n";}
-        }
-print <<EOF;
- </select></td> </tr>
- <tr><td><b>$text{'import_cert_filename'}</b></td><td><input name="cert_file_filename" size="48" value="$in{'cert_file_filename'}"></td></tr>
- <tr> <td colspan=2 align=right>
- <input type=reset value="$text{'import_reset'}">
- <input type=submit name=import value="$text{'import_upload_cert'}"></td> </tr>
- </table>
-</td></tr>
-<tr $cb><td>
- <table width=100%>
- <tr> <td width=35%><b>$text{'import_key_file'}</b></td>
- <td width=65%><input name="key_file_upload" type="file" size="48" value="$in{'key_file_upload_filename'}"></td></tr>
- <tr> <td><b>$text{'import_key_destination'}</b></td>
- <td><select name=key_directory>
-EOF
-print "  <option value='' ";
-if (!$in{'key_directory'}) {print "selected";}
-print ">$text{'import_choose'}</option>";
-foreach $f ( &getdirs($config{'ssl_dir'})) {
-        if ($config{'ssl_dir'}."/".$f eq $in{'key_directory'}) {print "  <option selected>$config{'ssl_dir'}/$f</option>\n";}
-        else {print "  <option>$config{'ssl_dir'}/$f</option>\n";}
-        }
-print <<EOF;
- </select></td> </tr>
- <tr> <td><b>$text{'import_key_filename'}</b></td><td><input name="key_file_filename" size="48" value="$in{'key_file_filename'}"></td></tr>
- <tr> <td colspan=2 align=right>
- <input type=reset value="$text{'import_reset'}">
- <input type=submit name="import" value="$text{'import_upload_key'}"></td> </tr>
- </table>
-</td></tr></table></form>
-<hr>
-EOF
-&footer("", $text{'import_return'});
+
+print &ui_hr();
+print &ui_form_start("import.cgi", "post", undef, "enctype=multipart/form-data");
+print &ui_hidden("submitted","import");
+print &ui_table_start($text{'import_header'}, undef, 2);
+print &ui_table_row($text{'import_cert_file'}, &ui_upload("cert_file_upload", 48, undef, "value=\"$in{'cert_file_upload_filename'}\"") );
+
+my @cert_directory;
+push(@cert_directory, [ "", $text{'import_choose'}, ( !$in{'cert_directory'} ? "selected" : "" ) ]);
+foreach $f (&getdirs($config{'ssl_dir'})) {
+    $sel = ( $config{'ssl_dir'}."/".$f eq $in{'cert_directory'} ? "selected" : "" );
+    $dir = $config{'ssl_dir'}."/".$f;
+    push(@cert_directory, [ $dir, $dir, $sel ]);
+}
+print &ui_table_row($text{'import_cert_destination'},
+        &ui_select("cert_directory", undef, \@cert_directory)
+        );
+
+print &ui_table_row($text{'import_cert_filename'}, &ui_textbox("cert_file_filename", $in{'cert_file_filename'}, 48) );
+print &ui_table_row("&nbsp;",&ui_reset($text{'import_reset'})." ".&ui_submit($text{'import_upload_cert'},"import") );
+
+print &ui_table_hr();
+print &ui_table_row($text{'import_key_file'}, &ui_upload("key_file_upload", 48, undef, "value=\"$in{'key_file_upload_filename'}\"") );
+
+my @key_directory;
+push(@key_directory, [ "", $text{'import_choose'}, ( !$in{'key_directory'} ? "selected" : "" ) ]);
+foreach $f (&getdirs($config{'ssl_dir'})) {
+    $sel = ( $config{'ssl_dir'}."/".$f eq $in{'key_directory'} ? "selected" : "" );
+    $dir = $config{'ssl_dir'}."/".$f;
+    push(@key_directory, [ $dir, $dir, $sel ]);
+}
+print &ui_table_row($text{'import_key_destination'},
+        &ui_select("key_directory", undef, \@key_directory)
+        );
+
+print &ui_table_row($text{'import_key_filename'}, &ui_textbox("key_file_filename", $in{'key_file_filename'}, 48) );
+print &ui_table_row("&nbsp;",&ui_reset($text{'import_reset'})." ".&ui_submit($text{'import_upload_key'},"import") );
+
+print &ui_table_end();
+print &ui_form_end();
+print &ui_hr();
+
+&footer("", $text{'index_return'});
 
 sub getdirs {
 	my(@dirs,@subdirs,$thisdir);
@@ -121,7 +110,7 @@ sub receive {
 	print &ui_hr();
 	print "<h4>File $filename uploaded successfully</h4>\n";
 	print &ui_hr();
-	&footer("", $text{'import_return'});
+	&footer("", $text{'index_return'});
 }
 
 sub overwriteprompt{

@@ -20,7 +20,7 @@ sub print_cert_form{
     print $text{'gencert_password_notice'};
     print &ui_hr();
     print &ui_form_start("$form.cgi", "post");
-    print "<input type=hidden name=submitted value=generate>";
+    print &ui_hidden("submitted","generate");
     print &ui_table_start($text{$form.'_header'}, undef, 2);
     print &ui_table_row($text{$form.'_'.$certfield}, &ui_textbox($certfield, $in{$certfield}, 40));
     print &ui_table_row($text{'keyfile'}, &ui_textbox("keyfile", $in{'keyfile'}, 40));
@@ -55,7 +55,7 @@ sub print_sign_form {
     print $text{'signcsr_desc'};
     print &ui_hr();
     print &ui_form_start("$form.cgi", "post");
-    print "<input type=hidden name=submitted value=sign>";
+    print &ui_hidden("submitted","sign");
     print &ui_table_start($text{'signcsr_header'}, undef, 2);
     print &ui_table_row($text{'signcsr_csrfile'}, &ui_textbox("csrfile", $in{'csrfile'}, 40));
     print &ui_table_row($text{'signcsr_signfile'}, &ui_textbox("signfile", $in{'signfile'}, 40));

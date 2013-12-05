@@ -2228,11 +2228,14 @@ return $mover;
 
 Returns a horizontal row tag, typically just an <hr>
 
+=item tags - Additional HTML attributes for the <hr> tag.
+
 =cut
 sub ui_hr
 {
-return &theme_ui_hr() if (defined(&theme_ui_hr));
-return "<hr>\n";
+return &theme_ui_hr(@_) if (defined(&theme_ui_hr));
+my ($tags) = @_;
+return "<hr class='ui_hr'".($tags ? " ".$tags : "").">\n";
 }
 
 =head2 ui_nav_link(direction, url, disabled)
@@ -2277,7 +2280,7 @@ sub ui_confirmation_form
 {
 my ($cgi, $message, $hiddens, $buttons, $others, $warning) = @_;
 my $rv;
-$rv .= "<center class=ui_confirmation>\n";
+$rv .= "<center class='ui_confirmation'>\n";
 $rv .= &ui_form_start($cgi, "post");
 foreach my $h (@$hiddens) {
 	$rv .= &ui_hidden(@$h);
