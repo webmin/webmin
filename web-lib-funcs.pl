@@ -1036,8 +1036,8 @@ if ($textonly) {
 	}
 else {
 	$line =~ s/\r|\n//g;
-	return "<script language=JavaScript type=text/javascript>\n".
-	       "defaultStatus=\"".&quote_escape($line)."\";\n".
+	return "<script type='text/javascript'>\n".
+	       "window.defaultStatus=\"".&quote_escape($line)."\";\n".
 	       "</script>\n";
 	}
 }
@@ -7901,7 +7901,7 @@ is un-reliable.
 sub check_clicks_function
 {
 return <<EOF;
-<script>
+<script type='text/javascript'>
 clicks = 0;
 function check_clicks(form)
 {
