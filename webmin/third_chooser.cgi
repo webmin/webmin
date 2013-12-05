@@ -11,10 +11,10 @@ if (!ref($mods)) {
 	}
 else {
 	print "<div id='filter_box' style='display:none;margin:0px;padding:0px;width:100%;clear:both;'>";
-	print &ui_textbox("filter",$text{'ui_filterbox'}, 50, 0, undef,"style='width:100%;color:#aaa;' onkeyup=\"filter_match(this.value,'row',true);\" onfocus=\"if (this.value == '".$text{'ui_filterbox'}."') {this.value = '';}\" onblur=\"if (this.value == '') {this.value = '".$text{'ui_filterbox'}."';}\"");
+	print &ui_textbox("filter",$text{'ui_filterbox'}, 50, 0, undef,"style='width:100%;color:#aaa;' onkeyup=\"filter_match(this.value,'row',true);\" onfocus=\"if (this.value == '".$text{'ui_filterbox'}."') {this.value = '';this.style.color='#000';}\" onblur=\"if (this.value == '') {this.value = '".$text{'ui_filterbox'}."';this.style.color='#aaa';}\"");
 	print &ui_hr("style='wdith:100%;'")."</div>";
 	print "<b>$text{'third_header'}</b><br>\n";
-	print "<script>\n";
+	print "<script type='text/javascript'>\n";
 	print "function select(f)\n";
 	print "{\n";
 	print "opener.ifield.value = f;\n";
