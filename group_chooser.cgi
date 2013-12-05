@@ -25,7 +25,7 @@ if ($in{'multi'}) {
 	if ($in{'frame'} == 0) {
 		# base frame
 		&PrintHeader();
-		print "<script>\n";
+		print "<script type='text/javascript'>\n";
 		@ul = &split_quoted($in{'group'});
 		$len = @ul;
 		print "sel = new Array($len);\n";
@@ -62,7 +62,7 @@ if ($in{'multi'}) {
 	elsif ($in{'frame'} == 1) {
 		# list of all groups to choose from
 		&popup_header();
-		print "<script>\n";
+		print "<script type='text/javascript'>\n";
 		print "function addgroup(u, r)\n";
 		print "{\n";
 		print "top.sel[top.sel.length] = u\n";
@@ -71,10 +71,10 @@ if ($in{'multi'}) {
 		print "return false;\n";
 		print "}\n";
 		print "</script>\n";
-		print "<font size=+1>$text{'groups_all'}</font>\n";
 		print "<div id='filter_box' style='display:none;margin:0px;padding:0px;width:100%;clear:both;'>";
-		print &ui_textbox("filter",$text{'ui_filterbox'}, 50, 0, undef,"style='width:100%;color:#aaa;' onkeyup=\"filter_match(this.value);\" onfocus=\"if (this.value == '".$text{'ui_filterbox'}."') {this.value = '';}\" onblur=\"if (this.value == '') {this.value = '".$text{'ui_filterbox'}."';}\"");
+		print &ui_textbox("filter",$text{'ui_filterbox'}, 50, 0, undef,"style='width:100%;color:#aaa;' onkeyup=\"filter_match(this.value);\" onfocus=\"if (this.value == '".$text{'ui_filterbox'}."') {this.value = '';this.style.color='#000';}\" onblur=\"if (this.value == '') {this.value = '".$text{'ui_filterbox'}."';this.style.color='#aaa';}\"");
 		print &ui_hr("style='wdith:100%;'")."</div>";
+		print "<font size=+1>$text{'groups_all'}</font>\n";
 		print "<table width=100%>\n";
 		my $cnt = 0;
 		foreach $u (&get_groups_list()) {
@@ -97,7 +97,7 @@ if ($in{'multi'}) {
 		print "<font size=+1>$text{'groups_sel'}</font>\n";
 		print <<'EOF';
 <table width=100%>
-<script>
+<script type='text/javascript'>
 function sub(j)
 {
 sel2 = new Array(); selr2 = new Array();
@@ -125,7 +125,7 @@ EOF
 	elsif ($in{'frame'} == 3) {
 		# output OK and Cancel buttons
 		&popup_header();
-		print "<script>\n";
+		print "<script type='text/javascript'>\n";
 		print "function qjoin(l)\n";
 		print "{\n";
 		print "rv = \"\";\n";
@@ -152,7 +152,7 @@ else {
 	# selecting just one group .. display a list of all groups to
 	# choose from
 	&popup_header($text{'groups_title2'});
-	print "<script>\n";
+	print "<script type='text/javascript'>\n";
 	print "function select(f)\n";
 	print "{\n";
 	print "top.opener.ifield.value = f;\n";
@@ -161,7 +161,7 @@ else {
 	print "}\n";
 	print "</script>\n";
 	print "<div id='filter_box' style='display:none;margin:0px;padding:0px;width:100%;clear:both;'>";
-	print &ui_textbox("filter",$text{'ui_filterbox'}, 50, 0, undef,"style='width:100%;color:#aaa;' onkeyup=\"filter_match(this.value);\" onfocus=\"if (this.value == '".$text{'ui_filterbox'}."') {this.value = '';}\" onblur=\"if (this.value == '') {this.value = '".$text{'ui_filterbox'}."';}\"");
+	print &ui_textbox("filter",$text{'ui_filterbox'}, 50, 0, undef,"style='width:100%;color:#aaa;' onkeyup=\"filter_match(this.value);\" onfocus=\"if (this.value == '".$text{'ui_filterbox'}."') {this.value = '';this.style.color='#000';}\" onblur=\"if (this.value == '') {this.value = '".$text{'ui_filterbox'}."';this.style.color='#aaa';}\"");
 	print &ui_hr("style='wdith:100%;'")."</div>";;
 	print "<table width=100%>\n";
 	my $cnt = 0;
