@@ -14,80 +14,59 @@ sub my_urlize{
 }
 
 sub print_cert_form{
-	my $form=$_[0];
-	my $certfield;
-	if ($form=~/^gen(.*)$/) {$certfield=$1."file";}
-	print <<EOF;
-$text{'gencert_password_notice'}
-<hr>
-<form action=$form.cgi method=post>
-<input type=hidden name=submitted value=generate>
-<table border>
-<tr $tb> <td align=center><b>$text{$form.'_header'}</b></td> </tr>
-<tr $cb> <td><table>
-<tr><td>$text{$form.'_'.$certfield}</td><td><input name=$certfield size=40 value="$in{$certfield}"></td></tr>
-<tr><td>$text{'keyfile'}</td><td><input name=keyfile size=40 value="$in{'keyfile'}"></td></tr>
-EOF
-	if ($form eq "gencert"){
-		print "<tr><td>$text{'keycertfile'}</td><td><input name=keycertfile size=40 value=\"$in{'keycertfile'}\"></td></tr>";
-	}
-print <<EOF;
-<tr><td>$text{'password'}</td><td><input name=password size=40 type=password value="$in{'password'}"></td></tr>
-<tr><td>$text{'confirm_password'}</td><td><input name=confirm_password size=40 type=password value="$in{'confirm_password'}"></td></tr>
-<tr><td>$text{'keysize'}</td><td>
-<table width=100%><tr>
-<td width=33%><input name=keysize type=radio value=512$checked[0]> 512</td>
-<td width=33%><input name=keysize type=radio value=1024$checked[1]> 1024</td>
-<td width=33%><input name=keysize type=radio value=2048$checked[2]> 2048</td>
-</tr></table>
-</td></tr>
-EOF
-	if ($form eq "gencert"){
-		print <<EOF;
-<tr><td>$text{$form.'_days'}</td><td><input name=days size=40 value="$in{'days'}"></td></tr>
-EOF
-	}
-	print <<EOF;
-<tr><td>$text{'cn'}</td><td><input name=cn size=40 value="$in{'cn'}"></td></tr>
-<tr><td>$text{'o'}</td><td><input name=o size=40 value="$in{'o'}"></td></tr>
-<tr><td>$text{'ou'}</td><td><input name=ou size=40 value="$in{'ou'}"></td></tr>
-<tr><td>$text{'l'}</td><td><input name=l size=40 value="$in{'l'}"></td></tr>
-<tr><td>$text{'st'}</td><td><input name=st size=40 value="$in{'st'}"></td></tr>
-<tr><td>$text{'c'}</td><td><input name=c size=2 maxlength=2 value="$in{'c'}"></td></tr>
-<tr><td>$text{'emailAddress'}</td><td><input name=emailAddress size=40 value="$in{'emailAddress'}"></td></tr>
-<tr> <td colspan=2 align=right>
-<input type=reset value="$text{'reset'}">
-<input type=submit value="$text{$form.'_generate'}"></td> </tr>
-
-</table></td></tr></table>
-</form>
-EOF
+    my $form=$_[0];
+    my $certfield;
+    if ($form=~/^gen(.*)$/) {$certfield=$1."file";}
+    print $text{'gencert_password_notice'};
+    print &ui_hr();
+    print &ui_form_start("$form.cgi", "post");
+    print &ui_hidden("submitted","generate");
+    print &ui_table_start($text{$form.'_header'}, undef, 2);
+    print &ui_table_row($text{$form.'_'.$certfield}, &ui_textbox($certfield, $in{$certfield}, 40));
+    print &ui_table_row($text{'keyfile'}, &ui_textbox("keyfile", $in{'keyfile'}, 40));
+    if ($form eq "gencert") {
+        print &ui_table_row($text{'keycertfile'}, &ui_textbox("keycertfile", $in{'keycertfile'}, 40));
+    }
+    print &ui_table_row($text{'password'}, &ui_password("password", $in{'password'}, 40));
+    print &ui_table_row($text{'confirm_password'}, &ui_password("confirm_password", $in{'confirm_password'}, 40));
+    print &ui_table_row($text{'keysize'},
+                        &ui_oneradio("keysize", "512", "512", ( $checked[0] ? 1 : undef ) )." ".
+                        &ui_oneradio("keysize", "1024", "1024", ( $checked[1] ? 1 : undef ) )." ".
+                        &ui_oneradio("keysize", "2048", "2048", ( $checked[2] ? 1 : undef ) ) );
+    if ($form eq "gencert") {
+        print &ui_table_row($text{$form.'_days'}, &ui_textbox("days", $in{'days'}, 40));
+    }
+    print &ui_table_row($text{'cn'}, &ui_textbox("cn", $in{'cn'}, 40));
+    print &ui_table_row($text{'o'}, &ui_textbox("o", $in{'o'}, 40));
+    print &ui_table_row($text{'ou'}, &ui_textbox("ou", $in{'ou'}, 40));
+    print &ui_table_row($text{'l'}, &ui_textbox("l", $in{'l'}, 40));
+    print &ui_table_row($text{'st'}, &ui_textbox("st", $in{'st'}, 40));
+    print &ui_table_row($text{'c'}, &ui_textbox("c", $in{'c'}, 40, undef, 2));
+    print &ui_table_row($text{'emailAddress'}, &ui_textbox("emailAddress", $in{'emailAddress'}, 40));
+    print &ui_table_row("&nbsp;",
+        &ui_reset($text{'reset'})." ".&ui_submit($text{$form.'_generate'}) );
+    print &ui_table_end();
+    print &ui_form_end();
 }
 
 sub print_sign_form {
-	my $form=$_[0];
-	my $certfield;
-	print <<EOF;
-$text{'signcsr_desc'}
-<hr>
-<form action=$form.cgi method=post>
-<input type=hidden name=submitted value=sign>
-<table border>
-<tr $tb> <td align=center><b>$text{'signcsr_header'}</b></td> </tr>
-<tr $cb> <td><table>
-<tr><td>$text{'signcsr_csrfile'}</td><td><input name=csrfile size=40 value="$in{'csrfile'}"></td></tr>
-<tr><td>$text{'signcsr_signfile'}</td><td><input name=signfile size=40 value="$in{'signfile'}"></td></tr>
-<tr><td>$text{'signcsr_keyfile'}</td><td><input name=keyfile size=40 value="$in{'keyfile'}"></td></tr>
-<tr><td>$text{'signcsr_keycertfile'}</td><td><input name=keycertfile size=40 value="$in{'keycertfile'}"></td></tr>
-<tr><td><a onClick='window.open("/help.cgi/certmgr/signcsr_ca_pass", "help", "toolbar=no,menubar=no,scrollbars=yes,width=400,height=300,resizable=yes"); return false' href="/help.cgi/certmgr/signcsr_ca_pass"><b>$text{'signcsr_ca_passphrase'}</b></a></td><td> <input name=password size=40 type=password value="$in{'password'}"> </td></tr>
-<tr><td>$text{'signcsr_days'}</td><td><input name=days size=40 value="$in{'days'}"></td></tr>
-<tr> <td colspan=2 align=right>
-<input type=reset value="$text{'reset'}">
-<input type=submit value="$text{'signcsr_generate'}"></td> </tr>
-
-</table></td></tr></table>
-</form>
-EOF
+    my $form=$_[0];
+    my $certfield;
+    print $text{'signcsr_desc'};
+    print &ui_hr();
+    print &ui_form_start("$form.cgi", "post");
+    print &ui_hidden("submitted","sign");
+    print &ui_table_start($text{'signcsr_header'}, undef, 2);
+    print &ui_table_row($text{'signcsr_csrfile'}, &ui_textbox("csrfile", $in{'csrfile'}, 40));
+    print &ui_table_row($text{'signcsr_signfile'}, &ui_textbox("signfile", $in{'signfile'}, 40));
+    print &ui_table_row($text{'signcsr_keyfile'}, &ui_textbox("keycertfile", $in{'keycertfile'}, 40));
+    print &ui_table_row("<a onClick='window.open(\"/help.cgi/certmgr/signcsr_ca_pass\", \"help\", \"toolbar=no,menubar=no,scrollbars=yes,width=400,height=300,resizable=yes\"); return false' href=\"/help.cgi/certmgr/signcsr_ca_pass\"><b>$text{'signcsr_ca_passphrase'}</b></a>", 
+                    &ui_password("password", $in{'password'}, 40));
+    print &ui_table_row($text{'signcsr_days'}, &ui_textbox("days", $in{'days'}, 40));
+    print &ui_table_row("&nbsp;",
+        &ui_reset($text{'reset'})." ".&ui_submit($text{'signcsr_generate'}) );
+    print &ui_table_end();
+    print &ui_form_end();
 }
 
 sub print_cert_info{

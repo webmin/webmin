@@ -156,47 +156,47 @@ $rv .= "<table id='show_backup_destination' cellpadding=1 cellspacing=0>";
 
 # Local file field
 $rv .= "<tr><td>".&ui_oneradio("$_[0]_mode", 0, undef, $mode == 0)."</td>\n";
-$rv .= "<td colspan=2>$text{'backup_mode0'} ".
-	&ui_textbox("$_[0]_file", $mode == 0 ? $path : "", 40).
+$rv .= "<td>$text{'backup_mode0'}&nbsp;</td><td colspan='3'>".
+	&ui_textbox("$_[0]_file", $mode == 0 ? $path : "", 60).
 	" ".&file_chooser_button("$_[0]_file")."</td> </tr>\n";
 
 # FTP file fields
 $rv .= "<tr><td>".&ui_oneradio("$_[0]_mode", 1, undef, $mode == 1)."</td>\n";
-$rv .= "<td>$text{'backup_mode1'} ".
+$rv .= "<td>$text{'backup_mode1'}&nbsp;</td><td>".
 	&ui_textbox("$_[0]_server", $mode == 1 ? $server : undef, 20).
 	"</td>\n";
-$rv .= "<td>$text{'backup_path'} ".
-	&ui_textbox("$_[0]_path", $mode == 1 ? $path : undef, 40).
+$rv .= "<td>&nbsp;$text{'backup_path'}&nbsp;</td><td> ".
+	&ui_textbox("$_[0]_path", $mode == 1 ? $path : undef, 20).
 	"</td> </tr>\n";
 $rv .= "<tr> <td></td>\n";
-$rv .= "<td>$text{'backup_login'} ".
-	&ui_textbox("$_[0]_user", $mode == 1 ? $user : undef, 15).
+$rv .= "<td>$text{'backup_login'}&nbsp;</td><td> ".
+	&ui_textbox("$_[0]_user", $mode == 1 ? $user : undef, 20).
 	"</td>\n";
-$rv .= "<td>$text{'backup_pass'} ".
-	&ui_password("$_[0]_pass", $mode == 1 ? $pass : undef, 15).
+$rv .= "<td>&nbsp;$text{'backup_pass'}&nbsp;</td><td> ".
+	&ui_password("$_[0]_pass", $mode == 1 ? $pass : undef, 20).
 	"</td> </tr>\n";
 $rv .= "<tr> <td></td>\n";
-$rv .= "<td>$text{'backup_port'} ".
+$rv .= "<td colspan='3'>$text{'backup_port'} ".
 	&ui_opt_textbox("$_[0]_port", $mode == 1 ? $port : undef, 5,
 			$text{'default'})."</td> </tr>\n";
 
 # SCP file fields
 $rv .= "<tr><td>".&ui_oneradio("$_[0]_mode", 2, undef, $mode == 2)."</td>\n";
-$rv .= "<td>$text{'backup_mode2'} ".
+$rv .= "<td>$text{'backup_mode2'}&nbsp;</td><td>".
 	&ui_textbox("$_[0]_sserver", $mode == 2 ? $server : undef, 20).
 	"</td>\n";
-$rv .= "<td>$text{'backup_path'} ".
-	&ui_textbox("$_[0]_spath", $mode == 2 ? $path : undef, 40).
+$rv .= "<td>&nbsp;$text{'backup_path'}&nbsp;</td><td> ".
+	&ui_textbox("$_[0]_spath", $mode == 2 ? $path : undef, 20).
 	"</td> </tr>\n";
 $rv .= "<tr> <td></td>\n";
-$rv .= "<td>$text{'backup_login'} ".
-	&ui_textbox("$_[0]_suser", $mode == 2 ? $user : undef, 15).
+$rv .= "<td>$text{'backup_login'}&nbsp;</td><td> ".
+	&ui_textbox("$_[0]_suser", $mode == 2 ? $user : undef, 20).
 	"</td>\n";
-$rv .= "<td>$text{'backup_pass'} ".
-	&ui_password("$_[0]_spass", $mode == 2 ? $pass : undef, 15).
+$rv .= "<td>&nbsp;$text{'backup_pass'}&nbsp;</td><td> ".
+	&ui_password("$_[0]_spass", $mode == 2 ? $pass : undef, 20).
 	"</td> </tr>\n";
 $rv .= "<tr> <td></td>\n";
-$rv .= "<td>$text{'backup_port'} ".
+$rv .= "<td colspan='3'>$text{'backup_port'} ".
 	&ui_opt_textbox("$_[0]_sport", $mode == 2 ? $port : undef, 5,
 			$text{'default'})."</td> </tr>\n";
 
@@ -204,7 +204,7 @@ if ($_[2] == 1) {
 	# Uploaded file field
 	$rv .= "<tr><td>".&ui_oneradio("$_[0]_mode", 3, undef, $mode == 3).
 		"</td>\n";
-	$rv .= "<td colspan=2>$text{'backup_mode3'} ".
+	$rv .= "<td colspan=3>$text{'backup_mode3'} ".
 		&ui_upload("$_[0]_upload", 40).
 		"</td> </tr>\n";
 	}
@@ -212,7 +212,7 @@ elsif ($_[2] == 2) {
 	# Output to browser option
 	$rv .= "<tr><td>".&ui_oneradio("$_[0]_mode", 4, undef, $mode == 4).
 		"</td>\n";
-	$rv .= "<td colspan=2>$text{'backup_mode4'}</td> </tr>\n";
+	$rv .= "<td colspan=3>$text{'backup_mode4'}</td> </tr>\n";
 	}
 
 $rv .= "</table>\n";

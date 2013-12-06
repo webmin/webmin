@@ -136,19 +136,17 @@ if ($in{'keycertfile'}) {
 	exit;
 }
 
-
-print "<form action=view.cgi method=post>\n";
-print "<table border>\n<tr $tb> <td><center><b>$text{'view_select'}</b></center></td> </tr>\n";
-print "<tr $cb><td><table border=0><td>$text{'view_wildcard'}:</td><td><input name=wildcard value=\"$in{'wildcard'}\"></td>";
-print "<td><input type=submit name=update value=\"$text{'view_update'}\"></td></tr>\n";
-print "<tr><td colspan=2><select name=filename>\n";
-print "<option value='' selected>$text{'view_choose'}</option>\n";
-foreach $f ( grep { /^(.*\/)*$wildcard_pattern$/ && -f "$config{'ssl_dir'}/$_" } &getfiles($config{'ssl_dir'})) { 
-	print "<option value=\"$f\">$config{'ssl_dir'}/$f</option>\n"; 
+print &ui_form_start("view.cgi", "post");
+print &ui_table_start($text{'view_select'}, undef, 2);
+print &ui_table_row($text{'view_wildcard'}.": ".&ui_textbox("wildcard", $in{'wildcard'}), &ui_submit($text{'view_update'},"update") );
+my @cert_directory;
+push(@cert_directory, [ "", $text{'view_choose'}, "selected" ]);
+foreach $f ( grep { /^(.*\/)*$wildcard_pattern$/ && -f "$config{'ssl_dir'}/$_" } &getfiles($config{'ssl_dir'})) {
+    push(@cert_directory, [ $f, $config{'ssl_dir'}."/".$f ]);
 }
-print "</select>\n";
-print "</td><td><input type=submit name=view value=\"$text{'view_view'}\"></td></tr></table></td></tr></table>\n";
-print "</form>\n";
+print &ui_table_row(&ui_select("filename", undef, \@cert_directory), &ui_submit($text{'view_view'},"view") );
+print &ui_table_end();
+print &ui_form_end();
 print &ui_hr();
 &footer("", $text{'index_return'});
 
