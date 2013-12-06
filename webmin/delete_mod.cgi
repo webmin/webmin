@@ -30,7 +30,7 @@ foreach $m (@mods) {
 # ask the user if he is sure
 if (!$in{'confirm'}) {
 	&ui_print_header(undef, $text{'delete_title'}, "");
-	print "<p><form action=delete_mod.cgi>\n";
+	print &ui_form_start("delete_mod.cgi", "post");
 	foreach $m (@mods) {
 		my %minfo = &get_module_info($m);
 		if (%minfo) {
@@ -40,7 +40,7 @@ if (!$in{'confirm'}) {
 			$theme++;
 			%minfo = &get_theme_info($m);
 			}
-		print "<input type=hidden name=mod value=$m>\n";
+		print &ui_hidden("mod", $m);
 		$total += &disk_usage_kb(&module_root_directory($m))
 			if (!-l &module_root_directory($m));
 		$descs .= " , " if ($descs);
@@ -49,11 +49,13 @@ if (!$in{'confirm'}) {
 	print "<center>",&text($theme ? 'delete_rusure2' :
 			       $total ? 'delete_rusure' : 'delete_rusure3',
 			       int($total), $descs),"<p>",
-	      "<input type=submit name=confirm value='$text{'delete'}'><br>\n";
-	print "<input type=checkbox name=acls value=1> $text{'delete_acls'}\n"
-		if ($module);
+	      &ui_submit($text{'delete'}, "confirm"),"<br>\n";
+	if ($module) {
+		print &ui_checkbox("acls", 1, $text{'delete_acls'}, 0);
+		}
 	print &ui_hidden("nodeps", $in{'nodeps'}),"\n";
-	print "</form></center>\n";
+	print "</center>\n";
+	print &ui_form_end();
 	&ui_print_footer("", $text{'index_return'});
 	exit;
 	}
