@@ -14,49 +14,32 @@ if (!-r $config{'krb5_conf'}) {
 
 %conf = &get_config();
 
-print "<form action=\"save.cgi\">\n";
-print "<table border width=100%>\n";
-print "<tr $cb> <td><table width=100%>\n";
-print "<tr $tb> <td colspan=4><b>$text{'logging'}</b></td> </tr>\n";
+print &ui_form_start("save.cgi", "post");
+print &ui_table_start($text{'logging'}, undef, 2);
+print &ui_table_row(&hlink("<b>$text{'default_log'}</b>","default_log"),
+                    &ui_filebox("default_log", $conf{'default_log'}, 40));
+print &ui_table_row(&hlink("<b>$text{'kdc_log'}</b>","kdc_log"),
+                    &ui_filebox("kdc_log", $conf{'kdc_log'}, 40));
+print &ui_table_row(&hlink("<b>$text{'admin_log'}</b>","admin_log"),
+                    &ui_filebox("admin_log", $conf{'admin_server_log'}, 40));
+print &ui_columns_header([$text{'libdefaults'},""]);
 
-print "<tr $cb> <td>",&hlink("<b>$text{'default_log'}</b>","default_log"),"</td>\n";
-print "<td><input name=default_log size=40 value=\"$conf{'default_log'}\">",
-    &file_chooser_button("default_log", 1), "</td></tr>\n";
-
-print "<tr $cb> <td>",&hlink("<b>$text{'kdc_log'}</b>","kdc_log"),"</td>\n";
-print "<td><input name=kdc_log size=40 value=\"$conf{'kdc_log'}\">",
-    &file_chooser_button("kdc_log", 1), "</td></tr>\n";
-
-print "<tr $cb> <td>",&hlink("<b>$text{'admin_log'}</b>","admin_log"),"</td>\n";
-print "<td><input name=admin_log size=40 value=\"$conf{'admin_server_log'}\">",
-    &file_chooser_button("admin_log", 1), "</td></tr>\n";
-
-print "<tr $tb> <td colspan=3><b>$text{'libdefaults'}</b></td> </tr>\n";
-
-print "<tr> <td>",&hlink("<b>$text{'default_realm'}</b>","default_realm"),"</td>\n";
-print "<td><input name=default_realm size=40 value=\"$conf{'realm'}\"> </td></tr>\n";
-
-print "<tr> <td>",&hlink("<b>$text{'domain'}</b>","domain"),"</td>\n";
-print "<td><input name=domain size=40 value=\"$conf{'domain'}\"> </td></tr>\n";
-
-print "<tr> <td>",&hlink("<b>$text{'default_domain'}</b>","default_domain"),"</td>\n";
-print "<td><input name=default_domain size=40 value=\"$conf{'default_domain'}\"> </td></tr>\n";
-
-print "<tr> <td>",&hlink("<b>$text{'dns_kdc'}</b>","dns_kdc"),"</td>\n";
-printf "<td><input type=radio name=dns_kdc value=1 %s> $text{'yes'}\n",
-    ($conf{'dns_lookup_kdc'} eq "false") ? "" : "checked";
-printf "<input type=radio name=dns_kdc value=0 %s> $text{'no'}</td></tr>\n",
-    ($conf{'dns_lookup_kdc'} eq "false") ? "checked" : "";
-
-print "<tr> <td>",&hlink("<b>$text{'default_kdc'}</b>","default_kdc"),"</td>\n";
-print "<td><input name=default_kdc size=40 value=\"$conf{'kdc'}\"> : ";
-print "<input name=default_kdc_port size=5 value=\"$conf{'kdc_port'}\"> </td></tr>\n";
-
-print "<tr> <td>",&hlink("<b>$text{'default_admin'}</b>","default_admin"),"</td>\n";
-print "<td><input name=default_admin size=40 value=\"$conf{'admin_server'}\"> : ";
-print "<input name=default_admin_port size=5 value=\"$conf{'admin_port'}\"> </td></tr>\n";
-
-print "</table></td></tr></table>\n";
-print "<input type=submit value=\"$text{'save'}\"></form>\n";
+print &ui_table_row(&hlink("<b>$text{'default_realm'}</b>","default_realm"),
+                    &ui_textbox("default_realm", $conf{'realm'}, 40));
+print &ui_table_row(&hlink("<b>$text{'domain'}</b>","domain"),
+                    &ui_textbox("domain", $conf{'domain'}, 40));
+print &ui_table_row(&hlink("<b>$text{'default_domain'}</b>","default_domain"),
+                    &ui_textbox("default_domain", $conf{'default_domain'}, 40));
+print &ui_table_row(&hlink("<b>$text{'dns_kdc'}</b>","dns_kdc"),
+                    &ui_oneradio("dns_kdc","1", $text{'yes'}, ( $conf{'dns_lookup_kdc'} eq "false" ? 0 : 1) )."&nbsp;".
+                    &ui_oneradio("dns_kdc","0", $text{'no'}, ( $conf{'dns_lookup_kdc'} eq "false" ? 1 : 0) ) );
+print &ui_table_row(&hlink("<b>$text{'default_kdc'}</b>","default_kdc"),
+                    &ui_textbox("default_kdc", $conf{'kdc'}, 40).":".&ui_textbox("kdc", $conf{'kdc_port'}, 5));
+print &ui_table_row(&hlink("<b>$text{'default_admin'}</b>","default_admin"),
+                    &ui_textbox("default_admin", $conf{'admin_server'}, 40).":".&ui_textbox("default_admin_port", $conf{'admin_port'}, 5));
+print ui_table_end();
+print "<br>";
+print &ui_submit($text{'save'});
+print &ui_form_end();
 
 &ui_print_footer("/", $text{'index'});
