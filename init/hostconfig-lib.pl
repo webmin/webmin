@@ -167,7 +167,7 @@ else {
 	push(@cols, $ahref);
 	}
 if ( $setting eq "-NO-" ) {
-	push(@cols, "<FONT color=#ff0000>$setting</font>");
+	push(@cols, "<font color=#ff0000>$setting</font>");
 	}
 elsif ( $setting ne "" ) {
 	push(@cols, $setting);
