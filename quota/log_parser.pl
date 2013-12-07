@@ -19,6 +19,9 @@ elsif ($action eq 'deactivate') {
 		     $p->{'mode'} == 2 ? 'log_deactivate_g' :
 		     'log_deactivate_ug', "<tt>$object</tt>");
 	}
+elsif ($action eq 'support') {
+	return &text('log_support', "<tt>$object</tt>");
+	}
 elsif ($action eq 'save') {
 	return &text('log_save', "<tt>$object</tt>",
 				 "<tt>$p->{'filesys'}</tt>");

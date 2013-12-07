@@ -41,3 +41,5 @@ Converted commands in the module's API file to POD format, and added more detail
 Added a module access control option to restrict allowed groups by GID range.
 ---- Changes since 1.530 ----
 Added a Module Config option to hide quotas for deleted users and groups.
+---- Changes since 1.660 ----
+On Linux, all filesystems that can potentially support quotas are now shown, with a link to turn on quota support. This avoids the need to first turn on quotas in the Disk and Network Filesystems module.

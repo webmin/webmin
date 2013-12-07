@@ -9,15 +9,25 @@ require './quota-lib.pl';
 
 if ($in{'active'} == 0) {
 	# Turn on quotas
-	$whatfailed = $text{'activate_eon'};
-	if ($error = &quotaon($in{'dir'}, $in{'mode'})) {
-		&error($error);
+	&error_setup($text{'activate_eon'});
+	@list = &list_filesystems();
+	($fs) = grep { $_->[0] eq $in{'dir'} } @list;
+	if (!$fs->[4] && $fs->[6]) {
+		# Try to enable in /etc/fstab
+		$error = &quota_make_possible($in{'dir'}, $fs->[6]);
+		&error($error) if ($error);
+		&webmin_log("support", undef, $in{'dir'}, \%in);
 		}
-	&webmin_log("activate", undef, $in{'dir'}, \%in);
+	else {
+		# Try to turn on
+		$error = &quotaon($in{'dir'}, $in{'mode'});
+		&error($error) if ($error);
+		&webmin_log("activate", undef, $in{'dir'}, \%in);
+		}
 	}
 else {
 	# Turn off quotas
-	$whatfailed = $text{'activate_eoff'};
+	&error_setup($text{'activate_eoff'});
 	if ($error = &quotaoff($in{'dir'}, $in{'mode'})) {
 		&error($error);
 		}

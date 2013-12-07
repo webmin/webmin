@@ -65,8 +65,9 @@ return @rv;
 
 =head2 quota_can(&mnttab, &fstab)
 
-Can this filesystem type support quotas? Takes array refs from mounted and
-mountable filesystems, and returns one of the following :
+Can this filesystem support quotas, based on mount options in fstab?
+Takes array refs from mounted and mountable filesystems, and returns one of
+the following :
 
 =item 0 - No quota support (or not turned on in /etc/fstab).
 
@@ -179,6 +180,51 @@ if ($_[0]->[4] > 1) {
 		}
 	}
 return $rv;
+}
+
+=head2 quota_possible(&fstab)
+
+If quotas cannot be currently enabled, returns 3 if user and group quotas can
+be turned on with an /etc/fstab change, 2 for group only, 1 for user only, or
+0 if not possible at all.
+
+=cut
+sub quota_possible
+{
+if ($_[0]->[2] =~ /^ext/) {
+	return 3;
+	}
+return 0;
+}
+
+=head2 quota_make_possible(dir, mode)
+
+Edit /etc/fstab to make quotas possible for some dir
+
+=cut
+sub quota_make_possible
+{
+my ($dir, $mode) = @_;
+
+# Update /etc/fstab
+my @fstab = &mount::list_mounts();
+my ($idx, $f);
+for($idx=0; $idx<@fstab; $idx++) {
+	if ($fstab[$idx]->[0] eq $dir) {
+		$f = $fstab[$idx];
+		last;
+		}
+	}
+return "No /etc/fstab entry found for $dir" if (!$f);
+my @opts = grep { $_ ne "defaults" && $_ ne "-" } split(/,/, $f->[3]);
+push(@opts, "usrquota", "grpquota");
+$f->[3] = join(",", @opts);
+&mount::change_mount($idx, @$f);
+
+# Attempt to change live mount options
+&mount::os_remount_dir(@$f);
+
+return undef;
 }
 
 =head2 supports_status(dir, mode)

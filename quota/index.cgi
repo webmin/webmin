@@ -28,7 +28,8 @@ if (@list) {
 	foreach $f (@list) {
 		$qc = $f->[4];
 		$qc = $qc&1 if ($access{'gmode'} == 3);
-		next if (!$qc);
+		$qs = $f->[6];
+		next if (!$qc && !$qs);
 		next if (!&can_edit_filesys($f->[0]));
 		$qn = $f->[5];
 		if ($qc == 1) { $msg = $text{'index_quser'}; }
@@ -47,12 +48,19 @@ if (@list) {
 				}
 			}
 		elsif ($qn) {
+			# Currently active
 			$msg .= " $text{'index_active'}";
 			$chg = $text{'index_disable'};
 			}
-		else {
+		elsif ($qc) {
+			# Not active, but could be
 			$msg .= " $text{'index_inactive'}";
 			$chg = $text{'index_enable'};
+			}
+		else {
+			# Not active, and needs setup in /etc/fstab
+			$msg = $text{'index_supported'};
+			$chg = $text{'index_enable2'};
 			}
 		if ($qn%2 == 1) { $useractive++; }
 		if ($qn > 1) { $groupactive++; }

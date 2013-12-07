@@ -50,9 +50,11 @@ Each is an array ref whose values are :
 
 =item options - Mount options, like rw,usrquota,grpquota
 
-=item quotacan - Can this filesystem type support quotas?
+=item quotacan - Can this filesystem support quotas?
 
 =item quotanow - Are quotas enabled right now?
+
+=item quotapossible - Can quotas potentially be enabled?
 
 The values of quotacan and quotanow are :
 
@@ -74,7 +76,10 @@ foreach $f (&mount::list_mounts()) {
 	}
 map { $_->[4] = &quota_can($_, $fmap{$_->[0],$_->[1]}) } @mtab;
 map { $_->[5] = &quota_now($_, $fmap{$_->[0],$_->[1]}) } @mtab;
-return grep { $_->[4] } @mtab;
+if (defined(&quota_possible)) {
+	map { $_->[6] = &quota_possible($fmap{$_->[0],$_->[1]}) } @mtab;
+	}
+return grep { $_->[4] || $_->[6] } @mtab;
 }
 
 =head2 parse_options(type, options)
