@@ -250,7 +250,7 @@ while ( @_ ) {
 	elsif ($code == PAM_PROMPT_ECHO_OFF()) {
 		# Assume asking for a password (old first, then new)
 		push @res, PAM_SUCCESS();
-		if ($msg =~ /old|current/i) {
+		if ($msg =~ /old|current|login/i) {
 			push @res, $in{'old'};
 			}
 		else {
