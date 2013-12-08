@@ -2318,14 +2318,14 @@ $rv .= "</center>\n";
 return $rv;
 }
 
-=head2 ui_alert_box(msg, class)
+=head2 ui_alert_box(msg, type)
 
-Returns HTML for an alert box, with background color determined by $class.
+Returns HTML for an alert box, with background color determined by $type.
 
 $msg contains any text or HTML to be contained within the alert box, and
 can include forms.
 
-Classes of alert:
+Type of alert:
 
 =item success - green
 
@@ -2339,19 +2339,19 @@ Classes of alert:
 
 sub ui_alert_box
 {
-my ($msg, $class) = @_;
+my ($msg, $type) = @_;
 my ($rv, $color);
 
 if (defined (&theme_ui_alert_box)) {
     return &theme_ui_alert_box(@_);
     }
 
-if ($class eq "success") { $color = "DFF0D8"; }
-elsif ($class eq "info") { $color = "D9EDF7"; }
-elsif ($class eq "warn") { $color = "FCF8E3"; }
-elsif ($class eq "danger") { $color = "F2DEDE"; }
+if ($type eq "success") { $color = "DFF0D8"; }
+elsif ($type eq "info") { $color = "D9EDF7"; }
+elsif ($type eq "warn") { $color = "FCF8E3"; }
+elsif ($type eq "danger") { $color = "F2DEDE"; }
 
-$rv .= "<table width='100%'><tr bgcolor='#$color'><td align='center'><p>\n";
+$rv .= "<table class='ui_alert_box' width='100%'><tr bgcolor='#$color'><td align='center'><p>\n";
 $rv .= "$msg\n";
 $rv .= "<p></td></tr></table><p>\n";
 
