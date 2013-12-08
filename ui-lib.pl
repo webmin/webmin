@@ -23,6 +23,27 @@ Some example code :
 
 =cut
 
+####################### utility functions
+
+=head2 ui_link(href, text, [class])
+
+Returns HTML for an <a href>.
+
+=item href - Link
+
+=item text - Text to display for link
+
+=item class - Optional additional classes to include
+
+=cut
+
+sub ui_link
+{
+return &theme_ui_link(@_) if (defined(&theme_ui_link));
+my ($href, $text, $class) = @_;
+return ("<a class='ui_link $class' href='$href'>$text</a>");
+}
+
 ####################### table generation functions
 
 =head2 ui_table_start(heading, [tabletags], [cols], [&default-tds], [right-heading])
