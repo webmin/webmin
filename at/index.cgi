@@ -72,7 +72,7 @@ elsif ($access{'mode'} == 3) {
 else {
 	$usel = &ui_user_textbox("user", $in{'ext_user'});
 	}
-print &ui_table_row($text{'index_user'}, $usel);
+print &ui_table_row($text{'index_user'}, $usel, undef, ["valign=middle","valign=middle"]);
 
 # Run date
 @now = localtime(time());
@@ -81,28 +81,28 @@ print &ui_table_row($text{'index_date'},
 	&ui_select("month", $now[4],
 		   [ map { [ $_, $text{"smonth_".($_+1)} ] } ( 0 .. 11 ) ])."/".
 	&ui_textbox("year", $now[5]+1900, 4).
-	&date_chooser_button("day", "month", "year"));
+	&date_chooser_button("day", "month", "year"), undef, ["valign=middle","valign=middle"]);
 
 # Run time
 print &ui_table_row($text{'index_time'},
-	&ui_textbox("hour", undef, 2).":".&ui_textbox("min", "00", 2));
+	&ui_textbox("hour", undef, 2).":".&ui_textbox("min", "00", 2), undef, ["valign=middle","valign=middle"]);
 
 # Current date and time
 ($date, $time) = split(/\s+/, &make_date(time()));
-print &ui_table_row($text{'index_cdate'}, $date);
-print &ui_table_row($text{'index_ctime'}, $time);
+print &ui_table_row($text{'index_cdate'}, $date, undef, ["valign=middle","valign=middle"]);
+print &ui_table_row($text{'index_ctime'}, $time, undef, ["valign=middle","valign=middle"]);
 
 # Run in directory
 print &ui_table_row($text{'index_dir'},
-		    &ui_textbox("dir", $dir, 50));
+		    &ui_textbox("dir", $dir, 50), undef, ["valign=middle","valign=middle"]);
 
 # Commands to run
 print &ui_table_row($text{'index_cmd'},
-		    &ui_textarea("cmd", $in{'ext_cmd'}, 5, 50));
+		    &ui_textarea("cmd", $in{'ext_cmd'}, 5, 50), undef, ["valign=top","valign=top"]);
 
 # Send email on completion
 print &ui_table_row($text{'index_mail'},
-		    &ui_yesno_radio("mail", 0));
+		    &ui_yesno_radio("mail", 0), undef, ["valign=middle","valign=middle"]);
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'create'} ] ]);
@@ -119,7 +119,7 @@ if ($access{'allow'} && $config{'allow_file'}) {
 			@allow ? 1 : @deny ? 2 : 0,
 			[ [ 0, $text{'index_amode0'} ],
 			  [ 1, $text{'index_amode1'} ],
-			  [ 2, $text{'index_amode2'} ] ]));
+			  [ 2, $text{'index_amode2'} ] ]), undef, ["valign=middle","valign=middle"]);
 	print &ui_table_row("",
 		    &ui_textarea("ausers", @allow ? join("\n", @allow) :
 					  @deny ? join("\n", @deny) : undef,
