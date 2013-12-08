@@ -1043,7 +1043,7 @@ foreach $o (@$opts) {
 	my $id = &quote_escape($name."_".$o->[0]);
 	my $label = $o->[1] || $o->[0];
 	my $after;
-	if ($label =~ /^([\000-\377]*?)((<a\s+href|<input|<select|<textarea)[\000-\377]*)$/i) {
+	if ($label =~ /^([\000-\377]*?)((<a\s+href|<input|<select|<textarea|<span|<br|<p)[\000-\377]*)$/i) {
 		$label = $1;
 		$after = $2;
 		}
