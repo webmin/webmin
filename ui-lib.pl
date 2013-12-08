@@ -25,7 +25,7 @@ Some example code :
 
 ####################### utility functions
 
-=head2 ui_link(href, text, [class])
+=head2 ui_link(href, text, [class], [tags])
 
 Returns HTML for an <a href>.
 
@@ -35,13 +35,15 @@ Returns HTML for an <a href>.
 
 =item class - Optional additional classes to include
 
+=item tags - Additional HTML attributes for the <a> tag.
+
 =cut
 
 sub ui_link
 {
 return &theme_ui_link(@_) if (defined(&theme_ui_link));
-my ($href, $text, $class) = @_;
-return ("<a class='ui_link $class' href='$href'>$text</a>");
+my ($href, $text, $class, $tags) = @_;
+return ("<a class='ui_link".($class ? " ".$class : "")."' href='$href'".($tags ? " ".$tags : "").">$text</a>");
 }
 
 ####################### table generation functions
