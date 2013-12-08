@@ -18,6 +18,9 @@ else {
 	&kill_logged('TERM', @smbpids, @nmbpids);
 	}
 
+# Allow Samba some time to shut down
+sleep(2);
+
 if ($config{'start_cmd'}) {
 	$rv = &system_logged("$config{'start_cmd'} >/dev/null 2>&1 </dev/null");
 	if ($rv) { &error(&text('start_fail', $config{'start_cmd'})); }
