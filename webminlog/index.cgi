@@ -66,8 +66,8 @@ print &ui_table_row($text{'index_stimes'},
 			  [ 2, $text{'index_today'}."<br>" ],
 			  [ 3, $text{'index_yesterday'}."<br>" ],
 			  [ 4, $text{'index_week'}."<br>" ],
-			  [ 0, &text('index_time', &time_input('from'),
-						   &time_input('to')) ] ]));
+			  [ 0, "<span class='ui_data'>".&text('index_time', &time_input('from'),
+						   &time_input('to'))."</span>" ] ]));
 
 # Action description to match
 print &ui_table_row($text{'index_sdesc'},
