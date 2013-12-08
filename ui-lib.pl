@@ -1328,7 +1328,7 @@ sub ui_button
 {
 return &theme_ui_button(@_) if (defined(&theme_ui_button));
 my ($label, $name, $dis, $tags) = @_;
-return "<input type=button".
+return "<input class='ui_button' type=button".
        ($name ne '' ? " name=\"".&quote_escape($name)."\"" : "").
        " value=\"".&quote_escape($label)."\"".
        ($dis ? " disabled=true" : "").
