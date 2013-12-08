@@ -1120,7 +1120,7 @@ return "<input class='ui_checkbox' type=checkbox ".
        "value=\"".&quote_escape($value)."\" ".
        ($sel ? " checked" : "").($dis ? " disabled=true" : "").
        " id=\"".&quote_escape("${name}_${value}")."\"".
-       " $tags> ".
+       ($tags ? " ".$tags : "")."> ".
        ($label eq "" ? $after :
 	 "<label for=\"".&quote_escape("${name}_${value}").
 	 "\">$label</label>$after")."\n";
