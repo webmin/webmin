@@ -30,3 +30,4 @@ desc_hu.UTF-8=Perl Modulok
 desc_no=Perl moduler
 longdesc_ms_MY=Pasang modul Perl baharu pada sistem anda, dan lihat apa yang sudah dipasang.
 desc_ms_MY=Modul Perl
+longdesc_de=Installiert neue Perl-Module auf Ihrem System, und zeigt die bereits Installierten an.
