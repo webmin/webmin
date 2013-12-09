@@ -16,7 +16,7 @@ print ui_table_start($text{'session_header'}, undef, 2);
 print &ui_table_row($text{'session_ptimeout'},
 	&ui_radio("passdelay", $miniserv{'passdelay'} ? 1 : 0,
 		  [ [ 0, $text{'session_pdisable'}."<br>\n" ],
-		    [ 1, $text{'session_penable'} ] ]));
+		    [ 1, $text{'session_penable'} ] ]), undef, [ "valign=top","valign=middle" ]);
 
 # Block bad hosts
 print &ui_table_row($text{'session_pblock'},
@@ -24,7 +24,7 @@ print &ui_table_row($text{'session_pblock'},
 	text('session_blockhost',
 	  ui_textbox("blockhost_failures", $miniserv{'blockhost_failures'}, 4),
 	  ui_textbox("blockhost_time", $miniserv{'blockhost_time'}, 4)),
-	$miniserv{'blockhost_failures'} ? 1 : 0));
+	$miniserv{'blockhost_failures'} ? 1 : 0), undef, [ "valign=middle","valign=middle" ]);
 
 # Block bad users
 print &ui_table_row("",
@@ -32,18 +32,18 @@ print &ui_table_row("",
 	text('session_blockuser',
 	  ui_textbox("blockuser_failures", $miniserv{'blockuser_failures'}, 4),
 	  ui_textbox("blockuser_time", $miniserv{'blockuser_time'}, 4)),
-	$miniserv{'blockuser_failures'} ? 1 : 0));
+	$miniserv{'blockuser_failures'} ? 1 : 0), undef, [ "valign=middle","valign=middle" ]);
 
 # Lock Webmin users who failed login too many times
 print &ui_table_row("",
     ui_checkbox("blocklock", 1, $text{'session_blocklock'},
-		$miniserv{'blocklock'}));
+		$miniserv{'blocklock'}), undef, [ "valign=middle","valign=middle" ]);
 
 # Log to syslog
 eval "use Sys::Syslog qw(:DEFAULT setlogsock)";
 if (!$@) {
 	print &ui_table_row($text{'session_syslog3'},
-		&ui_yesno_radio("syslog", $miniserv{'syslog'}));
+		&ui_yesno_radio("syslog", $miniserv{'syslog'}), undef, [ "valign=middle","valign=middle" ]);
 	}
 else {
 	print ui_hidden('syslog', $miniserv{'syslog'});
@@ -53,7 +53,7 @@ else {
 print &ui_table_row($text{'session_stype'},
 	&ui_radio("session", $miniserv{'session'} ? 1 : 0,
 		  [ [ 0, $text{'session_disable'}."<br>" ],
-		    [ 1, $text{'session_enable'} ] ]));
+		    [ 1, $text{'session_enable'} ] ]), undef, [ "valign=top","valign=middle" ]);
 
 # Session auth options
 print &ui_table_row($text{'session_sopts'},
@@ -69,26 +69,26 @@ print &ui_table_row($text{'session_sopts'},
 		     $gconfig{'realname'} ? 1 : 0).
 	"<br>\n".
 	&ui_checkbox("utmp", 1, $text{'session_utmp'},
-		     $miniserv{'utmp'} ? 1 : 0));
+		     $miniserv{'utmp'} ? 1 : 0), undef, [ "valign=top","valign=middle" ]);
 
 # Pre-login banner
 print &ui_table_row($text{'session_banner'},
 	&ui_radio("banner_def", $gconfig{'loginbanner'} ? 0 : 1,
 		  [ [ 1, $text{'session_banner1'}."<br>" ],
 		    [ 0, $text{'session_banner0'} ] ]).
-	&ui_filebox("banner", $gconfig{'loginbanner'}, 50));
+	&ui_filebox("banner", $gconfig{'loginbanner'}, 50), undef, [ "valign=top","valign=middle" ]);
 
 # Local authentication
 print &ui_table_row($text{'session_local'},
 	&ui_radio("localauth", $miniserv{'localauth'} ? 1 : 0,
 		  [ [ 0, $text{'session_localoff'}."<br>" ],
-		    [ 1, $text{'session_localon'} ] ]));
+		    [ 1, $text{'session_localon'} ] ]), undef, [ "valign=top","valign=middle" ]);
 
 # Use PAM or shadow file?
 print &ui_table_row($text{'session_pam'},
 	&ui_radio("no_pam", $miniserv{'no_pam'} ? 1 : 0,
 		  [ [ 0, $text{'session_pamon'}."<br>" ],
-		    [ 1, $text{'session_pamoff'} ] ]));
+		    [ 1, $text{'session_pamoff'} ] ]), undef, [ "valign=middle","valign=middle" ]);
 
 print &ui_table_row($text{'session_popts'},
 	ui_checkbox("pam_conv", 1, $text{'session_pamconv'},
@@ -100,7 +100,7 @@ print &ui_table_row($text{'session_popts'},
 	&text('session_pfile',
 	      &ui_textbox("passwd_file", $miniserv{'passwd_file'}, 20),
 	      &ui_textbox("passwd_uindex", $miniserv{'passwd_uindex'}, 2),
-	      &ui_textbox("passwd_pindex", $miniserv{'passwd_pindex'}, 2)));
+	      &ui_textbox("passwd_pindex", $miniserv{'passwd_pindex'}, 2)), undef, [ "valign=top","valign=middle" ]);
 
 # Unix password change
 print &ui_table_row($text{'session_cmddef'},
@@ -110,24 +110,24 @@ print &ui_table_row($text{'session_cmddef'},
 	&ui_oneradio("cmd_def", 0, $text{'session_cmddef0'},
 		     $gconfig{'passwd_cmd'}).
 	" ".
-	&ui_textbox("cmd", $gconfig{'passwd_cmd'}, 60));
+	&ui_textbox("cmd", $gconfig{'passwd_cmd'}, 60), undef, [ "valign=top","valign=middle" ]);
 
 # Password expiry policy
 print &ui_table_row($text{'session_pmodedesc3'},
 	&ui_radio("passwd_mode", $miniserv{'passwd_mode'} || 0,
 		  [ [ 0, $text{'session_pmode0'}."<br>" ],
 		    [ 1, $text{'session_pmode1'}."<br>" ],
-		    [ 2, $text{'session_pmode2'} ] ]));
+		    [ 2, $text{'session_pmode2'} ] ]), undef, [ "valign=top","valign=middle" ]);
 
 # Squid-style authentication program
 print &ui_table_row($text{'session_extauth'},
-	&ui_textbox("extauth", $miniserv{'extauth'}, 60));
+	&ui_textbox("extauth", $miniserv{'extauth'}, 60), undef, [ "valign=middle","valign=middle" ]);
 
 # Password encryption format
 print &ui_table_row($text{'session_md5'},
 	&ui_radio("md5pass", $gconfig{'md5pass'} ? 1 : 0,
 		  [ [ 0, $text{'session_md5off'}."<br>" ],
-		    [ 1, $text{'session_md5on'} ] ]));
+		    [ 1, $text{'session_md5on'} ] ]), undef, [ "valign=top","valign=middle" ]);
 
 print ui_table_end();
 print ui_form_end([ [ "save", $text{'save'} ] ]);

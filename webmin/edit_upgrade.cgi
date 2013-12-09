@@ -54,7 +54,7 @@ if (!$skip_upgrade) {
 		push(@opts, [ 2, $text{'upgrade_ftp'} ]);
 		}
 	print &ui_table_row($text{'upgrade_src'},
-		&ui_radio_table("source", $opts[$#opts]->[0], \@opts));
+		&ui_radio_table("source", $opts[$#opts]->[0], \@opts), undef, [ "valign=top","valign=top" ]);
 
 	@cbs = ( );
 	if (!$mode && !$dir) {
@@ -78,7 +78,7 @@ if (!$skip_upgrade) {
 		push(@cbs, &ui_checkbox("disc", 1, $text{'upgrade_disc'}, 0));
 		}
 	print &ui_table_row($text{'upgrade_opts'},
-		join("<br>\n", @cbs));
+		join("<br>\n", @cbs), undef, [ "valign=top","valign=top" ]);
 	print ui_table_end();
 	print &ui_form_end([ [ undef, $text{'upgrade_ok'} ] ]);
 	print ui_tabs_end_tab();
@@ -94,7 +94,7 @@ $newmod = &get_newmodule_users();
 print &ui_table_row(undef,
 	&ui_opt_textbox("newmod", $newmod ? join(" ", @$newmod) : "", 60,
 			$text{'newmod_def'}."<br>\n",
-			$text{'newmod_users'}), 2);
+			$text{'newmod_users'}), 2, [ "valign=middle","valign=middle" ]);
 
 print ui_table_end();
 print ui_form_end([ [ undef, $text{'save'} ] ]);
@@ -111,7 +111,7 @@ print &ui_table_row($text{'update_src'},
 		  [ [ 0, $text{'update_webmin'}."<br>" ],
 		    [ 1, $text{'update_other'} ] ])."<br>\n".
 	&ui_textarea("other", join("\n", split(/\t+/, $config{'upsource'})),
-		     2, 50));
+		     2, 50), undef, [ "valign=top","valign=top" ]);
 
 print &ui_table_row($text{'update_opts'},
 	&ui_checkbox("show", 1, $text{'update_show'},
@@ -124,12 +124,12 @@ print &ui_table_row($text{'update_opts'},
 		     $config{'upthird'}).
 	"<br>\n".
 	&ui_checkbox("checksig", 1, $text{'update_checksig'},
-		     $config{'upchecksig'}));
+		     $config{'upchecksig'}), undef, [ "valign=top","valign=top" ]);
 
 print &ui_table_row($text{'update_user'},
-	&ui_textbox("upuser", $config{'upuser'}, 30));
+	&ui_textbox("upuser", $config{'upuser'}, 30), undef, [ "valign=middle","valign=middle" ]);
 print &ui_table_row($text{'update_pass'},
-	&ui_password("uppass", $config{'uppass'}, 30));
+	&ui_password("uppass", $config{'uppass'}, 30), undef, [ "valign=middle","valign=middle" ]);
 
 print ui_table_end();
 print ui_form_end([ [ undef, $text{'update_ok'} ] ]);
@@ -139,17 +139,17 @@ print ui_tabs_end_tab();
 print ui_tabs_start_tab("mode", "sched");
 print "$text{'update_desc2'}<p>\n";
 print ui_form_start("update_sched.cgi", "post");
-print ui_table_start($text{'update_header2'}, undef, 2);
+print ui_table_start($text{'update_header2'}, ( $config{'cron_mode'} == 0 ? undef : "width=80%" ), 2);
 
 print &ui_table_row($text{'update_enabled'},
-	&ui_yesno_radio("enabled", $config{'update'}));
+	&ui_yesno_radio("enabled", $config{'update'}), undef, [ "valign=middle","valign=middle" ]);
 
 print &ui_table_row($text{'update_src'},
 	&ui_radio("source", $config{'upsource'} ? 1 : 0,
 		  [ [ 0, $text{'update_webmin'}."<br>" ],
 		    [ 1, $text{'update_other'} ] ])."<br>\n".
 	&ui_textarea("other", join("\n", split(/\t+/, $config{'upsource'})),
-		     2, 50));
+		     2, 50), undef, [ "valign=top","valign=top" ]);
 
 if ($config{'cron_mode'} == 0) {
 	$upmins = sprintf "%2.2d", $config{'upmins'};
@@ -157,7 +157,7 @@ if ($config{'cron_mode'} == 0) {
 		&text('update_sched2',
 		      &ui_textbox("hour", $config{'uphour'}, 2),
 		      &ui_textbox("mins", $upmins, 2),
-		      &ui_textbox("days", $config{'updays'}, 3)));
+		      &ui_textbox("days", $config{'updays'}, 3)), undef, [ "valign=middle","valign=middle" ]);
 	}
 else {
 	&foreign_require("cron", "cron-lib.pl");
@@ -168,8 +168,8 @@ else {
 		   'days' => "*/$config{'updays'}",
 		   'months' => '*',
 		   'weekdays' => '*' };
-	print &ui_table_row(undef,
-		&capture_function_output(\&cron::show_times_input, $job, 1), 2);
+	print &ui_table_row(undef,"<table width=100%>".
+		&capture_function_output(\&cron::show_times_input, $job, 1)."</table>", 2, [ "valign=top" ]);
 	}
 
 print &ui_table_row($text{'update_opts'},
@@ -186,14 +186,14 @@ print &ui_table_row($text{'update_opts'},
 		     $config{'upquiet'}).
 	"<br>\n".
 	&ui_checkbox("checksig", 1, $text{'update_checksig'},
-		     $config{'upchecksig'}));
+		     $config{'upchecksig'}), undef, [ "valign=top","valign=middle" ]);
 
 print &ui_table_row($text{'update_email'},
-	&ui_textbox("upemail", $config{'upemail'}, 30));
+	&ui_textbox("upemail", $config{'upemail'}, 30), undef, [ "valign=middle","valign=middle" ]);
 print &ui_table_row($text{'update_user'},
-	&ui_textbox("upuser", $config{'upuser'}, 30));
+	&ui_textbox("upuser", $config{'upuser'}, 30), undef, [ "valign=middle","valign=middle" ]);
 print &ui_table_row($text{'update_pass'},
-	&ui_password("uppass", $config{'uppass'}, 30));
+	&ui_password("uppass", $config{'uppass'}, 30), undef, [ "valign=middle","valign=middle" ]);
 
 print ui_table_end();
 print ui_form_end([ [ undef, $text{'update_apply'} ] ]);

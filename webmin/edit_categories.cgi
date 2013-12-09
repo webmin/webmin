@@ -32,7 +32,7 @@ foreach $t (keys %text) {
 		$t || "<i>other</i>",
 		&ui_opt_textbox($t, $catnames{$t}, 30,
 			$text{'default'}, $text{'categories_custom'}),
-		]);
+		], [ "valign=middle","valign=middle" ]);
 	$realcat{$t}++;
 	}
 
@@ -43,14 +43,14 @@ foreach $c (keys %catnames) {
 		print &ui_columns_row([
 			&ui_textbox("cat_$i", $c, 10),
 			&ui_textbox("desc_$i", $catnames{$c}, 30),
-			]);
+			], [ "valign=middle","valign=middle" ]);
 		$i++;
 		}
 	}
 print &ui_columns_row([
 	&ui_textbox("cat_$i", "", 10),
 	&ui_textbox("desc_$i", "", 30),
-	]);
+	], [ "valign=middle","valign=middle" ]);
 
 print &ui_columns_end();
 print ui_form_end([ [ "ok", $text{'categories_ok'} ] ]);

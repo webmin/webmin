@@ -19,30 +19,30 @@ print &ui_table_start($text{'proxy_header'}, undef, 2, [ "width=30%" ]);
 # HTTP proxy
 print &ui_table_row($text{'proxy_http'},
 	&ui_opt_textbox("http", $gconfig{'http_proxy'}, 50,
-			$text{'proxy_none'}));
+			$text{'proxy_none'}), undef, [ "valign=middle","valign=middle" ]);
 
 # FTP proxy
 print &ui_table_row($text{'proxy_ftp'},
 	&ui_opt_textbox("ftp", $gconfig{'ftp_proxy'}, 50,
-			$text{'proxy_none'}));
+			$text{'proxy_none'}), undef, [ "valign=middle","valign=middle" ]);
 
 # No proxy for domains
 print &ui_table_row($text{'proxy_nofor'},
-	&ui_textbox("noproxy", $gconfig{'noproxy'}, 60));
+	&ui_textbox("noproxy", $gconfig{'noproxy'}, 60), undef, [ "valign=middle","valign=middle" ]);
 
 # User and password
 print &ui_table_row($text{'proxy_user'},
-	&ui_textbox("puser", $gconfig{'proxy_user'}, 20));
+	&ui_textbox("puser", $gconfig{'proxy_user'}, 20), undef, [ "valign=middle","valign=middle" ]);
 print &ui_table_row($text{'proxy_pass'},
-	&ui_password("ppass", $gconfig{'proxy_pass'}, 20));
+	&ui_password("ppass", $gconfig{'proxy_pass'}, 20), undef, [ "valign=middle","valign=middle" ]);
 
 # Bind to address for outgoing connections
 print &ui_table_row($text{'proxy_bind'},
-	&ui_opt_textbox("bind", $gconfig{'bind_proxy'}, 35, $text{'default'}));
+	&ui_opt_textbox("bind", $gconfig{'bind_proxy'}, 35, $text{'default'}), undef, [ "valign=middle","valign=middle" ]);
 
 # Fallback to direct
 print &ui_table_row($text{'proxy_fallback'},
-	&ui_yesno_radio("fallback", int($gconfig{'proxy_fallback'})));
+	&ui_yesno_radio("fallback", int($gconfig{'proxy_fallback'})), undef, [ "valign=middle","valign=middle" ]);
 
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
@@ -52,19 +52,19 @@ print &ui_tabs_end_tab();
 print &ui_tabs_start_tab("pd", "down");
 print $text{'proxy_desc2'},"<p>\n";
 print &ui_form_start("change_osdn.cgi");
-print &ui_table_start($text{'proxy_header2'}, undef, 2, [ "width=30%" ]);
+print &ui_table_start($text{'proxy_header2'}, undef, 2);
 
 # Cache size
 print &ui_table_row($text{'proxy_cache'},
 		    &ui_radio("cache_def", $gconfig{'cache_size'} ? 0 : 1,
 			      [ [ 1, $text{'proxy_cache1'} ],
 				[ 0, $text{'proxy_cache0'} ] ])."\n".
-		    &ui_bytesbox("cache", $gconfig{'cache_size'}, 8));
+		    &ui_bytesbox("cache", $gconfig{'cache_size'}, 8), undef, [ "valign=middle","valign=middle" ]);
 
 # Cache time
 print &ui_table_row($text{'proxy_daysmax'},
 		    &ui_opt_textbox("days", $gconfig{'cache_days'}, 5,
-			    $text{'proxy_daysdef'})." ".$text{'proxy_days'});
+			    $text{'proxy_daysdef'})." ".$text{'proxy_days'}, undef, [ "valign=middle","valign=middle" ]);
 
 # Modules to cache in
 $excl = ($gconfig{'cache_mods'} =~ s/^\!//);
@@ -79,7 +79,7 @@ print &ui_table_row($text{'proxy_mods'},
 			       [ map { [ $_->{'dir'}, $_->{'desc'} ] }
 				  sort { lc($a->{'desc'}) cmp lc($b->{'desc'}) }
 				   &get_all_module_infos() ],
-			       10, 1));
+			       10, 1), undef, [ "valign=top","valign=top" ]);
 
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ],

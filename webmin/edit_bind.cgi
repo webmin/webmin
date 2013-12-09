@@ -42,28 +42,28 @@ if (&foreign_check("firewall")) {
 	print &ui_hidden("oldports", join(" ", @ports));
 	$stable .= &ui_checkbox("firewall", 1, $text{'bind_firewall'}, 1);
 	}
-print &ui_table_row($text{'bind_sockets'}, $stable);
+print &ui_table_row($text{'bind_sockets'}, $stable, undef, [ "valign=top","valign=top" ]);
 
 # IPv6 enabled?
 print &ui_table_row($text{'bind_ipv6'},
-	&ui_yesno_radio("ipv6", $miniserv{'ipv6'}));
+	&ui_yesno_radio("ipv6", $miniserv{'ipv6'}), undef, [ "valign=middle","valign=middle" ]);
 
 # Show UDP listen address
 print &ui_table_row($text{'bind_listen'},
     &ui_radio("listen_def", $miniserv{"listen"} ? 0 : 1,
 	[ [ 1, $text{'bind_none'} ],
-	  [ 0, &ui_textbox("listen", $miniserv{"listen"}, 6) ] ]));
+	  [ 0, &ui_textbox("listen", $miniserv{"listen"}, 6) ] ]), undef, [ "valign=middle","valign=middle" ]);
 
 # Show web server hostname
 print &ui_table_row($text{'bind_hostname'},
     &ui_radio("hostname_def", $miniserv{"host"} ? 0 : 1,
 	[ [ 1, $text{'bind_auto'} ],
-	  [ 0, &ui_textbox("hostname", $miniserv{"host"}, 25) ] ]));
+	  [ 0, &ui_textbox("hostname", $miniserv{"host"}, 25) ] ]), undef, [ "valign=middle","valign=middle" ]);
 
 # Reverse-lookup hostname
 print &ui_table_row($text{'bind_resolv_myname'},
     &ui_radio("no_resolv_myname", int($miniserv{'no_resolv_myname'}),
-	[ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]));
+	[ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]), undef, [ "valign=middle","valign=middle" ]);
 
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
