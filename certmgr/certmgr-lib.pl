@@ -7,7 +7,6 @@ use WebminCore;
 
 @pages = ( "gencert", "gencsr", "signcsr", "import", "view", "manual" );
 $valign_middle = ["valign=middle","valign=middle"];
-$valign_top = ["valign=top","valign=top"];
 
 sub my_urlize{
 	my $temp=$_[0];
