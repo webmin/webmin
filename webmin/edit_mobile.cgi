@@ -16,20 +16,20 @@ print &ui_table_row($text{'mobile_theme'},
 	    &ui_select("theme", defined($m) ? $m : "*",
 		       [ [ "*", $text{'mobile_themeglob'} ],
 			 [ "", $text{'themes_default'} ],
-			 map { [ $_->{'dir'}, $_->{'desc'} ] } @themes ]));
+			 map { [ $_->{'dir'}, $_->{'desc'} ] } @themes ]), undef, [ "valign=middle","valign=middle" ]);
 
 # Skip session login for mobile devices
 print &ui_table_row($text{'mobile_nosession'},
-	    &ui_yesno_radio("nosession", int($miniserv{'mobile_nosession'})));
+	    &ui_yesno_radio("nosession", int($miniserv{'mobile_nosession'})), undef, [ "valign=middle","valign=middle" ]);
 
 # Extra user agents
 print &ui_table_row($text{'mobile_agents'},
 	    &ui_textarea("agents",
-		join("\n", split(/\t+/, $miniserv{'mobile_agents'})), 5, 50));
+		join("\n", split(/\t+/, $miniserv{'mobile_agents'})), 5, 50), undef, [ "valign=top","valign=top" ]);
 
 # Hostname prefixes for mobile
 print &ui_table_row($text{'mobile_prefixes'},
-	    &ui_textbox("prefixes", $miniserv{'mobile_prefixes'}, 50));
+	    &ui_textbox("prefixes", $miniserv{'mobile_prefixes'}, 50), undef, [ "valign=middle","valign=middle" ]);
 
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);

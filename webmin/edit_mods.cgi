@@ -44,7 +44,7 @@ print &ui_table_row($text{'mods_installsource'},
 		    &standard_chooser_button("standard") ],
 		  [ 4, $text{'mods_third'},
 		    &ui_textbox("third", undef, 40)." ".
-		    &third_chooser_button("third") ] ]));
+		    &third_chooser_button("third") ] ]), undef, [ "valign=top","valign=middle" ]);
 
 print &ui_table_row($text{'mods_nodeps'},
 	&ui_yesno_radio("nodeps", 0));
@@ -53,7 +53,7 @@ print &ui_table_row($text{'mods_grantto'},
 	&ui_radio("grant", 0,
 		  [ [ 0, $text{'mods_grant2'}." ".
 			 &ui_textbox("grantto", $base_remote_user, 30)."<br>" ],
-		    [ 1, $text{'mods_grant1'} ] ]));
+		    [ 1, $text{'mods_grant1'} ] ]), undef, [ "valign=top","valign=middle" ]);
 
 print &ui_table_end();
 print &ui_form_end([ [ "", $text{'mods_installok'} ] ]);
@@ -71,11 +71,11 @@ print &ui_table_row($text{'mods_cname'},
 	&ui_select("mod", undef,
 		[ map { [ $_->{'dir'}, $_->{'desc'} ] }
 		      grep { $_->{'dir'} ne 'webmin' && !$_->{'clone'} }
-			   @mlist ]));
+			   @mlist ]), undef, [ "valign=middle","valign=middle" ]);
 
 # New description
 print &ui_table_row($text{'mods_cnew'},
-	&ui_textbox("desc", undef, 40));
+	&ui_textbox("desc", undef, 40), undef, [ "valign=middle","valign=middle" ]);
 
 # New category
 %cats = &list_categories(\@mlist, 1);
@@ -83,10 +83,10 @@ print &ui_table_row($text{'mods_ccat'},
 	&ui_select("cat", "*",
 		[ [ "*", $text{'mods_csame'} ],
 		  map { [ $_, $cats{$_} ] }
-		      sort { lc($a) cmp lc($b) } (keys %cats) ]));
+		      sort { lc($a) cmp lc($b) } (keys %cats) ]), undef, [ "valign=middle","valign=middle" ]);
 
 print &ui_table_row($text{'mods_creset'},
-	&ui_yesno_radio("creset", 0));
+	&ui_yesno_radio("creset", 0), undef, [ "valign=middle","valign=middle" ]);
 
 print &ui_table_end();
 print &ui_form_end([ [ "", $text{'mods_cloneok'} ] ]);
@@ -132,13 +132,13 @@ print &ui_table_row($text{'mods_exportmods'},
 		[ map { [ $_->{'dir'},
 			  $_->{'desc'}.($_->{'version'} == $version ? "" :
 				$_->{'version'} ? "(v. $_->{'version'})" : "")
-			] } @mlist ], 10, 1));
+			] } @mlist ], 10, 1), undef, [ "valign=top","valign=middle" ]);
 
 print &ui_table_row($text{'mods_exportto'},
 	  &ui_radio("to", 0,
 		[ [ 0, $text{'mods_exportshow'}."<br>" ],
 		  [ 1, &text('mods_exportfile',
-			     &ui_textbox("file", undef, 40)) ] ]));
+			     &ui_textbox("file", undef, 40)) ] ]), undef, [ "valign=top","valign=middle" ]);
 
 print &ui_table_end();
 print &ui_form_end([ [ "ok", $text{'mods_exportok'} ] ]);

@@ -68,38 +68,44 @@ sub process{
 		chmod(0400,$in{'signfile'});
 	}
 	print &ui_hr();
-	if ($error){ print "<b>$text{'signcsr_e_signfailed'}</b>\n<pre>$error</pre>\n<hr>\n";}
+	if ($error){ print "<b>$text{'signcsr_e_signfailed'}</b>\n<pre>$error</pre>\n";}
 	else {
 		print "<b>$text{'signcsr_worked'}</b>\n<pre>$out</pre>\n";
-		$url="\"view.cgi?certfile=".&my_urlize($in{'signfile'}).'"';
-		print "<b>$text{'signcsr_saved_cert'} <a href=$url>$in{'signfile'}</a></b><br>\n";
-		print &ui_hr();
+		$url="view.cgi?certfile=".&my_urlize($in{'signfile'});
+		print "<b>$text{'signcsr_saved_cert'}: ".&ui_link($url,$in{'signfile'})."</b>";
 	}
+	print &ui_hr();
 	&footer("", $text{'index_return'});
 }
 
 sub overwriteprompt{
 	my($buffer1,$buffer2,$buffer,$key,$temp_pem,$url);
-	
-	print "<table>\n<tr valign=top>";
+    my $rv = "";
+    my $link = "";
+
 	if (-e $in{'signfile'}) {
 		open(OPENSSL,"$config{'openssl_cmd'} x509 -in $in{'signfile'} -text -fingerprint -noout|");
 		while(<OPENSSL>){ $buffer1.=$_; }
 		close(OPENSSL);
-		$url="\"view.cgi?certfile=".&my_urlize($in{'signfile'}).'"';
-		print "<td><table border><tr $tb><td align=center><b><a href=$url>$in{'signfile'}</a></b></td> </tr>\n<tr $cb> <td>\n";
-		if (!$buffer1) { print $text{'e_file'};}
-		else { &print_cert_info(0,$buffer1); }
-		print "</td></tr></table></td>\n";
+		$url="view.cgi?certfile=".&my_urlize($in{'signfile'});
+        $link = &ui_link($url,$in{'signfile'});
+        $rv = &ui_table_start($link, undef, 2);
+        $rv .= &ui_table_row(undef, (!$buffer1 ? $text{'e_file'} : &show_cert_info(0,$buffer1) ) );
 	}
-	print "</tr></table>\n";
-	print "$text{'gencert_moreinfo'}";
-	print "<hr>\n$text{'gencert_overwrite'}\n<p>\n";
-	
-	print "<form action=signcsr.cgi method=post>\n";
+
+    print "<br>";
+    print $rv;
+    print &ui_table_hr();
+    print &ui_table_row(undef,$text{'gencert_moreinfo'});
+    print &ui_table_row(undef,&ui_hr().$text{'gencert_overwrite'});
+    $rv = &ui_form_start("signcsr.cgi", "post");
 	foreach $key (keys %in) {
-		print "<input name=\"$key\" type=hidden value=\"$in{$key}\">\n";
+        $rv .= &ui_hidden($key,$in{$key});
 	}
-	print "<input name=overwrite value=\"yes\" type=hidden>\n";
-	print "<input type=submit value=\"$text{'continue'}\"></form>\n";
+    $rv .= &ui_hidden("overwrite","yes");
+    $rv .= &ui_submit($text{'continue'});
+    $rv .= &ui_form_end();
+    print &ui_table_row(undef,$rv);
+    print &ui_table_end();
+
 }

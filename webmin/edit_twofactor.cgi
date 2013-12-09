@@ -33,7 +33,7 @@ print ui_table_row($text{'twofactor_provider'},
 	ui_select("twofactor_provider", $miniserv{'twofactor_provider'},
 		  [ [ "", "&lt;".$text{'twofactor_none'}."&gt;" ],
 		    map { [ $_->[0], $_->[1] ] } @provs ],
-		  1, 0, 0, 0, "onChange='show_prov(value)'"));
+		  1, 0, 0, 0, "onChange='show_prov(value)'"), undef, [ "valign=middle","valign=middle" ]);
 
 foreach $p (@provs) {
 	$dis = $p->[0] eq $miniserv{'twofactor_provider'} ? "opener_shown"

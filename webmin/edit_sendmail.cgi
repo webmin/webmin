@@ -14,7 +14,7 @@ print &ui_table_start($text{'sendmail_header'}, undef, 2);
 # Mail server type
 $ms = $mconfig{'mail_system'};
 print &ui_table_row($text{'sendmail_system'},
-	$mailboxes::text{'index_system'.$ms});
+	$mailboxes::text{'index_system'.$ms}, undef, [ "valign=middle","valign=middle" ]);
 
 # SMTP server
 $smtp = $mconfig{'send_mode'};
@@ -27,7 +27,7 @@ print &ui_table_row($text{'sendmail_smtp'},
 				   [ 2, $text{'sendmail_smtp2'} ] ]).
 	" ".&ui_textbox("smtp", $mode == 2 ? $smtp : "", 40).
 	" ".$text{'sendmail_port'}.
-	" ".&ui_textbox("port", $port, 6));
+	" ".&ui_textbox("port", $port, 6), undef, [ "valign=top","valign=middle" ]);
 
 # SMTP login and password
 $user = $mconfig{'smtp_user'};
@@ -38,14 +38,14 @@ print &ui_table_row($text{'sendmail_login'},
 		    [ 0, $text{'sendmail_login0'} ] ])." ".
 	&ui_textbox("login_user", $user, 20)." ".
 	$text{'sendmail_pass'}." ".
-	&ui_textbox("login_pass", $pass, 20));
+	&ui_textbox("login_pass", $pass, 20), undef, [ "valign=top","valign=middle" ]);
 
 # Authentication method
 $auth = $mconfig{'smtp_auth'};
 print &ui_table_row($text{'sendmail_auth'},
 	&ui_select("auth", $auth,
 		   [ [ undef, $text{'default'} ],
-		     "Cram-MD5", "Digest-MD5", "Plain", "Login" ]));
+		     "Cram-MD5", "Digest-MD5", "Plain", "Login" ]), undef, [ "valign=middle","valign=middle" ]);
 
 # From address
 $from = $mconfig{'webmin_from'};
@@ -53,7 +53,7 @@ $fromdef = "webmin\@".&mailboxes::get_from_domain();
 print &ui_table_row($text{'sendmail_from'},
 	&ui_opt_textbox("from", $from, 40,
 			&text('sendmail_fromdef', $fromdef)."<br>",
-			$text{'sendmail_fromaddr'}));
+			$text{'sendmail_fromaddr'}), undef, [ "valign=top","valign=middle" ]);
 
 print &ui_table_end();
 print &ui_form_end([ [ "", $text{'save'} ] ]);
@@ -66,10 +66,10 @@ print &ui_form_start("test_sendmail.cgi", "post");
 print &ui_table_start($text{'sendmail_header2'}, undef, 2);
 
 print &ui_table_row($text{'sendmail_to'},
-		    &ui_textbox("to", undef, 40));
+		    &ui_textbox("to", undef, 40), undef, [ "valign=middle","valign=middle" ]);
 
 print &ui_table_row($text{'sendmail_subject'},
-		    &ui_textbox("subject", "Test email from Webmin", 40));
+		    &ui_textbox("subject", "Test email from Webmin", 40), undef, [ "valign=middle","valign=middle" ]);
 
 $msg = "This is a test message from Webmin, sent with the settings :\n".
        "\n".
@@ -78,7 +78,7 @@ $msg = "This is a test message from Webmin, sent with the settings :\n".
        "SMTP login: ".($user || "None")."\n".
        "SMTP authentication: ".($auth || "Default")."\n";
 print &ui_table_row($text{'sendmail_body'},
-		    &ui_textarea("body", $msg, 8, 80));
+		    &ui_textarea("body", $msg, 8, 80), undef, [ "valign=top","valign=top" ]);
 
 print &ui_table_end();
 print &ui_form_end([ [ "", $text{'sendmail_send'} ] ]);
