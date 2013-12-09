@@ -1243,6 +1243,8 @@ if ($type =~ /^ext\d+$/) {
 		&ui_yesno_radio("ext2_grpid", defined($options{"grpid"}) ||
 					      defined($options{"bsdgroups"})));
 
+	my $usrquota = defined($options{"usrquota"});
+	my $grpquota = defined($options{"grpquota"});
 	print &ui_table_row($text{'linux_quotas'},
 		&ui_select("ext2_quota", $usrquota && $grpquota ? 3 :
 					 $grpquota ? 2 :
