@@ -67,10 +67,9 @@ if ($in{'keyfile'}) {
 	open(OPENSSL,"$config{'openssl_cmd'} rsa -in $in{'keyfile'} -text -noout|");
 	while(<OPENSSL>){ $buffer.=$_; }
 	close(OPENSSL);
-	print "<table border><tr $tb> <td align=center><b>$in{'keyfile'}</b></td> </tr>\n<tr $cb> <td>\n";
-	if (!$buffer) { print $text{'e_file'};}
-	else {&print_key_info(1,$buffer);}
-	print "</td></tr></table>\n";
+    print &ui_table_start($in{'keyfile'}, "width=60%", 2);
+    print &ui_table_row(undef, (!$buffer ? $text{'e_file'} : show_key_info(1,$buffer) ) );
+    print &ui_table_end()."<br>";
 	&download_form("keyfile", $in{'keyfile'}, $text{'key'});
 	print &ui_hr();
 	&footer("", $text{'index_return'});
@@ -96,10 +95,10 @@ if ($in{'certfile'}||$in{'csrfile'}) {
 	}
 	while(<OPENSSL>){ $buffer.=$_; }
 	close(OPENSSL);
-	print "<table border><tr $tb> <td align=center><b>$in{'certfile'}</b></td> </tr>\n<tr $cb> <td>\n";
-	if (!$buffer) { print $text{'e_file'};}
-	else {&print_cert_info(1,$buffer);}
-	print "</td></tr></table>\n";
+
+    print &ui_table_start($in{'certfile'}, "width=60%", 2);
+    print &ui_table_row(undef, (!$buffer ? $text{'e_file'} : show_cert_info(1,$buffer) ) );
+    print &ui_table_end()."<br>";
 	&download_form("certfile", $in{'certfile'}, $text{'certificate'});
 	print &ui_hr();
 	&footer("", $text{'index_return'});
@@ -117,20 +116,20 @@ if ($in{'keycertfile'}) {
 	open(OPENSSL,"$config{'openssl_cmd'} x509 -in $in{'keycertfile'} -text -fingerprint -noout|");
 	while(<OPENSSL>){ $buffer.=$_; }
 	close(OPENSSL);
-	print "<table border><tr $tb> <td align=center colspan=2><b>$in{'keycertfile'}</b></td> </tr>\n";
-			print "<tr $cb><td align=center><b>$text{'certificate'}</b></td><td align=center><b>$text{'key'}</b></td></tr>\n<tr $cb valign=top> <td>\n";
-	if (!$buffer) { print $text{'e_file'};}
-	else {&print_cert_info(1,$buffer);}
-	print "</td><td>\n";
+
+    print &ui_table_start($in{'keycertfile'}, "width=60%", 2);
+    print &ui_table_row($text{'certificate'}, $text{'key'});
+    print &ui_table_row(undef, (!$buffer ? $text{'e_file'} : show_cert_info(1,$buffer) ) );
+
 	undef($buffer);
 	open(OPENSSL,"$config{'openssl_cmd'} rsa -in $in{'keycertfile'} -text -noout|");
 	while(<OPENSSL>){ $buffer.=$_; }
 	close(OPENSSL);
-	if (!$buffer) { print $text{'e_file'};}
-	else {&print_key_info(1,$buffer);}
-	print "</td></tr></table>\n";
-	&download_form("keycertfile", $in{'keycertfile'},
-		       "$text{'certificate'} / $text{'key'}");
+
+    print &ui_table_row(undef, (!$buffer ? $text{'e_file'} : show_key_info(1,$buffer) ) );
+    print &ui_table_end()."<br>";
+
+	&download_form("keycertfile", $in{'keycertfile'}, "$text{'certificate'} / $text{'key'}");
 	print &ui_hr();
 	&footer("", $text{'index_return'});
 	exit;
@@ -138,13 +137,13 @@ if ($in{'keycertfile'}) {
 
 print &ui_form_start("view.cgi", "post");
 print &ui_table_start($text{'view_select'}, undef, 2);
-print &ui_table_row($text{'view_wildcard'}.": ".&ui_textbox("wildcard", $in{'wildcard'}), &ui_submit($text{'view_update'},"update") );
+print &ui_table_row($text{'view_wildcard'}.": ".&ui_textbox("wildcard", $in{'wildcard'}), &ui_submit($text{'view_update'},"update"), undef, $valign_middle);
 my @cert_directory;
 push(@cert_directory, [ "", $text{'view_choose'}, "selected" ]);
 foreach $f ( grep { /^(.*\/)*$wildcard_pattern$/ && -f "$config{'ssl_dir'}/$_" } &getfiles($config{'ssl_dir'})) {
     push(@cert_directory, [ $f, $config{'ssl_dir'}."/".$f ]);
 }
-print &ui_table_row(&ui_select("filename", undef, \@cert_directory), &ui_submit($text{'view_view'},"view") );
+print &ui_table_row(&ui_select("filename", undef, \@cert_directory), &ui_submit($text{'view_view'},"view"), undef, $valign_middle);
 print &ui_table_end();
 print &ui_form_end();
 print &ui_hr();
