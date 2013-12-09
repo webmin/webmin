@@ -142,7 +142,7 @@ sub overwriteprompt{
     print &ui_table_hr();
     print &ui_table_row(undef,$text{'gencert_moreinfo'});
     print &ui_table_row(undef,&ui_hr().$text{'gencert_overwrite'});
-    $rv = ui_form_start("import.cgi", "form-data");
+    $rv = &ui_form_start("import.cgi", "form-data");
 	foreach $key (keys %in) {
         $rv .= &ui_hidden($key,$in{$key});
 	}

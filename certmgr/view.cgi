@@ -184,25 +184,32 @@ $keyfile =~ /\/([^\/]*)$/;
 local $filename = &my_urlize($1);
 local $p12filename = &pkcs12_filename($1);
 
-print "<table border=0><tr><td>\n";
-print "<form action=view.cgi/$filename method=post>\n";
-print "<input type=hidden name=dl value=yes>\n";
-print "<input type=hidden name=$mode value=\"$keyfile\">\n";
-print "<input type=submit value=\"$text{'view_download'} $suffix\"></form>\n";
-print "</td><td>\n";
+my $rv1 = "";
+my $rv2 = "";
+my $rv3 = "";
 
-print "<form action=view.cgi/$p12filename method=post>\n";
-print "<input type=hidden name=pkcs12 value=yes>\n";
-print "<input type=hidden name=$mode value=\"$keyfile\">\n";
-print "<input type=submit value=\"$text{'view_download'} $suffix $text{'view_pkcs12'}\">\n";
-print "<input type=password name=pass size=20>\n";
-print "</form>\n";
-print "</td><td>\n";
+$rv1 = "<form id='view_downlod' action='view.cgi/$filename' method=post>";
+$rv1 .= &ui_hidden("dl", "yes");
+$rv1 .= &ui_hidden($mode, $keyfile);
+$rv1 .= &ui_submit("$text{'view_download'} $suffix");
+$rv1 .= "</form>";
 
-print "<form action=view.cgi method=post>\n";
-print "<input type=hidden name=delete value=yes>\n";
-print "<input type=hidden name=$mode value=\"$keyfile\">\n";
-print "<input type=submit value=\"$text{'view_delete'} $suffix\"></form>\n";
-print "</td></tr></table>\n";
+$rv2 = "<form id='view_p12filename' action='view.cgi/$p12filename' method=post>";
+$rv2 .= &ui_hidden("pkcs12", "yes");
+$rv2 .= &ui_hidden($mode, $keyfile);
+$rv2 .= &ui_submit("$text{'view_download'} $suffix $text{'view_pkcs12'}");
+$rv2 .= &ui_password("pass","",20);
+$rv2 .= "</form>";
+
+$rv3 = "<form id='view' action='view.cgi' method=post>";
+$rv3 .= &ui_hidden("delete", "yes");
+$rv3 .= &ui_hidden($mode, $keyfile);
+$rv3 .= &ui_submit("$text{'view_delete'} $suffix");
+$rv3 .= "</form>";
+
+print &ui_table_start(undef, undef, 3);
+print &ui_columns_row([$rv1, $rv2, $rv3], [ "valign=middle padding=2","valign=middle padding=2","valign=middle padding=2" ] );
+print &ui_table_end();
+
 }
 

@@ -98,7 +98,7 @@ sub overwriteprompt{
     print &ui_table_hr();
     print &ui_table_row(undef,$text{'gencert_moreinfo'});
     print &ui_table_row(undef,&ui_hr().$text{'gencert_overwrite'});
-    $rv = ui_form_start("signcsr.cgi", "post");
+    $rv = &ui_form_start("signcsr.cgi", "post");
 	foreach $key (keys %in) {
         $rv .= &ui_hidden($key,$in{$key});
 	}
