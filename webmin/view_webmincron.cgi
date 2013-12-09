@@ -21,17 +21,17 @@ print &ui_table_start($text{'webmincron_header'}, undef, 2);
 # Run from module
 %minfo = &get_module_info($wcron->{'module'});
 print &ui_table_row($text{'webmincron_module'},
-	$minfo{'desc'} || $wcron->{'module'});
+	$minfo{'desc'} || $wcron->{'module'}, undef, [ "valign=middle","valign=middle" ]);
 
 # Function to call
 print &ui_table_row($text{'webmincron_func'},
-	"<tt>$wcron->{'func'}</tt>");
+	"<tt>$wcron->{'func'}</tt>", undef, [ "valign=middle","valign=middle" ]);
 
 # Function params, if any
 if (@{$wcron->{'args'}}) {
 	print &ui_table_row($text{'webmincron_args'},
 		join("<br>\n", map { "<tt>".&html_escape($_)."</tt>" }
-				   @{$wcron->{'args'}}));
+				   @{$wcron->{'args'}}), undef, [ "valign=middle","valign=middle" ]);
 	}
 
 # Run-time (editable)

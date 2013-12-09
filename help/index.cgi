@@ -11,13 +11,13 @@ foreach $m (&list_modules()) {
 
 print &ui_form_start("search.cgi", "post");
 print &ui_table_start($text{'index_header'}, undef, 2);
-print &ui_table_row($text{'index_terms'}, &ui_textbox("terms", undef, 50));
+print &ui_table_row($text{'index_terms'}, &ui_textbox("terms", undef, 50), undef, [ "valign=middle","valign=middle" ]);
 print &ui_table_row($text{'index_mods'}, 
         &ui_radio("all", 1,
         [ [ 1, $text{'index_all'} ],
-        [ 0, $text{'index_sel'} ] ]));
+        [ 0, $text{'index_sel'} ] ]), undef, [ "valign=middle","valign=middle" ]);
 print &ui_table_row("&nbsp;",
-        &ui_select("mods", undef, \@list_modules, 5, 1) );
+        &ui_select("mods", undef, \@list_modules, 5, 1), undef, [ "valign=top" ]);
 print &ui_table_row("&nbsp;",
         &ui_submit($text{'index_search'})."&nbsp;".&ui_reset($text{'index_reset'}));
 print ui_table_end();

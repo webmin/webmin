@@ -38,27 +38,27 @@ print ui_form_start("setup_ca.cgi", "post");
 print ui_table_start($text{'ca_header1'}, undef, 2);
 
 print &ui_table_row($text{'ca_cn'},
-		    &ui_textbox("commonName", undef, 30));
+		    &ui_textbox("commonName", undef, 30), undef, [ "valign=middle","valign=middle" ]);
 
 print &ui_table_row($text{'ca_email'},
-		    &ui_textbox("emailAddress", undef, 30));
+		    &ui_textbox("emailAddress", undef, 30), undef, [ "valign=middle","valign=middle" ]);
 
 print &ui_table_row($text{'ca_ou'},
-		    &ui_textbox("organizationalUnitName", undef, 30));
+		    &ui_textbox("organizationalUnitName", undef, 30), undef, [ "valign=middle","valign=middle" ]);
 
 print &ui_table_row($text{'ca_o'},
-		    &ui_textbox("organizationName", undef, 30));
+		    &ui_textbox("organizationName", undef, 30), undef, [ "valign=middle","valign=middle" ]);
 
 print &ui_table_row($text{'ca_sp'},
-		    &ui_textbox("stateOrProvinceName", undef, 15));
+		    &ui_textbox("stateOrProvinceName", undef, 15), undef, [ "valign=middle","valign=middle" ]);
 
 print &ui_table_row($text{'ca_c'},
-		    &ui_textbox("countryName", undef, 2));
+		    &ui_textbox("countryName", undef, 2), undef, [ "valign=middle","valign=middle" ]);
 
 print &ui_table_row($text{'ssl_size'},
                     &ui_opt_textbox("size", undef, 6,
                                     "$text{'default'} ($default_key_size)").
-                    " ".$text{'ssl_bits'});
+                    " ".$text{'ssl_bits'}, undef, [ "valign=middle","valign=middle" ]);
 
 print ui_table_end();
 print ui_form_end([ [ "create", $text{'ca_create'} ] ]);

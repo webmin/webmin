@@ -15,7 +15,7 @@ my @wcrons = &webmincron::list_webmin_crons();
 		 join(" ", @{$a->{'args'}}) cmp join(" ", @{$b->{'args'}}) }
 	       @wcrons;
 if (@wcrons) {
-	my @tds = ( "width=5" );
+	my @tds = ( "width=5 valign=top", "valign=top", "valign=top", "valign=top" );
 	print &ui_form_start("delete_webmincron.cgi");
 	print &ui_columns_start([ "",
 				  $text{'webmincron_module'},

@@ -17,7 +17,7 @@ foreach ( @modules ){
     push(@grid, $_->{'desc'} || $_->{'dir'});
     push(@grid, &cats($_->{'dir'}, $_->{'category'}));
     }
-print &ui_grid_table(\@grid, 4, 100, undef, undef, $text{'assignment_header'});
+print &ui_grid_table(\@grid, 4, 100, [ "valign=middle","valign=middle","valign=middle","valign=middle" ], undef, $text{'assignment_header'});
 print &ui_form_end([ [ undef, $text{'assignment_ok'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});

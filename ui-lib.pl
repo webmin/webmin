@@ -1430,7 +1430,7 @@ return "<form action='$script' class='ui_buttons_form'>\n".
        "<td nowrap width=20% valign=top class=ui_buttons_label>".
        ($before ? $before." " : "").
        &ui_submit($label).($after ? " ".$after : "")."</td>\n".
-       "<td valign=top width=80% valign=top class=ui_buttons_value>".
+       "<td width=80% valign=top class=ui_buttons_value>".
        $desc."</td></tr>\n".
        "</form>\n";
 }

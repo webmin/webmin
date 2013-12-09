@@ -11,14 +11,14 @@ print &ui_table_start(undef, undef, 2);
 
 print &ui_table_row($text{'referers_referer'},
 	&ui_radio("referer", $gconfig{'referer'},
-		  [ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]));
+		  [ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]), undef, [ "valign=middle","valign=middle" ]);
 
 print &ui_table_row($text{'referers_list'},
 	&ui_textarea("referers",
 		join("\n", split(/\s+/, $gconfig{'referers'})),
 		5, 60)."<br>\n".
 	&ui_checkbox("referers_none", 1, $text{'referers_none'},
-		     !$gconfig{'referers_none'}));
+		     !$gconfig{'referers_none'}), undef, [ "valign=top","valign=middle" ]);
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'save'} ] ]);

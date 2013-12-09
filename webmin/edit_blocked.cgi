@@ -18,7 +18,7 @@ if (@blocked) {
 			$b->{'user'} || $b->{'host'},
 			$b->{'fails'},
 			&make_date($b->{'when'}),
-			]);
+			], [ "valign=middle","valign=middle","valign=middle","valign=middle" ]);
 		}
 	print &ui_columns_end();
 	print &ui_hr();
