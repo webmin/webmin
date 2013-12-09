@@ -20,16 +20,16 @@ print &ui_table_start($text{'ipkey_header'}, undef, 2);
 
 print &ui_table_row($text{'ipkey_ips'},
 		    &ui_textarea("ips", join("\n", @{$ipkey->{'ips'}}),
-				 3, 20));
+				 3, 60), undef, [ "valign=top","valign=top" ]);
 
 print &ui_table_row($text{'ssl_key'},
 		    &ui_textbox("key", $ipkey->{'key'}, 40)."\n".
-		    &file_chooser_button("key"));
+		    &file_chooser_button("key"), undef, [ "valign=middle","valign=middle" ]);
 
 print &ui_table_row($text{'ssl_cert'},
 		    &ui_opt_textbox("cert", $ipkey->{'cert'}, 40,
-				$text{'ssl_cert_def'})."\n".
-		    &file_chooser_button("cert"));
+				$text{'ssl_cert_def'})."&nbsp;".
+		    &file_chooser_button("cert"), undef, [ "valign=middle","valign=middle" ]);
 
 $mode = $ipkey->{'extracas'} eq "none" ? 2 :
 	$ipkey->{'extracas'} ? 1 : 0;
@@ -42,7 +42,7 @@ print &ui_table_row($text{'ssl_extracas'},
 		     $mode == 1 ? join("\n",split(/\s+/, $ipkey->{'extracas'}))
 				: "",
 		     3, 60)." ".
-	&file_chooser_button("extracas", 0, undef, undef, 1));
+	"<br>".&file_chooser_button("extracas", 0, undef, undef, 1), undef, [ "valign=top","valign=middle" ]);
 
 print &ui_table_end();
 if ($in{'new'}) {

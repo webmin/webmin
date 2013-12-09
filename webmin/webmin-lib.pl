@@ -1840,33 +1840,33 @@ my $rv;
 
 $rv .= &ui_table_row($text{'ssl_cn'},
 		    &ui_opt_textbox("commonName", $defhost, 30,
-				    $text{'ssl_all'}));
+				    $text{'ssl_all'}), undef, [ "valign=middle","valign=middle" ]);
 
 $rv .= &ui_table_row($text{'ca_email'},
-		    &ui_textbox("emailAddress", $defemail, 30));
+		    &ui_textbox("emailAddress", $defemail, 30), undef, [ "valign=middle","valign=middle" ]);
 
 $rv .= &ui_table_row($text{'ca_ou'},
-		    &ui_textbox("organizationalUnitName", undef, 30));
+		    &ui_textbox("organizationalUnitName", undef, 30), undef, [ "valign=middle","valign=middle" ]);
 
 $rv .= &ui_table_row($text{'ca_o'},
-		    &ui_textbox("organizationName", $deforg, 30));
+		    &ui_textbox("organizationName", $deforg, 30), undef, [ "valign=middle","valign=middle" ]);
 
 $rv .= &ui_table_row($text{'ca_city'},
-		    &ui_textbox("cityName", undef, 30));
+		    &ui_textbox("cityName", undef, 30), undef, [ "valign=middle","valign=middle" ]);
 
 $rv .= &ui_table_row($text{'ca_sp'},
-		    &ui_textbox("stateOrProvinceName", undef, 15));
+		    &ui_textbox("stateOrProvinceName", undef, 15), undef, [ "valign=middle","valign=middle" ]);
 
 $rv .= &ui_table_row($text{'ca_c'},
-		    &ui_textbox("countryName", undef, 2));
+		    &ui_textbox("countryName", undef, 2), undef, [ "valign=middle","valign=middle" ]);
 
 $rv .= &ui_table_row($text{'ssl_size'},
 		    &ui_opt_textbox("size", undef, 6,
 				    "$text{'default'} ($default_key_size)").
-			" ".$text{'ssl_bits'});
+			" ".$text{'ssl_bits'}, undef, [ "valign=middle","valign=middle" ]);
 
 $rv .= &ui_table_row($text{'ssl_days'},
-		    &ui_textbox("days", 1825, 8));
+		    &ui_textbox("days", 1825, 8), undef, [ "valign=middle","valign=middle" ]);
 
 return $rv;
 }

@@ -13,15 +13,15 @@ $i = $system_status::config{'collect_interval'};
 print &ui_table_row($text{'status_interval'},
 	&ui_opt_textbox("interval", $i eq 'none' ? undef : $i, 5,
 			$text{'status_interval1'}, $text{'status_interval0'}).
-	" ".$text{'status_mins'});
+	" ".$text{'status_mins'}, undef, [ "valign=middle","valign=middle" ]);
 
 # Collect packages?
 print &ui_table_row($text{'status_pkgs'},
-	&ui_yesno_radio("pkgs", $system_status::config{'collect_pkgs'}));
+	&ui_yesno_radio("pkgs", $system_status::config{'collect_pkgs'}), undef, [ "valign=middle","valign=middle" ]);
 
 # Collect drive temps?
 print &ui_table_row($text{'status_temp'},
-	&ui_yesno_radio("temp", !$system_status::config{'collect_notemp'}));
+	&ui_yesno_radio("temp", !$system_status::config{'collect_notemp'}), undef, [ "valign=middle","valign=middle" ]);
 
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);

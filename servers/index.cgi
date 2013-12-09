@@ -115,17 +115,19 @@ if ($access{'find'} || $access{'auto'}) {
 		my $port = $config{'listen'} || $miniserv{'listen'} || 10000;
 		print &ui_buttons_row("find.cgi", $text{'index_broad'},
 						  $text{'index_findmsg'});
-		print &ui_buttons_row("find.cgi", $text{'index_scan'},
+		my $t = &ui_buttons_row("find.cgi", $text{'index_scan'},
 		      &text('index_scanmsg', &ui_textbox("scan", $myscan, 15)).
 		      "<br><table>\n".
-		      "<tr> <td><b>$text{'index_defuser'}</b></td>\n".
-		      "<td>".&ui_textbox("defuser", undef, 20)."</td> </tr>".
+		      "<tr><td valign=middle><b>$text{'index_defuser'}</b></td>\n".
+		      "<td valign=middle>".&ui_textbox("defuser", undef, 20)."</td> </tr>".
 		      "<tr> <td><b>$text{'index_defpass'}</b></td>\n".
-		      "<td>".&ui_password("defpass", undef, 20)."</td> </tr>".
+		      "<td valign=middle>".&ui_password("defpass", undef, 20)."</td> </tr>".
 		      "<tr> <td><b>$text{'index_defport'}</b></td>\n".
-		      "<td>".&ui_textbox("port", $port, 20)."</td> </tr>".
+		      "<td valign=middle>".&ui_textbox("port", $port, 20)."</td> </tr>".
 		      "</table>\n"
 		      );
+        $t =~ s/valign=top class=ui_buttons_value/valign=middle class=ui_buttons_value/g;
+        print $t;
 		}
 	if ($access{'auto'}) {
 		# Button for auto-discovery form
