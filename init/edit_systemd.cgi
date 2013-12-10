@@ -25,45 +25,45 @@ print &ui_table_start($text{'systemd_header'}, undef, 2);
 if ($in{'new'}) {
 	# Service name
 	print &ui_table_row($text{'systemd_name'},
-			    &ui_textbox("name", undef, 30)."<tt>.service</tt>");
+			    &ui_textbox("name", undef, 30)."<tt>.service</tt>", undef, ["valign=middle","valign=middle"]);
 
 	# Description
 	print &ui_table_row($text{'systemd_desc'},
-			    &ui_textbox("desc", undef, 60));
+			    &ui_textbox("desc", undef, 60), undef, ["valign=middle","valign=middle"]);
 
 	# Start script
 	print &ui_table_row($text{'systemd_start'},
-			    &ui_textarea("atstart", undef, 5, 80));
+			    &ui_textarea("atstart", undef, 5, 80), undef, ["valign=middle","valign=middle"]);
 
 	# Stop script
 	print &ui_table_row($text{'systemd_stop'},
-			    &ui_textarea("atstop", undef, 5, 80));
+			    &ui_textarea("atstop", undef, 5, 80), undef, ["valign=middle","valign=middle"]);
 
 	# Start at boot?
 	print &ui_table_row($text{'systemd_boot'},
-			    &ui_yesno_radio("boot", 1));
+			    &ui_yesno_radio("boot", 1), undef, ["valign=middle","valign=middle"]);
 	}
 else {
 	# Service name (non-editable)
 	print &ui_table_row($text{'systemd_name'},
-			    "<tt>$in{'name'}</tt>");
+			    "<tt>$in{'name'}</tt>", undef, ["valign=middle","valign=middle"]);
 
 	# Config file
 	$conf = &read_file_contents($u->{'file'});
 	print &ui_table_row($text{'systemd_conf'},
-			    &ui_textarea("conf", $conf, 20, 80));
+			    &ui_textarea("conf", $conf, 20, 80), undef, ["valign=top","valign=top"]);
 
 	# Current status
 	if ($u->{'boot'} != 2) {
 		print &ui_table_row($text{'systemd_boot'},
-			    &ui_yesno_radio("boot", $u->{'boot'}));
+			    &ui_yesno_radio("boot", $u->{'boot'}), undef, ["valign=middle","valign=middle"]);
 		}
 	print &ui_table_row($text{'systemd_status'},
 		$u->{'status'} && $u->{'pid'} ?
 			&text('systemd_status1', $u->{'pid'}) :
 		$u->{'status'} ?
 			$text{'systemd_status2'} :
-			$text{'systemd_status0'});
+			$text{'systemd_status0'}, undef, ["valign=middle","valign=middle"]);
 	}
 
 print &ui_table_end();

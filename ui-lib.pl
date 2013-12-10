@@ -952,13 +952,13 @@ if (defined($opts_title)) {
 	       "<td></td><td><b>$vals_title</b></td></tr>";
 	}
 $rv .= "<tr class='ui_multi_select_row'>";
-$rv .= "<td>".&ui_select($name."_opts", [ ], $leftover,
+$rv .= "<td valign=top>".&ui_select($name."_opts", [ ], $leftover,
 			 $size, 1, 0, $dis, $wstyle)."</td>\n";
-$rv .= "<td>".&ui_button("->", $name."_add", $dis,
+$rv .= "<td valign=middle>".&ui_button("->", $name."_add", $dis,
 		 "onClick='multi_select_move(\"$name\", form, 1)'")."<br>".
 	      &ui_button("<-", $name."_remove", $dis,
 		 "onClick='multi_select_move(\"$name\", form, 0)'")."</td>\n";
-$rv .= "<td>".&ui_select($name."_vals", [ ], $values,
+$rv .= "<td valign=top>".&ui_select($name."_vals", [ ], $values,
 			 $size, 1, 0, $dis, $wstyle)."</td>\n";
 $rv .= "</tr></table>\n";
 $rv .= &ui_hidden($name, join("\n", map { $_->[0] } @$values));

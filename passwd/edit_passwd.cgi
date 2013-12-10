@@ -19,23 +19,23 @@ print &ui_table_start($text{'passwd_header'}, undef, 2);
 %uconfig = &foreign_config("useradmin");
 $user[6] =~ s/,.*$// if ($uconfig{'extra_real'});
 print &ui_table_row($text{'passwd_for'},
-	&html_escape($user[0].( $user[6] ? " ($user[6])" : "" )));
+	&html_escape($user[0].( $user[6] ? " ($user[6])" : "" )), undef, ["valign=middle","valign=middle"]);
 
 # Old password field
 if ($access{'old'} == 1 ||
     $access{'old'} == 2 && $user[0] ne $remote_user) {
 	print &ui_table_row($text{'passwd_old'},
-		&ui_password("old", undef, 30));
+		&ui_password("old", undef, 30), undef, ["valign=middle","valign=middle"]);
 	}
 
 # New password
 print &ui_table_row($text{'passwd_new'},
-	&ui_password("new", undef, 30));
+	&ui_password("new", undef, 30), undef, ["valign=middle","valign=middle"]);
 
 # New password again
 if ($access{'repeat'}) {
 	print &ui_table_row($text{'passwd_repeat'},
-		&ui_password("repeat", undef, 30));
+		&ui_password("repeat", undef, 30), undef, ["valign=middle","valign=middle"]);
 	}
 
 # Force change at next login
@@ -46,14 +46,14 @@ if (!$config{'passwd_cmd'} && $access{'expire'}) {
 			&useradmin::list_users();
 	if ($uuser->{'max'} && ($pft == 2 || $pft == 5)) {
 		print &ui_table_row(" ",
-			&ui_checkbox("expire", 1, $text{'passwd_expire'}, 0));
+			&ui_checkbox("expire", 1, $text{'passwd_expire'}, 0), undef, ["valign=middle","valign=middle"]);
 		}
 	}
 
 # Change in other modules
 if ($access{'others'} == 2) {
 	print &ui_table_row(" ",
-		&ui_checkbox("others", 1, $text{'passwd_others'}, 1));
+		&ui_checkbox("others", 1, $text{'passwd_others'}, 1), undef, ["valign=middle","valign=middle"]);
 	}
 
 print &ui_table_end();

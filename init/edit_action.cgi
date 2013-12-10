@@ -54,38 +54,38 @@ if ($ac =~ /^\// || $access{'bootup'} == 2) {
 	}
 else {
 	print &ui_table_row($text{'edit_name'},
-			    &ui_textbox("name", $ac, 30));
+			    &ui_textbox("name", $ac, 30), undef, ["valign=middle","valign=middle"]);
 	}
 
 if ($ty == 2) {
 	# Display fields for a template for a new action
 	print &ui_table_row($text{'edit_desc'},
-		&ui_textarea("desc", undef, 2, 80));
+		&ui_textarea("desc", undef, 2, 80), undef, ["valign=top","valign=top"]);
 
 	if ($config{'start_stop_msg'}) {
 		print &ui_table_row($text{'edit_startmsg'},
-			&ui_textbox("start_msg", undef, 40));
+			&ui_textbox("start_msg", undef, 40), undef, ["valign=middle","valign=middle"]);
 
 		print &ui_table_row($text{'edit_stopmsg'},
-			&ui_textbox("stop_msg", undef, 40));
+			&ui_textbox("stop_msg", undef, 40), undef, ["valign=middle","valign=middle"]);
 		}
 
 	print &ui_table_row($text{'edit_start'},
-		&ui_textarea("start", undef, 5, 80));
+		&ui_textarea("start", undef, 5, 80), undef, ["valign=top","valign=top"]);
 
 	print &ui_table_row($text{'edit_stop'},
-		&ui_textarea("stop", undef, 5, 80));
+		&ui_textarea("stop", undef, 5, 80), undef, ["valign=middle","valign=middle"]);
 	}
 elsif ($access{'bootup'} == 2) {
 	# Just show current script
 	print &ui_table_row($text{'edit_script'},
 		&ui_textarea("data", $data, 15, 80, undef, undef,
-			     "readonly=true"));
+			     "readonly=true"), undef, ["valign=top","valign=top"]);
 	}
 else {
 	# Allow direct editing of the script
 	print &ui_table_row($text{'edit_script'},
-		&ui_textarea("data", $data, 15, 80));
+		&ui_textarea("data", $data, 15, 80), undef, ["valign=top","valign=top"]);
 	}
 
 if ($ty == 1 && $access{'bootup'} == 1) {
@@ -93,7 +93,7 @@ if ($ty == 1 && $access{'bootup'} == 1) {
 	print &ui_table_end();
 	print "<b>",&text("edit_bad$ss", $rl),"</b><br>\n";
 	print "<a href=\"fix_action.cgi?$rl+$ss+$num+$ac\">",
-	      "$text{'edit_fix'}</a>. <p>\n";
+	      "$text{'edit_fix'}</a>.<p>\n";
 	}
 elsif (!$config{'expert'} || $access{'bootup'} == 2) {
 	# Just tell the user if this action is started at boot time
@@ -112,11 +112,11 @@ elsif (!$config{'expert'} || $access{'bootup'} == 2) {
 		}
 	if ($access{'bootup'} == 1) {
 		print &ui_table_row($text{'edit_boot'},
-			&ui_yesno_radio("boot", $boot || $ty == 2 ? 1 : 0));
+			&ui_yesno_radio("boot", $boot || $ty == 2 ? 1 : 0), undef, ["valign=middle","valign=middle"]);
 		}
 	else {
 		print &ui_table_row($text{'edit_boot'},
-			$boot || $ty == 2 ? $text{'yes'} : $text{'no'});
+			$boot || $ty == 2 ? $text{'yes'} : $text{'no'}, undef, ["valign=middle","valign=middle"]);
 		}
 
 	# Show if action is currently running
@@ -131,7 +131,7 @@ elsif (!$config{'expert'} || $access{'bootup'} == 2) {
 		else {
 			$status = "<i>$text{'edit_unknown'}</i>";
 			}
-		print &ui_table_row($text{'edit_status'}, $status);
+		print &ui_table_row($text{'edit_status'}, $status, undef, ["valign=middle","valign=middle"]);
 		}
 	print &ui_table_end();
 	}
@@ -141,7 +141,7 @@ else {
 		# Display onboot flag from daemons file
 		$boot = lc($daemon{'ONBOOT'}) eq 'yes';
 		print &ui_table_row($text{'edit_boot'},
-			&ui_yesno_radio("boot", $boot ? 1 : 0));
+			&ui_yesno_radio("boot", $boot ? 1 : 0), undef, ["valign=middle","valign=middle"]);
 		}
 	print &ui_table_end();
 
@@ -173,7 +173,7 @@ else {
 		       &ui_checkbox("K$rl", 1, $text{'edit_stopat'},
 				    defined($kpri{$rl}))." ".
 		       &ui_textbox("pri_K$rl", $kpri{$rl}, $od);
-		print &ui_table_row($label, $msg);
+		print &ui_table_row($label, $msg, undef, ["valign=middle","valign=middle"]);
 		}
 	print &ui_table_end();
 	}
