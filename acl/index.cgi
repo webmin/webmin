@@ -43,7 +43,7 @@ if (!@canulist) {
 		print &ui_subheading($text{'index_users'})
 			if (!$config{'display'});
 		print "<b>$text{'index_nousers'}</b><p>\n";
-		print "<a href=edit_user.cgi>$text{'index_create'}</a>\n";
+		print ui_link("edit_user.cgi", $text{'index_create'}) . "\n";
 		$shown_users = 1;
 		}
 	}
@@ -67,7 +67,7 @@ else {
 		push(@rowlinks, &select_all_link("d", $form),
 			     &select_invert_link("d", $form));
 		}
-	push(@rowlinks, "<a href=edit_user.cgi>$text{'index_create'}</a>")
+	push(@rowlinks, ui_link("edit_user.cgi", $text{'index_create'}))
 		if ($access{'create'});
 	print &ui_links_row(\@rowlinks);
 
@@ -109,7 +109,7 @@ if ($access{'groups'}) {
 	if (!@glist) {
 		# No groups, so just show create link
 		print "<b>$text{'index_nogroups'}</b><p>\n";
-		print "<a href=edit_group.cgi>$text{'index_gcreate'}</a><p>\n";
+		print ui_link("edit_group.cgi", $text{'index_gcreate'}) . "<p>\n";
 		}
 	elsif ($config{'display'}) {
 		# Show just group names
@@ -129,7 +129,7 @@ if ($access{'groups'}) {
 				     &select_invert_link("d", $form));
 			}
 		push(@rowlinks,
-		     "<a href=edit_group.cgi>$text{'index_gcreate'}</a>");
+		     ui_link("edit_group.cgi", $text{'index_gcreate'}));
 		print &ui_links_row(\@rowlinks);
 
 		print &ui_columns_start([ $text{'index_group'},
@@ -245,9 +245,9 @@ else {
 	foreach my $m (sort { $modname{$a} cmp $modname{$b} } @$mods) {
 		if ($modname{$m}) {
 			if ($mcan{$m} && $access{'acl'}) {
-				push(@grid, "<a href='edit_acl.cgi?mod=".
-				      &urlize($m)."&$type=".&urlize($who).
-				      "'>$modname{$m}</a>");
+				push(@grid, ui_link("edit_acl.cgi?mod=" .
+				      &urlize($m)."&$type=".&urlize($who),
+				      $modname{$m}));
 				}
 			else {
 				push(@grid, $modname{$m});
@@ -266,7 +266,7 @@ sub show_name_table
 # Show table of users, and maybe create links
 local @rowlinks = ( &select_all_link("d", $form),
 		    &select_invert_link("d", $form) );
-push(@rowlinks, "<a href=$_[1]>$_[2]</a>") if ($_[2]);
+push(@rowlinks, ui_link("$_[1]", $_[2])) if ($_[2]);
 print &ui_links_row(\@rowlinks);
 local @links;
 for(my $i=0; $i<@{$_[0]}; $i++) {
@@ -285,8 +285,8 @@ local $ro = $_[0]->{'readonly'};
 return ($config{'select'} ? "" : &ui_checkbox("d", $_[0]->{'name'}, "", 0)).
        ($lck ? "<i>" : "").
        ($ro ? "<b>" : "").
-       "<a href='$_[1]?$_[2]=".&urlize($_[0]->{'name'})."'>".
-	$_[0]->{'name'}."</a>".
+       ui_link("$_[1]?$_[2]=".&urlize($_[0]->{'name'}),
+	           $_[0]->{'name'}).
        ($_[0]->{'twofactor_id'} ? "*" : "").
        ($ro ? "</b>" : "").
        ($lck ? "</i>" : "");
