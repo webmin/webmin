@@ -15,7 +15,8 @@ BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
 do 'md5-lib.pl';
-%access = &get_module_acl();
+our (%sessiondb);
+our %access = &get_module_acl();
 $access{'switch'} = 0 if (&is_readonly_mode());
 
 =head2 list_users([&only-users])
@@ -1222,11 +1223,12 @@ Internal function to generate a group file line
 =cut
 sub group_line
 {
-return join(":", $_[0]->{'name'},
-		 join(" ", @{$_[0]->{'members'}}),
-		 join(" ", @{$_[0]->{'modules'}}),
-		 $_[0]->{'desc'},
-		 join(" ", @{$_[0]->{'ownmods'}}) );
+my ($group) = @_;
+return join(":", $group->{'name'},
+		 join(" ", @{$group->{'members'}}),
+		 join(" ", @{$group->{'modules'}}),
+		 $group->{'desc'},
+		 join(" ", @{$group->{'ownmods'}}) );
 }
 
 =head2 acl_line(&user, &allmodules)
@@ -1236,8 +1238,8 @@ Internal function to generate an ACL file line.
 =cut
 sub acl_line
 {
-my %user = %{$_[0]};
-return "$user{'name'}: ".join(' ', @{$user{'modules'}})."\n";
+my ($user) = @_;
+return "$user->{'name'}: ".join(' ', @{$user->{'modules'}})."\n";
 }
 
 =head2 can_edit_user(user, [&groups])
@@ -1247,20 +1249,21 @@ Returns 1 if the current Webmin user can edit some other user.
 =cut
 sub can_edit_user
 {
+my ($username, $groups) = @_;
 return 1 if ($access{'users'} eq '*');
 if ($access{'users'} eq '~') {
-	return $base_remote_user eq $_[0];
+	return $base_remote_user eq $username;
 	}
-my $glist = $_[1] ? $_[1] : [ &list_groups() ];
+my $glist = $groups || [ &list_groups() ];
 foreach my $u (split(/\s+/, $access{'users'})) {
 	if ($u =~ /^_(\S+)$/) {
 		foreach my $g (@$glist) {
 			return 1 if ($g->{'name'} eq $1 &&
-				     &indexof($_[0], @{$g->{'members'}}) >= 0);
+			     &indexof($username, @{$g->{'members'}}) >= 0);
 			}
 		}
 	else {
-		return 1 if ($u eq $_[0]);
+		return 1 if ($u eq $username);
 		}
 	}
 return 0;
@@ -1275,8 +1278,9 @@ Opens the session database, and ties it to the sessiondb hash. Parameters are :
 =cut
 sub open_session_db
 {
-my $sfile = $_[0]->{'sessiondb'} ? $_[0]->{'sessiondb'} :
-	    $_[0]->{'pidfile'} =~ /^(.*)\/[^\/]+$/ ? "$1/sessiondb"
+my ($miniserv) = @_;
+my $sfile = $miniserv->{'sessiondb'} ? $miniserv->{'sessiondb'} :
+	    $miniserv->{'pidfile'} =~ /^(.*)\/[^\/]+$/ ? "$1/sessiondb"
 						     : return;
 eval "use SDBM_File";
 dbmopen(%sessiondb, $sfile, 0700);
@@ -1297,15 +1301,16 @@ Deletes one session from the database. Parameters are :
 
 =item miniserv - The Webmin miniserv.conf file as a hash ref, as supplied by get_miniserv_config.
 
-=item user - ID of the session to remove.
+=item id - ID of the session to remove.
 
 =cut
 sub delete_session_id
 {
+my ($miniserv, $sid) = @_;
 return 1 if (&is_readonly_mode());
-&open_session_db($_[0]);
-my $ex = exists($sessiondb{$_[1]});
-delete($sessiondb{$_[1]});
+&open_session_db($miniserv);
+my $ex = exists($sessiondb{$sid});
+delete($sessiondb{$sid});
 dbmclose(%sessiondb);
 return $ex;
 }
@@ -1321,11 +1326,12 @@ Deletes all sessions for some user. Parameters are :
 =cut
 sub delete_session_user
 {
+my ($miniserv, $username) = @_;
 return 1 if (&is_readonly_mode());
-&open_session_db($_[0]);
+&open_session_db($miniserv);
 foreach my $s (keys %sessiondb) {
-	my ($u,$t) = split(/\s+/, $sessiondb{$s});
-	if ($u eq $_[1]) {
+	my ($u, $t) = split(/\s+/, $sessiondb{$s});
+	if ($u eq $username) {
 		delete($sessiondb{$s});
 		}
 	}
@@ -1345,12 +1351,13 @@ Changes the username in all sessions for some user. Parameters are :
 =cut
 sub rename_session_user
 {
+my ($miniserv, $oldusername, $newusername) = @_;
 return 1 if (&is_readonly_mode());
-&open_session_db(\%miniserv);
+&open_session_db($miniserv);
 foreach my $s (keys %sessiondb) {
-	my ($u,$t) = split(/\s+/, $sessiondb{$s});
-	if ($u eq $_[1]) {
-		$sessiondb{$s} = "$_[2] $t";
+	my ($u, $t) = split(/\s+/, $sessiondb{$s});
+	if ($u eq $oldusername) {
+		$sessiondb{$s} = "$newusername $t";
 		}
 	}
 dbmclose(%sessiondb);
@@ -1372,23 +1379,24 @@ are :
 =cut
 sub update_members
 {
-foreach my $m (@{$_[3]}) {
+my ($allusers, $allgroups, $mods, $mems) = @_;
+foreach my $m (@$mems) {
 	if ($m !~ /^\@(.*)$/) {
 		# Member is a user
-		my ($u) = grep { $_->{'name'} eq $m } @{$_[0]};
+		my ($u) = grep { $_->{'name'} eq $m } @$allusers;
 		if ($u) {
-			$u->{'modules'} = [ @{$_[2]}, @{$u->{'ownmods'}} ];
+			$u->{'modules'} = [ @$mods, @{$u->{'ownmods'}} ];
 			&modify_user($u->{'name'}, $u);
 			}
 		}
 	else {
 		# Member is a group
 		my $gname = substr($m, 1);
-		my ($g) = grep { $_->{'name'} eq $gname } @{$_[1]};
+		my ($g) = grep { $_->{'name'} eq $gname } @$allgroups;
 		if ($g) {
-			$g->{'modules'} = [ @{$_[2]}, @{$g->{'ownmods'}} ];
+			$g->{'modules'} = [ @$mods, @{$g->{'ownmods'}} ];
 			&modify_group($g->{'name'}, $g);
-			&update_members($_[0], $_[1], $g->{'modules'},
+			&update_members($allusers, $allgroups, $g->{'modules'},
 					$g->{'members'});
 			}
 		}
@@ -1671,8 +1679,9 @@ returned by get_unixauth.
 =cut
 sub save_unixauth
 {
+my ($miniserv, $authlist) = @_;
 my @ua;
-foreach my $ua (@{$_[1]}) {
+foreach my $ua (@$authlist) {
 	if ($ua->[0] ne "*") {
 		push(@ua, "$ua->[0]=$ua->[1]");
 		}
@@ -1680,7 +1689,7 @@ foreach my $ua (@{$_[1]}) {
 		push(@ua, $ua->[1]);
 		}
 	}
-$_[0]->{'unixauth'} = join(" ", @ua);
+$miniserv->{'unixauth'} = join(" ", @ua);
 }
 
 =head2 delete_from_groups(user|@group)
@@ -1800,7 +1809,7 @@ Returns a string encrypted in MD5 format.
 =cut
 sub hash_md5_session
 {
-my $passwd = $_[0];
+my ($passwd) = @_;
 my $use_md5 = &md5_perl_module();
 
 # Add the password
