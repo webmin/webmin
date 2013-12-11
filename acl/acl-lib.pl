@@ -38,7 +38,6 @@ sub list_users
 {
 my ($only) = @_;
 my (%miniserv, @rv, %acl, %logout);
-local %_;
 &read_acl(undef, \%acl);
 &get_miniserv_config(\%miniserv);
 foreach my $a (split(/\s+/, $miniserv{'logouttimes'})) {
@@ -49,7 +48,7 @@ foreach my $a (split(/\s+/, $miniserv{'logouttimes'})) {
 open(PWFILE, $miniserv{'userfile'});
 while(<PWFILE>) {
 	s/\r|\n//g;
-	local @user = split(/:/, $_);
+	my @user = split(/:/, $_);
 	if (@user) {
 		my %user;
 		next if ($only && &indexof($user[0], @$only) < 0);
@@ -217,14 +216,14 @@ my %miniserv;
 open(GROUPS, "$config_directory/webmin.groups");
 while(<GROUPS>) {
 	s/\r|\n//g;
-	local @g = split(/:/, $_);
+	my @g = split(/:/, $_);
 	if (@g) {
 		next if ($only && &indexof($g[0], @$only) < 0);
-		local $group = { 'name' => $g[0],
-				 'members' => [ split(/\s+/, $g[1]) ],
-				 'modules' => [ split(/\s+/, $g[2]) ],
-				 'desc' => $g[3],
-				 'ownmods' => [ split(/\s+/, $g[4]) ] };
+		my $group = { 'name' => $g[0],
+			      'members' => [ split(/\s+/, $g[1]) ],
+			      'modules' => [ split(/\s+/, $g[2]) ],
+			      'desc' => $g[3],
+			      'ownmods' => [ split(/\s+/, $g[4]) ] };
 		push(@rv, $group);
 		}
 	}
@@ -617,7 +616,7 @@ else {
 	elsif (defined($user{'theme'})) {
 		$miniserv{"preroot_".$user{'name'}} = "";
 		}
-	local @logout = split(/\s+/, $miniserv{'logouttimes'});
+	my @logout = split(/\s+/, $miniserv{'logouttimes'});
 	@logout = grep { $_ !~ /^$username=/ } @logout;
 	if (defined($user{'logouttime'})) {
 		push(@logout, "$user{'name'}=$user{'logouttime'}");
@@ -626,7 +625,7 @@ else {
 	&put_miniserv_config(\%miniserv);
 	&unlock_file($ENV{'MINISERV_CONFIG'});
 
-	local @times;
+	my @times;
 	push(@times, "days", $user{'days'}) if ($user{'days'} ne '');
 	push(@times, "hours", $user{'hoursfrom'}."-".$user{'hoursto'})
 		if ($user{'hoursfrom'});
@@ -717,13 +716,13 @@ else {
 if ($username ne $user{'name'} && !$user{'proto'}) {
 	# Rename all .acl files if user renamed
 	foreach $m (@mods, "") {
-		local $file = "$config_directory/$m/$username.acl";
+		my $file = "$config_directory/$m/$username.acl";
 		if (-r $file) {
 			&rename_file($file,
 				"$config_directory/$m/$user{'name'}.acl");
 			}
 		}
-	local $file = "$config_directory/$username.acl";
+	my $file = "$config_directory/$username.acl";
 	if (-r $file) {
 		&rename_file($file, "$config_directory/$user{'name'}.acl");
 		}
@@ -751,7 +750,7 @@ if ($oldpass ne $user->{'pass'} &&
     $user->{'pass'} ne '*LK*') {
 	# Password change detected .. update change time
 	# and save the old one
-	local $nolock = $oldpass;
+	my $nolock = $oldpass;
 	$nolock =~ s/^\!//;
 	unshift(@{$user->{'olds'}}, $nolock);
 	if ($miniserv->{'pass_oldblock'}) {
@@ -1098,7 +1097,7 @@ if ($group{'proto'}) {
 else {
 	# Update local file
 	&lock_file("$config_directory/webmin.groups");
-	local $lref = &read_file_lines("$config_directory/webmin.groups");
+	my $lref = &read_file_lines("$config_directory/webmin.groups");
 	foreach $l (@$lref) {
 		if ($l =~ /^([^:]+):/ && $1 eq $groupname) {
 			$l = &group_line(\%group);
@@ -1111,7 +1110,7 @@ else {
 if ($groupname ne $group{'name'} && !$group{'proto'}) {
 	# Rename all .gacl files if group renamed
 	foreach my $m (@{$group{'modules'}}, "") {
-		local $file = "$config_directory/$m/$groupname.gacl";
+		my $file = "$config_directory/$m/$groupname.gacl";
 		if (-r $file) {
 			&rename_file($file,
 			     "$config_directory/$m/$group{'name'}.gacl");
@@ -1331,7 +1330,7 @@ sub delete_session_user
 return 1 if (&is_readonly_mode());
 &open_session_db($_[0]);
 foreach my $s (keys %sessiondb) {
-	local ($u,$t) = split(/\s+/, $sessiondb{$s});
+	my ($u,$t) = split(/\s+/, $sessiondb{$s});
 	if ($u eq $_[1]) {
 		delete($sessiondb{$s});
 		}
@@ -1355,7 +1354,7 @@ sub rename_session_user
 return 1 if (&is_readonly_mode());
 &open_session_db(\%miniserv);
 foreach my $s (keys %sessiondb) {
-	local ($u,$t) = split(/\s+/, $sessiondb{$s});
+	my ($u,$t) = split(/\s+/, $sessiondb{$s});
 	if ($u eq $_[1]) {
 		$sessiondb{$s} = "$_[2] $t";
 		}
@@ -1579,10 +1578,9 @@ my ($allusers, $allgroups, $mod, $members, $access) = @_;
 foreach my $m (@$members) {
 	if ($m !~ /^\@(.*)$/) {
 		# Member is a user
-		local ($u) = grep { $_->{'name'} eq $m } @$allusers;
+		my ($u) = grep { $_->{'name'} eq $m } @$allusers;
 		if ($u) {
-			local $aclfile =
-				"$config_directory/$mod/$u->{'name'}.acl";
+			my $aclfile = "$config_directory/$mod/$u->{'name'}.acl";
 			&lock_file($aclfile);
 			&save_module_acl($access, $u->{'name'}, $mod, 1);
 			chmod(0640, $aclfile) if (-r $aclfile);
@@ -1591,10 +1589,10 @@ foreach my $m (@$members) {
 		}
 	else {
 		# Member is a group
-		local $gname = substr($m, 1);
-		local ($g) = grep { $_->{'name'} eq $gname } @$allgroups;
+		my $gname = substr($m, 1);
+		my ($g) = grep { $_->{'name'} eq $gname } @$allgroups;
 		if ($g) {
-			local $aclfile =
+			my $aclfile =
 				"$config_directory/$mod/$g->{'name'}.gacl";
 			&lock_file($aclfile);
 			&save_group_module_acl($access, $g->{'name'}, $mod, 1);
@@ -1742,11 +1740,11 @@ if ($miniserv{'pass_nouser'}) {
 	$pass =~ /\Q$name\E/i && return $text{'cpass_name'};
 	}
 if ($miniserv{'pass_nodict'}) {
-	local $temp = &transname();
+	my $temp = &transname();
 	&open_tempfile(TEMP, ">$temp", 0, 1);
 	&print_tempfile(TEMP, $pass,"\n");
 	&close_tempfile(TEMP);
-	local $unknown;
+	my $unknown;
 	if (&has_command("ispell")) {
 		open(SPELL, "ispell -a <$temp |");
 		while(<SPELL>) {
@@ -1758,7 +1756,7 @@ if ($miniserv{'pass_nodict'}) {
 		}
 	elsif (&has_command("spell")) {
 		open(SPELL, "spell <$temp |");
-		local $line = <SPELL>;
+		my $line = <SPELL>;
 		$unknown++ if ($line);
 		close(SPELL);
 		}
@@ -1769,9 +1767,9 @@ if ($miniserv{'pass_nodict'}) {
 	$unknown || return $text{'cpass_dict'};
 	}
 if ($miniserv{'pass_oldblock'} && $user) {
-	local $c = 0;
+	my $c = 0;
 	foreach my $o (@{$user->{'olds'}}) {
-		local $enc = &encrypt_password($pass, $o);
+		my $enc = &encrypt_password($pass, $o);
 		$enc eq $o && return $text{'cpass_old'};
 		last if ($c++ > $miniserv{'pass_oldblock'});
 		}
@@ -1916,15 +1914,15 @@ return 1 if ($found);		# Already setup
 if (!$user) {
 	# Create a user if need be
 	$user = "anonymous";
-	local $uinfo = { 'name' => $user,
-			 'pass' => '*LK*',
-			 'modules' => [ $mod ],
-		       };
+	my $uinfo = { 'name' => $user,
+		      'pass' => '*LK*',
+		      'modules' => [ $mod ],
+		    };
 	&create_user($uinfo);
 	}
 else {
 	# Make sure the user has the module
-	local ($uinfo) = grep { $_->{'name'} eq $user } &list_users();
+	my ($uinfo) = grep { $_->{'name'} eq $user } &list_users();
 	if ($uinfo && &indexof($mod, @{$uinfo->{'modules'}}) < 0) {
 		push(@{$uinfo->{'modules'}}, $mod);
 		&modify_user($uinfo->{'name'}, $uinfo);
