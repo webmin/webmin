@@ -46,9 +46,9 @@ foreach my $a (split(/\s+/, $miniserv{'logouttimes'})) {
 		}
 	}
 open(PWFILE, $miniserv{'userfile'});
-while(<PWFILE>) {
-	s/\r|\n//g;
-	my @user = split(/:/, $_);
+while(my $l = <PWFILE>) {
+	$l =~ s/\r|\n//g;
+	my @user = split(/:/, $l);
 	if (@user) {
 		my %user;
 		next if ($only && &indexof($user[0], @$only) < 0);
@@ -214,9 +214,9 @@ my %miniserv;
 
 # Add groups from local files
 open(GROUPS, "$config_directory/webmin.groups");
-while(<GROUPS>) {
-	s/\r|\n//g;
-	my @g = split(/:/, $_);
+while(my $l = <GROUPS>) {
+	$l =~ s/\r|\n//g;
+	my @g = split(/:/, $l);
 	if (@g) {
 		next if ($only && &indexof($g[0], @$only) < 0);
 		my $group = { 'name' => $g[0],
@@ -522,7 +522,6 @@ sub modify_user
 my $username = $_[0];
 my %user = %{$_[1]};
 my (%miniserv, @pwfile, @acl, @mods, $m);
-local $_;
 &get_miniserv_config(\%miniserv);
 
 if ($user{'proto'}) {
@@ -617,7 +616,7 @@ else {
 		$miniserv{"preroot_".$user{'name'}} = "";
 		}
 	my @logout = split(/\s+/, $miniserv{'logouttimes'});
-	@logout = grep { $_ !~ /^$username=/ } @logout;
+	@logout = grep { !/^$username=/ } @logout;
 	if (defined($user{'logouttime'})) {
 		push(@logout, "$user{'name'}=$user{'logouttime'}");
 		}
@@ -638,8 +637,8 @@ else {
 	$allow =~ s/:/;/g;
 	my $deny = $user{'deny'};
 	$deny =~ s/:/;/g;
-	foreach (@pwfile) {
-		if (/^([^:]+):([^:]*)/ && $1 eq $username) {
+	foreach my $l (@pwfile) {
+		if ($l =~ /^([^:]+):([^:]*)/ && $1 eq $username) {
 			&add_old_password(\%user, "$2", \%miniserv);
 			&print_tempfile(PWFILE,
 				"$user{'name'}:$user{'pass'}:",
@@ -658,7 +657,7 @@ else {
 				"\n");
 			}
 		else {
-			&print_tempfile(PWFILE, $_);
+			&print_tempfile(PWFILE, $l);
 			}
 		}
 	&close_tempfile(PWFILE);
@@ -670,12 +669,12 @@ else {
 	@acl = <ACL>;
 	close(ACL);
 	&open_tempfile(ACL, ">".&acl_filename());
-	foreach (@acl) {
-		if (/^(\S+):/ && $1 eq $username) {
+	foreach my $l (@acl) {
+		if ($l =~ /^(\S+):/ && $1 eq $username) {
 			&print_tempfile(ACL, &acl_line($_[1], \@mods));
 			}
 		else {
-			&print_tempfile(ACL, $_);
+			&print_tempfile(ACL, $l);
 			}
 		}
 	&close_tempfile(ACL);
@@ -715,7 +714,7 @@ else {
 
 if ($username ne $user{'name'} && !$user{'proto'}) {
 	# Rename all .acl files if user renamed
-	foreach $m (@mods, "") {
+	foreach my $m (@mods, "") {
 		my $file = "$config_directory/$m/$username.acl";
 		if (-r $file) {
 			&rename_file($file,
@@ -773,13 +772,12 @@ sub delete_user
 {
 my ($username) = @_;
 my (@pwfile, @acl, %miniserv);
-local $_;
 
 &lock_file($ENV{'MINISERV_CONFIG'});
 &get_miniserv_config(\%miniserv);
 delete($miniserv{"preroot_".$username});
 my @logout = split(/\s+/, $miniserv{'logouttimes'});
-@logout = grep { $_ !~ /^$username=/ } @logout;
+@logout = grep { !/^$username=/ } @logout;
 $miniserv{'logouttimes'} = join(" ", @logout);
 &put_miniserv_config(\%miniserv);
 &unlock_file($ENV{'MINISERV_CONFIG'});
@@ -789,9 +787,9 @@ open(PWFILE, $miniserv{'userfile'});
 @pwfile = <PWFILE>;
 close(PWFILE);
 &open_tempfile(PWFILE, ">$miniserv{'userfile'}");
-foreach (@pwfile) {
-	if (!/^([^:]+):/ || $1 ne $username) {
-		&print_tempfile(PWFILE, $_);
+foreach my $l (@pwfile) {
+	if ($l !~ /^([^:]+):/ || $1 ne $username) {
+		&print_tempfile(PWFILE, $l);
 		}
 	}
 &close_tempfile(PWFILE);
@@ -802,9 +800,9 @@ open(ACL, &acl_filename());
 @acl = <ACL>;
 close(ACL);
 &open_tempfile(ACL, ">".&acl_filename());
-foreach (@acl) {
-	if (!/^([^:]+):/ || $1 ne $username) {
-		&print_tempfile(ACL, $_);
+foreach my $l (@acl) {
+	if ($l !~ /^([^:]+):/ || $1 ne $username) {
+		&print_tempfile(ACL, $l);
 		}
 	}
 &close_tempfile(ACL);
@@ -1098,7 +1096,7 @@ else {
 	# Update local file
 	&lock_file("$config_directory/webmin.groups");
 	my $lref = &read_file_lines("$config_directory/webmin.groups");
-	foreach $l (@$lref) {
+	foreach my $l (@$lref) {
 		if ($l =~ /^([^:]+):/ && $1 eq $groupname) {
 			$l = &group_line(\%group);
 			}
