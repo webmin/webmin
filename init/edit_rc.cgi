@@ -23,16 +23,16 @@ print &ui_table_start($text{'edit_details'}, "width=100%", 2);
 if ($in{'new'}) {
 	# When creating, show start/stop/status input fields
 	print &ui_table_row($text{'edit_name'},
-		&ui_textbox("name", undef, 20));
+		&ui_textbox("name", undef, 20), undef, ["valign=middle","valign=middle"]);
 
 	print &ui_table_row($text{'edit_startcmd'},
-		&ui_textbox("start_cmd", undef, 70));
+		&ui_textbox("start_cmd", undef, 70), undef, ["valign=middle","valign=middle"]);
 
 	print &ui_table_row($text{'edit_stopcmd'},
-		&ui_textbox("stop_cmd", undef, 70));
+		&ui_textbox("stop_cmd", undef, 70), undef, ["valign=middle","valign=middle"]);
 
 	print &ui_table_row($text{'edit_statuscmd'},
-		&ui_textbox("status_cmd", undef, 70));
+		&ui_textbox("status_cmd", undef, 70), undef, ["valign=middle","valign=middle"]);
 	}
 else {
 	# Just show fill action file contents
@@ -41,13 +41,13 @@ else {
 
 	$script = &read_file_contents($rc->{'file'});
 	print &ui_table_row($text{'edit_script'},
-		&ui_textarea("script", $script, 20, 70));
+		&ui_textarea("script", $script, 20, 70), undef, ["valign=top","valign=top"]);
 	}
 
 # Enabled at boot option
 if ($rc->{'enabled'} != 2) {
 	print &ui_table_row($text{'edit_boot'},
-		&ui_yesno_radio("enabled", int($rc->{'enabled'})));
+		&ui_yesno_radio("enabled", int($rc->{'enabled'})), undef, ["valign=middle","valign=middle"]);
 	}
 
 print &ui_table_end();

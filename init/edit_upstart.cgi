@@ -25,45 +25,45 @@ print &ui_table_start($text{'upstart_header'}, undef, 2);
 if ($in{'new'}) {
 	# Service name
 	print &ui_table_row($text{'upstart_name'},
-			    &ui_textbox("name", undef, 30));
+			    &ui_textbox("name", undef, 30), undef, ["valign=middle","valign=middle"]);
 
 	# Description
 	print &ui_table_row($text{'upstart_desc'},
-			    &ui_textbox("desc", undef, 60));
+			    &ui_textbox("desc", undef, 60), undef, ["valign=middle","valign=middle"]);
 
 	# Pre-start script
 	print &ui_table_row($text{'upstart_prestart'},
-			    &ui_textarea("prestart", undef, 5, 80));
+			    &ui_textarea("prestart", undef, 5, 80), undef, ["valign=top","valign=middle"]);
 
 	# Server command
 	print &ui_table_row($text{'upstart_server'},
 			    &ui_textbox("server", undef, 60)."<br>\n".
-			    &ui_checkbox("fork", 1, $text{'upstart_fork'}, 0));
+			    &ui_checkbox("fork", 1, $text{'upstart_fork'}, 0), undef, ["valign=middle","valign=middle"]);
 
 	# Start at boot?
 	print &ui_table_row($text{'upstart_boot'},
-			    &ui_yesno_radio("boot", 1));
+			    &ui_yesno_radio("boot", 1), undef, ["valign=middle","valign=middle"]);
 	}
 else {
 	# Service name (non-editable)
 	print &ui_table_row($text{'upstart_name'},
-			    "<tt>$in{'name'}</tt>");
+			    "<tt>$in{'name'}</tt>", undef, ["valign=middle","valign=middle"]);
 
 	# Config file
 	$cfile = "/etc/init/$in{'name'}.conf";
 	$conf = &read_file_contents($cfile);
 	print &ui_table_row($text{'upstart_conf'},
-			    &ui_textarea("conf", $conf, 20, 80));
+			    &ui_textarea("conf", $conf, 20, 80), undef, ["valign=middle","valign=middle"]);
 
 	# Current status
 	if ($u->{'boot'} eq 'start' || $u->{'boot'} eq 'stop') {
 		print &ui_table_row($text{'upstart_boot'},
-			    &ui_yesno_radio("boot", $u->{'boot'} eq 'start'));
+			    &ui_yesno_radio("boot", $u->{'boot'} eq 'start'), undef, ["valign=middle","valign=middle"]);
 		}
 	if ($u->{'status'} eq 'waiting' || $u->{'status'} eq 'running') {
 		print &ui_table_row($text{'upstart_status'},
 			$u->{'status'} eq 'waiting' ? $text{'upstart_status0'} :
-				&text('upstart_status1', $u->{'pid'}));
+				&text('upstart_status1', $u->{'pid'}), undef, ["valign=middle","valign=middle"]);
 		}
 	}
 
