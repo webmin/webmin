@@ -352,8 +352,7 @@ settings from for this new user.
 =cut
 sub create_user
 {
-my %user = %{$_[0]};
-my $clone = $_[1];
+my ($user, $clone) = @_;
 my %miniserv;
 my @mods = &list_modules();
 
@@ -366,7 +365,7 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 	if ($proto eq "mysql" || $proto eq "postgresql") {
 		# Add user with SQL
 		my $cmd = $dbh->prepare("insert into webmin_user (name,pass) values (?, ?)");
-		$cmd && $cmd->execute($user{'name'}, $user{'pass'}) ||
+		$cmd && $cmd->execute($user->{'name'}, $user->{'pass'}) ||
 			&error("Failed to add user : ".$dbh->errstr);
 		$cmd->finish();
 		my $cmd = $dbh->prepare("select max(id) from webmin_user");
@@ -376,9 +375,9 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 
 		# Add other attributes
 		my $cmd = $dbh->prepare("insert into webmin_user_attr (id,attr,value) values (?, ?, ?)");
-		foreach my $attr (keys %user) {
+		foreach my $attr (keys %$user) {
 			next if ($attr eq "name" || $attr eq "pass");
-			my $value = $user{$attr};
+			my $value = $user->{$attr};
 			if ($attr eq "olds" || $attr eq "modules" ||
 			    $attr eq "ownmods") {
 				$value = join(" ", @$value);
@@ -388,20 +387,20 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 					$dbh->errstr);
 			$cmd->finish();
 			}
-		$_[0]->{'id'} = $id;
-		$_[0]->{'proto'} = $proto;
+		$user->{'id'} = $id;
+		$user->{'proto'} = $proto;
 		}
 	elsif ($proto eq "ldap") {
 		# Add user to LDAP
-		my $dn = "cn=".$user{'name'}.",".$prefix;
+		my $dn = "cn=".$user->{'name'}.",".$prefix;
 		my @attrs = ( "objectClass", $args->{'userclass'},
-			      "cn", $user{'name'},
-			      "webminPass", $user{'pass'} );
+			      "cn", $user->{'name'},
+			      "webminPass", $user->{'pass'} );
 		my @webminattrs;
-		foreach my $attr (keys %user) {
+		foreach my $attr (keys %$user) {
 			next if ($attr eq "name" || $attr eq "pass" ||
 				 $attr eq "modules");
-			my $value = $user{$attr};
+			my $value = $user->{$attr};
 			if ($attr eq "olds" || $attr eq "ownmods") {
 				$value = join(" ", @$value);
 				}
@@ -411,102 +410,102 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 		if (@webminattrs) {
 			push(@attrs, "webminAttr", \@webminattrs);
 			}
-		if (@{$user{'modules'}}) {
-			push(@attrs, "webminModule", $user{'modules'});
+		if (@{$user->{'modules'}}) {
+			push(@attrs, "webminModule", $user->{'modules'});
 			}
 		my $rv = $dbh->add($dn, attr => \@attrs);
 		if (!$rv || $rv->code) {
 			&error("Failed to add user to LDAP : ".
 			       ($rv ? $rv->error : "Unknown error"));
 			}
-		$_[0]->{'id'} = $dn;
-		$_[0]->{'proto'} = 'ldap';
+		$user->{'id'} = $dn;
+		$user->{'proto'} = 'ldap';
 		}
 	&disconnect_userdb($miniserv{'userdb'}, $dbh);
-	$user{'proto'} = $proto;
+	$user->{'proto'} = $proto;
 	}
 else {
 	# Adding to local files
 	&lock_file($ENV{'MINISERV_CONFIG'});
-	if ($user{'theme'}) {
-		$miniserv{"preroot_".$user{'name'}} =
-			$user{'theme'}.($user{'overlay'} ? " ".$user{'overlay'} : "");
+	if ($user->{'theme'}) {
+		$miniserv{"preroot_".$user->{'name'}} =
+			$user->{'theme'}.($user->{'overlay'} ? " ".$user->{'overlay'} : "");
 		}
-	elsif (defined($user{'theme'})) {
-		$miniserv{"preroot_".$user{'name'}} = "";
+	elsif (defined($user->{'theme'})) {
+		$miniserv{"preroot_".$user->{'name'}} = "";
 		}
-	if (defined($user{'logouttime'})) {
+	if (defined($user->{'logouttime'})) {
 		my @logout = split(/\s+/, $miniserv{'logouttimes'});
-		push(@logout, "$user{'name'}=$user{'logouttime'}");
+		push(@logout, "$user->{'name'}=$user->{'logouttime'}");
 		$miniserv{'logouttimes'} = join(" ", @logout);
 		}
 	&put_miniserv_config(\%miniserv);
 	&unlock_file($ENV{'MINISERV_CONFIG'});
 
 	my @times;
-	push(@times, "days", $user{'days'}) if ($user{'days'} ne '');
-	push(@times, "hours", $user{'hoursfrom'}."-".$user{'hoursto'})
-		if ($user{'hoursfrom'});
+	push(@times, "days", $user->{'days'}) if ($user->{'days'} ne '');
+	push(@times, "hours", $user->{'hoursfrom'}."-".$user->{'hoursto'})
+		if ($user->{'hoursfrom'});
 	&lock_file($miniserv{'userfile'});
 	&open_tempfile(PWFILE, ">>$miniserv{'userfile'}");
-	my $allow = $user{'allow'};
+	my $allow = $user->{'allow'};
 	$allow =~ s/:/;/g;
-	my $deny = $user{'deny'};
+	my $deny = $user->{'deny'};
 	$deny =~ s/:/;/g;
 	&print_tempfile(PWFILE,
-		"$user{'name'}:$user{'pass'}:$user{'sync'}:$user{'cert'}:",
+		"$user->{'name'}:$user->{'pass'}:$user->{'sync'}:$user->{'cert'}:",
 		($allow ? "allow $allow" :
 		 $deny ? "deny $deny" : ""),":",
 		join(" ", @times),":",
-		$user{'lastchange'},":",
-		join(" ", @{$user{'olds'}}),":",
-		$user{'minsize'},":",
-		$user{'nochange'},":",
-		$user{'temppass'},":",
-		$user{'twofactor_provider'},":",
-		$user{'twofactor_id'},":",
-		$user{'twofactor_apikey'},
+		$user->{'lastchange'},":",
+		join(" ", @{$user->{'olds'}}),":",
+		$user->{'minsize'},":",
+		$user->{'nochange'},":",
+		$user->{'temppass'},":",
+		$user->{'twofactor_provider'},":",
+		$user->{'twofactor_id'},":",
+		$user->{'twofactor_apikey'},
 		"\n");
 	&close_tempfile(PWFILE);
 	&unlock_file($miniserv{'userfile'});
 
 	&lock_file(&acl_filename());
 	&open_tempfile(ACL, ">>".&acl_filename());
-	&print_tempfile(ACL, &acl_line(\%user, \@mods));
+	&print_tempfile(ACL, &acl_line($user, \@mods));
 	&close_tempfile(ACL);
 	&unlock_file(&acl_filename());
 
-	delete($gconfig{"lang_".$user{'name'}});
-	$gconfig{"lang_".$user{'name'}} = $user{'lang'} if ($user{'lang'});
-	delete($gconfig{"notabs_".$user{'name'}});
-	$gconfig{"notabs_".$user{'name'}} = $user{'notabs'} if ($user{'notabs'});
-	delete($gconfig{"skill_".$user{'name'}});
-	$gconfig{"skill_".$user{'name'}} = $user{'skill'} if ($user{'skill'});
-	delete($gconfig{"risk_".$user{'name'}});
-	$gconfig{"risk_".$user{'name'}} = $user{'risk'} if ($user{'risk'});
-	delete($gconfig{"rbacdeny_".$user{'name'}});
-	$gconfig{"rbacdeny_".$user{'name'}} = $user{'rbacdeny'} if ($user{'rbacdeny'});
-	delete($gconfig{"ownmods_".$user{'name'}});
-	$gconfig{"ownmods_".$user{'name'}} = join(" ", @{$user{'ownmods'}})
-		if (@{$user{'ownmods'}});
-	delete($gconfig{"theme_".$user{'name'}});
-	if ($user{'theme'}) {
-		$gconfig{"theme_".$user{'name'}} =
-			$user{'theme'}.($user{'overlay'} ? " ".$user{'overlay'} : "");
+	delete($gconfig{"lang_".$user->{'name'}});
+	$gconfig{"lang_".$user->{'name'}} = $user->{'lang'} if ($user->{'lang'});
+	delete($gconfig{"notabs_".$user->{'name'}});
+	$gconfig{"notabs_".$user->{'name'}} = $user->{'notabs'} if ($user->{'notabs'});
+	delete($gconfig{"skill_".$user->{'name'}});
+	$gconfig{"skill_".$user->{'name'}} = $user->{'skill'} if ($user->{'skill'});
+	delete($gconfig{"risk_".$user->{'name'}});
+	$gconfig{"risk_".$user->{'name'}} = $user->{'risk'} if ($user->{'risk'});
+	delete($gconfig{"rbacdeny_".$user->{'name'}});
+	$gconfig{"rbacdeny_".$user->{'name'}} = $user->{'rbacdeny'} if ($user->{'rbacdeny'});
+	delete($gconfig{"ownmods_".$user->{'name'}});
+	$gconfig{"ownmods_".$user->{'name'}} = join(" ", @{$user->{'ownmods'}})
+		if (@{$user->{'ownmods'}});
+	delete($gconfig{"theme_".$user->{'name'}});
+	if ($user->{'theme'}) {
+		$gconfig{"theme_".$user->{'name'}} =
+			$user->{'theme'}.($user->{'overlay'} ? " ".$user->{'overlay'} : "");
 		}
-	elsif (defined($user{'theme'})) {
-		$gconfig{"theme_".$user{'name'}} = '';
+	elsif (defined($user->{'theme'})) {
+		$gconfig{"theme_".$user->{'name'}} = '';
 		}
-	$gconfig{"readonly_".$user{'name'}} = $user{'readonly'}
-		if (defined($user{'readonly'}));
-	$gconfig{"realname_".$user{'name'}} = $user{'real'}
-		if (defined($user{'real'}));
+	$gconfig{"readonly_".$user->{'name'}} = $user->{'readonly'}
+		if (defined($user->{'readonly'}));
+	$gconfig{"realname_".$user->{'name'}} = $user->{'real'}
+		if (defined($user->{'real'}));
 	&write_file("$config_directory/config", \%gconfig);
 	}
 
 # Copy ACLs from user being cloned
 if ($clone) {
-	&copy_acl_files($clone, $user{'name'}, [ "", @mods ]);
+	&copy_acl_files($clone, $user->{'name'}, [ "", @mods ]);
 	}
 }
 
@@ -519,12 +518,11 @@ to create_user.
 =cut
 sub modify_user
 {
-my $username = $_[0];
-my %user = %{$_[1]};
+my ($username, $user) = @_;
 my (%miniserv, @pwfile, @acl, @mods, $m);
 &get_miniserv_config(\%miniserv);
 
-if ($user{'proto'}) {
+if ($user->{'proto'}) {
 	# In users and groups DB
 	my ($dbh, $proto) = &connect_userdb($miniserv{'userdb'});
 	&error("Failed to connect to user database : $dbh") if (!ref($dbh));
@@ -532,35 +530,35 @@ if ($user{'proto'}) {
 		# Get old password, for change detection
 		my $cmd = $dbh->prepare(
 			"select pass from webmin_user where id = ?");
-		$cmd && $cmd->execute($user{'id'}) ||
+		$cmd && $cmd->execute($user->{'id'}) ||
 			&error("Failed to get old password : ".$dbh->errstr);
 		my ($oldpass) = $cmd->fetchrow();
 		$cmd->finish();
-		&add_old_password(\%user, $oldpass, \%miniserv);
+		&add_old_password($user, $oldpass, \%miniserv);
 
 		# Update primary details
 		my $cmd = $dbh->prepare("update webmin_user set name = ?, ".
 				        "pass = ? where id = ?");
-		$cmd && $cmd->execute($user{'name'}, $user{'pass'},
-				      $user{'id'}) ||
+		$cmd && $cmd->execute($user->{'name'}, $user->{'pass'},
+				      $user->{'id'}) ||
 			&error("Failed to update user : ".$dbh->errstr);
 		$cmd->finish();
 
 		# Re-save attributes
 		my $cmd = $dbh->prepare("delete from webmin_user_attr ".
 					"where id = ?");
-		$cmd && $cmd->execute($user{'id'}) ||
+		$cmd && $cmd->execute($user->{'id'}) ||
 			&error("Failed to delete attrs : ".$dbh->errstr);
 		my $cmd = $dbh->prepare("insert into webmin_user_attr ".
 					"(id,attr,value) values (?, ?, ?)");
-		foreach my $attr (keys %user) {
+		foreach my $attr (keys %$user) {
 			next if ($attr eq "name" || $attr eq "pass");
-			my $value = $user{$attr};
+			my $value = $user->{$attr};
 			if ($attr eq "olds" || $attr eq "modules" ||
 			    $attr eq "ownmods") {
 				$value = join(" ", @$value);
 				}
-			$cmd->execute($user{'id'}, $attr, $value) ||
+			$cmd->execute($user->{'id'}, $attr, $value) ||
 				&error("Failed to add user attribute : ".
 					$dbh->errstr);
 			$cmd->finish();
@@ -568,26 +566,26 @@ if ($user{'proto'}) {
 		}
 	elsif ($proto eq "ldap") {
 		# Rename in LDAP if needed
-		if ($user{'name'} ne $username) {
-			my $newdn = $user{'id'};
-			$newdn =~ s/^cn=\Q$username\E,/cn=$user{'name'},/;
-			my $rv = $dbh->moddn($user{'id'},
-					     newrdn => "cn=$user{'name'}");
+		if ($user->{'name'} ne $username) {
+			my $newdn = $user->{'id'};
+			$newdn =~ s/^cn=\Q$username\E,/cn=$user->{'name'},/;
+			my $rv = $dbh->moddn($user->{'id'},
+					     newrdn => "cn=$user->{'name'}");
 			if (!$rv || $rv->code) {
 				&error("Failed to rename user : ".
 				       ($rv ? $rv->error : "Unknown error"));
 				}
-			$user{'id'} = $newdn;
+			$user->{'id'} = $newdn;
 			}
 
 		# Re-save all the attributes
-		my @attrs = ( "cn", $user{'name'},
-			      "webminPass", $user{'pass'} );
+		my @attrs = ( "cn", $user->{'name'},
+			      "webminPass", $user->{'pass'} );
 		my @webminattrs;
-		foreach my $attr (keys %user) {
+		foreach my $attr (keys %$user) {
 			next if ($attr eq "name" || $attr eq "desc" ||
 				 $attr eq "modules");
-			my $value = $user{$attr};
+			my $value = $user->{$attr};
 			if ($attr eq "olds" || $attr eq "ownmods") {
 				$value = join(" ", @$value);
 				}
@@ -595,8 +593,8 @@ if ($user{'proto'}) {
 			     defined($value) ? $attr."=".$value : $attr);
 			}
 		push(@attrs, "webminAttr", \@webminattrs);
-		push(@attrs, "webminModule", $user{'modules'});
-		my $rv = $dbh->modify($user{'id'}, replace => { @attrs });
+		push(@attrs, "webminModule", $user->{'modules'});
+		my $rv = $dbh->modify($user->{'id'}, replace => { @attrs });
 		if (!$rv || $rv->code) {
 			&error("Failed to modify user : ".
 			       ($rv ? $rv->error : "Unknown error"));
@@ -608,52 +606,52 @@ else {
 	# In local files
 	&lock_file($ENV{'MINISERV_CONFIG'});
 	delete($miniserv{"preroot_".$username});
-	if ($user{'theme'}) {
-		$miniserv{"preroot_".$user{'name'}} =
-		  $user{'theme'}.($user{'overlay'} ? " ".$user{'overlay'} : "");
+	if ($user->{'theme'}) {
+		$miniserv{"preroot_".$user->{'name'}} =
+		  $user->{'theme'}.($user->{'overlay'} ? " ".$user->{'overlay'} : "");
 		}
-	elsif (defined($user{'theme'})) {
-		$miniserv{"preroot_".$user{'name'}} = "";
+	elsif (defined($user->{'theme'})) {
+		$miniserv{"preroot_".$user->{'name'}} = "";
 		}
 	my @logout = split(/\s+/, $miniserv{'logouttimes'});
 	@logout = grep { !/^$username=/ } @logout;
-	if (defined($user{'logouttime'})) {
-		push(@logout, "$user{'name'}=$user{'logouttime'}");
+	if (defined($user->{'logouttime'})) {
+		push(@logout, "$user->{'name'}=$user->{'logouttime'}");
 		}
 	$miniserv{'logouttimes'} = join(" ", @logout);
 	&put_miniserv_config(\%miniserv);
 	&unlock_file($ENV{'MINISERV_CONFIG'});
 
 	my @times;
-	push(@times, "days", $user{'days'}) if ($user{'days'} ne '');
-	push(@times, "hours", $user{'hoursfrom'}."-".$user{'hoursto'})
-		if ($user{'hoursfrom'});
+	push(@times, "days", $user->{'days'}) if ($user->{'days'} ne '');
+	push(@times, "hours", $user->{'hoursfrom'}."-".$user->{'hoursto'})
+		if ($user->{'hoursfrom'});
 	&lock_file($miniserv{'userfile'});
 	open(PWFILE, $miniserv{'userfile'});
 	@pwfile = <PWFILE>;
 	close(PWFILE);
 	&open_tempfile(PWFILE, ">$miniserv{'userfile'}");
-	my $allow = $user{'allow'};
+	my $allow = $user->{'allow'};
 	$allow =~ s/:/;/g;
-	my $deny = $user{'deny'};
+	my $deny = $user->{'deny'};
 	$deny =~ s/:/;/g;
 	foreach my $l (@pwfile) {
 		if ($l =~ /^([^:]+):([^:]*)/ && $1 eq $username) {
-			&add_old_password(\%user, "$2", \%miniserv);
+			&add_old_password($user, "$2", \%miniserv);
 			&print_tempfile(PWFILE,
-				"$user{'name'}:$user{'pass'}:",
-				"$user{'sync'}:$user{'cert'}:",
+				"$user->{'name'}:$user->{'pass'}:",
+				"$user->{'sync'}:$user->{'cert'}:",
 				($allow ? "allow $allow" :
 				 $deny ? "deny $deny" : ""),":",
 				join(" ", @times),":",
-				$user{'lastchange'},":",
-				join(" ", @{$user{'olds'}}),":",
-				$user{'minsize'},":",
-				$user{'nochange'},":",
-				$user{'temppass'},":",
-				$user{'twofactor_provider'},":",
-				$user{'twofactor_id'},":",
-				$user{'twofactor_apikey'},
+				$user->{'lastchange'},":",
+				join(" ", @{$user->{'olds'}}),":",
+				$user->{'minsize'},":",
+				$user->{'nochange'},":",
+				$user->{'temppass'},":",
+				$user->{'twofactor_provider'},":",
+				$user->{'twofactor_id'},":",
+				$user->{'twofactor_apikey'},
 				"\n");
 			}
 		else {
@@ -671,7 +669,7 @@ else {
 	&open_tempfile(ACL, ">".&acl_filename());
 	foreach my $l (@acl) {
 		if ($l =~ /^(\S+):/ && $1 eq $username) {
-			&print_tempfile(ACL, &acl_line($_[1], \@mods));
+			&print_tempfile(ACL, &acl_line($user, \@mods));
 			}
 		else {
 			&print_tempfile(ACL, $l);
@@ -681,55 +679,55 @@ else {
 	&unlock_file(&acl_filename());
 
 	delete($gconfig{"lang_".$username});
-	$gconfig{"lang_".$user{'name'}} = $user{'lang'} if ($user{'lang'});
+	$gconfig{"lang_".$user->{'name'}} = $user->{'lang'} if ($user->{'lang'});
 	delete($gconfig{"notabs_".$username});
-	$gconfig{"notabs_".$user{'name'}} = $user{'notabs'}
-		if ($user{'notabs'});
+	$gconfig{"notabs_".$user->{'name'}} = $user->{'notabs'}
+		if ($user->{'notabs'});
 	delete($gconfig{"skill_".$username});
-	$gconfig{"skill_".$user{'name'}} = $user{'skill'} if ($user{'skill'});
+	$gconfig{"skill_".$user->{'name'}} = $user->{'skill'} if ($user->{'skill'});
 	delete($gconfig{"risk_".$username});
-	$gconfig{"risk_".$user{'name'}} = $user{'risk'} if ($user{'risk'});
+	$gconfig{"risk_".$user->{'name'}} = $user->{'risk'} if ($user->{'risk'});
 	delete($gconfig{"rbacdeny_".$username});
-	$gconfig{"rbacdeny_".$user{'name'}} = $user{'rbacdeny'}
-		if ($user{'rbacdeny'});
+	$gconfig{"rbacdeny_".$user->{'name'}} = $user->{'rbacdeny'}
+		if ($user->{'rbacdeny'});
 	delete($gconfig{"ownmods_".$username});
-	$gconfig{"ownmods_".$user{'name'}} = join(" ", @{$user{'ownmods'}})
-		if (@{$user{'ownmods'}});
+	$gconfig{"ownmods_".$user->{'name'}} = join(" ", @{$user->{'ownmods'}})
+		if (@{$user->{'ownmods'}});
 	delete($gconfig{"theme_".$username});
-	if ($user{'theme'}) {
-		$gconfig{"theme_".$user{'name'}} =
-		  $user{'theme'}.($user{'overlay'} ? " ".$user{'overlay'} : "");
+	if ($user->{'theme'}) {
+		$gconfig{"theme_".$user->{'name'}} =
+		  $user->{'theme'}.($user->{'overlay'} ? " ".$user->{'overlay'} : "");
 		}
-	elsif (defined($user{'theme'})) {
-		$gconfig{"theme_".$user{'name'}} = '';
+	elsif (defined($user->{'theme'})) {
+		$gconfig{"theme_".$user->{'name'}} = '';
 		}
 	delete($gconfig{"readonly_".$username});
-	$gconfig{"readonly_".$user{'name'}} = $user{'readonly'}
-		if (defined($user{'readonly'}));
+	$gconfig{"readonly_".$user->{'name'}} = $user->{'readonly'}
+		if (defined($user->{'readonly'}));
 	delete($gconfig{"realname_".$username});
-	$gconfig{"realname_".$user{'name'}} = $user{'real'}
-		if (defined($user{'real'}));
+	$gconfig{"realname_".$user->{'name'}} = $user->{'real'}
+		if (defined($user->{'real'}));
 	&write_file("$config_directory/config", \%gconfig);
 	}
 
-if ($username ne $user{'name'} && !$user{'proto'}) {
+if ($username ne $user->{'name'} && !$user->{'proto'}) {
 	# Rename all .acl files if user renamed
 	foreach my $m (@mods, "") {
 		my $file = "$config_directory/$m/$username.acl";
 		if (-r $file) {
 			&rename_file($file,
-				"$config_directory/$m/$user{'name'}.acl");
+				"$config_directory/$m/$user->{'name'}.acl");
 			}
 		}
 	my $file = "$config_directory/$username.acl";
 	if (-r $file) {
-		&rename_file($file, "$config_directory/$user{'name'}.acl");
+		&rename_file($file, "$config_directory/$user->{'name'}.acl");
 		}
 	}
 
-if ($miniserv{'session'} && $username ne $user{'name'}) {
+if ($miniserv{'session'} && $username ne $user->{'name'}) {
 	# Modify all sessions for the renamed user
-	&rename_session_user(\&miniserv, $username, $user{'name'});
+	&rename_session_user(\&miniserv, $username, $user->{'name'});
 	}
 }
 
@@ -922,8 +920,7 @@ keys are :
 =cut
 sub create_group
 {
-my %group = %{$_[0]};
-my $clone = $_[1];
+my ($group, $clone) = @_;
 my %miniserv;
 &get_miniserv_config(\%miniserv);
 
@@ -934,7 +931,7 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 	if ($proto eq "mysql" || $proto eq "postgresql") {
 		# Add group with SQL
 		my $cmd = $dbh->prepare("insert into webmin_group (name,description) values (?, ?)");
-		$cmd && $cmd->execute($group{'name'}, $group{'desc'}) ||
+		$cmd && $cmd->execute($group->{'name'}, $group->{'desc'}) ||
 			&error("Failed to add group : ".$dbh->errstr);
 		$cmd->finish();
 		my $cmd = $dbh->prepare("select max(id) from webmin_group");
@@ -944,9 +941,9 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 
 		# Add other attributes
 		my $cmd = $dbh->prepare("insert into webmin_group_attr (id,attr,value) values (?, ?, ?)");
-		foreach my $attr (keys %group) {
+		foreach my $attr (keys %$group) {
 			next if ($attr eq "name" || $attr eq "desc");
-			my $value = $group{$attr};
+			my $value = $group->{$attr};
 			if ($attr eq "members" || $attr eq "modules" ||
 			    $attr eq "ownmods") {
 				$value = join(" ", @$value);
@@ -961,15 +958,15 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 		}
 	elsif ($proto eq "ldap") {
 		# Add group to LDAP
-		my $dn = "cn=".$group{'name'}.",".$prefix;
+		my $dn = "cn=".$group->{'name'}.",".$prefix;
 		my @attrs = ( "objectClass", $args->{'groupclass'},
-			      "cn", $group{'name'},
-			      "webminDesc", $group{'desc'} );
+			      "cn", $group->{'name'},
+			      "webminDesc", $group->{'desc'} );
 		my @webminattrs;
-		foreach my $attr (keys %group) {
+		foreach my $attr (keys %$group) {
 			next if ($attr eq "name" || $attr eq "desc" ||
 				 $attr eq "modules");
-			my $value = $group{$attr};
+			my $value = $group->{$attr};
 			if ($attr eq "members" || $attr eq "ownmods") {
 				$value = join(" ", @$value);
 				}
@@ -978,8 +975,8 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 		if (@webminattrs) {
 			push(@attrs, "webminAttr", \@webminattrs);
 			}
-		if (@{$group{'modules'}}) {
-			push(@attrs, "webminModule", $group{'modules'});
+		if (@{$group->{'modules'}}) {
+			push(@attrs, "webminModule", $group->{'modules'});
 			}
 		my $rv = $dbh->add($dn, attr => \@attrs);
 		if (!$rv || $rv->code) {
@@ -990,20 +987,20 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 		$_[0]->{'proto'} = 'ldap';
 		}
 	&disconnect_userdb($miniserv{'userdb'}, $dbh);
-	$group{'proto'} = $proto;
+	$group->{'proto'} = $proto;
 	}
 else {
 	# Adding to local files
 	&lock_file("$config_directory/webmin.groups");
 	open(GROUP, ">>$config_directory/webmin.groups");
-	print GROUP &group_line(\%group),"\n";
+	print GROUP &group_line($group),"\n";
 	close(GROUP);
 	&unlock_file("$config_directory/webmin.groups");
 	}
 
 if ($clone) {
 	# Clone ACLs from original group
-	&copy_acl_files($clone, $group{'name'}, [ "", &list_modules() ],
+	&copy_acl_files($clone, $group->{'name'}, [ "", &list_modules() ],
 			"group", "group");
 	}
 }
@@ -1017,12 +1014,11 @@ returned by list_groups.
 =cut
 sub modify_group
 {
-my $groupname = $_[0];
-my %group = %{$_[1]};
+my ($groupname, $group) = @_;
 my %miniserv;
 &get_miniserv_config(\%miniserv);
 
-if ($group{'proto'}) {
+if ($group->{'proto'}) {
 	# In users and groups DB
 	my ($dbh, $proto) = &connect_userdb($miniserv{'userdb'});
 	&error("Failed to connect to group database : $dbh") if (!ref($dbh));
@@ -1030,26 +1026,26 @@ if ($group{'proto'}) {
 		# Update primary details
 		my $cmd = $dbh->prepare("update webmin_group set name = ?, ".
 				        "description = ? where id = ?");
-		$cmd && $cmd->execute($group{'name'}, $group{'desc'},
-				      $group{'id'}) ||
+		$cmd && $cmd->execute($group->{'name'}, $group->{'desc'},
+				      $group->{'id'}) ||
 			&error("Failed to update group : ".$dbh->errstr);
 		$cmd->finish();
 
 		# Re-save attributes
 		my $cmd = $dbh->prepare("delete from webmin_group_attr ".
 					"where id = ?");
-		$cmd && $cmd->execute($group{'id'}) ||
+		$cmd && $cmd->execute($group->{'id'}) ||
 			&error("Failed to delete attrs : ".$dbh->errstr);
 		my $cmd = $dbh->prepare("insert into webmin_group_attr ".
 					"(id,attr,value) values (?, ?, ?)");
-		foreach my $attr (keys %group) {
+		foreach my $attr (keys %$group) {
 			next if ($attr eq "name" || $attr eq "desc");
-			my $value = $group{$attr};
+			my $value = $group->{$attr};
 			if ($attr eq "members" || $attr eq "modules" ||
 			    $attr eq "ownmods") {
 				$value = join(" ", @$value);
 				}
-			$cmd->execute($group{'id'}, $attr, $value) ||
+			$cmd->execute($group->{'id'}, $attr, $value) ||
 				&error("Failed to add group attribute : ".
 					$dbh->errstr);
 			$cmd->finish();
@@ -1057,34 +1053,34 @@ if ($group{'proto'}) {
 		}
 	elsif ($proto eq "ldap") {
 		# Rename in LDAP if needed
-		if ($group{'name'} ne $groupname) {
-			my $newdn = $group{'id'};
-			$newdn =~ s/^cn=\Q$groupname\E,/cn=$group{'name'},/;
-			my $rv = $dbh->moddn($group{'id'},
-					     newrdn => "cn=$group{'name'}");
+		if ($group->{'name'} ne $groupname) {
+			my $newdn = $group->{'id'};
+			$newdn =~ s/^cn=\Q$groupname\E,/cn=$group->{'name'},/;
+			my $rv = $dbh->moddn($group->{'id'},
+					     newrdn => "cn=$group->{'name'}");
 			if (!$rv || $rv->code) {
 				&error("Failed to rename group : ".
 				       ($rv ? $rv->error : "Unknown error"));
 				}
-			$group{'id'} = $newdn;
+			$group->{'id'} = $newdn;
 			}
 
 		# Re-save all the attributes
-		my @attrs = ( "cn", $group{'name'},
-			      "webminDesc", $group{'desc'} );
+		my @attrs = ( "cn", $group->{'name'},
+			      "webminDesc", $group->{'desc'} );
 		my @webminattrs;
-		foreach my $attr (keys %group) {
+		foreach my $attr (keys %$group) {
 			next if ($attr eq "name" || $attr eq "desc" ||
 				 $attr eq "modules");
-			my $value = $group{$attr};
+			my $value = $group->{$attr};
 			if ($attr eq "members" || $attr eq "ownmods") {
 				$value = join(" ", @$value);
 				}
 			push(@webminattrs, $attr."=".$value);
 			}
 		push(@attrs, "webminAttr", \@webminattrs);
-		push(@attrs, "webminModule", $group{'modules'});
-		my $rv = $dbh->modify($group{'id'}, replace => { @attrs });
+		push(@attrs, "webminModule", $group->{'modules'});
+		my $rv = $dbh->modify($group->{'id'}, replace => { @attrs });
 		if (!$rv || $rv->code) {
 			&error("Failed to modify group : ".
 			       ($rv ? $rv->error : "Unknown error"));
@@ -1098,20 +1094,20 @@ else {
 	my $lref = &read_file_lines("$config_directory/webmin.groups");
 	foreach my $l (@$lref) {
 		if ($l =~ /^([^:]+):/ && $1 eq $groupname) {
-			$l = &group_line(\%group);
+			$l = &group_line($group);
 			}
 		}
 	&flush_file_lines("$config_directory/webmin.groups");
 	&unlock_file("$config_directory/webmin.groups");
 	}
 
-if ($groupname ne $group{'name'} && !$group{'proto'}) {
+if ($groupname ne $group->{'name'} && !$group->{'proto'}) {
 	# Rename all .gacl files if group renamed
-	foreach my $m (@{$group{'modules'}}, "") {
+	foreach my $m (@{$group->{'modules'}}, "") {
 		my $file = "$config_directory/$m/$groupname.gacl";
 		if (-r $file) {
 			&rename_file($file,
-			     "$config_directory/$m/$group{'name'}.gacl");
+			     "$config_directory/$m/$group->{'name'}.gacl");
 			}
 		}
 	}
