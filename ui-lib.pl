@@ -1355,6 +1355,7 @@ The parameters are :
 =cut
 sub ui_date_input
 {
+return &theme_ui_date_input(@_) if (defined(&theme_ui_date_input));
 my ($day, $month, $year, $dayname, $monthname, $yearname, $dis) = @_;
 my $rv;
 $rv .= "<span class='ui_data'>";
