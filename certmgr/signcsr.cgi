@@ -33,7 +33,7 @@ if ($in{'submitted'} eq "sign") {
 }
 
 if ($error) {
-        print "<hr> <b>$text{'signcsr_error'}</b>\n<ul>\n";
+        print &ui_hr()."<b>$text{'signcsr_error'}</b>\n<ul>\n";
         print "$error</ul>\n$text{'gencert_pleasefix'}\n";
 }
 
