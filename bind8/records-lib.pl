@@ -15,7 +15,17 @@ if ($origin ne ".") {
 	}
 $file = &absolute_path($_[0]);
 local $rootfile = $_[4] ? $file : &make_chroot($file);
-open(FILE, $rootfile);
+if (&is_raw_format_records($rootfile)) {
+	# Convert from raw format first
+	&has_command("named-compilezone") ||
+		&error("Zone file $rootfile is in raw format, but the ".
+		       "named-compilezone command is not installed");
+	&open_execute_command(FILE, "named-compilezone -f raw -F text -o - $origin $rootfile", 1, 1);
+	}
+else {
+	# Can read text format records directly
+	open(FILE, $rootfile);
+	}
 $lnum = 0;
 local ($gotsoa, $aftersoa);
 while($line = <FILE>) {
@@ -288,6 +298,7 @@ return @rv;
 sub create_record
 {
 local $fn = &make_chroot(&absolute_path($_[0]));
+&is_raw_format_records($fn) && &error("Raw format zone files cannot be edited");
 local $lref = &read_file_lines($fn);
 push(@$lref, &make_record(@_[1..$#_]));
 &flush_file_lines($fn);
@@ -298,6 +309,7 @@ push(@$lref, &make_record(@_[1..$#_]));
 sub modify_record
 {
 local $fn = &make_chroot(&absolute_path($_[0]));
+&is_raw_format_records($fn) && &error("Raw format zone files cannot be edited");
 local $lref = &read_file_lines($fn);
 local $lines = $_[1]->{'eline'} - $_[1]->{'line'} + 1;
 splice(@$lref, $_[1]->{'line'}, $lines, &make_record(@_[2..$#_]));
@@ -309,6 +321,7 @@ splice(@$lref, $_[1]->{'line'}, $lines, &make_record(@_[2..$#_]));
 sub delete_record
 {
 local $fn = &make_chroot(&absolute_path($_[0]));
+&is_raw_format_records($fn) && &error("Raw format zone files cannot be edited");
 local $lref = &read_file_lines($fn);
 local $lines = $_[1]->{'eline'} - $_[1]->{'line'} + 1;
 splice(@$lref, $_[1]->{'line'}, $lines);
@@ -903,6 +916,18 @@ sub get_dnskey_rrset
 		}
 	}
 	return @rv;
+}
+
+# is_raw_format_records(file)
+# Checks if a zone file is in BIND's new raw or text format
+sub is_raw_format_records
+{
+my ($file) = @_;
+open(RAW, $file);
+my $buf;
+read(RAW, $buf, 3);
+close(RAW);
+return $buf eq "\0\0\0";
 }
 
 1;

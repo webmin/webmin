@@ -300,6 +300,7 @@ text_undo=Undo
 text_ecannot=You are not allowed to edit record files
 text_none=However the file is currently empty, probably because the zone has not yet been transferred from the master server.
 text_soa=Increase serial number automatically
+text_rawformat=This zone is in raw binary format, and so cannot be displayed as text.
 
 restart_err=Failed to apply changes
 restart_ecannot=You are not allowed to restart BIND

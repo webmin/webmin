@@ -38,7 +38,7 @@ if (!$in{'cn'}) { $in{'cn'}=&get_system_hostname(); }
 if (!$in{'days'}) { $in{'days'}=$config{'default_days'}; }
 
 if ($error) {
-        print "<hr><b>$text{'gencert_error'}</b>\n<ul>\n";
+        print &ui_hr()."<b>$text{'gencert_error'}</b>\n<ul>\n";
         print "$error</ul>\n$text{'gencert_pleasefix'}\n";
 }
 
