@@ -72,7 +72,7 @@ if ($st[7] != $config{'dhcpd_size'} || $st[9] != $config{'dhcpd_mtime'}) {
 
 # Create lookup type HTML
 # XXX change text, add to lookup_*
-print ui_select("match", undef, [ [0,$text{'index_match0'},"selected"],
+$matches = ui_select("match", undef, [ [0,$text{'index_match0'},"selected"],
                             [1,$text{'index_match1'},""],
                             [2,$text{'index_match2'},""] ]);
 
@@ -445,7 +445,7 @@ if ($config{'dhcpd_version'} >= 3 && $access{'zones'}) {
 	@zones = sort { $a->{'values'}->[0] <=> $b->{'values'}->[0] } @zones;
 	if (@zones) {
 		# display zones
-        print &ui_link("edit_zones.cgi?new=1",$text{'index_addzone'})."&nbsp;&nbsp;"\n" if $access{'c_sub'};
+        print &ui_link("edit_zones.cgi?new=1",$text{'index_addzone'})."&nbsp;&nbsp;\n" if $access{'c_sub'};
 		foreach $z (@zones) {
 			# print "ZONE: $z->{'value'} <br>";
 			push(@zlinks, "edit_zones.cgi?idx=$z->{'index'}");
@@ -464,7 +464,7 @@ if ($config{'dhcpd_version'} >= 3 && $access{'zones'}) {
 	else {
 		print "<b>$text{'index_nozones'}</b><p>\n";
 		}
-    print &ui_link("edit_zones.cgi?new=1",$text{'index_addzone'})."&nbsp;&nbsp;"\n" if $access{'c_sub'};
+    print &ui_link("edit_zones.cgi?new=1",$text{'index_addzone'})."&nbsp;&nbsp;\n" if $access{'c_sub'};
 	print &ui_hr();
 
 }

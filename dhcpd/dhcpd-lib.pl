@@ -302,14 +302,17 @@ sub opt_input
 {
 local($v, $rv);
 $v = &find($_[1], $_[2]);
-$rv = "<td><b>$_[0]</b></td> <td nowrap";
+$rv = "<td valign=middle><b>$_[0]</b></td><td valign=middle nowrap";
 $rv .= $_[4] > 30 ? " colspan=3>\n" : ">\n";
-$rv .= sprintf "<input type=radio name=$_[1]_def value=1 %s> $_[3]\n",
-	$v ? "" : "checked";
-$rv .= sprintf "<input type=radio name=$_[1]_def value=0 %s> ",
-	$v ? "checked" : "";
-$rv .= sprintf "<input name=$_[1] size=$_[4] value=\"%s\"> $_[5]</td>\n",
-	$v ? $v->{'value'} : "";
+$rv .= &ui_radio($_[1]."_def", ( $v ? 0 : 1 ), [ [ 1, $_[3] ], [ 0, "&nbsp;" ] ]);
+$rv .= &ui_textbox($_[1], ( $v ? $v->{'value'} : "" ), $_[4])."&nbsp;".$_[5];
+$rv .= "</td>";
+#$rv .= sprintf "<input type=radio name=$_[1]_def value=1 %s> $_[3]\n",
+#	$v ? "" : "checked";
+#$rv .= sprintf "<input type=radio name=$_[1]_def value=0 %s> ",
+#	$v ? "checked" : "";
+#$rv .= sprintf "<input name=$_[1] size=$_[4] value=\"%s\"> $_[5]</td>\n",
+#	$v ? $v->{'value'} : "";
 return $rv;
 }
 
