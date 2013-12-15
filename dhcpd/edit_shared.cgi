@@ -23,23 +23,23 @@ else {
 
 # display
 &ui_print_header(undef, $in{'new'} ? $text{'esh_crheader'} : $text{'esh_eheader'}, "");
+print &ui_form_start("save_shared.cgi", "post");
+print &ui_table_start($text{'esh_tabhdr'}, "width=100%", 4);
 
-print "<form action=save_shared.cgi method=post>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'esh_tabhdr'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print "<tr><td valign=middle><b>$text{'esh_desc'}</b></td>\n";
+print "<td valign=middle colspan=3>";
+print &ui_textbox("desc", ( $sha ? &html_escape($sha->{'comment'}) : "" ), 60);
+print "</td>";
+print "</tr>";
 
-print "<tr> <td><b>$text{'esh_desc'}</b></td>\n";
-printf "<td colspan=3><input name=desc size=60 value='%s'></td> </tr>\n",
-	$sha ? &html_escape($sha->{'comment'}) : "";
-
-print "<tr> <td><b>$text{'esh_netname'}</b></td>\n";
-printf "<td><input name=name size=15 value=\"%s\"></td>\n",
-	$sha ? $sha->{'values'}->[0] : "";
+print "<tr><td valign=middle><b>$text{'esh_netname'}</b></td>\n";
+print "<td valign=middle>";
+print &ui_textbox("name", ( $sha ? $sha->{'values'}->[0] : "" ), 15);
+print "</td>";
 
 &display_params($sconf, "shared-network");
 
-print "<tr> <td colspan=4> <table border=0 width=100%>\n";
+print "<tr><td colspan=4><table border=0 width=100%>\n";
 foreach $h (&find("host", $conf)) {
 	push(@host, $h) if &can('r', \%access, $h);
 	}
@@ -129,7 +129,8 @@ if (!$in{'new'}) {
 	}
 print "</table></td></tr>\n";
 
-print "</table></td></tr></table>\n";
+print &ui_table_end();
+
 if (!$in{'new'}) {
 	print "<input type=hidden name=idx value=\"$in{'idx'}\">\n";
 	print "<table width=100%><tr>\n";
@@ -178,6 +179,6 @@ if ($config{'dhcpd_version'} >= 3 && !$in{'new'}) {
 	      "$text{'esub_pooladd'}</a><br>\n";
 	}
 
-print "</form>\n";
+print &ui_form_end();
 &ui_print_footer("", $text{'esh_return'});
 

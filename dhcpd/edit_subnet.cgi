@@ -35,56 +35,54 @@ foreach $s (&find("shared-network", $conf)) {
 		}
 	}
 
-print "<form action=save_subnet.cgi method=post>\n";
-print "<input name=ret value=\"$in{'ret'}\" type=hidden>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'esub_tabhdr'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_form_start("save_subnet.cgi", "post");
+print &ui_hidden("ret",$in{'ret'});
+print &ui_table_start($text{'esub_tabhdr'}, "width=100%", 4);
 
-print "<tr> <td><b>$text{'esub_desc'}</b></td>\n";
-printf "<td colspan=3><input name=desc size=60 value='%s'></td> </tr>\n",
-	$sub ? &html_escape($sub->{'comment'}) : "";
+print "<tr><td valign=middle><b>$text{'esub_desc'}</b></td>\n";
+print "<td valign=middle colspan=3>";
+print &ui_textbox("desc", ( $sub ? &html_escape($sub->{'comment'}) : "" ), 60);
+print "</td>";
+print "</tr>";
 
-print "<tr> <td><b>$text{'esub_naddr'}</b></td>\n";
-printf "<td><input name=network size=25 value=\"%s\"></td>\n",
-	$sub ? $sub->{'values'}->[0] : "";
+print "<tr><td valign=middle><b>$text{'esub_naddr'}</b></td>\n";
+print "<td valign=middle>";
+print &ui_textbox("network", ( $sub ? $sub->{'values'}->[0] : "" ), 25);
+print "</td>";
 
-print "<td><b>$text{'esub_nmask'}</b></td>\n";
-printf "<td><input name=netmask size=15 value=\"%s\"></td> </tr>\n",
-	$sub ? $sub->{'values'}->[2] : "";
+print "<td valign=middle><b>$text{'esub_nmask'}</b></td>\n";
+print "<td valign=middle>";
+print &ui_textbox("netmask", ( $sub ? $sub->{'values'}->[2] : "" ), 25);
+print "</td>";
+print "</tr>";
 
 @range = $sub ? &find("range", $sub->{'members'}) : ();
-print "<tr> <td valign=top><b>$text{'esub_arange'}</b></td> <td colspan=3>\n";
+print "<tr><td valign=middle><b>$text{'esub_arange'}</b></td><td valign=middle colspan=3>\n";
 for($i=0; $i<=@range; $i++) {
 	$r = $range[$i];
-	local $dyn = ($r->{'values'}->[0] eq "dynamic-bootp");
-	printf "<input name=range_low_$i size=15 value=\"%s\"> - \n",
-		$r->{'values'}->[$dyn];
-	printf "<input name=range_hi_$i size=15 value=\"%s\">&nbsp;\n",
-		$r->{'values'}->[$dyn+1];
-	printf "<input type=checkbox name=range_dyn_$i value=1 %s>\n",
-		$dyn ? "checked" : "";
-	print "$text{'esub_dbooptpq'}<br>\n";
+	my $dyn = ($r->{'values'}->[0] eq "dynamic-bootp");
+    print &ui_textbox("range_low_".$i, $r->{'values'}->[$dyn], 15);
+    print "&nbsp;-&nbsp;";
+    print &ui_textbox("range_hi_".$i, $r->{'values'}->[$dyn+1], 15);
+    print "&nbsp;";
+    print &ui_checkbox("range_dyn_".$i, 1, $text{'esub_dbooptpq'}, ($dyn ? 1 : 0 ) );
 	}
-print "</td> </tr>\n";
+print "</td></tr>\n";
 
 if (!defined($in{'ret'})) {
-	print "<tr> <td><b>$text{'esub_shnet'}</b></td>\n";
-	print "<td><select name=parent>\n";
-	printf "<option value=\"\" '%s'>&lt;%s&gt;</option>\n",
-		$s_parent ? "" : "checked", $text{'esub_none'};
-	foreach $s (&find("shared-network", $conf)) {
-		printf "<option value=\"%s\" %s>%s</option>\n",
-			$s->{'index'},
-			$s eq $s_parent ? "selected" : "",
-			$s->{'values'}->[0]
-				if &can('rw', \%access, $s);
-		}
-	print "</select></td>\n";
+	print "<tr><td valign=middle><b>$text{'esub_shnet'}</b></td>\n";
+	print "<td valign=middle>";
+    my @shn;
+    push(@shn, [ "", "&lt;$text{'esub_none'}&gt;", ( $s_parent ? "" : "selected" ) ]);
+    foreach $s (&find("shared-network", $conf)) {
+        push(@shn, [ $s->{'index'}, ( &can('rw', \%access, $s) ? $s->{'values'}->[0] : "" ), ( $s eq $s_parent ? "" : "selected" ) ]);
+    }
+    print &ui_select("parent", undef, \@shn);
+	print "</td>\n";
 	}
 else {
-	print "<input name=parent type=hidden value=$s_parent->{'index'}>\n";
-	print "<tr> <td>&nbsp;</td> <td>&nbsp;</td>\n";
+	print "<tr>";
+    print "<td>".&ui_hidden("parent",$s_parent->{'index'})."&nbsp;</td><td>&nbsp;</td>\n";
 	}
 
 &display_params($sconf, "subnet");
@@ -112,76 +110,77 @@ foreach $s (&find("subnet", $mems)) {
 @host = sort { $a->{'values'}->[0] cmp $b->{'values'}->[0] } @host;
 # @group = sort { @{$a->{'members'}} <=> @{$b->{'members'}} } @group;
 
-print "<tr> <td valign=top><b>$text{'esub_hosts'}</b></td>\n";
-print "<td><select name=hosts size=3 multiple>\n";
+print "<tr><td valign=top><b>$text{'esub_hosts'}</b></td>\n";
+print "<td valign=top>";
+my @esub_hosts_sel;
 foreach $h (@host) {
 	next if !&can('r', \%access, $h);
-	printf "<option value=\"%s,%s\" %s>%s</option>\n",
-		$h->{'index'}, $insubn{$h},
-		(!$in{'new'}) && $insubn{$h} eq $sub->{'index'} ? "selected" : "",
-		$h->{'values'}->[0];
+    push(@esub_hosts_sel, [$h->{'index'}.",".$insubn{$h}, $h->{'values'}->[0], ( (!$in{'new'}) && $insubn{$h} eq $sub->{'index'} ? "selected" : "" ) ] );
 	}
-print "</select></td>\n";
+print &ui_select("hosts", undef, \@esub_hosts_sel, 3, 1);
+print "</td>\n";
 
 print "<td valign=top><b>$text{'esub_groups'}</b></td>\n";
-print "<td><select name=groups size=3 multiple>\n";
+print "<td valign=top>";
+my @esub_groups_sel;
 foreach $g (@group) {
-	local $gm = 0;
+	my $gm = 0;
 	next if !&can('r', \%access, $g);
 	foreach $h (@{$g->{'members'}}) {
 		if ($h->{'name'} eq "host") { $gm++; }
 		}
-	printf "<option value=\"%s,%s\" %s>%s</option>\n",
-		$g->{'index'}, $insubn{$g},
-		(!$in{'new'}) && $insubn{$g} eq $sub->{'index'} ? "selected" : "",
-		&group_name($gm, $g);
+    push(@esub_groups_sel, [$g->{'index'}.",".$insubn{$g}, &group_name($gm, $g), ( (!$in{'new'}) && $insubn{$g} eq $sub->{'index'} ? "selected" : "" ) ] );
 	}
-print "</select></td>\n";
+print &ui_select("groups", undef, \@esub_groups_sel, 3, 1);
+print "</td>\n";
 
 if (!$in{'new'}) {
 	# inaccessible hosts in this subnet
 	foreach $h (@host) {
 		if (!&can('r', \%access, $h) && $insubn{$h} eq $sub->{'index'}) {
-			print "<input name=hosts value=\"$h->{'index'},$sub->{'index'}\" type=hidden>\n";
+            print &ui_hidden("hosts","$h->{'index'},$sub->{'index'}");
+			#print "<input name=hosts value=\"$h->{'index'},$sub->{'index'}\" type=hidden>\n";
 			}
 		}
 	# inaccessible groups in this subnet
 	foreach $g (@group) {
 		if (!&can('r', \%access, $g) && $insubn{$g} eq $sub->{'index'}) {
-			print "<input name=groups value=\"$g->{'index'},$sub->{'index'}\" type=hidden>\n";
+            print &ui_hidden("groups","$g->{'index'},$sub->{'index'}");
+			#print "<input name=groups value=\"$g->{'index'},$sub->{'index'}\" type=hidden>\n";
 			}
 		}
 	}
 
-print "</table></td></tr></table>\n";
-print "<input type=hidden name=sidx value=\"$in{'sidx'}\">\n";
+print &ui_table_end();
+print &ui_hidden("sidx", $in{'sidx'});
+
 if (!$in{'new'}) {
 	# Show buttons for existing subnet
-	print "<input type=hidden name=idx value=\"$in{'idx'}\">\n";
+    print &ui_hidden("idx", $in{'idx'});
 	print "<table width=100%><tr>\n";
-	print "<td><input type=submit value=\"$text{'save'}\"></td>\n"
-		if &can('rw', \%access, $sub);
-	print "<td align=center><input type=submit name=options value=\"", 
-		  &can('rw', \%access, $sub) ? $text{'butt_eco'} : $text{'butt_vco'},
-		  "\"></td>\n";
+	print "<td>";
+    print &ui_submit($text{'save'}) if &can('rw', \%access, $sub);  
+    print "</td>";
+	print "<td align=center>";
+    print &ui_submit( (&can('rw', \%access, $sub) ? $text{'butt_eco'} : $text{'butt_vco'} ), "options");
+	print "</td>";
 	if ($access{'r_leases'}) {
-		print "<td align=center><input type=submit name=leases ",
-		      "value=\"$text{'butt_leases'}\"></td>\n";
+		print "<td align=center>";
+        print &ui_submit($text{'butt_leases'},"leases");
+        print "</td>";
 		}
-	print "<td align=right><input type=submit name=delete ",
-	      "value=\"$text{'delete'}\"></td>\n" if &can('rw', \%access, $sub, 1);
+	print "<td align=right>";
+    print &ui_submit($text{'delete'}, "delete") if &can('rw', \%access, $sub, 1);
+    print "</td>";
 	print "</tr></table>\n";
-	print "<a href=\"edit_host.cgi?new=1&sidx=$in{'sidx'}&uidx=$in{'idx'}"
-		."&ret=subnet\">$text{'index_addhst'}</a>&nbsp;&nbsp;\n"
-			if &can('rw', \%access, $sub);
-	print "<a href=\"edit_group.cgi?new=1&sidx=$in{'sidx'}&uidx=$in{'idx'}"
-		."&ret=subnet\">$text{'index_addhstg'}</a><p>\n"
-			if &can('rw', \%access, $sub);
+    print &ui_link("edit_host.cgi?new=1&sidx=$in{'sidx'}&uidx=$in{'idx'}&ret=subnet", $text{'index_addhst'})."&nbsp;&nbsp;" if &can('rw', \%access, $sub);
+    print &ui_link("edit_group.cgi?new=1&sidx=$in{'sidx'}&uidx=$in{'idx'}&ret=subnet", $text{'index_addhstg'}) if &can('rw', \%access, $sub);
 	}
 else {
 	# Show create button for new subnet
-	print "<input type=hidden name=new value=1>\n";
-	print "<input type=submit value=\"$text{'create'}\">\n";
+    print &ui_hidden("new", "1");
+    print "<br>";
+    print &ui_submit($text{'create'});
 	}
 
 if ($config{'dhcpd_version'} >= 3 && !$in{'new'}) {
@@ -201,11 +200,11 @@ if ($config{'dhcpd_version'} >= 3 && !$in{'new'}) {
 	else {
 		&icons_table(\@links, \@titles, \@icons, 5);
 		}
-	print "<a href='edit_pool.cgi?uidx=$in{'idx'}&sidx=$in{'sidx'}&new=1'>",
-	      "$text{'esub_pooladd'}</a><br>\n";
+    print &ui_link("edit_pool.cgi?uidx=$in{'idx'}&sidx=$in{'sidx'}&new=1",$text{'esub_pooladd'}); 
 	}
 
-print "</form>\n";
+print &ui_form_end();
+print "<br>";
 if ($in{'ret'} eq "shared") {
 	&ui_print_footer("edit_shared.cgi?idx=$in{'sidx'}", $text{'esub_retshar'});
 	}
