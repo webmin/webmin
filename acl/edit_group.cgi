@@ -66,7 +66,7 @@ if (@glist && %gcan) {
 
 if ($in{'group'}) {
 	# Show all current members
-	@grid = map { $_ =~ /^\@(.*)$/ ? "<a href='edit_group.cgi?group=$1'><i>$1</i></a>" : "<a href='edit_user.cgi?user=$_'>$_</a>" }
+	@grid = map { $_ =~ /^\@(.*)$/ ? ui_link("edit_group.cgi?group=$1", "<i>$1</i>") : ui_link("edit_user.cgi?user=$_", $_) }
 		    @{$group{'members'}};
 	if (@grid) {
 		print &ui_table_row($text{'gedit_members'},
@@ -104,11 +104,10 @@ foreach $c (sort { $b cmp $a } @cats) {
 		$label = "";
 		if ($access{'acl'} && $in{'group'}) {
 			# Show link for editing ACL
-			$label = sprintf "<a href='edit_acl.cgi?".
-					 "mod=%s&%s=%s'>%s</a>\n",
-				&urlize($m->{'dir'}),
-				"group", &urlize($in{'group'}),
-				$m->{'desc'};
+            $label = ui_link("edit_acl.cgi?" .
+                     "mod=" . urlize($m->{'dir'}) . 
+                     "&group=". urlize($in{'group'}),
+                     $m->{'desc'}) . "\n";
 			}
 		else {
 			$label = $m->{'desc'};
