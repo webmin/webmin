@@ -111,30 +111,28 @@ foreach $s (&find("subnet", $mems)) {
 # @group = sort { @{$a->{'members'}} <=> @{$b->{'members'}} } @group;
 
 print "<tr><td valign=top><b>$text{'esub_hosts'}</b></td>\n";
-print "<td valign=top><select name=hosts size=3 multiple>\n";
+print "<td valign=top>";
+my @esub_hosts_sel;
 foreach $h (@host) {
 	next if !&can('r', \%access, $h);
-	printf "<option value=\"%s,%s\" %s>%s</option>\n",
-		$h->{'index'}, $insubn{$h},
-		(!$in{'new'}) && $insubn{$h} eq $sub->{'index'} ? "selected" : "",
-		$h->{'values'}->[0];
+    push(@esub_hosts_sel, [$h->{'index'}.",".$insubn{$h}, $h->{'values'}->[0], ( (!$in{'new'}) && $insubn{$h} eq $sub->{'index'} ? "selected" : "" ) ] );
 	}
-print "</select></td>\n";
+print &ui_select("hosts", undef, \@esub_hosts_sel, 3, 1);
+print "</td>\n";
 
 print "<td valign=top><b>$text{'esub_groups'}</b></td>\n";
-print "<td valign=top><select name=groups size=3 multiple>\n";
+print "<td valign=top>";
+my @esub_groups_sel;
 foreach $g (@group) {
-	local $gm = 0;
+	my $gm = 0;
 	next if !&can('r', \%access, $g);
 	foreach $h (@{$g->{'members'}}) {
 		if ($h->{'name'} eq "host") { $gm++; }
 		}
-	printf "<option value=\"%s,%s\" %s>%s</option>\n",
-		$g->{'index'}, $insubn{$g},
-		(!$in{'new'}) && $insubn{$g} eq $sub->{'index'} ? "selected" : "",
-		&group_name($gm, $g);
+    push(@esub_groups_sel, [$g->{'index'}.",".$insubn{$g}, &group_name($gm, $g), ( (!$in{'new'}) && $insubn{$g} eq $sub->{'index'} ? "selected" : "" ) ] );
 	}
-print "</select></td>\n";
+print &ui_select("groups", undef, \@esub_groups_sel, 3, 1);
+print "</td>\n";
 
 if (!$in{'new'}) {
 	# inaccessible hosts in this subnet
@@ -160,29 +158,29 @@ if (!$in{'new'}) {
 	# Show buttons for existing subnet
     print &ui_hidden("idx", $in{'idx'});
 	print "<table width=100%><tr>\n";
-	print "<td><input type=submit value=\"$text{'save'}\"></td>\n"
-		if &can('rw', \%access, $sub);
-	print "<td align=center><input type=submit name=options value=\"", 
-		  &can('rw', \%access, $sub) ? $text{'butt_eco'} : $text{'butt_vco'},
-		  "\"></td>\n";
+	print "<td>";
+    print &ui_submit($text{'save'}) if &can('rw', \%access, $sub);  
+    print "</td>";
+	print "<td align=center>";
+    print &ui_submit( (&can('rw', \%access, $sub) ? $text{'butt_eco'} : $text{'butt_vco'} ), "options");
+	print "</td>";
 	if ($access{'r_leases'}) {
-		print "<td align=center><input type=submit name=leases ",
-		      "value=\"$text{'butt_leases'}\"></td>\n";
+		print "<td align=center>";
+        print &ui_submit($text{'butt_leases'},"leases");
+        print "</td>";
 		}
-	print "<td align=right><input type=submit name=delete ",
-	      "value=\"$text{'delete'}\"></td>\n" if &can('rw', \%access, $sub, 1);
+	print "<td align=right>";
+    print &ui_submit($text{'delete'}, "delete") if &can('rw', \%access, $sub, 1);
+    print "</td>";
 	print "</tr></table>\n";
-	print "<a href=\"edit_host.cgi?new=1&sidx=$in{'sidx'}&uidx=$in{'idx'}"
-		."&ret=subnet\">$text{'index_addhst'}</a>&nbsp;&nbsp;\n"
-			if &can('rw', \%access, $sub);
-	print "<a href=\"edit_group.cgi?new=1&sidx=$in{'sidx'}&uidx=$in{'idx'}"
-		."&ret=subnet\">$text{'index_addhstg'}</a><p>\n"
-			if &can('rw', \%access, $sub);
+    print &ui_link("edit_host.cgi?new=1&sidx=$in{'sidx'}&uidx=$in{'idx'}&ret=subnet", $text{'index_addhst'})."&nbsp;&nbsp;" if &can('rw', \%access, $sub);
+    print &ui_link("edit_group.cgi?new=1&sidx=$in{'sidx'}&uidx=$in{'idx'}&ret=subnet", $text{'index_addhstg'}) if &can('rw', \%access, $sub);
 	}
 else {
 	# Show create button for new subnet
     print &ui_hidden("new", "1");
-	print "<input type=submit value=\"$text{'create'}\">\n";
+    print "<br>";
+    print &ui_submit($text{'create'});
 	}
 
 if ($config{'dhcpd_version'} >= 3 && !$in{'new'}) {
@@ -202,12 +200,11 @@ if ($config{'dhcpd_version'} >= 3 && !$in{'new'}) {
 	else {
 		&icons_table(\@links, \@titles, \@icons, 5);
 		}
-	print "<a href='edit_pool.cgi?uidx=$in{'idx'}&sidx=$in{'sidx'}&new=1'>",
-	      "$text{'esub_pooladd'}</a><br>\n";
+    print &ui_link("edit_pool.cgi?uidx=$in{'idx'}&sidx=$in{'sidx'}&new=1",$text{'esub_pooladd'}); 
 	}
 
 print &ui_form_end();
-
+print "<br>";
 if ($in{'ret'} eq "shared") {
 	&ui_print_footer("edit_shared.cgi?idx=$in{'sidx'}", $text{'esub_retshar'});
 	}
