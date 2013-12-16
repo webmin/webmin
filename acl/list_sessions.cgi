@@ -34,13 +34,13 @@ foreach $k (sort { @a=split(/\s+/, $sessiondb{$a}); @b=split(/\s+/, $sessiondb{$
 		push(@cols, "<b>$k</b>");
 		}
 	else {
-		push(@cols, "<a href='delete_session.cgi?id=$k'>$k</a>");
+		push(@cols, ui_link("delete_session.cgi?id=$k", $k));
 		}
 	if ($hasuser{$user}) {
-		push(@cols, "<a href='edit_user.cgi?user=$user'>$user</a>");
+		push(@cols, ui_link("edit_user.cgi?user=$user", $user));
 		}
 	elsif ($miniserv{'unixauth'}) {
-		push(@cols, "$user (<a href='edit_user.cgi?user=$miniserv{'unixauth'}'>$miniserv{'unixauth'}</a>)");
+		push(@cols, "$user (" . ui_link("edit_user.cgi?user=$miniserv{'unixauth'}", $miniserv{'unixauth'}) . ")");
 		}
 	else {
 		push(@cols, $user);
@@ -48,7 +48,7 @@ foreach $k (sort { @a=split(/\s+/, $sessiondb{$a}); @b=split(/\s+/, $sessiondb{$
 	push(@cols, $lip);
 	push(@cols, &make_date($ltime));
 	if ($haslog) {
-		push(@cols, "<a href='../webminlog/search.cgi?uall=1&mall=1&tall=1&wall=1&fall=1&sid=$k'>$text{'sessions_lview'}</a>");
+		push(@cols, ui_link("../webminlog/search.cgi?uall=1&mall=1&tall=1&wall=1&fall=1&sid=$k", $text{'sessions_lview'}));
 		}
 	print &ui_columns_row(\@cols);
 	}
