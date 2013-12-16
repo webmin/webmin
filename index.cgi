@@ -35,58 +35,32 @@ if (!defined($in{'cat'})) {
 	}
 
 $gconfig{'sysinfo'} = 0 if ($gconfig{'sysinfo'} == 1);
-if ($gconfig{'alt_startpage'}) {
-	# Tim's webmin header
-	&header(&text('main_title', $ver, $hostname, $ostr));
-	print "<TABLE class='header' id='alt_startpage' BORDER=0 WIDTH=100%>\n";
-	print "<TR><TD WIDTH=20% ALIGN=left>\n";
-	print "Version $ver<BR>$hostname<BR>$ostr</TD>";
-	print "<TD WIDTH=60% ALIGN=center>\n";
-	print "<IMG SRC=\"images/newlogo.gif\" BORDER=0>";
-	print "</TD><TD WIDTH=20% ALIGN=right>";
-	print "<a href=http://www.webmin.com/>$text{'main_homepage'}</a><br>";
-	print "<a href=feedback_form.cgi>$text{'main_feedback'}</a>"
-		if ($gconfig{'nofeedbackcc'} != 2 && $access{'feedback'});
-	if ($miniserv{'logout'} && !$ENV{'SSL_USER'} && !$ENV{'LOCAL_USER'} &&
-	    $ENV{'HTTP_USER_AGENT'} !~ /webmin/i) {
-		print "<br><br>\n";
-		if ($main::session_id) {
-			print "<a href='session_login.cgi?logout=1'>",
-			      "$text{'main_logout'}</a>";
-			}
-		else {
-			print "<a href=switch_user.cgi>$text{'main_switch'}</a>";
-			}
-		}
-	print "</TD></TR></TABLE><HR id='header_hr'><P>\n\n";
+
+if ($gconfig{'texttitles'}) {
+	@args = ( $text{'main_title2'}, undef );
 	}
 else {
-	# Standard webmin header
-	if ($gconfig{'texttitles'}) {
-		@args = ( $text{'main_title2'}, undef );
+	@args = ( $gconfig{'nohostname'} ? $text{'main_title2'} :
+		    &text('main_title', $ver, $hostname, $ostr),
+		  "images/webmin-blue.png" );
+	if ($gconfig{'showlogin'}) {
+		$args[0] = $remote_user." : ".$args[0];
 		}
-	else {
-		@args = ( $gconfig{'nohostname'} ? $text{'main_title2'} :
-			    &text('main_title', $ver, $hostname, $ostr),
-			  "images/webmin-blue.png" );
-		if ($gconfig{'showlogin'}) {
-			$args[0] = $remote_user." : ".$args[0];
-			}
-		}
-	&header(@args, undef, undef, 1, 1,
-		$tconfig{'brand'} ? 
-		"<a href=$tconfig{'brand_url'}>$tconfig{'brand'}</a>" :
-		$gconfig{'brand'} ? 
-		"<a href=$gconfig{'brand_url'}>$gconfig{'brand'}</a>" :
-		"<a href=http://www.webmin.com/>$text{'main_homepage'}</a>".
-		($gconfig{'nofeedbackcc'} == 2 || !$access{'feedback'} ? "" :
-		  "<br><a href=feedback_form.cgi>$text{'main_feedback'}</a>")
-		);
-	print "<center><font size=+1>",
-	    &text('main_version', $ver, $hostname, $ostr),"</font></center>\n"
-		if (!$gconfig{'nohostname'});
-	print "<hr id='header_hr'><p>\n";
 	}
+&header(@args, undef, undef, 1, 1,
+	$tconfig{'brand'} ? 
+	"<a href=$tconfig{'brand_url'}>$tconfig{'brand'}</a>" :
+	$gconfig{'brand'} ? 
+	"<a href=$gconfig{'brand_url'}>$gconfig{'brand'}</a>" :
+	"<a href=http://www.webmin.com/>$text{'main_homepage'}</a>".
+	($gconfig{'nofeedbackcc'} == 2 || !$access{'feedback'} ? "" :
+	  "<br><a href=feedback_form.cgi>$text{'main_feedback'}</a>")
+	);
+print "<center><font size=+1>",
+    &text('main_version', $ver, $hostname, $ostr),"</font></center>\n"
+	if (!$gconfig{'nohostname'});
+print "<hr id='header_hr'><p>\n";
+
 print $text{'main_header'};
 
 if (!@modules) {
@@ -188,7 +162,7 @@ if (&foreign_check("webmin")) {
 	&webmin::show_webmin_notifications();
 	}
 
-if ($miniserv{'logout'} && !$gconfig{'alt_startpage'} &&
+if ($miniserv{'logout'} &&
     !$ENV{'SSL_USER'} && !$ENV{'LOCAL_USER'} && !$ENV{'ANONYMOUS_USER'} &&
     $ENV{'HTTP_USER_AGENT'} !~ /webmin/i) {
 	print "<table id='altlogout' width=100% cellpadding=0 cellspacing=0><tr>\n";
