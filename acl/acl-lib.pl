@@ -56,6 +56,7 @@ while(my $l = <PWFILE>) {
 	if (@user) {
 		my %user;
 		next if ($only && &indexof($user[0], @$only) < 0);
+		while(@user < 11) { push(@user, ""); }	# Prevent warnings
 		$user{'name'} = $user[0];
 		$user{'pass'} = $user[1];
 		$user{'sync'} = $user[2];
@@ -74,8 +75,8 @@ while(my $l = <PWFILE>) {
 		$user{'lastchange'} = $user[6];
 		$user{'olds'} = [ split(/\s+/, $user[7]) ];
 		$user{'minsize'} = $user[8];
-		$user{'nochange'} = int($user[9]);
-		$user{'temppass'} = int($user[10]);
+		$user{'nochange'} = int($user[9] || 0);
+		$user{'temppass'} = int($user[10] || 0);
 		$user{'twofactor_provider'} = $user[11];
 		$user{'twofactor_id'} = $user[12];
 		$user{'twofactor_apikey'} = $user[13];
@@ -93,8 +94,8 @@ while(my $l = <PWFILE>) {
 			$user{'theme'} = "";
 			}
 		$user{'readonly'} = $gconfig{"readonly_$user[0]"};
-		$user{'ownmods'} = [ split(/\s+/,
-					   $gconfig{"ownmods_$user[0]"}) ];
+		$user{'ownmods'} =
+			[ split(/\s+/, $gconfig{"ownmods_$user[0]"} || "") ];
 		$user{'logouttime'} = $logout{$user[0]};
 		$user{'real'} = $gconfig{"realname_$user[0]"};
 		push(@rv, \%user);
