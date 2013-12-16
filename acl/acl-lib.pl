@@ -12,10 +12,13 @@ Library for editing webmin users, passwords and access rights.
 =cut
 
 BEGIN { push(@INC, ".."); };
+use strict;
+use warnings;
 use WebminCore;
 &init_config();
 do 'md5-lib.pl';
-our (%sessiondb);
+our ($module_root_directory, %text, %sessiondb, %config, %gconfig,
+     $base_remote_user, %hash_session_id_cache);
 our %access = &get_module_acl();
 $access{'switch'} = 0 if (&is_readonly_mode());
 
@@ -123,7 +126,7 @@ if ($miniserv{'userdb'}) {
 		$cmd->finish();
 
 		# Add user attributes
-		my $cmd = $dbh->prepare(
+		$cmd = $dbh->prepare(
 			"select id,attr,value from webmin_user_attr ".
 			($only && %userid ?
 			 " where id in (".join(",", keys %userid).")" : ""));
@@ -254,10 +257,10 @@ if ($miniserv{'userdb'}) {
 		$cmd->finish();
 
 		# Add group attributes
-		my $cmd = $dbh->prepare(
+		$cmd = $dbh->prepare(
 			"select id,attr,value from webmin_group_attr ".
-			($only && %userid ?
-                         " where id in (".join(",", keys %userid).")" : ""));
+			($only && %groupid ?
+                         " where id in (".join(",", keys %groupid).")" : ""));
 		$cmd && $cmd->execute() ||
 			&error("Failed to query group attrs : ".$dbh->errstr);
 		while(my ($id, $attr, $value) = $cmd->fetchrow()) {
@@ -369,13 +372,13 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 		$cmd && $cmd->execute($user->{'name'}, $user->{'pass'}) ||
 			&error("Failed to add user : ".$dbh->errstr);
 		$cmd->finish();
-		my $cmd = $dbh->prepare("select max(id) from webmin_user");
+		$cmd = $dbh->prepare("select max(id) from webmin_user");
 		$cmd->execute();
 		my ($id) = $cmd->fetchrow();
 		$cmd->finish();
 
 		# Add other attributes
-		my $cmd = $dbh->prepare("insert into webmin_user_attr (id,attr,value) values (?, ?, ?)");
+		$cmd = $dbh->prepare("insert into webmin_user_attr (id,attr,value) values (?, ?, ?)");
 		foreach my $attr (keys %$user) {
 			next if ($attr eq "name" || $attr eq "pass");
 			my $value = $user->{$attr};
@@ -448,12 +451,13 @@ else {
 	push(@times, "hours", $user->{'hoursfrom'}."-".$user->{'hoursto'})
 		if ($user->{'hoursfrom'});
 	&lock_file($miniserv{'userfile'});
-	&open_tempfile(PWFILE, ">>$miniserv{'userfile'}");
+	my $fh = "PWFILE";
+	&open_tempfile($fh, ">>$miniserv{'userfile'}");
 	my $allow = $user->{'allow'};
 	$allow =~ s/:/;/g;
 	my $deny = $user->{'deny'};
 	$deny =~ s/:/;/g;
-	&print_tempfile(PWFILE,
+	&print_tempfile($fh,
 		"$user->{'name'}:$user->{'pass'}:$user->{'sync'}:$user->{'cert'}:",
 		($allow ? "allow $allow" :
 		 $deny ? "deny $deny" : ""),":",
@@ -467,13 +471,14 @@ else {
 		$user->{'twofactor_id'},":",
 		$user->{'twofactor_apikey'},
 		"\n");
-	&close_tempfile(PWFILE);
+	&close_tempfile($fh);
 	&unlock_file($miniserv{'userfile'});
 
 	&lock_file(&acl_filename());
-	&open_tempfile(ACL, ">>".&acl_filename());
-	&print_tempfile(ACL, &acl_line($user, \@mods));
-	&close_tempfile(ACL);
+	$fh = "ACL";
+	&open_tempfile($fh, ">>".&acl_filename());
+	&print_tempfile($fh, &acl_line($user, \@mods));
+	&close_tempfile($fh);
 	&unlock_file(&acl_filename());
 
 	delete($gconfig{"lang_".$user->{'name'}});
@@ -538,7 +543,7 @@ if ($user->{'proto'}) {
 		&add_old_password($user, $oldpass, \%miniserv);
 
 		# Update primary details
-		my $cmd = $dbh->prepare("update webmin_user set name = ?, ".
+		$cmd = $dbh->prepare("update webmin_user set name = ?, ".
 				        "pass = ? where id = ?");
 		$cmd && $cmd->execute($user->{'name'}, $user->{'pass'},
 				      $user->{'id'}) ||
@@ -546,11 +551,11 @@ if ($user->{'proto'}) {
 		$cmd->finish();
 
 		# Re-save attributes
-		my $cmd = $dbh->prepare("delete from webmin_user_attr ".
+		$cmd = $dbh->prepare("delete from webmin_user_attr ".
 					"where id = ?");
 		$cmd && $cmd->execute($user->{'id'}) ||
 			&error("Failed to delete attrs : ".$dbh->errstr);
-		my $cmd = $dbh->prepare("insert into webmin_user_attr ".
+		$cmd = $dbh->prepare("insert into webmin_user_attr ".
 					"(id,attr,value) values (?, ?, ?)");
 		foreach my $attr (keys %$user) {
 			next if ($attr eq "name" || $attr eq "pass");
@@ -628,10 +633,11 @@ else {
 	push(@times, "hours", $user->{'hoursfrom'}."-".$user->{'hoursto'})
 		if ($user->{'hoursfrom'});
 	&lock_file($miniserv{'userfile'});
-	open(PWFILE, $miniserv{'userfile'});
-	@pwfile = <PWFILE>;
-	close(PWFILE);
-	&open_tempfile(PWFILE, ">$miniserv{'userfile'}");
+	my $fh = "PWFILE";
+	open($fh, $miniserv{'userfile'});
+	@pwfile = <$fh>;
+	close($fh);
+	&open_tempfile($fh, ">$miniserv{'userfile'}");
 	my $allow = $user->{'allow'};
 	$allow =~ s/:/;/g;
 	my $deny = $user->{'deny'};
@@ -639,7 +645,7 @@ else {
 	foreach my $l (@pwfile) {
 		if ($l =~ /^([^:]+):([^:]*)/ && $1 eq $username) {
 			&add_old_password($user, "$2", \%miniserv);
-			&print_tempfile(PWFILE,
+			&print_tempfile($fh,
 				"$user->{'name'}:$user->{'pass'}:",
 				"$user->{'sync'}:$user->{'cert'}:",
 				($allow ? "allow $allow" :
@@ -656,27 +662,28 @@ else {
 				"\n");
 			}
 		else {
-			&print_tempfile(PWFILE, $l);
+			&print_tempfile($fh, $l);
 			}
 		}
-	&close_tempfile(PWFILE);
+	&close_tempfile($fh);
 	&unlock_file($miniserv{'userfile'});
 
 	&lock_file(&acl_filename());
 	@mods = &list_modules();
-	open(ACL, &acl_filename());
-	@acl = <ACL>;
-	close(ACL);
-	&open_tempfile(ACL, ">".&acl_filename());
+	$fh = "ACL";
+	open($fh, &acl_filename());
+	@acl = <$fh>;
+	close($fh);
+	&open_tempfile($fh, ">".&acl_filename());
 	foreach my $l (@acl) {
 		if ($l =~ /^(\S+):/ && $1 eq $username) {
-			&print_tempfile(ACL, &acl_line($user, \@mods));
+			&print_tempfile($fh, &acl_line($user, \@mods));
 			}
 		else {
-			&print_tempfile(ACL, $l);
+			&print_tempfile($fh, $l);
 			}
 		}
-	&close_tempfile(ACL);
+	&close_tempfile($fh);
 	&unlock_file(&acl_filename());
 
 	delete($gconfig{"lang_".$username});
@@ -782,29 +789,31 @@ $miniserv{'logouttimes'} = join(" ", @logout);
 &unlock_file($ENV{'MINISERV_CONFIG'});
 
 &lock_file($miniserv{'userfile'});
-open(PWFILE, $miniserv{'userfile'});
-@pwfile = <PWFILE>;
-close(PWFILE);
-&open_tempfile(PWFILE, ">$miniserv{'userfile'}");
+my $fh = "PWFILE";
+open($fh, $miniserv{'userfile'});
+@pwfile = <$fh>;
+close($fh);
+&open_tempfile($fh, ">$miniserv{'userfile'}");
 foreach my $l (@pwfile) {
 	if ($l !~ /^([^:]+):/ || $1 ne $username) {
-		&print_tempfile(PWFILE, $l);
+		&print_tempfile($fh, $l);
 		}
 	}
-&close_tempfile(PWFILE);
+&close_tempfile($fh);
 &unlock_file($miniserv{'userfile'});
 
 &lock_file(&acl_filename());
-open(ACL, &acl_filename());
-@acl = <ACL>;
-close(ACL);
-&open_tempfile(ACL, ">".&acl_filename());
+$fh = "ACL";
+open($fh, &acl_filename());
+@acl = <$fh>;
+close($fh);
+&open_tempfile($fh, ">".&acl_filename());
 foreach my $l (@acl) {
 	if ($l !~ /^([^:]+):/ || $1 ne $username) {
-		&print_tempfile(ACL, $l);
+		&print_tempfile($fh, $l);
 		}
 	}
-&close_tempfile(ACL);
+&close_tempfile($fh);
 &unlock_file(&acl_filename());
 
 delete($gconfig{"lang_".$username});
@@ -847,7 +856,7 @@ if ($miniserv{'userdb'}) {
 			$cmd->finish();
 
 			# Delete attributes
-			my $cmd = $dbh->prepare(
+			$cmd = $dbh->prepare(
 				"delete from webmin_user_attr where id = ?");
 			$cmd && $cmd->execute($id) ||
 				&error("Failed to delete user attrs : ".
@@ -855,7 +864,7 @@ if ($miniserv{'userdb'}) {
 			$cmd->finish();
 
 			# Delete ACLs
-			my $cmd = $dbh->prepare(
+			$cmd = $dbh->prepare(
 				"delete from webmin_user_acl where id = ?");
 			$cmd && $cmd->execute($id) ||
 				&error("Failed to delete user acls : ".
@@ -896,7 +905,7 @@ if ($miniserv{'userdb'}) {
 				}
 
 			# Delete the user from LDAP
-			my $rv = $dbh->delete($user->dn());
+			$rv = $dbh->delete($user->dn());
 			if (!$rv || $rv->code) {
 				&error("Failed to delete LDAP user : ".
 				       ($rv ? $rv->error : "Unknown error"));
@@ -935,13 +944,13 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 		$cmd && $cmd->execute($group->{'name'}, $group->{'desc'}) ||
 			&error("Failed to add group : ".$dbh->errstr);
 		$cmd->finish();
-		my $cmd = $dbh->prepare("select max(id) from webmin_group");
+		$cmd = $dbh->prepare("select max(id) from webmin_group");
 		$cmd->execute();
 		my ($id) = $cmd->fetchrow();
 		$cmd->finish();
 
 		# Add other attributes
-		my $cmd = $dbh->prepare("insert into webmin_group_attr (id,attr,value) values (?, ?, ?)");
+		$cmd = $dbh->prepare("insert into webmin_group_attr (id,attr,value) values (?, ?, ?)");
 		foreach my $attr (keys %$group) {
 			next if ($attr eq "name" || $attr eq "desc");
 			my $value = $group->{$attr};
@@ -1033,11 +1042,11 @@ if ($group->{'proto'}) {
 		$cmd->finish();
 
 		# Re-save attributes
-		my $cmd = $dbh->prepare("delete from webmin_group_attr ".
+		$cmd = $dbh->prepare("delete from webmin_group_attr ".
 					"where id = ?");
 		$cmd && $cmd->execute($group->{'id'}) ||
 			&error("Failed to delete attrs : ".$dbh->errstr);
-		my $cmd = $dbh->prepare("insert into webmin_group_attr ".
+		$cmd = $dbh->prepare("insert into webmin_group_attr ".
 					"(id,attr,value) values (?, ?, ?)");
 		foreach my $attr (keys %$group) {
 			next if ($attr eq "name" || $attr eq "desc");
@@ -1155,7 +1164,7 @@ if ($miniserv{'userdb'}) {
 			$cmd->finish();
 
 			# Delete attributes
-			my $cmd = $dbh->prepare(
+			$cmd = $dbh->prepare(
 				"delete from webmin_group_attr where id = ?");
 			$cmd && $cmd->execute($id) ||
 				&error("Failed to delete group attrs : ".
@@ -1163,7 +1172,7 @@ if ($miniserv{'userdb'}) {
 			$cmd->finish();
 
 			# Delete ACLs
-			my $cmd = $dbh->prepare(
+			$cmd = $dbh->prepare(
 				"delete from webmin_group_acl where id = ?");
 			$cmd && $cmd->execute($id) ||
 				&error("Failed to delete group acls : ".
@@ -1204,7 +1213,7 @@ if ($miniserv{'userdb'}) {
 				}
 
 			# Delete the group from LDAP
-			my $rv = $dbh->delete($group->dn());
+			$rv = $dbh->delete($group->dn());
 			if (!$rv || $rv->code) {
 				&error("Failed to delete LDAP group : ".
 				       ($rv ? $rv->error : "Unknown error"));
@@ -1429,7 +1438,7 @@ my ($dbh, $proto, $fromid, $toid);
 # Check if the source user/group is in a DB
 my $userdb = &get_userdb_string();
 if ($userdb) {
-	($dbh, $proto, $prefix, $args) = &connect_userdb($userdb);
+	my ($dbh, $proto, $prefix, $args) = &connect_userdb($userdb);
 	&error($dbh) if (!ref($dbh));
 	if ($proto eq "mysql" || $proto eq "postgresql") {
 		# Search in SQL DB
@@ -1438,7 +1447,7 @@ if ($userdb) {
 		$cmd && $cmd->execute($from) || &error($dbh->errstr);
 		($fromid) = $cmd->fetchrow();
 		$cmd->finish();
-		my $cmd = $dbh->prepare(
+		$cmd = $dbh->prepare(
 			"select id from webmin_${totype} where name = ?");
 		$cmd && $cmd->execute($to) || &error($dbh->errstr);
 		($toid) = $cmd->fetchrow();
@@ -1458,7 +1467,7 @@ if ($userdb) {
 		$fromid = $fromobj ? $fromobj->dn() : undef;
 		my $toclass = $totype eq "user" ? "userclass"
 						: "groupclass";
-		my $rv = $dbh->search(
+		$rv = $dbh->search(
 			base => $prefix,
 			filter => '(&(cn='.$to.')(objectClass='.
 				  $toclass.'))',
@@ -1744,9 +1753,10 @@ if ($miniserv{'pass_nouser'}) {
 	}
 if ($miniserv{'pass_nodict'}) {
 	my $temp = &transname();
-	&open_tempfile(TEMP, ">$temp", 0, 1);
-	&print_tempfile(TEMP, $pass,"\n");
-	&close_tempfile(TEMP);
+	my $fh = "TEMP";
+	&open_tempfile($fh, ">$temp", 0, 1);
+	&print_tempfile($fh, $pass,"\n");
+	&close_tempfile($fh);
 	my $unknown;
 	if (&has_command("ispell")) {
 		open(SPELL, "ispell -a <$temp |");
@@ -1865,6 +1875,7 @@ Returns a Perl module for MD5 hashing, or undef if none.
 =cut
 sub md5_perl_module
 {
+my $use_md5;
 eval "use MD5";
 if (!$@) {
         $use_md5 = "MD5";
@@ -1875,6 +1886,7 @@ else {
                 $use_md5 = "Digest::MD5";
                 }
         }
+return $use_md5;
 }
 
 =head2 session_db_key(sid)
