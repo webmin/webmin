@@ -350,11 +350,10 @@ foreach $c (sort { $b cmp $a } @cats) {
 			$label = "";
 			if ($access{'acl'} && $in{'user'}) {
 				# Show link for editing ACL
-				$label = sprintf "<a href='edit_acl.cgi?".
-						 "mod=%s&%s=%s'>%s</a>\n",
-					&urlize($m->{'dir'}),
-					"user", &urlize($in{'user'}),
-					$m->{'desc'};
+                $label = ui_link("edit_acl.cgi?" .
+                     "mod=" . urlize($m->{'dir'}) .
+                     "&group=". urlize($in{'group'}),
+                     $m->{'desc'})  . "\n";
 				}
 			else {
 				# No privileges to edit ACL
