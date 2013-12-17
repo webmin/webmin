@@ -270,7 +270,7 @@ convert_2=All except users
 convert_3=Users with group
 convert_4=Users with UIDs in range
 convert_group=Assign new users to Webmin group
-convert_sync=Use same password as Unix user in future?
+convert_sync2=Sync password with Unix user in future?
 convert_ok=Convert Now
 convert_err=Failed to convert users
 convert_eusers=No users to convert entered
@@ -287,6 +287,7 @@ convert_msg=Converting Unix users...
 convert_user=Unix user
 convert_action=Action taken
 convert_done=$1 users converted, $2 invalid, $3 already exist, $4 excluded.
+convert_users=Users to convert
 
 sync_title=Unix User Synchronization
 sync_desc=This form allows you to configure the automatic synchronization of Unix users created through Webmin and users in this module.
