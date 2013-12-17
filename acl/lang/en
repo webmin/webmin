@@ -292,6 +292,7 @@ convert_users=Users to convert
 sync_title=Unix User Synchronization
 sync_desc=This form allows you to configure the automatic synchronization of Unix users created through Webmin and users in this module.
 sync_nogroups=No Webmin groups have been defined on your system. At least one group must be created to set the access for created users.
+sync_when=When to synchronize
 sync_create=Create a Webmin user when a Unix user is created.
 sync_update=Update the matching Webmin user when a Unix user is updated.
 sync_delete=Delete the matching Webmin user when a Unix user is deleted.
