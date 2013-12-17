@@ -1,14 +1,20 @@
 #!/usr/local/bin/perl
 # Activate or de-activate twofactor
 
+use strict;
+use warnings;
 require './acl-lib.pl';
+our (%in, %text, %config, %access, $base_remote_user);
 &foreign_require("webmin");
 &error_setup($text{'twofactor_err'});
-&get_miniserv_config(\%miniserv);
 &ReadParse();
 
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+
 # Get the user
-@users = &list_users();
+my @users = &list_users();
+my $user;
 if ($in{'user'}) {
 	&can_edit_user($in{'user'}) || &error($text{'edit_euser'});
 	($user) = grep { $_->{'name'} eq $in{'user'} } @users;
@@ -16,25 +22,26 @@ if ($in{'user'}) {
 else {
 	($user) = grep { $_->{'name'} eq $base_remote_user } @users;
 	}
-$user || &error($twxt{'twofactor_euser'});
+$user || &error($text{'twofactor_euser'});
 
 if ($in{'enable'}) {
 	# Validate enrollment inputs
-	$vfunc = "webmin::parse_twofactor_form_".
-		 $miniserv{'twofactor_provider'};
+	my $vfunc = "webmin::parse_twofactor_form_".
+		    $miniserv{'twofactor_provider'};
+	my $details;
 	if (defined(&$vfunc)) {
 		$details = &$vfunc(\%in, $user);
 		&error($details) if (!ref($details));
 		}
 
 	&ui_print_header(undef, $text{'twofactor_title'}, "");
-	($prov) = grep { $_->[0] eq $miniserv{'twofactor_provider'} }
+	my ($prov) = grep { $_->[0] eq $miniserv{'twofactor_provider'} }
 		       &webmin::list_twofactor_providers();
 
 	# Register user
 	print &text('twofactor_enrolling', $prov->[1]),"<br>\n";
-	$efunc = "webmin::enroll_twofactor_".$miniserv{'twofactor_provider'};
-	$err = &$efunc($details, $user);
+	my $efunc = "webmin::enroll_twofactor_".$miniserv{'twofactor_provider'};
+	my $err = &$efunc($details, $user);
 	if ($err) {
 		# Failed!
 		print &text('twofactor_failed', $err),"<p>\n";
@@ -43,8 +50,8 @@ if ($in{'enable'}) {
 		print &text('twofactor_done', $user->{'twofactor_id'}),"<p>\n";
 
 		# Print provider-specific message
-		$mfunc = "webmin::message_twofactor_".
-			 $miniserv{'twofactor_provider'};
+		my $mfunc = "webmin::message_twofactor_".
+			    $miniserv{'twofactor_provider'};
 		if (defined(&$mfunc)) {
 			print &$mfunc($user);
 			}
