@@ -2,24 +2,28 @@
 # edit_unix.cgi
 # Save automatic unix user authentication options
 
+use strict;
+use warnings;
 require './acl-lib.pl';
+our (%in, %text, %config, %access);
 &ReadParse();
 &error_setup($text{'unix_err'});
 $access{'unix'} && $access{'create'} && $access{'delete'} ||
 	&error($text{'unix_ecannot'});
 
 # Parse Unix auth table
+my @unix;
 if (!$in{'unix_def'}) {
-	for($i=0; defined($mode = $in{"mode_$i"}); $i++) {
+	for(my $i=0; defined(my $mode = $in{"mode_$i"}); $i++) {
 		next if (!$mode);
-		$who = $in{"who_$i"};
+		my $who = $in{"who_$i"};
 		if ($mode == 2 && !$who) {
 			&error(&text('unix_ewhogroup', $i+1));
 			}
 		elsif ($mode == 3 && !$who) {
 			&error(&text('unix_ewhouser', $i+1));
 			}
-		$to = $in{"to_$i"};
+		my $to = $in{"to_$i"};
 		push(@unix, [ $mode == 1 ? "*" :
 			      $mode == 2 ? "\@$who" : $who, $to ]);
 		}
@@ -27,9 +31,9 @@ if (!$in{'unix_def'}) {
 	}
 
 # Parse list of allowed users
-@users = split(/\s+/, $in{"users"});
+my @users = split(/\s+/, $in{"users"});
 if ($in{"access"}) {
-	foreach $u (@users) {
+	foreach my $u (@users) {
 		if ($u =~ /^\@(\S+)$/) {
 			defined(getgrnam($1)) ||
 				&error(&text('unix_egroup', "$1"));
@@ -48,7 +52,9 @@ if ($in{'shells_deny'}) {
 	}
 
 &lock_file($ENV{'MINISERV_CONFIG'});
+my %miniserv;
 &get_miniserv_config(\%miniserv);
+my $oldsudo = $miniserv{'sudo'};
 &save_unixauth(\%miniserv, \@unix);
 delete($miniserv{"allowusers"});
 delete($miniserv{"denyusers"});

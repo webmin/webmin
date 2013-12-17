@@ -3,28 +3,32 @@
 # Choose a user whose permissions will be used for logins that don't
 # match any webmin user, but have unix accounts
 
+use strict;
+use warnings;
 require './acl-lib.pl';
+our (%in, %text, %config, %access);
 $access{'unix'} && $access{'create'} && $access{'delete'} ||
 	&error($text{'unix_ecannot'});
 &ui_print_header(undef, $text{'unix_title'}, "");
 
 print "$text{'unix_desc'}<p>\n";
+my %miniserv;
 &get_miniserv_config(\%miniserv);
 
 print &ui_form_start("save_unix.cgi", "post");
 print &ui_table_start($text{'unix_header'}, undef, 2);
 
 # Enable Unix auth
-@unixauth = &get_unixauth(\%miniserv);
-$utable = "";
+my @unixauth = &get_unixauth(\%miniserv);
+my $utable = "";
 $utable .= &ui_radio("unix_def", @unixauth ? 0 : 1,
-	[ [ 1, $text{'unix_def'} ], [ 0, $text{'unix_sel'} ] ]),"<br>\n";
+	[ [ 1, $text{'unix_def'} ], [ 0, $text{'unix_sel'} ] ])."<br>\n";
 $utable .= &ui_columns_start([ $text{'unix_mode'}, $text{'unix_who'},
 			  $text{'unix_to'} ]);
-$i = 0;
-@webmins = map { [ $_->{'name'} ] }
+my $i = 0;
+my @webmins = map { [ $_->{'name'} ] }
 	       sort { $a->{'name'} cmp $b->{'name'} } &list_users();
-foreach $ua (@unixauth, [ ], [ ]) {
+foreach my $ua (@unixauth, [ ], [ ]) {
 	$utable .= &ui_columns_row([
 		&ui_select("mode_$i", $ua->[0] eq "" ? 0 :
 				      $ua->[0] eq "*" ? 1 :
@@ -58,7 +62,7 @@ print &ui_table_row("",
 print &ui_table_hr();
 
 # Who can do Unix auth?
-$users = $miniserv{"allowusers"} ?
+my $users = $miniserv{"allowusers"} ?
 		join("\n", split(/\s+/, $miniserv{"allowusers"})) :
 	 $miniserv{"denyusers"} ?
 		join("\n", split(/\s+/, $miniserv{"denyusers"})) : "";
