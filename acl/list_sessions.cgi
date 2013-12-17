@@ -2,19 +2,24 @@
 # list_sessions.cgi
 # Display current login sessions
 
+use strict;
+use warnings;
 require './acl-lib.pl';
+our (%in, %text, %config, %access, %sessiondb);
 $access{'sessions'} || &error($text{'sessions_ecannot'});
 &ui_print_header(undef, $text{'sessions_title'}, "");
 
+my %miniserv;
 &get_miniserv_config(\%miniserv);
 &open_session_db(\%miniserv);
-$time_now = time();
+my $time_now = time();
 
-foreach $u (&list_users()) {
+my %hasuser;
+foreach my $u (&list_users()) {
 	$hasuser{$u->{'name'}}++;
 	}
 
-$haslog = &foreign_available("webminlog");
+my $haslog = &foreign_available("webminlog");
 
 print "<b>$text{'sessions_desc'}</b><p>\n";
 print &ui_columns_start([ $text{'sessions_id'},
@@ -22,12 +27,14 @@ print &ui_columns_start([ $text{'sessions_id'},
 			  $text{'sessions_host'},
 			  $haslog ? ( $text{'sessions_login'} ) : ( ),
 			  "" ], 100);
-foreach $k (sort { @a=split(/\s+/, $sessiondb{$a}); @b=split(/\s+/, $sessiondb{$b}); $b[1] <=> $a[1] } keys %sessiondb) {
+foreach my $k (sort { my @a = split(/\s+/, $sessiondb{$a});
+		      my @b = split(/\s+/, $sessiondb{$b}); $b[1] <=> $a[1] }
+		    keys %sessiondb) {
 	next if ($k =~ /^1111111/);
-	local ($user, $ltime, $lip) = split(/\s+/, $sessiondb{$k});
+	my ($user, $ltime, $lip) = split(/\s+/, $sessiondb{$k});
 	next if ($miniserv{'logouttime'} &&
 		 $time_now - $ltime > $miniserv{'logouttime'}*60);
-	local @cols;
+	my @cols;
 	if ($k eq $main::session_id ||
 	    $k eq &hash_session_id($main::session_id)) {
 		# Cannot self-terminate
