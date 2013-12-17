@@ -2,13 +2,16 @@
 # convert_form.cgi
 # Display a form for converting unix users to webmin users
 
+use strict;
+use warnings;
 require './acl-lib.pl';
+our (%in, %text, %config, %access);
 $access{'sync'} && $access{'create'} || &error($text{'convert_ecannot'});
 &ui_print_header(undef, $text{'convert_title'}, "");
 
-@glist = &list_groups();
+my @glist = &list_groups();
 if ($access{'gassign'} ne '*') {
-	@gcan = split(/\s+/, $access{'gassign'});
+	my @gcan = split(/\s+/, $access{'gassign'});
 	@glist = grep { &indexof($_->{'name'}, @gcan) >= 0 } @glist;
 	}
 if (!@glist) {
