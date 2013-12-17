@@ -573,7 +573,8 @@ local(@nv, $nv, $addr);
 @nv = split(/\s+/, $in{'NameVirtualHost'});
 @nv = ( "*", @nv ) if ($in{'NameVirtualHost_star'});
 foreach $nv (@nv) {
-	if ($nv =~ /^(\S+):(\d+|\*)$/) { $addr = $1; }
+	if ($nv =~ /^\[(\S+)\]:(\d+|\*)$/) { $addr = $1; }
+	elsif ($nv =~ /^(\S+):(\d+|\*)$/) { $addr = $1; }
 	else { $addr = $nv; }
 	if (!&to_ipaddress($addr) &&
 	    !&to_ip6address($addr) && $addr ne '*') {
