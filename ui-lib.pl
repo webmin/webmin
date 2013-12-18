@@ -852,7 +852,7 @@ return "<input class='ui_hidden' type='hidden' ".
        "value=\"".&quote_escape($value)."\">\n";
 }
 
-=head2 ui_select(name, value|&values, &options, [size], [multiple], [add-if-missing], [disabled?], [javascript])
+=head2 ui_select(name, value|&values, &options, [size], [multiple], [add-if-missing], [disabled?], [tags])
 
 Returns HTML for a drop-down menu or multiple selection list. The parameters
 are :
@@ -871,18 +871,18 @@ are :
 
 =item disabled - Set to 1 to disable this input.
 
-=item javascript - Additional HTML attributes for the <select> input.
+=item tags - Additional HTML attributes for the <select> input.
 
 =cut
 sub ui_select
 {
 return &theme_ui_select(@_) if (defined(&theme_ui_select));
-my ($name, $value, $opts, $size, $multiple, $missing, $dis, $js) = @_;
+my ($name, $value, $opts, $size, $multiple, $missing, $dis, $tags) = @_;
 my $rv;
 $rv .= "<select class='ui_select' name=\"".&quote_escape($name)."\"".
        ($size ? " size=$size" : "").
        ($multiple ? " multiple" : "").
-       ($dis ? " disabled=true" : "")." ".$js.">\n";
+       ($dis ? " disabled=true" : "").($tags ? " ".$tags : "").">\n";
 my ($o, %opt, $s);
 my %sel = ref($value) ? ( map { $_, 1 } @$value ) : ( $value, 1 );
 foreach $o (@$opts) {
