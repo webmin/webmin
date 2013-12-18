@@ -2406,6 +2406,10 @@ return $_[0] =~ /^\/dev\/(s|h|xv|v)d([a-z]+)(\d+)$/ ?
 	&text('select_device', $1 eq 's' ? 'SCSI' : $1 eq 'xv' ? 'Xen' :
 			       $1 eq 'v' ? 'VirtIO' : 'IDE',
 			       uc($2)) :
+       $_[0] =~ /^\/dev\/mmcblk(\d+)p(\d+)$/ ?
+	&text('select_part', "SD-Card", "$1", "$2") :
+       $_[0] =~ /^\/dev\/mmcblk(\d+)$/ ?
+	&text('select_device', "SD-Card", "$1") :
        $_[0] =~ /rd\/c(\d+)d(\d+)p(\d+)$/ ?
 	&text('select_mpart', "$1", "$2", "$3") :
        $_[0] =~ /ida\/c(\d+)d(\d+)p(\d+)$/ ?
