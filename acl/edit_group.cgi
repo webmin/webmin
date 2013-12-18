@@ -2,9 +2,14 @@
 # edit_group.cgi
 # Edit or create a webmin group
 
+use strict;
+use warnings;
 require './acl-lib.pl';
+our (%in, %text, %config, %access, $config_directory);
 &ReadParse();
 $access{'groups'} || &error($text{'gedit_ecannot'});
+my $g;
+my %group;
 if ($in{'group'}) {
 	# Editing an existing group
 	&ui_print_header(undef, $text{'gedit_title'}, "");
@@ -42,18 +47,18 @@ print &ui_table_row($text{'gedit_desc'},
 	&ui_textbox("desc", $group{'desc'}, 60));
 
 # Find and show the parent group
-@glist = grep { $_->{'name'} ne $group{'name'} } &list_groups();
-@mcan = $access{'gassign'} eq '*' ?
+my @glist = grep { $_->{'name'} ne $group{'name'} } &list_groups();
+my @mcan = $access{'gassign'} eq '*' ?
 		( ( map { $_->{'name'} } @glist ), '_none' ) :
 		split(/\s+/, $access{'gassign'});
-map { $gcan{$_}++ } @mcan;
+my %gcan = map { $_, 1 } @mcan;
 if (@glist && %gcan) {
-	@opts = ( );
+	my @opts = ( );
 	if ($gcan{'_none'}) {
 		push(@opts, [ undef, "&lt;$text{'edit_none'}&gt;" ]);
 		}
-	$memg = undef;
-	foreach $g (@glist) {
+	my $memg = undef;
+	foreach my $g (@glist) {
 		if (&indexof('@'.$group{'name'}, @{$g->{'members'}}) >= 0) {
 			$memg = $g->{'name'};
 			}
@@ -66,7 +71,7 @@ if (@glist && %gcan) {
 
 if ($in{'group'}) {
 	# Show all current members
-	@grid = map { $_ =~ /^\@(.*)$/ ? ui_link("edit_group.cgi?group=$1", "<i>$1</i>") : ui_link("edit_user.cgi?user=$_", $_) }
+	my @grid = map { $_ =~ /^\@(.*)$/ ? ui_link("edit_group.cgi?group=$1", "<i>$1</i>") : ui_link("edit_user.cgi?user=$_", $_) }
 		    @{$group{'members'}};
 	if (@grid) {
 		print &ui_table_row($text{'gedit_members'},
@@ -83,31 +88,31 @@ if ($in{'group'}) {
 print &ui_hidden_table_end("basic");
 
 # Start of modules section
-print &ui_hidden_table_start(@groups ? $text{'edit_modsg'} : $text{'edit_mods'},
-			     "width=100%", 2, "mods");
+print &ui_hidden_table_start($text{'edit_mods'}, "width=100%", 2, "mods");
 
 # Show available modules, under categories
-@mlist = &list_module_infos();
-map { $has{$_}++ } @{$group{'modules'}};
-@links = ( &select_all_link("mod", 0, $text{'edit_selall'}),
-	   &select_invert_link("mod", 0, $text{'edit_invert'}) );
-@cats = &unique(map { $_->{'category'} } @mlist);
+my @mlist = &list_module_infos();
+my %has = map { $_, 1 } @{$group{'modules'}};
+my @links = ( &select_all_link("mod", 0, $text{'edit_selall'}),
+	      &select_invert_link("mod", 0, $text{'edit_invert'}) );
+my @cats = &unique(map { $_->{'category'} } @mlist);
+my %catnames;
 &read_file("$config_directory/webmin.catnames", \%catnames);
-$grids = "";
-foreach $c (sort { $b cmp $a } @cats) {
-	@cmlist = grep { $_->{'category'} eq $c } @mlist;
+my $grids = "";
+foreach my $c (sort { $b cmp $a } @cats) {
+	my @cmlist = grep { $_->{'category'} eq $c } @mlist;
 	$grids .= "<b>".($catnames{$c} || $text{'category_'.$c})."</b><br>\n";
-	@grid = ( );
-	$sw = 0;
-	foreach $m (@cmlist) {
-		local $md = $m->{'dir'};
-		$label = "";
+	my @grid = ( );
+	my $sw = 0;
+	foreach my $m (@cmlist) {
+		my $md = $m->{'dir'};
+		my $label;
 		if ($access{'acl'} && $in{'group'}) {
 			# Show link for editing ACL
-            $label = ui_link("edit_acl.cgi?" .
-                     "mod=" . urlize($m->{'dir'}) . 
-                     "&group=". urlize($in{'group'}),
-                     $m->{'desc'}) . "\n";
+		    	$label = ui_link("edit_acl.cgi?" .
+			     "mod=" . urlize($m->{'dir'}) . 
+			     "&group=". urlize($in{'group'}),
+			     $m->{'desc'}) . "\n";
 			}
 		else {
 			$label = $m->{'desc'};
@@ -125,7 +130,7 @@ print &ui_hidden_table_end("mods");
 if ($access{'acl'} && $in{'group'}) {
 	print &ui_hidden_table_start($text{'edit_global'}, "width=100%", 2,
 				     "global", 0, [ "width=30%" ]);
-	%uaccess = &get_group_module_acl($in{'group'}, "");
+	my %uaccess = &get_group_module_acl($in{'group'}, "");
 	print &ui_hidden("acl_security_form", 1);
 	&foreign_require("", "acl_security.pl");
 	&foreign_call("", "acl_security_form", \%uaccess);
@@ -133,7 +138,7 @@ if ($access{'acl'} && $in{'group'}) {
 	}
 
 # Generate form end buttons
-@buts = ( );
+my @buts = ( );
 push(@buts, [ undef, $in{'group'} ? $text{'save'} : $text{'create'} ]);
 if ($in{'group'}) {
 	push(@buts, [ "but_clone", $text{'edit_clone'} ]);
