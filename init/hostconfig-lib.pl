@@ -161,7 +161,7 @@ local($ahref, $setting, $link, $description);
 my($ahref, $setting, $description) = @_;
 local @cols;
 if ($access{'bootup'} == 1) {
-	push(@cols, "<a href=\"edit_hostconfig.cgi?0+$ahref\">$ahref</a>");
+	push(@cols, &ui_link("edit_hostconfig.cgi?0+$ahref", $ahref) );
 	}
 else {
 	push(@cols, $ahref);
