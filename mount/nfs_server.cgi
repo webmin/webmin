@@ -54,9 +54,9 @@ if (@fromip) {
 	      "<td><b>$text{'nfs_host'}</b></td> </tr>\n";
 	for($i=0; $i<@fromip; $i++) {
 		$fromhost = gethostbyaddr($fromaddr[$i], AF_INET);
-		printf "<tr $cb> <td><a href=\"\" onClick='choose(\"%s\"); ".
-		       "return false'>$fromip[$i]</a></td>\n",
-			$fromhost ? $fromhost : $fromip[$i];
+        print "<tr $cb><td>";
+        print &ui_link("#", $fromip[$i], undef, "onClick='choose(\"".($fromhost ? $fromhost : $fromip[$i])."\");return false;'" );
+        print "</td>\n";
 		printf "<td>%s</td> </tr>\n",
 			$fromhost ? $fromhost : "<br>";
 		}
