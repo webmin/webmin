@@ -1,7 +1,10 @@
 #!/usr/local/bin/perl
 # Show RBAC status
 
+use strict;
+use warnings;
 require './acl-lib.pl';
+our (%in, %text, %gconfig, %access, $module_name, $module_root_directory);
 $access{'rbacenable'} || &error($text{'rbac_ecannot'});
 &ui_print_header(undef, $text{'rbac_title'}, "");
 

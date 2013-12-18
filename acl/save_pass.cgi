@@ -1,11 +1,16 @@
 #!/usr/local/bin/perl
 # Save password quality and change restrictions
 
+use strict;
+use warnings;
 require './acl-lib.pl';
+our (%in, %text, %config, %access);
 $access{'pass'} || &error($text{'pass_ecannot'});
+&error_setup($text{'pass_err'});
+
+my %miniserv;
 &get_miniserv_config(\%miniserv);
 &ReadParse();
-&error_setup($text{'pass_err'});
 
 # Validate and store inputs
 if ($in{'minsize_def'}) {
@@ -45,8 +50,8 @@ else {
 &unlock_file($ENV{'MINISERV_CONFIG'});
 
 # For any users with no last change time set, set it now
-$fixed = 0;
-foreach $user (&list_users()) {
+my $fixed = 0;
+foreach my $user (&list_users()) {
 	if ($miniserv{'pass_maxdays'} && !$user->{'lastchange'}) {
 		$user->{'lastchange'} = time();
 		&modify_user($user->{'name'}, $user);
