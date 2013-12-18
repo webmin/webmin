@@ -878,11 +878,12 @@ elsif ($sm) {
 	# Connect to SMTP server
 	&open_socket($sm, $port, MAIL);
 	&smtp_command(MAIL);
+	my $helo = $config{'helo_name'} || &get_system_hostname();
 	if ($esmtp) {
-		&smtp_command(MAIL, "ehlo ".&get_system_hostname()."\r\n");
+		&smtp_command(MAIL, "ehlo $helo\r\n");
 		}
 	else {
-		&smtp_command(MAIL, "helo ".&get_system_hostname()."\r\n");
+		&smtp_command(MAIL, "helo $helo\r\n");
 		}
 
 	# Get username and password from parameters, or from module config
