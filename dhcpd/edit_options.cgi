@@ -54,16 +54,13 @@ $backlink .= "?idx=".$in{'idx'}."&gidx=".$in{'gidx'}."&uidx=".$in{'uidx'}.
 	     "&sidx=".$in{'sidx'} if (backlink);
 &ui_print_header($title, $text{'eopt_header'}, "");
 
-print "<form action=save_options.cgi method=post>\n";
-printf "<input type=hidden name=level value='%s'>\n",
-	$in{'global'} ? "global" : $client->{'name'};
-print "<input type=hidden name=idx value='$in{'idx'}'>\n";
-print "<input type=hidden name=gidx value='$in{'gidx'}'>\n";
-print "<input type=hidden name=uidx value='$in{'uidx'}'>\n";
-print "<input type=hidden name=sidx value='$in{'sidx'}'>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'eopt_tabhdr'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_form_start("save_options.cgi", "post");
+print &ui_hidden("level",($in{'global'} ? "global" : $client->{'name'}) );
+print &ui_hidden("idx", $in{'idx'});
+print &ui_hidden("gidx", $in{'gidx'});
+print &ui_hidden("uidx", $in{'uidx'});
+print &ui_hidden("sidx", $in{'sidx'});
+print &ui_table_start($text{'eopt_tabhdr'}, "width=100%", 4);
 @opts = &find("option", $client->{'members'});
 
 print "<tr>\n";
@@ -136,25 +133,22 @@ print "</tr>\n";
 
 if ($config{'dhcpd_version'} >= 3) {
 	# Show option definitions
-	print "<tr> <td colspan=4><hr></td> </tr>\n";
+	print "<tr><td colspan=4><hr></td></tr>\n";
 	@defs = grep { $_->{'values'}->[1] eq 'code' &&
 		       $_->{'values'}->[3] eq '=' } @opts;
 	push(@defs, undef);
 	for($i=0; $i<@defs; $i++) {
 		$o = $defs[$i];
 		print "<tr>\n";
-		print "<td><b>$text{'eopt_def'}</b></td> <td nowrap colspan=3>\n";
+		print "<td><b>$text{'eopt_def'}</b></td><td nowrap colspan=3>\n";
 		print "$text{'eopt_dname'}\n";
-		printf "<input name=dname_$i size=15 value='%s'>\n",
-			$o->{'values'}->[0];
+        print &ui_textbox("dname_".$i, $o->{'values'}->[0], 15);
 		print "$text{'eopt_dnum'}\n";
-		printf "<input name=dnum_$i size=4 value='%s'>\n",
-			$o->{'values'}->[2];
+        print &ui_textbox("dnum_".$i, $o->{'values'}->[2], 4);
 		print "$text{'eopt_dtype'}\n";
 		my $a=scalar(@{$o->{'values'}})-1;
-		printf "<input name=dtype_$i size=40 value='%s'>\n",
-			join(" ",@{$o->{'values'}}[4..$a]);
-		print "</td> </tr>\n";
+        print &ui_textbox("dtype_".$i, join(" ",@{$o->{'values'}}[4..$a]), 40);
+		print "</td></tr>\n";
 		}
 
 	# Find option definitions at higher levels
@@ -177,7 +171,7 @@ if ($config{'dhcpd_version'} >= 3) {
 		push(@custom, undef) if (@custom%2 == 1);
 		for($i=0; $i<@custom; $i++) {
 			$o = $custom[$i];
-			print "<tr> <td><b>$text{'eopt_custom'}</b></td>\n";
+			print "<tr><td><b>$text{'eopt_custom'}</b></td>\n";
 			print "<td nowrap colspan=3>$text{'eopt_cname'}\n";
 			local ($ov, @v) = @{$o->{'values'}};
 			print &ui_select("cname_$i", $ov,
@@ -186,13 +180,13 @@ if ($config{'dhcpd_version'} >= 3) {
 				1, 0, $ov ? 1 : 0);
 			print "$text{'eopt_cval'}\n";
 			print &ui_textbox("cval_$i", join(" ", @v), 40);
-			print "</td> </tr>\n";
+			print "</td></tr>\n";
 			}
 		}
 	}
 else {
 	# Show custom numeric options
-	print "<tr> <td colspan=4><hr></td> </tr>\n";
+	print "<tr><td colspan=4><hr></td></tr>\n";
 	@custom = grep { $_->{'values'}->[0] =~ /^option-(\S+)$/ &&
 			 $_->{'values'}->[1] ne 'code' } @opts;
 	push(@custom, undef);
@@ -202,19 +196,17 @@ else {
 		print "<tr>\n" if ($i%2 == 0);
 		print "<td><b>$text{'eopt_custom'}</b></td>\n";
 		print "<td nowrap>$text{'eopt_cnum'}\n";
-		local ($ov, @v) = @{$o->{'values'}};
-		printf "<input name=cnum_$i size=4 value='%s'>\n",
-			$ov =~ /^option-(\S+)$/ ? $1 : '';
+		my ($ov, @v) = @{$o->{'values'}};
+        print &ui_textbox("cnum_".$i, ( $ov =~ /^option-(\S+)$/ ? $1 : '' ), 4);
 		print "$text{'eopt_cval'}\n";
-		printf "<input name=cval_$i size=15 value='%s'></td>\n",
-			join(" ", @v);
+        print &ui_textbox("cval_".$i, join(" ", @v), 15);
 		print "</tr>\n" if ($i%2 != 0);
 		}
 	}
 
 if ($in{'global'}) {
 	# Display options for subnets and hosts too
-	print "<tr> <td colspan=4><hr></td> </tr>\n";
+	print "<tr><td colspan=4><hr></td></tr>\n";
 	print "<tr>\n";
 	print &choice_input($text{'egroup_nchoice'}, "use-host-decl-names",
 			    $conf, $text{'yes'}, "on", $text{'no'}, "off",
@@ -222,9 +214,13 @@ if ($in{'global'}) {
 	&display_params($conf, "global");
 	}
 
-print "</table></td></tr></table>\n";
-print "<input type=submit value=\"$text{'save'}\"></form>\n"
-	if &can('rw',\%access,$client);
+print &ui_table_end();
+print &ui_submit($text{'save'});
+print &ui_form_end();
+
+#print "<input type=submit value=\"$text{'save'}\"></form>\n"
+#	if &can('rw',\%access,$client);
+
 &ui_print_footer($backlink, $back);
 
 # option_input(text, name, &config, type, [initial-boolean])
@@ -237,7 +233,7 @@ print "<input type=submit value=\"$text{'save'}\"></form>\n"
 #		6  - String list
 sub option_input
 {
-local($rv, $v, $i);
+my($rv, $v, $i);
 for($i=0; $i<@{$_[2]}; $i++) {
 	if ($_[2]->[$i]->{'values'}->[0] eq $_[1]) {
 		$v = $_[2]->[$i];
@@ -247,48 +243,48 @@ for($i=0; $i<@{$_[2]}; $i++) {
 $rv = "<td><b>$_[0]</b></td>\n";
 if ($_[3] == 5 || $_[3] == 6 || $_[4]) { $rv .= "<td colspan=3 nowrap>"; }
 else { $rv .= "<td nowrap>"; }
-$rv .= sprintf "<input type=radio name=$_[1]_def value=1 %s> $text{'default'}\n",
-	$v ? "" : "checked";
-$rv .= sprintf "<input type=radio name=$_[1]_def value=0 %s> ",
-	$v ? "checked" : "";
-local @vl = $v ? @{$v->{'values'}} : ();
+
+$rv .= &ui_radio($_[1]."_def", ( $v ? 0 : 1 ),
+                [ [ 1, $text{'default'} ],
+                [ 0, "&nbsp;" ] ]);
+
+my @vl = $v ? @{$v->{'values'}} : ();
 @vl = @vl[1..$#vl];
-local $bool;
+my $bool;
 if ($_[4]) {
 	$bool = shift(@vl);
 	}
 if ($_[3] == 0) {
-	$rv .= "<input name=$_[1] size=15 value=\"$vl[0]\">\n";
+    $rv .= &ui_textbox($_[1], $vl[0], 15);
 	}
 elsif ($_[3] == 1) {
-	$rv .= "<input name=$_[1] size=4 value=\"$vl[0]\">\n";
+    $rv .= &ui_textbox($_[1], $vl[0], 4);
 	}
 elsif ($_[3] == 2) {
 	@vl = map { s/,//g; $_ } grep { $_ ne "," } @vl;
-	$rv .= "<input name=$_[1] size=20 value=\"".join(" ", @vl)."\">\n";
+    $rv .= &ui_textbox($_[1], join(" ", @vl), 20);
 	}
 elsif ($_[3] == 3) {
-	local $str = &oct_to_string($vl[0]);
-	$rv .= "<input name=$_[1] size=20 value=\"$str\">\n";
+	my $str = &oct_to_string($vl[0]);
+    $rv .= &ui_textbox($_[1], $str, 20);
 	}
 elsif ($_[3] == 4) {
-	$rv .= sprintf "<input name=$_[1] value=1 %s> Yes\n",
-			$vl[0] eq "1" ? "checked" : "";
-	$rv .= sprintf "<input name=$_[1] value=0 %s> No\n",
-			$vl[0] eq "0" ? "checked" : "";
+    $rv .= &ui_radio($_[1], $vl[0],
+                [ [ 1, $text{'yes'} ],
+                [ 0, $text{'no'} ] ]);
 	}
 elsif ($_[3] == 5) {
 	@vl = grep { $_ ne "," } @vl;
-	$rv .= "<input name=$_[1] size=50 value=\"";
+    my $val;
 	for($i=0; $i<@vl; $i+=2) {
-		$rv .= " " if ($i);
-		$rv .= $vl[$i].",".$vl[$i+1];
+		$val .= " " if ($i);
+		$val .= $vl[$i].",".$vl[$i+1];
 		}
-	$rv .= "\">\n";
+    $rv .= &ui_textbox($_[1], $val, 50);
 	}
 elsif ($_[3] == 6) {
 	@vl = map { s/,//g; $_ } grep { $_ ne "," } @vl;
-	$rv .= "<input name=$_[1] size=50 value=\"".join(" ", @vl)."\">\n";
+    $rv .= &ui_textbox($_[1], join(" ", @vl), 50);
 	}
 if ($_[4]) {
 	$rv .= &ui_checkbox($_[1]."_bool", 1, $_[4], lc($bool) eq "true");
@@ -299,8 +295,8 @@ return $rv;
 
 sub oct_to_string
 {
-local @b = split(/:/, $_[0]);
-local $rv;
+my @b = split(/:/, $_[0]);
+my $rv;
 foreach $b (@b) {
 	if ($b !~ /^[A-z0-9]{1,2}$/) {
 		# Wasn't actually in octet format after all.

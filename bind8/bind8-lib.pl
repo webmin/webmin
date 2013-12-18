@@ -1188,11 +1188,9 @@ $rv .= &ui_columns_start([ "", $text{'index_zone'}, $text{'index_type'} ],
 for($i=0; $i<@{$_[0]}; $i++) {
 	local @cols;
 	if (&have_dnssec_tools_support()) {
-		@cols = ( "<a href=\"$_[0]->[$i]\">$_[1]->[$i]</a>",
-			$_[2]->[$i], $_[4]->[$i]);
+		@cols = ( &ui_link($_[0]->[$i], $_[1]->[$i]), $_[2]->[$i], $_[4]->[$i] );
 	} else {
-		@cols = ( "<a href=\"$_[0]->[$i]\">$_[1]->[$i]</a>",
-			$_[2]->[$i]);
+		@cols = ( &ui_link($_[0]->[$i], $_[1]->[$i]), $_[2]->[$i] );
 	}
 	if (defined($_[3]->[$i])) {
 		$rv .= &ui_checked_columns_row(\@cols, \@tds, "d", $_[3]->[$i]);
@@ -2930,26 +2928,23 @@ if (!$access{'ro'} && $access{'apply'}) {
 	if (&is_bind_running()) {
 		if ($zone && ($access{'apply'} == 1 || $access{'apply'} == 2)) {
 			# Apply this zone
-			push(@rv, "<a href='restart_zone.cgi?return=$r&".
-				  "view=$zone->{'viewindex'}&".
-				  "zone=$zone->{'name'}'>".
-				  "$text{'links_apply'}</a>");
+            my $link = "restart_zone.cgi?return=$r&".
+                        "view=$zone->{'viewindex'}&".
+                        "zone=$zone->{'name'}";
+			push(@rv, &ui_link($link, $text{'links_apply'}) );
 			}
 		# Apply whole config
 		if ($access{'apply'} == 1 || $access{'apply'} == 3) {
-			push(@rv, "<a href='restart.cgi?return=$r'>".
-				  "$text{'links_restart'}</a>");
+			push(@rv, &ui_link("restart.cgi?return=$r", $text{'links_restart'}) );
 			}
 		if ($access{'apply'} == 1) {
 			# Stop BIND
-			push(@rv, "<a href='stop.cgi?return=$r'>".
-				  "$text{'links_stop'}</a>");
+			push(@rv, &ui_link("stop.cgi?return=$r", $text{'links_stop'}) );
 			}
 		}
 	elsif ($access{'apply'} == 1) {
 		# Start BIND
-		push(@rv, "<a href='start.cgi?return=$r'>".
-			  "$text{'links_start'}</a>");
+		push(@rv, &ui_link("start.cgi?return=$r", $text{'links_start'}));
 		}
 	}
 return join('<br>', @rv);

@@ -86,8 +86,7 @@ else {
 		foreach $m (0, 1) {
 			$msg = $text{'listl_mode_'.$m};
 			if ($m != $in{'bysubnet'}) {
-				$msg = "<a href='list_leases.cgi?bysubnet=$m'>".
-				       "$msg</a>";
+				$msg = &ui_link("list_leases.cgi?bysubnet=$m",$msg);
 				}
 			push(@links, $msg);
 			}
@@ -173,8 +172,7 @@ else {
 		$links = "<table width=100%><tr><td>".
 			 &ui_links_row(\@links).
 			 "</td><td align=right>".
-			 &ui_links_row([ "<a href='list_leases.cgi?$in'>".
-					 "$text{'listl_refresh'}</a>" ]).
+			 &ui_links_row([ &ui_link("list_leases.cgi?$in",$text{'listl_refresh'}) ]).
 			 "</td></tr></table>\n";
 		print $links;
 		print &ui_columns_start([
@@ -282,7 +280,7 @@ if ($in{'sort'} eq $c) {
 	return $text{'listl_'.$c};
 	}
 else {
-	return "<a href='list_leases.cgi?all=$in{'all'}&network=$in{'network'}&netmask=$in{'netmask'}&sort=$c'>".$text{'listl_'.$c}."</a>";
+    return &ui_link("list_leases.cgi?all=$in{'all'}&network=$in{'network'}&netmask=$in{'netmask'}&sort=$c",$text{'listl_'.$c});
 	}
 }
 

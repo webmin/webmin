@@ -595,7 +595,7 @@ for ($i = $_[1]; $i < $_[2]; $i++) {
 		$sp = "\&nbsp;\&nbsp;";
 		}
 	if ($_[3]->[$i]) {
-		$firstcol .= "<a href=$_[3]->[$i]>$_[4]->[$i]</a>";
+		$firstcol .= &ui_link($_[3]->[$i], $_[4]->[$i]);
 		}
 	else {
 		$firstcol .= $_[4]->[$i];
@@ -643,7 +643,7 @@ for ($i = $_[1]; $i < $_[2]; $i++) {
 		$sp = "\&nbsp;\&nbsp;";
 		}
 	if ($_[3]->[$i]) {
-		$first .= "<a href=$_[3]->[$i]>$_[4]->[$i]</a>";
+		$first .= &ui_link($_[3]->[$i],$_[4]->[$i]);
 		}
 	else {
 		$first .= $_[4]->[$i];
@@ -677,9 +677,9 @@ if ($show_subnet_delete) {
 	push(@links, &select_all_link("d"),
 		     &select_invert_link("d"));
 	}
-push(@links, "<a href='edit_subnet.cgi?new=1'>$text{'index_addsub'}</a>")
+push(@links, &ui_link("edit_subnet.cgi?new=1",$text{'index_addsub'}) )
 	if $access{'c_sub'};
-push(@links, "<a href='edit_shared.cgi?new=1'>$text{'index_addnet'}</a>")
+push(@links, &ui_link("edit_shared.cgi?new=1",$text{'index_addnet'}) )
 	if $access{'c_sha'};
 print &ui_links_row(\@links);
 }
@@ -691,9 +691,9 @@ if ($show_host_delete) {
 	push(@links, &select_all_link("d", 1),
 		     &select_invert_link("d", 1));
 	}
-push(@links, "<a href='edit_host.cgi?new=1'>$text{'index_addhst'}</a>")
+push(@links, &ui_link("edit_host.cgi?new=1",$text{'index_addhst'}) )
 	if $access{'c_hst'};
-push(@links, "<a href='edit_group.cgi?new=1'>$text{'index_addhstg'}</a>")
+push(@links, &ui_link("edit_group.cgi?new=1",$text{'index_addhstg'}) )
 	if $access{'c_grp'};
 print &ui_links_row(\@links);
 }

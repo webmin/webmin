@@ -139,14 +139,12 @@ if (!$in{'new'}) {
 	foreach $h (@host) {
 		if (!&can('r', \%access, $h) && $insubn{$h} eq $sub->{'index'}) {
             print &ui_hidden("hosts","$h->{'index'},$sub->{'index'}");
-			#print "<input name=hosts value=\"$h->{'index'},$sub->{'index'}\" type=hidden>\n";
 			}
 		}
 	# inaccessible groups in this subnet
 	foreach $g (@group) {
 		if (!&can('r', \%access, $g) && $insubn{$g} eq $sub->{'index'}) {
             print &ui_hidden("groups","$g->{'index'},$sub->{'index'}");
-			#print "<input name=groups value=\"$g->{'index'},$sub->{'index'}\" type=hidden>\n";
 			}
 		}
 	}
@@ -187,7 +185,7 @@ if ($config{'dhcpd_version'} >= 3 && !$in{'new'}) {
 	# Display address pools
 	print &ui_hr();
 	print &ui_subheading($text{'esub_pools'});
-	local $pn = 1;
+	my $pn = 1;
 	foreach $p (&find('pool', $sconf)) {
 		push(@links, "edit_pool.cgi?uidx=$in{'idx'}&sidx=$in{'sidx'}&idx=$p->{'index'}");
 		push(@titles, &text('esub_pool', $pn));
