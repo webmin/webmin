@@ -89,27 +89,28 @@ else {
 
 &ui_print_header(undef, $text{'iface_title'}, "");
 print "$text{'iface_desc'}<p>\n";
-print "<form action=save_iface.cgi>\n";
-print "<table><tr>\n";
-print "<td valign=top><b>$text{'iface_listen'}</b></td>\n";
+print &ui_form_start("save_iface.cgi", "post");
+print &ui_table_start(undef, undef, 2);
+my $val;
 if (&foreign_check("net")) {
 	%got = map { $_, 1 } split(/\s+/, $iface);
 	&foreign_require("net", "net-lib.pl");
 	@ifaces = grep { $_->{'virtual'} eq '' } &net::active_interfaces();
 	$sz = scalar(@ifaces);
-	print "<td><select name=iface multiple size=$sz>\n";
+    my @iface_sel;
 	foreach $i (@ifaces) {
 		$n = $i->{'fullname'};
-		printf "<option value=%s %s>%s (%s)</option>\n",
-			$n, $got{$n} ? 'selected' : '', $n, &net::iface_type($n);
+        push(@iface_sel,[$n,$n." (".&net::iface_type($n).")", ($got{$n} ? 'selected' : '') ]);
 		}
-	print "</select></td>\n";
+    $val = &ui_select("iface",undef,\@iface_sel,$sz,1);
 	}
 else {
-	print "<td><input name=iface size=30 value='$iface'></td>\n";
+    $val = &ui_textbox("iface",$iface,30);
 	}
-print "</tr></table>\n";
-print "<input type=submit value='$text{'save'}'></form>\n";
+print &ui_table_row($text{'iface_listen'}, $val);
+print &ui_table_end();
+print &ui_submit($text{'save'});
+print &ui_form_end(undef,undef,1);
 
 &ui_print_footer("", $text{'listl_return'});
 
