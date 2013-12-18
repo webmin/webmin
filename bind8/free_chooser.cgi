@@ -68,7 +68,7 @@ foreach $net (@nets) {
 	for($d=$start; $d<=$end; $d++) {
 		$ip = "$netip[0].$netip[1].$netip[2].$d";
 		if (!$taken{$ip}) {
-			print &ui_columns_row([ "<a href=\"\" onClick='return select(\"$ip\")'>$ip</a>" ]);
+			print &ui_columns_row([ &ui_link("", $ip, undef, "onClick='return select(\"$ip\");'") ]);
 			}
 		}
 	}

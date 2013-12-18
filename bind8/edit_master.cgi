@@ -191,9 +191,7 @@ if ($_[0]) {
 		%rnum ? ( $text{'master_records'} ) : ( )
 		], 100);
 	for(my $i=0; $_[$i]; $i++) {
-		local @cols = ( "<a href=\"edit_recs.cgi?".
-		      "zone=$in{'zone'}&view=$in{'view'}&type=$_[$i]\">".
-		      ($text{"recs_$_[$i]"} || $_[$i])."</a>" );
+		local @cols = ( &ui_link("edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$_[$i]", ($text{"recs_$_[$i]"} || $_[$i]) ) );
 		if (%rnum) {
 			push(@cols, $rnum{$_[$i]});
 			}
