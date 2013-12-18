@@ -28,11 +28,8 @@ if ($init_mode eq "osx" && $access{'bootup'}) {
 	print &ui_columns_end();
 	if ($access{'bootup'} == 1) {
 		print &ui_links_row([
-			"<a href='edit_hostconfig.cgi?1'>".
-			  "$text{'index_add_mac'}</a>",
-			"<a href='edit_hostconfig.cgi?2'>".
-			  &text('index_editconfig',
-			        "<tt>$config{'hostconfig'}</tt>")."</a>"
+            &ui_link("edit_hostconfig.cgi?1", $text{'index_add_mac'}),
+            &ui_link("edit_hostconfig.cgi?2", &text('index_editconfig',"<tt>$config{'hostconfig'}</tt>") )
 			]);
 		}
 	}
@@ -96,8 +93,7 @@ elsif ($init_mode eq "init" && $access{'bootup'}) {
 
 	@links = ( );
 	if ($access{'bootup'} == 1) {
-		push(@links,
-			"<a href='edit_action.cgi?2'>$text{'index_add'}</a>");
+		push(@links, &ui_link("edit_action.cgi?2", $text{'index_add'}) );
 		}
 	if (!$config{'desc'}) {
 		# Display actions by name only
@@ -105,8 +101,7 @@ elsif ($init_mode eq "init" && $access{'bootup'}) {
 		@grid = ( );
 		for($i=0; $i<@acts; $i++) {
 			if ($acts[$i]) {
-				push(@grid, "<a href=\"edit_action.cgi?".
-					    "$actsl[$i]\">$acts[$i]</a>");
+				push(@grid, &ui_link("edit_action.cgi?".$actsl[$i], $acts[$i]) );
 				}
 			}
 		print &ui_grid_table(\@grid, 4, 100,
@@ -142,8 +137,7 @@ elsif ($init_mode eq "init" && $access{'bootup'}) {
 				}
 			$order = $actsb[$i]->[0]->[1];
 			local @cols;
-			push(@cols, "<a href=\"edit_action.cgi?".
-			      	    "$actsl[$i]\">$acts[$i]</a>");
+			push(@cols, &ui_link("edit_action.cgi?".$actsl[$i], $acts[$i]) );
 			local %has;
 			$d = &html_escape(&init_description($actsf[$i],
 				 $config{'status_check'} == 2 ? \%has : undef));
@@ -269,7 +263,7 @@ elsif ($init_mode eq "rc" && $access{'bootup'}) {
 	print &ui_form_start("mass_rcs.cgi", "post");
 	@links = ( &select_all_link("d"),
 		   &select_invert_link("d"),
-		   "<a href='edit_rc.cgi?new=1'>$text{'index_radd'}</a>" );
+		   &ui_link("edit_rc.cgi?new=1", $text{'index_radd'}) );
 	print &ui_links_row(\@links);
 	print &ui_columns_start([ "", $text{'index_rname'},
 				  $text{'index_rdesc'},
@@ -277,8 +271,7 @@ elsif ($init_mode eq "rc" && $access{'bootup'}) {
 	foreach $rc (&list_rc_scripts()) {
 		print &ui_columns_row([
 			&ui_checkbox("d", $rc->{'name'}, undef),
-			"<a href='edit_rc.cgi?name=".
-			  &urlize($rc->{'name'})."'>$rc->{'name'}</a>",
+			&ui_link("edit_rc.cgi?name=".&urlize($rc->{'name'}), $rc->{'name'}),
 			$rc->{'desc'},
 			$rc->{'enabled'} == 1 ? $text{'yes'} :
 			$rc->{'enabled'} == 2 ? "<i>$text{'index_unknown'}</i>":
@@ -302,7 +295,7 @@ elsif ($init_mode eq "upstart" && $access{'bootup'}) {
 	print &ui_form_start("mass_upstarts.cgi", "post");
 	@links = ( &select_all_link("d"),
 		   &select_invert_link("d"),
-		   "<a href='edit_upstart.cgi?new=1'>$text{'index_uadd'}</a>" );
+		   &ui_link("edit_upstart.cgi?new=1", $text{'index_uadd'}) );
 	print &ui_links_row(\@links);
 	print &ui_columns_start([ "", $text{'index_uname'},
 				  $text{'index_udesc'},
@@ -317,7 +310,7 @@ elsif ($init_mode eq "upstart" && $access{'bootup'}) {
 			}
 		print &ui_columns_row([
 			&ui_checkbox("d", $u->{'name'}, undef, 0),
-			"<a href='$l'>$u->{'name'}</a>",
+            &ui_link($l, $u->{'name'}),
 			$u->{'desc'},
 			$u->{'boot'} eq 'start' ? $text{'yes'} :
 			  $u->{'boot'} eq 'stop' ?
@@ -348,7 +341,7 @@ elsif ($init_mode eq "systemd" && $access{'bootup'}) {
 	print &ui_form_start("mass_systemd.cgi", "post");
 	@links = ( &select_all_link("d"),
 		   &select_invert_link("d"),
-		   "<a href='edit_systemd.cgi?new=1'>$text{'index_sadd'}</a>" );
+		   &ui_link("edit_systemd.cgi?new=1", $text{'index_sadd'}) );
 	print &ui_links_row(\@links);
 	print &ui_columns_start([ "", $text{'index_uname'},
 				  $text{'index_udesc'},
@@ -363,7 +356,7 @@ elsif ($init_mode eq "systemd" && $access{'bootup'}) {
 			}
 		print &ui_columns_row([
 			&ui_checkbox("d", $u->{'name'}, undef),
-			"<a href='$l'>$u->{'name'}</a>",
+			&ui_link($l, $u->{'name'}),
 			$u->{'desc'},
 			$u->{'boot'} == 1 ? $text{'yes'} :
 			  $u->{'boot'} == 2 ? $text{'index_always'} :

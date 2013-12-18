@@ -31,8 +31,8 @@ print "<tr $tb> <td><b>$text{'nfs_dir'}</b></td> ",
       "<td><b>$text{'nfs_clients'}</b></td> </tr>\n";
 for($i=0; $i<@dirs; $i++) {
 	print "<tr $cb>\n";
-	print "<td><a href=\"\" onClick='choose(\"$dirs[$i]\"); return false'>",
-	      "$dirs[$i]</a></td>\n";
+	print "<td>".&ui_link("#", $dirs[$i], undef, "onClick='choose(\"$dirs[$i]\"); return false;'" );
+	print "</td>\n";
 	printf "<td>%s</td>\n",
 		length($clients[$i]) > 45 ?
 			&html_escape(substr($clients[$i], 0, 45))." ..." :
