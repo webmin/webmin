@@ -1,19 +1,24 @@
 #!/usr/local/bin/perl
 # Show form for an external user / group database
 
+use strict;
+use warnings;
 require './acl-lib.pl';
+our (%in, %text, %config, %access);
 $access{'sql'} || &error($text{'sql_ecannot'});
 &ui_print_header(undef, $text{'sql_title'}, "");
+
+my %miniserv;
 &get_miniserv_config(\%miniserv);
 
 print &ui_form_start("save_sql.cgi");
 print &ui_table_start($text{'sql_header'}, undef, 2);
 
-($proto, $user, $pass, $host, $prefix, $args) =
+my ($proto, $user, $pass, $host, $prefix, $args) =
 	&split_userdb_string($miniserv{'userdb'});
 
 # Build inputs for MySQL backend
-@mysqlgrid = ( );
+my @mysqlgrid = ( );
 push(@mysqlgrid,
      $text{'sql_host'},
      &ui_textbox("mysql_host", $proto eq "mysql" ? $host : "", 30));
@@ -26,10 +31,10 @@ push(@mysqlgrid,
 push(@mysqlgrid,
      $text{'sql_db'},
      &ui_textbox("mysql_db", $proto eq "mysql" ? $prefix : "", 30));
-$mysqlgrid = &ui_grid_table(\@mysqlgrid, 2, 100);
+my $mysqlgrid = &ui_grid_table(\@mysqlgrid, 2, 100);
 
 # Build inputs for PostgreSQL backend
-@postgresqlgrid = ( );
+my @postgresqlgrid = ( );
 push(@postgresqlgrid,
      $text{'sql_host'},
      &ui_textbox("postgresql_host", $proto eq "postgresql" ? $host : "", 30));
@@ -42,10 +47,10 @@ push(@postgresqlgrid,
 push(@postgresqlgrid,
      $text{'sql_db'},
      &ui_textbox("postgresql_db", $proto eq "postgresql" ? $prefix : "", 30));
-$postgresqlgrid = &ui_grid_table(\@postgresqlgrid, 2, 100);
+my $postgresqlgrid = &ui_grid_table(\@postgresqlgrid, 2, 100);
 
 # Build inputs for LDAP backend
-@ldapgrid = ( );
+my @ldapgrid = ( );
 push(@ldapgrid,
      $text{'sql_host'},
      &ui_textbox("ldap_host", $proto eq "ldap" ? $host : "", 30));
@@ -76,7 +81,7 @@ push(@ldapgrid,
 push(@ldapgrid,
      &ui_button($text{'sql_schema'}, undef, 0,
 		"onClick='window.location=\"schema.cgi\"'"), "");
-$ldapgrid = &ui_grid_table(\@ldapgrid, 2, 100);
+my $ldapgrid = &ui_grid_table(\@ldapgrid, 2, 100);
 
 print &ui_table_row(undef,
 	&ui_radio_table("proto", $proto,
