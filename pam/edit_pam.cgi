@@ -49,16 +49,15 @@ foreach $t ('auth', 'account', 'session', 'password') {
 			local @cols;
 			if ($m->{'control'} eq 'include') {
 				# Included module
-				push(@cols, "<a href='edit_inc.cgi?".
-				    "idx=$pam->{'index'}&midx=$m->{'index'}'>".
-				    &text('edit_inc', "<tt>$mn</tt>")."</a>");
+				push(@cols, &ui_link("edit_inc.cgi?".
+				    "idx=".$pam->{'index'}."&midx=".$m->{'index'},
+				    &text('edit_inc', "<tt>$mn</tt>")) );
 				@rtds = ( "colspan=4", "width=5%" );
 				}
 			else {
 				# Regular PAM module
-				push(@cols, "<a href='edit_mod.cgi?".
-				    "idx=$pam->{'index'}&midx=$m->{'index'}'>".
-				    "$mn</a>");
+				push(@cols, &ui_link("edit_mod.cgi?".
+				    "idx=".$pam->{'index'}."&midx=".$m->{'index'}, $mn) );
 				push(@cols, $text{$mn});
 				push(@cols, $text{'control_'.$m->{'control'}});
 				push(@cols, $m->{'args'});
@@ -69,17 +68,15 @@ foreach $t ('auth', 'account', 'session', 'password') {
 				$mv .= "<img src=images/gap.gif>";
 				}
 			else {
-				$mv .= "<a href='move.cgi?idx=$pam->{'index'}&".
-				       "midx=$m->{'index'}&down=1'><img ".
-				       "src=images/down.gif border=0></a>";
+				$mv .= &ui_link("move.cgi?idx=$pam->{'index'}&".
+				       "midx=".$m->{'index'}."&down=1", "<img src='images/down.gif' border=0>");
 				}
 			if ($m eq $mods[0]) {
-				$mv .= "<img src=images/gap.gif>";
+				$mv .= "<img src='images/gap.gif'>";
 				}
 			else {
-				$mv .= "<a href='move.cgi?idx=$pam->{'index'}&".
-				       "midx=$m->{'index'}&up=1'><img ".
-				       "src=images/up.gif border=0></a>";
+				$mv .= &ui_link("move.cgi?idx=".$pam->{'index'}."&".
+				       "midx=".$m->{'index'}."&up=1", "<img src='images/up.gif' border=0>");
 				}
 			push(@cols, $mv);
 			$ptable .= &ui_columns_row(\@cols, \@rtds);
