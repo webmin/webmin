@@ -66,12 +66,10 @@ if (@visible) {
 		local @cols;
 		if ($canedit && !$access{'only'}) {
 			if (defined($midx)) {
-				push(@cols, "<a href=\"edit_mount.cgi?".
-					    "index=$midx\">$p</a>");
+				push(@cols, &ui_link("edit_mount.cgi?index=$midx", $p) );
 				}
 			else {
-				push(@cols, "<a href=\"edit_mount.cgi?".
-					    "temp=1&index=$medidx\">$p</a>");
+				push(@cols, &ui_link("edit_mount.cgi?temp=1&index=$medidx", $p) );
 				}
 			}
 		else {
@@ -97,9 +95,8 @@ if (@visible) {
 			}
 		if (&can_edit_fs(@minfo)) {
 			push(@cols,
-				defined($medidx) ?
-				"<a href='unmount.cgi?index=$medidx'>$yes</a>" :
-				"<a href='mount.cgi?index=$midx'>$no</a>");
+				defined($medidx) ? &ui_link("unmount.cgi?index=$medidx", $yes) : &ui_link("mount.cgi?index=$midx", $no)
+                );
 			}
 		else {
 			push(@cols, defined($medidx) ? $yes : $no);

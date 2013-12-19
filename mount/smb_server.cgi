@@ -77,9 +77,8 @@ if (@names) {
 	print &ui_columns_start([ $text{'smb_name'}, $text{'smb_desc'} ]);
 	for($i=0; $i<@names; $i++) {
 		print &ui_columns_row([
-			"<a href=\"\" onClick='choose(\"$names[$i]\"); ".
-			"return false'>$names[$i]</a></td>\n",
-			&html_escape($comms[$i]),
+            &ui_link("#", $names[$i], undef, "onClick='choose(\"$names[$i]\");return false;'"),
+			&html_escape($comms[$i])
 			]);
 		}
 	print &ui_columns_end();

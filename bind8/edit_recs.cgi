@@ -136,18 +136,18 @@ if (!$access{'ro'} && $type eq 'master') {
 	push(@hcols, "");
 	push(@tds, "width=5");
 	}
-push(@hcols, "<a href='edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'type'}&sort=1'>".($in{'type'} eq "PTR" ? $text{'recs_addr'} : $text{'recs_name'})."</a>");
-push(@hcols, "<a href='edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'type'}&sort=5'>$text{'recs_type'}</a>") if ($in{'type'} eq "ALL");
+push(@hcols, &ui_link("edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'type'}&sort=1", ($in{'type'} eq "PTR" ? $text{'recs_addr'} : $text{'recs_name'}) ) );
+push(@hcols, &ui_link("edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'type'}&sort=5", $text{'recs_type'}) ) if ($in{'type'} eq "ALL");
 push(@hcols, $text{'recs_ttl'});
 @hmap = @{$hmap{$in{'type'}}};
 foreach $h (@hmap) {
-	push(@hcols, "<a href='edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'type'}&sort=2'>$h</a>");
+	push(@hcols, &ui_link("edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'type'}&sort=2",$h) );
 	}
 if ($in{'type'} eq "ALL" || $is_extra{$in{'type'}}) {
 	push(@hcols, $text{'recs_vals'});
 	}
 if ($config{'allow_comments'} && $in{'type'} ne "WKS") {
-	push(@hcols, "<a href='edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'type'}&sort=4'>$text{'recs_comment'}</a>");
+	push(@hcols, &ui_link("edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'type'}&sort=4", $text{'recs_comment'}) );
 	}
 $rv .= &ui_columns_start(\@hcols, 100);
 
@@ -169,11 +169,7 @@ for($i=0; $i<@_; $i++) {
 	$name = &html_escape($name);
 	$id = &record_id($r);
 	if (!$access{'ro'} && $type eq 'master') {
-		push(@cols, 
-		      "<a href=\"edit_record.cgi?zone=".
-		      "$in{'zone'}&id=".&urlize($id)."&num=$r->{'num'}&".
-		      "type=$in{'type'}&sort=$in{'sort'}&view=$in{'view'}\">".
-		      "$name</a>");
+		push(@cols, &ui_link("edit_record.cgi?zone=$in{'zone'}&id=".&urlize($id)."&num=$r->{'num'}&type=$in{'type'}&sort=$in{'sort'}&view=$in{'view'}", $name) );
 		}
 	else {
 		push(@cols, $name);

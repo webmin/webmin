@@ -28,3 +28,5 @@ Added support for creating EXT4 filesystems.
 SATA devices using SCSI emulution now show up with SATA as the description.
 ---- Changes since 1.550 ----
 Added support for using parted to manage disks if installed, which also supports the new GPT partition table format which is needed on disks larger than 2T.
+---- Changes since 1.660 ----
+Added support for SD card filesystems, as seen on the Raspberry PI and other small devices.

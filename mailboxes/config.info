@@ -53,6 +53,7 @@ from_virtualmin=Get From: address from Virtualmin?,1,1-Yes,0-No
 from_dom=Domain to use in From: address,3,System hostname
 no_orig_ip=Include browser IP in X-Originating-IP header?,1,0-Yes,1-No
 no_mailer=Include Webmin version in X-Mailer header?,1,0-Yes,1-No
+helo_name=Hostname to use in SMTP HELO line,3,Same as system hostname
 
 line1=System configuration,11
 mail_system=Mail server installed,4,1-Sendmail,0-Postfix,2-Qmail,4-Qmail+LDAP,5-Qmail+VPopMail,6-Exim,3-Detect automatically

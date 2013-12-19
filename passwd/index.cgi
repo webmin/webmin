@@ -84,9 +84,7 @@ elsif (@ulist) {
 	# Show as table of users
 	@grid = ( );
 	for($i=0; $i<@ulist; $i++) {
-		push(@grid, "<a href=\"edit_passwd.cgi?".
-			    "user=".&urlize($ulist[$i]->[0])."\">".
-			    &html_escape($ulist[$i]->[0])."</a>");
+		push(@grid, &ui_link("edit_passwd.cgi?user=".&urlize($ulist[$i]->[0]), &html_escape($ulist[$i]->[0]) ) );
 		}
 	print &ui_grid_table(\@grid, 4, 100, undef, undef,
 			     $text{'index_header'});

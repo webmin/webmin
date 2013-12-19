@@ -58,16 +58,13 @@ if ($config{'dhcpd_version'} >= 3) {
 		$vals{$a->{'values'}->[0]} = $a;
 		}
 	local $uc = $vals{'unknown-clients'}->{'name'};
-	print "<tr> <td><b>$text{'plib_unclients'}</b></td> <td colspan=3>\n";
-	printf "<input type=radio name=unclients value=allow %s> %s\n",
-		$uc eq 'allow' ? "checked" : "", $text{'plib_allow'};
-	printf "<input type=radio name=unclients value=deny %s> %s\n",
-		$uc eq 'deny' ? "checked" : "", $text{'plib_deny'};
-	printf "<input type=radio name=unclients value=ignore %s> %s\n",
-		$uc eq 'ignore' ? "checked" : "", $text{'plib_ignore'};
-	printf "<input type=radio name=unclients value='' %s> %s\n",
-		$uc ? "" : "checked", $text{'default'};
-	print "</td> </tr>\n";
+	print "<tr><td><b>$text{'plib_unclients'}</b></td><td colspan=3>\n";
+    print &ui_radio("unclients", $uc,
+                          [ [ "allow", $text{'plib_allow'} ],
+                            [ "deny", $text{'plib_deny'} ],
+                            [ "ignore", $text{'plib_ignore'} ],
+                            [ "", $text{'default'} ] ]);
+	print "</td></tr>\n";
 
 
 ######## START CLIENT-UPDATES #####
@@ -80,15 +77,13 @@ if ($config{'dhcpd_version'} >= 3) {
 			$vals{$a->{'values'}->[0]} = $a;
 			}
 		local $cu = $vals{'client-updates'}->{'name'};
-		print "<tr> <td><b>$text{'plib_clientupdates'}</b></td> <td colspan=3>\n";
-		printf "<input type=radio name=clientupdates value=allow %s> %s\n",
-			$cu eq 'allow' ? "checked" : "", $text{'plib_allow'};
-		printf "<input type=radio name=clientupdates value=deny %s> %s\n",
-			$cu eq 'deny' ? "checked" : "", $text{'plib_deny'};
-		printf "<input type=radio name=clientupdates value=ignore %s> %s\n",
-			$cu eq 'ignore' ? "checked" : "", $text{'plib_ignore'};
-		printf "<input type=radio name=clientupdates value='' %s> %s\n",
-			$cu ? "" : "checked", $text{'default'};
+		print "<tr><td valign=middle><b>$text{'plib_clientupdates'}</b></td><td valign=middle colspan=3>\n";
+        print &ui_radio("clientupdates", $cu,
+                          [ [ "allow", $text{'plib_allow'} ],
+                            [ "deny", $text{'plib_deny'} ],
+                            [ "ignore", $text{'plib_ignore'} ],
+                            [ "", $text{'default'} ] ]);
+
 		print "</td> </tr>\n";
 
 	}
@@ -97,14 +92,11 @@ if ($config{'dhcpd_version'} >= 3) {
 	if ($_[1] eq 'subnet' || $_[1] eq 'shared-network' ||
 	    $_[1] eq 'global') {
 		# Inputs for authoratative
-		local $auth = &find("authoritative", $_[0]);
-		print "<tr> <td><b>",$text{'plib_auth_'.$_[1]},"</b></td>\n";
-		printf "<td><input type=radio name=auth value=1 %s> %s\n",
-			$auth ? "checked" : "", $text{'yes'};
-		printf "<input type=radio name=auth value=0 %s> %s (%s)</td>\n",
-			$auth ? "" : "checked", $text{'default'}, $text{'no'};
-
-		print "</tr>\n";
+		my $auth = &find("authoritative", $_[0]);
+		print "<tr><td><b>",$text{'plib_auth_'.$_[1]},"</b></td>\n";
+        print "<td>";
+        print &ui_yesno_radio("auth", ( $auth ? 1: 0 ), 1, 0);
+		print "</td></tr>\n";
 		}
 	}
 
