@@ -299,6 +299,7 @@ my @mounted = &mount::list_mounted();
 my %donezone;
 my %donevzfs;
 my %donedevice;
+my %donedevno;
 
 # Get list of zone pools
 my %zpools = ( 'zones' => 1, 'zroot' => 1 );
@@ -312,7 +313,7 @@ if (&has_command("zpool")) {
 	}
 
 # Add up all local filesystems
-foreach $m (@mounted) {
+foreach my $m (@mounted) {
 	if ($m->[2] =~ /^ext/ ||
 	    $m->[2] eq "reiserfs" || $m->[2] eq "ufs" ||
 	    $m->[2] eq "zfs" || $m->[2] eq "simfs" || $m->[2] eq "vzfs" ||
@@ -328,6 +329,11 @@ foreach $m (@mounted) {
 		    $donedevice{$m->[1]}++) {
 			# Don't double-count mounts from the same device, or
 			# on the same directory.
+			next;
+			}
+		my @st = stat($m->[1]);
+		if (@st && $donedevno{$st[0]}++) {
+			# Don't double-count same filesystem by device number
 			next;
 			}
 		my ($t, $f) = &mount::disk_space($m->[2], $m->[0]);
