@@ -28,8 +28,8 @@ print &ui_table_row($text{'pid'}, $pinfo{pid});
 if ($pinfo{ppid}) {
 	local %ppinfo = &process_info($pinfo{ppid});
 	print &ui_table_row($text{'parent'},
-		"<a href=\"edit_proc.cgi?$ppinfo{pid}\">".
-                &cut_string($ppinfo{'args'}, 30)."</a>");
+		&ui_link("edit_proc.cgi?".$ppinfo{pid},
+                &cut_string($ppinfo{'args'}, 30)) );
 	}
 else {
 	print &ui_table_row($text{'parent'}, $text{'edit_none'});
@@ -139,7 +139,7 @@ if (@sub) {
 	foreach $s (@sub) {
 		local $p = $s->{'pid'};
 		print &ui_columns_row([
-			"<a href=\"edit_proc.cgi?$p\">$p</a>",
+			&ui_link("edit_proc.cgi?".$p, $p),
 			&cut_string($s->{args}, 80),
 			]);
 		}

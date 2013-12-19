@@ -158,7 +158,7 @@ if (%in) {
 			push(@pidlist, $p);
 			local @cols;
 			if (&can_edit_process($d->{'user'})) {
-				push(@cols, "<a href=\"edit_proc.cgi?$p\">$p</a>");
+				push(@cols, &ui_link("edit_proc.cgi?".$p, $p) );
 				}
 			else {
 				push(@cols, $p);

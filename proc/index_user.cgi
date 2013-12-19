@@ -23,7 +23,7 @@ foreach $u (@users) {
 		$p = $pr->{'pid'};
 		local @cols;
 		if (&can_edit_process($pr->{'user'})) {
-			push(@cols, "<a href=\"edit_proc.cgi?$p\">$p</a>");
+			push(@cols, &ui_link("edit_proc.cgi?".$p, $p) );
 			}
 		else {
 			push(@cols, $p);
