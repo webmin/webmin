@@ -49,8 +49,9 @@ foreach my $a (split(/\s+/, $miniserv{'logouttimes'})) {
 		$logout{$1} = $2;
 		}
 	}
-open(PWFILE, $miniserv{'userfile'});
-while(my $l = <PWFILE>) {
+my $fh = "PWFILE";
+&open_readfile($fh, $miniserv{'userfile'});
+while(my $l = <$fh>) {
 	$l =~ s/\r|\n//g;
 	my @user = split(/:/, $l);
 	if (@user) {
@@ -101,7 +102,7 @@ while(my $l = <PWFILE>) {
 		push(@rv, \%user);
 		}
 	}
-close(PWFILE);
+close($fh);
 
 # If a user DB is enabled, get users from it too
 if ($miniserv{'userdb'}) {
@@ -225,10 +226,10 @@ while(my $l = <GROUPS>) {
 	if (@g) {
 		next if ($only && &indexof($g[0], @$only) < 0);
 		my $group = { 'name' => $g[0],
-			      'members' => [ split(/\s+/, $g[1]) ],
-			      'modules' => [ split(/\s+/, $g[2]) ],
+			      'members' => [ split(/\s+/, $g[1] || "") ],
+			      'modules' => [ split(/\s+/, $g[2] || "") ],
 			      'desc' => $g[3],
-			      'ownmods' => [ split(/\s+/, $g[4]) ] };
+			      'ownmods' => [ split(/\s+/, $g[4] || "") ] };
 		push(@rv, $group);
 		}
 	}
@@ -635,7 +636,7 @@ else {
 		if ($user->{'hoursfrom'});
 	&lock_file($miniserv{'userfile'});
 	my $fh = "PWFILE";
-	open($fh, $miniserv{'userfile'});
+	&open_readfile($fh, $miniserv{'userfile'});
 	@pwfile = <$fh>;
 	close($fh);
 	&open_tempfile($fh, ">$miniserv{'userfile'}");
@@ -672,7 +673,7 @@ else {
 	&lock_file(&acl_filename());
 	@mods = &list_modules();
 	$fh = "ACL";
-	open($fh, &acl_filename());
+	&open_readfile($fh, &acl_filename());
 	@acl = <$fh>;
 	close($fh);
 	&open_tempfile($fh, ">".&acl_filename());
@@ -791,7 +792,7 @@ $miniserv{'logouttimes'} = join(" ", @logout);
 
 &lock_file($miniserv{'userfile'});
 my $fh = "PWFILE";
-open($fh, $miniserv{'userfile'});
+&open_readfile($fh, $miniserv{'userfile'});
 @pwfile = <$fh>;
 close($fh);
 &open_tempfile($fh, ">$miniserv{'userfile'}");
@@ -805,7 +806,7 @@ foreach my $l (@pwfile) {
 
 &lock_file(&acl_filename());
 $fh = "ACL";
-open($fh, &acl_filename());
+&open_readfile($fh, &acl_filename());
 @acl = <$fh>;
 close($fh);
 &open_tempfile($fh, ">".&acl_filename());
@@ -1003,9 +1004,10 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 else {
 	# Adding to local files
 	&lock_file("$config_directory/webmin.groups");
-	open(GROUP, ">>$config_directory/webmin.groups");
-	print GROUP &group_line($group),"\n";
-	close(GROUP);
+	my $fh = "GROUP";
+	&open_readfile($fh, ">>$config_directory/webmin.groups");
+	print $fh &group_line($group),"\n";
+	close($fh);
 	&unlock_file("$config_directory/webmin.groups");
 	}
 
