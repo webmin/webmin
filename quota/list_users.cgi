@@ -30,11 +30,9 @@ print &ui_tabs_start(\@tabs, "mode", $in{'mode'} || 'list', 1);
 # Build user list links
 @ulinks = ( );
 if ($access{'ugrace'}) {
-	push(@ulinks, "<a href='user_grace_form.cgi?filesys=".&urlize($f).
-		      "'>$text{'lusers_egrace'}</a>");
+	push(@ulinks, &ui_link("user_grace_form.cgi?filesys=".&urlize($f), $text{'lusers_egrace'}) );
 	}
-push(@ulinks, "<a href='check_quotas.cgi?filesys=".&urlize($f).
-	      "&source=user'>$text{'lusers_check'}</a>");
+push(@ulinks, &ui_link("check_quotas.cgi?filesys=".&urlize($f)."&source=user", $text{'lusers_check'}) );
 
 # Users list, in a tab
 print &ui_tabs_start_tab("mode", "list");
@@ -153,10 +151,9 @@ elsif ($n) {
 			push(@cols, $user{$i,'user'});
 			}
 		else {
-			push(@cols, "<a href=\"edit_user_quota.cgi?user=".
+			push(@cols, &ui_link("edit_user_quota.cgi?user=".
 				&urlize($user{$i,'user'})."&filesys=".
-				&urlize($f)."&source=0\">$user{$i,'user'}".
-				"</a>");
+				&urlize($f)."&source=0", $user{$i,'user'}) );
 			}
                 my $pc_hblocks=0;
                 my $pc_sblocks=0;

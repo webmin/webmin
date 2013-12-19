@@ -54,7 +54,7 @@ if ($n) {
 		$bsize = &block_size($f);
 		local @cols;
 		if ($fslist{$f} && !$access{'ro'}) {
-			push(@cols, "<a href=\"edit_group_quota.cgi?filesys=$f&group=$u&source=1\">$f</a>");
+			push(@cols, &ui_link("edit_group_quota.cgi?filesys=$f&group=$u&source=1", $f) );
 			}
 		else {
 			push(@cols, $f);

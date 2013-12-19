@@ -71,19 +71,15 @@ if (@list) {
 			push(@cols, $dir);
 			}
 		elsif ($qc == 1) {
-			push(@cols, "<a href=\"list_users.cgi?dir=".
-			   &urlize($dir)."&can=",&urlize($qc),"\">$dir</a>");
+			push(@cols, &ui_link("list_users.cgi?dir=".&urlize($dir)."&can=".&urlize($qc), $dir) );
 			}
 		elsif ($qc == 2) {
-			push(@cols, "<a href=\"list_groups.cgi?dir=".
-			    &urlize($dir)."&can=",&urlize($qc),"\">$dir</a>");
+			push(@cols, &ui_link("list_groups.cgi?dir=".&urlize($dir)."&can=".&urlize($qc), $dir) );
 			}
 		elsif ($qc == 3) {
-			push(@cols, "<a href=\"list_users.cgi?dir=".
-			    &urlize($dir)."&can=".&urlize($qc).
-			    "\">$dir (users)</a><br>".
-			    "<a href=\"list_groups.cgi?dir=".&urlize($dir).
-			    "&can=".&urlize($qc)."\">$dir (groups)</a>");
+			push(@cols, &ui_link("list_users.cgi?dir=".&urlize($dir)."&can=".&urlize($qc), $dir." (users)").
+                    "<br>".
+                    &ui_link("list_groups.cgi?dir=".&urlize($dir)."&can=".&urlize($qc), $dir." (groups)") );
 			}
 
 		push(@cols, &foreign_call("mount", "fstype_name", $f->[2]));
@@ -91,7 +87,7 @@ if (@list) {
 		push(@cols, $msg);
 		if ($access{'enable'}) {
 			if ($canactivate) {
-				push(@cols, "<a href=\"activate.cgi?dir=$dir&active=$qn&mode=$qc\">$chg</a>");
+				push(@cols, &ui_link("activate.cgi?dir=$dir&active=$qn&mode=$qc", $chg) );
 				}
 			else {
 				push(@cols, $chg);
