@@ -52,9 +52,9 @@ foreach $c ($config{'sort_mode'} ?
 		local $p = &get_period($c->{'members'}) || $defp;
 		local $r = &find_value("postrotate", $c->{'members'});
 		$r =~ s/\n/<br>\n/g;
-		push(@table, [ "<a href='edit_log.cgi?idx=$c->{'index'}'>".
+		push(@table, [ &ui_link("edit_log.cgi?idx=".$c->{'index'},
 			       join(" ", map { "<tt>$_</tt><br>" }
-					     @{$c->{'name'}})."</a>",
+					     @{$c->{'name'}}) ),
 			       $text{'period_'.$p} ||
 				"<i>$text{'index_notset'}</i>",
 			       $r ? "<tt><font size=-1>$r</font></tt>"
@@ -66,7 +66,7 @@ if (@table) {
 	print &ui_form_start("delete_logs.cgi", "post");
 	@links = ( &select_all_link("d"),
 		   &select_invert_link("d"),
-		   "<a href='edit_log.cgi?new=1'>$text{'index_add'}</a>" );
+		   &ui_link("edit_log.cgi?new=1", $text{'index_add'}) );
 	print &ui_links_row(\@links);
 	@tds = ( "width=5", "nowrap valign=top", "valign=top", "valign=top" );
 	print &ui_columns_start([ "",
@@ -85,7 +85,8 @@ if (@table) {
 	}
 else {
 	print "<p><b>$text{'index_none'}</b><p>\n";
-	print "<a href='edit_log.cgi?new=1'>$text{'index_add'}</a><p>\n";
+	print &ui_link("edit_log.cgi?new=1", $text{'index_add'});
+    print "<p>\n";
 	}
 
 # Show buttons for editing global config and scheduling
