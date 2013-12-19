@@ -68,7 +68,9 @@ if ($in{'multi'}) {
 		foreach $u (&get_groups_list()) {
 			if ($in{'group'} eq $u->[0]) { print "<tr class='filter_match' $cb>\n"; }
 			else { print "<tr class='filter_match'>\n"; }
-			print "<td width=20%><a href=\"\" onClick='return addgroup(\"$u->[0]\", \"$u->[3]\")'>$u->[0]</a></td>\n";
+			print "<td width=20%>";
+            print &ui_link("#", $u->[0], undef, "onClick='return addgroup(\"$u->[0]\", \"$u->[3]\");'");
+            print "</td>\n";
 			print "<td>$u->[3]</td> </tr>\n";
             $cnt++;
 			}
@@ -155,7 +157,9 @@ else {
 	foreach $u (&get_groups_list()) {
 		if ($in{'group'} eq $u->[0]) { print "<tr class='filter_match' $cb>\n"; }
 		else { print "<tr class='filter_match'>\n"; }
-		print "<td width=20%><a href=\"\" onClick='return select(\"$u->[0]\")'>".&html_escape($u->[0])."</a></td>\n";
+		print "<td width=20%>";
+        print &ui_link("#", &html_escape($u->[0]), undef, "onClick='return select(\"$u->[0]\");'");
+        print "</td>\n";
 		print "<td>".&html_escape($u->[3])."</td> </tr>\n";
         	$cnt++;
 		}

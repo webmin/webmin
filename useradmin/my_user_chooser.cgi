@@ -61,7 +61,9 @@ if ($in{'multi'}) {
 			if ($in{'user'} eq $u->[0]) { print "<tr class='filter_match' $cb>\n"; }
 			else { print "<tr class='filter_match'>\n"; }
 			$u->[6] =~ s/'/&#39;/g;
-			print "<td width=20%><a href=\"\" onClick='return adduser(\"$u->[0]\", \"$u->[6]\")'>$u->[0]</a></td>\n";
+			print "<td width=20%>";
+            print &ui_link("#", $u->[0], undef, "onClick='return adduser(\"$u->[0]\", \"$u->[6]\");'");
+            print "</td>\n";
 			print "<td>$u->[6]</td> </tr>\n";
             $cnt++;
 			}
@@ -148,7 +150,9 @@ else {
 	foreach $u (&get_users_list()) {
 		if ($in{'user'} eq $u->[0]) { print "<tr class='filter_match' $cb>\n"; }
 		else { print "<tr class='filter_match'>\n"; }
-		print "<td width=20%><a href=\"\" onClick='return select(\"$u->[0]\")'>$u->[0]</a></td>\n";
+		print "<td width=20%>";
+        print &ui_link("#", $u->[0], undef, "onClick='return select(\"$u->[0]\");'");
+        print "</td>\n";
 		print "<td>$u->[6]</td> </tr>\n";
         	$cnt++;
 		}

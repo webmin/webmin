@@ -2520,12 +2520,10 @@ if ($_[0]->{'noedit'}) {
 	return $dis;
 	}
 elsif ($_[0]->{'dn'}) {
-	return "<a href='edit_user.cgi?dn=".&urlize($_[0]->{'dn'})."'>".
-	       "$dis</a>";
+	return &ui_link("edit_user.cgi?dn=".&urlize($_[0]->{'dn'}), $dis);
 	}
 else {
-	return "<a href='edit_user.cgi?user=".&urlize($_[0]->{'user'})."'>".
-	       "$dis</a>";
+	return &ui_link("edit_user.cgi?user=".&urlize($_[0]->{'user'}), $dis);
 	}
 }
 
@@ -2540,12 +2538,10 @@ if ($_[0]->{'noedit'}) {
 	return &html_escape($_[0]->{'group'});
 	}
 elsif ($_[0]->{'dn'}) {
-	return "<a href='edit_group.cgi?dn=".&urlize($_[0]->{'dn'})."'>".
-	       &html_escape($_[0]->{'group'})."</a>";
+	return &ui_link("edit_group.cgi?dn=".&urlize($_[0]->{'dn'}), &html_escape($_[0]->{'group'}) );
 	}
 else {
-	return "<a href='edit_group.cgi?group=".&urlize($_[0]->{'group'})."'>".
-	       &html_escape($_[0]->{'group'})."</a>";
+	return &ui_link("edit_group.cgi?group=".&urlize($_[0]->{'group'}), &html_escape($_[0]->{'group'}) );
 	}
 }
 
