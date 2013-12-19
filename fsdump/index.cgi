@@ -37,8 +37,7 @@ if (@dumps) {
 		@dirs = &dump_directories($d);
 		$dirs = join("<br>", map { &html_escape($_) } @dirs);
 		if ($access{'edit'}) {
-			push(@cols, "<a href='edit_dump.cgi?id=$d->{'id'}'>".
-				    "<tt>$dirs</tt></a>");
+			push(@cols, &ui_link("edit_dump.cgi?id=".$d->{'id'}, "<tt>$dirs</tt>") );
 			}
 		else {
 			push(@cols, "<tt>$dirs</tt>");
@@ -57,8 +56,7 @@ if (@dumps) {
 		else {
 			push(@cols, &cron::when_text($d, 1));
 			}
-		push(@cols, "<a href='backup.cgi?id=$d->{'id'}'>".
-			    "$text{'index_now'}</a>");
+		push(@cols, &ui_link("backup.cgi?id=".$d->{'id'}, $text{'index_now'}) );
 		print &ui_checked_columns_row(\@cols, \@tds, "d", $d->{'id'});
 		}
 	print &ui_columns_end();
@@ -134,11 +132,13 @@ if (@running) {
 		local $action;
 		if ($d->{'status'}->{'status'} eq 'running' ||
 		    $d->{'status'}->{'status'} eq 'tape') {
-			$action .= "<a href='kill.cgi?id=$d->{'id'}&pid=$d->{'pid'}'>$text{'index_kill'}</a>\n";
+			$action .= &ui_link("kill.cgi?id=$d->{'id'}&pid=".$d->{'pid'}, $text{'index_kill'});
+            $action .= "\n";
 			}
 		if ($d->{'status'}->{'status'} eq 'tape') {
 			$action .= "&nbsp;|&nbsp;\n";
-			$action .= "<a href='newtape.cgi?id=$d->{'id'}&pid=$d->{'pid'}'>$text{'index_newtape'}</a>\n";
+			$action .= &ui_link("newtape.cgi?id=".$d->{'id'}."&pid=".$d->{'pid'}, $text{'index_newtape'});
+            $action .= "\n";
 			}
 		if ($d->{'status'}->{'status'} eq 'complete' ||
 		    $d->{'status'}->{'status'} eq 'failed' ||

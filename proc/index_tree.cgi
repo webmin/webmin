@@ -40,7 +40,7 @@ local(@ch, $_, $args);
 if (&can_view_process($usermap{$_[1]})) {
 	local @cols;
 	if (&can_edit_process($usermap{$_[1]})) {
-		push(@cols, "$_[0]<a href=\"edit_proc.cgi?$_[1]\">$_[1]</a>");
+		push(@cols, $_[0].&ui_link("edit_proc.cgi?".$_[1], $_[1]) );
 		}
 	else {
 		push(@cols, "$_[0]$_[1]");

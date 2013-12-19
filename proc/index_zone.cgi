@@ -21,7 +21,9 @@ foreach $z (@zones) {
 		$p = $pr->{'pid'};
 		print "<tr $cb>\n";
 		if (&can_edit_process($pr->{'user'})) {
-			print "<td><a href=\"edit_proc.cgi?$p\">$p</a></td>\n";
+			print "<td>";
+            print &ui_link("edit_proc.cgi?".$p, $p);
+            print "</td>\n";
 			}
 		else {
 			print "<td>$p</td>\n";

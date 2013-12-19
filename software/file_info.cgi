@@ -62,9 +62,8 @@ else {
 				 $packages{$i,'version'} ne $vers[$j] ||
 				 $packages{$i,'name'} ne $pkgs[$j]);
 			local @cols;
-			push(@cols, "<a href=\"edit_pack.cgi?package=".
-			      &urlize($pkgs[$j])."&version=".&urlize($vers[$j]).
-			      "\">$pkgs[$j]</a>");
+			push(@cols, &ui_link("edit_pack.cgi?package=".
+			      &urlize($pkgs[$j])."&version=".&urlize($vers[$j]), $pkgs[$j]) );
 			$c = $packages{$i,'class'};
 			push(@cols, $c || $text{'file_none'});
 			push(@cols, $packages{$i,'desc'});

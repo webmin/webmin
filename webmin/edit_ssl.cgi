@@ -98,10 +98,8 @@ foreach $i ('cn', 'o', 'email', 'issuer_cn', 'issuer_o', 'issuer_email',
 		}
 	}
 @clinks = (
-	"<a href='download_cert.cgi/cert.pem'>".
-	"$text{'ssl_pem'}</a>",
-	"<a href='download_cert.cgi/cert.p12'>".
-	"$text{'ssl_pkcs12'}</a>"
+	&ui_link("download_cert.cgi/cert.pem", $text{'ssl_pem'}),
+	&ui_link("download_cert.cgi/cert.p12", $text{'ssl_pkcs12'})
 	);
 print &ui_table_row($text{'ssl_download'}, &ui_links_row(\@clinks), undef, [ "valign=middle","valign=middle" ]);
 print &ui_table_end();
@@ -116,8 +114,8 @@ if (@ipkeys) {
 				  $text{'ssl_cert'} ]);
 	foreach $k (@ipkeys) {
 		print &ui_columns_row([
-			"<a href='edit_ipkey.cgi?idx=$k->{'index'}'>".
-			join(", ", @{$k->{'ips'}})."</a>",
+			&ui_link("edit_ipkey.cgi?idx=".$k->{'index'},
+			join(", ", @{$k->{'ips'}}) ),
 			"<tt>$k->{'key'}</tt>",
 			$k->{'cert'} ? "<tt>$k->{'cert'}</tt>"
 				     : $text{'ssl_cert_def'},
@@ -128,7 +126,8 @@ if (@ipkeys) {
 else {
 	print "<b>$text{'ssl_ipkeynone'}</b><p>\n";
 	}
-print "<a href='edit_ipkey.cgi?new=1'>$text{'ssl_addipkey'}</a><p>\n";
+print &ui_link("edit_ipkey.cgi?new=1", $text{'ssl_addipkey'});
+print "<p>\n";
 print &ui_tabs_end_tab();
 
 # SSL key generation form

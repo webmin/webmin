@@ -13,7 +13,7 @@ print &ui_table_start($text{'index_header'}, undef, 2);
 foreach $p (@pages) {
 	next if (!$access{$p});
 	$txt = $text{'index_'.$p};
-        print &ui_columns_row(["<a href=$p.cgi><img src=images/$p.gif border=0></a>", "<a href=$p.cgi>$txt</a>"], ["valign=middle width=5%","valign=middle style='padding-right:10px;'"]);
+        print &ui_columns_row([ &ui_link("$p.cgi", "<img src='images/$p.gif' border=0>"), &ui_link("$p.cgi", $txt) ], ["valign=middle width=5%","valign=middle style='padding-right:10px;'"]);
     }
 print ui_table_end();
 

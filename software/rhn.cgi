@@ -35,7 +35,9 @@ else {
 				      "$text{'rhn_version'}</b></td> </tr>\n";
 				}
 			print "<tr>\n";
-			print "<td><a href='' onClick='sel(\"$1\")'>$1</a></td>\n";
+			print "<td>";
+            print &ui_link("#", $1, undef, "onClick='sel(\"$1\");'");
+            print "</td>\n";
 			print "<td align=right>$2 - $3</td>\n";
 			print "</tr>\n";
 			}
