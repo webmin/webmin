@@ -35,8 +35,7 @@ if (@jobs) {
 		$text{'index_cmd'} ], 100, 0, \@tds);
 	foreach $j (@jobs) {
 		local @cols;
-		push(@cols, "<a href='edit_job.cgi?id=$j->{'id'}'>".
-			    "$j->{'id'}</a>");
+		push(@cols, &ui_link("edit_job.cgi?id=".$j->{'id'}, $j->{'id'}) );
 		push(@cols, &html_escape($j->{'user'}));
 		$date = localtime($j->{'date'});
 		push(@cols, "<tt>$date</tt>");
