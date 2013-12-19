@@ -66,12 +66,7 @@ local @links;
 foreach $l ("tree", "user", "size", "cpu", ($has_zone ? ("zone") : ()),
 	    "search", "run") {
 	next if ($l eq "run" && !$access{'run'});
-	local $link;
-	if ($l ne $_[0]) { $link .= "<a href=index_$l.cgi>"; }
-	else { $link .= "<b>"; }
-	$link .= $text{"index_$l"};
-	if ($l ne $_[0]) { $link .= "</a>"; }
-	else { $link .= "</b>"; }
+	my $link = ( $l ne $_[0] ? &ui_link("index_".$l.".cgi", $text{"index_$l"}) : "<b>".$text{"index_$l"}."</b>" );
 	push(@links, $link);
 	}
 print &ui_links_row(\@links);

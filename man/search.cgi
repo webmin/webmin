@@ -276,12 +276,10 @@ if (@rv) {
 	foreach $r (@rv) {
 		local @cols;
 		if ($r->[1] =~ /^(http|ftp|https):/) {
-			push(@cols, "<a href='$r->[1]' target=_blank>".
-				    &html_escape($r->[2])."</a>");
+			push(@cols, &ui_link($r->[1], &html_escape($r->[2]), undef, "target=_blank") );
 			}
 		else {
-			push(@cols, "<a href='$r->[1]&for=".&urlize($in{'for'}).
-				    "'>".&html_escape($r->[2])."</a>");
+			push(@cols, &ui_link($r->[1]."&for=".&urlize($in{'for'}), &html_escape($r->[2]) ) );
 			}
 		push(@cols, $r->[0]);
 		push(@cols, &html_escape($r->[3]));

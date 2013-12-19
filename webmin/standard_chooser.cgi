@@ -30,7 +30,7 @@ else {
 		my $minfo = { 'os_support' => $m->[3] };
 		next if (!&check_os_support($minfo));
 		push(@table, [
-		 "<a href='' onClick='return select(\"$m->[0]\")'>$m->[0]</a>",
+		 &ui_link("#", $m->[0], undef, "onClick='return select(\"$m->[0]\");'"),
 		 &html_escape($m->[4]),
 		 ]);
         $cnt++;

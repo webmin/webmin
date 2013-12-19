@@ -47,14 +47,11 @@ if ($config{'show_run'}) {
 # Work out creation links
 @crlinks = ( );
 if ($access{'create'}) {
-	push(@crlinks,
-	     "<a href=\"edit_cron.cgi?new=1\">$text{'index_create'}</a>");
-	push(@crlinks,
-	     "<a href=\"edit_env.cgi?new=1\">$text{'index_ecreate'}</a>")
-		if ($env_support);
+	push(@crlinks, &ui_link("edit_cron.cgi?new=1", $text{'index_create'}) );
+	push(@crlinks, &ui_link("edit_env.cgi?new=1", $text{'index_ecreate'}) ) if ($env_support);
 	}
 if ($config{cron_allow_file} && $config{cron_deny_file} && $access{'allow'}) {
-	push(@crlinks, "<a href=edit_allow.cgi>$text{'index_allow'}</a>");
+	push(@crlinks, &ui_link("edit_allow.cgi", $text{'index_allow'}) );
 	}
 
 # Build a list of cron job rows to show
@@ -101,17 +98,17 @@ foreach $u (@ulist) {
 		if ($job->{'name'}) {
 			# An environment variable - show the name only
 			$cmdidx = scalar(@cols);
-			push(@cols, "<a href=\"edit_env.cgi?idx=$idx\">".
+			push(@cols, &ui_link("edit_env.cgi?idx=".$idx,
 				   "<i>$text{'index_env'}</i> ".
-				   "<tt>$job->{'name'} = $job->{'value'}</tt>");
+				   "<tt>$job->{'name'} = $job->{'value'}</tt>") );
 			$donelink = 1;
 			}
 		elsif (@exp && $access{'command'}) {
 			# A multi-part command
 			$cmdidx = scalar(@cols);
 			@exp = map { &html_escape($_) } @exp;
-			push(@cols, "<a href=\"edit_cron.cgi?idx=$idx\">".
-				    join("<br>",@exp)."</a>");
+			push(@cols, &ui_link("edit_cron.cgi?idx=".$idx,
+				    join("<br>",@exp)) );
 			$donelink = 1;
 			}
 		elsif ($access{'command'}) {
@@ -123,8 +120,7 @@ foreach $u (@ulist) {
 			$cmd = length($cmd) > $max ?
 			  &html_escape(substr($cmd, 0, $max))." ..." :
 			  $cmd !~ /\S/ ? "BLANK" : &html_escape($cmd);
-			push(@cols,
-			     "<a href=\"edit_cron.cgi?idx=$idx\">$cmd</a>");
+			push(@cols, &ui_link("edit_cron.cgi?idx=".$idx, $cmd) );
 			$donelink = 1;
 			}
 
@@ -138,8 +134,7 @@ foreach $u (@ulist) {
 				push(@cols, $when);
 				}
 			else {
-				push(@cols,
-				  "<a href='edit_cron.cgi?idx=$idx'>$when</a>");
+				push(@cols, &ui_link("edit_cron.cgi?idx=".$idx, $when) );
 				}
 			}
 
@@ -163,7 +158,7 @@ foreach $u (@ulist) {
 				if ($config{'show_run'} == 2 &&
 				    ($access{'kill'} || !$proc)) {
 					$lnk = $proc ? "kill_cron.cgi?idx=$idx" : "exec_cron.cgi?idx=$idx&bg=1";
-					push(@cols, "<a href='$lnk'>$txt</a>");
+					push(@cols, &ui_link($lnk, $txt) );
 					}
 				else {
 					push(@cols, $txt);
@@ -215,7 +210,7 @@ elsif (@rows) {
 	if ($in{'search'}) {
 		print "<b>",&text('index_searchres',
 			"<i>".&html_escape($in{'search'})."</i>"),"</b><p>\n";
-		push(@links, "<a href='index.cgi'>$text{'index_reset'}</a>");
+		push(@links, &ui_link("index.cgi", $text{'index_reset'}) );
 		}
 	print &ui_form_start("delete_jobs.cgi", "post");
 	print &ui_links_row(\@links);
@@ -245,7 +240,7 @@ elsif (@rows) {
 else {
 	# Show message
 	if ($in{'search'}) {
-		push(@crlinks, "<a href='index.cgi'>$text{'index_reset'}</a>");
+		push(@crlinks, &ui_link("index.cgi", $text{'index_reset'}) );
 		}
 	print $in{'search'} ? "<b>".&text('index_esearch',
 			"<i>".&html_escape($in{'search'})."</i>")."</b> <p>" :

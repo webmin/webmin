@@ -49,10 +49,10 @@ if (@match) {
 		local @cols;
 		local $v = $packages{$i,'shortversion'} ||
 			   $packages{$i,'version'};
-		push(@cols, "<a href=\"edit_pack.cgi?search=$s&package=".
+		push(@cols, &ui_link("edit_pack.cgi?search=$s&package=".
 		      &urlize($packages{$i,'name'})."&version=".
-		      &urlize($packages{$i,'version'})."\">".&html_escape(
-			$packages{$i,'name'}.($v ?  " $v" : ""))."</a>");
+		      &urlize($packages{$i,'version'}), &html_escape(
+			$packages{$i,'name'}.($v ?  " $v" : "")) ) );
 		$c = $packages{$i,'class'};
 		push(@cols, $c ? &html_escape($c)
 				: $text{'search_none'});

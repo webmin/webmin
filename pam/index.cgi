@@ -14,7 +14,7 @@ if (!@pams) {
 	exit;
 	}
 
-@links = ( "<a href='create_form.cgi'>$text{'index_add'}</a>" );
+@links = ( &ui_link("create_form.cgi", $text{'index_add'}) );
 print &ui_links_row(\@links);
 $mid = int((@pams-1) / 2);
 print "<table width=100%><tr> <td width=50% valign=top>\n";
@@ -32,8 +32,7 @@ print &ui_columns_start([ $text{'index_name'}, $text{'index_desc'} ], 100);
 foreach $p (@_) {
 	local $t = $text{'desc_'.$p->{'name'}};
 	print &ui_columns_row([
-		"<a href='edit_pam.cgi?idx=$p->{'index'}'>".
-		&html_escape($p->{'name'})."</a>",
+		&ui_link("edit_pam.cgi?idx=".$p->{'index'}, &html_escape($p->{'name'}) ),
 		$p->{'desc'} || $t
 		]);
 	}

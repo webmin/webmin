@@ -100,8 +100,8 @@ if ($n ne "") {
 		@uprilinks = ( );
 		foreach $u (@upri) {
 			if (&can_edit_user(\%access, $u)) {
-				push(@uprilinks, "<a href='edit_user.cgi?".
-				  "user=$u->{'user'}'>".&html_escape($u->{'user'})."</a>");
+				push(@uprilinks, &ui_link("edit_user.cgi?".
+				  "user=$u->{'user'}", &html_escape($u->{'user'}) ) );
 				}
 			else {
 				push(@uprilinks, $u->{'user'});

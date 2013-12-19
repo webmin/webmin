@@ -26,7 +26,7 @@ else {
     $cnt = 0;
 	foreach $m (@$mods) {
 		push(@table, [
-		 "<a href='' onClick='return select(\"$m->[2]\")'>$m->[0]</a>",
+		 &ui_link("#", $m->[0], undef, "onClick='return select(\"$m->[2]\");'"),
 		 $m->[1] eq "NONE" ? "" : &html_escape($m->[1]),
 		 $m->[3],
 		 ]);
