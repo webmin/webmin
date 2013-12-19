@@ -2,7 +2,10 @@
 # save_group.cgi
 # Create, modify or delete a webmin group
 
+use strict;
+use warnings;
 require './acl-lib.pl';
+our (%in, %text, %config, %access, $config_directory);
 &ReadParse();
 
 # Check for special button clicks, and redirect
@@ -15,9 +18,9 @@ elsif ($in{'but_delete'}) {
 	exit;
 	}
 
+my (%group, $old);
 if ($in{'old'}) {
 	# Get the original group
-	%group = ( );
 	$old = &get_group($in{'old'});
 	$old || &error($text{'gedit_egone'});
 	$group{'members'} = $old->{'members'};
@@ -31,24 +34,26 @@ $in{'name'} =~ /^[A-z0-9\-\_\.\@]+$/ && $in{'name'} !~ /^\@/ ||
 	&error(&text('gsave_ename', $in{'name'}));
 $in{'name'} eq 'webmin' && &error($text{'gsave_enamewebmin'});
 if (!$in{'old'} || $in{'old'} ne $in{'name'}) {
-	$clash = &get_group($in{'name'});
+	my $clash = &get_group($in{'name'});
 	$clash && &error(&text('gsave_edup', $in{'name'}));
 	}
 $in{'desc'} !~ /:/ || &error($text{'gsave_edesc'});
 
 # Find the current parent group
+my $oldgroup;
 if ($in{'old'}) {
-	foreach $g (&list_groups()) {
+	foreach my $g (&list_groups()) {
 		if (&indexof('@'.$in{'old'}, @{$g->{'members'}}) >= 0) {
 			$oldgroup = $g;
 			}
 		}
 	}
 
+my $newgroup;
 if (defined($in{'group'})) {
 	# Check if group is allowed
 	if ($access{'gassign'} ne '*') {
-		local @gcan = split(/\s+/, $access{'gassign'});
+		my @gcan = split(/\s+/, $access{'gassign'});
 		$in{'group'} && &indexof($in{'group'}, @gcan) >= 0 ||
 		  !$in{'group'} && &indexof('_none', @gcan) >= 0 ||
 		  $oldgroup && $oldgroup->{'name'} eq $in{'group'} ||
@@ -73,7 +78,7 @@ if (defined($in{'group'})) {
 	}
 
 # Work out group modules
-@mods = split(/\0/, $in{'mod'});
+my @mods = split(/\0/, $in{'mod'});
 
 if ($oldgroup) {
 	# Remove modules from the old parent group
@@ -82,8 +87,8 @@ if ($oldgroup) {
 
 if ($newgroup) {
 	# Add modules from parent group to list
-	local @ownmods;
-	foreach $m (@mods) {
+	my @ownmods;
+	foreach my $m (@mods) {
 		push(@ownmods, $m)
 			if (&indexof($m, @{$newgroup->{'modules'}}) < 0);
 		}
@@ -91,7 +96,7 @@ if ($newgroup) {
 	$group{'ownmods'} = \@ownmods;
 
 	# Copy ACL files for parent group
-	local $name = $in{'old'} ? $in{'old'} : $in{'name'};
+	my $name = $in{'old'} ? $in{'old'} : $in{'name'};
 	&copy_group_acl_files($in{'group'}, $name,
 			      [ @{$newgroup->{'modules'}}, "" ]);
 	}
@@ -106,8 +111,8 @@ if ($in{'old'}) {
 	&modify_group($in{'old'}, \%group);
 
 	# recursively update all member users and groups
-	@glist = &list_groups();
-	@ulist = &list_users();
+	my @glist = &list_groups();
+	my @ulist = &list_users();
 	&update_members(\@ulist, \@glist, $group{'modules'},
 			$old->{'members'});
 	}
@@ -119,11 +124,12 @@ else {
 if ($in{'old'} && $in{'acl_security_form'}) {
 	# Update group's global ACL
 	&foreign_require("", "acl_security.pl");
+	my %uaccess;
 	&foreign_call("", "acl_security_save", \%uaccess, \%in);
-	$aclfile = "$config_directory/$in{'name'}.gacl";
+	my $aclfile = "$config_directory/$in{'name'}.gacl";
 	&lock_file($aclfile);
 	&save_group_module_acl(\%uaccess, $in{'name'}, "", 1);
-	chmod(0640, $aclfile) if (-r $aclfile);
+	&set_ownership_permissions(undef, undef, 0640, $aclfile);
 	&unlock_file($aclfile);
 	}
 

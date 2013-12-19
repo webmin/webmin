@@ -49,6 +49,7 @@ from_virtualmin=Absenderadresse aus Virtualmin beziehen?,1,1-Ja,0-Nein
 from_dom=Domaine&#44; die f&#252;r die From:&#45;E&#45;Mail&#45;Adresse genutzt werden soll,3,System&#45;Hostname
 no_orig_ip=F&#252;gen Browser IP in X-Originating-IP-Header ein?,1,0-Ja,1-Nein
 no_mailer=F&#252;gen Webmin Version in X-Mailer-Header ein?,1,0-Ja,1-Nein
+helo_name=Hostname in SMTP HELO Zeile verwenden,3,Wie System&#45;Hostnamen
 line1=Systemkonfiguration,11
 mail_system=Installierter E&#45;Mail&#45;Server,1,1-Sendmail,0-Postfix,2-Qmail,4-Qmail+LDAP,5-Qmail+VPopMail,6-Exim,3-Automatisch erkennen
 send_mode=Versende E&#45;Mails unter Benutzung von,10,-Mailserver&#45;Binary,SMTP&#45;Server

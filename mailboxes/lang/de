@@ -268,6 +268,7 @@ search_local=In lokalen Ordnern
 search_msg2=Suchergebnis f&#252;r $1
 search_msg4=Suchergebnisse
 search_msg5=Suchergebnisse f&#252;r Spam mit Auswertung $1
+search_msg6=Suchergebnisse f&#252;r $1 in $2 Feld
 search_nolatest=Alle im Ordner
 search_none=Es wurden keine E-Mails gefunden.
 search_onestatus=Nur Status
