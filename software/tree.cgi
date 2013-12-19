@@ -44,8 +44,10 @@ print "<table width=100%>\n";
 &traverse("", 0);
 print "</table>\n";
 if ($hasclasses) {
-	print "<a href=closeall.cgi>$text{'index_close'}</a>\n";
-	print "<a href=openall.cgi>$text{'index_open'}</a><p>\n";
+	print &ui_link("closeall.cgi", $text{'index_close'});
+    print "\n";
+	print &ui_link("openall.cgi", $text{'index_open'});
+    print "<p>\n";
 	}
 
 &ui_print_footer("", $text{'index_return'});
@@ -59,9 +61,10 @@ print "<tr> <td>", $spacer x $_[1];
 if ($_[0]) {
 	print "<a name=\"$_[0]\"></a>\n";
 	$act = $heiropen{$_[0]} ? "close" : "open";
-	print "<a href=\"$act.cgi?what=",&urlize($_[0]),"\">";
+    my $link = "$act.cgi?what=".&urlize($_[0]);
 	$_[0] =~ /([^\/]+)$/;
-	print "<img border=0 src=images/$act.gif></a>&nbsp; $1</td>\n";
+	print &ui_link($link, "<img border=0 src='images/$act.gif'>");
+    print "&nbsp; $1</td>\n";
 	}
 else {
 	print "<img src=images/close.gif> <i>$text{'index_all'}</i></td>\n";
@@ -74,10 +77,10 @@ if ($heiropen{$_[0]}) {
 		if ($class[$i] eq $_[0]) {
 			print "<tr> <td nowrap>", $spacer x ($_[1]+1);
 			print "<img border=0 src=images/pack.gif></a>&nbsp;\n";
-			print "<a href=\"edit_pack.cgi?package=",
-			      &urlize($pack[$i]),"&version=",
-			      &urlize($vers[$i]),"\">",&html_escape($pack[$i].
-			      ($svers[$i] ? " $svers[$i]" : "")),"</a></td>\n";
+			print &ui_link("edit_pack.cgi?package=".
+			      &urlize($pack[$i])."&version=".
+			      &urlize($vers[$i]), &html_escape($pack[$i].
+			      ($svers[$i] ? " $svers[$i]" : "")) )."</td>\n";
 			print "<td>",&html_escape($desc[$i]),"</td>\n";
 			print "</tr>\n";
 			}

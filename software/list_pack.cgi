@@ -21,23 +21,21 @@ for($i=0; $i<$n; $i++) {
 	$sz = $files{$i,'size'};
 	$ty = $files{$i,'type'};
 	local @cols;
-	$ls = "<a href=\"file_info.cgi?file=".&urlize($files{$i,'path'})."\">";
+	$ls = "file_info.cgi?file=".&urlize($files{$i,'path'});
 	$le = "</a>";
 	if ($ty == 3 || $ty == 4) {
 		# Hard or soft link
-		push(@cols, $ls.&html_escape($files{$i,'path'}).
-		      " -> ".&html_escape($files{$i,'link'}).$le);
+		push(@cols, &ui_link($ls, &html_escape($files{$i,'path'}).
+		      " -> ".&html_escape($files{$i,'link'})) );
 		push(@cols, "", "");
 		}
 	else {
-		$table = "<table width=100% cellpadding=0 ".
-		      "cellspacing=0><tr><td>$ls".
-		      &html_escape($files{$i,'path'}).
-		      "$le</td> <td align=right>\n";
+		$table = "<table width=100% cellpadding=0 cellspacing=0><tr><td>".
+		      &ui_link($ls, &html_escape($files{$i,'path'}) ).
+              "</td><td align=right>\n";
 		if ($ty == 0 || $ty == 5) {
-			$table .= "<a href='view.cgi".
-				&html_escape($files{$i,'path'}).
-				"'>$text{'list_view'}</a>";
+			$table .= &ui_link("view.cgi".
+				&html_escape($files{$i,'path'}), $text{'list_view'});
 			}
 		$table .= "</td></tr></table>";
 		push(@cols, $table);
