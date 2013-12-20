@@ -106,102 +106,92 @@ if (&supports_rbac()) {
 	}
 
 my $newgroup;
-if ($in{'risk'}) {
-	# Just store the skill and risk levels
-	$user{'skill'} = $in{'skill'};
-	$user{'risk'} = $in{'risk'};
-	delete($user{'modules'});
-	}
-else {
-	if (defined($in{'group'})) {
-		# Check if group is allowed
-		if ($access{'gassign'} ne '*') {
-			my @gcan = split(/\s+/, $access{'gassign'});
-			$in{'group'} && &indexof($in{'group'}, @gcan) >= 0 ||
-			  !$in{'group'} && &indexof('_none', @gcan) >= 0 ||
-			  $oldgroup && $oldgroup->{'name'} eq $in{'group'} ||
-				&error($text{'save_egroup'});
-			}
+if (defined($in{'group'})) {
+	# Check if group is allowed
+	if ($access{'gassign'} ne '*') {
+		my @gcan = split(/\s+/, $access{'gassign'});
+		$in{'group'} && &indexof($in{'group'}, @gcan) >= 0 ||
+		  !$in{'group'} && &indexof('_none', @gcan) >= 0 ||
+		  $oldgroup && $oldgroup->{'name'} eq $in{'group'} ||
+			&error($text{'save_egroup'});
+		}
 
-		# Store group membership
-		$newgroup = &get_group($in{'group'});
-		if ($in{'group'} ne ($oldgroup ? $oldgroup->{'name'} : '')) {
-			# Group has changed - update the member lists
-			if ($oldgroup) {
-				# Take out of old
-				$oldgroup->{'members'} =
-					[ grep { $_ ne $in{'old'} }
-					  @{$oldgroup->{'members'}} ];
-				&modify_group($oldgroup->{'name'}, $oldgroup);
-				}
-			if ($newgroup) {
-				# Put into new
-				push(@{$newgroup->{'members'}}, $in{'name'});
-				&modify_group($in{'group'}, $newgroup);
-				}
-			}
-		elsif ($in{'old'} ne $in{'name'} && $oldgroup && $newgroup) {
-			# Name has changed - rename in group
-			my $idx = &indexof(
-				$in{'old'}, @{$oldgroup->{'members'}});
-			$oldgroup->{'members'}->[$idx] = $in{'name'};
+	# Store group membership
+	$newgroup = &get_group($in{'group'});
+	if ($in{'group'} ne ($oldgroup ? $oldgroup->{'name'} : '')) {
+		# Group has changed - update the member lists
+		if ($oldgroup) {
+			# Take out of old
+			$oldgroup->{'members'} =
+				[ grep { $_ ne $in{'old'} }
+				  @{$oldgroup->{'members'}} ];
 			&modify_group($oldgroup->{'name'}, $oldgroup);
 			}
-		}
-
-	# Store manually selected modules
-	my @mcan = $access{'mode'} == 1 ? @{$me->{'modules'}} :
-		   $access{'mode'} == 2 ? split(/\s+/, $access{'mods'}) :
-				          &list_modules();
-	my %mcan = map { $_, 1 } @mcan;
-
-	my @mods = split(/\0/, $in{'mod'});
-	foreach my $m (@mods) {
-		$mcan{$m} || &error(&text('save_emod', $m));
-		}
-	if ($in{'old'}) {
-		# Add modules that this user already has, but were not
-		# allowed to be changed or are not available for this OS
-		foreach my $m (@{$old->{'modules'}}) {
-			push(@mods, $m) if (!$mcan{$m});
+		if ($newgroup) {
+			# Put into new
+			push(@{$newgroup->{'members'}}, $in{'name'});
+			&modify_group($in{'group'}, $newgroup);
 			}
 		}
-	if ($base_remote_user eq $in{'old'} &&
-	    &indexof("acl", @mods) == -1 &&
-	    (!$newgroup || &indexof("acl", @{$newgroup->{'modules'}}) == -1)) {
-		&error($text{'save_edeny'});
+	elsif ($in{'old'} ne $in{'name'} && $oldgroup && $newgroup) {
+		# Name has changed - rename in group
+		my $idx = &indexof(
+			$in{'old'}, @{$oldgroup->{'members'}});
+		$oldgroup->{'members'}->[$idx] = $in{'name'};
+		&modify_group($oldgroup->{'name'}, $oldgroup);
 		}
-
-	if ($oldgroup) {
-		# Remove modules from the old group
-		@mods = grep { &indexof($_, @{$oldgroup->{'modules'}}) < 0 }
-			     @mods;
-		}
-
-	if (!$in{'old'} && $access{'perms'}) {
-		# Copy .acl files from creator to new user
-		&copy_acl_files($me->{'name'}, $in{'name'}, $me->{'modules'});
-		}
-
-	if ($newgroup) {
-		# Add modules from group to list
-		my @ownmods;
-		foreach my $m (@mods) {
-			push(@ownmods, $m)
-				if (&indexof($m, @{$newgroup->{'modules'}}) < 0);
-			}
-		@mods = &unique(@mods, @{$newgroup->{'modules'}});
-		$user{'ownmods'} = \@ownmods;
-
-		# Copy ACL files for group
-		my $name = $in{'old'} ? $in{'old'} : $in{'name'};
-		&copy_group_user_acl_files($in{'group'}, $name,
-				      [ @{$newgroup->{'modules'}}, "" ]);
-		}
-	$user{'modules'} = \@mods;
-	delete($user{'skill'});
-	delete($user{'risk'});
 	}
+
+# Store manually selected modules
+my @mcan = $access{'mode'} == 1 ? @{$me->{'modules'}} :
+	   $access{'mode'} == 2 ? split(/\s+/, $access{'mods'}) :
+				  &list_modules();
+my %mcan = map { $_, 1 } @mcan;
+
+my @mods = split(/\0/, $in{'mod'});
+foreach my $m (@mods) {
+	$mcan{$m} || &error(&text('save_emod', $m));
+	}
+if ($in{'old'}) {
+	# Add modules that this user already has, but were not
+	# allowed to be changed or are not available for this OS
+	foreach my $m (@{$old->{'modules'}}) {
+		push(@mods, $m) if (!$mcan{$m});
+		}
+	}
+if ($base_remote_user eq $in{'old'} &&
+    &indexof("acl", @mods) == -1 &&
+    (!$newgroup || &indexof("acl", @{$newgroup->{'modules'}}) == -1)) {
+	&error($text{'save_edeny'});
+	}
+
+if ($oldgroup) {
+	# Remove modules from the old group
+	@mods = grep { &indexof($_, @{$oldgroup->{'modules'}}) < 0 }
+		     @mods;
+	}
+
+if (!$in{'old'} && $access{'perms'}) {
+	# Copy .acl files from creator to new user
+	&copy_acl_files($me->{'name'}, $in{'name'}, $me->{'modules'});
+	}
+
+if ($newgroup) {
+	# Add modules from group to list
+	my @ownmods;
+	foreach my $m (@mods) {
+		push(@ownmods, $m)
+			if (&indexof($m, @{$newgroup->{'modules'}}) < 0);
+		}
+	@mods = &unique(@mods, @{$newgroup->{'modules'}});
+	$user{'ownmods'} = \@ownmods;
+
+	# Copy ACL files for group
+	my $name = $in{'old'} ? $in{'old'} : $in{'name'};
+	&copy_group_user_acl_files($in{'group'}, $name,
+			      [ @{$newgroup->{'modules'}}, "" ]);
+	}
+$user{'modules'} = \@mods;
 
 # Update user object
 my $salt = chr(int(rand(26))+65).chr(int(rand(26))+65);

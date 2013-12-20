@@ -85,7 +85,6 @@ while(my $l = <$fh>) {
 		$user{'lang'} = $gconfig{"lang_$user[0]"};
 		$user{'notabs'} = $gconfig{"notabs_$user[0]"};
 		$user{'skill'} = $gconfig{"skill_$user[0]"};
-		$user{'risk'} = $gconfig{"risk_$user[0]"};
 		$user{'rbacdeny'} = $gconfig{"rbacdeny_$user[0]"};
 		if ($gconfig{"theme_$user[0]"}) {
 			($user{'theme'}, $user{'overlay'}) =
@@ -489,8 +488,6 @@ else {
 	$gconfig{"notabs_".$user->{'name'}} = $user->{'notabs'} if ($user->{'notabs'});
 	delete($gconfig{"skill_".$user->{'name'}});
 	$gconfig{"skill_".$user->{'name'}} = $user->{'skill'} if ($user->{'skill'});
-	delete($gconfig{"risk_".$user->{'name'}});
-	$gconfig{"risk_".$user->{'name'}} = $user->{'risk'} if ($user->{'risk'});
 	delete($gconfig{"rbacdeny_".$user->{'name'}});
 	$gconfig{"rbacdeny_".$user->{'name'}} = $user->{'rbacdeny'} if ($user->{'rbacdeny'});
 	delete($gconfig{"ownmods_".$user->{'name'}});
@@ -631,7 +628,8 @@ else {
 	&unlock_file($ENV{'MINISERV_CONFIG'});
 
 	my @times;
-	push(@times, "days", $user->{'days'}) if ($user->{'days'} ne '');
+	push(@times, "days", $user->{'days'}) if ($user->{'days'} &&
+						  $user->{'days'} ne '');
 	push(@times, "hours", $user->{'hoursfrom'}."-".$user->{'hoursto'})
 		if ($user->{'hoursfrom'});
 	&lock_file($miniserv{'userfile'});
@@ -641,9 +639,9 @@ else {
 	close($fh);
 	&open_tempfile($fh, ">$miniserv{'userfile'}");
 	my $allow = $user->{'allow'};
-	$allow =~ s/:/;/g;
+	$allow =~ s/:/;/g if ($allow);
 	my $deny = $user->{'deny'};
-	$deny =~ s/:/;/g;
+	$deny =~ s/:/;/g if ($deny);
 	foreach my $l (@pwfile) {
 		if ($l =~ /^([^:]+):([^:]*)/ && $1 eq $username) {
 			&add_old_password($user, "$2", \%miniserv);
@@ -695,8 +693,6 @@ else {
 		if ($user->{'notabs'});
 	delete($gconfig{"skill_".$username});
 	$gconfig{"skill_".$user->{'name'}} = $user->{'skill'} if ($user->{'skill'});
-	delete($gconfig{"risk_".$username});
-	$gconfig{"risk_".$user->{'name'}} = $user->{'risk'} if ($user->{'risk'});
 	delete($gconfig{"rbacdeny_".$username});
 	$gconfig{"rbacdeny_".$user->{'name'}} = $user->{'rbacdeny'}
 		if ($user->{'rbacdeny'});
@@ -821,7 +817,6 @@ foreach my $l (@acl) {
 delete($gconfig{"lang_".$username});
 delete($gconfig{"notabs_".$username});
 delete($gconfig{"skill_".$username});
-delete($gconfig{"risk_".$username});
 delete($gconfig{"ownmods_".$username});
 delete($gconfig{"theme_".$username});
 delete($gconfig{"readonly_".$username});

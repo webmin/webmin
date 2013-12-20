@@ -31,7 +31,6 @@ else {
 	else {
 		%user = ( );
 		}
-	$user{'skill'} = $user{'risk'} = 'high' if ($in{'risk'});
 	}
 my $me = &get_user($base_remote_user);
 
@@ -73,7 +72,7 @@ my @mcan = $access{'gassign'} eq '*' ?
 		split(/\s+/, $access{'gassign'});
 my %gcan = map { $_, 1 } @mcan;
 my $memg;
-if (@glist && %gcan && !$in{'risk'} && !$user{'risk'}) {
+if (@glist && %gcan) {
 	my @opts = ( );
 	if ($gcan{'_none'}) {
 		push(@opts, [ undef, "&lt;$text{'edit_none'}&gt;" ]);
