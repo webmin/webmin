@@ -3379,37 +3379,50 @@ local ($count, $server_attach) = @_;
 # Work out if any attachments are supported
 my $any_attach = $server_attach || !$main::no_browser_uploads;
 
-my ($uploader, $ssider);
 if ($any_attach && &supports_javascript()) {
 	# Javascript to increase attachments fields
-	$uploader = &ui_upload("NAME", 80, 0, "style='width:100%'");
-	$uploader =~ s/\r|\n//g;
-	$uploader =~ s/"/\\"/g;
-	$ssider = &ui_textbox("NAME", undef, 60, 0, undef, "style='width:95%'").
-		  &file_chooser_button("NAME");
-	$ssider =~ s/\r|\n//g;
-	$ssider =~ s/"/\\"/g;
 	print <<EOF;
 <script>
 function add_attachment()
 {
 var block = document.getElementById("attachblock");
-var uploader = "$uploader";
 if (block) {
 	var count = 0;
+	var first_input = document.forms[0]["attach0"];
 	while(document.forms[0]["attach"+count]) { count++; }
-	block.innerHTML += uploader.replace("NAME", "attach"+count)+"<br>\\n";
+	var new_input = document.createElement('input');
+	new_input.setAttribute('name', "attach"+count);
+	new_input.setAttribute('type', 'file');
+	if (first_input) {
+		new_input.setAttribute('size',
+			first_input.getAttribute('size'));
+		new_input.setAttribute('class',
+			first_input.getAttribute('class'));
+		}
+	block.appendChild(new_input);
+	var new_br = document.createElement('br');
+	block.appendChild(new_br);
 	}
 return false;
 }
 function add_ss_attachment()
 {
 var block = document.getElementById("ssattachblock");
-var uploader = "$ssider";
 if (block) {
 	var count = 0;
+	var first_input = document.forms[0]["file0"];
 	while(document.forms[0]["file"+count]) { count++; }
-	block.innerHTML += uploader.replace("NAME", "file"+count)+"<br>\\n";
+	var new_input = document.createElement('input');
+	new_input.setAttribute('name', "file"+count);
+	if (first_input) {
+		new_input.setAttribute('size',
+			first_input.getAttribute('size'));
+		new_input.setAttribute('class',
+			first_input.getAttribute('class'));
+		}
+	block.appendChild(new_input);
+	var new_br = document.createElement('br');
+	block.appendChild(new_br);
 	}
 return false;
 }
