@@ -164,6 +164,7 @@ cert_install=Install your certificate into browser
 cert_ekey=A new SSL key was not submitted by your browser - maybe it does not support SSL client certificates.
 cert_eca=Failed to setup certificate authority : $1
 cert_already=Warning - you are already using the certificate $1.
+cert_etempdir=Invalid certificate file
 
 acl_title=Module Access Control
 acl_title2=For $1 in $2
