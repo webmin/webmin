@@ -1,5 +1,8 @@
 
+use strict;
+use warnings;
 do "acl-lib.pl";
+our (%config, $config_directory);
 
 # useradmin_create_user(&details)
 # Create a new webmin user in the group
@@ -41,7 +44,7 @@ if ($u) {
 	&delete_user($u->{'name'});
 	&reload_miniserv();
 	}
-foreach $g (&list_groups()) {
+foreach my $g (&list_groups()) {
 	my @mems = @{$g->{'members'}};
 	my $i = &indexof($_[0]->{'user'}, @mems);
 	if ($i >= 0) {

@@ -1,7 +1,10 @@
 # log_parser.pl
 # Functions for parsing this module's logs
 
+use strict;
+use warnings;
 do 'acl-lib.pl';
+our (%text);
 
 # parse_webmin_log(user, script, action, type, object, &params)
 # Converts logged information from this module into human-readable form
