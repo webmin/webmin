@@ -50,7 +50,9 @@ print &ui_table_row($text{'view_ip'},
 
 if ($act->{'sid'} ne '-') {
 	print &ui_table_row($text{'view_sid'},
-		"<a href='search.cgi?sid=$act->{'sid'}&uall=1&mall=1&tall=1&fall=1&return=".&urlize($in{'return'})."&returndesc=".&urlize($in{'returndesc'})."'>$act->{'sid'}</a>");
+		&ui_link("search.cgi?sid=$act->{'sid'}&uall=1&mall=1&tall=1&fall=1&return=".
+        &urlize($in{'return'})."&returndesc=".
+        &urlize($in{'returndesc'}), $act->{'sid'}) );
 	}
 
 print &ui_table_row($text{'view_time'}, &make_date($act->{'time'}));
