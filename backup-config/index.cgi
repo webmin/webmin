@@ -26,7 +26,8 @@ my @backups = &list_backups();
 my $using_strftime = 0;
 if (@backups) {
 	# Show all scheduled backups
-	print "<a href='edit.cgi?new=1'>$text{'index_add'}</a><br>\n";
+	print &ui_link("edit.cgi?new=1", $text{'index_add'});
+    print "<br>\n";
 	print &ui_columns_start([ $text{'index_dest'},
 			    	  $text{'index_mods'},
 			    	  $text{'index_sched'} ], 100);
@@ -34,8 +35,8 @@ if (@backups) {
 		my @m = map { $mods{$_}->{'desc'} }
 			    split(/\s+/, $b->{'mods'});
 		print &ui_columns_row(
-			[ "<a href='edit.cgi?id=$b->{'id'}'>".
-			  &nice_dest($b->{'dest'})."</a>",
+			[ &ui_link("edit.cgi?id=".$b->{'id'},
+			  &nice_dest($b->{'dest'}) ),
 			  @m > 5 ? &text('index_count', scalar(@m))
 				 : join(", ", @m),
 			  $b->{'sched'} ? &text('index_when',
@@ -47,7 +48,8 @@ if (@backups) {
 else {
 	print "<b>$text{'index_none'}</b><p>\n";
 	}
-print "<a href='edit.cgi?new=1'>$text{'index_add'}</a><p>\n";
+print &ui_link("edit.cgi?new=1", $text{'index_add'});
+print "<p>\n";
 if ($using_strftime && !$config{'date_subs'}) {
 	print "<font color=#ff0000><b>$text{'index_nostrftime'}",
 	      "</b></font><p>\n";

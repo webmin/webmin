@@ -18,8 +18,7 @@ if ($access{'edit'}) {
 				&select_invert_link("d"));
 		}
 	if ($access{'add'}) {
-		push(@linksrow, "<a href='edit_serv.cgi?new=1'>".
-				"$text{'index_add'}</a>");
+		push(@linksrow, &ui_link("edit_serv.cgi?new=1", $text{'index_add'}) );
 		}
 	}
 
@@ -43,23 +42,25 @@ if (@servers && $config{'display_mode'}) {
 			$table .= "</td>\n";
 			}
 		else {
+            my $link = "";
 			if ($s->{'user'} || $s->{'autouser'}) {
-				$table .= "<td><a href='link.cgi/$s->{'id'}/' target=_top>\n";
+                $link = "link.cgi/".$s->{'id'};
 				}
 			else {
-				$table .= "<td><a href=".&make_url($s)." target=_top>\n";
+                $link = &make_url($s);
 				}
-			$table .= ($s->{'realhost'} || $s->{'host'});
-			$table .= ":$s->{'port'}</a></td>\n";
+            $table .= "<td>\n";
+			$table .= &ui_link($link, ($s->{'realhost'} || $s->{'host'} ).":".$s->{'port'}, undef, "target=_top");
+            $table .= "</td>\n";
 			}
 		$table .= "<td align=right>";
 		if ($s->{'autouser'} && &logged_in($s)) {
-			$table .= "<a href='logout.cgi?id=$s->{'id'}'>($text{'index_logout'})</a>\n";
+			$table .= &ui_link("logout.cgi?id=".$s->{'id'}, "(".$text{'index_logout'}.")");
 			}
 		if ($access{'edit'}) {
-			$table .= "<a href='edit_serv.cgi?id=$s->{'id'}'>($text{'index_edit'})</a>\n";
+			$table .= &ui_link("edit_serv.cgi?id=".$s->{'id'}, "(".$text{'index_edit'}.")");
 			}
-		$table .= "</td> </tr></table>\n";
+		$table .= "</td></tr></table>\n";
 		push(@cols, $table);
 		push(@cols, $s->{'desc'});
 		push(@cols, $s->{'group'} || $text{'index_none'});
@@ -82,7 +83,7 @@ elsif (@servers) {
 	my (@afters, @befores);
 	if ($access{'edit'}) {
 		my $sep = length($text{'index_edit'}) > 10 ? "<br>" : " ";
-		@afters = map { $sep."<a href='edit_serv.cgi?id=$_->{'id'}'>(".$text{'index_edit'}.")</a>" } @servers;
+		@afters = map { $sep.&ui_link("edit_serv.cgi?id=".$_->{'id'}, "(".$text{'index_edit'}.")" ) } @servers;
 		@befores = map { &ui_checkbox("d", $_->{'id'}) } @servers;
 		}
 	my @titles = map { &make_iconname($_) } @servers;

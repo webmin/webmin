@@ -47,7 +47,7 @@ if (@dir) {
 					  $text{'virt_type'} ]);
 		for($i=0; $i<@links; $i++) {
 			print &ui_columns_row([
-			  "<a href='$links[$i]'>$titles[$i]</a>",
+			  &ui_link($links[$i], $titles[$i]),
 			  $text{'virt_'.$types[$i]} ]);
 			}
 		print &ui_columns_end();
