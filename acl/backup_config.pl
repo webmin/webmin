@@ -71,10 +71,10 @@ my %aclbackup;
 &read_file("$config_directory/config.aclbackup", \%aclbackup);
 unlink("$config_directory/config.aclbackup");
 foreach my $k (keys %gconfig) {
-	delete($gconfig{$k}) if ($k =~ /^(lang_|notabs_|skill_|theme_|ownmods_)/);
+	delete($gconfig{$k}) if ($k =~ /^(lang_|notabs_|theme_|ownmods_)/);
 	}
 foreach my $k (keys %aclbackup) {
-	$gconfig{$k} = $aclbackup{$k} if ($k =~ /^(lang_|notabs_|skill_|theme_|ownmods_)/);
+	$gconfig{$k} = $aclbackup{$k} if ($k =~ /^(lang_|notabs_|theme_|ownmods_)/);
 	}
 &write_file("$config_directory/config", \%gconfig);
 

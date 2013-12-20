@@ -84,7 +84,6 @@ while(my $l = <$fh>) {
 		$user{'modules'} = $acl{$user[0]};
 		$user{'lang'} = $gconfig{"lang_$user[0]"};
 		$user{'notabs'} = $gconfig{"notabs_$user[0]"};
-		$user{'skill'} = $gconfig{"skill_$user[0]"};
 		$user{'rbacdeny'} = $gconfig{"rbacdeny_$user[0]"};
 		if ($gconfig{"theme_$user[0]"}) {
 			($user{'theme'}, $user{'overlay'}) =
@@ -486,8 +485,6 @@ else {
 	$gconfig{"lang_".$user->{'name'}} = $user->{'lang'} if ($user->{'lang'});
 	delete($gconfig{"notabs_".$user->{'name'}});
 	$gconfig{"notabs_".$user->{'name'}} = $user->{'notabs'} if ($user->{'notabs'});
-	delete($gconfig{"skill_".$user->{'name'}});
-	$gconfig{"skill_".$user->{'name'}} = $user->{'skill'} if ($user->{'skill'});
 	delete($gconfig{"rbacdeny_".$user->{'name'}});
 	$gconfig{"rbacdeny_".$user->{'name'}} = $user->{'rbacdeny'} if ($user->{'rbacdeny'});
 	delete($gconfig{"ownmods_".$user->{'name'}});
@@ -691,8 +688,6 @@ else {
 	delete($gconfig{"notabs_".$username});
 	$gconfig{"notabs_".$user->{'name'}} = $user->{'notabs'}
 		if ($user->{'notabs'});
-	delete($gconfig{"skill_".$username});
-	$gconfig{"skill_".$user->{'name'}} = $user->{'skill'} if ($user->{'skill'});
 	delete($gconfig{"rbacdeny_".$username});
 	$gconfig{"rbacdeny_".$user->{'name'}} = $user->{'rbacdeny'}
 		if ($user->{'rbacdeny'});
@@ -816,7 +811,6 @@ foreach my $l (@acl) {
 
 delete($gconfig{"lang_".$username});
 delete($gconfig{"notabs_".$username});
-delete($gconfig{"skill_".$username});
 delete($gconfig{"ownmods_".$username});
 delete($gconfig{"theme_".$username});
 delete($gconfig{"readonly_".$username});
