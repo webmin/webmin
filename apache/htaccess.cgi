@@ -15,7 +15,7 @@ if (@htaccess_files) {
 	$i = 0;
 	foreach $f (@htaccess_files) {
 		print &ui_columns_row([
-			"<a href=\"htaccess_index.cgi?file=".&urlize($htaccess_files[$i])."\">".$htaccess_files[$i]."</a>"
+			&ui_link("htaccess_index.cgi?file=".&urlize($htaccess_files[$i]), $htaccess_files[$i])
 			]);
 		$i++;
 		}

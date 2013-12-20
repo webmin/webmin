@@ -335,13 +335,13 @@ elsif ($config{'show_list'} && scalar(@vname)) {
 		$text{'index_url'} ], 100);
 	for($i=0; $i<@vname; $i++) {
 		local @cols;
-		push(@cols, "<a href=\"$vlink[$i]\">$vname[$i]</a>");
+		push(@cols, &ui_link($vlink[$i], $vname[$i]) );
 		push(@cols, &html_escape($vaddr[$i]));
 		push(@cols, &html_escape($vport[$i]));
 		push(@cols, $vserv[$i] || $text{'index_auto'});
 		push(@cols, &html_escape($vproxy[$i]) ||
 			    &html_escape($vroot[$i]));
-		push(@cols, "<a href=$vurl[$i]>$text{'index_view'}</a>");
+		push(@cols, &ui_link($vurl[$i], $text{'index_view'}) );
 		if ($showdel && $vidx[$i]) {
 			print &ui_checked_columns_row(\@cols, undef,
 						      "d", $vidx[$i]);

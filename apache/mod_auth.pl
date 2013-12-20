@@ -18,14 +18,14 @@ $rv = "<table border><tr><td><table>\n";
 $rv .= "<tr> <td><b>$text{'mod_auth_ufile'}</b></td> <td>".
        &opt_input($_[0]->{'value'}, "AuthUserFile", $text{'default'}, 45).
        &file_chooser_button("AuthUserFile", 0).
-       ($uf ? "&nbsp;<a href=\"list_authusers.cgi?file=".$_[0]->{'value'}.
-       "&url=".&urlize(&this_url())."\">$text{'mod_auth_uedit'}</a>" : "")."</td></tr>\n";
+       ($uf ? "&nbsp;".&ui_link("list_authusers.cgi?file=".$_[0]->{'value'}.
+       "&url=".&urlize(&this_url()), $text{'mod_auth_uedit'}) : "")."</td></tr>\n";
 
 $rv .= "<tr> <td><b>$text{'mod_auth_gfile'}</b></td> <td>".
        &opt_input($_[1]->{'value'}, "AuthGroupFile", $text{'default'}, 45).
        &file_chooser_button("AuthGroupFile", 0).
-       ($gf ? "&nbsp;<a href=\"list_authgroups.cgi?file=".$_[1]->{'value'}.
-       "&url=".&urlize(&this_url())."\">$text{'mod_auth_gedit'}</a>" : "")."</td></tr>\n";
+       ($gf ? "&nbsp;".&ui_link("list_authgroups.cgi?file=".$_[1]->{'value'}.
+       "&url=".&urlize(&this_url()), $text{'mod_auth_gedit'}) : "")."</td></tr>\n";
 
 $rv .= "<tr> <td><b>$text{'mod_auth_pass'}</b></td> <td>".
        &choice_input($_[2]->{'value'}, "AuthAuthoritative", "",

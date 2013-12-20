@@ -14,8 +14,8 @@ local $uf = $_[0] && -r "list_authusers.cgi" ? 1 : 0;
 return (2, $text{'mod_auth_ufile'},
        &opt_input($_[0]->{'value'}, "AuthUserFile", $text{'default'}, 45).
        &file_chooser_button("AuthUserFile", 0).
-       ($uf ? "&nbsp;<a href=\"list_authusers.cgi?file=".$_[0]->{'value'}.
-       "&url=".&urlize(&this_url())."\">$text{'mod_auth_uedit'}</a>" : ""));
+       ($uf ? "&nbsp;".&ui_link("list_authusers.cgi?file=".$_[0]->{'value'}.
+       "&url=".&urlize(&this_url()), $text{'mod_auth_uedit'}) : ""));
 }
 sub save_AuthUserFile
 {

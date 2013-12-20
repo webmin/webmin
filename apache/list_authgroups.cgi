@@ -25,10 +25,11 @@ if (@groups) {
 		$g = $groups[$i]->{'group'};
 		@m = @{$groups[$i]->{'members'}};
 		if (@m > 15) { @m = @m[0..14]; }
-		printf "<tr> <td><a href=\"edit_authgroup.cgi?group=$g&".
-		  "file=%s&url=%s\">$g</a></td>\n",
-		  &urlize($f), &urlize(&this_url());
-		printf "<td>%s</td> </tr>\n",
+        print "<tr><td>";
+        print &ui_link("edit_authgroup.cgi?group=$g&".
+            "file=".&urlize($f)."&url=".&urlize(&this_url()), $g);
+        print "</td>";
+		printf "<td>%s</td></tr>\n",
 			@m ? join(" , ", @m) : "<i>None</i>";
 		}
 	print "</table></td></tr></table>\n";
@@ -36,8 +37,9 @@ if (@groups) {
 else {
 	print "<b>",&text('authg_none', "<tt>$f</tt>"),"</b><p>\n";
 	}
-printf "<a href=\"edit_authgroup.cgi?file=%s&url=%s\">%s</a><p>\n",
-        &urlize($f), &urlize(&this_url()), $text{'authg_add'};
+print &ui_link("edit_authgroup.cgi?file=".
+        &urlize($f)."&url=".&urlize(&this_url()), $text{'authg_add'});
+print "<p>\n";
 
 &ui_print_footer($in{'url'}, $text{'auth_return'});
 

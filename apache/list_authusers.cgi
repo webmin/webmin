@@ -22,9 +22,9 @@ if (@users) {
 	for($i=0; $i<@users; $i++) {
 		$u = $users[$i];
 		if ($i%4 == 0) { print "<tr>\n"; }
-		printf "<td width=25%%><a href=\"edit_authuser.cgi?user=$u&".
-		  "file=%s&url=%s\">$u</a></td>\n",
-		  &urlize($f), &urlize(&this_url());
+        print "<td width='25%'>";
+        print &ui_link("edit_authuser.cgi?user=$u&file=".&urlize($f)."&url=".&urlize(&this_url()), $u);
+        print "</td>";
 		if ($i%4 == 3) { print "</tr>\n"; }
 		}
 	while($i++%4) { print "<td width=25%></td>\n"; }
@@ -33,8 +33,8 @@ if (@users) {
 else {
 	print "<b>",&text('authu_none', "<tt>$f</tt>"),"</b><p>\n";
 	}
-printf "<a href=\"edit_authuser.cgi?file=%s&url=%s\">%s</a><p>\n",
-        &urlize($f), &urlize(&this_url()), $text{'authu_add'};
+print &ui_link("edit_authuser.cgi?file=".&urlize($f)."&url=".&urlize(&this_url()), $text{'authu_add'});
+print "<p>\n";
 
 print &ui_hr();
 $s = $config{"sync_$f"};
