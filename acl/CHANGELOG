@@ -59,3 +59,6 @@ Converted commands in the module's API file to POD format, and added more detail
 Added the User and Group Database page, for configuring Webmin to store all new users, groups and access control lists in a MySQL, PostgreSQL or LDAP database. This allows Webmin permissions to be shared between multiple systems.
 ---- Changes since 1.650 ----
 Added support for two-factor authentication using Authy or Google Authenticator.
+---- Changes since 1.660 ----
+Converted all pages to use the common Webmin UI library for a more consistent interface.
+Made all code Perl strict and warnings compliant.
