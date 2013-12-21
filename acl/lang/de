@@ -54,6 +54,7 @@ cert_ebrowser=Webmin wei&#223; nicht wie Client-Zertifikate f&#252;r Ihren Brows
 cert_eca=Das Erstellen der Zertifikatsautorit&#228;t schlug fehl : $1
 cert_ekey=Ein neuer SSL-Schl&#252;ssel wurde nicht von Ihrem Browser &#252;bertragen - vielleicht unterst&#252;tzt Ihr Browser keine Client-Zertifikate.
 cert_email=E-Mail-Adresse
+cert_etempdir=Ung&#252;ltige Zertifikatdatei
 cert_header=Details des neuen Zertifikats
 cert_install=Installiere Ihr Zertifikat in den Browser
 cert_issue=Zertifikat ausstellen

@@ -46,11 +46,17 @@ edit_unix=Dateien als Unix-Benutzer zugreifen
 edit_unixdef=Gleiche wie Benutzername
 edit_user=Login Benutzername
 index_act=Aktiviere CVS Server
+index_actdesc=Der CVS-Server ist eingerichtet, um von $1 auf Ihrem System ausgef&#252;hrt zu werden, aber noch nicht aktiv. Klicken Sie auf diese Schaltfl&#228;che, wenn Sie diesen aktivieren m&#246;chten um zu erm&#246;glichen, dass Remote-Benutzern auf das CVS-Repository zugreifen k&#246;nnen.
+index_actdesc2=Die CVS-Server ist eingerichtet, um von $1 auf Ihrem System f&#252;r den CVS-Root $2 ausgef&#252;hrt zu werden, aber noch nicht aktiv. Klicken Sie auf diese Schaltfl&#228;che, wenn Sie diesen aktivieren m&#246;chten um zu erm&#246;glichen, dass Remote-Benutzern auf das CVS-Repository zugreifen k&#246;nnen
 index_asuser=Ausf&#252;hren als Benutzer:
 index_deact=Deaktiviere CVS Server
+index_deactdesc=Die CVS-Server ist eingerichtet, um von $1 auf Ihrem System ausgef&#252;hrt zu werden, und aktiv ist. Klicken Sie auf diese Schaltfl&#228;che, wenn Sie diese deaktivieren m&#246;chten und Remote-Benutzer daran hindern m&#246;chten, Zugriff auf das CVS-Repository zu haben.
 index_ecvs=Der CVS-Befehl $1 wurde nicht auf Ihrem System gefunden. Vielleicht ist es nicht installiert, oder Ihre <a href='$2'>Modulkonfiguration</a> ist falsch.
+index_einetroot=Achtung! Der CVS-Root, welcher in der Modulkonfiguration eingestellt ist, ist nicht der Root f&#252;r den CVS-Server. Dies kann durch Deaktivieren und Reaktivieren des CVS-Server festgelegt werden.
+index_eroot=Ihr CVS-Root-Verzeichnis ist nicht richtig eingestellt. Sie m&#252;ssen die <a href='$1'>Modulkonfiguration</a> verwenden, um es vor dem benutzen einzustellen.
 index_eversion=Konnte die Version vom CVS Befehl $1 nicht erhalten. Output betrug $2.
 index_init=Initialisiere Repository
+index_initdesc=Alternativ k&#246;nnen Sie ein neues CVS-Repository unter $1 erstellen, indem Sie auf den Button unten klicken.
 index_return=Modulindex
 index_setup=Setup CVS Server
 index_title=CVS Server
@@ -70,6 +76,7 @@ passwd_ecannot=Es ist Ihnen nicht erlaubt CVS Benutzer zu verwalten
 passwd_header=CVS Server Benutzer
 passwd_none=Keine CVS Server Benutzer wurden bisher definiert.
 passwd_return=Benutzerliste
+passwd_sync=Die Optionen unter konfiguriert die Synchronisation zwischen Unix-Benutzer, die &#252;ber Webmin und CVS-Benutzer erstellt wurden sind.
 passwd_sync_create=Eine neuen CVS Benutzer, wenn ein Unix-Benutzer hinzugef&#252;gt wurde, hinzuf&#252;gen.
 passwd_sync_delete=L&#246;sche eines CVS-Benutzer, wenn der entsprechende Unix Benutzer gel&#246;scht wurde.
 passwd_sync_modify=Aktualisiere einen CVS-Benutzer, wenn der entsprechende Unix Benutzer ge&#228;ndert wurde.
