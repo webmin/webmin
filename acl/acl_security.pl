@@ -1,5 +1,8 @@
 
+use strict;
+use warnings;
 do 'acl-lib.pl';
+our (%text, %in);
 
 # acl_security_form(&options)
 # Output HTML for editing security options for the acl module
@@ -53,23 +56,24 @@ print &ui_table_row($text{'acl_gassign'},
 # Parse the form for security options for the acl module
 sub acl_security_save
 {
+my ($o) = @_;
 if ($in{'users_def'} == 1) {
-	$_[0]->{'users'} = '*';
+	$o->{'users'} = '*';
 	}
 elsif ($in{'users_def'} == 2) {
-	$_[0]->{'users'} = '~';
+	$o->{'users'} = '~';
 	}
 else {
-	$_[0]->{'users'} = join(" ", split(/\0/, $in{'users'}));
+	$o->{'users'} = join(" ", split(/\0/, $in{'users'}));
 	}
-$_[0]->{'mode'} = $in{'mode'};
-$_[0]->{'mods'} = $in{'mode'} == 2 ? join(" ", split(/\0/, $in{'mods'}))
+$o->{'mode'} = $in{'mode'};
+$o->{'mods'} = $in{'mode'} == 2 ? join(" ", split(/\0/, $in{'mods'}))
 				   : undef;
 foreach my $f (&list_acl_yesno_fields()) {
-	$_[0]->{$f} = $in{$f};
+	$o->{$f} = $in{$f};
 	}
-$_[0]->{'groups'} = $in{'groups'};
-$_[0]->{'gassign'} = $in{'gassign_def'} ? '*' :
+$o->{'groups'} = $in{'groups'};
+$o->{'gassign'} = $in{'gassign_def'} ? '*' :
 		     join(" ", split(/\0/, $in{'gassign'}));
 }
 

@@ -1,5 +1,8 @@
 
+use strict;
+use warnings;
 do 'acl-lib.pl';
+our ($config_directory, %gconfig);
 
 # backup_config_files()
 # Returns files and directories that can be backed up
@@ -22,11 +25,13 @@ foreach my $u (&list_users(), &list_groups()) {
 	}
 
 # Add /etc/webmin/config
-system("cp $config_directory/config $config_directory/config.aclbackup");
+&copy_source_dest("$config_directory/config",
+		  "$config_directory/config.aclbackup");
 push(@rv, "$config_directory/config.aclbackup");
 
 # Add /etc/webmin/miniserv.conf
-system("cp $config_directory/miniserv.conf $config_directory/miniserv.conf.aclbackup");
+&copy_source_dest("$config_directory/miniserv.conf",
+		  "$config_directory/miniserv.conf.aclbackup");
 push(@rv, "$config_directory/miniserv.conf.aclbackup");
 
 return @rv;
@@ -84,10 +89,10 @@ foreach my $k (keys %aclbackup) {
 unlink("$config_directory/miniserv.conf.aclbackup");
 my %miniserv;
 &get_miniserv_config(\%miniserv);
-foreach $k (keys %miniserv) {
+foreach my $k (keys %miniserv) {
 	delete($miniserv{$k}) if ($k =~ /^(preroot_)/);
 	}
-foreach $k (keys %aclbackup) {
+foreach my $k (keys %aclbackup) {
 	$miniserv{$k} = $aclbackup{$k} if ($k =~ /^(preroot_)/);
 	}
 &put_miniserv_config(\%miniserv);
