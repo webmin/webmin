@@ -8,6 +8,7 @@
 require './dhcpd-lib.pl';
 require './params-lib.pl';
 &ReadParse();
+%access = &get_module_acl();
 $access{'zones'} || &error($text{'zone_ecannot'});
 &lock_file($config{'dhcpd_conf'});
 
