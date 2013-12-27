@@ -10,41 +10,42 @@ print "<hr>\n";
 
 @services = &list_services();
 $edit = &can_edit("services");
-print "<a href='edit_service.cgi?new=1'>$text{'services_add'}</a><br>\n"
-	if ($edit);
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'service_name'}</b></td> ",
-      "<td><b>$text{'service_ports'}</b></td> </tr>\n";
+
+my $link = ( $edit ? &ui_link("edit_service.cgi?new=1",$text{'services_add'}) : "" );
+ 
+print $link."<br>" if ( $link ne '' );
+
+print &ui_columns_start([$text{'service_name'}, $text{'service_ports'}]);
+
 if (!$services[0]->{'standard'}) {
-	print "<tr $tb> <td colspan=3><b>$text{'services_header1'}</b></td> </tr>\n";
+    print &ui_columns_header([$text{'services_header1'}],["colspan=2"]);
 	}
 foreach $s (@services) {
 	if ($s->{'standard'} && !$doneheader) {
-		print "<tr $tb> <td colspan=3><b>$text{'services_header2'}</b></td> </tr>\n";
+        print &ui_columns_header([$text{'services_header2'}],["colspan=2"]);
 		$doneheader++;
 		}
-	print "<tr $cb>\n";
+    my @cols;
 	if ($s->{'standard'}) {
-		print "<td>$s->{'name'}</td>\n";
+        push(@cols, $s->{'name'} );
 		}
 	else {
-		print "<td><a href='edit_service.cgi?idx=$s->{'index'}'>",
-		      "$s->{'name'}</a></td>\n";
+        push(@cols, &ui_link("edit_service.cgi?idx=$s->{'index'}", $s->{'name'}) );
 		}
-	print "<td>";
+    my $cl = "";
 	for($i=0; $i<@{$s->{'protos'}}; $i++) {
-		print &protocol_name($s->{'protos'}->[$i], $s->{'ports'}->[$i]);
-		print "\n";
+        $cl .= &protocol_name($s->{'protos'}->[$i], $s->{'ports'}->[$i])."&nbsp;";
 		}
 	for($i=0; $i<@{$s->{'others'}}; $i++) {
-		print "<b>$s->{'others'}->[$i]</b>\n";
+		$cl .="<b>$s->{'others'}->[$i]</b>&nbsp;";
 		}
-	print "</td>\n";
-	print "</tr>\n";
+    push(@cols, $cl);
+    print &ui_columns_row(\@cols);
 	}
-print "</table>\n";
-print "<a href='edit_service.cgi?new=1'>$text{'services_add'}</a><p>\n"
-	if ($edit);
+print &ui_columns_end();
 
-print "<hr>\n";
+print $link."<p>" if ( $link ne '' );
+print &ui_hr();
+
+
 &footer("", $text{'index_return'});
