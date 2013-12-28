@@ -50,10 +50,9 @@ if (defined(&theme_icons_table)) {
 	&theme_icons_table(@_);
 	return;
 	}
-local ($i, $need_tr);
-local $cols = $_[3] ? $_[3] : 4;
-local $per = int(100.0 / $cols);
-print "<table width=100% cellpadding=5>\n";
+my ($i, $need_tr);
+my $cols = $_[3] ? $_[3] : 4;
+my $per = int(100.0 / $cols);
 print &ui_table_start(undef,"width=100% cellpadding=5",2);
 for($i=0; $i<@{$_[0]}; $i++) {
 	if ($i%$cols == 0) { print "<tr>\n"; }

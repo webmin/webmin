@@ -6,35 +6,31 @@ require './itsecur-lib.pl';
 &can_use_error("groups");
 &header($text{'groups_title'}, "",
 	undef, undef, undef, undef, &apply_button());
-print "<hr>\n";
+print &ui_hr();
 
-@groups = &list_groups();
-$edit = &can_edit("groups");
+my @groups = &list_groups();
+my $edit = &can_edit("groups");
+
 if (@groups) {
-	print "<a href='edit_group.cgi?new=1'>$text{'groups_add'}</a><br>\n"
-		if ($edit);
-	print "<table border>\n";
-	print "<tr $tb> <td><b>$text{'group_name'}</b></td> ",
-	      "<td><b>$text{'group_members'}</b></td> </tr>\n";
-	foreach $g (@groups) {
-		print "<tr $cb>\n";
-		print "<td><a href='edit_group.cgi?idx=$g->{'index'}'>",
-		      "$g->{'name'}</a></td>\n";
-		@mems = @{$g->{'members'}};
+    print &ui_link("edit_group.cgi?new=1", $text{'groups_add'}) if ($edit);
+    print &ui_columns_start([$text{'group_name'}, $text{'group_members'}]);
+	foreach my $g (@groups) {
+        my @cols_row;
+        my $tx = "";
+        my $link = &ui_link("edit_group.cgi?idx=".$g->{'index'}, $g->{'name'});
+        push(@cols_row, ( $edit ? $link : $g->{'name'} ) );
+		my @mems = @{$g->{'members'}};
 		if (@mems > 5) {
-			@mems = (@mems[0..4], "...");
-			}
-		print "<td>",join(" , ",
-				  map { &group_name($_) } @mems),"</td>\n";
-		print "</tr>\n";
-		}
-	print "</table>\n";
+            @mems = (@mems[0..4], "...");
+        }
+        push(@cols_row, join(" , ", map { &group_name($_) } @mems) );
+        print &ui_columns_row(\@cols_row);
+    }
+	print &ui_columns_end();
 	}
 else {
 	print "<b>$text{'groups_none'}</b><p>\n";
 	}
-print "<a href='edit_group.cgi?new=1'>$text{'groups_add'}</a><p>\n"
-	if ($edit);
-
-print "<hr>\n";
+print &ui_link("edit_group.cgi?new=1", $text{'groups_add'}) if ($edit);
+print &ui_hr();
 &footer("", $text{'index_return'});
