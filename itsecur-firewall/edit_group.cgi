@@ -21,62 +21,60 @@ else {
 		$in{'idx'} = $group->{'index'};
 		}
 	}
-print "<hr>\n";
+print &ui_hr();
 
-print "<form action=save_group.cgi>\n";
-print "<input type=hidden name=new value='$in{'new'}'>\n";
-print "<input type=hidden name=idx value='$in{'idx'}'>\n";
-print "<input type=hidden name=from value='$in{'from'}'>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'group_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_form_start("save_group.cgi", "post");
+print &ui_hidden("new", $in{'new'});
+print &ui_hidden("idx", $in{'idx'});
+print &ui_hidden("from", $in{'from'});
+print &ui_table_start($text{'group_header'}, undef, 2);
 
-print "<tr> <td><b>$text{'group_name'}</b></td>\n";
-printf "<td><input name=name size=20 value='%s'></td> </tr>\n",
-	$group->{'name'};
+print &ui_table_row($text{'group_name'},
+                    &ui_textbox("name", $group->{'name'}, 20) );
 
-print "<tr> <td valign=top><b>$text{'group_members'}</b></td>\n";
-print "<td><table>\n";
+my $tx = "";
+$tx .= &ui_columns_start(undef);
 $i = 0;
 foreach $m (( grep { !/\!?\@/ } @{$group->{'members'}} ),
 	    $blank, $blank, $blank, $blank, $blank, $blank) {
 	$neg = ($m =~ s/^\!//);
-	print "<input name=member_$i size=40 value='$m'>\n";
-	print "<input type=checkbox name=neg_$i value=! ",
-	      $neg ? "checked" : "","> $text{'group_neg'}<br>\n";
+    my @cols;
+	push(@cols, &ui_textbox("member_".$i, $m, 40) );
+	push(@cols, &ui_checkbox("neg_".$i, "!", $text{'group_neg'}, ($neg ? 1 : 0 ) ) );
+    $tx .= &ui_columns_row(\@cols);
 	$i++;
 	}
-print "</table>\n";
-print "<input type=checkbox name=resolv value=1> $text{'group_resolv'}\n";
-print "</td> </tr>\n";
+$tx .= &ui_columns_row([ &ui_checkbox("resolv", 1, $text{'group_resolv'}) ], ["colspan=2"]);
+$tx .= ui_columns_end();
+
+print &ui_table_row($text{'group_members'}, $tx);
 
 # Show member groups
-print "<tr> <td valign=top><b>$text{'group_members2'}</b></td>\n";
-print "<td><table>\n";
 $i = 0;
+$tx = &ui_columns_start(undef);
 foreach $m (( grep { /\!?\@/ } @{$group->{'members'}} ),
 	    $blank, $blank, $blank, $blank, $blank, $blank) {
 	$neg = ($m =~ s/^\!//);
 	$m =~ s/^\@//;
-	print "<tr> <td>\n";
-	print &group_input("group_$i", $m, 1);
-	print "</td> </tr>\n";
+	$tx .= &ui_columns_row([&group_input("group_$i", $m, 1)]);
 	$i++;
 	}
-print "</table></td> </tr>\n";
+$tx .= ui_columns_end();
+print &ui_table_row($text{'group_members2'}, $tx);
 
-print "</table></td></tr></table>\n";
+print &ui_table_end();
+
 if ($in{'new'}) {
-	print "<input type=submit value='$text{'create'}'>\n";
+    print &ui_submit($text{'create'});
 	}
 else {
-	print "<input type=submit value='$text{'save'}'>\n";
-	print "<input type=submit name=delete value='$text{'delete'}'>\n";
+    print &ui_submit($text{'save'});
+    print &ui_submit($text{'delete'}, "delete");
 	}
-print "</form>\n";
+print &ui_form_end(undef,undef,1);
 &can_edit_disable("groups");
 
-print "<hr>\n";
+print &ui_hr();
 $from = $in{'from'} || "groups";
 &footer("list_${from}.cgi", $text{$from.'_return'});
 
