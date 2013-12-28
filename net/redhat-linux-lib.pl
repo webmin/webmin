@@ -113,7 +113,9 @@ while($f = readdir(CONF)) {
 		$b->{'gateway'} = $conf{'GATEWAY'};
 		$b->{'gateway6'} = $conf{'IPV6_DEFAULTGW'};
 		$b->{'mtu'} = $conf{'MTU'};
-		$b->{'partner'} = &get_teaming_partner($conf{'DEVICE'});
+		if ($b->{'fullname'} =~ /^bond/) {
+			$b->{'partner'} = &get_teaming_partner($conf{'DEVICE'});
+			}
                 my @values = split(/\s+/, $conf{'BONDING_OPTS'});
                 foreach my $val (@values) {
                          my ($k, $v) = split(/=/, $val, 2);
