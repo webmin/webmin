@@ -31,7 +31,8 @@ print &ui_hidden("idx", $in{'idx'});
 print &ui_table_start($text{'service_header'}, undef, 2);
 
 # Show service name input
-print &ui_table_row($text{'service_name'}, &ui_textbox("name", $service->{'name'}, 20) );
+print &ui_table_row($text{'service_name'}, &ui_textbox("name", $service->{'name'}, 20),
+                undef, ["valign=middle","valign=middle"] );
 
 # Show protocols and ports
 my $tx = "";
@@ -40,7 +41,7 @@ for($i=0; $i<@{$service->{'protos'}}+6; $i++) {
     my @cols;
     push(@cols, &protocol_input("proto_$i", $service->{'protos'}->[$i]) );
     push(@cols, &ui_textbox("port_".$i, $service->{'ports'}->[$i], 20) );
-    $tx .= &ui_columns_row(\@cols);
+    $tx .= &ui_columns_row(\@cols, ["valign=middle","valign=middle"]);
 	}
 $tx .= ui_columns_end();
 
@@ -51,6 +52,7 @@ print &ui_table_row($text{'service_members'},
         &service_input("others", join(",", @{$service->{'others'}}), 0, 1) );
 
 print &ui_table_end();
+print "<p>";
 
 if ($in{'new'}) {
     print &ui_submit($text{'create'});

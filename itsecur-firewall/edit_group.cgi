@@ -30,7 +30,8 @@ print &ui_hidden("from", $in{'from'});
 print &ui_table_start($text{'group_header'}, undef, 2);
 
 print &ui_table_row($text{'group_name'},
-                    &ui_textbox("name", $group->{'name'}, 20) );
+                    &ui_textbox("name", $group->{'name'}, 20),
+                    undef, ["valign=middle","valign=middle"] );
 
 my $tx = "";
 $tx .= &ui_columns_start(undef);
@@ -41,7 +42,7 @@ foreach $m (( grep { !/\!?\@/ } @{$group->{'members'}} ),
     my @cols;
 	push(@cols, &ui_textbox("member_".$i, $m, 40) );
 	push(@cols, &ui_checkbox("neg_".$i, "!", $text{'group_neg'}, ($neg ? 1 : 0 ) ) );
-    $tx .= &ui_columns_row(\@cols);
+    $tx .= &ui_columns_row(\@cols, ["valign=middle","valign=middle"]);
 	$i++;
 	}
 $tx .= &ui_columns_row([ &ui_checkbox("resolv", 1, $text{'group_resolv'}) ], ["colspan=2"]);
@@ -63,7 +64,7 @@ $tx .= ui_columns_end();
 print &ui_table_row($text{'group_members2'}, $tx);
 
 print &ui_table_end();
-
+print "<p>";
 if ($in{'new'}) {
     print &ui_submit($text{'create'});
 	}

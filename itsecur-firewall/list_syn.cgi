@@ -6,36 +6,31 @@ require './itsecur-lib.pl';
 &can_use_error("syn");
 &header($text{'syn_title'}, "",
 	undef, undef, undef, undef, &apply_button());
-print "<hr>\n";
 
-print "<form action=save_syn.cgi>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'syn_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_hr();
 
-($flood, $spoof, $fin) = &get_syn();
+print &ui_form_start("save_syn.cgi", "post");
+print &ui_table_start($text{'syn_header'}, undef, 2);
 
-print "<tr> <td><b>$text{'syn_flood'}</b></td> <td>\n";
-printf "<input type=radio name=flood value=1 %s> %s\n",
-	$flood ? "checked" : "", $text{'yes'};
-printf "<input type=radio name=flood value=0 %s> %s</td> </tr>\n",
-	$flood ? "" : "checked", $text{'no'};
+my ($flood, $spoof, $fin) = &get_syn();
 
-print "<tr> <td><b>$text{'syn_spoof'}</b></td> <td>\n";
-printf "<input type=radio name=spoof value=1 %s> %s\n",
-	$spoof ? "checked" : "", $text{'yes'};
-printf "<input type=radio name=spoof value=0 %s> %s</td> </tr>\n",
-	$spoof ? "" : "checked", $text{'no'};
+print &ui_table_row($text{'syn_flood'},
+                    &ui_yesno_radio("flood", ($flood ? 1 : 0 ), 1, 0 )
+                    );
+ 
+print &ui_table_row($text{'syn_spoof'},
+                    &ui_yesno_radio("spoof", ($spoof ? 1 : 0 ), 1, 0 )
+                    );
 
-print "<tr> <td><b>$text{'syn_fin'}</b></td> <td>\n";
-printf "<input type=radio name=fin value=1 %s> %s\n",
-	$fin ? "checked" : "", $text{'yes'};
-printf "<input type=radio name=fin value=0 %s> %s</td> </tr>\n",
-	$fin ? "" : "checked", $text{'no'};
+print &ui_table_row($text{'syn_fin'},
+                    &ui_yesno_radio("fin", ($fin ? 1 : 0 ), 1, 0 )
+                    );
 
-print "</table></td></tr></table>\n";
-print "<input type=submit value='$text{'save'}'></form>\n";
+print &ui_table_end();
+print "<p>";
+print &ui_submit($text{'save'});
+print &ui_form_end(undef,undef,1);
 &can_edit_disable("syn");
 
-print "<hr>\n";
+print &ui_hr();
 &footer("", $text{'index_return'});
