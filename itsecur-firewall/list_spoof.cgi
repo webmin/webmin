@@ -6,29 +6,24 @@ require './itsecur-lib.pl';
 &can_use_error("spoof");
 &header($text{'spoof_title'}, "",
 	undef, undef, undef, undef, &apply_button());
-print "<hr>\n";
 
-print "<form action=save_spoof.cgi>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'spoof_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_hr();
 
-($iface, @nets) = &get_spoof();
-print "<tr> <td valign=top><b>$text{'spoof_desc'}</b></td> <td>\n";
-printf "<input type=radio name=spoof value=0 %s> %s<br>\n",
-	$iface ? "" : "checked", $text{'spoof_disabled'};
-printf "<input type=radio name=spoof value=1 %s> %s\n",
-	$iface ? "checked" : "", $text{'spoof_enabled'};
-print &iface_input("iface", $iface);
-print "</td> </tr>\n";
+print &ui_form_start("save_spoof.cgi", "post");
+print &ui_table_start($text{'spoof_header'}, undef, 2);
 
-print "<tr> <td valign=top><b>$text{'spoof_nets'}</b></td> <td>\n";
-print "<textarea name=nets rows=5 cols=40>",
-	join("\n", @nets),"</textarea></td> </tr>\n";
+my ($iface, @nets) = &get_spoof();
 
-print "</table></td></tr></table>\n";
-print "<input type=submit value='$text{'save'}'></form>\n";
+print &ui_table_row($text{'spoof_desc'},
+                &ui_radio("spoof", ( $iface ? 1 : 0 ), [
+                    [0,$text{'spoof_disabled'}."<br>"],[1,$text{'spoof_enabled'}]
+                ]).&iface_input("iface", $iface) );
+
+print &ui_table_row($text{'spoof_nets'}, &ui_textarea("nets", join("\n", @nets), 5, 40) ); 
+print &ui_table_end();
+print &ui_submit($text{'save'});
+print &ui_form_end(undef,undef,1);
 &can_edit_disable("spoof");
 
-print "<hr>\n";
+print &ui_hr();
 &footer("", $text{'index_return'});
