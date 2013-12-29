@@ -1,21 +1,25 @@
 #!/usr/local/bin/perl
 # Create all needed tables
 
+use strict;
+use warnings;
 require './acl-lib.pl';
+our (%in, %text, %config, %access);
 $access{'pass'} || &error($text{'sql_ecannot'});
-&get_miniserv_config(\%miniserv);
 &ReadParse();
 &error_setup($text{'make_err'});
 
-$dbh = &connect_userdb($in{'userdb'});
+my %miniserv; 
+&get_miniserv_config(\%miniserv);
+my $dbh = &connect_userdb($in{'userdb'});
 ref($dbh) || &error($dbh);
 
 &ui_print_unbuffered_header(undef, $text{'make_title'}, "");
 
 # Create the tables
-foreach $sql (&userdb_table_sql($in{'userdb'})) {
+foreach my $sql (&userdb_table_sql($in{'userdb'})) {
 	print &text('make_exec', "<tt>".&html_escape($sql)."</tt>"),"<br>\n";
-	$cmd = $dbh->prepare($sql);
+	my $cmd = $dbh->prepare($sql);
 	if (!$cmd || !$cmd->execute()) {
 		print &text('make_failed', &html_escape($dbh->errstr)),"<p>\n";
 		}
@@ -27,7 +31,7 @@ foreach $sql (&userdb_table_sql($in{'userdb'})) {
 &disconnect_userdb($in{'userdb'}, $dbh);
 
 # Check again if OK
-$err = &validate_userdb($in{'userdb'}, 0);
+my $err = &validate_userdb($in{'userdb'}, 0);
 if ($err) {
 	print "<b>",&text('make_still', $err),"</b><p>\n";
 	}

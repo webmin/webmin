@@ -1,7 +1,10 @@
 #!/usr/local/bin/perl
 # Just display the Webmin LDAP schema
 
+use strict;
+use warnings;
 require './acl-lib.pl';
+our (%in, %text, %config, %access);
 $access{'pass'} || &error($text{'sql_ecannot'});
 
 &ui_print_unbuffered_header(undef, $text{'schema_title'}, "");
