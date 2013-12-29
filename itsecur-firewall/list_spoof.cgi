@@ -21,6 +21,7 @@ print &ui_table_row($text{'spoof_desc'},
 
 print &ui_table_row($text{'spoof_nets'}, &ui_textarea("nets", join("\n", @nets), 5, 40) ); 
 print &ui_table_end();
+print "<p>";
 print &ui_submit($text{'save'});
 print &ui_form_end(undef,undef,1);
 &can_edit_disable("spoof");
