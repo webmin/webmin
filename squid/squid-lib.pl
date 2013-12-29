@@ -5,13 +5,15 @@ BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
 do 'parser-lib.pl';
-%access = &get_module_acl();
-$auth_program = "$module_config_directory/squid-auth.pl";
-$auth_database = "$module_config_directory/users";
-@caseless_acl_types = ( "url_regex", "urlpath_regex", "proxy_auth_regex",
-			"srcdom_regex", "dstdom_regex", "ident_regex" );
+
+our %access = &get_module_acl();
+our $auth_program = "$module_config_directory/squid-auth.pl";
+our $auth_database = "$module_config_directory/users";
+our @caseless_acl_types = ( "url_regex", "urlpath_regex", "proxy_auth_regex",
+			    "srcdom_regex", "dstdom_regex", "ident_regex" );
 
 # Get the squid version
+our $squid_version;
 if (open(VERSION, "$module_config_directory/version")) {
 	chop($squid_version = <VERSION>);
 	close(VERSION);
