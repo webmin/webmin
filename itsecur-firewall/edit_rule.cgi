@@ -50,7 +50,7 @@ foreach $s ('source', 'dest') {
             &ui_oneradio(${s}."_mode", 1, $text{'rule_host'}, ($sm == 1 ? 1 : 0))."&nbsp;".
             &ui_textbox(${s}."_host", ($sm == 1 ? $rule->{$s} : ""), 30)."&nbsp;".$text{'rule_named'}."&nbsp;".
             &ui_textbox(${s}."_name", undef, 15)."<br>".
-            &ui_checkbox(${s}."_resolv", 1, $text{'rule_resolv'}), undef, ["valign=top","valign=middle"] );
+            &ui_checkbox(${s}."_resolv", 1, $text{'rule_resolv'},undef,"style=margin-left:15px;"), undef, ["valign=top","valign=middle"] );
 
 	# Host group option
 	local $gv;
@@ -61,8 +61,8 @@ foreach $s ('source', 'dest') {
 	$gi = &group_input("${s}_group", $gv, 0, 1);
 	if ($gi || $sm == 2) {
         print &ui_table_row("&nbsp;",
-                &ui_oneradio(${s}."_mode", 2, $text{'rule_group'}, ($sm == 2 ? 1 : 0))."&nbsp;".
-                $gi);
+                "<table style='margin:0;padding:0;'><tr><td style='margin:0;padding:0;' valign=top>".&ui_oneradio(${s}."_mode", 2, $text{'rule_group'}, ($sm == 2 ? 1 : 0))."</td><td valign=top>".
+                $gi."</tr></table>",undef,["valign=top","valign=top"]);
 		}
 
 	# Interface option
@@ -87,8 +87,8 @@ print &ui_table_row("&nbsp;",
 # Show action upon match
 print &ui_table_row($text{'rule_action'},
                 &action_input("action", $rule->{'action'}).
-                "&nbsp;&mdash;&nbsp;".&ui_checkbox("log", 1, $text{'rule_log'}, ($rule->{'log'} ? 1 : 0) )
-            );
+                "&nbsp;&nbsp;".&ui_checkbox("log", 1, $text{'rule_log'}, ($rule->{'log'} ? 1 : 0) )
+            ,undef, ["valign=middle","valign=middle"]);
 
 
 # Show time that this rule applies
@@ -119,9 +119,11 @@ foreach $br (@rules) {
 		}
 	}
 push(@sel, [ -1, $text{'rule_end'}, ($in{'new'} || $rule eq $rules[$#rules] ? "selected" : "") ] );
-print &ui_table_row($text{'rule_atpos'}, &ui_select("pos", undef, \@sel, 1) );
+print &ui_table_row($text{'rule_atpos'}, &ui_select("pos", undef, \@sel, 1), undef, ["valign=middle","valign=middle"] );
 
 print &ui_table_end();
+print "<p>";
+
 if ($in{'new'}) {
     print &ui_submit($text{'create'});
 	}
