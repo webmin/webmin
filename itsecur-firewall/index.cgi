@@ -6,7 +6,7 @@ require './itsecur-lib.pl';
 &header($text{'index_title'}, "", undef, 1, 1, 0, &apply_button(), undef, undef,
 	&text('index_version', $module_info{'version'}));
 
-print "<p>";
+print &ui_hr();
 
 # Icons table
 @can_opts = grep { $_ eq "backup" || $_ eq "restore" || $_ eq "remote" || $_ eq "import" ? &can_edit($_) : &can_use($_) } @opts;

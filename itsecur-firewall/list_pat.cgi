@@ -6,34 +6,35 @@ require './itsecur-lib.pl';
 &can_use_error("pat");
 &header($text{'pat_title'}, "",
 	undef, undef, undef, undef, &apply_button());
-print "<hr>\n";
 
-@forwards = &get_pat();
-print "<form action=save_pat.cgi>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'pat_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_hr();
 
-print "<tr> <td valign=top><b>$text{'pat_forward'}</b></td> ",
-      "<td><table border>\n";
-print "<tr $tb> <td><b>$text{'pat_service'}</b></td> ",
-      "<td><b>$text{'pat_host'}</b></td> ",
-      "<td><b>$text{'pat_iface'}</b></td> </tr>\n";
-$j = 0;
+my @forwards = &get_pat();
+print &ui_form_start("save_pat.cgi","post");
+print &ui_table_start($text{'pat_header'}, undef, 2);
+
+my $tx = &ui_columns_start([$text{'pat_service'},
+                                $text{'pat_host'},
+                                $text{'pat_iface'}]);
+
+my $j = 0;
 foreach $f (@forwards, { }, { }, { }) {
-	print "<tr $cb>\n";
-	print "<td>",&service_input("service_$j", $f->{'service'}, 1),"</td>\n";
-	print "<td><input name=host_$j size=30 value='$f->{'host'}'></td>\n";
-	print "<td>",&iface_input("iface_$j", $f->{'iface'},
-				  0, 1, 1),"</td>\n";
-	print "</tr>\n";
+	my @cols;
+    push(@cols, &service_input("service_$j", $f->{'service'}, 1) );
+    push(@cols, &ui_textbox("host_".$j, $f->{'host'}, 30) );
+    push(@cols, &iface_input("iface_$j", $f->{'iface'}, 0, 1, 1) );
+    $tx .= &ui_columns_row(\@cols);
 	$j++;
 	}
-print "</table></td> </tr>\n";
+$tx .= &ui_columns_end();
 
-print "</table></td></tr></table>\n";
-print "<input type=submit value='$text{'save'}'></form>\n";
+print &ui_table_row($text{'pat_forward'}, $tx);
+
+print &ui_table_end();
+print "<p>";
+print &ui_submit($text{'save'});
+print &ui_form_end(undef,undef,1);
 &can_edit_disable("pat");
 
-print "<hr>\n";
+print &ui_hr();
 &footer("", $text{'index_return'});
