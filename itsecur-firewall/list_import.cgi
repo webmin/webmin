@@ -7,32 +7,31 @@ require './itsecur-lib.pl';
 &header($text{'import_title'}, "",
 	undef, undef, undef, undef, &apply_button());
 
-foreach $i (1 .. (&supports_time() ? 4 : 3)) {
-	$prog = $i == 1 ? "import_rules.cgi" :
+foreach my $i (1 .. (&supports_time() ? 4 : 3)) {
+	my $prog = $i == 1 ? "import_rules.cgi" :
 		$i == 2 ? "import_servs.cgi" :
 		$i == 3 ? "import_groups.cgi" :
 		$i == 4 ? "import_times.cgi" : undef;
-	print "<hr>\n";
+	print &ui_hr();
 	print $text{'import_desc'.$i},"<p>\n";
-	print "<form action=$prog enctype=multipart/form-data method=post>\n";
-	print "<table border>\n";
-	print "<tr $tb> <td><b>",$text{'import_header'.$i},"</b></td> </tr>\n";
-	print "<tr $cb> <td><table>\n";
+    print &ui_form_start($prog,"form-data");
+    print &ui_table_start($text{'import_header'.$i}, undef, 2);
 
 	# Show source
-	print "<tr> <td valign=top><b>$text{'import_src'}</b></td> <td>\n";
-	printf "<input type=radio name=src_def value=1 %s> %s\n",
-		$mode != 1 ? "checked" : "", $text{'restore_src1'};
-	print "<input name=file type=file size=20><br>\n";
-	printf "<input type=radio name=src_def value=0 %s> %s\n",
-		$mode == 1 ? "checked" : "", $text{'restore_src0'};
-	printf "<input name=src size=40 value='%s'> %s</td> </tr>\n",
-		$mode == 1 ? $dest[0] : undef, &file_chooser_button("src");
+    print &ui_table_row($text{'import_src'},
+                &ui_radio("src_def",($mode == 1 ? 0 : 1),[
+                    [1,$text{'restore_src1'}."&nbsp;".&ui_upload("file",20)."<br>"],
+                    [0,$text{'restore_src0'}."&nbsp;".&ui_filebox("src",($mode == 1 ? $dest[0] : undef),40)]
+                    ])
+            );
+                   
 
-	print "</table></td></tr></table>\n";
-	print "<input type=submit value='$text{'import_ok'}'></form>\n";
+	print &ui_table_end();
+    print "<p>";
+    print &ui_submit($text{'import_ok'});
+    print &ui_form_end(undef,undef,1);
 	}
 
-print "<hr>\n";
+print &ui_hr();
 &footer("", $text{'index_return'});
 

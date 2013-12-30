@@ -6,39 +6,39 @@ require './itsecur-lib.pl';
 &can_edit_error("remote");
 &header($text{'remote_title'}, "",
 	undef, undef, undef, undef, &apply_button());
-print "<hr>\n";
+print &ui_hr();
 
-print "<form action=save_remote.cgi method=post>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'remote_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_form_start("save_remote.cgi", "post");
+print &ui_table_start($text{'remote_header'}, undef, 2);
 
-@servers = &servers::list_servers();
-($server) = grep { $_->{'host'} eq $config{'remote_log'} } @servers;
+
+my @servers = &servers::list_servers();
+my ($server) = grep { $_->{'host'} eq $config{'remote_log'} } @servers;
 
 # Show target host
-print "<tr> <td><b>$text{'remote_host'}</b></td> <td>\n";
-printf "<input type=radio name=host_def value=1 %s> %s\n",
-	$server ? "" : "checked", $text{'no'};
-printf "<input type=radio name=host_def value=0 %s> %s\n",
-	$server ? "checked" : "", $text{'remote_to'};
-printf "<input name=host size=20 value='%s'> %s\n",
-	$server ? $server->{'host'} : "", $text{'remote_port'};
-printf "<input name=port size=10 value='%s'></td> </tr>\n",
-	$server ? $server->{'port'} : 10000;
+print &ui_table_row($text{'remote_host'},
+                &ui_radio("host_def",($server ? 0 : 1),[
+                    [1,$text{'no'}],
+                    [0,$text{'remote_to'}."&nbsp;".
+                        &ui_textbox("host",($server ? $server->{'host'} : ""),20)."&nbsp;".
+                        $text{'remote_port'}."&nbsp;".
+                        &ui_textbox("port",($server ? $server->{'port'} : 10000),10)
+                    ]
+                    ])
+        ,undef, ["valign=middle","valign=middle"]);
 
 # Show login and password
-print "<tr> <td><b>$text{'remote_user'}</b></td> <td>\n";
-printf "<input name=user size=20 value='%s'></td> </tr>\n",
-	$server ? $server->{'user'} : "";
+print &ui_table_row($text{'remote_user'},
+            &ui_textbox("user",($server ? $server->{'user'} : ""),20), undef, ["valign=middle","valign=middle"] ); 
+print &ui_table_row($text{'remote_pass'},
+            &ui_password("pass",($server ? $server->{'pass'} : ""),20), undef, ["valign=middle","valign=middle"] ); 
 
-print "<tr> <td><b>$text{'remote_pass'}</b></td> <td>\n";
-printf "<input name=pass type=password size=20 value='%s'></td> </tr>\n",
-	$server ? $server->{'pass'} : "";
+print &ui_table_end();
+print "<p>";
+print &ui_submit($text{'save'});
+print &ui_form_end(undef,undef,1);
 
-print "</table></td></tr></table>\n";
-print "<input type=submit value='$text{'save'}'></form>\n";
 
-print "<hr>\n";
+print &ui_hr();
 &footer("", $text{'index_return'});
 
