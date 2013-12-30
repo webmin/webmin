@@ -23,57 +23,54 @@ else {
 		$in{'idx'} = $time->{'index'};
 		}
 	}
-print "<hr>\n";
+print &ui_hr();
 
-print "<form action=save_time.cgi>\n";
-print "<input type=hidden name=new value='$in{'new'}'>\n";
-print "<input type=hidden name=idx value='$in{'idx'}'>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'time_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_form_start("save_time.cgi", "post");
+print &ui_hidden("new", $in{'new'});
+print &ui_hidden("idx", $in{'idx'});
 
+print &ui_table_start($text{'time_header'}, undef, 2);
+
+my @valign = ["valign=middle","valign=middle"];
 # Show range name
-print "<tr> <td><b>$text{'time_name'}</b></td>\n";
-printf "<td><input name=name size=20 value='%s'></td> </tr>\n",
-	$time->{'name'};
+print &ui_table_row($text{'time_name'}, &ui_textbox("name", $time->{'name'}, 20), undef, @valign );
 
 # Show hour range
-print "<tr> <td><b>$text{'time_hours'}</b></td> <td>\n";
-printf "<input type=radio name=hours_def value=1 %s> %s\n",
-	$time->{'hours'} eq "*" ? "checked" : "", $text{'time_allday'};
-printf "<input type=radio name=hours_def value=0 %s>\n",
-	$time->{'hours'} eq "*" ? "" : "checked";
-($from, $to) = $time->{'hours'} eq "*" ? ( ) : split(/\-/, $time->{'hours'});
-printf "%s <input name=from size=6 value='%s'>\n",
-	$text{'time_from'}, $from;
-printf "%s <input name=to size=6 value='%s'></td> </tr>\n",
-	$text{'time_to'}, $to;
+my ($from, $to) = $time->{'hours'} eq "*" ? ( ) : split(/\-/, $time->{'hours'});
+print &ui_table_row($text{'time_hours'},
+                &ui_radio("hours_def", ($time->{'hours'} eq "*" ? 1 : 0),[
+                            [1, $text{'time_allday'}],[0,$text{'time_from'}]
+                            ]).
+                &ui_textbox("from", $from, 6)."&nbsp;".
+                $text{'time_to'}."&nbsp;".&ui_textbox("to", $to, 6) 
+        ,undef, @valign);
 
 # Show days of week
-print "<tr> <td valign=top><b>$text{'time_days'}</b></td> <td>\n";
-printf "<input type=radio name=days_def value=1 %s> %s\n",
-	$time->{'days'} eq "*" ? "checked" : "", $text{'time_allweek'};
-printf "<input type=radio name=days_def value=0 %s> %s<br>\n",
-	$time->{'days'} eq "*" ? "" : "checked", $text{'time_sel'};
-%days = map { $_, 1 } split(/,/, $time->{'days'});
-print "<select name=days size=7 multiple>\n";
+my %days = map { $_, 1 } split(/,/, $time->{'days'});
+my @sel;
 for($i=0; $i<7; $i++) {
-	printf "<option value=%s %s>%s</option>\n",
-		$i, $days{$i} ? "selected" : "", $text{'day_'.$i};
-	}
-print "</select></td> </tr>\n";
+    push(@sel, [$i, $text{'day_'.$i}, ($days{$i} ? "selected" : "") ] );
+}
+print &ui_table_row($text{'time_days'},
+                &ui_radio("days_def", ($time->{'days'} eq "*" ? 1 : 0),[
+                            [1, $text{'time_allweek'}],[0,$text{'time_sel'}]
+                            ])."<br>".
+                &ui_select("days", undef, \@sel, 7, 1)
+        ,undef, ["valign=top","valign=top"]);
 
-print "</table></td></tr></table>\n";
+print &ui_table_end();
+print "<p>";
+
 if ($in{'new'}) {
-	print "<input type=submit value='$text{'create'}'>\n";
+    print &ui_submit($text{'create'});
 	}
 else {
-	print "<input type=submit value='$text{'save'}'>\n";
-	print "<input type=submit name=delete value='$text{'delete'}'>\n";
+    print &ui_submit($text{'save'});
+    print &ui_submit($text{'delete'}, "delete");
 	}
-print "</form>\n";
+print &ui_form_end(undef,undef,1);
 &can_edit_disable("times");
 
-print "<hr>\n";
+print &ui_hr();
 &footer("list_times.cgi", $text{'times_return'});
 
