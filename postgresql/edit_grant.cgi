@@ -15,9 +15,8 @@ else {
 foreach $g (@{$s->{'data'}}) {
 	if ($g->[0] eq $in{'table'} &&
 	    $g->[2] eq $in{'ns'}) {
-		$g->[1] =~ s/^\{//; $g->[1] =~ s/\}$//;
-		@grant = map { /^"(.*)=(.*)"$/ || /^(.*)=(.*)$/; [ $1, $2 ] }
-			     split(/,/, $g->[1]);
+		@grant = &extract_grants($g->[1]);
+		last;
 		}
 	}
 
@@ -59,7 +58,7 @@ foreach $g (@grant, [ undef, undef ]) {
 			  [ 'public', $text{'grant_public'} ],
 			  (map { [ "group $_", &text('grant_group', $_) ] }
 			       @groups),
-			  (@users) ]));
+			  (@users) ], 1, 0, 1));
 
 	# Permissions
 	($acl = $g->[1]) =~ s/\/.*//g;
