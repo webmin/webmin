@@ -69,16 +69,22 @@ else
 # Get the hardware time
 if (&support_hwtime()) {
 	local @tm = &get_hardware_time();
-	@tm || &error($get_hardware_time_error || $text{'index_eformat'});
-	$hw_date{ 'second' } = $tm[0];
-	$hw_date{ 'minute' } = $tm[1];
-	$hw_date{ 'hour' } = $tm[2];
-	$hw_date{ 'date' } = $tm[3];
-	$hw_date{ 'month' } = &number_to_month($tm[4]);
-	$hw_date{ 'year'} = $tm[5]+1900;
-	$hw_date{ 'day' } = &number_to_weekday($tm[6]);
+	if (@tm) {
+		$hw_date{'second'} = $tm[0];
+		$hw_date{'minute'} = $tm[1];
+		$hw_date{'hour'} = $tm[2];
+		$hw_date{'date'} = $tm[3];
+		$hw_date{'month'} = &number_to_month($tm[4]);
+		$hw_date{'year'} = $tm[5]+1900;
+		$hw_date{'day'} = &number_to_weekday($tm[6]);
+		}
 
-	if(!$access{'hwdate'}) {
+	if (!@tm) {
+		# Didn't actually work!
+		print $get_hardware_time_error || $text{'index_eformat'};
+		print "<p>\n";
+		}
+	elsif (!$access{'hwdate'}) {
 		# Allow editing of hardware time
 		if( !$access{ 'sysdate' } ) {
 		    $hw_date{ 'second' } = $system_date{ 'second' } if( $hw_date{ 'second' } - $system_date{ 'second' } <= $config{ 'lease' } );
