@@ -24,11 +24,6 @@ if (!$access{'sysdate'} && !&has_command("date")) {
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
-if (!$access{'hwdate'} && $config{'hwtime'} == 1 && !&has_command("hwclock")) {
-	print &text( 'error_cnf', "<tt>hwclock</tt>"),"<p>\n";
-	&ui_print_footer("/", $text{'index'});
-	exit;
-	}
 
 # Show tabs for times, timezones and syncing
 @tabs = ( );

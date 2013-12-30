@@ -3,6 +3,5 @@ lease=Nombre de secondes acceptable entre l'heure syst&#232;me et l'heure mat&#2
 timeserver=Serveur de temps par defaut,3,Aucun
 ntp_only=N'utiliser que le protocole NTP lors de la synchronisation de l'heure et de la date ?
 line2=Configuration du systeme,11
-hwtime=Le syst&#232;me supporte le temps Mat&#233;riel,1,1-Oui,0-Non
 seconds=Format de parametrage du temps System,1,1-MMDDHHMMYYYY.SS,0-MMDDHHMMYY,2-YYYYMMDDHHMM.SS
 zone_style=M&#233;thode de configuration du fuseau horaire,4,linux-Linux,freebsd-FreeBSD,solaris-Solaris,-&lt;Non support&#233; par ce syst&#232;meOS&gt;

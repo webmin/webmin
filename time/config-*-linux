@@ -1,5 +1,4 @@
 lease=5
-hwtime=2
 seconds=1
 timeserver_hardware=1
 zone_style=linux

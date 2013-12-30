@@ -3,7 +3,6 @@ lease=Elfogadható másodperc különbség a rendszeridõ és a hardveridõ között,0
 timeserver=alapértelmezett idõszerver,3,Nincs
 ntp_only=Csak NTP protokoll használata idõszinkronizáláshoz?,1,1-Igen,0-Nem
 line2=Rendszer konfiguráció
-hwtime=Rendszer támogatja a hardveridõt,1,1-Igen,0-Nem
 seconds=Rendszeridõ formátuma,1,1-MMDDHHMMYYYY.SS,0-MMDDHHMMYY,2-YYYYMMDDHHMM.SS
 zone_style=Idõzóna beállítási eljárás:,4,linux-Linux,freebsd-FreeBSD,solaris-Solaris,-&lt;Nem támogatja ez az OS&gt;
 hwclock_flags=Parancs-sori zászló a hwclock -hoz,10,-nincs,sysconfig-A /etc/sysconfig/clock -ról

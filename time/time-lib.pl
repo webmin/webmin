@@ -226,18 +226,10 @@ return ucfirst($weekday_names[$_[0]]);
 # Returns 1 if this system supports setting the hardware clock.
 sub support_hwtime
 {
-if ($config{'hwtime'} == 1) {
-	return 1;
-	}
-elsif ($config{'hwtime'} == 0) {
-	return 0;
-	}
-else {
-	return &has_command("hwclock") &&
-	       &execute_command("hwclock") == 0 &&
-	       !&running_in_xen() && !&running_in_vserver() &&
-	       !&running_in_openvz() && !&running_in_zone();
-	}
+return &has_command("hwclock") &&
+       &execute_command("hwclock") == 0 &&
+       !&running_in_xen() && !&running_in_vserver() &&
+       !&running_in_openvz() && !&running_in_zone();
 }
 
 1;

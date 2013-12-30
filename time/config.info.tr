@@ -2,6 +2,5 @@ line1=Yapýlandýrýlabilir seçenekler,11
 lease=Sistem ve donaným saatleri arasýndaki kabul edilebilir fark(saniye),0
 timeserver=Öntanýmlý zaman sunucusu,3,Hiçbiri
 line2=Sistem yapýlandýrmasý,11
-hwtime=Sistem donaným saatini desteklesin mi?,1,1-Evet,0-Hayýr
 seconds=Sistem zaman ayarý biçimi,1,1-AAGGSSDDYYYY.SS,0-AAGGSSDDYY,2-YYYYAAGGSSDD.SS
 zone_style=Zaman dilimi yapýlandýrma metodu,4,linux-Linux,freebsd-FreeBSD,solaris-Solaris,-&lt;Bu iþletim sistemi desteklenmiyor&gt;

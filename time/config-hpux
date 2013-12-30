@@ -1,5 +1,4 @@
 lease=5
-hwtime=0
 seconds=0
 timeserver_hardware=1
 ntp_only=1
