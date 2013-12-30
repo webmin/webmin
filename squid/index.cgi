@@ -147,8 +147,8 @@ for(my $i=0; $i<@otitles; $i++) {
 		}
 	}
 my @oicons = map { my $t = $_;
-		   $t = ~s/cgi/gif/;
-		   $t = ~s/edit_// if ($t ne 'edit_cachemgr.gif');
+		   $t =~ s/cgi/gif/;
+		   $t =~ s/edit_// if ($t ne 'edit_cachemgr.gif');
 		   "images/$t" } @olinks;
 &icons_table(\@olinks, \@otitles, \@oicons);
 
