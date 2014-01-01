@@ -2464,7 +2464,8 @@ foreach $f (@files) {
 		 $f eq "maildircache" || $f eq ".subscriptions" ||
                  $f eq ".usermin-maildircache" || $f =~ /^dovecot\.index/ ||
 		 $f =~ /^dovecot-uidvalidity.*$/ || $f eq "subscriptions" ||
-		 $f =~ /\.webmintmp(\.\d+)$/ || $f eq "dovecot-keywords");
+		 $f =~ /\.webmintmp(\.\d+)$/ || $f eq "dovecot-keywords" ||
+		 $f =~ /^dovecot\.mailbox/);
 	local $p = "$_[0]/$f";
 	local $added = 0;
 	if ($_[1] || !-d $p || -d "$p/cur") {
