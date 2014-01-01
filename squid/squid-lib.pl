@@ -217,51 +217,43 @@ return $rv;
 # save_opt_time(name, &config)
 sub save_opt_time
 {
-local %ts = ( "second"=>      $text{"lib_seconds"},
-        "minute"=>      $text{"lib_minutes"},
-        "hour"=>        $text{"lib_hours"},
-        "day"=>         $text{"lib_days"},
-        "week"=>        $text{"lib_weeks"},
-        "fortnight"=>   $text{"lib_fortnights"},
-        "month"=>       $text{"lib_months"},
-        "year"=>        $text{"lib_years"},
-        "decade"=>      $text{"lib_decades"} );
+my ($name, $conf) = @_;
+my %ts = ( "second" =>     $text{"lib_seconds"},
+           "minute" =>     $text{"lib_minutes"},
+           "hour" =>       $text{"lib_hours"},
+           "day" =>        $text{"lib_days"},
+           "week" =>       $text{"lib_weeks"},
+           "fortnight" =>  $text{"lib_fortnights"},
+           "month" =>      $text{"lib_months"},
+           "year" =>       $text{"lib_years"},
+           "decade" =>     $text{"lib_decades"} );
 
-if ($in{"$_[0]_def"}) { &save_directive($_[1], $_[0], [ ]); }
-elsif ($in{$_[0]} !~ /^[0-9\.]+$/) {
-	&error(&text('lib_emsg2', $in{$_[0]}, $ts{$in{"$_[0]_u"}}) );
+if ($in{$name."_def"}) {
+	&save_directive($conf, $name, [ ]);
+	}
+elsif ($in{$name} !~ /^[0-9\.]+$/) {
+	&error(&text('lib_emsg2', $in{$name}, $ts{$in{$name."_u"}}) );
 	}
 else {
-	local $dir = { 'name' => $_[0],
-		       'values' => [ $in{$_[0]}, $in{"$_[0]_u"} ] };
-	&save_directive($_[1], $_[0], [ $dir ]);
+	my $dir = { 'name' => $name,
+		    'values' => [ $in{$name}, $in{$name."_u"} ] };
+	&save_directive($conf, $name, [ $dir ]);
 	}
 }
 
 # opt_bytes_input(text, name, &config, default, size)
 sub opt_bytes_input
 {
-local($v, $rv, $u, %ss);
-@ss = (	[ "KB", $text{'lib_kb'} ],
-	[ "MB", $text{'lib_mb'} ],
-	[ "GB", $text{'lib_gb'} ] );
-$v = &find_config($_[1], $_[2]);
-$rv = "<td valign=top><b>$_[0]</b></td> <td valign=top nowrap>\n";
-$rv .= sprintf "<input type=radio name=$_[1]_def value=1 %s> $_[3]\n",
-	$v ? "" : "checked";
-$rv .= sprintf "<input type=radio name=$_[1]_def value=0 %s> ",
-	$v ? "checked" : "";
-$rv .= sprintf "<input name=$_[1] size=$_[4] value=\"%s\">\n",
-	$v ? $v->{'values'}->[0] : "";
-$rv .= "<select name=$_[1]_u>\n";
-foreach $u (@ss) {
-	$rv .= sprintf "<option value=$u->[0] %s>$u->[1]</option>\n",
-		$v && $v->{'values'}->[1] eq $u->[0] ? "selected" : "";
-	}
-$rv .= sprintf "<option value='' %s>bytes</option>\n",
-	$v && $v->{'values'}->[1] eq "" ? "selected" : "";
-$rv .= "</select></td>\n";
-return $rv;
+my ($label, $name, $conf, $def, $size) = @_;
+my @ss = ( [ "KB", $text{'lib_kb'} ],
+	   [ "MB", $text{'lib_mb'} ],
+	   [ "GB", $text{'lib_gb'} ] );
+my $v = &find_config($name, $conf);
+my $input = &ui_textbox($name, $v ? $v->{'values'}->[0] : "", $size)." ".
+	    &ui_select($name."_u", $v ? $v->{'values'}->[1] : "", \@ss);
+return &ui_table_row($label,
+	&ui_radio($name."_def", $v ? 0 : 1,
+		  [ [ 1, $def ], [ 0, $input ] ]));
 }
 
 # save_opt_bytes(name, &config)
