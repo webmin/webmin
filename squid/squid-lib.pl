@@ -168,50 +168,44 @@ return $rv;
 # Save an input from opt_input()
 sub save_opt
 {
-if ($in{"$_[0]_def"}) { &save_directive($_[2], $_[0], [ ]); }
+my ($name, $func, $conf) = @_;
+if ($in{$name."_def"}) {
+	&save_directive($conf, $name, [ ]);
+	}
 else {
-	&check_error($_[1], $in{$_[0]});
-	local $dir = { 'name' => $_[0], 'values' => [ $in{$_[0]} ] };
-	&save_directive($_[2], $_[0], [ $dir ]);
+	&check_error($func, $in{$name});
+	local $dir = { 'name' => $name, 'values' => [ $in{$name} ] };
+	&save_directive($conf, $name, [ $dir ]);
 	}
 }
 
 # opt_time_input(text, name, &config, default, size)
 sub opt_time_input
 {
-local($v, $rv, $u, %ts );
-$v = &find_config($_[1], $_[2]);
-$rv = "<td valign=top><b>$_[0]</b></td> <td valign=top nowrap>\n";
-$rv .= sprintf "<input type=radio name=$_[1]_def value=1 %s> $_[3]\n",
-	$v ? "" : "checked";
-$rv .= sprintf "<input type=radio name=$_[1]_def value=0 %s> ",
-	$v ? "checked" : "";
-$rv .= &time_fields($_[1], $_[4], $v ? @{$v->{'values'}} : ( ));
-$rv .= "</td>\n";
-return $rv;
+my ($label, $name, $conf, $def, $size) = @_;
+my $v = &find_config($name, $conf);
+return &ui_table_row($label,
+	&ui_radio($name."_def", $v ? 0 : 1,
+	  [ [ 1, $def ],
+	    [ 0, &time_field($name, $size, $v ? @{$v->{'values'}} : ( )) ] ]));
 }
 
 # time_field(name, size, time, units)
 sub time_fields
 {
-local ($rv, %ts);
-%ts = (	"second"=>	$text{"lib_seconds"},
-	"minute"=>	$text{"lib_minutes"},
-	"hour"=>	$text{"lib_hours"},
-	"day"=>		$text{"lib_days"},
-	"week"=>	$text{"lib_weeks"},
-	"fortnight"=>	$text{"lib_fortnights"},
-	"month"=>	$text{"lib_months"},
-	"year"=>	$text{"lib_years"},
-	"decade"=>	$text{"lib_decades"} );
-$rv .= sprintf "<input name=$_[0] size=$_[1] value=\"%s\">\n", $_[2];
-$rv .= "<select name=$_[0]_u>\n";
-foreach $u (keys %ts) {
-	$rv .= sprintf "<option value=$u %s>$ts{$u}</option>\n",
-		$_[3] =~ /^$u/ ? "selected" : "";
-	}
-$rv .= "</select>\n";
-return $rv;
+my ($name, $size, $time, $units) = @_;
+my @ts = ( [ "second" =>	$text{"lib_seconds"} ],
+	   [ "minute" =>	$text{"lib_minutes"} ],
+	   [ "hour" =>		$text{"lib_hours"} ],
+	   [ "day" =>		$text{"lib_days"} ],
+	   [ "week" =>		$text{"lib_weeks"} ],
+	   [ "fortnight" => 	$text{"lib_fortnights"} ],
+	   [ "month" =>		$text{"lib_months"} ],
+	   [ "year" =>		$text{"lib_years"} ],
+	   [ "decade" =>	$text{"lib_decades"} ] );
+$units =~ s/s$//;
+return &ui_textbox($name, $time, $size)." ".
+       &ui_select($name."_u", $units, \@ts);
 }
 
 # save_opt_time(name, &config)
