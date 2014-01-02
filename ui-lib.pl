@@ -1059,7 +1059,7 @@ foreach $o (@$opts) {
 	       ($o->[0] eq $value ? " checked" : "").
 	       ($dis ? " disabled=true" : "").
 	       " id=\"$id\"".
-	       ($o->[2] ? " ".$o->[2] : "")."><label for=\"$id\">".
+	       ($o->[2] ? " ".$o->[2] : "")."> <label for=\"$id\">".
 	       $label."</label>".$after."\n";
 	}
 return $rv;
