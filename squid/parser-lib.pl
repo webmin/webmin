@@ -1,26 +1,30 @@
 # parser-lib.pl
 # Functions for reading and writing the squid config file
 
+use strict;
+use warnings;
+our (@get_config_cache, %config);
+
 # get_config()
 # Parses squid.conf into an array of data structures
 sub get_config
 {
-local($lnum, $_);
 if (!@get_config_cache) {
-	open(CONF, $config{'squid_conf'});
-	$lnum = 0;
-	while(<CONF>) {
-		s/\r|\n//g;	# strip newlines and comments
-		if (/^\s*(\#?\s*|\#\s+TAG:\s+)(\S+)\s*(.*)$/) {
-			local(%dir);
+	my $fh = "CONF";
+	&open_readfile($fh, $config{'squid_conf'});
+	my $lnum = 0;
+	while(my $line = <$fh>) {
+		$line =~ s/\r|\n//g;	# strip newlines and comments
+		if ($line =~ /^\s*(\#?\s*|\#\s+TAG:\s+)(\S+)\s*(.*)$/) {
+			my %dir;
 			$dir{'name'} = $2;
 			$dir{'value'} = $3;
 			$dir{'enabled'} = !$1;
 			$dir{'comment'} = $1;
-			local $str = $3;
+			my $str = $3;
 			while($str =~ /^\s*("[^"]*")(.*)$/ ||
 			      $str =~ /^\s*(\S+)(.*)$/) {
-				local $v = $1;
+				my $v = $1;
 				$str = $2;
 				if ($v !~ /^"/ && $v =~ /^(.*)#/ &&
 				    !$dir{'comment'}) {
@@ -30,6 +34,7 @@ if (!@get_config_cache) {
 					$str = undef;
 					last if ($v eq '');
 					}
+				$dir{'values'} ||= [ ];
 				push(@{$dir{'values'}}, $v);
 				}
 			$dir{'line'} = $lnum;
@@ -41,7 +46,7 @@ if (!@get_config_cache) {
 			}
 		$lnum++;
 		}
-	close(CONF);
+	close($fh);
 	}
 return \@get_config_cache;
 }
@@ -52,22 +57,23 @@ return \@get_config_cache;
 # 3 = disabled and tags
 sub find_config
 {
-local($c, @rv);
-foreach $c (@{$_[1]}) {
-	if ($c->{'name'} eq $_[0]) {
+my ($name, $conf, $mode) = @_;
+my @rv;
+foreach my $c (@$conf) {
+	if ($c->{'name'} eq $name) {
 		push(@rv, $c);
 		}
 	}
-if ($_[2] == 0) {
+if ($mode == 0) {
 	@rv = grep { $_->{'enabled'} && !$_->{'tag'} } @rv;
 	}
-elsif ($_[2] == 1) {
+elsif ($mode == 1) {
 	@rv = grep { !$_->{'tag'} } @rv;
 	}
-elsif ($_[2] == 2) {
+elsif ($mode == 2) {
 	@rv = grep { !$_->{'enabled'} && !$_->{'tag'} } @rv;
 	}
-elsif ($_[2] == 3) {
+elsif ($mode == 3) {
 	@rv = grep { !$_->{'enabled'} } @rv;
 	}
 return @rv ? wantarray ? @rv : $rv[0]
@@ -78,7 +84,8 @@ return @rv ? wantarray ? @rv : $rv[0]
 # Returns the value of some directive
 sub find_value
 {
-local $rv = &find_config(@_);
+my ($name, $conf, $mode) = @_;
+my $rv = &find_config($name, $conf, $mode);
 return $rv ? $rv->{'value'} : undef;
 }
 
@@ -86,16 +93,18 @@ return $rv ? $rv->{'value'} : undef;
 # Returns the value of some directive
 sub find_values
 {
-local $rv = &find_config(@_);
+my ($name, $conf, $mode) = @_;
+my $rv = &find_config($name, $conf, $mode);
 return $rv ? $rv->{'values'} : undef;
 }
 
 # save_value(&config, name, value*)
 sub save_value
 {
-local @v = map { { 'name' => $_[1],
-		   'values' => [ $_ ] } } @_[2..@_-1];
-&save_directive($_[0], $_[1], \@v);
+my ($conf, $name, @values) = @_;
+my @v = map { { 'name' => $name,
+		'values' => [ $_ ] } } @values;
+&save_directive($conf, $name, \@v);
 }
 
 # save_directive(&config, name, &values, [after])
@@ -103,26 +112,27 @@ local @v = map { { 'name' => $_[1],
 # add, update or remove that directive in config structure and data files.
 sub save_directive
 {
-local(@oldv, @newv, $i, $o, $n, $lref, $nl, $change);
-@oldv = &find_config($_[1], $_[0]);
-@newv = map { local %n = %$_; \%n } @{$_[2]};
-$lref = &read_file_lines($config{'squid_conf'});
-for($i=0; $i<@oldv || $i<@newv; $i++) {
+my ($conf, $name, $values, $after) = @_;
+my @oldv = &find_config($name, $conf);
+my @newv = map { my %n = %$_; \%n } @$values;
+my $lref = &read_file_lines($config{'squid_conf'});
+my $change = undef;
+for(my $i=0; $i<@oldv || $i<@newv; $i++) {
 	if ($i >= @oldv) {
 		# a new directive is being added.. 
-		$nl = &directive_line($newv[$i]);
-		local @after = ref($_[3]) ? ( $_[3] ) :
-			       $_[3] ? &find_config($_[3], $_[0]) : ( );
-		local $after = @after ? @after[$#after] : undef;
-		local @comment = &find_config($_[1], $_[0], 3);
-		local $comment = @comment ? $comment[$#comment] : undef;
+		my $nl = &directive_line($newv[$i]);
+		my @after = ref($after) ? ( $after ) :
+			    $after ? &find_config($after, $conf) : ( );
+		my $after = @after ? $after[$#after] : undef;
+		my @comment = &find_config($_[1], $_[0], 3);
+		my $comment = @comment ? $comment[$#comment] : undef;
 		if ($change &&
 		    (!$after || $after->{'line'} < $change->{'line'})) {
 			# put it after any directives of the same type
 			$newv[$i]->{'line'} = $change->{'line'}+1;
 			splice(@$lref, $newv[$i]->{'line'}, 0, $nl);
-			&renumber($_[0], $change->{'line'}, 1);
-			splice(@{$_[0]}, &indexof($change, @{$_[0]}),
+			&renumber($conf, $change->{'line'}, 1);
+			splice(@$conf, &indexof($change, @$conf),
 			       0, $newv[$i]);
 			$change = $newv[$i];
 			}
@@ -130,50 +140,50 @@ for($i=0; $i<@oldv || $i<@newv; $i++) {
 			# put it after commented line
 			$newv[$i]->{'line'} = $comment->{'line'}+1;
 			splice(@$lref, $newv[$i]->{'line'}, 0, $nl);
-			&renumber($_[0], $comment->{'line'}, 1);
-			splice(@{$_[0]}, &indexof($comment, @{$_[0]}),
+			&renumber($conf, $comment->{'line'}, 1);
+			splice(@$conf, &indexof($comment, @$conf),
 			       0, $newv[$i]);
 			}
 		else {
 			# put it at the end of the file
 			$newv[$i]->{'line'} = scalar(@$lref);
 			push(@$lref, $nl);
-			push(@{$_[0]}, $newv[$i]);
+			push(@$conf, $newv[$i]);
 			}
 		}
 	elsif ($i >= @newv) {
 		# a directive was deleted
 		splice(@$lref, $oldv[$i]->{'line'}, 1);
-		&renumber($_[0], $oldv[$i]->{'line'}, -1);
-		splice(@{$_[0]}, &indexof($oldv[$i], @{$_[0]}), 1);
+		&renumber($conf, $oldv[$i]->{'line'}, -1);
+		splice(@$conf, &indexof($oldv[$i], @$conf), 1);
 		}
 	else {
 		# updating some directive
 		$newv[$i]->{'postcomment'} = $oldv[$i]->{'postcomment'};
-		$nl = &directive_line($newv[$i]);
-		local @after = $change && $_[3] ? ( $change ) :
+		my $nl = &directive_line($newv[$i]);
+		my @after = $change && $after ? ( $change ) :
 							# After last one updated
-			       ref($_[3]) ? ( $_[3] ) :	# After specific
-			       $_[3] ? &find_config($_[3], $_[0]) : ( );
-		local $after = @after ? @after[$#after] : undef;
+			    ref($after) ? ( $after ) :	# After specific
+			    $after ? &find_config($after, $conf) : ( );
+		my $after = @after ? $after[$#after] : undef;
 		if ($after && $oldv[$i]->{'line'} < $after->{'line'}) {
 			# Need to move it after some directive
 			splice(@$lref, $oldv[$i]->{'line'}, 1);
-			splice(@{$_[0]}, &indexof($oldv[$i], @{$_[0]}), 1);
-			&renumber($_[0], $oldv[$i]->{'line'}, -1);
+			splice(@$conf, &indexof($oldv[$i], @$conf), 1);
+			&renumber($conf, $oldv[$i]->{'line'}, -1);
 
 			splice(@$lref, $after->{'line'}+1, 0, $nl);
 			$newv[$i]->{'line'} = $after->{'line'}+1;
-			splice(@{$_[0]}, &indexof($after, @{$_[0]})+1, 0,
+			splice(@$conf, &indexof($after, @$conf)+1, 0,
 			       $newv[$i]);
-			&renumber($_[0], $newv[$i]->{'line'}, 1);
+			&renumber($conf, $newv[$i]->{'line'}, 1);
 			$change = $newv[$i];
 			}
 		else {
 			# Can just update at the same line
 			splice(@$lref, $oldv[$i]->{'line'}, 1, $nl);
 			$newv[$i]->{'line'} = $oldv[$i]->{'line'};
-			$_[0]->[&indexof($oldv[$i], @{$_[0]})] = $newv[$i];
+			$conf->[&indexof($oldv[$i], @$conf)] = $newv[$i];
 			$change = $newv[$i];
 			}
 		}
@@ -181,11 +191,13 @@ for($i=0; $i<@oldv || $i<@newv; $i++) {
 }
 
 # directive_line(&details)
+# Returns the line of text for some directive
 sub directive_line
 {
-local @v = @{$_[0]->{'values'}};
-return $_[0]->{'name'}.(@v ? " ".join(' ',@v) : "").
-       ($_[0]->{'postcomment'} ? " #".$_[0]->{'postcomment'} : "");
+my ($d) = @_;
+my @v = @{$d->{'values'}};
+return $d->{'name'}.(@v ? " ".join(' ',@v) : "").
+       ($d->{'postcomment'} ? " #".$d->{'postcomment'} : "");
 }
 
 # renumber(&directives, line, count, [end])
@@ -193,10 +205,10 @@ return $_[0]->{'name'}.(@v ? " ".join(' ',@v) : "").
 # of all those greater than some line by the given count
 sub renumber
 {
-local($d);
-foreach $d (@{$_[0]}) {
-	if ($d->{'line'} > $_[1] && (!$_[3] || $d->{'line'} < $_[3])) {
-		$d->{'line'} += $_[2];
+my ($conf, $line, $count, $end) = @_;
+foreach my $d (@$conf) {
+	if ($d->{'line'} > $line && (!$end || $d->{'line'} < $end)) {
+		$d->{'line'} += $count;
 		}
 	}
 }
