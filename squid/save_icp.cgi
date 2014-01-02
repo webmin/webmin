@@ -2,12 +2,15 @@
 # save_icp.cgi
 # Save cache options
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 $access{'othercaches'} || &error($text{'eicp_ecannot'});
 &ReadParse();
 &lock_file($config{'squid_conf'});
-$conf = &get_config();
-$whatfailed = $text{'sicp_ftsco'};
+my $conf = &get_config();
+&error_setup($text{'sicp_ftsco'});
 
 if ($squid_version < 2) {
 	&save_list("local_domain", undef, $conf);
@@ -33,6 +36,7 @@ else {
 
 sub check_timeout
 {
-return $_[0] =~ /^\d+$/ ? undef : &text('sicp_emsg1',$_[0]);
+my ($value) = @_;
+return $value =~ /^\d+$/ ? undef : &text('sicp_emsg1', $value);
 }
 

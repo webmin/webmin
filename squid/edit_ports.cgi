@@ -15,15 +15,13 @@ print &ui_table_start($text{'eports_pano'}, "width=100%", 4);
 
 if ($squid_version >= 2.3) {
 	# Display table of normal ports
-	print "<td valign=top><b>$text{'eports_paap'}</b></td><td colspan=3>\n";
-	&ports_table("http_port");
-	print "</table></td></tr>\n";
+	print &ui_table_row($text{'eports_paap'},
+		&ports_table("http_port"), 3);
 
 	if ($squid_version >= 2.5) {
 		# Display table of SSL ports
-		print "<tr> <td valign=top><b>$text{'eports_ssl'}</b></td><td colspan=3>\n";
-		&ports_table("https_port");
-		print "</table></td></tr>\n";
+		print &ui_table_row($text{'eports_ssl'},
+			&ports_table("https_port"), 3);
 		}
 	print &opt_input($text{'eports_ip'}, "icp_port", 
 				$conf, $text{'default'}, 6);
@@ -92,6 +90,7 @@ $rv .= &ui_columns_start([ $text{'eports_p'}, $text{'eports_hia'},
 						 : ( ) ]);
 my $i = 0;
 foreach my $p (@ports, '') {
+	$opts[$i] ||= [];
 	$rv .= &ui_columns_row([
 		&ui_textbox($name."_port_".$i, $p =~ /(\d+)$/ ? $1 : '', 6),
 		&ui_radio($name."_addr_def_".$i,
