@@ -487,6 +487,7 @@ eports_sel=Listed below..
 eports_unc=Do unclean SSL shutdowns?
 eports_checkhost=Validate hostnames in URLs?
 eports_underscore=Allow underscore in hostnames?
+eports_all=All
 
 eprogs_ecannot=You are not allowed to edit helper programs
 eprogs_header=Helper Programs
