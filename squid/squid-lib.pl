@@ -23,92 +23,107 @@ $squid_version =~ s/\r|\n//g;
 # Display a number of radio buttons for selecting some option
 sub choice_input
 {
-local($v, $vv, $rv, $i);
-$v = &find_config($_[1], $_[2]);
-$vv = $v ? $v->{'value'} : $_[3];
-$rv = "<td><b>$_[0]</b></td> <td valign=top>";
-for($i=4; $i<@_; $i+=2) {
-	$rv .= "<input type=radio name=$_[1] value=\"".$_[$i+1]."\" ".
-		($vv eq $_[$i+1] ? "checked" : "")."> $_[$i]\n";
+my ($label, $name, $conf, $def, @opts) = @_;
+my $v = &find_config($_[1], $_[2]);
+my $vv = $v ? $v->{'value'} : $_[3];
+my @opts2;
+for(my $i=0; $i<@opts; $i+=2) {
+	push(@opts2, [ $opts[$i+1], $opts[$1] ]);
 	}
-return $rv."</td>\n";
+return &ui_table_row($label,
+	&ui_radio($name, $vv, \@opts2));
 }
 
 # select_input(text, name, &config, default, [display, option]+)
 # Like choice_input, but uses a drop-down select field
 sub select_input
 {
-local($v, $vv, $rv, $i);
-$v = &find_config($_[1], $_[2]);
-$vv = $v ? $v->{'value'} : $_[3];
-$rv = "<td><b>$_[0]</b></td> <td valign=top><select name=$_[1]>";
-for($i=4; $i<@_; $i+=2) {
-	$rv .= "<option value=\"".$_[$i+1]."\" ".
-		($vv eq $_[$i+1] ? "selected" : "").">$_[$i]</option>\n";
+my ($label, $name, $conf, $def, @opts) = @_;
+my $v = &find_config($_[1], $_[2]);
+my $vv = $v ? $v->{'value'} : $_[3];
+my @opts2;
+for(my $i=0; $i<@opts; $i+=2) {
+	push(@opts2, [ $opts[$i+1], $opts[$1] ]);
 	}
-return $rv."</select></td>\n";
+return &ui_table_row($label,
+	&ui_select($name, $vv, \@opts2));
 }
 
 # save_choice(name, default, &config)
 # Save a selection from choice_input()
 sub save_choice
 {
-if ($in{$_[0]} eq $_[1]) { &save_directive($_[2], $_[0], [ ]); }
-else { &save_directive($_[2], $_[0], [{ 'name' => $_[0],
-					'values' => [ $in{$_[0]} ] }]); }
+my ($name, $def, $conf) = @_;
+if ($in{$name} eq $def) {
+	&save_directive($conf, $name, [ ]);
+	}
+else {
+	&save_directive($conf, $name, [{ 'name' => $name,
+					 'values' => [ $in{$name} ] }]);
+	}
 }
 
 # list_input(text, name, &config, type, [default])
 # Display a list of values
 sub list_input
 {
-local($v, $rv, @av);
-foreach $v (&find_config($_[1], $_[2])) {
+my ($label, $name, $conf, $type, $def) = @_;
+my @av;
+foreach my $v (&find_config($name, $conf)) {
 	push(@av, @{$v->{'values'}});
 	}
-if ($_[4]) {
+if ($def) {
 	$opt = sprintf "<input type=radio name=$_[1]_def value=1 %s> $_[4]\n",
 		@av ? "" : "checked";
 	$opt .= sprintf "<input type=radio name=$_[1]_def value=0 %s>\n",
 		@av ? "checked" : "";
 	}
-if ($_[3] == 0) {
+if ($type == 0) {
 	# text area
-	$rv = "<td valign=top><b>$_[0]</b></td> <td valign=top>";
-	if ($opt) { $rv .= "$opt Listed..<br>\n"; }
-	$rv .= "<textarea name=$_[1] rows=3 cols=15>".
-		join("\n", @av)."</textarea></td>\n";
+	my $opt = "";
+	if ($def) {
+		$opt = &ui_radio($name."_def", @av ? 0 : 1,
+			 [ [ 1, $def ], [ 0, $text{'ec_listed'} ] ])."<br>\n";
+		}
+	return &ui_table_row($label,
+		$opt.&ui_textarea($name, join("\n", @av), 3, 20));
 	}
 else {
 	# one long text field
-	$rv = "<td valign=top><b>$_[0]</b></td> <td colspan=3 valign=top>$opt";
-	$rv .= "<input name=$_[1] size=50 value=\"".join(' ',@av)."\"></td>\n";
+	my $field = $def ? &ui_opt_textbox($name, join(' ',@av), 50, $def)
+			 : &ui_textbox($name, join(' ',@av), 50);
+	return &ui_table_row($label, $field, 3);
 	}
-return $rv;
 }
 
 # save_list(name, &checkfunc, &config)
 sub save_list
 {
-local($v, @vals, $err);
-if (!$in{"$_[0]_def"}) {
+my ($name, $func, $conf) = @_;
+my @vals;
+if (!$in{$name."_def"}) {
 	@vals = split(/\s+/, $in{$_[0]});
-	if ($_[1]) {
-		foreach $v (@vals) {
-			&check_error($_[1], $v);
+	if ($func) {
+		foreach my $v (@vals) {
+			&check_error($func, $v);
 			}
 		}
 	}
-if (@vals) { &save_directive($_[2], $_[0],
-		[{ 'name' => $_[0], values => \@vals }]); }
-else { &save_directive($_[2], $_[0], [ ]); }
+if (@vals) {
+	&save_directive($conf, $name,
+			[{ 'name' => $name, values => \@vals }]);
+	}
+else {
+	&save_directive($conf, $name, [ ]);
+	}
 }
 
 # check_error(&function, value)
 sub check_error
 {
-return if (!$_[0]);
-local $err = &{$_[0]}($_[1]);
+my ($func, $value) = @_;
+return if (!$func);
+my $err = &$func($value);
 if ($err) { &error($err); }
 }
 
@@ -116,52 +131,51 @@ if ($err) { &error($err); }
 # Display a text area for entering 0 or more addresses
 sub address_input
 {
-local($v, $rv, @av);
-foreach $v (&find_config($_[1], $_[2])) {
+my ($label, $name, $conf, $type) = @_;
+my @av;
+foreach my $v (&find_config($name, $conf)) {
 	push(@av, @{$v->{'values'}});
 	}
-if ($_[3] == 0) {
+if ($type == 0) {
 	# text area
-	$rv = "<td valign=top><b>$_[0]</b></td> <td valign=top>";
-	$rv .= "<textarea name=$_[1] rows=3 cols=15>".
-		join("\n", @av)."</textarea></td>\n";
+	return &ui_table_row($label,
+		&ui_textarea($name, join("\n", @av), 3, 30));
 	}
 else {
 	# one long text field
-	$rv = "<td valign=top><b>$_[0]</b></td> <td colspan=3 valign=top>";
-	$rv .= "<input name=$_[1] size=50 value=\"".join(' ',@av)."\"></td>\n";
+	return &ui_table_row($label,
+		&ui_textbox($name, join(' ',@av), 50), 3);
 	}
-return $rv;
 }
 
 # save_address(name, config)
 sub save_address
 {
-local($addr, @vals);
-foreach $addr (split(/\s+/, $in{$_[0]})) {
-	&check_ipaddress($addr) || &error(&text('lib_emsg1',$addr));
+my ($name, $conf) = @_;
+my @vals;
+foreach my $addr (split(/\s+/, $in{$name})) {
+	&check_ipaddress($addr) || &error(&text('lib_emsg1', $addr));
 	push(@vals, $addr);
 	}
-if (@vals) { &save_directive($_[1], $_[0],
-		[{ 'name' => $_[0], values => \@vals }]); }
-else { &save_directive($_[1], $_[0], [ ]); }
+if (@vals) {
+	&save_directive($conf, $name,
+			[{ 'name' => $name, values => \@vals }]);
+	}
+else {
+	&save_directive($conf, $name, [ ]);
+	}
 }
 
 # opt_input(text, name, &config, default, size, units)
 # Display an optional field for entering something
 sub opt_input
 {
-local($v, $rv);
-$v = &find_config($_[1], $_[2]);
-$rv = "<td valign=top><b>$_[0]</b></td> <td valign=top nowrap";
-$rv .= $_[4] > 30 ? " colspan=3>\n" : ">\n";
-$rv .= sprintf "<input type=radio name=$_[1]_def value=1 %s> $_[3]\n",
-	$v ? "" : "checked";
-$rv .= sprintf "<input type=radio name=$_[1]_def value=0 %s> ",
-	$v ? "checked" : "";
-$rv .= sprintf "<input name=$_[1] size=$_[4] value=\"%s\"> %s</td>\n",
-	$v ? $v->{'value'} : "", $_[5];
-return $rv;
+my ($label, $name, $conf, $def, $size, $units) = @_;
+my $v = &find_config($_[1], $_[2]);
+return &ui_table_row($label,
+	&ui_opt_textbox($name, $v ? $v->{'value'} : undef, $size,
+			$def)." ".$units,
+	$size > 30 ? 3 : 1);
 }
 
 # save_opt(name, &function, &config)
