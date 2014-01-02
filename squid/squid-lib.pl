@@ -2,12 +2,12 @@
 # Functions for configuring squid.conf
 
 BEGIN { push(@INC, ".."); };
-#use strict;
-#use warnings;
+use strict;
+use warnings;
 use WebminCore;
 &init_config();
 do 'parser-lib.pl';
-our ($module_root_directory, %text, %config, %in);
+our ($module_root_directory, %text, %config, %in, $module_config_directory);
 
 our %access = &get_module_acl();
 our $auth_program = "$module_config_directory/squid-auth.pl";
@@ -71,12 +71,6 @@ my ($label, $name, $conf, $type, $def) = @_;
 my @av;
 foreach my $v (&find_config($name, $conf)) {
 	push(@av, @{$v->{'values'}});
-	}
-if ($def) {
-	$opt = sprintf "<input type=radio name=$_[1]_def value=1 %s> $_[4]\n",
-		@av ? "" : "checked";
-	$opt .= sprintf "<input type=radio name=$_[1]_def value=0 %s>\n",
-		@av ? "checked" : "";
 	}
 if ($type == 0) {
 	# text area
@@ -188,7 +182,7 @@ if ($in{$name."_def"}) {
 	}
 else {
 	&check_error($func, $in{$name});
-	local $dir = { 'name' => $name, 'values' => [ $in{$name} ] };
+	my $dir = { 'name' => $name, 'values' => [ $in{$name} ] };
 	&save_directive($conf, $name, [ $dir ]);
 	}
 }
