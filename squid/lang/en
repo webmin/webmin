@@ -399,6 +399,7 @@ elogs_aacls=Only log for ACLs
 elogs_notset=Not set
 elogs_dont=Don't log
 elogs_file=File $1
+elogs_squid=Squid standard
 
 emem_ecannot=You are not allowed to edit memory usage
 emem_dheader=Memory and Disk Usage
