@@ -33,13 +33,16 @@ while(<USERS>) {
 		}
 	}
 close(USERS);
-if (!defined($users{$user})) {
+$uinfo = $users{$user};
+if (!defined($uinfo)) {
 	print STDERR "The Webmin user $user does not exist\n";
 	print STDERR "The users on your system are: ",join(" ", @users),"\n";
 	exit 5;
 	}
-$salt = substr(time(), 0, 2);
-$users{$user}->[1] = crypt($pass, $salt);
+srand(time() ^ $$);
+$salt = chr(int(rand(26))+65).chr(int(rand(26))+65);
+$uinfo->[1] = crypt($pass, $salt);
+$uinfo->[6] = time();
 if (!open(USERS, "> $config{'userfile'}")) {
 	print STDERR "Failed to open Webmin users file $config{'userfile'} : $!\n";
 	exit 6;
