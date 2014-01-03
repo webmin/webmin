@@ -2,12 +2,15 @@
 # save_logs.cgi
 # Save logging options
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 $access{'logging'} || &error($text{'elogs_ecannot'});
 &ReadParse();
 &lock_file($config{'squid_conf'});
-$conf = &get_config();
-$whatfailed = $text{'slogs_ftslo'};
+my $conf = &get_config();
+&error_setup($text{'slogs_ftslo'});
 
 if ($squid_version < 2.6) {
 	# Just a single logging directive
@@ -15,8 +18,9 @@ if ($squid_version < 2.6) {
 	}
 else {
 	# Supports definition of log formats and files
-	for($i=0; defined($fname = $in{"fname_$i"}); $i++) {
-		$ffmt = $in{"ffmt_$i"};
+	my @logformat;
+	for(my $i=0; defined(my $fname = $in{"fname_$i"}); $i++) {
+		my $ffmt = $in{"ffmt_$i"};
 		next if (!$fname);
 		$fname =~ /^\S+$/ || &error(&text('slogs_efname', $i+1));
 		$ffmt =~ /\S/ || &error(&text('slogs_effmt', $i+1));
@@ -26,13 +30,14 @@ else {
 	&save_directive($conf, "logformat", \@logformat);
 
 	# Save log files
-	for($i=0; defined($afile = $in{"afile_$i"}); $i++) {
-		$adef = $in{"afile_def_$i"};
+	my @access;
+	for(my $i=0; defined(my $afile = $in{"afile_$i"}); $i++) {
+		my $adef = $in{"afile_def_$i"};
 		next if ($adef == 1);
 		$adef == 2 || $afile =~ /^\/\S+$/ ||
 			&error(&text('slogs_eafile', $i+1));
-		$afmt = $in{"afmt_$i"};
-		$aacls = $in{"aacls_$i"};
+		my $afmt = $in{"afmt_$i"};
+		my $aacls = $in{"aacls_$i"};
 		push(@access,
 		  { 'name' => 'access_log',
 		    'values' => [ $adef == 2 ? "none" : $afile,
@@ -59,7 +64,7 @@ else {
 &save_opt("pid_filename", \&check_pid_file, $conf);
 if ($squid_version >= 2.2) {
 	if (!$in{'complex_ident'}) {
-		local @ila = split(/\0/, $in{'ident_lookup_access'});
+		my @ila = split(/\0/, $in{'ident_lookup_access'});
 		&save_directive($conf, "ident_lookup_access", !@ila ? [ ] :
 				[ { 'name' => 'ident_lookup_access',
 				    'values' => [ 'allow', @ila ] } ]);
@@ -83,26 +88,30 @@ if ($squid_version >= 2) {
 
 sub check_pid_file
 {
-return $_[0] eq 'none' ? undef : &check_file($_[0]);
+my ($file) = @_;
+return $file eq 'none' ? undef : &check_file($file);
 }
 
 sub check_file
 {
-$_[0] =~ /^\// || return &text('slogs_emsg1',$_[0]);
-$_[0] =~ /^(\S*\/)([^\/\s]+)$/ || return &text('slogs_emsg2',$_[0]);
-(-d $1) || return &text('slogs_emsg3',$1);
+my ($file) = @_;
+$file =~ /^\// || return &text('slogs_emsg1', $file);
+$file =~ /^(\S*\/)([^\/\s]+)$/ || return &text('slogs_emsg2', $file);
+(-d $1) || return &text('slogs_emsg3', $1);
 return undef;
 }
 
 sub check_netmask
 {
-&check_ipaddress($_[0]) || return &text('slogs_emsg4',$_[0]);
+my ($value) = @_;
+&check_ipaddress($value) || return &text('slogs_emsg4', $value);
 return undef;
 }
 
 sub check_debug
 {
-$_[0] =~ /\S+/ || return &text('slogs_emsg5',$_[0]);
+my ($value) = @_;
+$value =~ /\S+/ || return &text('slogs_emsg5', $value);
 return undef;
 }
 

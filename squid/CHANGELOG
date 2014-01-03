@@ -32,3 +32,6 @@ Comments at the end of lines are now preserved when Webmin changes directives in
 Fixed the Calamaris page for newer versions.
 ---- Changes since 1.510 ----
 Improved support for COSS format (single file) Squid caches.
+---- Changes since 1.660 ----
+Updated all pages to use the Webmin UI library for a more consistent look.
+Made all code Perl strict and warnings compliant.

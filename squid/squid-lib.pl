@@ -195,10 +195,10 @@ my $v = &find_config($name, $conf);
 return &ui_table_row($label,
 	&ui_radio($name."_def", $v ? 0 : 1,
 	  [ [ 1, $def ],
-	    [ 0, &time_field($name, $size, $v ? @{$v->{'values'}} : ( )) ] ]));
+	    [ 0, &time_fields($name, $size, $v ? @{$v->{'values'}} : ( )) ] ]));
 }
 
-# time_field(name, size, time, units)
+# time_fields(name, size, time, units)
 sub time_fields
 {
 my ($name, $size, $time, $units) = @_;
