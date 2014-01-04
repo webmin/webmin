@@ -2,12 +2,15 @@
 # save_progs.cgi
 # Save helper program options
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 $access{'hprogs'} || &error($text{'eprogs_ecannot'});
 &ReadParse();
 &lock_file($config{'squid_conf'});
-$conf = &get_config();
-$whatfailed = $text{'sprog_ftshpo'};
+my $conf = &get_config();
+&error_setup($text{'sprog_ftshpo'});
 
 if ($squid_version < 2) {
 	&save_opt("ftpget_program", \&check_prog, $conf);
@@ -67,10 +70,9 @@ return $_[0] =~ /^\d+$/ ? undef : &text('sprog_emsg6',$_[0]);
 
 sub check_dnsservers
 {
-local $dns;
-local @dns = split(/\s+/, $_[0]);
+my @dns = split(/\s+/, $_[0]);
 return $text{'sprog_emsg7'} if (!@dns);
-foreach $dns (@dns) {
+foreach my $dns (@dns) {
 	&check_ipaddress($dns) || return &text('sprog_emsg8',$dns);
 	}
 return undef;
