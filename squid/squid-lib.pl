@@ -325,9 +325,8 @@ if ($squid_version >= 2.5) {
 sub restart_button
 {
 return undef if ($config{'restart_pos'} == 2);
-my $pid = &is_squid_running();
-my $args = "redir=".&urlize(&this_url())."&pid=$pid";
-if ($pid) {
+my $args = "redir=".&urlize(&this_url());
+if (&is_squid_running()) {
 	return ($access{'restart'} ?
 		"<a href=\"restart.cgi?$args\">$text{'lib_buttac'}</a><br>\n" :
 	        "").
