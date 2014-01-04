@@ -2,20 +2,23 @@
 # save_admin.cgi
 # Save admin options
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 $access{'admopts'} || &error($text{'eadm_ecannot'});
 &ReadParse();
 &lock_file($config{'squid_conf'});
-$conf = &get_config();
-$whatfailed = $text{'sadmin_ftsao'};
+my $conf = &get_config();
+&error_setup($text{'sadmin_ftsao'});
 
-($olduser, $oldgroup) = &get_squid_user($conf);
+my ($olduser, $oldgroup) = &get_squid_user($conf);
 if ($squid_version < 2) {
 	if ($in{'effective_def'}) {
 		&save_directive($conf, "cache_effective_user", [ ]);
 		}
 	else {
-		%dir = ( 'name', 'cache_effective_user',
+		my %dir = ( 'name', 'cache_effective_user',
 			 'values', [ $in{'effective_u'}, $in{'effective_g'} ] );
 		&save_directive($conf, "cache_effective_user", [ \%dir ]);
 		}
@@ -44,17 +47,22 @@ else {
 &unlock_file($config{'squid_conf'});
 &webmin_log("admin", undef, undef, \%in);
 
-($user, $group) = &get_squid_user($conf);
+my ($user, $group) = &get_squid_user($conf);
 if (($olduser ne $user || $oldgroup ne $group) && $user && $group) {
 	# User/group has changed! Ask user if he wants to chown log/cache/pid
 	&ui_print_header(undef, $text{'sadmin_header'}, "");
-	print $text{'sadmin_msg1'},"\n"; 
-	print "<center><form action=chown.cgi>\n";
-	print "<input type=submit value=\"$text{'sadmin_buttco'}\">\n";
-	print "</form></center>\n";
+
+	print &ui_confirmation_form(
+		"chown.cgi",
+		$text{'sadmin_msg1'},
+		[], [ [ undef, $text{'sadmin_buttco'} ] ],
+		);
+
 	&ui_print_footer("", $text{'sadmin_return'});
 	}
-else { &redirect(""); }
+else {
+	&redirect("");
+	}
 
 sub check_email
 {
