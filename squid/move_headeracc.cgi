@@ -2,15 +2,18 @@
 # move_headeracc.cgi
 # Move a header_access directive up or down
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 $access{'headeracc'} || &error($text{'header_ecannot'});
 &lock_file($config{'squid_conf'});
-$conf = &get_config();
-($pos, $move, $type) = @ARGV;
+my $conf = &get_config();
+my ($pos, $move, $type) = @ARGV;
 
-@headeracc = &find_config($type, $conf);
-$newpos = $pos + $move;
-$oldv = $headeracc[$pos]->{'values'};
+my @headeracc = &find_config($type, $conf);
+my $newpos = $pos + $move;
+my $oldv = $headeracc[$pos]->{'values'};
 $headeracc[$pos]->{'values'} = $headeracc[$newpos]->{'values'};
 $headeracc[$newpos]->{'values'} = $oldv;
 &save_directive($conf, $type, \@headeracc);

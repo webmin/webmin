@@ -2,15 +2,18 @@
 # move_refresh.cgi
 # Move a refresh_pattern directive up or down
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 $access{'refresh'} || &error($text{'header_ecannot'});
 &lock_file($config{'squid_conf'});
-$conf = &get_config();
-($pos, $move) = @ARGV;
+my $conf = &get_config();
+my ($pos, $move) = @ARGV;
 
-@refresh = &find_config("refresh_pattern", $conf);
-$newpos = $pos + $move;
-$oldv = $refresh[$pos]->{'values'};
+my @refresh = &find_config("refresh_pattern", $conf);
+my $newpos = $pos + $move;
+my $oldv = $refresh[$pos]->{'values'};
 $refresh[$pos]->{'values'} = $refresh[$newpos]->{'values'};
 $refresh[$newpos]->{'values'} = $oldv;
 &save_directive($conf, "refresh_pattern", \@refresh);

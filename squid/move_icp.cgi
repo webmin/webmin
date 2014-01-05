@@ -2,15 +2,18 @@
 # move_icp.cgi
 # Move a icp_access directive up or down
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 $access{'actrl'} || &error($text{'eacl_ecannot'});
 &lock_file($config{'squid_conf'});
-$conf = &get_config();
-($pos, $move) = @ARGV;
+my $conf = &get_config();
+my ($pos, $move) = @ARGV;
 
-@icps = &find_config("icp_access", $conf);
-$newpos = $pos + $move;
-$oldv = $icps[$pos]->{'values'};
+my @icps = &find_config("icp_access", $conf);
+my $newpos = $pos + $move;
+my $oldv = $icps[$pos]->{'values'};
 $icps[$pos]->{'values'} = $icps[$newpos]->{'values'};
 $icps[$newpos]->{'values'} = $oldv;
 &save_directive($conf, "icp_access", \@icps);
