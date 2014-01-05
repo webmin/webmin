@@ -207,6 +207,7 @@ if ($squid_version >= 2.5) {
 	print &ui_tabs_start_tab("mode", "external");
 	my @ext = &find_config("external_acl_type", $conf);
 	if (@ext) {
+		print &ui_links_row([ &ui_link("edit_ext.cgi?new=1", $text{'eacl_addext'}) ]);
 		print &ui_columns_start([ $text{'eacl_cname'},
 					  $text{'eacl_format'},
 					  $text{'eacl_program'} ], 100);
@@ -224,7 +225,7 @@ if ($squid_version >= 2.5) {
 	else {
 		print "<b>$text{'eacl_noext'}</b><p>\n";
 		}
-	print "<a href=edit_ext.cgi?new=1>$text{'eacl_addext'}</a>\n";
+	print &ui_links_row([ &ui_link("edit_ext.cgi?new=1", $text{'eacl_addext'}) ]);
 	print &ui_tabs_end_tab();
 	}
 
