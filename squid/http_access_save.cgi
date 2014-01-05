@@ -2,14 +2,18 @@
 # http_access_save.cgi
 # Save or delete a proxy restriction
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 $access{'actrl'} || &error($text{'eacl_ecannot'});
 &ReadParse();
 &lock_file($config{'squid_conf'});
-$conf = &get_config();
-$whatfailed = $text{'sahttp_ftspr'};
+my $conf = &get_config();
+&error_setup($text{'sahttp_ftspr'});
 
-@https = &find_config("http_access", $conf);
+my @https = &find_config("http_access", $conf);
+my ($http, %used);
 if (defined($in{'index'})) {
 	$http = $conf->[$in{'index'}];
 	}
@@ -19,23 +23,23 @@ if ($in{'delete'}) {
 	}
 else {
 	# update or create
-	@vals = ( $in{'action'} );
-	foreach $y (split(/\0/, $in{'yes'})) {
+	my @vals = ( $in{'action'} );
+	foreach my $y (split(/\0/, $in{'yes'})) {
 		push(@vals, $y);
 		$used{$y}++;
 		}
-	foreach $n (split(/\0/, $in{'no'})) {
+	foreach my $n (split(/\0/, $in{'no'})) {
 		push(@vals, "!$n");
 		$used{$n}++;
 		}
-	$newhttp = { 'name' => 'http_access', 'values' => \@vals };
+	my $newhttp = { 'name' => 'http_access', 'values' => \@vals };
 	if ($http) { splice(@https, &indexof($http, @https), 1, $newhttp); }
 	else { push(@https, $newhttp); }
 	}
 
 # Find the last referenced ACL
-@acls = grep { $used{$_->{'values'}->[0]} } &find_config("acl", $conf);
-$lastacl = @acls ? $acls[$#acls] : undef;
+my @acls = grep { $used{$_->{'values'}->[0]} } &find_config("acl", $conf);
+my $lastacl = @acls ? $acls[$#acls] : undef;
 
 &save_directive($conf, "http_access", \@https, $lastacl);
 &flush_file_lines();
