@@ -2,14 +2,18 @@
 # http_reply_access_save.cgi
 # Save or delete a proxy REPLY restriction
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 $access{'actrl'} || &error($text{'eacl_ecannot'});
 &ReadParse();
 &lock_file($config{'squid_conf'});
-$conf = &get_config();
-$whatfailed = $text{'sahttp_replyftspr'};
+my $conf = &get_config();
+&error_setup($text{'sahttp_replyftspr'});
 
-@http_replies = &find_config("http_reply_access", $conf);
+my @http_replies = &find_config("http_reply_access", $conf);
+my $http;
 if (defined($in{'index'})) {
 	$http = $conf->[$in{'index'}];
 	}
@@ -19,10 +23,10 @@ if ($in{'delete'}) {
 	}
 else {
 	# update or create
-	@vals = ( $in{'action'} );
-	foreach $y (split(/\0/, $in{'yes'})) { push(@vals, $y); }
-	foreach $n (split(/\0/, $in{'no'})) { push(@vals, "!$n"); }
-	$newhttp = { 'name' => 'http_reply_access', 'values' => \@vals };
+	my @vals = ( $in{'action'} );
+	foreach my $y (split(/\0/, $in{'yes'})) { push(@vals, $y); }
+	foreach my $n (split(/\0/, $in{'no'})) { push(@vals, "!$n"); }
+	my $newhttp = { 'name' => 'http_reply_access', 'values' => \@vals };
 	if ($http) { splice(@http_replies, &indexof($http, @http_replies), 1, $newhttp); }
 	else { push(@http_replies, $newhttp); }
 	}
