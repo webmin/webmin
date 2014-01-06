@@ -14,7 +14,7 @@ my $cache_host = $squid_version >= 2 ? "cache_peer" : "cache_host";
 my @ch = &find_config($cache_host, $conf);
 my @links = ( &select_all_link("d"),
 	      &select_invert_link("d"),
-	      "<a href='edit_cache_host.cgi?new=1'>$text{'eicp_aac'}</a>" );
+	      &ui_link("edit_cache_host.cgi?new=1", $text{'eicp_aac'}) );
 if (@ch) {
 	my $mid = int((@ch+1)/2);
 	print &ui_form_start("delete_icps.cgi", "post");
@@ -184,7 +184,7 @@ my $rv = &ui_columns_start([ "",
 			     $text{'eicp_tiport'} ], 100, 0, \@tds);
 for(my $i=$start; $i<=$end; $i++) {
 	my @chv = @{$ch->[$i]->{'values'}};
-	print &ui_checked_columns_row([
+	$rv .= &ui_checked_columns_row([
 		&ui_link("edit_cache_host.cgi?num=$i",
 			 &html_escape($chv[0])),
 		&html_escape($chv[1]),
@@ -192,6 +192,7 @@ for(my $i=$start; $i<=$end; $i++) {
 		&html_escape($chv[3])
 		], \@tds, "d", $i);
 	}
-print &ui_columns_end();
+$rv .= &ui_columns_end();
+return $rv;
 }
 
