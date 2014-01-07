@@ -416,7 +416,7 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 		if (@webminattrs) {
 			push(@attrs, "webminAttr", \@webminattrs);
 			}
-		if (@{$user->{'modules'}}) {
+		if ($user->{'modules'} && @{$user->{'modules'}}) {
 			push(@attrs, "webminModule", $user->{'modules'});
 			}
 		my $rv = $dbh->add($dn, attr => \@attrs);
@@ -449,15 +449,16 @@ else {
 	&unlock_file($ENV{'MINISERV_CONFIG'});
 
 	my @times;
-	push(@times, "days", $user->{'days'}) if ($user->{'days'} ne '');
+	push(@times, "days", $user->{'days'}) if (defined($user->{'days'}) &&
+						  $user->{'days'} ne '');
 	push(@times, "hours", $user->{'hoursfrom'}."-".$user->{'hoursto'})
 		if ($user->{'hoursfrom'});
 	&lock_file($miniserv{'userfile'});
 	my $fh = "PWFILE";
 	&open_tempfile($fh, ">>$miniserv{'userfile'}");
-	my $allow = $user->{'allow'};
+	my $allow = $user->{'allow'} || "";
 	$allow =~ s/:/;/g;
-	my $deny = $user->{'deny'};
+	my $deny = $user->{'deny'} || "";
 	$deny =~ s/:/;/g;
 	&print_tempfile($fh,
 		"$user->{'name'}:$user->{'pass'}:$user->{'sync'}:$user->{'cert'}:",
@@ -465,7 +466,7 @@ else {
 		 $deny ? "deny $deny" : ""),":",
 		join(" ", @times),":",
 		$user->{'lastchange'},":",
-		join(" ", @{$user->{'olds'}}),":",
+		join(" ", @{$user->{'olds'} || []}),":",
 		$user->{'minsize'},":",
 		$user->{'nochange'},":",
 		$user->{'temppass'},":",
@@ -491,7 +492,7 @@ else {
 	$gconfig{"rbacdeny_".$user->{'name'}} = $user->{'rbacdeny'} if ($user->{'rbacdeny'});
 	delete($gconfig{"ownmods_".$user->{'name'}});
 	$gconfig{"ownmods_".$user->{'name'}} = join(" ", @{$user->{'ownmods'}})
-		if (@{$user->{'ownmods'}});
+		if ($user->{'ownmods'} && @{$user->{'ownmods'}});
 	delete($gconfig{"theme_".$user->{'name'}});
 	if ($user->{'theme'}) {
 		$gconfig{"theme_".$user->{'name'}} =
@@ -651,7 +652,7 @@ else {
 				 $deny ? "deny $deny" : ""),":",
 				join(" ", @times),":",
 				$user->{'lastchange'},":",
-				join(" ", @{$user->{'olds'}}),":",
+				join(" ", @{$user->{'olds'} || []}),":",
 				$user->{'minsize'},":",
 				$user->{'nochange'},":",
 				$user->{'temppass'},":",
@@ -695,7 +696,7 @@ else {
 		if ($user->{'rbacdeny'});
 	delete($gconfig{"ownmods_".$username});
 	$gconfig{"ownmods_".$user->{'name'}} = join(" ", @{$user->{'ownmods'}})
-		if (@{$user->{'ownmods'}});
+		if ($user->{'ownmods'} && @{$user->{'ownmods'}});
 	delete($gconfig{"theme_".$username});
 	if ($user->{'theme'}) {
 		$gconfig{"theme_".$user->{'name'}} =
@@ -752,6 +753,7 @@ if ($oldpass ne $user->{'pass'} &&
 	# and save the old one
 	my $nolock = $oldpass;
 	$nolock =~ s/^\!//;
+	$user->{'olds'} ||= [];
 	unshift(@{$user->{'olds'}}, $nolock);
 	if ($miniserv->{'pass_oldblock'}) {
 		while(scalar(@{$user->{'olds'}}) >
@@ -978,7 +980,7 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 		if (@webminattrs) {
 			push(@attrs, "webminAttr", \@webminattrs);
 			}
-		if (@{$group->{'modules'}}) {
+		if ($group->{'modules'} && @{$group->{'modules'}}) {
 			push(@attrs, "webminModule", $group->{'modules'});
 			}
 		my $rv = $dbh->add($dn, attr => \@attrs);
@@ -1228,10 +1230,10 @@ sub group_line
 {
 my ($group) = @_;
 return join(":", $group->{'name'},
-		 join(" ", @{$group->{'members'}}),
-		 join(" ", @{$group->{'modules'}}),
+		 join(" ", @{$group->{'members'} || []}),
+		 join(" ", @{$group->{'modules'} || []}),
 		 $group->{'desc'},
-		 join(" ", @{$group->{'ownmods'}}) );
+		 join(" ", @{$group->{'ownmods'} || []}) );
 }
 
 =head2 acl_line(&user, &allmodules)
@@ -1242,7 +1244,7 @@ Internal function to generate an ACL file line.
 sub acl_line
 {
 my ($user) = @_;
-return "$user->{'name'}: ".join(' ', @{$user->{'modules'}})."\n";
+return "$user->{'name'}: ".join(' ', @{$user->{'modules'} || []})."\n";
 }
 
 =head2 can_edit_user(user, [&groups])
@@ -1388,7 +1390,7 @@ foreach my $m (@$mems) {
 		# Member is a user
 		my ($u) = grep { $_->{'name'} eq $m } @$allusers;
 		if ($u) {
-			$u->{'modules'} = [ @$mods, @{$u->{'ownmods'}} ];
+			$u->{'modules'} = [ @$mods, @{$u->{'ownmods'} || []} ];
 			&modify_user($u->{'name'}, $u);
 			}
 		}
@@ -1397,7 +1399,7 @@ foreach my $m (@$mems) {
 		my $gname = substr($m, 1);
 		my ($g) = grep { $_->{'name'} eq $gname } @$allgroups;
 		if ($g) {
-			$g->{'modules'} = [ @$mods, @{$g->{'ownmods'}} ];
+			$g->{'modules'} = [ @$mods, @{$g->{'ownmods'} || []} ];
 			&modify_group($g->{'name'}, $g);
 			&update_members($allusers, $allgroups, $g->{'modules'},
 					$g->{'members'});
@@ -1704,7 +1706,7 @@ sub delete_from_groups
 {
 my ($user) = @_;
 foreach my $g (&list_groups()) {
-	my @mems = @{$g->{'members'}};
+	my @mems = @{$g->{'members'} || []};
 	my $i = &indexof($user, @mems);
 	if ($i >= 0) {
 		splice(@mems, $i, 1);
@@ -1775,7 +1777,7 @@ if ($miniserv{'pass_nodict'}) {
 	}
 if ($miniserv{'pass_oldblock'} && $user) {
 	my $c = 0;
-	foreach my $o (@{$user->{'olds'}}) {
+	foreach my $o (@{$user->{'olds'} || []}) {
 		my $enc = &encrypt_password($pass, $o);
 		$enc eq $o && return $text{'cpass_old'};
 		last if ($c++ > $miniserv{'pass_oldblock'});
@@ -1932,6 +1934,7 @@ if (!$user) {
 else {
 	# Make sure the user has the module
 	my ($uinfo) = grep { $_->{'name'} eq $user } &list_users();
+	$uinfo->{'modules'} ||= [];
 	if ($uinfo && &indexof($mod, @{$uinfo->{'modules'}}) < 0) {
 		push(@{$uinfo->{'modules'}}, $mod);
 		&modify_user($uinfo->{'name'}, $uinfo);
