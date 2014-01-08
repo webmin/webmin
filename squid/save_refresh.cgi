@@ -1,14 +1,18 @@
 #!/usr/local/bin/perl
 # Save or delete a refresh pattern
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 $access{'refresh'} || &error($text{'refresh_ecannot'});
 &ReadParse();
 &lock_file($config{'squid_conf'});
-$conf = &get_config();
+my $conf = &get_config();
 &error_setup($text{'refresh_err'});
 
-@refresh = &find_config("refresh_pattern", $conf);
+my @refresh = &find_config("refresh_pattern", $conf);
+my $h;
 if (defined($in{'index'})) {
 	$h = $conf->[$in{'index'}];
 	}
@@ -23,12 +27,13 @@ else {
 	$in{'max'} =~ /^\d+$/ || &error($text{'refresh_emax'});
 	$in{'pc'} =~ /^\d+$/ && $in{'pc'} >= 0 && $in{'pc'} <= 100 ||
 		&error($text{'refresh_epc'});
+	my @vals;
 	push(@vals, "-i") if ($in{'caseless'});
 	push(@vals, $in{'re'}, $in{'min'}, $in{'pc'}.'%', $in{'max'});
 	push(@vals, split(/\0/, $in{'options'}));
-	$newr = { 'name' => 'refresh_pattern',
-		  'values' => \@vals };
-	$idx = &indexof($h, @refresh);
+	my $newr = { 'name' => 'refresh_pattern',
+		     'values' => \@vals };
+	my $idx = &indexof($h, @refresh);
 	if ($h) { splice(@refresh, &indexof($h, @refresh), 1, $newr); }
 	else { push(@refresh, $newr); }
 	}
