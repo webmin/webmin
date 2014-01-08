@@ -57,6 +57,7 @@ else {
 						30)) ] ]),
 		  &ui_select("afmt_$i", $afmt,
 			     [ [ "", "&lt;".$text{'default'}."&gt;" ],
+			       [ "squid", "&lt;".$text{'elogs_squid'}."&gt;" ],
 			       map { [ $_->{'values'}->[0] ] } @logformat ],
 			     1, 0, 1),
 		  &ui_textbox("aacls_$i", join(" ", @aacls), 20)

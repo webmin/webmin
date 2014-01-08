@@ -161,13 +161,11 @@ if ($config{'restart_pos'} != 1) {
 			print &ui_buttons_row("restart.cgi",
 					      $text{'index_restart'},
 					      $text{'index_restartdesc'},
-					      &ui_hidden("pid", $pid).
 					      &ui_hidden("redir", "index.cgi"));
 			}
 		if ($access{'start'}) {
 			print &ui_buttons_row("stop.cgi", $text{'index_stop'},
 					      $text{'index_stopdesc'},
-					      &ui_hidden("pid", $pid).
 					      &ui_hidden("redir", "index.cgi"));
 			}
 		}
