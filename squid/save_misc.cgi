@@ -2,12 +2,15 @@
 # save_misc.cgi
 # Save miscellaneous options
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 $access{'miscopt'} || &error($text{'emisc_ecannot'});
 &ReadParse();
 &lock_file($config{'squid_conf'});
-$conf = &get_config();
-$whatfailed = $text{'smisc_ftso'};
+my $conf = &get_config();
+&error_setup($text{'smisc_ftso'});
 
 &save_opt("dns_testnames", undef, $conf);
 &save_opt("logfile_rotate", \&check_rotate, $conf);
@@ -22,16 +25,16 @@ if ($squid_version < 2) {
 &save_choice("log_icp_queries", "on", $conf);
 &save_opt("minimum_direct_hops", \&check_hops, $conf);
 if ($squid_version >= 2.2 && $squid_version < 2.5) {
-	$m = $in{'anon_mode'};
+	my $m = $in{'anon_mode'};
 	if ($m == 0) {
 		&save_directive($conf, "anonymize_headers", [ ]);
 		}
 	else {
 		&save_directive($conf, "anonymize_headers",
 			[ { 'name' => 'anonymize_headers',
-			    'values' => [ $m==1 ? "allow" : "deny",
-					  $m==1 ? $in{'anon_allow'}
-						: $in{'anon_deny'} ] } ]);
+			    'values' => [ $m == 1 ? "allow" : "deny",
+					  $m == 1 ? $in{'anon_allow'}
+						  : $in{'anon_deny'} ] } ]);
 		}
 	}
 elsif ($squid_version < 2.2) {
@@ -44,9 +47,10 @@ if ($squid_version < 2.6) {
 		&save_directive($conf, "httpd_accel_host", [ ]);
 		}
 	else {
-		local $v = $in{'accel'} == 1 ? "virtual" : $in{"httpd_accel_host"};
+		my $v = $in{'accel'} == 1 ? "virtual" : $in{"httpd_accel_host"};
 		&save_directive($conf, "httpd_accel_host",
-				[ { 'name' => "httpd_accel_host", 'values' => [$v] } ]);
+				[ { 'name' => "httpd_accel_host",
+				    'values' => [$v] } ]);
 		}
 	&save_opt("httpd_accel_port", undef, $conf);
 	&save_choice("httpd_accel_with_proxy", undef, $conf);
