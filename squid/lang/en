@@ -935,8 +935,8 @@ iptables_inst0=The IPtables firewall commands needed to setup port redirection d
 iptables_inst1=The <a href='$1'>Linux Firewall</a> module does not appear to have been fully setup on your system. This module makes use of that one to setup Frox port redirection.
 iptables_desc=Squid can perform transparent HTTP proxying for requests on port $1, by setting up firewall rules to automatically forward them to port $2 which Squid listens on. This will only work if the system running Squid is also the router for your network. This can be done by adding an IPtables rule to your firewall, assuming that it is managed by the <a href='$3'>Linux Firewall</a> module.
 iptables_disabled=Port redirection is disabled
-iptables_enabled=Port redirection is enabled, for clients on network $1
-iptables_enabled2=Port redirection is enabled, for clients on interface $1
+iptables_enabled3=Port redirection is enabled, for clients on network
+iptables_enabled4=Port redirection is enabled, for clients on interface
 iptables_apply=Apply firewall and Squid configuration?
 iptables_save=Save and Apply
 iptables_err=Failed to save port forwarding
