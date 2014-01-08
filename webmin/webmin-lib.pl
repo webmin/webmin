@@ -403,6 +403,13 @@ else {
 			}
 		}
 
+	# Set reasonable permissions on install directory
+	if (&supports_users()) {
+		foreach my $m (@newmods) {
+			system("chmod -R o-w $root_directory/$m");
+			}
+		}
+
 	# Update ACL for this user so they can access the new modules
 	&grant_user_module($grant, \@grantmods);
 	}
