@@ -2,22 +2,27 @@
 # save_authparam.cgi
 # Save authentication program options
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config, $auth_program,
+     $auth_database, $module_root_directory, $module_config_directory);
 require './squid-lib.pl';
 $access{'authparam'} || &error($text{'authparam_ecannot'});
 &ReadParse();
 &lock_file($config{'squid_conf'});
-$conf = &get_config();
+my $conf = &get_config();
 &error_setup($text{'authparam_err'});
 
 if ($squid_version >= 2.5) {
-	local @auth = &find_config("auth_param", $conf);
+	my @auth = &find_config("auth_param", $conf);
 
 	# Save basic authentication options
 	if ($in{'b_auth_mode'} == 0) {
 		&save_auth(\@auth, "basic", "program");
 		}
 	elsif ($in{'b_auth_mode'} == 2) {
-		&system_logged("cp $module_root_directory/squid-auth.pl $module_config_directory");
+		&copy_source_dest("$module_root_directory/squid-auth.pl",
+				  "$module_config_directory/squid-auth.pl");
 		&save_auth(\@auth, "basic", "program", "$auth_program $auth_database");
 		&system_logged("chmod a+rx $auth_program $auth_database");
 		}
@@ -38,7 +43,7 @@ if ($squid_version >= 2.5) {
 		}
 	else {
 		$in{'b_ttl'} =~ /^\d+$/ ||
-			&error(&text('sprog_emsg6', $in{'b_ttl'}));
+			&error(&text('sprog_emsg10', $in{'b_ttl'}));
 		&save_auth(\@auth, "basic", "credentialsttl",
 				 $in{'b_ttl'}." ".$in{'b_ttl_u'});
 		}
@@ -49,14 +54,17 @@ if ($squid_version >= 2.5) {
 		&save_auth(\@auth, "basic", "realm", $in{'b_realm'});
 		}
 	if ($in{'b_aittl_def'}) {
-			&save_directive($conf, "authenticate_ip_ttl",[ ]);
-	}else{
-		$in{'b_aittl'} =~ /^\d+$/ ||&error(&text('sprog_emsg6', $in{'b_aittl'}));
-		@baittl[0]= $in{'b_aittl'}." ".$in{'b_aittl_u'};
-			&save_directive($conf, "authenticate_ip_ttl",
-				[ { 'name' => 'authenticate_ip_ttl',
-			    	'values' => \@baittl }]);
-	}
+		&save_directive($conf, "authenticate_ip_ttl",[ ]);
+		}
+	else {
+		$in{'b_aittl'} =~ /^\d+$/ ||
+			&error(&text('sprog_emsg10', $in{'b_aittl'}));
+		my @baittl= ( $in{'b_aittl'}." ".$in{'b_aittl_u'} );
+		&save_directive($conf, "authenticate_ip_ttl",
+			[ { 'name' => 'authenticate_ip_ttl',
+			'values' => \@baittl }]);
+		}
+
 	# Save digest authentication options
 	if ($in{'d_auth_mode'} == 0) {
 		&save_auth(\@auth, "digest", "program");
@@ -122,7 +130,8 @@ elsif ($squid_version >= 2) {
 		&save_directive($conf, "authenticate_program", [ ]);
 		}
 	elsif ($in{'auth_mode'} == 2) {
-		&system_logged("cp $module_root_directory/squid-auth.pl $module_config_directory");
+		&copy_source_dest("$module_root_directory/squid-auth.pl",
+				  "$module_config_directory/squid-auth.pl");
 		&save_directive($conf, "authenticate_program",
 			[ { 'name' => 'authenticate_program',
 			    'values' => [ "$auth_program $auth_database" ] } ]);
@@ -163,8 +172,8 @@ return $_[0] =~ /^\d+$/ ? undef : &text('sprog_emsg5',$_[0]);
 # save_auth(&auth, type, name, [value])
 sub save_auth
 {
-local ($old) = grep { $_->{'values'}->[0] eq $_[1] &&
-		      $_->{'values'}->[1] eq $_[2] } @{$_[0]};
+my ($old) = grep { $_->{'values'}->[0] eq $_[1] &&
+		   $_->{'values'}->[1] eq $_[2] } @{$_[0]};
 if ($old && @_ > 3) {
 	# Replace value
 	$old->{'values'} = [ $_[1], $_[2], $_[3] ];

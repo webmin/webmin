@@ -642,6 +642,7 @@ sprog_emsg6='$1' is not a valid column width
 sprog_emsg7=No DNS servers entered
 sprog_emsg8='$1' is not a valid IP address
 sprog_emsg9='$1' is not a valid cache time
+sprog_emsg10='$1' is not a valid TTL
 
 suser_ftsu=Failed to save user
 suser_emsg1=Invalid or missing username
