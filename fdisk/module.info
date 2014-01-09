@@ -35,3 +35,4 @@ longdesc_hu=Particiók létrehozása és módosítása
 desc_hu=Lemezparticiók
 longdesc_ms_MY=Mencipta dan mengubah partisyen SCSI setempat dan disk IDE pada Linux.
 desc_ms_MY=Partisyen pada disk setempat
+longdesc_de=Erstellt und Editiert Partitionen auf lokalen SCSI und IDE Laufwerken auf Linux.

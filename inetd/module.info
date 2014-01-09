@@ -10,3 +10,4 @@ desc_nl=Netwerk Services en Protocollen
 desc_hu=Hálózati szolgáltatások (Inetd)
 desc_ms_MY=Servis Rangkaian dan Protokol
 longdesc_ms_MY=Mengubah servis dalam /etc/inetd.conf, /etc/services dan /etc/rpc.
+longdesc_de=Editiert Dienste in /etc/inetd.conf, /etc/services und /etc/rpc.
