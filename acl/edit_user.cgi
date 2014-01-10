@@ -336,14 +336,14 @@ print &ui_hidden_table_start(@groups ? $text{'edit_modsg'} : $text{'edit_mods'},
 my @mlist = grep { $access{'others'} || $has{$_->{'dir'}} ||
 		   $mcan{$_->{'dir'}} } &list_module_infos();
 my @links = ( &select_all_link("mod", 0, $text{'edit_selall'}),
-	   &select_invert_link("mod", 0, $text{'edit_invert'}) );
+	      &select_invert_link("mod", 0, $text{'edit_invert'}) );
 my @cats = &unique(map { $_->{'category'} } @mlist);
 my %catnames;
 &read_file("$config_directory/webmin.catnames", \%catnames);
 my $grids = "";
 foreach my $c (sort { $b cmp $a } @cats) {
 	my @cmlist = grep { $_->{'category'} eq $c } @mlist;
-	my $grids .= "<b>".($catnames{$c} ||
+	$grids .= "<b>".($catnames{$c} ||
 			    $text{'category_'.$c})."</b><br>\n";
 	my @grid = ( );
 	my $sw = 0;
