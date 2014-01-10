@@ -2,18 +2,23 @@
 # save_pool.cgi
 # Create, update or delete a delay pool
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 $access{'delay'} || &error($text{'delay_ecannot'});
 &ReadParse();
 &lock_file($config{'squid_conf'});
-$conf = &get_config();
+my $conf = &get_config();
 &error_setup($text{'pool_err'});
 
-@pools = &find_config("delay_class", $conf);
-@params = &find_config("delay_parameters", $conf);
-@access = &find_config("delay_access", $conf);
-$pools = &find_config("delay_pools", $conf);
-$pools = { 'name' => 'delay_pools' } if (!$pools);
+my @pools = &find_config("delay_class", $conf);
+my @params = &find_config("delay_parameters", $conf);
+my @access = &find_config("delay_access", $conf);
+my $pools = &find_config("delay_pools", $conf);
+$pools ||= { 'name' => 'delay_pools' };
+
+my ($pool, $param);
 if (!$in{'new'}) {
 	($pool) = grep { $_->{'values'}->[0] == $in{'idx'} } @pools;
 	($param) = grep { $_->{'values'}->[0] == $in{'idx'} } @params;
@@ -43,6 +48,7 @@ if ($in{'delete'}) {
 else {
 	# Validate and store inputs
 	$pool->{'values'}->[1] = $in{'class'};
+	my @v;
 	if ($in{'class'} == 1) {
 		@v = ( &parse_limit("agg") );
 		}
@@ -83,13 +89,14 @@ else {
 # parse_limit(name)
 sub parse_limit
 {
-if ($in{"$_[0]_def"}) {
+my ($name) = @_;
+if ($in{$name."_def"}) {
 	return "-1/-1";
 	}
 else {
-	local @ud = ( .125, 1, 125, 1000, 125000, 1000000 );
-	local $u1 = $in{"$_[0]_1_n"};
-	local $u2 = $in{"$_[0]_2_n"};
+	my @ud = ( .125, 1, 125, 1000, 125000, 1000000 );
+	my $u1 = $in{$name."_1_n"};
+	my $u2 = $in{$name."_2_n"};
 	$u1 =~ /^\d+$/ || $u1 == -1 || &error(&text('pool_elimit1', $u1));
 	$u2 =~ /^\d+$/ || $u2 == -1 || &error(&text('pool_elimit2', $u2));
 	$u1 = int($u1 * $ud[$in{"$_[0]_1_u"}]);
