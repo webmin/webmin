@@ -16,3 +16,4 @@ desc_sk.UTF-8=SMART stav diskov
 desc_no=SMART diskstatus
 longdesc_ms_MY=Semak status pemacu IDE untuk mengesan masalah dan kegagalan yang berpotensi.
 desc_ms_MY=Status SMART Drive
+longdesc_de=&#220;berpr&#252;ft den Status von IDE and SATA Festplatten, um Probleme und m&#246;gliche Fehler zu erkennen.
