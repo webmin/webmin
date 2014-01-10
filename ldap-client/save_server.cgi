@@ -5,7 +5,7 @@ require './ldap-client-lib.pl';
 &error_setup($text{'server_err'});
 &ReadParse();
 
-&lock_file($config{'auth_ldap'});
+&lock_file(&get_ldap_config_file());
 @secrets = split(/\t+/, $config{'secret'});
 foreach $secret (@secrets) {
 	&lock_file($secret);
@@ -118,7 +118,7 @@ else {
 
 # Write out config
 &flush_file_lines();
-&unlock_file($config{'auth_ldap'});
+&unlock_file(&get_ldap_config_file());
 foreach $secret (@secrets) {
 	&unlock_file($secret);
 	}
