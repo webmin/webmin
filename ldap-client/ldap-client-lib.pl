@@ -7,11 +7,22 @@ use WebminCore;
 @base_types = ("passwd", "shadow", "group", "hosts", "networks", "netmasks",
 	       "services", "protocols", "aliases", "netgroup");
 
+# get_ldap_config_file()
+# Returns the first config file that exists
+sub get_ldap_config_file
+{
+my @confs = split(/\s+/, $config{'auth_ldap'});
+foreach my $c (@$confs) {
+	return $c if (-e $c);
+	}
+return $confs[0];
+}
+
 # get_config()
 # Parses the NSS LDAP config file into a list of names and values
 sub get_config
 {
-local $file = $_[0] || $config{'auth_ldap'};
+local $file = $_[0] || &get_ldap_config_file();
 if (!scalar(@get_config_cache)) {
 	local $lnum = 0;
 	@get_config_cache = ( );
@@ -69,9 +80,10 @@ sub save_directive
 local ($conf, $name, $value) = @_;
 local $old = &find($name, $conf);
 local $oldcmt = &find($name, $conf, 1);
+local $deffile = &get_ldap_config_file();
 local $lref = &read_file_lines($old ? $old->{'file'} :
 			       $oldcmt ? $oldcmt->{'file'} :
-				         $config{'auth_ldap'});
+				         $deffile);
 if (defined($value) && $old) {
 	# Just update value
 	$old->{'value'} = $value;
@@ -99,7 +111,7 @@ elsif ($value) {
 		       'value' => $value,
 		       'enabled' => 1,
 		       'line' => scalar(@$lref),
-		       'file' => $config{'auth_ldap'} });
+		       'file' => $deffile });
 	push(@$lref, "$name $value");
 	}
 }
@@ -180,9 +192,10 @@ eval "use Net::LDAP";
 if ($@) {
 	return &text('ldap_emodule2', "<tt>Net::LDAP</tt>");
 	}
-if (!-r $config{'auth_ldap'}) {
+my $deffile = &get_ldap_config_file();
+if (!-r $deffile) {
 	$ldap_hosts && $ldap_user ||
-		return &text('ldap_econf', "<tt>$config{'auth_ldap'}</tt>");
+		return &text('ldap_econf', "<tt>$deffile</tt>");
 	}
 
 # Get the host and port
@@ -372,7 +385,7 @@ local @hosts;
 if ($config{'ldap_hosts'}) {
 	@hosts = split(/\s+/, $config{'ldap_hosts'});
 	}
-elsif (!-r $config{'auth_ldap'}) {
+elsif (!-r &get_ldap_config_file()) {
 	@hosts = ( );
 	}
 else {
