@@ -17,7 +17,8 @@ foreach my $user (@d) {
 	if ($base_remote_user eq $user) {
 		&error($text{'delete_eself'});
 		}
-	$user->{'readonly'} && &error($text{'udeletes_ereadonly'});
+	my $uinfo = &get_user($user);
+	$uinfo->{'readonly'} && &error($text{'udeletes_ereadonly'});
 	}
 
 if ($in{'confirm'}) {
