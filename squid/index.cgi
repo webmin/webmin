@@ -98,14 +98,13 @@ else {
 		undef, undef, &text('index_version', $squid_version));
 	}
 
+# Check if authentication is setup
 my $auth;
-if ($squid_version < 2) {
-	$auth = 1;
-	}
-else {
+if ($squid_version >= 2) {
 	my $file = &get_auth_file($conf);
-	$auth = 2 if ($file);
+	$auth = 1 if ($file);
 	}
+
 my $calamaris = &has_command($config{'calamaris'});
 my $delay = $squid_version >= 2.3;
 my $authparam = $squid_version >= 2;
@@ -126,8 +125,7 @@ my @otitles = ( 'portsnets', 'othercaches', 'musage', 'logging',
 my @olinks =  ( "edit_ports.cgi", "edit_icp.cgi", "edit_mem.cgi",
 	        "edit_logs.cgi", "edit_cache.cgi", "edit_progs.cgi",
 	        "edit_acl.cgi", "edit_admin.cgi",
-	        ( $auth == 1 ? ( "edit_auth.cgi" ) :
-	          $auth == 2 ? ( "edit_nauth.cgi" ) : ( ) ),
+	        ( $auth ? ( "edit_nauth.cgi" ) : ( ) ),
 	        ( $authparam ? ( "edit_authparam.cgi" ) : ( ) ),
 	        ( $delay ? ( 'edit_delay.cgi' ) : ( ) ),
 	        ( $headeracc ? ( 'list_headeracc.cgi' ) : ( ) ),
