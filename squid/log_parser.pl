@@ -1,13 +1,16 @@
 # log_parser.pl
 # Functions for parsing this module's logs
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 do 'squid-lib.pl';
 
 # parse_webmin_log(user, script, action, type, object, &params)
 # Converts logged information from this module into human-readable form
 sub parse_webmin_log
 {
-local ($user, $script, $action, $type, $object, $p) = @_;
+my ($user, $script, $action, $type, $object, $p) = @_;
 $object = &html_escape($object);
 if ($type eq 'acl') {
 	return &text("log_acl_$action", "<tt>$object</tt>");

@@ -1,5 +1,8 @@
 # install_check.pl
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 do 'squid-lib.pl';
 
 # is_installed(mode)
@@ -8,9 +11,11 @@ do 'squid-lib.pl';
 # For mode 0, returns 1 if installed, 0 if not
 sub is_installed
 {
+my ($mode) = @_;
 return 0 if (!-r $config{'squid_conf'} || !&has_command($config{'squid_path'}));
-if ($_[0]) {
+if ($mode) {
 	# Check if cache is ready
+	my @dummy;
 	return 2 if (&check_cache(&get_config(), \@dummy));
 	}
 return 1;

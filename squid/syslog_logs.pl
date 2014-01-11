@@ -1,12 +1,15 @@
 # Contains a function to supply the syslog module with extra logs
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 do 'squid-lib.pl';
 
 # syslog_getlogs()
 # Returns the Squid cache and store logs
 sub syslog_getlogs
 {
-local @rv;
+my @rv;
 if (-d $config{'log_dir'}) {
 	push(@rv, { 'file' => "$config{'log_dir'}/cache.log",
 		    'desc' => $text{'syslog_cache'},

@@ -1,10 +1,13 @@
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 do 'squid-lib.pl';
 
 sub cgi_args
 {
 my ($cgi) = @_;
-$conf = &get_config();
+my $conf = &get_config();
 if ($cgi eq 'edit_cache_host.cgi') {
 	# First other cache
 	my $cache_host = $squid_version >= 2 ? "cache_peer" : "cache_host";

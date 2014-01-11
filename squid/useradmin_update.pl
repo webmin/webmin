@@ -1,32 +1,38 @@
+
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 do 'squid-lib.pl';
 
 # useradmin_create_user(&details)
 # Create a new Squid user
 sub useradmin_create_user
 {
+my ($uinfo) = @_;
 return if (!$config{'sync_create'});
 if ($config{'crypt_conf'} == 1) {
         eval "use MD5";
 	return if ($@);
         }
-return if ($_[0]->{'passmode'} != 3);
+return if ($uinfo->{'passmode'} != 3);
 
-local $user = $_[0]->{'user'};
-local $pass = $_[0]->{'plainpass'};
+my $user = $uinfo->{'user'};
+my $pass = $uinfo->{'plainpass'};
 
-local $conf = &get_config();
-local $file = &get_auth_file($conf);
+my $conf = &get_config();
+my $file = &get_auth_file($conf);
 return if (!$file);
 
 &lock_file($file);
-local @users = &list_auth_users($file);
+my @users = &list_auth_users($file);
 
-local ($same) = grep { $_->{'user'} eq $user } @users;
+my ($same) = grep { $_->{'user'} eq $user } @users;
 return if ($same);
-$pass = &encryptpwd($pass, $salt);
-open(FILE,">>$file");
-print FILE "$user:$pass\n";
-close(FILE);
+$pass = &encryptpwd($pass, undef);
+my $fh = "USER";
+&open_tempfile($fh, ">>$file");
+&print_tempfile($fh, "$user:$pass\n");
+&close_tempfile($fh);
 &unlock_file($file);
 
 &restart_squid();
@@ -36,18 +42,19 @@ close(FILE);
 # Delete this Squid user if in sync
 sub useradmin_delete_user
 {
+my ($uinfo) = @_;
 return if (!$config{'sync_delete'});
 
-local $name = $_[0]->{'user'};
+my $name = $uinfo->{'user'};
 
-local $conf = &get_config();
-local $file = &get_auth_file($conf);
+my $conf = &get_config();
+my $file = &get_auth_file($conf);
 return if (!$file);
 
 &lock_file($file);
-local @users = &list_auth_users($file);
-local $user;
-foreach $u (@users) {
+my @users = &list_auth_users($file);
+my $user;
+foreach my $u (@users) {
 	if ($u->{'user'} eq $name) {
 		$user = $u;
 		last;
@@ -66,24 +73,25 @@ return if (!$user);
 # Update this users password if in sync
 sub useradmin_modify_user
 {
+my ($uinfo) = @_;
 return if (!$config{'sync_modify'});
 if ($config{'crypt_conf'} == 1) {
         eval "use MD5";
 	return if ($@);
         }
-local $conf = &get_config();
-local $file = &get_auth_file($conf);
+my $conf = &get_config();
+my $file = &get_auth_file($conf);
 return if (!$file);
 
-local $name = $_[0]->{'user'};
-local $oldname = $_[1]->{'user'};
-local $pass = $_[0]->{'plainpass'};
+my $name = $_[0]->{'user'};
+my $oldname = $_[1]->{'user'};
+my $pass = $_[0]->{'plainpass'};
 return if ($name eq $oldname && $_[0]->{'passmode'} == 4);
 
 &lock_file($file);
-local @users = &list_auth_users($file);
-local $user;
-foreach $u (@users) {
+my @users = &list_auth_users($file);
+my $user;
+foreach my $u (@users) {
         if ($u->{'user'} eq $oldname) {
 		$user = $u;
 		last;
@@ -92,9 +100,9 @@ foreach $u (@users) {
 # In the passwd file?
 return if (!$user);
 
-local $cmt = $user->{'enabled'} ? "" : "#";
-$pass = $_[0]->{'passmode'} == 3 ? &encryptpwd($pass, $salt)
-				 : $user->{'pass'};
+my $cmt = $user->{'enabled'} ? "" : "#";
+$pass = $uinfo->{'passmode'} == 3 ? &encryptpwd($pass, undef)
+				  : $user->{'pass'};
 &replace_file_line($file, $user->{'line'},
 		   "$cmt$name:$pass\n");
 &unlock_file($file);
@@ -103,8 +111,8 @@ $pass = $_[0]->{'passmode'} == 3 ? &encryptpwd($pass, $salt)
 }
 
 sub encryptpwd {
+  my ($pwd, $salt) = @_;
   if ($config{'crypt_conf'}) {
-    my $pwd = $_[0];
     my $encryptpwd = new MD5;
     $encryptpwd->add($pwd);
     $pwd = encode_base64($encryptpwd->hexdigest());
@@ -113,8 +121,8 @@ sub encryptpwd {
     return $pwd;
     }
     else {
-      $salt = substr(time(), -2);
-      my $pwd = &unix_crypt($_[0], $_[1]);
+      $salt ||= substr(time(), -2);
+      my $pwd = &unix_crypt($pwd, $salt);
       return $pwd;
       }
   }
