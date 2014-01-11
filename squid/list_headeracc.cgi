@@ -2,20 +2,23 @@
 # list_headeracc.cgi
 # Display all header access control restrictions
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 $access{'headeracc'} || &error($text{'header_ecannot'});
 &ui_print_header(undef, $text{'header_title'}, "", "list_headeracc", 0, 0, 0, &restart_button());
-$conf = &get_config();
+my $conf = &get_config();
 
 # Work out what header access directives we support
-@types = $squid_version >= 3.0 ?
+my @types = $squid_version >= 3.0 ?
 	("request_header_access", "reply_header_access") : ("header_access");
 
 # Show a table for each
-foreach $t (@types) {
-	@headeracc = &find_config($t, $conf);
-	@links = ( "<a href='edit_headeracc.cgi?new=1&type=$t'>".
-		   "$text{'header_add'}</a>" );
+foreach my $t (@types) {
+	my @headeracc = &find_config($t, $conf);
+	my @links = ( &ui_link("edit_headeracc.cgi?new=1&type=$t",
+			       $text{'header_add'}) );
 	print &ui_subheading($text{'header_'.$t}),"<p>\n"
 		if ($t ne "header_access");
 	if (@headeracc) {
@@ -24,12 +27,12 @@ foreach $t (@types) {
 					  $text{'header_act'},
 					  $text{'header_acls'},
 					  $text{'eacl_move'} ]);
-		$hc = 0;
-		foreach $h (@headeracc) {
-			@v = @{$h->{'values'}};
-			@cols = ( );
-			push(@cols, "<a href='edit_headeracc.cgi?type=$t&".
-				    "index=$h->{'index'}'>$v[0]</a>");
+		my $hc = 0;
+		foreach my $h (@headeracc) {
+			my @v = @{$h->{'values'}};
+			my @cols = ( );
+			push(@cols, &ui_link("edit_headeracc.cgi?type=$t&".
+					     "index=$h->{'index'}", $v[0]));
 			push(@cols, $v[1] eq 'allow' ? $text{'eacl_allow'}
 						     : $text{'eacl_deny'});
 			push(@cols, join(" ", @v[2..$#v]));
@@ -46,7 +49,7 @@ foreach $t (@types) {
 		print "$text{'header_none'}<p>\n";
 		}
 	print &ui_links_row(\@links);
-	print "<hr>" if ($t ne $types[$#types]);
+	print &ui_hr() if ($t ne $types[$#types]);
 	}
 
 &ui_print_footer("", $text{'index_return'});
