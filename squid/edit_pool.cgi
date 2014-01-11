@@ -26,7 +26,7 @@ else {
 	($pool) = grep { $_->{'values'}->[0] == $in{'idx'} } @pools;
 	my @params = &find_config("delay_parameters", $conf);
 	($param) = grep { $_->{'values'}->[0] == $in{'idx'} } @params;
-	my @access = &find_config("delay_access", $conf);
+	@access = &find_config("delay_access", $conf);
 	@access = grep { $_->{'values'}->[0] == $in{'idx'} } @access;
 	}
 
@@ -96,7 +96,7 @@ if (!$in{'new'}) {
 				$hc != 0,
 				$hc != @access-1
 				);
-			print &ui_table_row([
+			$table .= &ui_columns_row([
 				&ui_link("pool_access.cgi?index=".
 					   "$h->{'index'}&idx=$in{'idx'}",
 					 $v[1]),
