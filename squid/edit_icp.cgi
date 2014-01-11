@@ -19,13 +19,7 @@ if (@ch) {
 	my $mid = int((@ch+1)/2);
 	print &ui_form_start("delete_icps.cgi", "post");
 	print &ui_links_row(\@links);
-	print "<table width=100%><tr> <td width=50% valign=top>\n";
-	print &cache_table(0, $mid-1, \@ch);
-	print "</td><td width=50% valign=top>\n";
-	if ($mid < @ch) {
-		print &cache_table($mid, $#ch, \@ch);
-		}
-	print "</td> </tr></table>\n";
+	print &cache_table(0, $#ch, \@ch);
 	print &ui_links_row(\@links);
 	print &ui_form_end([ [ "delete", $text{'eicp_delete'} ] ]);
 	}
