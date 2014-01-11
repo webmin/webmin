@@ -2,6 +2,9 @@
 # save_nuser.cgi
 # Save, create or delete a proxy user
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config, $module_name);
 require './squid-lib.pl';
 if ($config{'crypt_conf'} == 1) {
 	eval "use MD5";
@@ -12,32 +15,33 @@ if ($config{'crypt_conf'} == 1) {
 
 $access{'proxyauth'} || &error($text{'eauth_ecannot'});
 &ReadParse();
-$conf = &get_config();
-$file = &get_auth_file($conf);
+my $conf = &get_config();
+my $file = &get_auth_file($conf);
 &lock_file($file);
-@users = &list_auth_users($file);
+my @users = &list_auth_users($file);
 
-$user = $users[$in{'index'}];
+my $user = $users[$in{'index'}];
 if ($in{'delete'}) {
 	&replace_file_line($file, $user->{'line'});
 	}
 else {
-	$whatfailed = $text{'suser_ftsu'};
+	&error_setup($text{'suser_ftsu'});
 	$in{'user'} =~ /^[^:\s]+$/ || &error($text{'suser_emsg1'});
-	local ($same) = grep { $_->{'user'} eq $in{'user'} } @users;
-	local $cmt = $in{'enabled'} ? "" : "#";
+	my ($same) = grep { $_->{'user'} eq $in{'user'} } @users;
+	my $cmt = $in{'enabled'} ? "" : "#";
 	if ($in{'new'}) {
 		!$same || &error($text{'suser_etaken'});
-		$pass = &encryptpwd($in{'pass'}, $salt);
-		&open_tempfile(FILE,">>$file");
-		&print_tempfile(FILE, "$cmt$in{'user'}:$pass\n");
-		&close_tempfile(FILE);
+		my $pass = &encryptpwd($in{'pass'}, undef);
+		my $fh = "FILE";
+		&open_tempfile($fh, ">>$file");
+		&print_tempfile($fh, "$cmt$in{'user'}:$pass\n");
+		&close_tempfile($fh);
 		}
 	else {
 		!$same || $same->{'user'} eq $user->{'user'} ||
 			 &error($text{'suser_etaken'});
-		$pass = $in{'pass_def'} ? $user->{'pass'}
-					: &encryptpwd($in{'pass'}, $salt);
+		my $pass = $in{'pass_def'} ? $user->{'pass'}
+					: &encryptpwd($in{'pass'}, undef);
 		&replace_file_line($file, $user->{'line'},
 				   "$cmt$in{'user'}:$pass\n");
 		}
@@ -48,6 +52,7 @@ else {
 &redirect("edit_nauth.cgi");
 
 sub encryptpwd {
+  my ($pass, $salt) = @_;
   if ($config{'crypt_conf'}) {
     my $pwd = $_[0];
     my $encryptpwd = new MD5;
@@ -58,8 +63,8 @@ sub encryptpwd {
     return $pwd;
     }
     else {
-      $salt = substr(time(), -2);
-      my $pwd = &unix_crypt($_[0], $_[1]);
+      $salt ||= substr(time(), -2);
+      my $pwd = &unix_crypt($pass, $salt);
       return $pwd;
       }
   }

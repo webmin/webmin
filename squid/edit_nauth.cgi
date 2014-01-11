@@ -2,7 +2,11 @@
 # edit_nauth.cgi
 # Display a list of proxy users
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config, $module_name);
 require './squid-lib.pl';
+
 if ($config{'crypt_conf'} == 1) {
 	eval "use MD5";
 	if ($@) {
@@ -12,31 +16,29 @@ if ($config{'crypt_conf'} == 1) {
 
 $access{'proxyauth'} || &error($text{'eauth_ecannot'});
 &ui_print_header(undef, $text{'eauth_header'}, "", undef, 0, 0, 0, &restart_button());
-$conf = &get_config();
-$authfile = &get_auth_file($conf);
+my $conf = &get_config();
+my $authfile = &get_auth_file($conf);
 
 print &text('eauth_nmsgaccess', "<tt>$authfile</tt>"),"<p>\n";
-@users = &list_auth_users($authfile);
+my @users = &list_auth_users($authfile);
 if (@users) {
-	print "<a href=\"edit_nuser.cgi?new=1\">$text{'eauth_addpuser'}</a><br>\n";
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'eauth_pusers'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table width=100%>\n";
-	for($i=0; $i<@users; $i++) {
-		local ($it, $unit) = $users[$i]->{'enabled'} ? ('', '') :
+	print &ui_links_row([ &ui_link("edit_nuser.cgi?new=1",
+				       $text{'eauth_addpuser'}) ]);
+	my @grid;
+	for(my $i=0; $i<@users; $i++) {
+		my ($it, $unit) = $users[$i]->{'enabled'} ? ('', '') :
 					('<i>', '</i>');
-		print "<tr>\n" if ($i%4 == 0);
-		print "<td width=25%><a href=\"edit_nuser.cgi?",
-		      "index=$i\">$it$users[$i]->{'user'}$unit</a></td>\n";
-		print "</tr>\n" if ($i%4 == 3);
+		push(@grid, &ui_link("edit_nuser.cgi?index=$i",
+				     $it.$users[$i]->{'user'}.$unit));
 		}
-	while($i++%4) { print "<td width=25%></td>\n"; }
-	print "</table></td></tr></table>\n";
+	print &ui_grid_table(\@grid, 4, 100, undef, undef,
+			     $text{'eauth_pusers'});
 	}
 else {
 	print "<b>$text{'eauth_nopusers'}</b> <p>\n";
 	}
-print "<a href=\"edit_nuser.cgi?new=1\">$text{'eauth_addpuser'}</a><p>\n";
+print &ui_links_row([ &ui_link("edit_nuser.cgi?new=1",
+			       $text{'eauth_addpuser'}) ]);
 
 &ui_print_footer("", $text{'eauth_return'});
 
