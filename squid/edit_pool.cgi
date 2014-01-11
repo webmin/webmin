@@ -155,5 +155,5 @@ else {
 	}
 return &ui_textbox($name."_n", $value > 0 ? $value/$ud[$u] : $value, 8)." ".
        &ui_select($name."_u", $u,
-		  [ map { [ $ud[$_], $text{'pool_unit'.$_} ] } (0..$#ud) ]);
+		  [ map { [ $_, $text{'pool_unit'.$_} ] } (0..$#ud) ]);
 }

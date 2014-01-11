@@ -99,8 +99,8 @@ else {
 	my $u2 = $in{$name."_2_n"};
 	$u1 =~ /^\d+$/ || $u1 == -1 || &error(&text('pool_elimit1', $u1));
 	$u2 =~ /^\d+$/ || $u2 == -1 || &error(&text('pool_elimit2', $u2));
-	$u1 = int($u1 * $ud[$in{"$_[0]_1_u"}]);
-	$u2 = int($u2 * $ud[$in{"$_[0]_2_u"}]);
+	$u1 = int($u1 * $ud[$in{$name."_1_u"}]);
+	$u2 = int($u2 * $ud[$in{$name."_2_u"}]);
 	return "$u1/$u2";
 	}
 }
