@@ -100,7 +100,7 @@ else {
 		close($fh3);
 		}
 	}
-close(CAL);
+close($fh2);
 
 # Put the calamaris output into a nice webmin like table.
 my $date = &make_date(time());
@@ -109,7 +109,7 @@ print &ui_table_start(&text('calamaris_gen', $date), undef, 2);
 # Get the output
 my $fh4;
 open($fh4, $temp);
-my $html;
+my $html = "";
 if ($config{'cal_fmt'} eq 'm') {
 	$html = "<pre>";
 	while(<$fh4>) {
