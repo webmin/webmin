@@ -31,3 +31,4 @@ desc_no=WU-FTP tjener
 longdesc_pl=Konfiguracja dostêpu, anonimowego FTP i innych opcji WU-FTPd.
 longdesc_ms_MY=Mengkonfigurasi kawalan capaian, anonymous FTP dan pilihan lain WU-ftpd.
 desc_ms_MY=Pelayan WU-FTP
+longdesc_de=Konfiguriert Zugriffskontrolle, anonyme FTP und andere Optionen von WU-FTPd.

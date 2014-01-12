@@ -23,9 +23,9 @@ index_nofile=Datei '$1' existiert nicht - pr&#252;fe die <a href="/config.cgi?tc
 index_none=Nichts
 index_norule=Bisher wurde keine Regeln in der <tt>$1</tt> definiert.
 index_return=Index
-index_service=D&#228;mon
-index_title=TCP Wrappers
+index_service=Daemon
+index_title=TCP-Wrappers
 save_ecmd=Befehlseingaben enthalten ung&#252;ltige Zeichen
 save_ehost=Hosteingaben enthalten ung&#252;ltige Zeichen
 save_errtitle=Fehler beim Speichern der Regel
-save_eservice=D&#228;monname enth&#228;lt fehlerhafte Zeichen
+save_eservice=Daemonname enth&#228;lt fehlerhafte Zeichen

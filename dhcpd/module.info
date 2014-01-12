@@ -32,3 +32,4 @@ desc_sk.UTF-8=DHCP Server
 desc_no=DHCP tjener
 longdesc_ms_MY=Mengurus perkongsian rangkaian, subnet, dan grup untuk ISC DHCPD.
 desc_ms_MY=Pelayan DHCP
+longdesc_de=Verwaltet freigegebene Netzwerke, Subnetze, Hosts und Gruppen f&#252;r ISC DHCPD.
