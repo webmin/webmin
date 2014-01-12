@@ -50,20 +50,20 @@ if ($squid_version >= 2.5) {
 	print &ui_table_hr();
 	my %digest = map { $_->{'values'}->[1], $_->{'values'} }
 			grep { $_->{'values'}->[0] eq 'digest' } @auth;
-	my @p = @{$digest{'program'} || []};
-	my $m = @p ? 1 : 0;
+	@p = @{$digest{'program'} || []};
+	$m = @p ? 1 : 0;
 	print &ui_table_row($text{'authparam_dprogram'},
 		&ui_radio("d_auth_mode", $m,
 			  [ [ 0, $text{'none'} ],
 			    [ 1, &ui_filebox("d_auth",
 				$m == 1 ? join(" ", @p[2..$#p]) : "", 40) ] ]));
 
-	my $c = $digest{'children'}->[2];
+	$c = $digest{'children'}->[2];
 	print &ui_table_row($text{'eprogs_noap'},
 		&ui_opt_textbox("d_children", $c, 5, $text{'default'}));
 
-	my @r = @{$digest{'realm'} || []};
-	my $r = join(" ", @r[2..$#r]);
+	@r = @{$digest{'realm'} || []};
+	$r = join(" ", @r[2..$#r]);
 	print &ui_table_row($text{'eprogs_realm'},
 		&ui_opt_textbox("d_realm", $r, 40, $text{'default'}));
 
@@ -72,23 +72,23 @@ if ($squid_version >= 2.5) {
 	# Show NTML authentication options
 	my %ntlm = map { $_->{'values'}->[1], $_->{'values'} }
 			grep { $_->{'values'}->[0] eq 'ntlm' } @auth;
-	my @p = @{$ntlm{'program'} || []};
-	my $m = @p ? 1 : 0;
+	@p = @{$ntlm{'program'} || []};
+	$m = @p ? 1 : 0;
 	print &ui_table_row($text{'authparam_nprogram'},
 		&ui_radio("n_auth_mode", $m,
 			  [ [ 0, $text{'none'} ],
 			    [ 1, &ui_filebox("n_auth",
 				$m == 1 ? join(" ", @p[2..$#p]) : "", 40) ] ]));
 
-	my $c = $ntlm{'children'}->[2];
+	$c = $ntlm{'children'}->[2];
 	print &ui_table_row($text{'eprogs_noap'},
 		&ui_opt_textbox("n_children", $c, 5, $text{'default'}));
 
-	my $r = $ntlm{'max_challenge_reuses'}->[2];
+	$r = $ntlm{'max_challenge_reuses'}->[2];
 	print &ui_table_row($text{'authparam_reuses'},
 		&ui_opt_textbox("n_reuses", $r, 5, $text{'default'}));
 
-	my @t = @{$ntlm{'max_challenge_lifetime'} || []};
+	@t = @{$ntlm{'max_challenge_lifetime'} || []};
 	print &ui_table_row($text{'authparam_lifetime'},
 		&ui_radio("n_ttl_def", @t ? 0 : 1,
 			  [ [ 1, $text{'default'} ],
