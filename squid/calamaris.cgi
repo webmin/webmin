@@ -82,7 +82,7 @@ if ($config{'cal_max'}) {
 			open($fh3, "tail -$left $f->[0] |");
 			}
 		while(<$fh3>) {
-			print CAL $_;
+			print $fh2 $_;
 			$lnum++;
 			}
 		close($fh3);
