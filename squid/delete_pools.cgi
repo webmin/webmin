@@ -1,25 +1,28 @@
 #!/usr/local/bin/perl
 # Delete a bunch of delay pools
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 &error_setup($text{'dpool_err'});
 $access{'delay'} || &error($text{'delay_ecannot'});
 &ReadParse();
-@d = split(/\0/, $in{'d'});
+my @d = split(/\0/, $in{'d'});
 @d || &error($text{'dpool_enone'});
 
 # Get the current settings
 &lock_file($config{'squid_conf'});
-$conf = &get_config();
-@pools = &find_config("delay_class", $conf);
-@params = &find_config("delay_parameters", $conf);
-@access = &find_config("delay_access", $conf);
-$pools = &find_config("delay_pools", $conf);
+my $conf = &get_config();
+my @pools = &find_config("delay_class", $conf);
+my @params = &find_config("delay_parameters", $conf);
+my @access = &find_config("delay_access", $conf);
+my $pools = &find_config("delay_pools", $conf);
 
 # Do the deletion, highest first
-foreach $d (sort { $b <=> $a } @d) {
-	($pool) = grep { $_->{'values'}->[0] == $d } @pools;
-	($param) = grep { $_->{'values'}->[0] == $d } @params;
+foreach my $d (sort { $b <=> $a } @d) {
+	my ($pool) = grep { $_->{'values'}->[0] == $d } @pools;
+	my ($param) = grep { $_->{'values'}->[0] == $d } @params;
 	@access = grep { $_->{'values'}->[0] != $d } @access;
 	@pools = grep { $_ ne $pool } @pools;
 	@params = grep { $_ ne $param } @params;

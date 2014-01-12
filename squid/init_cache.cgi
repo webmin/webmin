@@ -2,27 +2,30 @@
 # init_cache.cgi
 # Initialize the cache by running squid with the -z option
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 $access{'rebuild'} || &error($text{'icache_ecannot'});
 &ReadParse();
-$whatfailed = $text{'icache_ftic'};
+&error_setup($text{'icache_ftic'});
 
 # set user to run squid as..
 &lock_file($config{'squid_conf'});
-$conf = &get_config();
+my $conf = &get_config();
 if (!$in{'nouser'}) {
 	$in{'user'} || &error($text{'icache_ymcautrsa'});
-	@uinfo = getpwnam($in{'user'});
+	my @uinfo = getpwnam($in{'user'});
 	scalar(@uinfo) || &error($text{'icache_euser'});
-	@ginfo = getgrgid($uinfo[3]);
+	my @ginfo = getgrgid($uinfo[3]);
 	if ($squid_version < 2) {
-		$dir = { 'name' => 'cache_effective_user',
-			 'values' => [ $in{'user'}, $ginfo[0] ] };
+		my $dir = { 'name' => 'cache_effective_user',
+			    'values' => [ $in{'user'}, $ginfo[0] ] };
 		&save_directive($conf, "cache_effective_user", [ $dir ]);
 		}
 	else {
-		$dir = { 'name' => 'cache_effective_user',
-			 'values' => [ $in{'user'} ] };
+		my $dir = { 'name' => 'cache_effective_user',
+			    'values' => [ $in{'user'} ] };
 		&save_directive($conf, "cache_effective_user", [ $dir ]);
 		$dir = { 'name' => 'cache_effective_group',
 			 'values' => [ $ginfo[0] ] };
@@ -34,19 +37,13 @@ if (!$in{'nouser'}) {
 
 # Stop squid (if running)
 &ui_print_unbuffered_header(undef, $text{'icache_title'}, "");
-if ($pidstruct = &find_config("pid_filename", $conf)) {
-	$pidfile = $pidstruct->{'values'}->[0];
-	}
-else { $pidfile = $config{'pid_file'}; }
-if (open(PID, $pidfile)) {
-	<PID> =~ /(\d+)/; $pid = $1;
-	close(PID);
-	}
+my $pid = &is_squid_running();
+my $stopped = 0;
 if ($pid && kill(0, $pid)) {
 	print "<p>$text{'clear_stop'}<br>\n";
 	&system_logged("$config{'squid_path'} -f $config{'squid_conf'} ".
 	               "-k shutdown >/dev/null 2>&1");
-	for($i=0; $i<40; $i++) {
+	for(my $i=0; $i<40; $i++) {
 		if (!kill(0, $pid)) { last; }
 		sleep(1);
 		}
@@ -55,35 +52,36 @@ if ($pid && kill(0, $pid)) {
 	}
 
 # Initialize the cache
-($user, $group) = &get_squid_user($conf);
+my ($user, $group) = &get_squid_user($conf);
 if ($user) {
-	foreach $c (split(/\s+/, $in{'caches'})) {
-		mkdir($c, 0755);
+	foreach my $c (split(/\s+/, $in{'caches'})) {
+		&make_dir($c, 0755);
 		}
 	}
 &chown_files($user, $group, $conf);
-$cmd = "$config{'squid_path'} -f $config{'squid_conf'} -z";
+my $cmd = "$config{'squid_path'} -f $config{'squid_conf'} -z";
 print "<p>", &text('icache_itscwtc',$cmd), "<br>\n";
 print "<pre>\n";
 &additional_log('exec', undef, $cmd);
-open(INIT, "$cmd 2>&1 |");
-while(<INIT>) {
-	print;
+my $fh;
+open($fh, "$cmd 2>&1 |");
+while(<$fh>) {
+	print &html_escape($_);
 	}
-close(INIT);
+close($fh);
 print "</pre>\n";
 
 # Try to re-start squid (if it was running before)
 if ($stopped) {
-	$temp = &transname();
+	my $temp = &transname();
 	&system_logged("$config{'squid_path'} -sY -f $config{'squid_conf'} >$temp 2>&1 </dev/null &");
 	sleep(3);
-	$errs = `cat $temp`;
+	my $errs = &read_file_contents($temp);
 	unlink($temp);
 	if ($errs) {
 		&system_logged("$config{'squid_path'} -k shutdown -f $config{'squid_conf'} >/dev/null 2>&1");
 		print "$text{'clear_failrestart'}<br>\n";
-		print "<pre>$errs</pre>\n";
+		print "<pre>".&html_escape($errs)."</pre>\n";
 		}
 	}
 
