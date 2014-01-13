@@ -29,8 +29,8 @@ if ($in{'enable'}) {
 	my $vfunc = "webmin::parse_twofactor_form_".
 		    $miniserv{'twofactor_provider'};
 	my $details;
-	if (defined(&$vfunc)) {
-		$details = &$vfunc(\%in, $user);
+	if (defined(&{\&{$vfunc}})) {
+		$details = &{\&{$vfunc}}(\%in, $user);
 		&error($details) if (!ref($details));
 		}
 
@@ -41,7 +41,7 @@ if ($in{'enable'}) {
 	# Register user
 	print &text('twofactor_enrolling', $prov->[1]),"<br>\n";
 	my $efunc = "webmin::enroll_twofactor_".$miniserv{'twofactor_provider'};
-	my $err = &$efunc($details, $user);
+	my $err = &{\&{$efunc}}($details, $user);
 	if ($err) {
 		# Failed!
 		print &text('twofactor_failed', $err),"<p>\n";
@@ -52,8 +52,8 @@ if ($in{'enable'}) {
 		# Print provider-specific message
 		my $mfunc = "webmin::message_twofactor_".
 			    $miniserv{'twofactor_provider'};
-		if (defined(&$mfunc)) {
-			print &$mfunc($user);
+		if (defined(&{\&{$mfunc}})) {
+			print &{\&{$mfunc}}($user);
 			}
 
 		# Save user

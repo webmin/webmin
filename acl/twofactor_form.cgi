@@ -55,7 +55,7 @@ else {
 		    $miniserv{'twofactor_provider'};
 	if (defined(&$ffunc)) {
 		print &ui_table_start($text{'twofactor_header'}, undef, 2);
-		print &$ffunc($user);
+		print &{\&{$ffunc}}($user);
 		print &ui_table_end();
 		}
 	@buts = ( [ "enable", $text{'twofactor_enable'} ] );
