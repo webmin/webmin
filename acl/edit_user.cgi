@@ -363,7 +363,7 @@ foreach my $c (sort { $b cmp $a } @cats) {
 				# Show link for editing ACL
 				$label = ui_link("edit_acl.cgi?" .
 				     "mod=" . urlize($m->{'dir'}) .
-				     "&group=". urlize($in{'group'}),
+				     "&user=". urlize($in{'user'}),
 				     $m->{'desc'})  . "\n";
 				}
 			else {
