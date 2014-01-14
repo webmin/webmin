@@ -16,7 +16,7 @@ our @caseless_acl_types = ( "url_regex", "urlpath_regex", "proxy_auth_regex",
 			    "srcdom_regex", "dstdom_regex", "ident_regex" );
 
 # Get the squid version
-our $squid_version = &read_file_contents("$module_config_directory/version");
+our $squid_version = &read_file_contents("$module_config_directory/version") || 0;
 $squid_version =~ s/\r|\n//g;
 
 # choice_input(text, name, &config, default, [display, option]+)
