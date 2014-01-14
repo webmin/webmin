@@ -331,7 +331,7 @@ foreach my $m (@mounted) {
 			# on the same directory.
 			next;
 			}
-		my @st = stat($m->[1]);
+		my @st = stat($m->[0]);
 		if (@st && $donedevno{$st[0]}++) {
 			# Don't double-count same filesystem by device number
 			next;
