@@ -218,8 +218,8 @@ my %miniserv;
 
 # Add groups from local files
 if ( -r "$config_directory/webmin.groups" ) {
-open(GROUPS, "$config_directory/webmin.groups");
-while(my $l = <GROUPS>) {
+my $lref = &read_file_lines("$config_directory/webmin.groups", 1);
+foreach my $l (@$lref) {
 	$l =~ s/\r|\n//g;
 	my @g = split(/:/, $l);
 	if (@g) {
@@ -232,7 +232,6 @@ while(my $l = <GROUPS>) {
 		push(@rv, $group);
 		}
 	}
-close(GROUPS);
 }
 
 # If a user DB is enabled, get groups from it too
@@ -999,7 +998,7 @@ else {
 	&lock_file("$config_directory/webmin.groups");
 	my $fh = "GROUP";
 	&open_readfile($fh, ">>$config_directory/webmin.groups");
-	print $fh &group_line($group),"\n";
+	&print_tempfile($fh, &group_line($group),"\n");
 	close($fh);
 	&unlock_file("$config_directory/webmin.groups");
 	}
