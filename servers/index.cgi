@@ -33,8 +33,7 @@ if (@servers && $config{'display_mode'}) {
 		$text{'index_os'} ], 100);
 	foreach my $s (@servers) {
 		my @cols;
-		my $table =
-			"<table cellpadding=0 cellspacing=0 width=100%><tr>\n";
+		my $table = "<table cellpadding=0 cellspacing=0 width=100%><tr>\n";
 		if (!$access{'links'} || !$s->{'port'}) {
 			$table .= "<td>\n";
 			$table .= ($s->{'realhost'} || $s->{'host'});
@@ -42,23 +41,26 @@ if (@servers && $config{'display_mode'}) {
 			$table .= "</td>\n";
 			}
 		else {
-            my $link = "";
+			my $link = "";
 			if ($s->{'user'} || $s->{'autouser'}) {
-                $link = "link.cgi/".$s->{'id'};
+				$link = "link.cgi/".$s->{'id'}."/";
 				}
 			else {
-                $link = &make_url($s);
+				$link = &make_url($s);
 				}
-            $table .= "<td>\n";
-			$table .= &ui_link($link, ($s->{'realhost'} || $s->{'host'} ).":".$s->{'port'}, undef, "target=_top");
-            $table .= "</td>\n";
+		    	$table .= "<td>\n";
+			$table .= &ui_link($link, ($s->{'realhost'} || $s->{'host'} ).
+					   ":".$s->{'port'}, undef, "target=_top");
+			$table .= "</td>\n";
 			}
 		$table .= "<td align=right>";
 		if ($s->{'autouser'} && &logged_in($s)) {
-			$table .= &ui_link("logout.cgi?id=".$s->{'id'}, "(".$text{'index_logout'}.")");
+			$table .= &ui_link("logout.cgi?id=".$s->{'id'},
+					   "(".$text{'index_logout'}.")");
 			}
 		if ($access{'edit'}) {
-			$table .= &ui_link("edit_serv.cgi?id=".$s->{'id'}, "(".$text{'index_edit'}.")");
+			$table .= &ui_link("edit_serv.cgi?id=".$s->{'id'},
+					   "(".$text{'index_edit'}.")");
 			}
 		$table .= "</td></tr></table>\n";
 		push(@cols, $table);
