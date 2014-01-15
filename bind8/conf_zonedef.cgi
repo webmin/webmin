@@ -118,6 +118,7 @@ print &ui_table_start($text{'zonedef_msg2'}, "width=100%", 4);
 
 print &addr_match_input($text{'zonedef_transfer'}, "allow-transfer", $mems);
 print &addr_match_input($text{'zonedef_query'}, "allow-query", $mems);
+print &addr_match_input($text{'master_notify2'}, "allow-notify", $mems);
 
 print &ignore_warn_fail($text{'zonedef_cmaster'}, 'master', $check{'master'});
 print &ignore_warn_fail($text{'zonedef_cslave'}, 'slave', $check{'slave'});

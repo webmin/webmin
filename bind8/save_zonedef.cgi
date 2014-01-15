@@ -18,6 +18,7 @@ foreach $c ("master", "slave", "response") {
 &save_directive($options, 'check-names', \@check, 1);
 &save_addr_match("allow-transfer", $options, 1);
 &save_addr_match("allow-query", $options, 1);
+&save_addr_match("also-notify", $options, 1);
 &save_choice("notify", $options, 1);
 
 $in{'refresh'} =~ /^\d+$/ || &error(&text('master_erefresh', $in{'refresh'}));
