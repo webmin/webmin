@@ -44,6 +44,9 @@ foreach my $m (&list_module_infos()) {
 	}
 my @canulist = grep { &can_edit_user($_->{'name'}, \@glist) } @ulist;
 my ($form, $shown_users);
+my @gbut = @glist ? ( undef, [ 'joingroup', $text{'index_joingroup'},
+		&ui_select("group", undef, [ map { $_->{'name'} } @glist ]) ] )
+		  : ( );
 if (!@canulist) {
 	# If no users, only show section heading if can create
 	if ($access{'create'}) {
@@ -61,7 +64,8 @@ elsif ($config{'display'}) {
 	&show_name_table(\@canulist, "edit_user.cgi",
 			 $access{'create'} ? $text{'index_create'} : undef,
 			 $text{'index_users'}, "user");
-	print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
+	print &ui_form_end([ [ "delete", $text{'index_delete'} ],
+			     @gbut ]);
 	$shown_users = 1;
 	$form++;
 	}
@@ -101,7 +105,8 @@ else {
 	print &ui_columns_end();
 	print &ui_links_row(\@rowlinks);
 	if (!$config{'select'}) {
-		print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
+		print &ui_form_end([ [ "delete", $text{'index_delete'} ],
+				     @gbut ]);
 		}
 	$shown_users = 1;
 	$form++;

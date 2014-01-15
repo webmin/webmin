@@ -1,5 +1,5 @@
 #!/usr/local/bin/perl
-# Delete a bunch of Webmin users
+# Delete a bunch of Webmin users, or add them to a group
 
 use strict;
 use warnings;
@@ -21,7 +21,59 @@ foreach my $user (@d) {
 	$uinfo->{'readonly'} && &error($text{'udeletes_ereadonly'});
 	}
 
-if ($in{'confirm'}) {
+if ($in{'joingroup'}) {
+	# Add users to a group
+	my $newgroup = &get_group($in{'group'});
+	foreach my $user (@d) {
+		my $uinfo = &get_user($user);
+		next if (!$uinfo);
+		next if (&indexof($user, @{$newgroup->{'members'}}) >= 0);
+
+		# Remove from old group, if any
+		my $oldgroup = &get_users_group($user);
+		if ($oldgroup) {
+			$oldgroup->{'members'} =
+				[ grep { $_ ne $user }
+				  @{$oldgroup->{'members'}} ];
+			&modify_group($oldgroup->{'name'}, $oldgroup);
+			}
+
+		# Add to new group
+		push(@{$newgroup->{'members'}}, $user);
+		&modify_group($newgroup->{'name'}, $newgroup);
+
+		my @mods = @{$uinfo->{'modules'}};
+		if ($oldgroup) {
+			# Remove modules from the old group
+			@mods = grep { &indexof($_, @{$oldgroup->{'modules'}})
+				       < 0 } @mods;
+			}
+
+		if ($newgroup) {
+			# Add modules from group to list
+			my @ownmods;
+			foreach my $m (@mods) {
+				push(@ownmods, $m) if (&indexof($m,
+					@{$newgroup->{'modules'}}) < 0);
+				}
+			@mods = &unique(@mods, @{$newgroup->{'modules'}});
+			$uinfo->{'ownmods'} = \@ownmods;
+
+			# Copy ACL files for group
+			&copy_group_user_acl_files($in{'group'}, $user,
+				      [ @{$newgroup->{'modules'}}, "" ]);
+			}
+		$uinfo->{'modules'} = \@mods;
+
+		# Save the user
+		&modify_user($user, $uinfo);
+		}
+
+	&webmin_log("joingroup", "users", scalar(@d),
+		    { 'group' => $in{'group'} });
+	&redirect("");
+	}
+elsif ($in{'confirm'}) {
 	# Do it
 	foreach my $user (@d) {
 		&delete_user($user);

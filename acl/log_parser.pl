@@ -40,6 +40,9 @@ elsif ($action eq 'delete') {
 		return &text('log_delete'.$g, "<tt>$object</tt>");
 		}
 	}
+elsif ($action eq 'joingroup') {
+	return &text('log_joingroup', $object, $p->{'group'});
+	}
 elsif ($action eq 'acl') {
 	return &text('log_acl', "<tt>$object</tt>",
 		     "<i>".&html_escape($p->{'moddesc'})."</i>");

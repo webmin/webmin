@@ -24,6 +24,7 @@ index_unix=Configure Unix User Authentication
 index_sessions=View Login Sessions
 index_rbac=Setup RBAC
 index_delete=Delete Selected
+index_joingroup=Add To Group:
 index_eulist=Failed to list users : $1
 index_eglist=Failed to list groups : $1
 
@@ -230,6 +231,7 @@ log_delete_g=Deleted Webmin group $1
 log_switch=Switched to Webmin user $1
 log_delete_users=Deleted $1 Webmin users
 log_delete_groups=Deleted $1 Webmin groups
+log_joingroup=Added $1 Webmin users to group $2
 log_pass=Changed password restrictions
 log_unix=Changed unix user authentication
 log_sync=Changed unix user synchronization

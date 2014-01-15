@@ -62,3 +62,5 @@ Added support for two-factor authentication using Authy or Google Authenticator.
 ---- Changes since 1.660 ----
 Converted all pages to use the common Webmin UI library for a more consistent interface.
 Made all code Perl strict and warnings compliant.
+---- Changes since 1.670 ----
+Added a button for adding multiple Webmin users to a group.

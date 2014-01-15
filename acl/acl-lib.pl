@@ -1715,6 +1715,22 @@ foreach my $g (&list_groups()) {
 	}
 }
 
+=head2 get_users_group(username)
+
+Returns the group a user is in, if any
+
+=cut
+sub get_users_group
+{
+my ($username) = @_;
+foreach my $g (&list_groups()) {
+        my @mems = @{$g->{'members'} || []};
+        if (&indexof($username, @mems) >= 0) {
+		return $g;
+		}
+	}
+}
+
 =head2 check_password_restrictions(username, password)
 
 Checks if some new password is valid for a user, and if not returns
