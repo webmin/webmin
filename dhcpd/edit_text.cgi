@@ -10,18 +10,13 @@ $access{'noconfig'} && &error($text{'text_ecannot'});
 $conf = &get_config();
 &ui_print_header($text{'text_editor'}, $text{'text_title'}, "");
 
-open(FILE, $config{'dhcpd_conf'});
-while(<FILE>) {
-	push(@lines, &html_escape($_));
-	}
-close(FILE);
-
+my $conftext = &read_file_contents($config{'dhcpd_conf'});
 if (!$access{'ro'}) {
 	print &text('text_desc', "<tt>$file</tt>"),"<p>\n";
 	}
 
 print &ui_form_start("save_text.cgi", "form-data");
-print &ui_textarea("text", join("", @lines), 20, 80);
+print &ui_textarea("text", $conftext, 20, 80);
 print "<p>";
 print &ui_submit($text{'save'})."&nbsp;".&ui_reset($text{'text_undo'});
 print &ui_form_end(undef,undef,1);
