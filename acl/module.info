@@ -38,3 +38,4 @@ desc_pl.UTF-8=Użytkownicy Webmina
 desc_sk.UTF-8=Užívatelia Webminu
 longdesc_ms_MY=Cipta pengguna Webmin dan konfigurasikan modul dan ciri-ciri yang dibenarkan akses.
 desc_ms_MY=Pengguna Webmin
+longdesc_de=Erstellt Webmin-Benutzer und konfiguriert, auf welche Module und Funktionen diese berechtigt sind, zugreifen.
