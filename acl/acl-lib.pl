@@ -997,7 +997,7 @@ else {
 	# Adding to local files
 	&lock_file("$config_directory/webmin.groups");
 	my $fh = "GROUP";
-	&open_readfile($fh, ">>$config_directory/webmin.groups");
+	&open_tempfile($fh, ">>$config_directory/webmin.groups");
 	&print_tempfile($fh, &group_line($group),"\n");
 	close($fh);
 	&unlock_file("$config_directory/webmin.groups");
