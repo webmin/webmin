@@ -50,11 +50,12 @@ if (!$skip_upgrade) {
 	if ($mode eq "gentoo") {
 		push(@opts, [ 4, $text{'upgrade_emerge'} ]);
 		}
-	elsif ($mode eq "sun-pkg") {
+	elsif ($mode ne "sun-pkg") {
 		push(@opts, [ 2, $text{'upgrade_ftp'} ]);
 		}
 	print &ui_table_row($text{'upgrade_src'},
-		&ui_radio_table("source", $opts[$#opts]->[0], \@opts), undef, [ "valign=top","valign=top" ]);
+		&ui_radio_table("source", $opts[$#opts]->[0], \@opts), undef,
+				[ "valign=top","valign=top" ]);
 
 	@cbs = ( );
 	if (!$mode && !$dir) {
