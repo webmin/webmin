@@ -1388,12 +1388,19 @@ while(1) {
 		&http_error(400, "Bad Header $headline");
 		}
 	}
-if ($header{'x-forwarded-for'}) {
-	$loghost = $header{'x-forwarded-for'};
+
+# If a remote IP is given in a header (such as via a proxy), only use it
+# for logging unless trust_real_ip is set
+local $headerhost = $header{'x-forwarded-for'} ||
+		    $header{'x-real-ip'};
+if ($config{'trust_real_ip'}) {
+	$acpthost = $headerhost || $acpthost;
+	$loghost = $acpthost;
 	}
-elsif ($header{'x-real-ip'}) {
-	$loghost = $header{'x-real-ip'};
+else {
+	$loghost = $headerhost || $loghost;
 	}
+
 if (defined($header{'host'})) {
 	if ($header{'host'} =~ /^\[(.+)\]:([0-9]+)$/) {
 		($host, $port) = ($1, $2);
