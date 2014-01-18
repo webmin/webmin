@@ -199,6 +199,7 @@ users_authkeys_def=Standard (~/.ssh/authorized_keys)
 users_authkeys_set=Fil under hjemmekatalog
 users_banner=Pre-login meldingsfil
 users_banner_def=Ingen
+users_chal=Bruk utfordring-svar autentisering?
 users_dsa=Tillat DSA (SSH 2) autentisering?
 users_eauthkeys=Manglende eller ugyldig fil med autoriserte n&#248;kler
 users_ebanner=Manglende eller ugyldig pre-login meldingsfil

@@ -220,6 +220,7 @@ linux_noopts=No Options Available
 linux_normal=Normal
 linux_nosuid=Disallow setuid programs?
 linux_notail=Trade off space for speed?
+linux_nounix=Deaktiver CIFS Unix utvidelser?
 linux_nr_blocks=Maximum blocks available
 linux_nr_inodes=Maximum inodes available
 linux_other=Other device

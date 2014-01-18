@@ -479,6 +479,7 @@ usave_emkdir=kunne ikke opprette hjemmekatalog : $2
 usave_emove=kunne ikke flytte hjemmekatalog : $1
 usave_eoffice=kontor kan ikke inneholde tegnet :
 usave_eothers=Brukeren ble lagret, men det oppstod en feil i en annen modul : $1
+usave_epasswd_cmd=Kommando for passord-validering feilet
 usave_epasswd_dict=Passordet er et ordliste-ord
 usave_epasswd_min=Passordet m&#229; v&#230;re minst $1 tegn langt
 usave_epasswd_mindays=Passordet ble endret mindre enn $1 dager siden

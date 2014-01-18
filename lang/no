@@ -270,6 +270,7 @@ ui_checkmandatory=Ingenting var valgt
 ui_edate=Ugyldig dato
 ui_errors=Flere feil funnet :
 ui_etime=Ugyldig tid
+ui_filterbox=Type til filter..
 ui_mandatory=Dette feltet er obligatorisk
 ui_nothing=Ingenting oppgitt
 ui_paging=Viser radene $1 til $2 av $3

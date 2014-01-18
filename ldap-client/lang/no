@@ -122,6 +122,7 @@ index_econf=NSS-LDAP konfigurasjonsfilen $1 ble ikke funnet p&#229; systemet dit
 index_fix=Fiks ved &#229; lenke filer
 index_fixpam=<b>Advarsel</b> - Webmin har oppdaget to forskjellige LDAP konfigurasjonsfiler p&#229; systemet ditt. NSS-LDAP er konfigurert ved hjelp av $1, mens PAM-LDAP bruker $2.Dette kan for&#229;rsake uoverensstemmelser mellom de to tjenestene.
 index_ignore=Ikke vis denne meldingen
+index_ldapmod=LDAP klient
 index_return=modul indeks
 ldap_anon=anonym
 ldap_econf=Fant ikke LDAP klient konfigurasjonsfilen $1 p&#229; systemet ditt
