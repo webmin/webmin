@@ -28,6 +28,8 @@ access_emask='$1' no és una màscara de subxarxa vàlida
 access_ecidr='$1' no és un número CIDR vàlid
 access_eip='$1' no és una adreça IP completa
 access_eip6='$1' no és una adreça o xarxa IPv6 completa
+access_ecidr6='$1' no és una mida de xarxa IPv6 vàlida
+access_ecidr16=La mida '$1' de la xarxa IPv6 ha de ser divisible per 16
 access_ehost=No s'ha pogut trobar cap adreça per a '$1'
 access_eself=La teva adreça IP actual ($1) serà rebutjada
 access_always=Resol els noms de host a cada petició
@@ -59,6 +61,7 @@ bind_ipv6=Accepta connexions IPv6
 bind_eipv6=No es pot activar IPv6 a menys que s'instal·li el mòdul Perl $1
 bind_redirecting=S'està redireccionant al nou URL...
 bind_elsof=El nou port $1 ja està en ús per part d'un altre procés
+bind_eonsystem=L'adreça IP $1 no està activa en aquest sistema, així que no es pot utilitzar
 
 log_title=Registres
 log_desc=Webmin es pot configurar per escriure un registre d'impactes del servidor web, en el format estàndard CLF de fitxers de registre. Si el registre està activat, també pots triar si s'enregistren els noms de host o les adreces IP, i amb quina freqüència es neteja el fitxer de registre. Quan està activat, els registres s'escriuen al fitxer $1.
@@ -425,7 +428,6 @@ upgrade_title=Actualització de Webmin
 upgrade_desc=Aquest formulari permet actualitzar tota la instal·lació Webmin a una nova versió. Pots instal·lar-la des d'un fitxer local, un fitxer pujat, o des de la versió més recent de <a href=http://www.webmin.com/>www.webmin.com</a>. Igual que amb una actualització manual, es conservaran tots els valors de configuració i tots els mòduls de terceres parts.
 upgrade_descrpm=Aquest formulari permet actualitzar tota la instal·lació Webmin a una nova versió utilitzant l'opció d'actualització RPM. Pots instal·lar-la des d'un fitxer RPM local, un fitxer pujat, o des de la versió més recent de <a href=http://www.webmin.com/>www.webmin.com</a>. Igual que amb una actualització manual, es conservaran tots els valors de configuració i tots els mòduls de terceres parts.
 upgrade_descdeb=Aquest formulari permet actualitzar tota la instal·lació Webmin a una nova versió actualitzant el paquet Debian. Pots instal·lar-lo des d'un fitxer RPM local, un fitxer pujat, o des de la versió més recent de <a href=http://www.webmin.com/>www.webmin.com</a>. Igual que amb una actualització manual, es conservaran tots els valors de configuració i tots els mòduls de terceres parts.
-upgrade_desccaldera=Aquest formulari permet actualitzar tota la instal·lació Webmin a una nova versió utilitzant l'opció d'actualització RPM. Pots instal·lar-la des d'un fitxer RPM local, un fitxer pujat, o des de la versió més recent de Caldera.
 upgrade_descsolaris-pkg=Aquest formulari permet actualitzar tota la instal·lació Webmin a una nova versió eliminant el paquet Solaris actual i instal·lant-ne un de nou. Pots fer la instal·lació a partir d'un fitxer Solaris local, un fitxer pujat o la darrera versió de <a href=http://www.webmin.com/>www.webmin.com</a>. Igual que amb una actualització manual, es conservaran totes les configuracions i mòduls de tercers.
 upgrade_descsun-pkg=Aquest formulari permet actualitzar tota la instal·lació Webmin a una nova versió a partir del paquet Solaris proporcionat per Sun. Pots fer la instal·lació a partir d'un fitxer de paquet Solaris local o un fitxer pujat. Pots trobar els darrers paquets a <a href=http://www.sun.com/bigadmin/content/webmin/>http://www.sun.com/bigadmin/content/webmin/</a>. Igual que amb una actualització manual, es conservaran totes les configuracions i mòduls de tercers.
 upgrade_descgentoo=Aquest formulari et permet actualitzar tota la instal·lació de Webmin a una versió nova traient el paquet actual Gentoo Emerge i instal·lant-ne un de nou. Pots instal·lar-lo a partir d'un fitxer local, un fitxer pujat o a partir de la versió més recent del repositori de Gentoo. Igual que per a l'actualització manual, es conservaran tots els valors de configuració i tots els mòduls de terceres parts.
@@ -460,7 +462,6 @@ upgrade_setupdeb=S'està executant DPKG per actualitzar Webmin... Espera un momen
 upgrade_setuppackage=S'està executant pkgadd per actualitzar Webmin... Espera un minutet que acabi abans de continuar, si et plau
 upgrade_esolaris=L'actualització de Webmin no funciona quan s'ha instal·lat a partir d'un paquet Solaris. Fes l'actualització a mà, si et plau.
 upgrade_ezip=La característica d'actualització de Webmin's actualment no funciona si el tens instal·lat a Windows. Fes l'actualització manualment, si et plau.
-upgrade_ecaldera=No sembla que el fitxer RPM sigui la versió Caldera de Webmin.
 upgrade_eusermin=El fitxer és la versió $1 d'Usermin, no una actualització de Webmin.
 upgrade_updates=Hi ha $1 actualitzacions per a aquesta nova versió de Webmin. <a href='$2'>Fes clic aquí</a> per descarregar-les i instal·lar-les automàticament.
 upgrade_epackage=No és un paquet Solaris vàlid
@@ -484,6 +485,8 @@ upgrade_tabupgrade=Actualitza Webmin
 upgrade_tabgrants=Permisos del nou mòdul
 upgrade_tabupdate=Actualitza els mòduls
 upgrade_tabsched=Actualització planificada
+upgrade_src=Actualitza Webmin a partir de
+upgrade_opts=Opcions d'actualització
 
 newmod_desc=Quan s'actualitza Webmin, tots els mòduls de la versió nova es posaran a disposició d'un o més usuaris. Aquest formulari permet establir els usuaris que podran accedir als nous mòduls. Aquesta configuració s'aplicarà quan s'actualitzi des de la línia d'ordres d des del formulari superior.
 newmod_header=Accessos del Nou Mòdul
@@ -514,6 +517,8 @@ update_enosig=No s'ha pogut descarregar el fitxer de signatura per a les actuali
 update_ebadsig=La comprovació de la signatura ha fallat: $1
 update_enomodsig=No s'ha pogut descarregar el fitxer de signatura per al mòdul: $1
 update_ebadmodsig=La comprovació de la signatura del mòdul ha fallat: $1
+update_src=Actualitza els mòduls a partir de
+update_opts=Opcions d'actualització de mòduls
 
 ca_title=Autoritat Certificadora
 ca_old=Certificats existents
@@ -533,7 +538,7 @@ ca_issuer_o=Organització emissora
 ca_issuer_email=Adreça electrònica de l'emissor
 ca_type=Tipus de certificat
 ca_notafter=Vàlid fins
-ca_create=Configura l'autoritat certificadora
+ca_create=Configura l'Autoritat Certificadora
 ca_oldmsg1=El certifica CA que està utilitzant el servidor es mostra a sota. El pots canviar copiant i enganxant el certificat d'una altra CA, però tots els certificats que ja estiguin emesos deixaran de funcionar.
 ca_oldmsg2=Si ja has configurat una CA un un altre servidor Webmin, pots copiar-ne i enganxar-ne el certificat aquí sota, en lloc de configurar-lo de nou. Això permetrà els usuaris de l'altre servidor de ser reconeguts també per aquest.
 ca_err=No s'ha pogut configurar l'autoritat certificadora
@@ -548,15 +553,19 @@ ca_essl=La certificació SSL només es pot configurar quan el servidor web s'està 
 
 session_title=Autenticació
 session_desc1=Quan està activat, el temps límit de contrasenya protegeix el servidor Webmin d'atacs d'endevinació sistemàtica de contrasenyes, bo i afegint un retard entre intents fallits de connexió del mateix usuari, que augmenta progressivament.
-session_desc2=Quan s'activa l'autenticació de sessió, cada sessió de cada usuari serà registrada per Webmin, fent possible l'expulsió d'usuaris inactius. Tingues en compte que l'activació o desactivació de l'autenticació de sessió forçarà tots els usuaris a connectar-se un altre cop.
 session_header=Opcions d'autenticació i sessió
+session_ptimeout=Temps límit de contrasenyes
 session_pdisable=Desactiva el temps límit de contrasenya
 session_penable=Activa el temps límit de contrasenya
+session_pblock=Bloqueigs d'entrades fallides
 session_blockhost=Bloqueja els hosts amb més de $1 intents fallits de connexió durant $2 segons.
 session_blockuser=Bloqueja els usuaris amb més de $1 entrades fallides al llarg de $2 segons.
-session_syslog=Registra els hosts bloquejats, connexions i autenticacions fallides amb <tt>syslog</tt>
+session_syslog3=Registra les entrades fallides a <tt>syslog</tt>
+session_stype=Tipus d'autenticació
+session_sopts=Opcions d'autenticació
 session_disable=Desactiva l'autenticació de sessió
 session_enable=Activa l'autenticació de sessió
+session_local=Autenticació local
 session_localoff=Demana sempre usuari i contrasenya
 session_localon=Permet la connexió sense contrasenya als usuaris del host local
 session_logouttime=Expulsa automàticament després de $1 minuts d'inactivitat
@@ -573,17 +582,21 @@ session_hostname=Mostra el nom de host a la pantalla de connexió
 session_elsof=L'autenticació local requereix el programa <tt>lsof</tt>
 session_utmp=Registra les entrades i sortides a Utmp
 session_realname=Mostra el nom de host real en lloc del nom de l'URL
+session_pam=Origen de les contrasenyes
 session_pamon=Utilitza PAM per a autenticació Unix, si està disponible
 session_pamoff=No utilitzis mai PAM per a autenticació Unix
 session_pfile=Si PAM no està disponible o està desactivat, llegeix els usuaris i les contrasenyes del fitxer $1 columnes $2 i $3
+session_popts=Opcions de les contrasenyes
 session_pamconv=Suporta les converses PAM completes
 session_pamend=Passa l'estat PAM als altres mòduls
+session_cmddef=Canvi de contrasenya caducada
 session_cmddef1=Canvia les contrasenyes caducades PAM
 session_cmddef0=Canvia les contrasenyes amb l'ordre:
 session_ecmd=Hi falta l'ordre de canvi de contrasenya o bé és invàlid
 session_epasswd_file=Fitxer d'usuaris Unix invàlid
 session_epasswd_uindex=Hi falta l'índex d'usuaris o bé és invàlid
 session_epasswd_pindex=Hi falta l'índex de contrasenyes o bé és invàlid
+session_banner=Pàgina de preentrada
 session_banner1=Sense pàgina de preentrada
 session_banner0=Mostra el fitxer de preentrada
 session_ebanner=Hi falta el fitxer de preentrada o bé és invàlid
@@ -593,6 +606,7 @@ session_pmodedesc2=Política de caducitat de contrasenyes...
 session_pmode0=Denega sempre els usuaris amb contrasenyes caducades
 session_pmode1=Permet sempre els usuaris amb contrasenyes caducades
 session_pmode2=Força els usuaris amb contrasenyes caducades a introduir-ne una de nova
+session_md5=Format hash de contrasenyes
 session_md5off=Utilitza el xifratge <tt>crypt</tt> estàndard de Unix per a les contrasenyes de Webmin
 session_md5on=Utilitza el xifratge MD5 per a les contrasenyes de Webmin (permet contrasenyes més llargues)
 session_emd5mod=No es pot utilitzar el xifratge MD5 perquè el mòdul Perl $1 no està instal·lat.
@@ -614,6 +628,7 @@ categories_code=ID
 categories_name=Descripció mostrada
 categories_lang=Edita les categories en l'idioma:
 categories_langok=Canvia
+categories_custom=Personalització
 
 log_access=S'ha canviat el control d'accés IP
 log_bind=S'ha canviat el port i l'adreça
@@ -711,13 +726,6 @@ referers_none=Confia en els enllaços de referenciadors desconeguts
 referers_referer=Activa la verificació del referenciador
 referers_err=No s'han pogut desar els referenciadors
 referers_ehost='$1' no és un nom de host fiable vàlid
-
-syslet_title=Autodescàrrega de Syslets
-syslet_desc=Aquesta pàgina és per configurar la descàrrega i instal·lació automàtica de Syslets Eazel al servidor Webmin.
-syslet_auto=Descarrega els syslets automàticament
-syslet_base=URLs de base per a RPMs de syslets
-syslet_err=No s'han pogut desar les opcions dels syslets
-syslet_ebase=URL de base invàlid
 
 update_err=No s'han pogut actualitzar els mòduls
 update_eurl=Hi falta l'URL d'actualització o bé no és vàlid
@@ -923,12 +931,12 @@ debug_cron=Treballs en segon pla
 debug_inmods=Mòduls per als quals s'han d'escriure registres de depuració
 debug_emodules=No has seleccionat cap mòdul per depurar
 
-notif_passexpired=La teva contrasenya de Webmin ha expirat! Se t'obligarà a canviar-la a la propera connexió.
+notif_passexpired=La teva contrasenya de Webmin ha caducat! Se t'obligarà a canviar-la a la propera connexió.
 notif_passchange=La teva contrasenya de Webmin es va canviar per darrer cop el $1, i cal tornar-la a canviar abans de $2 dies.
 notif_passlock=La teva contrasenya de Webmin es va canviar per darrer cop el $1, i el teu compte quedarà bloquejat d'aquí a $2 dies si no la canvies.
 notif_changenow=Pots <a href='$1'>canviar la teva contrasenya ara</a> al mòdul de Canvi d'Idioma i Tema.
 notif_unixwarn=La teva contrasenya Unix es va canviar per darrer cop el $1, i cal tornar-la a canviar abans de $2 dies.
-notif_unixexpired=La teva contrasenya Unix ha expirat! Se t'obligarà a canviar-la a la propera connexió.
+notif_unixexpired=La teva contrasenya Unix ha caducat! Se t'obligarà a canviar-la a la propera connexió.
 notif_upgrade=Hi ha disponible la versió $1 de Webmin, però estàs executant la versió $2.
 notif_upgradeok=Actualitza Webmin Ara
 notif_updatemsg=Estan disponibles les $1 següents actualitzacions de mòduls de Webmin...
@@ -1057,4 +1065,5 @@ twofactor_secret=Clau secreta personal
 twofactor_secret1=Generada aleatòriament
 twofactor_secret0=Utilitza una clau de 16 caràcters
 twofactor_esecret=La clau secreta ha de tenir exactament 16 caràcters de llarg i ha de contenir només lletres i números
+twofactor_esession=L'autenticació de dos factors no es pot utilitzar si l'autenticació basada en sessió no està activa
 __norefs=1
