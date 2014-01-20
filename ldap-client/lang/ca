@@ -5,6 +5,7 @@ index_return=a l'índex de mòduls
 index_fixpam=<b>Atenció</b> - Webmin ha detectat dos fitxers de configuració LDAP separats al sistemat. NSS-LDAP està configurat utilitzant $1, mentre que PAM-LDAP utilitza $2. Això pot causar inconsistències entre els dos serveis.
 index_fix=Arregla-ho Enllaçant els Fitxers
 index_ignore=No Mostris Aquest Missatge
+index_ldapmod=Client LDAP
 
 server_title=Configuració del Servidor LDAP
 server_header=Servidor LDAP i opcions d'entrada

@@ -60,7 +60,9 @@ index_massupdate=Actualitza els Registres a les Seleccionades
 index_masscreate=Afegeix el Registre a les Seleccionades
 index_massrdelete=Suprimeix els Registres a les Seleccionades
 index_bind=BIND
-
+index_ewrongchroot=Atenció: El directori <i>chroot</i> $2 que Webmin creu que BIND està utilitzant pot ser incorrecte. No s'han trobat els fitxers de zona dels dominis $1.
+index_emissingchroot=Atenció: Webmin creu que BIND no està utilitzant un directori <i>chroot</i>, però aizò pot ser incorrecte. No s'han trobat els fitxers de zona dels dominis $1.
+index_checkconfig=Assegura't que el directori <i>chroot</i> està configurat correctament a la pàgina de <a href='$1'>configuració del mòdul</a>.
 master_title=Edició de Zona Mestra
 master_ecannot=No tens permís per editar aquesta zona
 master_egone=La zona $1 no existeix a cap vista
@@ -298,6 +300,7 @@ text_undo=Desfés
 text_ecannot=No tens permís per editar fitxers de registres
 text_none=No obstant, el fitxer està actualment buit, probablement perquè la zona encara no ha estat transferida des del servidor mestre.
 text_soa=Incrementa automàticament el número de série
+text_rawformat=Aquesta zona està en format binari pelat, així que no es pot mostrar com a text.
 
 restart_err=No s'ha pogut aplicar els canvis
 restart_ecannot=No tens permís per reiniciar BIND
@@ -1194,5 +1197,6 @@ xfer_doing=Provant la transferència de la zona esclava des de $1...
 xfer_failed=...des de $1: Ha fallat: $2
 xfer_done=...des de $1: Completat OK
 xfer_count=La prova de transferència ha obtingut correctament $1 registres des d'almenys un servidor de noms. Les transferències reals per part de BIND haurien de reeixir.
+xfer_none=Sembla que la prova de transferència ha reeixit, però de fet no ha obtingut cap registre!
 
 __norefs=1

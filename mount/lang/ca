@@ -385,6 +385,7 @@ linux_codepage=Pàgina de codis
 linux_iocharset=Joc de caràcters d'E/S
 linux_ecodepage=Hi falta la pàgina de codis o bé és invàlida
 linux_eiocharset=Hi falta el joc de caràcters d'E/S o bé és invàlid
+linux_nounix=Desactiva les extensions CIFS Unix
 
 log_mount=$3 muntat
 log_mount_l=$2 $1 muntat a $3
