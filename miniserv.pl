@@ -5346,7 +5346,7 @@ while(<$ptyfh>) {
 close($ptyfh);
 kill('KILL', $pid);
 waitpid($pid, 0);
-local ($ok) = ($out =~ /\(ALL\)\s+ALL|\(ALL\)\s+NOPASSWD:\s+ALL|\(ALL\s*:\s*ALL\)\s+ALL/ ? 1 : 0);
+local ($ok) = ($out =~ /\(ALL\)\s+ALL|\(ALL\)\s+NOPASSWD:\s+ALL|\(ALL\s*:\s*ALL\)\s+ALL|\(ALL\s*:\s*ALL\)\s+NOPASSWD:\s+ALL/ ? 1 : 0);
 
 # Update cache
 if ($PASSINw) {
