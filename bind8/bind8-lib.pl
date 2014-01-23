@@ -2,6 +2,7 @@
 # Common functions for bind8 config files
 
 BEGIN { push(@INC, ".."); };
+use File::Spec;
 use WebminCore;
 my $dnssec_tools_minver = 1.13;
 my $have_dnssec_tools = eval "require Net::DNS::SEC::Tools::dnssectools;";
@@ -1466,7 +1467,7 @@ return $_[0] if ($_[0] eq $config{'rndc_conf'});	# don't chroot rndc.conf
 if ($config{'no_pid_chroot'} && $_[1]) {
 	return $_[0];
 	}
-return $chroot.$_[0];
+return File::Spec->catfile($chroot,$_[0]);
 }
 
 # has_ndc(exclude-mode)
