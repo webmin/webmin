@@ -32,11 +32,13 @@ print &ui_table_row($text{'euser_u'},
 # Password
 if (%user) {
 	print &ui_table_row($text{'euser_p'},
-		&ui_opt_textbox("pass", undef, 30, $text{'euser_u1'}));
+		&ui_radio("pass_def", 1,
+			  [ [ 1, $text{'euser_u1'} ],
+		            [ 0, &ui_password("pass", undef, 30) ] ]));
 	}
 else {
 	print &ui_table_row($text{'euser_p'},
-		&ui_textbox("pass", undef, 30));
+		&ui_password("pass", undef, 30));
 	}
 
 # Enabled?
