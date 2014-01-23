@@ -88,7 +88,7 @@ if (@zones && $access{'zones'} eq '*' && !$access{'ro'}) {
 	my @missing;
 	foreach my $z (@zones) {
 		if ($z->{'type'} eq 'master' && $z->{'file'} &&
-		    !-r &make_chroot($z->{'file'})) {
+		    !-r &make_chroot(&absolute_path($z->{'file'}))) {
 			push(@missing, $z);
 			}
 		}
