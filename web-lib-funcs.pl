@@ -746,7 +746,12 @@ if ($pragma_no_cache || $gconfig{'pragma_no_cache'}) {
 	print "Cache-Control: no-store, no-cache, must-revalidate\n";
 	print "Cache-Control: post-check=0, pre-check=0\n";
 	}
-print "X-Frame-Options: SAMEORIGIN\n";
+if (!$gconfig{'no_frame_options'}) {
+	print "X-Frame-Options: SAMEORIGIN\n";
+	}
+if (!$gconfig{'no_content_security_policy'}) {
+	print "Content-Security-Policy: script-src 'self' 'unsafe-inline'\n";
+	}
 if (defined($_[0])) {
 	print "Content-type: text/html; Charset=$_[0]\n\n";
 	}
