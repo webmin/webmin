@@ -1,6 +1,9 @@
 #!/usr/local/bin/perl
 # Sets the URL cookie
 
+use strict;
+use warnings;
+our (%config, %text, %module_info, %in);
 require './tunnel-lib.pl';
 &ReadParse();
 &error_setup($text{'seturl_err'});

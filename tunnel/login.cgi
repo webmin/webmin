@@ -2,9 +2,13 @@
 # login.cgi
 # Store the username and password for a server in a cookie
 
+use strict;
+use warnings;
+our (%config, %text, %module_info, %in);
 require './tunnel-lib.pl';
+
 &ReadParse();
-$enc = &encode_base64($in{'user'}.":".$in{'pass'});
+my $enc = &encode_base64($in{'user'}.":".$in{'pass'});
 $enc =~ s/\r|\n//g;
 print "Set-Cookie: tunnel=$enc; path=/";
 if (uc($ENV{'HTTPS'}) eq 'ON') {

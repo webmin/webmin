@@ -1,13 +1,15 @@
 # tunnel-lib.pl
 # Common functions for the HTTP-tunnel module
 
+use strict;
+use warnings;
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
 
 sub fix_end_url {
-    my($url) = @_;
-    if ( $url =~ m/^(http|https):\/\/(\S+)$/ ) {
+    my ($url) = @_;
+    if ($url =~ m/^(http|https):\/\/(\S+)$/ ) {
         my $schema = $1."://";
         my $host = $2;
 
