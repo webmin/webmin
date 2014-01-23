@@ -82,6 +82,7 @@ if ($ENV{'PATH_INFO'}) {
 			}
 		@st = stat($file);
 		print "Content-length: $st[7]\n";
+		print "X-Content-Type-Options: nosniff\n";
 		print "Content-type: $type\n\n";
 		while(read(FILE, $buffer, 1000000)) {
 			print("$buffer");
