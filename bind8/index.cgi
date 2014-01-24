@@ -87,8 +87,9 @@ if ($need_create) {
 if (@zones && $access{'zones'} eq '*' && !$access{'ro'}) {
 	my @missing;
 	foreach my $z (@zones) {
-		if ($z->{'type'} eq 'master' && $z->{'file'} &&
-		    !-r &make_chroot(&absolute_path($z->{'file'}))) {
+                my $zonefile = &make_chroot(&absolute_path($z->{'file'}));
+                if ($z->{'type'} eq 'master' && $z->{'file'} && !-r $zonefile) {
+                        print STDERR "Missing chrooted zone file '${zonefile}'\n";
 			push(@missing, $z);
 			}
 		}
