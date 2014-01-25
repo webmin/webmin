@@ -1306,7 +1306,10 @@ elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 			}
 		else {
 			# Tell user the correct URL
-			&http_error(200, "Bad Request", "This web server is running in SSL mode. Try the URL <a href='$url'>$url</a> instead.<br>");
+			&http_error(200, "Document follows",
+				"This web server is running in SSL mode. ".
+				"Try the URL <a href='$url'>$url</a> ".
+				"instead.<br>");
 			}
 		}
 	elsif (ord(substr($reqline, 0, 1)) == 128 && !$use_ssl) {
