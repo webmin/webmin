@@ -2048,6 +2048,9 @@ if ($name && (-r "/etc/systemd/system/$name.service" ||
 	      -r "/etc/systemd/system/$name")) {
 	return "/etc/systemd/system";
 	}
+if (-d "/usr/lib/systemd/system") {
+	return "/usr/lib/systemd/system";
+	}
 return "/lib/systemd/system";
 }
 
