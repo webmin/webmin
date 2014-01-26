@@ -10,6 +10,7 @@ text_lists=0
 run_from_inetd=0
 sort_mode=0
 start_cmd=/etc/init.d/samba start || (/etc/init.d/nmbd start ; /etc/init.d/smbd start)
+restart_cmd=/etc/init.d/samba restart || (/etc/init.d/nmbd restart ; /etc/init.d/smbd restart)
 stop_cmd=/etc/init.d/samba stop || (/etc/init.d/nmbd stop ; /etc/init.d/smbd stop)
 smbgroupedit=/usr/bin/smbgroupedit
 pdbedit=/usr/bin/pdbedit
