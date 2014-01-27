@@ -13,3 +13,4 @@ desc_pl=Klaster - Polecenia pow³oki (Shell)
 desc_hu=Cluster shell parancsok
 desc_ms_MY=Kluster arahan Shell
 longdesc_ms_MY=Menjalankan arahan pada pelbagai pelayan serentak.
+longdesc_de=F&#252;hrt Befehle auf multiplen Server gleichzeitig aus.

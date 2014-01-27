@@ -16,3 +16,4 @@ desc_pl=Klaster - Zmiana hase³
 desc_hu=Cluster jelszavak módosítása
 longdesc_ms_MY=Menukar kata laluan serentak pada pelbagai sistem dalam kluster Webmin.
 desc_ms_MY=Kluster Tukar Kata laluan
+longdesc_de=&#196;ndert Passw&#246;rter auf multiplen Server gleichzeitig.
