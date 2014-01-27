@@ -96,9 +96,10 @@ print &ui_table_end();
 
 # Show times and days to run
 print &ui_table_start($text{'edit_when'}, "width=100%", 2);
-print &ui_table_row(undef, "<table border width=100%>".
-			   &capture_function_output(\&show_times_input, $job).
-			   "</table>", 2);
+print &ui_table_row(undef,
+	"<table border width=100%>".
+	&capture_function_output_tempfile(\&show_times_input, $job).
+	"</table>", 2);
 print &ui_table_end();
 
 if ($rangeable) {
