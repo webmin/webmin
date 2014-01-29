@@ -12,3 +12,4 @@ desc_no=Kerberos5
 desc_cz.UTF-8=Kerberos5
 desc_ms_MY=Kerberos5
 longdesc_ms_MY=Mengkonfigurasi klien Kerberos 5 pada sistem anda.
+longdesc_de=Konfiguriert den Kerberos 5 Client auf Ihrem System.

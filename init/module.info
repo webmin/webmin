@@ -36,3 +36,4 @@ desc_no=Oppstart og avstenging
 desc_hu=Betöltés és leállítás (Boot)
 longdesc_ms_MY=Skrip Persediaan untuk dijalankan pada masa boot dari /etc/init.d atau /etc/rc.local.
 desc_ms_MY=Bootup dan Shutdown
+longdesc_de=Setup-Skripte, die beim Booten von /etc/init.d oder /etc/rc.local ausgef&#252;hrt werden.
