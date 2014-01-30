@@ -118,6 +118,9 @@ this_server=this server
 delete_err=Failed to delete servers
 delete_enone=None selected
 delete_ecannot=You are not allowed to delete servers
+delete_title=Delete Servers
+delete_rusure=Are you sure you want to remove the $1 selected servers?
+delete_confirm=Delete Now
 
 auto_title=Automatically Find Servers
 auto_header=Automatic server registration options
