@@ -817,7 +817,7 @@ if ($config{'given'}) {
 		push(@classes, $config{'given_class'});
 		}
 	}
-if (&in_schema($schema, "gecos")) {
+if (&in_schema($schema, "gecos") && $config{'gecos'}) {
 	push(@props, "gecos", &remove_accents($in{'real'}));
 	}
 }

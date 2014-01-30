@@ -21,3 +21,4 @@ given_order=0
 imap_foldersep=.
 ldap_tls=0
 membox=0
+gecos=1
