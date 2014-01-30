@@ -873,13 +873,13 @@ return 1;
 # show_table_form(count)
 sub show_table_form
 {
-print &ui_columns_start([ $text{'field_name'}, $text{'field_type'},
+my $rv;
+$rv = &ui_columns_start([ $text{'field_name'}, $text{'field_type'},
 			  $text{'field_size'}, $text{'table_nkey'},
 			  $text{'field_auto'}, $text{'field_null'},
 			  $text{'field_unsigned'}, $text{'field_default'} ]);
-local $i;
-for($i=0; $i<$_[0]; $i++) {
-	local @cols;
+for(my $i=0; $i<$_[0]; $i++) {
+	my @cols;
 	push(@cols, &ui_textbox("field_$i", undef, 20));
 	push(@cols, &ui_select("type_$i", "", [ "", @type_list ]));
 	push(@cols, &ui_textbox("size_$i", undef, 10));
@@ -888,9 +888,10 @@ for($i=0; $i<$_[0]; $i++) {
 	push(@cols, &ui_checkbox("null_$i", 1, $text{'yes'}, 1));
 	push(@cols, &ui_checkbox("unsigned_$i", 1, $text{'yes'}, 0));
 	push(@cols, &ui_textbox("default_$i", undef, 20));
-	print &ui_columns_row(\@cols);
+	$rv .= &ui_columns_row(\@cols);
 	}
-print &ui_columns_end();
+$rv .= &ui_columns_end();
+return $rv;
 }
 
 # parse_table_form(&extrafields, tablename)
