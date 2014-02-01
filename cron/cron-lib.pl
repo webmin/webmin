@@ -750,6 +750,43 @@ else {
 	}
 }
 
+=head2 list_cron_specials()
+
+Returns a list of the names of special cron times, prefixed by an @ in crontab
+
+=cut
+sub list_cron_specials
+{
+return ('hourly', 'daily', 'weekly', 'monthly', 'yearly', 'reboot');
+}
+
+=head2 get_times_input(&job, [nospecial])
+
+Returns HTML for selecting the schedule for a cron job, defined by the first
+parameter which must be a hash ref returned by list_cron_jobs. Suitable for
+use inside a ui_table_start/end
+
+=cut
+sub get_times_input
+{
+return &theme_get_times_input(@_) if (defined(&theme_get_times_input));
+my ($job, $nospecial) = @_;
+
+if ($config{'vixie_cron'} && (!$nospecial || $job->{'special'})) {
+	# Allow selection of special @ times
+	my $sp = $job->{'special'} eq 'midnight' ? 'daily' :
+		 $job->{'special'} eq 'annually' ? 'yearly' : $job->{'special'};
+	my $specialsel = &ui_select("special", $sp,
+				[ map { [ $_, $text{'edit_special_'.$_} ] }
+				      &list_cron_specials() ]);
+	print &ui_table_row(undef,
+		&ui_radio("special_def", $job->{'special'} ? 1 : 0,
+			  [ [ 1, $text{'edit_special1'}." ".$specialsel ],
+			    [ 0, $text{'edit_special0'} ] ]), 2);
+	}
+# XXX
+}
+
 =head2 show_times_input(&job, [nospecial])
 
 Print HTML for inputs for selecting the schedule for a cron job, defined
