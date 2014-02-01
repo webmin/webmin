@@ -37,3 +37,4 @@ desc_pl.UTF-8=Lista serwerów Webmina
 desc_sk.UTF-8=Zoznam Webmin serverov
 longdesc_ms_MY=Memaparkan indeks pelayan Webmin yang lain untuk memudahkan pautan.
 desc_ms_MY=Indeks Pelayan Webmin
+longdesc_de=Zeigt einen Index von anderen Webmin-Server f&#252;r die einfache Vernetzung an.
