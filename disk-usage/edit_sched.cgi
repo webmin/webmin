@@ -14,14 +14,12 @@ print &ui_table_row($text{'sched_enabled'},
 			      [ [ 0, $text{'no'} ],
 				[ 1, $text{'sched_at'} ] ]));
 
-print "<tr> <td colspan=2><table border width=100%>\n";
 $job ||= { 'mins' => 0,
 	   'hours' => 0,
 	   'days' => '*',
 	   'months' => '*',
 	   'weekdays' => '*' };
-&cron::show_times_input($job);
-print "</table></td> </tr>\n";
+print &cron::get_times_input($job);
 
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
