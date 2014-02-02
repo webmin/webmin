@@ -169,8 +169,7 @@ else {
 		   'days' => "*/$config{'updays'}",
 		   'months' => '*',
 		   'weekdays' => '*' };
-	print &ui_table_row(undef,"<table width=100%>".
-		&capture_function_output(\&cron::show_times_input, $job, 1)."</table>", 2, [ "valign=top" ]);
+	print &cron::get_times_input($job, 1);
 	}
 
 print &ui_table_row($text{'update_opts'},
