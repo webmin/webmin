@@ -127,10 +127,7 @@ if ($cron) {
 			   'days' => '*',
 			   'months' => '*',
 			   'weekdays' => '*' };
-		print &ui_table_row(undef,
-			"<table border=2 width=100%>".
-			&capture_function_output(\&cron::show_times_input,$job).
-			"</table>", 2);
+		print &cron::get_times_input($job);
 		}
 	else {
 		# Simple Cron time input
