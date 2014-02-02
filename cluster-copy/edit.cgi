@@ -77,9 +77,7 @@ print &ui_table_row($text{'edit_email'},
 	    &ui_opt_textbox("email", $copy->{'email'}, 50, $text{'edit_none'}));
 
 # Cron times
-print "<tr> <td colspan=2><table border width=100%>\n";
-&cron::show_times_input($copy);
-print "</table></td> </tr>\n";
+print &cron::get_times_input($copy);
 
 print &ui_table_end();
 if ($in{'new'}) {
