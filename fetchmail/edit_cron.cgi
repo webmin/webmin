@@ -63,10 +63,7 @@ print &ui_table_row($text{'cron_enabled'},
 			      [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 
 $job ||= { 'special' => 'hourly' };
-print &ui_table_row(undef,
-	"<table>".
-	&capture_function_output(\&cron::show_times_input, $job).
-	"</table>");
+print &cron::get_times_input($job);
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'save'} ] ]);
