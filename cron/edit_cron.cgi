@@ -38,6 +38,7 @@ else {
 print &ui_form_start("save_cron.cgi");
 print &ui_hidden("new", $in{'new'});
 print &ui_hidden("idx", $in{'idx'});
+print &ui_hidden("search", $in{'search'});
 print &ui_table_start($text{'edit_details'}, "width=100%", 2);
 
 if (&supports_users()) {
@@ -96,10 +97,7 @@ print &ui_table_end();
 
 # Show times and days to run
 print &ui_table_start($text{'edit_when'}, "width=100%", 2);
-print &ui_table_row(undef,
-	"<table border width=100%>".
-	&capture_function_output_tempfile(\&show_times_input, $job).
-	"</table>", 2);
+print &get_times_input($job);
 print &ui_table_end();
 
 if ($rangeable) {
@@ -146,5 +144,6 @@ else {
 	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer("index.cgi?search=".&urlize($in{'search'}),
+		 $text{'index_return'});
 

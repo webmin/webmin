@@ -47,8 +47,12 @@ if ($config{'show_run'}) {
 # Work out creation links
 @crlinks = ( );
 if ($access{'create'}) {
-	push(@crlinks, &ui_link("edit_cron.cgi?new=1", $text{'index_create'}) );
-	push(@crlinks, &ui_link("edit_env.cgi?new=1", $text{'index_ecreate'}) ) if ($env_support);
+	push(@crlinks, &ui_link("edit_cron.cgi?new=1&search=".
+				  &urlize($in{'search'}),
+			        $text{'index_create'}) );
+	push(@crlinks, &ui_link("edit_env.cgi?new=1&search=".
+				  &urlize($in{'search'}),
+				$text{'index_ecreate'}) ) if ($env_support);
 	}
 if ($config{cron_allow_file} && $config{cron_deny_file} && $access{'allow'}) {
 	push(@crlinks, &ui_link("edit_allow.cgi", $text{'index_allow'}) );
@@ -108,6 +112,7 @@ foreach $u (@ulist) {
 			$cmdidx = scalar(@cols);
 			@exp = map { &html_escape($_) } @exp;
 			push(@cols, &ui_link("edit_cron.cgi?idx=".$idx,
+				      "&search=".&urlize($in{'search'}),
 				    join("<br>",@exp)) );
 			$donelink = 1;
 			}
@@ -120,7 +125,9 @@ foreach $u (@ulist) {
 			$cmd = length($cmd) > $max ?
 			  &html_escape(substr($cmd, 0, $max))." ..." :
 			  $cmd !~ /\S/ ? "BLANK" : &html_escape($cmd);
-			push(@cols, &ui_link("edit_cron.cgi?idx=".$idx, $cmd) );
+			push(@cols, &ui_link("edit_cron.cgi?idx=".$idx.
+					      "&search=".&urlize($in{'search'}),
+					     $cmd) );
 			$donelink = 1;
 			}
 
@@ -134,7 +141,10 @@ foreach $u (@ulist) {
 				push(@cols, $when);
 				}
 			else {
-				push(@cols, &ui_link("edit_cron.cgi?idx=".$idx, $when) );
+				push(@cols, &ui_link(
+					"edit_cron.cgi?idx=".$idx.
+					  "&search=".&urlize($in{'search'}),
+					$when) );
 				}
 			}
 

@@ -771,6 +771,7 @@ sub get_times_input
 {
 return &theme_get_times_input(@_) if (defined(&theme_get_times_input));
 my ($job, $nospecial) = @_;
+my $rv;
 
 if ($config{'vixie_cron'} && (!$nospecial || $job->{'special'})) {
 	# Allow selection of special @ times
@@ -779,12 +780,96 @@ if ($config{'vixie_cron'} && (!$nospecial || $job->{'special'})) {
 	my $specialsel = &ui_select("special", $sp,
 				[ map { [ $_, $text{'edit_special_'.$_} ] }
 				      &list_cron_specials() ]);
-	print &ui_table_row(undef,
+	$rv .= &ui_table_row(undef,
 		&ui_radio("special_def", $job->{'special'} ? 1 : 0,
 			  [ [ 1, $text{'edit_special1'}." ".$specialsel ],
 			    [ 0, $text{'edit_special0'} ] ]), 2);
 	}
-# XXX
+
+# Section for time selections
+my $table = &ui_columns_start([ $text{'edit_mins'}, $text{'edit_hours'},
+				$text{'edit_days'}, $text{'edit_months'},
+				$text{'edit_weekdays'} ], 100);
+my @mins = (0..59);
+my @hours = (0..23);
+my @days = (1..31);
+my @months = map { $text{"month_$_"}."=".$_ } (1 .. 12);
+my @weekdays = map { $text{"day_$_"}."=".$_ } (0 .. 6);
+my %arrmap = ( 'mins' => \@mins,
+	       'hours' => \@hours,
+	       'days' => \@days,
+	       'months' => \@months,
+	       'weekdays' => \@weekdays );
+my @cols;
+foreach my $arr ("mins", "hours", "days", "months", "weekdays") {
+	# Find out which ones are being used
+	my %inuse;
+	my $min = ($arr =~ /days|months/ ? 1 : 0);
+	my @arrlist = @{$arrmap{$arr}};
+	my $max = $min+scalar(@arrlist)-1;
+	foreach my $w (split(/,/ , $job->{$arr})) {
+		if ($w eq "*") {
+			# all values
+			for($j=$min; $j<=$max; $j++) { $inuse{$j}++; }
+			}
+		elsif ($w =~ /^\*\/(\d+)$/) {
+			# only every Nth
+			for($j=$min; $j<=$max; $j+=$1) { $inuse{$j}++; }
+			}
+		elsif ($w =~ /^(\d+)-(\d+)\/(\d+)$/) {
+			# only every Nth of some range
+			for($j=$1; $j<=$2; $j+=$3) { $inuse{int($j)}++; }
+			}
+		elsif ($w =~ /^(\d+)-(\d+)$/) {
+			# all of some range
+			for($j=$1; $j<=$2; $j++) { $inuse{int($j)}++; }
+			}
+		else {
+			# One value
+			$inuse{int($w)}++;
+			}
+		}
+	if ($job->{$arr} eq "*") {
+		%inuse = ( );
+		}
+
+	# Output selection list
+	my $dis = $arr eq "mins" && $hourly_only;
+	my $col = &ui_radio("all_$arr", $job->{$arr} eq "*" ||
+					$job->{$arr} eq "" ? 1 : 0,
+			    [ [ 1, $text{'edit_all'}."<br>" ],
+			      [ 0, $text{'edit_selected'}."<br>" ] ],
+			    $dis);
+	$col .= "<table> <tr>\n";
+        for(my $j=0; $j<@arrlist; $j+=($arr eq "mins" && $hourly_only ? 60 : 12)) {
+                my $jj = $j+($arr eq "mins" && $hourly_only ? 59 : 11);
+		if ($jj >= @arrlist) { $jj = @arrlist - 1; }
+		my @sec = @arrlist[$j .. $jj];
+		my @opts;
+		foreach my $v (@sec) {
+			if ($v =~ /^(.*)=(.*)$/) {
+				push(@opts, [ $2, $1 ]);
+				}
+			else {
+				push(@opts, [ $v, $v ]);
+				}
+			}
+		$col .= "<td valign=top>".
+			&ui_select($arr, [ keys %inuse ], \@opts,
+			  @sec > 12 ? ($arr eq "mins" && $hourly_only ? 1 : 12)
+                                  : scalar(@sec),
+			  $arr eq "mins" && $hourly_only ? 0 : 1).
+			"</td>\n";
+		}
+	$col .= "</tr></table>\n";
+	push(@cols, $col);
+	}
+$table .= &ui_columns_row(\@cols, [ "valign=top", "valign=top", "valign=top",
+				    "valign=top", "valign=top" ]);
+$table .= &ui_columns_end();
+$table .= "<br>".$text{'edit_ctrl'};
+$rv .= &ui_table_row(undef, $table, 4);
+return $rv;
 }
 
 =head2 show_times_input(&job, [nospecial])

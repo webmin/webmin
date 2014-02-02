@@ -113,7 +113,7 @@ if ($in{'saverun'}) {
 	}
 else {
 	# Just go back to main menu
-	&redirect("");
+	&redirect("index.cgi?search=".&urlize($in{'search'}));
 	}
 
 
