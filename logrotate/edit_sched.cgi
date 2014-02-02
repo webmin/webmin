@@ -35,20 +35,20 @@ if ($runparts) {
 	}
 else {
 	# Offer to enable/change/delete
-	print "<form action=save_sched.cgi>\n";
-	print "<input type=hidden name=idx value='",
-		$job ? $job->{'index'} : "","'>\n";
-	print "<b>$text{'sched_sched'}</b>\n";
-	printf "<input type=radio name=sched value=0 %s> %s\n",
-		$job ? "" : "checked", $text{'sched_disabled'};
-	printf "<input type=radio name=sched value=1 %s> %s<br>\n",
-		$job ? "checked" : "", $text{'sched_enabled'};
+	print &ui_form_start("save_sched.cgi", "post");
+	print &ui_hidden("idx", $job ? $job->{'index'} : "");
+	print &ui_table_start(undef, undef, 2);
+
+	print &ui_table_row($text{'sched_sched'},
+		&ui_radio("sched", $job ? 1 : 0,
+			  [ [ 0, $text{'sched_disabled'} ],
+			    [ 1, $text{'sched_enabled'} ] ]));
 
 	$job ||= { 'special' => 'daily' };
-	print "<table border>\n";
-	&cron::show_times_input($job);
-	print "</table>\n";
-	print "<input type=submit value='$text{'sched_save'}'></form>\n";
+	print &cron::get_times_input($job, 0, 2, $text{'sched_when'});
+
+	print &ui_table_end();
+	print &ui_form_end([ [ undef, $text{'sched_save'} ] ]);
 	}
 
 &ui_print_footer("", $text{'index_return'});

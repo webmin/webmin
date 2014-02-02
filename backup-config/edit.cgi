@@ -86,10 +86,7 @@ print &ui_table_row($text{'edit_sched'},
 		    &ui_radio("sched", $job || $in{'new'} ? 1 : 0,
 			      [ [ 0, $text{'no'} ],
 				[ 1, $text{'edit_schedyes'} ] ]));
-print &ui_table_row(undef,
-	"<tr> <td colspan=2><table border width=100%>\n".
-	&capture_function_output(\&cron::show_times_input, $backup).
-	"</table></td> </tr>\n");
+print &cron::get_times_input($backup);
 
 print &ui_hidden_table_end();
 if ($in{'new'}) {
