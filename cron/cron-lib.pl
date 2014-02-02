@@ -760,7 +760,7 @@ sub list_cron_specials
 return ('hourly', 'daily', 'weekly', 'monthly', 'yearly', 'reboot');
 }
 
-=head2 get_times_input(&job, [nospecial])
+=head2 get_times_input(&job, [nospecial], [width-in-cols], [message])
 
 Returns HTML for selecting the schedule for a cron job, defined by the first
 parameter which must be a hash ref returned by list_cron_jobs. Suitable for
@@ -770,7 +770,8 @@ use inside a ui_table_start/end
 sub get_times_input
 {
 return &theme_get_times_input(@_) if (defined(&theme_get_times_input));
-my ($job, $nospecial) = @_;
+my ($job, $nospecial, $width, $msg) = @_;
+$width ||= 2;
 my $rv;
 
 if ($config{'vixie_cron'} && (!$nospecial || $job->{'special'})) {
@@ -780,10 +781,11 @@ if ($config{'vixie_cron'} && (!$nospecial || $job->{'special'})) {
 	my $specialsel = &ui_select("special", $sp,
 				[ map { [ $_, $text{'edit_special_'.$_} ] }
 				      &list_cron_specials() ]);
-	$rv .= &ui_table_row(undef,
+	$rv .= &ui_table_row($msg,
 		&ui_radio("special_def", $job->{'special'} ? 1 : 0,
 			  [ [ 1, $text{'edit_special1'}." ".$specialsel ],
-			    [ 0, $text{'edit_special0'} ] ]), 2);
+			    [ 0, $text{'edit_special0'} ] ]),
+			  $msg ? $width-1 : $width);
 	}
 
 # Section for time selections
@@ -867,8 +869,8 @@ foreach my $arr ("mins", "hours", "days", "months", "weekdays") {
 $table .= &ui_columns_row(\@cols, [ "valign=top", "valign=top", "valign=top",
 				    "valign=top", "valign=top" ]);
 $table .= &ui_columns_end();
-$table .= "<br>".$text{'edit_ctrl'};
-$rv .= &ui_table_row(undef, $table, 4);
+$table .= $text{'edit_ctrl'};
+$rv .= &ui_table_row(undef, $table, $width);
 return $rv;
 }
 

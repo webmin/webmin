@@ -143,11 +143,7 @@ print &ui_table_row(&hlink($text{'edit_subject'}, "subject"),
 
 if (!$config{'simple_sched'} || ($dump && !$dump->{'special'})) {
 	# Complex Cron time input
-	print &ui_table_row(undef,
-		"<table border width=100%>".
-		&capture_function_output(\&cron::show_times_input, $dump).
-		"</table>",
-		4);
+	print &cron::get_times_input($dump, 0, 4, $text{'edit_when'});
 	}
 else {
 	# Simple input
