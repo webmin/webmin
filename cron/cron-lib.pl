@@ -772,15 +772,36 @@ sub get_times_input
 return &theme_get_times_input(@_) if (defined(&theme_get_times_input));
 my ($job, $nospecial, $width, $msg) = @_;
 $width ||= 2;
-my $rv;
+
+# Javascript to disable and enable fields
+my $rv = <<EOF;
+<script>
+function enable_cron_fields(name, form, ena)
+{
+var els = form.elements[name];
+els.disabled = !ena;
+for(i=0; i<els.length; i++) {
+  els[i].disabled = !ena;
+  }
+change_special_mode(form, 0);
+}
+
+function change_special_mode(form, special)
+{
+form.special_def[0].checked = special;
+form.special_def[1].checked = !special;
+}
+</script>
+EOF
 
 if ($config{'vixie_cron'} && (!$nospecial || $job->{'special'})) {
 	# Allow selection of special @ times
 	my $sp = $job->{'special'} eq 'midnight' ? 'daily' :
 		 $job->{'special'} eq 'annually' ? 'yearly' : $job->{'special'};
 	my $specialsel = &ui_select("special", $sp,
-				[ map { [ $_, $text{'edit_special_'.$_} ] }
-				      &list_cron_specials() ]);
+			[ map { [ $_, $text{'edit_special_'.$_} ] }
+			      &list_cron_specials() ],
+			1, 0, 0, 0, "onChange='change_special_mode(form, 1)'");
 	$rv .= &ui_table_row($msg,
 		&ui_radio("special_def", $job->{'special'} ? 1 : 0,
 			  [ [ 1, $text{'edit_special1'}." ".$specialsel ],
@@ -837,11 +858,14 @@ foreach my $arr ("mins", "hours", "days", "months", "weekdays") {
 
 	# Output selection list
 	my $dis = $arr eq "mins" && $hourly_only;
-	my $col = &ui_radio("all_$arr", $job->{$arr} eq "*" ||
-					$job->{$arr} eq "" ? 1 : 0,
-			    [ [ 1, $text{'edit_all'}."<br>" ],
-			      [ 0, $text{'edit_selected'}."<br>" ] ],
-			    $dis);
+	my $col = &ui_radio(
+		    "all_$arr", $job->{$arr} eq "*" ||
+				$job->{$arr} eq "" ? 1 : 0,
+		    [ [ 1, $text{'edit_all'}."<br>",
+			"onClick='enable_cron_fields(\"$arr\", form, 0)'" ],
+		      [ 0, $text{'edit_selected'}."<br>",
+			"onClick='enable_cron_fields(\"$arr\", form, 1)'" ] ],
+		    $dis);
 	$col .= "<table> <tr>\n";
         for(my $j=0; $j<@arrlist; $j+=($arr eq "mins" && $hourly_only ? 60 : 12)) {
                 my $jj = $j+($arr eq "mins" && $hourly_only ? 59 : 11);
@@ -856,11 +880,13 @@ foreach my $arr ("mins", "hours", "days", "months", "weekdays") {
 				push(@opts, [ $v, $v ]);
 				}
 			}
+		my $dis = $job->{$arr} eq "*" || $job->{$arr} eq "";
 		$col .= "<td valign=top>".
 			&ui_select($arr, [ keys %inuse ], \@opts,
 			  @sec > 12 ? ($arr eq "mins" && $hourly_only ? 1 : 12)
                                   : scalar(@sec),
-			  $arr eq "mins" && $hourly_only ? 0 : 1).
+			  $arr eq "mins" && $hourly_only ? 0 : 1,
+			  0, $dis).
 			"</td>\n";
 		}
 	$col .= "</tr></table>\n";
