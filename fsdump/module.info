@@ -23,3 +23,4 @@ desc_no=Sikkerhetskopier filsystem
 desc_hu=Fájlrendszer mentése
 longdesc_ms_MY=Backup dan restore sistem fail dengan menggunakan arahan dump dan restore pelbagai.
 desc_ms_MY=Sistem Fail Backup
+longdesc_de=Sichern und Wiederherstellen von Dateisystemen mit Sicherungs- und Wiederherstellungsfamilie von Befehlen.

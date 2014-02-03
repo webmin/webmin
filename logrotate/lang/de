@@ -102,3 +102,4 @@ sched_runparts=Zum jetzigen Zeitpunkt wird <i>logrotate</i> mit dem Skript $1 $2
 sched_save=Cron-Auftrag speichern
 sched_sched=Cron-Auftrag f&#252;r Logdatei-Rotation
 sched_title=Rotationszeitplan f&#252;r Logdatei-Rotation
+sched_when=Ausf&#252;hrungszeiten

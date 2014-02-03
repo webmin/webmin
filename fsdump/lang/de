@@ -125,6 +125,7 @@ edit_title=Neue Sicherung hinzuf&#252;gen
 edit_title2=Sicherung bearbeiten
 edit_to=$1 von $2
 edit_tolevel=$1 von $2 (Level $3)
+edit_when=Wann zu sichern
 email_already=Backup l&#228;uft bereits mit PID $1.
 email_eafter=Nach-Backup-Befehl fehlgeschlagen!
 email_ebefore=Vor-Backup-Befehl fehlgeschlagen!
