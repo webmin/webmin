@@ -105,7 +105,7 @@ if (&use_ifup_command($a)) {
 			}
 	        else { $cmd .= "ifdown $a->{'physical'}" . "." . $a->{'vlanid'}; }
 	}
-        elsif ($a->{'up'}) { $cmd .= "ifup $a->{'fullname'}"; }
+        elsif ($a->{'up'}) { $cmd .= "ifdown $a->{'fullname'}\; ifup $a->{'fullname'}"; }
         else { $cmd .= "ifdown $a->{'fullname'}"; }
 	}
 else {
