@@ -277,6 +277,7 @@ ui_checkmandatory=Es wurde nichts ausgewählt
 ui_edate=Ungültiges Datum
 ui_errors=Mehrere Fehler sind aufgetreten :
 ui_etime=Ungültige Zeit
+ui_filterbox=Filter eingeben..
 ui_mandatory=Dieses Feld ist ein Pflichfeld
 ui_nothing=Nichts wurde eingegeben
 ui_paging=Anzeige der Reihen $1 bis $2 von $3
