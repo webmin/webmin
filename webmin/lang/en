@@ -33,6 +33,7 @@ access_ecidr16=IPv6 network size '$1' must be divisible by 16
 access_ehost=Failed to find IP address for '$1'
 access_eself=Your current IP address ($1) would be denied
 access_always=Resolve hostnames on every request?
+access_trust=Trust remote IP address provided by proxies?
 
 bind_title=Ports and Addresses
 bind_desc2=This form can be used to change the port number that Webmin listens on, or have it listen on only a single IP address on your system. You can also configure it to accept connections on multiple ports, or to listen on several IP addresses. Note - your web browser may prompt you to log in again after changing the port or binding address.
@@ -365,7 +366,7 @@ ssl_auto=Detect automatically
 ssl_eversion=Missing or invalid version number
 ssl_saveheader=Upload existing key
 ssl_privkey=Private key text
-ssl_fromcsr=This private key was generated uising the <b>Certificate Signing Request</b> tab. You should enter the certificate below that was supplied by your CA in response to the CSR.
+ssl_fromcsr=This private key was generated using the <b>Certificate Signing Request</b> tab. You should enter the certificate below that was supplied by your CA in response to the CSR.
 ssl_privcert=Certificate text
 ssl_privchain=Chained certificate text
 ssl_nochain=No chained certificate
