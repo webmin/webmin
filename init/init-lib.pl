@@ -1104,6 +1104,65 @@ elsif ($init_mode eq "osx") {
 	}
 }
 
+=head2 delete_at_boot(name)
+
+Delete the init script, RC script or whatever with some name
+
+=cut
+sub delete_at_boot
+{
+my ($name) = @_;
+my $mode = &get_action_mode($name);
+if ($mode eq "systemd") {
+	# Delete systemd service
+	&delete_systemd_service($name);
+	&delete_systemd_service($name.".service");
+	}
+elsif ($mode eq "upstart") {
+	# Delete upstart service
+	&delete_upstart_service($name);
+	}
+elsif ($mode eq "init") {
+	# Delete init script links and init.d file
+	foreach my $a (&action_levels('S', $name)) {
+		$a =~ /^(\S+)\s+(\S+)\s+(\S+)$/ &&
+			&delete_rl_action($name, $1, 'S');
+		}
+	foreach my $a (&action_levels('K', $name)) {
+		$a =~ /^(\S+)\s+(\S+)\s+(\S+)$/ &&
+			&delete_rl_action($name, $1, 'K');
+		}
+	my $fn = &action_filename($name);
+	&unlink_logged($fn);
+	}
+elsif ($mode eq "win32") {
+	# Delete windows service
+	&delete_win32_service($name);
+	}
+elsif ($mode eq "rc") {
+	# Delete FreeBSD RC script
+	&delete_rc_script($name);
+	}
+elsif ($mode eq "osx") {
+	# Delete OSX hostconfig entry
+	open(LOCAL, $config{'hostconfig'});
+	my @local = <LOCAL>;
+	close(LOCAL);
+	my $start = $name."=-";
+	&open_tempfile(LOCAL, ">$config{'hostconfig'}");
+	&print_tempfile(LOCAL, grep { !/^$start/i } @local);
+	&close_tempfile(LOCAL);
+	my $paramlist = "$config{'darwin_setup'}/$ucproduct/$config{'plist'}";
+	my $scriptfile = "$config{'darwin_setup'}/$ucproduct/$ucproduct";
+	&unlink_logged($paramlist);
+	&unlink_logged($scriptfile);
+	}
+elsif ($mode eq "local") {
+	# Delete from local rc file
+	&disable_at_boot($name);
+	}
+}
+
 =head2 start_action(name)
 
 Start the action with the given name, using whatever method is appropriate
