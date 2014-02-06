@@ -39,3 +39,4 @@ desc_sk.UTF-8=Systémový čas
 desc_no=System-tid
 longdesc_ms_MY=Menetapkan masa sistem dan perkakasan sama ada secara manual atau dari pelayan masa.
 desc_ms_MY=Masa Sistem
+longdesc_de=Stellt die System- und Hardware-Zeit entweder manuell oder von einem Zeitserver ein.

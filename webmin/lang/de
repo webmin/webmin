@@ -22,6 +22,7 @@ access_libwrap=Pr&#252;fe auch TCP-Wrapper <tt>hosts.allow</tt> und <tt>hosts.de
 access_libwrapcpan=<a href='$1'>Klicke hier</a> um Webmin automatisch die fehlenden Perl Module installieren zu lassen.
 access_local=Beziehe lokales Netzwerk in Liste ein
 access_title=IP-Zugriffskontrolle
+access_trust=Vertraue entfernte IP-Adresse durch Proxies?
 advanced_chattr=Erlaube &#196;nderung der unver&#228;nderliche Dateien?
 advanced_days=Tage
 advanced_egzip=Gzip-Komprimierung kann nicht aktiviert werden, bis das $1 Perl-Modul installiert ist

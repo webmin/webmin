@@ -39,3 +39,4 @@ desc_sk.UTF-8=KonfigurÃ¡cia Webminu
 longdesc_pl=Skonfiguruj Webmina dla siebie przez np. ustawienie dozwolonych hostów, SSL instalowanie modu³ów i szablonów.
 longdesc_ms_MY=Mengkonfigurasi Webmin, seperti membenarkan host, SSL, memasang modul dan tema.
 desc_ms_MY=Konfigurasi Webmin
+longdesc_de=Konfiguriert Webmin selbst, wie erlaubten Hosts, SSL, installierten Module und Themes.
