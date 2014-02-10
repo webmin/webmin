@@ -22,7 +22,8 @@ $package_dir = "/var/db/pkg";
 sub use_pkg_ng
 {
 return 0 if (!-x "/usr/sbin/pkg");
-local @lines = &backquote_command("/usr/sbin/pkg info 2>/dev/null </dev/null");
+local @lines = split(/\n/, &backquote_command(
+			"/usr/sbin/pkg info 2>/dev/null </dev/null"));
 return @lines > 1 ? 1 : 0;
 }
 
