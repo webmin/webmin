@@ -255,15 +255,7 @@ return 0;
 # reference.
 sub get_webalizer_version
 {
-local $out = `$config{'webalizer'} -v 2>&1 </dev/null`;
-if ($out =~ /awffull +(\S+)/) {
-	# AWfull version
-	return $1;
-	}
-if ($? || $out !~ /\sV(\S+)/) {
-	# Try -V
-	$out = `$config{'webalizer'} -V 2>&1 </dev/null`;
-	}
+local $out = &backquote_command("$config{'webalizer'} -V 2>&1 </dev/null");
 ${$_[0]} = $out;
 return $out =~ /\sV(\S+)/ ? $1 : undef;
 }
