@@ -694,12 +694,12 @@ if ($has_parted) {
 	my $pe = $part > 4 ? "logical" : "primary";
 	my $cmd;
 	if ($type eq "raid") {
-		$cmd = "parted -s ".$disk." unit cyl mkpartfs ".$pe." ".
+		$cmd = "parted -s ".$disk." unit cyl mkpart ".$pe." ".
 		       "ext2 ".($start-1)." ".$end;
 		$cmd .= " ; parted -s ".$disk." set $part raid on";
 		}
 	elsif ($type && $type ne 'ext2') {
-		$cmd = "parted -s ".$disk." unit cyl mkpartfs ".$pe." ".
+		$cmd = "parted -s ".$disk." unit cyl mkpart ".$pe." ".
 		       $type." ".($start-1)." ".$end;
 		}
 	else {
