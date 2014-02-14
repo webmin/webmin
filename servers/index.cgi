@@ -4,10 +4,25 @@
 use strict;
 use warnings;
 require './servers-lib.pl';
-our (%text, %config, %access);
+our (%text, %config, %access, %in);
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
+&ReadParse();
 
+# Get servers and apply search
 my @servers = &list_servers_sorted(1);
+if ($in{'search'}) {
+	@servers = grep { $_->{'host'} =~ /\Q$in{'search'}\E/i ||
+			  $_->{'desc'} =~ /\Q$in{'search'}\E/i } @servers;
+	}
+
+# Show search form
+if (@servers > $config{'max_servers'} || $in{'search'}) {
+	print &ui_form_start("index.cgi");
+	print "<b>$text{'index_search'}</b> ",
+	      &ui_textbox("search", $in{'search'}, 40)," ",
+	      &ui_submit($text{'index_ok'}),"<p>\n";
+	print &ui_form_end();
+	}
 
 # Work out links
 my @linksrow;
@@ -96,7 +111,12 @@ elsif (@servers) {
 	&icons_table(\@links, \@titles, \@icons, undef, "target=_top",
 		     undef, undef, \@befores, \@afters);
 	}
+elsif ($in{'search'}) {
+	# No servers match
+	print "<b>$text{'index_nosearch'}</b> <p>\n";
+	}
 else {
+	# No servers exist
 	print "<b>$text{'index_noservers'}</b> <p>\n";
 	}
 if ($access{'edit'}) {

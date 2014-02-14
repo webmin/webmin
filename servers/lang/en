@@ -1,6 +1,7 @@
 index_title=Webmin Servers
 index_edit=edit
 index_noservers=No servers have been registered.
+index_nosearch=No servers match your search.
 index_add=Register a new server.
 index_broad=Broadcast for servers
 index_findmsg=Click this button to automatically find any Webmin servers on your local network.
@@ -19,6 +20,8 @@ index_defport=Webmin port
 index_delete=Delete Selected Servers
 index_auto=Automatically Find Servers
 index_automsg=Click this button to setup the automatic periodic discovery of new Webmin servers on your network.
+index_search=Show servers matching:
+index_ok=Search
 
 edit_title=Edit Server
 create_title=Register Server
