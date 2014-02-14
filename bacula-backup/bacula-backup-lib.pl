@@ -752,14 +752,14 @@ if ($cmd ne "quit") {
 local $out;
 while(1) {
         local $rv = &wait_for($h->{'outfh'},
-                        '^(\d+\-\S+\-\d+ \d+:\d+:\d+)\n',
+                        '^(\S+\s+)?(\d+\-\S+\-\d+ \d+:\d+:\d+)\n',
                         'Unable to connect to Director',
                         '.*\n');
         return undef if ($rv == 1 || $rv < 0);
         $out .= $wait_for_input;
         last if ($rv == 0);
         }
-$out =~ s/time\n(\d+\-\S+\-\d+ \d+:\d+:\d+)\n//;
+$out =~ s/time\n(\S+\s+)?(\d+\-\S+\-\d+ \d+:\d+:\d+)\n//;
 $out =~ s/^\Q$cmd\E\n//;
 return $out;
 }
