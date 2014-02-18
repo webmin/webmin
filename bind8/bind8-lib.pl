@@ -1604,12 +1604,16 @@ local @mips = &unique($_[1], @{$_[4]});
 local $masters = { 'name' => 'masters',
                    'type' => 1,
                    'members' => [ map { { 'name' => $_ } } @mips ] };
+local $allow = { 'name' => 'allow-transfer',
+                 'type' => 1,
+                 'members' => [ map { { 'name' => $_ } } @mips ] };
 local $dir = { 'name' => 'zone',
                'values' => [ $_[0] ],
                'type' => 1,
                'members' => [ { 'name' => 'type',
                                 'values' => [ 'slave' ] },
-                                $masters
+                                $masters,
+				$allow,
                             ]
 	     };
 local $base = $config{'slave_dir'} || &base_directory();
