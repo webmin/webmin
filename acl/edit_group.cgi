@@ -95,7 +95,7 @@ my @mlist = &list_module_infos();
 my %has = map { $_, 1 } @{$group{'modules'}};
 my @links = ( &select_all_link("mod", 0, $text{'edit_selall'}),
 	      &select_invert_link("mod", 0, $text{'edit_invert'}) );
-my @cats = &unique(map { $_->{'category'} } @mlist);
+my @cats = &unique(map { $_->{'category'} || "" } @mlist);
 my %catnames;
 &read_file("$config_directory/webmin.catnames", \%catnames);
 my $grids = "";
