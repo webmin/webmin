@@ -9,9 +9,10 @@ if (&foreign_check("node-groups")) {
 	&foreign_require("node-groups", "node-groups-lib.pl");
 	}
 
-$dir_conf_file = "$config{'bacula_dir'}/bacula-dir.conf";
-$fd_conf_file = "$config{'bacula_dir'}/bacula-fd.conf";
-$sd_conf_file = "$config{'bacula_dir'}/bacula-sd.conf";
+$cmd_prefix = &has_command("bareos-dir") ? "baseos" : "bacula";
+$dir_conf_file = "$config{'bacula_dir'}/$cmd_prefix-dir.conf";
+$fd_conf_file = "$config{'bacula_dir'}/$cmd_prefix-fd.conf";
+$sd_conf_file = "$config{'bacula_dir'}/$cmd_prefix-sd.conf";
 $bconsole_conf_file = "$config{'bacula_dir'}/bconsole.conf";
 $console_conf_file = "$config{'bacula_dir'}/console.conf";
 $console_cmd = -r "$config{'bacula_dir'}/bconsole" ?
@@ -22,7 +23,6 @@ $console_cmd = -r "$config{'bacula_dir'}/bconsole" ?
 $bacula_cmd = -r "$config{'bacula_dir'}/bacula" ?
 		"$config{'bacula_dir'}/bacula" :
 	      &has_command("bacula");
-$cmd_prefix = &has_command("bareos-dir") ? "baseos" : "bacula";
 
 @backup_levels = ( "Full", "Incremental", "Differential",
 	   "InitCatalog", "Catalog", "VolumeToCatalog", "DiskToCatalog" );
