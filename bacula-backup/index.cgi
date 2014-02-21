@@ -54,7 +54,7 @@ if ($ver && $ver < 1.36) {
 	}
 
 # Make sure bconsole works
-if (&is_bacula_running("bacula-dir")) {
+if (&is_bacula_running($cmd_prefix."-dir")) {
 	# Check hostname in console config
 	$conconf = &get_bconsole_config();
 	$condir = &find("Director", $conconf);
@@ -134,7 +134,7 @@ if (&has_bacula_dir()) {
 	# Show icons for actions
 	print &ui_hr();
 	print &ui_subheading($text{'index_actions'});
-	if (&is_bacula_running("bacula-dir")) {
+	if (&is_bacula_running($cmd_prefix."-dir")) {
 		@actions = ( "backup", "dirstatus", "clientstatus",
 			     "storagestatus", "label", "poolstatus", "mount",
 			     "restore" );

@@ -22,6 +22,7 @@ $console_cmd = -r "$config{'bacula_dir'}/bconsole" ?
 $bacula_cmd = -r "$config{'bacula_dir'}/bacula" ?
 		"$config{'bacula_dir'}/bacula" :
 	      &has_command("bacula");
+$cmd_prefix = &has_command("bareos-dir") ? "baseos" : "bacula";
 
 @backup_levels = ( "Full", "Incremental", "Differential",
 	   "InitCatalog", "Catalog", "VolumeToCatalog", "DiskToCatalog" );
@@ -524,9 +525,9 @@ return -r $sd_conf_file;
 }
 
 # Names of the Bacula programs
-@bacula_processes = ( &has_bacula_dir() ? ( "bacula-dir" ) : ( ),
-		      &has_bacula_sd() ? ( "bacula-sd" ) : ( ),
-		      &has_bacula_fd() ? ( "bacula-fd" ) : ( ),
+@bacula_processes = ( &has_bacula_dir() ? ( $cmd_prefix."-dir" ) : ( ),
+		      &has_bacula_sd() ? ( $cmd_prefix."-sd" ) : ( ),
+		      &has_bacula_fd() ? ( $cmd_prefix."-fd" ) : ( ),
 		    );
 if ($gconfig{'os_type'} eq 'windows') {
 	# On Windows, the bootup action is just called Bacula (for the FD)
