@@ -19,7 +19,7 @@ if (!$in{'confirm'}) {
 		"clear.cgi",
 		$text{'clear_msgclear'}."<br>".$text{'clear_msgclear2'},
 		[],
-		[ [ undef, $text{'clear_buttclear'} ] ]);
+		[ [ 'confirm', $text{'clear_buttclear'} ] ]);
 
 	if (&has_command($config{'squidclient'})) {
 		# Show form to clear just one URL
