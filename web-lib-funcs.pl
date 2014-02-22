@@ -2729,11 +2729,14 @@ parameters are :
 
 =item error - A string reference to write any error message into. If not set, the error function is called on failure.
 
+=item bindip - Local IP address to bind to for outgoing connections
+
 =cut
 sub open_socket
 {
-my ($host, $port, $fh, $err) = @_;
+my ($host, $port, $fh, $err, $bindip) = @_;
 $fh = &callers_package($fh);
+$bindip ||= $gconfig{'bind_proxy'};
 
 if ($gconfig{'debug_what_net'}) {
 	&webmin_debug_log('TCP', "host=$host port=$port");
@@ -2752,7 +2755,7 @@ if ($ip = &to_ipaddress($host)) {
 	my $addr = inet_aton($ip);
 	if ($gconfig{'bind_proxy'}) {
 		# BIND to outgoing IP
-		if (!bind($fh,pack_sockaddr_in(0, inet_aton($gconfig{'bind_proxy'})))) {
+		if (!bind($fh, pack_sockaddr_in(0, inet_aton($bindip)))) {
 			my $msg = "Failed to bind to source address : $!";
 			if ($err) { $$err = $msg; return 0; }
 			else { &error($msg); }
@@ -7019,10 +7022,12 @@ The parameters are :
 
 =item headers - Array ref of additional HTTP headers, each of which is a 2-element array ref.
 
+=item bindip - IP address to bind to for outgoing HTTP connection
+
 =cut
 sub make_http_connection
 {
-my ($host, $port, $ssl, $method, $page, $headers) = @_;
+my ($host, $port, $ssl, $method, $page, $headers, $bindip) = @_;
 my $htxt;
 if ($headers) {
 	foreach my $h (@$headers) {
@@ -7049,7 +7054,7 @@ if ($ssl) {
 	    !&no_proxy($host)) {
 		# Via proxy
 		my $error;
-		&open_socket($1, $2, $rv->{'fh'}, \$error);
+		&open_socket($1, $2, $rv->{'fh'}, \$error, $bindip);
 		if (!$error) {
 			# Connected OK
 			my $fh = $rv->{'fh'};
@@ -7080,7 +7085,7 @@ if ($ssl) {
 	if (!$connected) {
 		# Direct connection
 		my $error;
-		&open_socket($host, $port, $rv->{'fh'}, \$error);
+		&open_socket($host, $port, $rv->{'fh'}, \$error, $bindip);
 		return $error if ($error);
 		}
 	Net::SSLeay::set_fd($rv->{'ssl_con'}, fileno($rv->{'fh'}));
@@ -7096,7 +7101,7 @@ else {
 	    !&no_proxy($host)) {
 		# Via a proxy
 		my $error;
-		&open_socket($1, $2, $rv->{'fh'}, \$error);
+		&open_socket($1, $2, $rv->{'fh'}, \$error, $bindip);
 		if (!$error) {
 			# Connected OK
 			$connected = 1;
@@ -7120,7 +7125,7 @@ else {
 	if (!$connected) {
 		# Connecting directly
 		my $error;
-		&open_socket($host, $port, $rv->{'fh'}, \$error);
+		&open_socket($host, $port, $rv->{'fh'}, \$error, $bindip);
 		return $error if ($error);
 		my $fh = $rv->{'fh'};
 		my $rtxt = "$method $page HTTP/1.0\r\n".$htxt;
