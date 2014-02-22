@@ -9,7 +9,7 @@ if (&foreign_check("node-groups")) {
 	&foreign_require("node-groups", "node-groups-lib.pl");
 	}
 
-$cmd_prefix = &has_command("bareos-dir") ? "baseos" : "bacula";
+$cmd_prefix = &has_command("bareos-dir") ? "bareos" : "bacula";
 $dir_conf_file = "$config{'bacula_dir'}/$cmd_prefix-dir.conf";
 $fd_conf_file = "$config{'bacula_dir'}/$cmd_prefix-fd.conf";
 $sd_conf_file = "$config{'bacula_dir'}/$cmd_prefix-sd.conf";
