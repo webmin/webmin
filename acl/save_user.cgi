@@ -91,14 +91,7 @@ foreach my $u (@ulist) {
 	}
 
 # Find the current group
-my $oldgroup;
-if ($in{'old'}) {
-	foreach my $g (&list_groups()) {
-		if (&indexof($in{'old'}, @{$g->{'members'}}) >= 0) {
-			$oldgroup = $g;
-			}
-		}
-	}
+my $oldgroup = $in{'old'} ? &get_users_group($in{'old'}) : undef;
 
 if (&supports_rbac()) {
 	# Save RBAC mode
