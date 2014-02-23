@@ -44,12 +44,15 @@ if (@$conf) {
 				push(@mems, $d->{'value'});
 				}
 			}
+		my @errors = grep { $_ ne "U" } @{$c->{'errors'}};
 		print &ui_columns_row([
 			"<a href='view_raid.cgi?idx=$c->{'index'}'>".
 			&html_escape($c->{'value'})."</a>",
-			$c->{'active'} ?
-				"<font color=#00aa00>$text{'yes'}</font>" :
-				"<font color=#ff0000>$text{'no'}</font>",
+			!$c->{'active'} ?
+				"<font color=#ff0000>$text{'no'}</font>" :
+			@errors ?
+				"<font color=#ff8800>$text{'index_errors'}</font>" :
+				"<font color=#00aa00>$text{'yes'}</font>",
 			$lvl eq 'linear' ? $text{'linear'} : $text{'raid'.$lvl},
 			$c->{'size'} ? &nice_size($c->{'size'}*1024) : "",
 			&ui_links_row(\@mems),
