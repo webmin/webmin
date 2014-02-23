@@ -624,8 +624,8 @@ foreach my $i (@bacula_inits) {
 		      $action eq "restart" ? \&init::restart_action :
 					     undef;
 	$func || return "Unknown init action $action";
-	local $err = &$func($i);
-	if ($err) {
+	local ($ok, $err) = &$func($i);
+	if (!$ok) {
 		return &text('start_erun', "<tt>$i</tt>", "<pre>$err</pre>");
 		}
 	}
