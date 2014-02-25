@@ -30,13 +30,13 @@ $in{"upload_max_filesize_def"} ||
 					       : $in{"upload_max_filesize"});
 
 # Save max run time
-$in{"max_execution_time_def"} || $in{"max_execution_time"} =~ /^\d+$/ ||
+$in{"max_execution_time_def"} || $in{"max_execution_time"} =~ /^\-?\d+$/ ||
 	&error($text{'limits_emem'});
 &save_directive($conf, "max_execution_time",
 	$in{"max_execution_time_def"} ? undef : $in{"max_execution_time"});
 
 # Save max parsing time
-$in{"max_input_time_def"} || $in{"max_input_time"} =~ /^\d+$/ ||
+$in{"max_input_time_def"} || $in{"max_input_time"} =~ /^\-?\d+$/ ||
 	&error($text{'limits_einput'});
 &save_directive($conf, "max_input_time",
 	$in{"max_input_time_def"} ? undef : $in{"max_input_time"});
