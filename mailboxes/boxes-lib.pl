@@ -1448,7 +1448,11 @@ else {
 # Simplifies and truncates a subject for display in the mail list
 sub simplify_subject
 {
-local $rv = &eucconv(&decode_mimewords($_[0]));
+local ($mw, $cs) = &decode_mimewords($_[0]);
+if (&get_charset() eq 'UTF-8' && $cs && &can_convert_to_utf8($mw, $cs)) {
+	$mw = &convert_to_utf8($mw, $cs);
+	}
+local $rv = &eucconv($mw);
 $rv = substr($rv, 0, 80)." .." if (length($rv) > 80);
 return &html_escape($rv);
 }
@@ -1532,7 +1536,11 @@ sub decode_mimewords {
 	die "MIME::Words: unexpected case:\n($encstr) pos $pos\n\t".
 	    "Please alert developer.\n";
     }
-    return join('',map {$_->[0]} @tokens);
+    if (wantarray) {
+	return (join('',map {$_->[0]} @tokens), $charset);
+    } else {
+	return join('',map {$_->[0]} @tokens);
+    }
 }
 
 # _decode_Q STRING
@@ -1579,6 +1587,30 @@ $rawstr =~ s{([ a-zA-Z0-9\x7F-\xFF]{1,18})}{     ### get next "word"
 }xeg;
 $rawstr =~ s/\?==\?/?= =?/g;
 return $rawstr;
+}
+
+# can_convert_to_utf8(string, string-charset)
+# Check if the appropriate perl modules are available for UTF-8 conversion
+sub can_convert_to_utf8
+{
+my ($str, $cs) = @_;
+return 0 if ($cs eq "UTF-8");
+eval "use Encode";
+return 0 if ($@);
+eval "use utf8";
+return 0 if ($@);
+return 1;
+}
+
+# convert_to_utf8(string, string-charset)
+# If possible, convert a string to the UTF-8 charset
+sub convert_to_utf8
+{
+my ($str, $cs) = @_;
+&can_convert_to_utf8(@_);	# Load modules
+$str = Encode::decode($cs, $str);
+utf8::encode($str);
+return $str;
 }
 
 # encode_mimewords_address(string, %params)
