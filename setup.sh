@@ -633,19 +633,6 @@ if [ "$upgrading" != 1 ]; then
 	echo "os_version=$os_version" >> $config_dir/config
 	echo "real_os_type=$real_os_type" >> $config_dir/config
 	echo "real_os_version=$real_os_version" >> $config_dir/config
-	if [ -r /etc/system.cnf ]; then
-		# Found a caldera system config file .. get the language
-		source /etc/system.cnf
-		if [ "$CONF_LST_LANG" = "us" ]; then
-			CONF_LST_LANG=en
-		elif [ "$CONF_LST_LANG" = "uk" ]; then
-			CONF_LST_LANG=en
-		fi
-		grep "lang=$CONF_LST_LANG," "$wadir/lang_list.txt" >/dev/null 2>&1
-		if [ "$?" = 0 ]; then
-			echo "lang=$CONF_LST_LANG" >> $config_dir/config
-		fi
-	fi
 
 	# Turn on logging by default
 	echo "log=1" >> $config_dir/config
