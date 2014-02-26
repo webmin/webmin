@@ -22,6 +22,7 @@ access_libwrap=Sjekk ogs&#229; TCP-wrappers <tt>hosts.allow</tt> og <tt>hosts.de
 access_libwrapcpan=<a href='$1'>Klikk her</a> for &#229; la Webmin installere den manglende Perl modulen automatisk.
 access_local=Ta med lokalt nettverk i listen
 access_title=IP Tilgangs kontroll
+access_trust=Stol p&#229; ekstern IP-adresse angitt av proxyer?
 advanced_chattr=Tillat endring av uforanderlige filer?
 advanced_days=dager
 advanced_egzip=Gzip komprimering kan ikke aktiveres uten at $1 perl modulen er installert.
