@@ -15,3 +15,5 @@ desc_cz.UTF-8=Cluster - Softwarové balíčky
 desc_hu.UTF-8=Klaszter szoftver csomag
 desc_no=Klynge - Programvarepakker
 desc_pl=Klaster - Pakiety oprogramowania
+longdesc_ms_MY=Pasang RPMs, debian dan pakej Solaris ke pelbagai pelayan dari satu sumber.
+desc_ms_MY=Kluster Pakej Software

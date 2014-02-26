@@ -236,15 +236,24 @@ sub file_chooser_button2
 # Return the max NFS version allowed on a server
 sub nfs_max_version
 {
-    local($_, $max, $out);
-    $max = 0;
-    $out = `rpcinfo -p $_[0] 2>&1`;
-    if ($?) { return 3; }
-    foreach (split(/\n/, $out)) {
+local($_, $max, $out);
+$max = 0;
+$out = &backquote_command("rpcinfo -p $_[0] 2>&1");
+if ($?) {
+	# NFS server is down, take a guess based on kernel
+	my $out = &backquote_command("uname -r");
+	if ($out =~ /^(\d+)\./ && $1 >= 3 ||
+	    $out =~ /^(\d+)\.(\d+)\./ && $1 == 2 && $2 >= 6) {
+		return 4;
+		}
+	return 3;
+	}
+foreach (split(/\n/, $out)) {
 	if ((/ +(\d) +.*nfs/) && ($1 > $max)) {
-	    $max = $1; }
-    }
-    return $max;
+		$max = $1;
+		}
+	}
+return $max;
 }
 
 # describe_host(host)

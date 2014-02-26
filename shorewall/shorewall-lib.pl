@@ -376,28 +376,28 @@ if ($_[3] == 2) {
 	$found = !$_[1];
 	}
 elsif ($_[3] == 1) {
-	printf "<option value=- %s>%s\n",
+	printf "<option value=- %s>%s</option>\n",
 		$_[1] eq '-' ? "selected" : "", "&lt;$text{'list_any'}&gt;";
 	$found = !$_[1] || $_[1] eq '-';
 	}
 elsif ($_[3] == 0) {
-	printf "<option value=all %s>%s\n",
+	printf "<option value=all %s>%s</option>\n",
 		$_[1] eq 'all' ? "selected" : "", "&lt;$text{'list_any'}&gt;";
-	printf "<option value=\$FW %s>%s\n",
+	printf "<option value=\$FW %s>%s</option>\n",
 		&is_fw($_[1]) ? "selected" : "", "&lt;$text{'list_fw'}&gt;";
 	$found = !$_[1] || $_[1] eq 'all' || &is_fw($_[1]);
 	}
 foreach $z (@ztable) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$z->[0], $_[1] eq $z->[0] ? "selected" : "", &convert_zone($z->[0]);
 	$found++ if ($_[1] eq $z->[0]);
 	}
 if ($_[2]) {
-	printf "<option value='' %s>%s\n",
+	printf "<option value='' %s>%s</option>\n",
 		$found ? "" : "selected", $text{'list_other'};
 	}
 else {
-	print "<option value=$_[1] selected>$_[1]\n" if (!$found);
+	print "<option value=$_[1] selected>$_[1]</option>\n" if (!$found);
 	}
 print "</select>\n";
 return $found;
@@ -410,11 +410,11 @@ local @itable = &read_table_file("interfaces", \&standard_parser);
 print "<select name=$_[0]>\n";
 local $found = !$_[1];
 foreach $i (@itable) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$i->[1], $_[1] eq $i->[1] ? "selected" : "", $i->[1];
 	$found++ if ($_[1] eq $i->[1]);
 	}
-print "<option value=$_[1] selected>$_[1]\n" if (!$found);
+print "<option value=$_[1] selected>$_[1]</option>\n" if (!$found);
 print "</select>\n";
 }
 
@@ -713,27 +713,27 @@ print "<tr> <td><b>$text{'policy_2'}</b></td>\n";
 print "<td><select name=policy>\n";
 $found = !$_[2];
 foreach $p (@policy_list) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$p, lc($p) eq lc($_[2]) ? "selected" : "", $p;
 	$found++ if (lc($p) eq lc($_[2]));
 	}
-print "<option value=$_[2] selected>$_[2]\n" if (!$found);
+print "<option value=$_[2] selected>$_[2]</option>\n" if (!$found);
 print "</select></td>\n";
 
 print "<td><b>$text{'policy_3'}</b></td>\n";
 print "<td><select name=log>\n";
-printf "<option value=- %s>%s\n",
+printf "<option value=- %s>%s</option>\n",
 	$_[3] eq '-' || !$_[3] ? "selected" : "", "&lt;$text{'policy_nolog'}&gt;";
-printf "<option value=ULOG %s>%s\n",
+printf "<option value=ULOG %s>%s</option>\n",
 	$_[3] eq 'ULOG' ? "selected" : "", "&lt;$text{'policy_ulog'}&gt;";
 $found = !$_[3] || $_[3] eq '-' || $_[3] eq 'ULOG';
 &foreign_require("syslog", "syslog-lib.pl");
 foreach $l (&syslog::list_priorities()) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$l, $_[3] eq $l ? "selected" : "", $l;
 	$found++ if ($_[3] eq $l);
 	}
-print "<option value=$_[3] selected>$_[3]\n" if (!$found);
+print "<option value=$_[3] selected>$_[3]</option>\n" if (!$found);
 print "</select></td> </tr>\n";
 
 local ($l, $b) = $_[4] =~ /(\d+):(\d+)/ ? ($1, $2) : ( );
@@ -825,27 +825,27 @@ foreach $a ((sort { $a cmp $b } @rules_actions),
 	    &list_standard_actions(),
 	    (&version_atleast(3) ? ( "-------- Macros --------",
 				     &list_standard_macros() ) : ( ) )) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$a, $action eq $a ? "selected" : "", $a;
 	$found++ if ($action eq $a);
 	}
-print "<option value=$action selected>$action\n" if (!$found);
+print "<option value=$action selected>$action</option>\n" if (!$found);
 print "</select>\n";
 
 # Logging level
 print "<b>$text{'rules_log'}</b> <select name=log>\n";
-printf "<option value='' %s>%s\n",
+printf "<option value='' %s>%s</option>\n",
 	!$log ? "selected" : "", "&lt;$text{'rules_nolog'}&gt;";
-printf "<option value=ULOG %s>%s\n",
+printf "<option value=ULOG %s>%s</option>\n",
 	$log eq 'ULOG' ? "selected" : "", "&lt;$text{'policy_ulog'}&gt;";
 $found = !$log || $log eq '-' || $log eq 'ULOG';
 &foreign_require("syslog", "syslog-lib.pl");
 foreach $l (&syslog::list_priorities()) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$l, $log eq $l ? "selected" : "", $l;
 	$found++ if ($log eq $l);
 	}
-print "<option value=$log selected>$log\n" if (!$found);
+print "<option value=$log selected>$log</option>\n" if (!$found);
 print "</select></td> </tr>\n";
 
 if (&version_atleast(3)) {
@@ -890,13 +890,13 @@ print "<tr> <td><b>$text{'rules_3'}</b></td>\n";
 print "<td colspan=3><select name=proto>\n";
 $found = !$_[3];
 foreach $p (@rules_protos) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$p, $p eq $_[3] ? "selected" : "",
 		$p eq 'all' ? "&lt;$text{'list_any'}&gt;" :
 		 $p eq 'related' ? "&lt;$text{'rules_related'}&gt;" : uc($p);
 	$found++ if ($p eq $_[3]);
 	}
-printf "<option value='' %s>%s\n",
+printf "<option value='' %s>%s</option>\n",
 	$found ? "" : "selected", $text{'list_other'};
 print "</select>\n";
 printf "<input name=pother size=5 value='%s'></td> </tr>\n",
@@ -1061,11 +1061,11 @@ print "<tr> <td><b>$text{'tos_2'}</b></td>\n";
 print "<td><select name=proto>\n";
 $found = !$_[2];
 foreach $p (@tos_protos) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$p, $p eq $_[2] ? "selected" : "", uc($p);
 	$found++ if ($p eq $_[2]);
 	}
-printf "<option value='' %s>%s\n",
+printf "<option value='' %s>%s</option>\n",
 	$found ? "" : "selected", $text{'list_other'};
 print "</select>\n";
 printf "<input name=pother size=5 value='%s'></td> </tr>\n",
@@ -1091,11 +1091,11 @@ print "<tr> <td><b>$text{'tos_5'}</b></td>\n";
 print "<td><select name=tos>\n";
 $found = !$_[5];
 foreach $t (sort { $a <=> $b } keys %tos_map) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$t, $_[5] == $t ? "selected" : "", $tos_map{$t};
 	$found++ if ($_[5] == $t);
 	}
-print "<option value=$_[5] selected>$_[5]\n" if (!$found);
+print "<option value=$_[5] selected>$_[5]</option>\n" if (!$found);
 print "</select></td> </tr>\n";
 
 print "<tr> <td><b>$text{'tos_6'}</b></td>\n";
@@ -1430,12 +1430,12 @@ foreach $tt ('ipsec', 'ipsecnat',
 				       : ( )),
 	     'ip', 'gre', 'pptpclient', 'pptpserver', 'generic',
 	     (&version_atleast(1, 3, 14) ? ( 'openvpn' ) : ( )) ) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$tt, $ttype eq $tt ? "selected" : "",
 		$text{'tunnels_'.$tt.'_l'} || $text{'tunnels_'.$tt};
 	$found++ if ($ttype eq $tt);
 	}
-print "<option value=$ttype selected>",uc($ttype),"\n" if (!$found);
+print "<option value=$ttype selected>",uc($ttype),"</option>\n" if (!$found);
 print "</select>\n";
 print "<input name=tport size=10 value='$tport'>\n";
 print "</td>\n";
@@ -1564,12 +1564,12 @@ print "<tr> <td><b>$text{'blacklist_proto'}</b></td>\n";
 print "<td colspan=3><select name=proto>\n";
 $found = !$_[1];
 foreach $p (@blacklist_protos) {
-	printf "<option value='%s' %s>%s\n",
+	printf "<option value='%s' %s>%s</option>\n",
 		$p, $p eq $_[1] ? "selected" : "",
 		$p eq '' ? "&lt;$text{'list_any'}&gt;" : uc($p);
 	$found++ if ($p eq $_[1]);
 	}
-printf "<option value='*' %s>%s\n",
+printf "<option value='*' %s>%s</option>\n",
 	$found ? "" : "selected", $text{'list_other'};
 print "</select>\n";
 printf "<input name=pother size=5 value='%s'></td> </tr>\n",

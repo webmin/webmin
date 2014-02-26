@@ -1,6 +1,9 @@
 #!/usr/local/bin/perl
 # Save the list of per-function cache manager passwords
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 &error_setup($text{'cachemgr_err'});
 $access{'cachemgr'} || &error($text{'cachemgr_ecannot'});
@@ -8,7 +11,7 @@ $access{'cachemgr'} || &error($text{'cachemgr_ecannot'});
 
 # Validate and store inputs
 &lock_file($config{'squid_conf'});
-$conf = &get_config();
+my $conf = &get_config();
 
 if ($in{'cachemgr_def'}) {
 	# Clear them all
@@ -16,8 +19,10 @@ if ($in{'cachemgr_def'}) {
 	}
 else {
 	# Build up list and save
-	for($i=0; defined($pmode = $in{"pass_def_$i"}); $i++) {
-		$pass = $pmode || $in{"pass_$i"};
+	my @rv;
+	for(my $i=0; defined(my $pmode = $in{"pass_def_$i"}); $i++) {
+		my $pass = $pmode || $in{"pass_$i"};
+		my @actions;
 		if ($in{"all_$i"}) {
 			@actions = ( "all" );
 			}

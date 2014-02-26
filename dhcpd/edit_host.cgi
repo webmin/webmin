@@ -23,7 +23,7 @@ else {
 
 # display
 if ($in{'uidx'} ne '') {
-	local $s = $in{'sidx'} eq '' ? $conf->[$in{'uidx'}] :
+	my $s = $in{'sidx'} eq '' ? $conf->[$in{'uidx'}] :
 		   $conf->[$in{'sidx'}]->{'members'}->[$in{'uidx'}];
 	$desc = &text('ehost_subnet', $s->{'values'}->[0], $s->{'values'}->[2]);
 	}
@@ -153,132 +153,122 @@ foreach $s (@shar) {
 		}
 	$is ++;
 	}
+print &ui_form_start("save_host.cgi", "post");
+print &ui_hidden("ret",$in{'ret'});
+print &ui_table_start($text{'ehost_tabhdr'}, "width=100%", 4);
 
-print "<form action=save_host.cgi method=post>\n";
-print "<input name=ret value=\"$in{'ret'}\" type=hidden>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'ehost_tabhdr'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print "<tr><td valign=middle><b>$text{'ehost_desc'}</b></td>\n";
+print "<td valign=middle colspan=3>";
+print &ui_textbox("desc", &html_escape($host->{'comment'}), 60);
+print "</td>";
+print "</tr>";
 
-print "<tr> <td><b>$text{'ehost_desc'}</b></td>\n";
-printf "<td colspan=3><input name=desc size=60 value='%s'></td> </tr>\n",
-	&html_escape($host->{'comment'});
+print "<tr><td valign=middle><b>$text{'ehost_hname'}</b></td>\n";
+print "<td valign=middle>";
+print &ui_textbox("name", ( $host ? $host->{'values'}->[0] : "" ), 20);
+print "</td>\n";
 
-print "<tr> <td><b>$text{'ehost_hname'}</b></td>\n";
-printf "<td><input name=name size=20 value=\"%s\"></td>\n",
-	$host ? $host->{'values'}->[0] : "";
 $assign = $in{'gidx'} ne "" ? "3" :
 	$in{'uidx'} ne "" ? "2" :
 	$in{'sidx'} ne "" ? "1" : "0";
 if (!defined($in{'ret'})) {
-	local @labels = ( $text{'ehost_toplevel'}, $text{'ehost_inshared'},
+	my @labels = ( $text{'ehost_toplevel'}, $text{'ehost_inshared'},
 			  $text{'ehost_insubnet'}, $text{'ehost_ingroup'} );
-	print "<td colspan=2 rowspan=2><table><tr>";
+	print "<td valign=top colspan=2 rowspan=2><table><tr>";
 	print "<td colspan=2>$text{'ehost_nojavascr'}</td></tr>\n<tr>" if ($in{'assign'});
 	print "<td valign=top><b>$text{'ehost_assign'}</b><br>\n";
 	if ($in{'assign'}) {
 		$assign = $in{'assign'};
 		print "$labels[$assign]</td>\n";
-		print "<input name=assign type=hidden value=$assign>\n";
-		print "<input name=jsquirk type=hidden value=1>\n";
+        print &ui_hidden("assign",$assign);
+        print &ui_hidden("jsquirk",1);
 		}
 	else {
-		print "<select name=assign onChange='setparent(0)'>\n";
+        my @assign_sel;
 		for ($i = 0; $i <= 3; $i++) {
-			printf "<option value=$i %s>%s\n",
-				$assign == $i ? "selected" : "",
-				$labels[$i];
+            push(@assign_sel, [$i, $labels[$i], ( $assign == $i ? "selected" : "" ) ]); 
 			}
-		print "</select></td>\n";
+        print &ui_select("assign", undef, \@assign_sel, 1, undef, undef, undef, "onChange='setparent(0)'" );
+		print "</td>\n";
 		}
-	print "<td><select name=parent size=5 width=120>\n";
+	print "<td>";
+    my @parent_sel;
 	if ($assign == 3) {
 		$ig = 0;
 		foreach $g (@group) {
-			printf "<option value=\"%s\" %s>%s\n",
-				(defined($shared{$g}) ? "$shared{$g}," : "").
-				(defined($subnet{$g}) ? "$subnet{$g}," : "").
-				$g->{'index'},
-				$ig == $sel_parent ? "selected" : "",
-				$group_desc[$ig]
-					if &can('rw', \%access, $g);
-			$ig ++;
+            my $val = (defined($shared{$g}) ? "$shared{$g}," : "").(defined($subnet{$g}) ? "$subnet{$g}," : "").$g->{'index'};
+            my $txt = $group_desc[$ig] if &can('rw', \%access, $g);
+            push(@parent_sel, [$val, $txt, ($ig == $sel_parent ? "selected" : "") ] );
+			$ig++;
 			}
 		}
 	elsif ($assign == 2) {
 		$iu = 0;
 		foreach $u (@subn) {
-			printf "<option value=\"%s\" %s>%s\n",
-				defined($shared{$u}) ? "$shared{$u},$u->{'index'}" : $u->{'index'},
-				$iu == $sel_parent ? "selected" : "",
-				$subn_desc[$iu]
-					if &can('rw', \%access, $u);
-			$iu ++;
+            my $val1 = defined($shared{$u}) ? "$shared{$u},$u->{'index'}" : $u->{'index'};
+            my $txt1 = $subn_desc[$iu] if &can('rw', \%access, $u);
+            push(@parent_sel, [$val1, $txt1, ($iu == $sel_parent ? "selected" : "") ] );
+			$iu++;
 			}
 		}
 	elsif ($assign == 1) {
 		$is = 0;
 		foreach $s (@shar) {
-			printf "<option value=\"%s\" %s>%s\n",
-				$s->{'index'},
-				$is == $sel_parent ? "selected" : "",
-				$shar_desc[$is]
-					if &can('rw', \%access, $s);
-			$is ++;
+            my $txt2 = $shar_desc[$is] if &can('rw', \%access, $s);
+            push(@parent_sel, [$s->{'index'}, $txt1, ($is == $sel_parent ? "selected" : "") ] );
+			$is++;
 			}
 		}
-	print "</select></td></tr>\n";
+    print &ui_select("parent", undef, \@parent_sel, 5, undef, undef, undef, "width=120");
+	print "</td></tr>\n";
 	print "</table></td>\n";
-
-	print "</tr> <tr>\n";
+	print "</tr><tr>\n";
 	}
 else {
-	print "<input name=assign type=hidden value=$assign>\n";
-	print "<input name=parent type=hidden value=$currpar>\n";
+    print &ui_hidden("assign",$assign);
+    print &ui_hidden("parent",$currpar);
 	}
 
 $hard = $hconf ? &find("hardware", $hconf) : undef;
-print "<td><b>$text{'ehost_hwaddr'}</b></td>\n";
-print "<td nowrap><select name=hardware_type>\n";
-printf "<option %s>ethernet\n",
-	$hard && $hard->{'values'}->[0] eq "ethernet" ? "selected" : "";
-printf "<option %s>token-ring\n",
-	$hard && $hard->{'values'}->[0] eq "token-ring" ? "selected" : "";
-printf "<option %s>fddi\n",
-	$hard && $hard->{'values'}->[0] eq "fddi" ? "selected" : "";
-print "</select>";
-printf "<input name=hardware size=18 value=\"%s\"></td> </tr>\n",
-	$hard ? $hard->{'values'}->[1] : "";
+print "<td valign=middle><b>$text{'ehost_hwaddr'}</b></td>\n";
+print "<td valign=middle nowrap>";
+my @hardware_type_sel;
+my @hardware = ("ethernet","token-ring","fddi");
+foreach my $hv (@hardware) {
+    push(@hardware_type_sel, [$hv,$hv, ($hard && $hard->{'values'}->[0] eq $hv ? "selected" : "")] );
+}
+print &ui_select("hardware_type", undef, \@hardware_type_sel, 1);
+print &ui_textbox("hardware", ( $hard ? $hard->{'values'}->[1] : "" ), 18);
+print "</td></tr>\n";
 
 $fixed = $host ? &find("fixed-address", $hconf) : "";
-print "<tr> <td><b>$text{'ehost_fixedip'}</b></td> <td>\n";
-printf "<input name=fixed-address size=20 value=\"%s\"></td>\n",
-	$fixed ? join(" ", grep { $_ ne "," } @{$fixed->{'values'}}) : "";
+print "<tr><td><b>$text{'ehost_fixedip'}</b></td><td>\n";
+print &ui_textbox("fixed-address", ( $fixed ? join(" ", grep { $_ ne "," } @{$fixed->{'values'}}) : "" ), 20);
+print "</td>\n";
 
 &display_params($hconf, "host");
 
-print "</table></td></tr></table>\n";
-print "<input type=hidden name=gidx value=\"$in{'gidx'}\">\n";
-print "<input type=hidden name=uidx value=\"$in{'uidx'}\">\n";
-print "<input type=hidden name=sidx value=\"$in{'sidx'}\">\n";
+print &ui_table_end();
+
+print &ui_hidden("gidx",$in{'gidx'});
+print &ui_hidden("uidx",$in{'uidx'});
+print &ui_hidden("sidx",$in{'sidx'});
+
 if (!$in{'new'}) {
-	print "<input type=hidden name=idx value=\"$in{'idx'}\">\n";
+    print &ui_hidden("idx",$in{'idx'});
 	print "<table width=100%><tr>\n";
-	print "<td><input type=submit value=\"$text{'save'}\"></td>\n"
-		if &can('rw', \%access, $host);
-	print "<td align=center><input type=submit name=options value=\"",
-          &can('rw', \%access, $host) ? $text{'butt_eco'} : $text{'butt_vco'},
-	      "\"></td>\n";		  
-	print "<td align=right><input type=submit name=delete ",
-	      "value=\"$text{'delete'}\"></td>\n" 
-		  if &can('rw', \%access, $host, 1);
+    print "<td>".&ui_submit($text{'save'})."</td>" if &can('rw', \%access, $host);
+    print "<td align=center>".&ui_submit(( &can('rw', \%access, $host) ? $text{'butt_eco'} : $text{'butt_vco'} ),"options")."</td>";
+    print "<td align=right>".&ui_submit($text{'delete'},"delete")."</td>" if &can('rw', \%access, $host, 1);
 	print "</tr></table>\n";
 	}
 else {
-	print "<input type=hidden name=new value=1>\n";
-	print "<input type=submit value=\"$text{'butt_create'}\">\n";
+    print &ui_hidden("new",1);
+    print &ui_submit($text{'butt_create'});
 	}
-print "</form>\n";
+
+print &ui_form_end();
+
 print &script_fn() if (!defined($in{'ret'}));
 if ($in{'ret'} eq "group") {
 	&ui_print_footer("edit_group.cgi?sidx=$in{'sidx'}&uidx=$in{'uidx'}&idx=$in{'gidx'}",
@@ -298,7 +288,7 @@ else {
 sub script_fn
 {
 return <<EOF
-<script>
+<script type='text/javascript'>
 function setparent(sel)
 {
 var idx = document.forms[0].assign.selectedIndex;
@@ -325,3 +315,4 @@ setparent($sel_parent);
 EOF
 
 }
+

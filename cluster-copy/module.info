@@ -12,3 +12,5 @@ desc_cz.UTF-8=Cluster - Kop√≠rov√°n√≠ soubor≈Ø
 desc_no=Klynge - Kopier filer
 desc_pl=Klaster - Kopia plikÛw
 desc_hu=Cluster f·jlok m·sol·sa
+longdesc_ms_MY=Jadualkan pemindahan fail dari pelayan ini ke pelayan yang lain dalam kluster Webmin.
+desc_ms_MY=Kluster Fail Salinan

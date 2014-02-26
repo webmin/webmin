@@ -15,5 +15,6 @@ pdbedit=Full path to pdbedit,3,None
 net=Full path to net command,3,None
 start_cmd=Command to start Samba servers,3,Automatic
 stop_cmd=Command to stop Samba servers,3,Just kill processes
+restart_cmd=Command to restart Samba servers,3,Just stop and start
 start_cmd_wb=Command to start Winbind servers,0
 stop_cmd_wb=Command to stop Winbind servers,0

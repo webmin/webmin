@@ -85,7 +85,7 @@ if (&indexof('REJECT', @jumps) >= 0 && &can_jump("REJECT")) {
 			  "icmp-port-unreachable", "icmp-proto-unreachable",
 			  "icmp-net-prohibited", "icmp-host-prohibited",
 			  "echo-reply", "tcp-reset" );
-	priunt &ui_table_row($text{'edit_rwith'},
+	print &ui_table_row($text{'edit_rwith'},
 		&ui_radio("rwithdef", $rwith eq "" ? 1 : 0,
 			  [ [ 1, $text{'default'} ],
 			    [ 0, &text('edit_rwithtype',
@@ -159,7 +159,7 @@ if (($table->{'name'} eq 'nat' && $rule->{'chain'} ne 'PREROUTING' &&
 	print &ui_table_row($text{'edit_snat'},
 		&ui_radio("snatdef", $sipfrom eq "" ? 1 : 0,
 			  [ [ 1, $text{'default'} ],
-			    [ 0, &text('edit_snatip',
+			    [ 0, &text('edit_dnatip',
 				   &ui_textbox("sipfrom", $sipfrom, 15),
 				   &ui_textbox("sipto", $sipto, 15))." ".
 				 &text('edit_prange',

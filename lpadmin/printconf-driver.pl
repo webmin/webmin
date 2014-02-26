@@ -227,9 +227,9 @@ print "$text{'redhat_driver'}</td> <td><table width=100%>";
 
 print "<tr> <td valign=top><b>$text{'redhat_printer2'}</b></td>\n";
 print "<td><select name=printer size=10 onChange='setdriver(0)'>\n";
-printf "<option value=%s %s>%s\n",
+printf "<option value=%s %s>%s</option>\n",
 	'text', $drv->{'text'} ? 'selected' : '', "Text printer";
-printf "<option value=%s %s>%s\n",
+printf "<option value=%s %s>%s</option>\n",
 	'postscript', $drv->{'postscript'} ? 'selected' : '',
 	"Postscript printer";
 
@@ -238,7 +238,7 @@ local $select_driver = 0;
 foreach $k (sort { lc($a) cmp lc($b) } keys %$list) {
 	foreach $m (@{$list->{$k}}) {
 		next if (!@{$m->{'drivers'}});
-		printf "<option value='%s' %s>%s\n",
+		printf "<option value='%s' %s>%s</option>\n",
 			join(";", $m->{'id'}, @{$m->{'drivers'}}),
 			$drv->{'make'} eq $k &&
 			$drv->{'model'} eq $m->{'model'} ? 'selected' : '',
@@ -253,13 +253,13 @@ print "</select><select name=driver size=10 width=100></select></td> </tr>\n";
 
 local $foundp = 0;
 print "<tr> <td><b>$text{'redhat_paper'}</b></td> <td><select name=paper>\n";
-print "<option value='' selected>$text{'redhat_none'}\n" if (!$drv->{'paper'});
+print "<option value='' selected>$text{'redhat_none'}</option>\n" if (!$drv->{'paper'});
 foreach $p (@paper_sizes) {
-	printf "<option %s>%s\n",
+	printf "<option %s>%s</option>\n",
 		$drv->{'paper'} eq $p ? 'selected' : '', $p;
 	$foundp++ if ($drv->{'paper'} eq $p);
 	}
-printf "<option selected>$drv->{'paper'}\n" if (!$foundp && $drv->{'paper'});
+printf "<option selected>$drv->{'paper'}</option>\n" if (!$foundp && $drv->{'paper'});
 print "</select></td> </tr>\n";
 
 print "</table></td></tr>\n";

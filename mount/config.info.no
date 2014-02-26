@@ -1,5 +1,6 @@
 line1=Konfigurerbare innstillinger,11
 browse_server=Tjener det skal hentes liste fra,3,localhost
+browse_group=CIFS arbeidsgruppe for browse liste,0
 long_fstypes=Vis lange filsystem-type navn,1,1-Ja,0-Nei
 sort_mode=Sorter filsystemer etter,1,2-Monteringspunkt,1-Type,0-Plassering i filer
 show_used=Visk brukt diskplass i liste over filsystemer,1,1-Ja,0-Nei

@@ -85,7 +85,6 @@ dav_users0=U¾ivatelé a skupiny uvedené ní¾e ..
 dav_users1=V¹ichni u¾ivatelé
 defacl_desc=Tato stránka umo¾òuje konfigurovat rozlièná nastavení kontroly pøístupu, která budou vyu¾ita u modulù Userminu a u¾ivatelù. Tato nastavení jsou u ka¾dého u¾ivatele obdobná jako u globálního ACL v modulu Webmin U¾ivatelé.
 defacl_err=Chyba pøi ukládání nastavení kontroly pøístupu
-defacl_eversion=Editování nastavení kontroly pøístupu Userminu je podporováno pouze v Userminu verze 0.76 a vı¹e.
 defacl_header=Nastavení kontroly pøístupu pro Usermin u¾ivatele
 defacl_title=Nastavení kontroly pøístupu
 delete_desc1=$1 (Klon z $2)

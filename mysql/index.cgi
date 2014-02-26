@@ -6,7 +6,7 @@ require './mysql-lib.pl';
 &ReadParse();
 
 # Check for MySQL programs
-if ($config{'start_cmd'} =~ /^(\S+)/) {
+if ($config{'start_cmd'} =~ /^(\S+)/ && &is_mysql_local()) {
 	$start = $1;
 	}
 foreach $p ( [ $config{'mysqladmin'}, 'index_eadmin', 'index_mysqladmin' ],
@@ -75,13 +75,10 @@ if ($r == 0) {
 
 	if ($access{'stop'} && &is_mysql_local()) {
 		print &ui_hr();
-		print "<form action=start.cgi>\n";
-		print "<table width=100%><tr><td>\n";
-		print "<input type=submit ",
-		      "value=\"$text{'index_start'}\"></td>\n";
-		print "<td>",&text('index_startmsg',
-		      "<tt>$config{'start_cmd'}</tt>"),"</td> </tr></table>\n";
-		print "</form>\n";
+        print &ui_buttons_start();
+        print &ui_buttons_row("start.cgi",
+		      $text{'index_start'}, &text('index_startmsg',"<tt>$config{'start_cmd'}</tt>"));
+        print &ui_buttons_end();
 		}
 	}
 elsif ($r == -1) {

@@ -18,9 +18,8 @@ else {
 foreach $g (@{$s->{'data'}}) {
 	if ($g->[0] eq $in{'table'} &&
 	    $g->[2] eq $in{'ns'}) {
-		$g->[1] =~ s/^\{//; $g->[1] =~ s/\}$//;
-		@grant = map { /^"(.*)=(.*)"$/ || /^(.*)=(.*)$/; [ $1, $2 ] }
-			     split(/,/, $g->[1]);
+		@grant = &extract_grants($g->[1]);
+		last;
 		}
 	}
 $qt = $ss ? &quote_table($in{'ns'}.".".$in{'table'})

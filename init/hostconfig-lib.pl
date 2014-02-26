@@ -161,13 +161,13 @@ local($ahref, $setting, $link, $description);
 my($ahref, $setting, $description) = @_;
 local @cols;
 if ($access{'bootup'} == 1) {
-	push(@cols, "<a href=\"edit_hostconfig.cgi?0+$ahref\">$ahref</a>");
+	push(@cols, &ui_link("edit_hostconfig.cgi?0+$ahref", $ahref) );
 	}
 else {
 	push(@cols, $ahref);
 	}
 if ( $setting eq "-NO-" ) {
-	push(@cols, "<FONT color=#ff0000>$setting</font>");
+	push(@cols, "<font color=#ff0000>$setting</font>");
 	}
 elsif ( $setting ne "" ) {
 	push(@cols, $setting);

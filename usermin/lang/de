@@ -89,7 +89,6 @@ dav_users0=Benutzer und Gruppen, die unten aufgelistet sind ..
 dav_users1=Alle Benutzer
 defacl_desc=Diese Seite erlaubt es Ihnen verschiedene Zugriffskontrolloptionen zu setzen, welche auf Usermin-Module und -Benutzer angewandt werden. Diese Optionen sind die gleichen wie die f&#252;r die Globalen Zugriffkontrolloptionen (ACL) f&#252;r die Benutzereinstellungen im entsprechenden Webminbenutzermodul.
 defacl_err=Konnte Usermin-ACL nicht speichern
-defacl_eversion=Das Editieren von Usermin-ACLs wird ab Usermin Version 0.76 und h&#246;her unterst&#252;tzt.
 defacl_header=Zugriffskontrolloptionen (ACL) f&#252;r Webminbenutzer
 defacl_title=Zugriffskontrolloptionen (ACL)
 delete_desc1=$1 (Klon von $2)

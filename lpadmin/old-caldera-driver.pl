@@ -172,7 +172,7 @@ foreach $k (sort { $a <=> $b } keys %$plist) {
 		      $_[1]->{'gsdevice'} eq $p->{'type'}->{'0'}) ||
 		     (!$_[1]->{'gsname'} && !$found &&
 		      $_[1]->{'gsdevice'} eq $p->{'type'}->{'0'});
-	printf "<option %s value='%s'>%s\n",
+	printf "<option %s value='%s'>%s</option>\n",
 		$got ? 'selected' : '',
 		$p->{'description'}.";".join(";", @thisres),
 		$p->{'description'};
@@ -182,7 +182,7 @@ foreach $k (sort { $a <=> $b } keys %$plist) {
 	}
 print "</select><select name=res size=5>\n";
 foreach $r (sort { $a <=> $b} keys %gotres) {
-	printf "<option %s>%s\n",
+	printf "<option %s>%s</option>\n",
 		$_[1]->{'res'} eq $r ? 'selected' : '', $r;
 	}
 print "</select></td> </tr>\n";
@@ -195,7 +195,7 @@ printf "<input type=radio name=eof value=false %s> $text{'no'}</td>\n",
 
 print "<td><b>$text{'caldera_paper'}</b></td> <td><select name=paper>\n";
 foreach $p (sort { $a cmp $b } keys %paper_sizes) {
-	printf "<option value='%s' %s>%s\n",
+	printf "<option value='%s' %s>%s</option>\n",
 		$p, $_[1]->{'paper'} eq $p ? 'selected' : '',
 		$paper_sizes{$p};
 	}
@@ -221,7 +221,7 @@ print "<td><table width=100%>\n";
 print "<tr> <td valign=top><b>$text{'caldera_printer'}</b></td>\n";
 print "<td colspan=3><select name=uniprint size=5>\n";
 foreach $u (&list_uniprint()) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$u->[0], $u->[0] eq $_[1]->{'upp'} ? 'selected' : '', $u->[1];
 	}
 closedir(DIR);
@@ -235,7 +235,7 @@ printf "<input type=radio name=ueof value=false %s> $text{'no'}</td>\n",
 
 print "<td><b>$text{'caldera_paper'}</b></td> <td><select name=upaper>\n";
 foreach $p (sort { $a cmp $b } keys %paper_sizes) {
-	printf "<option value='%s' %s>%s\n",
+	printf "<option value='%s' %s>%s</option>\n",
 		$p, $_[1]->{'paper'} eq $p ? 'selected' : '',
 		$paper_sizes{$p};
 	}

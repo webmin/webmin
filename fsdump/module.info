@@ -21,3 +21,6 @@ desc_pt_BR=Backup do Sistema de Arquivos
 desc_cz.UTF-8=Zálohování souborů
 desc_no=Sikkerhetskopier filsystem
 desc_hu=F�jlrendszer ment�se
+longdesc_ms_MY=Backup dan restore sistem fail dengan menggunakan arahan dump dan restore pelbagai.
+desc_ms_MY=Sistem Fail Backup
+longdesc_de=Sichern und Wiederherstellen von Dateisystemen mit Sicherungs- und Wiederherstellungsfamilie von Befehlen.

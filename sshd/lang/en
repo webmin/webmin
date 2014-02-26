@@ -55,6 +55,7 @@ users_authkeys_set=File under home
 users_eauthkeys=Missing or invalid-looking authorized keys file
 users_maxauthtries=Maximum login attempts per connection
 users_emaxauthtries=Missing or non-numeric number of login attempts per connection
+users_chal=Use challenge-response authentication?
 
 net_title=Networking
 net_header=Networking options

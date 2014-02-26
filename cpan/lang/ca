@@ -65,6 +65,7 @@ download_nomissing=Tot instal·lat
 download_ebuild=Un o més dels mòduls de Perl necessiten $1 per compilar-se, però aquest mòdul no està instal·lat.
 download_yum=S'està instal·lant el mòdul Perl $1 del paquet $2...
 download_missingok=Mòduls que falten de CPAN
+download_fallback=No s'han pogut instal·lar alguns mòduls a partir dels paquets, es provarà la instal·lació a partir dels fonts...
 
 install_title=Instal·lació de Mòdul
 install_untar=S'està desempaquetant el fitxer del mòdul

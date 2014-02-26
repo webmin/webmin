@@ -25,19 +25,19 @@ local ($c, $i = 0);
 foreach $c (@{$_[0]}, @{$_[1]}, { }) {
 	$rv .= "<tr $cb>\n";
 	$rv .= "<td><select name=CacheEnable_e_$i>\n";
-	$rv .= sprintf "<option value=0 %s>&nbsp;\n",
+	$rv .= sprintf "<option value=0 %s>&nbsp;</option>\n",
 			$c ? "" : "selected";
-	$rv .= sprintf "<option value=1 %s>%s\n",
+	$rv .= sprintf "<option value=1 %s>%s</option>\n",
 			$c->{'name'} eq 'CacheEnable' ? 'selected' : '',
 			$text{'yes'};
-	$rv .= sprintf "<option value=2 %s>%s\n",
+	$rv .= sprintf "<option value=2 %s>%s</option>\n",
 			$c->{'name'} eq 'CacheDisable' ? 'selected' : '',
 			$text{'no'};
 	$rv .= "</select></td> <td><select name=CacheEnable_t_$i>\n";
-	$rv .= sprintf "<option value=disk %s> %s\n",
+	$rv .= sprintf "<option value=disk %s>%s</option>\n",
 			$c->{'words'}->[0] eq 'disk' ? 'selected' : '',
 			$text{'cache_disk'};
-	$rv .= sprintf "<option value=mem %s> %s\n",
+	$rv .= sprintf "<option value=mem %s>%s</option>\n",
 			$c->{'words'}->[0] eq 'mem' ? 'selected' : '',
 			$text{'cache_mem'};
 	$rv .= "</select></td>\n";

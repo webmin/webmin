@@ -1,0 +1,26 @@
+<header>Two-Factor Authentication</header>
+
+Two-factor authentication can be used to add an extra layer of security
+to a Webmin account, as well as the regular username and password. When enabled,
+a user will need to provide an extra authentication token which typically
+comes from a smartphone app, hardware OTP generator or SMS. <p>
+
+This page allows you to select an authentication provider for Webmin users
+on your system. Once enabled, each user can then enroll for two-factor
+in the <b>Webmin Users</b> module. The available two-factor providers are :
+
+<dl>
+
+<dt><b>Authy</b>
+<dd>This is a commercial service that provides a smartphone app and website
+    for managing two-factor users. Each user must create an account on Authy's
+    website and link it to their smartphone. <p>
+
+<dt><b>Google Authenticator</b>
+<dd>This is a smartphone app that implements the standard TOPT protocol. Each
+    user must scan a QR code using the app to link their tokens with the
+    Webmin server. <p>
+
+</dl>
+
+<footer>

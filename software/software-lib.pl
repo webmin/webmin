@@ -262,6 +262,7 @@ if (defined(&validate_package_system)) {
 	}
 if (defined(&list_package_system_commands)) {
 	foreach my $c (&list_package_system_commands()) {
+		$c =~ s/\s+.*$//;	# Strip off args
 		if (!&has_command($c)) {
 			$err ||= &text('index_epackagecmd', &package_system(),
 				       "<tt>$c</tt>");

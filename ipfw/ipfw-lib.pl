@@ -344,7 +344,7 @@ else {
 		}
 
 	# Create the resulting rule string
-	local @w = map { $_ =~ /\(|\)/ ? "\"$_\"" : $_ } @w;
+	local @w = map { /\(|\)/ ? "'$_'" : $_ } @w;
 	return (@cmts, join(" ", @w));
 	}
 }
@@ -488,6 +488,9 @@ if ($fmt == 0) {
 		if (!$r->{'other'} &&
 		    $r->{'num'} != 65535) {	# skip auto-added final rule
 			local ($line) = &rule_lines($r, 1, 1);
+			$line = join(" ",
+				  map { /^['"].*["']$/ ? $_ : quotemeta($_) }
+				    split(/\s+/, $line));
 			local $cmd = "$config{'ipfw'} add $line";
 			$out = &backquote_logged("$cmd 2>&1 </dev/null");
 			return "<tt>$cmd</tt> failed : <tt>$out</tt>" if ($?);

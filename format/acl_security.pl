@@ -16,7 +16,7 @@ printf "<input type=radio name=disks_def value=0 %s> %s<br>\n",
 print "<select name=disks size=4 multiple>\n";
 foreach $d (@dlist) {
 	$d->{'device'} =~ s/^.*\///;
-	printf "<option value='%s' %s>%s\n",
+	printf "<option value='%s' %s>%s</option>\n",
 		$d->{'device'},
 		$dcan{$d->{'device'}} ? "selected" : "",
 		"$d->{'desc'} ($d->{'type'})";

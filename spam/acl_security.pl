@@ -11,7 +11,7 @@ print "<td><select name=avail rows=6 multiple>\n";
 local %avail = map { $_, 1 } split(/,/, $_[0]->{'avail'});
 foreach $a ('white', 'score', 'report', 'user', 'header', 'setup', 'procmail',
 	    'db', 'awl') {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$a, $avail{$a} ? "selected" : "", $text{$a."_title"};
 	}
 print "</select></td> </tr>\n";

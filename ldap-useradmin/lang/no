@@ -1,6 +1,7 @@
 __norefs=1
 batch_descafter3=Op <b>create</b> og <b>modify</b> linjene kan du legge inn ekstra felt som inneholder LDAP attributter p&#229; <i>navn</i>=<i>verdi</i> format, som skal tilordnes nye og/eller endrede brukere.
 batch_eattr=Ugyldig LDAP attributt p&#229; linje $1 : $2
+batch_imap=Opprett IMAP-konto for nye brukere?
 batch_samba=Opprett Samba konto for nye brukere?
 conn_eldap_host=Fant ingen LDAP klientkonfigurasjonsfil p&#229; systemet ditt, s&#229; LDAP tjeneren m&#229; angis p&#229; modulens konfigurasjonsside.
 conn_elogin=Fant ingen LDAP klientkonfigurasjonsfil p&#229; systemet ditt, s&#229; LDAP innlogging m&#229; settes p&#229; konfigsiden for modulen

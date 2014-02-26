@@ -218,7 +218,11 @@ return wantarray ? @rv : $rv[0];
 # Returns the PID if the server process is running, or 0 if not
 sub is_iscsi_target_running
 {
-return &check_pid_file($config{'pid_file'});
+foreach my $pidfile (split(/\s+/, $config{'pid_file'})) {
+	my $pid = &check_pid_file($pidfile);
+	return $pid if ($pid);
+	}
+return undef;
 }
 
 # find_host_name(&config)

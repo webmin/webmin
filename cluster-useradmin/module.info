@@ -14,3 +14,5 @@ desc_cz.UTF-8=Cluster - UÅ¾ivatelÃ© a skupiny
 desc_no=Klynge - Brukere og grupper
 desc_pl=Klaster - U¿ytkownicy i grupy
 desc_hu=Cluster felhasználók
+longdesc_ms_MY=Mencipta, mengemaskini dan memadam pengguna dan grup di seluruh pelbagai pelayan. Tidak seperti NIS, setiap pelayan mempunyai fail passwd dan group sendiri yang dikemaskini secara jauh oleh modul ini.
+desc_ms_MY=Kluster Pengguna dan Grup

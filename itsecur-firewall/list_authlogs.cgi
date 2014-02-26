@@ -7,7 +7,7 @@ require './itsecur-lib.pl';
 $theme_no_table++;
 $| = 1;
 &header($text{'authlogs_title'}, "");
-print "<hr>\n";
+print &ui_hr();
 
 $log = $config{'authlog'} || &get_authlog_file();
 print "<b>",&text('logs_viewing', "<tt>$log</tt>"),"</b><p>\n";
@@ -20,8 +20,7 @@ if ($session_id) {
 	print "<param name=session value=\"sid=$session_id\">\n";
 	}
 print "</applet>\n";
-print "</form>\n";
 
-print "<hr>\n";
+print &ui_hr();
 &footer("", $text{'index_return'});
 

@@ -30,3 +30,6 @@ desc_ru.UTF-8=Процесс инициализации (init)
 desc_cz.UTF-8=Konfigurace SysV Inicializace
 desc_pl.UTF-8=Konfiguracja inita (System&nbsp;V)
 desc_hu=Fut�si szintek be�ll�t�sa (Inittab)
+longdesc_ms_MY=Mengkonfigurasi perkhidmatan tahap rendah yang akan dijalankan pada masa boot, dan pilih awalan runlevel
+desc_ms_MY=Sistem awalan Bootup
+longdesc_de=Konfiguriert Low-Level-Dienste, die beim Booten ausgef&#252;hrt werden und w&#228;hlt den Anfangslevel.

@@ -2,13 +2,17 @@
 # pool_access_save.cgi
 # Save or delete a delay pool ACL
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 $access{'delay'} || &error($text{'delay_ecannot'});
 &ReadParse();
 &lock_file($config{'squid_conf'});
-$conf = &get_config();
+my $conf = &get_config();
 
-@delays = &find_config("delay_access", $conf);
+my @delays = &find_config("delay_access", $conf);
+my $delay;
 if (defined($in{'index'})) {
 	$delay = $conf->[$in{'index'}];
 	}
@@ -18,10 +22,10 @@ if ($in{'delete'}) {
 	}
 else {
 	# update or create
-	@vals = ( $in{'idx'}, $in{'action'} );
-	foreach $y (split(/\0/, $in{'yes'})) { push(@vals, $y); }
-	foreach $n (split(/\0/, $in{'no'})) { push(@vals, "!$n"); }
-	$newdelay = { 'name' => 'delay_access', 'values' => \@vals };
+	my @vals = ( $in{'idx'}, $in{'action'} );
+	foreach my $y (split(/\0/, $in{'yes'})) { push(@vals, $y); }
+	foreach my $n (split(/\0/, $in{'no'})) { push(@vals, "!$n"); }
+	my $newdelay = { 'name' => 'delay_access', 'values' => \@vals };
 	if ($delay) { splice(@delays, &indexof($delay, @delays), 1, $newdelay);}
 	else { push(@delays, $newdelay); }
 	}

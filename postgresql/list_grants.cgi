@@ -75,20 +75,19 @@ elsif (@tables) {
 		      "'>".&html_escape($tname)."</a>");
 		push(@cols, $text{"grant_$type"});
 		push(@cols, &html_escape($d));
-		$g->[1] =~ s/^\{//; $g->[1] =~ s/\}$//;
-		@gr = grep { /=\S/ } map { /^"(.*)"$/ ? $1 : $_ } split(/,/, $g->[1]);
+		my @gr = &extract_grants($g->[1]);
 		local $gstr;
 		foreach $gr (@gr) {
 			$gstr .= "&nbsp;|&nbsp;" if ($gr ne $gr[0]);
-			if ($gr =~ /^=(\S+)/) {
+			if ($gr->[0] eq "") {
 				$gstr .= $text{'grant_public'};
 				}
-			elsif ($gr =~ /^group\s+(\S+)=(\S+)/) {
+			elsif ($gr->[0] =~ /^group\s+(\S+)/) {
 				$gstr .= &text('grant_group',
 					"<tt>".&html_escape($1)."</tt>");
 				}
-			elsif ($gr =~ /^(\S+)=(\S+)$/) {
-				$gstr .= "<tt>".&html_escape($1)."</tt>";
+			else {
+				$gstr .= "<tt>".&html_escape($gr->[0])."</tt>";
 				}
 			}
 		push(@cols, $gstr);

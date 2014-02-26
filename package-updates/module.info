@@ -8,3 +8,7 @@ desc_ru.UTF-8=Обновление программных пакетов
 desc_nl=Software pakketten Update
 desc_no=Programpakker - oppdateringer
 desc_hu=Szoftvercsomagok friss�t�se
+longdesc_de=Zeigt die verf&#252;gbaren Paket-Updates von YUM, APT oder andere Update-Systemen
+desc_de=Software Pakete Updates
+desc_ms_MY=Kemas kini Pakej Perisian
+longdesc_ms_MY=Memaparkan kemas kini pakej yang boleh didapati daripada YUM, APT atau  sistem kemas kini yang lain

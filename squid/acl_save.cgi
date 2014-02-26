@@ -2,42 +2,49 @@
 # acl_save.cgi
 # Save or delete an ACL
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config, %acl_types,
+     @caseless_acl_types);
 require './squid-lib.pl';
 $access{'actrl'} || &error($text{'eacl_ecannot'});
 &ReadParseMime();
 &lock_file($config{'squid_conf'});
-$conf = &get_config();
-$whatfailed = $text{'aclsave_failsave'};
+my $conf = &get_config();
+&error_setup($text{'aclsave_failsave'});
 
-@acls = &find_config("acl", $conf);
-@denys = &find_config("deny_info", $conf);
+my @acls = &find_config("acl", $conf);
+my @denys = &find_config("deny_info", $conf);
+my ($acl, $deny);
 if (defined($in{'index'})) {
 	$acl = $conf->[$in{'index'}];
 	}
 if (defined($in{'dindex'})) {
 	$deny = $conf->[$in{'dindex'}];
 	}
+my $logacl;
 if ($in{'delete'}) {
 	# Is there more than one ACL with this name?
-	$name = $acl->{'values'}->[0];
-	foreach $a (&find_config("acl", $conf)) {
+	my $name = $acl->{'values'}->[0];
+	my $count = 0;
+	foreach my $a (&find_config("acl", $conf)) {
 		$count++ if ($a->{'values'}->[0] eq $name);
 		}
 
 	# Is this ACL in use?
-	$whatfailed = $text{'aclsave_faildel'};
+	&error_setup($text{'aclsave_faildel'});
 	if ($count == 1) {
-		foreach $h (&find_config("http_access", $conf)) {
-			@v = @{$h->{'values'}};
-			for($i=1; $i<@v;  $i++) {
+		foreach my $h (&find_config("http_access", $conf)) {
+			my @v = @{$h->{'values'}};
+			for(my $i=1; $i<@v;  $i++) {
 				if ($v[$i] eq $name || $v[$i] eq "!$name") {
 					&error($text{'aclsave_epr'});
 					}
 				}
 			}
-		foreach $h (&find_config("icp_access", $conf)) {
-			@v = @{$h->{'values'}};
-			for($i=1; $i<@v;  $i++) {
+		foreach my $h (&find_config("icp_access", $conf)) {
+			my @v = @{$h->{'values'}};
+			for(my $i=1; $i<@v;  $i++) {
 				if ($v[$i] eq $in{'name'} ||
 				    $v[$i] eq "!$in{'name'}") {
 					&error($text{'aclsave_eicpr'});
@@ -46,22 +53,27 @@ if ($in{'delete'}) {
 			}
 		}
 	splice(@acls, &indexof($acl, @acls), 1);
-	if ($deny) { splice(@denys, &indexof($deny, @denys), 1); }
+	if ($deny) {
+		splice(@denys, &indexof($deny, @denys), 1);
+		}
 	$logacl = $acl;
 	}
 else {
 	# Check ACL details
 	$in{'name'} =~ /^\S+$/ || &error($text{'aclsave_ename'});
+	my $changed = 0;
 	$changed++ if ($acl && $in{'name'} ne $acl->{'values'}->[0]);
-	for($i=0; $i<@acls; $i++) {
+	for(my $i=0; $i<@acls; $i++) {
 		if ($changed && $acls[$i]->{'values'}->[0] eq $in{'name'}) {
 			&error(&text('aclsave_eexists',$in{'name'}));
 			}
 		}
 
+	my @vals;
 	if ($in{'type'} eq "src" || $in{'type'} eq "dst") {
-		for($i=0; defined($from = $in{"from_$i"}); $i++) {
-			$to = $in{"to_$i"}; $mask = $in{"mask_$i"};
+		for(my $i=0; defined(my $from = $in{"from_$i"}); $i++) {
+			my $to = $in{"to_$i"};
+			my $mask = $in{"mask_$i"};
 			next if (!$from && !$to && !$mask);
 			&check_ipaddress($from) ||
 			    &check_ip6address($from) ||
@@ -78,8 +90,8 @@ else {
 			}
 		}
 	elsif ($in{'type'} eq "myip") {
-		for($i=0; defined($ip = $in{"ip_$i"}); $i++) {
-			$mask = $in{"mask_$i"};
+		for(my $i=0; defined(my $ip = $in{"ip_$i"}); $i++) {
+			my $mask = $in{"mask_$i"};
 			next if (!$mask || !$ip);
 			&check_ipaddress($ip) || &check_ip6address($ip) ||
 				&error(&text('aclsave_eip',$ip));
@@ -125,8 +137,9 @@ else {
 	elsif ($in{'type'} eq "method") {
 		push(@vals, split(/\0/, $in{'vals'}));
 		}
-	elsif ($in{'type'} eq "browser" || $in{'type'} eq "snmp_community"
-            || $in{'type'} eq "req_mime_type" || $in{'type'} eq "rep_mime_type") {
+	elsif ($in{'type'} eq "browser" || $in{'type'} eq "snmp_community" ||
+	       $in{'type'} eq "req_mime_type" ||
+	       $in{'type'} eq "rep_mime_type") {
 		push(@vals, $in{'vals'});
 		}
 	elsif ($in{'type'} eq "user" || $in{'type'} eq "ident") {
@@ -170,9 +183,9 @@ else {
 		push(@vals, split(/\s+/, $in{'args'}));
 		}
 	elsif ($in{'type'} eq "max_user_ip") {
-		if($in{'strict'}){
+		if ($in{'strict'}){
 			push(@vals, '-s');
-		}
+			}
 		push(@vals, $in{'vals'});
 		}
 
@@ -181,6 +194,7 @@ else {
 		$in{'file'} || &error($text{'aclsave_enofile'});
 		&can_access($in{'file'}) ||
 			&error(&text('aclsave_efile', $in{'file'}));
+		my @notvals;
 		if ($in{'type'} eq 'external' ||
 		    &indexof($in{'type'}, @caseless_acl_types) >= 0 &&
 		    $vals[0] eq "-i") {
@@ -191,18 +205,20 @@ else {
 			if (!$acl && -e $in{'file'}) {
 				&error($text{'aclsave_ealready'});
 				}
-			&open_lock_tempfile(FILE, ">$in{'file'}");
-			foreach $v (@vals) {
-				&print_tempfile(FILE, $v,"\n");
+			my $fh = "FILE";
+			&open_lock_tempfile($fh, ">$in{'file'}");
+			foreach my $v (@vals) {
+				&print_tempfile($fh, $v,"\n");
 				}
-			&close_tempfile(FILE);
+			&close_tempfile($fh);
 			}
-		@vals = ( $in{'name'}, $in{'type'}, @notvals, "\"$in{'file'}\"" );
+		@vals = ( $in{'name'}, $in{'type'}, @notvals,
+			  "\"$in{'file'}\"" );
 		}
 	else {
 		# Just saving in Squid config directly
 		if ($vals[0] =~ /^"(.*)"$/) {
-			local $f = $1;
+			my $f = $1;
 			&can_access($f) ||
 				&error(&text('aclsave_efile', $f));
 			if ($f !~ /^\// && $access{'root'} ne '/') {
@@ -212,24 +228,26 @@ else {
 			}
 		@vals = ( $in{'name'}, $in{'type'}, @vals );
 		}
-	$logacl = $newacl = { 'name' => 'acl', 'values' => \@vals };
+	my $newacl = { 'name' => 'acl', 'values' => \@vals };
+	$logacl = $newacl;
 	if ($acl) { splice(@acls, &indexof($acl, @acls), 1, $newacl); }
 	else { push(@acls, $newacl); }
 
-	$newdeny = { 'name' => 'deny_info',
-		     'values' => [ $in{'deny'}, $vals[0] ] };
-	$didx = &indexof($deny, @denys);
+	my $newdeny = { 'name' => 'deny_info',
+		        'values' => [ $in{'deny'}, $vals[0] ] };
+	my $didx = &indexof($deny, @denys);
 	if ($deny && $in{'deny'}) { $denys[$didx] = $newdeny; }
 	elsif ($deny) { splice(@denys, $didx, 1); }
 	elsif ($in{'deny'}) { push(@denys, $newdeny); }
 
 	# Update http_access and icp_access directives if the ACL was renamed
 	if ($changed) {
-		@https = &find_config("http_access", $conf);
-		@icps = &find_config("icp_access", $conf);
-		$on = $acl->{'values'}->[0];
-		foreach $c (@https, @icps) {
-			for($j=1; $j<@{$c->{'values'}}; $j++) {
+		my @https = &find_config("http_access", $conf);
+		my @icps = &find_config("icp_access", $conf);
+		my @replys = &find_config("http_reply_access", $conf);
+		my $on = $acl->{'values'}->[0];
+		foreach my $c (@https, @icps, @replys) {
+			for(my $j=1; $j<@{$c->{'values'}}; $j++) {
 				if ($c->{'values'}->[$j] eq $on) {
 					$c->{'values'}->[$j] = $in{'name'};
 					}

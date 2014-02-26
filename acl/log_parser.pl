@@ -1,7 +1,10 @@
 # log_parser.pl
 # Functions for parsing this module's logs
 
+use strict;
+use warnings;
 do 'acl-lib.pl';
+our (%text);
 
 # parse_webmin_log(user, script, action, type, object, &params)
 # Converts logged information from this module into human-readable form
@@ -37,6 +40,9 @@ elsif ($action eq 'delete') {
 		return &text('log_delete'.$g, "<tt>$object</tt>");
 		}
 	}
+elsif ($action eq 'joingroup') {
+	return &text('log_joingroup', $object, $p->{'group'});
+	}
 elsif ($action eq 'acl') {
 	return &text('log_acl', "<tt>$object</tt>",
 		     "<i>".&html_escape($p->{'moddesc'})."</i>");
@@ -50,6 +56,9 @@ elsif ($action eq 'cert') {
 	}
 elsif ($action eq 'switch') {
 	return &text('log_switch', "<tt>".&html_escape($object)."</tt>");
+	}
+elsif ($action eq 'twofactor') {
+	return &text('log_twofactor', $object, $p->{'provider'}, $p->{'id'});
 	}
 else {
 	return $text{'log_'.$action};

@@ -2,111 +2,122 @@
 # Functions for configuring squid.conf
 
 BEGIN { push(@INC, ".."); };
+use strict;
+use warnings;
 use WebminCore;
 &init_config();
 do 'parser-lib.pl';
-%access = &get_module_acl();
-$auth_program = "$module_config_directory/squid-auth.pl";
-$auth_database = "$module_config_directory/users";
-@caseless_acl_types = ( "url_regex", "urlpath_regex", "proxy_auth_regex",
-			"srcdom_regex", "dstdom_regex", "ident_regex" );
+our ($module_root_directory, %text, %config, %in, $module_config_directory);
+
+our %access = &get_module_acl();
+our $auth_program = "$module_config_directory/squid-auth.pl";
+our $auth_database = "$module_config_directory/users";
+our @caseless_acl_types = ( "url_regex", "urlpath_regex", "proxy_auth_regex",
+			    "srcdom_regex", "dstdom_regex", "ident_regex" );
 
 # Get the squid version
-if (open(VERSION, "$module_config_directory/version")) {
-	chop($squid_version = <VERSION>);
-	close(VERSION);
-	}
+our $squid_version = &read_file_contents("$module_config_directory/version") || 0;
+$squid_version =~ s/\r|\n//g;
 
 # choice_input(text, name, &config, default, [display, option]+)
 # Display a number of radio buttons for selecting some option
 sub choice_input
 {
-local($v, $vv, $rv, $i);
-$v = &find_config($_[1], $_[2]);
-$vv = $v ? $v->{'value'} : $_[3];
-$rv = "<td><b>$_[0]</b></td> <td valign=top>";
-for($i=4; $i<@_; $i+=2) {
-	$rv .= "<input type=radio name=$_[1] value=\"".$_[$i+1]."\" ".
-		($vv eq $_[$i+1] ? "checked" : "")."> $_[$i]\n";
+my ($label, $name, $conf, $def, @opts) = @_;
+my $v = &find_config($_[1], $_[2]);
+my $vv = $v ? $v->{'value'} : $_[3];
+my @opts2;
+for(my $i=0; $i<@opts; $i+=2) {
+	push(@opts2, [ $opts[$i+1], $opts[$1] ]);
 	}
-return $rv."</td>\n";
+return &ui_table_row($label,
+	&ui_radio($name, $vv, \@opts2));
 }
 
 # select_input(text, name, &config, default, [display, option]+)
 # Like choice_input, but uses a drop-down select field
 sub select_input
 {
-local($v, $vv, $rv, $i);
-$v = &find_config($_[1], $_[2]);
-$vv = $v ? $v->{'value'} : $_[3];
-$rv = "<td><b>$_[0]</b></td> <td valign=top><select name=$_[1]>";
-for($i=4; $i<@_; $i+=2) {
-	$rv .= "<option value=\"".$_[$i+1]."\" ".
-		($vv eq $_[$i+1] ? "selected" : "")."> $_[$i]\n";
+my ($label, $name, $conf, $def, @opts) = @_;
+my $v = &find_config($_[1], $_[2]);
+my $vv = $v ? $v->{'value'} : $_[3];
+my @opts2;
+for(my $i=0; $i<@opts; $i+=2) {
+	push(@opts2, [ $opts[$i+1], $opts[$1] ]);
 	}
-return $rv."</select></td>\n";
+return &ui_table_row($label,
+	&ui_select($name, $vv, \@opts2));
 }
 
 # save_choice(name, default, &config)
 # Save a selection from choice_input()
 sub save_choice
 {
-if ($in{$_[0]} eq $_[1]) { &save_directive($_[2], $_[0], [ ]); }
-else { &save_directive($_[2], $_[0], [{ 'name' => $_[0],
-					'values' => [ $in{$_[0]} ] }]); }
+my ($name, $def, $conf) = @_;
+if ($in{$name} eq $def) {
+	&save_directive($conf, $name, [ ]);
+	}
+else {
+	&save_directive($conf, $name, [{ 'name' => $name,
+					 'values' => [ $in{$name} ] }]);
+	}
 }
 
 # list_input(text, name, &config, type, [default])
 # Display a list of values
 sub list_input
 {
-local($v, $rv, @av);
-foreach $v (&find_config($_[1], $_[2])) {
+my ($label, $name, $conf, $type, $def) = @_;
+my @av;
+foreach my $v (&find_config($name, $conf)) {
 	push(@av, @{$v->{'values'}});
 	}
-if ($_[4]) {
-	$opt = sprintf "<input type=radio name=$_[1]_def value=1 %s> $_[4]\n",
-		@av ? "" : "checked";
-	$opt .= sprintf "<input type=radio name=$_[1]_def value=0 %s>\n",
-		@av ? "checked" : "";
-	}
-if ($_[3] == 0) {
+if ($type == 0) {
 	# text area
-	$rv = "<td valign=top><b>$_[0]</b></td> <td valign=top>";
-	if ($opt) { $rv .= "$opt Listed..<br>\n"; }
-	$rv .= "<textarea name=$_[1] rows=3 cols=15>".
-		join("\n", @av)."</textarea></td>\n";
+	my $opt = "";
+	if ($def) {
+		$opt = &ui_radio($name."_def", @av ? 0 : 1,
+			 [ [ 1, $def ], [ 0, $text{'ec_listed'} ] ])."<br>\n";
+		}
+	return &ui_table_row($label,
+		$opt.&ui_textarea($name, join("\n", @av), 3, 20));
 	}
 else {
 	# one long text field
-	$rv = "<td valign=top><b>$_[0]</b></td> <td colspan=3 valign=top>$opt";
-	$rv .= "<input name=$_[1] size=50 value=\"".join(' ',@av)."\"></td>\n";
+	my $field = $def ? &ui_opt_textbox($name, join(' ',@av), 50, $def)
+			 : &ui_textbox($name, join(' ',@av), 50);
+	return &ui_table_row($label, $field, 3);
 	}
-return $rv;
 }
 
 # save_list(name, &checkfunc, &config)
 sub save_list
 {
-local($v, @vals, $err);
-if (!$in{"$_[0]_def"}) {
+my ($name, $func, $conf) = @_;
+my @vals;
+if (!$in{$name."_def"}) {
 	@vals = split(/\s+/, $in{$_[0]});
-	if ($_[1]) {
-		foreach $v (@vals) {
-			&check_error($_[1], $v);
+	if ($func) {
+		foreach my $v (@vals) {
+			&check_error($func, $v);
 			}
 		}
 	}
-if (@vals) { &save_directive($_[2], $_[0],
-		[{ 'name' => $_[0], values => \@vals }]); }
-else { &save_directive($_[2], $_[0], [ ]); }
+if (@vals) {
+	&save_directive($conf, $name,
+			[{ 'name' => $name, values => \@vals }]);
+	}
+else {
+	&save_directive($conf, $name, [ ]);
+	}
 }
 
 # check_error(&function, value)
 sub check_error
 {
-return if (!$_[0]);
-local $err = &{$_[0]}($_[1]);
+my ($func, $value) = @_;
+return if (!$func);
+my $err = &$func($value);
 if ($err) { &error($err); }
 }
 
@@ -114,185 +125,173 @@ if ($err) { &error($err); }
 # Display a text area for entering 0 or more addresses
 sub address_input
 {
-local($v, $rv, @av);
-foreach $v (&find_config($_[1], $_[2])) {
+my ($label, $name, $conf, $type) = @_;
+my @av;
+foreach my $v (&find_config($name, $conf)) {
 	push(@av, @{$v->{'values'}});
 	}
-if ($_[3] == 0) {
+if ($type == 0) {
 	# text area
-	$rv = "<td valign=top><b>$_[0]</b></td> <td valign=top>";
-	$rv .= "<textarea name=$_[1] rows=3 cols=15>".
-		join("\n", @av)."</textarea></td>\n";
+	return &ui_table_row($label,
+		&ui_textarea($name, join("\n", @av), 3, 30));
 	}
 else {
 	# one long text field
-	$rv = "<td valign=top><b>$_[0]</b></td> <td colspan=3 valign=top>";
-	$rv .= "<input name=$_[1] size=50 value=\"".join(' ',@av)."\"></td>\n";
+	return &ui_table_row($label,
+		&ui_textbox($name, join(' ',@av), 50), 3);
 	}
-return $rv;
 }
 
 # save_address(name, config)
 sub save_address
 {
-local($addr, @vals);
-foreach $addr (split(/\s+/, $in{$_[0]})) {
-	&check_ipaddress($addr) || &error(&text('lib_emsg1',$addr));
+my ($name, $conf) = @_;
+my @vals;
+foreach my $addr (split(/\s+/, $in{$name})) {
+	&check_ipaddress($addr) || &error(&text('lib_emsg1', $addr));
 	push(@vals, $addr);
 	}
-if (@vals) { &save_directive($_[1], $_[0],
-		[{ 'name' => $_[0], values => \@vals }]); }
-else { &save_directive($_[1], $_[0], [ ]); }
+if (@vals) {
+	&save_directive($conf, $name,
+			[{ 'name' => $name, values => \@vals }]);
+	}
+else {
+	&save_directive($conf, $name, [ ]);
+	}
 }
 
 # opt_input(text, name, &config, default, size, units)
 # Display an optional field for entering something
 sub opt_input
 {
-local($v, $rv);
-$v = &find_config($_[1], $_[2]);
-$rv = "<td valign=top><b>$_[0]</b></td> <td valign=top nowrap";
-$rv .= $_[4] > 30 ? " colspan=3>\n" : ">\n";
-$rv .= sprintf "<input type=radio name=$_[1]_def value=1 %s> $_[3]\n",
-	$v ? "" : "checked";
-$rv .= sprintf "<input type=radio name=$_[1]_def value=0 %s> ",
-	$v ? "checked" : "";
-$rv .= sprintf "<input name=$_[1] size=$_[4] value=\"%s\"> %s</td>\n",
-	$v ? $v->{'value'} : "", $_[5];
-return $rv;
+my ($label, $name, $conf, $def, $size, $units) = @_;
+my $v = &find_config($_[1], $_[2]);
+return &ui_table_row($label,
+	&ui_opt_textbox($name, $v ? $v->{'value'} : undef, $size,
+			$def)." ".$units,
+	$size > 30 ? 3 : 1);
 }
 
 # save_opt(name, &function, &config)
 # Save an input from opt_input()
 sub save_opt
 {
-if ($in{"$_[0]_def"}) { &save_directive($_[2], $_[0], [ ]); }
+my ($name, $func, $conf) = @_;
+if ($in{$name."_def"}) {
+	&save_directive($conf, $name, [ ]);
+	}
 else {
-	&check_error($_[1], $in{$_[0]});
-	local $dir = { 'name' => $_[0], 'values' => [ $in{$_[0]} ] };
-	&save_directive($_[2], $_[0], [ $dir ]);
+	&check_error($func, $in{$name});
+	my $dir = { 'name' => $name, 'values' => [ $in{$name} ] };
+	&save_directive($conf, $name, [ $dir ]);
 	}
 }
 
 # opt_time_input(text, name, &config, default, size)
 sub opt_time_input
 {
-local($v, $rv, $u, %ts );
-$v = &find_config($_[1], $_[2]);
-$rv = "<td valign=top><b>$_[0]</b></td> <td valign=top nowrap>\n";
-$rv .= sprintf "<input type=radio name=$_[1]_def value=1 %s> $_[3]\n",
-	$v ? "" : "checked";
-$rv .= sprintf "<input type=radio name=$_[1]_def value=0 %s> ",
-	$v ? "checked" : "";
-$rv .= &time_fields($_[1], $_[4], $v ? @{$v->{'values'}} : ( ));
-$rv .= "</td>\n";
-return $rv;
+my ($label, $name, $conf, $def, $size) = @_;
+my $v = &find_config($name, $conf);
+return &ui_table_row($label,
+	&ui_radio($name."_def", $v ? 0 : 1,
+	  [ [ 1, $def ],
+	    [ 0, &time_fields($name, $size, $v ? @{$v->{'values'}} : ( )) ] ]));
 }
 
-# time_field(name, size, time, units)
+# time_fields(name, size, time, units)
 sub time_fields
 {
-local ($rv, %ts);
-%ts = (	"second"=>	$text{"lib_seconds"},
-	"minute"=>	$text{"lib_minutes"},
-	"hour"=>	$text{"lib_hours"},
-	"day"=>		$text{"lib_days"},
-	"week"=>	$text{"lib_weeks"},
-	"fortnight"=>	$text{"lib_fortnights"},
-	"month"=>	$text{"lib_months"},
-	"year"=>	$text{"lib_years"},
-	"decade"=>	$text{"lib_decades"} );
-$rv .= sprintf "<input name=$_[0] size=$_[1] value=\"%s\">\n", $_[2];
-$rv .= "<select name=$_[0]_u>\n";
-foreach $u (keys %ts) {
-	$rv .= sprintf "<option value=$u %s>$ts{$u}\n",
-		$_[3] =~ /^$u/ ? "selected" : "";
-	}
-$rv .= "</select>\n";
-return $rv;
+my ($name, $size, $time, $units) = @_;
+my @ts = ( [ "second" =>	$text{"lib_seconds"} ],
+	   [ "minute" =>	$text{"lib_minutes"} ],
+	   [ "hour" =>		$text{"lib_hours"} ],
+	   [ "day" =>		$text{"lib_days"} ],
+	   [ "week" =>		$text{"lib_weeks"} ],
+	   [ "fortnight" => 	$text{"lib_fortnights"} ],
+	   [ "month" =>		$text{"lib_months"} ],
+	   [ "year" =>		$text{"lib_years"} ],
+	   [ "decade" =>	$text{"lib_decades"} ] );
+$units =~ s/s$//;
+return &ui_textbox($name, $time, $size)." ".
+       &ui_select($name."_u", $units, \@ts);
 }
 
 # save_opt_time(name, &config)
 sub save_opt_time
 {
-local %ts = ( "second"=>      $text{"lib_seconds"},
-        "minute"=>      $text{"lib_minutes"},
-        "hour"=>        $text{"lib_hours"},
-        "day"=>         $text{"lib_days"},
-        "week"=>        $text{"lib_weeks"},
-        "fortnight"=>   $text{"lib_fortnights"},
-        "month"=>       $text{"lib_months"},
-        "year"=>        $text{"lib_years"},
-        "decade"=>      $text{"lib_decades"} );
+my ($name, $conf) = @_;
+my %ts = ( "second" =>     $text{"lib_seconds"},
+           "minute" =>     $text{"lib_minutes"},
+           "hour" =>       $text{"lib_hours"},
+           "day" =>        $text{"lib_days"},
+           "week" =>       $text{"lib_weeks"},
+           "fortnight" =>  $text{"lib_fortnights"},
+           "month" =>      $text{"lib_months"},
+           "year" =>       $text{"lib_years"},
+           "decade" =>     $text{"lib_decades"} );
 
-if ($in{"$_[0]_def"}) { &save_directive($_[1], $_[0], [ ]); }
-elsif ($in{$_[0]} !~ /^[0-9\.]+$/) {
-	&error(&text('lib_emsg2', $in{$_[0]}, $ts{$in{"$_[0]_u"}}) );
+if ($in{$name."_def"}) {
+	&save_directive($conf, $name, [ ]);
+	}
+elsif ($in{$name} !~ /^[0-9\.]+$/) {
+	&error(&text('lib_emsg2', $in{$name}, $ts{$in{$name."_u"}}) );
 	}
 else {
-	local $dir = { 'name' => $_[0],
-		       'values' => [ $in{$_[0]}, $in{"$_[0]_u"} ] };
-	&save_directive($_[1], $_[0], [ $dir ]);
+	my $dir = { 'name' => $name,
+		    'values' => [ $in{$name}, $in{$name."_u"} ] };
+	&save_directive($conf, $name, [ $dir ]);
 	}
 }
 
 # opt_bytes_input(text, name, &config, default, size)
 sub opt_bytes_input
 {
-local($v, $rv, $u, %ss);
-@ss = (	[ "KB", $text{'lib_kb'} ],
-	[ "MB", $text{'lib_mb'} ],
-	[ "GB", $text{'lib_gb'} ] );
-$v = &find_config($_[1], $_[2]);
-$rv = "<td valign=top><b>$_[0]</b></td> <td valign=top nowrap>\n";
-$rv .= sprintf "<input type=radio name=$_[1]_def value=1 %s> $_[3]\n",
-	$v ? "" : "checked";
-$rv .= sprintf "<input type=radio name=$_[1]_def value=0 %s> ",
-	$v ? "checked" : "";
-$rv .= sprintf "<input name=$_[1] size=$_[4] value=\"%s\">\n",
-	$v ? $v->{'values'}->[0] : "";
-$rv .= "<select name=$_[1]_u>\n";
-foreach $u (@ss) {
-	$rv .= sprintf "<option value=$u->[0] %s>$u->[1]\n",
-		$v && $v->{'values'}->[1] eq $u->[0] ? "selected" : "";
-	}
-$rv .= sprintf "<option value='' %s>bytes\n",
-	$v && $v->{'values'}->[1] eq "" ? "selected" : "";
-$rv .= "</select></td>\n";
-return $rv;
+my ($label, $name, $conf, $def, $size) = @_;
+my @ss = ( [ "KB", $text{'lib_kb'} ],
+	   [ "MB", $text{'lib_mb'} ],
+	   [ "GB", $text{'lib_gb'} ] );
+my $v = &find_config($name, $conf);
+my $input = &ui_textbox($name, $v ? $v->{'values'}->[0] : "", $size)." ".
+	    &ui_select($name."_u", $v ? $v->{'values'}->[1] : "", \@ss);
+return &ui_table_row($label,
+	&ui_radio($name."_def", $v ? 0 : 1,
+		  [ [ 1, $def ], [ 0, $input ] ]));
 }
 
 # save_opt_bytes(name, &config)
 sub save_opt_bytes
 {
-local %ss = ( "KB"=>  $text{'lib_kb'},
-        "MB"=>  $text{'lib_mb'},
-        "GB"=>  $text{'lib_gb'} );
+my ($name, $conf) = @_;
+my %ss = ( "KB" => $text{'lib_kb'},
+           "MB" => $text{'lib_mb'},
+           "GB" => $text{'lib_gb'} );
 
-if ($in{"$_[0]_def"}) { &save_directive($_[1], $_[0], [ ]); }
-elsif ($in{$_[0]} !~ /^[0-9\.]+$/) {
-	&error(&text('lib_emsg3', $in{$_[0]}, $ss{$in{"$_[0]_u"}}) );
+if ($in{$name."_def"}) {
+	&save_directive($conf, $name, [ ]);
+	}
+elsif ($in{$name} !~ /^[0-9\.]+$/) {
+	&error(&text('lib_emsg3', $in{$name}, $ss{$in{$name."_u"}}) );
 	}
 else {
-	local $dir = { 'name' => $_[0],
-		       'values' => [ $in{$_[0]}, $in{"$_[0]_u"} ] };
-	&save_directive($_[1], $_[0], [ $dir ]);
+	my $dir = { 'name' => $name,
+		    'values' => [ $in{$name}, $in{$name."_u"} ] };
+	&save_directive($conf, $name, [ $dir ]);
 	}
 }
 
-%acl_types = ("src", $text{'lib_aclca'},
-	      "dst", $text{'lib_aclwsa'},
-	      "srcdomain", $text{'lib_aclch'},
-	      "dstdomain", $text{'lib_aclwsh'},
-	      "time", $text{'lib_acldat'},
-	      "url_regex", $text{'lib_aclur'},
-	      "urlpath_regex", $text{'lib_aclupr'},
-	      "port", $text{'lib_aclup'},
-	      "proto", $text{'lib_aclup1'},
-	      "method", $text{'lib_aclrm'},
-	      "browser", $text{'lib_aclbr'},
-	      "user", $text{'lib_aclpl'},
-	      "arp", $text{'lib_aclarp'} );
+our %acl_types = ("src", $text{'lib_aclca'},
+	          "dst", $text{'lib_aclwsa'},
+	          "srcdomain", $text{'lib_aclch'},
+	          "dstdomain", $text{'lib_aclwsh'},
+	          "time", $text{'lib_acldat'},
+	          "url_regex", $text{'lib_aclur'},
+	          "urlpath_regex", $text{'lib_aclupr'},
+	          "port", $text{'lib_aclup'},
+	          "proto", $text{'lib_aclup1'},
+	          "method", $text{'lib_aclrm'},
+	          "browser", $text{'lib_aclbr'},
+	          "user", $text{'lib_aclpl'},
+	          "arp", $text{'lib_aclarp'} );
 if ($squid_version >= 2.0) {
 	$acl_types{'src_as'} = $text{'lib_aclsan'};
 	$acl_types{'dst_as'} = $text{'lib_acldan'};
@@ -326,14 +325,17 @@ if ($squid_version >= 2.5) {
 sub restart_button
 {
 return undef if ($config{'restart_pos'} == 2);
-local $pid = &is_squid_running();
-local $args = "redir=".&urlize(&this_url())."&pid=$pid";
-if ($pid) {
-	return ($access{'restart'} ? "<a href=\"restart.cgi?$args\">$text{'lib_buttac'}</a><br>\n" : "").
-	       ($access{'start'} ? "<a href=\"stop.cgi?$args\">$text{'lib_buttss'}</a>\n" : "");
+my $args = "redir=".&urlize(&this_url());
+if (&is_squid_running()) {
+	return ($access{'restart'} ?
+		"<a href=\"restart.cgi?$args\">$text{'lib_buttac'}</a><br>\n" :
+	        "").
+	       ($access{'start'} ?
+		"<a href=\"stop.cgi?$args\">$text{'lib_buttss'}</a>\n" : "");
 	}
 else {
-	return $access{'start'} ? "<a href=\"start.cgi?$args\">$text{'lib_buttss1'}</a>\n" : "";
+	return $access{'start'} ?
+		"<a href=\"start.cgi?$args\">$text{'lib_buttss1'}</a>\n" : "";
 	}
 }
 
@@ -341,13 +343,13 @@ else {
 # Returns the process ID if squid is running
 sub is_squid_running
 {
-local $conf = &get_config();
+my $conf = &get_config();
 
 # Find all possible PID files
-local @pidfiles;
-local $pidstruct = &find_config("pid_filename", $conf);
+my @pidfiles;
+my $pidstruct = &find_config("pid_filename", $conf);
 push(@pidfiles, $pidstruct->{'values'}->[0]) if ($pidstruct);
-local $def_pidstruct = &find_config("pid_filename", $conf);
+my $def_pidstruct = &find_config("pid_filename", $conf);
 push(@pidfiles, $def_pidstruct->{'values'}->[0]) if ($def_pidstruct);
 push(@pidfiles, $config{'pid_file'}) if ($config{'pid_file'});
 @pidfiles = grep { $_ ne "none" } @pidfiles;
@@ -360,7 +362,7 @@ foreach my $pidfile (@pidfiles) {
 
 if (!@pidfiles) {
 	# Fall back to checking for Squid process
-	local ($pid) = &find_byname("squid");
+	my ($pid) = &find_byname("squid");
 	return $pid;
 	}
 
@@ -371,25 +373,29 @@ return 0;
 # Returns the URL in the apache directory of the current script
 sub this_url
 {
-local($url);
-$url = $ENV{'SCRIPT_NAME'};
-if (defined($ENV{'QUERY_STRING'})) { $url .= "?$ENV{'QUERY_STRING'}"; }
+my $url = $ENV{'SCRIPT_NAME'};
+if (defined($ENV{'QUERY_STRING'})) {
+	$url .= "?$ENV{'QUERY_STRING'}";
+	}
 return $url;
 }
 
 # list_auth_users(file)
 sub list_auth_users
 {
-local(@rv, $lnum); $lnum = 0;
-open(USERS, $_[0]);
-while(<USERS>) {
+my ($file) = @_;
+my @rv;
+my $lnum = 0;
+my $fh = "USERS";
+&open_readfile($fh, $file);
+while(<$fh>) {
 	if (/^(#*)([^:]+):(\S+)/) {
 		push(@rv, { 'user' => $2, 'pass' => $3,
 			    'enabled' => !$1, 'line' => $lnum });
 		}
 	$lnum++;
 	}
-close(USERS);
+close($fh);
 if ($config{'sort_conf'}) {
 	return sort { $a->{'user'} cmp $b->{'user'} } @rv;
 	}
@@ -402,14 +408,17 @@ else {
 # Returns the effective user and group (if any)
 sub get_squid_user
 {
+my ($conf) = @_;
 if ($squid_version < 2) {
-	local $ceu = &find_config("cache_effective_user", $_[0]);
-	if ($ceu) { return ($ceu->{'values'}->[0], $ceu->{'values'}->[1]); }
+	my $ceu = &find_config("cache_effective_user", $conf);
+	if ($ceu) {
+		return ($ceu->{'values'}->[0], $ceu->{'values'}->[1]);
+		}
 	return (undef, undef);
 	}
 else {
-	local $ceu = &find_config("cache_effective_user", $_[0]);
-	local $ceg = &find_config("cache_effective_group", $_[0]);
+	my $ceu = &find_config("cache_effective_user", $_[0]);
+	my $ceg = &find_config("cache_effective_group", $_[0]);
 	return ($ceu->{'values'}->[0], $ceg ? $ceg->{'values'}->[0]
 					    : $ceu->{'values'}->[1]);
 	}
@@ -419,43 +428,49 @@ else {
 # Change ownership of all squid log and cache directories
 sub chown_files
 {
-local(@list, $pidstruct, $pidfile);
-@list = ( $config{'log_dir'} );
+my ($user, $group, $conf) = @_;
+my @list = ( $config{'log_dir'} );
 
 # add pidfile
-if ($str = &find_config("pid_filename", $_[2])) {
+my $pidfile;
+if (my $str = &find_config("pid_filename", $conf)) {
 	$pidfile = $str->{'values'}->[0];
 	}
-else { $pidfile = $config{'pid_file'}; }
+else {
+	$pidfile = $config{'pid_file'};
+	}
 push(@list, $pidfile);
 
 # add other log directories
-foreach $d ("cache_access_log", "access_log", "cache_log",
-	    "cache_store_log", "cache_swap_log") {
-	if (($str = &find_config($d, $_[2])) &&
+foreach my $d ("cache_access_log", "access_log", "cache_log",
+	       "cache_store_log", "cache_swap_log") {
+	my $str;
+	if (($str = &find_config($d, $conf)) &&
 	    $str->{'values'}->[0] =~ /^(\S+)\/[^\/]+$/) {
 		push(@list, $1);
 		}
 	}
 
 # add cache directories
-if (@str = &find_config("cache_dir", $_[2])) {
-	foreach $str (@str) {
+if (my @str = &find_config("cache_dir", $conf)) {
+	foreach my $str (@str) {
 		push(@list, $str->{'values'}->[0]);
 		}
 	}
-else { push(@list, $config{'cache_dir'}); }
-system("chown -Rf $_[0]:$_[1] ".join(" ",@list)." >/dev/null 2>&1");
+else {
+	push(@list, $config{'cache_dir'});
+	}
+system("chown -Rf $user:$group ".join(" ",@list)." >/dev/null 2>&1");
 }
 
 # can_access(file)
 sub can_access
 {
-local @f = grep { $_ ne '' } split(/\//, $_[0]);
+my ($file) = @_;
+my @f = grep { $_ ne '' } split(/\//, $file);
 return 1 if ($access{'root'} eq '/');
-local @a = grep { $_ ne '' } split(/\//, $access{'root'});
-local $i;
-for($i=0; $i<@a; $i++) {
+my @a = grep { $_ ne '' } split(/\//, $access{'root'});
+for(my $i=0; $i<@a; $i++) {
 	return 0 if ($a[$i] ne $f[$i]);
 	}
 return 1;
@@ -465,13 +480,13 @@ return 1;
 sub get_auth_file
 {
 if ($squid_version >= 2.5) {
-	local @auth = &find_config("auth_param", $_[0]);
-	local ($program) = grep { $_->{'values'}->[0] eq 'basic' &&
-				  $_->{'values'}->[1] eq 'program' } @auth;
+	my @auth = &find_config("auth_param", $_[0]);
+	my ($program) = grep { $_->{'values'}->[0] eq 'basic' &&
+			       $_->{'values'}->[1] eq 'program' } @auth;
 	return $program ? $program->{'values'}->[3] : undef;
 	}
 else {
-	local $authprog = &find_value("authenticate_program", $_[0]);
+	my $authprog = &find_value("authenticate_program", $_[0]);
 	return $authprog =~ /(\S+)\s+(\/\S+)$/ ? $2 : undef;
 	}
 }
@@ -479,8 +494,10 @@ else {
 # parse_external(&external_acl_type)
 sub parse_external
 {
-local @v = @{$_[0]->{'values'}};
-local $rv = { 'name' => $v[0] };
+my ($acltype) = @_;
+my @v = @{$acltype->{'values'}};
+my $rv = { 'name' => $v[0] };
+my $i;
 for($i=1; $v[$i] =~ /^(\S+)=(\S+)$/; $i++) {
 	$rv->{'opts'}->{$1} = $2;
 	}
@@ -501,8 +518,9 @@ return $rv;
 # caches list
 sub check_cache
 {
-local (@cachestruct, @caches, $c, $coss);
-if (@cachestruct = &find_config("cache_dir", $_[0])) {
+my ($conf, $cachesrv) = @_;
+my (@cachestruct, @caches, $coss);
+if (@cachestruct = &find_config("cache_dir", $conf)) {
 	if ($squid_version >= 2.3) {
 		@caches = map { $_->{'values'}->[1] } @cachestruct;
 		}
@@ -514,16 +532,16 @@ if (@cachestruct = &find_config("cache_dir", $_[0])) {
 else {
 	@caches = ( $config{'cache_dir'} );
 	}
-@{$_[1]} = @caches;
+@$cachesrv = @caches;
 if ($coss) {
 	# Allow COSS files too
-	foreach $c (@caches) {
+	foreach my $c (@caches) {
 		return 0 if (!-f $c && (!-d $c || !-d "$c/00"));
 		}
 	}
 else {
 	# Check for dirs only
-	foreach $c (@caches) {
+	foreach my $c (@caches) {
 		return 0 if (!-d $c || !-d "$c/00");
 		}
 	}
@@ -534,12 +552,11 @@ return 1;
 # Returns the port Squid is listening on
 sub get_squid_port
 {
-local $conf = &get_config();
-local $port;
+my $conf = &get_config();
+my $port;
 if ($squid_version >= 2.3) {
-	local ($p, $v);
-	LOOP: foreach $p (&find_config("http_port", $conf)) {
-		foreach $v (@{$p->{'values'}}) {
+	LOOP: foreach my $p (&find_config("http_port", $conf)) {
+		foreach my $v (@{$p->{'values'}}) {
 			if ($v =~ /^(\d+)$/) {
 				$port = $1;
 				}
@@ -561,12 +578,13 @@ return defined($port) ? $port : 3128;
 sub apply_configuration
 {
 if ($config{'squid_restart'}) {
-	local $out = &backquote_logged("$config{'squid_restart'} 2>&1");
-	return "<pre>$out</pre>" if ($?);
+	my $out = &backquote_logged("$config{'squid_restart'} 2>&1");
+	return "<pre>".&html_escape($out)."</pre>" if ($?);
 	}
 else {
-	$out = &backquote_logged("$config{'squid_path'} -f $config{'squid_conf'} -k reconfigure 2>&1");
-	return "<pre>$out</pre>" if ($? && $out !~ /warning/i);
+	my $out = &backquote_logged("$config{'squid_path'} -f $config{'squid_conf'} -k reconfigure 2>&1");
+	return "<pre>".&html_escape($out)."</pre>"
+		if ($? && $out !~ /warning/i);
 	}
 return undef;
 }

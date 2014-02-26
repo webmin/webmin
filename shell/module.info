@@ -27,3 +27,6 @@ desc_pl.UTF-8=Linia poleceń
 desc_hu.UTF-8=Parancshéj
 desc_sk.UTF-8=Príkazový riadok
 desc_no=Kommandoskall
+longdesc_de=F&#252;hrt Shell-Befehle aus und zeigt deren Ausgabe an.
+longdesc_ms_MY=Melaksanakan arahan shell dan melihat hasilnya.
+desc_ms_MY=Arahan Shell

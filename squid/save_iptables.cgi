@@ -1,14 +1,18 @@
 #!/usr/local/bin/perl
 # Enable or disable the iptables rule
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 &foreign_require("firewall", "firewall-lib.pl");
-$conf = &get_config();
-$port = &get_squid_port();
+my $conf = &get_config();
+my $port = &get_squid_port();
 &error_setup($text{'iptables_err'});
 &ReadParse();
 
 # Validate inputs
+my $iface;
 if ($in{'enabled'} == 1) {
 	&to_ipaddress($in{'net'}) ||
 	    ($in{'net'} =~ /^([0-9\.]+)\/(\d+)$/ &&
@@ -21,12 +25,14 @@ elsif ($in{'enabled'} == 2) {
 	}
 
 # Get the old rule
-@tables = &firewall::get_iptables_save();
-($nat) = grep { $_->{'name'} eq 'nat'} @tables;
+my @tables = &firewall::get_iptables_save();
+my ($nat) = grep { $_->{'name'} eq 'nat'} @tables;
+my $rule;
 if ($in{'rule'} ne "") {
 	($rule) = $nat->{'rules'}->[$in{'rule'}];
 	}
 
+my $apply;
 if ($in{'enabled'} && !$rule) {
 	# Need to create
 	$rule = { 'chain' => 'PREROUTING',
@@ -76,10 +82,10 @@ if ($in{'enabled'}) {
 		}
 	else {
 		# In Squid 2.6+, acceleration is a port option
-		@ports = &find_config("http_port", $conf);
+		my @ports = &find_config("http_port", $conf);
 		foreach my $p (@ports) {
-			local $trans = 0;
-			foreach $v (@{$p->{'values'}}) {
+			my $trans = 0;
+			foreach my $v (@{$p->{'values'}}) {
 				$trans++ if ($v eq "transparent");
 				}
 			if (!$trans) {
@@ -97,7 +103,7 @@ if ($apply && $in{'apply'}) {
 	&lock_file($firewall::iptables_save_file);
 	&firewall::save_table($nat);
 	&unlock_file($firewall::iptables_save_file);
-	$err = &firewall::apply_configuration();
+	my $err = &firewall::apply_configuration();
 	&error(&text('iptables_eapply', $err)) if ($err);
 
 	# And Squid

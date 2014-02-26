@@ -2,54 +2,57 @@
 # edit_user.cgi
 # A form for adding or editing a squid user
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 $access{'proxyauth'} || &error($text{'eauth_ecannot'});
 &ReadParse();
+
+my %user;
 if ($in{'new'}) {
 	&ui_print_header(undef, $text{'euser_header'}, "");
 	}
 else {
 	&ui_print_header(undef, $text{'euser_header1'}, "");
-	$conf = &get_config();
-	@users = &list_auth_users(&get_auth_file($conf));
+	my $conf = &get_config();
+	my @users = &list_auth_users(&get_auth_file($conf));
 	%user = %{$users[$in{'index'}]};
 	}
 
-print "<form action=save_nuser.cgi>\n";
-print "<input type=hidden name=index value=$in{'index'}>\n";
-print "<input type=hidden name=new value=$in{'new'}>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'euser_pud'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_form_start("save_nuser.cgi", "post");
+print &ui_hidden("index", $in{'index'});
+print &ui_hidden("new", $in{'new'});
+print &ui_table_start($text{'euser_pud'}, undef, 2);
 
-print "<tr> <td><b>$text{'euser_u'}</b></td>\n";
-print "<td><input name=user size=25 value=\"$user{'user'}\"></td> </tr>\n";
+# Username
+print &ui_table_row($text{'euser_u'},
+	&ui_textbox("user", $user{'user'}, 30));
 
-print "<tr> <td><b>$text{'euser_p'}</b></td> <td>\n";
+# Password
 if (%user) {
-	print "<input type=radio name=pass_def value=1 checked> $text{'euser_u1'}\n";
-	print "<input type=radio name=pass_def value=0>\n";
-	print "<input name=pass size=20 type=password></td> </tr>\n";
+	print &ui_table_row($text{'euser_p'},
+		&ui_radio("pass_def", 1,
+			  [ [ 1, $text{'euser_u1'} ],
+		            [ 0, &ui_password("pass", undef, 30) ] ]));
 	}
 else {
-	print "<input name=pass size=20 type=password></td> </tr>\n";
+	print &ui_table_row($text{'euser_p'},
+		&ui_password("pass", undef, 30));
 	}
 
-print "<tr> <td><b>$text{'euser_e'}</b></td>\n";
-printf "<td><input type=radio name=enabled value=1 %s> %s\n",
-	$user{'enabled'} || !%user ? 'checked' : '', $text{'yes'};
-printf "<input type=radio name=enabled value=0 %s> %s</td> </tr>\n",
-	$user{'enabled'} || !%user ? '' : 'checked', $text{'no'};
+# Enabled?
+print &ui_table_row($text{'euser_e'},
+	&ui_yesno_radio("enabled", $user{'enabled'} || !%user));
 
-print "</table></td></tr></table>\n";
+print &ui_table_end();
 if (%user) {
-	print "<input type=submit value=\"$text{'save'}\">\n";
-	print "<input type=submit name=delete value=\"$text{'delete'}\">\n";
+	print &ui_form_end([ [ undef, $text{'save'} ],
+			     [ 'delete', $text{'delete'} ] ]);
 	}
 else {
-	print "<input type=submit value=\"$text{'create'}\">\n";
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
-print "</form>\n";
 
 &ui_print_footer("edit_nauth.cgi", $text{'euser_return'},
 	"", $text{'index_return'});

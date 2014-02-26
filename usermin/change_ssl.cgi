@@ -30,6 +30,10 @@ if ($in{'cipher_list_def'} == 1) {
 elsif ($in{'cipher_list_def'} == 2) {
 	$miniserv{'ssl_cipher_list'} = $webmin::strong_ssl_ciphers;
 	}
+elsif ($in{'cipher_list_def'} == 3) {
+	$miniserv{'ssl_cipher_list'} = $webmin::pfs_ssl_ciphers;
+	$miniserv{'no_ssl2'} = 1;
+	}
 else {
 	$in{'cipher_list'} =~ /^\S+$/ || &error($text{'ssl_ecipher_list'});
 	$miniserv{'ssl_cipher_list'} = $in{'cipher_list'};

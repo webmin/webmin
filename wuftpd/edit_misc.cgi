@@ -47,10 +47,10 @@ foreach $n (@nice) {
 	print "<tr $cb>\n";
 	print "<td><input name=ndelta_$i size=5 value='$n->[0]'></td>\n";
 	print "<td><select name=nclass_$i>\n";
-	printf "<option value='' %s>%s\n",
+	printf "<option value='' %s>%s</option>\n",
 		$n->[1] ? '' : 'checked', $text{'misc_all'};
 	foreach $c (@class) {
-		printf "<option %s>%s\n",
+		printf "<option %s>%s</option>\n",
 			$n->[1] eq $c->[0] ? 'selected' : '', $c->[0];
 		}
 	print "</select></td> </tr>\n";
@@ -70,10 +70,10 @@ foreach $u (@umask) {
 	print "<tr $cb>\n";
 	print "<td><input name=umask_$i size=5 value='$u->[0]'></td>\n";
 	print "<td><select name=uclass_$i>\n";
-	printf "<option value='' %s>%s\n",
+	printf "<option value='' %s>%s</option>\n",
 		$u->[1] ? '' : 'checked', $text{'misc_all'};
 	foreach $c (@class) {
-		printf "<option %s>%s\n",
+		printf "<option %s>%s</option>\n",
 			$u->[1] eq $c->[0] ? 'selected' : '', $c->[0];
 		}
 	print "</select></td> </tr>\n";

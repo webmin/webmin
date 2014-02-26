@@ -2,15 +2,18 @@
 # move_http.cgi
 # Move a http_access directive up or down
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 $access{'actrl'} || &error($text{'eacl_ecannot'});
 &lock_file($config{'squid_conf'});
-$conf = &get_config();
-($pos, $move) = @ARGV;
+my $conf = &get_config();
+my ($pos, $move) = @ARGV;
 
-@http_relies = &find_config("http_reply_access", $conf);
-$newpos = $pos + $move;
-$oldv = $http_relies[$pos]->{'values'};
+my @http_relies = &find_config("http_reply_access", $conf);
+my $newpos = $pos + $move;
+my $oldv = $http_relies[$pos]->{'values'};
 $http_relies[$pos]->{'values'} = $http_relies[$newpos]->{'values'};
 $http_relies[$newpos]->{'values'} = $oldv;
 &save_directive($conf, "http_reply_access", \@http_relies);

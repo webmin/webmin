@@ -2,11 +2,14 @@
 # save_delay.cgi
 # Save global delay pool options
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 $access{'delay'} || &error($text{'delay_ecannot'});
 &ReadParse();
 &lock_file($config{'squid_conf'});
-$conf = &get_config();
+my $conf = &get_config();
 &error_setup($text{'delay_err'});
 
 &save_opt("delay_initial_bucket_level", \&check_initial, $conf);

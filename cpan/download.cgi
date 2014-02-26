@@ -88,17 +88,33 @@ elsif ($in{'source'} == 3) {
 	    defined(&software::update_system_install)) {
 		# Can install from YUM or APT .. do it!
 		$i = 0;
+		@fallback = ( );
 		foreach $yum (@cpanyum) {
 			print &text('download_yum', "<tt>$cpan[$i]</tt>",
 				    "<tt>$yum->{'package'}</tt>"),"<br>\n";
 			print "<ul>\n";
-			&software::update_system_install($yum->{'package'});
+			@got = &software::update_system_install(
+				$yum->{'package'});
 			print "</ul>\n";
+			if (!@got) {
+				# Failed, so fall back to direct install (but
+				# only if not installed yet)
+				eval "use $cpan[$i]";
+				if ($@) {
+					push(@fallback, $cpan[$i]);
+					}
+				}
 			$i++;
 			}
-		&ui_print_footer($in{'return'},
-			         $in{'returndesc'} || $text{'index_return'});
-		exit;
+		if (@fallback) {
+			print "<b>$text{'download_fallback'}</b><p>\n";
+			@cpan = @fallback;
+			}
+		else {
+			&ui_print_footer($in{'return'},
+				 $in{'returndesc'} || $text{'index_return'});
+			exit;
+			}
 		}
 
 	$progress_callback_url = $config{'packages'};

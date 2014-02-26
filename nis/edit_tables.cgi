@@ -29,7 +29,7 @@ foreach $t (@tables) {
 	$t->{'desc'} = $text{"desc_".$t->{'table'}};
 	$t->{'desc'} = $t->{'table'} if (!$t->{'desc'});
 	$t->{'desc'} .= " ($t->{'domain'})" if (@domains > 1);
-	printf "<option value=%d %s>%s\n",
+	printf "<option value=%d %s>%s</option>\n",
 		$t->{'index'}, $in{'table'} eq $t->{'index'} ? 'selected' : '',
 		$t->{'desc'};
 	}
@@ -160,7 +160,7 @@ if ($config{'max_size'} && $lines > $config{'max_size'}) {
 	local $sel = "<select name=field>\n";
 	local $n = 0;
 	foreach $f (@{$_[0]}) {
-		$sel .= sprintf "<option value=%s %s>%s\n",
+		$sel .= sprintf "<option value=%s %s>%s</option>\n",
 			$n, $in{'field'} == $n ? 'selected' : '', $f;
 		$n++;
 		}

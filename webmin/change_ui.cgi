@@ -16,7 +16,6 @@ for($i=0; $i<@cs_names; $i++) {
 	else { $gconfig{$cd} = $in{$cd}; }
 	}
 
-$gconfig{'texttitles'} = $in{'texttitles'};
 $gconfig{'sysinfo'} = $in{'sysinfo'};
 $gconfig{'showlogin'} = $in{'showlogin'};
 $gconfig{'showhost'} = $in{'showhost'};

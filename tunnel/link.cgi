@@ -2,33 +2,35 @@
 # link.cgi
 # Forward the URL from path_info on to another webmin server
 
+use strict;
+use warnings;
+our (%config, %text, %module_info, %in, %gconfig, $module_name);
 require './tunnel-lib.pl';
-#$ENV{'PATH_INFO'} =~ /^\/(.*)$/ ||
-#	&error("Bad PATH_INFO : $ENV{'PATH_INFO'}");
+
 $ENV{'PATH_INFO'} =~ /^\/(http|https):\/+([^:\/]+)(:(\d+))?(.*)$/ ||
 	&error("Bad PATH_INFO : $ENV{'PATH_INFO'}");
-$protocol = $1;
-$ssl = $protocol eq "https";
-$host = $2;
-$port = $4 || 80;
-$path = $5 || "/";
-$openurl = "$1://$2$3$5";
-$baseurl = "$1://$2$3";
+my $protocol = $1;
+my $ssl = $protocol eq "https";
+my $host = $2;
+my $port = $4 || ( !$ssl ? 80 : 443 );
+my $path = $5 || "/";
+my $openurl = "$1://$2$3$5";
+my $baseurl = "$1://$2$3";
 if ($ENV{'QUERY_STRING'}) {
 	$path .= '?'.$ENV{'QUERY_STRING'};
 	}
 elsif (@ARGV) {
 	$path .= '?'.join('+', @ARGV);
 	}
-$linkurl = $gconfig{'webprefix'}."/$module_name/link.cgi/";
-$url = $gconfig{'webprefix'}."/$module_name/link.cgi/$openurl";
+my $linkurl = $gconfig{'webprefix'}."/$module_name/link.cgi/";
+my $url = $gconfig{'webprefix'}."/$module_name/link.cgi/$openurl";
 $| = 1;
-$meth = $ENV{'REQUEST_METHOD'};
+my $meth = $ENV{'REQUEST_METHOD'};
 if ($config{'url'}) {
-	$openurl =~ /^\Q$config{'url'}\E/ ||
-		&error(&text('link_ebadurl', $openurl));
+	$openurl = &fix_end_url($config{'url'}) || &error($text{'seturl_eurl'});
 	}
 
+my ($user, $pass);
 if ($config{'loginmode'} == 2) {
 	# Login is variable .. check if we have it yet
 	if ($ENV{'HTTP_COOKIE'} =~ /tunnel=([^\s;]+)/) {
@@ -39,22 +41,20 @@ if ($config{'loginmode'} == 2) {
 		# No - need to display a login form
 		&ui_print_header(undef, $text{'login_title'}, "");
 
-		print "<center>",&text('login_desc', "<tt>$openurl</tt>"),
-		      "</center><p>\n";
-		print "<form action=/$module_name/login.cgi method=post>\n";
-		print "<input type=hidden name=url value='",
-			&html_escape($openurl),"'>\n";
-		print "<center><table border>\n";
-		print "<tr $tb> <td><b>$text{'login_header'}</b></td> </tr>\n";
-		print "<tr $cb> <td><table cellpadding=2>\n";
-		print "<tr> <td><b>$text{'login_user'}</b></td>\n";
-		print "<td><input name=user size=20></td> </tr>\n";
-		print "<tr> <td><b>$text{'login_pass'}</b></td>\n";
-		print "<td><input name=pass size=20 type=password></td>\n";
-		print "</tr> </table></td></tr></table>\n";
-		print "<input type=submit value='$text{'login_login'}'>\n";
-		print "<input type=reset value='$text{'login_clear'}'>\n";
-		print "</center></form>\n";
+		print "<center>\n";
+		print &text('login_desc', "<tt>$openurl</tt>"),"<p>\n";
+
+		print &ui_form_start("/$module_name/login.cgi", "post");
+		print &ui_hidden("url", $openurl);
+		print &ui_table_start($text{'login_header'}, undef, 2);
+		print &ui_table_row($text{'login_user'},
+			&ui_textbox("user", undef, 20));
+		print &ui_table_row($text{'login_pass'},
+			&ui_password("pass", undef, 20));
+		print &ui_table_end();
+		print &ui_form_end([ [ undef, $text{'login_login'} ] ]);
+
+		print "</center>\n";
 
 		&ui_print_footer("", $text{'index_return'});
 		exit;
@@ -67,34 +67,37 @@ elsif ($config{'loginmode'} == 1) {
 	}
 
 # Connect to the server
-$con = &make_http_connection($host, $port, $ssl, $meth, $path);
+my $con = &make_http_connection($host, $port, $ssl, $meth, $path);
 &error($con) if (!ref($con));
 
 # Send request headers
 &write_http_connection($con, "Host: $host\r\n");
 &write_http_connection($con, "User-Agent: Webmin\r\n");
 if ($user) {
-	$auth = &encode_base64("$user:$pass");
+	my $auth = &encode_base64("$user:$pass");
 	$auth =~ s/\n//g;
 	&write_http_connection($con, "Authorization: Basic $auth\r\n");
 	}
 &write_http_connection($con, sprintf(
-			"Webmin-servers: %s://%s:%d/$module_name/\n",
+			"Webmin-servers: %s://%s:%d/$module_name/\r\n",
 			$ENV{'HTTPS'} eq "ON" ? "https" : "http",
 			$ENV{'SERVER_NAME'}, $ENV{'SERVER_PORT'}));
-$cl = $ENV{'CONTENT_LENGTH'};
+my $cl = $ENV{'CONTENT_LENGTH'};
 &write_http_connection($con, "Content-Length: $cl\r\n") if ($cl);
 &write_http_connection($con, "Content-Type: $ENV{'CONTENT_TYPE'}\r\n")
 	if ($ENV{'CONTENT_TYPE'});
 &write_http_connection($con, "\r\n");
 if ($cl) {
-	&read_fully(STDIN, \$post, $cl);
+	my $post;
+	&read_fully(\*STDIN, \$post, $cl);
 	&write_http_connection($con, $post);
 	}
 
 # read back the headers
-$dummy = &read_http_connection($con);
+my $dummy = &read_http_connection($con);
+my ($headers, %header);
 while(1) {
+	my $headline;
 	($headline = &read_http_connection($con)) =~ s/\r|\n//g;
 	last if (!$headline);
 	$headline =~ /^(\S+):\s+(.*)$/ || &error("Bad header");
@@ -102,14 +105,14 @@ while(1) {
 	$headers .= $headline."\n";
 	}
 
-$defport = $ssl ? 443 : 80;
+my $defport = $ssl ? 443 : 80;
 if ($header{'location'}) {
 	# fix a redirect
 	&redirect("/$module_name/link.cgi/$header{'location'}");
 	exit;
 	}
-if ($header{'location'} =~ /^(http|https):\/\/$host:$port$page(.*)$/ ||
-    $header{'location'} =~ /^(http|https):\/\/$host$page(.*)/ &&
+if ($header{'location'} =~ /^(http|https):\/\/$host:$port$path(.*)$/ ||
+    $header{'location'} =~ /^(http|https):\/\/$host$path(.*)/ &&
     $port == $defport) {
 	# fix a redirect
 	&redirect("$url/$2");
@@ -137,6 +140,21 @@ else {
 # read back the rest of the page
 if ($header{'content-type'} =~ /text\/html/ && !$header{'x-no-links'}) {
 	while($_ = &read_http_connection($con)) {
+		# fix protocol relative src like <iframe src='//foo.com' />
+		s/src='(\/\/[^']*)'/src='$protocol:$1'/gi;
+		s/src="(\/\/[^"]*)"/src="$protocol:$1"/gi;
+		s/src=(\/\/[^ "'>]*)/src=$protocol:$1/gi;
+
+		# Fix protocol relative hrefs like <a href=//foo.com/foo.html>
+		s/href='(\/\/[^']*)'/href='$protocol:$1'/gi;
+		s/href="(\/\/[^"]*)"/href="$protocol:$1"/gi;
+		s/href=(\/\/[^ "'>]*)/href=$protocol:$1/gi;
+
+		# Fix protocol relative form actions like <form action=//foo.com>
+		s/action='(\/\/[^']*)'/action='$protocol:$1'/gi;
+		s/action="(\/\/[^"]*)"/action="$protocol:$1"/gi;
+		s/action=(\/\/[^ "'>]*)/action=$protocol:$1/gi;
+
 		# Fix absolute image links like <img src=/foo.gif>
 		s/src='(\/[^']*)'/src='$baseurl$1'/gi;
 		s/src="(\/[^"]*)"/src="$baseurl$1"/gi;
@@ -167,15 +185,15 @@ if ($header{'content-type'} =~ /text\/html/ && !$header{'x-no-links'}) {
 		s/action="((http|https):\/\/[^"]*)"/action="$linkurl$1"/gi;
 		s/action=((http|https):\/\/[^ "'>]*)/action=$linkurl$1/gi;
 
-		#s/\.location\s*=\s*'$page([^']*)'/.location='$url\/$1'/gi;
-		#s/\.location\s*=\s*"$page([^']*)"/.location="$url\/$1"/gi;
-		#s/window.open\("$page([^"]*)"/window.open\("$url\/$1"/gi;
-		#s/name=return\s+value="$page([^"]*)"/name=return value="$url\/$1"/gi;
+		#s/\.location\s*=\s*'$path([^']*)'/.location='$url\/$1'/gi;
+		#s/\.location\s*=\s*"$path([^']*)"/.location="$url\/$1"/gi;
+		#s/window.open\("$path([^"]*)"/window.open\("$url\/$1"/gi;
+		#s/name=return\s+value="$path([^"]*)"/name=return value="$url\/$1"/gi;
 		print;
 		}
 	}
 else {
-	while($buf = &read_http_connection($con, 1024)) {
+	while(my $buf = &read_http_connection($con,1024)) {
 		print $buf;
 		}
 	}

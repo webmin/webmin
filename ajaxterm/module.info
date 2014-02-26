@@ -6,3 +6,5 @@ desc_no=Tekst-terminal
 desc_nl=Tekst Login
 desc_pl=Tryb tekstowy (konsola)
 desc_hu=Shell hozzáférés (Ajaxterm)
+desc_ms_MY=Log masuk Teks
+longdesc_ms_MY=Akses shell pada sistem anda tanpa menggunakan klien SSH secara berasingan dengan menggunaka Ajaxterm

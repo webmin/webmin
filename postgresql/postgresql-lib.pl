@@ -1231,5 +1231,23 @@ else {
 return $cmd;
 }
 
+# extract_grants(field)
+# Given a field from pg_class that contains grants either as a comma-separated
+# list or an array, return a list of tuples in user,grant format
+sub extract_grants
+{
+my ($f) = @_;
+my @rv;
+if (ref($f)) {
+	@rv = map { [ split(/=/, $_, 2) ] } @$f;
+	}
+else {
+	$f =~ s/^\{//;
+	$f =~ s/\}$//;
+	@rv = map { [ split(/=/, $_, 2) ] } map { s/\\"/"/g; s/"//g; $_ } grep { /=\S/ } split(/,/, $f);
+	}
+return @rv;
+}
+
 1;
 

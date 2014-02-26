@@ -40,6 +40,7 @@ edit_missingok=Ignore log file if missing?
 edit_size=Maximum size before rotating
 edit_always=Ignored
 edit_ext=Extension for rotated filenames
+edit_dateext=Use date extension for rotated files
 edit_mail=Email log file before deleting?
 edit_mailto=Yes, to address
 edit_mailno=No, don't email
@@ -80,6 +81,7 @@ save_emailto=Missing email address for rotated logs
 save_eerrors=Missing email address for error messages
 save_epre=Pre-rotation script cannot contain an <tt>endscript</tt> or <tt>endrotate</tt> line
 save_epost=Post-rotation script cannot contain an <tt>endscript</tt> or <tt>endrotate</tt> line
+save_enofiles=No files to rotate entered
 
 log_modify_sched=Changed log rotation Cron job
 log_create_sched=Created log rotation Cron job
@@ -98,6 +100,7 @@ sched_disabled=Disabled
 sched_enabled=Enabled, at times below ..
 sched_save=Update Cron Job
 sched_err=Failed to save rotation schedule
+sched_when=Times to run
 
 force_title=Force Log Rotation
 force_doing=Forcing the immediate rotation of all log files ..

@@ -24,19 +24,20 @@ local $rv = sprintf
 $rv .= sprintf "<input type=radio name=IndexOrderDefault_def value=0 %s>\n",
 	$_[0] ? "checked" : "";
 $rv .= "<select name=IndexOrderDefault_asc>\n";
-$rv .= sprintf "<option value=Ascending %s>$text{'mod_autoindex_asc'}\n",
+$rv .= sprintf "<option value=Ascending %s>$text{'mod_autoindex_asc'}</option>\n",
 		$_[0]->{'words'}->[0] eq "Ascending" ? "selected" : "";
-$rv .= sprintf "<option value=Descending %s>$text{'mod_autoindex_descend'}\n",
+$rv .= sprintf "<option value=Descending %s>$text{'mod_autoindex_descend'}</option>\n",
 		$_[0]->{'words'}->[0] eq "Descending" ? "selected" : "";
 $rv .= "</select>\n";
 $rv .= "<select name=IndexOrderDefault_what>\n";
-$rv .= sprintf "<option value=Name %s>$text{'mod_autoindex_name'}\n",
+$rv .= sprintf "<option value=Name %s>$text{'mod_autoindex_name'}</option>\n",
 		$_[0]->{'words'}->[1] eq "Name" ? "selected" : "";
 $rv .= sprintf "<option value=Date %s>$text{'mod_autoindex_date'}\n",
-		$_[0]->{'words'}->[1] eq "Date" ? "selected" : "";
-$rv .= sprintf "<option value=Size %s>$text{'mod_autoindex_size'}\n",
+		$_[0]->{'words'}->[1] eq "Date" ? "selected" : "",
+		"</option>";
+$rv .= sprintf "<option value=Size %s>$text{'mod_autoindex_size'}</option>\n",
 		$_[0]->{'words'}->[1] eq "Size" ? "selected" : "";
-$rv .= sprintf "<option value=Description %s>$text{'mod_autoindex_desc'}\n",
+$rv .= sprintf "<option value=Description %s>$text{'mod_autoindex_desc'}</option>\n",
 		$_[0]->{'words'}->[1] eq "Description" ? "selected" : "";
 $rv .= "</select>\n";
 return (2, "$text{'mod_autoindex_sort'}", $rv);

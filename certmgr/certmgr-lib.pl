@@ -6,6 +6,7 @@ use WebminCore;
 %access = &get_module_acl();
 
 @pages = ( "gencert", "gencsr", "signcsr", "import", "view", "manual" );
+$valign_middle = ["valign=middle","valign=middle"];
 
 sub my_urlize{
 	my $temp=$_[0];
@@ -14,89 +15,71 @@ sub my_urlize{
 }
 
 sub print_cert_form{
-	my $form=$_[0];
-	my $certfield;
-	if ($form=~/^gen(.*)$/) {$certfield=$1."file";}
-	print <<EOF;
-$text{'gencert_password_notice'}
-<hr>
-<form action=$form.cgi method=post>
-<input type=hidden name=submitted value=generate>
-<table border>
-<tr $tb> <td align=center><b>$text{$form.'_header'}</b></td> </tr>
-<tr $cb> <td><table>
-<tr><td>$text{$form.'_'.$certfield}</td><td><input name=$certfield size=40 value="$in{$certfield}"></td></tr>
-<tr><td>$text{'keyfile'}</td><td><input name=keyfile size=40 value="$in{'keyfile'}"></td></tr>
-EOF
-	if ($form eq "gencert"){
-		print "<tr><td>$text{'keycertfile'}</td><td><input name=keycertfile size=40 value=\"$in{'keycertfile'}\"></td></tr>";
-	}
-print <<EOF;
-<tr><td>$text{'password'}</td><td><input name=password size=40 type=password value="$in{'password'}"></td></tr>
-<tr><td>$text{'confirm_password'}</td><td><input name=confirm_password size=40 type=password value="$in{'confirm_password'}"></td></tr>
-<tr><td>$text{'keysize'}</td><td>
-<table width=100%><tr>
-<td width=33%><input name=keysize type=radio value=512$checked[0]> 512</td>
-<td width=33%><input name=keysize type=radio value=1024$checked[1]> 1024</td>
-<td width=33%><input name=keysize type=radio value=2048$checked[2]> 2048</td>
-</tr></table>
-</td></tr>
-EOF
-	if ($form eq "gencert"){
-		print <<EOF;
-<tr><td>$text{$form.'_days'}</td><td><input name=days size=40 value="$in{'days'}"></td></tr>
-EOF
-	}
-	print <<EOF;
-<tr><td>$text{'cn'}</td><td><input name=cn size=40 value="$in{'cn'}"></td></tr>
-<tr><td>$text{'o'}</td><td><input name=o size=40 value="$in{'o'}"></td></tr>
-<tr><td>$text{'ou'}</td><td><input name=ou size=40 value="$in{'ou'}"></td></tr>
-<tr><td>$text{'l'}</td><td><input name=l size=40 value="$in{'l'}"></td></tr>
-<tr><td>$text{'st'}</td><td><input name=st size=40 value="$in{'st'}"></td></tr>
-<tr><td>$text{'c'}</td><td><input name=c size=2 maxlength=2 value="$in{'c'}"></td></tr>
-<tr><td>$text{'emailAddress'}</td><td><input name=emailAddress size=40 value="$in{'emailAddress'}"></td></tr>
-<tr> <td colspan=2 align=right>
-<input type=reset value="$text{'reset'}">
-<input type=submit value="$text{$form.'_generate'}"></td> </tr>
-
-</table></td></tr></table>
-</form>
-EOF
+    my $form=$_[0];
+    my $certfield;
+    if ($form=~/^gen(.*)$/) {$certfield=$1."file";}
+    print $text{'gencert_password_notice'};
+    print &ui_hr();
+    print &ui_form_start("$form.cgi", "post");
+    print &ui_hidden("submitted","generate");
+    print &ui_table_start($text{$form.'_header'}, undef, 2);
+    print &ui_table_row($text{$form.'_'.$certfield}, &ui_textbox($certfield, $in{$certfield}, 40), undef, $valign_middle);
+    print &ui_table_row($text{'keyfile'}, &ui_textbox("keyfile", $in{'keyfile'}, 40), undef, $valign_middle);
+    if ($form eq "gencert") {
+        print &ui_table_row($text{'keycertfile'}, &ui_textbox("keycertfile", $in{'keycertfile'}, 40), undef, $valign_middle);
+    }
+    print &ui_table_row($text{'password'}, &ui_password("password", $in{'password'}, 40), undef, $valign_middle);
+    print &ui_table_row($text{'confirm_password'}, &ui_password("confirm_password", $in{'confirm_password'}, 40), undef, $valign_middle);
+    print &ui_table_row($text{'keysize'},
+                        &ui_oneradio("keysize", "512", "512", ( $checked[0] ? 1 : undef ) )." ".
+                        &ui_oneradio("keysize", "1024", "1024", ( $checked[1] ? 1 : undef ) )." ".
+                        &ui_oneradio("keysize", "2048", "2048", ( $checked[2] ? 1 : undef ) ), undef, $valign_middle);
+    if ($form eq "gencert") {
+        print &ui_table_row($text{$form.'_days'}, &ui_textbox("days", $in{'days'}, 40), undef, $valign_middle);
+    }
+    print &ui_table_row($text{'cn'}, &ui_textbox("cn", $in{'cn'}, 40), undef, $valign_middle);
+    print &ui_table_row($text{'o'}, &ui_textbox("o", $in{'o'}, 40), undef, $valign_middle);
+    print &ui_table_row($text{'ou'}, &ui_textbox("ou", $in{'ou'}, 40), undef, $valign_middle);
+    print &ui_table_row($text{'l'}, &ui_textbox("l", $in{'l'}, 40), undef, $valign_middle);
+    print &ui_table_row($text{'st'}, &ui_textbox("st", $in{'st'}, 40), undef, $valign_middle);
+    print &ui_table_row($text{'c'}, &ui_textbox("c", $in{'c'}, 40, undef, 2), undef, $valign_middle);
+    print &ui_table_row($text{'emailAddress'}, &ui_textbox("emailAddress", $in{'emailAddress'}, 40), undef, $valign_middle);
+    print &ui_table_row("&nbsp;",
+        &ui_reset($text{'reset'})." ".&ui_submit($text{$form.'_generate'}), undef, $valign_middle);
+    print &ui_table_end();
+    print &ui_form_end();
 }
 
 sub print_sign_form {
-	my $form=$_[0];
-	my $certfield;
-	print <<EOF;
-$text{'signcsr_desc'}
-<hr>
-<form action=$form.cgi method=post>
-<input type=hidden name=submitted value=sign>
-<table border>
-<tr $tb> <td align=center><b>$text{'signcsr_header'}</b></td> </tr>
-<tr $cb> <td><table>
-<tr><td>$text{'signcsr_csrfile'}</td><td><input name=csrfile size=40 value="$in{'csrfile'}"></td></tr>
-<tr><td>$text{'signcsr_signfile'}</td><td><input name=signfile size=40 value="$in{'signfile'}"></td></tr>
-<tr><td>$text{'signcsr_keyfile'}</td><td><input name=keyfile size=40 value="$in{'keyfile'}"></td></tr>
-<tr><td>$text{'signcsr_keycertfile'}</td><td><input name=keycertfile size=40 value="$in{'keycertfile'}"></td></tr>
-<tr><td><a onClick='window.open("/help.cgi/certmgr/signcsr_ca_pass", "help", "toolbar=no,menubar=no,scrollbars=yes,width=400,height=300,resizable=yes"); return false' href="/help.cgi/certmgr/signcsr_ca_pass"><b>$text{'signcsr_ca_passphrase'}</b></a></td><td> <input name=password size=40 type=password value="$in{'password'}"> </td></tr>
-<tr><td>$text{'signcsr_days'}</td><td><input name=days size=40 value="$in{'days'}"></td></tr>
-<tr> <td colspan=2 align=right>
-<input type=reset value="$text{'reset'}">
-<input type=submit value="$text{'signcsr_generate'}"></td> </tr>
-
-</table></td></tr></table>
-</form>
-EOF
+    my $form=$_[0];
+    my $certfield;
+    print $text{'signcsr_desc'};
+    print &ui_hr();
+    print &ui_form_start("$form.cgi", "post");
+    print &ui_hidden("submitted","sign");
+    print &ui_table_start($text{'signcsr_header'}, undef, 2);
+    print &ui_table_row($text{'signcsr_csrfile'}, &ui_textbox("csrfile", $in{'csrfile'}, 40), undef, $valign_middle);
+    print &ui_table_row($text{'signcsr_signfile'}, &ui_textbox("signfile", $in{'signfile'}, 40), undef, $valign_middle);
+    print &ui_table_row($text{'signcsr_keyfile'}, &ui_textbox("keycertfile", $in{'keycertfile'}, 40), undef, $valign_middle);
+    print &ui_table_row(&ui_link("/help.cgi/certmgr/signcsr_ca_pass",
+                    "<b>$text{'signcsr_ca_passphrase'}</b>", undef,
+                    "onClick='window.open(\"/help.cgi/certmgr/signcsr_ca_pass\", \"help\", \"toolbar=no,menubar=no,scrollbars=yes,width=400,height=300,resizable=yes\"); return false;'"), 
+                    &ui_password("password", $in{'password'}, 40), undef, $valign_middle);
+    print &ui_table_row($text{'signcsr_days'}, &ui_textbox("days", $in{'days'}, 40), undef, $valign_middle);
+    print &ui_table_row("&nbsp;",
+        &ui_reset($text{'reset'})." ".&ui_submit($text{'signcsr_generate'}), undef, $valign_middle);
+    print &ui_table_end();
+    print &ui_form_end();
 }
 
-sub print_cert_info{
+sub show_cert_info {
 	my $full=$_[0];
 	my $certdata=$_[1];
 	my %issuer;
 	my %subject;
 	my @fields=('CN','O','OU','L','ST','C');
 	my $field;
+    my $rv = "";
 	foreach $field (@fields){
 		if ($certdata=~/^\s*Issuer:.*?\s+$field=(.*?)(, [A-Z]{1,2}|\/\w+=|$)/m) { $issuer{$field}=$1; }
 		if ($certdata=~/^\s*Subject:.*?\s+$field=(.*?)(, [A-Z]{1,2}|\/\w+=|$)/m) { $subject{$field}=$1; }
@@ -117,37 +100,39 @@ sub print_cert_info{
 	$subject{'modulus'}=~s/$/<\/code><br>/msg;
 	$subject{'modulus'}=~s/^/<code>/msg;
 	$subject{'modulus'}=~s/\s+//msg;
-	print "<table width=100%>\n";
-	print "<tr><td width=50%><b>$text{'certmgrlib_subject'}</b></td><td width=50%><b>$text{'certmgrlib_issuer'}</b></td></tr>\n";
-	print "<tr><td>$subject{'CN'}</td><td>$issuer{'CN'}</td></tr>\n";
-	print "<tr><td>$subject{'O'}</td><td>$issuer{'O'}</td></tr>\n";
-	print "<tr><td>$subject{'OU'}</td><td>$issuer{'OU'}</td></tr>\n";
-	print "<tr><td>$subject{'L'} $subject{'ST'} $subject{'C'}</td><td>$issuer{'L'} $issuer{'ST'} $issuer{'C'}</td></tr>\n";
-	print "<tr><td>$subject{'emailAddress'}</td><td>$issuer{'emailAddress'}</td></tr>\n";
+	$rv .= "<table width=100%>\n";
+	$rv .= "<tr><td width=50%><b>$text{'certmgrlib_subject'}</b></td><td width=50%><b>$text{'certmgrlib_issuer'}</b></td></tr>\n";
+	$rv .= "<tr><td>$subject{'CN'}</td><td>$issuer{'CN'}</td></tr>\n";
+	$rv .= "<tr><td>$subject{'O'}</td><td>$issuer{'O'}</td></tr>\n";
+	$rv .= "<tr><td>$subject{'OU'}</td><td>$issuer{'OU'}</td></tr>\n";
+	$rv .= "<tr><td>$subject{'L'} $subject{'ST'} $subject{'C'}</td><td>$issuer{'L'} $issuer{'ST'} $issuer{'C'}</td></tr>\n";
+	$rv .= "<tr><td>$subject{'emailAddress'}</td><td>$issuer{'emailAddress'}</td></tr>\n";
 	if ($subject{'issued'}){
-		print "<tr><td colspan=2>$text{'issued_on'} $subject{'issued'}</td></tr>\n";
-		print "<tr><td colspan=2>$text{'expires_on'} $subject{'expires'}</td></tr>\n";
+		$rv .= "<tr><td colspan=2>$text{'issued_on'} $subject{'issued'}</td></tr>\n";
+		$rv .= "<tr><td colspan=2>$text{'expires_on'} $subject{'expires'}</td></tr>\n";
 	}
 	if ($full){
-		print "<tr><td>$text{'keysize'}</td><td>$subject{'keysize'}</td></tr>\n";
-		print "<tr><td>$text{'keytype'}</td><td>$subject{'keytype'}</td></tr>\n";
+		$rv .= "<tr><td>$text{'keysize'}</td><td>$subject{'keysize'}</td></tr>\n";
+		$rv .= "<tr><td>$text{'keytype'}</td><td>$subject{'keytype'}</td></tr>\n";
 	}
 	if ($full){
-		print "<tr><td>$text{'publicExponent'}</td><td>$subject{'exponent'}</td></tr>\n";
-		print "<tr><td colspan=2>$text{'modulus'}:<br>$subject{'modulus'}</td></tr>\n";
+		$rv .= "<tr><td>$text{'publicExponent'}</td><td>$subject{'exponent'}</td></tr>\n";
+		$rv .= "<tr><td colspan=2>$text{'modulus'}:<br>$subject{'modulus'}</td></tr>\n";
 	}
 	if ($subject{'md5fingerprint'}){
-		print "<tr><td colspan=2>$text{'md5fingerprint'}:<br>$subject{'md5fingerprint'}</td></tr>\n";
+		$rv .= "<tr><td colspan=2>$text{'md5fingerprint'}:<br>$subject{'md5fingerprint'}</td></tr>\n";
 	}
-	print "</table>\n";
+	$rv .= "</table>\n";
+    return $rv;
 }
 
-sub print_key_info{
+sub show_key_info {
 	my $full=$_[0];
 	my $keydata=$_[1];
 	my %key;
 	my @fields=('modulus','privateExponent','prime1','prime2','exponent1','exponent2','coefficient');
 	my $field;
+    my $rv = "";
 	$keydata=~/^publicExponent:\s*(.*?)\s*?$/ms;
 	$key{'publicExponent'}=$1;
 	$keydata=~/^Private-Key:\s*\((\d*)\s*bit\)\s*?$/ms;
@@ -155,18 +140,19 @@ sub print_key_info{
 	foreach $field (@fields){
 		if ($keydata=~/^$field:\s*((([0-9a-fA-F]{2}:)*\s*)*[0-9a-fA-F]{2})/ms) { $key{$field}=$1; }
 	}
-	print "<table width=100%>\n";
-	print "<tr><td ";
-	if ($full) { print "valign=top align=right"; }
-	print ">$text{'keysize'}:</td><td>$key{'keysize'}</td></tr>\n";
+	$rv .= "<table width=100%>\n";
+	$rv .= "<tr><td ";
+	if ($full) { $rv .= "valign=top align=right"; }
+	$rv .= ">$text{'keysize'}:</td><td>$key{'keysize'}</td></tr>\n";
 	splice(@fields,1,0,'publicExponent');
 	if ($full) { foreach $field (@fields){
 		$key{$field}=~s/$/<\/code><br>/msg;
 		$key{$field}=~s/^/<code>/msg;
 		$key{$field}=~s/\s+//msg;
-		print "<tr><td valign=top align=right>$text{$field}:</td><td>$key{$field}</td></tr>\n";
+		$rv .= "<tr><td valign=top align=right>$text{$field}:</td><td>$key{$field}</td></tr>\n";
 	} }
-	print "</table>\n";
+	$rv .= "</table>\n";
+    return $rv;
 }
 
 sub pem_or_der{

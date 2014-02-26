@@ -59,12 +59,13 @@ download_envs=<tt>Makefile.PL</tt> environment variables
 download_name=Name
 download_value=Value
 download_emodname=No module to install was entered
-download_need=Fetching Missing Pre-Requesites
+download_need=Fetching Missing Pre-Requisites
 download_missing=Missing $1 modules
 download_nomissing=All installed
 download_ebuild=One or more of the Perl modules needs $1 to be built, but this Perl module is not installed.
 download_yum=Installing Perl module $1 from package $2 ..
 download_missingok=Modules missing from CPAN
+download_fallback=Some modules failed to install from packages, trying installation from source instead..
 
 install_title=Install Module
 install_untar=Untarring module file

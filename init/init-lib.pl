@@ -673,7 +673,8 @@ if ($init_mode eq "systemd" && (!-r "$config{'init_dir'}/$_[0]" ||
 		$_[2] || &error("Systemd service $_[0] cannot be created ".
 				"unless a command is given");
 		&create_systemd_service($unit, $_[1], $_[2], $_[3], undef,
-					$_[5]->{'fork'}, $_[5]->{'pidfile'});
+					$_[5]->{'fork'}, $_[5]->{'pidfile'},
+					$_[5]->{'exit'});
 		}
 	&system_logged("systemctl enable ".
 		       quotemeta($unit)." >/dev/null 2>&1");
@@ -1100,6 +1101,65 @@ elsif ($init_mode eq "osx") {
 		&write_env_file($config{'hostconfig'}, \%hc);
 		}
 	&unlock_file($config{'hostconfig'});
+	}
+}
+
+=head2 delete_at_boot(name)
+
+Delete the init script, RC script or whatever with some name
+
+=cut
+sub delete_at_boot
+{
+my ($name) = @_;
+my $mode = &get_action_mode($name);
+if ($mode eq "systemd") {
+	# Delete systemd service
+	&delete_systemd_service($name);
+	&delete_systemd_service($name.".service");
+	}
+elsif ($mode eq "upstart") {
+	# Delete upstart service
+	&delete_upstart_service($name);
+	}
+elsif ($mode eq "init") {
+	# Delete init script links and init.d file
+	foreach my $a (&action_levels('S', $name)) {
+		$a =~ /^(\S+)\s+(\S+)\s+(\S+)$/ &&
+			&delete_rl_action($name, $1, 'S');
+		}
+	foreach my $a (&action_levels('K', $name)) {
+		$a =~ /^(\S+)\s+(\S+)\s+(\S+)$/ &&
+			&delete_rl_action($name, $1, 'K');
+		}
+	my $fn = &action_filename($name);
+	&unlink_logged($fn);
+	}
+elsif ($mode eq "win32") {
+	# Delete windows service
+	&delete_win32_service($name);
+	}
+elsif ($mode eq "rc") {
+	# Delete FreeBSD RC script
+	&delete_rc_script($name);
+	}
+elsif ($mode eq "osx") {
+	# Delete OSX hostconfig entry
+	open(LOCAL, $config{'hostconfig'});
+	my @local = <LOCAL>;
+	close(LOCAL);
+	my $start = $name."=-";
+	&open_tempfile(LOCAL, ">$config{'hostconfig'}");
+	&print_tempfile(LOCAL, grep { !/^$start/i } @local);
+	&close_tempfile(LOCAL);
+	my $paramlist = "$config{'darwin_setup'}/$ucproduct/$config{'plist'}";
+	my $scriptfile = "$config{'darwin_setup'}/$ucproduct/$ucproduct";
+	&unlink_logged($paramlist);
+	&unlink_logged($scriptfile);
+	}
+elsif ($mode eq "local") {
+	# Delete from local rc file
+	&disable_at_boot($name);
 	}
 }
 
@@ -1972,18 +2032,19 @@ Create a new systemd service with the given details.
 =cut
 sub create_systemd_service
 {
-my ($name, $desc, $start, $stop, $restart, $forks, $pidfile) = @_;
+my ($name, $desc, $start, $stop, $restart, $forks, $pidfile, $exits) = @_;
 $start =~ s/\r?\n/ ; /g;
 $stop =~ s/\r?\n/ ; /g;
 $restart =~ s/\r?\n/ ; /g;
+my $sh = &has_command("sh") || "sh";
 if ($start =~ /<|>/) {
-	$start = "sh -c '$start'";
+	$start = "$sh -c '$start'";
 	}
 if ($restart =~ /<|>/) {
-	$restart = "sh -c '$restart'";
+	$restart = "$sh -c '$restart'";
 	}
 if ($stop =~ /<|>/) {
-	$stop = "sh -c '$stop'";
+	$stop = "$sh -c '$stop'";
 	}
 my $cfile = &get_systemd_root($name)."/".$name;
 &open_lock_tempfile(CFILE, ">$cfile");
@@ -1995,6 +2056,8 @@ my $cfile = &get_systemd_root($name)."/".$name;
 &print_tempfile(CFILE, "ExecStop=$stop\n") if ($stop);
 &print_tempfile(CFILE, "ExecReload=$restart\n") if ($restart);
 &print_tempfile(CFILE, "Type=forking\n") if ($forks);
+&print_tempfile(CFILE, "Type=oneshot\n",
+		       "RemainAfterExit=yes\n") if ($exits);
 &print_tempfile(CFILE, "PIDFile=$pidfile\n") if ($pidfile);
 &print_tempfile(CFILE, "\n");
 &print_tempfile(CFILE, "[Install]\n");
@@ -2043,6 +2106,9 @@ my ($name) = @_;
 if ($name && (-r "/etc/systemd/system/$name.service" ||
 	      -r "/etc/systemd/system/$name")) {
 	return "/etc/systemd/system";
+	}
+if (-d "/usr/lib/systemd/system") {
+	return "/usr/lib/systemd/system";
 	}
 return "/lib/systemd/system";
 }

@@ -2,12 +2,15 @@
 # save_mem.cgi
 # Save memory usage options
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 $access{'musage'} || &error($text{'emem_ecannot'});
 &ReadParse();
 &lock_file($config{'squid_conf'});
-$conf = &get_config();
-$whatfailed = $text{'smem_ftsmo'};
+my $conf = &get_config();
+&error_setup($text{'smem_ftsmo'});
 
 if ($squid_version < 2) {
 	&save_opt("cache_mem", \&check_size, $conf);

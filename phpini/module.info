@@ -12,3 +12,5 @@ depends=time
 desc_cz.UTF-8=PHP konfigurace
 desc_no=PHP konfigurasjon
 desc_hu=PHP konfiguráció
+desc_ms_MY=Konfigurasi PHP
+longdesc_ms_MY=Mengkonfigurasi tetapan PHP untuk sistem keseluruhan atau setiap pelayan maya Apache.

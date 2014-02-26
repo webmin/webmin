@@ -1,5 +1,8 @@
 
+use strict;
+use warnings;
 require 'acl-lib.pl';
+our ($config_directory);
 
 # Rename the .acl files for any groups to .gacl files
 sub module_install

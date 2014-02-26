@@ -17,7 +17,7 @@ if ($config{'mail_system'} == 3) {
 		&save_module_config();
 		}
 	}
-elsif (!$config{'send_mode'} || !$config{'auto'}) {
+elsif (!$config{'send_mode'} || $config{'auto'}) {
 	# Make sure mail system is valid
 	local ($ms) = grep { $_->[1] == $config{'mail_system'} }
 			   @mail_system_modules;

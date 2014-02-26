@@ -38,10 +38,10 @@ print <<EOF;
 
 <tr> <td><b>$text{'create_archive'}</b></td>
      <td><select name=archive>
-	 <option value='' selected>$text{'no'}
-	 <option value=Y>$text{'create_archiveyear'}
-	 <option value=M>$text{'create_archivemonth'}
-	 <option value=D>$text{'create_archiveday'}
+	 <option value='' selected>$text{'no'}</option>
+	 <option value=Y>$text{'create_archiveyear'}</option>
+	 <option value=M>$text{'create_archivemonth'}</option>
+	 <option value=D>$text{'create_archiveday'}</option>
 	 </select></td> </tr>
 
 </table></td></tr></table>

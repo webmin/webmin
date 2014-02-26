@@ -72,11 +72,9 @@ if ($st[7] != $config{'dhcpd_size'} || $st[9] != $config{'dhcpd_mtime'}) {
 
 # Create lookup type HTML
 # XXX change text, add to lookup_*
-$match = "<select name=match>\n";
-$match .= "<option value=0 checked>$text{'index_match0'}\n";
-$match .= "<option value=1>$text{'index_match1'}\n";
-$match .= "<option value=2>$text{'index_match2'}\n";
-$match .= "</select>\n";
+$matches = ui_select("match", undef, [ [0,$text{'index_match0'},"selected"],
+                            [1,$text{'index_match1'},""],
+                            [2,$text{'index_match2'},""] ]);
 
 # get top-level hosts
 foreach $h (&find("host", $conf)) {
@@ -267,24 +265,24 @@ if ($show_subnet_delete) {
 
 # Show too-many forms
 if ($show_subnet_shared) {
-	print "<table>\n";
 	if (@ulinks >= $display_max) {
 		# Could not show all subnets, so show lookup form
-		print "<form action=lookup_subnet.cgi>\n";
-		print "<tr> <td><b>$text{'index_subtoomany'}</b></td>\n";
-		print "<td><input type=submit value='$text{'index_sublook2'}'></td>\n";
-		print "<td>$matches</td>\n";
-		print "<td><input name=subnet size=30></td></tr> </form>\n";
+        print &ui_table_start(undef, undef, 2);
+        print &ui_form_start("lookup_subnet.cgi", "get");
+        print &ui_table_row($text{'index_subtoomany'}, &ui_submit($text{'index_sublook2'}));
+        print &ui_table_row($matches, &ui_textbox("subnet", "", 30));
+        print &ui_form_end(undef,undef,1);
+	    print &ui_table_end();
 		}
 	if (@slinks >= $display_max) {
 		# Could not show all shared nets, so show lookup form
-		print "<form action=lookup_shared.cgi>\n";
-		print "<tr> <td><b>$text{'index_shatoomany'}</b></td>\n";
-		print "<td><input type=submit value='$text{'index_shalook2'}'></td>\n";
-		print "<td>$matches</td>\n";
-		print "<td><input name=shared size=30></td></tr> </form>\n";
+        print &ui_table_start(undef, undef, 2);
+        print &ui_form_start("lookup_shared.cgi", "get");
+        print &ui_table_row($text{'index_shatoomany'}, &ui_submit($text{'index_shalook2'}));
+        print &ui_table_row($matches, &ui_textbox("shared", "", 30));
+        print &ui_form_end(undef,undef,1);
+	    print &ui_table_end();
 		}
-	print "</tr></table>\n";
 	}
 
 print &ui_hr();
@@ -419,24 +417,24 @@ if ($show_host_delete) {
 
 # Show too-many forms
 if ($show_host_group) {
-	print "<table>\n";
 	if (@hlinks >= $display_max) {
 		# Could not show all hosts, so show lookup form
-		print "<form action=lookup_host.cgi>\n";
-		print "<tr> <td><b>$text{'index_hsttoomany'}</b></td>\n";
-		print "<td><input type=submit value='$text{'index_hstlook2'}'></td>\n";
-		print "<td>$matches</td>\n";
-		print "<td><input name=host size=30></td></tr> </form>\n";
+	    print &ui_table_start(undef, undef, 2);
+        print &ui_form_start("lookup_host.cgi", "get");
+        print &ui_table_row($text{'index_hsttoomany'}, &ui_submit($text{'index_hstlook2'}));
+        print &ui_table_row($matches, &ui_textbox("host", "", 30));
+        print &ui_form_end(undef,undef,1);
+	    print &ui_table_end();
 		}
 	if (@glinks >= $display_max) {
 		# Could not show all groups, so show lookup form
-		print "<form action=lookup_group.cgi>\n";
-		print "<tr> <td><b>$text{'index_grptoomany'}</b></td>\n";
-		print "<td><input type=submit value='$text{'index_grplook2'}'></td>\n";
-		print "<td>$matches</td>\n";
-		print "<td><input name=group size=30></td></tr> </form>\n";
+	    print &ui_table_start(undef, undef, 2);
+        print &ui_form_start("lookup_group.cgi", "get");
+        print &ui_table_row($text{'index_grptoomany'}, &ui_submit($text{'index_grplook2'}));
+        print &ui_table_row($matches, &ui_textbox("group", "", 30));
+        print &ui_form_end(undef,undef,1);
+	    print &ui_table_end();
 		}
-	print "</tr></table>\n";
 	}
 
 print &ui_hr();
@@ -451,7 +449,7 @@ if ($config{'dhcpd_version'} >= 3 && $access{'zones'}) {
 	@zones = sort { $a->{'values'}->[0] <=> $b->{'values'}->[0] } @zones;
 	if (@zones) {
 		# display zones
-		print "<a href='edit_zones.cgi?new=1'>","$text{'index_addzone'}</a>&nbsp;&nbsp;\n" if $access{'c_sub'};
+        print &ui_link("edit_zones.cgi?new=1",$text{'index_addzone'})."&nbsp;&nbsp;\n" if $access{'c_sub'};
 		foreach $z (@zones) {
 			# print "ZONE: $z->{'value'} <br>";
 			push(@zlinks, "edit_zones.cgi?idx=$z->{'index'}");
@@ -470,7 +468,7 @@ if ($config{'dhcpd_version'} >= 3 && $access{'zones'}) {
 	else {
 		print "<b>$text{'index_nozones'}</b><p>\n";
 		}
-	print "<a href='edit_zones.cgi?new=1'>","$text{'index_addzone'}</a>&nbsp;&nbsp;\n" if $access{'c_sub'};
+    print &ui_link("edit_zones.cgi?new=1",$text{'index_addzone'})."&nbsp;&nbsp;\n" if $access{'c_sub'};
 	print &ui_hr();
 
 }
@@ -573,7 +571,7 @@ for (my $l = 0; $l < $_[2]; $l++) {
 		push(@links, $msg);
 		}
 	else {
-		push(@links, "<a href='?$_[1]order=$l\&$_[4]'>$msg</a>");
+		push(@links, &ui_link("?$_[1]order=$l\&$_[4]",$msg) );
 		}
 	}
 print "<b>$_[3]</b> ",&ui_links_row(\@links),"\n";
@@ -601,7 +599,7 @@ for ($i = $_[1]; $i < $_[2]; $i++) {
 		$sp = "\&nbsp;\&nbsp;";
 		}
 	if ($_[3]->[$i]) {
-		$firstcol .= "<a href=$_[3]->[$i]>$_[4]->[$i]</a>";
+		$firstcol .= &ui_link($_[3]->[$i], $_[4]->[$i]);
 		}
 	else {
 		$firstcol .= $_[4]->[$i];
@@ -649,7 +647,7 @@ for ($i = $_[1]; $i < $_[2]; $i++) {
 		$sp = "\&nbsp;\&nbsp;";
 		}
 	if ($_[3]->[$i]) {
-		$first .= "<a href=$_[3]->[$i]>$_[4]->[$i]</a>";
+		$first .= &ui_link($_[3]->[$i],$_[4]->[$i]);
 		}
 	else {
 		$first .= $_[4]->[$i];
@@ -668,15 +666,12 @@ print &ui_columns_end();
 #&zone_table(\@zones, 0, scalar(@zones), \@zlinks, \@ztitles);
 sub zone_table
 {
-local $i;
-print "<table border width=95%>\n";
-print "<tr $tb> <td><b>", $text{'index_zone'}, "</b></td></tr>\n";
+my $i;
+print &ui_table_start($text{'index_zone'}, "width=95%", 2);
 for ($i = $_[1]; $i < $_[2]; $i++) {
-	print "<tr $cb> <td>\n";
-	print "<a href=$_[3]->[$i]>", $_[4]->[$i], "</a> </td>\n";
-	print "</tr>\n";
+    print &ui_table_row(undef, &ui_link($_[3]->[$i],$_[4]->[$i]) );
 	}
-print "</table>\n"
+print &ui_table_end();
 }
 
 sub subnet_add_links
@@ -686,9 +681,9 @@ if ($show_subnet_delete) {
 	push(@links, &select_all_link("d"),
 		     &select_invert_link("d"));
 	}
-push(@links, "<a href='edit_subnet.cgi?new=1'>$text{'index_addsub'}</a>")
+push(@links, &ui_link("edit_subnet.cgi?new=1",$text{'index_addsub'}) )
 	if $access{'c_sub'};
-push(@links, "<a href='edit_shared.cgi?new=1'>$text{'index_addnet'}</a>")
+push(@links, &ui_link("edit_shared.cgi?new=1",$text{'index_addnet'}) )
 	if $access{'c_sha'};
 print &ui_links_row(\@links);
 }
@@ -700,9 +695,9 @@ if ($show_host_delete) {
 	push(@links, &select_all_link("d", 1),
 		     &select_invert_link("d", 1));
 	}
-push(@links, "<a href='edit_host.cgi?new=1'>$text{'index_addhst'}</a>")
+push(@links, &ui_link("edit_host.cgi?new=1",$text{'index_addhst'}) )
 	if $access{'c_hst'};
-push(@links, "<a href='edit_group.cgi?new=1'>$text{'index_addhstg'}</a>")
+push(@links, &ui_link("edit_group.cgi?new=1",$text{'index_addhstg'}) )
 	if $access{'c_grp'};
 print &ui_links_row(\@links);
 }

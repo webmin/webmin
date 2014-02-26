@@ -10,8 +10,8 @@ $access{'global'} || &error($text{'htaccess_ecannot'});
 $conf = &get_htaccess_config($in{'file'});
 $desc = &html_escape($in{'file'});
 &ui_print_header($desc, $text{'htindex_title'}, "",
-	undef, undef, undef, undef, "<a href=\"delete_htaccess.cgi?file=".
-	&urlize($in{'file'})."\">$text{'htindex_delete'}</a>");
+	undef, undef, undef, undef, &ui_link("delete_htaccess.cgi?file=".
+	&urlize($in{'file'}), $text{'htindex_delete'}) );
 
 $sw_icon = { "icon" => "images/show.gif",
 	     "name" => $text{'htindex_show'},
@@ -45,7 +45,7 @@ if (@file && $httpd_modules{'core'} >= 1.2) {
 					  $text{'virt_type'} ]);
 		for($i=0; $i<@links; $i++) {
 			print &ui_columns_row([
-			  "<a href='$links[$i]'>$titles[$i]</a>",
+			  &ui_link($links[$i], $titles[$i]),
 			  $text{'virt_'.$types[$i]} ]);
 			}
 		print &ui_columns_end();

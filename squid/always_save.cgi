@@ -2,13 +2,17 @@
 # always_save.cgi
 # Save or delete an always_direct directive
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 $access{'othercaches'} || &error($text{'eicp_ecannot'});
 &ReadParse();
 &lock_file($config{'squid_conf'});
-$conf = &get_config();
+my $conf = &get_config();
 
-@always = &find_config("always_direct", $conf);
+my @always = &find_config("always_direct", $conf);
+my $always;
 if (defined($in{'index'})) {
 	$always = $conf->[$in{'index'}];
 	}
@@ -18,10 +22,10 @@ if ($in{'delete'}) {
 	}
 else {
 	# update or create
-	@vals = ( $in{'action'} );
-	foreach $y (split(/\0/, $in{'yes'})) { push(@vals, $y); }
-	foreach $n (split(/\0/, $in{'no'})) { push(@vals, "!$n"); }
-	$newalways = { 'name' => 'always_direct', 'values' => \@vals };
+	my @vals = ( $in{'action'} );
+	foreach my $y (split(/\0/, $in{'yes'})) { push(@vals, $y); }
+	foreach my $n (split(/\0/, $in{'no'})) { push(@vals, "!$n"); }
+	my $newalways = { 'name' => 'always_direct', 'values' => \@vals };
 	if ($always) { splice(@always, &indexof($always, @always),
 			      1, $newalways); }
 	else { push(@always, $newalways); }
@@ -29,6 +33,6 @@ else {
 &save_directive($conf, "always_direct", \@always);
 &flush_file_lines();
 &unlock_file($config{'squid_conf'});
-&webmin_log($in{'delete'} ? 'delete' : $always ? 'modify' : 'create', "always");
+&webmin_log($in{'delete'} ? 'delete' : $always ? 'modify' : 'create', 'always');
 &redirect("edit_icp.cgi");
 

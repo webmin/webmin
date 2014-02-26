@@ -2,24 +2,32 @@
 # save_acl.cgi
 # Save access control options for some module
 
+use strict;
+use warnings;
 require './acl-lib.pl';
+our (%in, %text, %config, %access, $base_remote_user, %gconfig,
+     $config_directory);
 &ReadParse();
+
+my $who;
 if ($in{'_acl_group'}) {
 	$access{'groups'} || &error($text{'acl_egroup'});
 	$who = $in{'_acl_group'};
 	}
 else {
-	$me = &get_user($base_remote_user);
-	@mcan = $access{'mode'} == 1 ? @{$me->{'modules'}} :
-		$access{'mode'} == 2 ? split(/\s+/, $access{'mods'}) :
-				       ( &list_modules(), "" );
+	my $me = &get_user($base_remote_user);
+	my @mcan = $access{'mode'} == 1 ? @{$me->{'modules'}} :
+		   $access{'mode'} == 2 ? split(/\s+/, $access{'mods'}) :
+				          ( &list_modules(), "" );
 	&indexof($in{'_acl_mod'}, @mcan) >= 0 || &error($text{'acl_emod'});
 	&can_edit_user($in{'_acl_user'}) || &error($text{'acl_euser'});
 	$who = $in{'_acl_user'};
 	}
 
-$aclfile = $in{'_acl_group'} ? "$config_directory/$in{'_acl_mod'}/$who.gacl"
-			     : "$config_directory/$in{'_acl_mod'}/$who.acl";
+my $aclfile = $in{'_acl_group'} ? "$config_directory/$in{'_acl_mod'}/$who.gacl"
+			        : "$config_directory/$in{'_acl_mod'}/$who.acl";
+my %minfo = $in{'_acl_mod'} ? &get_module_info($in{'_acl_mod'})
+			    : ( 'desc' => $text{'index_global'} );
 if ($in{'reset'}) {
 	# Just remove the .acl file
 	&lock_file($aclfile);
@@ -40,6 +48,7 @@ if ($in{'reset'}) {
 else {
 	# Validate and store ACL settings
 	&error_setup($text{'acl_err'});
+	my %maccess;
 	$maccess{'noconfig'} = $in{'noconfig'};
 	if ($in{'rbac'}) {
 		# RBAC overrides everything
@@ -65,18 +74,15 @@ else {
 		&save_module_acl(\%maccess, $in{'_acl_user'},
 				 $in{'_acl_mod'},1);
 		}
-	chmod(0640, $aclfile) if (-r $aclfile);
+	&set_ownership_permissions(undef, undef, 0640, $aclfile);
 	&unlock_file($aclfile);
-
-	%minfo = $in{'_acl_mod'} ? &get_module_info($in{'_acl_mod'})
-				 : ( 'desc' => $text{'index_global'} );
 
 	if ($in{'_acl_group'}) {
 		# Recursively update the ACL for all member users and groups
 		# XXX ACL in DB?
-		@ulist = &list_users();
-		@glist = &list_groups();
-		($group) = grep { $_->{'name'} eq $in{'_acl_group'} } @glist;
+		my @ulist = &list_users();
+		my @glist = &list_groups();
+		my ($group) = grep { $_->{'name'} eq $in{'_acl_group'} } @glist;
 		&set_acl_files(\@ulist, \@glist, $in{'_acl_mod'},
 			       $group->{'members'}, \%maccess);
 		}

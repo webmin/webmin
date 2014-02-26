@@ -6,35 +6,28 @@ require './itsecur-lib.pl';
 &can_use_error("times");
 &header($text{'times_title'}, "",
 	undef, undef, undef, undef, &apply_button());
-print "<hr>\n";
+print &ui_hr();
 
-@times = &list_times();
-$edit = &can_edit("times");
+my @times = &list_times();
+my $edit = &can_edit("times");
+my $link = ($edit ? &ui_link("edit_time.cgi?new=1",$text{'times_add'}) : ""); 
 if (@times) {
-	print "<a href='edit_time.cgi?new=1'>$text{'times_add'}</a><br>\n"
-		if ($edit);
-	print "<table border>\n";
-	print "<tr $tb> <td><b>$text{'times_name'}</b></td> ",
-	      "<td><b>$text{'times_hours'}</b></td> ",
-	      "<td><b>$text{'times_days'}</b></td> </tr>\n";
-	foreach $t (@times) {
-		print "<tr $cb>\n";
-		print "<td><a href='edit_time.cgi?idx=$t->{'index'}'>",
-		      "$t->{'name'}</a></td>\n";
-		print "<td>",$t->{'hours'} eq "*" ? $text{'times_all'} :
-						    $t->{'hours'},"</td>\n";
-		print "<td>",$t->{'days'} eq "*" ? $text{'times_all'} :
-			join(" ", map { $text{'sday_'.$_} } split(/,/, $t->{'days'})),"</td>\n";
-		print "</tr>\n";
+	print $link;
+    print &ui_columns_start([$text{'times_name'},$text{'times_hours'},$text{'times_days'}]);
+    my @cols;
+	foreach my $t (@times) {
+        push(@cols, &ui_link("edit_time.cgi?idx=".$t->{'index'}, $t->{'name'}) );
+        push(@cols, ($t->{'hours'} eq "*" ? $text{'times_all'} : $t->{'hours'}) );
+        push(@cols, ($t->{'days'} eq "*" ? $text{'times_all'} : join(" ", map { $text{'sday_'.$_} } split(/,/, $t->{'days'})) ) );
+		print &ui_columns_row(\@cols);
 		}
-	print "</table>\n";
+	print &ui_columns_end();
 	}
 else {
 	print "<b>$text{'times_none'}</b><p>\n";
 	}
-print "<a href='edit_time.cgi?new=1'>$text{'times_add'}</a><p>\n"
-	if ($edit);
+print $link;
 
-print "<hr>\n";
+print &ui_hr();
 &footer("", $text{'index_return'});
 

@@ -22,6 +22,7 @@ local (@rv, @newpacks);
 print "<b>",&text('yum_install', "<tt>yum $enable -y install $update</tt>"),"</b><p>\n";
 print "<pre>";
 &additional_log('exec', undef, "yum $enable -y install $update");
+$SIG{'TERM'} = 'ignore';	# Installing webmin itself may kill this script
 local $qm = join(" ", map { quotemeta($_) } split(/\s+/, $update));
 &open_execute_command(CMD, "yum $enable -y install $qm </dev/null", 2);
 while(<CMD>) {
@@ -29,7 +30,7 @@ while(<CMD>) {
 	if (/^\[(update|install|deps):\s+(\S+)\s+/) {
 		push(@rv, $2);
 		}
-	elsif (/^(Installed|Dependency Installed|Updated|Dependency Updated):\s*(.*)/) {
+	elsif (/^(Installed|Dependency Installed|Updated|Dependency Updated|Updating):\s*(.*)/) {
 		# Line like :
 		# Updated:
 		#   wbt-virtual-server-theme.x86
@@ -63,10 +64,13 @@ while(<CMD>) {
 	if (!/ETA/ && !/\%\s+done\s+\d+\/\d+\s*$/) {
 		print &html_escape($_."\n");
 		}
+	if ($update =~ /perl\(/ && /No\s+package\s+.*available/i) {
+		$nopackage = 1;
+		}
 	}
 close(CMD);
 print "</pre>\n";
-if ($?) {
+if ($? || $nopackage) {
 	print "<b>$text{'yum_failed'}</b><p>\n";
 	return ( );
 	}
@@ -151,6 +155,7 @@ return $name eq "apache" ? "httpd mod_.*" :
        $name eq "openssh" ? "openssh openssh-server" :
        $name eq "postgresql" ? "postgresql postgresql-libs postgresql-server" :
        $name eq "openldap" ? "openldap-servers openldap-clients" :
+       $name eq "ldap" ? "nss-pam-ldapd pam_ldap nss_ldap" :
        			  $name;
 }
 

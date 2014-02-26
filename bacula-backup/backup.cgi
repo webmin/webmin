@@ -15,18 +15,21 @@ $h = &open_console();
 # Select the job to run
 &sysprint($h->{'infh'}, "run\n");
 &wait_for($h->{'outfh'}, 'run\\n');
-$rv = &wait_for($h->{'outfh'}, 'Select Job.*:');
+$rv = &wait_for($h->{'outfh'}, 'Select Job.*:', 'OK to run.*:');
 print $wait_for_input;
-if ($rv == 0 && $wait_for_input =~ /(\d+):\s+\Q$in{'job'}\E/) {
-	&sysprint($h->{'infh'}, "$1\n");
-	}
-else {
-	&job_error($text{'backup_ejob'});
-	}
+if ($rv != 1) {
+	# Only need to enter a job if there is more than one
+	if ($rv == 0 && $wait_for_input =~ /(\d+):\s+\Q$in{'job'}\E/) {
+		&sysprint($h->{'infh'}, "$1\n");
+		}
+	else {
+		&job_error($text{'backup_ejob'});
+		}
 
-# Say that it is OK
-$rv = &wait_for($h->{'outfh'}, 'OK to run.*:');
-print $wait_for_input;
+	# Say that it is OK
+	$rv = &wait_for($h->{'outfh'}, 'OK to run.*:');
+	print $wait_for_input;
+	}
 if ($rv == 0) {
 	&sysprint($h->{'infh'}, "yes\n");
 	}

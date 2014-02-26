@@ -158,7 +158,7 @@ if (%in) {
 			push(@pidlist, $p);
 			local @cols;
 			if (&can_edit_process($d->{'user'})) {
-				push(@cols, "<a href=\"edit_proc.cgi?$p\">$p</a>");
+				push(@cols, &ui_link("edit_proc.cgi?".$p, $p) );
 				}
 			else {
 				push(@cols, $p);
@@ -199,7 +199,7 @@ if (%in) {
 			join(" ", @pidlist);
 		print "<select name=signal>\n";
 		foreach $s (&supported_signals()) {
-			printf "<option value=\"$s\" %s> $s\n",
+			printf "<option value=\"$s\" %s>$s</option>\n",
 				$s eq "HUP" ? "selected" : "";
 			}
 		print "</select>\n";

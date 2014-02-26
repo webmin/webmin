@@ -55,7 +55,6 @@ cs_table=Fondo de tabla
 cs_text=Texto normal
 defacl_desc=Esta p&#225;gina te permite configurar varias opciones de control de acceso que se aplican a m&#243;dulos y usuarios de Usermin. Estas opciones son similares a aquellas del ACL Global para cada usuario en el m&#243;dulo de Usuarios de Webmin.
 defacl_err=No pude salvar opciones de control de acceso
-defacl_eversion=La edici&#243;n de las opciones de control de acceso para Usermin est&#225; s&#243;lo soportada en las versi&#243;n de Usermin 0.76 y superior.
 defacl_header=Opciones de control de acceso para usuarios de Usermin
 defacl_title=Opciones de Control de Acceso
 delete_desc1=$1 (Clon de $2)

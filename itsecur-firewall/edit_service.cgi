@@ -22,52 +22,48 @@ else {
 		$in{'idx'} = $services->{'index'};
 		}	
 	}
-print "<hr>\n";
 
-print "<form action=save_service.cgi>\n";
-print "<input type=hidden name=new value='$in{'new'}'>\n";
-print "<input type=hidden name=idx value='$in{'idx'}'>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'service_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_hr();
+
+print &ui_form_start("save_service.cgi","post");
+print &ui_hidden("new", $in{'new'});
+print &ui_hidden("idx", $in{'idx'});
+print &ui_table_start($text{'service_header'}, undef, 2);
 
 # Show service name input
-print "<tr> <td><b>$text{'service_name'}</b></td>\n";
-printf "<td><input name=name size=20 value='%s'></td> </tr>\n",
-	$service->{'name'};
+print &ui_table_row($text{'service_name'}, &ui_textbox("name", $service->{'name'}, 20),
+                undef, ["valign=middle","valign=middle"] );
 
 # Show protocols and ports
-print "<tr> <td valign=top><b>$text{'service_ports'}</b></td>\n";
-print "<td><table border>\n";
-print "<tr $tb> <td><b>$text{'service_proto'}</b></td> ",
-      "<td><b>$text{'service_port'}</b></td> </tr>\n";
+my $tx = "";
+$tx .= &ui_columns_start([$text{'service_proto'}, $text{'service_port'}]);
 for($i=0; $i<@{$service->{'protos'}}+6; $i++) {
-	print "<tr>\n";
-	print "<td>",&protocol_input(
-		"proto_$i", $service->{'protos'}->[$i]),"</td>\n";
-	printf "<td><input name=port_%d size=20 value='%s'></td>\n",
-		$i, $service->{'ports'}->[$i];
-	print "</tr>\n";
+    my @cols;
+    push(@cols, &protocol_input("proto_$i", $service->{'protos'}->[$i]) );
+    push(@cols, &ui_textbox("port_".$i, $service->{'ports'}->[$i], 20) );
+    $tx .= &ui_columns_row(\@cols, ["valign=middle","valign=middle"]);
 	}
-print "</table></td> </tr>\n";
+$tx .= ui_columns_end();
+
+print &ui_table_row($text{'service_ports'}, $tx);
 
 # Show member services
-print "<tr> <td valign=top><b>$text{'service_members'}</b></td>\n";
-print "<td>",&service_input("others",
-		join(",", @{$service->{'others'}}), 0, 1),"</td> </tr>\n";
+print &ui_table_row($text{'service_members'},
+        &service_input("others", join(",", @{$service->{'others'}}), 0, 1) );
 
-print "</table></td></tr></table>\n";
+print &ui_table_end();
+print "<p>";
+
 if ($in{'new'}) {
-	print "<input type=submit value='$text{'create'}'>\n";
+    print &ui_submit($text{'create'});
 	}
 else {
-	print "<input type=submit value='$text{'save'}'>\n";
-	print "<input type=submit name=delete value='$text{'delete'}'>\n";
+    print &ui_submit($text{'save'});
+    print &ui_submit($text{'delete'}, "delete");
 	}
-print "</form>\n";
+
+print &ui_form_end(undef,undef,1);
 &can_edit_disable("services");
 
-print "<hr>\n";
+print &ui_hr();
 &footer("list_services.cgi", $text{'services_return'});
-
-

@@ -22,3 +22,5 @@ desc_ja_JP.UTF-8=保護されたwebディレクトリ
 desc_cz.UTF-8=Blokování web adresářů
 desc_hu.UTF-8=Védett Web könyvtárak
 desc_no=Beskyttede Web kataloger
+longdesc_ms_MY=Cipta fail .htaccess dan htpasswd untuk melindungi capaian direktori web.
+desc_ms_MY=Melindungi Direktori Web

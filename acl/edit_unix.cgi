@@ -3,29 +3,33 @@
 # Choose a user whose permissions will be used for logins that don't
 # match any webmin user, but have unix accounts
 
+use strict;
+use warnings;
 require './acl-lib.pl';
+our (%in, %text, %config, %access);
 $access{'unix'} && $access{'create'} && $access{'delete'} ||
 	&error($text{'unix_ecannot'});
 &ui_print_header(undef, $text{'unix_title'}, "");
 
 print "$text{'unix_desc'}<p>\n";
+my %miniserv;
 &get_miniserv_config(\%miniserv);
 
-print "<form action=save_unix.cgi>\n";
-print "<table>\n";
+print &ui_form_start("save_unix.cgi", "post");
+print &ui_table_start($text{'unix_header'}, undef, 2);
 
 # Enable Unix auth
-@unixauth = &get_unixauth(\%miniserv);
-print "<tr> <td colspan=2>\n";
-print &ui_radio("unix_def", @unixauth ? 0 : 1,
-	[ [ 1, $text{'unix_def'} ], [ 0, $text{'unix_sel'} ] ]),"<br>\n";
-print &ui_columns_start([ $text{'unix_mode'}, $text{'unix_who'},
+my @unixauth = &get_unixauth(\%miniserv);
+my $utable = "";
+$utable .= &ui_radio("unix_def", @unixauth ? 0 : 1,
+	[ [ 1, $text{'unix_def'} ], [ 0, $text{'unix_sel'} ] ])."<br>\n";
+$utable .= &ui_columns_start([ $text{'unix_mode'}, $text{'unix_who'},
 			  $text{'unix_to'} ]);
-$i = 0;
-@webmins = map { [ $_->{'name'} ] }
+my $i = 0;
+my @webmins = map { [ $_->{'name'} ] }
 	       sort { $a->{'name'} cmp $b->{'name'} } &list_users();
-foreach $ua (@unixauth, [ ], [ ]) {
-	print &ui_columns_row([
+foreach my $ua (@unixauth, [ ], [ ]) {
+	$utable .= &ui_columns_row([
 		&ui_select("mode_$i", $ua->[0] eq "" ? 0 :
 				      $ua->[0] eq "*" ? 1 :
 				      $ua->[0] =~ /^\@/ ? 2 : 3,
@@ -39,49 +43,46 @@ foreach $ua (@unixauth, [ ], [ ]) {
 		]);
 	$i++;
 	}
-print &ui_columns_end(),"\n";
+$utable .= &ui_columns_end();
+print &ui_table_row($text{'unix_utable'}, $utable);
 
 # Allow users who can sudo to root?
-print &ui_checkbox("sudo", 1, $text{'unix_sudo'},
-		   $miniserv{'sudo'}),"<br>\n";
+print &ui_table_row("",
+	&ui_checkbox("sudo", 1, $text{'unix_sudo'},
+		     $miniserv{'sudo'}));
 
 # Allow PAM-only users?
-print &ui_checkbox("pamany", 1, &text('unix_pamany',
+print &ui_table_row("",
+	&ui_checkbox("pamany", 1, &text('unix_pamany',
 				      &ui_select("pamany_user",
 						 $miniserv{'pamany'}, 
 						 \@webmins)),
-		   $miniserv{'pamany'}),"<br>\n";
-print "</td> </tr>\n";
+		   $miniserv{'pamany'}));
 
-print "<tr> <td colspan=2><hr></td> </tr>\n";
-print "<tr> <td colspan=2>$text{'unix_restrict'}<p></td> </tr>\n";
+print &ui_table_hr();
 
 # Who can do Unix auth?
-print "<tr> <td valign=top>\n";
-printf "<input type=radio name=access value=0 %s>\n",
-	$miniserv{"allowusers"} || $miniserv{"denyusers"} ? "" : "checked";
-print "$text{'unix_all'}<br>\n";
-printf "<input type=radio name=access value=1 %s>\n",
-	$miniserv{"allowusers"} ? "checked" : "";
-print "$text{'unix_allow'}<br>\n";
-printf "<input type=radio name=access value=2 %s>\n",
-	$miniserv{"denyusers"} ? "checked" : "";
-print "$text{'unix_deny'}<br>\n";
-print "</td> <td valign=top>\n";
-printf "<textarea name=users rows=6 cols=30>%s</textarea></td> </tr>\n",
- $miniserv{"allowusers"} ? join("\n", split(/\s+/, $miniserv{"allowusers"})) :
- $miniserv{"denyusers"} ? join("\n", split(/\s+/, $miniserv{"denyusers"})) : "";
+my $users = $miniserv{"allowusers"} ?
+		join("\n", split(/\s+/, $miniserv{"allowusers"})) :
+	 $miniserv{"denyusers"} ?
+		join("\n", split(/\s+/, $miniserv{"denyusers"})) : "";
+print &ui_table_row($text{'unix_restrict2'},
+	&ui_radio("access", $miniserv{"allowusers"} ? 1 :
+			    $miniserv{"denyusers"} ? 2 : 0,
+		  [ [ 0, $text{'unix_all'} ],
+		    [ 1, $text{'unix_allow'} ],
+		    [ 2, $text{'unix_deny'} ] ])."<br>\n".
+	&ui_textarea("users", $users, 6, 60));
+
 
 # Block login by shell?
-print "<tr> <td colspan=2>\n";
-printf "<input type=checkbox name=shells_deny value=1 %s> %s\n",
-	$miniserv{'shells_deny'} ? "checked" : "",$text{'unix_shells'};
-printf "<input name=shells size=25 value='%s'> %s</td> </tr>\n",
-	$miniserv{'shells_deny'} || "/etc/shells",
-	&file_chooser_button("shells");
+print &ui_table_row("",
+	&ui_checkbox("shells_deny", 1, $text{'unix_shells'},
+		     $miniserv{'shells_deny'} ? 1 : 0)." ".
+	&ui_filebox("shells", $miniserv{'shells_deny'} || "/etc/shells", 40));
 
-print "</table>\n";
-print "<input type=submit value='$text{'save'}'></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 

@@ -10,7 +10,7 @@ require './inittab-lib.pl';
 print &ui_form_start("delete.cgi", "post");
 @links = ( &select_all_link("d"),
 	   &select_invert_link("d"),
-	   "<a href=edit_inittab.cgi?new=1>$text{'inittab_new'}</a>" );
+	   &ui_link("edit_inittab.cgi?new=1", $text{'inittab_new'}) );
 print &ui_links_row(\@links);
 @tds = ( "width=5" );
 print &ui_columns_start([ "",
@@ -22,8 +22,7 @@ print &ui_columns_start([ "",
 			100, 0, \@tds);
 foreach $i (&parse_inittab()) {
 	local @cols;
-	push(@cols, "<a href='edit_inittab.cgi?id=$i->{'id'}'>".
-		    &html_escape($i->{'id'})."</a>");
+	push(@cols, &ui_link("edit_inittab.cgi?id=".$i->{'id'}, &html_escape($i->{'id'})) );
 	push(@cols, $i->{'comment'} ? "<font color=#ff0000>$text{'no'}</font>"
 				    : $text{'yes'});
 	local @rls = @{$i->{'levels'}};

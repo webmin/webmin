@@ -1,2 +1,2 @@
-auth_ldap=/etc/ldap.conf
+auth_ldap=/etc/ldap.conf /etc/openldap/ldap.conf
 secret=/etc/ldap.secret

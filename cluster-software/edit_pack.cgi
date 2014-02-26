@@ -63,7 +63,8 @@ if (!$pinfo[8]) {
 	print "<select name=server>\n";
 	foreach $s (@got) {
 		print "<option value='$s->{'id'}'>",
-			$s->{'desc'} || $s->{'realhost'} || $s->{'host'};
+			$s->{'desc'} || $s->{'realhost'} || $s->{'host'},
+			"</option>";
 		}
 	print "</select></td>\n";
 	print "</form>\n";
@@ -77,10 +78,11 @@ if (!$pinfo[7]) {
 	print "<td align=right>\n";
 	print "<input type=submit value=\"$text{'edit_uninst'}\">\n";
 	print "<select name=server>\n";
-	print "<option value=-1>$text{'edit_all'}\n";
+	print "<option value=-1>$text{'edit_all'}</option>\n";
 	foreach $s (@got) {
 		print "<option value='$s->{'id'}'>",
-			$s->{'desc'} || $s->{'realhost'} || $s->{'host'};
+			$s->{'desc'} || $s->{'realhost'} || $s->{'host'},
+			"</option>";
 		}
 	print "</select></td>\n";
 	print "</form>\n";

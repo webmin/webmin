@@ -92,8 +92,8 @@ if ($ty == 1 && $access{'bootup'} == 1) {
 	# Display a message about the script being bogus
 	print &ui_table_end();
 	print "<b>",&text("edit_bad$ss", $rl),"</b><br>\n";
-	print "<a href=\"fix_action.cgi?$rl+$ss+$num+$ac\">",
-	      "$text{'edit_fix'}</a>. <p>\n";
+	print &ui_link("fix_action.cgi?$rl+$ss+$num+$ac", $text{'edit_fix'});
+	print "<p>\n";
 	}
 elsif (!$config{'expert'} || $access{'bootup'} == 2) {
 	# Just tell the user if this action is started at boot time

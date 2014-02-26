@@ -60,9 +60,9 @@ printf "<input type=radio name=group_def value=1 checked> %s (%s)\n",
 printf "<input type=radio name=group_def value=0> %s\n",
 	$text{'user_set'};
 print "<select name=group>\n";
-print "<option selected value=''>$text{'user_nogroup'}\n";
+print "<option selected value=''>$text{'user_nogroup'}</option>\n";
 foreach $g (@wgroups) {
-	print "<option>$g->{'name'}\n";
+	print "<option>$g->{'name'}</option>\n";
 	}
 print "</select></td> </tr>\n";
 
@@ -79,21 +79,21 @@ print "<input type=radio name=mods_def value=0> $text{'user_moddel'}\n";
 print "<br>\n";
 print "<select name=mods1 size=$mp multiple>\n";
 for($i=0; $i<$mp; $i++) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$mods[$i]->{'dir'}, $umods{$mods[$i]->{'dir'}} ? "selected" : "",
 		$mods[$i]->{'desc'};
 	}
 print "</select>\n";
 print "<select name=mods2 size=$mp multiple>\n";
 for($i=$mp; $i<$mp*2; $i++) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$mods[$i]->{'dir'}, $umods{$mods[$i]->{'dir'}} ? "selected" : "",
 		$mods[$i]->{'desc'};
 	}
 print "</select>\n";
 print "<select name=mods3 size=$mp multiple>\n";
 for($i=$mp*2; $i<@mods; $i++) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$mods[$i]->{'dir'}, $umods{$mods[$i]->{'dir'}} ? "selected" : "",
 		$mods[$i]->{'desc'};
 	}
@@ -120,14 +120,14 @@ foreach $h (@hosts) {
 	next if (!$g);
 	local ($s) = grep { $_->{'id'} == $h->{'id'} } @servers;
 	local $d = &server_name($s);
-	$sel .= "<option value='$h->{'id'},'>".&text('user_aclhg', $d)."\n"
+	$sel .= "<option value='$h->{'id'},'>".&text('user_aclhg', $d)."</option>\n"
 		if (!$ingroup{$in{'group'}});
 	foreach $m (@{$h->{'modules'}}) {
 		local @gm = $ingroup{$in{'group'}} ? @{$g->{'ownmods'}}
 						   : @{$g->{'modules'}};
 		next if (&indexof($m->{'dir'}, @gm) < 0);
 		$sel .= "<option value='$h->{'id'},$m->{'dir'}'>".
-			&text('user_aclh', $m->{'desc'}, $d)."\n";
+			&text('user_aclh', $m->{'desc'}, $d)."</option>\n";
 		}
 	}
 if ($sel) {

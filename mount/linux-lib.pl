@@ -247,7 +247,10 @@ foreach (@fstab) {
 	if ($line =~ /\S/ && $line !~ /\signore\s/ && $i++ == $_[0]) {
 		# Found the line to replace
 		local $dev = $_[2];
-		$dev =~ s/ /\\040/g;
+		if ($_[3] eq $smbfs_fs || $_[3] eq "cifs") {
+			$dev =~ s/\\/\//g;
+			$dev =~ s/ /\\040/g;
+			}
 		&print_tempfile(FSTAB, $dev."\t".$_[1]."\t".$_[3]);
 		local @opts = $_[4] eq "-" ? ( ) : split(/,/, $_[4]);
 		if ($_[6] eq "no") {
@@ -679,7 +682,7 @@ elsif ($_[2] eq $smbfs_fs || $_[2] eq "cifs") {
 		# SMB filesystem mounted with mount command
 		local $temp = &transname();
 		local $ex = &system_logged("mount -t $_[2] $opts $qshar $_[0] >$temp 2>&1 </dev/null");
-		local $out = `cat $temp`;
+		local $out = &read_file_contents($temp);
 		unlink($temp);
 		if ($ex || $out =~ /failed|error/i) {
 			&system_logged("umount $_[0] >/dev/null 2>&1");
@@ -1240,6 +1243,8 @@ if ($type =~ /^ext\d+$/) {
 		&ui_yesno_radio("ext2_grpid", defined($options{"grpid"}) ||
 					      defined($options{"bsdgroups"})));
 
+	my $usrquota = defined($options{"usrquota"});
+	my $grpquota = defined($options{"grpquota"});
 	print &ui_table_row($text{'linux_quotas'},
 		&ui_select("ext2_quota", $usrquota && $grpquota ? 3 :
 					 $grpquota ? 2 :
@@ -1496,11 +1501,13 @@ elsif ($type eq $smbfs_fs || $type eq "cifs") {
 		}
 	elsif ($support >= 3) {
 		print &ui_table_row($text{'linux_fmode'},
-			&ui_opt_textbox("smbfs_fmask", $options{'fmask'}, 5,
+			&ui_opt_textbox("smbfs_file_mode",
+					$options{'file_mode'}, 5,
 					$text{'default'}));
 
 		print &ui_table_row($text{'linux_dmode'},
-			&ui_opt_textbox("smbfs_dmask", $options{'dmask'}, 5,
+			&ui_opt_textbox("smbfs_dir_mode",
+					$options{'dir_mode'}, 5,
 					$text{'default'}));
 
 		print &ui_table_row($text{'linux_ro'},
@@ -1533,6 +1540,10 @@ elsif ($type eq $smbfs_fs || $type eq "cifs") {
 		print &ui_table_row($text{'linux_iocharset'},
 			&ui_opt_textbox("smbfs_iocharset",
 			    $options{'iocharset'}, 10, $text{'default'}));
+
+		print &ui_table_row($text{'linux_nounix'},
+			&ui_yesno_radio("smbfs_nounix",
+					defined($options{"nounix"})));
 		}
 	}
 elsif ($type eq "reiserfs") {
@@ -1608,7 +1619,7 @@ elsif ($type eq "ntfs") {
 sub check_location
 {
 if (($_[0] eq "nfs") || ($_[0] eq "nfs4")) {
-	local($out, $temp, $mout, $dirlist);
+	local($out, $temp, $mout, $dirlist, @dirlist);
 
 	if (&has_command("showmount")) {
 		# Use ping and showmount to see if the host exists and is up
@@ -1632,10 +1643,14 @@ if (($_[0] eq "nfs") || ($_[0] eq "nfs4")) {
 
 		# Validate directory name for NFSv3 (in v4 '/' exists)
 		foreach (split(/\n/, $out)) {
-			if (/^(\/\S+)/) { $dirlist .= "$1\n"; }
+			if (/^(\/\S+)/) {
+				$dirlist .= "$1\n";
+				push(@dirlist, $1);
+				}
 			}
 		
-		if (($_[0] ne "nfs4") && ($in{nfs_dir} !~ /^\/.*$/)) {
+		if ($_[0] ne "nfs4" && $in{'nfs_dir'} !~ /^\/.*$/ &&
+		    &indexof($in{'nfs_dir'}, @dirlist) < 0) {
 			&error(&text('linux_enfsdir', $in{'nfs_dir'},
 				     $in{'nfs_host'}, "<pre>$dirlist</pre>"));
 		    }
@@ -2034,22 +2049,22 @@ elsif ($_[0] eq $smbfs_fs || $_[0] eq "cifs") {
 			{ $options{dmode} = $in{smbfs_dmode}; }
 		}
 	elsif ($support >= 3) {
-		if ($in{'smbfs_fmask_def'}) {
-			delete($options{'fmask'});
+		if ($in{'smbfs_file_mode_def'}) {
+			delete($options{'file_mode'});
 			}
 		else {
-			$in{'smbfs_fmask'} =~ /^[0-7]{3}$/ ||
-			    &error(&text('linux_efmode', $in{'smbfs_fmask'}));
-			$options{'fmask'} = $in{'smbfs_fmask'};
+			$in{'smbfs_file_mode'} =~ /^0?[0-7]{3}$/ ||
+			  &error(&text('linux_efmode', $in{'smbfs_file_mode'}));
+			$options{'file_mode'} = $in{'smbfs_file_mode'};
 			}
 
-		if ($in{'smbfs_dmask_def'}) {
-			delete($options{'dmask'});
+		if ($in{'smbfs_dir_mode_def'}) {
+			delete($options{'dir_mode'});
 			}
 		else {
-			$in{'smbfs_dmask'} =~ /^[0-7]{3}$/ ||
-			    &error(&text('linux_edmode', $in{'smbfs_dmask'}));
-			$options{'dmask'} = $in{'smbfs_dmask'};
+			$in{'smbfs_dir_mode'} =~ /^0?[0-7]{3}$/ ||
+		    	  &error(&text('linux_edmode', $in{'smbfs_dir_mode'}));
+			$options{'dir_mode'} = $in{'smbfs_dir_mode'};
 			}
 
 		delete($options{'ro'}); delete($options{'rw'});
@@ -2075,6 +2090,9 @@ elsif ($_[0] eq $smbfs_fs || $_[0] eq "cifs") {
 				&error($text{'linux_eiocharset'});
 			$options{'iocharset'} = $in{'smbfs_iocharset'};
 			}
+
+		delete($options{'nounix'});
+		if ($in{'smbfs_nounix'}) { $options{'nounix'} = ''; }
 		}
 	}
 elsif ($_[0] eq "reiserfs") {
@@ -2388,6 +2406,10 @@ return $_[0] =~ /^\/dev\/(s|h|xv|v)d([a-z]+)(\d+)$/ ?
 	&text('select_device', $1 eq 's' ? 'SCSI' : $1 eq 'xv' ? 'Xen' :
 			       $1 eq 'v' ? 'VirtIO' : 'IDE',
 			       uc($2)) :
+       $_[0] =~ /^\/dev\/mmcblk(\d+)p(\d+)$/ ?
+	&text('select_part', "SD-Card", "$1", "$2") :
+       $_[0] =~ /^\/dev\/mmcblk(\d+)$/ ?
+	&text('select_device', "SD-Card", "$1") :
        $_[0] =~ /rd\/c(\d+)d(\d+)p(\d+)$/ ?
 	&text('select_mpart', "$1", "$2", "$3") :
        $_[0] =~ /ida\/c(\d+)d(\d+)p(\d+)$/ ?

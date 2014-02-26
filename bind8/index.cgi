@@ -83,6 +83,30 @@ if ($need_create) {
 	exit;
 	}
 
+# Check for possibly invalid chroot, which shows up as missing zone files
+if (@zones && $access{'zones'} eq '*' && !$access{'ro'}) {
+	my @missing;
+	foreach my $z (@zones) {
+                my $zonefile = &make_chroot(&absolute_path($z->{'file'}));
+                if ($z->{'type'} eq 'master' && $z->{'file'} && !-r $zonefile) {
+                        print STDERR "Missing chrooted zone file '${zonefile}'\n";
+			push(@missing, $z);
+			}
+		}
+	if (scalar(@missing) >= scalar(@zones)/2) {
+		if ($chroot && $chroot ne '/') {
+			print "<p><b>",&text('index_ewrongchroot',
+			    scalar(@missing), "<tt>$chroot</tt>"),"</b><p>\n";
+			}
+		else {
+			print "<p><b>",&text('index_emissingchroot',
+					  scalar(@missing)),"</b><p>\n";
+			}
+		print "<b>",&text('index_checkconfig',
+				  "../config.cgi?$module_name"),"</b><p>\n";
+		}
+	}
+
 if ($access{'defaults'}) {
 	# display global options
 	print &ui_subheading($text{'index_opts'});
@@ -105,31 +129,24 @@ if ($access{'defaults'}) {
 # Work out what creation links we have
 @crlinks = ( );
 if ($access{'master'} && !$access{'ro'}) {
-	push(@crlinks,
-	     "<a href=\"master_form.cgi\">$text{'index_addmaster'}</a>");
+	push(@crlinks, &ui_link("master_form.cgi", $text{'index_addmaster'}) );
 	}
 if ($access{'slave'} && !$access{'ro'}) {
-	push(@crlinks,
-	     "<a href=\"slave_form.cgi\">$text{'index_addslave'}</a>");
-	push(@crlinks,
-	     "<a href=\"stub_form.cgi\">$text{'index_addstub'}</a>");
+	push(@crlinks, &ui_link("slave_form.cgi", $text{'index_addslave'}) );
+	push(@crlinks, &ui_link("stub_form.cgi", $text{'index_addstub'}) );
 	}
 if ($access{'forward'} && !$access{'ro'}) {
-	push(@crlinks,
-	     "<a href=\"forward_form.cgi\">$text{'index_addfwd'}</a>");
+	push(@crlinks, &ui_link("forward_form.cgi", $text{'index_addfwd'}) );
 	}
 if ($access{'delegation'} && !$access{'ro'} && &version_atleast(9, 2, 1)) {
-	push(@crlinks,
-	     "<a href=\"delegation_form.cgi\">$text{'index_adddele'}</a>");
+	push(@crlinks, &ui_link("delegation_form.cgi", $text{'index_adddele'}) );
 	}
 if ($access{'master'} && !$access{'ro'} &&
     scalar(@hashint) < (@views ? scalar(@views) : 1)) {
-	push(@crlinks,
-	     "<a href=\"hint_form.cgi\">$text{'index_addhint'}</a>");
+	push(@crlinks, &ui_link("hint_form.cgi", $text{'index_addhint'}) );
 	}
 if (@crlinks) {
-	push(@crlinks,
-	     "<a href=\"mass_form.cgi\">$text{'index_addmass'}</a>");
+	push(@crlinks, &ui_link("mass_form.cgi", $text{'index_addmass'}) );
 	}
 
 if (@zones > $config{'max_zones'}) {
@@ -440,8 +457,7 @@ if ($access{'views'} && $bind_version >= 9) {
 		push(@vicons, "images/view.gif");
 		}
 	@links = ( );
-	push(@links, "<a href=\"view_form.cgi\">$text{'index_addview'}</a>")
-		if (!$access{'ro'} && $access{'views'} != 2);
+	push(@links, &ui_link("view_form.cgi", $text{'index_addview'}) ) if (!$access{'ro'} && $access{'views'} != 2);
 	if (@views) {
 		print &ui_links_row(\@links);
 		&icons_table(\@vlinks, \@vtitles, \@vicons, 5);
@@ -495,13 +511,13 @@ if ($_[0] ne "") {
 	$name =~ /^([^\.]+)/;
 	if (!$ztree{$name}) {
 		# Has no children
-		print "<img border=0 src=images/smallicon.gif>&nbsp; $1</td>\n",
+		print "<img border=0 src='images/smallicon.gif'>&nbsp; $1</td>\n",
 		}
 	else {
 		# Has children
 		local $act = $heiropen{$name} ? "close" : "open";
-		print "<a href=\"$act.cgi?what=",&urlize($name),"\">";
-		print "<img border=0 src=images/$act.gif></a>&nbsp; $1</td>\n",
+		print &ui_link("$act.cgi?what=".&urlize($name), "<img border=0 src='images/$act.gif'>");
+		print "&nbsp; $1</td>\n",
 		}
 	}
 else {
@@ -512,9 +528,9 @@ if ($zhash{$name}) {
 	local $cb = $zdelhash{$name} ?
 		&ui_checkbox("d", $zdelhash{$name}, "", 0)." " : "";
 	if (&have_dnssec_tools_support()) {
-	print "<td>$cb<a href='$zlinkhash{$name}'>$ztitlehash{$name} ($ztypeshash{$name}) ($zstatushash{$name})</a></td> </tr>\n";
+	print "<td>$cb".&ui_link($zlinkhash{$name}, "$ztitlehash{$name} ($ztypeshash{$name}) ($zstatushash{$name})")."</td></tr>\n";
 	} else {
-	print "<td>$cb<a href='$zlinkhash{$name}'>$ztitlehash{$name} ($ztypeshash{$name})</a></td> </tr>\n";
+	print "<td>$cb".&ui_link($zlinkhash{$name}, "$ztitlehash{$name} ($ztypeshash{$name})")."</td></tr>\n";
 	}
 	}
 else {

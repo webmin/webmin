@@ -64,15 +64,70 @@ if (!$in{'clear'}) {
 			delete($ENV{'SCRIPT_NAME'});	# So that called Webmin
 							# programs get the right
 							# module, not this one!
-			if (&supports_users()) {
-				$out = &backquote_logged(
-				    &command_as_user($user, 0, $cmd)." 2>&1");
+			if (&supports_users() && $user ne "root") {
+				$cmd = &command_as_user($user, 0, $cmd);
 				}
 			else {
-				$out = &backquote_logged("($cmd) 2>&1");
+				$cmd = "($cmd)";
 				}
+			$pid = &open_execute_command(OUTPUT, $cmd, 2, 0);
+			$out = "";
+			$trunc = 0;
+			$total = 0;
+			$timedout = 0;
+			$start = time();
+			$max = $config{'max_runtime'};
+			while(1) {
+				$elapsed = time() - $start;
+				if ($config{'max_runtime'}) {
+					# Wait for some output, up to timeout
+					if ($elapsed >= $max) {
+						$timedout = 1;
+						last;
+						}
+					local $rmask;
+					vec($rmask, fileno(OUTPUT), 1) = 1;
+					$sel = select($rmask, undef, undef,
+					    $config{'max_runtime'} - $elapsed);
+					$elapsed = time() - $start;
+					if (!$sel || $sel < 0) {
+						# Select didn't find anything
+						if ($elapsed >= $max) {
+							$timedout = 1;
+							}
+						last;
+						}
+					}
+				local $buf;
+				$got = sysread(OUTPUT, $buf, 1024);
+				last if ($got <= 0);
+				$total += length($buf);
+				if ($config{'max_output'} &&
+				    length($out) < $config{'max_output'}) {
+					$out .= $buf;
+					}
+				else {
+					$trunc = 1;
+					}
+				}
+			if ($timedout && $pid) {
+				kill('TERM', $pid);
+				}
+			close(OUTPUT);
 			&reset_environment() if ($config{'clear_envs'});
+			if ($out && $out !~ /\n$/) {
+				$out .= "\n";
+				}
 			$out = &html_escape($out, 1);
+			if ($trunc) {
+				$out .= "<i>".&text('index_trunced', 
+					&nice_size($config{'max_output'}),
+					&nice_size($total))."</i><p>\n";
+				}
+			if ($timedout) {
+				$out .= "<i>".&text('index_timedout', 
+					$config{'max_runtime'})."</i><p>\n";
+				}
 			$history .= $out;
 			}
 		@previous = &unique(@previous, $fullcmd);

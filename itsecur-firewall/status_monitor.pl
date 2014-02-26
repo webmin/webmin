@@ -53,7 +53,7 @@ $rv .= "<td colspan=3><select name=rule>\n";
 local $r;
 foreach $r (&list_rules()) {
 	if ($r->{'log'}) {
-		$rv .= sprintf "<option value=%s %s>%s\n",
+		$rv .= sprintf "<option value=%s %s>%s</option>\n",
 			$r->{'num'},
 			$_[1]->{'rule'} == $r->{'num'} ? "selected" : "",
 			&text('monitor_num', $r->{'num'},

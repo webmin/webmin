@@ -1306,7 +1306,10 @@ elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 			}
 		else {
 			# Tell user the correct URL
-			&http_error(200, "Bad Request", "This web server is running in SSL mode. Try the URL <a href='$url'>$url</a> instead.<br>");
+			&http_error(200, "Document follows",
+				"This web server is running in SSL mode. ".
+				"Try the URL <a href='$url'>$url</a> ".
+				"instead.<br>");
 			}
 		}
 	elsif (ord(substr($reqline, 0, 1)) == 128 && !$use_ssl) {
@@ -1388,12 +1391,19 @@ while(1) {
 		&http_error(400, "Bad Header $headline");
 		}
 	}
-if ($header{'x-forwarded-for'}) {
-	$loghost = $header{'x-forwarded-for'};
+
+# If a remote IP is given in a header (such as via a proxy), only use it
+# for logging unless trust_real_ip is set
+local $headerhost = $header{'x-forwarded-for'} ||
+		    $header{'x-real-ip'};
+if ($config{'trust_real_ip'}) {
+	$acpthost = $headerhost || $acpthost;
+	$loghost = $acpthost;
 	}
-elsif ($header{'x-real-ip'}) {
-	$loghost = $header{'x-real-ip'};
+else {
+	$loghost = $headerhost || $loghost;
 	}
+
 if (defined($header{'host'})) {
 	if ($header{'host'} =~ /^\[(.+)\]:([0-9]+)$/) {
 		($host, $port) = ($1, $2);
@@ -1635,6 +1645,10 @@ if ($config{'userfile'}) {
 			&http_error(500, "Invalid password",
 				    "Password contains invalid characters");
 			}
+		if ($twofactor{$authuser}) {
+			&http_error(500, "No two-factor support",
+				    "HTTP authentication cannot be used when two-factor is enabled");
+			}
 
 		if ($config{'passdelay'} && !$config{'inetd'} && $authuser) {
 			# check with main process for delay
@@ -1682,6 +1696,15 @@ if ($config{'userfile'}) {
 			local ($vu, $expired, $nonexist) =
 				&validate_user($in{'user'}, $in{'pass'}, $host,
 					       $acptip, $port);
+			if ($vu && $twofactor{$vu}) {
+				# Check two-factor token ID
+				$err = &validate_twofactor(
+					$vu, $in{'twofactor'});
+				if ($err) {
+					$twofactor_msg = $err;
+					$vu = undef;
+					}
+				}
 			local $hrv = &handle_login(
 					$vu || $in{'user'}, $vu ? 1 : 0,
 				      	$expired, $nonexist, $in{'pass'},
@@ -1889,8 +1912,12 @@ if ($config{'userfile'}) {
 					$querystring = "page=".&urlize($rpage);
 					}
 				$method = "GET";
-				$querystring .= "&failed=$failed_user" if ($failed_user);
-				$querystring .= "&timed_out=$timed_out" if ($timed_out);
+				$querystring .= "&failed=$failed_user"
+					if ($failed_user);
+				$querystring .= "&twofactor_msg=".&urlize($twofactor_msg)
+					if ($twofactor_msg);
+				$querystring .= "&timed_out=$timed_out"
+					if ($timed_out);
 				$queryargs = "";
 				$page = $config{'session_login'};
 				$miniserv_internal = 1;
@@ -2675,13 +2702,14 @@ if ($needhn && !defined($hn = $ip_match_cache{$_[0]})) {
 	}
 for($i=2; $i<@_; $i++) {
 	local $mismatch = 0;
-	if ($_[$i] =~ /^(\S+)\/(\d+)$/) {
+	if ($_[$i] =~ /^([0-9\.]+)\/(\d+)$/) {
 		# Convert CIDR to netmask format
 		$_[$i] = $1."/".&prefix_to_mask($2);
 		}
-	if ($_[$i] =~ /^(\S+)\/(\S+)$/) {
+	if ($_[$i] =~ /^([0-9\.]+)\/([0-9\.]+)$/) {
 		# Compare with IPv4 network/mask
-		@mo = split(/\./, $1); @ms = split(/\./, $2);
+		@mo = split(/\./, $1);
+		@ms = split(/\./, $2);
 		for($j=0; $j<4; $j++) {
 			if ((int($io[$j]) & int($ms[$j])) != int($mo[$j])) {
 				$mismatch = 1;
@@ -2729,7 +2757,7 @@ for($i=2; $i<@_; $i++) {
 			}
 		}
 	elsif ($_[$i] =~ /^[0-9\.]+$/) {
-		# Compare with IPv4 address or network
+		# Compare with a full or partial IPv4 address
 		@mo = split(/\./, $_[$i]);
 		while(@mo && !$mo[$#mo]) { pop(@mo); }
 		for($j=0; $j<@mo; $j++) {
@@ -2739,11 +2767,20 @@ for($i=2; $i<@_; $i++) {
 			}
 		}
 	elsif ($_[$i] =~ /^[a-f0-9:]+$/) {
-		# Compare with IPv6 address or network
-		@mo = split(/:/, $_[$i]);
-		while(@mo && !$mo[$#mo]) { pop(@mo); }
-		for($j=0; $j<@mo; $j++) {
-			if ($mo[$j] ne $io[$j]) {
+		# Compare with a full IPv6 address
+		if (&canonicalize_ip6($_[$i]) ne canonicalize_ip6($_[0])) {
+			$mismatch = 1;
+			}
+		}
+	elsif ($_[$i] =~ /^([a-f0-9:]+)\/(\d+)$/) {
+		# Compare with an IPv6 network
+		local $v6size = $2;
+		local $v6addr = &canonicalize_ip6($1);
+		local $bytes = $v6size / 16;
+		@mo = split(/:/, $v6addr);
+		local @io6 = split(/:/, &canonicalize_ip6($_[0]));
+		for($j=0; $j<$bytes; $j++) {
+			if ($mo[$j] ne $io6[$j]) {
 				$mismatch = 1;
 				}
 			}
@@ -4413,6 +4450,9 @@ if (!$config{'webmincron_wrapper'}) {
 	$config{'webmincron_wrapper'} = $config{'root'}.
 					"/webmincron/webmincron.pl";
 	}
+if (!$config{'twofactor_wrapper'}) {
+	$config{'twofactor_wrapper'} = $config{'root'}."/acl/twofactor.pl";
+	}
 }
 
 # read_users_file()
@@ -4428,6 +4468,7 @@ undef(%allowhours);
 undef(%lastchanges);
 undef(%nochange);
 undef(%temppass);
+undef(%twofactor);
 if ($config{'userfile'}) {
 	open(USERS, $config{'userfile'});
 	while(<USERS>) {
@@ -4458,6 +4499,11 @@ if ($config{'userfile'}) {
 		$lastchanges{$user[0]} = $user[6];
 		$nochange{$user[0]} = $user[9];
 		$temppass{$user[0]} = $user[10];
+		if ($user[11] && $user[12]) {
+			$twofactor{$user[0]} = { 'provider' => $user[11],
+						 'id' => $user[12],
+						 'apikey' => $user[13] };
+			}
 		}
 	close(USERS);
 	}
@@ -5303,7 +5349,7 @@ while(<$ptyfh>) {
 close($ptyfh);
 kill('KILL', $pid);
 waitpid($pid, 0);
-local ($ok) = ($out =~ /\(ALL\)\s+ALL|\(ALL\)\s+NOPASSWD:\s+ALL|\(ALL\s*:\s*ALL\)\s+ALL/ ? 1 : 0);
+local ($ok) = ($out =~ /\(ALL\)\s+ALL|\(ALL\)\s+NOPASSWD:\s+ALL|\(ALL\s*:\s*ALL\)\s+ALL|\(ALL\s*:\s*ALL\)\s+NOPASSWD:\s+ALL/ ? 1 : 0);
 
 # Update cache
 if ($PASSINw) {
@@ -5671,80 +5717,8 @@ foreach my $cron (@webmincrons) {
 			    "arg0=$cron->{'arg0'}\n";
 		$webmincron_last{$cron->{'id'}} = $now;
 		$changed = 1;
-		my $pid = fork();
-		if (!$pid) {
-			# Run via a wrapper command, which we run like a CGI
-			dbmclose(%sessiondb);
-			open(STDOUT, ">&STDERR");
-			&close_all_sockets();
-			&close_all_pipes();
-			close(LISTEN);
-
-			# Setup CGI-like environment
-			$envtz = $ENV{"TZ"};
-			$envuser = $ENV{"USER"};
-			$envpath = $ENV{"PATH"};
-			$envlang = $ENV{"LANG"};
-			$envroot = $ENV{"SystemRoot"};
-			$envperllib = $ENV{'PERLLIB'};
-			foreach my $k (keys %ENV) {
-				delete($ENV{$k});
-				}
-			$ENV{"PATH"} = $envpath if ($envpath);
-			$ENV{"TZ"} = $envtz if ($envtz);
-			$ENV{"USER"} = $envuser if ($envuser);
-			$ENV{"OLD_LANG"} = $envlang if ($envlang);
-			$ENV{"SystemRoot"} = $envroot if ($envroot);
-			$ENV{'PERLLIB'} = $envperllib if ($envperllib);
-			$ENV{"HOME"} = $user_homedir;
-			$ENV{"SERVER_SOFTWARE"} = $config{"server"};
-			$ENV{"SERVER_ADMIN"} = $config{"email"};
-			$root0 = $roots[0];
-			$ENV{"SERVER_ROOT"} = $root0;
-			$ENV{"SERVER_REALROOT"} = $root0;
-			$ENV{"SERVER_PORT"} = $config{'port'};
-			$ENV{"WEBMIN_CRON"} = 1;
-			$ENV{"DOCUMENT_ROOT"} = $root0;
-			$ENV{"DOCUMENT_REALROOT"} = $root0;
-			$ENV{"MINISERV_CONFIG"} = $config_file;
-			$ENV{"HTTPS"} = "ON" if ($use_ssl);
-			$ENV{"MINISERV_PID"} = $miniserv_main_pid;
-			$ENV{"SCRIPT_FILENAME"} = $config{'webmincron_wrapper'};
-			if ($ENV{"SCRIPT_FILENAME"} =~ /^\Q$root0\E(\/.*)$/) {
-				$ENV{"SCRIPT_NAME"} = $1;
-				}
-			$config{'webmincron_wrapper'} =~ /^(.*)\//;
-			$ENV{"PWD"} = $1;
-			foreach $k (keys %config) {
-				if ($k =~ /^env_(\S+)$/) {
-					$ENV{$1} = $config{$k};
-					}
-				}
-			chdir($ENV{"PWD"});
-			$SIG{'CHLD'} = 'DEFAULT';
-			eval {
-				# Have SOCK closed if the perl exec's something
-				use Fcntl;
-				fcntl(SOCK, F_SETFD, FD_CLOEXEC);
-				};
-
-			# Run the wrapper script by evaling it
-			$pkg = "webmincron";
-			$0 = $config{'webmincron_wrapper'};
-			@ARGV = ( $cron );
-			$main_process_id = $$;
-			eval "
-				\%pkg::ENV = \%ENV;
-				package $pkg;
-				do \$miniserv::config{'webmincron_wrapper'};
-				die \$@ if (\$@);
-				";
-			if ($@) {
-				print STDERR "Perl cron failure : $@\n";
-				}
-
-			exit(0);
-			}
+		my $pid = &execute_webmin_command($config{'webmincron_wrapper'},
+						  [ $cron ]);
 		push(@childpids, $pid);
 		}
 	}
@@ -5964,4 +5938,146 @@ $tmp =~ s/\"/&quot;/g;
 $tmp =~ s/\'/&#39;/g;
 $tmp =~ s/=/&#61;/g;
 return $tmp;
+}
+
+# validate_twofactor(username, token)
+# Checks if a user's two-factor token is valid or not. Returns undef on success
+# or the error message on failure.
+sub validate_twofactor
+{
+my ($user, $token) = @_;
+$token =~ s/^\s+//;
+$token =~ s/\s+$//;
+$token || return "No two-factor token entered";
+my $tf = $twofactor{$user};
+$tf || return undef;
+pipe(TOKENr, TOKENw);
+my $pid = &execute_webmin_command($config{'twofactor_wrapper'},
+	[ $user, $tf->{'provider'}, $tf->{'id'}, $token, $tf->{'apikey'} ],
+	TOKENw);
+close(TOKENw);
+waitpid($pid, 0);
+my $ex = $?;
+my $out = <TOKENr>;
+close(TOKENr);
+if ($ex) {
+	return $out || "Unknown two-factor authentication failure";
+	}
+return undef;
+}
+
+# execute_webmin_command(command, &argv, [stdout-fd])
+# Run some Webmin script in a sub-process, like webmincron.pl
+# Returns the PID of the new process.
+sub execute_webmin_command
+{
+my ($cmd, $argv, $fd) = @_;
+my $pid = fork();
+if (!$pid) {
+	# Run via a wrapper command, which we run like a CGI
+	dbmclose(%sessiondb);
+	if ($fd) {
+		open(STDOUT, ">&$fd");
+		}
+	else {
+		open(STDOUT, ">&STDERR");
+		}
+	&close_all_sockets();
+	&close_all_pipes();
+	close(LISTEN);
+
+	# Setup CGI-like environment
+	$envtz = $ENV{"TZ"};
+	$envuser = $ENV{"USER"};
+	$envpath = $ENV{"PATH"};
+	$envlang = $ENV{"LANG"};
+	$envroot = $ENV{"SystemRoot"};
+	$envperllib = $ENV{'PERLLIB'};
+	foreach my $k (keys %ENV) {
+		delete($ENV{$k});
+		}
+	$ENV{"PATH"} = $envpath if ($envpath);
+	$ENV{"TZ"} = $envtz if ($envtz);
+	$ENV{"USER"} = $envuser if ($envuser);
+	$ENV{"OLD_LANG"} = $envlang if ($envlang);
+	$ENV{"SystemRoot"} = $envroot if ($envroot);
+	$ENV{'PERLLIB'} = $envperllib if ($envperllib);
+	$ENV{"HOME"} = $user_homedir;
+	$ENV{"SERVER_SOFTWARE"} = $config{"server"};
+	$ENV{"SERVER_ADMIN"} = $config{"email"};
+	$root0 = $roots[0];
+	$ENV{"SERVER_ROOT"} = $root0;
+	$ENV{"SERVER_REALROOT"} = $root0;
+	$ENV{"SERVER_PORT"} = $config{'port'};
+	$ENV{"WEBMIN_CRON"} = 1;
+	$ENV{"DOCUMENT_ROOT"} = $root0;
+	$ENV{"DOCUMENT_REALROOT"} = $root0;
+	$ENV{"MINISERV_CONFIG"} = $config_file;
+	$ENV{"HTTPS"} = "ON" if ($use_ssl);
+	$ENV{"MINISERV_PID"} = $miniserv_main_pid;
+	$ENV{"SCRIPT_FILENAME"} = $cmd;
+	if ($ENV{"SCRIPT_FILENAME"} =~ /^\Q$root0\E(\/.*)$/) {
+		$ENV{"SCRIPT_NAME"} = $1;
+		}
+	$cmd =~ /^(.*)\//;
+	$ENV{"PWD"} = $1;
+	foreach $k (keys %config) {
+		if ($k =~ /^env_(\S+)$/) {
+			$ENV{$1} = $config{$k};
+			}
+		}
+	chdir($ENV{"PWD"});
+	$SIG{'CHLD'} = 'DEFAULT';
+	eval {
+		# Have SOCK closed if the perl exec's something
+		use Fcntl;
+		fcntl(SOCK, F_SETFD, FD_CLOEXEC);
+		};
+
+	# Run the wrapper script by evaling it
+	if ($cmd =~ /\/([^\/]+)\/([^\/]+)$/) {
+		$pkg = $1;
+		}
+	$0 = $cmd;
+	@ARGV = @$argv;
+	$main_process_id = $$;
+	eval "
+		\%pkg::ENV = \%ENV;
+		package $pkg;
+		do \"$cmd\";
+		die \$@ if (\$@);
+		";
+	if ($@) {
+		print STDERR "Perl failure : $@\n";
+		}
+	exit(0);
+	}
+return $pid;
+}
+
+# canonicalize_ip6(address)
+# Converts an address to its full long form. Ie. 2001:db8:0:f101::20 to
+# 2001:0db8:0000:f101:0000:0000:0000:0020
+sub canonicalize_ip6
+{
+my ($addr) = @_;
+return $addr if (!&check_ip6address($addr));
+my @w = split(/:/, $addr);
+my $idx = &indexof("", @w);
+if ($idx >= 0) {
+	# Expand ::
+	my $mis = 8 - scalar(@w);
+	my @nw = @w[0..$idx];
+	for(my $i=0; $i<$mis; $i++) {
+		push(@nw, 0);
+		}
+	push(@nw, @w[$idx+1 .. $#w]);
+	@w = @nw;
+	}
+foreach my $w (@w) {
+	while(length($w) < 4) {
+		$w = "0".$w;
+		}
+	}
+return lc(join(":", @w));
 }

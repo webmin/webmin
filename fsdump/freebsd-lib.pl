@@ -29,9 +29,9 @@ print &ui_table_row(&hlink($text{'dump_dest'}, "dest"),
 	       &ui_textbox("file", $_[0]->{'file'}, 50).
 	       " ".&file_chooser_button("file")."<br>" ],
 	  [ 1, &text('dump_host',
-		     &ui_textbox("host", $_[0]->{'host'}, 15),
-		     &ui_textbox("huser", $_[0]->{'huser'}, 8),
-		     &ui_textbox("hfile", $_[0]->{'hfile'}, 20)) ] ]), 3);
+		     &ui_textbox("host", $_[0]->{'host'}, 20),
+		     &ui_textbox("huser", $_[0]->{'huser'}, 15),
+		     &ui_textbox("hfile", $_[0]->{'hfile'}, 40)) ] ]), 3);
 
 if ($_[0]->{'fs'} eq 'tar') {
 	# Display gnutar options
@@ -262,9 +262,9 @@ print &ui_table_row(&hlink($text{'restore_src'}, "rsrc"),
 	       &ui_textbox("file", $_[1]->{'file'}, 50).
 	       " ".&file_chooser_button("file")."<br>" ],
 	  [ 1, &text('dump_host',
-		     &ui_textbox("host", $_[1]->{'host'}, 15),
-		     &ui_textbox("huser", $_[1]->{'huser'}, 8),
-		     &ui_textbox("hfile", $_[1]->{'hfile'}, 20)) ] ]), 3, $tds);
+		     &ui_textbox("host", $_[1]->{'host'}, 20),
+		     &ui_textbox("huser", $_[1]->{'huser'}, 15),
+		     &ui_textbox("hfile", $_[1]->{'hfile'}, 40)) ] ]), 3, $tds);
 
 if ($_[0] eq 'tar') {
 	# tar restore options

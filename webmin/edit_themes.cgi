@@ -90,13 +90,13 @@ print &ui_table_start(undef, undef, 2);
 
 print &ui_table_row($text{'themes_exportmods'},
 	&ui_select("mod", undef,
-		[ map { [ $_->{'dir'}, $_->{'desc'} ] } @themes ], 5, 1));
+		[ map { [ $_->{'dir'}, $_->{'desc'} ] } @themes ], 5, 1), undef, [ "valign=top","valign=top" ]);
 
 print &ui_table_row($text{'mods_exportto'},
 	&ui_radio("to", 0,
 		[ [ 0, $text{'mods_exportshow'}."<br>" ],
 		  [ 1, &text('mods_exportfile',
-			     &ui_textbox("file", undef, 40)) ] ]));
+			     &ui_textbox("file", undef, 40)) ] ]), undef, [ "valign=top","valign=top" ]);
 
 print &ui_table_end();
 print &ui_form_end([ [ "ok", $text{'themes_exportok'} ] ]);

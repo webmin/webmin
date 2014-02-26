@@ -28,8 +28,8 @@ if ($in{'type'} == 6) {
 	print &ui_hr();
 	print &ui_subheading($text{'global_mime'});
 	print "$text{'global_mimedesc'}<p>\n";
-	@links = ( "<a href=\"edit_gmime_type.cgi?file=$mfile\">".
-	           "$text{'global_add'}</a>" );
+	@links = ( &ui_link("edit_gmime_type.cgi?file=$mfile",
+	           $text{'global_add'}) );
 	print &ui_links_row(\@links);
 	print &ui_columns_start([ $text{'global_type'},
 				  $text{'global_ext'} ]);
@@ -40,8 +40,8 @@ if ($in{'type'} == 6) {
 		s/#.*$//;
 		if (/^\s*(\S+)\s*(.*)$/) {
 			print &ui_columns_row([
-				"<a href=\"edit_gmime_type.cgi?line=$line".
-				"&file=$mfile\">$1</a>", $2 ]);
+				&ui_link("edit_gmime_type.cgi?line=$line".
+				"&file=$mfile", $1), $2 ]);
 			}
 		$line++;
 		}

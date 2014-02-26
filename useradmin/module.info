@@ -34,3 +34,6 @@ desc_cz.UTF-8=UÅ¾ivatelÃ© a skupiny
 desc_pl.UTF-8=UÅ¼ytkownicy i&nbsp;grupy
 desc_no=Brukere og grupper
 desc_hu=Felhasználók és csoportok
+longdesc_ms_MY=Mencipta dan menyunting pengguna Unix dan grup dalam fail /etc/passwd dan /etc/group.
+desc_ms_MY=Pengguna dan Grup
+longdesc_de=Erstellt und editiert Unix-Benutzer und Gruppen aus den /etc/passwd und /etc/group Dateien.

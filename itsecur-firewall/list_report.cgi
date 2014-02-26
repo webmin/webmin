@@ -8,7 +8,8 @@ use POSIX;
 print "Refresh: $config{'refresh'}\r\n"
 	if ($config{'refresh'});
 &header($text{'report_title'}, "");
-print "<hr>\n";
+
+print &ui_hr();
 
 if ($in{'reset'}) {
 	# Clear all inputs
@@ -27,102 +28,92 @@ elsif ($in{'save_name'}) {
 	}
 
 # Show search form
-print "<form action=list_report.cgi>\n";
-print "<table width=100%>\n";
-print "<tr>\n";
-print "<td colspan=4><input type=submit value='$text{'report_search'}'></td>\n";
-print "<td colspan=4 align=right><input type=submit name=reset value='$text{'report_reset'}'></td>\n";
-print "</tr>\n";
-$i = 0;
+print &ui_form_start("list_report.cgi", "post");
+print &ui_table_start(undef,"width=100%",2);
+
+print &ui_columns_row([&ui_submit($text{'report_search'}),
+                        &ui_submit($text{'report_reset'},"reset")],
+                        ["colspan=4 width=50%", "colspan=4 width=50%"]);
+
+my $i = 0;
+my @cols_row;
+my @sel;
+my $tx = "";
 foreach $f (@search_fields) {
-	print "<tr>\n" if ($i%2 == 0);
-	print "<td><b>",$text{'report_'.$f},"</b></td>\n";
-	print "<td><select name=${f}_mode>\n";
+    @cols_row = () if ($i%2 == 0);
+    push(@cols_row, $text{'report_'.$f});
+    @sel = ();
 	if ($f eq "first" || $f eq "last") {
 		foreach $m (0 .. 1) {
-			printf "<option value=%d %s>%s\n",
-				$m, $in{"${f}_mode"} == $m ? "selected" : "",
-				$text{'report_mode'.$m.$f} ||
-				$text{'report_mode'.$m};
-			}
+            push(@sel, [ $m, ( $text{'report_mode'.$m.$f} || 
+                            $text{'report_mode'.$m} ),
+                            ($in{"${f}_mode"} == $m ? "selected" : "")]);
 		}
+    }
 	else {
 		foreach $m (0 .. 2) {
-			printf "<option value=%d %s>%s\n",
-				$m, $in{"${f}_mode"} == $m ? "selected" : "",
-				$text{'report_mode'.$m};
-			}
+            push(@sel, [ $m, $text{'report_mode'.$m}, ($in{"${f}_mode"} == $m ? "selected" : "")]);
 		}
-	print "</select></td>\n";
+    }
+    push(@cols_row, &ui_select(${f}."_mode", undef, \@sel, 1) );
+
 	if ($f eq "dst_iface") {
-		print "<td>",&iface_input($f."_what", $in{$f."_what"}),"</td>\n";
+        push(@cols_row, &iface_input($f."_what", $in{$f."_what"}) );
 		}
 	elsif ($f eq "proto") {
-		print "<td>",&protocol_input($f."_what", $in{$f."_what"}),"</td>\n";
+        push(@cols_row, &protocol_input($f."_what", $in{$f."_what"}) );
 		}
 	elsif ($f eq "dst_port" || $f eq "src_port") {
-		print "<td>",&service_input($f."_what", $in{$f."_what"}, 2, 0, 1);
-		printf "<input name=%s_other size=6 value='%s'>\n",
-			$f, $in{$f."_other"};
-		print "</td>\n";
+        push(@cols_row, &ui_textbox($f."_other", $in{$f."_other"}, 6) ); 
 		}
 	elsif ($f eq "src" || $f eq "dst") {
-		print "<td>",&group_input($f."_what", $in{$f."_what"}, 2, 0);
-		printf "<input name=%s_other size=10 value='%s'>\n",
-			$f, $in{$f."_other"};
-		print "</td>\n";
+        push(@cols_row, &group_input($f."_what", $in{$f."_what"}, 2, 0).
+                        &ui_textbox($f."_other", $in{$f."_other"}, 10) );
 		}
 	elsif ($f eq "first" || $f eq "last") {
-		print "<td>";
-		&date_input($in{$f."_day"}, $in{$f."_month"},
+		$tx = "";
+		$tx .= &date_input($in{$f."_day"}, $in{$f."_month"},
 				  $in{$f."_year"}, $f);
 		if ($f eq "first") {
-			&hourmin_input($in{$f."_hour"} || "00",
+			$tx .= &hourmin_input($in{$f."_hour"} || "00",
 				       $in{$f."_min"} || "00", $f);
 			}
 		else {
-			&hourmin_input($in{$f."_hour"} || "23",
+			$tx .= &hourmin_input($in{$f."_hour"} || "23",
 				       $in{$f."_min"} || "59", $f);
 			}
-		print "</td>";
+        push(@cols_row, $tx);
 		}
 	elsif ($f eq "action") {
-		print "<td>",&action_input($f."_what",
-					   $in{$f."_what"}, 1),"</td>\n";
+		push(@cols_row, &action_input($f."_what",
+					   $in{$f."_what"}, 1) );
 		}
 	elsif ($f eq "rule") {
-		printf "<td><input name=%s_what size=5 value='%s'></td>\n",
-			$f, $in{$f."_what"};
+        push(@cols_row, &ui_textbox($f."_what", $in{$f."_what"}, 5) );
 		}
 	else {
-		printf "<td><input name=%s_what size=20 value='%s'></td>\n",
-			$f, $in{$f."_what"};
+        push(@cols_row, &ui_textbox($f."_what", $in{$f."_what"}, 20) );
 		}
-	print "<td>&nbsp;&nbsp;</td>\n";
-	print "</tr>\n" if ($i++%2 == 1);
+    push(@cols_row, "&nbsp;&nbsp;" );
+    print &ui_columns_row(\@cols_row) if ($i++%2 == 1); 
 	}
 
 # Show saved search
-@searches = &list_searches();
+my @searches = &list_searches();
 if (@searches) {
-	print "<tr> <td></td> </tr>\n";
-	print "<tr> <td><b>$text{'report_usesaved'}</b></td>\n";
-	print "<td colspan=3><select name=save_name>\n";
-	printf "<option value='' %s>%s\n",
-		$in{'save_name'} eq "" ? "selected" : "", "&nbsp;";
-	foreach $s ( @searches) {
-		printf "<option value='%s' %s>%s\n",
-			$s->{'save_name'},
-			$in{'save_name'} eq $s->{'save_name'} ? "selected" : "",
-			$s->{'save_name'};
+    @sel = ();
+    print &ui_columns_row(["&nbsp;"],["colspan=8"]);
+    push(@sel, ["", "&nbsp;", ($in{'save_name'} eq "" ? "selected" : "")]);
+	foreach $s (@searches) {
+        push(@sel,[$s->{'save_name'}, $s->{'save_name'}, ($in{'save_name'} eq $s->{'save_name'} ? "selected" : "") ]);
 		}
-	print "</select></td> </tr>\n";
+    print &ui_columns_row([$text{'report_usesaved'}, &ui_select("save_name", undef, \@sel, 1)], ["", "colspan=7"] );
 	}
 
-print "</table>\n";
+print &ui_table_end();
+print &ui_form_end(undef,undef,1);
 
-print "</form>\n";
-print "<hr>\n";
+print &ui_hr();
 
 # Find those matching current search
 @logs = &parse_all_logs();
@@ -147,22 +138,17 @@ if (@logs) {
 		$e = $in{'start'} + $config{'perpage'} - 1;
 		$e = @logs-1 if ($e >= @logs);
 		if ($s) {
-			printf "<a href='%sstart=%d'>%s</a>\n",
-			    $prog, 0,
-			    "<img src=images/lleft.gif border=0 align=middle alt='First page'>";
-			printf "<a href='%sstart=%d'>%s</a>\n",
-			    $prog, $s - $config{'perpage'},
-			    "<img src=/images/left.gif border=0 align=middle alt='Previous page'>";
-			}
-		print "<font size=+1>",&text('report_pos', $s+1, $e+1,
-					     scalar(@logs)),"</font>\n";
+            print &ui_link($prog."start=0",
+                        "<img src=images/lleft.gif border=0 align=middle alt='First page'>" );
+            print &ui_link($prog."start=".($s - $config{'perpage'}),
+                        "<img src=/images/left.gif border=0 align=middle alt='Previous page'>" );
+        }
+		print "<font size=+1>".&text('report_pos', $s+1, $e+1, scalar(@logs))."</font>\n";
 		if ($e < @logs-1) {
-			printf "<a href='%sstart=%d'>%s</a>\n",
-			    $prog, $s + $config{'perpage'},
-			    "<img src=/images/right.gif border=0 align=middle alt='Next page'>";
-			printf "<a href='%sstart=%d'>%s</a>\n",
-			    $prog, int((@logs-1)/$config{'perpage'})*$config{'perpage'},
-			    "<img src=images/rright.gif border=0 align=middle alt='Last page'>";
+            print &ui_link($prog."start=".($s + $config{'perpage'}),
+                        "<img src=/images/right.gif border=0 align=middle alt='Next page'>" );
+            print &ui_link($prog."start=".(int((@logs-1)/$config{'perpage'})*$config{'perpage'}),
+                        "<img src=images/rright.gif border=0 align=middle alt='Last page'>" );
 			}
 		print "</center>\n";
 		}
@@ -172,35 +158,33 @@ if (@logs) {
 		$e = @logs - 1;
 		}
 
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'report_action'}</b></td> ",
-	      "<td><b>$text{'report_rule2'}</b></td> ",
-	      "<td><b>$text{'report_date'}</b></td> ",
-	      "<td><b>$text{'report_time'}</b></td> ",
-	      "<td><b>$text{'report_src'}</b></td> ",
-	      "<td><b>$text{'report_dst'}</b></td> ",
-	      "<td><b>$text{'report_dst_iface'}</b></td> ",
-	      "<td><b>$text{'report_proto'}</b></td> ",
-	      "<td><b>$text{'report_src_port'}</b></td> ",
-	      "<td><b>$text{'report_dst_port'}</b></td> ",
-	      "</tr>\n";
+    print &ui_columns_start([$text{'report_action'},
+                            $text{'report_rule2'},
+                            $text{'report_date'},
+                            $text{'report_time'},
+                            $text{'report_src'},
+                            $text{'report_dst'},
+                            $text{'report_dst_iface'},
+                            $text{'report_proto'},
+                            $text{'report_src_port'},
+                            $text{'report_dst_port'}]);
 	for($i=$s; $i<=$e; $i++) {
 		$l = $logs[$i];
-		print "<tr $cb>\n";
-		print "<td>",$text{'rule_'.$l->{'action'}},"</td>\n";
-		print "<td>",$l->{'rule'} || "<br>","</td>\n";
-		local @tm = localtime($l->{'time'});
-		print "<td>",strftime("%d/%m/%Y", @tm),"</td>\n";
-		print "<td>",strftime("%H:%M:%S", @tm),"</td>\n";
-		print "<td>",$l->{'src'},"</td>\n";
-		print "<td>",$l->{'dst'},"</td>\n";
-		print "<td>",$l->{'dst_iface'} || "<br>","</td>\n";
-		print "<td>",$l->{'proto'} || "<br>","</td>\n";
-		print "<td>",$l->{'src_port'} || "<br>","</td>\n";
-		print "<td>",$l->{'dst_port'} || "<br>","</td>\n";
-		print "</tr>\n";
+        @cols_row = ();
+        push(@cols_row, $text{'rule_'.$l->{'action'}});
+        push(@cols_row, ( $l->{'rule'} || "&nbsp;") );
+		my @tm = localtime($l->{'time'});
+        push(@cols_row, strftime("%d/%m/%Y", @tm) );
+        push(@cols_row, strftime("%H:%M:%S", @tm) );
+        push(@cols_row, $l->{'src'} );
+        push(@cols_row, $l->{'dst'} );
+        push(@cols_row, ( $l->{'dst_iface'} || "&nbsp;" ) );
+        push(@cols_row, ( $l->{'proto'} || "&nbsp;" ) );
+        push(@cols_row, ( $l->{'src_port'} || "&nbsp;" ) );
+        push(@cols_row, ( $l->{'dst_port'} || "&nbsp;" ) );
+		print &ui_columns_row(\@cols_row);
 		}
-	print "</table>\n";
+	print &ui_columns_end();
 	}
 elsif ($anylogs) {
 	print "<b>$text{'report_none'}</b><p>\n";
@@ -210,36 +194,34 @@ else {
 	}
 
 
-print "<hr>\n";
-print "<table width=100%>\n";
-
+print &ui_hr();
+my $hastable = 0;
 if (@logs && &can_edit("report")) {
 	# Show export button
-	print "<form action=list_welf.cgi>\n";
+    print &ui_table_start(undef,"width=100%",2);
+    $hastable = 1;
+    print &ui_form_start("list_welf.cgi", "post");
 	foreach $i (keys %in) {
-		print "<input type=hidden name=$i value='",
-		      &html_escape($in{$i}),"'>\n";
+        print &ui_hidden($i, &html_escape($in{$i}) );
 		}
-	print "<tr> <td valign=top><input type=submit value='$text{'report_welf'}'></td>\n";
-	print "<td>$text{'report_welfdesc'}</td>\n";
-	print "</tr></form>\n";
+    print &ui_columns_row([&ui_submit($text{'report_welf'}), $text{'report_welfdesc'}], ["valign=middle","valign=middle"] );
+    print &ui_form_end(undef,undef,1);
 	$anyrows++;
 	}
 
 if (@searchvars && &can_edit("report")) {
 	# Show button to save this search
-	print "<form action=save_search.cgi>\n";
+    print &ui_table_start(undef,"width=100%",2) if ( $hastable == 0 );
+    print &ui_form_start("save_search.cgi", "post");
 	foreach $i (keys %in) {
-		print "<input type=hidden name=$i value='",
-		      &html_escape($in{$i}),"'>\n";
+        print &ui_hidden($i, &html_escape($in{$i}) );
 		}
-	print "<tr> <td valign=top><input type=submit value='$text{'report_save'}'></td>\n";
-	print "<td>$text{'report_savedesc'}<br>\n";
-	print "<b>$text{'report_savename'}</b>\n";
-	printf "<input name=save_name size=30 value='%s'>\n",
-		$in{'save_name'};
-	print "</td>\n";
-	print "</tr></form>\n";
+    print &ui_columns_row([&ui_submit($text{'report_save'}),
+                            $text{'report_savedesc'}."<br>".
+                            "<b>".$text{'report_savename'}."</b>&nbsp;".
+                            &ui_textbox("save_name", $in{'save_name'}, 30) ],
+                            ["valign=middle","valign=middle"] ); 
+    print &ui_form_end(undef,undef,1);
 	$anyrows++;
 	}
 
@@ -262,32 +244,35 @@ if (@searchvars && &can_edit("report")) {
 #	$anyrows++;
 #	}
 
-print "</table>\n";
+print &ui_table_end() if ( $hastable == 1 );
 
-print "<hr>\n" if ($anyrows);
+print &ui_hr() if ($anyrows);
 &footer("", $text{'index_return'});
 
 # date_input(day, month, year, prefix)
 sub date_input
 {
-print "<input name=$_[3]_day size=2 value='$_[0]'>";
-print "/<select name=$_[3]_month>\n";
-local $m;
-foreach $m (1..12) {
-	printf "<option value=%d %s>%s\n",
-		$m, $_[1] eq $m ? 'selected' : '', $text{"smonth_$m"};
+my $rv = "";
+$rv .= &ui_textbox($_[3]."_day", $_[0], 2);
+$rv .= "/";
+
+my @sel;
+foreach my $m (1..12) {
+    push(@sel, [$m, $text{"smonth_$m"}, ($_[1] eq $m ? 'selected' : '') ] );
 	}
-print "</select>";
-print "/<input name=$_[3]_year size=4 value='$_[2]'>";
-print &date_chooser_button("$_[3]_day", "$_[3]_month", "$_[3]_year");
-print "\n";
+$rv .= &ui_select($_[3]."_month", undef, \@sel, 1);
+$rv .= "/";
+$rv .= &ui_textbox($_[3]."_year", $_[2], 4);
+$rv .= &date_chooser_button("$_[3]_day", "$_[3]_month", "$_[3]_year");
+return $rv;
 }
 
 # hourmin_input(hour, min, prefix)
 sub hourmin_input
 {
-print "<input name=$_[2]_hour size=2 value='$_[0]'>";
-print ":";
-print "<input name=$_[2]_min size=2 value='$_[1]'>";
-print "\n";
+my $rv = "";
+$rv .= &ui_textbox($_[2]."_hour", $_[0], 2);
+$rv .= ":";
+$rv .= &ui_textbox($_[2]."_min", $_[1], 2);
+return $rv;
 }

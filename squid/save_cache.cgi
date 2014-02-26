@@ -2,23 +2,28 @@
 # save_cache.cgi
 # Save cache and request options
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 $access{'copts'} || &error($text{'ec_ecannot'});
 &ReadParse();
 &lock_file($config{'squid_conf'});
-$conf = &get_config();
-$whatfailed = $text{'scache_ftsco'};
+my $conf = &get_config();
+&error_setup($text{'scache_ftsco'});
 
 if ($in{'cache_dir_def'}) {
 	&save_directive($conf, "cache_dir", [ ]);
 	}
 else {
-	for($i=0; defined($dir = $in{"cache_dir_$i"}); $i++) {
+	my @chd;
+	for(my $i=0; defined(my $dir = $in{"cache_dir_$i"}); $i++) {
 		if ($squid_version >= 2.4) {
-			$lv1 = $in{"cache_lv1_$i"}; $lv2 = $in{"cache_lv2_$i"};
-			$size = $in{"cache_size_$i"};
-			$type = $in{"cache_type_$i"};
-			$opts = $in{"cache_opts_$i"};
+			my $lv1 = $in{"cache_lv1_$i"};
+			my $lv2 = $in{"cache_lv2_$i"};
+			my $size = $in{"cache_size_$i"};
+			my $type = $in{"cache_type_$i"};
+			my $opts = $in{"cache_opts_$i"};
 			next if (!$dir && !$lv1 && !$lv2 && !$size);
 			if ($type ne "coss") {
 				&check_error(\&check_dir, $dir);
@@ -31,9 +36,10 @@ else {
 						   $lv1, $lv2, $opts ] });
 			}
 		elsif ($squid_version >= 2.3) {
-			$lv1 = $in{"cache_lv1_$i"}; $lv2 = $in{"cache_lv2_$i"};
-			$size = $in{"cache_size_$i"};
-			$type = $in{"cache_type_$i"};
+			my $lv1 = $in{"cache_lv1_$i"};
+			my $lv2 = $in{"cache_lv2_$i"};
+			my $size = $in{"cache_size_$i"};
+			my $type = $in{"cache_type_$i"};
 			next if (!$dir && !$lv1 && !$lv2 && !$size);
 			&check_error(\&check_dir, $dir);
 			&check_error(\&check_dirsize, $size);
@@ -44,8 +50,9 @@ else {
 						   $lv1, $lv2 ] });
 			}
 		elsif ($squid_version >= 2) {
-			$lv1 = $in{"cache_lv1_$i"}; $lv2 = $in{"cache_lv2_$i"};
-			$size = $in{"cache_size_$i"};
+			my $lv1 = $in{"cache_lv1_$i"};
+			my $lv2 = $in{"cache_lv2_$i"};
+			my $size = $in{"cache_size_$i"};
 			next if (!$dir && !$lv1 && !$lv2 && !$size);
 			&check_error(\&check_dir, $dir);
 			&check_error(\&check_dirsize, $size);
@@ -79,8 +86,9 @@ if ($squid_version < 2) {
 	&save_list("cache_stoplist", undef, $conf);
 	&save_list("cache_stoplist_pattern", undef, $conf);
 	}
-@noch = split(/\0/, $in{'no_cache'});
-$nochname = $squid_version >= 2.6 ? 'cache' : 'no_cache';
+my @noch = split(/\0/, $in{'no_cache'});
+my $nochname = $squid_version >= 2.6 ? 'cache' : 'no_cache';
+my @nc;
 if (@noch) {
 	$nc[0] = { 'name' => $nochname,
 		   'values' => [ "deny", @noch ] };
@@ -113,10 +121,11 @@ else {
 	}
 if ($squid_version >= 2.5) {
 	# Parse list of max reply body sizes
-	for($i=0; defined($s = $in{"reply_body_max_size_$i"}); $i++) {
+	my @rbms;
+	for(my $i=0; defined(my $s = $in{"reply_body_max_size_$i"}); $i++) {
 		next if ($s eq "");
 		&error(&text('scache_emaxrs', $i+1)) if ($s !~ /^\d+$/);
-		local @a = split(/\s+/, $in{"reply_body_max_acls_$i"});
+		my @a = split(/\s+/, $in{"reply_body_max_acls_$i"});
 		push(@rbms, { 'name' => 'reply_body_max_size',
 			      'values' => [ $s, @a ] });
 		}
@@ -138,16 +147,7 @@ else {
 	&save_choice("half_closed_clients", "on", $conf);
 	&save_opt_time("pconn_timeout", $conf);
 	}
-if ($squid_version < 2) {
-	if (!$in{'wais_relay_def'}) {
-		&check_error(\&check_host, $in{'wais_relay1'});
-		&check_error(\&check_port, $in{'wais_relay2'});
-		$wr[0] = { 'name' => 'wais_relay',
-			   'values' =>  [ $in{'wais_relay1'}, $in{'wais_relay2'} ] };
-		}
-	&save_directive($conf, "wais_relay", \@wr);
-	}
-else {
+if ($squid_version >= 2) {
 	&save_opt("wais_relay_host", \&check_host, $conf);
 	&save_opt("wais_relay_port", \&check_port, $conf);
 	}

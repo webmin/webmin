@@ -63,6 +63,7 @@ our $record_login_cmd = "$config_directory/login.pl";
 our $record_logout_cmd = "$config_directory/logout.pl";
 
 our $strong_ssl_ciphers = "ECDHE-RSA-AES256-SHA384:AES256-SHA256:AES256-SHA256:RC4:HIGH:MEDIUM:+TLSv1:!MD5:!SSLv2:+SSLv3:!ADH:!aNULL:!eNULL:!NULL:!DH:!ADH:!EDH:!AESGCM";
+our $pfs_ssl_ciphers = "EECDH+AES:EDH+AES:-SHA1:EECDH+RC4:EDH+RC4:RC4-SHA:EECDH+AES256:EDH+AES256:AES256-SHA:!aNULL:!eNULL:!EXP:!LOW:!MD5";
 
 our $newmodule_users_file = "$config_directory/newmodules";
 
@@ -399,6 +400,13 @@ else {
 			system("chown -R $myuser $config_directory/$m");
 			system("chgrp -R $mygroup $config_directory/$m");
 			system("chmod -R $myperms $config_directory/$m");
+			}
+		}
+
+	# Set reasonable permissions on install directory
+	if (&supports_users()) {
+		foreach my $m (@newmods) {
+			system("chmod -R o-w $root_directory/$m");
 			}
 		}
 
@@ -1429,11 +1437,11 @@ else {
 for(my $i=1; $i<@_; $i++) {
 	my $mismatch = 0;
 	my $ip = $_[$i];
-        if ($ip =~ /^(\S+)\/(\d+)$/) {
+        if ($ip =~ /^([0-9\.]+)\/(\d+)$/) {
                 # Convert CIDR to netmask format
                 $ip = $1."/".&prefix_to_mask($2);
                 }
-	if ($ip =~ /^(\S+)\/(\S+)$/) {
+	if ($ip =~ /^([0-9\.]+)\/([0-9\.]+)$/) {
 		# Compare with IPv4 network/mask
 		my @mo = split(/\./, $1);
 		my @ms = split(/\./, $2);
@@ -1475,10 +1483,19 @@ for(my $i=1; $i<@_; $i++) {
 			}
 		}
 	elsif ($_[$i] =~ /^[a-f0-9:]+$/) {
-		# Compare with IPv6 address or network
-		my @mo = split(/:/, $_[$i]);
-		while(@mo && !$mo[$#mo]) { pop(@mo); }
-		for(my $j=0; $j<@mo; $j++) {
+		# Compare with a full IPv6 address
+		if (&canonicalize_ip6($_[$i]) ne canonicalize_ip6($_[0])) {
+			$mismatch = 1;
+			}
+		}
+	elsif ($_[$i] =~ /^([a-f0-9:]+)\/(\d+)$/) {
+		# Compare with an IPv6 network
+		my $v6size = $2;
+		my $v6addr = &canonicalize_ip6($1);
+		my $bytes = $v6size / 16;
+		my @mo = split(/:/, $v6addr);
+		my @io = split(/:/, &canonicalize_ip6($_[0]));
+		for(my $j=0; $j<$bytes; $j++) {
 			if ($mo[$j] ne $io[$j]) {
 				$mismatch = 1;
 				}
@@ -1516,22 +1533,35 @@ sub valid_allow
 {
 my ($h) = @_;
 if ($h =~ /^([0-9\.]+)\/(\d+)$/) {
+	# IPv4 address/cidr
 	&check_ipaddress($1) ||
 		return &text('access_enet', "$1");
 	$2 >= 0 && $2 <= 32 ||
 		return &text('access_ecidr', "$2");
 	}
 elsif ($h =~ /^([0-9\.]+)\/([0-9\.]+)$/) {
+	# IPv4 address/netmask
 	&check_ipaddress($1) ||
 		return &text('access_enet', "$1");
 	&check_ipaddress($2) ||
 		return &text('access_emask', "$2");
 	}
 elsif ($h =~ /^[0-9\.]+$/) {
+	# IPv4 address
 	&check_ipaddress($h) ||
 		return &text('access_eip', $h);
 	}
+elsif ($h =~ /^([a-f0-9:]+)\/(\d+)$/) {
+	# IPv6 address/prefix
+	&check_ip6address($1) ||
+		return &text('access_eip6', $1);
+	$2 >= 0 && $2 <= 128 ||
+		return &text('access_ecidr6', "$2");
+	$2 % 16 == 0 ||
+		return &text('access_ecidr16', "$2");
+	}
 elsif ($h =~ /^[a-f0-9:]+$/) {
+	# IPv6 address
 	&check_ip6address($h) ||
 		return &text('access_eip6', $h);
 	}
@@ -1817,33 +1847,33 @@ my $rv;
 
 $rv .= &ui_table_row($text{'ssl_cn'},
 		    &ui_opt_textbox("commonName", $defhost, 30,
-				    $text{'ssl_all'}));
+				    $text{'ssl_all'}), undef, [ "valign=middle","valign=middle" ]);
 
 $rv .= &ui_table_row($text{'ca_email'},
-		    &ui_textbox("emailAddress", $defemail, 30));
+		    &ui_textbox("emailAddress", $defemail, 30), undef, [ "valign=middle","valign=middle" ]);
 
 $rv .= &ui_table_row($text{'ca_ou'},
-		    &ui_textbox("organizationalUnitName", undef, 30));
+		    &ui_textbox("organizationalUnitName", undef, 30), undef, [ "valign=middle","valign=middle" ]);
 
 $rv .= &ui_table_row($text{'ca_o'},
-		    &ui_textbox("organizationName", $deforg, 30));
+		    &ui_textbox("organizationName", $deforg, 30), undef, [ "valign=middle","valign=middle" ]);
 
 $rv .= &ui_table_row($text{'ca_city'},
-		    &ui_textbox("cityName", undef, 30));
+		    &ui_textbox("cityName", undef, 30), undef, [ "valign=middle","valign=middle" ]);
 
 $rv .= &ui_table_row($text{'ca_sp'},
-		    &ui_textbox("stateOrProvinceName", undef, 15));
+		    &ui_textbox("stateOrProvinceName", undef, 15), undef, [ "valign=middle","valign=middle" ]);
 
 $rv .= &ui_table_row($text{'ca_c'},
-		    &ui_textbox("countryName", undef, 2));
+		    &ui_textbox("countryName", undef, 2), undef, [ "valign=middle","valign=middle" ]);
 
 $rv .= &ui_table_row($text{'ssl_size'},
 		    &ui_opt_textbox("size", undef, 6,
 				    "$text{'default'} ($default_key_size)").
-			" ".$text{'ssl_bits'});
+			" ".$text{'ssl_bits'}, undef, [ "valign=middle","valign=middle" ]);
 
 $rv .= &ui_table_row($text{'ssl_days'},
-		    &ui_textbox("days", 1825, 8));
+		    &ui_textbox("days", 1825, 8), undef, [ "valign=middle","valign=middle" ]);
 
 return $rv;
 }
@@ -2160,6 +2190,291 @@ if ($tryerror) {
 		&error($tryerror);
 		}
 	}
+}
+
+# list_twofactor_providers()
+# Returns a list of all supported providers, each of which is an array ref
+# containing an ID, name and URL for more info
+sub list_twofactor_providers
+{
+return ( [ 'totp', $text{'twofactor_totp'},
+	   'http://en.wikipedia.org/wiki/Google_Authenticator' ],
+	 [ 'authy', $text{'twofactor_authy'},
+	   'http://www.authy.com/' ] );
+}
+
+# show_twofactor_apikey_authy(&miniserv)
+# Returns HTML for the form for authy-specific provider inputs
+sub show_twofactor_apikey_authy
+{
+my ($miniserv) = @_;
+my $rv;
+$rv .= ui_table_row($text{'twofactor_apikey'},
+	ui_textbox("authy_apikey", $miniserv->{'twofactor_apikey'}, 40));
+return $rv;
+}
+
+# validate_twofactor_apikey_authy(&in, &miniserv)
+# Validates inputs from show_twofactor_apikey_authy, and stores them. Returns
+# undef if OK, or an error message on failure
+sub validate_twofactor_apikey_authy
+{
+my ($in, $miniserv) = @_;
+my $key = $in->{'authy_apikey'};
+my $test = $miniserv->{'twofactor_test'};
+$key =~ /^\S+$/ || return $text{'twofactor_eapikey'};
+my $host = $test ? "sandbox-api.authy.com" : "api.authy.com";
+my $port = $test ? 80 : 443;
+my $page = "/protected/xml/app/details?api_key=".&urlize($key);
+my $ssl = $test ? 0 : 1;
+my ($out, $err);
+&http_download($host, $port, $page, \$out, \$err, undef, $ssl, undef, undef,
+	       60, 0, 1);
+if ($err =~ /401/) {
+	return $text{'twofactor_eauthykey'};
+	}
+elsif ($err) {
+	return &text('twofactor_eauthy', $err);
+	}
+$miniserv->{'twofactor_apikey'} = $key;
+return undef;
+}
+
+# show_twofactor_form_authy(&webmin-user)
+# Returns HTML for a form for enrolling for Authy two-factor
+sub show_twofactor_form_authy
+{
+my ($user) = @_;
+my $rv;
+$rv .= &ui_table_row($text{'twofactor_email'},
+	&ui_textbox("email", undef, 40));
+$rv .= &ui_table_row($text{'twofactor_country'},
+	&ui_textbox("country", undef, 3));
+$rv .= &ui_table_row($text{'twofactor_phone'},
+	&ui_textbox("phone", undef, 20));
+return $rv;
+}
+
+# parse_twofactor_form_authy(&in, &user)
+# Parses inputs from show_twofactor_form_authy, and returns a hash ref with
+# enrollment details on success, or an error message on failure.
+sub parse_twofactor_form_authy
+{
+my ($in, $user) = @_;
+$in->{'email'} =~ /^\S+\@\S+$/ || return $text{'twofactor_eemail'};
+$in->{'country'} =~ s/^\+//;
+$in->{'country'} =~ /^\d{1,3}$/ || return $text{'twofactor_ecountry'};
+$in->{'phone'} =~ /^[0-9\- ]+$/ || return $text{'twofactor_ephone'};
+return { 'email' => $in->{'email'},
+	 'country' => $in->{'country'},
+	 'phone' => $in->{'phone'} };
+}
+
+# enroll_twofactor_authy(&details, &user)
+# Attempts to enroll a user for Authy two-factor. Returns undef on success and
+# sets twofactor_id in &user, or an error message on failure.
+sub enroll_twofactor_authy
+{
+my ($details, $user) = @_;
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+my $host = $miniserv{'twofactor_test'} ? "sandbox-api.authy.com"
+				       : "api.authy.com";
+my $port = $miniserv{'twofactor_test'} ? 80 : 443;
+my $page = "/protected/xml/users/new?api_key=".
+	   &urlize($miniserv{'twofactor_apikey'});
+my $ssl = $miniserv{'twofactor_test'} ? 0 : 1;
+my $content = "user[email]=".&urlize($details->{'email'})."&".
+	      "user[country_code]=".&urlize($details->{'country'})."&".
+	      "user[cellphone]=".&urlize($details->{'phone'});
+my ($out, $err);
+&http_post($host, $port, $page, $content, \$out, \$err, undef, $ssl, undef,
+	   undef, 60, 0, 1);
+return $err if ($err);
+if ($out =~ /<id[^>]*>([^<]+)<\/id>/i) {
+	$user->{'twofactor_id'} = $1;
+	$user->{'twofactor_apikey'} = $miniserv{'twofactor_apikey'};
+	return undef;
+	}
+else {
+	return &text('twofactor_eauthyenroll',
+		     "<pre>".&html_escape($out)."</pre>");
+	}
+}
+
+# validate_twofactor_authy(id, token, apikey)
+# Checks the validity of some token for a user ID
+sub validate_twofactor_authy
+{
+my ($id, $token, $apikey) = @_;
+$id =~ /^\d+$/ || return $text{'twofactor_eauthyid'};
+$token =~ /^\d+$/ || return $text{'twofactor_eauthytoken'};
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+my $host = $miniserv{'twofactor_test'} ? "sandbox-api.authy.com"
+				       : "api.authy.com";
+my $port = $miniserv{'twofactor_test'} ? 80 : 443;
+my $page = "/protected/xml/verify/$token/$id?api_key=".&urlize($apikey).
+	   "&force=true";
+my $ssl = $miniserv{'twofactor_test'} ? 0 : 1;
+my ($out, $err);
+&http_download($host, $port, $page, \$out, \$err, undef, $ssl, undef, undef,
+	       60, 0, 1);
+if ($err && $err =~ /401/) {
+	# Token rejected
+	return $text{'twofactor_eauthyotp'};
+	}
+elsif ($err) {
+	# Some other error
+	return $err;
+	}
+elsif ($out && $out =~ /<success[^>]*>([^<]+)<\/success>/i) {
+	if (lc($1) eq "true") {
+		# Worked!
+		return undef;
+		}
+	elsif ($out =~ /<message[^>]*>([^<]+)<\/message>/i) {
+		# Failed, but with a message
+		return $1;
+		}
+	else {
+		# Failed, not sure why
+		return $out;
+		}
+	}
+else {
+	# Unknown output
+	return $out;
+	}
+}
+
+# validate_twofactor_apikey_totp()
+# Checks that the needed Perl module for TOPT is installed.
+sub validate_twofactor_apikey_totp
+{
+my ($miniserv, $in) = @_;
+eval "use Authen::OATH";
+if ($@) {
+	return &text('twofactor_etotpmodule', 'Authen::OATH',
+	    "../cpan/download.cgi?source=3&cpan=Authen::OATH&mode=2&".
+	    "return=/$module_name/&returndesc=".&urlize($text{'index_return'}))
+	}
+return undef;
+}
+
+# show_twofactor_form_totp(&user)
+# Show form allowing the user to choose a twofactor secret
+sub show_twofactor_form_totp
+{
+my ($user) = @_;
+my $secret = $user->{'twofactor_id'};
+$secret = undef if ($secret !~ /^[A-Z0-9=]{16}$/i);
+my $rv;
+$rv .= &ui_table_row($text{'twofactor_secret'},
+	&ui_opt_textbox("totp_secret", $secret, 20, $text{'twofactor_secret1'},
+			$text{'twofactor_secret0'}));
+return $rv;
+}
+
+# parse_twofactor_form_totp(&in, &user)
+# Generate or use a secret key for this user
+sub parse_twofactor_form_totp
+{
+my ($in, $user) = @_;
+if ($in->{'totp_secret_def'}) {
+	$user->{'twofactor_id'} = &encode_base32(&generate_base32_secret());
+	}
+else {
+	$in{'totp_secret'} =~ /^[A-Z0-9=]{16}$/i ||
+		return $text{'twofactor_esecret'};
+	$user->{'twofactor_id'} = $in{'totp_secret'};
+	}
+return { };
+}
+
+# generate_base32_secret([length])
+# Returns a base-32 encoded secret of by default 10 bytes
+sub generate_base32_secret
+{
+my ($length) = @_;
+$length ||= 10;
+&seed_random();
+my $secret = "";
+while(length($secret) < $length) {
+	$secret .= chr(rand()*256);
+	}
+return $secret;
+}
+
+# enroll_twofactor_totp(&in, &user)
+# Generate a secret for this user, based-32 encoded
+sub enroll_twofactor_totp
+{
+my ($in, $user) = @_;
+$user->{'twofactor_id'} ||= &encode_base32(&generate_base32_secret());
+return undef;
+}
+
+# message_twofactor_totp(&user)
+# Returns HTML to display after a user enrolls
+sub message_twofactor_totp
+{
+my ($user) = @_;
+my $url = "https://chart.googleapis.com/chart".
+	  "?chs=200x200&chld=M|0&cht=qr&chl=otpauth://totp/".
+	  $user->{'name'}."%3Fsecret%3D".$user->{'twofactor_id'};
+my $rv;
+$rv .= &text('twofactor_qrcode', "<tt>$user->{'twofactor_id'}</tt>")."<p>\n";
+$rv .= "<img src='$url' border=0><p>\n";
+return $rv;
+}
+
+# validate_twofactor_totp(id, token, apikey)
+# Checks the validity of some token with google authenticator
+sub validate_twofactor_totp
+{
+my ($id, $token, $apikey) = @_;
+$id =~ /^[A-Z0-9=]+$/i || return $text{'twofactor_etotpid'};
+$token =~ /^\d+$/ || return $text{'twofactor_etotptoken'};
+eval "use Authen::OATH";
+if ($@) {
+	return &text('twofactor_etotpmodule2', 'Authen::OATH');
+	}
+my $secret = &decode_base32($id);
+my $oauth = Authen::OATH->new();
+my $now = time();
+foreach my $t ($now - 30, $now, $now + 30) {
+	my $expected = $oauth->totp($secret, $t);
+	return undef if ($expected eq $token);
+	}
+return $text{'twofactor_etotpmatch'};
+}
+
+# canonicalize_ip6(address)
+# Converts an address to its full long form. Ie. 2001:db8:0:f101::20 to
+# 2001:0db8:0000:f101:0000:0000:0000:0020
+sub canonicalize_ip6
+{
+my ($addr) = @_;
+return $addr if (!&check_ip6address($addr));
+my @w = split(/:/, $addr);
+my $idx = &indexof("", @w);
+if ($idx >= 0) {
+	# Expand ::
+	my $mis = 8 - scalar(@w);
+	my @nw = @w[0..$idx];
+	for(my $i=0; $i<$mis; $i++) {
+		push(@nw, 0);
+		}
+	push(@nw, @w[$idx+1 .. $#w]);
+	@w = @nw;
+	}
+foreach my $w (@w) {
+	while(length($w) < 4) {
+		$w = "0".$w;
+		}
+	}
+return lc(join(":", @w));
 }
 
 1;

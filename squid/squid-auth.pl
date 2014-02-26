@@ -2,20 +2,24 @@
 # squid-auth.pl
 # A basic squid authentication program
 
-open(AUTH, $ARGV[0]);
-while(<AUTH>) {
+use strict;
+use warnings;
+
+my %auth;
+open(my $fh, $ARGV[0]);
+while(<$fh>) {
 	s/\r|\n//g;
 	s/#.*$//;
 	if (/^(\S+):(\S+)/) {
 		$auth{$1} = $2;
 		}
 	}
-close(AUTH);
+close($fh);
 
 $| = 1;
 while(<STDIN>) {
 	s/\r|\n//g;
-	local ($u, $p) = split(/\s+/, $_);
+	my ($u, $p) = split(/\s+/, $_);
 	print $auth{$u} &&
 	      $auth{$u} eq crypt($p, $auth{$u}) ? "OK\n" : "ERR\n";
 	}

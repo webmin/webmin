@@ -57,7 +57,7 @@ my @opts = ( [ 1, $text{'index_mall'}."<br>" ],
 	     [ 0, $text{'index_module'}." ".
 	       &ui_select("module", $in{'module'}, \@mods) ] );
 print &ui_table_row($text{'index_smods'},
-		    &ui_radio("mall", 1, \@opts));
+		    &ui_radio("mall", 1, \@opts), undef, [ "valign=top","valign=top" ] );
 
 # Dates to search
 print &ui_table_row($text{'index_stimes'},
@@ -66,12 +66,12 @@ print &ui_table_row($text{'index_stimes'},
 			  [ 2, $text{'index_today'}."<br>" ],
 			  [ 3, $text{'index_yesterday'}."<br>" ],
 			  [ 4, $text{'index_week'}."<br>" ],
-			  [ 0, &text('index_time', &time_input('from'),
-						   &time_input('to')) ] ]));
+			  [ 0, "<span class='ui_data'>".&text('index_time', &time_input('from'),
+						   &time_input('to'))."</span>" ] ]), undef, [ "valign=top","valign=middle" ] );
 
 # Action description to match
 print &ui_table_row($text{'index_sdesc'},
-		    &ui_textbox("desc", undef, 40));
+		    &ui_textbox("desc", undef, 40), undef, [ "valign=middle","valign=middle" ]);
 
 # Search modified files and diff contents
 if ($gconfig{'logfiles'}) {
@@ -79,13 +79,13 @@ if ($gconfig{'logfiles'}) {
 		&ui_radio("fall", 1,
 			  [ [ 1, $text{'index_fall'}."<br>" ],
 			    [ 0, $text{'index_file'}." ".
-				 &ui_textbox("file", undef, 40) ] ]));
+				 &ui_textbox("file", undef, 40) ] ]), undef, [ "valign=top","valign=top" ]);
 
 	print &ui_table_row($text{'index_sdiff'},
 		&ui_radio("dall", 1,
 			  [ [ 1, $text{'index_dall'}."<br>" ],
 			    [ 0, $text{'index_diff'}." ".
-				 &ui_textbox("diff", undef, 40) ] ]));
+				 &ui_textbox("diff", undef, 40) ] ]), undef, [ "valign=top","valign=top" ]);
 	}
 
 # Remote host
@@ -94,12 +94,12 @@ if ($config{'host_search'}) {
 		&ui_radio("wall", 1,
 			  [ [ 1, $text{'index_wall'}."<br>" ],
 			    [ 0, $text{'index_whost'}." ".
-				 &ui_textbox("webmin", undef, 30) ] ]));
+				 &ui_textbox("webmin", undef, 30) ] ]), undef, [ "valign=top","valign=top" ]);
 	}
 
 # Show full descriptions?
 print &ui_table_row($text{'index_long'},
-	&ui_yesno_radio("long", 0));
+	&ui_yesno_radio("long", 0), undef, [ "valign=middle","valign=middle" ]);
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'index_search'} ] ]);

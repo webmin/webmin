@@ -1,6 +1,6 @@
 line1=Konfigurerbare innstillinger,11
-show_empty=Vis tjenester uten program,1,1-Ja,0-Nei
 sort_mode=Sorter tjenester og programmer etter,1,0-Plassering i fil,1-Navn,2-Tilordning
+display_max=Maks. antall tjenester som skal vises,0
 line2=System konfigurasjon,11
 inetd_conf_file=Inetd konfigurasjonsfil,0
 inetd_dir=Inetd konfigurasjonskatalog,3,Ingen

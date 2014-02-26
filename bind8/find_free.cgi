@@ -147,8 +147,7 @@ print &ui_form_end([ [ undef, $text{'findfree_search'} ] ]);
 sub frecs_table
 {
 print &ui_grid_table(
-	[ map { "<a href='edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}".
-		"&type=A&newvalue=$_->{'ip'}'>$_->{'ip'}</a>" } @_ ],
+	[ map { &ui_link("edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=A&newvalue=$_->{'ip'}", $_->{'ip'}) } @_ ],
 	4, 100, [ "width=25%", "width=25%", "width=25%", "width=25%" ]);
 }
 

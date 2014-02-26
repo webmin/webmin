@@ -8,3 +8,5 @@ desc_nl=LDAP Client
 desc_pt_BR=Cliente LDAP
 desc_de=LDAP Client
 desc_no=LDAP klient
+desc_ms_MY=Klien LDAP
+longdesc_ms_MY=Mengkonfigurasi sistem anda sebagai klien LDAP untuk pengguna dan grup.

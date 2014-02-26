@@ -1,6 +1,6 @@
 line1=Konfigurierbare Optionen,11
 lines=Anzahl der anzuzeigenden Zeilen,0,6
-refresh=Logdateiansicht wird nach X Sekunden aktualisiert?,3,Niemals
+refresh=Logdateiansicht wird nach X Sekunden aktualisiert,3,Niemals
 compressed=Bezieht komprimierte Logs in Suche ein?,1,1-Ja,0-Nein
 others=Zeige Logs von anderen Modulen?,1,1-Ja,0-Nein
 extras=Andere Logdateien zum Anzeigen<br>(Mit optionaler Beschreibung),9,50,4,\t

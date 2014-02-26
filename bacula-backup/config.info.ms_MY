@@ -1,0 +1,17 @@
+line0=Pilihan dikonfigurasikan,11
+wait=Mod menunggu backup lalai,1,1-Tunggu hingga selesai,0-Larikan di proses belakang
+apply=Menerapkan konfigurasi 'director' secara automatik?,1,1-Ya,0-Tidak
+groupmode=Dapatkan maklumat grup nod dari,1,webmin-Module pelayan Indeks Webmin,oc-Pengurus pangkalan data OCM,-Tidak ada tempat
+showdirs=Sentiasa memaparkan directors capaian jauh?,1,1-Ya,0-Tidak
+line1=Tetapan pangkalan data Bacula,11
+driver=Jenis Pangkalan data,1,Pg-PostgreSQL,mysql-MySQL,SQLite-SQLite
+user=Pengguna untuk log masuk ke pangkalan data sebagai,0
+pass=Kata laluan untuk log masuk,0
+host=Pelayan pangkalan data Bacula,3,Sistem ini
+db=Pangkalan data atau fail konfigurasi yang mengandungi maklumat Bacula,0
+line2=Tetapan Fail,11
+bacula_dir=Konfigurasi direktori Bacula,0
+bextract=Lokasi penuh pada arahan <tt>bextract</tt>,0
+bls=Lokasi penuh pada arahan <tt>bls</tt>,0
+btape=Lokasi penuh pada arahan <tt>btape</tt>,0
+init_start=Mulakan dan mematikan Bacula menggunakan,1,1-Init scripts,0-Arahan <tt>bacula</tt>

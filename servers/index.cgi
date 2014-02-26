@@ -4,10 +4,25 @@
 use strict;
 use warnings;
 require './servers-lib.pl';
-our (%text, %config, %access);
+our (%text, %config, %access, %in);
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
+&ReadParse();
 
+# Get servers and apply search
 my @servers = &list_servers_sorted(1);
+if ($in{'search'}) {
+	@servers = grep { $_->{'host'} =~ /\Q$in{'search'}\E/i ||
+			  $_->{'desc'} =~ /\Q$in{'search'}\E/i } @servers;
+	}
+
+# Show search form
+if (@servers > $config{'max_servers'} || $in{'search'}) {
+	print &ui_form_start("index.cgi");
+	print "<b>$text{'index_search'}</b> ",
+	      &ui_textbox("search", $in{'search'}, 40)," ",
+	      &ui_submit($text{'index_ok'}),"<p>\n";
+	print &ui_form_end();
+	}
 
 # Work out links
 my @linksrow;
@@ -18,8 +33,7 @@ if ($access{'edit'}) {
 				&select_invert_link("d"));
 		}
 	if ($access{'add'}) {
-		push(@linksrow, "<a href='edit_serv.cgi?new=1'>".
-				"$text{'index_add'}</a>");
+		push(@linksrow, &ui_link("edit_serv.cgi?new=1", $text{'index_add'}) );
 		}
 	}
 
@@ -34,8 +48,7 @@ if (@servers && $config{'display_mode'}) {
 		$text{'index_os'} ], 100);
 	foreach my $s (@servers) {
 		my @cols;
-		my $table =
-			"<table cellpadding=0 cellspacing=0 width=100%><tr>\n";
+		my $table = "<table cellpadding=0 cellspacing=0 width=100%><tr>\n";
 		if (!$access{'links'} || !$s->{'port'}) {
 			$table .= "<td>\n";
 			$table .= ($s->{'realhost'} || $s->{'host'});
@@ -43,23 +56,28 @@ if (@servers && $config{'display_mode'}) {
 			$table .= "</td>\n";
 			}
 		else {
+			my $link = "";
 			if ($s->{'user'} || $s->{'autouser'}) {
-				$table .= "<td><a href='link.cgi/$s->{'id'}/' target=_top>\n";
+				$link = "link.cgi/".$s->{'id'}."/";
 				}
 			else {
-				$table .= "<td><a href=".&make_url($s)." target=_top>\n";
+				$link = &make_url($s);
 				}
-			$table .= ($s->{'realhost'} || $s->{'host'});
-			$table .= ":$s->{'port'}</a></td>\n";
+		    	$table .= "<td>\n";
+			$table .= &ui_link($link, ($s->{'realhost'} || $s->{'host'} ).
+					   ":".$s->{'port'}, undef, "target=_top");
+			$table .= "</td>\n";
 			}
 		$table .= "<td align=right>";
 		if ($s->{'autouser'} && &logged_in($s)) {
-			$table .= "<a href='logout.cgi?id=$s->{'id'}'>($text{'index_logout'})</a>\n";
+			$table .= &ui_link("logout.cgi?id=".$s->{'id'},
+					   "(".$text{'index_logout'}.")");
 			}
 		if ($access{'edit'}) {
-			$table .= "<a href='edit_serv.cgi?id=$s->{'id'}'>($text{'index_edit'})</a>\n";
+			$table .= &ui_link("edit_serv.cgi?id=".$s->{'id'},
+					   "(".$text{'index_edit'}.")");
 			}
-		$table .= "</td> </tr></table>\n";
+		$table .= "</td></tr></table>\n";
 		push(@cols, $table);
 		push(@cols, $s->{'desc'});
 		push(@cols, $s->{'group'} || $text{'index_none'});
@@ -82,7 +100,7 @@ elsif (@servers) {
 	my (@afters, @befores);
 	if ($access{'edit'}) {
 		my $sep = length($text{'index_edit'}) > 10 ? "<br>" : " ";
-		@afters = map { $sep."<a href='edit_serv.cgi?id=$_->{'id'}'>(".$text{'index_edit'}.")</a>" } @servers;
+		@afters = map { $sep.&ui_link("edit_serv.cgi?id=".$_->{'id'}, "(".$text{'index_edit'}.")" ) } @servers;
 		@befores = map { &ui_checkbox("d", $_->{'id'}) } @servers;
 		}
 	my @titles = map { &make_iconname($_) } @servers;
@@ -93,7 +111,12 @@ elsif (@servers) {
 	&icons_table(\@links, \@titles, \@icons, undef, "target=_top",
 		     undef, undef, \@befores, \@afters);
 	}
+elsif ($in{'search'}) {
+	# No servers match
+	print "<b>$text{'index_nosearch'}</b> <p>\n";
+	}
 else {
+	# No servers exist
 	print "<b>$text{'index_noservers'}</b> <p>\n";
 	}
 if ($access{'edit'}) {
@@ -115,17 +138,19 @@ if ($access{'find'} || $access{'auto'}) {
 		my $port = $config{'listen'} || $miniserv{'listen'} || 10000;
 		print &ui_buttons_row("find.cgi", $text{'index_broad'},
 						  $text{'index_findmsg'});
-		print &ui_buttons_row("find.cgi", $text{'index_scan'},
+		my $t = &ui_buttons_row("find.cgi", $text{'index_scan'},
 		      &text('index_scanmsg', &ui_textbox("scan", $myscan, 15)).
 		      "<br><table>\n".
-		      "<tr> <td><b>$text{'index_defuser'}</b></td>\n".
-		      "<td>".&ui_textbox("defuser", undef, 20)."</td> </tr>".
+		      "<tr><td valign=middle><b>$text{'index_defuser'}</b></td>\n".
+		      "<td valign=middle>".&ui_textbox("defuser", undef, 20)."</td> </tr>".
 		      "<tr> <td><b>$text{'index_defpass'}</b></td>\n".
-		      "<td>".&ui_password("defpass", undef, 20)."</td> </tr>".
+		      "<td valign=middle>".&ui_password("defpass", undef, 20)."</td> </tr>".
 		      "<tr> <td><b>$text{'index_defport'}</b></td>\n".
-		      "<td>".&ui_textbox("port", $port, 20)."</td> </tr>".
+		      "<td valign=middle>".&ui_textbox("port", $port, 20)."</td> </tr>".
 		      "</table>\n"
 		      );
+        $t =~ s/valign=top class=ui_buttons_value/valign=middle class=ui_buttons_value/g;
+        print $t;
 		}
 	if ($access{'auto'}) {
 		# Button for auto-discovery form

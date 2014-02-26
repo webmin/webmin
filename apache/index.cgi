@@ -306,15 +306,15 @@ if ($config{'max_servers'} && @vname > $config{'max_servers'}) {
 	print "<b>$text{'index_toomany'}</b><p>\n";
 	print "<form action=search_virt.cgi>\n";
 	print "<b>$text{'index_find'}</b> <select name=field>\n";
-	print "<option value=name checked> $text{'index_name'}\n";
-	print "<option value=port> $text{'index_port'}\n";
-	print "<option value=addr> $text{'index_addr'}\n";
-	print "<option value=root> $text{'index_root'}\n";
+	print "<option value=name checked>$text{'index_name'}</option>\n";
+	print "<option value=port>$text{'index_port'}</option>\n";
+	print "<option value=addr>$text{'index_addr'}</option>\n";
+	print "<option value=root>$text{'index_root'}</option>\n";
 	print "</select> <select name=match>\n";
-	print "<option value=0 checked>$text{'index_equals'}\n";
-	print "<option value=1>$text{'index_matches'}\n";
-	print "<option value=2>$text{'index_nequals'}\n";
-	print "<option value=3>$text{'index_nmatches'}\n";
+	print "<option value=0 checked>$text{'index_equals'}</option>\n";
+	print "<option value=1>$text{'index_matches'}</option>\n";
+	print "<option value=2>$text{'index_nequals'}</option>\n";
+	print "<option value=3>$text{'index_nmatches'}</option>\n";
 	print "</select> <input name=what size=15>&nbsp;&nbsp;\n";
 	print "<input type=submit value=\"$text{'find'}\"></form><p>\n";
 	$formno++;
@@ -335,13 +335,13 @@ elsif ($config{'show_list'} && scalar(@vname)) {
 		$text{'index_url'} ], 100);
 	for($i=0; $i<@vname; $i++) {
 		local @cols;
-		push(@cols, "<a href=\"$vlink[$i]\">$vname[$i]</a>");
+		push(@cols, &ui_link($vlink[$i], $vname[$i]) );
 		push(@cols, &html_escape($vaddr[$i]));
 		push(@cols, &html_escape($vport[$i]));
 		push(@cols, $vserv[$i] || $text{'index_auto'});
 		push(@cols, &html_escape($vproxy[$i]) ||
 			    &html_escape($vroot[$i]));
-		push(@cols, "<a href=$vurl[$i]>$text{'index_view'}</a>");
+		push(@cols, &ui_link($vurl[$i], $text{'index_view'}) );
 		if ($showdel && $vidx[$i]) {
 			print &ui_checked_columns_row(\@cols, undef,
 						      "d", $vidx[$i]);

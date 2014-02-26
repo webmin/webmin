@@ -878,11 +878,12 @@ elsif ($sm) {
 	# Connect to SMTP server
 	&open_socket($sm, $port, MAIL);
 	&smtp_command(MAIL);
+	my $helo = $config{'helo_name'} || &get_system_hostname();
 	if ($esmtp) {
-		&smtp_command(MAIL, "ehlo ".&get_system_hostname()."\r\n");
+		&smtp_command(MAIL, "ehlo $helo\r\n");
 		}
 	else {
-		&smtp_command(MAIL, "helo ".&get_system_hostname()."\r\n");
+		&smtp_command(MAIL, "helo $helo\r\n");
 		}
 
 	# Get username and password from parameters, or from module config
@@ -1659,6 +1660,9 @@ else {
 }
 
 # mail_file_style(user, basedir, style)
+# Given a directory and username, returns the path to that user's mail file
+# under the directory based on the style (which may force use of parts of
+# the username).
 sub mail_file_style
 {
 if ($_[2] == 0) {

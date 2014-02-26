@@ -13,3 +13,5 @@ desc_cz.UTF-8=Cluster - Webmin servery
 desc_no=Klynge - Webmin tjenere
 desc_pl=Klaster - Serwery Webmin
 desc_hu=Cluster Webmin szerverek
+longdesc_ms_MY=Memasang dan menguruskan modul, tema, pengguna, grup dan tetapan kawalan capaian di seluruh pelayan Webmin.
+desc_ms_MY=Kluster Pelayan Webmin

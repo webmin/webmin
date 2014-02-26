@@ -15,7 +15,7 @@ print "<form action=allmanual_form.cgi>\n";
 print "<input type=submit value='$text{'manual_file'}'>\n";
 print "<select name=file>\n";
 foreach $f (@files) {
-	printf "<option %s>%s\n",
+	printf "<option %s>%s</option>\n",
 		$f eq $in{'file'} ? 'selected' : '', $f;
 	$found++ if ($f eq $in{'file'});
 	}

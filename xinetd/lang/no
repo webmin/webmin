@@ -35,9 +35,11 @@ index_disable=Deaktiver valgte
 index_econf=Xinetds konfigurasjonsfil $1 finnes ikke. Kanskje den ikke er installert eller s&#229; er <a href='$2'>modulkonfigurasjonen</a> feil.
 index_enable=Aktiver valgte
 index_enabled=Aktivert?
+index_estart=Kommandoen for &#229; starte Xinetd, $1, finnes ikke. Kanskje den ikke er installert, eller s&#229; er <a href='$2'>modulkonfigurasjonen</a> feil.
 index_inet=Internet
 index_internal=Intern for Xinetd
 index_name=Tjenestenavn
+index_none=Ingen nettverkstjenester er definert enda.
 index_noport=Ukjent
 index_port=Port/nummer
 index_proto=Protokoll

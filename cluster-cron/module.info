@@ -13,3 +13,5 @@ desc_cz.UTF-8=Cluster - Cron Ãºkoly
 desc_no=Klynge - Cron jobber
 desc_pl=Klaster - Planowanie zadañ (Cron)
 desc_hu=Cluster idõzített futtatások
+longdesc_ms_MY=Mencipta tugas Cron yang berjalan pada pelayan berganda secara serentak.
+desc_ms_MY=Kluster Tugas Cron

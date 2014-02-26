@@ -162,7 +162,6 @@ users_eversion=User and group access control is only supported in Usermin versio
 defacl_title=Access Control Options
 defacl_desc=This page allows you to configure various access control option that apply to Usermin modules and users. These options are similar to those in the Global ACL for each user in the Webmin Users module.
 defacl_header=Access control options for Usermin users
-defacl_eversion=Editing the Usermin access control options is only supported in Usermin versions 0.76 and above.
 defacl_err=Failed to save access control options
 
 install_err1=Failed to install module from $1

@@ -1,5 +1,5 @@
-start_cmd=/etc/init.d/mysql start >/dev/null 2>&1 &
-stop_cmd=/etc/init.d/mysql stop >/dev/null 2>&1
+start_cmd=service mysql start
+stop_cmd=service mysql stop
 mysql=/usr/bin/mysql
 mysqldump=/usr/bin/mysqldump
 mysqlimport=/usr/bin/mysqlimport

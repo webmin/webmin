@@ -12,6 +12,7 @@ test_apachectl=Test konfigurasjon med kommando,1,1-<tt>apachectl configtest</tt>
 show_names=Vis Apache direktiv-navn?,1,1-Ja,0-Nei
 apache_docbase=Hovedkatalog for Apache dokumentasjon,3,Apache nettsted
 auto_mods=Oppdag alltid Apache moduler automatisk?,1,1-Ja,0-Nei
+allow_virtualmin=Tillat redigering av domener administrert av Virtualmin,1,1-Ja,0-Nei
 line2=Systemkonfigurasjon,11
 httpd_dir=Apache tjener rot-katalog,0
 httpd_path=Sti til httpd programfil,0

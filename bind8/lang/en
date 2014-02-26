@@ -60,7 +60,9 @@ index_massupdate=Update Records in Selected
 index_masscreate=Add Record to Selected
 index_massrdelete=Delete Records in Selected
 index_bind=BIND
-
+index_ewrongchroot=Warning : The chroot directory $2 that Webmin thinks BIND is using may be incorrect. The zone files for $1 domains could not be found.
+index_emissingchroot=Warning : Webmin thinks that BIND is not using a chroot directory, but that may be incorrect. The zone files for $1 domains could not be found.
+index_checkconfig=Make sure that the chroot directory is set correctly on the <a href='$1'>module configuration</a> page.
 master_title=Edit Master Zone
 master_ecannot=You are not allowed to edit this zone
 master_egone=Zone $1 does not exist in any view
@@ -298,6 +300,7 @@ text_undo=Undo
 text_ecannot=You are not allowed to edit record files
 text_none=However the file is currently empty, probably because the zone has not yet been transferred from the master server.
 text_soa=Increase serial number automatically
+text_rawformat=This zone is in raw binary format, and so cannot be displayed as text.
 
 restart_err=Failed to apply changes
 restart_ecannot=You are not allowed to restart BIND
@@ -1146,7 +1149,7 @@ zonekey_webmin=Webmin will re-sign the zone automatically when any changes are m
 zonekey_public=Public key record :
 zonekey_private=Private key details :
 zonekey_expandksk=Show public and private key-signing-key details ..
-zonekey_expandzone=Show public and private zone-key details .
+zonekey_expandzone=Show public and private zone-key details ..
 zonekey_noprivate=However, Webmin could not find the private key associated with the zone, and so will not be able to re-sign it.
 zonekey_disable=Remove Key
 zonekey_disabledesc=Removes the DNSSEC key from this zone, and all signing records. Once this is done, you will be able to generate a new key.
@@ -1194,5 +1197,6 @@ xfer_doing=Testing transfer of slave zone from $1 ..
 xfer_failed=.. from $1 : Failed : $2
 xfer_done=.. from $1 : Completed OK
 xfer_count=Test transfer successfully fetched $1 records from at least one nameserver. Actual transfers by BIND should also succeed.
+xfer_none=Test transfer appeared to succeed, but didn't actually fetch any records!
 
 __norefs=1

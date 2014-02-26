@@ -6,83 +6,80 @@ require './itsecur-lib.pl';
 &check_zip();
 &header($text{'backup_title'}, "",
 	undef, undef, undef, undef, &apply_button());
-print "<hr>\n";
+print &ui_hr();
 
-print "<form action=backup.cgi/firewall.zip method=post>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'backup_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_form_start("backup.cgi/firewall.zip", "post");
+print &ui_table_start($text{'backup_header'}, undef, 2);
 
 # Show destination
-($mode, @dest) = &parse_backup_dest($config{'backup_dest'});
-print "<tr> <td valign=top><b>$text{'backup_dest'}</b></td>\n";
-print "<td><table cellpadding=0 cellspacing=0>\n";
-printf "<tr> <td><input type=radio name=dest_mode value=0 %s></td> <td>%s</td> </tr>\n",
-	$mode == 0 ? "checked" : "", $text{'backup_dest0'};
+my ($mode, @dest) = &parse_backup_dest($config{'backup_dest'});
 
-printf "<tr> <td><input type=radio name=dest_mode value=1 %s></td> <td>%s</td>\n",
-	$mode == 1 ? "checked" : "", $text{'backup_dest1'};
-printf "<td colspan=3><input name=dest size=40 value='%s'> %s</td> </tr>\n",
-	$mode == 1 ? $dest[0] : "", &file_chooser_button("dest");
+my $tx = "";
+$tx = "<table cellpadding=0 cellspacing=0 style='padding:0;margin:0;'>";
+$tx .= "<tr><td>".&ui_oneradio("dest_mode", 0, undef, ($mode == 0 ? 1 : 0) )."</td>";
+$tx .= "<td colspan='4'>".$text{'backup_dest0'}."</td></tr>";
 
-printf "<tr> <td><input type=radio name=dest_mode value=3 %s></td> <td>%s</td>\n",
-	$mode == 3 ? "checked" : "", $text{'backup_dest3'};
-printf "<td colspan=3><input name=email size=40 value='%s'></td> </tr>\n",
-	$mode == 3 ? $dest[0] : "";
+$tx .= "<tr><td>".&ui_oneradio("dest_mode", 1, undef, ($mode == 1 ? 1 : 0) )."</td>";
+$tx .= "<td>".$text{'backup_dest1'}."&nbsp;</td>";
+$tx .= "<td colspan=3>".&ui_filebox("dest",($mode == 1 ? $dest[0] : ""),40)."</td></tr>";
 
-printf "<tr> <td><input type=radio name=dest_mode value=2 %s></td>\n",
-	$mode == 2 ? "checked" : "";
-printf "<td>%s</td> <td><input name=ftphost size=20 value='%s'></td>\n",
-	$text{'backup_dest2'}, $mode == 2 ? $dest[2] : "";
-printf "<td>%s</td> <td><input name=ftpfile size=20 value='%s'></td> </tr>\n",
-	$text{'backup_ftpfile'}, $mode == 2 ? $dest[3] : "";
-printf "<tr> <td></td> <td>%s</td> <td><input name=ftpuser size=15 value='%s'></td>\n",
-	$text{'backup_ftpuser'}, $mode == 2 ? $dest[0] : "";
-printf "<td>%s</td> <td><input name=ftppass type=password size=15 value='%s'></td> </tr>\n",
-	$text{'backup_ftppass'}, $mode == 2 ? $dest[1] : "";
-print "</table></td> </tr>\n";
+$tx .= "<tr><td>".&ui_oneradio("dest_mode", 3, undef, ($mode == 3 ? 1 : 0) )."</td>";
+$tx .= "<td>".$text{'backup_dest3'}."&nbsp;</td>";
+$tx .= "<td colspan=3>".&ui_textbox("email",($mode == 3 ? $dest[0] : ""),40)."</td></tr>"; 
+
+$tx .= "<tr><td>".&ui_oneradio("dest_mode", 2, undef, ($mode == 2 ? 1 : 0) )."</td>";
+$tx .= "<td>".$text{'backup_dest2'}."&nbsp;</td>";
+$tx .= "<td>".&ui_textbox("ftphost",($mode == 2 ? $dest[2] : ""),20)."</td>";
+$tx .= "<td>&nbsp;".$text{'backup_ftpfile'}."</td>";
+$tx .= "<td>".&ui_textbox("ftpfile",($mode == 2 ? $dest[3] : ""),20)."</td></tr>";
+
+$tx .= "<tr><td>&nbsp;</td>";
+$tx .= "<td>".$text{'backup_ftpuser'}."&nbsp;</td>";
+$tx .= "<td>".&ui_textbox("ftpuser",($mode == 2 ? $dest[0] : ""),20)."</td>";
+$tx .= "<td>&nbsp;".$text{'backup_ftppass'}."&nbsp;</td>";
+$tx .= "<td>".&ui_password("ftppass",($mode == 2 ? $dest[1] : ""),20)."</td></tr>";
+$tx .= "</table>";
+
+print &ui_table_row($text{'backup_dest'}, $tx);
 
 # Show password
-print "<tr> <td valign=top><b>$text{'backup_pass'}</b></td> <td>\n";
-printf "<input type=radio name=pass_def value=1 %s> %s\n",
-	$config{'backup_pass'} ? "" : "checked", $text{'backup_nopass'};
-printf "<input type=radio name=pass_def value=0 %s>\n",
-	$config{'backup_pass'} ? "checked" : "";
-printf "<input type=password name=pass value='%s'></td> </tr>\n",
-	$config{'backup_pass'};
+print &ui_table_row($text{'backup_pass'},
+                    &ui_radio("pass_def",($config{'backup_pass'} ? 0 : 1),[
+                                [1,$text{'backup_nopass'}],[0, &ui_password("pass", $config{'backup_pass'},20) ]
+                                ])
+                ,undef, ["valign=middle","valign=middle"]);
 
 # Show what to backup
-%what = map { $_, 1 } split(/\s+/, $config{'backup_what'});
-print "<tr> <td valign=top><b>$text{'backup_what'}</b></td> <td>\n";
-foreach $w (@backup_opts) {
-	printf "<input type=checkbox name=what value=%s %s> %s<br>\n",
-		$w, $what{$w} ? "checked" : "", $text{$w."_title"};
+my %what = map { $_, 1 } split(/\s+/, $config{'backup_what'});
+$tx = "";
+foreach my $w (@backup_opts) {
+    $tx .= &ui_checkbox("what", $w, $text{$w."_title"}, ($what{$w} ? 1 : 0) )."<br>";
 	}
 if (defined(&select_all_link)) {
-	print &select_all_link("what", 0),"\n";
-	print &select_invert_link("what", 0),"\n";
+    $tx .= &ui_links_row([&select_all_link("what", 0), &select_invert_link("what", 0)]);
 	}
-print "</td> </tr>\n";
+print &ui_table_row($text{'backup_what'}, $tx, ["valign=top","valign=top"]);
 
 # Show schedule
-$job = &find_backup_job();
-print "<tr> <td valign=top><b>$text{'backup_sched'}</b></td> <td>\n";
-printf "<input type=radio name=sched_def value=1 %s> %s\n",
-	$job ? "" : "checked", $text{'backup_nosched'};
-printf "<input type=radio name=sched_def value=0 %s> %s\n",
-	$job ? "checked" : "", $text{'backup_interval'};
-print "<select name=sched>\n";
-foreach $s ("hourly", "daily", "weekly", "monthly", "yearly") {
-	printf "<option value=%s %s>%s\n",
-		$s, $job && $job->{'special'} eq $s ? "selected" : "",
-		ucfirst($s);
+my $job = &find_backup_job();
+my @sel;
+foreach my $s ("hourly", "daily", "weekly", "monthly", "yearly") {
+    push(@sel, [$s, ucfirst($s), ($job && $job->{'special'} eq $s ? "selected" : "") ] );
 	}
-print "</select></td> </tr>\n";
+print &ui_table_row($text{'backup_sched'},
+                &ui_radio("sched_def",($job ? 0 : 1),[
+                    [1,$text{'backup_nosched'}],[0,$text{'backup_interval'}]
+                    ]).
+                &ui_select("sched", undef, \@sel, 1)
+        ,undef, ["valign=middle","valign=middle"]);
 
-print "</table></td></tr></table>\n";
-print "<input type=submit value='$text{'backup_ok'}'>\n";
-print "<input type=submit name=save value='$text{'backup_save'}'></form>\n";
+print &ui_table_end();
+print "<p>";
+print &ui_submit($text{'backup_ok'});
+print &ui_submit($text{'backup_save'}, "save");
+print &ui_form_end(undef,undef,1);
 
-print "<hr>\n";
+print &ui_hr();
+
 &footer("", $text{'index_return'});
 

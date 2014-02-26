@@ -10,3 +10,5 @@ desc_nl=PPTP VPN Client
 desc_pt_BR=Cliente VPN PPTP
 desc_cz.UTF-8=PPTP VPN klient
 desc_no=PPTP VPN klient
+desc_ms_MY=Klien PPTP VPN
+longdesc_ms_MY=Mengkonfigurasi dan mewujudkan sambungan ke pelayan VPN menggunakan protokol PPTP.

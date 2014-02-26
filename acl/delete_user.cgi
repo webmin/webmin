@@ -2,7 +2,10 @@
 # delete_user.cgi
 # Delete a webmin user
 
+use strict;
+use warnings;
 require './acl-lib.pl';
+our (%in, %text, %config, %access, $base_remote_user);
 &ReadParse();
 &error_setup($text{'delete_err'});
 $access{'delete'} || &error($text{'delete_ecannot'});

@@ -12,7 +12,7 @@ if ($in{'ignore'}) {
 else {
 	# Fix up
 	&unlink_logged($config{'pam_ldap'});
-	&symlink_logged($config{'auth_ldap'}, $config{'pam_ldap'});
+	&symlink_logged(&get_ldap_config_file(), $config{'pam_ldap'});
 	&webmin_log("fixpam");
 	}
 &redirect("");

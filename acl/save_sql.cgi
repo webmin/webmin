@@ -1,14 +1,19 @@
 #!/usr/local/bin/perl
 # Save user and group database
 
+use strict;
+use warnings;
 require './acl-lib.pl';
+our (%in, %text, %config, %access);
 $access{'pass'} || &error($text{'sql_ecannot'});
-&get_miniserv_config(\%miniserv);
 &ReadParse();
 &error_setup($text{'sql_err'});
-$p = $in{'proto'};
+my %miniserv;
+&get_miniserv_config(\%miniserv);
 
 # Parse inputs
+my $p = $in{'proto'};
+my ($host, $user, $pass, $prefix, $args);
 if ($p eq 'mysql' || $p eq 'postgresql' || $p eq 'ldap') {
 	&to_ipaddress($in{$p."_host"}) ||
 	  $in{$p."_host"} =~ /^(\S+):(\d+)$/ && &to_ipaddress("$1") ||
@@ -47,6 +52,7 @@ elsif ($p eq 'ldap') {
 	}
 
 # Create and test connection string
+my ($str, $err);
 if ($p) {
 	$str = &join_userdb_string($p, $user, $pass, $host,
 				   $prefix, $args);
@@ -70,7 +76,7 @@ if ($err && ($p eq "mysql" || $p eq "postgresql")) {
 	print &ui_form_end([ [ undef, $text{'sql_make'} ] ]);
 
 	print &ui_table_start(undef, undef, 2);
-	foreach $sql (&userdb_table_sql($str)) {
+	foreach my $sql (&userdb_table_sql($str)) {
 		print &ui_table_row(undef,
 			"<pre>".&html_escape($sql)."</pre>", 2);
 		}

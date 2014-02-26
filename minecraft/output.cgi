@@ -5,7 +5,7 @@ use strict;
 use warnings;
 require './minecraft-lib.pl';
 our (%config);
-my $logfile = $config{'minecraft_dir'}."/server.log";
+my $logfile = &get_minecraft_log_file();
 
 $| = 1;
 &popup_header();

@@ -86,7 +86,6 @@ dav_users0=Users and groups listed below ..
 dav_users1=All users
 defacl_desc=This page allows you to configure various access control option that apply to Usermin modules and users. These options are similar to those in the Global ACL for each user in the Webmin Users module.
 defacl_err=Failed to save access control options
-defacl_eversion=Editing the Usermin access control options is only supported in Usermin versions 0.76 and above.
 defacl_header=Access control options for Usermin users
 defacl_title=Access Control Options
 delete_desc1=$1 (Clone of $2)

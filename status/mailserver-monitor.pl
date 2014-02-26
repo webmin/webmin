@@ -84,7 +84,7 @@ print "<td><b>$text{'mailserver_timeout'}</b></td>\n";
 print "<td><input name=timeout size=5 value='$_[0]->{'timeout'}'>\n";
 print "<select name=units>\n";
 for($i=0; defined($text{"mailserver_units_$i"}); $i++) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$i, $_[0]->{'units'} == $i ? "selected" : "",
 		$text{"mailserver_units_$i"};
 	}

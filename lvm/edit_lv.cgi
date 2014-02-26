@@ -32,11 +32,12 @@ print &ui_hidden("lv", $in{'lv'});
 print &ui_hidden("snap", $in{'snap'});
 print &ui_table_start($text{'lv_header'}, "width=100%", 4);
 
+$show_size = $lv->{'cow_size'} || $lv->{'size'};
 if (!&can_resize_lv_stat(@stat)) {
 	# Current status
 	print &ui_table_row($text{'lv_name'}, $lv->{'name'});
 
-	print &ui_table_row($text{'lv_size'}, &nice_size($lv->{'size'}*1024));
+	print &ui_table_row($text{'lv_size'}, &nice_size($show_size * 1024));
 	}
 else {
 	# Details for new LV
@@ -57,7 +58,7 @@ else {
 		print &ui_table_row($text{'lv_size'},
 			&ui_radio_table("size_mode", 0,
 			  [ [ 0, $text{'lv_size0'},
-			      &ui_bytesbox("size", $lv->{'size'}*1024, 8) ],
+			      &ui_bytesbox("size", $show_size * 1024, 8) ],
 			    [ 1, $text{'lv_size1'},
 			      &ui_textbox("vgsize", undef, 4)."%" ],
 			    [ 2, $text{'lv_size2'},
@@ -72,7 +73,7 @@ else {
 		# Check if size is exactly some number of TB, GB or MB, less
 		# than 10240
 		$div = 1024*1024*1024;
-		$size = $lv->{'size'}*1024;
+		$size = $show_size*1024;
 		$nice = 0;
 		while($div >= 1024) {
 			$frac = $size*1.0 / $div;
@@ -85,17 +86,21 @@ else {
 		if ($nice) {
 			# Show nicely
 			print &ui_table_row($text{'lv_size'},
-				&ui_bytesbox("size", $size, 8));
+				&ui_radio_table("size_mode", 0,
+				    [ [ 0, $text{'lv_sizesimple'},
+					&ui_bytesbox("size", $size, 8) ],
+				      [ 2, $text{'lv_sizeallfree'} ] ]));
 			}
 		else {
 			# Show in exactly kB
 			print &ui_table_row($text{'lv_size'},
 				&ui_radio_table("size_mode", 4,
 				    [ [ 4, $text{'lv_sizeabs'},
-					&ui_textbox("sizekb", $lv->{'size'}, 8).
+					&ui_textbox("sizekb", $show_size, 8).
 					" kB" ],
 				      [ 0, $text{'lv_sizesimple'},
-					&ui_bytesbox("size", $size, 8) ] ]));
+					&ui_bytesbox("size", $size, 8) ],
+				      [ 2, $text{'lv_sizeallfree'} ] ]));
 			}
 		}
 	}
@@ -239,9 +244,17 @@ elsif ($stat[2]) {
 	print &ui_form_end([ [ undef, $text{'save'} ] ]);
 	}
 elsif ($in{'lv'}) {
-	# Can be resized or deleted
-	print &ui_form_end([ [ undef, $text{'save'} ],
-			     [ 'delete', $text{'delete'} ] ]);
+	if ($lv->{'is_snap'} && &supports_snapshot_rollback()) {
+		# Can be resized, deleted or rolled back
+			print &ui_form_end([ [ undef, $text{'save'} ],
+					   [ 'delete', $text{'delete'} ],
+					   [ 'rollback', $text{'lv_snaprollback'} ] ]);
+		}
+	else {
+		# Can be resized or deleted
+		print &ui_form_end([ [ undef, $text{'save'} ],
+				   [ 'delete', $text{'delete'} ] ]);
+		}
 	}
 else {
 	# Can be created

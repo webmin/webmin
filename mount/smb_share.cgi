@@ -44,8 +44,7 @@ if (@names) {
 				  $text{'smb_comment'} ]);
 	for($i=0; $i<@names; $i++) {
 		print &ui_columns_row([
-			"<a href=\"\" onClick='choose(\"$names[$i]\"); ".
-			"return false'>$names[$i]</a>",
+            &ui_link("#", $names[$i], undef, "onClick='choose(\"$names[$i]\");return false;'" ),
 			&html_escape($comms[$i]),
 			]);
 		}

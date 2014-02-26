@@ -130,6 +130,7 @@ edit_restore=Restore ..
 edit_to=$1 to $2
 edit_tolevel=$1 to $2 (level $3)
 edit_special=Backup schedule
+edit_when=When to backup
 
 save_err=Failed to save backup
 save_edir=Missing or invalid backup directory

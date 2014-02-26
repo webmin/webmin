@@ -170,6 +170,7 @@ system("/usr/bin/find /tmp/makemodulerpm -name .xvpics | xargs rm -rf");
 system("/usr/bin/find /tmp/makemodulerpm -name '*.bak' | xargs rm -rf");
 system("/usr/bin/find /tmp/makemodulerpm -name '*~' | xargs rm -rf");
 system("/usr/bin/find /tmp/makemodulerpm -name '*.rej' | xargs rm -rf");
+system("/usr/bin/find /tmp/makemodulerpm -name '.*.swp' | xargs rm -rf");
 system("/usr/bin/find /tmp/makemodulerpm -name core | xargs rm -rf");
 system("/bin/chown -R root:bin /tmp/makemodulerpm/$mod");
 

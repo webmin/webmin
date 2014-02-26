@@ -23,6 +23,7 @@ download_err=Fehler beim Installieren des Moduls
 download_etar=Fehler beim Entpacken des TAR-Archivs : $1
 download_eupload=Der von Ihnen verwendete Browser unterst&#252;tzt keine Datei-Uploads
 download_eurl=Unverst&#228;ndliche URL '$1'
+download_fallback=Einige Module konnten nicht von den Packages installiert werden, versuche die Installation stattdessen von der Quelle ..
 download_header=Perl-Modul Installationsoptionen
 download_m=Nur kompilieren
 download_mi=Kompilieren und installieren

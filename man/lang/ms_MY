@@ -1,0 +1,74 @@
+index_title=Dokumentasi Sistem
+index_header=Carian sistem dokumentasi
+index_for=Carian untuk
+index_where=Carian dalam
+index_alldoc=Semua Dokumentasi
+index_man=Laman Manual
+index_doc=Dokumentasi Pekej
+index_kernel=Dokumentasi  Kernel
+index_info=Laman Info
+index_howto=Dokumentasi HOWTO
+index_kde=Dokumentasi KDE
+index_perl=Dokumentasi modul Perl
+index_custom=Dokumentasi Custom
+index_help=Bantuan Webmin
+index_reset=Reset
+index_search=Carian
+index_return=borang carian
+index_type=Padan
+index_name=Hanya nama
+index_data=Nama dan kandungan
+index_google=Enjin carian Google
+index_others=Apabila mencari dokumentasi daripada modul yang lain, benarkan carikan pada ..
+index_other_man=Laman Manual
+index_other_help=Bantuan Webmin
+index_other_doc=Dokumentasi Pekej
+index_other_kernel=Dokumentasi Kernel
+index_other_howto=Dokumen HOWTO
+index_other_perl=Dokumentasi modul Perl
+index_other_google=Enjin carian Google
+index_other_kde=Dokumentasi KDE
+index_and=Padan semua
+index_or=Padan sebarang
+
+search_efor=Tiada laman manual untuk dicari telah dimasukkan
+search_title=Keputusan Carian
+search_desc=Penerangan
+search_type=Jenis
+search_file=Laman atau fail
+search_man=Laman Manual
+search_howto=Dokumen HOWTO
+search_doc=Dokumentasi Pekej
+search_kernel=Dokumentasi Kernel
+search_kde=Dokumentasi KDE
+search_perl=Modul Perl
+search_help=Bantuan Webmin
+search_custom=Dokumentasi Custom
+search_none=Tiada Dokumentasi sepadan dengan $1 ditemui.
+search_for=Untuk $1
+search_google=Keputusan carian Google
+
+howto_title=Dokumen HOWTO
+howto_header=Fail Dokumentasi HOWTO $1
+howto_epath=Laluan dokumentasi HOWTO tidak sah
+
+doc_title=Dokumentasi Pekej
+doc_header=Pekej dokumen fail $1
+doc_epath=Laluan dokumentasi tidak sah
+
+man_title=Laman Manual
+man_header=Laman Manual untuk $1($2)
+man_noentry=Laman Manual untuk $1 tidak wujud!
+
+kernel_title=Dokumen Kernel
+kernel_header=Fail dokumen Kernel $1
+kernel_epath=Laluan dokumen kernel tidak sah
+
+kde_title=Dokumentasi KDE
+kde_header=Fail dokumen KDE $1
+kde_epath=Laluan dokumentasi KDE tisak sah
+
+perl_title=Modul Perl
+perl_header=Dokumentasi untuk modul Perl $1
+perl_emod=Nama modul Perl tidak sah
+

@@ -17,7 +17,7 @@ push(@grid, &ui_radio("lockmode", int($gconfig{'lockmode'}),
 		  [ 3, $text{'lock_except'} ] ]));
 push(@grid, &ui_textarea("lockdirs",
 		join("\n", split(/\t+/, $gconfig{'lockdirs'})), 10, 60));
-print &ui_table_row(undef, &ui_grid_table(\@grid, 2), 2);
+print &ui_table_row(undef, &ui_grid_table(\@grid, 2), 2, [ "valign=top","valign=top" ]);
 
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);

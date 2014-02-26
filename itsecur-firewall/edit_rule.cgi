@@ -23,21 +23,18 @@ else {
 		undef, undef, undef, undef, &apply_button());
 	$rule = $rules[$in{'idx'}];
 	}
-print "<hr>\n";
-
-print "<form action=save_rule.cgi>\n";
-print "<input type=hidden name=new value='$in{'new'}'>\n";
-print "<input type=hidden name=idx value='$in{'idx'}'>\n";
-print "<input type=hidden name=insert value='$in{'insert'}'>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'rule_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_hr();
+print &ui_form_start("save_rule.cgi", "post");
+print &ui_hidden("new", $in{'new'});
+print &ui_hidden("idx", $in{'idx'});
+print &ui_hidden("insert", $in{'insert'});
+print &ui_table_start($text{'rule_header'}, undef, 2);
 
 # Show comment
-print "<tr> <td valign=top><b>$text{'rule_desc'}</b></td> <td colspan=2>\n";
-printf "<input name=desc size=60 value='%s'></td> </tr>\n",
-	$rule->{'desc'} eq "*" ? "" : $rule->{'desc'};
-
+print &ui_table_row($text{'rule_desc'},
+                    &ui_textbox("desc", ($rule->{'desc'} eq "*" ? "" : $rule->{'desc'}), 60),undef,
+                    ["valign=middle","valign=middle"]);
+    
 # Show source and destination
 foreach $s ('source', 'dest') {
 	$not = ($rule->{$s} =~ s/^!//g);
@@ -46,27 +43,14 @@ foreach $s ('source', 'dest') {
 	      $rule->{$s} =~ /^\%/ ? 3 : 1;
 
 	# Any address options
-	print "<tr> <td valign=top><b>",$text{'rule_'.$s},
-	      "</b></td> <td colspan=2>\n";
-	print "<table>\n";
-	print "<tr><td colspan=2>";
-	printf "<input type=radio name=${s}_mode value=0 %s> %s\n",
-		$sm == 0 ? "checked" : "",
-		$text{'rule_anywhere'};
-	print "</td></tr>\n";
+    print &ui_table_row($text{'rule_'.$s},
+            &ui_oneradio(${s}."_mode", 0, $text{'rule_anywhere'}, ($sm == 0 ? 1 : 0 ))."<br>".
 
 	# Specific host option
-	print "<tr><td valign=top>";
-	printf "<input type=radio name=${s}_mode value=1 %s> %s\n",
-		$sm == 1 ? "checked" : "", $text{'rule_host'};
-	print "</td><td>";
-	printf "<input name=${s}_host size=30 value='%s'>\n",
-		$sm == 1 ? $rule->{$s} : "";
-	print "$text{'rule_named'}\n";
-	print "<input name=${s}_name size=15><br>\n";
-	print "<input type=checkbox name=${s}_resolv value=1> ",
-	      "$text{'rule_resolv'}\n";
-	print "</td></tr>\n";
+            &ui_oneradio(${s}."_mode", 1, $text{'rule_host'}, ($sm == 1 ? 1 : 0))."&nbsp;".
+            &ui_textbox(${s}."_host", ($sm == 1 ? $rule->{$s} : ""), 30)."&nbsp;".$text{'rule_named'}."&nbsp;".
+            &ui_textbox(${s}."_name", undef, 15)."<br>".
+            &ui_checkbox(${s}."_resolv", 1, $text{'rule_resolv'},undef,"style=margin-left:15px;"), undef, ["valign=top","valign=middle"] );
 
 	# Host group option
 	local $gv;
@@ -76,117 +60,82 @@ foreach $s ('source', 'dest') {
 		}
 	$gi = &group_input("${s}_group", $gv, 0, 1);
 	if ($gi || $sm == 2) {
-		print "<tr><td valign=top>";
-		printf "<input type=radio name=${s}_mode value=2 %s> %s\n",
-			$sm == 2 ? "checked" : "", $text{'rule_group'};
-		print "</td><td>";
-		print $gi;
-		print "</td></tr>\n";
+        print &ui_table_row("&nbsp;",
+                "<table style='margin:0;padding:0;'><tr><td style='margin:0;padding:0;' valign=top>".&ui_oneradio(${s}."_mode", 2, $text{'rule_group'}, ($sm == 2 ? 1 : 0))."</td><td valign=top>".
+                $gi."</tr></table>",undef,["valign=top","valign=top"]);
 		}
 
 	# Interface option
 	$ii = &iface_input("${s}_iface",
 			   $rule->{$s} =~ /^\%(.*)$/ ? $1 : undef);
 	if ($ii || $sm == 3) {
-		print "<tr><td>";
-		printf "<input type=radio name=${s}_mode value=3 %s> %s\n",
-			$sm == 3 ? "checked" : "", $text{'rule_iface'};
-		print "</td><td>";
-		print $ii;
-		print "</td></tr>\n";
+        print &ui_table_row("&nbsp;",
+                &ui_oneradio(${s}."_mode", 3, $text{'rule_iface'}, ($sm == 3 ? 1 : 0))."&nbsp;".
+                $ii);
 		}
-
-	print "</table>\n";
-	print "</td> <td valign=top>\n";
-	#printf "<input type=checkbox name=${s}_not value=1 %s> %s\n",
-	#	$not ? "checked" : "", $text{'rule_not'};
-	print "</td> </tr>\n";
-	}
+}
 
 # Show service
 $not = ($rule->{'service'} =~ s/^!//g);
-print "<tr> <td valign=top><b>$text{'rule_service'}</b></td> <td>\n";
-printf "<input type=radio name=service_mode value=0 %s> %s\n",
-	$rule->{'service'} eq '*' ? "checked" : "", $text{'rule_anyserv'};
-printf "<input type=radio name=service_mode value=1 %s> %s<br>\n",
-	$rule->{'service'} eq '*' ? "" : "checked", $text{'rule_oneserv'};
-print &service_input("service",
-		     $rule->{'service'} eq '*' ? undef : $rule->{'service'},
-		     0, 1);
-print "</td> <td valign=top>\n";
-#printf "<input type=checkbox name=snot value=1 %s> %s\n",
-#	$not ? "checked" : "", $text{'rule_not'};
-print "</td> </tr>\n";
+print &ui_table_row($text{'rule_service'},
+            &ui_radio("service_mode", ( $rule->{'service'} eq '*' ? 0 : 1 ),
+                        [ [ 0, $text{'rule_anyserv'} ], [1, $text{'rule_oneserv'}] ]) );
+print &ui_table_row("&nbsp;",
+            &service_input("service", $rule->{'service'} eq '*' ? undef : $rule->{'service'}, 0, 1) );
 
+            
 # Show action upon match
-print "<tr> <td valign=top><b>$text{'rule_action'}</b></td> <td>\n";
-print &action_input("action", $rule->{'action'});
-print "</td> <td>\n";
-printf "<input type=checkbox name=log value=1 %s> %s\n",
-	$rule->{'log'} ? 'checked' : '', $text{'rule_log'};
-print "</td> </tr>\n";
+print &ui_table_row($text{'rule_action'},
+                &action_input("action", $rule->{'action'}).
+                "&nbsp;&nbsp;".&ui_checkbox("log", 1, $text{'rule_log'}, ($rule->{'log'} ? 1 : 0) )
+            ,undef, ["valign=middle","valign=middle"]);
+
 
 # Show time that this rule applies
 $inp = &time_input("time", $rule->{'time'} eq "*" ? undef : $rule->{'time'});
 if ($inp) {
-	print "<tr> <td valign=top><b>$text{'rule_time'}</b></td> <td>";
-	printf "<input type=radio name=time_def value=1 %s> %s\n",
-		$rule->{'time'} eq "*" ? "checked" : "", $text{'rule_anytime'};
-	printf "<input type=radio name=time_def value=0 %s> %s\n",
-		$rule->{'time'} eq "*" ? "" : "checked", $text{'rule_seltime'};
-	print $inp;
-	print "</td> </tr>\n";
+    print &ui_table_row($text{'rule_time'},
+                &ui_radio("time_def", ( $rule->{'time'} eq '*' ? 1 : 0 ),
+                        [ [ 1, $text{'rule_anytime'} ], [0, $text{'rule_seltime'}] ]).$inp);
 	}
 else {
-	print "<input type=hidden name=time_def value=1>\n";
+    print &ui_hidden("time_def",1);
 	}
 
 # Show enabled flag
-print "<tr> <td valign=top><b>$text{'rule_enabled'}</b></td> <td>\n";
-printf "<input type=radio name=enabled value=1 %s> %s\n",
-	$rule->{'enabled'} ? "checked" : "", $text{'yes'};
-printf "<input type=radio name=enabled value=0 %s> %s\n",
-	$rule->{'enabled'} ? "" : "checked", $text{'no'};
-print "</td> </tr>\n";
+print &ui_table_row($text{'rule_enabled'},
+                &ui_yesno_radio("enabled", ( $rule->{'enabled'} ? 1 : 0 ), 1, 0) );
 
 # Show input for position of rule
-print "<tr> <td><b>$text{'rule_atpos'}</b></td> <td>\n";
-print "<select name=pos>\n";
+my @sel;
 foreach $br (@rules) {
 	next if ($br eq $rule);
 	if ($br->{'sep'}) {
-		printf "<option value=%s %s>%s\n",
-			$br->{'index'},
-			!$in{'new'} &&
-			$rule->{'index'} == $br->{'index'}-1 ? "selected" : "",
-			&text('rule_spos', $br->{'desc'});
-		}
-	else {
-		printf "<option value=%s %s>%s\n",
-			$br->{'index'},
-			!$in{'new'} &&
-			$rule->{'index'} == $br->{'index'}-1 ? "selected" : "",
-			&text('rule_pos', $br->{'num'},
-			      &group_name($br->{'source'}),
-			      &group_name($br->{'dest'}));
+        push(@sel, [ $br->{'index'}, &text('rule_spos', $br->{'desc'}),
+                    (!$in{'new'} && $rule->{'index'} == $br->{'index'}-1 ? "selected" : "") ] );
+	} else {
+        push(@sel, [ $br->{'index'}, &text('rule_pos', $br->{'num'}, &group_name($br->{'source'}), &group_name($br->{'dest'})),
+                    (!$in{'new'} && $rule->{'index'} == $br->{'index'}-1 ? "selected" : "") ] );
 		}
 	}
-printf "<option value=%s %s>%s\n",
-	-1, $in{'new'} || $rule eq $rules[$#rules] ? "selected" : "",
-	$text{'rule_end'};
-print "</select></td> </tr>\n";
+push(@sel, [ -1, $text{'rule_end'}, ($in{'new'} || $rule eq $rules[$#rules] ? "selected" : "") ] );
+print &ui_table_row($text{'rule_atpos'}, &ui_select("pos", undef, \@sel, 1), undef, ["valign=middle","valign=middle"] );
 
-print "</table></td></tr></table>\n";
+print &ui_table_end();
+print "<p>";
+
 if ($in{'new'}) {
-	print "<input type=submit value='$text{'create'}'>\n";
+    print &ui_submit($text{'create'});
 	}
 else {
-	print "<input type=submit value='$text{'save'}'>\n";
-	print "<input type=submit name=delete value='$text{'delete'}'>\n";
+    print &ui_submit($text{'save'});
+    print &ui_submit($text{'delete'}, "delete");
 	}
-print "</form>\n";
+
+print &ui_form_end(undef,undef,1);
+
 &can_edit_disable("rules");
 
-print "<hr>\n";
+print &ui_hr();
 &footer("list_rules.cgi", $text{'rules_return'});
 

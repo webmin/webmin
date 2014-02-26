@@ -85,10 +85,10 @@ print "<tr> <td valign=top><b>$text{'shell'}</b></td>\n";
 print "<td valign=top><select name=shell>\n";
 @shlist = &unique(@shlist);
 foreach $s (@shlist) {
-	printf "<option value='%s'>%s\n", $s,
+	printf "<option value='%s'>%s</option>\n", $s,
 		$s eq "" ? "&lt;None&gt;" : $s;
 	}
-print "<option value=*>$text{'uedit_other'}\n";
+print "<option value=*>$text{'uedit_other'}</option>\n";
 print "</select></td>\n";
 
 &seed_random();
@@ -214,7 +214,7 @@ print "<td><select name=sgid multiple size=5>\n";
 	if ($uconfig{'sort_mode'});
 foreach $g (@glist) {
 	@mems = split(/,/ , $g->{'members'});
-	print "<option value=\"$g->{'gid'}\">$g->{'group'} ($g->{'gid'})\n";
+	print "<option value=\"$g->{'gid'}\">$g->{'group'} ($g->{'gid'})</option>\n";
 	}
 print "</select></td> </tr>\n";
 print "</table></td></tr></table><p>\n";
@@ -261,7 +261,7 @@ print "<input name=$_[3]d size=3 value='$_[0]'>";
 print "/<select name=$_[3]m>\n";
 local $m;
 foreach $m (1..12) {
-	printf "<option value=%d %s>%s\n",
+	printf "<option value=%d %s>%s</option>\n",
 		$m, $_[1] eq $m ? 'selected' : '', $text{"smonth_$m"};
 	}
 print "</select>";

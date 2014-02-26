@@ -133,9 +133,11 @@ session_mesg=You must enter a username and password to login to the Webmin serve
 session_mesg2=You must enter a username and password to login.
 session_user=Username
 session_pass=Password
+session_twofactor=Two-factor token
 session_login=Login
 session_clear=Clear
 session_failed=Login failed. Please try again.
+session_twofailed=Two-factor authentication failed : $1
 session_logout=Logout successful. Use the form below to login again.
 session_timed_out=Session timed out after $1 minutes of inactivity.
 session_save=Remember login permanently?
@@ -301,6 +303,7 @@ ui_edate=Invalid date
 ui_etime=Invalid time
 ui_paging=Showing rows $1 to $2 of $3
 ui_rowlabel=$2 in row $1 :
+ui_filterbox=Type to filter..
 
 header_statusmsg=$1 logged into $2 $3 on $4 ($5)
 

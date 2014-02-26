@@ -93,6 +93,7 @@ open("edit_html.cgi?file="+escape(file)+"&dir="+escape(dir)+"&trust=$trust", "ht
 </script>
 
 <applet code=FileManager name=FileManager archive=file.jar width=$w% height=$h% MAYSCRIPT>
+<param name=permissions value="sandbox">
 <param name=root value="$root">
 <param name=noroot value="$noroot">
 <param name=follow value="$follow">

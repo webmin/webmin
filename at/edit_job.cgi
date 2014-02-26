@@ -39,8 +39,7 @@ else {
 	print &ui_table_row($text{'edit_shortcmd'},
 		"<pre>".&html_escape(
 		    join("\n", &wrap_lines($job->{'realcmd'}, 80)))."</pre>".
-		"<a href='edit_job.cgi?full=1&id=".&urlize($in{'id'})."'>".
-		$text{'edit_showfull'}."</a>", 3);
+		&ui_link("edit_job.cgi?full=1&id=".&urlize($in{'id'}), $text{'edit_showfull'}), 3);
 	}
 
 print &ui_table_end();

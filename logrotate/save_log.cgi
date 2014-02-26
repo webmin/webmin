@@ -55,6 +55,7 @@ else {
 		foreach $f (@files) {
 			$f =~ /^\/\S+$/ || &error($text{'save_efile'});
 			}
+		@files || &error($text{'save_enofiles'});
 		$in{'file'} =~ s/\r//g;
 		$log->{'name'} = [ split(/\n/, $in{'file'}) ];
 		}
@@ -124,6 +125,8 @@ else {
 	$in{'ext_def'} || $in{'ext'} =~ /^\S+$/ ||
 		&error($text{'save_eext'});
 	&save_directive($log, "extension", $in{'ext_def'} ? undef : $in{'ext'});
+
+	&parse_yesno("dateext", "nodateext", $log);
 
 	if ($in{'mail'} == 2) {
 		$in{'mailto'} =~ /^\S+$/ || &error($text{'save_emailto'});

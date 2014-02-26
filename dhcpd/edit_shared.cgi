@@ -23,23 +23,23 @@ else {
 
 # display
 &ui_print_header(undef, $in{'new'} ? $text{'esh_crheader'} : $text{'esh_eheader'}, "");
+print &ui_form_start("save_shared.cgi", "post");
+print &ui_table_start($text{'esh_tabhdr'}, "width=100%", 4);
 
-print "<form action=save_shared.cgi method=post>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'esh_tabhdr'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print "<tr><td valign=middle><b>$text{'esh_desc'}</b></td>\n";
+print "<td valign=middle colspan=3>";
+print &ui_textbox("desc", ( $sha ? &html_escape($sha->{'comment'}) : "" ), 60);
+print "</td>";
+print "</tr>";
 
-print "<tr> <td><b>$text{'esh_desc'}</b></td>\n";
-printf "<td colspan=3><input name=desc size=60 value='%s'></td> </tr>\n",
-	$sha ? &html_escape($sha->{'comment'}) : "";
-
-print "<tr> <td><b>$text{'esh_netname'}</b></td>\n";
-printf "<td><input name=name size=15 value=\"%s\"></td>\n",
-	$sha ? $sha->{'values'}->[0] : "";
+print "<tr><td valign=middle><b>$text{'esh_netname'}</b></td>\n";
+print "<td valign=middle>";
+print &ui_textbox("name", ( $sha ? $sha->{'values'}->[0] : "" ), 15);
+print "</td>";
 
 &display_params($sconf, "shared-network");
 
-print "<tr> <td colspan=4> <table border=0 width=100%>\n";
+print "<tr><td valign=top colspan=4><table border=0 width=100%>\n";
 foreach $h (&find("host", $conf)) {
 	push(@host, $h) if &can('r', \%access, $h);
 	}
@@ -71,97 +71,92 @@ foreach $sh (&find("shared-network", $conf)) {
 @subn = sort { $a->{'values'}->[0] cmp $b->{'values'}->[0] } @subn;
 
 print "<td valign=top align=right><b>$text{'esh_hosts'}</b></td>\n";
-print "<td><select name=hosts size=3 multiple>\n";
+print "<td valign=top>";
+my @esh_hosts;
 foreach $h (@host) {
 	next if !&can('r', \%access, $h);
-	printf "<option value=\"%s,%s\" %s>%s\n",
-		$h->{'index'}, $inshar{$h},
-		(!$in{'new'}) && $inshar{$h} eq $sha->{'index'} ? "selected" : "",
-		$h->{'values'}->[0];
+    push(@esh_hosts, [$h->{'index'}.",".$inshar{$h}, $h->{'values'}->[0], ( (!$in{'new'}) && $inshar{$h} eq $sha->{'index'} ? "selected" : "" ) ] );
 	}
-print "</select></td>\n";
+print &ui_select("hosts", undef, \@esh_hosts, 3, 1);
+print "</td>\n";
 
 print "<td valign=top align=right><b>$text{'esh_groups'}</b></td>\n";
-print "<td><select name=groups size=3 multiple>\n";
+print "<td valign=top>";
+my @esh_groups_sel;
 foreach $g (@group) {
-	local $gm = 0;
+	my $gm = 0;
 	next if !&can('r', \%access, $g);
 	foreach $h (@{$g->{'members'}}) {
 		if ($h->{'name'} eq "host") { $gm++; }
 		}
-	printf "<option value=\"%s,%s\" %s>%s\n",
-		$g->{'index'}, $inshar{$g},
-		(!$in{'new'}) && $inshar{$g} eq $sha->{'index'} ? "selected" : "",
-		&group_name($gm, $g);
+    push(@esh_groups_sel, [$g->{'index'}.",".$inshar{$g}, &group_name($gm, $g), ( (!$in{'new'}) && $inshar{$g} eq $sha->{'index'} ? "selected" : "" ) ] );
 	}
-print "</select></td>\n";
+print &ui_select("groups", undef, \@esh_groups_sel, 3, 1);
+print "</td>\n";
 
 print "<td valign=top align=right><b>$text{'esh_subn'}</b></td>\n";
-print "<td><select name=subnets size=3 multiple>\n";
+print "<td valign=top>";
+my @esh_subn_sel;
 foreach $s (@subn) {
 	next if !&can('r', \%access, $s);
-	printf "<option value=\"%s,%s\" %s>%s\n",
-		$s->{'index'}, $inshar{$s},
-		(!$in{'new'}) && $inshar{$s} eq $sha->{'index'} ? "selected" : "",
-		$s->{'values'}->[0];
+    push(@esh_subn_sel, [$s->{'index'}.",".$inshar{$s}, $s->{'values'}->[0], ( (!$in{'new'}) && $inshar{$s} eq $sha->{'index'} ? "selected" : "" ) ] );
 	}
-print "</select></td>\n";
+print &ui_select("subnets", undef, \@esh_subn_sel, 3, 1);
+print "</td>\n";
 
 if (!$in{'new'}) {
 	# inaccessible hosts in this shared network
 	foreach $h (@host) {
 		if (!&can('r', \%access, $h) && $inshar{$h} eq $sha->{'index'}) {
-			print "<input name=hosts value=\"$h->{'index'},$sha->{'index'}\" type=hidden>\n";
+            print &ui_hidden("hosts","$h->{'index'},$sha->{'index'}");
 			}
 		}
 	# inaccessible groups in this shared network
 	foreach $g (@group) {
 		if (!&can('r', \%access, $g) && $inshar{$g} eq $sha->{'index'}) {
-			print "<input name=groups value=\"$g->{'index'},$sha->{'index'}\" type=hidden>\n";
+            print &ui_hidden("groups","$g->{'index'},$sha->{'index'}");
 			}
 		}
 	# inaccessible subnets in this shared network
 	foreach $s (@subn) {
 		if (!&can('r', \%access, $s) && $inshar{$s} eq $sha->{'index'}) {
-			print "<input name=subnets value=\"$s->{'index'},$sha->{'index'}\" type=hidden>\n";
+            print &ui_hidden("subnets","$s->{'index'},$sha->{'index'}");
 			}
 		}
 	}
 print "</table></td></tr>\n";
 
-print "</table></td></tr></table>\n";
+print &ui_table_end();
+
 if (!$in{'new'}) {
-	print "<input type=hidden name=idx value=\"$in{'idx'}\">\n";
+    print &ui_hidden("idx", $in{'idx'});
 	print "<table width=100%><tr>\n";
-	print "<td><input type=submit value=\"$text{'save'}\"></td>\n"
-		if &can('rw', \%access, $sha);
-	print "<td align=center><input type=submit name=options value=\"",
-          &can('rw', \%access, $sha) ? $text{'butt_eco'} : $text{'butt_vco'},
-	      "\"></td>\n";		  
-	print "<td align=right><input type=submit name=delete ",
-	      "value=\"$text{'delete'}\"></td>\n" 
-		  if &can('rw', \%access, $sha, 1);
+	print "<td>";
+    print &ui_submit($text{'save'}) if &can('rw', \%access, $sha);  
+    print "</td>";
+	print "<td align=center>";
+    print &ui_submit( (&can('rw', \%access, $sha) ? $text{'butt_eco'} : $text{'butt_vco'} ), "options");
+	print "</td>";
+	print "<td align=right>";
+    print &ui_submit($text{'delete'}, "delete") if &can('rw', \%access, $sha, 1);
+	print "</td>";
 	print "</tr></table>\n";
-	print "<a href=\"edit_host.cgi?new=1&sidx=$in{'idx'}"
-		."&ret=shared\">$text{'index_addhst'}</a>&nbsp;&nbsp;\n"
-			if &can('rw', \%access, $sha);
-	print "<a href=\"edit_group.cgi?new=1&sidx=$in{'idx'}"
-		."&ret=shared\">$text{'index_addhstg'}</a>&nbsp;&nbsp;\n"
-			if &can('rw', \%access, $sha);
-	print "<a href=\"edit_subnet.cgi?new=1&sidx=$in{'idx'}"
-		."&ret=shared\">$text{'index_addsub'}</a><p>\n"
-			if &can('rw', \%access, $sha);
+    if ( &can('rw', \%access, $sha) ) {
+        print &ui_link("edit_host.cgi?new=1&sidx=$in{'idx'}&ret=shared",$text{'index_addhst'})."&nbsp;&nbsp;";
+        print &ui_link("edit_group.cgi?new=1&sidx=$in{'idx'}&ret=shared",$text{'index_addhstg'})."&nbsp;&nbsp;";
+        print &ui_link("edit_subnet.cgi?new=1&sidx=$in{'idx'}&ret=shared",$text{'index_addsub'})."&nbsp;&nbsp;";
+        }
 	}
 else {
-	print "<input type=hidden name=new value=1>\n";
-	print "<input type=submit value=\"$text{'create'}\">\n";
+    print &ui_hidden("new",1);
+    print &ui_submit($text{'create'});
 	}
 
 if ($config{'dhcpd_version'} >= 3 && !$in{'new'}) {
 	# Display address pools
 	print &ui_hr();
 	print &ui_subheading($text{'esh_pools'});
-	local $pn = 1;
+	my $pn = 1;
 	foreach $p (&find('pool', $sconf)) {
 		push(@links, "edit_pool.cgi?uidx=$in{'idx'}&idx=$p->{'index'}");
 		push(@titles, &text('esub_pool', $pn));
@@ -174,10 +169,10 @@ if ($config{'dhcpd_version'} >= 3 && !$in{'new'}) {
 	else {
 		&icons_table(\@links, \@titles, \@icons, 5);
 		}
-	print "<a href='edit_pool.cgi?uidx=$in{'idx'}&new=1'>",
-	      "$text{'esub_pooladd'}</a><br>\n";
+    print &ui_link("edit_pool.cgi?uidx=$in{'idx'}&new=1",$text{'esub_pooladd'});
+    print "<br>";
 	}
 
-print "</form>\n";
+print &ui_form_end();
 &ui_print_footer("", $text{'esh_return'});
 

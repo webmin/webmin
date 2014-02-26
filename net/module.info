@@ -34,3 +34,5 @@ desc_pl.UTF-8=Konfiguracja sieci
 desc_sk.UTF-8=KonfigurÃ¡cia siete
 desc_no=Nettverkskonfigurasjon
 desc_hu=Hálózati beállítások
+longdesc_ms_MY=Mengkonfigurasi masa boot dan pengaktifan antara muka, DNS, laluan rangkaian dan /etc /hosts.
+desc_ms_MY=Konfigurasi Rangkaian

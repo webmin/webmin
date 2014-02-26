@@ -6,70 +6,67 @@ require './itsecur-lib.pl';
 &can_use_error("nat");
 &header($text{'nat_title'}, "",
 	undef, undef, undef, undef, &apply_button());
-print "<hr>\n";
 
-print "<form action=save_nat.cgi>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'nat_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_hr();
 
-($iface, @nets) = &get_nat();
-@maps = grep { ref($_) } @nets;
-@nets = grep { !ref($_) } @nets;
-print "<tr> <td valign=top><b>$text{'nat_desc'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=nat value=0 %s> %s<br>\n",
-	$iface ? "" : "checked", $text{'nat_disabled'};
-printf "<input type=radio name=nat value=1 %s> %s\n",
-	$iface ? "checked" : "", $text{'nat_enabled'};
-print &iface_input("iface", $iface);
-print "</td> </tr>\n";
+print &ui_form_start("save_nat.cgi","post");
+print &ui_table_start($text{'nat_header'},undef,2);
 
-print "<tr> <td valign=top><b>$text{'nat_nets'}</b></td>\n";
-print "<td valign=top><table>\n";
-$i = 0;
+my ($iface, @nets) = &get_nat();
+my @maps = grep { ref($_) } @nets;
+my @nets = grep { !ref($_) } @nets;
+
+print &ui_table_row($text{'nat_desc'},
+                &ui_radio("nat", ( $iface ? 1 : 0 ), [
+                    [0,$text{'nat_disabled'}."<br>"],[1,$text{'nat_enabled'}]
+                ]).&iface_input("iface", $iface) );
+
+
+my $style = "style='margin:0;padding:0;'";
+my $tx = "";
+$tx .= "<table $style><tr><td $style class='ui_form_value' valign=top>";
+$tx .= "<table $style>";
+my $i = 0;
 foreach $n ((grep { $_ !~ /^\!/ } @nets), undef, undef, undef) {
-	print "<tr> <td>",&group_input("net_$i", $n, 1),"</td> </tr>\n";
+	$tx .= "<tr><td $style valign=top>".&group_input("net_$i", $n, 1)."</td></tr>";
 	$i++;
 	}
-print "</table></td>\n";
+$tx .= "</table></td>";
 
-print "<td valign=top><b>$text{'nat_excl'}</b></td>\n";
-print "<td valign=top><table>\n";
+$tx .= "<td class='ui_form_label' valign=top>&nbsp;&nbsp;&nbsp;&nbsp;<b>$text{'nat_excl'}</b></td>";
+$tx .= "<td class='ui_form_value' $style valign=top><table $style>";
 $i = 0;
 foreach $n ((grep { $_ =~ /^\!/ } @nets), undef, undef, undef) {
-	print "<tr> <td>",&group_input("excl_$i", $n =~ /^\!(.*)/ ? $1 : undef, 1),"</td> </tr>\n";
+	$tx .= "<tr><td $style valign=top>".&group_input("excl_$i", $n =~ /^\!(.*)/ ? $1 : undef, 1)."</td></tr>";
 	$i++;
 	}
-print "</table></td> </tr>\n";
+$tx .= "</table></td>";
+$tx .= "</td></tr></table>";
 
-print "<tr> <td valign=top><b>$text{'nat_maps'}</b>",
-      "<br>$text{'nat_mapsdesc'}</td> <td colspan=3>\n";
-print "<table>\n";
-print "<tr> <td><b>$text{'nat_ext'}</b></td> ",
-      "<td><b>$text{'nat_int'}</b></td> ",
-      "<td><b>$text{'nat_virt'}</b></td> </tr>\n";
+print &ui_table_row($text{'nat_nets'}, $tx, undef, ["valign=top","valign=top"]);
+
+$tx = "<table $style>";
+$tx .= "<tr><td $style valign=top><b>$text{'nat_ext'}</b></td>".
+      "<td $style valign=top>&nbsp;&nbsp;<b>$text{'nat_int'}</b></td>".
+      "<td $style valign=top>&nbsp;&nbsp;&nbsp;&nbsp;<b>$text{'nat_virt'}</b></td></tr>";
 $i = 0;
 foreach $m (@maps, [ ], [ ], [ ]) {
-	#print "<tr>\n";
-	#printf "<td><input name=ext_%d size=20 value='%s'></td>\n",
-	#	$i, $m->[0];
-	#printf "<td><input name=int_%d size=20 value='%s'></td>\n",
-	#	$i, $m->[1];
-	#print "<td>",&iface_input("virt_$i", $m->[2], 1, 1, 1),"</td>\n";
-	#print "</tr>\n";
-	print "<tr>"	;	
-	printf "<td><input name=ext_%d size=20 value='%s'></td>\n",
-		$i, $m->[0];
-	print "<td>",&group_input("int_$i", $m->[1], 1),"</td>\n";
-	print "<td>",&iface_input("virt_$i", $m->[2], 1, 1, 1),"</td>\n";		
-	print "</tr>\n";
+	$tx .= "<tr>";	
+	$tx .= "<td class='ui_form_value' $style>".&ui_textbox("ext_".$i, $m->[0], 20)."</td>",
+	$tx .= "<td class='ui_form_value' $style>&nbsp;&nbsp;".&group_input("int_$i", $m->[1], 1)."</td>";
+	$tx .= "<td class='ui_form_value' $style>&nbsp;&nbsp;&nbsp;&nbsp;".&iface_input("virt_$i", $m->[2], 1, 1, 1)."</td>";		
+	$tx .= "</tr>";
 	$i++;
 	}
-print "</table></td> </tr>\n";
+$tx .= "</table>";
 
-print "</table></td></tr></table>\n";
-print "<input type=submit value='$text{'save'}'></form>\n";
+print &ui_table_row($text{'nat_maps'}."</b><br>".$text{'nat_mapsdesc'}."<b>", $tx, undef, ["valign=top","valign=top"]);
+
+print &ui_table_end();
+print "<p>";
+print &ui_submit($text{'save'});
+print &ui_form_end(undef,undef,1);
 &can_edit_disable("nat");
 
-print "<hr>\n";
+print &ui_hr();
 &footer("", $text{'index_return'});

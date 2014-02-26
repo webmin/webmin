@@ -1,0 +1,117 @@
+Terjemahan Webmin ke Bahasa Malaysia
+=====================================
+
+Terjemahan Webmin ini adalah projek dalaman yang diusahakan
+oleh Kelab Pengguna Sumber Terbuka Malaysia http://www.sumbu.org
+
+Matlamat terjemahan adalah untuk menterjemah bahasa inggeris yang digunakan pada
+Webmin ke Bahasa Melayu Malaysia yang hampir kepada standard.
+
+Terjemahan mestilah mencapai maksud bagi setiap bahagian Webmin, bukan hanya terjemahan teks
+semata-mata. Penterjemah perlulah merujuk pada bahagian Webmin bagi memahami maksud sebelum melakukan
+terjemahan. Supaya terjemahan yang dilakukan boleh digunakan dalam proses penggunaan Webmin.
+ 
+Terjemahan perlulah menggunakan istilah Bahasa Malaysia atau istilah yang telah diguna pakai
+pada mana-mana projek terjemahan perisian sumber terbuka yang lain. Jika istilah yang hendak diguna
+belum sesuai atau pelik maksudnya, istilah inggeris perlu dikekalkan atau diganti dengan ayat yang boleh
+mencapai maksud.
+
+Sila rujuk Pusat Persuratan Melayu DBP http://prpm.dbp.gov.my/
+bagi mencari istilah Malaysia yang terkini.
+
+Dibawah adalah senarai istilah yang digunakan dalam terjemahan Webmin,
+istilah digunakan mengikut kesesuain ayat, sila tambah jika perlu.
+
+Senarai Istilah:
+================
+access          = Capaian -- capai digunakan berbanding akses, cth: access control -> kawalan capaian
+arguments       = anjuran -- http://prpm.dbp.gov.my/Search.aspx?k=ajuan
+authority       = penguatkuasaan diguna berbanding autoriti -- digunakan pada SSL, cth: certificate authority -> Penguatkuasaan Sijil
+backup          = backup -- dikekalkan inggeris, berbanding istilah melayu "sandar"
+broadcast       = siar
+browser         = pelayar
+boot            = boot
+change          = ubah
+connection      = sambungan
+cookie          = kuki -- http://prpm.dbp.gov.my/Search.aspx?k=cookie
+column          = lajur -- http://prpm.dbp.gov.my/Search.aspx?k=column
+cipher          = sifer -- http://prpm.dbp.gov.my/Search.aspx?k=cipher 
+custom          = suai langgan -- cth; custom application -> aplikasi suai langgan -- http://prpm.dbp.gov.my/Search.aspx?k=custom
+daemon          = daemon - nama khas
+debug           = nyah-pijat
+defined         = dinyatakan
+delete          = padam
+details         = perincian / butiran
+device          = peranti
+disabled        = dinyah-aktifkan
+download        = muat turun
+edit            = sunting / ubah
+email           = emel
+enabled         = diaktifkan
+encryption      = penyulitan -- http://prpm.dbp.gov.my/Search.aspx?k=encryption
+error           = ralat
+executable      = Pelaksana
+execute         = Laksana
+group           = grup / kumpulan -- http://prpm.dbp.gov.my/Search.aspx?k=grup
+hits            = popular
+installation    = pemasangan / instalasi -- http://prpm.dbp.gov.my/Search.aspx?k=instalasi
+install         = pasang
+interface       = antara muka
+jobs            = Tugas -- cth: Cron Jobs -> Tugas Cron, Scheduled Cron, Tugas berjadul Cron
+kernel          = kernel
+library         = arkib / pustaka
+loader          = pemuat
+logging         = meng-log
+login           = log masuk
+log             = log
+logout          = log keluar
+mail            = mel
+message         = mesej
+module          = modul
+network         = rangkaian
+new             = baharu -- http://prpm.dbp.gov.my/Search.aspx?k=baharu
+parameter       = parameter
+partition       = pemetakan / petak -- http://prpm.dbp.gov.my/Search.aspx?k=partition
+password        = kata laluan
+path            = lokasi / laluan
+port            = port -- dikekalkan inggeris, berbanding istilah melayu "liang"
+prompt          = prom -- http://prpm.dbp.gov.my/Search.aspx?k=prom
+provider        = pembekal
+raw data        = data mentah
+referrer        = perujuk -- cth: Trusted Referrers -> Perujuk dipercayai
+refresh         = segar semula / penyegaran
+remote          = capaian jauh
+remove          = buang
+repository      = repositori -- http://prpm.dbp.gov.my/Search.aspx?k=repositori
+restart         = mula semula
+restore         = restore -- dikekalkan inggeris, berbanding maksud melayu "kembalikan"
+reset           = Tetapkan/Set semula
+running         = Larikan / Jalankan
+rollback        = undur - digabungkan dengan kata kerja -- http://prpm.dbp.gov.my/Search.aspx?k=rollback
+save            = simpan
+scan            = imbas
+scheduled       = Berjadual
+server          = pelayan
+service         = servis
+set             = Tetapkan semula / Set
+start           = mula / memulakan
+stop            = henti / menghentikan
+symlink         = symlink
+sync            = segerak -- http://prpm.dbp.gov.my/Search.aspx?k=sync
+TCP-wrappers    = pelindung-TCP
+update          = kemaskini
+upload          = muat naik
+username        = nama pengguna
+user            = pengguna
+cache           = cache -- http://prpm.dbp.gov.my/Search.aspx?k=cache
+client-side     = pihak klien -- http://prpm.dbp.gov.my/Search.aspx?k=client-side
+
+Kemaskini:
+=========
+16/Nov/2013: nawawi <nawawi@rutweb.com>
+- versi pertama
+
+
+
+
+

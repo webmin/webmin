@@ -40,51 +40,48 @@ if (!$skip_upgrade) {
 	print ui_hidden("mode", $mode);
 	print ui_hidden("dir", $dir);
 	print ui_table_start($text{'upgrade_title'}, undef, 1);
-	print "<tr $cb> <td nowrap>\n";
-	print "<input type=radio name=source value=0> $text{'upgrade_local'}\n";
-	print "<input name=file size=40>\n";
-	print file_chooser_button("file", 0),"<br>\n";
-	print "<input type=radio name=source value=1> $text{'upgrade_uploaded'}\n";
-	print "<input name=upload type=file size=30><br>\n";
-	print "<input type=radio name=source value=5> $text{'upgrade_url'}\n";
-	print "<input name=url size=40><br>\n";
-	if ($mode eq 'caldera') {
-		print "<input type=radio name=source value=3 checked> $text{'upgrade_cup'}\n";
-		}
-	elsif ($mode eq "gentoo") {
-		print "<input type=radio name=source value=4 checked> $text{'upgrade_emerge'}\n";
+
+	@opts = ( [ 0, $text{'upgrade_local'},
+		    &ui_filebox("file", undef, 60) ],
+		  [ 1, $text{'upgrade_uploaded'},
+		    &ui_upload("file") ],
+		  [ 5, $text{'upgrade_url'},
+		    &ui_textbox("url", undef, 60) ] );
+	if ($mode eq "gentoo") {
+		push(@opts, [ 4, $text{'upgrade_emerge'} ]);
 		}
 	elsif ($mode ne "sun-pkg") {
-		print "<input type=radio name=source value=2 checked> $text{'upgrade_ftp'}\n";
+		push(@opts, [ 2, $text{'upgrade_ftp'} ]);
 		}
-	print "<p>\n";
+	print &ui_table_row($text{'upgrade_src'},
+		&ui_radio_table("source", $opts[$#opts]->[0], \@opts), undef,
+				[ "valign=top","valign=top" ]);
+
+	@cbs = ( );
 	if (!$mode && !$dir) {
 		# Checkbox to delete original directory
-		print "<input type=checkbox name=delete value=1> ",
-			"$text{'upgrade_delete'}<br>\n";
+		push(@cbs, &ui_checkbox("delete", 1, $text{'upgrade_delete'},
+					$gconfig{'upgrade_delete'}));
 		}
 	if ((!$mode || $mode eq "rpm") && &foreign_check("proc")) {
 		# Checkbox to check signature
 		($ec, $emsg) = &gnupg_setup();
-		printf "<input type=checkbox name=sig value=1 %s> %s<br>\n",
-			$ec ? "" : "checked", $text{'upgrade_sig'};
+		push(@cbs, &ui_checkbox("sig", 1, $text{'upgrade_sig'}, $ec));
 		}
 	if (!$mode) {
 		# Checkbox to not install missing modules
-		printf "<input type=checkbox name=only value=1 %s> %s<br>\n",
-			-r "$root_directory/minimal-install" ? "checked" : "",
-			$text{'upgrade_only'};
+		push(@cbs, &ui_checkbox("only", 1, $text{'upgrade_only'},
+					-r "$root_directory/minimal-install"));
 		}
-	printf "<input type=checkbox name=force value=1> %s<br>\n",
-		$text{'upgrade_force'};
+	push(@cbs, &ui_checkbox("force", 1, $text{'upgrade_force'}, 0));
 	if ($main::session_id) {
 		# Checkbox to disconnect other sessions
-		printf "<input type=checkbox name=disc value=1> %s<br>\n",
-			$text{'upgrade_disc'};
+		push(@cbs, &ui_checkbox("disc", 1, $text{'upgrade_disc'}, 0));
 		}
+	print &ui_table_row($text{'upgrade_opts'},
+		join("<br>\n", @cbs), undef, [ "valign=top","valign=top" ]);
 	print ui_table_end();
-	print "<input type=submit value=\"$text{'upgrade_ok'}\">\n";
-	print "</form>\n";
+	print &ui_form_end([ [ undef, $text{'upgrade_ok'} ] ]);
 	print ui_tabs_end_tab();
 	}
 
@@ -95,76 +92,73 @@ print ui_form_start("save_newmod.cgi", "post");
 print ui_table_start($text{'newmod_header'});
 
 $newmod = &get_newmodule_users();
-printf "<input type=radio name=newmod_def value=1 %s> %s<br>\n",
-	$newmod ? "" : "checked", $text{'newmod_def'};
-printf "<input type=radio name=newmod_def value=0 %s> %s\n",
-	$newmod ? "checked" : "", $text{'newmod_users'};
-printf "<input name=newmod size=30 value='%s'><br>\n",
-	join(" ", @$newmod);
+print &ui_table_row(undef,
+	&ui_opt_textbox("newmod", $newmod ? join(" ", @$newmod) : "", 60,
+			$text{'newmod_def'}."<br>\n",
+			$text{'newmod_users'}), 2, [ "valign=middle","valign=middle" ]);
 
 print ui_table_end();
-print "<input type=submit value='$text{'save'}'></form>\n";
+print ui_form_end([ [ undef, $text{'save'} ] ]);
 print ui_tabs_end_tab();
 
 # Display module update form
 print ui_tabs_start_tab("mode", "update");
 print "$text{'update_desc1'}<p>\n";
 print ui_form_start("update.cgi", "post");
-print ui_table_start($text{'update_header1'});
-print "<tr $cb> <td nowrap>\n";
+print ui_table_start($text{'update_header1'}, undef, 2);
 
-printf "<input type=radio name=source value=0 %s> %s<br>\n",
-	$config{'upsource'} ? "" : "checked", $text{'update_webmin'};
-printf "<input type=radio name=source value=1 %s> %s<br>\n",
-	$config{'upsource'} ? "checked" : "", $text{'update_other'};
-print "&nbsp;" x 4;
-print &ui_textarea("other", join("\n", split(/\t+/, $config{'upsource'})),
-		   2, 50),"<br>\n";
+print &ui_table_row($text{'update_src'},
+	&ui_radio("source", $config{'upsource'} ? 1 : 0,
+		  [ [ 0, $text{'update_webmin'}."<br>" ],
+		    [ 1, $text{'update_other'} ] ])."<br>\n".
+	&ui_textarea("other", join("\n", split(/\t+/, $config{'upsource'})),
+		     2, 50), undef, [ "valign=top","valign=top" ]);
 
-printf "<input type=checkbox name=show value=1 %s> %s<br>\n",
-	$config{'upshow'} ? "checked" : "", $text{'update_show'};
-printf "<input type=checkbox name=missing value=1 %s> %s<br>\n",
-	$config{'upmissing'} ? "checked" : "", $text{'update_missing'};
-printf "<input type=checkbox name=third value=1 %s> %s<br>\n",
-	$config{'upthird'} ? "checked" : "", $text{'update_third'};
-printf "<input type=checkbox name=checksig value=1 %s> %s<br>\n",
-        $config{'upchecksig'} ? 'checked' : '', $text{'update_checksig'};
+print &ui_table_row($text{'update_opts'},
+	&ui_checkbox("show", 1, $text{'update_show'},
+		     $config{'upshow'}).
+	"<br>\n".
+	&ui_checkbox("missing", 1, $text{'update_missing'},
+	             $config{'upmissing'}).
+	"<br>\n".
+	&ui_checkbox("third", 1, $text{'update_third'},
+		     $config{'upthird'}).
+	"<br>\n".
+	&ui_checkbox("checksig", 1, $text{'update_checksig'},
+		     $config{'upchecksig'}), undef, [ "valign=top","valign=top" ]);
 
-print "<table>\n";
-print "<tr> <td>$text{'update_user'}</td>\n";
-print "<td>",&ui_textbox("upuser", $config{'upuser'}, 30),"</td> </tr>\n";
-print "<tr> <td>$text{'update_pass'}</td>\n";
-print "<td>",&ui_password("uppass", $config{'uppass'}, 30),"</td> </tr>\n";
-print "</table>\n";
+print &ui_table_row($text{'update_user'},
+	&ui_textbox("upuser", $config{'upuser'}, 30), undef, [ "valign=middle","valign=middle" ]);
+print &ui_table_row($text{'update_pass'},
+	&ui_password("uppass", $config{'uppass'}, 30), undef, [ "valign=middle","valign=middle" ]);
 
 print ui_table_end();
-print "<input type=submit value=\"$text{'update_ok'}\">\n";
-print "</form>\n";
+print ui_form_end([ [ undef, $text{'update_ok'} ] ]);
 print ui_tabs_end_tab();
 
 # Display scheduled update form
 print ui_tabs_start_tab("mode", "sched");
 print "$text{'update_desc2'}<p>\n";
 print ui_form_start("update_sched.cgi", "post");
-print ui_table_start($text{'update_header2'});
-print "<tr $cb> <td nowrap>\n";
-printf "<input type=checkbox name=enabled value=1 %s> %s<p>\n",
-	$config{'update'} ? 'checked' : '', $text{'update_enabled'};
-	
-printf "<input type=radio name=source value=0 %s> %s<br>\n",
-	$config{'upsource'} ? "" : "checked", $text{'update_webmin'};
-printf "<input type=radio name=source value=1 %s> %s<br>\n",
-	$config{'upsource'} ? "checked" : "", $text{'update_other'};
-print "&nbsp;" x 4;
-print &ui_textarea("other", join("\n", split(/\t+/, $config{'upsource'})),
-		   2, 50),"<br>\n";
+print ui_table_start($text{'update_header2'}, ( $config{'cron_mode'} == 0 ? undef : "width=80%" ), 2);
+
+print &ui_table_row($text{'update_enabled'},
+	&ui_yesno_radio("enabled", $config{'update'}), undef, [ "valign=middle","valign=middle" ]);
+
+print &ui_table_row($text{'update_src'},
+	&ui_radio("source", $config{'upsource'} ? 1 : 0,
+		  [ [ 0, $text{'update_webmin'}."<br>" ],
+		    [ 1, $text{'update_other'} ] ])."<br>\n".
+	&ui_textarea("other", join("\n", split(/\t+/, $config{'upsource'})),
+		     2, 50), undef, [ "valign=top","valign=top" ]);
 
 if ($config{'cron_mode'} == 0) {
 	$upmins = sprintf "%2.2d", $config{'upmins'};
-	print &text('update_sched2',
-		    "<input name=hour size=2 value='$config{'uphour'}'>",
-		    "<input name=mins size=2 value='$upmins'>",
-		    "<input name=days size=3 value='$config{'updays'}'>"),"<br>\n";
+	print &ui_table_row("", 
+		&text('update_sched2',
+		      &ui_textbox("hour", $config{'uphour'}, 2),
+		      &ui_textbox("mins", $upmins, 2),
+		      &ui_textbox("days", $config{'updays'}, 3)), undef, [ "valign=middle","valign=middle" ]);
 	}
 else {
 	&foreign_require("cron", "cron-lib.pl");
@@ -175,34 +169,34 @@ else {
 		   'days' => "*/$config{'updays'}",
 		   'months' => '*',
 		   'weekdays' => '*' };
-	print "<br><table border=1>\n";
-	&cron::show_times_input($job, 1);
-	print "</table><br>\n";
+	print &cron::get_times_input($job, 1);
 	}
 
-printf "<input type=checkbox name=show value=1 %s> %s<br>\n",
-      $config{'upshow'} ? 'checked' : '', $text{'update_show'};
-printf "<input type=checkbox name=missing value=1 %s> %s<br>\n",
-      $config{'upmissing'} ? 'checked' : '', $text{'update_missing'};
-printf "<input type=checkbox name=third value=1 %s> %s<br>\n",
-	$config{'upthird'} ? "checked" : "", $text{'update_third'};
-printf "<input type=checkbox name=quiet value=1 %s> %s<br>\n",
-      $config{'upquiet'} ? 'checked' : '', $text{'update_quiet'};
-printf "<input type=checkbox name=checksig value=1 %s> %s<br>\n",
-      $config{'upchecksig'} ? 'checked' : '', $text{'update_checksig'};
+print &ui_table_row($text{'update_opts'},
+	&ui_checkbox("show", 1, $text{'update_show'},
+		     $config{'upshow'}).
+	"<br>\n".
+	&ui_checkbox("missing", 1, $text{'update_missing'},
+	             $config{'upmissing'}).
+	"<br>\n".
+	&ui_checkbox("third", 1, $text{'update_third'},
+		     $config{'upthird'}).
+	"<br>\n".
+	&ui_checkbox("quiet", 1, $text{'update_quiet'},
+		     $config{'upquiet'}).
+	"<br>\n".
+	&ui_checkbox("checksig", 1, $text{'update_checksig'},
+		     $config{'upchecksig'}), undef, [ "valign=top","valign=middle" ]);
 
-print "<table>\n";
-print "<tr> <td>$text{'update_email'}</td>\n";
-print "<td>",&ui_textbox("email", $config{'upemail'}, 30),"</td> </tr>\n";
-print "<tr> <td>$text{'update_user'}</td>\n";
-print "<td>",&ui_textbox("upuser", $config{'upuser'}, 30),"</td> </tr>\n";
-print "<tr> <td>$text{'update_pass'}</td>\n";
-print "<td>",&ui_password("uppass", $config{'uppass'}, 30),"</td> </tr>\n";
-print "</table>\n";
+print &ui_table_row($text{'update_email'},
+	&ui_textbox("upemail", $config{'upemail'}, 30), undef, [ "valign=middle","valign=middle" ]);
+print &ui_table_row($text{'update_user'},
+	&ui_textbox("upuser", $config{'upuser'}, 30), undef, [ "valign=middle","valign=middle" ]);
+print &ui_table_row($text{'update_pass'},
+	&ui_password("uppass", $config{'uppass'}, 30), undef, [ "valign=middle","valign=middle" ]);
 
 print ui_table_end();
-print "<input type=submit value=\"$text{'update_apply'}\">\n";
-print "</form>\n";
+print ui_form_end([ [ undef, $text{'update_apply'} ] ]);
 print ui_tabs_end_tab();
 
 print &ui_tabs_end(1);

@@ -1,0 +1,6 @@
+__norefs=1
+index_credits=Menggunakan kod dari <a href='$1' target=_new>Ajaxterm</a> oleh Antony Lesuisse.
+index_epython=Ajaxterm memerlukan Python untuk menjalankan, tetapi arahan $1 tidak dijumpai pada sistem anda.
+index_estart=Ajaxterm tidak bermula menerima sambungan pada port $2 selepas $1 saat.
+index_popup=Buka dalam tetingkap berasingan ..
+index_title=Log masuk Teks

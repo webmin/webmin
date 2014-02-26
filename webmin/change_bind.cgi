@@ -52,6 +52,26 @@ if (&has_command("lsof")) {
 		}
 	}
 
+# Make sure each IP is actually active on the system
+@ips = grep { $_ ne "*" } map { $_->[0] } @sockets;
+if (@ips && &foreign_installed("net")) {
+	%onsystem = ( );
+	&foreign_require("net");
+	if (defined(&net::active_interfaces)) {
+		foreach $a (&net::active_interfaces()) {
+			$onsystem{$a->{'address'}} = $a;
+			foreach $ip6 (@{$a->{'address6'}}) {
+				$onsystem{$ip6} = $a;
+				}
+			}
+		}
+	if (%onsystem) {
+		foreach $ip (@ips) {
+			$onsystem{$ip} || &error(&text('bind_eonsystem', $ip));
+			}
+		}
+	}
+
 # Update config file
 &lock_file($ENV{'MINISERV_CONFIG'});
 $first = shift(@sockets);

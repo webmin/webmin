@@ -16,7 +16,7 @@ local %gotmod = map { $_, 1 } split(/\s+/, $_[0]->{'mods'});
 print "<select name=mods multiple size=10 width=400>\n";
 my $m;
 foreach $m (sort { $a->{'desc'} cmp $b->{'desc'} } &get_all_module_infos()) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$m->{'dir'}, $gotmod{$m->{'dir'}} ? "selected" : "",
 		$m->{'desc'};
 	}
@@ -32,7 +32,7 @@ local %gotuser = map { $_, 1 } split(/\s+/, $_[0]->{'users'});
 print "<select name=users multiple size=10 width=400>\n";
 my $u;
 foreach $u (sort { $a->{'name'} cmp $b->{'name'} } &acl::list_users()) {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		$u->{'name'}, $gotuser{$u->{'name'}} ? "selected" : "",
 		$u->{'name'};
 	}

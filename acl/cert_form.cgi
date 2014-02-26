@@ -1,9 +1,12 @@
 #!/usr/local/bin/perl
 # cert_form.cgi
 
+use strict;
+use warnings;
 require './acl-lib.pl';
-&ui_print_header(undef, $text{'cert_title'}, "", undef, undef, undef, undef, undef, undef,
-	"language=VBSCRIPT onload='postLoad()'");
+our (%in, %text, %config, %access);
+&ui_print_header(undef, $text{'cert_title'}, "", undef, undef, undef, undef,
+		 undef, undef, "language=VBSCRIPT onload='postLoad()'");
 eval "use Net::SSLeay";
 
 print "<p>$text{'cert_msg'}<p>\n";

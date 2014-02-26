@@ -9,6 +9,7 @@ use WebminCore;
 open(MODE, "$module_config_directory/mode");
 chop($raid_mode = <MODE>);
 close(MODE);
+$raid_mode ||= "mdadm";
 
 %container = ( 'raiddev', 1,
 	       'device', 1 );

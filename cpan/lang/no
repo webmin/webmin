@@ -23,6 +23,7 @@ download_err=Kunne ikke installere modul
 download_etar=Kunne ikke pakke ut tar fil : $1
 download_eupload=Nettleseren din st&#248;tter ikke opplasting av filer
 download_eurl=Incomprehensible URL '$1'
+download_fallback=Noen moduler kunne ikke installeres fra pakker, fors&#248;ker installasjon fra kilde i stedet..
 download_header=Instillinger for installasjon av Perl modul
 download_m=Kun Make
 download_mi=Make og installer

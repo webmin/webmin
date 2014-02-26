@@ -54,8 +54,8 @@ $match_modes = [ [ 0, $text{'index_equals'} ], [ 1, $text{'index_contains'} ],
 # Connect to the LDAP server and return a handle to the Net::LDAP object
 sub ldap_connect
 {
-if (!$ldap_client::config{'auth_ldap'} ||
-    !-r $ldap_client::config{'auth_ldap'}) {
+my $cfile = &ldap_client::get_ldap_config_file();
+if (!$cfile || !-r $cfile) {
 	# LDAP client config file not known .. force manual specification
 	foreach my $f ("ldap_host", "login") {
 		if (!$config{$f}) {

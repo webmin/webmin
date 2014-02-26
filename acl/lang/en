@@ -4,7 +4,8 @@ index_modules=Modules
 index_create=Create a new Webmin user.
 index_rcreate=Create a new risk-level user.
 index_convert=Convert Unix To Webmin Users
-index_cert=Request an SSL certificate
+index_cert=Request an SSL Certificate
+index_twofactor=Two-Factor Authentication
 index_certmsg=Click this button to request an SSL certificate that will allow you to securely login to Webmin without having to enter a username and password.
 index_return=user list
 index_none=None
@@ -23,6 +24,7 @@ index_unix=Configure Unix User Authentication
 index_sessions=View Login Sessions
 index_rbac=Setup RBAC
 index_delete=Delete Selected
+index_joingroup=Add To Group:
 index_eulist=Failed to list users : $1
 index_eglist=Failed to list groups : $1
 
@@ -48,6 +50,11 @@ edit_passold=Password was last changed $1 days ago
 edit_passtoday=Password was changed less than a day ago
 edit_modules=Modules
 edit_clone=Clone
+edit_twofactor=Two-factor authentication type
+edit_twofactorprov=Using provider $1 with ID $2
+edit_twofactorcancel=Remove two-factor authentication requirement
+edit_twofactornone=None setup yet
+edit_twofactoradd=Enable Two-Factor For User
 edit_lang=Language
 edit_notabs=Categorise modules?
 edit_logout=Inactivity logout time
@@ -158,6 +165,7 @@ cert_install=Install your certificate into browser
 cert_ekey=A new SSL key was not submitted by your browser - maybe it does not support SSL client certificates.
 cert_eca=Failed to setup certificate authority : $1
 cert_already=Warning - you are already using the certificate $1.
+cert_etempdir=Invalid certificate file
 
 acl_title=Module Access Control
 acl_title2=For $1 in $2
@@ -223,10 +231,13 @@ log_delete_g=Deleted Webmin group $1
 log_switch=Switched to Webmin user $1
 log_delete_users=Deleted $1 Webmin users
 log_delete_groups=Deleted $1 Webmin groups
+log_joingroup=Added $1 Webmin users to group $2
 log_pass=Changed password restrictions
 log_unix=Changed unix user authentication
 log_sync=Changed unix user synchronization
 log_sql=Changed user and group database
+log_twofactor=Enrolled user $1 with two-factor provider $2
+log_onefactor=Dis-enrolled user $1 for two-factor authentication
 
 gedit_ecannot=You are not allowed to edit groups
 gedit_title=Edit Webmin Group
@@ -262,7 +273,7 @@ convert_2=All except users
 convert_3=Users with group
 convert_4=Users with UIDs in range
 convert_group=Assign new users to Webmin group
-convert_sync=Use same password as Unix user in future?
+convert_sync2=Sync password with Unix user in future?
 convert_ok=Convert Now
 convert_err=Failed to convert users
 convert_eusers=No users to convert entered
@@ -276,11 +287,15 @@ convert_exists=$1 already exists
 convert_invalid=$1 is not a valid Webmin username
 convert_added=$1 being added
 convert_msg=Converting Unix users...
+convert_user=Unix user
+convert_action=Action taken
 convert_done=$1 users converted, $2 invalid, $3 already exist, $4 excluded.
+convert_users=Users to convert
 
 sync_title=Unix User Synchronization
 sync_desc=This form allows you to configure the automatic synchronization of Unix users created through Webmin and users in this module.
 sync_nogroups=No Webmin groups have been defined on your system. At least one group must be created to set the access for created users.
+sync_when=When to synchronize
 sync_create=Create a Webmin user when a Unix user is created.
 sync_update=Update the matching Webmin user when a Unix user is updated.
 sync_delete=Delete the matching Webmin user when a Unix user is deleted.
@@ -309,7 +324,7 @@ unix_euser='$1' is not a valid username
 unix_egroup='$1' is not a valid group name
 unix_shells=Deny Unix users whose shells are not in file
 unix_eshells=Missing or non-existant shells file
-unix_restrict=The following additional restrictions apply to Unix users selected above.
+unix_restrict2=Additional restrictions
 unix_ewhogroup=Missing group to allow in row $1
 unix_ewhouser=Missing user to allow in row $1
 unix_enone=No Unix users or groups to allow entered
@@ -318,6 +333,8 @@ unix_sudo=Allow users who can run all commands via <tt>sudo</tt> to login as <tt
 unix_pamany=Treat logins that only pass PAM validation as $1
 unix_esudo=The $1 command is not installed
 unix_esudomod=The Perl module $1 needed for <tt>sudo</tt> authentication is not installed
+unix_header=Unix user authentication settings
+unix_utable=Allowed Unix users
 
 sessions_title=Current Login Sessions
 sessions_desc=Current Webmin session logins are listed below. To cancel an existing session and force the user to login again, click on its session ID.
@@ -342,7 +359,7 @@ rbac_desc=Webmin's RBAC integration provides a way for user module and ACL permi
 rbac_esolaris=RBAC is only supported on Solaris at the moment, and so cannot be used on this $1 system.
 rbac_eperl=The Perl module $1 needed for RBAC integration is not installed. <a href='$2'>Click here</a> to have it installed now.
 rbac_ecpan=You do not have access to Webmin's Perl Modules page in order to install the necessary $1 module for RBAC integration.
-rbac_ok=RBAC integration is available on this sytem, and can be enabled on a per-user basis on the Edit Webmin User page.
+rbac_ok=RBAC integration is available on this system, and can be enabled on a per-user basis on the Edit Webmin User page.
 
 udeletes_err=Failed to delete users
 udeletes_enone=None selected
@@ -449,4 +466,20 @@ makedn_still=Some problems were found even after DN creation : $1
 schema_title=Download LDAP Schema
 schema_desc=Before Webmin can use an LDAP server to store users and groups it must be configured to use the schema below. This can typically be done by saving the schema definition in <tt>/etc/ldap/schema</tt> or <tt>/etc/openldap/schema</tt> as <tt>webmin.schema</tt>, then configuring the server to load that schema file.
 schema_download=Download schema file : <a href=$1>$1</a>
+
+twofactor_err=Failed to setup two-factor authentication
+twofactor_euser=Your Webmin user was not found!
+twofactor_title=Two-Factor Authentication
+twofactor_disable=Disable Two-Factor Authentication
+twofactor_already=Your Webmin login already has two-factor authentication enabled with provider $1 and account ID $2.
+twofactor_already2=Webmin login $3 already has two-factor authentication enabled with provider $1 and account ID $2.
+twofactor_desc=This page allows you to enable two-factor authentication for your Webmin login using <a href='$2' target=_blank>$1</a>. Once active, an additional authentication token will be required when logging into Webmin.
+twofactor_desc2=This page allows you to enable two-factor authentication for Webmin login $3 using <a href='$2' target=_blank>$1</a>. Once active, an additional authentication token will be required when logging into Webmin.
+twofactor_enable=Enroll For Two-Factor Authentication
+twofactor_header=Two-factor authentication enrollment details
+twofactor_enrolling=Enrolling for two-factor authentication with provider $1 ..
+twofactor_failed=.. enrollment failed : $1
+twofactor_done=.. complete. Your ID with this provider is <tt>$1</tt>.
+twofactor_setup=Two-factor authentication has not been enabled on this system yet, but can be turned on using the <a href='$1'>Webmin Configuration</a> module.
+
 __norefs=1

@@ -54,7 +54,7 @@ if ($n) {
 		$bsize = &block_size($f);
 		local @cols;
 		if ($fslist{$f} && !$access{'ro'}) {
-			push(@cols, "<a href=\"edit_user_quota.cgi?filesys=$f&user=$u&source=1\">$f</a>");
+			push(@cols, &ui_link("edit_user_quota.cgi?filesys=$f&user=$u&source=1", $f) );
 			}
 		else {
 			push(@cols, $f);

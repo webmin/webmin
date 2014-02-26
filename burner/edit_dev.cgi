@@ -14,10 +14,10 @@ print "<tr $cb> <td><table>\n";
 print "<tr> <td><b>$text{'dev_device'}</b></td>\n";
 print "<td><select name=dev>\n";
 if (!$config{'dev'}) {
-	print "<option value='' checked>$text{'dev_none'}\n";
+	print "<option value='' checked>$text{'dev_none'}</option>\n";
 	}
 foreach $d (&list_cdrecord_devices()) {
-	printf "<option value=%s %s>%s (%s)\n",
+	printf "<option value=%s %s>%s (%s)</option>\n",
 		$d->{'dev'}, $d->{'dev'} eq $config{'dev'} ? 'selected' : '',
 		$d->{'name'}, $d->{'type'};
 	}

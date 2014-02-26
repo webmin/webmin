@@ -77,32 +77,6 @@ if ($header{'from'} =~ /postmaster|mailer-daemon/i ||
 	exit 0;
 	}
 
-# if spamassassin is installed, feed the email to it
-$spam = &has_command("spamassassin");
-if ($spam) {
-	$temp = "/tmp/autoreply.spam.$$";
-	unlink($temp);
-	open(SPAM, "| $spam >$temp 2>/dev/null");
-	print SPAM $headers;
-	print SPAM $body;
-	close(SPAM);
-	$isspam = undef;
-	open(SPAMOUT, $temp);
-	while(<SPAMOUT>) {
-		if (/^X-Spam-Status:\s+Yes/i) {
-			$isspam = 1;
-			last;
-			}
-		last if (!/\S/);
-		}
-	close(SPAMOUT);
-	unlink($temp);
-	if ($isspam) {
-		print STDERR "Not autoreplying to spam\n";
-		exit 0;
-		}
-	}
-
 # work out the correct to address
 @to = ( &split_addresses($header{'to'}),
 	&split_addresses($header{'cc'}),
@@ -210,6 +184,32 @@ foreach $re (@no_regexp) {
 	if ($re =~ /\S/ && $rheaders =~ /$re/i) {
 		print STDERR "Skipping due to match on $re\n";
 		exit(1);
+		}
+	}
+
+# if spamassassin is installed, feed the email to it
+$spam = &has_command("spamassassin");
+if ($spam) {
+	$temp = "/tmp/autoreply.spam.$$";
+	unlink($temp);
+	open(SPAM, "| $spam >$temp 2>/dev/null");
+	print SPAM $headers;
+	print SPAM $body;
+	close(SPAM);
+	$isspam = undef;
+	open(SPAMOUT, $temp);
+	while(<SPAMOUT>) {
+		if (/^X-Spam-Status:\s+Yes/i) {
+			$isspam = 1;
+			last;
+			}
+		last if (!/\S/);
+		}
+	close(SPAMOUT);
+	unlink($temp);
+	if ($isspam) {
+		print STDERR "Not autoreplying to spam\n";
+		exit 0;
 		}
 	}
 

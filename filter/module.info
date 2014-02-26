@@ -15,3 +15,6 @@ desc_cz.UTF-8=FiltrovÃ¡nÃ­ a pÅ™eposÃ­lÃ¡nÃ­ poÅ¡ty
 desc_no=Filtrer og videresend e-post
 longdesc_hu=Továbbítási és szûrési szabályok létrehozása
 desc_hu=Levelek szûrése
+longdesc_ms_MY=Cipta peraturan untuk menapis dan mengirim emel yang masuk.
+desc_ms_MY=Tapis dan Mengirim Mel
+longdesc_de=Erstellt Regeln, Filtern und Weiterleiten von eingehende E-Mail.

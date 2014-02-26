@@ -17,22 +17,22 @@ print &ui_table_start($text{'log_header'}, undef, 2);
 print &ui_table_row($text{'log_status'},
 	&ui_radio("log", $miniserv{'log'} ? 1 : 0,
 		  [ [ 1, $text{'log_enable'} ],
-		    [ 0, $text{'log_disable'} ] ]));
+		    [ 0, $text{'log_disable'} ] ]), undef, [ "valign=middle","valign=middle" ]);
 
 # Log resolved hostnames
 print &ui_table_row($text{'log_resolv'},
-	&ui_yesno_radio("loghost", int($miniserv{'loghost'})));
+	&ui_yesno_radio("loghost", int($miniserv{'loghost'})), undef, [ "valign=middle","valign=middle" ]);
 
 # Use common log format
 print &ui_table_row($text{'log_clf'},
-	&ui_yesno_radio("logclf", int($miniserv{'logclf'})));
+	&ui_yesno_radio("logclf", int($miniserv{'logclf'})), undef, [ "valign=middle","valign=middle" ]);
 
 # Clear logs regularly
 print &ui_table_row($text{'log_clear2'},
 	&ui_radio("logclear", int($miniserv{'logclear'}),
 		  [ [ 1, &text('log_period',
 			&ui_textbox("logtime", $miniserv{'logtime'}, 10)) ],
-		    [ 0, $text{'no'} ] ]));
+		    [ 0, $text{'no'} ] ]), undef, [ "valign=middle","valign=middle" ]);
 
 # Webmin users to log for
 print &ui_table_row($text{'log_forusers'},
@@ -43,7 +43,7 @@ print &ui_table_row($text{'log_forusers'},
 		   [ map { [ $_->{'name'} ] }
 			 sort { $a->{'name'} cmp $b->{'name'} } 
 			      &acl::list_users() ],
-		   5, 1));
+		   5, 1), undef, [ "valign=top","valign=middle" ]);
 
 # Modules to log in
 print &ui_table_row($text{'log_inmods'},
@@ -55,29 +55,29 @@ print &ui_table_row($text{'log_inmods'},
 			 grep { -r &module_root_directory($_)."/log_parser.pl" }
 			      sort { $a->{'desc'} cmp $b->{'desc'} }
 				   &get_all_module_infos() ],
-		   5, 1));
+		   5, 1), undef, [ "valign=top","valign=middle" ]);
 
 # Log logins and logouts?
 if (!$miniserv{'login_script'} ||
     $miniserv{'login_script'} eq $record_login_cmd) {
 	print &ui_table_row($text{'log_login'},
 		&ui_yesno_radio("login",
-		    $miniserv{'login_script'} eq $record_login_cmd));
+		    $miniserv{'login_script'} eq $record_login_cmd), undef, [ "valign=middle","valign=middle" ]);
 	}
 
 print &ui_table_row($text{'log_files'},
-	&ui_yesno_radio("logfiles", int($gconfig{'logfiles'})));
+	&ui_yesno_radio("logfiles", int($gconfig{'logfiles'})), undef, [ "valign=middle","valign=middle" ]);
 
 print &ui_table_row($text{'log_fullfiles'},
-	&ui_yesno_radio("logfullfiles", int($gconfig{'logfullfiles'})));
+	&ui_yesno_radio("logfullfiles", int($gconfig{'logfullfiles'})), undef, [ "valign=middle","valign=middle" ]);
 
 print &ui_table_row($text{'log_perms'},
-	&ui_opt_textbox("perms", $gconfig{'logperms'}, 5, $text{'default'}));
+	&ui_opt_textbox("perms", $gconfig{'logperms'}, 5, $text{'default'}), undef, [ "valign=middle","valign=middle" ]);
 
 eval "use Sys::Syslog qw(:DEFAULT setlogsock)";
 if (!$@) {
 	print &ui_table_row($text{'log_syslog'},
-		&ui_yesno_radio("logsyslog", int($gconfig{'logsyslog'})));
+		&ui_yesno_radio("logsyslog", int($gconfig{'logsyslog'})), undef, [ "valign=middle","valign=middle" ]);
 	}
 
 print &ui_table_end();

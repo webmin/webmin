@@ -15,6 +15,7 @@ print &ui_tabs_start(
 	1);
 
 # Tables of rules
+$formno = 0;
 foreach my $type ('allow', 'deny') {
 	print &ui_tabs_start_tab("type", $type);
 	my $file = $type eq 'allow' ? $config{'hosts_allow'}
@@ -50,6 +51,7 @@ foreach my $type ('allow', 'deny') {
 	       0,
 	       undef,
 	       &text('index_norule', $file),
+	       $formno++,
 	       );			
 	print &ui_tabs_end_tab("type", $type);
 	}

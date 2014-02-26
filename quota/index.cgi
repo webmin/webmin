@@ -28,7 +28,8 @@ if (@list) {
 	foreach $f (@list) {
 		$qc = $f->[4];
 		$qc = $qc&1 if ($access{'gmode'} == 3);
-		next if (!$qc);
+		$qs = $f->[6];
+		next if (!$qc && !$qs);
 		next if (!&can_edit_filesys($f->[0]));
 		$qn = $f->[5];
 		if ($qc == 1) { $msg = $text{'index_quser'}; }
@@ -47,12 +48,19 @@ if (@list) {
 				}
 			}
 		elsif ($qn) {
+			# Currently active
 			$msg .= " $text{'index_active'}";
 			$chg = $text{'index_disable'};
 			}
-		else {
+		elsif ($qc) {
+			# Not active, but could be
 			$msg .= " $text{'index_inactive'}";
 			$chg = $text{'index_enable'};
+			}
+		else {
+			# Not active, and needs setup in /etc/fstab
+			$msg = $text{'index_supported'};
+			$chg = $text{'index_enable2'};
 			}
 		if ($qn%2 == 1) { $useractive++; }
 		if ($qn > 1) { $groupactive++; }
@@ -63,19 +71,15 @@ if (@list) {
 			push(@cols, $dir);
 			}
 		elsif ($qc == 1) {
-			push(@cols, "<a href=\"list_users.cgi?dir=".
-			   &urlize($dir)."&can=",&urlize($qc),"\">$dir</a>");
+			push(@cols, &ui_link("list_users.cgi?dir=".&urlize($dir)."&can=".&urlize($qc), $dir) );
 			}
 		elsif ($qc == 2) {
-			push(@cols, "<a href=\"list_groups.cgi?dir=".
-			    &urlize($dir)."&can=",&urlize($qc),"\">$dir</a>");
+			push(@cols, &ui_link("list_groups.cgi?dir=".&urlize($dir)."&can=".&urlize($qc), $dir) );
 			}
 		elsif ($qc == 3) {
-			push(@cols, "<a href=\"list_users.cgi?dir=".
-			    &urlize($dir)."&can=".&urlize($qc).
-			    "\">$dir (users)</a><br>".
-			    "<a href=\"list_groups.cgi?dir=".&urlize($dir).
-			    "&can=".&urlize($qc)."\">$dir (groups)</a>");
+			push(@cols, &ui_link("list_users.cgi?dir=".&urlize($dir)."&can=".&urlize($qc), $dir." (users)").
+                    "<br>".
+                    &ui_link("list_groups.cgi?dir=".&urlize($dir)."&can=".&urlize($qc), $dir." (groups)") );
 			}
 
 		push(@cols, &foreign_call("mount", "fstype_name", $f->[2]));
@@ -83,7 +87,7 @@ if (@list) {
 		push(@cols, $msg);
 		if ($access{'enable'}) {
 			if ($canactivate) {
-				push(@cols, "<a href=\"activate.cgi?dir=$dir&active=$qn&mode=$qc\">$chg</a>");
+				push(@cols, &ui_link("activate.cgi?dir=$dir&active=$qn&mode=$qc", $chg) );
 				}
 			else {
 				push(@cols, $chg);

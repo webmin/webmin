@@ -9,7 +9,7 @@ if (@mailcap) {
 	print &ui_form_start("delete.cgi", "post");
 	@links = ( &select_all_link("d"),
 		   &select_invert_link("d"),
-		   "<a href='edit.cgi?new=1'>$text{'index_add'}</a>" );
+		   &ui_link("edit.cgi?new=1", $text{'index_add'}) );
 	print &ui_links_row(\@links);
 
 	@tds = ( "width=5" );
@@ -22,7 +22,7 @@ if (@mailcap) {
 		], 100, 0, \@tds);
 	foreach $m (@mailcap) {
 		print &ui_checked_columns_row([
-			"<a href='edit.cgi?index=$m->{'index'}'>$m->{'type'}</a>",
+			&ui_link("edit.cgi?index=".$m->{'index'}, $m->{'type'}),
 			$m->{'program'},
 			$m->{'cmt'} || $m->{'args'}->{'description'},
 			$m->{'enabled'} ? $text{'yes'} :
@@ -39,7 +39,8 @@ if (@mailcap) {
 	}
 else {
 	print "<b>$text{'index_none'}</b><p>\n";
-	print "<a href='edit.cgi?new=1'>$text{'index_add'}</a><p>\n";
+	print &ui_link("edit.cgi?new=1", $text{'index_add'});
+    print "<p>\n";
 	}
 
 &ui_print_footer("/", $text{'index'});

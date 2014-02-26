@@ -55,7 +55,7 @@ if (!$in{'new'} && $feature->{'type'}) {
 if ($feature->{'type'} == 0) {
 	# Unsupported text line
 	print "<tr> <td><b>$text{'feature_text'}</b></td>\n";
-	printf "<td><input name=text size=50 value='%s'></td> </tr>\n",
+	printf "<td><input name=text size=80 value='%s'></td> </tr>\n",
 		&html_escape($feature->{'text'});
 	}
 elsif ($feature->{'type'} == 1) {
@@ -63,7 +63,7 @@ elsif ($feature->{'type'} == 1) {
 	print "<tr> <td><b>$text{'feature_feat'}</b></td>\n";
 	print "<td><select name=name>\n";
 	foreach $f (&list_feature_types()) {
-		printf "<option value=%s %s>%s\n",
+		printf "<option value=%s %s>%s</option>\n",
 			$f->[0], $feature->{'name'} eq $f->[0] ? 'selected' : '',
 			$f->[1];
 		}
@@ -82,12 +82,12 @@ elsif ($feature->{'type'} == 2 || $feature->{'type'} == 3) {
 	print "<tr> <td><b>$text{'feature_def'}</b></td>\n";
 	print "<td><select name=name>\n";
 	foreach $d (&list_define_types()) {
-		printf "<option value=%s %s>%s\n",
+		printf "<option value=%s %s>%s</option>\n",
 			$d->[0], $d->[0] eq $feature->{'name'} ? "selected" : "",
 			$d->[1];
 		$found++ if ($d->[0] eq $feature->{'name'});
 		}
-	print "<option value=$feature->{'name'} selected>$feature->{'name'}\n"
+	print "<option value=$feature->{'name'} selected>$feature->{'name'}</option>\n"
 		if (!$found && !$in{'new'});
 	print "</select>\n";
 
@@ -106,7 +106,7 @@ elsif ($feature->{'type'} == 4) {
 	print "<tr> <td><b>$text{'feature_mailer'}</b></td>\n";
 	print "<td><select name=mailer>\n";
 	foreach $m (&list_mailer_types()) {
-		printf "<option value=%s %s>%s\n",
+		printf "<option value=%s %s>%s</option>\n",
 			$m->[0], $feature->{'mailer'} eq $m->[0] ? 'selected' : '',
 			$m->[1];
 		}
@@ -117,7 +117,7 @@ elsif ($feature->{'type'} == 5) {
 	print "<tr> <td><b>$text{'feature_ostype'}</b></td>\n";
 	print "<td><select name=ostype>\n";
 	foreach $m (&list_ostype_types()) {
-		printf "<option value=%s %s>%s\n",
+		printf "<option value=%s %s>%s</option>\n",
 			$m->[0], $feature->{'ostype'} eq $m->[0] ? 'selected' : '',
 			$m->[1];
 		}

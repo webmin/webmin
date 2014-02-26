@@ -5,7 +5,7 @@ require './ldap-client-lib.pl';
 &error_setup($text{'base_err'});
 &ReadParse();
 
-&lock_file($config{'auth_ldap'});
+&lock_file(&get_ldap_config_file());
 $conf = &get_config();
 
 # Validate and save inputs, starting with global base
@@ -45,7 +45,7 @@ foreach $b (@base_types) {
 
 # Write out config
 &flush_file_lines();
-&unlock_file($config{'auth_ldap'});
+&unlock_file(&get_ldap_config_file());
 
 &webmin_log("base");
 &redirect("");

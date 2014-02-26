@@ -34,6 +34,7 @@ $ver = &get_stunnel_version(\$out);
 #	}
 
 # List all tunnels currently setup in inetd
+$hasconfig = 1;
 @tunnels = &list_stunnels();
 @links = ( &select_all_link("d"),
 	   &select_invert_link("d"),
@@ -118,22 +119,24 @@ if (@tunnels) {
 else {
 	print "<b>$text{'index_none'}</b><p>\n";
 	print &ui_links_row([ $links[2] ]);
+    $hasconfig = 0;
 	}
 
-print &ui_hr();
-print "<table width=100%><tr>\n";
-print "<form action=apply.cgi>\n";
-print "<td><input type=submit value='$text{'index_apply'}'></td>\n";
-if ($has_inetd && $has_xinetd) {
-	print "<td>$text{'index_applymsg1'}</td>\n";
-	}
-elsif ($has_inetd) {
-	print "<td>$text{'index_applymsg2'}</td>\n";
-	}
-else {
-	print "<td>$text{'index_applymsg3'}</td>\n";
-	}
-print "</form></tr></table>\n";
+if ( $hasconfig ) {
+    my $xmsg = "";
+    if ($has_inetd && $has_xinetd) {
+	    $xmsg .= $text{'index_applymsg1'};
+    } elsif ($has_inetd) {
+	    $xmsg .= $text{'index_applymsg2'};
+    } else {
+	    $xmsg .= $text{'index_applymsg3'};
+    }
+    print &ui_hr();
+    print &ui_buttons_start();
+    print &ui_buttons_row("apply.cgi",
+        $text{'index_apply'}, $xmsg);
+    print &ui_buttons_end();
+}
 
 &ui_print_footer("/", $text{'index'});
 

@@ -42,11 +42,12 @@ if (&has_bacula_dir() && &has_node_groups()) {
 
 # Get the Bacula version, and check it
 $ver = &get_bacula_version();
-&ui_print_header(undef, $module_info{'desc'}, "", "intro", 1, 1, 0,
-		 $hsl, undef, undef,
-		 ($ver ? &text('index_version', $ver)."<br>" : undef).
-		 &text('index_ocmin', 'images/ocmin.gif',
-		       'http://www.linmin.com/'));
+&ui_print_header(
+	 undef, $module_info{'desc'}, "", "intro", 1, 1, 0,
+	 $hsl, undef, undef,
+	 ($ver ? &text('index_version'.$cmd_prefix, $ver)."<br>" : undef).
+	 &text('index_ocmin', 'images/ocmin.gif',
+	       'http://www.linmin.com/'));
 if ($ver && $ver < 1.36) {
 	print &text('index_eversion', 1.36, $ver),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
@@ -54,7 +55,7 @@ if ($ver && $ver < 1.36) {
 	}
 
 # Make sure bconsole works
-if (&is_bacula_running("bacula-dir")) {
+if (&is_bacula_running($cmd_prefix."-dir")) {
 	# Check hostname in console config
 	$conconf = &get_bconsole_config();
 	$condir = &find("Director", $conconf);
@@ -134,7 +135,7 @@ if (&has_bacula_dir()) {
 	# Show icons for actions
 	print &ui_hr();
 	print &ui_subheading($text{'index_actions'});
-	if (&is_bacula_running("bacula-dir")) {
+	if (&is_bacula_running($cmd_prefix."-dir")) {
 		@actions = ( "backup", "dirstatus", "clientstatus",
 			     "storagestatus", "label", "poolstatus", "mount",
 			     "restore" );

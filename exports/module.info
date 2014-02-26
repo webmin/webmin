@@ -32,3 +32,5 @@ desc_pl.UTF-8=Udostępnianie po NFS
 desc_cz.UTF-8=NFS Export
 desc_no=NFS Eksporter
 desc_nl=NFS Exports
+longdesc_ms_MY=Sunting fail perkongsian NFS yang dinyatakan dalam /etc/eksport
+desc_ms_MY=NFS Eksport

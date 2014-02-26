@@ -7,3 +7,5 @@ desc_de=iSCSI-Client
 desc_ca=Client iSCSI
 longdesc_no=F&#229; tilgang til disk-enheter over nettverket ved hjelp av iSCSI protokollen
 desc_no=iSCSI klient 
+desc_ms_MY=Klien iSCSI
+longdesc_ms_MY=Mengakses peranti disk di seluruh rangkaian menggunakan protokol iSCSI.

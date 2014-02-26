@@ -36,3 +36,5 @@ desc_hu.UTF-8=Lemez és hálózati filerendszerek
 desc_cz.UTF-8=Lokální a síťové systémy souborů
 desc_pl.UTF-8=Lokalne i&nbsp;sieciowe systemy plików
 desc_no=Disker og nettverksfilsystemer
+longdesc_ms_MY=Mount sistem fail dan fail swap yang kebiasaannya ditetapkan di /etc/fstab atau /etc/vfstab.
+desc_ms_MY=Disk dan Fail sistem rangkaian

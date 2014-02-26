@@ -76,7 +76,7 @@ if (@addservers && $access{'add'}) {
 	print "<select name=server>\n";
 	foreach $s (sort { $a->{'host'} cmp $b->{'host'} } @addservers) {
 		print "<option value=$s->{'id'}>",
-		    $s->{'host'}.($s->{'desc'} ? " ($s->{'desc'})" : ""),"\n";
+		    $s->{'host'}.($s->{'desc'} ? " ($s->{'desc'})" : ""),"</option>\n";
 		}
 	print "</select></td>\n";
 	print "</form>\n";
@@ -99,7 +99,7 @@ if (@groups && $access{'add'}) {
 	print "<input type=submit name=gadd value='$text{'index_gadd'}'>\n";
 	print "<select name=group>\n";
 	foreach $g (@groups) {
-		print "<option>$g->{'name'}\n";
+		print "<option>$g->{'name'}</option>\n";
 		}
 	print "</select></td>\n";
 	print "</form>\n";

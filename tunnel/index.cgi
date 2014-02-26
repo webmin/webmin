@@ -1,8 +1,14 @@
 #!/usr/local/bin/perl
 # Either redirects to link.cgi, if a URL has been set, or asks for a URL
 
+use strict;
+use warnings;
+our (%config, %text, %module_info);
 require './tunnel-lib.pl';
+
 if ($config{'url'}) {
+	$config{'url'} = &fix_end_url($config{'url'}) ||
+		&error($text{'seturl_eurl'});
 	&redirect("link.cgi/$config{'url'}");
 	}
 else {

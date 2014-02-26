@@ -5,6 +5,7 @@ order=Vis handlingenes oppstartsrekkef&#248;lge?1,1-Ja,0-Nei
 status_check=Vis handlingenes gjeldende status,1,2-P&#229; indeks- og handlingssider,1-Bare p&#229; handlingssider,0-Nei
 sort_mode=Sorter handlinger etter,1,1-Oppstartrekkef&#248;lge,0-Navn
 line2=System konfigurasjon,11
+init_mode=Oppstartssystem,4,-Oppdag automatisk,init-SysV init,upstart-Upstart,systemd-Systemd,osx-MacOS,rc-FreeBSD RC scripts,win32-Windows tjenester,local-Enkelt oppstartsscript
 init_base=Katalog hvor kj&#248;retids-kataloger finnes,0
 init_dir=Katalog som inneholder master init scripts,0
 soft_links=Lenketype som brukes for kj&#248;reniv&#229; filer,1,0-Hard,1-Myk

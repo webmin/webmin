@@ -70,6 +70,8 @@ delete_ok=Delete
 delete_nodeps=Ignore dependencies?
 delete_noscripts=Skip uninstall scripts?
 delete_efile=Invalid temp file to delete
+delete_purge=Purge configuration files?
+delete_depstoo=Removed unused dependencies as well?
 
 file_title=File Information
 file_notfound=No information about $1 is available

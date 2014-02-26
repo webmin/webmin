@@ -27,6 +27,9 @@ print &ui_table_row($text{'access_ip'},
 print &ui_table_row($text{'access_always'},
 	&ui_yesno_radio("alwaysresolve", int($miniserv{'alwaysresolve'})));
 
+print &ui_table_row($text{'access_trust'},
+	&ui_yesno_radio("trust", int($miniserv{'trust_real_ip'})));
+
 eval "use Authen::Libwrap qw(hosts_ctl STRING_UNKNOWN)";
 if (!$@) {
 	print &ui_table_row($text{'access_libwrap'},

@@ -14,8 +14,8 @@ local $uf = $_[0] && -r "list_authgroups.cgi" ? 1 : 0;
 return (2, $text{'mod_auth_gfile'},
        &opt_input($_[0]->{'value'}, "AuthGroupFile", $text{'default'}, 45).
        &file_chooser_button("AuthGroupFile", 0).
-       ($uf ? "&nbsp;<a href=\"list_authgroups.cgi?file=".$_[0]->{'value'}.
-       "&url=".&urlize(&this_url())."\">$text{'mod_auth_gedit'}</a>" : ""));
+       ($uf ? "&nbsp;".&ui_link("list_authgroups.cgi?file=".$_[0]->{'value'}.
+       "&url=".&urlize(&this_url()), $text{'mod_auth_gedit'}) : ""));
 }
 sub save_AuthGroupFile
 {

@@ -592,7 +592,7 @@ if ($_[0] eq "swap") {
 	print "<tr> <td><b>Priority</b></td>\n";
 	print "<td><select name=swap_pri>\n";
 	for ($i = 0; $i < 11; ++$i) {
-		printf "<option value=\"%s\" %s>%s\n",
+		printf "<option value=\"%s\" %s>%s</option>\n",
 			$i, $options{"pri"} == $i ? "selected" : "", $i;
 		}
 	print "</select></td> </tr>\n";
@@ -607,7 +607,7 @@ if ($_[0] eq "swapfs") {
 	if (!defined($options{backfstype})) { $options{backfstype} = "nfs"; }
 	foreach (&list_fstypes()) {
 		if ($_ eq "cachefs") { next; }
-		printf "<option value=\"$_\" %s>$_\n",
+		printf "<option value=\"$_\" %s>$_</option>\n",
 			$_ eq $options{backfstype} ? "selected" : "";
 		}
 	print "</select></td>\n";
@@ -632,10 +632,10 @@ if ($_[0] eq "swapfs") {
 
 	print "<tr> <td><b>Consistency check</b></td>\n";
 	print "<td><select name=cfs_con>\n";
-	print "<option value=1> Periodically\n";
-	printf "<option value=0 %s> Never\n",
+	print "<option value=1>Periodically</option>\n";
+	printf "<option value=0 %s>Never</option>\n",
 		defined($options{"noconst"}) ? "selected" : "";
-	printf "<option value=2 %s> On demand\n",
+	printf "<option value=2 %s>On demand</option>\n",
 		defined($options{"demandconst"}) ? "selected" : "";
 	print "</select></td>\n";
 

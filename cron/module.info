@@ -36,3 +36,6 @@ desc_pl.UTF-8=Harmonogram zadaÅ„ crona
 desc_sk.UTF-8=Cron PlÃ¡novaÄ Ãºloh
 desc_no=Tidsplanlagte Cron jobber
 longdesc_hu=Idõzitett futtatások létrehozása, módosítása és törlése
+longdesc_ms_MY=Cipta, Ubah dan padam Tugas Cron.
+desc_ms_MY=Tugas Cron Berjadual
+longdesc_de=Erstellt, editiert und l&#246;scht Cron-Auftr&#228;ge.

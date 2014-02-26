@@ -10,22 +10,15 @@ $access{'noconfig'} && &error($text{'text_ecannot'});
 $conf = &get_config();
 &ui_print_header($text{'text_editor'}, $text{'text_title'}, "");
 
-open(FILE, $config{'dhcpd_conf'});
-while(<FILE>) {
-	push(@lines, &html_escape($_));
-	}
-close(FILE);
-
+my $conftext = &read_file_contents($config{'dhcpd_conf'});
 if (!$access{'ro'}) {
 	print &text('text_desc', "<tt>$file</tt>"),"<p>\n";
 	}
 
-print "<form action=save_text.cgi method=post enctype=multipart/form-data>\n";
-print "<textarea name=text rows=20 cols=80>",
-	join("", @lines),"</textarea><p>\n";
-print "<input type=submit value=\"$text{'save'}\"> ",
-      "<input type=reset value=\"$text{'text_undo'}\">\n"
-	if (!$access{'ro'});
-print "</form>\n";
+print &ui_form_start("save_text.cgi", "form-data");
+print &ui_textarea("text", $conftext, 20, 80);
+print "<p>";
+print &ui_submit($text{'save'})."&nbsp;".&ui_reset($text{'text_undo'});
+print &ui_form_end(undef,undef,1);
 
 &ui_print_footer("",$text{'text_return'});

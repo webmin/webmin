@@ -1188,11 +1188,9 @@ $rv .= &ui_columns_start([ "", $text{'index_zone'}, $text{'index_type'} ],
 for($i=0; $i<@{$_[0]}; $i++) {
 	local @cols;
 	if (&have_dnssec_tools_support()) {
-		@cols = ( "<a href=\"$_[0]->[$i]\">$_[1]->[$i]</a>",
-			$_[2]->[$i], $_[4]->[$i]);
+		@cols = ( &ui_link($_[0]->[$i], $_[1]->[$i]), $_[2]->[$i], $_[4]->[$i] );
 	} else {
-		@cols = ( "<a href=\"$_[0]->[$i]\">$_[1]->[$i]</a>",
-			$_[2]->[$i]);
+		@cols = ( &ui_link($_[0]->[$i], $_[1]->[$i]), $_[2]->[$i] );
 	}
 	if (defined($_[3]->[$i])) {
 		$rv .= &ui_checked_columns_row(\@cols, \@tds, "d", $_[3]->[$i]);
@@ -1450,13 +1448,8 @@ if (!defined($get_chroot_cache)) {
 			}
 		}
 	if (!defined($get_chroot_cache)) {
+		# Use manually set path
 		$get_chroot_cache = $config{'chroot'};
-		if ($gconfig{'real_os_type'} eq 'CentOS Linux' &&
-		    $gconfig{'real_os_version'} >= 6 &&
-		    $get_chroot_cache eq "/var/named/chroot") {
-			# On CentOS 6.x, no chroot is needed
-			$get_chroot_cache = undef;
-			}
 		}
 	}
 return $get_chroot_cache;
@@ -1611,12 +1604,16 @@ local @mips = &unique($_[1], @{$_[4]});
 local $masters = { 'name' => 'masters',
                    'type' => 1,
                    'members' => [ map { { 'name' => $_ } } @mips ] };
+local $allow = { 'name' => 'allow-transfer',
+                 'type' => 1,
+                 'members' => [ map { { 'name' => $_ } } @mips ] };
 local $dir = { 'name' => 'zone',
                'values' => [ $_[0] ],
                'type' => 1,
                'members' => [ { 'name' => 'type',
                                 'values' => [ 'slave' ] },
-                                $masters
+                                $masters,
+				$allow,
                             ]
 	     };
 local $base = $config{'slave_dir'} || &base_directory();
@@ -2195,6 +2192,7 @@ foreach $k (keys %znc) {
 	}
 if ($changed || !$filecount || $znc{'version'} != $zone_names_version ||
     !$donefile{$config{'named_conf'}} ||
+    $config{'no_chroot'} != $znc{'no_chroot_config'} ||
     $config{'pid_file'} ne $znc{'pidfile_config'}) {
 	# Yes .. need to rebuild
 	%znc = ( );
@@ -2226,6 +2224,7 @@ if ($changed || !$filecount || $znc{'version'} != $zone_names_version ||
 	$znc{'base'} = &base_directory($conf, 1);
 	$znc{'pidfile'} = &get_pid_file(1);
 	$znc{'pidfile_config'} = $config{'pid_file'};
+	$znc{'no_chroot_config'} = $config{'no_chroot'};
 
 	# Store source files
 	foreach $f (keys %files) {
@@ -2933,26 +2932,23 @@ if (!$access{'ro'} && $access{'apply'}) {
 	if (&is_bind_running()) {
 		if ($zone && ($access{'apply'} == 1 || $access{'apply'} == 2)) {
 			# Apply this zone
-			push(@rv, "<a href='restart_zone.cgi?return=$r&".
-				  "view=$zone->{'viewindex'}&".
-				  "zone=$zone->{'name'}'>".
-				  "$text{'links_apply'}</a>");
+            my $link = "restart_zone.cgi?return=$r&".
+                        "view=$zone->{'viewindex'}&".
+                        "zone=$zone->{'name'}";
+			push(@rv, &ui_link($link, $text{'links_apply'}) );
 			}
 		# Apply whole config
 		if ($access{'apply'} == 1 || $access{'apply'} == 3) {
-			push(@rv, "<a href='restart.cgi?return=$r'>".
-				  "$text{'links_restart'}</a>");
+			push(@rv, &ui_link("restart.cgi?return=$r", $text{'links_restart'}) );
 			}
 		if ($access{'apply'} == 1) {
 			# Stop BIND
-			push(@rv, "<a href='stop.cgi?return=$r'>".
-				  "$text{'links_stop'}</a>");
+			push(@rv, &ui_link("stop.cgi?return=$r", $text{'links_stop'}) );
 			}
 		}
 	elsif ($access{'apply'} == 1) {
 		# Start BIND
-		push(@rv, "<a href='start.cgi?return=$r'>".
-			  "$text{'links_start'}</a>");
+		push(@rv, &ui_link("start.cgi?return=$r", $text{'links_start'}));
 		}
 	}
 return join('<br>', @rv);

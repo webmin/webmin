@@ -50,12 +50,12 @@ map { $cmd{lc($_)}++ } @{$l->{'words'}};
 print "<tr> <td valign=top><b>$text{'lserv_cmd'}</b></td>\n";
 print "<td><select name=cmd multiple size=7 width=120>\n";
 foreach $c ('cwd', 'mkd', 'rnfr', 'dele', 'rmd', 'retr', 'stor') {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		uc($c), $cmd{$c} ? "selected" : "", uc($c);
 	}
 print "</select><select name=cmd multiple size=7 width=120>\n";
 foreach $c ('site_chmod', 'read', 'write', 'dirs', 'login', 'all') {
-	printf "<option value=%s %s>%s\n",
+	printf "<option value=%s %s>%s</option>\n",
 		uc($c), $cmd{$c} ? "selected" : "", uc($c);
 	}
 print "</select></td> </tr>\n";

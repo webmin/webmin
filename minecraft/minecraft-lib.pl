@@ -247,13 +247,25 @@ if (!$nolog) {
 	}
 }
 
+# get_minecraft_log_file()
+sub get_minecraft_log_file
+{
+my $newfile = $config{'minecraft_dir'}."/logs/latest.log";
+if (-r $newfile) {
+	return $newfile;
+	}
+else {
+	return $config{'minecraft_dir'}."/server.log";
+	}
+}
+
 # execute_minecraft_command(command, [no-log], [wait-time])
 # Run a command, and return output from the server log
 sub execute_minecraft_command
 {
 my ($cmd, $nolog, $wait) = @_;
 $wait ||= 100;
-my $logfile = $config{'minecraft_dir'}."/server.log";
+my $logfile = &get_minecraft_log_file();
 my $fh = "LOG";
 &open_readfile($fh, $logfile);
 seek($fh, 0, 2);
@@ -296,7 +308,7 @@ sub list_connected_players
 my @out = &execute_minecraft_command("/list", 1);
 my @rv;
 foreach my $l (@out) {
-	if ($l !~ /players\s+online:/ && $l =~ /\[INFO\]\s+(\S.*)$/) {
+	if ($l !~ /players\s+online:/ && $l =~ /INFO\]:?\s+(\S.*)$/) {
 		push(@rv, split(/,\s+/, $1));
 		}
 	}
@@ -310,13 +322,70 @@ sub get_login_logout_times
 {
 my ($name) = @_;
 my ($ip, $intime, $xx, $yy, $zz, $outtime);
-my $logfile = $config{'minecraft_dir'}."/server.log";
-my $fh = "TAIL";
+my $logfile = &get_minecraft_log_file();
 my @events;
-&open_execute_command($fh, "tail -10000 $logfile", 1, 1);
-while(<$fh>) {
-	if (/^(\d+)\-(\d+)\-(\d+)\s+(\d+):(\d+):(\d+)\s+\[\S+\]\s+(.*)/) {
-		my ($y, $mo, $d, $h, $m, $s, $msg) =($1, $2, $3, $4, $5, $6, $7);
+my @files = ( $logfile );
+if ($logfile =~ /^(.*)\/latest.log$/) {
+	# New server version keeps old rotated log files in gzip format
+	my $dir = $1;
+	my @extras;
+	opendir(DIR, $dir);
+	foreach my $f (readdir(DIR)) {
+		if ($f =~ /^(\d+\-\d+\-\d+-\d+)\.log\.gz$/) {
+			push(@extras, $f);
+			}
+		}
+	closedir(DIR);
+	@extras = sort { $a cmp $b } @extras;
+	unshift(@files, map { "$dir/$_" } @extras);
+
+	# To avoid reading too much, limit to newest 100k of logs
+	my @small;
+	my $total = 0;
+	foreach my $f (reverse(@files)) {
+		push(@small, $f);
+		my @st = stat($f);
+		$total += $st[7];
+		last if ($total > 100000);
+		}
+	@files = reverse(@small);
+	}
+foreach my $f (@files) {
+	my $fh = "TAIL";
+	if ($f =~ /\/latest.log$/) {
+		# Latest log, read all of it
+		&open_readfile($fh, $f);
+		}
+	elsif ($f =~ /\.gz$/) {
+		# Read whole compressed log
+		&open_execute_command($fh, "gunzip -c $f", 1, 1);
+		}
+	else {
+		# Old single log file, read only the last 10k lines
+		&open_execute_command($fh, "tail -10000 $f", 1, 1);
+		}
+	my @tm = localtime(time());
+	while(<$fh>) {
+		my ($y, $mo, $d, $h, $m, $s, $msg);
+		if (/^(\d+)\-(\d+)\-(\d+)\s+(\d+):(\d+):(\d+)\s+\[\S+\]\s+(.*)/) {
+			# Old log format
+			($y, $mo, $d, $h, $m, $s, $msg) = ($1, $2, $3, $4, $5, $6, $7);
+			}
+		elsif (/^\[(\d+):(\d+):(\d+)\]\s+\[[^\[]+\]:\s*(.*)/) {
+			# New log format
+			($h, $m, $s, $msg) = ($1, $2, $3, $4);
+			if ($f =~ /\/(\d+)\-(\d+)\-(\d+)/) {
+				# Get date from old rotated log
+				($y, $mo, $d) = ($1, $2, $3);
+				}
+			else {
+				# Assume latest.log, which is for today
+				($y, $mo, $d) = ($tm[5]+1900, $tm[4]+1, $tm[3]);
+				}
+			}
+		else {
+			next;
+			}
 		if ($msg =~ /^\Q$name\E\[.*\/([0-9\.]+):(\d+)\]\s+logged\s+in.*\((\-?[0-9\.]+),\s+(\-?[0-9\.]+),\s+(\-?[0-9\.]+)\)/) {
 			# Login message
 			$ip = $1;
@@ -335,8 +404,8 @@ while(<$fh>) {
 			     'msg' => $msg });
 			}
 		}
+	close($fh);
 	}
-close($fh);
 return ( $ip, $intime, $xx, $yy, $zz, $outtime, \@events );
 }
 
@@ -379,7 +448,7 @@ sub list_banned_players
 my @out = &execute_minecraft_command("/banlist", 1);
 my @rv;
 foreach my $l (@out) {
-	if ($l !~ /banned\s+players:/ && $l =~ /\[INFO\]\s+(\S.*)$/) {
+	if ($l !~ /banned\s+players:/ && $l =~ /INFO\]:?\s+(\S.*)$/) {
 		push(@rv, grep { $_ ne "and" } split(/[, ]+/, $1));
 		}
 	}
@@ -393,7 +462,7 @@ sub list_whitelisted_players
 my @out = &execute_minecraft_command("/whitelist list", 1);
 my @rv;
 foreach my $l (@out) {
-	if ($l !~ /whitelisted\s+players:/ && $l =~ /\[INFO\]\s+(\S.*)$/) {
+	if ($l !~ /whitelisted\s+players:/ && $l =~ /INFO\]:?\s+(\S.*)$/) {
 		push(@rv, grep { $_ ne "and" } split(/[, ]+/, $1));
 		}
 	}
@@ -477,7 +546,7 @@ sub list_banned_ips
 my @out = &execute_minecraft_command("/banlist ips", 1);
 my @rv;
 foreach my $l (@out) {
-	if ($l !~ /banned\s+IP\s+addresses:/ && $l =~ /\[INFO\]\s+(\S.*)$/) {
+	if ($l !~ /banned\s+IP\s+addresses:/ && $l =~ /INFO\]:?\s+(\S.*)$/) {
 		push(@rv, grep { $_ ne "and" } split(/[, ]+/, $1));
 		}
 	}
@@ -776,7 +845,7 @@ if (time() - $config{'last_check'} > 6*60*60) {
 # usage that counts towards any limits
 sub get_current_day_usage
 {
-my $logfile = $config{'minecraft_dir'}."/server.log";
+my $logfile = &get_minecraft_log_file();
 
 # Seek back till we find a day line from a previous day
 my @st = stat($logfile);
@@ -803,10 +872,18 @@ while(1) {
 my (%rv, %limit_rv);
 my (%lastlogin, %limit_lastlogin);
 while(my $line = <LOGFILE>) {
-	$line =~ /^((\d+)\-(\d+)\-(\d+))\s+(\d+):(\d+):(\d+)/ || next;
-	my $day = $1;
-	$day eq $wantday || next;
-	my $secs = $5*60*60 + $6*60 + $7;
+	my ($day, $secs);
+	if ($line =~ /^((\d+)\-(\d+)\-(\d+))\s+(\d+):(\d+):(\d+)/) {
+		# Old log format, which contains the day and time
+		$day = $1;
+		$day eq $wantday || next;
+		$secs = $5*60*60 + $6*60 + $7;
+		}
+	elsif ($line =~ /^\[(\d+):(\d+):(\d+)\]/) {
+		# New log format, assume that it is for the current day
+		$day = $wantday;
+		$secs = $1*60*60 + $2*60 + $3;
+		}
 	if ($line =~ /\s(\S+)\[.*\/([0-9\.]+):(\d+)\]\s+logged\s+in\s/) {
 		# Login by a user
 		my ($u, $ip) = ($1, $2);

@@ -1,9 +1,14 @@
 #!/usr/local/bin/perl
 # Show password quality and change restrictions
 
+use strict;
+use warnings;
 require './acl-lib.pl';
+our (%in, %text, %config, %access);
 $access{'pass'} || &error($text{'pass_ecannot'});
 &ui_print_header(undef, $text{'pass_title'}, "");
+
+my %miniserv;
 &get_miniserv_config(\%miniserv);
 
 print &ui_form_start("save_pass.cgi");

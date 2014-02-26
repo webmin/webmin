@@ -25,33 +25,31 @@ else {
 	$key = $sub->{'members'}->[$in{'idx'}];
 	}
 
-print "<form action=save_keys.cgi>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'keys_id'}</b></td> ",
-      "<td><b>$text{'keys_alg'}</b></td> ",
-      "<td><b>$text{'keys_secret'}</b></td> </tr>\n";
+print &ui_form_start("save_keys.cgi", "post");
+print &ui_columns_start([$text{'keys_id'}, $text{'keys_alg'}, $text{'keys_secret'}]);
+
 for($i=0; $i<@keys; $i++) {
 	$k = $keys[$i];
-	print "<tr $cb>\n";
-	printf "<td><input name=id_$i size=15 value='%s'></td>\n",
-		$k->{'value'};
+    my @column_row;
+    push(@column_row, &ui_textbox("id_".$i, $k->{'value'}, 15) );
 
-	@algs = ( "hmac-md5" );
+	my @algs = ( "hmac-md5" );
 	$alg = &find_value("algorithm", $k->{'members'});
-	print "<td><select name=alg_$i>\n";
-	local $found;
+    my @algs_sel;
+    
+	my $found;
 	foreach $a (@algs) {
-		printf "<option %s>%s\n", $alg eq $a ? "selected" : "", $a;
+        push(@algs_sel, [$a, $a, ($alg eq $a ? "selected" : "") ] );
 		$found++ if ($alg eq $a);
 		}
-	print "<option selected>$alg\n" if (!$found && $alg);
-	print "</select></td>\n";
-
-	printf "<td><input name=secret_$i size=64 value='%s'></td> </tr>\n",
-		&find_value("secret", $k->{'members'});
+    push(@algs_sel,[$alg, $alg, ""]) if (!$found && $alg);
+    push(@column_row, &ui_select("alg_".$i, undef, \@algs_sel, 1) );
+    push(@column_row, &ui_textbox("secret_".$i, &find_value("secret", $k->{'members'}), 64) );
+    print &ui_columns_row(\@column_row);
 	}
-print "</table>\n";
-print "<input type=submit value=\"$text{'save'}\"></form>\n";
+print &ui_columns_end();
+print &ui_submit($text{'save'});
+print &ui_form_end(undef,undef,1);
 
 &ui_print_footer("", $text{'index_return'});
 

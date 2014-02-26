@@ -1,21 +1,24 @@
 #!/usr/local/bin/perl
 # Delete multiple proxy restrictions
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 &error_setup($text{'dicp_err'});
 $access{'actrl'} || &error($text{'eacl_ecannot'});
 &ReadParse();
-@d = split(/\0/, $in{'d'});
+my @d = split(/\0/, $in{'d'});
 @d || &error($text{'dicp_enone'});
 
 # Get the existing restrictions
 &lock_file($config{'squid_conf'});
-$conf = &get_config();
-@icps = &find_config("icp_access", $conf);
+my $conf = &get_config();
+my @icps = &find_config("icp_access", $conf);
 
 # Delete them
-foreach $d (sort { $b <=> $c } @d) {
-	$icp = $conf->[$d];
+foreach my $d (sort { $b <=> $a } @d) {
+	my $icp = $conf->[$d];
 	splice(@icps, &indexof($icp, @icps), 1);
 	}
 

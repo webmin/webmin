@@ -63,16 +63,16 @@ $i = 0;
 foreach $a (@{$res->{'servs'}}, "") {
 	local @a = split(/::/, $a);
 	print "<tr $cb> <td><select name=serv_$i>\n";
-	printf "<option value='' %s>&nbsp;\n",
+	printf "<option value='' %s>&nbsp;</option>\n",
 		$a[0] ? "" : "selected";
 	local $found;
 	foreach $s (@acts) {
-		printf "<option %s>%s\n",
+		printf "<option %s>%s</option>\n",
 			$a[0] eq $s ? "selected" : "", $s;
 		$found++ if ($a[0] eq $s);
 		}
 	if (!$found && $a[0]) {
-		print "<option selected>$a[0]\n";
+		print "<option selected>$a[0]</option>\n";
 		}
 	print "</select></td>\n";
 	printf "<td><input name=args_$i size=40 value='%s'></td> </tr>\n",

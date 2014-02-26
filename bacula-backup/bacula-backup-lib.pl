@@ -9,9 +9,10 @@ if (&foreign_check("node-groups")) {
 	&foreign_require("node-groups", "node-groups-lib.pl");
 	}
 
-$dir_conf_file = "$config{'bacula_dir'}/bacula-dir.conf";
-$fd_conf_file = "$config{'bacula_dir'}/bacula-fd.conf";
-$sd_conf_file = "$config{'bacula_dir'}/bacula-sd.conf";
+$cmd_prefix = &has_command("bareos-dir") ? "bareos" : "bacula";
+$dir_conf_file = "$config{'bacula_dir'}/$cmd_prefix-dir.conf";
+$fd_conf_file = "$config{'bacula_dir'}/$cmd_prefix-fd.conf";
+$sd_conf_file = "$config{'bacula_dir'}/$cmd_prefix-sd.conf";
 $bconsole_conf_file = "$config{'bacula_dir'}/bconsole.conf";
 $console_conf_file = "$config{'bacula_dir'}/console.conf";
 $console_cmd = -r "$config{'bacula_dir'}/bconsole" ?
@@ -417,9 +418,9 @@ sub tape_select
 local $t;
 print "<select name=tape>\n";
 foreach $t (split(/\s+/, $config{'tape_device'})) {
-	print "<option>",&text('index_tapedev', $t),"\n";
+	print "<option>",&text('index_tapedev', $t),"</option>\n";
 	}
-print "<option value=''>$text{'index_other'}\n";
+print "<option value=''>$text{'index_other'}</option>\n";
 print "</select>\n";
 print "<input name=other size=40> ",&file_chooser_button("other", 1),"\n";
 }
@@ -444,10 +445,10 @@ else {
 	}
 $cmd->execute();
 print "<select name=job>\n";
-print "<option value=''>$text{'job_any'}\n";
+print "<option value=''>$text{'job_any'}</option>\n";
 while(my ($id, $name, $when) = $cmd->fetchrow()) {
 	$when =~ s/ .*$//;
-	print "<option value=$id>$name ($id) ($when)\n";
+	print "<option value=$id>$name ($id) ($when)</option>\n";
 	}
 print "</select>\n";
 }
@@ -459,7 +460,7 @@ local $cmd = $_[0]->prepare("select ClientId,Name from Client order by ClientId 
 $cmd->execute();
 print "<select name=client>\n";
 while(my ($id, $name) = $cmd->fetchrow()) {
-	print "<option value=$name>$name ($id)\n";
+	print "<option value=$name>$name ($id)</option>\n";
 	}
 print "</select>\n";
 }
@@ -524,9 +525,9 @@ return -r $sd_conf_file;
 }
 
 # Names of the Bacula programs
-@bacula_processes = ( &has_bacula_dir() ? ( "bacula-dir" ) : ( ),
-		      &has_bacula_sd() ? ( "bacula-sd" ) : ( ),
-		      &has_bacula_fd() ? ( "bacula-fd" ) : ( ),
+@bacula_processes = ( &has_bacula_dir() ? ( $cmd_prefix."-dir" ) : ( ),
+		      &has_bacula_sd() ? ( $cmd_prefix."-sd" ) : ( ),
+		      &has_bacula_fd() ? ( $cmd_prefix."-fd" ) : ( ),
 		    );
 if ($gconfig{'os_type'} eq 'windows') {
 	# On Windows, the bootup action is just called Bacula (for the FD)
@@ -623,8 +624,8 @@ foreach my $i (@bacula_inits) {
 		      $action eq "restart" ? \&init::restart_action :
 					     undef;
 	$func || return "Unknown init action $action";
-	local $err = &$func($i);
-	if ($err) {
+	local ($ok, $err) = &$func($i);
+	if (!$ok) {
 		return &text('start_erun', "<tt>$i</tt>", "<pre>$err</pre>");
 		}
 	}
@@ -752,14 +753,14 @@ if ($cmd ne "quit") {
 local $out;
 while(1) {
         local $rv = &wait_for($h->{'outfh'},
-                        '^(\d+\-\S+\-\d+ \d+:\d+:\d+)\n',
+                        '^(\S+\s+)?(\d+\-\S+\-\d+ \d+:\d+:\d+)\n',
                         'Unable to connect to Director',
                         '.*\n');
         return undef if ($rv == 1 || $rv < 0);
         $out .= $wait_for_input;
         last if ($rv == 0);
         }
-$out =~ s/time\n(\d+\-\S+\-\d+ \d+:\d+:\d+)\n//;
+$out =~ s/time\n(\S+\s+)?(\d+\-\S+\-\d+ \d+:\d+:\d+)\n//;
 $out =~ s/^\Q$cmd\E\n//;
 return $out;
 }
@@ -1187,7 +1188,11 @@ else {
 	$rv = $db;
 	}
 if ($host) {
+	($host, $port) = split(/:/, $host);
 	$rv .= ";host=$host";
+	if ($port) {
+		$rv .= ";port=$port";
+		}
 	}
 return $rv;
 }

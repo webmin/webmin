@@ -481,6 +481,7 @@ usave_emkdir=Fehler beim Erstellen des Stammverzeichnisses: $1
 usave_emove=Fehler beim Verschieben des Stammverzeichnisses: $1
 usave_eoffice=Angaben zum B&#252;ro d&#252;rfen kein <tt>:</tt> enthalten
 usave_eothers=Der Benutzer wurde erfolgreich gesichert, aber ein Fehler ist in einem anderen Modul aufgetreten : $1
+usave_epasswd_cmd=Passwort Validierungsbefehl fehlgeschlagen
 usave_epasswd_dict=Dieses Passwort wurde im W&#246;rterbuch gefunden und wird abgewiesen
 usave_epasswd_min=Das Passwort muss aus mindestens $1 Zeichen bestehen
 usave_epasswd_mindays=Passwort wurde vor weniger als $1 Tagen ge&#228;ndert

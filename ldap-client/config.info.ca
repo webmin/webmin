@@ -1,4 +1,4 @@
-auth_ldap=Fitxer de configuració del client LDAP,8
+auth_ldap=Fitxers de configuració del client LDAP,8
 pam_ldap=Fitxer de configuració PAM de LDAP,3,EL mateix que el fitxer del client LDAP
 secret=Fitxers arrel de contrasenyes del client LDAP,9,50,2,\t
 line0=Configuració de la validació el fullejador LDAP,11

@@ -2,7 +2,10 @@
 # save_sync.cgi
 # Save unix/webmin user synchronization
 
+use strict;
+use warnings;
 require './acl-lib.pl';
+our (%in, %text, %config, %access, $module_config_directory);
 &ReadParse();
 $access{'sync'} && $access{'create'} && $access{'delete'} ||
 	&error($text{'sync_ecannot'});

@@ -2,6 +2,9 @@
 # calamaris.cgi
 # Run calamaris on the squid logfile(s)
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config, %gconfig, $module_name);
 require './squid-lib.pl';
 $access{'calamaris'} || &error($text{'calamaris_ecannot'});
 &ui_print_header(undef, $text{'calamaris_title'}, "");
@@ -15,10 +18,12 @@ if (!&has_command($config{'calamaris'})) {
 	}
 
 # Work out Calamaris version and args
-if (`$config{'calamaris'} -V 2>&1` =~ /(revision:|Calamaris)\s+(\d\S+)/i) {
+my $ver;
+if (&backquote_command("$config{'calamaris'} -V 2>&1") =~
+    /(revision:|Calamaris)\s+(\d\S+)/i) {
 	$ver = $2;
 	}
-$args = $config{'cal_all'} ? " -a" : "";
+my $args = $config{'cal_all'} ? " -a" : "";
 if ($ver >= 2.5) {
 	if ($config{'cal_fmt'} eq 'w') {
 		$args .= " -F html";
@@ -33,10 +38,12 @@ else {
 $args .= " $config{'cal_extra'}";
 
 # are there any logfiles to analyse?
-$ld = $config{'log_dir'};
-opendir(DIR, $ld);
-while($f = readdir(DIR)) {
-	local @st = stat("$ld/$f");
+my $ld = $config{'log_dir'};
+my $fh;
+my @files;
+opendir($fh, $ld);
+while(my $f = readdir($fh)) {
+	my @st = stat("$ld/$f");
 	if ($f =~ /^access.log.*gz$/) {
 		push(@files, [ "gunzip -c $ld/$f |", $st[9] ]);
 		}
@@ -47,7 +54,7 @@ while($f = readdir(DIR)) {
 		push(@files, [ "$ld/$f", $st[9] ]);
 		}
 	}
-closedir(DIR);
+closedir($fh);
 if (!@files) {
 	print &text('calamaris_elogs', "<tt>$ld</tt>",
 		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
@@ -56,62 +63,69 @@ if (!@files) {
 	}
 
 # run calamaris, parsing newest files and records first
-$temp = &transname();
-open(CAL, "| $config{'calamaris'} $args >$temp 2>/dev/null");
+my $temp = &transname();
+my $fh2;
+open($fh2, "| $config{'calamaris'} $args >$temp 2>/dev/null");
 if ($config{'cal_max'}) {
 	# read only the last N lines
 	print &text('calamaris_last', $config{'cal_max'}),"<p>\n";
 	@files = sort { $b->[1] <=> $a->[1] } @files;
-	$lnum = 0;
-	foreach $f (@files) {
-		$left = $config{'cal_max'} - $lnum;
+	my $lnum = 0;
+	foreach my $f (@files) {
+		my $left = $config{'cal_max'} - $lnum;
 		last if ($left <= 0);
+		my $fh3;
 		if ($f->[0] =~ /\|$/) {
-			open(LOG, "$f->[0] tail -$left |");
+			open($fh3, "$f->[0] tail -$left |");
 			}
 		else {
-			open(LOG, "tail -$left $f->[0] |");
+			open($fh3, "tail -$left $f->[0] |");
 			}
-		while(<LOG>) {
-			print CAL $_;
+		while(<$fh3>) {
+			print $fh2 $_;
 			$lnum++;
 			}
-		close(LOG);
+		close($fh3);
 		}
 	}
 else {
 	# read all the log files
-	foreach $f (@files) {
-		open(LOG, $f->[0]);
-		while(read(LOG, $buf, 1024) > 0) {
-			print CAL $buf;
+	my $fh3;
+	foreach my $f (@files) {
+		open($fh3, $f->[0]);
+		my $buf;
+		while(read($fh3, $buf, 1024) > 0) {
+			print $fh2 $buf;
 			}
-		close(LOG);
+		close($fh3);
 		}
 	}
-close(CAL);
+close($fh2);
 
 # Put the calamaris output into a nice webmin like table.
-$date = &make_date(time());
+my $date = &make_date(time());
 print &ui_table_start(&text('calamaris_gen', $date), undef, 2);
 
 # Get the output
-open(OUT, $temp);
+my $fh4;
+open($fh4, $temp);
+my $html = "";
 if ($config{'cal_fmt'} eq 'm') {
 	$html = "<pre>";
-	while(<OUT>) {
+	while(<$fh4>) {
 		$html .= &html_escape($_);
 		}
 	$html = "</pre>";
 	}
 else {
-	while(<OUT>) {
+	my $inbody = 0;
+	while(<$fh4>) {
 		if (/<\s*\/head/i || /<\s*body/i) { $inbody = 1; }
 		elsif (/<\s*\/body/i) { $inbody = 0; }
 		elsif ($inbody) { $html .= $_; }
 		}
 	}
-close(OUT);
+close($fh4);
 unlink($temp);
 
 # Show it

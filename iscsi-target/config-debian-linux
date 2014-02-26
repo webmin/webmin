@@ -1,6 +1,6 @@
 config_file=/etc/iet/ietd.conf
 ietadm=ietadm
-pid_file=/var/run/iscsi_trgt.pid
+pid_file=/var/run/iscsi_trgt.pid /var/run/ietd.pid
 init_name=iscsitarget
 opts_file=/etc/default/iscsitarget
 initiators_file=/etc/iet/initiators.allow

@@ -90,10 +90,10 @@ if ($n =~ /^(\S+)-(\S+)$/) {
 if (@virts) {
 	printf "<td><input name=name size=20 value=\"%s\">\@", $n;
 	print "<select name=virt>\n";
-	printf "<option value='' %s>%s\n",
+	printf "<option value='' %s>%s</option>\n",
 		$virt ? "" : "checked", $text{'aform_novirt'};
 	foreach $v (@virts) {
-		printf "<option value='%s' %s>%s\n",
+		printf "<option value='%s' %s>%s</option>\n",
 			$v->{'prepend'}, $virt eq $v ? "selected" : "",
 			$v->{'domain'};
 		}
@@ -108,7 +108,7 @@ for($i=0; $i<=@values; $i++) {
 	print "<tr> <td valign=top><b>$text{'aform_val'}</b></td>\n";
 	print "<td><select name=type_$i>\n";
 	for($j=0; $j<@typenames; $j++) {
-		printf "<option value=$j %s>$typenames[$j]\n",
+		printf "<option value=$j %s>$typenames[$j]</option>\n",
 			$type == $j ? "selected" : "";
 		}
 	print "</select>\n";

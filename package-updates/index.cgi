@@ -23,9 +23,9 @@ foreach $m ('current', 'updates', 'new',
 		push(@mlinks, "<b>$mmsg</b>");
 		}
 	else {
-		push(@mlinks, "<a href='index.cgi?mode=$m&all=".
+		push(@mlinks, &ui_link("index.cgi?mode=$m&all=".
 			      &urlize($in{'all'})."&search=".
-			      &urlize($in{'search'})."'>$mmsg</a>");
+			      &urlize($in{'search'}), $mmsg) );
 		}
 	}
 push(@grid, $text{'index_mode'}, &ui_links_row(\@mlinks));
@@ -109,10 +109,10 @@ foreach $p (sort { $a->{'name'} cmp $b->{'name'} } (@current, @avail)) {
 		{ 'type' => 'checkbox', 'name' => 'u',
 		  'value' => $p->{'update'}."/".$p->{'system'},
 		  'checked' => $need },
-		"<a href='view.cgi?mode=$in{'mode'}&name=".
+		&ui_link("view.cgi?mode=$in{'mode'}&name=".
 		  &urlize($p->{'name'})."&system=".
 		  &urlize($p->{'system'})."&search=".
-		  &urlize($in{'search'})."'>$p->{'name'}</a>",
+		  &urlize($in{'search'}), $p->{'name'}),
 		$p->{'desc'},
 		$msg,
 		$source ? ( $source ) : $anysource ? ( "") : ( ),

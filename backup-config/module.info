@@ -26,3 +26,5 @@ desc_pl.UTF-8=Kopia plików konfiguracyjnych
 desc_hu.UTF-8=Konfigurációs file -ok mentése
 desc_sk.UTF-8=Záloha konfiguračných súborov
 desc_no=Sikkerhetskopier konfig.filer
+longdesc_ms_MY=Lakukan salinan secara manual atau berjadual dan mengembalikan fail konfigurasi yang diuruskan oleh modul Webmin.
+desc_ms_MY=Backup Fail konfigurasi

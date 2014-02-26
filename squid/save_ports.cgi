@@ -2,12 +2,15 @@
 # save_ports.cgi
 # Save ports and other networking options
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 $access{'portsnets'} || &error($text{'eports_ecannot'});
 &ReadParse();
 &lock_file($config{'squid_conf'});
-$conf = &get_config();
-$whatfailed = $text{'sport_ftspo'};
+my $conf = &get_config();
+&error_setup($text{'sport_ftspo'});
 
 if ($squid_version >= 2.3 && $in{'ports_def'}) {
 	&save_directive($conf, 'http_port', [ ]);
@@ -64,27 +67,28 @@ return $_[0] =~ /^\d+$/ ? undef : &text('sport_emsg3',$_[0]);
 # save_ports(name)
 sub save_ports
 {
-local ($i, $port, $addr, @ports);
-for($i=0; defined($port = $in{"$_[0]_port_$i"}); $i++) {
+my ($name) = @_;
+my ($i, $port, $addr, @ports);
+for($i=0; defined($port = $in{$name."_port_".$i}); $i++) {
 	next if (!$port);
 	$port =~ /^\d+$/ || &error("'$port' is not a valid port");
-	if ($in{"$_[0]_addr_def_$i"}) {
-		push(@ports, { 'name' => $_[0],
+	if ($in{$name."_addr_def_".$i}) {
+		push(@ports, { 'name' => $name,
 			       'values' => [ $port ] } );
 		}
 	else {
-		$addr = $in{"$_[0]_addr_$i"};
+		$addr = $in{$name."_addr_".$i};
 		&to_ipaddress($addr) || &to_ip6address($addr) ||
 			&error("'$addr' is not a valid proxy address");
 		$addr = "[$addr]" if (&check_ip6address($addr));
-		push(@ports, { 'name' => $_[0],
+		push(@ports, { 'name' => $name,
 			       'values' => [ "$addr:$port" ] } );
 		}
 	if ($squid_version >= 2.5) {
 		push(@{$ports[$#ports]->{'values'}},
-		     split(/\s+/, $in{"$_[0]_opts_$i"}));
+		     split(/\s+/, $in{$name."_opts_".$i}));
 		}
 	}
-&save_directive($conf, $_[0], \@ports);
+&save_directive($conf, $name, \@ports);
 }
 

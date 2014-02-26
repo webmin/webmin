@@ -34,7 +34,7 @@ if ($access{'lang'}) {
 		&ui_select("lang", $user->{'lang'},
 			   [ map { [ $_->{'lang'},
 				     $_->{'desc'}." (".uc($_->{'lang'}).")" ] }
-			         &list_languages() ]));
+			         &list_languages() ]), undef, [ "valign=top","valign=top" ] );
 	}
 
 if ($access{'theme'}) {
@@ -60,7 +60,7 @@ if ($access{'theme'}) {
 		&ui_select("theme", $user->{'theme'},
 			[ [ '', $text{'index_themedef'} ],
 			  map { [ $_->{'dir'}, $_->{'desc'} ] }
-			      @themes ]));
+			      @themes ]), undef, [ "valign=top","valign=top" ]);
 
 	# Overlay, if any
 	if (@overlays) {
@@ -68,7 +68,7 @@ if ($access{'theme'}) {
 			&ui_select("overlay", $user->{'overlay'},
 				[ [ '', $text{'index_overlaydef'} ],
 				  map { [ $_->{'dir'}, $_->{'desc'} ] }
-				      @overlays ]));
+				      @overlays ]), undef, [ "valign=middle","valign=middle" ]);
 		}
 	}
 
@@ -80,7 +80,7 @@ if ($access{'pass'} && &can_change_pass($user)) {
 			    [ 0, $text{'index_passset'} ] ])." ".
 		&ui_password("pass", undef, 20)." ".
 		$text{'index_passagain'}." ".
-		&ui_password("pass2", undef, 20));
+		&ui_password("pass2", undef, 20), undef, [ "valign=top","valign=middle" ]);
 	}
 
 print &ui_table_end();

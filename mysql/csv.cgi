@@ -19,7 +19,8 @@ if (!$in{'where_def'}) {
 # Execute the SQL
 @cols = split(/\0/, $in{'cols'});
 @cols || &error($text{'csv_ecols'});
-$cmd = "select ".join(",", @cols)." from ".&quotestr($in{'table'});
+$cmd = "select ".join(",", map { &quote_table($_) } @cols).
+       " from ".&quotestr($in{'table'});
 if (!$in{'where_def'}) {
 	$cmd .= " where ".$in{'where'};
 	}

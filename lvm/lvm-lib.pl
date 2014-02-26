@@ -451,6 +451,16 @@ local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $? ? $out : undef;
 }
 
+# resize_snapshot_volume(&lv, size)
+sub resize_snapshot_volume
+{
+local $cmd = $_[1] > $_[0]->{'cow_size'} ? "lvextend" : "lvreduce -f";
+$cmd .= " -L".quotemeta($_[1])."k";
+$cmd .= " ".quotemeta($_[0]->{'device'});
+local $out = &backquote_logged("$cmd 2>&1 </dev/null");
+return $? ? $out : undef;
+}
+
 # change_logical_volume(&lv, [&old-lv])
 sub change_logical_volume
 {
@@ -471,6 +481,14 @@ sub rename_logical_volume
 {
 local $cmd = "lvrename ".quotemeta($_[0]->{'device'})." ".
 	     quotemeta("/dev/$_[0]->{'vg'}/$_[1]");
+local $out = &backquote_logged("$cmd 2>&1 </dev/null");
+return $? ? $out : undef;
+}
+
+# rollback_snapshot(&lv)
+sub rollback_snapshot
+{
+local $cmd = "lvconvert --merge ".quotemeta($_[0]->{'device'});
 local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $? ? $out : undef;
 }
@@ -520,12 +538,8 @@ else {
 	my $can = &can_resize_filesystem($type);
 	if ($can && $mounted) {
 		# If currently mounted, check if resizing is possible
-		if ($dir eq "/") {
-			# Cannot resize root
-			$can = 0;
-			}
-		elsif ($type =~ /^ext[3-9]$/ || $type eq "xfs" ||
-		       $type eq "reiserfs" || $type eq "jfs") {
+		if ($type =~ /^ext[3-9]$/ || $type eq "xfs" ||
+		    $type eq "reiserfs" || $type eq "jfs") {
 			# ext*, xfs, jfs and reiserfs can be resized up
 			$can = 1;
 			}
@@ -848,6 +862,16 @@ else {
 	local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 	return $? ? $out : undef;
 	}
+}
+
+# supports_snapshot_rollback()
+# Only newer kernels safely support this (2.6.35 and above)
+sub supports_snapshot_rollback
+{
+my $out = &backquote_command("uname -r 2>/dev/null </dev/null");
+return $out =~ /^(\d+)\./ && $1 >= 3 ||
+       $out =~ /^(\d+)\.(\d+)/ && $1 == 2 && $2 >= 7 ||
+       $out =~ /^(\d+)\.(\d+)\.(\d+)/ && $1 == 2 && $2 == 6 && $3 >= 35;
 }
 
 1;

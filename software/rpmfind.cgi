@@ -70,8 +70,7 @@ if ($in{'search'}) {
 					  $text{'rpm_finddesc'} ], 100);
 		foreach $r (@rv) {
 			print &ui_columns_row([
-				"<a href='' onClick='sel(\"$r->{'url'}\")'>".
-                                 "$r->{'file'}</a>",
+				&ui_link("#", $r->{'file'}, undef, "onClick='sel(\"$r->{'url'}\");'"),
 				$r->{'dist'},
 				$r->{'desc'}
 				]);

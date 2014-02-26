@@ -14,7 +14,7 @@ printf "<input type=radio name=dbs_def value=0 %s> %s<br>\n",
 print "<select name=dbs size=3 multiple width=100>\n";
 map { $dcan{$_}++ } split(/\s+/, $_[0]->{'dbs'});
 foreach $d (&list_databases()) {
-	printf "<option %s>%s\n",
+	printf "<option %s>%s</option>\n",
 		$dcan{$d} ? 'selected' : '', $d;
 	}
 print "</select></td>\n";

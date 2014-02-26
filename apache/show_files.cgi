@@ -31,7 +31,7 @@ print "<b>$text{'show_edit'}</b>\n";
 print "<select name=type>\n";
 foreach $e (@elist) {
 	print "<option value=",$e->{'edit'}->{'type'},">",
-	      $e->{'name'},"\n";
+	      $e->{'name'},"</option>\n";
 	}
 print "</select> <input type=submit value=\"$text{'show_ok'}\">\n";
 print "</form>\n";

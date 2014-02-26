@@ -128,7 +128,7 @@ elsif ($in{'frame'} == 1) {
 	# List of files in this directory
 	&popup_header();
 	print <<EOF;
-<script>
+<script type='text/javascript'>
 function fileclick(f, d)
 {
 curr = top.frames[1].document.forms[0].elements[1].value;
@@ -164,11 +164,14 @@ location = "chooser.cgi?frame=1&chroot=$uchroot&type=$utype&file="+p;
 }
 </script>
 EOF
-
+	print "<div id='filter_box' style='display:none;margin:0px;padding:0px;width:100%;clear:both;'>";
+	print &ui_textbox("filter",$text{'ui_filterbox'}, 50, 0, undef,"style='width:100%;color:#aaa;' onkeyup=\"filter_match(this.value,'row',true);\" onfocus=\"if (this.value == '".$text{'ui_filterbox'}."') {this.value = '';this.style.color='#000';}\" onblur=\"if (this.value == '') {this.value = '".$text{'ui_filterbox'}."';this.style.color='#aaa';}\"");
+	print &ui_hr("style='wdith:100%;'")."</div>";
 	print "<b>",&text('chooser_dir', &html_escape($dir)),"</b>\n";
 	opendir(DIR, $in{'chroot'}.$dir) ||
 		&popup_error(&text('chooser_eopen', "$!"));
 	print &ui_columns_start(undef, 100);
+    	my $cnt = 0;
 	foreach $f (sort { $a cmp $b } readdir(DIR)) {
 		$path = "$in{'chroot'}$dir$f";
 		if ($f eq ".") { next; }
@@ -198,16 +201,21 @@ EOF
 			$tm[3], $text{'smonth_'.($tm[4]+1)}, $tm[5]+1900);
 		push(@cols, sprintf "<tt>%.2d:%.2d</tt>", $tm[2], $tm[1]);
 		print &ui_columns_row(\@cols);
+        	$cnt++;
 		}
 	closedir(DIR);
 	print &ui_columns_end();
+    if ( $cnt >= 10 ) {
+        print "<script type='text/javascript' src='$gconfig{'webprefix'}/unauthenticated/filter_match.js?28112013'></script>";
+        print "<script type='text/javascript'>filter_match_box();</script>";
+    }
 	&popup_footer();
 	}
 elsif ($in{'frame'} == 2) {
 	# Current file and OK/cancel buttons
 	&popup_header();
 	print <<EOF;
-<script>
+<script type='text/javascript'>
 function filechosen()
 {
 if ($add == 0) {
@@ -226,10 +234,9 @@ EOF
 	print &ui_form_start(undef, undef, undef,
 		"onSubmit='filechosen(); return false'");
 	print &ui_table_start(undef, "width=100%", 2);
-	print &ui_table_row(undef,
-		&ui_submit($text{'chooser_ok'})." ".
+	print &ui_table_row(&ui_submit($text{'chooser_ok'}),
 		&ui_textbox("path", $dir.$file, 45, 0, undef,
-			    "style='width:90%'"), 2);
+			    "style='width:100%'"), 1,["width=5% valign=middle nowrap","valign=middle width=95%"]);
 	print &ui_table_end();
 	print &ui_form_end();
 	&popup_footer();

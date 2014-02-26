@@ -117,7 +117,12 @@ if ($ty == 1) {
 	print "<td><input size=60 name=uses value=\"\"></td></tr>\n";
 
 	print "<tr>", &hostconfig_createtext("OrderPreference","");
-	print "<td><SELECT name=order><option value=First>First<option value=Early>Early<option value=None selected>None<option value=Late>Late<option value=Last>Last</select></td></tr>\n";
+	print "<td><SELECT name=order><option value=First>First</option>",
+			"<option value=Early>Early</option>",
+			"<option value='None selected'>None</option>",
+			"<option value=Late>Late</option>",
+			"<option value=Last>Last</option>",
+			"</select></td></tr>\n";
 
 	print "<tr>", &hostconfig_createtext("Start Message","");
 	print "<td><input size=60 name=start value=\"\"></td></tr>\n";

@@ -86,7 +86,7 @@ print "<td align=right>",&ui_submit($text{'show_edit'}),"\n";
 print "<select name=type>\n";
 foreach $e (@elist) {
 	print "<option value=",$e->{'edit'}->{'type'},">",
-	      $e->{'name'},"\n";
+	      $e->{'name'},"</option>\n";
 	}
 print "</select></td>\n";
 print "</form></tr></table>\n";
@@ -104,16 +104,15 @@ for($idx=0; $idx<@$list; $idx++) {
 	$t = $edit{lc($d->{'name'})};
 	if ($d->{'type'}) {
 		# Recurse into section
-		local ($ed1, $ed2);
+		my $ed = "";
 		print " " x $ind;
 		if ($d->{'name'} eq "VirtualHost") { next; }
 		elsif ($d->{'name'} =~ /Location|Files|Directory/) {
-			$ed1 = "<a href=\"$dir?$args&".
-			       "idx=$idx\">";
-			$ed2 = "</a>";
+			$ed = "$dir?$args&idx=$idx";
 			}
-		print $ed1,"&lt;",$d->{'name'}," ",$d->{'value'},
-		      "&gt;",$ed2,"\n";
+        my $et = "&lt;".$d->{'name'}." ".$d->{'value'}."&gt;";
+        print ( $ed ne "" ? &ui_link($ed, $et) : $et);
+		print "\n";
 		&show_directives($d->{'members'}, $ind+1);
 		print " " x $ind;
 		print "&lt;/",$d->{'name'},"&gt;\n";

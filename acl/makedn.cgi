@@ -1,25 +1,29 @@
 #!/usr/local/bin/perl
 # Create the LDAP base DN
 
+use strict;
+use warnings;
 require './acl-lib.pl';
+our (%in, %text, %config, %access);
 $access{'pass'} || &error($text{'sql_ecannot'});
-&get_miniserv_config(\%miniserv);
 &ReadParse();
 &error_setup($text{'makedn_err'});
 
-$dbh = &connect_userdb($in{'userdb'});
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+my $dbh = &connect_userdb($in{'userdb'});
 ref($dbh) || &error($dbh);
 
 &ui_print_unbuffered_header(undef, $text{'makedn_title'}, "");
 
 # Work out object class for the DN
-($proto, $user, $pass, $host, $prefix, $argstr) =
+my ($proto, $user, $pass, $host, $prefix, $argstr) =
 	&split_userdb_string($in{'userdb'});
-$schema = $dbh->schema();
-@allocs = map { $_->{'name'} }
-           grep { $_->{'structural'} }
-                $schema->all_objectclasses();
-@ocs = ( );
+my $schema = $dbh->schema();
+my @allocs = map { $_->{'name'} }
+		grep { $_->{'structural'} }
+			$schema->all_objectclasses();
+my @ocs = ( );
 foreach my $poc ("top", "domain") {
         if (&indexof($poc, @allocs) >= 0) {
                 push(@ocs, $poc);
@@ -29,12 +33,12 @@ foreach my $poc ("top", "domain") {
 
 # Create the DN
 print &text('makedn_exec', "<tt>$prefix</tt>"),"<br>\n";
-@attrs = ( "objectClass", \@ocs );
+my @attrs = ( "objectClass", \@ocs );
 if (&indexof("domain", @ocs) >= 0 && $prefix =~ /^([^=]+)=([^, ]+)/) {
 	# Domain class needs dc
 	push(@attrs, $1, $2);
 	}
-$rv = $dbh->add($prefix, attr => \@attrs);
+my $rv = $dbh->add($prefix, attr => \@attrs);
 if (!$rv || $rv->code) {
 	print &text('makedn_failed',
 		    $rv ? $rv->error : "Unknown error"),"<p>\n";
@@ -45,7 +49,7 @@ else {
 &disconnect_userdb($in{'userdb'}, $dbh);
 
 # Check again if OK
-$err = &validate_userdb($in{'userdb'}, 0);
+my $err = &validate_userdb($in{'userdb'}, 0);
 if ($err) {
 	print "<b>",&text('makedn_still', $err),"</b><p>\n";
 	}

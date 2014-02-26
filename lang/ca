@@ -133,9 +133,11 @@ session_mesg=Per entrar al servidor Webmin de $1, has d'introduir un nom d'usuar
 session_mesg2=Per entrar, has d'introduir un nom d'usuari i una contrasenya.
 session_user=Usuari
 session_pass=Contrasenya
+session_twofactor=Testimoni de dos factors
 session_login=Entra
 session_clear=Neteja
 session_failed=L'entrada ha fallat. Prova-ho un altre cop, si et plau.
+session_twofailed=L'autenticació de dos factors ha fallat: $1
 session_logout=Has sortit amb èxit. Utilitza el formulari de sota per tornar a entrar.
 session_timed_out=La sessió s'ha cancel·lat després de $1 minuts d'inactivitat.
 session_save=Recorda la contrasenya
@@ -301,6 +303,7 @@ ui_edate=Data invàlida
 ui_etime=Hora invàlida
 ui_paging=Mostrant les files $1 a $2 de $3
 ui_rowlabel=$2 a la fila $1:
+ui_filterbox=Tipus a filtrar...
 
 header_statusmsg=$1 ha entrat a $2 $3 el $4 ($5)
 

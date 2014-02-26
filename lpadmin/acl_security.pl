@@ -17,7 +17,7 @@ local ($p, %pcan);
 map { $pcan{$_}++ } split(/\s+/, $_[0]->{'printers'});
 foreach $p (@plist) {
 	local $prn = &get_printer($p);
-	printf "<option value=%s %s>%s (%s)\n",
+	printf "<option value=%s %s>%s (%s)</option>\n",
 		$p, $pcan{$p} ? 'selected' : '',
 		$prn->{'desc'}, $p;
 	}
@@ -34,7 +34,7 @@ print "<select name=jobs multiple size=4 width=15>\n";
 map { $jcan{$_}++ } split(/\s+/, $_[0]->{'jobs'});
 foreach $p (@plist) {
 	local $prn = &get_printer($p);
-	printf "<option value=%s %s>%s (%s)\n",
+	printf "<option value=%s %s>%s (%s)</option>\n",
 		$p, $jcan{$p} ? 'selected' : '',
 		$prn->{'desc'}, $p;
 	}

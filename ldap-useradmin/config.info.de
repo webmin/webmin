@@ -22,6 +22,7 @@ group_fields=Zus&#228;tzliche LDAP&#45;Gruppeneigenschaften&#44; um das Editiere
 multi_fields=Erlaube mehrfache Werte f&#252;r zus&#228;tzliche Eigenschaften?,1,1-Ja,0-Nein
 noclash=Attribute&#44; f&#252;r die Duplikate nicht zul&#228;ssig sind,0
 person=Gibt allen Unix-Benutzer die <tt>Person</tt>Objekt-Klasse?,1,1-Ja,0-Nein
+gecos=Setze <tt>gecos</tt>-Attribut auf &#220;bereinstimmung des Echtnamens?,1,1-Ja,0-Nein
 user_filter=Zus&#228;tzliche LDAP-Filter f&#252;r Benutzer,3,Keine,,,,Attribut=Wert
 group_filter=Zus&#228;tzliche LDAP-Filter f&#252;r Gruppen,3,Keine,,,,Attribut=Wert
 line5=Heimatverzeichnisoptionen,11

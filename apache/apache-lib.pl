@@ -797,7 +797,9 @@ sub editable_directives
 local($m, $func, @rv, %done);
 foreach $m (keys %httpd_modules) {
 	$func = $m."_directives";
-	push(@rv, &$func($httpd_modules{$m}));
+	if (defined(&$func)) {
+		push(@rv, &$func($httpd_modules{$m}));
+		}
 	}
 @rv = grep { $_->{'type'} == $_[0] && $_->{$_[1]} &&
 	     !$done{$_->{'name'}}++ } @rv;
@@ -862,7 +864,7 @@ foreach $e (@{$_[0]}) {
 		foreach $ed (split(/\s+/, $e->{'name'})) {
 			# nodo50 v0.1 - Change 000004 - Open new window for Help in Apache module and mod_apachessl Help from http://www.apache-ssl.org and
 			# nodo50 v0.1 - Change 000004 - Abre nueva ventana para Ayuda del módulo Apache y para mod_apachessl busca la Ayuda en http://www.apache-ssl.org and
-			$names .= "<tt><a href='".($e->{'module'} eq 'mod_apachessl' ? 'http://www.apache-ssl.org/docs.html#'.$ed : $apache_docbase."/".$e->{'module'}.".html#".lc($ed))."'>".$ed."</a></tt> ";
+			$names .= "<tt>".&ui_link( ($e->{'module'} eq 'mod_apachessl' ? 'http://www.apache-ssl.org/docs.html#'.$ed : $apache_docbase."/".$e->{'module'}.".html#".lc($ed)), $ed )."</tt>&nbsp;";
 			#$names .= "<tt><a href='".$apache_docbase."/".$e->{'module'}.".html#".lc($ed)."'>".$ed."</a></tt> ";
 			# nodo50 v0.1 - Change 000004 - End
 			}
@@ -936,7 +938,7 @@ return ( [ $v =~ /\s/ && !$_[3] ? "\"$v\"" : $v ] );
 # Each choice is a display,value pair
 sub choice_input
 {
-local($i, $rv);
+my($i, $rv);
 for($i=3; $i<@_; $i++) {
 	$_[$i] =~ /^([^,]*),(.*)$/;
 	$rv .= &ui_oneradio($_[1], $2, $1, lc($2) eq lc($_[0]) ||
@@ -949,12 +951,11 @@ return $rv;
 # Each choice is a display,value pair
 sub choice_input_vert
 {
-local($i, $rv);
+my($i, $rv);
 for($i=3; $i<@_; $i++) {
 	$_[$i] =~ /^([^,]*),(.*)$/;
-	$rv .= sprintf "<input type=radio name=$_[1] value=\"$2\" %s> $1<br>\n",
-		lc($2) eq lc($_[0]) || !defined($_[0]) &&
-				       lc($2) eq lc($_[2]) ? "checked" : "";
+	$rv .= &ui_oneradio($_[1], $2, $1, lc($2) eq lc($_[0]) ||
+				!defined($_[0]) && lc($2) eq lc($_[2]))."<br>\n";
 	}
 return $rv;
 }
@@ -969,15 +970,12 @@ else { return ( [ $in{$_[0]} ] ); }
 # select_input(value, name, default, [choice]+)
 sub select_input
 {
-local($i, $rv);
-$rv = "<select name=\"$_[1]\">\n";
+my($i, @sel);
 for($i=3; $i<@_; $i++) {
 	$_[$i] =~ /^([^,]*),(.*)$/;
-	$rv .= sprintf "<option value=\"$2\" %s> $1\n",
-		lc($2) eq lc($_[0]) || !defined($_[0]) && lc($2) eq lc($_[2]) ? "selected" : "";
+    push(@sel, [$2, $1, (lc($2) eq lc($_[0]) || !defined($_[0]) && lc($2) eq lc($_[2]) ? "selected" : "") ]);
 	}
-$rv .= "</select>\n";
-return $rv;
+return &ui_select($_[1], undef, \@sel, 1);
 }
 
 # parse_choice(name, default)
@@ -989,8 +987,8 @@ return &parse_choice(@_);
 # handler_input(value, name)
 sub handler_input
 {
-local($m, $func, @hl, $rv, $h);
-local $conf = &get_config();
+my($m, $func, @hl, @sel, $h);
+my $conf = &get_config();
 push(@hl, "");
 foreach $m (keys %httpd_modules) {
 	$func = $m."_handlers";
@@ -999,15 +997,11 @@ foreach $m (keys %httpd_modules) {
 		}
 	}
 if (&indexof($_[0], @hl) < 0) { push(@hl, $_[0]); }
-$rv = "<select name=$_[1]>\n";
 foreach $h (&unique(@hl)) {
-	$rv .= sprintf "<option value=\"$h\" %s>$h\n",
-		$h eq $_[0] ? "selected" : "";
+    push(@sel, [$h, $h, ($h eq $_[0] ? "selected" : "")] );
 	}
-$rv .= sprintf "<option value=\"None\" %s>&lt;$text{'core_none'}&gt;\n",
-	$_[0] eq "None" ? "selected" : "";
-$rv .= "</select>\n";
-return $rv;
+push(@sel, ["None", "&lt;".$text{'core_none'}."&gt;", ($_[0] eq "None" ? "selected" : "")] );
+return &ui_select($_[1], undef, \@sel, 1);
 }
 
 # parse_handler(name)
@@ -1032,8 +1026,7 @@ foreach $f (@{$_[0]}) {
 	push(@fl, $f) if (&indexof($f, @fl) < 0);
 	}
 foreach $f (&unique(@fl)) {
-	$rv .= sprintf "<input type=checkbox name=$_[1] value='%s' %s> %s\n",
-			$f, &indexof($f, @{$_[0]}) < 0 ? "" : "checked", $f;
+    $rv .= &ui_checkbox($_[1], $f, $f, (&indexof($f, @{$_[0]}) < 0 ? 0 : 1 ) ); 
 	}
 return $rv;
 }
@@ -1111,8 +1104,10 @@ sub config_icons
 local($m, $func, $e, %etype, $i, $c);
 foreach $m (sort { $a cmp $b } (keys %httpd_modules)) {
         $func = $m."_directives";
-	foreach $e (&$func($httpd_modules{$m})) {
-		if ($e->{$_[0]}) { $etype{$e->{'type'}}++; }
+	if (defined(&$func)) {
+		foreach $e (&$func($httpd_modules{$m})) {
+			if ($e->{$_[0]}) { $etype{$e->{'type'}}++; }
+			}
 		}
         }
 local (@titles, @links, @icons);
@@ -1143,14 +1138,14 @@ $args = "redir=".&urlize(&this_url());
 local @rv;
 if (&is_apache_running()) {
 	if ($access{'apply'}) {
-		push(@rv, "<a href=\"restart.cgi?$args\">$text{'apache_apply'}</a>\n");
+		push(@rv, &ui_link("restart.cgi?$args", $text{'apache_apply'}) );
 		}
 	if ($access{'stop'}) {
-		push(@rv, "<a href=\"stop.cgi?$args\">$text{'apache_stop'}</a>\n");
+		push(@rv, &ui_link("stop.cgi?$args", $text{'apache_stop'}) );
 		}
 	}
 elsif ($access{'stop'}) {
-	push(@rv, "<a href=\"start.cgi?$args\">$text{'apache_start'}</a>\n");
+	push(@rv, &ui_link("start.cgi?$args", $text{'apache_start'}) );
 	}
 return join("<br>\n", @rv);
 }
@@ -1255,7 +1250,7 @@ local $txtlen = length($txt);
 $txt = &html_escape($txt);
 print " " x $_[2];
 if ($_[3]) {
-	print "<a href=\"$_[3]\">",$txt,"</a>";
+	print &ui_link($_[3], $txt);
 	}
 else { print $txt; }
 print " " x (90 - $txtlen - $_[2] - length($lstr));
@@ -1749,13 +1744,16 @@ foreach $l (&find_directive_struct("LoadModule", $conf)) {
 undef(@get_config_cache);	# Cache is no longer valid
 
 # Add dynamically loaded modules
-&open_execute_command(APACHE, "$config{'apachectl_path'} -M 2>/dev/null", 1);
-while(<APACHE>) {
-	if (/(\S+)_module/ && -r "$module_root_directory/$1.pl") {
-		push(@rv, $1);
+if ($config{'apachectl_path'}) {
+	&open_execute_command(APACHE,
+		"$config{'apachectl_path'} -M 2>/dev/null", 1);
+	while(<APACHE>) {
+		if (/(\S+)_module/ && -r "$module_root_directory/mod_${1}.pl") {
+			push(@rv, "mod_${1}");
+			}
 		}
+	close(APACHE);
 	}
-close(APACHE);
 
 return &unique(@rv);
 }
@@ -1779,7 +1777,7 @@ if ($config{'defines_file'}) {
 	# or regular name=value format
 	local %def;
 	&read_env_file($config{'defines_file'}, \%def);
-	if ($config{'defines_name'}) {
+	if ($config{'defines_name'} && $def{$config{'defines_name'}}) {
 		# Looking for var like OPTIONS='-Dfoo -Dbar'
 		local $var = $def{$config{'defines_name'}};
 		foreach my $v (split(/\s+/, $var)) {

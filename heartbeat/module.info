@@ -11,3 +11,5 @@ desc_cz=Heartbeat monitor
 desc_nl=Hartslag Monitor
 desc_cz.UTF-8=Heartbeat monitor
 desc_no=Heartbeat Overv&#229;ker
+desc_ms_MY=Memantau Heartbeat
+longdesc_ms_MY=Mengkonfigurasi pakej Heartbeat untuk pelayan failover automatik didalam kluster.

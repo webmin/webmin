@@ -34,3 +34,5 @@ desc_hu.UTF-8=Rendszernapló
 desc_cz.UTF-8=Systémové logy
 desc_pl.UTF-8=Logi systemowe
 desc_no=System logger
+longdesc_ms_MY=Mengkonfigurasi pelayan syslog pada sistem anda dan melihat fail lognya.
+desc_ms_MY=Sistem Logs

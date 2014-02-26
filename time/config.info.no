@@ -3,7 +3,6 @@ lease=Akseptabelt antall sekunders avvik mellom systemtid og maskinvaretid,0
 timeserver=Standard tids-tjener,3,Ingen
 ntp_only=Bruk bare NTP for synkronisering av tid?,1,1-Ja,0-Nei
 line2=System konfigurasjon,11
-hwtime=Systemet st&#248;tter maskinvaretid,1,1-Ja,0-Nei,2-Oppdag automatisk
 seconds=Format for setting av systemtid,1,1-MMDDHHMMYYYY.SS,0-MMDDHHMMYY,2-YYYYMMDDHHMM.SS
 zone_style=Metode for tidssone konfigurering,4,linux-Linux,freebsd-FreeBSD,solaris-Solaris,-&lt;St&#248;ttes ikke p&#229; dette OSet&gt;
 hwclock_flags=Kommando-linje flagg for hwclock,10,-Ingen,sysconfig-Fra /etc/sysconfig/clock

@@ -38,7 +38,7 @@ if (!$in{'cn'}) { $in{'cn'}=&get_system_hostname(); }
 if (!$in{'days'}) { $in{'days'}=$config{'default_days'}; }
 
 if ($error) {
-        print "<hr> <b>$text{'gencert_error'}</b>\n<ul>\n";
+        print &ui_hr()."<b>$text{'gencert_error'}</b>\n<ul>\n";
         print "$error</ul>\n$text{'gencert_pleasefix'}\n";
 }
 
@@ -103,18 +103,19 @@ EOF
 	unlink($outfile);
 	unlink($conffilename);
 	print &ui_hr();
-	if ($error){ print "<b>$text{'gencert_e_genfailed'}</b>\n<pre>$error</pre>\n<hr>\n";}
+	if ($error){ print "<b>$text{'gencert_e_genfailed'}</b>\n<pre>$error</pre>\n";}
 	else {
 		print "<b>$text{'gencert_genworked'}</b>\n<pre>$out</pre>\n";
-		$url="\"view.cgi?certfile=".&my_urlize($in{'certfile'}).'"';
-		print "<b>$text{'gencert_saved_cert'} <a href=$url>$in{'certfile'}</a></b><br>\n";
-		$url="\"view.cgi?keyfile=".&my_urlize($in{'keyfile'}).'"';
-		print "<b>$text{'gencert_saved_key'} <a href=$url>$in{'keyfile'}</a></b><br>\n";
-		$url="\"view.cgi?keycertfile=".&my_urlize($in{'keycertfile'}).'"';
+		$url="view.cgi?certfile=".&my_urlize($in{'certfile'});
+        print "<ul>";
+		print "<li><b>$text{'gencert_saved_cert'}: ".&ui_link($url,$in{'certfile'})."</b></li>";
+		$url="view.cgi?keyfile=".&my_urlize($in{'keyfile'});
+		print "<li><b>$text{'gencert_saved_key'}: ".&ui_link($url,$in{'keyfile'})."</b></li>";
+		$url="view.cgi?keycertfile=".&my_urlize($in{'keycertfile'});
 		if (-e $in{'keycertfile'}) {
-			print "<b>$text{'gencert_saved_keycert'} <a href=$url>$in{'keyfile'}</a></b><br>\n";
+			print "<li><b>$text{'gencert_saved_keycert'}: ".&ui_link($url,$in{'keycertfile'})."</b></li>";
 		}
-		print &ui_hr();
+        print "</ul>";
 	}
 	print &ui_hr();
 	&footer("", $text{'index_return'});
@@ -122,27 +123,25 @@ EOF
 
 sub overwriteprompt{
 	my($buffer1,$buffer2,$buffer,$key,$temp_pem,$url);
-	
-	print "<table>\n<tr valign=top>";
+	my $rv = "";
+    my $link = "";
 	if (-e $in{'certfile'}) {
 		open(OPENSSL,"$config{'openssl_cmd'} x509 -in $in{'certfile'} -text -fingerprint -noout|");
 		while(<OPENSSL>){ $buffer1.=$_; }
 		close(OPENSSL);
-		$url="\"view.cgi?certfile=".&my_urlize($in{'certfile'}).'"';
-		print "<td><table border><tr $tb><td align=center><b><a href=$url>$in{'certfile'}</a></b></td> </tr>\n<tr $cb> <td>\n";
-		if (!$buffer1) { print $text{'e_file'};}
-		else { &print_cert_info(0,$buffer1); }
-		print "</td></tr></table></td>\n";
+		$url="view.cgi?certfile=".&my_urlize($in{'certfile'});
+        $link = &ui_link($url,$in{'certfile'});
+        $rv = &ui_table_start($link, undef, 2);
+        $rv .= &ui_table_row(undef, (!$buffer1 ? $text{'e_file'} : &show_cert_info(0,$buffer1) ) );
 	}
 	if (-e $in{'keyfile'}) {
 		open(OPENSSL,"$config{'openssl_cmd'} rsa -in $in{'keyfile'} -text -noout|");
 		while(<OPENSSL>){ $buffer.=$_; }
 		close(OPENSSL);
-		$url="\"view.cgi?keyfile=".&my_urlize($in{'keyfile'}).'"';
-		print "<td><table border><tr $tb> <td align=center><b><a href=$url>$in{'keyfile'}</a></b></td> </tr>\n<tr $cb> <td>\n";
-		if (!$buffer) { print $text{'e_file'};}
-		else { &print_key_info(0,$buffer); }
-		print "</td></tr></table></td>\n";
+		$url="view.cgi?keyfile=".&my_urlize($in{'keyfile'});
+        $link = &ui_link($url,$in{'keyfile'});
+        $rv = &ui_table_start($link, undef, 2);
+        $rv .= &ui_table_row(undef, (!$buffer ? $text{'e_file'} : &show_key_info(0,$buffer) ) );
 	}
 	if (-e $in{'keycertfile'}) {
 		undef($buffer);
@@ -153,25 +152,27 @@ sub overwriteprompt{
 		while(<OPENSSL>){ $buffer.=$_; }
 		close(OPENSSL);
 		if ($buffer1 ne $buffer2) {
-			$url="\"view.cgi?keycertfile=".&my_urlize($in{'keycertfile'}).'"';
-			print "<td><table border><tr $tb> <td align=center colspan=2><b><a href=$url>$in{'keycertfile'}</a></b></td> </tr>\n";
-			print "<tr $cb><td><b>$text{'certificate'}</b></td><td><b>$text{'key'}</b></td></tr>\n<tr $cb valign=top> <td>\n";
-			if (!$buffer2) { print $text{'e_file'};}
-			else {&print_cert_info(0,$buffer2); }
-			print "</td><td>\n";
-			if (!$buffer) { print $text{'e_file'};}
-			else {&print_key_info(0,$buffer); }
-			print "</td></tr></table></td>\n";
+			$url="view.cgi?keycertfile=".&my_urlize($in{'keycertfile'});
+            $link = &ui_link($url,$in{'keycertfile'});
+            $rv = &ui_table_start($link, undef, 2);
+            $rv .= &ui_table_row($text{'certificate'}, "<b>".$text{'key'}."</b>");
+            $rv .= &ui_table_row(undef, (!$buffer2 ? $text{'e_file'} : &show_cert_info(0,$buffer2) ) );
+            $rv .= &ui_table_row(undef, (!$buffer ? $text{'e_file'} : &show_key_info(0,$buffer) ) );
 		}
 	}
-	print "</tr></table>\n";
-	print "$text{'gencert_moreinfo'}";
-	print "<hr>\n$text{'gencert_overwrite'}\n<p>\n";
-	
-	print "<form action=gencert.cgi method=post>\n";
+
+    print "<br>";
+    print $rv;
+    print &ui_table_hr();
+    print &ui_table_row(undef,$text{'gencert_moreinfo'});
+    print &ui_table_row(undef,&ui_hr().$text{'gencert_overwrite'});
+    $rv = &ui_form_start("gencert.cgi", "post");
 	foreach $key (keys %in) {
-		print "<input name=\"$key\" type=hidden value=\"$in{$key}\">\n";
+        $rv .= &ui_hidden($key,$in{$key});
 	}
-	print "<input name=overwrite value=\"yes\" type=hidden>\n";
-	print "<input type=submit value=\"$text{'continue'}\"></form>\n";
+    $rv .= &ui_hidden("overwrite","yes");
+    $rv .= &ui_submit($text{'continue'});
+    $rv .= &ui_form_end();
+    print &ui_table_row(undef,$rv);
+    print &ui_table_end();
 }

@@ -1,0 +1,9 @@
+host=Nama hos untuk disambungkan kepada,3,Automatik
+port=Port untuk disambungkan kepada,3,Lalai
+proxy=Gunakan proksi untuk menyambung ke hos yang lain?,1,0-Ya,1-Tidak
+mode=Jenis sambungan,1,0-Telnet,1-SSH (disarankan)
+sizemode=Saiz applet,1,0-80x24 aksara (dalam font lalai),1-Maksima,2-Saiz khusus
+size=Kelaziman lebar x tinggi,0
+fontsize=Saiz font dalam titik,3,Lalai
+detach=Mod tetingkap asing,1,1-Ya,0-Tidak
+no_test=Uji pelayan telnet atau SSH?,1,0-Ya,1-Tidak

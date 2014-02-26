@@ -1,6 +1,9 @@
 #!/usr/local/bin/perl
 # Call squidclient to remove just one URL
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 &error_setup($text{'purge_err'});
 $access{'rebuild'} || &error($text{'clear_ecannot'});
@@ -10,10 +13,11 @@ $in{'url'} || &error($text{'purge_eurl'});
 &ui_print_header(undef, $text{'purge_title'}, "");
 
 # Get the port number
-$conf = &get_config();
+my $conf = &get_config();
+my $port;
 if ($squid_version >= 2.3) {
-	@ports = &find_config("http_port", $conf);
-	foreach $p (@ports) {
+	my @ports = &find_config("http_port", $conf);
+	foreach my $p (@ports) {
 		if ($p->{'values'}->[0] =~ /(\d+)$/) {
 			$port = $1;
 			last;
@@ -27,9 +31,9 @@ else {
 
 # Run it
 print &text('purge_doing', "<tt>$in{'url'}</tt>"),"\n";
-$cmd = "$config{'squidclient'} -p $port -m PURGE ".quotemeta($in{'url'});
-$out = &backquote_logged("$cmd 2>&1");
-print "<pre>$out</pre>\n";
+my $cmd = "$config{'squidclient'} -p $port -m PURGE ".quotemeta($in{'url'});
+my $out = &backquote_logged("$cmd 2>&1");
+print "<pre>".&html_escape($out)."</pre>\n";
 if ($?) {
 	print $text{'purge_failed'},"<br>\n";
 	}

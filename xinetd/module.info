@@ -10,3 +10,5 @@ desc_nl=Netwerk Services
 desc_pl=Us³ugi sieciowe
 longdesc_pl=Edytuj serwery obs³ugiwane przez xinetd, w zastêpstwie dla inetd.
 desc_hu=Hálózati szolgáltatások (Xinetd)
+desc_ms_MY=Servis Rangkaian
+longdesc_ms_MY=Sunting pelayan yang dikendalikan oleh xinetd, iaitu pengganti inetd.

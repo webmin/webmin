@@ -42,8 +42,13 @@ print "<p>\n";
 
 # Show records
 if (-r $temp) {
-	@recs = &read_zone_file($temp, $zone->{'name'}.".", undef, undef, 0, 1);
-	print &text('xfer_count', scalar(@recs)),"<p>\n";
+	@recs = &read_zone_file($temp, $zone->{'name'}.".", undef, 0, 1);
+	if (@recs) {
+		print &text('xfer_count', scalar(@recs)),"<p>\n";
+		}
+	else {
+		print "<font color=red>$text{'xfer_none'}</font><p>\n";
+		}
 	}
 &unlink_file($temp);
 

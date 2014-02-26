@@ -5,3 +5,5 @@ category=system
 depends=proc cron
 desc_ca=Estat del Sistema
 desc_hu=Rendszerállapot
+desc_ms_MY=Status Sistem
+longdesc_ms_MY=Koleksi arkib status sistem latar belakang

@@ -177,6 +177,7 @@ usave_epasswd_re=La contrasenya no coincideix amb l'expressió $1
 usave_epasswd_dict=La contrasenya és una paraula del diccionari
 usave_epasswd_same=La contrasenya conté o és igual que el nom de l'usuari
 usave_epasswd_mindays=La contrasenya s'ha canviat fa menys de $1 dies
+usave_epasswd_cmd=L'ordre de validació de la contrasenya ha fallat
 usave_eothers=L'usuari s'ha desat correctament, però s'ha produït un error en una altre mòdul: $1
 
 gedit_title=Edició de Grup

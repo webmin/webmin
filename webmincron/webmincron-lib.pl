@@ -89,11 +89,7 @@ if ($wcron{'args'}) {
 &lock_file($file);
 &write_file($file, \%wcron);
 &unlock_file($file);
-eval {
-	# Reload may fail if Webmin isn't running
-	$main::error_must_die = 1;
-	&reload_miniserv();
-	};
+&reload_miniserv(1);
 }
 
 =head2 delete_webmin_cron(&cron)
@@ -108,7 +104,7 @@ my $file = "$webmin_crons_directory/$cron->{'id'}.cron";
 &lock_file($file);
 &unlink_file($file);
 &unlock_file($file);
-&reload_miniserv();
+&reload_miniserv(1);
 }
 
 =head2 find_webmin_cron(module, function, [&args])
@@ -304,7 +300,7 @@ foreach my $arr ("mins", "hours", "days", "months", "weekdays") {
 		foreach my $v (@sec) {
 			if ($v =~ /^(.*)=(.*)$/) { $disp = $1; $code = $2; }
 			else { $disp = $code = $v; }
-			$rv .= sprintf "<option value=\"$code\" %s>$disp\n",
+			$rv .= sprintf "<option value=\"$code\" %s>$disp</option>\n",
 				$inuse{$code} ? "selected" : "";
 			}
 		$rv .= "</select></td>\n";

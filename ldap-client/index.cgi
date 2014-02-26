@@ -5,19 +5,23 @@ require './ldap-client-lib.pl';
 &ui_print_header(undef, $module_info{'desc'}, "", "intro", 1, 1);
 
 # Make sure the config file exists
-if (!-r $config{'auth_ldap'}) {
+if (!-r &get_ldap_config_file()) {
+	&foreign_require("software");
+	$lnk = &software::missing_install_link("ldap", $text{'index_ldapmod'},
+                        "../$module_name/", $module_info{'desc'});
 	&ui_print_endpage(
 		&ui_config_link('index_econf',
-			[ "<tt>$config{'auth_ldap'}</tt>", undef ]));
+			[ "<tt>".&get_ldap_config_file()."</tt>", undef ]).
+		($lnk ? "<p>\n".$lnk : ""));
 	}
 
 # Check for separate config files for PAM and NSS
 if ($config{'pam_ldap'} && -r $config{'pam_ldap'} && !$config{'nofixpam'} &&
-    !&same_file($config{'pam_ldap'}, $config{'auth_ldap'})) {
+    !&same_file($config{'pam_ldap'}, &get_ldap_config_file())) {
 	print "<center>\n";
 	print &ui_form_start("fixpam.cgi");
 	print &text('index_fixpam',
-		"<tt>".&html_escape($config{'auth_ldap'})."</tt>",
+		"<tt>".&html_escape(&get_ldap_config_file())."</tt>",
 		"<tt>".&html_escape($config{'pam_ldap'})."</tt>"),"<p>\n";
 	print &ui_form_end([ [ undef, $text{'index_fix'} ],
 			     [ "ignore", $text{'index_ignore'} ] ]);

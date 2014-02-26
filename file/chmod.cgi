@@ -47,24 +47,39 @@ elsif ($in{'rec'} == 1) {
 	closedir(DIR);
 	}
 elsif ($in{'rec'} == 2) {
-	# Directory and all subdirectories
+	# Directory and all subdirectories and files
 	&update($in{'path'}, 0);
-	&recurse($in{'path'});
+	&recurse($in{'path'}, 1, 1);
+	}
+elsif ($in{'rec'} == 3) {
+	# Files in the directory and sub-directories, but not the directories
+	# themselves
+	&recurse($in{'path'}, 1, 0);
+	}
+elsif ($in{'rec'} == 4) {
+	# This directory and sub-directories, but not files
+	&update($in{'path'}, 0);
+	&recurse($in{'path'}, 0, 1);
 	}
 print "\n";
 
+# recurse(dir, do-files, do-dirs)
+# Updates permissions on all files in a directory, and sub-directories
 sub recurse
 {
-local(@files, $f, $full);
+local ($dir, $do_files, $do_dirs) = @_;
 opendir(DIR, $_[0]);
-@files = readdir(DIR);
+my @files = readdir(DIR);
 closedir(DIR);
-foreach $f (@files) {
-	$full = "$_[0]/$f";
+foreach my $f (@files) {
+	my $full = "$dir/$f";
 	next if ($f eq "." || $f eq "..");
 	next if (-l $full);
-	&update($full, !-d $full);
-	&recurse($full) if (-d $full);
+	if (!-d $full && $do_files ||
+	    -d $full && $do_dirs) {
+		&update($full, !-d $full);
+		}
+	&recurse($full, $do_files, $do_dirs) if (-d $full);
 	}
 }
 
@@ -75,6 +90,7 @@ exit;
 }
  
 # update(file, perms_only)
+# Update permissions and ownership on a single file
 sub update
 {
 local $perms = $in{'perms'};

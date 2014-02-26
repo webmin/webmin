@@ -2,19 +2,25 @@
 # cachemgr.cgi
 # Run the squid cachemgr.cgi program
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config, $module_name);
 require './squid-lib.pl';
 $access{'cms'} || &error($text{'cach_ecannot'});
-($mgr) = glob($config{'cachemgr_path'});
+my ($mgr) = glob($config{'cachemgr_path'});
 &same_file($0, $mgr) && &error($text{'cach_esame'});
 if (&has_command($mgr)) {
 	$| = 1;
+	my $temp;
 	if ($ENV{'REQUEST_METHOD'} eq 'POST') {
 		# Deal with POST data
-		&read_fully(STDIN, \$post, $ENV{'CONTENT_LENGTH'});
+		my $post;
+		&read_fully(\*STDIN, \$post, $ENV{'CONTENT_LENGTH'});
 		$temp = &transname();
-		open(TEMP, ">$temp");
-		print TEMP $post;
-		close(TEMP);
+		my $fh = "TEMP";
+		&open_tempfile($fh, ">$temp", 0, 1);
+		&print_tempfile($fh, $post);
+		&close_tempfile($fh);
 		open(MGR, "$mgr ".join(" ", @ARGV)." <$temp |");
 		}
 	else {

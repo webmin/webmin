@@ -14,7 +14,7 @@ use WebminCore;
 
 &popup_header();
 print <<EOF;
-<link rel="stylesheet" type="text/css" href="left.css" />
+<link rel="stylesheet" type="text/css" href="gray-left.css" />
 <script>
 function toggleview (id1,id2) {
 		var obj1 = document.getElementById(id1);

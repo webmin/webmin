@@ -20,3 +20,6 @@ desc_ru.UTF-8=Сервер CVS
 desc_nl=CVS Server
 desc_cz.UTF-8=CVS server
 desc_no=CVS Tjener
+longdesc_ms_MY=Menyediakan pelayan CVS yang boleh dicapai jauh, mengurus pengguna dan melayari repositori.
+desc_ms_MY=Pelayan CVS
+longdesc_de=Einrichten eines Remote-CVS-Server, Verwalten von Benutzern und Durchsuchen von Repository.

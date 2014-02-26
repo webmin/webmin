@@ -14,5 +14,5 @@ login_login=Login
 login_pass=Passwort
 login_title=Einloggen auf Webseite
 login_user=Benutzername
-seturl_err=Fehlgeschlagen URL zu &#246;ffnen:
+seturl_err=Fehlgeschlagen URL zu &#246;ffnen
 seturl_eurl=Ung&#252;ltige URL eingegeben

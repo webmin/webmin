@@ -1,0 +1,7 @@
+config_file=iSCSI m&#229;l konfigurasjonsfil,0
+ietadm=Full sti til ietadm kommando,0
+pid_file=Full sti til PID fil,0
+init_name=Oppstartsscript navn,0
+opts_file=Fil som inneholder kommandolinje flagg,0
+initiators_file=Fillisting tillatte initiator adresser,0
+targets_file=Fillisting tillatte m&#229;ladresser,0

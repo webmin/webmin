@@ -590,7 +590,7 @@ foreach $s ($_[0] ? @known_cfd_sections : @known_sections) {
 	next if (!$tt);
 	local $t = $text{"section_".$s."_".$_[0]};
 	$t = $text{"section_".$s} if (!$t);
-	print "<option value=$s>$t ($s)\n";
+	print "<option value=$s>$t ($s)</option>\n";
 	}
 print "</select></form>\n";
 

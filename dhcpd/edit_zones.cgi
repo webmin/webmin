@@ -8,6 +8,7 @@
 require './dhcpd-lib.pl';
 require './params-lib.pl';
 &ReadParse();
+%access = &get_module_acl();
 $access{'zones'} || &error($text{'zone_ecannot'});
 $conf = &get_config();
 $in{'new'} || (($par, $zone) = &get_branch('zone'));
@@ -16,55 +17,34 @@ $sconf = $zone->{'members'};
 # display
 &ui_print_header(undef, $in{'new'} ? $text{'zone_crheader'} : $text{'zone_eheader'}, "");
 
-print "<form action=save_zones.cgi method=post>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'zone_tabhdr'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_form_start("save_zones.cgi", "post");
+print &ui_table_start($text{'zone_tabhdr'}, "width=100%", 2);
+print &ui_table_row($text{'zone_desc'}, &ui_textbox("desc", ($zone ? &html_escape($zone->{'comment'}) : ""), 60) );
+print &ui_table_row($text{'zone_name'}, &ui_textbox("name", ($zone ? &html_escape($zone->{'value'}) : ""), 60) );
+print &ui_table_row($text{'zone_primary'}, &ui_textbox("primary", ($zone ? &html_escape(find_value("primary",$zone->{'members'})) : ""), 15) );
 
-print "<tr> <td><b>$text{'zone_desc'}</b></td>\n";
-printf "<td colspan=3><input name=desc size=60 value='%s'></td> </tr>\n",
-	$zone ? &html_escape($zone->{'comment'}) : "";
-
-print "<tr> <td><b>$text{'zone_name'}</b></td>\n";
-printf "<td colspan=3><input name=name size=60 value='%s'></td> </tr>\n",
-	$zone ? &html_escape($zone->{'value'}) : "";
-
-print "<tr> <td><b>$text{'zone_primary'}</b></td>\n";
-printf "<td colspan=3><input name=primary size=15 value='%s'></td> </tr>\n",
-	$zone ? &html_escape(find_value("primary",$zone->{'members'})) : "";
-
-
-print "<tr>\n";
-@keys = sort { $a->{'values'}->[0] cmp $b->{'values'}->[0] } (find("key", $conf));
-print "<td valign=top align=left><b>$text{'zone_tsigkey'}</b></td>\n";
-print "<td><select name=key size=1>\n";
-local $keyname=find_value("key",$zone->{'members'});
+my @keys = sort { $a->{'values'}->[0] cmp $b->{'values'}->[0] } (find("key", $conf));
+my $keyname=find_value("key",$zone->{'members'});
+my @key_sel;
 foreach $k (@keys) {
 	$curkeyname=$k->{'values'}->[0];
-	printf "<option value=\"%s\" %s>%s</option>\n",
-		$curkeyname,
-		(!$in{'new'} &&  $curkeyname eq $keyname ? "selected" : ""),
-		$curkeyname;
+    push(@key_sel, [$curkeyname, $curkeyname, (!$in{'new'} && $curkeyname eq $keyname ? "selected" : "") ] );
 	}
-print "</select></td>\n";
 
+print &ui_table_row($text{'zone_tsigkey'}, &ui_select("key", undef, \@key_sel, 1) );
 
+print &ui_table_end();
 
-
-print "</table></td></tr>\n";
-print "</table>\n";
-
-print "<table width=100%><tr>\n";
 if (!$in{'new'}) {
-	print "<input type=hidden name=idx value=\"$in{'idx'}\">\n";
-	print "<td align=left><input type=submit value=\"$text{'save'}\"></td>\n";
-	print "<td align=right><input type=submit name=delete ", "value=\"$text{'delete'}\"></td>\n";
+    print &ui_hidden("idx", $in{'idx'});
+	print &ui_submit($text{'save'})."&nbsp;".&ui_submit($text{'delete'},"delete");
 }
 else {
-	print "<td align=left><input type=hidden name=new value=1>\n";
-	print "<input type=submit value=\"$text{'create'}\"></td>\n";
+    print &ui_hidden("new",1);
+    print &ui_submit($text{'create'});
 }
-print "</tr></table>\n";
 
-print "</form>\n";
+print &ui_form_end();
+
+
 &ui_print_footer("", $text{'zone_return'});

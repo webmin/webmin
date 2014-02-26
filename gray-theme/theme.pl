@@ -215,11 +215,15 @@ if ($ref) {
 sub theme_post_change_modules
 {
 print <<EOF;
-<script>
+<script type='text/javascript'>
 var url = '' + top.left.location;
-if (url.indexOf('mode=webmin') > 0) {
-    top.left.location = url;
+if ( url.match(/mode=.*/) ) {
+    if ( url.indexOf('mode=webmin') > 0) {
+        top.left.location = url;
     }
+} else {
+    top.left.location = url;
+}
 </script>
 EOF
 }

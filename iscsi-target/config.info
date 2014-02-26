@@ -1,6 +1,6 @@
 config_file=iSCSI target configuration file,0
 ietadm=Full path to ietadm command,0
-pid_file=Full path to PID file,0
+pid_file=Full path to PID file(s),0
 init_name=Bootup script name,0
 opts_file=File containing command line flags,0
 initiators_file=File listing allowed initiator addresses,0

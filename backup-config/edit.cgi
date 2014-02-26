@@ -27,7 +27,7 @@ print &ui_form_start("save.cgi", "post");
 print &ui_hidden("new", $in{'new'});
 print &ui_hidden("id", $in{'id'});
 
-my @tds = ( "width=30%" );
+my @tds = ( "width=20% nowrap" );
 print &ui_hidden_table_start($text{'edit_header'}, "width=100%", 2,
 			     "main", 1, \@tds);
 
@@ -86,10 +86,7 @@ print &ui_table_row($text{'edit_sched'},
 		    &ui_radio("sched", $job || $in{'new'} ? 1 : 0,
 			      [ [ 0, $text{'no'} ],
 				[ 1, $text{'edit_schedyes'} ] ]));
-print &ui_table_row(undef,
-	"<tr> <td colspan=2><table border width=100%>\n".
-	&capture_function_output(\&cron::show_times_input, $backup).
-	"</table></td> </tr>\n");
+print &cron::get_times_input($backup);
 
 print &ui_hidden_table_end();
 if ($in{'new'}) {

@@ -1,0 +1,8 @@
+__norefs=1
+index_hosts=Semua perubahan kata laluan yang dibuat pada modul ini akan dibuat pada semua hos $1 yang diuruskan oleh modul Pengguna dan Grup Kelompok.
+index_noservers=Tiada pelayan untuk menguruskan pengguna seperti yang dinyatakan pada modul <a href=$1>Pengguna dan Grup Kelompok</a>.
+index_title=Menukar Kata laluan Kelomppok
+passwd_err=Gagal untuk menukar kata laluan
+passwd_euser=Pengguna tidak wujud!
+passwd_on=Menukar kata laluan pada $1 ..
+passwd_title=Menukar Kata laluan

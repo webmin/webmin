@@ -2,15 +2,19 @@
 # index.cgi
 # List all webmin users
 
+use strict;
+use warnings;
 require './acl-lib.pl';
+our (%in, %text, %config, %access, $base_remote_user);
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 
 # Fetch user and group lists, if possible
+my (@ulist, @glist, %ingroup);
 eval {
 	$main::error_must_die = 1;
 	@glist = &list_groups();
-	foreach $g (@glist) {
-		foreach $gm (@{$g->{'members'}}) {
+	foreach my $g (@glist) {
+		foreach my $gm (@{$g->{'members'}}) {
 			$ingroup{$gm} = $g;
 			}
 		}
@@ -20,30 +24,36 @@ if ($@) {
 	print "<b>",&text('index_eulist', "$@"),"</b><p>\n";
 	}
 
-foreach $u (@ulist) {
+my $me;
+foreach my $u (@ulist) {
 	$me = $u if ($u->{'name'} eq $base_remote_user);
 	}
-@mcan = $access{'mode'} == 1 ? @{$me->{'modules'}} :
-	$access{'mode'} == 2 ? split(/\s+/, $access{'mods'}) :
-			       &list_modules();
-map { $mcan{$_}++ } @mcan;
+my @mcan = $access{'mode'} == 1 ? @{$me->{'modules'}} :
+	   $access{'mode'} == 2 ? split(/\s+/, $access{'mods'}) :
+			          &list_modules();
+my %mcan = map { $_, 1 } @mcan;
 
 if ($config{'order'}) {
 	@ulist = sort { $a->{'name'} cmp $b->{'name'} } @ulist;
 	@glist = sort { $a->{'name'} cmp $b->{'name'} } @glist;
 	}
 
-foreach $m (&list_module_infos()) {
+my %modname;
+foreach my $m (&list_module_infos()) {
 	$modname{$m->{'dir'}} = $m->{'desc'};
 	}
-@canulist = grep { &can_edit_user($_->{'name'}, \@glist) } @ulist;
+my @canulist = grep { &can_edit_user($_->{'name'}, \@glist) } @ulist;
+my ($form, $shown_users);
+my @gbut = @glist ? ( undef, [ 'joingroup', $text{'index_joingroup'},
+		&ui_select("group", undef, [ map { $_->{'name'} } @glist ]) ] )
+		  : ( );
 if (!@canulist) {
 	# If no users, only show section heading if can create
 	if ($access{'create'}) {
 		print &ui_subheading($text{'index_users'})
 			if (!$config{'display'});
 		print "<b>$text{'index_nousers'}</b><p>\n";
-		print "<a href=edit_user.cgi>$text{'index_create'}</a>\n";
+		print ui_link("edit_user.cgi", $text{'index_create'}) . "\n";
 		$shown_users = 1;
 		}
 	}
@@ -54,26 +64,28 @@ elsif ($config{'display'}) {
 	&show_name_table(\@canulist, "edit_user.cgi",
 			 $access{'create'} ? $text{'index_create'} : undef,
 			 $text{'index_users'}, "user");
-	print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
+	print &ui_form_end([ [ "delete", $text{'index_delete'} ],
+			     @gbut ]);
 	$shown_users = 1;
 	$form++;
 	}
 else {
 	# Show usernames and modules
 	print &ui_subheading($text{'index_users'});
-	@rowlinks = ( );
+	my @rowlinks = ( );
 	if (!$config{'select'}) {
 		print &ui_form_start("delete_users.cgi", "post");
 		push(@rowlinks, &select_all_link("d", $form),
 			     &select_invert_link("d", $form));
 		}
-	push(@rowlinks, "<a href=edit_user.cgi>$text{'index_create'}</a>")
+	push(@rowlinks, ui_link("edit_user.cgi", $text{'index_create'}))
 		if ($access{'create'});
 	print &ui_links_row(\@rowlinks);
 
 	print &ui_columns_start([ $text{'index_user'},
 				  $text{'index_modules'} ], 100);
-	foreach $u (@canulist) {
+	foreach my $u (@canulist) {
+		my $smods;
 		if ($ingroup{$u->{'name'}}) {
 			# Is a member of a group
 			$smods = &show_modules(
@@ -93,7 +105,8 @@ else {
 	print &ui_columns_end();
 	print &ui_links_row(\@rowlinks);
 	if (!$config{'select'}) {
-		print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
+		print &ui_form_end([ [ "delete", $text{'index_delete'} ],
+				     @gbut ]);
 		}
 	$shown_users = 1;
 	$form++;
@@ -109,7 +122,7 @@ if ($access{'groups'}) {
 	if (!@glist) {
 		# No groups, so just show create link
 		print "<b>$text{'index_nogroups'}</b><p>\n";
-		print "<a href=edit_group.cgi>$text{'index_gcreate'}</a><p>\n";
+		print ui_link("edit_group.cgi", $text{'index_gcreate'}) . "<p>\n";
 		}
 	elsif ($config{'display'}) {
 		# Show just group names
@@ -122,21 +135,21 @@ if ($access{'groups'}) {
 		}
 	else {
 		# Show table of groups
-		@rowlinks = ( );
+		my @rowlinks = ( );
 		if (!$config{'select'}) {
 			print &ui_form_start("delete_groups.cgi", "post");
 			push(@rowlinks, &select_all_link("d", $form),
 				     &select_invert_link("d", $form));
 			}
 		push(@rowlinks,
-		     "<a href=edit_group.cgi>$text{'index_gcreate'}</a>");
+		     ui_link("edit_group.cgi", $text{'index_gcreate'}));
 		print &ui_links_row(\@rowlinks);
 
 		print &ui_columns_start([ $text{'index_group'},
 					  $text{'index_members'},
 					  $text{'index_modules'} ], 100);
-		foreach $g (@glist) {
-			local @cols;
+		foreach my $g (@glist) {
+			my @cols;
 			push(@cols, &user_link($g,"edit_group.cgi","group"));
 			push(@cols, join(" ", @{$g->{'members'}}));
 			if ($ingroup{'@'.$g->{'name'}}) {
@@ -162,6 +175,8 @@ if ($access{'groups'}) {
 		}
 	}
 
+my %miniserv;
+my (@icons, @links, @titles);
 &get_miniserv_config(\%miniserv);
 if ($access{'sync'} && &foreign_check("useradmin")) {
 	push(@icons, "images/convert.gif");
@@ -188,6 +203,9 @@ if (uc($ENV{'HTTPS'}) eq "ON" && $miniserv{'ca'}) {
 	push(@links, "cert_form.cgi");
 	push(@titles, $text{'index_cert'});
 	}
+push(@icons, "images/twofactor.gif");
+push(@links, "twofactor_form.cgi");
+push(@titles, $text{'index_twofactor'});
 if ($access{'rbacenable'}) {
 	push(@icons, "images/rbac.gif");
 	push(@links, "edit_rbac.cgi");
@@ -214,8 +232,8 @@ if (@icons) {
 # show_modules(type, who, &mods, show-global, prefix)
 sub show_modules
 {
-local ($type, $who, $mods, $global, $prefix) = @_;
-local $rv;
+my ($type, $who, $mods, $global, $prefix) = @_;
+my $rv;
 if ($config{'select'}) {
 	# Show as drop-down menu
 	$rv .= &ui_form_start("edit_acl.cgi");
@@ -225,7 +243,7 @@ if ($config{'select'}) {
 		if ($access{'acl'}) {
 			$rv .= &ui_submit($text{'index_edit'});
 			}
-		local @opts;
+		my @opts;
 		foreach my $m (sort { $modname{$a} cmp $modname{$b} } @$mods) {
 			if ($modname{$m}) {
 				push(@opts, [ $m, $modname{$m} ]);
@@ -238,13 +256,13 @@ if ($config{'select'}) {
 else {
 	# Show as table
 	$rv .= $prefix."<br>\n" if ($prefix);
-	local @grid;
+	my @grid;
 	foreach my $m (sort { $modname{$a} cmp $modname{$b} } @$mods) {
 		if ($modname{$m}) {
 			if ($mcan{$m} && $access{'acl'}) {
-				push(@grid, "<a href='edit_acl.cgi?mod=".
-				      &urlize($m)."&$type=".&urlize($who).
-				      "'>$modname{$m}</a>");
+				push(@grid, ui_link("edit_acl.cgi?mod=" .
+				      &urlize($m)."&$type=".&urlize($who),
+				      $modname{$m}));
 				}
 			else {
 				push(@grid, $modname{$m});
@@ -261,11 +279,11 @@ return $rv;
 sub show_name_table
 {
 # Show table of users, and maybe create links
-local @rowlinks = ( &select_all_link("d", $form),
-		    &select_invert_link("d", $form) );
-push(@rowlinks, "<a href=$_[1]>$_[2]</a>") if ($_[2]);
+my @rowlinks = ( &select_all_link("d", $form),
+		 &select_invert_link("d", $form) );
+push(@rowlinks, ui_link("$_[1]", $_[2])) if ($_[2]);
 print &ui_links_row(\@rowlinks);
-local @links;
+my @links;
 for(my $i=0; $i<@{$_[0]}; $i++) {
 	push(@links, &user_link($_[0]->[$i], $_[1], $_[4]));
 	}
@@ -277,13 +295,14 @@ print &ui_links_row(\@rowlinks);
 # user_link(user, cgi, param)
 sub user_link
 {
-local $lck = $_[0]->{'pass'} =~ /^\!/ ? 1 : 0;
-local $ro = $_[0]->{'readonly'};
+my $lck = $_[0]->{'pass'} =~ /^\!/ ? 1 : 0;
+my $ro = $_[0]->{'readonly'};
 return ($config{'select'} ? "" : &ui_checkbox("d", $_[0]->{'name'}, "", 0)).
        ($lck ? "<i>" : "").
        ($ro ? "<b>" : "").
-       "<a href='$_[1]?$_[2]=".&urlize($_[0]->{'name'})."'>".
-	$_[0]->{'name'}."</a>".
+       ui_link("$_[1]?$_[2]=".&urlize($_[0]->{'name'}),
+	           $_[0]->{'name'}).
+       ($_[0]->{'twofactor_id'} ? "*" : "").
        ($ro ? "</b>" : "").
        ($lck ? "</i>" : "");
 }

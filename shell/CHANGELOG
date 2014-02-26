@@ -1,0 +1,3 @@
+---- Changes since 1.650 ----
+The output from commands is now limited to 100k by default, to reduce memory consumption in Webmin and in the browser if a large command is executed.
+The run-time of a command is now limited to 24 hours by default, to prevent eternal commands like tail -f from continuing in the the background forever.

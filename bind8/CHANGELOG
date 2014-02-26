@@ -137,3 +137,6 @@ Added support for zone signing using the DNSSEC-Tools suite, thanks to a patch f
 Changed all links to zones to use the zone name instead of an index, to prevent incorrect modification during concurrent access to the module.
 ---- Changes since 1.620 ----
 Added a module configuration option to use the SPF type for Sender Permitted From records.
+---- Changes since 1.660 ----
+Added a warning if the chroot directory that Webmin thinks BIND is using looks wrong.
+Slave zone files in raw format can now be displayed by Webmin.

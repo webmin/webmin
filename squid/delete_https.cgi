@@ -1,21 +1,24 @@
 #!/usr/local/bin/perl
 # Delete multiple proxy restrictions
 
+use strict;
+use warnings;
+our (%text, %in, %access, $squid_version, %config);
 require './squid-lib.pl';
 &error_setup($text{'dhttp_err'});
 $access{'actrl'} || &error($text{'eacl_ecannot'});
 &ReadParse();
-@d = split(/\0/, $in{'d'});
+my @d = split(/\0/, $in{'d'});
 @d || &error($text{'dhttp_enone'});
 
 # Get the existing restrictions
 &lock_file($config{'squid_conf'});
-$conf = &get_config();
-@https = &find_config("http_access", $conf);
+my $conf = &get_config();
+my @https = &find_config("http_access", $conf);
 
 # Delete them
-foreach $d (sort { $b <=> $c } @d) {
-	$http = $conf->[$d];
+foreach my $d (sort { $b <=> $a } @d) {
+	my $http = $conf->[$d];
 	splice(@https, &indexof($http, @https), 1);
 	}
 

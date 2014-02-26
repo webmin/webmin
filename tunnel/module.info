@@ -12,3 +12,6 @@ desc_ko_KR.UTF-8=HTTP í„°ë„
 desc_cz.UTF-8=Tunel HTTP
 longdesc_hu=Webmin szerveren keresztül alagúton keresztül egy másik HTTP-kiszolgálóhoz kapcsolódás.
 desc_hu=HTTP alagút (Tunnel)
+desc_ms_MY=Terowong HTTP
+longdesc_ms_MY=Mencapai pelayan HTTP yang lain melalui pelayan Webmin.
+longdesc_de=Verbindung zu einem anderen HTTP-Server &#252;ber einen Tunnel durch den Webmin-Server.

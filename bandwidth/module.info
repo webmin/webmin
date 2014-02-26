@@ -16,3 +16,5 @@ desc_cz.UTF-8=Bandwidth Monitoring
 desc_pl.UTF-8=Monitorowanie pasma
 desc_hu.UTF-8=Forgalmi monitor
 desc_no=Overv&#229;king av b&#229;ndbredde
+longdesc_ms_MY=Lihat laporan mengenai penggunaan jalur lebar oleh host, port, protokol dan masa pada sistem Linux.
+desc_ms_MY=Pemantauan jalur lebar

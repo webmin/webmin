@@ -1,5 +1,8 @@
 
+use strict;
+use warnings;
 do 'acl-lib.pl';
+our ($config_directory);
 
 sub feedback_files
 {

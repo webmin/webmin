@@ -24,3 +24,6 @@ desc_pl.UTF-8=Serwer SSH
 desc_sk.UTF-8=SSH Server
 desc_no=SSH tjener
 desc_hu=SSH szerver (OpenSSH)
+longdesc_ms_MY=Menyediakan pelayan SSH untuk login keselamatan capaian jauh.
+desc_ms_MY=Pelayan SSH
+longdesc_de=Richtet den SSH-Server f&#252;r entfernte sichere Logins ein.

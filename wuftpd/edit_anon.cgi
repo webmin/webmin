@@ -29,10 +29,10 @@ foreach $r (@root) {
 	printf "<td><input name=dir_$i size=35 value='%s'> %s</td>\n",
 		$r->[0], &file_chooser_button("dir_$i", 1);
 	print "<td><select name=class_$i>\n";
-	printf "<option value='' %s>%s\n",
+	printf "<option value='' %s>%s</option>\n",
 		$r->[1] ? '' : 'selected', $text{'anon_any'};
 	foreach $c (@class) {
-		printf "<option %s>%s\n",
+		printf "<option %s>%s</option>\n",
 			$r->[1] eq $c->[0] ? 'selected' : '', $c->[0];
 		}
 	print "</select></td> </tr>\n";
@@ -94,12 +94,12 @@ printf "<input type=radio name=passwd_def value=0 %s>\n",
 	$p ? 'checked' : '';
 print "<select name=level>\n";
 foreach $l ('none', 'trivial', 'rfc822') {
-	printf "<option %s value='%s'>%s\n",
+	printf "<option %s value='%s'>%s</option>\n",
 		$p->[0] eq $l ? 'selected' : '', $l, $text{"anon_$l"};
 	}
 print "</select> <select name=action>\n";
 foreach $a ('enforce', 'warn') {
-	printf "<option %s value='%s'>%s\n",
+	printf "<option %s value='%s'>%s</option>\n",
 		$p->[1] eq $a ? 'selected' : '', $a, $text{"anon_$a"};
 	}
 print "</select></td> </tr>\n";

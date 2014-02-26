@@ -134,6 +134,7 @@ return $name eq "dhcpd" && $gconfig{'os_version'} >= 7 ?
        $name eq "postgresql" ? "postgresql postgresql-client" :
        $name eq "openssh" ? "ssh" :
        $name eq "openldap" ? "slapd" :
+       $name eq "ldap" ? "libnss-ldap libpam-ldap" :
        $name eq "dovecot" ? "dovecot-common dovecot-imapd dovecot-pop3d" :
 			       $name;
 }
@@ -231,9 +232,22 @@ if (&has_command("apt-show-versions")) {
 	while(<PKGS>) {
 		if (/^(\S+)\/(\S+)\s+upgradeable\s+from\s+(\S+)\s+to\s+(\S+)/ &&
 		    !$holds{$1}) {
+			# Old format
 			local $pkg = { 'name' => $1,
 				       'source' => $2,
 				       'version' => $4 };
+			if ($pkg->{'version'} =~ s/^(\S+)://) {
+				$pkg->{'epoch'} = $1;
+				}
+			push(@rv, $pkg);
+			}
+		elsif (/^(\S+):(\S+)\/(\S+)\s+(\S+)\s+upgradeable\s+to\s+(\S+)/ && !$holds{$1}) {
+			# New format, like 
+			# libgomp1:i386/unstable 4.8.2-2 upgradeable to 4.8.2-4
+			local $pkg = { 'name' => $1,
+				       'arch' => $2,
+				       'source' => $3,
+				       'version' => $5 };
 			if ($pkg->{'version'} =~ s/^(\S+)://) {
 				$pkg->{'epoch'} = $1;
 				}

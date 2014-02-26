@@ -477,7 +477,7 @@ if ($userconfig{'nocharset'} || $config{'nocharset'}) {
 	print "Content-type: $type\n\n";
 	}
 else {
-	$charset = &get_charset();
+	my $charset = &get_charset();
 	print "Content-type: $type; charset=$charset\n\n";
 	}
 }

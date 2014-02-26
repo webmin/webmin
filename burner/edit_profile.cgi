@@ -135,13 +135,13 @@ elsif ($profile->{'type'} == 4) {
 	print "<tr> <td><b>$text{'edit_sdev'}</b></td>\n";
 	print "<td colspan=3><select name=sdev>\n";
 	foreach $d (&list_cdrecord_devices()) {
-		printf "<option value=%s %s>%s (%s)\n",
+		printf "<option value=%s %s>%s (%s)</option>\n",
 			$d->{'dev'},
 			$d->{'dev'} eq $profile->{'sdev'} ? 'selected' : '',
 			$d->{'name'}, $d->{'type'};
 		$found++ if ($d->{'dev'} eq $profile->{'sdev'});
 		}
-	printf "<option value='' %s>%s\n",
+	printf "<option value='' %s>%s</option>\n",
 		!$found && $profile->{'sdev'} ? "selected" : "",
 		$text{'edit_other'};
 	print "</select>\n";
@@ -150,20 +150,20 @@ elsif ($profile->{'type'} == 4) {
 
 	print "<tr> <td><b>$text{'edit_srcdrv'}</b></td>\n";
 	print "<td><select name=srcdrv>\n";
-	printf "<option value='' %s> %s\n",
+	printf "<option value='' %s>%s</option>\n",
 		$profile->{'srcdrv'} ? "" : "selected", $text{'default'};
 	foreach $d (@cdr_drivers) {
-		printf "<option %s>%s\n",
+		printf "<option %s>%s</option>\n",
 			$profile->{'srcdrv'} eq $d ? "selected" : "", $d;
 		}
 	print "</select></td> </tr>\n";
 
 	print "<tr> <td><b>$text{'edit_dstdrv'}</b></td>\n";
 	print "<td><select name=dstdrv>\n";
-	printf "<option value='' %s> %s\n",
+	printf "<option value='' %s>%s</option>\n",
 		$profile->{'dstdrv'} ? "" : "selected", $text{'default'};
 	foreach $d (@cdr_drivers) {
-		printf "<option %s>%s\n",
+		printf "<option %s>%s</option>\n",
 			$profile->{'dstdrv'} eq $d ? "selected" : "", $d;
 		}
 	print "</select></td> </tr>\n";

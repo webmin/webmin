@@ -111,7 +111,7 @@ else {
 				      "value='$text{'index_up'}'>\n";
 				print "<select name=conn>\n";
 				foreach $s (@start) {
-					printf "<option %s>%s\n",
+					printf "<option %s>%s</option>\n",
 					    $config{'conn'} eq $s ? "selected"
 								  : "", $s;
 					}
