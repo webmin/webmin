@@ -1444,17 +1444,26 @@ else {
 	}
 }
 
-# simplify_subject(subject)
-# Simplifies and truncates a subject for display in the mail list
-sub simplify_subject
+# convert_header_for_display(string, [max-non-html-length])
+# Given a string from an email header, perform all mime-decoding, charset
+# changes and HTML escaping needed to render it in a browser
+sub convert_header_for_display
 {
-local ($mw, $cs) = &decode_mimewords($_[0]);
-if (&get_charset() eq 'UTF-8' && $cs && &can_convert_to_utf8($mw, $cs)) {
+local ($str, $max) = @_;
+local ($mw, $cs) = &decode_mimewords($str);
+if (&get_charset() eq 'UTF-8' && &can_convert_to_utf8($mw, $cs)) {
 	$mw = &convert_to_utf8($mw, $cs);
 	}
 local $rv = &eucconv($mw);
-$rv = substr($rv, 0, 80)." .." if (length($rv) > 80);
+$rv = substr($rv, 0, $max)." .." if ($max && length($rv) > $max);
 return &html_escape($rv);
+}
+
+# simplify_subject(subject)
+# Simplifies and truncates a subject header for display in the mail list
+sub simplify_subject
+{
+return &convert_header_for_display($_[0], 80);
 }
 
 # quoted_decode(text)
@@ -1595,6 +1604,7 @@ sub can_convert_to_utf8
 {
 my ($str, $cs) = @_;
 return 0 if ($cs eq "UTF-8");
+return 0 if (!$cs);
 eval "use Encode";
 return 0 if ($@);
 eval "use utf8";
@@ -1831,6 +1841,7 @@ sub j2e {
 }
 
 # eucconv_and_escape(string)
+# Convert a string for display
 sub eucconv_and_escape {
 	return &html_escape(&eucconv($_[0]));
 }
