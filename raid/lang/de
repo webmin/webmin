@@ -45,6 +45,7 @@ index_active=Aktiv?
 index_add=Erstelle RAID-Ger&#228;t mit Level:
 index_emdstat=Die Kernel-RAID-Statusdatei $1 existiert nicht auf diesem System. Der Kernel scheint RAID nicht zu unterst&#252;tzen.
 index_eprogs=Weder die RAID-Tools noch die MDADM-Pakete sind auf Ihrem System installiert.
+index_errors=Fehler
 index_header=RAID Problem Benachrichtigungsoptionen
 index_level=RAID Level
 index_mailaddr=Sende Benachrichtigungen an

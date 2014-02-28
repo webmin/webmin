@@ -109,11 +109,14 @@ index_group=Gruppe
 index_host=Hostname und Port
 index_logout=Abmelden
 index_none=&lt;Keine&gt;
+index_nosearch=Keine Server zu Ihrer Suche gefunden.
 index_noservers=Es wurden keine Server registriert
+index_ok=Suche
 index_os=Servertyp
 index_return=Server
 index_scan=Suche nach Servern
 index_scanmsg=Klicken Sie auf diese Schaltfl&#228;che, um alle Adressen im Netzwerk $1 nach Webmin-Servern zu durchsuchen.
+index_search=Zeige passende Server:
 index_title=Webmin-Server
 lib_other=Andere
 link_eautologin=Ung&#252;ltiger Benutzername oder Passwort f&#252;r $1. <a href='$2'>Erneut versuchen?</a>
