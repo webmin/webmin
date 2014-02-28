@@ -1444,19 +1444,19 @@ else {
 	}
 }
 
-# convert_header_for_display(string, [max-non-html-length])
+# convert_header_for_display(string, [max-non-html-length], [no-escape])
 # Given a string from an email header, perform all mime-decoding, charset
 # changes and HTML escaping needed to render it in a browser
 sub convert_header_for_display
 {
-local ($str, $max) = @_;
+local ($str, $max, $noescape) = @_;
 local ($mw, $cs) = &decode_mimewords($str);
 if (&get_charset() eq 'UTF-8' && &can_convert_to_utf8($mw, $cs)) {
 	$mw = &convert_to_utf8($mw, $cs);
 	}
 local $rv = &eucconv($mw);
 $rv = substr($rv, 0, $max)." .." if ($max && length($rv) > $max);
-return &html_escape($rv);
+return $noescape ? $rv : &html_escape($rv);
 }
 
 # simplify_subject(subject)

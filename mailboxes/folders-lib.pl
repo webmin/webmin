@@ -3339,18 +3339,18 @@ local ($mail, $body, $textbody, $htmlbody) = @_;
 # Display the headers
 print &ui_table_start($text{'view_headers'}, "width=100%", 2);
 print &ui_table_row($text{'mail_from'},
-	&eucconv_and_escape($mail->{'header'}->{'from'}));
+	&convert_header_for_display($mail->{'header'}->{'from'}));
 print &ui_table_row($text{'mail_to'},
-	&eucconv_and_escape($mail->{'header'}->{'to'}));
+	&convert_header_for_display($mail->{'header'}->{'to'}));
 if ($mail->{'header'}->{'cc'}) {
 	print &ui_table_row($text{'mail_cc'},
-		&eucconv_and_escape($mail->{'header'}->{'cc'}));
+		&convert_header_for_display($mail->{'header'}->{'cc'}));
 	}
 print &ui_table_row($text{'mail_date'},
-	&eucconv_and_escape($mail->{'header'}->{'date'}));
+	&convert_header_for_display($mail->{'header'}->{'date'}));
 print &ui_table_row($text{'mail_subject'},
-	&eucconv_and_escape(&decode_mimewords(
-		$mail->{'header'}->{'subject'})));
+	&convert_header_for_display(
+		$mail->{'header'}->{'subject'}));
 print &ui_table_end(),"<br>\n";
 
 # Just display the mail body for printing
