@@ -1,13 +1,16 @@
 # webalizer-lib.pl
 # Common functions for editing the webalizer config file
 
+use strict;
+use warnings;
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
+our ($module_root_directory, %text, %config, $module_config_directory);
 
-$cron_cmd = "$module_config_directory/webalizer.pl";
-$custom_logs_file = "$module_config_directory/custom-logs";
-%access = &get_module_acl();
+our $cron_cmd = "$module_config_directory/webalizer.pl";
+our $custom_logs_file = "$module_config_directory/custom-logs";
+our %access = &get_module_acl();
 
 # Use sample config if needed
 if (!-r $config{'webalizer_conf'} && -r $config{'alt_conf'}) {
@@ -18,13 +21,14 @@ if (!-r $config{'webalizer_conf'} && -r $config{'alt_conf'}) {
 # Parse the webalizer config file for a single logfile or global
 sub get_config
 {
-local $file;
-if ($_[0]) {
-	$file = &config_file_name($_[0]);
+my ($logfile) = @_;
+my $file;
+if ($logfile) {
+	$file = &config_file_name($logfile);
 	}
 $file = $config{'webalizer_conf'} if (!$file || !-r $file);
-local @rv;
-local $lnum = 0;
+my @rv;
+my $lnum = 0;
 open(FILE, $file);
 while(<FILE>) {
 	s/\r|\n//g;
@@ -45,11 +49,10 @@ return \@rv;
 # save_directive(&config, name, [value]*)
 sub save_directive
 {
-local ($conf, $name, @values) = @_;
-local @old = &find($name, $conf);
-local $lref = &read_file_lines($conf->[0]->{'file'});
-local $i;
-for($i=0; $i<@old || $i<@values; $i++) {
+my ($conf, $name, @values) = @_;
+my @old = &find($name, $conf);
+my $lref = &read_file_lines($conf->[0]->{'file'});
+for(my $i=0; $i<@old || $i<@values; $i++) {
 	if ($i < @old && $i < @values) {
 		# Just replacing a line
 		$lref->[$old[$i]->{'line'}] = "$name $values[$i]";
@@ -78,15 +81,16 @@ for($i=0; $i<@old || $i<@values; $i++) {
 # renumber(&config, line, offset)
 sub renumber
 {
-foreach $c (@{$_[0]}) {
-	$c->{'line'} += $_[2] if ($c->{'line'} >= $_[1]);
+my ($conf, $line, $offset) = @_;
+foreach my $c (@$conf) {
+	$c->{'line'} += $offset if ($c->{'line'} >= $line);
 	}
 }
 
 # config_file_name(logfile)
 sub config_file_name
 {
-local $p = $_[0];
+my ($p) = @_;
 $p =~ s/^\///;
 $p =~ s/\//_/g;
 return "$module_config_directory/$p.conf";
@@ -95,9 +99,10 @@ return "$module_config_directory/$p.conf";
 # find(name, &config)
 sub find
 {
-local @rv;
-foreach $c (@{$_[1]}) {
-	push(@rv, $c) if (lc($c->{'name'}) eq lc($_[0]));
+my ($name, $conf) = @_;
+my @rv;
+foreach my $c (@$conf) {
+	push(@rv, $c) if (lc($c->{'name'}) eq lc($name));
 	}
 return wantarray ? @rv : $rv[0];
 }
@@ -105,7 +110,7 @@ return wantarray ? @rv : $rv[0];
 # find_value(name, &config)
 sub find_value
 {
-local @rv = map { $_->{'value'} } &find(@_);
+my @rv = map { $_->{'value'} } &find(@_);
 return wantarray ? @rv : $rv[0];
 }
 
@@ -114,12 +119,13 @@ return wantarray ? @rv : $rv[0];
 # directory that start with the same name
 sub all_log_files
 {
-$_[0] =~ /^(.*)\/([^\/]+)$/;
-local $dir = $1;
-local $base = $2;
-local ($f, @rv);
+my ($file) = @_;
+$file =~ /^(.*)\/([^\/]+)$/;
+my $dir = $1;
+my $base = $2;
+my @rv;
 opendir(DIR, $dir);
-foreach $f (readdir(DIR)) {
+foreach my $f (readdir(DIR)) {
 	if ($f =~ /^\Q$base\E/ && -f "$dir/$f") {
 		push(@rv, "$dir/$f");
 		}
@@ -132,21 +138,23 @@ return @rv;
 # Get the configuration for some log file
 sub get_log_config
 {
-local %rv;
-&read_file(&log_config_name($_[0]), \%rv) || return undef;
+my ($path) = @_;
+my %rv;
+&read_file(&log_config_name($path), \%rv) || return undef;
 return \%rv;
 }
 
 # save_log_config(path, &config)
 sub save_log_config
 {
-return &write_file(&log_config_name($_[0]), $_[1]);
+my ($path, $conf) = @_;
+return &write_file(&log_config_name($path), $conf);
 }
 
 # log_config_name(path)
 sub log_config_name
 {
-local $p = $_[0];
+my ($p) = @_;
 $p =~ s/^\///;
 $p =~ s/\//_/g;
 return "$module_config_directory/$p.log";
@@ -158,52 +166,53 @@ return "$module_config_directory/$p.log";
 # worked OK.
 sub generate_report
 {
-local $h = $_[1];
-local $lconf = &get_log_config($_[0]);
-local @all = $config{'skip_old'} ? ( $_[0] ) : &all_log_files($_[0]);
+my $h = $_[1];
+my $lconf = &get_log_config($_[0]);
+my @all = $config{'skip_old'} ? ( $_[0] ) : &all_log_files($_[0]);
 if (!@all) {
 	print $h "Log file $_[0] does not exist\n";
 	return;
 	}
-local ($a, %mtime);
-foreach $a (@all) {
-	local @st = stat($a);
+my %mtime;
+foreach my $a (@all) {
+	my @st = stat($a);
 	$mtime{$a} = $st[9];
 	}
-local $prog = &get_webalizer_prog();
-local $type = $lconf->{'type'} == 1 ? "" :
+my $prog = &get_webalizer_prog();
+my $type = $lconf->{'type'} == 1 ? "" :
 	      $lconf->{'type'} == 2 ? "-F squid" :
 	      $lconf->{'type'} == 3 ? "-F ftp" : "";
-local $cfile = &config_file_name($_[0]);
-local $conf = -r $cfile ? "-c $cfile" : "";
+my $cfile = &config_file_name($_[0]);
+my $conf = -r $cfile ? "-c $cfile" : "";
 if ($lconf->{'over'} && !&is_readonly_mode()) {
 	unlink("$lconf->{'dir'}/webalizer.current");
 	unlink("$lconf->{'dir'}/webalizer.hist");
 	}
-unlink("$lconfig->{'dir'}/__db.dns_cache.db");
-local $user = $lconf->{'user'} || "root";
+unlink("$lconf->{'dir'}/__db.dns_cache.db");
+my $user = $lconf->{'user'} || "root";
 if ($user ne "root" && -r $cfile) {
 	chmod(0644, $cfile);
 	}
 if (!-d $lconf->{'dir'}) {
 	mkdir($lconf->{'dir'}, 0755);
 	if ($user ne "root") {
-		local @uinfo = getpwnam($user);
+		my @uinfo = getpwnam($user);
 		chown($uinfo[2], $uinfo[3], $lconf->{'dir'});
 		}
 	}
-local $anyok = 0;
-foreach $a (sort { $mtime{$a} <=> $mtime{$b} } @all) {
-	local $cmd = "$config{'webalizer'} $conf -o ".
-		     quotemeta($lconf->{'dir'})." $type -p ".quotemeta($a);
+my $anyok = 0;
+foreach my $f (sort { $mtime{$a} <=> $mtime{$b} } @all) {
+	my $cmd = "$config{'webalizer'} $conf -o ".
+		     quotemeta($lconf->{'dir'})." $type -p ".quotemeta($f);
 	if ($user ne "root") {
 		$cmd = &command_as_user($user, 0, $cmd);
 		}
-	&open_execute_command(OUT, "$cmd 2>&1", 1);
-	while(<OUT>) {
+	my $fh = "OUT";
+	&open_execute_command($fh, "$cmd 2>&1", 1);
+	while(<$fh>) {
 		print $h $_[2] ? &html_escape($_) : $_;
 		}
-	close(OUT);
+	close($fh);
 	$anyok = 1 if (!$?);
 	&additional_log("exec", undef, $cmd);
 	}
@@ -213,10 +222,10 @@ return $anyok;
 # spaced_buttons(button, ...)
 sub spaced_buttons
 {
-local $pc = int(100 / scalar(@_));
+my $pc = int(100 / scalar(@_));
 print "<table width=100%><tr>\n";
 foreach $b (@_) {
-	local $al = $b eq $_[0] ? "align=left" :
+	my $al = $b eq $_[0] ? "align=left" :
 		    $b eq $_[@_-1] ? "align=right" : "align=center";
 	print "<td width=$pc% $al>$b</td>\n";
 	}
@@ -227,7 +236,7 @@ print "</table>\n";
 sub read_custom_logs
 {
 open(LOGS, $custom_logs_file);
-local @rv = map { /^(.*\S)\s+(\S+)/; { 'file' => $1, 'type' => $2 } } <LOGS>;
+my @rv = map { /^(.*\S)\s+(\S+)/; { 'file' => $1, 'type' => $2 } } <LOGS>;
 close(LOGS);
 return @rv;
 }
@@ -235,16 +244,17 @@ return @rv;
 # write_custom_logs(log, ...)
 sub write_custom_logs
 {
-&open_tempfile(LOGS, ">$custom_logs_file");
-&print_tempfile(LOGS, map { "$_->{'file'} $_->{'type'}\n" } @_);
-&close_tempfile(LOGS);
+my $fh = "LOGS";
+&open_tempfile($fh, ">$custom_logs_file");
+&print_tempfile($fh, map { "$_->{'file'} $_->{'type'}\n" } @_);
+&close_tempfile($fh);
 }
 
 # can_edit_log(file)
 sub can_edit_log
 {
-foreach $d (split(/\s+/, $access{'dir'})) {
-	local $ok = &is_under_directory($d, $_[0]);
+foreach my $d (split(/\s+/, $access{'dir'})) {
+	my $ok = &is_under_directory($d, $_[0]);
 	return 1 if ($ok);
 	}
 return 0;
@@ -255,7 +265,7 @@ return 0;
 # reference.
 sub get_webalizer_version
 {
-local $out = &backquote_command("$config{'webalizer'} -V 2>&1 </dev/null");
+my $out = &backquote_command("$config{'webalizer'} -V 2>&1 </dev/null");
 ${$_[0]} = $out;
 return $out =~ /\sV(\S+)/ ? $1 : undef;
 }
@@ -272,17 +282,17 @@ return $config{'webalizer'} =~ /awffull/i ? "awffull" : "webalizer";
 sub get_all_logs
 {
 # Query apache and squid for their logfiles
-local %auto = map { $_, 1 } split(/,/, $config{'auto'});
-local @logs;
+my %auto = map { $_, 1 } split(/,/, $config{'auto'});
+my @logs;
 if (&foreign_installed("apache") && $auto{'apache'}) {
 	&foreign_require("apache", "apache-lib.pl");
-	local $conf = &apache::get_config();
-	local @dirs = ( &apache::find_all_directives($conf, "CustomLog"),
+	my $conf = &apache::get_config();
+	my @dirs = ( &apache::find_all_directives($conf, "CustomLog"),
 		  	&apache::find_all_directives($conf, "TransferLog") );
-	local $root = &apache::find_directive_struct("ServerRoot", $conf);
-	local $d;
+	my $root = &apache::find_directive_struct("ServerRoot", $conf);
+	my $d;
 	foreach $d (@dirs) {
-		local $lf = $d->{'words'}->[0];
+		my $lf = $d->{'words'}->[0];
 		if ($lf =~ /^\|\S+writelogs.pl\s+\S+\s+(\S+)/) {
 			# Virtualmin log writer .. use real file
 			$lf = $1;
@@ -292,7 +302,7 @@ if (&foreign_installed("apache") && $auto{'apache'}) {
 			$lf = "$root->{'words'}->[0]/$lf";
 			}
 		open(FILE, $lf);
-		local $line = <FILE>;
+		my $line = <FILE>;
 		close(FILE);
 		if (!$line || $line =~ /^([a-zA-Z0-9\.\-\:]+)\s+\S+\s+\S+\s+\[\d+\/[a-zA-z]+\/\d+:\d+:\d+:\d+\s+[0-9\+\-]+\]/) {
 			push(@logs, { 'file' => $lf,
@@ -304,8 +314,8 @@ if (&foreign_installed("apache") && $auto{'apache'}) {
 # Add log file from Squid
 if (&foreign_installed("squid") && $auto{'squid'}) {
 	&foreign_require("squid", "squid-lib.pl");
-	local $conf = &squid::get_config();
-	local $log = &squid::find_value("cache_access_log", $conf);
+	my $conf = &squid::get_config();
+	my $log = &squid::find_value("cache_access_log", $conf);
 	$log = "$squid::config{'log_dir'}/access.log"
 		if (!$log && -d $squid::config{'log_dir'});
 	push(@logs, { 'file' => $log,
@@ -315,15 +325,15 @@ if (&foreign_installed("squid") && $auto{'squid'}) {
 # Add log file from proftpd
 if (&foreign_installed("proftpd") && $auto{'proftpd'}) {
 	&foreign_require("proftpd", "proftpd-lib.pl");
-	local $conf = &proftpd::get_config();
-	local $global = &proftpd::find_directive_struct("Global", $conf);
-	local $log = &proftpd::find_directive("TransferLog", $global->{'members'}) || "/var/log/xferlog";
+	my $conf = &proftpd::get_config();
+	my $global = &proftpd::find_directive_struct("Global", $conf);
+	my $log = &proftpd::find_directive("TransferLog", $global->{'members'}) || "/var/log/xferlog";
 	push(@logs, { 'file' => $log, 'type' => 3 });
 	}
 
 # Add log file from wu-ftpd
 if (&foreign_installed("wuftpd") && $auto{'wuftpd'}) {
-	local %wconfig = &foreign_config("wuftpd");
+	my %wconfig = &foreign_config("wuftpd");
 	push(@logs, { 'file' => $wconfig{'log_file'}, 'type' => 3 });
 	}
 
@@ -337,7 +347,7 @@ return @logs;
 # Copy fields from a webalizer config to a cron job
 sub lconf_to_cron
 {
-local ($lconf, $job) = @_;
+my ($lconf, $job) = @_;
 $job->{'special'} = $lconf->{'special'};
 $job->{'mins'} = $lconf->{'mins'};
 $job->{'hours'} = $lconf->{'hours'};
