@@ -79,7 +79,7 @@ if (@logs) {
 		push(@links, &select_all_link("d"),
 			     &select_invert_link("d"));
 		}
-	push(@links, "<a href='edit_log.cgi?new=1'>$text{'index_add'}</a>")
+	push(@links, &ui_link("edit_log.cgi?new=1", $text{'index_add'}))
 		if (!$access{'view'} && $access{'add'});
 	print &ui_links_row(\@links);
 	local @tds = ( "width=5" );
@@ -103,10 +103,10 @@ if (@logs) {
 			push(@cols, $short);
 			}
 		else {
-			push(@cols, "<a href='edit_log.cgi?file=".
+			push(@cols, &ui_link("edit_log.cgi?file=".
 				   &urlize($l->{'file'}).
-				   "&type=$l->{'type'}&custom=$l->{'custom'}'>".
-				   "$short</a>");
+				   "&type=$l->{'type'}&custom=$l->{'custom'}",
+				   $short));
 			}
 		push(@cols, &text('index_type'.$l->{'type'}));
 		local ($size, $latest);
@@ -121,9 +121,9 @@ if (@logs) {
 			&text('index_when', &cron::when_text($lconf)) :
 			$text{'no'});
 		if ($lconf->{'dir'} && -r "$lconf->{'dir'}/index.html") {
-			push(@cols, "<a href='view_log.cgi/".
+			push(@cols, &ui_link("view_log.cgi/".
 				    &urlize(&urlize($l->{'file'})).
-				    "/index.html'>$text{'index_view'}</a>");
+				    "/index.html", $text{'index_view'}));
 			}
 		else {
 			push(@cols, "");
@@ -144,7 +144,7 @@ if (@logs) {
 	}
 else {
 	print "<p><b>$text{'index_nologs'}</b><p>\n";
-	push(@links, "<a href='edit_log.cgi?new=1'>$text{'index_add'}</a>")
+	push(@links, &ui_link("edit_log.cgi?new=1", $text{'index_add'}))
 		if (!$access{'view'} && $access{'add'});
 	}
 print &ui_links_row(\@links);
@@ -155,11 +155,11 @@ if (@logs && !$access{'view'}) {
 
 if (!$access{'view'} && $access{'global'}) {
 	print &ui_hr();
-	print "<form action=edit_global.cgi>\n";
-	print "<table width=100%><tr>\n";
-	print "<td><input type=submit value='$text{'index_global'}'></td>\n";
-	print "<td>$text{'index_globaldesc'}</td>\n";
-	print "</tr></table></form>\n";
+	print &ui_buttons_start();
+	print &ui_buttons_row("edit_global.cgi",
+			      $text{'index_global'},
+			      $text{'index_globaldesc'});
+	print &ui_buttons_end();
 	}
 
 &ui_print_footer("/", $text{'index'});
