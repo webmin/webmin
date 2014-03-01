@@ -11,6 +11,6 @@ deffast=Standard-RPC-Modus,1,1-Schnell,2-Automatisch,0-Langsam
 auto_type=Standard-System-Typ,14,show_deftype
 skipips=IPs oder Hostnamen des Systems nicht erkennen,9,50,5,\t
 skipifaces=Netzwerkschnittstelle nicht erkennen,0
-max_servers=Suchformular anzeigen, wenn Anzahl an Server &#252;berschritten wurde,0
+max_servers=Suchformular anzeigen&#44; wenn Anzahl an Server &#252;berschritten wurde,0
 line2=Systemkonfiguration,11
 groups_dir=MSC-Cluster Gruppen-Verzeichnis,0
