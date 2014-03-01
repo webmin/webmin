@@ -69,3 +69,5 @@ Put text/plain alternative body part before text/html, to be compliant with RFC
 2046.
 ---- Changes since 1.590 ----
 When reading email via a link from Virtualmin, the "return to user list" link returns you to the mailboxes in the original domain.
+---- Changes since 1.670 ----
+When a language with a UTF-8 character set is selected, email is converted to UTF-8 before being displayed. This allows an inbox with mixed language subject lines to be properly displayed.

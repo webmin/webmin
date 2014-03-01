@@ -1428,7 +1428,7 @@ return $date;
 # address is returned.
 sub simplify_from
 {
-local $rv = &eucconv(&decode_mimewords($_[0]));
+local $rv = &convert_header_for_display($_[0], 0, 1);
 local @sp = &split_addresses($rv);
 if (!@sp) {
 	return $text{'mail_nonefrom'};
