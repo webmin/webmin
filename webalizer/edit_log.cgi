@@ -37,7 +37,7 @@ print "</td> </tr>\n";
 
 if (!$in{'new'}) {
 	@all = &all_log_files($in{'file'});
-	if (@all > 1) {
+	if (@all > 1 && !$config{'skip_old'}) {
 		print "<tr> <td valign=top><b>$text{'edit_files'}</b></td> ",
 		      "<td colspan=3><font size=-1>\n";
 		foreach $a (@all) {

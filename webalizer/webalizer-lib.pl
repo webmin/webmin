@@ -160,7 +160,7 @@ sub generate_report
 {
 local $h = $_[1];
 local $lconf = &get_log_config($_[0]);
-local @all = &all_log_files($_[0]);
+local @all = $config{'skip_old'} ? ( $_[0] ) : &all_log_files($_[0]);
 if (!@all) {
 	print $h "Log file $_[0] does not exist\n";
 	return;

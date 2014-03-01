@@ -2,3 +2,4 @@ webalizer=webalizer
 webalizer_conf=/etc/httpd/webalizer.conf
 auto=apache,squid,proftpd,wuftpd
 naked=0
+skip_old=0

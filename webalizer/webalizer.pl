@@ -15,7 +15,8 @@ close(NULL);
 
 if ($ok && $lconf->{'clear'}) {
 	# Truncate or delete the files for this report
-	foreach $f (&all_log_files($ARGV[0])) {
+	@files = $config{'skip_old'} ? ( $ARGV[0] ) : &all_log_files($ARGV[0]);
+	foreach $f (@files) {
 		next if (!-r $f);
 		if ($f eq $ARGV[0]) {
 			# Just truncate the main log file
