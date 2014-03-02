@@ -1,6 +1,9 @@
 #!/usr/local/bin/perl
 # Mass schedule or de-schedule a bunch of logs
 
+use strict;
+use warnings;
+our (%text, %config, %gconfig, %access, $module_name, %in, $cron_cmd);
 require './webalizer-lib.pl';
 &foreign_require("cron", "cron-lib.pl");
 &ReadParse();
@@ -8,24 +11,25 @@ require './webalizer-lib.pl';
 $access{'view'} && &error($text{'edit_ecannot'});
 
 # Validate inputs
-@d = split(/\0/, $in{'d'});
+my @d = split(/\0/, $in{'d'});
 @d || &error($text{'mass_enone'});
-@jobs = &cron::list_cron_jobs();
-foreach $file (@d) {
+my @jobs = &cron::list_cron_jobs();
+my %job;
+foreach my $file (@d) {
 	&can_edit_log($file) || &error($text{'edit_efilecannot'});
 	($job{$file}) = grep { $_->{'command'} eq "$cron_cmd $file" } @jobs;
 	}
 
-$count = 0;
+my $count = 0;
 if ($in{'enable'}) {
 	# Add cron jobs for selected
-	foreach $file (@d) {
-		$cfile = &config_file_name($file);
-		$lconf = &get_log_config($file);
+	foreach my $file (@d) {
+		my $cfile = &config_file_name($file);
+		my $lconf = &get_log_config($file);
 		if (!$lconf->{'sched'}) {
 			&lock_file($cfile);
 			$lconf->{'sched'} = 1;
-			$job = $job{$file};
+			my $job = $job{$file};
 			if (!$job) {
 				$job = { 'user' => 'root',
 					 'active' => 1,
@@ -44,13 +48,13 @@ if ($in{'enable'}) {
 	}
 else {
 	# Cancel cron jobs for selected
-	foreach $file (@d) {
-		$cfile = &config_file_name($file);
-		$lconf = &get_log_config($file);
+	foreach my $file (@d) {
+		my $cfile = &config_file_name($file);
+		my $lconf = &get_log_config($file);
 		if ($lconf->{'sched'}) {
 			&lock_file($cfile);
 			$lconf->{'sched'} = 0;
-			$job = $job{$file};
+			my $job = $job{$file};
 			if ($job) {
 				&lock_file(&cron::cron_file($job));
 				&cron::delete_cron_job($job);
