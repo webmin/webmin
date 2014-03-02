@@ -2,6 +2,9 @@
 # index.cgi
 # Display available apache or squid logfiles
 
+use strict;
+use warnings;
+our (%text, %config, %gconfig, %access, $module_name);
 require './webalizer-lib.pl';
 &foreign_require("cron", "cron-lib.pl");
 
@@ -13,7 +16,7 @@ if (!&has_command($config{'webalizer'})) {
 		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
 
 	&foreign_require("software", "software-lib.pl");
-	$lnk = &software::missing_install_link(
+	my $lnk = &software::missing_install_link(
 			"webalizer", $text{'index_webalizer'},
 			"../$module_name/", $text{'index_title'});
 	print $lnk,"<p>\n" if ($lnk);
@@ -23,7 +26,8 @@ if (!&has_command($config{'webalizer'})) {
 	}
 
 # Get the version number
-$webalizer_version = &get_webalizer_version(\$out);
+my $out;
+my $webalizer_version = &get_webalizer_version(\$out);
 if (!$webalizer_version) {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 		&help_search_link("webalizer", "man", "doc", "google"));
@@ -52,14 +56,14 @@ if (!-r $config{'webalizer_conf'}) {
 	}
 
 # Query apache and squid for their logfiles
-@logs = &get_all_logs();
+my @logs = &get_all_logs();
 
 # Remove in-accessible logs, and redirect if only one
 @logs = grep { &can_edit_log($_->{'file'}) } @logs;
 if (@logs == 1 && -r $logs[0]->{'file'} &&
     $access{'noconfig'} && !$access{'add'} && !$access{'global'}) {
 	# User can only edit/view one log file ..
-	local $l = $logs[0];
+	my $l = $logs[0];
 	if ($access{'view'}) {
 		&redirect("view_log.cgi/".&urlize(&urlize($l->{'file'})).
 			  "/index.html");
@@ -72,7 +76,7 @@ if (@logs == 1 && -r $logs[0]->{'file'} &&
 	}
 
 &main_header();
-@links = ( );
+my @links = ( );
 if (@logs) {
 	if (!$access{'view'}) {
 		print &ui_form_start("mass.cgi", "post");
@@ -82,20 +86,21 @@ if (@logs) {
 	push(@links, &ui_link("edit_log.cgi?new=1", $text{'index_add'}))
 		if (!$access{'view'} && $access{'add'});
 	print &ui_links_row(\@links);
-	local @tds = ( "width=5" );
+	my @tds = ( "width=5" );
 	print &ui_columns_start([ $access{'view'} ? ( ) : ( "" ),
 				  $text{'index_path'},
 				  $text{'index_type'},
 			 	  $text{'index_size'},
 				  $text{'index_sched'},
 				  $text{'index_rep'} ], 100, 0, \@tds);
-	foreach $l (@logs) {
+	my %done;
+	foreach my $l (@logs) {
 		next if ($done{$l->{'file'}}++);
-		local @files = &all_log_files($l->{'file'});
+		my @files = &all_log_files($l->{'file'});
 		next if (!@files);
-		local $lconf = &get_log_config($l->{'file'});
-		local @cols;
-		local $short = $l->{'file'};
+		my $lconf = &get_log_config($l->{'file'});
+		my @cols;
+		my $short = $l->{'file'};
 		if (length($short) > 40) {
 			$short = "...".substr($short, -40);
 			}
@@ -109,9 +114,9 @@ if (@logs) {
 				   $short));
 			}
 		push(@cols, &text('index_type'.$l->{'type'}));
-		local ($size, $latest);
-		foreach $f (@files) {
-			local @st = stat($f);
+		my ($size, $latest) = (0, 0);
+		foreach my $f (@files) {
+			my @st = stat($f);
 			$size += $st[7];
 			$latest = $st[9] if ($st[9] > $latest);
 			}
@@ -166,7 +171,7 @@ if (!$access{'view'} && $access{'global'}) {
 
 sub main_header
 {
-local $prog = &get_webalizer_prog();
+my $prog = &get_webalizer_prog();
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 	&help_search_link($prog, "man", "doc", "google"),
 	undef, undef, &text('index_version_'.$prog, $webalizer_version));
