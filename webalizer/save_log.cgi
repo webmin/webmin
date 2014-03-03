@@ -2,6 +2,10 @@
 # save_log.cgi
 # Save, create or delete options for a log file
 
+use strict;
+use warnings;
+our (%text, %config, %gconfig, %access, $module_name, %in, $remote_user,
+     $cron_cmd, $custom_logs_file);
 require './webalizer-lib.pl';
 &foreign_require("cron", "cron-lib.pl");
 &ReadParse();
@@ -11,9 +15,10 @@ $access{'view'} && &error($text{'edit_ecannot'});
 &can_edit_log($in{'file'}) || &error($text{'edit_efilecannot'});
 
 # Find the cron job
+my $job;
 if (!$in{'new'} && !$in{'view'} && !$in{'run'}) {
-	@jobs = &cron::list_cron_jobs();
-	foreach $j (@jobs) {
+	my @jobs = &cron::list_cron_jobs();
+	foreach my $j (@jobs) {
 		$job = $j if ($j->{'command'} eq "$cron_cmd $in{'file'}");
 		}
 	}
@@ -30,10 +35,10 @@ elsif ($in{'run'}) {
 	# Force report generation and show the output
 	&ui_print_unbuffered_header(undef, $text{'gen_title'}, "");
 
-	$lconf = &get_log_config($in{'file'});
+	my $lconf = &get_log_config($in{'file'});
 	print "<b>",&text('gen_header', "<tt>$in{'file'}</tt>"),"</b><br>\n";
 	print "<pre>";
-	$rv = &generate_report($in{'file'}, STDOUT, 1);
+	my $rv = &generate_report($in{'file'}, \*STDOUT, 1);
 	print "</pre>\n";
 	if ($rv && -r "$lconf->{'dir'}/index.html") {
 		print "<b>$text{'gen_done'}</b><p>\n";
@@ -56,7 +61,7 @@ elsif ($in{'run'}) {
 elsif ($in{'delete'}) {
 	# Delete this custom log file from the configuration
 	&lock_file($custom_logs_file);
-	@custom = &read_custom_logs();
+	my @custom = &read_custom_logs();
 	@custom = grep { $_->{'file'} ne $in{'file'} } @custom;
 	if ($job) {
 		&lock_file($job->{'file'});
@@ -65,7 +70,7 @@ elsif ($in{'delete'}) {
 		}
 	&write_custom_logs(@custom);
 	&unlock_file($custom_logs_file);
-	local $cfile = &log_config_name($in{'file'});
+	my $cfile = &log_config_name($in{'file'});
 	&unlink_logged($cfile);
 	&webmin_log("delete", "log", $in{'file'});
 	}
@@ -77,6 +82,7 @@ else {
 		}
 	-d $in{'dir'} || &error($text{'save_edir'});
 	$in{'cmode'} != 2 || -r $in{'cfile'} || &error($text{'save_ecfile'});
+	my $lconf = { };
 	if ($access{'user'} eq '*') {
 		# Set the user to whatever was entered
 		defined(getpwnam($in{'user'})) || &error($text{'save_euser'});
@@ -105,7 +111,7 @@ else {
 	&cron::parse_times_input($lconf, \%in);
 
 	# Create or delete the cron job
-	local $oldjob = $job;
+	my $oldjob = $job;
 	if ($lconf->{'sched'}) {
 		# Create cron job and script
 		$job->{'user'} = 'root';
@@ -134,14 +140,14 @@ else {
 	if ($in{'new'}) {
 		# Add a new custom log file to the configuration
 		&lock_file($custom_logs_file);
-		@custom = &read_custom_logs();
+		my @custom = &read_custom_logs();
 		push(@custom, { 'file' => $in{'file'}, 'type' => $in{'type'} });
 		&write_custom_logs(@custom);
 		&unlock_file($custom_logs_file);
 		}
 
 	# Create or link the custom webalizer.conf file
-	local $cfile = &config_file_name($in{'file'});
+	my $cfile = &config_file_name($in{'file'});
 	if ($in{'cmode'} == 0) {
 		# None at all
 		&unlink_logged($cfile);
@@ -163,7 +169,7 @@ else {
 		}
 
 	# Update the log file's options
-	local $cfile = &log_config_name($in{'file'});
+	$cfile = &log_config_name($in{'file'});
 	&lock_file($cfile);
 	&save_log_config($in{'file'}, $lconf);
 	&unlock_file($cfile);
