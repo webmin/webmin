@@ -338,7 +338,8 @@ foreach my $m (@mounted) {
 			}
 		my ($t, $f) = &mount::disk_space($m->[2], $m->[0]);
 		if (($m->[2] eq "simfs" || $m->[2] eq "vzfs" ||
-		     $m->[0] eq "/dev/vzfs") &&
+		     $m->[0] eq "/dev/vzfs" ||
+		     $m->[0] eq "/dev/simfs") &&
 		    $donevzfs{$t,$f}++) {
 			# Don't double-count VPS filesystems
 			next;
