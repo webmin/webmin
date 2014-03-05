@@ -16,7 +16,7 @@ user_title1=Gebruiker Attributen Aanmaken
 user_title2=Bewerk Gebruiker Attributen
 user_header=Attributen toegekend aan Unix gebruiker
 user_user=Gebruikersnaam of rol naam
-user_profiles=Toekende profielen
+user_profiles=Toegekende profielen
 user_auths=Autorisatie voor gebruiker
 user_roles=Toegekende rollen
 user_type=Gebruiker type
@@ -98,7 +98,7 @@ execs_id=Opdracht
 execs_all=Alles
 execs_none=Er zijn nog geen uitvoerbare profielen gedefinieerd.
 execs_add=Een nieuw uitvoerbaar profiel toevoegen.
-execs_return=uitvoerbare profielen lijst
+execs_return=Uitvoerbare profielen lijst
 execs_ecannot=U bent niet bevoegd om de uitvoerbare profielen te bewerken
 
 exec_title1=Uitvoerbaar Profiel Aanmaken
@@ -113,7 +113,7 @@ exec_uid=Uitvoeren als gebruiker
 exec_euid=Uitvoeren als effectieve gebruiker
 exec_gid=Uitvoeren als groep
 exec_egid=Uitvoeren als effectieve groep
-exec_default=zelfde als gebruiker
+exec_default=Zelfde als gebruiker
 exec_asuser=Als gebruiker of UID
 exec_asgroup=Als groep of GID
 exec_err=Mislukt om uitvoerbaar profiel op te slaan
@@ -141,7 +141,7 @@ attr_none=Er zijn nog geen gebruikers attributen gedefinieerd
 attr_nonenormal=Geen Unix gebruiker gedefinieerd
 attr_nonerole=Geen beschikbare rollen gedefinieerd
 
-help_epath=Ongeldige help file pad!
+help_epath=Ongeldig help bestands pad!
 help_link=(Help..)
 
 crypt___unix__=Unix crypt
