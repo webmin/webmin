@@ -2,9 +2,13 @@
 # view_log.cgi
 # Display the report for some log file
 
+use strict;
+use warnings;
+our (%text, %config, %gconfig, %access, $module_name, %in, $remote_user);
 require './webalizer-lib.pl';
 &ReadParse();
 
+my ($escaped, $file, $log);
 if ($ENV{'PATH_INFO'} =~ /^\/([^\/]+)(\/[^\/]*)$/) {
 	# Proper path escaping
 	$escaped = $1;
@@ -19,21 +23,25 @@ elsif ($ENV{'PATH_INFO'} =~ /^(\/.*)(\/[^\/]*)$/) {
 else {
 	&error($text{'view_epath'});
 	}
+
 $file =~ /\.\./ || $file =~ /\<|\>|\||\0/ && &error($text{'view_efile'});
 &can_edit_log($log) || &error($text{'view_ecannot'});
 
-$lconf = &get_log_config($log) || &error($text{'view_elog'}." : $log");
-$full = "$lconf->{'dir'}$file";
-open(FILE, $full) || &error($text{'view_eopen'}." : $full");
+my $lconf = &get_log_config($log) || &error($text{'view_elog'}." : $log");
+my $full = $lconf->{'dir'}.$file;
+my $fh;
+open($fh, $full) || &error($text{'view_eopen'}." : $full");
 
 # Display file contents
 if ($full =~ /\.(html|htm)$/i && !$config{'naked'}) {
-	while(read(FILE, $buf, 1024)) {
+	my $data = "";
+	my $buf;
+	while(read($fh, $buf, 1024)) {
 		$data .= $buf;
 		}
-	close(FILE);
+	close($fh);
 	$data =~ /<TITLE>(.*)<\/TITLE>/i;
-	$title = $1;
+	my $title = $1;
 	$data =~ s/^[\000-\377]*<BODY.*>//i;
 	$data =~ s/<\/BODY>[\000-\377]*$//i;
 
@@ -56,9 +64,10 @@ else {
 			       $full =~ /\.(html|htm)$/i ? "text/html" :
 							   "text/plain","\n";
 	print "\n";
-	while(read(FILE, $buf, 1024)) {
+	my $buf;
+	while(read($fh, $buf, 1024)) {
 		print $buf;
 		}
-	close(FILE);
+	close($fh);
 	}
 
