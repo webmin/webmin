@@ -56,7 +56,7 @@ else {
 				      &to_ipaddress(&get_system_hostname());
 	$SIG{ALRM} = "connect_timeout";
 	alarm(10);
-	&open_socket($addr, $port, STEST, \$err);
+	&open_socket($addr, $config{'port'}, STEST, \$err);
 	close(STEST);
 	$err && &error_exit(&text('index_esocket', $addr, $config{'port'}));
 	$port = $config{'port'};
@@ -67,7 +67,7 @@ if ($ENV{'HTTPS'} eq 'ON') {
 	      "</font></center><br>\n";
 	}
 
-print "<center><applet archive=vncviewer.jar code=vncviewer.class ",
+print "<center><applet archive=vncviewer.jar code=VncViewer.class ",
       "width=$config{'width'} height=$config{'height'}>\n";
 print "<param name=port value='$port'>\n";
 if ($config{'host'}) {
