@@ -9,3 +9,4 @@ desc_no=System logger NG
 desc_hu=Rendszernaplózó (Syslog-NG)
 desc_ms_MY=Sistem Logs NG
 longdesc_ms_MY=Mengkonfigurasi pelayan Syslog-NG pada sistem anda dan melihat fail lognya.
+longdesc_de=Konfiguriert den Syslog-NG-Server auf Ihrem System und zeigt Log-Dateien an.
