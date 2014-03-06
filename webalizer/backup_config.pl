@@ -1,19 +1,22 @@
 
+use strict;
+use warnings;
+our (%text, %in, $module_config_directory, $cron_cmd, %config);
 do 'webalizer-lib.pl';
 
 # backup_config_files()
 # Returns files and directories that can be backed up
 sub backup_config_files
 {
-local @rv = ( $config{'webalizer_conf'} );
-local $f;
-opendir(DIR, $module_config_directory);
-while($f = readdir(DIR)) {
+my @rv = ( $config{'webalizer_conf'} );
+my $fh;
+opendir($fh, $module_config_directory);
+while(my $f = readdir($fh)) {
 	if ($f =~ /\.conf$/ || $f =~ /\.log$/) {
 		push(@rv, "$module_config_directory/$f");
 		}
 	}
-closedir(DIR);
+closedir($fh);
 return @rv;
 }
 
@@ -44,12 +47,12 @@ sub post_restore
 {
 # Re-setup all needed cron jobs
 &foreign_require("cron", "cron-lib.pl");
-local @jobs = &cron::list_cron_jobs();
-foreach $log (&get_all_logs()) {
-	local $lconf = &get_log_config($log->{'file'});
+my @jobs = &cron::list_cron_jobs();
+foreach my $log (&get_all_logs()) {
+	my $lconf = &get_log_config($log->{'file'});
 	if ($lconf->{'sched'}) {
-		local ($job) = grep { $_->{'command'} eq
-				      "$cron_cmd $log->{'file'}" } @jobs;
+		my ($job) = grep { $_->{'command'} eq
+				   "$cron_cmd $log->{'file'}" } @jobs;
 		if (!$job) {
 			# Need to create!
 			$job->{'user'} = 'root';

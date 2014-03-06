@@ -1,4 +1,7 @@
 
+use strict;
+use warnings;
+our (%text, %access);
 do 'webalizer-lib.pl';
 
 sub cgi_args

@@ -1,5 +1,8 @@
 # install_check.pl
 
+use strict;
+use warnings;
+our (%config);
 do 'webalizer-lib.pl';
 
 # is_installed(mode)
@@ -9,7 +12,8 @@ do 'webalizer-lib.pl';
 sub is_installed
 {
 return 0 if (!&has_command($config{'webalizer'}));
-local $ver = &get_webalizer_version(\$dummy);
+my $dummy;
+my $ver = &get_webalizer_version(\$dummy);
 return 0 if (!$ver || $ver < 2);
 return $_[0] ? 2 : 1;
 }
