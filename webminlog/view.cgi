@@ -166,7 +166,8 @@ else {
 	print &ui_form_end();
 	}
 
-&ui_print_footer("search.cgi?$in{'search'}", $text{'search_return'},
+&ui_print_footer("search.cgi?search=".&urlize($in{'search'}),
+			$text{'search_return'},
 		 "", $text{'index_return'});
 
 

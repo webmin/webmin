@@ -9,6 +9,12 @@ require './webminlog-lib.pl';
 our (%text, %config, %gconfig, $webmin_logfile, %in, $in);
 &foreign_require("acl", "acl-lib.pl");
 &ReadParse();
+if ($in{'search'}) {
+	# Re-parse args from search param
+	$ENV{'QUERY_STRING'} = $in{'search'};
+	%in = ();
+	&ReadParse(\%in, 'GET');
+	}
 &error_setup($text{'search_err'});
 
 # Use sensible defaults
