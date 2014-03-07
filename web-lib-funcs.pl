@@ -511,7 +511,7 @@ and store it in the global %in hash. The optional parameters are :
 sub ReadParseMime
 {
 my ($max, $cbfunc, $cbargs) = @_;
-my ($boundary, $line, $foo, $name, $got, $file);
+my ($boundary, $line, $foo, $name, $got, $file, $count_lines, $max_lines);
 my $err = &text('readparse_max', $max);
 $ENV{'CONTENT_TYPE'} =~ /boundary=(.*)$/ || &error($text{'readparse_enc'});
 if ($ENV{'CONTENT_LENGTH'} && $max && $ENV{'CONTENT_LENGTH'} > $max) {
@@ -519,6 +519,8 @@ if ($ENV{'CONTENT_LENGTH'} && $max && $ENV{'CONTENT_LENGTH'} > $max) {
 	}
 &$cbfunc(0, $ENV{'CONTENT_LENGTH'}, $file, @$cbargs) if ($cbfunc);
 $boundary = $1;
+$count_lines = 0;
+$max_lines = 1000;
 <STDIN>;	# skip first boundary
 while(1) {
 	$name = "";
@@ -569,8 +571,12 @@ while(1) {
 	while(1) {
 		$line = <STDIN>;
 		$got += length($line);
-		&$cbfunc($got, $ENV{'CONTENT_LENGTH'}, $file, @$cbargs)
-			if ($cbfunc);
+		$count_lines++;
+		if ($count_lines == $max_lines) {
+			&$cbfunc($got, $ENV{'CONTENT_LENGTH'}, $file, @$cbargs)
+				if ($cbfunc);
+			$count_lines = 0;
+			}
 		if ($max && $got > $max) {
 			#print STDERR "over limit of $max\n";
 			#&error($err);
@@ -581,8 +587,6 @@ while(1) {
 				if ($cbfunc);
 			return;
 			}
-		my $ptline = $line;
-		$ptline =~ s/[^a-zA-Z0-9\-]/\./g;
 		if (index($line, $boundary) != -1) { last; }
 		$in{$name} .= $line;
 		}
