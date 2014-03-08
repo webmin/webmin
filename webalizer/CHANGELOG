@@ -8,3 +8,6 @@ Log files from ProFTPd and WU-FTPd are now automatically made available for gene
 Added buttons for scheduling and de-scheduling multiple Webalizer reports at once.
 ---- Changes since 1.380 ----
 Added support for AWFFull, a drop in Webalizer replacement. It is used by default on Mandriva 2007.1 and later.
+---- Changes since 1.670 ----
+Converted the UI to use the standard Webmin library.
+Converted all code to be perl strict and warnings compliant.
