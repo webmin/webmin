@@ -9458,11 +9458,25 @@ the same as the Perl construct `cat file`.
 =cut
 sub read_file_contents
 {
-&open_readfile(FILE, $_[0]) || return undef;
+my ($file) = @_;
+&open_readfile(FILE, $file) || return undef;
 local $/ = undef;
 my $rv = <FILE>;
 close(FILE);
 return $rv;
+}
+
+=head2 write_file_contents(file, data)
+
+Writes some data to the given file
+
+=cut
+sub write_file_contents
+{
+my ($file, $data) = @_;
+&open_tempfile(FILE, ">$file");
+&print_tempfile(FILE, $data);
+&close_tempfile(FILE);
 }
 
 =head2 unix_crypt(password, salt)
