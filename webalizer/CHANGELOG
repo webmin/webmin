@@ -11,3 +11,4 @@ Added support for AWFFull, a drop in Webalizer replacement. It is used by defaul
 ---- Changes since 1.670 ----
 Converted the UI to use the standard Webmin library.
 Converted all code to be perl strict and warnings compliant.
+Fixed a security issue that could allow a user without root access to view any file on the system.

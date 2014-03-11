@@ -30,16 +30,12 @@ $file =~ /\.\./ || $file =~ /\<|\>|\||\0/ && &error($text{'view_efile'});
 my $lconf = &get_log_config($log) || &error($text{'view_elog'}." : $log");
 my $full = $lconf->{'dir'}.$file;
 my $fh;
-open($fh, $full) || &error($text{'view_eopen'}." : $full");
+my $data = &eval_as_unix_user($lconf->{'user'} || 'root',
+		sub { &read_file_contents($full) });
+$data || &error($text{'view_eopen'}." : $full");
 
 # Display file contents
 if ($full =~ /\.(html|htm)$/i && !$config{'naked'}) {
-	my $data = "";
-	my $buf;
-	while(read($fh, $buf, 1024)) {
-		$data .= $buf;
-		}
-	close($fh);
 	$data =~ /<TITLE>(.*)<\/TITLE>/i;
 	my $title = $1;
 	$data =~ s/^[\000-\377]*<BODY.*>//i;
@@ -64,10 +60,6 @@ else {
 			       $full =~ /\.(html|htm)$/i ? "text/html" :
 							   "text/plain","\n";
 	print "\n";
-	my $buf;
-	while(read($fh, $buf, 1024)) {
-		print $buf;
-		}
-	close($fh);
+	print $data;
 	}
 
