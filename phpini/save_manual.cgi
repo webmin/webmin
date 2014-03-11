@@ -12,9 +12,7 @@ $in{'data'} =~ s/\r//g;
 $in{'data'} =~ /\S/ || &error($text{'manual_edata'});
 
 # Save the file
-&open_lock_tempfile(FILE, ">$in{'file'}");
-&print_tempfile(FILE, $in{'data'});
-&close_tempfile(FILE);
+&write_file_contents_as_user($in{'file'}, $in{'data'});
 
 &graceful_apache_restart();
 &webmin_log("manual", $in{'file'});

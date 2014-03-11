@@ -231,6 +231,33 @@ else {
 	}
 }
 
+# read_file_contents_as_user(file)
+sub read_file_contents_as_user
+{
+local ($file) = @_;
+if ($access{'user'} && $access{'user'} ne 'root' && $< == 0) {
+	return &eval_as_unix_user(
+		$access{'user'}, sub { &read_file_contents($file) });
+	}
+else {
+	return &read_file_contents($file);
+	}
+}
+
+# write_file_contents_as_user(file, data)
+# Writes out the contents of some file
+sub write_file_contents_as_user
+{
+local ($file, $data) = @_;
+if ($access{'user'} && $access{'user'} ne 'root' && $< == 0) {
+	return &eval_as_unix_user(
+                $access{'user'}, sub { &write_file_contents($file, $data) });
+	}
+else {
+	&write_file_contents($file, $data);
+	}
+}
+
 # flush_file_lines_as_user(file)
 # Writes out a file as the Unix user configured in this module's ACL
 sub flush_file_lines_as_user
