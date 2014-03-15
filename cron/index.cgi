@@ -111,7 +111,7 @@ foreach $u (@ulist) {
 			# A multi-part command
 			$cmdidx = scalar(@cols);
 			@exp = map { &html_escape($_) } @exp;
-			push(@cols, &ui_link("edit_cron.cgi?idx=".$idx,
+			push(@cols, &ui_link("edit_cron.cgi?idx=".$idx.
 				      "&search=".&urlize($in{'search'}),
 				    join("<br>",@exp)) );
 			$donelink = 1;
