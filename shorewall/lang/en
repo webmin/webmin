@@ -205,7 +205,7 @@ masq_enet=Missing or invalid outgoing interface destination
 masq_emnet=Missing or invalid masquerading subnet address
 masq_emnete=Empty exception networks list
 masq_esnat=Invalid SNAT IP address
-masq_eports=Missing or invalid comma-separate list of ports
+masq_eports=Missing or invalid comma-separated list of ports
 masq_eipsec=Missing IPsec options
 
 nat_title=Static NAT
