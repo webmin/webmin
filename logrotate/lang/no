@@ -102,3 +102,4 @@ sched_runparts=For &#248;yeblikket kj&#248;res logrotate kommandoen fra scriptet
 sched_save=Oppdater cron jobb
 sched_sched=Cron jobb for loggrotasjon
 sched_title=Tidsplan for logg rotasjon
+sched_when=Tidspunkt for kj&#248;ring

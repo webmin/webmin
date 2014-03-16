@@ -45,6 +45,7 @@ index_active=Aktiv?
 index_add=Opprett RAID enhet p&#229; niv&#229;:
 index_emdstat=Kernel RAID statusfilen $1 finnes ikke p&#229; systemet ditt. Kernelen din st&#248;tter mest sannsynlig ikke RAID.
 index_eprogs=Hverken RAID verkt&#248;y eller MDADM pakkene er installert p&#229; systemet ditt.
+index_errors=Feil
 index_header=Innstillinger for varsling om RAID problemer
 index_level=RAID niv&#229;
 index_mailaddr=Send meldinger til

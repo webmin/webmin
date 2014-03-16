@@ -109,11 +109,14 @@ index_group=Gruppe
 index_host=Vertsnavn og port
 index_logout=logg ut
 index_none=&lt;Ingen&gt;
+index_nosearch=Ingen tjenere stemte med s&#248;ket ditt.
 index_noservers=Ingen tjenere har blitt registrert.
+index_ok=S&#248;k
 index_os=Tjener type
 index_return=tjenere
 index_scan=S&#248;k etter tjenere
 index_scanmsg=Klikk p&#229; denne knappen for &#229; sjekke alle adresser p&#229; nettverk $1 for Webmin tjenere med versjon 0.75 eller nyere.
+index_search=Vis tjenere som matcher:
 index_title=Webmin Tjenere
 lib_other=Andre
 link_eautologin=Ugyldig brukernavn eller passord for $1. <a href='$2'>Klikk her</a> for &#229; pr&#248;ve p&#229; nytt.

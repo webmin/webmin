@@ -125,6 +125,7 @@ edit_title=Legg til ny sikkerhetskopi
 edit_title2=Rediger sikkerhetskopi
 edit_to=$1 til $2
 edit_tolevel=$1 til $2 (niv&#229; $3)
+edit_when=N&#229;r skal det sikkerhetskopieres
 email_already=Sikkerhetskopi kj&#248;rer allerede med PID $1.
 email_eafter=Etter-sikkerhetskopi kommando feilet!
 email_ebefore=F&#248;r-sikkerhetskopi kommando feilet!
