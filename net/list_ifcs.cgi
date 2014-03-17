@@ -232,10 +232,14 @@ foreach $a (@boot) {
 	}
 print &ui_columns_end();
 print &ui_links_row(\@links);
+if($access{"delete"}) {
 print &ui_form_end([ [ "delete", $text{'index_delete2'} ],
-		     [ "deleteapply", $text{'index_delete3'} ],
-		     undef,
-		     [ "apply", $text{'index_apply2'} ] ]);
+                     [ "deleteapply", $text{'index_delete3'} ],
+                     undef,
+                     [ "apply", $text{'index_apply2'} ] ]);
+} else {
+print &ui_form_end([ [ "apply", $text{'index_apply2'} ] ]);
+}
 print &ui_tabs_end_tab();
 
 print &ui_tabs_end(1);
