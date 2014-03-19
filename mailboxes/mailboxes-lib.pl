@@ -1224,7 +1224,7 @@ foreach my $mail (@mail) {
 		}
 
 	# Date and size columns
-	push(@cols, &simplify_date($mail->{'header'}->{'date'}, "ymd"));
+	push(@cols, &eucconv_and_escape(&simplify_date($mail->{'header'}->{'date'}, "ymd")));
 	push(@cols, &nice_size($mail->{'size'}, 1024));
 
 	# Subject with icons
