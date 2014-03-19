@@ -22,7 +22,8 @@ print &ui_columns_start([ "",
 			100, 0, \@tds);
 foreach $i (&parse_inittab()) {
 	local @cols;
-	push(@cols, &ui_link("edit_inittab.cgi?id=".$i->{'id'}, &html_escape($i->{'id'})) );
+	push(@cols, &ui_link("edit_inittab.cgi?id=".&urlize($i->{'id'}),
+			     &html_escape($i->{'id'})) );
 	push(@cols, $i->{'comment'} ? "<font color=#ff0000>$text{'no'}</font>"
 				    : $text{'yes'});
 	local @rls = @{$i->{'levels'}};
