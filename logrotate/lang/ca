@@ -100,6 +100,7 @@ sched_disabled=Desactivat
 sched_enabled=Activat, a les hores de sota...
 sched_save=Actualitza el Treball Cron
 sched_err=No s'ha pogut desar la planificació de la rotació
+sched_when=Hores d'execució
 
 force_title=Forçat de la Rotació de Registres
 force_doing=S'està forçant la rotació immediata de tots els registres...

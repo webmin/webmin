@@ -130,6 +130,7 @@ edit_restore=Restaura...
 edit_to=$1 a $2
 edit_tolevel=$1 a $2 (nivell $3)
 edit_special=Planificació de la còpia
+edit_when=Quan cal copiar
 
 save_err=No s'ha pogut desar la còpia
 save_edir=Hi falta el directori a copiar o bé és invàlid

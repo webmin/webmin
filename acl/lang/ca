@@ -24,6 +24,7 @@ index_unix=Configura l'Autenticació d'Usuaris Unix
 index_sessions=Visualitza les Sessions d'Entrada
 index_rbac=Configura RBAC
 index_delete=Suprimeix els Seleccionats
+index_joingroup=Afegeix al Grup:
 index_eulist=No s'han pogut llistar els usuaris: $1
 index_eglist=No s'han pogut llistar els grups: $1
 
@@ -230,6 +231,7 @@ log_delete_g=S'ha suprimit el grup Webmin $1
 log_switch=S'ha canviat a l'usuari Webmin $1
 log_delete_users=S'han suprimit $1 grups Webmin
 log_delete_groups=S'han suprimit $1 grups Webmin
+log_joingroup=S'han afegit $1 usuaris Webmin al grup $2
 log_pass=S'han canviat les restriccions de contrasenyes
 log_unix=S'ha canviat l'autenticació d'usuari Unix
 log_sync=S'ha canviat la sincronització d'usuari Unix
