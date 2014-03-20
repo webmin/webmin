@@ -33,6 +33,7 @@ access_ecidr16=La mida '$1' de la xarxa IPv6 ha de ser divisible per 16
 access_ehost=No s'ha pogut trobar cap adreça per a '$1'
 access_eself=La teva adreça IP actual ($1) serà rebutjada
 access_always=Resol els noms de host a cada petició
+access_trust=Confia en les adreces IP remotes proporcionades per les proxys
 
 bind_title=Ports i Adreces
 bind_desc2=Aquest formulari es pot utilitzar per canviar el número de port que escolta Webmin, o fer que escolti només una adreça IP del sistema. També pots configurar-lo per acceptar connexions a múltiples ports, o escoltar diverses adreces IP. Nota - pot ser que el navegador t'obligui a registrar-te cada vegada que canviïs el port o l'adreça.

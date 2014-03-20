@@ -11,5 +11,6 @@ deffast=Mode RPC per defecte,1,1-Ràpid,2-Automàtic,0-Lent
 auto_type=Tipus de sistema per defecte,14,show_deftype
 skipips=IPs o noms de host dels sistemes que no s'an de detectar,9,50,5,\t
 skipifaces=Interfícies de xarxa que no s'han de detectar,0
+max_servers=Mostra el formulari de cerca si el nombre de servidors és excessiu,0
 line2=Configuració del sistema,11
 groups_dir=Directori de grups de <i>cluster</i> MSC,0

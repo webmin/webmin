@@ -8,6 +8,7 @@ index_mdadm=S'està utilitzant MDADM versió $1
 index_raidtools=S'està utilitzant RaidTools
 index_name=Nom de dispositiu
 index_active=Actiu
+index_errors=Errors
 index_level=Nivell RAID
 index_size=Mida utilitzable
 index_members=Dispositius de disc del member

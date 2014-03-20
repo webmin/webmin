@@ -1,6 +1,7 @@
 line1=Opcions configurables,11
 auto=Inclou automàticament els fitxers de registre de,2,apache-Apache,squid-Squid,proftpd-ProFTPd,wuftpd-WUFTPd
 naked=Afegeix la capçalera i el peu Webmin a l'informe de Webalizer,1,0-Sí,1-No
+skip_old=Inclou els fitxers de registre rotats antics,1,0-Sí,1-No
 line2=COnfiguració del sistema,11
 webalizer=Camí de l'ordre <i>webalizer</i>,0
 webalizer_conf=Camí del fitxer de configuració del <i>webalizer</i>,0

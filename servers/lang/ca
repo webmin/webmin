@@ -1,6 +1,7 @@
 index_title=Servidors Webmin
 index_edit=Edita
 index_noservers=No s'ha registrat cap servidor.
+index_nosearch=No hi ha cap servidor que coincideixi amb la teva cerca.
 index_add=Registra un servidor nou.
 index_broad=Busca servidors
 index_findmsg=Fes clic al botó per trobar automàticament tots els servidors Webmin a la xarxa local.
@@ -19,6 +20,8 @@ index_defport=Port de Webmin
 index_delete=Suprimeix els Servidors Seleccionats
 index_auto=Troba els Servidors Automàticament
 index_automsg=Fes clic sobre aquest botó per configurar el descobriment periòdic automàtic de nous servidors Webmin a la teva xarxa.
+index_search=Mostra els servidors que coincideixin amb:
+index_ok=Busca
 
 edit_title=Edició de Servidor
 create_title=Registre de Servidors
@@ -118,6 +121,9 @@ this_server=aquest servidor
 delete_err=No s'han pogut suprimir els servidors
 delete_enone=No n'has seleccionat cap
 delete_ecannot=No tens permís per suprimir servidors
+delete_title=Supressió de Servidors
+delete_rusure=Segur que vols eliminar els $1 servidors seleccionats?
+delete_confirm=Suprimeix-los Ara
 
 auto_title=Cerca Automàtica de Servidors
 auto_header=Opcions de registre automàtic de servidor

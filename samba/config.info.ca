@@ -15,5 +15,6 @@ pdbedit=Camí complet de <tt>pdbedit</tt>,3,Cap
 net=Camí complet de l'ordre <tt>net</tt>,3,Cap
 start_cmd=Ordre d'inici dels servidors Samba,3,Automàtica
 stop_cmd=Ordre d'aturada dels servidors Samba,3,Mata els processos
+restart_cmd=Ordre de reinici dels servidors Samba,3,Simplement atura i inicia
 start_cmd_wb=Ordre per iniciar els servidors Winbind,0
 stop_cmd_wb=Ordre per aturar els servidors Winbind,0
