@@ -282,10 +282,10 @@ else
 		echo ""
 		exit 6
 	fi
-	$perl -e 'exit ($] < 5.002 ? 1 : 0)'
+	$perl -e 'exit ($] < 5.008 ? 1 : 0)'
 	if [ $? = "1" ]; then
 		echo "ERROR: Detected old perl version. Webmin requires"
-		echo "perl 5.002 or better to run"
+		echo "perl 5.8 or better to run"
 		echo ""
 		exit 7
 	fi
