@@ -194,3 +194,7 @@ IPv6 access control now match an address exactly, unless a network size is enter
 FTP uploads and downloads to IPv6-only servers now work properly, thanks to support for the EPSV protocol command.
 Added a Bahasa Malaysia translation, thanks to Nawawi Jamili, Nizam Adnan and Weldan Jamili.
 Added filtering for lists in the user, group and file chooser popups, thanks to a patch from Nawawi Jamili.
+---- Changes since 1.670 ----
+More German translation updates, thanks to Raymond Vetter.
+Norwegian updates, thanks to Stein-Aksel Basma.
+Catalan updates, thanks to Jaume Badiella.
