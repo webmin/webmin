@@ -14,6 +14,7 @@ sub is_installed
 return 0 if (!&has_command($config{'webalizer'}));
 my $dummy;
 my $ver = &get_webalizer_version(\$dummy);
+$ver =~ s/\-.*$//;
 return 0 if (!$ver || $ver < 2);
 return $_[0] ? 2 : 1;
 }
