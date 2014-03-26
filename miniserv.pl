@@ -565,7 +565,7 @@ for($i=0; $i<@sockets; $i++) {
 			}
 		}
 	else {
-		listen($fh, SOMAXCONN);
+		listen($fh, &get_somaxconn());
 		push(@socketfhs, $fh);
 		$ipv6fhs{$fh} = $sockets[$i]->[2] eq PF_INET() ? 0 : 1;
 		}
@@ -585,7 +585,7 @@ if (!@socketfhs && !$tried_inaddr_any) {
 		print STDERR "Failed to bind to port $sockets[0]->[1] : $!\n";
 		exit(1);
 		}
-	listen($fh, SOMAXCONN);
+	listen($fh, &get_somaxconn());
 	push(@socketfhs, $fh);
 	}
 elsif (!@socketfhs && $tried_inaddr_any) {
@@ -599,7 +599,7 @@ if ($config{'listen'}) {
 	if (socket(LISTEN, PF_INET(), SOCK_DGRAM, $proto)) {
 		setsockopt(LISTEN, SOL_SOCKET, SO_REUSEADDR, pack("l", 1));
 		bind(LISTEN, pack_sockaddr_in($config{'listen'}, INADDR_ANY));
-		listen(LISTEN, SOMAXCONN);
+		listen(LISTEN, &get_somaxconn());
 		}
 	else {
 		$config{'listen'} = 0;
@@ -6080,4 +6080,9 @@ foreach my $w (@w) {
 		}
 	}
 return lc(join(":", @w));
+}
+
+sub get_somaxconn
+{
+return defined(&SOMAXCONN) ? SOMAXCONN : 128;
 }
