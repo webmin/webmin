@@ -74,7 +74,7 @@ while(my $l = <$fh>) {
 			$user{'hoursto'} = $2;
 			}
 		$user{'lastchange'} = $user[6];
-		$user{'olds'} = [ split(/\s+/, $user[7]) ];
+		$user{'olds'} = $user[7] ? [ split(/\s+/, $user[7]) ] : [ ];
 		$user{'minsize'} = $user[8];
 		$user{'nochange'} = int($user[9] || 0);
 		$user{'temppass'} = int($user[10] || 0);
@@ -464,14 +464,14 @@ else {
 		($allow ? "allow $allow" :
 		 $deny ? "deny $deny" : ""),":",
 		join(" ", @times),":",
-		$user->{'lastchange'},":",
+		($user->{'lastchange'} || ""),":",
 		join(" ", @{$user->{'olds'} || []}),":",
-		$user->{'minsize'},":",
-		$user->{'nochange'},":",
-		$user->{'temppass'},":",
-		$user->{'twofactor_provider'},":",
-		$user->{'twofactor_id'},":",
-		$user->{'twofactor_apikey'},
+		($user->{'minsize'} || ""),":",
+		($user->{'nochange'} || ""),":",
+		($user->{'temppass'} || ""),":",
+		($user->{'twofactor_provider'} || ""),":",
+		($user->{'twofactor_id'} || ""),":",
+		($user->{'twofactor_apikey'} || ""),
 		"\n");
 	&close_tempfile($fh);
 	&unlock_file($miniserv{'userfile'});
