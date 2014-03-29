@@ -125,23 +125,7 @@ local $dp = $_[1] || $_[0];
 $dp =~ s/\\/\\\\/g;
 $dp =~ s/\t/\\t/g;
 return undef if ($dp =~ /\r|\n/);
-if (!@st) {
-	# Work around a broken stat function on large files on redhat 7.x
-	&has_command("stat") || return undef;
-	local $out = &backquote_command("stat -t ".quotemeta($_[0]));
-	return undef if ($?);
-	$out =~ /^(.*)\s+(\d+)\s+(\d+)\s+(\S+)\s+(\d+)\s+(\d+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/;
-	local $type = defined($icon_map{$ext}) ? $icon_map{$ext} : 4;
-	local $user = %uid_to_user ? $uid_to_user{$5} : getpwuid($5);
-	$user = $5 if (!$user);
-	local $group = %gid_to_group ? $gid_to_group{$6} :getgrgid($6);
-	$group = $6 if (!$group);
-	local $size = $2;
-	local $mtime = $13;
-	local $mode = hex($4);
-	return sprintf ("%s\t%u\t%s\t%s\t%u\t%u\t%u\t%s",
-		$dp, $type, $user, $group, $size, $mode, $mtime, undef);
-	}
+return undef if (!@st);
 local $type = $islink && !$f ? 5 :
 	      -d _ ? 0 :
 	      -b _ ? 6 :
