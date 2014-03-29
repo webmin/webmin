@@ -1,0 +1,29 @@
+ - DHCP class support
+ - Jump to page support in sendmail mailq and other mailqs
+	- Common functionality between sendmail, qmail and postfix?
+	- Clean up mailq code in sendmail module!
+ - Update all code which uses remote_ functions to pass in server object
+ - Function to open a file in read mode, which checks for < or > characters
+	- Ties into common callback for modifying file, based on file and module
+	- Foreign_require should allow a different package name to be specified,
+	  for zone clones with different behaviour
+	- Change all open() calls to use new API, and mention in module docs
+ - Bandwidth modules should use some kind of logging socket instead of
+   syslog, which writes to a daemon.
+ - reset session timeout every time a key is pressed, to prevent timeouts
+   when composing mail. Do on all pages.
+ - covert more modules to readonly support (init first)
+	- perhaps need untranslate_file function? call in software/*-lib.pl
+	- writes to temp files should be allowed
+ - all firewall modules need ability to setup port redirection
+	- for calling from squid and frox modules, polymorphically
+ - better support for includes in samba module
+	- need to expand inline
+	- keep track of file and line for each directive
+ - allow copying from view_mail.cgi in mailboxes module (for subs too)
+ - Support IPFW tables
+ - integrate venu's file manager
+ - clone user in useradmin / ldap-useradmin
+ - improved NFS export support on OSX
+ - Use CPAN to install Perl modules
+	- FS#5583
