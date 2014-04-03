@@ -641,7 +641,7 @@ if ($has_pdbedit) {
 		"cd / && $config{'pdbedit'} -a -s $config{'smb_conf'} -u ".
 		quotemeta($_[0]->{'name'}).
 		($config{'sync_gid'} ? " -G $config{'sync_gid'}" : "").
-		" -c '[".join("", @opts)."]' $ws");
+		" -c '[".join("", @opts)."]' $ws </dev/null 2>&1");
 	$? && &error("$config{'pdbedit'} failed : <pre>$out</pre>");
 	}
 else {
