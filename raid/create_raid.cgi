@@ -16,11 +16,13 @@ push(@members, { 'name' => 'raid-level',
 		 'value' => $in{'level'} } );
 push(@members, { 'name' => 'persistent-superblock',
 		 'value' => $in{'super'} } );
-push(@members, { 'name' => 'chunk-size',
-		 'value' => $in{'chunk'} } );
 if ($in{'layout'}) {
 	push(@members, { 'name' => 'parity-algorithm',
 			 'value' => $in{'layout'} } );
+	}
+if ($in{'chunk'}) {
+	push(@members, { 'name' => 'chunk-size',
+			 'value' => $in{'chunk'} } );
 	}
 
 # Add RAID disks

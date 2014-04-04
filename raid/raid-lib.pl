@@ -359,11 +359,12 @@ else {
 			push(@parities, $d->{'value'});
 			}
 		}
-	local $cmd = "mdadm --$mode --level $lvl --chunk $chunk";
+	local $cmd = "mdadm --$mode --level $lvl";
 	if ($_[2]) {
 		push(@devices, "missing");
 		}
 	$cmd .= " --layout $layout" if ($layout);
+	$cmd .= " --chunk $chunk" if ($chunk);
 	$cmd .= " --raid-devices ".scalar(@devices);
 	$cmd .= " --spare-devices ".scalar(@spares) if (@spares);
 	$cmd .= " --force" if ($_[1]);
