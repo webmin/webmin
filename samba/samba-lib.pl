@@ -637,11 +637,15 @@ if ($has_pdbedit) {
 	# Use the pdbedit command
 	local $ws = &indexof("W", @{$_[0]->{'opts'}}) >= 0 ? "-m" : "";
 	local @opts = grep { $_ ne "U" && $_ ne "W" } @{$_[0]->{'opts'}};
+	local $temp = &transname();
+	&open_tempfile(TEMP, ">$temp", 0, 1);
+	&print_tempfile(TEMP, "\n\n");
+	&close_tempfile(TEMP);
 	local $out = &backquote_logged(
 		"cd / && $config{'pdbedit'} -a -s $config{'smb_conf'} -u ".
 		quotemeta($_[0]->{'name'}).
 		($config{'sync_gid'} ? " -G $config{'sync_gid'}" : "").
-		" -c '[".join("", @opts)."]' $ws </dev/null 2>&1");
+		" -c '[".join("", @opts)."]' $ws <$temp 2>&1");
 	$? && &error("$config{'pdbedit'} failed : <pre>$out</pre>");
 	}
 else {
