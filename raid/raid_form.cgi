@@ -75,6 +75,7 @@ if ($lvl == 10) {
 
 # Chunk size
 $chunk = &find_value('chunk-size', $raid->{'members'});
+push(@chunks, [ '', $text{'default'} ]);
 for($i=4; $i<=4096; $i*=2) { push(@chunks, [ $i, $i." kB" ]); }
 print &ui_table_row($text{'create_chunk'},
 	&ui_select("chunk", $chunk, \@chunks));
