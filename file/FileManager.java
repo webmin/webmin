@@ -238,12 +238,14 @@ public class FileManager extends Applet
 		if (can_button("new")) {
 			top2.add(new_b = make_button("new.gif",
 						     text("top_new")));
-			top2.add(hnew_b = make_button("html.gif",
-						     text("top_new")));
+			if (can_button("htmlnew"))
+				top2.add(hnew_b = make_button("html.gif",
+							     text("top_new")));
 			}
 		if (can_button("upload"))
 			top2.add(upload_b = make_button("upload.gif",
 							text("top_upload")));
+		if (can_button("extract"))
 			top2.add(extract_b = make_button("extract.gif",
 							 text("top_extract")));
 		if (can_button("mkdir"))
