@@ -17,17 +17,17 @@ if ($in{'dir'} ne '/') {
 	}
 $cmd = "find ".quotemeta(&unmake_chroot($in{'dir'}))." -name ".quotemeta($in{'match'});
 if ($in{'type'}) {
-	$cmd .= " -type $in{'type'}";
-	}
+        $cmd .= " -type ".quotemeta($in{'type'});
+        }
 if ($in{'user'}) {
-	$cmd .= " -user $in{'user'}";
-	}
+        $cmd .= " -user ".quotemeta($in{'user'});
+        }
 if ($in{'group'}) {
-	$cmd .= " -group $in{'group'}";
-	}
+        $cmd .= " -group ".quotemeta($in{'group'});
+        }
 if ($in{'size'}) {
-	$cmd .= " -size $in{'size'}";
-	}
+        $cmd .= " -size ".quotemeta($in{'size'});
+        }
 if ($in{'xdev'}) {
 	$cmd .= " -mount";
 	}
