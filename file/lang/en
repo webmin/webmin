@@ -1,5 +1,5 @@
 index_title=File Manager
-index_nojava=This module requires java to function, but your browser does not support java
+index_nojava=This module requires Java to function, but your browser does not support Java
 index_eremote=There is no Unix user matching the Webmin login $1.
 index_index=Return to <a href='$1'>Webmin index</a>.
 switch_euser=Unix user does not exist!
