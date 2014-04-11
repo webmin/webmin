@@ -60,5 +60,13 @@ pre.term span.b7  { background-color: #bbb; }
 
 body { background-color: #ffffff; }
 #term {
-	float: left;
+    float: left;
+    margin: 0px;
+    padding: 4px;
+    display: block;
+    font-family: monospace;
+    white-space: pre;
+    background-color: black;
+    border-top: 1px solid white;
+    color: #eee;
 }
