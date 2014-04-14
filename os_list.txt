@@ -56,7 +56,7 @@ Redhat Enterprise Linux			2.1ES	redhat-linux	7.3	`cat /etc/redhat-release 2>/dev
 Redhat Enterprise Linux			2.1WS	redhat-linux	7.3	`cat /etc/redhat-release 2>/dev/null` =~ /WS.*2\.1/
 Redhat Enterprise Linux			3.0AS	redhat-linux	10.0	`cat /etc/redhat-release 2>/dev/null` =~ /(3\.0AS)|(2\.9\.5AS)|(AS\s+release\s+3)/i
 Redhat Enterprise Linux			"$2$1"	redhat-linux	$2 >= 4 ? $2+8.0 : 10.0	`cat /etc/redhat-release 2>/dev/null` =~ /(ES|AS|WS)\s+release\s+(\S+)/
-Redhat Enterprise Linux			$2	redhat-linux	$2+8.0	`cat /etc/redhat-release 2>/dev/null` =~ /Red.*Hat\s+Enterprise\s+Linux\s+(Server|Client|Workstation)\s+release\s+(\d+)/i
+Redhat Enterprise Linux			$2	redhat-linux	$2+8.0	`cat /etc/redhat-release 2>/dev/null` =~ /Red.*Hat\s+Enterprise\s+Linux\s+(Server|Client|Workstation|Everything)\s+release\s+(\d+)/i
 
 # Redhat enterprise desktop
 Redhat Linux Desktop			$1	redhat-linux	10.0	`cat /etc/redhat-release 2>/dev/null` =~ /Desktop\s+release\s+(\S+)/i || `cat /etc/redhat-release 2>/dev/null` =~ /ES\s+release\s+(\S+)/i
