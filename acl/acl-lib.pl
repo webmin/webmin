@@ -1450,8 +1450,8 @@ if ($userdb) {
 		}
 	elsif ($proto eq "ldap") {
 		# Search in LDAP
-		my $fromclass = $fromtype eq "user" ? "userclass"
-						    : "groupclass";
+		my $fromclass = $fromtype eq "user" ? $args->{'userclass'}
+						    : $args->{'groupclass'};
 		my $rv = $dbh->search(
 			base => $prefix,
 			filter => '(&(cn='.$from.')(objectClass='.
@@ -1460,8 +1460,8 @@ if ($userdb) {
 		$rv->code && &error($rv->error);
 		my ($fromobj) = $rv->all_entries;
 		$fromid = $fromobj ? $fromobj->dn() : undef;
-		my $toclass = $totype eq "user" ? "userclass"
-						: "groupclass";
+		my $toclass = $totype eq "user" ? $args->{'userclass'}
+						: $args->{'groupclass'};
 		$rv = $dbh->search(
 			base => $prefix,
 			filter => '(&(cn='.$to.')(objectClass='.
