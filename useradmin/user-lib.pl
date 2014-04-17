@@ -2115,11 +2115,11 @@ sub mkuid
     foreach (split(//,$_[0])) {
       ++${num_let} if ( m/[a-z]/i );
     }
-    if ( length($_[0]) ne 7 ) {
+    if ( length($_[0]) != 7 ) {
         print "ERROR: Number of characters in username $_[0] is not equal to 7\n";
         return -1;
     }
-    if ( ${num_let} ne 3 && ${num_let} ne 4 ) {
+    if ( ${num_let} != 3 && ${num_let} != 4 ) {
         print "ERROR: Number of letters in username $_[0] is not equal to 3 or 4\n";
         return -1;
     }
@@ -2129,7 +2129,7 @@ sub mkuid
     my ${icnt} = -1;
     my ${lowuid};
     ${lowuid} = ( 26 ** ( ${num_let} - 1 ) * ${lowlimit}/100 ) + ${lowlimit};
-    ${lowuid} = ${lowlimit} if ( ${num_let} eq 3 );
+    ${lowuid} = ${lowlimit} if ( ${num_let} == 3 );
     my ${base} = 26;
 
 #################################################################
