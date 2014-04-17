@@ -972,7 +972,7 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 				 $attr eq "modules");
 			my $value = $group->{$attr};
 			if ($attr eq "members" || $attr eq "ownmods") {
-				$value = join(" ", @$value);
+				$value = $value ? join(" ", @$value) : "";
 				}
 			push(@webminattrs, $attr."=".$value);
 			}
