@@ -591,7 +591,7 @@ if ($user->{'proto'}) {
 				 $attr eq "modules");
 			my $value = $user->{$attr};
 			if ($attr eq "olds" || $attr eq "ownmods") {
-				$value = join(" ", @$value);
+				$value = $value ? join(" ", @$value) : "";
 				}
 			push(@webminattrs,
 			     defined($value) ? $attr."=".$value : $attr);
