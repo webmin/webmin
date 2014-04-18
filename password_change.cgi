@@ -190,9 +190,10 @@ else {
 # Change password in Usermin too
 if (&get_product_name() eq 'usermin' &&
     &foreign_check("changepass")) {
-	# XXX remote user??
 	&foreign_require("changepass", "changepass-lib.pl");
 	&changepass::change_mailbox_passwords(
+		$in{'user'}, $in{'old'}, $in{'new1'});
+	&changepass::change_samba_password(
 		$in{'user'}, $in{'old'}, $in{'new1'});
 	}
 
