@@ -19,11 +19,13 @@ if ($in->{'enablerepo'}) {
 	$enable = "enablerepo=".quotemeta($in->{'enablerepo'});
 	}
 local (@rv, @newpacks);
+local @names = map { &append_architectures($_) } split(/\s+/, $update);
+$update = join(" ", @names);
 print "<b>",&text('yum_install', "<tt>yum $enable -y install $update</tt>"),"</b><p>\n";
 print "<pre>";
 &additional_log('exec', undef, "yum $enable -y install $update");
 $SIG{'TERM'} = 'ignore';	# Installing webmin itself may kill this script
-local $qm = join(" ", map { quotemeta($_) } split(/\s+/, $update));
+local $qm = join(" ", map { quotemeta($_) } @names);
 &open_execute_command(CMD, "yum $enable -y install $qm </dev/null", 2);
 while(<CMD>) {
 	s/\r|\n//g;
@@ -78,6 +80,28 @@ else {
 	print "<b>$text{'yum_ok'}</b><p>\n";
 	return &unique(@rv);
 	}
+}
+
+# append_architectures(package)
+# Given a package name, if it has multiple architectures return the name with each
+# appended
+sub append_architectures
+{
+my ($name) = @_;
+local %packages;
+my $n = &list_packages($name);
+return ( $name ) if (!$n);
+my @rv;
+for(my $i=0; $i<$n; $i++) {
+	if ($packages{$i,'arch'}) {
+		push(@rv, $packages{$i,'name'}.".".$packages{$i,'arch'});
+		}
+	else {
+		push(@rv, $packages{$i,'name'});
+		}
+	}
+@rv = &unique(@rv);
+return @rv;
 }
 
 # update_system_operations(packages)
