@@ -13,13 +13,14 @@ sub list_packages
 local($i, $list); $i = 0;
 $list = @_ ? join(' ', map { quotemeta($_) } @_) : "-a";
 %packages = ( );
-&open_execute_command(RPM, "rpm -q $list --queryformat \"%{NAME}\\n%{VERSION}-%{RELEASE}\\n%{EPOCH}\\n%{GROUP}\\n%{SUMMARY}\\n\\n\"", 1, 1);
+&open_execute_command(RPM, "rpm -q $list --queryformat \"%{NAME}\\n%{VERSION}-%{RELEASE}\\n%{EPOCH}\\n%{GROUP}\\n%{ARCH}\\n%{SUMMARY}\\n\\n\"", 1, 1);
 while($packages{$i,'name'} = <RPM>) {
 	chop($packages{$i,'name'});
 	chop($packages{$i,'version'} = <RPM>);
 	chop($packages{$i,'epoch'} = <RPM>);
 	$packages{$i,'epoch'} = undef if ($packages{$i,'epoch'} eq '(none)');
 	chop($packages{$i,'class'} = <RPM>);
+	chop($packages{$i,'arch'} = <RPM>);
 	while(<RPM>) {
 		s/\r|\n/ /g;
 		last if (!/\S/);
