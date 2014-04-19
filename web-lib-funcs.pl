@@ -3060,6 +3060,8 @@ for those marked readonly). The parameters are :
 
 =item eof - End-of-line character for each line. Defaults to \n.
 
+=item ignore-unloaded - Don't fail if the file isn't loaded
+
 =cut
 sub flush_file_lines
 {
