@@ -84,6 +84,8 @@ if ($mysql_version >= 5 && $fieldmap{'ssl_type'}) {
 			  [ 'ANY', $text{'user_ssl_any'} ],
 			  [ 'X509', $text{'user_ssl_x509'} ] ],
 			1, 0, 1));
+	print &ui_table_row($text{'user_cipher'},
+		&ui_textbox("ssl_cipher", $u->[$fieldmap{'ssl_cipher'}], 80));
 	}
 
 print &ui_table_end();

@@ -22,6 +22,7 @@ else {
 
 	map { $perms[$_]++ } split(/\0/, $in{'perms'});
 	@desc = &table_structure($master_db, 'user');
+	%fieldmap = map { $_->{'field'}, $_->{'index'} } @desc;
 	$host = $in{'host_def'} ? '%' : $in{'host'};
 	$user = $in{'mysqluser_def'} ? '' : $in{'mysqluser'};
 	if ($in{'new'}) {
@@ -29,10 +30,18 @@ else {
 		for($i=3; $i<=&user_priv_cols()+3-1; $i++) {
 			push(@yesno, $perms[$i] ? "'Y'" : "'N'");
 			}
+		foreach my $f ('ssl_type', 'ssl_cipher') {
+			if ($fieldmap{$f}) {
+				push(@ssl_field_names, $f);
+				push(@ssl_field_values, "''");
+				}
+			}
 		$sql = sprintf "insert into user (%s) values ('%s', '%s', '', %s)",
-			join(",", map { $desc[$_]->{'field'} } (0 .. &user_priv_cols()+3-1)),
+			join(",", (map { $desc[$_]->{'field'} }
+				      (0 .. &user_priv_cols()+3-1)),
+				  @ssl_field_names),
 			$host, $user,
-			join(",", @yesno);
+			join(",", @yesno, @ssl_field_values);
 		}
 	else {
 		# Update existing user
@@ -75,9 +84,9 @@ else {
 	# Set SSL fields
 	if ($mysql_version >= 5 && defined($in{'ssl_type'})) {
 		&execute_sql_logged($master_db,
-			"update user set ssl_type = ? ".
+			"update user set ssl_type = ? and ssl_cipher = ? ".
 			"where user = ? and host = ?",
-			$in{'ssl_type'}, $user, $host);
+			$in{'ssl_type'}, $in{'ssl_cipher'}, $user, $host);
 		}
 	}
 &execute_sql_logged($master_db, 'flush privileges');

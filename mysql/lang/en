@@ -320,6 +320,7 @@ user_err=Failed to save user
 user_euser=Missing or invalid username
 user_ehost=Missing or invalid allow host(s)
 user_ssl=Required certificate type
+user_cipher=SSL cipher
 user_ssl_=None
 user_ssl_any=SSL
 user_ssl_x509=X509
