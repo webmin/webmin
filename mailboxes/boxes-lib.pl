@@ -1618,8 +1618,10 @@ sub convert_to_utf8
 {
 my ($str, $cs) = @_;
 &can_convert_to_utf8(@_);	# Load modules
-$str = Encode::decode($cs, $str);
-utf8::encode($str);
+eval {
+	$str = Encode::decode($cs, $str);
+	utf8::encode($str);
+	};
 return $str;
 }
 
