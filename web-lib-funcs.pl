@@ -3667,7 +3667,9 @@ elsif ($u ne '') {
 		# Look for this user in the user/group DB, if one is defined
 		# and if the user might be in the DB
 		my ($dbh, $proto, $prefix, $args) = &connect_userdb($userdb);
-		if (! $dbh) {
+		if (!ref($dbh)) {
+			print STDERR "Failed to connect to user database : ".
+				     $dbh."\n";
 			}
 		elsif ($proto eq "mysql" || $proto eq "postgresql") {
 			# Find the user in the SQL DB
