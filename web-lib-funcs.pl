@@ -3667,8 +3667,9 @@ elsif ($u ne '') {
 		# Look for this user in the user/group DB, if one is defined
 		# and if the user might be in the DB
 		my ($dbh, $proto, $prefix, $args) = &connect_userdb($userdb);
-		ref($dbh) || &error(&text('euserdbacl', $dbh));
-		if ($proto eq "mysql" || $proto eq "postgresql") {
+		if (! $dbh) {
+			}
+		elsif ($proto eq "mysql" || $proto eq "postgresql") {
 			# Find the user in the SQL DB
 			my $cmd = $dbh->prepare(
 				"select id from webmin_user where name = ?");
@@ -3725,7 +3726,9 @@ elsif ($u ne '') {
 					}
 				}
 			}
-		&disconnect_userdb($userdb, $dbh);
+		if (ref($dbh)) {
+			&disconnect_userdb($userdb, $dbh);
+			}
 		}
 
 	if (!$foundindb) {
