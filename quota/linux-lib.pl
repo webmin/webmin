@@ -109,8 +109,9 @@ local $gfile = $_[1]->[3] =~ /(grpquota|grpjquota)=([^, ]+)/ ? $2 : undef;
 if ($_[0]->[2] eq "xfs") {
 	# For XFS, assume enabled if setup in fstab
 	$rv += 1 if ($opts{'quota'} || $opts{'usrquota'} ||
-		     $opts{'uqnoenforce'});
-	$rv += 2 if ($opts{'grpquota'} || $opts{'gqnoenforce'});
+		     $opts{'uqnoenforce'} || $opts{'uquota'});
+	$rv += 2 if ($opts{'grpquota'} || $opts{'gqnoenforce'} ||
+		     $opts{'gquota'});
 	return $rv + 4;
 	}
 if ($_[0]->[4]%2 == 1) {
