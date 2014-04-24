@@ -1,7 +1,7 @@
 #!/usr/local/bin/perl
 # Refresh the list of visible modules
 
-require 'webmin-lib.pl';
+require './webmin-lib.pl';
 &ReadParse();
 
 &ui_print_unbuffered_header(undef, $text{'refreshmods_title'}, "", undef, 0, 1);

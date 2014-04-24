@@ -1035,7 +1035,7 @@ if ($cache) {
 	}
 my $temp = &transname();
 my $perl = &get_perl_path();
-system("$perl $root_directory/oschooser.pl $file $temp 1");
+system("$root_directory/oschooser.pl $file $temp 1");
 my %rv;
 &read_env_file($temp, \%rv);
 $rv{'time'} = time();
