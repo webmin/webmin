@@ -946,6 +946,7 @@ iptables_eiface=Missing or invalid network interface
 iptables_eapply=Apply firewall failed : $1
 iptables_eapply2=Apply Squid failed : $1
 
+syslog_access=Squid access log
 syslog_cache=Squid caching log
 syslog_store=Squid object store log
 

@@ -11,6 +11,9 @@ sub syslog_getlogs
 {
 my @rv;
 if (-d $config{'log_dir'}) {
+	push(@rv, { 'file' => "$config{'log_dir'}/access.log",
+		    'desc' => $text{'syslog_access'},
+		    'active' => 1 });
 	push(@rv, { 'file' => "$config{'log_dir'}/cache.log",
 		    'desc' => $text{'syslog_cache'},
 		    'active' => 1 });
