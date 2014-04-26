@@ -3310,7 +3310,7 @@ if (&check_if_dnssec_tools_managed($dom)) {
 	&unlock_file(&make_chroot($zonefile));
 	&error($err) if ($err);
 	return undef;
-}
+	}
 
 local $keyrec = &get_dnskey_record($z, $recs);
 if ($keyrec) {
