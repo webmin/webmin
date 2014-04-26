@@ -30,11 +30,8 @@ push(@EXPORT, qw($config_directory $var_directory $remote_error_handler %month_t
 push(@EXPORT, qw(&theme_post_save_domain &theme_post_save_domains &theme_post_save_server &theme_select_server &theme_select_domain &theme_post_save_folder &theme_post_change_modules &theme_address_button &theme_virtualmin_ui_rating_selector &theme_virtualmin_ui_show_cron_time &theme_virtualmin_ui_parse_cron_time &theme_virtualmin_ui_html_editor_bodytags &theme_virtualmin_ui_show_html_editor));
 
 $called_from_webmin_core = 1;
-my $script;
-$script = -r '../web-lib.pl' ? '../web-lib.pl' : './web-lib.pl';
-do $script;
-$script = -r '../ui-lib.pl' ? '../ui-lib.pl' : './ui-lib.pl';
-do $script;
+do "web-lib.pl";
+do "ui-lib.pl";
 
 1;
 
