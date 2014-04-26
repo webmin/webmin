@@ -25,7 +25,7 @@ $zone_names_version = 3;
 
 # Where to find root zones file
 $internic_ftp_host = "rs.internic.net";
-$internic_ftp_ip = "198.41.0.6";
+$internic_ftp_ip = "199.7.52.73";
 $internic_ftp_file = "/domain/named.root";
 $internic_ftp_gzip = "/domain/root.zone.gz";
 
@@ -2891,6 +2891,7 @@ my ($file) = @_;
 my $rootfile = &make_chroot($file);
 my $ftperr;
 my $temp;
+# First try by hostname
 &ftp_download($internic_ftp_host, $internic_ftp_file, $rootfile, \$ftperr);
 if ($ftperr) {
 	# Try IP address directly
