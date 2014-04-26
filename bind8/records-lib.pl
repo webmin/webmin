@@ -852,6 +852,7 @@ return $fn;
 sub get_dnskey_record
 {
 local ($z, $recs) = @_;
+local @rv;
 if (!$recs) {
 	# Need to get zone file and thus records
 	local $fn = &get_zone_file($z);
