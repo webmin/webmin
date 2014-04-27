@@ -1,0 +1,3 @@
+desc=Fail2Ban Intrusion Detection System
+category=net
+longdesc=Fail2ban is software to protect computer servers from single source brute force attacks.
