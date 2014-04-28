@@ -1,4 +1,6 @@
-desc=Fail2Ban
+desc=Fail2Ban Intrusion Detector
 category=net
-longdesc=Fail2ban is software to protect computer servers from single source brute force attacks.
+longdesc=Fail2ban protects your system from brute force attacks by detecting them and blocking their source IPs.
 depends=init
+desc_de=Fail2Ban
+longdesc_de=Fail2ban ist eine Software um Computer-Server vor Brute-Force-Angriffen zu sch&#252;tzen.
