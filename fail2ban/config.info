@@ -1,0 +1,4 @@
+config_dir=Fail2Ban configuration directory,0
+client_cmd=Fall path to fail2ban-client command,0
+server_cmd=Fall path to fail2ban-server command,0
+init_script=Bootup action name,3,None configured

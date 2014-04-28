@@ -1,1 +1,16 @@
-index_title=Fail2Ban Intrusion Detection System
+index_title=Fail2Ban
+index_echeck=An error occurred detecting Fail2Ban on this system : $1. Either it is not installed, or the <a href='$2'>module configuration</a> is incorrect.
+index_fail2ban=Fail2Ban
+index_atboot=Start at boot?
+index_atbootdesc=Change this option to control whether the Fail2Ban server is started at boot time or not. If required a boot script will be created so that it is correctly started.
+index_stop=Stop Fail2Ban Server
+index_stopdesc=Click this button to stop the running Fail2Ban server. All log analysis will be immediately halted.
+index_start=Start Fail2Ban Server
+index_startdesc=Click this button to start the Fail2Ban server, so that log file analysis is performed.
+index_restart=Restart Fail2Ban Server
+index_restartdesc=Click this button to apply the current configuration by restarting the Fail2Ban server.
+
+check_edir=The configuration directory $1 does not exist
+check_econf=The configuration file $2 in $1 does not exist
+client_cmd=The client command $1 was not found
+server_cmd=The server command $1 was not found
