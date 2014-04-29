@@ -3891,5 +3891,26 @@ sub dt_delete_dnssec_state
 	return undef;
 }
 
+# get_ds_record(&zone|&zone-name)
+# Returns the text of a DS record for this zone
+sub get_ds_record
+{
+my ($zone) = @_;
+my $zonefile;
+if ($zone->{'values'}) {
+	# Zone object
+	local $f = &find("file", $zone->{'members'});
+	$zonefile = $f->{'values'}->[0];
+	}
+else {
+	# Zone name object
+	$zonefile = $zone->{'file'};
+	}
+my $out = &backquote_command("dnssec-dsfromkey -f ".quotemeta(&make_chroot(&absolute_path($zonefile)))." ZONE 2>/dev/null");
+return undef if ($?);
+$out =~ s/\r|\n//g;
+return $out;
+}
+
 1;
 

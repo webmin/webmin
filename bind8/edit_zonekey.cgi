@@ -49,6 +49,13 @@ if (@keyrecs) {
 		print &text('zonekey_noprivate'),"<p>\n";
 		}
 
+	$ds = &get_ds_record($zone);
+	if ($ds) {
+		print $text{'zonekey_ds'},"<br>\n";
+		print &ui_textarea("ds", $ds, 2, 80, "off", 0,
+				   "readonly style='width:90%'"),"<br>\n";
+		}
+
 	# Offer to disable
 	print &ui_hr();
 	print &ui_buttons_start();
