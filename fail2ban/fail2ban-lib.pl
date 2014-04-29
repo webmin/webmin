@@ -36,8 +36,12 @@ if (!$pid) {
 return $pid;
 }
 
+# list_filters()
+# Returns a list of all defined filters, each of which is a hash ref of 
+# options from the [Definition] block
 sub list_filters
 {
+my $dir = "$config{'config_dir'}/filter.d";
 }
 
 sub list_actions
@@ -46,6 +50,73 @@ sub list_actions
 
 sub list_jails
 {
+}
+
+# parse_config_file(file)
+# Parses one file into a list of [] sections, each with multiple directives
+sub parse_config_file
+{
+my ($file) = @_;
+my $lref = &read_file_lines($file, 1);
+my $lnum = 0;
+my $fh = "CONF";
+my $sect;
+my @rv;
+&open_readfile($fh, $file);
+while(<$fh>) {
+	s/\r|\n//g;
+	s/^\s*#.*$//;
+	if (/^\s*\[([^\]]+)\]/) {
+		# Start of a section
+		$sect = { 'name' => $1,
+			  'line' => $lnum,
+		 	  'eline' => $lnum,
+			  'file' => $file,
+			  'members' => [] };
+		push(@rv, $sect);
+		}
+	elsif (/^\s*(\S+)\s*=\s*(.*)/ && $sect) {
+		# A directive in a section
+		my $dir = { 'name' => $1,
+			    'value' => $2,
+			    'line' => $lnum,
+                            'eline' => $lnum,
+                            'file' => $file,
+			  };
+		push(@{$sect->{'members'}}, $dir);
+		$sect->{'eline'} = $lnum;
+		&split_directive_values($dir);
+		}
+	elsif (/^\s+(\S.*)/ && $sect && @{$sect->{'members'}}) {
+		# Continuation of a directive
+		my $dir = $sect->{'members'}->[@{$sect->{'members'}} - 1];
+		$dir->{'value'} .= ' '.$1;
+		$dir->{'eline'} = $lnum;
+		$sect->{'eline'} = $lnum;
+		&split_directive_values($dir);
+		}
+	$lnum++;
+	}
+close($fh);
+return @rv;
+}
+
+sub split_directive_values
+{
+my ($dir) = @_;
+my @w;
+my $v = $dir->{'value'};
+while($v =~ /\S/) {
+	if ($v =~ /^(\S+\[[^\]]+\])\s*(.*)/) {
+		push(@w, $1);
+		$v = $2;
+		}
+	elsif ($v =~ /^(\S+)\s*(.*)/) {
+		push(@w, $1);
+		$v = $2;
+		}
+	}
+$dir->{'values'} = \@w;
 }
 
 1;
