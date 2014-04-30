@@ -37,19 +37,42 @@ return $pid;
 }
 
 # list_filters()
-# Returns a list of all defined filters, each of which is a hash ref of 
-# options from the [Definition] block
+# Returns a list of all defined filter files, each of which contains multiple
+# sections like [Definition]
 sub list_filters
 {
 my $dir = "$config{'config_dir'}/filter.d";
+my @rv;
+foreach my $f (glob("$dir/*.conf")) {
+	my $conf = &parse_config_file($f);
+	if (@$conf) {
+		push(@rv, $conf);
+		}
+	}
+return @rv;
 }
 
+# list_actions()
+# Returns a list of all defined action files, each of which contains multiple
+# sections like [Definition] and [Init]
 sub list_actions
 {
+my $dir = "$config{'config_dir'}/action.d";
+my @rv;
+foreach my $f (glob("$dir/*.conf")) {
+	my $conf = &parse_config_file($f);
+	if (@$conf) {
+		push(@rv, $conf);
+		}
+	}
+return @rv;
 }
 
+# list_jails()
+# Returns a list of all sections from the jails file
 sub list_jails
 {
+return &parse_config_file("$config{'config_dir'}/jail.conf");
 }
 
 # parse_config_file(file)
@@ -101,6 +124,8 @@ close($fh);
 return @rv;
 }
 
+# split_directive_values(&dir)
+# Populate the 'values' field by splitting up the 'value' field
 sub split_directive_values
 {
 my ($dir) = @_;

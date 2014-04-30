@@ -1,4 +1,4 @@
-index_title=Fail2Ban
+index_title=Fail2Ban Intrusion Detector
 index_echeck=An error occurred detecting Fail2Ban on this system : $1. Either it is not installed, or the <a href='$2'>module configuration</a> is incorrect.
 index_fail2ban=Fail2Ban
 index_atboot=Start at boot?
@@ -12,5 +12,13 @@ index_restartdesc=Click this button to apply the current configuration by restar
 
 check_edir=The configuration directory $1 does not exist
 check_econf=The configuration file $2 in $1 does not exist
-client_cmd=The client command $1 was not found
-server_cmd=The server command $1 was not found
+check_eclient=The client command $1 was not found
+check_eserver=The server command $1 was not found
+
+filters_title=Log Filters
+
+actions_title=Actions
+
+jails_title=Jails
+
+config_title=Global Configuration
