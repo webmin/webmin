@@ -3,6 +3,7 @@
 # Create, update or delete a password/shadow files entry
 
 require './nis-lib.pl';
+require './md5-lib.pl';
 use Time::Local;
 &ReadParse();
 
@@ -25,14 +26,13 @@ else {
 	$in{'passmode'} != 2 || $in{'encpass'} =~ /^[^:]*$/ ||
 		&error($text{'passwd_epass'});
 	%uconfig = &foreign_config("useradmin");
-	$salt = chr(int(rand(26))+65) . chr(int(rand(26))+65);
 	@passwd = ( $in{'name'}, 'x',
 		    $in{'uid'}, $in{'gid'}, $in{'real'},
 		    $in{'home'}, $in{'shell'} ? $in{'shell'} : $in{'other'} );
 	$pass = $in{'passmode'} == 0 ? "" :
 		$in{'passmode'} == 1 ? $uconfig{'lock_string'} :
 		$in{'passmode'} == 2 ? $in{'encpass'} :
-				       &unix_crypt($in{'pass'}, $salt);
+				       &encrypt_md5($in{'pass'});
 	if ($in{'mode'} == 2) {
 		# Parse extra shadow inputs
 		if ($in{'expired'} ne "" && $in{'expirem'} ne "" &&
