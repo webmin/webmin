@@ -45,6 +45,7 @@ if ($u) {
 	&reload_miniserv();
 	}
 foreach my $g (&list_groups()) {
+	next if (!$g->{'members'});
 	my @mems = @{$g->{'members'}};
 	my $i = &indexof($_[0]->{'user'}, @mems);
 	if ($i >= 0) {
