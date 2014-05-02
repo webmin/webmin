@@ -1,6 +1,11 @@
-check_econf=Die Konfigurationsdatei $2 in $2 existiert nicht
+actions_title=Aktionen
+check_eclient=Der Client-Befehl $1 wurde nicht gefunden
+check_econf=Die Konfigurationsdatei $2 in $1 existiert nicht
 check_edir=Das Konfigurationsverzeichnis $1 existiert nicht
+check_eserver=Der Server-Befehl $1 wurde nicht gefunden
 client_cmd=Der Client-Befehl $1 wurde nicht gefunden
+config_title=Globale Konfiguration
+filters_title=Log-Filter
 index_atboot=Starte beim Booten?
 index_atbootdesc=&#196;ndere diese Option, um zu kontrollieren, ob der Fail2Ban Server beim Systemstart gestartet wird oder nicht. Bei Bedarf kann ein Boot-Skript erstellt werden, so dass es richtig gestartet wird.
 index_echeck=Ein Fehler ist bei der Erfassung von Fail2Ban auf diesem System aufgetreten : $1. Entweder es ist nicht installiert, oder der <a href='$2'>Modulkonfiguration</a> ist falsch.
@@ -12,4 +17,5 @@ index_startdesc=Klicke auf diese Taste, um den Fail2Ban Server zu starten, so da
 index_stop=Stoppe Fail2Ban Server
 index_stopdesc=Klicke auf diese Taste, um den laufende Fail2Ban Server zu stoppen. Alle Log-Analysen werden sofort angehalten werden.
 index_title=Fail2Ban
+jails_title=Gef&#228;ngnis
 server_cmd=Der Server-Befehl $1 wurde nicht gefunden
