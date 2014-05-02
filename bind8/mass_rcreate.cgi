@@ -96,8 +96,16 @@ foreach $zi (@zones) {
 	&create_record($zi->{'file'}, $in{'name'}, $in{'ttl'}, "IN",
 		       $in{'type'}, $in{'value'});
 	&bump_soa_record($zi->{'file'}, \@recs);
-	&sign_dnssec_zone_if_key($zi, \@recs);
-	print $text{'rmass_done'},"<p>\n";
+	eval {
+		local $main::error_must_die = 1;
+		&sign_dnssec_zone_if_key($zi, \@recs);
+		};
+	if ($@) {
+		print &text('rmass_esign', $@),"<p>\n";
+		}
+	else {
+		print $text{'rmass_done'},"<p>\n";
+		}
 	}
 
 &unlock_all_files();
