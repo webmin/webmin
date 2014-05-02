@@ -9,6 +9,7 @@ index_start=Start Fail2Ban Server
 index_startdesc=Click this button to start the Fail2Ban server, so that log file analysis is performed.
 index_restart=Restart Fail2Ban Server
 index_restartdesc=Click this button to apply the current configuration by restarting the Fail2Ban server.
+index_return=module index
 
 check_edir=The configuration directory $1 does not exist
 check_econf=The configuration file $2 in $1 does not exist
@@ -16,6 +17,18 @@ check_eclient=The client command $1 was not found
 check_eserver=The server command $1 was not found
 
 filters_title=Log Filters
+filters_name=File name
+filters_re=Regular expression
+filters_delete=Delete Selected Filters
+filters_add=Add a new log filter.
+filters_return=list of filters
+
+filter_title1=Create Filter
+filter_title2=Edit Filter
+filter_header=Log filter details
+filter_name=Filter name
+filter_fail=Regular expression to match
+filter_ignore=Regular expression to ignore
 
 actions_title=Actions
 

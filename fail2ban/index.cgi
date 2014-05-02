@@ -25,7 +25,13 @@ if ($err) {
 	}
 
 # Show category icons
-# XXX
+my @links = ( "list_filters.cgi", "list_actions.cgi",
+	      "list_jails.cgi", "edit_config.cgi" );
+my @titles = ( $text{'filters_title'}, $text{'actions_title'},
+	       $text{'jails_title'}, $text{'config_title'} );
+my @icons = ( "images/filters.gif", "images/actions.gif",
+	      "images/jails.gif", "images/config.gif" );
+print &icons_table(\@links, \@titles, \@icons, 4);
 
 # Show start / stop buttons
 print &ui_hr();

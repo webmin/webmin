@@ -2,6 +2,8 @@
 #
 # XXX locking and logging
 # XXX include in makedist.pl
+# XXX help page
+# XXX multi-line directives
 
 BEGIN { push(@INC, ".."); };
 use strict;
@@ -44,9 +46,9 @@ sub list_filters
 my $dir = "$config{'config_dir'}/filter.d";
 my @rv;
 foreach my $f (glob("$dir/*.conf")) {
-	my $conf = &parse_config_file($f);
-	if (@$conf) {
-		push(@rv, $conf);
+	my @conf = &parse_config_file($f);
+	if (@conf) {
+		push(@rv, \@conf);
 		}
 	}
 return @rv;
@@ -85,7 +87,7 @@ my $lnum = 0;
 my $fh = "CONF";
 my $sect;
 my @rv;
-&open_readfile($fh, $file);
+&open_readfile($fh, $file) || return ( );
 while(<$fh>) {
 	s/\r|\n//g;
 	s/^\s*#.*$//;
@@ -142,6 +144,21 @@ while($v =~ /\S/) {
 		}
 	}
 $dir->{'values'} = \@w;
+}
+
+sub find_value
+{
+my ($name, $object) = @_;
+my @rv = map { $_->{'value'} } &find($name, $object);
+return wantarray ? @rv : $rv[0];
+}
+
+sub find
+{
+my ($name, $object) = @_;
+my $members = ref($object) eq 'HASH' ? $object->{'members'} : $object;
+my @rv = grep { lc($_->{'name'}) eq $name } @$members;
+return wantarray ? @rv : $rv[0];
 }
 
 1;
