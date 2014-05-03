@@ -22,9 +22,7 @@ foreach my $f (@filters) {
 	my ($def) = grep { $_->{'name'} eq 'Definition' } @$f;
 	next if (!$def);	# XXX what about default?
 	my $fail = &find_value("failregex", $def);
-	my $fname = $def->{'file'};
-	$fname =~ s/^.*\///;
-	$fname =~ s/\.[^\.]+$//;
+	my $fname = &filename_to_name($def->{'file'});
 	if (length($fail) > 80) {
 		$fail = substr($fail, 0, 80)." ...";
 		}

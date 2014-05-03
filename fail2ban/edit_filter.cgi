@@ -34,9 +34,7 @@ if ($in{'new'}) {
 		&ui_textbox("name", undef, 30));
 	}
 else {
-	my $fname = $def->{'file'};
-	$fname =~ s/^.*\///;
-	$fname =~ s/\.[^\.]+$//;
+	my $fname = &filename_to_name($def->{'file'});
 	print &ui_table_row($text{'filter_name'},
 		"<tt>".&html_escape($fname)."</tt>");
 	}

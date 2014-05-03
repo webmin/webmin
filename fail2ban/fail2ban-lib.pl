@@ -167,7 +167,7 @@ my ($file, $sect) = @_;
 my $lref = &read_file_lines($file);
 splice(@$lref, $sect->{'line'}, $sect->{'eline'} - $sect->{'line'} + 1);
 my $empty = 1;
-foreasch my $l (@$lref) {
+foreach my $l (@$lref) {
 	my $ll = $l;
 	$ll =~ s/^\s*#.*//;
 	$empty = 0 if ($ll =~ /\S/);
@@ -202,13 +202,75 @@ sub directive_lines
 {
 my ($dir) = @_;
 my @rv;
-push(@rv, $dir->{'name'}." = ".$dir->{'value'});
+my @v = ref($dir->{'value'}) eq 'ARRAY' ? @{$dir->{'value'}}
+					: ( $dir->{'value'} );
+push(@rv, $dir->{'name'}." = ".shift(@v));
+push(@rv, map { "\t".$_ } @v);	# Continuation
 return @rv;
 }
 
-# save_directive(...)
+# save_directive(name, value|&values|&directive, &section)
+# Updates one directive in a section
 sub save_directive
 {
+my ($name, $v, $sect) = @_;
+my $dir;
+if (ref($v) eq 'HASH') {
+	$dir = $v;
+	}
+elsif (ref($v) eq 'ARRAY') {
+	$dir = { 'name' => $name,
+		 'value' => $v };
+	}
+elsif (defined($v)) {
+	$dir = { 'name' => $name,
+		 'value' => $v };
+	}
+else {
+	$dir = undef;
+	}
+my $old = &find($name, $sect);
+my $oldlen = $old ? $old->{'eline'} - $old->{'line'} + 1 : undef;
+my $oldidx = $old ? &indexof($old, @{$sect->{'members'}}) : -1;
+my $lref = &read_file_lines($sect->{'file'});
+my @dirlines = defined($dir) ? &directive_lines($dir) : ();
+if ($old && defined($dir)) {
+	# Update existing
+	splice(@$lref, $old->{'line'}, $oldlen, @dirlines);
+	$dir->{'line'} = $old->{'line'};
+	$dir->{'eline'} = $dir->{'line'} + scalar(@dirlines) - 1;
+	$dir->{'file'} = $sect->{'file'};
+	if ($oldidx >= 0) {
+		$sect->{'members'}->[$oldidx] = $dir;
+		}
+	my $offset = scalar(@dirlines) - $oldlen;
+	foreach my $m (@{$sect->{'members'}}) {
+		next if ($m eq $dir || $m eq $old);
+		$m->{'line'} += $offset if ($m->{'line'} > $old->{'line'});
+		$m->{'eline'} += $offset if ($m->{'line'} > $old->{'line'});
+		}
+	}
+elsif (!$old && defined($dir)) {
+	# Add new
+	splice(@$lref, $sect->{'eline'}+1, 0, @dirlines);
+	$dir->{'line'} = $sect->{'eline'}+1;
+	$dir->{'file'} = $sect->{'file'};
+	$sect->{'eline'} += scalar(@dirlines);
+	$dir->{'eline'} = $sect->{'eline'};
+	}
+elsif ($old && !defined($dir)) {
+	# Remove existing
+	splice(@$lref, $old->{'line'}, $oldlen);
+	$sect->{'eline'} -= $oldlen;
+	if ($oldidx >= 0) {
+		splice(@{$sect->{'members'}}, $oldidx, 1);
+		}
+	foreach my $m (@{$sect->{'members'}}) {
+		$m->{'line'} -= $oldlen if ($m->{'line'} > $old->{'line'});
+		$m->{'eline'} -= $oldlen if ($m->{'line'} > $old->{'line'});
+		}
+	}
+&flush_file_lines($sect->{'file'});
 }
 
 sub find_value
@@ -224,6 +286,16 @@ my ($name, $object) = @_;
 my $members = ref($object) eq 'HASH' ? $object->{'members'} : $object;
 my @rv = grep { lc($_->{'name'}) eq $name } @$members;
 return wantarray ? @rv : $rv[0];
+}
+
+# filename_to_name(file)
+# Given a filename like /etc/fail2ban/foo.d/bar.conf , return bar
+sub filename_to_name
+{
+my ($file) = @_;
+$file =~ s/^.*\///;
+$file =~ s/\.[^\.]+$//;
+return $file;
 }
 
 1;
