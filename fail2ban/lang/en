@@ -29,6 +29,9 @@ filter_header=Log filter details
 filter_name=Filter name
 filter_fail=Regular expression to match
 filter_ignore=Regular expression to ignore
+filter_egone=Filter no longer exists!
+filter_edefgone=Filter does not have a Definition section
+filter_err=Failed to save filter
 
 actions_title=Actions
 

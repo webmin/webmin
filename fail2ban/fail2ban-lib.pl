@@ -146,6 +146,71 @@ while($v =~ /\S/) {
 $dir->{'values'} = \@w;
 }
 
+# create_section(file, &section)
+# Add a new section to a file
+sub create_section
+{
+my ($file, $sect) = @_;
+my $lref = &read_file_lines($file);
+$sect->{'file'} = $file;
+$sect->{'line'} = scalar(@$lref);
+push(@$lref, &section_lines($sect));
+$sect->{'eline'} = scalar(@$lref) - $sect->{'line'};
+&flush_file_lines($file);
+}
+
+# delete_section(file, &section)
+# Remove a section and all directives from a file
+sub delete_section
+{
+my ($file, $sect) = @_;
+my $lref = &read_file_lines($file);
+splice(@$lref, $sect->{'line'}, $sect->{'eline'} - $sect->{'line'} + 1);
+my $empty = 1;
+foreasch my $l (@$lref) {
+	my $ll = $l;
+	$ll =~ s/^\s*#.*//;
+	$empty = 0 if ($ll =~ /\S/);
+	}
+if ($empty) {
+	# File is now empty, so delete it
+	&unflush_file_lines($file);
+	&unlink_file($file);
+	}
+else {
+	# Save the file
+	&flush_file_lines($file);
+	}
+}
+
+# section_lines(&section)
+# Returns all the lines of text for some section plus directives
+sub section_lines
+{
+my ($sect) = @_;
+my @rv;
+push(@rv, "[".$sect->{'name'}."]");
+foreach my $m (@{$sect->{'members'}}) {
+	push(@rv, &directive_lines($m));
+	}
+return @rv;
+}
+
+# directive_lines(&directive)
+# Returns all lines of text for some directive
+sub directive_lines
+{
+my ($dir) = @_;
+my @rv;
+push(@rv, $dir->{'name'}." = ".$dir->{'value'});
+return @rv;
+}
+
+# save_directive(...)
+sub save_directive
+{
+}
+
 sub find_value
 {
 my ($name, $object) = @_;

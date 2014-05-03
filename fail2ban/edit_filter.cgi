@@ -12,7 +12,7 @@ my ($filter, $def);
 # Show header and get the filter object
 if ($in{'new'}) {
 	&ui_print_header(undef, $text{'filter_title1'}, "");
-	$filter = { };
+	$filter = [ ];
 	$def = { 'members' => [ ] };
 	}
 else {
@@ -20,6 +20,7 @@ else {
 	($filter) = grep { $_->[0]->{'file'} eq $in{'file'} } &list_filters();
 	$filter || &error($text{'filter_egone'});
 	($def) = grep { $_->{'name'} eq 'Definition' } @$filter;
+	$def || &error($text{'filter_edefgone'});
 	}
 
 print &ui_form_start("save_filter.cgi", "post");
