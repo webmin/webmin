@@ -796,6 +796,7 @@ rmass_ename=Fehlender oder ung&#252;ltiger Eintrag
 rmass_ename2=Dieser Eintrag kann nicht bin einem . enden
 rmass_enone=Nichts ausgew&#228;hlt
 rmass_err=Konnte Eintr&#228;ge nicht hinzuf&#252;gen
+rmass_esign=.. fertig, aber Unterschreiben fehlgeschlagen : $1
 rmass_ettl=Fehlende oder ung&#252;ltige TTL
 rmass_header=Eigenschaften f&#252;r Masseneintr&#228;ge
 rmass_name=Neuer Eintrag
