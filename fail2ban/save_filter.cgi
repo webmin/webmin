@@ -48,7 +48,9 @@ else {
 		}
 
 	# Save directives within the section
+	$in{'fail'} =~ s/\r//g;
 	&save_directive("failregex", $in{'fail'}, $def);
+	$in{'ignore'} =~ s/\r//g;
 	&save_directive("ignoreregex", $in{'ignore'}, $def);
 
 	&unlock_file($file);

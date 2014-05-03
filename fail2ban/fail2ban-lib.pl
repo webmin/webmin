@@ -3,7 +3,6 @@
 # XXX locking and logging
 # XXX include in makedist.pl
 # XXX help page
-# XXX multi-line directives
 
 BEGIN { push(@INC, ".."); };
 use strict;
@@ -91,7 +90,7 @@ my @rv;
 while(<$fh>) {
 	s/\r|\n//g;
 	s/^\s*#.*$//;
-	if (/^\s*\[([^\]]+)\]/) {
+	if (/^\[([^\]]+)\]/) {
 		# Start of a section
 		$sect = { 'name' => $1,
 			  'line' => $lnum,
@@ -115,7 +114,7 @@ while(<$fh>) {
 	elsif (/^\s+(\S.*)/ && $sect && @{$sect->{'members'}}) {
 		# Continuation of a directive
 		my $dir = $sect->{'members'}->[@{$sect->{'members'}} - 1];
-		$dir->{'value'} .= ' '.$1;
+		$dir->{'value'} .= "\n".$1;
 		$dir->{'eline'} = $lnum;
 		$sect->{'eline'} = $lnum;
 		&split_directive_values($dir);
@@ -143,7 +142,7 @@ while($v =~ /\S/) {
 		$v = $2;
 		}
 	}
-$dir->{'values'} = \@w;
+$dir->{'words'} = \@w;
 }
 
 # create_section(file, &section)
@@ -203,7 +202,7 @@ sub directive_lines
 my ($dir) = @_;
 my @rv;
 my @v = ref($dir->{'value'}) eq 'ARRAY' ? @{$dir->{'value'}}
-					: ( $dir->{'value'} );
+					: split(/\n/, $dir->{'value'});
 push(@rv, $dir->{'name'}." = ".shift(@v));
 push(@rv, map { "\t".$_ } @v);	# Continuation
 return @rv;
