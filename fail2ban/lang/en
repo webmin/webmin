@@ -22,6 +22,8 @@ filters_re=Regular expression
 filters_delete=Delete Selected Filters
 filters_add=Add a new log filter.
 filters_return=list of filters
+filters_derr=Failed to delete filters
+filters_enone=None selected
 
 filter_title1=Create Filter
 filter_title2=Edit Filter
@@ -42,6 +44,23 @@ actions_ban=Ban command
 actions_delete=Delete Selected Actions
 actions_add=Add a new action.
 actions_return=list of actions
+actions_derr=Failed to delete actions
+actions_enone=None selected
+
+action_title1=Create Match Action
+action_title2=Edit Match Action
+action_header=Match action details
+action_name=Action name
+action_egone=Action no longer exists!
+action_edefgone=Action does not have a Definition section
+action_err=Failed to save action
+action_ename=Missing or invalid action name
+action_eclash=Action name is already in use
+action_start=Command to run on Fail2Ban startup
+action_stop=Command to run on Fail2Ban shutdown
+action_check=Command to run before banning an IP
+action_ban=Command to ban an IP
+action_unban=Command to un-ban an IP
 
 jails_title=Jails
 
