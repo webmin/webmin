@@ -17,7 +17,7 @@ check_eclient=The client command $1 was not found
 check_eserver=The server command $1 was not found
 
 filters_title=Log Filters
-filters_name=File name
+filters_name=Filter name
 filters_re=Regular expression
 filters_delete=Delete Selected Filters
 filters_add=Add a new log filter.
@@ -32,8 +32,16 @@ filter_ignore=Regular expression to ignore
 filter_egone=Filter no longer exists!
 filter_edefgone=Filter does not have a Definition section
 filter_err=Failed to save filter
+filter_ename=Missing or invalid filter name
+filter_eclash=Filter name is already in use
+filter_efail=No regular expression to match entered
 
-actions_title=Actions
+actions_title=Match Actions
+actions_name=Action name
+actions_ban=Ban command
+actions_delete=Delete Selected Actions
+actions_add=Add a new action.
+actions_return=list of actions
 
 jails_title=Jails
 
