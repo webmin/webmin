@@ -61,6 +61,9 @@ action_stop=Command to run on Fail2Ban shutdown
 action_check=Command to run before banning an IP
 action_ban=Command to ban an IP
 action_unban=Command to un-ban an IP
+action_err=Failed to save action
+action_ename=Missing or invalid action name
+action_eclash=Action name is already in use
 
 jails_title=Jails
 

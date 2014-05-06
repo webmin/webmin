@@ -2,7 +2,9 @@
 #
 # XXX locking and logging
 # XXX include in makedist.pl
-# XXX help page
+# XXX main help page
+# XXX help page for filters with description of <HOST> / etc
+# XXX filter defaults
 
 BEGIN { push(@INC, ".."); };
 use strict;
@@ -61,9 +63,9 @@ sub list_actions
 my $dir = "$config{'config_dir'}/action.d";
 my @rv;
 foreach my $f (glob("$dir/*.conf")) {
-	my $conf = &parse_config_file($f);
-	if (@$conf) {
-		push(@rv, $conf);
+	my @conf = &parse_config_file($f);
+	if (@conf) {
+		push(@rv, \@conf);
 		}
 	}
 return @rv;

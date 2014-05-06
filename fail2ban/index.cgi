@@ -6,7 +6,7 @@ use warnings;
 require './fail2ban-lib.pl';
 our (%in, %text, %config, $module_name, $module_root_directory);
 
-&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
+&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
 		 &help_search_link("fail2ban", "google", "man"));
 
 # Check if installed
