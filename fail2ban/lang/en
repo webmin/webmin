@@ -75,5 +75,15 @@ jails_action=Resulting actions
 jails_delete=Delete Selected Jails
 jails_def=Edit Jail Defaults
 jails_defdesc=Edit default settings and limits that apply to all the jails listed above.
+jails_return=list of jails
+
+jail_title1=Create Jail
+jail_title2=Edit Jail
+jail_header=Filter action jail details
+jail_name=Jail name
+jail_egone=Jail no longer exists!
+jail_enabled=Currently enabled?
+jail_filter=Filter to search log for
+jail_logpath=Log file paths
 
 config_title=Global Configuration
