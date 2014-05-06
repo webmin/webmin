@@ -49,20 +49,21 @@ my $stop = &find_value("actionstop", $def);
 print &ui_table_row($text{'action_stop'},
 	&ui_textarea("stop", $stop, 5, 80, "hard"));
 
-# Check command
-my $check = &find_value("actioncheck", $def);
-print &ui_table_row($text{'action_check'},
-	&ui_textarea("check", $check, 5, 80, "hard"));
-
 # Command to ban a host
 my $ban = &find_value("actionban", $def);
 print &ui_table_row($text{'action_ban'},
-	&ui_textarea("ban", $ban, 5, 80, "hard"));
+	&ui_textarea("ban", $ban, 5, 80, "hard")."<br>\n".
+	$text{'action_desc'});
 
 # Command to un-ban a host
 my $unban = &find_value("actionunban", $def);
 print &ui_table_row($text{'action_unban'},
 	&ui_textarea("unban", $unban, 5, 80, "hard"));
+
+# Check command
+my $check = &find_value("actioncheck", $def);
+print &ui_table_row($text{'action_check'},
+	&ui_textarea("check", $check, 5, 80, "hard"));
 
 print &ui_table_end();
 if ($in{'new'}) {

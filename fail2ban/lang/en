@@ -27,10 +27,11 @@ filters_enone=None selected
 
 filter_title1=Create Filter
 filter_title2=Edit Filter
+filter_desc=Use <i>&lt;HOST&gt;</i> in regular expressions where a hostname or IP address should appear.
 filter_header=Log filter details
 filter_name=Filter name
-filter_fail=Regular expression to match
-filter_ignore=Regular expression to ignore
+filter_fail=Regular expressions to match
+filter_ignore=Regular expressions to ignore
 filter_egone=Filter no longer exists!
 filter_edefgone=Filter does not have a Definition section
 filter_err=Failed to save filter
@@ -64,6 +65,7 @@ action_unban=Command to un-ban an IP
 action_err=Failed to save action
 action_ename=Missing or invalid action name
 action_eclash=Action name is already in use
+action_desc=<i>&lt;ip&gt;</i> will be replaced with the IP address being banned.
 
 jails_title=Jails
 
