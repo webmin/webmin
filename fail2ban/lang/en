@@ -68,5 +68,12 @@ action_eclash=Action name is already in use
 action_desc=<i>&lt;ip&gt;</i> will be replaced with the IP address being banned.
 
 jails_title=Jails
+jails_add=Add a new jail.
+jails_name=Jail name
+jails_filter=Log filter
+jails_action=Resulting actions
+jails_delete=Delete Selected Jails
+jails_def=Edit Jail Defaults
+jails_defdesc=Edit default settings and limits that apply to all the jails listed above.
 
 config_title=Global Configuration
