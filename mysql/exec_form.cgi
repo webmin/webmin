@@ -26,7 +26,8 @@ close(OLD);
 # Build charset selector
 @css = &list_character_sets($in{'db'});
 $csel = &ui_select("charset", $sql_charset,
-		   [ [ "", "&lt;".$text{'default'}."&gt;" ], @css ]);
+		   [ [ "", "&lt;".$text{'default'}."&gt;" ],
+		     (map { [ $_->[0], $_->[1]." (".$_->[0].")" ] } @css) ]);
 
 # Form for executing an SQL command
 print &ui_tabs_start_tab("mode", "exec");
