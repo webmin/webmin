@@ -44,7 +44,37 @@ print &ui_table_row($text{'jail_filter'},
 		   1, 0, $filter ? 1 : 0));
 
 # Actions to run
-# XXX
+my @actions = &list_filters();
+my $atable = &ui_columns_start([
+		$text{'jail_action'},
+		$text{'jail_name'},
+		$text{'jail_port'},
+		$text{'jail_protocol'},
+		]);
+my $i = 0;
+foreach my $a (@{$jail->{'words'}}, undef) {
+	my $action;
+	my %opts;
+	if ($a =~ /^(\S+)\[(.*)\]$/) {
+		$action = $1;
+		%opts = map { split(/=/, $_) } split(/,\s*/, $2);
+		}
+	else {
+		$action = $a;
+		}
+	$atable .= &ui_columns_row([
+		&ui_select("action_$i", $action,
+		   [ map { &filename_to_name($_->[0]->{'file'}) } @actions ],
+		   1, 0, $action ? 1 : 0),
+		&ui_textbox("name_$i", $opts{'name'}, 20),
+		&ui_textbox("port_$i", $opts{'port'}, 6),
+		&ui_select("protocol_$i", $opts{'protocol'},
+			   [ 'tcp', 'udp', 'icmp' ]),
+		]);
+	$i++;
+	}
+$atable .= &ui_columns_end();
+print &ui_table_row($text{'jail_actions'}, $atable);
 
 # Log file paths
 my $logpath = &find_value("logpath", $jail);
