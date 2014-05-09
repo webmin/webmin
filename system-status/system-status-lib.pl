@@ -393,6 +393,7 @@ if (!$config{'collect_notemp'} &&
 					    'temp' => int($a->[1]),
 					    'errors' => $st->{'errors'},
 					    'failed' => !$st->{'check'} });
+				last;
 				}
 			}
 		}
