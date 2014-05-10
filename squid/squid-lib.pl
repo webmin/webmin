@@ -28,7 +28,7 @@ my $v = &find_config($_[1], $_[2]);
 my $vv = $v ? $v->{'value'} : $_[3];
 my @opts2;
 for(my $i=0; $i<@opts; $i+=2) {
-	push(@opts2, [ $opts[$i+1], $opts[$1] ]);
+	push(@opts2, [ $opts[$i+1], $opts[$i] ]);
 	}
 return &ui_table_row($label,
 	&ui_radio($name, $vv, \@opts2));
