@@ -85,5 +85,13 @@ jail_egone=Jail no longer exists!
 jail_enabled=Currently enabled?
 jail_filter=Filter to search log for
 jail_logpath=Log file paths
+jail_actions=Actions to apply
+jail_action=Action
+jail_aname=Name
+jail_port=Port
+jail_protocol=Protocol
+jail_maxretry=Matches before applying action
+jail_findtime=Max delay between matches
+jail_bantime=Time to ban IP for
 
 config_title=Global Configuration

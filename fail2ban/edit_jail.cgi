@@ -7,16 +7,19 @@ require './fail2ban-lib.pl';
 our (%in, %text);
 &ReadParse();
 
-my ($jail, $def);
+# Get default jail
+my @jails = &list_jails();
+my ($def) = grep { $_->{'name'} eq 'DEFAULT' } @jails;
 
 # Show header and get the jail object
+my ($jail);
 if ($in{'new'}) {
 	&ui_print_header(undef, $text{'jail_title1'}, "");
 	$jail = { };
 	}
 else {
 	&ui_print_header(undef, $text{'jail_title2'}, "");
-	($jail) = grep { $_->{'name'} eq $in{'name'} } &list_jails();
+	($jail) = grep { $_->{'name'} eq $in{'name'} } @jails;
 	$jail || &error($text{'jail_egone'});
 	}
 
@@ -44,15 +47,16 @@ print &ui_table_row($text{'jail_filter'},
 		   1, 0, $filter ? 1 : 0));
 
 # Actions to run
+my $actionlist = &find("action", $jail);
 my @actions = &list_filters();
 my $atable = &ui_columns_start([
 		$text{'jail_action'},
-		$text{'jail_name'},
+		$text{'jail_aname'},
 		$text{'jail_port'},
 		$text{'jail_protocol'},
 		]);
 my $i = 0;
-foreach my $a (@{$jail->{'words'}}, undef) {
+foreach my $a (@{$actionlist->{'words'}}, undef) {
 	my $action;
 	my %opts;
 	if ($a =~ /^(\S+)\[(.*)\]$/) {
@@ -64,7 +68,8 @@ foreach my $a (@{$jail->{'words'}}, undef) {
 		}
 	$atable .= &ui_columns_row([
 		&ui_select("action_$i", $action,
-		   [ map { &filename_to_name($_->[0]->{'file'}) } @actions ],
+		   [ [ "", "&nbsp;" ],
+		     map { &filename_to_name($_->[0]->{'file'}) } @actions ],
 		   1, 0, $action ? 1 : 0),
 		&ui_textbox("name_$i", $opts{'name'}, 20),
 		&ui_textbox("port_$i", $opts{'port'}, 6),
@@ -80,6 +85,13 @@ print &ui_table_row($text{'jail_actions'}, $atable);
 my $logpath = &find_value("logpath", $jail);
 print &ui_table_row($text{'jail_logpath'},
 	&ui_textarea("logpath", $logpath, 5, 80, "hard"));
+
+# Matches needed
+my $def_maxretry = &find_value("maxretry", $def) || 3;
+my $maxretry = &find_value("maxretry", $jail);
+print &ui_table_row($text{'jail_maxretry'},
+	&ui_opt_textbox("maxretry", $maxretry, 6,
+			$text{'default'}." (".$def_maxretry.")"));
 
 # IPs to ignore
 my $ignoreip = &find_value("ignoreip", $jail);
