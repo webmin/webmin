@@ -30,7 +30,23 @@ if ($squid_version >= 2) {
 &save_opt("pinger_program", \&check_prog, $conf);
 if ($squid_version >= 2.6) {
 	&save_opt("url_rewrite_program", \&check_prog, $conf);
-        &save_opt("url_rewrite_children", \&check_children, $conf);
+	if ($in{'url_rewrite_children_def'}) {
+		&save_directive($conf, 'url_rewrite_children', [ ]);
+		}
+	else {
+		my @w;
+		$in{'url_rewrite_children'} =~ /^\d+$/ ||
+			&error(&text('sprog_emsg5', $in{'url_rewrite_children'}));
+		push(@w, $in{'url_rewrite_children'});
+		foreach my $o ("startup", "idle", "concurrency") {
+			next if ($in{"url_rewrite_".$o."_def"});
+			$in{"url_rewrite_".$o} =~ /^[1-9]\d*$/ ||
+				&error($text{'sprog_echildren'});
+			push(@w, $o."=".$in{"url_rewrite_".$o});
+			}
+		my $dir = { 'name' => 'url_rewrite_children', 'values' => \@w };
+		&save_directive($conf, $dir->{'name'}, [ $dir ]);
+		}
 	}
 else {
 	&save_opt("redirect_program", \&check_prog, $conf);
@@ -58,11 +74,6 @@ sub check_ftpuser
 return $_[0] =~ /^\S+@\S*$/ ? undef : &text('sprog_emsg4',$_[0]);
 }
 
-sub check_children
-{
-return $_[0] =~ /^\d+$/ ? undef : &text('sprog_emsg5',$_[0]);
-}
-
 sub check_width
 {
 return $_[0] =~ /^\d+$/ ? undef : &text('sprog_emsg6',$_[0]);
@@ -78,4 +89,7 @@ foreach my $dns (@dns) {
 return undef;
 }
 
-
+sub check_children
+{
+return $_[0] =~ /^\d+$/ ? undef : &text('sprog_emsg5',$_[0]);
+}

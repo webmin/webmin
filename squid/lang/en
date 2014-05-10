@@ -507,6 +507,9 @@ eprogs_ccp=Cache clearing program
 eprogs_spp=Squid ping program
 eprogs_crp=Custom redirect program
 eprogs_norp=Number of redirect programs
+eprogs_startup=Programs to start initially
+eprogs_idle=Minimum programs to run
+eprogs_concurrency=Number of concurrent requests per program
 eprogs_cap=Authentication program
 eprogs_capweb=Webmin default
 eprogs_noap=Number of authentication programs
@@ -643,6 +646,7 @@ sprog_emsg7=No DNS servers entered
 sprog_emsg8='$1' is not a valid IP address
 sprog_emsg9='$1' is not a valid cache time
 sprog_emsg10='$1' is not a valid TTL
+sprog_echildren=Number of programs must be a number greater than zero
 
 suser_ftsu=Failed to save user
 suser_emsg1=Invalid or missing username

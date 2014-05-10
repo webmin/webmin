@@ -43,11 +43,29 @@ print &opt_input($text{'eprogs_spp'}, "pinger_program", $conf,
 		 $text{'default'}, 40, &file_chooser_button("pinger_program"));
 
 if ($squid_version >= 2.6) {
+	print &ui_table_hr();
+
         print &opt_input($text{'eprogs_crp'}, "url_rewrite_program", $conf,
                          $text{'none'}, 40, &file_chooser_button("url_rewrite_program"));
 
-        print &opt_input($text{'eprogs_norp'}, "url_rewrite_children", $conf,
-                         $text{'default'}, 6);
+	# Number of child processes for re-writes
+	my $v = &find_config("url_rewrite_children", $conf);
+	my @w = $v ? @{$v->{'values'}} : ();
+	print &ui_table_row($text{'eprogs_norp'},
+		&ui_opt_textbox("url_rewrite_children", $w[0], 6, $text{'default'}));
+
+	# Child process options
+	shift(@w);
+	my %opts = map { split(/=/, $_, 2) } @w;
+	print &ui_table_row($text{'eprogs_startup'},
+		&ui_opt_textbox("url_rewrite_startup", $opts{'startup'}, 6,
+				$text{'default'}));
+	print &ui_table_row($text{'eprogs_idle'},
+		&ui_opt_textbox("url_rewrite_idle", $opts{'idle'}, 6,
+				$text{'default'}));
+	print &ui_table_row($text{'eprogs_concurrency'},
+		&ui_opt_textbox("url_rewrite_concurrency", $opts{'concurrency'}, 6,
+				$text{'default'}));
 	}
 else {
 	print &opt_input($text{'eprogs_crp'}, "redirect_program", $conf,

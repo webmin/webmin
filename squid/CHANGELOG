@@ -35,3 +35,5 @@ Improved support for COSS format (single file) Squid caches.
 ---- Changes since 1.660 ----
 Updated all pages to use the Webmin UI library for a more consistent look.
 Made all code Perl strict and warnings compliant.
+---- Changes since 1.680 ----
+Fixed handling of the url_rewrite_children directive to support all the process count options.
