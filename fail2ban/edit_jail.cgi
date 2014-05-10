@@ -74,7 +74,8 @@ foreach my $a (@{$actionlist->{'words'}}, undef) {
 		&ui_textbox("name_$i", $opts{'name'}, 20),
 		&ui_textbox("port_$i", $opts{'port'}, 6),
 		&ui_select("protocol_$i", $opts{'protocol'},
-			   [ 'tcp', 'udp', 'icmp' ]),
+			   [ [ 'tcp', 'TCP' ], [ 'udp', 'UDP' ],
+			     [ 'icmp', 'ICMP' ] ]),
 		]);
 	$i++;
 	}
@@ -93,9 +94,26 @@ print &ui_table_row($text{'jail_maxretry'},
 	&ui_opt_textbox("maxretry", $maxretry, 6,
 			$text{'default'}." (".$def_maxretry.")"));
 
+# Time to scan over
+my $def_findtime = &find_value("findtime", $def) || 600;
+my $findtime = &find_value("findtime", $jail);
+print &ui_table_row($text{'jail_findtime'},
+	&ui_opt_textbox("findtime", $findtime, 6,
+			$text{'default'}." (".$def_findtime.")"));
+
+# Time to ban for
+my $def_bantime = &find_value("bantime", $def) || 600;
+my $bantime = &find_value("bantime", $jail);
+print &ui_table_row($text{'jail_bantime'},
+	&ui_opt_textbox("bantime", $bantime, 6,
+			$text{'default'}." (".$def_bantime.")"));
+
 # IPs to ignore
+my $def_ignoreip = &find_value("ignoreip", $def) || "127.0.0.1";
 my $ignoreip = &find_value("ignoreip", $jail);
-# XXX
+print &ui_table_row($text{'jail_ignoreip'},
+	&ui_opt_textbox("ignoreip", $ignoreip, 40,
+			$text{'default'}." (".$def_ignoreip.")"));
 
 print &ui_table_end();
 if ($in{'new'}) {

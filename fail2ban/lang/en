@@ -93,5 +93,9 @@ jail_protocol=Protocol
 jail_maxretry=Matches before applying action
 jail_findtime=Max delay between matches
 jail_bantime=Time to ban IP for
+jail_ignoreip=IP addresses to never ban
+jail_err=Failed to save jail
+jail_eclash=A jail with the same name already exists
+jail_ename=Missing or invalid jail name
 
 config_title=Global Configuration
