@@ -67,7 +67,7 @@ action_ename=Missing or invalid action name
 action_eclash=Action name is already in use
 action_desc=<i>&lt;ip&gt;</i> will be replaced with the IP address being banned.
 
-jails_title=Jails
+jails_title=Filter Action Jails
 jails_add=Add a new jail.
 jails_name=Jail name
 jails_filter=Log filter
@@ -76,6 +76,8 @@ jails_delete=Delete Selected Jails
 jails_def=Edit Jail Defaults
 jails_defdesc=Edit default settings and limits that apply to all the jails listed above.
 jails_return=list of jails
+jails_derr=Failed to delete jails
+jails_enone=None selected
 
 jail_title1=Create Jail
 jail_title2=Edit Jail
