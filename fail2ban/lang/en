@@ -103,5 +103,8 @@ jail_eport=Invalid port number for action $1
 jail_eactions=No actions selected!
 jail_elogpaths=No log file paths entered
 jail_elogpath=All log files must be absolute paths or patterns
+jail_emaxretry=Matches before applying action must be a number greater than zero
+jail_efindtime=Delay between matches must be a number greater than zero
+jail_ebantime=Time to ban an IP must be a number greater than zero
 
 config_title=Global Configuration

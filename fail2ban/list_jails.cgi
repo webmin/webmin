@@ -22,12 +22,18 @@ print &ui_columns_start([ "",
 foreach my $j (@jails) {
 	next if ($j->{'name'} eq 'DEFAULT');
 	my $filter = &find_value("filter", $j);
-	my $action = &find_value("action", $j);
+	my $action_dir = &find("action", $j);
+	my $action = "";
+	if ($action_dir) {
+		$action = join("&nbsp;|&nbsp;",
+			map { /^([^\[]+)/; &html_escape("$1") }
+			    @{$action_dir->{'words'}});
+		}
 	print &ui_checked_columns_row([
 		&ui_link("edit_jail.cgi?name=".&urlize($j->{'name'}),
 			 $j->{'name'}),
 		&html_escape($filter),
-		&html_escape($action),
+		$action,
 		], \@tds, "d", $j->{'name'});
 	}
 print &ui_columns_end();

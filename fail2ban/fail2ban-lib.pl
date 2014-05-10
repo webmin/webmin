@@ -5,6 +5,7 @@
 # XXX main help page
 # XXX help page for filters with description of <HOST> / etc
 # XXX filter defaults
+# XXX deleting a directive removes too many lines?
 
 BEGIN { push(@INC, ".."); };
 use strict;
@@ -101,7 +102,7 @@ while(<$fh>) {
 			  'members' => [] };
 		push(@rv, $sect);
 		}
-	elsif (/^\s*(\S+)\s*=\s*(.*)/ && $sect) {
+	elsif (/^(\S+)\s*=\s*(.*)/ && $sect) {
 		# A directive in a section
 		my $dir = { 'name' => $1,
 			    'value' => $2,
@@ -134,8 +135,9 @@ sub split_directive_values
 my ($dir) = @_;
 my @w;
 my $v = $dir->{'value'};
+$v =~ s/\n/ /g;
 while($v =~ /\S/) {
-	if ($v =~ /^(\S+\[[^\]]+\])\s*(.*)/) {
+	if ($v =~ /^([^\[]+\[[^\]]+\])\s*(.*)/) {
 		push(@w, $1);
 		$v = $2;
 		}
@@ -157,6 +159,17 @@ $sect->{'file'} = $file;
 $sect->{'line'} = scalar(@$lref);
 push(@$lref, &section_lines($sect));
 $sect->{'eline'} = scalar(@$lref) - $sect->{'line'};
+&flush_file_lines($file);
+}
+
+# modify_section(file, &section)
+# Update the first line (only) for some section
+sub modify_section
+{
+my ($file, $sect) = @_;
+my $lref = &read_file_lines($file);
+my @lines = &section_lines($sect);
+$lref->[$sect->{'line'}] = $lines[0];
 &flush_file_lines($file);
 }
 
@@ -206,7 +219,7 @@ my @rv;
 my @v = ref($dir->{'value'}) eq 'ARRAY' ? @{$dir->{'value'}}
 					: split(/\n/, $dir->{'value'});
 push(@rv, $dir->{'name'}." = ".shift(@v));
-push(@rv, map { "\t".$_ } @v);	# Continuation
+push(@rv, map { "        ".$_ } @v);	# Continuation
 return @rv;
 }
 

@@ -71,6 +71,19 @@ else {
 		$l =~ /^\/\S+$/ || &error($text{'jail_elogpath'});
 		}
 
+	# Validate various counters
+	foreach my $f ("maxretry", "findtime", "bantime") {
+		$in{$f.'_def'} || $in{$f} =~ /^[1-9]\d*$/ ||
+			&error($text{'jail_e'.$f});
+		}
+
+	# Split and validate IPs to ignore
+	my @ignoreips = split(/\s+/, $in{'ignoreip'});
+	foreach my $ip (@ignoreips) {
+		&check_ipaddress($ip) || &check_ip6address($ip) ||
+			&error($text{'jail_eignoreip'});
+		}
+
 	# Create new section or rename existing if needed
 	&lock_file($jail->{'file'});
 	if ($in{'new'}) {
@@ -85,6 +98,11 @@ else {
 	&save_directive("filter", $in{'filter'}, $jail);
 	&save_directive("action", join("\n", @actions), $jail);
 	&save_directive("logpath", join("\n", @logpaths), $jail);
+	foreach my $f ("maxretry", "findtime", "bantime") {
+		&save_directive($f, $in{$f."_def"} ? undef : $in{$f}, $jail);
+		}
+	&save_directive("ignoreip",
+		@ignoreips ? join(" ", @ignoreips) : undef, $jail);
 
 	&unlock_file($jail->{'file'});
 	}
