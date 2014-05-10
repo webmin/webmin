@@ -48,12 +48,13 @@ print &ui_table_row($text{'jail_filter'},
 
 # Actions to run
 my $actionlist = &find("action", $jail);
-my @actions = &list_filters();
+my @actions = &list_actions();
 my $atable = &ui_columns_start([
 		$text{'jail_action'},
 		$text{'jail_aname'},
 		$text{'jail_port'},
 		$text{'jail_protocol'},
+		$text{'jail_others'},
 		]);
 my $i = 0;
 foreach my $a (@{$actionlist->{'words'}}, undef) {
@@ -66,16 +67,21 @@ foreach my $a (@{$actionlist->{'words'}}, undef) {
 	else {
 		$action = $a;
 		}
+	my @oopts = grep { !/^(name|port|protocol)$/ } (keys %opts);
 	$atable .= &ui_columns_row([
 		&ui_select("action_$i", $action,
 		   [ [ "", "&nbsp;" ],
 		     map { &filename_to_name($_->[0]->{'file'}) } @actions ],
 		   1, 0, $action ? 1 : 0),
-		&ui_textbox("name_$i", $opts{'name'}, 20),
+		&ui_textbox("name_$i", $opts{'name'}, 15),
 		&ui_textbox("port_$i", $opts{'port'}, 6),
 		&ui_select("protocol_$i", $opts{'protocol'},
-			   [ [ 'tcp', 'TCP' ], [ 'udp', 'UDP' ],
+			   [ [ '', '&nbsp;' ],
+			     [ 'tcp', 'TCP' ],
+			     [ 'udp', 'UDP' ],
 			     [ 'icmp', 'ICMP' ] ]),
+		&ui_textbox("others_$i",
+			join(" ", map { $_."=".$opts{$_} } @oopts), 40),
 		]);
 	$i++;
 	}

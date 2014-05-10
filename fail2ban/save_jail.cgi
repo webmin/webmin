@@ -38,7 +38,38 @@ else {
 		my ($clash) = grep { $_->{'name'} eq $in{'name'} } @jails;
 		$clash && &error($text{'jail_eclash'});
 		}
-	# XXX validate other fields
+
+	# Parse and validate actions
+	my @actions;
+	for(my $i=0; defined($in{"action_$i"}); $i++) {
+		next if (!$in{"action_$i"});
+		my @opts;
+		if ($in{"name_$i"}) {
+			$in{"name_$i"} =~ /^[A-Za-z0-9\.\_\-]+$/ ||
+				&error(&text('jail_eaname', $i+1));
+			push(@opts, "name=".$in{"name_$i"});
+			}
+		if ($in{"port_$i"}) {
+			$in{"port_$i"} =~ /^\d+$/ ||
+			    getservbyname($in{"port_$i"},
+					  $in{"protocol_$i"} || "tcp") ||
+				&error(&text('jail_eport', $i+1));
+			push(@opts, "port=".$in{"port_$i"});
+			}
+		if ($in{"protocol_$i"}) {
+			push(@opts, "protocol=".$in{"protocol_$i"});
+			}
+		push(@opts, split(/\s+/, $in{"others_$i"}));
+		push(@actions, $in{"action_$i"}."[".join(", ", @opts)."]");
+		}
+	@actions || &error($text{'jail_eactions'});
+
+	# Split and validate log file paths
+	my @logpaths = split(/\r?\n/, $in{'logpath'});
+	@logpaths || &error($text{'jail_elogpaths'});
+	foreach my $l (@logpaths) {
+		$l =~ /^\/\S+$/ || &error($text{'jail_elogpath'});
+		}
 
 	# Create new section or rename existing if needed
 	&lock_file($jail->{'file'});
@@ -51,6 +82,9 @@ else {
 
 	# Save directives within the section
 	&save_directive("enabled", $in{'enabled'} ? 'true' : 'false', $jail);
+	&save_directive("filter", $in{'filter'}, $jail);
+	&save_directive("action", join("\n", @actions), $jail);
+	&save_directive("logpath", join("\n", @logpaths), $jail);
 
 	&unlock_file($jail->{'file'});
 	}
