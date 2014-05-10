@@ -17,6 +17,10 @@ foreach my $file (@d) {
 	next if (!$filter);
 	my ($def) = grep { $_->{'name'} eq 'Definition' } @$filter;
 	next if (!$def);
+	my @users = &find_jail_by_filter($filter);
+	@users && &error(&text('filters_einuse',
+			&filename_to_name($file),
+			join(" ", map { $_->{'name'} } @users)));
 	&lock_file($file);
 	&delete_section($file, $def);
 	&unlock_file($file);

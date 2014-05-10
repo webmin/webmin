@@ -158,7 +158,7 @@ my $lref = &read_file_lines($file);
 $sect->{'file'} = $file;
 $sect->{'line'} = scalar(@$lref);
 push(@$lref, &section_lines($sect));
-$sect->{'eline'} = scalar(@$lref) - $sect->{'line'};
+$sect->{'eline'} = scalar(@$lref);
 &flush_file_lines($file);
 }
 
@@ -311,5 +311,41 @@ $file =~ s/^.*\///;
 $file =~ s/\.[^\.]+$//;
 return $file;
 }
+
+# find_jail_by_filter(&filter)
+# returns the jail objects using a filter
+sub find_jail_by_filter
+{
+my ($filter) = @_;
+my $fname = &filename_to_name($filter->[0]->{'file'});
+my @rv;
+foreach my $jail (&list_jails()) {
+	my $jfilter = &find_value("filter", $jail);
+	if ($jfilter eq $fname) {
+		push(@rv, $jail);
+		}
+	}
+return @rv;
+}
+
+# find_jail_by_action(&action)
+# returns the jail objects using an action
+sub find_jail_by_action
+{
+my ($action) = @_;
+my $aname = &filename_to_name($action->[0]->{'file'});
+my @rv;
+foreach my $jail (&list_jails()) {
+	my $jaction = &find("action", $jail);
+	next if (!$jaction);
+	my @jactions = map { /^([^\[]+)/; $1 } @{$jaction->{'words'}};
+	if (&indexof($aname, @jactions) >= 0) {
+		push(@rv, $jail);
+		}
+	}
+return @rv;
+}
+
+
 
 1;

@@ -24,6 +24,7 @@ filters_add=Add a new log filter.
 filters_return=list of filters
 filters_derr=Failed to delete filters
 filters_enone=None selected
+filters_einuse=The filter $1 cannot be deleted, as it is used by the jails : $2
 
 filter_title1=Create Filter
 filter_title2=Edit Filter
@@ -38,6 +39,7 @@ filter_err=Failed to save filter
 filter_ename=Missing or invalid filter name
 filter_eclash=Filter name is already in use
 filter_efail=No regular expression to match entered
+filter_einuse=This filter cannot be deleted, as it is used by the jails : $1
 
 actions_title=Match Actions
 actions_name=Action name
@@ -47,6 +49,7 @@ actions_add=Add a new action.
 actions_return=list of actions
 actions_derr=Failed to delete actions
 actions_enone=None selected
+actions_einuse=The action $1 cannot be deleted, as it is used by the jails : $2
 
 action_title1=Create Match Action
 action_title2=Edit Match Action
@@ -66,6 +69,7 @@ action_err=Failed to save action
 action_ename=Missing or invalid action name
 action_eclash=Action name is already in use
 action_desc=<i>&lt;ip&gt;</i> will be replaced with the IP address being banned.
+action_einuse=This action cannot be deleted, as it is used by the jails : $1
 
 jails_title=Filter Action Jails
 jails_add=Add a new jail.

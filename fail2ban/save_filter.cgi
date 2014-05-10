@@ -26,6 +26,9 @@ else {
 my $file = $in{'file'};
 if ($in{'delete'}) {
 	# Just delete the filter
+	my @users = &find_jail_by_filter($filter);
+	@users && &error(&text('filter_einuse',
+			join(" ", map { $_->{'name'} } @users)));
 	&lock_file($file);
 	&delete_section($file, $def);
 	&unlock_file($file);
