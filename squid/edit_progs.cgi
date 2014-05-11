@@ -42,6 +42,9 @@ print &opt_input($text{'eprogs_ccp'}, "unlinkd_program", $conf,
 print &opt_input($text{'eprogs_spp'}, "pinger_program", $conf,
 		 $text{'default'}, 40, &file_chooser_button("pinger_program"));
 
+print &choice_input($text{'eprogs_sppe'}, "pinger_enable", $conf, "on",
+		    $text{'yes'}, "on", $text{'no'}, "off");
+
 if ($squid_version >= 2.6) {
 	print &ui_table_hr();
 

@@ -505,6 +505,7 @@ eprogs_dsa=DNS server addresses
 eprogs_fr=From resolv.conf
 eprogs_ccp=Cache clearing program
 eprogs_spp=Squid ping program
+eprogs_sppe=Ping program enabled?
 eprogs_crp=Custom redirect program
 eprogs_norp=Number of redirect programs
 eprogs_startup=Programs to start initially
