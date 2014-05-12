@@ -70,6 +70,8 @@ type_dns=DNS Lookup
 type_query=SQL Query
 type_alive=Alive System
 type_rssh=Remote SSH
+type_slapd=LDAP Server
+type_ldap=LDAP Connection
 
 mon_create=Create Monitor
 mon_edit=Edit Monitor
