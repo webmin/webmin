@@ -113,4 +113,20 @@ jail_emaxretry=Matches before applying action must be a number greater than zero
 jail_efindtime=Delay between matches must be a number greater than zero
 jail_ebantime=Time to ban an IP must be a number greater than zero
 
+log_create_filter=Deleted filter $1
+log_modify_filter=Deleted filter $1
+log_delete_filter=Deleted filter $1
+log_create_action=Deleted action $1
+log_modify_action=Deleted action $1
+log_delete_action=Deleted action $1
+log_create_jail=Deleted jail $1
+log_modify_jail=Deleted jail $1
+log_delete_jail=Deleted jail $1
+log_config=Changed global configuration
+log_stop=Stopped Fail2Ban server
+log_start=Started Fail2Ban server
+log_restart=Re-started Fail2Ban server
+log_boot=Enabled Fail2Ban at boot time
+log_unboot=Disabled Fail2Ban at boot time
+
 config_title=Global Configuration
