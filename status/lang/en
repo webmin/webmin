@@ -526,4 +526,12 @@ du_edir=Missing or non-absolute directory path
 du_emax=Missing or non-numeric maximum size
 du_over=Size is $1
 du_under=Size is only $1
+
+ldap_edriver=The Perl module $1 is not installed
+ldap_host=LDAP server hostname
+ldap_port=LDAP server port
+ldap_ssl=Use SSL connection?
+ldap_user=LDAP server login
+ldap_pass=LDAP server password
+
 __norefs=1

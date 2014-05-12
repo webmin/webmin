@@ -179,7 +179,7 @@ elsif ($_[0]) { return $err; }		# Caller asked for error return
 else { &error($err); }			# Caller asked for error() call
 }
 
-# generic_ldap_connect([host], [port], [login], [password])
+# generic_ldap_connect([host], [port], [ssl], [login], [password])
 # A generic function for connecting to an LDAP server. Uses the system's
 # LDAP client config file if any parameters are missing. Returns the LDAP
 # handle on success or an error message on failure.
@@ -207,6 +207,7 @@ local $cafile = &find_svalue("tls_cacertfile", $conf);
 local $certfile = &find_svalue("tls_cert", $conf);
 local $keyfile = &find_svalue("tls_key", $conf);
 local $ciphers = &find_svalue("tls_ciphers", $conf);
+local $host;
 if ($ldap_hosts) {
 	# Using hosts from parameter
 	local @hosts = split(/[ \t,]+/, $ldap_hosts);
@@ -220,11 +221,11 @@ if ($ldap_hosts) {
 	local $port = $ldap_port ||
 		      &find_svalue("port", $conf) ||
 		      ($use_ssl == 1 ? 636 : 389);
-	foreach my $host (@hosts) {
+	foreach my $h (@hosts) {
 		eval {
-			$ldap = Net::LDAP->new($host, port => $port,
+			$ldap = Net::LDAP->new($h, port => $port,
 				scheme => $use_ssl == 1 ? 'ldaps' : 'ldap',
-				inet6 => &should_use_inet6($host));
+				inet6 => &should_use_inet6($h));
 			};
 		if ($@) {
 			$err = &text('ldap_econn2',
@@ -236,6 +237,7 @@ if ($ldap_hosts) {
 				     "<tt>$host</tt>", "<tt>$port</tt>");
 			}
 		else {
+			$host = $h;
 			$err = undef;
 			last;
 			}
@@ -280,15 +282,16 @@ else {
 		      ($use_ssl == 1 ? 636 : 389);
 	@hosts = ( "localhost" ) if (!@hosts);
 
-	foreach $host (@hosts) {
-		$ldap = Net::LDAP->new($host, port => $port,
+	foreach my $h (@hosts) {
+		$ldap = Net::LDAP->new($h, port => $port,
 			       scheme => $use_ssl == 1 ? 'ldaps' : 'ldap',
-			       inet6 => &should_use_inet6($host));
+			       inet6 => &should_use_inet6($h));
 		if (!$ldap) {
 			$err = &text('ldap_econn',
 				     "<tt>$host</tt>", "<tt>$port</tt>");
 			}
 		else {
+			$host = $h;
 			$err = undef;
 			last;
 			}

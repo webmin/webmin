@@ -80,3 +80,5 @@ Update the SSL certificate monitor to check alternate names as well when looking
 ---- Changes since 1.590 ----
 Commands run when a monitor goes up or down can now access details of the monitor via environment variables starting with STATUS_
 A history of the status of each monitor's scheduled checks is now logged for 30 days, and can be viewed on the Edit Monitor page. This also includes the value associated with the monitor (such as free disk space), if any.
+---- Changes since 1.670 ----
+Added new monitor types to check if an LDAP server is up, and if an LDAP connection is possible.
