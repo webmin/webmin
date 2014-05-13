@@ -423,18 +423,23 @@ foreach my $a (@{$cmd->{'args'}}) {
 		$rv = $setin->{$n};
 		}
 	elsif ($a->{'type'} == 10) {
-		$setin->{$n} || &error($text{'run_eupload'});
-		if ($setin->{$n."_filename"} =~ /([^\/\\]+$)/ && $1) {
-			$rv = &transname("$1");
+		if ($setin->{$n}) {
+			if ($setin->{$n."_filename"} =~ /([^\/\\]+$)/ && $1) {
+				$rv = &transname("$1");
+				}
+			else {
+				$rv = &transname();
+				}
+			&open_tempfile(TEMP, ">$rv");
+			&print_tempfile(TEMP, $setin->{$n});
+			&close_tempfile(TEMP);
+			chown($uinfo->[2], $uinfo->[3], $rv);
+			push(@unlink, $rv);
 			}
 		else {
-			$rv = &transname();
+			$a->{'must'} && &error($text{'run_eupload'});
+			$rv = undef;
 			}
-		&open_tempfile(TEMP, ">$rv");
-		&print_tempfile(TEMP, $setin->{$n});
-		&close_tempfile(TEMP);
-		chown($uinfo->[2], $uinfo->[3], $rv);
-		push(@unlink, $rv);
 		}
 	elsif ($a->{'type'} == 12 || $a->{'type'} == 13 || $a->{'type'} == 14) {
 		local @vals;
