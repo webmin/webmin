@@ -348,6 +348,52 @@ foreach my $jail (&list_jails()) {
 return @rv;
 }
 
+# start_fail2ban_server()
+# Attempts to start the server process, returning undef on success or an error message
+# on failure.
+sub start_fail2ban_server
+{
+if ($config{'init_script'}) {
+	&foreign_require("init");
+	my ($ok, $out) = &init::start_action($config{'init_script'});
+	return $ok ? undef : $out;
+	}
+else {
+	my $out = &backquote_logged("$config{'client_cmd'} -x start 2>&1 </dev/null");
+	return $? ? $out : undef;
+	}
+}
 
+# stop_fail2ban_server()
+# Attempts to stop the server process, returning undef on success or an error message
+# on failure.
+sub stop_fail2ban_server
+{
+if ($config{'init_script'}) {
+	&foreign_require("init");
+	my ($ok, $out) = &init::stop_action($config{'init_script'});
+	return $ok ? undef : $out;
+	}
+else {
+	my $out = &backquote_logged("$config{'client_cmd'} -x stop 2>&1 </dev/null");
+	return $? ? $out : undef;
+	}
+}
+
+# restart_fail2ban_server()
+# Attempts to restart the server process, returning undef on success or an error message
+# on failure.
+sub restart_fail2ban_server
+{
+if ($config{'init_script'}) {
+	&foreign_require("init");
+	my ($ok, $out) = &init::restart_action($config{'init_script'});
+	return $ok ? undef : $out;
+	}
+else {
+	&stop_fail2ban_server();
+	return &start_fail2ban_server();
+	}
+}
 
 1;
