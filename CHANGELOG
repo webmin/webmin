@@ -198,3 +198,4 @@ Added filtering for lists in the user, group and file chooser popups, thanks to 
 More German translation updates, thanks to Raymond Vetter.
 Norwegian updates, thanks to Stein-Aksel Basma.
 Catalan updates, thanks to Jaume Badiella.
+Security fixes for XSS attacks in user_chooser.cgi and other scripts.
