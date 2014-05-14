@@ -3,7 +3,7 @@
 
 use strict;
 use warnings;
-require './fail2bab-lib.pl';
+require './fail2ban-lib.pl';
 our (%text);
 &error_setup($text{'start_err'});
 my $err = &start_fail2ban_server();
