@@ -142,3 +142,8 @@ config_logtarget=Write logs to
 config_syslog=Syslog service
 config_file=Log file
 config_default=Default destination
+
+syslog_logtarget=Fail2Ban action log
+
+__norefs=1
+

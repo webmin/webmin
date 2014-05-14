@@ -6,3 +6,4 @@ desc_de=Fail2Ban Intrusionsdetektor
 longdesc_de=Fail2ban sch&#252;tzt Ihr System vor Brute-Force-Angriffen, indem Quell-IPs blockiert werden.
 desc_ms_MY=Fail2Ban Pengesan Pencerobohan
 longdesc_ms_MY=Fail2ban melindungi sistem anda dari serangan kekerasan dengan mengesan mereka dan menyekat IP sumber mereka.
+syslog=1

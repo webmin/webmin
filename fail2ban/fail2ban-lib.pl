@@ -1,6 +1,5 @@
 # Functions for configuring the fail2ban log analyser
 #
-# XXX other .pl files
 # XXX include in makedist.pl
 # XXX main help page
 # XXX help page for filters with description of <HOST> / etc
