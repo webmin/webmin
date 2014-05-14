@@ -19,7 +19,8 @@ print &ui_table_start($text{'config_header'}, undef, 2);
 my $loglevel = &find_value("loglevel", $def) || 3;
 print &ui_table_row($text{'config_loglevel'},
 	&ui_select("loglevel", $loglevel,
-		   [ [ 1, "ERROR" ], [ 2, "WARN" ], [ 3, "INFO" ], [ 4, "DEBUG" ] ]));
+		   [ [ 1, "ERROR" ], [ 2, "WARN" ],
+		     [ 3, "INFO" ], [ 4, "DEBUG" ] ]));
 
 # Log file
 my $logtarget = &find_value("logtarget", $def);
@@ -32,7 +33,8 @@ print &ui_table_row($text{'config_logtarget'},
 		    [ "STDERR", "STDERR<br>" ],
 		    [ "SYSLOG", $text{'config_syslog'}."<br>" ],
 		    [ "file", $text{'config_file'}." ".
-		      &ui_textbox("logtarget", $mode eq "file" ? $logtarget : "", 50) ]
+		      &ui_textbox("logtarget",
+				  $mode eq "file" ? $logtarget : "", 50) ]
 		  ]));
 
 print &ui_table_end();

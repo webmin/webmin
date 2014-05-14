@@ -20,9 +20,11 @@ if ($in{'logtarget_def'} eq 'file') {
 # Update config file
 &lock_file($def->{'file'});
 
-&save_directive($def, "loglevel", $in{'loglevel'});
-
-# XXX
+&save_directive("loglevel", $in{'loglevel'}, $def);
+&save_directive("logtarget",
+	$in{'logtarget_def'} eq '' ? undef :
+	$in{'logtarget_def'} eq 'file' ? $in{'logtarget'} :
+					 $in{'logtarget_def'}, $def);
 
 &unlock_file($def->{'file'});
 &webmin_log("config");

@@ -1,12 +1,11 @@
 # Functions for configuring the fail2ban log analyser
 #
-# XXX start/stop/restart buttons
-# XXX enable at boot
 # XXX other .pl files
 # XXX include in makedist.pl
 # XXX main help page
 # XXX help page for filters with description of <HOST> / etc
 # XXX filter defaults
+# XXX more global config options
 # XXX deleting a directive removes too many lines?
 
 BEGIN { push(@INC, ".."); };
@@ -79,6 +78,14 @@ return @rv;
 sub list_jails
 {
 return &parse_config_file("$config{'config_dir'}/jail.conf");
+}
+
+# get_config()
+# Returns the global config as an array ref of directives
+sub get_config
+{
+my @conf = &parse_config_file("$config{'config_dir'}/fail2ban.conf");
+return \@conf;
 }
 
 # parse_config_file(file)
