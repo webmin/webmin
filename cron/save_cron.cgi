@@ -19,6 +19,16 @@ else {
 	$job->{'nolog'} = $oldjob->{'nolog'};
 	}
 
+# Check if this user is allowed to execute cron jobs
+if (&supports_users()) {
+	&can_use_cron($in{'user'}) ||
+		&error(&text('save_eallow', $in{'user'}));
+	}
+
+# Check module access control
+&can_edit_user(\%access, $in{'user'}) ||
+	&error(&text('save_ecannot', $in{'user'}));
+
 @files = &unique((map { $_->{'file'} } @jobs),
 	         "$config{'cron_dir'}/$in{'user'}");
 foreach $f (@files) { &lock_file($f); }
@@ -51,9 +61,6 @@ else {
 	}
 
 if (&supports_users()) {
-	# Check if this user is allowed to execute cron jobs
-	&can_use_cron($in{'user'}) ||
-		&error(&text('save_eallow', $in{'user'}));
 	$job->{'user'} = $in{'user'};
 	}
 
@@ -65,10 +72,6 @@ if (defined($in{'range_def'})) {
 
 $job->{'comment'} = $in{'comment'};
 &unconvert_comment($job);
-
-# Check module access control
-&can_edit_user(\%access, $in{'user'}) ||
-	&error(&text('save_ecannot', $in{'user'}));
 
 if (!$in{'new'}) {
 	# Editing an existing job

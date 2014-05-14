@@ -22,6 +22,14 @@ if ($in{'delete'}) {
 	exit;
 	}
 
+# Check if this user is allowed to execute cron jobs
+&can_use_cron($in{'user'}) ||
+	&error(&text('save_eallow', $in{'user'}));
+
+# Check module access control
+&can_edit_user(\%access, $in{'user'}) ||
+	&error(&text('save_ecannot', $in{'user'}));
+
 @files = &unique((map { $_->{'file'} } @jobs),
 	         "$config{'cron_dir'}/$in{'user'}");
 foreach $f (@files) { &lock_file($f); }
@@ -39,15 +47,7 @@ if (!defined(getpwnam($in{'user'}))) {
 $job->{'active'} = $in{'active'};
 $job->{'name'} = $in{'name'};
 $job->{'value'} = $in{'value'};
-
-# Check if this user is allowed to execute cron jobs
-&can_use_cron($in{'user'}) ||
-	&error(&text('save_eallow', $in{'user'}));
 $job->{'user'} = $in{'user'};
-
-# Check module access control
-&can_edit_user(\%access, $in{'user'}) ||
-	&error(&text('save_ecannot', $in{'user'}));
 
 if (!$in{'new'}) {
 	# Editing an existing variable

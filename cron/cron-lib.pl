@@ -1289,15 +1289,17 @@ cron.deny files.
 =cut
 sub can_use_cron
 {
+local ($user) = @_;
+defined(getpwnam($user)) || return 0;	# User does not exist
 local $err;
 if (-r $config{cron_allow_file}) {
 	local @allowed = &list_allowed();
-	if (&indexof($_[0], @allowed) < 0 &&
+	if (&indexof($user, @allowed) < 0 &&
 	    &indexof("all", @allowed) < 0) { $err = 1; }
 	}
 elsif (-r $config{cron_deny_file}) {
 	local @denied = &list_denied();
-	if (&indexof($_[0], @denied) >= 0 ||
+	if (&indexof($user, @denied) >= 0 ||
 	    &indexof("all", @denied) >= 0) { $err = 1; }
 	}
 elsif ($config{cron_deny_all} == 0) { $err = 1; }

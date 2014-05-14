@@ -37,3 +37,5 @@ The search form for jobs is always visible, even when there are not too many job
 Converted commands in the module's API file to POD format, and added more details about each function.
 ---- Changes since 1.470 ----
 Added a Module Config option to add new cron jobs to a specific file, like /etc/cron.d/webmin, instead of users' personal crontab files.
+---- Changes since 1.670 ----
+Fixed a security hole what could be exploited by passing in an invalid username.
