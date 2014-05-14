@@ -134,3 +134,10 @@ log_atboot=Enabled Fail2Ban at boot time
 log_delboot=Disabled Fail2Ban at boot time
 
 config_title=Global Configuration
+config_edef=No Definition section found in config file!
+config_header=Config settings for Fail2Ban
+config_loglevel=Minimum logging level
+config_logtarget=Write logs to
+config_syslog=Syslog service
+config_file=Log file
+config_default=Default destination
