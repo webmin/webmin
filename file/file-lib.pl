@@ -182,18 +182,21 @@ else {
 # Returns 1 if some file can be edited/deleted
 sub can_access
 {
-return &under_root_dir($_[0], \@allowed_roots) &&
-       ($_[0] eq "/" || !&under_root_dir($_[0], \@denied_roots));
+local $path = &simplify_path($_[0]);
+return &under_root_dir($path, \@allowed_roots) &&
+       ($path eq "/" || !&under_root_dir($path, \@denied_roots));
 }
 
 # under_root_dir(file, &roots)
 # Returns 1 if some file is under one of the given roots
 sub under_root_dir
 {
-local @f = grep { $_ ne '' } split(/\//, $_[0]);
+local $path = &simplify_path($_[0]);
+local $roots = $_[1];
+local @f = grep { $_ ne '' } split(/\//, $path);
 local $r;
-DIR: foreach $r (@{$_[1]}) {
-	return 1 if ($r eq '/' || $_[0] eq '/' || $_[0] eq $r);
+DIR: foreach $r (@$roots) {
+	return 1 if ($r eq '/' || $path eq '/' || $path eq $r);
 	local @a = grep { $_ ne '' } split(/\//, $r);
 	local $i;
 	for($i=0; $i<@a; $i++) {
@@ -209,8 +212,9 @@ return 0;
 # directories are included as well.
 sub can_list
 {
-return &under_root_dir_or_parent($_[0], \@allowed_roots) &&
-       ($_[0] eq "/" || !&under_root_dir($_[0], \@denied_roots));
+local $path = &simplify_path($_[0]);
+return &under_root_dir_or_parent($path, \@allowed_roots) &&
+       ($path eq "/" || !&under_root_dir($path, \@denied_roots));
 }
 
 # under_root_dir_or_parent(file, &roots)
