@@ -12,7 +12,7 @@ do 'webmin-search-lib.pl';
 $prod = &get_product_name();
 $ucprod = ucfirst($prod);
 &ui_print_unbuffered_header(undef,
-	$in{'title'} || &text('wsearch_title', $ucprod), "", undef, 0, 1);
+	&html_escape($in{'title'}) || &text('wsearch_title', $ucprod), "", undef, 0, 1);
 
 # Validate search text
 $re = $in{'search'};
