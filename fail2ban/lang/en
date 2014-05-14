@@ -75,6 +75,7 @@ jails_title=Filter Action Jails
 jails_add=Add a new jail.
 jails_name=Jail name
 jails_filter=Log filter
+jails_enabled=Enabled?
 jails_action=Resulting actions
 jails_delete=Delete Selected Jails
 jails_def=Edit Jail Defaults

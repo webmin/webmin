@@ -17,6 +17,7 @@ my @tds = ( "width=5" );
 print &ui_links_row(\@links);
 print &ui_columns_start([ "",
 			  $text{'jails_name'},
+			  $text{'jails_enabled'},
 			  $text{'jails_filter'},
 			  $text{'jails_action'} ]);
 foreach my $j (@jails) {
@@ -29,9 +30,12 @@ foreach my $j (@jails) {
 			map { /^([^\[]+)/; &html_escape("$1") }
 			    @{$action_dir->{'words'}});
 		}
+	my $enabled = &find_value("enabled", $j);
 	print &ui_checked_columns_row([
 		&ui_link("edit_jail.cgi?name=".&urlize($j->{'name'}),
 			 $j->{'name'}),
+		$enabled =~ /true|yes|1/i ? $text{'yes'} :
+			"<font color=red>$text{'no'}</font>",
 		&html_escape($filter),
 		$action,
 		], \@tds, "d", $j->{'name'});
