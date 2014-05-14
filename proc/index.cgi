@@ -21,5 +21,5 @@ if (!-r "$module_root_directory/$idxfn") {
 	# Bogus index
 	$idx = "index_tree.cgi";
 	}
-&redirect("/$module_name/$idx");
+&redirect($idx);
 
