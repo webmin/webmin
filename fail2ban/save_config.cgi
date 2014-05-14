@@ -16,6 +16,9 @@ $def || &error($text{'config_edef'});
 if ($in{'logtarget_def'} eq 'file') {
 	$in{'logtarget'} =~ /^\/\S+$/ || &error($text{'config_elogtarget'});
 	}
+if (!$in{'socket_def'}) {
+	$in{'socket'} =~ /^\/\S+$/ || &error($text{'config_esocket'});
+	}
 
 # Update config file
 &lock_file($def->{'file'});
@@ -25,6 +28,7 @@ if ($in{'logtarget_def'} eq 'file') {
 	$in{'logtarget_def'} eq '' ? undef :
 	$in{'logtarget_def'} eq 'file' ? $in{'logtarget'} :
 					 $in{'logtarget_def'}, $def);
+&save_directive("socket", $in{'socket_def'} ? undef : $in{'socket'}, $def);
 
 &unlock_file($def->{'file'});
 &webmin_log("config");

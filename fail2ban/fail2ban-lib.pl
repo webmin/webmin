@@ -4,7 +4,6 @@
 # XXX main help page
 # XXX help page for filters with description of <HOST> / etc
 # XXX filter defaults
-# XXX more global config options
 # XXX deleting a directive removes too many lines?
 
 BEGIN { push(@INC, ".."); };
@@ -381,25 +380,17 @@ if ($config{'init_script'}) {
 	return $ok ? undef : $out;
 	}
 else {
-	my $out = &backquote_logged("$config{'client_cmd'} -x stop 2>&1 </dev/null");
+	my $out = &backquote_logged("$config{'client_cmd'} stop 2>&1 </dev/null");
 	return $? ? $out : undef;
 	}
 }
 
 # restart_fail2ban_server()
-# Attempts to restart the server process, returning undef on success or an error message
-# on failure.
+# Force the fail2ban server to re-read its config
 sub restart_fail2ban_server
 {
-if ($config{'init_script'}) {
-	&foreign_require("init");
-	my ($ok, $out) = &init::restart_action($config{'init_script'});
-	return $ok ? undef : $out;
-	}
-else {
-	&stop_fail2ban_server();
-	return &start_fail2ban_server();
-	}
+my $out = &backquote_logged("$config{'client_cmd'} reload 2>&1 </dev/null");
+return $? ? $out : undef;
 }
 
 1;

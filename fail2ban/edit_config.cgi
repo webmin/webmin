@@ -37,6 +37,11 @@ print &ui_table_row($text{'config_logtarget'},
 				  $mode eq "file" ? $logtarget : "", 50) ]
 		  ]));
 
+# Socket file
+my $socket = &find_value("socket", $def);
+print &ui_table_row($text{'config_socket'},
+	&ui_opt_textbox("socket", $socket, 40, $text{'default'}));
+
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
