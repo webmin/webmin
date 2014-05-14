@@ -89,11 +89,11 @@ while(1) {
 	next if (defined($lastpc) && $pc == $lastpc);
 	print "<script>\n";
 	print "document.forms[0].file.value = \"".
-		&quote_escape($filename)."\";\n";
+		quotemeta($filename)."\";\n";
 	print "document.forms[0].size.value = \"".
-		&quote_escape(&text('uptracker_of',
-				    &nice_size($size),
-				    &nice_size($totalsize)))."\";\n";
+		quotemeta(&text('uptracker_of',
+				&nice_size($size),
+				&nice_size($totalsize)))."\";\n";
 	print "document.forms[0].pc.value = \"".("|" x $pc)."\";\n";
 	print "</script>\n";
 	
