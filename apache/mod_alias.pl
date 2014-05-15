@@ -84,7 +84,12 @@ for($i=0; defined($in{"$_[0]_from_$i"}); $i++) {
 	&allowed_doc_dir($to) ||
 	    $old_to && !&allowed_doc_dir($old_to) ||
 		&error(&text('mod_alias_edest2', $to, $_[1]));
-	push(@rv, "$from \"$to\"");
+	if ($to =~ /^[a-zA-Z0-9:\/\.\-]+$/) {
+		push(@rv, "$from $to");
+		}
+	else {
+		push(@rv, "$from \"$to\"");
+		}
 	}
 return ( \@rv );
 }
