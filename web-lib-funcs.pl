@@ -5185,6 +5185,9 @@ to work OK. The parameters are :
 sub lock_file
 {
 my ($file, $readonly, $forcefile) = @_;
+if ($file =~ /\r|\n|\0/) {
+	&error("Lock filename contains invalid characters");
+	}
 my $realfile = &translate_filename($file);
 return 0 if (!$file || defined($main::locked_file_list{$realfile}));
 my $no_lock = !&can_lock_file($realfile);
