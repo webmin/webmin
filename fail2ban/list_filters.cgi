@@ -20,7 +20,7 @@ print &ui_columns_start([ "",
 			  $text{'filters_re'} ]);
 foreach my $f (@filters) {
 	my ($def) = grep { $_->{'name'} eq 'Definition' } @$f;
-	next if (!$def);	# XXX what about default?
+	next if (!$def);	# Skip default config file
 	my $fail = &find_value("failregex", $def);
 	my $fname = &filename_to_name($def->{'file'});
 	if (length($fail) > 80) {
