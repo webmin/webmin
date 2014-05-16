@@ -724,6 +724,7 @@ referers_title=Trusted Referrers
 referers_desc=This page allows you to configure Webmin's referrer checking support, which is used to prevent malicious links from other websites tricking your browser into doing dangerous things with Webmin. However, if you have links to Webmin from your own websites that you don't want to be warned about you should add those sites to the list below.
 referers_list=Trusted websites
 referers_none=Trust links from unknown referrers
+referers_none2=WARNING: This opens your system up to XSS attacks!
 referers_referer=Referrer checking enabled?
 referers_err=Failed to save referers
 referers_ehost='$1' is not a valid trusted hostname
