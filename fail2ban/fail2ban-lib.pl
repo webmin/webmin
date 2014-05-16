@@ -3,8 +3,8 @@
 # XXX include in makedist.pl
 # XXX main help page
 # XXX help page for filters with description of <HOST> / etc
-# XXX filter defaults
 # XXX deleting a directive removes too many lines?
+# XXX config files for distros
 
 BEGIN { push(@INC, ".."); };
 use strict;
@@ -391,6 +391,18 @@ sub restart_fail2ban_server
 {
 my $out = &backquote_logged("$config{'client_cmd'} reload 2>&1 </dev/null");
 return $? ? $out : undef;
+}
+
+# list_all_config_files()
+# Returns a list of all Fail2Ban config files
+sub list_all_config_files
+{
+my @rv;
+push(@rv, "$config{'config_dir'}/fail2ban.conf");
+push(@rv, glob("$config{'config_dir'}/filter.d/*.conf"));
+push(@rv, glob("$config{'config_dir'}/action.d/*.conf"));
+push(@rv, "$config{'config_dir'}/jail.conf");
+return @rv;
 }
 
 1;

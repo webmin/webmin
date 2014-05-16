@@ -133,6 +133,7 @@ log_start=Started Fail2Ban server
 log_restart=Re-started Fail2Ban server
 log_atboot=Enabled Fail2Ban at boot time
 log_delboot=Disabled Fail2Ban at boot time
+log_manual=Edited configuration file $1
 
 config_title=Global Configuration
 config_edef=No Definition section found in config file!
@@ -146,6 +147,13 @@ config_socket=Socket for communication with server
 config_err=Failed to save global configuration
 config_elogtarget=File to write logs to must be an absolute path
 config_esocket=Socket file must be an absolute path
+
+manual_title=Edit Config Files
+manual_desc=File to edit:
+manual_ok=OK
+manual_efile=Selected file is not part of the Fail2Ban configuration!
+manual_err=Failed to edit config file
+manual_edata=No config file contents entered
 
 syslog_logtarget=Fail2Ban action log
 
