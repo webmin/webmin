@@ -235,8 +235,8 @@ if ($nfsv == 4) {
 
 # Show 'bind to' input only for new export (else, bind is already done...)
 if ($in{'new'} && $nfsv==4) {
-    print "<tr> <td>",&hlink("<b>$text{'edit_in'}</b>","in"),"</td>\n";
-    print qq*<td $text{'edit_in'} <input name=pfs_dir size=30 onclick="enterbindto()"></td> </tr>\n*;
+    print "<tr> <td>$text{'edit_in'}</td>\n";
+    print qq*<td><input name=pfs_dir size=30 onclick="enterbindto()"></td> </tr>\n*;
 }
 
 # Show active input
