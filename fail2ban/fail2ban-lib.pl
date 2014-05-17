@@ -1,7 +1,6 @@
 # Functions for configuring the fail2ban log analyser
 #
 # XXX deleting a directive removes too many lines?
-# XXX config files for distros
 
 BEGIN { push(@INC, ".."); };
 use strict;
@@ -72,7 +71,18 @@ return @rv;
 # Returns a list of all sections from the jails file
 sub list_jails
 {
-return &parse_config_file("$config{'config_dir'}/jail.conf");
+my @rv;
+my $jfile = "$config{'config_dir'}/jail.conf";
+if (-r $jfile) {
+	push(@rv, &parse_config_file("$config{'config_dir'}/jail.conf"));
+	}
+my $jdir = "$config{'config_dir'}/jail.d";
+if (-d $jdir) {
+	foreach my $f (glob("$jdir/*.conf")) {
+		push(@rv, &parse_config_file($f));
+		}
+	}
+return @rv;
 }
 
 # get_config()
