@@ -46,18 +46,36 @@ print &ui_table_row($text{'jail_ignoreip'},
 			$text{'default'}." (".$def_ignoreip.")"));
 
 # Backend to check for file changes
-# XXX
-my $backend;
+my $backend = &find_value("backend", $jail);
+print &ui_table_row($text{'jail_backend'},
+	&ui_select("backend", $backend || "auto",
+		   [ [ "auto", $text{'jail_auto'} ],
+		     [ "gamin", $text{'jail_gamin'} ],
+		     [ "polling", $text{'jail_polling'} ] ]));
 
 # Email destination
-# XXX
-my $destemail;
+my $destemail = &find_value("destemail", $jail);
+print &ui_table_row($text{'jail_destemail'},
+	&ui_opt_textbox("destemail", $destemail, 40,
+			$text{'jail_none'}));
 
 # Default ban action
-my $banaction;
+my @actions = &list_actions();
+my $banaction = &find_value("banaction", $jail);
+print &ui_table_row($text{'jail_banaction'},
+	&ui_select("banaction", $banaction,
+	   [ [ "", "&lt;$text{'jail_none'}&gt;" ],
+	     map { &filename_to_name($_->[0]->{'file'}) } @actions ],
+	   1, 0, $banaction ? 1 : 0));
 
 # Default protocol to ban
-my $protocol;
+my $protocol = &find_value("protocol", $jail);
+print &ui_table_row($text{'jail_defprotocol'},
+	&ui_select("protocol", $protocol,
+		   [ [ '', "&lt;$text{'jail_none'}&gt;" ],
+		     [ 'tcp', 'TCP' ],
+		     [ 'udp', 'UDP' ],
+		     [ 'icmp', 'ICMP' ] ]));
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'save'} ] ]);
