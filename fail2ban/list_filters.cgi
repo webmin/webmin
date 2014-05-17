@@ -6,7 +6,7 @@ use warnings;
 require './fail2ban-lib.pl';
 our (%in, %text);
 
-&ui_print_header(undef, $text{'filters_title'}, "", "filters");
+&ui_print_header(undef, $text{'filters_title'}, "");
 
 my @filters = &list_filters();
 print &ui_form_start("delete_filters.cgi", "post");

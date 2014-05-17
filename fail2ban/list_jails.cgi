@@ -6,7 +6,7 @@ use warnings;
 require './fail2ban-lib.pl';
 our (%in, %text);
 
-&ui_print_header(undef, $text{'jails_title'}, "", "jails");
+&ui_print_header(undef, $text{'jails_title'}, "");
 
 my @jails = &list_jails();
 print &ui_form_start("delete_jails.cgi", "post");

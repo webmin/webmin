@@ -1,7 +1,5 @@
 # Functions for configuring the fail2ban log analyser
 #
-# XXX main help page
-# XXX help page for filters with description of <HOST> / etc
 # XXX deleting a directive removes too many lines?
 # XXX config files for distros
 

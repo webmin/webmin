@@ -1,0 +1,27 @@
+<header>Fail2Ban Intrusion Detector</header>
+
+Fail2Ban is a server that scans log files for entries indicating failed logins or
+other attacks, and then performs actions such as firewalling or otherwise blocking
+the sources of those attacks. This can be used to prevent brute-force password
+guessing attempts by blocking the attacker before it can try a wide range of
+passwords. <p>
+
+The three major configuration object types in Fail2Ban are :
+
+<dl>
+<dt><b>Log Filters</b>
+<dd>A filter is basically a regular expression that can be applied to a log file to
+    match failed logins or other attacks. <p>
+
+<dt><b>Match Actions</b>
+<dd>An action is a set of commands that are run to block an attack. An action can also
+    define commands to un-block an IP, and commands that are run when Fail2Ban starts up
+    or shuts down. <p>
+
+<dt><b>Filter Action Jails</b>
+<dd>A jail is a combination of a filter, one or more actions, and one or more log files.
+    The log is continually scanned for lines that match the filter, and when one is
+    found the selected actions are performed. <p>
+</dl>
+
+<footer>
