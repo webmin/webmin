@@ -210,15 +210,16 @@ else {
 sub create_table_struct
 {
 local $lref = &read_file_lines("$config{'config_dir'}/$_[0]->{'table'}");
-local ($i, $idx);
-for($i=0; $i<@$lref; $i++) {
+my $idx = -1;
+for(my $i=0; $i<@$lref; $i++) {
 	if ($lref->[$i] =~ /^#+\s*LAST\s+LINE/) {
 		$idx = $i;
 		last;
 		}
 	}
-if (!defined($idx)) {
-	$idx = @$lref;
+if ($idx < 0) {
+	# Add at end
+	$idx = scalar(@$lref);
 	}
 local $cache = &read_table_struct($_[0]->{'table'}, $_[1]);
 if ($_[2]) {
