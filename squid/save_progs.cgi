@@ -27,7 +27,7 @@ if ($squid_version >= 2) {
 	&save_opt("dns_nameservers", \&check_dnsservers, $conf);
 	}
 &save_opt("unlinkd_program", \&check_prog, $conf);
-&save_choice("pinger_enable", "on, $conf);
+&save_choice("pinger_enable", "on", $conf);
 &save_opt("pinger_program", \&check_prog, $conf);
 if ($squid_version >= 2.6) {
 	&save_opt("url_rewrite_program", \&check_prog, $conf);
