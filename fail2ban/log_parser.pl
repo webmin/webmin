@@ -17,6 +17,9 @@ if ($type eq 'filter' || $type eq 'action' || $type eq 'jail') {
 elsif ($type eq 'filters' || $type eq 'actions' || $type eq 'jails') {
 	return &text('log_'.$action.'_'.$type, $object);
 	}
+elsif ($action eq 'manual') {
+	return &text('log_manual', '<tt>'.&html_escape($object).'</tt>');
+	}
 else {
 	return $text{'log_'.$action};
 	}
