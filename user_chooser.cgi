@@ -25,7 +25,7 @@ if ($in{'multi'}) {
 		print "selr = new Array($len);\n";
 		for($i=0; $i<$len; $i++) {
 			print "sel[$i] = \"".
-			      quotemeta($ul[$i], '"')."\";\n";
+			      quotemeta($ul[$i])."\";\n";
             
 			# samba valid system user can start with @ + &
 			$gn = $ul[$i];
