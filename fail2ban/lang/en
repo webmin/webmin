@@ -111,6 +111,9 @@ jail_emaxretry=Matches before applying action must be a number greater than zero
 jail_efindtime=Delay between matches must be a number greater than zero
 jail_ebantime=Time to ban an IP must be a number greater than zero
 
+jaildef_title=Default Jail Options
+jaildef_header=Defaults for all jails
+
 start_err=Failed to start server
 stop_err=Failed to stop server
 restart_err=Failed to restart server
