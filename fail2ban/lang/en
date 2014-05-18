@@ -118,9 +118,12 @@ jail_destemail=Default notification email
 jail_none=None set
 jail_banaction=Default action to apply
 jail_defprotocol=Default protocol for actions
+jail_edestemail=Missing or invalid default notification email address
 
 jaildef_title=Default Jail Options
 jaildef_header=Defaults for all jails
+jaildef_err=Failed to save default jail options
+jaildef_egone=No DEFAULT jail found!
 
 start_err=Failed to start server
 stop_err=Failed to stop server
@@ -142,6 +145,7 @@ log_restart=Re-started Fail2Ban server
 log_atboot=Enabled Fail2Ban at boot time
 log_delboot=Disabled Fail2Ban at boot time
 log_manual=Edited configuration file $1
+log_jaildef=Modified default jail options
 
 config_title=Global Configuration
 config_edef=No Definition section found in config file!

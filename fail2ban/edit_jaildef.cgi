@@ -10,7 +10,7 @@ our (%in, %text);
 # Get default jail
 my @jails = &list_jails();
 my ($jail) = grep { $_->{'name'} eq 'DEFAULT' } @jails;
-$jail || &error($text{'jaildef_edef'});
+$jail || &error($text{'jaildef_egone'});
 
 &ui_print_header(undef, $text{'jaildef_title'}, "");
 

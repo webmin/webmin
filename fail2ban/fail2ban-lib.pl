@@ -1,6 +1,8 @@
 # Functions for configuring the fail2ban log analyser
 #
 # XXX deleting a directive removes too many lines?
+# XXX local files as seen on debian
+# XXX http://virtualmin.com/node/33008
 
 BEGIN { push(@INC, ".."); };
 use strict;
