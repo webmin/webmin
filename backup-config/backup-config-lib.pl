@@ -335,10 +335,11 @@ if (!$_[5]) {
 		}
 	}
 
-# Add module config files
+# Add module config files and custom langs
 if ($_[4]) {
 	foreach $m (@mods) {
 		my @cfiles = ( "$config_directory/$m/config" );
+		push(@cfiles, glob("$config_directory/$m/custom-lang*"));
 		push(@files, @cfiles);
 		push(@{$manifestfiles{$m}}, @cfiles);
 		}
