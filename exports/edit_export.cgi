@@ -122,7 +122,7 @@ print "<tr><td rowspan=8 valign=top>",&hlink("<b>$text{'edit_to'}</b>","client")
 if ($nfsv == 4) {
     print "<br>",&hlink("$text{'edit_auth'}","auth"),"</td>\n";
     
-    printf "<td rowspan=5><input type=radio name=auth value=0 %s onclick=enable_sec(0)> sys</td>\n",
+    printf "<td rowspan=5 valign=top><input type=radio name=auth value=0 %s onclick=enable_sec(0)> sys</td>\n",
     ($auth eq "") ? "checked" : "";
 } else {
     printf "<td><input type=hidden name=auth value=0></td>\n";
