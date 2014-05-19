@@ -1,6 +1,5 @@
 # Functions for configuring the fail2ban log analyser
 #
-# XXX deleting a directive removes too many lines?
 # XXX local files as seen on debian
 # XXX http://virtualmin.com/node/33008
 
@@ -276,8 +275,10 @@ if ($old && defined($dir)) {
 	my $offset = scalar(@dirlines) - $oldlen;
 	foreach my $m (@{$sect->{'members'}}) {
 		next if ($m eq $dir || $m eq $old);
-		$m->{'line'} += $offset if ($m->{'line'} > $old->{'line'});
-		$m->{'eline'} += $offset if ($m->{'line'} > $old->{'line'});
+		if ($m->{'line'} > $old->{'line'}) {
+			$m->{'line'} += $offset;
+			$m->{'eline'} += $offset;
+			}
 		}
 	}
 elsif (!$old && defined($dir)) {
@@ -296,8 +297,11 @@ elsif ($old && !defined($dir)) {
 		splice(@{$sect->{'members'}}, $oldidx, 1);
 		}
 	foreach my $m (@{$sect->{'members'}}) {
-		$m->{'line'} -= $oldlen if ($m->{'line'} > $old->{'line'});
-		$m->{'eline'} -= $oldlen if ($m->{'line'} > $old->{'line'});
+		next if ($m eq $old);
+		if ($m->{'line'} > $old->{'line'}) {
+			$m->{'eline'} -= $oldlen;
+			$m->{'line'} -= $oldlen;
+			}
 		}
 	}
 &flush_file_lines($sect->{'file'});
