@@ -60,7 +60,7 @@ my $i = 0;
 foreach my $a (@{$actionlist->{'words'}}, undef) {
 	my $action;
 	my %opts;
-	if ($a =~ /^(\S+)\[(.*)\]$/) {
+	if ($a && $a =~ /^(\S+)\[(.*)\]$/) {
 		$action = $1;
 		%opts = map { split(/=/, $_) } split(/,\s*/, $2);
 		}
