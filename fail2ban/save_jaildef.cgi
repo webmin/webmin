@@ -20,7 +20,7 @@ foreach my $f ("maxretry", "findtime", "bantime") {
 	}
 $in{'destemail_def'} || $in{'destemail'} =~ /^\S+(\@\S+)?$/ ||
 	&error($text{'jail_edestemail'});
-my @ignoreips = $in{'ignoreip_def'} ? undef : split(/\s+/, $in{'ignoreip'});
+my @ignoreips = $in{'ignoreip_def'} ? ( ) : split(/\s+/, $in{'ignoreip'});
 foreach my $ip (@ignoreips) {
 	&check_ipaddress($ip) || &check_ip6address($ip) ||
 		&error($text{'jail_eignoreip'});

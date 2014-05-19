@@ -78,7 +78,8 @@ else {
 		}
 
 	# Split and validate IPs to ignore
-	my @ignoreips = split(/\s+/, $in{'ignoreip'});
+	my @ignoreips = $in{'ignoreip_def'} ? ( )
+					    : split(/\s+/, $in{'ignoreip'});
 	foreach my $ip (@ignoreips) {
 		&check_ipaddress($ip) || &check_ip6address($ip) ||
 			&error($text{'jail_eignoreip'});
