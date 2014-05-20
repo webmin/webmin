@@ -1,7 +1,6 @@
 #!/usr/local/bin/perl
 # Show the LDAP tree in a popup browser window, for selecting something
 
-$trust_unknown_referers = 1;
 require './ldap-client-lib.pl';
 &popup_header($text{'browser_title'});
 &ReadParse();
