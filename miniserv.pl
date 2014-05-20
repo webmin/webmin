@@ -1664,7 +1664,7 @@ if ($config{'userfile'}) {
 	# Check for a visit to the special session login page
 	if ($config{'session'} && !$deny_authentication &&
 	    $page eq $config{'session_login'}) {
-		if ($in{'logout'} && $header{'cookie'} =~ /(^|\s)$sidname=([a-f0-9]+)/) {
+		if ($in{'logout'} && $header{'cookie'} =~ /(^|\s|;)$sidname=([a-f0-9]+)/) {
 			# Logout clicked .. remove the session
 			local $sid = $2;
 			print $PASSINw "delete $sid\n";
@@ -1798,10 +1798,10 @@ if ($config{'userfile'}) {
 			$validated = 1;
 			}
 		elsif (!$deny_authentication &&
-		       $header{'cookie'} =~ /(^|\s)$sidname=([a-f0-9]+)/) {
+		       $header{'cookie'} =~ /(^|\s|;)$sidname=([a-f0-9]+)/) {
 			# Try all session cookies
 			local $cookie = $header{'cookie'};
-			while($cookie =~ s/(^|\s)$sidname=([a-f0-9]+)//) {
+			while($cookie =~ s/(^|\s|;)$sidname=([a-f0-9]+)//) {
 				$session_id = $2;
 				local $notimeout =
 					$in{'webmin_notimeout'} ? 1 : 0;
