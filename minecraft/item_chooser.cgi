@@ -4,7 +4,6 @@
 
 use strict;
 use warnings;
-our $trust_unknown_referers = 1;
 require './minecraft-lib.pl';
 our (%text, %in);
 &ReadParse(undef, undef, 2);
