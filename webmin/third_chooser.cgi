@@ -2,7 +2,6 @@
 # third_chooser.cgi
 # Display a list of third-party modules for installation
 
-$trust_unknown_referers = 1;
 require './webmin-lib.pl';
 &popup_header($text{'third_title'});
 $mods = &list_third_modules();
