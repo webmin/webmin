@@ -6,7 +6,6 @@ BEGIN { push(@INC, ".."); };
 use WebminCore;
 use Time::Local;
 
-$trust_unknown_referers = 1;
 &init_config();
 &ReadParse();
 

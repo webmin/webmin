@@ -4,7 +4,6 @@
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 
-$trust_unknown_referers = 1;
 &init_config();
 &ReadParse(undef, undef, 2);
 %access = &get_module_acl();

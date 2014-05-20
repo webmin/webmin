@@ -16,7 +16,6 @@ use WebminCore;
 		"tar", "binary.gif"
 		);
 
-$trust_unknown_referers = 1;
 &init_config();
 if (&get_product_name() eq 'usermin') {
 	&switch_to_remote_user();

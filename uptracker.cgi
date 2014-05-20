@@ -4,7 +4,6 @@
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 
-$trust_unknown_referers = 1;
 &init_config();
 &ReadParse();
 $id = $in{'id'};

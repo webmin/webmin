@@ -5,7 +5,6 @@
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 
-$trust_unknown_referers = 1;
 &init_config();
 &error_setup($text{'help_err'});
 $ENV{'PATH_INFO'} !~ /[\\\&\;\`\'\"\|\*\?\~\<\>\^\(\)\[\]\{\}\$\n\r]/ ||

@@ -5,7 +5,6 @@
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 
-$trust_unknown_referers = 1;
 &init_config();
 if (&get_product_name() eq 'usermin') {
 	&switch_to_remote_user();
@@ -26,7 +25,7 @@ if ($in{'multi'}) {
 		# base frame
 		&PrintHeader();
 		print "<script type='text/javascript'>\n";
-		@ul = &split_quoted($in{'group'});
+		@ul = &split_quoted(&filter_javascript($in{'group'}));
 		$len = @ul;
 		print "sel = new Array($len);\n";
 		print "selr = new Array($len);\n";
