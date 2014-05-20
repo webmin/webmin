@@ -2,7 +2,6 @@
 # my_group_chooser.cgi
 # A modified version of group_chooser.cgi that uses the my_ functions
 
-$trust_unknown_referers = 1;
 require './user-lib.pl';
 &init_config();
 &ReadParse(undef, undef, 1);
