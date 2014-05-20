@@ -1,7 +1,4 @@
 # Functions for configuring the fail2ban log analyser
-#
-# XXX local files as seen on debian
-# XXX http://virtualmin.com/node/33008
 
 BEGIN { push(@INC, ".."); };
 use strict;
@@ -140,6 +137,25 @@ while(<$fh>) {
 	$lnum++;
 	}
 close($fh);
+if ($file =~ /^(.*)\.conf$/) {
+	# Read local overrides file, which takes effect first for each block
+	my $localfile = $1.".local";
+	if (-r $localfile) {
+		my @lrv = &parse_config_file($localfile);
+		my %lsects = map { $_->{'name'}, $_ } @lrv;
+		foreach my $sect (@rv) {
+			# For each section in the .conf file, put directives
+			# from the .local file in first
+			my $lsect = $lsects{$sect->{'name'}};
+			next if (!$lsect);
+			my $msect = { %$lsect };
+			$msect->{'local'} = 1;
+			$msect->{'origfile'} = $sect->{'file'};
+			push(@{$msect->{'members'}}, @{$sect->{'members'}});
+			$rv[&indexof($sect, @rv)] = $msect;
+			}
+		}
+	}
 return @rv;
 }
 
@@ -261,23 +277,39 @@ else {
 my $old = &find($name, $sect);
 my $oldlen = $old ? $old->{'eline'} - $old->{'line'} + 1 : undef;
 my $oldidx = $old ? &indexof($old, @{$sect->{'members'}}) : -1;
-my $lref = &read_file_lines($sect->{'file'});
+my $file = $old ? $old->{'file'} : $sect->{'file'};
+my $lref = &read_file_lines($file);
 my @dirlines = defined($dir) ? &directive_lines($dir) : ();
-if ($old && defined($dir)) {
+if ($old && defined($dir) && $old->{'value'} ne $dir->{'value'}) {
 	# Update existing
-	splice(@$lref, $old->{'line'}, $oldlen, @dirlines);
-	$dir->{'line'} = $old->{'line'};
-	$dir->{'eline'} = $dir->{'line'} + scalar(@dirlines) - 1;
-	$dir->{'file'} = $sect->{'file'};
-	if ($oldidx >= 0) {
-		$sect->{'members'}->[$oldidx] = $dir;
+	if ($sect->{'local'} && $old->{'file'} ne $sect->{'file'}) {
+		# Section is in a local file, so to override we need to
+		# add a new line in the local file
+		&unflush_file_lines($file);
+		$file = $sect->{'file'};
+		$lref = &read_file_lines($file);
+		splice(@$lref, $sect->{'eline'}+1, 0, @dirlines);
+		$dir->{'line'} = $sect->{'eline'}+1;
+		$dir->{'file'} = $sect->{'file'};
+		$sect->{'eline'} += scalar(@dirlines);
+		$dir->{'eline'} = $sect->{'eline'};
 		}
-	my $offset = scalar(@dirlines) - $oldlen;
-	foreach my $m (@{$sect->{'members'}}) {
-		next if ($m eq $dir || $m eq $old);
-		if ($m->{'line'} > $old->{'line'}) {
-			$m->{'line'} += $offset;
-			$m->{'eline'} += $offset;
+	else {
+		# Just update the existing line
+		splice(@$lref, $old->{'line'}, $oldlen, @dirlines);
+		$dir->{'line'} = $old->{'line'};
+		$dir->{'eline'} = $dir->{'line'} + scalar(@dirlines) - 1;
+		$dir->{'file'} = $sect->{'file'};
+		if ($oldidx >= 0) {
+			$sect->{'members'}->[$oldidx] = $dir;
+			}
+		my $offset = scalar(@dirlines) - $oldlen;
+		foreach my $m (@{$sect->{'members'}}) {
+			next if ($m eq $dir || $m eq $old);
+			if ($m->{'line'} > $old->{'line'}) {
+				$m->{'line'} += $offset;
+				$m->{'eline'} += $offset;
+				}
 			}
 		}
 	}
@@ -304,7 +336,7 @@ elsif ($old && !defined($dir)) {
 			}
 		}
 	}
-&flush_file_lines($sect->{'file'});
+&flush_file_lines($file);
 }
 
 sub find_value
