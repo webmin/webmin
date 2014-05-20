@@ -2,7 +2,6 @@
 # cpan.cgi
 # Display known perl modules and categories
 
-$trust_unknown_referers = 1;
 require './cpan-lib.pl';
 &ReadParse();
 
