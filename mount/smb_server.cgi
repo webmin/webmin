@@ -3,7 +3,6 @@
 # Called in a pop-up javascript window to display a list of known SMB
 # servers, by calling smbclient to request the browse list from some server
 
-$trust_unknown_referers = 1;
 require './mount-lib.pl';
 use Socket;
 &popup_header($text{'smb_choose'});

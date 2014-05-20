@@ -2,7 +2,6 @@
 # nfs_export.cgi
 # Display a list of NFS exports on some host for the user to choose from
 
-$trust_unknown_referers = 1;
 require './mount-lib.pl';
 &ReadParse();
 &popup_header(&text('nfs_choose', &html_escape($in{'server'})));
