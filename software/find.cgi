@@ -1,7 +1,6 @@
 #!/usr/local/bin/perl
 # Show a form in a popup window for selecting a package from the update system
 
-$trust_unknown_referers = 1;
 require './software-lib.pl';
 &ReadParse();
 
