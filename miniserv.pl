@@ -1620,7 +1620,7 @@ if ($config{'userfile'}) {
 		# authorization given..
 		($authuser, $authpass) = split(/:/, &b64decode($1), 2);
 		print DEBUG "handle_request: doing basic auth check authuser=$authuser authpass=$authpass\n";
-		local ($vu, $expired, $nonexist) =
+		local ($vu, $expired, $nonexist, $wvu) =
 			&validate_user($authuser, $authpass, $host,
 				       $acptip, $port);
 		print DEBUG "handle_request: vu=$vu expired=$expired nonexist=$nonexist\n";
@@ -1645,7 +1645,7 @@ if ($config{'userfile'}) {
 			&http_error(500, "Invalid password",
 				    "Password contains invalid characters");
 			}
-		if ($twofactor{$authuser}) {
+		if ($twofactor{$wvu}) {
 			&http_error(500, "No two-factor support",
 				    "HTTP authentication cannot be used when two-factor is enabled");
 			}
@@ -1693,13 +1693,13 @@ if ($config{'userfile'}) {
 				    "Password contains invalid characters");
 				}
 
-			local ($vu, $expired, $nonexist) =
+			local ($vu, $expired, $nonexist, $wvu) =
 				&validate_user($in{'user'}, $in{'pass'}, $host,
 					       $acptip, $port);
-			if ($vu && $twofactor{$vu}) {
+			if ($vu && $wvu && $twofactor{$wvu}) {
 				# Check two-factor token ID
 				$err = &validate_twofactor(
-					$vu, $in{'twofactor'});
+					$wvu, $in{'twofactor'});
 				if ($err) {
 					$twofactor_msg = $err;
 					$vu = undef;
@@ -3357,7 +3357,8 @@ sub urlize {
 
 # validate_user(username, password, host, remote-ip, webmin-port)
 # Checks if some username and password are valid. Returns the modified username,
-# the expired / temp pass flag, and the non-existence flag
+# the expired / temp pass flag, the non-existence flag, and the underlying
+# Webmin username.
 sub validate_user
 {
 local ($user, $pass, $host, $actpip, $port) = @_;
@@ -3368,11 +3369,11 @@ local ($canuser, $canmode, $notexist, $webminuser, $sudo) =
 print DEBUG "validate_user: canuser=$canuser canmode=$canmode notexist=$notexist webminuser=$webminuser sudo=$sudo\n";
 if ($notexist) {
 	# User doesn't even exist, so go no further
-	return ( undef, 0, 1 );
+	return ( undef, 0, 1, $webminuser );
 	}
 elsif ($canmode == 0) {
 	# User does exist but cannot login
-	return ( $canuser, 0, 0 );
+	return ( $canuser, 0, 0, $webminuser );
 	}
 elsif ($canmode == 1) {
 	# Attempt Webmin authentication
@@ -3388,26 +3389,26 @@ elsif ($canmode == 1) {
 			if ($config{'pass_lockdays'} &&
 			    $daysold > $config{'pass_lockdays'}) {
 				# So old that the account is locked
-				return ( undef, 0, 0 );
+				return ( undef, 0, 0, $webminuser );
 				}
 			elsif ($daysold > $config{'pass_maxdays'}) {
 				# Password has expired
-				return ( $user, 1, 0 );
+				return ( $user, 1, 0, $webminuser );
 				}
 			}
 		if ($uinfo->{'temppass'}) {
 			# Temporary password - force change now
-			return ( $user, 2, 0 );
+			return ( $user, 2, 0, $webminuser );
 			}
-		return ( $user, 0, 0 );
+		return ( $user, 0, 0, $webminuser );
 		}
 	elsif (!$uinfo) {
 		print DEBUG "validate_user: User $webminuser not found\n";
-		return ( undef, 0, 0 );
+		return ( undef, 0, 0, $webminuser );
 		}
 	else {
 		print DEBUG "validate_user: User $webminuser password mismatch $pass != $uinfo->{'pass'}\n";
-		return ( undef, 0, 0 );
+		return ( undef, 0, 0, $webminuser );
 		}
 	}
 elsif ($canmode == 2 || $canmode == 3) {
@@ -3424,13 +3425,15 @@ elsif ($canmode == 2 || $canmode == 3) {
 			print DEBUG "validate_user: sudo passed\n";
 			}
 		}
-	return $val == 2 ? ( $canuser, 1, 0 ) :
-	       $val == 1 ? ( $canuser, 0, 0 ) : ( undef, 0, 0 );
+	return $val == 2 ? ( $canuser, 1, 0, $webminuser ) :
+	       $val == 1 ? ( $canuser, 0, 0, $webminuser ) :
+			   ( undef, 0, 0, $webminuser );
 	}
 elsif ($canmode == 4) {
 	# Attempt external authentication
 	return &validate_external_user($canuser, $pass) ?
-		( $canuser, 0, 0 ) : ( undef, 0, 0 );
+		( $canuser, 0, 0, $webminuser ) :
+		( undef, 0, 0, $webminuser );
 	}
 else {
 	# Can't happen!
