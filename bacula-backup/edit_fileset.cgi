@@ -54,6 +54,7 @@ $comp = &find_value("Compression", $opts->{'members'});
 print &ui_table_row($text{'fileset_comp'},
 	&ui_select("comp", $comp,
 		[ [ '', $text{'fileset_gzipdef'} ],
+		  [ 'LZO', $text{'fileset_lzo'} ],
 		  map { [ "GZIP".$_, &text('fileset_gzip', $_) ] }
 		      (1..9) ]));
 

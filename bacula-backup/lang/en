@@ -101,6 +101,7 @@ fileset_eclash=A file set with the same name already exists
 fileset_echild=This file set cannot be deleted as it is used by $1
 fileset_comp=Compression type
 fileset_gzipdef=&lt;Default compression level&gt;
+fileset_lzo=LZO compression
 fileset_gzip=Gzip level $1
 fileset_onefs=Limit backup to one filesystem?
 
