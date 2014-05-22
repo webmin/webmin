@@ -119,6 +119,7 @@ jail_none=None set
 jail_banaction=Default action to apply
 jail_defprotocol=Default protocol for actions
 jail_edestemail=Missing or invalid default notification email address
+jail_eignoreip=Invalid IP address to ignore
 
 jaildef_title=Default Jail Options
 jaildef_header=Defaults for all jails
