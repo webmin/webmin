@@ -39,10 +39,10 @@ $config{'upmissing'} = $in{'missing'};
 $config{'upthird'} = $in{'third'};
 $config{'upquiet'} = $in{'quiet'};
 $config{'upchecksig'} = $in{'checksig'};
-$config{'upemail'} = $in{'email'};
+$config{'upemail'} = $in{'upemail'};
 $config{'upuser'} = $in{'upuser'};
 $config{'uppass'} = $in{'uppass'};
-!$in{'show'} || $in{'email'} || &error($text{'update_eemail'});
+!$in{'show'} || $in{'upemail'} || &error($text{'update_eemail'});
 &write_file("$module_config_directory/config", \%config);
 &unlock_file("$module_config_directory/config");
 
