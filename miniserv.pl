@@ -4743,7 +4743,7 @@ if ($proto eq "mysql") {
 	$cstr .= ";port=$port" if ($port);
 	print DEBUG "connect_userdb: Connecting to MySQL $cstr as $user\n";
 	my $dbh = $drh->connect($cstr, $user, $pass, { });
-	$dbh || return &text('sql_emysqlconnect', $drh->errstr);
+	$dbh || return "Failed to connect to MySQL : ".$drh->errstr;
 	print DEBUG "connect_userdb: Connected OK\n";
 	return wantarray ? ($dbh, $proto, $prefix, $args) : $dbh;
 	}
@@ -4756,7 +4756,7 @@ elsif ($proto eq "postgresql") {
 	$cstr .= ";port=$port" if ($port);
 	print DEBUG "connect_userdb: Connecting to PostgreSQL $cstr as $user\n";
 	my $dbh = $drh->connect($cstr, $user, $pass);
-	$dbh || return &text('sql_epostgresqlconnect', $drh->errstr);
+	$dbh || return "Failed to connect to PostgreSQL : ".$drh->errstr;
 	print DEBUG "connect_userdb: Connected OK\n";
 	return wantarray ? ($dbh, $proto, $prefix, $args) : $dbh;
 	}
@@ -4772,14 +4772,14 @@ elsif ($proto eq "ldap") {
 	my $ldap = Net::LDAP->new($host,
 				  port => $port,
 				  'scheme' => $scheme);
-	$ldap || return &text('sql_eldapconnect', $host);
+	$ldap || return "Failed to connect to LDAP : ".$host;
 	my $mesg;
 	if ($args->{'tls'}) {
 		# Switch to TLS mode
 		eval { $mesg = $ldap->start_tls(); };
 		if ($@ || !$mesg || $mesg->code) {
-			return &text('sql_eldaptls',
-			    $@ ? $@ : $mesg ? $mesg->error : "Unknown error");
+			return "Failed to switch to LDAP TLS mode : ".
+			    ($@ ? $@ : $mesg ? $mesg->error : "Unknown error");
 			}
 		}
 	# Login to the server
@@ -4790,8 +4790,8 @@ elsif ($proto eq "ldap") {
 		$mesg = $ldap->bind(dn => $user, anonymous => 1);
 		}
 	if (!$mesg || $mesg->code) {
-		return &text('sql_eldaplogin', $user,
-			     $mesg ? $mesg->error : "Unknown error");
+		return "Failed to login to LDAP as ".$user." : ".
+		       ($mesg ? $mesg->error : "Unknown error");
 		}
 	return wantarray ? ($ldap, $proto, $prefix, $args) : $ldap;
 	}
