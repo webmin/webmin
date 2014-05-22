@@ -23,6 +23,7 @@ $in{'destemail_def'} || $in{'destemail'} =~ /^\S+(\@\S+)?$/ ||
 my @ignoreips = $in{'ignoreip_def'} ? ( ) : split(/\s+/, $in{'ignoreip'});
 foreach my $ip (@ignoreips) {
 	&check_ipaddress($ip) || &check_ip6address($ip) ||
+	    ($ip =~ /^([0-9\.]+)\/(\d+)/ && &check_ipaddress("$1")) ||
 		&error($text{'jail_eignoreip'});
 	}
 
