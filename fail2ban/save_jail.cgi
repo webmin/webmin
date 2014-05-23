@@ -13,8 +13,10 @@ my @jails = &list_jails();
 
 if ($in{'new'}) {
 	# Create new jail object
+	my $jfile = "$config{'config_dir'}/jail.conf";
+	my $jlfile = "$config{'config_dir'}/jail.local";
 	$jail = { 'members' => [ ],
-		  'file' => "$config{'config_dir'}/jail.conf" };
+		  'file' => -r $jlfile ? $jlfile : $jfile };
 	}
 else {
 	# Find existing jail
@@ -25,7 +27,8 @@ else {
 if ($in{'delete'}) {
 	# Just delete the jail
 	&lock_file($jail->{'file'});
-	&delete_section($jail->{'file'}, $jail);
+	&delete_section($jail->{'file'}, $jail,
+			$jail->{'file'} =~ /jail.local$/ ? 1 : 0);
 	&unlock_file($jail->{'file'});
 	}
 else {

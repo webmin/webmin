@@ -72,7 +72,18 @@ sub list_jails
 my @rv;
 my $jfile = "$config{'config_dir'}/jail.conf";
 if (-r $jfile) {
-	push(@rv, &parse_config_file("$config{'config_dir'}/jail.conf"));
+	push(@rv, &parse_config_file($jfile));
+	}
+my $jlfile = "$config{'config_dir'}/jail.local";
+if (-r $jlfile) {
+	# Add jails from .local file that aren't directive-level overrides
+	my @lrv = &parse_config_file($jlfile);
+	my %names = map { $_->{'name'}, $_ } @rv;
+	foreach my $j (@lrv) {
+		if (!$names{$j->{'name'}}) {
+			push(@rv, $j);
+			}
+		}
 	}
 my $jdir = "$config{'config_dir'}/jail.d";
 if (-d $jdir) {
@@ -204,11 +215,11 @@ $lref->[$sect->{'line'}] = $lines[0];
 &flush_file_lines($file);
 }
 
-# delete_section(file, &section)
+# delete_section(file, &section, [keep-file])
 # Remove a section and all directives from a file
 sub delete_section
 {
-my ($file, $sect) = @_;
+my ($file, $sect, $keepfile) = @_;
 my $lref = &read_file_lines($file);
 splice(@$lref, $sect->{'line'}, $sect->{'eline'} - $sect->{'line'} + 1);
 my $empty = 1;
@@ -217,7 +228,7 @@ foreach my $l (@$lref) {
 	$ll =~ s/^\s*#.*//;
 	$empty = 0 if ($ll =~ /\S/);
 	}
-if ($empty) {
+if ($empty && !$keepfile) {
 	# File is now empty, so delete it
 	&unflush_file_lines($file);
 	&unlink_file($file);
