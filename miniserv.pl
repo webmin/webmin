@@ -4330,8 +4330,6 @@ if ($config{'ssl_cipher_list'}) {
 		print STDERR "SSL cipher $config{'ssl_cipher_list'} failed : ",
 			     "$@\n";
 		}
-	else {
-		}
 	}
 Net::SSLeay::set_fd($ssl_con, fileno($sock));
 if (!Net::SSLeay::accept($ssl_con)) {
