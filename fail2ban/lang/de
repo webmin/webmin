@@ -92,6 +92,7 @@ jail_eclash=Ein Gef&#228;ngnis mit dem selben Namen existiert bereits
 jail_edestemail=Fehlende oder ung&#252;ltige Standard Benachrichtigungs-E-Mail-Adresse
 jail_efindtime=Verz&#246;gerung, zwischen den Treffern, muss eine Zahl gr&#246;&#223;er als Null sein
 jail_egone=Gef&#228;ngnis existiert nicht l&#228;nger!
+jail_eignoreip=Ung&#252;ltige IP-Adresse zum ignorieren
 jail_elogpath=Alle Log-Dateien m&#252;ssen einen absoluten Pfad haben oder Muster
 jail_elogpaths=Keinen Log-Datei-Pfad angegeben
 jail_emaxretry=Treffer, bevor Aktionen angewenden werden, muss eine Zahl gr&#246;&#223;er als Null sein
