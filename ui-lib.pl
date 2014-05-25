@@ -1161,7 +1161,7 @@ my $ret = "<input class='ui_radio' type='radio' name=\"".&quote_escape($name)."\
        ($sel ? " checked" : "").($dis ? " disabled=true" : "").
        " id=\"$id\"".
        ($tags ? " ".$tags : "").">";
-    $ret .= "<label for=\"$id\">$label</label>" if ($label ne '');
+    $ret .= " <label for=\"$id\">$label</label>" if ($label ne '');
     $ret .= "$after\n";
     return $ret;
 }
