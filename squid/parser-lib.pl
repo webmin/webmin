@@ -11,7 +11,7 @@ sub get_config
 {
 if (!@get_config_cache) {
 	my $fh = "CONF";
-	&open_readfile($fh, $config{'squid_conf'});
+	&open_readfile($fh, $config{'squid_conf'}) || return [];
 	my $lnum = 0;
 	while(my $line = <$fh>) {
 		$line =~ s/\r|\n//g;	# strip newlines and comments
