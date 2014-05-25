@@ -171,7 +171,7 @@ sub encrypt_blowfish
 my ($passwd, $salt) = @_;
 my ($plain, $base64) = ("", "");
 eval "use Crypt::Eksblowfish::Bcrypt";
-if ($salt !~ /^\$2a\$/) {
+if ($salt && $salt !~ /^\$2a\$/) {
 	# Invalid salt for Blowfish
 	$salt = undef;
 	}
