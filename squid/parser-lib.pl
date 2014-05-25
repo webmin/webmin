@@ -58,6 +58,7 @@ return \@get_config_cache;
 sub find_config
 {
 my ($name, $conf, $mode) = @_;
+$mode ||= 0;
 my @rv;
 foreach my $c (@$conf) {
 	if ($c->{'name'} eq $name) {
