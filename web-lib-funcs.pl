@@ -2859,7 +2859,7 @@ if ($2 eq "-") {
         while(1) {
                 if (!($line = <$fh>)) {
 			alarm(0);
-			if ($$err) { $$err = "Failed to read reply to $what";
+			if ($err) { $$err = "Failed to read reply to $what";
 				     return undef; }
 			else { &error("Failed to read reply to $what"); }
                         }
