@@ -526,7 +526,7 @@ else {
 		elsif ($fwdconf && &can_edit_zone($fwdconf)) {
 			# old and new in different files
 			&delete_record($ofwdrec->{'file'} , $ofwdrec);
-			if (!ipv6 || $config{'support_aaaa'}) {
+			if (!$ipv6 || $config{'support_aaaa'}) {
 				&create_record($fwdfile, $vals, $ofwdrec->{'ttl'},
 					       "IN", $ipv6 ? "AAAA" : "A",
 					       $in{'name'}, $in{'comment'});
