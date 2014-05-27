@@ -75,7 +75,8 @@ print &ui_table_row($text{'ssl_cipher_list'},
 		    [ 3, $text{'ssl_pfs'}."<br>" ],
 		    [ 0, $text{'ssl_clist'}." ".
 			 &ui_textbox("cipher_list",
-				     $cmode == 0 ? $clist : "", 30) ] ]), undef, [ "valign=top","valign=middle" ]);
+				     $cmode == 0 ? $clist : "", 50) ] ]),
+		  undef, [ "valign=top","valign=middle" ]);
 
 print &ui_table_row($text{'ssl_extracas'},
 	&ui_textarea("extracas", join("\n",split(/\s+/, $miniserv{'extracas'})),
