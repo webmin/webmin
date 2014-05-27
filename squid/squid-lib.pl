@@ -487,7 +487,7 @@ if ($squid_version >= 2.5) {
 	}
 else {
 	my $authprog = &find_value("authenticate_program", $_[0]);
-	return $authprog =~ /(\S+)\s+(\/\S+)$/ ? $2 : undef;
+	return $authprog && $authprog =~ /(\S+)\s+(\/\S+)$/ ? $2 : undef;
 	}
 }
 
