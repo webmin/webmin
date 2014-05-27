@@ -229,6 +229,8 @@ recs_find=Show records matching:
 recs_search=Search
 recs_drev=Delete reverses too?
 recs_none=The domain does not have any $1 records yet.
+recs_nosearch=No records matched your search.
+recs_needsearch=Enter a search to find matching records.
 
 edit_title=Edit $1
 edit_header=In $1

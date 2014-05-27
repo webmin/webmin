@@ -26,18 +26,16 @@ if (!$access{'ro'} && $type eq 'master' && $in{'type'} ne 'ALL') {
 	$shown_create_form = 1;
 	}
 
-if ($config{'largezones'}) {
-	# Show search form
-	print &ui_form_start("edit_recs.cgi");
-	print &ui_hidden("zone", $in{'zone'}),"\n";
-	print &ui_hidden("view", $in{'view'}),"\n";
-	print &ui_hidden("type", $in{'type'}),"\n";
-	print "<b>$text{'recs_find'}</b>\n";
-	print &ui_textbox("search", $in{'search'}, 20),"\n";
-	print &ui_submit($text{'recs_search'}),"\n";
-	print &ui_form_end();
-	$form++;
-	}
+# Show search form
+print &ui_form_start("edit_recs.cgi");
+print &ui_hidden("zone", $in{'zone'}),"\n";
+print &ui_hidden("view", $in{'view'}),"\n";
+print &ui_hidden("type", $in{'type'}),"\n";
+print "<b>$text{'recs_find'}</b>\n";
+print &ui_textbox("search", $in{'search'}, 20),"\n";
+print &ui_submit($text{'recs_search'}),"<p>\n";
+print &ui_form_end();
+$form++;
 
 if (!$config{'largezones'} || $in{'search'}) {
 	# Get all records
@@ -72,6 +70,7 @@ if ($in{'type'} eq "ALL") {
 else {
 	@recs = grep { $_->{'type'} eq $in{'type'} } @recs
 	}
+
 if (@recs) {
 	@recs = &sort_records(@recs);
 	foreach $v (keys %text) {
@@ -90,22 +89,7 @@ if (@recs) {
 			   &select_invert_link("d", $form) );
 		}
 	print &ui_links_row(\@links);
-	if ($in{'type'} =~ /HINFO|WKS|RP|KEY|LOC|SPF|TXT/ ||
-	    $config{'allow_comments'}) {
-		# One-column table
-		print &recs_table(@recs);
-		}
-	else {
-		# Two-column table
-		$mid = int((@recs+1)/2);
-		@grid = ( );
-		push(@grid, &recs_table(@recs[0 .. $mid-1]));
-		if ($mid < @recs) {
-			push(@grid, &recs_table(@recs[$mid .. $#recs]));
-			}
-		print &ui_grid_table(\@grid, 2, 100,
-			[ "width=50%", "width=50%" ]);
-		}
+	print &recs_table(@recs);
 	print &ui_links_row(\@links);
 	if (!$access{'ro'} && $type eq 'master') {
 		print &ui_submit($text{'recs_delete'}),"\n";
@@ -116,8 +100,16 @@ if (@recs) {
 		print &ui_form_end();
 		}
 	}
+elsif ($in{'search'}) {
+	# Show error message about no search results
+	print "<b>$text{'recs_nosearch'}</b><p>\n";
+	}
+elsif ($config{'largezones'}) {
+	# Do a search to show records
+	print "<b>$text{'recs_needsearch'}</b><p>\n";
+	}
 elsif (!$shown_create_form) {
-	# Show error message
+	# Show error message about no records
 	print "<b>",&text('recs_none', $typedesc),"</b><p>\n";
 	}
 
@@ -149,7 +141,7 @@ if ($in{'type'} eq "ALL" || $is_extra{$in{'type'}}) {
 if ($config{'allow_comments'} && $in{'type'} ne "WKS") {
 	push(@hcols, &ui_link("edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'type'}&sort=4", $text{'recs_comment'}) );
 	}
-$rv .= &ui_columns_start(\@hcols, 100);
+$rv .= &ui_columns_start(\@hcols, 100, 0, \@tds);
 
 # Show the actual records
 for($i=0; $i<@_; $i++) {
