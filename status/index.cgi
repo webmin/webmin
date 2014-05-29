@@ -127,8 +127,17 @@ foreach $s (@_) {
 	# Work out and show all the up icons
 	local @ups;
 	if ($config{'index_status'}) {
-		# Showing the current status
+		# Showing the current status .. first check dependency
 		@stats = &service_status($s, 1);
+		if ($s->{'depend'}) {
+			$ds = &get_service($s->{'depend'});
+			if ($ds) {
+				@dstats = &service_status($ds, 1);
+				if ($dstats[0]->{'up'} != 1) {
+					@stats = map { { 'up' => -4 } } @stats;
+					}
+				}
+			}
 		@ups = map { $_->{'up'} } @stats;
 		@remotes = map { $_->{'remote'} } @stats;
 		}
