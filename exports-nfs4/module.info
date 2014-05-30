@@ -1,7 +1,7 @@
 desc_ru_SU=ëÁÔÁÌÏÇÉ NFS
 risk=low medium high
 desc_ko_KR.euc=NFS ³»º¸³»±â 
-longdesc=Edit NFS file shares defined in /etc/exports.
+longdesc=Edit NFS v4 file shares defined in /etc/exports.
 desc_zh_TW.Big5=NFS ¶×¥X
 desc_pl=Udostêpnianie po NFS
 desc_de=NFS-Exporte
@@ -11,7 +11,7 @@ desc_pt=Exporta&#231;&#245;es de NFS
 category=net
 desc_tr=NFS Sunumlarý
 os_support=slackware-linux redhat-linux mandrake-linux debian-linux suse-linux united-linux open-linux turbo-linux corel-linux cobalt-linux aix msc-linux generic-linux gentoo-linux trustix-linux sol-linux coherent-linux
-desc=NFS Exports
+desc=NFS v4 Exports
 desc_es=Exportaciones de NFS
 desc_sv=NFS-exportering
 desc_fr=Partages NFS

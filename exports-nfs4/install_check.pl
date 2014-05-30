@@ -9,6 +9,8 @@ do 'exports-lib.pl';
 sub is_installed
 {
 return 0 if (!&has_nfs_commands());
+my $out = &backquote_command("uname -r 2>&1");
+return 0 if ($out =~ /^(\d+\.\d+)/ && $1 <= 2.6);
 return $_[0] ? 2 : 1;
 }
 
