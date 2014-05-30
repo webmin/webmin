@@ -1707,6 +1707,10 @@ parameters are :
 
 =item scrollbars - Set to 1 if the window should have scrollbars
 
+=item fields - See below
+
+=item disabled - The button is disabled if non-zero
+
 The field-mappings parameter is an array ref of array refs containing
 
 =item - Attribute to assign field to in the popup window
@@ -1719,7 +1723,7 @@ The field-mappings parameter is an array ref of array refs containing
 sub popup_window_button
 {
 return &theme_popup_window_button(@_) if (defined(&theme_popup_window_button));
-my ($url, $w, $h, $scroll, $fields) = @_;
+my ($url, $w, $h, $scroll, $fields, $disabled) = @_;
 my $scrollyn = $scroll ? "yes" : "no";
 my $rv = "<input type=button onClick='";
 foreach my $m (@$fields) {
@@ -1738,7 +1742,11 @@ foreach my $m (@$fields) {
 	$rv .= "chooser.$m->[0] = $m->[0]; ";
 	$rv .= "window.$m->[0] = $m->[0]; ";
 	}
-$rv .= "' value=\"...\">";
+$rv .= "' value=\"...\"";
+if ($disabled) {
+	$rv .= " disabled";
+	}
+$rv .= ">";
 return $rv;
 }
 
