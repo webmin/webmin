@@ -2,8 +2,10 @@
 # index.cgi
 # Display a list of directories and their client(s)
 
-$| = 1;
+use strict;
+use warnings;
 require './exports-lib.pl';
+our (%text);
 &ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
 	&help_search_link("nfs exports", "man", "howto"));
 
@@ -14,33 +16,33 @@ if (!&has_nfs_commands()) {
 	}
 
 # Display table of exports and clients
-@exps = &list_exports();
+my @exps = &list_exports();
 if (@exps) {
 	print &ui_form_start("delete_exports.cgi", "post");
-	@dirs = &unique(map { $_->{'dir'} } @exps);
+	my @dirs = &unique(map { $_->{'dir'} } @exps);
 
 	# Directory list heading
-	@links = ( &select_all_link("d"),
-		   &select_invert_link("d"),
-		   "<a href=\"edit_export.cgi?new=1\">$text{'index_add'}</a>" );
+	my @links = ( &select_all_link("d"),
+		      &select_invert_link("d"),
+		      &ui_link("edit_export.cgi?new=1", $text{'index_add'}) );
 	print &ui_links_row(\@links);
-	@tds = ( "width=5" );
+	my @tds = ( "width=5" );
 	print &ui_columns_start([ "",
 				  $text{'index_dir'},
 				  $text{'index_to'} ], 100, 0, \@tds);
 
 	# Rows for directories and clients
-	foreach $d (@dirs) {
-		local @cols;
+	foreach my $d (@dirs) {
+		my @cols;
 		push(@cols, &html_escape($d));
-		local $dirs;
-		@cl = grep { $_->{'dir'} eq $d } @exps;
-	    	$ccount = 0;
-		foreach $c (@cl) {
+		my @cl = grep { $_->{'dir'} eq $d } @exps;
+	    	my $ccount = 0;
+		my $dirs = "";
+		foreach my $c (@cl) {
 			$dirs .= "&nbsp;|&nbsp; " if ($ccount++);
-			$dirs .= "<a href='edit_export.cgi?idx=$c->{'index'}'>".
-				 &describe_host($c->{'host'})."</a>\n";
-			 if (!$c->{'active'}) {
+			$dirs .= &ui_link("edit_export.cgi?idx=$c->{'index'}",
+					   &describe_host($c->{'host'}));
+			if (!$c->{'active'}) {
 				$dirs .= "<font color=#ff0000>(".
 					 $text{'index_inactive'}.")</font>\n"
 				}
@@ -56,7 +58,7 @@ if (@exps) {
 	}
 else {
 	print "<b>$text{'index_none'}</b> <p>\n";
-	print "<a href=\"edit_export.cgi?new=1\">$text{'index_add'}</a> <p>\n";
+	print &ui_links_row([ &ui_link("edit_export.cgi?new=1", $text{'index_add'}) ]);
 	}
 
 print &ui_hr();
