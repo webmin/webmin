@@ -78,6 +78,9 @@ foreach my $d (sort { $a->{'device'} cmp $b->{'device'} }
 			if (!-r $dev) {
 				$dev = "/dev/twe".$cidx;
 				}
+			if (!-r $dev) {
+				$dev = "/dev/twl".$cidx;
+				}
 			push(@rv, { 'device' => $dev,
 				    'prefix' => $dev,
 				    'desc' => '3ware physical disk unit '.
