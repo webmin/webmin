@@ -1,25 +1,29 @@
 #!/usr/local/bin/perl
 # Delete, disable or enable all exports for some directories
 
+use strict;
+use warnings;
 require './exports-lib.pl';
+our (%text, %in, %config);
 
 # Validate inputs
 &error_setup($text{'delete_err'});
 &ReadParse();
-@d = split(/\0/, $in{'d'});
+my @d = split(/\0/, $in{'d'});
 @d || &error($text{'delete_enone'});
 
 # Find the actual clients
 &lock_file($config{'exports_file'});
-@exps = &list_exports();
-foreach $e (@exps) {
+my @exps = &list_exports();
+my @dels;
+foreach my $e (@exps) {
 	if (&indexof($e->{'dir'}, @d) >= 0) {
 		push(@dels, $e);
 		}
 	}
 
 # Take them out, one by one
-foreach $d (reverse(@dels)) {
+foreach my $d (reverse(@dels)) {
 	if ($in{'delete'}) {
 		&delete_export($d);
 		}
