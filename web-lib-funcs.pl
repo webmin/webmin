@@ -754,7 +754,7 @@ if (!$gconfig{'no_frame_options'}) {
 	print "X-Frame-Options: SAMEORIGIN\n";
 	}
 if (!$gconfig{'no_content_security_policy'}) {
-	print "Content-Security-Policy: script-src 'self' 'unsafe-inline'\n";
+	print "Content-Security-Policy: script-src 'self' 'unsafe-inline'; frame-src 'self'\n";
 	}
 if (defined($_[0])) {
 	print "Content-type: text/html; Charset=$_[0]\n\n";
