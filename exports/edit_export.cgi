@@ -1,6 +1,8 @@
 #!/usr/local/bin/perl
 # edit_export.cgi
 # Allow editing of one export to a client
+# XXX don't wreck other mount options when saving
+# XXX security options
 
 use strict;
 use warnings;
@@ -23,6 +25,12 @@ else {
 	my @exps = &list_exports();
 	$exp = $exps[$in{'idx'}];
 	%opts = %{$exp->{'options'}};
+	if ($nfsv == 4) {
+		# If no NFSv4 options are in use, use NFSv3 form
+		if (!$exp->{'pfs'} && $exp->{'host'} !~ /^gss/) {
+			$nfsv = 3;
+			}
+		}
 	}
 
 # WebNFS doesn't exist on Linux
@@ -93,7 +101,7 @@ if ($nfsv == 4) {
 }
 
 # Show directory input
-print &ui_table_row(&hlink(text{'edit_dir'}, "dir"),
+print &ui_table_row(&hlink($text{'edit_dir'}, "dir"),
 	&ui_textbox("dir", $exp->{'dir'}, 60)." ".
 	&file_chooser_button("dir", 1));
 
@@ -183,16 +191,14 @@ if ($nfsv == 4) {
     ($auth eq "lipkey") ? "checked" : "";
     printf "<tr><td colspan=3><input type=radio name=auth value=3 %s disabled> spkm-3</td></tr>\n",
     ($auth eq "spkm") ? "checked" : "";
+	}
 
 # Show security level input
-print "<tr> <td>", &hlink("<b>$text{'edit_sec'}</b>", "sec"), "</td>\n";
-printf "<td nowrap colspan=3><input type=radio name=sec value=0 %s> $text{'config_none'}\n",
-    ($sec eq "") ? "checked" : "";
-printf "<input type=radio name=sec value=1 %s> $text{'edit_integrity'}\n",
-    ($sec eq "i") ? "checked" : "";
-printf "<input type=radio name=sec value=2 %s> $text{'edit_privacy'}</td></tr>\n",
-    ($sec eq "p") ? "checked" : "";
-}
+print &ui_table_row(&hlink($text{'edit_sec'}, "sec"),
+	&ui_radio("sec", $sec eq "" ? 0 : $sec eq "i" ? 1 : 2,
+		  [ [ 0, $text{'config_none'} ],
+		    [ 1, $text{'edit_integrity'} ],
+		    [ 2, $text{'edit_privacy'} ] ]));
 
 print &ui_table_end();
 
@@ -204,7 +210,7 @@ print &ui_table_row(&hlink($text{'edit_ro'}, "ro"),
 
 # Show input for secure port
 print &ui_table_row(&hlink($text{'edit_insecure'}, "insecure"),
-	&ui_yesno_radio("insecure", defined($opts{'insecure'}) ? 0 : 1));
+	&ui_yesno_radio("insecure", defined($opts{'insecure'}) ? 1 : 0, 0, 1));
 
 # Show subtree check input
 print &ui_table_row(&hlink($text{'edit_subtree_check'}, "subtree_check"),
@@ -212,7 +218,7 @@ print &ui_table_row(&hlink($text{'edit_subtree_check'}, "subtree_check"),
 
 # Show nohide check input
 print &ui_table_row(&hlink($text{'edit_hide'}, "hide"),
-	&ui_yesno_radio("nohide", defined($opts{'nohide'})));
+	&ui_yesno_radio("nohide", defined($opts{'nohide'}) ? 1 : 0, 0, 1));
 
 # Show sync input
 my $sync = defined($opts{'sync'}) ? 1 : defined($opts{'async'}) ? 2 : 0;
