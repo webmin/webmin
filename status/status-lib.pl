@@ -58,7 +58,7 @@ return @rv;
 sub get_service
 {
 local %serv;
-&read_file("$services_dir/$_[0].serv", \%serv);
+&read_file("$services_dir/$_[0].serv", \%serv) || return undef;
 $serv{'fails'} = 1 if (!defined($serv{'fails'}));
 $serv{'_file'} = "$services_dir/$_[0].serv";
 if (!defined($serv{'notify'})) {
