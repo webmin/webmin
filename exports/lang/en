@@ -71,6 +71,8 @@ save_euids=UIDs not to trust must be a comma-separated list of numbers or ranges
 save_egids=GIDs not to trust must be a comma-separated list of numbers or ranges
 save_pfs='$1' is already exported as a directory
 save_create_dir=Can't create the directory '$1'
+save_eanonuid=Invalid anonymous access username
+save_eanongid=Invalid anonymous access group name
 
 exports_webnfs=WebNFS&nbsp;clients
 exports_ngroup=Netgroup&nbsp;$1
