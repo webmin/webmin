@@ -1,5 +1,7 @@
 # install_check.pl
 
+use strict;
+use warnings;
 do 'exports-lib.pl';
 
 # is_installed(mode)

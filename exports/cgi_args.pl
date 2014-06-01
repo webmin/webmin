@@ -1,4 +1,6 @@
 
+use strict;
+use warnings;
 do 'exports-lib.pl';
 
 sub cgi_args

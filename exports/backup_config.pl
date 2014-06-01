@@ -1,5 +1,8 @@
 
+use strict;
+use warnings;
 do 'exports-lib.pl';
+our (%config);
 
 # backup_config_files()
 # Returns files and directories that can be backed up

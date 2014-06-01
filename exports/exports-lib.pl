@@ -260,7 +260,7 @@ if ($?) {
 	# NFS server is down, take a guess based on kernel
 	my $out = &backquote_command("uname -r");
 	if ($out =~ /^(\d+)\./ && $1 >= 3 ||
-	    $out =~ /^(\d+)\.(\d+)\./ && $1 == 2 && $2 >= 6) {
+	    $out =~ /^(\d+)\.(\d+)\./ && $1 == 2 && $2 > 6) {
 		return 4;
 		}
 	return 3;
