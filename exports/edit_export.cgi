@@ -1,7 +1,6 @@
 #!/usr/local/bin/perl
 # edit_export.cgi
 # Allow editing of one export to a client
-# XXX don't wreck other mount options when saving
 # XXX security options
 
 use strict;
@@ -27,7 +26,8 @@ else {
 	%opts = %{$exp->{'options'}};
 	if ($nfsv == 4) {
 		# If no NFSv4 options are in use, use NFSv3 form
-		if (!$exp->{'pfs'} && $exp->{'host'} !~ /^gss/) {
+		if (!$exp->{'pfs'} && $exp->{'host'} !~ /^gss/ &&
+		    !$opts{'sec'}) {
 			$nfsv = 3;
 			}
 		}
@@ -35,49 +35,6 @@ else {
 
 # WebNFS doesn't exist on Linux
 my $linux = ($gconfig{'os_type'} =~ /linux/i) ? 1 : 0;
-
-print "<script type=\"text/javascript\">\n";
-print "function enable_sec(level) {\n";
-print " if (level) {\n";
-print "   document.forms[0].sec[1].disabled=0;\n";
-print "   document.forms[0].sec[2].disabled=0;\n";
-print "   } else {\n";
-print "   document.forms[0].sec[1].disabled=1;\n";
-print "   document.forms[0].sec[2].disabled=1;\n";
-print "   document.forms[0].sec[0].checked=1;\n";
-print " }\n}\n";
-print "function enable_pfs(enable) {\n";
-print" set_pfs_dir();\n";
-print "if (enable == 1) {\n";
-print "   document.forms[0].pfs.disabled=0;\n";
-print "   document.forms[0].pfs_button.disabled=0;\n";
-print "   document.forms[0].pfs_dir.disabled=0;\n";
-print "   } else {\n";
-print "   document.forms[0].pfs.disabled=1;\n";
-print "   document.forms[0].pfs_button.disabled=1;\n";
-print "   document.forms[0].pfs_dir.disabled=1;\n";
-print "   }\n";
-print "}\n";
-print "function set_pfs_dir() {\n";
-print "   var pfs = document.forms[0].pfs.value;\n";
-print "   var dir = document.forms[0].dir.value;\n";
-print "   if (document.forms[0].via_pfs[0].checked == 0) {\n";
-print "      document.forms[0].pfs_dir.value = dir; }\n";
-print "   else {\n";
-print "      var reg = /\\/\$/;\n";
-print "      dir = dir.replace(reg, \"\");\n";
-print "      dir = dir.substring(dir.lastIndexOf(\"/\"));\n";
-print "      document.forms[0].pfs_dir.value = pfs + dir; }\n";
-print "}\n";
-print "window.onload = function() {\n";
-print "   enable_pfs(document.forms[0].via_pfs[0].checked);\n";
-print "   if (document.forms[0].auth[0].checked == 1) {\n";
-print "      enable_sec(0); }\n";
-print "   else {\n";
-print "      enable_sec(1); }\n";
-print "   set_pfs_dir();\n";
-print "}\n";
-print "</script>\n";
 
 print &ui_form_start("save_export.cgi", "post");
 print &ui_hidden("new", $in{'new'});
@@ -87,12 +44,6 @@ print &ui_table_start($text{'edit_details'}, "width=100%", 2);
 
 # Show NFS pseudofilesystem (NFSv4)
 if ($nfsv == 4) {
-    print "<tr> <td>",&hlink("<b>$text{'edit_nfs_vers'}</b>","vers"),"</td>\n";
-    printf "<td colspan=3><input type=radio name=via_pfs value=1 %s onclick=enable_pfs(1)> 4\n",
-    $via_pfs ? "checked" : "";
-    printf "<input type=radio name=via_pfs value=0 %s onclick=enable_pfs(0)> 3 (or lower)</td> </tr>\n",
-    $via_pfs ? "" : "checked";
-    
     print "<tr> <td>",&hlink("<b>$text{'edit_pfs'}</b>","pfs"),"</td>\n";
     printf "<td colspan=3><input name=pfs size=40 value=\"$exp->{'pfs'}\" onkeyup=set_pfs_dir()>";
     print &file_chooser_button2("pfs", 1, "pfs_button", ($via_pfs == 0)),"</td> </tr>\n";
@@ -116,12 +67,14 @@ print &ui_table_row(&hlink($text{'edit_active'}, "active"),
 
 # Work out export destination
 my $h = $exp->{'host'};
-my ($mode, $host, $netgroup, $network, $netmask, $network6, $netmask6);
+my ($mode, $host, $netgroup, $network, $netmask, $network6, $netmask6, $sec);
 if ($h eq "=public") {
 	$mode = 0;
 	}
-elsif ($h =~ /^gss\//) {
-	$mode = 5;
+elsif ($h =~ /^gss\/(.*)/) {
+	# To all clients, but with security required
+	$mode = 3;
+	$sec = $1;
 	}
 elsif ($h =~ /^\@(.*)/) {
 	$mode = 1;
@@ -175,30 +128,22 @@ push(@table, [ 6,  $text{'edit_network6'},
 print &ui_table_row(&hlink($text{'edit_to'}, "client"),
 	&ui_radio_table("mode", $mode, \@table));
 
-if ($nfsv == 4) {
-    print "<br>",&hlink("$text{'edit_auth'}","auth"),"</td>\n";
-    
-    printf "<td rowspan=5 valign=top><input type=radio name=auth value=0 %s onclick=enable_sec(0)> sys</td>\n",
-    ($auth eq "") ? "checked" : "";
-} else {
-    printf "<td><input type=hidden name=auth value=0></td>\n";
-}
-
-if ($nfsv == 4) {
-    printf "<tr><td colspan=3><input type=radio name=auth value=1 %s onclick=enable_sec(1)> krb5</td></tr>",
-    ($auth eq "krb5") ? "checked" : "";
-    printf "<tr><td colspan=3><input type=radio name=auth value=2 %s disabled> lipkey</td></tr>\n",
-    ($auth eq "lipkey") ? "checked" : "";
-    printf "<tr><td colspan=3><input type=radio name=auth value=3 %s disabled> spkm-3</td></tr>\n",
-    ($auth eq "spkm") ? "checked" : "";
+if ($nfsv >= 4) {
+	# Show security level list
+	$sec ||= $opts{'sec'};
+	$sec ||= 'sys';
+	print &ui_table_row(&hlink($text{'edit_secs'}, "secs"),
+		&ui_multi_select("sec",
+			[ map { [ $_, $text{'edit_sec_'.$_} ] }
+			      split(/,/, $sec) ],
+			[ [ 'sys', $text{'edit_sec_sys'} ],
+			  [ 'krb5', $text{'edit_sec_krb5'} ],
+			  [ 'krb5i', $text{'edit_sec_krb5i'} ],
+			  [ 'krb5p', $text{'edit_sec_krb5p'} ],
+			  [ 'lipkey', $text{'edit_sec_lipkey'} ],
+			  [ 'spkm', $text{'edit_sec_spkm'} ] ],
+			6, 1, 0));
 	}
-
-# Show security level input
-print &ui_table_row(&hlink($text{'edit_sec'}, "sec"),
-	&ui_radio("sec", $sec eq "" ? 0 : $sec eq "i" ? 1 : 2,
-		  [ [ 0, $text{'config_none'} ],
-		    [ 1, $text{'edit_integrity'} ],
-		    [ 2, $text{'edit_privacy'} ] ]));
 
 print &ui_table_end();
 

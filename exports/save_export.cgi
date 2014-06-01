@@ -55,15 +55,16 @@ else {
 		}
 
 	# Authentication is in the host name
-	# Only sys and krb5 for the moment
-	my $auth = "";
-	if ($in{'auth'}) {
-		if ($in{'sec'} == 0) { $auth = "krb5"; }
-		if ($in{'sec'} == 1) { $auth = "krb5i"; }
-		if ($in{'sec'} == 2) { $auth = "krb5p"; }
-		}
-	if ($auth ne "") {
-		$exp{'host'} = "gss/$auth";
+	if ($in{'ver'} >= 4) {
+		$opts{'sec'} = join(",", split(/\r?\n/, $in{'sec'});
+		if ($opts{'sec'} eq 'sys') {
+			delete($opts{'sec'});
+			}
+		if ($opts{'sec'} && $opts{'sec'} !~ /,/ && $exp{'host'} eq '') {
+			# Allow hosts allowed for this security level
+			$exp{'host'} = 'gss/'.$opts{'sec'};
+			delete($opts{'sec'});
+			}
 		}
 
 	# Validate and parse options
