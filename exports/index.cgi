@@ -17,6 +17,11 @@ if (!&has_nfs_commands()) {
 
 # Display table of exports and clients
 my @exps = &list_exports();
+my @clinks = ( &ui_link("edit_export.cgi?new=1&ver=3", $text{'index_add'}) );
+if (&nfs_max_version() >= 4) {
+	push(@clinks, &ui_link("edit_export.cgi?new=1&ver=4",
+			       $text{'index_add4'}));
+	}
 if (@exps) {
 	print &ui_form_start("delete_exports.cgi", "post");
 	my @dirs = &unique(map { $_->{'dir'} } @exps);
@@ -24,7 +29,7 @@ if (@exps) {
 	# Directory list heading
 	my @links = ( &select_all_link("d"),
 		      &select_invert_link("d"),
-		      &ui_link("edit_export.cgi?new=1", $text{'index_add'}) );
+		      @clinks );
 	print &ui_links_row(\@links);
 	my @tds = ( "width=5" );
 	print &ui_columns_start([ "",
@@ -58,7 +63,7 @@ if (@exps) {
 	}
 else {
 	print "<b>$text{'index_none'}</b> <p>\n";
-	print &ui_links_row([ &ui_link("edit_export.cgi?new=1", $text{'index_add'}) ]);
+	print &ui_links_row(\@clinks);
 	}
 
 print &ui_hr();
