@@ -317,7 +317,7 @@ foreach my $m (@mounted) {
 	if ($m->[2] =~ /^ext/ ||
 	    $m->[2] eq "reiserfs" || $m->[2] eq "ufs" ||
 	    $m->[2] eq "zfs" || $m->[2] eq "simfs" || $m->[2] eq "vzfs" ||
-	    $m->[2] eq "xfs" || $m->[2] eq "jfs" ||
+	    $m->[2] eq "xfs" || $m->[2] eq "jfs" || $m->[2] eq "btrfs" ||
 	    $m->[1] =~ /^\/dev\// ||
 	    &indexof($m->[1], @$always) >= 0) {
 		if ($m->[1] =~ /^([^\/]+)\/([^\/]+)/ &&
