@@ -49,7 +49,7 @@ print &ui_table_row(&hlink($text{'edit_dir'}, "dir"),
 # Show PFS directory
 if ($nfsv == 4 && $in{'new'}) {
 	print &ui_table_row(&hlink($text{'edit_pfs'}, "pfs"),
-		&ui_textbox("pfs", $exp->{'pfs'}, 60)." ".
+		&ui_opt_textbox("pfs", $exp->{'pfs'}, 60, $text{'edit_none'})." ".
 		&file_chooser_button("dir", 1));
 	}
 elsif ($exp->{'pfs'}) {
@@ -121,7 +121,7 @@ if ($nfsv >= 4) {
 	print &ui_table_row(&hlink($text{'edit_secs'}, "secs"),
 		&ui_multi_select("sec",
 			[ map { [ $_, $text{'edit_sec_'.$_} ] }
-			      split(/,/, $sec) ],
+			      split(/:/, $sec) ],
 			[ [ 'sys', $text{'edit_sec_sys'} ],
 			  [ 'krb5', $text{'edit_sec_krb5'} ],
 			  [ 'krb5i', $text{'edit_sec_krb5i'} ],

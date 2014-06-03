@@ -30,9 +30,11 @@ else {
 	&error_setup($text{'save_err'});
 	-d $in{'dir'} || &error(&text('save_edir', $in{'dir'}));
 	$exp{'dir'} = $in{'dir'};
-	$in{'pfs_def'} || $in{'pfs'} =~ /^\/\S+$/ ||
-		&error(&text('save_epfs', $in{'pfs'}));
-	$exp{'pfs'} = $in{'pfs_def'} ? undef : $in{'pfs'};
+	if (defined($in{'pfs_def'})) {
+		$in{'pfs_def'} || $in{'pfs'} =~ /^\/\S+$/ ||
+			&error(&text('save_epfs', $in{'pfs'}));
+		$exp{'pfs'} = $in{'pfs_def'} ? undef : $in{'pfs'};
+		}
 	$exp{'active'} = $in{'active'};
 	
 	if ($in{'mode'} == 0) { $exp{'host'} = "=public"; }
@@ -57,11 +59,11 @@ else {
 
 	# Authentication is in the host name
 	if ($in{'ver'} >= 4) {
-		$opts{'sec'} = join(",", split(/\r?\n/, $in{'sec'});
+		$opts{'sec'} = join(":", split(/\r?\n/, $in{'sec'}));
 		if ($opts{'sec'} eq 'sys') {
 			delete($opts{'sec'});
 			}
-		if ($opts{'sec'} && $opts{'sec'} !~ /,/ && $exp{'host'} eq '') {
+		if ($opts{'sec'} && $opts{'sec'} !~ /:/ && $exp{'host'} eq '') {
 			# Allow hosts allowed for this security level
 			$exp{'host'} = 'gss/'.$opts{'sec'};
 			delete($opts{'sec'});
