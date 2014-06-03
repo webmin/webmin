@@ -9,3 +9,4 @@ longdesc_no=F&#229; tilgang til disk-enheter over nettverket ved hjelp av iSCSI 
 desc_no=iSCSI klient 
 desc_ms_MY=Klien iSCSI
 longdesc_ms_MY=Mengakses peranti disk di seluruh rangkaian menggunakan protokol iSCSI.
+longdesc_de=Greife auf Datenger&#228;te &#252;ber das Netzwerk mit Hilfe des iSCSI-Protokolls zu.

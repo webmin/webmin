@@ -34,3 +34,4 @@ desc_no=NFS Eksporter
 desc_nl=NFS Exports
 longdesc_ms_MY=Sunting fail perkongsian NFS yang dinyatakan dalam /etc/eksport
 desc_ms_MY=NFS Eksport
+longdesc_de=Bearbeitet NFS-Dateifreigaben, welche in /etc/exports definiert sind.

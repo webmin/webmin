@@ -91,6 +91,7 @@ save_ehost='$1' ist kein g&uuml;ltiger Host-Name
 save_enetgroup=Fehlende oder ung&uuml;ltige Netzgruppe
 save_enetmask='$1' ist keine g&uuml;ltige Netzmaske
 save_enetwork='$1' ist kein g&uuml;ltiges Netzwerk
+save_epfs=Pseudo-Dateisystem-Pfad '$1' schaut nicht wie ein absoluten Pfad aus
 save_err=Fehler beim Speichern der Exporte
 save_euids=UIDs, denen nicht getraut wird, m&uuml;ssen eine durch Kommata getrennte Liste mit Nummern oder Bereichen sein
 save_pfs='$1' ist bereits als Verzeichnis exportiert
