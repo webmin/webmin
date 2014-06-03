@@ -69,6 +69,7 @@ edit_sec_spkm=SPKM
 
 save_err=Failed to save export
 save_edir=Directory '$1' does not exist
+save_epfs=Pseudo-filesystem path '$1' does not look like an absolute path
 save_enetgroup=Invalid or missing netgroup
 save_enetwork='$1' is not a valid network
 save_enetmask='$1' is not a valid netmask

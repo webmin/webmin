@@ -28,10 +28,11 @@ else {
 
 	# Validate and parse inputs
 	&error_setup($text{'save_err'});
-	$exp{'via_pfs'} = ($exp{'pfs'} ne "") ? $in{'via_pfs'} : 0;
 	-d $in{'dir'} || &error(&text('save_edir', $in{'dir'}));
 	$exp{'dir'} = $in{'dir'};
-	$exp{'pfs'} = $in{'pfs'};
+	$in{'pfs_def'} || $in{'pfs'} =~ /^\/\S+$/ ||
+		&error(&text('save_epfs', $in{'pfs'}));
+	$exp{'pfs'} = $in{'pfs_def'} ? undef : $in{'pfs'};
 	$exp{'active'} = $in{'active'};
 	
 	if ($in{'mode'} == 0) { $exp{'host'} = "=public"; }
@@ -161,7 +162,7 @@ else {
 
 	# Create or update the export
 	if ($in{'new'}) {
-		if ($in{'via_pfs'} == 1) {
+		if ($exp{'pfs'}) {
 			&create_export_via_pfs(\%exp);
 			}
 		else {

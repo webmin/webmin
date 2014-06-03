@@ -3,3 +3,6 @@ Added an option to determine if NFS writes to an export are immediately written 
 Added support for NFS version 4, thanks to code contributed by Frederic Jolly.
 ---- Changes since 1.270 ----
 Added checkboxes and a button for deleting, disabling and enabling multiple exports at once.
+---- Changes since 1.690 ----
+Re-wrote the UI to use the standard Webmin UI library for a consistent look, and converted all code to be Perl strict and warnings compliant.
+Separated the pages for creating NFSv3 and v4 exports, to simplify the UI and make security options more understandable.

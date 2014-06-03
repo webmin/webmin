@@ -236,19 +236,6 @@ foreach my $e (@_) {
 return ($_[0]->{'active'} ? "" : "#").$_[0]->{'dir'}."\t".join(" ", @htxt);
 }
 
-# file_chooser_button2(input, type, name, disabled)
-# A file_chooser_button which can be disabled
-sub file_chooser_button2
-{
-my ($input, $type, $name, $disabled) = @_;
-my $rv = &file_chooser_button(0, $input, $type);
-$rv =~ s/<input/<input name=$name/i;
-if ($disabled) {
-	$rv =~ s/<input/<input disabled/i;
-	}
-return $rv;
-}
-
 # nfs_max_version(host)
 # Return the max NFS version allowed on a server
 sub nfs_max_version

@@ -1,7 +1,6 @@
 #!/usr/local/bin/perl
 # edit_export.cgi
 # Allow editing of one export to a client
-# XXX security options
 
 use strict;
 use warnings;
@@ -9,14 +8,14 @@ require './exports-lib.pl';
 our (%text, %in, %gconfig);
 
 &ReadParse();
-my $via_pfs = 0;
 my $nfsv = $in{'ver'} || &nfs_max_version("localhost");
 my ($exp, %opts);
 
 if ($in{'new'}) {
 	&ui_print_header(undef, $text{'create_title'}, "", "create_export");
-	$via_pfs = $nfsv == 4 ? 1 : 0;
-	$exp->{"pfs"} = "/export";
+	if ($nfsv >= 4) {
+		$exp->{"pfs"} = "/export";
+		}
 	$exp->{'active'} = 1;
 	}
 else {
@@ -42,24 +41,21 @@ print &ui_hidden("idx", $in{'idx'});
 print &ui_hidden("ver", $in{'ver'});
 print &ui_table_start($text{'edit_details'}, "width=100%", 2);
 
-# Show NFS pseudofilesystem (NFSv4)
-if ($nfsv == 4) {
-    print "<tr> <td>",&hlink("<b>$text{'edit_pfs'}</b>","pfs"),"</td>\n";
-    printf "<td colspan=3><input name=pfs size=40 value=\"$exp->{'pfs'}\" onkeyup=set_pfs_dir()>";
-    print &file_chooser_button2("pfs", 1, "pfs_button", ($via_pfs == 0)),"</td> </tr>\n";
-} else {
-    printf "<tr><td><input type=hidden name=via_pfs value=0></td></tr>\n";
-}
-
 # Show directory input
 print &ui_table_row(&hlink($text{'edit_dir'}, "dir"),
 	&ui_textbox("dir", $exp->{'dir'}, 60)." ".
 	&file_chooser_button("dir", 1));
 
-# XXX
-#if ($nfsv == 4) {
-#    print "$text{'edit_in'} <input style=\"background: rgb(238, 238, 238)\" name=pfs_dir size=40 readonly></td> </tr>\n";
-#}
+# Show PFS directory
+if ($nfsv == 4 && $in{'new'}) {
+	print &ui_table_row(&hlink($text{'edit_pfs'}, "pfs"),
+		&ui_textbox("pfs", $exp->{'pfs'}, 60)." ".
+		&file_chooser_button("dir", 1));
+	}
+elsif ($exp->{'pfs'}) {
+	print &ui_table_row(&hlink($text{'edit_pfs'}, "pfs"),
+		"<tt>".&html_escape($exp->{'pfs'})."</tt>");
+	}
 
 # Show active input
 print &ui_table_row(&hlink($text{'edit_active'}, "active"),
@@ -96,16 +92,6 @@ elsif ($h eq "") {
 else {
 	$mode = 4;
 	$host = $h;
-	}
-
-# Work out authentication type
-# XXX how does this sys/etc stuff work?
-my $auth = "";
-my $sec = "";
-if ($h =~ /^gss\/krb5/) {
-	$auth = "krb5";
-	if ($h =~ /i$/) { $sec = "i"; }
-	if ($h =~ /p$/) { $sec = "p"; }
 	}
 
 # Allowed hosts table
