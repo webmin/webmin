@@ -22,7 +22,7 @@ $shorewall_version = &get_shorewall_version(0);
 		     ( &version_atleast(2, 3) ? ( 'providers', 'route_rules' )
 					      : ( ) ),
 	   	     'params', 'shorewall.conf',
-);
+		   );
 @comment_tables = ( 'masq', 'nat', 'rules', 'tcrules' );
 
 sub debug_message
@@ -185,6 +185,7 @@ sub create_table_row
 {
 local $lref = &read_file_lines("$config{'config_dir'}/$_[0]");
 local ($i, $idx);
+$idx = -1;
 for($i=0; $i<@$lref; $i++) {
 	if ($lref->[$i] =~ /^#+\s*LAST\s+LINE/) {
 		$idx = $i;
@@ -198,10 +199,20 @@ for($i=0; $i<@$lref; $i++) {
 if (defined($_[3])) {
 	local $lnum = &find_line_num($lref, $_[1], $_[3]);
 	$lnum = $idx if (!defined($lnum));
-	splice(@$lref, $lnum, 0, &simplify_line($_[2]));
+	if ($lnum < 0) {
+		push(@$lref, &simplify_line($_[2]));
+		}
+	else {
+		splice(@$lref, $lnum, 0, &simplify_line($_[2]));
+		}
 	}
 else {
-	splice(@$lref, $idx, 0, &simplify_line($_[2]));
+	if ($idx < 0) {
+		push(@$lref, &simplify_line($_[2]));
+		}
+	else {
+		splice(@$lref, $idx, 0, &simplify_line($_[2]));
+		|
 	}
 &flush_file_lines();
 }
