@@ -157,7 +157,11 @@ policy_desc_private-or-clear=Verschl&#252;sselte oder unverschl&#252;sselte Netz
 policy_emask=Ung&#252;ltige Pr&#228;fixl&#228;nge auf Zeile $2
 policy_enet=Ung&#252;ltige Netzwerk IP-Adresse in Reihe $1
 policy_err=Fehlgeschlagen Netzwerk zu speichern
+policy_longdesc=Die Netzwerke, die unten angegeben sind, werden f&#252;r die $1 Regel genutzt.
 policy_longdesc_block=Kommunikation an die ausgew&#228;hlten Netze unten wird niemals zugelassen werden.
+policy_longdesc_clear=Kommunikation an die unten ausgew&#228;hlten Netzwerke werden immer Klartext sein.
+policy_longdesc_clear-or-private=Kommunikation an die unten ausgew&#228;hlten Netzwerke werden in 
+Klartext sein, bis das andere Ende die IPsec-Verschl&#252;sselung initialisiert hat.
 policy_longdesc_private=Kommunikation an die ausgew&#228;hlten Netze unten wird immer mit IPsec verschl&#252;sselt werden.
 policy_mask=Pr&#228;fix
 policy_mode0=Keine Netzwerke

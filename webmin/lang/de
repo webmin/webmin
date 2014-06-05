@@ -531,6 +531,7 @@ referers_ehost='$1' ist kein g&#252;ltiger vertrauensw&#252;rdiger Hostname
 referers_err=Fehler beim Referer speichern
 referers_list=Vertraute Webseiten
 referers_none=Links von unbekannten Webseiten trauen (NICHT EMPFOHLEN)
+referers_none2=WARNUNG: Dies &#246;ffnet Ihr System f&#252;r XSS-Angriffe!
 referers_referer=&#220;berpr&#252;fung des Verweisenden aktivieren?
 referers_title=Vertraute Verweise
 refeshmods_counts=.. $2 installierte Programme gefunden, $1 nicht installiert.
