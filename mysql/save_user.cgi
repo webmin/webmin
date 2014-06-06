@@ -30,7 +30,8 @@ else {
 		for($i=3; $i<=&user_priv_cols()+3-1; $i++) {
 			push(@yesno, $perms[$i] ? "'Y'" : "'N'");
 			}
-		foreach my $f ('ssl_type', 'ssl_cipher') {
+		foreach my $f ('ssl_type', 'ssl_cipher',
+			       'x509_issuer', 'x509_subject') {
 			if ($fieldmap{$f}) {
 				push(@ssl_field_names, $f);
 				push(@ssl_field_values, "''");
