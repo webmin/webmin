@@ -505,8 +505,12 @@ eprogs_dsa=Adreces del servidor DNS
 eprogs_fr=De resolv.conf
 eprogs_ccp=Programa de neteja del cau
 eprogs_spp=Programa de <i>ping</i> de Squid
+eprogs_sppe=Programa de <i>ping</i> activat
 eprogs_crp=Programa de redirecció personalitzat
 eprogs_norp=Nombre de programes de redirecció
+eprogs_startup=Programes a iniciar inicialment
+eprogs_idle=Nombre mínim de programes a executar
+eprogs_concurrency=Nombre de peticions concorrents per programa
 eprogs_cap=Programa d'Autenticació
 eprogs_capweb=El de Webmin per defecte
 eprogs_noap=Nombre de programes d'autenticació
@@ -643,6 +647,7 @@ sprog_emsg7=No has introduït cap servidor DNS
 sprog_emsg8='$1' no és una adreça IP vàlida
 sprog_emsg9='$1' no és un temps cau vàlid
 sprog_emsg10='$1' no és un TTL vàlid
+sprog_echildren=El nombre de programes ha de ser un número major que zero
 
 suser_ftsu=No s'ha pogut desar l'usuari
 suser_emsg1=Hi falta el nom d'usuari o bé no és vàlid
@@ -946,6 +951,7 @@ iptables_eiface=Hi falta la interfície de xarxa o bé és invàlida
 iptables_eapply=L'aplicació del tallafocs ha fallat: $1
 iptables_eapply2=L'aplicació de Squid ha fallat: $1
 
+syslog_access=Registre d'accés de Squid
 syslog_cache=Registre del cau de Squid
 syslog_store=Registre d'emmagatzematge d'objectes de Squid
 

@@ -320,6 +320,7 @@ user_err=No s'ha pogut desar l'usuari
 user_euser=No hi ha nom d'usuari o bé és incorrecte
 user_ehost=No hi ha nom(s) de host(s) o bé són incorrecte(s)
 user_ssl=Tipus de certificat requerit
+user_cipher=Xifratge SSL
 user_ssl_=Cap
 user_ssl_any=SSL
 user_ssl_x509=X509

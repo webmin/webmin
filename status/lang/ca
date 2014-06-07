@@ -70,6 +70,8 @@ type_dns=Consulta DNS
 type_query=Consulta SQL
 type_alive=Sistema Viu
 type_rssh=SSH Remot
+type_slapd=Servidor LDAP
+type_ldap=Connexió LDAP
 
 mon_create=Crea Monitor
 mon_edit=Edita Monitor
@@ -524,4 +526,12 @@ du_edir=Hi falta el camí del directori o bé no és absolut
 du_emax=Hi falta la mida màxima o bé no és numèrica
 du_over=La mida és $1
 du_under=La mida només és $1
+
+ldap_edriver=El mòdul Perl $1 no està instal·lat
+ldap_host=Nom de host del servidor LDAP
+ldap_port=Port del servidor LDAP
+ldap_ssl=Utilitza connexió SSL
+ldap_user=Usuari del servidor LDAP
+ldap_pass=Contrasenya del servidor LDAP
+
 __norefs=1

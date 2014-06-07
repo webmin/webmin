@@ -724,6 +724,7 @@ referers_title=Referenciadors Fiables
 referers_desc=Aquesta pàgina permet configurar el suport de comprovació delreferenciador de Webmin, que s'utilitza per evitar enllaços malintencionats des d'altres llocs web per induir el navegador a fer coses perilloses amb Webmin. No obstant, si tens enllaços a Webmin des dels propis llocs web i no vols que te n'avisi, hauries d'afegir aquests llocs a la llista de sota.
 referers_list=Llocs Web fiables
 referers_none=Confia en els enllaços de referenciadors desconeguts
+referers_none2=ATENCIÓ: Això deixa el teu sistema obert a atacs XSS!
 referers_referer=Activa la verificació del referenciador
 referers_err=No s'han pogut desar els referenciadors
 referers_ehost='$1' no és un nom de host fiable vàlid
