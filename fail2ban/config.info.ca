@@ -1,0 +1,4 @@
+config_dir=Directori de configuració de Fail2Ban,0
+client_cmd=Camí complet de l'ordre <tt>fail2ban-client</tt>,0
+server_cmd=Camí complet de l'ordre <tt>fail2ban-server</tt>,0
+init_script=Nom de l'acció d'engegada,3,No n'hi ha cap de configurat

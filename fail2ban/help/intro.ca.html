@@ -1,0 +1,27 @@
+<header>Detector d'Intrusions Fail2Ban</header>
+
+Fail2Ban és un servidor que rastreja els fitxers de registre buscant entrades que
+indiquin entrades fallides o altres atacs, i llavors porta a terme accions tals 
+com posar tallafocs o bloquejar els orígens d'aquests atacs. Això es pot utilitzar 
+per evitar intents d'endevinar contrasenyes per força bruta bloquejant l'atacant
+abans que pugui provar un ampli ventall de contrasenyes.<p>
+
+Els tres tipus principals d'objectes de configuració són:
+
+<dl>
+<dt><b>Filtres de registres</b>
+<dd>Un filtre és bàsicament una expressió regular que es pot aplicar a un fitxer
+    de registre per fer-hi coincidir entrades fallides o altres atacs.<p>
+
+<dt><b>Accions de Coincidència</b>
+<dd>Una acció és un conjunt d'ordres que s'executen per bloquejar un atac. Una
+    acció també pot definir ordres per desbloquejar una IP, i ordres que
+    s'executen quan Fail2Ban s'inicia o s'atura.<p>
+
+<dt><b>Presons d'Accions de Filtre</b>
+<dd>Una presó és una combinació d'un filtre, una o més accions i un o més
+    fitxers de registre. El registre es rastreja contínuament buscant línies que
+    coincideixin amb el filtre, i quan se'n troba una, es porten a terme les accions seleccionades.<p>
+</dl>
+
+<footer>

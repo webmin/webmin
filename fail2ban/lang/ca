@@ -1,0 +1,173 @@
+index_title=Detector d'Intrusions Fail2Ban
+index_echeck=S'ha produït un error en detectar Fail2Ban en aquest sistema: $1. O bé no està instal·lat, o bé la <a href='$2'>configuració del mòdul</a> és incorrecta.
+index_fail2ban=Fail2Ban
+index_atboot=Inicia en engegar el sistema
+index_atbootdesc=Canvia aquesta opció per controlar si el servidor Fail2Ban s'inicia o no en engegar el sistema. Si cal, es crearà un <i>script</i> d'inicialització per tal que s'iniciï correctament.
+index_stop=Atura el Servidor Fail2Ban
+index_stopdesc=Fes clic sobre aquest botó per aturar el servidor Fail2Ban en execució. Totes les anàlisis de registres s'aturaran immediatament.
+index_start=Inicia el Servidor Fail2Ban
+index_startdesc=Fes clic sobre aquest botó per iniciar el servidor Fail2Ban de manera que es pugui dur a terme l'anàlisi dels fitxers de registre.
+index_restart=Reinicia  el Servidor Fail2Ban
+index_restartdesc=Fes clic sobre aquest botó per aplicar la configuració actual reiniciant el servidor Fail2Ban.
+index_return=a l'índex de mòduls
+
+check_edir=El directori de configuració $1 no existeix
+check_econf=El fitxer de configuració $2 de $1 no existeix
+check_eclient=No s'ha trobat l'ordre client '$1'
+check_eserver=No s'ha trobat l'ordre servidor '$1'
+
+filters_title=Filtres de Registres
+filters_name=Nom del filtre
+filters_re=Expressió regular
+filters_delete=Suprimeix els Filtres Seleccionats
+filters_add=Afegeix un nou filtre de registres.
+filters_return=a la llista de filtres
+filters_derr=No s'han pogut suprimir els filtres
+filters_enone=No n'hi ha cap de seleccionat
+filters_einuse=No es pot suprimir el filtre $1, ja que està en ús per part de les presons: $2
+
+filter_title1=Creació de Filtre
+filter_title2=Edició de Filtre
+filter_desc=Utilitza <i>&lt;HOST&gt;</i> a les expressions regulars allà on hagi d'aparèixer un nom de host o una adreça IP.
+filter_header=Detalls del filtre de registres
+filter_name=Nom del filtre
+filter_fail=Expressions regulars a coincidir
+filter_ignore=Expressions regulars a ignorar
+filter_egone=El filtre ja no existeix!
+filter_edefgone=El filtre no té cap secció 'Definition'
+filter_err=No s'ha pogut desar el filtre
+filter_ename=Hi falta el nom del filtre o bé és invàlid
+filter_eclash=El nom del filtre ja està en ús
+filter_efail=No has introduït cap expressió regular
+filter_einuse=Aquest filter no es pot suprimir, ja que està en ús per part deles presons: $1
+
+actions_title=Accions de Coincidència
+actions_name=Nom de l'acció
+actions_ban=Ordre de prohibició
+actions_delete=Suprimeix les Accions Seleccionades
+actions_add=Afegeix una Nova Acció
+actions_return=a la llista d'accions
+actions_derr=No s'han pogut suprimir les accions
+actions_enone=No n'hi ha cap de seleccionada
+actions_einuse=L'acció $1 no es pot suprimir, ja que està en ús per part de les presons: $2
+
+action_title1=Creació d'Acció de Coincidència
+action_title2=Edició d'Acció de Coincidència
+action_header=Detalls de l'acció de coincidència
+action_name=Nom de l'acció
+action_egone=L'acció ja no existeix!
+action_edefgone=L'acció no té cap secció 'Definition'
+action_err=No s'ha pogut desar l'acció
+action_ename=Hi falta el nom de l'acció o és invàlid
+action_eclash=El nom de l'acció ja està en ús
+action_start=Ordre a executar en iniciar-se Fail2Ban
+action_stop=Ordre a executar en aturar-se Fail2Ban
+action_check=Ordre a executar abans de prohibir una IP
+action_ban=Ordre per a prohibir una IP
+action_unban=Ordre per a autoritzar una IP
+action_desc=<i>&lt;ip&gt;</i> se substituirà per l'adreça IP que s'està prohibint.
+action_einuse=Aquesta acció no es pot suprimir, ja que està en ús per part de les presons: $1
+
+jails_title=Presons d'Accions de Filtre
+jails_add=Afegeix una nova presó
+jails_name=Nom de la presó
+jails_filter=Filtre de registres
+jails_enabled=Activat
+jails_action=Accions resultants
+jails_delete=Suprimeix les Presons Seleccionades
+jails_def=Edita els Valors per Defecte de les Presons
+jails_defdesc=Edita els paràmetres per defecte i els límits que s'apliquen a tots les presons llistades aquí sobre, com ara el nombre de coincidències requerit i el temps que cal tenir prohibida una IP.
+jails_return=a la llista de presons
+jails_derr=No s'han pogut suprimir les presons
+jails_enone=No n'hi ha cap de seleccionada
+
+jail_title1=Creació de Presó
+jail_title2=Edició de Presó
+jail_header=Detalls de la presó d'accions de filtre
+jail_name=Nom de la presó
+jail_egone=La presó ja no existeix!
+jail_enabled=Actualment activa
+jail_filter=Filtre de cerca de registres
+jail_logpath=Camí dels fitxers de registre
+jail_actions=Accions a aplicar
+jail_action=Acció
+jail_aname=Nom
+jail_port=Port
+jail_protocol=Protocol
+jail_others=Altres paràmetres
+jail_maxretry=Coincidències abans d'aplicar l'acció
+jail_findtime=Interval màxim entre coincidències
+jail_bantime=Temps que cal prohibir la IP
+jail_ignoreip=Adreces IP que no s'han de prohibir mai
+jail_err=No s'ha pogut desar la presó
+jail_eclash=Ja existeix una presó amb el mateix nom
+jail_ename=Hi falta el nom de la presó o bé és invàlid
+jail_eaname=El nom del paràmetre de consulta de l'acció $1 és invàlid
+jail_eport=El número de port de l'acció $1 és invàlid
+jail_eactions=No has seleccionat cap acció!
+jail_elogpaths=No has introduït els camins dels fitxer de registre
+jail_elogpath=Els fitxers de registre han de ser camins o patrons absoluts
+jail_emaxretry=El nombre de coincidències abans d'aplicar l'acció ha de ser més gran que zero
+jail_efindtime=L'interval entre coincidències ha de ser més gran que zero
+jail_ebantime=El temps a prohibir una IP ha de ser un número més gran que zero
+jail_backend=Comprova les actualitzacions de registres utilitzant
+jail_auto=Decideix-ho automàticament
+jail_gamin=Monitor d'alteració de fitxers Gamin
+jail_polling=<i>Polling</i> en segon pla
+jail_destemail=Correu de notificació per defecte
+jail_none=No n'hi ha cap d'establert
+jail_banaction=Acció a aplicar per defecte
+jail_defprotocol=Protocol per defecte de les accions
+jail_edestemail=Hi falta el correu de notificació per defecte o bé és invàlid
+
+jaildef_title=Opcions per Defecte de les Presons
+jaildef_header=Valors per defecte de totes les presons
+jaildef_err=No s'han pogut desar els valors per defecte de les presons
+jaildef_egone=No s'ha trobat cap presó per DEFECTE!
+
+start_err=No s'ha pogut iniciar el servidor
+stop_err=No s'ha pogut aturar el servidor
+restart_err=No s'ha pogut reiniciar el servidor
+
+log_create_filter=S'ha suprimit el filtre $1
+log_modify_filter=S'ha suprimit el filtre $1
+log_delete_filter=S'ha suprimit el filtre $1
+log_create_action=S'ha suprimit l'acció $1
+log_modify_action=S'ha suprimit l'acció $1
+log_delete_action=S'ha suprimit l'acció $1
+log_create_jail=S'ha suprimit la presó $1
+log_modify_jail=S'ha suprimit la presó $1
+log_delete_jail=S'ha suprimit la presó $1
+log_config=S'ha canviat la configuració global
+log_stop=S'ha aturat el servidor Fail2Ban
+log_start=S'ha iniciat Fail2Ban
+log_restart=S'ha reiniciat el servidor Fail2Ban
+log_atboot=S'ha activat Fail2Ban en engegar el sistema
+log_delboot=S'ha desactivat Fail2Ban en engegar el sistema
+log_manual=S'ha editat el fitxer de configuració $1
+log_jaildef=S'han modificat les opcions per defecte de les presons
+
+config_title=Configuració Global
+config_edef=No s'ha trobat cap secció 'Definition' al fitxer de configuració!
+config_header=Paràmetres de configuració de Fail2Ban
+config_loglevel=Nivell de registre mínim
+config_logtarget=Grava els registres a
+config_syslog=Servei syslog
+config_file=Fitxer de registre
+config_default=Destinació per defecte
+config_socket=Sòcol per a la comunicació amb el servidor
+config_err=No s'ha pogut desar la configuració global
+config_elogtarget=El fitxer de registre ha de ser un camí absolut
+config_esocket=El fitxer de sòcol ha de ser un camí absolut
+
+manual_title=Edició de Fitxers de Configuració
+manual_desc=Fitxer a editar:
+manual_ok=Bé
+manual_efile=El fitxer seleccionar no forma part de la configuració de Fail2Ban !
+manual_err=No s'ha pogut editar el fitxer de configuració
+manual_edata=No has introduït cap contingut al fitxer de configuració
+
+syslog_logtarget=Registre d'accions de Fail2Ban
+
+__norefs=1
+

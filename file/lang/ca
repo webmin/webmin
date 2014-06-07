@@ -1,5 +1,5 @@
 index_title=Administrador de Fitxers
-index_nojava=Aquest mòdul requereix java per funcionar, però el teu navegador no suporta java
+index_nojava=Aquest mòdul requereix Java per funcionar, però el teu navegador no suporta Java
 index_eremote=No hi ha cap usuari Unix que coincideixi amb l'entrada $1 de Webmin.
 index_index=Torna a l'<a href='$1'>Índex de Webmin</a>.
 switch_euser=L'usuari Unix no existeix!
