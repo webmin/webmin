@@ -859,8 +859,7 @@ sub generate_map_edit
     my $nt = $_[3] || $text{'mapping_name'};
     my $vt = $_[4] || $text{'mapping_value'};
 
-    local @links = ( "<a href='edit_mapping.cgi?map_name=$_[0]'>".
-		      $text{'new_mapping'}."</a>",);
+    local @links = ( &ui_link("edit_mapping.cgi?map_name=$_[0]",$text{'new_mapping'}),);
 
     if ($#{$mappings} ne -1)
     {

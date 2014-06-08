@@ -314,8 +314,7 @@ local $g;
 local @rv;
 foreach $g (split(/\s+/, $_[0])) {
 	if ($g =~ /^\@(.*)$/ || $g =~ /^\!\@(.*)$/) {
-		push(@rv, "<a href='edit_group.cgi?name=$1&from=$_[1]'>".
-			  &group_name($g, $_[2])."</a>");
+		push(@rv, &ui_link("edit_group.cgi?name=$1&from=$_[1]",&group_name($g, $_[2])));
 		}
 	else {
 		push(@rv, &group_name($g, $_[2]));

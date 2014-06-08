@@ -85,8 +85,7 @@ if (@svcs) {
 				}
 			}
 		local @cols;
-		push(@cols, "<a href='edit_serv.cgi?idx=$x->{'index'}'>".
-			    &html_escape($x->{'value'})."</a>");
+		push(@cols, &ui_link("edit_serv.cgi?idx=$x->{'index'}",&html_escape($x->{'value'})));
 		push(@cols, &indexof('RPC', @{$q->{'type'}}) < 0 ?
 			     $text{'index_inet'} : $text{'index_rpc'});
 		if (@s) {

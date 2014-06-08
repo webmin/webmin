@@ -10,8 +10,7 @@ my $allow = &get_allow_config($in{'mode'});
 
 &ui_print_header(undef, $text{$in{'mode'}.'_title'}, "");
 
-my @links = ( "<a href='edit_allow.cgi?new=1&mode=$in{'mode'}'>".
-	      $text{'allow_add'}."</a>" );
+my @links = ( &ui_link("edit_allow.cgi?new=1&mode=$in{'mode'}",$text{'allow_add'}) );
 if (@$allow) {
 	unshift(@links, &select_all_link("d"), &select_invert_link("d"));
 	print &ui_form_start("delete_allows.cgi", "post");

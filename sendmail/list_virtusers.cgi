@@ -81,8 +81,7 @@ if (@virts) {
 	}
 if ($access{'vmode'} == 1 && $access{'vedit_0'} && $access{'vedit_1'} &&
     $access{'vedit_2'} && $access{'vmax'} == 0 && $access{'manual'}) {
-	print "<a href='edit_file.cgi?mode=virtusers'>",
-		&text('file_edit', "<tt>$vfile</tt>"),"</a><p>\n";
+	print &ui_link("edit_file.cgi?mode=virtusers",&text('file_edit', "<tt>$vfile</tt>"))<p>\n";
 	}
 
 print &text('virtusers_desc1', 'list_aliases.cgi'),"<p>\n"

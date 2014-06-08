@@ -21,8 +21,7 @@ if (@groups) {
 				  $text{'groups_sid'} ]);
 	foreach $g (@groups) {
 		print &ui_columns_row([
-			"<a href='edit_group.cgi?idx=$g->{'index'}'>".
-			  &html_escape($g->{'name'})."</a>",
+			&ui_link("edit_group.cgi?idx=$g->{'index'}",&html_escape($g->{'name'})),
 			$g->{'unix'} == -1 ? $text{'groups_nounix'} :
 			  "<tt>".&html_escape($g->{'unix'})."</tt>",
 			$text{'groups_type_'.$g->{'type'}} ||

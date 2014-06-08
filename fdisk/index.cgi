@@ -69,8 +69,7 @@ if (@disks) {
                        		"disk=$d->{'index'}'>$text{'index_blink'}</a>");
                 	}
 		print &ui_columns_row([
-			$ed ? "<a href='edit_disk.cgi?device=$d->{'device'}'>".
-			        $d->{'desc'}."</a>"
+			$ed ? &ui_link("edit_disk.cgi?device=$d->{'device'}",$d->{'desc'})
 			    : $d->{'desc'},
 			$d->{'size'} ? &nice_size($d->{'size'}) : "",
 			$d->{'model'},

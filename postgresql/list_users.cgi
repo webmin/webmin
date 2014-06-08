@@ -19,8 +19,7 @@ print &ui_columns_start([ "", $text{'user_name'},
 			  $text{'user_until'} ], 100);
 foreach $u (sort { $a->[0] cmp $b->[0] } @{$s->{'data'}}) {
 	local @cols;
-	push(@cols, "<a href='edit_user.cgi?user=$u->[0]'>".
-		    &html_escape($u->[0])."</a>");
+	push(@cols, &ui_link("edit_user.cgi?user=$u->[0]",&html_escape($u->[0])));
 	push(@cols, $u->[5] ? $text{'yes'} : $text{'no'});
 	push(@cols, $u->[2] =~ /t|1/ ? $text{'yes'} : $text{'no'});
 	push(@cols, $u->[4] =~ /t|1/ ? $text{'yes'} : $text{'no'});

@@ -112,8 +112,7 @@ else {
 			print &ui_columns_row([
 				"<a name=$name><a href='cpan.cgi?$pars'>".
 				  "<img src=images/cat.gif border=0></a>",
-				"<a href='cpan.cgi?$pars'>".
-				  &html_escape($name)."</a>",
+				&ui_link("cpan.cgi?$pars",&html_escape($name)),
 				""
 				]);
 			}

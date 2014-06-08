@@ -41,8 +41,7 @@ if (@links) {
 			local ($type) = grep { $_->[0] eq $s->{'type'} }
 					     @servers::server_types;
 			print &ui_columns_row([
-				"<a href='edit_host.cgi?id=$h->{'id'}'>".
-				($s->{'host'} || &get_system_hostname())."</a>",
+				&ui_link("edit_host.cgi?id=$h->{'id'}",($s->{'host'} || &get_system_hostname())),
 				$s->{'desc'},
 				$h->{'version'},
 				$type->[1],

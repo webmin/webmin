@@ -46,8 +46,7 @@ if (@$conf) {
 			}
 		my @errors = grep { $_ ne "U" } @{$c->{'errors'}};
 		print &ui_columns_row([
-			"<a href='view_raid.cgi?idx=$c->{'index'}'>".
-			&html_escape($c->{'value'})."</a>",
+			&ui_link("view_raid.cgi?idx=$c->{'index'}",&html_escape($c->{'value'})),
 			!$c->{'active'} ?
 				"<font color=#ff0000>$text{'no'}</font>" :
 			@errors ?

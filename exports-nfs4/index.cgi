@@ -44,8 +44,7 @@ if (@exps) {
 	    	$ccount = 0;
 		foreach $c (@cl) {
 			$dirs .= "&nbsp;|&nbsp; " if ($ccount++);
-			$dirs .= "<a href='edit_export.cgi?idx=$c->{'index'}'>".
-				 &describe_host($c->{'host'})."</a>\n";
+			$dirs .= &ui_link("edit_export.cgi?idx=$c->{'index'}",&describe_host($c->{'host'}))\n";
 			 if (!$c->{'active'}) {
 				$dirs .= "<font color=#ff0000>(".
 					 $text{'index_inactive'}.")</font>\n"

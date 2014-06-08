@@ -75,8 +75,7 @@ if (@gens) {
 	print &ui_form_end([ [ "delete", $text{'generics_delete'} ] ]);
 	}
 if ($access{'omode'} == 1 && $access{'manual'}) {
-	print "<a href='edit_file.cgi?mode=generics'>",
-		&text('file_edit', "<tt>$gfile</tt>"),"</a><p>\n";
+	print &ui_link("edit_file.cgi?mode=generics",&text('file_edit', "<tt>$gfile</tt>"))<p>\n";
 	}
 
 print $text{'generics_desc1'},"<p>\n";

@@ -115,38 +115,28 @@ else {
 			}
 		if ($c->{'edit'} && !@{$c->{'args'}}) {
 			# Open file editor directly, as file is known
-			push(@cols, "<a href='view.cgi?id=$c->{'id'}'>".
-				    &html_escape($c->{'desc'})."</a>");
-			push(@links, "<a href='view.cgi?id=$c->{'id'}'>".
-				     $text{'index_acted'}."</a>");
+			push(@cols, &ui_link("view.cgi?id=$c->{'id'}",&html_escape($c->{'desc'})));
+			push(@links, &ui_link("view.cgi?id=$c->{'id'}",$text{'index_acted'}));
 			}
 		elsif ($c->{'sql'} && !@{$c->{'args'}}) {
 			# Execute SQL directorly, as no args
-			push(@cols, "<a href='sql.cgi?id=$c->{'id'}'>".
-			      	    &html_escape($c->{'desc'})."</a>");
-			push(@links, "<a href='sql.cgi?id=$c->{'id'}'>".
-				     $text{'index_actrun'}."</a>");
+			push(@cols, &ui_link("sql.cgi?id=$c->{'id'}",&html_escape($c->{'desc'})));
+			push(@links, &ui_link("sql.cgi?id=$c->{'id'}",$text{'index_actrun'}));
 			}
 		elsif ($c->{'sql'}) {
 			# Link to SQL query form
-			push(@cols, "<a href='sqlform.cgi?id=$c->{'id'}'>".
-			      	    &html_escape($c->{'desc'})."</a>");
-			push(@links, "<a href='sqlform.cgi?id=$c->{'id'}'>".
-				     $text{'index_actsql'}."</a>");
+			push(@cols, &ui_link("sqlform.cgi?id=$c->{'id'}",&html_escape($c->{'desc'})));
+			push(@links, &ui_link("sqlform.cgi?id=$c->{'id'}",$text{'index_actsql'}));
 			}
 		elsif (!@{$c->{'args'}}) {
 			# Link direct to execute page
-			push(@cols, "<a href='run.cgi?id=$c->{'id'}'>".
-			      	    &html_escape($c->{'desc'})."</a>");
-			push(@links, "<a href='run.cgi?id=$c->{'id'}'>".
-				     $text{'index_actrun'}."</a>");
+			push(@cols, &ui_link("run.cgi?id=$c->{'id'}",&html_escape($c->{'desc'})));
+			push(@links, &ui_link("run.cgi?id=$c->{'id'}",$text{'index_actrun'}));
 			}
 		else {
 			# Link to parameters form
-			push(@cols, "<a href='form.cgi?id=$c->{'id'}'>".
-			      	    &html_escape($c->{'desc'})."</a>");
-			push(@links, "<a href='form.cgi?id=$c->{'id'}'>".
-				     $text{'index_actform'}."</a>");
+			push(@cols, &ui_link("form.cgi?id=$c->{'id'}",&html_escape($c->{'desc'})));
+			push(@links, &ui_link("form.cgi?id=$c->{'id'}",$text{'index_actform'}));
 			}
 		push(@cols, $c->{'html'});
 		push(@cols, &ui_links_row(\@links));

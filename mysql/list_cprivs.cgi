@@ -25,8 +25,7 @@ if (@{$d->{'data'}}) {
 		$i++;
 		next if ($access{'perms'} == 2 && !&can_edit_db($u->[1]));
 		local @cols;
-		push(@cols, "<a href='edit_cpriv.cgi?idx=$i'>".
-			    &html_escape($u->[4])."</a>");
+		push(@cols, &ui_link("edit_cpriv.cgi?idx=$i",&html_escape($u->[4])));
 		push(@cols, &html_escape($u->[3]));
 		push(@cols, &html_escape($u->[1]));
 		push(@cols, $u->[0] eq '' || $u->[0] eq '%' ?
