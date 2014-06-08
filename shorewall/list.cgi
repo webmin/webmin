@@ -82,13 +82,13 @@ if (@table) {
 				$mover .= "<img src=images/gap.gif>";
 				}
 			else {
-				$mover .= "<a href='up.cgi?table=$in{'table'}&idx=$i'><img src=images/up.gif border=0></a>\n";
+				$mover .= &ui_link("up.cgi?table=$in{'table'}&idx=$i","<img src=images/up.gif border=0>")."\n";
 				}
 			if ($i == $#table) {
 				$mover .= "<img src=images/gap.gif>";
 				}
 			else {
-				$mover .= "<a href='down.cgi?table=$in{'table'}&idx=$i'><img src=images/down.gif border=0></a>\n";
+				$mover .= &ui_link("down.cgi?table=$in{'table'}&idx=$i","<img src=images/down.gif border=0>")."\n";
 				}
 			push(@cols, $mover);
 			}

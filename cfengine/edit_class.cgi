@@ -368,7 +368,7 @@ elsif ($type eq "files") {
 		$i++;
 		}
 	if (!$in{'newfiles'} && !$in{'new'}) {
-		print "<tr> <td colspan=4 align=right><hr><a href='edit_class.cgi?$in&newfiles=1'>$text{'edit_filesnew'}</a></td>\n";
+		print &ui_link("edit_class.cgi?$in&newfiles=1",$text{'edit_filesnew'})."</td>\n";
 		}
 	}
 elsif ($type eq "copy") {
@@ -504,7 +504,7 @@ elsif ($type eq "copy") {
 		$i++;
 		}
 	if (!$in{'newcopy'} && !$in{'new'}) {
-		print "<tr> <td colspan=4 align=right><hr><a href='edit_class.cgi?$in&newcopy=1'>$text{'edit_copynew'}</a></td>\n";
+		print &ui_link("edit_class.cgi?$in&newcopy=1",$text{'edit_copynew'})."</td>\n";
 		}
 	}
 elsif ($type eq "disable") {
@@ -576,7 +576,7 @@ elsif ($type eq "disable") {
 		$i++;
 		}
 	if (!$in{'newdis'} && !$in{'new'}) {
-		print "<tr> <td colspan=4 align=right><hr><a href='edit_class.cgi?$in&newdis=1'>$text{'edit_disnew'}</a></td>\n";
+		print &ui_link("edit_class.cgi?$in&newdis=1",$text{'edit_disnew'})."</td>\n";
 		}
 	}
 elsif ($type eq "editfiles") {
@@ -611,7 +611,7 @@ elsif ($type eq "editfiles") {
 		$i++;
 		}
 	if (!$in{'newedit'} && !$in{'new'}) {
-		print "<tr> <td colspan=4 align=right><hr><a href='edit_class.cgi?$in&newedit=1'>$text{'edit_editnew'}</a></td>\n";
+		print &ui_link("edit_class.cgi?$in&newedit=1",$text{'edit_editnew'})."</td>\n";
 		}
 	}
 elsif ($type eq "ignore") {
@@ -722,7 +722,7 @@ elsif ($type eq "processes") {
 		$i++;
 		}
 	if (!$in{'newproc'} && !$in{'new'}) {
-		print "<tr> <td colspan=4 align=right><hr><a href='edit_class.cgi?$in&newproc=1'>$text{'edit_procnew'}</a></td>\n";
+		print &ui_link("edit_class.cgi?$in&newproc=1",$text{'edit_procnew'})."</td>\n";
 		}
 	}
 elsif ($type eq "shellcommands") {
@@ -824,7 +824,7 @@ elsif ($type eq "tidy") {
 		$i++;
 		}
 	if (!$in{'newtidy'} && !$in{'new'}) {
-		print "<tr> <td colspan=4 align=right><hr><a href='edit_class.cgi?$in&newtidy=1'>$text{'edit_tidynew'}</a></td>\n";
+		print &ui_link("edit_class.cgi?$in&newtidy=1",$text{'edit_tidynew'})."</td>\n";
 		}
 	}
 elsif ($type eq "miscmounts") {

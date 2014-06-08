@@ -146,7 +146,7 @@ if (@conf) {
 		push(@tds, "width=32");
 
 		# Add before/after links
-		push(@cols, "<a href='edit_recipe.cgi?new=1&before=$c->{'index'}'><img src=images/before.gif border=0></a><a href='edit_recipe.cgi?new=1&after=$c->{'index'}'><img src=images/after.gif border=0></a>");
+		push(@cols, &ui_link("edit_recipe.cgi?new=1&after=$c->{'index'}","<img src=images/after.gif border=0>")."");
 		print &ui_checked_columns_row(\@cols, \@tds, "d",$c->{'index'});
 		}
 	print &ui_columns_end();
