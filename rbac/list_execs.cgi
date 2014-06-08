@@ -7,14 +7,14 @@ $access{'execs'} || &error($text{'execs_ecannot'});
 
 $execs = &list_exec_attrs();
 if (@$execs) {
-	print "<a href='edit_exec.cgi?new=1'>$text{'execs_add'}</a><br>\n";
+	print &ui_link("edit_exec.cgi?new=1",$text{'execs_add'})<br>\n";
 	print &ui_columns_start(
 		[ $text{'execs_name'},
 		  $text{'execs_policy'},
 		  $text{'execs_id'} ]);
 	foreach $e (sort { $a->{'name'} cmp $b->{'name'} } @$execs) {
 		print &ui_columns_row(
-			[ "<a href='edit_exec.cgi?idx=$e->{'index'}'>$e->{'name'}</a>",
+			[ &ui_link("edit_exec.cgi?idx=$e->{'index'}",$e->{'name'}),
 			  $text{'execs_p'.$e->{'policy'}},
 			  $e->{'id'} eq '*' ? $text{'execs_all'} : $e->{'id'},
 			]);
@@ -24,7 +24,7 @@ if (@$execs) {
 else {
 	print "<b>$text{'execs_none'}</b><p>\n";
 	}
-print "<a href='edit_exec.cgi?new=1'>$text{'execs_add'}</a><br>\n";
+print &ui_link("edit_exec.cgi?new=1",$text{'execs_add'})<br>\n";
 
 &ui_print_footer("", $text{"index_return"});
 

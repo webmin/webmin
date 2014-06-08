@@ -31,7 +31,7 @@ else {
 			push(@actions, new Webmin::TableAction("save_zone.cgi", $a->[1], [ [ "zone", $z->{'name'} ], [ $a->[0], 1 ], [ "list", 1 ] ]));
 			}
 		$table->add_row([
-			"<a href='edit_zone.cgi?zone=$z->{'name'}'>$z->{'name'}</a>",
+			&ui_link("edit_zone.cgi?zone=$z->{'name'}",$z->{'name'}),
 			$z->{'id'},
 			$z->{'zonepath'},
 			&nice_status($z->{'status'}),

@@ -20,7 +20,7 @@ if (@sources) {
 	foreach $f (@sources) {
 		$desc = &nice_source_desc($f);
 		print &ui_checked_columns_row([
-			"<a href='edit_source.cgi?name=$f->{'value'}'>$f->{'value'}</a>",
+			&ui_link("edit_source.cgi?name=$f->{'value'}",$f->{'value'}),
 			$desc || "<i>$text{'sources_none2'}</i>",
 			], \@tds, "d", $f->{'value'});
 		}

@@ -45,7 +45,7 @@ if (@access) {
 			$i < @access-1);
 		$p = &parse_ldap_access($a);
 		print &ui_checked_columns_row([
-			"<a href='acl_form.cgi?idx=$i'>$p->{'whatdesc'}</a>",
+			&ui_link("acl_form.cgi?idx=$i",$p->{'whatdesc'}),
 			$p->{'bydesc'},
 			$hasorder ? ( $p->{'order'} ) : ( ),
 			$mover,

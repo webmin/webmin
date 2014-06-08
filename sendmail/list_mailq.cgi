@@ -62,14 +62,14 @@ if (@qfiles) {
 		$e = $in{'start'} + $config{'perpage'} - 1;
 		$e = @qfiles-1 if ($e >= @qfiles);
 		if ($s) {
-			printf "<a href='list_mailq.cgi?start=%d'>%s</a>\n",
+			printf &ui_link("list_mailq.cgi?start=%d","%s")\n",
 			    $s - $config{'perpage'},
 			    "<img src=/images/left.gif border=0 align=middle>";
 			}
 		print "<font size=+1>",&text('mail_pos', $s+1, $e+1,
 					     scalar(@qfiles)),"</font>\n";
 		if ($e < @qfiles-1) {
-			printf "<a href='list_mailq.cgi?start=%d'>%s</a>\n",
+			printf &ui_link("list_mailq.cgi?start=%d","%s")\n",
 			    $s + $config{'perpage'},
 			    "<img src=/images/right.gif border=0 align=middle>";
 			}

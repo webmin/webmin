@@ -28,7 +28,7 @@ if (@keys) {
 		local ($user, $ltime, $lip) = split(/\s+/, $acl::sessiondb{$k});
 		next if ($miniserv{'logouttime'} &&
 			 $time_now - $ltime > $miniserv{'logouttime'}*60);
-		@cols = ( "<a href='delete_session.cgi?id=$k'>$k</a>" );
+		@cols = ( &ui_link("delete_session.cgi?id=$k",$k) );
 		if ($uinfo = $umap{$user}) {
 			push(@cols, "<a href='../useradmin/edit_user.cgi?num=$uinfo->{'num'}'>$user</a>");
 			}

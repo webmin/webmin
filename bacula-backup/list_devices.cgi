@@ -34,7 +34,7 @@ if (@devices) {
 	}
 else {
 	print "<b>$text{'devices_none'}</b><p>\n";
-	print "<a href='edit_device.cgi?new=1'>$text{'devices_add'}</a><br>\n";
+	print &ui_link("edit_device.cgi?new=1",$text{'devices_add'})<br>\n";
 	}
 
 &ui_print_footer("", $text{'index_return'});

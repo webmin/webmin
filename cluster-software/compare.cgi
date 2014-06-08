@@ -47,7 +47,7 @@ foreach $h (@hosts) {
 print &ui_columns_start([ $text{'compare_pack'},
 			  map { &server_name($smap{$_->{'id'}}) } @hosts ]);
 foreach $pn (sort { $a cmp $b } (keys %packs)) {
-	local @row = ( "<a href='edit_pack.cgi?package=$pn'>$pn</a>" );
+	local @row = ( &ui_link("edit_pack.cgi?package=$pn",$pn) );
 	local $ok = 1;
 	foreach $h (@hosts) {
 		local ($ph) = grep { $_->{'host'} eq $h } @{$packs{$pn}};

@@ -11,7 +11,7 @@ print &text('vgetty_desc', "<tt>vgetty</tt>"),"<p>\n";
 
 @vgi = &vgetty_inittabs();
 if (@vgi) {
-	print "<a href='edit_vgetty.cgi?new=1'>$text{'vgetty_add'}</a><br>\n";
+	print &ui_link("edit_vgetty.cgi?new=1",$text{'vgetty_add'})<br>\n";
 	print "<table border>\n";
 	print "<tr $tb> <td><b>$text{'vgetty_tty'}</b></td> ",
 	      "<td><b>$text{'vgetty_type'}</b></td> </tr>\n";
@@ -36,7 +36,7 @@ if (@vgi) {
 else {
 	print "<b>$text{'vgetty_none'}</b><p>\n";
 	}
-print "<a href='edit_vgetty.cgi?new=1'>$text{'vgetty_add'}</a><p>\n";
+print &ui_link("edit_vgetty.cgi?new=1",$text{'vgetty_add'})<p>\n";
 
 &ui_print_footer("", $text{'index_return'});
 

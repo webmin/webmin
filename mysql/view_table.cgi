@@ -375,7 +375,7 @@ if ($total || $in{'new'}) {
 				if ($displayconfig{'blob_mode'} &&
 				    &is_blob($str[$j]) && $c ne '') {
 					# Show download link for blob
-					push(@cols, "<a href='download.cgi?db=$in{'db'}&table=$in{'table'}&start=$in{'start'}".$searchargs.$sortargs."&row=$i&col=$j'>$text{'view_download'}</a>");
+					push(@cols, &ui_link("download.cgi?db=$in{'db'}&table=$in{'table'}&start=$in{'start'}".$searchargs.$sortargs."&row=$i&col=$j",$text{'view_download'}));
 					}
 				else {
 					# Just show text (up to limit)

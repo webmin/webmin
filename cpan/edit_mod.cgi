@@ -42,7 +42,7 @@ if ($midx == $mod->{'master'} && @m > 1) {
 	# Sub-modules
 	@links = ( );
 	for($i=0; $i<@m; $i++) {
-		push(@links, "<a href='edit_mod.cgi?idx=$in{'idx'}&midx=$i&name=$in{'name'}'>$m[$i]</a>") if ($i != $mod->{'master'});
+		push(@links, &ui_link("edit_mod.cgi?idx=$in{'idx'}&midx=$i&name=$in{'name'}","$m[$i]")) if ($i != $mod->{'master'});
 		}
 	print &ui_table_row($text{'edit_subs'}, &ui_links_row(\@links), 3);
 	}

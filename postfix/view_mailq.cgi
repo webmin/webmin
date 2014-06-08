@@ -97,7 +97,7 @@ if (@attach) {
 	foreach $a (@attach) {
 		if ($a->{'type'} eq 'message/rfc822') {
 			print &ui_columns_row([
-				"<a href='view_mailq.cgi?id=$in{'id'}$subs&sub=$a->{'idx'}'>$text{'view_sub'}</a>",
+				&ui_link("view_mailq.cgi?id=$in{'id'}$subs&sub=$a->{'idx'}",$text{'view_sub'}),
 				undef,
 				&nice_size(length($a->{'data'})),
 				]);

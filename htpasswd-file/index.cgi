@@ -40,7 +40,7 @@ if ($config{'md5'}) {
 print &ui_subheading(&text('index_file', "<tt>$config{'file'}</tt>"));
 $users = &list_users();
 if (@$users) {
-	print "<a href='edit.cgi?new=1'>$text{'index_add'}</a><br>\n"
+	print &ui_link("edit.cgi?new=1",$text{'index_add'})<br>\n"
 		if ($access{'create'});
 	print "<table border width=100%>\n";
 	print "<tr $tb> <td><b>$text{'index_header'}</b></td> </tr>\n";
@@ -66,7 +66,7 @@ if (@$users) {
 else {
 	print "<b>$text{'index_none'}</b><p>\n";
 	}
-print "<a href='edit.cgi?new=1'>$text{'index_add'}</a><p>\n"
+print &ui_link("edit.cgi?new=1",$text{'index_add'})<p>\n"
 	if ($access{'create'});
 
 if ($access{'sync'}) {

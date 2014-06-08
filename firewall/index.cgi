@@ -209,7 +209,7 @@ else {
 				  $text{"index_jump_".lc($r->{'j'}->[1])} ||
 				  &text('index_jump', $r->{'j'}->[1]);
 				if ($edit) {
-					push(@cols, "<a href='edit_rule.cgi?table=".&urlize($in{'table'})."&idx=$r->{'index'}'>$act</a>");
+					push(@cols, &ui_link("edit_rule.cgi?table=".&urlize($in{'table'})."&idx=$r->{'index'}",$act));
 					}
 				else {
 					push(@cols, $act);

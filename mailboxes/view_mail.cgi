@@ -204,7 +204,7 @@ if (@attach) {
 		}
 	@iattach = grep { $_->{'type'} =~ /^image\// } @attach;
 	if (@iattach > 1) {
-		push(@links, "<a href='slideshow.cgi?folder=$in{'folder'}&idx=$in{'idx'}&user=$uuser$subs'>$text{'view_aslideshow'}</a>");
+		push(@links, &ui_link("slideshow.cgi?folder=$in{'folder'}&idx=$in{'idx'}&user=$uuser$subs",$text{'view_aslideshow'}));
 		}
 	print &ui_links_row(\@links) if (@links);
 

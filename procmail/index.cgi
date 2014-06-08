@@ -41,7 +41,7 @@ else {
 
 # Build links for adding things
 @links = ( &ui_link("edit_recipe.cgi?new=1",$text{'index_add'}),
-	   "<a href='edit_recipe.cgi?new=1&block=1'>$text{'index_badd'}</a>",
+	   &ui_link("edit_recipe.cgi?new=1&block=1",$text{'index_badd'}),
 	   &ui_link("edit_env.cgi?new=1",$text{'index_eadd'}) );
 push(@links, &ui_link("edit_inc.cgi?new=1",$text{'index_iadd'}))
 	if (!$includes);

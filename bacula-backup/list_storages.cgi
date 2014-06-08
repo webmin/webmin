@@ -38,7 +38,7 @@ if (@storages) {
 	}
 else {
 	print "<b>$text{'storages_none'}</b><p>\n";
-	print "<a href='edit_storage.cgi?new=1'>$text{'storages_add'}</a><br>\n";
+	print &ui_link("edit_storage.cgi?new=1",$text{'storages_add'})<br>\n";
 	}
 
 &ui_print_footer("", $text{'index_return'});
