@@ -8,7 +8,7 @@ $conf = &get_config();
 @logs = &find("log", $conf);
 @links = ( &select_all_link("d"),
 	   &select_invert_link("d"),
-	   "<a href='edit_log.cgi?new=1'>$text{'logs_add'}</a>" );
+	   &ui_link("edit_log.cgi?new=1",$text{'logs_add'}) );
 if (@logs) {
 	@tds = ( "width=5" );
 	print &ui_form_start("delete_logs.cgi", "post");

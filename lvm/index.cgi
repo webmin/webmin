@@ -46,7 +46,7 @@ if (@vgs) {
 	print &ui_tabs_start_tab("mode", "vgs");
 	print $text{'index_vgsdesc'},"<p>\n";
 	@vgs = sort { $a->{'number'} <=> $b->{'number'} } @vgs;
-	@links = ( "<a href='edit_vg.cgi'>$text{'index_add'}</a>" );
+	@links = ( &ui_link("edit_vg.cgi",$text{'index_add'}) );
 	if ($config{'show_table'}) {
 		# As table
 		print &ui_links_row(\@links);
@@ -231,7 +231,7 @@ else {
 		print &text('index_init', "init.cgi"),"<p>\n";
 		}
 	print &ui_links_row([
-		"<a href='edit_vg.cgi'>$text{'index_add'}</a>" ]);
+		&ui_link("edit_vg.cgi",$text{'index_add'}) ]);
 	}
 
 &ui_print_footer("/", $text{'index'});

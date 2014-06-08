@@ -37,7 +37,7 @@ if (!$access{'bootonly'}) {
 	push(@tds, "width=5% valign=top");
 	if ($allow_add) {
 		push(@links,
-		     "<a href='edit_aifc.cgi?new=1'>$text{'ifcs_add'}</a>");
+		     &ui_link("edit_aifc.cgi?new=1",$text{'ifcs_add'}));
 		}
 	print &ui_links_row(\@links);
 	print &ui_columns_start([ $access{'ifcs'} >= 2 ? ( "" ) : ( ),
@@ -115,7 +115,7 @@ print &ui_form_start("delete_bifcs.cgi", "post");
 @links = ( &select_all_link("b", 1),
 	   &select_invert_link("b", 1) );
 if ($allow_add) {
-	push(@links, "<a href='edit_bifc.cgi?new=1'>$text{'ifcs_add'}</a>");
+	push(@links, &ui_link("edit_bifc.cgi?new=1",$text{'ifcs_add'}));
 	if (defined(&supports_bonding) && &supports_bonding()) {
 		push(@links, "<a href='edit_bifc.cgi?new=1&bond=1'>".
 			     "$text{'bonding_add'}</a>");
@@ -130,7 +130,7 @@ if ($allow_add && defined(&supports_bridges) && &supports_bridges()) {
 		     "$text{'ifcs_badd'}</a>");
 	}
 if ($allow_add && defined(&supports_ranges) && &supports_ranges()) {
-	push(@links, "<a href='edit_range.cgi?new=1'>$text{'ifcs_radd'}</a>");
+	push(@links, &ui_link("edit_range.cgi?new=1",$text{'ifcs_radd'}));
 	}
 print &ui_links_row(\@links);
 @tds = ( "width=5 valign=top", "width=20% valign=top", "width=20% valign=top",

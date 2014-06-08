@@ -6,7 +6,7 @@ require './cluster-copy-lib.pl';
 
 @links = ( &select_all_link("d"),
 	   &select_invert_link("d"),
-	   "<a href='edit.cgi?new=1'>$text{'index_add'}</a>" );
+	   &ui_link("edit.cgi?new=1",$text{'index_add'}) );
 
 # Get and sort jobs
 @jobs = &list_copies();

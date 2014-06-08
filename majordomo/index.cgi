@@ -118,9 +118,9 @@ foreach $l (grep { $lcan{$_} || $lcan{"*"} } @lists) {
 	push(@icons, "images/list.gif");
 	}
 if (@links) {
-	@crlinks = ( "<a href='create_form.cgi'>$text{'index_add'}</a>" );
+	@crlinks = ( &ui_link("create_form.cgi",$text{'index_add'}) );
 	if (@links) {
-		push(@crlinks, "<a href='digest_form.cgi'>$text{'index_digest'}</a>");
+		push(@crlinks, &ui_link("digest_form.cgi",$text{'index_digest'}));
 		}
 	if ($access{'create'}) {
 		print &ui_links_row(\@crlinks);

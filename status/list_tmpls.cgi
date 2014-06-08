@@ -6,7 +6,7 @@ $access{'edit'} || &error($text{'tmpls_ecannot'});
 &ui_print_header(undef, $text{'tmpls_title'}, "");
 
 @tmpls = &list_templates();
-@links = ( "<a href='edit_tmpl.cgi?new=1'>$text{'tmpls_add'}</a>" );
+@links = ( &ui_link("edit_tmpl.cgi?new=1",$text{'tmpls_add'}) );
 if (@tmpls) {
 	unshift(@links, &select_all_link("d"), &select_invert_link("d"));
 	print &ui_form_start("delete_tmpls.cgi", "post");

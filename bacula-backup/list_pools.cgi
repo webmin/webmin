@@ -11,7 +11,7 @@ if (@pools) {
 	print &ui_form_start("delete_pools.cgi", "post");
 	@links = ( &select_all_link("d"),
 		   &select_invert_link("d"),
-		   "<a href='edit_pool.cgi?new=1'>$text{'pools_add'}</a>" );
+		   &ui_link("edit_pool.cgi?new=1",$text{'pools_add'}) );
 	print &ui_links_row(\@links);
 	@tds = ( "width=5", "width=30%", "width=40%", "width=30%" );
 	print &ui_columns_start([ "", $text{'pools_name'},

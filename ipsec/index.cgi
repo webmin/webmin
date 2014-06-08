@@ -66,10 +66,10 @@ else {
 			else {
 				print "<b>$text{'index_none'}</b><p>\n";
 				}
-			print "<a href='edit.cgi?new=1'>$text{'index_add'}</a>";
+			print &ui_link("edit.cgi?new=1",$text{'index_add'});
 			if (!$has_default) {
 				print "&nbsp;" x 3;
-				print "<a href='edit.cgi?new=2'>$text{'index_adddef'}</a>";
+				print &ui_link("edit.cgi?new=2",$text{'index_adddef'});
 				}
 			print "&nbsp;" x 3;
 			print "<a href=import_form.cgi>$text{'index_import'}</a>";

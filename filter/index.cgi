@@ -48,14 +48,14 @@ if (&no_user_procmailrc()) {
 if (@filters) {
 	push(@links, &select_all_link("d"), &select_invert_link("d"));
 	}
-push(@links, "<a href='edit.cgi?new=1'>$text{'index_add'}</a>");
+push(@links, &ui_link("edit.cgi?new=1",$text{'index_add'}));
 ($auto) = grep { $_->{'actionreply'} } @filters;
 if (&can_simple_autoreply() && !$auto) {
-	push(@links, "<a href='edit_auto.cgi'>$text{'index_addauto'}</a>");
+	push(@links, &ui_link("edit_auto.cgi",$text{'index_addauto'}));
 	}
 ($fwd) = grep { $_->{'actiontype'} eq '!' } @filters;
 if (&can_simple_forward() && !$fwd) {
-	push(@links, "<a href='edit_forward.cgi'>$text{'index_addfwd'}</a>");
+	push(@links, &ui_link("edit_forward.cgi",$text{'index_addfwd'}));
 	}
 
 @folders = &mailbox::list_folders();

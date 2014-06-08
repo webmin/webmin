@@ -40,10 +40,10 @@ else {
 	}
 
 # Build links for adding things
-@links = ( "<a href='edit_recipe.cgi?new=1'>$text{'index_add'}</a>",
+@links = ( &ui_link("edit_recipe.cgi?new=1",$text{'index_add'}),
 	   "<a href='edit_recipe.cgi?new=1&block=1'>$text{'index_badd'}</a>",
-	   "<a href='edit_env.cgi?new=1'>$text{'index_eadd'}</a>" );
-push(@links, "<a href='edit_inc.cgi?new=1'>$text{'index_iadd'}</a>")
+	   &ui_link("edit_env.cgi?new=1",$text{'index_eadd'}) );
+push(@links, &ui_link("edit_inc.cgi?new=1",$text{'index_iadd'}))
 	if (!$includes);
 
 @conf = &get_procmailrc();

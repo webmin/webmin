@@ -10,7 +10,7 @@ $access{'maint_groups'} || &error($text{'groups_ecannot'});
 &check_group_enabled($text{'groups_cannot'});
 
 @groups = &list_groups();
-@links = ( "<a href='edit_group.cgi?new=1'>$text{'groups_add'}</a>" );
+@links = ( &ui_link("edit_group.cgi?new=1",$text{'groups_add'}) );
 if (@groups) {
 	@groups = sort { lc($a->{'name'}) cmp lc($b->{'name'}) } @groups
 		if ($config{'sort_mode'});

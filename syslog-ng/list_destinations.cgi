@@ -8,7 +8,7 @@ $conf = &get_config();
 @dests = &find("destination", $conf);
 @links = ( &select_all_link("d"),
 	   &select_invert_link("d"),
-	   "<a href='edit_destination.cgi?new=1'>$text{'destinations_add'}</a>",
+	   &ui_link("edit_destination.cgi?new=1",$text{'destinations_add'}),
 	 );
 if (@dests) {
 	@tds = ( "width=5" );

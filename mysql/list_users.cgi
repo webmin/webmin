@@ -9,7 +9,7 @@ $access{'perms'} == 1 || &error($text{'perms_ecannot'});
 print &ui_form_start("delete_users.cgi");
 @rowlinks = ( &select_all_link("d", 0),
 	      &select_invert_link("d", 0),
-	      "<a href='edit_user.cgi?new=1'>$text{'users_add'}</a>" );
+	      &ui_link("edit_user.cgi?new=1",$text{'users_add'}) );
 print &ui_links_row(\@rowlinks);
 @tds = ( "width=5" );
 print &ui_columns_start([ "",

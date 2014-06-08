@@ -43,7 +43,7 @@ if ($config{'digest'} && !$htdigest_command) {
 
 @links = ( &select_all_link("d"),
 	   &select_invert_link("d"),
-	   "<a href='edit_dir.cgi?new=1'>$text{'index_add'}</a>" );
+	   &ui_link("edit_dir.cgi?new=1",$text{'index_add'}) );
 
 @dirs = &list_directories();
 @dirs = grep { &can_access_dir($_->[0]) } @dirs;

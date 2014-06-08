@@ -750,7 +750,7 @@ unlink($active_interfaces);
 sub apply_button
 {
 if (&can_edit("apply")) {
-	return "<a href='apply.cgi?return=1'>$text{'apply_button'}</a>";
+	return &ui_link("apply.cgi?return=1",$text{'apply_button'});
 	}
 else {
 	return undef;

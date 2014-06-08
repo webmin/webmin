@@ -21,7 +21,7 @@ if (!&has_command($config{'grub_path'})) {
 	}
 
 # List the boot options
-@crlinks = ( "<a href='edit_title.cgi?new=1'>$text{'index_add'}</a>" );
+@crlinks = ( &ui_link("edit_title.cgi?new=1",$text{'index_add'}) );
 $conf = &get_menu_config();
 $def = &find_value("default", $conf);
 @t = &find("title", $conf);

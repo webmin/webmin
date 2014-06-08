@@ -12,7 +12,7 @@ my @worlds = &list_worlds();
 my $conf = &get_minecraft_config();
 my $def = &find_value("level-name", $conf);
 
-my @links = ( "<a href='edit_world.cgi?new=1'>$text{'worlds_new'}</a>" );
+my @links = ( &ui_link("edit_world.cgi?new=1",$text{'worlds_new'}) );
 if (@worlds) {
 	my @tds = ( "width=5%" );
 	print &ui_form_start("change_world.cgi");

@@ -12,7 +12,7 @@ foreach $u (@{$s->{'data'}}) {
 	}
 
 $s = &execute_sql_safe($config{'basedb'}, "select * from pg_group");
-@rowlinks = ( "<a href='edit_group.cgi?new=1'>$text{'group_add'}</a>" );
+@rowlinks = ( &ui_link("edit_group.cgi?new=1",$text{'group_add'}) );
 if (@{$s->{'data'}}) {
 	print &ui_form_start("delete_groups.cgi", "post");
 	unshift(@rowlinks, &select_all_link("d", 0),

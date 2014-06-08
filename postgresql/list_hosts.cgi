@@ -13,7 +13,7 @@ $v = &get_postgresql_version();
 print &ui_form_start("delete_hosts.cgi", "post");
 @rowlinks = ( &select_all_link("d", 0),
 	      &select_invert_link("d", 0),
-	      "<a href='edit_host.cgi?new=1'>$text{'host_add'}</a>" );
+	      &ui_link("edit_host.cgi?new=1",$text{'host_add'}) );
 print &ui_links_row(\@rowlinks);
 if ($v >= 7.3) {
 	@tds = ( "width=5", "width=25%", "width=25%", "width=25%",

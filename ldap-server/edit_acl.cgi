@@ -23,7 +23,7 @@ else {
 	$hasorder = 1;
 	}
 
-@crlinks = ( "<a href='acl_form.cgi?new=1'>$text{'acl_add'}</a>" );
+@crlinks = ( &ui_link("acl_form.cgi?new=1",$text{'acl_add'}) );
 if (@access) {
 	# Show table of ACLs
 	print &ui_form_start("delete_acls.cgi", "post");
