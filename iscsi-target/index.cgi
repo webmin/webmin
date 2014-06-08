@@ -18,7 +18,7 @@ if ($err) {
 # Find and show targets
 my $conf = &get_iscsi_config();
 my @targets = &find($conf, "Target");
-my @crlinks = ( "<a href='edit_target.cgi?new=1'>$text{'index_add'}</a>" );
+my @crlinks = ( &ui_link("edit_target.cgi?new=1",$text{'index_add'}) );
 if (@targets) {
 	unshift(@crlinks, &select_all_link("d"), &select_invert_link("d"));
 	print &ui_form_start("delete_targets.cgi");

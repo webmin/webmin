@@ -12,7 +12,7 @@ if (@jobs) {
 	print &ui_form_start("delete_jobs.cgi", "post");
 	@links = ( &select_all_link("d"),
 		   &select_invert_link("d"),
-		   "<a href='edit_job.cgi?new=1'>$text{'jobs_add'}</a>" );
+		   &ui_link("edit_job.cgi?new=1",$text{'jobs_add'}) );
 	print &ui_links_row(\@links);
 	@tds = ( "width=5", "width=30%", "width=10%", "width=20%", "width=20%",
 		 "width=20%" );

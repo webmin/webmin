@@ -10,7 +10,7 @@ my $conf = &get_iscsi_config();
 &ui_print_header(undef, $text{'devices_title'}, "");
 
 my @devices = &find($conf, "device");
-my @links = ( "<a href='edit_device.cgi?new=1'>$text{'devices_add'}</a>" );
+my @links = ( &ui_link("edit_device.cgi?new=1",$text{'devices_add'}) );
 if (@devices) {
 	unshift(@links, &select_all_link("d"), &select_invert_link("d"));
 	print &ui_form_start("delete_devices.cgi");

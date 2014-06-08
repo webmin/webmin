@@ -7,7 +7,7 @@ require './cluster-cron-lib.pl';
 
 @links = ( &select_all_link("d"),
 	   &select_invert_link("d"),
-	   "<a href='edit.cgi?new=1'>$text{'index_add'}</a>" );
+	   &ui_link("edit.cgi?new=1",$text{'index_add'}) );
 
 @jobs = &list_cluster_jobs();
 if (@jobs) {
@@ -46,8 +46,7 @@ if (@jobs) {
 		else {
 			push(@cols, join(", ", @servers));
 			}
-		push(@cols, "<a href='exec.cgi?id=$j->{'cluster_id'}'>".
-			    "$text{'index_run'}</a>");
+		push(@cols, &ui_link("exec.cgi?id=$j->{'cluster_id'}",$text{'index_run'}));
 		print &ui_checked_columns_row(
 			\@cols,
 			[ "width=5", undef, undef, undef, undef, "width=10" ],

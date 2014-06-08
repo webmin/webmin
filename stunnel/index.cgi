@@ -38,7 +38,7 @@ $hasconfig = 1;
 @tunnels = &list_stunnels();
 @links = ( &select_all_link("d"),
 	   &select_invert_link("d"),
-	   "<a href='edit_stunnel.cgi?new=1'>$text{'index_add'}</a>" );
+	   &ui_link("edit_stunnel.cgi?new=1",$text{'index_add'}) );
 if (@tunnels) {
 	print &ui_form_start("delete_tunnels.cgi", "post");
 	@tds = ( "width=5" );

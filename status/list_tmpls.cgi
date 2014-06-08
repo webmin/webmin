@@ -6,7 +6,7 @@ $access{'edit'} || &error($text{'tmpls_ecannot'});
 &ui_print_header(undef, $text{'tmpls_title'}, "");
 
 @tmpls = &list_templates();
-@links = ( "<a href='edit_tmpl.cgi?new=1'>$text{'tmpls_add'}</a>" );
+@links = ( &ui_link("edit_tmpl.cgi?new=1",$text{'tmpls_add'}) );
 if (@tmpls) {
 	unshift(@links, &select_all_link("d"), &select_invert_link("d"));
 	print &ui_form_start("delete_tmpls.cgi", "post");
@@ -18,8 +18,7 @@ if (@tmpls) {
 		$msg = $tmpl->{'email'};
 		$msg = substr($msg, 0, 80)." ..." if (length($msg) > 80);
 		print &ui_checked_columns_row(
-			[ "<a href='edit_tmpl.cgi?id=$tmpl->{'id'}'>".
-			  "$tmpl->{'desc'}</a>", &html_escape($msg) ],
+			[ &ui_link("edit_tmpl.cgi?id=$tmpl->{'id'}","$tmpl->{'desc'}"), &html_escape($msg) ],
 		      	\@tds, "d", $tmpl->{'id'});
 		}
 	print &ui_columns_end();

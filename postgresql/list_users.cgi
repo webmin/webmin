@@ -10,7 +10,7 @@ $s = &execute_sql_safe($config{'basedb'}, "select $pg_shadow_cols from pg_shadow
 print &ui_form_start("delete_users.cgi", "post");
 @rowlinks = ( &select_all_link("d", 0),
 	      &select_invert_link("d", 0),
-	      "<a href='edit_user.cgi?new=1'>$text{'user_add'}</a>" );
+	      &ui_link("edit_user.cgi?new=1",$text{'user_add'}) );
 print &ui_links_row(\@rowlinks);
 print &ui_columns_start([ "", $text{'user_name'},
 			  $text{'user_pass'},

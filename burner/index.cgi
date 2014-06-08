@@ -29,8 +29,7 @@ if (@profiles) {
 				  $text{'index_files'} ], 100, 0, \@tds);
 	foreach $p (@profiles) {
 		local @cols;
-		push(@cols, "<a href='edit_profile.cgi?id=$p->{'id'}'>".
-			    "$p->{'name'}</a>");
+		push(@cols, &ui_link("edit_profile.cgi?id=$p->{'id'}","$p->{'name'}"));
 		push(@cols, $text{'index_type'.$p->{'type'}});
 		if ($p->{'type'} == 1) {
 			push(@cols, $p->{'iso'});

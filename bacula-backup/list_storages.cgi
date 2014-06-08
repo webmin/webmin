@@ -11,7 +11,7 @@ if (@storages) {
 	print &ui_form_start("delete_storages.cgi", "post");
 	@links = ( &select_all_link("d"),
 		   &select_invert_link("d"),
-		   "<a href='edit_storage.cgi?new=1'>$text{'storages_add'}</a>",
+		   &ui_link("edit_storage.cgi?new=1",$text{'storages_add'}),
 		 );
 	print &ui_links_row(\@links);
 	@tds = ( "width=5", "width=30%", "width=20%", "width=30%", "width=20%" );

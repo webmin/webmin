@@ -11,9 +11,9 @@ require './custom-lib.pl';
 # Build links
 @links = ( );
 if ($access{'edit'}) {
-	push(@links,"<a href='edit_cmd.cgi?new=1'>$text{'index_create'}</a>");
-	push(@links,"<a href='edit_file.cgi?new=1'>$text{'index_ecreate'}</a>");
-	push(@links,"<a href='edit_sql.cgi?new=1'>$text{'index_screate'}</a>");
+	push(@links,&ui_link("edit_cmd.cgi?new=1",$text{'index_create'}));
+	push(@links,&ui_link("edit_file.cgi?new=1",$text{'index_ecreate'}));
+	push(@links,&ui_link("edit_sql.cgi?new=1",$text{'index_screate'}));
 	}
 
 if (!@cust) {

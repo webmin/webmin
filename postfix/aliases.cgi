@@ -52,7 +52,7 @@ for($mid=0; $mid<@aliases && $aline[$mid] < $midline; $mid++) { }
 print &ui_form_start("delete_aliases.cgi", "post");
 @links = ( &select_all_link("d", 1),
 	   &select_invert_link("d", 1),
-	   "<a href='edit_alias.cgi?new=1'>$text{'new_alias'}</a>",
+	   &ui_link("edit_alias.cgi?new=1",$text{'new_alias'}),
 	 );
 print &ui_links_row(\@links);
 if ($config{'columns'} == 2) {

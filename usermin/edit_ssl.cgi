@@ -83,10 +83,8 @@ foreach $i ('cn', 'o', 'email', 'issuer_cn', 'issuer_o', 'issuer_email',
 		}
 	}
 @clinks = (
-	"<a href='download_cert.cgi/cert.pem'>".
-	"$text{'ssl_pem'}</a>",
-	"<a href='download_cert.cgi/cert.p12'>".
-	"$text{'ssl_pkcs12'}</a>"
+	&ui_link("download_cert.cgi/cert.pem",$text{'ssl_pem'}),
+	&ui_link("download_cert.cgi/cert.p12",$text{'ssl_pkcs12'})
 	);
 print &ui_table_row($text{'ssl_download'}, &ui_links_row(\@clinks));
 print &ui_table_end();

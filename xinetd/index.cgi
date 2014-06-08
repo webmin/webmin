@@ -27,7 +27,7 @@ foreach $m (@{$defs->{'members'}}) {
 	}
 @svcs = grep { $_->{'name'} eq 'service' } @conf;
 
-@links = ( "<a href='edit_serv.cgi?new=1'>$text{'index_add_inet'}</a>" );
+@links = ( &ui_link("edit_serv.cgi?new=1",$text{'index_add_inet'}) );
 if (@svcs) {
 	# Show table header
 	print &ui_form_start("mass_enable.cgi", "post");

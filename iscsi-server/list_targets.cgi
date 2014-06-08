@@ -10,7 +10,7 @@ my $conf = &get_iscsi_config();
 &ui_print_header(undef, $text{'targets_title'}, "");
 
 my @targets = &find($conf, "target");
-my @links = ( "<a href='edit_target.cgi?new=1'>$text{'targets_add'}</a>" );
+my @links = ( &ui_link("edit_target.cgi?new=1",$text{'targets_add'}) );
 if (@targets) {
 	unshift(@links, &select_all_link("d"), &select_invert_link("d"));
 	print &ui_form_start("delete_targets.cgi");

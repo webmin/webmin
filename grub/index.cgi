@@ -21,7 +21,7 @@ if (!&has_command($config{'grub_path'})) {
 	}
 
 # List the boot options
-@crlinks = ( "<a href='edit_title.cgi?new=1'>$text{'index_add'}</a>" );
+@crlinks = ( &ui_link("edit_title.cgi?new=1",$text{'index_add'}) );
 $conf = &get_menu_config();
 $def = &find_value("default", $conf);
 @t = &find("title", $conf);
@@ -33,8 +33,7 @@ foreach $t (@t) {
 	push(@titles, $def == $i ? "<b>$tt</b>" : $tt);
 	push(@links, "edit_title.cgi?idx=$t->{'index'}");
 	push(@befores, $i == 0 ? "&lt;&lt;&nbsp;|&nbsp;" :
-		"<a href='up.cgi?idx=$i'>".
-		"&lt;&lt;</a>&nbsp;|&nbsp;");
+		&ui_link("up.cgi?idx=$i","&lt;&lt;")&nbsp;|&nbsp;");
 	push(@afters, $i == @t-1 ? "&nbsp;|&nbsp;&gt;&gt;" :
 		"&nbsp;|&nbsp;<a href='down.cgi?idx=$i'>".
 		"&gt;&gt;</a>");

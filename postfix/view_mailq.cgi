@@ -36,12 +36,10 @@ print &ui_hidden("file", $in{'id'});
 
 # Start of headers section
 if ($in{'headers'}) {
-	$rlink = "<a href='view_mailq.cgi?id=$in{'id'}&headers=0$subs'>".
-		 "$text{'view_noheaders'}</a>";
+	$rlink = &ui_link("view_mailq.cgi?id=$in{'id'}&headers=0$subs",$text{'view_noheaders'});
 	}
 else {
-	$rlink = "<a href='view_mailq.cgi?id=$in{'id'}&headers=1$subs'>".
-		 "$text{'view_allheaders'}</a>";
+	$rlink = &ui_link("view_mailq.cgi?id=$in{'id'}&headers=1$subs",$text{'view_allheaders'});
 	}
 print &ui_table_start($text{'view_headers'}, "width=100%", 2, undef, $rlink);
 

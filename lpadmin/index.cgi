@@ -46,8 +46,7 @@ if (@plist) {
 			next if (!$ed && !$jb && !$access{'view'});
 			local $l;
 			if ($ed) {
-				$l = "<a href='edit_printer.cgi?name=$p'>".
-				     "$p</a>\n";
+				$l = &ui_link("edit_printer.cgi?name=$p",$p)\n";
 				}
 			else {
 				$l = $p."\n";

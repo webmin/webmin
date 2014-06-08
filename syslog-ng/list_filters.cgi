@@ -8,7 +8,7 @@ $conf = &get_config();
 @filters = &find("filter", $conf);
 @links = ( &select_all_link("d"),
 	   &select_invert_link("d"),
-	   "<a href='edit_filter.cgi?new=1'>$text{'filters_add'}</a>" );
+	   &ui_link("edit_filter.cgi?new=1",$text{'filters_add'}) );
 if (@filters) {
 	@tds = ( "width=5" );
 	print &ui_form_start("delete_filters.cgi", "post");

@@ -47,8 +47,7 @@ if (@$users) {
 	print "<tr $cb> <td><table width=100%>\n";
 	for($i=0; $i<@$users; $i++) {
 		$u = $users->[$i];
-		$link = "<a href='edit.cgi?idx=$u->{'index'}'>".
-		        "$u->{'user'}</a>";
+		$link = &ui_link("edit.cgi?idx=$u->{'index'}","$u->{'user'}");
 		print "<tr>\n" if ($i%4 == 0);
 		if ($u->{'enabled'}) {
 			print "<td width=25%>$link</td>\n";

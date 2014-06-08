@@ -143,7 +143,7 @@ if ($can_users) {
 @links = ( );
 if ($access{'ucreate'}) {
 	push(@links,
-	     "<a href='edit_user.cgi?new=1'>$text{'index_uadd'}</a>");
+	     &ui_link("edit_user.cgi?new=1",$text{'index_uadd'}));
 	}
 if ($access{'batch'}) {
 	push(@links, 
@@ -204,7 +204,7 @@ if ($can_groups) {
 # Create group links
 @links = ( );
 if ($access{'gcreate'}) {
-	push(@links, "<a href='edit_group.cgi?new=1'>$text{'index_gadd'}</a>");
+	push(@links, &ui_link("edit_group.cgi?new=1",$text{'index_gadd'}));
 	}
 
 if ($gcount > $mconfig{'display_max'}) {

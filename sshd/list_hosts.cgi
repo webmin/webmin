@@ -15,7 +15,7 @@ foreach $h (@$hconf) {
 	$i++;
 	}
 $addlink = &ui_links_row(
-	[ "<a href='edit_host.cgi?new=1'>$text{'hosts_add'}</a>" ]);
+	[ &ui_link("edit_host.cgi?new=1",$text{'hosts_add'}) ]);
 if (@links) {
 	print $addlink;
 	&icons_table(\@links, \@titles, \@icons);

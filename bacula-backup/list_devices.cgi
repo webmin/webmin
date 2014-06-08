@@ -11,7 +11,7 @@ if (@devices) {
 	print &ui_form_start("delete_devices.cgi", "post");
 	@links = ( &select_all_link("d"),
 		   &select_invert_link("d"),
-		   "<a href='edit_device.cgi?new=1'>$text{'devices_add'}</a>" );
+		   &ui_link("edit_device.cgi?new=1",$text{'devices_add'}) );
 	print &ui_links_row(\@links);
 	@tds = ( "width=5", "width=30%", "width=40%", "width=30%" );
 	print &ui_columns_start([ "", $text{'devices_name'},

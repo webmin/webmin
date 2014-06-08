@@ -8,7 +8,7 @@ $access{'passwd'} || &error($text{'passwd_ecannot'});
 
 print "$text{'passwd_desc'}<p>\n";
 @passwd = &list_passwords();
-@links = ( "<a href='edit_passwd.cgi?new=1'>$text{'passwd_add'}</a>" );
+@links = ( &ui_link("edit_passwd.cgi?new=1",$text{'passwd_add'}) );
 if (@passwd) {
 	print &ui_links_row(\@links);
 	print "<table border width=100%>\n";

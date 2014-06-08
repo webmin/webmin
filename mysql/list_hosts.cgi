@@ -7,7 +7,7 @@ $access{'perms'} || &error($text{'perms_ecannot'});
 &ui_print_header(undef, $text{'hosts_title'}, "");
 
 $d = &execute_sql_safe($master_db, "select * from host order by host");
-@rowlinks = ( "<a href='edit_host.cgi?new=1'>$text{'hosts_add'}</a>" );
+@rowlinks = ( &ui_link("edit_host.cgi?new=1",$text{'hosts_add'}) );
 if (@{$d->{'data'}}) {
 	print &ui_form_start("delete_hosts.cgi");
 	unshift(@rowlinks, &select_all_link("d", 0),

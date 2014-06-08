@@ -11,8 +11,7 @@ if (@schedules) {
 	print &ui_form_start("delete_schedules.cgi", "post");
 	@links = ( &select_all_link("d"),
 		   &select_invert_link("d"),
-		   "<a href='edit_schedule.cgi?new=1'>".
-		   "$text{'schedules_add'}</a>" );
+		   &ui_link("edit_schedule.cgi?new=1",$text{'schedules_add'}) );
 	print &ui_links_row(\@links);
 	@tds = ( "width=5", "width=30%", "width=70%" );
 	print &ui_columns_start([ "", $text{'schedules_name'},

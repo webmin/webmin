@@ -6,7 +6,7 @@ require './mysql-lib.pl';
 $access{'perms'} || &error($text{'perms_ecannot'});
 &ui_print_header(undef, $text{'dbs_title'}, "", "dbs");
 
-@rowlinks = ( "<a href='edit_db.cgi?new=1'>$text{'dbs_add'}</a>" );
+@rowlinks = ( &ui_link("edit_db.cgi?new=1",$text{'dbs_add'}) );
 $d = &execute_sql_safe($master_db, "select * from db order by db");
 if (@{$d->{'data'}}) {
 	print &ui_form_start("delete_dbs.cgi");
