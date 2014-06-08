@@ -33,8 +33,7 @@ foreach $t (@t) {
 	push(@titles, $def == $i ? "<b>$tt</b>" : $tt);
 	push(@links, "edit_title.cgi?idx=$t->{'index'}");
 	push(@befores, $i == 0 ? "&lt;&lt;&nbsp;|&nbsp;" :
-		"<a href='up.cgi?idx=$i'>".
-		"&lt;&lt;</a>&nbsp;|&nbsp;");
+		&ui_link("up.cgi?idx=$i","&lt;&lt;")&nbsp;|&nbsp;");
 	push(@afters, $i == @t-1 ? "&nbsp;|&nbsp;&gt;&gt;" :
 		"&nbsp;|&nbsp;<a href='down.cgi?idx=$i'>".
 		"&gt;&gt;</a>");
