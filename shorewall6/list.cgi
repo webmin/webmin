@@ -69,7 +69,7 @@ if (@table) {
 				}
 			for($j=0; $j<@colnames; $j++) {
 				if ($j == 0) {
-					$lnk = &ui_link("edit.cgi?table=$in{'table'}&idx=$i","$t[$j]");
+					$lnk = &ui_link("edit.cgi?table=$in{'table'}&idx=$i",$t[$j]);
 					}
 				else {
 					$lnk = $t[$j];

@@ -28,9 +28,9 @@ if (@procs) {
 	foreach $r (@procs) {
 		print &ui_checked_columns_row([
 			$r->[0],
-			&ui_link("edit_user.cgi?user=$r->[1]","$r->[1]"),
+			&ui_link("edit_user.cgi?user=$r->[1]",$r->[1]),
 			$r->[2],
-			&ui_link("edit_dbase.cgi?db=$r->[3]","$r->[3]"),
+			&ui_link("edit_dbase.cgi?db=$r->[3]",$r->[3]),
 			$r->[4],
 			&nice_time($r->[5]),
 			&html_escape($r->[7])

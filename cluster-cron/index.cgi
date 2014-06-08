@@ -26,7 +26,7 @@ if (@jobs) {
 		local $max = $cron::config{'max_len'} || 10000;
 		local $cmd = $j->{'cluster_command'};
 		push(@cols, 
-		   sprintf &ui_link("edit.cgi?id=$j->{'cluster_id'}","%s")%s",
+		   sprintf &ui_link("edit.cgi?id=$j->{'cluster_id'}","%s")."%s",
 			length($cmd) > $max ?
 				&html_escape(substr($cmd, 0, $max)) :
 			$cmd !~ /\S/ ? "BLANK" : &html_escape($cmd),
