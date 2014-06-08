@@ -75,13 +75,13 @@ elsif ($config{'display_mode'} == 0) {
 			}
 		if ($access{'edit'}) {
 			if ($c->{'edit'}) {
-				$link = "<a href='edit_file.cgi?id=$c->{'id'}'>$text{'index_fedit'}</a>";
+				$link = &ui_link("edit_file.cgi?id=$c->{'id'}",$text{'index_fedit'});
 				}
 			elsif ($c->{'sql'}) {
-				$link = "<a href='edit_sql.cgi?id=$c->{'id'}'>$text{'index_sedit'}</a>";
+				$link = &ui_link("edit_sql.cgi?id=$c->{'id'}",$text{'index_sedit'});
 				}
 			else {
-				$link = "<a href='edit_cmd.cgi?id=$c->{'id'}'>$text{'index_edit'}</a>";
+				$link = &ui_link("edit_cmd.cgi?id=$c->{'id'}",$text{'index_edit'});
 				}
 			$html .= &ui_table_row(undef,
 					&ui_links_row([ $link ]), $w);

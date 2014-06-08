@@ -34,7 +34,7 @@ if (@clients) {
 	}
 else {
 	print "<b>$text{'clients_none'}</b><p>\n";
-	print "<a href='edit_client.cgi?new=1'>$text{'clients_add'}</a><br>\n";
+	print &ui_link("edit_client.cgi?new=1",$text{'clients_add'})<br>\n";
 	}
 
 &ui_print_footer("", $text{'index_return'});

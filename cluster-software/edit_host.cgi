@@ -89,8 +89,8 @@ print "<table width=100%>\n";
 &traverse("", 0);
 print "</table>\n";
 if ($hasclasses) {
-	print "<a href='closeall.cgi?id=$in{'id'}'>$text{'host_close'}</a>\n";
-	print "<a href='openall.cgi?id=$in{'id'}'>$text{'host_open'}</a><p>\n";
+	print &ui_link("closeall.cgi?id=$in{'id'}",$text{'host_close'})\n";
+	print &ui_link("openall.cgi?id=$in{'id'}",$text{'host_open'})<p>\n";
 	}
 
 &ui_print_footer("", $text{'index_return'});

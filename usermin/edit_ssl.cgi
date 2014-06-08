@@ -111,7 +111,7 @@ if (@ipkeys) {
 else {
 	print "<b>$text{'ssl_ipkeynone'}</b><p>\n";
 	}
-print "<a href='edit_ipkey.cgi?new=1'>$text{'ssl_addipkey'}</a><p>\n";
+print &ui_link("edit_ipkey.cgi?new=1",$text{'ssl_addipkey'})<p>\n";
 print &ui_tabs_end_tab();
 
 # SSL key generation form

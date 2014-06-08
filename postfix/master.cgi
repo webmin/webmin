@@ -7,7 +7,7 @@ $access{'master'} || &error($text{'master_ecannot'});
 &ui_print_header(undef, $text{'master_title'}, "", "master");
 $master = &get_master_config();
 
-print "<a href='edit_master.cgi?new=1'>$text{'master_add'}</a><br>\n";
+print &ui_link("edit_master.cgi?new=1",$text{'master_add'})<br>\n";
 print &ui_columns_start([ $text{'master_name'},
 			  $text{'master_enabled'},
 			  $text{'master_type'},
@@ -32,6 +32,6 @@ foreach $m (@$master) {
 			]);
 	}
 print &ui_columns_end();
-print "<a href='edit_master.cgi?new=1'>$text{'master_add'}</a><br>\n";
+print &ui_link("edit_master.cgi?new=1",$text{'master_add'})<br>\n";
 
 &ui_print_footer("", $text{'index_return'});

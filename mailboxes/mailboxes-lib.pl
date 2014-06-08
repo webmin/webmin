@@ -528,7 +528,7 @@ elsif ($config{'show_size'} == 2) {
 			push(@ccols, int($foldercount{$u->[0]}))
 			}
 		print &ui_columns_row(
-			[ "<a href='list_mail.cgi?user=$u->[0]'>$u->[0]</a>",
+			[ &ui_link("list_mail.cgi?user=$u->[0]","$u->[0]"),
 			  $u->[6], $g,
 			  $size{$u->[0]} == 0 ? $text{'index_empty'} :
 				&nice_size($size{$u->[0]}),
@@ -596,7 +596,7 @@ if (defined($old_uid)) {
 
 sub folder_link
 {
-return "<a href='list_mail.cgi?user=$_[0]&folder=$_[1]->{'index'}'>$text{'mail_return2'}</a>";
+return &ui_link("list_mail.cgi?user=$_[0]&folder=$_[1]->{'index'}",$text{'mail_return2'});
 }
 
 # get_from_address()

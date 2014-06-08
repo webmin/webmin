@@ -65,6 +65,6 @@ if ($in{'pool'}) {
 
 sub joblink
 {
-return $jobs{$_[0]} ? "<a href='edit_job.cgi?name=".&urlize($_[0])."'>$_[0]</a>" : $_[0];
+return $jobs{$_[0]} ? &ui_link("edit_job.cgi?name=".&urlize($_[0])."","$_[0]") : $_[0];
 }
 

@@ -7,7 +7,7 @@ $access{'profs'} || &error($text{'profs_ecannot'});
 
 $profs = &list_prof_attrs();
 if (@$profs) {
-	print "<a href='edit_prof.cgi?new=1'>$text{'profs_add'}</a><br>\n"
+	print &ui_link("edit_prof.cgi?new=1",$text{'profs_add'})<br>\n"
 		if ($access{'profs'} == 1);
 	print &ui_columns_start(
 		[ $text{'profs_name'},
@@ -16,7 +16,7 @@ if (@$profs) {
 	foreach $p (sort { $a->{'name'} cmp $b->{'name'} } @$profs) {
 		print &ui_columns_row(
 			[ $access{'profs'} == 1 ?
-			    "<a href='edit_prof.cgi?idx=$p->{'index'}'>$p->{'name'}</a>" :
+			    &ui_link("edit_prof.cgi?idx=$p->{'index'}",$p->{'name'}) :
 			    $p->{'name'},
 			  &rbac_help_link($p, $p->{'desc'}),
 			  &nice_comma_list($p->{'attr'}->{'auths'}),
@@ -27,7 +27,7 @@ if (@$profs) {
 else {
 	print "<b>$text{'profs_none'}</b><p>\n";
 	}
-print "<a href='edit_prof.cgi?new=1'>$text{'profs_add'}</a><br>\n"
+print &ui_link("edit_prof.cgi?new=1",$text{'profs_add'})<br>\n"
 	if ($access{'profs'} == 1);
 
 &ui_print_footer("", $text{"index_return"});

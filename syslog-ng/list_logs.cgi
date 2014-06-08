@@ -23,7 +23,7 @@ if (@logs) {
 		$filter = join(", ", &find_value("filter", $f->{'members'}));
 		$dest = join(", ", &find_value("destination", $f->{'members'}));
 		print &ui_checked_columns_row([
-			"<a href='edit_log.cgi?idx=$f->{'index'}'>$source</a>",
+			&ui_link("edit_log.cgi?idx=$f->{'index'}",$source),
 			$filter || "<i>$text{'logs_none'}</i>",
 			$dest || "<i>$text{'logs_none'}</i>",
 			], \@tds, "d", $f->{'index'});

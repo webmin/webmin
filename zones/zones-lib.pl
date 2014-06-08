@@ -258,10 +258,10 @@ local $z;
 foreach $z (@$zones) {
 	local ($a, @actions);
 	foreach $a (&zone_status_actions($z)) {
-		push(@actions, "<a href='save_zone.cgi?zone=$z->{'name'}&$a->[0]=1&list=1'>$a->[1]</a>");
+		push(@actions, &ui_link("save_zone.cgi?zone=$z->{'name'}&$a->[0]=1&list=1","$a->[1]"));
 		}
 	print &ui_columns_row([
-		"<a href='edit_zone.cgi?zone=$z->{'name'}'>$z->{'name'}</a>",
+		&ui_link("edit_zone.cgi?zone=$z->{'name'}",$z->{'name'}),
 		$z->{'id'},
 		$z->{'zonepath'},
 		&nice_status($z->{'status'}),

@@ -19,7 +19,7 @@ foreach $s (@$conf) {
 	$srcs = join(", ", map { $text{'order_'.$_->{'src'}} } @{$s->{'srcs'}});
 	$name = $text{'desc_'.$s->{'name'}} || $s->{'name'};
 	print &ui_columns_row([
-		"<a href='edit_switch.cgi?name=$s->{'name'}'>$name</a>",
+		&ui_link("edit_switch.cgi?name=$s->{'name'}",$name),
 		$srcs,
 		]);
 	}

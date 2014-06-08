@@ -446,10 +446,10 @@ print &ui_table_end();
 @bodylinks = ( );
 if ($in{'new'}) {
 	if ($html_edit) {
-		push(@bodylinks, "<a href='reply_mail.cgi?folder=$in{'folder'}&user=$euser&new=1&html=0'>$text{'reply_html0'}</a>");
+		push(@bodylinks, &ui_link("reply_mail.cgi?folder=$in{'folder'}&user=$euser&new=1&html=0",$text{'reply_html0'}));
 		}
 	else {
-		push(@bodylinks, "<a href='reply_mail.cgi?folder=$in{'folder'}&user=$euser&new=1&html=1'>$text{'reply_html1'}</a>");
+		push(@bodylinks, &ui_link("reply_mail.cgi?folder=$in{'folder'}&user=$euser&new=1&html=1",$text{'reply_html1'}));
 		}
 	}
 

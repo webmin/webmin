@@ -28,7 +28,7 @@ foreach $net (@{$zinfo->{'net'}}) {
 	$active = &get_active_interface($zinfo, $net);
 	($address, $netmask) = &get_address_netmask($net, $active);
 	$ntable->add_row([
-		"<a href='edit_net.cgi?zone=$in{'zone'}&old=$net->{'address'}'>$address</a>",
+		&ui_link("edit_net.cgi?zone=$in{'zone'}&old=$net->{'address'}",$address),
 		$active->{'fullname'} || $text{'edit_netdown'},
 		$netmask,
 		$active->{'broadcast'} ]);
@@ -46,7 +46,7 @@ $pform->add_section($ptable);
 $ptable->set_heading($text{'edit_pkg'});
 foreach $pkg (@{$zinfo->{'inherit-pkg-dir'}}) {
 	if ($zinfo->{'status'} eq 'configured') {
-		$ptable->add_row([ "<a href='edit_pkg.cgi?zone=$in{'zone'}&old=$pkg->{'dir'}'>$pkg->{'dir'}</a>" ]);
+		$ptable->add_row([ &ui_link("edit_pkg.cgi?zone=$in{'zone'}&old=$pkg->{'dir'}",$pkg->{'dir'}) ]);
 		}
 	else {
 		$ptable->add_row([ "<tt>$pkg->{'dir'}</tt>" ]);
@@ -74,7 +74,7 @@ $fform->add_section($ftable);
 $ftable->set_heading($text{'edit_fs'});
 foreach $fs (@{$zinfo->{'fs'}}) {
 	$ftable->add_row([
-		"<a href='edit_fs.cgi?zone=$in{'zone'}&old=$fs->{'dir'}'>$fs->{'dir'}</a>",
+		&ui_link("edit_fs.cgi?zone=$in{'zone'}&old=$fs->{'dir'}",$fs->{'dir'}),
 		&mount::device_name($fs->{'special'}),
 		&mount::fstype_name($fs->{'type'}),
 		&get_active_mount($zinfo, $fs) ?
@@ -109,7 +109,7 @@ foreach $rctl (@{$zinfo->{'rctl'}}) {
 		push(@actions, $text{'rctl_'.$action});
 		}
 	$rtable->add_row([
-		"<a href='edit_rctl.cgi?zone=$in{'zone'}&old=$rctl->{'name'}'>$rctl->{'name'}</a>",
+		&ui_link("edit_rctl.cgi?zone=$in{'zone'}&old=$rctl->{'name'}",$rctl->{'name'}),
 		join("<br>", @privs),
 		join("<br>", @limits),
 		join("<br>", @actions),
@@ -131,7 +131,7 @@ $gform->add_section($gtable);
 $gtable->set_heading($text{'edit_attr'});
 foreach $attr (@{$zinfo->{'attr'}}) {
 	$gtable->add_row([
-		"<a href='edit_attr.cgi?zone=$in{'zone'}&old=$attr->{'name'}'>$attr->{'name'}</a>",
+		&ui_link("edit_attr.cgi?zone=$in{'zone'}&old=$attr->{'name'}",$attr->{'name'}),
 		$text{'attr_'.$attr->{'type'}},
 		$attr->{'value'},
 		]);

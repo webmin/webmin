@@ -31,9 +31,9 @@ if (@secs) {
 else {
 	print "<b>$text{'secrets_none'}</b><p>\n";
 	}
-print "<a href='edit_secret.cgi?new=1&type=psk'>$text{'secrets_newpsk'}</a>\n";
+print &ui_link("edit_secret.cgi?new=1&type=psk",$text{'secrets_newpsk'})\n";
 print "&nbsp;" x 2;
-print "<a href='edit_secret.cgi?new=1&type=rsa'>$text{'secrets_newrsa'}</a>\n";
+print &ui_link("edit_secret.cgi?new=1&type=rsa",$text{'secrets_newrsa'})\n";
 print "<br>\n";
 
 &ui_print_footer("", $text{'index_return'});
