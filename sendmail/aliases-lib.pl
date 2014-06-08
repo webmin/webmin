@@ -148,16 +148,13 @@ for($i=0; $i<=@values; $i++) {
 	local $valtxt = &ui_textbox("val_$i", $val, 30);
 	local $edlnk;
 	if ($type == 2 && $a) {
-		$edlnk = "<a href='edit_afile.cgi?file=$val&num=$a->{'num'}'>".
-		      	 "$text{'aform_afile'}</a>\n";
+		$edlnk = &ui_link("edit_afile.cgi?file=$val&num=$a->{'num'}",$text{'aform_afile'})\n";
 		}
 	elsif ($type == 5 && $a) {
-		$edlnk = "<a href='edit_rfile.cgi?file=$val&num=$a->{'num'}'>".
-		      	 "$text{'aform_afile'}</a>\n";
+		$edlnk = &ui_link("edit_rfile.cgi?file=$val&num=$a->{'num'}",$text{'aform_afile'})\n";
 		}
 	elsif ($type == 6 && $a) {
-		$edlnk = "<a href='edit_ffile.cgi?file=$val&num=$a->{'num'}'>".
-		         "$text{'aform_afile'}</a>\n";
+		$edlnk = &ui_link("edit_ffile.cgi?file=$val&num=$a->{'num'}",$text{'aform_afile'})\n";
 		}
 	print &ui_table_row(&hlink($text{'aform_val'},"alias_to"),
 			      $typesel."\n".$valtxt."\n".$edlnk);

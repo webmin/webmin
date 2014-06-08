@@ -117,17 +117,14 @@ print &ui_form_start("delete_bifcs.cgi", "post");
 if ($allow_add) {
 	push(@links, &ui_link("edit_bifc.cgi?new=1",$text{'ifcs_add'}));
 	if (defined(&supports_bonding) && &supports_bonding()) {
-		push(@links, "<a href='edit_bifc.cgi?new=1&bond=1'>".
-			     "$text{'bonding_add'}</a>");
+		push(@links, &ui_link("edit_bifc.cgi?new=1&bond=1",$text{'bonding_add'}));
 	}
 	if (defined(&supports_vlans) && &supports_vlans()) {
-		push(@links, "<a href='edit_bifc.cgi?new=1&vlan=1'>".
-			     "$text{'vlan_add'}</a>");
+		push(@links, &ui_link("edit_bifc.cgi?new=1&vlan=1",$text{'vlan_add'}));
 	}
 	}
 if ($allow_add && defined(&supports_bridges) && &supports_bridges()) {
-	push(@links, "<a href='edit_bifc.cgi?new=1&bridge=1'>".
-		     "$text{'ifcs_badd'}</a>");
+	push(@links, &ui_link("edit_bifc.cgi?new=1&bridge=1",$text{'ifcs_badd'}));
 	}
 if ($allow_add && defined(&supports_ranges) && &supports_ranges()) {
 	push(@links, &ui_link("edit_range.cgi?new=1",$text{'ifcs_radd'}));

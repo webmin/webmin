@@ -28,8 +28,7 @@ foreach my $type ('allow', 'deny') {
 		push(@table, [
 			{ 'type' => 'checkbox', 'name' => 'd',
 			  'value' => $r->{'id'} },
-			"<a href='edit_rule.cgi?$type=1&id=$r->{'id'}'>".
-			 "$r->{'service'}</a>",
+			&ui_link("edit_rule.cgi?$type=1&id=$r->{'id'}","$r->{'service'}"),
 			$r->{'host'},
 			$r->{'cmd'} ? join("<br>", split /:/, $r->{'cmd'})
 				    : $text{'index_none'},

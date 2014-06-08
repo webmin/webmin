@@ -31,10 +31,8 @@ print &ui_columns_start([ $editable ? ( "" ) : ( ),
 @files = sort { &schema_sorter } &list_schema_files();
 for($i=0; $i<@files; $i++) {
 	$s = $files[$i];
-	@acts = ( "<a href='view_sfile.cgi?file=".&urlize($s->{'file'})."'>".
-		  "$text{'schema_view'}</a>",
-		  "<a href='edit_sfile.cgi?file=".&urlize($s->{'file'})."'>".
-                  "$text{'schema_edit'}</a>" );
+	@acts = ( &ui_link("view_sfile.cgi?file=".&urlize($s->{'file'})."",$text{'schema_view'}),
+		  &ui_link("edit_sfile.cgi?file=".&urlize($s->{'file'})."",$text{'schema_edit'}) );
 	if ($incs{$s->{'file'}}) {
 		$mover = &ui_up_down_arrows(
 			"up_schema.cgi?file=".&urlize($s->{'file'}),

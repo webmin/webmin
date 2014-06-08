@@ -46,8 +46,7 @@ if (@jobs) {
 		else {
 			push(@cols, join(", ", @servers));
 			}
-		push(@cols, "<a href='exec.cgi?id=$j->{'cluster_id'}'>".
-			    "$text{'index_run'}</a>");
+		push(@cols, &ui_link("exec.cgi?id=$j->{'cluster_id'}",$text{'index_run'}));
 		print &ui_checked_columns_row(
 			\@cols,
 			[ "width=5", undef, undef, undef, undef, "width=10" ],
