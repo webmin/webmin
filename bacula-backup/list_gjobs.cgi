@@ -27,8 +27,7 @@ if (@jobs) {
 		$client = &is_oc_object($client);
 		$fileset = &find_value("FileSet", $f->{'members'});
 		print &ui_checked_columns_row([
-			"<a href='edit_gjob.cgi?name=".&urlize($name)."'>".
-			$name."</a>",
+			&ui_link("edit_gjob.cgi?name=".&urlize($name)",$name),
 			$type || "<i>$text{'default'}</i>",
 			$client || "<i>$text{'default'}</i>",
 			$fileset || "<i>$text{'default'}</i>",

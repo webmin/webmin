@@ -25,8 +25,7 @@ if (@storages) {
 		$device = &find_value("Device", $f->{'members'});
 		$type = &find_value("Media Type", $f->{'members'});
 		print &ui_checked_columns_row([
-			"<a href='edit_storage.cgi?name=".&urlize($name)."'>".
-			$name."</a>",
+			&ui_link("edit_storage.cgi?name=".&urlize($name)",$name),
 			$addr,
 			$device,
 			$type,

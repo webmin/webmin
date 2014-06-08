@@ -23,8 +23,7 @@ if (@schedules) {
 			@runs = ( @runs[0..1], "..." );
 			}
 		print &ui_checked_columns_row([
-			"<a href='edit_schedule.cgi?name=".&urlize($name)."'>".
-			$name."</a>",
+			&ui_link("edit_schedule.cgi?name=".&urlize($name)",$name),
 			join(" , ", @runs),
 			], \@tds, "d", $name);
 		}

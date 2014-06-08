@@ -25,8 +25,7 @@ if (@filesets) {
 			@files = ( @files[0..3], "..." );
 			}
 		print &ui_checked_columns_row([
-			"<a href='edit_fileset.cgi?name=".&urlize($name)."'>".
-			$name."</a>",
+			&ui_link("edit_fileset.cgi?name=".&urlize($name)",$name),
 			join(" , ", @files),
 			], \@tds, "d", $name);
 		}

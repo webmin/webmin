@@ -22,8 +22,7 @@ if (@devices) {
 		$device = &find_value("Archive Device", $f->{'members'});
 		$type = &find_value("Media Type", $f->{'members'});
 		print &ui_checked_columns_row([
-			"<a href='edit_device.cgi?name=".&urlize($name)."'>".
-			$name."</a>",
+			&ui_link("edit_device.cgi?name=".&urlize($name)",$name),
 			$device,
 			$type,
 			], \@tds, "d", $name);
