@@ -293,11 +293,11 @@ if (@{$_[0]}) {
 	print &ui_columns_end();
 	}
 local @links = (
-  "<a href='edit_poll.cgi?new=1&file=$_[1]&user=$_[2]'>$text{'index_add'}</a>",
-  "<a href='edit_global.cgi?file=$_[1]&user=$_[2]'>$text{'index_global'}</a>"
+  &ui_link("edit_poll.cgi?new=1&file=$_[1]&user=$_[2]",$text{'index_add'}),
+  &ui_link("edit_global.cgi?file=$_[1]&user=$_[2]",$text{'index_global'})
 	);
 if (@{$_[0]}) {
-	push(@links, "<a href='check.cgi?file=$_[1]&user=$_[2]'>$text{'index_run'}</a>");
+	push(@links, &ui_link("check.cgi?file=$_[1]&user=$_[2]",$text{'index_run'}));
 	}
 print &ui_links_row(\@links);
 }

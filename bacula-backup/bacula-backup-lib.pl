@@ -1317,10 +1317,10 @@ if (!$job) {
 	}
 else {
 	if ($j) {
-		return "<a href='edit_gjob.cgi?name=".&urlize($j)."'>$j ($c)</a>";
+		return &ui_link("edit_gjob.cgi?name=".&urlize($j)."","$j ($c)");
 		}
 	else {
-		return "<a href='edit_job.cgi?name=".&urlize($name)."'>$name</a>";
+		return &ui_link("edit_job.cgi?name=".&urlize($name)."",$name);
 		}
 	}
 }

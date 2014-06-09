@@ -117,7 +117,7 @@ foreach $s (@_) {
 	local $esc = &html_escape($s->{'desc'});
 	$esc = "<i>$esc</i>" if ($s->{'nosched'} == 1);
 	if ($access{'edit'}) {
-		push(@cols, "<a href='edit_mon.cgi?id=$s->{'id'}'>$esc</a>");
+		push(@cols, &ui_link("edit_mon.cgi?id=$s->{'id'}",$esc));
 		}
 	else {
 		push(@cols, $esc);

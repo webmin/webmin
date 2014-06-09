@@ -339,11 +339,11 @@ local $others = join("&", map { "open=$_" } grep { $_ ne $name } @open);
 $others = "&$others" if ($others);
 if ($open{$name}) {
 	print "<img src=images/gray-open.gif border=0>\n";
-	print "<a href='right.cgi?$others'>$text</a>";
+	print &ui_link("right.cgi?$others",$text);
 	}
 else {
 	print "<img src=images/gray-closed.gif border=0>\n";
-	print "<a href='right.cgi?open=$name$others'>$text</a>";
+	print &ui_link("right.cgi?open=$name$others",$text);
 	}
 print "</font><br>\n";
 return $open{$name};

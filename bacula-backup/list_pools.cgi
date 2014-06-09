@@ -34,7 +34,7 @@ if (@pools) {
 	}
 else {
 	print "<b>$text{'pools_none'}</b><p>\n";
-	print "<a href='edit_pool.cgi?new=1'>$text{'pools_add'}</a><br>\n";
+	print &ui_link("edit_pool.cgi?new=1",$text{'pools_add'})<br>\n";
 	}
 
 &ui_print_footer("", $text{'index_return'});

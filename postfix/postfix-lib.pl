@@ -1707,7 +1707,7 @@ foreach my $q (@$qfiles) {
 	local @cols;
 	push(@cols, { 'type' => 'checkbox', 'name' => 'file',
 		      'value' => $q->{'id'} });
-	push(@cols, "<a href='view_mailq.cgi?id=$q->{'id'}'>$q->{'id'}</a>");
+	push(@cols, &ui_link("view_mailq.cgi?id=$q->{'id'}",$q->{'id'}));
 	local $size = &nice_size($q->{'size'});
 	push(@cols, "<font size=1>$q->{'date'}</font>");
 	push(@cols, "<font size=1>".&html_escape($q->{'from'})."</font>");

@@ -34,7 +34,7 @@ if (@schedules) {
 	}
 else {
 	print "<b>$text{'schedules_none'}</b><p>\n";
-	print "<a href='edit_schedule.cgi?new=1'>$text{'schedules_add'}</a><br>\n";
+	print &ui_link("edit_schedule.cgi?new=1",$text{'schedules_add'})<br>\n";
 	}
 
 &ui_print_footer("", $text{'index_return'});

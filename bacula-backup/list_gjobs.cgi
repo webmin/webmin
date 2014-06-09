@@ -40,7 +40,7 @@ if (@jobs) {
 	}
 else {
 	print "<b>$text{'jobs_none'}</b><p>\n";
-	print "<a href='edit_gjob.cgi?new=1'>$text{'gjobs_add'}</a><br>\n";
+	print &ui_link("edit_gjob.cgi?new=1",$text{'gjobs_add'})<br>\n";
 	}
 
 &ui_print_footer("", $text{'index_return'});
