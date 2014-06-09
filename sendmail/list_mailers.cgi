@@ -54,7 +54,7 @@ if (@mailers) {
 	print &ui_links_row(\@links);
 	print &ui_form_end([ [ "delete", $text{'mailers_delete'} ] ]);
 	}
-print &ui_link("edit_file.cgi?mode=mailers",&text('file_edit', "<tt>$mfile</tt>"))<p>\n"
+print &ui_link("edit_file.cgi?mode=mailers",&text('file_edit', "<tt>$mfile</tt>"))."<p>\n"
 	if ($access{'manual'});
 print $text{'mailers_desc1'},"<p>\n";
 print &text('mailers_desc2', 'list_cws.cgi')," ",
