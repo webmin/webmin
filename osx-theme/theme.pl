@@ -31,10 +31,10 @@ if (@_ > 1 && !$one && $remote_user && !$notabs) {
 	if (!$ENV{'ANONYMOUS_USER'} && !$ENV{'SSL_USER'} &&
 	    !$ENV{'LOCAL_USER'} && !$ENV{'HTTP_WEBMIN_SERVERS'}) {
 		if ($main::session_id) {
-			$logout = "<a href='/session_login.cgi?logout=1'>$text{'main_logout'}</a>";
+			$logout = &ui_link("/session_login.cgi?logout=1",$text{'main_logout'});
 			}
 		else {
-			$logout = "<a href='/switch_user.cgi'>$text{'main_switch'}</a>";
+			$logout = &ui_link("/switch_user.cgi",$text{'main_switch'});
 			}
 		}
 	&start_osx_table("Module Categories", $logout);

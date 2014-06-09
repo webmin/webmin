@@ -101,8 +101,7 @@ elsif (@$rules && !$in{'reset'}) {
 			  "before=$r->{'index'}'>".
 			  "<img src=images/before.gif border=0></a>";
 
-		local $ls = "<a href='edit_rule.cgi?idx=$r->{'index'}'>";
-		local $le = "</a>";
+		local $ls = &ui_link("edit_rule.cgi?idx=$r->{'index'}","local $le =");
 		local $act = $amap{int($r->{'num'})};
 		print &ui_checked_columns_row(
 			[ $ls.($r->{'active'} ? $text{'yes'} :
@@ -170,8 +169,7 @@ elsif (@$rules && !$in{'reset'}) {
 					  "border=0></a>";
 				}
 
-			local $ls = "<a href='edit_nat.cgi?idx=$r->{'index'}'>";
-			local $le = "</a>";
+			local $ls = &ui_link("edit_nat.cgi?idx=$r->{'index'}","local $le =");
 			print &ui_columns_row(
 				[ &ui_checkbox("d", $r->{'index'}, "", 0),
 				  $ls.($r->{'active'} ? $text{'yes'} :

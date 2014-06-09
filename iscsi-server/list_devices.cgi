@@ -23,8 +23,7 @@ if (@devices) {
 	my %omap = map { $_->{'type'}.$_->{'num'}, $_ } @$conf;
 	foreach my $e (@devices) {
 		print &ui_checked_columns_row([
-			"<a href='edit_device.cgi?num=$e->{'num'}'>".
-			  $e->{'type'}.$e->{'num'}."</a>",
+			&ui_link("edit_device.cgi?num=$e->{'num'}","$e->{'type'}.$e->{'num'}"),
 			$text{'devices_mode_'.$e->{'mode'}} ||
 			  uc($e->{'mode'}),
 			join("&nbsp;|&nbsp;",

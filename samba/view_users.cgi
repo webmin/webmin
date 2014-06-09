@@ -35,8 +35,7 @@ else {
 	}
 @locks = &list_locks();
 
-@rightlinks = ( "<a href='view_users.cgi?$in'>".
-		$text{'viewu_refresh'}."</a>" );
+@rightlinks = ( &ui_link("view_users.cgi?$in",$text{'viewu_refresh'}) );
 if (@cons) {
 	print &ui_form_start("kill_users.cgi");
 	print &ui_hidden("share", $in{'share'});

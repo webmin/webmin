@@ -20,8 +20,7 @@ if (@secs) {
 			$desc = &text('secrets_mod', "<tt>".substr($1, 0, 20)."..</tt>");
 			}
 		print &ui_columns_row([
-			"<a href='edit_secret.cgi?idx=$s->{'idx'}'>".
-			($s->{'name'} || $text{'secrets_any'})."</a>",
+			&ui_link("edit_secret.cgi?idx=$s->{'idx'}","($s->{'name'} || $text{'secrets_any'})"),
 			$text{'secrets_'.lc($s->{'type'})} || uc($s->{'type'}),
 			$desc,
 			]);

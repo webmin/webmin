@@ -25,7 +25,7 @@ $odir = &find_value("output_dir", $conf);
 $odir ||= &find_value("output_dir", $conf, 1);
 if ($rv && -r "$odir/index.html") {
 	print "<b>$text{'gen_done'}</b><p>\n";
-	print "<a href='view.cgi/index.html'>$text{'gen_view'}</a><p>\n";
+	print &ui_link("view.cgi/index.html","$text{'gen_view'}")."<p>\n";
 	}
 elsif ($rv) {
 	print "<b>$text{'gen_nothing'}</b><p>\n";

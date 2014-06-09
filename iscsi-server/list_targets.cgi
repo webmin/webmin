@@ -24,8 +24,7 @@ if (@targets) {
 	my %omap = map { $_->{'type'}.$_->{'num'}, $_ } @$conf;
 	foreach my $e (@targets) {
 		print &ui_checked_columns_row([
-			"<a href='edit_target.cgi?num=$e->{'num'}'>".
-			  $e->{'type'}.$e->{'num'}."</a>",
+			&ui_link("edit_target.cgi?num=$e->{'num'}","$e->{'type'}.$e->{'num'}"),
 			$text{'targets_flags_'.$e->{'flags'}} ||
 			  uc($e->{'flags'}),
 			&describe_object($omap{$e->{'export'}}),

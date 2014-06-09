@@ -122,7 +122,7 @@ else {
 		$i = 0;
 		foreach $u (@users) {
 			print "<tr>\n" if ($i%4 == 0);
-			print "<td width=25%><a href='edit_user.cgi?user=$u->[1]->[0]'>$u->[1]->[0]</a></td>\n";
+			print &ui_link("edit_user.cgi?user=$u->[1]->[0]","$u->[1]->[0]")."</td>\n";
 			print "</tr>\n" if ($i%4 == 3);
 			$i++;
 			}

@@ -1,5 +1,0 @@
-name=Cluster Software
-desc=Cluster Software Packages
-os_support=redhat-linux open-linux msc-linux
-depends=software
-category=cluster

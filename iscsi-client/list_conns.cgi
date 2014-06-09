@@ -24,8 +24,7 @@ if (@$conns) {
 		100, 0, \@tds);
 	foreach my $c (@$conns) {
 		print &ui_checked_columns_row([
-			"<a href='view_conn.cgi?num=$c->{'num'}'>".
-			  $c->{'ip'}."</a>",
+			&ui_link("view_conn.cgi?num=$c->{'num'}",$c->{'ip'}),
 			$c->{'port'},
 			$c->{'iface'},
 			$c->{'name'},

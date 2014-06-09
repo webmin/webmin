@@ -1,5 +1,0 @@
-name=Heartbeat
-desc=Heartbeat Monitor
-category=system
-depends=init
-os_support=msc-linux redhat-linux open-linux slackware-linux debian-linux suse-linux corel-linux turbo-linux cobalt-linux mandrake-linux

@@ -20,8 +20,7 @@ if (@sdirectors) {
 		$pass = &find_value("Password", $f->{'members'});
 		print &ui_columns_row([
 			&ui_checkbox("d", $name),
-			"<a href='edit_sdirector.cgi?name=".&urlize($name)."'>".
-			$name."</a>",
+			&ui_link("edit_sdirector.cgi?name=".&urlize($name)",$name),
 			$pass,
 			], \@tds);
 		}

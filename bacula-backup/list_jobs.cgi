@@ -29,8 +29,7 @@ if (@jobs) {
 		$fileset = &find_value("FileSet", $f->{'members'});
 		$schedule = &find_value("Schedule", $f->{'members'});
 		print &ui_checked_columns_row([
-			"<a href='edit_job.cgi?name=".&urlize($name)."'>".
-			$name."</a>",
+			&ui_link("edit_job.cgi?name=".&urlize($name)",$name),
 			$f->{'name'} eq 'Job' ? $text{'no'} : $text{'yes'},
 			$type || "<i>$text{'default'}</i>",
 			$client || "<i>$text{'default'}</i>",

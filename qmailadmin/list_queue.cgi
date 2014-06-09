@@ -54,7 +54,7 @@ if (@queue) {
 		$q = $queue[$i];
 		print "<tr $cb>\n";
 		print "<td><input type=checkbox name=file value=$q->{'file'}></td>\n";
-		print "<td><a href='view_queue.cgi?file=$q->{'file'}'>$q->{'id'}</a></td>\n";
+		print &ui_link("view_queue.cgi?file=$q->{'file'}",$q->{'id'})."</td>\n";
 		print "<td>$q->{'date'}</td>\n";
 		print "<td>",&html_escape($q->{'from'}),"</td>\n";
 		print "<td>",&html_escape($q->{'to'}),"</td>\n";

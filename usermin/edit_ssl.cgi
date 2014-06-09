@@ -99,8 +99,7 @@ if (@ipkeys) {
 				  $text{'ssl_cert'} ]);
 	foreach $k (@ipkeys) {
 		print &ui_columns_row([
-			"<a href='edit_ipkey.cgi?idx=$k->{'index'}'>".
-			join(", ", @{$k->{'ips'}})."</a>",
+			&ui_link("edit_ipkey.cgi?idx=$k->{'index'}",join(", ", @{$k->{'ips'}})),
 			"<tt>$k->{'key'}</tt>",
 			$k->{'cert'} ? "<tt>$k->{'cert'}</tt>"
 				     : $text{'ssl_cert_def'},

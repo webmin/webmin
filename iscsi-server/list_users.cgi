@@ -20,8 +20,7 @@ if (@users) {
 				  $text{'users_mode'} ], 50, 0, \@tds);
 	foreach my $e (@users) {
 		print &ui_checked_columns_row([
-			"<a href='edit_user.cgi?user=$e->{'user'}'>".
-			  &html_escape($e->{'user'})."</a>",
+			&ui_link("edit_user.cgi?user=$e->{'user'}",&html_escape($e->{'user'})),
 			uc($e->{'mode'}),
 			], \@tds, "d", $e->{'user'});
 		}

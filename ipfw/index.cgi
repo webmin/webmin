@@ -111,8 +111,7 @@ elsif (@$rules && !$in{'reset'}) {
 
 		local ($ls, $le);
 		if ($r->{'index'} <= $lastidx) {
-			$ls = "<a href='edit_rule.cgi?idx=$r->{'index'}'>";
-			$le = "</a>";
+			$ls = &ui_link("edit_rule.cgi?idx=$r->{'index'}","$le =");
 			}
 		local $act = $amap{int($r->{'num'})};
 		print &ui_checked_columns_row(

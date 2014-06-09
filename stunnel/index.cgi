@@ -63,8 +63,7 @@ if (@tunnels) {
 			}
 		else {
 			push(@cols,
-			    "<a href='edit_stunnel.cgi?idx=$t->{'index'}'>".
-			    &html_escape($t->{'name'})."</a>");
+			    &ui_link("edit_stunnel.cgi?idx=$t->{'index'}",&html_escape($t->{'name'})));
 			}
 		push(@cols, &html_escape($t->{'port'}));
 		push(@cols, $t->{'active'} ? $text{'yes'} :

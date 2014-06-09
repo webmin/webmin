@@ -20,7 +20,7 @@ print "<tr $cb> <td><table width=100%>\n";
 print "<tr> <td><b>$text{'host_name'}</b></td>\n";
 if ($server->{'id'}) {
 	$h = $server->{'realhost'} || $server->{'host'};
-	printf "<td><a href='/servers/link.cgi/%s/'>%s</a></td>\n",
+	printf &ui_link("/servers/link.cgi/%s/","%s")."</td>\n",
 		$server->{'id'}, $server->{'desc'} ? "$server->{'desc'} ($h:$server->{'port'})" : "$h:$server->{'port'}";
 	}
 else {

@@ -22,8 +22,7 @@ if (@pools) {
 		$type = &find_value("Pool Type", $f->{'members'});
 		$reten = &find_value("Volume Retention", $f->{'members'});
 		print &ui_checked_columns_row([
-			"<a href='edit_pool.cgi?name=".&urlize($name)."'>".
-			$name."</a>",
+			&ui_link("edit_pool.cgi?name=".&urlize($name)",$name),
 			$type,
 			$reten,
 			], \@tds, "d", $name);

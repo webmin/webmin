@@ -25,8 +25,7 @@ if (@{$s->{'data'}}) {
 				  $text{'group_mems'} ], 100, 0, \@tds);
 	foreach $g (@{$s->{'data'}}) {
 		local @cols;
-		push(@cols, "<a href='edit_group.cgi?gid=$g->[1]'>".
-			    &html_escape($g->[0])."</a>");
+		push(@cols, &ui_link("edit_group.cgi?gid=$g->[1]",&html_escape($g->[0])));
 		push(@cols, $g->[1]);
 		push(@cols, join("&nbsp;|&nbsp;",
 		     map { &html_escape($uid{$_}) } &split_array($g->[2])));

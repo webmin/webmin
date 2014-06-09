@@ -22,8 +22,7 @@ if (@clients) {
 		$addr = &find_value("Address", $f->{'members'});
 		$cat = &find_value("Catalog", $f->{'members'});
 		print &ui_checked_columns_row([
-			"<a href='edit_client.cgi?name=".&urlize($name)."'>".
-			$name."</a>",
+			&ui_link("edit_client.cgi?name=".&urlize($name)",$name),
 			$addr,
 			$cat,
 			], \@tds, "d", $name);
@@ -34,7 +33,7 @@ if (@clients) {
 	}
 else {
 	print "<b>$text{'clients_none'}</b><p>\n";
-	print &ui_link("edit_client.cgi?new=1",$text{'clients_add'})<br>\n";
+	print &ui_link("edit_client.cgi?new=1",$text{'clients_add'})."<br>\n";
 	}
 
 &ui_print_footer("", $text{'index_return'});

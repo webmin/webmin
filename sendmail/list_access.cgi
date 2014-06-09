@@ -74,8 +74,7 @@ if (@accs) {
 	print &ui_links_row(\@links);
 	print &ui_form_end([ [ "delete", $text{'access_delete'} ] ]);
 	}
-print "<a href='edit_file.cgi?mode=access'>",
-	&text('file_edit', "<tt>$afile</tt>"),"</a><p>\n"
+print &ui_link("edit_file.cgi?mode=access",&text('file_edit', "<tt>$afile</tt>"))."<p>\n"
 	if ($access{'manual'});
 print $text{'access_desc1'},"<p>\n";
 

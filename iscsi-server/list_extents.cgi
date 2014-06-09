@@ -23,8 +23,7 @@ if (@extents) {
 				  $text{'extents_size'} ], 100, 0, \@tds);
 	foreach my $e (@extents) {
 		print &ui_checked_columns_row([
-			"<a href='edit_extent.cgi?num=$e->{'num'}'>".
-			  $e->{'type'}.$e->{'num'}."</a>",
+			&ui_link("edit_extent.cgi?num=$e->{'num'}","$e->{'type'}.$e->{'num'}"),
 			&mount::device_name($e->{'device'}),
 			&nice_size($e->{'start'}),
 			&nice_size($e->{'size'}),

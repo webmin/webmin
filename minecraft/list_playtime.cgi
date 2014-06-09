@@ -19,8 +19,7 @@ if (keys %$playtime) {
 	foreach my $u (sort { $playtime->{$b} <=> $playtime->{$a} }
 			    keys %$playtime) {
 		print &ui_columns_row([
-			"<a href='view_conn.cgi?name=".&urlize($u)."'>".
-			  &html_escape($u)."</a>",
+			&ui_link("view_conn.cgi?name=".&urlize($u)","&html_escape($u)"),
 			&nice_seconds($playtime->{$u}),
 			&nice_seconds($limit_playtime->{$u} || 0),
 			&indexof($u, @conns) >= 0 ?
