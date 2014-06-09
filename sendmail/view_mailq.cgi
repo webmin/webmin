@@ -114,7 +114,7 @@ if (@attach) {
 			}
 		else {
 			print &ui_columns_row([
-				&ui_link("qdetach.cgi/$a->{'filename'}?file=$qfile&attach=$a->{'idx'}$subs","$a->{'filename'}")."",
+				&ui_link("qdetach.cgi/$a->{'filename'}?file=$qfile&attach=$a->{'idx'}$subs","$a->{'filename'}"),
 				$a->{'type'},
 				&nice_size(length($a->{'data'})),
 				]);
