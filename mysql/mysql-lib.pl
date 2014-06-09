@@ -1415,7 +1415,13 @@ local $quotingsql = &supports_quoting() ? "--quote-names" : "";
 local $routinessql = &supports_routines() ? "--routines" : "";
 local $tablessql = join(" ", map { quotemeta($_) } @$tables);
 local $eventssql = &supports_mysqldump_events() ? "--events" : "";
-local $cmd = "$config{'mysqldump'} $authstr $dropsql $singlesql $quicksql $wheresql $charsetsql $compatiblesql $quotingsql $routinessql ".quotemeta($db)." $tablessql $eventssql 2>&1 $writer";
+local $gtidsql = "";
+local $d = &execute_sql($master_db, "show variables like 'gtid_mode'");
+if (@{$d->{'data'}} && uc($d->{'data'}->[0]->[1]) eq 'ON') {
+	# Add flag to support GTIDs
+	$gtidsql = "--set-gtid-purgerd=OFF";
+	}
+local $cmd = "$config{'mysqldump'} $authstr $dropsql $singlesql $quicksql $wheresql $charsetsql $compatiblesql $quotingsql $routinessql ".quotemeta($db)." $tablessql $eventssql $gtidsql 2>&1 $writer";
 if ($user && $user ne "root") {
 	$cmd = &command_as_user($user, undef, $cmd);
 	}
