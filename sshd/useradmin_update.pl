@@ -19,13 +19,19 @@ if ($config{'sync_create'} && &has_command($config{'keygen_path'}) &&
 		}
 	&system_logged("echo '' | su $_[0]->{'user'} -c '$cmd' >/dev/null 2>&1");
 	if ($config{'sync_auth'}) {
+		my $akeys = "$_[0]->{'home'}/.ssh/authorized_keys";
+		&lock_file($akeys);
 		if (-r "$_[0]->{'home'}/.ssh/identity.pub") {
-			&system_logged("cp $_[0]->{'home'}/.ssh/identity.pub $_[0]->{'home'}/.ssh/authorized_keys");
+			&copy_source_dest("$_[0]->{'home'}/.ssh/identity.pub", $akeys);
+			}
+		elsif (-r "$_[0]->{'home'}/.ssh/id_rsa.pub") {
+			&copy_source_dest("$_[0]->{'home'}/.ssh/id_rsa.pub", $akeys);
 			}
 		else {
-			&system_logged("cp $_[0]->{'home'}/.ssh/id_dsa.pub $_[0]->{'home'}/.ssh/authorized_keys");
+			&copy_source_dest("$_[0]->{'home'}/.ssh/id_dsa.pub", $akeys);
 			}
-		&system_logged("chown $_[0]->{'uid'}:$_[0]->{'gid'} $_[0]->{'home'}/.ssh/authorized_keys");
+		&set_ownership_permissions($_[0]->{'uid'}, $_[0]->{'gid'}, undef, $akeys);
+		&unlock_file($akeys);
 		}
 	}
 }
