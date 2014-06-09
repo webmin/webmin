@@ -104,7 +104,7 @@ if (@attach) {
 			}
 		else {
 			print &ui_columns_row([
-				"<a href='detach_queue.cgi/$a->{'filename'}?id=$in{'id'}&attach=$a->{'idx'}$subs'>$a->{'filename'}</a>",
+				&ui_link("detach_queue.cgi/$a->{'filename'}?id=$in{'id'}&attach=$a->{'idx'}$subs",$a->{'filename'}),
 				$a->{'type'},
 				&nice_size(length($a->{'data'})),
 				]);

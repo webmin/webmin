@@ -146,7 +146,7 @@ if (@conf) {
 		push(@tds, "width=32");
 
 		# Add before/after links
-		push(@cols, &ui_link("edit_recipe.cgi?new=1&after=$c->{'index'}","<img src=images/after.gif border=0>")."");
+		push(@cols, &ui_link("edit_recipe.cgi?new=1&after=$c->{'index'}","<img src=images/after.gif border=0>"));
 		print &ui_checked_columns_row(\@cols, \@tds, "d",$c->{'index'});
 		}
 	print &ui_columns_end();
@@ -165,7 +165,7 @@ print &ui_buttons_row("manual_form.cgi",
 		      $text{'index_man'}, $text{'index_mandesc'});
 print &ui_buttons_end();
 
-print "<a href='manual_form.cgi'>$text{'index_manual'}</a>\n";
+print &ui_link("manual_form.cgi","$text{'index_manual'}")."\n";
 print "<p>\n";
 
 &ui_print_footer("/", $text{'index'});

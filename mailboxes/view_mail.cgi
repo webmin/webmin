@@ -200,7 +200,7 @@ if (@attach) {
 	# Links to download all / slideshow
 	@links = ( );
 	if (@attach > 1) {
-		push(@links, "<a href='detachall.cgi/attachments.zip?folder=$in{'folder'}&idx=$in{'idx'}&user=$uuser$subs'>$text{'view_aall'}</a>");
+		push(@links, &ui_link("detachall.cgi/attachments.zip?folder=$in{'folder'}&idx=$in{'idx'}&user=$uuser$subs","$text{'view_aall'}"));
 		}
 	@iattach = grep { $_->{'type'} =~ /^image\// } @attach;
 	if (@iattach > 1) {
