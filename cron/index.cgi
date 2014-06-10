@@ -180,13 +180,25 @@ foreach $u (@ulist) {
 		local $prv = $i > 0 ? $plist[$i-1]->[0] : undef;
 		local $nxt = $i != $#plist ? $plist[$i+1]->[0] : undef;
 		if ($access{'move'}) {
+			local $canup = $prv &&
+				$prv->{'file'} eq $job->{'file'} &&
+				($job->{'type'} == 0 || $job->{'type'} == 3);
+			local $candown = $nxt &&
+				$nxt->{'file'} eq $job->{'file'} &&
+				($job->{'type'} == 0 || $job->{'type'} == 3);
+			local $mover = "move.cgi?search=".
+				       &urlize($in{'search'})."&idx=$idx";
 			push(@cols, &ui_up_down_arrows(
-				"move.cgi?idx=$idx&up=1",
-				"move.cgi?idx=$idx&down=1",
-				$prv && $prv->{'file'} eq $job->{'file'} &&
-				 ($job->{'type'} == 0 || $job->{'type'} == 3),
-				$nxt && $nxt->{'file'} eq $job->{'file'} &&
-				 ($job->{'type'} == 0 || $job->{'type'} == 3)
+				"$mover&up=1",
+				"$mover&down=1",
+				$canup, $candown,
+			        ));
+			push(@cols, &ui_up_down_arrows(
+				"$mover&top=1",
+				"$mover&bottom=1",
+				$canup, $candown,
+				"images/top.gif",
+				"images/bottom.gif",
 			        ));
 			}
 
@@ -235,7 +247,7 @@ elsif (@rows) {
 		$config{'show_comment'} || $userconfig{'show_comment'} ?
 		  ( $text{'index_comment'} ) : ( ),
 		$config{'show_run'} ? ( $text{'index_run'} ) : ( ),
-		$access{'move'} ? ( $text{'index_move'} ) : ( ),
+		$access{'move'} ? ( $text{'index_move'}, "" ) : ( ),
 		], 100, 0, \@tds);
 	foreach my $r (@rows) {
 		print &ui_checked_columns_row([ @$r[1..(@$r-2)] ],

@@ -2224,23 +2224,29 @@ Returns HTML for moving some objects in a table up or down. The parameters are :
 
 =item down-show - Set to 1 if the down-arrow should be shown, 0 if not.
 
+=item up-icon - Optional path to icon for up link
+
+=item down-icon - Optional path to icon for down link
+
 =cut
 sub ui_up_down_arrows
 {
 return &theme_ui_up_down_arrows(@_) if (defined(&theme_ui_up_down_arrows));
-my ($uplink, $downlink, $upshow, $downshow) = @_;
+my ($uplink, $downlink, $upshow, $downshow, $upicon, $downicon) = @_;
 my $mover;
 my $imgdir = "$gconfig{'webprefix'}/images";
+$upicon ||= "$imgdir/moveup.gif";
+$downicon ||= "$imgdir/movedown.gif";
 if ($downshow) {
-	$mover .= "<a class='ui_up_down_arrows_down' href=\"$downlink\">".
-		  "<img class='ui_up_down_arrows_down' src=$imgdir/movedown.gif border=0></a>";
+	$mover .= "<a class='ui_up_down_arrows_down' href='$downlink'>".
+	  "<img class='ui_up_down_arrows_down' src='$downicon' border=0></a>";
 	}
 else {
 	$mover .= "<img class='ui_up_down_arrows_gap' src='$imgdir/movegap.gif'>";
 	}
 if ($upshow) {
-	$mover .= "<a class='ui_up_down_arrows_up' href=\"$uplink\">".
-		  "<img class='ui_up_down_arrows_up' src='$imgdir/moveup.gif' border=0></a>";
+	$mover .= "<a class='ui_up_down_arrows_up' href='$uplink'>".
+	  "<img class='ui_up_down_arrows_up' src='$upicon' border=0></a>";
 	}
 else {
 	$mover .= "<img class='ui_up_down_arrows_gap' src='$imgdir/movegap.gif'>";

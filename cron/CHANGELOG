@@ -39,3 +39,5 @@ Converted commands in the module's API file to POD format, and added more detail
 Added a Module Config option to add new cron jobs to a specific file, like /etc/cron.d/webmin, instead of users' personal crontab files.
 ---- Changes since 1.670 ----
 Fixed a security hole what could be exploited by passing in an invalid username.
+---- Changes since 1.690 ----
+Added buttons to move cron jobs to the top and bottom of the list.
