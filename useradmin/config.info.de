@@ -64,5 +64,5 @@ master_file=BSD-Master-Passwort-Datei,3
 gshadow_file=Shadow-Gruppen-Datei,3
 netinfo_domain=NetInfo Domain&#44; die administriert werden soll,3,Lokale Domaine (<tt>.</tt>)
 lock_string=Ersetze Passwort f&#252;r gesperrte Konten mit,0
-lock_prepend=Vorsetzen eins Passwort f&#252;r vor&#252;bergehend deaktivierte Konten,3,Standard (!)
+lock_prepend=Vorsetzen eines Passwortes f&#252;r vor&#252;bergehend deaktivierte Konten,3,Standard (!)
 nscd_restart=Befehl zum Neustarten von nscd,3,Sende HUP-Signal
