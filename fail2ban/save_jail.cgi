@@ -76,7 +76,7 @@ else {
 
 	# Validate various counters
 	foreach my $f ("maxretry", "findtime", "bantime") {
-		$in{$f.'_def'} || $in{$f} =~ /^[1-9]\d*$/ ||
+		$in{$f.'_def'} || $in{$f} =~ /^\-?[1-9]\d*$/ ||
 			&error($text{'jail_e'.$f});
 		}
 

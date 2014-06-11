@@ -15,7 +15,7 @@ $jail || &error($text{'jaildef_egone'});
 
 # Validate inputs
 foreach my $f ("maxretry", "findtime", "bantime") {
-	$in{$f.'_def'} || $in{$f} =~ /^[1-9]\d*$/ ||
+	$in{$f.'_def'} || $in{$f} =~ /^\-?[1-9]\d*$/ ||
 		&error($text{'jail_e'.$f});
 	}
 $in{'destemail_def'} || $in{'destemail'} =~ /^\S+(\@\S+)?$/ ||
