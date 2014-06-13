@@ -132,6 +132,12 @@ if (($table->{'name'} eq 'nat' && $rule->{'chain'} ne 'POSTROUTING') &&
 			$dpfrom = $5;
 			$dpto = $7;
 			}
+		elsif ($rule->{'to-destination'}->[1] =~ /^(:(\d+)(\-(\d+))?)?$/) {
+			$dipfrom = "";
+			$dipto = "";
+			$dpfrom = $2;
+			$dpto = $4;
+			}
 		}
 	print &ui_table_row($text{'edit_dnat'},
 		&ui_radio("dnatdef", $dipfrom eq "" ? 1 : 0,

@@ -89,7 +89,7 @@ else {
 		}
 	if ($table->{'name'} eq 'nat' && $rule->{'chain'} ne 'POSTROUTING') {
 		if ($rule->{'j'}->[1] eq 'DNAT' && !$in{'dnatdef'}) {
-			&check_ipaddress($in{'dipfrom'}) ||
+			!$in{'dipfrom'} || &check_ipaddress($in{'dipfrom'}) ||
 				&error($text{'save_edipfrom'});
 			!$in{'dipto'} || &check_ipaddress($in{'dipto'}) ||
 				&error($text{'save_edipto'});
