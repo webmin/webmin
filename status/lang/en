@@ -226,8 +226,17 @@ proc_asuser=Running as user
 proc_anyuser=Any user
 proc_easuser=User for process to run as does not exist
 
-exec_cmd=Command to check exit status of
+exec_cmd=Command to run
+exec_mode=Exit status check
+exec_mode0=Fail monitor if command fails
+exec_mode1=Fail monitor if command succeeds
+exec_mode2=Ignore success or failure
 exec_ecmd=Missing command
+exec_regexp=Compare output to regexp
+exec_noregexp=Don't check
+exec_remode=Regexp check
+exec_remode0=Fail if output doesn't match
+exec_remode1=Fail if output does match
 
 file_file=File, directory or pattern to check
 file_test=Test to perform
