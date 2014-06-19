@@ -38,15 +38,15 @@ print &ui_table_row($text{'exec_mode'},
 	&ui_radio("mode", $_[0]->{'mode'} || 0,
 		  [ [ 0, $text{'exec_mode0'} ],
 		    [ 1, $text{'exec_mode1'} ],
-		    [ 2, $text{'exec_mode2'} ] ]));
+		    [ 2, $text{'exec_mode2'} ] ]), 3);
 
 print &ui_table_row($text{'exec_regexp'},
-	&ui_opt_textbox("regexp", $_[0]->{'regexp'}, 40, $text{'exec_noregexp'}));
+	&ui_opt_textbox("regexp", $_[0]->{'regexp'}, 60, $text{'exec_noregexp'}), 3);
 
 print &ui_table_row($text{'exec_remode'},
 	&ui_radio("remode", $_[0]->{'remode'} || 0,
 		  [ [ 0, $text{'exec_remode0'} ],
-		    [ 1, $text{'exec_remode1'} ] ]));
+		    [ 1, $text{'exec_remode1'} ] ]), 3);
 }
 
 sub parse_exec_dialog
