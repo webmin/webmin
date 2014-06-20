@@ -234,6 +234,11 @@ for(my $i=0; $i<@sp1 || $i<@sp2; $i++) {
 				}
 			}
 		}
+	elsif ($v1 =~ /^([^0-9]+)(\d+)$/ && $v2 !~ /^([^0-9]+)(\d+)$/ &&
+	       $1 ne $2) {
+		# Strings that are the same followed by numeric
+		$comp = $v1 <=> $v2;
+		}
 	elsif ($v1 =~ /^\d+$/ && $v2 !~ /^\d+$/) {
 		# Numeric compared to non-numeric - numeric is always higher
 		$comp = 1;
