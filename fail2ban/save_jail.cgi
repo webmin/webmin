@@ -53,11 +53,20 @@ else {
 			push(@opts, "name=".$in{"name_$i"});
 			}
 		if ($in{"port_$i"}) {
-			$in{"port_$i"} =~ /^\d+$/ ||
-			    getservbyname($in{"port_$i"},
+			my @p = split(/,/, $in{"port_$i"});
+			foreach my $p (split(/,/, $in{"port_$i"})) {
+				$p =~ /^\d+$/ ||
+				  $p =~ /^\d+:\d+$/ ||
+				    getservbyname($p,
 					  $in{"protocol_$i"} || "tcp") ||
-				&error(&text('jail_eport', $i+1));
-			push(@opts, "port=".$in{"port_$i"});
+					&error(&text('jail_eport', $i+1));
+				}
+			if (@p > 1) {
+				push(@opts, "port="."\"".$in{"port_$i"}."\"");
+				}
+			else {
+				push(@opts, "port=".$in{"port_$i"});
+				}
 			}
 		if ($in{"protocol_$i"}) {
 			push(@opts, "protocol=".$in{"protocol_$i"});
