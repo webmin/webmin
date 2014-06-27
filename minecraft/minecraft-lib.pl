@@ -176,6 +176,23 @@ return $config{'minecraft_dir'}."/input.fifo";
 # Launch the minecraft server in the background
 sub start_minecraft_server
 {
+# Mark EULA as accepted
+my $eula = $config{'minecraft_dir'}."/eula.txt";
+my $lref = &read_file_lines($eula);
+my $changed = 0;
+foreach my $l (@$lref) {
+	if ($l =~ /eula=false/) {
+		$l =~ s/false/true/;
+		$changed++;
+		}
+	}
+if ($changed) {
+	&flush_file_lines($eula);
+	}
+else {
+	&unflush_file_lines($eula);
+	}
+
 my $cmd = &get_start_command();
 my $pidfile = &get_pid_file();
 &unlink_file($pidfile);
