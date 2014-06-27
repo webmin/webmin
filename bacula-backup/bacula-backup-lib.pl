@@ -917,14 +917,26 @@ foreach my $l (split(/\r?\n/, $status)) {
 	elsif ($l =~ /^Running\s+Jobs/i) { $sect = 2; }
 	elsif ($l =~ /^Terminated\s+Jobs/i) { $sect = 3; }
 
-	if ($sect == 1 && $l =~ /^\s*(\S+)\s+(\S+)\s+(\d+)\s+(\S+\s+\S+)\s+(\S+)\s+(\S+)\s*$/) {
-		# Scheduled job
+	if ($sect == 1 && $l =~ /^\s*(\S+)\s+(\S+)\s+(\d+)\s+(\S+\s+\S+(\s+\d+:\d+)?)\s+(\S+)\s+(\S+)\s*$/) {
+		# Scheduled job, like 
+		# Full Backup 10 27-Jun-14 17:30 ykfdc1-BackupJob wkly_1736
 		push(@sched, { 'level' => &full_level("$1"),
 			       'type' => $2,
 			       'pri' => $3,
 			       'date' => $4,
-			       'name' => $5,
-			       'volume' => $6 });
+			       'name' => $6,
+			       'volume' => $7 });
+		}
+	elsif ($sect == 2 && $l =~ /^\s*(\d+)\s+(\S+)\s+(\S+)\s+([0-9,]+)\s+([0-9,]+\.[0-9,]+\s+\S+|\d+)\s+(\S+)\s+(.*)/) {
+		# Running job, like
+		# 6252 Back Full 0 0 File1-BackupJob is running
+		push(@run, { 'id' => $1,
+			     'type' => $2,
+			     'level' => &full_level("$3"),
+			     'files' => &remove_comma("$4"),
+			     'bytes' => &remove_comma("$5"),
+			     'name' => $6,
+			     'status' => $7 });
 		}
 	elsif ($sect == 2 && $l =~ /^\s*(\d+)\s+(\S+)\s+(\S+)\.(\d+\-\d+\-\S+)\s+(.*)/) {
 		# Running job
