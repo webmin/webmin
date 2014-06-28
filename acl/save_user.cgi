@@ -152,16 +152,17 @@ if ($in{'old'}) {
 		push(@mods, $m) if (!$mcan{$m});
 		}
 	}
-if ($base_remote_user eq $in{'old'} &&
-    &indexof("acl", @mods) == -1 &&
-    (!$newgroup || &indexof("acl", @{$newgroup->{'modules'}}) == -1)) {
-	&error($text{'save_edeny'});
-	}
 
 if ($oldgroup) {
 	# Remove modules from the old group
 	@mods = grep { &indexof($_, @{$oldgroup->{'modules'}}) < 0 }
 		     @mods;
+	}
+
+if ($base_remote_user eq $in{'old'} &&
+    &indexof("acl", @mods) == -1 &&
+    (!$newgroup || &indexof("acl", @{$newgroup->{'modules'}}) == -1)) {
+	&error($text{'save_edeny'});
 	}
 
 if (!$in{'old'} && $access{'perms'}) {
