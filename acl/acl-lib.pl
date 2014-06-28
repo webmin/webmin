@@ -385,7 +385,7 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 			my $value = $user->{$attr};
 			if ($attr eq "olds" || $attr eq "modules" ||
 			    $attr eq "ownmods") {
-				$value = join(" ", @$value);
+				$value = $value ? join(" ", @$value) : "";
 				}
 			$cmd->execute($id, $attr, $value) ||
 				&error("Failed to add user attribute : ".
@@ -407,7 +407,7 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 				 $attr eq "modules");
 			my $value = $user->{$attr};
 			if ($attr eq "olds" || $attr eq "ownmods") {
-				$value = join(" ", @$value);
+				$value = $value ? join(" ", @$value) : "";
 				}
 			push(@webminattrs,
 			     defined($value) ? $attr."=".$value : $attr);
@@ -560,7 +560,7 @@ if ($user->{'proto'}) {
 			my $value = $user->{$attr};
 			if ($attr eq "olds" || $attr eq "modules" ||
 			    $attr eq "ownmods") {
-				$value = join(" ", @$value);
+				$value = $value ? join(" ", @$value) : "";
 				}
 			$cmd->execute($user->{'id'}, $attr, $value) ||
 				&error("Failed to add user attribute : ".
@@ -950,7 +950,7 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 			my $value = $group->{$attr};
 			if ($attr eq "members" || $attr eq "modules" ||
 			    $attr eq "ownmods") {
-				$value = join(" ", @$value);
+				$value = $value ? join(" ", @$value) : "";
 				}
 			$cmd->execute($id, $attr, $value) ||
 				&error("Failed to add group attribute : ".
@@ -1048,7 +1048,7 @@ if ($group->{'proto'}) {
 			my $value = $group->{$attr};
 			if ($attr eq "members" || $attr eq "modules" ||
 			    $attr eq "ownmods") {
-				$value = join(" ", @$value);
+				$value = $value ? join(" ", @$value) : "";
 				}
 			$cmd->execute($group->{'id'}, $attr, $value) ||
 				&error("Failed to add group attribute : ".
