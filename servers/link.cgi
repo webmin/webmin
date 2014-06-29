@@ -174,6 +174,11 @@ if ($header{'content-type'} =~ /text\/html/ && !$header{'x-no-links'}) {
 		s/param\s+name=config\s+value="(\/[^']*)"/param name=config value="$url$1"/gi;
 		s/param\s+name=config\s+value=(\/[^']*)/param name=config value=$url$1/gi;
 		print;
+		if (/<applet.*archive=file.jar.*>/) {
+			# Remote webmin file manager applet - give it the 
+			# session ID on *this* system
+			print "<param name=session value=\"$main::session_id\">\n";
+			}
 		}
 	}
 elsif ($header{'content-type'} =~ /text\/css/ && !$header{'x-no-links'}) {
