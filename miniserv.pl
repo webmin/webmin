@@ -1871,8 +1871,6 @@ if ($config{'userfile'}) {
 		local ($u, $unauth);
 		foreach $u (@unauth) {
 			$unauth++ if ($simple =~ /$u/);
-			$unauth++ if ($simple =~ /^\/servers\/link.cgi(.*)$/ &&
-				      "$1" =~ /$u/);
 			}
 		if (!$bogus && $unauth) {
 			# Unauthenticated directory or file request - approve it
