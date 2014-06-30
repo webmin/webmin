@@ -201,7 +201,7 @@ index_reset=Setze Firewall zur&#252;ck
 index_return=Regelliste
 index_rsetup=Die IPtables-Firewall-Konfiguration auf Ihrem System ist dabei neu eingerichtet zu werden. Webmin richtet neue Standard-Regeln ein, die in der Datei $1 gespeichert werden, mit den initialen Einstellungen basierend Ihrer Firewall-Typ-Auswahl unten ..
 index_saveex=Speichere Firewall Regeln
-index_setup=Kein IPtables-Firewall wurde bisher auf Ihrem System eingerichtet. Webmin kann das f&#252;r Sie erledigen und dies in der Datei $1 gespeichen, mit den initialen Einstellungen basierend Ihre Firewall-Typ Auswahl unten..
+index_setup=Keine IPtables-Firewall wurde bisher auf Ihrem System eingerichtet. Webmin kann das f&#252;r Sie erledigen und dies in der Datei $1, mit den initialen Einstellungen basierend Ihre Firewall-Typ Auswahl unten, speichern..
 index_shorewall=Warnung! Es scheint, dass Shorewall verwendet wird, um das Firewall-System zu generieren. Vielleicht sollten Sie die <a href='$1'>Shoreline Firewall-Modul</a> verwenden.
 index_table_filter=Packet filtering (filter)
 index_table_mangle=Packet alteration (mangle)
