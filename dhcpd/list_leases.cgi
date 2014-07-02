@@ -34,6 +34,8 @@ foreach $subnet (@subnets) {
 			}
 		}
 	$subnet->{'ips'} = 0;
+	local @nw = split(/\./, $subnet->{'values'}->[0]);
+	local @nm = split(/\./, $subnet->{'values'}->[2]);
 	@ranges = &find("range", $subnet->{'members'});
 	foreach $pool (&find("pool", $subnet->{'members'})) {
 		push(@ranges, &find("range", $pool->{'members'}));
