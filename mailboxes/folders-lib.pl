@@ -3211,8 +3211,8 @@ foreach my $a (@$attach) {
 		}
 	elsif ($a->{'filename'}) {
 		# Known filename
-		push(@files, &decode_mimewords($a->{'filename'}));
 		$fn = &decode_mimewords($a->{'filename'});
+		push(@files, $fn);
 		push(@detach, [ $a->{'idx'}, $fn ]);
 		}
 	else {
