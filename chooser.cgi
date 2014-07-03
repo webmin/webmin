@@ -186,10 +186,10 @@ EOF
 
 		if ($f eq "..") {
 			$dir =~ /^(.*\/)[^\/]+\/$/;
-			$link = "<a href=\"\" onClick='parentdir(\"".quotemeta($1)."\"); return false'>";
+			$link = "<a href=\"\" onClick='parentdir(\"".&quote_javascript($1)."\"); return false'>";
 			}
 		else {
-			$link = "<a href=\"\" onClick='fileclick(\"".quotemeta("$dir$f")."\", $isdir); return false'>";
+			$link = "<a href=\"\" onClick='fileclick(\"".&quote_javascript("$dir$f")."\", $isdir); return false'>";
 			}
 		local @cols;
 		push(@cols, "$link<img border=0 src=$gconfig{'webprefix'}/images/$icon></a>");

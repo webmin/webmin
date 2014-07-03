@@ -24,7 +24,7 @@ if ($in{'multi'}) {
 		print "selr = new Array($len);\n";
 		for($i=0; $i<$len; $i++) {
 			print "sel[$i] = \"".
-			      quotemeta($ul[$i])."\";\n";
+			      &quote_javascript($ul[$i])."\";\n";
             
 			# samba valid system user can start with @ + &
 			$gn = $ul[$i];
@@ -32,7 +32,7 @@ if ($in{'multi'}) {
 			@uinfo = getpwnam($gn);
 			if (@uinfo) {
 				print "selr[$i] = \"".
-				      quotemeta($uinfo[6])."\";\n";
+				      &quote_javascript($uinfo[6])."\";\n";
 				}
 			else {
 				print "selr[$i] = \"???\";\n";

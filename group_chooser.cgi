@@ -31,7 +31,7 @@ if ($in{'multi'}) {
 		print "selr = new Array($len);\n";
 		for($i=0; $i<$len; $i++) {
 			print "sel[$i] = \"".
-			      quotemeta($ul[$i])."\";\n";
+			      &quote_javascript($ul[$i])."\";\n";
 
 			# samba valid system group can start with @ + &
 			$gn = $ul[$i];
@@ -44,7 +44,7 @@ if ($in{'multi'}) {
 						 @{$members{$ginfo[2]}} );
 				if (@mems > 3) { @mems = (@mems[0..1], "..."); }
 				print "selr[$i] = \"",
-				  quotemeta(join(' ', @mems)),"\";\n";
+				  &quote_javascript(join(' ', @mems)),"\";\n";
 				}
 			else { print "selr[$i] = \"???\";\n"; }
 			}
