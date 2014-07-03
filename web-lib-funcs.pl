@@ -202,6 +202,23 @@ $tmp =~ s/\'/&#39;/g if ($only eq '' || $only eq "'");
 return $tmp;
 }
 
+=head2 quote_javascript(string)
+
+Quote all characters that are unsafe for inclusion in javascript strings in HTML
+
+=cut
+sub quote_javascript
+{
+my ($str) = @_;
+$str =~ s/"/\\"/g;
+$str =~ s/'/\\'/g;
+$str =~ s/</\\</g;
+$str =~ s/>/\\>/g;
+$str =~ s/&/\\&/g;
+$str =~ s/\\/\\\\/g;
+return $str;
+}
+
 =head2 tempname([filename])
 
 Returns a mostly random temporary file name, typically under the /tmp/.webmin
@@ -2232,7 +2249,7 @@ my $cbfunc = $_[3];
 # read headers
 alarm(60);
 ($line = &read_http_connection($_[0])) =~ tr/\r\n//d;
-if ($line !~ /^HTTP\/1\..\s+(200|30[0-9])(\s+|$)/) {
+if ($line !~ /^HTTP\/1\..\s+(200|30[0-9]|400)(\s+|$)/) {
 	alarm(0);
 	if ($_[2]) { ${$_[2]} = $line; return; }
 	else { &error("Download failed : $line"); }
