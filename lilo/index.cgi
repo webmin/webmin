@@ -46,11 +46,11 @@ foreach $i (@images) {
 		      $default && $default eq $l ? "<b>$l</b>" : $l);
 	push(@links, "edit_$n.cgi?idx=$i->{'index'}");
 	}
-print &ui_link("edit_image.cgi?new=1",$text{'index_addk'}) &nbsp;\n";
-print &ui_link("edit_other.cgi?new=1",$text{'index_addp'})<br>\n";
+print &ui_link("edit_image.cgi?new=1",$text{'index_addk'}),"&nbsp;\n";
+print &ui_link("edit_other.cgi?new=1",$text{'index_addp'}),"<br>\n";
 &icons_table(\@links, \@titles, \@icons, 4);
-print &ui_link("edit_image.cgi?new=1",$text{'index_addk'}) &nbsp;\n";
-print &ui_link("edit_other.cgi?new=1",$text{'index_addp'})<p>\n";
+print &ui_link("edit_image.cgi?new=1",$text{'index_addk'}),"&nbsp;\n";
+print &ui_link("edit_other.cgi?new=1",$text{'index_addp'}),"<p>\n";
 print &ui_hr();
 
 print "<table width=100%>\n";

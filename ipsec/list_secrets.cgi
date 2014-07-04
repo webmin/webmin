@@ -20,7 +20,8 @@ if (@secs) {
 			$desc = &text('secrets_mod', "<tt>".substr($1, 0, 20)."..</tt>");
 			}
 		print &ui_columns_row([
-			&ui_link("edit_secret.cgi?idx=$s->{'idx'}","($s->{'name'} || $text{'secrets_any'})"),
+			&ui_link("edit_secret.cgi?idx=$s->{'idx'}",
+				 $s->{'name'} || $text{'secrets_any'}),
 			$text{'secrets_'.lc($s->{'type'})} || uc($s->{'type'}),
 			$desc,
 			]);
@@ -30,9 +31,9 @@ if (@secs) {
 else {
 	print "<b>$text{'secrets_none'}</b><p>\n";
 	}
-print &ui_link("edit_secret.cgi?new=1&type=psk",$text{'secrets_newpsk'})\n";
+print &ui_link("edit_secret.cgi?new=1&type=psk",$text{'secrets_newpsk'}),"\n";
 print "&nbsp;" x 2;
-print &ui_link("edit_secret.cgi?new=1&type=rsa",$text{'secrets_newrsa'})\n";
+print &ui_link("edit_secret.cgi?new=1&type=rsa",$text{'secrets_newrsa'}),"\n";
 print "<br>\n";
 
 &ui_print_footer("", $text{'index_return'});

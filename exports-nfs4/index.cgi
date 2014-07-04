@@ -44,7 +44,8 @@ if (@exps) {
 	    	$ccount = 0;
 		foreach $c (@cl) {
 			$dirs .= "&nbsp;|&nbsp; " if ($ccount++);
-			$dirs .= &ui_link("edit_export.cgi?idx=$c->{'index'}",&describe_host($c->{'host'}))\n";
+			$dirs .= &ui_link("edit_export.cgi?idx=$c->{'index'}",
+					&describe_host($c->{'host'})),"\n";
 			 if (!$c->{'active'}) {
 				$dirs .= "<font color=#ff0000>(".
 					 $text{'index_inactive'}.")</font>\n"
@@ -56,14 +57,14 @@ if (@exps) {
 	print &ui_columns_end();
 	print &select_all_link("d"),"\n";
 	print &select_invert_link("d"),"\n";
-	print "<a href=\"edit_export.cgi?new=1\">$text{'index_add'}</a> <br>\n";
+	print &ui_link("edit_export.cgi?new=1", $text{'index_add'}),"<br>\n";
 	print &ui_form_end([ [ "delete", $text{'index_delete'} ],
 			     [ "disable", $text{'index_disable'} ],
 			     [ "enable", $text{'index_enable'} ] ]);
 	}
 else {
 	print "<b>$text{'index_none'}</b> <p>\n";
-	print "<a href=\"edit_export.cgi?new=1\">$text{'index_add'}</a> <p>\n";
+	print &ui_link("edit_export.cgi?new=1", $text{'index_add'}),"<p>\n";
 	}
 
 print "<hr>\n";

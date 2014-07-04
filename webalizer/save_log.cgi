@@ -42,7 +42,8 @@ elsif ($in{'run'}) {
 	print "</pre>\n";
 	if ($rv && -r "$lconf->{'dir'}/index.html") {
 		print "<b>$text{'gen_done'}</b><p>\n";
-		print &ui_link("view_log.cgi/".&urlize(urlize($in{'file'})).$text{'gen_view'}."<p>\n";
+		print &ui_link("view_log.cgi/".&urlize(&urlize($in{'file'})),
+			       $text{'gen_view'})."<p>\n";
 		}
 	elsif ($rv) {
 		print "<b>$text{'gen_nothing'}</b><p>\n";

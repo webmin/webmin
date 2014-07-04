@@ -54,7 +54,8 @@ else {
 
 	# Show sub-objects
 	foreach $dn (sort { lc($a->dn()) cmp lc($b->dn()) } $rv->all_entries) {
-		print &ui_link("browser.cgi?base=".&urlize($dn->dn())","&html_escape($dn->dn())")<br>\n";
+		print &ui_link("browser.cgi?base=".&urlize($dn->dn()),
+				&html_escape($dn->dn())),"<br>\n";
 		}
 	if (!$rv->all_entries) {
 		print "<i>$text{'browser_none'}</i><br>\n";

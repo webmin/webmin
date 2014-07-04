@@ -8,7 +8,7 @@ require './rbac-lib.pl';
 $projects = &list_projects();
 @canprojects = @$projects;
 if (@canprojects) {
-	print &ui_link("edit_project.cgi?new=1",$text{'projects_add'})<br>\n";
+	print &ui_link("edit_project.cgi?new=1",$text{'projects_add'}),"<br>\n";
 	print &ui_columns_start(
 		[ $text{'projects_name'},
 		  $text{'projects_desc'},
@@ -16,7 +16,8 @@ if (@canprojects) {
 		  $text{'projects_groups'} ]);
 	foreach $p (sort { $a->{'name'} cmp $b->{'name'} } @canprojects) {
 		print &ui_columns_row(
-			[ &ui_link("edit_project.cgi?idx=$p->{'index'}",$p->{'name'}),
+			[ &ui_link("edit_project.cgi?idx=$p->{'index'}",
+				   $p->{'name'}),
 			  $p->{'desc'},
 			  &nice_user_list("users", $p->{'users'}),
 			  &nice_user_list("groups", $p->{'groups'}),
@@ -27,7 +28,7 @@ if (@canprojects) {
 else {
 	print "<b>$text{'projects_none'}</b><p>\n";
 	}
-print &ui_link("edit_project.cgi?new=1",$text{'projects_add'})<br>\n";
+print &ui_link("edit_project.cgi?new=1",$text{'projects_add'}),"<br>\n";
 
 &ui_print_footer("", $text{"index_return"});
 

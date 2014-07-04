@@ -7,7 +7,7 @@ require './rbac-lib.pl';
 $users = &list_user_attrs();
 @canusers = grep { &can_edit_user($_) } @$users;
 if (@canusers) {
-	print &ui_link("edit_user.cgi?new=1",$text{'users_add'})<br>\n";
+	print &ui_link("edit_user.cgi?new=1",$text{'users_add'}),"<br>\n";
 	print &ui_columns_start(
 		[ $text{'users_user'},
 		  $text{'users_type'},
@@ -32,6 +32,6 @@ if (@canusers) {
 else {
 	print "<b>$text{'users_none'}</b><p>\n";
 	}
-print &ui_link("edit_user.cgi?new=1",$text{'users_add'})<br>\n";
+print &ui_link("edit_user.cgi?new=1",$text{'users_add'}),"<br>\n";
 
 &ui_print_footer("", $text{"index_return"});

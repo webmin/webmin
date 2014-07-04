@@ -38,7 +38,7 @@ else {
 	else {
 		print "<b>$text{'index_none'}</b><p>\n";
 		}
-	print &ui_link("edit.cgi?new=1",$text{'index_add'})<p>\n";
+	print &ui_link("edit.cgi?new=1",$text{'index_add'}),"<p>\n";
 
 	print &ui_hr();
 	print "<table width=100%>\n";

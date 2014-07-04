@@ -16,7 +16,8 @@ if (@conns) {
 	print $text{'conns_desc'},"<p>\n";
 	my @grid;
 	@grid = map { &ui_checkbox("d", $_)." ".
-		      &ui_link("view_conn.cgi?name=".&urlize($_)","&html_escape($_)") } @conns;
+		      &ui_link("view_conn.cgi?name=".&urlize($_),
+			       &html_escape($_)) } @conns;
 	print &ui_form_start("mass_conns.cgi", "post");
 	my @links = ( &select_all_link("d"),
 		      &select_invert_link("d") );
