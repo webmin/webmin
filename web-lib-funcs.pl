@@ -210,12 +210,12 @@ Quote all characters that are unsafe for inclusion in javascript strings in HTML
 sub quote_javascript
 {
 my ($str) = @_;
+$str =~ s/\\/\\\\/g;
 $str =~ s/"/\\"/g;
 $str =~ s/'/\\'/g;
 $str =~ s/</\\</g;
 $str =~ s/>/\\>/g;
 $str =~ s/&/\\&/g;
-$str =~ s/\\/\\\\/g;
 return $str;
 }
 
