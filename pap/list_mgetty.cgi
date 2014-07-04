@@ -17,7 +17,7 @@ print &text('mgetty_desc', "<tt>mgetty</tt>"),"<p>\n";
 
 @mgi = &mgetty_inittabs();
 if (@mgi) {
-	print &ui_link("edit_mgetty.cgi?new=1",$text{'mgetty_add'})<br>\n";
+	print &ui_link("edit_mgetty.cgi?new=1",$text{'mgetty_add'}),"<br>\n";
 	print "<table border>\n";
 	print "<tr $tb> <td><b>$text{'mgetty_tty'}</b></td> ",
 	      "<td><b>$text{'mgetty_type'}</b></td> ",
@@ -63,7 +63,7 @@ if (@mgi) {
 else {
 	print "<b>$text{'mgetty_none'}</b><p>\n";
 	}
-print &ui_link("edit_mgetty.cgi?new=1",$text{'mgetty_add'})<p>\n";
+print &ui_link("edit_mgetty.cgi?new=1",$text{'mgetty_add'}),"<p>\n";
 
 print &ui_hr();
 print "<form action=mgetty_apply.cgi>\n";

@@ -226,7 +226,7 @@ if ($in{'lv'}) {
 	if (@pvinfo) {
 		foreach $p (@pvinfo) {
 			($pv) = grep { $_->{'name'} eq $p->[0] } @pvs;
-			push(@pvlist, &ui_link("edit_pv.cgi?vg=$in{'vg'}&pv=$pv->{'name'}",$pv->{'name'}) ".&nice_size($p->[1]*$pv->{'pe_size'}*1024));
+			push(@pvlist, &ui_link("edit_pv.cgi?vg=$in{'vg'}&pv=$pv->{'name'}",$pv->{'name'}).&nice_size($p->[1]*$pv->{'pe_size'}*1024));
 			}
 		print &ui_table_row($text{'lv_pvs'},
 			&ui_grid_table(\@pvlist, 4), 3);

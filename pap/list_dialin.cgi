@@ -18,7 +18,7 @@ if (!-r $config{'login_config'}) {
 print "$text{'dialin_desc'}<p>\n";
 
 if (@dialin) {
-	print &ui_link("edit_dialin.cgi?new=1",$text{'dialin_add'})<br>\n";
+	print &ui_link("edit_dialin.cgi?new=1",$text{'dialin_add'}),"<br>\n";
 	print "<table border>\n";
 	print "<tr $tb> <td><b>$text{'dialin_number'}</b></td> ",
 	      "<td><b>$text{'dialin_ad'}</b></td> ",
@@ -54,7 +54,7 @@ if (@dialin) {
 else {
 	print "<b>$text{'dialin_nonumbers'}</b> <p>\n";
 	}
-print &ui_link("edit_dialin.cgi?new=1",$text{'dialin_add'})<p>\n";
+print &ui_link("edit_dialin.cgi?new=1",$text{'dialin_add'}),"<p>\n";
 
 &ui_print_footer("", $text{'index_return'});
 

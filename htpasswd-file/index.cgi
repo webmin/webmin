@@ -40,14 +40,14 @@ if ($config{'md5'}) {
 print &ui_subheading(&text('index_file', "<tt>$config{'file'}</tt>"));
 $users = &list_users();
 if (@$users) {
-	print &ui_link("edit.cgi?new=1",$text{'index_add'})<br>\n"
+	print &ui_link("edit.cgi?new=1",$text{'index_add'}),"<br>\n"
 		if ($access{'create'});
 	print "<table border width=100%>\n";
 	print "<tr $tb> <td><b>$text{'index_header'}</b></td> </tr>\n";
 	print "<tr $cb> <td><table width=100%>\n";
 	for($i=0; $i<@$users; $i++) {
 		$u = $users->[$i];
-		$link = &ui_link("edit.cgi?idx=$u->{'index'}","$u->{'user'}");
+		$link = &ui_link("edit.cgi?idx=$u->{'index'}",$u->{'user'});
 		print "<tr>\n" if ($i%4 == 0);
 		if ($u->{'enabled'}) {
 			print "<td width=25%>$link</td>\n";
@@ -66,7 +66,7 @@ if (@$users) {
 else {
 	print "<b>$text{'index_none'}</b><p>\n";
 	}
-print &ui_link("edit.cgi?new=1",$text{'index_add'})<p>\n"
+print &ui_link("edit.cgi?new=1",$text{'index_add'}),"<p>\n"
 	if ($access{'create'});
 
 if ($access{'sync'}) {
