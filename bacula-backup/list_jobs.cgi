@@ -29,7 +29,7 @@ if (@jobs) {
 		$fileset = &find_value("FileSet", $f->{'members'});
 		$schedule = &find_value("Schedule", $f->{'members'});
 		print &ui_checked_columns_row([
-			&ui_link("edit_job.cgi?name=".&urlize($name)",$name),
+			&ui_link("edit_job.cgi?name=".&urlize($name), $name),
 			$f->{'name'} eq 'Job' ? $text{'no'} : $text{'yes'},
 			$type || "<i>$text{'default'}</i>",
 			$client || "<i>$text{'default'}</i>",
@@ -43,7 +43,7 @@ if (@jobs) {
 	}
 else {
 	print "<b>$text{'jobs_none'}</b><p>\n";
-	print &ui_link("edit_job.cgi?new=1",$text{'jobs_add'})<br>\n";
+	print &ui_link("edit_job.cgi?new=1",$text{'jobs_add'}),"<br>\n";
 	}
 
 &ui_print_footer("", $text{'index_return'});

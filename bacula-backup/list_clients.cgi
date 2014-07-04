@@ -22,7 +22,7 @@ if (@clients) {
 		$addr = &find_value("Address", $f->{'members'});
 		$cat = &find_value("Catalog", $f->{'members'});
 		print &ui_checked_columns_row([
-			&ui_link("edit_client.cgi?name=".&urlize($name)",$name),
+			&ui_link("edit_client.cgi?name=".&urlize($name), $name),
 			$addr,
 			$cat,
 			], \@tds, "d", $name);

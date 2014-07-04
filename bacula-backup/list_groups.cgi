@@ -25,7 +25,7 @@ if (@groups) {
 		$cat = &find_value("Catalog", $f->{'members'});
 		$done{$name}++;
 		print &ui_checked_columns_row([
-			&ui_link("edit_group.cgi?name=".&urlize($name)",$name),
+			&ui_link("edit_group.cgi?name=".&urlize($name), $name),
 			$port,
 			$cat,
 			], \@tds, "d", $name);
