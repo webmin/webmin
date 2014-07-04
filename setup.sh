@@ -36,7 +36,7 @@ echo "systems and common Unix services to be easily administered."
 echo ""
 
 # Only root can run this
-id | grep "uid=0(" >/dev/null
+id | grep -i "uid=0(" >/dev/null
 if [ $? != "0" ]; then
 	uname -a | grep -i CYGWIN >/dev/null
 	if [ $? != "0" ]; then
