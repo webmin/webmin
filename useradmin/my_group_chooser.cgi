@@ -25,14 +25,14 @@ if ($in{'multi'}) {
 		print "selr = new Array($len);\n";
 		for($i=0; $i<$len; $i++) {
 			print "sel[$i] = \"".
-			      &quote_escape($ul[$i], '"')."\";\n";
+			      &quote_javascript($ul[$i])."\";\n";
 			@ginfo = &my_getgrnam($ul[$i]);
 			if (@ginfo) {
 				@mems = &unique( split(/ /, $ginfo[3]),
 						 @{$members{$ginfo[2]}} );
 				if (@mems > 3) { @mems = (@mems[0..1], "..."); }
 				print "selr[$i] = \"",
-				  &quote_escape(join(' ', @mems), '"'),"\";\n";
+				  &quote_javascript(join(' ', @mems)),"\";\n";
 				}
 			else { print "selr[$i] = \"???\";\n"; }
 			}

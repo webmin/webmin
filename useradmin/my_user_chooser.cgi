@@ -18,11 +18,11 @@ if ($in{'multi'}) {
 		print "selr = new Array($len);\n";
 		for($i=0; $i<$len; $i++) {
 			print "sel[$i] = \"".
-			      &quote_escape($ul[$i], '"')."\";\n";
+			      &quote_javascript($ul[$i])."\";\n";
 			@uinfo = &my_getpwnam($ul[$i]);
 			if (@uinfo) {
 				print "selr[$i] = \"".
-				      &quote_escape($uinfo[6], '"')."\";\n";
+				      &quote_javascript($uinfo[6])."\";\n";
 				}
 			else {
 				print "selr[$i] = \"???\";\n";
