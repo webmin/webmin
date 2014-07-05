@@ -2,6 +2,7 @@
 # user_chooser.cgi
 # This CGI generated the HTML for choosing a user or list of users.
 
+$trust_unknown_referers = 1;
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 
@@ -102,10 +103,14 @@ top.sel = sel2; top.selr = selr2;
 top.frames[1].location = top.frames[1].location;
 return false;
 }
+function html_escape(s)
+{
+return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
 for(i=0; i<top.sel.length; i++) {
 	document.write("<tr>\n");
-	document.write("<td><a href=\"\" onClick='return sub("+i+")'>"+top.sel[i]+"</a></td>\n");
-	document.write("<td>"+top.selr[i]+"</td>\n");
+	document.write("<td><a href=\"\" onClick='return sub("+i+")'>"+html_escape(top.sel[i])+"</a></td>\n");
+	document.write("<td>"+html_escape(top.selr[i])+"</td>\n");
 	}
 </script>
 </table>
