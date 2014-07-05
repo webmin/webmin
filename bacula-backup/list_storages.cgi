@@ -25,7 +25,7 @@ if (@storages) {
 		$device = &find_value("Device", $f->{'members'});
 		$type = &find_value("Media Type", $f->{'members'});
 		print &ui_checked_columns_row([
-			&ui_link("edit_storage.cgi?name=".&urlize($name)",$name),
+			&ui_link("edit_storage.cgi?name=".&urlize($name),$name),
 			$addr,
 			$device,
 			$type,
@@ -37,7 +37,7 @@ if (@storages) {
 	}
 else {
 	print "<b>$text{'storages_none'}</b><p>\n";
-	print &ui_link("edit_storage.cgi?new=1",$text{'storages_add'})<br>\n";
+	print &ui_link("edit_storage.cgi?new=1",$text{'storages_add'}),"<br>\n";
 	}
 
 &ui_print_footer("", $text{'index_return'});

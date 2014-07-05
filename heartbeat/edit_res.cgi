@@ -67,7 +67,7 @@ if (@res) {
 else {
 	print "<b>$text{'res_nores'}</b><p>\n";
 	}
-print &ui_link("edit_node.cgi?new=1",$text{'res_add'})<p>\n";
+print &ui_link("edit_node.cgi?new=1", $text{'res_add'}),"<p>\n";
 
 &ui_print_footer("", $text{'index_return'});
 

@@ -25,7 +25,7 @@ if (@filesets) {
 			@files = ( @files[0..3], "..." );
 			}
 		print &ui_checked_columns_row([
-			&ui_link("edit_fileset.cgi?name=".&urlize($name)",$name),
+			&ui_link("edit_fileset.cgi?name=".&urlize($name),$name),
 			join(" , ", @files),
 			], \@tds, "d", $name);
 		}
@@ -35,7 +35,7 @@ if (@filesets) {
 	}
 else {
 	print "<b>$text{'filesets_none'}</b><p>\n";
-	print &ui_link("edit_fileset.cgi?new=1",$text{'filesets_add'})<br>\n";
+	print &ui_link("edit_fileset.cgi?new=1",$text{'filesets_add'}),"<br>\n";
 	}
 
 &ui_print_footer("", $text{'index_return'});

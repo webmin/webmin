@@ -22,7 +22,7 @@ if (@devices) {
 		$device = &find_value("Archive Device", $f->{'members'});
 		$type = &find_value("Media Type", $f->{'members'});
 		print &ui_checked_columns_row([
-			&ui_link("edit_device.cgi?name=".&urlize($name)",$name),
+			&ui_link("edit_device.cgi?name=".&urlize($name), $name),
 			$device,
 			$type,
 			], \@tds, "d", $name);
@@ -33,7 +33,7 @@ if (@devices) {
 	}
 else {
 	print "<b>$text{'devices_none'}</b><p>\n";
-	print &ui_link("edit_device.cgi?new=1",$text{'devices_add'})<br>\n";
+	print &ui_link("edit_device.cgi?new=1", $text{'devices_add'}),"<br>\n";
 	}
 
 &ui_print_footer("", $text{'index_return'});

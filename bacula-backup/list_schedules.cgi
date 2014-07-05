@@ -23,7 +23,7 @@ if (@schedules) {
 			@runs = ( @runs[0..1], "..." );
 			}
 		print &ui_checked_columns_row([
-			&ui_link("edit_schedule.cgi?name=".&urlize($name)",$name),
+			&ui_link("edit_schedule.cgi?name=".&urlize($name),$name),
 			join(" , ", @runs),
 			], \@tds, "d", $name);
 		}
@@ -33,7 +33,7 @@ if (@schedules) {
 	}
 else {
 	print "<b>$text{'schedules_none'}</b><p>\n";
-	print &ui_link("edit_schedule.cgi?new=1",$text{'schedules_add'})<br>\n";
+	print &ui_link("edit_schedule.cgi?new=1",$text{'schedules_add'}),"<br>\n";
 	}
 
 &ui_print_footer("", $text{'index_return'});

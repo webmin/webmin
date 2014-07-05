@@ -22,7 +22,7 @@ if (@pools) {
 		$type = &find_value("Pool Type", $f->{'members'});
 		$reten = &find_value("Volume Retention", $f->{'members'});
 		print &ui_checked_columns_row([
-			&ui_link("edit_pool.cgi?name=".&urlize($name)",$name),
+			&ui_link("edit_pool.cgi?name=".&urlize($name), $name),
 			$type,
 			$reten,
 			], \@tds, "d", $name);
@@ -33,7 +33,7 @@ if (@pools) {
 	}
 else {
 	print "<b>$text{'pools_none'}</b><p>\n";
-	print &ui_link("edit_pool.cgi?new=1",$text{'pools_add'})<br>\n";
+	print &ui_link("edit_pool.cgi?new=1",$text{'pools_add'}),"<br>\n";
 	}
 
 &ui_print_footer("", $text{'index_return'});

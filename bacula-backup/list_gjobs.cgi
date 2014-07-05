@@ -27,7 +27,7 @@ if (@jobs) {
 		$client = &is_oc_object($client);
 		$fileset = &find_value("FileSet", $f->{'members'});
 		print &ui_checked_columns_row([
-			&ui_link("edit_gjob.cgi?name=".&urlize($name)",$name),
+			&ui_link("edit_gjob.cgi?name=".&urlize($name), $name),
 			$type || "<i>$text{'default'}</i>",
 			$client || "<i>$text{'default'}</i>",
 			$fileset || "<i>$text{'default'}</i>",
@@ -39,7 +39,7 @@ if (@jobs) {
 	}
 else {
 	print "<b>$text{'jobs_none'}</b><p>\n";
-	print &ui_link("edit_gjob.cgi?new=1",$text{'gjobs_add'})<br>\n";
+	print &ui_link("edit_gjob.cgi?new=1",$text{'gjobs_add'}),"<br>\n";
 	}
 
 &ui_print_footer("", $text{'index_return'});

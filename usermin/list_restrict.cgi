@@ -55,7 +55,7 @@ if (@usermods) {
 else {
 	print "<b>$text{'restrict_none'}</b><p>\n";
 	}
-print &ui_link("edit_restrict.cgi?new=1",$text{'restrict_add'})<p>\n";
+print &ui_link("edit_restrict.cgi?new=1", $text{'restrict_add'}),"<p>\n";
 
 &ui_print_footer("", $text{'index_return'});
 
