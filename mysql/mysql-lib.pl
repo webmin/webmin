@@ -86,7 +86,9 @@ $old_db_priv_cols = $mysql_version >= 4 ? 12 : 10;
 
 @mysql_set_variables = ( "key_buffer", "sort_buffer", "net_buffer_length",
 			 "myisam_sort_buffer_size" );
-@mysql_number_variables = ( "table_cache", "max_connections" );
+@mysql_number_variables = ( $mysql_version >= 5.6 ? "table_open_cache"
+						  : "table_cache",
+			    "max_connections" );
 @mysql_byte_variables = ( "query_cache_size", "max_allowed_packet" );
 
 # make_authstr([login], [pass], [host], [port], [sock])
