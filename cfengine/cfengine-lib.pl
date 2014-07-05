@@ -554,7 +554,7 @@ if (@{$_[0]}) {
 		#	      "<img src=images/up.gif border=0></a>";
 		#	}
 		if (!$_[2]) {
-			print &ui_link("edit_class.cgi?cfd=$_[1]&idx=$s->{'index'}&new=1",$text{'index_cadd'})</td>\n";
+			print &ui_link("edit_class.cgi?cfd=$_[1]&idx=$s->{'index'}&new=1",$text{'index_cadd'}),"</td>\n";
 			}
 		print "</tr></table></td>\n";
 

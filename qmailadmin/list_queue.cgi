@@ -24,16 +24,16 @@ if (@queue) {
 		$e = $in{'start'} + $config{'perpage'} - 1;
 		$e = @queue-1 if ($e >= @queue);
 		if ($s) {
-			printf &ui_link("list_queue.cgi?start=%d","%s")\n",
-			    $s - $config{'perpage'},
-			    "<img src=/images/left.gif border=0 align=middle>";
+			print &ui_link("list_queue.cgi?start=".
+				       ($s - $config{'perpage'}),
+			    "<img src=/images/left.gif border=0 align=middle>");
 			}
 		print "<font size=+1>",&text('mail_pos', $s+1, $e+1,
 					     scalar(@queue)),"</font>\n";
 		if ($e < @queue-1) {
-			printf &ui_link("list_queue.cgi?start=%d","%s")\n",
-			    $s + $config{'perpage'},
-			    "<img src=/images/right.gif border=0 align=middle>";
+			print &ui_link("list_queue.cgi?start=".
+				       ($s + $config{'perpage'}),
+			   "<img src=/images/right.gif border=0 align=middle>");
 			}
 		print "</center>\n";
 		}

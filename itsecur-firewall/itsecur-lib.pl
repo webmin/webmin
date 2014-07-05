@@ -860,7 +860,7 @@ else {
 	foreach $sn (split(/,/, $_[0])) {
 		local $serv = $sn{$sn};
 		if (!$serv->{'standard'}){
-				$editServO=&ui_link("edit_service.cgi?name=".$serv->{'name'}",$editServC);				
+				$editServO = &ui_link("edit_service.cgi?name=".$serv->{'name'}, $editServC);				
 			} else {
 				$editServO="";
 				$editServC="";							

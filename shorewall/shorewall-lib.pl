@@ -212,7 +212,7 @@ else {
 		}
 	else {
 		splice(@$lref, $idx, 0, &simplify_line($_[2]));
-		|
+		}
 	}
 &flush_file_lines();
 }
