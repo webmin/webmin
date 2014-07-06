@@ -34,7 +34,8 @@ else {
 	   &ui_link("edit.cgi?table=$in{'table'}&new=1",
 		    $text{$in{'tableclean'}."_add"}) );
 if (&version_atleast(3, 3, 3) && &indexof($in{'table'}, @comment_tables) >= 0) {
-	push(@links, &ui_link("editcmt.cgi?table=$in{'table'}&new=1","$text{"comment_add"}"));
+	push(@links, &ui_link("editcmt.cgi?table=$in{'table'}&new=1",
+			      $text{"comment_add"}));
 	}
 
 # Show the table

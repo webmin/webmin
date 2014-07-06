@@ -53,7 +53,8 @@ if (@doms) {
 	print &ui_links_row(\@links);
 	print &ui_form_end([ [ "delete", $text{'domains_delete'} ] ]);
 	}
-print &ui_link("edit_file.cgi?mode=domains",&text('file_edit', "<tt>$dfile</tt>"))<p>\n"
+print &ui_link("edit_file.cgi?mode=domains",
+	       &text('file_edit', "<tt>$dfile</tt>")),"<p>\n"
 	if ($access{'manual'});
 print $text{'domains_desc'},"<p>\n";
 
