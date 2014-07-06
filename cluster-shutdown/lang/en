@@ -1,0 +1,38 @@
+index_title=Cluster Shutdown
+index_host=Hostname
+index_desc=Description
+index_os=Operating System
+index_up=Alive?
+index_shut=Shut Down Servers
+index_reboot=Reboot Servers
+index_none=No servers have been defined in the <a href='$1'>Webmin Servers Index</a> module.
+index_return=module index
+index_header=Automatic system check
+index_sched=Enable automatic system check?
+index_email=Send email on system failures to
+index_smtp=Send via SMTP server
+index_this=This server
+index_nu=No user set
+index_nl=Login failed
+
+shut_title=Shut Down Servers
+shut_rusure=Are you sure you want to immediately shut down the $1 selected servers?
+shut_ok=Yes, Do It
+shut_doing=Shutting down $1 ..
+shut_failed=.. failed! $1
+shut_done=.. done.
+shut_sel=The selected servers are :
+shut_ecannot=You are not allowed to shut down servers
+
+reboot_title=Reboot Servers
+reboot_rusure=Are you sure you want to immediately reboot the $1 selected servers?
+reboot_doing=Rebooting $1 ..
+reboot_ecannot=You are not allowed to reboot servers
+
+sched_err=Failed to setup automatic server checking
+sched_eemail=Missing email address
+sched_esmtp=Missing or invalid SMTP server
+sched_title=Automatic Server Check
+sched_enabled=Automatic checking of all servers every five minutes is now enabled.
+sched_disabled=Automatic checking of all servers is now disabled.
+__norefs=1
