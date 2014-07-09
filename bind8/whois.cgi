@@ -16,28 +16,9 @@ $desc = &ip6int_to_net(&arpa_to_ip($dom));
 &ui_print_header($desc, $text{'whois_title'}, "",
 		 undef, undef, undef, undef, &restart_links($zone));
 
-# Find the best whois server for the domain
-foreach $wf ("$module_root_directory/whois-servers",
-	     "$module_config_directory/whois-servers") {
-	open(WHOIS, $wf);
-	while(<WHOIS>) {
-		s/\r|\n//g;
-		local ($wdom, $wserv) = split(/\s+/);
-		$whois{$wdom} = $wserv;
-		}
-	close(WHOIS);
-	}
-foreach $d (sort { length($b) <=> length($a) } keys %whois) {
-	if ($dom =~ /\Q$d\E$/) {
-		$server = "-h ".quotemeta($whois{$d});
-		$pserver = "-h ".$whois{$d};
-		last;
-		}
-	}
-
 $qdom = quotemeta($dom);
-$cmd = "$config{'whois_cmd'} $server $qdom";
-$pcmd = "$config{'whois_cmd'} $pserver $dom";
+$cmd = "$config{'whois_cmd'} $qdom";
+$pcmd = "$config{'whois_cmd'} $dom";
 $out = `$cmd 2>&1`;
 if ($out =~ /whois\s+server:\s+(\S+)/i) {
 	$cmd = "$config{'whois_cmd'} -h ".quotemeta($1)." $qdom";
