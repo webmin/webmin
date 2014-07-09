@@ -21,7 +21,7 @@ print &ui_hidden("idx",$in{'idx'});
 print &ui_table_start($text{'edit_header1'}, "width=80%", 4);
 print &ui_columns_row([
             "<b>$text{'edit_name'}</b>&nbsp;",
-            &ui_textbox("name", $text{'edit_name'}, 15),
+            &ui_textbox("name", $st->{'name'}, 15),
             "&nbsp;<b>$text{'edit_port'}</b>&nbsp;",
             &ui_textbox("port", $st->{'port'}, 6)
         ]);
