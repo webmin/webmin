@@ -718,8 +718,8 @@ sub ui_textbox
 return &theme_ui_textbox(@_) if (defined(&theme_ui_textbox));
 my ($name, $value, $size, $dis, $max, $tags) = @_;
 $size = &ui_max_text_width($size);
-return "<input class='ui_textbox' type='text' name=\"".&quote_escape($name)."\" ".
-       "value=\"".&quote_escape($value)."\" ".
+return "<input class='ui_textbox' type='text' name=\"".&html_escape($name)."\" ".
+       "value=\"".&html_escape($value)."\" ".
        "size=$size".($dis ? " disabled=true" : "").
        ($max ? " maxlength=$max" : "").
        ($tags ? " ".$tags : "").">";
