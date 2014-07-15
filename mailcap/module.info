@@ -13,3 +13,4 @@ desc_no=MIME Type Programmer
 desc_hu=Mime típusú programok
 desc_ms_MY=Program jenis MIME
 longdesc_ms_MY=Sunting fail /etc/mailcap, yang memetakan jenis MIME kepada program pengendali
+longdesc_de=Editiert die /etc/mailcap Datei, welche MIME Typen H&#228;ndler-Programme mapt.
