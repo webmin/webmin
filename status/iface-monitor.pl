@@ -5,7 +5,7 @@ sub get_iface_status
 {
 return { 'up' => -1 } if (!&foreign_check("net"));
 &foreign_require("net", "net-lib.pl");
-local @act = &net::active_interfaces();
+local @act = &net::active_interfaces(1);
 local $a;
 foreach $a (@act) {
 	if ($a->{'fullname'} eq $_[0]->{'iface'} &&
