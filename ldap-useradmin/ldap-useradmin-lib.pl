@@ -969,7 +969,11 @@ local $i = 0;
 local $f;
 foreach $f (@fields) {
 	$f->[0] =~ s/\+$//;
-	next if ($already{lc($f->[0])});	# Skip fields set by Webmin
+	if ($already{lc($f->[0])}) {
+		# Skip fields set by Webmin
+		$i++;
+		next;
+		}
 	if ($in{"field_$i"} eq "") {
 		push(@$rprops, $f->[0]);
 		}
