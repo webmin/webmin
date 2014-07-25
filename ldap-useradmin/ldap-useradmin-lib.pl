@@ -151,6 +151,9 @@ if ($config{'md5'} == 4) {
 	# LDAP SSHA encryption
 	local $qp = quotemeta($pass);
 	local $out = &backquote_command("$config{'slappasswd'} -h '{ssha}' -s $qp 2>/dev/null");
+	if ($?) {
+		&error("$config{'slappasswd'} command failed to generate ssha password : $out");
+		}
 	$out =~ s/\s+$//;
 	$out =~ s/^\{ssha\}//i;
 	return $out;
