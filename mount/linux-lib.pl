@@ -443,8 +443,10 @@ local @mounts = &list_mounts();
 open(MTAB, "/etc/mtab");
 while(<MTAB>) {
 	chop;
-	s/#.*$//g; if (!/\S/) { next; }
+	s/#.*$//g;
+	if (!/\S/) { next; }
 	@p = split(/\s+/, $_);
+	next if ($p[0] eq "rootfs");	# Bogus pseudo-fs
 	$p[1] = &simplify_path($p[1]);
 	if ($p[2] eq "auto" || $p[0] =~ /^\S+:\(pid\d+\)$/) {
 		# Automounter map.. turn the map= option into the device
