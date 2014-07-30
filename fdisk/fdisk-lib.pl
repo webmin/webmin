@@ -1337,7 +1337,7 @@ foreach my $d (@dlist) {
 	foreach $p (@{$d->{'parts'}}) {
 		next if ($p->{'type'} ne '83' && $p->{'type'} ne '82' &&
 			 $p->{'type'} ne 'b' && $p->{'type'} ne 'c' &&
-			 $p->{'type'} !~ /^ext/);
+			 $p->{'type'} !~ /^(ext|xfs)/);
 		local $volid = &get_volid($p->{'device'});
 		next if (!$volid);
 		push(@opts, [ $volid, "$volid ($p->{'desc'})" ]);
