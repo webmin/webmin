@@ -7,7 +7,6 @@ eval "use WebminCore;";
 &foreign_require("software", "software-lib.pl");
 &foreign_require("cron", "cron-lib.pl");
 &foreign_require("webmin", "webmin-lib.pl");
-use Data::Dumper;
 
 $available_cache_file = "$module_config_directory/available.cache";
 $current_cache_file = "$module_config_directory/current.cache";
@@ -139,10 +138,13 @@ return 0;
 sub write_cache_file
 {
 my ($file, $arr) = @_;
-&open_tempfile(FILE, ">$file");
-&print_tempfile(FILE, Dumper($arr));
-&close_tempfile(FILE);
-$read_cache_file_cache{$file} = $arr;
+eval "use Data::Dumper";
+if (!$@) {
+	&open_tempfile(FILE, ">$file");
+	&print_tempfile(FILE, Dumper($arr));
+	&close_tempfile(FILE);
+	$read_cache_file_cache{$file} = $arr;
+	}
 }
 
 # read_cache_file(file)
