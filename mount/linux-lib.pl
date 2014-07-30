@@ -979,7 +979,7 @@ local(%fsmap);
 	  "btrfs","Oracle B-Tree Filesystem",
 	  "ocfs2","Oracle Clustering Filesystem",
 	  "gfs2","RedHat Clustering Filesystem",
-	  "xfs","SGI Filesystem",
+	  "xfs","Linux XFS Filesystem",
 	  "jfs","IBM Journalling Filesystem",
 	  "ntfs","Windows NT Filesystem",
 	  "bind","Loopback Filesystem",
