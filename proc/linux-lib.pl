@@ -116,6 +116,7 @@ return undef;
 sub find_mount_processes
 {
 local($out);
+&has_command("fuser") || &error("fuser command is not installed");
 $out = &backquote_command("fuser -m ".quotemeta($_[0])." 2>/dev/null");
 $out =~ s/[^0-9 ]//g;
 $out =~ s/^\s+//g; $out =~ s/\s+$//g;
@@ -127,6 +128,7 @@ return split(/\s+/, $out);
 sub find_file_processes
 {
 local($out, $files);
+&has_command("fuser") || &error("fuser command is not installed");
 $files = join(' ', map { quotemeta($_) } map { glob($_) } @_);
 $out = &backquote_command("fuser $files 2>/dev/null");
 $out =~ s/[^0-9 ]//g;
