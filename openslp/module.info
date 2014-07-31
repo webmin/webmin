@@ -16,3 +16,4 @@ desc_no=OpenSLP tjener
 desc_de=OpenSLP-Server
 longdesc_ms_MY=Mengkonfigurasi servis protokol lokasi pelayan.
 desc_ms_MY=Pelayan OpenSLP
+longdesc_de=Konfiguriert den Service Location Protocol-Server.

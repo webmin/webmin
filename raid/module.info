@@ -31,3 +31,4 @@ desc_no=Linux RAID
 desc_hu=Linux RAID
 longdesc_ms_MY=Cipta RAID 0, 1, 4, 5 dan peranti linear pada sistem Linux.
 desc_ms_MY=RAID Linux
+longdesc_de=Erstellt RAID 0, 1, 4, 5 und lineare Ger&#228;te auf einem Linux-System.

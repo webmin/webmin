@@ -4,14 +4,14 @@ dacfg_title=DA Konfiguration
 error_flock_off=Fehler beim Zerst&#246;ren der Dateisperre
 error_flock_on=Fehler beim Erzeugen der Dateisperre
 error_hup=Fehler beim Neustarten von OpenSLP mit PID
-error_open=Fehler beim &#246;ffnen der Datei
+error_open=Fehler beim &#214;ffnen der Datei
 index_econf=Die OpenSLP Konfigurationsdatei $1 wurde auf Ihrem System nicht gefunden. Vielleicht ist es nicht installiert, oder Ihr <a href='$2'>Modulkonfiguration</a> ist falsch.
 index_eslpd=Der OpenSLP Daemon $1 wurde auf Ihrem System nicht gefunden. Vielleicht ist es nicht installiert, oder Ihr <a href='$2'>Modulkonfiguration</a> ist falsch.
 index_return=OpenSLP Konfiguration
 index_start=Starte OpenSLP
-index_startmsg=Klicken auf diese Schaltfl&#228;che, um den OpenSLP-Daemon auf dem System zu starten.
+index_startmsg=Klicke auf diese Schaltfl&#228;che, um den OpenSLP-Daemon auf dem System zu starten.
 index_stop=Stoppe OpenSLP
-index_stopmsg=Klicken auf diese Schaltfl&#228;che, um den OpenSLP-Daemon auf dem System zu stoppen.
+index_stopmsg=Klicke auf diese Schaltfl&#228;che, um den OpenSLP-Daemon auf dem System zu stoppen.
 index_title=OpenSLP Konfiguration
 index_version=OpenSLP Version $1
 log_title=Verfolgung und Loggen

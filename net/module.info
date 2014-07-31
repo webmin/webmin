@@ -36,3 +36,4 @@ desc_no=Nettverkskonfigurasjon
 desc_hu=Hálózati beállítások
 longdesc_ms_MY=Mengkonfigurasi masa boot dan pengaktifan antara muka, DNS, laluan rangkaian dan /etc /hosts.
 desc_ms_MY=Konfigurasi Rangkaian
+longdesc_de=Konfiguriert Boot-Zeit und aktive Schnittstellen, DNS, Routing und /etc/hosts.
