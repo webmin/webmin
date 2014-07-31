@@ -58,7 +58,7 @@ foreach $l (@lines) {
 	$ifc{'index'} = scalar(@rv);
 
 	# Get current status for ethtool
-	if ($ifc{'fullname'} =~ /^(eth|em)(\d+)$/ && $ethtool) {
+	if ($ifc{'fullname'} =~ /^(eth|em|eno|ens|enp|enx)(\d+)$/ && $ethtool) {
 		my $out = &backquote_command(
 			"$ethtool $ifc{'fullname'} 2>/dev/null");
 		if ($out =~ /Speed:\s+(\S+)/i) {
@@ -211,7 +211,7 @@ return ($gconfig{'os_type'} eq 'debian-linux' &&
 	$gconfig{'os_version'} >= 5 ||
 	$gconfig{'os_type'} eq 'redhat-linux' &&
 	$gconfig{'os_version'} >= 13) &&
-       ($iface->{'name'} !~ /^(eth|em|lo)/ ||
+       ($iface->{'name'} !~ /^(eth|em|eno|ems|enp|enx|lo)/ ||
  	$iface->{'name'} =~ /^(\S+)\.(\d+)/) &&
        $iface->{'virtual'} eq '';
 }
@@ -226,7 +226,7 @@ if ($_[0] =~ /^(.*)\.(\d+)$/) {
 return "PPP" if ($_[0] =~ /^ppp/);
 return "SLIP" if ($_[0] =~ /^sl/);
 return "PLIP" if ($_[0] =~ /^plip/);
-return "Ethernet" if ($_[0] =~ /^eth|em|p\d+p\d+/);
+return "Ethernet" if ($_[0] =~ /^eth|em|eno|ems|enp|enx|p\d+p\d+/);
 return "Wireless Ethernet" if ($_[0] =~ /^(wlan|ath)/);
 return "Arcnet" if ($_[0] =~ /^arc/);
 return "Token Ring" if ($_[0] =~ /^tr/);
@@ -392,7 +392,7 @@ return $? ? $out : undef;
 # Does some interface have an editable hardware address
 sub iface_hardware
 {
-return $_[0] =~ /^(eth|em)/;
+return $_[0] =~ /^(eth|em|eno|ems|enp|enx)/;
 }
 
 # allow_interface_clash()
