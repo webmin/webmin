@@ -173,9 +173,12 @@ print &ui_form_end([ [ undef, $text{'yum_apply'} ] ]);
 sub update_system_resolve
 {
 local ($name) = @_;
+local $maria = $gconfig{'real_os_type'} =~ /CentOS|Redhat|Scientific/ &&
+	       $gconfig{'real_os_version'} >= 7;
 return $name eq "apache" ? "httpd mod_.*" :
        $name eq "dhcpd" ? "dhcp" :
-       $name eq "mysql" ? "mysql mysql-server mysql-devel" :
+       $name eq "mysql" && $maria ? "mariadb mariadb-server mariadb-devel" :
+       $name eq "mysql" && !$maria ? "mysql mysql-server mysql-devel" :
        $name eq "openssh" ? "openssh openssh-server" :
        $name eq "postgresql" ? "postgresql postgresql-libs postgresql-server" :
        $name eq "openldap" ? "openldap-servers openldap-clients" :
