@@ -481,5 +481,6 @@ twofactor_enrolling=Enrolling for two-factor authentication with provider $1 ..
 twofactor_failed=.. enrollment failed : $1
 twofactor_done=.. complete. Your ID with this provider is <tt>$1</tt>.
 twofactor_setup=Two-factor authentication has not been enabled on this system yet, but can be turned on using the <a href='$1'>Webmin Configuration</a> module.
+twofactor_ebutton=No button clicked!
 
 __norefs=1
