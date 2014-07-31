@@ -233,7 +233,7 @@ sub get_syslog_pid
 {
 local $pid;
 if ($config{'pid_file'}) {
-	foreach my $pfile (glob($config{'pid_file'})) {
+	foreach my $pfile (map { glob($_) } split(/\s+/, $config{'pid_file'})) {
 		my $poss = &check_pid_file($pfile);
 		if ($poss) {
 			$pid = $poss;
