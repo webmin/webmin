@@ -36,6 +36,7 @@ sub get_current_timezone
 local $lnk = readlink(&translate_filename($currentzone_link));
 if ($lnk) {
 	# Easy - it a link
+	$lnk =~ s/^\.\.//;
 	$lnk =~ s/$timezones_dir\///;
 	return $lnk;
 	}
