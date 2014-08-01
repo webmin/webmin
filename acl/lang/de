@@ -411,6 +411,7 @@ twofactor_desc=Auf dieser Seite k&#246;nnen Sie die 2-Faktor-Authentifizierung f
 twofactor_desc2=Auf dieser Seite k&#246;nnen Sie die 2-Faktor-Authentifizierung f&#252;r Webmin Login $3 mit <a href='$2' target=_blank>$1</a> aktivieren. Einmal aktiv, wird ein zus&#228;tzliche Authentifizierungs-Token ben&#246;tigt, wenn Sie sich in Webmin anmelden.
 twofactor_disable=Deaktiviere 2-Faktor-Authentifizierung
 twofactor_done=.. komplett. Ihre ID mit diesem Provider ist <tt>$1</tt>.
+twofactor_ebutton=Kein Button geklickt!
 twofactor_enable=Anmelden f&#252;r die 2-Faktor-Authentifizierung
 twofactor_enrolling=Anmeldung f&#252;r die 2-Faktor-Authentifizierung mit Provider $1 ..
 twofactor_err=Fehlgeschlagen 2-Faktor-Authentifizierung einzurichten
