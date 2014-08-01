@@ -1,4 +1,3 @@
 exports_file=/etc/exports
-nfs_server=rpc.nfsd
 restart_command=/etc/rc.d/rc.nfsd stop ; /etc/rc.d/rc.nfsd start
 apply_cmd=exportfs -r
