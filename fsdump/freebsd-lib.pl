@@ -202,7 +202,7 @@ if ($_[0]->{'fs'} eq 'tar') {
 	$cmd .= " --rsh-command=$_[0]->{'rsh'}"
 		if ($_[0]->{'rsh'} && $_[0]->{'host'});
 	$cmd .= " $_[0]->{'extra'}" if ($_[0]->{'extra'});
-	$cmd .= " ".quotemeta($_[0]->{'dir'});
+	$cmd .= " ".quotemeta(&date_subs($_[0]->{'dir'}));
 	}
 else {
 	# Construct ufs dump command
@@ -216,7 +216,7 @@ else {
 		}
 	$cmd .= " -h 0" if ($_[0]->{'honour'});
 	$cmd .= " $_[0]->{'extra'}" if ($_[0]->{'extra'});
-	$cmd .= " ".quotemeta($_[0]->{'dir'});
+	$cmd .= " ".quotemeta(&date_subs($_[0]->{'dir'}));
 	}
 
 &system_logged("sync");

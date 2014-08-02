@@ -348,6 +348,7 @@ local $tapecmd = $_[0]->{'multi'} && $_[0]->{'fs'} eq 'tar' ? $multi_cmd :
 		 $_[3] && !$config{'nonewtape'} ? $newtape_cmd : $notape_cmd;
 local @dirs = $_[0]->{'tabs'} ? split(/\t+/, $_[0]->{'dir'})
 			      : split(/\s+/, $_[0]->{'dir'});
+@dirs = map { &date_subs($_) } @dirs;
 if ($_[0]->{'fs'} eq 'tar') {
 	# tar format backup
 	$cmd = "tar ".($_[0]->{'update'} ? "-u" : "-c")." ".$flag;

@@ -140,7 +140,7 @@ $cmd .= " -o" if ($_[0]->{'overwrite'});
 $cmd .= " -c \"$_[3] $_[0]->{'id'}\"" if ($_[3]);
 $cmd .= " -E -F" if ($_[0]->{'erase'});
 $cmd .= " $_[0]->{'extra'}" if ($_[0]->{'extra'});
-$cmd .= " '$_[0]->{'dir'}'";
+$cmd .= " '".&date_subs($_[0]->{'dir'})."'";
 
 &system_logged("sync");
 sleep(1);

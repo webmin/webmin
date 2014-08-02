@@ -104,6 +104,7 @@ else {
 $cmd .= " $_[0]->{'extra'}" if ($_[0]->{'extra'});
 local @dirs = $_[0]->{'tabs'} ? split(/\t+/, $_[0]->{'dir'})
 			      : split(/\s+/, $_[0]->{'dir'});
+@dirs = map { &date_subs($_) } @dirs;
 $cmd .= " ".join(" ", map { "'$_'" } @dirs);
 
 &system_logged("sync");

@@ -44,7 +44,7 @@ else {
 	# Validate and store inputs
 	if (&multiple_directory_support($in{'fs'})) {
 		$in{'dir'} =~ s/[\r\n]+/\t/g;
-		foreach $d (split(/\t+/, $in{'dir'})) {
+		foreach $d (split(/\t+/, &date_subs($in{'dir'}))) {
 			-d $d || &error($text{'save_edir'});
 			if ($in{'fs'} ne 'tar') {
 				$fs = &directory_filesystem($d);
@@ -57,13 +57,14 @@ else {
 		$dump->{'tabs'} = 1;	# tab used to split dirs
 		}
 	else {
-		-d $in{'dir'} || &error($text{'save_edir'});
+		$d = &date_subs($in{'dir'});
+		-d $d || &error($text{'save_edir'});
 		if ($in{'fs'} ne 'tar') {
-			$fs = &directory_filesystem($in{'dir'});
+			$fs = &directory_filesystem($d);
 			&same_filesystem($fs, $in{'fs'}) ||
 				&error($text{'save_efs'});
 			}
-		&can_edit_dir($in{'dir'}) || &error($text{'dump_ecannot3'});
+		&can_edit_dir($d) || &error($text{'dump_ecannot3'});
 		}
 	$dump->{'dir'} = $in{'dir'};
 	$dump->{'fs'} = $in{'fs'};
