@@ -56,22 +56,25 @@ foreach $l (@lines) {
 	$ifc{'scope6'} = \@scope6;
 	$ifc{'edit'} = ($ifc{'name'} !~ /^ppp/);
 	$ifc{'index'} = scalar(@rv);
+	push(@rv, \%ifc);
+	}
 
+foreach my $ifc (@rv) {
 	# Get current status for ethtool
-	if ($ifc{'fullname'} =~ /^(eth|em|eno|ens|enp|enx)(\d+)$/ && $ethtool) {
+	if (&iface_type($ifc->{'fullname'}) eq 'Ethernet' &&
+	    $ifc->{'virtual'} eq '' && $ethtool) {
 		my $out = &backquote_command(
-			"$ethtool $ifc{'fullname'} 2>/dev/null");
+			"$ethtool $ifc->{'fullname'} 2>/dev/null");
 		if ($out =~ /Speed:\s+(\S+)/i) {
-			$ifc{'speed'} = $1;
+			$ifc->{'speed'} = $1;
 			}
 		if ($out =~ /Duplex:\s+(\S+)/i) {
-			$ifc{'duplex'} = $1;
+			$ifc->{'duplex'} = $1;
 			}
 		if ($out =~ /Link\s+detected:\s+(\S+)/i) {
-			$ifc{'link'} = lc($1) eq 'yes' ? 1 : 0;
+			$ifc->{'link'} = lc($1) eq 'yes' ? 1 : 0;
 			}
 		}
-	push(@rv, \%ifc);
 	}
 return @rv;
 }
