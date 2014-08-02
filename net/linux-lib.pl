@@ -67,7 +67,7 @@ if (&has_command("ifconfig")) {
 		push(@rv, \%ifc);
 		}
 	}
-else {
+elsif (&has_command("ip")) {
 	# Get status from new ip command
 	&clean_language();
 	&open_execute_command(IFC, "ip addr", 1, 1);
@@ -116,6 +116,9 @@ else {
 		$ifc{'index'} = scalar(@rv);
 		push(@rv, \%ifc);
 		}
+	}
+else {
+	&error("Both the ifconfig and ip commands are missing");
 	}
 
 foreach my $ifc (@rv) {
@@ -311,28 +314,56 @@ return $text{'ifcs_unknown'};
 sub list_routes
 {
 local @rv;
-&open_execute_command(ROUTES, "netstat -rn", 1, 1);
-while(<ROUTES>) {
-	s/\s+$//;
-	if (/^([0-9\.]+)\s+([0-9\.]+)\s+([0-9\.]+)\s+\S+\s+\S+\s+\S+\s+\S+\s+(\S+)$/) {
-		push(@rv, { 'dest' => $1,
-			    'gateway' => $2,
-			    'netmask' => $3,
-			    'iface' => $4 });
+if (&has_command("netstat")) {
+	# Use old netstat command if installed
+	&open_execute_command(ROUTES, "netstat -rn", 1, 1);
+	while(<ROUTES>) {
+		s/\s+$//;
+		if (/^([0-9\.]+)\s+([0-9\.]+)\s+([0-9\.]+)\s+\S+\s+\S+\s+\S+\s+\S+\s+(\S+)$/) {
+			push(@rv, { 'dest' => $1,
+				    'gateway' => $2,
+				    'netmask' => $3,
+				    'iface' => $4 });
+			}
 		}
-	}
-close(ROUTES);
-&open_execute_command(ROUTES, "netstat -rn -A inet6", 1, 1);
-while(<ROUTES>) {
-	s/\s+$//;
-	if (/^([0-9a-z:]+)\/([0-9]+)\s+([0-9a-z:]+)\s+\S+\s+\S+\s+\S+\s+\S+\s+(\S+)$/) {
-		push(@rv, { 'dest' => $1,
-			    'gateway' => $3,
-			    'netmask' => $2,
-			    'iface' => $4 });
+	close(ROUTES);
+	&open_execute_command(ROUTES, "netstat -rn -A inet6", 1, 1);
+	while(<ROUTES>) {
+		s/\s+$//;
+		if (/^([0-9a-z:]+)\/([0-9]+)\s+([0-9a-z:]+)\s+\S+\s+\S+\s+\S+\s+\S+\s+(\S+)$/) {
+			push(@rv, { 'dest' => $1,
+				    'gateway' => $3,
+				    'netmask' => $2,
+				    'iface' => $4 });
+			}
 		}
+	close(ROUTES);
 	}
-close(ROUTES);
+elsif (&has_command("ip")) {
+	# Use new ip command
+	&open_execute_command(ROUTES, "ip route", 1, 1);
+	while(<ROUTES>) {
+		s/\r|\n//g;
+		if (/^(\S+)\s+/) {
+			my $r = { 'dest' => $1 };
+			if ($r->{'dest'} =~ /^(\S+)\/(\d+)/) {
+				$r->{'dest'} = $1;
+				$r->{'netmask'} = &prefix_to_mask("$2");
+				}
+			if (/\sdev\s+(\S+)/) {
+				$r->{'iface'} = $1;
+				}
+			if (/\svia\s+(\S+)/) {
+				$r->{'gateway'} = $1;
+				}
+			push(@rv, $r);
+			}
+		}
+	close(ROUTES);
+	}
+else {
+	&error("Both the ip and netstat commands are missing!");
+	}
 return @rv;
 }
 
@@ -421,33 +452,65 @@ return $? ? $out : undef;
 sub create_route
 {
 local ($route) = @_;
-local $cmd = "route ".
-	(&check_ip6address($route->{'dest'}) ||
-	 &check_ip6address($route->{'gateway'}) ?
-	 "-A inet6 " : "-A inet ")."add ";
-if (!$route->{'dest'} || $route->{'dest'} eq '0.0.0.0' ||
-    $route->{'dest'} eq '::') {
-	$cmd .= " default";
+my $cmd;
+my $proto = &check_ip6address($route->{'dest'}) ||
+	    &check_ip6address($route->{'gateway'}) ? 6 : 4;
+if (&has_command("route")) {
+	# Use old route command
+	$cmd = "route ".($proto == 6 ? "-A inet6" : "-A inet")." add";
+	if (!$route->{'dest'} || $route->{'dest'} eq '0.0.0.0' ||
+	    $route->{'dest'} eq '::') {
+		$cmd .= " default";
+		}
+	elsif ($route->{'netmask'} eq '255.255.255.255') {
+		$cmd .= " -host $route->{'dest'}";
+		}
+	elsif (!&check_ip6address($route->{'dest'})) {
+		$cmd .= " -net $route->{'dest'}";
+		if ($route->{'netmask'} && $route->{'netmask'} ne '0.0.0.0') {
+			$cmd .= " netmask $route->{'netmask'}";
+			}
+		}
+	else {
+		$cmd .= "$route->{'dest'}/$route->{'netmask'}";
+		}
+	if ($route->{'gateway'}) {
+		$cmd .= " gw $route->{'gateway'}";
+		}
+	elsif ($route->{'iface'}) {
+		$cmd .= " dev $route->{'iface'}";
+		}
 	}
-elsif ($route->{'netmask'} eq '255.255.255.255') {
-	$cmd .= " -host $route->{'dest'}";
-	}
-elsif (!&check_ip6address($route->{'dest'})) {
-	$cmd .= " -net $route->{'dest'}";
-	if ($route->{'netmask'} && $route->{'netmask'} ne '0.0.0.0') {
-		$cmd .= " netmask $route->{'netmask'}";
+elsif (&has_command("ip")) {
+	# Use new ip command
+	$cmd = "ip -".$proto." route add";
+	 if (!$route->{'dest'} || $route->{'dest'} eq '0.0.0.0' ||
+            $route->{'dest'} eq '::') {
+                $cmd .= " default";
+                }
+	else {
+		$cmd .= " ".$route->{'dest'};
+		if ($route->{'netmask'} && $route->{'netmask'} ne '0.0.0.0' &&
+		    $route->{'netmask'} != 32) {
+			if ($route->{'netmask'} =~ /^\d+$/) {
+				$cmd .= "/".$route->{'netmask'};
+				}
+			else {
+				$cmd .= "/".&mask_to_prefix($route->{'netmask'});
+				}
+			}
+		}
+	if ($route->{'gateway'}) {
+		$cmd .= " via $route->{'gateway'}";
+		}
+	if ($route->{'iface'}) {
+		$cmd .= " dev $route->{'iface'}";
 		}
 	}
 else {
-	$cmd .= "$route->{'dest'}/$route->{'netmask'}";
+	return "Missing the route and ip commands";
 	}
-if ($route->{'gateway'}) {
-	$cmd .= " gw $route->{'gateway'}";
-	}
-elsif ($route->{'iface'}) {
-	$cmd .= " dev $route->{'iface'}";
-	}
-local $out = &backquote_logged("$cmd 2>&1 </dev/null");
+my $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $? ? $out : undef;
 }
 
