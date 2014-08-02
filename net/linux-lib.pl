@@ -6,61 +6,120 @@
 sub active_interfaces
 {
 local ($empty) = @_;
-local(@rv, @lines, $l);
-&clean_language();
-&open_execute_command(IFC, "ifconfig -a", 1, 1);
-while(<IFC>) {
-	s/\r|\n//g;
-	if (/^\S+/) { push(@lines, $_); }
-	else { $lines[$#lines] .= $_; }
-	}
-close(IFC);
-&reset_environment();
+my @rv;
 my $ethtool = &has_command("ethtool");
-foreach $l (@lines) {
-	local %ifc;
-	$l =~ /^([^:\s]+)/; $ifc{'name'} = $1;
-	$l =~ /^(\S+)/; $ifc{'fullname'} = $1; $ifc{'fullname'} =~ s/:$//;
-	if ($l =~ /^(\S+):(\d+)/) { $ifc{'virtual'} = $2; }
-	if ($l =~ /^(\S+)\.(\d+)/) { $ifc{'vlanid'} = $2; }
-	if ($l =~ /inet addr:(\S+)/) { $ifc{'address'} = $1; }
-	elsif ($l =~ /inet (\S+)/) { $ifc{'address'} = $1; }
-	elsif (!$empty) { next; }
-	if ($l =~ /Mask:(\S+)/) { $ifc{'netmask'} = $1; }
-	elsif ($l =~ /netmask (\S+)/) { $ifc{'netmask'} = $1; }
-	if ($l =~ /Bcast:(\S+)/) { $ifc{'broadcast'} = $1; }
-	elsif ($l =~ /broadcast (\S+)/) { $ifc{'broadcast'} = $1; }
-	if ($l =~ /HWaddr (\S+)/) { $ifc{'ether'} = $1; }
-	elsif ($l =~ /ether (\S+)/) { $ifc{'ether'} = $1; }
-	if ($l =~ /MTU:(\d+)/) { $ifc{'mtu'} = $1; }
-	elsif ($l =~ /mtu (\d+)/) { $ifc{'mtu'} = $1; }
-	if ($l =~ /P-t-P:(\S+)/) { $ifc{'ptp'} = $1; }
-	elsif ($l =~ /ptp (\S+)/) { $ifc{'ptp'} = $1; }
-	$ifc{'up'}++ if ($l =~ /\sUP\s|<\S*UP\S*>/);
-	$ifc{'promisc'}++ if ($l =~ /\sPROMISC\s/);
-	local (@address6, @netmask6, @scope6);
-	while($l =~ s/inet6 addr:\s*(\S+)\/(\d+)\s+Scope:(Global)//i) {
-		local ($address6, $netmask6, $scope6) = ($1, $2, $3);
-		push(@address6, $address6);
-		push(@netmask6, $netmask6);
-		push(@scope6, $scope6);
+
+if (&has_command("ifconfig")) {
+	&clean_language();
+	&open_execute_command(IFC, "ifconfig -a", 1, 1);
+	my @lines;
+	while(<IFC>) {
+		s/\r|\n//g;
+		if (/^\S+/) { push(@lines, $_); }
+		else { $lines[$#lines] .= $_; }
 		}
-	while($l =~ s/inet6 (\S+)\s+prefixlen (\d+)\s+scopeid\s+(\S+)<global>//i) {
-		local ($address6, $netmask6, $scope6) = ($1, $2, $3);
-		push(@address6, $address6);
-		push(@netmask6, $netmask6);
-		push(@scope6, $scope6);
+	close(IFC);
+	&reset_environment();
+	foreach my $l (@lines) {
+		my %ifc;
+		$l =~ /^([^:\s]+)/ || next;
+		$ifc{'name'} = $1;
+		$l =~ /^(\S+)/;
+		$ifc{'fullname'} = $1;
+		$ifc{'fullname'} =~ s/:$//;
+		if ($l =~ /^(\S+):(\d+)/) { $ifc{'virtual'} = $2; }
+		if ($l =~ /^(\S+)\.(\d+)/) { $ifc{'vlanid'} = $2; }
+		if ($l =~ /inet addr:(\S+)/) { $ifc{'address'} = $1; }
+		elsif ($l =~ /inet (\S+)/) { $ifc{'address'} = $1; }
+		elsif (!$empty) { next; }
+		if ($l =~ /Mask:(\S+)/) { $ifc{'netmask'} = $1; }
+		elsif ($l =~ /netmask (\S+)/) { $ifc{'netmask'} = $1; }
+		if ($l =~ /Bcast:(\S+)/) { $ifc{'broadcast'} = $1; }
+		elsif ($l =~ /broadcast (\S+)/) { $ifc{'broadcast'} = $1; }
+		if ($l =~ /HWaddr (\S+)/) { $ifc{'ether'} = $1; }
+		elsif ($l =~ /ether (\S+)/) { $ifc{'ether'} = $1; }
+		if ($l =~ /MTU:(\d+)/) { $ifc{'mtu'} = $1; }
+		elsif ($l =~ /mtu (\d+)/) { $ifc{'mtu'} = $1; }
+		if ($l =~ /P-t-P:(\S+)/) { $ifc{'ptp'} = $1; }
+		elsif ($l =~ /ptp (\S+)/) { $ifc{'ptp'} = $1; }
+		$ifc{'up'}++ if ($l =~ /\sUP\s|<\S*UP\S*>/);
+		$ifc{'promisc'}++ if ($l =~ /\sPROMISC\s/);
+
+		my (@address6, @netmask6, @scope6);
+		while($l =~ s/inet6 addr:\s*(\S+)\/(\d+)\s+Scope:(Global)//i) {
+			local ($address6, $netmask6, $scope6) = ($1, $2, $3);
+			push(@address6, $address6);
+			push(@netmask6, $netmask6);
+			push(@scope6, $scope6);
+			}
+		while($l =~ s/inet6 (\S+)\s+prefixlen (\d+)\s+scopeid\s+(\S+)<global>//i) {
+			local ($address6, $netmask6, $scope6) = ($1, $2, $3);
+			push(@address6, $address6);
+			push(@netmask6, $netmask6);
+			push(@scope6, $scope6);
+			}
+		$ifc{'address6'} = \@address6;
+		$ifc{'netmask6'} = \@netmask6;
+		$ifc{'scope6'} = \@scope6;
+
+		$ifc{'edit'} = ($ifc{'name'} !~ /^ppp/);
+		$ifc{'index'} = scalar(@rv);
+		push(@rv, \%ifc);
 		}
-	$ifc{'address6'} = \@address6;
-	$ifc{'netmask6'} = \@netmask6;
-	$ifc{'scope6'} = \@scope6;
-	$ifc{'edit'} = ($ifc{'name'} !~ /^ppp/);
-	$ifc{'index'} = scalar(@rv);
-	push(@rv, \%ifc);
+	}
+else {
+	# Get status from new ip command
+	&clean_language();
+	&open_execute_command(IFC, "ip addr", 1, 1);
+	my @lines;
+	while(<IFC>) {
+		s/\r|\n//g;
+		if (/^\S+/) { push(@lines, $_); }
+		else { $lines[$#lines] .= $_; }
+		}
+	close(IFC);
+	&reset_environment();
+	foreach my $l (@lines) {
+		my %ifc;
+		$l =~ /^\d+:\s+(\S+):/ || next;
+		$ifc{'name'} = $1;
+		$ifc{'fullname'} = $1;
+		# XXX virtual?
+		if ($l =~ /\sinet\s+([0-9\.]+)\/(\d+)/) {
+			$ifc{'address'} = $1;
+			$ifc{'netmask'} = &prefix_to_mask("$2");
+			}
+		if ($l =~ /\sbrd\s+([0-9\.]+)/) {
+			$ifc{'broadcast'} = $1;
+			}
+		if ($l =~ /\smtu\s+(\d+)/) {
+			$ifc{'mtu'} = $1;
+			}
+		if ($l =~ /ether\s+([0-9a-f:]+)/i) {
+			$ifc{'ether'} = $1;
+			}
+
+		my (@address6, @netmask6, @scope6);
+		while($l =~ s/inet6\s+(\S+)\/(\d+)\s+scope\s+(\S+)//i) {
+			local ($address6, $netmask6, $scope6) = ($1, $2, $3);
+			push(@address6, $address6);
+			push(@netmask6, $netmask6);
+			push(@scope6, $scope6);
+			}
+		$ifc{'address6'} = \@address6;
+		$ifc{'netmask6'} = \@netmask6;
+		$ifc{'scope6'} = \@scope6;
+
+		$ifc{'up'}++ if ($l =~ /\sUP\s|<\S*UP\S*>/);
+		$ifc{'promisc'}++ if ($l =~ /\sPROMISC\s/);
+		$ifc{'edit'} = ($ifc{'name'} !~ /^ppp/);
+		$ifc{'index'} = scalar(@rv);
+		push(@rv, \%ifc);
+		}
 	}
 
 foreach my $ifc (@rv) {
-	# Get current status for ethtool
+	# For each ethernet interface, merge in data from ethtool
 	if (&iface_type($ifc->{'fullname'}) eq 'Ethernet' &&
 	    $ifc->{'virtual'} eq '' && $ethtool) {
 		my $out = &backquote_command(
@@ -76,6 +135,7 @@ foreach my $ifc (@rv) {
 			}
 		}
 	}
+
 return @rv;
 }
 
@@ -214,7 +274,7 @@ return ($gconfig{'os_type'} eq 'debian-linux' &&
 	$gconfig{'os_version'} >= 5 ||
 	$gconfig{'os_type'} eq 'redhat-linux' &&
 	$gconfig{'os_version'} >= 13) &&
-       ($iface->{'name'} !~ /^(eth|em|eno|ems|enp|enx|lo)/ ||
+       ($iface->{'name'} !~ /^(eth|em|eno|ens|enp|enx|lo)/ ||
  	$iface->{'name'} =~ /^(\S+)\.(\d+)/) &&
        $iface->{'virtual'} eq '';
 }
@@ -229,7 +289,7 @@ if ($_[0] =~ /^(.*)\.(\d+)$/) {
 return "PPP" if ($_[0] =~ /^ppp/);
 return "SLIP" if ($_[0] =~ /^sl/);
 return "PLIP" if ($_[0] =~ /^plip/);
-return "Ethernet" if ($_[0] =~ /^eth|em|eno|ems|enp|enx|p\d+p\d+/);
+return "Ethernet" if ($_[0] =~ /^eth|em|eno|ens|enp|enx|p\d+p\d+/);
 return "Wireless Ethernet" if ($_[0] =~ /^(wlan|ath)/);
 return "Arcnet" if ($_[0] =~ /^arc/);
 return "Token Ring" if ($_[0] =~ /^tr/);
@@ -395,7 +455,7 @@ return $? ? $out : undef;
 # Does some interface have an editable hardware address
 sub iface_hardware
 {
-return $_[0] =~ /^(eth|em|eno|ems|enp|enx)/;
+return $_[0] =~ /^(eth|em|eno|ens|enp|enx)/;
 }
 
 # allow_interface_clash()
