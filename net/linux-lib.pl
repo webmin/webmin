@@ -84,7 +84,6 @@ elsif (&has_command("ip")) {
 		$l =~ /^\d+:\s+(\S+):/ || next;
 		$ifc{'name'} = $1;
 		$ifc{'fullname'} = $1;
-		# XXX virtual?
 		if ($l =~ /\sinet\s+([0-9\.]+)\/(\d+)/) {
 			$ifc{'address'} = $1;
 			$ifc{'netmask'} = &prefix_to_mask("$2");
@@ -115,6 +114,26 @@ elsif (&has_command("ip")) {
 		$ifc{'edit'} = ($ifc{'name'} !~ /^ppp/);
 		$ifc{'index'} = scalar(@rv);
 		push(@rv, \%ifc);
+
+		# Add extra IPs as fake virtual interfaces
+		$l =~ s/\sinet\s+([0-9\.]+)\/(\d+)//;
+		my $i = 1;
+		while($l =~ s/\sinet\s+([0-9\.]+)\/(\d+)//) {
+			my %vifc;
+			$vifc{'name'} = $ifc{'name'};
+			$vifc{'fullname'} = $ifc{'name'}.":".$i;
+			$vifc{'address'} = $1;
+			$vifc{'netmask'} = &prefix_to_mask("$2");
+			$vifc{'broadcast'} = &compute_broadcast(
+				$vifc{'address'}, $vifc{'netmask'});
+			$vifc{'mtu'} = $ifc{'mtu'};
+			$vifc{'up'} = $ifc{'up'};
+			$vifc{'virtual'} = $i;
+			$vifc{'edit'} = ($vifc{'name'} !~ /^ppp/);
+			$vifc{'index'} = scalar(@rv);
+			push(@rv, \%vifc);
+			$i++;
+			}
 		}
 	}
 else {
@@ -220,7 +239,6 @@ elsif (&has_command("ifconfig")) {
 	}
 elsif (&has_command("ip")) {
 	# If the IP is changing, first remove it then re-add
-	# XXX what about virtual here?
 	my $readd = 0;
 	if ($old && $old->{'address'}) {
 		if ($old->{'address'} ne $a->{'address'} ||
@@ -252,7 +270,6 @@ elsif (&has_command("ip")) {
 			$cmd .= " dev $a->{'name'}";
 			}
 		}
-	# XXX what about virtual??
 	}
 else {
 	&error("Both the ifconfig and ip commands are missing");
