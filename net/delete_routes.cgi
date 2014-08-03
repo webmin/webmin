@@ -15,5 +15,3 @@ foreach $d (sort { $b <=> $a } @d) {
 	}
 &webmin_log("delete", "routes", scalar(@d));
 &redirect("list_routes.cgi?mode=active");
-
-

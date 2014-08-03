@@ -31,5 +31,5 @@ else {
 $err = &create_route($route);
 &error($err) if ($err);
 &webmin_log("create", "route", $route->{'dest'}, $route);
-&redirect("list_routes.cgi");
+&redirect("list_routes.cgi?mode=active");
 
