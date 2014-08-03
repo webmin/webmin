@@ -146,8 +146,10 @@ return @rv;
 # Create or modify an interface
 sub activate_interface
 {
-local $a = $_[0];
-# For Debian 5.0+ the "vconfig add" command is deprecated, this is handled by ifup.
+my ($a) = @_;
+
+# For Debian 5.0+ the "vconfig add" command is deprecated, this is handled
+# by ifup.
 if(($a->{'vlan'} == 1) && !(($gconfig{'os_type'} eq 'debian-linux') && ($gconfig{'os_version'} >= 5))) {
 	local $vconfigCMD = "vconfig add " .
 			    $a->{'physical'} . " " . $a->{'vlanid'};
@@ -155,26 +157,33 @@ if(($a->{'vlan'} == 1) && !(($gconfig{'os_type'} eq 'debian-linux') && ($gconfig
 	if ($?) { &error($vonconfigout); }
 	}
 
-local $cmd;
+my $cmd;
 if (&use_ifup_command($a)) {
 	# Use Debian / Redhat ifup command
 	if($a->{'vlan'} == 1) {
-		# name and fullname for VLAN tagged interfaces are "auto" so we need to ifup using physical and vlanid. 
+		# Name and fullname for VLAN tagged interfaces are "auto" so
+		# we need to ifup using physical and vlanid. 
 		if ($a->{'up'}) {
 			if(($a->{'mtu'}) && (($gconfig{'os_type'} eq 'redhat-linux') && ($gconfig{'os_version'} >= 13))) {
-                        	local $cmd2;
+                        	my $cmd2;
                         	$cmd2 .= "ifconfig $a->{'physical'} mtu $a->{'mtu'}";
-                        	local $out = &backquote_logged("$cmd2 2>&1");
+                        	my $out = &backquote_logged("$cmd2 2>&1");
                         	if ($?) { &error($out); }
                         	}
 			$cmd .= "ifup $a->{'physical'}" . "." . $a->{'vlanid'};
 			}
-	        else { $cmd .= "ifdown $a->{'physical'}" . "." . $a->{'vlanid'}; }
+	        else {
+			$cmd .= "ifdown $a->{'physical'}.".$a->{'vlanid'};
+			}
+		}
+	elsif ($a->{'up'}) {
+		$cmd .= "ifdown $a->{'fullname'}\; ifup $a->{'fullname'}";
+		}
+        else {
+		$cmd .= "ifdown $a->{'fullname'}";
+		}
 	}
-        elsif ($a->{'up'}) { $cmd .= "ifdown $a->{'fullname'}\; ifup $a->{'fullname'}"; }
-        else { $cmd .= "ifdown $a->{'fullname'}"; }
-	}
-else {
+elsif (&has_command("ifconfig")) {
 	# Build ifconfig command manually
 	if($a->{'vlan'} == 1) {
 		$cmd .= "ifconfig $a->{'physical'}.$a->{'vlanid'}";
@@ -192,28 +201,83 @@ else {
 	if ($a->{'up'}) { $cmd .= " up"; }
 	else { $cmd .= " down"; }
 	}
-local $out = &backquote_logged("$cmd 2>&1");
+elsif (&has_command("ip")) {
+	# If the IP is changing, first remove it then re-add
+	# XXX what about virtual here?
+	my ($old) = grep { $_->{'fullname'} eq $a->{'fullname'} }
+			 &active_interfaces();
+	my $readd = 0;
+	if ($old) {
+		if ($old->{'address'} ne $a->{'address'} ||
+		    $old->{'netmask'} ne $a->{'netmask'}) {
+			my $rcmd = "ip addr del ".$old->{'address'}."/".
+				   &mask_to_prefix($old->{'netmask'}).
+				   " dev ".$a->{'name'};
+			&system_logged("$rcmd >/dev/null 2>&1");
+			$readd = 1;
+			}
+		}
+	else {
+		$readd = 1;
+		}
+
+	# Build ip command manually
+	if ($readd) {
+		$cmd .= "ip addr add ".$a->{'address'};
+		if ($a->{'netmask'}) {
+			$cmd .= "/".&mask_to_prefix($a->{'netmask'});
+			}
+		if ($a->{'broadcast'}) {
+			$cmd .= " broadcast $a->{'broadcast'}";
+			}
+		if($a->{'vlan'} == 1) {
+			$cmd .= " dev $a->{'physical'}.$a->{'vlanid'}";
+			}
+		else {
+			$cmd .= " dev $a->{'name'}";
+			}
+		}
+	# XXX what about virtual??
+	}
+else {
+	&error("Both the ifconfig and ip commands are missing");
+	}
+my $out = &backquote_logged("$cmd 2>&1");
 if ($?) { &error($out); }
 
 # Apply ethernet address
-if ($a->{'ether'} && !&use_ifup_command($a)) {
+if ($a->{'ether'} && !&use_ifup_command($a) && &has_command("ifconfig")) {
+	# With ifconfig command
 	$out = &backquote_logged(
 		"ifconfig $a->{'name'} hw ether $a->{'ether'} 2>&1");
 	if ($?) { &error($out); }
 	}
+elsif ($a->{'ether'} && !&use_ifup_command($a) && &has_command("ip")) {
+	# With ip link command
+	$out = &backquote_logged(
+	    "ip link set dev ".$a->{'name'}." address ".$a->{'ether'}." 2>&1");
+	if ($?) { &error($out); }
+	}
 
-if ($a->{'virtual'} eq '') {
+# Apply MTU
+if ($a->{'mtu'} && !&use_ifup_command($a) && &has_command("ip")) {
+	$out = &backquote_logged(
+	    "ip link set dev ".$a->{'name'}." mtu ".$a->{'mtu'}." 2>&1");
+	if ($?) { &error($out); }
+	}
+
+if ($a->{'virtual'} eq '' && &has_command("ifconfig")) {
 	# Remove old IPv6 addresses
 	local $l = &backquote_command("ifconfig $a->{'name'}");
 	while($l =~ s/inet6 addr:\s*(\S+)\/(\d+)\s+Scope:(\S+)//) {
-		local $cmd = "ifconfig $a->{'name'} inet6 del $1/$2 2>&1";
+		my $cmd = "ifconfig $a->{'name'} inet6 del $1/$2 2>&1";
 		$out = &backquote_logged($cmd);
 		&error("Failed to remove old IPv6 address : $out") if ($?);
 		}
 
 	# Add IPv6 addresses
 	for(my $i=0; $i<@{$a->{'address6'}}; $i++) {
-		local $cmd = "ifconfig $a->{'name'} inet6 add ".
+		my $cmd = "ifconfig $a->{'name'} inet6 add ".
 		     $a->{'address6'}->[$i]."/".$a->{'netmask6'}->[$i]." 2>&1";
 		$out = &backquote_logged($cmd);
 		&error("Failed to add IPv6 address : $out") if ($?);
@@ -225,45 +289,69 @@ if ($a->{'virtual'} eq '') {
 # Shutdown some active interface
 sub deactivate_interface
 {
-local $a = $_[0];
-local $name = $a->{'name'}.
-	      ($a->{'virtual'} ne "" ? ":$a->{'virtual'}" : "");
-local $address = $a->{'address'}.
-        ($a->{'virtual'} ne "" ? ":$a->{'virtual'}" : "");
-local $netmask = $a->{'netmask'};
- 
-if ($a->{'virtual'} ne "") {
-	# Shutdown virtual interface by setting address to 0
-	local $out = &backquote_logged("ifconfig $name 0 2>&1");
-	}
-# Delete all v6 addresses
-for(my $i=0; $i<@{$a->{'address6'}}; $i++) {
-	local $cmd = "ifconfig $a->{'name'} inet6 del ".
-		     $a->{'address6'}->[$i]."/".$a->{'netmask6'}->[$i];
-	&backquote_logged("$cmd 2>&1");
-	}
+my ($a) = @_;
+if (&has_command("ifconfig")) {
+	# Use old ifconfig command
+	my $name = $a->{'name'}.
+		      ($a->{'virtual'} ne "" ? ":$a->{'virtual'}" : "");
+	my $address = $a->{'address'}.
+		($a->{'virtual'} ne "" ? ":$a->{'virtual'}" : "");
+	my $netmask = $a->{'netmask'};
+	 
+	if ($a->{'virtual'} ne "") {
+		# Shutdown virtual interface by setting address to 0
+		my $out = &backquote_logged("ifconfig $name 0 2>&1");
+		}
+	# Delete all v6 addresses
+	for(my $i=0; $i<@{$a->{'address6'}}; $i++) {
+		my $cmd = "ifconfig $a->{'name'} inet6 del ".
+			     $a->{'address6'}->[$i]."/".$a->{'netmask6'}->[$i];
+		&backquote_logged("$cmd 2>&1");
+		}
 
-# Check if still up somehow
-local ($still) = grep { $_->{'fullname'} eq $name } &active_interfaces();
-if ($still) {
-	# Old version of ifconfig or non-virtual interface.. down it
-	local $out;
-	if (&use_ifup_command($a)) {
-		$out = &backquote_logged("ifdown $name 2>&1");
+	# Check if still up somehow
+	my ($still) = grep { $_->{'fullname'} eq $name } &active_interfaces();
+	if ($still) {
+		# Old version of ifconfig or non-virtual interface.. down it
+		my $out;
+		if (&use_ifup_command($a)) {
+			$out = &backquote_logged("ifdown $name 2>&1");
+			}
+		else {
+			$out = &backquote_logged("ifconfig $name down 2>&1");
+			}
+		my ($still) = grep { $_->{'fullname'} eq $name }
+			      &active_interfaces();
+		if ($still && $still->{'up'}) {
+			&error($out ? "<pre>".&html_escape($out)."</pre>"
+				    : "Interface is still active even after ".
+				      "being shut down");
+			}
+		if (&iface_type($name) =~ /^(.*) (VLAN)$/) {
+			$out = &backquote_logged("vconfig rem $name 2>&1");
+			}
 		}
-	else {
-		$out = &backquote_logged("ifconfig $name down 2>&1");
+	}
+elsif (&has_command("ip")) {
+	# Use new ip command to remove all IPs
+	my @del = ( $a->{'address'}."/".&mask_to_prefix($a->{'netmask'}) );
+	for(my $i=0; $i<@{$a->{'address6'}}; $i++) {
+		push(@del, $a->{'address6'}->[$i]."/".
+			   $a->{'netmask6'}->[$i]);
 		}
-	local ($still) = grep { $_->{'fullname'} eq $name }
-		      &active_interfaces();
-	if ($still && $still->{'up'}) {
-		&error($out ? "<pre>$out</pre>"
-			    : "Interface is still active even after being ".
-			      "shut down");
+	foreach my $d (@del) {
+		my $rcmd = "ip addr del ".$d." dev ".$a->{'name'};
+		&system_logged("$rcmd >/dev/null 2>&1");
 		}
-	if (&iface_type($name) =~ /^(.*) (VLAN)$/) {
-		$out = &backquote_logged("vconfig rem $name 2>&1");
+
+	if ($a->{'virtual'} eq '') {
+		my $cmd = "ip link dev set ".$a->{'name'}." down";
+		my $out = &backquote_logged("$cmd 2>&1");
+		&error("<pre>".&html_escape($out)."</pre>") if ($?);
 		}
+	}
+else {
+	&error("Both the ifconfig and ip commands are missing");
 	}
 }
 
