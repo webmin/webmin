@@ -158,6 +158,22 @@ if(($a->{'vlan'} == 1) && !(($gconfig{'os_type'} eq 'debian-linux') && ($gconfig
 	if ($?) { &error($vonconfigout); }
 	}
 
+if (!&has_command("ifconfig") && &has_command("ip")) {
+	# For a real interface, activate or de-activate the link
+	if ($a->{'virtual'} eq '' && $a->{'up'} && (!$old || !$old->{'up'})) {
+		# Bring up
+		my $cmd = "ip link set dev ".$a->{'name'}." up";
+		my $out = &backquote_logged("$cmd 2>&1");
+		&error("Failed to bring up link : $out") if ($?);
+		}
+	elsif ($a->{'virtual'} eq '' && !$a->{'up'} && $old && $old->{'up'}) {
+		# Take down
+		my $cmd = "ip link set dev ".$a->{'name'}." down";
+		my $out = &backquote_logged("$cmd 2>&1");
+		&error("Failed to bring down link : $out") if ($?);
+		}
+	}
+
 my $cmd;
 if (&use_ifup_command($a)) {
 	# Use Debian / Redhat ifup command
@@ -206,7 +222,7 @@ elsif (&has_command("ip")) {
 	# If the IP is changing, first remove it then re-add
 	# XXX what about virtual here?
 	my $readd = 0;
-	if ($old) {
+	if ($old && $old->{'address'}) {
 		if ($old->{'address'} ne $a->{'address'} ||
 		    $old->{'netmask'} ne $a->{'netmask'}) {
 			my $rcmd = "ip addr del ".$old->{'address'}."/".
@@ -358,7 +374,11 @@ if (&has_command("ifconfig")) {
 	}
 elsif (&has_command("ip")) {
 	# Use new ip command to remove all IPs
-	my @del = ( $a->{'address'}."/".&mask_to_prefix($a->{'netmask'}) );
+	my @del;
+	if ($a->{'address'}) {
+		push(@del, $a->{'address'}."/".
+			   &mask_to_prefix($a->{'netmask'}));
+		}
 	for(my $i=0; $i<@{$a->{'address6'}}; $i++) {
 		push(@del, $a->{'address6'}->[$i]."/".
 			   $a->{'netmask6'}->[$i]);
@@ -370,7 +390,7 @@ elsif (&has_command("ip")) {
 		}
 
 	if ($a->{'virtual'} eq '') {
-		my $cmd = "ip link dev set ".$a->{'name'}." down";
+		my $cmd = "ip link set dev ".$a->{'name'}." down";
 		my $out = &backquote_logged("$cmd 2>&1");
 		&error("<pre>".&html_escape($out)."</pre>") if ($?);
 		}
