@@ -147,6 +147,7 @@ return @rv;
 sub activate_interface
 {
 my ($a) = @_;
+my ($old) = grep { $_->{'fullname'} eq $a->{'fullname'} } &active_interfaces();
 
 # For Debian 5.0+ the "vconfig add" command is deprecated, this is handled
 # by ifup.
@@ -204,8 +205,6 @@ elsif (&has_command("ifconfig")) {
 elsif (&has_command("ip")) {
 	# If the IP is changing, first remove it then re-add
 	# XXX what about virtual here?
-	my ($old) = grep { $_->{'fullname'} eq $a->{'fullname'} }
-			 &active_interfaces();
 	my $readd = 0;
 	if ($old) {
 		if ($old->{'address'} ne $a->{'address'} ||
@@ -283,6 +282,31 @@ if ($a->{'virtual'} eq '' && &has_command("ifconfig")) {
 		&error("Failed to add IPv6 address : $out") if ($?);
 		}
 	}
+
+if ($a->{'virtual'} eq '' && &has_command("ip")) {
+	# Remove old IPv6 addresses
+	if ($old) {
+		for(my $i=0; $i<@{$old->{'address6'}}; $i++) {
+			my $cmd = "ip -6 addr del ".
+				  $old->{'address6'}->[$i]."/".
+				  $old->{'netmask6'}->[$i]." dev ".
+				  $a->{'name'};
+			$out = &backquote_logged("$cmd 2>&1");
+			&error("Failed to remove old IPv6 address : $out") if ($?);
+			}
+		}
+
+	# Add IPv6 addresses
+	for(my $i=0; $i<@{$a->{'address6'}}; $i++) {
+		my $cmd = "ip -6 addr add ".
+			  $a->{'address6'}->[$i]."/".
+			  $a->{'netmask6'}->[$i]." dev ".
+			  $a->{'name'};
+		$out = &backquote_logged("$cmd 2>&1");
+		&error("Failed to add IPv6 address : $out") if ($?);
+		}
+	}
+
 }
 
 # deactivate_interface(&details)
@@ -340,8 +364,9 @@ elsif (&has_command("ip")) {
 			   $a->{'netmask6'}->[$i]);
 		}
 	foreach my $d (@del) {
-		my $rcmd = "ip addr del ".$d." dev ".$a->{'name'};
-		&system_logged("$rcmd >/dev/null 2>&1");
+		my $cmd = "ip addr del ".$d." dev ".$a->{'name'};
+		my $out = &backquote_logged("$cmd 2>&1");
+		&error("Failed to remove old address : $out") if ($?);
 		}
 
 	if ($a->{'virtual'} eq '') {
