@@ -304,13 +304,20 @@ Change the grace times for blocks and files on some filesystem. Parameters are:
 =cut
 sub edit_user_grace
 {
-$ENV{'EDITOR'} = $ENV{'VISUAL'} = "$module_root_directory/edgrace.pl";
-$ENV{'QUOTA_FILESYS'} = $_[0];
-$ENV{'QUOTA_BTIME'} = $_[1];
-$ENV{'QUOTA_BUNITS'} = $_[2];
-$ENV{'QUOTA_FTIME'} = $_[3];
-$ENV{'QUOTA_FUNITS'} = $_[4];
-&system_logged($config{'user_grace_command'});
+my ($fs, $btime, $bunits, $ftime, $funits) = @_;
+if (defined(&set_user_grace) && defined(&can_set_user_grace) &&
+    &can_set_user_grace($fs)) {
+	return &set_user_quota(@_);
+	}
+else {
+	$ENV{'EDITOR'} = $ENV{'VISUAL'} = "$module_root_directory/edgrace.pl";
+	$ENV{'QUOTA_FILESYS'} = $fs;
+	$ENV{'QUOTA_BTIME'} = $btime;
+	$ENV{'QUOTA_BUNITS'} = $bunits;
+	$ENV{'QUOTA_FTIME'} = $ftime;
+	$ENV{'QUOTA_FUNITS'} = $funits;
+	&system_logged($config{'user_grace_command'});
+	}
 }
 
 =head2 edit_group_grace(filesystem, btime, bunits, ftime, funits)
@@ -321,13 +328,20 @@ The parameters are the same as edit_user_grace.
 =cut
 sub edit_group_grace
 {
-$ENV{'EDITOR'} = $ENV{'VISUAL'} = "$module_root_directory/edgrace.pl";
-$ENV{'QUOTA_FILESYS'} = $_[0];
-$ENV{'QUOTA_BTIME'} = $_[1];
-$ENV{'QUOTA_BUNITS'} = $_[2];
-$ENV{'QUOTA_FTIME'} = $_[3];
-$ENV{'QUOTA_FUNITS'} = $_[4];
-&system_logged($config{'group_grace_command'});
+my ($fs, $btime, $bunits, $ftime, $funits) = @_;
+if (defined(&set_group_grace) && defined(&can_set_group_grace) &&
+    &can_set_group_grace($fs)) {
+	return &set_group_quota(@_);
+	}
+else {
+	$ENV{'EDITOR'} = $ENV{'VISUAL'} = "$module_root_directory/edgrace.pl";
+	$ENV{'QUOTA_FILESYS'} = $fs;
+	$ENV{'QUOTA_BTIME'} = $btime;
+	$ENV{'QUOTA_BUNITS'} = $bunits;
+	$ENV{'QUOTA_FTIME'} = $ftime;
+	$ENV{'QUOTA_FUNITS'} = $funits;
+	&system_logged($config{'group_grace_command'});
+	}
 }
 
 =head2 quota_input(name, value, [blocksize])
