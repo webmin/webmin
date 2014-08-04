@@ -172,10 +172,15 @@ Sets the disk quota for some user. The parameters are :
 =cut
 sub edit_user_quota
 {
-if ($config{'user_setquota_command'} &&
-    &has_command((split(/\s+/, $config{'user_setquota_command'}))[0])) {
+my ($user, $fs, $sblocks, $hblocks, $sfiles, $hfiles) = @_;
+if (defined(&set_user_quota) && defined(&can_set_user_quota) &&
+    &can_set_user_quota($fs)) {
+	# OS lib file defines a function to set quotas
+	return &set_user_quota(@_);
+	}
+elsif ($config{'user_setquota_command'} &&
+       &has_command((split(/\s+/, $config{'user_setquota_command'}))[0])) {
 	# Use quota setting command
-	local $user = $_[0];
 	if ($user =~ /^#(\d+)$/) {
 		# Pass numeric UID
 		$user = $1;
@@ -186,21 +191,20 @@ if ($config{'user_setquota_command'} &&
 		$user = $uid if (defined($uid));
 		}
 	local $cmd = $config{'user_setquota_command'}." ".quotemeta($user)." ".
-		     int($_[2])." ".int($_[3])." ".int($_[4])." ".int($_[5]).
-		     " ".quotemeta($_[1]);
+		     int($sblocks)." ".int($hblocks)." ".
+		     int($sfiles)." ".int($hfiles)." ".quotemeta($fs);
 	local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 	&error("<tt>".&html_escape($out)."</tt>") if ($?);
 	}
 else {
 	# Call the quota editor
 	$ENV{'EDITOR'} = $ENV{'VISUAL'} = "$module_root_directory/edquota.pl";
-	$ENV{'QUOTA_USER'} = $_[0];
-	$ENV{'QUOTA_FILESYS'} = $_[1];
-	$ENV{'QUOTA_SBLOCKS'} = $_[2];
-	$ENV{'QUOTA_HBLOCKS'} = $_[3];
-	$ENV{'QUOTA_SFILES'} = $_[4];
-	$ENV{'QUOTA_HFILES'} = $_[5];
-	local $user = $_[0];
+	$ENV{'QUOTA_USER'} = $user;
+	$ENV{'QUOTA_FILESYS'} = $fs;
+	$ENV{'QUOTA_SBLOCKS'} = $sblocks;
+	$ENV{'QUOTA_HBLOCKS'} = $hblocks;
+	$ENV{'QUOTA_SFILES'} = $sfiles;
+	$ENV{'QUOTA_HFILES'} = $hfiles;
 	if ($edquota_use_ids) {
 		# Use UID instead of username
 		if ($user =~ /^#(\d+)$/) {
@@ -235,10 +239,15 @@ Sets the disk quota for some group The parameters are :
 =cut
 sub edit_group_quota
 {
-if ($config{'group_setquota_command'} &&
-    &has_command((split(/\s+/, $config{'group_setquota_command'}))[0])) {
+my ($group, $fs, $sblocks, $hblocks, $sfiles, $hfiles) = @_;
+if (defined(&set_group_quota) && defined(&can_set_group_quota) &&
+    &can_set_group_quota($fs)) {
+	# OS lib file defines a function to set quotas
+	return &set_group_quota(@_);
+	}
+elsif ($config{'group_setquota_command'} &&
+       &has_command((split(/\s+/, $config{'group_setquota_command'}))[0])) {
 	# Use quota setting command
-	local $group = $_[0];
 	if ($group =~ /^#(\d+)$/) {
 		# Pass numeric UID
 		$group = $1;
@@ -249,21 +258,20 @@ if ($config{'group_setquota_command'} &&
 		$group = $gid if (defined($gid));
 		}
 	local $cmd =$config{'group_setquota_command'}." ".quotemeta($group)." ".
-		     int($_[2])." ".int($_[3])." ".int($_[4])." ".int($_[5]).
-		     " ".quotemeta($_[1]);
+		     int($sblocks)." ".int($hblocks)." ".
+		     int($sfiles)." ".int($hfiles)." ".quotemeta($fs);
 	local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 	&error("<tt>".&html_escape($out)."</tt>") if ($?);
 	}
 else {
 	# Call the editor
 	$ENV{'EDITOR'} = $ENV{'VISUAL'} = "$module_root_directory/edquota.pl";
-	$ENV{'QUOTA_USER'} = $_[0];
-	$ENV{'QUOTA_FILESYS'} = $_[1];
-	$ENV{'QUOTA_SBLOCKS'} = $_[2];
-	$ENV{'QUOTA_HBLOCKS'} = $_[3];
-	$ENV{'QUOTA_SFILES'} = $_[4];
-	$ENV{'QUOTA_HFILES'} = $_[5];
-	local $group = $_[0];
+	$ENV{'QUOTA_USER'} = $group;
+	$ENV{'QUOTA_FILESYS'} = $fs;
+	$ENV{'QUOTA_SBLOCKS'} = $sblocks;
+	$ENV{'QUOTA_HBLOCKS'} = $hblocks;
+	$ENV{'QUOTA_SFILES'} = $sfiles;
+	$ENV{'QUOTA_HFILES'} = $hfiles;
 	if ($edquota_use_ids) {
 		# Use GID instead of group name
 		if ($group =~ /^#(\d+)$/) {
