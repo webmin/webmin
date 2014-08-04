@@ -145,7 +145,7 @@ sub get_ldap_server_version
 {
 return undef if (&local_ldap_server() != 1);
 local $out = &backquote_with_timeout(
-		"$config{'slapd'} -V -d 1 2>&1 </dev/null", 1, 1, 1);
+		"$config{'slapd'} -V -d 1 2>&1 </dev/null", 1, 1, 20);
 if ($out =~ /slapd\s+([0-9\.]+)/) {
 	return $1;
 	}
