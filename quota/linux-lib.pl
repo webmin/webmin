@@ -397,7 +397,14 @@ best demonstrates how this function should be used:
 =cut
 sub user_filesystems
 {
-return &parse_quota_output("$config{'user_quota_command'} ".quotemeta($_[0]));
+my ($user) = @_;
+if (&is_xfs_fs($fs)) {
+	return &parse_xfs_quota_output("xfs_quota -xc 'quota -b -i -u $user'");
+	}
+else {
+	return &parse_quota_output($config{'user_quota_command'}." ".
+				   quotemeta($user));
+	}
 }
 
 =head2 group_filesystems(user)
@@ -409,7 +416,14 @@ as documented in the user_filesystems function.
 =cut
 sub group_filesystems
 {
-return &parse_quota_output("$config{'group_quota_command'} ".quotemeta($_[0]));
+my ($group) = @_;
+if (&is_xfs_fs($fs)) {
+	return &parse_xfs_quota_output("xfs_quota -xc 'quota -b -i -g $group'");
+	}
+else {
+	return &parse_quota_output($config{'group_quota_command'}." ".
+				   quotemeta($group));
+	}
 }
 
 =head2 parse_quota_output(command)
@@ -463,6 +477,34 @@ $n=0; while(<QUOTA>) {
 		}
 	}
 close(QUOTA);
+return $n;
+}
+
+=head2 parse_xfs_quota_output(command)
+
+Internal command to parse all quotas for some user
+
+=cut
+sub parse_xfs_quota_output
+{
+my ($cmd) = @_;
+my $rep = &backquote_command("$cmd 2>/dev/null");
+my @rep = split(/\r?\n/, $rep);
+my $n = 0;
+foreach my $l (@rep) {
+	if ($l =~ /^(\/\S+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+\[\S+\]\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\S+)/) {
+		$filesys{$n,'ublocks'} = int($2);
+                $filesys{$n,'sblocks'} = int($3);
+                $filesys{$n,'hblocks'} = int($4);
+                $filesys{$n,'gblocks'} = $5;
+                $filesys{$n,'ufiles'} = int($6);
+                $filesys{$n,'sfiles'} = int($7);
+                $filesys{$n,'hfiles'} = int($8);
+                $filesys{$n,'gfiles'} = $9;
+		$filesys{$n,'filesys'} = $10;
+		$n++;
+		}
+	}
 return $n;
 }
 
