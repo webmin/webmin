@@ -107,7 +107,7 @@ local %opts = map { $_, 1 } split(/,/, $_[0]->[3]);
 local $ufile = $_[1]->[3] =~ /(usrquota|usrjquota)=([^, ]+)/ ? $2 : undef;
 local $gfile = $_[1]->[3] =~ /(grpquota|grpjquota)=([^, ]+)/ ? $2 : undef;
 if ($_[0]->[2] eq "xfs") {
-	# For XFS, assume enabled if setup in fstab
+	# For XFS, assume enabled if setup in mtab
 	$rv += 1 if ($opts{'quota'} || $opts{'usrquota'} ||
 		     $opts{'uqnoenforce'} || $opts{'uquota'});
 	$rv += 2 if ($opts{'grpquota'} || $opts{'gqnoenforce'} ||
@@ -483,8 +483,15 @@ how this can be used :
 =cut
 sub filesystem_users
 {
-return &parse_repquota_output(
-	$config{'user_repquota_command'}, \%user, "user", $_[0]);
+my ($fs) = @_;
+if (&is_xfs_fs($fs)) {
+	return &parse_xfs_report_output(
+		"xfs_quota -xc 'report -u -b -i'", \%user, 'user', $fs);
+	}
+else {
+	return &parse_repquota_output(
+		$config{'user_repquota_command'}, \%user, "user", $fs);
+	}
 }
 
 =head2 filesystem_groups(filesystem)
@@ -496,8 +503,15 @@ documented in the filesystem_users function.
 =cut
 sub filesystem_groups
 {
-return &parse_repquota_output(
-	$config{'group_repquota_command'}, \%group, "group", $_[0]);
+my ($fs) = @_;
+if (&is_xfs_fs($fs)) {
+	return &parse_xfs_report_output(
+		"xfs_quota -xc 'report -g -b -i'", \%group, 'group', $fs);
+	}
+else {
+	return &parse_repquota_output(
+		$config{'group_repquota_command'}, \%group, "group", $fs);
+	}
 }
 
 =head2 parse_repquota_output(command, hashname, dir)
@@ -561,6 +575,36 @@ for($n=0; $n<@rep; $n++) {
 		next if ($already{$what->{$nn,$mode}}++); # skip dupe users
 		$what->{$nn,'gblocks'} = &trunc_space($what->{$nn,'gblocks'});
 		$what->{$nn,'gfiles'} = &trunc_space($what->{$nn,'gfiles'});
+		$nn++;
+		}
+	}
+return $nn;
+}
+
+=head2 parse_xfs_report_output(command, &hash, key, fs)
+
+Internal function to parse the output of an xfs_quota report command
+
+=cut
+sub parse_xfs_report_output
+{
+my ($cmd, $what, $mode, $fs) = @_;
+%$what = ( );
+my $rep = &backquote_command("$cmd $fs 2>&1");
+if ($?) { return -1; }
+my @rep = split(/\r?\n/, $rep);
+my $nn = 0;
+foreach my $l (@rep) {
+	if ($l =~ /^(\S+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+\[\S+\]\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/) {
+		$what->{$nn,$mode} = $1;
+		$what->{$nn,'ublocks'} = int($2);
+		$what->{$nn,'sblocks'} = int($3);
+		$what->{$nn,'hblocks'} = int($4);
+		$what->{$nn,'gblocks'} = $5;
+		$what->{$nn,'ufiles'} = int($6);
+		$what->{$nn,'sfiles'} = int($7);
+		$what->{$nn,'hfiles'} = int($8);
+		$what->{$nn,'gfiles'} = $9;
 		$nn++;
 		}
 	}
@@ -850,6 +894,22 @@ foreach $m (&foreign_call($mm, "list_mounted", 1)) {
 	}
 $mtab{"/dev/root"} = "/";
 return %mtab;
+}
+
+=head2 is_xfs_fs
+
+Internal function to check if XFS tools should be used on some FS
+
+=cut
+sub is_xfs_fs
+{
+my ($fs) = @_;
+if (!$get_fs_cache{$fs}) {
+	foreach my $m (&mount::list_mounted()) {
+		$get_fs_cache{$m->[0]} = $m->[2];
+		}
+	}
+return $get_fs_cache{$fs} eq "xfs";
 }
 
 1;
