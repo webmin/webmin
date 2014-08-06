@@ -954,5 +954,45 @@ if (!$get_fs_cache{$fs}) {
 return $get_fs_cache{$fs} eq "xfs";
 }
 
+=head2 can_set_user_quota(fs)
+
+Returns 1 for XFS, because different quota setting commands are needed
+
+=cut
+sub can_set_user_quota
+{
+my ($fs) = @_;
+return &is_xfs_fs($fs);
+}
+
+=head2 set_user_quota(user, fs, sblocks, hblocks, sfiles, hfiles)
+
+Set XFS quotas for some user and FS
+
+=cut
+sub set_user_quota
+{
+my ($user, $fs, $sblocks, $hblocks, $sfiles, $hfiles) = @_;
+my $out = &backquote_logged("xfs_quota -x -c 'limit -u bsoft=$sblocks bhard=$hblocks isoft=$sfiles ihard=$hfiles $user' $fs 2>&1");
+&error($out) if ($?);
+}
+
+sub can_set_group_quota
+{
+return &can_set_user_quota($fs);
+}
+
+=head2 set_group_quota(group, fs, sblocks, hblocks, sfiles, hfiles)
+
+Set XFS quotas for some group and FS
+
+=cut
+sub set_group_quota
+{
+my ($group, $fs, $sblocks, $hblocks, $sfiles, $hfiles) = @_;
+my $out = &backquote_logged("xfs_quota -x -c 'limit -g bsoft=$sblocks bhard=$hblocks isoft=$sfiles ihard=$hfiles $group' $fs 2>&1");
+&error($out) if ($?);
+}
+
 1;
 
