@@ -398,13 +398,12 @@ best demonstrates how this function should be used:
 sub user_filesystems
 {
 my ($user) = @_;
-if (&is_xfs_fs($fs)) {
-	return &parse_xfs_quota_output("xfs_quota -xc 'quota -b -i -u $user'");
+my $n = 0;
+if (&has_command("xfs_quota")) {
+	$n = &parse_xfs_quota_output("xfs_quota -xc 'quota -b -i -u $user'");
 	}
-else {
-	return &parse_quota_output($config{'user_quota_command'}." ".
-				   quotemeta($user));
-	}
+return &parse_quota_output($config{'user_quota_command'}." ".
+			   quotemeta($user), $n);
 }
 
 =head2 group_filesystems(user)
@@ -417,33 +416,40 @@ as documented in the user_filesystems function.
 sub group_filesystems
 {
 my ($group) = @_;
-if (&is_xfs_fs($fs)) {
-	return &parse_xfs_quota_output("xfs_quota -xc 'quota -b -i -g $group'");
+my $n = 0;
+if (&has_command("xfs_quota")) {
+	$n = &parse_xfs_quota_output("xfs_quota -xc 'quota -b -i -g $group'");
 	}
-else {
-	return &parse_quota_output($config{'group_quota_command'}." ".
-				   quotemeta($group));
-	}
+return &parse_quota_output($config{'group_quota_command'}." ".
+			   quotemeta($group), $n);
 }
 
-=head2 parse_quota_output(command)
+=head2 parse_quota_output(command, [start-at])
 
 Internal function to parse the output of the quota command.
 
 =cut
 sub parse_quota_output
 {
-local($n, $_, %mtab);
-%mtab = &get_mtab_map();
-open(QUOTA, "$_[0] 2>/dev/null |");
-$n=0; while(<QUOTA>) {
+my ($cmd, $n) = @_;
+$n ||= 0;
+my %mtab = &get_mtab_map();
+local $_;
+my %done;
+for(my $i=0; $i<$n; $i++) {
+	$done{$filesys{$i,'filesys'}}++;
+	}
+open(QUOTA, "$cmd 2>/dev/null |");
+while(<QUOTA>) {
 	chop;
 	if (/^(Disk|\s+Filesystem)/) { next; }
 	if (/^(\S+)$/) {
 		# Bogus wrapped line
 		my $dev = $1;
-		$filesys{$n,'filesys'} = $mtab{&resolve_and_simplify($dev)};
-		local $nl = <QUOTA>;
+		my $mount = $mtab{&resolve_and_simplify($dev)};
+		my $nl = <QUOTA>;
+		next if ($done{$mount}++);
+		$filesys{$n,'filesys'} = $mount;
 		$nl =~/^\s+(\S+)\s+(\S+)\s+(\S+)(.{8}\s+)(\S+)\s+(\S+)\s+(\S+)(.*)/ ||
 		      $nl =~ /^.{15}.(.{7}).(.{7}).(.{7})(.{8}.)(.{7}).(.{7}).(.{7})(.*)/;
 		$filesys{$n,'ublocks'} = int($1);
@@ -461,6 +467,9 @@ $n=0; while(<QUOTA>) {
 	elsif (/^\s*(\S+)\s+(\S+)\s+(\S+)\s+(\S+)(.{8}\s+)(\S+)\s+(\S+)\s+(\S+)(.*)/ ||
 	       /^(.{15}).(.{7}).(.{7}).(.{7})(.{8}.)(.{7}).(.{7}).(.{7})(.*)/) {
 		# Single quota line
+		my $dev = $1; $dev =~ s/\s+$//g; $dev =~ s/^\s+//g;
+		my $mount = $mtab{&resolve_and_simplify($dev)};
+		next if ($done{$mount}++);
 		$filesys{$n,'ublocks'} = int($2);
 		$filesys{$n,'sblocks'} = int($3);
 		$filesys{$n,'hblocks'} = int($4);
@@ -469,8 +478,7 @@ $n=0; while(<QUOTA>) {
 		$filesys{$n,'sfiles'} = int($7);
 		$filesys{$n,'hfiles'} = int($8);
 		$filesys{$n,'gfiles'} = $9;
-		my $dev = $1; $dev =~ s/\s+$//g; $dev =~ s/^\s+//g;
-		$filesys{$n,'filesys'} = $mtab{&resolve_and_simplify($dev)};
+		$filesys{$n,'filesys'} = $mount;
 		$filesys{$n,'gblocks'} = &trunc_space($filesys{$n,'gblocks'});
 		$filesys{$n,'gfiles'} = &trunc_space($filesys{$n,'gfiles'});
 		$n++;
@@ -492,7 +500,7 @@ my $rep = &backquote_command("$cmd 2>/dev/null");
 my @rep = split(/\r?\n/, $rep);
 my $n = 0;
 foreach my $l (@rep) {
-	if ($l =~ /^(\/\S+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+\[\S+\]\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\S+)/) {
+	if ($l =~ /^(\/\S+)\s+(\d+)\s+(\d+)\s+(\d+)\s+\d+\s+\[([^\]]+)\]\s+(\d+)\s+(\d+)\s+(\d+)\s+\d+\s+\[([^\]]+)\]\s+(\S+)/) {
 		$filesys{$n,'ublocks'} = int($2);
                 $filesys{$n,'sblocks'} = int($3);
                 $filesys{$n,'hblocks'} = int($4);
@@ -502,6 +510,10 @@ foreach my $l (@rep) {
                 $filesys{$n,'hfiles'} = int($8);
                 $filesys{$n,'gfiles'} = $9;
 		$filesys{$n,'filesys'} = $10;
+		$filesys{$n,'gblocks'} = undef
+			if ($filesys{$n,'gblocks'} =~ /^\-+$/);
+		$filesys{$n,'gfiles'} = undef
+			if ($filesys{$n,'gfiles'} =~ /^\-+$/);
 		$n++;
 		}
 	}
@@ -637,7 +649,7 @@ if ($?) { return -1; }
 my @rep = split(/\r?\n/, $rep);
 my $nn = 0;
 foreach my $l (@rep) {
-	if ($l =~ /^(\S+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+\[\S+\]\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/) {
+	if ($l =~ /^(\S+)\s+(\d+)\s+(\d+)\s+(\d+)\s+\d+\s+\[([^\]]+)\]\s+(\d+)\s+(\d+)\s+(\d+)\s+\d+\s+\[([^\]]+)\]/) {
 		$what->{$nn,$mode} = $1;
 		$what->{$nn,'ublocks'} = int($2);
 		$what->{$nn,'sblocks'} = int($3);
@@ -647,6 +659,10 @@ foreach my $l (@rep) {
 		$what->{$nn,'sfiles'} = int($7);
 		$what->{$nn,'hfiles'} = int($8);
 		$what->{$nn,'gfiles'} = $9;
+		$what->{$nn,'gblocks'} = undef
+			if ($what->{$nn,'gblocks'} =~ /^\-+$/);
+		$what->{$nn,'gfiles'} = undef
+			if ($what->{$nn,'gfiles'} =~ /^\-+$/);
 		$nn++;
 		}
 	}
@@ -973,7 +989,7 @@ Set XFS quotas for some user and FS
 sub set_user_quota
 {
 my ($user, $fs, $sblocks, $hblocks, $sfiles, $hfiles) = @_;
-my $out = &backquote_logged("xfs_quota -x -c 'limit -u bsoft=$sblocks bhard=$hblocks isoft=$sfiles ihard=$hfiles $user' $fs 2>&1");
+my $out = &backquote_logged("xfs_quota -x -c 'limit -u bsoft=${sblocks}k bhard=${hblocks}k isoft=$sfiles ihard=$hfiles $user' $fs 2>&1");
 &error($out) if ($?);
 }
 
@@ -990,7 +1006,7 @@ Set XFS quotas for some group and FS
 sub set_group_quota
 {
 my ($group, $fs, $sblocks, $hblocks, $sfiles, $hfiles) = @_;
-my $out = &backquote_logged("xfs_quota -x -c 'limit -g bsoft=$sblocks bhard=$hblocks isoft=$sfiles ihard=$hfiles $group' $fs 2>&1");
+my $out = &backquote_logged("xfs_quota -x -c 'limit -g bsoft=${sblocks}k bhard=${hblocks}k isoft=$sfiles ihard=$hfiles $group' $fs 2>&1");
 &error($out) if ($?);
 }
 
