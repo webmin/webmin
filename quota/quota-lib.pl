@@ -120,10 +120,11 @@ elements are :
 =cut
 sub user_quota
 {
-local (%user, $n, $i);
-$n = &filesystem_users($_[1]);
-for($i=0; $i<$n; $i++) {
-	if ($user{$i,'user'} eq $_[0]) {
+my ($user, $fs) = @_;
+local %user;
+my $n = &filesystem_users($fs);
+for(my $i=0; $i<$n; $i++) {
+	if ($user{$i,'user'} eq $user) {
 		return ( $user{$i,'ublocks'}, $user{$i,'sblocks'},
 			 $user{$i,'hblocks'}, $user{$i,'ufiles'},
 			 $user{$i,'sfiles'},  $user{$i,'hfiles'} );
@@ -141,10 +142,11 @@ assigned.
 =cut
 sub group_quota
 {
-local (%group, $n, $i);
-$n = &filesystem_groups($_[1]);
-for($i=0; $i<$n; $i++) {
-	if ($group{$i,'group'} eq $_[0]) {
+my ($group, $fs) = @_;
+local %group;
+my $n = &filesystem_groups($fs);
+for(my $i=0; $i<$n; $i++) {
+	if ($group{$i,'group'} eq $group) {
 		return ( $group{$i,'ublocks'}, $group{$i,'sblocks'},
 			 $group{$i,'hblocks'}, $group{$i,'ufiles'},
 			 $group{$i,'sfiles'},  $group{$i,'hfiles'} );
