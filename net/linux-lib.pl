@@ -436,26 +436,27 @@ return ($gconfig{'os_type'} eq 'debian-linux' &&
 # Returns a human-readable interface type name
 sub iface_type
 {
-if ($_[0] =~ /^(.*)\.(\d+)$/) {
+my ($name) = @_;
+if ($name =~ /^(.*)\.(\d+)$/) {
 	return &iface_type("$1")." VLAN";
 	}
-return "PPP" if ($_[0] =~ /^ppp/);
-return "SLIP" if ($_[0] =~ /^sl/);
-return "PLIP" if ($_[0] =~ /^plip/);
-return "Ethernet" if ($_[0] =~ /^eth|em|eno|ens|enp|enx|p\d+p\d+/);
-return "Wireless Ethernet" if ($_[0] =~ /^(wlan|ath)/);
-return "Arcnet" if ($_[0] =~ /^arc/);
-return "Token Ring" if ($_[0] =~ /^tr/);
-return "Pocket/ATP" if ($_[0] =~ /^atp/);
-return "Loopback" if ($_[0] =~ /^lo/);
-return "ISDN rawIP" if ($_[0] =~ /^isdn/);
-return "ISDN syncPPP" if ($_[0] =~ /^ippp/);
-return "CIPE" if ($_[0] =~ /^cip/);
-return "VmWare" if ($_[0] =~ /^vmnet/);
-return "Wireless" if ($_[0] =~ /^wlan/);
-return "Bonded" if ($_[0] =~ /^bond/);
-return "OpenVZ" if ($_[0] =~ /^venet/);
-return "Bridge" if ($_[0] =~ /^br/);
+return "PPP" if ($name =~ /^ppp/);
+return "SLIP" if ($name =~ /^sl/);
+return "PLIP" if ($name =~ /^plip/);
+return "Ethernet" if ($name =~ /^eth|em|eno|ens|enp|enx|p\d+p\d+/);
+return "Wireless Ethernet" if ($name =~ /^(wlan|ath)/);
+return "Arcnet" if ($name =~ /^arc/);
+return "Token Ring" if ($name =~ /^tr/);
+return "Pocket/ATP" if ($name =~ /^atp/);
+return "Loopback" if ($name =~ /^lo/);
+return "ISDN rawIP" if ($name =~ /^isdn/);
+return "ISDN syncPPP" if ($name =~ /^ippp/);
+return "CIPE" if ($name =~ /^cip/);
+return "VmWare" if ($name =~ /^vmnet/);
+return "Wireless" if ($name =~ /^wlan/);
+return "Bonded" if ($name =~ /^bond/);
+return "OpenVZ" if ($name =~ /^venet/);
+return "Bridge" if ($name =~ /^br/);
 return $text{'ifcs_unknown'};
 }
 

@@ -62,6 +62,7 @@ sub boot_interfaces
 {
 local (@rv, $f);
 local %bridge_map;
+local @active;
 opendir(CONF, &translate_filename($net_scripts_dir));
 while($f = readdir(CONF)) {
 	local (%conf, $b);
@@ -81,15 +82,42 @@ while($f = readdir(CONF)) {
 		$b->{'file'} = "$net_scripts_dir/$f";
 		push(@rv, $b);
 		}
-	elsif ($f !~ /\.(bak|old)$/i && $f =~ /^ifcfg-([a-z0-9:\.]+)$/) {
+	elsif ($f !~ /\.(bak|old)$/i && $f =~ /^ifcfg-([a-zA-Z_0-9:\.]+)$/) {
 		# Normal interface
+		my $fname = $1;
 		&read_env_file("$net_scripts_dir/$f", \%conf);
-		$b->{'fullname'} = $conf{'DEVICE'} || $1;
+		if ($conf{'DEVICE'}) {
+			# Device is set in the file
+			$b->{'fullname'} = $conf{'DEVICE'};
+			}
+		elsif (&iface_type($fname) ne $text{'ifcs_unknown'}) {
+			# Filename looks like a regular device
+			$b->{'fullname'} = $fname;
+			}
+		elsif ($conf{'HWADDR'}) {
+			# Filename is something odd, like Auto_Ethernet .. so
+			# lookup real device by MAC
+			if (!@active) {
+				@active = &active_interfaces();
+				}
+			my ($a) = grep { lc($_->{'ether'}) eq
+					 lc($conf{'HWADDR'}) } @active;
+			next if (!$a);
+			$b->{'fullname'} = $a->{'fullname'};
+			# XXX virtuals?
+			}
+		else {
+			# No idea what to do here, probably isn't even an
+			# interface file
+			next;
+			}
 		if ($b->{'fullname'} =~ /(\S+):(\d+)/) {
 			$b->{'name'} = $1;
 			$b->{'virtual'} = $2;
 			}
-		else { $b->{'name'} = $b->{'fullname'}; }
+		else {
+			$b->{'name'} = $b->{'fullname'};
+			}
 		if ($b->{'fullname'} =~ /(\S+)\.(\d+)/) {
 			my ($k, $v) = split(/\./, $b->{'fullname'});
 			$b->{'physical'} = $k;
@@ -100,10 +128,13 @@ while($f = readdir(CONF)) {
 			     $b->{'virtual'} ne '' ?
 				($conf{'ONPARENT'} eq 'yes') :
 				($conf{'ONBOOT'} eq 'yes');
-		$b->{'address'} = $conf{'IPADDR'};
-		$b->{'netmask'} = $conf{'NETMASK'};
+		$b->{'address'} = $conf{'IPADDR'} || $conf{'IPADDR0'};
+		$b->{'netmask'} = $conf{'NETMASK'} || $conf{'NETMASK0'};
 		if (!$conf{'NETMASK'} && $conf{'PREFIX'}) {
 			$b->{'netmask'} = &prefix_to_mask($conf{'PREFIX'});
+			}
+		elsif (!$conf{'NETMASK'} && $conf{'PREFIX0'}) {
+			$b->{'netmask'} = &prefix_to_mask($conf{'PREFIX0'});
 			}
 		$b->{'broadcast'} = $conf{'BROADCAST'};
 		if (!$b->{'broadcast'} && $b->{'address'} && $b->{'netmask'}) {
@@ -204,17 +235,18 @@ if ($_[0]->{'range'} ne "") {
 else {
 	# Saving a normal interface
 	$conf{'DEVICE'} = $name;
-	$conf{'IPADDR'} = $_[0]->{'address'};
-	$conf{'NETMASK'} = $_[0]->{'netmask'};
-	delete($conf{'PREFIX'});
+	my $pfx = $conf{'IPADDR0'} ? '0' : '';
+	$conf{'IPADDR'.$pfx} = $_[0]->{'address'};
+	$conf{'NETMASK'.$pfx} = $_[0]->{'netmask'};
+	delete($conf{'PREFIX'.$pfx});
 	if ($_[0]->{'address'} && $_[0]->{'netmask'}) {
-		$conf{'NETWORK'} = &compute_network($_[0]->{'address'},
-						    $_[0]->{'netmask'});
+		$conf{'NETWORK'.$pfx} = &compute_network($_[0]->{'address'},
+						         $_[0]->{'netmask'});
 		}
 	else {
-		$conf{'NETWORK'} = '';
+		$conf{'NETWORK'.$pfx} = '';
 		}
-	$conf{'BROADCAST'} = $_[0]->{'broadcast'};
+	$conf{'BROADCAST'.$pfx} = $_[0]->{'broadcast'};
 	if ($_[0]->{'gateway'}) {
 		$conf{'GATEWAY'} = $_[0]->{'gateway'};
 		}
