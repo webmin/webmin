@@ -360,16 +360,18 @@ if (@{$b->{'address6'}}) {
 # Delete a boot-time interface
 sub delete_interface
 {
-local $name = $_[0]->{'range'} ne "" ? $_[0]->{'name'}."-range".
-				       $_[0]->{'range'} :
-	      $_[0]->{'virtual'} ne "" ? $_[0]->{'name'}.":".$_[0]->{'virtual'}
-				       : $_[0]->{'name'};
-&lock_file("$net_scripts_dir/ifcfg-$name");
+my ($b) = @_;
+local $name = $b->{'range'} ne "" ? $b->{'name'}."-range".
+				    $b->{'range'} :
+	      $b->{'virtual'} ne "" ? $b->{'name'}.":".$b->{'virtual'}
+				    : $b->{'name'};
+my $file = $b->{'file'} || "$net_scripts_dir/ifcfg-$name";
+&lock_file($file);
 &unlink_file("$net_scripts_dir/ifcfg-$name");
 if (-d &translate_filename($devices_dir)) {
 	&unlink_file("$devices_dir/ifcfg-$name");
 	}
-&unlock_file("$net_scripts_dir/ifcfg-$name");
+&unlock_file($file);
 }
 
 # can_edit(what)
