@@ -288,7 +288,8 @@ if (($in{'new'} && $in{'virtual'} eq "" && !$in{'bridge'}) ||
 if ($in{'bridge'} || $b && $b->{'bridge'}) {
 	@ethboot = sort { $a cmp $b }
 		     map { $_->{'fullname'} }
-		       grep { $_->{'fullname'} =~ /^(eth|vlan|bond)/ &&
+		       grep { ($_->{'fullname'} =~ /^(vlan|bond)/ ||
+			       &iface_type($_->{'fullname'}) eq 'Ethernet') &&
 			      $_->{'virtual'} eq '' } @boot;
 	print &ui_table_row($text{'bifc_bridgeto'},
 		&ui_select("bridgeto", $b->{'bridgeto'},

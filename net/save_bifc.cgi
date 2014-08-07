@@ -299,7 +299,7 @@ else {
 	# Save bridge settings
 	if ($b->{'bridge'}) {
 		if ($in{'bridgeto'}) {
-			($in{'bridgeto'} =~ /^eth\d+$/ || $in{'bridgeto'} =~ /^eth\d+.\d+$/) ||
+			&iface_type($in{'bridgeto'}) eq 'Ethernet' ||
 				&error($text{'bifc_ebridgeto'});
 			($bt) = grep { $_->{'fullname'} eq $in{'bridgeto'} }
 				     @boot;
