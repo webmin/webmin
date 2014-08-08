@@ -32,7 +32,9 @@ print &ui_tabs_start(\@tabs, "mode", $in{'mode'} || 'list', 1);
 if ($access{'ggrace'}) {
 	push(@ulinks, &ui_link("group_grace_form.cgi?filesys=".&urlize($f), $text{'lusers_egrace'}) );
 	}
-push(@ulinks, &ui_link("check_quotas.cgi?filesys=".&urlize($f)."&source=group", $text{'lusers_check'}) );
+if (!defined(&can_quotacheck) || &can_quotacheck($f)) {
+	push(@ulinks, &ui_link("check_quotas.cgi?filesys=".&urlize($f)."&source=group", $text{'lusers_check'}) );
+	}
 
 # Groups list, in a tab
 print &ui_tabs_start_tab("mode", "list");

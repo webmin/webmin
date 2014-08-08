@@ -753,7 +753,7 @@ failure.
 =cut
 sub copy_user_quota
 {
-for($i=1; $i<@_; $i++) {
+for(my $i=1; $i<@_; $i++) {
 	$out = &backquote_logged("$config{'user_copy_command'} ".
 				quotemeta($_[0])." ".quotemeta($_[$i])." 2>&1");
 	if ($?) { return $out; }
@@ -770,7 +770,7 @@ failure.
 =cut
 sub copy_group_quota
 {
-for($i=1; $i<@_; $i++) {
+for(my $i=1; $i<@_; $i++) {
 	$out = &backquote_logged("$config{'group_copy_command'} ".
 				quotemeta($_[0])." ".quotemeta($_[$i])." 2>&1");
 	if ($?) { return $out; }
@@ -1008,6 +1008,17 @@ sub set_group_quota
 my ($group, $fs, $sblocks, $hblocks, $sfiles, $hfiles) = @_;
 my $out = &backquote_logged("xfs_quota -x -c 'limit -g bsoft=${sblocks}k bhard=${hblocks}k isoft=$sfiles ihard=$hfiles $group' $fs 2>&1");
 &error($out) if ($?);
+}
+
+=head2 can_quotacheck(fs)
+
+Returns 1 if some FS supports quota checking
+
+=cut
+sub can_quotacheck
+{
+my ($fs) = @_;
+return !&is_xfs_fs($fs);
 }
 
 1;

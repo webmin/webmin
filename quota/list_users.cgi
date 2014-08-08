@@ -32,7 +32,9 @@ print &ui_tabs_start(\@tabs, "mode", $in{'mode'} || 'list', 1);
 if ($access{'ugrace'}) {
 	push(@ulinks, &ui_link("user_grace_form.cgi?filesys=".&urlize($f), $text{'lusers_egrace'}) );
 	}
-push(@ulinks, &ui_link("check_quotas.cgi?filesys=".&urlize($f)."&source=user", $text{'lusers_check'}) );
+if (!defined(&can_quotacheck) || &can_quotacheck($f)) {
+	push(@ulinks, &ui_link("check_quotas.cgi?filesys=".&urlize($f)."&source=user", $text{'lusers_check'}) );
+	}
 
 # Users list, in a tab
 print &ui_tabs_start_tab("mode", "list");
