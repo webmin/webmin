@@ -33,7 +33,7 @@ Returns HTML for an <a href>.
 
 =item text - Text to display for link
 
-=item class - Optional additional classes to include
+=item class - Optional additional CSS classes to include
 
 =item tags - Additional HTML attributes for the <a> tag.
 
@@ -44,6 +44,29 @@ sub ui_link
 return &theme_ui_link(@_) if (defined(&theme_ui_link));
 my ($href, $text, $class, $tags) = @_;
 return ("<a class='ui_link".($class ? " ".$class : "")."' href='$href'".($tags ? " ".$tags : "").">$text</a>");
+}
+
+=head2 ui_img(src, alt, title, [class], [tags])
+
+Returns HTML for an <img src>.
+
+=item src - Image path and filename
+
+=item alt - Alt text for screen readers, etc.
+
+=item title - Element title, and tooltip when user hovers over image
+
+=item class - Optional additional CSS classes to include
+
+=item tags - Additional HTML attributes for the <img> tag
+
+=cut
+
+sub ui_img
+{
+return &theme_ui_img(@_) if (defined(&theme_ui_img));
+my ($src, $alt, $title, $class, $tags) = @_;
+return ("<img src='".$src."' class='ui_img".($class ? " ".$class : "")."' alt='$alt' ".($title ? "title='$title'" : "").($tags ? " ".$tags : "").">");
 }
 
 ####################### table generation functions
