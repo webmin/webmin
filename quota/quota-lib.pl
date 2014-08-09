@@ -309,7 +309,7 @@ sub edit_user_grace
 my ($fs, $btime, $bunits, $ftime, $funits) = @_;
 if (defined(&set_user_grace) && defined(&can_set_user_grace) &&
     &can_set_user_grace($fs)) {
-	return &set_user_quota(@_);
+	return &set_user_grace(@_);
 	}
 else {
 	$ENV{'EDITOR'} = $ENV{'VISUAL'} = "$module_root_directory/edgrace.pl";
@@ -333,7 +333,7 @@ sub edit_group_grace
 my ($fs, $btime, $bunits, $ftime, $funits) = @_;
 if (defined(&set_group_grace) && defined(&can_set_group_grace) &&
     &can_set_group_grace($fs)) {
-	return &set_group_quota(@_);
+	return &set_group_grace(@_);
 	}
 else {
 	$ENV{'EDITOR'} = $ENV{'VISUAL'} = "$module_root_directory/edgrace.pl";
