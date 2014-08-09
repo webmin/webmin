@@ -1274,6 +1274,42 @@ else {
 	}
 }
 
+=head2 status_action(name)
+
+Returns 1 if some action is running right now, 0 if not, or -1 if unknown
+
+=cut
+sub status_action
+{
+local ($name) = @_;
+local $action_mode = &get_action_mode($name);
+if ($action_mode eq "init") {
+	# Run init script to get status
+	return &action_running(&action_filename($name));
+	}
+elsif ($action_mode eq "win32") {
+	# Check with Windows if it is running
+	my ($w) = &list_win32_services($name);
+	return !$w ? -1 : $w->{'status'} == 4 ? 1 : 0;
+	}
+elsif ($action_mode eq "upstart") {
+	# Check with upstart if it is running
+	my @upstarts = &list_upstart_services();
+	my ($u) = grep { $_->{'name'} eq $name } @upstarts;
+	return !$u ? -1 : $u>{'status'} eq 'running' ? 1 :
+	       $u->{'status'} eq 'waiting' ? 0 : -1;
+	}
+elsif ($action_mode eq "systemd") {
+	# Check with systemd if it is running
+	my @systemds = &list_systemd_services();
+	my ($u) = grep { $_->{'name'} eq $name } @systemds;
+	return !$u ? -1 : $u->{'status'} ? 1 : 0;
+	}
+else {
+	return -1;
+	}
+}
+
 =head2 get_action_mode(name)
 
 Returns the init mode used by some action. May be different from the global
