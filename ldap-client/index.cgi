@@ -37,11 +37,37 @@ if ($config{'pam_ldap'} && -r $config{'pam_ldap'} && !$config{'nofixpam'} &&
 @icons = map { "images/".$_.".gif" } @pages;
 &icons_table(\@links, \@titles, \@icons, 5);
 
-# Validate button
 print &ui_hr();
 print &ui_buttons_start();
+
+# Validate button
 print &ui_buttons_row("check.cgi", $text{'index_check'},
 		      $text{'index_checkdesc'});
+
+# LDAP server daemon
+&foreign_require("init");
+if ($config{'init_name'} &&
+    ($st = &init::action_status($config{'init_name'}))) {
+	# Start or stop
+	# XXX wrong function
+	if (&init::action_running($config{'init_name'}) == 1) {
+		print &ui_buttons_row("stop.cgi", $text{'index_stop'},
+				      $text{'index_stopdesc'});
+		}
+	else {
+		print &ui_buttons_row("start.cgi", $text{'index_start'},
+				      $text{'index_startdesc'});
+		}
+
+	# Start at boot
+	print &ui_buttons_row("atboot.cgi",
+			      $text{'index_atboot'},
+			      $text{'index_atbootdesc'},
+			      undef,
+			      &ui_radio("boot", $st == 2 ? 1 : 0,
+				[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
+	}
+
 print &ui_buttons_end();
 
 &ui_print_footer("/", $text{'index'});
