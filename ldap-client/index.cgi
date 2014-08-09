@@ -49,8 +49,7 @@ print &ui_buttons_row("check.cgi", $text{'index_check'},
 if ($config{'init_name'} &&
     ($st = &init::action_status($config{'init_name'}))) {
 	# Start or stop
-	# XXX wrong function
-	if (&init::action_running($config{'init_name'}) == 1) {
+	if (&init::status_action($config{'init_name'}) == 1) {
 		print &ui_buttons_row("stop.cgi", $text{'index_stop'},
 				      $text{'index_stopdesc'});
 		}
