@@ -7,6 +7,7 @@ require './ldap-client-lib.pl';
 &foreign_require("init");
 my $starting = &init::action_status($config{'init_name'});
 if ($starting == 1 && $in{'boot'}) {
+	&fix_ldap_authconfig();
 	&init::enable_at_boot($config{'init_name'});
 	&webmin_log("atboot");
 	}

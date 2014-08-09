@@ -411,5 +411,28 @@ else {
 return wantarray ? @hosts : $hosts[0];
 }
 
+# fix_ldap_authconfig()
+# If the systme has a /etc/sysconfig/authconfig file, enable LDAP in it.
+sub fix_ldap_authconfig
+{
+my $afile = "/etc/sysconfig/authconfig";
+return 0 if (!-r $afile);
+&lock_file($afile);
+my %auth;
+&read_env_file($afile, \%auth);
+if ($auth{'USELDAP'} =~ /no/i) {
+	$auth{'USELDAP'} = 'yes';
+	$changed++;
+	}
+if ($auth{'USELDAPAUTH'} =~ /no/i) {
+	$auth{'USELDAPAUTH'} = 'yes';
+	$changed++;
+	}
+if ($changed) {
+	&write_env_file($afile, \%auth);
+	}
+&unlock_file($afile);
+}
+
 1;
 
