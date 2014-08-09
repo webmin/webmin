@@ -13,3 +13,5 @@ Changed the LDAP client connection code to handle both pure-SSL and TLS modes, t
 Improved support for older versions of Net::LDAP without the hosts() function.
 ---- Changes since 1.500 ----
 If a TLS certificate and key are defined in the LDAP client configuration file, they will be used by Webmin when connecting to the LDAP database.
+---- Changes since 1.690 ----
+Added support for nslcd as seen on CentOS 6 and above.
