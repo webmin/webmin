@@ -1946,6 +1946,7 @@ closedir(UNITS);
 # Skip useless units
 @units = grep { !/^sys-devices-/ &&
 	        !/^\-\.mount/ &&
+	        !/^\-\.slice/ &&
 		!/^dev-/ &&
 		!/^systemd-/ } @units;
 @units = &unique(@units);
