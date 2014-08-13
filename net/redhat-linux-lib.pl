@@ -98,10 +98,11 @@ while($f = readdir(CONF)) {
 			# Filename is something odd, like Auto_Ethernet .. so
 			# lookup real device by MAC
 			if (!@active) {
-				@active = &active_interfaces();
+				@active = &active_interfaces(1);
 				}
 			my ($a) = grep { lc($_->{'ether'}) eq
-					 lc($conf{'HWADDR'}) } @active;
+					 lc($conf{'HWADDR'}) &&
+					 $_->{'name'} !~ /^br/ } @active;
 			next if (!$a);
 			$b->{'fullname'} = $a->{'fullname'};
 			# XXX virtuals?
