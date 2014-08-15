@@ -1,11 +1,5 @@
 # Functions for FreeBSD ports / package management
 
-
-sub list_update_system_commands
-{
-return ( "pkg_add" );
-}
-
 # update_system_install([package], [&in])
 # Install a named package, by buiding the port
 sub update_system_install
