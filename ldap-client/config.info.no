@@ -1,6 +1,7 @@
 auth_ldap=LDAP klient konfigurasjonsfil,8
 pam_ldap=PAM LDAP konfigurasjonsfil,3,Samme som LDAP klient fil
 secret=Root LDAP klient passordfiler,9,50,2,\t
+init_name=Navn p&#229; lokalt LDAP daemon init script,0
 line0=Innstillinger for LDAP utforsker og validering,11
 ldap_hosts=LDAP tjener verter,3,Fra konfig fil,50
 ldap_port=LDAP tjener port,3,Fra konfig fil,5

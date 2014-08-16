@@ -707,6 +707,7 @@ tprivs_title=Tabelltillatelser
 tprivs_user=Bruker
 user_all=Anonym bruker
 user_any=Any
+user_cipher=SSL chiffer
 user_ehost=Manglende eller ugyldig(e) tillatt(e) vert(er)
 user_emax_connections=Maks. tilkoblinger per time m&#229; v&#230;re et tall
 user_emax_questions=Maks. sp&#248;rringer per time m&#229; v&#230;re et tall

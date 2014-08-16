@@ -528,6 +528,7 @@ referers_ehost='$1' er ikke et gyldig betrodd vertsnavn
 referers_err=Kunne ikke lagre referere
 referers_list=Betrodde websider
 referers_none=Betro linker fra ukjente referanser
+referers_none2=ADVARSEL: Dette &#229;pner systemet ditt for XSS angrep!
 referers_referer=Muliggj&#248;r sjekking av referanser?
 referers_title=Betrodde referanser
 refeshmods_counts=.. fant $2 med installerte applikasjoner, $1 ikke installert.

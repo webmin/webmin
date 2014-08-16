@@ -409,6 +409,7 @@ twofactor_desc=Denne siden lar deg aktivere to-faktor autentisering for din Webm
 twofactor_desc2=Denne siden lar deg aktivere to-faktor autentisering for Webmin-brukeren $1 vha. <a href='$2' target=_blank>$1</a>. N&#229;r denne er aktivert vil det kreves et ekstra autentiserings-token for &#229; logge inn p&#229; Webmin.
 twofactor_disable=Deaktiver to-faktor autentisering
 twofactor_done=.. fullf&#248;rt. Din ID hos denne leverand&#248;ren er <tt>$1</tt>.
+twofactor_ebutton=Ingen knapp klikket!
 twofactor_enable=Meld inn til to-faktor autentisering
 twofactor_enrolling=Melder inn til to-faktor autentisering med leverand&#248;r $1 ..
 twofactor_err=Kunne ikke sette opp to-faktor autentisering

@@ -22,6 +22,7 @@ group_fields=Ekstra LDAP gruppeegenskaper det skal tillates redigering av<br>(p&
 multi_fields=Tillat flere verdier for ekstra egenskaper?,1,1-Ja,0-Nei
 noclash=Attributter som det ikke er tillat med duplikater for,0
 person=Gi alle Unix brukere objektklassen <tt>person</tt>?1,1,-Ja,0-Nei
+gecos=Sett <tt>gecos</tt> attributt til &#229; matche faktisk navn?,1,1-Ja,0-Nei
 user_filter=Ekstra LDAP filter for brukere,3,Ingen,,,,Attribute=value
 group_filter=Ekstra LDAP filter for grupper,3,Ingen,,,,Attribute=value
 line5=Innstillinger for hjemmekatalog,11
