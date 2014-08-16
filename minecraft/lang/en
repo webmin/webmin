@@ -99,6 +99,7 @@ console_edown=The Minecraft server console cannot be used unless the server is r
 conn_title=Manage Player
 conn_header=Player details and actions
 conn_name=Player name
+conn_uuid=Player UUID
 conn_state=Current state
 conn_yes=Connected
 conn_no=Disconnected

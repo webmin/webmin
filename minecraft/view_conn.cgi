@@ -24,6 +24,13 @@ print &ui_table_start($text{'conn_header'}, undef, 2);
 print &ui_table_row($text{'conn_name'},
 	&html_escape($in{'name'}));
 
+# Player UUID
+my $uuid = &uuid_to_username($in{'name'});
+if ($uuid) {
+	print &ui_table_row($text{'conn_uuid'},
+		&html_escape($uuid));
+	}
+
 # Current state
 my @conns = &list_connected_players();
 my ($c) = grep { $_ eq $in{'name'} } @conns;

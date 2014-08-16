@@ -13,6 +13,7 @@ our ($module_root_directory, %text, %gconfig, $root_directory, %config,
 our $history_file = "$module_config_directory/history.txt";
 our $download_page_url = "http://minecraft.net/download";
 our $playtime_dir = "$module_config_directory/playtime";
+our $uuid_cache_file = "$module_config_directory/uuids";
 
 &foreign_require("webmin");
 
@@ -545,8 +546,19 @@ foreach my $dat (glob("$config{'minecraft_dir'}/*/level.dat")) {
 	$dat =~ /^(.*\/([^\/]+))\/level.dat$/ || next;
 	my $path = $1;
 	my $name = $2;
-	my @players = map { s/^.*\///; s/\.dat$//; $_ }
-			  glob("$path/players/*");
+	my @players;
+	if (-d "$path/players") {
+		# Old format
+		@players = map { s/^.*\///; s/\.dat$//; $_ }
+			       glob("$path/players/*");
+		}
+	if (-d "$path/playerdata" && !@players) {
+		# New format (UUID based)
+		@players = map { s/^.*\///; s/\.dat$//; $_ }
+			       glob("$path/playerdata/*");
+		@players = map { my $u = $_;
+				 &uuid_to_username($u) || $u } @players;
+		}
 	push(@rv, { 'path' => $path,
 		    'name' => $name,
 		    'size' => &disk_usage_kb($path)*1024,
@@ -554,6 +566,48 @@ foreach my $dat (glob("$config{'minecraft_dir'}/*/level.dat")) {
 		    'players' => \@players });
 	}
 return @rv;
+}
+
+# uuid_to_username(uuid)
+# Returns the username with some UUID, by searching logs if needed
+sub uuid_to_username
+{
+my ($uuid) = @_;
+my %cache;
+&read_file_cached($uuid_cache_file, \%cache);
+return $cache{$uuid} if ($cache{$uuid});
+my $found = 0;
+foreach my $file (&get_minecraft_log_file(),
+		  sort { $b cmp $a }
+		       glob("$config{'minecraft_dir'}/logs/*.log.gz")) {
+	if ($file =~ /\.gz$/) {
+		open(LOG, "gunzip -c ".quotemeta($file)." |");
+		}
+	else {
+		open(LOG, $file);
+		}
+	while(<LOG>) {
+		if (/UUID\s+of\s+player\s+(\S+)\s+is\s+(\S+)/) {
+			my ($lp, $lu) = ($1, $2);
+			if ($lu =~ /^([0-9a-f]{8})([0-9a-f]{4})([0-9a-f]{4})([0-9a-f]{4})([0-9a-f]{12})$/) {
+				# Convert to new UUID format
+				$lu = "$1-$2-$3-$4-$5";
+				}
+			$cache{$lp} = $lu;
+			$cache{$lu} = $lp;
+			if ($cache{$uuid}) {
+				$found = 1;
+				last;
+				}
+			}
+		}
+	close(LOG);
+	if ($found) {
+		&write_file($uuid_cache_file, \%cache);
+		last;
+		}
+	}
+return $cache{$uuid};
 }
 
 # list_banned_ips()
@@ -1037,6 +1091,14 @@ my ($job) = grep { $_->{'module'} eq $module_name &&
 return $job;
 }
 
-
+# get_player_stats(name|uuid)
+# Returns all stats available for a player, in the format of the JSON file
+sub get_player_stats
+{
+my ($uuid) = @_;
+if ($uuid !~ /^[0-9a-f]+\-[0-9a-f]+\-[0-9a-f]+\-[0-9a-f]+\-[0-9a-f]+$/) {
+	$uuid = &uuid_to_name($uuid);
+	}
+}
 
 1;
