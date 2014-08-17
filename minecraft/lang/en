@@ -162,6 +162,13 @@ conn_kickdone=Disconnected player
 conn_edate=Date and time
 conn_emsg=Event message
 conn_events=Recent events
+conn_nostats=No player stats found
+conn_noperl=The Perl module $1 needed to read stats is not installed!
+conn_ejson=Failed to read player stats file : $1
+conn_stats=Player statistics
+conn_stat=Statistic
+conn_statv=Value
+conn_nostats=No statistics have been recorded yet
 
 worlds_title=Manage Worlds
 worlds_def=Active?

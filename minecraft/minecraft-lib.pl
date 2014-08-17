@@ -1091,14 +1091,34 @@ my ($job) = grep { $_->{'module'} eq $module_name &&
 return $job;
 }
 
-# get_player_stats(name|uuid)
+# get_player_stats(name, [world])
 # Returns all stats available for a player, in the format of the JSON file
 sub get_player_stats
 {
-my ($uuid) = @_;
-if ($uuid !~ /^[0-9a-f]+\-[0-9a-f]+\-[0-9a-f]+\-[0-9a-f]+\-[0-9a-f]+$/) {
-	$uuid = &uuid_to_name($uuid);
+my ($name, $world) = @_;
+if (!$world) {
+	my $conf = &get_minecraft_config();
+	$world = &find_value("level-name", $conf);
+	$world ||= "world";
 	}
+my $uuid = &uuid_to_username($name);
+my $wdir = "$config{'minecraft_dir'}/$world";
+my $file = "$wdir/stats/$name.json";
+if (!-r $file) {
+	$file = "$wdir/stats/$uuid.json";
+	}
+if (!-r $file) {
+	return $text{'conn_nostats'};
+	}
+eval "use JSON::PP";
+return &text('conn_noperl', "<tt>JSON::PP</tt>") if ($@);
+my $coder = JSON::PP->new->pretty;
+my $perl;
+eval {
+	$perl = $coder->decode(&read_file_contents($file));
+	};
+return &text('conn_ejson', $@) if ($@);
+return $perl;
 }
 
 1;

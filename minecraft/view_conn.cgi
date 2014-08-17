@@ -145,6 +145,32 @@ if (@$events) {
 	print &ui_table_row($text{'conn_events'}, $etable);
 	}
 
+# Show player stats
+my $stats = &get_player_stats($in{'name'});
+my $stable;
+if (ref($stats)) {
+	my @rows;
+	foreach my $k (keys %$stats) {
+		if ($k =~ /^stat\.(\S+)/ && !ref($stats->{$k})) {
+			push(@rows, "<tt>$1</tt>", $stats->{$k});
+			}
+		}
+	if (@rows) {
+		unshift(@rows, "<b>$text{'conn_stat'}</b>",
+			       "<b>$text{'conn_statv'}</b>",
+			       "<b>$text{'conn_stat'}</b>",
+			       "<b>$text{'conn_statv'}</b>");
+		$stable = &ui_grid_table(\@rows, 4, 100);
+		}
+	else {
+		$stable = $text{'conn_nostats'};
+		}
+	}
+else {
+	$stable = $stats;
+	}
+print &ui_table_row($text{'conn_stats'}, $stable);
+
 print &ui_table_end();
 print &ui_form_end();
 
