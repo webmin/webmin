@@ -295,6 +295,10 @@ elsif ($_[2]->{'type'} == 6) {
 	@mail = grep { $_ ne 'GONE' } @mail;
 	return @mail;
 	}
+elsif ($_[2]->{'type'} == 7) {
+	# MBX format folder
+	return &list_mbxfile($_[2]->{'file'}, $_[0], $_[1]);
+	}
 }
 
 # mailbox_select_mails(&folder, &ids, headersonly)
@@ -1506,9 +1510,26 @@ else {
 }
 
 # folder_type(file_or_dir)
+# Returns a numeric folder type based on the contents
 sub folder_type
 {
-return -d "$_[0]/cur" ? 1 : -d $_[0] ? 3 : 0;
+my ($f) = @_;
+if (-d "$f/cur") {
+	# Maildir directory
+	return 1;
+	}
+elsif (-d $f) {
+	# MH directory
+	return 3;
+	}
+else {
+	# Check for MBX format
+	open(MBXTEST, $f);
+	my $first;
+	read(MBXTEST, $first, 5);
+	close(MBXTEST);
+	return $first eq "*mbx*" ? 7 : 0;
+	}
 }
 
 # create_folder_maildir(&folder)

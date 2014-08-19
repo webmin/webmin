@@ -2404,6 +2404,24 @@ closedir(DIR);
 return scalar(@files);
 }
 
+# list_mbxfile(file, start, end)
+# Return messages from an MBX format file
+sub list_mbxfile
+{
+local @rv;
+open(MBX, $_[0]);
+seek(MBX, 2048, 0);
+while(my $line = <MAILBOX>) {
+	if ($line =~ m/( \d|\d\d)-(\w\w\w)-(\d\d\d\d) (\d\d):(\d\d):(\d\d) ([+-])(\d\d)(\d\d),(\d+);([[:xdigit:]]{8})([[:xdigit:]]{4})-([[:xdigit:]]{8})\r\n$/) {
+		my $size = $10;
+		my $mail = &read_mail_fh(MBX, $size, 0);
+		push(@rv, $mail);
+		}
+	}
+close(MBX);
+return @rv;
+}
+
 # read_mail_file(file, [headersonly])
 # Read a single message from a file
 sub read_mail_file
@@ -2434,7 +2452,8 @@ return $mail;
 # read_mail_fh(handle, [end-mode], [headersonly])
 # Reads an email message from the given file handle, either up to end of
 # the file, or a From line. End mode 0 = EOF, 1 = From without -,
-#				     2 = From possibly with -
+#				     2 = From possibly with -,
+#				     higher = number of bytes
 sub read_mail_fh
 {
 local ($fh, $endmode, $headeronly) = @_;
@@ -2478,8 +2497,17 @@ if (!$headersonly) {
 			}
 		close(MAIL);
 		}
+	elsif ($endmode > 2) {
+		# Till we have enough bytes
+		while($mail->{'size'} < $endmode) {
+			$line = <$fh>;
+			$lnum++;
+			$mail->{'size'} += length($line);
+			$mail->{'body'} .= $line;
+			}
+		}
 	else {
-		# Tell next From line
+		# Till next From line
 		while(1) {
 			$line = <$fh>;
 			last if (!$line || $line =~ /^From\s+(\S+).*\d+\r?\n/ &&
