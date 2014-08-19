@@ -2411,7 +2411,7 @@ sub list_mbxfile
 local @rv;
 open(MBX, $_[0]);
 seek(MBX, 2048, 0);
-while(my $line = <MAILBOX>) {
+while(my $line = <MBX>) {
 	if ($line =~ m/( \d|\d\d)-(\w\w\w)-(\d\d\d\d) (\d\d):(\d\d):(\d\d) ([+-])(\d\d)(\d\d),(\d+);([[:xdigit:]]{8})([[:xdigit:]]{4})-([[:xdigit:]]{8})\r\n$/) {
 		my $size = $10;
 		my $mail = &read_mail_fh(MBX, $size, 0);
@@ -2419,6 +2419,19 @@ while(my $line = <MAILBOX>) {
 		}
 	}
 close(MBX);
+return @rv;
+}
+
+# select_mbxfile(file, &ids, headersonly)
+# Returns a list of messages with the given indexes, from a MBX file
+sub select_mbxfile
+{
+local ($file, $ids, $headersonly) = @_;
+local @all = &list_mbxfile($file);
+local @rv;
+foreach my $i (@$ids) {
+	push(@rv, $all[$i]);
+	}
 return @rv;
 }
 

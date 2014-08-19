@@ -297,6 +297,7 @@ elsif ($_[2]->{'type'} == 6) {
 	}
 elsif ($_[2]->{'type'} == 7) {
 	# MBX format folder
+	print DEBUG "listing MBX $_[2]->{'file'}\n";
 	return &list_mbxfile($_[2]->{'file'}, $_[0], $_[1]);
 	}
 }
@@ -546,6 +547,10 @@ elsif ($folder->{'type'} == 5 || $folder->{'type'} == 6) {
 		}
 	return @mail;
 	}
+elsif ($folder->{'type'} == 7) {
+	# MBX folder
+	return &select_mbxfile($folder->{'file'}, $ids, $headersonly);
+	}
 }
 
 # mailbox_get_mail(&folder, id, headersonly)
@@ -690,6 +695,7 @@ else {
 sub mailbox_list_mails_sorted
 {
 local ($start, $end, $folder, $headersonly, $error, $field, $dir) = @_;
+print DEBUG "mailbox_list_mails_sorted from $start to $end\n";
 if (!$field) {
 	# Default to current ordering
 	($field, $dir) = &get_sort_field($folder);
@@ -2381,7 +2387,7 @@ sub folder_size
 {
 local ($f, $total);
 foreach $f (@_) {
-	if ($f->{'type'} == 0) {
+	if ($f->{'type'} == 0 || $f->{'type'} == 7) {
 		# Single mail file - size is easy
 		local @st = stat($f->{'file'});
 		$f->{'size'} = $st[7];
