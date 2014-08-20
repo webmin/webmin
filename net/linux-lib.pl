@@ -117,7 +117,7 @@ elsif (&has_command("ip")) {
 
 		# Add extra IPs as fake virtual interfaces
 		$l =~ s/\sinet\s+([0-9\.]+)\/(\d+)//;
-		my $i = 1;
+		my $i = 0;
 		while($l =~ s/\sinet\s+([0-9\.]+)\/(\d+)//) {
 			my %vifc;
 			$vifc{'name'} = $ifc{'name'};
