@@ -4776,6 +4776,10 @@ authorization headers.
 =cut
 sub encode_base64
 {
+eval "use MIME::Base64 ()";
+if (!$@) {
+	return MIME::Base64::encode($_[0]);
+	}
 my $res;
 pos($_[0]) = 0;                          # ensure start at the beginning
 while ($_[0] =~ /(.{1,57})/gs) {
@@ -4795,6 +4799,10 @@ Converts a base64-encoded string into plain text. The opposite of encode_base64.
 =cut
 sub decode_base64
 {
+eval "use MIME::Base64 ()";
+if (!$@) {
+	return MIME::Base64::decode($_[0]);
+	}
 my ($str) = @_;
 my $res;
 $str =~ tr|A-Za-z0-9+=/||cd;            # remove non-base64 chars

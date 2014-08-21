@@ -472,7 +472,7 @@ if ($ct =~ /multipart\/(\S+)/i && ($ct =~ /boundary="([^"]+)"/i ||
 		if (lc($attach->{'header'}->{'content-transfer-encoding'}) eq
 		    'base64') {
 			# Standard base64 encoded attachment
-			$attach->{'data'} = &b64decode($attach->{'data'});
+			$attach->{'data'} = &decode_base64($attach->{'data'});
 			}
 		elsif (lc($attach->{'header'}->{'content-transfer-encoding'}) eq
 		       'x-uue') {
@@ -609,7 +609,7 @@ elsif (lc($_[0]->{'header'}->{'content-transfer-encoding'}) eq 'base64') {
 	$_[0]->{'attach'} = [ { 'type' => lc($ct),
 				'idx' => 0,
 				'parent' => $_[1],
-				'data' => &b64decode($_[0]->{'body'}) } ];
+				'data' => &decode_base64($_[0]->{'body'}) } ];
 	}
 elsif (lc($_[0]->{'header'}->{'content-type'}) eq 'x-sun-attachment') {
 	# Sun attachment format, which can contain several sections
@@ -644,7 +644,7 @@ else {
 	($type = $ct) =~ s/;.*$//;
 	$type = 'text/plain' if (!$type);
 	if (lc($_[0]->{'header'}->{'content-transfer-encoding'}) eq 'base64') {
-		$body = &b64decode($_[0]->{'body'});
+		$body = &decode_base64($_[0]->{'body'});
 		}
 	elsif (lc($_[0]->{'header'}->{'content-transfer-encoding'}) eq 
 	       'quoted-printable') {
@@ -1163,24 +1163,6 @@ local $temp = &transname();
 local @st = stat($temp);
 unlink($temp);
 return $st[7];
-}
-
-# b64decode(string)
-# Converts a string from base64 format to normal
-sub b64decode
-{
-    local($str) = $_[0];
-    eval "use MIME::Base64";
-    return decode_base64($str) if (!$@);
-    local($res);
-    $str =~ tr|A-Za-z0-9+=/||cd;
-    $str =~ s/=+$//;
-    $str =~ tr|A-Za-z0-9+/| -_|;
-    while ($str =~ /(.{1,60})/gs) {
-        my $len = chr(32 + length($1)*3/4);
-        $res .= unpack("u", $len . $1 );
-    }
-    return $res;
 }
 
 # can_read_mail(user)
