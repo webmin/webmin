@@ -5830,6 +5830,7 @@ foreach my $f (readdir(CRONS)) {
 			}
 		}
 	}
+closedir(CRONS);
 }
 
 # precache_files()
