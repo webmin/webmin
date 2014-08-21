@@ -1170,6 +1170,8 @@ return $st[7];
 sub b64decode
 {
     local($str) = $_[0];
+    eval "use MIME::Base64";
+    return decode_base64($str) if (!$@);
     local($res);
     $str =~ tr|A-Za-z0-9+=/||cd;
     $str =~ s/=+$//;
