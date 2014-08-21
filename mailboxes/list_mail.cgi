@@ -78,6 +78,7 @@ if (@error) {
 for($i=$in{'start'}; $i<@mail && $i<$in{'start'}+$perpage; $i++) {
 	push(@showmail, $mail[$i]);
 	}
+&mail_has_attachments(\@showmail, $folder);
 
 # Show them
 if (@mail) {
