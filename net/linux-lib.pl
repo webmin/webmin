@@ -254,7 +254,7 @@ elsif (&has_command("ip")) {
 		$readd = 1;
 		}
 
-	# Build ip command manually
+	# Build ip command to add the new IP
 	if ($readd) {
 		$cmd .= "ip addr add ".$a->{'address'};
 		if ($a->{'netmask'}) {
