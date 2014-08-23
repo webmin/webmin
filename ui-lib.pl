@@ -855,7 +855,7 @@ my ($name, $value, $size, $dis, $max, $tags) = @_;
 $size = &ui_max_text_width($size);
 return "<input class='ui_password' ".
        "type='password' name=\"".&quote_escape($name)."\" ".
-       "value=\"".&quote_escape($value)."\" ".
+       ($value ne "" ? "value=\"".&quote_escape($value)."\" " : "").
        "size=$size".($dis ? " disabled=true" : "").
        ($max ? " maxlength=$max" : "").
        ($tags ? " ".$tags : "").">";
