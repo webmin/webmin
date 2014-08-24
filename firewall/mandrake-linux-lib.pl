@@ -1,18 +1,18 @@
-# redhat-linux-lib.pl
-# Deal with redhat's /etc/sysconfig/iptables save file and startup script
+# mandriva-linux-lib.pl
+# Deal with Mandriva's /etc/sysconfig/iptables save file and startup script
 
 # check_iptables()
 # Returns an error message if something is wrong with iptables on this system
 sub check_iptables
 {
-if (!-r "/etc/rc.d/init.d/iptables") {
-	return &text('redhat_escript', "<tt>/etc/rc.d/init.d/iptables</tt>");
+if (!-r "/usr/libexec/iptables.init") {
+	return &text("The iptabes service", "<tt>/usr/libexec/iptables.init</tt>");
 	}
 if (!$config{'done_check_iptables'}) {
-	local $out = `/etc/rc.d/init.d/iptables status 2>&1`;
+	local $out = `/usr/libexec/iptables.init status 2>&1`;
 	if ($out !~ /table:|INPUT|FORWARD|OUTPUT/) {
 		return &text('redhat_eoutput',
-			     "<tt>/etc/init.d/iptables status</tt>");
+			     "<tt>/usr/libexec/iptables.init status</tt>");
 		}
 	$config{'done_check_iptables'} = 1;
 	&save_module_config();
@@ -35,7 +35,7 @@ $iptables_save_file = "/etc/sysconfig/iptables";
 # Writes the current iptables configuration to the save file
 sub unapply_iptables
 {
-$out = &backquote_logged("cd / ; /etc/rc.d/init.d/iptables save 2>&1 </dev/null");
+$out = &backquote_logged("cd / ; /usr/libexec/iptables.init save 2>&1 </dev/null");
 $out =~ s/\033[^m]+m//g;
 return $? || $out =~ /FAILED/ ? "<pre>$out</pre>" : undef;
 }
