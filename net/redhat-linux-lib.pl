@@ -431,6 +431,14 @@ foreach my $b (&boot_interfaces()) {
 		&unlock_file($b->{'file'});
 		}
 	}
+
+# Update /etc/hostname if exists
+if (-r "/etc/hostname") {
+	&open_lock_tempfile(HOST, ">/etc/hostname");
+	&print_tempfile(HOST, $_[0],"\n");
+	&close_tempfile(HOST);
+	}
+
 undef(@main::get_system_hostname);	# clear cache
 }
 
