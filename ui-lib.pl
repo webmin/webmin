@@ -179,6 +179,13 @@ if ($main::ui_table_pos+$cols+1 > $main::ui_table_cols &&
 	}
 $rv .= "<tr class='ui_table_row'>\n"
 	if ($main::ui_table_pos%$main::ui_table_cols == 0);
+if (defined($label) &&
+    ($value =~ /id="([^"]+)"/ || $value =~ /id='([^']+)'/ ||
+     $value =~ /id=([^>\s]+)/)) {
+	# Value contains an input with an ID
+	my $id = $1;
+	$label = "<label for=\"".&quote_escape($id)."\">$label</label>";
+	}
 $rv .= "<td valign=top $tds->[0] class='ui_label'><b>$label</b></td>\n"
 	if (defined($label));
 $rv .= "<td valign=top colspan=$cols $tds->[1] class='ui_value'>$value</td>\n";
@@ -741,7 +748,9 @@ sub ui_textbox
 return &theme_ui_textbox(@_) if (defined(&theme_ui_textbox));
 my ($name, $value, $size, $dis, $max, $tags) = @_;
 $size = &ui_max_text_width($size);
-return "<input class='ui_textbox' type='text' name=\"".&html_escape($name)."\" ".
+return "<input class='ui_textbox' type='text' ".
+       "name=\"".&html_escape($name)."\" ".
+       "id=\"".&html_escape($name)."\" ".
        "value=\"".&html_escape($value)."\" ".
        "size=$size".($dis ? " disabled=true" : "").
        ($max ? " maxlength=$max" : "").
@@ -836,7 +845,9 @@ sub ui_upload
 return &theme_ui_upload(@_) if (defined(&theme_ui_upload));
 my ($name, $size, $dis, $tags) = @_;
 $size = &ui_max_text_width($size);
-return "<input class='ui_upload' type='file' name=\"".&quote_escape($name)."\" ".
+return "<input class='ui_upload' type='file' ".
+       "name=\"".&quote_escape($name)."\" ".
+       "id=\"".&quote_escape($name)."\" ".
        "size=$size".
        ($dis ? " disabled=true" : "").
        ($tags ? " ".$tags : "").">";
@@ -853,8 +864,9 @@ sub ui_password
 return &theme_ui_password(@_) if (defined(&theme_ui_password));
 my ($name, $value, $size, $dis, $max, $tags) = @_;
 $size = &ui_max_text_width($size);
-return "<input class='ui_password' ".
-       "type='password' name=\"".&quote_escape($name)."\" ".
+return "<input class='ui_password' type='password' ".
+       "name=\"".&quote_escape($name)."\" ".
+       "id=\"".&quote_escape($name)."\" ".
        ($value ne "" ? "value=\"".&quote_escape($value)."\" " : "").
        "size=$size".($dis ? " disabled=true" : "").
        ($max ? " maxlength=$max" : "").
@@ -872,6 +884,7 @@ return &theme_ui_hidden(@_) if (defined(&theme_ui_hidden));
 my ($name, $value) = @_;
 return "<input class='ui_hidden' type='hidden' ".
        "name=\"".&quote_escape($name)."\" ".
+       "id=\"".&quote_escape($name)."\" ".
        "value=\"".&quote_escape($value)."\">\n";
 }
 
@@ -902,7 +915,9 @@ sub ui_select
 return &theme_ui_select(@_) if (defined(&theme_ui_select));
 my ($name, $value, $opts, $size, $multiple, $missing, $dis, $tags) = @_;
 my $rv;
-$rv .= "<select class='ui_select' name=\"".&quote_escape($name)."\"".
+$rv .= "<select class='ui_select' ".
+       "name=\"".&quote_escape($name)."\" ".
+       "id=\"".&quote_escape($name)."\" ".
        ($size ? " size=$size" : "").
        ($multiple ? " multiple" : "").
        ($dis ? " disabled=true" : "").($tags ? " ".$tags : "").">\n";
@@ -1213,7 +1228,9 @@ sub ui_textarea
 return &theme_ui_textarea(@_) if (defined(&theme_ui_textarea));
 my ($name, $value, $rows, $cols, $wrap, $dis, $tags) = @_;
 $cols = &ui_max_text_width($cols, 1);
-return "<textarea class='ui_textarea' name=\"".&quote_escape($name)."\" ".
+return "<textarea class='ui_textarea' ".
+       "name=\"".&quote_escape($name)."\" ".
+       "id=\"".&quote_escape($name)."\" ".
        "rows='$rows' cols='$cols'".($wrap ? " wrap=$wrap" : "").
        ($dis ? " disabled=true" : "").
        ($tags ? " $tags" : "").">".
@@ -1282,7 +1299,9 @@ $size = &ui_max_text_width($size);
 $rv .= &ui_radio($name."_def", $value eq '' ? 1 : 0,
 		 [ [ 1, $opt1, "onClick='$dis1'" ],
 		   [ 0, $opt2 || " ", "onClick='$dis2'" ] ], $dis)."\n";
-$rv .= "<input class='ui_opt_textbox' type='text' name=\"".&quote_escape($name)."\" ".
+$rv .= "<input class='ui_opt_textbox' type='text' ".
+       "name=\"".&quote_escape($name)."\" ".
+       "id=\"".&quote_escape($name)."\" ".
        "size=$size value=\"".&quote_escape($value)."\"".
        ($dis ? " disabled=true" : "").
        ($max ? " maxlength=$max" : "").
@@ -1309,6 +1328,7 @@ return &theme_ui_submit(@_) if (defined(&theme_ui_submit));
 my ($label, $name, $dis, $tags) = @_;
 return "<input class='ui_submit' type='submit'".
        ($name ne '' ? " name=\"".&quote_escape($name)."\"" : "").
+       ($name ne '' ? " id=\"".&quote_escape($name)."\"" : "").
        " value=\"".&quote_escape($label)."\"".
        ($dis ? " disabled=true" : "").
        ($tags ? " ".$tags : "").">\n";	
@@ -1355,6 +1375,7 @@ return &theme_ui_button(@_) if (defined(&theme_ui_button));
 my ($label, $name, $dis, $tags) = @_;
 return "<input class='ui_button' type='button'".
        ($name ne '' ? " name=\"".&quote_escape($name)."\"" : "").
+       ($name ne '' ? " id=\"".&quote_escape($name)."\"" : "").
        " value=\"".&quote_escape($label)."\"".
        ($dis ? " disabled=true" : "").
        ($tags ? " ".$tags : "").">\n";

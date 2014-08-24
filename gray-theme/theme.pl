@@ -327,6 +327,13 @@ if ($main::ui_table_pos+$cols+1 > $main::ui_table_cols &&
     $rv .= "</tr>\n";
     $main::ui_table_pos = 0;
     }
+if (defined($label) &&
+    ($value =~ /id="([^"]+)"/ || $value =~ /id='([^']+)'/ ||
+     $value =~ /id=([^>\s]+)/)) {
+	# Value contains an input with an ID
+	my $id = $1;
+	$label = "<label for=\"".&quote_escape($id)."\">$label</label>";
+	}
 $rv .= "<tr class='ui_form_pair'>\n" if ($main::ui_table_pos%$main::ui_table_cols == 0);
 $rv .= "<td class='ui_form_label' $tds->[0]><b>$label</b></td>\n" if (defined($label));
 $rv .= "<td class='ui_form_value' colspan=$cols $tds->[1]>$value</td>\n";
