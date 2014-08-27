@@ -44,7 +44,8 @@ if ($in{'show'}) {
 			$rhs =~ s/\$\$/\0/g;
 			$rhs =~ s/\$/$i/g;
 			$rhs =~ s/\0/\$/g;
-			$rhsfull = $rhs =~ /\.$/ ? $rhs :
+			$rhsfull = &check_ipaddress($rhs) ? $rhs :
+				   $rhs =~ /\.$/ ? $rhs :
 				    $dom eq "." ? "$rhs." : "$rhs.$dom";
 
 			print &ui_columns_row([

@@ -44,7 +44,8 @@ if ($in{'from'} && $in{'to'}) {
 		$rhs =~ s/\$\$/\0/g;
 		$rhs =~ s/\$/$i/g;
 		$rhs =~ s/\0/\$/g;
-		$rhsfull = $rhs =~ /\.$/ ? $rhs :
+		$rhsfull = &check_ipaddress($rhs) ? $rhs :
+			   $rhs =~ /\.$/ ? $rhs :
 			    $dom eq "." ? "$rhs." : "$rhs.$dom";
 		push(@recs, { 'name' => $lhsfull,
 			      'values' => [ $rhsfull ],
