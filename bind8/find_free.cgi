@@ -20,8 +20,39 @@ $desc = &text('findfree_header', &arpa_to_ip($dom));
 
 if ($in{'from'} && $in{'to'}) {
    # Do the search
-   @recs = &read_zone_file($file, $dom);
-   @recs = grep { ($_->{'type'} eq 'A') || ($_->{'type'} eq 'PTR')} @recs;
+   @allrecs = &read_zone_file($file, $dom);
+   @recs = grep { ($_->{'type'} eq 'A') || ($_->{'type'} eq 'PTR')} @allrecs;
+   @gens = grep { $_->{'generate'} } @allrecs;
+   foreach my $g (@gens) {
+	@gv = @{$g->{'generate'}};
+	if ($gv[0] =~ /^(\d+)-(\d+)\/(\d+)$/) {
+		$start = $1; $end = $2; $skip = $3;
+		}
+	elsif ($gv[0] =~ /^(\d+)-(\d+)$/) {
+		$start = $1; $end = $2; $skip = 1;
+		}
+	else { next; }
+	for($i=$start; $i<=$end; $i+=$skip) {
+		$lhs = $gv[1];
+		$lhs =~ s/\$\$/\0/g;
+		$lhs =~ s/\$/$i/g;
+		$lhs =~ s/\0/\$/g;
+		$lhsfull = $lhs =~ /\.$/ ? $lhs :
+			    $dom eq "." ? "$lhs." : "$lhs.$dom";
+
+		$rhs = $gv[3];
+		$rhs =~ s/\$\$/\0/g;
+		$rhs =~ s/\$/$i/g;
+		$rhs =~ s/\0/\$/g;
+		$rhsfull = $rhs =~ /\.$/ ? $rhs :
+			    $dom eq "." ? "$rhs." : "$rhs.$dom";
+		push(@recs, { 'name' => $lhsfull,
+			      'values' => [ $rhsfull ],
+			      'type' => $gv[2],
+			      'class' => 'IN' });
+		}
+	}
+
    my $freeXXXcount=0;
    my $freemaccount=0;
    if (@recs) {
