@@ -109,19 +109,24 @@ elsif (@$rules && !$in{'reset'}) {
 				  "<img src=images/before.gif border=0></a>";
 			}
 
-		local ($ls, $le);
+		local $num = $r->{'num'};
+		local $act = ($text{'action_'.&real_action($r->{'action'})} ||
+                              uc($r->{'action'})).
+			     (defined($r->{'aarg'}) ? " $r->{'aarg'}" : "");
 		if ($r->{'index'} <= $lastidx) {
-			$ls = &ui_link("edit_rule.cgi?idx=$r->{'index'}","$le =");
+			$num = &ui_link("edit_rule.cgi?idx=$r->{'index'}",$num);
+			$act = &ui_link("edit_rule.cgi?idx=$r->{'index'}",$act);
 			}
-		local $act = $amap{int($r->{'num'})};
+		local $a = $amap{int($r->{'num'})};
 		print &ui_checked_columns_row(
-			[ $ls.$r->{'num'}.$le,
-			  $ls.($text{'action_'.&real_action($r->{'action'})} ||
-			   uc($r->{'action'})).
-			  (defined($r->{'aarg'}) ? " $r->{'aarg'}" : "").$le,
-			  $config{'view_condition'} ? ( &describe_rule($r) ) : ( ),
-			  $config{'view_comment'} ? ( $r->{'cmt'} || "<br>" ) : ( ),
-			  $config{'view_counters'} ? ( $act->{'count1'}, &nice_size($act->{'count2'}) ) : ( ),
+			[ $num,
+			  $act,
+			  $config{'view_condition'} ?
+				( &describe_rule($r) ) : ( ),
+			  $config{'view_comment'} ?
+				( $r->{'cmt'} || "<br>" ) : ( ),
+			  $config{'view_counters'} ?
+				( $a->{'count1'}, &nice_size($a->{'count2'}) ) : ( ),
 			  $mover,
 			  $adder ],
 			\@widths, "d", $r->{'num'});
