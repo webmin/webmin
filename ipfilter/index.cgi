@@ -101,14 +101,19 @@ elsif (@$rules && !$in{'reset'}) {
 			  "before=$r->{'index'}'>".
 			  "<img src=images/before.gif border=0></a>";
 
-		local $ls = &ui_link("edit_rule.cgi?idx=$r->{'index'}","local $le =");
-		local $act = $amap{int($r->{'num'})};
+		local $active = $r->{'active'} ? $text{'yes'} :
+                                  "<font color=#ff0000>$text{'no'}</font>";
+		$active = &ui_link("edit_rule.cgi?idx=$r->{'index'}", $active);
+		local $action = $text{'action_'.$r->{'action'}} ||
+                                uc($r->{'action'});
+		$action = &ui_link("edit_rule.cgi?idx=$r->{'index'}", $action);
+		local $dir = $text{'dir_'.$r->{'dir'}};
+		$dir = &ui_link("edit_rule.cgi?idx=$r->{'index'}", $dir);
+
 		print &ui_checked_columns_row(
-			[ $ls.($r->{'active'} ? $text{'yes'} :
-			       "<font color=#ff0000>$text{'no'}</font>").$le,
-			  $ls.($text{'action_'.$r->{'action'}} ||
-			   uc($r->{'action'})).$le,
-			  $ls.$text{'dir_'.$r->{'dir'}}.$le,
+			[ $active,
+			  $action,
+			  $dir,
 			  $config{'view_condition'} ?
 				( &describe_rule($r) ) : ( ),
 			  $config{'view_comment'} ?
@@ -169,13 +174,19 @@ elsif (@$rules && !$in{'reset'}) {
 					  "border=0></a>";
 				}
 
-			local $ls = &ui_link("edit_nat.cgi?idx=$r->{'index'}","local $le =");
+			local $active = $r->{'active'} ? $text{'yes'} :
+                                       "<font color=#ff0000>$text{'no'}</font>";
+			$active = &ui_link("edit_nat.cgi?idx=$r->{'index'}",
+					   $active);
+			local $action = $text{'action_'.$r->{'action'}} ||
+				        uc($r->{'action'});
+			$action = &ui_link("edit_nat.cgi?idx=$r->{'index'}",
+					   $action);
+
 			print &ui_columns_row(
 				[ &ui_checkbox("d", $r->{'index'}, "", 0),
-				  $ls.($r->{'active'} ? $text{'yes'} :
-				       "<font color=#ff0000>$text{'no'}</font>").$le,
-				  $ls.($text{'action_'.$r->{'action'}} ||
-				   uc($r->{'action'})).$le,
+				  $active,
+				  $action,
 				  $config{'view_condition'} ?
 					( &describe_from($r), &describe_to($r) ) : ( ),
 				  $config{'view_comment'} ?
