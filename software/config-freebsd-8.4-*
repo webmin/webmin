@@ -1,0 +1,3 @@
+package_system=freebsd
+update_system=pkg
+apt_mode=0

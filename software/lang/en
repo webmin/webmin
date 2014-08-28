@@ -406,4 +406,8 @@ ports_apply=Download Latest Snapshot
 ports_upgrade=Downloading Ports Snapshot
 ports_running=Running command $1 ..
 
+pkg_install=Installing FreeBSD packages $1 ..
+pkg_failed=.. some packages failed
+pkg_ok=.. install complete
+
 __norefs=1

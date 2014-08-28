@@ -21,7 +21,12 @@ elsif ($config{'update_system'}) {
 else {
 	# Guess which update system we are using
 	if ($gconfig{'os_type'} eq 'freebsd') {
-		$update_system = "ports";
+		if (&use_pkg_ng()) {
+			$update_system = "pkg";
+			}
+		else {
+			$update_system = "ports";
+			}
 		}
 	elsif (&has_command($config{'apt_mode'} ? "aptitude" : "apt-get")) {
 		$update_system = "apt";
