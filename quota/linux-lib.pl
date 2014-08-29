@@ -49,6 +49,7 @@ containing : blocks-total, blocks-free, files-total, files-free
 sub free_space
 {
 local(@out, @rv);
+&clean_language();
 $out = &backquote_command("df -k $_[0]");
 $out =~ /Mounted on\n\S+\s+(\d+)\s+\d+\s+(\d+)/;
 if ($_[1]) {
@@ -60,6 +61,7 @@ else {
 $out = &backquote_command("df -i $_[0]");
 $out =~ /Mounted on\n\S+\s+(\d+)\s+\d+\s+(\d+)/;
 push(@rv, $1, $2);
+&reset_environment();
 return @rv;
 }
 
