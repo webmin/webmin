@@ -101,6 +101,7 @@ fileset_eclash=Ja existeix un conjunt de fitxers amb aquest mateix nom
 fileset_echild=No es pot suprimir aquest conjunt de fitxers, ja que està $1 l'està utilitzant
 fileset_comp=Tipus de compressió
 fileset_gzipdef=&lt;Nivell de compressió per defecte&gt;
+fileset_lzo=Compressió LZO
 fileset_gzip=Gzip nivell $1
 fileset_onefs=Limita la còpia a un sol sistema de fitxers
 

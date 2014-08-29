@@ -481,5 +481,6 @@ twofactor_enrolling=S'està assignant l'autenticació de dos factors amb el proveï
 twofactor_failed=...l'assignació ha fallat: $1
 twofactor_done=...completa. El teu ID amb aquest proveïdor és <tt>$1</tt>.
 twofactor_setup=L'autenticació de dos factors encara no s'ha activat al sistema, però es pot activar utilitzant el mòdul de <a href='$1'>Configuració de Webmin</a>.
+twofactor_ebutton=No has fet clic a cap botó!
 
 __norefs=1

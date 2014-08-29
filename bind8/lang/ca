@@ -229,6 +229,8 @@ recs_find=Mostra els registres que coincideixin amb:
 recs_search=Cerca
 recs_drev=Elimina també els inversos
 recs_none=El domini encara no té cap registre $1.
+recs_nosearch=No hi ha cap registre que coincideixi amb la teva cerca.
+recs_needsearch=Introdueix una cerca per trobar registres coincidents.
 
 edit_title=Edició de $1
 edit_header=de $1
