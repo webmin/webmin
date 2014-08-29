@@ -226,8 +226,17 @@ proc_asuser=Executant-se com a usuari
 proc_anyuser=Qualsevol usuari
 proc_easuser=L'usuari d'execució del procés no existeix
 
-exec_cmd=Ordre a verificar
-exec_ecmd=Falta l'ordre
+exec_cmd=Ordre a executar
+exec_mode=Comprovació de l'estat de sortida
+exec_mode0=Fes fallar el monitor si l'ordre falla
+exec_mode1=Fes fallar el monitor si l'ordre reïx
+exec_mode2=Ignora l'èxit o la fallada
+exec_ecmd=Hi falta l'ordre
+exec_regexp=Compara la sortida amb una expressió regular
+exec_noregexp=No ho comprovis
+exec_remode=Comprovació regexp
+exec_remode0=Falla si la sortida no hi coincideix
+exec_remode1=Falla si la sortida hi coincideix
 
 file_file=Fitxer, directori o patró a comprovar
 file_test=Test a executar
