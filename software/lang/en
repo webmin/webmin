@@ -409,5 +409,7 @@ ports_running=Running command $1 ..
 pkg_install=Installing FreeBSD packages $1 ..
 pkg_failed=.. some packages failed
 pkg_ok=.. install complete
+pkg_find=Search pkgng
+pkg_input=Package from pkgng
 
 __norefs=1

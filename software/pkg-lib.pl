@@ -21,9 +21,14 @@ print "<pre>";
 &additional_log('exec', undef, $cmd);
 
 # Run it
-&open_execute_command(CMD, $cmd, 2);
+&open_execute_command(CMD, "yes | $cmd", 2);
 while(<CMD>) {
 	if (/Installing\s+(\S+)\-(\d\S*)/i) {
+		# New package
+		push(@rv, $1);
+		}
+	elsif (/\s+(\S+):\s+(\S+)\s+->\s+(\S+)/) {
+		# Upgrading package
 		push(@rv, $1);
 		}
 	print &html_escape("$_");
@@ -36,5 +41,49 @@ else { print "<b>$text{'pkg_ok'}</b><p>\n"; }
 return @rv;
 }
 
+# update_system_search(text)
+# Returns a list of packages matching some search
+sub update_system_search
+{
+local (@rv, $pkg);
+&clean_language();
+&open_execute_command(DUMP, "pkg search -Q comment ".quotemeta($_[0])." 2>/dev/null", 1,1);
+while(<DUMP>) {
+	if (/^(\S+)-(\d\S*)\s+(\S.*)/) {
+		push(@rv, { 'name' => $1,
+			    'version' => $2,
+			    'desc' => $3 });
+		}
+	}
+close(DUMP);
+&reset_environment();
+return @rv;
+}
+
+# update_system_available()
+# Returns a list of package names and versions that are available from YUM
+sub update_system_available
+{
+return &update_system_search(".*");
+}
+
+# update_system_updates()
+# Returns a list of available package updates
+sub update_system_updates
+{
+my @rv;
+&clean_language();
+&open_execute_command(DUMP, "yes no | pkg upgrade 2>/dev/null", 1,1);
+while(<DUMP>) {
+	if (/^\s+(\S+):\s+(\S+)\s+->\s+(\S+)/) {
+		push(@rv, { 'name' => $1,
+			    'oldversion' => $2,
+			    'version' => $3 });
+		}
+	}
+close(DUMP);
+&reset_environment();
+return @rv;
+}
 
 1;
