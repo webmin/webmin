@@ -37,3 +37,5 @@ Added the update_system_updates function to more efficiently find available pack
 Debian packages marked as "hold" are no longer offered as possible updates. This is visible in the Software Package Updates module.
 ---- Changes since 1.620 ----
 Added support for updating and installing packages from FreeBSD ports.
+---- Changes since 1.700 ----
+Added support for the FreeBSD pkgng binary package repository as an alternative to ports.

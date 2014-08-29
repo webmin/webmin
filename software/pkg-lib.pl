@@ -86,4 +86,21 @@ close(DUMP);
 return @rv;
 }
 
+# update_system_resolve(name)
+# Converts a standard package name like apache, sendmail or squid into
+# the name used by ports.
+sub update_system_resolve
+{
+local ($name) = @_;
+return $name eq "apache" ? "apache22 ap22-mod_.*" :
+       $name eq "dhcpd" ? "isc-dhcp42-server" :
+       $name eq "mysql" ? "mysql-server" :
+       $name eq "openssh" ? "openssh-portable" :
+       $name eq "postgresql" ? "postgresql-server" :
+       $name eq "openldap" ? "openldap-server openldap-client" :
+       $name eq "samba" ? "samba36 samba36-smbclient samba36-nmblookup" :
+       $name eq "spamassassin" ? "p5-Mail-SpamAssassin" :
+       			  $name;
+}
+
 1;
