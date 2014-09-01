@@ -1762,7 +1762,8 @@ foreach my $f (split(/\s+/, $config{'rc_conf'})) {
 =head2 list_upstart_services
 
 Returns a list of all known upstart services, each of which is a hash ref
-with 'name', 'desc', 'boot', 'status' and 'pid' keys.
+with 'name', 'desc', 'boot', 'status' and 'pid' keys. Also includes init.d
+scripts, but if both exist then the native service will be preferred.
 
 =cut
 sub list_upstart_services
@@ -1922,7 +1923,9 @@ my $ifile = "/etc/init.d/$name";
 =head2 list_systemd_services
 
 Returns a list of all known systemd services, each of which is a hash ref
-with 'name', 'desc', 'boot', 'status' and 'pid' keys.
+with 'name', 'desc', 'boot', 'status' and 'pid' keys. Also includes init.d
+scripts, which will be preferred over native systemd services (because sometimes
+systemd automatically includes init scripts).
 
 =cut
 sub list_systemd_services
@@ -1932,7 +1935,10 @@ my $out = &backquote_command("systemctl list-units --full --all");
 &error("Failed to list systemd units : $out") if ($?);
 foreach my $l (split(/\r?\n/, $out)) {
 	my ($unit, $loaded, $active, $sub, $desc) = split(/\s+/, $l, 5);
-	if ($unit ne "UNIT" && $loaded eq "loaded") {
+	my $a = $unit;
+	$a =~ s/\.service$//;
+	my $f = &action_filename($a);
+	if ($unit ne "UNIT" && $loaded eq "loaded" && !-r $f) {
 		push(@units, $unit);
 		}
 	}
@@ -2001,7 +2007,6 @@ foreach my $name (keys %info) {
 my @rls = &get_inittab_runlevel();
 foreach my $a (&list_actions()) {
 	$a =~ s/\s+\d+$//;
-	next if ($done{$a});
 	my $f = &action_filename($a);
 	my $s = { 'name' => $a,
 		  'legacy' => 1 };
