@@ -1398,6 +1398,11 @@ local $headerhost = $header{'x-forwarded-for'} ||
 		    $header{'x-real-ip'};
 if ($config{'trust_real_ip'}) {
 	$acpthost = $headerhost || $acpthost;
+	if (&check_ipaddress($headerhost) || &check_ip6address($headerhost)) {
+		# If a remote IP was given, use it for all access control checks
+		# from now on.
+		$acptip = $headerhost;
+		}
 	$loghost = $acpthost;
 	}
 else {
