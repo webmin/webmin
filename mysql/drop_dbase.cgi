@@ -10,6 +10,7 @@ $access{'edonly'} && &error($text{'dbase_ecannot'});
 if ($in{'confirm'}) {
 	# Drop the database
 	&execute_sql_logged($master_db, "drop database ".&quotestr($in{'db'}));
+	&delete_database_backup_job($in{'db'});
 	&webmin_log("delete", "db", $in{'db'});
 	&redirect("");
 	}

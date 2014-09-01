@@ -16,6 +16,7 @@ if ($in{'confirm'}) {
 	# Drop the databases
 	foreach $db (@dbs) {
 		&execute_sql_logged($master_db,"drop database ".&quotestr($db));
+		&delete_database_backup_job($db);
 		}
 	&webmin_log("delete", "dbs", scalar(@dbs), \%in);
 	&redirect("");
