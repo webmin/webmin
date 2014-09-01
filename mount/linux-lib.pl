@@ -1099,9 +1099,9 @@ else {
 		local @ropts;
 		foreach $c (@$conf) {
 			if ($c->{'active'}) {
+				$c->{'value'} =~ /(\d+)$/;
 				push(@ropts, [ $c->{'value'},
-					&text('linux_rdev',
-					      substr($c->{'value'}, -1)) ]);
+					       &text('linux_rdev', "$1") ]);
 				$rfound++ if ($loc eq $c->{'value'});
 				}
 			}
