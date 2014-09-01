@@ -37,7 +37,7 @@ local %mdstat;
 local $lastdev;
 open(MDSTAT, $config{'mdstat'});
 while(<MDSTAT>) {
-	if (/^(md\d+)\s*:\s+(\S+)\s+(\S+)\s+(.*)\s+(\d+)\s+blocks\s*(.*)resync=(\d+)/) {
+	if (/^(md\d+)\s*:\s+(\S+)\s+(\S+)\s+(.*)\s+(\d+)\s+blocks\s*(.*)resync=([0-9\.]+)/) {
 		$mdstat{$lastdev = "/dev/$1"} = [ $2, $3, $4, $5, $7, $6 ];
 		}
 	elsif (/^(md\d+)\s*:\s+(\S+)\s+(\S+)\s+(.*)\s+(\d+)\s+blocks\s*(.*)/) {
@@ -46,15 +46,20 @@ while(<MDSTAT>) {
 	elsif (/^(md\d+)\s*:\s+(\S+)\s+(\S+)\s+(.*)/) {
 		$mdstat{$lastdev = "/dev/$1"} = [ $2, $3, $4 ];
 		$_ = <MDSTAT>;
-		if (/\s+(\d+)\s+blocks\s*(.*)resync=(\d+)/) {
+		if (/\s+(\d+)\s+blocks\s*(.*)resync=([0-9\.]+)/) {
+			# Block count and resync progress after device line
 			$mdstat{$lastdev}->[3] = $1;
 			$mdstat{$lastdev}->[4] = $3;
 			$mdstat{$lastdev}->[5] = $2;
 			}
 		elsif (/\s+(\d+)\s+blocks\s*(.*)/) {
+			# Block count only after device line
 			$mdstat{$lastdev}->[3] = $1;
-			$mdstat{$lastdev}->[5] = $2;
 			}
+		}
+	elsif (/^\s*\[\S+\]\s*(resync|recovery)\s*=\s([0-9\.]+)/) {
+		# Resync section is on it's own line
+		$mdstat{$lastdev}->[5] = $2;
 		}
 	}
 close(MDSTAT);
