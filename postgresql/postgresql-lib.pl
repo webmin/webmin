@@ -1249,5 +1249,21 @@ else {
 return @rv;
 }
 
+# delete_database_backup_job(db)
+# If there is a backup scheduled for some database, remove it
+sub delete_database_backup_job
+{
+my ($db) = @_;
+&foreign_require("cron");
+my @jobs = &cron::list_cron_jobs();
+my $cmd = "$cron_cmd $db";
+my ($job) = grep { $_->{'command'} eq $cmd } @jobs;
+if ($job) {
+	&lock_file(&cron::cron_file($job));
+	&cron::delete_cron_job($job);
+	&unlock_file(&cron::cron_file($job));
+	}
+}
+
 1;
 

@@ -9,6 +9,7 @@ require './postgresql-lib.pl';
 if ($in{'confirm'}) {
 	# Drop the database
 	&execute_sql_logged($config{'basedb'}, "drop database \"$in{'db'}\"");
+	&delete_database_backup_job($in{'db'});
 	&webmin_log("delete", "db", $in{'db'});
 	&redirect("");
 	}

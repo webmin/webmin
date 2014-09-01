@@ -74,3 +74,5 @@ Added greater than / less than selectors to the table data search form.
 ---- Changes since 1.530 ----
 Added an option to the restore form to limit the restore to only certain tables.
 When creating a new database, a template database to copy from can now be selected.
+---- Changes since 1.700 ----
+When a database is deleted, any cron job for backing it up is also removed.

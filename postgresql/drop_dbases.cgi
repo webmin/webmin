@@ -12,6 +12,7 @@ if ($in{'confirm'}) {
 	# Drop the databases
 	foreach $db (@dbs) {
 		&execute_sql_logged($config{'basedb'}, "drop database \"$db\"");
+		&delete_database_backup_job($db);
 		}
 	&webmin_log("delete", "dbs", scalar(@dbs));
 	&redirect("");
