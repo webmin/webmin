@@ -174,12 +174,16 @@ else {
 				}
 			}
 		close(MDSTAT);
+		local $lastdev;
 		open(MDSTAT, $config{'mdstat'});
 		while(<MDSTAT>){
-			if (/^.*finish=(\S+)min/){
+			if (/^(md\d+)/) {
+		                $lastdev = "/dev/$1";
+               			}
+			if ((/^.*finish=(\S+)min/) && ($lastdev eq $m)) {
 				$md->{'remain'} = $1;
 				}
-			if (/^.*speed=(\S+)K/){
+			if ((/^.*speed=(\S+)K/) && ($lastdev eq $m)) {
 				$md->{'speed'} = $1;
 				}
 			}

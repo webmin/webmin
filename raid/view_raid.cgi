@@ -81,10 +81,10 @@ if ($raid->{'state'}) {
 	}
 
 # Rebuild percent
-if ($raid->{'rebuild'}) {
+if ($raid->{'rebuild'} ne '') {
 	print &ui_table_row($text{'view_rebuild'},
 		$raid->{'rebuild'}." \% (".$raid->{'remain'}." min, ".
-		$raid->{'speed'}." KBytes/s)");
+		int($raid->{'speed'} / 1024)." MB/s)");
 	}
 
 
