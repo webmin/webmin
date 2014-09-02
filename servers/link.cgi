@@ -134,6 +134,9 @@ if ($header{'location'} &&
      $header{'location'} =~ /^(http|https):\/\/$s->{'host'}(.*)/ &&
      $s->{'port'} == $defport)) {
 	# fix a redirect
+	local $gconfig{'webprefixnoredir'} = 1;		# We've already added
+							# webprefix, so no need
+							# to add it again
 	&redirect("$url$2");
 	exit;
 	}
