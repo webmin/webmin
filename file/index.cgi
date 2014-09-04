@@ -81,6 +81,11 @@ if ($config{'extract'} &&
 	}
 
 print <<EOF;
+
+<style>
+body { margin: 0px; }
+</style>
+
 <script>
 function upload(dir)
 {
