@@ -55,7 +55,7 @@ if ($cron) {
 	$config{'backup_email_'.$in{'db'}} = $in{'email'};
 	$config{'backup_notify_'.$in{'db'}} = $in{'notify'};
 
-	&foreign_require("cron", "cron-lib.pl");
+	&foreign_require("cron");
 	@jobs = &cron::list_cron_jobs();
 	$cmd = $in{'all'} ? "$cron_cmd --all" : "$cron_cmd $in{'db'}";
 	($job) = grep { $_->{'command'} eq $cmd } @jobs;
