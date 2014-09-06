@@ -315,8 +315,7 @@ if ($a->{'virtual'} eq '' && &has_command("ifconfig")) {
 		&error("Failed to add IPv6 address : $out") if ($?);
 		}
 	}
-
-if ($a->{'virtual'} eq '' && &has_command("ip")) {
+elsif ($a->{'virtual'} eq '' && &has_command("ip")) {
 	# Remove old IPv6 addresses
 	if ($old) {
 		for(my $i=0; $i<@{$old->{'address6'}}; $i++) {
