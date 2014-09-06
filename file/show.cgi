@@ -112,7 +112,7 @@ if ($in{'format'}) {
 	print "Content-type: $type\n\n";
 	open(FILE, $temp);
 	unlink($temp);
-	while(read(FILE, $buf, 1024)) {
+	while(read(FILE, $buf, 1000000)) {
 		print $buf;
 		}
 	close(FILE);
@@ -136,13 +136,13 @@ else {
 	print "X-Content-Type-Options: nosniff\n";
 	&print_content_type($type);
 	if ($type =~ /^text\/html/i && !$in{'edit'}) {
-		while(read(FILE, $buf, 1024)) {
+		while(read(FILE, $buf, 1000000)) {
 			$data .= $buf;
 			}
 		print &filter_javascript($data);
 		}
 	else {
-		while(read(FILE, $buf, 1024)) {
+		while(read(FILE, $buf, 1000000)) {
 			print $buf;
 			}
 		}
