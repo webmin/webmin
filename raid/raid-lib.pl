@@ -466,7 +466,7 @@ sub grow
 {
 if ($raid_mode eq "mdadm") {
 	# Call mdadm command to add
-	$cmd="mdadm --grow $_[0]->{'value'} -n $_[1] 2>&1";
+	$cmd="mdadm -G $_[0]->{'value'} -n $_[1] 2>&1";
 	local $out = &backquote_logged(
 		$cmd);
 	&error(&text('emdadmgrow', "<tt>'$cmd' -> $out</tt>")) if ($?);
@@ -479,17 +479,15 @@ sub convert_raid
 {
 if ($raid_mode eq "mdadm") {
 	if ($_[2]) {
+		# Use backup file in case something goes wrong during critical section of reshape
+		$raid_device_short = $_[0]->{'value'};
+		$raid_device_short =~ s/\/dev\///;
+		$date = `date \+\%Y\%m\%d-\%H\%M`;
+		chomp($date);
+		$backup_file = "/raid-level-convert-$raid_device_short-$date.bck";
+
 		# Call mdadm command to convert
-		$cmd="mdadm --grow $_[0]->{'value'} --level $_[3]";
-		$grow_by = $_[2] - $_[1];
-		if ($grow_by == 1) {
-			$raid_device_short = $_[0]->{'value'};
-        		$raid_device_short =~ s/\/dev\///;
-			$date = `date \+\%Y\%m\%d-\%H\%M`;
-			chomp($date);
-			$cmd .= " --backup-file /tmp/convert-$raid_device_short-$date";
-		}
-		$cmd .= " -n $_[2]  2>&1";
+		$cmd="mdadm -G $_[0]->{'value'} -l $_[3] -n $_[2] --backup-file $backup_file 2>&1";
         
 		local $out = &backquote_logged(
 			$cmd);
