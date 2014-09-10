@@ -455,10 +455,14 @@ sub list_all_config_files
 {
 my @rv;
 push(@rv, "$config{'config_dir'}/fail2ban.conf");
+push(@rv, "$config{'config_dir'}/fail2ban.local");
 push(@rv, glob("$config{'config_dir'}/filter.d/*.conf"));
+push(@rv, glob("$config{'config_dir'}/filter.d/*.local"));
 push(@rv, glob("$config{'config_dir'}/action.d/*.conf"));
+push(@rv, glob("$config{'config_dir'}/action.d/*.local"));
 push(@rv, "$config{'config_dir'}/jail.conf");
-return @rv;
+push(@rv, "$config{'config_dir'}/jail.local");
+return grep { -r $_ } @rv;
 }
 
 1;
