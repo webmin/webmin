@@ -1,8 +1,11 @@
+__norefs=1
 index_boot=Lanzar en el arranque del sistema
 index_bootdesc=Cambie esta opci&#243;n para elegir si desea que su conexi&#243;n ADSL se lance en el arranque o no.
 index_bytes=bytes
 index_cancel=Cancelar conexi&#243;n
 index_canceldesc=El cliente ADSL est&#225; actualmente intentando establecer conexi&#243;n. Pulse este bot&#243;n para cancelar el intento con el comando $1.
+index_cdemand=Cancelar demanda
+index_cdemanddesc=El cliente ADSL esta a la espera para una solicitud de conexion demandada. Haga clic en este boton para detener con el comando $1
 index_connect=Tiempo durante el que se intenta una conexi&#243;n
 index_demand=&#191;Conectar bajo demanda?
 index_desc=La configuraci&#243;n de abajo se aplica a cualquier conexi&#243;n ADSL iniciada por su sistema. Si la cambia, la conexi&#243;n debe ser apagada y reiniciada para que las modificaciones surtan efecto.
