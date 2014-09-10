@@ -172,6 +172,11 @@ else {
 					{ 'name' => 'chunk-size',
 					  'value' => $2 });
 				}
+			elsif (/^\s+Layout\s+:\s*(.*)/) {
+                                push(@{$md->{'members'}},
+                                        { 'name' => 'parity-algorithm',
+                                          'value' => $1 });
+                                }
 			}
 		close(MDSTAT);
 		local $lastdev;

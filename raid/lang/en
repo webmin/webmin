@@ -21,13 +21,13 @@ index_program=Command to run when problems are detected
 index_programnone=Don't run any
 index_monitor=Monitoring enabled?
 
-linear=Concatenated (Linear)
-raid0=Striped (RAID0)
-raid1=Mirrored (RAID1)
-raid4=Parity (RAID4)
-raid5=Redundant (RAID5)
-raid6=Dual Redundant (RAID6)
-raid10=Striped and Mirrored (RAID10)
+linear=Linear (Concatenated)
+raid0=RAID0 (Striped)
+raid1=RAID1 (Mirrored)
+raid4=RAID4 (Dedicated Parity)
+raid5=RAID5 (Distributed Parity)
+raid6=RAID6 (Dual Distributed Parity)
+raid10=RAID10 (Striped and Mirrored)
 blocks=blocks
 
 create_title=Create RAID Device
@@ -57,6 +57,12 @@ create_nogroup=None (use own spares only)
 create_oldgroup=Existing group
 create_newgroup=New group
 create_enewgroup=Missing or non-alphnumeric spare group name
+create_n2_layout=2 Near Copies
+create_f2_layout=2 Far Copies
+create_o2_layout=2 Offset Copies
+create_n3_layout=3 Near Copies
+create_f3_layout=3 Far Copies
+create_o3_layout=3 Offset Copies
 
 view_title=RAID Device
 view_header=RAID device options
@@ -150,4 +156,9 @@ delete_title=Delete RAID Array
 delete_rusure=Are you sure you want to delete the RAID array $1, which uses $2 of disk space?
 delete_ok=Yes, Delete It
 delete_eidx=No RAID array selected!
+
+remove_title=Remove Partition from RAID Array
+remove_rusure=Are you sure you want to remove partition $2 of RAID array $1?
+remove_ok=Yes, Remove It
+remove_eidx=No RAID array selected!
 __norefs=1

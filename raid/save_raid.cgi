@@ -81,11 +81,30 @@ elsif ($in{'grow'}) {
 	}
 elsif ($in{'remove'}) {
 	# Remove a disk from a RAID set
-	&lock_raid_files();
-	&remove_partition($old, $in{'rdisk'});
-	&unlock_raid_files();
-	&webmin_log("remove", undef, $old->{'value'}, { 'disk' => $in{'rdisk'} } );
-	&redirect("");
+	if (!$in{'confirm'}) {
+		# Ask first!
+		&ui_print_header(undef, $text{'remove_title'}, "");
+
+		print "<center>\n";
+		print &ui_form_start("save_raid.cgi");
+		print &ui_hidden("remove", 1);
+		print &ui_hidden("rdisk", $in{'rdisk'});
+		print &ui_hidden("idx", $in{'idx'});
+		print &text('remove_rusure', "<tt>$old->{'value'}</tt>",
+			"<tt>$in{'rdisk'}</tt>"),"<p>\n";
+		print &ui_form_end([ [ "confirm", $text{'remove_ok'} ] ]);
+		print "</center>\n";
+
+		&ui_print_footer("", $text{'index_return'});
+		}
+	else {
+		# Really do it
+		&lock_raid_files();
+		&remove_partition($old, $in{'rdisk'});
+		&unlock_raid_files();
+		&webmin_log("remove", undef, $old->{'value'}, { 'disk' => $in{'rdisk'} } );
+		&redirect("");
+		}
 	}
 elsif ($in{'remove_det'}) {
 	# Remove detached disk(s) from a RAID set

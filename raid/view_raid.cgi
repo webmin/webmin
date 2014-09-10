@@ -49,8 +49,8 @@ $super = &find_value('persistent-superblock', $raid->{'members'});
 print &ui_table_row($text{'view_super'},
 	$super ? $text{'yes'} : $text{'no'});
 
-# Parity method
-if ($lvl eq '5') {
+# Layout
+if (($lvl eq '5') || ($lvl eq '6') || ($lvl eq '10')) {
 	$layout = &find_value('parity-algorithm', $raid->{'members'});
 	print &ui_table_row($text{'view_parity'}, $layout || $text{'default'});
 	}
