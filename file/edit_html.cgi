@@ -12,9 +12,9 @@ if ($in{'text'} || $in{'file'} && !&is_html_file($in{'file'})) {
 	$text_mode = 1;
 	}
 
-if (!&can_access($in{'file'})) {
+if ($in{'file'} ne '' && !&can_access($in{'file'})) {
 	# ACL rules prevent access to file
-	&error_exit(&text('view_eaccess', &html_escape($in{'file'})));
+	&error(&text('view_eaccess', &html_escape($in{'file'})));
 	}
 
 &popup_header($in{'file'} ? $text{'html_title'} : $text{'html_title2'},

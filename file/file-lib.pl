@@ -182,7 +182,9 @@ else {
 # Returns 1 if some file can be edited/deleted
 sub can_access
 {
-local $path = &simplify_path($_[0]);
+local ($file) = @_;
+$file =~ /^\// || return 0;
+local $path = &simplify_path($file);
 return &under_root_dir($path, \@allowed_roots) &&
        ($path eq "/" || !&under_root_dir($path, \@denied_roots));
 }
