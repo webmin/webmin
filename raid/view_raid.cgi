@@ -163,6 +163,12 @@ if ($raid_mode eq "mdadm") {
 		push(@grid, &ui_submit($text{'view_remove_det'}, "remove_det"),
 			    $text{'view_remove_detdesc'});
 		}
+	if ($sparescnt > 0 && &get_mdadm_version() >= 3.3 && &supports_replace()) {
+		@rdisks = sort { $a->[0] cmp $b->[0] } @rdisks;
+                push(@grid, &ui_submit($text{'view_replace'}, "replace")." ".
+                            &ui_select("replacedisk", undef, \@rdisks),
+                            $text{'view_replacedesc'});
+		}
 	if ($sparescnt > 0 && $lvl != 10) {
 		@spares = sort { $a->[0] cmp $b->[0] } @spares;
 		push(@grid, &ui_submit($text{'view_grow'}, "grow")." ".

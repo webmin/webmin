@@ -113,6 +113,14 @@ elsif ($in{'remove_det'}) {
 	&unlock_raid_files();
 	&redirect("");
 	}
+elsif ($in{'replace'}) {
+	# Hot replace a member disk with a spare
+	&lock_raid_files();
+	&replace_partition($old, $in{'replacedisk'});
+	&unlock_raid_files();
+	&webmin_log("replace", undef, $old->{'value'}, { 'disk' => $in{'replacedisk'} } );
+	&redirect("");
+	}
 elsif ($in{'convert_to_raid6'}) {
 	# Convert RAID level to RAID6
 	&lock_raid_files();

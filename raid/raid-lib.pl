@@ -521,10 +521,10 @@ if ($raid_mode eq "mdadm") {
 	# Call mdadm commands to fail and remove
 	local $out = &backquote_logged(
 		"mdadm --manage $_[0]->{'value'} --fail $_[1] 2>&1");
-	&error(&text('emdadfail', "<tt>$out</tt>")) if ($?);
+	&error(&text('emdadmfail', "<tt>$out</tt>")) if ($?);
 	local $out = &backquote_logged(
 		"mdadm --manage $_[0]->{'value'} --remove $_[1] 2>&1");
-	&error(&text('emdadremove', "<tt>$out</tt>")) if ($?);
+	&error(&text('emdadmremove', "<tt>$out</tt>")) if ($?);
 
 	# Remove device from mdadm.conf
 	local $lref = &read_file_lines($config{'mdadm'});
@@ -558,8 +558,20 @@ if ($raid_mode eq "mdadm") {
 	# Call mdadm commands to remove
 	local $out = &backquote_logged(
 		"mdadm --manage $_[0]->{'value'} --remove detached 2>&1");
-	&error(&text('emdadremove', "<tt>$out</tt>")) if ($?);
+	&error(&text('emdadmremove', "<tt>$out</tt>")) if ($?);
 	}
+}
+
+# replace_partition(&raid, device)
+# Hot replaces a partition with a spare
+sub replace_partition
+{
+if ($raid_mode eq "mdadm") {
+        # Call mdadm commands to replace
+        local $out = &backquote_logged(
+                "mdadm --replace $_[0]->{'value'} $_[1] 2>&1");
+        &error(&text('emdadmreplace', "<tt>$out</tt>")) if ($?);
+        }
 }
 
 # directive_lines(&directive, indent)
@@ -796,6 +808,14 @@ sub get_mdadm_version
 local $out = `mdadm --version 2>&1`;
 local $ver = $out =~ /\s+v([0-9\.]+)/ ? $1 : undef;
 return wantarray ? ( $ver, $out ) : $ver;
+}
+
+# supports_replace()
+# Only kernels with version 3.3 and above support the hot replace feature
+sub supports_replace
+{
+my $out = &backquote_command("uname -r 2>/dev/null </dev/null");
+return $out =~ /^(\d+)\.(\d+)/ && $1 == 3 && $2 >= 3;
 }
 
 1;

@@ -30,6 +30,9 @@ elsif ($action eq 'add') {
 elsif ($action eq 'remove') {
 	return &text('log_remove', "<tt>$object</tt>", "<tt>$p->{'disk'}</tt>");
 	}
+elsif ($action eq 'replace') {
+	return &text('log_replace', "<tt>$object</tt>", "<tt>$p->{'disk'}</tt>");
+	}
 elsif ($action eq 'grow') {
 	return &text('log_grow', "<tt>$object</tt>", "<tt>$p->{'disk'}</tt>");
 	}
