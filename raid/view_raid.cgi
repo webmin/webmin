@@ -103,6 +103,7 @@ foreach $d (@devs) {
 			}
 		$rp .= "<br>\n";
 		push(@rdisks, [ $d->{'value'}, $name ]);
+		push(@datadisks, [ $d->{'value'}, $name ]);
 		}
 	}
 
@@ -120,6 +121,7 @@ foreach $d (@devs) {
 		local $name = &mount::device_name($d->{'value'});
 		$sp .= "$name<br>\n";
 		push(@rdisks, [ $d->{'value'}, $name ]);
+		push(@sparedisks, [ $d->{'value'}, $name ]);
 		$sparescnt++;
 		$newdisks++;
 		push(@spares, [ "$newdisks", "+ $sparescnt" ]);
@@ -165,8 +167,10 @@ if ($raid_mode eq "mdadm") {
 		}
 	if ($sparescnt > 0 && &get_mdadm_version() >= 3.3 && &supports_replace()) {
 		@rdisks = sort { $a->[0] cmp $b->[0] } @rdisks;
+		@spares = sort { $a->[0] cmp $b->[0] } @spares;
                 push(@grid, &ui_submit($text{'view_replace'}, "replace")." ".
-                            &ui_select("replacedisk", undef, \@rdisks),
+                            &ui_select("replacedisk", undef, \@datadisks)." with ".
+                            &ui_select("replacesparedisk", undef, \@sparedisks),
                             $text{'view_replacedesc'});
 		}
 	if ($sparescnt > 0 && $lvl != 10) {

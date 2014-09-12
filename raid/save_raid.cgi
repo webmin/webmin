@@ -114,11 +114,11 @@ elsif ($in{'remove_det'}) {
 	&redirect("");
 	}
 elsif ($in{'replace'}) {
-	# Hot replace a member disk with a spare
+	# Hot replace a data disk with a spare disk
 	&lock_raid_files();
-	&replace_partition($old, $in{'replacedisk'});
+	&replace_partition($old, $in{'replacedisk'}, $in{'replacesparedisk'});
 	&unlock_raid_files();
-	&webmin_log("replace", undef, $old->{'value'}, { 'disk' => $in{'replacedisk'} } );
+	&webmin_log("replace", undef, $old->{'value'}, { 'disk' => $in{'replacedisk'} , 'disk2' => $in{'replacesparedisk'} } );
 	&redirect("");
 	}
 elsif ($in{'convert_to_raid6'}) {

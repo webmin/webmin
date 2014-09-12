@@ -562,14 +562,14 @@ if ($raid_mode eq "mdadm") {
 	}
 }
 
-# replace_partition(&raid, device)
-# Hot replaces a partition with a spare
+# replace_partition(&raid, device, spare) 
+# Hot replaces a data disk with a spare disk
 sub replace_partition
 {
 if ($raid_mode eq "mdadm") {
         # Call mdadm commands to replace
         local $out = &backquote_logged(
-                "mdadm --replace $_[0]->{'value'} $_[1] 2>&1");
+                "mdadm --replace $_[0]->{'value'} $_[1] --with $_[2] 2>&1");
         &error(&text('emdadmreplace', "<tt>$out</tt>")) if ($?);
         }
 }
