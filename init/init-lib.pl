@@ -1946,7 +1946,7 @@ foreach my $l (split(/\r?\n/, $out)) {
 # Also find unit files for units that may be disabled at boot and not running,
 # and so don't show up in systemctl list-units
 opendir(UNITS, &get_systemd_root());
-push(@units, grep { !/\.wants$/ && !/^\./ && !/\@/ } readdir(UNITS));
+push(@units, grep { !/\.wants$/ && !/^\./ } readdir(UNITS));
 closedir(UNITS);
 
 # Skip useless units
