@@ -1730,6 +1730,7 @@ local $conf = &get_config();
 foreach $l (&find_directive_struct("LoadModule", $conf)) {
 	if ($l->{'words'}->[1] =~ /(mod_\S+)\.(so|dll)/ &&
 	    -r "$module_root_directory/$1.pl") {
+		print STDERR $l->{'words'}->[1],"\n";
 		push(@rv, $1);
 		}
 	elsif ($l->{'words'}->[1] =~ /libssl\.so/ &&

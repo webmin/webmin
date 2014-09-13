@@ -25,11 +25,13 @@ if (!$ver) {
 # Work out which modules Apache has
 %inst = map { $_, 1 } &configurable_modules();
 
-# Build list of modules know to Webmin
+# Build list of modules known to Webmin
 push(@mods, "core");
 opendir(DIR, ".");
 foreach $f (readdir(DIR)) {
-	if ($f =~ /^(mod_\S+|prefork|worker|perchild|mpm_\S+)\.pl$/) { push(@mods, $1); }
+	if ($f =~ /^(mod_\S+|prefork|worker|perchild|mpm_\S+)\.pl$/) {
+		push(@mods, $1);
+		}
 	}
 closedir(DIR);
 @mods = sort { $a cmp $b } @mods;

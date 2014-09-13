@@ -246,31 +246,33 @@ elsif ($in{"$_[0]_mode"} == 2) {
 # Networking and address directives
 sub edit_BindAddress_Listen_Port
 {
-local($bref, $lref, $pref, @blist, @plist, $inp);
+local($bref, $lref, $pref, @blist, @plist, @slist, $inp);
 $bref = $_[0]; $lref = $_[1]; $pref = $_[2];
 if (@$lref) {
 	# listen directives in use.. so BindAddress and Port are unused
 	foreach $l (@$lref) {
-		if ($l->{'value'} =~ /^\[(\S+)\]:(\d+)$/) {
+		my @w = split(/\s+/, $l->{'value'});
+		if ($w[0] =~ /^\[(\S+)\]:(\d+)$/) {
 			# IPv6 address and port
 			push(@blist, $1); push(@plist, $2);
 			}
-		elsif ($l->{'value'} =~ /^\[(\S+)\]$/) {
+		elsif ($w[0] =~ /^\[(\S+)\]$/) {
 			# IPv6 address only
 			push(@blist, $1); push(@plist, undef);
 			}
-		elsif ($l->{'value'} =~ /^(\S+):(\d+)$/) {
+		elsif ($w[0] =~ /^(\S+):(\d+)$/) {
 			# IPv4 address and port
 			push(@blist, $1); push(@plist, $2);
 			}
-		elsif ($l->{'value'} =~ /^(\d+)$/) {
+		elsif ($w[0] =~ /^(\d+)$/) {
 			# Port only
 			push(@blist, "*"); push(@plist, $1);
 			}
-		elsif ($l->{'value'} =~ /^(\S+)$/) {
+		elsif ($w[0] =~ /^(\S+)$/) {
 			# IPv4 address or hostname only
 			push(@blist, $1); push(@plist, undef);
 			}
+		push(@slist, $w[1]);
 		}
 	}
 else {
@@ -278,36 +280,48 @@ else {
 	if (@$bref) { push(@blist, $bref->[@$bref-1]->{'value'}); }
 	else { push(@blist, "*"); }
 	push(@plist, undef);
+	push(@slist, undef);
 	}
 $port = @$pref ? $pref->[@$pref-1]->{'value'} : 80;
 if ($_[3]->{'version'} < 2.0) {
-	$inp = "<b>$text{'core_dport'}</b> <input name=Port size=6 value=\"$port\"><br>\n";
+	$inp = "<b>$text{'core_dport'}</b> ".
+	       &ui_textbox("Port", $port, 6)."<br>\n";
 	}
-$inp .=	"<table border>\n".
-	"<tr $tb> <td><b>$text{'core_address'}</b></td> <td><b>$text{'core_port'}</b></td> </tr>\n";
+my @cols = ( $text{'core_address'}, $text{'core_port'} );
+if ($_[3]->{'version'} >= 2.4) {
+	# Apache supports a port protocol
+	push(@cols, $text{'core_portname'});
+	}
+$inp .= &ui_columns_start(\@cols, "50%");
 for($i=0; $i<@blist+1; $i++) {
-	$inp .= sprintf
-		"<tr><td><input type=radio name=BindAddress_def_$i value=2 %s>".
-		" $text{'core_none'} <input type=radio name=BindAddress_def_$i value=1 %s>".
-		" $text{'core_all'} <input type=radio name=BindAddress_def_$i value=0 %s> ".
-		"<input name=BindAddress_$i size=20 value=\"%s\"></td>",
-		$blist[$i] ? "" : "checked",
-		$blist[$i] eq "*" ? "checked" : "",
-		$blist[$i] && $blist[$i] ne "*" ? "checked" : "",
-		$blist[$i] eq "*" ? "" : $blist[$i];
+	my @row;
+	my $ba = $blist[$i] eq "*" ? 1 : $blist[$i] eq "" ? 2 : 0;
+	push(@row, &ui_radio("BindAddress_def_$i", $ba,
+			[ [ 2, $text{'core_none'} ],
+			  [ 1, $text{'core_all'} ],
+			  [ 0, &ui_textbox("BindAddress_$i",
+				$ba == 0 ? $blist[$i] : "", 20) ] ]));
 	if ($_[3]->{'version'} < 2.0) {
-		$inp .= "<td>".&opt_input($plist[$i], "Port_$i", "$text{'core_default'}", 5)."</td>";
+		push(@row, &opt_input($plist[$i], "Port_$i",
+				      $text{'core_default'}, 5));
 		}
 	else {
-		$inp .= "<td><input name=Port_$i size=5 value='$plist[$i]'></td>\n";
+		push(@row, &ui_textbox("Port_$i", $plist[$i], 5));
 		}
+	if ($_[3]->{'version'} >= 2.4) {
+		push(@row, &ui_select("Name_$i", $slist[$i],
+				      [ [ "", $text{'core_protoany'} ],
+					[ "http", "HTTP" ],
+					[ "https", "HTTPS" ] ]));
+		}
+	$inp .= &ui_columns_row(\@row);
 	}
-$inp .= "</table>\n";
+$inp .= &ui_columns_end();
 return (2, $text{'core_listen'}, $inp);
 }
 sub save_BindAddress_Listen_Port
 {
-local(@blist, @plist, $bdef, $b, $p);
+local(@blist, @plist, @slist, $bdef, $b, $p);
 
 # build list of addresses and ports
 for($i=0; defined($in{"Port_$i"}); $i++) {
@@ -323,6 +337,8 @@ for($i=0; defined($in{"Port_$i"}); $i++) {
 	if ($pdef) { push(@plist, undef); }
 	elsif ($p =~ /^\d+$/) { push(@plist, $p); }
 	else { &error(&text('core_eport', $p)); }
+
+	push(@slist, $in{"Name_$i"});
 	}
 if (!@blist) { &error($text{'core_eoneaddr'}); }
 
@@ -359,6 +375,9 @@ else {
 			}
 		elsif ($blist[$i] ne "*") { push(@l, $blist[$i]); }
 		else { push(@l, "*:$plist[$i]"); }
+		if ($_[0]->{'version'} >= 2.4 && $slist[$i]) {
+			$l[$#l] .= " ".$slist[$i];
+			}
 		}
 	return ( [], \@l );
 	}
