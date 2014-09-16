@@ -11,7 +11,7 @@ if (!ref($mods)) {
 else {
 	print "<div id='filter_box' style='display:none;margin:0px;padding:0px;width:100%;clear:both;'>";
 	print &ui_textbox("filter",$text{'ui_filterbox'}, 50, 0, undef,"style='width:100%;color:#aaa;' onkeyup=\"filter_match(this.value,'row',true);\" onfocus=\"if (this.value == '".$text{'ui_filterbox'}."') {this.value = '';this.style.color='#000';}\" onblur=\"if (this.value == '') {this.value = '".$text{'ui_filterbox'}."';this.style.color='#aaa';}\"");
-	print &ui_hr("style='wdith:100%;'")."</div>";
+	print &ui_hr("style='width:100%;'")."</div>";
 	print "<b>$text{'standard_header'}</b><br>\n";
 	if ($mods->[0]->[1] > &get_webmin_version()) {
 		print &text('standard_warn', $mods->[0]->[1]),"<br>\n";

@@ -72,7 +72,7 @@ if ($in{'multi'}) {
 		print "</script>\n";
 		print "<div id='filter_box' style='display:none;margin:0px;padding:0px;width:100%;clear:both;'>";
 		print &ui_textbox("filter",$text{'ui_filterbox'}, 50, 0, undef,"style='width:100%;color:#aaa;' onkeyup=\"filter_match(this.value);\" onfocus=\"if (this.value == '".$text{'ui_filterbox'}."') {this.value = '';this.style.color='#000';}\" onblur=\"if (this.value == '') {this.value = '".$text{'ui_filterbox'}."';this.style.color='#aaa';}\"");
-		print &ui_hr("style='wdith:100%;'")."</div>";
+		print &ui_hr("style='width:100%;'")."</div>";
 		print "<font size=+1>$text{'groups_all'}</font>\n";
 		print "<table width=100%>\n";
 		my $cnt = 0;
@@ -165,7 +165,7 @@ else {
 	print "</script>\n";
 	print "<div id='filter_box' style='display:none;margin:0px;padding:0px;width:100%;clear:both;'>";
 	print &ui_textbox("filter",$text{'ui_filterbox'}, 50, 0, undef,"style='width:100%;color:#aaa;' onkeyup=\"filter_match(this.value);\" onfocus=\"if (this.value == '".$text{'ui_filterbox'}."') {this.value = '';this.style.color='#000';}\" onblur=\"if (this.value == '') {this.value = '".$text{'ui_filterbox'}."';this.style.color='#aaa';}\"");
-	print &ui_hr("style='wdith:100%;'")."</div>";;
+	print &ui_hr("style='width:100%;'")."</div>";;
 	print "<table width=100%>\n";
 	my $cnt = 0;
 	foreach $u (&get_groups_list()) {

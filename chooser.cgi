@@ -165,7 +165,7 @@ location = "chooser.cgi?frame=1&chroot=$uchroot&type=$utype&file="+p;
 EOF
 	print "<div id='filter_box' style='display:none;margin:0px;padding:0px;width:100%;clear:both;'>";
 	print &ui_textbox("filter",$text{'ui_filterbox'}, 50, 0, undef,"style='width:100%;color:#aaa;' onkeyup=\"filter_match(this.value,'row',true);\" onfocus=\"if (this.value == '".$text{'ui_filterbox'}."') {this.value = '';this.style.color='#000';}\" onblur=\"if (this.value == '') {this.value = '".$text{'ui_filterbox'}."';this.style.color='#aaa';}\"");
-	print &ui_hr("style='wdith:100%;'")."</div>";
+	print &ui_hr("style='width:100%;'")."</div>";
 	print "<b>",&text('chooser_dir', &html_escape($dir)),"</b>\n";
 	opendir(DIR, $in{'chroot'}.$dir) ||
 		&popup_error(&text('chooser_eopen', "$!"));
