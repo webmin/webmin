@@ -38,5 +38,5 @@ print <<EOF;
 </noframes>
 </frameset>
 EOF
-&popup_footer();
+&popup_footer(1);
 
