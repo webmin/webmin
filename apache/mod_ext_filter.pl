@@ -11,7 +11,6 @@ return &make_directives($rv, $_[0], "mod_ext_filter");
 sub mod_ext_filter_filters
 {
 local($d, @rv);
-print STDERR "looking for ExtFilterDefine\n";
 foreach $d (&find_all_directives($_[0], "ExtFilterDefine")) {
 	push(@rv, $d->{'words'}->[0]);
 	}
