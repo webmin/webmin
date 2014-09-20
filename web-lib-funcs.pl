@@ -3648,6 +3648,7 @@ sub get_module_acl
 {
 my $u = defined($_[0]) ? $_[0] : $base_remote_user;
 my $m = defined($_[1]) ? $_[1] : &get_module_name();
+$m ||= "";
 my $mdir = &module_root_directory($m);
 my %rv;
 if (!$_[3]) {
