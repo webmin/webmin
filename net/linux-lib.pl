@@ -274,7 +274,7 @@ elsif (&has_command("ip")) {
 else {
 	&error("Both the ifconfig and ip commands are missing");
 	}
-my $out = &backquote_logged("$cmd 2>&1");
+my $out = &backquote_logged("cd / ; $cmd 2>&1");
 if ($?) { &error($out); }
 
 # Apply ethernet address
@@ -426,7 +426,7 @@ return ($gconfig{'os_type'} eq 'debian-linux' &&
 	$gconfig{'os_version'} >= 5 ||
 	$gconfig{'os_type'} eq 'redhat-linux' &&
 	$gconfig{'os_version'} >= 13) &&
-       ($iface->{'name'} !~ /^(eth|em|eno|ens|enp|enx|lo)/ ||
+       ($iface->{'name'} !~ /^(eth|em|eno|ens|enp|enx|lo|br)/ ||
  	$iface->{'name'} =~ /^(\S+)\.(\d+)/) &&
        $iface->{'virtual'} eq '';
 }
