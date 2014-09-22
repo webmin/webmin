@@ -283,7 +283,6 @@ index_status=Prozessstatus:
 index_stop=Stoppe Bacula
 index_stopdesc=Klicken Sie auf diesen Button zum Stoppen des Bacula-Daemon wie oben aufgef&#252;hrt.
 index_up=Up
-index_version=Bacula $1
 index_versionbacula=Bacula $1
 index_versionbareos=Bareos $1
 job_after=Befehl nach Job
