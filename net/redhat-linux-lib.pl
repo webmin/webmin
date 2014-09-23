@@ -314,6 +314,10 @@ else {
 		}
 	}
 $conf{'NAME'} = $b->{'desc'};
+if (!-r $file) {
+	# New interfaces shouldn't be controller by network manager
+	$conf{'NM_CONTROLLED'} = 'no';
+	}
 &write_env_file($file, \%conf);
 
 # If this is a bridge, set BRIDGE in real interface
