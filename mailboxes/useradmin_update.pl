@@ -5,7 +5,7 @@ do 'mailboxes-lib.pl';
 # Create a new empty mail file
 sub useradmin_create_user
 {
-if ($config{'sync_create'}) {
+if ($config{'sync_create'} && !&test_mail_system()) {
 	local ($dir, $style, $mailbox, $maildir) = &get_mail_style();
 	if ($dir && -d $dir) {
 		# Create mail file like /var/mail/USERNAME
@@ -59,7 +59,7 @@ foreach $d ($_[1], "$_[0]/cur", "$_[1]/tmp", "$_[1]/new") {
 # Delete the user's mail file
 sub useradmin_delete_user
 {
-if ($config{'sync_delete'}) {
+if ($config{'sync_delete'} && !&test_mail_system()) {
 	local ($dir, $style, $mailbox, $maildir) = &get_mail_style();
 	if ($dir && -d $dir) {
 		local $mf = &mail_file_style($_[0]->{'user'}, $dir, $style);
@@ -74,7 +74,7 @@ if ($config{'sync_delete'}) {
 # Rename the user's mail file if necessary, and change it's UID
 sub useradmin_modify_user
 {
-if ($config{'sync_modify'} &&
+if ($config{'sync_modify'} && !&test_mail_system() &&
     ($_[0]->{'user'} ne $_[1]->{'user'} || $_[0]->{'uid'} != $_[1]->{'uid'})) {
 	local ($dir, $style, $mailbox, $maildir) = &get_mail_style();
 	if ($dir && -d $dir) {
