@@ -34,7 +34,7 @@ if ($in{'SSLEngine'} eq 'on' &&
 return &parse_choice("SSLEngine");
 }
 
-@sslprotos = ("SSLv2", "SSLv3", "TLSv1");
+@sslprotos = ("SSLv2", "SSLv3", "TLSv1", "TLSv1.1", "TLSv1.2");
 sub edit_SSLProtocol
 {
 local ($rv, $p, %prot);
