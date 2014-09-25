@@ -1,0 +1,5 @@
+check_econfig=The iSCSI TGTD configuration file $1 was not found on your system.
+check_etgtadm=The iSCSI TGTD administration command $1 was not found on your system.
+check_einit=Bootup action $1 does not exist
+
+index_title=iSCSI TGTD

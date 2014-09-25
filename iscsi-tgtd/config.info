@@ -1,0 +1,4 @@
+config_file=iSCSI TGTD configuration file,0
+tgtadm=Full path to tgtadm command,0
+pid_file=Full path to PID file(s),0
+init_name=Bootup script name,0
