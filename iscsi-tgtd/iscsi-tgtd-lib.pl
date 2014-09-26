@@ -102,4 +102,43 @@ foreach my $l (@$lref) {
 return \@rv;
 }
 
+# is_tgtd_running()
+# Returns the PID if the server process is running, or 0 if not
+sub is_tgtd_running
+{
+my $pid = &find_byname("tgtd");
+return $pid;
+}
+
+# start_iscsi_tgtd()
+# Run the init script to start the server
+sub start_iscsi_tgtd
+{
+&foreign_require("init");
+my ($ok, $out) = &init::start_action($config{'init_name'});
+return $ok ? undef : $out;
+}
+
+# stop_iscsi_tgtd()
+# Run the init script to stop the server
+sub stop_iscsi_tgtd
+{
+&foreign_require("init");
+my ($ok, $out) = &init::stop_action($config{'init_name'});
+return $ok ? undef : $out;
+}
+
+# restart_iscsi_tgtd()
+# Sends a HUP signal to re-read the configuration
+sub restart_iscsi_tgtd
+{
+&stop_iscsi_tgtd();
+# Wait for process to exit
+for(my $i=0; $i<20; $i++) {
+	last if (!&is_tgtd_running());
+	sleep(1);
+	}
+return &start_iscsi_tgtd();
+}
+
 1;

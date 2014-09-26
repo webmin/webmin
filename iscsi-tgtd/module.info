@@ -1,5 +1,5 @@
-desc=iSCSI TGTD
+desc=iSCSI TGTd
 category=hardware
 os_support=*-linux
 depends=fdisk lvm raid init
-longdesc=Share disk devices across the network using the iSCSI protocol with the tgtd package.
+longdesc=Share disk devices across the network using the iSCSI protocol with the TGTd package.

@@ -1,5 +1,25 @@
-check_econfig=The iSCSI TGTD configuration file $1 was not found on your system.
-check_etgtadm=The iSCSI TGTD administration command $1 was not found on your system.
+check_econfig=The iSCSI TGTd configuration file $1 was not found on your system.
+check_etgtadm=The iSCSI TGTd administration command $1 was not found on your system.
 check_einit=Bootup action $1 does not exist
 
-index_title=iSCSI TGTD
+index_title=iSCSI TGTd
+index_clink=Maybe it is not installed, or your <a href='$1'>module configuration</a> is incorrect.
+index_stop=Stop iSCSI TGTd
+index_stopdesc=Click this button to stop the running iSCSI target. All shared devices will no longer be accessible to clients.
+index_start=Start iSCSI TGTd
+index_startdesc=Click this button to start the iSCSI target, so that shared devices are accessible to clients.
+index_restart=Restart iSCSI TGTd
+index_restartdesc=Click this button to apply the current configuration by restarting the iSCSI target.
+index_atboot=Start at boot?
+index_atbootdesc=Change this option to control whether the iSCSI target is started at boot time or not. If it is not currently started at boot and Yes is chosen, a new init script will be created.
+index_return=list of targets
+index_none=No iSCSI targets to export have been defined yet.
+index_add=Add a new iSCSI target.
+index_target=Target name
+index_delete=Delete Selected Targets
+
+start_err=Failed to start iSCSI TGTd
+stop_err=Failed to stop iSCSI TGTd
+restart_err=Failed to restart iSCSI TGTd
+atboot_err=Failed to enable at boot
+atboot_einit=Init script $1 does not exist
