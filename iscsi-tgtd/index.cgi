@@ -31,17 +31,14 @@ if (@targets) {
 	foreach my $t (@targets) {
 		my @luns;
 		my $size = 0;
-		foreach my $l (&find($t->{'members'}, "Lun")) {
-			if ($l->{'value'} =~ /Path=([^, ]+)/) {
-				push(@luns, &mount::device_name("$1"));
-				$size += &get_device_size("$1");
-				}
-			elsif ($l->{'value'} =~ /Sectors=(\d+)/) {
-				push(@luns, &text('index_nullio', "$1"));
-				}
+		foreach my $l (&find($t, 'backing-store'),
+			       &find($t, 'direct-store')) {
+			my $v = $l->{'values'}->[0];
+			push(@luns, &mount::device_name($v));
+			$size += &get_device_size($v);
 			}
 		my @users = map { $_->{'values'}->[0] }
-				&find($t->{'members'}, "IncomingUser");
+				&find($t, "incominguser ");
 		if (@users > 5) {
 			@users = (@users[0 .. 4], "...");
 			}

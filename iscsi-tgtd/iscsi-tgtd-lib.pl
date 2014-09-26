@@ -53,8 +53,11 @@ foreach my $l (@$lref) {
 	if ($l =~ /^\s*include\s(\S+)/) {
 		# Include some other files
 		my $ifile = $1;
-		my $inc = &read_tgtd_config_file($ifile);
-		push(@rv, @$inc);
+		foreach my $iglob (glob($ifile)) {
+			next if (!-r $iglob);
+			my $inc = &read_tgtd_config_file($iglob);
+			push(@rv, @$inc);
+			}
 		}
 	elsif ($l =~ /^\s*<(\S+)\s+(.*)>/) {
 		# Start of a block
@@ -102,6 +105,26 @@ foreach my $l (@$lref) {
 return \@rv;
 }
 
+# find(&config|&object, name)
+# Returns all config objects with the given name
+sub find
+{
+my ($conf, $name) = @_;
+$conf = $conf->{'members'} if (ref($conf) eq 'HASH');
+my @rv = grep { lc($_->{'name'}) eq lc($name) } @$conf;
+return wantarray ? @rv : $rv[0];
+}
+
+# find_value(&config|&object, name)
+# Returns config values with the given name
+sub find_value
+{
+my ($conf, $name) = @_;
+$conf = $conf->{'members'} if (ref($conf) eq 'HASH');
+my @rv = map { $_->{'value'} } &find($conf, $name);
+return wantarray ? @rv : $rv[0];
+}
+
 # is_tgtd_running()
 # Returns the PID if the server process is running, or 0 if not
 sub is_tgtd_running
@@ -139,6 +162,105 @@ for(my $i=0; $i<20; $i++) {
 	sleep(1);
 	}
 return &start_iscsi_tgtd();
+}
+
+# get_device_size(device, "part"|"raid"|"lvm"|"other")
+# Returns the size in bytes of some device, which can be a partition, RAID
+# device, logical volume or regular file.
+sub get_device_size
+{
+my ($dev, $type) = @_;
+if (!$type) {
+	$type = $dev =~ /^\/dev\/md\d+$/ ? "raid" :
+		$dev =~ /^\/dev\/([^\/]+)\/([^\/]+)$/ ? "lvm" :
+	        $dev =~ /^\/dev\/(s|h|v|xv)d[a-z]+\d*$/ ? "part" : "other";
+	}
+if ($type eq "part") {
+	# A partition or whole disk
+	foreach my $d (&list_disks_partitions_cached()) {
+		if ($d->{'device'} eq $dev) {
+			# Whole disk
+			return $d->{'cylinders'} * $d->{'cylsize'};
+			}
+		foreach my $p (@{$d->{'parts'}}) {
+			if ($p->{'device'} eq $dev) {
+				return ($p->{'end'} - $p->{'start'} + 1) *
+				       $d->{'cylsize'};
+				}
+			}
+		}
+	return undef;
+	}
+elsif ($type eq "raid") {
+	# A RAID device
+	my $conf = &get_raidtab_cached();
+	foreach my $c (@$conf) {
+		if ($c->{'value'} eq $dev) {
+			return $c->{'size'} * 1024;
+			} 
+		}
+	return undef;
+	}
+elsif ($type eq "lvm") {
+	# LVM volume group
+	foreach my $l (&list_logical_volumes_cached()) {
+		if ($l->{'device'} eq $dev) {
+			return $l->{'size'} * 1024;
+			}
+		}
+	}
+else {
+	# A regular file
+	my @st = stat($dev);
+	return @st ? $st[7] : undef;
+	}
+}
+
+sub list_disks_partitions_cached
+{
+$list_disks_partitions_cache ||= [ &fdisk::list_disks_partitions() ];
+return @$list_disks_partitions_cache;
+}
+
+sub get_raidtab_cached
+{
+$get_raidtab_cache ||= &raid::get_raidtab();
+return $get_raidtab_cache;
+}
+
+sub list_logical_volumes_cached
+{
+if (!$list_logical_volumes_cache) {
+	$list_logical_volumes_cache = [ ];
+	foreach my $v (&lvm::list_volume_groups()) {
+		push(@$list_logical_volumes_cache,
+		     &lvm::list_logical_volumes($v->{'name'}));
+		}
+	}
+return @$list_logical_volumes_cache;
+}
+
+# find_host_name(&config)
+# Returns the first host name part of the first target
+sub find_host_name
+{
+my ($conf) = @_;
+my %hcount;
+foreach my $t (&find_value($conf, "target")) {
+        my ($host) = split(/:/, $t);
+        $hcount{$host}++;
+        }
+my @hosts = sort { $hcount{$b} <=> $hcount{$a} } (keys %hcount);
+return $hosts[0];
+}
+
+# generate_host_name()
+# Returns the first part of a target name, in the standard format
+sub generate_host_name
+{
+my @tm = localtime(time());
+return sprintf("iqn.%.4d-%.2d.%s", $tm[5]+1900, $tm[4]+1,
+               join(".", reverse(split(/\./, &get_system_hostname()))));
 }
 
 1;
