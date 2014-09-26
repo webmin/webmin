@@ -3,3 +3,5 @@ category=hardware
 os_support=*-linux
 depends=fdisk lvm raid init
 longdesc=Share disk devices across the network using the iSCSI protocol with the TGTd package.
+desc_de=iSCSI TGTd
+longdesc_de=Teilt Plattenger&#228;te &#252;ber das Netzwerk mit dem iSCSI-Protokoll mit dem TGTd Paket.

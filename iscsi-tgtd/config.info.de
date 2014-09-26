@@ -1,0 +1,4 @@
+config_file=iSCSI&#45;TGTD&#45;Konfigurationsdatei,0
+
+tgtadm=Voller Pfad zum tgtadm Befehl,0
+init_name=Boot&#45;Skript&#45;Name,0
