@@ -174,6 +174,8 @@ if ($main::ui_table_pos+$cols+1 > $main::ui_table_cols &&
     $main::ui_table_pos != 0) {
 	# If the requested number of cols won't fit in the number
 	# remaining, start a new row
+	my $leftover = $main::ui_table_cols - $main::ui_table_pos;
+	$rv .= "<td colspan=$leftover></td>\n";
 	$rv .= "</tr>\n";
 	$main::ui_table_pos = 0;
 	}
