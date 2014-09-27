@@ -105,12 +105,16 @@ foreach my $l (@$lref) {
 return \@rv;
 }
 
-# save_directive(&config, [&old], [&new], [&parent], [add-file-file])
+# save_directive(&config, [&old|old-name], [&new], [&parent], [add-file-file])
 # Replaces, creates or deletes some directive
 sub save_directive
 {
 my ($conf, $olddir, $newdir, $parent, $addfile) = @_;
 my $file;
+if ($olddir && !ref($olddir)) {
+	# Lookup the old directive by name
+	$olddir = &find($parent ? $parent->{'members'} : $conf, $olddir);
+	}
 if ($olddir) {
 	# Modifying old directive's file
 	$file = $olddir->{'file'};
@@ -186,6 +190,8 @@ elsif ($newdir) {
 			$parent->{'eline'} += scalar(@lines);
 			splice(@$lref, $newdir->{'line'}, 0, @lines);
 			}
+		$parent->{'members'} ||= [ ];
+		$parent->{'type'} ||= 1;
 		push(@{$parent->{'members'}}, $newdir);
 		}
 	else {
@@ -209,6 +215,20 @@ if ($lref) {
 if ($renumoffset && $lref) {
 	&recursive_renumber($conf, $file, $renumline, $renumoffset,
 			    [ $newdir, $parent ? ( $parent ) : ( ) ]);
+	}
+}
+
+# save_multiple_directives(&config, name, &directives, &parent)
+# Update all existing directives with some name
+sub save_multiple_directives
+{
+my ($conf, $name, $newdirs, $parent) = @_;
+my $olddirs = [ &find($parent ? $parent->{'members'} : $conf, $name) ];
+for(my $i=0; $i<@$olddirs || $i<@$newdirs) {
+	&save_directive($conf,
+			$i<@$olddirs ? $olddirs->[$i] : undef,
+			$i<@$newdirs ? $newdirs->[$i] : undef,
+			$parent);
 	}
 }
 
