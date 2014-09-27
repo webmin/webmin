@@ -28,9 +28,10 @@ $file .= ".".$in{'lang'} if ($in{'lang'});
 read_file($file, \%catnames);
 foreach $t (keys %text) {
 	$t =~ s/^category_// || next;
+	$field = $t || "other";
 	print &ui_columns_row([
 		$t || "<i>other</i>",
-		&ui_opt_textbox($t, $catnames{$t}, 30,
+		&ui_opt_textbox($field, $catnames{$t}, 30,
 			$text{'default'}, $text{'categories_custom'}),
 		], [ "valign=middle","valign=middle" ]);
 	$realcat{$t}++;

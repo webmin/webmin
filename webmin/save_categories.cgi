@@ -8,9 +8,10 @@ require './webmin-lib.pl';
 # Save built-in categories
 foreach $t (keys %text) {
 	$t =~ s/^category_// || next;
-	if (!$in{$t."_def"}) {
-		$in{$t} || &error(&text('categories_edesc', $t ? $t : 'other'));
-		$catnames{$t} = $in{$t};
+	$field = $t || "other";
+	if (!$in{$field."_def"}) {
+		$in{$field} || &error(&text('categories_edesc', $t || 'other'));
+		$catnames{$t} = $in{$field};
 		}
 	}
 
