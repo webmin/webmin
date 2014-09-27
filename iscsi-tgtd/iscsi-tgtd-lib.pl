@@ -105,6 +105,135 @@ foreach my $l (@$lref) {
 return \@rv;
 }
 
+# save_directive(&config, [&old], [&new], [&parent], [add-file-file])
+# Replaces, creates or deletes some directive
+sub save_directive
+{
+my ($conf, $olddir, $newdir, $parent, $addfile) = @_;
+my $file;
+if ($olddir) {
+	# Modifying old directive's file
+	$file = $olddir->{'file'};
+	}
+elsif ($addfile) {
+	# Adding to a specific file
+	$file = $addfile;
+	}
+elsif ($parent) {
+	# Adding to parent's file
+	$file = $parent->{'file'};
+	}
+else {
+	# Adding to the default config file
+	$file = $config{'config_file'};
+	}
+my $lref = &read_file_lines($file);
+my @lines = $newdir ? &directive_lines($newdir) : ( );
+my $oldlen = $olddir ? $olddir->{'eline'} - $olddir->{'line'} + 1 : undef;
+my $oldidx = $olddir && $parent ? &indexof($olddir, @{$parent->{'members'}}) :
+	     $olddir ? &indexof($olddir, @$conf) : undef;
+my ($renumline, $renumoffset);
+if ($olddir && $newdir) {
+	# Replace some directive
+	splice(@$lref, $olddir->{'line'}, $oldlen, @lines);
+	$newdir->{'file'} = $olddir->{'file'};
+	$newdir->{'line'} = $olddir->{'line'};
+	$newdir->{'eline'} = $newdir->{'line'} + scalar(@lines) - 1;
+	if ($parent) {
+		$parent->{'members'}->[$oldidx] = $newdir;
+		$parent->{'eline'} += scalar(@lines) - $oldlen;
+		}
+	else {
+		$conf->[$oldidx] = $newdir;
+		}
+	$renumline = $newdir->{'eline'};
+	$renumoffset = scalar(@lines) - $oldlen;
+	}
+elsif ($olddir) {
+	# Remove some directive
+	splice(@$lref, $olddir->{'line'}, $oldlen);
+	if ($parent) {
+		# From inside parent
+		splice(@{$parent->{'members'}}, $oldidx, 1);
+		$parent->{'eline'} -= $oldlen;
+		}
+	else {
+		# From top-level
+		splice(@$conf, $oldidx, 1);
+		}
+	$renumline = $olddir->{'line'};
+	$renumoffset = $oldlen;
+	}
+elsif ($newdir) {
+	# Add some directive
+	$newdir->{'file'} = $file;
+	if ($parent) {
+		# Inside parent
+		$newdir->{'line'} = $parent->{'eline'};
+		$newdir->{'eline'} = $newdir->{'line'} + scalar(@lines) - 1;
+		$parent->{'eline'} += scalar(@lines);
+		splice(@$lref, $newdir->{'line'}, 0, @lines);
+		push(@{$parent->{'members'}}, $newdir);
+		}
+	else {
+		# At end of file
+		$newdir->{'line'} = scalar(@lines);
+		$newdir->{'eline'} = $newdir->{'line'} + scalar(@lines) - 1;
+		push(@$lref, @lines);
+		push(@$conf, $newdir);
+		}
+	$renumline = $newdir->{'eline'};
+	$renumoffset = scalar(@lines);
+	}
+&flush_file_lines($file);
+
+# Apply any renumbering to the config (recursively)
+if ($renumoffset) {
+	&recursive_renumber($conf, $file, $renumline, $renumoffset,
+			    [ $newdir, $parent ? ( $parent ) : ( ) ]);
+	}
+}
+
+# recursive_renumber(&directives, file, after-line, offset, &ignore-list)
+sub recursive_renumber
+{
+my ($conf, $file, $renumline, $renumoffset, $ignore) = @_;
+foreach my $c (@$conf) {
+	if ($c->{'file'} eq $file && &indexof($c, @$ignore) < 0) {
+		$c->{'line'} += $renumoffset if ($c->{'line'} > $renumline);
+		$c->{'eline'} += $renumoffset if ($c->{'eline'} > $renumline);
+		}
+	if ($c->{'type'}) {
+		&recursive_renumber($c->{'members'}, $file, $renumline,
+				    $renumoffset, $ignore);
+		}
+	}
+}
+
+# directive_lines(&dir, [indent])
+# Returns the lines of text for some directive
+sub directive_lines
+{
+my ($dir, $indent) = @_;
+my $istr = " " x $indent;
+my @rv;
+if ($dir->{'type'}) {
+	# Has sub-directives
+	push(@rv, $istr."<".$dir->{'name'}.
+		  ($dir->{'value'} ? " ".$dir->{'value'} : "").">");
+	foreach my $s (@{$dir->{'members'}}) {
+		push(@rv, &directive_lines($s, $indent+1));
+		}
+	push(@rv, $istr."</".$dir->{'name'}.">");
+	}
+else {
+	# Just a name/value
+	push(@rv, $istr.$dir->{'name'}.
+		  ($dir->{'value'} ? " ".$dir->{'value'} : ""));
+	}
+return @rv;
+}
+
 # find(&config|&object, name)
 # Returns all config objects with the given name
 sub find
