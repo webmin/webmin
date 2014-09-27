@@ -127,7 +127,7 @@ else {
 	# Adding to the default config file
 	$file = $config{'config_file'};
 	}
-my $lref = &read_file_lines($file);
+my $lref = $file ? &read_file_lines($file) : undef;
 my @lines = $newdir ? &directive_lines($newdir) : ( );
 my $oldlen = $olddir ? $olddir->{'eline'} - $olddir->{'line'} + 1 : undef;
 my $oldidx = $olddir && $parent ? &indexof($olddir, @{$parent->{'members'}}) :
@@ -135,13 +135,17 @@ my $oldidx = $olddir && $parent ? &indexof($olddir, @{$parent->{'members'}}) :
 my ($renumline, $renumoffset);
 if ($olddir && $newdir) {
 	# Replace some directive
-	splice(@$lref, $olddir->{'line'}, $oldlen, @lines);
-	$newdir->{'file'} = $olddir->{'file'};
-	$newdir->{'line'} = $olddir->{'line'};
-	$newdir->{'eline'} = $newdir->{'line'} + scalar(@lines) - 1;
+	if ($lref) {
+		splice(@$lref, $olddir->{'line'}, $oldlen, @lines);
+		$newdir->{'file'} = $olddir->{'file'};
+		$newdir->{'line'} = $olddir->{'line'};
+		$newdir->{'eline'} = $newdir->{'line'} + scalar(@lines) - 1;
+		if ($parent) {
+			$parent->{'eline'} += scalar(@lines) - $oldlen;
+			}
+		}
 	if ($parent) {
 		$parent->{'members'}->[$oldidx] = $newdir;
-		$parent->{'eline'} += scalar(@lines) - $oldlen;
 		}
 	else {
 		$conf->[$oldidx] = $newdir;
@@ -151,11 +155,15 @@ if ($olddir && $newdir) {
 	}
 elsif ($olddir) {
 	# Remove some directive
-	splice(@$lref, $olddir->{'line'}, $oldlen);
+	if ($lref) {
+		splice(@$lref, $olddir->{'line'}, $oldlen);
+		}
 	if ($parent) {
 		# From inside parent
 		splice(@{$parent->{'members'}}, $oldidx, 1);
-		$parent->{'eline'} -= $oldlen;
+		if ($lref) {
+			$parent->{'eline'} -= $oldlen;
+			}
 		}
 	else {
 		# From top-level
@@ -166,29 +174,39 @@ elsif ($olddir) {
 	}
 elsif ($newdir) {
 	# Add some directive
-	$newdir->{'file'} = $file;
+	if ($lref) {
+		$newdir->{'file'} = $file;
+		}
 	if ($parent) {
 		# Inside parent
-		$newdir->{'line'} = $parent->{'eline'};
-		$newdir->{'eline'} = $newdir->{'line'} + scalar(@lines) - 1;
-		$parent->{'eline'} += scalar(@lines);
-		splice(@$lref, $newdir->{'line'}, 0, @lines);
+		if ($lref) {
+			$newdir->{'line'} = $parent->{'eline'};
+			$newdir->{'eline'} = $newdir->{'line'} +
+					     scalar(@lines) - 1;
+			$parent->{'eline'} += scalar(@lines);
+			splice(@$lref, $newdir->{'line'}, 0, @lines);
+			}
 		push(@{$parent->{'members'}}, $newdir);
 		}
 	else {
 		# At end of file
-		$newdir->{'line'} = scalar(@lines);
-		$newdir->{'eline'} = $newdir->{'line'} + scalar(@lines) - 1;
-		push(@$lref, @lines);
+		if ($lref) {
+			$newdir->{'line'} = scalar(@lines);
+			$newdir->{'eline'} = $newdir->{'line'} +
+					     scalar(@lines) - 1;
+			push(@$lref, @lines);
+			}
 		push(@$conf, $newdir);
 		}
 	$renumline = $newdir->{'eline'};
 	$renumoffset = scalar(@lines);
 	}
-&flush_file_lines($file);
+if ($lref) {
+	&flush_file_lines($file);
+	}
 
 # Apply any renumbering to the config (recursively)
-if ($renumoffset) {
+if ($renumoffset && $lref) {
 	&recursive_renumber($conf, $file, $renumline, $renumoffset,
 			    [ $newdir, $parent ? ( $parent ) : ( ) ]);
 	}
