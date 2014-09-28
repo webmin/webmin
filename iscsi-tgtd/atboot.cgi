@@ -9,6 +9,7 @@ our (%text, %config, %in);
 &ReadParse();
 &error_setup($text{'atboot_err'});
 
+&setup_tgtd_init();
 my $old = &init::action_status($config{'init_name'});
 if ($old != 2 && $in{'boot'}) {
 	# Enable at boot

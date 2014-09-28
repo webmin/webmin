@@ -1,4 +1,6 @@
 config_file=iSCSI TGTD configuration file,0
 add_file=Add new targets to,3,Primary configuration file
+tgtd=Full path to tgtd command,0
 tgtadm=Full path to tgtadm command,0
+tgtadmin=Full path to tgt-admin command,0
 init_name=Bootup script name,0

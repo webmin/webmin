@@ -23,9 +23,9 @@ return &text('check_econfig', "<tt>$config{'config_file'}</tt>")
 	if (!-r $config{'config_file'});
 return &text('check_etgtadm', "<tt>$config{'tgtadm'}</tt>")
 	if (!&has_command($config{'tgtadm'}));
-&foreign_require("init");
-return &text('check_einit', "<tt>$config{'init_name'}</tt>")
-	if (&init::action_status($config{'init_name'}) == 0);
+#&foreign_require("init");
+#return &text('check_einit', "<tt>$config{'init_name'}</tt>")
+#	if (&init::action_status($config{'init_name'}) == 0);
 return undef;
 }
 
@@ -313,10 +313,28 @@ my $pid = &find_byname("tgtd");
 return $pid;
 }
 
+# setup_tgtd_init()
+# If no init script exists, create one
+sub setup_tgtd_init
+{
+&foreign_require("init");
+return 0 if (&init::action_status($config{'init_name'}));
+&init::enable_at_boot($config{'init_name'},
+		      "Start TGTd iSCSI server",
+		      &has_command($config{'tgtd'}).
+		        " && sleep 2 && ".
+			&has_command($config{'tgtadmin'})." -e",
+		      "killall -9 tgtd",
+		      undef,
+		      { 'fork' => 1 },
+		      );
+}
+
 # start_iscsi_tgtd()
 # Run the init script to start the server
 sub start_iscsi_tgtd
 {
+&setup_tgtd_init();
 &foreign_require("init");
 my ($ok, $out) = &init::start_action($config{'init_name'});
 return $ok ? undef : $out;
@@ -326,6 +344,7 @@ return $ok ? undef : $out;
 # Run the init script to stop the server
 sub stop_iscsi_tgtd
 {
+&setup_tgtd_init();
 &foreign_require("init");
 my ($ok, $out) = &init::stop_action($config{'init_name'});
 return $ok ? undef : $out;
