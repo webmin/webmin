@@ -74,7 +74,7 @@ else {
 	  "bacula-backup", "ldap-server", "exim", "tcpwrappers",
 	  "package-updates", "system-status", "webmincron", "ajaxterm",
 	  "shorewall6", "iscsi-server", "iscsi-client", "gray-theme",
-	  "iscsi-target", "bsdfdisk", "fail2ban",
+	  "iscsi-target", "iscsi-tgtd", "bsdfdisk", "fail2ban",
 	  );
 	}
 @dirlist = ( "Webmin" );
