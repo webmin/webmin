@@ -70,8 +70,7 @@ foreach my $ol (@$lref) {
 			    'members' => [ ],
 			    'file' => $file,
 			    'line' => $lnum,
-			    'eline' => $lnum,
-			    'parent' => $parent };
+			    'eline' => $lnum };
 		if ($parent) {
 			push(@{$parent->{'members'}}, $dir);
 			}
@@ -94,8 +93,7 @@ foreach my $ol (@$lref) {
 			    'type' => 0,
 			    'file' => $file,
 			    'line' => $lnum,
-			    'eline' => $lnum,
-			    'parent' => $parent };
+			    'eline' => $lnum };
 		if ($parent) {
 			push(@{$parent->{'members'}}, $dir);
 			}
