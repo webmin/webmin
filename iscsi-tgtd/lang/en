@@ -73,6 +73,8 @@ target_type=Storage type
 target_backing=Backing store
 target_direct=Direct device access
 target_cache=Cache writes to device?
+target_eaddr=Invalid allowed IP address
+target_eaname=Invalid allowed initiator name
 
 start_err=Failed to start iSCSI TGTd
 stop_err=Failed to stop iSCSI TGTd

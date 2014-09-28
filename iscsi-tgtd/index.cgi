@@ -38,7 +38,7 @@ if (@targets) {
 			$size += &get_device_size($v);
 			}
 		my @users = map { $_->{'values'}->[0] }
-				&find($t, "incominguser ");
+				&find($t, "incominguser");
 		if (@users > 5) {
 			@users = (@users[0 .. 4], "...");
 			}

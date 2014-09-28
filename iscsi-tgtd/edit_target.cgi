@@ -178,7 +178,7 @@ print &ui_table_row($text{'target_iname'},
 	&ui_radio("iname_def", @n ? 0 : 1,
 		  [ [ 1, $text{'target_iall'} ],
 		    [ 0, $text{'target_ibelow'} ] ])."<br>\n".
-	&ui_textarea("iaddress", join("\n", @a), 3, 20));
+	&ui_textarea("iname", join("\n", @n), 3, 20));
 
 print &ui_table_end();
 if ($in{'new'}) {

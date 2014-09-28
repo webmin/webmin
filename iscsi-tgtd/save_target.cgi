@@ -95,7 +95,6 @@ else {
 	&save_multiple_directives($conf, "direct-store", \@directluns,$target);
 
 	# Validate incoming user(s)
-	# XXX
 	my @iusers;
 	if (!$in{"iuser_def"}) {
 		for(my $i=0; defined($in{"uname_$i"}); $i++) {
@@ -104,20 +103,48 @@ else {
 				&error(&text('target_eiuser', $i+1));
 			$in{"upass_$i"} =~ /^\S+$/ ||
 				&error(&text('target_eipass', $i+1));
-			push(@iusers, $in{"uname_$i"}." ".$in{"upass_$i"});
+			push(@iusers,
+			    { 'name' => 'incominguser',
+			      'value' => $in{"uname_$i"}." ".$in{"upass_$i"} });
 			}
 		@iusers || &error($text{'target_eiusernone'});
 		}
-	#&save_directive($conf, $target, "IncomingUser", \@iusers);
+	&save_multiple_directives($conf, "incominguser", \@iusers, $target);
 
 	# Validate outgoing user(s)
-	# XXX multiple??
+	if (!$in{"ouser_def"}) {
+                $in{"ouser"} =~ /^\S+$/ || &error($text{'target_eouser'});
+                $in{"opass"} =~ /^\S+$/ || &error($text{'target_eopass'});
+		my $ouser = { 'name' => "outgoinguser",
+			      'value' => $in{"ouser"}." ".$in{"opass"} };
+		&save_directive($conf, "outgoinguser", $ouser, $target);
+		}
+	else {
+		&save_directive($conf, "outgoinguser", undef, $target);
+		}
 
 	# Save allowed IPs
-	# XXX
+	my @addrs;
+	if (!$in{"iaddress_def"}) {
+		foreach my $a (split(/\s+/, $in{"iaddress"})) {
+			&check_ipaddress($a) || &error($text{'target_eaddr'});
+			push(@addrs, { 'name' => "initiator-address",
+				       'value' => $a });
+			}
+		}
+	&save_multiple_directives($conf, "initiator-address", \@addrs, $target);
 
 	# Save allowed initiators
-	# XXX
+	my @names;
+	if (!$in{"iname_def"}) {
+		foreach my $a (split(/\s+/, $in{"iname"})) {
+			$a =~ /^[:a-z0-9\.\_\-]+$/i ||
+				&error($text{'target_eaname'});
+			push(@names, { 'name' => "initiator-name",
+				       'value' => $a });
+			}
+		}
+	&save_multiple_directives($conf, "initiator-name", \@names, $target);
 
 	# Save the target
 	if ($in{'new'}) {
