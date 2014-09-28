@@ -14,6 +14,7 @@ my $target;
 my $addfile;
 if ($in{'new'}) {
 	$target = { 'name' => 'target',
+		    'type' => 1,
 		    'members' => [ ] };
 	if (-d $config{'add_file'}) {
 		$addfile = $config{'add_file'}."/".$in{'name'}.".conf";
@@ -83,9 +84,15 @@ else {
 						'value' => $in{"cache".$i} }
 					    : undef;
 		&save_directive($conf, "write-cache", $cache, $newlun);
+		if ($newlun->{'name'} eq "backing-store") {
+			push(@backluns, $newlun);
+			}
+		else {
+			push(@directluns, $newlun);
+			}
 		}
 	&save_multiple_directives($conf, "backing-store", \@backluns, $target);
-	&save_multiple_directives($conf, "direct-access", \@directluns,$target);
+	&save_multiple_directives($conf, "direct-store", \@directluns,$target);
 
 	# Validate incoming user(s)
 	# XXX
@@ -103,23 +110,18 @@ else {
 		}
 	#&save_directive($conf, $target, "IncomingUser", \@iusers);
 
-	# Validate outgoing user
-	if ($in{"ouser_def"}) {
-		&save_directive($conf, $target, "OutgoingUser", [ ]);
-		}
-	else {
-		$in{"ouser"} =~ /^\S+$/ || &error($text{'target_eouser'});
-		$in{"opass"} =~ /^\S+$/ || &error($text{'target_eopass'});
-		&save_directive($conf, $target, "OutgoingUser",
-			[ $in{"ouser"}." ".$in{"opass"} ]);
-		}
-	#&save_directive($conf, $target, "OutgoingUser", \@iusers);
+	# Validate outgoing user(s)
+	# XXX multiple??
 
 	# Save allowed IPs
+	# XXX
+
+	# Save allowed initiators
+	# XXX
 
 	# Save the target
 	if ($in{'new'}) {
-		&save_directive($conf, $target, $target, undef, $addfile);
+		&save_directive($conf, undef, $target, undef, $addfile);
 		}
 	else {
 		&save_directive($conf, $target, $target);

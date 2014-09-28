@@ -48,7 +48,8 @@ my @rv;
 my $lnum = 0;
 my $parent;
 my $lref = &read_file_lines($file, 1);
-foreach my $l (@$lref) {
+foreach my $ol (@$lref) {
+	my $l = $ol;
 	$l =~ s/#.*$//;
 	if ($l =~ /^\s*include\s(\S+)/) {
 		# Include some other files

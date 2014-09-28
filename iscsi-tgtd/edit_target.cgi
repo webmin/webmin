@@ -24,7 +24,7 @@ else {
 print &ui_form_start("save_target.cgi", "post");
 print &ui_hidden("new", $in{'new'});
 print &ui_hidden("oldname", $in{'name'});
-print &ui_table_start($text{'target_header'}, undef, 2);
+print &ui_table_start($text{'target_header'}, undef, 4);
 
 # Target name
 my ($host, $tname);
@@ -41,6 +41,7 @@ print &ui_table_row($text{'target_name'},
 # Logical units it contains
 my @luns = (&find($target->{'members'}, "backing-store"),
 	    &find($target->{'members'}, "direct-store"));
+@luns = sort { $a->{'file'} <=> $b->{'file'} } @luns;
 push(@luns, { 'name' => 'backing-store',
 	      'value' => '',
 	      'values' => [] });
@@ -109,12 +110,21 @@ for(my $i=0; $i<@luns; $i++) {
 		      " ".&file_chooser_button("other") ]);
 
 	# Options for this lun
-	# XXX direct mode?
 	my @grid;
+	my $cache = &find_value($luns[$i], "write-cache");
+	push(@grid, "<b>$text{'target_type'}</b>",
+		    &ui_select("type".$i, $luns[$i]->{'name'},
+			       [ [ 'backing-store', $text{'target_backing'} ],
+				 [ 'direct-store', $text{'target_direct'} ] ]));
+	push(@grid, "<b>$text{'target_cache'}</b>",
+		    &ui_radio("cache".$i, $cache,
+			      [ [ "on", $text{'yes'} ],
+				[ "off", $text{'no'} ],
+				[ "", $text{'default'} ] ]));
 
 	print &ui_table_row(&text('target_lun', $i+1),
 		&ui_radio_table("mode".$i, $mode, \@opts)."\n".
-		&ui_grid_table(\@grid, 2));
+		&ui_grid_table(\@grid, 2), 3);
 	}
 
 print &ui_table_hr();
@@ -139,7 +149,7 @@ print &ui_table_row($text{'target_iuser'},
 	&ui_radio("iuser_def", @iusers ? 0 : 1,
 		  [ [ 1, $text{'target_iuserall'} ],
 		    [ 0, $text{'target_iuserbelow'} ] ])."<br>\n".
-	$utable);
+	$utable, 3);
 
 # Outgoing user
 my $u = &find_value($target, "outgoinguser");
@@ -150,7 +160,7 @@ print &ui_table_row($text{'target_ouser'},
 		    [ 0, $text{'target_ousername'} ] ])." ".
 	&ui_textbox("ouser", $uname, 20)." ".
 	$text{'target_ouserpass'}." ".
-	&ui_textbox("opass", $upass, 20));
+	&ui_textbox("opass", $upass, 20), 3);
 
 print &ui_table_hr();
 

@@ -70,7 +70,7 @@ target_iname=Allow connections from initiators
 target_iall=All
 target_ibelow=Entered below ..
 target_type=Storage type
-target_backing=Regard file or device
+target_backing=Backing store
 target_direct=Direct device access
 target_cache=Cache writes to device?
 
