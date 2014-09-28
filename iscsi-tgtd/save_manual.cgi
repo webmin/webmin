@@ -21,5 +21,5 @@ my $fh = "CONFIG";
 &print_tempfile($fh, $in{'data'});
 &close_tempfile($fh);
 
-&webmin_log("manual");
+&webmin_log("manual", undef, $in{'file'});
 &redirect("");
