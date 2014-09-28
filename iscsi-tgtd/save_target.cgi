@@ -155,6 +155,7 @@ else {
 		}
 	}
 
+&flush_file_lines();
 &unlock_file($lockfile);
 &webmin_log($in{'delete'} ? 'delete' : $in{'new'} ? 'create' : 'modify',
 	    'target', $target->{'value'});

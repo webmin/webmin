@@ -208,9 +208,6 @@ elsif ($newdir) {
 	$renumline = $newdir->{'eline'};
 	$renumoffset = scalar(@lines);
 	}
-if ($lref) {
-	&flush_file_lines($file);
-	}
 
 # Apply any renumbering to the config (recursively)
 if ($renumoffset && $lref) {

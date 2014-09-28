@@ -28,6 +28,7 @@ foreach my $l (@locks) {
 	}
 foreach my $target (reverse(@deltargets)) {
 	&save_directive($conf, $target, undef);
+	&flush_file_lines($target->{'file'});
 	&delete_if_empty($target->{'file'});
 	}
 foreach my $l (@locks) {
