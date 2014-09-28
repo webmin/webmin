@@ -44,9 +44,11 @@ my ($only) = @_;
 my (%miniserv, @rv, %acl, %logout);
 &read_acl(undef, \%acl);
 &get_miniserv_config(\%miniserv);
-foreach my $a (split(/\s+/, $miniserv{'logouttimes'})) {
-	if ($a =~ /^([^=]+)=(\S+)$/) {
-		$logout{$1} = $2;
+if ($miniserv{'logouttimes'}) {
+	foreach my $a (split(/\s+/, $miniserv{'logouttimes'})) {
+		if ($a =~ /^([^=]+)=(\S+)$/) {
+			$logout{$1} = $2;
+			}
 		}
 	}
 my $fh = "PWFILE";
