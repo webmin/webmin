@@ -12,6 +12,8 @@ index_restart=Restart iSCSI TGTd
 index_restartdesc=Click this button to apply the current configuration by restarting the iSCSI target.
 index_atboot=Start at boot?
 index_atbootdesc=Change this option to control whether the iSCSI target is started at boot time or not. If it is not currently started at boot and Yes is chosen, a new init script will be created.
+index_manual=Edit Configuration Files
+index_manualdesc=Manually edit any of the iSCSI target configuration files, to make changes not supported by Webmin.
 index_return=list of targets
 index_none=No iSCSI targets to export have been defined yet.
 index_add=Add a new iSCSI target.
@@ -92,4 +94,12 @@ log_restart=Restarted iSCSI server
 log_atboot=Enabled iSCSI server at boot time
 log_delboot=Disabled iSCSI server at boot time
 log_manual=Manually edited configuration file
+
+manual_title=Edit Configuration File
+manual_file=Select file to edit:
+manual_ok=Open
+manual_desc=Use the text box below to edit the iSCSI server configuration file $1. Be careful, as no validation will be performed on your input!
+manual_err=Failed to save configuration file
+manual_edata=No contents entered!
+manual_efile=Invalid configuration file!
 

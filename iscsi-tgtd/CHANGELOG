@@ -1,0 +1,2 @@
+---- Changes since 1.700 ----
+First version of this module, for sharing devices using the iSCSI protocol with the TGTd server.

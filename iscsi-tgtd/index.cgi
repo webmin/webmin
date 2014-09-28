@@ -63,6 +63,10 @@ else {
 print &ui_hr();
 print &ui_buttons_start();
 
+# Manual edit button
+print &ui_buttons_row("edit_manual.cgi", $text{'index_manual'},
+		      $text{'index_manualdesc'});
+
 # Show start/stop/restart buttons
 my $pid = &is_tgtd_running();
 if ($pid) {
