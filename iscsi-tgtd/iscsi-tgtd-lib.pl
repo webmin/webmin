@@ -48,6 +48,7 @@ my @rv;
 my $lnum = 0;
 my $parent;
 my $lref = &read_file_lines($file, 1);
+my @pstack;
 foreach my $ol (@$lref) {
 	my $l = $ol;
 	$l =~ s/#.*$//;
@@ -77,12 +78,13 @@ foreach my $ol (@$lref) {
 		else {
 			push(@rv, $dir);
 			}
+		push(@pstack, $parent);
 		$parent = $dir;
 		}
 	elsif ($l =~ /^\s*<\/(\S+)>/) {
 		# End of a block
 		$parent->{'eline'} = $lnum;
-		$parent = $parent->{'parent'};
+		$parent = pop(@pstack);
 		}
 	elsif ($l =~ /^\s*(\S+)\s+(\S.*)/) {
 		# Some directive in a block
@@ -265,6 +267,7 @@ foreach my $c (@$conf) {
 sub directive_lines
 {
 my ($dir, $indent) = @_;
+$indent ||= 0;
 my $istr = " " x $indent;
 my @rv;
 if ($dir->{'type'}) {

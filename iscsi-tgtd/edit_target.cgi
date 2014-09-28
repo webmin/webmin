@@ -46,7 +46,7 @@ push(@luns, { 'name' => 'backing-store',
 	      'value' => '',
 	      'values' => [] });
 for(my $i=0; $i<@luns; $i++) {
-	my $path = $luns[$i]->{'values'}->[0];
+	my $path = $luns[$i]->{'values'}->[0] || "";
 	my @opts;
 
 	# Start with option for no device
@@ -153,7 +153,7 @@ print &ui_table_row($text{'target_iuser'},
 
 # Outgoing user
 my $u = &find_value($target, "outgoinguser");
-my ($uname, $upass) = split(/\s+/, $u);
+my ($uname, $upass) = $u ? split(/\s+/, $u) : ( );
 print &ui_table_row($text{'target_ouser'},
 	&ui_radio("ouser_def", $u ? 0 : 1,
 		  [ [ 1, $text{'target_ousernone'}."<br>" ],
