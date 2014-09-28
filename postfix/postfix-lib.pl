@@ -1277,7 +1277,7 @@ foreach $trans (@{$maps}) {
 return $max_number+1;
 }
 
-# postfix_mail_file(user)
+# postfix_mail_file(user|user-details-list)
 sub postfix_mail_file
 {
 local @s = &postfix_mail_system();
