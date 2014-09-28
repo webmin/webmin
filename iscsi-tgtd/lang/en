@@ -23,6 +23,9 @@ index_size=Total size
 index_noluns=None
 index_nousers=Any
 
+dtargets_err=Failed to delete targets
+dtargets_enone=None selected!
+
 target_title1=Create iSCSI Target
 target_title2=Edit iSCSI Target
 target_header=iSCSI shared device options
@@ -66,6 +69,10 @@ target_iaddress=Allow connections from addresses
 target_iname=Allow connections from initiators
 target_iall=All
 target_ibelow=Entered below ..
+target_type=Storage type
+target_backing=Regard file or device
+target_direct=Direct device access
+target_cache=Cache writes to device?
 
 start_err=Failed to start iSCSI TGTd
 stop_err=Failed to stop iSCSI TGTd

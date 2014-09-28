@@ -7,7 +7,7 @@ require './iscsi-tgtd-lib.pl';
 our (%text, %in, %config);
 &ReadParse();
 &error_setup($text{'target_err'});
-my $conf = &get_iscsi_tgtd_config();
+my $conf = &get_tgtd_config();
 
 # Get the target
 my $target;
@@ -33,6 +33,7 @@ my $lockfile = $target->{'file'} || $addfile;
 if ($in{'delete'}) {
 	# Delete the target
 	&save_directive($conf, $target, undef);
+	&delete_if_empty($target->{'file'});
 	}
 else {
 	# Validate and save directives, starting with target name

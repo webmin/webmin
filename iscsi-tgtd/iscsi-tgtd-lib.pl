@@ -224,12 +224,26 @@ sub save_multiple_directives
 {
 my ($conf, $name, $newdirs, $parent) = @_;
 my $olddirs = [ &find($parent ? $parent->{'members'} : $conf, $name) ];
-for(my $i=0; $i<@$olddirs || $i<@$newdirs) {
+for(my $i=0; $i<@$olddirs || $i<@$newdirs; $i++) {
 	&save_directive($conf,
 			$i<@$olddirs ? $olddirs->[$i] : undef,
 			$i<@$newdirs ? $newdirs->[$i] : undef,
 			$parent);
 	}
+}
+
+# delete_if_empty(file)
+# Remove some file if after modification it contains no non-whitespace lines
+sub delete_if_empty
+{
+my ($file) = @_;
+my $lref = &read_file_lines($file, 1);
+foreach my $l (@$lref) {
+	return 0 if ($l =~ /\S/);
+	}
+&unlink_file($file);
+&unflush_file_lines($file);
+return 1;
 }
 
 # recursive_renumber(&directives, file, after-line, offset, &ignore-list)
