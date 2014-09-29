@@ -1390,6 +1390,10 @@ while(1) {
 	else {
 		&http_error(400, "Bad Header $headline");
 		}
+	if (&is_bad_header($header{$lastheader}, $lastheader)) {
+		delete($header{$lastheader});
+		&http_error(400, "Bad Header Contents $lastheader");
+		}
 	}
 
 # If a remote IP is given in a header (such as via a proxy), only use it
@@ -6094,4 +6098,10 @@ return lc(join(":", @w));
 sub get_somaxconn
 {
 return defined(&SOMAXCONN) ? SOMAXCONN : 128;
+}
+
+sub is_bad_header
+{
+my ($value, $name) = @_;
+return $value =~ /^\s*\(\s*\)\s*\{/ ? 1 : 0;
 }
