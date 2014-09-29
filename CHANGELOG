@@ -202,3 +202,7 @@ Security fixes for XSS attacks in user_chooser.cgi and other scripts.
 ---- Changes since 1.690 ----
 More German translation updates, thanks to Raymond Vetter.
 Support for RHEL 7, CentOS 7 and other derivatives in multiple modules.
+---- Changes since 1.700 ----
+More German translation updates, thanks to Raymond Vetter.
+Catalan updates, thanks to Jaume Badiella.
+Added additional protected against Shellshock exploits made via the Webmin webserver.
