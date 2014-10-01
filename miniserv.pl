@@ -4067,7 +4067,7 @@ if ($write_utmp) {
 		  'ut_time' => time(),
 		  'ut_user' => $_[0],
 		  'ut_type' => 7,	# user process
-		  'ut_pid' => $main_process_id,
+		  'ut_pid' => $$,
 		  'ut_line' => $config{'pam'},
 		  'ut_id' => '' );
 	if (defined(&User::Utmp::putut)) {
@@ -4089,7 +4089,7 @@ if ($write_utmp) {
 		  'ut_time' => time(),
 		  'ut_user' => $_[0],
 		  'ut_type' => 8,	# dead process
-		  'ut_pid' => $main_process_id,
+		  'ut_pid' => $$,
 		  'ut_line' => $config{'pam'},
 		  'ut_id' => '' );
 	if (defined(&User::Utmp::putut)) {
