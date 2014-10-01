@@ -623,6 +623,7 @@ foreach $msg (@startup_msg) {
 
 # write out the PID file
 &write_pid_file();
+$miniserv_main_pid = $$;
 
 # Start the log-clearing process, if needed. This checks every minute
 # to see if the log has passed its reset time, and if so clears it
@@ -4067,7 +4068,7 @@ if ($write_utmp) {
 		  'ut_time' => time(),
 		  'ut_user' => $_[0],
 		  'ut_type' => 7,	# user process
-		  'ut_pid' => $$,
+		  'ut_pid' => $miniserv_main_pid,
 		  'ut_line' => $config{'pam'},
 		  'ut_id' => '' );
 	if (defined(&User::Utmp::putut)) {
@@ -4089,7 +4090,7 @@ if ($write_utmp) {
 		  'ut_time' => time(),
 		  'ut_user' => $_[0],
 		  'ut_type' => 8,	# dead process
-		  'ut_pid' => $$,
+		  'ut_pid' => $miniserv_main_pid,
 		  'ut_line' => $config{'pam'},
 		  'ut_id' => '' );
 	if (defined(&User::Utmp::putut)) {
