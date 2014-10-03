@@ -1,4 +1,6 @@
 config_file=/etc/tgt/targets.conf
 tgtd=tgtd
 tgtadm=tgtadm
+tgtadmin=tgt-admin
 init_name=tgtd
+restart_cmd=/etc/init.d/tgtd reload

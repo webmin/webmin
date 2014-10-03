@@ -334,33 +334,51 @@ return 0 if (&init::action_status($config{'init_name'}));
 # Run the init script to start the server
 sub start_iscsi_tgtd
 {
-&setup_tgtd_init();
-&foreign_require("init");
-my ($ok, $out) = &init::start_action($config{'init_name'});
-return $ok ? undef : $out;
+if ($config{'start_cmd'}) {
+	my $out = &backquote_command("$config{'start_cmd'} 2>&1 </dev/null");
+	return $? ? $out : undef;
+	}
+else {
+	&setup_tgtd_init();
+	&foreign_require("init");
+	my ($ok, $out) = &init::start_action($config{'init_name'});
+	return $ok ? undef : $out;
+	}
 }
 
 # stop_iscsi_tgtd()
 # Run the init script to stop the server
 sub stop_iscsi_tgtd
 {
-&setup_tgtd_init();
-&foreign_require("init");
-my ($ok, $out) = &init::stop_action($config{'init_name'});
-return $ok ? undef : $out;
+if ($config{'stop_cmd'}) {
+	my $out = &backquote_command("$config{'stop_cmd'} 2>&1 </dev/null");
+	return $? ? $out : undef;
+	}
+else {
+	&setup_tgtd_init();
+	&foreign_require("init");
+	my ($ok, $out) = &init::stop_action($config{'init_name'});
+	return $ok ? undef : $out;
+	}
 }
 
 # restart_iscsi_tgtd()
 # Sends a HUP signal to re-read the configuration
 sub restart_iscsi_tgtd
 {
-&stop_iscsi_tgtd();
-# Wait for process to exit
-for(my $i=0; $i<20; $i++) {
-	last if (!&is_tgtd_running());
-	sleep(1);
+if ($config{'restart_cmd'}) {
+	my $out = &backquote_command("$config{'restart_cmd'} 2>&1 </dev/null");
+	return $? ? $out : undef;
 	}
-return &start_iscsi_tgtd();
+else {
+	&stop_iscsi_tgtd();
+	# Wait for process to exit
+	for(my $i=0; $i<20; $i++) {
+		last if (!&is_tgtd_running());
+		sleep(1);
+		}
+	return &start_iscsi_tgtd();
+	}
 }
 
 # get_device_size(device, "part"|"raid"|"lvm"|"other")
