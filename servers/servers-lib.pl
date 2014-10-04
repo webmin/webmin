@@ -412,6 +412,7 @@ my (@found, @already, @foundme, %addmods);
 my %server;
 foreach my $s (&list_servers()) {
 	$server{&to_ipaddress($s->{'host'})} = $s;
+	$server{$s->{'host'}} = $s;
 	}
 
 # create the broadcast socket
@@ -525,6 +526,11 @@ while(time()-$tmstart < $limit) {
 				print &text('find_me',
 				    "<tt>$url</tt>"),"<br>\n" if (!$noprint);
 				push(@foundme, $fromaddr);
+				}
+			elsif ($server{$host}) {
+				# Already known server
+				print &text('find_already2',
+				    "<tt>$url</tt>"),"<br>\n" if (!$noprint);
 				}
 			else {
 				# Found a new one!

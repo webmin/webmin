@@ -73,6 +73,7 @@ find_title=Find Servers
 find_new=Found new server at $1
 find_but=Found new server at $1, but authentication failed : $2
 find_already=Found known server at $1
+find_already2=Found known server host at $1
 find_skip=Ignoring server at $1
 find_me=Found this server at $1
 find_escan=The network to scan must be a class C network address.
