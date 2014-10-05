@@ -82,6 +82,7 @@ email_regsubject=System $1 registriert
 email_unreg=Das System $1 wurde automatisch deregistriert.
 email_unregsubject=System $1 deregistriert
 find_already=Bekannten Server bei $1 gefunden
+find_already2=Bekannten Server-Host bei $1 gefunden
 find_broading=Suche nach Servern mit Adressen $1 ..
 find_but=Neuen Server bei $1 gefunden, aber die Authentifizierung ist fehlgeschlagen : $2
 find_ecannot=Sie sind nicht berechtigt, Server zu suchen!
