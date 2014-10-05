@@ -12,8 +12,8 @@ my $file = $in{'file'} || $config{'config_file'};
 
 # Config file selector
 my $conf = &get_tgtd_config();
-my @files = ($config{'config_file'},
-	     &unique(map { $_->{'file'} } @$conf));
+my @files = &unique($config{'config_file'},
+	     	    (map { $_->{'file'} } @$conf));
 print &ui_form_start("edit_manual.cgi");
 print "<b>$text{'manual_file'}</b> ",
       &ui_select("file", $file, \@files),"\n",
