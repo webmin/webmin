@@ -1762,6 +1762,58 @@ $rv .= ">";
 return $rv;
 }
 
+=head2 popup_window_link(url, title, width, height, scrollbar, &field-mappings)
+
+Returns HTML for a link that will popup a chooser window of some kind. The
+parameters are :
+
+=item url - Base URL of the popup window's contents
+
+=item title - Text of the link
+
+=item width - Width of the window in pixels
+
+=item height - Height in pixels
+
+=item scrollbars - Set to 1 if the window should have scrollbars
+
+=item fields - See below
+
+The field-mappings parameter is an array ref of array refs containing
+
+=item - Attribute to assign field to in the popup window
+
+=item - Form field name
+
+=item - CGI parameter to URL for value, if any
+
+=cut
+sub popup_window_link
+{
+return &theme_popup_window_link(@_) if (defined(&theme_popup_window_link));
+my ($url, $title, $w, $h, $scrollyn, $fields) = @_;
+my $scrollyn = $scroll ? "yes" : "no";
+my $rv = "onClick='";
+foreach my $m (@$fields) {
+	$rv .= "$m->[0] = form.$m->[1]; ";
+	}
+my $sep = $url =~ /\?/ ? "&" : "?";
+$rv .= "chooser = window.open(\"$url\"";
+foreach my $m (@$fields) {
+	if ($m->[2]) {
+		$rv .= "+\"$sep$m->[2]=\"+escape($m->[0].value)";
+		$sep = "&";
+		}
+	}
+$rv .= ", \"chooser\", \"toolbar=no,menubar=no,scrollbars=$scrollyn,resizable=yes,width=$w,height=$h\"); ";
+foreach my $m (@$fields) {
+	$rv .= "chooser.$m->[0] = $m->[0]; ";
+	$rv .= "window.$m->[0] = $m->[0]; ";
+	}
+$rv .= "return false;'";
+return &ui_link($url, $title, undef, $rv);
+}
+
 =head2 read_acl(&user-module-hash, &user-list-hash, [&only-users])
 
 Reads the Webmin acl file into the given hash references. The first is indexed
