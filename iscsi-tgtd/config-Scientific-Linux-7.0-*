@@ -5,4 +5,4 @@ init_name=tgtd
 tgtadmin=tgt-admin
 start_cmd=service tgtd start
 stop_cmd=service tgtd stop
-restart_cmd=service tgtd reload
+restart_cmd=service tgtd restart
