@@ -6296,7 +6296,7 @@ return &remote_rpc_call($_[0], { 'action' => 'check',
 
 =head2 remote_foreign_config(server, module)
 
-Gets the configuration for some module from a remote server, as a hash.
+Gets the configuration for some module from a remote server, as a hash ref.
 Equivalent to foreign_config, but for a remote system.
 
 =cut
