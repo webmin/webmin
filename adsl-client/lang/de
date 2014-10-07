@@ -5,11 +5,11 @@ index_bytes=Bytes
 index_cancel=Verbindung beenden
 index_canceldesc=Es wird momentan eine ADSL-Verbindung hergestellt. Klicken Sie auf diesen Button, um diesen Vorgang mit dem Befehl $1 abzubrechen.
 index_cdemand=Auf Verlangen abbrechen
-index_cdemanddesc=Der ADSL-Client wartet derzeit darauf, Benutzer gesteuert die Verbindung zu beenden. Klicken Sie auf diesen Button, wenn Sie dies mit dem Befehl $1 ausf&#252;hren m&#246;chten.
+index_cdemanddesc=Der ADSL-Client wartet derzeit darauf, Benutzer auf Verlangen die Verbindung zu beenden. Klicken Sie auf diesen Button, wenn Sie dies mit dem Befehl $1 ausf&#252;hren m&#246;chten.
 index_connect=Konfigurierbare Dauer der Verbindung
 index_demand=Verbindung auf Wunsch?
 index_desc=Diese Einstellungen werden erst bei der n&#228;chsten Anmeldung des ADSL-Clients aktiv. Wenn Sie diese &#228;ndern, dann m&#252;ssen Sie die Verbindung beenden und neu aufbauen, damit die &#196;nderungen wirksam werden.
-index_dns=DNS-Konfiguration des ISP &#252;bernehmen (/etc/resolve.conf)?
+index_dns=DNS-Konfiguration des ISP &#252;bernehmen?
 index_eadsl=Der RP-PPPoE-Befehl $1 wurde auf Ihrem System nicht gefunden oder ist nicht g&#252;ltig. Entweder ist er nicht installiert, oder Ihre <a href='$2'>Modulkonfiguration</a> ist falsch.
 index_econfig=Die RP-PPPoE ADSL-Konfigurationsdatei $1 wurde auf Ihrem System nicht gefunden. Entweder ist sie nicht installiert, oder Ihre <a href='$2'>Modulkonfiguration</a> ist falsch.
 index_emodem=Die aktuelle Konfigurationsdatei wurde f&#252;r ein Modem unter RedHat-Linux geschrieben, und nicht f&#252;r eine ADSL-Verbindung. Benutzen Sie die <a href='$2'>Modulkonfiguration</a>, um entweder eine der <tt>ifcfg-ppp*</tt>-Dateien unter $1 zu nutzen, oder ein neues Interface anzugeben, welches von Webmin eingerichtet werden soll.
@@ -37,12 +37,12 @@ index_timeout=Ja, mit Timeout
 index_title=ADSL Client
 index_user=Anmelden als Benutzer
 index_version=RP-PPPoE Version $1
-log_bootdown=Deaktiviere ADSL-Verbindung zur Bootzeit
-log_bootup=Aktiviere ADSL-Verbindung zur Bootzeit
-log_save=Gespeicherte Client-Konfiguration
-log_setup=Lege eine Standard-Konfiguration an
-log_start=Starte ADSL-Verbindung
-log_stop=Beende ADSL-Verbindung
+log_bootdown=ADSL-Verbindung zur Bootzeit deaktiviert
+log_bootup=ADSL-Verbindung zur Bootzeit aktiviert
+log_save=Client-Konfiguration gespeichert
+log_setup=Standard-Konfiguration angelegt
+log_start=ADSL-Verbindung gestartet
+log_stop=ADSL-Verbindung beendet
 save_desc=Ihre ADSL-Client-Konfiguration wurde erfolgreich gespeichert, wird jedoch erst bei der n&#228;chsten Anmeldung/Anwahl aktiv.
 save_econnect=Fehlendes oder ung&#252;ltiges "timeout"
 save_eeth=Fehlende oder ung&#252;ltige aussehende Ethernetschnittstelle
