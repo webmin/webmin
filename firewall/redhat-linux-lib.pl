@@ -8,10 +8,8 @@ $init_script = "$init::config{'init_dir'}/iptables";
 # Returns an error message if something is wrong with iptables on this system
 sub check_iptables
 {
-if (!-r $init_script &&
-    &backquote_command("service iptables status 2>/dev/null") !~ /Loaded:\s+loaded/) {
-	return &text('redhat_escript', "<tt>$init_script</tt>");
-	}
+&foreign_require("init");
+&init::action_status("iptables") > 0 || return $text{'redhat_einstalled'};
 return undef if ($gconfig{'os_type'} eq 'trustix-linux');
 return undef if ($gconfig{'os_type'} eq 'redhat-linux' &&
 		 $gconfig{'os_version'} > 10);
