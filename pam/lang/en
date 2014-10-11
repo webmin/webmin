@@ -256,7 +256,7 @@ group_info=All fields can contain multiple values separated by |, and values can
 
 wheel_group=Check for membership of group
 wheel_group_def=Default (<tt>wheel</tt> or GID 0)
-wheel_trust=Group members bypass futher authentication?
+wheel_trust=Group members bypass further authentication?
 wheel_deny=Deny instead of allowing group members?
 wheel_egroup=Missing or invalid group name
 
