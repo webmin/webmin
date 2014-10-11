@@ -385,9 +385,11 @@ if ($zip) {
 	}
 $info = &file_info_line(&unmake_chroot($refresh), $refresh);
 print "<script>\n";
-print "opener.document.FileManager.",
+print "try {\n";
+print "  opener.document.FileManager.",
       "upload_notify(\"".&quote_escape($refresh)."\", ",
       "\"".&quote_escape($info)."\");\n";
+print "} catch(err) { }\n";
 if ($err) {
 	$err =~ s/\r//g;
 	$err =~ s/\n/\\n/g;
