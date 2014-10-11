@@ -26,6 +26,7 @@ index_serial=Serial number
 index_capacity=Capacity
 
 monitor_type=SMART Drive Check
+monitor_type2=SSD Wearout
 monitor_drive=Drive to check
 monitor_errors=Check error log too?
 monitor_errorsinc=Yes, but only alert if error count increases
@@ -35,6 +36,10 @@ monitor_nosuch=No such drive
 monitor_nosmart=No SMART support
 monitor_errorsfound=Reported $1 errors
 monitor_errorsinced=Errors increased from $2 to $1
+monitor_wearlevel=Fail if wear level falls below
+monitor_ewearlevel=Invalid wear level percentage
+monitor_nowearout=Drive does not report an SSD wearout indicator
+monitor_wornout=Wear level has fallen to $1
 
 short_title=Short Self Test
 short_doing=Starting short self test of $1 ..

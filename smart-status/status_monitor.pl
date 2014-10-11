@@ -6,7 +6,8 @@ do 'smart-status-lib.pl';
 sub status_monitor_list
 {
 if (&has_command($config{'smartctl'})) {
-	return ( [ "smart", $text{'monitor_type'} ] );
+	return ( [ "smart", $text{'monitor_type'} ],
+		 [ "wearout", $text{'monitor_type2'} ] );
 	}
 else {
 	return ( );
@@ -17,10 +18,12 @@ else {
 # Check the drive status
 sub status_monitor_status
 {
+local ($type, $mon, $ui) = @_;
+
 local @drives = &list_smart_disks_partitions();
-local ($d) = grep { ($_->{'device'} eq $_[1]->{'drive'} ||
-		     $_->{'id'} eq $_[1]->{'drive'}) &&
-		    $_->{'subdisk'} eq $_[1]->{'subdisk'} } @drives;
+local ($d) = grep { ($_->{'device'} eq $mon->{'drive'} ||
+		     $_->{'id'} eq $mon->{'drive'}) &&
+		    $_->{'subdisk'} eq $mon->{'subdisk'} } @drives;
 if (!$d) {
 	# Not in list?!
 	return { 'up' => -1,
@@ -28,41 +31,68 @@ if (!$d) {
 	}
 local $st = &get_drive_status($d->{'device'}, $d);
 
-# Record number of errors since last time
-local %errors;
-local $errors_file = "$module_config_directory/last-errors";
-&read_file($errors_file, \%errors);
-local %lasterrors = %errors;
-$errors{$_[1]->{'drive'}} = $st->{'errors'};
-&write_file($errors_file, \%errors);
-
 if (!$st->{'support'} || !$st->{'enabled'}) {
 	# SMART not enabled on device
 	return { 'up' => -1,
 		 'desc' => $text{'monitor_nosmart'} };
 	}
-elsif (!$st->{'check'}) {
-	# Check failed
-	return { 'up' => 0 };
-	}
-elsif ($st->{'errors'} && $_[1]->{'errors'} == 1) {
-	# Errors found, and failing on any errors
-	return { 'up' => 0,
-		 'value' => $st->{'errors'},
-		 'desc' => &text('monitor_errorsfound', $st->{'errors'}) };
-	}
-elsif ($st->{'errors'} && $_[1]->{'errors'} == 2 &&
-       $st->{'errors'} > $lasterrors{$_[1]->{'drive'}}) {
-	# Errors found and have increased
-	return { 'up' => 0,
-		 'value' => $st->{'errors'},
-		 'desc' => &text('monitor_errorsinced', $st->{'errors'},
-				 $lasterrors{$_[1]->{'drive'}}) };
+
+if ($type eq "wearout") {
+	# Check SSD wear level
+	local $wo;
+	foreach my $a (@{$st->{'attribs'}}) {
+		if ($a->[0] eq "Media Wearout Indicator") {
+			$wo = $a;
+			last;
+			}
+		}
+	if (!$wo) {
+		return { 'up' => -1,
+		         'desc' => $text{'monitor_nowearout'} };
+		}
+	if ($wo->[2] < $mon->{'wearlevel'}) {
+		return { 'up' => 0,
+			 'desc' => &text('monitor_wornout', $wo->[2]),
+			 'value' => $wo->[2] };
+		}
+	else {
+		return { 'up' => 1,
+			 'value' => $wo->[2] };
+		}
 	}
 else {
-	# All OK!
-	return { 'up' => 1,
-		 'value' => $st->{'errors'} };
+	# Record number of errors since last time
+	local %errors;
+	local $errors_file = "$module_config_directory/last-errors";
+	&read_file($errors_file, \%errors);
+	local %lasterrors = %errors;
+	$errors{$mon->{'drive'}} = $st->{'errors'};
+	&write_file($errors_file, \%errors);
+
+	# Check for errors
+	if (!$st->{'check'}) {
+		# Check failed
+		return { 'up' => 0 };
+		}
+	elsif ($st->{'errors'} && $mon->{'errors'} == 1) {
+		# Errors found, and failing on any errors
+		return { 'up' => 0,
+			 'value' => $st->{'errors'},
+			 'desc' => &text('monitor_errorsfound', $st->{'errors'}) };
+		}
+	elsif ($st->{'errors'} && $mon->{'errors'} == 2 &&
+	       $st->{'errors'} > $lasterrors{$mon->{'drive'}}) {
+		# Errors found and have increased
+		return { 'up' => 0,
+			 'value' => $st->{'errors'},
+			 'desc' => &text('monitor_errorsinced', $st->{'errors'},
+					 $lasterrors{$mon->{'drive'}}) };
+		}
+	else {
+		# All OK!
+		return { 'up' => 1,
+			 'value' => $st->{'errors'} };
+		}
 	}
 }
 
@@ -70,15 +100,16 @@ else {
 # Return form for selecting a drive
 sub status_monitor_dialog
 {
+local ($type, $mon) = @_;
 local $rv;
 local @drives = &list_smart_disks_partitions();
-local ($inlist) = grep { ($_->{'device'} eq $_[1]->{'drive'} ||
-			  $_->{'id'} eq $_[1]->{'drive'}) &&
-		         $_->{'subdisk'} eq $_[1]->{'subdisk'} } @drives;
-$inlist = 1 if (!$_[1]->{'drive'});
+local ($inlist) = grep { ($_->{'device'} eq $mon->{'drive'} ||
+			  $_->{'id'} eq $mon->{'drive'}) &&
+		         $_->{'subdisk'} eq $mon->{'subdisk'} } @drives;
+$inlist = 1 if (!$mon->{'drive'});
 $rv .= &ui_table_row($text{'monitor_drive'},
       &ui_select("drive",
-		 !$_[1]->{'drive'} ? $drives[0]->{'device'} :
+		 !$mon->{'drive'} ? $drives[0]->{'device'} :
 		 $inlist ? ($inlist->{'id'} || $inlist->{'device'}).':'.
 			     $inlist->{'subdisk'} :
 			   undef,
@@ -86,12 +117,18 @@ $rv .= &ui_table_row($text{'monitor_drive'},
 			   $_->{'desc'}.($_->{'model'} ?
 				" ($_->{'model'})" : "") ] } @drives),
 		   [ "", $text{'monitor_other'} ] ]).
-      &ui_textbox("other", $inlist ? "" : $_[1]->{'drive'}, 15), 3);
+      &ui_textbox("other", $inlist ? "" : $mon->{'drive'}, 15), 3);
 
-$rv .= &ui_table_row($text{'monitor_errors'},
-	&ui_radio("errors", $_[1]->{'errors'} || 0,
-		[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ],
-		  [ 2, $text{'monitor_errorsinc'} ] ]));
+if ($type eq "wearout") {
+	$rv .= &ui_table_row($text{'monitor_wearlevel'},
+		&ui_textbox("wearlevel", $mon->{'wearlevel'} || 10, 5)."%");
+	}
+else {
+	$rv .= &ui_table_row($text{'monitor_errors'},
+		&ui_radio("errors", $mon->{'errors'} || 0,
+			[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ],
+			  [ 2, $text{'monitor_errorsinc'} ] ]));
+	}
 return $rv;
 }
 
@@ -99,15 +136,23 @@ return $rv;
 # Parse form for selecting a rule
 sub status_monitor_parse
 {
-if ($_[2]->{'drive'}) {
-	($_[1]->{'drive'}, $_[1]->{'subdisk'}) = split(/:/, $_[2]->{'drive'});
+local ($type, $mon, $in) = @_;
+if ($in->{'drive'}) {
+	($mon->{'drive'}, $mon->{'subdisk'}) = split(/:/, $in->{'drive'});
 	}
 else {
-	$_[1]->{'drive'} = $_[2]->{'other'};
-	$_[1]->{'subdisk'} = undef;
-	$_[1]->{'drive'} =~ /^\S+$/ || &error($text{'monitor_edrive'});
+	$mon->{'drive'} = $in->{'other'};
+	$mon->{'subdisk'} = undef;
+	$mon->{'drive'} =~ /^\S+$/ || &error($text{'monitor_edrive'});
 	}
-$_[1]->{'errors'} = $_[2]->{'errors'};
+if ($type eq "wearout") {
+	$in->{'wearlevel'} =~ /^\d+(\.\d+)?$/ ||
+		&error($text{'monitor_ewearlevel'});
+	$mon->{'wearlevel'} = $in->{'wearlevel'};
+	}
+else {
+	$mon->{'errors'} = $in->{'errors'};
+	}
 }
 
 1;
