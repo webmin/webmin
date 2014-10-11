@@ -233,7 +233,9 @@ foreach $iface (@ifaces) {
 		$found = 1;
 		foreach my $o (@{$iface->[3]}) {
 			if ($o->[0] eq 'gateway' ||
-			    $o->[0] eq 'pre-up' && $o->[1] =~ /brctl/) {
+			    $o->[0] eq 'pre-up' && $o->[1] =~ /brctl/ ||
+			    $o->[0] =~ /^(pre-)?up$/ &&
+			      $o->[1] =~ /ip\s+route/) {
 				push(@options, $o);
 				}
 			}
@@ -243,6 +245,9 @@ foreach $iface (@ifaces) {
 		$found6 = 1;
 		}
 	}
+
+# Remove any duplicate options
+@options = grep { !$done{$_->[0],$_->[1]}++ } @options;
 
 if (!$found) {
 	# Add a new interface section
