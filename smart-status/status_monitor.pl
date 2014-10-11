@@ -50,14 +50,14 @@ if ($type eq "wearout") {
 		return { 'up' => -1,
 		         'desc' => $text{'monitor_nowearout'} };
 		}
-	if ($wo->[2] < $mon->{'wearlevel'}) {
+	if ($wo->[3] < $mon->{'wearlevel'}) {
 		return { 'up' => 0,
-			 'desc' => &text('monitor_wornout', $wo->[2]),
-			 'value' => $wo->[2] };
+			 'desc' => &text('monitor_wornout', $wo->[3]),
+			 'value' => $wo->[3] };
 		}
 	else {
 		return { 'up' => 1,
-			 'value' => $wo->[2] };
+			 'value' => $wo->[3] };
 		}
 	}
 else {

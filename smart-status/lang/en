@@ -24,6 +24,7 @@ index_return=module index
 index_family=Model family
 index_serial=Serial number
 index_capacity=Capacity
+index_norm=Normalized:
 
 monitor_type=SMART Drive Check
 monitor_type2=SSD Wearout

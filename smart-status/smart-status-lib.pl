@@ -350,7 +350,7 @@ if ($config{'attribs'}) {
 		elsif (/^\s*(\d+)\s+(\S+)\s+(0x\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)/) {
 			# A new-style vendor attribute
 			$doneknown = 1;
-			push(@attribs, [ $2, $10, $4 ]);
+			push(@attribs, [ $2, $10, undef, $4 ]);
 			$attribs[$#attribs]->[0] =~ s/_/ /g;
 			}
 		elsif (/^(\S.*\S):\s+\(\s*(\S+)\)\s*(.*)/ && !$doneknown) {

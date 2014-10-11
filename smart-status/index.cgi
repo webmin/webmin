@@ -118,7 +118,8 @@ if ($config{'attribs'} && @{$st->{'attribs'}}) {
 	foreach my $a (@{$st->{'attribs'}}) {
 		next if ($a->[0] =~ /UDMA CRC Error Count/i); # too long
 		print &ui_table_row($a->[0],
-			$a->[2] =~ /^\s*(seconds|minutes|hours|days|months|years|weeks)\s*/i || !$a->[2] ? $a->[1]." ".$a->[2] : $a->[2]);
+			($a->[2] =~ /^\s*(seconds|minutes|hours|days|months|years|weeks)\s*/i || !$a->[2] ? $a->[1]." ".$a->[2] : $a->[2]).
+			($a->[3] ? " ($text{'index_norm'} $a->[3])" : ""));
 		}
 	print &ui_hidden_table_end();
 	}
