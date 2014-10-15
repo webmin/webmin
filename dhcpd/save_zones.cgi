@@ -10,7 +10,7 @@ require './params-lib.pl';
 &ReadParse();
 %access = &get_module_acl();
 $access{'zones'} || &error($text{'zone_ecannot'});
-&lock_file($config{'dhcpd_conf'});
+&lock_all_files();
 
 unless ($in{'new'}){  # on change or delete
 	# Read current zone data from config file
@@ -56,7 +56,7 @@ if ($in{'delete'}) {
 
 &flush_file_lines();
 
-&unlock_file($config{'dhcpd_conf'});
+&unlock_all_files();
 
 &webmin_log($in{'delete'} ? 'delete' : $in{'new'} ? 'create' : 'modify',
 	    'shared', $zone->{'values'}->[0], \%in);

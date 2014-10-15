@@ -8,7 +8,7 @@
 require './dhcpd-lib.pl';
 require './params-lib.pl';
 &ReadParse();
-&lock_file($config{'dhcpd_conf'});
+&lock_all_files();
 $conf = &get_config();
 
 $client = &get_parent_config();
@@ -31,7 +31,7 @@ for($i=0; defined($id = $in{"id_$i"}); $i++) {
 	}
 &save_directive($client, 'key', \@keys, 0);
 &flush_file_lines();
-&unlock_file($config{'dhcpd_conf'});
+&unlock_all_files();
 &webmin_log("keys", undef, undef, \%in);
 &redirect("");
 

@@ -9,7 +9,7 @@ if ($in{'cancel'}) {
 	&redirect("");
 	exit;
 	}
-&lock_file($config{'dhcpd_conf'});
+&lock_all_files();
 $par = &get_parent_config();
 foreach $i ($in{'sidx'}, $in{'uidx'}) {
 	if ($i ne "") {
@@ -64,7 +64,7 @@ if ($type) {
 	}
 &save_directive($par, [ $to_del ], [ ], 0);
 &flush_file_lines();
-&unlock_file($config{'dhcpd_conf'});
+&unlock_all_files();
 if ($to_del->{'name'} eq "group") {
 	@count = &find("host", $group->{'members'});
 	&webmin_log('delete', 'group', join(",", map { $_->{'values'}->[0] } @count), \%in);

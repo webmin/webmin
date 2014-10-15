@@ -5,7 +5,7 @@
 require './dhcpd-lib.pl';
 require './params-lib.pl';
 &ReadParse();
-&lock_file($config{'dhcpd_conf'});
+&lock_all_files();
 ($par, $host, $indent, $npar, $nindent) = get_branch('hst', $in{'new'});
 
 # check acls
@@ -152,7 +152,7 @@ else {
 		}
 	}
 &flush_file_lines();
-&unlock_file($config{'dhcpd_conf'});
+&unlock_all_files();
 &webmin_log($in{'delete'} ? 'delete' : $in{'new'} ? 'create' : 'modify',
 	    'host', $host->{'values'}->[0], \%in);
 if ($in{'ret'} eq "group") {

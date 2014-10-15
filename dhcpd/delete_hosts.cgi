@@ -10,7 +10,7 @@ require './params-lib.pl';
 %access = &get_module_acl();
 
 # Work out what is being done
-&lock_file($config{'dhcpd_conf'});
+&lock_all_files();
 $parent = &get_parent_config();
 foreach $d (@d) {
 	local @subs = reverse(split(/\//, $d));
@@ -37,7 +37,7 @@ if ($in{'confirm'}) {
 		&save_directive($pardel->[0], [ $pardel->[1] ], [ ], 0);
 		}
 	&flush_file_lines();
-	&unlock_file($config{'dhcpd_conf'});
+	&unlock_all_files();
 	&webmin_log("delete", "hosts", scalar(@d));
 	&redirect("");
 	}

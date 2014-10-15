@@ -993,4 +993,27 @@ else {
 	}
 }
 
+sub get_all_config_files
+{
+my $conf = &get_config();
+my @rv = ( $config{'dhcpd_conf'} );
+push(@rv, map { $_->{'file'} } @$conf);
+push(@rv, $config{'add_file'}) if ($config{'add_file'});
+return &unique(@rv);
+}
+
+sub lock_all_files
+{
+foreach my $f (&get_all_config_files()) {
+	&lock_file($f);
+	}
+}
+
+sub unlock_all_files
+{
+foreach my $f (reverse(&get_all_config_files())) {
+	&unlock_file($f);
+	}
+}
+
 1;

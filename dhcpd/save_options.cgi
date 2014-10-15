@@ -5,7 +5,7 @@
 require './dhcpd-lib.pl';
 require './params-lib.pl';
 &ReadParse();
-&lock_file($config{'dhcpd_conf'});
+&lock_all_files();
 $client = &get_parent_config();
 push(@parents, $client);
 foreach $i ($in{'sidx'}, $in{'uidx'}, $in{'gidx'}, $in{'idx'}) {
@@ -184,7 +184,7 @@ else {
 	}
 
 &flush_file_lines();
-&unlock_file($config{'dhcpd_conf'});
+&unlock_all_files();
 if ($client->{'name'} eq 'subnet') {
 	&webmin_log("options", 'subnet',
 		    "$client->{'values'}->[0]/$client->{'values'}->[2]", \%in);

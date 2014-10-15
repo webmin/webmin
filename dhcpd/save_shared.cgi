@@ -5,7 +5,7 @@
 require './dhcpd-lib.pl';
 require './params-lib.pl';
 &ReadParse();
-&lock_file($config{'dhcpd_conf'});
+&lock_all_files();
 ($par, $sha, $indent) = &get_branch('sha', $in{'new'});
 $parconf = $par->{'members'};
 
@@ -189,12 +189,12 @@ if ($in{'delete'}) {
 		&flush_file_lines();
 		}
 	else {
-		&unlock_file($config{'dhcpd_conf'});
+		&unlock_all_files();
 		&redirect("confirm_delete.cgi?idx=$in{'idx'}\&type=0");
 		exit;
 		}
 	}
-&unlock_file($config{'dhcpd_conf'});
+&unlock_all_files();
 &webmin_log($in{'delete'} ? 'delete' : $in{'new'} ? 'create' : 'modify',
 	    'shared', $sha->{'values'}->[0], \%in);
 &redirect("");

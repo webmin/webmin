@@ -5,7 +5,7 @@
 require './dhcpd-lib.pl';
 require './params-lib.pl';
 &ReadParse();
-&lock_file($config{'dhcpd_conf'});
+&lock_all_files();
 $conf = &get_config();
 if ($in{'sidx'} ne "") {
 	$sha = $conf->[$in{'sidx'}]; 
@@ -80,7 +80,7 @@ else {
 		}
 	}
 &flush_file_lines();
-&unlock_file($config{'dhcpd_conf'});
+&unlock_all_files();
 if ($sub->{'name'} eq 'subnet') {
 	&webmin_log('modify', 'subnet',
 		    "$sub->{'values'}->[0]/$sub->{'values'}->[2]", \%in);

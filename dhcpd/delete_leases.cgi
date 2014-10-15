@@ -23,14 +23,14 @@ while($i < @tok) {
 	}
 
 # Delete them, in reverse order so that line numbers aren't messed up
-&lock_file($config{'lease_file'});
+&lock_all_files();
 $lref = &read_file_lines($config{'lease_file'});
 foreach $lease (reverse(@todelete)) {
 	splice(@$lref, $lease->{'line'},
 	       $lease->{'eline'} - $lease->{'line'} + 1);
 	}
 &flush_file_lines($config{'lease_file'});
-&unlock_file($config{'lease_file'});
+&unlock_all_files();
 
 &restart_dhcpd();
 &webmin_log("delete", "lease", $lease->{'values'}->[0]);
