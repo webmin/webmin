@@ -149,11 +149,6 @@ for($i=0; $i<@_; $i++) {
 	if ($in{'type'} eq "PTR") {
 		$name = &ip6int_to_net(&arpa_to_ip($r->{'name'}));
 		}
-	elsif ($in{'type'} eq "SRV") {
-		$name = $r->{'name'};
-		$name =~ s/^_//;
-		$name =~ s/\._/\./;
-		}
 	else {
 		$name = $r->{'name'};
 		}
