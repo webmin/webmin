@@ -325,6 +325,7 @@ ssl_cert=Certificate file
 ssl_cert_def=Same file as private key
 ssl_cert_oth=Separate file
 ssl_redirect=Redirect non-SSL requests to SSL mode?
+ssl_deny=SSL protocol versions to reject
 ssl_compression=Allow compressed SSL connections?
 ssl_honorcipherorder=Force use of server-defined cipher order?
 ssl_extracas=Additional certificate files<br>(for chained certificates)

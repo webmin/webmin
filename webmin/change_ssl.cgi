@@ -22,6 +22,8 @@ else {
 	$in{'version'} =~ /^\d+$/ || &error($text{'ssl_eversion'});
 	$miniserv{'ssl_version'} = $in{'version'};
 	}
+$miniserv{'no_ssl2'} = $in{'no_ssl2'};
+$miniserv{'no_ssl3'} = $in{'no_ssl3'};
 if ($in{'cipher_list_def'} == 1) {
 	delete($miniserv{'ssl_cipher_list'});
 	}
@@ -30,7 +32,6 @@ elsif ($in{'cipher_list_def'} == 2) {
 	}
 elsif ($in{'cipher_list_def'} == 3) {
 	$miniserv{'ssl_cipher_list'} = $pfs_ssl_ciphers;
-	$miniserv{'no_ssl2'} = 1;
 	}
 else {
 	$in{'cipher_list'} =~ /^\S+$/ || &error($text{'ssl_ecipher_list'});

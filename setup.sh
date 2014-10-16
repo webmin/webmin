@@ -482,6 +482,8 @@ else
 	echo "logtime=168" >> $cfile
 	echo "ppath=$ppath" >> $cfile
 	echo "ssl=$ssl" >> $cfile
+	echo "no_ssl2=1" >> $cfile
+	echo "no_ssl3=1" >> $cfile
 	echo "env_WEBMIN_CONFIG=$config_dir" >> $cfile
 	echo "env_WEBMIN_VAR=$var_dir" >> $cfile
 	echo "atboot=$atboot" >> $cfile

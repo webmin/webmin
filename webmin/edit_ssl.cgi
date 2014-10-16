@@ -54,6 +54,10 @@ print &ui_table_row($text{'ssl_version'},
 	&ui_opt_textbox("version", $miniserv{'ssl_version'}, 4,
 			$text{'ssl_auto'}), undef, [ "valign=middle","valign=middle" ]);
 
+print &ui_table_row($text{'ssl_deny'},
+	&ui_checkbox("no_ssl2", 1, "SSLv2", $miniserv{'no_ssl2'})."\n".
+	&ui_checkbox("no_ssl3", 1, "SSLv3", $miniserv{'no_ssl3'}));
+
 print &ui_table_row($text{'ssl_compression'},
 	&ui_yesno_radio("ssl_compression", !$miniserv{'no_sslcompression'}), undef, [ "valign=middle","valign=middle" ]);
 
