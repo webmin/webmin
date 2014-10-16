@@ -4307,6 +4307,10 @@ if ($config{'no_ssl2'}) {
 	eval 'Net::SSLeay::CTX_set_options($ssl_ctx,
 		&Net::SSLeay::OP_NO_SSLv2)';
 	}
+if ($config{'no_ssl3'}) {
+	eval 'Net::SSLeay::CTX_set_options($ssl_ctx,
+		&Net::SSLeay::OP_NO_SSLv3)';
+	}
 if ($config{'no_sslcompression'}) {
 	eval 'Net::SSLeay::CTX_set_options($ssl_ctx,
 		&Net::SSLeay::OP_NO_COMPRESSION)';
