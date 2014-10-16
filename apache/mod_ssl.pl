@@ -34,18 +34,26 @@ if ($in{'SSLEngine'} eq 'on' &&
 return &parse_choice("SSLEngine");
 }
 
-@sslprotos = ("SSLv2", "SSLv3", "TLSv1", "TLSv1.1", "TLSv1.2");
+sub get_sslprotos
+{
+my @sslprotos = ("SSLv2", "SSLv3", "TLSv1" );
+if ($httpd_modules{'core'} >= 2.223) {
+	push(@sslprotos, "TLSv1.1", "TLSv1.2");
+	}
+return @sslprotos;
+}
+
 sub edit_SSLProtocol
 {
 local ($rv, $p, %prot);
 local @list = $_[0] ? @{$_[0]->{'words'}} : ("all");
 foreach $p (@list) {
-	if ($p =~ /^\+?all$/i) { map { $prot{lc($_)} = 1 } @sslprotos; }
+	if ($p =~ /^\+?all$/i) { map { $prot{lc($_)} = 1 } &get_sslprotos(); }
 	elsif ($p =~ /^\-all$/i) { undef(%prot); }
 	elsif ($p =~ /^\-(\S+)/) { $prot{lc($1)} = 0; }
 	elsif ($p =~ /^\+(\S+)/) { $prot{lc($1)} = 1; }
 	}
-foreach $p (@sslprotos) {
+foreach $p (&get_sslprotos()) {
 	$rv .= sprintf "<input type=checkbox name=SSLProtocol value=$p %s> $p ",
 		$prot{lc($p)} ? "checked" : "";
 	}
@@ -54,7 +62,7 @@ return (1, $text{'mod_ssl_proto'}, $rv);
 sub save_SSLProtocol
 {
 local @sel = split(/\0/, $in{'SSLProtocol'});
-if (scalar(@sel) == scalar(@sslprotos)) { return ( [ ] ); }
+if (scalar(@sel) == scalar(&get_sslprotos())) { return ( [ ] ); }
 return ( [ join(" ", (map { "+$_" } @sel)) ] );
 }
 
