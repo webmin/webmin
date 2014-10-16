@@ -50,11 +50,9 @@ print &ui_table_row($text{'ssl_cert'},
 print &ui_table_row($text{'ssl_redirect'},
 	&ui_yesno_radio("ssl_redirect", $miniserv{'ssl_redirect'}), undef, [ "valign=middle","valign=middle" ]);
 
-if ($miniserv{'ssl_version'}) {
-	print &ui_table_row($text{'ssl_version'},
-		&ui_opt_textbox("version", $miniserv{'ssl_version'}, 4,
-				$text{'ssl_auto'}), undef, [ "valign=middle","valign=middle" ]);
-	}
+print &ui_table_row($text{'ssl_version'},
+	&ui_opt_textbox("version", $miniserv{'ssl_version'}, 4,
+			$text{'ssl_auto'}), undef, [ "valign=middle","valign=middle" ]);
 
 print &ui_table_row($text{'ssl_compression'},
 	&ui_yesno_radio("ssl_compression", !$miniserv{'no_sslcompression'}), undef, [ "valign=middle","valign=middle" ]);
