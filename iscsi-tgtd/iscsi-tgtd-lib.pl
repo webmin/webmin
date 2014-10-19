@@ -19,6 +19,7 @@ our ($list_disks_partitions_cache, $get_raidtab_cache,
 # missing
 sub check_config
 {
+return $text{'check_econfigset'} if (!$config{'config_file'});
 return &text('check_econfig', "<tt>$config{'config_file'}</tt>")
 	if (!-r $config{'config_file'});
 return &text('check_etgtadm', "<tt>$config{'tgtadm'}</tt>")
