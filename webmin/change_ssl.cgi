@@ -37,6 +37,7 @@ else {
 	$in{'cipher_list'} =~ /^\S+$/ || &error($text{'ssl_ecipher_list'});
 	$miniserv{'ssl_cipher_list'} = $in{'cipher_list'};
 	}
+$miniserv{'cipher_list_def'} = $in{'cipher_list_def'};
 foreach $ec (split(/[\r\n]+/, $in{'extracas'})) {
 	-r $ec && !-d $ec || &error(&text('ssl_eextraca', $ec));
 	push(@extracas, $ec);
