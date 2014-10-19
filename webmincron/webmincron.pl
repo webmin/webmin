@@ -13,6 +13,9 @@ for(my $i=0; defined($cron->{'arg'.$i}); $i++) {
 	push(@args, $cron->{'arg'.$i});
 	}
 
+# Force webmin script type to be cron
+$main::webmin_script_type = 'cron';
+
 # Require the module, call the function
 &foreign_require($cron->{'module'}, $cron->{'file'});
 &foreign_call($cron->{'module'}, $cron->{'func'}, @args);
