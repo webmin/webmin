@@ -14,5 +14,23 @@ if (!defined($config{'uphour'}) ||
 	$config{'upmins'} = int(rand()*60);
 	&save_module_config();
 	}
+
+# Figure out the preferred cipher mode
+&lock_file("$config_directory/miniserv.conf");
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+if (!defined($miniserv{'cipher_list_def'})) {
+	my $clist = $miniserv{'ssl_cipher_list'};
+	my $cmode = !$clist ? 1 :
+		    $clist eq $strong_ssl_ciphers ? 2 :
+		    $clist eq $pfs_ssl_ciphers ? 3 :
+		    0;
+	$miniserv{'cipher_list_def'} = $cmode;
+	&put_miniserv_config(\%miniserv);
+	}
+else {
+	# XXX set actual ciphers based on mode
+	}
+&unlock_file("$config_directory/miniserv.conf");
 }
 
