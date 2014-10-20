@@ -1,7 +1,7 @@
 name=SSHD
 desc=SSH Server
 category=servers
-desc_pl=Serwer SSH
+desc_pl=SSH - Serwer
 desc_ca=Servidor SSH
 desc_es=Servidor SSH
 desc_de=SSH-Server

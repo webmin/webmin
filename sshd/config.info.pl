@@ -1,5 +1,10 @@
+line2=Konfiguracja systemu,11
 sshd_path=Pe³na ¶cie¿ka do programu <tt>sshd</tt>,0
 sshd_config=Pe³na ¶cie¿ka do pliku konfiguracyjnego sshd,0
 client_config=Pe³na ¶cie¿ka do pliku konfiguracyjnego klienta ssh,0
 pid_file=Pe³na ¶cie¿ka do pliku z&nbsp;numerem PID sshd,0
-start_cmd=Polecenie uruchamiaj±ce sshd,3,Po prostu uruchomiæ serwer
+start_cmd=Polecenie uruchamiaj±ce sshd,3,Tylko uruchom serwer
+restart_cmd=Polecenie do zastosowania konfiguracji SSHD,3,Tylko wy¶lij sygna³ HUP
+stop_cmd=Polecenie do zatrzymania sshd,3,Tylko zabij proces
+keygen_path=Pe³na ¶cie¿ka do programu ssh-keygen,0
+sshd_version=Wersja serwera SSH,3,Wykryj automatycznie
