@@ -20,6 +20,7 @@ if (!defined($config{'uphour'}) ||
 my %miniserv;
 &get_miniserv_config(\%miniserv);
 if (!defined($miniserv{'cipher_list_def'})) {
+	# No mode set, so guess based on ciphers
 	my $clist = $miniserv{'ssl_cipher_list'};
 	my $cmode = !$clist ? 1 :
 		    $clist eq $strong_ssl_ciphers ? 2 :
@@ -28,8 +29,11 @@ if (!defined($miniserv{'cipher_list_def'})) {
 	$miniserv{'cipher_list_def'} = $cmode;
 	&put_miniserv_config(\%miniserv);
 	}
-else {
-	# XXX set actual ciphers based on mode
+elsif ($miniserv{'cipher_list_def'} == 2 || $miniserv{'cipher_list_def'} == 3) {
+	# Sync ciphers with Webmin's preferred list
+	$miniserv{'ssl_cipher_list'} = $miniserv{'cipher_list_def'} == 2 ?
+		$strong_ssl_ciphers : $pfs_ssl_ciphers;
+	&put_miniserv_config(\%miniserv);
 	}
 &unlock_file("$config_directory/miniserv.conf");
 }

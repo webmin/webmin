@@ -1,3 +1,4 @@
+check_econfigset=No iSCSI TGTd configuration file set!
 check_econfig=The iSCSI TGTd configuration file $1 was not found on your system.
 check_etgtadm=The iSCSI TGTd administration command $1 was not found on your system.
 check_einit=Bootup action $1 does not exist

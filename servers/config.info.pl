@@ -1,2 +1,16 @@
+line1=Opcje konfiguracyjne,11
 resolve=Rozwi±zywaæ znalezione adresy serwerów,1,1-Tak,0-Nie
 scan_time=Czas oczekiwania na wynik skanowania,0
+listen=Skanuj serwery na porcie UDP,3,Takim samym jak ten system
+display_mode=Wy¶wietl serwery jako,1,1-Tabela,0-Ikony
+sort_mode=Sortuj serwery wed³ug,4,4-Adresów IP,1-Nazwy hostów,2-Opisów,3-OS,5-Grup,0-Kolejno¶ci utworzenia
+show_status=Wy¶wietl stan serwerów,1,1-Tak,0-Nie
+show_ip=Zawsze wy¶wietlaj adres i port na stronie g³ównej,1,1-Tak,0-Nie
+deflink=Domy¶lny tryb logowania,4,0-Normalne po³±czenie do serwera,1-Loguj przez Webmin,2-Loguj po klikniêciu na ikonê,3-Loguj z samym loginem i has³em
+deffast=Domy¶lny tryb RPC,1,1-Szybki,2-Automatyczny,0-Wolny
+auto_type=Domy¶lny typ systemu,14,show_deftype
+skipips=Adresy IP lub nazwy hostów systemu nie zosta³y wykryte,9,50,5,\t
+skipifaces=Interfejs sieci nie zosta³ wykryty,0
+max_servers=Poka¿ formularz wyszukiwania, je¶li liczba serwerów przekracza,0
+line2=Ustawienia systemowe,11
+groups_dir=Grupy katalogu klastra MSC,0
