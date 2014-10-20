@@ -2472,9 +2472,6 @@ if (!ref($h)) {
 &write_http_connection($h, $content."\r\n");
 &complete_http_download($h, $dest, $error, $cbfunc, $osdn, $host, $port,
 			$headers, $ssl, $nocache);
-if ((!$error || !$$error) && !$nocache) {
-	&write_to_http_cache($url, $dest);
-	}
 }
 
 =head2 ftp_download(host, file, destfile, [&error], [&callback], [user, pass], [port], [no-cache])
