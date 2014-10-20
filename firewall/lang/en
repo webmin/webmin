@@ -125,7 +125,7 @@ desc_conds=If $1
 desc_and=and
 desc_always=Always
 
-redhat_escript=The Redhat IPtables startup script $1 was not found on your system.
+redhat_einstalled=No <tt>iptables</tt> bootup action was found, indicating that the IPtables package is not installed on your system
 redhat_eoutput=An error occured getting IPtables status from the command $1. This probably indicates that your system has been configured to use IPchains instead of IPtables.
 
 gentoo_escript=The Gentoo IPtables startup script $1 was not found on your system.
