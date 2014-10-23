@@ -1,6 +1,7 @@
 atboot_einit=Init-Skript $1 existiert nicht
 atboot_err=Fehlgeschlagen beim booten zu aktivieren
 check_econfig=Die iSCSI-TGTd-Konfigurationsdatei $1 wurde nicht auf Ihrem System gefunden.
+check_econfigset=Kein iSCSI TGTd Konfigurationsdatei!
 check_einit=Systemstart Aktion $1 existiert nicht
 check_etgtadm=Der iSCSI-TGTd-Verwaltungsbefehl $1 wurde nicht auf Ihrem System gefunden.
 dtargets_enone=Nichts ausgew&#228;hlt!
