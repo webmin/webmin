@@ -1304,16 +1304,19 @@ elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 			&write_keep_alive(0);
 			&write_data("\r\n");
 			return 0;
-			}
-		else {
+		} elsif ($config{'display_admin_url'} == 1) {
 			# Tell user the correct URL
 			&http_error(200, "Document follows",
 				"This web server is running in SSL mode. ".
 				"Try the URL <a href='$url'>$url</a> ".
 				"instead.<br>");
-			}
+		} else {
+			# Throw an error
+			&http_error(404, "Page not found",
+				"The requested URL was not found on this server ".
+				"try <a href='/'>visiting the home page</a> of this site to see what you can find <br>");
 		}
-	elsif (ord(substr($reqline, 0, 1)) == 128 && !$use_ssl) {
+	} elsif (ord(substr($reqline, 0, 1)) == 128 && !$use_ssl) {
 		# This could be an https request when it should be http ..
 		# need to fake a HTTP response
 		eval <<'EOF';
@@ -1360,11 +1363,15 @@ elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 				&write_keep_alive(0);
 				&write_data("\r\n");
 				return 0;
-				}
-			else {
+			} elsif ($config{'display_admin_url'} == 1) {
 				# Tell user the correct URL
 				&http_error(200, "Bad Request", "This web server is not running in SSL mode. Try the URL <a href='$url'>$url</a> instead.<br>");
-				}
+			} else {
+				&http_error(404, "Page not found",
+					"The requested URL was not found on this server ".
+					"try <a href='/'>visiting the home page</a> of this site to see what you can find <br>"
+					);
+			}
 EOF
 		if ($@) {
 			&http_error(400, "Bad Request");
