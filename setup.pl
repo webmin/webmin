@@ -386,6 +386,7 @@ else {
 			'userfile' => $ufile,
 			'keyfile' => $kfile,
 			'preload' => 'main=web-lib-funcs.pl',
+			'display_admin_url' => 1,
 			 );
 	if ($ENV{'allow'}) {
 		$miniserv{'allow'} = $ENV{'allow'};
