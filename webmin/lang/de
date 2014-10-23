@@ -656,6 +656,7 @@ ssl_csrfile=Schreibe CSR in Datei
 ssl_current=Dieser Abschnitt zeigt die Details des aktuellen Webmin SSL-Zertifikat und erlaubt es, so heruntergeladen zu werden, dass es von Ihrem Browser akzeptiert werden kann.
 ssl_custom=Benutzerdefinierte Gr&#246;&#223;e
 ssl_days=Tage vor Ablauf
+ssl_deny=SSL-Protokoll-Versionen zur&#252;ckweisen
 ssl_desc1=Auf dem Host, auf dem Webmin l&#228;uft, scheint das Perl-Modul SSLeay  installiert zu sein. Damit unterst&#252;tzt Webmin SSL-verschl&#252;sselte Kommunikationen zwischen Ihrem Browser und dem Server. Wenn Sie auf Ihren Webmin-Server &#252;ber das Internet zugreifen, dann sollten Sie auf jeden Fall in Betracht ziehen, SSL zu benutzen, um zu verhindern, dass ein Eindringling Ihr Webmin-Kennwort abf&#228;ngt.
 ssl_desc2=Warnung - aktivieren Sie die SSL-Unterst&#252;tzung nur, wenn Sie einen Browser benutzen, der SSL unterst&#252;tzt und wenn es keine Firewall zwischen Ihnen und dem Webmin-Server gibt, die <b>https</b> Anfragen blockiert.
 ssl_download=Download Zertifikat
