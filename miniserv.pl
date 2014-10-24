@@ -1304,7 +1304,7 @@ elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 			&write_keep_alive(0);
 			&write_data("\r\n");
 			return 0;
-		} elsif ($config{'display_admin_url'} == 1) {
+		} elsif ($config{'display_admin_url'} != 0) {
 			# Tell user the correct URL
 			&http_error(200, "Document follows",
 				"This web server is running in SSL mode. ".
@@ -1363,7 +1363,7 @@ elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 				&write_keep_alive(0);
 				&write_data("\r\n");
 				return 0;
-			} elsif ($config{'display_admin_url'} == 1) {
+			} elsif ($config{'display_admin_url'} != 0) {
 				# Tell user the correct URL
 				&http_error(200, "Bad Request", "This web server is not running in SSL mode. Try the URL <a href='$url'>$url</a> instead.<br>");
 			} else {
