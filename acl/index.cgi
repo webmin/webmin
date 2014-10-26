@@ -233,6 +233,7 @@ if (@icons) {
 sub show_modules
 {
 my ($type, $who, $mods, $global, $prefix) = @_;
+$mods || = [ ];
 my $rv;
 if ($config{'select'}) {
 	# Show as drop-down menu
