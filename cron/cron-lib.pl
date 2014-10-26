@@ -716,8 +716,10 @@ like /etc/cron.hourly. Returns undef otherwise.
 =cut
 sub is_run_parts
 {
+local ($cmd) = @_;
 local $rp = $config{'run_parts'};
-return $rp && $_[0] =~ /$rp(.*)\s+(\-\-\S+\s+)*([a-z0-9\.\-\/_]+)(\s*\))?$/i ? $3 : undef;
+$cmd =~ s/\s*#.*$//;
+return $rp && $cmd =~ /$rp(.*)\s+(\-\-\S+\s+)*([a-z0-9\.\-\/_]+)(\s*\))?$/i ? $3 : undef;
 }
 
 =head2 can_edit_user(&access, user)
