@@ -69,6 +69,11 @@ else {
 		&error($text{'save_esize'});
 	&save_directive($log, "size", $in{'size_def'} ? undef : $in{'size'});
 
+	$in{'minsize_def'} || $in{'minsize'} =~ /^\d+[kM]?$/ ||
+		&error($text{'save_eminsize'});
+	&save_directive($log, "minsize",
+			$in{'minsize_def'} ? undef : $in{'minsize'});
+
 	$in{'rotate_def'} || $in{'rotate'} =~ /^\d+$/ ||
 		&error($text{'save_erotate'});
 	&save_directive($log, "rotate", $in{'rotate_def'} ? undef
