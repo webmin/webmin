@@ -1,7 +1,7 @@
 atboot_einit=Init-Skript $1 existiert nicht
 atboot_err=Fehlgeschlagen beim booten zu aktivieren
 check_econfig=Die iSCSI-TGTd-Konfigurationsdatei $1 wurde nicht auf Ihrem System gefunden.
-check_econfigset=Kein iSCSI TGTd Konfigurationsdatei!
+check_econfigset=Keine iSCSI TGTd-Konfigurationsdatei!
 check_einit=Systemstart Aktion $1 existiert nicht
 check_etgtadm=Der iSCSI-TGTd-Verwaltungsbefehl $1 wurde nicht auf Ihrem System gefunden.
 dtargets_enone=Nichts ausgew&#228;hlt!
@@ -91,7 +91,7 @@ target_ro=Nur lesen
 target_sectors=Sektoren
 target_title1=Erstelle iSCSI Ziel
 target_title2=Editiere iSCSI Ziel
-target_type=IO Typ
+target_type=Speicher-Typ
 target_uname=Benutzername
 target_upass=Passwort
 target_wb=Write-back caching
