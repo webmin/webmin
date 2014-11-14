@@ -24,7 +24,7 @@ print &ui_table_row($text{'acl_user'},
 			      $o->{'user'} eq "*" ? 2 : 0,
 		  [ [ 1, $text{'acl_this'} ],
 		    [ 2, $text{'acl_any'} ],
-		    [ 0, &ui_userbox("user", $o->{'user'} eq "*" ? "" :
+		    [ 0, &ui_user_textbox("user", $o->{'user'} eq "*" ? "" :
 						$o->{'user'}, 20) ] ]));
 
 print &ui_table_row($text{'acl_dir'},
