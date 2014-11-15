@@ -9999,9 +9999,10 @@ possible keys :
 
 =item type - Can by "item" for a regular menu item, "cat" for a category which
              will have sub-items (members), "html" for an arbitrary HTML block,
-	     or "menu" for a selector
+	     "text" for a link of text, "hr" for a separator, "menu" for a
+	     selector or "input" for a text box.
 
-=item desc - The text of the object
+=item desc - The text that should be displayed for the object
 
 =item icon - Desired icon path, like /module/images/foo.gif
 
@@ -10015,6 +10016,13 @@ possible keys :
 
 =item menu - Array ref of array refs, each containing a the value and displayed
 	     text for a entry in the selector when using "menu" types
+
+=item name - For an "input" item or "menu" item, the name of the selector or
+	     HTML text box
+
+=item size - For an "item" item, desired width of the text box
+
+=item cgi - CGI script that the "menu" or "input" type item should submit to
 
 =cut
 sub list_combined_webmin_menu
