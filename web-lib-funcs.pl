@@ -9987,6 +9987,49 @@ foreach my $e (@_) {
 return @rv;
 }
 
+=head2 list_combined_webmin_menu(&data)
+
+Returns an array of objects, each representing a menu item that a theme should
+render such as on a left menu. Each object is a hash ref with the following
+possible keys :
+
+=item module - The Webmin module that supplied this object
+
+=item id - A unique ID for the object
+
+=item type - Can by "item" for a regular menu item, "cat" for a category which
+             will have sub-items (members), "html" for an arbitrary HTML block,
+	     or "menu" for a selector
+
+=item desc - The text of the object
+
+=item icon - Desired icon path, like /module/images/foo.gif
+
+=item link - URL that the object should link to, for "item" types
+
+=item members - Array ref of further objects, for the "cat" type
+
+=item open - Set to 1 if the category should be open by default, for "cat" types
+
+=item html - HTML to display for this object, for "html" types
+
+=item menu - Array ref of array refs, each containing a the value and displayed
+	     text for a entry in the selector when using "menu" types
+
+=cut
+sub list_combined_webmin_menu
+{
+my ($data) = @_;
+foreach my $m (&get_available_module_infos()) {
+	my $dir = &module_root_directory($m->{'dir'});
+	my $mfile = "$dir/webmin_menu.pl";
+	next if (!-r $mfile);
+	&foreign_require($m->{'dir'}, "webmin_menu.pl");
+	push(@rv, &foreign_call($m->{'dir'}, "list_webmin_menu", $data));
+	}
+return @rv;
+}
+
 $done_web_lib_funcs = 1;
 
 1;
