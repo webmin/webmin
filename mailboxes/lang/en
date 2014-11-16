@@ -438,4 +438,16 @@ delall_ok=Delete Now
 slide_title=Attached Images
 slide_prev=Previous
 slide_next=Next
+
+left_mail=Mail
+left_search=Search:
+left_folders=Manage Folders
+left_addresses=Address Book
+left_prefs=Mail Preferences
+left_forward=Forward Email
+left_autoreply=Automatic Reply
+left_filter=Email Filters
+left_pass=Change Password
+left_sig=Edit Signature
+
 __norefs=1
