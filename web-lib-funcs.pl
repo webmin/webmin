@@ -9999,8 +9999,9 @@ possible keys :
 
 =item type - Can by "item" for a regular menu item, "cat" for a category which
              will have sub-items (members), "html" for an arbitrary HTML block,
-	     "text" for a link of text, "hr" for a separator, "menu" for a
-	     selector or "input" for a text box.
+	     "text" for a line of text, "hr" for a separator, "menu" for a
+	     selector, "input" for a text box, or "title" for a desired menu
+	     title.
 
 =item desc - The text that should be displayed for the object
 
@@ -10033,7 +10034,10 @@ foreach my $m (&get_available_module_infos()) {
 	my $mfile = "$dir/webmin_menu.pl";
 	next if (!-r $mfile);
 	&foreign_require($m->{'dir'}, "webmin_menu.pl");
-	push(@rv, &foreign_call($m->{'dir'}, "list_webmin_menu", $data));
+	foreach my $i (&foreign_call($m->{'dir'}, "list_webmin_menu", $data))) {
+		$i->{'module'} = $m->{'dir'};
+		push(@rv, $i);
+		}
 	}
 return @rv;
 }
