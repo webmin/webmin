@@ -1421,7 +1421,8 @@ local $gtidsql = "";
 eval {
 	$main::error_must_die = 1;
 	local $d = &execute_sql($master_db, "show variables like 'gtid_mode'");
-	if (@{$d->{'data'}} && uc($d->{'data'}->[0]->[1]) eq 'ON') {
+	if (@{$d->{'data'}} && uc($d->{'data'}->[0]->[1]) eq 'ON' &&
+	    $mysql_version >= 5.6) {
 		# Add flag to support GTIDs
 		$gtidsql = "--set-gtid-purged=OFF";
 		}
