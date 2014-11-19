@@ -8,7 +8,7 @@ $heiropen_file = "$module_config_directory/heiropen";
 
 # Use the appropriate function set for whatever package management system
 # we are using.
-do "$config{package_system}-lib.pl";
+do "$config{'package_system'}-lib.pl";
 
 if ($config{'update_system'} eq '*') {
 	# User specifically doesn't want any
@@ -209,6 +209,15 @@ return undef;
 # Returns -1 if ver1 is older than ver2, 1 if newer, 0 if same
 sub compare_versions
 {
+local ($ver1, $rel1) = split(/-/, $_[0], 2);
+local ($ver2, $rel2) = split(/-/, $_[1], 2);
+if ($rel1 ne "" && $rel2 ne "" && $config{'package_system'} eq 'rpm') {
+	# If two RPM packages have releases, then the version part comparison
+	# must be done first and separately so that release number parts don't
+	# override version parts.
+	return &compare_versions($ver1, $ver2) ||
+	       &compare_versions($rel1, $rel2);
+	}
 local @sp1 = split(/[\.\-\+\~]/, $_[0]);
 local @sp2 = split(/[\.\-\+\~]/, $_[1]);
 for(my $i=0; $i<@sp1 || $i<@sp2; $i++) {
@@ -239,8 +248,8 @@ for(my $i=0; $i<@sp1 || $i<@sp2; $i++) {
 				}
 			}
 		}
-	elsif ($v1 =~ /^([^0-9]+)(\d+)$/ && $v2 !~ /^([^0-9]+)(\d+)$/ &&
-	       $1 ne $2) {
+	elsif ($v1 =~ /^([^0-9]+)(\d+)$/ && $v2 =~ /^([^0-9]+)(\d+)$/ &&
+	       $1 eq $2) {
 		# Strings that are the same followed by numeric
 		$comp = $v1 <=> $v2;
 		}
