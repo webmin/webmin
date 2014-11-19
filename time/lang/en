@@ -20,8 +20,8 @@ index_descsync=This form is for configuring the system to automatically synchron
 
 action_save=Save
 action_apply=Apply
-action_sync=Set system time to hardware time
-action_sync_s=Set hardware time to system time
+action_sync=Set system time according to hardware time
+action_sync_s=Set hardware time according to system time
 action_timeserver_sys=Sync system time
 action_timeserver_hw=Sync hardware time
 action_savezone=Change timezone
