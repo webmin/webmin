@@ -18,8 +18,9 @@ $access{'buser'} || &error($text{'dbase_ecannot'});
 				   : $text{'backup_title'}, "",
 	"backup_form");
 
-if (!-x $config{'mysqldump'}) {
-	print &text('backup_edump', "<tt>$config{'mysqldump'}</tt>",
+($cmd) = split(/\s+/, $config{'mysqldump'});
+if (!-x $cmd) {
+	print &text('backup_edump', "<tt>$cmd</tt>",
 			  "../config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'});
 	exit;
