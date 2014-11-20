@@ -44,7 +44,6 @@ target_egone=Selected target no longer exists!
 target_none=Nothing
 target_null=Temporary RAM disk of size
 target_sectors=sectors
-target_type=IO type
 target_fileio=File based
 target_blockio=Block based (no caching, for devices only)
 target_iomode=IO mode
