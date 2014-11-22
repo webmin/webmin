@@ -9987,7 +9987,7 @@ foreach my $e (@_) {
 return @rv;
 }
 
-=head2 list_combined_webmin_menu(&data)
+=head2 list_combined_webmin_menu(&data, &in)
 
 Returns an array of objects, each representing a menu item that a theme should
 render such as on a left menu. Each object is a hash ref with the following
@@ -10023,18 +10023,24 @@ possible keys :
 
 =item size - For an "item" item, desired width of the text box
 
-=item cgi - CGI script that the "menu" or "input" type item should submit to
+=item cgi - CGI script that the "menu" or "input" type item should submit to.
+	    If missing, the form submits to the same menu page.
+
+The &data parameter is a hash ref of additional information that the theme
+supplies to all modules. The &in param is the CGI inputs from the menu, for
+use where the menu has a form that submits to itself.
 
 =cut
 sub list_combined_webmin_menu
 {
-my ($data) = @_;
+my ($data, $in) = @_;
 foreach my $m (&get_available_module_infos()) {
 	my $dir = &module_root_directory($m->{'dir'});
 	my $mfile = "$dir/webmin_menu.pl";
 	next if (!-r $mfile);
 	&foreign_require($m->{'dir'}, "webmin_menu.pl");
-	foreach my $i (&foreign_call($m->{'dir'}, "list_webmin_menu", $data))) {
+	foreach my $i (&foreign_call($m->{'dir'}, "list_webmin_menu",
+				     $data, $in)) {
 		$i->{'module'} = $m->{'dir'};
 		push(@rv, $i);
 		}
