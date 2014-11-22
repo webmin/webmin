@@ -29,7 +29,7 @@ $standard_usermin_dir = "/etc/usermin";
 $latest_rpm = "http://www.webmin.com/download/usermin-latest.noarch.rpm";
 $latest_tgz = "http://www.webmin.com/download/usermin-latest.tar.gz";
 
-$default_key_size = 512;
+$default_key_size = 2048;
 
 $cron_cmd = "$module_config_directory/update.pl";
 
