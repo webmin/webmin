@@ -71,7 +71,7 @@ if ($c || 1) {
 
 	# Grant item
 	print &ui_table_row($text{'conn_give'},
-		&ui_textbox("id", undef, 5).
+		&ui_textbox("id", undef, 20).
 		&item_chooser_button("id")." ".
 		$text{'conn_count'}." ".
 		&ui_textbox("count", 1, 5)." ".

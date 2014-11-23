@@ -437,13 +437,13 @@ return timelocal($s, $m, $h, $d, $mo-1, $y-1900);
 sub item_chooser_button
 {
 my ($field) = @_;
-return "<input type=button onClick='ifield = document.forms[0].$field; chooser = window.open(\"item_chooser.cgi?item=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=400,height=600\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
+return "<input type=button onClick='ifield = document.forms[0].$field; chooser = window.open(\"item_chooser.cgi?item=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=600,height=600\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
 }
 
 # list_minecraft_items()
 # Returns a list of hash refs with id and name keys
 # CSV generated with :
-# wget -O - http://minecraft-ids.grahamedgecombe.com/ | grep /items/ | perl -ne 's/.*items.([0-9:]+)">([^<]+)<.*/$1,$2/; print ' > items.csv
+# items-page-to-csv.pl > items.csv
 sub list_minecraft_items
 {
 my $fh = "ITEMS";
@@ -451,9 +451,10 @@ my $fh = "ITEMS";
 my @rv;
 while(<$fh>) {
 	s/\r|\n//g;
-	my ($id, $name) = split(/,/, $_);
+	my ($id, $name, $desc) = split(/,/, $_);
 	push(@rv, { 'id' => $id,
-		    'name' => $name });
+		    'name' => $name,
+		    'desc' => $desc });
 	}
 close($fh);
 return @rv;

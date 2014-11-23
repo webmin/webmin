@@ -7,6 +7,7 @@ require './minecraft-lib.pl';
 our (%in, %text);
 &ReadParse();
 &error_setup($text{'conn_err'});
+my $uuid = &uuid_to_username($in{'name'});
 
 my $msg;
 if ($in{'msg'}) {
@@ -27,12 +28,16 @@ elsif ($in{'kick'}) {
 	}
 elsif ($in{'give'}) {
 	# Give an item
-	$in{'id'} =~ /^\d+$/ || &error($text{'conn_eid'});
+	$in{'id'} =~ /^\S+$/ || &error($text{'conn_eid'});
+	my $data = "";
+	if ($in{'id'} =~ s/:(\d+)$//) {
+		$data = $1;
+		}
 	$in{'count'} =~ /^\d+$/ || &error($text{'conn_ecount'});
 	my ($i) = grep { $_->{'id'} eq $in{'id'} }
 		       &list_minecraft_items();
 	my $out = &execute_minecraft_command(
-		"/give $in{'name'} $in{'id'} $in{'count'}");
+		"/give $in{'name'} $in{'id'} $in{'count'} $data");
 	$out =~ /Given.*\Q$in{'name'}\E/ ||
 		&error(&html_escape($out));
 	$msg = &text('conn_givedone', $i ? $i->{'name'} : $in{'id'},

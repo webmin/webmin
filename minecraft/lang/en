@@ -211,6 +211,7 @@ world_download=Download ZIP File
 
 chooser_title=Select Item
 chooser_id=Item ID
+chooser_num=Item Num
 chooser_name=Item name
 chooser_none=No items matched your search
 chooser_search=Show items matching

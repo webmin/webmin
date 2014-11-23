@@ -34,13 +34,19 @@ if ($in{'search'}) {
 
 if (@items) {
 	print &ui_columns_start([ $text{'chooser_id'},
+				  $text{'chooser_num'},
 				  $text{'chooser_name'} ]);
 	foreach my $i (@items) {
+		my $sel = $i->{'name'};
+		if ($i->{'id'} =~ /:(\d+)$/) {
+			$sel .= ":".$1;
+			}
 		print &ui_columns_row([
-			"<a href='' onClick='return select(\"$i->{'id'}\")'>".
-			  $i->{'id'}."</a>",
-			&html_escape($i->{'name'}),
-			]);
+		    "<a href='' onClick='return select(\"$sel\")'>".
+		      $i->{'name'}."</a>",
+		    $i->{'id'},
+		    &html_escape($i->{'desc'}),
+		    ]);
 		}
 	print &ui_columns_end();
 	}
