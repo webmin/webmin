@@ -20,6 +20,7 @@ check_ejava=Das ausf&#252;hrbare Java $1 wurde nicht gefunden
 chooser_id=Item ID
 chooser_name=Item Name
 chooser_none=Keine items passt zu Ihrer Suche
+chooser_num=Item Nummer
 chooser_ok=Suchen
 chooser_search=Zeige item Treffer
 chooser_title=W&#228;hle item
