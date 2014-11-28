@@ -222,7 +222,7 @@ if ($in{'adddir'} && $in{'root'}) {
 			{ 'name' => 'allow',
 			  'value' => 'from all' },
 			{ 'name' => 'Options',
-			  'value' => '+Indexes' },
+			  'value' => 'None' },
 			] });
 	}
 
