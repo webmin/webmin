@@ -42,7 +42,7 @@ print &text('session_blockuser',
 eval "use Sys::Syslog qw(:DEFAULT setlogsock)";
 if (!$@) {
 	printf "<input type=checkbox name=syslog value=1 %s> %s\n",
-		$miniserv{'syslog'} ? "checked" : "", $text{'session_syslog2'};
+		$miniserv{'syslog'} ? "checked" : "", $text{'session_syslog3'};
 	}
 else {
 	print "<input type=hidden name=syslog value='$miniserv{'syslog'}'>\n";
