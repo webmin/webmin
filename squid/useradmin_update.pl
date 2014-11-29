@@ -86,7 +86,7 @@ return if (!$file);
 my $name = $_[0]->{'user'};
 my $oldname = $_[1]->{'user'};
 my $pass = $_[0]->{'plainpass'};
-return if ($name eq $oldname && $_[0]->{'passmode'} == 4);
+return if ($oldname && $name eq $oldname && $_[0]->{'passmode'} == 4);
 
 &lock_file($file);
 my @users = &list_auth_users($file);
