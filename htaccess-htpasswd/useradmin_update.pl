@@ -1,5 +1,7 @@
 
-do 'htaccess-lib.pl';
+if (!$main::done_foreign_require{"htaccess_htpasswd","htaccess-lib.pl"}) {
+	require 'htaccess-lib.pl';
+	}
 
 sub useradmin_create_user
 {
@@ -69,3 +71,4 @@ foreach $dir (&list_directories()) {
 	}
 }
 
+1;
