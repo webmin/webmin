@@ -2748,7 +2748,7 @@ for($i=2; $i<@_; $i++) {
 		}
 	elsif ($_[$i] =~ /^\*(\S+)$/) {
 		# Compare with hostname regexp
-		$mismatch = 1 if ($hn !~ /$1$/);
+		$mismatch = 1 if ($hn !~ /^.*\Q$1\E$/i);
 		}
 	elsif ($_[$i] eq 'LOCAL' && &check_ipaddress($_[1])) {
 		# Compare with local IPv4 network
