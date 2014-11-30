@@ -2733,10 +2733,11 @@ for($i=2; $i<@_; $i++) {
 				}
 			}
 		}
-	elsif ($_[$i] =~ /^(\S+)-(\S+)$/) {
+	elsif ($_[$i] =~ /^([0-9\.]+)-([0-9\.]+)$/) {
 		# Compare with an IPv4 range (separated by a hyphen -)
 		local ($remote, $min, $max);
-		@low = split(/\./, $1); @high = split(/\./, $2);
+		local @low = split(/\./, $1);
+		local @high = split(/\./, $2);
 		for($j=0; $j<4; $j++) {
 			$remote += $io[$j] << ((3-$j)*8);
 			$min += $low[$j] << ((3-$j)*8);
