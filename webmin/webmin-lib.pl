@@ -1451,7 +1451,7 @@ for(my $i=1; $i<@_; $i++) {
 				}
 			}
 		}
-	elsif ($_[$i] =~ /^(\S+)-(\S+)$/) {
+	elsif ($_[$i] =~ /^([0-9\.]+)-([0-9\.]+)$/) {
 		# Compare with an IPv4 range (separated by a hyphen -)
 		my ($remote, $min, $max);
 		my @low = split(/\./, $1);
@@ -1467,7 +1467,7 @@ for(my $i=1; $i<@_; $i++) {
 		}
 	elsif ($ip =~ /^\*(\.\S+)$/) {
 		# Compare with hostname regexp
-		$mismatch = 1 if ($hn !~ /$1$/);
+		$mismatch = 1 if ($hn !~ /^.*\Q$1\E$/i);
 		}
 	elsif ($ip eq 'LOCAL') {
 		# Just assume OK for now
