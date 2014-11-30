@@ -166,7 +166,8 @@ fi
 # Save /etc/webmin in case the upgrade trashes it
 if [ "\$1" != 1 ]; then
 	rm -rf /etc/.webmin-backup
-	cp -r /etc/webmin /etc/.webmin-backup
+	mkdir /etc/.webmin-backup
+	(cd /etc/webmin && tar --exclude history --exclude bandwidth --exclude usage -c -f - .) | (cd /etc/.webmin-backup && tar -x -f -)
 fi
 # Put back old /etc/webmin saved when an RPM was removed
 if [ "\$1" = 1 -a ! -d /etc/webmin -a -d /etc/webmin.rpmsave ]; then
