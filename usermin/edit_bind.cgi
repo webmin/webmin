@@ -18,6 +18,7 @@ my @sockets = &webmin::get_miniserv_sockets(\%miniserv);
 # Show table of all bound IPs and ports
 my $stable = &ui_columns_start([ $text{'bind_sip'}, $text{'bind_sport'} ]);
 my $i = 0;
+my @ports;
 foreach $s (@sockets, [ undef, "*" ]) {
 	# IP address
 	my @cols;
@@ -36,9 +37,14 @@ foreach $s (@sockets, [ undef, "*" ]) {
 	     [ 1, $text{'bind_sport1'} ] ])." ".
 	      &ui_textbox("port_$i", $s->[1] eq "*" ? undef : $s->[1],5));
 	$stable .= &ui_columns_row(\@cols, [ "nowrap", "nowrap" ]);
+	push(@ports, $s->[1]) if ($s->[1] && $s->[1] ne "*");
 	$i++;
 	}
 $stable .= &ui_columns_end();
+if (&foreign_check("firewall")) {
+        print &ui_hidden("oldports", join(" ", @ports));
+        $stable .= &ui_checkbox("firewall", 1, $text{'bind_firewall'}, 1);
+        }
 print &ui_table_row($text{'bind_sockets'}, $stable);
 
 # IPv6 enabled?

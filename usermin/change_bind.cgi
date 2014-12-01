@@ -31,6 +31,7 @@ for($i=0; defined($in{"ip_def_$i"}); $i++) {
 		$port = "*";
 		}
 	push(@sockets, [ $ip, $port ]);
+	push(@ports, $port) if ($port && $port ne "*");
 	}
 @sockets || &error($text{'bind_enone'});
 $in{'hostname_def'} || $in{'hostname'} =~ /^[a-z0-9\.\-]+$/i ||
@@ -39,6 +40,18 @@ if ($in{'ipv6'}) {
 	eval "use Socket6";
 	$@ && &error(&text('bind_eipv6', "<tt>Socket6</tt>"));
 	}
+
+# For any new ports, check if they are already in use
+@oldports = split(/\s+/, $in{'oldports'});
+@newports = &unique(grep { &indexof($_, @oldports) < 0 } @ports);
+if (&has_command("lsof")) {
+        foreach my $p (@newports) {
+                $out = &backquote_command("lsof -t -i tcp:$p 2>/dev/null");
+                if ($out =~ /\d+/) {
+                        &error(&text('bind_elsof', $p));
+                        }
+                }
+        }
 
 # Update config file
 &lock_file($usermin_miniserv_config);
@@ -72,7 +85,7 @@ $SIG{'TERM'} = 'ignore';
 &system_logged("$config{'usermin_dir'}/stop >/dev/null 2>&1 </dev/null");
 $temp = &transname();
 $rv = &system_logged("$config{'usermin_dir'}/start >$temp 2>&1 </dev/null");
-$out = `cat $temp`;
+$out = &read_file_contents($temp);
 $out =~ s/^Starting Usermin server in.*\n//;
 $out =~ s/at.*line.*//;
 unlink($temp);
@@ -84,6 +97,20 @@ if ($rv) {
 	&system_logged("$config{'usermin_dir'}/start >/dev/null 2>&1 </dev/null");
 	&error(&text('bind_erestart', $out));
 	}
+
+# If possible, open the new ports
+if (&foreign_check("firewall") && $in{'firewall'}) {
+        if (@newports) {
+                &clean_environment();
+                $ENV{'WEBMIN_CONFIG'} = $config_directory;
+                &system_logged(&module_root_directory("firewall").
+                               "/open-ports.pl ".
+                               join(" ", map { $_.":".($_+10) } @newports).
+                               " >/dev/null 2>&1");
+                &reset_environment();
+                }
+        }
+
 &webmin_log("bind", undef, undef, \%in);
 
 &redirect("");
