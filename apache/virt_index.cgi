@@ -18,6 +18,10 @@ if ($in{'virt'} && $access{'types'} eq '*') {
 		     "name" => $text{'virt_edit'},
 		     "link" => "manual_form.cgi?virt=$in{'virt'}" };
 	}
+if ($v->{'value'} =~ /:80/ && $v->{'value'} !~ /:443/) {
+	# Hide SSL icon for non-SSL sites
+	$access_types{14} = 0;
+	}
 &config_icons("virtual", "edit_virt.cgi?virt=$in{'virt'}&", $sw_icon,
 	      $ed_icon ? $ed_icon : ());
 
