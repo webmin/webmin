@@ -10026,7 +10026,8 @@ possible keys :
 =item cgi - CGI script that the "menu" or "input" type item should submit to.
 	    If missing, the form submits to the same menu page.
 
-=item window - If set to 1, the link is opened in a new window or tab
+=item target - Can be "new" for a new page, or "window" for the current whole
+	       browser window
 
 The &data parameter is a hash ref of additional information that the theme
 supplies to all modules. The &in param is the CGI inputs from the menu, for
