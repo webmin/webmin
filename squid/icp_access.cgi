@@ -10,6 +10,16 @@ $access{'actrl'} || &error($text{'eacl_ecannot'});
 &ReadParse();
 my $conf = &get_config();
 
+# Count up ACL users
+my %ucount;
+foreach my $h (&find_config("icp_access", $conf)) {
+	foreach my $v (@{$h->{'values'}}) {
+		my $vv = $v;
+		$vv =~ s/^\!//;
+		$ucount{$vv}++;
+		}
+	}
+
 my @icp;
 if (!defined($in{'index'})) {
 	&ui_print_header(undef, $text{'aicp_header'}, "",
@@ -49,13 +59,13 @@ unshift(@acls, { 'values' => [ 'all' ] }) if ($squid_version >= 3);
 my $r = @acls;
 $r = 10 if ($r > 10);
 
+my @opts =  map { my $v = $_->{'values'}->[0];
+                  [ $v, $v." (".int($ucount{$v}).")" ] } @acls;
 print &ui_table_row($text{'aicp_ma'},
-	&ui_select("yes", \@yes, [ map { $_->{'values'}->[0] } @acls ],
-		   $r, 1, 1));
+	&ui_select("yes", \@yes, \@opts, $r, 1, 1));
 
 print &ui_table_row($text{'aicp_dma'},
-	&ui_select("no", \@no, [ map { $_->{'values'}->[0] } @acls ],
-		   $r, 1, 1));
+	&ui_select("no", \@no, \@opts, $r, 1, 1));
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'buttsave'} ],

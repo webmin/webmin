@@ -10,6 +10,16 @@ $access{'actrl'} || &error($text{'eacl_ecannot'});
 &ReadParse();
 my $conf = &get_config();
 
+# Count up ACL users
+my %ucount;
+foreach my $h (&find_config("http_access", $conf)) {
+	foreach my $v (@{$h->{'values'}}) {
+		my $vv = $v;
+		$vv =~ s/^\!//;
+		$ucount{$vv}++;
+		}
+	}
+
 my @http;
 if (!defined($in{'index'})) {
 	&ui_print_header(undef, $text{'ahttp_header'}, "",
@@ -50,11 +60,15 @@ my $r = @acls;
 $r = 10 if ($r > 10);
 
 print &ui_table_row($text{'ahttp_ma'},
-	&ui_select("yes", \@yes, [ map { $_->{'values'}->[0] } @acls ],
+	&ui_select("yes", \@yes, [ map { my $v = $_->{'values'}->[0];
+					 [ $v, $v." (".int($ucount{$v}).")" ] }
+				       @acls ],
 		   $r, 1, 1));
 
 print &ui_table_row($text{'ahttp_dma'},
-	&ui_select("no", \@no, [ map { $_->{'values'}->[0] } @acls ],
+	&ui_select("no", \@no, [ map { my $v = $_->{'values'}->[0];
+                                       [ $v, $v." (".int($ucount{$v}).")" ] }
+                                     @acls ],
 		   $r, 1, 1));
 
 print &ui_table_end();
