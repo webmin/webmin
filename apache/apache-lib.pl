@@ -1101,19 +1101,20 @@ close(USERS);
 # some context (global, virtual, directory or htaccess)
 sub config_icons
 {
+local ($ctx, $prog) = @_;
 local($m, $func, $e, %etype, $i, $c);
 foreach $m (sort { $a cmp $b } (keys %httpd_modules)) {
         $func = $m."_directives";
 	if (defined(&$func)) {
 		foreach $e (&$func($httpd_modules{$m})) {
-			if ($e->{$_[0]}) { $etype{$e->{'type'}}++; }
+			if ($e->{$ctx}) { $etype{$e->{'type'}}++; }
 			}
 		}
         }
 local (@titles, @links, @icons);
 for($i=0; $text{"type_$i"}; $i++) {
 	if ($etype{$i} && $access_types{$i}) {
-		push(@links, $_[1]."type=$i");
+		push(@links, $prog."type=$i");
 		push(@titles, $text{"type_$i"});
 		push(@icons, "images/type_icon_$i.gif");
 		}
