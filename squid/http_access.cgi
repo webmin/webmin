@@ -59,17 +59,13 @@ unshift(@acls, { 'values' => [ 'all' ] }) if ($squid_version >= 3);
 my $r = @acls;
 $r = 10 if ($r > 10);
 
+my @opts =  map { my $v = $_->{'values'}->[0];
+                  [ $v, $v." (".int($ucount{$v}).")" ] } @acls;
 print &ui_table_row($text{'ahttp_ma'},
-	&ui_select("yes", \@yes, [ map { my $v = $_->{'values'}->[0];
-					 [ $v, $v." (".int($ucount{$v}).")" ] }
-				       @acls ],
-		   $r, 1, 1));
+	&ui_select("yes", \@yes, \@opts, $r, 1, 1));
 
 print &ui_table_row($text{'ahttp_dma'},
-	&ui_select("no", \@no, [ map { my $v = $_->{'values'}->[0];
-                                       [ $v, $v." (".int($ucount{$v}).")" ] }
-                                     @acls ],
-		   $r, 1, 1));
+	&ui_select("no", \@no, \@opts, $r, 1, 1));
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'buttsave'} ],
