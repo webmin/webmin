@@ -339,6 +339,13 @@ else {
 			}
 		$vals = "\"".&join_spf($spf)."\"";
 		}
+	elsif ($in{'type'} eq 'NSEC3PARAM') {
+		# Save DNSSEC parameters
+		# XXX validate inputs
+		$vals = join(" ", "(", $in{'value0'}, $in{'value1'},
+                                       $in{'value2'}, $in{'value3'},
+				       $in{'value4'}, ")");
+		}
 	else {
 		# For other record types, just save the lines
 		$in{'values'} =~ s/\r//g;

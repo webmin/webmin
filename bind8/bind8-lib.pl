@@ -1124,6 +1124,28 @@ elsif ($type eq "SPF") {
 		&ui_opt_textbox("spfexp", $spf->{'exp'}, 40,
 			    $text{'value_spfnoexp'}), 3);
 	}
+elsif ($type eq "NSEC3PARAM") {
+	# NSEC records have a hash type, flags, number of interations, salt
+	# length and salt
+	print &ui_table_row($text{'value_NSEC3PARAM1'},
+		&ui_select("value0", $v[0] || 1,
+			   [ [ 1, "SHA1" ] ], 1, 0, 1));
+
+	print &ui_table_row($text{'value_NSEC3PARAM2'},
+		&ui_select("value1", $v[1],
+			   [ [ 0, $text{'value_delegated'} ],
+			     [ 1, $text{'value_notdelegated'} ] ]));
+
+	print &ui_table_row($text{'value_NSEC3PARAM3'},
+		&ui_textbox("value2", $v[2], 4));
+
+	print &ui_table_row($text{'value_NSEC3PARAM4'},
+		&ui_textbox("value3", $v[3], 8));
+
+	print &ui_table_row($text{'value_NSEC3PARAM5'},
+		&ui_textbox("value4", $v[4], 20));
+
+	}
 else {
 	# All other types just have a text box
 	print &ui_table_row($text{'value_other'},
@@ -2753,7 +2775,7 @@ $slave_error = $_[0];
 
 sub get_forward_record_types
 {
-return ("A", "NS", "CNAME", "MX", "HINFO", "TXT", "SPF", "WKS", "RP", "PTR", "LOC", "SRV", "KEY", $config{'support_aaaa'} ? ( "AAAA" ) : ( ), @extra_forward);
+return ("A", "NS", "CNAME", "MX", "HINFO", "TXT", "SPF", "WKS", "RP", "PTR", "LOC", "SRV", "KEY", "NSEC3PARAM", $config{'support_aaaa'} ? ( "AAAA" ) : ( ), @extra_forward);
 }
 
 sub get_reverse_record_types
