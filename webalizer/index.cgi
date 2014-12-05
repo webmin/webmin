@@ -137,7 +137,7 @@ if (@logs) {
 			print &ui_columns_row(\@cols);
 			}
 		elsif (!%$lconf) {
-			print &ui_columns_row([ "<img src=images/empty.gif>",
+			print &ui_columns_row([ ui_img("empty.gif"),
 						@cols ]);
 			}
 		else {
