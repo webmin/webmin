@@ -9997,7 +9997,7 @@ possible keys :
 
 =item id - A unique ID for the object
 
-=item type - Can by "item" for a regular menu item, "cat" for a category which
+=item type - Can be "item" for a regular menu item, "cat" for a category which
              will have sub-items (members), "html" for an arbitrary HTML block,
 	     "text" for a line of text, "hr" for a separator, "menu" for a
 	     selector, "input" for a text box, or "title" for a desired menu
@@ -10098,6 +10098,74 @@ return { 'type' => 'item',
          'id' => $minfo->{'dir'},
          'desc' => $minfo->{'desc'},
          'link' => '/'.$minfo->{'dir'}.'/' };
+}
+
+=head2 list_combined_system_info(&data, &in)
+
+Returns an array of objects, each representing a block of system information
+to display. Each is a hash ref with the following keys :
+
+=item module - The Webmin module that supplied this object
+
+=item id - A unique ID for the object
+
+=item type - Can be "html" for an arbitrary block of HTML, "table" for a table
+	     of information, "usage" for a table of usage of some resource.
+
+=item desc - The title for this section of info
+
+=item open - Set to 1 if it should be displayed by default
+
+=item table - In "table" mode, an array ref of fields to show. Each is a hash
+              ref with keys described below.
+
+=item html - In "html" mode, the raw HTML to display
+
+=item usage - In "usage" mode, an array ref of things to show some kind of 
+	      usage for. Each is a hash ref with keys described below.
+
+For "table" mode, the keys in each hash ref are :
+
+=item desc - Label for this item
+
+=item value - HTML to display next to the item
+
+=item chart - Array ref for a bar chart to show, in which each element is a
+	      percentage to show in a different color. Any leftover is assumed
+	      to bring the chart up to 100%.
+
+=item header - Text to show above the table
+
+For "usage" mode, the keys in each hash ref are :
+
+=item desc - Name of the thing for which usage is shown, like a domain
+
+=item chart - Bar chart (as above) with usage
+
+=item value - HTML for a description of the usage
+
+=item header - Text to show above the usage table
+
+The &data parameter is a hash ref of additional information that the theme
+supplies to all modules. The &in param is the CGI inputs from the page, for
+use where a system info block has a form that submits to itself.
+
+=cut
+sub list_combined_system_info
+{
+my ($data, $in) = @_;
+foreach my $m (&get_available_module_infos()) {
+	my $dir = &module_root_directory($m->{'dir'});
+	my $mfile = "$dir/system_info.pl";
+	next if (!-r $mfile);
+	&foreign_require($m->{'dir'}, "system_info.pl");
+	foreach my $i (&foreign_call($m->{'dir'}, "list_system_info",
+				     $data, $in)) {
+		$i->{'module'} = $m->{'dir'};
+		push(@rv, $i);
+		}
+	}
+return @rv;
 }
 
 $done_web_lib_funcs = 1;
