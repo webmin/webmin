@@ -341,9 +341,12 @@ else {
 		}
 	elsif ($in{'type'} eq 'NSEC3PARAM') {
 		# Save DNSSEC parameters
-		# XXX validate inputs
+		$in{'value2'} =~ /^\d+$/ ||
+			&error($text{'edit_ensec3value2'});
+		$in{'value4'} =~ /^[a-zA-Z0-9\+\/]+$/ ||
+			&error($text{'edit_ensec3value2'});
 		$vals = join(" ", "(", $in{'value0'}, $in{'value1'},
-                                       $in{'value2'}, $in{'value3'},
+                                       $in{'value2'}, length($in{'value4'}),
 				       $in{'value4'}, ")");
 		}
 	else {

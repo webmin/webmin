@@ -293,6 +293,8 @@ edit_espfip6='$1' is not a valid IPv6 address or IPv6/prefix to allow sending fr
 edit_espfinclude='$1' is not a valid additional domain from which mail is sent
 edit_espfredirect='$1' is not a valid alternate domain name
 edit_espfexp='$1' is a valid record name for a rejection message
+edit_ensec3value2=Missing or non-numeric number of iterations
+edit_ensec3value2=Missing or non-base64 salt
 
 text_title=Edit Records File
 text_title2=View Records File

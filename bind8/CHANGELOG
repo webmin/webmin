@@ -140,3 +140,5 @@ Added a module configuration option to use the SPF type for Sender Permitted Fro
 ---- Changes since 1.660 ----
 Added a warning if the chroot directory that Webmin thinks BIND is using looks wrong.
 Slave zone files in raw format can now be displayed by Webmin.
+---- Changes since 1.720 ----
+Added support for NSEC3PARAM records.

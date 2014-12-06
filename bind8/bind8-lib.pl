@@ -1139,9 +1139,6 @@ elsif ($type eq "NSEC3PARAM") {
 	print &ui_table_row($text{'value_NSEC3PARAM3'},
 		&ui_textbox("value2", $v[2], 4));
 
-	print &ui_table_row($text{'value_NSEC3PARAM4'},
-		&ui_textbox("value3", $v[3], 8));
-
 	print &ui_table_row($text{'value_NSEC3PARAM5'},
 		&ui_textbox("value4", $v[4], 20));
 
@@ -3210,11 +3207,12 @@ foreach my $key (@keys) {
 
 # Remove records
 local @recs = &read_zone_file($fn, $dom);
+local $tools = &have_dnssec_tools_support();
 for(my $i=$#recs; $i>=0; $i--) {
 	if ($recs[$i]->{'type'} eq 'NSEC' ||
 	    $recs[$i]->{'type'} eq 'NSEC3' ||
 	    $recs[$i]->{'type'} eq 'RRSIG' ||
-		$recs[$i]->{'type'} eq 'NSEC3PARAM' ||
+	    $recs[$i]->{'type'} eq 'NSEC3PARAM' && $tools ||
 	    $recs[$i]->{'type'} eq 'DNSKEY') {
 		&delete_record($fn, $recs[$i]);
 		}
@@ -3622,10 +3620,11 @@ sub dt_sign_zone
 
 	# Remove DNSSEC records and save the unsigned zone file
 	@recs = &read_zone_file($z, $dom);
+	local $tools = &have_dnssec_tools_support();
 	for(my $i=$#recs; $i>=0; $i--) {
 		if ($recs[$i]->{'type'} eq 'NSEC' ||
 			$recs[$i]->{'type'} eq 'NSEC3' ||
-			$recs[$i]->{'type'} eq 'NSEC3PARAM' ||
+			$recs[$i]->{'type'} eq 'NSEC3PARAM' && $tools ||
 			$recs[$i]->{'type'} eq 'RRSIG' ||
 			$recs[$i]->{'type'} eq 'DNSKEY') {
 				&delete_record($z, $recs[$i]);
@@ -3701,10 +3700,11 @@ sub dt_resign_zone
 
 	# Remove DNSSEC records and save the unsigned zone file
 	@recs = &read_zone_file($z, $dom);
+	local $tools = &have_dnssec_tools_support();
 	for(my $i=$#recs; $i>=0; $i--) {
 		if ($recs[$i]->{'type'} eq 'NSEC' ||
 			$recs[$i]->{'type'} eq 'NSEC3' ||
-			$recs[$i]->{'type'} eq 'NSEC3PARAM' ||
+			$recs[$i]->{'type'} eq 'NSEC3PARAM' && $tools ||
 			$recs[$i]->{'type'} eq 'RRSIG' ||
 			$recs[$i]->{'type'} eq 'DNSKEY') {
 				&delete_record($z, $recs[$i]);
@@ -3892,10 +3892,11 @@ sub dt_delete_dnssec_state
 
 		# remove DNSSEC records from zonefile
 		@recs = &read_zone_file($z, $dom);
+		local $tools = &have_dnssec_tools_support();
 		for(my $i=$#recs; $i>=0; $i--) {
 			if ($recs[$i]->{'type'} eq 'NSEC' ||
 				$recs[$i]->{'type'} eq 'NSEC3' ||
-				$recs[$i]->{'type'} eq 'NSEC3PARAM' ||
+				$recs[$i]->{'type'} eq 'NSEC3PARAM' && $tools ||
 				$recs[$i]->{'type'} eq 'RRSIG' ||
 				$recs[$i]->{'type'} eq 'DNSKEY') {
 			   	    &delete_record($z, $recs[$i]);
