@@ -10051,6 +10051,55 @@ foreach my $m (&get_available_module_infos()) {
 return @rv;
 }
 
+=head2 list_modules_webmin_menu()
+
+This function returns a menu of Webmin modules available to the current user
+and with their desired categorization method, but in the same format as
+list_combined_webmin_menu for easier use by theme authors.
+
+=cut
+sub list_modules_webmin_menu
+{
+my @rv;
+my @cats = get_visible_modules_categories();
+my @catnames = map { $_->{'code'} } @cats;
+if ($gconfig{"notabs_${base_remote_user}"} == 2 ||
+    $gconfig{"notabs_${base_remote_user}"} == 0 && $gconfig{'notabs'}) {
+	# Show modules in one list
+	@rv = map { module_to_menu_item($_) }
+		  (map { @{$_->{'modules'}} } @cats);
+	}
+else {
+	# Show all modules under categories
+	foreach my $c (@cats) {
+		my $citem = { 'type' => 'cat',
+			      'id' => $c->{'code'},
+			      'desc' => $c->{'desc'},
+			      'members' => [ ] };
+		foreach my $minfo (@{$c->{'modules'}}) {
+			push(@{$citem->{'members'}},
+			     module_to_menu_item($minfo));
+			}
+		push(@rv, $citem);
+		}
+	}
+return @rv;
+}
+
+=head2 module_to_menu_item(&module)
+
+Internal function for use by list_modules_webmin_menu
+
+=cut
+sub module_to_menu_item
+{
+my ($minfo) = @_;
+return { 'type' => 'item',
+         'id' => $minfo->{'dir'},
+         'desc' => $minfo->{'desc'},
+         'link' => '/'.$minfo->{'dir'}.'/' };
+}
+
 $done_web_lib_funcs = 1;
 
 1;
