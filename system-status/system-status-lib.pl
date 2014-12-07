@@ -1,11 +1,15 @@
 # Functions for collecting general system info
 
+use strict;
+use warnings;
 BEGIN { push(@INC, ".."); };
 eval "use WebminCore;";
 &init_config();
-$systeminfo_cron_cmd = "$module_config_directory/systeminfo.pl";
-$collected_info_file = "$module_config_directory/info";
-$historic_info_dir = "$module_config_directory/history";
+our ($module_config_directory, %config, %gconfig, $module_name,
+     $no_log_file_changes);
+our $systeminfo_cron_cmd = "$module_config_directory/systeminfo.pl";
+our $collected_info_file = "$module_config_directory/info";
+our $historic_info_dir = "$module_config_directory/history";
 
 # collect_system_info()
 # Returns a hash reference containing system information
@@ -63,10 +67,10 @@ $info->{'drivetemps'} = \@drive if (@drive);
 
 # IO input and output
 if ($gconfig{'os_type'} =~ /-linux$/) {
-	local $out = &backquote_command("vmstat 1 2 2>/dev/null");
+	my $out = &backquote_command("vmstat 1 2 2>/dev/null");
 	if (!$?) {
-		local @lines = split(/\r?\n/, $out);
-		local @w = split(/\s+/, $lines[$#lines]);
+		my @lines = split(/\r?\n/, $out);
+		my @w = split(/\s+/, $lines[$#lines]);
 		shift(@w) if ($w[0] eq '');
 		if ($w[8] =~ /^\d+$/ && $w[9] =~ /^\d+$/) {
 			# Blocks in and out
@@ -101,9 +105,10 @@ return &collect_system_info();
 sub save_collected_info
 {
 my ($info) = @_;
-&open_tempfile(INFO, ">$collected_info_file");
-&print_tempfile(INFO, &serialise_variable($info));
-&close_tempfile(INFO);
+my $fh = "INFO";
+&open_tempfile($fh, ">$collected_info_file");
+&print_tempfile($fh, &serialise_variable($info));
+&close_tempfile($fh);
 }
 
 # refresh_possible_packages(&newpackages)
@@ -156,6 +161,7 @@ if (&foreign_check("net") && $gconfig{'os_type'} =~ /-linux$/) {
 	# Get the current byte count
 	my $rxtotal = 0;
 	my $txtotal = 0;
+	my @ifaces;
 	if ($config{'collect_ifaces'}) {
 		# From module config
 		@ifaces = split(/\s+/, $config{'collect_ifaces'});
@@ -164,7 +170,8 @@ if (&foreign_check("net") && $gconfig{'os_type'} =~ /-linux$/) {
 		# Get list from net module
 		&foreign_require("net");
 		foreach my $i (&net::active_interfaces()) {
-			if ($i->{'virtual'} eq '' &&
+			my $v = defined($i->{'virtual'}) ? $i->{'virtual'} : '';
+			if ($v eq '' &&
 			    $i->{'name'} =~ /^(eth|ppp|wlan|ath|wlan)/) {
 				push(@ifaces, $i->{'name'});
 				}
@@ -184,6 +191,7 @@ if (&foreign_check("net") && $gconfig{'os_type'} =~ /-linux$/) {
 
 	# Work out the diff since the last run, if we have it
 	my %netcounts;
+	my $now = time();
 	if (&read_file("$historic_info_dir/netcounts", \%netcounts) &&
 	    $netcounts{'rx'} && $netcounts{'tx'} &&
 	    $netcounts{'ifaces'} eq $ifaces &&
@@ -222,13 +230,13 @@ if ($temptotal) {
 	}
 
 # Get CPU temperature
-my ($temptotal, $tempcount);
+my ($ctemptotal, $ctempcount);
 foreach my $t (@{$info->{'cputemps'}}) {
-	$temptotal += $t->{'temp'};
-	$tempcount++;
+	$ctemptotal += $t->{'temp'};
+	$ctempcount++;
 	}
-if ($temptotal) {
-	push(@stats, [ "cputemp", $temptotal / $tempcount ]);
+if ($ctemptotal) {
+	push(@stats, [ "cputemp", $ctemptotal / $ctempcount ]);
 	}
 
 # Get IO blocks
@@ -296,6 +304,7 @@ return @rv;
 sub list_all_historic_collected_info
 {
 my ($start, $end) = @_;
+my %all;
 foreach my $f (&list_historic_stats()) {
 	my @rv = &list_historic_collected_info($f, $start, $end);
 	$all{$f} = \@rv;
@@ -323,6 +332,7 @@ my $first = <HISTORY>;
 $first || return (undef, undef);
 chop($first);
 my ($firsttime, $firstvalue) = split(" ", $first);
+my $last;
 seek(HISTORY, 2, -256) || seek(HISTORY, 0, 0);
 while(<HISTORY>) {
 	$last = $_;
@@ -408,8 +418,9 @@ sub get_current_cpu_temps
 my @rv;
 if (!$config{'collect_notemp'} &&
     $gconfig{'os_type'} =~ /-linux$/ && &has_command("sensors")) {
-	&open_execute_command(SENSORS, "sensors </dev/null 2>/dev/null", 1);
-	while(<SENSORS>) {
+	my $fh = "SENSORS";
+	&open_execute_command($fh, "sensors </dev/null 2>/dev/null", 1);
+	while(<$fh>) {
 		if (/Core\s+(\d+):\s+([\+\-][0-9\.]+)/) {
 			push(@rv, { 'core' => $1,
 				    'temp' => $2 });
@@ -419,7 +430,7 @@ if (!$config{'collect_notemp'} &&
 				    'temp' => $1 });
 			}
 		}
-	close(SENSORS);
+	close($fh);
 	}
 return @rv;
 }
@@ -444,7 +455,7 @@ $WebminCore::gconfig{'logfullfiles'} = 0;
 $no_log_file_changes = 1;
 &lock_file($collected_info_file);
 
-$info = &collect_system_info();
+my $info = &collect_system_info();
 if ($info) {
 	&save_collected_info($info);
 	&add_historic_collected_info($info, $start);

@@ -1,5 +1,8 @@
 
+use strict;
+use warnings;
 require 'system-status-lib.pl';
+our ($module_config_directory, $module_name);
 
 sub module_install
 {
