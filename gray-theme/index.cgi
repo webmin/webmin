@@ -1,30 +1,29 @@
 #!/usr/bin/perl
 
-BEGIN { push(@INC, ".."); };
-use WebminCore;
+use strict;
+use warnings;
+require 'gray-theme-lib.pl';
 &ReadParse();
-&init_config();
-%text = &load_language($current_theme);
+our ($current_theme, %in);
+our %text = &load_language($current_theme);
 
+my $minfo;
 if ($in{'mod'}) {
 	$minfo = { &get_module_info($in{'mod'}) };
 	}
 else {
 	$minfo = &get_goto_module();
 	}
-$goto = $minfo ? "$minfo->{'dir'}/" :
-	$in{'page'} ? "" :
-	       	      "right.cgi?open=system&open=status";
-if ($minfo) {
-	$cat = "?$minfo->{'category'}=1";
-	}
+my $goto = $minfo ? $minfo->{'dir'}."/" :
+	   $in{'page'} ? "" : "right.cgi?open=system&open=status";
 if ($in{'page'}) {
 	$goto .= "/".$in{'page'};
 	}
+my $cat = $minfo ? "?$minfo->{'category'}=1" : undef;
 
 # Show frameset
-$title = &get_html_framed_title();
-$cols = &get_product_name() eq 'usermin' ? 180 : 250;
+my $title = &get_html_framed_title();
+my $cols = &get_product_name() eq 'usermin' ? 180 : 230;
 &popup_header($title, undef, undef, 1);
 
 print <<EOF;
