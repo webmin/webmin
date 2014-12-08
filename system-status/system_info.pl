@@ -138,7 +138,6 @@ if ($info->{'disk_total'}) {
 
 # Package updates
 if ($info->{'poss'}) {
-	print "<tr> <td><b>$text{'right_updates'}</b></td>\n";
 	my @poss = @{$info->{'poss'}};
 	my @secs = grep { $_->{'security'} } @poss;
 	my $msg;
@@ -153,11 +152,11 @@ if ($info->{'poss'}) {
 		$msg = $text{'right_upok'};
 		}
 	if (&foreign_available("package-updates")) {
-		$msg = "<a href='package-updates/index.cgi?mode=updates'>$msg</a>";
+		$msg = &ui_link("/package-updates/index.cgi?mode=updates", $msg);
 		}
-	print "<td>$msg</td> </tr>\n";
+	push(@table, { 'desc' => $text{'right_update'},
+		       'value' => $msg });
 	}
-
 
 return @rv;
 }

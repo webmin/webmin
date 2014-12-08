@@ -1,9 +1,7 @@
 #!/usr/bin/perl
 # Show the left-side menu of Webmin modules
 
-BEGIN { push(@INC, ".."); };
-use WebminCore;
-&init_config();
+require 'blue-theme-lib.pl';
 &ReadParse();
 %text = &load_language($current_theme);
 %gaccess = &get_module_acl(undef, "");

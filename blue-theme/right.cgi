@@ -1,9 +1,7 @@
 #!/usr/local/bin/perl
 # Show server or domain information
 
-BEGIN { push(@INC, ".."); };
-use WebminCore;
-&init_config();
+require 'blue-theme-lib.pl';
 &ReadParse();
 &load_theme_library();
 if (&get_product_name() eq "usermin") {
