@@ -707,6 +707,13 @@ if [ "$themelist" != "" ]; then
 	echo "preroot=$themelist" >> $config_dir/miniserv.conf
 fi
 
+# If the old blue-theme is still in use, change it
+oldtheme=`grep "^theme=" $config_dir/config | sed -e 's/theme=//g'`
+if [ "$oldtheme" = "blue-theme" ]; then
+   echo "theme=gray-theme" >> $config_dir/config
+   echo "preroot=gray-theme" >> $config_dir/miniserv.conf
+fi
+
 # Set the product field in the global config
 grep product= $config_dir/config >/dev/null
 if [ "$?" != "0" ]; then

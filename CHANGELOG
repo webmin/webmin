@@ -208,3 +208,5 @@ Catalan updates, thanks to Jaume Badiella.
 Added additional protected against Shellshock exploits made via the Webmin webserver.
 ---- Changes since 1.710 ----
 SSL v2 and v3 are now disabled by default at Webmin install time, to block the POODLE attack. They can be re-enabled on the SSL Encryption page of the Webmin Configuration module.
+---- Changes since 1.720 ----
+Deprecated the old blue-theme in favor of the new gray-theme.
