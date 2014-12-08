@@ -86,17 +86,76 @@ if (&foreign_check("proc")) {
 	if (&foreign_available("proc")) {
 		$pr = &ui_link('/proc/', $pr);
 		}
-	push(@rv, { 'desc' => $text{'right_procs'},
-		    'value' => $pr });
+	push(@table, { 'desc' => $text{'right_procs'},
+		       'value' => $pr });
 	}
 
 # Load averages
 if ($info->{'load'}) {
 	my @c = @{$info->{'load'}};
 	if (@c) {
-		push(@rv, { 'desc' => $text{'right_cpu'},
-			    'value' => &text('right_load', @c) });
+		push(@table, { 'desc' => $text{'right_cpu'},
+			       'value' => &text('right_load', @c) });
 		}
+	}
+
+# CPU usage
+if ($info->{'cpu'}) {
+	my @c = @{$info->{'cpu'}};
+	push(@table, { 'desc' => $text{'right_cpuuse'},
+		       'value' => &text('right_cpustats', @c) });
+	}
+
+# Memory usage
+if ($info->{'mem'}) {
+	my @m = @{$info->{'mem'}};
+	if (@m && $m[0]) {
+		push(@table, { 'desc' => $text{'right_real'},
+			       'value' => &text('right_used',
+					&nice_size($m[0]*1024),
+					&nice_size(($m[0]-$m[1])*1024)),
+			       'chart' => [ $m[0], $m[0]-$m[1] ] });
+		}
+
+	if (@m && $m[2]) {
+		push(@table, { 'desc' => $text{'right_virt'},
+			       'value' => &text('right_used',
+					&nice_size($m[2]*1024),
+					&nice_size(($m[2]-$m[3])*1024)),
+			       'chart' => [ $m[2], $m[2]-$m[3] ] });
+		}
+	}
+
+# Disk space on local drives
+if ($info->{'disk_total'}) {
+	my ($total, $free) = ($info->{'disk_total'}, $info->{'disk_free'});
+	push(@table, { 'desc' => $text{'right_disk'},
+		       'value' => &text('right_used',
+				   &nice_size($total),
+				   &nice_size($total-$free)),
+		       'chart' => [ $total, $total-$free ] });
+	}
+
+# Package updates
+if ($info->{'poss'}) {
+	print "<tr> <td><b>$text{'right_updates'}</b></td>\n";
+	my @poss = @{$info->{'poss'}};
+	my @secs = grep { $_->{'security'} } @poss;
+	my $msg;
+	if (@poss && @secs) {
+		$msg = &text('right_upsec', scalar(@poss),
+					    scalar(@secs));
+		}
+	elsif (@poss) {
+		$msg = &text('right_upneed', scalar(@poss));
+		}
+	else {
+		$msg = $text{'right_upok'};
+		}
+	if (&foreign_available("package-updates")) {
+		$msg = "<a href='package-updates/index.cgi?mode=updates'>$msg</a>";
+		}
+	print "<td>$msg</td> </tr>\n";
 	}
 
 
