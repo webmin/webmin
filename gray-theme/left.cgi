@@ -1,14 +1,17 @@
 #!/usr/bin/perl
 # Show the left-side menu of Webmin modules
 
+use strict;
+use warnings;
 require 'gray-theme/gray-theme-lib.pl';
 &ReadParse();
-%text = &load_language($current_theme);
-%gaccess = &get_module_acl(undef, "");
+our ($current_theme, $remote_user, %gconfig);
+my %text = &load_language($current_theme);
+my %gaccess = &get_module_acl(undef, "");
 
 # Work out what modules and categories we have
-@cats = &get_visible_modules_categories();
-@modules = map { @{$_->{'modules'}} } @cats;
+my @cats = &get_visible_modules_categories();
+my @modules = map { @{$_->{'modules'}} } @cats;
 
 &popup_header();
 print <<EOF;
@@ -76,7 +79,8 @@ if ($gconfig{'log'} && &foreign_available("webminlog")) {
 	push(@leftmenu, { 'type' => 'item',
 			  'desc' => $text{'left_logs'},
 			  'link' => '/webminlog/',
-			  'icon' => '/images/logs.gif' });
+			  'icon' => '/images/logs.gif',
+			  'onclick' => 'show_logs(); return false;' });
 	# XXX use JS
 	#print "<div class='linkwithicon'><img src=images/logs.gif>\n";
 	#print "<div class='aftericon'><a target=right href='webminlog/' onClick='show_logs(); return false;'>$text{'left_logs'}</a></div></div>\n";
@@ -115,6 +119,7 @@ if (&foreign_available("webmin")) {
 	}
 
 # Show logout link
+my %miniserv;
 &get_miniserv_config(\%miniserv);
 if ($miniserv{'logout'} && !$ENV{'SSL_USER'} && !$ENV{'LOCAL_USER'} &&
     $ENV{'HTTP_USER_AGENT'} !~ /webmin/i) {
@@ -167,7 +172,9 @@ foreach my $item (@$items) {
 		          $indent ? 'linkindented' : 'leftlink';
 		print "<div class='$cls'>";
 		my $link = add_webprefix($item->{'link'});
-		print "<a href='$link' target=$t>".
+		my $tags = $item->{'onclick'} ?
+				"onClick='".$item->{'onclick'}."'" : "";
+		print "<a href='$link' target=$t $tags>".
 		      "$item->{'desc'}</a>";
 		print "</div>";
 		if ($item->{'icon'}) {
