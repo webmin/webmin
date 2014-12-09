@@ -1,23 +1,16 @@
 #!/usr/local/bin/perl
 # Show server or domain information
 
+# XXX re-enable
+#use strict;
+#use warnings;
 require 'gray-theme/gray-theme-lib.pl';
 &ReadParse();
 &load_theme_library();
-if (&get_product_name() eq "usermin") {
-	$level = 3;
-	}
-else {
-	$level = 0;
-	}
-%text = &load_language($current_theme);
-$bar_width = 300;
-foreach $o (split(/\0/, $in{'open'})) {
-	push(@open, $o);
-	$open{$o} = 1;
-	}
+my %text = &load_language($current_theme);
+my $bar_width = 300;
 
-$prehead = defined(&WebminCore::theme_prehead) ?
+my $prehead = defined(&WebminCore::theme_prehead) ?
 		&capture_function_output(\&WebminCore::theme_prehead) : "";
 &popup_header(undef, $prehead);
 print "<center>\n";
@@ -25,6 +18,20 @@ print "<center>\n";
 # Webmin logo
 if (&get_product_name() eq 'webmin') {
 	print "<a href=http://www.webmin.com/ target=_new><img src=images/webmin-blue.png border=0></a><p>\n";
+	}
+
+# Get system info to show
+my @info = &list_combined_system_info();
+
+foreach my $info (@info) {
+	print &ui_table_start($info->{'desc'}, undef, 2);
+	if ($info->{'type'} eq 'table') {
+		foreach my $t (@{$info->{'table'}}) {
+			my $chart = "";
+			print &ui_table_row($t->{'desc'}, $t->{'value'}.$chart);
+			}
+		}
+	print &ui_table_end();
 	}
 
 if ($level == 0) {
@@ -326,24 +333,5 @@ $rv .= sprintf "<img src=images/blue.gif width=%s height=10>", $w3;
 $rv .= sprintf "<img src=images/grey.gif width=%s height=10>",
 	$bar_width - $w1 - $w2 - $w3;
 return $rv;
-}
-
-# collapsed_header(text, name)
-sub collapsed_header
-{
-local ($text, $name) = @_;
-print "<br><font style='font-size:16px'>";
-local $others = join("&", map { "open=$_" } grep { $_ ne $name } @open);
-$others = "&$others" if ($others);
-if ($open{$name}) {
-	print "<img src=images/gray-open.gif border=0>\n";
-	print &ui_link("right.cgi?$others",$text);
-	}
-else {
-	print "<img src=images/gray-closed.gif border=0>\n";
-	print &ui_link("right.cgi?open=$name$others",$text);
-	}
-print "</font><br>\n";
-return $open{$name};
 }
 
