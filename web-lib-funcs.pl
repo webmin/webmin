@@ -10130,9 +10130,10 @@ For "table" mode, the keys in each hash ref are :
 
 =item value - HTML to display next to the item
 
-=item chart - Array ref for a bar chart to show, in which each element is a
-	      percentage to show in a different color. Any leftover is assumed
-	      to bring the chart up to 100%.
+=item chart - Array ref for a bar chart to show, in which the first element is
+	      the total size, and each subsequent element is a value to show in
+	      a different color. Any leftover is assumed is filled in with the
+	      final color.
 
 =item header - Text to show above the table
 
