@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-require 'gray-theme-lib.pl';
+require 'gray-theme/gray-theme-lib.pl';
 &ReadParse();
 our ($current_theme, %in);
 our %text = &load_language($current_theme);
@@ -15,7 +15,7 @@ else {
 	$minfo = &get_goto_module();
 	}
 my $goto = $minfo ? $minfo->{'dir'}."/" :
-	   $in{'page'} ? "" : "right.cgi?open=system&open=status";
+	   $in{'page'} ? "" : &right_frame_cgi()."?open=system&open=status";
 if ($in{'page'}) {
 	$goto .= "/".$in{'page'};
 	}

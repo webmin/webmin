@@ -829,7 +829,7 @@ sub theme_redirect
 local ($orig, $url) = @_;
 if (get_module_name() eq "virtual-server" && $orig eq "" &&
     $url =~ /^((http|https):\/\/([^\/]+))\//) {
-	$url = "$1/right.cgi";
+	$url = "$1/".&right_frame_cgi();
 	}
 print "Location: $url\n\n";
 }

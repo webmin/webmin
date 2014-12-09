@@ -1,7 +1,7 @@
 #!/usr/local/bin/perl
 # Show server or domain information
 
-require 'gray-theme-lib.pl';
+require 'gray-theme/gray-theme-lib.pl';
 &ReadParse();
 &load_theme_library();
 if (&get_product_name() eq "usermin") {
