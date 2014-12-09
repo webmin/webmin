@@ -61,6 +61,39 @@ if ($info->{'load'}) {
 		}
 	}
 
+# Temperatures, if available
+if ($info->{'cputemps'}) {
+	my @temps;
+	foreach my $t (@{$info->{'cputemps'}}) {
+		push(@temps, $t->{'core'}.": ".
+			     int($t->{'temp'})."&#8451;");
+		}
+	push(@table, { 'desc' => $text{'right_cputemps'},
+		       'value' => join(" ", @temps) });
+	}
+if ($info->{'drivetemps'}) {
+	my @temps;
+	foreach my $t (@{$info->{'drivetemps'}}) {
+		my $short = $t->{'device'};
+		$short =~ s/^\/dev\///;
+		my $emsg;
+		if ($t->{'errors'}) {
+			$emsg .= " (<font color=red>".
+			    &text('right_driveerr', $t->{'errors'}).
+			    "</font>)";
+			}
+		elsif ($t->{'failed'}) {
+			$emsg .= " (<font color=red>".
+			    $text{'right_drivefailed'}.
+			    "</font>)";
+			}
+		push(@temps, $short.": ".$t->{'temp'}."&#8451;".$emsg);
+		}
+	push(@table, { 'desc' => $text{'right_drivetemps'},
+		       'value' => join(" ", @temps) });
+	}
+
+
 # System uptime
 &foreign_require("proc");
 my $uptime;
@@ -154,7 +187,7 @@ if ($info->{'poss'}) {
 	if (&foreign_available("package-updates")) {
 		$msg = &ui_link("/package-updates/index.cgi?mode=updates", $msg);
 		}
-	push(@table, { 'desc' => $text{'right_update'},
+	push(@table, { 'desc' => $text{'right_updates'},
 		       'value' => $msg });
 	}
 
