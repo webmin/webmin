@@ -15,7 +15,7 @@ else {
 	$minfo = &get_goto_module();
 	}
 my $goto = $minfo ? $minfo->{'dir'}."/" :
-	   $in{'page'} ? "" : &right_frame_cgi()."?open=system&open=status";
+	   $in{'page'} ? "" : "right.cgi";
 if ($in{'page'}) {
 	$goto .= "/".$in{'page'};
 	}

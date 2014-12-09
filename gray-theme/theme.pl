@@ -240,10 +240,6 @@ if ($script_name =~ /session_login.cgi/) {
 	print "</style>\n";
 	print "<![endif]-->\n";
 	}
-if (get_module_name() eq "virtual-server") {
-	# No need for Module Index link, as we have the left-side frame
-	$tconfig{'nomoduleindex'} = 1;
-	}
 }
 
 sub theme_prehead
@@ -778,28 +774,6 @@ for($i=0; $i+1<@_; $i+=2) {
 		if ($url eq '/') {
 			$url = "/?cat=$module_info{'category'}";
 			}
-		elsif ($url eq '' && get_module_name() eq 'virtual-server' ||
-		       $url eq '/virtual-server/') {
-			# Don't bother with virtualmin menu
-			next;
-			}
-		elsif ($url eq '' && get_module_name() eq 'server-manager' ||
-		       $url eq '/server-manager/') {
-			# Don't bother with Cloudmin menu
-			next;
-			}
-		elsif ($url =~ /(view|edit)_domain.cgi/ &&
-		       get_module_name() eq 'virtual-server' ||
-		       $url =~ /^\/virtual-server\/(view|edit)_domain.cgi/) {
-			# Don't bother with link to domain details
-			next;
-			}
-		elsif ($url =~ /edit_serv.cgi/ &&
-		       get_module_name() eq 'server-manager' ||
-		       $url =~ /^\/virtual-server\/edit_serv.cgi/) {
-			# Don't bother with link to system details
-			next;
-			}
 		elsif ($url eq '' && get_module_name()) {
 			$url = "/".get_module_name()."/".
 			       $module_info{'index_link'};
@@ -821,17 +795,6 @@ print "<br>\n";
 if (!$_[$i]) {
 	print "</body></html>\n";
 	}
-}
-
-# Don't show virtualmin menu
-sub theme_redirect
-{
-local ($orig, $url) = @_;
-if (get_module_name() eq "virtual-server" && $orig eq "" &&
-    $url =~ /^((http|https):\/\/([^\/]+))\//) {
-	$url = "$1/".&right_frame_cgi();
-	}
-print "Location: $url\n\n";
 }
 
 # theme_ui_hidden_javascript()

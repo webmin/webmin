@@ -87,10 +87,9 @@ if ($gconfig{'log'} && &foreign_available("webminlog")) {
 	}
 
 # Show info link
-my $right = &right_frame_cgi();
 push(@leftmenu, { 'type' => 'item',
 		  'desc' => $text{'left_home'},
-		  'link' => '/'.$right,
+		  'link' => '/right.cgi',
 		  'icon' => '/images/gohome.gif' });
 
 # Show feedback link, but only if a custom email is set
