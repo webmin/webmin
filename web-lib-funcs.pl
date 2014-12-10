@@ -5282,18 +5282,25 @@ while(1) {
 		# Got the lock!
 		if (!$no_lock) {
 			# Create the .lock file
-			if (-l "$realfile.lock") {
+			my $lockfile = $realfile.".lock";
+			if (-l $lockfile) {
 				# Locks cannot be a symlink, as this could allow
 				# file over-writing
 				unlink("$realfile.lock");
 				}
-			open(LOCKING, ">$realfile.lock") || return 0;
+			my @st = stat($lockfile);
+			if (@st && $st[3] > 1) {
+				# Locks cannot be a hard link, as this could
+				# allow file over-writing
+				unlink($lockfile);
+				}
+			open(LOCKING, ">$lockfile") || return 0;
 			my $lck = eval "flock(LOCKING, 2+4)";
 			my $err = $!;
 			if (!$lck && !$@) {
 				# Lock of lock file failed! Wait till later
 				close(LOCKING);
-				unlink("$realfile.lock");
+				unlink($lockfile);
 				$last_lock_err = "Flock failed : ".($@ || $err);
 				goto tryagain;
 				}
@@ -5302,7 +5309,7 @@ while(1) {
 			if (!$ok) {
 				# Failed to write to .lock file ..
 				close(LOCKING);
-				unlink("$realfile.lock");
+				unlink($lockfile);
 				$last_lock_err = "Lock write failed : ".$err;
 				goto tryagain;
 				}
@@ -5311,13 +5318,13 @@ while(1) {
 			$err = $!;
 			if (!$ok) {
 				# Failed to close lock file
-				unlink("$realfile.lock");
+				unlink($lockfile);
 				$last_lock_err = "Lock close failed : ".$err;
 				goto tryagain;
 				}
 			}
 		$main::locked_file_list{$realfile} = int($readonly);
-		push(@main::temporary_files, "$realfile.lock");
+		push(@main::temporary_files, $lockfile);
 		if (($gconfig{'logfiles'} || $gconfig{'logfullfiles'}) &&
 		    !&get_module_variable('$no_log_file_changes') &&
 		    !$readonly) {
