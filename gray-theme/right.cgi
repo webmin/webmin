@@ -28,223 +28,26 @@ foreach my $info (@info) {
 	if ($info->{'type'} eq 'table') {
 		foreach my $t (@{$info->{'table'}}) {
 			my $chart = "";
+			if ($t->{'chart'}) {
+				my @c = @{$t->{'chart'}};
+				if (@c == 2) {
+					$chart = &bar_chart_three(
+						$c[0], $c[1], 0, $c[0]-$c[1]);
+					}
+				else {
+					$chart = &bar_chart_three(
+						$c[0], $c[1], $c[2],
+						$c[0]-$c[1]-$c[2]);
+					}
+				$chart = "<br>".$chart;
+				}
 			print &ui_table_row($t->{'desc'}, $t->{'value'}.$chart);
 			}
 		}
 	print &ui_table_end();
 	}
 
-if ($level == 0) {
-	# Show general system information
-	print &ui_table_start(undef, undef, 2);
-
-	# Ask status module for collected info
-	&foreign_require("system-status");
-	$info = &system_status::get_collected_info();
-
-	# Hostname
-	$ip = $info && $info->{'ips'} ? $info->{'ips'}->[0]->[0] :
-				&to_ipaddress(get_system_hostname());
-	$ip = " ($ip)" if ($ip);
-	$host = &get_system_hostname().$ip;
-	if (&foreign_available("net")) {
-		$host = "<a href=net/list_dns.cgi>$host</a>";
-		}
-	print &ui_table_row($text{'right_host'},
-		$host);
-
-	# Operating system
-	print &ui_table_row($text{'right_os'},
-		$gconfig{'os_version'} eq '*' ?
-		    $gconfig{'real_os_type'} :
-		    $gconfig{'real_os_type'}." ".$gconfig{'real_os_version'});
-
-	# Webmin version
-	print &ui_table_row($text{'right_webmin'},
-		&get_webmin_version());
-
-	# System time
-	$tm = localtime(time());
-	print &ui_table_row($text{'right_time'},
-		&foreign_available("time") ? "<a href=time/>$tm</a>" : $tm);
-
-	# Kernel and CPU
-	if ($info->{'kernel'}) {
-		print &ui_table_row($text{'right_kernel'},
-			&text('right_kernelon',
-			      $info->{'kernel'}->{'os'},
-			      $info->{'kernel'}->{'version'},
-			      $info->{'kernel'}->{'arch'}));
-		}
-
-	# CPU type and cores
-	if ($info->{'load'}) {
-		@c = @{$info->{'load'}};
-		if (@c > 3) {
-			print &ui_table_row($text{'right_cpuinfo'},
-				&text('right_cputype', @c));
-			}
-		}
-
-	# Temperatures, if available
-	if ($info->{'cputemps'}) {
-		my @temps;
-		foreach my $t (@{$info->{'cputemps'}}) {
-			push(@temps, $t->{'core'}.": ".
-				     int($t->{'temp'})."&#8451;");
-			}
-		print &ui_table_row($text{'right_cputemps'},
-			join(", ", @temps));
-		}
-	if ($info->{'drivetemps'}) {
-		my @temps;
-		foreach my $t (@{$info->{'drivetemps'}}) {
-			my $short = $t->{'device'};
-			$short =~ s/^\/dev\///;
-			my $emsg;
-			if ($t->{'errors'}) {
-				$emsg .= " (<font color=red>".
-				    &text('right_driveerr', $t->{'errors'}).
-				    "</font>)";
-				}
-			elsif ($t->{'failed'}) {
-				$emsg .= " (<font color=red>".
-				    $text{'right_drivefailed'}.
-				    "</font>)";
-				}
-			push(@temps, $short.": ".$t->{'temp'}."&#8451;".$emsg);
-			}
-		print &ui_table_row($text{'right_drivetemps'},
-			join(", ", @temps));
-		}
-
-	# System uptime
-	&foreign_require("proc");
-	my $uptime;
-	my ($d, $h, $m) = &proc::get_system_uptime();
-	if ($d) {
-		$uptime = &text('right_updays', $d, $h, $m);
-		}
-	elsif ($m) {
-		$uptime = &text('right_uphours', $h, $m);
-		}
-	elsif ($m) {
-		$uptime = &text('right_upmins', $m);
-		}
-	if ($uptime) {
-		if (&foreign_available("init")) {
-			$uptime = "<a href=init/>$uptime</a>";
-			}
-		print &ui_table_row($text{'right_uptime'}, $uptime);
-		}
-
-	# Running processes
-	if (&foreign_check("proc")) {
-		@procs = &proc::list_processes();
-		$pr = scalar(@procs);
-		print &ui_table_row($text{'right_procs'},
-			&foreign_available("proc") ? "<a href=proc/>$pr</a>"
-						   : $pr);
-		}
-
-	# Load averages
-	if ($info->{'load'}) {
-		@c = @{$info->{'load'}};
-		if (@c) {
-			print &ui_table_row($text{'right_cpu'},
-				&text('right_load', @c));
-			}
-		}
-
-	# CPU usage
-	if ($info->{'cpu'}) {
-		@c = @{$info->{'cpu'}};
-		print &ui_table_row($text{'right_cpuuse'},
-			&text('right_cpustats', @c));
-		}
-
-	# Memory usage
-	if ($info->{'mem'}) {
-		@m = @{$info->{'mem'}};
-		if (@m && $m[0] && $m[5]) {
-			# Show memory usage with bursting
-			$real = &text('right_used2',
-				      &nice_size($m[0]*1024),
-				      &nice_size(($m[0]-$m[1])*1024),
-				      &nice_size($m[5]*1024))."<br>\n".
-				&bar_chart_three($m[5], $m[1], $m[0]-$m[1],
-						 $m[5]-$m[0]);
-			}
-		elsif (@m && $m[0] && !$m[5]) {
-			# Show memory usage on a regular system
-			$real = &text('right_used',
-				      &nice_size($m[0]*1024),
-				      &nice_size(($m[0]-$m[1])*1024))."<br>\n".
-				&bar_chart($m[0], $m[0]-$m[1], 1);
-			}
-		else {
-			# No memory info available
-			$real = undef;
-			}
-		if ($real) {
-			if (&foreign_available("proc")) {
-				$real = "<a href=proc/index_size.cgi>$real</a>";
-				}
-			print &ui_table_row($text{'right_real'}, $real);
-			}
-
-		if (@m && $m[2]) {
-			print &ui_table_row($text{'right_virt'},
-				&text('right_used',
-			 	      &nice_size($m[2]*1024),
-				      &nice_size(($m[2]-$m[3])*1024))."<br>\n".
-				&bar_chart($m[2], $m[2]-$m[3], 1));
-			}
-		}
-
-	# Disk space on local drives
-	if ($info->{'disk_total'}) {
-		($total, $free) = ($info->{'disk_total'}, $info->{'disk_free'});
-		$disk = &text('right_used',
-			      &nice_size($total),
-			      &nice_size($total-$free));
-		if (&foreign_available("mount")) {
-			$disk = "<a href=mount/>$disk</a>";
-			}
-		print &ui_table_row($text{'right_disk'},
-			$disk."<br>\n".
-			&bar_chart($total, $total-$free, 1));
-		}
-
-	# Package updates
-	if ($info->{'poss'}) {
-		@poss = @{$info->{'poss'}};
-		@secs = grep { $_->{'security'} } @poss;
-		if (@poss && @secs) {
-			$msg = &text('right_upsec', scalar(@poss),
-						    scalar(@secs));
-			}
-		elsif (@poss) {
-			$msg = &text('right_upneed', scalar(@poss));
-			}
-		else {
-			$msg = $text{'right_upok'};
-			}
-		if (&foreign_available("package-updates")) {
-			$msg = "<a href='package-updates/index.cgi?mode=updates'>$msg</a>";
-			}
-		print &ui_table_row($text{'right_updates'}, $msg);
-		}
-
-	print &ui_table_end();
-
-	# Show other webmin-generated notifications
-	if (&foreign_check("webmin")) {
-		&foreign_require("webmin", "webmin-lib.pl");
-		&webmin::show_webmin_notifications();
-		}
-	}
-elsif ($level == 3) {
+if ($level == 3) {
 	# Show Usermin user's information
 	print "<h3>$text{'right_header5'}</h3>\n";
 	print &ui_table_start(undef, undef, 2);
@@ -322,11 +125,11 @@ return $rv;
 # Returns HTML for a bar chart of three values, stacked
 sub bar_chart_three
 {
-local ($total, $used1, $used2, $used3) = @_;
-local $rv;
-local $w1 = int($bar_width*$used1/$total)+1;
-local $w2 = int($bar_width*$used2/$total);
-local $w3 = int($bar_width*$used3/$total);
+my ($total, $used1, $used2, $used3) = @_;
+my $rv;
+my $w1 = int($bar_width*$used1/$total)+1;
+my $w2 = int($bar_width*$used2/$total);
+my $w3 = int($bar_width*$used3/$total);
 $rv .= sprintf "<img src=images/red.gif width=%s height=10>", $w1;
 $rv .= sprintf "<img src=images/purple.gif width=%s height=10>", $w2;
 $rv .= sprintf "<img src=images/blue.gif width=%s height=10>", $w3;
