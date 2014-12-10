@@ -74,15 +74,14 @@ if (!$in{'name_def'}) {
 !$in{'root'} || &allowed_auth_file($in{'root'}) ||
 	&error(&text('cvirt_eroot3', $in{'root'}));
 
-if ($in{'root'} && !-d $in{'root'}) {
+if ($in{'root'} && !-e $in{'root'}) {
 	# create the document root
 	mkdir($in{'root'}, 0755) ||
 		&error(&text('cvirt_eroot2', $in{'root'}, $!));
 	$user = &find_directive("User", $conf);
 	$group = &find_directive("Group", $conf);
-	$uid = $user ? getpwnam($user) : 0;
-	$gid = $group ? getgrnam($group) : 0;
-	chown($uid, $gid, $in{'root'});
+	$user || &error($text{'cvirt_eroot4'});
+	&set_ownership_permissions($user, $group, undef, $in{'root'});
 	}
 
 # find file to add to

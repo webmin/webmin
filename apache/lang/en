@@ -67,6 +67,7 @@ cvirt_ename='$1' is not a valid server name
 cvirt_eroot1=You must enter a document root
 cvirt_eroot2=Failed to create directory '$1' : $2
 cvirt_eroot3=You are not allowed to use the root directory '$1'
+cvirt_eroot4=No User defined in the Apache configuration
 cvirt_etaken=A virtual server with the same name and port already exists
 cvirt_efile=Failed to write to $1 : $2
 cvirt_emissing=The new virtual server was added to $1, but this file is not used by Apache. Check the <a href='$2'>module configuration</a> and make sure the 'File or directory to add virtual servers to' is correct.
