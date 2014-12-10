@@ -8495,7 +8495,7 @@ else {
 			&error(&text("efileopen", $file, $!));
 			}
 		binmode($fh);
-		chmod(0700, $tmp);
+		chmod(0750, $tmp);
 		return $ex;
 		}
 	elsif ($file =~ /^>\s*(([a-zA-Z]:)?\/.*)$/ && $notemp) {
