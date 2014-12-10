@@ -31,7 +31,8 @@ else {
 			push(@yesno, $perms[$i] ? "'Y'" : "'N'");
 			}
 		foreach my $f ('ssl_type', 'ssl_cipher',
-			       'x509_issuer', 'x509_subject') {
+			       'x509_issuer', 'x509_subject', 'plugin',
+			       'authentication_string') {
 			if ($fieldmap{$f}) {
 				push(@ssl_field_names, $f);
 				push(@ssl_field_values, "''");
