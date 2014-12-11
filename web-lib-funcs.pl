@@ -5283,17 +5283,7 @@ while(1) {
 		if (!$no_lock) {
 			# Create the .lock file
 			my $lockfile = $realfile.".lock";
-			if (-l $lockfile) {
-				# Locks cannot be a symlink, as this could allow
-				# file over-writing
-				unlink("$realfile.lock");
-				}
-			my @st = stat($lockfile);
-			if (@st && $st[3] > 1) {
-				# Locks cannot be a hard link, as this could
-				# allow file over-writing
-				unlink($lockfile);
-				}
+			unlink($lockfile);
 			open(LOCKING, ">$lockfile") || return 0;
 			my $lck = eval "flock(LOCKING, 2+4)";
 			my $err = $!;
