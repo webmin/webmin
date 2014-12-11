@@ -417,8 +417,6 @@ if ($access{'create'}) {
 		  &ui_checkbox("nv", 1, $text{'index_nv'}, 1)."<br>" : "").
 		&ui_checkbox("listen", 1, $text{'index_listen'}, 1));
 
-	# Work out sensible default port
-
 	# Port
 	print &ui_table_row($text{'index_port'},
 		&choice_input(@nvports ? 2 : 0,
@@ -434,8 +432,16 @@ if ($access{'create'}) {
 		&ui_checkbox("adddir", 1, $text{'index_adddir'}, 1));
 
 	# Server name
-	print &ui_table_row($text{'index_name'},
-		&opt_input("", "name", $text{'index_auto'}, 30));
+	if ($access{'virts'} eq '*') {
+		print &ui_table_row($text{'index_name'},
+			&opt_input("", "name", $text{'index_auto'}, 30));
+		}
+	else {
+		# Require that non-root users enter a server name, or else it
+		# will be impossible to grant access to the new virtualhost
+		print &ui_table_row($text{'index_name'},
+			&ui_textbox("name", "", 30));
+		}
 
 	# Add to file
 	print &ui_table_row($text{'index_file'},
