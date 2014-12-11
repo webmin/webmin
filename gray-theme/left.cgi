@@ -6,7 +6,7 @@ use warnings;
 require 'gray-theme/gray-theme-lib.pl';
 &ReadParse();
 our ($current_theme, $remote_user, %gconfig);
-my %text = &load_language($current_theme);
+our %text = &load_language($current_theme);
 my %gaccess = &get_module_acl(undef, "");
 
 # Work out what modules and categories we have

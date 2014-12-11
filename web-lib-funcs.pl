@@ -10056,7 +10056,7 @@ foreach my $m (&get_available_module_infos()) {
 		push(@rv, $i);
 		}
 	}
-return @rv;
+return sort { ($b->{'priority'} || 0) <=> ($a->{'priority'} || 0) } @rv;
 }
 
 =head2 list_modules_webmin_menu()
@@ -10132,6 +10132,9 @@ to display. Each is a hash ref with the following keys :
 =item usage - In "usage" mode, an array ref of things to show some kind of 
 	      usage for. Each is a hash ref with keys described below.
 
+=item titles - In "usage" mode, an 3-element array ref of titles to show above
+	       the usage columns.
+
 For "table" mode, the keys in each hash ref are :
 
 =item desc - Label for this item
@@ -10174,7 +10177,7 @@ foreach my $m (&get_available_module_infos()) {
 		push(@rv, $i);
 		}
 	}
-return @rv;
+return sort { ($b->{'priority'} || 0) <=> ($a->{'priority'} || 0) } @rv;
 }
 
 $done_web_lib_funcs = 1;
