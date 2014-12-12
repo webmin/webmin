@@ -1695,7 +1695,7 @@ if ($config{'userfile'}) {
 					syslog("info", "%s", "Logout by $louser from $acpthost");
 					}
 				&run_logout_script($louser, $sid,
-						   $acptip, $localip);
+						   $loghost, $localip);
 				&write_logout_utmp($louser, $actphost);
 				}
 			}
@@ -3984,7 +3984,7 @@ if ($ok && (!$expired ||
 
 	# Run the post-login script, if any
 	&run_login_script($authuser, $sid,
-			  $acptip, $localip);
+			  $loghost, $localip);
 
 	# Check for a redirect URL for the user
 	local $rurl = &login_redirect($authuser, $pass, $host);
