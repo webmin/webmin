@@ -343,6 +343,7 @@ cvirt_eport='$1' ist kein g&#252;ltiger Port
 cvirt_eroot1=Sie m&#252;ssen ein Dokument-Root angeben
 cvirt_eroot2=Fehler beim Anlegen des Verzeichnisses '$1' : $2
 cvirt_eroot3=Sie sind nicht berechtigt das Root-Verzeichnis '$1' zu benutzen
+cvirt_eroot4=Keine Benutzer in der Apache-Konfiguration definiert
 cvirt_err=Fehler beim Anlegen des virtuellen Server
 cvirt_etaken=Ein virtuellen Server mit dem selben Namen und demselben Port existiert bereits
 default_serv=Standard Server
