@@ -576,7 +576,7 @@ sub uuid_to_username
 my ($uuid) = @_;
 my %cache;
 &read_file_cached($uuid_cache_file, \%cache);
-return $cache{$uuid} if ($cache{$uuid});
+return $cache{$uuid} if (exists($cache{$uuid}));
 my $found = 0;
 foreach my $file (&get_minecraft_log_file(),
 		  sort { $b cmp $a }
@@ -607,6 +607,11 @@ foreach my $file (&get_minecraft_log_file(),
 		&write_file($uuid_cache_file, \%cache);
 		last;
 		}
+	}
+# If we got this far, it wasn't found
+if (!exists($cache{$uuid})) {
+	$cache{$uuid} = "";
+	&write_file($uuid_cache_file, \%cache);
 	}
 return $cache{$uuid};
 }
