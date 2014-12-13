@@ -81,9 +81,6 @@ if ($gconfig{'log'} && &foreign_available("webminlog")) {
 			  'link' => '/webminlog/',
 			  'icon' => '/images/logs.gif',
 			  'onclick' => 'show_logs(); return false;' });
-	# XXX use JS
-	#print "<div class='linkwithicon'><img src=images/logs.gif>\n";
-	#print "<div class='aftericon'><a target=right href='webminlog/' onClick='show_logs(); return false;'>$text{'left_logs'}</a></div></div>\n";
 	}
 
 # Show info link
