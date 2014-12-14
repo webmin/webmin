@@ -576,16 +576,17 @@ return $mail;
 sub mailbox_idlist
 {
 local ($folder) = @_;
+&switch_to_folder_user($_[0]);
+my @idlist;
 if ($folder->{'type'} == 0) {
 	# mbox, for which IDs are mail positions
 	print DEBUG "starting to get IDs from $folder->{'file'}\n";
-	local @idlist = &idlist_mails($folder->{'file'});
+	@idlist = &idlist_mails($folder->{'file'});
 	print DEBUG "got ",scalar(@idlist)," ids\n";
-	return @idlist;
 	}
 elsif ($folder->{'type'} == 1) {
 	# maildir, for which IDs are filenames
-	return &idlist_maildir($folder->{'file'});
+	@idlist = &idlist_maildir($folder->{'file'});
 	}
 elsif ($folder->{'type'} == 2) {
 	# pop3, for which IDs are uidls
@@ -596,12 +597,11 @@ elsif ($folder->{'type'} == 2) {
 		else { &error(&text('save_elogin', $rv[1])); }
 		}
 	local $h = $rv[1];
-	local @uidl = &pop3_uidl($h);
-	return @uidl;
+	@idlist = &pop3_uidl($h);
 	}
 elsif ($folder->{'type'} == 3) {
 	# MH directory, for which IDs are file numbers
-	return &idlist_mhdir($folder->{'file'});
+	@idlist = &idlist_mhdir($folder->{'file'});
 	}
 elsif ($folder->{'type'} == 4) {
 	# IMAP, for which IDs are IMAP UIDs
@@ -618,22 +618,18 @@ elsif ($folder->{'type'} == 4) {
         $folder->{'lastchange'} = $irv[3] if ($irv[3]);
 
 	@rv = &imap_command($h, "FETCH 1:$count UID");
-	local @uids;
 	foreach my $uid (@{$rv[1]}) {
 		if ($uid =~ /UID\s+(\d+)/) {
-			push(@uids, $1);
+			push(@idlist, $1);
 			}
 		}
-	return @uids;
 	}
 elsif ($folder->{'type'} == 5) {
 	# Composite, IDs come from sub-folders
-	local @rv;
 	foreach my $sf (@{$folder->{'subfolders'}}) {
 		local $sfn = &folder_name($sf);
-		push(@rv, map { $sfn."\t".$_ } &mailbox_idlist($sf));
+		push(@idlist, map { $sfn."\t".$_ } &mailbox_idlist($sf));
 		}
-	return @rv;
 	}
 elsif ($folder->{'type'} == 6) {
 	# Virtual, IDs come from sub-folders (where they exist)
@@ -645,18 +641,18 @@ elsif ($folder->{'type'} == 6) {
 		push(@{$wantmap{$sfn}}, $sid);
 		$namemap{$sfn} = $sf;
 		}
-	local @rv;
 	foreach my $sfn (keys %wantmap) {
 		local %wantids = map { $_, 1 } @{$wantmap{$sfn}};
 		local $sf = $namemap{$sfn};
 		foreach my $sfid (&mailbox_idlist($sf)) {
 			if ($wantids{$sfid}) {
-				push(@rv, $sfn."\t".$sfid);
+				push(@idlist, $sfn."\t".$sfid);
 				}
 			}
 		}
-	return @rv;
 	}
+&switch_from_folder_user($_[0]);
+return @idlist;
 }
 
 # compute_start_end(start, end, count)
@@ -927,6 +923,7 @@ return &user_index_file(($folder->{'file'} || $folder->{'id'}).".byid");
 sub mailbox_search_mail
 {
 local ($fields, $andmode, $folder, $limit, $headersonly) = @_;
+# XXX user permissions fix needed
 
 # For folders other than IMAP and composite and mbox where we already have
 # an index, build a sort index and use that for
@@ -1123,6 +1120,7 @@ elsif ($folder->{'type'} == 6) {
 # Delete multiple messages from some folder
 sub mailbox_delete_mail
 {
+# XXX user permissions fix needed
 return undef if (&is_readonly_mode());
 local $f = shift(@_);
 if ($userconfig{'delete_mode'} == 1 && !$f->{'trash'} && !$f->{'spam'} &&
@@ -1300,6 +1298,7 @@ if ($folder->{'sortable'}) {
 sub mailbox_copy_folder
 {
 local ($src, $dest) = @_;
+# XXX user permissions fix needed
 if ($src->{'type'} == 0 && $dest->{'type'} == 0) {
 	# mbox to mbox .. just read and write the files
 	&open_readfile(SOURCE, $src->{'file'});
@@ -1352,6 +1351,7 @@ else {
 sub mailbox_move_mail
 {
 return undef if (&is_readonly_mode());
+# XXX user permissions fix needed
 local $src = shift(@_);
 local $dst = shift(@_);
 local $now = time();
@@ -1423,6 +1423,7 @@ return 0;
 # Moves all mail from one folder to another, possibly converting the type
 sub mailbox_move_folder
 {
+# XXX user permissions fix needed
 return undef if (&is_readonly_mode());
 local ($src, $dst) = @_;
 if ($src->{'type'} == $dst->{'type'} && !$src->{'remote'}) {
@@ -1474,6 +1475,7 @@ if ($src->{'sortable'}) {
 # Copy mail from one folder to another
 sub mailbox_copy_mail
 {
+# XXX user permissions fix needed
 return undef if (&is_readonly_mode());
 local $src = shift(@_);
 local $dst = shift(@_);
@@ -1550,6 +1552,7 @@ if ($_[0]->{'type'} == 1) {
 # Writes some mail message to a folder
 sub write_mail_folder
 {
+# XXX user permissions fix needed
 return undef if (&is_readonly_mode());
 &create_folder_maildir($_[1]);
 local $needid;
@@ -1618,6 +1621,7 @@ if ($needid) {
 sub mailbox_modify_mail
 {
 local ($oldmail, $mail, $folder, $textonly) = @_;
+# XXX user permissions fix needed
 
 return undef if (&is_readonly_mode());
 if ($folder->{'type'} == 1) {

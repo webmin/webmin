@@ -1961,7 +1961,7 @@ else {
 		# Really read
 		local @shorts;
 		foreach my $d ("cur", "new") {
-			opendir(DIR, "$_[0]/$d");
+			&opendir_as_mail_user(DIR, "$_[0]/$d") || &error("Failed to open $_[0]/$d : $!");
 			while(my $f = readdir(DIR)) {
 				next if ($f eq "." || $f eq "..");
 				if ($skipt && $f =~ /:2,([A-Za-z]*T[A-Za-z]*)$/) {
@@ -2193,7 +2193,7 @@ sub empty_maildir
 local $d;
 foreach $d ("$_[0]/cur", "$_[0]/new") {
 	local $f;
-	opendir(DIR, $d);
+	&opendir_as_mail_user(DIR, $d) || &error("Failed to open $d : $!");
 	while($f = readdir(DIR)) {
 		unlink("$d/$f") if ($f ne '.' && $f ne '..');
 		}
@@ -2240,7 +2240,7 @@ return scalar(@files);
 sub list_mhdir
 {
 local ($start, $end, $f, $i, @rv);
-opendir(DIR, $_[0]);
+&opendir_as_mail_user(DIR, $_[0]) || &error("Failed to open $_[0] : $!");
 local @files = map { "$_[0]/$_" }
 		sort { $a <=> $b }
 		 grep { /^\d+$/ } readdir(DIR);
@@ -2280,7 +2280,7 @@ return @rv;
 sub idlist_mhdir
 {
 local ($dir) = @_;
-opendir(DIR, $dir);
+&opendir_as_mail_user(DIR, $dir) || &error("Failed to open $dir : $!");
 local @files = grep { /^\d+$/ } readdir(DIR);
 closedir(DIR);
 return @files;
@@ -2300,7 +2300,7 @@ sub select_mhdir
 {
 local ($file, $ids, $headersonly) = @_;
 local @rv;
-opendir(DIR, $file);
+&opendir_as_mail_user(DIR, $file) || &error("Failed to open $file : $!");
 local @files = map { "$file/$_" }
 		sort { $a <=> $b }
 		 grep { /^\d+$/ } readdir(DIR);
@@ -2363,8 +2363,8 @@ unlink($_[0]->{'file'});
 sub max_mhdir
 {
 local $max = 1;
-opendir(DIR, $_[0]);
-foreach $f (readdir(DIR)) {
+&opendir_as_mail_user(DIR, $_[0]) || &error("Failed to open $_[0] : $!");
+foreach my $f (readdir(DIR)) {
 	$max = $f if ($f =~ /^\d+$/ && $f > $max);
 	}
 closedir(DIR);
@@ -2375,9 +2375,8 @@ return $max;
 # Delete all messages in an MH format directory
 sub empty_mhdir
 {
-local $f;
-opendir(DIR, $_[0]);
-foreach $f (readdir(DIR)) {
+&opendir_as_mail_user(DIR, $_[0]) || &error("Failed to open $_[0] : $!");
+foreach my $f (readdir(DIR)) {
 	unlink("$_[0]/$f") if ($f =~ /^\d+$/);
 	}
 closedir(DIR);
@@ -2387,7 +2386,7 @@ closedir(DIR);
 # Returns the number of messages in an MH directory
 sub count_mhdir
 {
-opendir(DIR, $_[0]);
+&opendir_as_mail_user(DIR, $_[0]) || &error("Failed to open $_[0] : $!");
 local @files = grep { /^\d+$/ } readdir(DIR);
 closedir(DIR);
 return scalar(@files);
@@ -2827,8 +2826,34 @@ $main::mail_open_user = undef;
 sub open_as_mail_user
 {
 my ($fh, $file) = @_;
-my $switched = 0;
-print STDERR "file=$file user=$main::mail_open_user <=$< >=$>\n";
+my $switched = &switch_to_mail_user();
+my $rv = open($fh, $file);
+if ($switched) {
+	# Now that it is open, switch back to root
+	$) = 0;
+	$> = 0;
+	}
+return $rv;
+}
+
+# opendir_as_mail_user(fh, dir)
+# Calls the opendir function, but as the user set by set_mail_open_user
+sub opendir_as_mail_user
+{
+my ($fh, $dir) = @_;
+my $switched = &switch_to_mail_user();
+my $rv = opendir($fh, $dir);
+if ($switched) {
+	$) = 0;
+	$> = 0;
+	}
+return $rv;
+}
+
+# switch_to_mail_user()
+# Sets the permissions used for reading files
+sub switch_to_mail_user
+{
 if (defined($main::mail_open_user) && !$< && !$>) {
 	# Switch file permissions to the correct user
 	my @uinfo = $main::mail_open_user =~ /^\d+$/ ?
@@ -2838,16 +2863,9 @@ if (defined($main::mail_open_user) && !$< && !$>) {
 			 "does not exists");
 	$) = $uinfo[3]." ".join(" ", $uinfo[3], &other_groups($uinfo[0]));
 	$> = $uinfo[2];
-	$switched = 1;
+	return 1;
 	}
-my $rv = open($fh, $file);
-if ($switched) {
-	# Now that it is open, switch back to root
-	$) = 0;
-	$> = 0;
-	}
-print STDERR "rv=$rv err=$!\n";
-return $rv;
+return 0;
 }
 
 1;
