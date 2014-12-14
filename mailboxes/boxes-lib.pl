@@ -2795,4 +2795,52 @@ if (!$config{'no_mailer'}) {
 	}
 }
 
+# set_mail_open_user(user)
+# Sets the Unix user that will be used for all mail file open ops, by functions
+# like list_mail and select_maildir
+sub set_mail_open_user
+{
+my ($user) = @_;
+if ($user eq "root" || $user eq "0") {
+	$main::mail_open_user = undef;
+	}
+elsif (!$<) {
+	$main::mail_open_user = $user;
+	}
+}
+
+# clear_mail_open_user()
+# Resets the user to root
+sub clear_mail_open_user
+{
+my ($user) = @_;
+$main::mail_open_user = undef;
+}
+
+# open_as_mail_user(fh, file)
+# Calls the open function, but as the user set by set_mail_open_user
+sub open_as_mail_user
+{
+my ($fh, $file) = @_;
+my $switched = 0;
+if (defined($main::mail_open_user) && !$< && !$>) {
+	# Switch file permissions to the correct user
+	my @uinfo = $main::mail_open_user =~ /^\d+$/ ?
+			getpwuid($main::mail_open_user) :
+			getpwnam($main::mail_open_user);
+	@uinfo || &error("Mail open user $main::mail_open_user ".
+			 "does not exists");
+	$) = $uinfo[3]." ".join(" ", $uinfo[3], &other_groups($uinfo[0]));
+	$> = $uinfo[2];
+	$switched = 1;
+	}
+my $rv = open($fh, $file);
+if ($switched) {
+	# Now that it is open, switch back to root
+	$) = 0;
+	$> = 0;
+	}
+return $rv;
+}
+
 1;

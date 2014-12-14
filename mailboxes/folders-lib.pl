@@ -14,14 +14,16 @@ $create_cid_count = 0;
 # in the specified range filled in.
 sub mailbox_list_mails
 {
+my @mail;
+&switch_to_folder_user($_[2]);
 if ($_[2]->{'type'} == 0) {
 	# List a single mbox formatted file
-	return &list_mails($_[2]->{'file'}, $_[0], $_[1]);
+	@mail = &list_mails($_[2]->{'file'}, $_[0], $_[1]);
 	}
 elsif ($_[2]->{'type'} == 1) {
 	# List a qmail maildir
 	local $md = $_[2]->{'file'};
-	return &list_maildir($md, $_[0], $_[1], $_[3]);
+	@mail = &list_maildir($md, $_[0], $_[1], $_[3]);
 	}
 elsif ($_[2]->{'type'} == 2) {
 	# Get mail headers/body from a remote POP3 server
@@ -43,7 +45,7 @@ elsif ($_[2]->{'type'} == 2) {
 
 	# Work out what range we want
 	local ($start, $end) = &compute_start_end($_[0], $_[1], scalar(@uidl));
-	local @rv = map { undef } @uidl;
+	local @mail = map { undef } @uidl;
 
 	# For each message in the range, get the headers or body
 	local ($i, $f, %cached, %sizeneed);
@@ -104,7 +106,7 @@ elsif ($_[2]->{'type'} == 2) {
 			}
 		$mail->{'idx'} = $i;
 		$mail->{'id'} = $uidl[$i];
-		$rv[$i] = $mail;
+		$mail[$i] = $mail;
 		}
 
 	# Get sizes for mails if needed
@@ -115,7 +117,7 @@ elsif ($_[2]->{'type'} == 2) {
 			last if ($_ eq ".\n");
 			if (/^(\d+)\s+(\d+)/ && $sizeneed{$1-1}) {
 				# Add size to the mail cache
-				$rv[$1-1]->{'size'} = $2;
+				$mail[$1-1]->{'size'} = $2;
 				local $u = &safe_uidl($uidl[$1-1]);
 				open(CACHE, ">>$cd/$u.headers");
 				print CACHE $2,"\n";
@@ -131,13 +133,11 @@ elsif ($_[2]->{'type'} == 2) {
 						: "$cd/$f.body");
 			}
 		}
-
-	return @rv;
 	}
 elsif ($_[2]->{'type'} == 3) {
 	# List an MH directory
 	local $md = $_[2]->{'file'};
-	return &list_mhdir($md, $_[0], $_[1], $_[3]);
+	@mail = &list_mhdir($md, $_[0], $_[1], $_[3]);
 	}
 elsif ($_[2]->{'type'} == 4) {
 	# Get headers and possibly bodies from an IMAP server
@@ -161,7 +161,7 @@ elsif ($_[2]->{'type'} == 4) {
 
 	# Work out what range we want
 	local ($start, $end) = &compute_start_end($_[0], $_[1], $count);
-	local @mail = map { undef } (0 .. $count-1);
+	@mail = map { undef } (0 .. $count-1);
 
 	# Get the headers or body of messages in the specified range
 	local @rv;
@@ -187,12 +187,9 @@ elsif ($_[2]->{'type'} == 4) {
 			$mail[$start+$i] = $mail;
 			}
 		}
-
-	return @mail;
 	}
 elsif ($_[2]->{'type'} == 5) {
 	# A composite folder, which combined two or more others.
-	local @mail;
 
 	# Work out exactly how big the total is
 	local ($sf, %len, $count);
@@ -229,8 +226,6 @@ elsif ($_[2]->{'type'} == 5) {
 		push(@mail, @submail);
 		$pos += $len{$sf};
 		}
-
-	return @mail;
 	}
 elsif ($_[2]->{'type'} == 6) {
 	# A virtual folder, which just contains ids of mails in other folders
@@ -249,7 +244,7 @@ elsif ($_[2]->{'type'} == 6) {
 
 	# For each sub-folder, get the IDs we need, and put them into the
 	# return array at the right place
-	local @mail = map { undef } (0 .. @$mems-1);
+	@mail = map { undef } (0 .. @$mems-1);
 	local $changed = 0;
 	foreach my $sfn (keys %wantmap) {
 		local $sf = $namemap{$sfn};
@@ -293,13 +288,14 @@ elsif ($_[2]->{'type'} == 6) {
 
 	# Filter out messages that don't exist anymore
 	@mail = grep { $_ ne 'GONE' } @mail;
-	return @mail;
 	}
 elsif ($_[2]->{'type'} == 7) {
 	# MBX format folder
 	print DEBUG "listing MBX $_[2]->{'file'}\n";
-	return &list_mbxfile($_[2]->{'file'}, $_[0], $_[1]);
+	@mail = &list_mbxfile($_[2]->{'file'}, $_[0], $_[1]);
 	}
+&switch_from_folder_user($_[2]);
+return @mail;
 }
 
 # mailbox_select_mails(&folder, &ids, headersonly)
@@ -3633,6 +3629,24 @@ if ( &get_charset() =~ /^EUC/i ) {	# EUC-JP,EUC-KR
 else {
 	return $charset;
 	}
+}
+
+# switch_to_folder_user(&folder)
+# If a folder has a user, switch the UID and GID used for writes to it
+sub switch_to_folder_user
+{
+my ($folder) = @_;
+if ($folder->{'user'}) {
+	&set_mail_open_user($folder->{'user'});
+	}
+}
+
+# switch_from_folder_user(&folder)
+# Undoes the change made by switch_to_folder_user
+sub switch_from_folder_user
+{
+my ($folder) = @_;
+&clear_mail_open_user();
 }
 
 1;
