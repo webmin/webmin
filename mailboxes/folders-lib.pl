@@ -45,7 +45,7 @@ elsif ($_[2]->{'type'} == 2) {
 
 	# Work out what range we want
 	local ($start, $end) = &compute_start_end($_[0], $_[1], scalar(@uidl));
-	local @mail = map { undef } @uidl;
+	@mail = map { undef } @uidl;
 
 	# For each message in the range, get the headers or body
 	local ($i, $f, %cached, %sizeneed);
@@ -303,17 +303,19 @@ return @mail;
 sub mailbox_select_mails
 {
 local ($folder, $ids, $headersonly) = @_;
+my @mail;
+&switch_to_folder_user($_[0]);
 if ($folder->{'type'} == 0) {
 	# mbox folder
-	return &select_mails($folder->{'file'}, $ids, $headersonly);
+	@mail = &select_mails($folder->{'file'}, $ids, $headersonly);
 	}
 elsif ($folder->{'type'} == 1) {
 	# Maildir folder
-	return &select_maildir($folder->{'file'}, $ids, $headersonly);
+	@mail = &select_maildir($folder->{'file'}, $ids, $headersonly);
 	}
 elsif ($folder->{'type'} == 3) {
 	# MH folder
-	return &select_mhdir($folder->{'file'}, $ids, $headersonly);
+	@mail = &select_mhdir($folder->{'file'}, $ids, $headersonly);
 	}
 elsif ($folder->{'type'} == 2) {
 	# POP folder
@@ -338,7 +340,6 @@ elsif ($folder->{'type'} == 2) {
 
 	# Work out what we have cached
 	local ($i, $f, %cached, %sizeneed);
-	local @rv;
 	local $cd = "$cache_directory/$_[2]->{'id'}.cache";
 	if (opendir(CACHE, $cd)) {
 		while($f = readdir(CACHE)) {
@@ -399,7 +400,7 @@ elsif ($folder->{'type'} == 2) {
 			}
 		$mail->{'idx'} = $uidlmap{$i}-1;
 		$mail->{'id'} = $i;
-		push(@rv, $mail);
+		push(@mail, $mail);
 		}
 
 	# Get sizes for mails if needed
@@ -419,8 +420,6 @@ elsif ($folder->{'type'} == 2) {
 				}
 			}
 		}
-
-	return @rv;
 	}
 elsif ($folder->{'type'} == 4) {
 	# IMAP folder
@@ -451,7 +450,7 @@ elsif ($folder->{'type'} == 4) {
 
 	# Fetch each mail by ID. This is done in blocks of 1000, to avoid
 	# hitting a the IMAP server's max request limit
-	local @rv = map { undef } @$ids;
+	@mail = map { undef } @$ids;
 	local $wanted = $headersonly ? "(RFC822.SIZE UID FLAGS RFC822.HEADER)"
 				     : "(UID FLAGS BODY.PEEK[])";
 	if (@$ids) {
@@ -465,14 +464,12 @@ elsif ($folder->{'type'} == 4) {
 				local $mail = &parse_imap_mail($idxrv);
 				if ($mail) {
 					$mail->{'idx'} = $mail->{'imapidx'}-1;
-					$rv[$wantpos{$mail->{'id'}}] = $mail;
+					$mail[$wantpos{$mail->{'id'}}] = $mail;
 					}
 				}
 			}
 		}
-	print DEBUG "imap rv = ",scalar(@rv),"\n";
-
-	return @rv;
+	print DEBUG "imap rv = ",scalar(@mail),"\n";
 	}
 elsif ($folder->{'type'} == 5 || $folder->{'type'} == 6) {
 	# Virtual or composite folder .. for each ID, work out the folder and
@@ -510,7 +507,7 @@ elsif ($folder->{'type'} == 5 || $folder->{'type'} == 6) {
 
 	# For each sub-folder, get the IDs we need, and put them into the
         # return array at the right place
-	local @mail = map { undef } @$ids;
+	@mail = map { undef } @$ids;
 	foreach my $sfn (keys %wantmap) {
 		local $sf = $namemap{$sfn};
 		local @wantids = map { $_->[0] } @{$wantmap{$sfn}};
@@ -541,12 +538,13 @@ elsif ($folder->{'type'} == 5 || $folder->{'type'} == 6) {
 		$folder->{'members'} = $mems;
 		&save_folder($folder, $folder);
 		}
-	return @mail;
 	}
 elsif ($folder->{'type'} == 7) {
 	# MBX folder
-	return &select_mbxfile($folder->{'file'}, $ids, $headersonly);
+	@mail = &select_mbxfile($folder->{'file'}, $ids, $headersonly);
 	}
+&switch_from_folder_user($_[0]);
+return @mail;
 }
 
 # mailbox_get_mail(&folder, id, headersonly)

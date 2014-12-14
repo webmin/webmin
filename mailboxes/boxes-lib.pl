@@ -20,6 +20,8 @@ sub list_mails
 {
 local (@rv, $h, $done);
 my %index;
+my $umf = &user_mail_file($_[0]);
+&open_as_mail_user(MAIL, $umf) || &error("Failed to open $umf : $!");
 &build_dbm_index($_[0], \%index);
 local ($start, $end);
 local $isize = $index{'mailcount'};
@@ -36,7 +38,6 @@ else {
 	}
 $rv[$isize-1] = undef if ($isize);	# force array to right size
 local $dash = &dash_mode($_[0]);
-open(MAIL, &user_mail_file($_[0]));
 $start = 0 if ($start < 0);
 for($i=$start; $i<=$end; $i++) {
 	# Seek to mail position
@@ -44,6 +45,7 @@ for($i=$start; $i<=$end; $i++) {
 	local $pos = $idx[0];
 	local $startline = $idx[1];
 	seek(MAIL, $pos, 0);
+	print STDERR "seek to $pos err $!\n";
 
 	# Read the mail
 	local $mail = &read_mail_fh(MAIL, $dash ? 2 : 1, 0);
@@ -73,7 +75,7 @@ local $gotindex;
 
 local $umf = &user_mail_file($file);
 local $dash = &dash_mode($umf);
-open(MAIL, $umf);
+&open_as_mail_user(MAIL, $umf) || &error("Failed to open $umf : $!");
 foreach my $i (@$ids) {
 	local ($pos, $idx, $startline, $wantmid) = split(/ /, $i);
 
@@ -147,6 +149,8 @@ local $dash = &dash_mode($_[0]);
 local @possible;		# index positions of possible mails
 local $possible_certain = 0;	# is possible list authoratative?
 local ($min, $max);
+local $umf = &user_mail_file($_[0]);
+&open_as_mail_user(MAIL, $umf) || &error("Failed to open $umf : $!");
 
 # We have a DBM index .. if the search includes the from and subject
 # fields, scan it first to cut down on the total time
@@ -182,7 +186,6 @@ else {
 	}
 
 # Need to scan through possible messages to find those that match
-open(MAIL, &user_mail_file($_[0]));
 local $headersonly = !&matches_needs_body($_[1]);
 foreach $i (@possible) {
 	# Seek to mail position
@@ -261,10 +264,10 @@ if (!@st ||
 	if ($st[7] < $dbm_index_min ||
 	    $index->{'version'} != $dbm_index_version) {
 		$fromok = 0;	# Always re-index
-		open(MAIL, $umf);
+		&open_as_mail_user(IMAIL, $umf);
 		}
 	else {
-		if (open(MAIL, $umf)) {
+		if (&open_as_mail_user(IMAIL, $umf)) {
 			# Check the last 100 messages (at most), to see if
 			# the mail file has been truncated, had mails deleted,
 			# or re-written.
@@ -272,8 +275,8 @@ if (!@st ||
 			local $i;
 			for($i=($il>100 ? 100 : $il); $i>=0; $i--) {
 				@idx = split(/\0/, $index->{$il-$i});
-				seek(MAIL, $idx[0], 0);
-				$ll = <MAIL>;
+				seek(IMAIL, $idx[0], 0);
+				$ll = <IMAIL>;
 				$fromok = 0 if ($ll !~ /^From\s+(\S+).*\d+\r?\n/ ||
 						($1 eq '-' && !$dash));
 				}
@@ -298,13 +301,13 @@ if (!@st ||
 		$istart = 0;
 		$pos = 0;
 		$lnum = 0;
-		seek(MAIL, 0, 0);
+		seek(IMAIL, 0, 0);
 		@ids = ( );
 		$idschanged = 1;
 		%$index = ( );
 		}
 	local ($doingheaders, @nidx);
-	while(<MAIL>) {
+	while(<IMAIL>) {
 		if (/^From\s+(\S+).*\d+\r?\n/ && ($1 ne '-' || $dash)) {
 			@nidx = ( $pos, $lnum );
 			$idschanged = 1;
@@ -331,7 +334,7 @@ if (!@st ||
 		$pos += length($_);
 		$lnum++;
 		}
-	close(MAIL);
+	close(IMAIL);
 	$index->{'lastchange'} = time();
 	$index->{'lastsize'} = $st[7];
 	$index->{'mailcount'} = $istart;
@@ -696,8 +699,9 @@ local $tmpf = $< == 0 ? "$f.del" :
 if (-l $f) {
 	$f = &resolve_links($f);
 	}
-open(SOURCE, $f) || &error("Read failed : $!");
-open(DEST, ">$tmpf") || &error("Open of $tmpf failed : $!");
+&open_as_mail_user(SOURCE, $f) || &error("Failed to open $f : $!");
+&open_as_mail_user(DEST, ">$tmpf") ||
+	&error("Failed to open temp file $tmpf : $!");
 while(<SOURCE>) {
 	if ($i >= @m || $lnum < $m[$i]->{'line'}) {
 		# Within a range that we want to preserve
@@ -770,8 +774,9 @@ local $tmpf = $< == 0 ? "$f.del" :
 if (-l $f) {
 	$f = &resolve_links($f);
 	}
-open(SOURCE, $f);
-open(DEST, ">$tmpf");
+&open_as_mail_user(SOURCE, $f) || &error("Failed to open $f : $!");
+&open_as_mail_user(DEST, ">$tmpf") ||
+	&error("Failed to open temp file $tmpf : $!");
 while(<SOURCE>) {
 	if ($lnum < $_[1]->{'line'} || $lnum > $_[1]->{'eline'}) {
 		# before or after the message to change
@@ -793,7 +798,7 @@ while(<SOURCE>) {
 		local $newsize = $nst[7] - $ost[7];
 		$sizediff = $newsize - $_[1]->{'size'};
 		$linesdiff = $nlines - ($_[1]->{'eline'} - $_[1]->{'line'} + 1);
-		open(DEST, ">>$tmpf");
+		&open_as_mail_user(DEST, ">>$tmpf");
 		}
 	$lnum++;
 	}
@@ -2393,7 +2398,7 @@ return scalar(@files);
 sub list_mbxfile
 {
 local @rv;
-open(MBX, $_[0]);
+&open_as_mail_user(MBX, $_[0]) || &error("Failed to open $_[0] : $!");
 seek(MBX, 2048, 0);
 while(my $line = <MBX>) {
 	if ($line =~ m/( \d|\d\d)-(\w\w\w)-(\d\d\d\d) (\d\d):(\d\d):(\d\d) ([+-])(\d\d)(\d\d),(\d+);([[:xdigit:]]{8})([[:xdigit:]]{4})-([[:xdigit:]]{8})\r\n$/) {
@@ -2426,7 +2431,7 @@ sub read_mail_file
 local (@headers, $mail);
 
 # Open and read the mail file
-open(MAIL, $_[0]) || return undef;
+&open_as_mail_user(MAIL, $_[0]) || return undef;
 $mail = &read_mail_fh(MAIL, 0, $_[1]);
 $mail->{'file'} = $_[0];
 close(MAIL);
@@ -2536,7 +2541,7 @@ return $mail;
 # From - instead of the usual From foo@bar.com
 sub dash_mode
 {
-open(DASH, &user_mail_file($_[0])) || return 0;	# assume no
+&open_as_mail_user(DASH, &user_mail_file($_[0])) || return 0;	# assume no
 local $line = <DASH>;
 close(DASH);
 return $line =~ /^From\s+(\S+).*\d/ && $1 eq '-';
@@ -2823,6 +2828,7 @@ sub open_as_mail_user
 {
 my ($fh, $file) = @_;
 my $switched = 0;
+print STDERR "file=$file user=$main::mail_open_user <=$< >=$>\n";
 if (defined($main::mail_open_user) && !$< && !$>) {
 	# Switch file permissions to the correct user
 	my @uinfo = $main::mail_open_user =~ /^\d+$/ ?
@@ -2840,6 +2846,7 @@ if ($switched) {
 	$) = 0;
 	$> = 0;
 	}
+print STDERR "rv=$rv err=$!\n";
 return $rv;
 }
 
