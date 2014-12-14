@@ -350,6 +350,7 @@ else {
 	print &ui_buttons_start();
 
 	if (!$config{'direct'}) {
+		# Buttons to apply and reset the config
 		if (&foreign_check("servers")) {
 			@servers = &list_cluster_servers();
 			}
@@ -380,6 +381,15 @@ else {
 			print &ui_buttons_row("index.cgi",
 				$text{'index_reset'}, $text{'index_resetdesc'},
 				[ [ "reset", 1 ] ]);
+			}
+		}
+	else {
+		# Button to save the live config in a file
+		if ($access{'unapply'}) {
+			print &ui_buttons_row("unapply.cgi",
+				$text{'index_unapply2'},
+				$text{'index_unapply2desc'},
+				[ [ "table", $in{'table'} ] ]);
 			}
 		}
 
