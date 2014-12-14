@@ -73,7 +73,6 @@ else {
 
 &mail_page_header($text{'view_title'}, $headstuff, undef,
 		  &folder_link($in{'user'}, $folder));
-print &check_clicks_function();
 &show_arrows();
 
 # Start of the form
@@ -251,8 +250,7 @@ sub show_mail_buttons
 {
 local $spacer = "&nbsp;\n";
 if (!$_[1]) {
-	print "<input type=submit value=\"$text{'view_delete'}\" name=delete ",
-	      "onClick='return check_clicks(form)'>";
+	print "<input type=submit value=\"$text{'view_delete'}\" name=delete>";
 	print $spacer;
 
 	if (!$folder->{'sent'} && !$folder->{'drafts'}) {

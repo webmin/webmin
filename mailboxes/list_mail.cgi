@@ -26,7 +26,6 @@ if ($err) {
 	}
 
 &ui_print_header(undef, $text{'mail_title'}, "");
-print &check_clicks_function();
 @folders = &list_user_folders_sorted($in{'user'});
 ($folder) = grep { $_->{'index'} == $in{'folder'} } @folders;
 

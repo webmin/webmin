@@ -346,10 +346,8 @@ return 0;	# can't happen!
 sub movecopy_user_select
 {
 local $rv;
-$rv .= "<input type=submit name=move$_[0] value=\"$text{'mail_move'}\" ".
-       "onClick='return check_clicks(form)'>";
-$rv .= "<input type=submit name=copy$_[0] value=\"$text{'mail_copy'}\" ".
-       "onClick='return check_clicks(form)'>";
+$rv .= "<input type=submit name=move$_[0] value=\"$text{'mail_move'}\">";
+$rv .= "<input type=submit name=copy$_[0] value=\"$text{'mail_copy'}\">";
 $rv .= &ui_user_textbox("mfolder$_[0]", undef, $_[3]);
 return $rv;
 }
@@ -964,8 +962,7 @@ local $uuser = &urlize($user);
 local $spacer = "&nbsp;\n";
 if (@$mail) {
 	# Delete
-	print "<input type=submit name=delete value=\"$text{'mail_delete'}\" ",
-	      "onClick='return check_clicks(form)'>";
+	print "<input type=submit name=delete value=\"$text{'mail_delete'}\">";
 	if ($config{'show_delall'} && !$search) {
 		print "<input type=submit name=deleteall value=\"$text{'mail_deleteall'}\">";
 		}
