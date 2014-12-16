@@ -871,10 +871,11 @@ else {
 	$fromaddr = $uinfo[0] || "nobody";
 	$fromaddr .= '@'.&get_system_hostname();
 	}
+local $qfromaddr = quotemeta($fromaddr);
 local $esmtp = $_[8] ? 1 : 0;
 if ($_[1]) {
 	# Just append the email to a file using mbox format
-	open(MAIL, ">>$_[1]") || &error("Write failed : $!");
+	&open_as_mail_user(MAIL, ">>$_[1]") || &error("Write failed : $!");
 	$lnum++;
 	print MAIL $_[0]->{'fromline'} ? $_[0]->{'fromline'}.$eol :
 					 &make_from_line($fromaddr).$eol;
@@ -973,13 +974,13 @@ elsif ($config{'postfix_control_command'}) {
 	local $cmd = -x "/usr/lib/sendmail" ? "/usr/lib/sendmail" :
 			&has_command("sendmail");
 	$cmd || &error($text{'send_ewrapper'});
-	open(MAIL, "| $cmd -f$fromaddr $qdests >/dev/null 2>&1");
+	open(MAIL, "| $cmd -f$qfromaddr $qdests >/dev/null 2>&1");
 	}
 else {
 	# Start sendmail
 	&has_command($config{'sendmail_path'}) ||
 	    &error(&text('send_epath', "<tt>$config{'sendmail_path'}</tt>"));
-	open(MAIL, "| $config{'sendmail_path'} -f$fromaddr $qdests >/dev/null 2>&1");
+	open(MAIL, "| $config{'sendmail_path'} -f$qfromaddr $qdests >/dev/null 2>&1");
 	}
 local $ctype = "multipart/mixed";
 local $msg_id;

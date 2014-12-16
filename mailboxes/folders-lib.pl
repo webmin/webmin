@@ -1554,8 +1554,8 @@ if ($_[0]->{'type'} == 1) {
 # Writes some mail message to a folder
 sub write_mail_folder
 {
-# XXX user permissions fix needed
 return undef if (&is_readonly_mode());
+&switch_to_folder_user($_[1]);
 &create_folder_maildir($_[1]);
 local $needid;
 if ($_[1]->{'type'} == 1) {
@@ -1610,6 +1610,7 @@ elsif ($_[1]->{'type'} == 6) {
 	# XXX not done
 	&error("Cannot add mail to virtual folders");
 	}
+&switch_from_folder_user($_[1]);
 if ($needid) {
 	# Get the ID of the new mail
 	local @idlist = &mailbox_idlist($_[1]);
