@@ -1,11 +1,19 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # chooser.cgi
 # Outputs HTML for a frame-based file chooser 
+use strict;
+use warnings;
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 
-@icon_map = (	"c", "text.gif",
+# Globals
+our $remote_user;
+our %in;
+our %gconfig;
+our %text;
+
+my %icon_map = (	"c", "text.gif",
 		"txt", "text.gif",
 		"pl", "text.gif",
 		"cgi", "text.gif",
@@ -16,14 +24,15 @@ use WebminCore;
 		"tar", "binary.gif"
 		);
 
-&init_config();
-if (&get_product_name() eq 'usermin') {
-	&switch_to_remote_user();
+init_config();
+if (get_product_name() eq 'usermin') {
+	switch_to_remote_user();
 	}
-%access = &get_module_acl();
+my %access = get_module_acl();
 
 # Work out root directory
-local @uinfo = getpwnam($remote_user);
+my @uinfo = getpwnam($remote_user);
+my $rootdir;
 if (!$access{'root'}) {
 	$rootdir = $uinfo[7] ? $uinfo[7] : "/";
 	}
@@ -33,22 +42,22 @@ else {
 	}
 
 # Switch to correct Unix user
-if (&supports_users()) {
-	if (&get_product_name() eq 'usermin') {
+if (supports_users()) {
+	if (get_product_name() eq 'usermin') {
 		# Always run as Usermin login
-		&switch_to_remote_user();
+		switch_to_remote_user();
 		}
 	else {
 		# ACL determines
-		$fileunix = $access{'fileunix'} || $remote_user;
+		my $fileunix = $access{'fileunix'} || $remote_user;
 		@uinfo = getpwnam($fileunix);
 		if (@uinfo) {
-			&switch_to_unix_user(\@uinfo);
+			switch_to_unix_user(\@uinfo);
 			}
 		}
 	}
 
-&ReadParse(undef, undef, 1);
+ReadParse(undef, undef, 1);
 
 # If a chroot is forced which is under the allowed root, there is no need for
 # a restrictred root
@@ -74,6 +83,8 @@ if ($in{'add'}) {
 		$in{'file'} = $1;
 		}
 	}
+my $dir;
+my $file;
 if ($in{'file'} =~ /^(([a-z]:)?.*\/)([^\/]*)$/i && $in{'file'} !~ /\.\./) {
 	# File entered is valid
 	$dir = $1;
@@ -85,29 +96,29 @@ else {
 	$dir .= '/' if ($dir !~ /\/$/);
 	$file = "";
 	}
-$add = int($in{'add'});
+my $add = int($in{'add'});
 
 if (!(-d $in{'chroot'}.$dir)) {
 	# Entered directory does not exist
 	$dir = $rootdir.'/';
 	$file = "";
 	}
-if (!&allowed_dir($dir)) {
+if (!allowed_dir($dir)) {
 	# Directory is outside allowed root
 	$dir = $rootdir.'/';
 	$file = "";
 	}
 
 # Work out the top allowed dir
-$topdir = $rootdir eq "/" || $rootdir eq "c:" ? $rootdir :
+my $topdir = $rootdir eq "/" || $rootdir eq "c:" ? $rootdir :
 	  $access{'otherdirs'} ? "/" : $rootdir;
-$uchroot = &urlize($in{'chroot'});
-$utype = &urlize($in{'type'});
-$ufile = &urlize($in{'file'});
+my $uchroot = urlize($in{'chroot'});
+my $utype = urlize($in{'type'});
+my $ufile = urlize($in{'file'});
 
 if ($in{'frame'} == 0) {
 	# base frame
-	&PrintHeader();
+	PrintHeader();
 	if ($in{'type'} == 0) {
 		print "<title>$text{'chooser_title1'}</title>\n";
 		}
@@ -125,7 +136,7 @@ if ($in{'frame'} == 0) {
 	}
 elsif ($in{'frame'} == 1) {
 	# List of files in this directory
-	&popup_header();
+	popup_header();
 	print <<EOF;
 <script type='text/javascript'>
 function fileclick(f, d)
@@ -171,48 +182,50 @@ EOF
 		&popup_error(&text('chooser_eopen', "$!"));
 	print &ui_columns_start(undef, 100);
     	my $cnt = 0;
-	foreach $f (sort { $a cmp $b } readdir(DIR)) {
-		$path = "$in{'chroot'}$dir$f";
+	foreach my $f (sort { $a cmp $b } readdir(DIR)) {
+		my $path = "$in{'chroot'}$dir$f";
 		if ($f eq ".") { next; }
 		if ($f eq ".." && ($dir eq "/" || $dir eq $topdir.'/')) { next; }
 		if ($f =~ /^\./ && $f ne ".." && $access{'nodot'}) { next; }
 		if (!(-d $path) && $in{'type'} == 1) { next; }
 
-		@st = stat($path);
-		$isdir = 0; undef($icon);
+		my @st = stat($path); # XXX What is @st?
+		my $isdir = 0;
+		my $icon;
 		if (-d $path) { $icon = "dir.gif"; $isdir = 1; }
 		elsif ($path =~ /\.([^\.\/]+)$/) { $icon = $icon_map{$1}; }
 		if (!$icon) { $icon = "unknown.gif"; }
 
+		my $link;
 		if ($f eq "..") {
 			$dir =~ /^(.*\/)[^\/]+\/$/;
-			$link = "<a href=\"\" onClick='parentdir(\"".&quote_javascript($1)."\"); return false'>";
+			$link = "<a href=\"\" onClick='parentdir(\"".quote_javascript($1)."\"); return false'>";
 			}
 		else {
-			$link = "<a href=\"\" onClick='fileclick(\"".&quote_javascript("$dir$f")."\", $isdir); return false'>";
+			$link = "<a href=\"\" onClick='fileclick(\"".quote_javascript("$dir$f")."\", $isdir); return false'>";
 			}
-		local @cols;
+		my @cols;
 		push(@cols, "$link<img border=0 src=$gconfig{'webprefix'}/images/$icon></a>");
 		push(@cols, "$link".&html_escape($f)."</a>");
-		push(@cols, &nice_size($st[7]));
-		@tm = localtime($st[9]);
+		push(@cols, nice_size($st[7]));
+		my @tm = localtime($st[9]);
 		push(@cols, sprintf "<tt>%.2d/%s/%.4d</tt>",
 			$tm[3], $text{'smonth_'.($tm[4]+1)}, $tm[5]+1900);
 		push(@cols, sprintf "<tt>%.2d:%.2d</tt>", $tm[2], $tm[1]);
-		print &ui_columns_row(\@cols);
+		print ui_columns_row(\@cols);
         	$cnt++;
 		}
 	closedir(DIR);
-	print &ui_columns_end();
+	print ui_columns_end();
     if ( $cnt >= 10 ) {
         print "<script type='text/javascript' src='$gconfig{'webprefix'}/unauthenticated/filter_match.js?28112013'></script>";
         print "<script type='text/javascript'>filter_match_box();</script>";
     }
-	&popup_footer();
+	popup_footer();
 	}
 elsif ($in{'frame'} == 2) {
 	# Current file and OK/cancel buttons
-	&popup_header();
+	popup_header();
 	print <<EOF;
 <script type='text/javascript'>
 function filechosen()
@@ -230,25 +243,25 @@ top.close();
 }
 </script>
 EOF
-	print &ui_form_start(undef, undef, undef,
+	print ui_form_start(undef, undef, undef,
 		"onSubmit='filechosen(); return false'");
-	print &ui_table_start(undef, "width=100%", 2);
-	print &ui_table_row(&ui_submit($text{'chooser_ok'}),
-		&ui_textbox("path", $dir.$file, 45, 0, undef,
+	print ui_table_start(undef, "width=100%", 2);
+	print ui_table_row(ui_submit($text{'chooser_ok'}),
+		ui_textbox("path", $dir.$file, 45, 0, undef,
 			    "style='width:100%'"), 1,["width=5% valign=middle nowrap","valign=middle width=95%"]);
-	print &ui_table_end();
-	print &ui_form_end();
-	&popup_footer();
+	print ui_table_end();
+	print ui_form_end();
+	popup_footer();
 	}
 
 # allowed_dir(dir)
 # Returns 1 if some directory should be listable
 sub allowed_dir
 {
-local ($dir) = @_;
+my ($dir) = @_;
 return 1 if ($rootdir eq "" || $rootdir eq "/" || $rootdir eq "c:");
 foreach my $allowed ($rootdir, split(/\t+/, $access{'otherdirs'})) {
-	return 1 if (&is_under_directory($allowed, $dir));
+	return 1 if (is_under_directory($allowed, $dir));
 	}
 return 0;
 }
