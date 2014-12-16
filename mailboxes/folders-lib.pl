@@ -923,7 +923,6 @@ return &user_index_file(($folder->{'file'} || $folder->{'id'}).".byid");
 sub mailbox_search_mail
 {
 local ($fields, $andmode, $folder, $limit, $headersonly) = @_;
-# XXX user permissions fix needed
 
 # For folders other than IMAP and composite and mbox where we already have
 # an index, build a sort index and use that for
@@ -1120,9 +1119,9 @@ elsif ($folder->{'type'} == 6) {
 # Delete multiple messages from some folder
 sub mailbox_delete_mail
 {
-# XXX user permissions fix needed
 return undef if (&is_readonly_mode());
 local $f = shift(@_);
+&switch_to_folder_user($f);
 if ($userconfig{'delete_mode'} == 1 && !$f->{'trash'} && !$f->{'spam'} &&
     !$f->{'notrash'}) {
 	# Copy to trash folder first .. if we have one
@@ -1208,6 +1207,7 @@ elsif ($f->{'type'} == 5 || $f->{'type'} == 6) {
 		&save_folder($f, $f);
 		}
 	}
+&switch_from_folder_user($f);
 
 # Always force a re-check of the index when deleting, as we may not detect
 # the change (especially for IMAP, where UIDNEXT may not change). This isn't
@@ -1223,6 +1223,7 @@ sub mailbox_empty_folder
 {
 return undef if (&is_readonly_mode());
 local $f = $_[0];
+&switch_to_folder_user($f);
 if ($f->{'type'} == 0) {
 	# mbox format mail file
 	&empty_mail($f->{'file'});
@@ -1285,6 +1286,7 @@ elsif ($f->{'type'} == 6) {
 		&save_folder($f);
 		}
 	}
+&switch_from_folder_user($f);
 
 # Trash the folder index
 if ($folder->{'sortable'}) {

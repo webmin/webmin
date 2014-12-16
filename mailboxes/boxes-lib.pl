@@ -380,7 +380,7 @@ sub empty_mail
 {
 local $umf = &user_mail_file($_[0]);
 local $ifile = &user_index_file($_[0]);
-open(TRUNC, ">$umf");
+&open_as_mail_user(TRUNC, ">$umf") || &error("Failed to open $umf : $!");
 close(TRUNC);
 
 # Set index size to 0
