@@ -1624,9 +1624,8 @@ if ($needid) {
 sub mailbox_modify_mail
 {
 local ($oldmail, $mail, $folder, $textonly) = @_;
-# XXX user permissions fix needed
-
 return undef if (&is_readonly_mode());
+&switch_to_folder_user($_[2]);
 if ($folder->{'type'} == 1) {
 	# Just replace the existing file
 	&modify_maildir($oldmail, $mail, $textonly);
@@ -1653,6 +1652,7 @@ elsif ($folder->{'type'} == 5 || $folder->{'type'} == 6) {
 else {
 	&error("Cannot modify mail in this type of folder!");
 	}
+&switch_from_folder_user($_[2]);
 
 # Delete the message being modified from its index, to force re-generation
 # with new details
