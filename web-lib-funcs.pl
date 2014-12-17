@@ -10108,7 +10108,9 @@ to display. Each is a hash ref with the following keys :
 =item id - A unique ID for the object
 
 =item type - Can be "html" for an arbitrary block of HTML, "table" for a table
-	     of information, "usage" for a table of usage of some resource.
+	     of information, "usage" for a table of usage of some resource,
+	     "redirect" for a request to redirect the whole page to another URL,
+	     or "warning" for a warning dialog.
 
 =item desc - The title for this section of info
 
@@ -10124,6 +10126,10 @@ to display. Each is a hash ref with the following keys :
 
 =item titles - In "usage" mode, an 3-element array ref of titles to show above
 	       the usage columns.
+
+=item url - In "redirect" mode, the URL to redirect the system info page to
+
+=item warning - In "warning" mode, the HTML warning message
 
 For "table" mode, the keys in each hash ref are :
 
