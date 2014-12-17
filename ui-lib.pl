@@ -2386,7 +2386,7 @@ Type of alert:
 
 =item info - blue
 
-=item warning - yellow
+=item warn - yellow
 
 =item danger - red
 

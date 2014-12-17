@@ -10131,6 +10131,9 @@ to display. Each is a hash ref with the following keys :
 
 =item warning - In "warning" mode, the HTML warning message
 
+=item level - In "warning" mode, can be one of "success", "info", "warn" or
+	      "danger"
+
 For "table" mode, the keys in each hash ref are :
 
 =item desc - Label for this item
@@ -10171,6 +10174,16 @@ foreach my $m (&get_available_module_infos()) {
 				     $data, $in)) {
 		$i->{'module'} = $m->{'dir'};
 		push(@rv, $i);
+		}
+	}
+if (&foreign_available("webmin")) {
+	# Merge in old-style notification API
+	&foreign_require("webmin");
+	foreach my $n (&webmin::get_webmin_notifications()) {
+		push(@rv, { 'type' => 'warning',
+			    'level' => 'info',
+			    'module' => 'webmin',
+			    'warning' => $n });
 		}
 	}
 return sort { ($b->{'priority'} || 0) <=> ($a->{'priority'} || 0) } @rv;
