@@ -44,7 +44,7 @@ foreach my $info (@info) {
 			foreach my $t (@{$info->{'table'}}) {
 				my $chart = "";
 				if ($t->{'chart'}) {
-					my $chart = &make_bar_chart(
+					$chart = &make_bar_chart(
 							$t->{'chart'});
 					$chart = "<br>".$chart;
 					}
