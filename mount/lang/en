@@ -297,6 +297,7 @@ linux_resgid=Reserve space for group
 linux_bg=Retry mounts in background?
 linux_soft=Return error on timeouts?
 linux_timeo=Timeout
+linux_etimeo=Timeout must be a number
 linux_retrans=Number of Retransmissions
 linux_vers=NFS version
 linux_high=Highest

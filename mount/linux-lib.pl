@@ -1805,7 +1805,10 @@ if (($_[0] eq "nfs") || ($_[0] eq "nfs4")) {
 	if ($in{nfs_soft}) { $options{"soft"} = ""; }
 
 	delete($options{"timeo"});
-	if (!$in{nfs_timeo_def}) { $options{"timeo"} = $in{nfs_timeo}; }
+	if (!$in{nfs_timeo_def}) {
+		$in{nfs_timeo} =~ /^\d+$/ || &error($text{'linux_etimeo'});
+		$options{"timeo"} = $in{nfs_timeo};
+		}
 
 	delete($options{"retrans"});
 	if (!$in{nfs_retrans_def}) { $options{"retrans"} = $in{nfs_retrans}; }
