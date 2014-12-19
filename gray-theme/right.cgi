@@ -38,7 +38,10 @@ foreach my $info (@info) {
 				    $info->{'level'} || 'warn');
 		}
 	else {
-		print &ui_table_start($info->{'desc'}, "width=600", 2);
+		my $open = defined($info->{'open'}) ? $info->{'open'} : 1;
+		print &ui_hidden_table_start($info->{'desc'}, "width=600", 2,
+					     $info->{'id'} || $info->{'module'},
+					     $open);
 		if ($info->{'type'} eq 'table') {
 			# A table of various labels and values
 			foreach my $t (@{$info->{'table'}}) {
@@ -69,7 +72,7 @@ foreach my $info (@info) {
 			# A chunk of HTML
 			print &ui_table_row(undef, $info->{'html'}, 2);
 			}
-		print &ui_table_end();
+		print &ui_hidden_table_end();
 		print "<p>\n";
 		}
 	}
