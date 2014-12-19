@@ -1806,7 +1806,8 @@ if (($_[0] eq "nfs") || ($_[0] eq "nfs4")) {
 
 	delete($options{"timeo"});
 	if (!$in{nfs_timeo_def}) {
-		$in{nfs_timeo} =~ /^\d+$/ || &error($text{'linux_etimeo'});
+		$in{nfs_timeo} =~ /^\d+$/ && $in{nfs_timeo} > 0 ||
+			&error($text{'linux_etimeo'});
 		$options{"timeo"} = $in{nfs_timeo};
 		}
 
