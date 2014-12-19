@@ -2217,5 +2217,37 @@ my ($cmd) = @_;
 return &has_command($cmd);
 }
 
+# get_all_config_files()
+# Returns a list of all possible postfix config files
+sub get_all_config_files
+{
+my @rv;
+
+# Add main config file
+push(@rv, $config{'postfix_config_file'});
+push(@rv, $config{'postfix_master'});
+
+# Add known map files
+push(@rv, &get_maps_files("alias_maps"));
+push(@rv, &get_maps_files("alias_database"));
+push(@rv, &get_maps_files("canonical_maps"));
+push(@rv, &get_maps_files("recipient_canonical_maps"));
+push(@rv, &get_maps_files("sender_canonical_maps"));
+push(@rv, &get_maps_files($virtual_maps));
+push(@rv, &get_maps_files("transport_maps"));
+push(@rv, &get_maps_files("relocated_maps"));
+
+# Add other files in /etc/postfix
+local $cdir = &guess_config_dir();
+opendir(DIR, $cdir);
+foreach $f (readdir(DIR)) {
+	next if ($f eq "." || $f eq ".." || $f =~ /\.(db|dir|pag)$/i);
+	push(@rv, "$cdir/$f");
+	}
+closedir(DIR);
+
+return &unique(@rv);
+}
+
 1;
 

@@ -5,31 +5,7 @@ do 'postfix-lib.pl';
 # Returns files and directories that can be backed up
 sub backup_config_files
 {
-local @rv;
-
-# Add main config file
-push(@rv, $config{'postfix_config_file'});
-
-# Add known map files
-push(@rv, &get_maps_files("alias_maps"));
-push(@rv, &get_maps_files("alias_database"));
-push(@rv, &get_maps_files("canonical_maps"));
-push(@rv, &get_maps_files("recipient_canonical_maps"));
-push(@rv, &get_maps_files("sender_canonical_maps"));
-push(@rv, &get_maps_files($virtual_maps));
-push(@rv, &get_maps_files("transport_maps"));
-push(@rv, &get_maps_files("relocated_maps"));
-
-# Add other files in /etc/postfix
-local $cdir = &guess_config_dir();
-opendir(DIR, $cdir);
-foreach $f (readdir(DIR)) {
-	next if ($f eq "." || $f eq ".." || $f =~ /\.(db|dir|pag)$/i);
-	push(@rv, "$cdir/$f");
-	}
-closedir(DIR);
-
-return &unique(@rv);
+return &get_all_config_files();
 }
 
 # pre_backup(&files)
