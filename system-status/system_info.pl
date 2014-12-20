@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 require 'system-status-lib.pl';
-our (%text, %gconfig);
+our (%text, %gconfig, $module_name, %config);
 
 # list_system_info(&data, &in)
 # Returns general information about the system, such as available disk space
@@ -12,6 +12,14 @@ my $info = &get_collected_info();
 my @rv;
 my @table;
 
+# Refresh button for root
+if (&foreign_available($module_name) && $config{'collect_interval'} ne 'none') {
+	push(@rv, { 'type' => 'link',
+		    'desc' => $text{'right_recollect'},
+		    'link' => '/'.$module_name.'/recollect.cgi' });
+	}
+
+# Table of system info
 my $table = { 'type' => 'table',
 	      'desc' => $text{'right_header'},
 	      'table' => \@table };

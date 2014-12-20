@@ -10110,7 +10110,8 @@ to display. Each is a hash ref with the following keys :
 =item type - Can be "html" for an arbitrary block of HTML, "table" for a table
 	     of information, "usage" for a table of usage of some resource,
 	     "redirect" for a request to redirect the whole page to another URL,
-	     or "warning" for a warning dialog.
+	     "warning" for a warning dialog, or "link" for a link to another
+	     page.
 
 =item desc - The title for this section of info
 
@@ -10133,6 +10134,8 @@ to display. Each is a hash ref with the following keys :
 
 =item level - In "warning" mode, can be one of "success", "info", "warn" or
 	      "danger"
+
+=item link - In "link" mode, the destination URL
 
 For "table" mode, the keys in each hash ref are :
 
@@ -10165,7 +10168,7 @@ use where a system info block has a form that submits to itself.
 sub list_combined_system_info
 {
 my ($data, $in) = @_;
-foreach my $m (&get_available_module_infos()) {
+foreach my $m (&get_all_module_infos()) {
 	my $dir = &module_root_directory($m->{'dir'});
 	my $mfile = "$dir/system_info.pl";
 	next if (!-r $mfile);

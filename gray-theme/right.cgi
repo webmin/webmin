@@ -23,6 +23,16 @@ my $prehead = defined(&WebminCore::theme_prehead) ?
 &popup_header(undef, $prehead);
 print "<center>\n";
 
+# Links appear at the top of the page
+my @links = grep { $_->{'type'} eq 'link' } @info;
+@info = grep { $_->{'type'} ne 'link' } @info;
+if (@links) {
+	my @linkshtml = map { &ui_link($_->{'link'}, $_->{'desc'}) } @links;
+	print "<div align=right>\n";
+	print &ui_links_row(\@linkshtml);
+	print "</div>\n";
+	}
+
 # Webmin logo
 if (&get_product_name() eq 'webmin') {
 	print "<a href=http://www.webmin.com/ target=_new><img src=images/webmin-blue.png border=0></a><p>\n";
@@ -34,6 +44,7 @@ if (&get_product_name() eq 'webmin') {
 
 foreach my $info (@info) {
 	if ($info->{'type'} eq 'warning') {
+		# An alert message
 		print &ui_alert_box($info->{'warning'},
 				    $info->{'level'} || 'warn');
 		}
