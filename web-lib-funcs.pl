@@ -10148,6 +10148,8 @@ For "table" mode, the keys in each hash ref are :
 	      a different color. Any leftover is assumed is filled in with the
 	      final color.
 
+=item wide - Set to 1 if this item should span a whole row
+
 =item header - Text to show above the table
 
 For "usage" mode, the keys in each hash ref are :

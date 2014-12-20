@@ -77,7 +77,8 @@ if ($info->{'cputemps'}) {
 			     int($t->{'temp'})."&#8451;");
 		}
 	push(@table, { 'desc' => $text{'right_cputemps'},
-		       'value' => join(" ", @temps) });
+		       'value' => join(" ", @temps),
+		       'wide' => 1 });
 	}
 if ($info->{'drivetemps'}) {
 	my @temps;
@@ -98,7 +99,8 @@ if ($info->{'drivetemps'}) {
 		push(@temps, $short.": ".$t->{'temp'}."&#8451;".$emsg);
 		}
 	push(@table, { 'desc' => $text{'right_drivetemps'},
-		       'value' => join(" ", @temps) });
+		       'value' => join(" ", @temps),
+		       'wide' => 1 });
 	}
 
 
@@ -196,7 +198,8 @@ if ($info->{'poss'}) {
 		$msg = &ui_link("/package-updates/index.cgi?mode=updates", $msg);
 		}
 	push(@table, { 'desc' => $text{'right_updates'},
-		       'value' => $msg });
+		       'value' => $msg,
+		       'wide' => 1 });
 	}
 
 return @rv;
