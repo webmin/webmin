@@ -438,4 +438,16 @@ delall_ok=Suprimeix-los Ara
 slide_title=Imatges Adjuntes
 slide_prev=Anterior
 slide_next=Següent
+
+left_mail=Correu
+left_search=Cerca:
+left_folders=Gestiona Carpetes
+left_addresses=Llibreta d'Adreces
+left_prefs=Preferències de Correu
+left_forward=Reenviament de Correu
+left_autoreply=Resposta Automàtica
+left_filter=Filtres de Correu
+left_pass=Canvi de Contrasenya
+left_sig=Edició de Signatura
+
 __norefs=1
