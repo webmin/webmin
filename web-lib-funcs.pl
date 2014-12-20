@@ -10137,6 +10137,9 @@ to display. Each is a hash ref with the following keys :
 
 =item link - In "link" mode, the destination URL
 
+=item target - In "link" mode, can be "new" for a new page, or "window" for the
+	       current whole browser window
+
 For "table" mode, the keys in each hash ref are :
 
 =item desc - Label for this item

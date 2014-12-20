@@ -27,7 +27,11 @@ print "<center>\n";
 my @links = grep { $_->{'type'} eq 'link' } @info;
 @info = grep { $_->{'type'} ne 'link' } @info;
 if (@links) {
-	my @linkshtml = map { &ui_link($_->{'link'}, $_->{'desc'}) } @links;
+	my @linkshtml = map {
+		&ui_link($_->{'link'}, $_->{'desc'}, undef,
+			 $_->{'target'} eq 'new' ? 'target=_blank' :
+			 $_->{'target'} eq 'window' ? 'target=_top' : '')
+			} @links;
 	print "<div align=right>\n";
 	print &ui_links_row(\@linkshtml);
 	print "</div>\n";
