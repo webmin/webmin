@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 # chooser.cgi
 # Outputs HTML for a frame-based file chooser 
 
