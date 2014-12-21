@@ -29,9 +29,6 @@ $bind = &find_value("bind-address", $mems);
 print &ui_table_row($text{'cnf_bind'},
 		    &ui_opt_textbox("bind", $bind, 20, $text{'cnf_all'}));
 
-print &ui_table_row($text{'cnf_skip-locking'},
-    &ui_yesno_radio("skip-locking", &find("skip-locking", $mems) ? 1 : 0));
-
 print &ui_table_row($text{'cnf_big-tables'},
     &ui_yesno_radio("big-tables", &find("big-tables", $mems) ? 1 : 0));
 

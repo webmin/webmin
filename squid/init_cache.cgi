@@ -10,9 +10,10 @@ $access{'rebuild'} || &error($text{'icache_ecannot'});
 &ReadParse();
 &error_setup($text{'icache_ftic'});
 
-# set user to run squid as..
 &lock_file($config{'squid_conf'});
 my $conf = &get_config();
+
+# Set user to run squid as..
 if (!$in{'nouser'}) {
 	$in{'user'} || &error($text{'icache_ymcautrsa'});
 	my @uinfo = getpwnam($in{'user'});
@@ -33,6 +34,14 @@ if (!$in{'nouser'}) {
 		}
 	&flush_file_lines();
 	}
+
+# If cache_dir is set but disabled, enable it
+my @cachestruct = &find_config("cache_dir", $conf, 2);
+if (@cachestruct) {
+	&save_directive($conf, "cache_dir", \@cachestruct);
+	&flush_file_lines();
+	}
+
 &unlock_file($config{'squid_conf'});
 
 # Stop squid (if running)

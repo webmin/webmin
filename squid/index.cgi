@@ -64,7 +64,7 @@ else {
 # Check for the cache directory
 my $conf = &get_config();
 my @caches;
-if (!&check_cache($conf, \@caches)) {
+if (!&check_cache($conf, \@caches, 1)) {
 	&ui_print_header(undef, $text{'index_header'}, "", undef, 1, 1);
 	print "<center>\n";
 	if (@caches > 1) {

@@ -406,4 +406,10 @@ ports_apply=Descarrega la Darrera Versió
 ports_upgrade=S'està Descarregant la Darrera Versió
 ports_running=S'està executant l'ordre $1...
 
+pkg_install=S'estan instal·lant els paquets FreeBSD $1...
+pkg_failed=...alguns paquets han fallat
+pkg_ok=...instal·lació completa
+pkg_find=Cerca pkgng
+pkg_input=Paquet de pkgng
+
 __norefs=1

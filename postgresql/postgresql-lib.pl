@@ -1121,13 +1121,13 @@ return $config{'host'} eq '' || $config{'host'} eq 'localhost' ||
        &to_ipaddress($config{'host'}) eq &to_ipaddress(&get_system_hostname());
 }
 
-# backup_database(database, dest-path, format, [&only-tables])
+# backup_database(database, dest-path, format, [&only-tables], [run-as-user])
 # Executes the pg_dump command to backup the specified database to the
 # given destination path. Returns undef on success, or an error message
 # on failure.
 sub backup_database
 {
-local ($db, $path, $format, $tables) = @_;
+local ($db, $path, $format, $tables, $user) = @_;
 local $tablesarg = join(" ", map { " -t ".quotemeta($_) } @$tables);
 local $cmd = &quote_path($config{'dump_cmd'}).
 	     (!$postgres_login ? "" :
@@ -1137,7 +1137,12 @@ local $cmd = &quote_path($config{'dump_cmd'}).
 	     $tablesarg.
 	     " -F$format -f ".&quote_path($path)." $db";
 if ($postgres_sameunix && defined(getpwnam($postgres_login))) {
+	# Postgres connections have to be made as the 'postgres' Unix user
 	$cmd = &command_as_user($postgres_login, 0, $cmd);
+	}
+elsif ($user) {
+	# Run as a specific Unix user
+	$cmd = &command_as_user($user, 0, $cmd);
 	}
 $cmd = &command_with_login($cmd);
 local $out = &backquote_logged("$cmd 2>&1");

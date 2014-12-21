@@ -1959,6 +1959,7 @@ closedir(UNITS);
 
 # Dump state of all of them, 100 at a time
 my %info;
+my $ecount = 0;
 while(@units) {
 	my @args;
 	while(@args < 100 && @units) {
@@ -1978,9 +1979,10 @@ while(@units) {
 			$info{$curr}->{$n} = $v;
 			}
 		}
-	if ($? && keys(%info) < 2) {
-		&error("Failed to read systemd units : $out");
-		}
+	$ecount++ if ($?);
+	}
+if ($ecount && keys(%info) < 2) {
+	&error("Failed to read systemd units : $out");
 	}
 
 # Extract info we want

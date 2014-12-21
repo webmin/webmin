@@ -73,6 +73,7 @@ find_title=Recerca de Servidors
 find_new=S'ha trobat un servidor nou a $1
 find_but=S'ha trobat un servidor nou a $1, però l'autenticació ha fallat: $2
 find_already=S'ha trobat un servidor ja conegut a $1
+find_already2=S'ha trobat un host servidor a $1
 find_skip=S'està ignorant el servidor a $1
 find_me=S'ha trobat aquest servidor a $1
 find_escan=La xarxa a escanejar ha de ser una adreça de classe C.

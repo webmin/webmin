@@ -10108,7 +10108,10 @@ to display. Each is a hash ref with the following keys :
 =item id - A unique ID for the object
 
 =item type - Can be "html" for an arbitrary block of HTML, "table" for a table
-	     of information, "usage" for a table of usage of some resource.
+	     of information, "usage" for a table of usage of some resource,
+	     "redirect" for a request to redirect the whole page to another URL,
+	     "warning" for a warning dialog, or "link" for a link to another
+	     page.
 
 =item desc - The title for this section of info
 
@@ -10125,6 +10128,18 @@ to display. Each is a hash ref with the following keys :
 =item titles - In "usage" mode, an 3-element array ref of titles to show above
 	       the usage columns.
 
+=item url - In "redirect" mode, the URL to redirect the system info page to
+
+=item warning - In "warning" mode, the HTML warning message
+
+=item level - In "warning" mode, can be one of "success", "info", "warn" or
+	      "danger"
+
+=item link - In "link" mode, the destination URL
+
+=item target - In "link" mode, can be "new" for a new page, or "window" for the
+	       current whole browser window
+
 For "table" mode, the keys in each hash ref are :
 
 =item desc - Label for this item
@@ -10135,6 +10150,8 @@ For "table" mode, the keys in each hash ref are :
 	      the total size, and each subsequent element is a value to show in
 	      a different color. Any leftover is assumed is filled in with the
 	      final color.
+
+=item wide - Set to 1 if this item should span a whole row
 
 =item header - Text to show above the table
 
@@ -10156,7 +10173,7 @@ use where a system info block has a form that submits to itself.
 sub list_combined_system_info
 {
 my ($data, $in) = @_;
-foreach my $m (&get_available_module_infos()) {
+foreach my $m (&get_all_module_infos()) {
 	my $dir = &module_root_directory($m->{'dir'});
 	my $mfile = "$dir/system_info.pl";
 	next if (!-r $mfile);
@@ -10165,6 +10182,16 @@ foreach my $m (&get_available_module_infos()) {
 				     $data, $in)) {
 		$i->{'module'} = $m->{'dir'};
 		push(@rv, $i);
+		}
+	}
+if (&foreign_available("webmin")) {
+	# Merge in old-style notification API
+	&foreign_require("webmin");
+	foreach my $n (&webmin::get_webmin_notifications()) {
+		push(@rv, { 'type' => 'warning',
+			    'level' => 'info',
+			    'module' => 'webmin',
+			    'warning' => $n });
 		}
 	}
 return sort { ($b->{'priority'} || 0) <=> ($a->{'priority'} || 0) } @rv;

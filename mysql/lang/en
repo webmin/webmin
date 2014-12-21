@@ -793,7 +793,6 @@ cnf_socket=MySQL Unix socket
 cnf_datadir=Databases files directory
 cnf_stor=Default table storage engine
 cnf_big-tables=Allow big tables?
-cnf_skip-locking=Skip locking of table files?
 cnf_emysqld=Could not find [mysqld] section in my.cnf
 cnf_err=Failed to save MySQL server options
 cnf_eport=Missing or invalid port number

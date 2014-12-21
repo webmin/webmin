@@ -5421,6 +5421,7 @@ local @prefixes = (
     "DoCoMo",     # DoCoMo phones
     "Lynx",	  # Lynx text-mode linux browser
     "Links",	  # Another text-mode linux browser
+    "Dalvik",	  # Android browser
     );
 local @substrings = (
     "UP.Browser",         # Openwave

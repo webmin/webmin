@@ -513,14 +513,20 @@ $rv->{'args'} = [ @v[$i .. $#v] ];
 return $rv;
 }
 
-# check_cache(&config, &caches)
+# check_cache(&config, &caches, [include-disabled])
 # Returns 1 if the cache directory looks OK, 0 if not. Also fills in the 
 # caches list
 sub check_cache
 {
-my ($conf, $cachesrv) = @_;
+my ($conf, $cachesrv, $distoo) = @_;
 my (@cachestruct, @caches, $coss);
-if (@cachestruct = &find_config("cache_dir", $conf)) {
+my @cachestruct = &find_config("cache_dir", $conf);
+my $disabled = 0;
+if ($distoo && !@cachestruct) {
+	@cachestruct = &find_config("cache_dir", $conf, 1);
+	$disabled = 1 if (@cachestruct);
+	}
+if (@cachestruct) {
 	if ($squid_version >= 2.3) {
 		@caches = map { $_->{'values'}->[1] } @cachestruct;
 		}

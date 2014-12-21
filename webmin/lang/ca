@@ -325,6 +325,7 @@ ssl_cert=Fitxer de certificat
 ssl_cert_def=El mateix de la clau privada
 ssl_cert_oth=Fitxer a part
 ssl_redirect=Redirecciona les peticions no SSL a mode SSL
+ssl_deny=Versions del protocol SSL a rebutjar
 ssl_compression=Permet les connexions SSL comprimides
 ssl_honorcipherorder=Força l'ús de l'ordre de xifratge definit pel servidor
 ssl_extracas=Fitxers addicionals de certificat<br>(per a certificats encadenats)

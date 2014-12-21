@@ -57,9 +57,6 @@ if ($fpt || $in{'fpt'}) {
 			[ $in{'fpt'} ]);
 	}
 
-&save_directive($conf, $mysqld, "skip-locking",
-		$in{'skip-locking'} ? [ "" ] : [ ]);
-
 &save_directive($conf, $mysqld, "big-tables",
 		$in{'big-tables'} ? [ "" ] : [ ]);
 
