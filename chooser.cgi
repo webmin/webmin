@@ -1,8 +1,6 @@
 #!/usr/bin/perl
 # chooser.cgi
 # Outputs HTML for a frame-based file chooser 
-use strict;
-use warnings;
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
