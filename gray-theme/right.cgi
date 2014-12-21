@@ -59,6 +59,10 @@ foreach my $info (@info) {
 					     $open);
 		if ($info->{'type'} eq 'table') {
 			# A table of various labels and values
+                        if ($info->{'header'}) {
+                                print &ui_table_row(
+                                        undef, $info->{'header'}, 4);
+                                }
 			foreach my $t (@{$info->{'table'}}) {
 				my $chart = "";
 				if ($t->{'chart'}) {
@@ -72,7 +76,11 @@ foreach my $info (@info) {
 			}
 		elsif ($info->{'type'} eq 'chart') {
 			# A table of graphs
-			my $ctable = &ui_columns_start($info->{'titles'});
+			my $ctable;
+                        if ($info->{'header'}) {
+                                $ctable .= $info->{'header'}."<br>\n";
+                                }
+			$ctable .= &ui_columns_start($info->{'titles'});
 			foreach my $t (@{$info->{'chart'}}) {
 				$ctable .= &ui_columns_row([
 					$t->{'desc'},
