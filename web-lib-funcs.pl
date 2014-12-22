@@ -10110,8 +10110,8 @@ to display. Each is a hash ref with the following keys :
 =item type - Can be "html" for an arbitrary block of HTML, "table" for a table
 	     of information, "usage" for a table of usage of some resource,
 	     "redirect" for a request to redirect the whole page to another URL,
-	     "warning" for a warning dialog, or "link" for a link to another
-	     page.
+	     "warning" for a warning dialog, "link" for a link to another
+	     page, or "veto" to request removal of a block from another module.
 
 =item desc - The title for this section of info
 
@@ -10136,6 +10136,8 @@ to display. Each is a hash ref with the following keys :
 	      "danger"
 
 =item link - In "link" mode, the destination URL
+
+=item veto - In "veto" mode, the ID of the block from some other module to skip
 
 =item target - In "link" mode, can be "new" for a new page, or "window" for the
 	       current whole browser window
@@ -10189,11 +10191,17 @@ if (&foreign_available("webmin")) {
 	&foreign_require("webmin");
 	foreach my $n (&webmin::get_webmin_notifications()) {
 		push(@rv, { 'type' => 'warning',
+			    'id' => 'notifications',
 			    'level' => 'info',
 			    'module' => 'webmin',
 			    'warning' => $n });
 		}
 	}
+# Obey vetos for blocks from other modules
+foreach my $veto (grep { $_->{'type'} eq 'veto' } @rv) {
+	@rv = grep { $_->{'id'} ne $veto->{'veto'} } @rv;
+	}
+@rv = grep { $_->{'type'} ne 'veto' } @rv;
 return sort { ($b->{'priority'} || 0) <=> ($a->{'priority'} || 0) } @rv;
 }
 
