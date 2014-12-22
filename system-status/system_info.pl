@@ -15,13 +15,16 @@ my @table;
 # Refresh button for root
 if (&foreign_available($module_name) && $config{'collect_interval'} ne 'none') {
 	push(@rv, { 'type' => 'link',
+		    'priority' => 100,
 		    'desc' => $text{'right_recollect'},
 		    'link' => '/'.$module_name.'/recollect.cgi' });
 	}
 
 # Table of system info
 my $table = { 'type' => 'table',
+	      'id' => 'sysinfo',
 	      'desc' => $text{'right_header'},
+	      'priority' => 100,
 	      'table' => \@table };
 push(@rv, $table);
 
