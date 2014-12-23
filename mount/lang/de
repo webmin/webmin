@@ -186,6 +186,7 @@ linux_eserver=Fehlender Server-Name
 linux_eshare=Fehlender Freigabe-Name
 linux_esmbconn=Fehler beim Verbinden zum Server
 linux_eswappri=Fehlender oder ung&#252;ltige numerischer virtueller Speicher Priorit&#228;t
+linux_etimeo=Zeitabbruch muss eine Zahl sein.
 linux_etimeout='$1' ist kein g&uuml;ltiger Timeout
 linux_etmpmode=Fehlende oder ung&#252;ltige oktale Einh&#228;ngepunktberechtigung
 linux_etmpsize=Fehlende oder ung&#252;ltige maximale Gr&#246;&#223;e
