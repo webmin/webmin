@@ -37,9 +37,9 @@ push(@table, { 'desc' => $text{'right_host'},
 
 # Operating system
 push(@table, { 'desc' => $text{'right_os'},
-	       'value' => $gconfig{'os_version'} eq '*' ?
+	       'value' => &html_escape($gconfig{'os_version'} eq '*' ?
 			$gconfig{'real_os_type'} :
-			$gconfig{'real_os_type'}.' '.$gconfig{'real_os_version'}
+			$gconfig{'real_os_type'}.' '.$gconfig{'real_os_version'})
 	     });
 
 # Webmin version
