@@ -780,7 +780,6 @@ while(1) {
 			if ($time_now - $ltime > 7*24*60*60) {
 				&run_logout_script($s, $user);
 				&write_logout_utmp($user, $lip);
-				delete($sessiondb{$s});
 				if ($use_syslog && $user) {
 					syslog("info", "%s",
 					      "Timeout of session for $user");
@@ -790,6 +789,7 @@ while(1) {
 					      "Timeout of unknown session $s ".
 					      "with value $sessiondb{$s}");
 					}
+				delete($sessiondb{$s});
 				}
 			}
 		}
