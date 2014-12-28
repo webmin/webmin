@@ -45,7 +45,6 @@ for($i=$start; $i<=$end; $i++) {
 	local $pos = $idx[0];
 	local $startline = $idx[1];
 	seek(MAIL, $pos, 0);
-	print STDERR "seek to $pos err $!\n";
 
 	# Read the mail
 	local $mail = &read_mail_fh(MAIL, $dash ? 2 : 1, 0);
