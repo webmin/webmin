@@ -502,7 +502,7 @@ my ($in, $out) = @_;
 $in = &callers_package($in);
 $out = &callers_package($out);
 my $buf;
-while(read($in, $buf, 1024) > 0) {
+while(read($in, $buf, 32768) > 0) {
 	(print $out $buf) || return 0;
 	}
 return 1;
