@@ -1301,14 +1301,15 @@ sub mailbox_copy_folder
 {
 local ($src, $dest) = @_;
 # XXX user permissions fix needed
+&switch_to_folder_user($src);
 if ($src->{'type'} == 0 && $dest->{'type'} == 0) {
 	# mbox to mbox .. just read and write the files
-	&open_readfile(SOURCE, $src->{'file'});
-	&open_tempfile(DEST, ">>$dest->{'file'}");
+	&open_as_mail_user(SOURCE, $src->{'file'});
+	&open_tempfile_as_mail_user(DEST, ">>$dest->{'file'}");
 	while(read(SOURCE, $buf, 1024) > 0) {
 		&print_tempfile(DEST, $buf);
 		}
-	&close_tempfile(DEST);
+	&close_tempfile_as_mail_user(DEST);
 	close(SOURCE);
 	}
 elsif ($src->{'type'} == 1 && $dest->{'type'} == 1) {
@@ -1326,7 +1327,7 @@ elsif ($src->{'type'} == 1 && $dest->{'type'} == 0) {
 	&open_tempfile(DEST, ">>$dest->{'file'}");
 	local $fromline = &make_from_line("webmin\@example.com")."\n";
 	foreach my $f (@files) {
-		&open_readfile(SOURCE, $f);
+		&open_as_mail_user(SOURCE, $f);
 		&print_tempfile("DEST", $fromline);
 		while(read(SOURCE, $buf, 1024) > 0) {
 			&print_tempfile(DEST, $buf);
@@ -1346,6 +1347,7 @@ else {
 		&mailbox_copy_mail($src, $dest, @want);
 		}
 	}
+&switch_from_folder_user($src);
 }
 
 # mailbox_move_mail(&source, &dest, mail, ...)
@@ -1353,33 +1355,36 @@ else {
 sub mailbox_move_mail
 {
 return undef if (&is_readonly_mode());
-# XXX user permissions fix needed
 local $src = shift(@_);
 local $dst = shift(@_);
 local $now = time();
 local $hn = &get_system_hostname();
-&create_folder_maildir($dst);
 local $fix_index;
 if (($src->{'type'} == 1 || $src->{'type'} == 3) && $dst->{'type'} == 1) {
 	# Can just move mail files to Maildir names
-	local $dd = $dst->{'file'};
+	&switch_to_folder_user($dst);
 	&create_folder_maildir($dst);
-	foreach $m (@_) {
-		rename($m->{'file'}, "$dd/cur/$now.$$.$hn");
+	local $dd = $dst->{'file'};
+	foreach my $m (@_) {
+		&rename_as_mail_user($m->{'file'}, "$dd/cur/$now.$$.$hn");
 		$now++;
 		}
 	&mailbox_fix_permissions($dst);
+	&switch_from_folder_user($dst);
 	$fix_index = 1;
 	}
 elsif (($src->{'type'} == 1 || $src->{'type'} == 3) && $dst->{'type'} == 3) {
 	# Can move and rename to MH numbering
+	&switch_to_folder_user($dst);
+	&create_folder_maildir($dst);
 	local $dd = $dst->{'file'};
 	local $num = &max_mhdir($dst->{'file'}) + 1;
-	foreach $m (@_) {
-		rename($m->{'file'}, "$dd/$num");
+	foreach my $m (@_) {
+		&rename_as_mail_user($m->{'file'}, "$dd/$num");
 		$num++;
 		}
 	&mailbox_fix_permissions($dst);
+	&switch_from_folder_user($dst);
 	$fix_index = 1;
 	}
 else {
@@ -1387,6 +1392,8 @@ else {
 	my @mdel;
 	my $r;
 	my $save_read = &get_product_name() eq "usermin";
+	&switch_to_folder_user($dst);
+	&create_folder_maildir($dst);
 	foreach my $m (@_) {
 		$r = &get_mail_read($src, $m) if ($save_read);
 		my $mcopy = { %$m };
@@ -1395,6 +1402,7 @@ else {
 		push(@mdel, $m);
 		}
 	local $src->{'notrash'} = 1;	# Prevent saving to trash
+	&switch_from_folder_user($dst);
 	&mailbox_delete_mail($src, @mdel);
 	}
 }
@@ -1477,12 +1485,10 @@ if ($src->{'sortable'}) {
 # Copy mail from one folder to another
 sub mailbox_copy_mail
 {
-# XXX user permissions fix needed
 return undef if (&is_readonly_mode());
 local $src = shift(@_);
 local $dst = shift(@_);
 local $now = time();
-&create_folder_maildir($dst);
 if ($src->{'type'} == 6 && $dst->{'type'} == 6) {
 	# Copying from one virtual folder to another, so just copy the
 	# reference
@@ -1504,12 +1510,15 @@ else {
 	# only if in Usermin.
 	my $r;
 	my $save_read = &get_product_name() eq "usermin";
+	&switch_to_folder_user($dst);
+	&create_folder_maildir($dst);
 	foreach my $m (@_) {
 		$r = &get_mail_read($src, $m) if ($save_read);
 		my $mcopy = { %$m };
 		&write_mail_folder($mcopy, $dst);
 		&set_mail_read($dst, $mcopy, $r) if ($save_read);
 		}
+	&switch_from_folder_user($dst);
 	}
 }
 
@@ -1540,13 +1549,15 @@ else {
 # Ensure that a maildir folder has the needed new, cur and tmp directories
 sub create_folder_maildir
 {
-mkdir($folders_dir, 0700);
+if ($folders_dir) {
+	mkdir($folders_dir, 0700);
+	}
 if ($_[0]->{'type'} == 1) {
 	local $id = $_[0]->{'file'};
-	mkdir($id, 0700);
-	mkdir("$id/cur", 0700);
-	mkdir("$id/new", 0700);
-	mkdir("$id/tmp", 0700);
+	&mkdir_as_mail_user($id, 0700);
+	&mkdir_as_mail_user("$id/cur", 0700);
+	&mkdir_as_mail_user("$id/new", 0700);
+	&mkdir_as_mail_user("$id/tmp", 0700);
 	}
 }
 

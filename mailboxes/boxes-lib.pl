@@ -744,7 +744,7 @@ $index{'mailcount'} = $in{'lastchange'} = 0;
 dbmclose(%index);
 
 if ($< == 0) {
-	rename($tmpf, $f);
+	&rename_as_mail_user($tmpf, $f);
 	}
 else {
 	system("cat ".quotemeta($tmpf)." > ".quotemeta($f).
@@ -818,7 +818,7 @@ $index{'lastchange'} = time();
 local @st = stat($f);
 unlink($f);
 if ($< == 0) {
-	rename($tmpf, $f);
+	&rename_as_mail_user($tmpf, $f);
 	}
 else {
 	system("cat $tmpf >$f && rm -f $tmpf");
@@ -2036,7 +2036,7 @@ foreach my $nf (@files) {
 	if (substr($nf, length($dir)+1, 3) eq "new") {
 		local $cf = $nf;
 		$cf =~ s/\/new\//\/cur\//g;
-		if (rename($nf, $cf)) {
+		if (&rename_as_mail_user($nf, $cf)) {
 			$files[$i] = $cf;
 			$changed = 1;
 			}
@@ -2850,6 +2850,36 @@ if ($switched) {
 	}
 return $rv;
 }
+
+# rename_as_mail_user(old, new)
+# Like the rename function, but as the user set by set_mail_open_user
+sub rename_as_mail_user
+{
+my ($oldfile, $newfile) = @_;
+my $switched = &switch_to_mail_user();
+my $rv = rename($oldfile, $newfile);
+if ($switched) {
+	$) = 0;
+	$> = 0;
+	}
+return $rv;
+}
+
+# mkdir_as_mail_user(path, perms)
+# Like the mkdir function, but as the user set by set_mail_open_user
+sub mkdir_as_mail_user
+{
+my ($path, $perms) = @_;
+my $switched = &switch_to_mail_user();
+my $rv = mkdir($paths, $perms);
+if ($switched) {
+	$) = 0;
+	$> = 0;
+	}
+return $rv;
+}
+
+
 
 # switch_to_mail_user()
 # Sets the permissions used for reading files
