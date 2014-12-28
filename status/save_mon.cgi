@@ -92,7 +92,9 @@ else {
 		# From another module
 		($mod, $mtype) = ($1, $2);
 		&foreign_require($mod, "status_monitor.pl");
-		&foreign_call($mod, "status_monitor_parse", $mtype, $serv,\%in);
+		if (&foreign_defined($mod, "status_monitor_parse")) {
+			&foreign_call($mod, "status_monitor_parse", $mtype, $serv,\%in);
+			}
 		}
 	else {
 		# From this module
