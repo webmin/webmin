@@ -1300,16 +1300,15 @@ if ($folder->{'sortable'}) {
 sub mailbox_copy_folder
 {
 local ($src, $dest) = @_;
-# XXX user permissions fix needed
-&switch_to_folder_user($src);
+&switch_to_folder_user($dest);
 if ($src->{'type'} == 0 && $dest->{'type'} == 0) {
 	# mbox to mbox .. just read and write the files
 	&open_as_mail_user(SOURCE, $src->{'file'});
-	&open_tempfile_as_mail_user(DEST, ">>$dest->{'file'}");
-	while(read(SOURCE, $buf, 1024) > 0) {
-		&print_tempfile(DEST, $buf);
+	&open_as_mail_user(DEST, ">>$dest->{'file'}");
+	while(read(SOURCE, $buf, 32768) > 0) {
+		print DEST $buf;
 		}
-	&close_tempfile_as_mail_user(DEST);
+	close(DEST);
 	close(SOURCE);
 	}
 elsif ($src->{'type'} == 1 && $dest->{'type'} == 1) {
@@ -1317,24 +1316,24 @@ elsif ($src->{'type'} == 1 && $dest->{'type'} == 1) {
 	local @files = &get_maildir_files($src->{'file'});
 	foreach my $f (@files) {
 		local $fn = &unique_maildir_filename($dest);
-		&copy_source_dest($f, "$dest->{'file'}/$fn");
+		&copy_source_dest_as_mail_user($f, "$dest->{'file'}/$fn");
 		}
 	&mailbox_fix_permissions($dest);
 	}
 elsif ($src->{'type'} == 1 && $dest->{'type'} == 0) {
 	# maildir to mbox .. append all the files
 	local @files = &get_maildir_files($src->{'file'});
-	&open_tempfile(DEST, ">>$dest->{'file'}");
+	&open_as_mail_user(DEST, ">>$dest->{'file'}");
 	local $fromline = &make_from_line("webmin\@example.com")."\n";
 	foreach my $f (@files) {
 		&open_as_mail_user(SOURCE, $f);
-		&print_tempfile("DEST", $fromline);
+		print DEST $fromline;
 		while(read(SOURCE, $buf, 1024) > 0) {
-			&print_tempfile(DEST, $buf);
+			print DEST $buf;
 			}
 		close(SOURCE);
 		}
-	&close_tempfile(DEST);
+	close(DEST);
 	}
 else {
 	# read in all mail and write out, in 100 message blocks
@@ -1347,7 +1346,7 @@ else {
 		&mailbox_copy_mail($src, $dest, @want);
 		}
 	}
-&switch_from_folder_user($src);
+&switch_from_folder_user($dest);
 }
 
 # mailbox_move_mail(&source, &dest, mail, ...)
@@ -1413,8 +1412,10 @@ else {
 sub mailbox_fix_permissions
 {
 local ($f, $st) = @_;
+return 0 if ($< != 0);			# Only makes sense when running as root
+return 0 if ($main::mail_open_user);	# File ops are already done as the
+					# correct user
 $st ||= [ stat($f->{'file'}) ];
-return 0 if ($< != 0);		# Only makes sense when running as root
 if ($f->{'type'} == 0) {
 	# Set perms on a single file
 	&set_ownership_permissions($st->[4], $st->[5], $st->[2], $f->{'file'});
@@ -3652,9 +3653,10 @@ else {
 sub switch_to_folder_user
 {
 my ($folder) = @_;
-if ($folder->{'user'}) {
+if ($folder->{'user'} && $switch_to_folder_count == 0) {
 	&set_mail_open_user($folder->{'user'});
 	}
+$switch_to_folder_count++;
 }
 
 # switch_from_folder_user(&folder)
@@ -3662,7 +3664,16 @@ if ($folder->{'user'}) {
 sub switch_from_folder_user
 {
 my ($folder) = @_;
-&clear_mail_open_user();
+if ($switch_to_folder_count) {
+	$switch_to_folder_count--;
+	if ($switch_to_folder_count == 0) {
+		&clear_mail_open_user();
+		}
+	}
+else {
+	print STDERR "switch_from_folder_user called more often ",
+		     "than switch_to_folder_user!\n";
+	}
 }
 
 1;

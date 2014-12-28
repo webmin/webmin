@@ -2879,13 +2879,39 @@ if ($switched) {
 return $rv;
 }
 
+# copy_source_dest_as_mail_user(source, dest)
+# Copy a file, with perms of the user from set_mail_open_user
+sub copy_source_dest_as_mail_user
+{
+my ($src, $dst) = @_;
+if (&should_switch_to_mail_user()) {
+	&open_as_mail_user(SRC, $src) || return 0;
+	&open_as_mail_user(DST, ">$dst") || return 0;
+	my $buf;
+	while(read(SRC, $buf, 32768) > 0) {
+		print DST $buf;
+		}
+	close(SRC);
+	close(DST);
+	return 1;
+	}
+else {
+	return &copy_source_dest($src, $dst);
+	}
+}
 
+# should_switch_to_mail_user()
+# Returns 1 if file IO will be done as a mail owner user
+sub should_switch_to_mail_user
+{
+return defined($main::mail_open_user) && !$< && !$>;
+}
 
 # switch_to_mail_user()
 # Sets the permissions used for reading files
 sub switch_to_mail_user
 {
-if (defined($main::mail_open_user) && !$< && !$>) {
+if (&should_switch_to_mail_user()) {
 	# Switch file permissions to the correct user
 	my @uinfo = $main::mail_open_user =~ /^\d+$/ ?
 			getpwuid($main::mail_open_user) :
