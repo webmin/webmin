@@ -26,20 +26,21 @@ if (!defined($list_authusers_cache{$file})) {
 	local $_;
 	my $lnum = 0;
 	my $count = 0;
-	open(HTPASSWD, $file);
-	while(<HTPASSWD>) {
-		if (/^(#?)\s*([^:]+):(\S*)/) {
-			push(@{$list_authusers_cache{$file}},
-				  { 'user' => $2,
-				    'pass' => $3,
-				    'enabled' => !$1,
-				    'file' => $file,
-				    'line' => $lnum,
-				    'index' => $count++ });
+	if (open(HTPASSWD, $file)) {
+		while(<HTPASSWD>) {
+			if (/^(#?)\s*([^:]+):(\S*)/) {
+				push(@{$list_authusers_cache{$file}},
+					  { 'user' => $2,
+					    'pass' => $3,
+					    'enabled' => !$1,
+					    'file' => $file,
+					    'line' => $lnum,
+					    'index' => $count++ });
+				}
+			$lnum++;
 			}
-		$lnum++;
+		close(HTPASSWD);
 		}
-	close(HTPASSWD);
 	}
 return $list_authusers_cache{$file};
 }
