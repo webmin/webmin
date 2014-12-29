@@ -1844,7 +1844,7 @@ if ($config{'link_dir'}) {
 	opendir(LINKDIR, $config{'link_dir'});
 	foreach my $f (readdir(LINKDIR)) {
 		if ($f ne "." && $f ne ".." &&
-		    (&simpify_path(
+		    (&simplify_path(
 		       &resolve_links($config{'link_dir'}."/".$f)) eq $file ||
 		     $short eq $f)) {
 			&unlink_logged($config{'link_dir'}."/".$f);
