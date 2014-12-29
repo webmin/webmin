@@ -83,7 +83,8 @@ my $d;
 my $fh = "DIRS";
 &open_tempfile($fh, ">$directories_file");
 foreach $d (@{$_[0]}) {
-	&print_tempfile($fh, join("\t", @$d),"\n");
+	my @safed = map { defined($_) ? $_ : "" } @$d;
+	&print_tempfile($fh, join("\t", @safed),"\n");
 	}
 &close_tempfile($fh);
 }
