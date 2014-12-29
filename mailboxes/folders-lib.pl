@@ -1434,14 +1434,13 @@ return 0;
 # Moves all mail from one folder to another, possibly converting the type
 sub mailbox_move_folder
 {
-# XXX user permissions fix needed
-return undef if (&is_readonly_mode());
 local ($src, $dst) = @_;
+return undef if (&is_readonly_mode());
+&switch_to_folder_user($dst);
 if ($src->{'type'} == $dst->{'type'} && !$src->{'remote'}) {
 	# Can just move the file or dir
-	local @st = stat($dst->{'file'});
-	system("rm -rf ".quotemeta($dst->{'file'}));
-	system("mv ".quotemeta($src->{'file'})." ".quotemeta($dst->{'file'}));
+	&unlink_file($dst->{'file'});
+	&rename_as_mail_user($src->{'file'}, $dst->{'file'});
 	if (@st) {
 		&mailbox_fix_permissions($dst, \@st);
 		}
@@ -1450,17 +1449,18 @@ elsif (($src->{'type'} == 1 || $src->{'type'} == 3) && $dst->{'type'} == 0) {
 	# For Maildir or MH to mbox moves, just append files
 	local @files = $src->{'type'} == 1 ? &get_maildir_files($src->{'file'})
 					   : &get_mhdir_files($src->{'file'});
-	&open_tempfile(DEST, ">>$dst->{'file'}");
+	&open_as_mail_user(DEST, ">>$dst->{'file'}");
 	local $fromline = &make_from_line("webmin\@example.com");
 	foreach my $f (@files) {
-		&open_readfile(SOURCE, $f);
-		&print_tempfile("DEST", $fromline);
-		while(read(SOURCE, $buf, 1024) > 0) {
-			&print_tempfile(DEST, $buf);
+		&open_as_mail_user(SOURCE, $f);
+		print DEST $fromline;
+		while(read(SOURCE, $buf, 32768) > 0) {
+			print DEST $buf;
 			}
-		&unlink_file($f);
+		close(SOURCE);
+		&unlink_as_mail_user($f);
 		}
-	&close_tempfile(DEST);
+	close(DEST);
 	}
 else {
 	# Need to read in and write out. But do it in 1000-message blocks
@@ -1475,6 +1475,7 @@ else {
 		}
 	&mailbox_empty_folder($src);
 	}
+&switch_from_folder_user($dst);
 
 # Delete source folder index
 if ($src->{'sortable'}) {
