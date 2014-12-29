@@ -2870,7 +2870,21 @@ sub mkdir_as_mail_user
 {
 my ($path, $perms) = @_;
 my $switched = &switch_to_mail_user();
-my $rv = mkdir($paths, $perms);
+my $rv = mkdir($path, $perms);
+if ($switched) {
+	$) = 0;
+	$> = 0;
+	}
+return $rv;
+}
+
+# unlink_as_mail_user(path)
+# Like the unlink function, but as the user set by set_mail_open_user
+sub unlink_as_mail_user
+{
+my ($path) = @_;
+my $switched = &switch_to_mail_user();
+my $rv = unlink($path);
 if ($switched) {
 	$) = 0;
 	$> = 0;
