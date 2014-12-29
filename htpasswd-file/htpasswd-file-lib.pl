@@ -107,6 +107,7 @@ else {
 		     "$_[0]->{'user'}:$_[0]->{'pass'}");
 	}
 &flush_file_lines($_[0]->{'file'});
+$list_authusers_cache{$_[0]->{'file'}} ||= [ ];
 $_[0]->{'index'} = @{$list_authusers_cache{$_[0]->{'file'}}};
 push(@{$list_authusers_cache{$_[0]->{'file'}}}, $_[0]);
 }
