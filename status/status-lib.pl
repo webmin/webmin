@@ -58,7 +58,7 @@ return @rv;
 sub get_service
 {
 my %serv;
-&read_file("$services_dir/$_[0].serv", \%serv) || return undef;
+read_file("$services_dir/$_[0].serv", \%serv) || return undef;
 $serv{'fails'} = 1 if (!defined($serv{'fails'}));
 $serv{'_file'} = "$services_dir/$_[0].serv";
 if (!defined($serv{'notify'})) {
@@ -205,8 +205,7 @@ while($f = readdir(DIR)) {
 		}
 	}
 closedir(DIR);
-my $m;
-foreach $m (&get_all_module_infos()) {
+foreach my $m (&get_all_module_infos()) {
 	my $mdir = defined(&module_root_directory) ?
 		&module_root_directory($m->{'dir'}) :
 		"$root_directory/$m->{'dir'}";
@@ -226,7 +225,7 @@ sub depends_check
 return if ($_[0]->{'id'});	# only check for new services
 if ($_[0]->{'remote'}) {
 	# Check on the remote server
-	foreach $m (@_[1..$#_]) {
+	foreach my $m (@_[1..$#_]) {
 		&remote_foreign_check($_[0]->{'remote'}, $m, 1) ||
 			&error(&text('depends_remote', "<tt>$m</tt>",
 				     "<tt>$_[0]->{'remote'}</tt>"));
@@ -234,7 +233,7 @@ if ($_[0]->{'remote'}) {
 	}
 else {
 	# Check on this server
-	foreach $m (@_[1..$#_]) {
+	foreach my $m (@_[1..$#_]) {
 		my %minfo = &get_module_info($m);
 		%minfo || &error(&text('depends_mod', "<tt>$m</tt>"));
 		&check_os_support(\%minfo, undef, undef, 1) ||
@@ -247,7 +246,7 @@ else {
 # find_named_process(regexp)
 sub find_named_process
 {
-foreach $p (&proc::list_processes()) {
+foreach my $p (&proc::list_processes()) {
 	$p->{'args'} =~ s/\s.*$//; $p->{'args'} =~ s/[\[\]]//g;
 	if ($p->{'args'} =~ /$_[0]/) {
 		return $p;
@@ -273,8 +272,8 @@ sub setup_cron_job
 {
 &lock_file($cron_cmd);
 &foreign_require("cron");
-my ($j, $job);
-foreach $j (&cron::list_cron_jobs()) {
+my $job;
+foreach my $j (&cron::list_cron_jobs()) {
 	$job = $j if ($j->{'user'} eq 'root' && $j->{'command'} eq $cron_cmd);
 	}
 if ($job) {
@@ -579,7 +578,7 @@ sub add_history
 {
 my ($serv, $h) = @_;
 if (!-d $history_dir) {
-	&make_dir($history_dir, 0700);
+	&make_dir($history_dir, '0700');
 	}
 my $hfile = "$history_dir/$serv->{'id'}";
 &lock_file($hfile, 1);
