@@ -39,10 +39,10 @@ map { $mod{$_}++ } &list_modules();
 opendir(DIR, $services_dir);
 while($f = readdir(DIR)) {
 	next if ($f !~ /^(.*)\.serv$/);
-	local $serv = &get_service($1);
+	my $serv = &get_service($1);
 	next if (!$serv || !$serv->{'type'} || !$serv->{'id'});
 	if ($serv->{'depends'}) {
-		local $d;
+		my $d;
 		map { $d++ if (!$mod{$_}) } split(/\s+/, $serv->{'depends'});
 		push(@rv, $serv) if (!$d);
 		}
@@ -57,8 +57,8 @@ return @rv;
 # get_service(id)
 sub get_service
 {
-local %serv;
-&read_file("$services_dir/$_[0].serv", \%serv) || return undef;
+my %serv;
+read_file("$services_dir/$_[0].serv", \%serv) || return undef;
 $serv{'fails'} = 1 if (!defined($serv{'fails'}));
 $serv{'_file'} = "$services_dir/$_[0].serv";
 if (!defined($serv{'notify'})) {
@@ -71,7 +71,7 @@ return $_[0] ne $serv{'id'} ? undef : \%serv;
 # save_service(&serv)
 sub save_service
 {
-local ($serv) = @_;
+my ($serv) = @_;
 mkdir($services_dir, 0755) if (!-d $services_dir);
 &lock_file("$services_dir/$serv->{'id'}.serv");
 &write_file("$services_dir/$serv->{'id'}.serv", $serv);
@@ -81,7 +81,7 @@ mkdir($services_dir, 0755) if (!-d $services_dir);
 # delete_service(&serv)
 sub delete_service
 {
-local ($serv) = @_;
+my ($serv) = @_;
 &unlink_logged("$services_dir/$serv->{'id'}.serv");
 &unlink_logged("$history_dir/$serv->{'id'}");
 }
@@ -91,14 +91,14 @@ local ($serv) = @_;
 # names of all actual hosts (* means local)
 sub expand_remotes
 {
-local @remote;
+my @remote;
 push(@remote, split(/\s+/, $_[0]->{'remote'}));
-local @groupnames = split(/\s+/, $_[0]->{'groups'});
+my @groupnames = split(/\s+/, $_[0]->{'groups'});
 if (@groupnames) {
 	&foreign_require("servers");
-	local @groups = &servers::list_all_groups();
+	my @groups = &servers::list_all_groups();
 	foreach my $g (@groupnames) {
-		local ($group) = grep { $_->{'name'} eq $g } @groups;
+		my ($group) = grep { $_->{'name'} eq $g } @groups;
 		if ($group) {
 			push(@remote, @{$group->{'members'}});
 			}
@@ -112,10 +112,10 @@ return &unique(@remote);
 # an array content, the status of all hosts for this monitor are returned.
 sub service_status
 {
-local $t = $_[0]->{'type'};
-local @rv;
+my $t = $_[0]->{'type'};
+my @rv;
 foreach $r (&expand_remotes($_[0])) {
-	local $rv;
+	my $rv;
 	local $main::error_must_die = 1;
 	eval {
 		local $SIG{'ALRM'} = sub { die "status alarm\n" };
@@ -126,13 +126,13 @@ foreach $r (&expand_remotes($_[0])) {
 			$remote_error_msg = undef;
 			&remote_foreign_require($r, 'status', 'status-lib.pl')
 				if (!$done_remote_status{$r}++);
-			local $webmindown = $s->{'type'} eq 'alive' ? 0 : -2;
+			my $webmindown = $s->{'type'} eq 'alive' ? 0 : -2;
 			if ($remote_error_msg) {
 				$rv = { 'up' => $webmindown,
 					 'desc' => "$text{'mon_webmin'} : $remote_error_msg" };
 				}
 			else {
-				local %s = %{$_[0]};
+				my %s = %{$_[0]};
 				$s{'remote'} = '*';
 				$s{'groups'} = undef;
 				($rv) = &remote_foreign_call($r, 'status',
@@ -145,7 +145,7 @@ foreach $r (&expand_remotes($_[0])) {
 			}
 		elsif ($t =~ /^(\S+)::(\S+)$/) {
 			# Call to another module
-			local ($mod, $mtype) = ($1, $2);
+			my ($mod, $mtype) = ($1, $2);
 			&foreign_require($mod, "status_monitor.pl");
 			$rv = &foreign_call($mod, "status_monitor_status",
 					    $mtype, $_[0], $_[1]);
@@ -153,7 +153,7 @@ foreach $r (&expand_remotes($_[0])) {
 		else {
 			# Just include and use the local monitor library
 			do "${t}-monitor.pl" if (!$done_monitor{$t}++);
-			local $func = "get_${t}_status";
+			my $func = "get_${t}_status";
 			$rv = &$func($_[0],
 				     $_[0]->{'clone'} ? $_[0]->{'clone'} : $t,
 				     $_[1]);
@@ -194,26 +194,25 @@ return map { $_->{'dir'} } grep { &check_os_support($_) }
 # defined in other modules.
 sub list_handlers
 {
-local ($f, @rv);
+my ($f, @rv);
 opendir(DIR, ".");
 while($f = readdir(DIR)) {
 	if ($f =~ /^(\S+)-monitor\.pl$/) {
-		local $m = $1;
-		local $oss = $monitor_os_support{$m};
+		my $m = $1;
+		my $oss = $monitor_os_support{$m};
 		next if ($oss && !&check_os_support($oss));
 		push(@rv, [ $m, $text{"type_$m"} ]);
 		}
 	}
 closedir(DIR);
-local $m;
-foreach $m (&get_all_module_infos()) {
-	local $mdir = defined(&module_root_directory) ?
+foreach my $m (&get_all_module_infos()) {
+	my $mdir = defined(&module_root_directory) ?
 		&module_root_directory($m->{'dir'}) :
 		"$root_directory/$m->{'dir'}";
 	if (-r "$mdir/status_monitor.pl" &&
 	    &check_os_support($m)) {
 		&foreign_require($m->{'dir'}, "status_monitor.pl");
-		local @mms = &foreign_call($m->{'dir'}, "status_monitor_list");
+		my @mms = &foreign_call($m->{'dir'}, "status_monitor_list");
 		push(@rv, map { [ $m->{'dir'}."::".$_->[0], $_->[1] ] } @mms);
 		}
 	}
@@ -226,7 +225,7 @@ sub depends_check
 return if ($_[0]->{'id'});	# only check for new services
 if ($_[0]->{'remote'}) {
 	# Check on the remote server
-	foreach $m (@_[1..$#_]) {
+	foreach my $m (@_[1..$#_]) {
 		&remote_foreign_check($_[0]->{'remote'}, $m, 1) ||
 			&error(&text('depends_remote', "<tt>$m</tt>",
 				     "<tt>$_[0]->{'remote'}</tt>"));
@@ -234,8 +233,8 @@ if ($_[0]->{'remote'}) {
 	}
 else {
 	# Check on this server
-	foreach $m (@_[1..$#_]) {
-		local %minfo = &get_module_info($m);
+	foreach my $m (@_[1..$#_]) {
+		my %minfo = &get_module_info($m);
 		%minfo || &error(&text('depends_mod', "<tt>$m</tt>"));
 		&check_os_support(\%minfo, undef, undef, 1) ||
 			&error(&text('depends_os', "<tt>$minfo{'desc'}</tt>"));
@@ -247,7 +246,7 @@ else {
 # find_named_process(regexp)
 sub find_named_process
 {
-foreach $p (&proc::list_processes()) {
+foreach my $p (&proc::list_processes()) {
 	$p->{'args'} =~ s/\s.*$//; $p->{'args'} =~ s/[\[\]]//g;
 	if ($p->{'args'} =~ /$_[0]/) {
 		return $p;
@@ -259,9 +258,9 @@ return undef;
 # smtp_command(handle, command)
 sub smtp_command
 {
-local ($m, $c) = @_;
+my ($m, $c) = @_;
 print $m $c;
-local $r = <$m>;
+my $r = <$m>;
 if ($r !~ /^[23]\d+/) {
 	&error(&text('sched_esmtpcmd', "<tt>$c</tt>", "<tt>$r</tt>"));
 	}
@@ -273,8 +272,8 @@ sub setup_cron_job
 {
 &lock_file($cron_cmd);
 &foreign_require("cron");
-local ($j, $job);
-foreach $j (&cron::list_cron_jobs()) {
+my $job;
+foreach my $j (&cron::list_cron_jobs()) {
 	$job = $j if ($j->{'user'} eq 'root' && $j->{'command'} eq $cron_cmd);
 	}
 if ($job) {
@@ -288,7 +287,7 @@ if ($config{'sched_mode'}) {
 	&cron::create_wrapper($cron_cmd, $module_name, "monitor.pl");
 
 	# Setup the actual cron job
-	local $njob;
+	my $njob;
 	$njob = { 'user' => 'root', 'active' => 1,
 		  'hours' => '*', 'days' => '*',
 		  'months' => '*', 'weekdays' => '*',
@@ -319,7 +318,7 @@ if ($config{'sched_mode'}) {
 # make_interval(length, offset2)
 sub make_interval
 {
-local (@rv, $i);
+my (@rv, $i);
 for($i=$config{'sched_offset'}+$_[1]; $i<$_[0]; $i+=$config{'sched_int'}) {
 	push(@rv,$i);
 	}
@@ -331,15 +330,15 @@ return join(",", @rv);
 # contains just one number, it is assumed to be for just the first remote host
 sub expand_oldstatus
 {
-local ($o, $serv) = @_;
-local @remotes = split(/\s+/, $serv->{'remote'});
+my ($o, $serv) = @_;
+my @remotes = split(/\s+/, $serv->{'remote'});
 if ($o =~ /^\-?(\d+)$/) {
 	return { $remotes[0] => $o };
 	}
 else {
-	local %rv;
+	my %rv;
 	foreach my $hs (split(/\s+/, $o)) {
-		local ($h, $s) = split(/=/, $hs);
+		my ($h, $s) = split(/=/, $hs);
 		$rv{$h} = $s;
 		}
 	return \%rv;
@@ -349,9 +348,9 @@ else {
 # nice_remotes(&monitor, [max])
 sub nice_remotes
 {
-local ($s, $max) = @_;
+my ($s, $max) = @_;
 $max ||= 3;
-local @remotes = map { $_ eq "*" ? $text{'index_local'}
+my @remotes = map { $_ eq "*" ? $text{'index_local'}
 			         : &html_escape($_) }
 		     split(/\s+/, $s->{'remote'});
 foreach my $g (split(/\s+/, $s->{'groups'})) {
@@ -363,8 +362,8 @@ return @remotes > $max ? join(", ", @remotes[0..$max]).", ..."
 
 sub group_desc
 {
-local ($group) = @_;
-local $mems = scalar(@{$group->{'members'}});
+my ($group) = @_;
+my $mems = scalar(@{$group->{'members'}});
 return $group->{'name'}." (".
        &text($mems == 0 ? 'mon_empty' :
 	     $mems == 1 ? 'mon_onemem' : 'mon_members', $mems).")";
@@ -374,12 +373,12 @@ return $group->{'name'}." (".
 # Returns a list of available notifcation modes (like email, sms, etc..)
 sub list_notification_modes
 {
-local @rv = ( "email" );
+my @rv = ( "email" );
 if ($config{'pager_cmd'} && $config{'sched_pager'}) {
 	push(@rv, "pager");
 	}
 if ($config{'snmp_server'}) {
-	local $gotmod = 0;
+	my $gotmod = 0;
 	eval "use Net::SNMP";
 	$gotmod++ if (!$@);
 	eval "use SNMP_Session";
@@ -468,7 +467,7 @@ return ( { 'id' => 'tmobile',
 sub list_templates
 {
 opendir(DIR, $templates_dir) || return ( );
-local @rv;
+my @rv;
 foreach my $f (readdir(DIR)) {
 	if ($f =~ /^\d+$/) {
 		push(@rv, &get_template($f));
@@ -482,8 +481,8 @@ return @rv;
 # Returns the hash ref for a specific template, by ID
 sub get_template
 {
-local ($id) = @_;
-local %tmpl;
+my ($id) = @_;
+my %tmpl;
 &read_file("$templates_dir/$id", \%tmpl) || return undef;
 $tmpl{'id'} = $id;
 $tmpl{'file'} = "$templates_dir/$id";
@@ -496,10 +495,10 @@ return \%tmpl;
 # Creates or saves an email template. Also does locking.
 sub save_template
 {
-local ($tmpl) = @_;
+my ($tmpl) = @_;
 $tmpl->{'id'} ||= time().$$;
 $tmpl->{'file'} = "$templates_dir/$tmpl->{'id'}";
-local %write = %$tmpl;
+my %write = %$tmpl;
 $write{'email'} =~ s/\\/\\\\/g;
 $write{'email'} =~ s/\n/\\n/g;
 if (!-d $templates_dir) {
@@ -514,7 +513,7 @@ if (!-d $templates_dir) {
 # Removes an existing template. Also does locking.
 sub delete_template
 {
-local ($tmpl) = @_;
+my ($tmpl) = @_;
 &unlink_logged($tmpl->{'file'});
 }
 
@@ -522,7 +521,7 @@ local ($tmpl) = @_;
 # Sets environment variables based on some monitor
 sub set_monitor_environment
 {
-local ($serv) = @_;
+my ($serv) = @_;
 foreach my $k (keys %$serv) {
 	if (!ref($serv->{$k})) {
 		$ENV{'STATUS_'.uc($k)} = $serv->{$k};
@@ -534,7 +533,7 @@ foreach my $k (keys %$serv) {
 # Undoes the call to set_monitor_environment
 sub reset_monitor_environment
 {
-local ($serv) = @_;
+my ($serv) = @_;
 foreach my $k (keys %$serv) {
 	if (!ref($serv->{$k})) {
 		delete($ENV{'STATUS_'.uc($k)});
@@ -551,8 +550,8 @@ foreach my $k (keys %$serv) {
 # by - Can be 'web' for update from web UI, or 'cron' for background
 sub list_history
 {
-local ($serv, $maxtail, $maxhead) = @_;
-local $hfile = "$history_dir/$serv->{'id'}";
+my ($serv, $maxtail, $maxhead) = @_;
+my $hfile = "$history_dir/$serv->{'id'}";
 return ( ) if (!-r $hfile);
 if ($maxtail) {
 	open(HFILE, "tail -".quotemeta($maxtail)." ".quotemeta($hfile)." |");
@@ -560,7 +559,7 @@ if ($maxtail) {
 else {
 	open(HFILE, $hfile);
 	}
-local @rv;
+my @rv;
 while(my $line = <HFILE>) {
 	$line =~ s/\r|\n//g;
 	my %h = map { split(/=/, $_, 2) } split(/\t+/, $line);
@@ -577,18 +576,18 @@ return @rv;
 # Adds a history entry for some service
 sub add_history
 {
-local ($serv, $h) = @_;
+my ($serv, $h) = @_;
 if (!-d $history_dir) {
-	&make_dir($history_dir, 0700);
+	&make_dir($history_dir, '0700');
 	}
-local $hfile = "$history_dir/$serv->{'id'}";
+my $hfile = "$history_dir/$serv->{'id'}";
 &lock_file($hfile, 1);
-local ($first) = &list_history($serv, undef, 1);
-local $cutoff = time() - $config{'history_purge'}*24*60*60;
+my ($first) = &list_history($serv, undef, 1);
+my $cutoff = time() - $config{'history_purge'}*24*60*60;
 if ($first && $first->{'time'} < $cutoff-(24*60*60)) {
 	# First entry is more than a day older than the cutoff .. remove all
 	# entries older than the custoff
-	local @oldh = &list_history($serv);
+	my @oldh = &list_history($serv);
 	&open_tempfile(HFILE, ">$hfile", 0, 1);
 	foreach my $oh (@oldh) {
 		if ($oh->{'time'} > $cutoff) {
@@ -608,8 +607,8 @@ if ($first && $first->{'time'} < $cutoff-(24*60*60)) {
 # Given a status code, return the image path to it
 sub get_status_icon
 {
-local ($up) = @_;
-return "images/".($up == 1 ? "up.gif" :
+my ($up) = @_;
+return "/".$module_name."/images/".($up == 1 ? "up.gif" :
 		  $up == -1 ? "not.gif" :
 		  $up == -2 ? "webmin.gif" :
 		  $up == -3 ? "timed.gif" :
