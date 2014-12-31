@@ -462,7 +462,10 @@ else {
 	my $deny = $user->{'deny'} || "";
 	$deny =~ s/:/;/g;
 	&print_tempfile($fh,
-		"$user->{'name'}:$user->{'pass'}:$user->{'sync'}:$user->{'cert'}:",
+		$user->{'name'},":",
+		$user->{'pass'},":",
+		($user->{'sync'} || ""),":",
+		($user->{'cert'} || ""),":",
 		($allow ? "allow $allow" :
 		 $deny ? "deny $deny" : ""),":",
 		join(" ", @times),":",
@@ -647,8 +650,10 @@ else {
 		if ($l =~ /^([^:]+):([^:]*)/ && $1 eq $username) {
 			&add_old_password($user, "$2", \%miniserv);
 			&print_tempfile($fh,
-				"$user->{'name'}:$user->{'pass'}:",
-				"$user->{'sync'}:$user->{'cert'}:",
+				$user->{'name'},":",
+				$user->{'pass'},":",
+				($user->{'sync'} || ""),":",
+				($user->{'cert'} || ""),":",
 				($allow ? "allow $allow" :
 				 $deny ? "deny $deny" : ""),":",
 				join(" ", @times),":",
