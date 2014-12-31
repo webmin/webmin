@@ -122,20 +122,21 @@ foreach my $d (&list_diffs($act)) {
 	my $cbox = @files ?
 		&ui_checkbox("r", $d->{'object'}, "", $rb, undef, !$rb) : undef;
 	$rbcount++ if ($rb);
+	my $open = !$in{'file'} || $d->{'object'} eq $in{'file'};
 	if ($t =~ /\$2/ || !$d->{'diff'}) {
 		# Diff is just a single line message
 		$fhtml .= &ui_hidden_table_start($cbox.
 		      &text("view_type_".$d->{'type'},
 			    "<tt>$d->{'object'}</tt>",
 			    "<tt>".&html_escape($d->{'diff'})."</tt>"),
-		      "width=100%", 2, "diff$i", 1);
+		      "width=100%", 2, "diff$i", $open);
 		}
 	else {
 		# Show multi-line diff
 		$fhtml .= &ui_hidden_table_start(
 			$cbox.&text("view_type_".$d->{'type'},
 			            "<tt>$d->{'object'}</tt>"),
-			"width=100%", 2, "diff$i", 1);
+			"width=100%", 2, "diff$i", $open);
 		$fhtml .= &ui_table_row(undef,
 			"<pre>".&html_escape($d->{'diff'})."</pre>", 2);
 		if ($d->{'input'}) {

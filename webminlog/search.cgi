@@ -211,6 +211,7 @@ elsif (@match) {
 		push(@cols, &ui_link("view.cgi?id=$act->{'id'}".
 		      "&return=".&urlize($in{'return'} || "").
 		      "&returndesc=".&urlize($in{'returndesc'} || "").
+		      "&file=".($in{'fall'} ? "" : &urlize($in{'file'})).
 		      "&search=".&urlize($in || ""), $desc) );
 		if ($anno) {
 			$cols[$#cols] .= "&nbsp;<img src=images/star.gif>";
