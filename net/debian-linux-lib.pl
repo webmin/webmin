@@ -247,6 +247,7 @@ foreach $iface (@ifaces) {
 	}
 
 # Remove any duplicate options
+my %done;
 @options = grep { !$done{$_->[0],$_->[1]}++ } @options;
 
 if (!$found) {
