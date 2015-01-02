@@ -39,12 +39,25 @@ push(@table, { 'desc' => $text{'right_host'},
 push(@table, { 'desc' => $text{'right_os'},
 	       'value' => &html_escape($gconfig{'os_version'} eq '*' ?
 			$gconfig{'real_os_type'} :
-			$gconfig{'real_os_type'}.' '.$gconfig{'real_os_version'})
+			$gconfig{'real_os_type'}.' '.
+			  $gconfig{'real_os_version'})
 	     });
 
 # Webmin version
 push(@table, { 'desc' => $text{'right_webmin'},
 	       'value' => &get_webmin_version() });
+
+# Versions of other important modules, where available
+# I fully admit that putting this here rather than in module-specific code is
+# a hack, but the current API doesn't offer good alternative.
+foreach my $v ([ "virtual-server", $text{'right_vvirtualmin'} ],
+	       [ "server-manager", $text{'right_vvm2'} ]) {
+	if (&foreign_available($v->[0])) {
+		my %vinfo = &get_module_info($v->[0]);
+		push(@table, { 'desc' => $v->[1],
+			       'value' => $vinfo{'version'} });
+		}
+	}
 
 # System time
 my $tm = localtime(time());
