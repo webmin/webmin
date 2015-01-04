@@ -36,4 +36,6 @@ right_used=$2 benutzt, $1 total
 right_used2=$2 verwendet, $1 garantiert, $3 burstable
 right_usermin=Usermin Version
 right_virt=Virtueller Speicher
+right_vvirtualmin=Virtualmin Version
+right_vvm2=Cloudmin Version
 right_webmin=Webmin Version
