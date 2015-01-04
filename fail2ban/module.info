@@ -9,3 +9,4 @@ longdesc_ms_MY=Fail2ban melindungi sistem anda dari serangan kekerasan dengan me
 syslog=1
 desc_ca=Detector d'Intrusions Fail2Ban
 longdesc_ca=Fail2ban protegeix el teu sistema d'atacs de força bruta detectant i bloquejant les IPs d'origen
+desc_no=Fail2Ban innbrudds-oppdager

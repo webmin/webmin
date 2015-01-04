@@ -656,6 +656,7 @@ ssl_csrfile=Skriv CSR til fil
 ssl_current=Denne seksjonen viser detaljer om gjeldende Webmin SSL sertifikat, og lar deg laste det ned slik at det kan godkjennes av nettleseren din.
 ssl_custom=Egendefinert st&#248;rrelse
 ssl_days=Dager til utl&#248;pstidspunkt
+ssl_deny=SSL protokoll-versjoner &#229; avvise
 ssl_desc1=Verten Webmin kj&#248;rer p&#229; ser ut til &#229; ha SSLeay Perl modulen installert. Ved &#229; bruke denne, st&#248;tter Webmin SSL kryptert kommunikasjon mellom nettleseren din og tjeneren. Hvis du kobler til Webmin over internett, burde du utvilsomt bruke SSL for &#229; minske muligheten for at "hackere" f&#229;r tak i Webmin passordet ditt.
 ssl_desc2=NB!!!! - hver sikker p&#229; at nettleseren din st&#248;tter SSL (som Netscape or IE) og at det ikke er noen firewall som blokkerer <b>https</b> foresp&#248;rsel mellom nettleseren og Webmin verten f&#248;r du aktiverer SSL
 ssl_download=Last ned sertifikat

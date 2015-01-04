@@ -1,0 +1,18 @@
+__norefs=1
+index_elink=Ingen URL til tunnel er satt enda.
+index_open=&#197;pne
+index_url=Skriv inn URL som skal &#229;pnes:
+link_eautologin=Ugyldig brukernavn eller passord for $1. <a href='$2'>Klikk her</a> for &#229; logge inn.
+link_ebadurl=Du har ikke tilgang til URLen $1
+link_elogin=Kunne ikke logge inn p&#229; $1 som $2
+link_enouser=Det kreves brukernavn og passord for &#229; logge inn p&#229; $1, men det er ikke konfigurert noen.
+link_eurl=Ugyldig tunnel URL : $1
+login_clear=Nullstill
+login_desc=Du m&#229; angi brukernavn og passord for &#229; logge inn p&#229; $1.
+login_header=Nettstedt autentisering
+login_login=Logg inn
+login_pass=Passord
+login_title=Logg inn p&#229; nettsted
+login_user=Brukernavn
+seturl_err=Kunne ikke &#229;pne URL
+seturl_eurl=Ugyldig URL angitt

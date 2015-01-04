@@ -1,0 +1,4 @@
+config_dir=Fail2Ban konfigurasjonskatalog,0
+client_cmd=Full stil til fail2ban-klient kommando,0
+server_cmd=Full stil til fail2ban-tjener kommando,0
+init_script=Oppstart handlingsnavn,3,Ingen konfigurert

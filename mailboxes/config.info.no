@@ -49,6 +49,7 @@ from_virtualmin=Hent Fra: adresse fra Virtualmin?,1,1-Ja,0-Nei
 from_dom=Domene som skal brukes i Fra: adresse,3,Systemets vertsnavn
 no_orig_ip=Ta med nettlesers IP i X-Originatin-IP header?,1,0-Ja,1-Nei
 no_mailer=Ta med Webmin version i X-Mailer header?,1,0-Ja,1-Nei
+helo_name=Vertsnavn &#229; bruke p&#229; SMTP HELO linjen,3,Samme som systemets vertsnavn
 line1=System konfigurasjon,11
 mail_system=E-post tjener installert,4,1-Sendmail,0-Postfix,2-Qmail,4-Qmail+LDAP,5-Qmail+VPopMail,6-Exim,3-Oppdag automatisk
 send_mode=Send e-post vha.,10,-E-post tjener program,SMTP tjener

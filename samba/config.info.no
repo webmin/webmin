@@ -1,5 +1,5 @@
 line1=Konfigurerbare innstillinger,11
-dont_convert=Lise med Unix brukere som ikke skal legges til i Sambas passordliste,0
+dont_convert=Liste med Unix brukere som ikke skal legges til i Sambas passordliste,0
 sort_mode=Sorter brukere og grupper etter navn?,1,1-Ja,0-Nei
 line2=System konfigurasjon,11
 smb_conf=Plassering for Samba konfigurasjonsfil,0
@@ -15,5 +15,6 @@ pdbedit=Full sti til pdbedit,3,Ingen
 net=Full sti til net kommando,3,Ingen
 start_cmd=Kommando for &#229; starte Samba tjenere,3,Automatisk
 stop_cmd=Kommando for &#229; stoppe Samba tjenere,3,Bare stopp prosessene
+restart_cmd=Kommando for &#229; omstarte Samba tjenere,3,Bare stopp og start
 start_cmd_wb=Kommando for &#229; starte Winbind tjenere,0
 stop_cmd_wb=Kommando for &#229; stoppe Winbind tjenere,0

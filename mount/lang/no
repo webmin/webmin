@@ -186,6 +186,7 @@ linux_eserver=Missing server name
 linux_eshare=Missing share name
 linux_esmbconn=Failed to connect to server
 linux_eswappri=Missing or invalid numeric virtual memory priority
+linux_etimeo=Tidsavbrudd m&#229; v&#230;re et tall
 linux_etimeout='$1' is not a valid timeout
 linux_etmpmode=Missing or invalid octal mount point permissions
 linux_etmpsize=Missing or invalid maximum size

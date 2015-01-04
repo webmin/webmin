@@ -1,0 +1,4 @@
+url=URL &#229; koble til,3,Sp&#248;r bruker
+loginmode=Logg inn p&#229; ekstern tjener,1,10-Nei,1-Yes&#44; med fast brukernavn,2-Ja&#44; med brukernavn angitt av bruker
+user=Fast brukernavn,0
+pass=Fast passord,12

@@ -1,0 +1,10 @@
+__norefs=1
+left_feedback=Send tilbakemelding
+left_home=Systeminformasjon
+left_login=Brukernavn: $1
+left_logs=Vis modulens logger
+left_oc=Sponset av OpenCountry
+left_others=Andre
+left_search=S&#248;k:
+left_search_usermin=S&#248;k i Usermin:
+left_search_webmin=S&#248;k i Webmin:

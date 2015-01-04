@@ -82,6 +82,7 @@ email_regsubject=System $1 registrert
 email_unreg=Systemet $1 er automatisk av-registrert.
 email_unregsubject=System $1 av-registrert
 find_already=Funnet kjent tjener p&#229; $1
+find_already2=Fant kjent tjener-vert p&#229; $1
 find_broading=Kringkaster etter tjenere p&#229; adressene $1 ..
 find_but=Fant ny tjener p&#229; $1, men autentisering feilet : $2
 find_ecannot=Du har ikke adgang til &#229; finne tjenere
