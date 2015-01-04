@@ -212,3 +212,6 @@ SSL v2 and v3 are now disabled by default at Webmin install time, to block the P
 Deprecated the old blue-theme in favor of the new gray-theme.
 Catalan translation updates from Jaume Badiella.
 More German translation updates, thanks to Raymond Vetter.
+---- Changes since 1.730 ----
+More German translation updates, thanks to Raymond Vetter.
+Norwegian updates, thanks to Stein-Aksel Basma.
