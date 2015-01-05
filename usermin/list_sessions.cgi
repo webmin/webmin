@@ -10,12 +10,6 @@ $access{'sessions'} || &error($text{'sessions_ecannot'});
 &acl::open_session_db(\%miniserv);
 $time_now = time();
 
-if (&foreign_available("useradmin")) {
-	&foreign_require("useradmin", "user-lib.pl");
-	@users = &useradmin::list_users();
-	%umap = map { $_->{'user'}, $_ } @users;
-	}
-
 print "<b>$text{'sessions_desc'}</b><p>\n";
 @keys = keys %acl::sessiondb;
 if (@keys) {
@@ -29,12 +23,8 @@ if (@keys) {
 		next if ($miniserv{'logouttime'} &&
 			 $time_now - $ltime > $miniserv{'logouttime'}*60);
 		@cols = ( &ui_link("delete_session.cgi?id=$k",$k) );
-		if ($uinfo = $umap{$user}) {
-			push(@cols, "<a href='../useradmin/edit_user.cgi?num=$uinfo->{'num'}'>$user</a>");
-			}
-		else {
-			push(@cols, $user);
-			}
+		push(@cols, &ui_link("../useradmin/edit_user.cgi?user=".
+				     &urlize($user), $user));
 		push(@cols, $lip);
 		push(@cols, &make_date($ltime));
 		print &ui_columns_row(\@cols);
