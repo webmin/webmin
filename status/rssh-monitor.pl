@@ -13,7 +13,7 @@ local ($fh, $fpid) = &proc::pty_process_exec(
 	quotemeta($_[0]->{'host'})." echo ok");
 local ($out, $wrong_password, $connect_failed, $got_password);
 while(1) {
-	local $rv = &wait_for($fh, "password:", "yes\\/no", "(^|\\n)\\s*Permission denied.*\n", "ssh: connect.*\n", ".*\n");
+	local $rv = &wait_for($fh, "password:|passphrase.*:", "yes\\/no", "(^|\\n)\\s*Permission denied.*\n", "ssh: connect.*\n", ".*\n");
 	$out .= $wait_for_input;
 	if ($rv == 0) {
 		if ($_[0]->{'rpass'} eq '*') {
