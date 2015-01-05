@@ -30,7 +30,8 @@ $access{'canonical'} || &error($text{'canonical_ecannot'});
 
 &regenerate_canonical_table();
 
-&reload_postfix();
+$err = &reload_postfix();
+&error($err) if ($err);
 
 &webmin_log("canonical");
 &redirect("");

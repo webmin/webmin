@@ -28,7 +28,8 @@ $access{'virtual'} || &error($text{'virtual_ecannot'});
 
 &regenerate_virtual_table();
 
-&reload_postfix();
+$err = &reload_postfix();
+&error($err) if ($err);
 
 &webmin_log("virtual");
 &redirect("");

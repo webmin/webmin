@@ -115,27 +115,23 @@ foreach $oitem (@onames)
 
 &icons_table(\@olinks, \@otitles, \@oicons);
 
+# Show start / stop / reload buttons
+if ($access{'startstop'}) {
+	print &ui_hr();
+	print &ui_buttons_start();
 
-if ($access{'startstop'})
-{
-    print &ui_hr();
-
-    if (&is_postfix_running())
-    {
-	print "<table cellpadding=5 width=100%><tr><td>\n";
-	print "<form action=stop.cgi>\n";
-	print "<input type=submit value=\"$text{'index_stop'}\">\n";
-	print "</td> <td>$text{'index_stopmsg'}\n";
-    }
-    else
-    {
-	print "<table cellpadding=5 width=100%><tr><td>\n";
-	print "<form action=start.cgi>\n";
-	print "<input type=submit value=\"$text{'index_start'}\">\n";
-	print "</td> <td>$text{'index_startmsg'}\n";
-    }
-    print "</td></tr></table></form>\n";
-}
+	if (&is_postfix_running()) {
+		print &ui_buttons_row("stop.cgi", $text{'index_stop'},
+                                      $text{'index_stopmsg'});
+		print &ui_buttons_row("reload.cgi", $text{'index_reload'},
+                                      $text{'index_reloadmsg'});
+		}
+	else {
+		print &ui_buttons_row("start.cgi", $text{'index_start'},
+                                      $text{'index_startmsg'});
+		}
+	print &ui_buttons_end();
+	}
 
 &ui_print_footer("/", $text{'index'});
 

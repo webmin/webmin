@@ -82,7 +82,8 @@ else {
 &unlock_file($config{'postfix_master'});
 
 # Apply config
-&reload_postfix();
+$err = &reload_postfix();
+&error($err) if ($err);
 
 &webmin_log($in{'delete'} ? "delete" : $in{'new'} ? "create" : "modify",
 	    "master", $prog->{'name'}, $prog);

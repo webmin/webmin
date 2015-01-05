@@ -16,7 +16,8 @@ $in{'data'} =~ s/\r//g;
 
 # Regenerate map
 &regenerate_map_table($in{'map_name'});
-&reload_postfix();
+$err = &reload_postfix();
+&error($err) if ($err);
 
 &webmin_log("manual", $in{'map_name'}.'s', $in{'file'});
 &redirect_to_map_list($in{'map_name'});

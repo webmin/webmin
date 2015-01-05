@@ -96,7 +96,8 @@ else
 
 # re-creates database
 &regenerate_map_table($in{'map_name'});
-&reload_postfix();
+$err = &reload_postfix();
+&error($err) if ($err);
 
 &webmin_log($action, $in{'map_name'}, $logmap->{'name'}, $logmap);
 

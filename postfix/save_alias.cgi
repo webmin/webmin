@@ -94,7 +94,8 @@ else {
 
 # re-creates aliases database
 &regenerate_aliases();
-&reload_postfix();
+$err = &reload_postfix();
+&error($err) if ($err);
 
 &webmin_log($in{'new'} ? 'create' : $in{'delete'} ? 'delete' : 'modify',
 	    'alias', $loga->{'name'}, $loga);

@@ -28,7 +28,8 @@ $access{'relocated'} || &error($text{'relocated_ecannot'});
 
 &regenerate_relocated_table();
 
-&reload_postfix();
+$err = &reload_postfix();
+&error($err) if ($err);
 
 &webmin_log("relocated");
 &redirect("");

@@ -25,7 +25,8 @@ require './postfix-lib.pl';
 
 
 &regenerate_aliases();
-&reload_postfix();
+$err = &reload_postfix();
+&error($err) if ($err);
 
 &webmin_log("aliases");
 &redirect("");

@@ -69,7 +69,8 @@ else {
 
 &unlock_postfix_files();
 
-&reload_postfix();
+$err = &reload_postfix();
+&error($err) if ($err);
 
 &webmin_log("client");
 &redirect("");

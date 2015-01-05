@@ -234,19 +234,23 @@ sub check_postfix
 #
 sub reload_postfix
 {
-    $access{'startstop'} || &error($text{'reload_ecannot'});
     if (is_postfix_running())
     {
-	if (check_postfix()) { &error("$text{'check_error'}"); }
-	my $ex;
+	if (check_postfix()) {
+		return $text{'check_error'};
+		}
+	my $cmd;
 	if (!$config{'reload_cmd'}) {
-		$ex = &system_logged("$config{'postfix_control_command'} -c $config_dir reload >/dev/null 2>&1");
+		$cmd = "$config{'postfix_control_command'} -c $config_dir ".
+		       "reload";
 		}
 	else {
-		$ex = &system_logged("$config{'reload_cmd'} >/dev/null 2>&1");
+		$cmd = $config{'reload_cmd'};
 		}
-	if ($ex) { &error($text{'reload_efailed'}); }
+	my $ex = &system_logged("$cmd >/dev/null 2>&1");
+	return $ex ? ($out || "$cmd failed") : undef;
     }
+    return undef;
 }
 
 # stop_postfix()

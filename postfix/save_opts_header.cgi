@@ -29,7 +29,8 @@ $in{'header_checks'} =~ /^(regexp|pcre):\/\S+$/ ||
 
 &regenerate_header_table();
 
-&reload_postfix();
+$err = &reload_postfix();
+&error($err) if ($err);
 
 &webmin_log("header");
 &redirect("");

@@ -29,7 +29,8 @@ $in{'body_checks'} =~ /^(regexp|pcre):\/\S+$/ ||
 
 &regenerate_body_table();
 
-&reload_postfix();
+$err = &reload_postfix();
+&error($err) if ($err);
 
 &webmin_log("body");
 &redirect("");

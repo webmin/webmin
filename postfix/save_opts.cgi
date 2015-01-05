@@ -26,8 +26,8 @@ if (defined($in{"debug_peer_level_def"})) {
 &save_options(\%in);
 &unlock_postfix_files();
 
-
-&reload_postfix();
+$err = &reload_postfix();
+&error($err) if ($err);
 
 &webmin_log($in{'_log_form'} || "opts");
 &redirect("");

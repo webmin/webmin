@@ -27,7 +27,8 @@ foreach $alias (@delaliases) {
 &unlock_alias_files(\@afiles);
 
 &regenerate_aliases();
-&reload_postfix();
+$err = &reload_postfix();
+&error($err) if ($err);
 
 &webmin_log("delete", "aliases", scalar(@delaliases));
 &redirect("aliases.cgi");

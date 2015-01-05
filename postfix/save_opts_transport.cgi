@@ -25,10 +25,10 @@ $access{'transport'} || &error($text{'transport_ecannot'});
 &after_save();
 &unlock_postfix_files();
 
-
 &regenerate_transport_table();
 
-&reload_postfix();
+$err = &reload_postfix();
+&error($err) if ($err);
 
 &webmin_log("transport");
 &redirect("");

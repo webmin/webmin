@@ -9,8 +9,10 @@ index_econfig=The Postfix config command $1 does not exist. Maybe your <a href='
 index_esuper=The Postfix supervisor command $1 does not exist. Maybe your <a href='$2'>module configuration</a> is incorrect.
 index_stop=Stop Postfix
 index_start=Start Postfix
+index_reload=Reload Configuration
 index_stopmsg=Click this button to stop the running Postfix mail server. This will stop mail from being delivered to local users from other systems, and prevent clients using this system as a mail server from sending mail.
 index_startmsg=Click this button to start the Postfix mail server. Until this is done mail will not be delivered to local users from other systems, and clients will not be able to use this system as a mail server.
+index_reloadmsg=Click this button to have Postfix re-read all of its configuration files. This can be useful if the Postfix configuration files have been manually modified.
 index_version=Postfix version $1
 opts_err=Failed to save options
 
@@ -407,6 +409,9 @@ stop_ecannot=You are not allowed to stop Postfix
 start_efailed=Failed to start Postfix
 start_ecannot=You are not allowed to start Postfix
 
+reload_efailed=Failed to reload Postfix
+reload_ecannot=You are not allowed to reload Postfix
+
 query_get_efailed=Failed to query Postfix config command to get the current value of parameter $1: <tt>$2</tt>
 query_set_efailed=Failed to query Postfix config command to set the current value of parameter $1 to $2: <tt>$3</tt>
 reload_ecannot=You are not allowed to reload Postfix
@@ -783,6 +788,7 @@ log_master_delete=Deleted server process $1
 log_manual=Manually edited configuration file $1
 log_stop=Stopped Postfix server
 log_start=Started Postfix server
+log_reload=Reloaded Postfix configuration
 log_delqs=Deleted $1 messages from mail queue
 log_flushq=Flushed mail queue
 log_backend=Updated configuration file for map $1

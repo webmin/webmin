@@ -26,7 +26,8 @@ $access{'dependent'} || &error($text{'dependent_ecannot'});
 
 &regenerate_dependent_table();
 
-&reload_postfix();
+$err = &reload_postfix();
+&error($err) if ($err);
 
 &webmin_log("dependent");
 &redirect("");
