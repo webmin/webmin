@@ -192,7 +192,9 @@ foreach my $item (@$items) {
 		      "<font color='#000000'>$item->{'desc'}</font></a></div>";
 		print "</div>\n";
 		print "<div class='itemhidden' id='cat$c'>\n";
-		show_menu_items_list($item->{'members'}, $indent+1);
+		my @mems = sort { $a->{'desc'} cmp $b->{'desc'} }
+				@{$item->{'members'}};
+		&show_menu_items_list(\@mems, $indent+1);
 		print "</div>\n";
 		}
 	elsif ($item->{'type'} eq 'text') {
