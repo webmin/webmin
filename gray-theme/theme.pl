@@ -2,16 +2,17 @@
 # Icons copyright David Vignoni, all other theme elements copyright 2005-2007
 # Virtualmin, Inc.
 
-$main::cloudmin_no_create_links = 1;
-$main::cloudmin_no_edit_buttons = 1;
-$main::cloudmin_no_global_links = 1;
+# Un-comment these when left.cgi is the same as in virtual-server-theme
+#$main::cloudmin_no_create_links = 1;
+#$main::cloudmin_no_edit_buttons = 1;
+#$main::cloudmin_no_global_links = 1;
 
-$main::mailbox_no_addressbook_button = 1;
-$main::mailbox_no_folder_button = 1;
+#$main::mailbox_no_addressbook_button = 1;
+#$main::mailbox_no_folder_button = 1;
 
-$main::basic_virtualmin_menu = 1;
-$main::nocreate_virtualmin_menu = 1;
-$main::nosingledomain_virtualmin_mode = 1;
+#$main::basic_virtualmin_menu = 1;
+#$main::nocreate_virtualmin_menu = 1;
+#$main::nosingledomain_virtualmin_mode = 1;
 
 # Global state for wrapper
 # if 0, wrapper isn't on, add one and open it, if 1 close it, if 2+, subtract
