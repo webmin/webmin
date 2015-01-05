@@ -108,6 +108,7 @@ print "</center>\n";
 sub bar_chart_three
 {
 my ($total, $used1, $used2, $used3) = @_;
+return "" if (!$total);
 my $rv;
 my $w1 = int($bar_width*$used1/$total)+1;
 my $w2 = int($bar_width*$used2/$total);
