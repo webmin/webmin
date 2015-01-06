@@ -316,8 +316,7 @@ else {
 sub inst_error
 {
 unlink($file) if ($need_unlink);
-print "<br><b>$whatfailed : $_[0]</b> <p>\n";
-&ui_print_footer("", $text{'index_return'});
+&error($_[0]);
 exit;
 }
 
