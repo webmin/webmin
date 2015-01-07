@@ -67,6 +67,7 @@ create_o3_layout=3 Offset Copies
 view_title=RAID Device
 view_header=RAID device options
 view_device=Device file
+view_uuid=UUID
 view_level=RAID level
 view_status=Filesystem status
 view_errors=RAID errors

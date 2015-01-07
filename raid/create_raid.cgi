@@ -79,16 +79,29 @@ elsif ($in{'group_mode'} == 2) {
 			 'value' => $in{'newgroup'} });
 	}
 
-&create_raid($raid);
-&unlock_raid_files();
+if ($raid_mode eq "raidtools") {
+	# Create config before actually creating RAID.
+	&create_raid($raid);
+	}
+
 if ($err = &make_raid($raid, $in{'force'}, $in{'missing'}, $in{'assume'})) {
-	&delete_raid($raid);
+	if ($raid_mode eq "raidtools") {
+		&delete_raid($raid);
+		}
 	&error($err);
 	}
-elsif ($in{'level'} != 0) {
-	  # Set RAID to read/write mode after creation except for RAID0 which is automatically set to read/write.
-	  &readwrite_raid($raid);
-}
+elsif ($raid_mode eq "mdadm") {
+	# Create config after actually creating RAID to be able to get UUID.
+	$uuid = &get_uuid($raid);
+	&create_raid($raid, $uuid);
+	if ($in{'level'} != 0) {
+		# Set RAID to read/write mode after creation except for RAID0 which is automatically set to read/write.
+		&readwrite_raid($raid);
+		}
+	}
+
+&unlock_raid_files();
+
 &webmin_log("create", undef, $in{'device'}, \%in);
 &redirect("");
 

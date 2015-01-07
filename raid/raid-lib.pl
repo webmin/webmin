@@ -177,6 +177,11 @@ else {
                                         { 'name' => 'parity-algorithm',
                                           'value' => $1 });
                                 }
+			elsif (/^\s+UUID\s+:\s*(.*)/) {
+                                push(@{$md->{'members'}},
+                                        { 'name' => 'array-uuid',
+                                          'value' => $1 });
+                                }
 			}
 		close(MDSTAT);
 		local $lastdev;
@@ -214,6 +219,19 @@ else {
 		}
 	}
 return \@get_raidtab_cache;
+}
+
+# get_uuid(&raid)
+# Get the UUID of an mdadm RAID after creation.
+sub get_uuid
+{
+	open(MDSTAT, "mdadm --detail $_[0]->{'value'} |");
+                while(<MDSTAT>) {
+                        if (/^\s+UUID\s+:\s*(.*)/) {
+				return $1;
+                                }
+                        }
+                close(MDSTAT);
 }
 
 # disk_errors(string)
@@ -255,19 +273,10 @@ if ($raid_mode eq "raidtools") {
 	&flush_file_lines();
 	}
 else {
-	# Add to /etc/mdadm.conf
-	local ($d, @devices);
-	foreach $d (&find("device", $_[0]->{'members'})) {
-		push(@devices, $d->{'value'});
-		}
+	# Add to mdadm.conf
 	local $sg = &find_value("spare-group", $_[0]->{'members'});
 	local $lref = &read_file_lines($config{'mdadm'});
-	local $lvl = &find_value('raid-level', $_[0]->{'members'});
-	$lvl = $lvl =~ /^\d+$/ ? "raid$lvl" : $lvl;
-	push(@$lref, "DEVICE ".
-		     join(" ", map { &device_to_volid($_) } @devices));
-	push(@$lref, "ARRAY $_[0]->{'value'} level=$lvl devices=".
-		     join(",", @devices).
+	push(@$lref, "ARRAY $_[0]->{'value'} uuid=$_[1]". 
 		     ($sg ? " spare-group=$sg" : ""));
 	&flush_file_lines();
 	&update_initramfs();

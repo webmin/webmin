@@ -20,6 +20,10 @@ print &ui_table_start($text{'view_header'}, undef, 2);
 # Device name
 print &ui_table_row($text{'view_device'}, "<tt>$raid->{'value'}</tt>");
 
+# UUID
+$uuid = &find_value('array-uuid', $raid->{'members'});
+print &ui_table_row($text{'view_uuid'}, $uuid);
+
 # RAID level
 $lvl = &find_value('raid-level', $raid->{'members'});
 print &ui_table_row($text{'view_level'},
