@@ -1262,7 +1262,7 @@ if ($type =~ /^ext\d+$/) {
 
 	print &ui_table_row($text{'linux_resgid'},
 		&ui_group_textbox("ext2_resgid", defined($options{"resgid"}) ?
-				   getpwgid($options{"resgid"}) : ""));
+				   getgrgid($options{"resgid"}) : ""));
 	}
 elsif ($type eq "nfs" || $type eq "nfs4") {
 	# Linux nfs has some more options...
