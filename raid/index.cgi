@@ -44,9 +44,25 @@ if (@$conf) {
 				push(@mems, $d->{'value'});
 				}
 			}
+		my @errors = grep { $_ ne "U" } @{$c->{'errors'}};
 		print &ui_columns_row([
-			&ui_link("view_raid.cgi?idx=$c->{'index'}",&html_escape($c->{'value'})),
-			$raid_mode eq "raidtools" ? $c->{'active'} ? "<font color=#00aa00>$text{'yes'}</font>" : "<font color=#ff0000>$text{'no'}</font>" : $c->{'state'} =~ /resyncing/ || $c->{'state'} =~ /recovering/ || $c->{'state'} =~ /reshaping/ || $c->{'state'} =~ /degraded/ || $c->{'state'} =~ /FAILED/ ? $c->{'rebuild'} ne '' ? "<font color=#ff0000>".$c->{'state'}."(".$c->{'rebuild'}."%, ".int($c->{'remain'})."min)</font>" : "<font color=#ff0000>".$c->{'state'}."</font>" : "<font color=#00aa00>".$c->{'state'}."</font>",
+			&ui_link("view_raid.cgi?idx=$c->{'index'}",
+				 &html_escape($c->{'value'})),
+			$raid_mode eq "raidtools" ?
+			  $c->{'active'} ?
+			    "<font color=#00aa00>$text{'yes'}</font>" :
+			    "<font color=#ff0000>$text{'no'}</font>" :
+			$c->{'state'} =~ /resyncing/ ||
+			  $c->{'state'} =~ /recovering/ ||
+			  $c->{'state'} =~ /reshaping/ ||
+			  $c->{'state'} =~ /degraded/ ||
+			  $c->{'state'} =~ /FAILED/ ?
+			    $c->{'rebuild'} ne '' ?
+			      "<font color=#ff0000>".$c->{'state'}."(".$c->{'rebuild'}."%, ".int($c->{'remain'})."min)</font>" :
+			      "<font color=#ff0000>".$c->{'state'}."</font>" :
+			  @errors ?
+			    "<font color=#ff8800>$text{'index_errors'}</font>" :
+			    "<font color=#00aa00>".$c->{'state'}."</font>",
 			$lvl eq 'linear' ? $text{'linear'} : $text{'raid'.$lvl},
 			$c->{'size'} ? &nice_size($c->{'size'}*1024) : "",
 			&ui_links_row(\@mems),
