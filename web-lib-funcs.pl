@@ -2706,7 +2706,10 @@ if ($_[5]) {
 	my @urv = &ftp_command("USER $_[5]", [ 2, 3 ], $_[3]);
 	@urv || return 0;
 	if (int($urv[1]/100) == 3) {
-		&ftp_command("PASS $_[6]", 2, $_[3]) || return 0;
+		if (!&ftp_command("PASS $_[6]", 2, $_[3])) {
+			${$_[3]} =~ s/PASS\s+\S+/PASS \*\*\*\*\*/ if ($_[3]);
+			return 0;
+			}
 		}
 	}
 else {
@@ -2714,8 +2717,11 @@ else {
 	my @urv = &ftp_command("USER anonymous", [ 2, 3 ], $_[3]);
 	@urv || return 0;
 	if (int($urv[1]/100) == 3) {
-		&ftp_command("PASS root\@".&get_system_hostname(), 2,
-			     $_[3]) || return 0;
+		if (!&ftp_command("PASS root\@".&get_system_hostname(), 2,
+				  $_[3])) {
+			${$_[3]} =~ s/PASS\s+\S+/PASS \*\*\*\*\*/ if ($_[3]);
+			return 0;
+			}
 		}
 	}
 &$cbfunc(1, 0) if ($cbfunc);
