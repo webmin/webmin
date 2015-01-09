@@ -6,11 +6,11 @@ require './webmin-lib.pl';
 &ReadParse();
 &ui_print_header(undef, $text{'themes_title'}, "");
 
-@all = &list_visible_themes();
+($gtheme, $goverlay) = split(/\s+/, $gconfig{'theme'});
+@all = &list_visible_themes($gtheme);
 @themes = grep { !$_->{'overlay'} } @all;
 @overlays = grep { $_->{'overlay'} } @all;
 $prog = "edit_themes.cgi?mode=";
-($gtheme, $goverlay) = split(/\s+/, $gconfig{'theme'});
 
 # Start tabs
 if (@themes) {
