@@ -48,7 +48,7 @@ if ($access{'theme'}) {
 	else {
 		$tname = $text{'index_themedef'};
 		}
-	my @all = &webmin::list_themes();
+	my @all = &webmin::list_visible_themes();
 	my @themes = grep { !$_->{'overlay'} } @all;
 	my @overlays = grep { $_->{'overlay'} } @all;
 

@@ -2477,4 +2477,20 @@ foreach my $w (@w) {
 return lc(join(":", @w));
 }
 
+# list_visible_themes([current-theme])
+# Lists all themes the user should be able to use, possibly including their
+# current theme if one is set.
+sub list_visible_themes
+{
+my ($curr) = @_;
+my @rv;
+foreach my $theme (&list_themes()) {
+	if (!-l $root_directory."/".$theme->{'dir'} ||
+	    $curr && $theme->{'dir'} eq $curr) {
+		push(@rv, $theme);
+		}
+	}
+return @rv;
+}
+
 1;
