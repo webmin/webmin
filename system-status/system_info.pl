@@ -62,7 +62,7 @@ foreach my $v ([ "virtual-server", $text{'right_vvirtualmin'} ],
 # System time
 my $tm = localtime(time());
 if (&foreign_available("time")) {
-	$tm = &ui_link('/time/', $tm);
+	$tm = &ui_link($gconfig{'webprefix'}.'/time/', $tm);
 	}
 push(@table, { 'desc' => $text{'right_time'},
 	       'value' => $tm });
@@ -143,7 +143,7 @@ if (&foreign_check("proc")) {
 	my @procs = &proc::list_processes();
 	my $pr = scalar(@procs);
 	if (&foreign_available("proc")) {
-		$pr = &ui_link('/proc/', $pr);
+		$pr = &ui_link($gconfig{'webprefix'}.'/proc/', $pr);
 		}
 	push(@table, { 'desc' => $text{'right_procs'},
 		       'value' => $pr });
@@ -211,7 +211,7 @@ if ($info->{'poss'}) {
 		$msg = $text{'right_upok'};
 		}
 	if (&foreign_available("package-updates")) {
-		$msg = &ui_link("/package-updates/index.cgi?mode=updates", $msg);
+		$msg = &ui_link($gconfig{'webprefix'}."/package-updates/index.cgi?mode=updates", $msg);
 		}
 	push(@table, { 'desc' => $text{'right_updates'},
 		       'value' => $msg,
