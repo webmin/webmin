@@ -6,7 +6,7 @@ use warnings;
 require 'gray-theme/gray-theme-lib.pl';
 &ReadParse();
 &load_theme_library();
-our ($current_theme);
+our ($current_theme, %gconfig);
 our %text = &load_language($current_theme);
 my $bar_width = 300;
 
@@ -28,7 +28,9 @@ my @links = grep { $_->{'type'} eq 'link' } @info;
 @info = grep { $_->{'type'} ne 'link' } @info;
 if (@links) {
 	my @linkshtml = map {
-		&ui_link($_->{'link'}, $_->{'desc'}, undef,
+		my $lnk = $_->{'link'};
+		$lnk = $gconfig{'webprefix'}.$lnk if ($lnk =~ /^\//);
+		&ui_link($lnk, $_->{'desc'}, undef,
 			 $_->{'target'} eq 'new' ? 'target=_blank' :
 			 $_->{'target'} eq 'window' ? 'target=_top' : '')
 			} @links;
