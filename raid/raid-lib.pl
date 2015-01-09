@@ -55,6 +55,7 @@ while(<MDSTAT>) {
 		elsif (/\s+(\d+)\s+blocks\s*(.*)/) {
 			# Block count only after device line
 			$mdstat{$lastdev}->[3] = $1;
+			$mdstat{$lastdev}->[5] = $2;
 			}
 		}
 	elsif (/^\s*\[\S+\]\s*(resync|recovery)\s*=\s([0-9\.]+)/) {
