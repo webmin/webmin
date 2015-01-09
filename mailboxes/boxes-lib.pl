@@ -2,6 +2,7 @@
 # Functions to parsing user mail files
 
 use POSIX;
+use Fcntl;
 if ($userconfig{'date_tz'} || $config{'date_tz'}) {
         # Set the timezone for all date calculations, and force a conversion
         # now as in some cases the first one fails!
@@ -699,7 +700,7 @@ if (-l $f) {
 	$f = &resolve_links($f);
 	}
 &open_as_mail_user(SOURCE, $f) || &error("Failed to open $f : $!");
-&open_as_mail_user(DEST, ">$tmpf") ||
+&create_as_mail_user(DEST, ">$tmpf") ||
 	&error("Failed to open temp file $tmpf : $!");
 while(<SOURCE>) {
 	if ($i >= @m || $lnum < $m[$i]->{'line'}) {
@@ -736,21 +737,29 @@ while(<SOURCE>) {
 close(SOURCE);
 close(DEST) || &error("Write to $tmpf failed : $?");
 local @st = stat($f);
-unlink($f) if ($< == 0);
 
 # Force a total index re-build (XXX lazy!)
 $index{'mailcount'} = $in{'lastchange'} = 0;
 dbmclose(%index);
 
 if ($< == 0) {
-	&rename_as_mail_user($tmpf, $f);
+	# Replace the mail file with the copy
+	unlink($f);
+	rename($tmpf, $f);
+	if (!&should_switch_to_mail_user()) {
+		# Since write was done as root, set back permissions on the
+		# mail file to match the original
+		chown($st[4], $st[5], $f);
+		chmod($st[2], $f);
+		}
+	else {
+		&chmod_as_mail_user($st[2], $f);
+		}
 	}
 else {
 	system("cat ".quotemeta($tmpf)." > ".quotemeta($f).
 	       " && rm -f ".quotemeta($tmpf));
 	}
-chown($st[4], $st[5], $f);
-chmod($st[2], $f);
 }
 
 # modify_mail(user|file, old, new, textonly)
@@ -774,7 +783,7 @@ if (-l $f) {
 	$f = &resolve_links($f);
 	}
 &open_as_mail_user(SOURCE, $f) || &error("Failed to open $f : $!");
-&open_as_mail_user(DEST, ">$tmpf") ||
+&create_as_mail_user(DEST, ">$tmpf") ||
 	&error("Failed to open temp file $tmpf : $!");
 while(<SOURCE>) {
 	if ($lnum < $_[1]->{'line'} || $lnum > $_[1]->{'eline'}) {
@@ -815,9 +824,18 @@ for($i=0; $i<$index{'mailcount'}; $i++) {
 	}
 $index{'lastchange'} = time();
 local @st = stat($f);
-unlink($f);
 if ($< == 0) {
-	&rename_as_mail_user($tmpf, $f);
+	unlink($f);
+	rename($tmpf, $f);
+	if (!&should_switch_to_mail_user()) {
+		# Since write was done as root, set back permissions on the
+		# mail file to match the original
+		chown($st[4], $st[5], $f);
+		chmod($st[2], $f);
+		}
+	else {
+		&chmod_as_mail_user($st[2], $f);
+		}
 	}
 else {
 	system("cat $tmpf >$f && rm -f $tmpf");
@@ -2836,6 +2854,28 @@ if ($switched) {
 return $rv;
 }
 
+# create_as_mail_user(fh, file)
+# Creates a new file, but ensures that it does not yet exist first, and then
+# sets the ownership to the mail user
+sub create_as_mail_user
+{
+my ($fh, $file) = @_;
+if (&should_switch_to_mail_user()) {
+	# Open the file as root, but ensure that it doesn't exist yet. Then
+	# make it owned by the user
+	$file =~ s/^>+//;
+	my $rv = sysopen($fh, $file, O_CREAT|O_WRONLY, 0700);
+	return $rv if (!$rv);
+	my @uinfo = &get_switch_user_info();
+	&set_ownership_permissions($uinfo[2], $uinfo[3], undef, $file);
+	return $rv;
+	}
+else {
+	# Operating as root, so no special behaviour needed
+	return open($fh, $file);
+	}
+}
+
 # opendir_as_mail_user(fh, dir)
 # Calls the opendir function, but as the user set by set_mail_open_user
 sub opendir_as_mail_user
@@ -2913,6 +2953,20 @@ else {
 	}
 }
 
+# chmod_as_mail_user(perms, file, ...)
+# Set file permissions, but with perms of the user from set_mail_open_user
+sub chmod_as_mail_user
+{
+my ($perms, @files) = @_;
+my $switched = &switch_to_mail_user();
+my $rv = chmod($perms, @files);
+if ($switched) {
+	$) = 0;
+	$> = 0;
+	}
+return $rv;
+}
+
 # should_switch_to_mail_user()
 # Returns 1 if file IO will be done as a mail owner user
 sub should_switch_to_mail_user
@@ -2926,9 +2980,7 @@ sub switch_to_mail_user
 {
 if (&should_switch_to_mail_user()) {
 	# Switch file permissions to the correct user
-	my @uinfo = $main::mail_open_user =~ /^\d+$/ ?
-			getpwuid($main::mail_open_user) :
-			getpwnam($main::mail_open_user);
+	my @uinfo = &get_switch_user_info();
 	@uinfo || &error("Mail open user $main::mail_open_user ".
 			 "does not exists");
 	$) = $uinfo[3]." ".join(" ", $uinfo[3], &other_groups($uinfo[0]));
@@ -2936,6 +2988,15 @@ if (&should_switch_to_mail_user()) {
 	return 1;
 	}
 return 0;
+}
+
+# get_switch_user_info()
+# Returns the getpw* function array for the user to switch to
+sub get_switch_user_info
+{
+return $main::mail_open_user =~ /^\d+$/ ?
+	getpwuid($main::mail_open_user) :
+	getpwnam($main::mail_open_user);
 }
 
 1;
