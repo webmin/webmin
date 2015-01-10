@@ -846,25 +846,27 @@ chmod($st[2], $f);
 
 # send_mail(&mail, [file], [textonly], [nocr], [smtp-server],
 #	    [smtp-user], [smtp-pass], [smtp-auth-mode],
-#	    [&notify-flags], [port])
+#	    [&notify-flags], [port], [use-ssl])
 # Send out some email message or append it to a file.
 # Returns the number of lines written.
 sub send_mail
 {
+local ($mail, $file, $textonly, $nocr, $sm, $user, $pass, $auth,
+       $flags, $port, $ssl) = @_;
 return 0 if (&is_readonly_mode());
 local (%header, $h);
 local $lnum = 0;
-local $sm = $_[4] || $config{'send_mode'};
-local $eol = $_[3] || !$sm ? "\n" : "\r\n";
-local $port = $_[9] || $config{'smtp_port'} || 25;
-foreach $h (@{$_[0]->{'headers'}}) {
+$sm ||= $config{'send_mode'};
+local $eol = $nocr || !$sm ? "\n" : "\r\n";
+$port ||= $config{'smtp_port'} || 25;
+foreach $h (@{$mail->{'headers'}}) {
 	$header{lc($h->[0])} = $h->[1];
 	}
 
 # Add the date header, always in english
 &clear_time_locale();
 local @tm = localtime(time());
-push(@{$_[0]->{'headers'}},
+push(@{$mail->{'headers'}},
      [ 'Date', strftime("%a, %d %b %Y %H:%M:%S %z (%Z)", @tm) ])
 	if (!$header{'date'});
 &reset_time_locale();
@@ -889,12 +891,12 @@ else {
 	$fromaddr .= '@'.&get_system_hostname();
 	}
 local $qfromaddr = quotemeta($fromaddr);
-local $esmtp = $_[8] ? 1 : 0;
-if ($_[1]) {
+local $esmtp = $flags ? 1 : 0;
+if ($file) {
 	# Just append the email to a file using mbox format
-	&open_as_mail_user(MAIL, ">>$_[1]") || &error("Write failed : $!");
+	&open_as_mail_user(MAIL, ">>$file") || &error("Write failed : $!");
 	$lnum++;
-	print MAIL $_[0]->{'fromline'} ? $_[0]->{'fromline'}.$eol :
+	print MAIL $mail->{'fromline'} ? $mail->{'fromline'}.$eol :
 					 &make_from_line($fromaddr).$eol;
 	}
 elsif ($sm) {
@@ -910,10 +912,10 @@ elsif ($sm) {
 		}
 
 	# Get username and password from parameters, or from module config
-	local $user = $_[5] || $userconfig{'smtp_user'} || $config{'smtp_user'};
-	local $pass = $_[6] || $userconfig{'smtp_pass'} || $config{'smtp_pass'};
-	local $auth = $_[7] || $userconfig{'smtp_auth'} ||
-		      $config{'smtp_auth'} || "Cram-MD5";
+	$user ||= $userconfig{'smtp_user'} || $config{'smtp_user'};
+	$pass ||= $userconfig{'smtp_pass'} || $config{'smtp_pass'};
+	$auth ||= $userconfig{'smtp_auth'} ||
+		  $config{'smtp_auth'} || "Cram-MD5";
 	if ($user) {
 		# Send authentication commands
 		eval "use Authen::SASL";
@@ -970,7 +972,7 @@ elsif ($sm) {
 		}
 
 	&smtp_command(MAIL, "mail from: <$fromaddr>\r\n");
-	local $notify = $_[8] ? " NOTIFY=".join(",", @{$_[8]}) : "";
+	local $notify = $flags ? " NOTIFY=".join(",", @$flags) : "";
 	foreach my $u (@dests) {
 		&smtp_command(MAIL, "rcpt to: <$u>$notify\r\n");
 		}
@@ -1001,8 +1003,8 @@ else {
 	}
 local $ctype = "multipart/mixed";
 local $msg_id;
-foreach $h (@{$_[0]->{'headers'}}) {
-	if (defined($_[0]->{'body'}) || $_[2]) {
+foreach $h (@{$mail->{'headers'}}) {
+	if (defined($mail->{'body'}) || $textonly) {
 		print MAIL $h->[0],": ",$h->[1],$eol;
 		$lnum++;
 		}
@@ -1029,8 +1031,8 @@ if (!$msg_id) {
 
 # Work out first attachment content type
 local ($ftype, $fenc);
-if (@{$_[0]->{'attach'}} >= 1) {
-	local $first = $_[0]->{'attach'}->[0];
+if (@{$mail->{'attach'}} >= 1) {
+	local $first = $mail->{'attach'}->[0];
 	$ftype = "text/plain";
 	foreach my $h (@{$first->{'headers'}}) {
 		if (lc($h->[0]) eq "content-type") {
@@ -1042,24 +1044,24 @@ if (@{$_[0]->{'attach'}} >= 1) {
 		}
 	}
 
-if (defined($_[0]->{'body'})) {
+if (defined($mail->{'body'})) {
 	# Use original mail body
 	print MAIL $eol;
 	$lnum++;
-	$_[0]->{'body'} =~ s/\r//g;
-	$_[0]->{'body'} =~ s/\n\.\n/\n\. \n/g;
-	$_[0]->{'body'} =~ s/\n/$eol/g;
-	$_[0]->{'body'} .= $eol if ($_[0]->{'body'} !~ /\n$/);
-	(print MAIL $_[0]->{'body'}) || &error("Write failed : $!");
-	$lnum += ($_[0]->{'body'} =~ tr/\n/\n/);
+	$mail->{'body'} =~ s/\r//g;
+	$mail->{'body'} =~ s/\n\.\n/\n\. \n/g;
+	$mail->{'body'} =~ s/\n/$eol/g;
+	$mail->{'body'} .= $eol if ($mail->{'body'} !~ /\n$/);
+	(print MAIL $mail->{'body'}) || &error("Write failed : $!");
+	$lnum += ($mail->{'body'} =~ tr/\n/\n/);
 	}
-elsif (!@{$_[0]->{'attach'}}) {
+elsif (!@{$mail->{'attach'}}) {
 	# No content, so just send empty email
 	print MAIL "Content-Type: text/plain",$eol;
 	print MAIL $eol;
 	$lnum += 2;
 	}
-elsif (!$_[2] || $ftype !~ /text\/plain/i ||
+elsif (!$textonly || $ftype !~ /text\/plain/i ||
        $fenc =~ /quoted-printable|base64/) {
 	# Sending MIME-encoded email
 	if ($ctype !~ /multipart\/report/i) {
@@ -1074,7 +1076,7 @@ elsif (!$_[2] || $ftype !~ /text\/plain/i ||
 	# Send attachments
 	print MAIL "This is a multi-part message in MIME format.",$eol;
 	$lnum++;
-	foreach $a (@{$_[0]->{'attach'}}) {
+	foreach $a (@{$mail->{'attach'}}) {
 		print MAIL $eol;
 		print MAIL "--",$bound,$eol;
 		$lnum += 2;
@@ -1113,7 +1115,7 @@ elsif (!$_[2] || $ftype !~ /text\/plain/i ||
 	}
 else {
 	# Sending text-only mail from first attachment
-	local $a = $_[0]->{'attach'}->[0];
+	local $a = $mail->{'attach'}->[0];
 	print MAIL $eol;
 	$lnum++;
 	$a->{'data'} =~ s/\r//g;
@@ -1125,13 +1127,13 @@ else {
 		$lnum++;
 		}
 	}
-if ($sm && !$_[1]) {
+if ($sm && !$file) {
 	&smtp_command(MAIL, ".$eol");
 	&smtp_command(MAIL, "quit$eol");
 	}
 if (!close(MAIL)) {
 	# Only bother to report an error on close if writing to a file
-	if ($_[1]) {
+	if ($file) {
 		&error("Write failed : $!");
 		}
 	}
