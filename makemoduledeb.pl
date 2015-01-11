@@ -54,6 +54,9 @@ while(@ARGV) {
 	elsif ($a eq "--dir") {
 		$final_mod = shift(@ARGV);
 		}
+	elsif ($a eq "--release") {
+		$release = shift(@ARGV);
+		}
 	elsif ($a eq "--allow-overwrite") {
 		$allow_overwrite = 1;
 		}
@@ -141,6 +144,7 @@ $usr_dir = "$tmp_dir/usr/share/$product";
 $ucproduct = ucfirst($product);
 $ver ||= $iver;		# Use module.info version, or 1
 $ver ||= 1;
+$ver .= "-".$release if ($release);
 $upstream ||= $email;
 
 # Create the base directories
