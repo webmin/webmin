@@ -973,6 +973,7 @@ sendmail_login1=Don't authenticate
 sendmail_login0=Login as
 sendmail_pass=with password
 sendmail_auth=SMTP authentication method
+sendmail_authdef=Default (currently Cram-MD5)
 sendmail_from=From address for email from Webmin
 sendmail_fromdef=Default ($1)
 sendmail_fromaddr=Address

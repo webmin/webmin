@@ -44,8 +44,9 @@ print &ui_table_row($text{'sendmail_login'},
 $auth = $mconfig{'smtp_auth'};
 print &ui_table_row($text{'sendmail_auth'},
 	&ui_select("auth", $auth,
-		   [ [ undef, $text{'default'} ],
-		     "Cram-MD5", "Digest-MD5", "Plain", "Login" ]), undef, [ "valign=middle","valign=middle" ]);
+		   [ [ undef, $text{'sendmail_authdef'} ],
+		     "Cram-MD5", "Digest-MD5", "Plain", "Login" ]),
+	undef, [ "valign=middle","valign=middle" ]);
 
 # From address
 $from = $mconfig{'webmin_from'};
