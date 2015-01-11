@@ -854,13 +854,15 @@ sub send_mail
 local ($mail, $file, $textonly, $nocr, $sm, $user, $pass, $auth,
        $flags, $port, $ssl) = @_;
 return 0 if (&is_readonly_mode());
-local (%header, $h);
 local $lnum = 0;
 $sm ||= $config{'send_mode'};
 local $eol = $nocr || !$sm ? "\n" : "\r\n";
-$port ||= $config{'smtp_port'} || 25;
-foreach $h (@{$mail->{'headers'}}) {
-	$header{lc($h->[0])} = $h->[1];
+$ssl = $config{'smtp_ssl'} if ($ssl eq '');
+local $defport = $ssl ? 465 : 25;
+$port ||= $config{'smtp_port'} || $defport;
+my %header;
+foreach my $head (@{$mail->{'headers'}}) {
+	$header{lc($head->[0])} = $head->[1];
 	}
 
 # Add the date header, always in english
@@ -892,23 +894,46 @@ else {
 	}
 local $qfromaddr = quotemeta($fromaddr);
 local $esmtp = $flags ? 1 : 0;
+my $h = { 'fh' => 'MAIL' };
 if ($file) {
 	# Just append the email to a file using mbox format
-	&open_as_mail_user(MAIL, ">>$file") || &error("Write failed : $!");
+	&open_as_mail_user($h->{'fh'}, ">>$file") ||
+		&error("Write failed : $!");
 	$lnum++;
-	print MAIL $mail->{'fromline'} ? $mail->{'fromline'}.$eol :
-					 &make_from_line($fromaddr).$eol;
+	&write_http_connection($h,
+		$mail->{'fromline'} ? $mail->{'fromline'}.$eol :
+				      &make_from_line($fromaddr).$eol);
 	}
 elsif ($sm) {
 	# Connect to SMTP server
-	&open_socket($sm, $port, MAIL);
-	&smtp_command(MAIL);
+	&open_socket($sm, $port, $h->{'fh'});
+	if ($ssl) {
+		# Switch to SSL mode
+		eval "use Net::SSLeay";
+		$@ && &error($text{'link_essl'});
+		eval "Net::SSLeay::SSLeay_add_ssl_algorithms()";
+		eval "Net::SSLeay::load_error_strings()";
+		$h->{'ssl_ctx'} = Net::SSLeay::CTX_new() ||
+			&error("Failed to create SSL context");
+		$h->{'ssl_con'} = Net::SSLeay::new($h->{'ssl_ctx'}) ||
+			&error("Failed to create SSL connection");
+		Net::SSLeay::set_fd($h->{'ssl_con'}, fileno(MAIL));
+		Net::SSLeay::connect($h->{'ssl_con'}) ||
+			&error("SSL connect() failed");
+		}
+
+	# Put the file handle in to this package, because it will be passed
+	# to the 'main' package when calling http_connection functions
+	my $callpkg = (caller(0))[0];
+	$h->{'fh'} = $callpkg."::".$h->{'fh'};
+
+	&smtp_command($h, undef, 0);
 	my $helo = $config{'helo_name'} || &get_system_hostname();
 	if ($esmtp) {
-		&smtp_command(MAIL, "ehlo $helo\r\n");
+		&smtp_command($h, "ehlo $helo\r\n", 0);
 		}
 	else {
-		&smtp_command(MAIL, "helo $helo\r\n");
+		&smtp_command($h, "helo $helo\r\n", 0);
 		}
 
 	# Get username and password from parameters, or from module config
@@ -929,7 +954,7 @@ elsif ($sm) {
 						'pass' => $pass } );
 		&error("Failed to create Authen::SASL object") if (!$sasl);
 		local $conn = $sasl->client_new("smtp", &get_system_hostname());
-		local $arv = &smtp_command(MAIL, "auth $auth\r\n", 1);
+		local $arv = &smtp_command($h, "auth $auth\r\n", 1);
 		if ($arv =~ /^(334)\s+(.*)/) {
 			# Server says to go ahead
 			$extra = $2;
@@ -938,7 +963,7 @@ elsif ($sm) {
 			if ($initial) {
 				local $enc = &encode_base64($initial);
 				$enc =~ s/\r|\n//g;
-				$arv = &smtp_command(MAIL, "$enc\r\n", 1);
+				$arv = &smtp_command($h, "$enc\r\n", 1);
 				if ($arv =~ /^(\d+)\s+(.*)/) {
 					if ($1 == 235) {
 						$auth_ok = 1;
@@ -954,7 +979,7 @@ elsif ($sm) {
 				local $return = $conn->client_step($message);
 				local $enc = &encode_base64($return);
 				$enc =~ s/\r|\n//g;
-				$arv = &smtp_command(MAIL, "$enc\r\n", 1);
+				$arv = &smtp_command($h, "$enc\r\n", 1);
 				if ($arv =~ /^(\d+)\s+(.*)/) {
 					if ($1 == 235) {
 						$auth_ok = 1;
@@ -971,62 +996,70 @@ elsif ($sm) {
 			}
 		}
 
-	&smtp_command(MAIL, "mail from: <$fromaddr>\r\n");
+	&smtp_command($h, "mail from: <$fromaddr>\r\n", 0);
 	local $notify = $flags ? " NOTIFY=".join(",", @$flags) : "";
 	foreach my $u (@dests) {
-		&smtp_command(MAIL, "rcpt to: <$u>$notify\r\n");
+		&smtp_command($h, "rcpt to: <$u>$notify\r\n", 0);
 		}
-	&smtp_command(MAIL, "data\r\n");
+	&smtp_command($h, "data\r\n", 0);
 	}
 elsif (defined(&send_mail_program)) {
 	# Use specified mail injector
 	local $cmd = &send_mail_program($fromaddr, \@dests);
 	$cmd || &error("No mail program was found on your system!");
-	open(MAIL, "| $cmd >/dev/null 2>&1");
+	open($h->{'fh'}, "| $cmd >/dev/null 2>&1");
 	}
 elsif ($config{'qmail_dir'}) {
 	# Start qmail-inject
-	open(MAIL, "| $config{'qmail_dir'}/bin/qmail-inject");
+	open($h->{'fh'}, "| $config{'qmail_dir'}/bin/qmail-inject");
 	}
 elsif ($config{'postfix_control_command'}) {
 	# Start postfix's sendmail wrapper
 	local $cmd = -x "/usr/lib/sendmail" ? "/usr/lib/sendmail" :
 			&has_command("sendmail");
 	$cmd || &error($text{'send_ewrapper'});
-	open(MAIL, "| $cmd -f$qfromaddr $qdests >/dev/null 2>&1");
+	open($h->{'fh'}, "| $cmd -f$qfromaddr $qdests >/dev/null 2>&1");
 	}
 else {
 	# Start sendmail
 	&has_command($config{'sendmail_path'}) ||
 	    &error(&text('send_epath', "<tt>$config{'sendmail_path'}</tt>"));
-	open(MAIL, "| $config{'sendmail_path'} -f$qfromaddr $qdests >/dev/null 2>&1");
+	open($h->{'fh'}, "| $config{'sendmail_path'} -f$qfromaddr $qdests >/dev/null 2>&1");
 	}
+
+# Again put the FH in the correct package, as this isn't executed above for
+# non-SMTP opens
+if ($h->{'fh'} !~ /::/) {
+	my $callpkg = (caller(0))[0];
+	$h->{'fh'} = $callpkg."::".$h->{'fh'};
+	}
+
 local $ctype = "multipart/mixed";
 local $msg_id;
-foreach $h (@{$mail->{'headers'}}) {
+foreach $head (@{$mail->{'headers'}}) {
 	if (defined($mail->{'body'}) || $textonly) {
-		print MAIL $h->[0],": ",$h->[1],$eol;
+		&write_http_connection($h, $head->[0],": ",$head->[1],$eol);
 		$lnum++;
 		}
 	else {
-		if ($h->[0] !~ /^(MIME-Version|Content-Type)$/i) {
-			print MAIL $h->[0],": ",$h->[1],$eol;
+		if ($head->[0] !~ /^(MIME-Version|Content-Type)$/i) {
+			&write_http_connection($h, $head->[0],": ",$head->[1],$eol);
 			$lnum++;
 			}
-		elsif (lc($h->[0]) eq 'content-type') {
-			$ctype = $h->[1];
+		elsif (lc($head->[0]) eq 'content-type') {
+			$ctype = $head->[1];
 			}
 		}
-	if (lc($h->[0]) eq 'message-id') {
+	if (lc($head->[0]) eq 'message-id') {
 		$msg_id++;
 		}
 	}
 if (!$msg_id) {
 	# Add a message-id header if missing
 	$main::mailboxes_message_id_count++;
-	print MAIL "Message-Id: <",time().".".$$.".".
-				$main::mailboxes_message_id_count."\@".
-				&get_system_hostname(),">",$eol;
+	&write_http_connection($h, "Message-Id: <",time().".".$$.".".
+				   $main::mailboxes_message_id_count."\@".
+				   &get_system_hostname(),">",$eol);
 	}
 
 # Work out first attachment content type
@@ -1046,19 +1079,19 @@ if (@{$mail->{'attach'}} >= 1) {
 
 if (defined($mail->{'body'})) {
 	# Use original mail body
-	print MAIL $eol;
+	&write_http_connection($h, $eol);
 	$lnum++;
 	$mail->{'body'} =~ s/\r//g;
 	$mail->{'body'} =~ s/\n\.\n/\n\. \n/g;
 	$mail->{'body'} =~ s/\n/$eol/g;
 	$mail->{'body'} .= $eol if ($mail->{'body'} !~ /\n$/);
-	(print MAIL $mail->{'body'}) || &error("Write failed : $!");
+	&write_http_connection($h, $mail->{'body'}) || &error("Write failed : $!");
 	$lnum += ($mail->{'body'} =~ tr/\n/\n/);
 	}
 elsif (!@{$mail->{'attach'}}) {
 	# No content, so just send empty email
-	print MAIL "Content-Type: text/plain",$eol;
-	print MAIL $eol;
+	&write_http_connection($h, "Content-Type: text/plain",$eol);
+	&write_http_connection($h, $eol);
 	$lnum += 2;
 	}
 elsif (!$textonly || $ftype !~ /text\/plain/i ||
@@ -1067,71 +1100,72 @@ elsif (!$textonly || $ftype !~ /text\/plain/i ||
 	if ($ctype !~ /multipart\/report/i) {
 		$ctype =~ s/;.*$//;
 		}
-	print MAIL "MIME-Version: 1.0",$eol;
+	&write_http_connection($h, "MIME-Version: 1.0",$eol);
 	local $bound = "bound".time();
-	print MAIL "Content-Type: $ctype; boundary=\"$bound\"",$eol;
-	print MAIL $eol;
+	&write_http_connection($h, "Content-Type: $ctype; boundary=\"$bound\"",$eol);
+	&write_http_connection($h, $eol);
 	$lnum += 3;
 
 	# Send attachments
-	print MAIL "This is a multi-part message in MIME format.",$eol;
+	&write_http_connection($h, "This is a multi-part message in MIME format.",$eol);
 	$lnum++;
 	foreach $a (@{$mail->{'attach'}}) {
-		print MAIL $eol;
-		print MAIL "--",$bound,$eol;
+		&write_http_connection($h, $eol);
+		&write_http_connection($h, "--",$bound,$eol);
 		$lnum += 2;
 		local $enc;
-		foreach $h (@{$a->{'headers'}}) {
-			print MAIL $h->[0],": ",$h->[1],$eol;
-			$enc = $h->[1]
-				if (lc($h->[0]) eq 'content-transfer-encoding');
+		foreach $head (@{$a->{'headers'}}) {
+			&write_http_connection($h, $head->[0],": ",$head->[1],$eol);
+			$enc = $head->[1]
+				if (lc($head->[0]) eq 'content-transfer-encoding');
 			$lnum++;
 			}
-		print MAIL $eol;
+		&write_http_connection($h, $eol);
 		$lnum++;
 		if (lc($enc) eq 'base64') {
 			local $enc = &encode_base64($a->{'data'});
 			$enc =~ s/\r//g;
 			$enc =~ s/\n/$eol/g;
-			print MAIL $enc;
+			&write_http_connection($h, $enc);
 			$lnum += ($enc =~ tr/\n/\n/);
 			}
 		else {
 			$a->{'data'} =~ s/\r//g;
 			$a->{'data'} =~ s/\n\.\n/\n\. \n/g;
 			$a->{'data'} =~ s/\n/$eol/g;
-			print MAIL $a->{'data'};
+			&write_http_connection($h, $a->{'data'});
 			$lnum += ($a->{'data'} =~ tr/\n/\n/);
 			if ($a->{'data'} !~ /\n$/) {
-				print MAIL $eol;
+				&write_http_connection($h, $eol);
 				$lnum++;
 				}
 			}
 		}
-	print MAIL $eol;
-	(print MAIL "--",$bound,"--",$eol) || &error("Write failed : $!");
-	print MAIL $eol;
+	&write_http_connection($h, $eol);
+	&write_http_connection($h, "--",$bound,"--",$eol) ||
+		&error("Write failed : $!");
+	&write_http_connection($h, $eol);
 	$lnum += 3;
 	}
 else {
 	# Sending text-only mail from first attachment
 	local $a = $mail->{'attach'}->[0];
-	print MAIL $eol;
+	&write_http_connection($h, $eol);
 	$lnum++;
 	$a->{'data'} =~ s/\r//g;
 	$a->{'data'} =~ s/\n/$eol/g;
-	(print MAIL $a->{'data'}) || &error("Write failed : $!");
+	&write_http_connection($h, $a->{'data'}) || &error("Write failed : $!");
 	$lnum += ($a->{'data'} =~ tr/\n/\n/);
 	if ($a->{'data'} !~ /\n$/) {
-		print MAIL $eol;
+		&write_http_connection($h, $eol);
 		$lnum++;
 		}
 	}
 if ($sm && !$file) {
-	&smtp_command(MAIL, ".$eol");
-	&smtp_command(MAIL, "quit$eol");
+	&smtp_command($h, ".$eol", 0);
+	&smtp_command($h, "quit$eol", 0);
 	}
-if (!close(MAIL)) {
+if (!&close_http_connection($h)) {
 	# Only bother to report an error on close if writing to a file
 	if ($file) {
 		&error("Write failed : $!");
@@ -1318,13 +1352,16 @@ foreach $rest (split(/\n/, $_[0])) {
 return @rv;
 }
 
-# smtp_command(handle, command, no-error)
+# smtp_command(&handle, command, no-error)
+# Send a single SMTP command to some file handle, and read back the response
 sub smtp_command
 {
-local ($m, $c) = @_;
-print $m $c;
-local $r = <$m>;
-if ($r !~ /^[23]\d+/ && !$_[2]) {
+my ($h, $c, $noerr) = @_;
+if ($c) {
+	&write_http_connection($h, $c);
+	}
+my $r = &read_http_connection($h);
+if ($r !~ /^[23]\d+/ && !$noerr) {
 	&error(&text('send_esmtp', "<tt>".&html_escape($c)."</tt>",
 				   "<tt>".&html_escape($r)."</tt>"));
 	}
@@ -1332,7 +1369,7 @@ $r =~ s/\r|\n//g;
 if ($r =~ /^(\d+)\-/) {
 	# multi-line ESMTP response!
 	while(1) {
-		local $nr = <$m>;
+		my $nr = &read_http_connection($h);
 		$nr =~ s/\r|\n//g;
 		if ($nr =~ /^(\d+)\-(.*)/) {
 			$r .= "\n".$2;

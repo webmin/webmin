@@ -125,3 +125,5 @@ Added an SSL option to use only ciphers with perfect forward secrecy.
 Added support for two-factor authentication using Authy or Google Authenticator.
 ---- Changes since 1.660 ----
 Updated the UI on several pages to use the standard Webmin library, for a more consistent look.
+---- Changes since 1.730 ----
+Added an option to use an SSL connection when Webmin sends email, for connecting to remote mail servers like Gmail that don't allow unencrypted SMTP.
