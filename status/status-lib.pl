@@ -608,7 +608,8 @@ if ($first && $first->{'time'} < $cutoff-(24*60*60)) {
 sub get_status_icon
 {
 my ($up) = @_;
-return "/".$module_name."/images/".($up == 1 ? "up.gif" :
+return $gconfig{'webprefix'}.
+       "/".$module_name."/images/".($up == 1 ? "up.gif" :
 		  $up == -1 ? "not.gif" :
 		  $up == -2 ? "webmin.gif" :
 		  $up == -3 ? "timed.gif" :
