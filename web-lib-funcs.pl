@@ -10198,7 +10198,7 @@ if (&foreign_available("webmin")) {
 	foreach my $n (&webmin::get_webmin_notifications()) {
 		push(@rv, { 'type' => 'warning',
 			    'id' => 'notifications',
-			    'level' => 'info',
+			    'level' => 'warn',
 			    'module' => 'webmin',
 			    'warning' => $n });
 		}
