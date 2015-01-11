@@ -7243,10 +7243,10 @@ originally supplied by make_http_connection.
 =cut
 sub read_http_connection
 {
-my ($h) = @_;
+my ($h, $want) = @_;
 my $rv;
 if ($h->{'ssl_con'}) {
-	if (!$_[1]) {
+	if (!$want) {
 		my ($idx, $more);
 		while(($idx = index($h->{'buffer'}, "\n")) < 0) {
 			# need to read more..
@@ -7267,13 +7267,13 @@ if ($h->{'ssl_con'}) {
 			delete($h->{'buffer'});
 			}
 		else {
-			$rv = Net::SSLeay::read($h->{'ssl_con'}, $_[1]);
+			$rv = Net::SSLeay::read($h->{'ssl_con'}, $want);
 			}
 		}
 	}
 else {
-	if ($_[1]) {
-		read($h->{'fh'}, $rv, $_[1]) > 0 || return undef;
+	if ($want) {
+		read($h->{'fh'}, $rv, $want) > 0 || return undef;
 		}
 	else {
 		my $fh = $h->{'fh'};
@@ -7315,7 +7315,7 @@ Closes a connection to an HTTP server, identified by the given handle.
 sub close_http_connection
 {
 my ($h) = @_;
-close($h->{'fh'});
+return close($h->{'fh'});
 }
 
 =head2 clean_environment
