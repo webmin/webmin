@@ -62,7 +62,7 @@ push(@leftmenu, &list_modules_webmin_menu());
 # Show module/help search form
 if ($gaccess{'webminsearch'}) {
 	push(@leftmenu, { 'type' => 'input',
-			  'cgi' => '/webmin_search.cgi',
+			  'cgi' => $gconfig{'webprefix'}.'/webmin_search.cgi',
 			  'name' => 'search',
 			  'desc' => $text{'left_search'},
 			  'size' => 15 });
@@ -202,14 +202,15 @@ foreach my $item (@$items) {
 		}
 	elsif ($item->{'type'} eq 'input') {
 		# For with an input of some kind
-		print "<form action='$item->{'cgi'}' target=right>\n";
+		my $cgi = add_webprefix($item->{'cgi'});
+		print "<form action='$cgi' target=right>\n";
 		foreach my $h (@{$item->{'hidden'}}) {
 			print ui_hidden(@$h);
 			}
 		print "<div class='leftlink'>";
 		print $item->{'desc'},"\n";
 		print ui_textbox($item->{'name'}, $item->{'value'},
-				  $item->{'size'});
+				 $item->{'size'});
 		if ($item->{'icon'}) {
 			my $icon = add_webprefix($item->{'icon'});
 			print "<input type=image src='$icon' ".
