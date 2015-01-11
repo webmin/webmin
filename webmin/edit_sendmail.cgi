@@ -20,14 +20,18 @@ print &ui_table_row($text{'sendmail_system'},
 $smtp = $mconfig{'send_mode'};
 $mode = $smtp eq "" ? 0 :
 	$smtp eq "localhost" || $smtp eq "127.0.0.1" ? 1 : 2;
-$port = ($mode == 2 ? $mconfig{'smtp_port'} : undef) || 25;
+$port = $mconfig{'smtp_port'};
 print &ui_table_row($text{'sendmail_smtp'},
 	&ui_radio("mode", $mode, [ [ 0, $text{'sendmail_smtp0'}."<br>" ],
 				   [ 1, $text{'sendmail_smtp1'}."<br>" ],
 				   [ 2, $text{'sendmail_smtp2'} ] ]).
 	" ".&ui_textbox("smtp", $mode == 2 ? $smtp : "", 40).
-	" ".$text{'sendmail_port'}.
-	" ".&ui_textbox("port", $port, 6), undef, [ "valign=top","valign=middle" ]);
+	"<br>\n"."&nbsp;&nbsp;".
+	&ui_checkbox("ssl", 1, $text{'sendmail_ssl'}, $mconfig{'smtp_ssl'}).
+	"<br>\n"."&nbsp;&nbsp;".
+	&ui_opt_textbox("port", $port, 6, $text{'sendmail_portdef'},
+					  $text{'sendmail_portsel'}),
+	undef, [ "valign=top","valign=middle" ]);
 
 # SMTP login and password
 $user = $mconfig{'smtp_user'};
