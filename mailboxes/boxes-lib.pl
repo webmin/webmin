@@ -894,7 +894,7 @@ else {
 	}
 local $qfromaddr = quotemeta($fromaddr);
 local $esmtp = $flags ? 1 : 0;
-my $h = { 'fh' => 'MAIL' };
+my $h = { 'fh' => 'mailboxes::MAIL' };
 if ($file) {
 	# Just append the email to a file using mbox format
 	&open_as_mail_user($h->{'fh'}, ">>$file") ||
@@ -921,11 +921,6 @@ elsif ($sm) {
 		Net::SSLeay::connect($h->{'ssl_con'}) ||
 			&error("SSL connect() failed");
 		}
-
-	# Put the file handle in to this package, because it will be passed
-	# to the 'main' package when calling http_connection functions
-	my $callpkg = (caller(0))[0];
-	$h->{'fh'} = $callpkg."::".$h->{'fh'};
 
 	&smtp_command($h, undef, 0);
 	my $helo = $config{'helo_name'} || &get_system_hostname();
@@ -1025,13 +1020,6 @@ else {
 	&has_command($config{'sendmail_path'}) ||
 	    &error(&text('send_epath', "<tt>$config{'sendmail_path'}</tt>"));
 	open($h->{'fh'}, "| $config{'sendmail_path'} -f$qfromaddr $qdests >/dev/null 2>&1");
-	}
-
-# Again put the FH in the correct package, as this isn't executed above for
-# non-SMTP opens
-if ($h->{'fh'} !~ /::/) {
-	my $callpkg = (caller(0))[0];
-	$h->{'fh'} = $callpkg."::".$h->{'fh'};
 	}
 
 local $ctype = "multipart/mixed";
