@@ -91,7 +91,7 @@ $old_db_priv_cols = $mysql_version >= 4 ? 12 : 10;
 			    "max_connections" );
 @mysql_byte_variables = ( "query_cache_size", "max_allowed_packet" );
 
-# make_authstr([login], [pass], [host], [port], [sock])
+# make_authstr([login], [pass], [host], [port], [sock], [unix-user])
 # Returns a string to pass to MySQL commands to login to the database
 sub make_authstr
 {
@@ -100,14 +100,15 @@ local $pass = defined($_[1]) ? $_[1] : $mysql_pass;
 local $host = defined($_[2]) ? $_[2] : $config{'host'};
 local $port = defined($_[3]) ? $_[3] : $config{'port'};
 local $sock = defined($_[4]) ? $_[4] : $config{'sock'};
-if (&supports_env_pass()) {
+local $unix = $_[5];
+if (&supports_env_pass($unix)) {
 	$ENV{'MYSQL_PWD'} = $pass;
 	}
 return ($sock ? " -S $sock" : "").
        ($host ? " -h $host" : "").
        ($port ? " -P $port" : "").
        ($login ? " -u ".quotemeta($login) : "").
-       (&supports_env_pass() ? "" :	# Password comes from environment
+       (&supports_env_pass($unix) ? "" :    # Password comes from environment
         $pass && $mysql_version >= 4.1 ? " --password=".quotemeta($pass) :
         $pass ? " -p".quotemeta($pass) : "");
 }
@@ -715,14 +716,15 @@ else {
 	}
 }
 
-# supports_env_pass()
+# supports_env_pass([run-as-user])
 # Returns 1 if passing the password via an environment variable is supported
 sub supports_env_pass
 {
+local ($user) = @_;
 if ($mysql_version >= 4.1 && !$config{'nopwd'}) {
 	# Theortically possible .. but don't do this if ~/.my.cnf contains
 	# a [client] block with password= in it
-	my @uinfo = getpwuid($<);
+	my @uinfo = $user ? getpwnam($user) : getpwuid($<);
 	foreach my $cf ($config{'my_cnf'}, "$uinfo[7]/.my.cnf",
 			"$ENV{'HOME'}/.my.cnf") {
 		next if (!$cf || !-r $cf);
@@ -1428,11 +1430,17 @@ eval {
 		$gtidsql = "--set-gtid-purged=OFF";
 		}
 	};
-local $cmd = "$config{'mysqldump'} $authstr $dropsql $singlesql $quicksql $wheresql $charsetsql $compatiblesql $quotingsql $routinessql ".quotemeta($db)." $tablessql $eventssql $gtidsql 2>&1 $writer";
+local $dump_authstr = $authstr;
+if ($user && $user ne "root") {
+	# When running as another Unix user, authstr may be different
+	$dump_authstr = &make_authstr(undef, undef, undef, undef, undef, $user);
+	}
+local $cmd = "$config{'mysqldump'} $dump_authstr $dropsql $singlesql $quicksql $wheresql $charsetsql $compatiblesql $quotingsql $routinessql ".quotemeta($db)." $tablessql $eventssql $gtidsql 2>&1 $writer";
 if ($user && $user ne "root") {
 	$cmd = &command_as_user($user, undef, $cmd);
 	}
 local $out = &backquote_logged("($cmd) 2>&1");
+&make_authstr();	# Put back old authstr
 if ($? || $out) {
 	return $out;
 	}
