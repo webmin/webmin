@@ -92,6 +92,7 @@ $old_db_priv_cols = $mysql_version >= 4 ? 12 : 10;
 @mysql_byte_variables = ( "query_cache_size", "max_allowed_packet" );
 
 # make_authstr([login], [pass], [host], [port], [sock])
+# Returns a string to pass to MySQL commands to login to the database
 sub make_authstr
 {
 local $login = defined($_[0]) ? $_[0] : $mysql_login;
