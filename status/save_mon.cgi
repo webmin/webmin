@@ -53,7 +53,7 @@ else {
 			$ch || &error(&text('mon_estatus', $r));
 			&remote_foreign_require($r, 'status',
 						'status-lib.pl');
-			if ($in{'type'} =~ /^(\S+)::(\S+)$/) {
+			if ($serv->{'type'} =~ /^(\S+)::(\S+)$/) {
 				# Check if module is installed
 				$ok = &remote_foreign_call(
 				  $r, 'status', "foreign_check", $1);
