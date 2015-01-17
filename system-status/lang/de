@@ -1,3 +1,13 @@
+acl_cpu=CPU und Kernel
+acl_disk=Freier Festplatten-Speicher
+acl_host=Hostname und Versionen
+acl_load=CPU-Last und Prozesse
+acl_mem=Freier Speicher und SWAP
+acl_poss=Paket-Updates
+acl_show=Systeminformation zum anzeigen
+acl_showall=Alles
+acl_showsel=Nur ausgew&#228;hltes ..
+acl_temp=CPU- und Festplattentemperaturen
 right_cpu=CPU-Last im Durchschnitt
 right_cpuinfo=Prozessorinformation
 right_cpustats=$1% Benutzer, $2% Kernel, $4% IO, $3% Leerlauf
