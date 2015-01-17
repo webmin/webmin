@@ -519,7 +519,7 @@ return $rv;
 sub check_cache
 {
 my ($conf, $cachesrv, $distoo) = @_;
-my (@cachestruct, @caches, $coss);
+my (@caches, $coss);
 my @cachestruct = &find_config("cache_dir", $conf);
 my $disabled = 0;
 if ($distoo && !@cachestruct) {
@@ -533,9 +533,10 @@ if (@cachestruct) {
 	else {
 		@caches = map { $_->{'values'}->[0] } @cachestruct;
 		}
+	@caches = grep { /^\// } @caches;
 	($coss) = grep { $_->{'values'}->[0] eq "coss" } @cachestruct;
 	}
-else {
+if (!@caches) {
 	@caches = ( $config{'cache_dir'} );
 	}
 @$cachesrv = @caches;
