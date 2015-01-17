@@ -39,3 +39,14 @@ right_upsec=$1 package updates are available, of which $2 are security updates
 right_recollect=Refresh system information
 right_vvirtualmin=Virtualmin version
 right_vvm2=Cloudmin version
+
+acl_show=System information to show
+acl_showall=Everything
+acl_showsel=Only selected ..
+acl_host=Hostname and versions
+acl_cpu=CPU and kernel
+acl_temp=CPU and drive temperatures
+acl_load=CPU load and processes
+acl_mem=Free memory and swap
+acl_disk=Free disk space
+acl_poss=Package updates

@@ -28,65 +28,69 @@ my $table = { 'type' => 'table',
 	      'table' => \@table };
 push(@rv, $table);
 
-# Hostname
-my $ip = $info && $info->{'ips'} ? $info->{'ips'}->[0]->[0]
-				 : &to_ipaddress(get_system_hostname());
-$ip = " ($ip)" if ($ip);
-push(@table, { 'desc' => $text{'right_host'},
-	       'value' => &get_system_hostname().$ip });
+if (&show_section('host')) {
+	# Hostname
+	my $ip = $info && $info->{'ips'} ? $info->{'ips'}->[0]->[0]
+					 : &to_ipaddress(get_system_hostname());
+	$ip = " ($ip)" if ($ip);
+	push(@table, { 'desc' => $text{'right_host'},
+		       'value' => &get_system_hostname().$ip });
 
-# Operating system
-push(@table, { 'desc' => $text{'right_os'},
-	       'value' => &html_escape($gconfig{'os_version'} eq '*' ?
-			$gconfig{'real_os_type'} :
-			$gconfig{'real_os_type'}.' '.
-			  $gconfig{'real_os_version'})
-	     });
+	# Operating system
+	push(@table, { 'desc' => $text{'right_os'},
+		       'value' => &html_escape($gconfig{'os_version'} eq '*' ?
+				$gconfig{'real_os_type'} :
+				$gconfig{'real_os_type'}.' '.
+				  $gconfig{'real_os_version'})
+		     });
 
-# Webmin version
-push(@table, { 'desc' => $text{'right_webmin'},
-	       'value' => &get_webmin_version() });
+	# Webmin version
+	push(@table, { 'desc' => $text{'right_webmin'},
+		       'value' => &get_webmin_version() });
 
-# Versions of other important modules, where available
-# I fully admit that putting this here rather than in module-specific code is
-# a hack, but the current API doesn't offer good alternative.
-foreach my $v ([ "virtual-server", $text{'right_vvirtualmin'} ],
-	       [ "server-manager", $text{'right_vvm2'} ]) {
-	if (&foreign_available($v->[0])) {
-		my %vinfo = &get_module_info($v->[0]);
-		push(@table, { 'desc' => $v->[1],
-			       'value' => $vinfo{'version'} });
+	# Versions of other important modules, where available
+	# I fully admit that putting this here rather than in module-specific
+	# code is a hack, but the current API doesn't offer good alternative.
+	foreach my $v ([ "virtual-server", $text{'right_vvirtualmin'} ],
+		       [ "server-manager", $text{'right_vvm2'} ]) {
+		if (&foreign_available($v->[0])) {
+			my %vinfo = &get_module_info($v->[0]);
+			push(@table, { 'desc' => $v->[1],
+				       'value' => $vinfo{'version'} });
+			}
 		}
+
+	# System time
+	my $tm = localtime(time());
+	if (&foreign_available("time")) {
+		$tm = &ui_link($gconfig{'webprefix'}.'/time/', $tm);
+		}
+	push(@table, { 'desc' => $text{'right_time'},
+		       'value' => $tm });
 	}
 
-# System time
-my $tm = localtime(time());
-if (&foreign_available("time")) {
-	$tm = &ui_link($gconfig{'webprefix'}.'/time/', $tm);
-	}
-push(@table, { 'desc' => $text{'right_time'},
-	       'value' => $tm });
+if (&show_section('cpu')) {
+	# Kernel and architecture
+	if ($info->{'kernel'}) {
+		push(@table, { 'desc' => $text{'right_kernel'},
+			       'value' => &text('right_kernelon',
+						$info->{'kernel'}->{'os'},
+						$info->{'kernel'}->{'version'},
+						$info->{'kernel'}->{'arch'}) });
+		}
 
-# Kernel and architecture
-if ($info->{'kernel'}) {
-	push(@table, { 'desc' => $text{'right_kernel'},
-		       'value' => &text('right_kernelon',
-					$info->{'kernel'}->{'os'},
-					$info->{'kernel'}->{'version'},
-					$info->{'kernel'}->{'arch'}) });
-	}
-
-# CPU type and cores
-if ($info->{'load'}) {
-	my @c = @{$info->{'load'}};
-	if (@c > 3) {
-		push(@table, { 'desc' => $text{'right_cpuinfo'},
-			       'value' => &text('right_cputype', @c) });
+	# CPU type and cores
+	if ($info->{'load'}) {
+		my @c = @{$info->{'load'}};
+		if (@c > 3) {
+			push(@table, { 'desc' => $text{'right_cpuinfo'},
+				       'value' => &text('right_cputype', @c) });
+			}
 		}
 	}
 
 # Temperatures, if available
-if ($info->{'cputemps'}) {
+if ($info->{'cputemps'} && &show_section('temp')) {
 	my @temps;
 	foreach my $t (@{$info->{'cputemps'}}) {
 		push(@temps, $t->{'core'}.": ".
@@ -96,7 +100,7 @@ if ($info->{'cputemps'}) {
 		       'value' => join(" ", @temps),
 		       'wide' => 1 });
 	}
-if ($info->{'drivetemps'}) {
+if ($info->{'drivetemps'} && &show_section('temp')) {
 	my @temps;
 	foreach my $t (@{$info->{'drivetemps'}}) {
 		my $short = $t->{'device'};
@@ -122,51 +126,53 @@ if ($info->{'drivetemps'}) {
 
 # System uptime
 &foreign_require("proc");
-my $uptime;
-my ($d, $h, $m) = &proc::get_system_uptime();
-if ($d) {
-	$uptime = &text('right_updays', $d, $h, $m);
-	}
-elsif ($m) {
-	$uptime = &text('right_uphours', $h, $m);
-	}
-elsif ($m) {
-	$uptime = &text('right_upmins', $m);
-	}
-if ($uptime) {
-	push(@table, { 'desc' => $text{'right_uptime'},
-		       'value' => $uptime });
-	}
-
-# Running processes
-if (&foreign_check("proc")) {
-	my @procs = &proc::list_processes();
-	my $pr = scalar(@procs);
-	if (&foreign_available("proc")) {
-		$pr = &ui_link($gconfig{'webprefix'}.'/proc/', $pr);
+if (&show_section('load')) {
+	my $uptime;
+	my ($d, $h, $m) = &proc::get_system_uptime();
+	if ($d) {
+		$uptime = &text('right_updays', $d, $h, $m);
 		}
-	push(@table, { 'desc' => $text{'right_procs'},
-		       'value' => $pr });
-	}
-
-# Load averages
-if ($info->{'load'}) {
-	my @c = @{$info->{'load'}};
-	if (@c) {
-		push(@table, { 'desc' => $text{'right_cpu'},
-			       'value' => &text('right_load', @c) });
+	elsif ($m) {
+		$uptime = &text('right_uphours', $h, $m);
 		}
-	}
+	elsif ($m) {
+		$uptime = &text('right_upmins', $m);
+		}
+	if ($uptime) {
+		push(@table, { 'desc' => $text{'right_uptime'},
+			       'value' => $uptime });
+		}
 
-# CPU usage
-if ($info->{'cpu'}) {
-	my @c = @{$info->{'cpu'}};
-	push(@table, { 'desc' => $text{'right_cpuuse'},
-		       'value' => &text('right_cpustats', @c) });
+	# Running processes
+	if (&foreign_check("proc")) {
+		my @procs = &proc::list_processes();
+		my $pr = scalar(@procs);
+		if (&foreign_available("proc")) {
+			$pr = &ui_link($gconfig{'webprefix'}.'/proc/', $pr);
+			}
+		push(@table, { 'desc' => $text{'right_procs'},
+			       'value' => $pr });
+		}
+
+	# Load averages
+	if ($info->{'load'}) {
+		my @c = @{$info->{'load'}};
+		if (@c) {
+			push(@table, { 'desc' => $text{'right_cpu'},
+				       'value' => &text('right_load', @c) });
+			}
+		}
+
+	# CPU usage
+	if ($info->{'cpu'}) {
+		my @c = @{$info->{'cpu'}};
+		push(@table, { 'desc' => $text{'right_cpuuse'},
+			       'value' => &text('right_cpustats', @c) });
+		}
 	}
 
 # Memory usage
-if ($info->{'mem'}) {
+if ($info->{'mem'} && &show_section('mem')) {
 	my @m = @{$info->{'mem'}};
 	if (@m && $m[0]) {
 		push(@table, { 'desc' => $text{'right_real'},
@@ -186,7 +192,7 @@ if ($info->{'mem'}) {
 	}
 
 # Disk space on local drives
-if ($info->{'disk_total'}) {
+if ($info->{'disk_total'} && &show_section('disk')) {
 	my ($total, $free) = ($info->{'disk_total'}, $info->{'disk_free'});
 	push(@table, { 'desc' => $text{'right_disk'},
 		       'value' => &text('right_used',
@@ -196,7 +202,7 @@ if ($info->{'disk_total'}) {
 	}
 
 # Package updates
-if ($info->{'poss'}) {
+if ($info->{'poss'} && &show_section('poss')) {
 	my @poss = @{$info->{'poss'}};
 	my @secs = grep { $_->{'security'} } @poss;
 	my $msg;
@@ -231,6 +237,20 @@ if ($config{'collect_units'}) {
 	}
 else {
 	return int($c)."&#8451;";
+	}
+}
+
+# show_section(name)
+# Returns 1 if some section is visible to the current user
+sub show_section
+{
+my ($s) = @_;
+my %access = &get_module_acl();
+if ($access{'show'} eq '*') {
+	return 1;
+	}
+else {
+	return &indexof($s, split(/\s+/, $access{'show'})) >= 0;
 	}
 }
 
