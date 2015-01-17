@@ -19,6 +19,7 @@ else {
 # Save collection options
 $system_status::config{'collect_pkgs'} = $in{'pkgs'};
 $system_status::config{'collect_notemp'} = !$in{'temp'};
+$system_status::config{'collect_units'} = $in{'units'};
 
 &lock_file($system_status::module_config_file);
 &save_module_config(\%system_status::config, 'system-status');

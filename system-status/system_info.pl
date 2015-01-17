@@ -90,7 +90,7 @@ if ($info->{'cputemps'}) {
 	my @temps;
 	foreach my $t (@{$info->{'cputemps'}}) {
 		push(@temps, $t->{'core'}.": ".
-			     int($t->{'temp'})."&#8451;");
+			     &convert_temp_units($t->{'temp'}));
 		}
 	push(@table, { 'desc' => $text{'right_cputemps'},
 		       'value' => join(" ", @temps),
@@ -112,13 +112,13 @@ if ($info->{'drivetemps'}) {
 			    $text{'right_drivefailed'}.
 			    "</font>)";
 			}
-		push(@temps, $short.": ".$t->{'temp'}."&#8451;".$emsg);
+		push(@temps, $short.": ".
+			     &convert_temp_units($t->{'temp'}).$emsg);
 		}
 	push(@table, { 'desc' => $text{'right_drivetemps'},
 		       'value' => join(" ", @temps),
 		       'wide' => 1 });
 	}
-
 
 # System uptime
 &foreign_require("proc");
@@ -219,6 +219,19 @@ if ($info->{'poss'}) {
 	}
 
 return @rv;
+}
+
+# convert_temp_units(celsius)
+# Given a number in celsius, convert and format it nicely
+sub convert_temp_units
+{
+my ($c) = @_;
+if ($config{'collect_units'}) {
+	return int(($c * 9.0 / 5) + 32)."&#8457;";
+	}
+else {
+	return int($c)."&#8451;";
+	}
 }
 
 1;
