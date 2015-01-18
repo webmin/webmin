@@ -15,6 +15,7 @@ my @table;
 # Refresh button for root
 if (&foreign_available($module_name) && $config{'collect_interval'} ne 'none') {
 	push(@rv, { 'type' => 'link',
+		    'id' => 'recollect',
 		    'priority' => 100,
 		    'desc' => $text{'right_recollect'},
 		    'link' => '/'.$module_name.'/recollect.cgi' });
