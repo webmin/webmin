@@ -8476,6 +8476,8 @@ else {
 			if ($noerror) { return 0; }
 			else { &error("Cannot write to directory $file"); }
 			}
+		my @oldst = stat($file);
+		my $directopen = 0;
 		my $tmp = &open_tempfile($file);
 		my $ex = open($fh, ">$tmp");
 		if (!$ex && $! =~ /permission/i) {
@@ -8483,6 +8485,7 @@ else {
 			# instead directly
 			$ex = open($fh, ">$file");
 			delete($main::open_tempfiles{$file});
+			$directopen = 1;
 			}
 		else {
 			$main::open_temphandles{$fh} = $file;
@@ -8491,7 +8494,10 @@ else {
 			&error(&text("efileopen", $file, $!));
 			}
 		binmode($fh);
-		chmod(0750, $tmp);
+		if (@oldst && !$directopen) {
+			# Use same permissions as the file being overwritten
+			chmod($oldst[2], $tmp);
+			}
 		return $ex;
 		}
 	elsif ($file =~ /^>\s*(([a-zA-Z]:)?\/.*)$/ && $notemp) {
