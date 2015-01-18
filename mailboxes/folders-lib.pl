@@ -1300,16 +1300,19 @@ if ($folder->{'sortable'}) {
 sub mailbox_copy_folder
 {
 local ($src, $dest) = @_;
-&switch_to_folder_user($dest);
 if ($src->{'type'} == 0 && $dest->{'type'} == 0) {
 	# mbox to mbox .. just read and write the files
+	&switch_to_folder_user($src);
 	&open_as_mail_user(SOURCE, $src->{'file'});
+	&switch_from_folder_user($src);
+	&switch_to_folder_user($dest);
 	&open_as_mail_user(DEST, ">>$dest->{'file'}");
 	while(read(SOURCE, $buf, 32768) > 0) {
 		print DEST $buf;
 		}
 	close(DEST);
 	close(SOURCE);
+	&switch_from_folder_user($dest);
 	}
 elsif ($src->{'type'} == 1 && $dest->{'type'} == 1) {
 	# maildir to maildir .. just copy the files
@@ -1322,9 +1325,12 @@ elsif ($src->{'type'} == 1 && $dest->{'type'} == 1) {
 	}
 elsif ($src->{'type'} == 1 && $dest->{'type'} == 0) {
 	# maildir to mbox .. append all the files
-	local @files = &get_maildir_files($src->{'file'});
+	&switch_to_folder_user($dest);
 	&open_as_mail_user(DEST, ">>$dest->{'file'}");
+	&switch_from_folder_user($dest);
 	local $fromline = &make_from_line("webmin\@example.com")."\n";
+	&switch_to_folder_user($src);
+	local @files = &get_maildir_files($src->{'file'});
 	foreach my $f (@files) {
 		&open_as_mail_user(SOURCE, $f);
 		print DEST $fromline;
@@ -1334,6 +1340,7 @@ elsif ($src->{'type'} == 1 && $dest->{'type'} == 0) {
 		close(SOURCE);
 		}
 	close(DEST);
+	&switch_from_folder_user($src);
 	}
 else {
 	# read in all mail and write out, in 100 message blocks
@@ -1346,7 +1353,6 @@ else {
 		&mailbox_copy_mail($src, $dest, @want);
 		}
 	}
-&switch_from_folder_user($dest);
 }
 
 # mailbox_move_mail(&source, &dest, mail, ...)
@@ -1679,17 +1685,20 @@ if ($folder->{'sortable'}) {
 # Returns the number of messages in some folder
 sub mailbox_folder_size
 {
-if ($_[0]->{'type'} == 0) {
+local ($f, $est) = @_;
+&switch_to_folder_user($f);
+local $rv;
+if ($f->{'type'} == 0) {
 	# A mbox formatted file
-	return &count_mail($_[0]->{'file'});
+	$rv = &count_mail($f->{'file'});
 	}
-elsif ($_[0]->{'type'} == 1) {
+elsif ($f->{'type'} == 1) {
 	# A qmail maildir
-	return &count_maildir($_[0]->{'file'});
+	return &count_maildir($f->{'file'});
 	}
-elsif ($_[0]->{'type'} == 2) {
+elsif ($f->{'type'} == 2) {
 	# A POP3 server
-	local @rv = &pop3_login($_[0]);
+	local @rv = &pop3_login($f);
 	if ($rv[0] != 1) {
 		if ($rv[0] == 0) { &error($rv[1]); }
 		else { &error(&text('save_elogin', $rv[1])); }
@@ -1703,44 +1712,44 @@ elsif ($_[0]->{'type'} == 2) {
 		&error($st[1]);
 		}
 	}
-elsif ($_[0]->{'type'} == 3) {
+elsif ($f->{'type'} == 3) {
 	# An MH directory
-	return &count_mhdir($_[0]->{'file'});
+	return &count_mhdir($f->{'file'});
 	}
-elsif ($_[0]->{'type'} == 4) {
+elsif ($f->{'type'} == 4) {
 	# An IMAP server
-	local @rv = &imap_login($_[0]);
+	local @rv = &imap_login($f);
 	if ($rv[0] != 1) {
 		if ($rv[0] == 0) { &error($rv[1]); }
 		elsif ($rv[0] == 3) { &error(&text('save_emailbox', $rv[1])); }
 		elsif ($rv[0] == 2) { &error(&text('save_elogin2', $rv[1])); }
 		}
-        $_[0]->{'lastchange'} = $rv[3];
-	return $rv[2];
+        $f->{'lastchange'} = $rv[3];
+	$rv = $rv[2];
 	}
-elsif ($_[0]->{'type'} == 5) {
+elsif ($f->{'type'} == 5) {
 	# A composite folder - the size is just that of the sub-folders
-	my $rv = 0;
-	foreach my $sf (@{$_[0]->{'subfolders'}}) {
+	$rv = 0;
+	foreach my $sf (@{$f->{'subfolders'}}) {
 		$rv += &mailbox_folder_size($sf);
 		}
-	return $rv;
 	}
-elsif ($_[0]->{'type'} == 6 && !$_[1]) {
+elsif ($f->{'type'} == 6 && !$est) {
 	# A virtual folder .. we need to exclude messages that no longer
 	# exist in the parent folders
-	my $rv = 0;
-	foreach my $msg (@{$_[0]->{'members'}}) {
+	$rv = 0;
+	foreach my $msg (@{$f->{'members'}}) {
 		if (&mailbox_get_mail($msg->[0], $msg->[1])) {
 			$rv++;
 			}
 		}
-	return $rv;
 	}
-elsif ($_[0]->{'type'} == 6 && $_[1]) {
+elsif ($f->{'type'} == 6 && $est) {
 	# A virtual folder .. but we can just use the last member count
-	return scalar(@{$_[0]->{'members'}});
+	$rv = scalar(@{$f->{'members'}});
 	}
+&switch_from_folder_user($f);
+return $rv;
 }
 
 # mailbox_folder_unread(&folder)
