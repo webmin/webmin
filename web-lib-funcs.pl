@@ -4407,7 +4407,7 @@ else {
 	}
 
 # Set the umask based on config
-if ($gconfig{'umask'} && !$main::umask_already++) {
+if ($gconfig{'umask'} ne '' && !$main::umask_already++) {
 	umask(oct($gconfig{'umask'}));
 	}
 
