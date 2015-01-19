@@ -1,10 +1,6 @@
-longdesc_ja_JP.euc=
 webmin=1
 version=1.0
 desc_fr=
 usermin=1
-longdesc_fr=
-desc=Blue Framed Theme
-desc_nl=Blauw Frame Theme
-desc_ja_JP.euc=
+desc=Old Blue Framed Theme
 depends=1.730
