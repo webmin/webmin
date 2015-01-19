@@ -362,8 +362,10 @@ else {
 			delete($dmarc->{'rua'});
 			}
 		else {
-			$in{'dmarcrua'} =~ /^\S+$/ || &error($text{'edit_edmarcrua'});
-			$in{'dmarcrua'} = 'mailto:' if ($in{'dmarcrua'} !~ /^[a-z]+:/i);
+			$in{'dmarcrua'} =~ /^\S+$/ ||
+				&error($text{'edit_edmarcrua'});
+			$in{'dmarcrua'} = 'mailto:'.$in{'dmarcrua'}
+				if ($in{'dmarcrua'} !~ /^[a-z]+:/i);
 			$dmarc->{'rua'} = $in{'dmarcrua'};
 			}
 
@@ -371,8 +373,10 @@ else {
 			delete($dmarc->{'ruf'});
 			}
 		else {
-			$in{'dmarcruf'} =~ /^\S+$/ || &error($text{'edit_edmarcruf'});
-			$in{'dmarcruf'} = 'mailto:' if ($in{'dmarcruf'} !~ /^[a-z]+:/i);
+			$in{'dmarcruf'} =~ /^\S+$/ ||
+				&error($text{'edit_edmarcruf'});
+			$in{'dmarcruf'} = 'mailto:'.$in{'dmarcruf'}
+				if ($in{'dmarcruf'} !~ /^[a-z]+:/i);
 			$dmarc->{'ruf'} = $in{'dmarcruf'};
 			}
 

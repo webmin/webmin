@@ -770,7 +770,7 @@ if ($txt =~ /^v=dmarc1/i) {
 	foreach my $w (@w) {
 		$w = lc($w);
 		if ($w =~ /^(v|pct|ruf|rua|p|sp|adkim|aspf)=(\S+)$/i) {
-			push(@{$dmarc->{$1}}, $2);
+			$dmarc->{$1} = $2;
 			}
 		else {
 			push(@{$dmarc->{'other'}}, $w);

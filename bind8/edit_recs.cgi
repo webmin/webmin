@@ -27,21 +27,28 @@ if (!$access{'ro'} && $type eq 'master' && $in{'type'} ne 'ALL') {
 	$shown_create_form = 1;
 	}
 
-# Show search form
-print &ui_form_start("edit_recs.cgi");
-print &ui_hidden("zone", $in{'zone'}),"\n";
-print &ui_hidden("view", $in{'view'}),"\n";
-print &ui_hidden("type", $in{'type'}),"\n";
-print "<b>$text{'recs_find'}</b>\n";
-print &ui_textbox("search", $in{'search'}, 20),"\n";
-print &ui_submit($text{'recs_search'}),"<p>\n";
-print &ui_form_end();
-$form++;
-
 if (!$config{'largezones'} || $in{'search'}) {
 	# Get all records
 	@allrecs = grep { !$_->{'generate'} && !$_->{'defttl'} }
 		     &read_zone_file($file, $dom);
+	$nosearch = 1 if (!@allrecs);
+	}
+
+if (!$nosearch) {
+	# Show search form
+	print &ui_form_start("edit_recs.cgi");
+	print &ui_hidden("zone", $in{'zone'}),"\n";
+	print &ui_hidden("view", $in{'view'}),"\n";
+	print &ui_hidden("type", $in{'type'}),"\n";
+	print "<b>$text{'recs_find'}</b>\n";
+	print &ui_textbox("search", $in{'search'}, 20),"\n";
+	print &ui_submit($text{'recs_search'}),"<p>\n";
+	print &ui_form_end();
+	$form++;
+	}
+
+if (!$config{'largezones'} || $in{'search'}) {
+	# Get all records
 	if ($in{'search'}) {
 		# Limit to records matching some search
 		foreach $r (@allrecs) {
