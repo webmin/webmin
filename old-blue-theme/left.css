@@ -1,0 +1,51 @@
+.mode {
+  left: auto;
+  right: auto;
+}
+.linkwithicon {
+  position: relative;
+  white-space: nowrap;
+  left: 2px;
+  width: 16px;
+  padding-top: 2px;
+}
+.leftlink {
+  position: relative;
+  left: 4px;
+  right: 4px;
+  line-height: 150%;
+}
+.linkindented {
+  border: none;
+  position: relative;
+  padding-top: 2px;
+  margin-right: 2px;
+  margin-left: 20px;
+}
+.linknotindented {
+  border: none;
+  position: relative;
+  padding-top: 2px;
+  margin-right: 2px;
+  margin-left: 4px;
+}
+.aftericon {
+  display: inline;
+}
+.domainmenu {
+  white-space: nowrap;
+  position: relative;
+  left: 4px;
+  padding-top: 2px;
+}
+div.menubody {
+ 	border:1px solid #D9D9D9;
+  background-color:#F5F5F5;
+  padding:0;
+  margin:0;
+}
+div.menubodyInner {
+  border:1px solid #FFFFFF;
+  margin:0;
+  padding:0;
+}

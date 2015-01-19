@@ -1,0 +1,22 @@
+---- Changes since 1.280 ----
+First version of this theme.
+---- Changes since 1.290 ----
+The current category name is now underlined.
+Reduced the thickness of border lines.
+All icons are now shown half the usual size, with the titles to the right instead of below.
+---- Changes since 1.300 ----
+Totally re-worked theme to use a new framed design, with a Javascript collapsing category menu.
+---- Changes since 1.310 ----
+Added Webmin Servers link on the left menu, when accessed via the Webmin Servers Index module.
+---- Changes since 1.320 ----
+Added a feedback link to the left menu, but only when a custom feedback address is set.
+---- Changes since 1.330 ----
+Updated the color schema to match the new webmin.com, and made table borders and forms nicer (thanks to Joe).
+Added a whole new set of icons from Virtualmin.
+---- Changes since 1.340 ----
+Fixed bad table indentation on some browsers.
+Changed link colors to be darker.
+---- Changes since 1.400 ----
+Display system uptime in the right frame after logging in.
+---- Changes since 1.430 ----
+Updated CSS and all UI elements to match the Virtualmin theme, except for colors and icons.
