@@ -282,6 +282,15 @@ while($i < @tok) {
 				}
 			}
 
+		# If this is a DMARC record .. adjust the class
+		local $dmarc;
+		if ($dir{'type'} eq 'TXT' &&
+                    ($dmarc=&parse_dmarc(@{$dir{'values'}}))) {
+                        if (!@{$dmarc->{'other'}}) {
+                                $dir{'type'} = 'DMARC';
+                                }
+                        }
+
 		push(@rv, \%dir);
 
 		# Stop processing if this was an SOA record
@@ -396,9 +405,11 @@ splice(@$lref, $_[1]->{'line'}, 1);
 # Returns a string for some zone record
 sub make_record
 {
-local $type = $_[3] eq "SPF" && !$config{'spf_record'} ? "TXT" : $_[3];
-return $_[0] . ($_[1] ? "\t$_[1]" : "") . "\t$_[2]\t$type\t$_[4]" .
-       ($_[5] ? "\t;$_[5]" : "");
+local ($name, $ttl, $cls, $type, $values, $cmt) = @_;
+local $type = $type eq "SPF" && !$config{'spf_record'} ? "TXT" :
+	      $type eq "DMARC" ? "TXT" : $type;
+return $name . ($ttl ? "\t".$ttl : "") . "\t" . $cls . "\t" . $type ."\t" .
+       $values . ($cmt ? "\t;$cmt" : "");
 }
 
 # bump_soa_record(file, &records)
@@ -742,6 +753,57 @@ while(@rv) {
 		$rvword = "";
 		}
 	$rvword .= " " if ($rvword);
+	$rvword .= $w;
+	}
+push(@rvwords, $rvword);
+return join("\" \"", @rvwords);
+}
+
+# parse_dmarc(text, ...)
+# If some text looks like an DMARC TXT record, return a parsed hash ref
+sub parse_dmarc
+{
+my $txt = join(" ", @_);
+if ($txt =~ /^v=dmarc1/i) {
+	local @w = split(/;/, $txt);
+	local $dmarc = { };
+	foreach my $w (@w) {
+		$w = lc($w);
+		if ($w =~ /^(v|pct|ruf|rua|p|sp|adkim|aspf)=(\S+)$/i) {
+			push(@{$dmarc->{$1}}, $2);
+			}
+		else {
+			push(@{$dmarc->{'other'}}, $w);
+			}
+		}
+	return $dmarc;
+	}
+return undef;
+}
+
+# join_dmarc(&dmarc)
+# Converts an SPF record structure to a string, designed to be inserted into
+# quotes in a TXT record. If it is longer than 255 bytes, it will be split
+# into multiple quoted strings.
+sub join_dmarc
+{
+local ($dmarc) = @_;
+local @rv = ( "v=DMARC1" );
+foreach my $s ("pct", "ruf", "rua", "p", "sp", "adkim", "aspf") {
+	if ($dmarc->{$s} ne '') {
+		push(@rv, $s."=".$dmarc->{$s});
+		}
+	}
+push(@rv, @{$dmarc->{'other'}});
+local @rvwords;
+local $rvword;
+while(@rv) {
+	my $w = shift(@rv);
+	if (length($rvword)+length($w)+1 >= 255) {
+		push(@rvwords, $rvword);
+		$rvword = "";
+		}
+	$rvword .= ";" if ($rvword);
 	$rvword .= $w;
 	}
 push(@rvwords, $rvword);

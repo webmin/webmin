@@ -339,6 +339,45 @@ else {
 			}
 		$vals = "\"".&join_spf($spf)."\"";
 		}
+	elsif ($in{'type'} eq 'DMARC') {
+		# Build DMARC record from inputs
+		$dmarc = $r ? &parse_dmarc(@{$r->{'values'}}) : { };
+		$dmarc->{'p'} = $in{'dmarcp'};
+
+		$in{'dmarcpct'} =~ /^\d+$/ && $in{'dmarcpct'} >= 0 &&
+		  $in{'dmarcpct'} <= 100 || &error($text{'edit_edmarcpct'});
+		$dmarc->{'pct'} = $in{'dmarcpct'};
+
+		if ($in{'dmarcsp'}) {
+			$dmarc->{'sp'} = $in{'dmarcsp'};
+			}
+		else {
+			delete($dmarc->{'sp'});
+			}
+
+		$dmarc->{'aspf'} = $in{'dmarcaspf'} ? 's' : 'r';
+		$dmarc->{'adkim'} = $in{'dmarcadkim'} ? 's' : 'r';
+
+		if ($in{'dmarcrua_def'}) {
+			delete($dmarc->{'rua'});
+			}
+		else {
+			$in{'dmarcrua'} =~ /^\S+$/ || &error($text{'edit_edmarcrua'});
+			$in{'dmarcrua'} = 'mailto:' if ($in{'dmarcrua'} !~ /^[a-z]+:/i);
+			$dmarc->{'rua'} = $in{'dmarcrua'};
+			}
+
+		if ($in{'dmarcruf_def'}) {
+			delete($dmarc->{'ruf'});
+			}
+		else {
+			$in{'dmarcruf'} =~ /^\S+$/ || &error($text{'edit_edmarcruf'});
+			$in{'dmarcruf'} = 'mailto:' if ($in{'dmarcruf'} !~ /^[a-z]+:/i);
+			$dmarc->{'ruf'} = $in{'dmarcruf'};
+			}
+
+		$vals = "\"".&join_dmarc($dmarc)."\"";
+		}
 	elsif ($in{'type'} eq 'NSEC3PARAM') {
 		# Save DNSSEC parameters
 		$in{'value2'} =~ /^\d+$/ ||

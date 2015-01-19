@@ -1124,6 +1124,39 @@ elsif ($type eq "SPF") {
 		&ui_opt_textbox("spfexp", $spf->{'exp'}, 40,
 			    $text{'value_spfnoexp'}), 3);
 	}
+elsif ($type eq "DMARC") {
+	# Like SPF, DMARC records have several attributes encoded in the
+	# TXT value
+	local $dmarc = &parse_dmarc(@v);
+	local @popts = ( [ "none", $text{'value_dmarcnone'} ],
+		         [ "quarantine", $text{'value_dmarcquar'} ],
+		         [ "reject", $text{'value_dmarcreject'} ] );
+	print &ui_table_row($text{'value_dmarcp'},
+		&ui_select("dmarcp", $dmarc->{'p'}, \@popts));
+
+	print &ui_table_row($text{'value_dmarcpct'},
+		&ui_textbox("dmarcpct", $dmarc->{'pct'}, 5)."%");
+
+	print &ui_table_row($text{'value_dmarcsp'},
+		&ui_select("dmarcsp", $dmarc->{'sp'},
+			   [ [ "", $text{'value_dmarcnop'} ], @popts ]));
+
+	print &ui_table_row($text{'value_dmarcaspf'},
+		&ui_yesno_radio("dmarcaspf", $dmarc->{'aspf'} eq 's'));
+
+	print &ui_table_row($text{'value_dmarcadkim'},
+		&ui_yesno_radio("dmarcadkim", $dmarc->{'adkim'} eq 's'));
+
+	local $rua = $dmarc->{'rua'};
+	$rua =~ s/^mailto://;
+	print &ui_table_row($text{'value_dmarcrua'},
+	    &ui_opt_textbox("dmarcrua", $rua, 50, $text{'value_dmarcnor'}), 3);
+
+	local $ruf = $dmarc->{'ruf'};
+	$ruf =~ s/^mailto://;
+	print &ui_table_row($text{'value_dmarcruf'},
+	    &ui_opt_textbox("dmarcruf", $ruf, 50, $text{'value_dmarcnor'}), 3);
+	}
 elsif ($type eq "NSEC3PARAM") {
 	# NSEC records have a hash type, flags, number of interations, salt
 	# length and salt
@@ -2772,7 +2805,7 @@ $slave_error = $_[0];
 
 sub get_forward_record_types
 {
-return ("A", "NS", "CNAME", "MX", "HINFO", "TXT", "SPF", "WKS", "RP", "PTR", "LOC", "SRV", "KEY", "NSEC3PARAM", $config{'support_aaaa'} ? ( "AAAA" ) : ( ), @extra_forward);
+return ("A", "NS", "CNAME", "MX", "HINFO", "TXT", "SPF", "DMARC", "WKS", "RP", "PTR", "LOC", "SRV", "KEY", "NSEC3PARAM", $config{'support_aaaa'} ? ( "AAAA" ) : ( ), @extra_forward);
 }
 
 sub get_reverse_record_types

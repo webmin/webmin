@@ -19,9 +19,10 @@ $typedesc = $text{"recs_$in{'type'}"} || $in{'type'};
 $type = $zone->{'type'};
 $file = $zone->{'file'};
 $form = 0;
+$newname = $in{'newname'} || ($in{'type'} eq 'DMARC' ? '_dmarc' : undef);
 if (!$access{'ro'} && $type eq 'master' && $in{'type'} ne 'ALL') {
 	&record_input($in{'zone'}, $in{'view'}, $in{'type'}, $file, $dom,
-		      undef, undef, $in{'newname'}, $in{'newvalue'});
+		      undef, undef, $newname, $in{'newvalue'});
 	$form++;
 	$shown_create_form = 1;
 	}

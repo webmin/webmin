@@ -142,3 +142,5 @@ Added a warning if the chroot directory that Webmin thinks BIND is using looks w
 Slave zone files in raw format can now be displayed by Webmin.
 ---- Changes since 1.720 ----
 Added support for NSEC3PARAM records.
+---- Changes since 1.730 ----
+Added support for editing DMARC records, which are specially encoded TXT records for defining the response to SPF and DKIM violations.
