@@ -765,7 +765,7 @@ sub parse_dmarc
 {
 my $txt = join(" ", @_);
 if ($txt =~ /^v=dmarc1/i) {
-	local @w = split(/;/, $txt);
+	local @w = split(/;\s*/, $txt);
 	local $dmarc = { };
 	foreach my $w (@w) {
 		$w = lc($w);
@@ -782,7 +782,7 @@ return undef;
 }
 
 # join_dmarc(&dmarc)
-# Converts an SPF record structure to a string, designed to be inserted into
+# Converts a DMARC record structure to a string, designed to be inserted into
 # quotes in a TXT record. If it is longer than 255 bytes, it will be split
 # into multiple quoted strings.
 sub join_dmarc
@@ -803,7 +803,7 @@ while(@rv) {
 		push(@rvwords, $rvword);
 		$rvword = "";
 		}
-	$rvword .= ";" if ($rvword);
+	$rvword .= "; " if ($rvword);
 	$rvword .= $w;
 	}
 push(@rvwords, $rvword);
