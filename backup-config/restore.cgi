@@ -11,7 +11,8 @@ our (%in, %text, %config, $module_config_file);
 &error_setup($text{'restore_err'});
 my $src = &parse_backup_destination("src", \%in);
 my @mods = split(/\0/, $in{'mods'});
-@mods || &error($text{'restore_emods'});
+my @others = split(/[\r\n]+/, $in{'others'});
+@mods || @others || &error($text{'restore_emods'});
 
 # Do it ..
 my ($mode, $user, $pass, $server, $path, $port) = &parse_backup_url($src);
@@ -27,7 +28,8 @@ if ($mode == 3) {
 print &text($in{'test'} ? 'restore_testing' : 'restore_doing',
 	    &nice_dest($src)),"<p>\n";
 my @files;
-my $err = &execute_restore(\@mods, $src, \@files, $in{'apply'}, $in{'test'});
+my $err = &execute_restore(\@mods, $src, \@files, $in{'apply'}, $in{'test'},
+			   \@others);
 &unlink_file($src) if ($mode == 3);
 if ($err) {
 	print &text('restore_failed', $err),"<p>\n";

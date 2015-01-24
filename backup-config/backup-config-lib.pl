@@ -453,7 +453,8 @@ elsif ($mode == 2) {
 return undef;
 }
 
-=head2 execute_restore(&mods, source, &files, apply, [show-only])
+=head2 execute_restore(&mods, source, &files, apply, [show-only],
+		       [&other-files])
 
 Restore configuration files from the specified source for the listed modules.
 Returns undef on success, or an error message.
@@ -461,7 +462,7 @@ Returns undef on success, or an error message.
 =cut
 sub execute_restore
 {
-my ($mods, $src, $files, $apply, $show) = @_;
+my ($mods, $src, $files, $apply, $show, $others) = @_;
 
 # Fetch file if needed
 my ($mode, $user, $pass, $host, $path, $port) = &parse_backup_url($src);
@@ -518,7 +519,7 @@ my @tarfiles = map { "/$_" } split(/\r?\n/, $out);
 my %tarfiles = map { $_, 1 } @tarfiles;
 
 # Extract manifests for each module
-my %hasmod = map { $_, 1 } @{$_[0]};
+my %hasmod = map { $_, 1 } @$mods;
 $hasmod{"_others"} = 1;
 &execute_command("rm -rf ".quotemeta($manifests_dir));
 my $rel_manifests_dir = $manifests_dir;
@@ -548,6 +549,7 @@ while($m = readdir(DIR)) {
 	push(@files, @mfiles);
 	}
 closedir(DIR);
+push(@files, @$others) if ($others);
 if (!@files) {
 	&unlink_file($file) if ($mode != 0);
 	return $text{'backup_enone2'};
@@ -555,15 +557,15 @@ if (!@files) {
 
 # Get descriptions for each module
 my %desc;
-foreach my $m (@{$_[0]}) {
+foreach my $m (@$mods) {
 	my %minfo = &get_module_info($m);
 	$desc{$m} = $minfo{'desc'};
 	}
 
 # Call module pre functions
-foreach my $m (@{$_[0]}) {
+foreach my $m (@$mods) {
 	my $mdir = &module_root_directory($m);
-	if ($m && &foreign_check($m) && !$_[4] &&
+	if ($m && &foreign_check($m) && !$show &&
 	    -r "$mdir/backup_config.pl") {
 		&foreign_require($m, "backup_config.pl");
 		if (&foreign_defined($m, "pre_restore")) {
@@ -577,7 +579,7 @@ foreach my $m (@{$_[0]}) {
 	}
 
 # Lock all files being extracted
-if (!$_[4]) {
+if (!$show) {
 	my $f;
 	foreach $f (@files) {
 		&lock_file($f);
@@ -585,7 +587,7 @@ if (!$_[4]) {
 	}
 
 # Extract contents (only files specified by manifests)
-my $flag = $_[4] ? "t" : "x";
+my $flag = $show ? "t" : "x";
 my $qfiles = join(" ", map { s/^\///; quotemeta($_) } &unique(@files));
 if ($gzipped) {
 	&execute_command("cd / ; gunzip -c $qfile | tar ${flag}f - $qfiles",
@@ -598,7 +600,7 @@ else {
 my $ex = $?;
 
 # Un-lock all files being extracted
-if (!$_[4]) {
+if (!$show) {
 	my $f;
 	foreach $f (@files) {
 		&unlock_file($f);
@@ -611,16 +613,16 @@ if ($ex) {
 	return &text('backup_euntar', "<pre>$out</pre>");
 	}
 
-if ($_[3] && !$_[4]) {
+if ($apply && !$show) {
 	# Call all module apply functions
-	foreach $m (@{$_[0]}) {
+	foreach $m (@$mods) {
 		if (&foreign_defined($m, "post_restore")) {
 			&foreign_call($m, "post_restore", \@files);
 			}
 		}
 	}
 
-@{$_[2]} = @files;
+@$files = split(/\n/, $out);
 return undef;
 }
 

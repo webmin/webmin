@@ -35,6 +35,7 @@ edit_schedyes=Yes, at times selected below ..
 edit_mods=Modules to backup
 edit_dest=Backup destination
 edit_mods2=Modules to restore
+edit_other2=Other files to restore
 edit_dest2=Restore from
 edit_what=Include in backup
 edit_webmin=Webmin module configuration files
@@ -83,6 +84,7 @@ backup_failed=.. failed! $1
 backup_done=.. complete. Final backup size was $1, containing $2 files.
 
 restore_err=Restore failed
+restore_emods=No modules or other files selected
 restore_title=Restore Configuration
 restore_doing=Starting restore of module configuration files from $1 ..
 restore_testing=Extracting contents of backup from $1 ..

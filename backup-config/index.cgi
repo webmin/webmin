@@ -89,6 +89,9 @@ print &ui_table_row($text{'edit_mods2'},
 		       [ map { [ $_->{'dir'}, $_->{'desc'} ] } @mods ],
 		       5, 1));
 
+print &ui_table_row($text{'edit_other2'},
+		    &ui_textarea("others", undef, 3, 50));
+
 print &ui_table_row($text{'edit_dest2'},
 		    &show_backup_destination("src", $config{'dest'}, 1));
 
