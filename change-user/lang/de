@@ -21,6 +21,7 @@ index_dpass=dem Passwort, welches zum Anmelden erforderlich ist,
 index_dtheme=das Design, welches die Darstellung von Webmin kontrolliert
 index_lang=Webmin-Spracheinstellung
 index_langglobal=Globale Einstellung ($1)
+index_langglobal2=Globale Sprache .. $1 ($2)
 index_langset=Pers&#246;nliche Auswahl ..
 index_ok=&#196;nderungen durchf&#252;hren
 index_overlay=Theme overlay
