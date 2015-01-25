@@ -1,6 +1,6 @@
 index_title=Change Language and Theme
 index_lang=Webmin UI language
-index_langglobal=Global language ($1)
+index_langglobal2=Global language .. $1 ($2)
 index_langset=Personal choice ..
 index_theme=Webmin UI theme
 index_overlay=Theme overlay

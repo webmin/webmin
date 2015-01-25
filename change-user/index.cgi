@@ -28,8 +28,8 @@ if ($access{'lang'}) {
 	my ($linfo) = grep { $_->{'lang'} eq $glang } @langs;
 	print &ui_table_row($text{'index_lang'},
 		&ui_radio("lang_def", $user->{'lang'} ? 0 : 1,
-			  [ [ 1, &text('index_langglobal',
-				       $linfo->{'desc'})."<br>" ],
+			  [ [ 1, &text('index_langglobal2', $linfo->{'desc'},
+				       $linfo->{'lang'})."<br>" ],
 			    [ 0, $text{'index_langset'} ] ])." ".
 		&ui_select("lang", $user->{'lang'},
 			   [ map { [ $_->{'lang'},
