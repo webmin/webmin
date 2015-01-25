@@ -1,0 +1,3 @@
+# The lang/en file doesn't contain any strings that need conversion to UK
+# english, but this file still needs to exist so that Webmin offers en_GB.UTF-8
+# as a language option.
