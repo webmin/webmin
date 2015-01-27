@@ -4590,7 +4590,8 @@ if ($module_name) {
 	}
 
 if ($module_name && !$main::no_acl_check &&
-    !defined($ENV{'FOREIGN_MODULE_NAME'})) {
+    !defined($ENV{'FOREIGN_MODULE_NAME'}) &&
+    $main::webmin_script_type eq 'web') {
 	# Check if the HTTP user can access this module
 	if (!&foreign_available($module_name)) {
 		if (!&foreign_check($module_name)) {
