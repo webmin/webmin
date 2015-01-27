@@ -102,14 +102,17 @@ if (&foreign_check("virtual-server") &&
     &foreign_available("virtual-server")) {
 	$virtual_server::no_virtualmin_plugins = 1;
 	&foreign_require("virtual-server", "virtual-server-lib.pl");
-	my $type = $module_name =~ /^mysql/ ? 'mysql' : 'postgres';
-	foreach my $d (grep { &virtual_server::can_edit_domain($_) }
-			    &virtual_server::list_domains()) {
-		my @dbs = &virtual_server::domain_databases($d, [ $type ]);
-		my ($got) = grep { $_->{'name'} eq $dbname } @dbs;
-		if ($got) {
-			return "../virtual-server/list_databases.cgi?".
-			       "dom=$d->{'id'}";
+	if (!&virtual_server::master_admin()) {
+		my $type = $module_name =~ /^mysql/ ? 'mysql' : 'postgres';
+		foreach my $d (grep { &virtual_server::can_edit_domain($_) }
+				    &virtual_server::list_domains()) {
+			my @dbs = &virtual_server::domain_databases(
+					$d, [ $type ]);
+			my ($got) = grep { $_->{'name'} eq $dbname } @dbs;
+			if ($got) {
+				return "../virtual-server/list_databases.cgi?".
+				       "dom=$d->{'id'}";
+				}
 			}
 		}
 	}
