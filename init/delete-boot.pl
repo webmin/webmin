@@ -1,8 +1,7 @@
 #!/usr/local/bin/perl
 # Disable some boot-time action
 
-package server_manager;
-$main::no_acl_check++;
+package init;
 $ENV{'WEBMIN_CONFIG'} ||= "/etc/webmin";
 $ENV{'WEBMIN_VAR'} ||= "/var/webmin";
 if ($0 =~ /^(.*\/)[^\/]+$/) {

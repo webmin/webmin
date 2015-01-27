@@ -5,7 +5,6 @@
 use strict;
 use warnings;
 package system_status;
-$main::no_acl_check++;
 require './system-status-lib.pl';
 &scheduled_collect_system_info();
 

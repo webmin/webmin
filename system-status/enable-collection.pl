@@ -3,7 +3,6 @@
 
 use strict;
 use warnings;
-$main::no_acl_check++;
 our (%config);
 require 'system-status-lib.pl';
 my $zero = @ARGV ? $ARGV[0] : '';
