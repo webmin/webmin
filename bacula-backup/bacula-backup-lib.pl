@@ -819,14 +819,17 @@ local $jobs = &console_cmd($h, "show jobs");
 local @rv;
 local $job;
 foreach my $l (split(/\r?\n/, $jobs)) {
-	if ($l =~ /^Job:\s+name=([^=]*\S)\s/) {
+	if ($l =~ /^Job:\s+name=([^=]*\S)\s/ ||
+	    $l =~ /^\s*Name\s*=\s*"(.*)"/) {
 		$job = { 'name' => $1 };
 		push(@rv, $job);
 		}
-	elsif ($l =~ /Client:\s+name=([^=]*\S)\s/ && $job) {
+	elsif (($l =~ /Client:\s+name=([^=]*\S)\s/ ||
+		$l =~ /^\s*Client\s*=\s*"(.*)"/) && $job) {
 		$job->{'client'} = $1;
 		}
-	elsif ($l =~ /FileSet:\s+name=([^=]*\S)\s/ && $job) {
+	elsif (($l =~ /FileSet:\s+name=([^=]*\S)\s/ ||
+	        $l =~ /^FileSet\s*=\s*"(.*)"/) && $job) {
 		$job->{'fileset'} = $1;
 		}
 	}
@@ -843,7 +846,8 @@ local $clients = &console_cmd($h, "show clients");
 local @rv;
 local $client;
 foreach my $l (split(/\r?\n/, $clients)) {
-	if ($l =~ /^Client:\s+name=([^=]*\S)\s/) {
+	if ($l =~ /^Client:\s+name=([^=]*\S)\s/ ||
+	    $l =~ /^\s*Name\s*=\s*"(.*)"/) {
 		$client = { 'name' => $1 };
 		if ($l =~ /address=(\S+)/ && $client) {
 			$client->{'address'} = $1;
@@ -852,6 +856,12 @@ foreach my $l (split(/\r?\n/, $clients)) {
 			$client->{'port'} = $1;
 			}
 		push(@rv, $client);
+		}
+	elsif ($l =~ /^\s*Address\s*=\s*"(.*)"/ && $client) {
+		$client->{'address'} = $1;
+		}
+	elsif ($l =~ /^\s*FDport\s*=\s*"(.*)"/ && $client) {
+		$client->{'port'} = $1;
 		}
 	}
 return @rv;
@@ -867,7 +877,8 @@ local $storages = &console_cmd($h, "show storages");
 local @rv;
 local $storage;
 foreach my $l (split(/\r?\n/, $storages)) {
-	if ($l =~ /^Storage:\s+name=([^=]*\S)\s/) {
+	if ($l =~ /^Storage:\s+name=([^=]*\S)\s/ ||
+	    $l =~ /^\s*Name\s*=\s*"(.*)"/) {
 		$storage = { 'name' => $1 };
 		if ($l =~ /address=(\S+)/) {
 			$storage->{'address'} = $1;
@@ -876,6 +887,12 @@ foreach my $l (split(/\r?\n/, $storages)) {
 			$storage->{'port'} = $1;
 			}
 		push(@rv, $storage);
+		}
+	elsif ($l =~ /^\s*Address\s*=\s*"(.*)"/ && $storage) {
+		$storage->{'address'} = $1;
+		}
+	elsif ($l =~ /^\s*SDport\s*=\s*"(.*)"/ && $storage) {
+		$storage->{'port'} = $1;
 		}
 	}
 return @rv;
@@ -891,12 +908,16 @@ local $pools = &console_cmd($h, "show pools");
 local @rv;
 local $pool;
 foreach my $l (split(/\r?\n/, $pools)) {
-	if ($l =~ /^Pool:\s+name=([^=]*\S)\s/) {
+	if ($l =~ /^Pool:\s+name=([^=]*\S)\s/ ||
+	    $l =~ /^\s*Name\s*=\s*"(.*)"/) {
 		$pool = { 'name' => $1 };
 		if ($l =~ /PoolType=(\S+)/) {
 			$pool->{'type'} = $1;
 			}
 		push(@rv, $pool);
+		}
+	elsif ($l =~ /^\s*PoolType\s*=\s*"(.*)"/ && $pool) {
+		$pool->{'type'} = $1;
 		}
 	}
 return @rv;
