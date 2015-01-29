@@ -1990,6 +1990,7 @@ sub restart_bind
 if ($config{'restart_cmd'} eq 'restart') {
 	# Stop and start again
 	&stop_bind();
+	sleep(1);	# Systemd doesn't like rapid stops and starts
 	return &start_bind();
 	}
 elsif ($config{'restart_cmd'}) {
