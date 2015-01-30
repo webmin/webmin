@@ -305,7 +305,8 @@ if ($a->{'mtu'} && !&use_ifup_command($a) && &has_command("ip")) {
 if ($a->{'virtual'} eq '' && &has_command("ifconfig")) {
 	# Remove old IPv6 addresses
 	local $l = &backquote_command("ifconfig $a->{'name'}");
-	while($l =~ s/inet6 addr:\s*(\S+)\/(\d+)\s+Scope:(\S+)//) {
+	while($l =~ s/inet6 addr:\s*(\S+)\/(\d+)\s+Scope:(\S+)// ||
+	      $l =~ s/inet6\s+(\S+)\s+prefixlen\s+(\d+)\s+scopeid\s+\S+//) {
 		my $cmd = "ifconfig $a->{'name'} inet6 del $1/$2 2>&1";
 		$out = &backquote_logged($cmd);
 		&error("Failed to remove old IPv6 address : $out") if ($?);
