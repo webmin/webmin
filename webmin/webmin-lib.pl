@@ -1446,7 +1446,7 @@ for(my $i=1; $i<@_; $i++) {
 		my @mo = split(/\./, $1);
 		my @ms = split(/\./, $2);
 		for(my $j=0; $j<4; $j++) {
-			if ((int($io[$j]) & int($ms[$j])) != int($mo[$j])) {
+			if ((int($io[$j]) & int($ms[$j])) != (int($mo[$j]) & int($ms[$j]))) {
 				$mismatch = 1;
 				}
 			}

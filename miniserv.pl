@@ -2728,7 +2728,7 @@ for($i=2; $i<@_; $i++) {
 		@mo = split(/\./, $1);
 		@ms = split(/\./, $2);
 		for($j=0; $j<4; $j++) {
-			if ((int($io[$j]) & int($ms[$j])) != int($mo[$j])) {
+			if ((int($io[$j]) & int($ms[$j])) != (int($mo[$j]) & int($ms[$j]))) {
 				$mismatch = 1;
 				}
 			}
