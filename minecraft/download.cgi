@@ -11,7 +11,7 @@ our $progress_callback_url;
 # Validate inputs
 if ($in{'new'}) {	
 	$in{'dir'} =~ /^\/\S+$/ || &error($text{'download_edir'});
-	getpwnam($in{'user'}) || &error($text{'download_euser'});
+	defined(getpwnam($in{'user'})) || &error($text{'download_euser'});
 	}
 
 &ui_print_unbuffered_header(undef, $text{'download_title'}, "");

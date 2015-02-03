@@ -38,11 +38,14 @@ return undef;
 sub is_minecraft_port_in_use
 {
 &foreign_require("proc");
-my ($pid) = &proc::find_socket_processes("tcp:25565");
+my $port = $config{'port'} || 25565;
+my ($pid) = &proc::find_socket_processes("tcp:".$port);
 return $pid if ($pid);
 my @procs = &proc::list_processes();
+my $jar = $config{'minecraft_jar'} ||
+	  $config{'minecraft_dir'}."/"."minecraft_server.jar";
 foreach my $p (@procs) {
-	if ($p->{'args'} =~ /^java.*minecraft_server.jar/) {
+	if ($p->{'args'} =~ /^java.*\Q$jar\E/) {
 		return $p->{'pid'};
 		}
 	}
@@ -60,7 +63,7 @@ my $jar = $config{'minecraft_jar'} ||
 my $shortjar = $jar;
 $shortjar =~ s/^.*\///;
 foreach my $p (@procs) {
-	if ($p->{'args'} =~ /^\S*\Q$config{'java_cmd'}\E.*(\Q$jar\E|\Q$shortjar\E)/) {
+	if ($p->{'args'} =~ /^\S*\Q$config{'java_cmd'}\E.*\Q$jar\E/) {
 		return $p->{'pid'};
 		}
 	}
