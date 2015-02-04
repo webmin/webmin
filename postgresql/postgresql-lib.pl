@@ -1133,6 +1133,7 @@ local $cmd = &quote_path($config{'dump_cmd'}).
 	     (!$postgres_login ? "" :
 	      &supports_pgpass() ? " -U $postgres_login" : " -u").
 	     ($config{'host'} ? " -h $config{'host'}" : "").
+	     ($config{'port'} ? " -p $config{'port'}" : "").
 	     ($format eq 'p' ? "" : " -b").
 	     $tablesarg.
 	     " -F$format -f ".&quote_path($path)." $db";
@@ -1163,6 +1164,7 @@ local $cmd = &quote_path($config{'rstr_cmd'}).
 	     (!$postgres_login ? "" :
 	      &supports_pgpass() ? " -U $postgres_login" : " -u").
 	     ($config{'host'} ? " -h $config{'host'}" : "").
+	     ($config{'port'} ? " -p $config{'port'}" : "").
 	     ($only ? " -a" : "").
 	     ($clean ? " -c" : "").
 	     $tablesarg.
