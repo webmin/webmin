@@ -1546,6 +1546,13 @@ elsif ($h =~ /^([0-9\.]+)\/([0-9\.]+)$/) {
 	&check_ipaddress($2) ||
 		return &text('access_emask', "$2");
 	}
+elsif ($h =~ /^([0-9\.]+)\-([0-9\.]+)$/) {
+	# IPv4 address
+	&check_ipaddress("$1") ||
+		return &text('access_eip', "$1");
+	&check_ipaddress("$2") ||
+		return &text('access_eip', "$2");
+	}
 elsif ($h =~ /^[0-9\.]+$/) {
 	# IPv4 address
 	&check_ipaddress($h) ||
