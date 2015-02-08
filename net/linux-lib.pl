@@ -1,7 +1,7 @@
 # linux-lib.pl
 # Active interface functions for all flavours of linux
 
-# active_interfaces([include-no-address])
+# active_interfaces([include-no-ipv4-address])
 # Returns a list of currently ifconfig'd interfaces
 sub active_interfaces
 {
