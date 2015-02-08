@@ -103,7 +103,8 @@ elsif (&has_command("ip")) {
 			}
 
 		my (@address6, @netmask6, @scope6);
-		while($l =~ s/inet6\s+(\S+)\/(\d+)\s+scope\s+(\S+)//i) {
+		while($l =~ s/inet6\s+(\S+)\/(\d+)\s+scope\s+(\S+)//i ||
+		      $l =~ s/inet6\s+addr:\s+(\S+)\/(\d+)\s+Scope:(\S+)//i) {
 			local ($address6, $netmask6, $scope6) = ($1, $2, $3);
 			push(@address6, $address6);
 			push(@netmask6, $netmask6);
