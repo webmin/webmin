@@ -34,7 +34,7 @@ my @titles = ( $text{'filters_title'}, $text{'actions_title'},
 my @icons = ( "images/filters.gif", "images/actions.gif",
 	      "images/jails.gif", "images/config.gif",
 	      "images/manual.gif", );
-print &icons_table(\@links, \@titles, \@icons, 5);
+&icons_table(\@links, \@titles, \@icons, 5);
 
 # Show start / stop buttons
 print &ui_hr();
