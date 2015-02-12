@@ -108,7 +108,8 @@ elsif ($n) {
 	push(@hcols, $text{'lusers_used'}, $text{'lusers_soft'},
 		    $text{'lusers_hard'},
 		    $config{'show_grace'} ? ( $text{'lusers_grace'} ) : ( ));
-	print &ui_columns_header(\@hcols, \@tds);
+	@hcols = map { "<b>$_</b>" } @hcols;
+	print &ui_columns_row(\@hcols, \@tds);
 
 	# Sort groups
 	@order = (0 .. $n-1);
