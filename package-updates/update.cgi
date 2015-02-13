@@ -110,6 +110,12 @@ else {
 			&system_status::refresh_possible_packages(\@got);
 			}
 
+		# Refresh collected package info
+		if (&foreign_check("virtual-server") && @got) {
+			&foreign_require("virtual-server");
+			&virtual_server::refresh_possible_packages(\@got);
+			}
+
 		# Check if a reboot is required now
 		if (!$reboot_before && &check_reboot_required(1) &&
 		    &foreign_check("init")) {
