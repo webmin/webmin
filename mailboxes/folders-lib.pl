@@ -2085,7 +2085,7 @@ if ($lline =~ /^(\S+)\s+OK\s*(.*)/) {
 	}
 else {
 	# Command failed!
-	return (0, \@rv, $j, $lline =~ /^(\S+)\s+(\S+)\s*(.*)/ ? $3 : undef);
+	return (0, \@rv, $j, $lline =~ /^(\S+)\s+(\S+)\s*(.*)/ ? $3 : $lline);
 	}
 }
 
