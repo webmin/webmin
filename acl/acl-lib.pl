@@ -737,7 +737,7 @@ if ($username ne $user->{'name'} && !$user->{'proto'}) {
 
 if ($miniserv{'session'} && $username ne $user->{'name'}) {
 	# Modify all sessions for the renamed user
-	&rename_session_user(\&miniserv, $username, $user->{'name'});
+	&rename_session_user(\%miniserv, $username, $user->{'name'});
 	}
 }
 
