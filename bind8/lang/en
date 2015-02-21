@@ -824,6 +824,9 @@ log_dnssec=Change DNSSEC key re-signing
 
 convert_err=Failed to convert zone
 convert_efile=A records file must be specified before a slave zone can be converted to a master.
+convert_efilesize=Records file $1 does not exist or is empty
+convert_ebinary=The command needed to convert from a binary slave zone to a text format master is not installed
+convert_ecompile=Binary to text format conversion failed : $1
 
 whois_title=WHOIS Information
 whois_header=Output from command $1 ..
