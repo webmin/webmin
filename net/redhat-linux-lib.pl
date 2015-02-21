@@ -11,6 +11,7 @@ else {
 	$net_scripts_dir = "/etc/sysconfig/network-scripts";
 	$devices_dir = "/etc/sysconfig/networking/devices";
 	}
+$route_files_dir = -d $devices_dir ? $devices_dir : $net_scripts_dir;
 $network_config = "/etc/sysconfig/network";
 $static_route_config = "/etc/sysconfig/static-routes";
 $sysctl_config = "/etc/sysctl.conf";
@@ -577,13 +578,13 @@ if (!$supports_dev_routes) {
 else {
 	# get static routes from per-interface files
 	local $f;
-	opendir(DIR, &translate_filename($devices_dir));
+	opendir(DIR, &translate_filename($route_files_dir));
 	while($f = readdir(DIR)) {
 		if ($f =~ /^([a-z]+\d*(\.\d+)?(:\d+)?)\.route$/ ||
 		    $f =~ /^route\-([a-z]+\d*(\.\d+)?(:\d+)?)$/) {
 			local $dev = $1;
 			local (%rfile, $i);
-			&read_env_file("$devices_dir/$f", \%rfile);
+			&read_env_file("$route_files_dir/$f", \%rfile);
 			for($i=0; defined($rfile{"ADDRESS$i"}); $i++) {
 				if ($rfile{"GATEWAY$i"}) {
 					push(@st, [ $dev, $rfile{"ADDRESS$i"},
@@ -735,7 +736,7 @@ if (!$supports_dev_routes) {
 else {
 	# Write to one file per interface (delete old, then save new/updated)
 	local $f;
-	opendir(DIR, &translate_filename($devices_dir));
+	opendir(DIR, &translate_filename($route_files_dir));
 	while($f = readdir(DIR)) {
 		if (($f =~ /^([a-z]+\d*(\.\d+)?(:\d+)?)\.route$/ ||
 		     $f =~ /^route\-([a-z]+\d*(\.\d+)?(:\d+)?)$/) && !$st{$1}) {
@@ -752,12 +753,15 @@ else {
 			$rfile{"NETMASK$i"} = $st{$dev}->[$i]->[1];
 			$rfile{"GATEWAY$i"} = $st{$dev}->[$i]->[2];
 			}
-		&lock_file("$devices_dir/$f");
-		&write_env_file("$devices_dir/$f", \%rfile);
-		&unlock_file("$devices_dir/$f");
-		&lock_file("$net_scripts_dir/$f");
-		&link_file("$devices_dir/$f", "$net_scripts_dir/$f");
-		&unlock_file("$net_scripts_dir/$f");
+		&lock_file("$route_files_dir/$f");
+		&write_env_file("$route_files_dir/$f", \%rfile);
+		&unlock_file("$route_files_dir/$f");
+		if ($route_files_dir ne $net_scripts_dir) {
+			&lock_file("$net_scripts_dir/$f");
+			&link_file("$route_files_dir/$f",
+				   "$net_scripts_dir/$f");
+			&unlock_file("$net_scripts_dir/$f");
+			}
 		}
 	}
 &write_env_file($network_config, \%conf);
