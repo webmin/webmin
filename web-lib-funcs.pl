@@ -10212,7 +10212,10 @@ if (&foreign_available("webmin")) {
 	}
 # Obey vetos for blocks from other modules
 foreach my $veto (grep { $_->{'type'} eq 'veto' } @rv) {
-	@rv = grep { $_->{'id'} ne $veto->{'veto'} } @rv;
+	@rv = grep { my $v = $_->{'id'} eq $veto->{'veto'} &&
+			     (!$veto->{'veto_module'} ||
+			      $veto->{'veto_module'} eq $_->{'module'});
+		     !$v } @rv;
 	}
 @rv = grep { $_->{'type'} ne 'veto' } @rv;
 return sort { ($b->{'priority'} || 0) <=> ($a->{'priority'} || 0) } @rv;
