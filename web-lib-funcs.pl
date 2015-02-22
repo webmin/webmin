@@ -3422,7 +3422,7 @@ else {
 		@files = split(/\s+/, $minfo{'library'});
 		}
 	else {
-		@files = ( $mod."-lib.pl" );
+		@files = ( ($minfo{'cloneof'} || $mod)."-lib.pl" );
 		}
 	}
 @files = grep { !$main::done_foreign_require{$pkg,$_} } @files;
@@ -4940,7 +4940,8 @@ if (-l $mdir) {
 	# A clone is a module that links to another directory under the root
 	foreach my $r (@root_directories) {
 		if (&is_under_directory($r, $mdir)) {
-			$clone = 1;
+			$clone = readlink($mdir);
+			$clone =~ s/^.*\///;
 			last;
 			}
 		}
@@ -4951,6 +4952,7 @@ foreach $o (@lang_order_list) {
 	}
 if ($clone && !$_[1] && $config_directory) {
 	$rv{'clone'} = $rv{'desc'};
+	$rv{'cloneof'} = $clone;
 	&read_file("$config_directory/$_[0]/clone", \%rv);
 	}
 $rv{'dir'} = $_[0];
