@@ -172,19 +172,19 @@ foreach $serv (@services) {
 				      $serv->{'desc'}, $host);
 			if ($notify{'pager'}) {
 				$pager_msg .= &make_message($suffix, $host,
-							    $serv, 'pager');
+							$serv, 'pager', $stat);
 				}
 			if ($notify{'sms'}) {
 				$sms_msg .= &make_message($suffix, $host,
-                                                          $serv, 'sms');
+							$serv, 'sms', $stat);
 				}
 			if ($notify{'snmp'}) {
 				push(@snmp_msg, &make_message($suffix, $host,
-                                                              $serv, 'snmp'));
+							$serv, 'snmp', $stat));
 				}
 			if ($notify{'email'}) {
 				$thisemail .= &make_message($suffix, $host,
-                                                              $serv, 'email');
+							$serv, 'email', $stat);
 				if ($out) {
 					$thisemail .= $out;
 					}
@@ -480,12 +480,12 @@ $t =~ s/([=\177-\377])/sprintf("=%2.2X",ord($1))/ge;
 return $t;
 }
 
-# make_message(status, host, &server, type)
+# make_message(status, host, &server, type, &status)
 # Returns the message for some email, SMS or SNMP. May use a template, or
 # the built-in default.
 sub make_message
 {
-local ($suffix, $host, $serv, $type) = @_;
+local ($suffix, $host, $serv, $type, $stat) = @_;
 local $tmpl = $serv->{'tmpl'} ? &get_template($serv->{'tmpl'}) : undef;
 if ($tmpl && $tmpl->{$type}) {
 	# Construct from template
@@ -498,6 +498,11 @@ if ($tmpl && $tmpl->{$type}) {
 		      );
 	foreach my $s (@monitor_statuses) {
 		$hash{uc($s)} ||= 0;
+		}
+	if ($stat) {
+		foreach my $k ('value', 'nice_value', 'desc') {
+			$hash{'STATUS_'.uc($k)} = $stat->{$k} if ($stat->{$k});
+			}
 		}
 	foreach my $k (keys %$serv) {
 		$hash{'SERVICE_'.uc($k)} = $serv->{$k};
