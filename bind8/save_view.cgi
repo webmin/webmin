@@ -20,6 +20,23 @@ $access{'ro'} && &error($text{'view_ecannot'});
 &save_address("allow-query", $view, 1);
 &save_address("also-notify", $view, 1);
 &save_address("allow-notify", $view, 1);
+
+if ($in{'transfer-source'})
+{
+        &check_ipaddress($in{'transfer-source'}) || &error(&text('net_eaddr', $in{'transfer-source'}));
+        push(@tvals, $in{'transfer-source'});
+        if (@tvals)
+        {
+                &save_directive($view, 'transfer-source',
+                [ { 'name' => 'transfer-source',
+                'values' => \@tvals } ], 1);
+        }
+}
+else
+{
+        &save_directive($view, 'transfer-source', [], 1);
+}
+
 &flush_file_lines();
 &unlock_file(&make_chroot($view->{'file'}));
 &webmin_log("view", undef, $view->{'value'}, \%in);
