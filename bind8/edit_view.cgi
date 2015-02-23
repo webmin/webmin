@@ -44,6 +44,9 @@ print &address_input($text{'master_query'}, "allow-query", $vconf);
 print &address_input($text{'master_notify2'}, "also-notify", $vconf);
 print &address_input($text{'master_notify3'}, "allow-notify", $vconf);
 
+$src = &find("transfer-source", $vconf);
+print &ui_table_row($text{'net_taddr'}, &ui_textbox("transfer-source", $src->{'values'}->[0], 15));
+
 print &ui_table_end();
 
 if ($access{'ro'}) {
