@@ -4656,7 +4656,7 @@ if ($0 &&
 	else {
 		# No referer info given
 		print &text('referer_warn_unknown', $url),"<p>\n";
-		print &text('referer_fix1u'),"<p>\n";
+		print &text('referer_fix3u'),"<p>\n";
 		print &text('referer_fix2u'),"<p>\n";
 		}
 	print "<p>\n";
