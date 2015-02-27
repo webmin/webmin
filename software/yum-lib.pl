@@ -245,7 +245,8 @@ local ($done) = @_;
 &open_execute_command(PKG, "yum list-sec 2>/dev/null", 1, 1);
 while(<PKG>) {
 	s/\r|\n//g;
-	if (/^\S+\s+security\s+(\S+?)\-([0-9]\S+)\.([^\.]+)$/) {
+	next if (/^(Loaded|updateinfo)/);
+	if (/^\S+\s+\S+\s+(\S+?)\-([0-9]\S+)\.([^\.]+)$/) {
 		local ($name, $ver) = ($1, $2);
 		if ($done->{$name}) {
 			$done->{$name}->{'source'} = 'security';
