@@ -109,6 +109,12 @@ my $cl = $ENV{'CONTENT_LENGTH'};
 &write_http_connection($con, "Content-length: $cl\r\n") if ($cl);
 &write_http_connection($con, "Content-type: $ENV{'CONTENT_TYPE'}\r\n")
 	if ($ENV{'CONTENT_TYPE'});
+my $ref = $ENV{'HTTP_REFERER'};
+if ($ref && $ref =~ /^.*\Q$url\E(.*)/) {
+	my $rurl = ($s->{'ssl'} ? 'https' : 'http').'://'.$s->{'host'}.
+		   ':'.$s->{'port'}.$1;
+	&write_http_connection($con, "Referer: $rurl\r\n");
+	}
 &write_http_connection($con, "\r\n");
 my $post;
 if ($cl) {
