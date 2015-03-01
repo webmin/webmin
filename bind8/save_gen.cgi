@@ -115,6 +115,18 @@ my ($i, $m) = @_;
 $m =~ s/^\{//;
 $m =~ s/\}$//;
 my ($o, $w, $b) = split(/,/, $m);
+if ($o !~ /^\-?\d+$/) {
+	# Disallowed offset
+	$o = 0;
+	}
+if ($w !~ /^\d+$/) {
+	# Disallowed width
+	$w = 0;
+	}
+if ($b !~ /^[doxXnN]$/) {
+	# Disallowed modifier
+	$b = undef;
+	}
 $b ||= "d";
 $i += $o;
 $i = sprintf("%".($w ? "0".$w : "").$b, $i);
