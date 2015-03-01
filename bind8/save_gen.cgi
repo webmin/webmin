@@ -42,7 +42,8 @@ if ($in{'show'}) {
 
 			$rhs = $gv[3];
 			$rhs =~ s/\$\$/\0/g;
-			$rhs =~ s/\$/$i/g;
+			#$rhs =~ s/\$/$i/g;
+			$rhs =~ s/(\$(\{[^\}]*\})?)/&expand_mods($i,$2)/ge;
 			$rhs =~ s/\0/\$/g;
 			$rhsfull = &check_ipaddress($rhs) ? $rhs :
 				   $rhs =~ /\.$/ ? $rhs :
@@ -108,3 +109,14 @@ for($i=0; defined($in{"type_$i"}); $i++) {
 &sign_dnssec_zone_if_key($zone, \@recs);
 &redirect("edit_master.cgi?zone=$in{'zone'}&view=$in{'view'}");
 
+sub expand_mods
+{
+my ($i, $m) = @_;
+$m =~ s/^\{//;
+$m =~ s/\}$//;
+my ($o, $w, $b) = split(/,/, $m);
+$b ||= "d";
+$i += $o;
+$i = sprintf("%".($w ? "0".$w : "").$b, $i);
+return $i;
+}
