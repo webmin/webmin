@@ -78,11 +78,11 @@ for($i=0; defined($in{"type_$i"}); $i++) {
 		if ($in{"skip_$i"}) {
 			$gv[$#gv] .= "/".$in{"skip_$i"};
 			}
-		$in{"name_$i"} =~ /^[A-Za-z0-9\.\-$uscore$star\$]+$/ ||
+		$in{"name_$i"} =~ /^[A-Za-z0-9\.\-$uscore$star\$\{\},]+$/ ||
 			&error(&text('gen_ename', $i+1));
 		push(@gv, $in{"name_$i"});
 		push(@gv, $in{"type_$i"});
-		$in{"value_$i"} =~ /^[A-Za-z0-9\.\-$uscore$star\$]+$/ ||
+		$in{"value_$i"} =~ /^[A-Za-z0-9\.\-$uscore$star\$\{\},]+$/ ||
 			&error(&text('gen_evalue', $i+1));
 		push(@gv, $in{"value_$i"});
 		push(@gv, $in{"cmt_$i"}) if ($in{"cmt_$i"});
