@@ -132,8 +132,18 @@ else {
 	}
 
 # Open the replies tracking DBM, if one was set
-if ($rheader{'Reply-Tracking'}) {
-	$track_replies = dbmopen(%replies, $rheader{'Reply-Tracking'}, 0700);
+my $rtfile = $rheader{'Reply-Tracking'};
+if ($rtfile) {
+	$track_replies = dbmopen(%replies, $rtfile, 0700);
+	eval { $replies{"test\@example.com"} = 1; };
+	if ($@) {
+		# DBM is corrupt! Clear it
+		dbmclose(%replies);
+		unlink($rtfile.".dir");
+		unlink($rtfile.".pag");
+		unlink($rtfile.".db");
+		$track_replies = dbmopen(%replies, $rtfile, 0700);
+		}
 	}
 if ($track_replies) {
 	# See if we have replied to this address before
