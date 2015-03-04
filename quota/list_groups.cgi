@@ -53,6 +53,21 @@ elsif ($n) {
 		print &ui_hidden('dir', $f),"\n";
 		}
 
+	# Generate summary of blocks and files used
+	($binfo, $finfo) = &filesystem_info($f, \%user, $n, $fsbsize);
+	$show_pc_hblocks = $threshold_pc != 101 &&
+			   $config{'pc_show'} >= 1;
+	$show_pc_sblocks = $threshold_pc != 101 &&
+			   $config{'pc_show'}%2 == 0;
+	print "<b>";
+	print $bsize ? $text{'lusers_space'}
+		     : $text{'lusers_blocks'};
+	print $access{'diskspace'} ? " ($binfo)" : "";
+	print "&nbsp;\n";
+	print $text{'lusers_files'};
+	print $access{'diskspace'} ? " ($finfo)" : "";
+	print "</b><p>\n";
+
 	# Generate select links
 	@links = ( &select_all_link("d", $form),
 		   &select_invert_link("d", $form),
@@ -61,34 +76,7 @@ elsif ($n) {
 		print &ui_links_row(\@links);
 		}
 
-	# Generate first header (with blocks and files)
-	local @hcols;
-	local @tds;
-	if (!$access{'ro'}) {
-		push(@hcols, "");
-		push(@tds, "width=5");
-		}
-	push(@hcols, "");
-	push(@tds, "");
-	($binfo, $finfo) = &filesystem_info($f, \%group, $n, $fsbsize);
-	$show_pc_hblocks = $threshold_pc != 101 &&
-			   $config{'pc_show'} >= 1;
-	$show_pc_sblocks = $threshold_pc != 101 &&
-			   $config{'pc_show'}%2 == 0;
-	$cols1 = 3 + ($show_pc_hblocks ? 1 : 0) +
-		     ($show_pc_sblocks ? 1 : 0) +
-		     ($config{'show_grace'} ? 1 : 0);
-	$cols2 = 3 + ($config{'show_grace'} ? 1 : 0);
-	push(@hcols, ($bsize ? $text{'lusers_space'} :
-			      $text{'lusers_blocks'}).
-		    ($access{'diskspace'} ? " ($binfo)" : ""));
-	push(@tds, "colspan=$cols1 align=center");
-	push(@hcols, $text{'lusers_files'}.
-		    ($access{'diskspace'} ? " ($finfo)" : ""));
-	push(@tds, "colspan=$cols2 align=center");
-	print &ui_columns_start(\@hcols, 100, 0, \@tds);
-
-	# Generate second header (with used/soft/hard)
+	# Generate header (with used/soft/hard)
 	local @hcols;
 	local @tds;
 	if (!$access{'ro'}) {
@@ -108,8 +96,7 @@ elsif ($n) {
 	push(@hcols, $text{'lusers_used'}, $text{'lusers_soft'},
 		    $text{'lusers_hard'},
 		    $config{'show_grace'} ? ( $text{'lusers_grace'} ) : ( ));
-	@hcols = map { "<b>$_</b>" } @hcols;
-	print &ui_columns_row(\@hcols, \@tds);
+	print &ui_columns_start(\@hcols, \@tds);
 
 	# Sort groups
 	@order = (0 .. $n-1);
