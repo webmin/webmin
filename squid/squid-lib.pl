@@ -454,7 +454,12 @@ foreach my $d ("cache_access_log", "access_log", "cache_log",
 # add cache directories
 if (my @str = &find_config("cache_dir", $conf)) {
 	foreach my $str (@str) {
-		push(@list, $str->{'values'}->[0]);
+		if ($squid_version >= 2.3) {
+			push(@list, $str->{'values'}->[1]);
+			}
+		else {
+			push(@list, $str->{'values'}->[0]);
+			}
 		}
 	}
 else {

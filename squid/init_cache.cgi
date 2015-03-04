@@ -35,8 +35,15 @@ if (!$in{'nouser'}) {
 	&flush_file_lines();
 	}
 
-# If cache_dir is set but disabled, enable it
+# If cache_dir is set but disabled, enable it by un-commenting (but only the
+# valid directives)
 my @cachestruct = &find_config("cache_dir", $conf, 2);
+if ($squid_version >= 2.3) {
+	@cachestruct = map { $_->{'values'}->[1] } @cachestruct;
+	}
+else {
+	@cachestruct = map { $_->{'values'}->[0] } @cachestruct;
+	}
 if (@cachestruct) {
 	&save_directive($conf, "cache_dir", \@cachestruct);
 	&flush_file_lines();
