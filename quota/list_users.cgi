@@ -67,7 +67,7 @@ elsif ($n) {
 	print "&nbsp;\n";
 	print $text{'lusers_files'};
 	print $access{'diskspace'} ? " ($finfo)" : "";
-	print "</b><p>\n";
+	print "</b><br>\n";
 
 	# Generate select links
 	@links = ( &select_all_link("d", $form),
