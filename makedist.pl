@@ -107,7 +107,8 @@ foreach $m (@mlist) {
 	opendir(DIR, $m);
 	foreach $f (readdir(DIR)) {
 		if ($f =~ /^\./ || $f eq "test" || $f =~ /\.bak$/ ||
-		    $f =~ /\.tmp$/ || $f =~ /\.site$/) { next; }
+		    $f =~ /\.tmp$/ || $f =~ /\.site$/ || $f eq ".builds" ||
+		    $f =~ /\.(tar|wbm|wbt)\.gz$/) { next; }
 		$flist .= " $m/$f";
 		}
 	closedir(DIR);
