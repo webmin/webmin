@@ -3009,7 +3009,7 @@ if (&should_switch_to_mail_user()) {
 	# Switch file permissions to the correct user
 	my @uinfo = &get_switch_user_info();
 	@uinfo || &error("Mail open user $main::mail_open_user ".
-			 "does not exists");
+			 "does not exist");
 	$) = $uinfo[3]." ".join(" ", $uinfo[3], &other_groups($uinfo[0]));
 	$> = $uinfo[2];
 	return 1;
