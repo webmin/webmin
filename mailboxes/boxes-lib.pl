@@ -3021,9 +3021,12 @@ return 0;
 # Returns the getpw* function array for the user to switch to
 sub get_switch_user_info
 {
-return $main::mail_open_user =~ /^\d+$/ ?
-	getpwuid($main::mail_open_user) :
-	getpwnam($main::mail_open_user);
+if ($main::mail_open_user =~ /^\d+$/) {
+	# Could be by UID .. but fall back to by name if there is no such UID
+	my @rv = getpwuid($main::mail_open_user);
+	return @rv if (@rv > 0);
+	}
+return getpwnam($main::mail_open_user);
 }
 
 1;
