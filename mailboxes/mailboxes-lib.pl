@@ -80,7 +80,6 @@ if ($_[0] =~ /^\//) {
 		   'file' => $_[0],
 		   'type' => &folder_type($_[0]),
 		   'mode' => 1,
-		   'user' => $_[0],
 		   'index' => 0 } );
 	}
 else {
