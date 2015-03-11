@@ -67,6 +67,7 @@ cvirt_ename='$1' no és un nom de servidor vàlid
 cvirt_eroot1=Has d'introduir l'arrel dels documents
 cvirt_eroot2=No s'ha pogut crear el directori '$1': $2
 cvirt_eroot3=No tens permís per utilitzar el directori arrel '$1'
+cvirt_eroot4=No hi ha cap usuari definit a la configuracio d'Apache
 cvirt_etaken=Ja existeix un servidor virtual amb el mateix nom i el mateix port
 cvirt_efile=No s'ha pogut escriure a $1: $2
 cvirt_emissing=S'ha afegit el nou servidor virtual a $1, però Apache no està utilitzant aquest fitxer. Comprova la <a href='$2'>configuració del mòdul</a> i assegura't que el 'Fitxer o directori on s'afegeixen els servidors virtuals' és correcte.
