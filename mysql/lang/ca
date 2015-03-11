@@ -793,7 +793,6 @@ cnf_socket=Sòcol Unix de MySQL
 cnf_datadir=Directori de fitxers de bases de dades
 cnf_stor=Motor d'emmagatzematge de taules per defecte
 cnf_big-tables=Permet taules grans
-cnf_skip-locking=Omet el bloqueig de fitxers de taules
 cnf_emysqld=No es troba la secció [mysqld] a my.cnf
 cnf_err=No s'han pogut desar les opcions del servidor MySQL
 cnf_eport=Hi falta el número de port o bé és invàlid

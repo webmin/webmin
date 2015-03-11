@@ -297,6 +297,7 @@ linux_resgid=Reserva espai pel grup
 linux_bg=Reintenta els muntatges en segon pla
 linux_soft=Retorna error per límit de temps
 linux_timeo=Temps límit
+linux_etimeo=El temps límit ha de ser un número
 linux_retrans=Nombre de Retransmissions
 linux_vers=Versió NFS
 linux_high=La més alta
