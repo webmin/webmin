@@ -395,3 +395,5 @@ Windows				Vista	windows		Vista	(-d "c:/windows" || -d "c:/winnt") && `ver` =~ /
 Windows				2008	windows		2008	(-d "c:/windows" || -d "c:/winnt") && `ver` =~ /\s6\.0\.6002/
 Windows				7	windows		7	(-d "c:/windows" || -d "c:/winnt") && `ver` =~ /\s6\.0\.76[0-9][0-9]/
 Windows				8	windows		8	(-d "c:/windows" || -d "c:/winnt") && `ver` =~ /\s6\.2\.92[0-9][0-9]/
+Windows				8.1	windows		8.1	(-d "c:/windows" || -d "c:/winnt") && `ver` =~ /\s6\.3\.9[0-9]00/
+Windows				10	windows		10	(-d "c:/windows" || -d "c:/winnt") && `ver` =~ /\s10\.0\.[0-9][0-9][0-9][0-9]/
