@@ -169,6 +169,8 @@ system("find $usr_dir -name '*.bak' | xargs rm -rf");
 system("find $usr_dir -name '*~' | xargs rm -rf");
 system("find $usr_dir -name '*.rej' | xargs rm -rf");
 system("find $usr_dir -name core | xargs rm -rf");
+system("find $usr_dir -name RELEASE | xargs rm -rf");
+system("find $usr_dir -name RELEASE.sh | xargs rm -rf");
 
 # Fix up Perl paths
 system("(find $usr_dir -name '*.cgi' ; find $usr_dir -name '*.pl') | perl -ne 'chop; open(F,\$_); \@l=<F>; close(F); \$l[0] = \"#\!/usr/bin/perl\$1\n\" if (\$l[0] =~ /#\!\\S*perl\\S*(.*)/); open(F,\">\$_\"); print F \@l; close(F)'");

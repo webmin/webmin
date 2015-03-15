@@ -65,6 +65,7 @@ foreach $m (@ARGV) {
 	$flags = !-r $file ? "chf" : "rhf";
 	system("cd /tmp/create-module && find . -name .svn | xargs rm -rf");
 	system("cd /tmp/create-module && find . -name '*~' -o -name '*.rej' -o -name '*.orig' -o -name '.*.swp' | xargs rm -rf");
+	system("cd /tmp/create-module && find . -name RELEASE -o -name RELEASE.sh | xargs rm -rf");
 	unlink("/tmp/create-module/$subdir/IDEAS");
 	system("cd /tmp/create-module && find . -name \\*.svn-work | xargs rm -rf");
 	system("cd /tmp/create-module && find . -name \\*.svn-base | xargs rm -rf");

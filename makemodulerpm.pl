@@ -172,6 +172,8 @@ system("/usr/bin/find /tmp/makemodulerpm -name '*~' | xargs rm -rf");
 system("/usr/bin/find /tmp/makemodulerpm -name '*.rej' | xargs rm -rf");
 system("/usr/bin/find /tmp/makemodulerpm -name '.*.swp' | xargs rm -rf");
 system("/usr/bin/find /tmp/makemodulerpm -name core | xargs rm -rf");
+system("/usr/bin/find /tmp/makemodulerpm -name RELEASE | xargs rm -rf");
+system("/usr/bin/find /tmp/makemodulerpm -name RELEASE.sh | xargs rm -rf");
 system("/bin/chown -R root:bin /tmp/makemodulerpm/$mod");
 
 # Tar up the directory
