@@ -80,6 +80,10 @@ else {
 		if ($in{'hardware'} =~ /^([0-9a-f]{2})([0-9a-f]{2}).([0-9a-f]{2})([0-9a-f]{2}).([0-9a-f]{2})([0-9a-f]{2}).([0-9a-f]{2})([0-9a-f]{2})$/i) {
 			$in{'hardware'} = "$1:$2:$3:$4:$5:$6";
 			}
+		# Handle an Ethernet address with no formatting at all
+		if ($in{'hardware'} =~ /^([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i) {
+			$in{'hardware'} = "$1:$2:$3:$4:$5:$6";
+			}
 		$in{'hardware'} =~ /^([0-9a-f]{1,2}:)*[0-9a-f]{1,2}$/i ||
 			&error(&text('shost_invalidhwa', $in{'hardware'},
 				     $in{'hardware_type'}) );
