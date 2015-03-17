@@ -72,9 +72,10 @@ if ($st[7] != $config{'dhcpd_size'} || $st[9] != $config{'dhcpd_mtime'}) {
 
 # Create lookup type HTML
 # XXX change text, add to lookup_*
-$matches = ui_select("match", undef, [ [0,$text{'index_match0'},"selected"],
-                            [1,$text{'index_match1'},""],
-                            [2,$text{'index_match2'},""] ]);
+$matches = ui_select("match", $config{'match_default'} || 0,
+		     [ [0, $text{'index_match0'} ],
+                       [1, $text{'index_match1'} ],
+                       [2, $text{'index_match2'} ] ]);
 
 # get top-level hosts
 foreach $h (&find("host", $conf)) {
