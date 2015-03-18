@@ -542,7 +542,7 @@ sub filesystem_users
 my ($fs) = @_;
 if (&is_xfs_fs($fs)) {
 	return &parse_xfs_report_output(
-		"xfs_quota -xc 'report -u -b -i'", \%user, 'user', $fs);
+		"xfs_quota -xc 'report -u -b -i -n'", \%user, 'user', $fs);
 	}
 else {
 	return &parse_repquota_output(
@@ -665,6 +665,13 @@ foreach my $l (@rep) {
 			if ($what->{$nn,'gblocks'} =~ /^\-+$/);
 		$what->{$nn,'gfiles'} = undef
 			if ($what->{$nn,'gfiles'} =~ /^\-+$/);
+		if ($what->{$nn,$mode} =~ /^#(\d+)$/) {
+			my $u = $mode eq "user" ? getpwuid("$1")
+						: getgrgid("$1");
+			if ($u) {
+				$what->{$nn,$mode} = $u;
+				}
+			}
 		$nn++;
 		}
 	}
