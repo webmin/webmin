@@ -562,7 +562,7 @@ sub filesystem_groups
 my ($fs) = @_;
 if (&is_xfs_fs($fs)) {
 	return &parse_xfs_report_output(
-		"xfs_quota -xc 'report -g -b -i'", \%group, 'group', $fs);
+		"xfs_quota -xc 'report -g -b -i -n'", \%group, 'group', $fs);
 	}
 else {
 	return &parse_repquota_output(
