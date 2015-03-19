@@ -10,7 +10,7 @@ $conf = &get_config();
 
 # Validate and save inputs, starting with global base
 $in{'base'} =~ /\S/ || &error($text{'base_ebase'});
-&save_directive($conf, "base", $in{'base'});
+@bases = ( $in{'base'} );
 
 # Save scope
 &save_directive($conf, "scope", $in{'scope'} || undef);
@@ -26,11 +26,12 @@ else {
 
 # Save per-service bases
 foreach $b (@base_types) {
+	local $base;
 	if ($in{"base_".$b."_def"}) {
-		&save_directive($conf, "nss_base_".$b, undef);
+		$base = undef;
 		}
 	else {
-		local $base = $in{"base_".$b};
+		$base = $in{"base_".$b};
 		$base =~ /\S/ || &error($text{'base_e'.$b});
 		if ($in{'scope_'.$b}) {
 			$base .= "?".$in{'scope_'.$b};
@@ -39,9 +40,19 @@ foreach $b (@base_types) {
 			$base .= "?" if ($in{'scope_'.$b});
 			$file .= "?".$in{'filter_'.$b};
 			}
+		}
+	if (&get_ldap_client() eq "nss") {
+		# Update DB-specific directive
 		&save_directive($conf, "nss_base_".$b, $base);
 		}
+	else {
+		# Add to list of base directives to save
+		push(@bases, $b." ".$base) if ($base);
+		}
 	}
+
+# Save all base directives
+&save_directive($conf, "base", \@bases);
 
 # Write out config
 &flush_file_lines();
