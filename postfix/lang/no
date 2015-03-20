@@ -251,6 +251,8 @@ index_econfig=Postfix sin konfig kommando $1 finnes ikke. Kanskje <a href='$2'>m
 index_epath=Postfix kontrollkommandoen $1 er ikke installert. Kanskje <a href='$2'>modulkonfigurasjonen</a> er feil, eller s&#229; er Postfix ikke installert.
 index_esuper=Postfix overv&#229;kingskommando $1 finnes ikke. Kanskje <a href='$2'>modulkonfigurasjonen</a> er feil.
 index_postfix=Postfix
+index_reload=Last om konfigurasjon
+index_reloadmsg=Klikk p&#229; denne knappen for &#229; be Postfix om &#229; lese alle sine konfigurasjonsfiler p&#229; nytt. Dette kan v&#230;re nyttig n&#229;r Postix' konfigurasjonsfiler er endret manuelt.
 index_return=Postfix konfigurasjon
 index_start=Start Postfix
 index_startmsg=Klikk p&#229; denne knappen for &#229; starte Postfix. F&#248;r dette er gjort vil ikke e-post bli levert til lokale brukere og klienter vil ikke kunne benytte dette systemet som e-post tjener.
@@ -330,6 +332,7 @@ log_rate=Endret leveringsrater
 log_recipient_canonical_maps_create=Opprettet kanonisk tilordning $1 for mottaker
 log_recipient_canonical_maps_delete=Slettet kanonisk tilordning $1 for mottaker
 log_recipient_canonical_maps_modify=Endret kanonisk tilordning $1 for mottaker
+log_reload=Lastet om Postfix konfigurasjon
 log_relocated=Endret innstillinger for tilordning av omplassering
 log_relocated_maps_create=Opprettet tilordning $1 av omplassering
 log_relocated_maps_delete=Slettet tilordning $1 av omplassering

@@ -214,9 +214,9 @@ readparse_cdheader=Manglende Content-Disposition header
 readparse_enc=Forventet form-data tegnkoding, men mottok normal tegnkoding
 readparse_max=Data overskred maksimumsstørrelse på $1 bytes
 referer_fix1=Dersom dette er en gyldig lenke, kan du tillate lenker fra denne URLen på følgende måte:<ul><li>Logg inn på Webmin på vanlig måte.<li>Gå til <b>Webmin konfigurasjon</b> modulen.<li>Klikk på ikonet Betrodde referenter.<li>Skriv inn vertsnavnet $1 inn i feltet <b>Betrodde nettsteder</b>, og klikk <b>Lagre</b>.</ul>
-referer_fix1u=Dersom nettleseren din ikke sender den nødvendige <tt>Referer</tt> headeren, kan du slå av denne sjekken på følgende måte :<ul><li>Logg inn på Webmin på vanlig måte.<li>Gå til <b>Webmin konfigurasjon</b> modulen.<li>Klikk på ikonet Betrodde Referenter.<li>Kryss av i boksen <b>Stol på lenker fra ukjente referenter</b>, og klikk <b>Lagre</b>.</ul>
 referer_fix2=Alternativt kan du konfigurere Webmin til å tillate denne lenken fra kommandolinjen ved å:<ul><li>Logge inn som <tt>root</tt>, og redigere filen <tt>/etc/webmin/config</tt>.<li>Legg til linjen <tt>referers=$1</tt> på slutten, eller dersom en <tt>referers</tt> linje allerede finnes legger du til <tt>$1</tt> til den.<li>Lagre filen.</ul>
 referer_fix2u=Alternativt kan du konfigurere Webmin til å tillate lenker fra ukjente referenter ved å :<ul><li>Logge inn som <tt>root</tt>, og redigere filen <tt>/etc/webmin/config</tt>.<li>Finn linjen <tt>referers_none=1</tt> og endre den til <tt>referers_none=0</tt>.<li>Lagre filen.</ul>
+referer_fix3u=Forsikre deg om at nettleseren din er konfigurert til å sende referer-informasjon slik at den kan verifiseres av Webmin
 referer_title=Sikkerhetsadvarsel
 referer_warn=<b>Advarsel!</b> Webmin har oppdaget at URL $1 linken til programmet $2, ser ut til å vare utenfor Webmin serveren. Dette kan vare ett forsøk på å lure din server til å utføre ett farligt kommando.
 referer_warn_unknown=<b>Advarsel!</b> Webmin har oppdaget at programmet $1 ble lenket til fra en ukjent URL, som ser ut til å ligge utenfor Webmin serveren. Dette kan være ett forsøk på å lure din server til å utføre en farlig kommando.
