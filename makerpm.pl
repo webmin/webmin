@@ -67,6 +67,7 @@ Release: $rel
 Provides: %{name}-%{version}
 PreReq: /bin/sh /usr/bin/perl /bin/rm
 Requires: /bin/sh /usr/bin/perl /bin/rm
+Recommends: perl(Net::SSLeay) openssl
 AutoReq: 0
 License: Freeware
 Group: System/Tools
