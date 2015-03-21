@@ -11,7 +11,7 @@ $f =~ s/\/$//;
 if ($f !~ /^\//) {
 	# if the filename is not absolute, look for it
 	foreach $p (split(/:/, $ENV{'PATH'})) {
-		last if (&installed_file("$p/$f"));
+		last if (&installed_file("$p/$f") && %file);
 		}
 	}
 else {
