@@ -75,7 +75,7 @@ sub list_switch_sources
 if ($gconfig{'os_type'} =~ /-linux$/) {
 	# All Linux variants
 	return ( [ 'files', 'nisplus', 'nis', 'compat', 'dns', 'db',
-		   'hesiod', 'ldap' ],
+		   'hesiod', 'ldap', 'sss' ],
 		 { 'dns' => [ 'hosts' ],
 		   'compat' => [ 'passwd', 'shadow', 'group' ] } );
 	}

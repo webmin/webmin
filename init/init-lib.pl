@@ -1302,7 +1302,8 @@ elsif ($action_mode eq "upstart") {
 elsif ($action_mode eq "systemd") {
 	# Check with systemd if it is running
 	my @systemds = &list_systemd_services();
-	my ($u) = grep { $_->{'name'} eq $name } @systemds;
+	my ($u) = grep { $_->{'name'} eq $name ||
+			 $_->{'name'} eq $name.".service" } @systemds;
 	return !$u ? -1 : $u->{'status'} ? 1 : 0;
 	}
 else {
