@@ -9,14 +9,20 @@ print &ui_form_start("save_base.cgi", "post");
 print &ui_table_start($text{'base_header'}, "width=100%", 2);
 
 @bases = &find_value("base", $conf);
+@scopes = &find_value("scope", $conf);
+@filters = &find_value("filter", $conf);
 
 if (&get_ldap_client() eq "nss") {
 	# Base is just one directive
 	$base = $bases[0];
+	$scope = $scopes[0];
+	$filter = $filters[0];
 	}
 else {
-	# Default base is the one with no DB
+	# Default base, scope and filter are the ones with no DB
 	($base) = grep { /^\S+$/ } @bases;
+	($scope) = grep { /^\S+$/ } @scopes;
+	($filter) = grep { /^\S+$/ } @filters;
 	}
 print &ui_table_row($text{'base_base'},
 	&ui_textbox("base", $base, 50)."\n".
@@ -27,7 +33,7 @@ $scopes = [ [ "", $text{'default'} ],
 	    [ "one", $text{'base_sone'} ],
 	    [ "base", $text{'base_sbase'} ] ];
 print &ui_table_row($text{'base_scope'},
-	&ui_select("scope", &find_svalue("scope", $conf), $scopes));
+	&ui_select("scope", $scope, $scopes));
 
 print &ui_table_row($text{'base_timelimit'},
 	&ui_opt_textbox("timelimit", &find_svalue("timelimit", $conf), 5,
@@ -35,23 +41,29 @@ print &ui_table_row($text{'base_timelimit'},
 
 $sp = "&nbsp;" x 5;
 foreach $b (@base_types) {
-	local $base;
+	local ($base, $scope, $filter);
 	if (&get_ldap_client() eq "nss") {
+		# Older LDAP config uses directives like nss_base_passwd, with
+		# the scope and filter separated by ?
 		$base = &find_svalue("nss_base_".$b, $conf);
+		if ($base =~ /^(.*)\?(.*)\?(.*)$/) {
+			$base = $1;
+			$scope = $2;
+			$filter = $3;
+			}
+		elsif ($base =~ /^(.*)\?(.*)$/) {
+			$base = $1;
+			$scope = $2;
+			}
 		}
 	else {
+		# Newer LDAP config uses 
 		($base) = map { /^\S+\s+(\S+)/; $1 }
 			      grep { /^\Q$b\E\s/ } @bases;
-		}
-	local ($scope, $filter);
-	if ($base =~ /^(.*)\?(.*)\?(.*)$/) {
-		$base = $1;
-		$scope = $2;
-		$filter = $3;
-		}
-	elsif ($base =~ /^(.*)\?(.*)$/) {
-		$base = $1;
-		$scope = $2;
+		($scope) = map { /^\S+\s+(\S+)/; $1 }
+			      grep { /^\Q$b\E\s/ } @scopes;
+		($filter) = map { /^\S+\s+(\S+)/; $1 }
+			      grep { /^\Q$b\E\s/ } @filters;
 		}
 	print &ui_table_row($text{'base_'.$b},
 		&ui_opt_textbox("base_$b", $base, 50, $text{'base_global'})." ".

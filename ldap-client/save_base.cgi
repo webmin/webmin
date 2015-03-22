@@ -13,7 +13,8 @@ $in{'base'} =~ /\S/ || &error($text{'base_ebase'});
 @bases = ( $in{'base'} );
 
 # Save scope
-&save_directive($conf, "scope", $in{'scope'} || undef);
+@scopes = ( );
+push(@scopes, $in{'scope'}) if ($in{'scope'});
 
 # Save time limit
 if ($in{'timelimit_def'}) {
@@ -34,11 +35,25 @@ foreach $b (@base_types) {
 		$base = $in{"base_".$b};
 		$base =~ /\S/ || &error($text{'base_e'.$b});
 		if ($in{'scope_'.$b}) {
-			$base .= "?".$in{'scope_'.$b};
+			if (&get_ldap_client() eq "nss") {
+				# Scope is appended to the base
+				$base .= "?".$in{'scope_'.$b};
+				}
+			else {
+				# Scopes are saved separately
+				push(@scopes, $b." ".$in{'scope_'.$b});
+				}
 			}
 		if ($in{'filter_'.$b}) {
-			$base .= "?" if ($in{'scope_'.$b});
-			$file .= "?".$in{'filter_'.$b};
+			if (&get_ldap_client() eq "nss") {
+				# Filter is appended to the base
+				$base .= "?" if ($in{'scope_'.$b});
+				$file .= "?".$in{'filter_'.$b};
+				}
+			else {
+				# Filters are saved separately
+				push(@filters, $b." ".$in{'filter_'.$b});
+				}
 			}
 		}
 	if (&get_ldap_client() eq "nss") {
@@ -51,8 +66,12 @@ foreach $b (@base_types) {
 		}
 	}
 
-# Save all base directives
+# Save all base, scope and filter directives
 &save_directive($conf, "base", \@bases);
+&save_directive($conf, "scope", \@scopes);
+if (&get_ldap_client() eq "nslcd") {
+	&save_directive($conf, "filter", \@filters);
+	}
 
 # Write out config
 &flush_file_lines();
