@@ -50,6 +50,8 @@ if ($config{'init_name'} &&
     ($st = &init::action_status($config{'init_name'}))) {
 	# Start or stop
 	if (&init::status_action($config{'init_name'}) == 1) {
+		print &ui_buttons_row("restart.cgi", $text{'index_restart'},
+				      $text{'index_restartdesc'});
 		print &ui_buttons_row("stop.cgi", $text{'index_stop'},
 				      $text{'index_stopdesc'});
 		}

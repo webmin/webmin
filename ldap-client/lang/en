@@ -10,6 +10,8 @@ index_stop=Stop LDAP Client Daemon
 index_stopdesc=Shut down the local LDAP client daemon, which is needed to query the remote LDAP server.
 index_start=Start LDAP Client Daemon
 index_startdesc=Start up the local LDAP client daemon, which is needed to query the remote LDAP server. Until it is started, users and groups in LDAP will not be accessible.
+index_restart=Restart LDAP Client Daemon
+index_restartdesc=Apply the current configuration by restarting the local LDAP client daemon.
 index_atboot=Start LDAP Client At Boot
 index_atbootdesc=Changes whether the LDAP client daemon is started when the system boots up or not.
 
@@ -212,6 +214,7 @@ log_atboot=Enabled LDAP client daemon at boot time
 log_delboot=Disabled LDAP client daemon at boot time
 log_start=Started LDAP client daemon
 log_stop=Stopped LDAP client daemon
+log_restart=Restarted LDAP client daemon
 
 check_title=Validating LDAP Configuration
 check_base=Finding LDAP base for users ..
