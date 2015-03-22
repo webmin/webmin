@@ -45,6 +45,7 @@ return \@get_config_cache;
 }
 
 # find(name, &conf, disabled-mode)
+# Returns the directive objects with some name
 sub find
 {
 local ($name, $conf, $dis) = @_;
@@ -60,7 +61,8 @@ elsif ($dis == 1) {
 return wantarray ? @rv : $rv[0];
 }
 
-# find_value(name, &conf)
+# find_value(name, &conf, [disabled])
+# Finds the value or values of a directive
 sub find_value
 {
 local ($name, $conf, $dis) = @_;
@@ -68,51 +70,61 @@ local @rv = map { $_->{'value'} } &find($name, $conf, $dis);
 return wantarray ? @rv : $rv[0];
 }
 
+# find_svalue(name, &conf, [disabled])
+# Like find_value, but only returns a single value
 sub find_svalue
 {
 local $rv = &find_value(@_);
 return $rv;
 }
 
-# save_directive(&conf, name, [value])
+# save_directive(&conf, name, [value|&values])
+# Update one or more directives with some name
 sub save_directive
 {
-local ($conf, $name, $value) = @_;
-local $old = &find($name, $conf);
-local $oldcmt = &find($name, $conf, 1);
+local ($conf, $name, $valuez) = @_;
+local @values = ref($valuez) ? @$valuez : ( $valuez );
+local @old = &find($name, $conf);
+local @oldcmt = &find($name, $conf, 1);
 local $deffile = &get_ldap_config_file();
-local $lref = &read_file_lines($old ? $old->{'file'} :
-			       $oldcmt ? $oldcmt->{'file'} :
-				         $deffile);
-if (defined($value) && $old) {
-	# Just update value
-	$old->{'value'} = $value;
-	$lref->[$old->{'line'}] = "$name $value";
-	}
-elsif (defined($value) && $oldcmt) {
-	# Add value after commented version
-	splice(@$lref, $oldcmt->{'line'}+1, 0, "$name $value");
-	&renumber($conf, $oldcmt->{'line'}+1, $oldcmt->{'file'}, 1);
-	push(@$conf, { 'name' => $name,
-		       'value' => $value,
-		       'enabled' => 1,
-		       'line' => $oldcmt->{'line'}+1,
-		       'file' => $oldcmt->{'file'} });
-	}
-elsif (!defined($value) && $old) {
-	# Delete current value
-	splice(@$lref, $old->{'line'}, 1);
-	&renumber($conf, $old->{'line'}, $old->{'file'}, -1);
-	@$conf = grep { $_ ne $old } @$conf;
-	}
-elsif ($value) {
-	# Add value at end of file
-	push(@$conf, { 'name' => $name,
-		       'value' => $value,
-		       'enabled' => 1,
-		       'line' => scalar(@$lref),
-		       'file' => $deffile });
-	push(@$lref, "$name $value");
+
+for(my $i=0; $i<@old || $i<@values; $i++) {
+	local $old = $old[$i];
+	local $oldcmt = $oldcmt[$i];
+	local $value = $values[$i];
+	local $lref = &read_file_lines($old ? $old->{'file'} :
+				       $oldcmt ? $oldcmt->{'file'} :
+						 $deffile);
+	if (defined($value) && $old) {
+		# Just update value
+		$old->{'value'} = $value;
+		$lref->[$old->{'line'}] = "$name $value";
+		}
+	elsif (defined($value) && $oldcmt) {
+		# Add value after commented version
+		splice(@$lref, $oldcmt->{'line'}+1, 0, "$name $value");
+		&renumber($conf, $oldcmt->{'line'}+1, $oldcmt->{'file'}, 1);
+		push(@$conf, { 'name' => $name,
+			       'value' => $value,
+			       'enabled' => 1,
+			       'line' => $oldcmt->{'line'}+1,
+			       'file' => $oldcmt->{'file'} });
+		}
+	elsif (!defined($value) && $old) {
+		# Delete current value
+		splice(@$lref, $old->{'line'}, 1);
+		&renumber($conf, $old->{'line'}, $old->{'file'}, -1);
+		@$conf = grep { $_ ne $old } @$conf;
+		}
+	elsif ($value) {
+		# Add value at end of file
+		push(@$conf, { 'name' => $name,
+			       'value' => $value,
+			       'enabled' => 1,
+			       'line' => scalar(@$lref),
+			       'file' => $deffile });
+		push(@$lref, "$name $value");
+		}
 	}
 }
 
@@ -432,6 +444,13 @@ if ($changed) {
 	&write_env_file($afile, \%auth);
 	}
 &unlock_file($afile);
+}
+
+# get_ldap_client()
+# Returns either "nss" or "nslcd" depending on the LDAP client being used
+sub get_ldap_client
+{
+return $config{'auth_ldap'} =~ /nslcd/ ? 'nslcd' : 'nss';
 }
 
 1;
