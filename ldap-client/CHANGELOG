@@ -15,3 +15,5 @@ Improved support for older versions of Net::LDAP without the hosts() function.
 If a TLS certificate and key are defined in the LDAP client configuration file, they will be used by Webmin when connecting to the LDAP database.
 ---- Changes since 1.690 ----
 Added support for nslcd as seen on CentOS 6 and above.
+---- Changes since 1.740 ----
+Various fixes needed to support the new NSLCD LDAP client used by CentOS 7.
