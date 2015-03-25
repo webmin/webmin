@@ -42,13 +42,13 @@ else {
 # Regexp to match
 my $fail = &find_value("failregex", $def);
 print &ui_table_row($text{'filter_fail'},
-	&ui_textarea("fail", $fail, 5, 80, "hard")."<br>\n".
+	&ui_textarea("fail", $fail, 5, 80, "off")."<br>\n".
 	$text{'filter_desc'});
 
 # Regexp to not match
 my $ignore = &find_value("ignoreregex", $def);
 print &ui_table_row($text{'filter_ignore'},
-	&ui_textarea("ignore", $ignore, 5, 80, "hard"));
+	&ui_textarea("ignore", $ignore, 5, 80, "off"));
 
 print &ui_table_end();
 if ($in{'new'}) {
