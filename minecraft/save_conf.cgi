@@ -29,6 +29,9 @@ else {
 # Allow nether?
 &save_directive("allow-nether", $in{'nether'} ? 'true' : 'false', $conf);
 
+# Allow command blocks?
+&save_directive("enable-command-block", $in{'command'} ? 'true' : 'false', $conf);
+
 # Startup difficulty
 &save_directive("difficulty", $in{'diff'}, $conf);
 
