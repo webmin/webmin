@@ -1845,6 +1845,27 @@ if ($config{'after_apply_cmd'}) {
 	}
 }
 
+# run_before_refresh_command()
+# Runs the before-refresh command, if any. If it fails, returns the error
+# message output
+sub run_before_refresh_command
+{
+if ($config{'before_refresh_cmd'}) {
+	local $out = &backquote_logged("($config{'before_refresh_cmd'}) </dev/null 2>&1");
+	return $out if ($?);
+	}
+return undef;
+}
+
+# run_after_refresh_command()
+# Runs the after-refresh command, if any
+sub run_after_refresh_command
+{
+if ($config{'after_refresh_cmd'}) {
+	&system_logged("($config{'after_refresh_cmd'}) </dev/null >/dev/null 2>&1");
+	}
+}
+
 # list_standard_actions()
 # Returns a list of standard Shorewall actions
 sub list_standard_actions
