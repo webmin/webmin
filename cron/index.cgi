@@ -122,6 +122,8 @@ foreach $u (@ulist) {
 			local $max = $config{'max_len'} || 10000;
 			local ($cmd, $input) =
 				&extract_input($job->{'command'});
+			$cmd =~ s/\\%/%/g;
+			$input =~ s/\\%/%/g;
 			$cmd = length($cmd) > $max ?
 			  &html_escape(substr($cmd, 0, $max))." ..." :
 			  $cmd !~ /\S/ ? "BLANK" : &html_escape($cmd);

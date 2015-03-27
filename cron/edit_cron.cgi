@@ -79,6 +79,8 @@ else {
 	&convert_range($job);
 	$rangeable = 1;
 	($command, $input) = &extract_input($job->{'command'});
+	$command =~ s/\\%/%/g;
+	$input =~ s/\\%/%/g;
 	@lines = split(/%/, $input);
 	print &ui_table_row($text{'edit_command'},
 		&ui_textbox("cmd", $command, 60));

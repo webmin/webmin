@@ -1407,8 +1407,8 @@ sub extract_input
 local ($cmd) = @_;
 $cmd =~ s/\\%/\0/g;
 local ($cmd, $input) = split(/\%/, $cmd, 2);
-$cmd =~ s/\0/%/g;
-$input =~ s/\0/%/g;
+$cmd =~ s/\0/\\%/g;
+$input =~ s/\0/\\%/g;
 return ($cmd, $input);
 }
 
