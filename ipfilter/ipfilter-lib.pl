@@ -186,6 +186,11 @@ while(<FILE>) {
 			$rule->{'proto'} = shift(@w);
 			}
 
+		# Skip inet keyword, which as far as I know does nothing
+		if ($w[0] eq "inet") {
+			shift(@w);
+			}
+
 		# Parse from/to section
 		if ($w[0] eq "all") {
 			shift(@w);
