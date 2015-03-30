@@ -155,7 +155,7 @@ if (($table->{'name'} eq 'nat' && $rule->{'chain'} ne 'PREROUTING' &&
     &can_jump("SNAT")) {
 	if ($rule->{'j'}->[1] eq 'SNAT') {
 		if ($rule->{'to-source'}->[1] =~
-		    /^([0-9\.]+)(\-([0-9\.]+))?(:(\d+)(\-(\d+))?)?$/) {
+		    /^([0-9\.]+)?(\-([0-9\.]+))?(:(\d+)(\-(\d+))?)?$/) {
 			$sipfrom = $1;
 			$sipto = $3;
 			$spfrom = $5;

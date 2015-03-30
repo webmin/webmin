@@ -116,7 +116,8 @@ else {
 	if ($table->{'name'} eq 'nat' && $rule->{'chain'} ne 'PREROUTING' &&
 	    $rule->{'chain'} ne 'OUTPUT') {
 		if ($rule->{'j'}->[1] eq 'SNAT' && !$in{'snatdef'}) {
-			&check_ipaddress($in{'sipfrom'}) ||
+			(!$in{'sipfrom'} && !$in{'sipto'}) ||
+			    &check_ipaddress($in{'sipfrom'}) ||
 				&error($text{'save_esipfrom'});
 			!$in{'sipto'} || &check_ipaddress($in{'sipto'}) ||
 				&error($text{'save_esipto'});
