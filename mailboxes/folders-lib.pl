@@ -1367,7 +1367,9 @@ local $hn = &get_system_hostname();
 local $fix_index;
 if (($src->{'type'} == 1 || $src->{'type'} == 3) && $dst->{'type'} == 1) {
 	# Can just move mail files to Maildir names
-	&switch_to_folder_user($dst);
+	if ($src->{'user'} eq $dst->{'user'}) {
+		&switch_to_folder_user($dst);
+		}
 	&create_folder_maildir($dst);
 	local $dd = $dst->{'file'};
 	foreach my $m (@_) {
@@ -1375,7 +1377,9 @@ if (($src->{'type'} == 1 || $src->{'type'} == 3) && $dst->{'type'} == 1) {
 		$now++;
 		}
 	&mailbox_fix_permissions($dst);
-	&switch_from_folder_user($dst);
+	if ($src->{'user'} eq $dst->{'user'}) {
+		&switch_from_folder_user($dst);
+		}
 	$fix_index = 1;
 	}
 elsif (($src->{'type'} == 1 || $src->{'type'} == 3) && $dst->{'type'} == 3) {
