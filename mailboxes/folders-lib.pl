@@ -1384,7 +1384,9 @@ if (($src->{'type'} == 1 || $src->{'type'} == 3) && $dst->{'type'} == 1) {
 	}
 elsif (($src->{'type'} == 1 || $src->{'type'} == 3) && $dst->{'type'} == 3) {
 	# Can move and rename to MH numbering
-	&switch_to_folder_user($dst);
+	if ($src->{'user'} eq $dst->{'user'}) {
+		&switch_to_folder_user($dst);
+		}
 	&create_folder_maildir($dst);
 	local $dd = $dst->{'file'};
 	local $num = &max_mhdir($dst->{'file'}) + 1;
@@ -1393,7 +1395,9 @@ elsif (($src->{'type'} == 1 || $src->{'type'} == 3) && $dst->{'type'} == 3) {
 		$num++;
 		}
 	&mailbox_fix_permissions($dst);
-	&switch_from_folder_user($dst);
+	if ($src->{'user'} eq $dst->{'user'}) {
+		&switch_from_folder_user($dst);
+		}
 	$fix_index = 1;
 	}
 else {
