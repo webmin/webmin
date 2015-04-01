@@ -1506,7 +1506,7 @@ if ($method eq 'POST' &&
 	}
 
 # Reject CONNECT request, which isn't supported
-if ($method eq "CONNECT") {
+if ($method eq "CONNECT" || $method eq "TRACE") {
 	&http_error(405, "Method $method is not supported");
 	}
 
