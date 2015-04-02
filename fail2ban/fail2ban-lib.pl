@@ -116,6 +116,7 @@ my @rv;
 while(<$fh>) {
 	s/\r|\n//g;
 	s/^\s*#.*$//;
+	s/^\s;.*$//;
 	if (/^\[([^\]]+)\]/) {
 		# Start of a section
 		$sect = { 'name' => $1,
