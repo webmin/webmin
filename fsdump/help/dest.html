@@ -2,9 +2,8 @@
 
 This can either be the path to a file to which the backup will be written,
 the path to a tape drive device (like <tt>/dev/st0</tt>), or a file or device
-on a remote host. For backups to a remote host to work, it must support the
-<tt>rsh</tt> protocol, which is not usually turned on by default for security
-reasons. <p>
+on a remote host. Backups to a remote system are done via the SSH protocol,
+or optionally the older insecure RSH protocol. <p>
 
 <hr>
 
