@@ -242,6 +242,18 @@ return @rv;
 sub set_yum_security_field
 {
 local ($done) = @_;
+&open_execute_command(PKG, "yum updateinfo list sec 2>/dev/null", 1, 1);
+while(<PKG>) {
+	s/\r|\n//g;
+	if (/^\S+\s+\S+\s+(\S+?)\-([0-9]\S+)\.([^\.]+)$/) {
+		local ($name, $ver) = ($1, $2);
+		if ($done->{$name}) {
+			$done->{$name}->{'source'} = 'security';
+			$done->{$name}->{'security'} = 1;
+			}
+		}
+	}
+close(PKG);
 &open_execute_command(PKG, "yum list-sec 2>/dev/null", 1, 1);
 while(<PKG>) {
 	s/\r|\n//g;
