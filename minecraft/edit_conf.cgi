@@ -108,6 +108,13 @@ my $build = &find_value("max-build-height", $conf) || 256;
 print &ui_table_row($text{'conf_build'},
 	&ui_textbox("build", $build, 5));
 
+# Max time between ticks
+my $ticks = &find_value("max-tick-time", $conf);
+$ticks /= 1000.0 if ($ticks);
+print &ui_table_row($text{'conf_ticks'},
+	&ui_opt_textbox("ticks", $ticks, 5, $text{'default'}." (60s)").
+	" ".$text{'conf_ticksecs'}, 3);
+
 print &ui_table_hr();
 
 #### Spawn options
