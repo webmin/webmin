@@ -74,7 +74,6 @@ else {
 		push(@opts, split(/\s+/, $in{"others_$i"}));
 		push(@actions, $in{"action_$i"}."[".join(", ", @opts)."]");
 		}
-	@actions || &error($text{'jail_eactions'});
 
 	# Split and validate log file paths
 	my @logpaths = split(/\r?\n/, $in{'logpath'});
@@ -110,7 +109,8 @@ else {
 	# Save directives within the section
 	&save_directive("enabled", $in{'enabled'} ? 'true' : 'false', $jail);
 	&save_directive("filter", $in{'filter'}, $jail);
-	&save_directive("action", join("\n", @actions), $jail);
+	&save_directive("action", @actions ? join("\n", @actions)
+					   : undef, $jail);
 	&save_directive("logpath", join("\n", @logpaths), $jail);
 	foreach my $f ("maxretry", "findtime", "bantime") {
 		&save_directive($f, $in{$f."_def"} ? undef : $in{$f}, $jail);
