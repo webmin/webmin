@@ -55,9 +55,11 @@ $in{'players'} =~ /^[1-9]\d*$/ || &error($text{'conf_eplayers'});
 &save_directive("max-players", $in{'players'}, $conf);
 
 # Max time between ticks
-$in{'ticks_def'} || $in{'ticks'} =~ /^\d+(\.\d+)?$/ ||
+$in{'ticks_def'} || $in{'ticks'} =~ /^\d+(\.\d+)?$/ || $in{'ticks'} == -1 ||
 	&error($text{'conf_eticks'});
-&save_directive("max-tick-time", $in{'ticks_def'} ? undef : int($in{'ticks'}*1000), $conf);
+&save_directive("max-tick-time", $in{'ticks_def'} ? undef :
+				 $in{'ticks'} == -1 ? -1 :
+				 int($in{'ticks'}*1000), $conf);
 
 # Message of the day
 $in{'motd_def'} || $in{'motd'} =~ /\S/ || &error($text{'conf_emotd'});

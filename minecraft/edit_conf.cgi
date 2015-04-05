@@ -110,7 +110,7 @@ print &ui_table_row($text{'conf_build'},
 
 # Max time between ticks
 my $ticks = &find_value("max-tick-time", $conf);
-$ticks /= 1000.0 if ($ticks);
+$ticks /= 1000.0 if ($ticks > 0);
 print &ui_table_row($text{'conf_ticks'},
 	&ui_opt_textbox("ticks", $ticks, 5, $text{'default'}." (60s)").
 	" ".$text{'conf_ticksecs'}, 3);
