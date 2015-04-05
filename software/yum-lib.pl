@@ -19,8 +19,14 @@ if ($in->{'enablerepo'}) {
 	$enable = "enablerepo=".quotemeta($in->{'enablerepo'});
 	}
 local (@rv, @newpacks);
+
+# If there are multiple architectures to update for a package, split them out
 local @names = map { &append_architectures($_) } split(/\s+/, $update);
+if (@names == 1) {
+	@names = ( $update );
+	}
 $update = join(" ", @names);
+
 print "<b>",&text('yum_install', "<tt>yum $enable -y install $update</tt>"),"</b><p>\n";
 print "<pre>";
 &additional_log('exec', undef, "yum $enable -y install $update");
@@ -83,8 +89,8 @@ else {
 }
 
 # append_architectures(package)
-# Given a package name, if it has multiple architectures return the name with each
-# appended
+# Given a package name, if it has multiple architectures return the name with
+# each appended
 sub append_architectures
 {
 my ($name) = @_;
