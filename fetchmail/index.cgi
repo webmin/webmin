@@ -87,6 +87,7 @@ else {
 			 $ucount > $config{'max_users'});
 		}
 	endpwent() if ($gconfig{'os_type'} ne 'hpux');
+	@users = sort { $a->[1]->[0] cmp $b->[1]->[0] } @users;
 	if (!@users) {
 		# None found
 		print "<br><b>$text{'index_none'}</b><p>\n";
