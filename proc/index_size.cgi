@@ -40,7 +40,7 @@ foreach $pr (@procs) {
 		push(@cols, $p);
 		}
 	push(@cols, $pr->{'user'});
-	push(@cols, $pr->{'size'});
+	push(@cols, $pr->{'bytes'} ? &nice_size($pr->{'bytes'}) : $pr->{'size'});
 	push(@cols, &html_escape(&cut_string($pr->{'args'})));
 	print &ui_columns_row(\@cols);
 	}

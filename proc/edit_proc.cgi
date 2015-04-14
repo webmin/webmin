@@ -42,7 +42,8 @@ print &ui_table_row($text{'owner'}, $pinfo{'user'});
 print &ui_table_row($text{'cpu'}, $pinfo{'cpu'});
 
 # Memory size
-print &ui_table_row($text{'size'}, $pinfo{'size'});
+print &ui_table_row($text{'size'}, $pinfo{'bytes'} ? &nice_size($pinfo{'bytes'})
+						   : $pinfo{'size'});
 
 # Run time
 print &ui_table_row($text{'runtime'}, $pinfo{'time'});

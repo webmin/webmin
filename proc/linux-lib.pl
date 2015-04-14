@@ -48,6 +48,7 @@ if ($ver >= 2) {
 		$plist[$i]->{"user"} = $w[0];
 		$plist[$i]->{"cpu"} = "$w[7] %";
 		$plist[$i]->{"size"} = "$w[8] kB";
+		$plist[$i]->{"bytes"} = $w[8]*1024;
 		$plist[$i]->{"time"} = $w[11];
 		$plist[$i]->{"_stime"} = $w[12];
 		$plist[$i]->{"nice"} = $w[9];

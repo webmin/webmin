@@ -33,6 +33,7 @@ for($i=0; $line=<PS>; $i++) {
 	$plist[$i]->{"user"} = $w[0];
 	$plist[$i]->{"cpu"} = "$w[7] %";
 	$plist[$i]->{"size"} = "$w[8] kB";
+	$plist[$i]->{"bytes"} = $w[8]*1024;
 	local $ofs = 0;
 	if ($has_stime) {
 		$plist[$i]->{"_stime"} = $w[12+$ofs];

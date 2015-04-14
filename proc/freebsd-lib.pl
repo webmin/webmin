@@ -17,6 +17,7 @@ for($i=0; $line=<PS>; $i++) {
 	$plist[$i]->{"ppid"} = $2;
 	$plist[$i]->{"user"} = $3;
 	$plist[$i]->{"size"} = "$4 kB";
+	$plist[$i]->{"bytes"} = $4*1024;
 	$plist[$i]->{"cpu"} = $5;
 	$plist[$i]->{"time"} = $6;
 	$plist[$i]->{"nice"} = $7;
