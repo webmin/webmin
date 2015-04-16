@@ -749,6 +749,7 @@ local $rvword;
 while(@rv) {
 	my $w = shift(@rv);
 	if (length($rvword)+length($w)+1 >= 255) {
+		$rvword .= " ";
 		push(@rvwords, $rvword);
 		$rvword = "";
 		}
