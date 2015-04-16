@@ -284,7 +284,7 @@ sub get_ipsec_version
 {
 local $out = `$config{'ipsec'} --version 2>&1`;
 ${$_[0]} = $out;
-return $out =~ /(FreeS\/WAN|Openswan|StrongSWAN)\s+([^ \n\(]+)/i ? ($2,$1) : (undef);
+return $out =~ /(FreeS\/WAN|Openswan|StrongSWAN|Libreswan)\s+([^ \n\(]+)/i ? ($2,$1) : (undef);
 }
 
 # got_secret()
