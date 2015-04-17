@@ -1935,7 +1935,7 @@ sub list_systemd_services
 my $out = &backquote_command("systemctl list-units --full --all");
 &error("Failed to list systemd units : $out") if ($?);
 foreach my $l (split(/\r?\n/, $out)) {
-	$l =~ s/^[^a-z]+//;
+	$l =~ s/^[^a-z0-9\-\_\.]+//i;
 	my ($unit, $loaded, $active, $sub, $desc) = split(/\s+/, $l, 5);
 	my $a = $unit;
 	$a =~ s/\.service$//;
