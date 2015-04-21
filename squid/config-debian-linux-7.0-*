@@ -18,4 +18,4 @@ restart_pos=0
 squidclient=squidclient
 squid_start=service squid3 start
 squid_stop=service squid3 stop
-squid_restart=service squid3 restart
+squid_restart=service squid3 reload
