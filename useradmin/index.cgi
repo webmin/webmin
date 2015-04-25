@@ -1,8 +1,13 @@
 #!/usr/local/bin/perl
 
 require './user-lib.pl';
-&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
+
+# Show header with password DB type
+$pft = &passfiles_type();
+$pftmsg = &text('index_pft', $text{'index_pft'.$pft} || $pft);
+&ui_print_header($pftmsg, $text{'index_title'}, "", "intro", 1, 1, 0,
 		 &help_search_link("passwd group shadow gshadow", "man"));
+
 $formno = 0;
 &ReadParse();
 @quarters = ( "width=25%", "width=25%", "width=25%", "width=25%" );

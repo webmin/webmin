@@ -1,4 +1,13 @@
 index_title=Users and Groups
+index_pft=Database type: $1
+index_pft0=Old /etc/passwd
+index_pft1=BSD master.passwd
+index_pft2=Regular /etc/passwd &amp; /etc/shadow
+index_pft3=User commands
+index_pft4=AIX
+index_pft5=SCO /etc/passwd &amp; /etc/shadow
+index_pft6=MacOS NetINFO
+index_pft7=MacOS DSCL
 index_toomany=There are too many users on your system to display on one page.
 index_find=Find users whose
 index_userreal=Username or real name
