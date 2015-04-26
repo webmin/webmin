@@ -129,7 +129,7 @@ foreach $serv (@services) {
 		if ($warn == 0 && $up == 0 && $o) {
 			# Service has just gone down
 			$suffix = "down";
-			$out = &run_on_command($serv, $serv->{'ondown'});
+			$out = &run_on_command($serv, $serv->{'ondown'}, $r);
 			}
 		elsif ($warn == 1 && $up != $o &&
 		       (defined($o) || $up == 0)) {
@@ -137,12 +137,12 @@ foreach $serv (@services) {
 			if ($up == 0) {
 				# A monitor has gone down
 				$suffix = "down";
-				$out = &run_on_command($serv, $serv->{'ondown'});
+				$out = &run_on_command($serv, $serv->{'ondown'}, $r);
 				}
 			elsif ($up == 1 && $o != -4) {
 				# A monitor has come back up after being down
 				$suffix = "up";
-				$out = &run_on_command($serv, $serv->{'onup'});
+				$out = &run_on_command($serv, $serv->{'onup'}, $r);
 				}
 			elsif ($up == -1) {
 				# Detected that a program the monitor depends on
@@ -157,13 +157,13 @@ foreach $serv (@services) {
 				# Monitor function timed out
 				$suffix = "timed";
 				$out = &run_on_command($serv,
-						       $serv->{'ontimeout'});
+						       $serv->{'ontimeout'}, $r);
 				}
 			}
 		elsif ($warn == 2 && $up == 0) {
 			# Service is down now
 			$suffix = "isdown";
-			$out = &run_on_command($serv, $serv->{'ondown'});
+			$out = &run_on_command($serv, $serv->{'ondown'}, $r);
 			}
 
 		# If something happened, notify people
@@ -401,34 +401,35 @@ if (!$@) {
 print STDERR "No SNMP perl module found\n";
 }
 
-# run_on_command(&serv, command)
+# run_on_command(&serv, command, remote-host)
 sub run_on_command
 {
-local ($serv, $cmd) = @_;
+local ($serv, $cmd, $r) = @_;
+$r = undef if ($r eq "*");
 return undef if (!$cmd);
 local $out;
-if ($serv->{'runon'} && $serv->{'remote'}) {
+if ($serv->{'runon'} && $r) {
 	# Run on the remote host
 	$remote_error_msg = undef;
-	&remote_foreign_call($serv->{'remote'}, "status",
+	&remote_foreign_call($r, "status",
 		"set_monitor_environment", $serv);
 	&remote_error_setup(\&remote_error_callback);
 	if ($config{'output'}) {
-		$out = &remote_foreign_call($serv->{'remote'}, "status",
+		$out = &remote_foreign_call($r, "status",
 			"backquote_command", "($cmd) 2>&1 </dev/null");
 		}
 	else {
-		&remote_foreign_call($serv->{'remote'}, "status",
+		&remote_foreign_call($r, "status",
 			"execute_command", $cmd);
 		}
 	&remote_error_setup(undef);
-	&remote_foreign_call($serv->{'remote'}, "status",
+	&remote_foreign_call($r, "status",
 		"reset_monitor_environment", $serv);
 	if ($remote_error_msg) {
-		return &text('monitor_runerr', $cmd, $serv->{'remote'},
+		return &text('monitor_runerr', $cmd, $r,
 			     $remote_error_msg);
 		}
-	return &text('monitor_run1', $cmd, $serv->{'remote'})."\n".$out;
+	return &text('monitor_run1', $cmd, $r)."\n".$out;
 	}
 else {
 	# Just run locally
