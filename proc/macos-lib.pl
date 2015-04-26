@@ -12,12 +12,15 @@ else {
 	}
 for($i=0; $line=<PS>; $i++) {
 	chop($line);
-	if ($line =~ /ps axlwwww/ || $line =~ /^\s*UID\s+PID/) { $i--; next; }
+	if ($line =~ /ps (axlwwww|xlwwwwp)/ ||
+	    $line =~ /^\s*UID\s+PID/) { $i--; next; }
 	if ($line =~ /^\s*(\d+)\s+(\d+)\s+(\S+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\S+)\s+(\S+)\s+(\d+)\s+(...)\s+(\S+)\s+(\d+:\d+)\s+(.*)/) {
+		# Old MacOS
 		if ($3 <= 0) { $i--; next; }
 		$plist[$i]->{"pid"} = $3;
 		$plist[$i]->{"ppid"} = $4;
 		$plist[$i]->{"size"} = $8;
+		$plist[$i]->{"bytes"} = $8 * 1024;
 		$plist[$i]->{"time"} = $13;
 		$plist[$i]->{"nice"} = $6;
 		$plist[$i]->{"_tty"} = $12 eq '?' ? $text{'edit_none'} : "/dev/tty$12";
@@ -25,10 +28,12 @@ for($i=0; $line=<PS>; $i++) {
 		$pidmap{$3} = $plist[$i];
 		}
 	elsif ($line =~ /^\s*(\d+)\s+(\d+)\s+(\S+)\s+(\d+)\s+(\d+)\s+(\S+)\s+(\d+)\s+(\d+)\s+(\S+)\s+(...)\s+(\S+)\s+(\d+:\S+)\s+(.*)/) {
+		# New MacOS
 		if ($2 <= 0) { $i--; next; }
 		$plist[$i]->{"pid"} = $2;
 		$plist[$i]->{"ppid"} = $3;
 		$plist[$i]->{"size"} = $7;
+		$plist[$i]->{"bytes"} = $7 * 1024;
 		$plist[$i]->{"time"} = $12;
 		$plist[$i]->{"nice"} = $6;
 		$plist[$i]->{"_tty"} = $11 eq '??' ? $text{'edit_none'} : "/dev/tty$11";
