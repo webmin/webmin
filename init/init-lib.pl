@@ -28,7 +28,9 @@ use WebminCore;
 
 This variable is set based on the bootup system in use. Possible values are :
 
-=item osx - MacOSX hostconfig files
+=item osx - MacOSX hostconfig files, for older versions
+
+=item launchd - MacOS Launchd, for newer versions
 
 =item rc - FreeBSD 6+ RC files
 
@@ -38,13 +40,16 @@ This variable is set based on the bootup system in use. Possible values are :
 
 =item win32 - Windows services
 
-=item upstart - Upstart, seend on Ubuntu 11
+=item upstart - Upstart, seen on Ubuntu 11
 
-=item systemd - SystemD, as seen on Fedora 16
+=item systemd - SystemD, seen on Fedora 16
 
 =cut
 if ($config{'init_mode'}) {
 	$init_mode = $config{'init_mode'};
+	}
+elsif (&has_command("launchd")) {
+	$init_mode = "launchd";
 	}
 elsif ($config{'hostconfig'}) {
 	$init_mode = "osx";
@@ -2233,6 +2238,57 @@ elsif ($out =~ /stopped/i) {
 	return 0;
 	}
 return -1;
+}
+
+# list_launchd_agents()
+# Returns an array of hash refs, each of which is a launchd daemon/agent
+sub list_launchd_agents
+{
+my @rv;
+
+# Get the initial list of actions
+my $out = &backquote_command("launchctl list");
+&error("Failed to list launchd agents : $out") if ($?);
+foreach my $l (split(/\r?\n/, $out)) {
+	next if ($l =~ /^PID/);		# Header line
+	my ($pid, $status, $label) = split(/\s+/, $l);
+	next if ($label =~ /^0x/);	# Not really a launchd job
+	push(@rv, { 'name' => $label,
+		    'status' => $pid eq "-" ? 0 : 1,
+		    'pid' => $pid eq "-" ? undef : $pid, });
+	}
+
+# Get details on each one
+foreach my $a (@rv) {
+	my $out = &backquote_command("launchctl list ".quotemeta($a->{'name'}));
+	my %attrs;
+	foreach my $l (split(/\r?\n/, $out)) {
+		if ($l =~ /"(\S+)"\s*=\s*"([^"]*)";/ ||
+		    $l =~ /"(\S+)"\s*=\s*\S+;/) {
+			$attrs{lc($1)} = $2;
+			}
+		}
+	$a->{'start'} = $attrs{'program'};
+	$a->{'file'} = &get_launchd_file($a->{'name'});
+	# XXX started at boot?
+	}
+
+return @rv;
+}
+
+# get_launchd_file(name)
+# Returns the path to the launchd config file for some name
+sub get_launchd_file
+{
+my ($name) = @_;
+foreach my $dir ("/Library/LaunchAgents",
+		 "/Library/LaunchDaemons/",
+		 "/System/Library/LaunchAgents",
+		 "/System/Library/LaunchDaemons") {
+	my $path = $dir."/".$name.".plist";
+	return $path if (-r $path);
+	}
+return "/Library/LaunchDaemons/".$name.".plist";
 }
 
 1;

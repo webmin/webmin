@@ -379,6 +379,41 @@ elsif ($init_mode eq "systemd" && $access{'bootup'}) {
 			    ]);
 
 	}
+elsif ($init_mode eq "launchd" && $access{'bootup'}) {
+	# Show launchd agents
+	print &ui_form_start("mass_launchd.cgi", "post");
+	@links = ( &select_all_link("d"),
+		   &select_invert_link("d"),
+		   &ui_link("edit_launchd.cgi?new=1", $text{'index_ladd'}) );
+	print &ui_links_row(\@links);
+	print &ui_columns_start([ "", $text{'index_lname'},
+				  $text{'index_uboot'},
+				  $text{'index_ustatus'}, ]);
+	foreach $u (&list_launchd_agents()) {
+		$l = "edit_launchd.cgi?name=".&urlize($u->{'name'});
+		print &ui_columns_row([
+			&ui_checkbox("d", $u->{'name'}, undef),
+			&ui_link($l, $u->{'name'}),
+			$u->{'boot'} == 1 ? $text{'yes'} :
+			  "<font color=#ff0000>$text{'no'}</font>",
+			$u->{'status'} ? $text{'yes'} :
+			  "<font color=#ff0000>$text{'no'}</font>",
+			]);
+		}
+	print &ui_columns_end();
+	print &ui_links_row(\@links);
+	print &ui_form_end([ [ "start", $text{'index_start'} ],
+			     [ "stop", $text{'index_stop'} ],
+			     [ "restart", $text{'index_restart'} ],
+			     undef,
+			     [ "addboot", $text{'index_addboot'} ],
+			     [ "delboot", $text{'index_delboot'} ],
+			     undef,
+			     [ "addboot_start", $text{'index_addboot_start'} ],
+			     [ "delboot_stop", $text{'index_delboot_stop'} ],
+			    ]);
+
+	}
 
 # reboot/shutdown buttons
 print &ui_hr();

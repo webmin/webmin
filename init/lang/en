@@ -50,6 +50,8 @@ index_ustatus=Running now?
 index_uadd=Create a new upstart service.
 index_sadd=Create a new systemd service.
 index_always=Always
+index_ladd=Create a new launchd agent.
+index_lname=Agent name
 
 edit_title=Edit Action
 create_title=Create Action
@@ -187,6 +189,7 @@ mode_win32=Windows services
 mode_rc=FreeBSD RC scripts
 mode_upstart=Upstart
 mode_systemd=Systemd
+mode_launchd=LaunchD
 
 upstart_title1=Create Upstart Service
 upstart_title2=Edit Upstart Service
