@@ -2198,9 +2198,12 @@ sub shutdown_system
 &system_logged("$config{'shutdown_command'} >$null_file 2>$null_file");
 }
 
-# get_action_args(filename)
-# Returns the args that this action script appears to support, like stop, start
-# and status.
+=head2 get_action_args(filename)
+
+Returns the args that this action script appears to support, like stop, start
+and status.
+
+=cut
 sub get_action_args
 {
 my ($file) = @_;
@@ -2215,9 +2218,12 @@ close(FILE);
 return \%hasarg;
 }
 
-# action_running(filename)
-# Assuming some init.d action supports the status parameter, returns a 1 if
-# running, 0 if not, or -1 if unknown
+=head2 action_running(filename)
+
+Assuming some init.d action supports the status parameter, returns a 1 if
+running, 0 if not, or -1 if unknown
+
+=cut
 sub action_running
 {
 my ($file) = @_;
@@ -2240,8 +2246,11 @@ elsif ($out =~ /stopped/i) {
 return -1;
 }
 
-# list_launchd_agents()
-# Returns an array of hash refs, each of which is a launchd daemon/agent
+=head2 list_launchd_agents()
+
+Returns an array of hash refs, each of which is a launchd daemon/agent
+
+=cut
 sub list_launchd_agents
 {
 my @rv;
@@ -2291,8 +2300,11 @@ foreach my $a (@rv) {
 return @rv;
 }
 
-# create_launchd_agent(name, start-script)
-# Creates a new local launchd agent
+=head2 create_launchd_agent(name, start-script)
+
+Creates a new local launchd agent
+
+=cut
 sub create_launchd_agent
 {
 my ($name, $start) = @_;
