@@ -239,4 +239,23 @@ systemd_return=systemd service
 systemd_econf=No systemd configuration entered
 systemd_estart=Missing commands to run on startup
 
+launchd_title1=Create Launchd Agent
+launchd_title2=Edit Launchd Agent
+launchd_egone=Agent no longer exists!
+launchd_header=Launchd service details
+launchd_name=Agent name
+launchd_start=Server command
+launchd_conf=Launchd configuration
+launchd_boot=Start at boot time?
+launchd_status=Current status
+launchd_status0=Not running
+launchd_status1=Running with PID $1
+launchd_status2=Running
+launchd_err=Failed to save launchd agent
+launchd_ename=Missing or invalid-lookup launchd agent name
+launchd_eclash=An agent with the same name already exists
+launchd_return=launchd agent
+launchd_econf=No launchd configuration entered
+launchd_estart=Missing server command
+
 __norefs=1
