@@ -67,7 +67,7 @@ foreach $iface (@ifaces) {
 			elsif($param eq 'slaves') { 
 				$cfg->{'partner'} = $value;
 				}
-			elsif($param eq 'hwaddr') {
+			elsif($param eq 'hwaddress' || $param eq 'hwaddr') {
 				local @v = split(/\s+/, $value);
 				$cfg->{'ether_type'} = $v[0];
 				$cfg->{'ether'} = $v[1];
@@ -176,8 +176,9 @@ my @autos = get_auto_defs();
 my $amode = $gconfig{'os_version'} > 3 || scalar(@autos);
 if (!$cfg->{'up'} && !$amode) { push(@options, ['noauto', '']); }
 if ($cfg->{'ether'}) {
-	push(@options, [ 'hwaddr', ($cfg->{'ether_type'} || 'ether').' '.
-				   $cfg->{'ether'} ]);
+	push(@options, [ 'hwaddress',
+			 ($cfg->{'ether_type'} || 'ether').' '.
+			 $cfg->{'ether'} ]);
 	}
 if ($cfg->{'bridge'}) {
 	&has_command("brctl") || &error("Bridges cannot be created unless the ".
