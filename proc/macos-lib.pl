@@ -135,5 +135,42 @@ if ($out =~ /total\s*=\s*([0-9\.]+)([KMGT]).*free\s*=\s*([0-9\.]+)([KMGT])/) {
 return @rv;
 }
 
+# os_get_cpu_info()
+# Returns a list containing the 5, 10 and 15 minute load averages, and the
+# CPU mhz, model, vendor, cache and count
+sub os_get_cpu_info
+{
+&clean_language();
+my $out = &backquote_command("uptime 2>&1");
+&reset_environment();
+my @rv = $out =~ /average(s)?:\s+([0-9\.]+),?\s+([0-9\.]+),?\s+([0-9\.]+)/i ?
+	 ( $2, $3, $4 ) : ( undef, undef, undef );
+
+$out = &backquote_command("sysctl -a machdep.cpu.brand_string");
+if ($out =~ /:\s*(\S.*)/) {
+	$rv[4] = $1;
+	if ($rv[4] =~ s/\s*\@\s*([0-9\.]+)(GHz|MHz)//i) {
+		$rv[3] = $1 * ($2 eq "GHz" ? 1000 : 1);
+		}
+	}
+
+$out = &backquote_command("sysctl -a machdep.cpu.vendor");
+if ($out =~ /:\s*(\S.*)/) {
+	$rv[5] = $1;
+	}
+
+$out = &backquote_command("sysctl -a machdep.cpu.cache.size");
+if ($out =~ /:\s*(\d+)/) {
+	$rv[6] = $1 * 1024;
+	}
+
+$out = &backquote_command("sysctl -a machdep.cpu.core_count");
+if ($out =~ /:\s*(\d+)/) {
+	$rv[7] = $1;
+	}
+
+return @rv;
+}
+
 1;
 
