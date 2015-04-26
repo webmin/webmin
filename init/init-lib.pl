@@ -2253,9 +2253,25 @@ foreach my $l (split(/\r?\n/, $out)) {
 	next if ($l =~ /^PID/);		# Header line
 	my ($pid, $status, $label) = split(/\s+/, $l);
 	next if ($label =~ /^0x/);	# Not really a launchd job
+	next if ($label =~ /\.peruser\./);	# Skip user-owned actions
 	push(@rv, { 'name' => $label,
 		    'status' => $pid eq "-" ? 0 : 1,
 		    'pid' => $pid eq "-" ? undef : $pid, });
+	}
+
+# Build map from plist files to agents
+my @dirs = ("/Library/LaunchAgents",
+            "/Library/LaunchDaemons/",
+            "/System/Library/LaunchAgents",
+            "/System/Library/LaunchDaemons");
+my %pmap;
+foreach my $dir (@dirs) {
+	foreach my $file (glob("$dir/*.plist")) {
+		my $plist = &read_file_contents($file);
+		if ($plist =~ /<key>Label<\/key>\s*<string>([^<]+)/i) {
+			$pmap{$1} = $file;
+			}
+		}
 	}
 
 # Get details on each one
@@ -2269,26 +2285,39 @@ foreach my $a (@rv) {
 			}
 		}
 	$a->{'start'} = $attrs{'program'};
-	$a->{'file'} = &get_launchd_file($a->{'name'});
-	# XXX started at boot?
+	$a->{'file'} = $pmap{$a->{'name'}};
 	}
 
 return @rv;
 }
 
-# get_launchd_file(name)
-# Returns the path to the launchd config file for some name
-sub get_launchd_file
+# create_launchd_agent(name, start-script)
+# Creates a new local launchd agent
+sub create_launchd_agent
 {
-my ($name) = @_;
-foreach my $dir ("/Library/LaunchAgents",
-		 "/Library/LaunchDaemons/",
-		 "/System/Library/LaunchAgents",
-		 "/System/Library/LaunchDaemons") {
-	my $path = $dir."/".$name.".plist";
-	return $path if (-r $path);
+my ($name, $start) = @_;
+my $file = "/Library/LaunchDaemons/".$name.".plist";
+my $plist = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n".
+	    "<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n".
+	    "<plist version=\"1.0\">\n".
+	    "<dict>\n".
+	    "<key>Label</key>\n";
+$plist .= "<string>$name</string>\n";
+$plist .= "<key>ProgramArguments</key>\n";
+$plist .= "<array>\n";
+foreach my $a (&split_quoted_string($start)) {
+        $plist .= "<string>$a</string>\n";
 	}
-return "/Library/LaunchDaemons/".$name.".plist";
+$plist .= "</array>\n";
+$plist .= "<key>KeepAlive</key>\n";
+$plist .= "<true/>\n";
+$plist .= "</dict>\n";
+$plist .= "</plist>\n";
+&open_locl_tempfile(PLIST, ">$file");
+&print_tempfile(PLIST, $plist);
+&close_tempfile(PLIST);
+my $out = &backquote_logged("launchctl load ".quotemeta($file)." 2>&1");
+&error("Failed to load plist : $out") if ($?);
 }
 
 1;

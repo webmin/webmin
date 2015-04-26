@@ -24,7 +24,7 @@ print &ui_table_start($text{'launchd_header'}, undef, 2);
 if ($in{'new'}) {
 	# Service name
 	print &ui_table_row($text{'launchd_name'},
-			    &ui_textbox("name", undef, 30)."<tt>.service</tt>");
+			    &ui_textbox("name", undef, 30));
 
 	# Server command and args
 	print &ui_table_row($text{'launchd_start'},
@@ -35,10 +35,17 @@ else {
 	print &ui_table_row($text{'launchd_name'},
 			    "<tt>$in{'name'}</tt>");
 
-	# Config file
-	$conf = &read_file_contents($u->{'file'});
-	print &ui_table_row($text{'launchd_conf'},
-			    &ui_textarea("conf", $conf, 20, 80));
+	# Config file location
+	print &ui_table_row($text{'launchd_file'},
+			    $u->{'file'} ? "<tt>$u->{'file'}</tt>"
+					 : "<i>$text{'launchd_nofile'}</i>");
+
+	if ($u->{'file'}) {
+		# Config file contents
+		$conf = &read_file_contents($u->{'file'});
+		print &ui_table_row($text{'launchd_conf'},
+				    &ui_textarea("conf", $conf, 20, 80));
+		}
 
 	# Current status
 	print &ui_table_row($text{'launchd_status'},
