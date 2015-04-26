@@ -6952,7 +6952,7 @@ return $rv;
 =head2 other_groups(user)
 
 Returns a list of secondary groups a user is a member of, as a list of
-group names.
+group IDs.
 
 =cut
 sub other_groups
