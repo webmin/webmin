@@ -90,5 +90,45 @@ foreach $pty (@ptys) {
 return ();
 }
 
+# get_memory_info()
+# Returns a list containing the real mem, free real mem, swap and free swap,
+# and possibly cached memory and the burstable limit. All of these are in Kb.
+sub get_memory_info
+{
+my @rv;
+
+# Get total memory
+my $out = &backquote_command("sysctl -a hw.physmem 2>/dev/null");
+if ($out =~ /:\s*(\d+)/) {
+	$rv[0] = $1 / 1024;
+	}
+
+# Get memory usage
+$out = &backquote_command("vm_stat 2>/dev/null");
+my %stat;
+foreach my $l (split(/\r?\n/, $out)) {
+	if ($l =~ /^(.*):\s*(\d+)/) {
+		$stat{lc($1)} = $2;
+		}
+	}
+my $usage = ($stat{'pages active'} + $stat{'pages wired down'}) * 4;
+$rv[1] = $rv[0] - $usage;
+
+# Get swap usage
+$out = &backquote_command("sysctl -a vm.swapusage 2>/dev/null");
+if ($out =~ /total\s*=\s*([0-9\.]+)([KMGT]).*free\s*=\s*([0-9\.]+)([KMGT])/) {
+	$rv[2] = $1*($2 eq "K" ? 1 :
+		     $2 eq "M" ? 1024 :
+		     $2 eq "G" ? 1024*1024 :
+		     $2 eq "T" ? 1024*1024*1024 : 0);
+	$rv[3] = $3*($4 eq "K" ? 1 :
+		     $4 eq "M" ? 1024 :
+		     $4 eq "G" ? 1024*1024 :
+		     $4 eq "T" ? 1024*1024*1024 : 0);
+	}
+
+return @rv;
+}
+
 1;
 
