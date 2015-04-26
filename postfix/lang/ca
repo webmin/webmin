@@ -9,8 +9,10 @@ index_econfig=L'ordre de configuració de Postfix $1 no existeix. Pot ser que la 
 index_esuper=L'ordre del supervisor Postfix $1 no existeix. Pot ser que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_stop=Atura Postfix
 index_start=Inicia Postfix
+index_reload=Recarrega la Configuració
 index_stopmsg=Fes clic sobre aquest botó per aturar el servidor de correu Postfix en execució. Això impedirà que es lliuri correu als usuaris locals des d'altres sistemes, així com els clients locals d'utilitzar aquest sistema com a servidor per enviar correu.
 index_startmsg=Fes clic sobre aquest botó per iniciar el servidor de correu Postfix. Fins que no es faci, no es podrà lliurar correu als usuaris locals des d'altres sistemes, ni aquests podran utilitzar aquest sistema com a servidor de correu.
+index_reloadmsg=Fes clic sobre aquest botó per fer que Postfix rellegeixi tots els seus fitxers de configuració. Això pot ser útil si els fitxers de configuració de Postfix s'han canviat manualment.
 index_version=Postfix versió $1
 opts_err=No s'han pogut desar les opcions
 
@@ -407,6 +409,9 @@ stop_ecannot=No tens permís per aturar Postfix
 start_efailed=No s'ha pogut iniciar Postfix
 start_ecannot=No tens permís per iniciar Postfix
 
+reload_efailed=No s'ha pogut recarregar Postfix
+reload_ecannot=NO tens permís per recarregar Postfix
+
 query_get_efailed=No s'ha pogut consultar l'ordre de configuració de Postfix per obtenir el valor actual del paràmetre $1: <tt>$2</tt>
 query_set_efailed=No s'ha pogut consultar l'ordre de configuració de Postfix per establir el valor actual del paràmetre $1 a $2: <tt>$3</tt>
 reload_ecannot=No tens permís per reiniciar Postfix
@@ -783,6 +788,7 @@ log_master_delete=S'ha suprimit el procés servidor $1
 log_manual=S'ha editat manualment el fitxer de configuració $1
 log_stop=S'ha aturat el servidor Postfix
 log_start=S'ha iniciat el servidor Postfix
+log_reload=S'ha recarregat la configuració de Postfix
 log_delqs=S'han suprimit $1 missatges de la cua de correu
 log_flushq=S'ha buidat la cua de correu
 log_backend=S'ha actualitzat el fitxer de configuracio del mapa $1
