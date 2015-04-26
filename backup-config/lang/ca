@@ -35,6 +35,7 @@ edit_schedyes=Sí, a les hores seleccionades a sota...
 edit_mods=Mòduls a copiar
 edit_dest=Destinació de la còpia
 edit_mods2=Mòduls a restaurar
+edit_other2=Altres fitxers a restaurar
 edit_dest2=Restaura de
 edit_what=Inclou en la còpia
 edit_webmin=Fitxers de configuració dels mòduls Webmin
@@ -83,6 +84,7 @@ backup_failed=... ha fallat! $1
 backup_done=... completa. La mida final de la còpia és de $1 i conté $2 fitxers.
 
 restore_err=La restauració ha fallat
+restore_emods=No has seleccionat cap mòdul ni cap altre fitxer
 restore_title=Configuració de Restauració
 restore_doing=S'està començant la restauració dels fitxers de configuració de mòduls de $1...
 restore_testing=S'està extraient el contingut de la còpia de $1...

@@ -123,10 +123,10 @@ help_eexec=$1 ha fallat: $2
 referer_title=Avís de Seguretat
 referer_warn=<b>Atenció!</b> Webmin ha detectat que el programa $2 és un enllaç a l'URL $1, que sembla ser que queda fora del servidor Webmin. Això pot ser un intent d'enganyar el servidor per tal que executi una ordre perillosa.
 referer_warn_unknown=<b>Atenció!</b> Webmin ha detectat que el programa $1 és un enllaç a un URL desconegut, que sembla ser que queda fora del servidor Webmin. Això pot ser un intent d'enganyar el servidor per tal que executi una ordre perillosa.
-referer_ok=Continua executant el programa Webmin
-referer_again=No tornis a mostrar aquest avís
-referer_eurl=URL original invàlid!
-referer_eself=referer_save.cgi no es pot enllaçar directament!
+referer_fix1=Si això és un enllaç legítim, pots permetre els enllaços des d'aquest URL tal i com segueix:<ul><li>Entra a Webmin normalment.<li>Ves al mòdul de <b>Configuració de Webmin</b>.<li>Fes clic a la icona de Referenciadors Fiables.<li>Introdueix el nom de host $1 al camp <b>Llocs Web fiables</b>, i fes clic a <b>Desa</b>.</ul>
+referer_fix2=Alternativament, pots configurar Webmin per que permeti aquest enllaç des de la línia d'ordres:<ul><li>Entra com a <tt>root</tt> i edita el fitxer <tt>/etc/webmin/config</tt>.<li>Afegeix-hi la línia <tt>referers=$1</tt> al final o, si ja existeix una línia <tt>referers</tt>, afegeix-hi <tt>$1</tt>.<li>Desa el fitxer.</ul>
+referer_fix3u=Assegura't que el teu navegador està configurat per enviar la informació del referenciador per tal que Webmin ho pugui verificar.
+referer_fix2u=Alternativament, pots configurar Webmin per permetre enllaços des de referenciadors desconeguts:<ul><li>Entra com a <tt>root</tt> i edita el fitxer <tt>/etc/webmin/config</tt>.<li>Busca la línia <tt>referers_none=1</tt> i canvia-la per <tt>referers_none=0</tt>.<li>Desa el fitxer.</ul>
 
 session_header=Entrada a Webmin
 session_mesg=Per entrar al servidor Webmin de $1, has d'introduir un nom d'usuari i una contrasenya.
