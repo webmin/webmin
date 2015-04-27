@@ -1127,6 +1127,10 @@ elsif ($mode eq "upstart") {
 	# Delete upstart service
 	&delete_upstart_service($name);
 	}
+elsif ($mode eq "launchd") {
+	# Delete launchd service
+	&delete_launchd_agent($name);
+	}
 elsif ($mode eq "init") {
 	# Delete init script links and init.d file
 	foreach my $a (&action_levels('S', $name)) {
@@ -1209,6 +1213,10 @@ elsif ($action_mode eq "systemd") {
 	# Start systemd service
 	return &start_systemd_service($name);
 	}
+elsif ($action_mode eq "launchd") {
+	# Start launchd service
+	return &start_launchd_agent($name);
+	}
 else {
 	return (0, "Bootup mode $action_mode not supported");
 	}
@@ -1252,6 +1260,10 @@ elsif ($action_mode eq "upstart") {
 elsif ($action_mode eq "systemd") {
 	# Stop systemd service
 	return &stop_systemd_service($name);
+	}
+elsif ($action_mode eq "launchd") {
+	# Stop launchd service
+	return &stop_launchd_agent($name);
 	}
 else {
 	return (0, "Bootup mode $action_mode not supported");
@@ -1309,6 +1321,11 @@ elsif ($action_mode eq "systemd") {
 	my @systemds = &list_systemd_services();
 	my ($u) = grep { $_->{'name'} eq $name ||
 			 $_->{'name'} eq $name.".service" } @systemds;
+	return !$u ? -1 : $u->{'status'} ? 1 : 0;
+	}
+elsif ($action_mode eq "launchd") {
+	my @agents = &list_launchd_agents();
+	my ($a) = grep { $_->{'name'} eq $name } @agents;
 	return !$u ? -1 : $u->{'status'} ? 1 : 0;
 	}
 else {
@@ -2330,6 +2347,23 @@ $plist .= "</plist>\n";
 &close_tempfile(PLIST);
 my $out = &backquote_logged("launchctl load ".quotemeta($file)." 2>&1");
 &error("Failed to load plist : $out") if ($?);
+}
+
+=head2 delete_launchd_agent(name)
+
+Stop and remove the agent with some name
+
+=cut
+sub delete_launchd_agent
+{
+my ($name) = @_;
+&system_logged("launchctl stop ".quotemeta($name)." 2>&1");
+&system_logged("launchctl remove ".quotemeta($name)." 2>&1");
+my ($a) = grep { $_->{'name'} eq $name } &list_launchd_agents();
+if ($a && $a->{'file'} && -f $a->{'file'}) {
+	&system_logged("launchctl unload ".quotemeta($a->{'file'})." 2>&1");
+	&unlink_logged($a->{'file'});
+	}
 }
 
 1;

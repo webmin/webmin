@@ -24,8 +24,6 @@ if ($in{'start'} || $in{'stop'} || $in{'restart'}) {
 
 if ($in{'delete'}) {
 	# Delete the service
-	&disable_at_boot($in{'name'});
-	&stop_launchd_agent($in{'name'});
 	&delete_launchd_agent($in{'name'});
 	&webmin_log("delete", "launchd", $in{'name'});
 	}
