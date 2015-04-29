@@ -2287,7 +2287,7 @@ foreach my $l (split(/\r?\n/, $out)) {
 
 # Build map from plist files to agents
 my @dirs = ("/Library/LaunchAgents",
-            "/Library/LaunchDaemons/",
+            "/Library/LaunchDaemons",
             "/System/Library/LaunchAgents",
             "/System/Library/LaunchDaemons");
 my %pmap;
@@ -2306,11 +2306,12 @@ foreach my $a (@rv) {
 	my %attrs;
 	foreach my $l (split(/\r?\n/, $out)) {
 		if ($l =~ /"(\S+)"\s*=\s*"([^"]*)";/ ||
-		    $l =~ /"(\S+)"\s*=\s*\S+;/) {
+		    $l =~ /"(\S+)"\s*=\s*(\S+);/) {
 			$attrs{lc($1)} = $2;
 			}
 		}
 	$a->{'start'} = $attrs{'program'};
+	$a->{'boot'} = $attrs{'ondemand'} eq 'false';
 	$a->{'file'} = $pmap{$a->{'name'}};
 	}
 
@@ -2342,7 +2343,7 @@ $plist .= "<key>KeepAlive</key>\n";
 $plist .= "<true/>\n";
 $plist .= "</dict>\n";
 $plist .= "</plist>\n";
-&open_locl_tempfile(PLIST, ">$file");
+&open_lock_tempfile(PLIST, ">$file");
 &print_tempfile(PLIST, $plist);
 &close_tempfile(PLIST);
 my $out = &backquote_logged("launchctl load ".quotemeta($file)." 2>&1");

@@ -55,7 +55,8 @@ else {
 	&open_lock_tempfile(CONF, ">$u->{'file'}");
 	&print_tempfile(CONF, $in{'conf'});
 	&close_tempfile(CONF);
-	&restart_launchd();
+	&system_logged("launchctl unload ".quotemeta($u->{'file'})." 2>&1");
+	&system_logged("launchctl load ".quotemeta($u->{'file'})." 2>&1");
 
 	# Enable or disable
 	if (defined($in{'boot'})) {
