@@ -298,7 +298,7 @@ else {
 #close($fh);
 #local $out = $wait_for_input;
 &clean_language();
-my $out = &backquote_command("$cmd 2>&1 </dev/null");
+my $out = &backquote_command("$cmd 2>&1 </dev/null") || "";
 &reset_environment();
 unlink($datafile);
 unlink($sigfile) if ($sigfile);
@@ -416,7 +416,7 @@ sub fetch_gpg_key
 my ($id) = @_;
 my $out = &backquote_command(
 	"$gpgpath --keyserver ".quotemeta($config{'keyserver'}).
-	" --recv-key ".quotemeta($id)." 2>&1 </dev/null");
+	" --recv-key ".quotemeta($id)." 2>&1 </dev/null") || "";
 my @keys = &list_keys();
 my ($key) = grep { lc($_->{'key'}) eq lc($id) } @keys;
 if ($?) {
