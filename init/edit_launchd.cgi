@@ -29,6 +29,10 @@ if ($in{'new'}) {
 	# Server command and args
 	print &ui_table_row($text{'launchd_start'},
 			    &ui_textarea("atstart", undef, 5, 80));
+
+	# Start at boot?
+	print &ui_table_row($text{'upstart_boot'},
+			    &ui_yesno_radio("boot", 1));
 	}
 else {
 	# Service name (non-editable)

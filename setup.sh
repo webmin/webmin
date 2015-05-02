@@ -601,9 +601,9 @@ echo "PERLLIB=$PERLLIB" >>$config_dir/start
 echo "export PERLLIB" >>$config_dir/start
 uname -a | grep -i 'HP/*UX' >/dev/null
 if [ $? = "0" ]; then
-	echo "exec '$wadir/miniserv.pl' $config_dir/miniserv.conf &" >>$config_dir/start
+	echo "exec '$wadir/miniserv.pl' \$* $config_dir/miniserv.conf &" >>$config_dir/start
 else
-	echo "exec '$wadir/miniserv.pl' $config_dir/miniserv.conf" >>$config_dir/start
+	echo "exec '$wadir/miniserv.pl' \$* $config_dir/miniserv.conf" >>$config_dir/start
 fi
 
 echo "#!/bin/sh" >>$config_dir/stop

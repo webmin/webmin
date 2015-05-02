@@ -594,6 +594,12 @@ elsif ($init_mode eq "osx") {
 	return $hc{$ucname} eq '-YES-' ? 2 :
 	       $hc{$ucname} eq '-NO-' ? 1 : 0;
 	}
+elsif ($init_mode eq "launchd") {
+	local @agents = &list_launchd_agents();
+	local ($agent) = grep { $_->{'name'} eq $_[0] } @agents;
+	return !$agent ? 0 :
+	       $agent->{'boot'} ? 2 : 1;
+	}
 }
 
 =head2 enable_at_boot(action, description, startcode, stopcode, statuscode, &opts)
@@ -975,6 +981,10 @@ elsif ($init_mode eq "osx") {
 	&write_env_file($config{'hostconfig'}, \%hc);
 	&unlock_file($config{'hostconfig'});
 	}
+elsif ($init_mode eq "launchd") {
+	# Create and if necessary enable a launchd agent
+	# XXX
+	}
 }
 
 =head2 disable_at_boot(action)
@@ -1106,6 +1116,10 @@ elsif ($init_mode eq "osx") {
 		&write_env_file($config{'hostconfig'}, \%hc);
 		}
 	&unlock_file($config{'hostconfig'});
+	}
+elsif ($init_mode eq "launchd") {
+	# Adjust plist file to not run at boot
+	# XXX
 	}
 }
 
@@ -2290,12 +2304,15 @@ my @dirs = ("/Library/LaunchAgents",
             "/Library/LaunchDaemons",
             "/System/Library/LaunchAgents",
             "/System/Library/LaunchDaemons");
-my %pmap;
+my (%pmap, %runatload);
 foreach my $dir (@dirs) {
 	foreach my $file (glob("$dir/*.plist")) {
 		my $plist = &read_file_contents($file);
 		if ($plist =~ /<key>Label<\/key>\s*<string>([^<]+)/i) {
 			$pmap{$1} = $file;
+			}
+		if ($plist =~ /<key>RunAtLoad<\/key>\s*<(true|false)\/>/i) {
+			$runatload{$file} = $1;
 			}
 		}
 	}
@@ -2311,21 +2328,21 @@ foreach my $a (@rv) {
 			}
 		}
 	$a->{'start'} = $attrs{'program'};
-	$a->{'boot'} = $attrs{'ondemand'} eq 'false';
 	$a->{'file'} = $pmap{$a->{'name'}};
+	$a->{'boot'} = $runatload{$a->{'file'}} eq 'true';
 	}
 
 return @rv;
 }
 
-=head2 create_launchd_agent(name, start-script)
+=head2 create_launchd_agent(name, start-script, boot-flag)
 
 Creates a new local launchd agent
 
 =cut
 sub create_launchd_agent
 {
-my ($name, $start) = @_;
+my ($name, $start, $boot) = @_;
 my $file = "/Library/LaunchDaemons/".$name.".plist";
 my $plist = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n".
 	    "<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n".
@@ -2339,8 +2356,10 @@ foreach my $a (&split_quoted_string($start)) {
         $plist .= "<string>$a</string>\n";
 	}
 $plist .= "</array>\n";
+$plist .= "<key>RunAtLoad</key>\n";
+$plist .= ($boot ? "<true/>\n" : "<false/>\n");
 $plist .= "<key>KeepAlive</key>\n";
-$plist .= "<true/>\n";
+$plist .= "<false/>\n";
 $plist .= "</dict>\n";
 $plist .= "</plist>\n";
 &open_lock_tempfile(PLIST, ">$file");
@@ -2365,6 +2384,32 @@ if ($a && $a->{'file'} && -f $a->{'file'}) {
 	&system_logged("launchctl unload ".quotemeta($a->{'file'})." 2>&1");
 	&unlink_logged($a->{'file'});
 	}
+}
+
+=head2 stop_launchd_agent(name)
+
+Kill the launchd daemon with some name
+
+=cut
+sub stop_launchd_agent
+{
+my ($name) = @_;
+my $out = &backquote_logged(
+	"launchctl stop ".quotemeta($name)." 2>&1 </dev/null");
+return (!$?, $out);
+}
+
+=head2 start_launchd_agent(name)
+
+Startup the launchd daemon with some name
+
+=cut
+sub start_launchd_agent
+{
+my ($name) = @_;
+my $out = &backquote_logged(
+	"launchctl start ".quotemeta($name)." 2>&1 </dev/null");
+return (!$?, $out);
 }
 
 1;

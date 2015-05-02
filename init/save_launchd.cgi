@@ -36,15 +36,7 @@ elsif ($in{'new'}) {
 	$in{'atstart'} =~ /\S/ || &error($text{'launchd_estart'});
 
 	# Create the config file
-	&create_launchd_agent($in{'name'}, $in{'atstart'});
-
-	# Enable at boot if selected
-	if ($in{'boot'} == 0) {
-		&disable_at_boot($in{'name'});
-		}
-	else {
-		&enable_at_boot($in{'name'});
-		}
+	&create_launchd_agent($in{'name'}, $in{'atstart'}, $in{'boot'});
 
 	&webmin_log("create", "launchd", $in{'name'});
 	}

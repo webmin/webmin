@@ -394,7 +394,7 @@ elsif ($init_mode eq "launchd" && $access{'bootup'}) {
 		print &ui_columns_row([
 			&ui_checkbox("d", $u->{'name'}, undef),
 			&ui_link($l, $u->{'name'}),
-			$u->{'boot'} == 1 ? $text{'yes'} :
+			$u->{'boot'} ? $text{'yes'} :
 			  "<font color=#ff0000>$text{'no'}</font>",
 			$u->{'status'} ? $text{'yes'} :
 			  "<font color=#ff0000>$text{'no'}</font>",
