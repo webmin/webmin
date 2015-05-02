@@ -11,6 +11,10 @@ eval "use Time::HiRes;";
 @itoa64 = split(//, "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
 
 # Find and read config file
+if ($ARGV[0] eq "--nofork") {
+	$nofork_argv = 1;
+	shift(@ARGV);
+	}
 if (@ARGV != 1) {
 	die "Usage: miniserv.pl <config file>";
 	}
@@ -607,7 +611,7 @@ if ($config{'listen'}) {
 	}
 
 # Split from the controlling terminal, unless configured not to
-if (!$config{'nofork'}) {
+if (!$config{'nofork'} && !$nofork_argv) {
 	if (fork()) { exit; }
 	}
 eval { setsid(); };	# may not work on Windows
