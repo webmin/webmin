@@ -512,12 +512,13 @@ such as init.d, OSX and FreeBSD.
 =cut
 sub action_status
 {
+my ($name) = @_;
 if ($init_mode eq "upstart") {
 	# Check upstart service status
 	local $out = &backquote_command("initctl status ".
-					quotemeta($_[0])." 2>&1");
+					quotemeta($name)." 2>&1");
 	if (!$?) {
-		my $cfile = "/etc/init/$_[0].conf";
+		my $cfile = "/etc/init/$name.conf";
 		open(CONF, $cfile);
 		while(<CONF>) {
 			if (/^(#*)\s*start/) {
@@ -530,7 +531,7 @@ if ($init_mode eq "upstart") {
 	}
 elsif ($init_mode eq "systemd") {
 	# Check systemd service status
-	local $unit = $_[0];
+	local $unit = $name;
 	$unit .= ".service" if ($unit !~ /\.service$/);
 	local $out = &backquote_command("systemctl show ".
 					quotemeta($unit)." 2>&1");
@@ -546,7 +547,7 @@ if ($init_mode eq "init" || $init_mode eq "upstart" ||
 	local ($a, $exists, $starting, %daemon);
 	foreach $a (&list_actions()) {
 		local @a = split(/\s+/, $a);
-		if ($a[0] eq $_[0]) {
+		if ($a[0] eq $name) {
 			$exists++;
 			local @boot = &get_inittab_runlevel();
 			foreach $s (&action_levels("S", $a[0])) {
@@ -556,14 +557,14 @@ if ($init_mode eq "init" || $init_mode eq "upstart" ||
 			}
 		}
 	if ($starting && $config{'daemons_dir'} &&
-	    &read_env_file("$config{'daemons_dir'}/$_[0]", \%daemon)) {
+	    &read_env_file("$config{'daemons_dir'}/$name", \%daemon)) {
 		$starting = lc($daemon{'ONBOOT'}) eq 'yes' ? 1 : 0;
 		}
 	return !$exists ? 0 : $starting ? 2 : 1;
 	}
 elsif ($init_mode eq "local") {
 	# Look for entry in rc.local
-	local $fn = "$module_config_directory/$_[0].sh";
+	local $fn = "$module_config_directory/$name.sh";
 	local $cmd = "$fn start";
 	open(LOCAL, $config{'local_script'});
 	while(<LOCAL>) {
@@ -575,20 +576,20 @@ elsif ($init_mode eq "local") {
 	}
 elsif ($init_mode eq "win32") {
 	# Look for a win32 service, enabled at boot
-	local ($svc) = &list_win32_services($_[0]);
+	local ($svc) = &list_win32_services($name);
 	return !$svc ? 0 :
 	       $svc->{'boot'} == 2 ? 2 : 1;
 	}
 elsif ($init_mode eq "rc") {
 	# Look for an RC script
 	local @rcs = &list_rc_scripts();
-	local ($rc) = grep { $_->{'name'} eq $_[0] } @rcs;
+	local ($rc) = grep { $_->{'name'} eq $name } @rcs;
 	return !$rc ? 0 :
 	       $rc->{'enabled'} ? 2 : 1;
 	}
 elsif ($init_mode eq "osx") {
 	# Look for a hostconfig entry
-	local $ucname = uc($_[0]);
+	local $ucname = uc($name);
 	local %hc;
 	&read_env_file($config{'hostconfig'}, \%hc);
 	return $hc{$ucname} eq '-YES-' ? 2 :
@@ -596,7 +597,7 @@ elsif ($init_mode eq "osx") {
 	}
 elsif ($init_mode eq "launchd") {
 	local @agents = &list_launchd_agents();
-	local ($agent) = grep { $_->{'name'} eq $_[0] } @agents;
+	local ($agent) = grep { $_->{'name'} eq &launchd_name($name) } @agents;
 	return !$agent ? 0 :
 	       $agent->{'boot'} ? 2 : 1;
 	}
@@ -983,7 +984,28 @@ elsif ($init_mode eq "osx") {
 	}
 elsif ($init_mode eq "launchd") {
 	# Create and if necessary enable a launchd agent
-	# XXX
+	my $name = &launchd_name($_[0]);
+	my @agents = &list_launchd_agents();
+	my ($agent) = grep { $_->{'name'} eq $name } @agents;
+	if (!$agent) {
+		# Need to create script
+		&create_launchd_agent($name, $_[1], 1);
+		}
+	else {
+		# Just enable at boot
+		my $out = &read_file_contents($agent->{'file'});
+		if ($out =~ /<key>RunAtLoad<\/key>/i) {
+			# Just fix setting
+			$out =~ s/<key>RunAtLoad<\/key>\s*<(true|false)\/>/<key>RunAtLoad<\/key>\n<true\/>/;
+			}
+		else {
+			# Defaults to false, so need to add before </plist>
+			$out =~ s/<\/plist>/<key>RunAtLoad<\/key>\n<true\/>\n<\/plist>/;
+			}
+		&open_lock_tempfile(PLIST, ">$agent->{'file'}");
+		&print_tempfile(PLIST, $out);
+		&close_tempfile(PLIST);
+		}
 	}
 }
 
@@ -996,6 +1018,7 @@ touched, so it can be re-enabled with the enable_at_boot function.
 =cut
 sub disable_at_boot
 {
+my ($name) = @_;
 local $st = &action_status($_[0]);
 return if ($st != 2);	# not currently starting
 local $unit = $_[0];
@@ -1119,7 +1142,15 @@ elsif ($init_mode eq "osx") {
 	}
 elsif ($init_mode eq "launchd") {
 	# Adjust plist file to not run at boot
-	# XXX
+	my @agents = &list_launchd_agents();
+	my ($a) = grep { $_->{'name'} eq &launchd_name($name) } @agents;
+	if ($a && $a->{'file'}) {
+		my $out = &read_file_contents($a->{'file'});
+		$out =~ s/<key>RunAtLoad<\/key>\s*<(true|false)\/>/<key>RunAtLoad<\/key>\n<false\/>/;
+		&open_lock_tempfile(PLIST, ">$a->{'file'}");
+		&print_tempfile(PLIST, $out);
+		&close_tempfile(PLIST);
+		}
 	}
 }
 
@@ -1143,7 +1174,7 @@ elsif ($mode eq "upstart") {
 	}
 elsif ($mode eq "launchd") {
 	# Delete launchd service
-	&delete_launchd_agent($name);
+	&delete_launchd_agent(&launchd_name($name));
 	}
 elsif ($mode eq "init") {
 	# Delete init script links and init.d file
@@ -1229,7 +1260,7 @@ elsif ($action_mode eq "systemd") {
 	}
 elsif ($action_mode eq "launchd") {
 	# Start launchd service
-	return &start_launchd_agent($name);
+	return &start_launchd_agent(&launchd_name($name));
 	}
 else {
 	return (0, "Bootup mode $action_mode not supported");
@@ -1277,7 +1308,7 @@ elsif ($action_mode eq "systemd") {
 	}
 elsif ($action_mode eq "launchd") {
 	# Stop launchd service
-	return &stop_launchd_agent($name);
+	return &stop_launchd_agent(&launchd_name($name));
 	}
 else {
 	return (0, "Bootup mode $action_mode not supported");
@@ -1339,7 +1370,7 @@ elsif ($action_mode eq "systemd") {
 	}
 elsif ($action_mode eq "launchd") {
 	my @agents = &list_launchd_agents();
-	my ($a) = grep { $_->{'name'} eq $name } @agents;
+	my ($a) = grep { $_->{'name'} eq &launchd_name($name) } @agents;
 	return !$u ? -1 : $u->{'status'} ? 1 : 0;
 	}
 else {
@@ -2410,6 +2441,14 @@ my ($name) = @_;
 my $out = &backquote_logged(
 	"launchctl start ".quotemeta($name)." 2>&1 </dev/null");
 return (!$?, $out);
+}
+
+# launchd_name(name)
+# If an action name isn't fully qualified, prepend com.webmin to it
+sub launchd_name
+{
+my ($name) = @_;
+return $name =~ /\./ ? $name : "com.webmin.".$name;
 }
 
 1;

@@ -27,6 +27,12 @@ if ($in{'delete'}) {
 	&delete_launchd_agent($in{'name'});
 	&webmin_log("delete", "launchd", $in{'name'});
 	}
+elsif ($in{'reload'}) {
+	# Re-load the service from its config file
+	&system_logged("launchctl unload ".quotemeta($u->{'file'})." 2>&1");
+	&system_logged("launchctl load ".quotemeta($u->{'file'})." 2>&1");
+	&webmin_log("reload", "launchd", $in{'name'});
+	}
 elsif ($in{'new'}) {
 	# Validate inputs and check for clash
 	$in{'name'} =~ /^[a-z0-9\.\_\-]+$/i ||
@@ -47,19 +53,6 @@ else {
 	&open_lock_tempfile(CONF, ">$u->{'file'}");
 	&print_tempfile(CONF, $in{'conf'});
 	&close_tempfile(CONF);
-	&system_logged("launchctl unload ".quotemeta($u->{'file'})." 2>&1");
-	&system_logged("launchctl load ".quotemeta($u->{'file'})." 2>&1");
-
-	# Enable or disable
-	if (defined($in{'boot'})) {
-		if ($in{'boot'} == 0) {
-			&disable_at_boot($in{'name'});
-			}
-		else {
-			&enable_at_boot($in{'name'});
-			}
-		}
-
 	&webmin_log("modify", "launchd", $in{'name'});
 	}
 &redirect("");

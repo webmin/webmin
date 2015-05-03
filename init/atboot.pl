@@ -126,6 +126,11 @@ elsif ($init_mode eq "rc" || $init_mode eq "upstart" ||
 			{ 'fork' => 1,
 			  'pidfile' => $var_directory."/miniserv.pid" });
 	}
+elsif ($init_mode eq "launchd") {
+	# Create launchd script
+	&create_launchd_agent(&launchd_name($product),
+		"$config_directory/start --nofork", 1);
+	}
 
 $config{'atboot_product'} = $product;
 &save_module_config();

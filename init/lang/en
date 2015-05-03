@@ -79,6 +79,7 @@ edit_stopat=Stop at
 edit_startnow=Start Now
 edit_stopnow=Stop Now
 edit_restartnow=Restart Now
+edit_reloadnow2=Re-Read Config File
 edit_condrestartnow=Restart If Needed
 edit_reloadnow=Reload Now
 edit_statusnow=Show Status

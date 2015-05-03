@@ -69,6 +69,7 @@ else {
 			     [ 'start', $text{'edit_startnow'} ],
 			     [ 'restart', $text{'edit_restartnow'} ],
 			     [ 'stop', $text{'edit_stopnow'} ],
+			     [ 'reload', $text{'edit_reloadnow2'} ],
 			     [ 'delete', $text{'delete'} ] ]);
 	}
 
