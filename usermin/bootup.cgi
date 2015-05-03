@@ -4,12 +4,16 @@
 
 require './usermin-lib.pl';
 $access{'bootup'} || &error($text{'bootup_ecannot'});
-&foreign_require("init", "init-lib.pl");
+&foreign_require("init");
 &ReadParse();
 
 if ($in{'boot'}) {
 	# Enable starting at boot
 	$start = "$config{'usermin_dir'}/start";
+	if ($init::init_mode eq "launchd") {
+		# Launchd forks automatically
+		$start .= " --nofork";
+		}
 	$stop = "$config{'usermin_dir'}/stop";
 	$status = <<EOF;
 pidfile=`grep "^pidfile=" $config{'usermin_dir'}/miniserv.conf | sed -e 's/pidfile=//g'`

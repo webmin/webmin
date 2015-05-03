@@ -112,7 +112,7 @@ if ($access{'stop'}) {
 
 if ($init) {
 	print "<tr>\n";
-	&foreign_require("init", "init-lib.pl");
+	&foreign_require("init");
 	$starting = &init::action_status("usermin");
 
 	print &ui_buttons_row("bootup.cgi",
