@@ -6,6 +6,7 @@ use WebminCore;
 
 if ($module_info{'usermin'}) {
 	&switch_to_remote_user();
+	&create_user_config_dirs();
 	$mailcap_file = $userconfig{'mailcap'};
 	if ($mailcap_file !~ /^\//) {
 		$mailcap_file = "$remote_user_info[7]/$mailcap_file";
