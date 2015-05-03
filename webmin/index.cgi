@@ -80,7 +80,7 @@ my %miniserv;
 &get_miniserv_config(\%miniserv);
 
 if (&foreign_check("init")) {
-	&foreign_require("init", "init-lib.pl");
+	&foreign_require("init");
 	my $starting = &init::action_status("webmin");
 	print &ui_buttons_row("bootup.cgi",
 	      $text{'index_boot'},
