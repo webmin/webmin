@@ -22,3 +22,5 @@ Updated the API used by other modules to allow new actions to be created on MacO
 Converted commands in the module's API file to POD format, and added more details about each function.
 ---- Changes since 1.540 ----
 Added support for the Upstart boot system, seen on Ubuntu 10 and later.
+---- Changes since 1.740 ----
+Added support for Launchd, as seen on newer MacOS X systems.
