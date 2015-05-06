@@ -407,9 +407,13 @@ else {
 
 sub check_ipmask
 {
-return &to_ipaddress($_[0]) ||
-	$_[0] =~ /^([0-9\.]+)\/([0-9\.]+)$/ &&
-		&to_ipaddress("$1") &&
-		(&check_ipaddress("$2") || ($2 =~ /^\d+$/ && $2 <= 32));
+foreach my $w (split(/,/, $_[0])) {
+	my $ok = &to_ipaddress($w) ||
+		$w =~ /^([0-9\.]+)\/([0-9\.]+)$/ &&
+			&to_ipaddress("$1") &&
+			(&check_ipaddress("$2") || ($2 =~ /^\d+$/ && $2 <= 32));
+	return 0 if (!$ok);
+	}
+return 1;
 }
 
