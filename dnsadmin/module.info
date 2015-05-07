@@ -18,7 +18,6 @@ desc_ja_JP.euc=BIND 4 DNS ҐµЎјҐР
 depends=bind8
 desc_ru_RU=BIND 4 DNS Сервер
 desc_ca=Servidor DNS BIND 4
-longdesc=Create and edit domains and DNS records.
 desc_zh_TW.UTF-8=BIND 4 DNS дјєжњЌе™Ё
 desc_zh_CN.UTF-8=BIND 4 DNS жњЌеЉЎе™Ё
 desc_ja_JP.UTF-8=BIND 4 DNS г‚µгѓјгѓђ
