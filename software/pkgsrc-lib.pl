@@ -1,8 +1,107 @@
-# Functions for FreeBSD pkg repository
+# Functions for MacOS pkgsrc repository
+
+$ENV{'PATH'} .= ":/usr/pkg/bin:/usr/pkg/sbin";
+$pkgin_sqlite_db = "/var/db/pkgin/pkgin.db";
+
+sub list_package_system_commands
+{
+return ("pkgin", "sqlite3");
+}
+
+# execute_pkgin_sql(command)
+# Returns an array of rows, each of which is a hash ref from column name to
+# value for that row
+sub execute_pkgin_sql
+{
+my ($sql) = @_;
+my $errtemp = &transname();
+my $cmd = "sqlite3 -header $pkgin_sqlite_db ".quotemeta($sql)." 2>$errtemp";
+&open_execute_command(SQL, $cmd, 1, 1);
+my $headline = <SQL>;
+$headline =~ s/\r|\n//g;
+my @cols = split(/\|/, $headline);
+while(my $row = <SQL>) {
+	$row =~ s/\r|\n//g;
+	my @row = split(/\|/, $row);
+	my $r = { };
+	for(my $i=0; $i<@cols; $i++) {
+		$r->{lc($cols[$i])} = $row[$i];
+		}
+	push(@rv, $r);
+	}
+close(SQL);
+my $ex = $?;
+my $err = &read_file_contents($errtemp);
+&unlink_file($errtemp);
+if ($err || $?) {
+	&error("SQL command $sql failed : ".
+	       ($err || $headline || "Unknown error"));
+	}
+return @rv;
+}
+
+# list_packages([package]*)
+# Fills the array %packages with all or listed packages
+sub list_packages
+{
+my (@names) = @_;
+my $sql = "select * from local_pkg";
+if (@names) {
+	$sql .= " where pkgname in (".join(", ", map { "'$_'" } @names).")";
+	}
+my @out = &execute_pkgin_sql($sql);
+my $i = 0;
+my $arch = &backquote_command("uname -m");
+$arch =~ s/\r|\n//g;
+foreach my $r (@out) {
+	$packages{$i,'name'} = $r->{'pkgname'};
+	$packages{$i,'version'} = $r->{'pkgvers'};
+	$packages{$i,'desc'} = $r->{'comment'};
+	$packages{$i,'arch'} = $arch;
+	$packages{$i,'class'} = (split(/\s+/, $r->{'categories'}))[0];
+	$i++;
+	}
+return $i;
+}
+
+# package_info(package, [version])
+# Returns an array of package information in the order
+#  name, class, description, arch, version, vendor, installtime
+# XXX there doesn't seem to be any pkgsrc command for this
+sub package_info
+{
+my ($name, $ver) = @_;
+my $n = &list_packages($name);
+return ( ) if (!$n);
+return ($packages{0,'name'}, $packages{0,'class'}, $packages{0,'desc'},
+	$packages{0,'arch'}, $packages{0,'version'}, undef, undef);
+}
+
+# is_package(file)
+# Always returns 0, because pkgsrc doesn't support installing from files
+sub is_package
+{
+return 0;
+}
+
+# file_packages(file)
+# Returns nothing, because pkgsrc doesn't support installing from files
+sub file_packages
+{
+return ();
+}
+
+sub package_system
+{
+return "PKGsrc";
+}
+
+
+
 
 sub list_update_system_commands
 {
-return ("pkg");
+return ("pkgin");
 }
 
 # update_system_install([package], [&in], [no-force])
@@ -15,20 +114,16 @@ my $force = !$_[2];
 
 # Build and show command to run
 $update = join(" ", map { quotemeta($_) } split(/\s+/, $update));
-my $cmd = "pkg install ".$update;
-print "<b>",&text('pkg_install', "<tt>$cmd</tt>"),"</b><p>\n";
+my $cmd = "pkgin install ".$update;
+print "<b>",&text('pkgsrc_install', "<tt>$cmd</tt>"),"</b><p>\n";
 print "<pre>";
 &additional_log('exec', undef, $cmd);
 
 # Run it
-&open_execute_command(CMD, "yes | $cmd", 2);
+&open_execute_command(CMD, "yes Y | $cmd", 2);
 while(<CMD>) {
-	if (/Installing\s+(\S+)\-(\d\S*)/i) {
+	if (/installing\s+(\S+)\-(\d\S*)/i) {
 		# New package
-		push(@rv, $1);
-		}
-	elsif (/\s+(\S+):\s+(\S+)\s+->\s+(\S+)/) {
-		# Upgrading package
 		push(@rv, $1);
 		}
 	print &html_escape("$_");

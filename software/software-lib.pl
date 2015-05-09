@@ -47,12 +47,16 @@ else {
 	elsif (&has_command("emerge")) {
 		$update_system = "emerge";
 		}
-	elsif (&has_command("cupdate")) {
-		# not done yet!
+	elsif (&has_command("pkgin") || -x "/usr/pkg/bin/pkgin") {
+		$update_system = "pkgsrc";
 		}
 	}
 if ($update_system) {
-	do $update_system."-lib.pl";
+	# Load the update system specific library, unless it has already been
+	# loaded above
+	if ($update_system ne $config{'package_system'}) {
+		do $update_system."-lib.pl";
+		}
 	$has_update_system = 1;
 	}
 
@@ -126,17 +130,21 @@ print &ui_table_row($text{'edit_class'},
 print &ui_table_row($text{'edit_ver'},
 	&html_escape($pinfo[4]));
 
-# Vendor
-print &ui_table_row($text{'edit_vend'},
-	&html_escape(&entities_to_ascii($pinfo[5])));
+if ($pinfo[5]) {
+	# Vendor
+	print &ui_table_row($text{'edit_vend'},
+		&html_escape(&entities_to_ascii($pinfo[5])));
+	}
 
 # Architecture
 print &ui_table_row($text{'edit_arch'},
 	&html_escape($pinfo[3]));
 
-# Install date
-print &ui_table_row($text{'edit_inst'},
-	&html_escape($pinfo[6]));
+if ($pinfo[6]) {
+	# Install date
+	print &ui_table_row($text{'edit_inst'},
+		&html_escape($pinfo[6]));
+	}
 
 print &ui_table_end();
 
