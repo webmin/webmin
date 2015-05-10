@@ -2,6 +2,7 @@
 
 $ENV{'PATH'} .= ":/usr/pkg/bin:/usr/pkg/sbin";
 $pkgin_sqlite_db = "/var/db/pkgin/pkgin.db";
+$no_package_install = 1;
 
 sub list_package_system_commands
 {

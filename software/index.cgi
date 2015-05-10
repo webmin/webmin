@@ -37,19 +37,18 @@ print &ui_hr();
 print &ui_subheading($text{'index_install'});
 print &text('index_installmsg', &package_system()),"<p>\n";
 
-$upid = time().$$;
-print &ui_form_start("install_pack.cgi?id=$upid", "form-data", undef,
-		     &read_parse_mime_javascript($upid, [ "upload" ])),"\n";
 @opts = ( );
-push(@opts, [ 0, $text{'index_local'},
-	      &ui_textbox("local", undef, 50)."\n".
-	      &file_chooser_button("local", 0, 2) ]);
-push(@opts, [ 1, $text{'index_uploaded'},
-	      &ui_upload("upload", 50) ]);
-push(@opts, [ 2, $text{'index_ftp'},
-	      &ui_textbox("url", undef, 50)."\n".
-	      ($has_search_system ? &capture_function_output(
-					\&search_system_input) : "") ]);
+if (!$no_package_install) {
+	push(@opts, [ 0, $text{'index_local'},
+		      &ui_textbox("local", undef, 50)."\n".
+		      &file_chooser_button("local", 0, 2) ]);
+	push(@opts, [ 1, $text{'index_uploaded'},
+		      &ui_upload("upload", 50) ]);
+	push(@opts, [ 2, $text{'index_ftp'},
+		      &ui_textbox("url", undef, 50)."\n".
+		      ($has_search_system ? &capture_function_output(
+						\&search_system_input) : "") ]);
+	}
 if ($has_update_system) {
 	push(@opts, [ 3, $text{$update_system.'_input'},
 	      &ui_textbox("update", undef, 30)."\n".
@@ -57,9 +56,20 @@ if ($has_update_system) {
 	      (defined(&show_update_system_opts) &&
                ($opts = &show_update_system_opts()) ? "<br>".$opts : "") ]);
 	}
-print &ui_radio_table("source", 0, \@opts);
-print &ui_submit($text{'index_installok'}),"\n";
-print &ui_form_end();
+if (@opts) {
+	$upid = time().$$;
+	print &ui_form_start("install_pack.cgi?id=$upid", "form-data", undef,
+			     &read_parse_mime_javascript($upid, [ "upload" ])),"\n";
+	if (@opts > 1) {
+		print &ui_radio_table("source", $opts[0]->[0], \@opts);
+		}
+	else {
+		print "<b>",$opts[0]->[1],"</b> ",$opts[0]->[2],"<p>\n";
+		print &ui_hidden("source", $opts[0]->[0]);
+		}
+	print &ui_submit($text{'index_installok'}),"\n";
+	print &ui_form_end();
+	}
 
 # Show search form by file, if supported by package system
 if (!$no_package_filesearch) {
