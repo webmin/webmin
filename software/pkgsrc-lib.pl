@@ -59,6 +59,7 @@ foreach my $r (@out) {
 	$packages{$i,'desc'} = $r->{'comment'};
 	$packages{$i,'arch'} = $arch;
 	$packages{$i,'class'} = (split(/\s+/, $r->{'categories'}))[0];
+	$packages{$i,'size'} = $r->{'size_pkg'};
 	$i++;
 	}
 return $i;
@@ -96,6 +97,90 @@ sub package_system
 return "PKGsrc";
 }
 
+# check_files(package, version)
+# Fills in the %files array with information about the files belonging
+# to some package. Values in %files are  path type user group size error
+sub check_files
+{
+my ($name, $ver) = @_;
+my @files = &package_files($name, $ver);
+my %errs;
+&open_execute_command(CHECK, "pkg_admin check ".quotemeta($name), 1, 1);
+while(<CHECK>) {
+	if (/^(\/\S+)\s+(.*)/) {
+		$errs{$1} = $2;
+		}
+	}
+close(CHECK);
+%files = ( );
+for(my $i=0; $i<@files; $i++) {
+	my @st = stat($files[$i]);
+	$files{$i,'path'} = $files[$i];
+	$files{$i,'type'} = -l $files[$i] ? 3 :
+			    -d $files[$i] ? 1 : 0;
+	$files{$i,'user'} = getpwuid($st[4]);
+	$files{$i,'group'} = getgrgid($st[5]);
+	$files{$i,'mode'} = sprintf "%o", $st[2] & 07777;
+	$files{$i,'size'} = $st[7];
+	$files{$i,'link'} = readlink($real);
+	$files{$i,'error'} = $errs{$files[$i]};
+	}
+return scalar(@files);
+}
+
+# package_files(package, [version])
+# Returns a list of all files in some package
+sub package_files
+{
+my ($name, $ver) = @_;
+&open_execute_command(DUMP, "pkg_admin dump", 1, 1);
+while(<DUMP>) {
+	if (/file:\s+(\S.*\S)\s+pkg:\s+(\S+)\-/ && $2 eq $name) {
+		push(@rv, $1);
+		}
+	}
+close(DUMP);
+return @rv;
+}
+
+# installed_file(file)
+# Given a filename, fills %file with details of the given file and returns 1.
+# If the file is not known to the package system, returns 0
+# Usable values in %file are  path type user group mode size packages
+sub installed_file
+{
+# XXX
+local($pkg, @w, $_, @pkgs, @vers);
+undef(%file);
+local $qm = quotemeta($_[0]);
+$pkg = &backquote_command("rpm -q -f $qm --queryformat \"%{NAME}\\n\" 2>&1", 1);
+if ($pkg =~ /not owned/ || $?) { return 0; }
+@pkgs = split(/\n/, $pkg);
+$pkg = &backquote_command("rpm -q -f $qm --queryformat \"%{VERSION}-%{RELEASE}\\n\" 2>&1", 1);
+@vers = split(/\n/, $pkg);
+&open_execute_command(RPM, "rpm -q $pkgs[0] -l --dump", 1, 1);
+while(<RPM>) {
+	chop;
+	@w = split(/ /);
+	if ($w[0] eq $_[0]) {
+		$file{'packages'} = join(' ', @pkgs);
+		$file{'versions'} = join(' ', @vers);
+		$file{'path'} = $w[0];
+		if ($w[10] ne "X") { $files{$i,'link'} = $w[10]; }
+		$file{'type'} = $w[10] ne "X" ? 3 :
+				(-d &translate_filename($w[0])) ? 1 :
+				$w[7] ? 5 : 0;
+		$file{'user'} = $w[5];
+		$file{'group'} = $w[6];
+		$file{'mode'} = substr($w[4], -4);
+		$file{'size'} = $w[1];
+		last;
+		}
+	}
+close(RPM);
+return 1;
+}
+
 
 
 
@@ -114,13 +199,13 @@ my $force = !$_[2];
 
 # Build and show command to run
 $update = join(" ", map { quotemeta($_) } split(/\s+/, $update));
-my $cmd = "pkgin install ".$update;
+my $cmd = "pkgin -y install ".$update;
 print "<b>",&text('pkgsrc_install', "<tt>$cmd</tt>"),"</b><p>\n";
 print "<pre>";
 &additional_log('exec', undef, $cmd);
 
 # Run it
-&open_execute_command(CMD, "yes Y | $cmd", 2);
+&open_execute_command(CMD, "$cmd", 2);
 while(<CMD>) {
 	if (/installing\s+(\S+)\-(\d\S*)/i) {
 		# New package

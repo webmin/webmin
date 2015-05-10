@@ -35,10 +35,10 @@ else {
 		}
 	print "<center>\n";
 	if ($n) {
-		print &text('delete_rusure', "<tt>$p</tt>", $n, $sz),"<br>\n";
+		print &text('delete_rusure', "<tt>$p</tt>", $n, $sz),"<p>\n";
 		}
 	else {
-		print &text('delete_rusure2', "<tt>$p</tt>"),"<br>\n";
+		print &text('delete_rusure2', "<tt>$p</tt>"),"<p>\n";
 		}
 
 	# Ask if the user is sure..
