@@ -239,6 +239,8 @@ return @rv;
 sub update_system_search
 {
 my ($text) = @_;
+$text =~ s/\.\*/%/g;
+$text =~ s/\./?/g;
 my $sql = "select * from remote_pkg";
 if ($text) {
 	$sql .= " where pkgname like '%$text%' or ".
@@ -249,13 +251,13 @@ my @rv;
 foreach my $r (@out) {
 	push(@rv, { 'name' => $r->{'pkgname'},
 		    'version' => $r->{'pkgvers'},
-		    'desc' => $r->{'desc'} });
+		    'desc' => $r->{'comment'} });
 	}
 return @rv;
 }
 
 # update_system_available()
-# Returns a list of package names and versions that are available from YUM
+# Returns a list of package names and versions that are available from PKGSRC
 sub update_system_available
 {
 return &update_system_search(undef);
@@ -265,20 +267,19 @@ return &update_system_search(undef);
 # Returns a list of available package updates
 sub update_system_updates
 {
-# XXX
+my $sql = "select remote_pkg.pkgname,remote_pkg.pkgvers ".
+	  "from remote_pkg,local_pkg ".
+	  "where remote_pkg.pkgname = local_pkg.pkgname ".
+	  "and remote_pkg.pkgvers !=  local_pkg.pkgvers";
+my @out = &execute_pkgin_sql($sql);
 my @rv;
-&clean_language();
-&open_execute_command(DUMP, "yes no | pkg upgrade 2>/dev/null", 1,1);
-while(<DUMP>) {
-	if (/^\s+(\S+):\s+(\S+)\s+->\s+(\S+)/) {
-		push(@rv, { 'name' => $1,
-			    'oldversion' => $2,
-			    'version' => $3 });
-		}
+foreach my $r (@out) {
+	push(@rv, { 'name' => $r->{'pkgname'},
+		    'version' => $r->{'pkgvers'},
+		    'desc' => $r->{'comment'} });
 	}
-close(DUMP);
-&reset_environment();
 return @rv;
+
 }
 
 # update_system_resolve(name)
@@ -286,16 +287,12 @@ return @rv;
 # the name used by ports.
 sub update_system_resolve
 {
-# XXX
 local ($name) = @_;
-return $name eq "apache" ? "apache22 ap22-mod_.*" :
-       $name eq "dhcpd" ? "isc-dhcp42-server" :
-       $name eq "mysql" ? "mysql-server" :
-       $name eq "openssh" ? "openssh-portable" :
-       $name eq "postgresql" ? "postgresql-server" :
+return $name eq "apache" ? "apache ap24-.*" :
+       $name eq "dhcpd" ? "isc-dhcpd" :
+       $name eq "mysql" ? "mysql-server mysql-client" :
+       $name eq "postgresql" ? "postgresql94-client postgresql94-server" :
        $name eq "openldap" ? "openldap-server openldap-client" :
-       $name eq "samba" ? "samba36 samba36-smbclient samba36-nmblookup" :
-       $name eq "spamassassin" ? "p5-Mail-SpamAssassin" :
        			  $name;
 }
 
