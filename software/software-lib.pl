@@ -105,10 +105,12 @@ return $_[0];
 # show_package_info(package, version, [no-installed-message])
 sub show_package_info
 {
-@pinfo = &package_info($_[0], $_[1]);
+my ($name, $ver, $nomsg) = @_;
+
+my @pinfo = &package_info($name, $ver);
 return () if (!@pinfo);
 
-print &ui_subheading(&text('do_success', $_[0])) if (!$_[2]);
+print &ui_subheading(&text('do_success', $name)) if (!$nomsg);
 print &ui_table_start($text{'edit_details'}, "width=100%", 4,
 		      [ "width=20%", undef, "width=20%", undef ]);
 

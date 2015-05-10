@@ -68,7 +68,6 @@ return $i;
 # package_info(package, [version])
 # Returns an array of package information in the order
 #  name, class, description, arch, version, vendor, installtime
-# XXX there doesn't seem to be any pkgsrc command for this
 sub package_info
 {
 my ($name, $ver) = @_;
@@ -122,7 +121,7 @@ for(my $i=0; $i<@files; $i++) {
 	$files{$i,'group'} = getgrgid($st[5]);
 	$files{$i,'mode'} = sprintf "%o", $st[2] & 07777;
 	$files{$i,'size'} = $st[7];
-	$files{$i,'link'} = readlink($real);
+	$files{$i,'link'} = readlink($files[$i]);
 	$files{$i,'error'} = $errs{$files[$i]};
 	}
 return scalar(@files);
@@ -149,40 +148,53 @@ return @rv;
 # Usable values in %file are  path type user group mode size packages
 sub installed_file
 {
-# XXX
-local($pkg, @w, $_, @pkgs, @vers);
-undef(%file);
-local $qm = quotemeta($_[0]);
-$pkg = &backquote_command("rpm -q -f $qm --queryformat \"%{NAME}\\n\" 2>&1", 1);
-if ($pkg =~ /not owned/ || $?) { return 0; }
-@pkgs = split(/\n/, $pkg);
-$pkg = &backquote_command("rpm -q -f $qm --queryformat \"%{VERSION}-%{RELEASE}\\n\" 2>&1", 1);
-@vers = split(/\n/, $pkg);
-&open_execute_command(RPM, "rpm -q $pkgs[0] -l --dump", 1, 1);
-while(<RPM>) {
-	chop;
-	@w = split(/ /);
-	if ($w[0] eq $_[0]) {
-		$file{'packages'} = join(' ', @pkgs);
-		$file{'versions'} = join(' ', @vers);
-		$file{'path'} = $w[0];
-		if ($w[10] ne "X") { $files{$i,'link'} = $w[10]; }
-		$file{'type'} = $w[10] ne "X" ? 3 :
-				(-d &translate_filename($w[0])) ? 1 :
-				$w[7] ? 5 : 0;
-		$file{'user'} = $w[5];
-		$file{'group'} = $w[6];
-		$file{'mode'} = substr($w[4], -4);
-		$file{'size'} = $w[1];
-		last;
+my ($file) = @_;
+&open_execute_command(DUMP, "pkg_admin dump", 1, 1);
+while(<DUMP>) {
+	if (/file:\s+(\S.*\S)\s+pkg:\s+(\S+)\-(\S+)/ && $1 eq $file) {
+		push(@pkgs, $2);
+		push(@vers, $3);
 		}
 	}
-close(RPM);
+close(DUMP);
+return 0 if (!@pkgs);
+%file = ( );
+$file{'packages'} = join(' ', @pkgs);
+$file{'versions'} = join(' ', @vers);
+$file{'path'} = $file;
+my @st = stat($file);
+$file{'type'} = -l $files ? 3 :
+		-d $files ? 1 : 0;
+$file{'user'} = getpwuid($st[4]);
+$file{'group'} = getgrgid($st[5]);
+$file{'mode'} = sprintf "%o", $st[2] & 07777;
+$file{'size'} = $st[7];
+$file{'link'} = readlink($file);
 return 1;
+}
+
+# delete_package(package, [&options], version)
+# Attempt to remove some package
+sub delete_package
+{
+my ($name, $opts, $ver) = @_;
+my $out = &backquote_logged("pkgin -y remove ".quotemeta($name)." 2>&1");
+return $? ? $out : undef;
+}
+
+# delete_packages(&packages, [&options], &versions)
+# Attempt to remove multiple packages at once
+sub delete_packages
+{
+my ($names, $opts, $vers) = @_;
+my $out = &backquote_logged("pkgin -y remove ".
+	join(" ", map { quotemeta($name) } @$names)." 2>&1");
+return $? ? $out : undef;
 }
 
 
 
+###### Update system functions
 
 sub list_update_system_commands
 {
@@ -196,6 +208,7 @@ sub update_system_install
 my $update = $_[0] || $in{'update'};
 my $in = $_[1];
 my $force = !$_[2];
+my @rv;
 
 # Build and show command to run
 $update = join(" ", map { quotemeta($_) } split(/\s+/, $update));
@@ -225,18 +238,19 @@ return @rv;
 # Returns a list of packages matching some search
 sub update_system_search
 {
-local (@rv, $pkg);
-&clean_language();
-&open_execute_command(DUMP, "pkg search -Q comment ".quotemeta($_[0])." 2>/dev/null", 1,1);
-while(<DUMP>) {
-	if (/^(\S+)-(\d\S*)\s+(\S.*)/) {
-		push(@rv, { 'name' => $1,
-			    'version' => $2,
-			    'desc' => $3 });
-		}
+my ($text) = @_;
+my $sql = "select * from remote_pkg";
+if ($text) {
+	$sql .= " where pkgname like '%$text%' or ".
+		"comment like '%$text%'";
 	}
-close(DUMP);
-&reset_environment();
+my @out = &execute_pkgin_sql($sql);
+my @rv;
+foreach my $r (@out) {
+	push(@rv, { 'name' => $r->{'pkgname'},
+		    'version' => $r->{'pkgvers'},
+		    'desc' => $r->{'desc'} });
+	}
 return @rv;
 }
 
@@ -244,13 +258,14 @@ return @rv;
 # Returns a list of package names and versions that are available from YUM
 sub update_system_available
 {
-return &update_system_search(".*");
+return &update_system_search(undef);
 }
 
 # update_system_updates()
 # Returns a list of available package updates
 sub update_system_updates
 {
+# XXX
 my @rv;
 &clean_language();
 &open_execute_command(DUMP, "yes no | pkg upgrade 2>/dev/null", 1,1);
@@ -271,6 +286,7 @@ return @rv;
 # the name used by ports.
 sub update_system_resolve
 {
+# XXX
 local ($name) = @_;
 return $name eq "apache" ? "apache22 ap22-mod_.*" :
        $name eq "dhcpd" ? "isc-dhcp42-server" :

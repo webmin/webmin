@@ -412,4 +412,10 @@ pkg_ok=.. install complete
 pkg_find=Search pkgng
 pkg_input=Package from pkgng
 
+pkgsrc_install=Installing pkgsrc packages $1 ..
+pkgsrc_failed=.. some packages failed
+pkgsrc_ok=.. install complete
+pkgsrc_find=Search pkgng
+pkgsrc_input=Package from pkgsrc
+
 __norefs=1
