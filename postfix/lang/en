@@ -414,8 +414,6 @@ reload_ecannot=You are not allowed to reload Postfix
 
 query_get_efailed=Failed to query Postfix config command to get the current value of parameter $1: <tt>$2</tt>
 query_set_efailed=Failed to query Postfix config command to set the current value of parameter $1 to $2: <tt>$3</tt>
-reload_ecannot=You are not allowed to reload Postfix
-reload_efailed=Failed to reload Postfix.
 regenerate_ecannot=You are not allowed to regenerate the Aliases
 regenerate_alias_efailed=Failed to regenerate aliases: <tt>$1</tt>
 regenerate_table_efailed=Failed to regenerate table $1: <tt>$2</tt>
