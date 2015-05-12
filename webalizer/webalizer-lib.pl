@@ -13,7 +13,8 @@ our $custom_logs_file = "$module_config_directory/custom-logs";
 our %access = &get_module_acl();
 
 # Use sample config if needed
-if (!-r $config{'webalizer_conf'} && -r $config{'alt_conf'}) {
+if (!-r $config{'webalizer_conf'} && $config{'alt_conf'} &&
+    -r $config{'alt_conf'}) {
 	&copy_source_dest($config{'alt_conf'}, $config{'webalizer_conf'});
 	}
 
