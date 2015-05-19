@@ -17,14 +17,28 @@ our $uuid_cache_file = "$module_config_directory/uuids";
 
 &foreign_require("webmin");
 
+# get_minecraft_jar()
+# Returns the path to the JAR file
+sub get_minecraft_jar
+{
+if ($config{'minecraft_jar'} =~ /^\//) {
+	return $config{'minecraft_jar'};
+	}
+elsif ($config{'minecraft_jar'}) {
+	return $config{'minecraft_dir'}."/".$config{'minecraft_jar'};
+	}
+else {
+	return $config{'minecraft_dir'}."/"."minecraft_server.jar";
+	}
+}
+
 # check_minecraft_server()
 # Returns an error message if the Minecraft server is not installed
 sub check_minecraft_server
 {
 -d $config{'minecraft_dir'} ||
 	return &text('check_edir', $config{'minecraft_dir'});
-my $jar = $config{'minecraft_jar'} ||
-	  $config{'minecraft_dir'}."/"."minecraft_server.jar";
+my $jar = &get_minecraft_jar();
 -r $jar ||
 	return &text('check_ejar', $jar);
 &has_command($config{'java_cmd'}) ||
@@ -42,8 +56,7 @@ my $port = $config{'port'} || 25565;
 my ($pid) = &proc::find_socket_processes("tcp:".$port);
 return $pid if ($pid);
 my @procs = &proc::list_processes();
-my $jar = $config{'minecraft_jar'} ||
-	  $config{'minecraft_dir'}."/"."minecraft_server.jar";
+my $jar = &get_minecraft_jar();
 foreach my $p (@procs) {
 	if ($p->{'args'} =~ /^java.*\Q$jar\E/) {
 		return $p->{'pid'};
@@ -58,8 +71,7 @@ sub is_minecraft_server_running
 {
 &foreign_require("proc");
 my @procs = &proc::list_processes();
-my $jar = $config{'minecraft_jar'} ||
-	  $config{'minecraft_dir'}."/"."minecraft_server.jar";
+my $jar = &get_minecraft_jar();
 my $shortjar = $jar;
 $shortjar =~ s/^.*\///;
 foreach my $p (@procs) {
@@ -153,8 +165,7 @@ elsif (!$old && defined($value)) {
 sub get_start_command
 {
 my ($suffix) = @_;
-my $jar = $config{'minecraft_jar'} ||
-	  $config{'minecraft_dir'}."/"."minecraft_server.jar";
+my $jar = &get_minecraft_jar();
 my $ififo = &get_input_fifo();
 my $rv = "(test -e ".$ififo." || mkfifo ".$ififo.") ; ".
 	 "cd ".$config{'minecraft_dir'}." && ".
@@ -285,6 +296,7 @@ else {
 sub execute_minecraft_command
 {
 my ($cmd, $nolog, $wait) = @_;
+$cmd =~ s/^\///;	# Leading / is now obsolete
 $wait ||= 100;
 my $logfile = &get_minecraft_log_file();
 my $fh = "LOG";
