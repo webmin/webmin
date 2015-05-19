@@ -40,8 +40,7 @@ my ($host, $port, $page, $ssl) = &parse_http_url($progress_callback_url);
 &http_download($host, $port, $page, $temp, undef, \&progress_callback, $ssl);
 
 # Check if different
-my $jar = $config{'minecraft_jar'} ||
-	  $config{'minecraft_dir'}."/"."minecraft_server.jar";
+my $jar = &get_minecraft_jar();
 my $old_md5 = &md5_checksum($jar);
 my $new_md5 = &md5_checksum($temp);
 
