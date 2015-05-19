@@ -1142,4 +1142,12 @@ return &text('conn_ejson', $@) if ($@);
 return $perl;
 }
 
+# minecraft_server_type()
+# Returns 'default' or 'bukkit'
+sub minecraft_server_type
+{
+my $jar = &get_minecraft_jar();
+return $jar =~ /bukkit-[0-9]/ ? 'bukkit' : 'default';
+}
+
 1;

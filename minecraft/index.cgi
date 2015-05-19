@@ -45,9 +45,8 @@ elsif ($err) {
 
 # Check if new version is out, if we haven't checked in the last 6 hours
 &update_last_check();
-if ($config{'last_size'}) {
-	my $jar = $config{'minecraft_jar'} ||
-		  $config{'minecraft_dir'}."/"."minecraft_server.jar";
+if ($config{'last_size'} && &minecraft_server_type() eq 'default') {
+	my $jar = &get_minecraft_jar();
 	my @st = stat($jar);
 	if (@st && $st[7] != $config{'last_size'}) {
 		print "<table width=100%><tr bgcolor=#ff8888>".
@@ -92,9 +91,11 @@ else {
 			      $text{'index_startdesc'});
 	}
 
-# Show download button
-print &ui_buttons_row("download.cgi", $text{'index_download'},
-		      $text{'index_downloaddesc'});
+if (&minecraft_server_type() eq 'default') {
+	# Show download button
+	print &ui_buttons_row("download.cgi", $text{'index_download'},
+			      $text{'index_downloaddesc'});
+	}
 
 # Show start at boot button
 &foreign_require("init");
