@@ -5,6 +5,8 @@
 require './webmin-lib.pl';
 &foreign_require("init");
 &ReadParse();
+my %miniserv;
+&get_miniserv_config(\%miniserv);
 
 if ($in{'boot'}) {
 	# Enable starting at boot
@@ -12,6 +14,10 @@ if ($in{'boot'}) {
 	if ($init::init_mode eq "launchd") {
 		# Launchd forks automatically
 		$start .= " --nofork";
+		$fork = 0;
+		}
+	else {
+		$fork = 1;
 		}
 	$stop = "$config_directory/stop";
 	$status = <<EOF;
@@ -32,7 +38,9 @@ else
 fi
 EOF
 	&init::enable_at_boot("webmin", "Start or stop Webmin",
-			      $start, $stop, $status);
+			      $start, $stop, $status,
+			      { 'fork' => $fork,
+				'pidfile' => $miniserv{'pidfile'} });
 	}
 else {
 	# Disable starting at boot
