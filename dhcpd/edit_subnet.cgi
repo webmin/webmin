@@ -72,12 +72,12 @@ print "</td></tr>\n";
 if (!defined($in{'ret'})) {
 	print "<tr><td valign=middle><b>$text{'esub_shnet'}</b></td>\n";
 	print "<td valign=middle>";
-    my @shn;
-    push(@shn, [ "", "&lt;$text{'esub_none'}&gt;", ( $s_parent ? "" : "selected" ) ]);
-    foreach $s (&find("shared-network", $conf)) {
-        push(@shn, [ $s->{'index'}, ( &can('rw', \%access, $s) ? $s->{'values'}->[0] : "" ), ( $s eq $s_parent ? "" : "selected" ) ]);
-    }
-    print &ui_select("parent", undef, \@shn);
+	my @shn;
+	push(@shn, [ "", "&lt;$text{'esub_none'}&gt;" ]);
+	foreach $s (&find("shared-network", $conf)) {
+	push(@shn, [ $s->{'index'}, ( &can('rw', \%access, $s) ? $s->{'values'}->[0] : "" ) ]);
+	}
+	print &ui_select("parent", $s_parent ? $s_parent->{'index'} : "", \@shn);
 	print "</td>\n";
 	}
 else {
