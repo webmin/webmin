@@ -395,8 +395,13 @@ elsif (&has_command("who")) {
 		}
 	}
 
+# Last ditch fallback - assume runlevel 3
+if (!@rv && !$config{'inittab_extra'}) {
+	push(@rv, 3);
+	}
+
 # Add statically configured runlevels
-if ($config{"inittab_rl_$rv[0]"}) {
+if (@rv && $config{"inittab_rl_$rv[0]"}) {
 	@rv = split(/,/, $config{"inittab_rl_$rv[0]"});
 	}
 push(@rv, $config{'inittab_extra'});
