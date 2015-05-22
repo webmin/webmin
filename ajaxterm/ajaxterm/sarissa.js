@@ -257,7 +257,11 @@ else{ /* end IE initialization, try to deal with real browsers now ;-) */
             /**
             * <p>Emulate IE's onreadystatechange attribute</p>
             */
-            XMLDocument.prototype.onreadystatechange = null;
+	    try {
+              XMLDocument.prototype.onreadystatechange = null;
+	    } catch(err) {
+	      // May fail on Chrome 43+
+	    }
             /**
             * <p>Emulates IE's readyState property, which always gives an integer from 0 to 4:</p>
             * <ul><li>1 == LOADING,</li>
