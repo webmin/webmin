@@ -25,6 +25,7 @@ inittab_return=process list
 inittab_apply=Apply Init Configuration
 inittab_applymsg=Click this button to apply the current SysV Init Configuration by running the command <tt>telinit q</tt>. Be aware that any mistakes in your configuration may make the system unusable when this command is run.
 index_delete=Delete Selected Processes
+inittab_none2=No bootup processes were found on your system. This probably indicates that it does not use the SysV init configuration file.
 
 edit_inittab_err=Your not allowed to edit a process
 edit_inittab_title=Edit Process $1
