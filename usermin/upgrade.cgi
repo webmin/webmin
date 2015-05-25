@@ -142,7 +142,7 @@ if ($in{'mode'} eq 'rpm') {
 
 	# Install the RPM
 	if ($in{'force'}) {
-		$cmd = "rpm -U --force $qfile";
+		$cmd = "rpm -U --force --nodeps $qfile";
 		}
 	else {
 		$cmd = "rpm -U --ignoreos --ignorearch --nodeps $qfile";
