@@ -4323,6 +4323,18 @@ if ($config{'no_ssl3'}) {
 	eval 'Net::SSLeay::CTX_set_options($ssl_ctx,
 		&Net::SSLeay::OP_NO_SSLv3)';
 	}
+if ($config{'no_tls1'}) {
+	eval 'Net::SSLeay::CTX_set_options($ssl_ctx,
+		&Net::SSLeay::OP_NO_TLSv1)';
+	}
+if ($config{'no_tls1_1'}) {
+	eval 'Net::SSLeay::CTX_set_options($ssl_ctx,
+		&Net::SSLeay::OP_NO_TLSv1_1)';
+	}
+if ($config{'no_tls1_2'}) {
+	eval 'Net::SSLeay::CTX_set_options($ssl_ctx,
+		&Net::SSLeay::OP_NO_TLSv1_2)';
+	}
 if ($config{'no_sslcompression'}) {
 	eval 'Net::SSLeay::CTX_set_options($ssl_ctx,
 		&Net::SSLeay::OP_NO_COMPRESSION)';

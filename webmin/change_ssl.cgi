@@ -24,6 +24,9 @@ else {
 	}
 $miniserv{'no_ssl2'} = $in{'no_ssl2'};
 $miniserv{'no_ssl3'} = $in{'no_ssl3'};
+$miniserv{'no_tls1'} = $in{'no_tls1'};
+$miniserv{'no_tls1_1'} = $in{'no_tls1_1'};
+$miniserv{'no_tls1_2'} = $in{'no_tls1_2'};
 if ($in{'cipher_list_def'} == 1) {
 	delete($miniserv{'ssl_cipher_list'});
 	}

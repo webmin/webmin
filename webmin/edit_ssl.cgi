@@ -70,7 +70,11 @@ print ui_table_row($text{'ssl_version'},
 
 print ui_table_row($text{'ssl_deny'},
 	ui_checkbox("no_ssl2", 1, "SSLv2", $miniserv{'no_ssl2'})."\n".
-	ui_checkbox("no_ssl3", 1, "SSLv3", $miniserv{'no_ssl3'}));
+	ui_checkbox("no_ssl3", 1, "SSLv3", $miniserv{'no_ssl3'})."\n".
+	ui_checkbox("no_tls1", 1, "TLSv1.0", $miniserv{'no_tls1'})."\n".
+	ui_checkbox("no_tls1_1", 1, "TLSv1.1", $miniserv{'no_tls1_1'})."\n".
+	ui_checkbox("no_tls1_2", 1, "TLSv1.2", $miniserv{'no_tls1_2'})."\n"
+	);
 
 print ui_table_row($text{'ssl_compression'},
 	ui_yesno_radio("ssl_compression", !$miniserv{'no_sslcompression'}), undef, [ "valign=middle","valign=middle" ]);
