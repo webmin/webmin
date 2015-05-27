@@ -21,8 +21,8 @@ if ($in{'mode'} eq 'white') {
 	&unlock_file(&get_minecraft_config_file());
 
 	if ($in{'apply'}) {
-		&send_server_command("/whitelist reload");
-		&send_server_command("/whitelist ".
+		&send_server_command("whitelist reload");
+		&send_server_command("whitelist ".
 			($in{'enabled'} ? "on" : "off"));
 		}
 
@@ -47,12 +47,12 @@ elsif ($in{'mode'} eq 'ip') {
 	my %oldips = map { $_, 1 } &list_banned_ips();
 	foreach my $ip (@newips) {
 		if (!$oldips{$ip}) {
-			&send_server_command("/ban-ip $ip");
+			&send_server_command("ban-ip $ip");
 			}
 		delete($oldips{$ip});
 		}
 	foreach my $ip (keys %oldips) {
-		&send_server_command("/pardon-ip $ip");
+		&send_server_command("pardon-ip $ip");
 		}
 	&webmin_log('ip');
 	}
