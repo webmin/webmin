@@ -1441,7 +1441,7 @@ if ($user && $user ne "root") {
 	}
 local $out = &backquote_logged("($cmd) 2>&1");
 &make_authstr();	# Put back old authstr
-if ($? || $out) {
+if ($? || !-s $file) {
 	return $out;
 	}
 return undef;
