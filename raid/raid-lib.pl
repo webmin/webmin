@@ -631,7 +631,10 @@ sub find_free_partitions
 &foreign_require("fdisk");
 &foreign_require("mount");
 &foreign_require("lvm");
-local %skip = map { $_, 1 } @{$_[0]};
+local %skip;
+if ($_[0]) {
+	%skip = map { $_, 1 } @{$_[0]};
+	}
 local %used;
 local $c;
 local $conf = &get_raidtab();
