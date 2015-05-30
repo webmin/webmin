@@ -368,10 +368,12 @@ else {
 	print "<table width=100% cellpadding=5>\n";
 	for($i=0; $i<@vname; $i++) {
 		print "<tr class='mainbody ".($i % 2 ? 'row0' : 'row1')."'> <td valign=top align=center nowrap>";
+		print '<div class="row icons-row inline-row">';
 		&generate_icon("images/virt.gif", $vname[$i], $vlink[$i],
 			       undef, undef, undef,
 			       $vidx[$i] && $access{'vaddr'} ?
 					&ui_checkbox("d", $vidx[$i]) : "");
+		print "</div>\n";
 		print "</td> <td valign=top>\n";
 		print "$vdesc[$i]<br>\n";
 		print "<table width=100%><tr>\n";
