@@ -964,17 +964,13 @@ return $file || $config{'pid_file'};
 sub expand_ip_range
 {
 local ($s, $e) = @_;
-local @rs = split(/\./, $s);
-local @re = split(/\./, $e);
+&foreign_require("net");
+local $si = &net::ip_to_integer($s);
+local $ei = &net::ip_to_integer($e);
+return ( ) if ($si > $ei);
 local @rv;
-for(my $i=$rs[0]; $i<=$re[0]; $i++) {
-	for(my $j=$rs[1]; $j<=$re[1]; $j++) {
-		for(my $k=$rs[2]; $k<=$re[2]; $k++) {
-			for(my $l=$rs[3]; $l<=$re[3]; $l++) {
-				push(@rv, "$i.$j.$k.$l");
-				}
-			}
-		}
+for(my $i=$si; $i<=$ei; $i++) {
+	push(@rv, &net::integer_to_ip($i));
 	}
 return @rv;
 }
