@@ -189,8 +189,10 @@ else {
 	print "<table width=100% cellpadding=5>\n";
 	for($i=0; $i<@vname; $i++) {
 		print "<tr> <td valign=top align=center nowrap>";
+		print '<div class="row icons-row inline-row">';
 		&generate_icon("images/virt.gif", &html_escape($vname[$i]),
 			       $vlink[$i]);
+		print "</div>\n";
 		print "</td> <td valign=top>\n";
 		print &html_escape($vdesc[$i]),"<br>\n";
 		print "<table width=100%><tr>\n";
