@@ -1,3 +1,5 @@
 desc=FirewallD
 os_support=*-linux
-depends=net
+depends=net init
+category=net
+desc_de=FirewallD
