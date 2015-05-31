@@ -15,7 +15,14 @@ elsif ($m eq "qmailadmin") {
 	}
 elsif ($m eq "postfix") {
 	&foreign_require("postfix", "postfix-lib.pl");
-	@qfiles = &postfix::list_queue();
+	eval {
+		local $main::error_must_die = 1;
+		@qfiles = &postfix::list_queue();
+		};
+	if ($@) {
+		return { 'up' => -1,
+			 'desc' => $@ };
+		}
 	}
 if (@qfiles > $_[0]->{'size'}) {
 	return { 'up' => 0,
