@@ -220,6 +220,8 @@ foreach $v (@virt) {
 	if (&find_vdirective("SSLEngine", $vm, $conf, 1) eq "on") {
 		$prot = "https";
 		}
+	$sp = undef if ($sp == 80 && $prot eq "http" ||
+			$sp == 443 && $prot eq "https");
 	push(@vurl, $sp ? "$prot://$sn:$sp/" : "$prot://$sn/");
 	}
 
