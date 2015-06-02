@@ -234,12 +234,12 @@ if ($in{'mode'} eq 'rpm') {
 	print "<pre>";
 	if ($in{'force'}) {
 		&proc::safe_process_exec(
-			"rpm -U --force $qfile", 0, 0,
+			"rpm -U --force --nodeps $qfile", 0, 0,
 			STDOUT, undef, 1, 1);
 		}
 	else {
 		&proc::safe_process_exec(
-			"rpm -U --ignoreos --ignorearch $qfile", 0, 0,
+			"rpm -U --ignoreos --ignorearch --nodeps $qfile", 0, 0,
 			STDOUT, undef, 1, 1);
 		}
 	unlink($file) if ($need_unlink);
