@@ -1,1 +1,2 @@
+firewall_cmd=firewall-cmd
 init_name=firewalld

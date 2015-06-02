@@ -1,1 +1,25 @@
 index_title=FirewallD
+index_atboot=Enable firewall at boot time?
+index_bootup=Activate at boot
+index_bootupdesc=Change this option to control whether your firewall is activated at boot time or not.
+index_apply=Apply Configuration
+index_applydesc=Click this button to make the firewall configuration listed above active. Any firewall rules currently in effect will be flushed and replaced 
+index_restart=Apply Configuration
+index_restartdesc=Activate all the rules listed above for all zones.
+index_start=Start FirewallD
+index_startdesc=Start the FirewallD server and apply the rules listed above.
+index_stop=Stop FirewallD
+index_stopdesc=Shut down the FirewallD server and remove all the rules listed above.
+index_cerr=The FirewallD module cannot be used : $1
+index_zone=Show rules in zone:
+index_zoneok=Change
+index_type=Rule type
+index_port=Port or service
+index_proto=Protocol
+index_tservice=Service
+index_tport=Port
+index_padd=Add port rule.
+index_sadd=Add service rule.
+index_delete=Delete Selected Rules
+
+check_ecmd=The FirewallD control command $1 was not found on your system

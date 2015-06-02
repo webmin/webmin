@@ -1,0 +1,96 @@
+#!/usr/local/bin/perl
+# Show all firewalld rules and zones
+
+use strict;
+use warnings;
+require 'firewalld-lib.pl';
+our (%in, %text, %config, %access, $base_remote_user);
+&ReadParse();
+&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
+
+# Is firewalld working?
+my $err = &check_firewalld();
+if ($err) {
+	&ui_print_endpage(&text('index_cerr', $err));
+	return;
+	}
+
+# Get rules and zones
+my @zones = &list_firewalld_zones();
+my $zone;
+if ($in{'zone'}) {
+	($zone) = grep { $_->{'name'} eq $in{'zone'} } @zones;
+	}
+else {
+	($zone) = grep { $_->{'default'} } @zones;
+	}
+print &ui_form_start("index.cgi");
+print "<b>$text{'index_zone'}</b> ",
+      &ui_select("zone", $zone->{'name'},
+		 [ map { $_->{'name'} } @zones ])," ",
+      &ui_submit($text{'index_zoneok'}),"<p>\n";
+print &ui_form_end();
+
+# Show allowed ports and services in this zone
+my @links = ( &ui_link("edit_port.cgi?new=1&zone=".&urlize($zone->{'name'}),
+		       $text{'index_padd'}),
+	      &ui_link("edit_serv.cgi?new=1&zone=".&urlize($zone->{'name'}),
+                       $text{'index_sadd'}) );
+if ($zone) {
+	my @tds = ( "width=5" );
+	unshift(@links, &select_all_link("d", 1),
+			&select_invert_link("d", 1));
+	print &ui_form_start("delete.cgi", "post");
+	print &ui_links_row(\@links);
+	print &ui_columns_start([ "", $text{'index_type'}, $text{'index_port'},
+				  $text{'index_proto'} ], 100, 0, \@tds);
+	foreach my $s (@{$zone->{'services'}}) {
+		print &ui_checked_columns_row([
+			$text{'index_tservice'},
+			$s,
+			"",
+			], \@tds, "d", "service/".$s);
+		}
+	foreach my $p (@{$zone->{'ports'}}) {
+		my ($port, $proto) = split(/\//, $p);
+		print &ui_checked_columns_row([
+			$text{'index_tport'},
+			$port,
+			uc($proto),
+			], \@tds, "d", "port/".$p);
+		}
+	print &ui_columns_end();
+	print &ui_links_row(\@links);
+	print &ui_form_end([ [ undef, $text{'index_delete'} ] ]);
+	}
+else {
+	print "<b>$text{'index_none'}</b> <p>\n";
+	print &ui_links_row(\@links);
+	}
+
+# Show start/apply buttons
+print &ui_hr();
+print &ui_buttons_start();
+my $ok = &is_firewalld_running();
+if ($ok) {
+	print &ui_buttons_row("restart.cgi", $text{'index_restart'},
+			      $text{'index_restartdesc'});
+	print &ui_buttons_row("stop.cgi", $text{'index_stop'},
+			      $text{'index_stopdesc'});
+	}
+else {
+	print &ui_buttons_row("start.cgi", $text{'index_start'},
+			      $text{'index_startdesc'});
+	}
+
+# Enable at boot
+&foreign_require("init");
+my $atboot = &init::action_status($config{'init_name'}) == 2 ? 1 : 0;
+print &ui_buttons_row("bootup.cgi", $text{'index_bootup'},
+		      $text{'index_bootupdesc'},
+		      undef,
+		      &ui_yesno_radio("boot", $atboot));
+
+print &ui_buttons_end();
+
+&ui_print_footer("/", $text{'index'});
