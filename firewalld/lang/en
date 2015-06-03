@@ -21,5 +21,17 @@ index_tport=Port
 index_padd=Add port rule.
 index_sadd=Add service rule.
 index_delete=Delete Selected Rules
+index_return=list of zones
+index_ezones=No FirewallD zones found!
+
+port_edit=Edit Allowed Port
+port_create=Add Allowed Port
+port_header=Allowed port options
+port_zone=Allowed in zone
+port_port=Port to allow
+port_mode0=Single port
+port_mode1=Port range
+port_proto=Network protocol
+port_ezone=Zone does not exist!
 
 check_ecmd=The FirewallD control command $1 was not found on your system

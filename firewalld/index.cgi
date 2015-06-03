@@ -17,6 +17,7 @@ if ($err) {
 
 # Get rules and zones
 my @zones = &list_firewalld_zones();
+@zones || &error($text{'index_ezones'});
 my $zone;
 if ($in{'zone'}) {
 	($zone) = grep { $_->{'name'} eq $in{'zone'} } @zones;
@@ -24,10 +25,12 @@ if ($in{'zone'}) {
 else {
 	($zone) = grep { $_->{'default'} } @zones;
 	}
+$zone ||= $zones[0];
 print &ui_form_start("index.cgi");
 print "<b>$text{'index_zone'}</b> ",
       &ui_select("zone", $zone->{'name'},
-		 [ map { $_->{'name'} } @zones ])," ",
+		 [ map { $_->{'name'} } @zones ], 1, 0, 0, 0,
+		 "onChange='form.submit()'")," ",
       &ui_submit($text{'index_zoneok'}),"<p>\n";
 print &ui_form_end();
 
@@ -45,18 +48,22 @@ if ($zone) {
 	print &ui_columns_start([ "", $text{'index_type'}, $text{'index_port'},
 				  $text{'index_proto'} ], 100, 0, \@tds);
 	foreach my $s (@{$zone->{'services'}}) {
+		my $url = "edit_serv.cgi?id=".&urlize($s).
+			  "&zone=".&urlize($zone->{'name'});
 		print &ui_checked_columns_row([
-			$text{'index_tservice'},
-			$s,
+			&ui_link($url, $text{'index_tservice'}),
+			&ui_link($url, $s),
 			"",
 			], \@tds, "d", "service/".$s);
 		}
 	foreach my $p (@{$zone->{'ports'}}) {
+		my $url = "edit_port.cgi?id=".&urlize($p).
+			  "&zone=".&urlize($zone->{'name'});
 		my ($port, $proto) = split(/\//, $p);
 		print &ui_checked_columns_row([
-			$text{'index_tport'},
-			$port,
-			uc($proto),
+			&ui_link($url, $text{'index_tport'}),
+			&ui_link($url, $port),
+			&ui_link($url, uc($proto)),
 			], \@tds, "d", "port/".$p);
 		}
 	print &ui_columns_end();
