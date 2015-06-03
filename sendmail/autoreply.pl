@@ -62,6 +62,10 @@ if ($header{'x-webmin-autoreply'} ||
 	print STDERR "Cancelling autoreply to an autoreply\n";
 	exit 0;
 	}
+if ($header{'x-spam-flag'} || $header{'x-spam-status'} =~ /^Yes/i) {
+        print STDERR "Cancelling autoreply to message already marked as spam\n";
+        exit 0;
+        }
 if ($header{'x-mailing-list'} ||
     $header{'list-id'} ||
     $header{'precedence'} =~ /junk|bulk|list/i ||
