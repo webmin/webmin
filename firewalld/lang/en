@@ -24,8 +24,8 @@ index_delete=Delete Selected Rules
 index_return=list of zones
 index_ezones=No FirewallD zones found!
 
-port_edit=Edit Allowed Port
-port_create=Add Allowed Port
+port_edit=Edit Port
+port_create=Add Port
 port_header=Allowed port options
 port_zone=Allowed in zone
 port_port=Port to allow
@@ -33,5 +33,10 @@ port_mode0=Single port
 port_mode1=Port range
 port_proto=Network protocol
 port_ezone=Zone does not exist!
+
+serv_edit=Edit Service
+serv_create=Add Service
+serv_header=Allowed service options
+serv_name=Service to allow
 
 check_ecmd=The FirewallD control command $1 was not found on your system
