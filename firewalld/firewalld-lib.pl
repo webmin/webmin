@@ -59,5 +59,17 @@ foreach my $l (split(/\r?\n/, $out)) {
 return @rv;
 }
 
+# list_firewalld_services()
+# Returns an array of known service names
+sub list_firewalld_services
+{
+my $out = &backquote_command("$config{'firewall_cmd'} --get-services </dev/null 2>&1");
+if ($?) {
+	&error("Failed to list services : $out");
+	}
+$out =~ s/\r|\n//g;
+return split(/\s+/, $out);
+}
+
 1;
 
