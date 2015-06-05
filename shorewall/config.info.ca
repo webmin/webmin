@@ -4,4 +4,6 @@ actions=Fitxers d'accions estàndards,9,40,5,\t
 macros=Directori de fitxers de macros,0
 before_apply_cmd=Ordre a executar abans d'aplicar la configuració,3,Cap
 after_apply_cmd=Ordre a executar deprés d'aplicar la configuració,3,Cap
+before_refresh_cmd=Ordre a executar abans de refrescar la llista negra,3,Cap
+after_refresh_cmd=Ordre a executar després de refrescar la llista negra,3,Cap
 display_zone_descriptions=Mostra les descripcions de zona al fitxer de regles,1,0-No,1-Sí

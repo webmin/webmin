@@ -1,4 +1,13 @@
 index_title=Usuaris i Grups
+index_pft=Tipus de base de dades: $1
+index_pft0=/etc/passwd antic
+index_pft1=master.passwd de BSD
+index_pft2=/etc/passwd &amp; /etc/shadow regulars
+index_pft3=Ordres d'usuari
+index_pft4=AIX
+index_pft5=/etc/passwd &amp; /etc/shadow de SCO
+index_pft6=NetINFO de MacOS
+index_pft7=DSCL de MacOS
 index_toomany=Hi ha massa usuaris al sistema com per mostrar-los en una sola pàgina.
 index_find=Busca usuaris tals que
 index_userreal=Nom d'usuari o nom real

@@ -414,8 +414,6 @@ reload_ecannot=NO tens permís per recarregar Postfix
 
 query_get_efailed=No s'ha pogut consultar l'ordre de configuració de Postfix per obtenir el valor actual del paràmetre $1: <tt>$2</tt>
 query_set_efailed=No s'ha pogut consultar l'ordre de configuració de Postfix per establir el valor actual del paràmetre $1 a $2: <tt>$3</tt>
-reload_ecannot=No tens permís per reiniciar Postfix
-reload_efailed=No s'ha pogut reiniciar Postfix.
 regenerate_ecannot=No tens permís per regenerar els Àlies
 regenerate_alias_efailed=No s'han pogut regenerar els àlies: <tt>$1</tt>
 regenerate_table_efailed=No s'ha pogut regenerar la taula $1: <tt>$2</tt>

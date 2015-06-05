@@ -412,4 +412,10 @@ pkg_ok=...instal·lació completa
 pkg_find=Cerca pkgng
 pkg_input=Paquet de pkgng
 
+pkgsrc_install=S'estan instal·lant els paquets pkgsrc $1...
+pkgsrc_failed=...alguns paquets han fallat
+pkgsrc_ok=...instal·lació completa
+pkgsrc_find=Busca pkgng
+pkgsrc_input=Paquet de pkgsrc
+
 __norefs=1
