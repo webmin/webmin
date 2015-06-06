@@ -4624,22 +4624,75 @@ if ($http_host =~ s/:(\d+)$//) {
 $http_host =~ s/^\[(\S+)\]$/$1/;
 my $unsafe_index = $unsafe_index_cgi ||
 		   &get_module_variable('$unsafe_index_cgi');
-if ($0 &&
-    !$ENV{'DISABLE_REFERERS_CHECK'} &&
-    ($ENV{'SCRIPT_NAME'} !~ /^\/(index.cgi)?$/ || $unsafe_index) &&
-    ($ENV{'SCRIPT_NAME'} !~ /^\/([a-z0-9\_\-]+)\/(index.cgi)?$/i ||
-     $unsafe_index) &&
-    $0 !~ /(session_login|pam_login)\.cgi$/ &&
-    !$gconfig{'referer'} &&
-    $ENV{'MINISERV_CONFIG'} && !$main::no_referers_check &&
-    $ENV{'HTTP_USER_AGENT'} !~ /^Webmin/i &&
-    ($referer_site && $referer_site ne $http_host &&
-     &indexof($referer_site, @referers) < 0 ||
-    !$referer_site && $gconfig{'referers_none'} ||
-    $referer_port && $http_port && $referer_port != $http_port &&
-    &indexof($referer_site, @referers) < 0) &&
-    !$trust_unknown_referers &&
-    !&get_module_variable('$trust_unknown_referers')) {
+my $trustvar = $trust_unknown_referers ||
+	       &get_module_variable('$trust_unknown_referers');
+my $trust = 0;
+if (!$0) {
+	# Script name not known
+	$trust = 1;
+	}
+elsif ($trustvar == 1) {
+	# Module doesn't want referer checking at all
+	$trust = 1;
+	}
+elsif ($ENV{'DISABLE_REFERERS_CHECK'}) {
+	# Check disabled by environment, perhaps due to cross-module call
+	$trust = 1;
+	}
+elsif (($ENV{'SCRIPT_NAME'} =~ /^\/(index.cgi)?$/ ||
+	$ENV{'SCRIPT_NAME'} =~ /^\/([a-z0-9\_\-]+)\/(index.cgi)?$/i) &&
+       !$unsafe_index) {
+	# Script is a module's index.cgi, which is normally safe
+	$trust = 1;
+	}
+elsif ($0 =~ /(session_login|pam_login)\.cgi$/) {
+	# Webmin login page, which doesn't get a referer
+	$trust = 1;
+	}
+elsif ($gconfig{'referer'}) {
+	# Referer checking disabled completely
+	$trust = 1;
+	}
+elsif (!$ENV{'MINISERV_CONFIG'}) {
+	# Not a CGI script
+	$trust = 1;
+	}
+elsif ($main::no_referers_check) {
+	# Caller requested disabling of checks completely
+	$trust = 1;
+	}
+elsif ($ENV{'HTTP_USER_AGENT'} =~ /^Webmin/i) {
+	# Remote call from Webmin itself
+	$trust = 1;
+	}
+elsif (!$referer_site) {
+	# No referer set in URL
+	if (!$gconfig{'referers_none'}) {
+		# Known referers are allowed
+		$trust = 1;
+		}
+	elsif ($trustvar == 2) {
+		# Module wants to trust unknown referers
+		$trust = 1;
+		}
+	else {
+		$trust = 0;
+		}
+	}
+elsif (&indexof($referer_site, @referers) >= 0) {
+	# Site is on the trusted list
+	$trust = 1;
+	}
+elsif ($referer_site eq $http_host &&
+       (!$referer_port || !$http_port || $referer_port == $http_port)) {
+	# Link came from this website
+	$trust = 1;
+	}
+else {
+	# Unknown link source
+	$trust = 0;
+	}
+if (!$trust) {
 	# Looks like a link from elsewhere .. show an error
 	&header($text{'referer_title'}, "", undef, 0, 1, 1);
 
