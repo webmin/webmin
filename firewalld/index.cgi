@@ -39,7 +39,7 @@ my @links = ( &ui_link("edit_port.cgi?new=1&zone=".&urlize($zone->{'name'}),
 		       $text{'index_padd'}),
 	      &ui_link("edit_serv.cgi?new=1&zone=".&urlize($zone->{'name'}),
                        $text{'index_sadd'}) );
-if ($zone) {
+if (@{$zone->{'services'}} || @{$zone->{'ports'}}) {
 	my @tds = ( "width=5" );
 	unshift(@links, &select_all_link("d", 1),
 			&select_invert_link("d", 1));
