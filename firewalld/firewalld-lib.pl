@@ -97,5 +97,31 @@ my $out = &backquote_logged("$config{'firewall_cmd'} ".
 return $? ? $out : undef;
 }
 
+# create_firewalld_service(&zone, service)
+# Adds a new allowed service to a zone. Returns undef on success or an error
+# message on failure
+sub create_firewalld_service
+{
+my ($zone, $service) = @_;
+my $out = &backquote_logged("$config{'firewall_cmd'} ".
+			    "--zone ".quotemeta($zone->{'name'})." ".
+			    "--permanent --add-service ".
+			    quotemeta($service)." 2>&1");
+return $? ? $out : undef;
+}
+
+# delete_firewalld_service(&zone, service)
+# Delete one existing service from a zone. Returns undef on success or an error
+# message on failure
+sub delete_firewalld_service
+{
+my ($zone, $service) = @_;
+my $out = &backquote_logged("$config{'firewall_cmd'} ".
+			    "--zone ".quotemeta($zone->{'name'})." ".
+			    "--permanent --remove-service ".
+			    quotemeta($service)." 2>&1");
+return $? ? $out : undef;
+}
+
 1;
 
