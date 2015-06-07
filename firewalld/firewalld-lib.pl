@@ -71,5 +71,31 @@ $out =~ s/\r|\n//g;
 return split(/\s+/, $out);
 }
 
+# create_firewalld_port(&zone, port|range, proto)
+# Adds a new allowed port to a zone. Returns undef on success or an error
+# message on failure
+sub create_firewalld_port
+{
+my ($zone, $port, $proto) = @_;
+my $out = &backquote_logged("$config{'firewall_cmd'} ".
+			    "--zone ".quotemeta($zone->{'name'})." ".
+			    "--permanent --add-port ".
+			    quotemeta($port)."/".quotemeta($proto)." 2>&1");
+return $? ? $out : undef;
+}
+
+# delete_firewalld_port(&zone, port|range, proto)
+# Delete one existing port from a zone. Returns undef on success or an error
+# message on failure
+sub delete_firewalld_port
+{
+my ($zone, $port, $proto) = @_;
+my $out = &backquote_logged("$config{'firewall_cmd'} ".
+			    "--zone ".quotemeta($zone->{'name'})." ".
+			    "--permanent --remove-port ".
+			    quotemeta($port)."/".quotemeta($proto)." 2>&1");
+return $? ? $out : undef;
+}
+
 1;
 

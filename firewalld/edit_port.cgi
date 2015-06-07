@@ -4,7 +4,7 @@
 use strict;
 use warnings;
 require 'firewalld-lib.pl';
-our (%in, %text, %config, %access, $base_remote_user);
+our (%in, %text);
 &ReadParse();
 
 # Get the zone and rule
@@ -33,6 +33,7 @@ else {
 print &ui_form_start("save_port.cgi", "post");
 print &ui_hidden("zone", $in{'zone'});
 print &ui_hidden("id", $in{'id'});
+print &ui_hidden("new", $in{'new'});
 print &ui_table_start($text{'port_header'}, undef, 2);
 
 # Zone name
