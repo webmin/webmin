@@ -44,5 +44,6 @@ serv_edit=Edit Service
 serv_create=Add Service
 serv_header=Allowed service options
 serv_name=Service to allow
+serv_err=Failed to save service
 
 check_ecmd=The FirewallD control command $1 was not found on your system

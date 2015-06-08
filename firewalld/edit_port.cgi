@@ -64,5 +64,5 @@ else {
 			     [ 'delete', $text{'delete'} ] ]);
 	}
 
-&ui_print_footer("index.cgi?zone=".&urlize($in{'zone'}),
+&ui_print_footer("index.cgi?zone=".&urlize($zone->{'name'}),
 	         $text{'index_return'});

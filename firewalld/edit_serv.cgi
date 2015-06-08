@@ -23,6 +23,7 @@ else {
 print &ui_form_start("save_serv.cgi", "post");
 print &ui_hidden("zone", $in{'zone'});
 print &ui_hidden("id", $in{'id'});
+print &ui_hidden("new", $in{'new'});
 print &ui_table_start($text{'serv_header'}, undef, 2);
 
 # Zone name
@@ -42,5 +43,5 @@ else {
 			     [ 'delete', $text{'delete'} ] ]);
 	}
 
-&ui_print_footer("index.cgi?zone=".&urlize($in{'zone'}),
+&ui_print_footer("index.cgi?zone=".&urlize($zone->{'name'}),
 	         $text{'index_return'});

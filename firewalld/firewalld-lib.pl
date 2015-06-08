@@ -6,6 +6,7 @@
 # XXX install_check
 # XXX set zones for interfaces
 # XXX detect use of firewalld in iptables modules
+# XXX locking and logging
 
 BEGIN { push(@INC, ".."); };
 use strict;

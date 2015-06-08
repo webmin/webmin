@@ -58,4 +58,4 @@ else {
 	}
 &webmin_log($in{'delete'} ? 'delete' : $in{'new'} ? 'create' : 'update',
 	    'port', $logport);
-&redirect("");
+&redirect("index.cgi?zone=".&urlize($zone->{'name'}));
