@@ -92,11 +92,14 @@ else {
 
 # Enable at boot
 &foreign_require("init");
-my $atboot = &init::action_status($config{'init_name'}) == 2 ? 1 : 0;
-print &ui_buttons_row("bootup.cgi", $text{'index_bootup'},
-		      $text{'index_bootupdesc'},
-		      undef,
-		      &ui_yesno_radio("boot", $atboot));
+my $st = &init::action_status($config{'init_name'});
+if ($st) {
+	my $atboot = $st == 2 ? 1 : 0;
+	print &ui_buttons_row("bootup.cgi", $text{'index_bootup'},
+			      $text{'index_bootupdesc'},
+			      [ [ "zone", $zone->{'name'} ] ],
+			      &ui_yesno_radio("boot", $atboot));
+	}
 
 print &ui_buttons_end();
 
