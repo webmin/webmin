@@ -82,13 +82,16 @@ print &ui_buttons_start();
 my $ok = &is_firewalld_running();
 if ($ok) {
 	print &ui_buttons_row("restart.cgi", $text{'index_restart'},
-			      $text{'index_restartdesc'});
+			      $text{'index_restartdesc'},
+			      [ [ "zone", $zone->{'name'} ] ]);
 	print &ui_buttons_row("stop.cgi", $text{'index_stop'},
-			      $text{'index_stopdesc'});
+			      $text{'index_stopdesc'},
+			      [ [ "zone", $zone->{'name'} ] ]);
 	}
 else {
 	print &ui_buttons_row("start.cgi", $text{'index_start'},
-			      $text{'index_startdesc'});
+			      $text{'index_startdesc'},
+			      [ [ "zone", $zone->{'name'} ] ]);
 	}
 
 # Enable at boot

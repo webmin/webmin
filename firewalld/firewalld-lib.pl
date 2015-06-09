@@ -7,8 +7,6 @@
 # XXX detect use of firewalld in iptables modules
 # XXX locking and logging
 # XXX default action for a zone
-# XXX actually apply rules
-# XXX bootup script
 
 BEGIN { push(@INC, ".."); };
 use strict;
@@ -123,6 +121,14 @@ my $out = &backquote_logged("$config{'firewall_cmd'} ".
 			    "--zone ".quotemeta($zone->{'name'})." ".
 			    "--permanent --remove-service ".
 			    quotemeta($service)." 2>&1");
+return $? ? $out : undef;
+}
+
+# apply_firewalld()
+# Make the current saved config active
+sub apply_firewalld
+{
+my $out = &backquote_logged("$config{'firewall_cmd'} --reload 2>&1");
 return $? ? $out : undef;
 }
 
