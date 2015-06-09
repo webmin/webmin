@@ -47,3 +47,7 @@ serv_name=Service to allow
 serv_err=Failed to save service
 
 check_ecmd=The FirewallD control command $1 was not found on your system
+
+delete_err=Failed to delete rules
+delete_enone=None selected!
+delete_edel=Removal of $1 failed : $2

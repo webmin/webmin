@@ -43,7 +43,8 @@ if (@{$zone->{'services'}} || @{$zone->{'ports'}}) {
 	my @tds = ( "width=5" );
 	unshift(@links, &select_all_link("d", 1),
 			&select_invert_link("d", 1));
-	print &ui_form_start("delete.cgi", "post");
+	print &ui_form_start("delete_rules.cgi", "post");
+	print &ui_hidden("zone", $zone->{'name'});
 	print &ui_links_row(\@links);
 	print &ui_columns_start([ "", $text{'index_type'}, $text{'index_port'},
 				  $text{'index_proto'} ], 100, 0, \@tds);
