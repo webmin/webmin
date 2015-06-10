@@ -1,12 +1,11 @@
 # Functions for managing firewalld
 #
-# XXX longdesc
-# XXX makedist.pl
 # XXX integration with other modules?
 # XXX set zones for interfaces
 # XXX detect use of firewalld in iptables modules
 # XXX locking and logging
 # XXX default action for a zone
+# XXX interfaces for the zone
 
 BEGIN { push(@INC, ".."); };
 use strict;
@@ -130,6 +129,24 @@ sub apply_firewalld
 {
 my $out = &backquote_logged("$config{'firewall_cmd'} --reload 2>&1");
 return $? ? $out : undef;
+}
+
+# stop_firewalld()
+# Shut down the firewalld service
+sub stop_firewalld
+{
+&foreign_require("init");
+my ($ok, $err) = &init::stop_action($config{'init_name'});
+return $ok ? undef : $err;
+}
+
+# start_firewalld()
+# Shut down the firewalld service
+sub start_firewalld
+{
+&foreign_require("init");
+my ($ok, $err) = &init::start_action($config{'init_name'});
+return $ok ? undef : $err;
 }
 
 1;

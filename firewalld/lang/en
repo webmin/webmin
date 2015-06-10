@@ -51,3 +51,7 @@ check_ecmd=The FirewallD control command $1 was not found on your system
 delete_err=Failed to delete rules
 delete_enone=None selected!
 delete_edel=Removal of $1 failed : $2
+
+restart_err=Failed to apply configuration
+stop_err=Failed to stop FirewallD
+start_err=Failed to start FirewallD
