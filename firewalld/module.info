@@ -3,3 +3,4 @@ os_support=*-linux
 depends=net init
 category=net
 desc_de=FirewallD
+longdesc=Configure a Linux firewall using FirewallD, by editing allowed services and ports.
