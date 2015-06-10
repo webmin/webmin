@@ -1,0 +1,2 @@
+---- Changes since 1.750 ----
+First version of this module, for configuring allowed ports and services in FirewallD.
