@@ -1,4 +1,7 @@
 check_ecmd=Der FirewallD Steuer-Befehl $1 wurde auf Ihrem System nicht gefunden
+delete_edel=Entfernen von $1 fehlgeschlagen : $2
+delete_enone=Nichts ausgew&#228;hlt!
+delete_err=Fehlgeschlagen Regel zu l&#246;schen
 index_apply=Konfiguration anwenden
 index_applydesc=Klicken auf diese Schaltfl&#228;che, um die Firewall-Konfiguration, welche oben aufgef&#252;hrt ist, aktiv zu stellen. Alle Firewall-Regeln, welche derzeit aktiv sind, werden verworfen und ersetzt
 index_atboot=Aktiviere firewall beim Booten?
@@ -12,7 +15,7 @@ index_padd=F&#252;ge erlaubten Port hinzu.
 index_port=Port oder Dienst
 index_proto=Protokoll
 index_restart=Konfiguration anwenden
-index_restartdesc=Aktiviere alle oben aufgef&#252;hrten Regeln f&#252;r alle Zonen.
+index_restartdesc=Aktiviert alle erlaubten Dienste und Ports, die oben aufgef&#252;hrt sind, in allen Zonen. Alle aktiven Regeln, die nicht dauerhaft erstellt wurden, werden ersetzt.
 index_return=Liste an Zonen
 index_sadd=F&#252;ge erlaubten Dienst hinzu.
 index_start=Starte FirewallD
