@@ -117,9 +117,19 @@ foreach $iface (@ifaces) {
 			elsif ($param eq "up" &&
 			       $value =~ /ifconfig\s+(\S+)\s+inet6\s+add\s+([a-f0-9:]+)\/(\d+)/ &&
 				$1 eq $name) {
-				# Additional v6 address
+				# Additional v6 address with ifconfig command,
+				# like :
+				# ifconfig eth0 inet6 add 2607:f3:aaab:3::10/64
 				push(@{$v6cfg->{'address6'}}, $2);
 				push(@{$v6cfg->{'netmask6'}}, $3);
+				}
+			elsif ($param eq "up" &&
+			       $value =~ /ip\s+addr\s+add\s+([a-f0-9:]+)\/(\d+)\s+dev\s+(\S+)/ &&
+				$3 eq $name) {
+				# Additional v6 address with ip command, like :
+				# ip addr add 2607:f3:aaab:3::10/64 dev eth0
+				push(@{$v6cfg->{'address6'}}, $1);
+				push(@{$v6cfg->{'netmask6'}}, $2);
 				}
 			}
 		if ($method eq "manual" && !@{$v6cfg->{'address6'}}) {
