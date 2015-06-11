@@ -102,7 +102,14 @@ foreach $iface (@ifaces) {
 		foreach $option (@$options) {
 			my ($param, $value) = @$option;
 			if ($param eq "address") {
-				push(@{$v6cfg->{'address6'}}, $value);
+				$value =~ s/\s+dev\s+(\S+)//;
+				if ($value =~ /^(\S+)\/(\d+)$/) {
+					push(@{$v6cfg->{'address6'}}, $1);
+					push(@{$v6cfg->{'netmask6'}}, $2);
+					}
+				else {
+					push(@{$v6cfg->{'address6'}}, $value);
+					}
 				}
 			elsif ($param eq "netmask") {
 				push(@{$v6cfg->{'netmask6'}}, $value);
