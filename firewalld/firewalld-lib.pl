@@ -33,13 +33,15 @@ my $ex = system("$config{'firewall_cmd'} --state >/dev/null 2>&1 </dev/null");
 return $ex ? 0 : 1;
 }
 
-# list_firewalld_zones()
+# list_firewalld_zones([active-only])
 # Returns an array of firewalld zones, each of which is a hash ref with fields
 # like services and ports
 sub list_firewalld_zones
 {
+my ($active) = @_;
 my @rv;
-my $out = &backquote_command("$config{'firewall_cmd'} --list-all-zones --permanent </dev/null 2>&1");
+my $out = &backquote_command("$config{'firewall_cmd'} --list-all-zones ".
+			     ($active ? "" : "--permanent ")."</dev/null 2>&1");
 if ($?) {
 	&error("Failed to list zones : $out");
 	}
@@ -147,6 +149,16 @@ sub start_firewalld
 &foreign_require("init");
 my ($ok, $err) = &init::start_action($config{'init_name'});
 return $ok ? undef : $err;
+}
+
+# list_system_interfaces()
+# Returns the list of all interfaces on the system
+sub list_system_interfaces
+{
+&foreign_require("net");
+my @rv = map { $_->{'name'} } &net::active_interfaces();
+push(@rv, map { $_->{'name'} } &net::boot_interfaces());
+return &unique(@rv);
 }
 
 1;

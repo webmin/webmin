@@ -26,6 +26,10 @@ else {
 	($zone) = grep { $_->{'default'} } @zones;
 	}
 $zone ||= $zones[0];
+my @azones = &list_firewalld_zones(1);
+my ($azone) = grep { $_->{'name'} eq $zone->{'name'} } @azones;
+
+# Show zone selector
 print &ui_form_start("index.cgi");
 print "<b>$text{'index_zone'}</b> ",
       &ui_select("zone", $zone->{'name'},
@@ -75,6 +79,16 @@ else {
 	print "<b>$text{'index_none'}</b> <p>\n";
 	print &ui_links_row(\@links);
 	}
+
+# Show interfaces for this zone
+print &ui_form_start("save_ifaces.cgi");
+print &ui_hidden("zone", $zone->{'name'});
+print "<b>$text{'index_ifaces'}</b>\n";
+my %zifcs = map { $_, 1 } @{$azone->{'interfaces'}};
+foreach my $i (&list_system_interfaces()) {
+	print &ui_checkbox("iface", $i, $i, $zifcs{$i}),"\n";
+	}
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 # Show start/apply buttons
 print &ui_hr();
