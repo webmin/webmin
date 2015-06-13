@@ -4,3 +4,4 @@ depends=net init
 category=net
 desc_de=FirewallD
 longdesc=Configure a Linux firewall using FirewallD, by editing allowed services and ports.
+longdesc_de=Konfiguriert eine Linux-Firewall mit FirewallD, indem es erlaubte Dienste und Ports editiert.
