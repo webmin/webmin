@@ -3,8 +3,6 @@
 # XXX integration with other modules?
 # XXX set zones for interfaces
 # XXX detect use of firewalld in iptables modules
-# XXX locking and logging
-# XXX default action for a zone
 # XXX interfaces for the zone
 
 BEGIN { push(@INC, ".."); };

@@ -24,7 +24,7 @@ index_delete=Delete Selected Rules
 index_return=list of zones
 index_ezones=No FirewallD zones found!
 index_none=This zone does not have any allowed ports or services yet.
-index_ifaces=Apply to interfaces:
+index_ifaces=Apply rules to interfaces:
 
 port_edit=Edit Port
 port_create=Add Port
@@ -56,3 +56,16 @@ delete_edel=Removal of $1 failed : $2
 restart_err=Failed to apply configuration
 stop_err=Failed to stop FirewallD
 start_err=Failed to start FirewallD
+
+log_stop=Stopped FirewallD
+log_start=Started FirewallD
+log_restart=Applied FirewallD configuration
+log_bootup=Enabled FirewallD at boot
+log_bootdown=Disabled FirewallD at boot
+log_create_port=Added allowed port $1
+log_delete_port=Removed allowed port $1
+log_update_port=Updated allowed port $1
+log_create_serv=Added allowed service $1
+log_delete_serv=Removed allowed service $1
+log_update_serv=Updated allowed service $1
+log_delete_rules=Removed $1 allowed ports
