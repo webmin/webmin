@@ -49,6 +49,7 @@ if (!$config{'direct'} && &foreign_check("init")) {
 # rules, and offer to create a save file from them
 @livetables = &get_iptables_save("iptables-save 2>/dev/null |");
 &shorewall_message(\@livetables);
+&firewalld_message(\@livetables);
 if (!$config{'direct'} &&
     (!-s $iptables_save_file || $in{'reset'}) && $access{'setup'}) {
 	@tables = @livetables;
@@ -416,6 +417,16 @@ local ($filter) = grep { $_->{'name'} eq 'filter' } @{$_[0]};
 if ($filter->{'defaults'}->{'shorewall'}) {
 	print "<b><center>",
 	      &text('index_shorewall', "$gconfig{'webprefix'}/shorewall/"),
+	      "</b></center><p>\n";
+	}
+}
+
+sub firewalld_message
+{
+local ($filter) = grep { $_->{'name'} eq 'filter' } @{$_[0]};
+if ($filter->{'defaults'}->{'INPUT_ZONES'}) {
+	print "<b><center>",
+	      &text('index_firewalld', "$gconfig{'webprefix'}/firewalld/"),
 	      "</b></center><p>\n";
 	}
 }
