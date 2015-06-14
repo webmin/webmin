@@ -119,15 +119,17 @@ if ($rv) {
 	}
 
 # If possible, open the new ports
-if (&foreign_check("firewall") && $in{'firewall'}) {
-	if (@newports) {
-		&clean_environment();
-		$ENV{'WEBMIN_CONFIG'} = $config_directory;
-		&system_logged(&module_root_directory("firewall").
-			       "/open-ports.pl ".
-			       join(" ", map { $_.":".($_+10) } @newports).
-			       " >/dev/null 2>&1");
-		&reset_environment();
+foreach my $mod ("firewall", "firewalld") {
+	if (&foreign_check($mod) && $in{'firewall'}) {
+		if (@newports) {
+			&clean_environment();
+			$ENV{'WEBMIN_CONFIG'} = $config_directory;
+			&system_logged(
+				&module_root_directory($mod)."/open-ports.pl ".
+			        join(" ", map { $_.":".($_+10) } @newports).
+			        " >/dev/null 2>&1");
+			&reset_environment();
+			}
 		}
 	}
 
