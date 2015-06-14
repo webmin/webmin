@@ -2,9 +2,9 @@
 #
 # XXX integration with other modules?
 # XXX set zones for interfaces
-# XXX detect use of firewalld in iptables modules
 # XXX interfaces for the zone
 # XXX add a new zone!
+# XXX open-ports command?
 
 BEGIN { push(@INC, ".."); };
 use strict;
