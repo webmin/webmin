@@ -159,5 +159,35 @@ push(@rv, map { $_->{'name'} } &net::boot_interfaces());
 return &unique(@rv);
 }
 
+# update_zone_interfaces(&zone, &interface-list)
+# Update the interfaces a zone applies to
+sub update_zone_interfaces
+{
+my ($zone, $newifaces) = @_;
+my $oldifaces = @{$zone->{'interfaces'}};
+foreach my $i (&list_system_interfaces()) {
+	my $inold = &indexof($i, @$oldifaces) >= 0;
+	my $innew = &indexof($i, @$newifaces) >= 0;
+	my $args;
+	if ($inold && !$innew) {
+		# Remove from this zone
+		$args = "--remove-interface ".quotemeta($i);
+		}
+	elsif (!$inold && $innew) {
+		# Add to from this zone
+		$args = "--add-interface ".quotemeta($i);
+		}
+	else {
+		next;
+		}
+	my $cmd = "$config{'firewall_cmd'} ".
+		  "--zone ".quotemeta($zone->{'name'})." ".
+		  "--permanent ".$args;
+	my $out = &backquote_logged($cmd." 2>&1 </dev/null");
+	return $out if ($?);
+	}
+return undef;
+}
+
 1;
 
