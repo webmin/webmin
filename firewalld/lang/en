@@ -69,3 +69,4 @@ log_create_serv=Added allowed service $1
 log_delete_serv=Removed allowed service $1
 log_update_serv=Updated allowed service $1
 log_delete_rules=Removed $1 allowed ports
+log_ifaces_zone=Updated interfaces for zone $1

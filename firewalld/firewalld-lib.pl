@@ -4,6 +4,7 @@
 # XXX set zones for interfaces
 # XXX detect use of firewalld in iptables modules
 # XXX interfaces for the zone
+# XXX add a new zone!
 
 BEGIN { push(@INC, ".."); };
 use strict;
@@ -45,7 +46,7 @@ if ($?) {
 	}
 my $zone;
 foreach my $l (split(/\r?\n/, $out)) {
-	if ($l =~ /^(\S+)(\s+\(\S+\))?/) {
+	if ($l =~ /^(\S+)(\s+\(.*\))?/) {
 		# New zone
 		$zone = { 'name' => $1,
 			  'default' => $2 ? 1 : 0 };
@@ -164,7 +165,7 @@ return &unique(@rv);
 sub update_zone_interfaces
 {
 my ($zone, $newifaces) = @_;
-my $oldifaces = @{$zone->{'interfaces'}};
+my $oldifaces = $zone->{'interfaces'};
 foreach my $i (&list_system_interfaces()) {
 	my $inold = &indexof($i, @$oldifaces) >= 0;
 	my $innew = &indexof($i, @$newifaces) >= 0;

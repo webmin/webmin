@@ -16,7 +16,11 @@ if ($type eq "port" || $type eq "serv") {
 		     "<tt>".&html_escape($object)."</tt>");
 	}
 elsif ($type eq "rules") {
-	return &text("log_${action}_${type}", $object);
+	return &text("log_${action}_${type}", &html_escape($object));
+	}
+elsif ($type eq "zone") {
+	return &text("log_${action}_${type}",
+		     "<tt>".&html_escape($object)."</tt>");
 	}
 else {
 	return $text{"log_${action}"};
