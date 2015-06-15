@@ -38,15 +38,39 @@ if ($in{'mode'} == 1) {
 	@addservs = @{$source->{'services'}};
 	}
 elsif ($in{'mode'} >= 2) {
-	# Common allowed ports
+	# SSH, Webmin and Ident
 	push(@addports, "ssh/tcp", "auth/tcp");
 	foreach my $webminport (@webminports) {
 		push(@addports, $webminport."-".($webminport+10)."/tcp");
 		}
+
+	if ($in{'mode'} >= 3) {
+		# High ports
+		push(@addports, "1024-65535/tcp");
+		}
+
+	if ($in{'mode'} >= 4) {
+		# Other virtual hosting ports
+		push(@addports, "53/tcp", "53/udp");	# DNS
+		push(@addports, "80/tcp", "443/tcp");	# HTTP
+		push(@addports, "25/tcp", "587/tcp");	# SMTP
+		push(@addports, "20/tcp", "21/tcp");	# FTP
+		push(@addports, "110/tcp", "995/tcp");	# POP3
+		push(@addports, "143/tcp", "220/tcp", "993/tcp");  # IMAP
+		push(@addports, "20000/tcp");		# Usermin
+		}
 	}
 
-# Add them
-# XXX
+# Add the ports and services
+my $zone = { 'name' => $in{'name'} };
+foreach my $p (@addports) {
+	my $err = &create_firewalld_port($zone, split(/\//, $p));
+	&error($err) if ($err);
+	}
+foreach my $s (@addservs) {
+	my $err = &create_firewalld_service($zone, $s);
+	&error($err) if ($err);
+	}
 
 &webmin_log("create", "zone", $in{'name'});
 &redirect("index.cgi?zone=".&urlize($in{'name'}));
