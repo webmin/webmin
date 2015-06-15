@@ -4,7 +4,7 @@
 # XXX set zones for interfaces
 # XXX interfaces for the zone
 # XXX add a new zone!
-# XXX open-ports command?
+# XXX make a zone the default?
 
 BEGIN { push(@INC, ".."); };
 use strict;

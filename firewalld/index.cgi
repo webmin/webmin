@@ -6,6 +6,11 @@ use warnings;
 require 'firewalld-lib.pl';
 our (%in, %text, %config, %access, $base_remote_user);
 &ReadParse();
+if ($in{'addzone'}) {
+	# Redirect to zone creation form
+	&redirect("zone_form.cgi?zone=".&urlize($in{'zone'}));
+	return;
+	}
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 
 # Is firewalld working?
@@ -35,7 +40,9 @@ print "<b>$text{'index_zone'}</b> ",
       &ui_select("zone", $zone->{'name'},
 		 [ map { $_->{'name'} } @zones ], 1, 0, 0, 0,
 		 "onChange='form.submit()'")," ",
-      &ui_submit($text{'index_zoneok'}),"<p>\n";
+      &ui_submit($text{'index_zoneok'})," ",
+      &ui_submit($text{'index_zoneadd'}, "addzone")," ",
+      "<p>\n";
 print &ui_form_end();
 
 # Show allowed ports and services in this zone
@@ -84,11 +91,13 @@ else {
 print &ui_form_start("save_ifaces.cgi");
 print &ui_hidden("zone", $zone->{'name'});
 print "<b>$text{'index_ifaces'}</b>\n";
-my %zifcs = map { $_, 1 } @{$azone->{'interfaces'}};
+my %zifcs = map { $_, 1 } &unique(@{$azone->{'interfaces'}},
+				  @{$zone->{'interfaces'}});
 foreach my $i (&list_system_interfaces()) {
 	print &ui_checkbox("iface", $i, $i, $zifcs{$i}),"\n";
 	}
-print &ui_form_end([ [ undef, $text{'save'} ] ]);
+print &ui_submit($text{'save'});
+print &ui_form_end();
 
 # Show start/apply buttons
 print &ui_hr();

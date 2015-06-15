@@ -13,6 +13,7 @@ index_stopdesc=Shut down the FirewallD server and remove all the rules listed ab
 index_cerr=The FirewallD module cannot be used : $1
 index_zone=Show rules in zone:
 index_zoneok=Change
+index_zoneadd=Add Zone..
 index_type=Rule type
 index_port=Port or service
 index_proto=Protocol
@@ -52,6 +53,16 @@ check_ecmd=The FirewallD control command $1 was not found on your system
 delete_err=Failed to delete rules
 delete_enone=None selected!
 delete_edel=Removal of $1 failed : $2
+
+zone_title=Create Zone
+zone_header=New zone options
+zone_name=Zone name
+zone_mode=Allowed ports and services
+zone_mode0=None (all traffic will be blocked)
+zone_mode1=Copy from zone
+zone_mode2=SSH, IDENT and Webmin only
+zone_mode3=SSH, IDENT, Webmin and high ports
+zone_mode4=Ports used for virtual hosting
 
 restart_err=Failed to apply configuration
 stop_err=Failed to stop FirewallD
