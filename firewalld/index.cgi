@@ -11,6 +11,11 @@ if ($in{'addzone'}) {
 	&redirect("zone_form.cgi?zone=".&urlize($in{'zone'}));
 	return;
 	}
+if ($in{'delzone'}) {
+	# Redirect to zone creation form
+	&redirect("delete_zone.cgi?zone=".&urlize($in{'zone'}));
+	return;
+	}
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 
 # Is firewalld working?
@@ -42,6 +47,7 @@ print "<b>$text{'index_zone'}</b> ",
 		 "onChange='form.submit()'")," ",
       &ui_submit($text{'index_zoneok'})," ",
       &ui_submit($text{'index_zoneadd'}, "addzone")," ",
+      &ui_submit($text{'index_zonedel'}, "delzone")," ",
       "<p>\n";
 print &ui_form_end();
 

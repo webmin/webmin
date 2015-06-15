@@ -5,6 +5,7 @@
 # XXX interfaces for the zone
 # XXX add a new zone!
 # XXX make a zone the default?
+# XXX delete zone
 
 BEGIN { push(@INC, ".."); };
 use strict;
@@ -188,6 +189,27 @@ foreach my $i (&list_system_interfaces()) {
 	return $out if ($?);
 	}
 return undef;
+}
+
+# create_firewalld_zone(name)
+# Add a new zone with the given name
+sub create_firewalld_zone
+{
+my ($name) = @_;
+my $cmd = "$config{'firewall_cmd'} --permanent --new-zone ".quotemeta($name);
+my $out = &backquote_logged($cmd." 2>&1 </dev/null");
+return $? ? $out : undef;
+}
+
+# delete_firewalld_zone(&zone)
+# Removes the specified zone
+sub delete_firewalld_zone
+{
+my ($zone) = @_;
+my $cmd = "$config{'firewall_cmd'} --permanent --delete-zone ".
+	  quotemeta($zone->{'name'});
+my $out = &backquote_logged($cmd." 2>&1 </dev/null");
+return $? ? $out : undef;
 }
 
 1;
