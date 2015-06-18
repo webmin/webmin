@@ -2,10 +2,6 @@
 #
 # XXX integration with other modules?
 # XXX set zones for interfaces
-# XXX interfaces for the zone
-# XXX add a new zone!
-# XXX make a zone the default?
-# XXX delete zone
 
 BEGIN { push(@INC, ".."); };
 use strict;
@@ -207,6 +203,17 @@ sub delete_firewalld_zone
 {
 my ($zone) = @_;
 my $cmd = "$config{'firewall_cmd'} --permanent --delete-zone ".
+	  quotemeta($zone->{'name'});
+my $out = &backquote_logged($cmd." 2>&1 </dev/null");
+return $? ? $out : undef;
+}
+
+# default_firewalld_zone(&zone)
+# Makes the specified zone the default
+sub default_firewalld_zone
+{
+my ($zone) = @_;
+my $cmd = "$config{'firewall_cmd'} --set-default-zone ".
 	  quotemeta($zone->{'name'});
 my $out = &backquote_logged($cmd." 2>&1 </dev/null");
 return $? ? $out : undef;

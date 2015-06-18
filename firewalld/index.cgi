@@ -12,8 +12,13 @@ if ($in{'addzone'}) {
 	return;
 	}
 if ($in{'delzone'}) {
-	# Redirect to zone creation form
+	# Redirect to zone deletion form
 	&redirect("delete_zone.cgi?zone=".&urlize($in{'zone'}));
+	return;
+	}
+if ($in{'defzone'}) {
+	# Make a zone the default
+	&redirect("default_zone.cgi?zone=".&urlize($in{'zone'}));
 	return;
 	}
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
@@ -43,11 +48,14 @@ my ($azone) = grep { $_->{'name'} eq $zone->{'name'} } @azones;
 print &ui_form_start("index.cgi");
 print "<b>$text{'index_zone'}</b> ",
       &ui_select("zone", $zone->{'name'},
-		 [ map { $_->{'name'} } @zones ], 1, 0, 0, 0,
+		 [ map { [ $_->{'name'},
+			   $_->{'name'}.($_->{'default'} ? ' (default)' : '') ]}
+		       @zones ], 1, 0, 0, 0,
 		 "onChange='form.submit()'")," ",
-      &ui_submit($text{'index_zoneok'})," ",
+      &ui_submit($text{'index_zoneok'})," &nbsp; ",
+      &ui_submit($text{'index_zonedef'}, "defzone")," ",
+      &ui_submit($text{'index_zonedel'}, "delzone")," &nbsp; ",
       &ui_submit($text{'index_zoneadd'}, "addzone")," ",
-      &ui_submit($text{'index_zonedel'}, "delzone")," ",
       "<p>\n";
 print &ui_form_end();
 

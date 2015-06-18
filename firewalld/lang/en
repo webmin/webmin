@@ -15,6 +15,7 @@ index_zone=Show rules in zone:
 index_zoneok=Change
 index_zoneadd=Add Zone..
 index_zonedel=Delete Zone
+index_zonedef=Make Default
 index_type=Rule type
 index_port=Port or service
 index_proto=Protocol
@@ -73,6 +74,8 @@ delzone_err=Failed to delete zone
 delzone_edefault=The default zone cannot be removed
 delzone_rusure=Are you sure you want to delete the zone $1, which contains $2 ports and $3 services?
 
+defzone_err=Failed to make zone the default
+
 restart_err=Failed to apply configuration
 stop_err=Failed to stop FirewallD
 start_err=Failed to start FirewallD
@@ -92,3 +95,4 @@ log_delete_rules=Removed $1 allowed ports
 log_ifaces_zone=Updated interfaces for zone $1
 log_create_zone=Created zone $1
 log_delete_zone=Deleted zone $1
+log_default_zone=Made zone $1 the default
