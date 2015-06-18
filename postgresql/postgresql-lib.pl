@@ -167,12 +167,13 @@ return $t->{'data'}->[0]->[0] ? 1 : 0;
 sub list_tables
 {
 if (&supports_schemas($_[0])) {
-	local $t = &execute_sql_safe($_[0], 'select schemaname,tablename from pg_tables where tablename not like \'pg_%\' and tablename not like \'sql_%\' order by tablename');
-	return map { ($_->[0] eq "public" ? "" : $_->[0].".").$_->[1] } @{$t->{'data'}};
+	local $t = &execute_sql_safe($_[0], 'select schemaname,tablename from pg_tables order by tablename');
+	return map { ($_->[0] eq "public" ? "" : $_->[0].".").$_->[1] }
+		   grep { $_->[1] !~ /^(pg|sql)_/ } @{$t->{'data'}};
 	}
 else {
-	local $t = &execute_sql_safe($_[0], 'select tablename from pg_tables where tablename not like \'pg_%\' and tablename not like \'sql_%\' order by tablename');
-	return map { $_->[0] } @{$t->{'data'}};
+	local $t = &execute_sql_safe($_[0], 'select tablename from pg_tables order by tablename');
+	return map { $_->[0] } grep { $_->[0] !~ /^(pg|sql)_/ } @{$t->{'data'}};
 	}
 }
 
