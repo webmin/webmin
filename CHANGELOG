@@ -221,3 +221,8 @@ Catalan translation updates from Jaume Badiella.
 Norwegian updates, thanks to Stein-Aksel Basma.
 Catalan translation updates from Jaume Badiella.
 More German translation updates, thanks to Raymond Vetter.
+---- Changes since 1.750 ----
+Norwegian updates, thanks to Stein-Aksel Basma.
+Catalan translation updates from Jaume Badiella.
+More German translation updates, thanks to Raymond Vetter.
+Fixed an XSS bug that allowed xmlrpc.cgi to be abused by a malicious link.
