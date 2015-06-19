@@ -42,6 +42,23 @@ foreach $v (sort { $a->{'value'} cmp $b->{'value'} } @views) {
 	}
 print "</select></td> </tr></table></td></tr>\n";
 
+if (@views) {
+	print "<tr> <td valign=top><b>$text{'acl_inviews'}</b></td>\n";
+	print "<td>\n";
+	print &ui_radio("inviews_def", $_[0]->{'inviews'} ? 0 : 1,
+			[ [ 1, $text{'acl_vall'} ],
+			  [ 0, $text{'acl_vsel'} ] ]),"<br>\n";
+	print "<select name=inviews multiple size=4 width=150>\n";
+	local ($v, %vcan);
+	map { $vcan{$_}++ } split(/\s+/, $_[0]->{'inviews'});
+	foreach $v (sort { $a->{'value'} cmp $b->{'value'} } @views) {
+		printf "<option value='%s' %s>%s</option>\n",
+			$v->{'value'},
+			$vcan{$v->{'value'}} ? "selected" : "", $v->{'value'};
+		}
+	print "</select></td> </tr></table></td></tr>\n";
+	}
+
 print "<tr> <td><b>$text{'acl_types'}</b></td> <td colspan=3>\n";
 printf "<input type=radio name=types_def value=1 %s> %s\n",
 	$_[0]->{'types'} ? "" : "checked", $text{'acl_types1'};
@@ -204,6 +221,8 @@ elsif ($in{'zones_def'} == 2) {
 else {
 	$_[0]->{'zones'} = join(" ", split(/\0/, $in{'zones'}));
 	}
+$_[0]->{'inviews'} = $in{'inviews_def'} ? '' :
+			join(" ", split(/\0/, $in{'inviews'}));
 $_[0]->{'types'} = $in{'types_def'} ? undef : $in{'types'};
 $_[0]->{'master'} = $in{'master'} || 0;
 $_[0]->{'slave'} = $in{'slave'} || 0;
