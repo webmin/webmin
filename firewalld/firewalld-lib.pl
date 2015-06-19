@@ -1,7 +1,4 @@
 # Functions for managing firewalld
-#
-# XXX integration with other modules?
-# XXX set zones for interfaces
 
 BEGIN { push(@INC, ".."); };
 use strict;
