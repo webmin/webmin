@@ -44,19 +44,22 @@ print "</select></td> </tr></table></td></tr>\n";
 
 if (@views) {
 	print "<tr> <td valign=top><b>$text{'acl_inviews'}</b></td>\n";
-	print "<td>\n";
-	print &ui_radio("inviews_def", $_[0]->{'inviews'} ? 0 : 1,
+	print "<td colspan=3>\n";
+	print &ui_radio("inviews_def", $_[0]->{'inviews'} eq "*" ? 1 : 0,
 			[ [ 1, $text{'acl_vall'} ],
 			  [ 0, $text{'acl_vsel'} ] ]),"<br>\n";
 	print "<select name=inviews multiple size=4 width=150>\n";
 	local ($v, %vcan);
 	map { $vcan{$_}++ } split(/\s+/, $_[0]->{'inviews'});
+	printf "<option value='%s' %s>%s</option>\n",
+		"_", $vcan{"_"} ? "selected" : "",
+		"&lt;".$text{'acl_toplevel'}."&gt;";
 	foreach $v (sort { $a->{'value'} cmp $b->{'value'} } @views) {
 		printf "<option value='%s' %s>%s</option>\n",
 			$v->{'value'},
 			$vcan{$v->{'value'}} ? "selected" : "", $v->{'value'};
 		}
-	print "</select></td> </tr></table></td></tr>\n";
+	print "</select></td></tr>\n";
 	}
 
 print "<tr> <td><b>$text{'acl_types'}</b></td> <td colspan=3>\n";
@@ -221,7 +224,7 @@ elsif ($in{'zones_def'} == 2) {
 else {
 	$_[0]->{'zones'} = join(" ", split(/\0/, $in{'zones'}));
 	}
-$_[0]->{'inviews'} = $in{'inviews_def'} ? '' :
+$_[0]->{'inviews'} = $in{'inviews_def'} ? "*" :
 			join(" ", split(/\0/, $in{'inviews'}));
 $_[0]->{'types'} = $in{'types_def'} ? undef : $in{'types'};
 $_[0]->{'master'} = $in{'master'} || 0;

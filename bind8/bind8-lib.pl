@@ -879,8 +879,20 @@ elsif ($access{'zones'} =~ /^\!/) {
 else {
 	# List of allowed zones
 	local $ok;
-	foreach (split(/\s+/, $access{'zones'})) {
-		$ok++ if ($_ eq $zn || ($vn && $_ eq $vn));
+	foreach my $z (split(/\s+/, $access{'zones'})) {
+		$ok++ if ($z eq $zn || ($vn && $z eq $vn));
+		}
+	return 0 if (!$ok);
+	}
+
+# Check allowed view
+if ($access{'inviews'} eq '*') {
+	# All views are OK
+	}
+else {
+	local $ok;
+	foreach my $v (split(/\s+/, $access{'inviews'})) {
+		$ok++ if ($v eq ($vn || "_"));
 		}
 	return 0 if (!$ok);
 	}

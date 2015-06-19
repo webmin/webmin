@@ -507,6 +507,7 @@ acl_zall=All zones
 acl_zsel=Selected zones..
 acl_znsel=All except selected..
 acl_inviews=Views this user can edit domains in
+acl_toplevel=Outside any view
 acl_master=Can create master zones?
 acl_slave=Can create slave/stub zones?
 acl_forward=Can create forward zones?
