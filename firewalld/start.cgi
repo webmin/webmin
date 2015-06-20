@@ -4,7 +4,7 @@
 use strict;
 use warnings;
 require './firewalld-lib.pl';
-our (%text);
+our (%text, %in);
 &error_setup($text{'start_err'});
 my $err = &start_firewalld();
 &error($err) if ($err);
