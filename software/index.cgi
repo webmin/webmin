@@ -8,12 +8,14 @@ require './software-lib.pl';
 			  "man", "doc"));
 
 # Validate the package and update systems
-$err = &check_package_system();
+$err = !defined(&check_package_system) ? $text{'index_echeckpackage'}
+				       : &check_package_system();
 if ($err) {
 	&ui_print_endpage(&text('index_epackagecheck', $err,
 				"../config.cgi?$module_name"));
 	}
-$err = &check_update_system();
+$err = !defined(&check_update_system) ? $text{'index_echeckupdate'}
+				      : &check_update_system();
 if ($err) {
 	&ui_print_endpage(&text('index_eupdatecheck', $err,
 				"../config.cgi?$module_name"));

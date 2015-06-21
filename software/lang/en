@@ -20,6 +20,8 @@ index_epackagecmd=The $1 package system requires the $2 command
 index_eupdatecmd=The $1 update system requires the $2 command
 index_epackagecheck=The selected package management system is not valid : $1.<br>You may need to select a different system on the <a href='$2'>module configuration</a> page.
 index_eupdatecheck=The selected update system is not valid : $1.<br>You may need to select a different update method on the <a href='$2'>module configuration</a> page.
+index_echeckpackage=No package system was detected!
+index_echeckupdate=No update system was detected!
 
 search_title=Package Search
 search_nomatch=No packages matched $1
