@@ -47,6 +47,7 @@ search_custom=Custom documentation
 search_none=No documentation matching $1 found.
 search_for=For $1
 search_google=Google search result
+search_doxfer=Webmin online documentation
 
 howto_title=HOWTO Document
 howto_header=HOWTO document file $1

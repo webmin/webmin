@@ -222,36 +222,44 @@ if ($section{'man'}) {
 	close(MAN);
 	}
 if ($section{'google'}) {
-	# Try to call the Google search engine
-	local ($grv, $error);
-	local $j = $in{'and'} ? ' and ' : ' or ';
-	&http_download($google_host, $google_port, "$google_page?q=".
-		       &urlize(join($j, @for))."&sourceid=webmin&num=20",
-		       \$grv, \$error);
-	if (!$error) {
-		# Parse the results
-		while($grv =~ /(<p[^>]*>|<div[^>]*>|<h3[^>]*>)<a[^>]+href=([^>]+)>([\000-\377]+?)<\/a>([\000-\377]*)$/i) {
-			$grv = $4;
-			local ($url = $2, $desc = $3);
-			$url =~ s/^"(.*)".*$/$1/;
-			$url =~ s/^'(.*)'.*$/$1/;
-			$desc =~ s/<\/?b>//g;
-			local $matches = 0;
-			foreach $f (@for) {
-				$matches++ if ($desc =~ /\Q$f\E/i);
-				}
-			next if ($url =~ /^\/search/);	# More results
-			if ($url =~ /^\/url\?(.*)/) {
-				# Extract real URL
-				local $qs = $1;
-				if ($qs =~ /q=([^&]+)/) {
-					$url = &un_urlize("$1");
+	# Try to call the Google search engine, once for general results and
+	# once for doxfer
+	local %doneurl;
+	foreach my $host ("", "host:doxfer.webmin.com") {
+		local ($grv, $error);
+		local $j = $in{'and'} ? ' and ' : ' or ';
+		&http_download($google_host, $google_port, "$google_page?q=".
+			&urlize(join($j, @for)." ".$host).
+			  "&sourceid=webmin&num=20",
+		        \$grv, \$error);
+		if (!$error) {
+			# Parse the results
+			while($grv =~ /(<p[^>]*>|<div[^>]*>|<h3[^>]*>)<a[^>]+href=([^>]+)>([\000-\377]+?)<\/a>([\000-\377]*)$/i) {
+				$grv = $4;
+				local ($url = $2, $desc = $3);
+				$url =~ s/^"(.*)".*$/$1/;
+				$url =~ s/^'(.*)'.*$/$1/;
+				$desc =~ s/<\/?b>//g;
+				local $matches = 0;
+				foreach $f (@for) {
+					$matches++ if ($desc =~ /\Q$f\E/i);
 					}
-				}
-			if (!$in{'exact'} ||
-			    ($in{'and'} && $matches == @for) ||
-			    (!$in{'and'} && $matches)) {
-				push(@rv, [ $text{'search_google'}, $url, length($url) > 60 ? substr($url, 0, 60)."..." : $url, $desc, 0.5 ]);
+				next if ($url =~ /^\/search/);	# More results
+				if ($url =~ /^\/url\?(.*)/) {
+					# Extract real URL
+					local $qs = $1;
+					if ($qs =~ /q=([^&]+)/) {
+						$url = &un_urlize("$1");
+						}
+					}
+				next if ($doneurl{$url}++);
+				$msg = $host ? $text{'search_doxfer'}
+					     : $text{'search_google'};
+				if (!$in{'exact'} ||
+				    ($in{'and'} && $matches == @for) ||
+				    (!$in{'and'} && $matches)) {
+					push(@rv, [ $msg, $url, length($url) > 60 ? substr($url, 0, 60)."..." : $url, $desc, $host ? 10 : 0.5 ]);
+					}
 				}
 			}
 		}
