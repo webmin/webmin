@@ -863,7 +863,12 @@ sub generate_map_edit
     my $nt = $_[3] || $text{'mapping_name'};
     my $vt = $_[4] || $text{'mapping_value'};
 
-    local @links = ( &ui_link("edit_mapping.cgi?map_name=$_[0]",$text{'new_mapping'}),);
+    local @links = ( &ui_link("edit_mapping.cgi?map_name=$_[0]",
+			      $text{'new_mapping'}),);
+    if ($access{'manual'} && &can_map_manual($_[0])) {
+	push(@links, &ui_link("edit_manual.cgi?map_name=$_[0]",
+			      $text{'new_manual'}));
+	}
 
     if ($#{$mappings} ne -1)
     {
@@ -941,17 +946,6 @@ sub generate_map_edit
         print "<b>$text{'mapping_none'}</b><p>\n";
         print &ui_links_row(\@links);
     }
-
-    # Manual edit button
-    if ($access{'manual'} && &can_map_manual($_[0])) {
-	    print &ui_hr();
-	    print &ui_buttons_start();
-	    print &ui_buttons_row("edit_manual.cgi", $text{'new_manual'},
-				  $text{'new_manualmsg'},
-				  &ui_hidden("map_name", $_[0]));
-	    print &ui_buttons_end();
-	    }
-
 }
 
 
