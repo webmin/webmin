@@ -52,6 +52,7 @@ perl_title=Perl-Modul Dokumentation
 search_custom=angepa&szlig;te Dokumentation
 search_desc=Beschreibung
 search_doc=Paket-Dokumentation
+search_doxfer=Webmin Online Dokumentation
 search_efor=Es wurde keine Anleitung angegeben, nach der gesucht werden soll
 search_file=Seite oder Datei
 search_for=F&uuml;r $1

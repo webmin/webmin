@@ -176,6 +176,8 @@ hpux_reinstall_files_use_cksum=Neuinstalliere Dateien mit checksum?
 hpux_root=Root Verzeichnis
 index_all=Alle Pakete
 index_close=Alle schlie&#223;en.
+index_echeckpackage=Kein Paket-System wurde erkannt!
+index_echeckupdate=Kein Update-System wurde erkannt!
 index_epackagecheck=Das ausgew&#228;hlte Paket-Management-System ist nicht g&#252;ltig : $1.<br>Sie m&#252;ssen ein anderes System auf der <a href='$2'>Modulkonfiguration</ a>-Seite w&#228;hlen.
 index_epackagecmd=Das $1 Paketsystem ben&#246;tigt den $2 Befehl
 index_eupdatecheck=Das ausgew&#228;hlte Update-System ist nicht g&#252;ltig : $1.<br>Sie m&#252;ssen sich eine andere Update-Methode auf der <a href='$2'>Modulkonfiguration</a> Seite w&#228;hlen.
