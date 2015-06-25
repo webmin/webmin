@@ -4220,6 +4220,8 @@ of the variables set include :
 
 =item $module_config_file - The config file for this module.
 
+=item $module_var_directory - The data directory for this module.
+
 =item $module_root_directory - This module's code directory.
 
 =item $webmin_logfile - The detailed logfile for webmin.
@@ -4497,6 +4499,16 @@ if ($module_name) {
 	%config = ( );
 	&read_file_cached($module_config_file, \%config);
 
+	# Create a module-specific var directory
+	my $var_base = "$var_directory/modules";
+	if (!-d $var_base) {
+		&make_dir($var_base, 0700);
+		}
+	$module_var_directory = "$var_base/$module_name";
+	if (!-d $module_var_directory) {
+		&make_dir($module_var_directory, 0700);
+		}
+
 	# Fix up windows-specific substitutions in values
 	foreach my $k (keys %config) {
 		if ($config{$k} =~ /\$\{systemroot\}/) {
@@ -4756,7 +4768,8 @@ if ($main::export_to_caller) {
 		       '%tconfig','@theme_configs', '$tb', '$cb', '$scriptname',
 		       '$webmin_logfile', '$current_lang',
 		       '$current_lang_info', '@lang_order_list', '%text',
-		       '%module_info', '$module_root_directory') {
+		       '%module_info', '$module_root_directory',
+		       '$module_var_directory') {
 		my ($vt, $vn) = split('', $v, 2);
 		eval "${vt}${callpkg}::${vn} = ${vt}${vn}";
 		}
