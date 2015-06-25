@@ -6,10 +6,16 @@ BEGIN { push(@INC, ".."); };
 eval "use WebminCore;";
 &init_config();
 our ($module_config_directory, %config, %gconfig, $module_name,
-     $no_log_file_changes);
+     $no_log_file_changes, $module_var_directory);
 our $systeminfo_cron_cmd = "$module_config_directory/systeminfo.pl";
 our $collected_info_file = "$module_config_directory/info";
+if (!-e $collected_info_file) {
+	$collected_info_file = "$module_var_directory/info";
+	}
 our $historic_info_dir = "$module_config_directory/history";
+if (!-e $historic_info_dir) {
+	$historic_info_dir = "$module_var_directory/history";
+	}
 
 # collect_system_info()
 # Returns a hash reference containing system information
