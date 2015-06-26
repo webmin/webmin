@@ -464,6 +464,7 @@ upgrade_setupdeb=Running DPKG to upgrade Webmin .. Please wait a minute until it
 upgrade_setuppackage=Running pkgadd to upgrade Webmin .. Please wait a minute until it is complete before continuing.
 upgrade_esolaris=Webmin's upgrade feature does not currently work when you have installed from a Solaris package. Please upgrade manually instead.
 upgrade_ezip=Webmin's upgrade feature does not currently work when you have installed on Windows. Please upgrade manually instead.
+upgrade_eportage=Webmin's upgrade feature does not currently work when you have installed from a Portage package. Please upgrade using the Portage tools instead.
 upgrade_eusermin=File is Usermin version $1, not a Webmin update.
 upgrade_updates=There are $1 updates for this new version of Webmin. <a href='$2'>Click here</a> to automatically download and install them now.
 upgrade_epackage=Not a valid Solaris package

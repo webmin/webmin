@@ -1687,6 +1687,10 @@ else {
 	elsif ($root_directory eq "/opt/webmin") {
 		$mode = "solaris-pkg";
 		}
+	elsif (&has_command("eix") &&
+	       &backquote_command("eix webmin 2>/dev/null") =~ /Installed/i) {
+		$mode = "portage";
+		}
 	else {
 		$mode = undef;
 		}

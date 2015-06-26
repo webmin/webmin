@@ -24,6 +24,9 @@ if ($mode eq "solaris-pkg") {
 elsif ($mode eq "zip") {
 	$skip_upgrade = $text{'upgrade_ezip'};
 	}
+elsif ($mode eq "portage") {
+	$skip_upgrade = $text{'upgrade_eportage'};
+	}
 
 # Show tabs
 @tabs = map { [ $_, $text{'upgrade_tab'.$_}, "edit_upgrade.cgi?mode=$_" ] }
