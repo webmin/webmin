@@ -226,3 +226,5 @@ Norwegian updates, thanks to Stein-Aksel Basma.
 Catalan translation updates from Jaume Badiella.
 More German translation updates, thanks to Raymond Vetter.
 Fixed an XSS bug that allowed xmlrpc.cgi to be abused by a malicious link.
+---- Changes since 1.760 ----
+For new installs, switched the location of data files in many modules to /var/webmin instead of /etc/webmin.
