@@ -8,14 +8,26 @@ eval "use WebminCore;";
 &foreign_require("cron", "cron-lib.pl");
 &foreign_require("webmin", "webmin-lib.pl");
 
-$available_cache_file = "$module_config_directory/available.cache";
-$current_cache_file = "$module_config_directory/current.cache";
-$updates_cache_file = "$module_config_directory/updates.cache";
+$available_cache_file = &cache_file_path("available.cache");
+$current_cache_file = &cache_file_path("current.cache");
+$updates_cache_file = &cache_file_path("updates.cache");
 $cron_cmd = "$module_config_directory/update.pl";
 
-$yum_cache_file = "$module_config_directory/yumcache";
-$apt_cache_file = "$module_config_directory/aptcache";
-$yum_changelog_cache_dir = "$module_config_directory/yumchangelog";
+$yum_cache_file = &cache_file_path("yumcache");
+$apt_cache_file = &cache_file_path("aptcache");
+$yum_changelog_cache_dir = &cache_file_path("yumchangelog");
+
+# cache_file_path(name)
+# Returns a path in the /var directory unless the file already exists under
+# /etc/webmin
+sub cache_file_path
+{
+my ($name) = @_;
+if (-e "$module_config_directory/$name") {
+	return "$module_config_directory/$name";
+	}
+return "$module_var_directory/$name";
+}
 
 # get_software_packages()
 # Fills in software::packages with list of installed packages (if missing),
