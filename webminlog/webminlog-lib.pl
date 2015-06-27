@@ -19,7 +19,8 @@ our %access = &get_module_acl();
 our %access_mods = map { $_, 1 } split(/\s+/, $access{'mods'});
 our %access_users = map { $_, 1 } split(/\s+/, $access{'users'});
 our %parser_cache;
-our (%text, $module_config_directory, $root_directory, $webmin_logfile);
+our (%text, $module_config_directory, $root_directory, $webmin_logfile,
+     $module_var_directory);
 
 =head2 list_webmin_log([only-user], [only-module], [start-time, end-time])
 
@@ -356,6 +357,9 @@ sub build_log_index
 {
 my ($index) = @_;
 my $ifile = "$module_config_directory/logindex";
+if (!glob($ifile."*")) {
+	$ifile = "$module_var_directory/logindex";
+	}
 dbmopen(%$index, $ifile, 0600);
 my @st = stat($webmin_logfile);
 if (@st && $st[9] > $index->{'lastchange'}) {
