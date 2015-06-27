@@ -5,8 +5,15 @@ BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
 use Config;
+
 $packages_file = "$module_config_directory/packages.txt.gz";
+if (!-r $packages_file) {
+	$packages_file = "$module_var_directory/packages.txt.gz";
+	}
 $available_packages_cache = "$module_config_directory/available-cache";
+if (!-r $available_packages_cache) {
+	$available_packages_cache = "$module_var_directory/available-cache";
+	}
 
 # Get the paths to perl and perldoc
 $perl_path = &get_perl_path();
