@@ -7,11 +7,29 @@ use WebminCore;
 %access = &get_module_acl();
 use Socket;
 
-$services_dir = "$module_config_directory/services";
+# Wrapper command for cron job
 $cron_cmd = "$module_config_directory/monitor.pl";
 
+# Config directory for monitors
+$services_dir = "$module_config_directory/services";
+
+# File storing last status of each monitor
 $oldstatus_file = "$module_config_directory/oldstatus";
+if (!-r $oldstatus_file) {
+	$oldstatus_file = "$module_var_directory/oldstatus";
+	}
+
+# Failure count file for each monitor
 $fails_file = "$module_config_directory/fails";
+if (!-r $fails_file) {
+	$fails_file = "$module_var_directory/fails";
+	}
+
+# Directory of historic results for each monitor
+$history_dir = "$module_config_directory/history";
+if (!-d $history_dir) {
+	$history_dir = "$module_var_directory/history";
+	}
 
 $templates_dir = "$module_config_directory/templates";
 
@@ -20,7 +38,6 @@ $templates_dir = "$module_config_directory/templates";
 
 @monitor_statuses = ( 'up', 'down', 'un', 'webmin', 'timed', 'isdown' );
 
-$history_dir = "$module_config_directory/history";
 
 # list_services()
 # Returns a list of all services this module knows how to get status on.
