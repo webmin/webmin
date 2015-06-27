@@ -11,7 +11,8 @@ use WebminCore;
 &init_config();
 our ($module_root_directory, %text, %gconfig, $root_directory, %config,
      $module_name, $remote_user, $base_remote_user, $gpgpath,
-     $module_config_directory, @lang_order_list, @root_directories);
+     $module_config_directory, @lang_order_list, @root_directories,
+     $module_var_directory);
 do "$module_root_directory/gnupg-lib.pl";
 use Socket;
 
@@ -28,6 +29,9 @@ our $update_url = "http://$update_host:$update_port$update_page";
 our $redirect_host = "www.webmin.com";
 our $redirect_url = "http://$redirect_host/cgi-bin/redirect.cgi";
 our $update_cache = "$module_config_directory/update-cache";
+if (!-r $update_cache) {
+	$update_cache = "$module_var_directory/update-cache";
+	}
 
 our $primary_host = "www.webmin.com";
 our $primary_port = 80;
@@ -52,6 +56,9 @@ our $cron_cmd = "$module_config_directory/update.pl";
 our $os_info_address = "os\@webmin.com";
 
 our $detect_operating_system_cache = "$module_config_directory/oscache";
+if (!-r $detect_operating_system_cache) {
+	$detect_operating_system_cache = "$module_var_directory/oscache";
+	}
 
 our @webmin_date_formats = ( "dd/mon/yyyy", "dd/mm/yyyy",
 			     "mm/dd/yyyy", "yyyy/mm/dd",
