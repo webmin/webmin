@@ -217,17 +217,27 @@ return @rv;
 # Returns a list of all IDs
 sub build_dbm_index
 {
-local $ifile = &user_index_file($_[0]);
-local $umf = &user_mail_file($_[0]);
+local ($user, $index, $noperm) = @_;
+local $ifile = &user_index_file($user);
+local $umf = &user_mail_file($user);
 local @st = stat($umf);
-local $index = $_[1];
-dbmopen(%$index, $ifile, 0600);
+if (!defined($noperm)) {
+	# Use global override setting
+	$noperm = $no_permanent_index;
+	}
+if ($noperm && &has_dbm_index($user)) {
+	# Index already exists, so use it
+	$noperm = 0;
+	}
+if (!$noperm) {
+	dbmopen(%$index, $ifile, 0600);
+	}
 
 # Read file of IDs
 local $idsfile = $ifile.".ids";
 local @ids;
 local $idschanged;
-if (open(IDSFILE, $idsfile)) {
+if (!$noperm && open(IDSFILE, $idsfile)) {
 	@ids = <IDSFILE>;
 	chop(@ids);
 	close(IDSFILE);
@@ -235,7 +245,7 @@ if (open(IDSFILE, $idsfile)) {
 
 if (scalar(@ids) != $index->{'mailcount'}) {
 	# Build for first time
-	print DEBUG "need meta-index rebuild for $_[0] ",scalar(@ids)," != ",$index->{'mailcount'},"\n";
+	print DEBUG "need meta-index rebuild for $user ",scalar(@ids)," != ",$index->{'mailcount'},"\n";
 	@ids = ( );
 	while(my ($k, $v) = each %$index) {
 		if ($k eq int($k) && $k < $index->{'mailcount'}) {
@@ -342,7 +352,7 @@ if (!@st ||
 	}
 
 # Write out IDs file, if needed
-if ($idschanged) {
+if ($idschanged && !$noperm) {
 	open(IDSFILE, ">$idsfile");
 	foreach my $id (@ids) {
 		print IDSFILE $id,"\n";
@@ -378,17 +388,20 @@ foreach my $ext (".dir", ".pag", ".db") {
 # Truncate a mail file to nothing
 sub empty_mail
 {
-local $umf = &user_mail_file($_[0]);
-local $ifile = &user_index_file($_[0]);
+local ($user) = @_;
+local $umf = &user_mail_file($user);
+local $ifile = &user_index_file($user);
 &open_as_mail_user(TRUNC, ">$umf") || &error("Failed to open $umf : $!");
 close(TRUNC);
 
-# Set index size to 0
-local %index;
-dbmopen(%index, $ifile, 0600);
-$index{'mailcount'} = 0;
-$index{'lastchange'} = time();
-dbmclose(%index);
+# Set index size to 0 (if there is one)
+if (&has_dbm_index($user)) {
+	local %index;
+	dbmopen(%index, $ifile, 0600);
+	$index{'mailcount'} = 0;
+	$index{'lastchange'} = time();
+	dbmclose(%index);
+	}
 }
 
 # count_mail(user|file)
