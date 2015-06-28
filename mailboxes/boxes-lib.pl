@@ -1773,17 +1773,30 @@ if ($_[0] =~ /^\/.*\/([^\/]+)$/) {
 		# Use short name for index file
 		$f = "$user_module_config_directory/$1.findex";
 		}
+	elsif ($user_module_config_directory) {
+		# Under user's .usermin directory
+		$f = "$user_module_config_directory/$us.findex";
+		}
 	else {
-		$f = $user_module_config_directory ?
-			"$user_module_config_directory/$us.findex" :
-			"$module_config_directory/$us.findex";
+		# Under /var/webmin or /etc/webmin
+		$f = "$module_config_directory/$us.findex";
+		if (!glob($f."*")) {
+			$f = "$module_var_directory/$us.findex";
+			}
 		}
 	}
 else {
-	# A username .. the index file is in /etc/webmin/mailboxes
-        $f = $user_module_config_directory ?
-		"$user_module_config_directory/$_[0].index" :
-		"$module_config_directory/$_[0].index";
+	# A username .. the index file is in /var/webmin/modules/mailboxes or
+	# /etc/webmin/mailboxes
+	if ($user_module_config_directory) {
+		$f = "$user_module_config_directory/$_[0].index";
+		}
+	else {
+		$f = "$module_config_directory/$_[0].index";
+		if (!glob($f."*")) {
+			$f = "$module_var_directory/$_[0].index";
+			}
+		}
 	}
 # Append hostname if requested, unless an index file without the hostname
 # already exists
