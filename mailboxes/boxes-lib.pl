@@ -2265,7 +2265,16 @@ foreach $d ("$_[0]/cur", "$_[0]/new") {
 sub get_maildir_cachefile
 {
 local ($dir) = @_;
-local $cd = $user_module_config_directory || $module_config_directory;
+local $cd;
+if ($user_module_config_directory) {
+	$cd = $user_module_config_directory;
+	}
+else {
+	$cd = $module_config_directory;
+	if (!-r "$cd/maildircache") {
+		$cd = $module_var_directory;
+		}
+	}
 local $sd = "$cd/maildircache";
 if (!-d $sd) {
 	&make_dir($sd, 0755) || return undef;
