@@ -5081,6 +5081,9 @@ my (%cache, @rv);
 
 # Is the cache out of date? (ie. have any of the root's changed?)
 my $cache_file = "$config_directory/module.infos.cache";
+if (!-r $cache_file) {
+	$cache_file = "$var_directory/module.infos.cache";
+	}
 my $changed = 0;
 if (&read_file_cached($cache_file, \%cache)) {
 	foreach my $r (@root_directories) {
@@ -7784,6 +7787,7 @@ undef($main::got_list_usermods_cache);
 undef(@main::list_usermods_cache);
 undef(%main::foreign_installed_cache);
 unlink("$config_directory/module.infos.cache");
+unlink("$var_directory/module.infos.cache");
 &get_all_module_infos();
 }
 
