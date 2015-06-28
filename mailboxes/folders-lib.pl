@@ -3,11 +3,27 @@
 
 $pop3_port = 110;
 $imap_port = 143;
-$cache_directory = $user_module_config_directory || $module_config_directory;
 
 @index_fields = ( "subject", "from", "to", "date", "size",
 		  "x-spam-status", "message-id" );
 $create_cid_count = 0;
+
+# get_folder_cache_directory(&folder)
+# Returns a directory used to cache IMAP or POP3 files for some folder
+sub get_folder_cache_directory
+{
+my ($folder) = @_;
+if ($user_module_config_directory) {
+	return $user_module_config_directory."/".$folder->{'id'}.".cache";
+	}
+else {
+	my $rv = $module_config_directory."/".$folder->{'id'}.".cache";
+	if (!-d $rv) {
+		$rv = $module_var_directory."/".$folder->{'id'}.".cache";
+		}
+	return $rv;
+	}
+}
 
 # mailbox_list_mails(start, end, &folder, [headersonly], [&error])
 # Returns an array whose size is that of the entire folder, with messages
@@ -49,7 +65,7 @@ elsif ($_[2]->{'type'} == 2) {
 
 	# For each message in the range, get the headers or body
 	local ($i, $f, %cached, %sizeneed);
-	local $cd = "$cache_directory/$_[2]->{'id'}.cache";
+	local $cd = &get_folder_cache_directory($_[2]);
 	if (opendir(CACHE, $cd)) {
 		while($f = readdir(CACHE)) {
 			if ($f =~ /^(\S+)\.body$/) {
@@ -340,7 +356,7 @@ elsif ($folder->{'type'} == 2) {
 
 	# Work out what we have cached
 	local ($i, $f, %cached, %sizeneed);
-	local $cd = "$cache_directory/$_[2]->{'id'}.cache";
+	local $cd = &get_folder_cache_directory($_[2]);
 	if (opendir(CACHE, $cd)) {
 		while($f = readdir(CACHE)) {
 			if ($f =~ /^(\S+)\.body$/) {
@@ -1154,7 +1170,7 @@ elsif ($f->{'type'} == 2) {
 	local $h = $rv[1];
 	local @uidl = &pop3_uidl($h);
 	local $m;
-	local $cd = "$cache_directory/$f->{'id'}.cache";
+	local $cd = &get_folder_cache_directory($f);
 	foreach $m (@_) {
 		local $idx = &indexof($m->{'id'}, @uidl);
 		if ($idx >= 0) {
@@ -3133,9 +3149,16 @@ if (ref($mails) ne 'ARRAY') {
 
 # Open cache DBM
 if (!%hasattach) {
-	local $hasattach_file = $module_info{'usermin'} ?
-		"$user_module_config_directory/attach" :
-		"$module_config_directory/attach";
+	local $hasattach_file;
+	if ($module_info{'usermin'}) {
+		$hasattach_file = "$user_module_config_directory/attach";
+		}
+	else {
+		$hasattach_file = "$module_config_directory/attach";
+		if (!glob($hasattach_file."*")) {
+			$hasattach_file = "$module_var_directory/attach";
+			}
+		}
 	&open_dbm_db(\%hasattach, $hasattach_file, 0600);
 	}
 
