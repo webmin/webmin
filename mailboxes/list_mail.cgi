@@ -9,7 +9,7 @@ require './mailboxes-lib.pl';
 $uuser = &urlize($in{'user'});
 
 if ($config{'track_read'}) {
-	dbmopen(%read, "$module_config_directory/$in{'user'}.read", 0600);
+	dbmopen(%read, &user_read_dbm_file($in{'user'}), 0600);
 	}
 
 # Make sure the mail system is OK

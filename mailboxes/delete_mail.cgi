@@ -13,7 +13,7 @@ if ($in{'mark1'} || $in{'mark2'}) {
 	# Marking emails with some status
 	@delete || &error($text{'delete_emnone'});
 	@mail = &mailbox_list_mails($delete[0], $delete[@delete-1], $folder);
-	dbmopen(%read, "$module_config_directory/$in{'user'}.read", 0600);
+	dbmopen(%read, &user_read_dbm_file($in{'user'}), 0600);
 	local $m = $in{'mark1'} ? $in{'mode1'} : $in{'mode2'};
 	foreach $d (@delete) {
 		local $hid = $mail[$d]->{'header'}->{'message-id'};

@@ -1140,7 +1140,7 @@ foreach my $folder (&list_user_folders($user)) {
 		}
 	}
 # Remove read file
-local $read = "$module_config_directory/$user.read";
+local $read = &user_read_dbm_file($user);
 if (-r $read) {
 	&unlink_logged($read);
 	}
@@ -1155,7 +1155,7 @@ sub get_mail_read
 {
 local ($folder, $mail) = @_;
 if (!$done_dbmopen_read++) {
-	&open_dbm_db(\%read, "$module_config_directory/$folder->{'user'}.read", 0600);
+	&open_dbm_db(\%read, &user_read_dbm_file($folder->{'user'}), 0600);
 	}
 return $read{$mail->{'header'}->{'message-id'}};
 }
@@ -1166,7 +1166,7 @@ sub set_mail_read
 {
 local ($folder, $mail, $read) = @_;
 if (!$done_dbmopen_read++) {
-	&open_dbm_db(\%read, "$module_config_directory/$folder->{'user'}.read", 0600);
+	&open_dbm_db(\%read, &user_read_dbm_file($folder->{'user'}), 0600);
 	}
 $read{$mail->{'header'}->{'message-id'}} = $read;
 }
@@ -1270,6 +1270,18 @@ if ($in{'dom'}) {
 else {
 	return "";
 	}
+}
+
+# user_read_dbm_file(user)
+# Returns the DBM base filename to track read status for messages to some user
+sub user_read_dbm_file
+{
+my ($user) = @_;
+my $rv = "$module_config_directory/$user.read";
+if (!glob($rv."*")) {
+	$rv = "$module_var_directory/$user.read";
+	}
+return $rv;
 }
 
 1;

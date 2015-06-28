@@ -25,7 +25,7 @@ foreach $s (@sub) {
         $mail = $amail;
         }
 
-dbmopen(%read, "$module_config_directory/$in{'user'}.read", 0600);
+dbmopen(%read, &user_read_dbm_file($in{'user'}), 0600);
 eval { $read{$mail->{'header'}->{'message-id'}} = 1 }
 	if (!$read{$mail->{'header'}->{'message-id'}});
 
