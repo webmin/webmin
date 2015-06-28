@@ -21,7 +21,7 @@ our $uuid_cache_file = "$module_config_directory/uuids";
 # Returns the path to the JAR file
 sub get_minecraft_jar
 {
-if ($config{'minecraft_jar'} =~ /^\//) {
+if (config{'minecraft_jar'} && $config{'minecraft_jar'} =~ /^\//) {
 	return $config{'minecraft_jar'};
 	}
 elsif ($config{'minecraft_jar'}) {
