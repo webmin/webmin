@@ -86,9 +86,13 @@ else {
 	# Set SSL fields
 	if ($mysql_version >= 5 && defined($in{'ssl_type'})) {
 		&execute_sql_logged($master_db,
-			"update user set ssl_type = ? and ssl_cipher = ? ".
+			"update user set ssl_type = ? ".
 			"where user = ? and host = ?",
-			$in{'ssl_type'}, $in{'ssl_cipher'}, $user, $host);
+			$in{'ssl_type'}, $user, $host);
+		&execute_sql_logged($master_db,
+			"update user set ssl_cipher = ? ".
+			"where user = ? and host = ?",
+			$in{'ssl_cipher'}, $user, $host);
 		}
 	}
 &execute_sql_logged($master_db, 'flush privileges');
