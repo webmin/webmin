@@ -880,7 +880,7 @@ else {
 	# List of allowed zones
 	local $ok;
 	foreach my $z (split(/\s+/, $access{'zones'})) {
-		$ok++ if ($z eq $zn || ($vn && $z eq $vn));
+		$ok++ if ($z eq $zn || ($vn && $z eq "view_".$vn));
 		}
 	return 0 if (!$ok);
 	}
