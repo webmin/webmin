@@ -433,7 +433,7 @@ if ($from || $to) {
 local $sfile = &find_value("access_log", $conf);
 local @all = &all_log_files($sfile);
 foreach $file (@all) {
-	local $cmd = "$config{'sarg'} -l $file $rangearg";
+	local $cmd = "$config{'sarg'} -f $config{'sarg_conf'} -l $file $rangearg";
 	print $h $cmd,"\n";
 	open(OUT, "$cmd 2>&1 |");
 	while(<OUT>) {
