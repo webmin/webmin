@@ -1,11 +1,21 @@
 # yum-lib.pl
 # Functions for installing packages with yum
 
-$yum_config = $config{'yum_config'} || "/etc/yum.conf";
+if ($config{'yum_config'}) {
+	$yum_config = $config{'yum_config'};
+	}
+elsif (&has_command("yum")) {
+	$yum_config = "/etc/yum.conf";
+	}
+elsif (&has_command("dnf")) {
+	$yum_config = "/etc/dnf/dnf.conf";
+	}
+
+$yum_command = &has_command("yum") || &has_command("dnf") || "yum";
 
 sub list_update_system_commands
 {
-return ("yum");
+return ($yum_command);
 }
 
 # update_system_install([package], [&in])
@@ -27,12 +37,12 @@ if (@names == 1) {
 	}
 $update = join(" ", @names);
 
-print "<b>",&text('yum_install', "<tt>yum $enable -y install $update</tt>"),"</b><p>\n";
+print "<b>",&text('yum_install', "<tt>$yum_command $enable -y install $update</tt>"),"</b><p>\n";
 print "<pre>";
-&additional_log('exec', undef, "yum $enable -y install $update");
+&additional_log('exec', undef, "$yum_command $enable -y install $update");
 $SIG{'TERM'} = 'ignore';	# Installing webmin itself may kill this script
 local $qm = join(" ", map { quotemeta($_) } @names);
-&open_execute_command(CMD, "yum $enable -y install $qm </dev/null", 2);
+&open_execute_command(CMD, "$yum_command $enable -y install $qm </dev/null", 2);
 while(<CMD>) {
 	s/\r|\n//g;
 	if (/^\[(update|install|deps):\s+(\S+)\s+/) {
@@ -122,7 +132,7 @@ my $temp = &transname();
 &print_tempfile(SHELL, "transaction solve\n");
 &close_tempfile(SHELL);
 my @rv;
-open(SHELL, "yum shell $temp |");
+open(SHELL, "$yum_command shell $temp |");
 while(<SHELL>) {
 	if (/Package\s+(\S+)\s+(\S+)\s+set/i) {
 		my $pkg = { 'name' => $1,
@@ -198,7 +208,7 @@ sub update_system_available
 {
 local @rv;
 local %done;
-&open_execute_command(PKG, "yum info", 1, 1);
+&open_execute_command(PKG, "$yum_command info", 1, 1);
 while(<PKG>) {
 	s/\r|\n//g;
 	if (/^Name\s*:\s*(\S+)/) {
@@ -248,7 +258,7 @@ return @rv;
 sub set_yum_security_field
 {
 local ($done) = @_;
-&open_execute_command(PKG, "yum updateinfo list sec 2>/dev/null", 1, 1);
+&open_execute_command(PKG, "$yum_command updateinfo list sec 2>/dev/null", 1, 1);
 while(<PKG>) {
 	s/\r|\n//g;
 	if (/^\S+\s+\S+\s+(\S+?)\-([0-9]\S+)\.([^\.]+)$/) {
@@ -260,7 +270,7 @@ while(<PKG>) {
 		}
 	}
 close(PKG);
-&open_execute_command(PKG, "yum list-sec 2>/dev/null", 1, 1);
+&open_execute_command(PKG, "$yum_command list-sec 2>/dev/null", 1, 1);
 while(<PKG>) {
 	s/\r|\n//g;
 	next if (/^(Loaded|updateinfo)/);
@@ -281,7 +291,7 @@ sub update_system_updates
 {
 local @rv;
 local %done;
-&open_execute_command(PKG, "yum check-update 2>/dev/null", 1, 1);
+&open_execute_command(PKG, "$yum_command check-update 2>/dev/null", 1, 1);
 while(<PKG>) {
         s/\r|\n//g;
 	if (/^(\S+)\.([^\.]+)\s+(\S+)\s+(\S+)/) {
