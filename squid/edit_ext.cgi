@@ -33,7 +33,7 @@ print &ui_table_row($text{'ext_format'},
 	&ui_textbox("format", $ea->{'format'}, 60));
 
 my $o = $ea->{'opts'};
-foreach my $on ('ttl', 'negative_ttl', 'concurrency', 'cache') {
+foreach my $on ('ttl', 'negative_ttl', 'children', 'cache') {
 	print &ui_table_row($text{'ext_'.$on},
 		&ui_opt_textbox($on, $o->{$on}, 6, $text{'default'})." ".
 		$text{'ext_'.$on.'_u'});

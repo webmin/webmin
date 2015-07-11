@@ -34,7 +34,7 @@ else {
 		&error($text{'ext_eclash'}) if ($clash);
 		}
 	push(@vals, $in{'name'});
-	foreach my $on ('ttl', 'negative_ttl', 'concurrency', 'cache') {
+	foreach my $on ('ttl', 'negative_ttl', 'children', 'cache') {
 		if (!$in{$on.'_def'}) {
 			$in{$on} =~ /^\d+$/ || &error($text{'ext_e'.$on}." ".$on);
 			push(@vals, $on."=".$in{$on});
