@@ -148,7 +148,6 @@ foreach $c (@{$_[0]->{'opts'}}) {
 sub mppe_options_form
 {
 # Get the PPPd version. Only those above 2.4.2 have built-in MPPE support
-local $out = `pppd --help 2>&1`;
 local $mppe_mode = &mppe_support();
 print "<input type=hidden name=mppe_mode value='$mppe_mode'>\n";
 
