@@ -140,8 +140,11 @@ foreach $c (@{$_[0]->{'opts'}}) {
 }
 
 @old_mppe = ( 'mppe-40', 'mppe-128', 'mppe-stateless' );
-@new_mppe = ( [ 'mppe', 0 ], [ 'mppe-40', 1 ], [ 'mppe-128', 1 ],
-	      [ 'mppe-stateful', 0 ] );
+@new_mppe = ( [ 'mppe', 0, 'require-', 'no' ],
+	      [ 'mppe-40', 1, 'require-', 'no' ],
+	      [ 'mppe-128', 1, 'require-', 'no' ],
+	      [ 'mppe-stateful', 0, '', 'no' ],
+	    );
 
 # mppe_options_form(&opts)
 # Show a form for editing MPPE-related PPP options
@@ -156,8 +159,8 @@ if ($mppe_mode) {
 	# Show new MPPE options
 	local $o;
 	foreach $o (@new_mppe) {
-		local $o0 = &find("require-".$o->[0], $opts);
-		local $o1 = &find("no".$o->[0], $opts);
+		local $o0 = &find($o->[2].$o->[0], $opts);
+		local $o1 = &find($o->[2].$o->[0], $opts);
 		local $mode = $o0 ? 2 : $o1 ? 0 : 1;
 		print "<tr> <td><b>",$text{'mppe_'.$o->[0]},"</b></td>\n";
 		print "<td colspan=3>\n";
@@ -204,29 +207,30 @@ else {
 # parse_mppe_options(&config, file)
 sub parse_mppe_options
 {
-local $o;
 if ($in{'mppe_mode'}) {
 	# Parse new-style options
-	foreach $o (map { $_->[0] } @new_mppe) {
-		if ($in{$o} == 2) {
-			&save_ppp_option($_[0], $_[1], "require-$o",
-					 { 'name' => "require-$o" });
-			&save_ppp_option($_[0], $_[1], "no$o", undef);
+	foreach my $opt (@new_mppe) {
+		my $req = $opt->[2].$opt->[0];
+		my $no = $opt->[3].$opt->[0];
+		if ($in{$opt->[0]} == 2) {
+			&save_ppp_option($_[0], $_[1], $req,
+					 { 'name' => $req });
+			&save_ppp_option($_[0], $_[1], $no, undef);
 			}
-		elsif ($in{$o} == 1) {
-			&save_ppp_option($_[0], $_[1], "require-$o", undef);
-			&save_ppp_option($_[0], $_[1], "no$o", undef);
+		elsif ($in{$opt->[0]} == 1) {
+			&save_ppp_option($_[0], $_[1], $req, undef);
+			&save_ppp_option($_[0], $_[1], $no, undef);
 			}
 		else {
-			&save_ppp_option($_[0], $_[1], "require-$o", undef);
-			&save_ppp_option($_[0], $_[1], "no$o",
-					 { 'name' => "no$o" });
+			&save_ppp_option($_[0], $_[1], $req, undef);
+			&save_ppp_option($_[0], $_[1], $no,
+					 { 'name' => $no });
 			}
 		}
 	}
 else {
 	# Parse old-style options
-	foreach $o (@old_mppe) {
+	foreach my $o (@old_mppe) {
 		&save_ppp_option($_[0], $_[1], $o,
 				 $in{$o} ? { 'name' => $o } : undef);
 		}
