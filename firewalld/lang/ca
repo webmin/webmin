@@ -1,0 +1,98 @@
+index_title=FirewallD
+index_atboot=Activa el tallafocs en engegar el sistema
+index_bootup=Activa en engegar
+index_bootupdesc=Canvia aquest opció per controlar si el tallafocs s'activa en engegar el sistema o no.
+index_apply=Aplica la Configuració
+index_applydesc=Fes clic sobre aquest botó per activar la configuracio del tallafocs llistada més amunt. Totes les regles del tallafocs que estiguin actualment en efecte seran descartades i substituïdes.
+index_restart=Aplica la Configuració
+index_restartdesc=Activa tots els serveis permesos i els ports llistats més amunr a totes les zones. Totes aquelles regles actives que no s'hagin creat de forma permanent seran substituïdes.
+index_start=Inicia FirewallD
+index_startdesc=Inicia el servidor FirewallD i aplica les regles llistades més amunt.
+index_stop=Atura FirewallD
+index_stopdesc=Tanca el servidor FirewallD i elimina totes les regles llistades és amunt.
+index_cerr=No es pot utilitzar el mòdul FirewallD: $1
+index_zone=Mostra les regles de la zone:
+index_zoneok=Cnvia
+index_zoneadd=Afegeix una Zona...
+index_zonedel=Suprimeix la Zona
+index_zonedef=Fes Zona per Defecte
+index_type=Tipus de Regla
+index_port=Port o servei
+index_proto=Protocol
+index_tservice=Servei
+index_tport=Port
+index_padd=Afegeix un port permès.
+index_sadd=Afegeix un servei permès.
+index_delete=Suprimeix les Regles Seleccionades
+index_return=a la llista de zones
+index_ezones=No s'ha trobat cap zona FirewallD!
+index_none=Aquesta zona encara no té cap port ni servei permès.
+index_ifaces=Aplica les regles a les interfícies:
+
+port_edit=Edició de Port
+port_create=Addició de Port
+port_header=Opcións del port permès
+port_zone=Permès a la zona
+port_port=Port a permetre
+port_mode0=Un sol port
+port_mode1=Rang de ports
+port_proto=Protocol de xarxa
+port_ezone=La zona no existeix!
+port_err=No s'ha pogut desar el port
+port_eport=Hi falta el nom o número de port, o bé és invàlid
+port_eportlow=El port més baix ha de ser un número
+port_eporthigh=El port més alt ha de ser un número
+port_eportrange=El port més baix ha d'estar per sota del més alt
+
+serv_edit=Edició de Servei
+serv_create=Addició de Servei
+serv_header=Opcions del servei permès
+serv_name=Servei a permetre
+serv_err=No s'ha pogut desar el servei
+
+check_ecmd=No s'ha trobat al sistema l'ordre $1 de control de FirewallD
+
+delete_err=NO s'han pogut suprimir les regles
+delete_enone=No n'has seleccionat cap!
+delete_edel=L'eliminació de $1 ha fallat: $2
+
+zone_title=Creació de Zona
+zone_header=Opcions de la nova zona
+zone_name=Nom de la zona
+zone_mode=Ports i serveis permesos
+zone_mode0=Cap (es bloquejarà tot el trànsit)
+zone_mode1=Copia-ho de la zona
+zone_mode2=Només SSH, IDENT i Webmin
+zone_mode3=SSH, IDENT, Webmin i els ports alts
+zone_mode4=Ports utilitzats per a allotjament virtual
+zone_err=No s'ha pogut crear la zona
+zone_ename=Hi falta el nom de zona o bé és invàlid
+zone_eclash=Ja existeix una zona amb el mateix nom
+
+delzone_title=Supressió de Zona
+delzone_err=No s'ha pogut suprimir la zona
+delzone_edefault=La zona per defecte no es pot eliminar
+delzone_rusure=Segur que vols suprimir la zona $1, que conté $2 ports i $3 serveis?
+
+defzone_err=No s'ha pogut crear la zona per defecte
+
+restart_err=No s'ha pogut aplicar la configuració
+stop_err=No s'ha pogut aturar FirewallD
+start_err=No s'ha pogut iniciar FirewallD
+
+log_stop=S'ha aturat FirewallD
+log_start=S'ha iniciat FirewallD
+log_restart=S'ha aplicat la configuracio de  FirewallD
+log_bootup=S'ha activat FirewallD en engegar
+log_bootdown=S'ha desactivat FirewallD en engegar
+log_create_port=S'ha afegit el port permès $1
+log_delete_port=S'ha eliminat el port permès $1
+log_update_port=S'ha actualitzat el port permès $1
+log_create_serv=S'ha afegit el servei permès $1
+log_delete_serv=S'ha eliminat el servei permès $1
+log_update_serv=S'ha actualitzat el servei permès $1
+log_delete_rules=S'han eliminat $1 ports permesos
+log_ifaces_zone=S'han actualitzat les interfícies de la zona $1
+log_create_zone=S'ha creat la zona $1
+log_delete_zone=S'ha suprimit la zona $1
+log_default_zone=S'ha fet la zona $1 com a zona per defecte
