@@ -180,6 +180,11 @@ while(<FILE>) {
 			$rule->{'ttl'} = shift(@w);
 			}
 
+		# Inet keyword can appear before proto, but does nothing
+		if ($w[0] eq "inet") {
+			shift(@w);
+			}
+
 		# Parse protocol
 		if ($w[0] eq "proto") {
 			shift(@w);
