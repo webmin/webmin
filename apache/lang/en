@@ -367,6 +367,7 @@ core_eaddress='$1' is not a valid address
 core_eport='$1' is not a valid port
 core_eoneaddr=You must specify at least one address to listen on
 core_edefport=Invalid default port
+core_eduplisten=Listen address $1 is listed twice
 core_multi=Multiple requests per connection
 core_ekeep='$1' is not a valid number of keepalives
 core_ltwice=Lookup twice

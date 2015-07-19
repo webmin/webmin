@@ -366,6 +366,7 @@ if ($_[0]->{'version'} < 2.0) {
 	}
 else {
 	# Apache 2.0 just uses Listen directives
+	local %doneport;
 	for($i=0; $i<@blist; $i++) {
 		if (&check_ip6address($blist[$i])) {
 			$blist[$i] = "[".$blist[$i]."]";
@@ -375,6 +376,10 @@ else {
 			}
 		elsif ($blist[$i] ne "*") { push(@l, $blist[$i]); }
 		else { push(@l, "*:$plist[$i]"); }
+		if ($doneport{$l[$#l]}++) {
+			# Same listen given twice
+			&error(&text('core_eduplisten', $l[$#l]));
+			}
 		if ($_[0]->{'version'} >= 2.4 && $slist[$i]) {
 			$l[$#l] .= " ".$slist[$i];
 			}
