@@ -186,6 +186,7 @@ core_edefchar=Fehlender oder ung&#252;ltiger Zeichensatz f&#252;r die Dokumente
 core_edefmime=Der Standard MIME-Typ muss in der Form type/subtype sein
 core_edefport=Ung&#252;ltiger Standardport
 core_edirlog=Fehlerprotokolldatei ist nicht im erlaubten Verzeichnis
+core_eduplisten=Lausche Adresse $1 zweimal aufgef&#252;hrt
 core_eerror='$1' kein g&#252;ltiger Fehlercode
 core_eerrordir=Das Verzeichnis f&#252;r das Error-Logfile existiert nicht
 core_efilelog=Ung&#252;ltige Fehlerprotokolldatei
