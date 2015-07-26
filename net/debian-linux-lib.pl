@@ -1104,5 +1104,56 @@ my ($sfx) = @_;
 return ($gconfig{'os_version'} >= 7 ? "bond-" : "bond_").$sfx;
 }
 
+# os_save_dns_config(&config)
+# On Debian, DNS resolves can also be stored in the interfaces file. Returns
+# a flag indicating if a network restart is needed, and a flag indicating if
+# /etc/resolv.conf is updated automatically.
+sub os_save_dns_config
+{
+local ($conf) = @_;
+local @ifaces = &get_interface_defs();
+local @dnssearch;
+local $need_apply = 0;
+local $generated_resolv = -l "/etc/resolv.conf" ? 1 : 0;
+if (@{$conf->{'domain'}} > 1) {
+	@dnssearch = ( [ 'dns-domain', join(" ", @{$conf->{'domain'}}) ] );
+	}
+elsif (@{$conf->{'domain'}}) {
+	@dnssearch = ( [ 'dns-domain', $conf->{'domain'}->[0] ] );
+	}
+foreach my $i (@ifaces) {
+	local ($ns) = grep { $_->[0] eq 'dns-nameservers' } @{$i->[3]};
+	if ($ns) {
+		$ns->[1] = join(' ', @{$conf->{'nameserver'}});
+		$i->[3] = [ grep { $_->[0] ne 'dns-domain' &&
+				   $_->[0] ne 'dns-search' }
+				 @{$i->[3]} ];
+		push(@{$i->[3]}, @dnssearch);
+		&modify_interface_def($i->[0], $i->[1], $i->[2],
+				      $i->[3], 0);
+		$need_apply = 1;
+		}
+	}
+if (!$need_apply && $generated_resolv) {
+	# Nameservers have to be defined in the interfaces file, but
+	# no interfaces have them yet. Find the first non-local
+	# interface with an IP, and add them there
+	foreach my $i (@ifaces) {
+		next if ($i->[0] =~ /^lo/);
+		local ($a) = grep { $_->[0] eq 'address' &&
+			    &check_ipaddress($_->[1]) } @{$i->[3]};
+		next if (!$a);
+		push(@{$i->[3]}, [ 'dns-nameservers',
+			   join(' ', @{$conf->{'nameserver'}}) ]);
+		push(@{$i->[3]}, @dnssearch);
+		&modify_interface_def($i->[0], $i->[1], $i->[2],
+				      $i->[3], 0);
+		$need_apply = 1;
+		last;
+		}
+	}
+return ($need_apply, $generated_resolv);
+}
+
 1;
 

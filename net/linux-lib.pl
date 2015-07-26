@@ -782,38 +782,32 @@ return $dns;
 # Writes out the resolv.conf and nsswitch.conf files
 sub save_dns_config
 {
-local $rc;
-&lock_file($rc_config) if ($suse_dns_config);
-local $use_resolvconf = 0;
-local $need_resolvconf_update = 0;
-if ($use_suse_dns && ($rc = &parse_rc_config()) && $rc->{'NAMESERVER'}) {
-	# Update SuSE config file
-	&save_rc_config($rc, "NAMESERVER", join(" ", @{$_[0]->{'nameserver'}}));
-	&save_rc_config($rc, "SEARCHLIST", join(" ", @{$_[0]->{'domain'}}));
+local ($conf) = @_;
+local ($need_apply, $generated_resolv) = (0, 0);
+
+# Call OS-specific function to update resolvers elsewhere
+if (defined(&os_save_dns_config)) {
+	($need_apply, $generated_resolv) = &os_save_dns_config($conf);
 	}
-elsif ($gconfig{'os_type'} eq 'debian-linux' &&
-       -l "/etc/resolv.conf") {
-	# resolv.conf is auto-generated!
-	$use_resolvconf = 1;
-	}
-else {
+
+if (!$generated_resolv) {
 	# Update standard resolv.conf file
 	&lock_file("/etc/resolv.conf");
 	&open_readfile(RESOLV, "/etc/resolv.conf");
 	local @resolv = <RESOLV>;
 	close(RESOLV);
 	&open_tempfile(RESOLV, ">/etc/resolv.conf");
-	foreach (@{$_[0]->{'nameserver'}}) {
+	foreach (@{$conf->{'nameserver'}}) {
 		&print_tempfile(RESOLV, "nameserver $_\n");
 		}
-	if ($_[0]->{'domain'}) {
-		if ($_[0]->{'domain'}->[1]) {
+	if ($conf->{'domain'}) {
+		if ($conf->{'domain'}->[1]) {
 			&print_tempfile(RESOLV,
-				"search ",join(" ", @{$_[0]->{'domain'}}),"\n");
+				"search ",join(" ", @{$conf->{'domain'}}),"\n");
 			}
 		else {
 			&print_tempfile(RESOLV,
-				"domain $_[0]->{'domain'}->[0]\n");
+				"domain $conf->{'domain'}->[0]\n");
 			}
 		}
 	foreach (@resolv) {
@@ -824,49 +818,6 @@ else {
 	&unlock_file("/etc/resolv.conf");
 	}
 
-# On Debian, if dns-nameservers are defined in interfaces, update them too
-if ($gconfig{'os_type'} eq 'debian-linux' && defined(&get_interface_defs)) {
-	local @ifaces = &get_interface_defs();
-	local @dnssearch;
-	if (@{$_[0]->{'domain'}} > 1) {
-		@dnssearch = ( [ 'dns-domain', join(" ", @{$_[0]->{'domain'}}) ] );
-		}
-	elsif (@{$_[0]->{'domain'}}) {
-		@dnssearch = ( [ 'dns-domain', $_[0]->{'domain'}->[0] ] );
-		}
-	foreach my $i (@ifaces) {
-		local ($ns) = grep { $_->[0] eq 'dns-nameservers' } @{$i->[3]};
-		if ($ns) {
-			$ns->[1] = join(' ', @{$_[0]->{'nameserver'}});
-			$i->[3] = [ grep { $_->[0] ne 'dns-domain' &&
-					   $_->[0] ne 'dns-search' }
-					 @{$i->[3]} ];
-			push(@{$i->[3]}, @dnssearch);
-			&modify_interface_def($i->[0], $i->[1], $i->[2],
-					      $i->[3], 0);
-			$need_resolvconf_update = 1;
-			}
-		}
-	if (!$need_resolvconf_update && $use_resolvconf) {
-		# Nameservers have to be defined in the interfaces file, but
-		# no interfaces have them yet. Find the first non-local
-		# interface with an IP, and add them there
-		foreach my $i (@ifaces) {
-			next if ($i->[0] =~ /^lo/);
-			local ($a) = grep { $_->[0] eq 'address' &&
-				    &check_ipaddress($_->[1]) } @{$i->[3]};
-			next if (!$a);
-			push(@{$i->[3]}, [ 'dns-nameservers',
-				   join(' ', @{$_[0]->{'nameserver'}}) ]);
-			push(@{$i->[3]}, @dnssearch);
-			&modify_interface_def($i->[0], $i->[1], $i->[2],
-					      $i->[3], 0);
-			$need_resolvconf_update = 1;
-			last;
-			}
-		}
-	}
-
 # Update resolution order in nsswitch.conf
 &lock_file("/etc/nsswitch.conf");
 &open_readfile(SWITCH, "/etc/nsswitch.conf");
@@ -875,7 +826,7 @@ close(SWITCH);
 &open_tempfile(SWITCH, ">/etc/nsswitch.conf");
 foreach (@switch) {
 	if (/^\s*hosts:\s+/) {
-		&print_tempfile(SWITCH, "hosts:\t$_[0]->{'order'}\n");
+		&print_tempfile(SWITCH, "hosts:\t$conf->{'order'}\n");
 		}
 	else {
 		&print_tempfile(SWITCH, $_);
@@ -884,19 +835,23 @@ foreach (@switch) {
 &close_tempfile(SWITCH);
 &unlock_file("/etc/nsswitch.conf");
 
-# Update SuSE config file
-if ($suse_dns_config && $rc->{'USE_NIS_FOR_RESOLVING'}) {
-	if ($_[0]->{'order'} =~ /nis/) {
-		&save_rc_config($rc, "USE_NIS_FOR_RESOLVING", "yes");
+# Update SuSE config file for resolution order
+if ($use_suse_dns) {
+	&lock_file($rc_config);
+	local $rc = &parse_rc_config();
+	if ($rc->{'USE_NIS_FOR_RESOLVING'}) {
+		if ($conf->{'order'} =~ /nis/) {
+			&save_rc_config($rc, "USE_NIS_FOR_RESOLVING", "yes");
+			}
+		else {
+			&save_rc_config($rc, "USE_NIS_FOR_RESOLVING", "no");
+			}
 		}
-	else {
-		&save_rc_config($rc, "USE_NIS_FOR_RESOLVING", "no");
-		}
+	&unlock_file($rc_config);
 	}
-&unlock_file($rc_config) if ($suse_dns_config);
 
 # Update resolv.conf from network interfaces config
-if ($need_resolvconf_update) {
+if ($need_apply) {
 	&apply_network();
 	}
 }

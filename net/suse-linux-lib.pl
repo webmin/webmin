@@ -346,5 +346,27 @@ local ($iface) = @_;
 return 0;
 }
 
+# os_save_dns_config(&config)
+# Update SuSE-specific DNS config files
+sub os_save_dns_config
+{
+local ($conf) = @_;
+local $gen = 0;
+if ($use_suse_dns) {
+	# Update SuSE config file
+	&lock_file($rc_config);
+	local $rc = &parse_rc_config();
+	if ($rc->{'NAMESERVER'}) {
+		&save_rc_config($rc, "NAMESERVER",
+				join(" ", @{$conf->{'nameserver'}}));
+		&save_rc_config($rc, "SEARCHLIST",
+				join(" ", @{$conf->{'domain'}}));
+		$gen = 1;
+		}
+	&unlock_file($rc_config);
+	}
+return (0, $gen);
+}
+
 1;
 
