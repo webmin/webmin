@@ -11,7 +11,7 @@ elsif (&has_command("dnf")) {
 	$yum_config = "/etc/dnf/dnf.conf";
 	}
 
-$yum_command = &has_command("yum") || &has_command("dnf") || "yum";
+$yum_command = &has_command("dnf") || &has_command("yum") || "yum";
 
 sub list_update_system_commands
 {
