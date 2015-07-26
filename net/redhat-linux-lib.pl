@@ -1076,5 +1076,35 @@ sub supports_bridges
 return 1;
 }
 
+# os_save_dns_config(&config)
+# Updates DNSx lines in all network-scripts files that have them
+sub os_save_dns_config
+{
+local ($conf) = @_;
+foreach my $b (&boot_interfaces()) {
+	local %ifc;
+	&read_env_file($b->{'file'}, \%ifc);
+	next if (!defined($ifc{'DNS1'}));
+	&lock_file($b->{'file'});
+	foreach my $k (keys %ifc) {
+		delete($ifc{$k}) if ($k =~ /^DNS\d+$/);
+		}
+	&write_env_file($b->{'file'}, \%ifc);
+	local $i = 1;
+	foreach my $ns (@{$conf->{'nameserver'}}) {
+		$ifc{'DNS'.$i} = $ns;
+		$i++;
+		}
+	if (!@{$conf->{'nameserver'}}) {
+		# Add an empty DNS1 line so that we know to update this file
+		# later if DNS resolves come back
+		$ifc{'DNS1'} = ''
+		}
+	&write_env_file($b->{'file'}, \%ifc);
+	&unlock_file($b->{'file'});
+	}
+return (0, 0);
+}
+
 1;
 
