@@ -34,6 +34,10 @@ else {
 	elsif (&has_command("yum") && -r "/etc/yum.conf") {
 		$update_system = "yum";
 		}
+	elsif (&has_command("dnf") && -r "/etc/dnf/dnf.conf") {
+		# DNF is basically compatible with YUM
+		$update_system = "yum";
+		}
 	elsif (&has_command("up2date") && &has_command("rhn_check")) {
 		$update_system = "rhn";
 		}
