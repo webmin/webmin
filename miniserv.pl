@@ -4020,11 +4020,14 @@ if ($ok && (!$expired ||
 			# Make redirect URL safe
 			$in{'page'} = "/";
 			}
+		local $cpath = $config{'cookiepath'};
 		if ($in{'save'}) {
-			&write_data("Set-Cookie: $sidname=$sid; path=/; expires=\"Thu, 31-Dec-2037 00:00:00\"$sec\r\n");
+			&write_data("Set-Cookie: $sidname=$sid; path=$cpath; ".
+			    "expires=\"Thu, 31-Dec-2037 00:00:00\"$sec\r\n");
 			}
 		else {
-			&write_data("Set-Cookie: $sidname=$sid; path=/$sec\r\n");
+			&write_data("Set-Cookie: $sidname=$sid; path=$cpath".
+				    "$sec\r\n");
 			}
 		&write_data("Location: $prot://$hostport$in{'page'}\r\n");
 		&write_keep_alive(0);
@@ -4454,6 +4457,7 @@ my %vital = ("port", 80,
 	  "expires", 7*24*60*60,
 	  "pam_test_user", "root",
 	  "precache", "lang/en */lang/en",
+	  "cookiepath", "/",
 	 );
 foreach my $v (keys %vital) {
 	if (!$config{$v}) {
