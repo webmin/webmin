@@ -2958,7 +2958,7 @@ sub rename_as_mail_user
 {
 my ($oldfile, $newfile) = @_;
 my $switched = &switch_to_mail_user();
-my $rv = rename($oldfile, $newfile);
+my $rv = &rename_file($oldfile, $newfile);
 if ($switched) {
 	$) = 0;
 	$> = 0;
