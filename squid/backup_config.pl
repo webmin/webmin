@@ -8,23 +8,7 @@ do 'squid-lib.pl';
 # Returns files and directories that can be backed up
 sub backup_config_files
 {
-# Add main config file
-my @rv = ( $config{'squid_conf'} );
-
-# Add users file
-my $conf = &get_config();
-my $file = &get_auth_file($conf);
-push(@rv, $file) if ($file);
-
-# Add files from ACLs
-my @acl = &find_config("acl", $conf);
-foreach my $a (@acl) {
-	if ($a->{'values'}->[2] =~ /^"(.*)"$/ || $a->{'values'}->[3] =~ /^"(.*)"$/) {
-		push(@rv, $1);
-		}
-	}
-
-return &unique(@rv);
+return &get_all_config_files();
 }
 
 # pre_backup(&files)

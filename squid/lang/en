@@ -37,6 +37,15 @@ index_restart=Apply Configuration
 index_restartdesc=Click this button to activate the current Squid configuration.
 index_iptables=Port Redirection Setup
 index_squid=Squid Proxy Server
+index_manual=Edit Configuration Files
+
+manual_title=Edit Configuration Files
+manual_file=Select a config file to edit:
+manual_change=Change
+manual_editing=Use the text box below to manually edit the configs in $1. Be careful, as no syntax or validity checking will be done.
+manual_err=Failed to save config file
+manual_efile=Invalid config filename!
+manual_ecannot=You are not allowed to manually edit config files
 
 buttsave=Save
 buttdel=Delete

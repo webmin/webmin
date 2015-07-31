@@ -3,7 +3,7 @@ require 'squid-lib.pl';
 @accopts = ('portsnets', 'othercaches', 'musage', 'logging', 'copts',
 	    'hprogs', 'actrl', 'admopts', 'proxyauth', 'miscopt', 'cms',
 	    'rebuild', 'calamaris', 'delay', 'headeracc', 'refresh', 'cachemgr',
-	    'authparam', 'iptables');
+	    'authparam', 'iptables', 'manual');
 
 # acl_security_form(&options)
 # Output HTML for editing security options for the squid module

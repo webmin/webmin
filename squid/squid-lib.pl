@@ -608,5 +608,28 @@ sub list_cachemgr_actions
 return ("5min" ,"60min" ,"asndb" ,"authenticator" ,"cbdata" ,"client_list" ,"comm_incoming" ,"config" ,"counters" ,"delay" ,"digest_stats" ,"dns" ,"events" ,"filedescriptors" ,"fqdncache" ,"histograms" ,"http_headers" ,"info" ,"io" ,"ipcache" ,"mem" ,"menu" ,"netdb" ,"non_peers" ,"objects" ,"offline_toggle" ,"pconn" ,"peer_select" ,"redirector" ,"refresh" ,"server_list" ,"shutdown" ,"store_digest" ,"storedir" ,"utilization" ,"via_headers" ,"vm_objects");
 }
 
+# get_all_config_files()
+# Returns all files from the Squid config
+sub get_all_config_files
+{
+# Add main config file
+my @rv = ( $config{'squid_conf'} );
+
+# Add users file
+my $conf = &get_config();
+my $file = &get_auth_file($conf);
+push(@rv, $file) if ($file);
+
+# Add files from ACLs
+my @acl = &find_config("acl", $conf);
+foreach my $a (@acl) {
+	if ($a->{'values'}->[2] =~ /^"(.*)"$/ || $a->{'values'}->[3] =~ /^"(.*)"$/) {
+		push(@rv, $1);
+		}
+	}
+
+return &unique(@rv);
+}
+
 1;
 
