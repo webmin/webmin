@@ -2507,11 +2507,14 @@ if ($gconfig{'debug_what_net'}) {
 				 (ref($dest) ? "" : " dest=$dest"));
 	}
 my ($buf, @n);
-$cbfunc = $_[4];
 if (&is_readonly_mode()) {
-	if ($_[3]) { ${$_[3]} = "FTP connections not allowed in readonly mode";
-		     return 0; }
-	else { &error("FTP connections not allowed in readonly mode"); }
+	if ($error) {
+		$$error = "FTP connections not allowed in readonly mode";
+		return 0;
+		}
+	else {
+		&error("FTP connections not allowed in readonly mode");
+		}
 	}
 
 # Check if we already have cached the URL
@@ -2544,13 +2547,18 @@ if ($gconfig{'ftp_proxy'} =~ /^http:\/\/(\S+):(\d+)/ && !&no_proxy($_[0])) {
 		# Connected OK
 		if ($main::download_timed_out) {
 			alarm(0);
-			if ($_[3]) { ${$_[3]} = $main::download_timed_out; return 0; }
-			else { &error($main::download_timed_out); }
+			if ($error) {
+				$$error = $main::download_timed_out;
+				return 0;
+				}
+			else {
+				&error($main::download_timed_out);
+				}
 			}
-		my $esc = $_[1]; $esc =~ s/ /%20/g;
-		my $up = "$_[5]:$_[6]\@" if ($_[5]);
+		my $esc = $file; $esc =~ s/ /%20/g;
+		my $up = "${user}:${pass}\@" if ($user);
 		my $portstr = $port == 21 ? "" : ":$port";
-		print SOCK "GET ftp://$up$_[0]$portstr$esc HTTP/1.0\r\n";
+		print SOCK "GET ftp://${up}${host}${portstr}${esc} HTTP/1.0\r\n";
 		print SOCK "User-agent: Webmin\r\n";
 		if ($gconfig{'proxy_user'}) {
 			my $auth = &encode_base64(
@@ -2559,49 +2567,60 @@ if ($gconfig{'ftp_proxy'} =~ /^http:\/\/(\S+):(\d+)/ && !&no_proxy($_[0])) {
 			print SOCK "Proxy-Authorization: Basic $auth\r\n";
 			}
 		print SOCK "\r\n";
-		&complete_http_download({ 'fh' => "SOCK" }, $_[2], $_[3], $_[4],
-				undef, undef, undef, undef, 0, $nocache);
+		&complete_http_download(
+			{ 'fh' => "SOCK" }, $dest, $error, $cbfunc,
+			undef, undef, undef, undef, 0, $nocache);
 		$connected = 1;
 		}
 	elsif (!$gconfig{'proxy_fallback'}) {
 		alarm(0);
-		if ($error) { $$error = $main::download_timed_out; return 0; }
-		else { &error($main::download_timed_out); }
+		if ($error) {
+			$$error = $main::download_timed_out;
+			return 0;
+			}
+		else {
+			&error($main::download_timed_out);
+			}
 		}
 	}
 
 if (!$connected) {
 	# connect to host and login with real FTP protocol
-	&open_socket($_[0], $port, "SOCK", $_[3]) || return 0;
+	&open_socket($host, $port, "SOCK", $_[3]) || return 0;
 	alarm(0);
 	if ($main::download_timed_out) {
-		if ($_[3]) { ${$_[3]} = $main::download_timed_out; return 0; }
-		else { &error($main::download_timed_out); }
+		if ($error) {
+			$$error = $main::download_timed_out;
+			return 0;
+			}
+		else {
+			&error($main::download_timed_out);
+			}
 		}
-	&ftp_command("", 2, $_[3]) || return 0;
-	if ($_[5]) {
+	&ftp_command("", 2, $error) || return 0;
+	if ($user) {
 		# Login as supplied user
-		my @urv = &ftp_command("USER $_[5]", [ 2, 3 ], $_[3]);
+		my @urv = &ftp_command("USER $user", [ 2, 3 ], $error);
 		@urv || return 0;
 		if (int($urv[1]/100) == 3) {
-			&ftp_command("PASS $_[6]", 2, $_[3]) || return 0;
+			&ftp_command("PASS $pass", 2, $error) || return 0;
 			}
 		}
 	else {
 		# Login as anonymous
-		my @urv = &ftp_command("USER anonymous", [ 2, 3 ], $_[3]);
+		my @urv = &ftp_command("USER anonymous", [ 2, 3 ], $error);
 		@urv || return 0;
 		if (int($urv[1]/100) == 3) {
 			&ftp_command("PASS root\@".&get_system_hostname(), 2,
-				     $_[3]) || return 0;
+				     $error) || return 0;
 			}
 		}
 	&$cbfunc(1, 0) if ($cbfunc);
 
-	if ($_[1]) {
+	if ($file) {
 		# get the file size and tell the callback
-		&ftp_command("TYPE I", 2, $_[3]) || return 0;
-		my $size = &ftp_command("SIZE $_[1]", 2, $_[3]);
+		&ftp_command("TYPE I", 2, $error) || return 0;
+		my $size = &ftp_command("SIZE $file", 2, $error);
 		defined($size) || return 0;
 		if ($cbfunc) {
 			&$cbfunc(2, int($size));
@@ -2613,26 +2632,26 @@ if (!$connected) {
 
 		if ($v6) {
 			# request the file over a EPSV port
-			my $epsv = &ftp_command("EPSV", 2, $_[3]);
+			my $epsv = &ftp_command("EPSV", 2, $error);
 			defined($epsv) || return 0;
 			$epsv =~ /\|(\d+)\|/ || return 0;
 			my $epsvport = $1;
-			&open_socket($host, $epsvport, CON, $_[3]) || return 0;
+			&open_socket($host, $epsvport, CON, $error) || return 0;
 			}
 		else {
 			# request the file over a PASV connection
-			my $pasv = &ftp_command("PASV", 2, $_[3]);
+			my $pasv = &ftp_command("PASV", 2, $error);
 			defined($pasv) || return 0;
 			$pasv =~ /\(([0-9,]+)\)/ || return 0;
 			@n = split(/,/ , $1);
 			&open_socket("$n[0].$n[1].$n[2].$n[3]",
 				$n[4]*256 + $n[5], "CON", $_[3]) || return 0;
 			}
-		&ftp_command("RETR $_[1]", 1, $_[3]) || return 0;
+		&ftp_command("RETR $file", 1, $error) || return 0;
 
 		# transfer data
 		my $got = 0;
-		&open_tempfile(PFILE, ">$_[2]", 1);
+		&open_tempfile(PFILE, ">$dest", 1);
 		while(read(CON, $buf, 1024) > 0) {
 			&print_tempfile(PFILE, $buf);
 			$got += length($buf);
@@ -2641,16 +2660,21 @@ if (!$connected) {
 		&close_tempfile(PFILE);
 		close(CON);
 		if ($got != $size) {
-			if ($_[3]) { ${$_[3]} = "Download incomplete"; return 0; }
-			else { &error("Download incomplete"); }
+			if ($error) {
+				$$error = "Download incomplete";
+				return 0;
+				}
+			else {
+				&error("Download incomplete");
+				}
 			}
 		&$cbfunc(4) if ($cbfunc);
 
-		&ftp_command("", 2, $_[3]) || return 0;
+		&ftp_command("", 2, $error) || return 0;
 		}
 
 	# finish off..
-	&ftp_command("QUIT", 2, $_[3]) || return 0;
+	&ftp_command("QUIT", 2, $error) || return 0;
 	close(SOCK);
 	}
 
