@@ -8043,15 +8043,20 @@ return substr($file, 0, length($dir)) eq $dir;
 Given an absolute URL, returns the host, port, page and ssl flag components.
 If a username and password are given before the hostname, return those too.
 Relative URLs can also be parsed, if the base information is provided.
+SSL mode 0 = HTTP, 1 = HTTPS, 2 = FTP.
 
 =cut
 sub parse_http_url
 {
-if ($_[0] =~ /^(http|https):\/\/([^\@]+\@)?\[([^\]]+)\](:(\d+))?(\/\S*)?$/ ||
-    $_[0] =~ /^(http|https):\/\/([^\@]+\@)?([^:\/]+)(:(\d+))?(\/\S*)?$/) {
+if ($_[0] =~ /^(http|https|ftp):\/\/([^\@]+\@)?\[([^\]]+)\](:(\d+))?(\/\S*)?$/ ||
+    $_[0] =~ /^(http|https|ftp):\/\/([^\@]+\@)?([^:\/]+)(:(\d+))?(\/\S*)?$/) {
 	# An absolute URL
-	my $ssl = $1 eq 'https';
-	my @rv = ($3, $4 ? $5 : $ssl ? 443 : 80, $6 || "/", $ssl);
+	my $ssl = $1 eq 'https' ? 1 : $1 eq 'ftp' ? 2 : 0;
+	my @rv = ($3,
+		  $4 ? $5 : $ssl == 1 ? 443 : $ssl == 2 ? 21 : 80,
+		  $6 || "/",
+		  $ssl,
+		 );
 	if ($2 =~ /^([^:]+):(\S+)\@/) {
 		push(@rv, $1, $2);
 		}
