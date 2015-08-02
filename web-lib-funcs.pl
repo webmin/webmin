@@ -9874,7 +9874,6 @@ sub clear_time_locale
 {
 if ($main::clear_time_locale_count == 0) {
 	eval {
-		use POSIX;
 		$main::clear_time_locale_old = POSIX::setlocale(POSIX::LC_TIME);
 		POSIX::setlocale(POSIX::LC_TIME, "C");
 		};
