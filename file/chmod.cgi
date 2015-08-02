@@ -13,12 +13,12 @@ print "Content-type: text/plain\n\n";
 
 if (defined($in{'user'})) {
 	$uid = $in{'user'} =~ /^\d+$/ ? $in{'user'} :
-	       defined(%user_to_uid) ? $user_to_uid{$in{'user'}} :
-				       getpwnam($in{'user'});
+	       %user_to_uid ? $user_to_uid{$in{'user'}} :
+			      getpwnam($in{'user'});
 	&failure(&text('chmod_euser', $in{'user'})) if (!defined($uid));
 	$gid = $in{'group'} =~ /^\d+$/ ? $in{'group'} :
-	       defined(%group_to_gid) ? $group_to_gid{$in{'group'}} :
-					 getgrnam($in{'group'});
+	       %group_to_gid ? $group_to_gid{$in{'group'}} :
+			       getgrnam($in{'group'});
 	&failure(&text('chmod_egroup', $in{'group'})) if (!defined($gid));
 	}
 
