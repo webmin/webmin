@@ -75,7 +75,7 @@ else {
 	  "package-updates", "system-status", "webmincron", "ajaxterm",
 	  "shorewall6", "iscsi-server", "iscsi-client", "gray-theme",
 	  "iscsi-target", "iscsi-tgtd", "bsdfdisk", "fail2ban",
-	  "authentic-theme", "firewalld",
+	  "authentic-theme", "firewalld", "filemin",
 	  );
 	}
 @dirlist = ( "Webmin" );
@@ -108,10 +108,11 @@ foreach $m (@mlist) {
 	foreach $f (readdir(DIR)) {
 		next if ($f =~ /^\./ || $f eq "test" || $f =~ /\.bak$/ ||
 		         $f =~ /\.tmp$/ || $f =~ /\.site$/ || $f eq ".builds" ||
+		         $f =~ /\.git$/ || $f eq ".build" ||
 		         $f =~ /\.(tar|wbm|wbt)\.gz$/ ||
 			 $f eq "README.md" || $f =~ /^makemodule.*\.pl$/ ||
 			 $f eq "linux.sh" || $f eq "freebsd.sh" || 
-			 $f eq "LICENCE");
+			 $f eq "LICENCE" || $f eq "CHANGELOG.md");
 		$flist .= " $m/$f";
 		}
 	closedir(DIR);
