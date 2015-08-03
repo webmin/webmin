@@ -39,10 +39,10 @@ if (!$in{'nouser'}) {
 # valid directives)
 my @cachestruct = &find_config("cache_dir", $conf, 2);
 if ($squid_version >= 2.3) {
-	@cachestruct = map { $_->{'values'}->[1] } @cachestruct;
+	@cachestruct = grep { $_->{'values'}->[1] } @cachestruct;
 	}
 else {
-	@cachestruct = map { $_->{'values'}->[0] } @cachestruct;
+	@cachestruct = grep { $_->{'values'}->[0] } @cachestruct;
 	}
 if (@cachestruct) {
 	&save_directive($conf, "cache_dir", \@cachestruct);
