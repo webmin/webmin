@@ -62,7 +62,7 @@ if ($header{'x-webmin-autoreply'} ||
 	print STDERR "Cancelling autoreply to an autoreply\n";
 	exit 0;
 	}
-if ($header{'x-spam-flag'} || $header{'x-spam-status'} =~ /^Yes/i) {
+if ($header{'x-spam-flag'} =~ /^Yes/i || $header{'x-spam-status'} =~ /^Yes/i) {
         print STDERR "Cancelling autoreply to message already marked as spam\n";
         exit 0;
         }
@@ -73,11 +73,13 @@ if ($header{'x-mailing-list'} ||
     $header{'from'} =~ /majordomo/i ||
     $fromline =~ /majordomo/i) {
 	# Do nothing if post is from a mailing list
+	print STDERR "Cancelling autoreply to message from mailing list\n";
 	exit 0;
 	}
 if ($header{'from'} =~ /postmaster|mailer-daemon/i ||
     $fromline =~ /postmaster|mailer-daemon|<>/ ) {
 	# Do nothing if post is a bounce
+	print STDERR "Cancelling autoreply to bounce message\n";
 	exit 0;
 	}
 
@@ -158,7 +160,9 @@ if ($track_replies) {
 		$now = time();
 		if ($now < $lasttime+$period) {
 			# Autoreplied already in this period .. just halt
-			exit(0);
+			print STDERR "Already autoreplied at $lasttime which ",
+				     "is less than $period ago\n";
+			exit 0;
 			}
 		$replies{$from->[0]} = $now;
 		}
@@ -170,6 +174,8 @@ delete($rheader{'Reply-Period'});
 if ($rheader{'Autoreply-Start'} && time() < $rheader{'Autoreply-Start'} ||
     $rheader{'Autoreply-End'} && time() > $rheader{'Autoreply-End'}) {
 	# Nope .. so do nothing
+	print STDERR "Outside of autoreply window of ",
+		     "$rheader{'Autoreply-Start'}-$rheader{'Autoreply-End'}\n";
 	exit 0;
 	}
 delete($rheader{'Autoreply-Start'});

@@ -10,7 +10,7 @@ $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 $zconf = &zone_to_config($zone);
 
 $access{'master'} || &error($text{'mcreate_ecannot'});
-$file = &find("file", $zconf->{'members'});
+$file = &find_value("file", $zconf->{'members'});
 if (!$file) {
 	&error($text{'convert_efile'});
 	}
