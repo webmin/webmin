@@ -116,13 +116,19 @@ foreach $clientjob (@clients) {
 			}
 		}
 	&sysprint($h->{'infh'}, "done\n");
-	$rv = &wait_for($h->{'outfh'}, 'OK to run.*:', 'no files selected');
+	$rv = &wait_for($h->{'outfh'}, 'OK to run.*:', 'no files selected',
+				       'Select Restore Job.*:');
 	print $wait_for_input;
 	if ($rv == 0) {
 		&sysprint($h->{'infh'}, "yes\n");
 		}
 	elsif ($rv == 1) {
 		&job_error($text{'restore_enofiles'});
+		}
+	elsif ($rv == 2) {
+		&sysprint($h->{'infh'}, "1\n");
+		&wait_for($h->{'outfh'}, 'OK to run.*:');
+		&sysprint($h->{'infh'}, "yes\n");
 		}
 	else {
 		&job_error($text{'backup_eok'});
