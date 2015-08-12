@@ -224,7 +224,7 @@ elsif ($in{'zones_def'} == 2) {
 else {
 	$_[0]->{'zones'} = join(" ", split(/\0/, $in{'zones'}));
 	}
-$_[0]->{'inviews'} = $in{'inviews_def'} ? "*" :
+$_[0]->{'inviews'} = !defined($in{'inviews'}) || $in{'inviews_def'} ? "*" :
 			join(" ", split(/\0/, $in{'inviews'}));
 $_[0]->{'types'} = $in{'types_def'} ? undef : $in{'types'};
 $_[0]->{'master'} = $in{'master'} || 0;
