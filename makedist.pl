@@ -108,7 +108,7 @@ foreach $m (@mlist) {
 	foreach $f (readdir(DIR)) {
 		next if ($f =~ /^\./ || $f eq "test" || $f =~ /\.bak$/ ||
 		         $f =~ /\.tmp$/ || $f =~ /\.site$/ || $f eq ".builds" ||
-		         $f =~ /\.git$/ || $f eq ".build" ||
+		         $f =~ /\.git$/ || $f eq ".build" || $f eq "distrib" ||
 		         $f =~ /\.(tar|wbm|wbt)\.gz$/ ||
 			 $f eq "README.md" || $f =~ /^makemodule.*\.pl$/ ||
 			 $f eq "linux.sh" || $f eq "freebsd.sh" || 
