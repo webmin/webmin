@@ -3966,19 +3966,32 @@ sub get_ds_record
 {
 my ($zone) = @_;
 my $zonefile;
+my $dom;
 if ($zone->{'values'}) {
 	# Zone object
-	local $f = &find("file", $zone->{'members'});
+	my $f = &find("file", $zone->{'members'});
 	$zonefile = $f->{'values'}->[0];
+	$dom = $zone->{'values'}->[0];
 	}
 else {
 	# Zone name object
 	$zonefile = $zone->{'file'};
+	$dom = $zone->{'name'};
 	}
-my $out = &backquote_command("dnssec-dsfromkey -f ".quotemeta(&make_chroot(&absolute_path($zonefile)))." ZONE 2>/dev/null");
-return undef if ($?);
-$out =~ s/\r|\n//g;
-return $out;
+if (&has_command("dnssec-dsfromkey")) {
+	# Generate with a command
+	my $out = &backquote_command("dnssec-dsfromkey -f ".quotemeta(&make_chroot(&absolute_path($zonefile)))." ZONE 2>/dev/null");
+	return undef if ($?);
+	$out =~ s/\r|\n//g;
+	return $out;
+	}
+else {
+	# From dsset- file
+	my $keydir = &get_keys_dir($zone);
+	my $out = &read_file_contents($keydir."/dsset-".$dom.".");
+	$out =~ s/\r|\n$//g;
+	return $out;
+	}
 }
 
 1;
