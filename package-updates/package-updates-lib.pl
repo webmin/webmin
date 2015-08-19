@@ -319,6 +319,18 @@ if (defined(&software::update_system_install)) {
 	&clean_environment();
 	if ($software::update_system eq $pkg->{'system'}) {
 		# Can use the default system
+		if ($name eq "apache2" &&
+		    $pkg->{'system'} eq 'apt') {
+			# If updating the apache2 package on an apt system
+			# and apache2-mpm-prefork is installed, also update it
+			# so that ubuntu doesn't pull in the apache2-mpm-worker
+			# instead, which breaks PHP :-(
+			local @pinfo = &software::package_info(
+					"apache2-mpm-prefork");
+			if (@pinfo) {
+				$name .= " apache2-mpm-prefork";
+				}
+			}
 		@rv = &software::update_system_install($name, undef, 1);
 		}
 	else {
