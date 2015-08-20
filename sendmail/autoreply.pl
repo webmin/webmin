@@ -118,6 +118,9 @@ if (open(AUTO, $ARGV[0]) ||
 			if ($1 eq "No-Autoreply-Regexp") {
 				push(@no_regexp, $2);
 				}
+			elsif ($1 eq "Must-Autoreply-Regexp") {
+				push(@must_regexp, $2);
+				}
 			elsif ($1 eq "Autoreply-File") {
 				push(@files, $2);
 				}
@@ -199,11 +202,25 @@ if (@fromsplit) {
 	delete($rheader{'No-Autoreply'});
 	}
 
-# Check if message matches one of the deny regexps
+# Check if message matches one of the deny regexps, or doesn't match a
+# required regexp
 foreach $re (@no_regexp) {
-	if ($re =~ /\S/ && $rheaders =~ /$re/i) {
+	if ($re =~ /\S/ && $headers =~ /$re/i) {
 		print STDERR "Skipping due to match on $re\n";
-		exit(1);
+		exit(0);
+		}
+	}
+if (@must_regexp) {
+	my $found = 0;
+	foreach $re (@must_regexp) {
+		if ($headers =~ /$re/i) {
+			$found++;
+			}
+		}
+	if (!$found) {
+		print STDERR "Skipping due to no match on ",
+			     join(" ", @must_regexp),"\n";
+		exit(0);
 		}
 	}
 
