@@ -141,6 +141,14 @@ while($d = readdir(DIR)) {
 		$minfo{'depends'} = join(" ", split(/\s+/, $minfo{'depends'}),
 					      $vers);
 		$minfo{'version'} = $vers;
+		if ($d eq "filemin") {
+			# Remove the Filemin prefix for packaging
+			foreach my $k (keys %minfo) {
+				if ($k =~ /^desc/) {
+					$minfo{$k} =~ s/^Filemin\s+//;
+					}
+				}
+			}
 		&write_file($minfo, \%minfo);
 		}
 	elsif (-r $tinfo) {
