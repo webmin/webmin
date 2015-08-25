@@ -582,6 +582,7 @@ session_eblockuser_failures=Missing or invalid user blocking logins
 session_ecookie=Your browser does not support cookies, which are required for session authentication
 session_elsof=Local authentication requires the <tt>lsof</tt> program
 session_remember=Offer to remember login permanently?
+session_ip=Limit sessions to the same client IP address?
 session_hostname=Show hostname on login screen?
 session_utmp=Record logins and logouts in Utmp?
 session_realname=Show real hostname instead of name from URL?

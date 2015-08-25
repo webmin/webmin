@@ -68,6 +68,9 @@ print &ui_table_row($text{'session_sopts'},
 	&ui_checkbox("realname", 1, $text{'session_realname'},
 		     $gconfig{'realname'} ? 1 : 0).
 	"<br>\n".
+	&ui_checkbox("session_ip", 1, $text{'session_ip'},
+		     $miniserv{'session_ip'} ? 1 : 0).
+	"<br>\n".
 	&ui_checkbox("utmp", 1, $text{'session_utmp'},
 		     $miniserv{'utmp'} ? 1 : 0), undef, [ "valign=top","valign=middle" ]);
 

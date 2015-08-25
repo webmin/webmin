@@ -95,6 +95,7 @@ if (defined($in{'passwd_mode'})) {
 	$miniserv{'passwd_mode'} = $in{'passwd_mode'};
 	}
 $miniserv{'utmp'} = $in{'utmp'};
+$miniserv{'session_ip'} = $in{'session_ip'};
 &put_miniserv_config(\%miniserv);
 &unlock_file($ENV{'MINISERV_CONFIG'});
 
