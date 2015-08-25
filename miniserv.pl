@@ -1047,10 +1047,11 @@ while(1) {
 					}
 				$userlast{$1} = $time_now;
 				}
-			elsif ($inline =~ /^verify\s+(\S+)\s+(\S+)/) {
+			elsif ($inline =~ /^verify\s+(\S+)\s+(\S+)\s+(\S+)/) {
 				# Verifying a session ID
 				local $session_id = $1;
 				local $notimeout = $2;
+				local $vip = $3;
 				local $skey = $sessiondb{$session_id} ?
 						$session_id : 
 						&hash_session_id($session_id);
@@ -1059,7 +1060,7 @@ while(1) {
 					print $outfd "0 0\n";
 					}
 				else {
-					local ($user, $ltime) =
+					local ($user, $ltime, $ip) =
 					  split(/\s+/, $sessiondb{$skey});
 					local $lot = &get_logout_time($user, $session_id);
 					if ($lot &&
@@ -1069,13 +1070,19 @@ while(1) {
 						print $outfd "1 ",$time_now - $ltime,"\n";
 						#delete($sessiondb{$skey});
 						}
+					elsif ($ip && $vip && $ip ne $vip &&
+					       $config{'session_ip'}) {
+						# Session was OK, but from the
+						# wrong IP address
+						print $outfd "3 $ip\n";
+						}
 					else {
 						# Session is OK
 						print $outfd "2 $user\n";
 						if ($lot &&
 						    $time_now - $ltime >
 						    ($lot*60)/2) {
-							$sessiondb{$skey} = "$user $time_now";
+							$sessiondb{$skey} = "$user $time_now $ip";
 							}
 						}
 					}
@@ -1826,7 +1833,7 @@ if ($config{'userfile'}) {
 				$session_id = $2;
 				local $notimeout =
 					$in{'webmin_notimeout'} ? 1 : 0;
-				print $PASSINw "verify $session_id $notimeout\n";
+				print $PASSINw "verify $session_id $notimeout $acptip\n";
 				<$PASSOUTr> =~ /(\d+)\s+(\S+)/;
 				if ($1 == 2) {
 					# Valid session continuation
@@ -1839,6 +1846,12 @@ if ($config{'userfile'}) {
 				elsif ($1 == 1) {
 					# Session timed out
 					$timed_out = $2;
+					}
+				elsif ($1 == 3) {
+					# Session is OK, but from the wrong IP
+					print STDERR "Session $session_id was ",
+					  "used from $acptip instead of ",
+					  "original IP $2\n";
 					}
 				else {
 					# Invalid session ID .. don't set
