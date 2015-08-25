@@ -175,13 +175,20 @@ if (&foreign_check("net") && $gconfig{'os_type'} =~ /-linux$/) {
 	else {
 		# Get list from net module
 		&foreign_require("net");
-		foreach my $i (&net::active_interfaces()) {
-			my $v = defined($i->{'virtual'}) ? $i->{'virtual'} : '';
-			if ($v eq '' &&
-			    $i->{'name'} =~ /^(eth|ppp|wlan|ath|wlan)/) {
-				push(@ifaces, $i->{'name'});
+                if (defined(&net::active_interfaces)) {
+			foreach my $i (&net::active_interfaces()) {
+				my $v = defined($i->{'virtual'}) ?
+						$i->{'virtual'} : '';
+				if ($v eq '' &&
+				    $i->{'name'} =~ /^(eth|ppp|wlan|ath|wlan)/) {
+					push(@ifaces, $i->{'name'});
+					}
 				}
 			}
+		else {
+			# Not available on this OS?
+			@ifaces = ( "eth0" );
+                        }
 		}
 	my $ifaces = join(" ", @ifaces);
 	foreach my $iname (@ifaces) {
