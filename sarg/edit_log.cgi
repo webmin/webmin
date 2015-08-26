@@ -4,7 +4,7 @@
 require './sarg-lib.pl';
 
 $conf = &get_config();
-&ui_print_header(undef, $text{'log_title'}, "");
+&ui_print_header($text{'log_title'}, $module_info{'desc'}, "");
 print &ui_form_start("save_log.cgi", "post");
 print &ui_table_start($text{'log_header'}, "width=100%", 4);
 $config_prefix = "log_";

@@ -10,7 +10,7 @@ require './sarg-lib.pl';
 $conf = &get_config();
 $odir = &find_value("output_dir", $conf);
 $sfile = &find_value("access_log", $conf);
-&ui_print_header(undef, $text{'sched_title'}, "");
+&ui_print_header($text{'sched_title'}, $module_info{'desc'}, "");
 
 if (!$odir) {
 	&ui_print_endpage(&text('sched_edir', "edit_log.cgi"));

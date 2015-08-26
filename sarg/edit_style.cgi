@@ -4,7 +4,7 @@
 require './sarg-lib.pl';
 
 $conf = &get_config();
-&ui_print_header(undef, $text{'style_title'}, "");
+&ui_print_header( $text{'style_title'},$module_info{'desc'}, "");
 print &ui_form_start("save_style.cgi", "post");
 print &ui_table_start($text{'style_header'}, "width=100%", 4);
 $config_prefix = "style_";

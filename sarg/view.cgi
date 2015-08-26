@@ -33,7 +33,7 @@ if ($full =~ /\.(html|htm)$/i && !$config{'naked'}) {
 	$data =~ s/^[\000-\377]*<BODY[^>]*>//i;
 	$data =~ s/<\/BODY>[\000-\377]*$//i;
 
-	&ui_print_header(undef, $title || $text{'view_title'}, "");
+	&ui_print_header($text{'index_title'}, $module_info{'desc'}, "");
 	print "<div id=sarg-report>\n";
 	print $data;
 	print "</div>\n";
@@ -41,7 +41,7 @@ if ($full =~ /\.(html|htm)$/i && !$config{'naked'}) {
 	}
 elsif (-d $full) {
 	# Show directory listing
-	&ui_print_header(undef, $text{'view_title'}, "");
+	&ui_print_header($text{'index_title'}, $module_info{'desc'}, "");
 	print "<ul>\n";
 	opendir(DIR, $full);
 	foreach $f (sort { lc($a) cmp lc($b) } readdir(DIR)) {

@@ -11,7 +11,7 @@ if (!$in{'range_def'}) {
 
 $theme_no_table++;
 $| = 1;
-&ui_print_header(undef, $text{'gen_title'}, "");
+&ui_print_header($text{'gen_title'}, $module_info{'desc'}, "");
 
 $conf = &get_config();
 $sfile = &find_value("access_log", $conf);

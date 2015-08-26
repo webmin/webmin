@@ -4,13 +4,13 @@
 require './sarg-lib.pl';
 
 if (!-r $config{'sarg_conf'}) {
-	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
+	&ui_print_header($text{'index_title'}, $module_info{'desc'}, "", undef, 1, 1);
 	&ui_print_endpage(
 		&ui_config_link('index_econf',
 			[ "<tt>$config{'sarg_conf'}</tt>", undef ]));
 	}
 if (!&has_command($config{'sarg'})) {
-	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
+	&ui_print_header($text{'index_title'}, $module_info{'desc'}, "", undef, 1, 1);
 	&ui_print_endpage(
 		&ui_config_link('index_ecmd',
 		        [ "<tt>$config{'sarg'}</tt>", undef ]));
@@ -19,14 +19,14 @@ if (!&has_command($config{'sarg'})) {
 # Get the version
 $sarg_version = &get_sarg_version();
 if (!$sarg_version) {
-	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
+	&ui_print_header($text{'index_title'}, $module_info{'desc'}, "", undef, 1, 1);
 	&ui_print_endpage(
 		&text('index_eversion',
 		      "<tt>$config{'sarg'}</tt>", "<pre>$out</pre>"));
 	}
 
 # Show icons for options
-&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
+&ui_print_header($text{'index_title'}, $module_info{'desc'}, "", undef, 1, 1, 0,
 		 &help_search_link("sarg", "man", "doc", "google"),
 		 undef, undef,
 		 &text('index_version', $sarg_version));
