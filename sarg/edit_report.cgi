@@ -10,13 +10,15 @@ print &ui_table_start($text{'report_header'}, "width=100%", 4);
 $config_prefix = "report_";
 
 print &config_select($conf, "report_type",
-		     [ [ "topsites", $text{'report_topsites'} ],
+		     [ [ "topusers", $text{'report_topusers'} ],
+		       [ "topsites", $text{'report_topsites'} ],
 		       [ "sites_users", $text{'report_sites_users'} ],
 		       [ "users_sites", $text{'report_users_sites'} ],
 		       [ "date_time", $text{'report_date_time'} ],
 		       [ "denied", $text{'report_denied'} ],
 		       [ "auth_failures", $text{'report_auth_failures'} ],
-		       [ "site_user_time_date", $text{'report_site_user_time_date'} ] ],
+		       [ "site_user_time_date", $text{'report_site_user_time_date'} ],
+		       [ "downloads", $text{'report_downloads'} ] ],
 		     $text{'report_all'}, 3);
 
 print &ui_table_hr();
