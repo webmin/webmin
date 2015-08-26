@@ -432,17 +432,15 @@ if ($from || $to) {
 
 local $sfile = &find_value("access_log", $conf);
 local @all = &all_log_files($sfile);
-foreach $file (@all) {
-	local $cmd = "$config{'sarg'} -f $config{'sarg_conf'} -l $file $rangearg";
-	print $h $cmd,"\n";
-	open(OUT, "$cmd 2>&1 |");
-	while(<OUT>) {
-		print $h $esc ? &html_escape($_) : $_;
-		}
-	close(OUT);
-	return 0 if ($?);
-	&additional_log("exec", undef, $cmd);
-	}
+local $cmd = "$config{'sarg'} -f $config{'sarg_conf'} -l @all $rangearg";
+print $h $cmd,"\n";
+open(OUT, "$cmd 2>&1 |");
+while(<OUT>) {
+	print $h $esc ? &html_escape($_) : $_;
+}	
+close(OUT);
+return 0 if ($?);
+&additional_log("exec", undef, $cmd);
 return 1;
 }
 
