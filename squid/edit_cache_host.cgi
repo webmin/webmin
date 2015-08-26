@@ -37,7 +37,7 @@ else {
 print &ui_table_start($text{'ech_cho'}, "width=100%", 4);
 
 print &ui_table_row($text{'ech_h'},
-	&ui_textbox("host", $ch[2], 30));
+	&ui_textbox("host", $ch[0], 30));
 
 my @ts = ( [ "parent" => $text{"ech_parent"} ],
 	   [ "sibling" => $text{"ech_sibling"} ],
