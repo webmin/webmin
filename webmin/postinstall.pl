@@ -36,5 +36,12 @@ elsif ($miniserv{'cipher_list_def'} == 2 || $miniserv{'cipher_list_def'} == 3) {
 	&put_miniserv_config(\%miniserv);
 	}
 &unlock_file("$config_directory/miniserv.conf");
+
+# Record the version of Webmin at first install
+if (!-r $first_install_file) {
+	my %first;
+	$first{'version'} = &get_webmin_version();
+	&write_file($first_install_file, \%first);
+	}
 }
 
