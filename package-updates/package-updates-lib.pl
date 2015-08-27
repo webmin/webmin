@@ -36,6 +36,9 @@ sub get_software_packages
 {
 if (!$get_software_packages_cache) {
         %software::packages = ( );
+	if (!defined(&software::list_packages)) {
+		return 0;
+		}
         $get_software_packages_cache = &software::list_packages();
         }
 return $get_software_packages_cache;
