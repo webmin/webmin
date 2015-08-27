@@ -38,6 +38,11 @@ uedit_raw=LDAP Attributes
 uedit_return=user details
 uedit_quota=IMAP quota
 uedit_unquota=Don't change
+uedit_sambapassopts=Samba Password Options
+uedit_sambapwdlastset=Last Password Update
+uedit_sambapwdcanchange=Password can change
+uedit_sambabadpasswordcount=Bad password count
+uedit_sambaacctflags=Account flags
 
 usave_eadd=Failed to add user to LDAP database : $1
 usave_emod=Failed to modify user in LDAP database : $1

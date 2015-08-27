@@ -268,6 +268,32 @@ if (&in_schema($schema, "shadowLastChange")) {
 	print &ui_table_end();
 	}
 
+if (&in_schema($schema, "sambaPwdLastSet")) {
+       print &ui_table_start($text{'uedit_sambapassopts'},
+			     "width=100%", 4, \@tds);
+
+       $value = $uinfo->get_value('sambaPwdLastSet');
+
+       print &ui_table_row($text{'uedit_sambapwdlastset'},
+               ($value ? &make_date(timelocal(gmtime($value)),1) :
+                 $n eq "" ? $text{'uedit_never'} :
+                            $text{'uedit_unknown'}));
+
+       $value = $uinfo->get_value('sambaPwdCanChange');
+       print &ui_table_row($text{'uedit_sambapwdcanchange'},
+               ($value ? &make_date(timelocal(gmtime($value)),1) :
+                 $n eq "" ? $text{'uedit_never'} :
+                            $text{'uedit_unknown'}));
+
+       $value = $uinfo->get_value('sambaBadPasswordCount');
+       print &ui_table_row($text{'uedit_sambabadpasswordcount'}, $value);
+
+       $value = $uinfo->get_value('sambaAcctFlags');
+       print &ui_table_row($text{'uedit_sambaacctflags'}, $value);
+
+       print &ui_table_end();
+       }
+
 # Group memberships section
 print &ui_table_start($text{'uedit_gmem'}, "width=100%", 4, \@tds);
 
