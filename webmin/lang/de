@@ -607,6 +607,7 @@ session_err=Fehler beim Speichern der Authentifizierungsdaten
 session_extauth=Externes <tt>Squid</tt>-&#228;hnliches Authentifizierungs-Programm
 session_header=Authentifizierung- und Sitzungsoptionen
 session_hostname=Zeige Hostnamen auf Anmeldebildschirm?
+session_ip=Limitiere Sitzungen mit derselben Client IP-Adresse?
 session_local=Lokale Authentifizierung
 session_localoff=Benutzernamen und Passwort immer erfragen
 session_localon=Anmeldung ohne Passwort f&#252;r passende Benutzer von <tt>localhost</tt>
@@ -947,6 +948,7 @@ upgrade_elatest=Sie benutzen bereits die letzte Webmin-Version
 upgrade_emerge=Letzte Version vom Emerge-Repository
 upgrade_emod=Datei ist ein Webmin-Modul, kein komplettes Webmin-Upgrade. M&#246;chten Sie die Seite <a href='$1'>Webmin-Module</a> benutzen um es zu installieren?
 upgrade_epackage=Kein g&#252;ltiges Solaris-Paket
+upgrade_eportage=Webmins Upgrade-Funktion funktioniert derzeit nicht, wenn Sie von einem Portage-Paket installiert haben. Bitte aktualisieren Sie stattdessen mit den Portage-Tools.
 upgrade_eroot=Webmin kann nicht aktualisiert werden, wenn sein Code selbst mit anderen Systemen geteilt wird. Dies ist beispielsweise der Fall, wenn er innerhalb einer Zone l&#228;uft oder via NFS gemountet wurde.
 upgrade_erpm=Dies ist keine g&#252;ltige Webmin RPM-Datei
 upgrade_err1=Fehler bei der Aktualisierung von $1
