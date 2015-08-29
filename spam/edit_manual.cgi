@@ -18,7 +18,7 @@ print &ui_form_start("edit_manual.cgi");
 print $form_hiddens;
 print "<b>$text{'manual_file'}</b>\n",
       &ui_select("manual", $in{'manual'}, \@files),"\n",
-      &ui_submit($text{'manual_ok'});
+      &ui_submit('Edit');
 print &ui_form_end();
 
 # Config editor
