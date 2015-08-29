@@ -38,7 +38,7 @@ print "<tr> <td><b>$text{'dserv_dir'}</b></td>\n";
 printf "<td><input name=dir size=40 value='%s'> %s</td> </tr>\n",
 	$d->{'value'}, &file_chooser_button("dir", 1);
 
-print "<tr> <td colspan=2 align=right>\n";
+print "<tr> <td colspan=2>\n";
 print "<input type=submit value=\"$text{'save'}\">\n";
 print "<input type=submit name=delete value=\"$text{'dserv_delete'}\">\n";
 print "</td> </tr>\n";

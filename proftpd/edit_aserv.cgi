@@ -43,7 +43,7 @@ print "<tr> <td><b>$text{'aserv_group'}</b></td>\n";
 print "<td>",&opt_input($group, "Group", $text{'default'}, 13),
       "</td> </tr>\n";
 
-print "<tr> <td colspan=2 align=right>\n";
+print "<tr> <td colspan=2>\n";
 if ($in{'init'}) {
 	print "<input type=submit value=\"$text{'create'}\">\n";
 	}

@@ -60,7 +60,7 @@ foreach $c ('site_chmod', 'read', 'write', 'dirs', 'login', 'all') {
 	}
 print "</select></td> </tr>\n";
 
-print "<tr> <td colspan=2 align=right>\n";
+print "<tr> <td colspan=2>\n";
 print "<input type=submit value=\"$text{'save'}\">\n";
 print "<input type=submit name=delete value=\"$text{'lserv_delete'}\">\n";
 print "</td> </tr>\n";

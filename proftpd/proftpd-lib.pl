@@ -320,12 +320,12 @@ foreach $e (@{$_[0]}) {
 			print "<td colspan=2></td> </tr><tr>\n";
 			}
 		else { $sw = !$sw; }
-		print "<td valign=top align=right width=25%><b>$rv[1]</b></td>\n";
+		print "<td valign=top width=25%><b>$rv[1]</b></td>\n";
 		print "<td nowrap valign=top colspan=3 width=75%>$rv[2]</td>\n";
 		}
 	else {
 		# only spans one column
-		print "<td valign=top align=right width=25%><b>$rv[1]</b></td>\n";
+		print "<td valign=top width=25%><b>$rv[1]</b></td>\n";
 		print "<td nowrap valign=top width=25%>$rv[2]</td>\n";
 		}
 

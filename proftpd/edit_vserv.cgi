@@ -30,7 +30,7 @@ print "<tr> <td><b>$text{'vserv_port'}</b></td>\n";
 print "<td>",&opt_input($port, "Port", $text{'default'}, 6),
       "</td> </tr>\n";
 
-print "<tr> <td colspan=2 align=right>\n";
+print "<tr> <td colspan=2>\n";
 print "<input type=submit value=\"$text{'save'}\">\n";
 print "<input type=submit value=\"$text{'vserv_delete'}\" name=delete>\n";
 print "</td> </tr>\n";
