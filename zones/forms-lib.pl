@@ -330,6 +330,7 @@ $dinput->set_mandatory(1);
 $dinput->set_validation_func(\&validate_fsdir);
 $section->add_input($text{'fs_dir'}, $dinput);
 
+$main::ui_table_cols = 2;
 if (&indexof($type, &mount::list_fstypes()) >= 0) {
 	# A supported filesystem, which means we can show nice options
 	local $shtml = 
