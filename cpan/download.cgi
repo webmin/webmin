@@ -67,6 +67,7 @@ elsif ($in{'source'} == 3) {
 	$in{'cpan'} || &error($text{'download_emodname'});
 	$in{'cpan'} =~ s/^\s+//;
 	$in{'cpan'} =~ s/\s+$//;
+	$in{'cpan'} =~ s/\/+/::/g;
 	@cpan = split(/\s+|\0/, $in{'cpan'});
 
 	# First check if YUM or APT can install this module for us
