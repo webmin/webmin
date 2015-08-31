@@ -30,21 +30,21 @@ print &ui_hidden("id", $in{'id'});
 print &ui_table_start($text{'edit_details'}, undef, 2);
 
 print &ui_table_row($text{'edit_host'},
-		    &ui_textbox("host", $s->{'host'}, 60), undef, [ "valign=middle","valign=middle" ]);
+		    &ui_textbox("host", $s->{'host'}, 60));
 
 if ($in{'new'} || $s->{'port'}) {
 	print &ui_table_row($text{'edit_port'},
-			    &ui_textbox("port", $s->{'port'}, 5), undef, [ "valign=middle","valign=middle" ]);
+			    &ui_textbox("port", $s->{'port'}, 5));
 	}
 else {
 	print &ui_table_row($text{'edit_port'},
 			    &ui_opt_textbox("port", $s->{'port'}, 5,
-					    $text{'edit_portnone'}), undef, [ "valign=middle","valign=middle" ]);
+					    $text{'edit_portnone'}));
 	}
 
 if ($s->{'realhost'}) {
 	print &ui_table_row($text{'edit_realhost'},
-			    "<tt>$s->{'realhost'}</tt>", undef, [ "valign=middle","valign=middle" ]);
+			    "<tt>$s->{'realhost'}</tt>");
 	}
 
 if ($access{'forcetype'}) {
@@ -54,16 +54,16 @@ else {
 	print &ui_table_row($text{'edit_type'},
 	    &ui_select("type", $s->{'type'},
 		[ map { [ $_->[0], $_->[1] ] }
-		      sort { $a->[1] cmp $b->[1] } &get_server_types() ]), undef, [ "valign=middle","valign=middle" ]);
+		      sort { $a->[1] cmp $b->[1] } &get_server_types() ]));
 	}
 
 print &ui_table_row($text{'edit_ssl'},
-		    &ui_yesno_radio("ssl", int($s->{'ssl'})), undef, [ "valign=middle","valign=middle" ]);
+		    &ui_yesno_radio("ssl", int($s->{'ssl'})));
 
 print &ui_table_row($text{'edit_desc'},
     $config{'show_ip'} ?
 	&ui_textbox("desc", $s->{'desc'}, 40, 0, 40) :
-	&ui_opt_textbox("desc", $s->{'desc'}, 40, $text{'edit_desc_def'}), undef, [ "valign=middle","valign=middle" ]);
+	&ui_opt_textbox("desc", $s->{'desc'}, 40, $text{'edit_desc_def'}));
 
 if ($access{'forcegroup'}) {
 	# Cannot change group
@@ -82,7 +82,7 @@ else {
 		}
 	my $gtable = &ui_grid_table(\@grid, 4);
 	$gtable .= $text{'edit_new'}." ".&ui_textbox("newgroup", undef, 10);
-	print &ui_table_row($text{'edit_group'}, $gtable, 3, [ "valign=middle","valign=middle","valign=middle" ]);
+	print &ui_table_row($text{'edit_group'}, $gtable, 3);
 	}
 
 my $mode = $in{'new'} ? $config{'deflink'} :
@@ -92,9 +92,9 @@ if ($access{'forcelink'}) {
 	print &ui_hidden("mode", $mode),"\n";
 	if ($mode == 1) {
 		print &ui_table_row($text{'edit_luser'},
-				    &ui_textbox("wuser", $s->{'user'}, 10), undef, [ "valign=middle","valign=middle" ]);
+				    &ui_textbox("wuser", $s->{'user'}, 10));
 		print &ui_table_row($text{'edit_lpass'},
-				    &ui_password("wpass", $s->{'pass'}, 10), undef, [ "valign=middle","valign=middle" ]);
+				    &ui_password("wpass", $s->{'pass'}, 10));
 		}
 	}
 else {
@@ -111,7 +111,7 @@ else {
 			   (defined($main::remote_pass) ? "" :
 			    "<font size=-1>($text{'edit_same'})</font><br>") ] )
 		    : ( ) ) ]);
-	print &ui_table_row($text{'edit_link'}, $linksel, undef, [ "valign=top","valign=top" ]);
+	print &ui_table_row($text{'edit_link'}, $linksel);
 	}
 
 if ($access{'forcefast'}) {
@@ -125,13 +125,13 @@ else {
 			&ui_radio("fast", $config{'deffast'},
 				[ [ 1, $text{'yes'} ],
 				  [ 2, $text{'edit_auto'} ],
-				  [ 0, $text{'no'} ] ]), undef, [ "valign=middle","valign=middle" ]);
+				  [ 0, $text{'no'} ] ]));
 		}
 	else {
 		print &ui_table_row($text{'edit_fast'},
 			&ui_radio("fast", int($s->{'fast'}),
 				[ [ 1, $text{'yes'} ],
-				  [ 0, $text{'no'} ] ]), undef, [ "valign=middle","valign=middle" ]);
+				  [ 0, $text{'no'} ] ]));
 		}
 	}
 
