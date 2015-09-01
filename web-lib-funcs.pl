@@ -6652,6 +6652,7 @@ if ($serv->{'fast'} || !$sn) {
 		my $reqs;
 		if ($serv->{'checkssl'}) {
 			$reqs = { 'host' => 1,
+				  'checkhost' => $serv->{'host'},
 				  'self' => 1 };
 			my %sconfig = &foreign_config("servers");
 			if ($sconfig{'capath'}) {
@@ -7251,11 +7252,13 @@ if ($ssl) {
 	eval "use Net::SSLeay";
 	$@ && return $text{'link_essl'};
 	eval "Net::SSLeay::SSLeay_add_ssl_algorithms()";
+	eval "Net::SSLeay::OpenSSL_add_all_algorithms()";
 	eval "Net::SSLeay::load_error_strings()";
 	$rv->{'ssl_ctx'} = Net::SSLeay::CTX_new() ||
 		return "Failed to create SSL context";
 	if ($certreqs && $certreqs->{'capath'}) {
 		# Require that remote cert be signed by a valid CA
+		$main::last_set_verify_err = undef;
 		if (-d $certreqs->{'capath'}) {
 			Net::SSLeay::CTX_load_verify_locations(
 				$rv->{'ssl_ctx'}, "", $certreqs->{'capath'});
@@ -7264,6 +7267,32 @@ if ($ssl) {
 			Net::SSLeay::CTX_load_verify_locations(
 				$rv->{'ssl_ctx'}, $certreqs->{'capath'}, "");
 			}
+		Net::SSLeay::CTX_set_verify(
+			$rv->{'ssl_ctx'}, &Net::SSLeay::VERIFY_PEER,
+			sub
+			{
+			my $cert = Net::SSLeay::X509_STORE_CTX_get_current_cert($_[1]);
+			if ($cert) {
+				my $subject = Net::SSLeay::X509_NAME_oneline(
+				    Net::SSLeay::X509_get_subject_name($cert));
+				my $issuer = Net::SSLeay::X509_NAME_oneline(
+				    Net::SSLeay::X509_get_issuer_name($cert));
+				my $errnum = Net::SSLeay::X509_STORE_CTX_get_error($_[1]);
+				if ($errnum) {
+					$main::last_set_verify_err =
+					  "Certificate is signed by an ".
+					  "unknown CA : $issuer (code $errnum)";
+					}
+				else {
+					$main::last_set_verify_err = undef;
+					}
+				}
+			else {
+				$main::last_set_verify_err =
+				  "Could not fetch CA certificate from server";
+				}
+			return 1;
+			});
 		}
 	$rv->{'ssl_con'} = Net::SSLeay::new($rv->{'ssl_ctx'}) ||
 		return "Failed to create SSL connection";
@@ -7311,7 +7340,8 @@ if ($ssl) {
 		return "SSL connect() failed";
 	if ($certreqs) {
 		my $err = &validate_ssl_connection(
-			$rv->{'ssl_con'}, $host, $certreqs);
+			$rv->{'ssl_con'}, $certreqs->{'checkhost'} || $host,
+			$certreqs);
 		return "Invalid SSL certificate : $err" if ($err);
 		}
 	my $rtxt = "$method $page HTTP/1.0\r\n".$htxt;
@@ -7396,10 +7426,14 @@ if ($reqs->{'self'}) {
 	my $subject = Net::SSLeay::X509_NAME_oneline(
 		Net::SSLeay::X509_get_subject_name($x509));
 	my $issuer = Net::SSLeay::X509_NAME_oneline(
-		Net::SSLeay::X509_get_subject_name($x509));
+		Net::SSLeay::X509_get_issuer_name($x509));
 	if ($subject eq $issuer) {
 		return "Certificate is self-signed by $subject";
 		}
+	}
+if ($reqs->{'capath'}) {
+	# Check if CA is signed by a valid authority (set in a callback)
+	return $main::last_set_verify_err if ($main::last_set_verify_err);
 	}
 return undef;
 }

@@ -14,3 +14,4 @@ skipifaces=Network interfaces to not detect,0
 max_servers=Show search form if number of servers exceeds,0
 line2=System configuration,11
 groups_dir=MSC cluster groups directory,0
+capath=File or directory for remote SSL CA certificates,0
