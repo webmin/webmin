@@ -6618,7 +6618,7 @@ if (ref($_[0])) {
 elsif ($_[0]) {
 	# lookup the server in the webmin servers module if needed
 	if (!%main::remote_servers_cache) {
-		&foreign_require("servers", "servers-lib.pl");
+		&foreign_require("servers");
 		foreach $s (&foreign_call("servers", "list_servers")) {
 			$main::remote_servers_cache{$s->{'host'}} = $s;
 			$main::remote_servers_cache{$s->{'host'}.":".$s->{'port'}} = $s;
@@ -6649,9 +6649,18 @@ if ($serv->{'fast'} || !$sn) {
 	# Make TCP connection call to fastrpc.cgi
 	if (!$fast_fh_cache{$sn} && $sn) {
 		# Need to open the connection
+		my $reqs;
+		if ($serv->{'checkssl'}) {
+			$reqs = { 'host' => 1,
+				  'self' => 1 };
+			my %sconfig = &foreign_config("servers");
+			if ($sconfig{'capath'}) {
+				$reqs->{'capath'} = $sconfig{'capath'};
+				}
+			}
 		my $con = &make_http_connection(
 			$ip, $serv->{'port'}, $serv->{'ssl'},
-			"POST", "/fastrpc.cgi");
+			"POST", "/fastrpc.cgi", undef, undef, $reqs);
 		return &$main::remote_error_handler(
 		    "Failed to connect to $serv->{'host'} : $con")
 			if (!ref($con));
@@ -7220,10 +7229,12 @@ The parameters are :
 
 =item bindip - IP address to bind to for outgoing HTTP connection
 
+=item certreqs - A hash ref containing options for remote cert verification
+
 =cut
 sub make_http_connection
 {
-my ($host, $port, $ssl, $method, $page, $headers, $bindip) = @_;
+my ($host, $port, $ssl, $method, $page, $headers, $bindip, $certreqs) = @_;
 my $htxt;
 if ($headers) {
 	foreach my $h (@$headers) {
@@ -7243,6 +7254,17 @@ if ($ssl) {
 	eval "Net::SSLeay::load_error_strings()";
 	$rv->{'ssl_ctx'} = Net::SSLeay::CTX_new() ||
 		return "Failed to create SSL context";
+	if ($certreqs && $certreqs->{'capath'}) {
+		# Require that remote cert be signed by a valid CA
+		if (-d $certreqs->{'capath'}) {
+			Net::SSLeay::CTX_load_verify_locations(
+				$rv->{'ssl_ctx'}, "", $certreqs->{'capath'});
+			}
+		else {
+			Net::SSLeay::CTX_load_verify_locations(
+				$rv->{'ssl_ctx'}, $certreqs->{'capath'}, "");
+			}
+		}
 	$rv->{'ssl_con'} = Net::SSLeay::new($rv->{'ssl_ctx'}) ||
 		return "Failed to create SSL connection";
 	my $connected;
@@ -7287,6 +7309,11 @@ if ($ssl) {
 	Net::SSLeay::set_fd($rv->{'ssl_con'}, fileno($rv->{'fh'}));
 	Net::SSLeay::connect($rv->{'ssl_con'}) ||
 		return "SSL connect() failed";
+	if ($certreqs) {
+		my $err = &validate_ssl_connection(
+			$rv->{'ssl_con'}, $host, $certreqs);
+		return "Invalid SSL certificate : $err" if ($err);
+		}
 	my $rtxt = "$method $page HTTP/1.0\r\n".$htxt;
 	Net::SSLeay::write($rv->{'ssl_con'}, $rtxt);
 	}
@@ -7329,6 +7356,52 @@ else {
 		}
 	}
 return $rv;
+}
+
+=head2 validate_ssl_connection(&ssl-handle, hostname, &requirements)
+
+Validates the SSL certificate presented by a remote server, and returns an
+error message if any requirements were not met.
+
+=cut
+sub validate_ssl_connection
+{
+my ($ssl, $host, $reqs) = @_;
+$host = lc($host);
+my $x509 = Net::SSLeay::get_peer_certificate($ssl);
+$x509 || return "Could not fetch peer certificate";
+if ($reqs->{'host'}) {
+	# Check for sensible hostname
+	my $subject = Net::SSLeay::X509_NAME_oneline(
+		Net::SSLeay::X509_get_subject_name($x509));
+	$subject =~ /CN=([a-z0-9\-\_\.\*]+)/i ||
+		return "No CN found in subject $subject";
+	my $cn = lc($1);
+	if ($cn =~ /^\*\.(.*)$/) {
+		# For a sub-domain
+		my $subcn = $1;
+		$host eq $subcn || $host =~ /\.\Q$subcn\E$/ ||
+			return "Certificate is for $cn, not $host";
+		}
+	elsif ($cn eq "*") {
+		# Matches anything .. but this may fail the self-signed check
+		}
+	else {
+		# For an exact domain
+		$host eq $cn || return "Certificate is for $cn, not $host";
+		}
+	}
+if ($reqs->{'self'}) {
+	# Check if self-signed
+	my $subject = Net::SSLeay::X509_NAME_oneline(
+		Net::SSLeay::X509_get_subject_name($x509));
+	my $issuer = Net::SSLeay::X509_NAME_oneline(
+		Net::SSLeay::X509_get_subject_name($x509));
+	if ($subject eq $issuer) {
+		return "Certificate is self-signed by $subject";
+		}
+	}
+return undef;
 }
 
 =head2 read_http_connection(&handle, [bytes])
