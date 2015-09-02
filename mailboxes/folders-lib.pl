@@ -1469,6 +1469,7 @@ return undef if (&is_readonly_mode());
 &switch_to_folder_user($dst);
 if ($src->{'type'} == $dst->{'type'} && !$src->{'remote'}) {
 	# Can just move the file or dir
+	local @st = stat($src->{'file'});
 	&unlink_file($dst->{'file'});
 	&rename_as_mail_user($src->{'file'}, $dst->{'file'});
 	if (@st) {
