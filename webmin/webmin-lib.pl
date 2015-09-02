@@ -74,6 +74,8 @@ our $pfs_ssl_ciphers = "EECDH+AES:EDH+AES:-SHA1:EECDH+RC4:EDH+RC4:RC4-SHA:EECDH+
 
 our $newmodule_users_file = "$config_directory/newmodules";
 
+our $first_install_file = "$config_directory/first-install";
+
 =head2 setup_ca
 
 Internal function to create all the configuration files needed for the Webmin
