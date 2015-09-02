@@ -17,3 +17,5 @@ Added several new operating systems and distributions to the server type list.
 Allow the Backup Configuration Files module to save and restore Webmin server details.
 ---- Changes since 1.440 ----
 Converted commands in the module's API file to POD format, and added more details about each function.
+---- Changes since 1.760 ----
+Added an option to have Webmin validate the SSL certificate on remote systems when making RPC calls, to ensure that the connection to them has not been MITM'd.

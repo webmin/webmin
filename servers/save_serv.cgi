@@ -93,6 +93,7 @@ else {
 	$serv->{'port'} = $in{'port_def'} ? undef : $in{'port'};
 	$serv->{'type'} = $in{'type'};
 	$serv->{'ssl'} = $in{'ssl'};
+	$serv->{'checkssl'} = $in{'checkssl'};
 	$serv->{'desc'} = $in{'desc_def'} ? undef : $in{'desc'};
 	$serv->{'group'} = join("\t", @groups);
 	$serv->{'fast'} = $in{'fast'};

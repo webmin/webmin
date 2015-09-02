@@ -58,7 +58,9 @@ else {
 	}
 
 print &ui_table_row($text{'edit_ssl'},
-		    &ui_yesno_radio("ssl", int($s->{'ssl'})));
+		    &ui_yesno_radio("ssl", int($s->{'ssl'}))."<br>\n".
+		    &ui_checkbox("checkssl", 1, $text{'edit_checkssl'},
+				 $s->{'checkssl'}));
 
 print &ui_table_row($text{'edit_desc'},
     $config{'show_ip'} ?

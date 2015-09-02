@@ -32,6 +32,7 @@ edit_port=Port
 edit_portnone=None set
 edit_type=Server type
 edit_ssl=SSL server?
+edit_checkssl=Check remote SSL certificate?
 edit_link=Link type
 edit_mode0=Normal link to server
 edit_mode1=Login via Webmin with
