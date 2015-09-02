@@ -121,7 +121,8 @@ my @otitles = ( 'portsnets', 'othercaches', 'musage', 'logging',
 	        'miscopt',
 	        ( $iptables ? ( 'iptables' ) : ( ) ),
 	        'cms', 'cachemgr', 'rebuild',
-	        ( $calamaris ? ( 'calamaris' ) : ( ) ) );
+	        ( $calamaris ? ( 'calamaris' ) : ( ) ),
+		'manual' );
 my @olinks =  ( "edit_ports.cgi", "edit_icp.cgi", "edit_mem.cgi",
 	        "edit_logs.cgi", "edit_cache.cgi", "edit_progs.cgi",
 	        "edit_acl.cgi", "edit_admin.cgi",
@@ -133,7 +134,8 @@ my @olinks =  ( "edit_ports.cgi", "edit_icp.cgi", "edit_mem.cgi",
 	        "edit_misc.cgi",
 	        ( $iptables ? ( "edit_iptables.cgi" ) : ( ) ),
 	        "cachemgr.cgi", "edit_cachemgr.cgi", "clear.cgi",
-	        ( $calamaris ? ( "calamaris.cgi" ) : ( ) ) );
+	        ( $calamaris ? ( "calamaris.cgi" ) : ( ) ),
+	        "edit_manual.cgi" );
 for(my $i=0; $i<@otitles; $i++) {
 	if (!$access{$otitles[$i]}) {
 		splice(@otitles, $i, 1);
