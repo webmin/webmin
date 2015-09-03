@@ -78,6 +78,7 @@ else {
 		$dump->{'after'} = $in{'after'};
 		$dump->{'beforefok'} = !$in{'beforefok'};
 		$dump->{'afterfok'} = !$in{'afterfok'};
+		$dump->{'afteraok'} = !$in{'afteraok'};
 		}
 	$in{'file'} =~ s/^\s+//; $in{'file'} =~ s/\s+$//;
 	$in{'hfile'} =~ s/^\s+//; $in{'hfile'} =~ s/\s+$//;

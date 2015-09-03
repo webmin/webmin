@@ -73,7 +73,7 @@ else {
 			}
 
 		# Execute the post-backup command, if any
-		if ($ok) {
+		if ($ok || $dump->{'afteraok'}) {
 			print "<pre>";
 			$bok = &execute_after($dump, STDOUT, 1);
 			print "</pre>\n";

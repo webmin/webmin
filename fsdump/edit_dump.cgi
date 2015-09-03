@@ -101,15 +101,17 @@ if ($access{'extra'}) {
 # Before and after commands
 if ($access{'cmds'}) {
 	print &ui_table_row(&hlink($text{'dump_before'},"before"),
-			    &ui_textbox("before", $dump->{'before'}, 60)." ".
+			    &ui_textbox("before", $dump->{'before'}, 60)."<br>".
 			    &ui_checkbox("beforefok", 1, $text{'dump_fok'},
 					 !$dump->{'beforefok'}),
 			    3, \@tds);
 
 	print &ui_table_row(&hlink($text{'dump_after'},"after"),
-			    &ui_textbox("after", $dump->{'after'}, 60)." ".
+			    &ui_textbox("after", $dump->{'after'}, 60)."<br>".
 			    &ui_checkbox("afterfok", 1, $text{'dump_fok2'},
-					 !$dump->{'afterfok'}),
+					 !$dump->{'afterfok'})."<br>".
+			    &ui_checkbox("afteraok", 1, $text{'dump_aok'},
+                                         !$dump->{'afteraok'}),
 			    3, \@tds);
 	}
 print &ui_hidden_table_end();
