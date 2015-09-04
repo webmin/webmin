@@ -14,3 +14,4 @@ skipifaces=Netzwerkschnittstelle nicht erkennen,0
 max_servers=Suchformular anzeigen&#44; wenn Anzahl an Server &#252;berschritten wurde,0
 line2=Systemkonfiguration,11
 groups_dir=MSC-Cluster Gruppen-Verzeichnis,0
+capath=Datei oder Verzeichnis f&#252;r entfernte SSL&#45;CA&#45;Zertifikate,0

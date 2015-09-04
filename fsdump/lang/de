@@ -21,6 +21,7 @@ backup_title=Jetzt sichern
 delete_enone=Nichts ausgew&#228;hlt
 delete_err=Fehlgeschlagen Backups zu l&#246;schen
 dump_after=Kommando nach der Sicherung ausf&#252;hren
+dump_aok=&#220;berspringe Befehl, auch wenn Backup fehlschl&#228;gt
 dump_attribs=Dateisystemattribute einf&#252;gen?
 dump_auto=Automatisch herausfinden
 dump_bcomp=Puffere komprimierte Daten in Bl&#246;cke?

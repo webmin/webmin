@@ -46,6 +46,7 @@ delete_rusure=Sind Sie sich sicher, dass Sie die $1 ausgew&#228;hlten Server l&#
 delete_title=L&#246;sche Server
 edit_auto=Entscheide automatisch
 edit_baduser=Anmeldung abgelehnt
+edit_checkssl=Pr&#252;fe entferntes SSL-Zertifikat?
 edit_desc=Beschreibung
 edit_desc_def=Von Hostname und Port
 edit_details=Servereigenschaften
