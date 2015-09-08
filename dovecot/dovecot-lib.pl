@@ -190,7 +190,19 @@ return wantarray ? @rv : $rv[0];
 sub save_directive
 {
 local ($conf, $name, $value, $sname, $svalue) = @_;
-local $dir = ref($name) ? $name : &find($name, $conf, 0, $sname, $svalue, 1);
+local $dir;
+if (ref($name)) {
+	# Old directive given
+	$dir = $name;
+	}
+else {
+	# Find by name, by prefer those that aren't self-referential
+	my @dirs = &find($name, $conf, 0, $sname, $svalue, 1);
+	($dir) = grep { $_->{'value'} !~ /\$\Q$name\E/ } @dirs;
+	if (!$dir) {
+		$dir = $dirs[0];
+		}
+	}
 local $newline = ref($name) ? "$name->{'name'} = $value" : "$name = $value";
 if ($sname) {
 	$newline = "  ".$newline;
