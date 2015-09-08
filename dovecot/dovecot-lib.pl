@@ -149,7 +149,15 @@ if (defined($sname)) {
 	@rv = grep { $_->{'sectionname'} eq $sname &&
 		     $_->{'sectionvalue'} eq $svalue } @rv;
 	}
-return wantarray ? @rv : $first ? $rv[0] : $rv[$#rv];
+if (wantarray) {
+	return @rv;
+	}
+elsif ($first) {
+	return $rv[0];
+	}
+else {
+	return $rv[$#rv];
+	}
 }
 
 # find_value(name, &config, [disabled-mode], [sectionname], [sectionvalue])
@@ -164,6 +172,9 @@ elsif (!@rv) {
 	return undef;
 	}
 else {
+	# Prefer the last one that isn't self-referential
+	my @unself = grep { $_->{'value'} !~ /\$\Q$name\E/ } @rv;
+	@rv = @unself if (@unself);
 	return $rv[$#rv]->{'value'};
 	}
 }
