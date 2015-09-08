@@ -13,7 +13,7 @@ $in{'cert_def'} || -r $in{'cert'} || $in{'cert'} =~ /^[<>\|]/ ||
 if (&find_value("ssl_cert", $conf, 2)) {
 	$in{'cert'} = "<".$in{'cert'} if ($in{'cert'} =~ /^\//);
 	&save_directive($conf, "ssl_cert",
-		        $in{'cert_def'} ? undef : $in{'cert'});
+		        $in{'cert_def'} ? undef : $in{'cert'}, "");
 	}
 else {
 	&save_directive($conf, "ssl_cert_file",
@@ -24,7 +24,7 @@ $in{'key_def'} || -r $in{'key'} || $in{'key'} =~ /^[<>\|]/ ||
 if (&find_value("ssl_key", $conf, 2)) {
 	$in{'key'} = "<".$in{'key'} if ($in{'key'} =~ /^\//);
 	&save_directive($conf, "ssl_key",
-		        $in{'key_def'} ? undef : $in{'key'});
+		        $in{'key_def'} ? undef : $in{'key'}, "");
 	}
 else {
 	&save_directive($conf, "ssl_key_file",
@@ -37,7 +37,7 @@ $in{'ca_def'} || -r $in{'ca'} || $in{'ca'} =~ /^[<>\|]/ ||
 if (&find_value("ssl_ca", $conf, 2)) {
 	$in{'ca'} = "<".$in{'ca'} if ($in{'ca'} =~ /^\//);
 	&save_directive($conf, "ssl_ca",
-		        $in{'ca_def'} ? undef : $in{'ca'});
+		        $in{'ca_def'} ? undef : $in{'ca'}, "");
 	}
 else {
 	&save_directive($conf, "ssl_ca_file",

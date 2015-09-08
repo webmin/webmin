@@ -10,7 +10,7 @@ print &ui_table_start($text{'ssl_header'}, "width=100%", 4);
 
 # SSL cert and key files
 if (&find_value("ssl_cert", $conf, 2)) {
-	$cert = &find_value("ssl_cert", $conf);
+	$cert = &find_value("ssl_cert", $conf, 0, "");
 	$cert =~ s/^<//;
 	}
 else {
@@ -21,7 +21,7 @@ print &ui_table_row($text{'ssl_cert'},
 	    [ undef, "nowrap" ]);
 
 if (&find_value("ssl_key", $conf, 2)) {
-	$key = &find_value("ssl_key", $conf);
+	$key = &find_value("ssl_key", $conf, 0, "");
 	$key =~ s/^<//;
 	}
 else {
@@ -39,7 +39,7 @@ print &ui_table_row($text{'ssl_pass'},
 
 # SSL CA file
 if (&find_value("ssl_ca", $conf, 2)) {
-	$ca = &find_value("ssl_ca", $conf);
+	$ca = &find_value("ssl_ca", $conf, 0, "");
 	$ca =~ s/^<//;
 	}
 else {
