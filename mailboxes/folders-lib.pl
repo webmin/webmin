@@ -1719,7 +1719,7 @@ if ($f->{'type'} == 0) {
 	}
 elsif ($f->{'type'} == 1) {
 	# A qmail maildir
-	return &count_maildir($f->{'file'});
+	$rv = &count_maildir($f->{'file'});
 	}
 elsif ($f->{'type'} == 2) {
 	# A POP3 server
@@ -1739,7 +1739,7 @@ elsif ($f->{'type'} == 2) {
 	}
 elsif ($f->{'type'} == 3) {
 	# An MH directory
-	return &count_mhdir($f->{'file'});
+	$rv = &count_mhdir($f->{'file'});
 	}
 elsif ($f->{'type'} == 4) {
 	# An IMAP server
