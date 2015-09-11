@@ -73,6 +73,7 @@ my $protocol = &find_value("protocol", $jail);
 print &ui_table_row($text{'jail_defprotocol'},
 	&ui_select("protocol", $protocol,
 		   [ [ '', "&lt;$text{'jail_none'}&gt;" ],
+		     [ 'all', $text{'jail_allprotocol'} ],
 		     [ 'tcp', 'TCP' ],
 		     [ 'udp', 'UDP' ],
 		     [ 'icmp', 'ICMP' ] ]));
