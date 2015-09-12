@@ -76,9 +76,11 @@ else {
 		}
 
 	# Split and validate log file paths
-	my @logpaths = split(/\r?\n/, $in{'logpath'});
+	my @logpaths = grep { /\S/ } split(/\r?\n/, $in{'logpath'});
 	@logpaths || &error($text{'jail_elogpaths'});
 	foreach my $l (@logpaths) {
+		$l =~ s/^\s*//;
+		$l =~ s/\s*$//;
 		$l =~ /^\/\S+$/ || &error($text{'jail_elogpath'});
 		}
 
