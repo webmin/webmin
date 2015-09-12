@@ -77,6 +77,7 @@ index_stopdesc=Klicke auf diese Taste, um den laufende Fail2Ban Server zu stoppe
 index_title=Fail2Ban Intrusionsdetektor
 jail_action=Aktion
 jail_actions=Aktion zum anwenden
+jail_allprotocol=Alle Protokolle
 jail_aname=Name
 jail_auto=Entscheide automatisch
 jail_backend=Pr&#252;fe auf Log-Datei Updates, welche
