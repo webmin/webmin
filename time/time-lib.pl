@@ -31,7 +31,17 @@ sub sync_time
 {
 local @servs = split(/\s+/, $_[0]);
 local $servs = join(" ", map { quotemeta($_) } @servs);
-local $out = &backquote_logged("ntpdate -u $servs 2>&1");
+local $out;
+if (&has_command("ntpdate")) {
+	$out = &backquote_logged("ntpdate -u $servs 2>&1");
+	}
+elsif (&has_command("sntp")) {
+	$out = &backquote_logged("sntp -s $servs 2>&1");
+	}
+else {
+	$out = "Missing ntpdate and sntp commands";
+	$? = 1;
+	}
 if ($? && $config{'ntp_only'}) {
 	# error using ntp, but nothing else is allowed
 	return &text('error_entp', "<tt>$out</tt>");
