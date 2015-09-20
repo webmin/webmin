@@ -1,0 +1,6 @@
+line1=設定オプション,11
+install=GRUB を導入するディスク/パーティション,0
+line2=システム設定,11
+menu_file=GRUB メニュー設定ファイル,0
+grub_path=GRUB 実行ファイルのパス,0
+device_map=デバイス名マッピングファイル,3,GRUBから取得
