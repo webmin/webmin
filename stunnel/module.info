@@ -17,3 +17,5 @@ desc_cz.UTF-8=Tunely SSL
 desc_no=SSL tunneller
 longdesc_ms_MY=Menyediakan terowong SSL untuk menyulitkan perkhidmatan seperti POP3 dan IMAP dengan menggunakan stunnel pada inetd.
 desc_ms_MY=Terowong SSL
+longdesc_ja_JP.euc=inetd から、stunnelSSL を利用し、POP3 、IMAP の様なサービスを暗号化するトンネルを設定します
+desc_ja_JP.euc=SSL トンネル
