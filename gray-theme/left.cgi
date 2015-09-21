@@ -154,7 +154,8 @@ my ($items, $indent) = @_;
 foreach my $item (@$items) {
 	if ($item->{'type'} eq 'item') {
 		# Link to some page
-		my $t = $item->{'target'} eq 'new' ? '_blank' :
+		my $t = !$item->{'target'} ? 'right' :
+			$item->{'target'} eq 'new' ? '_blank' :
 			$item->{'target'} eq 'window' ? '_top' : 'right';
 		if ($item->{'icon'}) {
 			my $icon = add_webprefix($item->{'icon'});
