@@ -205,7 +205,9 @@ print "<table width=100% cellspacing=0 cellpadding=0>\n";
 
 if ($in{'field'}) {
 	# Show details of simple search
-	print "<tr> <td><b>",&text('view_searchhead', "<tt>$in{'for'}</tt>",
+	my $msg = $in{'match'} == 2 || $in{'match'} == 3 ?
+			'view_searchheadnot' : 'view_searchhead';
+	print "<tr> <td><b>",&text($msg, "<tt>$in{'for'}</tt>",
 			   "<tt>$in{'field'}</tt>"),"</b></td>\n";
 	print "<td align=right><a href='view_table.cgi?db=$in{'db'}&",
 	      "table=$in{'table'}$sortargs'>$text{'view_searchreset'}</a></td> </tr>\n";

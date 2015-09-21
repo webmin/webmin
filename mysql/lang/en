@@ -208,6 +208,7 @@ view_match4=greater than
 view_match5=less than
 view_searchok=Search
 view_searchhead=Search results for $1 in field $2 ..
+view_searchheadnot=Search results for not $1 in field $2 ..
 view_searchhead2=Advanced search results on $1 fields ..
 view_searchreset=Reset search
 view_sorthead1=Sorting by $1, descending order
