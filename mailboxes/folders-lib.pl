@@ -1051,7 +1051,13 @@ elsif ($folder->{'type'} == 4) {
 			$what = "\"".$what."\""
 			}
 		$field = "LARGER" if ($field eq "size");
-		local $search = uc($field)." ".$what."";
+		local $search;
+		if ($field =~ /^X-/i) {
+			$search = "header ".uc($field)." ".$what."";
+			}
+		else {
+			$search = uc($field)." ".$what."";
+			}
 		$search = "NOT $search" if ($neg);
 		push(@searches, $search);
 		}
