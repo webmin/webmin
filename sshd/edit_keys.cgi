@@ -43,5 +43,5 @@ print &ui_hidden("file", $in{'file'}),"\n";
 $data = &read_file_contents($in{'file'});
 print &ui_textarea("data", $data, 20, 80),"\n";
 
-&ui_print_footer("", $text{'index_sharelist'});
+&ui_print_footer("", $text{'index_return'});
 
