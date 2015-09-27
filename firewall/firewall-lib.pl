@@ -139,7 +139,7 @@ sub save_table
 local $lref;
 if ($config{'direct'}) {
 	# Read in the current iptables-save output
-	$lref = &read_file_lines("iptables-save 2>/dev/null |");
+	$lref = &read_file_lines("iptables-save 2>/dev/null |", 1);
 	}
 else {
 	# Updating the save file
