@@ -320,7 +320,7 @@ foreach my $m (@mounted) {
 	    $m->[2] eq "xfs" || $m->[2] eq "jfs" || $m->[2] eq "btrfs" ||
 	    $m->[1] =~ /^\/dev\// ||
 	    &indexof($m->[1], @$always) >= 0) {
-		if ($m->[1] =~ /^([^\/]+)\/([^\/]+)/ &&
+		if ($m->[1] =~ /^([^\/]+)(\/(\S+))?/ &&
                     $m->[2] eq "zfs" && $zpools{$1} && $donezone{$1,$2}++) {
 			# Don't double-count maps from the same zone pool
 			next;
