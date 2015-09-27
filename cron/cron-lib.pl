@@ -337,7 +337,7 @@ else {
 	local $lref = &read_file_lines($cron_temp_file);
 	$_[0]->{'line'} = scalar(@$lref);
 	push(@$lref, &cron_job_line($_[0]));
-	&flush_file_lines();
+	&flush_file_lines($cron_temp_file);
 	&set_ownership_permissions($_[0]->{'user'}, undef, undef,
 				   $cron_temp_file);
 	&copy_crontab($_[0]->{'user'});
