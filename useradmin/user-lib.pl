@@ -43,14 +43,24 @@ Returns true if some file looks like a valid Unix password file
 =cut
 sub password_file
 {
-if (!$_[0]) { return 0; }
-elsif (&open_readfile(SHTEST, $_[0])) {
-	local($line);
-	$line = <SHTEST>;
-	close(SHTEST);
-	return $line =~ /^\S+:\S*:/;
+my ($file) = @_;
+if (!$file) {
+	return 0;
 	}
-else { return 0; }
+my $rv = $password_file_cache{$file};
+if (defined($rv)) {
+	return $rv;
+	}
+if (&open_readfile(SHTEST, $_[0])) {
+	my $line = <SHTEST>;
+	close(SHTEST);
+	$rv = $line =~ /^\S+:\S*:/ ? 1 : 0;
+	}
+else {
+	$rv = 0;
+	}
+$password_file_cache{$file} = $rv;
+return $rv;
 }
 
 =head2 list_users
