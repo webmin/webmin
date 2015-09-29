@@ -2,7 +2,6 @@ start_cmd=service dhcpd start
 stop_cmd=service dhcpd stop
 restart_cmd=service dhcpd restart
 dhcpd_conf=/etc/dhcp/dhcpd.conf
-pid_file=/run/dhcpd.pid
 dhcpd_path=/usr/sbin/dhcpd
 lease_file=/var/lib/dhcpd/dhcpd.leases
 lease_sort=0
