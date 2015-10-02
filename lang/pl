@@ -214,9 +214,9 @@ readparse_cdheader=Brakuje nag³ówka Content-Disposition
 readparse_enc=Oczekiwane kodowanie form-data, ale otrzymano kodowanie normalne
 readparse_max=Dane przekroczy³y maksymalny rozmiar $1 bajtów
 referer_fix1=Je¶li jest to uzasadnione po³±czenie, mo¿esz pozwoliæ na po³±czenia z  tego URL w nastêpuj±cy sposób: <ul><li>Zaloguj siê do Webmina.<li>Przejd¼ do modu³u <b>Konfiguracja Webmina</b>.<li>Kliknij na ikonê Zaufane odno¶niki.<li>Wprowad¼ nazwê komputera $1 do pola <b>Zaufane witryny</b>, i kliknij <b>Zapisz</b>.</ul>
-referer_fix1u=Je¶li Twoja przegl±darka nie wysy³a wymaganego nag³ówka <tt>Referer</tt>, mo¿esz wy³±czyæ tê kontrolê w nastêpuj±cy sposób:<ul><li>Zaloguj siê do Webmina.<li>Przejd¼ do modu³u <b>Konfiguracja Webmina</b>.<li>Kliknij ikonê Zaufane odno¶niki.<li>Zaznacz <b>Ufaj po³±czeniom z nieznanych odno¶ników<b> i kliknij <b>Zapisz</b>.</ul>
 referer_fix2=Mo¿esz te¿ tak skonfigurowaæ webmina aby zezwala³ na to po³±czenie u¿ywaj±c wiersza poleceñ: <ul><li>Zaloguj jako <tt>root</tt> i edytuj plik <tt>/etc/webmin/config</tt>.<li>Dodaj liniê <tt>referers=$1</tt> na koñcu pliku, lub je¶li wiersz <tt>referers</tt> ju¿ istnieje - dodaj do niej <tt>$1</tt>.<li>Zapisz plik.</ul>
 referer_fix2u=Mo¿esz te¿ tak skonfigurowaæ webmina aby zezwala³ na po³±czenia z nieznanych odsy³aczy w nastêpuj±cy sposób:<ul><li>Zaloguj siê jako <tt>root</tt> i edytuj plik <tt>/etc/webmin/config</tt>.<li>Odnajd¼ wiersz <tt>referers_none=1</tt> i zmieñ go na <tt>referers_none=0</tt>.<li>Zapisz plik.</ul>
+referer_fix3u=Upewnij siê, ¿e twoja przegl±darka jest skonfigurowana do wysy³ania referrera, aby móg³ byæ on zweryfikowany przez Webmina.
 referer_title=Uwaga niebezpieczeñstwo!
 referer_warn=<b>Uwaga!</b> Webmin wykry³, ¿e program $2 jest dowi±zany do URL-a $1 znajduj±cego siê poza serwerem Webmina. Mo¿e to byæ próba podstêpnego zmuszenia twojego serwera do wykonania niebezpiecznego polecenia.
 referer_warn_unknown=<b>Uwaga!</b> Webmin wykry³, ¿e program $1 jest dowi±zany do nieznanego URL-a znajduj±cego siê poza serwerem Webmina. Mo¿e to byæ próba podstêpnego zmuszenia twojego serwera do wykonania niebezpiecznego polecenia.

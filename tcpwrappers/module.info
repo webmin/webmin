@@ -12,3 +12,5 @@ desc_ms_MY=Pelindung TCP
 longdesc_ms_MY=Mengkonfigurasi fail kawalan pelindung capaian rangkaian TCP
 longdesc_de=Konfiguriert die TCP-Wrapper-Networking-Zugriffskontrolldateien
 desc_de=TCP-Wrapper
+desc_pl=TCP - Wrappery
+longdesc_pl=Konfiruracja wrapperów TCP - kontrola dostêpu sieciowego

@@ -2,6 +2,7 @@ __norefs=1
 index_all=&lt;Wszystkie hosty&gt;
 index_clear=Wyczy¶æ historiê
 index_cmd=Polecenie do uruchomienia
+index_edit=Edytuj poprzednie
 index_group=U¿ytkownicy z $1
 index_old=lub
 index_return=Indeks modu³u
