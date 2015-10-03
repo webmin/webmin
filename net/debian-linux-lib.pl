@@ -114,6 +114,9 @@ foreach $iface (@ifaces) {
 			elsif ($param eq "netmask") {
 				push(@{$v6cfg->{'netmask6'}}, $value);
 				}
+			elsif ($param eq "gateway") {
+				$v6cfg->{'gateway6'} = $value;
+				}
 			elsif ($param eq "up" &&
 			       $value =~ /ifconfig\s+(\S+)\s+inet6\s+add\s+([a-f0-9:]+)\/(\d+)/ &&
 				$1 eq $name) {
@@ -316,6 +319,9 @@ while(@address6) {
 	my $a = shift(@address6);
 	my $n = shift(@netmask6);
 	push(@options6, [ "up","ifconfig $cfg->{'fullname'} inet6 add $a/$n" ]);
+	}
+if ($cfg->{'gateway6'}) {
+	push(@options6, [ "gateway", $cfg->{'gateway6'} ]);
 	}
 
 # Add, update or delete IPv6 inteface
