@@ -6,7 +6,7 @@ use warnings;
 require './acl-lib.pl';
 our (%in, %text, %config, %access, $base_remote_user);
 &ReadParse();
-&error_setup($text{'udeletes_err'});
+&error_setup($in{'joingroup'} ? $text{'udeletes_jerr'} : $text{'udeletes_err'});
 $access{'delete'} || &error($text{'delete_ecannot'});
 
 # Validate inputs

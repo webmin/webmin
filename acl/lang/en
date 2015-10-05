@@ -362,6 +362,7 @@ rbac_ecpan=You do not have access to Webmin's Perl Modules page in order to inst
 rbac_ok=RBAC integration is available on this system, and can be enabled on a per-user basis on the Edit Webmin User page.
 
 udeletes_err=Failed to delete users
+udeletes_jerr=Failed to add users to group
 udeletes_enone=None selected
 udeletes_title=Delete Users
 udeletes_rusure=Are you sure you want to delete the $1 selected users? All of their access control settings and user details will be lost.
