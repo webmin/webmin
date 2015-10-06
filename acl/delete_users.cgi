@@ -14,7 +14,7 @@ my @d = split(/\0/, $in{'d'});
 @d || &error($text{'udeletes_enone'});
 foreach my $user (@d) {
 	&can_edit_user($user) || &error($text{'delete_euser'});
-	if ($base_remote_user eq $user) {
+	if ($base_remote_user eq $user && !$in{'joingroup'}) {
 		&error($text{'delete_eself'});
 		}
 	my $uinfo = &get_user($user);
