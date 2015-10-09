@@ -15,3 +15,5 @@ desc_hu=PHP konfiguráció
 desc_ms_MY=Konfigurasi PHP
 longdesc_ms_MY=Mengkonfigurasi tetapan PHP untuk sistem keseluruhan atau setiap pelayan maya Apache.
 longdesc_de=Konfiguriert PHP-Einstellungen f&#252;r das gesamte System oder individuellen virtuellen Apache-Server.
+desc_pl=Konfiguracja PHP
+longdesc_pl=Konfiguruj ustawienia PHP na ca³ym serwerze lub na wybranych wirtualnych serwerach Apache.

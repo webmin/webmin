@@ -31,3 +31,5 @@ desc_no=Opplasting og nedlasting
 longdesc_ms_MY=Memuat naik pelbagai fail ke dalam pelayan, dan memuat turun beberapa URL sama ada serta-merta atau di latar belakang pada masa yang dijadualkan.
 desc_ms_MY=Muat naik dan Muat turun
 longdesc_de=Hochladen mehrerer Dateien auf den Server sowie laden mehrere URLs entweder sofort oder im Hintergrund zu einem bestimmten Zeitpunkt.
+longdesc_pl=Wysy³anie wielu plików na serwer i pobieranie z i na serwer z URL przez harmonogram lub natychmiast.
+desc_pl=Wysy³anie i pobieranie

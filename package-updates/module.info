@@ -12,3 +12,5 @@ longdesc_de=Zeigt die verf&#252;gbaren Paket-Updates von YUM, APT oder andere Up
 desc_de=Software Pakete Updates
 desc_ms_MY=Kemas kini Pakej Perisian
 longdesc_ms_MY=Memaparkan kemas kini pakej yang boleh didapati daripada YUM, APT atau  sistem kemas kini yang lain
+desc_pl=Aktualizacja pakietów oprogramowania
+longdesc_pl=Wy¶wietla dostêpne aktualizacje pakietów z YUM, APT lub innego systemowego menad¿era pakietów

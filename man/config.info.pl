@@ -1,3 +1,4 @@
+line2=Konfiguracja systemu,11
 man_cmd=Polecenie wy¶wietlaj±ce stronê podrêcznika,0
 man_cmd_sect=Polecenie wy¶wietlaj±ce stronê podrêcznika z&nbsp;rozdzia³u,0
 search_cmd=Polecenie przeszukuj±ce strony,0
@@ -9,3 +10,5 @@ doc_dir=Katalog dokumentacji pakietów,3,Brak
 howto_dir=Katalog dokumentów &quot;HOWTO&quot;,3,Brak
 kernel_dir=Katalog dokumentacji kernela,3,Brak
 kde_dir=Katalog dokumentacji KDE,3,Brak
+custom_dir=Katalog w³asnej dokumentacji,3,Brak
+custom_desc=Nazwa w³asnej dokumentacji,3,Domy¶lnie

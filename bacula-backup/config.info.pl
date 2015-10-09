@@ -14,3 +14,4 @@ bacula_dir=Katalog konfiguracyjny Bacula,0
 bextract=Pe³na ¶cie¿ka do komendy <tt>bextract</tt>,0
 bls=Pe³na ¶cie¿ka do komendy <tt>bls</tt>,0
 btape=Pe³na ¶cie¿ka do komendy <tt>btape</tt>,0
+init_start=Uruchom i zatrzymaj Bacula u¿ywaj±c,1,1-Skryptów Init,0-polecenia <tt>bacula</tt>

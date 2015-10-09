@@ -165,7 +165,7 @@ categories_header=Identyfikator i&nbsp;opis kategorii
 categories_lang=Edytuj kategorie w jêzyku:
 categories_langok=Zmieñ
 categories_name=Wy¶wietlany opis
-categories_ok=Zachowaj kategorie
+categories_ok=Zapisz kategorie
 categories_title=Zmieñ kategorie
 clear_done=Pamiêæ podrêczna Webmina zawieraj±ca $1 plików z $1 adresów URL zosta³a pomy¶lnie wyczyszczona.
 clear_none=Obecnie nie ma adresów URL w pamiêci podrêcznej pobierania Webmina
@@ -880,7 +880,7 @@ ui_sysinfo4=Zamiast tytu³u przegl±darki
 ui_texttitles=Wy¶wietlaæ tytu³y jako tekst?
 ui_title=Interfejs u¿ytkownika
 ui_width=Szeroko¶æ okna pomocy
-update_apply=Zachowaj i zastosuj
+update_apply=Zapisz i zastosuj
 update_checksig=Sprawdzaj sygnatury dla repozytoriów innych ni¿ Webmina
 update_desc1=Za pomoc± tego formularza mo¿esz zaktualizowaæ ze strony <a href=http://www.webmin.com/updates.html>Webmin Updates</a> lub z&nbsp;innego ¼ród³a te modu³y Webmina, o&nbsp;których wiadomo, ¿e zawieraj± b³êdy lub dziury zwi±zane z&nbsp;bezpieczeñstwem. Wykonane zostanie porównanie obecnie zainstalowanych modu³ów z&nbsp;dostêpnymi dla aktualizacji oraz, opcjonalnie, automatyczne pobranie i&nbsp;instalacja wszelkich nieaktualnych modu³ów.
 update_desc2=Ten formularz s³u¿y do konfiguracji regularnej, automatycznej aktualizacji modu³ów Webmina zawieraj±cych b³êdy lub dziury zwi±zane z&nbsp;bezpieczeñstwem ze strony <a href=http://www.webmin.com/updates.html>Webmin Updates</a> lub z&nbsp;innego ¼ród³a. O&nbsp;ile ta us³uga jest wygodna, nale¿y zachowaæ ostro¿no¶æ, gdy¿ mo¿e ona umo¿liwiæ napastnikom przejêcie Twojego systemu, je¶li serwer aktualizacji zostanie kiedykolwiek nara¿ony na szwank.

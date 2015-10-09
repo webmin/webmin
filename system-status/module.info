@@ -10,3 +10,5 @@ longdesc_ms_MY=Koleksi arkib status sistem latar belakang
 longdesc_de=Hintergrund Systemstatus Sammlung Bibliotheken
 desc_de=System Status
 desc_no=Systemstatus
+desc_pl=Stan systemu
+longdesc_pl=Biblioteki zbierania danych o stanu systemu w tle

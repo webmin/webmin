@@ -37,3 +37,4 @@ desc_hu=Felhasználók és csoportok
 longdesc_ms_MY=Mencipta dan menyunting pengguna Unix dan grup dalam fail /etc/passwd dan /etc/group.
 desc_ms_MY=Pengguna dan Grup
 longdesc_de=Erstellt und editiert Unix-Benutzer und Gruppen aus den /etc/passwd und /etc/group Dateien.
+longdesc_pl=Twórz i edytuj u¿ytkowników i grupy Unix z plików /etc/passwd i /etc/group.

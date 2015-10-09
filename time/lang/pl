@@ -27,6 +27,7 @@ error_sync=Nie mogê ustawiæ czasu systemowego&nbsp;: $1
 hour=Godzina
 hw_title=Czas sprzêtowy
 index_addresses=Nazwy hosta lub adresy serwerów czasu
+index_boot=Synchronizowaæ przy starcie Webmina?
 index_descsync=Niniejszy formularz s³u¿y do konfiguracji systemu do automatycznej synchronizacji czasu ze zdalnym serwerem. Synchronizacja bêdzie odbywaæ siê za pomoc± <tt>time</tt> Unixa lub protoko³u NTP, w zale¿no¶ci od zainstalowanych poleceñ i obs³ugiwanych przez zdalny system.
 index_desctime=Niniejszy formularz s³u¿y do zmiany systemowego obecnego czasu, który jest u¿ywany przez wszystkie uruchomione procesy. W systemach operacyjnych, które maj± odrêbny zegar sprzêtowy, mo¿e byæ u¿ywany do ustawiania go.
 index_desczone=Ten formularz pozwala na ustawienie domy¶lnej strefy czasowej systemu, który s³u¿y do konwersji czasu systemu na format czytelny dla cz³owieka i offset.

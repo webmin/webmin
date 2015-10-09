@@ -17,3 +17,5 @@ desc_no=Jabber IM tjener
 longdesc_ms_MY=Mengkonfigurasi pelbagai protokol pelayan mesej Jabber.
 desc_ms_MY=Pelayan Jabber IM
 longdesc_de=Konfiguriert den Multi-Protokoll Jabber-Messaging-Server.
+desc_pl=Jabber IM - serwer
+longdesc_pl=Konfiguruj muli-protoko³owy serwer wiadomo¶ci Jabber.
