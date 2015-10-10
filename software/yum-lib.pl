@@ -31,18 +31,34 @@ if ($in->{'enablerepo'}) {
 local (@rv, @newpacks);
 
 # If there are multiple architectures to update for a package, split them out
+local @updates = split(/\s+/, $update);
 local @names = map { &append_architectures($_) } split(/\s+/, $update);
 if (@names == 1) {
 	@names = ( $update );
 	}
 $update = join(" ", @names);
 
-print "<b>",&text('yum_install', "<tt>$yum_command $enable -y install $update</tt>"),"</b><p>\n";
+# Work out command to use - for DNF, upgrades need to use the update command
+local $cmd;
+if ($yum_command =~ /dnf$/) {
+	local @pinfo = &package_info($updates[0]);
+	if ($pinfo[0]) {
+		$cmd = "update";
+		}
+	else {
+		$cmd = "install";
+		}
+	}
+else {
+	$cmd = "install";
+	}
+
+print "<b>",&text('yum_install', "<tt>$yum_command $enable -y $cmd $update</tt>"),"</b><p>\n";
 print "<pre>";
 &additional_log('exec', undef, "$yum_command $enable -y install $update");
 $SIG{'TERM'} = 'ignore';	# Installing webmin itself may kill this script
 local $qm = join(" ", map { quotemeta($_) } @names);
-&open_execute_command(CMD, "$yum_command $enable -y install $qm </dev/null", 2);
+&open_execute_command(CMD, "$yum_command $enable -y $cmd $qm </dev/null", 2);
 while(<CMD>) {
 	s/\r|\n//g;
 	if (/^\[(update|install|deps):\s+(\S+)\s+/) {
