@@ -634,5 +634,16 @@ return $gconfig{'webprefix'}.
 		  	      "down.gif");
 }
 
+sub status_to_string
+{
+my ($up) = @_;
+return $up == 1 ? $text{'mon_up'} :
+       $up == -1 ? $text{'mon_not'} :
+       $up == -2 ? $text{'mon_webmin'} :
+       $up == -3 ? $text{'mon_timeout'} :
+       $up == -4 ? $text{'mon_skip'} :
+                   "<font color=#ff0000>$text{'mon_down'}</font>";
+}
+
 1;
 

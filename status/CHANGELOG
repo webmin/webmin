@@ -84,3 +84,5 @@ A history of the status of each monitor's scheduled checks is now logged for 30 
 Added new monitor types to check if an LDAP server is up, and if an LDAP connection is possible.
 ---- Changes since 1.690 ----
 Extended the Execute Command monitor to be able to check the output of a command, and invert the exit status test.
+---- Changes since 1.770 ----
+Added a Module Config option to show the last collected status on the Webmin system information page.

@@ -78,12 +78,7 @@ if (!$in{'type'}) {
 		      ($stat->{'desc'} && $stat->{'up'} == 0 ?
 			 "<font color=#ff0000>$stat->{'desc'}</font>" :
 		       $stat->{'desc'} ? $stat->{'desc'} :
-		       $stat->{'up'} == 1 ? $text{'mon_up'} :
-		       $stat->{'up'} == -1 ? $text{'mon_not'} :
-		       $stat->{'up'} == -2 ? $text{'mon_webmin'} :
-		       $stat->{'up'} == -3 ? $text{'mon_timeout'} :
-		       $stat->{'up'} == -4 ? $text{'mon_skip'} :
-			 "<font color=#ff0000>$text{'mon_down'}</font>").
+				       : &status_to_string($stat->{'up'})).
 			"</td>\n";
 		$stable .= "</tr>\n";
 		}

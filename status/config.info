@@ -3,6 +3,7 @@ pager_cmd=Command to send message to a pager,3,None
 refresh=Seconds between page refreshes,3,Don't refresh
 sort_mode=Display monitors sorted by,1,0-Order created,1-Description,2-Host,3-Last status
 columns=Columns for services table,1,2-2,1-1
+sysinfo=Also show monitors on System Information page?,1,1-Yes,0-No
 output=Capture output from programs run when down?,1,1-Yes,0-No
 subject_mode=Email subject mode,1,0-New style,1-Old style
 def_tmpl=Default template,10,-None,Named template

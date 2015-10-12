@@ -543,4 +543,8 @@ ldap_ssl=Use SSL connection?
 ldap_user=LDAP server login
 ldap_pass=LDAP server password
 
+info_desc=System monitor
+info_last=Current status
+info_title=System and Server Status
+
 __norefs=1
