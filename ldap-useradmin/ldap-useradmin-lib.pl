@@ -1194,17 +1194,25 @@ return $rv->code ? $rv->error : undef;
 sub remove_accents
 {
 local ($string) = @_;
-$string =~ tr/ÀÁÂÃÄÅàáâãäå/a/;
-$string =~ tr/Çç/c/;
-$string =~ tr/ÈÉÊËèéêë/e/;
-$string =~ tr/ÌÍÎÏìíîï/i/;
-$string =~ tr/Ğ/d/;
-$string =~ tr/Ññ/n/;
-$string =~ tr/ÒÓÔÕÖØğòóôõöø/o/;
-$string =~ tr/ÙÚÛÜùúûü/u/;
-$string =~ tr/İıÿ/y/;
-$string =~ tr/ß/b/;
-$string =~ s/æÆ/ae/go;
+eval "use Text::Undiacritic";
+if (!$@) {
+	# Use a standard perl module to filter out non-ascii characters
+	$string = Text::Undiacritic::undiacritic($string);
+	}
+else {
+	# Use built-in code
+	$string =~ tr/ÀÁÂÃÄÅàáâãäå/a/;
+	$string =~ tr/Çç/c/;
+	$string =~ tr/ÈÉÊËèéêë/e/;
+	$string =~ tr/ÌÍÎÏìíîï/i/;
+	$string =~ tr/Ğ/d/;
+	$string =~ tr/Ññ/n/;
+	$string =~ tr/ÒÓÔÕÖØğòóôõöø/o/;
+	$string =~ tr/ÙÚÛÜùúûü/u/;
+	$string =~ tr/İıÿ/y/;
+	$string =~ tr/ß/b/;
+	$string =~ s/æÆ/ae/go;
+	}
 return $string;
 }
 
