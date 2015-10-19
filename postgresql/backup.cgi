@@ -73,14 +73,18 @@ if ($module_info{'usermin'}) {
 	$userconfig{'backup_'.$in{'db'}} = $in{'path'};
 	$userconfig{'backup_format_'.$in{'db'}} = $in{'format'};
 	$userconfig{'backup_tables_'.$in{'db'}} = join(" ", @tables);
-	&write_file("$user_module_config_directory/config", \%userconfig);
+	if ($in{'save'}) {
+		&save_user_module_config();
+		}
 	}
 else {
 	$config{'backup_'.$in{'db'}} = $in{'path'};
 	$config{'backup_mkdir_'.$in{'db'}} = $in{'mkdir'};
 	$config{'backup_format_'.$in{'db'}} = $in{'format'};
 	$config{'backup_tables_'.$in{'db'}} = join(" ", @tables);
-	&write_file("$module_config_directory/config", \%config);
+	if ($in{'save'}) {
+		&save_module_config();
+		}
 	}
 
 $desc = "<tt>$in{'db'}</tt>";
