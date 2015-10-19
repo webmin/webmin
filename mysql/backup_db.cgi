@@ -82,7 +82,9 @@ if ($module_info{'usermin'}) {
 	$userconfig{'backup_single_'.$in{'db'}} = $in{'single'};
 	$userconfig{'backup_quick_'.$in{'db'}} = $in{'quick'};
 	$userconfig{'backup_tables_'.$in{'db'}} = join(" ", @tables);
-	&write_file("$user_module_config_directory/config", \%userconfig);
+	if ($in{'save'}) {
+		&save_user_module_config();
+		}
 	}
 else {
 	$config{'backup_'.$in{'db'}} = $in{'file'};
@@ -100,7 +102,9 @@ else {
 	$config{'backup_single_'.$in{'db'}} = $in{'single'};
 	$config{'backup_quick_'.$in{'db'}} = $in{'quick'};
 	$config{'backup_tables_'.$in{'db'}} = join(" ", @tables);
-	&write_file("$module_config_directory/config", \%config);
+	if ($in{'save'}) {
+		&save_module_config();
+		}
 	}
 
 &ui_print_header(undef, $text{'backup_title'}, "");
