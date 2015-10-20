@@ -3,6 +3,7 @@ pager_cmd=Befehl&#044 um Nachrichten an einen Pager zu senden,3,Keiner
 refresh=Sekunden zwischen Seiten-Auffrischungen,3,Nicht auffrischen
 sort_mode=Zeige Monitore sortiert nach,1,0-Erzeugter Reihenfolge,1-Beschreibung,2-Host,3-Letzten Status
 columns=Spalten f&#252;r Dienste Tabelle,1,2-2,1-1
+sysinfo=Zeige auch Monitore auf Systeminformation&#45;Seite?,1,1-Ja,0-Nein
 output=Nehme Ausgabe von Programmen, die ausgef&#252;hrt werden, wenn unten, auf?,1,1-Ja,0-Nein
 subject_mode=E-Mail Betreffmodus,1,0-Neuer Stil,1-Alter Stil
 def_tmpl=Standard Template,10,-Keiner,Benanntes Template

@@ -421,6 +421,7 @@ twofactor_title=2-Faktor-Authentifizierung
 udeletes_enone=Nichts ausgew&#228;hlt
 udeletes_ereadonly=Einer der ausgew&#228;hlten Benutzer ist als nicht bearbeitbar markiert.
 udeletes_err=Konnte Benutzer nicht l&#246;schen
+udeletes_jerr=Fehler beim Nutzer zu Gruppe hinzuf&#252;gen
 udeletes_ok=Benutzer l&#246;schen
 udeletes_rusure=Sind Sie sicher, da&#223; Sie die $1 ausgew&#228;hlten Benutzer l&#246;schen m&#246;chten? S&#228;mtliche Benutzer- und zugeh&#246;rige Sicherheitseinstellungen gehen definitiv und nicht wiederherstellbar verloren.
 udeletes_title=Benutzer l&#246;schen
