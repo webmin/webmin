@@ -5,94 +5,67 @@ require 'passwd-lib.pl';
 # Output HTML for editing security options for the passwd module
 sub acl_security_form
 {
-print "<tr> <td valign=top><b>$text{'acl_users'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=mode value=0 %s> %s\n",
-	$_[0]->{'mode'} == 0 ? 'checked' : '', $text{'acl_mode0'};
+my ($o) = @_;
+print &ui_table_row($text{'acl_users'},
+    &ui_radio_table("mode", $o->{'mode'},
+	[ [ 0, $text{'acl_mode0'} ],
+	  [ 3, $text{'acl_mode3'} ],
+	  [ 1, $text{'acl_mode1'},
+	    &ui_textbox("users1", $o->{'mode'} == 1 ? $o->{'users'} : "", 40).
+	    " ".&user_chooser_button("users1", 1) ],
+	  [ 2, $text{'acl_mode2'},
+	    &ui_textbox("users2", $o->{'mode'} == 2 ? $o->{'users'} : "", 40).
+	    " ".&user_chooser_button("users2", 1) ],
+	  [ 4, $text{'acl_mode4'},
+	    &ui_textbox("low", $o->{'low'}, 8)." - ".
+	    &ui_textbox("high", $o->{'high'}, 8) ],
+	  [ 5, $text{'acl_mode5'},
+	    &ui_textbox("groups", $o->{'mode'} == 5 ? $o->{'groups'} : "", 40).
+	    " ".&group_chooser_button("groups", 1)."<br>\n".
+	    &ui_checkbox("sec", 1, $text{'acl_sec'}, $o->{'sec'})."<br>\n".
+	    $text{'acl_notusers'}." ".
+	    &ui_textbox("notusers", $o->{'notusers'}, 30)." ".
+	    &user_chooser_button("notusers", 1) ],
+	  [ 6, $text{'acl_mode6'},
+	    &ui_textbox("match", $o->{'mode'} == 6 ? $o->{'users'} : "", 20) ],
+	]), 3);
 
-printf "<input type=radio name=mode value=3 %s> %s<br>\n",
-	$_[0]->{'mode'} == 3 ? 'checked' : '', $text{'acl_mode3'};
+print &ui_table_row($text{'acl_repeat'},
+	&ui_yesno_radio("repeat", $o->{'repeat'}), 3);
 
-printf "<input type=radio name=mode value=1 %s> %s\n",
-	$_[0]->{'mode'} == 1 ? 'checked' : '', $text{'acl_mode1'};
-printf "<input name=users1 size=40 value='%s'> %s<br>\n",
-	$_[0]->{'mode'} == 1 ? $_[0]->{'users'} : '',
-	&user_chooser_button("users1", 1);
+print &ui_table_row($text{'acl_expire'},
+	&ui_yesno_radio("expire", $o->{'expire'}), 3);
 
-printf "<input type=radio name=mode value=2 %s> %s\n",
-	$_[0]->{'mode'} == 2 ? 'checked' : '', $text{'acl_mode2'};
-printf "<input name=users2 size=40 value='%s'> %s<br>\n",
-	$_[0]->{'mode'} == 2 ? $_[0]->{'users'} : '',
-	&user_chooser_button("users2", 1);
+print &ui_table_row($text{'acl_others'},
+	&ui_radio("others", $o->{'others'},
+		  [ [ 1, $text{'yes'} ],
+		    [ 2, $text{'acl_opt'} ],
+		    [ 0, $text{'no'} ] ]), 3);
 
-printf "<input type=radio name=mode value=4 %s> %s\n",
-	$_[0]->{'mode'} == 4 ? 'checked' : '', $text{'acl_mode4'};
-printf "<input name=low size=8 value='%s'> -\n",
-	$_[0]->{'mode'} == 4 ? $_[0]->{'low'} : '';
-printf "<input name=high size=8 value='%s'><br>\n",
-	$_[0]->{'mode'} == 4 ? $_[0]->{'high'} : '';
-
-printf "<input type=radio name=mode value=5 %s> %s\n",
-	$_[0]->{'mode'} == 5 ? 'checked' : '', $text{'acl_mode5'};
-printf "<input name=groups size=20 value='%s'> %s<br>\n",
-	$_[0]->{'mode'} == 5 ? $_[0]->{'users'} : '',
-	&group_chooser_button("groups", 1);
-printf "%s <input type=checkbox name=sec value=1 %s> %s<br>\n",
-        "&nbsp;" x 5, $_[0]->{'sec'} ? 'checked' : '',$text{'acl_sec'};
-printf "%s %s <input name=notusers size=20 value='%s'> %s<br>\n",
-	"&nbsp;" x 5, $text{'acl_notusers'},
-	$_[0]->{'mode'} == 5 ? $_[0]->{'notusers'} : '',
-	&user_chooser_button("notusers", 1);
-
-printf "<input type=radio name=mode value=6 %s> %s\n",
-	$_[0]->{'mode'} == 6 ? 'checked' : '', $text{'acl_mode6'};
-printf "<input name=match size=15 value='%s'></td> </tr>\n",
-	$_[0]->{'mode'} == 6 ? $_[0]->{'users'} : '';
-
-print "<tr> <td><b>$text{'acl_repeat'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=repeat value=1 %s> $text{'yes'}\n",
-	$_[0]->{'repeat'} ? "checked" : "";
-printf "<input type=radio name=repeat value=0 %s> $text{'no'}</td> </tr>\n",
-	$_[0]->{'repeat'} ? "" : "checked";
-
-print "<tr> <td><b>$text{'acl_expire'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=expire value=1 %s> $text{'yes'}\n",
-	$_[0]->{'expire'} ? "checked" : "";
-printf "<input type=radio name=expire value=0 %s> $text{'no'}</td> </tr>\n",
-	$_[0]->{'expire'} ? "" : "checked";
-
-print "<td><b>$text{'acl_others'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=others value=1 %s> $text{'yes'}\n",
-	$_[0]->{'others'} == 1 ? "checked" : "";
-printf "<input type=radio name=others value=2 %s> $text{'acl_opt'}\n",
-	$_[0]->{'others'} == 2 ? "checked" : "";
-printf "<input type=radio name=others value=0 %s> $text{'no'}</td> </tr>\n",
-	$_[0]->{'others'} == 0 ? "checked" : "";
-
-print "<tr> <td><b>$text{'acl_old'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=old value=1 %s> $text{'yes'}\n",
-	$_[0]->{'old'} == 1 ? "checked" : "";
-printf "<input type=radio name=old value=2 %s> $text{'acl_old_this'}\n",
-	$_[0]->{'old'} == 2 ? "checked" : "";
-printf "<input type=radio name=old value=0 %s> $text{'no'}</td> </tr>\n",
-	$_[0]->{'old'} == 0 ? "checked" : "";
+print &ui_table_row($text{'acl_old'},
+	&ui_radio("old", $o->{'old'},
+		  [ [ 1, $text{'yes'} ],
+		    [ 2, $text{'acl_old_this'} ],
+		    [ 0, $text{'no'} ] ]), 3);
 }
 
 # acl_security_save(&options)
 # Parse the form for security options for the bind8 module
 sub acl_security_save
 {
-$_[0]->{'mode'} = $in{'mode'};
-$_[0]->{'users'} = $in{'mode'} == 1 ? $in{'users1'} :
-		   $in{'mode'} == 2 ? $in{'users2'} :
-		   $in{'mode'} == 5 ? $in{'groups'} :
-		   $in{'mode'} == 6 ? $in{'match'} : undef;
-$_[0]->{'notusers'} = $in{'mode'} == 5 ? $in{'notusers'} : undef;
-$_[0]->{'low'} = $in{'low'};
-$_[0]->{'high'} = $in{'high'};
-$_[0]->{'repeat'} = $in{'repeat'};
-$_[0]->{'old'} = $in{'old'};
-$_[0]->{'others'} = $in{'others'};
-$_[0]->{'expire'} = $in{'expire'};
-$_[0]->{'sec'} = $in{'sec'};
+my ($o) = @_;
+$o->{'mode'} = $in{'mode'};
+$o->{'users'} = $in{'mode'} == 1 ? $in{'users1'} :
+		$in{'mode'} == 2 ? $in{'users2'} :
+		$in{'mode'} == 5 ? $in{'groups'} :
+		$in{'mode'} == 6 ? $in{'match'} : undef;
+$o->{'notusers'} = $in{'mode'} == 5 ? $in{'notusers'} : undef;
+$o->{'low'} = $in{'low'};
+$o->{'high'} = $in{'high'};
+$o->{'repeat'} = $in{'repeat'};
+$o->{'old'} = $in{'old'};
+$o->{'others'} = $in{'others'};
+$o->{'expire'} = $in{'expire'};
+$o->{'sec'} = $in{'sec'};
 }
 
