@@ -2615,12 +2615,13 @@ $format =~ s/ZONE/$subs/g;
 return $file = $base."/".$format;
 }
 
-# create_on_slaves(zone, master-ip, file, [&hostnames], [local-view])
+# create_on_slaves(zone, master-ip, file, [&hostnames], [local-view],
+# 		   [&extra-slave-ips])
 # Creates the given zone on all configured slave servers, and returns a list
 # of errors
 sub create_on_slaves
 {
-local ($zone, $master, $file, $hosts, $localview) = @_;
+local ($zone, $master, $file, $hosts, $localview, $moreslaves) = @_;
 local %on = map { $_, 1 } @$hosts;
 &remote_error_setup(\&slave_error_handler);
 local $slave;
@@ -2646,6 +2647,9 @@ foreach $slave (@slaves) {
 				      grep { $_ ne $slave } @slaves;
 		}
 	push(@otherslaves, split(/\s+/, $config{'extra_slaves'}));
+	if ($moreslaves) {
+		push(@otherslaves, @$moreslaves);
+		}
 
 	# Work out the view
 	my $view;
