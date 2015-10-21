@@ -24,6 +24,10 @@ by useradmin::list_users.
 =cut
 sub can_edit_passwd
 {
+if ($access{'self'} && $_[0]->[0] eq $remote_user) {
+	# Self-editing override is enabled
+	return 1;
+	}
 if ($access{'mode'} == 0) {
 	# Can change any
 	return 1;

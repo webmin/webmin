@@ -6,3 +6,4 @@ others=2
 noconfig=0
 expire=1
 sec=0
+self=0

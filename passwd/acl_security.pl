@@ -24,11 +24,14 @@ print &ui_table_row($text{'acl_users'},
 	    " ".&group_chooser_button("groups", 1)."<br>\n".
 	    &ui_checkbox("sec", 1, $text{'acl_sec'}, $o->{'sec'})."<br>\n".
 	    $text{'acl_notusers'}." ".
-	    &ui_textbox("notusers", $o->{'notusers'}, 30)." ".
+	    &ui_textbox("notusers", $o->{'notusers'}, 20)." ".
 	    &user_chooser_button("notusers", 1) ],
 	  [ 6, $text{'acl_mode6'},
 	    &ui_textbox("match", $o->{'mode'} == 6 ? $o->{'users'} : "", 20) ],
 	]), 3);
+
+print &ui_table_row($text{'acl_self'},
+	&ui_yesno_radio("self", $o->{'self'}), 3);
 
 print &ui_table_row($text{'acl_repeat'},
 	&ui_yesno_radio("repeat", $o->{'repeat'}), 3);
@@ -63,6 +66,7 @@ $o->{'notusers'} = $in{'mode'} == 5 ? $in{'notusers'} : undef;
 $o->{'low'} = $in{'low'};
 $o->{'high'} = $in{'high'};
 $o->{'repeat'} = $in{'repeat'};
+$o->{'self'} = $in{'self'};
 $o->{'old'} = $in{'old'};
 $o->{'others'} = $in{'others'};
 $o->{'expire'} = $in{'expire'};

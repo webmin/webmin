@@ -28,6 +28,7 @@ passwd_ok2=The password for user $1 has been changed successfully.
 log_passwd=Changed password for user $1
 
 acl_repeat=Must enter new password again?
+acl_self=Always allow own password to be changed?
 acl_old=Must enter old password?
 acl_old_this=Only for other users
 acl_others=Change password in other modules?
