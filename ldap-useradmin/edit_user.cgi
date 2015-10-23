@@ -272,23 +272,23 @@ if (&in_schema($schema, "sambaPwdLastSet")) {
        print &ui_table_start($text{'uedit_sambapassopts'},
 			     "width=100%", 4, \@tds);
 
-       $value = $uinfo->get_value('sambaPwdLastSet');
+       $value = $uinfo ? $uinfo->get_value('sambaPwdLastSet') : undef;
 
        print &ui_table_row($text{'uedit_sambapwdlastset'},
                ($value ? &make_date(timelocal(gmtime($value)),1) :
                  $n eq "" ? $text{'uedit_never'} :
                             $text{'uedit_unknown'}));
 
-       $value = $uinfo->get_value('sambaPwdCanChange');
+       $value = $uinfo ? $uinfo->get_value('sambaPwdCanChange') : undef;
        print &ui_table_row($text{'uedit_sambapwdcanchange'},
                ($value ? &make_date(timelocal(gmtime($value)),1) :
                  $n eq "" ? $text{'uedit_never'} :
                             $text{'uedit_unknown'}));
 
-       $value = $uinfo->get_value('sambaBadPasswordCount');
+       $value = $uinfo ? $uinfo->get_value('sambaBadPasswordCount') : undef;
        print &ui_table_row($text{'uedit_sambabadpasswordcount'}, $value);
 
-       $value = $uinfo->get_value('sambaAcctFlags');
+       $value = $uinfo ? $uinfo->get_value('sambaAcctFlags') : undef;
        print &ui_table_row($text{'uedit_sambaacctflags'}, $value);
 
        print &ui_table_end();
