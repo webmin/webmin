@@ -14,6 +14,7 @@ acl_opt=Optional
 acl_others=Das Passwort auch in anderen Modulen &auml;ndern&#63;
 acl_repeat=Muss das Passwort erneut eingeben&#63;
 acl_sec=Sekund&#228;re Gruppen inkludieren?
+acl_self=Immer erlauben eigenes Passwort zu &#228;ndern?
 acl_users=Benutzer deren Passworte ge&auml;ndert werden k&ouml;nnen
 index_euseradmin=Dieses Modul kann derzeit nicht benutzt werden&#44; da das <tt>Benutzer und Gruppen</tt>-Modul nicht installiert ist oder von Ihrem System nicht unterst&uuml;tzt wird.
 index_header=Einen Benutzer ausw&auml;hlen&#44; um dessen Passwort zu &auml;ndern.
