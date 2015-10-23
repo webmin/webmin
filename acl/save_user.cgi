@@ -42,6 +42,8 @@ if ($in{'old'}) {
 	$old || &error($text{'edit_egone'});
 	$user{'proto'} = $old->{'proto'};
 	$user{'id'} = $old->{'id'};
+	$user{'twofactor_provider'} = $old->{'twofactor_provider'};
+	$user{'twofactor_id'} = $old->{'twofactor_id'};
 	}
 else {
 	$access{'create'} || &error($text{'save_ecreate'});
