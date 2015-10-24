@@ -2,4 +2,4 @@ default_mode=last
 ps_style=sysv
 base_ppid=1
 cut_length=80
-trace_java=1
+trace_java=0
