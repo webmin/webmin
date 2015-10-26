@@ -564,7 +564,7 @@ elsif ($f->{'actiondefault'}) {
 	}
 elsif ($f->{'actiontype'} eq '!') {
 	$action = &text('index_aforward',
-		"<tt>$f->{'action'}</tt>");
+		"<tt>".&html_escape($f->{'action'})."</tt>");
 	}
 elsif ($f->{'actionreply'}) {
 	$action = &text('index_areply',
