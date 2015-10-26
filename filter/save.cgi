@@ -209,8 +209,10 @@ else {
 			local ($s, $m, $h) = $p eq 'start' ? (0, 0, 0) :
 						(59, 59, 23);
 			if ($in{'d'.$p}) {
-				$tm = timelocal($s, $m, $h, $in{'d'.$p},
-					$in{'m'.$p}-1, $in{'y'.$p}-1900);
+				eval {
+					$tm = timelocal($s, $m, $h, $in{'d'.$p},
+					    $in{'m'.$p}-1, $in{'y'.$p}-1900);
+					};
 				$tm || &error($text{'save_e'.$p});
 				$filter->{'reply'}->{'autoreply_'.$p} = $tm;
 				}
