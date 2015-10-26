@@ -273,7 +273,8 @@ if (@rv == 1 && !$in{'check'}) {
 	}
 
 # Display search results
-$for = join($in{'and'} ? " and " : " or ", map { "<tt>$_</tt>" } @for);
+$for = join($in{'and'} ? " and " : " or ",
+	    map { "<tt>".&html_escape($_)."</tt>" } @for);
 &ui_print_header(&text('search_for', $for), $text{'search_title'}, "");
 if (@rv) {
 	#@rv = sort { $b->[4] <=> $a->[4] } @rv;
