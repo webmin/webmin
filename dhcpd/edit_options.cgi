@@ -142,12 +142,12 @@ if ($config{'dhcpd_version'} >= 3) {
 		print "<tr>\n";
 		print "<td><b>$text{'eopt_def'}</b></td><td nowrap colspan=3>\n";
 		print "$text{'eopt_dname'}\n";
-        print &ui_textbox("dname_".$i, $o->{'values'}->[0], 15);
+		print &ui_textbox("dname_".$i, $o->{'values'}->[0], 15);
 		print "$text{'eopt_dnum'}\n";
-        print &ui_textbox("dnum_".$i, $o->{'values'}->[2], 4);
+		print &ui_textbox("dnum_".$i, $o->{'values'}->[2], 4);
 		print "$text{'eopt_dtype'}\n";
 		my $a=scalar(@{$o->{'values'}})-1;
-        print &ui_textbox("dtype_".$i, join(" ",@{$o->{'values'}}[4..$a]), 40);
+		print &ui_textbox("dtype_".$i, join(" ",@{$o->{'values'}}[4..$a]), 40);
 		print "</td></tr>\n";
 		}
 

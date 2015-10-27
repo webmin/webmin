@@ -149,6 +149,7 @@ if ($config{'dhcpd_version'} >= 3) {
 			    &error(&text('sopt_ecip', $in{"cname_$i"}));
 			}
 		if ($o && $o->{'values'}->[4] eq 'string' ||
+		    $o && $o->{'values'}->[4] eq 'array' ||
 		    $cv !~ /^([0-9a-fA-F]{1,2}:)*[0-9a-fA-F]{1,2}$/ &&
 		    !&check_ipaddress($cv)) {
 			# Quote if type is a string, or unknown and not an IP
