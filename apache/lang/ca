@@ -367,6 +367,7 @@ core_eaddress='$1' no és una adreça vàlida
 core_eport='$1' no és un port vàlid
 core_eoneaddr=Has d'especificar almenys una adreça
 core_edefport=Port per defecte invàlid
+ore_eduplisten=L'adreça d'escolta $1 està llistada dos cops
 core_multi=Múltiples peticions per connexió
 core_ekeep='$1' no és un nombre de <i>keepalives</i> vàlid
 core_ltwice=Consulta-ho dos cops

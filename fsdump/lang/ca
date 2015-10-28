@@ -70,6 +70,7 @@ dump_before=Ordre a executar abans de la còpia
 dump_after=Ordre a executar després de la còpia
 dump_fok=Atura't si falla l'ordre
 dump_fok2=Informa de l'error si falla l'ordre
+dump_aok=Omet l'ordre encara que falli la còpia
 dump_extra=Paràmetres extra de la línia d'ordres
 dump_rsh=Ordre de còpia remota
 dump_rsh0=Per defecte (RSH)

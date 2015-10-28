@@ -38,6 +38,11 @@ uedit_raw=Atributs LDAP
 uedit_return=als detalls de l'usuari
 uedit_quota=Quota IMAP
 uedit_unquota=No ho canviïs
+uedit_sambapassopts=Opcions de Contrasenyes Samba
+uedit_sambapwdlastset=Darrera Actualització de Contrasenya
+uedit_sambapwdcanchange=Es pot canviar la contrasenya
+uedit_sambabadpasswordcount=Recompte incorrecte de contrasenya
+uedit_sambaacctflags=Banderins del compte
 
 usave_eadd=No s'ha pogut afegir l'usuari a la base de dades LDAP: $1
 usave_emod=No s'ha pogut modificar l'usuari de la base de dades LDAP: $1
