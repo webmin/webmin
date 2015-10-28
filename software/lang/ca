@@ -20,6 +20,8 @@ index_epackagecmd=El sistema de paquets $1 requireix l'ordre $2
 index_eupdatecmd=El sistema d'actualització $1 requereix l'ordre $2
 index_epackagecheck=El sistema de gestió de paquets seleccionat no és vàlid: $1.<br>Pot ser que hagis de seleccionar un sistema diferent a la pàgina de <a href='$2'>configuració del mòdul</a>.
 index_eupdatecheck=El sistema d'actualització seleccionat no és vàlid: $1.<br>Pot ser que hagis de seleccionar un mètode d'actualització diferent a la pàgina de <a href='$2'>configuració del mòdul</a>.
+index_echeckpackage=No s'ha detectat cap sistema de paquets!
+index_echeckupdate=No s'ha detectat cap sistema d'actualització!
 
 search_title=Cerca de Paquet
 search_nomatch=No hi ha cap paquet que coincideixi amb '$1'

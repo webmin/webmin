@@ -463,7 +463,8 @@ upgrade_setuprpm=S'està executant RPM per actualitzar Webmin... Espera un minute
 upgrade_setupdeb=S'està executant DPKG per actualitzar Webmin... Espera un moment fins que s'acabi abans de continuar.
 upgrade_setuppackage=S'està executant pkgadd per actualitzar Webmin... Espera un minutet que acabi abans de continuar, si et plau
 upgrade_esolaris=L'actualització de Webmin no funciona quan s'ha instal·lat a partir d'un paquet Solaris. Fes l'actualització a mà, si et plau.
-upgrade_ezip=La característica d'actualització de Webmin's actualment no funciona si el tens instal·lat a Windows. Fes l'actualització manualment, si et plau.
+upgrade_ezip=La característica d'actualització de Webmin actualment no funciona si el tens instal·lat a Windows. Fes l'actualització manualment, si et plau.
+upgrade_eportage=La característica d'actualització de Webmin actualment no funciona quan ho has instal·lat a partir d'un paquet Portage. Actualitza-ho utilitzant les eines de Portage en lloc seu, si et plau.
 upgrade_eusermin=El fitxer és la versió $1 d'Usermin, no una actualització de Webmin.
 upgrade_updates=Hi ha $1 actualitzacions per a aquesta nova versió de Webmin. <a href='$2'>Fes clic aquí</a> per descarregar-les i instal·lar-les automàticament.
 upgrade_epackage=No és un paquet Solaris vàlid
@@ -581,6 +582,7 @@ session_eblockuser_failures=Hi falta el nombre d'entrades bloquejants de l'usuar
 session_ecookie=El teu navegador no suporta galetes, que són necessàries per a l'autenticació de la sessió
 session_remember=Ofereix-te a recordar la contrasenya de forma permanent
 session_hostname=Mostra el nom de host a la pantalla de connexió
+session_ip=Limita les sessions a la mateixa adreça IP client
 session_elsof=L'autenticació local requereix el programa <tt>lsof</tt>
 session_utmp=Registra les entrades i sortides a Utmp
 session_realname=Mostra el nom de host real en lloc del nom de l'URL

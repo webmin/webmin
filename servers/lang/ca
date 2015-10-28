@@ -32,6 +32,7 @@ edit_port=Port
 edit_portnone=Cap d'establert
 edit_type=Tipus de servidor
 edit_ssl=Servidor SSL
+edit_checkssl=Comprova el certificat SSL remot
 edit_link=Tipus d'enllaç
 edit_mode0=Enllaç normal al servidor
 edit_mode1=Connexió a través de Webmin amb

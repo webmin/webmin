@@ -47,6 +47,7 @@ search_custom=Documentació personalitzada
 search_none=No s'ha trobat cap document que coincideixi amb $1.
 search_for=per a $1
 search_google=Resultats de la recerca Google
+search_doxfer=Documentació en línia de Webmin
 
 howto_title=Document HOWTO
 howto_header=Fitxer $1 del document HOWTO

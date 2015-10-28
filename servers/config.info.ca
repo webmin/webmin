@@ -14,3 +14,4 @@ skipifaces=Interfícies de xarxa que no s'han de detectar,0
 max_servers=Mostra el formulari de cerca si el nombre de servidors és excessiu,0
 line2=Configuració del sistema,11
 groups_dir=Directori de grups de <i>cluster</i> MSC,0
+capath=Fitxer o directori dels certificats CS SSL remots,0
