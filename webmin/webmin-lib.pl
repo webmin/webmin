@@ -1089,12 +1089,22 @@ if (($realos{'os_version'} ne $gconfig{'os_version'} ||
      $realos{'os_type'} ne $gconfig{'os_type'}) &&
     $realos{'os_version'} && $realos{'os_type'} &&
     &foreign_available("webmin")) {
-	push(@notifs, 
-		&ui_form_start("$gconfig{'webprefix'}/webmin/fix_os.cgi").
-		&text('os_incorrect', $realos{'real_os_type'},
-				    $realos{'real_os_version'})."<p>\n".
-		&ui_form_end([ [ undef, $text{'os_fix'} ] ])
-		);
+	my ($realminor) = split(/\./, $realos{'os_version'});
+	my ($minor) = split(/\./, $gconfig{'os_version'});
+	if ($realos{'os_type'} eq $gconfig{'os_type'} &&
+	    $realminor == $minor) {
+		# Only the minor version number changed - no need to apply
+		&apply_new_os_version(\%realos);
+		}
+	else {
+		# Large enough change to tell the user
+		push(@notifs, 
+		    &ui_form_start("$gconfig{'webprefix'}/webmin/fix_os.cgi").
+		    &text('os_incorrect', $realos{'real_os_type'},
+		    		          $realos{'real_os_version'})."<p>\n".
+		    &ui_form_end([ [ undef, $text{'os_fix'} ] ])
+		    );
+		}
 	}
 
 # Password close to expiry
@@ -2511,6 +2521,44 @@ foreach my $theme (&list_themes()) {
 		}
 	}
 return @rv;
+}
+
+# apply_new_os_version(&info)
+# Update the Webmin and Usermin detected OS name and version
+sub apply_new_os_version
+{
+my %osinfo = %{$_[0]};
+
+# Do Webmin
+&lock_file("$config_directory/config");
+$gconfig{'real_os_type'} = $osinfo{'real_os_type'};
+$gconfig{'real_os_version'} = $osinfo{'real_os_version'};
+$gconfig{'os_type'} = $osinfo{'os_type'};
+$gconfig{'os_version'} = $osinfo{'os_version'};
+&write_file("$config_directory/config", \%gconfig);
+&unlock_file("$config_directory/config");
+
+# Do Usermin too, if installed and running an equivalent version
+if (&foreign_installed("usermin")) {
+	&foreign_require("usermin");
+	my %miniserv;
+	&usermin::get_usermin_miniserv_config(\%miniserv);
+	my @ust = stat("$miniserv{'root'}/os_list.txt");
+	my @wst = stat("$root_directory/os_list.txt");
+	if ($ust[7] == $wst[7]) {
+		# os_list.txt is the same, so we can assume the same OS codes
+		# are supported
+		my %uconfig;
+		&lock_file($usermin::usermin_config);
+		&usermin::get_usermin_config(\%uconfig);
+		$uconfig{'real_os_type'} = $osinfo{'real_os_type'};
+		$uconfig{'real_os_version'} = $osinfo{'real_os_version'};
+		$uconfig{'os_type'} = $osinfo{'os_type'};
+		$uconfig{'os_version'} = $osinfo{'os_version'};
+		&usermin::put_usermin_config(\%uconfig);
+		&unlock_file($usermin::usermin_config);
+		}
+	}
 }
 
 1;
