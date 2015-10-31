@@ -304,10 +304,10 @@ my %donedevno;
 # Get list of zone pools
 my %zpools = ( 'zones' => 1, 'zroot' => 1 );
 if (&has_command("zpool")) {
-	my @out = &backquote_command("zpool list");
+	my @out = &backquote_command("zpool list -p");
 	foreach my $l (@out) {
-		if (/^(\S+)\s+\d/) {
-			$zpools{$1} = 1;
+		if (/^(\S+)\s+(\d+)\s+(\d+)\s+(\d+)/) {
+			$zpools{$1} = [ $2, $4 ];
 			}
 		}
 	}
@@ -320,10 +320,12 @@ foreach my $m (@mounted) {
 	    $m->[2] eq "xfs" || $m->[2] eq "jfs" || $m->[2] eq "btrfs" ||
 	    $m->[1] =~ /^\/dev\// ||
 	    &indexof($m->[1], @$always) >= 0) {
+		my $zp;
 		if ($m->[1] =~ /^([^\/]+)(\/(\S+))?/ &&
-                    $m->[2] eq "zfs" && $zpools{$1} && $donezone{$1,$2}++) {
+                    $m->[2] eq "zfs" && $zpools{$1}) {
 			# Don't double-count maps from the same zone pool
-			next;
+			next if ($donezone{$1}++);
+			$zp = $zpools{$1};
 			}
 		if ($donedevice{$m->[0]}++ ||
 		    $donedevice{$m->[1]}++) {
@@ -336,7 +338,15 @@ foreach my $m (@mounted) {
 			# Don't double-count same filesystem by device number
 			next;
 			}
-		my ($t, $f) = &mount::disk_space($m->[2], $m->[0]);
+		# Get the size - for ZFS mounts, this comes from the underlying
+		# total pool size and free
+		my ($t, $f);
+		if ($zp) {
+			($t, $f) = @$zp;
+			}
+		else {
+			($t, $f) = &mount::disk_space($m->[2], $m->[0]);
+			}
 		if (($m->[2] eq "simfs" || $m->[2] eq "vzfs" ||
 		     $m->[0] eq "/dev/vzfs" ||
 		     $m->[0] eq "/dev/simfs") &&
