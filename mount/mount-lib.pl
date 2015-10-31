@@ -307,7 +307,7 @@ if (&has_command("zpool")) {
 	my @out = &backquote_command("zpool list -p");
 	foreach my $l (@out) {
 		if (/^(\S+)\s+(\d+)\s+(\d+)\s+(\d+)/) {
-			$zpools{$1} = [ $2, $4 ];
+			$zpools{$1} = [ $2 / 1024, $4 / 1024 ];
 			}
 		}
 	}
