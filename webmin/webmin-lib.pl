@@ -1170,8 +1170,9 @@ if (&foreign_check("acl")) {
 
 # New Webmin version is available, but only once per day
 my $now = time();
+my %disallow = map { $_, 1 } split(/\s+/, $access{'disallow'});
 if (&foreign_available($module_name) && !$noupdates &&
-    !$gconfig{'nowebminup'}) {
+    !$gconfig{'nowebminup'} && !$disallow{'upgrade'}) {
 	if (!$config{'last_version_check'} ||
             $now - $config{'last_version_check'} > 24*60*60) {
 		# Cached last version has expired .. re-fetch
@@ -1206,7 +1207,7 @@ if (&foreign_available($module_name) && !$noupdates &&
 
 # Webmin module updates
 if (&foreign_available($module_name) && !$noupdates &&
-    !$gconfig{'nomoduleup'}) {
+    !$gconfig{'nomoduleup'} && !$disallow{'upgrade'}) {
 	my @st = stat($update_cache);
 	my $allupdates = [ ];
 	my @urls = $config{'upsource'} ?
