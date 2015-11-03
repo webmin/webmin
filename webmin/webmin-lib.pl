@@ -1170,6 +1170,7 @@ if (&foreign_check("acl")) {
 
 # New Webmin version is available, but only once per day
 my $now = time();
+my %access = &get_module_acl();
 my %disallow = map { $_, 1 } split(/\s+/, $access{'disallow'});
 if (&foreign_available($module_name) && !$noupdates &&
     !$gconfig{'nowebminup'} && !$disallow{'upgrade'}) {
