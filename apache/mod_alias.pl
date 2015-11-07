@@ -37,7 +37,7 @@ return (2, $_[2], $rv);
 
 %alias_statmap = ("permanent", 301,  "temp", 302,
 		  "seeother", 303,   "gone", 410);
-$url_regexp = '^(http:\/\/|ftp:\/\/|gopher:|https:\/\/|mailto:|telnet:)(\S+)$';
+$url_regexp = '^(http:\/\/|ftp:\/\/|gopher:|https:\/\/|mailto:|telnet:|\/)(\S+)$';
 
 # alias_status_input(array, name, title)
 sub alias_status_input
