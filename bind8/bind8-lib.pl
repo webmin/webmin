@@ -767,8 +767,10 @@ else {
 			    : &ip_to_arpa(join('.', @octs[0..$i]));
 		$rev =~ s/\.$//g;
 		foreach $z (@zl) {
-			if ((lc($z->{'name'}) eq $rev ||
-			     lc($z->{'name'}) eq "$rev.") &&
+			my $zname = $z->{'name'};
+			$zname =~ s/^(\d+)\/(\d+)\.//;
+			if ((lc($zname) eq $rev ||
+			     lc($zname) eq "$rev.") &&
 			    $z->{'type'} eq "master") {
 				# found the reverse master domain
 				$revconf = $z;
@@ -779,6 +781,7 @@ else {
 	}
 
 # find reverse record
+# XXX
 if ($revconf) {
 	$revfile = &absolute_path($revconf->{'file'});
 	@revrecs = &read_zone_file($revfile, $revconf->{'name'});
@@ -845,6 +848,28 @@ if ($fwdconf) {
 	}
 
 return ($fwdconf, $fwdfile, $fwdrec);
+}
+
+# make_reverse_name(ip, type, &reverse-zone)
+# Returns the reverse record name for an IP
+sub make_reverse_name
+{
+local ($ip, $type, $revconf) = @_;
+if ($type eq "A") {
+	my $arpa = &ip_to_arpa($in{'value0'});
+	if ($revconf->{'name'} =~ /^(\d+)\/(\d+)\.(.*)/) {
+		# Partial reverse delegation zone - last octet is actually
+		# inside it
+		my @arpa = split(/\./, $arpa);
+		return $arpa[0].".".$revconf->{'name'};
+		}
+	return $arpa;
+	}
+else {
+	return &net_to_ip6int($in{'value0'});
+	}
+return $type eq "A" ? &ip_to_arpa($in{'value0'})
+		    : &net_to_ip6int($in{'value0'});
 }
 
 # can_edit_zone(&zone, [&view] | &cachedzone)
