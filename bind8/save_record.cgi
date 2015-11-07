@@ -436,8 +436,8 @@ if ($in{'new'}) {
 	       'comment' => $in{'comment'} };
 	if ($in{'rev'} && $revconf && &can_edit_reverse($revconf) &&
 	    $in{'value0'} !~ /\*/) {
-		local $rname = $in{'type'} eq "A" ? &ip_to_arpa($in{'value0'})
-						: &net_to_ip6int($in{'value0'});
+		local $rname = &make_reverse_name($in{'value0'}, $in{'type'},
+						  $revconf);
 		if ($revrec && $in{'rev'} == 2) {
 			# Upate the existing reverse for the domain
 			&lock_file(&make_chroot($revrec->{'file'}));
@@ -501,6 +501,17 @@ else {
 	&modify_record($r->{'file'}, $r, $name, $ttl,
 		       "IN", $in{'type'}, $vals, $in{'comment'});
 
+	# Build names for the new and old reverse records
+	local ($rname, $orname);
+	if ($revconf) {
+		$rname = &make_reverse_name($in{'value0'}, $in{'type'},
+					    $revconf);
+		}
+	elsif ($orevconf) {
+		$orname = &make_reverse_name($in{'oldvalue0'}, $in{'type'},
+					     $orevconf);
+		}
+
 	if ($in{'rev'} && $orevrec && &can_edit_reverse($orevconf) &&
 	    $fulloldname eq $orevrec->{'values'}->[0] &&
 	    ($in{'type'} eq "A" &&
@@ -517,7 +528,7 @@ else {
 		if ($revconf eq $orevconf && &can_edit_reverse($revconf)) {
 			# old and new in the same file
 			&modify_record($orevrec->{'file'} , $orevrec, 
-				       &net_to_ip6int(&ip_to_arpa($in{'value0'})),
+				       $rname,
 				       $orevrec->{'ttl'}, "IN", "PTR", $fullname,
 				       $in{'comment'});
 			&bump_soa_record($orevfile, \@orrecs);
@@ -526,7 +537,7 @@ else {
 		elsif ($revconf && &can_edit_reverse($revconf)) {
 			# old and new in different files
 			&delete_record($orevrec->{'file'} , $orevrec);
-			&create_record($revfile, &net_to_ip6int(&ip_to_arpa($in{'value0'})),
+			&create_record($revfile, $rname,
 				       $orevrec->{'ttl'}, "IN", "PTR", $fullname,
 				       $in{'comment'});
 			&bump_soa_record($orevfile, \@orrecs);
@@ -548,7 +559,7 @@ else {
 		# one.. create a new reverse record
 	 	&lock_file(&make_chroot($revfile));
 		@rrecs = &read_zone_file($revfile, $revconf->{'name'});
-		&create_record($revfile, &net_to_ip6int(&ip_to_arpa($in{'value0'})),
+		&create_record($revfile, $rname,
 			       $ttl, "IN", "PTR", $fullname, $in{'comment'});
 		&bump_soa_record($revfile, \@rrecs);
 		&sign_dnssec_zone_if_key($revconf, \@rrecs);
