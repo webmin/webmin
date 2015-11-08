@@ -50,8 +50,7 @@ else {
 
 			if ($orevrec && &can_edit_reverse($orevconf) &&
 			    $fulloldname eq $orevrec->{'values'}->[0] &&
-			    ($r->{'type'} eq "A" &&
-			     $r->{'values'}->[0] eq &arpa_to_ip($orevrec->{'name'}) ||
+			    ($r->{'type'} eq "A" ||
 			     $r->{'type'} eq "AAAA" &&
 			     &expandall_ip6($r->{'values'}->[0]) eq &expandall_ip6(&ip6int_to_net($orevrec->{'name'})))) {
 				&lock_file(&make_chroot($orevrec->{'file'}));

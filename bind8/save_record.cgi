@@ -510,9 +510,6 @@ else {
 		$orname = &make_reverse_name($in{'oldvalue0'}, $in{'type'},
 					     $orevconf);
 		}
-	print STDERR "value=$in{'value0'} oldvalue=$in{'oldvalue0'}\n";
-	print STDERR "rname=$rname orname=$orname\n";
-	print STDERR "revrec=$revrec orevrec=$orevrec\n";
 
 	if ($in{'rev'} && $orevrec && &can_edit_reverse($orevconf) &&
 	    $fulloldname eq $orevrec->{'values'}->[0] &&
@@ -522,7 +519,6 @@ else {
 		# Updating the reverse record. Either the name, address
 		# or both may have changed. Furthermore, the reverse record
 		# may now be in a different file!
-		print STDERR "editing record\n";
 		&lock_file(&make_chroot($orevfile));
 		&lock_file(&make_chroot($revfile));
 		@orrecs = &read_zone_file($orevfile, $orevconf->{'name'});
@@ -559,7 +555,6 @@ else {
 	       &can_edit_reverse($revconf)) {
 		# we don't handle the old reverse domain but handle the new 
 		# one.. create a new reverse record
-		print STDERR "adding record\n";
 	 	&lock_file(&make_chroot($revfile));
 		@rrecs = &read_zone_file($revfile, $revconf->{'name'});
 		&create_record($revfile, $rname,
