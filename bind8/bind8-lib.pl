@@ -782,18 +782,10 @@ else {
 	}
 
 # find reverse record
-# XXX
 if ($revconf) {
 	$revfile = &absolute_path($revconf->{'file'});
 	@revrecs = &read_zone_file($revfile, $revconf->{'name'});
-	$addr = &make_reverse_name($_[0], $ipv6 ? "AAAA" : "A", $revconf);
-	print STDERR "looking for $addr\n";
-	#if ($ipv6) {
-	#	$addr = &net_to_ip6int($_[0], 128);
-	#	}
-	#else {
-	#	$addr = &ip_to_arpa($_[0]);
-	#	}
+	$addr = &make_reverse_name($_[0], $ipv6 ? "AAAA" : "A", $revconf, 128);
 	foreach $rr (@revrecs) {
 		if ($rr->{'type'} eq "PTR" &&
 		    lc($rr->{'name'}) eq lc($addr)) {
@@ -853,11 +845,11 @@ if ($fwdconf) {
 return ($fwdconf, $fwdfile, $fwdrec);
 }
 
-# make_reverse_name(ip, type, &reverse-zone)
+# make_reverse_name(ip, type, &reverse-zone, ipv6-bits)
 # Returns the reverse record name for an IP
 sub make_reverse_name
 {
-local ($ip, $type, $revconf) = @_;
+local ($ip, $type, $revconf, $bits) = @_;
 if ($type eq "A") {
 	my $arpa = &ip_to_arpa($ip);
 	if ($revconf->{'name'} =~ /^(\d+)\/(\d+)\.(.*)/) {
@@ -869,7 +861,7 @@ if ($type eq "A") {
 	return $arpa;
 	}
 else {
-	return &net_to_ip6int($ip);
+	return &net_to_ip6int($ip, $bits);
 	}
 }
 
