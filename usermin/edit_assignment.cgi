@@ -10,25 +10,16 @@ $access{'assignment'} || &error($text{'acl_ecannot'});
 &read_file("$miniserv{'root'}/ulang/en", \%utext);
 
 &ui_print_header(undef, $text{'assignment_title'}, undef);
-print qq(
-$text{'assignment_desc'}<p>
-<form action="save_assignment.cgi">
-<table border><tr $tb>
-<td><b>$text{'assignment_header'}</b></td></tr>
-<tr $cb><td><table>
-);
-foreach ( @modules ){
-    $a++;
-    print "<tr></tr>" if $a%2;
-    print qq(<td>$_->{desc}</td><td>), &cats($_->{dir}, $_->{'category'}), "</td>\n";
-}
 
-print qq(
-</td></tr></table>
-</td></tr></table>
-<input type=submit value="$text{'assignment_ok'}">
-</form>
-);
+print &ui_form_start("save_assignment.cgi", "post");
+@grid = ( );
+foreach ( @modules ){
+    push(@grid, $_->{'desc'} || $_->{'dir'});
+    push(@grid, &cats($_->{'dir'}, $_->{'category'}));
+    }
+print &ui_grid_table(\@grid, 4, 100, [ "valign=middle","valign=middle","valign=middle","valign=middle" ], undef, $text{'assignment_header'});
+print &ui_form_end([ [ undef, $text{'assignment_ok'} ] ]);
+
 &ui_print_footer("", $text{'index_return'});
 
 sub cats {
@@ -43,9 +34,7 @@ sub cats {
     foreach (keys %catnames) {
 	$cats{$_} = $catnames{$_};
 	}
-    foreach $c (sort { $cats{$a} cmp $cats{$b} } keys %cats) {
-	$cats .= sprintf "<option value='%s' %s>%s</option>\n",
-			$c, $_[1] eq $c ? 'selected' : '', $cats{$c};
-	}
-    $cats = qq(<select name="$_[0]">$cats\n</select>\n);
+    return &ui_select($_[0], $_[1],
+                [ map { [ $_, $cats{$_} ] }
+                      sort { $cats{$a} cmp $cats{$b} } keys %cats ]);
 }
