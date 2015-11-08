@@ -767,6 +767,7 @@ else {
 			    : &ip_to_arpa(join('.', @octs[0..$i]));
 		$rev =~ s/\.$//g;
 		foreach $z (@zl) {
+			# Strip off prefix for partial reverse delegation
 			my $zname = $z->{'name'};
 			$zname =~ s/^(\d+)\/(\d+)\.//;
 			if ((lc($zname) eq $rev ||
@@ -785,12 +786,14 @@ else {
 if ($revconf) {
 	$revfile = &absolute_path($revconf->{'file'});
 	@revrecs = &read_zone_file($revfile, $revconf->{'name'});
-	if ($ipv6) {
-		$addr = &net_to_ip6int($_[0], 128);
-		}
-	else {
-		$addr = &ip_to_arpa($_[0]);
-		}
+	$addr = &make_reverse_name($_[0], $ipv6 ? "AAAA" : "A", $revconf);
+	print STDERR "looking for $addr\n";
+	#if ($ipv6) {
+	#	$addr = &net_to_ip6int($_[0], 128);
+	#	}
+	#else {
+	#	$addr = &ip_to_arpa($_[0]);
+	#	}
 	foreach $rr (@revrecs) {
 		if ($rr->{'type'} eq "PTR" &&
 		    lc($rr->{'name'}) eq lc($addr)) {
@@ -856,20 +859,18 @@ sub make_reverse_name
 {
 local ($ip, $type, $revconf) = @_;
 if ($type eq "A") {
-	my $arpa = &ip_to_arpa($in{'value0'});
+	my $arpa = &ip_to_arpa($ip);
 	if ($revconf->{'name'} =~ /^(\d+)\/(\d+)\.(.*)/) {
 		# Partial reverse delegation zone - last octet is actually
 		# inside it
 		my @arpa = split(/\./, $arpa);
-		return $arpa[0].".".$revconf->{'name'};
+		return $arpa[0].".".$revconf->{'name'}.".";
 		}
 	return $arpa;
 	}
 else {
-	return &net_to_ip6int($in{'value0'});
+	return &net_to_ip6int($ip);
 	}
-return $type eq "A" ? &ip_to_arpa($in{'value0'})
-		    : &net_to_ip6int($in{'value0'});
 }
 
 # can_edit_zone(&zone, [&view] | &cachedzone)
