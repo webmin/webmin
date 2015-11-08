@@ -10,7 +10,7 @@ $access{'lang'} || &error($text{'acl_ecannot'});
 print $text{'lang_intro'},"<p>\n";
 
 print &ui_form_start("change_lang.cgi", "post");
-print &ui_table_start($text{'lang_title2'}, undef, 2, [ "width=30%" ]);
+print &ui_table_start($text{'lang_title2'}, undef, 2);
 
 # Language
 $clang = $uconfig{'lang'} ? $uconfig{'lang'} : $default_lang;
