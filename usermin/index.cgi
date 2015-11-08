@@ -16,14 +16,15 @@ if (!-r "$config{'usermin_dir'}/miniserv.conf") {
 				$sconfig{'package_system'} eq 'dpkg' ? 'deb' :
 								       undef;
 			}
-		print "$text{'index_install'}<br>\n";
-		print "<center><form action=upgrade.cgi method=post enctype=multipart/form-data>\n";
-		print "<input type=hidden name=install value=1>\n";
-		print "<input type=hidden name=source value=2>\n";
-		print "<input type=hidden name=mode value='$mode'>\n";
-		print "<input type=submit value='",
-		    ($mode ? $text{'index_'.$mode} : $text{'index_tgz'}),"'>\n";
-		print "</form></center>\n";
+		print &ui_confirmation_form(
+			"upgrade.cgi",
+			$text{'index_install'},
+			[ [ "install", 1 ],
+			  [ "source", 2 ],
+			  [ "mode", $mode ] ],
+			[ [ undef, $mode ? $text{'index_'.$mode}
+					 : $text{'index_tgz'} ] ],
+			);
 		}
 	&ui_print_footer("/", $text{'index'});
 	exit;
@@ -31,8 +32,8 @@ if (!-r "$config{'usermin_dir'}/miniserv.conf") {
 elsif (&same_file($config{'usermin_dir'}, $config_directory)) {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 
-	print "<p>",&text('index_esame', "<tt>$config{'usermin_dir'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+	print &text('index_esame', "<tt>$config{'usermin_dir'}</tt>",
+		    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
 
 	&ui_print_footer("/", $text{'index'});
 	exit;
@@ -41,8 +42,8 @@ elsif (&same_file($config{'usermin_dir'}, $config_directory)) {
 if (!$miniserv{'root'} && !-d $miniserv{'root'}) {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 
-	print "<p>",&text('index_eroot', "<tt>$config{'usermin_dir'}</tt>",
-			  "<tt>$miniserv{'root'}</tt>"),"<p>\n";
+	print &text('index_eroot', "<tt>$config{'usermin_dir'}</tt>",
+		    "<tt>$miniserv{'root'}</tt>"),"<p>\n";
 
 	&ui_print_footer("/", $text{'index'});
 	exit;
