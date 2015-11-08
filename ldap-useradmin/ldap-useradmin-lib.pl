@@ -1195,7 +1195,7 @@ sub remove_accents
 {
 local ($string) = @_;
 eval "use Text::Unidecode; use utf8;";
-if (!$@ && 0) {
+if (!$@) {
 	utf8::decode($string);
 	$string = Text::Unidecode::unidecode($string);
 	}
