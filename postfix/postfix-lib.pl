@@ -592,7 +592,7 @@ sub regenerate_aliases
 	foreach $map (get_maps_types_files(get_real_value("alias_maps")))
 	{
 	    if (&file_map_type($map->[0])) {
-		    $out = &backquote_logged("$config{'postfix_aliases_table_command'} -c $config_dir $map->[1] 2>&1");
+		    $out = &backquote_logged("$config{'postfix_aliases_table_command'} -oA$map->[1] 2>&1");
 		    if ($?) { &error(&text('regenerate_table_efailed', $map->[1], $out)); }
 	    }
 	}
