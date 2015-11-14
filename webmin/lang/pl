@@ -607,6 +607,7 @@ session_err=Nie uda³o siê zachowaæ ustawieñ autoryzacji
 session_extauth=Zewnêtrzny program autentykacyjny (podobny do Squida)
 session_header=Opcje autoryzacji i&nbsp;sesji
 session_hostname=Pokazywaæ nazwê komputera na ekranie logowania?
+session_ip=Ograniczyæ sesje dla tego samego adresu IP klienta?
 session_local=Uwierzytelnianie lokalne
 session_localoff=Zawsze wymagaæ nazwy u¿ytkownika i&nbsp;has³a
 session_localon=Pozwoliæ na logowanie bez has³a dla odpowiednich u¿ytkowników z&nbsp;localhosta
@@ -947,6 +948,7 @@ upgrade_elatest=Aktualnie u¿ywasz najnowszej wersji Webmina
 upgrade_emerge=Najnowsza wersja z repozytorium Emerge
 upgrade_emod=Plik jest modu³em Webmina, a nie jego pe³n± aktualizacj±. Byæ mo¿e chcesz skorzystaæ ze strony <a href='$1'>Modu³y Webmina</a> aby go zainstalowaæ.
 upgrade_epackage=Nie jest to pakiet dla Solarisa
+upgrade_eportage=Funkcja aktualizacji Webmina nie dzia³a, gdy jest on zainstalowany z pakietu Portage. Zamiast tego zaktualizuj go poprzez narzêdzie Portage.
 upgrade_eroot=Webmin nie mo¿e byæ aktualizowany je¶li jego kod jest wspó³dzielony z innym systemem, np. wtedy, kiedy jest uruchomiony wewn±trz Strefy lub zamontowany z NFS.
 upgrade_erpm=Nie jest to poprawny plik RPM Webmina
 upgrade_err1=Nie uda³o siê wykonaæ aktualizacji z&nbsp;$1
