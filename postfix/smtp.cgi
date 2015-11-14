@@ -47,11 +47,11 @@ print &ui_table_start($text{'smtp_title'}, "width=100%", 4);
 &option_freefield("smtp_data_done_timeout", 15);
 &option_freefield("smtp_quit_timeout", 15);
 
+&option_yesno("smtp_use_tls");
+&option_freefield("smtp_sasl_security_options", 60);
+
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'opts_save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
-
-
-
 
