@@ -14,6 +14,7 @@ our ($module_root_directory, %text, %gconfig, $root_directory, %config,
      $module_config_directory, @lang_order_list, @root_directories,
      $module_var_directory);
 do "$module_root_directory/gnupg-lib.pl";
+do "$module_root_directory/letsencrypt-lib.pl";
 use Socket;
 
 our @cs_codes = ( 'cs_page', 'cs_text', 'cs_table', 'cs_header', 'cs_link' );

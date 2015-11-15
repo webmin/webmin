@@ -38,7 +38,7 @@ if ($@) {
 
 # Show tabs
 my @tabs = map { [ $_, $text{'ssl_tab'.$_}, "edit_ssl.cgi?mode=$_" ] }
-	    ( "ssl", "current", "ips", "create", "csr", "upload" );
+	    ( "ssl", "current", "ips", "create", "csr", "upload", "lets" );
 print ui_tabs_start(\@tabs, "mode", $in{'mode'} || $tabs[0]->[0], 1);
 
 # Basic SSL settings
@@ -248,6 +248,61 @@ print ui_table_row($text{'ssl_privchain'},
 
 print ui_table_end();
 print ui_form_end([ [ "save", $text{'save'} ] ]);
+print ui_tabs_end_tab();
+
+# Let's Encrypt form
+print ui_tabs_start_tab("mode", "lets");
+print "$text{'ssl_letsdesc'}<p>\n";
+
+my $err = &check_letsencrypt();
+if ($err) {
+	print "<b>",&text('ssl_letserr', $err),"</b><p>\n";
+	print &text('ssl_letserr2', "../config.cgi?$module_name"),"<p>\n";
+	}
+else {
+	# Show form to create a cert
+	print "$text{'ssl_letsdesc2'}<p>\n";
+	print &ui_form_start("letsencrypt.cgi");
+	print &ui_table_start($text{'ssl_letsheader'}, undef, 2);
+
+	# For domain name
+	print &ui_table_row($text{'ssl_letsdom'},
+		&ui_textbox("dom", $host, 40));
+
+	# Apache vhost or other path
+	my @opts;
+	if (&foreign_installed("apache")) {
+		&foreign_require("apache");
+		my $conf = &apache::get_config();
+		my @snames;
+		foreach my $virt (&apache::find_directive_struct(
+					"VirtualHost", $conf)) {
+			my $sn = &apache::find_directive(
+				"ServerName", $virt->{'members'});
+			if ($sn) {
+				push(@snames, [ $sn, $sn ]);
+				}
+			else {
+				push(@snames, [ $sn, $text{'default'} ]);
+				}
+			}
+		if (@snames) {
+			@snames = &unique(@snames);
+			@snames = sort { $a cmp $b } @snames;
+			push(@opts, [ 0, $text{'ssl_webroot0'} ]);
+			push(@opts, [ 1, $text{'ssl_webroot1'},
+				      &ui_select("vhost", undef, \@snames) ]);
+			}
+		}
+	push(@opts, [ 2, $text{'ssl_webroot2'},
+		      &ui_textbox("webroot", undef, 40) ]);
+	print &ui_table_row($text{'ssl_webroot'},
+		&ui_radio_table("webroot_mode", 0, \@opts));
+
+	print &ui_table_end();
+	print &ui_form_end([ [ undef, $text{'ssl_letsok'} ] ]);
+	}
+
 print ui_tabs_end_tab();
 
 print ui_tabs_end(1);
