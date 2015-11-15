@@ -405,6 +405,7 @@ ssl_webroot0=Apache virtual host matching hostname
 ssl_webroot1=A different Apache virtual host
 ssl_webroot2=Other directory
 ssl_letsok=Request Certificate
+ssl_usewebmin=Copy new key and certificate to Webmin?
 
 newkey_err=Failed to create SSL key
 newkey_ecn=Missing or invalid server name
@@ -1090,6 +1091,22 @@ twofactor_secret0=Use 16-character key
 twofactor_esecret=Secret key must be exactly 16 characters long and contain only letters and numbers
 twofactor_esession=Two-factor authentication cannot be used unless session-based authentication is active
 
+letsencrypt_title=Let's Encrypt Certificate Request
+letsencrypt_err=Failed to request certificate
 letsencrypt_ecmd=The client command $1 was not found on your system
+letsencrypt_edroot=The Apache virtual host $1 has no document directory!
+letsencrypt_edom=Missing or invalid domain name
+letsencrypt_ewebroot=Website document directory does not exist
+letsencrypt_evhost=No virtual host matching $1 was found
+letsencrypt_efull=Expected full certificate file $1 was not found
+letsencrypt_ecert=Expected certificate file $1 was not found
+letsencrypt_ekey=Expected private key file $1 was not found
+letsencrypt_doing=Requesting a new certificate for $1, using the website directory $2 ..
+letsencrypt_failed=.. request failed : $1
+letsencrypt_done=.. request succeeded!
+letsencrypt_show=The new certificate and private key were written to the following files :
+letsencrypt_cert=SSL certificate
+letsencrypt_key=SSL private key
+letsencrypt_chain=Chained CA certificate
 
 __norefs=1
