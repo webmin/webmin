@@ -8,6 +8,7 @@ require "./webmin-lib.pl";
 our %text;
 our %miniserv;
 our %in;
+our $config_directory;
 &error_setup($text{'letsencrypt_err'});
 
 # Validate inputs
@@ -65,6 +66,38 @@ else {
 
 	if ($in{'use'}) {
 		# Copy cert, key and chain to Webmin
+		print $text{'letsencrypt_webmin'},"<p>\n";
+		&lock_file($ENV{'MINISERV_CONFIG'});
+		&get_miniserv_config(\%miniserv);
+
+		$miniserv{'keyfile'} = $config_directory.
+				       "/letsencrypt-key.pem";
+		&lock_file($miniserv{'keyfile'});
+		&copy_source_dest($key, $miniserv{'keyfile'});
+		&unlock_file($miniserv{'keyfile'});
+
+		$miniserv{'certfile'} = $config_directory.
+				        "/letsencrypt-cert.pem";
+		&lock_file($miniserv{'certfile'});
+		&copy_source_dest($cert, $miniserv{'certfile'});
+		&unlock_file($miniserv{'certfile'});
+
+		if ($chain) {
+			$miniserv{'extracas'} = $config_directory.
+						"/letsencrypt-ca.pem";
+			&lock_file($miniserv{'extracas'});
+			&copy_source_dest($chain, $miniserv{'extracas'});
+			&unlock_file($miniserv{'extracas'});
+			}
+		else {
+			delete($miniserv{'extracas'});
+			}
+		&put_miniserv_config(\%miniserv);
+		&unlock_file($ENV{'MINISERV_CONFIG'});
+
+		&webmin_log("letsencrypt");
+		&restart_miniserv(1);
+		print $text{'letsencrypt_wdone'},"<p>\n";
 		}
 	else {
 		# Just tell the user

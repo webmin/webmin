@@ -127,3 +127,5 @@ Added support for two-factor authentication using Authy or Google Authenticator.
 Updated the UI on several pages to use the standard Webmin library, for a more consistent look.
 ---- Changes since 1.730 ----
 Added an option to use an SSL connection when Webmin sends email, for connecting to remote mail servers like Gmail that don't allow unencrypted SMTP.
+---- Changes since 1.770 ----
+An SSL certificate can now be requested from Let's Encrypt using a new tab on the SSL Encryption page.

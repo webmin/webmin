@@ -396,7 +396,7 @@ ssl_already1=Previously generated private key :
 ssl_already2=Previously generated certificate signing request :
 ssl_letsdesc=Let's Encrypt is a free, automated, and open certificate authority that can be used to generate an SSL certificate for use by Webmin.
 ssl_letserr=Unfortunately, Let's Encrypt cannot be used on your system : $1.
-ssl_letserr2=Check the <a href='$1'>module configuration</a> page to ensure you are using the correct path to the <tt>letsencrypt</tt> command.
+ssl_letserr2=Check the <a href='$1'>module configuration</a> page to ensure you are using the correct path to the <tt>letsencrypt</tt> or <tt>letsencrypt-auto</tt> command.
 ssl_letsdesc2=This page can be used to request a new certificate, which will overwrite any other currently have configured in Webmin. However, the Let's Encrypt service requires that your ownership of the certificate domain be validated by checking that this system hosts the website for the domain. This is done by placing a small temporary file in the website's document directory.
 ssl_letsheader=Options for new SSL certificate
 ssl_letsdom=Hostname for certificate
@@ -1108,5 +1108,7 @@ letsencrypt_show=The new certificate and private key were written to the followi
 letsencrypt_cert=SSL certificate
 letsencrypt_key=SSL private key
 letsencrypt_chain=Chained CA certificate
+letsencrypt_webmin=Configuring Webmin to use new cert and key ..
+letsencrypt_wdone=.. done!
 
 __norefs=1
