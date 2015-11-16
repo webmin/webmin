@@ -314,7 +314,8 @@ opts_smtp_data_init_timeout=Timeout on waiting for answer to DATA
 opts_smtp_data_xfer_timeout=Timeout on waiting for answer to transmit of message content
 opts_smtp_data_done_timeout=Timeout on waiting for answer to ending &quot;.&quot;
 opts_smtp_quit_timeout=Timeout on waiting for answer to QUIT
-
+opts_smtp_use_tls=Use TLS for SMTP connections
+opts_smtp_sasl_security_options=SASL security options
 
 rate_title=Delivery rates
 rate_ecannot=You are not allowed to edit the delivery rates options
