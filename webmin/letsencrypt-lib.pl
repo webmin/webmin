@@ -1,5 +1,5 @@
 # Functions for cert creation with Let's Encrypt
-# XXX renewal?
+# TODO: Renewal support
 
 # check_letsencrypt()
 # Returns undef if all dependencies are installed, or an error message
@@ -29,7 +29,7 @@ if ($out =~ /(\/.*\.pem)/) {
 	$full = $1;
 	}
 else {
-	$full = "/etc/letsencrypt/live/$dom/fullchain.pem";
+	&error("Output did not contain a PEM path!");
 	}
 -r $full || return (0, &text('letsencrypt_efull', $full));
 $full =~ s/\/[^\/]+$//;

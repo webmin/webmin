@@ -1,6 +1,6 @@
 #!/usr/bin/perl
-# edit_ssl.cgi
 # Webserver SSL form
+
 use strict;
 use warnings;
 
@@ -279,16 +279,13 @@ else {
 					"VirtualHost", $conf)) {
 			my $sn = &apache::find_directive(
 				"ServerName", $virt->{'members'});
-			if ($sn) {
-				push(@snames, [ $sn, $sn ]);
-				}
-			else {
-				push(@snames, [ $sn, $text{'default'} ]);
-				}
+			push(@snames, [ $sn,
+					$sn || "&lt;".$text{'default'}."&gt;" ]);
 			}
+		my %done;
+		@snames = grep { !$done{$_->[0]}++ } @snames;
 		if (@snames) {
-			@snames = &unique(@snames);
-			@snames = sort { $a cmp $b } @snames;
+			@snames = sort { $a->[0] cmp $b->[0] } @snames;
 			push(@opts, [ 0, $text{'ssl_webroot0'} ]);
 			push(@opts, [ 1, $text{'ssl_webroot1'},
 				      &ui_select("vhost", undef, \@snames) ]);
@@ -298,6 +295,9 @@ else {
 		      &ui_textbox("webroot", undef, 40) ]);
 	print &ui_table_row($text{'ssl_webroot'},
 		&ui_radio_table("webroot_mode", 0, \@opts));
+
+	print &ui_table_row($text{'ssl_usewebmin'},
+		&ui_yesno_radio("use", 1));
 
 	print &ui_table_end();
 	print &ui_form_end([ [ undef, $text{'ssl_letsok'} ] ]);
