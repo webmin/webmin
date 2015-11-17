@@ -585,6 +585,11 @@ if ($_[0] eq 'tar') {
 	# Multiple files
 	print &ui_table_row(&hlink($text{'restore_multi'},"rmulti"),
 		      &ui_yesno_radio("multi", 0), 1, $tds);
+
+	# rmt path option
+	print &ui_table_row(&hlink($text{'dump_rmt'},"rmt"),
+		&ui_opt_textbox("rmt", $_[0]->{'rmt'}, 30, $text{'default'}),
+		3, $tds);
 	}
 elsif ($_[0] eq 'xfs') {
 	# xfs restore options
@@ -697,6 +702,10 @@ if ($_[0] eq 'tar') {
 	local $rsh = &rsh_command_parse("rsh_def", "rsh");
 	if ($rsh) {
 		$cmd .= " --rsh-command=".quotemeta($rsh);
+		}
+	if (!$in{'rmt_def'}) {
+		$in{'rmt'} =~ /^\S+$/ || &error($text{'dump_ermt'});
+		$cmd .= " --rmt-command=".quotemeta($in{'rmt'});
 		}
 	$cmd .= " $in{'extra'}" if ($in{'extra'});
 	if (!$in{'files_def'}) {
