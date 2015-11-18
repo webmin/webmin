@@ -297,6 +297,7 @@ lang_ok=Sprache &#228;ndern
 lang_title=Sprache
 lang_title2=Webmin-Sprache
 letsencrypt_cert=SSL Zertifikat
+letsencrypt_doing=Anfordern eines neuen Zertifikats f&#252;r $1, zur Nutzung des Website Verzeichnisses $2 ..
 letsencrypt_done=.. Anfrage erfolgreich!
 letsencrypt_ecert=Erwartete Zertifikatsdatei $1 wurde nicht gefunden
 letsencrypt_ecmd=Der Client-Befehl $1 wurde auf Ihrem System nicht gefunden
@@ -309,6 +310,7 @@ letsencrypt_evhost=Kein virtueller Host entsprechend $1 wurde gefunden
 letsencrypt_ewebroot=Webseiten "document" Verzeichnis existiert nicht
 letsencrypt_failed=.. Anfrage fehlgeschlagen : $1
 letsencrypt_key=SSL privater Schl&#252;ssel
+letsencrypt_show=Das neue Zertifikat und privaten Schl&#252;ssel wurde in den folgenden Dateien geschrieben :
 letsencrypt_title=Let's Encrypt Zertifikatsanfrage
 letsencrypt_wdone=.. fertig!
 letsencrypt_webmin=Konfiguriert Webmin ein neues Zertifikat und Schl&#252;ssel zu benutzen ..
@@ -708,7 +710,7 @@ ssl_leavechain=Benutze bestehendes verbundenes Zertifikat
 ssl_letsdesc=Let's Encrypt ist eine kostenlose, automatisierte und offene Zertifizierungsstelle, die verwendet werden kann, um ein SSL-Zertifikat f&#252;r die Verwendung von Webmin zu generieren.
 ssl_letsdom=Hostname f&#252;r Zertifikat
 ssl_letserr=Leider kann Let's Encrypt auf Ihrem System nicht genutzt werden : $1.
-ssl_letserr2=Pr&#252;fe die <a href='$1'>Modulkonfiguration</a> Seite, um sicherzustellen, dass Sie den richtigen Pfad zu dem <tt>letsencrypt</tt> Befehl benutzen.
+ssl_letserr2=Pr&#252;fe die <a href='$1'>Modulkonfiguration</a> Seite, um sicherzustellen, dass Sie den richtigen Pfad zu dem <tt>letsencrypt</tt> oder <tt>letsencrypt-auto</tt> Befehl benutzen.
 ssl_letsheader=Optionen f&#252;r neues SSL-Zertifikat
 ssl_letsok=Zertifikat anfragen
 ssl_newcsr=Dieses Formular kann verwendet werden, um einen neuen SSL-Schl&#252;ssel und das Zertifikat Signing Request (CSR) f&#252;r Ihren Webmin-Server zu erstellen. Die CSR muss von einer Zertifizierungsstelle (CA) signiert werden, bevor sie verwendet werden k&#246;nnen.
