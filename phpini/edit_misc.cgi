@@ -74,6 +74,12 @@ print &ui_table_row(&hlink($text{'misc_timezone'}, "misc_timezone"),
 				     " ($z->{'comment'})" : "")  ] }
 			 (sort keys %tzlist) ], 1, 0, 0, 0), 3);
 
+# Default charset
+$charset = &find_value("default_charset", $conf);
+print &ui_table_row($text{'misc_charset'},
+		    &ui_opt_textbox("default_charset", $charset, 20,
+				    $text{'default'}));
+
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 

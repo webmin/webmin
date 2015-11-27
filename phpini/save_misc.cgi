@@ -57,6 +57,10 @@ else {
 &save_directive($conf, "date.timezone",
 	$in{"date.timezone"} || undef);
 
+# Save default charset
+&save_directive($conf, "default_charset",
+	$in{'default_charset_def'} ? undef : $in{'default_charset'});
+
 &flush_file_lines_as_user($in{'file'});
 &unlock_file($in{'file'});
 &graceful_apache_restart();
