@@ -647,8 +647,8 @@ local @disks;
 local $d;
 foreach $d (&fdisk::list_disks_partitions()) {
 	foreach $p (@{$d->{'parts'}}) {
-		next if ($used{$p->{'device'}} || $p->{'extended'} ||
-			 $skip{$p->{'device'}});
+		next if ($used{$p->{'device'}} || $used{$d->{'device'}} ||
+			 $p->{'extended'} || $skip{$p->{'device'}});
 		local @st = &device_status($p->{'device'});
 		next if (@st);
 		$tag = $p->{'type'} ? &fdisk::tag_name($p->{'type'}) : undef;
