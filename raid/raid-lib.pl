@@ -37,7 +37,7 @@ local %mdstat;
 local $lastdev;
 open(MDSTAT, $config{'mdstat'});
 while(<MDSTAT>) {
-	if (/^(md\d+)\s*:\s+(\S+)\s+(\S+)\s+(.*)\s+(\d+)\s+blocks\s*(.*)resync=([0-9\.]+)/) {
+	if (/^(md\d+)\s*:\s+(\S+)\s+(\S+)\s+(.*)\s+(\d+)\s+blocks\s*(.*)resync=([0-9\.]+|delayed)/) {
 		$mdstat{$lastdev = "/dev/$1"} = [ $2, $3, $4, $5, $7, $6 ];
 		}
 	elsif (/^(md\d+)\s*:\s+(\S+)\s+(\S+)\s+(.*)\s+(\d+)\s+blocks\s*(.*)/) {

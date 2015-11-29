@@ -45,7 +45,9 @@ if ($raid->{'size'}) {
 	        "(".&nice_size($raid->{'size'}*1024).")");
 	}
 if ($raid->{'resync'}) {
-	print &ui_table_row($text{'view_resync'}, "$raid->{'resync'} \%");
+	print &ui_table_row($text{'view_resync'},
+		$raid->{'resync'} eq 'delayed' ? $text{'view_delayed'}
+					       : "$raid->{'resync'} \%");
 	}
 
 # Superblock?

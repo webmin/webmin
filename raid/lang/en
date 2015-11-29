@@ -90,6 +90,7 @@ view_disks=Partitions in RAID
 view_spares=Spare partitions
 view_size=Usable size
 view_resync=Percent of resync done
+view_delayed=Waiting on another device
 view_down=(Down)
 view_cannot=This RAID device cannot be modified as it is currently mounted.
 view_cannot2=This RAID device cannot be mounted, de-activated, deleted or re-formatted as it is currently active.
