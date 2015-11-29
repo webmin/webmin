@@ -103,8 +103,10 @@ sub get_default_db
 local @poss = (
 		"olcDatabase={1}hdb,cn=config",
 		"olcDatabase={1}bdb,cn=config",
+		"olcDatabase={1}mdb,cn=config",
 		"olcDatabase={2}hdb,cn=config",
 		"olcDatabase={2}bdb,cn=config",
+		"olcDatabase={2}mdb,cn=config",
 	      );
 foreach my $p (@poss) {
 	local @w = split(/,/, $p);
