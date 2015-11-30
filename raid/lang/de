@@ -117,6 +117,7 @@ view_convert_to_raid5=Konvertiere zu RAID5
 view_convert_to_raid5desc=Konvertiere RAID Level nach RAID5 durch Entfernen eines Laufwerkes.
 view_convert_to_raid6=Konvertiere zu RAID6
 view_convert_to_raid6desc=Konvertiere RAID Level nach RAID6 durch Hinzuf&#252;gen eines Laufwerkes.
+view_delayed=Warten auf ein anderes Ger&#228;t
 view_delete=L&#246;sche RAID-Array
 view_deletedesc=Klicken Sie auf diesen Button, um dieses RAID-Ger&#228;t komplett zu entfernen. Mit an Sicherheit grenzender Wahrscheinlichkeit werden alle im RAID bzw. auf den Partitionen befindlichen Daten unwideruflich zerst&#246;rt oder zumindest nicht mehr lesbar sein.
 view_device=Ger&#228;tedatei
