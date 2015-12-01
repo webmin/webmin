@@ -84,7 +84,8 @@ else {
 		}
 
 	# Set SSL fields
-	if ($mysql_version >= 5 && defined($in{'ssl_type'})) {
+	if ($mysql_version >= 5 && defined($in{'ssl_type'}) &&
+	    (!$in{'new'} || $in{'ssl_type'} || $in{'ssl_cipher'})) {
 		&execute_sql_logged($master_db,
 			"update user set ssl_type = ? ".
 			"where user = ? and host = ?",
