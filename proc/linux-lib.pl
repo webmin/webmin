@@ -7,7 +7,8 @@ sub get_ps_version
 {
 if (!$get_ps_version_cache) {
 	local $out = &backquote_command("ps V 2>&1");
-	if ($out =~ /version\s+([0-9\.]+)\./) {
+	if ($out =~ /version\s+([0-9\.]+)\./ ||
+	    $out =~ /\S+\s+([3-9][0-9\.]+)\./) {
 		$get_ps_version_cache = $1;
 		}
 	}
