@@ -543,7 +543,7 @@ elsif ($init_mode eq "systemd") {
 	if ($out =~ /UnitFileState=(\S+)/ &&
 	    $out !~ /Description=LSB:\s/) {
 		# Exists .. but is it started at boot?
-		return lc($1) eq 'enabled' ? 2 : 1;
+		return lc($1) eq 'enabled' || lc($1) eq 'static' ? 2 : 1;
 		}
 	}
 if ($init_mode eq "init" || $init_mode eq "upstart" ||
