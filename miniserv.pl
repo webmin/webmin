@@ -3241,7 +3241,6 @@ else {
 	local $data = &read_data($len);
 	if ($data eq '' && $len) {
 		# End of socket
-		print STDERR "finished reading - shutting down socket\n";
 		shutdown(SOCK, 0);
 		}
 	substr($$bufref, $offset, length($data)) = $data;
@@ -3276,7 +3275,6 @@ else {
 	my $nl = &read_line(0, 1);
 	if ($nl eq '') {
 		# End of socket
-		print STDERR "finished reading - shutting down socket\n";
 		shutdown(SOCK, 0);
 		}
 	$line .= $nl if (defined($nl));
