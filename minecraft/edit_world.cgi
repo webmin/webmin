@@ -40,6 +40,8 @@ if ($in{'new'}) {
 		}
 	push(@opts, [ 2, $text{'world_src2'},
 		      &ui_upload("upload") ]);
+	push(@opts, [ 3, $text{'world_src3'},
+		      &ui_filebox("file", undef, 40) ]);
 	print &ui_table_row($text{'world_src'},
 		&ui_radio_table("src", 0, \@opts));
 	}

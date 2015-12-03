@@ -52,14 +52,21 @@ if ($in{'new'}) {
 			&execute_minecraft_command("save-on");
 			}
 		}
-	elsif ($in{'src'} == 2) {
-		# From uploaded file
-		$in{'upload'} || &error($text{'world_eupload'});
+	elsif ($in{'src'} == 2 || $in{'src'} == 3) {
+		# From uploaded or local file
 		my $temp = &transname();
-		my $fh = "ZIP";
-		&open_tempfile($fh, ">$temp", 0, 1);
-		&print_tempfile($fh, $in{'upload'});
-		&close_tempfile($fh);
+		if ($in{'src'} == 2) {
+			$in{'upload'} || &error($text{'world_eupload'});
+			my $fh = "ZIP";
+			&open_tempfile($fh, ">$temp", 0, 1);
+			&print_tempfile($fh, $in{'upload'});
+			&close_tempfile($fh);
+			}
+		else {
+			$in{'file'} || &error($text{'world_efile'});
+			-r $in{'file'} || &error($text{'world_efile2'});
+			&copy_source_dest($in{'file'}, $temp);
+			}
 		my $out = &backquote_command("file ".$temp);
 		$out =~ /Zip\s+archive/i || &error($text{'world_ezip'});
 		my $tempdir = &transname();
