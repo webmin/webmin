@@ -1590,11 +1590,15 @@ output while performing some long-running process.
 =cut
 sub ui_print_unbuffered_header
 {
+my @args = @_;
 &load_theme_library();
-return &theme_ui_print_unbuffered_header(@_) if (defined(&theme_ui_print_unbuffered_header));
+return &theme_ui_print_unbuffered_header(@args)
+	if (defined(&theme_ui_print_unbuffered_header));
 $| = 1;
 $theme_no_table = 1;
-&ui_print_header(@_);
+$args[9] .= " " if ($args[9]);
+$args[9] .= " data-pagescroll=true";
+&ui_print_header(@args);
 }
 
 =head2 ui_print_footer(args...)
