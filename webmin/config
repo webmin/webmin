@@ -5,4 +5,3 @@ updays=1
 cron_mode=0
 osdn=1
 warn_days=7
-letsencrypt_cmd=letsencrypt

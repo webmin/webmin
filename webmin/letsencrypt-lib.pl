@@ -1,12 +1,17 @@
 # Functions for cert creation with Let's Encrypt
 # TODO: Renewal support
 
+$letsencrypt_cmd = $config{'letsencrypt_cmd'} ||
+		   &has_command("letsencrypt-auto") ||
+		   &has_command("letsencrypt") ||
+		   "letsencrypt";
+
 # check_letsencrypt()
 # Returns undef if all dependencies are installed, or an error message
 sub check_letsencrypt
 {
-&has_command($config{'letsencrypt_cmd'}) ||
-	return &text('letsencrypt_ecmd', "<tt>$config{'letsencrypt_cmd'}</tt>");
+&has_command($letsencrypt_cmd) ||
+	return &text('letsencrypt_ecmd', "<tt>$letsencrypt_cmd</tt>");
 return undef;
 }
 
@@ -17,9 +22,9 @@ return undef;
 sub request_letsencrypt_cert
 {
 my ($dom, $webroot) = @_;
-my $dir = $config{'letsencrypt_cmd'};
+my $dir = $letsencrypt_cmd;
 $dir =~ s/\/[^\/]+$//;
-my $out = &backquote_command("cd $dir && $config{'letsencrypt_cmd'} certonly -a webroot -d ".quotemeta($dom)." --webroot-path ".quotemeta($webroot)." --agree-dev-preview --duplicate </dev/null 2>&1");
+my $out = &backquote_command("cd $dir && $letsencrypt_cmd certonly -a webroot -d ".quotemeta($dom)." --webroot-path ".quotemeta($webroot)." --duplicate </dev/null 2>&1");
 if ($?) {
 	return (0, $out);
 	}
