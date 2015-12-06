@@ -126,8 +126,8 @@ while($line = <$fh>) {
 		local $oldline = $_[1];
 		$_[1]++;
 		local @dirs = &parse_config_file($fh, $_[1], $_[2]);
-		if (!$not && $defs{$def} ||
-		    $not && !$defs{$def}) {
+		if (!$not && defined($defs{$def}) ||
+		    $not && !defined($defs{$def})) {
 			# use the directives..
 			push(@rv, { 'line', $oldline,
 				    'eline', $oldline,
