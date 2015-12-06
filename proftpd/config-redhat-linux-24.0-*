@@ -6,3 +6,5 @@ test_always=0
 test_manual=0
 stop_cmd=systemctl stop proftpd.service
 start_cmd=systemctl start proftpd.service
+defines_file=/etc/sysconfig/proftpd
+defines_name=PROFTPD_OPTIONS

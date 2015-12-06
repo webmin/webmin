@@ -80,6 +80,15 @@ $dummy{'file'} = $_[2];
 $dummy{'type'} = 0;
 $dummy{'name'} = "dummy";
 @rv = (\%dummy);
+local %defs;
+foreach my $d (&get_httpd_defines()) {
+        if ($d =~ /^(\S+)=(.*)$/) {
+                $defs{$1} = $2;
+                }
+        else {
+                $defs{$d} = '';
+                }
+        }
 while($line = <$fh>) {
 	chop;
 	$line =~ s/^\s*#.*$//g;
@@ -117,8 +126,8 @@ while($line = <$fh>) {
 		local $oldline = $_[1];
 		$_[1]++;
 		local @dirs = &parse_config_file($fh, $_[1], $_[2]);
-		if (!$not && $httpd_defines{$def} ||
-		    $not && !$httpd_defines{$def}) {
+		if (!$not && $defs{$def} ||
+		    $not && !$defs{$def}) {
 			# use the directives..
 			push(@rv, { 'line', $oldline,
 				    'eline', $oldline,
@@ -873,6 +882,60 @@ else {
 	$out = &backquote_logged("$config{'proftpd_path'} 2>&1 </dev/null");
 	}
 return $? ? "<pre>$out</pre>" : undef;
+}
+
+# get_httpd_defines()
+# Returns a list of defines that need to be passed to ProFTPd
+sub get_httpd_defines
+{
+if (@get_httpd_defines_cache) {
+	return @get_httpd_defines_cache;
+	}
+local @rv;
+if ($config{'defines_file'}) {
+	# Add defines from an environment file, which can be in
+	# the format :
+	# OPTIONS='-Dfoo -Dbar'
+	# or regular name=value format
+	local %def;
+	&read_env_file($config{'defines_file'}, \%def);
+	if ($config{'defines_name'} && $def{$config{'defines_name'}}) {
+		# Looking for var like OPTIONS='-Dfoo -Dbar'
+		local $var = $def{$config{'defines_name'}};
+		foreach my $v (split(/\s+/, $var)) {
+			if ($v =~ /^-[Dd](\S+)$/) {
+				push(@rv, $1);
+				}
+			else {
+				push(@rv, $v);
+				}
+			}
+		}
+	else {
+		# Looking for regular name=value directives.
+		# Remove $SUFFIX variable seen on debian that is computed
+		# dynamically, but is usually empty.
+		foreach my $k (keys %def) {
+			$def{$k} =~ s/\$SUFFIX//g;
+			push(@rv, $k."=".$def{$k});
+			}
+		}
+	}
+foreach my $md (split(/\t+/, $config{'defines_mods'})) {
+	# Add HAVE_ defines from modules
+	opendir(DIR, $md);
+	while(my $m = readdir(DIR)) {
+		if ($m =~ /^(mod_|lib)(.*).so$/i) {
+			push(@rv, "HAVE_".uc($2));
+			}
+		}
+	closedir(DIR);
+	}
+foreach my $d (split(/\s+/, $config{'defines'})) {
+	push(@rv, $d);
+	}
+@get_httpd_defines_cache = @rv;
+return @rv;
 }
 
 1;
