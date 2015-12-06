@@ -5,7 +5,12 @@
 require './usermin-lib.pl';
 $access{'upgrade'} || &error($text{'acl_ecannot'});
 &foreign_require("proc", "proc-lib.pl");
-&ReadParseMime();
+if ($ENV{'REQUEST_METHOD'} eq 'GET') {
+	&ReadParse();
+	}
+else {
+	&ReadParseMime();
+	}
 &get_usermin_miniserv_config(\%miniserv);
 
 &ui_print_unbuffered_header(undef, $in{'install'} ? $text{'upgrade_title2'} : $text{'upgrade_title'}, "");
