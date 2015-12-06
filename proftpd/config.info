@@ -10,3 +10,7 @@ pid_file=Path to ProFTPD PID file,3,None
 ftpusers=Path to ftpusers file,0
 start_cmd=Command to start ProFTPD,3,Automatic
 stop_cmd=Command to stop ProFTPD,3,Just kill process
+line3=ProFTPD variables,11
+defines_file=Environment file defining ProFTPD variables,3,None
+defines_name=Environment variable name in above file,0
+defines_mods=Directories containing modules for HAVE_ variables,9,40,3,\t
