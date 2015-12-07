@@ -84,12 +84,17 @@ EOF
 $old_user_priv_cols = $mysql_version >= 4 ? 21 : 14;
 $old_db_priv_cols = $mysql_version >= 4 ? 12 : 10;
 
-@mysql_set_variables = ( "key_buffer", "sort_buffer", "net_buffer_length",
-			 "myisam_sort_buffer_size" );
+@mysql_set_variables = ( "key_buffer", "sort_buffer", "net_buffer_length" );
 @mysql_number_variables = ( $mysql_version >= 5.6 ? "table_open_cache"
 						  : "table_cache",
 			    "max_connections" );
 @mysql_byte_variables = ( "query_cache_size", "max_allowed_packet" );
+if ($mysql_version >= 5) {
+	push(@mysql_byte_variables, "myisam_sort_buffer_size");
+	}
+else {
+	push(@mysql_set_variables, "myisam_sort_buffer_size");
+	}
 
 # make_authstr([login], [pass], [host], [port], [sock], [unix-user])
 # Returns a string to pass to MySQL commands to login to the database
