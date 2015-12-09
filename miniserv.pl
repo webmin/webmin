@@ -4662,7 +4662,7 @@ if ($config{'userdb'}) {
 			return undef;
 			}
 		my ($u) = $rv->all_entries();
-		if (!$u) {
+		if (!$u || $u->cn() ne $username) {
 			&disconnect_userdb($config{'userdb'}, $dbh);
                         $get_user_details_cache{$username} = undef;
 			print DEBUG "get_user_details: User not found\n";
