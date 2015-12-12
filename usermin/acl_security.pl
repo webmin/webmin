@@ -5,51 +5,39 @@ require 'usermin-lib.pl';
 # Output HTML for editing security options for the usermin module
 sub acl_security_form
 {
-print "<tr> <td valign=top><b>$text{'acl_icons'}</b></td>\n";
-print "<td colspan=3><select name=icons multiple size=10>\n";
-foreach $i (&get_icons()) {
-	printf "<option value=%s %s>%s</option>\n",
-		$i, $_[0]->{$i} ? "selected" : "", $text{"${i}_title"};
-	}
-print "</select></td> </tr>\n";
+my ($o) = @_;
+print &ui_table_row($text{'acl_icons'},
+	&ui_select("icons", [ keys %$o ],
+		   [ map { [ $_, $text{$_."_title"} ] } &get_icons() ],
+		   10, 1));
 
-print "<tr> <td valign=top><b>$text{'acl_mods'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=mods_def value=1 %s> %s\n",
-	$_[0]->{'mods'} eq '*' ? 'checked' : '', $text{'acl_all'};
-printf "<input type=radio name=mods_def value=0 %s> %s<br>\n",
-	$_[0]->{'mods'} eq '*' ? '' : 'checked', $text{'acl_sel'};
-local %mods = map { $_, 1 } split(/\s+/, $_[0]->{'mods'});
-print "<select name=mods multiple size=10>\n";
-foreach $m (&list_modules()) {
-	printf "<option value=%s %s>%s</option>\n",
-		$m->{'dir'}, $mods{$m->{'dir'}} ? "selected" : "", $m->{'desc'};
-	}
-print "</select></td> </tr>\n";
+print &ui_table_row($text{'acl_mods'},
+	&ui_radio("mods_def", $o->{'mods'} eq '*' ? 1 : 0,
+		  [ [ 1, $text{'acl_all'} ],
+		    [ 0, $text{'acl_sel'} ] ])."<br>\n".
+	&ui_select("mods", [ split(/\s+/, $o->{'mods'}) ],
+		   [ map { [ $_->{'dir'}, $_->{'desc'} ] } &list_modules() ],
+		   10, 1));
 
-print "<tr> <td><b>$text{'acl_stop'}</b></td>\n";
-printf "<td><input type=radio name=stop value=1 %s> %s\n",
-	$_[0]->{'stop'} ? "checked" : "", $text{'yes'};
-printf "<input type=radio name=stop value=0 %s> %s</td>\n",
-	$_[0]->{'stop'} ? "" : "checked", $text{'no'};
+print &ui_table_row($text{'acl_stop'},
+	&ui_yesno_radio("stop", $o->{'stop'}));
 
-print "<td><b>$text{'acl_bootup'}</b></td>\n";
-printf "<td><input type=radio name=bootup value=1 %s> %s\n",
-	$_[0]->{'bootup'} ? "checked" : "", $text{'yes'};
-printf "<input type=radio name=bootup value=0 %s> %s</td> </tr>\n",
-	$_[0]->{'bootup'} ? "" : "checked", $text{'no'};
+print &ui_table_row($text{'acl_bootup'},
+	&ui_yesno_radio("bootup", $o->{'bootup'}));
 }
 
 # acl_security_save(&options)
 # Parse the form for security options for the usermin module
 sub acl_security_save
 {
-local %icons = map { $_, 1 } split(/\0/, $in{'icons'});
-foreach $i (&get_icons()) {
-	$_[0]->{$i} = $icons{$i};
+my ($o) = @_;
+my %icons = map { $_, 1 } split(/\0/, $in{'icons'});
+foreach my $i (&get_icons()) {
+	$o->{$i} = $icons{$i};
 	}
-$_[0]->{'mods'} = $in{'mods_def'} ? "*" : join(" ", split(/\0/, $in{'mods'}));
-$_[0]->{'stop'} = $in{'stop'};
-$_[0]->{'bootup'} = $in{'bootup'};
+$o->{'mods'} = $in{'mods_def'} ? "*" : join(" ", split(/\0/, $in{'mods'}));
+$o->{'stop'} = $in{'stop'};
+$o->{'bootup'} = $in{'bootup'};
 }
 
 sub get_icons
