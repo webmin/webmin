@@ -9,35 +9,31 @@ $access{'users'} || &error($text{'acl_ecannot'});
 
 print $text{'users_desc'}," ",$text{'users_desc2'},"<p>\n";
 
-print "<form action=change_users.cgi method=post>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'users_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table><tr><td valign=top nowrap>\n";
-printf "<input type=radio name=access value=0 %s>\n",
-	$miniserv{"allowusers"} || $miniserv{"denyusers"} ? "" : "checked";
-print "$text{'users_all'}<br>\n";
-printf "<input type=radio name=access value=1 %s>\n",
-	$miniserv{"allowusers"} ? "checked" : "";
-print "$text{'users_allow'}<br>\n";
-printf "<input type=radio name=access value=2 %s>\n",
-	$miniserv{"denyusers"} ? "checked" : "";
-print "$text{'users_deny'}<br>\n";
-print "</td> <td valign=top>\n";
-printf "<textarea name=user rows=6 cols=30>%s</textarea></td> </tr>\n",
- $miniserv{"allowusers"} ? join("\n", split(/\s+/, $miniserv{"allowusers"})) :
- $miniserv{"denyusers"} ? join("\n", split(/\s+/, $miniserv{"denyusers"})) : "";
+print &ui_form_start("change_users.cgi", "post");
+print &ui_table_start($text{'users_header'}, undef, 2);
+
+$txt = $miniserv{"allowusers"} ?
+		join("\n", split(/\s+/, $miniserv{"allowusers"})) :
+       $miniserv{"denyusers"} ?
+		join("\n", split(/\s+/, $miniserv{"denyusers"})) : "";
+print &ui_table_row(undef,
+	&ui_radio("access", $miniserv{"denyusers"} ? 2 :
+			    $miniserv{"allowusers"} ? 1 : 0,
+		  [ [ 0, $text{'users_all'} ],
+		    [ 1, $text{'users_allow'} ],
+		    [ 2, $text{'users_deny'} ] ])."<br>\n".
+	&ui_textarea("user", $txt, 6, 60));
 
 if (&get_usermin_version() > 0.95) {
-	print "<tr> <td colspan=2>\n";
-	printf "<input type=checkbox name=shells_deny value=1 %s> %s\n",
-		$miniserv{'shells_deny'} ? "checked" : "",$text{'users_shells'};
-	printf "<input name=shells size=25 value='%s'> %s</td> </tr>\n",
-		$miniserv{'shells_deny'} || "/etc/shells",
-		&file_chooser_button("shells");
+	print &ui_table_row(undef,
+		&ui_checkbox("shells_deny", 1, $text{'users_shells'},
+			     $miniserv{'shells_deny'})." ".
+		&ui_filebox("shells", $miniserv{'shells_deny'} || "/etc/shells",
+			    40));
 	}
 
-print "</table></td> </tr></table>\n";
-print "<input type=submit value=\"$text{'save'}\"></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 
