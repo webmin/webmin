@@ -8,54 +8,44 @@ $access{'restrict'} || &error($text{'acl_ecannot'});
 
 print &text('restrict_desc', "edit_acl.cgi"),"<p>\n";
 
-@usermods = &list_usermin_usermods();
+my @usermods = &list_usermin_usermods();
+my @links = &ui_link("edit_restrict.cgi?new=1", $text{'restrict_add'});
+print &ui_links_row(\@links);
 if (@usermods) {
-	print "<a href='edit_restrict.cgi?new=1'>$text{'restrict_add'}",
-	      "</a><br>\n";
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'restrict_who'}</b></td> ",
-	      "<td><b>$text{'restrict_what'}</b></td> ",
-	      "<td width=10><b>$text{'restrict_move'}</b></td> </tr>\n";
-	$i = 0;
-	foreach $u (@usermods) {
-		print "<tr $cb>\n";
-		print "<td nowrap><a href='edit_restrict.cgi?idx=$i'>",
-		  $u->[0] eq "*" ? $text{'restrict_all'} :
-		  $u->[0] =~ /^\@(.*)/ ?
-			&text('restrict_group', "<tt>$1</tt>") :
-		  $u->[0] =~ /^\// ?
-			&text('restrict_file', "<tt>$u->[0]</tt>") :
-			"<tt>$u->[0]</tt>","</a></td>\n";
-		$mods = join(" ", map { "<tt>$_</tt>" } @{$u->[2]});
-		print "<td>",!$mods ? $text{'restrict_nomods'} :
+	my @tds = ( undef, undef, "width=10" );
+	print &ui_columns_start([ $text{'restrict_who'},
+				  $text{'restrict_what'},
+				  $text{'restrict_move'} ], "100%", 0, \@tds);
+	my $i = 0;
+	foreach my $u (@usermods) {
+		my @cols;
+		push(@cols, &ui_link("edit_restrict.cgi?idx=$i",
+			  $u->[0] eq "*" ? $text{'restrict_all'} :
+			  $u->[0] =~ /^\@(.*)/ ?
+				&text('restrict_group', "<tt>$1</tt>") :
+			  $u->[0] =~ /^\// ?
+				&text('restrict_file', "<tt>$u->[0]</tt>") :
+				"<tt>$u->[0]</tt>"));
+		my $mods = join(" ", map { "<tt>$_</tt>" } @{$u->[2]});
+		push(@cols, !$mods ? $text{'restrict_nomods'} :
 			     &text($u->[1] eq "+" ? 'restrict_plus' :
 				   $u->[1] eq "-" ? 'restrict_minus' :
 						    'restrict_set',
-				   $mods),"</td>\n";
-		print "<td>";
-		if ($u eq $usermods[@usermods-1]) {
-			print "<img src=images/gap.gif>";
-			}
-		else {
-			print "<a href='move.cgi?idx=$i&down=1'>",
-			      "<img src=images/down.gif border=0></a>";
-			}
-		if ($u eq $usermods[0]) {
-			print "<img src=images/gap.gif>";
-			}
-		else {
-			print "<a href='move.cgi?idx=$i&up=1'>",
-			      "<img src=images/up.gif border=0></a>";
-			}
-		print "</td> </tr>\n";
+				   $mods));
+		push(@cols, &ui_up_down_arrows(
+				"move.cgi?idx=$i&up=1",
+				"move.cgi?idx=$i&down=1",
+				$u ne $usermods[0],
+				$u ne $usermods[@usermods-1]));
+		print &ui_columns_row(\@cols, \@tds);
 		$i++;
 		}
-	print "</table>\n";
+	print &ui_columns_end();
 	}
 else {
 	print "<b>$text{'restrict_none'}</b><p>\n";
 	}
-print &ui_link("edit_restrict.cgi?new=1", $text{'restrict_add'}),"<p>\n";
+print &ui_links_row(\@links);
 
 &ui_print_footer("", $text{'index_return'});
 
