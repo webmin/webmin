@@ -10,8 +10,8 @@ print &text('restrict_desc', "edit_acl.cgi"),"<p>\n";
 
 my @usermods = &list_usermin_usermods();
 my @links = &ui_link("edit_restrict.cgi?new=1", $text{'restrict_add'});
-print &ui_links_row(\@links);
 if (@usermods) {
+	print &ui_links_row(\@links);
 	my @tds = ( undef, undef, "width=10" );
 	print &ui_columns_start([ $text{'restrict_who'},
 				  $text{'restrict_what'},
