@@ -971,11 +971,15 @@ else { return ( [ $in{$_[0]} ] ); }
 sub select_input
 {
 my($i, @sel);
+my $selv;
 for($i=3; $i<@_; $i++) {
 	$_[$i] =~ /^([^,]*),(.*)$/;
-    push(@sel, [$2, $1, (lc($2) eq lc($_[0]) || !defined($_[0]) && lc($2) eq lc($_[2]) ? "selected" : "") ]);
+	if (lc($2) eq lc($_[0]) || !defined($_[0]) && lc($2) eq lc($_[2])) {
+		$selv = $2;
+		}
+	push(@sel, [ $2, $1 || "&nbsp;" ]);
 	}
-return &ui_select($_[1], undef, \@sel, 1);
+return &ui_select($_[1], $selv, \@sel, 1);
 }
 
 # parse_choice(name, default)
