@@ -6,7 +6,7 @@ use WebminCore;
 # Output HTML for editing global security options
 sub acl_security_form
 {
-local $o = $_[0];
+my ($o) = @_;
 
 # Root directory for file browser
 print &ui_table_row($text{'acl_root'},
