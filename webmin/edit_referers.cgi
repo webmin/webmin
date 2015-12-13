@@ -9,11 +9,9 @@ print $text{'referers_desc'},"<br>\n";
 print &ui_form_start("change_referers.cgi");
 print &ui_table_start(undef, undef, 2);
 
-my $tds = [ "valign=middle","valign=middle" ];
 print &ui_table_row($text{'referers_referer'},
-	&ui_radio("referer", $gconfig{'referer'},
-		  [ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]), undef,
-		  $tds);
+	&ui_radio("referer", $gconfig{'referer'} ? 1 : 0,
+		  [ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]));
 
 print &ui_table_row($text{'referers_list'},
 	&ui_textarea("referers",
@@ -23,8 +21,7 @@ print &ui_table_row($text{'referers_list'},
 		&ui_checkbox("referers_none", 1,
 			     $text{'referers_none'}."<br>".
 			       $text{'referers_none2'},
-			     !$gconfig{'referers_none'}) : ""),
-	undef, $tds);
+			     !$gconfig{'referers_none'}) : ""));
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'save'} ] ]);

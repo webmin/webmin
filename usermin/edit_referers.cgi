@@ -7,24 +7,25 @@ require './usermin-lib.pl';
 &get_usermin_config(\%ugconfig);
 
 print $text{'referers_desc'},"<br>\n";
-print "<form action=change_referers.cgi>\n";
-print "<table>\n";
+print &ui_form_start("change_referers.cgi");
+print &ui_table_start(undef, undef, 2);
 
-print "<tr> <td><b>$text{'referers_referer'}</b></td>\n";
-printf "<td><input type=radio name=referer value=0 %s> %s\n",
-	$ugconfig{'referer'} ? '' : 'checked', $text{'yes'};
-printf "<input type=radio name=referer value=1 %s> %s</td> </tr>\n",
-	$ugconfig{'referer'} ? 'checked' : '', $text{'no'};
+print &ui_table_row($text{'referers_referer'},
+	&ui_radio("referer", $ugconfig{'referer'} ? 1 : 0,
+		  [ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]));
 
-print "<tr> <td valign=top><b>$text{'referers_list'}</b></td>\n";
-print "<td><textarea name=referers rows=5 cols=30>",
-      join("\n", split(/\s+/, $ugconfig{'referers'})),"</textarea><br>\n";
-printf "<input type=checkbox name=referers_none value=1 %s> %s</td> </tr>\n",
-	$ugconfig{'referers_none'} ? '' : 'checked',
-	$text{'referers_none'};
+print &ui_table_row($text{'referers_list'},
+	&ui_textarea("referers",
+		join("\n", split(/\s+/, $ugconfig{'referers'})),
+		5, 60)."<br>\n".
+	(!$ugconfig{'referers_none'} ?
+		&ui_checkbox("referers_none", 1,
+			     $text{'referers_none'}."<br>".
+			       $text{'referers_none2'},
+			     !$ugconfig{'referers_none'}) : ""));
 
-print "</table>\n";
-print "<input type=submit value='$text{'save'}'></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 
