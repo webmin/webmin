@@ -399,7 +399,7 @@ restrict_umode1=Members of group
 restrict_umode2=All users
 restrict_umode3=Users and groups in file
 restrict_mods=Modules
-restrict_modsdesc=(Those in red have<br>been disabled on the<br><a href='$1'>Available Modules</a> page)
+restrict_modsdesc=(Those in red have been disabled on the <a href='$1'>Available Modules</a> page)
 restrict_mmode0=Only selected ..
 restrict_mmode1=Add selected ..
 restrict_mmode2=Remove selected ..
