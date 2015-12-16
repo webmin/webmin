@@ -56,9 +56,9 @@ foreach my $info (@info) {
 		}
 	else {
 		my $open = defined($info->{'open'}) ? $info->{'open'} : 1;
-		print &ui_hidden_table_start($info->{'desc'}, "width=600", 2,
-					     $info->{'module'}.$info->{'id'},
-					     $open);
+		print &ui_hidden_table_start(
+			$info->{'desc'}, "width=600", 2,
+			$info->{'module'}.($info->{'id'} || ""), $open);
 		if ($info->{'type'} eq 'table') {
 			# A table of various labels and values
                         if ($info->{'header'}) {
