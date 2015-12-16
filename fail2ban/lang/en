@@ -10,6 +10,7 @@ index_startdesc=Click this button to start the Fail2Ban server, so that log file
 index_restart=Restart Fail2Ban Server
 index_restartdesc=Click this button to apply the current configuration by restarting the Fail2Ban server.
 index_return=module index
+index_header=Fail2Ban module
 
 check_edir=The configuration directory $1 does not exist
 check_econf=The configuration file $2 in $1 does not exist
