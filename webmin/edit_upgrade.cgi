@@ -142,7 +142,7 @@ print ui_tabs_end_tab();
 print ui_tabs_start_tab("mode", "sched");
 print "$text{'update_desc2'}<p>\n";
 print ui_form_start("update_sched.cgi", "post");
-print ui_table_start($text{'update_header2'}, ( $config{'cron_mode'} == 0 ? undef : "width=80%" ), 2);
+print ui_table_start($text{'update_header2'}, undef, 2);
 
 print &ui_table_row($text{'update_enabled'},
 	&ui_yesno_radio("enabled", $config{'update'}));
