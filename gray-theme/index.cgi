@@ -19,7 +19,7 @@ my $goto = $minfo ? $minfo->{'dir'}."/" :
 if ($in{'page'}) {
 	$goto .= "/".$in{'page'};
 	}
-my $cat = $minfo ? "?$minfo->{'category'}=1" : undef;
+my $cat = $minfo ? "?$minfo->{'category'}=1" : "";
 
 # Show frameset
 my $title = &get_html_framed_title();
