@@ -47,7 +47,8 @@ while(<GPG>) {
 			if (/^sub\s+(\S+)\/(\S+)\s+/) {
 				push(@{$k->{'key2'}}, $2);
 				}
-			elsif (/^uid\s+(.*)\s+<(\S+)>/ ||
+			elsif (/^uid\s+\[[^\]]+\]\s+(.*)\s+<(\S+)>/ ||
+			       /^uid\s+(.*)\s+<(\S+)>/ ||
 			       /^uid\s+(.*)/) {
 				push(@{$k->{'name'}}, $1);
 				push(@{$k->{'email'}}, $2);
@@ -89,7 +90,7 @@ sub key_fingerprint
 my $fp;
 local $_;
 &clean_language();
-open(GPG, "$gpgpath --fingerprint \"$_[0]->{'name'}->[0]\" |");
+open(GPG, "$gpgpath --fingerprint \"$_[0]->{'name'}->[0]\" 2>/dev/null |");
 while(<GPG>) {
 	if (/fingerprint\s+=\s+(.*)/) {
 		$fp = $1;
