@@ -67,6 +67,7 @@ index_atboot=Starte beim Booten?
 index_atbootdesc=&#196;ndere diese Option, um zu kontrollieren, ob der Fail2Ban Server beim Systemstart gestartet wird oder nicht. Bei Bedarf kann ein Boot-Skript erstellt werden, so dass es richtig gestartet wird.
 index_echeck=Ein Fehler ist bei der Erfassung von Fail2Ban auf diesem System aufgetreten : $1. Entweder es ist nicht installiert, oder der <a href='$2'>Modulkonfiguration</a> ist falsch.
 index_fail2ban=Fail2Ban
+index_header=Fail2Ban Modul
 index_restart=Starte Fail2Ban Server
 index_restartdesc=Klicke auf diese Schaltfl&#228;che, um die aktuelle Konfiguration durch einen Neustart des Fail2Ban Server anwenden.
 index_return=Modulindex
