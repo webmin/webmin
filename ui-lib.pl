@@ -226,7 +226,7 @@ Outputs a table row that spans the whole table, and contains the given text.
 sub ui_table_span
 {
 my ($text) = @_;
-return &theme_ui_table_hr(@_) if (defined(&theme_ui_table_hr));
+return &theme_ui_table_span(@_) if (defined(&theme_ui_table_span));
 my $rv;
 if ($ui_table_pos) {
 	$rv .= "</tr>\n";
