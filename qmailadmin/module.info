@@ -17,3 +17,4 @@ desc_no=QMail e-post tjener
 desc_hu=MTA szerver (QMail)
 longdesc_ms_MY=Mengkonfigurasi pelayan mel QMail, alternatif yang lebih mudah berbanding Sendmail.
 desc_ms_MY=Pelayan Mail QMail
+longdesc_de=Konfiguriert den QMail Mailserver, eine einfachere Alternative zu Sendmail.

@@ -26,3 +26,4 @@ desc_eu=NFSren exportazioa
 desc_pl.UTF-8=Udostępnianie po NFS
 desc_hu.UTF-8=NFS exprotálás
 desc_nl=NFS Exports
+longdesc_de=Bearbeitet Datei-Freigaben aus der FreeBSD-Datei /etc/exports.
