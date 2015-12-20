@@ -50,23 +50,23 @@ print ui_form_start("change_ssl.cgi", "post");
 print ui_table_start($text{'ssl_header'}, undef, 2);
 
 print ui_table_row($text{'ssl_on'},
-	ui_yesno_radio("ssl", $miniserv{'ssl'}), undef, [ "valign=middle","valign=middle" ]);
+	ui_yesno_radio("ssl", $miniserv{'ssl'}));
 
 print ui_table_row($text{'ssl_key'},
 	ui_textbox("key", $miniserv{'keyfile'}, 40)." ".
-	file_chooser_button("key"), undef, [ "valign=middle","valign=middle" ]);
+	file_chooser_button("key"));
 
 print ui_table_row($text{'ssl_cert'},
 	ui_opt_textbox("cert", $miniserv{'certfile'}, 40,
 			$text{'ssl_cert_def'}."<br>",$text{'ssl_cert_oth'})." ".
-	file_chooser_button("cert"), undef, [ "valign=top","valign=middle" ]);
+	file_chooser_button("cert"));
 
 print ui_table_row($text{'ssl_redirect'},
-	ui_yesno_radio("ssl_redirect", $miniserv{'ssl_redirect'}), undef, [ "valign=middle","valign=middle" ]);
+	ui_yesno_radio("ssl_redirect", $miniserv{'ssl_redirect'}));
 
 print ui_table_row($text{'ssl_version'},
 	ui_opt_textbox("version", $miniserv{'ssl_version'}, 4,
-			$text{'ssl_auto'}), undef, [ "valign=middle","valign=middle" ]);
+			$text{'ssl_auto'}));
 
 print ui_table_row($text{'ssl_deny'},
 	ui_checkbox("no_ssl2", 1, "SSLv2", $miniserv{'no_ssl2'})."\n".
@@ -77,11 +77,11 @@ print ui_table_row($text{'ssl_deny'},
 	);
 
 print ui_table_row($text{'ssl_compression'},
-	ui_yesno_radio("ssl_compression", !$miniserv{'no_sslcompression'}), undef, [ "valign=middle","valign=middle" ]);
+	ui_yesno_radio("ssl_compression", !$miniserv{'no_sslcompression'}));
 
 print ui_table_row($text{'ssl_honorcipherorder'},
 	ui_yesno_radio("ssl_honorcipherorder",
-			$miniserv{'ssl_honorcipherorder'}), undef, [ "valign=middle","valign=middle" ]);
+			$miniserv{'ssl_honorcipherorder'}));
 
 my $clist = $miniserv{'ssl_cipher_list'};
 my $cmode = !$clist ? 1 :
@@ -95,15 +95,14 @@ print ui_table_row($text{'ssl_cipher_list'},
 		    [ 3, $text{'ssl_pfs'}."<br>" ],
 		    [ 0, $text{'ssl_clist'}." ".
 			 ui_textbox("cipher_list",
-				     $cmode == 0 ? $clist : "", 50) ] ]),
-		  undef, [ "valign=top","valign=middle" ]);
+				     $cmode == 0 ? $clist : "", 50) ] ]));
 my $extracas;
 if (defined $miniserv{'extracas'}) { $extracas = $miniserv{'extracas'}; }
 else { $extracas = ""; }
 print ui_table_row($text{'ssl_extracas'},
 	ui_textarea("extracas", join("\n",split(/\s+/, $extracas)),
 		     3, 60)." ".
-	"<br>".file_chooser_button("extracas", 0, undef, undef, 1), undef, [ "valign=top","valign=top" ]);
+	"<br>".file_chooser_button("extracas", 0, undef, undef, 1));
 
 print ui_table_end();
 print ui_form_end([ [ "", $text{'save'} ] ]);
@@ -117,14 +116,14 @@ $info = cert_info($miniserv{'certfile'} || $miniserv{'keyfile'});
 foreach my $i ('cn', 'o', 'email', 'issuer_cn', 'issuer_o', 'issuer_email',
 	    'notafter', 'type') {
 	if ($info->{$i}) {
-		print ui_table_row($text{'ca_'.$i}, $info->{$i}, undef, [ "valign=middle","valign=middle" ]);
+		print ui_table_row($text{'ca_'.$i}, $info->{$i});
 		}
 	}
 my @clinks = (
 	ui_link("download_cert.cgi/cert.pem", $text{'ssl_pem'}),
 	ui_link("download_cert.cgi/cert.p12", $text{'ssl_pkcs12'})
 	);
-print ui_table_row($text{'ssl_download'}, &ui_links_row(\@clinks), undef, [ "valign=middle","valign=middle" ]);
+print ui_table_row($text{'ssl_download'}, &ui_links_row(\@clinks));
 print ui_table_end();
 print ui_tabs_end_tab();
 
@@ -142,7 +141,7 @@ if (@ipkeys) {
 			"<tt>$k->{'key'}</tt>",
 			$k->{'cert'} ? "<tt>$k->{'cert'}</tt>"
 				     : $text{'ssl_cert_def'},
-			], [ "valign=middle","valign=middle", "valign=middle" ]);
+			]);
 		}
 	print ui_columns_end();
 	}
@@ -172,10 +171,10 @@ print show_ssl_key_form($host, undef,
 			 "Webmin Webserver on ".get_system_hostname());
 
 print ui_table_row($text{'ssl_newfile'},
-	    ui_textbox("newfile", "$config_directory/miniserv.pem", 40), undef, [ "valign=middle","valign=middle" ]);
+	    ui_textbox("newfile", "$config_directory/miniserv.pem", 40));
 
 print ui_table_row($text{'ssl_usenew'},
-		    ui_yesno_radio("usenew", 1), undef, [ "valign=middle","valign=middle" ]);
+		    ui_yesno_radio("usenew", 1));
 
 print ui_table_end();
 print ui_form_end([ [ "", $text{'ssl_create'} ] ]);
@@ -196,10 +195,10 @@ print show_ssl_key_form($host, undef,
 			 "Webmin Webserver on ".get_system_hostname());
 
 print ui_table_row($text{'ssl_newfile'},
-	    ui_textbox("newfile", "$config_directory/miniserv.newkey", 40), undef, [ "valign=middle","valign=middle" ]);
+	    ui_textbox("newfile", "$config_directory/miniserv.newkey", 40));
 
 print ui_table_row($text{'ssl_csrfile'},
-	    ui_textbox("csrfile", "$config_directory/miniserv.csr", 40), undef, [ "valign=middle","valign=middle" ]);
+	    ui_textbox("csrfile", "$config_directory/miniserv.csr", 40));
 
 print ui_table_end();
 print ui_form_end([ [ "", $text{'ssl_create'} ] ]);
@@ -227,7 +226,7 @@ print ui_table_row($text{'ssl_privkey'},
 		    ui_textarea("key", $keydata, 7, 70)."<br>\n".
 		    "<b>$text{'ssl_upload'}</b>\n".
 		    ui_upload("keyfile").
-		    ($keydata ? "<br>".$text{'ssl_fromcsr'} : ""), undef, [ "valign=top","valign=top" ]);
+		    ($keydata ? "<br>".$text{'ssl_fromcsr'} : ""));
 
 print ui_table_row($text{'ssl_privcert'},
 		    ui_radio("cert_def", 1,
@@ -235,7 +234,7 @@ print ui_table_row($text{'ssl_privcert'},
 			  [ 0, $text{'ssl_below'} ] ])."<br>\n".
 		    ui_textarea("cert", undef, 7, 70)."<br>\n".
 		    "<b>$text{'ssl_upload'}</b>\n".
-		    ui_upload("certfile"), undef, [ "valign=top","valign=top" ]);
+		    ui_upload("certfile"));
 
 print ui_table_row($text{'ssl_privchain'},
 		    ui_radio("chain_def", 1,
@@ -244,7 +243,7 @@ print ui_table_row($text{'ssl_privchain'},
 			  [ 0, $text{'ssl_below'} ] ])."<br>\n".
 		    ui_textarea("chain", undef, 7, 70)."<br>\n".
 		    "<b>$text{'ssl_upload'}</b>\n".
-		    ui_upload("chainfile"), undef, [ "valign=top","valign=top" ]);
+		    ui_upload("chainfile"));
 
 print ui_table_end();
 print ui_form_end([ [ "save", $text{'save'} ] ]);

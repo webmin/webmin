@@ -13,7 +13,7 @@ print &ui_table_row($text{'advanced_temp'},
 		    &ui_opt_textbox("tempdir", $gconfig{'tempdir'},
 				    30, $text{'advanced_tempdef'})."<br>".
 		    &ui_checkbox("tempdirdelete", 1, $text{'advanced_tdd'},
-				 $gconfig{'tempdirdelete'}), undef, [ "valign=top","valign=middle" ]);
+				 $gconfig{'tempdirdelete'}));
 
 # Temp files clearing period
 print &ui_table_row($text{'advanced_tempdelete'},
@@ -36,7 +36,7 @@ foreach $d (&get_tempdirs(\%gconfig), [ ]) {
 	$i++;
 	}
 $ttable .= &ui_columns_end();
-print &ui_table_row($text{'advanced_tempmods'}, $ttable, undef, [ "valign=top","valign=top" ]);
+print &ui_table_row($text{'advanced_tempmods'}, $ttable);
 
 @preloads = &get_preloads(\%miniserv);
 if (!@preloads && (!$miniserv{'premodules'} ||
@@ -61,7 +61,7 @@ print &ui_table_row($text{'advanced_precache'},
 		    [ 1, $text{'advanced_precache1'}."<br>" ],
 		    [ 2, &text('advanced_precache2',
 			  &ui_textbox("precache",
-			   $mode == 2 ? $miniserv{'precache'} : "", 40)) ] ]), undef, [ "valign=top","valign=middle" ]);
+			   $mode == 2 ? $miniserv{'precache'} : "", 40)) ] ]));
 
 # Umask for created files
 print &ui_table_row($text{'advanced_umask'},

@@ -42,7 +42,7 @@ print &ui_table_row($text{'sendmail_login'},
 		    [ 0, $text{'sendmail_login0'} ] ])." ".
 	&ui_textbox("login_user", $user, 20)." ".
 	$text{'sendmail_pass'}." ".
-	&ui_textbox("login_pass", $pass, 20), undef, [ "valign=top","valign=middle" ]);
+	&ui_textbox("login_pass", $pass, 20));
 
 # Authentication method
 $auth = $mconfig{'smtp_auth'};
@@ -58,7 +58,7 @@ $fromdef = "webmin\@".&mailboxes::get_from_domain();
 print &ui_table_row($text{'sendmail_from'},
 	&ui_opt_textbox("from", $from, 40,
 			&text('sendmail_fromdef', $fromdef)."<br>",
-			$text{'sendmail_fromaddr'}), undef, [ "valign=top","valign=middle" ]);
+			$text{'sendmail_fromaddr'}));
 
 print &ui_table_end();
 print &ui_form_end([ [ "", $text{'save'} ] ]);
@@ -83,7 +83,7 @@ $msg = "This is a test message from Webmin, sent with the settings :\n".
        "SMTP login: ".($user || "None")."\n".
        "SMTP authentication: ".($auth || "Default")."\n";
 print &ui_table_row($text{'sendmail_body'},
-		    &ui_textarea("body", $msg, 8, 80), undef, [ "valign=top","valign=top" ]);
+		    &ui_textarea("body", $msg, 8, 80));
 
 print &ui_table_end();
 print &ui_form_end([ [ "", $text{'sendmail_send'} ] ]);

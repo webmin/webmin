@@ -25,7 +25,7 @@ print &ui_table_row($text{'mobile_nosession'},
 # Extra user agents
 print &ui_table_row($text{'mobile_agents'},
 	    &ui_textarea("agents",
-		join("\n", split(/\t+/, $miniserv{'mobile_agents'})), 5, 50), undef, [ "valign=top","valign=top" ]);
+		join("\n", split(/\t+/, $miniserv{'mobile_agents'})), 5, 50));
 
 # Hostname prefixes for mobile
 print &ui_table_row($text{'mobile_prefixes'},

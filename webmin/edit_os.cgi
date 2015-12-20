@@ -48,20 +48,20 @@ print &ui_table_row($text{'os_path'},
 	&ui_textarea("path",
 		     join("\n", split($path_separator, $gconfig{'path'})),
 		     5, 30)."<br>".
-	&ui_checkbox("syspath", 1, $text{'os_syspath'}, !$gconfig{'syspath'}), undef, [ "valign=top","valign=top" ]);
+	&ui_checkbox("syspath", 1, $text{'os_syspath'}, !$gconfig{'syspath'}));
 
 # Shared library path
 if ($gconfig{'ld_env'}) {
 	print &ui_table_row($text{'os_ld_path'},
 		&ui_textarea("ld_path",
 		     join("\n", split($path_separator, $gconfig{'ld_path'})),
-		     5, 30), undef, [ "valign=top","valign=top" ]);
+		     5, 30));
 	}
 
 # Perl search path
 print &ui_table_row($text{'os_perllib'},
 	&ui_textarea("perllib",
-	     join("\n", split(":", $miniserv{'perllib'})), 3, 30), undef, [ "valign=top","valign=top" ]);
+	     join("\n", split(":", $miniserv{'perllib'})), 3, 30));
 
 # Global environment variables
 $atable = &ui_columns_start([ $text{'os_name'}, $text{'os_value'} ]);
@@ -79,7 +79,7 @@ foreach $e (keys %miniserv) {
 $atable .= &ui_columns_row([ &ui_textbox("name_$i", undef, 20),
 			     &ui_textbox("value_$i", undef, 30) ]);
 $atable .= &ui_columns_end();
-print &ui_table_row($text{'os_envs'}, $atable, undef, [ "valign=top","valign=top" ]);
+print &ui_table_row($text{'os_envs'}, $atable);
 
 print &ui_table_end();
 print &ui_form_end([ [ "", $text{'save'} ] ]);

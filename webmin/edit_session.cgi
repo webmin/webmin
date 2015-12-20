@@ -24,7 +24,7 @@ print &ui_table_row($text{'session_pblock'},
 	text('session_blockhost',
 	  ui_textbox("blockhost_failures", $miniserv{'blockhost_failures'}, 4),
 	  ui_textbox("blockhost_time", $miniserv{'blockhost_time'}, 4)),
-	$miniserv{'blockhost_failures'} ? 1 : 0), undef, [ "valign=middle","valign=middle" ]);
+	$miniserv{'blockhost_failures'} ? 1 : 0));
 
 # Block bad users
 print &ui_table_row("",
@@ -32,18 +32,18 @@ print &ui_table_row("",
 	text('session_blockuser',
 	  ui_textbox("blockuser_failures", $miniserv{'blockuser_failures'}, 4),
 	  ui_textbox("blockuser_time", $miniserv{'blockuser_time'}, 4)),
-	$miniserv{'blockuser_failures'} ? 1 : 0), undef, [ "valign=middle","valign=middle" ]);
+	$miniserv{'blockuser_failures'} ? 1 : 0));
 
 # Lock Webmin users who failed login too many times
 print &ui_table_row("",
     ui_checkbox("blocklock", 1, $text{'session_blocklock'},
-		$miniserv{'blocklock'}), undef, [ "valign=middle","valign=middle" ]);
+		$miniserv{'blocklock'}));
 
 # Log to syslog
 eval "use Sys::Syslog qw(:DEFAULT setlogsock)";
 if (!$@) {
 	print &ui_table_row($text{'session_syslog3'},
-		&ui_yesno_radio("syslog", $miniserv{'syslog'}), undef, [ "valign=middle","valign=middle" ]);
+		&ui_yesno_radio("syslog", $miniserv{'syslog'}));
 	}
 else {
 	print ui_hidden('syslog', $miniserv{'syslog'});
@@ -91,7 +91,7 @@ print &ui_table_row($text{'session_local'},
 print &ui_table_row($text{'session_pam'},
 	&ui_radio("no_pam", $miniserv{'no_pam'} ? 1 : 0,
 		  [ [ 0, $text{'session_pamon'}."<br>" ],
-		    [ 1, $text{'session_pamoff'} ] ]), undef, [ "valign=middle","valign=middle" ]);
+		    [ 1, $text{'session_pamoff'} ] ]));
 
 print &ui_table_row($text{'session_popts'},
 	ui_checkbox("pam_conv", 1, $text{'session_pamconv'},
@@ -124,7 +124,7 @@ print &ui_table_row($text{'session_pmodedesc3'},
 
 # Squid-style authentication program
 print &ui_table_row($text{'session_extauth'},
-	&ui_textbox("extauth", $miniserv{'extauth'}, 60), undef, [ "valign=middle","valign=middle" ]);
+	&ui_textbox("extauth", $miniserv{'extauth'}, 60));
 
 # Password encryption format
 print &ui_table_row($text{'session_md5'},

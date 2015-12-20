@@ -16,7 +16,7 @@ print &ui_table_row($text{'debug_what'},
 	join("<br>\n",
 	     map { &ui_checkbox('debug_what_'.$_, 1, $text{'debug_what_'.$_},
 				$gconfig{'debug_what_'.$_}) }
-		 @debug_what_events), undef, [ "valign=top","valign=top" ]);
+		 @debug_what_events));
 
 # Log to where
 print &ui_table_row($text{'debug_file'},
@@ -50,7 +50,7 @@ print &ui_table_row($text{'debug_inmods'},
 	&ui_select("modules", [ split(/\s+/, $gconfig{'debug_modules'}) ],
 		   [ map { [ $_->{'dir'}, $_->{'desc'} ] }
 			 sort { $a->{'desc'} cmp $b->{'desc'} }
-			      &get_all_module_infos() ], 5, 1), undef, [ "valign=top","valign=middle" ]);
+			      &get_all_module_infos() ], 5, 1));
 
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);

@@ -79,7 +79,7 @@ print &ui_table_row($text{'proxy_mods'},
 			       [ map { [ $_->{'dir'}, $_->{'desc'} ] }
 				  sort { lc($a->{'desc'}) cmp lc($b->{'desc'}) }
 				   &get_all_module_infos() ],
-			       10, 1), undef, [ "valign=top","valign=top" ]);
+			       10, 1));
 
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ],

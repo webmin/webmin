@@ -20,7 +20,7 @@ print &ui_table_start($text{'ipkey_header'}, undef, 2);
 
 print &ui_table_row($text{'ipkey_ips'},
 		    &ui_textarea("ips", join("\n", @{$ipkey->{'ips'}}),
-				 3, 60), undef, [ "valign=top","valign=top" ]);
+				 3, 60));
 
 print &ui_table_row($text{'ssl_key'},
 		    &ui_textbox("key", $ipkey->{'key'}, 40)."\n".
@@ -42,7 +42,7 @@ print &ui_table_row($text{'ssl_extracas'},
 		     $mode == 1 ? join("\n",split(/\s+/, $ipkey->{'extracas'}))
 				: "",
 		     3, 60)." ".
-	"<br>".&file_chooser_button("extracas", 0, undef, undef, 1), undef, [ "valign=top","valign=middle" ]);
+	"<br>".&file_chooser_button("extracas", 0, undef, undef, 1));
 
 print &ui_table_end();
 if ($in{'new'}) {

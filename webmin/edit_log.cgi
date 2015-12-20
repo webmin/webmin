@@ -43,7 +43,7 @@ print &ui_table_row($text{'log_forusers'},
 		   [ map { [ $_->{'name'} ] }
 			 sort { $a->{'name'} cmp $b->{'name'} } 
 			      &acl::list_users() ],
-		   5, 1), undef, [ "valign=top","valign=middle" ]);
+		   5, 1));
 
 # Modules to log in
 print &ui_table_row($text{'log_inmods'},
@@ -55,7 +55,7 @@ print &ui_table_row($text{'log_inmods'},
 			 grep { -r &module_root_directory($_)."/log_parser.pl" }
 			      sort { $a->{'desc'} cmp $b->{'desc'} }
 				   &get_all_module_infos() ],
-		   5, 1), undef, [ "valign=top","valign=middle" ]);
+		   5, 1));
 
 # Log logins and logouts?
 if (!$miniserv{'login_script'} ||

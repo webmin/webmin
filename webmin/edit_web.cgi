@@ -31,7 +31,7 @@ for(my $i=0; $i<@expires_paths; $i++) {
 		]);
 	}
 $etable .= &ui_columns_end();
-print &ui_table_row($text{'web_expirespaths'}, $etable, undef, [ "valign=top","valign=top" ]);
+print &ui_table_row($text{'web_expirespaths'}, $etable);
 
 # Show call stack on error
 print &ui_table_row($text{'advanced_stack'},

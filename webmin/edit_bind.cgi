@@ -42,7 +42,7 @@ if (&foreign_check("firewall")) {
 	print &ui_hidden("oldports", join(" ", @ports));
 	$stable .= &ui_checkbox("firewall", 1, $text{'bind_firewall'}, 1);
 	}
-print &ui_table_row($text{'bind_sockets'}, $stable, undef, [ "valign=top","valign=top" ]);
+print &ui_table_row($text{'bind_sockets'}, $stable);
 
 # IPv6 enabled?
 print &ui_table_row($text{'bind_ipv6'},
