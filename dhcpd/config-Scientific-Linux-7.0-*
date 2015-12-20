@@ -1,5 +1,5 @@
-start_cmd=service dhcpd start
-stop_cmd=service dhcpd stop
+start_cmd=systemctl start dhcpd
+stop_cmd=systemctl stop dhcpd
 restart_cmd=service dhcpd restart
 dhcpd_conf=/etc/dhcp/dhcpd.conf
 pid_file=/run/dhcpd.pid
