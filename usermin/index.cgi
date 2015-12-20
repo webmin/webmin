@@ -112,7 +112,6 @@ if ($access{'stop'}) {
 	}
 
 if ($init) {
-	print "<tr>\n";
 	&foreign_require("init");
 	$starting = &init::action_status("usermin");
 
