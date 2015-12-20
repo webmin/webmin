@@ -51,3 +51,5 @@ IPv6 support for Usermin can now be enabled on the Ports and Addresses page.
 Updated the SSL Encryption page to have the same UI and features as Webmin.
 ---- Changes since 1.580 ----
 Added a button to copy the SSL certificate and other settings from Webmin.
+---- Changes since 1.770 ----
+Converted all pages to use the new Webmin UI library, for a more consistent and themeable experience.
