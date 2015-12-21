@@ -62,6 +62,7 @@ session_desc2=When session authentication is enabled, each logged in users' sess
 session_remember=Offer to remember login permanently?
 session_hostname=Show hostname on login screen?
 session_realname=Show real hostname instead of name from URL?
+session_authmode=Authentication method
 session_authmode0=Use PAM for authentication, if available
 session_authmode1=Authentication using password file $1 columns $2 and $3
 session_authmode2=Use external squid-style authentication program
