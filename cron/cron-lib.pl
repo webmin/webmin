@@ -1471,7 +1471,7 @@ Given a cron job with a # comment after the command, sets the comment field
 sub convert_comment
 {
 local ($job) = @_;
-if ($job->{'command'} =~ /^(.*)\s*#([^#]*)$/) {
+if ($job->{'command'} =~ /^(.*\S)\s*#([^#]*)$/) {
 	$job->{'command'} = $1;
 	$job->{'comment'} = $2;
 	return 1;
