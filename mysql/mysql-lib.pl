@@ -81,9 +81,6 @@ use DBI;
 EOF
 }
 
-$old_user_priv_cols = $mysql_version >= 4 ? 21 : 14;
-$old_db_priv_cols = $mysql_version >= 4 ? 12 : 10;
-
 @mysql_set_variables = ( "key_buffer", "sort_buffer", "net_buffer_length" );
 @mysql_number_variables = ( $mysql_version >= 5.6 ? "table_open_cache"
 						  : "table_cache",
