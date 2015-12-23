@@ -753,6 +753,22 @@ eval { $data = &execute_sql_safe(undef, "select version()") };
 return $@ || !$data ? 0 : 1;
 }
 
+# user_priv_fields()
+# Returns the names and descriptions of fields for user privileges
+sub user_priv_fields
+{
+if (!@user_priv_fields) {
+	foreach my $s (&table_structure("mysql", "user")) {
+		if ($s->{'field'} =~ /^(.*)_priv/i) {
+			push(@user_priv_fields,
+				[ $s->{'field'}, $text{'user_priv_'.lc($1)} ||
+						 $s->{'field'} ]);
+			}
+		}
+	}
+return @user_priv_fields;
+}
+
 # user_priv_cols()
 # Returns the number of columns used for privileges in the user table
 sub user_priv_cols

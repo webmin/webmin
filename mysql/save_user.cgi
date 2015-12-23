@@ -20,49 +20,40 @@ else {
 	$in{'host_def'} || $in{'host'} =~ /^\S+$/ ||
 		&error($text{'user_ehost'});
 
-	map { $perms[$_]++ } split(/\0/, $in{'perms'});
+	%perms = map { $_, 1 } split(/\0/, $in{'perms'});
 	@desc = &table_structure($master_db, 'user');
 	%fieldmap = map { $_->{'field'}, $_->{'index'} } @desc;
 	$host = $in{'host_def'} ? '%' : $in{'host'};
 	$user = $in{'mysqluser_def'} ? '' : $in{'mysqluser'};
+	@pfields = map { $_->[0] } &user_priv_fields();
 	if ($in{'new'}) {
 		# Create a new user
-		for($i=3; $i<=&user_priv_cols()+3-1; $i++) {
-			push(@yesno, $perms[$i] ? "'Y'" : "'N'");
-			}
-		foreach my $f ('ssl_type', 'ssl_cipher',
-			       'x509_issuer', 'x509_subject', 'plugin',
-			       'authentication_string') {
-			if ($fieldmap{$f}) {
-				push(@ssl_field_names, $f);
-				push(@ssl_field_values, "''");
-				}
-			}
-		$sql = sprintf "insert into user (%s) values ('%s', '%s', '', %s)",
-			join(",", (map { $desc[$_]->{'field'} }
-				      (0 .. &user_priv_cols()+3-1)),
-				  @ssl_field_names),
+		$sql = "insert into user (host, user, ".
+		       join(", ", @pfields, @ssl_field_names).
+		       ") values (?, ?, ".
+		       join(", ", map { "?" } (@pfields, @ssl_field_names)).")";
+		&execute_sql_logged($master_db, $sql,
 			$host, $user,
-			join(",", @yesno, @ssl_field_values);
+			(map { $perms{$_} ? 'Y' : 'N' } @pfields),
+			@ssl_field_values);
 		}
 	else {
 		# Update existing user
-		for($i=3; $i<=&user_priv_cols()+3-1; $i++) {
-			push(@yesno, $desc[$i]->{'field'}."=".
-				     ($perms[$i] ? "'Y'" : "'N'"));
-			}
-		$sql = sprintf "update user set host = '%s', user = '%s', ".
-			       "%s where user = '%s' and host = '%s'",
-		    $host, $user,
-		    join(" , ", @yesno), $in{'olduser'}, $in{'oldhost'};
+		$sql = "update user set host = ?, user = ?, ".
+		       join(", ",map { "$_ = ?" } (@pfields, @ssl_field_names)).
+		       " where host = ? and user = ?";
+		&execute_sql_logged($master_db, $sql,
+			$host, $user,
+			(map { $perms{$_} ? 'Y' : 'N' } @pfields),
+                        @ssl_field_values,
+			$in{'oldhost'}, $in{'olduser'});
 		}
-	&execute_sql_logged($master_db, $sql);
+	&execute_sql_logged($master_db, 'flush privileges');
 	if ($in{'mysqlpass_mode'} == 0) {
 		$esc = &escapestr($in{'mysqlpass'});
 		&execute_sql_logged($master_db,
-			"update user set password = $password_func('$esc') ".
-			"where user = ? and host = ?",
-			$user, $host);
+			"set password for '".$user."'\@'".$host."' = ".
+			"$password_func('$esc')");
 		}
 	elsif ($in{'mysqlpass_mode'} == 2) {
 		&execute_sql_logged($master_db,
