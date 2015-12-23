@@ -25,7 +25,7 @@ else {
 	%fieldmap = map { $_->{'field'}, $_->{'index'} } @desc;
 	$host = $in{'host_def'} ? '%' : $in{'host'};
 	$user = $in{'mysqluser_def'} ? '' : $in{'mysqluser'};
-	@pfields = map { $_->[0] } &user_priv_fields();
+	@pfields = map { $_->[0] } &priv_fields('user');
 	if ($in{'new'}) {
 		# Create a new user
 		$sql = "insert into user (host, user, ".

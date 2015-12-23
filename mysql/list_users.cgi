@@ -36,7 +36,7 @@ foreach $u (@{$d->{'data'}}) {
 		}
 	my @priv;
 	my ($allprivs, $noprivs) = (1, 1);
-	foreach my $f (&user_priv_fields()) {
+	foreach my $f (&priv_fields('user')) {
 		if ($u->[$fieldmap{$f->[0]}] eq 'Y') {
 			push(@priv, $f->[1]);
 			$noprivs = 0;
@@ -73,7 +73,7 @@ print &ui_table_row($text{'users_syncwhen'},
 print &ui_table_row($text{'users_sync_privs'},
 	&ui_select("sync_privs",
 		   [ split(/\s+/, $config{'sync_privs'}) ],
-		   [ &user_priv_fields() ],
+		   [ &priv_fields('user') ],
 		   5, 1));
 
 # Hosts for new users

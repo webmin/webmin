@@ -57,7 +57,7 @@ print &ui_table_row($text{'user_host'},
 			$text{'user_any'}));
 
 # User's permissions
-foreach my $f (&user_priv_fields()) {
+foreach my $f (&priv_fields('user')) {
 	push(@opts, $f);
 	push(@sel, $f->[0]) if ($u->[$fieldmap{$f->[0]}] eq 'Y');
 	}
