@@ -27,6 +27,8 @@ else {
 	print &ui_hidden("olduser", $u->[2]);
 	}
 print &ui_table_start($text{'db_header'}, undef, 2);
+%fieldmap = map { $_->{'field'}, $_->{'index'} }
+		&table_structure($master_db, "db");
 
 # Database name
 print &ui_table_row($text{'db_db'}, &select_db($u->[1]));
@@ -43,9 +45,9 @@ print &ui_table_row($text{'db_host'},
 	    [ 2, &ui_textbox("host", $u->[0] eq '%' ? '' : $u->[0], 40) ] ]));
 
 # Permissions for DB
-for($i=3; $i<=&db_priv_cols()+3-1; $i++) {
-	push(@opts, [ $i, $text{"db_priv$i"} ]);
-	push(@sel, $i) if ($u->[$i] eq 'Y');
+foreach my $f (&priv_fields('db')) {
+	push(@opts, $f);
+	push(@sel, $f->[0]) if ($u->[$fieldmap{$f->[0]}] eq 'Y');
 	}
 print &ui_table_row($text{'db_perms'},
 	&ui_select("perms", \@sel, \@opts, 10, 1, 1));

@@ -8,6 +8,8 @@ $access{'perms'} || &error($text{'perms_ecannot'});
 
 @rowlinks = ( &ui_link("edit_db.cgi?new=1",$text{'dbs_add'}) );
 $d = &execute_sql_safe($master_db, "select * from db order by db");
+%fieldmap = map { $_->{'field'}, $_->{'index'} }
+		&table_structure($master_db, "db");
 if (@{$d->{'data'}}) {
 	print &ui_form_start("delete_dbs.cgi");
 	unshift(@rowlinks, &select_all_link("d", 0),
@@ -32,13 +34,20 @@ if (@{$d->{'data'}}) {
 		push(@cols, $u->[0] eq '%' ? $text{'dbs_any'} :
 			    $u->[0] eq '' ? $text{'dbs_hosts'}
 					  : &html_escape($u->[0]));
-		local @priv;
-		for($j=3; $j<=&db_priv_cols()+3-1; $j++) {
-			push(@priv, $text{"dbs_priv$j"}) if ($u->[$j] eq 'Y');
+		my @priv;
+		my ($allprivs, $noprivs) = (1, 1);
+		foreach my $f (&priv_fields('db')) {
+			if ($u->[$fieldmap{$f->[0]}] eq 'Y') {
+				push(@priv, $f->[1]);
+				$noprivs = 0;
+				}
+			else {
+				$allprivs = 0;
+				}
 			}
-		push(@cols, 
-			scalar(@priv) == &db_priv_cols() ? $text{'dbs_all'} :
-			!@priv ? $text{'dbs_none'} : join("&nbsp;| ", @priv));
+		push(@cols, $allprivs ? $text{'users_all'} :
+			    $noprivs ? $text{'users_none'} :
+				       join("&nbsp;| ", @priv));
 		print &ui_checked_columns_row(\@cols, \@tds,
 				"d", join(" ", $u->[0], $u->[1], $u->[2]));
 		}

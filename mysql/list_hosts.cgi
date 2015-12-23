@@ -29,11 +29,11 @@ if (@{$d->{'data'}}) {
 		push(@cols, $u->[0] eq '%' || $u->[0] eq '' ?
 				$text{'hosts_any'} : &html_escape($u->[0]));
 		local @priv;
-		for($j=2; $j<=&db_priv_cols()+2-1; $j++) {
+		for($j=2; $j<=&host_priv_cols()+2-1; $j++) {
 			push(@priv, $text{"hosts_priv$j"}) if ($u->[$j] eq 'Y');
 			}
 		push(@cols,
-			scalar(@priv) == &db_priv_cols() ? $text{'hosts_all'} :
+			scalar(@priv) == &host_priv_cols() ? $text{'hosts_all'} :
 			!@priv ? $text{'hosts_none'} : join("&nbsp;| ", @priv));
 		print &ui_checked_columns_row(\@cols, \@tds,
 				"d", $u->[0]." ".$u->[1]);

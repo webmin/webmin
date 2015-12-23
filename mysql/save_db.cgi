@@ -35,36 +35,32 @@ else {
 		&can_edit_db($db) || &error($text{'perms_edb'});
 		}
 
-	map { $perms[$_]++ } split(/\0/, $in{'perms'});
+	%perms = map { $_, 1 } split(/\0/, $in{'perms'});
 	@desc = &table_structure($master_db, 'db');
+	@pfields = map { $_->[0] } &priv_fields('db');
+	$host = $in{'host_mode'} == 0 ? '' :
+		$in{'host_mode'} == 1 ? '%' : $in{'host'};
+	$user = $in{'user_def'} ? '' : $in{'user'};
 	if ($in{'new'}) {
 		# Create a new db
-		for($i=3; $i<=&db_priv_cols()+3-1; $i++) {
-			push(@yesno, $perms[$i] ? "'Y'" : "'N'");
-			}
-		$sql = sprintf "insert into db (%s) values ('%s', '%s', '%s', %s)",
-			join(",", map { $desc[$_]->{'field'} } (0 .. &db_priv_cols()+3-1)),
-			$in{'host_mode'} == 0 ? '' :
-			$in{'host_mode'} == 1 ? '%' : $in{'host'},
-			$db, $in{'user_def'} ? '' : $in{'user'},
-			join(",", @yesno);
+		$sql = "insert into db (host, db, user, ".
+                       join(", ", @pfields).
+                       ") values (?, ?, ?, ". 
+                       join(", ", map { "?" } @pfields).")";
+                &execute_sql_logged($master_db, $sql,
+                        $host, $db, $user,
+                        (map { $perms{$_} ? 'Y' : 'N' } @pfields));
 		}
 	else {
-		# Update existing user
-		for($i=3; $i<=&db_priv_cols()+3-1; $i++) {
-			push(@yesno, $desc[$i]->{'field'}."=".
-				     ($perms[$i] ? "'Y'" : "'N'"));
-			}
-		$sql = sprintf "update db set user = '%s', host = '%s', ".
-			       "db = '%s', %s where user = '%s' and ".
-			       "host = '%s' and db = '%s'",
-			$in{'user_def'} ? '' : $in{'user'},
-			$in{'host_mode'} == 0 ? '' :
-			$in{'host_mode'} == 1 ? '%' : $in{'host'},
-			$db, join(" , ", @yesno),
-			$in{'olduser'}, $in{'oldhost'}, $in{'olddb'};
+		# Update existing db
+		$sql = "update db set host = ?, db = ?, user = ?, ".
+		       join(", ",map { "$_ = ?" } @pfields).
+		       " where host = ? and db = ? and user = ?";
+		&execute_sql_logged($master_db, $sql,
+			$host, $db, $user,
+			(map { $perms{$_} ? 'Y' : 'N' } @pfields),
+			$in{'oldhost'}, $in{'olddb'}, $in{'olduser'});
 		}
-	&execute_sql_logged($master_db, $sql);
 	}
 &execute_sql_logged($master_db, 'flush privileges');
 if ($in{'delete'}) {
