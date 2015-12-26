@@ -139,6 +139,7 @@ index_none=Keine PAM-Konfigurationsdateien wurden auf dem System im Verzeichnis 
 index_return=Service Liste
 index_title=PAM Authentifikation
 listfile_all=Alle Benutzer
+listfile_apply=Limitiere Pr&#252;fung auf
 listfile_fail=Fehlgeschlagen
 listfile_file=Datei zu suchen
 listfile_group=Nur Gruppe
