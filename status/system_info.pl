@@ -9,6 +9,13 @@ if (!$config{'sysinfo'}) {
 	# Display is disabled
 	return ( );
 	}
+if ($config{'sysinfo_users'} == 0 &&
+    $base_remote_user !~ /^(root|admin)$/ ||
+    $config{'sysinfo_users'} == 1 &&
+    !&foreign_available($module_name)) {
+	# Not visible to this user
+	return ( );
+	}
 my @serv = &list_services();
 if (!@serv) {
 	# Nothing to show
