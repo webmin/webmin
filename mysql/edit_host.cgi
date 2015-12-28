@@ -26,6 +26,8 @@ else {
 	print &ui_hidden("olddb", $u->[1]);
 	}
 print &ui_table_start($text{'host_header'}, undef, 2);
+%fieldmap = map { $_->{'field'}, $_->{'index'} }
+		&table_structure($master_db, "host");
 
 # Database name
 print &ui_table_row($text{'host_db'}, &select_db($u->[1]));
@@ -36,9 +38,9 @@ print &ui_table_row($text{'host_host'},
 			$text{'host_any'}));
 
 # Host's permissions
-for($i=2; $i<=&host_priv_cols()+2-1; $i++) {
-	push(@opts, [ $i, $text{"host_priv$i"} ]);
-	push(@sel, $i) if ($u->[$i] eq 'Y');
+foreach my $f (&priv_fields('host')) {
+	push(@opts, $f);
+	push(@sel, $f->[0]) if ($u->[$fieldmap{$f->[0]}] eq 'Y');
 	}
 print &ui_table_row($text{'host_perms'},
 	&ui_select("perms", \@sel, \@opts, 10, 1, 1));

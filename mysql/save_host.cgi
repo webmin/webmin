@@ -33,30 +33,30 @@ else {
 		&can_edit_db($db) || &error($text{'perms_edb'});
 		}
 
-	map { $perms[$_]++ } split(/\0/, $in{'perms'});
+        %perms = map { $_, 1 } split(/\0/, $in{'perms'});
 	@desc = &table_structure($master_db, 'host');
+        @pfields = map { $_->[0] } &priv_fields('host');
+	$host = $in{'host_def'} ? '%' : $in{'host'};
 	if ($in{'new'}) {
 		# Create a new host
-		for($i=2; $i<=&host_priv_cols()+2-1; $i++) {
-			push(@yesno, $perms[$i] ? "'Y'" : "'N'");
-			}
-		$sql = sprintf "insert into host (%s) values ('%s', '%s', %s)",
-			join(",", map { $desc[$_]->{'field'} } (0 .. &host_priv_cols()+2-1)),
-			$in{'host_def'} ? '%' : $in{'host'}, $db,
-			join(",", @yesno);
+		$sql = "insert into host (host, db, ".
+                       join(", ", @pfields).
+                       ") values (?, ?, ".
+                       join(", ", map { "?" } @pfields).")";
+                &execute_sql_logged($master_db, $sql,
+                        $host, $db,
+                        (map { $perms{$_} ? 'Y' : 'N' } @pfields));
 		}
 	else {
 		# Update existing host
-		for($i=2; $i<=&host_priv_cols()+2-1; $i++) {
-			push(@yesno, $desc[$i]->{'field'}."=".
-				     ($perms[$i] ? "'Y'" : "'N'"));
-			}
-		$sql = sprintf "update host set host = '%s', db = '%s', %s ".
-			       "where host = '%s' and db = '%s'",
-			$in{'host_def'} ? '%' : $in{'host'}, $db,
-			join(" , ", @yesno), $in{'oldhost'}, $in{'olddb'};
+		$sql = "update host set host = ?, db = ?, ".
+		       join(", ",map { "$_ = ?" } @pfields).
+		       " where host = ? and db = ?";
+		&execute_sql_logged($master_db, $sql,
+			$host, $db,
+			(map { $perms{$_} ? 'Y' : 'N' } @pfields),
+			$in{'oldhost'}, $in{'olddb'});
 		}
-	&execute_sql_logged($master_db, $sql);
 	}
 &execute_sql_logged($master_db, 'flush privileges');
 if ($in{'delete'}) {
