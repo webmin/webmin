@@ -593,8 +593,8 @@ sub valid_pem_file
 local ($file, $type) = @_;
 local $data = &read_file_contents($file);
 if ($type eq 'key') {
-	return $data =~ /\-{5}BEGIN RSA PRIVATE KEY\-{5}/ &&
-	       $data =~ /\-{5}END RSA PRIVATE KEY\-{5}/;
+	return $data =~ /\-{5}BEGIN (RSA )?PRIVATE KEY\-{5}/ &&
+	       $data =~ /\-{5}END (RSA )?PRIVATE KEY\-{5}/;
 	}
 else {
 	return $data =~ /\-{5}BEGIN CERTIFICATE\-{5}/ &&
