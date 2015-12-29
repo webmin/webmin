@@ -103,3 +103,5 @@ Scheduled MySQL backups can now have their success or failure sent via email, vi
 When executing SQL or restoring a backup file, the character set can now be selected for the imported data.
 ---- Changes since 1.700 ----
 When a database is deleted, any cron job for backing it up is also removed.
+---- Changes since 1.770 ----
+Added support for the new password columns in the user table as seen in MySQL 5.7, and massively cleaned up all the code for user, host and DB permissions management.
