@@ -11,13 +11,16 @@ my ($user) = @_;
 if ($config{'sync_create'}) {
 	my %privs = map { $_, 1 } split(/\s+/, $config{'sync_privs'});
         my @pfields = map { $_->[0] } &priv_fields('user');
+	my @ssl_field_names = &ssl_fields();
+	my @ssl_field_values = map { '' } @ssl_field_names;
 	my $sql = "insert into user (host, user, ".
-		  join(", ", @pfields).") values (?, ?, ".
-		  join(", ", map { "?" } @pfields).")";
+		  join(", ", @pfields, @ssl_field_names).") values (?, ?, ".
+		  join(", ", map { "?" } (@pfields, @ssl_field_names)).")";
 	&execute_sql_logged($master_db, $sql,
 		$config{'sync_host'},
 		$user->{'user'},
-		(map { $privs{$_} ? 'Y' : 'N' } @pfields));
+		(map { $privs{$_} ? 'Y' : 'N' } @pfields),
+		@ssl_field_values);
 	&execute_sql_logged($master_db, 'flush privileges');
 	if ($user->{'passmode'} == 3) {
 		$esc = &escapestr($user->{'plainpass'});

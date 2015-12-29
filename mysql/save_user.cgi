@@ -26,6 +26,8 @@ else {
 	$host = $in{'host_def'} ? '%' : $in{'host'};
 	$user = $in{'mysqluser_def'} ? '' : $in{'mysqluser'};
 	@pfields = map { $_->[0] } &priv_fields('user');
+	my @ssl_field_names = &ssl_fields();
+	my @ssl_field_values = map { '' } @ssl_field_names;
 	if ($in{'new'}) {
 		# Create a new user
 		$sql = "insert into user (host, user, ".
@@ -40,12 +42,11 @@ else {
 	else {
 		# Update existing user
 		$sql = "update user set host = ?, user = ?, ".
-		       join(", ",map { "$_ = ?" } (@pfields, @ssl_field_names)).
+		       join(", ",map { "$_ = ?" } @pfields).
 		       " where host = ? and user = ?";
 		&execute_sql_logged($master_db, $sql,
 			$host, $user,
 			(map { $perms{$_} ? 'Y' : 'N' } @pfields),
-                        @ssl_field_values,
 			$in{'oldhost'}, $in{'olduser'});
 		}
 	&execute_sql_logged($master_db, 'flush privileges');
