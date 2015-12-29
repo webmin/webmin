@@ -30,7 +30,12 @@ else {
 
 print &ui_form_start("save_cpriv.cgi");
 if ($in{'table'}) {
-	print &ui_hidden("table", $in{'table'});
+	if (defined($in{'db'})) {
+		print &ui_hidden("table", $in{'db'}.".".$in{'table'});
+		}
+	else {
+		print &ui_hidden("table", $in{'table'});
+		}
 	}
 else {
 	print &ui_hidden("oldhost", $u->[0]);

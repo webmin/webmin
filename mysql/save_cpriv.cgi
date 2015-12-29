@@ -31,29 +31,31 @@ else {
 		($d, $t) = split(/\./, $in{'table'});
 		$access{'perms'} == 1 || &can_edit_db($d) ||
 			&error($text{'perms_edb'});
-		$sql = sprintf "insert into columns_priv values ('%s', '%s', ".
-			       "'%s', '%s', '%s', NULL, '%s')",
-				$in{'host_def'} ? '%' : $in{'host'}, $d,
-				$in{'user_def'} ? '' : $in{'user'},
-				$t, $in{'field'}, $in{'perms'};
+		$sql = "insert into columns_priv (host, db, user, ".
+		       "table_name, column_name, column_priv) ".
+		       "values (?, ?, ?, ?, ?, ?)";
+		&execute_sql_logged($master_db, $sql,
+			$in{'host_def'} ? '%' : $in{'host'},
+			$d,
+			$in{'user_def'} ? '' : $in{'user'},
+			$t, $in{'field'}, $in{'perms'});
 		}
 	else {
 		# Update existing column permissions
 		$access{'perms'} == 1 || &can_edit_db($in{'olddb'}) ||
 			&error($text{'perms_edb'});
-		$sql = sprintf "update columns_priv set host = '%s', ".
-			       "user = '%s', column_name = '%s', ".
-			       "column_priv = '%s' where host = '%s' ".
-			       "and db = '%s' and user = '%s' ".
-			       "and table_name = '%s' and column_name = '%s'",
-				$in{'host_def'} ? '%' : $in{'host'},
-				$in{'user_def'} ? '' : $in{'user'},
-				$in{'field'}, $in{'perms'},
-				$in{'oldhost'}, $in{'olddb'},
-				$in{'olduser'}, $in{'oldtable'},
-				$in{'oldfield'};
+		$sql = "update columns_priv set host = ?, user = ?, ".
+		       "column_name = ?, column_priv = ? where host = ? ".
+		       "and db = ? and user = ? and table_name = ? and ".
+		       "column_name = ?";
+		&execute_sql_logged($master_db, $sql,
+			$in{'host_def'} ? '%' : $in{'host'},
+			$in{'user_def'} ? '' : $in{'user'},
+			$in{'field'}, $in{'perms'},
+			$in{'oldhost'}, $in{'olddb'},
+			$in{'olduser'}, $in{'oldtable'},
+			$in{'oldfield'});
 		}
-	&execute_sql_logged($master_db, $sql);
 	}
 &execute_sql_logged($master_db, 'flush privileges');
 if ($in{'delete'}) {
