@@ -57,7 +57,7 @@ my $twcount = 0;
 foreach my $d (sort { $a->{'device'} cmp $b->{'device'} }
 		    &fdisk::list_disks_partitions()) {
 	if (($d->{'type'} eq 'scsi' || $d->{'type'} eq 'raid') &&
-	    $d->{'model'} =~ /3ware|amcc|LSI/i) {
+	    $d->{'model'} =~ /3ware|amcc/i) {
 		# A 3ware hardware RAID device.
 
 		# First find the controllers.
@@ -94,6 +94,22 @@ foreach my $d (sort { $a->{'device'} cmp $b->{'device'} }
 			}
 		$twcount++;
 		}
+	elsif (($d->{'type'} eq 'scsi' || $d->{'type'} eq 'raid') &&
+	    $d->{'model'} =~ /LSI/i) {
+		# A LSI megaraid device.
+		local @units = &list_megaraid_subdisks(0);
+
+		foreach my $i (@units) {
+			push(@rv, { 'device' => $d->{'device'},
+				    'prefix' => $d->{'device'},
+				    'desc' => 'LSI Array '.$i->[1].' physical disk ID '.$i->[0],
+				    'type' => 'scsi',
+				    'subtype' => 'sat+megaraid',
+				    'subdisk' => $i->[0],
+				    'id' => $d->{'id'},
+				  });
+			}
+		}
 	elsif ($d->{'device'} =~ /^\/dev\/cciss\/(.*)$/) {
 		# HP Smart Array .. add underlying disks
 		my $count = &count_subdisks($d, "cciss");
@@ -115,6 +131,25 @@ foreach my $d (sort { $a->{'device'} cmp $b->{'device'} }
 	}
 return sort { $a->{'device'} cmp $b->{'device'} ||
 	      $a->{'subdisk'} <=> $b->{'subdisk'} } @rv;
+}
+
+=head2 list_megaraid_subdisks(adapter)
+
+Returns a list, each element of which is a unit, controller and list of subdisks
+
+=cut
+sub list_megaraid_subdisks
+{
+local ($adap) = @_;
+local $out = &backquote_command("megacli -pdlist -a$adap");
+return () if ($?);
+my @rv;
+foreach my $l (split(/\r?\n/, $out)) {
+	if ($l =~ /^Device\sId:\s(\d+)$/) {
+		push(@rv, [ $1, $adap, [ ] ]);
+		}
+	}
+return @rv;
 }
 
 =head2 list_3ware_subdisks(controller)
