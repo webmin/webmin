@@ -771,20 +771,6 @@ if (!$priv_fields{$type}) {
 return @{$priv_fields{$type}};
 }
 
-# host_priv_cols()
-# Returns the number of columns used for privileges in the db table
-sub host_priv_cols
-{
-if (!$host_priv_cols) {
-	local @str = &table_structure("mysql", "host");
-	local $s;
-	foreach $s (@str) {
-		$host_priv_cols++ if ($s->{'field'} =~ /_priv/i);
-		}
-	}
-return $host_priv_cols;
-}
-
 sub is_blob
 {
 return $_[0]->{'type'} =~ /(text|blob)$/i;
