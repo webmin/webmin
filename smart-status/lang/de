@@ -13,7 +13,7 @@ index_check=Festplattentest durchgef&#252;hrt?
 index_data=Datenerfassungs-Test
 index_desc=Ort
 index_drive=Status des Laufwerkes $1
-index_drivesub=Status von Festplatte $1, Partition $2
+index_drivesub=Status von Laufwerk $1, Festplatte $2
 index_ecmd=Der SMART-Kontrollbefehl $1 wurde auf Ihrem System nicht gefunden oder er ist nicht richtig in der <a href='$2'>Modulkonfiguration</a> angegeben. Er muss installiert werden, bevor das Modul genutzt werden kann.
 index_ecmd2=Der Befehl $1 scheint nicht der SMART-Kontrollbefehl zu sein. Er ist nicht richtig in der <a href='$2'>Modulkonfiguration</a> angegeben. Dies ist jedoch eine Grundvoraussetzung f&#252;r die Funktion dieses Modules.
 index_ecount=$1 Fehler erfasst
@@ -29,7 +29,7 @@ index_raw=Voller SMART Status Bericht
 index_return=Modulindex
 index_serial=Seriennummer
 index_short=Kurzer Selbsttest
-index_show=Zeige Status der Festplatte:
+index_show=Zeige Status des Laufwerkes:
 index_size=Festplattengr&#246;&#223;e
 index_support=Unterst&#252;tzt SMART?
 index_title=SMART Festplattenstatus
