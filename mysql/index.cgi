@@ -214,21 +214,25 @@ else {
 		print &ui_hr();
 		print &ui_subheading($text{'index_global'});
 		$canvars = &supports_variables();
-		@links = ( 'list_users.cgi', 'list_dbs.cgi', 'list_hosts.cgi',
+		$canhosts = &supports_hosts();
+		@links = ( 'list_users.cgi', 'list_dbs.cgi',
+			   $canhosts ? ( 'list_hosts.cgi' ) : ( ),
 			   'list_tprivs.cgi', 'list_cprivs.cgi',
 			   'edit_cnf.cgi', 'list_procs.cgi',
 			   $canvars ? ( 'list_vars.cgi' ) : ( ),
 			   'root_form.cgi',
 			 );
 		@titles = ( $text{'users_title'}, $text{'dbs_title'},
-			    $text{'hosts_title'}, $text{'tprivs_title'},
-			    $text{'cprivs_title'},$text{'cnf_title'},
+			    $canhosts ? ( $text{'hosts_title'} ) : ( ),
+			    $text{'tprivs_title'},
+			    $text{'cprivs_title'}, $text{'cnf_title'},
 			    $text{'procs_title'},
 			    $canvars ? ( $text{'vars_title'} ) : ( ),
 			    $text{'root_title'},
 			  );
 		@images = ( 'images/users.gif', 'images/dbs.gif',
-			    'images/hosts.gif', 'images/tprivs.gif',
+			    $canhosts ? ( 'images/hosts.gif' ) : ( ),
+			    'images/tprivs.gif',
 			    'images/cprivs.gif', 'images/cnf.gif',
 			    'images/procs.gif',
 			    $canvars ? ( 'images/vars.gif' ) : ( ),

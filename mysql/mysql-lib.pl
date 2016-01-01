@@ -718,6 +718,13 @@ else {
 	}
 }
 
+# supports_hosts()
+# Returns 1 if the hosts table exists
+sub supports_hosts
+{
+return $mysql_version <= 5.7 ? 1 : 0;
+}
+
 # supports_env_pass([run-as-user])
 # Returns 1 if passing the password via an environment variable is supported
 sub supports_env_pass
