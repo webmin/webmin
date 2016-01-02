@@ -33,3 +33,4 @@ desc_nl=Sendmail Email Server
 desc_hu=Levelezõ szerver (Sendmail)
 longdesc_ms_MY=Mengurus sendmail untuk alias,masquerading, alamat menulis semula dan ciri-ciri lain.
 desc_ms_MY=Pelayan Mel Sendmail
+longdesc_de=Verwalte sendmail-Aliase, Masquerading, Umschreiben von Adressen und sonstige Funktionen.
