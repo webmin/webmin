@@ -4002,7 +4002,7 @@ else {
 	}
 if (&has_command("dnssec-dsfromkey")) {
 	# Generate with a command
-	my $out = &backquote_command("dnssec-dsfromkey -f ".quotemeta(&make_chroot(&absolute_path($zonefile)))." ZONE 2>/dev/null");
+	my $out = &backquote_command("dnssec-dsfromkey -f ".quotemeta(&make_chroot(&absolute_path($zonefile)))." ".quotemeta($dom)." 2>/dev/null");
 	return undef if ($?);
 	$out =~ s/\r|\n//g;
 	return $out;
