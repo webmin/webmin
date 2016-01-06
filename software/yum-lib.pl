@@ -72,6 +72,7 @@ while(<CMD>) {
 		if (!@pkgs) {
 			# Wrapped to next line
 			local $pkgs = <CMD>;
+			print &html_escape($pkgs);
 			$pkgs =~ s/^\s+//;
 			$pkgs =~ s/\s+$//;
 			@pkgs = split(/\s+/, $_);
