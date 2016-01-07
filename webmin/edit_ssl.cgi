@@ -264,9 +264,9 @@ else {
 	print &ui_form_start("letsencrypt.cgi");
 	print &ui_table_start($text{'ssl_letsheader'}, undef, 2);
 
-	# For domain name
-	print &ui_table_row($text{'ssl_letsdom'},
-		&ui_textbox("dom", $host, 40));
+	# For domain names
+	print &ui_table_row($text{'ssl_letsdoms'},
+		&ui_textarea("dom", $host, 5, 40));
 
 	# Apache vhost or other path
 	my @opts;

@@ -15,13 +15,14 @@ sub check_letsencrypt
 return undef;
 }
 
-# request_letsencrypt_cert(domain, domain-webroot, [email])
+# request_letsencrypt_cert(domain|&domains, domain-webroot, [email])
 # Attempt to request a cert using a generated key with the Let's Encrypt client
 # command, and write it to the given path. Returns a status flag, and either
 # an error message or the paths to cert, key and chain files.
 sub request_letsencrypt_cert
 {
 my ($dom, $webroot, $email) = @_;
+my @doms = ref($dom) ? @$dom : ($dom);
 $email ||= "root\@$dom";
 my $temp = &transname();
 &open_tempfile(TEMP, ">$temp");
@@ -30,7 +31,7 @@ my $temp = &transname();
 &close_tempfile(TEMP);
 my $dir = $letsencrypt_cmd;
 $dir =~ s/\/[^\/]+$//;
-my $out = &backquote_command("cd $dir && (echo A | $letsencrypt_cmd certonly -a webroot -d ".quotemeta($dom)." --webroot-path ".quotemeta($webroot)." --duplicate --config $temp 2>&1)");
+my $out = &backquote_command("cd $dir && (echo A | $letsencrypt_cmd certonly -a webroot ".join(" ", map { "-d ".quotemeta($_) } @doms)." --webroot-path ".quotemeta($webroot)." --duplicate --config $temp 2>&1)");
 if ($?) {
 	return (0, $out);
 	}

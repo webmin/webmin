@@ -13,7 +13,10 @@ our $config_directory;
 
 # Validate inputs
 &ReadParse();
-$in{'dom'} =~ /^[a-z0-9\-\.\_]+$/i || &error($text{'letsencrypt_edom'});
+my @doms = split(/\s+/, $in{'dom'});
+foreach my $dom (@doms) {
+	$dom =~ /^[a-z0-9\-\.\_]+$/i || &error($text{'letsencrypt_edom'});
+	}
 my $webroot;
 if ($in{'webroot_mode'} == 2) {
 	# Some directory
@@ -30,7 +33,7 @@ else {
 		my $sn = &apache::find_directive(
 			"ServerName", $virt->{'members'});
 		my $match = 0;
-		if ($in{'webroot_mode'} == 0 && $sn eq $in{'dom'}) {
+		if ($in{'webroot_mode'} == 0 && $sn eq $doms[0]) {
 			# Based on domain name
 			$match = 1;
 			}
@@ -46,16 +49,16 @@ else {
 			last;
 			}
 		}
-	$webroot || &error(&text('letsencrypt_evhost', $in{'dom'}));
+	$webroot || &error(&text('letsencrypt_evhost', $doms[0]));
 	}
 
 # Request the cert
 &ui_print_unbuffered_header(undef, $text{'letsencrypt_title'}, "");
 
 print &text('letsencrypt_doing',
-	    "<tt>".&html_escape($in{'dom'})."</tt>",
+	    "<tt>".&html_escape(join(", ", @doms))."</tt>",
 	    "<tt>".&html_escape($webroot)."</tt>"),"<p>\n";
-my ($ok, $cert, $key, $chain) = &request_letsencrypt_cert($in{'dom'}, $webroot);
+my ($ok, $cert, $key, $chain) = &request_letsencrypt_cert(\@doms, $webroot);
 if (!$ok) {
 	print &text('letsencrypt_failed',
 		    "<pre>".&html_escape($cert)."</pre>"),"<p>\n";
