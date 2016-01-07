@@ -15,7 +15,6 @@ print &ui_links_row(\@rowlinks);
 print &ui_columns_start([ "",
 			  $text{'users_user'},
 			  $text{'users_host'},
-			  $text{'users_pass'},
 			  $mysql_version >= 5 ? ( $text{'users_ssl'} ) : ( ),
 			  $text{'users_perms'} ], 100, 0, \@tds);
 $d = &execute_sql_safe($master_db, "select * from user order by user");
@@ -29,7 +28,6 @@ foreach $u (@{$d->{'data'}}) {
 		    "</a>");
 	push(@cols, $u->[0] eq '' || $u->[0] eq '%' ?
 		      $text{'user_any'} : &html_escape($u->[0]));
-	push(@cols, &html_escape($u->[2]));
 	if ($mysql_version >= 5) {
 		$ssl = $u->[$fieldmap{'ssl_type'}];
 		push(@cols, $text{'user_ssl_'.lc($ssl)} || $ssl);
