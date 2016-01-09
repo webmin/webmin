@@ -11,6 +11,7 @@ if ($have_dnssec_tools) {
 	      use Net::DNS::SEC::Tools::rollmgr;
 	      use Net::DNS::SEC::Tools::rollrec;
 	      use Net::DNS::SEC::Tools::keyrec;
+	      use Net::DNS::RR::DS;
 	      use Net::DNS;";
 	}
 
