@@ -37,7 +37,7 @@ else {
 			$in{'host_def'} ? '%' : $in{'host'},
 			$in{'db'},
 			$in{'user_def'} ? '' : $in{'user'},
-			$in{'table'}, $config{'login'},
+			$in{'table'}, $config{'login'} || "root",
 			$in{'perms1'}, $in{'perms2'});
 		}
 	else {
