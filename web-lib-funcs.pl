@@ -6482,20 +6482,21 @@ selected temporary filename will be used, and returned by the function.
 =cut
 sub remote_write
 {
+my ($host, $localfile, $remotefile, $remotebase) = @_;
 return undef if (&is_readonly_mode());
 my ($data, $got);
-my $sn = &remote_session_name($_[0]);
-if (!$_[0] || $remote_server_version{$sn} >= 0.966) {
+my $sn = &remote_session_name($host);
+if (!$_[0]) {
 	# Copy data over TCP connection
-	my $rv = &remote_rpc_call($_[0], { 'action' => 'tcpwrite',
-					   'file' => $_[2],
-					   'name' => $_[3] } );
+	my $rv = &remote_rpc_call($host, { 'action' => 'tcpwrite',
+					   'file' => $remotefile,
+					   'name' => $remotebase } );
 	my $error;
-	my $serv = ref($_[0]) ? $_[0]->{'host'} : $_[0];
+	my $serv = ref($host) ? $host->{'host'} : $host;
 	&open_socket($serv || "localhost", $rv->[1], TWRITE, \$error);
 	return &$main::remote_error_handler("Failed to transfer file : $error")
 		if ($error);
-	open(FILE, $_[1]);
+	open(FILE, $localfile);
 	while(read(FILE, $got, 1024) > 0) {
 		print TWRITE $got;
 		}
@@ -6511,14 +6512,14 @@ if (!$_[0] || $remote_server_version{$sn} >= 0.966) {
 	}
 else {
 	# Just pass file contents as parameters
-	open(FILE, $_[1]);
+	open(FILE, $localfile);
 	while(read(FILE, $got, 1024) > 0) {
 		$data .= $got;
 		}
 	close(FILE);
-	return &remote_rpc_call($_[0], { 'action' => 'write',
+	return &remote_rpc_call($host, { 'action' => 'write',
 					 'data' => $data,
-					 'file' => $_[2],
+					 'file' => $remotefile,
 					 'session' => $remote_session{$sn} });
 	}
 }
@@ -6533,21 +6534,22 @@ system, and remotefile is the file to fetch from the remote server.
 =cut
 sub remote_read
 {
-my $sn = &remote_session_name($_[0]);
-if (!$_[0] || $remote_server_version{$sn} >= 0.966) {
+my ($host, $localfile, $remotefile) = @_;
+my $sn = &remote_session_name($host);
+if (!$_[0]) {
 	# Copy data over TCP connection
-	my $rv = &remote_rpc_call($_[0], { 'action' => 'tcpread',
-					   'file' => $_[2] } );
+	my $rv = &remote_rpc_call($host, { 'action' => 'tcpread',
+					   'file' => $remotefile } );
 	if (!$rv->[0]) {
 		return &$main::remote_error_handler("Failed to transfer file : $rv->[1]");
 		}
 	my $error;
-	my $serv = ref($_[0]) ? $_[0]->{'host'} : $_[0];
+	my $serv = ref($host) ? $host->{'host'} : $host;
 	&open_socket($serv || "localhost", $rv->[1], TREAD, \$error);
 	return &$main::remote_error_handler("Failed to transfer file : $error")
 		if ($error);
 	my $got;
-	open(FILE, ">$_[1]");
+	open(FILE, ">$localfile");
 	while(read(TREAD, $got, 1024) > 0) {
 		print FILE $got;
 		}
@@ -6556,10 +6558,10 @@ if (!$_[0] || $remote_server_version{$sn} >= 0.966) {
 	}
 else {
 	# Just get data as return value
-	my $d = &remote_rpc_call($_[0], { 'action' => 'read',
-				          'file' => $_[2],
+	my $d = &remote_rpc_call($host, { 'action' => 'read',
+				          'file' => $remotefile,
 				          'session' => $remote_session{$sn} });
-	open(FILE, ">$_[1]");
+	open(FILE, ">$localfile");
 	print FILE $d;
 	close(FILE);
 	}
