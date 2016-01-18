@@ -129,3 +129,5 @@ Updated the UI on several pages to use the standard Webmin library, for a more c
 Added an option to use an SSL connection when Webmin sends email, for connecting to remote mail servers like Gmail that don't allow unencrypted SMTP.
 ---- Changes since 1.770 ----
 An SSL certificate can now be requested from Let's Encrypt using a new tab on the SSL Encryption page.
+---- Changes since 1.780 ----
+Added an option for automatically renewing Let's Encrypt certificates.

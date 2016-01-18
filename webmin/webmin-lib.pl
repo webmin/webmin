@@ -2578,6 +2578,50 @@ return undef;
 # Called by cron to renew the last requested cert
 sub renew_letsencrypt_cert
 {
+my @doms = split(/\s+/, $config{'letsencrypt_doms'});
+my $webroot = $config{'letsencrypt_webroot'};
+if (!@doms) {
+	print "No domains saved to renew cert for!\n";
+	return;
+	}
+if (!$webroot) {
+	print "No webroot saved to renew cert for!\n";
+	return;
+	}
+elsif (!-d $webroot) {
+	print "Webroot $webroot does not exist!\n";
+	return;
+	}
+my ($ok, $cert, $key, $chain) = &request_letsencrypt_cert(\@doms, $webroot);
+if (!$ok) {
+	print "Failed to renew certificate : $cert\n";
+	return;
+	}
+
+# Copy into place
+my %miniserv;
+&lock_file($ENV{'MINISERV_CONFIG'});
+&get_miniserv_config(\%miniserv);
+
+&lock_file($miniserv{'keyfile'});
+&copy_source_dest($key, $miniserv{'keyfile'});
+&unlock_file($miniserv{'keyfile'});
+
+&lock_file($miniserv{'certfile'});
+&copy_source_dest($cert, $miniserv{'certfile'});
+&unlock_file($miniserv{'certfile'});
+
+if ($chain) {
+	&lock_file($miniserv{'extracas'});
+	&copy_source_dest($chain, $miniserv{'extracas'});
+	&unlock_file($miniserv{'extracas'});
+	}
+else {
+	delete($miniserv{'extracas'});
+	}
+&put_miniserv_config(\%miniserv);
+&unlock_file($ENV{'MINISERV_CONFIG'});
+&restart_miniserv(1);
 }
 
 1;

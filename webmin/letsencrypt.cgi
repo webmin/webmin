@@ -112,7 +112,7 @@ else {
 				&webmincron::delete_webmin_cron($job) if ($job);
 				}
 			else {
-				my @tm = localtime(time());
+				my @tm = localtime(time() - 60);
 				$job ||= { 'module' => $module_name,
 					   'func' => 'renew_letsencrypt_cert' };
 				$job->{'mins'} ||= $tm[1];

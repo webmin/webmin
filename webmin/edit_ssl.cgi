@@ -115,7 +115,7 @@ print "$text{'ssl_current'}<p>\n";
 print ui_table_start($text{'ssl_cheader'}, undef, 4);
 $info = cert_info($miniserv{'certfile'} || $miniserv{'keyfile'});
 foreach my $i ('cn', 'o', 'email', 'issuer_cn', 'issuer_o', 'issuer_email',
-	    'notafter', 'type') {
+	       'notafter', 'type') {
 	if ($info->{$i}) {
 		print ui_table_row($text{'ca_'.$i}, $info->{$i});
 		}
@@ -266,7 +266,8 @@ else {
 	print &ui_table_start($text{'ssl_letsheader'}, undef, 2);
 
 	# For domain names
-	my @doms = &unique($host, split(/\s+/, $config{'letsencrypt_doms'}));
+	my @doms = $host ? ( $host )
+			 : split(/\s+/, $config{'letsencrypt_doms'});
 	print &ui_table_row($text{'ssl_letsdoms'},
 		&ui_textarea("dom", join("\n", @doms), 5, 40));
 
