@@ -5758,11 +5758,11 @@ foreach my $cron (@webmincrons) {
 		# Check if current time matches spec, and we haven't run in the
 		# last minute
 		my @tm = localtime($now);
-		if (&matches_cron($cron->{'mins'}, $tm[1]) &&
-		    &matches_cron($cron->{'hours'}, $tm[2]) &&
-		    &matches_cron($cron->{'days'}, $tm[3]) &&
-		    &matches_cron($cron->{'months'}, $tm[4]+1) &&
-		    &matches_cron($cron->{'weekdays'}, $tm[6]) &&
+		if (&matches_cron($cron->{'mins'}, $tm[1], 0) &&
+		    &matches_cron($cron->{'hours'}, $tm[2], 0) &&
+		    &matches_cron($cron->{'days'}, $tm[3], 1) &&
+		    &matches_cron($cron->{'months'}, $tm[4]+1, 1) &&
+		    &matches_cron($cron->{'weekdays'}, $tm[6], 0) &&
 		    $now - $webmincron_last{$cron->{'id'}} > 60) {
 			$run = 1;
 			}
@@ -5785,19 +5785,24 @@ if ($changed) {
 	}
 }
 
-# matches_cron(cron-spec, time)
+# matches_cron(cron-spec, time, first-value)
 # Checks if some minute or hour matches some cron spec, which can be * or a list
 # of numbers.
 sub matches_cron
 {
-my ($spec, $tm) = @_;
+my ($spec, $tm, $first) = @_;
 if ($spec eq '*') {
 	return 1;
 	}
 else {
 	foreach my $s (split(/,/, $spec)) {
 		if ($s == $tm ||
-		    $s =~ /^(\d+)\-(\d+)$/ && $tm >= $1 && $tm <= $2) {
+		    $s =~ /^(\d+)\-(\d+)$/ &&
+		      $tm >= $1 && $tm <= $2 ||
+		    $s =~ /^\*\/(\d+)$/ &&
+		      $tm % $1 == $first ||
+		    $s =~ /^(\d+)\-(\d+)\/(\d+)$/ &&
+		      $tm >= $1 && $tm <= $2 && $tm % $3 == $first) {
 			return 1;
 			}
 		}
