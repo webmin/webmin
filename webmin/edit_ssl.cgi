@@ -16,6 +16,7 @@ our $strong_ssl_ciphers;
 our $pfs_ssl_ciphers;
 our $info;
 our $root_directory;
+our %config;
 
 ui_print_header(undef, $text{'ssl_title'}, "");
 ReadParse();
@@ -265,8 +266,9 @@ else {
 	print &ui_table_start($text{'ssl_letsheader'}, undef, 2);
 
 	# For domain names
+	my @doms = &unique($host, split(/\s+/, $config{'letsencrypt_doms'}));
 	print &ui_table_row($text{'ssl_letsdoms'},
-		&ui_textarea("dom", $host, 5, 40));
+		&ui_textarea("dom", join("\n", @doms), 5, 40));
 
 	# Apache vhost or other path
 	my @opts;
@@ -297,6 +299,12 @@ else {
 
 	print &ui_table_row($text{'ssl_usewebmin'},
 		&ui_yesno_radio("use", 1));
+
+	# Renewal option
+	my $job = &find_letsencrypt_cron_job();
+	my $renew = $job && $job->{'months'} =~ /^\*\/(\d+)$/ ? $1 : undef;
+	print &ui_table_row($text{'ssl_letsrenew'},
+		&ui_opt_textbox("renew", $renew, 4, $text{'ssl_letsnotrenew'}));
 
 	print &ui_table_end();
 	print &ui_form_end([ [ undef, $text{'ssl_letsok'} ] ]);

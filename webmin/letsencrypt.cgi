@@ -9,6 +9,8 @@ our %text;
 our %miniserv;
 our %in;
 our $config_directory;
+our %config;
+our $module_name;
 &error_setup($text{'letsencrypt_err'});
 
 # Validate inputs
@@ -17,6 +19,8 @@ my @doms = split(/\s+/, $in{'dom'});
 foreach my $dom (@doms) {
 	$dom =~ /^[a-z0-9\-\.\_]+$/i || &error($text{'letsencrypt_edom'});
 	}
+$in{'renew_def'} || $in{'renew'} =~ /^\d+$/ ||
+	&error($text{'letsencrypt_erenew'});
 my $webroot;
 if ($in{'webroot_mode'} == 2) {
 	# Some directory
@@ -97,6 +101,28 @@ else {
 			}
 		&put_miniserv_config(\%miniserv);
 		&unlock_file($ENV{'MINISERV_CONFIG'});
+
+		# Save for future renewals
+		$config{'letsencrypt_doms'} = join(" ", @doms);
+		$config{'letsencrypt_webroot'} = $webroot;
+		&save_module_config();
+		if (&foreign_check("webmincron")) {
+			my $job = &find_letsencrypt_cron_job();
+			if ($in{'renew_def'}) {
+				&webmincron::delete_webmin_cron($job) if ($job);
+				}
+			else {
+				my @tm = localtime(time());
+				$job ||= { 'module' => $module_name,
+					   'func' => 'renew_letsencrypt_cert' };
+				$job->{'mins'} ||= $tm[1];
+				$job->{'hours'} ||= $tm[2];
+				$job->{'days'} ||= $tm[3];
+				$job->{'months'} = '*/'.$in{'renew'};
+				$job->{'weekdays'} = '*';
+				&webmincron::create_webmin_cron($job);
+				}
+			}
 
 		&webmin_log("letsencrypt");
 		&restart_miniserv(1);

@@ -2564,4 +2564,20 @@ if (&foreign_installed("usermin")) {
 	}
 }
 
+sub find_letsencrypt_cron_job
+{
+if (&foreign_check("webmincron")) {
+	&foreign_require("webmincron");
+	return &webmincron::find_webmin_cron($module_name,
+					     'renew_letsencrypt_cert');
+	}
+return undef;
+}
+
+# renew_letsencrypt_cert()
+# Called by cron to renew the last requested cert
+sub renew_letsencrypt_cert
+{
+}
+
 1;
