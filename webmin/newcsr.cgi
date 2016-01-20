@@ -1,12 +1,11 @@
 #!/usr/local/bin/perl
-# newkey.cgi
-# Create a new SSL key
+# Create a new SSL signing request
 
 require './webmin-lib.pl';
 &ReadParse();
 &error_setup($text{'newcsr_err'});
 
-# Validate inputs and create the key
+# Validate inputs and create the CSR
 $in{'newfile'} || return $text{'newkey_efile'};
 $in{'csrfile'} || return $text{'newcsr_efile'};
 $err = &parse_ssl_csr_form(\%in, $in{'newfile'}, $in{'csrfile'});
