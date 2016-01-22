@@ -111,6 +111,7 @@ mail_esystem=An error occurred contacting the mail system : $1. This must be fix
 mail_selread=Select read.
 mail_selunread=Select unread.
 mail_selspecial=Select special.
+mail_specialsync=Sync Special
 
 view_title=Read Email
 view_desc=Message $1 in $2
