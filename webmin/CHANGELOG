@@ -131,3 +131,4 @@ Added an option to use an SSL connection when Webmin sends email, for connecting
 An SSL certificate can now be requested from Let's Encrypt using a new tab on the SSL Encryption page.
 ---- Changes since 1.780 ----
 Added an option for automatically renewing Let's Encrypt certificates.
+If the Let's Encrypt client is not installed, Webmin will use its own built-in client code to request a certificate.

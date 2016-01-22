@@ -64,8 +64,7 @@ print &text('letsencrypt_doing',
 	    "<tt>".&html_escape($webroot)."</tt>"),"<p>\n";
 my ($ok, $cert, $key, $chain) = &request_letsencrypt_cert(\@doms, $webroot);
 if (!$ok) {
-	print &text('letsencrypt_failed',
-		    "<pre>".&html_escape($cert)."</pre>"),"<p>\n";
+	print &text('letsencrypt_failed', $cert),"<p>\n";
 	}
 else {
 	# Worked, now copy to Webmin

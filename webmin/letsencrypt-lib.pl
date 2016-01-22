@@ -1,17 +1,20 @@
 # Functions for cert creation with Let's Encrypt
-# TODO: Renewal support
 
 $letsencrypt_cmd = $config{'letsencrypt_cmd'} ||
 		   &has_command("letsencrypt-auto") ||
-		   &has_command("letsencrypt") ||
-		   "letsencrypt";
+		   &has_command("letsencrypt");
+
+$account_key = "$module_config_directory/letsencrypt.pem";
+
+$letsencrypt_chain_url = "https://letsencrypt.org/certs/lets-encrypt-x1-cross-signed.pem";
 
 # check_letsencrypt()
 # Returns undef if all dependencies are installed, or an error message
 sub check_letsencrypt
 {
 &has_command($letsencrypt_cmd) ||
-	return &text('letsencrypt_ecmd', "<tt>$letsencrypt_cmd</tt>");
+    (&has_command("python") && &has_command("openssl")) ||
+	return $text{'letsencrypt_ecmds'};
 return undef;
 }
 
@@ -24,34 +27,126 @@ sub request_letsencrypt_cert
 my ($dom, $webroot, $email) = @_;
 my @doms = ref($dom) ? @$dom : ($dom);
 $email ||= "root\@$dom";
-my $temp = &transname();
-&open_tempfile(TEMP, ">$temp");
-&print_tempfile(TEMP, "email = $email\n");
-&print_tempfile(TEMP, "text = True\n");
-&close_tempfile(TEMP);
-my $dir = $letsencrypt_cmd;
-$dir =~ s/\/[^\/]+$//;
-my $out = &backquote_command("cd $dir && (echo A | $letsencrypt_cmd certonly -a webroot ".join(" ", map { "-d ".quotemeta($_) } @doms)." --webroot-path ".quotemeta($webroot)." --duplicate --config $temp 2>&1)");
-if ($?) {
-	return (0, $out);
+
+# Create a challenges directory under the web root
+my $challenge = "$webroot/.well-known/acme-challenge";
+if (!-d $challenge) {
+	my @st = stat($webroot);
+	my $user = getpwuid($st[4]);
+	my $cmd = "mkdir -p -m 755 ".quotemeta($challenge);
+	if ($user && $user ne "root") {
+		$cmd = &command_as_user($user, 0, $cmd);
+		}
+	my $out = &backquote_logged("$cmd 2>&1");
+	if ($?) {
+		return (0, "mkdir failed : $out");
+		}
 	}
-my ($full, $cert, $key, $chain);
-if ($out =~ /(\/.*\.pem)/) {
-	# Output contained the full path
-	$full = $1;
+
+if ($letsencrypt_cmd) {
+	# Use the native Let's Encrypt client if possible
+	my $temp = &transname();
+	&open_tempfile(TEMP, ">$temp");
+	&print_tempfile(TEMP, "email = $email\n");
+	&print_tempfile(TEMP, "text = True\n");
+	&close_tempfile(TEMP);
+	my $dir = $letsencrypt_cmd;
+	$dir =~ s/\/[^\/]+$//;
+	my $out = &backquote_command("cd $dir && (echo A | $letsencrypt_cmd certonly -a webroot ".join(" ", map { "-d ".quotemeta($_) } @doms)." --webroot-path ".quotemeta($webroot)." --duplicate --config $temp 2>&1)");
+	if ($?) {
+		return (0, "<pre>".&html_escape($out)."</pre>");
+		}
+	my ($full, $cert, $key, $chain);
+	if ($out =~ /(\/.*\.pem)/) {
+		# Output contained the full path
+		$full = $1;
+		}
+	else {
+		&error("Output did not contain a PEM path!");
+		}
+	-r $full || return (0, &text('letsencrypt_efull', $full));
+	$full =~ s/\/[^\/]+$//;
+	$cert = $full."/cert.pem";
+	-r $cert || return (0, &text('letsencrypt_ecert', $cert));
+	$key = $full."/privkey.pem";
+	-r $key || return (0, &text('letsencrypt_ekey', $key));
+	$chain = $full."/chain.pem";
+	$chain = undef if (!-r $chain);
+	return (1, $cert, $key, $chain);
 	}
 else {
-	&error("Output did not contain a PEM path!");
+	# Fall back to local Python client
+
+	# But first check if the native Let's Encrypt client was used previously
+	# for this system - if so, it must be used in future due to the account
+	# key.
+	-d "/etc/letsencrypt/accounts" &&
+		return (0, &text('letsencrypt_enative', '/etc/letsencrypt'));
+
+	# Generate the account key if missing
+	if (!-r $account_key) {
+		my $out = &backquote_logged(
+			"openssl genrsa 4096 2>&1 >$account_key");
+		if ($?) {
+			return (0, &text('letsencrypt_eaccountkey',
+					 &html_escape($out)));
+			}
+		}
+
+	# Generate a key for the domain
+	my $key = &transname();
+	my $out = &backquote_logged("openssl genrsa 4096 2>&1 >$key");
+	if ($?) {
+		return (0, &text('letsencrypt_ekey', &html_escape($out)));
+		}
+
+	# Generate a CSR
+	my $csr = &transname();
+	my ($ok, $csr) = &generate_ssl_csr($key, undef, undef, undef,
+					   undef, undef, $doms[0], undef);
+	if (!$ok) {
+		return &text('letsencrypt_ecsr', $csr);
+		}
+
+	# Find a reasonable python version
+	my $python = &has_command("python2.7") || &has_command("python");
+
+	# Request the cert and key
+	my $cert = &transname();
+	my $out = &backquote_logged(
+		"$python $module_root_directory/acme_tiny.py ".
+		"--account-key ".quotemeta($account_key)." ".
+		"--csr ".quotemeta($csr)." ".
+		"--acme-dir ".quotemeta($challenge)." ".
+		"2>&1 >".quotemeta($cert));
+	if ($?) {
+		return (0, &text('letsencrypt_etiny',
+				 "<pre>".&html_escape($out))."</pre>");
+		}
+
+	# Download the latest chained cert file
+	my $chain = &transname();
+	my ($host, $port, $page, $ssl) =
+		&parse_http_url($letsencrypt_chain_url);
+	my $err;
+	&http_download($host, $port, $page, $chain, \$err, undef, $ssl);
+	if ($err) {
+		return (0, &text('letsencrypt_echain', $err));
+		}
+
+	# Copy the per-domain files
+	my $certfinal = "$module_config_directory/$doms[0].cert";
+	my $keyfinal = "$module_config_directory/$doms[0].key";
+	my $chainfinal = "$module_config_directory/$doms[0].chain";
+	&copy_source_dest($cert, $certfinal);
+	&copy_source_dest($key, $keyfinal);
+	&copy_source_dest($chain, $chainfinal);
+	&unlink_file($cert);
+	&unlink_file($key);
+	&unlink_file($chain);
+
+	return (1, $certfinal, $keyfinal, $chainfinal);
 	}
--r $full || return (0, &text('letsencrypt_efull', $full));
-$full =~ s/\/[^\/]+$//;
-$cert = $full."/cert.pem";
--r $cert || return (0, &text('letsencrypt_ecert', $cert));
-$key = $full."/privkey.pem";
--r $key || return (0, &text('letsencrypt_ekey', $key));
-$chain = $full."/chain.pem";
-$chain = undef if (!-r $chain);
-return (1, $cert, $key, $chain);
 }
 
 1;

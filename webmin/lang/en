@@ -1096,7 +1096,7 @@ twofactor_esession=Two-factor authentication cannot be used unless session-based
 
 letsencrypt_title=Let's Encrypt Certificate Request
 letsencrypt_err=Failed to request certificate
-letsencrypt_ecmd=The client command $1 was not found on your system
+letsencrypt_ecmds=Neither the Let's Encrypt client command <tt>letsencrypt-auto</tt> or the <tt>python</tt> command were found on your system
 letsencrypt_edroot=The Apache virtual host $1 has no document directory!
 letsencrypt_edom=Missing or invalid domain name
 letsencrypt_erenew=Missing or non-numeric renewal interval
@@ -1114,5 +1114,10 @@ letsencrypt_key=SSL private key
 letsencrypt_chain=Chained CA certificate
 letsencrypt_webmin=Configuring Webmin to use new cert and key ..
 letsencrypt_wdone=.. done!
+letsencrypt_eaccountkey=Failed to generate account key : $1
+letsencrypt_etiny=Failed to request certificate : $1
+letsencrypt_echain=Failed to download chained certificate : $1
+letsencrypt_ecsr=Failed to generate CSR : $1
+letsencrypt_ekey=Failed to generate private key : $1
 
 __norefs=1
