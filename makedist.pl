@@ -109,7 +109,7 @@ foreach $m (@mlist) {
 		next if ($f =~ /^\./ || $f eq "test" || $f =~ /\.bak$/ ||
 		         $f =~ /\.tmp$/ || $f =~ /\.site$/ || $f eq ".builds" ||
 		         $f =~ /\.git$/ || $f eq ".build" || $f eq "distrib" ||
-		         $f =~ /\.(tar|wbm|wbt)\.gz$/ ||
+		         $f =~ /\.(tar|wbm|wbt)\.gz$/ || $f =~ /\.pyc$/ ||
 			 $f eq "README.md" || $f =~ /^makemodule.*\.pl$/ ||
 			 $f eq "linux.sh" || $f eq "freebsd.sh" || 
 			 $f eq "LICENCE" || $f eq "CHANGELOG.md");
