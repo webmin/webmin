@@ -2004,7 +2004,7 @@ $in{'countryName'} =~ /^\S\S$/ || return $text{'newkey_ecountry'};
 
 # Work out SSL command
 my %aclconfig = &foreign_config('acl');
-&foreign_require("acl", "acl-lib.pl");
+&foreign_require("acl");
 my $cmd = &acl::get_ssleay();
 if (!$cmd) {
 	return &text('newkey_ecmd', "<tt>$aclconfig{'ssleay'}</tt>",
@@ -2014,30 +2014,24 @@ if (!$cmd) {
 # Generate the key
 my $ktemp = &transname();
 my $size = $in{'size_def'} ? $default_key_size : quotemeta($in{'size'});
-my $out = &backquote_command("openssl genrsa -out ".quotemeta($ktemp)." $size 2>&1 </dev/null");
+my $out = &backquote_command("$cmd genrsa -out ".quotemeta($ktemp)." $size 2>&1 </dev/null");
 if (!-r $ktemp || $?) {
 	return $text{'newkey_essl'}."<br>"."<pre>".&html_escape($out)."</pre>";
 	}
 
 # Run openssl and feed it key data
-my $ctemp = &transname();
-my $outtemp = &transname();
-open(CA, "| $cmd req -new -key $ktemp -out $ctemp >$outtemp 2>&1");
-print CA ($in{'countryName'} || "."),"\n";
-print CA ($in{'stateOrProvinceName'} || "."),"\n";
-print CA ($in{'cityName'} || "."),"\n";
-print CA ($in{'organizationName'} || "."),"\n";
-print CA ($in{'organizationalUnitName'} || "."),"\n";
-print CA ($in{'commonName_def'} ? "*" : $in{'commonName'}),"\n";
-print CA ($in{'emailAddress'} || "."),"\n";
-print CA ".\n";
-print CA ".\n";
-close(CA);
-my $rv = $?;
-$out = &read_file_contents($outtemp);
-unlink($outtemp);
-if (!-r $ctemp || $?) {
-	return $text{'newkey_essl'}."<br>"."<pre>".&html_escape($out)."</pre>";
+my ($ok, $ctemp) = &generate_ssl_csr(
+			$ktemp,
+			$in{'countryName'},
+			$in{'stateOrProvinceName'},
+			$in{'cityName'},
+			$in{'organizationName'},
+			$in{'organizationalUnitName'},
+			$in{'commonName_def'} ? "*" : $in{'commonName'},
+			$in{'emailAddress'});
+if (!$ok) {
+	return $text{'newkey_essl'}."<br>".
+	       "<pre>".&html_escape($ctemp)."</pre>";
 	}
 
 # Write to the final files
@@ -2056,6 +2050,38 @@ my ($kfh, $cfh);
 &set_ownership_permissions(undef, undef, 0600, $csrfile);
 
 return undef;
+}
+
+# generate_ssl_csr(keyfile, country, state, city, org, orgunit, cname, email)
+# Generates a new CSR, and returns either 1 and the temp file path, or 0 and
+# an error message
+sub generate_ssl_csr
+{
+my ($ktemp, $country, $state, $city, $org, $orgunit, $cn, $email) = @_;
+&foreign_require("acl");
+my $ctemp = &transname();
+my $outtemp = &transname();
+my $cmd = &acl::get_ssleay();
+open(CA, "| $cmd req -new -key $ktemp -out $ctemp >$outtemp 2>&1");
+print CA ($country || "."),"\n";
+print CA ($state || "."),"\n";
+print CA ($city || "."),"\n";
+print CA ($org || "."),"\n";
+print CA ($orgunit || "."),"\n";
+print CA ($cn || "."),"\n";
+print CA ($email || "."),"\n";
+print CA ".\n";
+print CA ".\n";
+close(CA);
+my $rv = $?;
+my $out = &read_file_contents($outtemp);
+unlink($outtemp);
+if (!-r $ctemp || $rv) {
+	return (0, $out);
+	}
+else {
+	return (1, $ctemp);
+	}
 }
 
 =head2 build_installed_modules(force-all, force-mod)
