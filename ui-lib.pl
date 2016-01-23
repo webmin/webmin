@@ -845,13 +845,14 @@ method. The parameters are :
 sub ui_upload
 {
 return &theme_ui_upload(@_) if (defined(&theme_ui_upload));
-my ($name, $size, $dis, $tags) = @_;
+my ($name, $size, $dis, $tags, $multiple) = @_;
 $size = &ui_max_text_width($size);
 return "<input class='ui_upload' type='file' ".
        "name=\"".&quote_escape($name)."\" ".
        "id=\"".&quote_escape($name)."\" ".
        "size=$size".
        ($dis ? " disabled=true" : "").
+       ($multiple ? " multiple" : "").
        ($tags ? " ".$tags : "").">";
 }
 
