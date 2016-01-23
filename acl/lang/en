@@ -146,6 +146,7 @@ delete_err=Failed to delete user
 delete_eself=You cannot delete yourself
 delete_ecannot=You are not allowed to delete users
 delete_euser=You are not allowed to delete this user
+delete_eanonuser=This user is being used for anonymous module access
 
 cert_title=Request Certificate
 cert_issue=Issue Certificate

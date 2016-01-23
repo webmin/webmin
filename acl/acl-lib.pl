@@ -2163,5 +2163,21 @@ elsif ($str =~ /^postgresql:/) {
 	}
 }
 
+# used_for_anonymous(username)
+# Returns a list of modules this user has an anonymous grant to
+sub used_for_anonymous
+{
+my ($user) = @_;
+my @rv;
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+foreach $a (split(/\s+/, $miniserv{'anonymous'})) {
+        if ($a =~ /^([^=]+)=(\S+)$/ && $2 eq $user) {
+		push(@rv, $1);
+		}
+	}
+return @rv;
+}
+
 1;
 

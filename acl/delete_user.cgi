@@ -10,6 +10,7 @@ our (%in, %text, %config, %access, $base_remote_user);
 &error_setup($text{'delete_err'});
 $access{'delete'} || &error($text{'delete_ecannot'});
 &can_edit_user($in{'user'}) || &error($text{'delete_euser'});
+&used_for_anonymous($in{'user'}) && &error($text{'delete_eanonuser'});
 if ($base_remote_user eq $in{'user'}) {
 	&error($text{'delete_eself'});
 	}

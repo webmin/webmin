@@ -17,6 +17,7 @@ foreach my $user (@d) {
 	if ($base_remote_user eq $user && !$in{'joingroup'}) {
 		&error($text{'delete_eself'});
 		}
+	&used_for_anonymous($user) && &error($text{'delete_eanonuser'});
 	my $uinfo = &get_user($user);
 	$uinfo->{'readonly'} && &error($text{'udeletes_ereadonly'});
 	}
