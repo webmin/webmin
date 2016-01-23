@@ -2136,7 +2136,8 @@ sub get_latest_webmin_version
 {
 my $file = &transname();
 my ($error, $version);
-&http_download($primary_host, $primary_port, '/', $file, \$error);
+&http_download($primary_host, $primary_port, '/', $file, \$error, undef, 0,
+	       undef, undef, 5);
 return (0, $error) if ($error);
 open(FILE, $file);
 while(<FILE>) {
