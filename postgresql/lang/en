@@ -225,6 +225,7 @@ newdb_template=Template database
 newdb_notemplate=None
 
 user_title=PostgreSQL Users
+user_vwarning=WARNING : This PostgreSQL user is the administration login for Virtualmin domain $1. Changing any settings here may cause errors in Virtualmin.
 user_ecannot=You are not allowed to edit users
 user_name=Username
 user_db=Can create databases?
