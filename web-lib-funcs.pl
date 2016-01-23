@@ -508,7 +508,7 @@ while(read($in, $buf, 32768) > 0) {
 return 1;
 }
 
-=head2 ReadParseMime([maximum], [&cbfunc, &cbargs])
+=head2 ReadParseMime([maximum], [&cbfunc, &cbargs], [array-mode])
 
 Read data submitted via a POST request using the multipart/form-data coding,
 and store it in the global %in hash. The optional parameters are :
@@ -519,11 +519,13 @@ and store it in the global %in hash. The optional parameters are :
 
 =item cbargs - Additional parameters to the callback function.
 
+=item array-mode - Values in %in are arrays, not strings joined with \0
+
 =cut
 sub ReadParseMime
 {
-my ($max, $cbfunc, $cbargs) = @_;
-my ($boundary, $line, $foo, $name, $got, $file, $count_lines, $max_lines);
+my ($max, $cbfunc, $cbargs, $arrays) = @_;
+my ($boundary, $line, $name, $got, $file, $count_lines, $max_lines);
 my $err = &text('readparse_max', $max);
 $ENV{'CONTENT_TYPE'} =~ /boundary=(.*)$/ || &error($text{'readparse_enc'});
 if ($ENV{'CONTENT_LENGTH'} && $max && $ENV{'CONTENT_LENGTH'} > $max) {
@@ -556,6 +558,7 @@ while(1) {
 		}
 
 	# Parse out filename and type
+	my $file;
 	if ($header{'content-disposition'} =~ /^form-data(.*)/) {
 		$rest = $1;
 		while ($rest =~ /([a-zA-Z]*)=\"([^\"]*)\"(.*)/) {
@@ -563,8 +566,19 @@ while(1) {
 				$name = $2;
 				}
 			else {
-				$foo = $name . "_$1";
-				$in{$foo} = $2;
+				my $foo = $name."_".$1;
+				if ($1 eq "filename") {
+					$file = $2;
+					}
+				if ($arrays) {
+					$in{$foo} ||= [];
+					push(@{$in{$foo}}, $2);
+					}
+				else {
+					$in{$foo} .= "\0"
+						if (defined($in{$foo}));
+					$in{$foo} .= $2;
+					}
 				}
 			$rest = $3;
 			}
@@ -572,14 +586,22 @@ while(1) {
 	else {
 		&error($text{'readparse_cdheader'});
 		}
+
+	# Save content type separately
 	if ($header{'content-type'} =~ /^([^\s;]+)/) {
-		$foo = $name . "_content_type";
-		$in{$foo} = $1;
+		my $foo = $name."_content_type";
+		if ($arrays) {
+			$in{$foo} ||= [];
+			push(@{$in{$foo}}, $2);
+			}
+		else {
+			$in{$foo} .= "\0" if (defined($in{$foo}));
+			$in{$foo} .= $1;
+			}
 		}
-	$file = $in{$name."_filename"};
 
 	# Read data
-	$in{$name} .= "\0" if (defined($in{$name}));
+	my $data = "";
 	while(1) {
 		$line = <STDIN>;
 		$got += length($line);
@@ -600,9 +622,17 @@ while(1) {
 			return;
 			}
 		if (index($line, $boundary) != -1) { last; }
-		$in{$name} .= $line;
+		$data .= $line;
 		}
-	chop($in{$name}); chop($in{$name});
+	chop($data); chop($data);
+	if ($arrays) {
+		$in{$name} ||= [];
+		push(@{$in{$name}}, $data);
+		}
+	else {
+		$in{$name} .= "\0" if (defined($in{$name}));
+		$in{$name} .= $data;
+		}
 	if (index($line,"$boundary--") != -1) { last; }
 	}
 &$cbfunc(-1, $ENV{'CONTENT_LENGTH'}, $file, @$cbargs) if ($cbfunc);
