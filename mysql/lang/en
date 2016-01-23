@@ -253,6 +253,7 @@ users_dok=Delete Users
 user_title1=Create User
 user_title2=Edit User
 user_header=MySQL user details
+user_vwarning=WARNING : This MySL user is the administration login for Virtualmin domain $1. Changing any settings here may cause errors in Virtualmin.
 user_user=Username
 user_all=Anonymous user
 user_pass=Password

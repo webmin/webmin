@@ -24,6 +24,19 @@ else {
 		}
 	}
 
+# Check if this is a Virtualmin-managed user
+if (!$in{'new'} && &foreign_check("virtual-server")) {
+	&foreign_require("virtual-server");
+	my $d = &virtual_server::get_domain_by("mysql_user", $u->[1],
+					       "parent", "");
+	$d ||= &virtual_server::get_domain_by("user", $u->[1],
+                                              "parent", "");
+	if ($d) {
+		print "<b>",&text('user_vwarning',
+			&virtual_server::show_domain_name($d)),"</b><p>\n";
+		}
+	}
+
 # Form header
 print &ui_form_start("save_user.cgi", "post");
 if ($in{'new'}) {
