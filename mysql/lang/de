@@ -694,6 +694,7 @@ user_ssl_x509=X509
 user_title1=Benutzer anlegen
 user_title2=Benutzer bearbeiten
 user_user=Benutzername
+user_vwarning=WARNUNG: Dieser MySQL-Benutzer ist die administrative Login f&#252;r die Virtualmin Dom&#228;ne $1. &#196;nderung der Einstellungen hier k&#246;nnen Fehler in Virtualmin verursachen.
 users_add=Erstelle neuen Benutzer.
 users_all=Alle
 users_anon=Anonym

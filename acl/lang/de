@@ -100,6 +100,7 @@ cpass_notre=Entspricht einen nicht erlaubten Muster
 cpass_old=Alte Kennw&#246;rter k&#246;nnen nicht wieder verwendet werden
 cpass_re=Entspricht nicht einem erforderlichen Muster
 cpass_spellcmd=Entweder der $1 oder $2 Befehl muss installiert sein um eine W&#246;rterbuchpr&#252;fung durchzuf&#252;hren
+delete_eanonuser=Dieser Benutzer wird f&#252;r anonymen Modul-Zugriff verwendet
 delete_ecannot=Sie haben keine Berechtigung Benutzer zu l&#246;schen
 delete_err=Fehler beim L&#246;schen des Benutzers
 delete_eself=Sie k&#246;nnen sich selber nicht l&#246;schen
