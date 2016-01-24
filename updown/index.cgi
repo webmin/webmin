@@ -174,7 +174,7 @@ if ($can_upload) {
 	# Upload fields
 	$utable = "";
 	for($i=0; $i<4; $i++) {
-		$utable .= &ui_upload("upload$i")."\n";
+		$utable .= &ui_upload("upload$i", 40, 0, undef, 1)."\n";
 		$utable .= "<br>\n" if ($i%2 == 1);
 		}
 	print &ui_table_row($text{'index_upload'}, $utable);
