@@ -4,7 +4,10 @@
 
 require './mailboxes-lib.pl';
 &ReadParse(\%getin, "GET");
-&ReadParseMime(undef, \&read_parse_mime_callback, [ $getin{'id'} ]);
+&ReadParseMime(undef, \&read_parse_mime_callback, [ $getin{'id'} ], 1);
+foreach my $k (keys %in) {
+        $in{$k} = $in{$k}->[0] if ($k !~ /^attach\d+/);
+        }
 &can_user($in{'user'}) || &error($text{'mail_ecannot'});
 @uinfo = &get_mail_user($in{'user'});
 @uinfo || &error($text{'view_eugone'});
@@ -137,25 +140,29 @@ if ($in{'body'} =~ /\S/) {
 			};
 		}
 	}
+
 $attachsize = 0;
 for($i=0; defined($in{"attach$i"}); $i++) {
 	# Add uploaded attachment
-	next if (!$in{"attach$i"});
-	&test_max_attach($attachsize);
-	local $filename = $in{"attach${i}_filename"};
-	$filename =~ s/^.*(\\|\/)//;
-	local $type = $in{"attach${i}_content_type"}."; name=\"".
-		      $filename."\"";
-	local $disp = "inline; filename=\"".$filename."\"";
-	push(@attach, { 'data' => $in{"attach${i}"},
-			'headers' => [ [ 'Content-type', $type ],
-				       [ 'Content-Disposition', $disp ],
-				       [ 'Content-Transfer-Encoding',
-					 'base64' ] ] });
-	$atotal += length($in{"attach${i}"});
-	}
+        next if (!$in{"attach$i"});
+        for($j=0; $j<@{$in{"attach$i"}}; $j++) {
+                next if (!$in{"attach${i}"}->[$j]);
+                &test_max_attach(length($in{"attach${i}"}->[$j]));
+                local $filename = $in{"attach${i}_filename"}->[$j];
+                $filename =~ s/^.*(\\|\/)//;
+                local $type = $in{"attach${i}_content_type"}->[$j].
+                              "; name=\"".$filename."\"";
+                local $disp = "attachment; filename=\"".$filename."\"";
+                push(@attach, { 'data' => $in{"attach${i}"}->[$j],
+                                'headers' => [ [ 'Content-type', $type ],
+                                               [ 'Content-Disposition', $disp ],
+                                               [ 'Content-Transfer-Encoding',
+                                                 'base64' ] ] });
+		$atotal += length($in{"attach${i}"}->[$j]);
+                }
+        }
+
 for($i=0; defined($in{"file$i"}); $i++) {
-	# Add uploaded attachment
 	# Add server-side attachment
 	next if (!$in{"file$i"} || !$access{'canattach'});
 	@uinfo = &get_mail_user($in{'user'});

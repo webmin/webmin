@@ -3535,7 +3535,7 @@ if (!$main::no_browser_uploads) {
 	my $atable = "<div>\n";
 	for(my $i=0; $i<$count; $i++) {
 		$atable .= &ui_upload("attach$i", 80, 0,
-				      "style='width:100%'")."<br>";
+				      "style='width:100%'", 1)."<br>";
 		}
 	$atable .= "</div> <div id=attachblock></div>\n";
 	print &ui_hidden("attachcount", int($i)),"\n";

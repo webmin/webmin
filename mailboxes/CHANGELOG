@@ -73,3 +73,5 @@ When reading email via a link from Virtualmin, the "return to user list" link re
 When a language with a UTF-8 character set is selected, email is converted to UTF-8 before being displayed. This allows an inbox with mixed language subject lines to be properly displayed.
 ---- Changes since 1.720 ----
 All operations on user mailboxes are now performed with the permissions of the user, to prevent attacks using malicious symlinks.
+---- Changes since 1.780 ----
+When attaching files to a message, multiple files can now be selected at the same time.
