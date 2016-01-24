@@ -592,7 +592,7 @@ while(1) {
 		my $foo = $name."_content_type";
 		if ($arrays) {
 			$in{$foo} ||= [];
-			push(@{$in{$foo}}, $2);
+			push(@{$in{$foo}}, $1);
 			}
 		else {
 			$in{$foo} .= "\0" if (defined($in{$foo}));
