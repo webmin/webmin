@@ -841,6 +841,8 @@ method. The parameters are :
 
 =item tags - Additional HTML attributes for the <input> tag.
 
+=item multiple - Set to 1 to allow uploading of multiple files
+
 =cut
 sub ui_upload
 {
