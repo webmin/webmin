@@ -3149,15 +3149,16 @@ Example code :
 =cut
 sub read_file_lines
 {
-if (!$_[0]) {
+my ($file, $readonly) = @_;
+if (!$file) {
 	my ($package, $filename, $line) = caller;
-	print STDERR "Missing file to read at ${package}::${filename} line $line\n";
+	&error("Missing file to read at ${package}::${filename} line $line");
 	}
-my $realfile = &translate_filename($_[0]);
+my $realfile = &translate_filename($file);
 if (!$main::file_cache{$realfile}) {
         my (@lines, $eol);
 	local $_;
-	&webmin_debug_log('READ', $_[0]) if ($gconfig{'debug_what_read'});
+	&webmin_debug_log('READ', $file) if ($gconfig{'debug_what_read'});
         open(READFILE, $realfile);
         while(<READFILE>) {
 		if (!$eol) {
@@ -3168,12 +3169,12 @@ if (!$main::file_cache{$realfile}) {
                 }
         close(READFILE);
         $main::file_cache{$realfile} = \@lines;
-	$main::file_cache_noflush{$realfile} = $_[1];
+	$main::file_cache_noflush{$realfile} = $readonly;
 	$main::file_cache_eol{$realfile} = $eol || "\n";
         }
 else {
 	# Make read-write if currently readonly
-	if (!$_[1]) {
+	if (!$readonly) {
 		$main::file_cache_noflush{$realfile} = 0;
 		}
 	}
@@ -3194,11 +3195,12 @@ for those marked readonly). The parameters are :
 =cut
 sub flush_file_lines
 {
+my ($file, $eof, $ignore) = @_;
 my @files;
-if ($_[0]) {
-	local $trans = &translate_filename($_[0]);
+if ($file) {
+	local $trans = &translate_filename($file);
 	if (!$main::file_cache{$trans}) {
-		if ($_[2]) {
+		if ($ignore) {
 			return 0;
 			}
 		else {
@@ -3211,7 +3213,7 @@ else {
 	@files = ( keys %main::file_cache );
 	}
 foreach my $f (@files) {
-	my $eol = $_[1] || $main::file_cache_eol{$f} || "\n";
+	my $eol = $eof || $main::file_cache_eol{$f} || "\n";
 	if (!$main::file_cache_noflush{$f}) {
 		no warnings; # XXX Bareword file handles should go away
 		&open_tempfile(FLUSHFILE, ">$f");
