@@ -28,6 +28,7 @@ if ($logfile) {
 	$file = &config_file_name($logfile);
 	}
 $file = $config{'webalizer_conf'} if (!$file || !-r $file);
+-r $file || &error("Webalizer config file $file does not exist!");
 my @rv;
 my $lnum = 0;
 open(FILE, $file);
