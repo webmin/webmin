@@ -20,3 +20,5 @@ print &ui_table_row($text{'root_newpass2'},
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'root_ok'} ] ]);
+
+&ui_print_footer("", $text{'index_return'});
