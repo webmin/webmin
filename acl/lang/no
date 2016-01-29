@@ -421,6 +421,7 @@ twofactor_title=To-faktor autentisering
 udeletes_enone=Ingen valgt
 udeletes_ereadonly=En av de valgte brukerne er merket som ikke-redigerbar
 udeletes_err=Kunne ikke slette brukere
+udeletes_jerr=Kunne ikke legg til brukere i gruppe
 udeletes_ok=Slett brukere
 udeletes_rusure=Er du sikker p&#229; at du &#248;nsker &#229; slette de $1 valgte brukerne? Alle deres tilgangskontroll innstillinger og andre brukerdetaljer vil g&#229; tapt.
 udeletes_title=Slett brukere

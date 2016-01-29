@@ -176,6 +176,8 @@ hpux_reinstall_files_use_cksum=Reinstall filer bruker sjekksum?
 hpux_root=Rot-katalog
 index_all=Alle pakker
 index_close=Lukk alle.
+index_echeckpackage=Ikke noe pakke-system oppdaget!
+index_echeckupdate=Ikke noe oppdateringssystem oppdaget!
 index_epackagecheck=Det valgte pakkeadministrasjonssystemet er ugyldig : $1.<br>Du m&#229; kanskje velge et annet system i <a href='$2'>modulkonfigurasjonen</a>.
 index_epackagecmd=Pakkesystemet $1 krever kommandoen $2
 index_eupdatecheck=Det valgte oppdateringssystemet er ugyldig : $1.<br>Du m&#229; kanskje velge een anne oppdateringsmetode i <a href='$2'>modulkonfigurasjonen</a>.
@@ -254,6 +256,11 @@ pkgadd_eroot=Rot-katalog '$1' finnes ikke
 pkgadd_manager=System V Package Manager
 pkgadd_root=Rot-katalog
 pkgadd_unknown=Ukjent
+pkgsrc_failed=.. noen pakker feilet
+pkgsrc_find=S&#248;k pkgng
+pkgsrc_input=Pakke fra pkgsrc
+pkgsrc_install=Installerer pkgsrc pakker $1 ..
+pkgsrc_ok=.. installering fullf&#248;rt
 ports_apply=Laste siste snapshot
 ports_failed=.. noen porteringer feilet
 ports_find=S&#248;k i porteringer

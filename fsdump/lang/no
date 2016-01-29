@@ -21,6 +21,7 @@ backup_title=Sikkerhetskopier n&#229;
 delete_enone=Ingen valgt
 delete_err=Kunne ikke slette sikkerhetskopier
 dump_after=Kommando som skal kj&#248;res etter sikkerhetskopiering
+dump_aok=Hopp over kommando selv om backup feiler
 dump_attribs=Ta med fil-attributter?
 dump_auto=Oppdag automatisk
 dump_bcomp=Bufre komprimerte data i blokker?

@@ -186,6 +186,7 @@ core_edefchar=Manglende eller ugyldig tegnsett for dokumenter
 core_edefmime=Standard MIME type m&#229; v&#230;re p&#229; formen type/undertype
 core_edefport=Ugyldig standard port
 core_edirlog=Feil-logg filen ligger ikke under tillatt katalog
+core_eduplisten=Lytte-adressen $1 er angitt to ganger
 core_eerror='$1' er ikke en gyldig feilkode
 core_eerrordir=Katalog for feillogg filen finnes ikke
 core_efilelog=Ugyldig feillogg fil

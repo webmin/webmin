@@ -106,6 +106,7 @@ manual_edata=Ikke noe nytt innhold angitt
 manual_err=Kunne ikke redigere konfigurasjonsfil
 manual_title=Rediger konfigurasjon manuelt?
 misc_asp=Tillat &lt;% %&gt; tagger?
+misc_charset=Standard tegnsett
 misc_err=Kunne ikke lagre andre innstillinger
 misc_esendmail=Ugyldig kommando for sending av e-post
 misc_esendmail2=Manglende kommando for sending av e-post

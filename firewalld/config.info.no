@@ -1,0 +1,2 @@
+firewall_cmd=Full sti til firewall-cmd programmet,0
+init_name=Init-script navn for FirewallID,0

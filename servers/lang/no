@@ -46,6 +46,7 @@ delete_rusure=Er du sikker p&#229; at du &#248;nsker &#229; fjerne de $1 valgte 
 delete_title=Slett tjenere
 edit_auto=Avgj&#248;re automatisk
 edit_baduser=Innlogging avvist
+edit_checkssl=Sjekk eksternt SSL sertifikat?
 edit_desc=Beskrivelse
 edit_desc_def=Fra vertsnavn og port
 edit_details=Tjener detaljer

@@ -117,6 +117,7 @@ view_convert_to_raid5=Konverter til RAID5
 view_convert_to_raid5desc=Konverter RAID niv&#229; til RAID5 ved &#229; fjerne en disk.
 view_convert_to_raid6=Konverter til RAID6
 view_convert_to_raid6desc=Konverter RAID niv&#229; til RAID6 ved legge til en eller flere disker.
+view_delayed=Venter p&#229; en annen enhet
 view_delete=Slett RAID array
 view_deletedesc=Klikk p&#229; denne knappen for &#229; fjerne RAID enheten fullstendig. Alle data p&#229; enheten vil mest sannsynlig g&#229; tapt!
 view_device=Enhetsfil

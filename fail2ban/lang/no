@@ -67,6 +67,7 @@ index_atboot=Start ved oppstart?
 index_atbootdesc=Endre denne innstillingen for &#229; kontrollere hvorvidt Fail2Ban tjeneren startes n&#229;r systemet startes opp. Hvis n&#248;dvendig, vil det bli opprettet et oppstartsscript slik at tjeneren startes p&#229; korrekt m&#229;te.
 index_echeck=En feil oppstod under oppdaging av Fail2Ban p&#229; dette systemet : $1. Enten er den ikke installert eller s&#229; er <a href='$2'>modulkonfigurasjonen</a> feil.
 index_fail2ban=Fail2Ban
+index_header=Fail2Ban modul
 index_restart=Omstart Fail2Ban tjener
 index_restartdesc=Klikk p&#229; denne knappen for &#229; ta i bruk gjeldende konfigurasjon ved &#229; omstarte Fail2Ban tjeneren.
 index_return=modulindeks
@@ -77,6 +78,7 @@ index_stopdesc=Klikk p&#229; denne knappen for &#229; stoppe Fail2Ban tjeneren. 
 index_title=Fail2Ban Innbruddsoppdager
 jail_action=Handling
 jail_actions=Handlinger som skal brukes
+jail_allprotocol=Alle protokoller
 jail_aname=Navn
 jail_auto=Bestem automatisk
 jail_backend=Sjekk for loggfil oppdateringer vha.

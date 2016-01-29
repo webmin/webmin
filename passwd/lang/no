@@ -14,6 +14,7 @@ acl_opt=Valgfri
 acl_others=Endre passord i andre moduler?
 acl_repeat=M&#229; skrive inn nytt passord igjen?
 acl_sec=Ta med sekund&#230;re grupper?
+acl_self=Tillat alltid eget passord &#229; bli endret?
 acl_users=Brukere som passordet kan bli endret
 index_euseradmin=Denne modulen kan ikke brukes siden bruker og gruppe modulen ikke er installert eller ikke st&#248;ttes p&#229; maskinen.
 index_header=Velg en bruker for &#229; endre hans/hennes passord

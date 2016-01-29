@@ -52,6 +52,7 @@ perl_title=Perl-modul
 search_custom=Egendefinert dokumentasjon
 search_desc=Beskrivelse
 search_doc=Pakkedokumentasjon
+search_doxfer=Webmin online dokumentasjon
 search_efor=Det ble ikke angitt noen manualside &#229; s&#248;ke etter
 search_file=Side eller fil
 search_for=For $1

@@ -1,0 +1,9 @@
+config_file=iSCSI TGTD konfigurasjonsfil,0
+add_file=Legg til nye m&#229;l i,3,Prim&#230;r konfigurasjonsfil
+tgtd=Full sti til tgtd kommando,0
+tgtadm=Full sti til tgtadm kommando,0
+tgtadmin=Full sti til tgt-admin kommando,0
+init_name=Oppstartsscript navn,0
+start_cmd=Kommando for &#229; starte iSCSI TGTd,3,Start init script
+stop_cmd=Kommando for &#229; stoppe iSCSI TGTd,3,Stopp init script
+restart_cmd=Kommando for &#229; omstarte iSCSI TGTd,3,Omstart init script
