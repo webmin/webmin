@@ -29,8 +29,8 @@ my @linksrow;
 if ($access{'edit'}) {
 	if (@servers) {
 		print &ui_form_start("delete_servs.cgi");
-		push(@linksrow, &select_all_link("d"),
-				&select_invert_link("d"));
+		push(@linksrow, &select_all_link("d", 1),
+				&select_invert_link("d", 1));
 		}
 	if ($access{'add'}) {
 		push(@linksrow, &ui_link("edit_serv.cgi?new=1", $text{'index_add'}) );
