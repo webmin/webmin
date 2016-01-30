@@ -1207,6 +1207,7 @@ foreach my $mail (@mail) {
 	local $idx = $mail->{'idx'};
 	local $cols = 0;
 	local @cols;
+	local @rowtds = @tds;
 
 	# From and To columns, with links
 	local $from = $mail->{'header'}->{$showto ? 'to' : 'from'};
@@ -1222,6 +1223,7 @@ foreach my $mail (@mail) {
 	# Date and size columns
 	push(@cols, &eucconv_and_escape(&simplify_date($mail->{'header'}->{'date'}, "ymd")));
 	push(@cols, &nice_size($mail->{'size'}, 1024));
+	$rowtds[$#cols] .= " data-sort=".$mail->{'size'};
 
 	# Subject with icons
 	local @icons = &message_icons($mail, $mfolder->{'sent'}, $mfolder);
@@ -1236,10 +1238,10 @@ foreach my $mail (@mail) {
 
 	# Generate the row
 	if (!$folder) {
-		print &ui_columns_row(\@cols, \@tds);
+		print &ui_columns_row(\@cols, \@rowtds);
 		}
 	elsif (&editable_mail($mail)) {
-		print &ui_checked_columns_row(\@cols, \@tds, "d", $idx);
+		print &ui_checked_columns_row(\@cols, \@rowtds, "d", $idx);
 		}
 	else {
 		print &ui_columns_row([ "", @cols ], \@tds);
