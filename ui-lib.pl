@@ -526,6 +526,7 @@ foreach my $r (@$data) {
 			if ($c->{'nowrap'}) {
 				$rtds[$cn] .= " nowrap";
 				}
+			$rtds[$cn] .= " ".$c->{'td'} if ($c->{'td'});
 			}
 		$cn++;
 		}
