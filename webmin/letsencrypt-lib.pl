@@ -26,7 +26,7 @@ sub request_letsencrypt_cert
 {
 my ($dom, $webroot, $email) = @_;
 my @doms = ref($dom) ? @$dom : ($dom);
-$email ||= "root\@$dom";
+$email ||= "root\@$doms[0]";
 
 # Create a challenges directory under the web root
 my $challenge = "$webroot/.well-known/acme-challenge";
