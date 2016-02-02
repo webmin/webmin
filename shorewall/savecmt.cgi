@@ -15,14 +15,14 @@ if ($in{'delete'}) {
 else {
 	# Validate inputs
 	$in{'msg'} =~ /\S/ || &error($text{'comment_enone'});
-	$line = "COMMENT $in{'msg'}";
+	$line = (&version_atleast(4, 5, 11) ? "?" : "") . "COMMENT $in{'msg'}";
 
 	# Update or add
 	if ($in{'new'}) {
 		&create_table_row($in{'table'}, $pfunc, $line);
 		}
 	else {
-		# Updating 
+		# Updating
 		&modify_table_row($in{'table'}, $pfunc, $in{'idx'}, $line);
 		}
 	}
@@ -30,4 +30,3 @@ else {
 &webmin_log($in{'new'} ? "create" : $in{'delete'} ? "delete" : "modify",
 	    "comment", $in{'table'});
 &redirect("list.cgi?table=$in{'table'}");
-

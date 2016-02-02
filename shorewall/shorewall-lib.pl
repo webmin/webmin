@@ -191,7 +191,11 @@ for($i=0; $i<@$lref; $i++) {
 		$idx = $i;
 		last;
 		}
-	elsif ($lref->[$i] =~ /^SECTION\s+NEW/) {
+	elsif ($lref->[$i] =~ /^\??SECTION\s+NEW/) {
+		$idx = $i+1;
+		last;
+		}
+	elsif ($lref->[$i] =~ /^\??FORMAT\s+[1-2]/) {
 		$idx = $i+1;
 		last;
 		}
@@ -327,7 +331,7 @@ sub standard_parser
 local $l = $_[0];
 $l =~ s/#.*$//;
 local @sp = split(/\s+/, $l);
-return undef if ($sp[0] eq "SECTION");
+return undef if ($sp[0] =~ /\??SECTION/ || $sp[0] =~ /\??FORMAT/);
 return @sp ? \@sp : undef;
 }
 
@@ -633,13 +637,35 @@ else {
 
 ################################# interfaces ###################################
 
+sub new_interfaces_format
+{
+if (&version_atleast(4, 5, 3)) {
+	open(FILE, "$config{'config_dir'}/interfaces");
+	while(<FILE>) {
+		s/\r|\n//g;
+		if ($_ =~ /\??FORMAT\s+2/) {
+			return 1;
+			}
+		}
+	close(FILE);
+	}
+return 0;
+}
+
 sub interfaces_row
 {
-return ( $_[1],
-	 $_[0] eq '-' ? $text{'list_any'} : $_[0],
-	 $_[2] eq 'detect' ? $text{'list_auto'} :
-	  $_[2] eq '-' || $_[2] eq '' ? $text{'list_none'} : $_[2],
-	 $_[3] ? $_[3] : $text{'list_none'} );
+if (&new_interfaces_format()) {
+	return ( $_[1],
+		$_[0] eq '-' ? $text{'list_any'} : $_[0],
+		$_[2] eq '-' || $_[2] eq '' ? $text{'list_none'} : $_[2] );
+	}
+else {
+	return ( $_[1],
+		$_[0] eq '-' ? $text{'list_any'} : $_[0],
+		$_[2] eq 'detect' ? $text{'list_auto'} :
+		 $_[2] eq '-' || $_[2] eq '' ? $text{'list_none'} : $_[2],
+		$_[3] eq '-' || $_[3] eq '' ? $text{'list_none'} : $_[3] );
+	}
 }
 
 @interfaces_opts = ( 'dhcp', 'noping', 'filterping', 'routestopped', 'norfc1918',
@@ -661,35 +687,62 @@ print "<td>\n";
 &zone_field("zone", $_[0], 0, 1);
 print "</td> </tr>\n";
 
-local $bmode = $_[2] eq 'detect' ? 2 :
-	       $_[2] eq '-' || $_[2] eq '' ? 1 : 0;
-print "<tr> <td><b>$text{'interfaces_2'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=broad_mode value=1 %s> %s\n",
-	$bmode == 1 ? "checked" : "", $text{'list_none'};
-printf "<input type=radio name=broad_mode value=2 %s> %s\n",
-	$bmode == 2 ? "checked" : "", $text{'list_auto'};
-printf "<input type=radio name=broad_mode value=0 %s>\n",
-	$bmode == 0 ? "checked" : "";
-printf "<input name=broad size=50 value='%s'></td> </tr>\n",
-	$bmode == 0 ? $_[2] : "";
+if (&new_interfaces_format()) {
+	local %opts = map { $_, 1 } split(/,/, $_[2]);
+	print "<tr> <td valign=top><b>$text{'interfaces_3'}</b></td> <td colspan=3>\n";
+	&options_input("opts", $_[2], \@interfaces_opts);
+	print "</td> </tr>\n";
+	}
+else {
+	local $bmode = $_[2] eq 'detect' ? 2 :
+		$_[2] eq '-' || $_[2] eq '' ? 1 : 0;
+	print "<tr> <td><b>$text{'interfaces_2'}</b></td> <td colspan=3>\n";
+	printf "<input type=radio name=broad_mode value=1 %s> %s\n",
+		$bmode == 1 ? "checked" : "", $text{'list_none'};
+	printf "<input type=radio name=broad_mode value=2 %s> %s\n",
+		$bmode == 2 ? "checked" : "", $text{'list_auto'};
+	printf "<input type=radio name=broad_mode value=0 %s>\n",
+		$bmode == 0 ? "checked" : "";
+	printf "<input name=broad size=50 value='%s'></td> </tr>\n",
+		$bmode == 0 ? $_[2] : "";
 
-# options
-local %opts = map { $_, 1 } split(/,/, $_[3]);
-print "<tr> <td valign=top><b>$text{'interfaces_3'}</b></td> <td colspan=3>\n";
-&options_input("opts", $_[3], \@interfaces_opts);
-print "</td> </tr>\n";
+	local %opts = map { $_, 1 } split(/,/, $_[3]);
+	print "<tr> <td valign=top><b>$text{'interfaces_3'}</b></td> <td colspan=3>\n";
+	&options_input("opts", $_[3], \@interfaces_opts);
+	print "</td> </tr>\n";
+	}
 }
 
 sub interfaces_validate
 {
 $in{'iface'} =~ /^[a-z]+\d*(\.\d+)?$/ ||
 	$in{'iface'} =~ /^[a-z]+\+$/ || &error($text{'interfaces_eiface'});
-$in{'broad_mode'} || $in{'broad'} =~ /^[0-9\.,]+$/ ||
-	&error($text{'interfaces_ebroad'});
-return ( $in{'zone'}, $in{'iface'},
-	 $in{'broad_mode'} == 2 ? 'detect' :
-	 $in{'broad_mode'} == 1 ? '-' : $in{'broad'},
-	 join(",", split(/\0/, $in{'opts'})) );
+local @result = ( $in{'zone'}, $in{'iface'});
+if (not &new_interfaces_format()) {
+	$in{'broad_mode'} || $in{'broad'} =~ /^[0-9\.,]+$/ ||
+		&error($text{'interfaces_ebroad'});
+	push(@result, $in{'broad_mode'} == 2 ? 'detect' :
+		$in{'broad_mode'} == 1 ? '-' : $in{'broad'});
+	}
+push(@result, join(",", split(/\0/, $in{'opts'})));
+return @result;
+}
+
+sub interfaces_columns
+{
+return &new_interfaces_format() ? 3 : 4;
+}
+
+sub interfaces_colnames
+{
+local @result = (
+	$text{'interfaces_0'},
+	$text{'interfaces_1'} );
+if (not &new_interfaces_format()) {
+	push(@result, $text{'interfaces_2'});
+	}
+push(@result, $text{'interfaces_3'});
+return @result;
 }
 
 ################################# policy #######################################
@@ -766,7 +819,7 @@ if (!$in{'limit_def'}) {
 	$in{'limit'} =~ /^\d+$/ || &error($text{'policy_elimit'});
 	$in{'burst'} =~ /^\d+$/ || &error($text{'policy_eburst'});
 	}
-return ( $in{'source'}, $in{'dest'}, $in{'policy'}, $in{'log'}, 
+return ( $in{'source'}, $in{'dest'}, $in{'policy'}, $in{'log'},
 	 $in{'limit_def'} ? ( ) : ( "$in{'limit'}:$in{'burst'}" ) );
 }
 
@@ -977,7 +1030,7 @@ $in{'dnat_def'} || &check_ipaddress($in{'dnat'}) ||
 	($in{'dnat'} =~ /^\!([0-9\.,]+)$/ &&
          scalar(grep { &check_ipaddress($_) } split(/,/, $1))) ||
 	&error($text{'rules_ednat'});
-$in{'action'} ne 'DNAT' && $in{'action'} ne 'REDIRECT' && $in{'action'} ne 'DNAT-' && 
+$in{'action'} ne 'DNAT' && $in{'action'} ne 'REDIRECT' && $in{'action'} ne 'DNAT-' &&
 	!$in{'dnat_def'} && &error($text{'rules_ednat2'});
 
 $in{'sinzone'} =~ s/\s+/,/g;
@@ -1357,8 +1410,8 @@ return ( $in{'addr'},
 	 $in{'ext'},
 	 $in{'have'} ? "yes" : "no",
 	 &version_atleast(2, 0, 0) ? ( $in{'pers'} ? "yes" : "no" ) : ( )
-	); 
-	 
+	);
+
 }
 
 sub proxyarp_columns
@@ -1974,4 +2027,3 @@ print "</table>\n";
 }
 
 1;
-
