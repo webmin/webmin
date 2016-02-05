@@ -295,6 +295,9 @@ opts_unknown_address_reject_code=SMTP server response on unknown domain reject
 opts_unknown_client_reject_code=SMTP server response on unknown client reject
 opts_unknown_hostname_reject_code=SMTP server response on unknown hostname reject
 smtpd_nomap=No map for allowed addresses for relaying has been entered yet.
+smtpd_nomap2=No map for restrictions on sender addresses has been entered yet.
+smtpd_map=Allowed addresses for relaying
+smtpd_map2=Restrictions on sender addresses
 
 smtp_title=SMTP Client Options
 smtp_ecannot=You are not allowed to edit the SMTP client options

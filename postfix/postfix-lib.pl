@@ -630,6 +630,11 @@ sub regenerate_relay_recipient_table
     &regenerate_any_table("relay_recipient_maps");
 }
 
+sub regenerate_sender_restrictions_table
+{
+    &regenerate_any_table("regenerate_sender_restrictions_table");
+}
+
 # regenerate_recipient_bcc_table()
 sub regenerate_recipient_bcc_table
 {
@@ -1672,7 +1677,7 @@ elsif ($map_name =~ /body/) { &redirect("body.cgi"); }
 elsif ($map_name =~ /sender_bcc/) { &redirect("bcc.cgi?mode=sender"); }
 elsif ($map_name =~ /recipient_bcc/) { &redirect("bcc.cgi?mode=recipient"); }
 elsif ($map_name =~ /^smtpd_client_restrictions:/) { &redirect("client.cgi"); }
-elsif ($map_name =~ /relay_recipient_maps/) { &redirect("smtpd.cgi"); }
+elsif ($map_name =~ /relay_recipient_maps|smtpd_sender_restrictions/) { &redirect("smtpd.cgi"); }
 else { &redirect(""); }
 }
 
@@ -1695,6 +1700,9 @@ if ($map_name =~ /relay_recipient_maps/) {
 	}
 if ($map_name =~ /sender_dependent_default_transport_maps/) {
 	&regenerate_dependent_table();
+	}
+if ($map_name =~ /smtpd_sender_restrictions/) {
+	&regenerate_sender_restrictions_table();
 	}
 }
 

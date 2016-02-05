@@ -65,6 +65,7 @@ print &ui_form_end([ [ undef, $text{'opts_save'} ] ]);
 
 # Current relay map contents
 print &ui_hr();
+print &ui_subheading($text{'smtpd_map'});
 if (&get_real_value("relay_recipient_maps") eq "")
 {
     print ($text{'smtpd_nomap'}."<br><br>");
@@ -73,6 +74,19 @@ else
 {
     &generate_map_edit("relay_recipient_maps", $text{'map_click'}." ".
 	       &hlink($text{'help_map_format'}, "relay_recipient_maps"));
+}
+
+# Sender access map contents
+print &ui_hr();
+print &ui_subheading($text{'smtpd_map2'});
+if (&get_real_value("smtpd_sender_restrictions") eq "")
+{
+    print ($text{'smtpd_nomap2'}."<br><br>");
+}
+else
+{
+    &generate_map_edit("smtpd_sender_restrictions", $text{'map_click'}." ".
+	       &hlink($text{'help_map_format'}, "smtpd_sender_restrictions"));
 }
 
 &ui_print_footer("", $text{'index_return'});
