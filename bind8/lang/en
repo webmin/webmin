@@ -286,6 +286,7 @@ edit_rusure=Are you sure you want to delete the record $1 from domain $2, and po
 edit_dok=Yes, Delete It
 edit_eptr='$1' is not a valid reverse address record hostname
 edit_espfa='$1' is not a valid host to allow sending from
+edit_espfa2='$1' must be a hostname, not an IP address
 edit_espfmx='$1' is not a valid domain name to allow MX sending from
 edit_espfmxmax=You are not allowed to have more than 10 domains to allow MX sending from
 edit_espfip='$1' is not a valid IP address or IP/prefix to allow sending from

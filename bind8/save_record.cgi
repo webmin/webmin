@@ -298,6 +298,7 @@ else {
 		$spf->{'a:'} = [ split(/\s+/, $in{'spfas'}) ];
 		foreach my $a (@{$spf->{'a:'}}) {
 			&to_ipaddress($a) || &error(&text('edit_espfa', $a));
+			&check_ipaddress($a) && &error(&text('edit_espfa2',$a));
 			}
 		$spf->{'mx:'} = [ split(/\s+/, $in{'spfmxs'}) ];
 		foreach my $mx (@{$spf->{'mx:'}}) {
