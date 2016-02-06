@@ -1879,34 +1879,34 @@ my ($defhost, $defemail, $deforg) = @_;
 my $rv;
 
 $rv .= &ui_table_row($text{'ssl_cn'},
-		    &ui_opt_textbox("commonName", $defhost, 30,
-				    $text{'ssl_all'}), undef, [ "valign=middle","valign=middle" ]);
+		    &ui_opt_textbox("commonName", $defhost, 50,
+				    $text{'ssl_all'}));
 
 $rv .= &ui_table_row($text{'ca_email'},
-		    &ui_textbox("emailAddress", $defemail, 30), undef, [ "valign=middle","valign=middle" ]);
+		    &ui_textbox("emailAddress", $defemail, 30));
 
 $rv .= &ui_table_row($text{'ca_ou'},
-		    &ui_textbox("organizationalUnitName", undef, 30), undef, [ "valign=middle","valign=middle" ]);
+		    &ui_textbox("organizationalUnitName", undef, 30));
 
 $rv .= &ui_table_row($text{'ca_o'},
-		    &ui_textbox("organizationName", $deforg, 30), undef, [ "valign=middle","valign=middle" ]);
+		    &ui_textbox("organizationName", $deforg, 30));
 
 $rv .= &ui_table_row($text{'ca_city'},
-		    &ui_textbox("cityName", undef, 30), undef, [ "valign=middle","valign=middle" ]);
+		    &ui_textbox("cityName", undef, 30));
 
 $rv .= &ui_table_row($text{'ca_sp'},
-		    &ui_textbox("stateOrProvinceName", undef, 15), undef, [ "valign=middle","valign=middle" ]);
+		    &ui_textbox("stateOrProvinceName", undef, 15));
 
 $rv .= &ui_table_row($text{'ca_c'},
-		    &ui_textbox("countryName", undef, 2), undef, [ "valign=middle","valign=middle" ]);
+		    &ui_textbox("countryName", undef, 2));
 
 $rv .= &ui_table_row($text{'ssl_size'},
 		    &ui_opt_textbox("size", undef, 6,
 				    "$text{'default'} ($default_key_size)").
-			" ".$text{'ssl_bits'}, undef, [ "valign=middle","valign=middle" ]);
+			" ".$text{'ssl_bits'});
 
 $rv .= &ui_table_row($text{'ssl_days'},
-		    &ui_textbox("days", 1825, 8), undef, [ "valign=middle","valign=middle" ]);
+		    &ui_textbox("days", 1825, 8));
 
 return $rv;
 }
@@ -1923,8 +1923,14 @@ my ($in, $keyfile, $certfile) = @_;
 my %in = %$in;
 
 # Validate inputs
-$in{'commonName_def'} || $in{'commonName'} =~ /^[A-Za-z0-9\.\-\*]+$/ ||
-	return $text{'newkey_ecn'};
+my @cns;
+if (!$in{'commonName_def'}) {
+	@cns = split(/\s+/, $in{'commonName'});
+	@cns || return $text{'newkey_ecns'};
+	foreach my $cn (@cns) {
+		$cn =~ /^[A-Za-z0-9\.\-\*]+$/ || return $text{'newkey_ecn'};
+		}
+	}
 $in{'size_def'} || $in{'size'} =~ /^\d+$/ || return $text{'newkey_esize'};
 $in{'days'} =~ /^\d+$/ || return $text{'newkey_edays'};
 $in{'countryName'} =~ /^\S\S$/ || return $text{'newkey_ecountry'};
@@ -1996,8 +2002,17 @@ my ($in, $keyfile, $csrfile) = @_;
 my %in = %$in;
 
 # Validate inputs
-$in{'commonName_def'} || $in{'commonName'} =~ /^[A-Za-z0-9\.\-\*]+$/ ||
-	return $text{'newkey_ecn'};
+my @cns;
+if (!$in{'commonName_def'}) {
+	@cns = split(/\s+/, $in{'commonName'});
+	@cns || return $text{'newkey_ecns'};
+	foreach my $cn (@cns) {
+		$cn =~ /^[A-Za-z0-9\.\-\*]+$/ || return $text{'newkey_ecn'};
+		}
+	}
+else {
+	@cns = ( "*" );
+	}
 $in{'size_def'} || $in{'size'} =~ /^\d+$/ || return $text{'newkey_esize'};
 $in{'days'} =~ /^\d+$/ || return $text{'newkey_edays'};
 $in{'countryName'} =~ /^\S\S$/ || return $text{'newkey_ecountry'};
@@ -2027,7 +2042,7 @@ my ($ok, $ctemp) = &generate_ssl_csr(
 			$in{'cityName'},
 			$in{'organizationName'},
 			$in{'organizationalUnitName'},
-			$in{'commonName_def'} ? "*" : $in{'commonName'},
+			\@cns,
 			$in{'emailAddress'});
 if (!$ok) {
 	return $text{'newkey_essl'}."<br>".
@@ -2052,7 +2067,31 @@ my ($kfh, $cfh);
 return undef;
 }
 
-# generate_ssl_csr(keyfile, country, state, city, org, orgunit, cname, email)
+# build_ssl_subject(country, state, city, org, orgunit, cname|&cnames, email)
+# Generate a full subject line suitable for use with the -subj parameter
+sub build_ssl_subject
+{
+my ($country, $state, $city, $org, $orgunit, $cn, $email) = @_;
+my @cns = ref($cn) ? @$cn : ( $cn );
+my $subject;
+$subject .= "/C=$country" if ($country);
+$subject .= "/ST=$state" if ($state);
+$subject .= "/L=$city" if ($city);
+$subject .= "/O=$org" if ($org);
+$subject .= "/OU=$orgunit" if ($orgunit);
+$subject .= "/CN=$cns[0]";
+$subject .= "/emailAddress=$email" if ($email);
+if (@cns > 1) {
+	my @sans;
+	for(my $i=1; $i<@cns; $i++) {
+		push(@sans, "DNS.".$i."=".$cns[$i]);
+		}
+	$subject .= "/subjectAltName=".join(",", @sans);
+	}
+return $subject;
+}
+
+# generate_ssl_csr(keyfile, country, state, city, org, orgunit, cname|&cnames, email)
 # Generates a new CSR, and returns either 1 and the temp file path, or 0 and
 # an error message
 sub generate_ssl_csr
@@ -2062,21 +2101,11 @@ my ($ktemp, $country, $state, $city, $org, $orgunit, $cn, $email) = @_;
 my $ctemp = &transname();
 my $outtemp = &transname();
 my $cmd = &acl::get_ssleay();
-open(CA, "| $cmd req -new -key $ktemp -out $ctemp >$outtemp 2>&1");
-print CA ($country || "."),"\n";
-print CA ($state || "."),"\n";
-print CA ($city || "."),"\n";
-print CA ($org || "."),"\n";
-print CA ($orgunit || "."),"\n";
-print CA ($cn || "."),"\n";
-print CA ($email || "."),"\n";
-print CA ".\n";
-print CA ".\n";
-close(CA);
-my $rv = $?;
-my $out = &read_file_contents($outtemp);
-unlink($outtemp);
-if (!-r $ctemp || $rv) {
+my $subject = &build_ssl_subject($country, $state, $city, $org, $orgunit, $cn,$email);
+my $out = &backquote_command(
+	"$cmd req -new -key $ktemp -out $ctemp -sha256 ".
+	"-subj ".quotemeta($subject)." 2>&1");
+if (!-r $ctemp || $?) {
 	return (0, $out);
 	}
 else {

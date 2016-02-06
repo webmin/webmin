@@ -103,7 +103,7 @@ else {
 	# Generate a CSR
 	my $csr = &transname();
 	my ($ok, $csr) = &generate_ssl_csr($key, undef, undef, undef,
-					   undef, undef, $doms[0], undef);
+					   undef, undef, \@doms, undef);
 	if (!$ok) {
 		return &text('letsencrypt_ecsr', $csr);
 		}

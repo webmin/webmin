@@ -341,7 +341,7 @@ ssl_hole=Because you are currently using the default Webmin SSL key that everyon
 ssl_header1=Create SSL key
 ssl_header2=Create SSL CSR
 ssl_create=Create Now
-ssl_cn=Server name
+ssl_cn=Server names
 ssl_all=Any hostname
 ssl_newfile=Write key to file
 ssl_csrfile=Write CSR to file
@@ -411,6 +411,7 @@ ssl_letsnotrenew=Only renew manually
 
 newkey_err=Failed to create SSL key
 newkey_ecn=Missing or invalid server name
+newkey_ecns=No server names entered
 newkey_efile=Missing key file name
 newkey_title=Generate Key
 newkey_ecmd=The SSL command $1 was not found on your system. Either it is not installed, or the <a href='$2'>Webmin Users module configuration</a> is incorrect.
