@@ -2113,6 +2113,9 @@ sub start_systemd_service
 my ($name) = @_;
 my $out = &backquote_logged(
 	"systemctl start ".quotemeta($name)." 2>&1 </dev/null");
+if ($? && $out =~ /journalctl/) {
+	$out .= &backquote_command("journalctl -xe 2>/dev/null");
+	}
 return (!$?, $out);
 }
 
