@@ -455,6 +455,7 @@ newcsr_title=Generiere CSR
 newkey_ecat=Beim Sichern des neuen Schl&#252;ssels in eine Datei ist ein Fehler aufgetreten :
 newkey_ecmd=Das SSL-Kommando $1 wurde auf Ihrem System nicht gefunden. Entweder ist es nicht installiert, oder Ihre <a href='$2'>Webminbenutzer Modulkonfiguration</a> ist ung&#252;ltig.
 newkey_ecn=Fehlender oder ung&#252;ltiger Servername
+newkey_ecns=Keine Servernamen eingegeben
 newkey_ecountry=L&#228;ndercode muss zwei Buchstaben haben
 newkey_edays=Fehlende oder ung&#252;ltige Anzahl von Tagen vor Ablauf
 newkey_efile=Fehlender Schl&#252;ssel-Dateiname
@@ -672,9 +673,9 @@ ssl_cert=Zertifikats-Datei
 ssl_cert_def=Gleiche Datei wie privater Schl&#252;ssel
 ssl_cert_oth=Separate Datei
 ssl_cheader=Details f&#252;r aktuelles Zertifikat
-ssl_cipher_list=Erlaubt SSL Verschl&#252;sselungen
+ssl_cipher_list=Erlaubt SSL-Verschl&#252;sselungen
 ssl_clist=Aufgelistete Verschl&#252;sselungen
-ssl_cn=Servername in URL
+ssl_cn=Servernamen
 ssl_compression=Erlaube komprimierte SSL-Verbindungen?
 ssl_cpan=Alternativ kann Webmin das ben&#246;tigte Net::SSLeay Perl-Modul f&#252;r Sie <a href='$1'>herunterladen und installieren</a>.
 ssl_create=Jetzt anlegen
@@ -691,7 +692,7 @@ ssl_ecert=Die SSL Zertifikats-Datei $1 existiert nicht oder enth&#228;lt kein Ze
 ssl_ecipher_list=Fehlende oder ung&#252;ltige Verschl&#252;sselungsliste - muss sein wie <tt>HIGH:-SSLv2:-aNULL</tt>
 ssl_edownload=Fehler beim Extrahieren der PEM-Daten von Zertifikat
 ssl_eextraca=Die hinzuzunehmende Zertifikatsdatei '$1' existiert nicht
-ssl_ekey=Die private SSL Schl&#252;ssel-Datei $1 existiert nicht oder enth&#228;lt keinen Schl&#252;ssel im PEM-Format
+ssl_ekey=Die private SSL-Schl&#252;ssel-Datei $1 existiert nicht oder enth&#228;lt keinen Schl&#252;ssel im PEM-Format
 ssl_emessage=Die Fehlermeldung von <tt>Perl</tt> lautet : $1
 ssl_err=Sichern der SSL-Optionen gescheitert
 ssl_essl=Das Net::SSLeay Perl-Modul scheint auf Ihrem System nicht installiert zu sein. Um die OpenSSL-Bibliothek und Net::SSLeay zu installieren, folgen Sie <a href='$1'>diesen Anweisungen</a> von der Webmin-Webseite.

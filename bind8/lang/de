@@ -272,6 +272,7 @@ edit_err=Fehler beim Speichern des Datensatzes
 edit_eserv=Sie haben keinen bekannten Dienst eingetragen
 edit_eserv2='$1' ist kein g&#252;ltiger Dienstname
 edit_espfa='$1' ist kein g&#252;ltiger Host um den Versand zu erlauben
+edit_espfa2='$1' muss ein Hostname sein, keine IP-Adresse
 edit_espfexp='$1' ist ein g&#252;ltiger Aufnahmenamen f&#252;r eine Zur&#252;ckweisungsnachricht
 edit_espfinclude='$1' ist keine g&#252;ltige zus&#228;tzliche Domain von der E-Mail versandt wird
 edit_espfip='$1' ist keine g&#252;ltige IP-Adresse oder IP/Netzmaske um den Versand zu erlauben
