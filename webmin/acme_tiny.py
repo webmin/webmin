@@ -72,6 +72,11 @@ def get_crt(account_key, csr, acme_dir, log=LOGGER, CA=DEFAULT_CA):
     common_name = re.search(r"Subject:.*? CN=([^\s,;/]+)", out.decode('utf8'))
     if common_name is not None:
         domains.add(common_name.group(1))
+    alt_names = re.search(r"Subject:.*subjectAltName=([^\s,;/]+)", out.decode('utf8'))
+    if alt_names is not None:
+	for alt in alt_names.group(1).split(","):
+	    dnsnum, altdom = alt.split("=")
+	    domains.add(altdom)
     subject_alt_names = re.search(r"X509v3 Subject Alternative Name: \n +([^\n]+)\n", out.decode('utf8'), re.MULTILINE|re.DOTALL)
     if subject_alt_names is not None:
         for san in subject_alt_names.group(1).split(", "):
