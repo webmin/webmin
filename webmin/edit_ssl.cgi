@@ -114,10 +114,11 @@ print ui_tabs_start_tab("mode", "current");
 print "$text{'ssl_current'}<p>\n";
 print ui_table_start($text{'ssl_cheader'}, undef, 4);
 $info = cert_info($miniserv{'certfile'} || $miniserv{'keyfile'});
-foreach my $i ('cn', 'o', 'email', 'issuer_cn', 'issuer_o', 'issuer_email',
+foreach my $i ('cn', 'alt', 'o', 'email', 'issuer_cn', 'issuer_o', 'issuer_email',
 	       'notafter', 'type') {
 	if ($info->{$i}) {
-		print ui_table_row($text{'ca_'.$i}, $info->{$i});
+		print ui_table_row($text{'ca_'.$i},
+			ref($info->{$i}) ? join(", ", @{$info->{$i}}) : $info->{$i});
 		}
 	}
 my @clinks = (

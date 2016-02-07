@@ -107,6 +107,7 @@ else {
 	if (!$ok) {
 		return &text('letsencrypt_ecsr', $csr);
 		}
+	&copy_source_dest($csr, "/tmp/lets.csr");
 
 	# Find a reasonable python version
 	my $python = &has_command("python2.7") || &has_command("python");

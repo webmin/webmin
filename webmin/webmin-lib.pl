@@ -1767,7 +1767,7 @@ sub cert_info
 {
 my %rv;
 local $_;
-open(OUT, "openssl x509 -in ".quotemeta($_[0])." -issuer -subject -enddate |");
+open(OUT, "openssl x509 -in ".quotemeta($_[0])." -issuer -subject -enddate -text |");
 while(<OUT>) {
 	s/\r|\n//g;
 	if (/subject=.*CN=([^\/]+)/) {
@@ -1790,6 +1790,15 @@ while(<OUT>) {
 		}
 	if (/notAfter=(.*)/) {
 		$rv{'notafter'} = $1;
+		}
+	if (/Subject\s+Alternative\s+Name/i) {
+		my $alts = <OUT>;
+		$alts =~ s/^\s+//;
+		foreach my $a (split(/[, ]+/, $alts)) {
+			if ($a =~ /^DNS:(\S+)/) {
+				push(@{$rv{'alt'}}, $1);
+				}
+			}
 		}
 	}
 close(OUT);
@@ -1947,20 +1956,19 @@ if (!$cmd) {
 # Run openssl and feed it key data
 my $ctemp = &transname();
 my $ktemp = &transname();
-my $outtemp = &transname();
 my $size = $in{'size_def'} ? $default_key_size : quotemeta($in{'size'});
-open(CA, "| $cmd req -newkey rsa:$size -x509 -nodes -out $ctemp -keyout $ktemp -days ".quotemeta($in{'days'})." >$outtemp 2>&1");
-print CA ($in{'countryName'} || "."),"\n";
-print CA ($in{'stateOrProvinceName'} || "."),"\n";
-print CA ($in{'cityName'} || "."),"\n";
-print CA ($in{'organizationName'} || "."),"\n";
-print CA ($in{'organizationalUnitName'} || "."),"\n";
-print CA ($in{'commonName_def'} ? "*" : $in{'commonName'}),"\n";
-print CA ($in{'emailAddress'} || "."),"\n";
-close(CA);
-my $rv = $?;
-my $out = &read_file_contents($outtemp);
-unlink($outtemp);
+my $subject = &build_ssl_subject($in{'countryName'},
+				 $in{'stateOrProvinceName'},
+				 $in{'cityName'},
+				 $in{'organizationName'},
+				 $in{'organizationalUnitName'},
+				 \@cns,
+				 $in{'emailAddress'});
+my $conf = &build_ssl_config(\@cns);
+my $out = &backquote_logged(
+	"$cmd req -newkey rsa:$size -x509 -sha256 -nodes -out $ctemp -keyout $ktemp ".
+	"-days ".quotemeta($in{'days'})." -subj ".quotemeta($subject)." ".
+	"-config $conf -reqexts v3_req 2>&1");
 if (!-r $ctemp || !-r $ktemp || $?) {
 	return $text{'newkey_essl'}."<br>"."<pre>".&html_escape($out)."</pre>";
 	}
@@ -2081,14 +2089,76 @@ $subject .= "/O=$org" if ($org);
 $subject .= "/OU=$orgunit" if ($orgunit);
 $subject .= "/CN=$cns[0]";
 $subject .= "/emailAddress=$email" if ($email);
-if (@cns > 1) {
-	my @sans;
-	for(my $i=1; $i<@cns; $i++) {
-		push(@sans, "DNS.".$i."=".$cns[$i]);
-		}
-	$subject .= "/subjectAltName=".join(",", @sans);
-	}
 return $subject;
+}
+
+# build_ssl_config(cname|&cnames)
+# Create a temporary openssl config file that is setup to include altnames, if needed
+sub build_ssl_config
+{
+my ($cn) = @_;
+my @cns = ref($cn) ? @$cn : ( $cn );
+my $conf = &find_openssl_config_file();
+$conf || &error("No OpenSSL configuration file found on this system!");
+if (@cns <= 1) {
+	# No special handling needed
+	return $conf;
+	}
+my $temp = &transname();
+&copy_source_dest($conf, $temp);
+shift(@cns);	# First one is part of the CN=
+
+# Make sure subjectAltNames is set in .cnf file, in the right places
+my $lref = &read_file_lines($temp);
+my $i = 0;
+my $found_req = 0;
+my $found_ca = 0;
+my $altline = "subjectAltName=".join(",", map { "DNS:$_" } @cns);
+foreach my $l (@$lref) {
+	if ($l =~ /^\s*\[\s*v3_req\s*\]/ && !$found_req) {
+		splice(@$lref, $i+1, 0, $altline);
+		$found_req = 1;
+		}
+	if ($l =~ /^\s*\[\s*v3_ca\s*\]/ && !$found_ca) {
+		splice(@$lref, $i+1, 0, $altline);
+		$found_ca = 1;
+		}
+	$i++;
+	}
+# If v3_req or v3_ca sections are missing, add at end
+if (!$found_req) {
+	push(@$lref, "[ v3_req ]", $altline);
+	}
+if (!$found_ca) {
+	push(@$lref, "[ v3_ca ]", $altline);
+	}
+
+# Add copyall line if needed
+$i = 0;
+my $found_copy = 0;
+my $copyline = "copy_extensions=copyall";
+foreach my $l (@$lref) {
+	if (/^\s*\#*\s*copy_extensions\s*=/) {
+		$l = $copyline;
+		$found_copy = 1;
+		last;
+		}
+	elsif (/^\s*\[\s*CA_default\s*\]/) {
+		$found_ca = $i;
+		}
+	$i++;
+	}
+if (!$found_copy) {
+	if ($found_ca) {
+		splice(@$lref, $found_ca+1, 0, $copyline);
+		}
+	else {
+		push(@$lref, "[ CA_default ]", $copyline);
+		}
+	}
+
+&flush_file_lines($temp);
+return $temp;
 }
 
 # generate_ssl_csr(keyfile, country, state, city, org, orgunit, cname|&cnames, email)
@@ -2099,12 +2169,12 @@ sub generate_ssl_csr
 my ($ktemp, $country, $state, $city, $org, $orgunit, $cn, $email) = @_;
 &foreign_require("acl");
 my $ctemp = &transname();
-my $outtemp = &transname();
 my $cmd = &acl::get_ssleay();
 my $subject = &build_ssl_subject($country, $state, $city, $org, $orgunit, $cn,$email);
+my $conf = &build_ssl_config($cn);
 my $out = &backquote_command(
 	"$cmd req -new -key $ktemp -out $ctemp -sha256 ".
-	"-subj ".quotemeta($subject)." 2>&1");
+	"-subj ".quotemeta($subject)." -config $conf -reqexts v3_req 2>&1");
 if (!-r $ctemp || $?) {
 	return (0, $out);
 	}
@@ -2678,6 +2748,25 @@ else {
 &put_miniserv_config(\%miniserv);
 &unlock_file($ENV{'MINISERV_CONFIG'});
 &restart_miniserv(1);
+}
+
+# find_openssl_config_file()
+# Returns the full path to the OpenSSL config file, or undef if not found
+sub find_openssl_config_file
+{
+my %vconfig = &foreign_config("virtual-server");
+foreach my $p ($vconfig{'openssl_cnf'},		# Virtualmin module config
+	       "/etc/ssl/openssl.cnf",		# Debian and FreeBSD
+	       "/etc/openssl.cnf",
+               "/usr/local/etc/openssl.cnf",
+	       "/etc/pki/tls/openssl.cnf",	# Redhat
+	       "/opt/csw/ssl/openssl.cnf",	# Solaris CSW
+	       "/opt/csw/etc/ssl/openssl.cnf",	# Solaris CSW
+	       "/System/Library/OpenSSL/openssl.cnf", # OSX
+	      ) {
+	return $p if ($p && -r $p);
+	}
+return undef;
 }
 
 1;
