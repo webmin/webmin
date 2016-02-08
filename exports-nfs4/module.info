@@ -26,3 +26,4 @@ desc_ko_KR.UTF-8=NFS 내보내기
 desc_ru.UTF-8=Каталоги NFS
 desc_pl.UTF-8=Udostępnianie po NFS
 longdesc_de=Bearbeitet NFSv4-Dateifreigaben, welche in /etc/exports definiert sind.
+desc_no=NFS Eksporter v4
