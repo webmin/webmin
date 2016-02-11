@@ -202,6 +202,10 @@ if (!$access{'edonly'}) {
 		print &ui_submit($text{'dbase_drop'}, 'dropdb');
 		print "&nbsp;\n";
 		}
+	elsif (@titles) {
+		print &ui_submit($text{'dbase_empty'}, 'dropdb');
+		print "&nbsp;\n";
+		}
 
 	# Open backup form
 	if ($access{'buser'}) {

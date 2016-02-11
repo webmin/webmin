@@ -9,6 +9,7 @@ require './mysql-lib.pl';
 $access{'edonly'} && &error($text{'dbase_ecannot'});
 if ($in{'confirm'}) {
 	# Drop the database
+	$access{'delete'} || &error($text{'dbase_ecannot'});
 	&execute_sql_logged($master_db, "drop database ".&quotestr($in{'db'}));
 	&delete_database_backup_job($in{'db'});
 	&webmin_log("delete", "db", $in{'db'});
@@ -32,16 +33,29 @@ else {
 		$rows += $d->{'data'}->[0]->[0];
 		}
 
-	print "<center><b>",&text('ddrop_rusure', "<tt>$in{'db'}</tt>",
-				  scalar(@tables), $rows),"\n";
-	print $text{'ddrop_mysql'},"\n" if ($in{'db'} eq $master_db);
-	print "</b><p>\n";
-	print "<form action=drop_dbase.cgi>\n";
-	print "<input type=hidden name=db value='$in{'db'}'>\n";
-	print "<input type=submit name=confirm value='$text{'ddrop_ok'}'>\n";
-	print "<input type=submit name=empty value='$text{'ddrop_empty'}'>\n"
-		if (@tables);
-	print "</form></center>\n";
+	if (!$access{'delete'}) {
+		# Offer to drop tables only
+		$msg = &text('ddrop_rusure2', "<tt>$in{'db'}</tt>", scalar(@tables), $rows);
+		$msg .= " ".$text{'ddrop_mysql'} if ($in{'db'} eq $master_db);
+		print &ui_confirmation_form(
+			"drop_dbase.cgi", $msg,
+			[ [ 'db', $in{'db'} ] ],
+			[ [ 'empty', $text{'ddrop_empty2'} ] ],
+			);
+		}
+	else {
+		# Offer to drop DB or tables
+		$msg = &text('ddrop_rusure', "<tt>$in{'db'}</tt>", scalar(@tables), $rows);
+		$msg .= " ".$text{'ddrop_mysql'} if ($in{'db'} eq $master_db);
+		print &ui_confirmation_form(
+			"drop_dbase.cgi", $msg,
+			[ [ 'db', $in{'db'} ] ],
+			[ [ 'confirm', $text{'ddrop_ok'} ],
+			  @tables ? ( [ 'empty', $text{'ddrop_empty'} ] ) : ( ),
+			],
+			);
+		}
+
 	&ui_print_footer("edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
 			 &get_databases_return_link($in{'db'}), $text{'index_return'});
 	}
