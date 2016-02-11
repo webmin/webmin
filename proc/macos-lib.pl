@@ -117,6 +117,9 @@ foreach my $l (split(/\r?\n/, $out)) {
 		}
 	}
 my $usage = ($stat{'pages active'} + $stat{'pages wired down'}) * 4;
+if ($usage > $rv[0]) {
+	$usage = $rv[0];
+	}
 $rv[1] = $rv[0] - $usage;
 
 # Get swap usage
