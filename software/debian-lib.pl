@@ -61,7 +61,14 @@ if ($lines[$#lines] !~ /^.[ih]/) {
 	}
 
 # Get full status
-local $out = &backquote_command("dpkg --print-avail $qm 2>&1", 1);
+local $out;
+if (&has_command("apt-cache")) {
+	$out = &backquote_command("apt-cache show $qm 2>&1", 1);
+	$out =~ s/[\0-\177]*\r?\n\r?\n(Package:)/\\1/;	# remove available ver
+	}
+else {
+	$out = &backquote_command("dpkg --print-avail $qm 2>&1", 1);
+	}
 return () if ($? || $out =~ /Package .* is not available/i);
 local @rv = ( $_[0], &alphabet_name($_[0]) );
 push(@rv, $out =~ /Description:\s+([\0-\177]*\S)/i ? $1
