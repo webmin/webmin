@@ -1,0 +1,100 @@
+<div class="btn-group pull-right">
+  <button class="btn btn-inverse" onclick='selectAll()' title="$text{'select_all'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
+  	<i class="fa fa-check-square-o" aria-hidden="true"></i>
+  </button>
+  <button class="btn btn-inverse" onclick='invertSelection()' title="$text{'invert_selection'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
+      <i class="fa fa-check-square" aria-hidden="true"></i>
+  </button>
+  <button class="btn btn-inverse" onclick='window.location.href="index.cgi?path=$path"' title="$text{'refresh'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
+  	<i class="fa fa-refresh" aria-hidden="true"></i>
+  </button>
+  <div class="btn-group">
+    <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+    $text{'menu_file'} <span class="caret"></span></button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <li>
+        <a onclick='createFileDialog()'>
+          <i class="fa fa-file-o" aria-hidden="true"></i> $text{'create_file'}
+        </a>
+      </li>
+      <li>
+        <a onclick='createFolderDialog()'>
+          <i class="fa fa-folder-o" aria-hidden="true"></i> $text{'create_folder'}
+        </a>
+      </li>
+      <li>
+        <a onclick='viewReadyForUpload()'>
+            <i class="fa fa-upload" aria-hidden="true"></i> $text{'upload_files'}
+        </a>
+      </li>
+      <li>
+        <a onclick='downFromUrlDialog()'>
+            <i class="fa fa-globe" aria-hidden="true"></i> $text{'get_from_url'}
+        </a>
+  
+      </li>
+    </ul>
+  </div>
+  <div class="btn-group">
+    <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+    $text{'menu_edit'} <span class="caret"></span></button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <li>
+        <a onclick='copySelected()'>
+            <i class="fa fa-copy" aria-hidden="true"></i> $text{'copy_selected'}
+        </a>
+      </li>
+      <li>
+        <a onclick='cutSelected()'>
+            <i class="fa fa-cut" aria-hidden="true"></i> $text{'cut_selected'}
+        </a>
+      </li>
+      <li>
+        <a onclick="location.href='paste.cgi?path=$path'">
+            <i class="fa fa-paste" aria-hidden="true"></i> $text{'paste'}
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="btn-group">
+    <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+    $text{'menu_tools'} <span class="caret"></span></button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <li>
+        <a onclick='searchDialog()'>
+        	<i class="fa fa-search" aria-hidden="true"></i> $text{'search'}
+        </a>
+      </li>
+      <li>
+        <a onclick='chmodDialog()'>
+            <i class="fa fa-gears" aria-hidden="true"></i> $text{'chmod_selected'}
+        </a>
+      </li>
+      <li>
+        <a onclick='chownDialog()'>
+            <i class="fa fa-users" aria-hidden="true"></i> $text{'chown_selected'}
+        </a>
+      </li>
+      <li>
+        <a onclick='compressDialog()'>
+            <i class="fa fa-file-archive-o" aria-hidden="true"></i> $text{'compress_selected'}
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="btn-group">
+    <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+    $text{'menu_bookmarks'} <span class="caret"></span></button>
+    <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1">
+      <li>
+        <a href="bookmark.cgi?path=$path">
+        	<i class="fa fa-bookmark-o" aria-hidden="true"></i> $text{'bookmark_folder'}
+        </a>
+        $bookmarks
+      </li>
+    </ul>
+  </div>
+  <button class="btn btn-danger" onclick='removeDialog()' title="$text{'remove_selected'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
+      <i class="fa fa-trash-o" aria-hidden="true"></i>
+  </button>
+</div>
