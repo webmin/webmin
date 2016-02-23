@@ -1,0 +1,58 @@
+<div class="btn-group pull-right" role="group">
+<button class="btn btn-inverse" onclick='searchDialog()' title="$text{'search'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
+	<i class="fa fa-search" aria-hidden="true"></i>
+</button>
+<button class="btn btn-inverse" onclick="location.href='bookmark.cgi?path=$path'" title="$text{'bookmark_folder'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
+	<i class="fa fa-bookmark-o" aria-hidden="true"></i>
+</button>
+<div class="btn-group">
+  <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" title="$text{'config_bookmarks'}">
+    <i class="fa fa-book" aria-hidden="true"></i>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    $bookmarks
+  </ul>
+</div>
+<button class="btn btn-inverse" onclick='window.location.href="index.cgi?path=$path"' title="$text{'refresh'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
+	<i class="fa fa-refresh" aria-hidden="true"></i>
+</button>
+<button class="btn btn-inverse" onclick='selectAll()' title="$text{'select_all'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
+	<i class="fa fa-check-square-o" aria-hidden="true"></i>
+</button>
+<button class="btn btn-inverse" onclick='invertSelection()' title="$text{'invert_selection'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
+    <i class="fa fa-check-square" aria-hidden="true"></i>
+</button>
+<button class="btn btn-inverse" onclick='copySelected()' title="$text{'copy_selected'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
+    <i class="fa fa-copy" aria-hidden="true"></i>
+</button>
+<button class="btn btn-inverse" onclick='cutSelected()' title="$text{'cut_selected'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
+    <i class="fa fa-cut" aria-hidden="true"></i>
+</button>
+<button class="btn btn-inverse" onclick="location.href='paste.cgi?path=$path'" title="$text{'paste'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
+    <i class="fa fa-paste" aria-hidden="true"></i>
+</button>
+<button class="btn btn-inverse" onclick='createFolderDialog()' title="$text{'create_folder'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
+    <i class="fa fa-folder-o" aria-hidden="true"></i>
+</button>
+<button class="btn btn-inverse" onclick='createFileDialog()' title="$text{'create_file'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
+    <i class="fa fa-file-o" aria-hidden="true"></i>
+</button>
+<button class="btn btn-inverse" onclick='compressDialog()' title="$text{'compress_selected'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
+    <i class="fa fa-file-archive-o" aria-hidden="true"></i>
+</button>
+<button class="btn btn-inverse" onclick='chmodDialog()' title="$text{'chmod_selected'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
+    <i class="fa fa-gears" aria-hidden="true"></i>
+</button>
+<button class="btn btn-inverse" onclick='chownDialog()' title="$text{'chown_selected'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
+    <i class="fa fa-users" aria-hidden="true"></i>
+</button>
+<button class="btn btn-inverse" onclick='removeDialog()' title="$text{'remove_selected'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
+    <i class="fa fa-trash-o" aria-hidden="true"></i>
+</button>
+<button class="btn btn-inverse" onclick='viewReadyForUpload()' title="$text{'upload_files'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
+    <i class="fa fa-upload" aria-hidden="true"></i>
+</button>
+<button class="btn btn-inverse" onclick='downFromUrlDialog()' title="$text{'get_from_url'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
+    <i class="fa fa-globe" aria-hidden="true"></i>
+</button>
+</div>

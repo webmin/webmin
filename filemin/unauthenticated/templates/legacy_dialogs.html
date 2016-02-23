@@ -1,0 +1,163 @@
+<div id="nothingSelected" class="modal">
+    <h3>$text{'nothing_selected'}</h3>
+</div>
+
+<div id="createFolderDialog" class="modal">
+  <form id="createFolderForm" action="create_folder.cgi" method="post">
+      <div class="form-group">
+          <label>$text{'new_folder_name'}</label>
+          <input id="name" name="name" type="text" title="$text{'provide_folder_name'}">
+          <input type='hidden' name='path' value='$path'>
+      </div>
+  </form>
+</div>
+
+<div id="createFileDialog" class="modal">
+  <form id="createFileForm" action="create_file.cgi" method="post">
+      <div class="form-group">
+          <label>$text{'new_file_name'}</label>
+          <input name="name" type="text">
+          <input type='hidden' name='path' value='$path'>
+      </div>
+  </form>
+</div>
+
+<div id="renameDialog" class="modal">
+  <form id="renameForm" action="rename.cgi" method="post">
+      <div class="form-group">
+          <label>$text{'new_name'}</label>
+          <input name="name" type="text">
+          <input type='hidden' name='file' value='' required>
+          <input type='hidden' name='path' value='$path'>
+      </div>
+  </form>
+</div>
+
+<div id="compressDialog" class="modal">
+  <form id="compressSelectedForm" action="compress.cgi" method="post">
+      <div class="form-group">
+          <label>$text{'archive_name'}</label>
+          <input name="filename" type="text">
+          <select name="method">
+              <option value="tar">.tar.gz</option>
+              <option value="zip">.zip</option>
+          </select> 
+      </div>
+  </form>
+</div>
+
+<div id="removeDialog" class="modal">
+  <p>$text{'about_to_delete'}</p>
+  <pre id="items-to-remove">
+  </pre>
+  $text{'are_you_sure'}
+</div>
+
+<div id="chownDialog" class="modal">
+  <form id="chownForm">
+      <div class="form-group">
+          <label>$text{'user_name'}</label><br>
+          <input name="owner" type="text"><br>
+          <label>$text{'group_name'}</label><br>
+          <input name="group" type="text"><br>
+          <label>$text{'dialog_recursive'}</label>
+          <input id="chown-recursive" type="checkbox" name="recursive">
+      </div>
+  </form>
+</div>
+
+<div id="downFromUrlDialog" class="modal">
+  <form id="downFromUrlForm" action="http_download.cgi" method="post">
+    <div class="form-group">
+      <label>$text{'dialog_file_url'}</label>
+      <input name="link" type="url"><br>
+      <label>$text{'dialog_user_name'}</label>
+      <input name="username" type="text"><br>
+      <label>$text{'dialog_user_pass'}</label>
+      <input name="password" type="password">
+      <input type='hidden' name='path' value='$path'>
+    </div>
+  </form>
+</div>
+
+<div id="readyForUploadDialog" class="modal">
+    <form id='upload-form' method='post' action='upload.cgi?path=$path&id=$upid' enctype='multipart/form-data' onsubmit='window.open("/uptracker.cgi?id=$upid&uid=$uid", "uptracker", "toolbar=no, menubar=no, scrollbars=no, location=no, resizable=no, width=screen.width, height=screen.height")'>
+        <input type='file' id='upfiles' name='upfiles' multiple onchange='countUploads(this)'>
+        <input type='hidden' name='path' value='$path'>
+    </form>
+    <div id="readyForUploadList" class="well">
+    </div>
+</div>
+
+<div id="chmodDialog" class="modal fade">
+  <form name="chmod" id="chmodForm">
+      <div class="form-group">
+          <label for="t_total">$text{'permissions'} :</label><br>
+          <input id="perms" type="text" name="t_total" value="0644" size="4" onKeyUp="octalchange()" class="form-group-item">
+          <input type="text" name="sym_total" value="" size="12" readonly="true" class="form-group-item">
+      </div>
+      <table class="table">
+          <tr>
+              <th></th>
+              <th><b>$text{'chmod_owner'}</b></th>
+              <th><b>$text{'chmod_group'}</b></th>
+              <th><b>$text{'chmod_others'}<b></th>
+          </tr>
+          <tr>
+              <td>$text{'chmod_read'}</td>
+              <td><input type="checkbox" name="owner4" value="4" onchange="calc_chmod()"></td>
+              <td><input type="checkbox" name="group4" value="4" onchange="calc_chmod()"></td>
+              <td><input type="checkbox" name="other4" value="4" onchange="calc_chmod()"></td>
+          </tr>
+          <tr>		
+              <td>$text{'chmod_write'}</td>
+              <td><input type="checkbox" name="owner2" value="2" onchange="calc_chmod()"></td>
+              <td><input type="checkbox" name="group2" value="2" onchange="calc_chmod()"></td>
+              <td><input type="checkbox" name="other2" value="2" onchange="calc_chmod()"></td>
+          </tr>
+          <tr>
+              <td>$text{'chmod_execute'}</td>
+              <td><input type="checkbox" name="owner1" value="1" onchange="calc_chmod()"></td>
+              <td><input type="checkbox" name="group1" value="1" onchange="calc_chmod()"></td>
+              <td><input type="checkbox" name="other1" value="1" onchange="calc_chmod()"></td>
+          </tr>
+          <tr>
+              <td>----------</td>
+              <td></td>
+              <td></td>
+              <td></td>
+          </tr>
+          <tr>
+              <td>$text{'chmod_sticky'}</td>
+              <td><input type="checkbox" name="sticky" value="1" onchange="calc_chmod()"></td>
+              <td></td>
+              <td></td>
+          </tr>
+          <tr>
+              <td>$text{'chmod_setgid'}</td>
+              <td><input type="checkbox" name="setgid" value="2" onchange="calc_chmod()"></td>
+              <td></td>
+              <td></td>
+          </tr>
+      </table>
+      <label>$text{'chmod_apply_to'}</label>
+      <select name="applyto">
+          <option value="1">$text{'chmod_dir_only'}</option>
+          <option value="2">$text{'chmod_dir_and_its_files'}</option>
+          <option value="3">$text{'chmod_all'}</option>
+          <option value="4">$text{'chmod_dir_files_and_subs_files'}</option>
+          <option value="5">$text{'chmod_dir_and_subs'}</option>
+      </select>
+  </form>
+</div>
+
+<div id="searchDialog" class="modal">
+  <form id="searchForm" action="search.cgi" method="post">
+      <div class="form-group">
+          <label>$text{'search_label'}</label>
+          <input id="query" name="query" type="text" title="$text{'provide_search_query'}"><br>
+          <input id="caseins" name="caseins" type="checkbox" checked="checked"> $text{'search_insensitive'}
+          <input type='hidden' name='path' value='$path'>
+      </div>
+  </form>
+</div>
