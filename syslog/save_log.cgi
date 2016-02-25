@@ -244,15 +244,35 @@ else {
 sub filter_form
 {
 print &ui_form_start("save_log.cgi");
-print &ui_hidden("idx", $in{'idx'}),"\n";
 print &ui_hidden("oidx", $in{'oidx'}),"\n";
 print &ui_hidden("omod", $in{'omod'}),"\n";
 print &ui_hidden("file", $in{'file'}),"\n";
 print &ui_hidden("extra", $in{'extra'}),"\n";
 print &ui_hidden("view", 1),"\n";
 
-print &text('view_header', &ui_textbox("lines", $lines, 3),
-	    "<tt>".&html_escape($log->{'file'})."</tt>"),"\n";
+# Create list of logs and selector
+my @logfiles;
+my $found = 0;
+if ($access{'syslog'}) {
+	my $conf = &get_config();
+	foreach $c (@$conf) {
+		next if ($c->{'tag'});
+		next if (!&can_edit_log($c));
+		next if (!$c->{'file'} || !-f $c->{'file'});
+		push(@logfiles, $c);
+		$found++ if ($c->{'file'} eq $log->{'file'});
+		}
+	}
+if (@logfiles && $found) {
+	$sel = &ui_select("idx", $in{'idx'},
+		  [ map { [ $_->{'index'}, $_->{'file'} ] } @logfiles ]);
+	}
+else {
+	$sel = "<tt>".&html_escape($log->{'file'})."</tt>";
+	print &ui_hidden("idx", $in{'idx'}),"\n";
+	}
+
+print &text('view_header', &ui_textbox("lines", $lines, 3), $sel),"\n";
 print "&nbsp;&nbsp;\n";
 print &text('view_filter', &ui_textbox("filter", $in{'filter'}, 25)),"\n";
 print "&nbsp;&nbsp;\n";
