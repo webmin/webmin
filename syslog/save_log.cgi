@@ -243,7 +243,7 @@ else {
 
 sub filter_form
 {
-print "<form action=save_log.cgi style='margin-left:1em'>\n";
+print &ui_form_start("save_log.cgi");
 print &ui_hidden("idx", $in{'idx'}),"\n";
 print &ui_hidden("oidx", $in{'oidx'}),"\n";
 print &ui_hidden("omod", $in{'omod'}),"\n";
@@ -256,6 +256,7 @@ print &text('view_header', &ui_textbox("lines", $lines, 3),
 print "&nbsp;&nbsp;\n";
 print &text('view_filter', &ui_textbox("filter", $in{'filter'}, 25)),"\n";
 print "&nbsp;&nbsp;\n";
-print "<input type=submit value='$text{'view_refresh'}'></form>\n";
+print &ui_submit($text{'view_refresh'});
+print &ui_form_end(),"<br>\n";
 }
 
