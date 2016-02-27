@@ -13,7 +13,7 @@ local @chans = &find("channel", $logging->{'members'});
 local @rv;
 foreach my $c (@chans) {
 	local $file = &find("file", $c->{'members'});
-	if ($file) {
+	if ($file && $file->{'values'}->[0] =~ /^\//) {
 		push(@rv, { 'file' => $file->{'values'}->[0],
 			    'active' => 1,
 			    'desc' => $text{'syslog_desc'} });
