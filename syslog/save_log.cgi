@@ -20,6 +20,11 @@ if ($in{'delete'}) {
 	}
 elsif ($in{'view'}) {
 	# Viewing a log file
+	if ($in{'idx'} =~ /^\//) {
+		# The drop-down selector on this page has chosen a file
+		$in{'file'} = $in{'idx'};
+		delete($in{'idx'});
+		}
 	if ($in{'idx'} ne '') {
 		# From syslog
 		$log = $conf->[$in{'idx'}];
@@ -254,18 +259,32 @@ print &ui_hidden("view", 1),"\n";
 my @logfiles;
 my $found = 0;
 if ($access{'syslog'}) {
+	# Logs from syslog
 	my $conf = &get_config();
 	foreach $c (@$conf) {
 		next if ($c->{'tag'});
 		next if (!&can_edit_log($c));
 		next if (!$c->{'file'} || !-f $c->{'file'});
-		push(@logfiles, $c);
-		$found++ if ($c->{'file'} eq $log->{'file'});
+		push(@logfiles, [ $c->{'index'}, $c->{'file'} ]);
+		$found++ if ($c->{'file'} eq $file);
 		}
 	}
+if ($config{'others'} && $access{'others'}) {
+	foreach my $o (&get_other_module_logs()) {
+		next if (!&can_edit_log($o));
+		next if (!$o->{'file'});
+		push(@logfiles, [ $o->{'file'} ]);
+		$found++ if ($o->{'file'} eq $file);
+		}
+	}
+foreach $e (&extra_log_files()) {
+	next if (!&can_edit_log($e));
+	push(@logfiles, [ $e->{'file'} ]);
+	$found++ if ($e->{'file'} eq $file);
+	}
 if (@logfiles && $found) {
-	$sel = &ui_select("idx", $in{'idx'},
-		  [ map { [ $_->{'index'}, $_->{'file'} ] } @logfiles ]);
+	$sel = &ui_select("idx", $in{'idx'} eq '' ? $file : $in{'idx'},
+			  [ @logfiles ]);
 	}
 else {
 	$sel = "<tt>".&html_escape($log->{'file'})."</tt>";
