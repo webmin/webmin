@@ -362,6 +362,7 @@ rbac_ecpan=No tens accés a la pàgina de Mòduls Perl de Webmin per tal d'instal·l
 rbac_ok=La integració amb RBAC està disponible en aquest sistema, i es pot activar en base a cada usuari a la pàgina d'Edició d'Usuaris Webmin.
 
 udeletes_err=No s'han pogut suprimir els usuaris
+udeletes_jerr=No s'han pogut afegir els usuaris al grup
 udeletes_enone=No n'has seleccionat cap
 udeletes_title=Supressió d'Usuaris
 udeletes_rusure=Segur que vols suprimir els $1 usuaris seleccionats? Es perdran tots els seus detalls i totes les seves configuracions de control d'accés.

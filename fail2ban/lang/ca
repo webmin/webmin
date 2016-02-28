@@ -10,6 +10,7 @@ index_startdesc=Fes clic sobre aquest botó per iniciar el servidor Fail2Ban de m
 index_restart=Reinicia  el Servidor Fail2Ban
 index_restartdesc=Fes clic sobre aquest botó per aplicar la configuració actual reiniciant el servidor Fail2Ban.
 index_return=a l'índex de mòduls
+index_header=Mòdul Fail2Ban
 
 check_edir=El directori de configuració $1 no existeix
 check_econf=El fitxer de configuració $2 de $1 no existeix
