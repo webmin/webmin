@@ -632,7 +632,7 @@ sub regenerate_relay_recipient_table
 
 sub regenerate_sender_restrictions_table
 {
-    &regenerate_any_table("regenerate_sender_restrictions_table");
+    &regenerate_any_table("smtpd_sender_restrictions");
 }
 
 # regenerate_recipient_bcc_table()
