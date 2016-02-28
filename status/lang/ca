@@ -543,4 +543,8 @@ ldap_ssl=Utilitza connexió SSL
 ldap_user=Usuari del servidor LDAP
 ldap_pass=Contrasenya del servidor LDAP
 
+info_desc=Monitor del sistema
+info_last=Estat actual
+info_title=Estat del Sistema i el Servidoe
+
 __norefs=1

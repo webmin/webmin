@@ -314,7 +314,8 @@ opts_smtp_data_init_timeout=Temps límit d'espera de la resposta a DATA
 opts_smtp_data_xfer_timeout=Temps límit d'espera de la resposta a la transmissió del contingut del missatge
 opts_smtp_data_done_timeout=Temps límit d'espera de la resposta a &quot;.&quot; final
 opts_smtp_quit_timeout=Temps límit d'espera de la resposta a QUIT
-
+opts_smtp_use_tls=Utilitza TLS per a les connexions SMTP
+opts_smtp_sasl_security_options=Opcions de seguretat SASL
 
 rate_title=Ritmes de Lliurament
 rate_ecannot=No tens permís per editar les opcions de ritme de lliurament

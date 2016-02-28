@@ -62,6 +62,7 @@ session_desc2=Quan l'autenticació de sessió està activada, la sessió de cada usu
 session_remember=Ofereix-te a recordar la contrasenya de forma permanent
 session_hostname=Mostra el nom de host a la pantalla de connexió
 session_realname=Mostra el nom de host real en lloc del nom de l'URL
+session_authmode=Mètode d'autenticació
 session_authmode0=Utilitza PAM per a l'autenticació si està disponible
 session_authmode1=Autenticació utilitzant el fitxer de contrasenyes $1 columnes $2 i $3
 session_authmode2=Utilitza un programa extern d'autenticació estil squid
@@ -157,8 +158,8 @@ users_desc=Amb aquest formulari es pot configurar Usermin per limitar quins usua
 users_desc2=Per fer coincidir un rang d'UIDs, introdueix <tt>start-end</tt>, <tt>start-</tt> o <tt>-end</tt> dins de la llista.
 users_header=Control d'accés Usermin
 users_all=Permet tots els usuaris
-users_allow=Permet només els usuaris llistats
-users_deny=Denega els usuaris llistats
+users_allow=Permet només els usuaris llistats...
+users_deny=Denega els usuaris llistats...
 users_err=No s'ha pogut actualitzar la llista d'usuaris
 users_none=No has introduït cap usuari
 users_euser='$1' no és un nom d'usuari vàlid
@@ -399,7 +400,7 @@ restrict_umode1=Als membres del grup
 restrict_umode2=A tots els usuaris
 restrict_umode3=Usuaris i grups del fitxer
 restrict_mods=Mòduls
-restrict_modsdesc=(els que estan en vermell han<br>estat desactivats a<br> la pàgina <a href='$1'>Mòduls Disponibles</a>)
+restrict_modsdesc=(els que estan en vermell han estat desactivats a la pàgina de <a href='$1'>Mòduls Disponibles</a>)
 restrict_mmode0=Només els seleccionats...
 restrict_mmode1=Afegeix els seleccionats...
 restrict_mmode2=Treu els seleccionats...

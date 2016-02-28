@@ -90,6 +90,7 @@ view_disks=Particions RAID
 view_spares=Particions esgrunades
 view_size=Mida utilitzable
 view_resync=% de resyncs fets
+view_delayed=S'està esperant un altre dispositiu
 view_down=(Desactivat)
 view_cannot=Aquest dispositiu RAID no es pot modificar, ja que està muntat.
 view_cannot2=Aquest dispositiu RAID no es pot muntar, desactivar, suprimir ni reformatar, ja que actualment està actiu.

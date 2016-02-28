@@ -28,6 +28,7 @@ passwd_ok2=La contrasenya de l'usuari $1 s'ha canviat correctament.
 log_passwd=S'ha canviat la contrasenya de l'usuari $1
 
 acl_repeat=Ha de tornar a introduir la contrasenya altre cop
+acl_self=Permet sempre de canviar la pròpia contrasenya
 acl_old=Ha d'introduir la contrasenya anterior
 acl_old_this=Només per altres usuaris
 acl_others=Canvia la contrasenya dels altres mòduls

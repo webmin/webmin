@@ -10,3 +10,7 @@ pid_file=Camí del fitxer de PID de ProFTPD,3,Cap
 start_cmd=Ordre per iniciar ProFTPD,3,Automàtic
 ftpusers=Camí del fitxer ftpusers,0
 stop_cmd=Ordre per aturar ProFTPD,3,Mata el procés
+line3=Variables de ProFTPD,11
+defines_file=Fitxer d'entorn que defineix les variables de ProFTPD,3,Cap
+defines_name=Nom de la variable d'entorn en el fitxer anterior,0
+defines_mods=Directoris que contenen mòduls per a les variables HAVE_,9,40,3,\t
