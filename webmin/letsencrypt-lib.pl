@@ -97,7 +97,7 @@ else {
 	my $key = &transname();
 	my $out = &backquote_logged("openssl genrsa 4096 2>&1 >$key");
 	if ($?) {
-		return (0, &text('letsencrypt_ekey', &html_escape($out)));
+		return (0, &text('letsencrypt_ekeygen', &html_escape($out)));
 		}
 
 	# Generate a CSR

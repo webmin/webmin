@@ -1120,6 +1120,6 @@ letsencrypt_eaccountkey=Failed to generate account key : $1
 letsencrypt_etiny=Failed to request certificate : $1
 letsencrypt_echain=Failed to download chained certificate : $1
 letsencrypt_ecsr=Failed to generate CSR : $1
-letsencrypt_ekey=Failed to generate private key : $1
+letsencrypt_ekeygen=Failed to generate private key : $1
 
 __norefs=1
