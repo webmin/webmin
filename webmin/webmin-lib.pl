@@ -2645,6 +2645,7 @@ my ($curr) = @_;
 my @rv;
 foreach my $theme (&list_themes()) {
 	if (!-l $root_directory."/".$theme->{'dir'} ||
+	    $theme->{'dir'} !~ /\d+$/ ||
 	    $curr && $theme->{'dir'} eq $curr) {
 		push(@rv, $theme);
 		}
