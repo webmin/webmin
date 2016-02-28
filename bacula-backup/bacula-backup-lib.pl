@@ -552,7 +552,8 @@ sub is_bacula_running
 local ($proc) = @_;
 if (&has_command($bacula_cmd)) {
 	# Get status from bacula status command
-	$bacula_status_cache ||= `$bacula_cmd status 2>&1 </dev/null`;
+	$bacula_status_cache ||=
+		&backquote_command("$bacula_cmd status 2>&1 </dev/null");
 	if ($bacula_status_cache =~ /\Q$proc\E\s+\(pid\s+([0-9 ]+)\)\s+is\s+running/i ||
 	    $bacula_status_cache =~ /\Q$proc\E\s+is\s+running/i) {
 		return 1;
@@ -819,17 +820,17 @@ local $jobs = &console_cmd($h, "show jobs");
 local @rv;
 local $job;
 foreach my $l (split(/\r?\n/, $jobs)) {
-	if ($l =~ /^Job:\s+name=([^=]*\S)\s/ ||
-	    $l =~ /^\s*Name\s*=\s*"(.*)"/) {
+	if ($l =~ /^Job:\s+name=([^=]*\S)\s/i ||
+	    $l =~ /^\s*Name\s*=\s*"(.*)"/i) {
 		$job = { 'name' => $1 };
 		push(@rv, $job);
 		}
-	elsif (($l =~ /Client:\s+name=([^=]*\S)\s/ ||
-		$l =~ /^\s*Client\s*=\s*"(.*)"/) && $job) {
+	elsif (($l =~ /Client:\s+name=([^=]*\S)\s/i ||
+		$l =~ /^\s*Client\s*=\s*"(.*)"/i) && $job) {
 		$job->{'client'} = $1;
 		}
-	elsif (($l =~ /FileSet:\s+name=([^=]*\S)\s/ ||
-	        $l =~ /^FileSet\s*=\s*"(.*)"/) && $job) {
+	elsif (($l =~ /FileSet:\s+name=([^=]*\S)\s/i ||
+	        $l =~ /^FileSet\s*=\s*"(.*)"/i) && $job) {
 		$job->{'fileset'} = $1;
 		}
 	}
@@ -846,21 +847,21 @@ local $clients = &console_cmd($h, "show clients");
 local @rv;
 local $client;
 foreach my $l (split(/\r?\n/, $clients)) {
-	if ($l =~ /^Client:\s+name=([^=]*\S)\s/ ||
-	    $l =~ /^\s*Name\s*=\s*"(.*)"/) {
+	if ($l =~ /^Client:\s+name=([^=]*\S)\s/i ||
+	    $l =~ /^\s*Name\s*=\s*"(.*)"/i) {
 		$client = { 'name' => $1 };
-		if ($l =~ /address=(\S+)/ && $client) {
+		if ($l =~ /address=(\S+)/i && $client) {
 			$client->{'address'} = $1;
 			}
-		if ($l =~ /FDport=(\d+)/ && $client) {
+		if ($l =~ /FDport=(\d+)/i && $client) {
 			$client->{'port'} = $1;
 			}
 		push(@rv, $client);
 		}
-	elsif ($l =~ /^\s*Address\s*=\s*"(.*)"/ && $client) {
+	elsif ($l =~ /^\s*Address\s*=\s*"(.*)"/i && $client) {
 		$client->{'address'} = $1;
 		}
-	elsif ($l =~ /^\s*FDport\s*=\s*"(.*)"/ && $client) {
+	elsif ($l =~ /^\s*FDport\s*=\s*"(.*)"/i && $client) {
 		$client->{'port'} = $1;
 		}
 	}
@@ -877,21 +878,21 @@ local $storages = &console_cmd($h, "show storages");
 local @rv;
 local $storage;
 foreach my $l (split(/\r?\n/, $storages)) {
-	if ($l =~ /^Storage:\s+name=([^=]*\S)\s/ ||
-	    $l =~ /^\s*Name\s*=\s*"(.*)"/) {
+	if ($l =~ /^Storage:\s+name=([^=]*\S)\s/i ||
+	    $l =~ /^\s*Name\s*=\s*"(.*)"/i) {
 		$storage = { 'name' => $1 };
-		if ($l =~ /address=(\S+)/) {
+		if ($l =~ /address=(\S+)/i) {
 			$storage->{'address'} = $1;
 			}
-		if ($l =~ /SDport=(\d+)/) {
+		if ($l =~ /SDport=(\d+)/i) {
 			$storage->{'port'} = $1;
 			}
 		push(@rv, $storage);
 		}
-	elsif ($l =~ /^\s*Address\s*=\s*"(.*)"/ && $storage) {
+	elsif ($l =~ /^\s*Address\s*=\s*"(.*)"/i && $storage) {
 		$storage->{'address'} = $1;
 		}
-	elsif ($l =~ /^\s*SDport\s*=\s*"(.*)"/ && $storage) {
+	elsif ($l =~ /^\s*SDport\s*=\s*"(.*)"/i && $storage) {
 		$storage->{'port'} = $1;
 		}
 	}
@@ -908,15 +909,15 @@ local $pools = &console_cmd($h, "show pools");
 local @rv;
 local $pool;
 foreach my $l (split(/\r?\n/, $pools)) {
-	if ($l =~ /^Pool:\s+name=([^=]*\S)\s/ ||
-	    $l =~ /^\s*Name\s*=\s*"(.*)"/) {
+	if ($l =~ /^Pool:\s+name=([^=]*\S)\s/i ||
+	    $l =~ /^\s*Name\s*=\s*"(.*)"/i) {
 		$pool = { 'name' => $1 };
-		if ($l =~ /PoolType=(\S+)/) {
+		if ($l =~ /PoolType=(\S+)/i) {
 			$pool->{'type'} = $1;
 			}
 		push(@rv, $pool);
 		}
-	elsif ($l =~ /^\s*PoolType\s*=\s*"(.*)"/ && $pool) {
+	elsif ($l =~ /^\s*PoolType\s*=\s*"(.*)"/i && $pool) {
 		$pool->{'type'} = $1;
 		}
 	}
@@ -1011,7 +1012,7 @@ foreach my $l (split(/\r?\n/, $status)) {
 			     'name' => &job_name("$2"),
 			     'status' => $4 });
 		}
-	elsif ($sect == 2 && $l =~ /^\s*Backup\s+Job\s+started:\s+(\S+\s+\S+)/) {
+	elsif ($sect == 2 && $l =~ /^\s*Backup\s+Job\s+started:\s+(\S+\s+\S+)/i) {
 		$run[$#run]->{'date'} = $1;
 		}
 	elsif ($sect == 3 && $l =~ /^\s*(\d+)\s+(\S+)\s+([0-9,]+)\s+([0-9,]+\.[0-9,]+\s+\S+|\d+)\s+(\S+)\s+(\S+\s+\S+)\s+(\S+)\s*$/) {
@@ -1047,7 +1048,7 @@ foreach my $l (split(/\r?\n/, $status)) {
 	if ($l =~ /^Running\s+Jobs/i) { $sect = 2; }
 	elsif ($l =~ /^Terminated\s+Jobs/i) { $sect = 3; }
 
-	if ($sect == 2 && $l =~ /^\s*Backup\s+Job\s+(\S+)\.(\d+\-\d+\-\S+)\s+(.*)/) {
+	if ($sect == 2 && $l =~ /^\s*Backup\s+Job\s+(\S+)\.(\d+\-\d+\-\S+)\s+(.*)/i) {
 		push(@run, { 'name' => &job_name("$1"),
 			     'status' => $3 });
 		}
@@ -1061,7 +1062,7 @@ foreach my $l (split(/\r?\n/, $status)) {
 		$run[$#run]->{'volume'} = $4;
 		$run[$#run]->{'device'} = $6;
 		}
-	elsif ($sect == 3 && $l =~ /^\s*(\d+)\s+(\S+)\s+([0-9,]+)\s+([0-9,]+\.[0-9,]+\s+\S+|\d+)\s+(\S+)\s+(\S+\s+\S+)\s+(\S+)\s*$/) {
+	elsif ($sect == 3 && $l =~ /^\s*(\d+)\s+(\S+)\s+([0-9,]+)\s+([0-9,]+\.[0-9,]+\s+\S+|\d+)\s+(\S+)\s+(\S+\s+\S+)\s+(\S+)\s*$/i) {
 		push(@done, { 'id' => $1,
 			      'level' => &full_level("$2"),
 			      'files' => &remove_comma("$3"),
