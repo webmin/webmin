@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 # File manager written in perl
 
 #$unsafe_index_cgi = 1;
