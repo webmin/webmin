@@ -2588,7 +2588,7 @@ if ($gconfig{'ftp_proxy'} =~ /^http:\/\/(\S+):(\d+)/ && !&no_proxy($_[0])) {
 		my $esc = $file; $esc =~ s/ /%20/g;
 		my $up = "${user}:${pass}\@" if ($user);
 		my $portstr = $port == 21 ? "" : ":$port";
-		print SOCK "GET ftp://${up}${host}${portstr}${esc} HTTP/1.0\r\n";
+		print SOCK "GET ftp://${up}${host}${portstr}${esc} HTTP/1.1\r\n";
 		print SOCK "User-agent: Webmin\r\n";
 		if ($gconfig{'proxy_user'}) {
 			my $auth = &encode_base64(
@@ -7339,7 +7339,7 @@ if ($ssl) {
 		if (!$error) {
 			# Connected OK
 			my $fh = $rv->{'fh'};
-			print $fh "CONNECT $host:$port HTTP/1.0\r\n";
+			print $fh "CONNECT $host:$port HTTP/1.1\r\n";
 			if ($gconfig{'proxy_user'}) {
 				my $auth = &encode_base64(
 				   "$gconfig{'proxy_user'}:".
@@ -7378,7 +7378,7 @@ if ($ssl) {
 			$certreqs);
 		return "Invalid SSL certificate : $err" if ($err);
 		}
-	my $rtxt = "$method $page HTTP/1.0\r\n".$htxt;
+	my $rtxt = "$method $page HTTP/1.1\r\n".$htxt;
 	Net::SSLeay::write($rv->{'ssl_con'}, $rtxt);
 	}
 else {
@@ -7394,7 +7394,7 @@ else {
 			$connected = 1;
 			my $fh = $rv->{'fh'};
 			my $rtxt = $method." ".
-				   "http://$host:$port$page HTTP/1.0\r\n";
+				   "http://$host:$port$page HTTP/1.1\r\n";
 			if ($gconfig{'proxy_user'}) {
 				my $auth = &encode_base64(
 				   "$gconfig{'proxy_user'}:".
@@ -7415,7 +7415,7 @@ else {
 		&open_socket($host, $port, $rv->{'fh'}, \$error, $bindip);
 		return $error if ($error);
 		my $fh = $rv->{'fh'};
-		my $rtxt = "$method $page HTTP/1.0\r\n".$htxt;
+		my $rtxt = "$method $page HTTP/1.1\r\n".$htxt;
 		print $fh $rtxt;
 		}
 	}
