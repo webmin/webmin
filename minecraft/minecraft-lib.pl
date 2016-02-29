@@ -11,7 +11,7 @@ our ($module_root_directory, %text, %gconfig, $root_directory, %config,
      $module_name, $remote_user, $base_remote_user, $gpgpath,
      $module_config_directory, @lang_order_list, @root_directories);
 our $history_file = "$module_config_directory/history.txt";
-our $download_page_url = "http://minecraft.net/download";
+our $download_page_url = "https://minecraft.net/download";
 our $playtime_dir = "$module_config_directory/playtime";
 our $uuid_cache_file = "$module_config_directory/uuids";
 
@@ -741,13 +741,23 @@ return $str;
 # Returns the URL for downloading the server JAR file
 sub get_server_jar_url
 {
-my ($host, $port, $page, $ssl) = &parse_http_url($download_page_url);
-return undef if (!$host);
-my ($out, $err);
-&http_download($host, $port, $page, \$out, \$err, undef, $ssl);
-return undef if ($err);
-$out =~ /"((http|https):[^"]+minecraft_server[^"]+\.jar)"/ || return undef;
-return $1;
+my $ver = $config{'download_version'};
+if ($ver) {
+	# Always use a specific version from S3
+	return "https://s3.amazonaws.com/Minecraft.Download/versions/${ver}/minecraft_server.${ver}.jar";
+	}
+else {
+	# Get the URL from the download page
+	my ($host, $port, $page, $ssl) = &parse_http_url($download_page_url);
+	return undef if (!$host);
+	my ($out, $err);
+	&http_download($host, $port, $page, \$out, \$err, undef, $ssl,
+		       undef, undef, 10, 0, 1);
+	return undef if ($err);
+	$out =~ /"((http|https):[^"]+minecraft_server[^"]+\.jar)"/ ||
+		return undef;
+	return $1;
+	}
 }
 
 # check_server_download_size()
