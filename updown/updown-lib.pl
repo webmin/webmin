@@ -140,7 +140,7 @@ for($i=0; $_[0]->{"url_$i"}; $i++) {
 		}
 	&switch_uid_to($_[0]->{'uid'}, $_[0]->{'gid'});
 	$down->{'upto'} = $progress_callback_count;
-	if ($_[0]->{"proto_$i"} eq "http") {
+	if ($_[0]->{"proto_$i"} eq "http" || $_[0]->{"proto_$i"} eq "https") {
 		&http_download($_[0]->{"host_$i"},
 			       $_[0]->{"port_$i"},
 			       $_[0]->{"page_$i"},
