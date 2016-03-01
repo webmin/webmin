@@ -57,7 +57,7 @@ my $twcount = 0;
 foreach my $d (sort { $a->{'device'} cmp $b->{'device'} }
 		    &fdisk::list_disks_partitions()) {
 	if (($d->{'type'} eq 'scsi' || $d->{'type'} eq 'raid') &&
-	    $d->{'model'} =~ /3ware|amcc/i) {
+	    $d->{'model'} =~ /3ware|amcc|9750/i) {
 		# A 3ware hardware RAID device.
 
 		# First find the controllers.
@@ -95,7 +95,7 @@ foreach my $d (sort { $a->{'device'} cmp $b->{'device'} }
 		$twcount++;
 		}
 	elsif (($d->{'type'} eq 'scsi' || $d->{'type'} eq 'raid') &&
-	    $d->{'model'} =~ /LSI/i) {
+	       $d->{'model'} =~ /LSI/i && $d->{'model'} !~ /9750/) {
 		# A LSI megaraid device.
 		local @units = &list_megaraid_subdisks(0);
 
