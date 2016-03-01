@@ -174,6 +174,10 @@ system("/usr/bin/find /tmp/makemodulerpm -name '.*.swp' | xargs rm -rf");
 system("/usr/bin/find /tmp/makemodulerpm -name core | xargs rm -rf");
 system("/usr/bin/find /tmp/makemodulerpm -name RELEASE | xargs rm -rf");
 system("/usr/bin/find /tmp/makemodulerpm -name RELEASE.sh | xargs rm -rf");
+if (-r "/tmp/makemodulerpm/$mod/EXCLUDE") {
+	system("cd /tmp/makemodulerpm/$mod && cat EXCLUDE | xargs rm -rf");
+	system("rm -f /tmp/makemodulerpm/$mod/EXCLUDE");
+	}
 system("/bin/chown -R root:bin /tmp/makemodulerpm/$mod");
 
 # Tar up the directory

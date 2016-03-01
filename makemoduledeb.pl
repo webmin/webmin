@@ -171,6 +171,10 @@ system("find $usr_dir -name '*.rej' | xargs rm -rf");
 system("find $usr_dir -name core | xargs rm -rf");
 system("find $usr_dir -name RELEASE | xargs rm -rf");
 system("find $usr_dir -name RELEASE.sh | xargs rm -rf");
+if (-r "$usr_dir/$mod/EXCLUDE") {
+	system("cd $usr_dir/$mod && cat EXCLUDE | xargs rm -rf");
+	system("rm -f $usr_dir/$mod/EXCLUDE");
+	}
 
 # Fix up Perl paths
 system("(find $usr_dir -name '*.cgi' ; find $usr_dir -name '*.pl') | perl -ne 'chop; open(F,\$_); \@l=<F>; close(F); \$l[0] = \"#\!/usr/bin/perl\$1\n\" if (\$l[0] =~ /#\!\\S*perl\\S*(.*)/); open(F,\">\$_\"); print F \@l; close(F)'");
