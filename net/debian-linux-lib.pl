@@ -864,7 +864,7 @@ for($i=0; $i<@$lref; $i++) {
 if (!$found) {
 	splice(@$lref, 0, 0, "auto ".join(" ", @ifaces));
 	}
-&flush_file_lines();
+&flush_file_lines($network_interfaces_config);
 }
 
 # modifies the options of an already stored interface definition
