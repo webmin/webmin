@@ -12,3 +12,4 @@ desc_ms_MY=Sistem backup Bacula
 longdesc_ms_MY=Konfigurasi Bacula untuk melaksanakan salinan dan mengembalikan secara manual atau mengikut jadual, untuk satu atau banyak sistem.
 longdesc_de=Konfiguriert Bacula um Sicherungen zu erstellen und manuell oder nach Plan wiederherzustellen, f&#252;r eine oder viele Systeme.
 longdesc_pl=Skonfiguruj Bacula do przeprowadzania kopii zapasowej i przywracania rêcznie lub wed³ug harmonogramu na jednym lub wielu systemach.
+desc_no=Bacula backupsystem

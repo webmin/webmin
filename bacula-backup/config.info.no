@@ -1,0 +1,17 @@
+line0=Konfigurerbare innstillinger,11
+wait=Standard sikkerhetskopi ventemodus,1,1-Vent p&#239;&#191;&#189; fullf&#239;&#191;&#189;ring,0-Kj&#239;&#191;&#189;r i bakgrunnen
+apply=Ta i bruk katalog-konfigurasjon automatisk?,1,1-Ja,0-Nei
+groupmode=Hent node gruppe informasjon fra,1,webmin-Webmin Tjenere indeks modul,oc-OCM Manager database,-Ingen steder
+showdirs=Vis alltid eksterne kataloger?,1,1-Ja,0-Nei
+line1=Bacula databaseinnstillinger,11
+driver=Databasetype,1,Pg-PostgreSQL,mysql-MySQL,SQLite-SQLite
+user=Bruker det skal logges inn p&#239;&#191;&#189; databasen som,0
+pass=Passord det skal logges inn med,0
+host=Bacula databasetjener,3,Dette system
+db=Database eller fil som inneholder Bacula informasjon,0
+line2=Filinnstillinger,11
+bacula_dir=Bacula konfigurasjonskatalog,0
+bextract=Full sti til <tt>bextract</tt> kommando,0
+bls=Full sti til <tt>bls</tt> kommando,0
+btape=Full sti til <tt>btape</tt> kommando,0
+init_start=Start og stopp Bacula vha.1,1-Init scripts,0-<tt>bacula</tt> kommando
