@@ -250,10 +250,10 @@ sub print_interface {
         $link =~ s/^\///g;
         $vlink = html_escape($link);
         $vlink = quote_escape($vlink);
-        $vlink = decode('UTF-8', $vlink, Encode::FB_CROAK);
+        $vlink = decode('UTF-8', $vlink, Encode::FB_DEFAULT);
         $path = html_escape($path);
         $vpath = quote_escape($vpath);
-        $vpath = decode('UTF-8', $vpath, Encode::FB_CROAK);
+        $vpath = decode('UTF-8', $vpath, Encode::FB_DEFAULT);
 
         my $type = $list[$count - 1][14];
         $type =~ s/\//\-/g;
