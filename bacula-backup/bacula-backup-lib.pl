@@ -76,6 +76,15 @@ if (!defined($config_file_cache{$file})) {
 		if (/^\s*\@(.*\S)/) {
 			# An include file reference .. parse it
 			local $incfile = $1;
+			# A pipe command                                                                                                          
+                        if ($incfile =~ /^\|"(.*)"$/) {
+                            local $command = $1;
+                            local $incfiles = `$command`;
+                            foreach (split(/\s/,$incfiles)) {
+                                local $inc = &read_config_file(substr($_,1));
+                                push(@{$parent->{'members'}}, @$inc);
+                            }
+                        }
 			if ($incfile !~ /^\//) {
 				$incfile = "$config{'bacula_dir'}/$incfile";
 				}
