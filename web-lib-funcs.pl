@@ -6517,43 +6517,27 @@ sub remote_write
 my ($host, $localfile, $remotefile, $remotebase) = @_;
 return undef if (&is_readonly_mode());
 my ($data, $got);
-my $sn = &remote_session_name($host);
-if (!$_[0]) {
-	# Copy data over TCP connection
-	my $rv = &remote_rpc_call($host, { 'action' => 'tcpwrite',
-					   'file' => $remotefile,
-					   'name' => $remotebase } );
-	my $error;
-	my $serv = ref($host) ? $host->{'host'} : $host;
-	&open_socket($serv || "localhost", $rv->[1], TWRITE, \$error);
-	return &$main::remote_error_handler("Failed to transfer file : $error")
-		if ($error);
-	open(FILE, $localfile);
-	while(read(FILE, $got, 1024) > 0) {
-		print TWRITE $got;
-		}
-	close(FILE);
-	shutdown(TWRITE, 1);
-	$error = <TWRITE>;
-	if ($error && $error !~ /^OK/) {
-		# Got back an error!
-		return &$main::remote_error_handler("Failed to transfer file : $error");
-		}
-	close(TWRITE);
-	return $rv->[0];
+my $rv = &remote_rpc_call($host, { 'action' => 'tcpwrite',
+				   'file' => $remotefile,
+				   'name' => $remotebase } );
+my $error;
+my $serv = ref($host) ? $host->{'host'} : $host;
+&open_socket($serv || "localhost", $rv->[1], TWRITE, \$error);
+return &$main::remote_error_handler("Failed to transfer file : $error")
+	if ($error);
+open(FILE, $localfile);
+while(read(FILE, $got, 1024) > 0) {
+	print TWRITE $got;
 	}
-else {
-	# Just pass file contents as parameters
-	open(FILE, $localfile);
-	while(read(FILE, $got, 1024) > 0) {
-		$data .= $got;
-		}
-	close(FILE);
-	return &remote_rpc_call($host, { 'action' => 'write',
-					 'data' => $data,
-					 'file' => $remotefile,
-					 'session' => $remote_session{$sn} });
+close(FILE);
+shutdown(TWRITE, 1);
+$error = <TWRITE>;
+if ($error && $error !~ /^OK/) {
+	# Got back an error!
+	return &$main::remote_error_handler("Failed to transfer file : $error");
 	}
+close(TWRITE);
+return $rv->[0];
 }
 
 =head2 remote_read(server, localfile, remotefile)
@@ -6567,36 +6551,23 @@ system, and remotefile is the file to fetch from the remote server.
 sub remote_read
 {
 my ($host, $localfile, $remotefile) = @_;
-my $sn = &remote_session_name($host);
-if (!$_[0]) {
-	# Copy data over TCP connection
-	my $rv = &remote_rpc_call($host, { 'action' => 'tcpread',
-					   'file' => $remotefile } );
-	if (!$rv->[0]) {
-		return &$main::remote_error_handler("Failed to transfer file : $rv->[1]");
-		}
-	my $error;
-	my $serv = ref($host) ? $host->{'host'} : $host;
-	&open_socket($serv || "localhost", $rv->[1], TREAD, \$error);
-	return &$main::remote_error_handler("Failed to transfer file : $error")
-		if ($error);
-	my $got;
-	open(FILE, ">$localfile");
-	while(read(TREAD, $got, 1024) > 0) {
-		print FILE $got;
-		}
-	close(FILE);
-	close(TREAD);
+my $rv = &remote_rpc_call($host, { 'action' => 'tcpread',
+				   'file' => $remotefile } );
+if (!$rv->[0]) {
+	return &$main::remote_error_handler("Failed to transfer file : $rv->[1]");
 	}
-else {
-	# Just get data as return value
-	my $d = &remote_rpc_call($host, { 'action' => 'read',
-				          'file' => $remotefile,
-				          'session' => $remote_session{$sn} });
-	open(FILE, ">$localfile");
-	print FILE $d;
-	close(FILE);
+my $error;
+my $serv = ref($host) ? $host->{'host'} : $host;
+&open_socket($serv || "localhost", $rv->[1], TREAD, \$error);
+return &$main::remote_error_handler("Failed to transfer file : $error")
+	if ($error);
+my $got;
+open(FILE, ">$localfile");
+while(read(TREAD, $got, 1024) > 0) {
+	print FILE $got;
 	}
+close(FILE);
+close(TREAD);
 }
 
 =head2 remote_finished
