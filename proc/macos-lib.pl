@@ -103,9 +103,15 @@ sub get_memory_info
 my @rv;
 
 # Get total memory
-my $out = &backquote_command("sysctl -a hw.physmem 2>/dev/null");
-if ($out =~ /:\s*(\d+)/) {
-	$rv[0] = $1 / 1024;
+my $out = &backquote_command("hostinfo 2>/dev/null");
+if ($out =~ /Primary\s+memory\s+available:\s+([0-9\.]+)\s+g/i) {
+	$rv[0] = $1 * 1024 * 1024;
+	}
+else {
+	my $out = &backquote_command("sysctl -a hw.physmem 2>/dev/null");
+	if ($out =~ /:\s*(\d+)/) {
+		$rv[0] = $1 / 1024;
+		}
 	}
 
 # Get memory usage
