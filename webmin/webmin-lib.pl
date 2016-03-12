@@ -2138,12 +2138,12 @@ $i = 0;
 my $found_copy = 0;
 my $copyline = "copy_extensions=copyall";
 foreach my $l (@$lref) {
-	if (/^\s*\#*\s*copy_extensions\s*=/) {
+	if ($l =~ /^\s*\#*\s*copy_extensions\s*=/) {
 		$l = $copyline;
 		$found_copy = 1;
 		last;
 		}
-	elsif (/^\s*\[\s*CA_default\s*\]/) {
+	elsif ($l =~ /^\s*\[\s*CA_default\s*\]/) {
 		$found_ca = $i;
 		}
 	$i++;
