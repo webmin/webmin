@@ -192,7 +192,7 @@ return ( 'debug', 'info', 'notice', 'warning',
 	 'err', 'crit', 'alert', 'emerg' );
 }
 
-# can_edit_log(&log)
+# can_edit_log(&log|file)
 # Returns 1 if some log can be viewed/edited, 0 if not
 sub can_edit_log
 {
