@@ -1803,11 +1803,14 @@ return &popup_window_button("map_chooser.cgi?mapname=$mapname", 1024, 600, 1,
 # and file paths.
 sub get_maps_types_files
 {
-    $_[0] =~ /^\s*([^:]+):(\/[^,\s]*),?(.*)/ || return ( );
-    (my $returntype, $returnvalue, my $recurse) = ( $1, $2, $3 );
-
-    return ( [ $returntype, $returnvalue ],
-	     &get_maps_types_files($recurse) );
+my ($v) = @_;
+my @rv;
+foreach my $w (split(/[, \t]+/, $v)) {
+	if ($w =~ /^([^:]+):(\/.*)$/) {
+		push(@rv, [ $1, $2 ]);
+		}
+	}
+return @rv;
 }
 
 # list_mysql_sources()

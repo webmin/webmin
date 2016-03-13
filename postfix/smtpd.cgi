@@ -86,7 +86,7 @@ if (&get_real_value("smtpd_sender_restrictions") eq "")
 else
 {
     &generate_map_edit("smtpd_sender_restrictions", $text{'map_click'}." ".
-	       &hlink($text{'help_map_format'}, "smtpd_sender_restrictions"));
+	       &hlink($text{'help_map_format'}, "access"));
 }
 
 &ui_print_footer("", $text{'index_return'});
