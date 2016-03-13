@@ -2251,6 +2251,8 @@ push(@rv, &get_maps_files("sender_canonical_maps"));
 push(@rv, &get_maps_files($virtual_maps));
 push(@rv, &get_maps_files("transport_maps"));
 push(@rv, &get_maps_files("relocated_maps"));
+push(@rv, &get_maps_files("relay_recipient_maps"));
+push(@rv, &get_maps_files("smtpd_sender_restrictions"));
 
 # Add other files in /etc/postfix
 local $cdir = &guess_config_dir();
