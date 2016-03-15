@@ -61,13 +61,14 @@ if (@ips && &foreign_installed("net")) {
 		foreach $a (&net::active_interfaces()) {
 			$onsystem{$a->{'address'}} = $a;
 			foreach $ip6 (@{$a->{'address6'}}) {
-				$onsystem{$ip6} = $a;
+				$onsystem{&canonicalize_ip6($ip6)} = $a;
 				}
 			}
 		}
 	if (%onsystem) {
 		foreach $ip (@ips) {
-			$onsystem{$ip} || &error(&text('bind_eonsystem', $ip));
+			$onsystem{&canonicalize_ip6($ip)} ||
+				&error(&text('bind_eonsystem', $ip));
 			}
 		}
 	}
