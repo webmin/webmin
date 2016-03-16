@@ -81,7 +81,8 @@ else {
 	foreach my $l (@logpaths) {
 		$l =~ s/^\s*//;
 		$l =~ s/\s*$//;
-		$l =~ /^\/\S+$/ || &error($text{'jail_elogpath'});
+		$l =~ /^\/\S+$/ || $l =~ /^\%\(/ ||
+			&error($text{'jail_elogpath'});
 		}
 
 	# Validate various counters
