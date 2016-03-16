@@ -67,21 +67,26 @@ while(index($line,"$boundary--") == -1) {
               # Read all lines until next boundary or form data end
               while(1) {
                   $line = <STDIN>;
+		  if (!defined($line)) {
+		    push @errors, "Unexpected end of input"; 
+		    last;
+		  }
                   # Inform progress tracker about our actions
                   $got += length($line);
        	          &$cbfunc($got, $ENV{'CONTENT_LENGTH'}, $file, $in{'id'});
                   # Some brainf###ing to deal with last CRLF
-                  if(index($line,"$boundary") != -1 || index($line,"$boundary--") != -1) {
+                  if(index($line,"$boundary") != -1 ||
+		     index($line,"$boundary--") != -1) {
                       chop($prevline);
                       chop($prevline);
                       if (!print OUTFILE $prevline) {
-                          push errors, "text{'error_writing_file'} $path/$file";
+                          push @errors, "text{'error_writing_file'} $path/$file";
                           last;
                       }
                       last;
                   } else {
                       if (!print OUTFILE $prevline) {
-                          push errors, "text{'error_writing_file'} $path/$file";
+                          push @errors, "text{'error_writing_file'} $path/$file";
                           last;
                       }
                       $prevline = $line;
@@ -93,7 +98,8 @@ while(index($line,"$boundary--") == -1) {
         }
     } else {
         # Just skip everything until next boundary or form data end
-        while(index($line,"$boundary") == -1 or index($line,"$boundary--") == -1) {
+        while(index($line, "$boundary") == -1 ||
+	      index($line, "$boundary--") == -1) {
             $line = <STDIN>;
         }        
     }
