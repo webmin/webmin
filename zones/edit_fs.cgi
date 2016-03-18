@@ -11,7 +11,7 @@ if (!$in{'new'}) {
 	($fs) = grep { $_->{'dir'} eq $in{'old'} } @{$zinfo->{'fs'}};
 	$fs || &error($text{'fs_egone'});
 	}
-$p = new Webmin::Page(&zone_title($in{'zone'}),
+$p = new WebminUI::Page(&zone_title($in{'zone'}),
 		 $in{'new'} ? $text{'fs_title1'} : $text{'fs_title2'}, "fs");
 $type = $in{'type'} || $fs->{'type'};
 $p->add_form(&get_fs_form(\%in, $zinfo, $fs, $type));

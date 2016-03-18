@@ -92,9 +92,9 @@ if ($in{'cfg'}) {
 		}
 	}
 
-$p = new Webmin::Page(undef, $text{'create_title'});
+$p = new WebminUI::Page(undef, $text{'create_title'});
 
-$d1 = new Webmin::DynamicHTML(\&execute_create, undef, $text{'create_adding'});
+$d1 = new WebminUI::DynamicHTML(\&execute_create, undef, $text{'create_adding'});
 $p->add_form($d1);
 sub execute_create
 {
@@ -104,7 +104,7 @@ $p->add_message_after($d1, $text{'create_done'});
 
 if (!$in{'address_def'}) {
 	# Set initial network address
-	$d2 = new Webmin::DynamicHTML(\&execute_address, undef, $text{'create_addingnet'});
+	$d2 = new WebminUI::DynamicHTML(\&execute_address, undef, $text{'create_addingnet'});
 	$p->add_form($d2);
 	  sub execute_address
 	  {
@@ -119,7 +119,7 @@ if (!$in{'address_def'}) {
 # Add or remove extra package directories
 # add for sparse root zone and remove for whole root zone
 if ($in{'inherit'} eq '0' ) {
-	$d3 = new Webmin::DynamicHTML(\&remove_pkgs, undef, $text{'create_removingpkgs'});
+	$d3 = new WebminUI::DynamicHTML(\&remove_pkgs, undef, $text{'create_removingpkgs'});
 		$p->add_form($d3);
 	sub remove_pkgs
 	{
@@ -130,7 +130,7 @@ if ($in{'inherit'} eq '0' ) {
 }
   else {
 	if (@pkgs) {
-		$d3 = new Webmin::DynamicHTML(\&execute_pkgs, undef, $text{'create_addingpkgs'});
+		$d3 = new WebminUI::DynamicHTML(\&execute_pkgs, undef, $text{'create_addingpkgs'});
 		$p->add_form($d3);
 		  sub execute_pkgs
 		  {
@@ -146,7 +146,7 @@ if ($in{'inherit'} eq '0' ) {
 
 #set the brand
 if ($in{'brand'}) {
-	$d4 = new Webmin::DynamicHTML(\&create_brand,undef, $text{'create_brandmsg'});
+	$d4 = new WebminUI::DynamicHTML(\&create_brand,undef, $text{'create_brandmsg'});
 	$p->add_form($d4);
 	
 	sub create_brand
@@ -158,14 +158,14 @@ if ($in{'brand'}) {
 
 if ($in{'install'}) {
 	# Install software
-	$d5 = new Webmin::DynamicText(\&execute_install);
+	$d5 = new WebminUI::DynamicText(\&execute_install);
 	$p->add_form($d5);
 	$d5->set_message($text{'create_installing'});
 	$d5->set_wait(1);
 	  sub execute_install
 	  {
 	  local $ok = &callback_zone_command($zinfo, "install",
-				\&Webmin::DynamicText::add_line, [ $d5 ]);
+				\&WebminUI::DynamicText::add_line, [ $d5 ]);
 	  if ($ok) {
 		$p->add_message_after($d5, $text{'create_done'});
 		}
@@ -194,7 +194,7 @@ else {
 
 if ($in{'install'} && $in{'webmin'}) {
 	# Create a Webmin setup script and run it
-	$d6 = new Webmin::DynamicText(\&execute_webmin);
+	$d6 = new WebminUI::DynamicText(\&execute_webmin);
 	$p->add_form($d6);
 	$d6->set_message($text{'create_webmining'});
 	$d6->set_wait(1);
@@ -208,7 +208,7 @@ if ($in{'install'} && $in{'webmin'}) {
 		}
 	else {
 		$ex = &run_in_zone_callback($zinfo, "/tmp/install-webmin",
-				\&Webmin::DynamicText::add_line, [ $d ]);
+				\&WebminUI::DynamicText::add_line, [ $d ]);
 		if (!$ex) {
 			$p->add_message($text{'create_done'});
 			&post_webmin_install($zinfo);

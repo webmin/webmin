@@ -11,7 +11,7 @@ if (!$in{'new'}) {
 	($attr) = grep { $_->{'name'} eq $in{'old'} } @{$zinfo->{'attr'}};
 	$attr || &error($text{'attr_egone'});
 	}
-$p = new Webmin::Page(&zone_title($in{'zone'}),
+$p = new WebminUI::Page(&zone_title($in{'zone'}),
                  $in{'new'} ? $text{'attr_title1'} : $text{'attr_title2'},
                  "attr");
 $p->add_form(&get_attr_form(\%in, $zinfo, $attr));

@@ -46,8 +46,8 @@ elsif ($in{'halt'}) {
 	}
 elsif ($in{'install'}) {
 	# Install system now
-	$p = new Webmin::Page(&zone_title($zinfo->{'name'}), $text{'install_title'});
-	$d = new Webmin::DynamicText(\&execute_install);
+	$p = new WebminUI::Page(&zone_title($zinfo->{'name'}), $text{'install_title'});
+	$d = new WebminUI::DynamicText(\&execute_install);
 	$p->add_form($d);
 	$d->set_message($text{'install_doing'});
 	$d->set_wait(1);
@@ -94,8 +94,8 @@ elsif ($in{'uninstall'}) {
 	}
 elsif ($in{'wupgrade'} || $in{'winstall'}) {
 	# Install Webmin now
-	$p = new Webmin::Page(&zone_title($in{'zone'}), $text{'webmin_title'});
-	$d = new Webmin::DynamicText(\&execute_webmin);
+	$p = new WebminUI::Page(&zone_title($in{'zone'}), $text{'webmin_title'});
+	$d = new WebminUI::DynamicText(\&execute_webmin);
 	$p->add_form($d);
 	$d->set_message($text{'create_webmining'});
 	$d->set_wait(1);
@@ -124,7 +124,7 @@ sub execute_install
 {
 my ($d) = @_;
 local $ok = &callback_zone_command($zinfo, "install",
-				   \&Webmin::DynamicText::add_line, [ $d ]);
+				   \&WebminUI::DynamicText::add_line, [ $d ]);
 if ($ok) {
 	$p->add_message($text{'create_done'});
 	$sysidcfg = &zone_sysidcfg_file($in{'zone'});
@@ -153,7 +153,7 @@ if ($err) {
 	}
 else {
 	$ex = &run_in_zone_callback($zinfo, "/tmp/install-webmin",
-			      \&Webmin::DynamicText::add_line, [ $d ]);
+			      \&WebminUI::DynamicText::add_line, [ $d ]);
 	if (!$ex) {
 		$p->add_message($text{'create_done'});
 		&post_webmin_install($zinfo);

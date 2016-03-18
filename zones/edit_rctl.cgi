@@ -11,7 +11,7 @@ if (!$in{'new'}) {
 	($rctl) = grep { $_->{'name'} eq $in{'old'} } @{$zinfo->{'rctl'}};
 	$rctl || &error($text{'rctl_egone'});
 	}
-$p = new Webmin::Page(&zone_title($in{'zone'}),
+$p = new WebminUI::Page(&zone_title($in{'zone'}),
 		 $in{'new'} ? $text{'rctl_title1'} : $text{'rctl_title2'},
 		 "rctl");
 $p->add_form(&get_rctl_form(\%in, $zinfo, $rctl));

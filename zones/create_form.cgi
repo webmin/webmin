@@ -5,7 +5,7 @@ require './zones-lib.pl';
 do 'forms-lib.pl';
 use Socket;
 &ReadParse();
-$p = new Webmin::Page(undef, $text{'create_title'}, "create");
+$p = new WebminUI::Page(undef, $text{'create_title'}, "create");
 $p->add_form(&get_create_form(\%in));
 $p->add_footer("index.cgi", $text{'index_return'});
 $p->print();

@@ -7,7 +7,7 @@ do 'forms-lib.pl';
 $zinfo = &get_zone($in{'zone'});
 $zinfo || &error($text{'edit_egone'});
 
-$p = new Webmin::Page(&zone_title($in{'zone'}),
+$p = new WebminUI::Page(&zone_title($in{'zone'}),
                  $in{'new'} ? $text{'net_title1'} : $text{'net_title2'},
                  "net");
 if (!$in{'new'}) {

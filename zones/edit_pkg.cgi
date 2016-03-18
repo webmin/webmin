@@ -13,7 +13,7 @@ if (!$in{'new'}) {
 		      @{$zinfo->{'inherit-pkg-dir'}};
 	$pkg || &error($text{'pkg_egone'});
 	}
-$p = new Webmin::Page(&zone_title($in{'zone'}),
+$p = new WebminUI::Page(&zone_title($in{'zone'}),
 		 $in{'new'} ? $text{'pkg_title1'} : $text{'pkg_title2'},
 		 "pkg");
 $p->add_form(&get_pkg_form(\%in, $zinfo, $pkg));
