@@ -26,7 +26,7 @@ $boundary = $1;
 &$cbfunc(0, $ENV{'CONTENT_LENGTH'}, undef, $in{'id'});
 
 #Read the data
-while(index($line,"$boundary--") == -1) {
+MAINLOOP: while(index($line,"$boundary--") == -1) {
     #reset vars on each loop
     $file = undef;
     $rest = undef;
@@ -69,7 +69,7 @@ while(index($line,"$boundary--") == -1) {
                   $line = <STDIN>;
 		  if (!defined($line)) {
 		    push @errors, "Unexpected end of input"; 
-		    last;
+		    last MAINLOOP;
 		  }
                   # Inform progress tracker about our actions
                   $got += length($line);
@@ -81,13 +81,13 @@ while(index($line,"$boundary--") == -1) {
                       chop($prevline);
                       if (!print OUTFILE $prevline) {
                           push @errors, "text{'error_writing_file'} $path/$file";
-                          last;
+			  last MAINLOOP;
                       }
                       last;
                   } else {
                       if (!print OUTFILE $prevline) {
                           push @errors, "text{'error_writing_file'} $path/$file";
-                          last;
+			  last MAINLOOP;
                       }
                       $prevline = $line;
                   }
