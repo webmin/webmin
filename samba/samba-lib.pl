@@ -597,7 +597,7 @@ while(<PASS>) {
 	chop;
 	s/#.*$//g;
 	local @b = split(/:/, $_);
-	next if (@b < 4);
+	next if (@b < 4 || $b[1] !~ /^\d+$/);
 	local $u = { 'name' => $b[0],  'uid' => $b[1],
 		     'pass1' => $b[2], 'pass2' => $b[3],
 		     'oldname' => $b[0] };
