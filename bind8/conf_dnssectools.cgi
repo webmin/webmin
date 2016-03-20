@@ -60,12 +60,14 @@ print &ui_table_hr();
 #ksklife; dt_ksklife
 $ksklife = find_value("ksklife", $conf);
 print &ui_table_row($text{'dt_conf_ksklife'},
-		ui_textbox("dt_ksklife", $ksklife, 50));
+		ui_textbox("dt_ksklife", $ksklife, 50)." ".
+		$text{'dnssec_secs'});
 
 #zsklife; dt_zsklife
 $zsklife = find_value("zsklife", $conf);
 print &ui_table_row($text{'dt_conf_zsklife'},
-		ui_textbox("dt_zsklife", $zsklife, 50));
+		ui_textbox("dt_zsklife", $zsklife, 50)." ".
+		$text{'dnssec_secs'});
 
 print &ui_table_hr();
 
