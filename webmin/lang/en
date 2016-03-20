@@ -1099,6 +1099,7 @@ twofactor_esession=Two-factor authentication cannot be used unless session-based
 letsencrypt_title=Let's Encrypt Certificate Request
 letsencrypt_err=Failed to request certificate
 letsencrypt_ecmds=Neither the Let's Encrypt client command <tt>letsencrypt-auto</tt> or the <tt>python</tt> command were found on your system
+letsencrypt_epythonmod=The Python module $1 needed by the built-in Let's Encrypt client is not installed
 letsencrypt_edroot=The Apache virtual host $1 has no document directory!
 letsencrypt_edom=Missing or invalid domain name
 letsencrypt_erenew=Missing or non-numeric renewal interval
