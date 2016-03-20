@@ -85,17 +85,35 @@ else {
 
 		# Do it
 		$msg = $in{'mode'} eq 'new' ? 'update_pkg2' : 'update_pkg';
-		foreach my $ps (@pkgs) {
-			($p, $s) = split(/\//, $ps);
-			next if ($donedep{$p});
-			print &text($msg, "<tt>$p</tt>"),"<br>\n";
-			print "<ul>\n";
-			@pgot = &package_install($p, $s);
-			foreach $g (@pgot) {
-				$donedep{$g}++;
+		if ($config{'update_multiple'}) {
+			# Update all packages at once
+			@pkgnames = ( );
+			foreach my $ps (@pkgs) {
+                                ($p, $s) = split(/\//, $ps);
+				push(@pkgnames, $p);
+				$pkgsystem ||= $s;
 				}
-			push(@got, @pgot);
+			print &text($msg, "<tt>".join(" ", @pkgnames)."</tt>"),
+			      "<br>\n";
+			print "<ul>\n";
+			@got = &package_install_multiple(\@pkgnames,
+							 $pkgsystem);
 			print "</ul><br>\n";
+			}
+		else {
+			# Do them one by one in a loop
+			foreach my $ps (@pkgs) {
+				($p, $s) = split(/\//, $ps);
+				next if ($donedep{$p});
+				print &text($msg, "<tt>$p</tt>"),"<br>\n";
+				print "<ul>\n";
+				@pgot = &package_install($p, $s);
+				foreach $g (@pgot) {
+					$donedep{$g}++;
+					}
+				push(@got, @pgot);
+				print "</ul><br>\n";
+				}
 			}
 		if (@got) {
 			print &text('update_ok', scalar(@got)),"<p>\n";

@@ -18,7 +18,7 @@ sub list_update_system_commands
 return ($yum_command);
 }
 
-# update_system_install([package], [&in])
+# update_system_install([packages], [&in])
 # Install some package with yum
 sub update_system_install
 {

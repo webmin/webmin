@@ -2,3 +2,5 @@
 First version of this module.
 ---- Changes since 1.500 ----
 Debian backport versions are no longer falsely suggested for upgrading, if the apt-show-versions command is installed.
+---- Changes since 1.790 ----
+When updating multiple packages, they are done in a single YUM or APT operation if possible.
