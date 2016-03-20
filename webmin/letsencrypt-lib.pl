@@ -12,9 +12,17 @@ $letsencrypt_chain_url = "https://letsencrypt.org/certs/lets-encrypt-x1-cross-si
 # Returns undef if all dependencies are installed, or an error message
 sub check_letsencrypt
 {
-&has_command($letsencrypt_cmd) ||
-    (&has_command("python") && &has_command("openssl")) ||
+if (&has_command($letsencrypt_cmd)) {
+	# Use built-in client
+	return undef;
+	}
+if (!&has_command("python") || !&has_command("openssl")) {
 	return $text{'letsencrypt_ecmds'};
+	}
+my $out = &backquote_command("python -c 'import argparse' 2>&1");
+if ($?) {
+	return &text('letsencrypt_epythonmod', 'argparse');
+	}
 return undef;
 }
 
