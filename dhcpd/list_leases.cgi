@@ -201,7 +201,8 @@ else {
 			push(@cols, $client ? "<tt>".&html_escape(
 					      $client->{'values'}->[0])."</tt>"
 					    : undef);
-			if ($config{'lease_tz'}) {
+			if ($config{'lease_tz'} ||
+			    $starts->{'values'}->[0] eq 'epoch') {
 				$s = &make_date($lease->{'stime'});
 				$e = &make_date($lease->{'etime'});
 				}
