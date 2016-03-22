@@ -57,6 +57,8 @@ $maketemp =~ s/\$/\\\$/g;
 system("cp tarballs/webmin-$ver.tar.gz $source_dir");
 open(SPEC, ">$spec_dir/webmin-$ver.spec");
 print SPEC <<EOF;
+%global __perl_provides %{nil}
+
 #%define BuildRoot /tmp/%{name}-%{version}
 %define __spec_install_post %{nil}
 
@@ -64,7 +66,7 @@ Summary: A web-based administration interface for Unix systems.
 Name: webmin
 Version: $ver
 Release: $rel
-Provides: %{name}-%{version}
+Provides: %{name}-%{version} perl(WebminCore)
 PreReq: /bin/sh /usr/bin/perl /bin/rm
 Requires: /bin/sh /usr/bin/perl /bin/rm perl(Net::SSLeay) openssl
 AutoReq: 0
