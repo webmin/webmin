@@ -149,6 +149,7 @@ dnssec_eperiod=Fehlende oder ung&#252;ltige Anzahl der Tage zwischen erneutem si
 dnssec_err=Fehlgeschlagen DNSSEC Schl&#252;ssel erneut zu signieren
 dnssec_header=Schl&#252;ssel 'erneut-signieren' Optionen
 dnssec_period=Periode zwischen erneut signieren?
+dnssec_secs=Sekunden
 dnssec_title=DNSSEC Schl&#252;ssel erneut signieren
 dnssectools_title=DNSSEC-Tools Automation
 drecs_enone=Keine ausgew&#228;hlt
