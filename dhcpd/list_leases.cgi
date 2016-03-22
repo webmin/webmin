@@ -239,11 +239,17 @@ else {
 
 sub lease_time
 {
-local @d = split(/\//, $_[0]->{'values'}->[1]);
-local @t = split(/:/, $_[0]->{'values'}->[2]);
-local $t;
-eval { $t = timegm($t[2], $t[1], $t[0], $d[2], $d[1]-1, $d[0]-1900) };
-return $@ ? undef : $t;
+local ($l) = @_;
+if ($l->{'values'}->[0] eq 'epoch') {
+	return $l->{'values'}->[1];
+	}
+else {
+	local @d = split(/\//, $l->{'values'}->[1]);
+	local @t = split(/:/, $l->{'values'}->[2]);
+	local $t;
+	eval { $t = timegm($t[2], $t[1], $t[0], $d[2], $d[1]-1, $d[0]-1900) };
+	return $@ ? undef : $t;
+	}
 }
 
 sub ip_compare
