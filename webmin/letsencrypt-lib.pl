@@ -1,8 +1,12 @@
 # Functions for cert creation with Let's Encrypt
 
-$letsencrypt_cmd = $config{'letsencrypt_cmd'} ||
-		   &has_command("letsencrypt-auto") ||
-		   &has_command("letsencrypt");
+if ($config{'letsencrypt_cmd'}) {
+	$letsencrypt_cmd = &has_command($config{'letsencrypt_cmd'});
+	}
+else {
+	$letsencrypt_cmd = &has_command("letsencrypt-auto") ||
+			   &has_command("letsencrypt");
+	}
 
 $account_key = "$module_config_directory/letsencrypt.pem";
 
