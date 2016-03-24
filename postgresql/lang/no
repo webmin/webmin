@@ -544,6 +544,7 @@ user_sync_modify=Oppdater en PostgreSQL bruker n&#229;r motsvarende Unix bruker 
 user_syncwhen=N&#229;r skal det synkroniseres
 user_title=PostgreSQL brukere
 user_until=Gyldig til
+user_vwarning=ADVARSEL: Denne PostgreSQL brukeren er administrasjonsbruker for Virtualmin domene $1. Dersom du endrer noe her kan det for&#229;rsake feil i Virtualmin.
 view_adv=Avansert s&#248;k
 view_all=Valg alle
 view_auto=Automatisk

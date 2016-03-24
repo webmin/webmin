@@ -280,6 +280,7 @@ edit_err=Kunne ikke lagre oppf&#248;ring
 edit_eserv=Du oppga ikke noen vekjente tjenester
 edit_eserv2='$1' er ikke et gyldig tjenestenavn
 edit_espfa='$1' er ikke en gyldig vert &#229; tillate sending fra
+edit_espfa2='$1' m&#229; v&#230;re etvertsnavn, ikke en IP-adresse
 edit_espfexp='$1' er ikke et gyldig oppf&#248;ringsnavn for en avvisningsmelding
 edit_espfinclude='$' er ikke et gyldig ekstra domene som e-post kan sendes fra
 edit_espfip='$1' er ikke en gyldig IP adresse eller IP/prefiks &#229; tillate sending fra

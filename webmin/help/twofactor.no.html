@@ -1,0 +1,26 @@
+<header>To-faktor autentisering</header>
+
+To-faktor autentisering kan brukes til å legge til et ekstra lag med sikkerhet
+til en Webmin konto, i tillegg til ordinært brukernavn og passord. Når den er aktivert,
+må en bruker angi et ekstra godkjenningstoken som typisk
+kommer fra en smarttelefon-app, maskinvare OTP generator eller SMS. <p>
+
+Denne siden lar deg velge en godkjenningsleverandør for Webmin brukere
+på systemet. Når aktivert, kan hver bruker deretter melde seg på to-faktor
+i <b> Webmin Brukere </ b> modulen. De tilgjengelige to-faktor-leverandører er :
+
+<dl>
+
+<dt><b>Authy</b>
+<dd>Dette er en kommersiell tjeneste som gir en smarttelefon-app og nettside
+     for å håndtere to-faktor brukere. Hver bruker må opprette en konto på Authy s
+     nettside og koble det til sin smarttelefon. <p>
+
+<dt><b>Google Authenticator</b>
+<dd>Dette er en smarttelefon-app som implementerer standarden TOPT protokollen. Hver
+     Brukeren må skanne en QR-kode ved hjelp av appen for å koble sine tokens med
+     Webmin serveren.<p>
+
+</dl>
+
+<footer>

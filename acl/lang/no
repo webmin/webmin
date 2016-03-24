@@ -100,6 +100,7 @@ cpass_notre=Matcher et
 cpass_old=Gamle passord kan ikke brukes p&#229; nytt
 cpass_re=Stemmer ikke med et p&#229;krevd m&#248;nster
 cpass_spellcmd=Ingen av kommandoene $1 eller $2, som er n&#248;dvendige for &#229; sjekke ordiliste-ord, er installert
+delete_eanonuser=Denne brukeren brukes til anonym modul tilgang
 delete_ecannot=Du har ikke rettigheter til &#229; slette brukere
 delete_err=Kunne ikke slette bruker
 delete_eself=Du kan ikke slette deg selv
