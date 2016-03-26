@@ -1093,6 +1093,22 @@ foreach (@$lref) {
 		       'line' => $lnum });
 		$sect->{'eline'} = $lnum;
 		}
+	elsif (/^\s*\!include\s+(\S+)/) {
+		# Including sections from a file
+		foreach my $file (glob($1)) {
+			push(@rv, &parse_mysql_config($file));
+			}
+		}
+	elsif (/^\s*\!includedir\s+(\S+)/) {
+		# Including sections from files in a directory
+		my $dir = $1;
+		opendir(DIR, $dir);
+		my @files = map { $dir."/".$_ } readdir(DIR);
+		closedir(DIR);
+		foreach my $file (@files) {
+			push(@rv, &parse_mysql_config($file));
+			}
+		}
 	$lnum++;
 	}
 return @rv;
@@ -1120,7 +1136,9 @@ sub save_directive
 {
 local ($conf, $sect, $name, $values) = @_;
 local @old = &find($name, $sect->{'members'});
-local $lref = &read_file_lines($config{'my_cnf'});
+local $file = @old ? $old[0]->{'file'} :
+	      $sect ? $sect->{'file'} : $config{'my_cnf'};
+local $lref = &read_file_lines($file);
 
 for(my $i=0; $i<@old || $i<@$values; $i++) {
 	local $old = $old[$i];
@@ -1134,7 +1152,7 @@ for(my $i=0; $i<@old || $i<@$values; $i++) {
 	elsif (!$old && defined($values->[$i])) {
 		# Adding
 		splice(@$lref, $sect->{'eline'}+1, 0, $line);
-		&renumber($conf, $sect->{'eline'}+1, 1);
+		&renumber($conf, $sect->{'eline'}+1, 1, $file);
 		push(@{$sect->{'members'}},
 			{ 'name' => $name,
 			  'value' => $values->[$i],
@@ -1143,7 +1161,7 @@ for(my $i=0; $i<@old || $i<@$values; $i++) {
 	elsif ($old && !defined($values->[$i])) {
 		# Deleting
 		splice(@$lref, $old->{'line'}, 1);
-		&renumber($conf, $old->{'line'}, -1);
+		&renumber($conf, $old->{'line'}, -1, $file);
 		@{$sect->{'members'}} = grep { $_ ne $old }
 					     @{$sect->{'members'}};
 		}
@@ -1152,8 +1170,9 @@ for(my $i=0; $i<@old || $i<@$values; $i++) {
 
 sub renumber
 {
-local ($conf, $line, $offset) = @_;
+local ($conf, $line, $offset, $file) = @_;
 foreach my $sect (@$conf) {
+	next if ($sect->{'file'} ne $file);
 	$sect->{'line'} += $offset if ($sect->{'line'} >= $line);
 	$sect->{'eline'} += $offset if ($sect->{'eline'} >= $line);
 	foreach my $m (@{$sect->{'members'}}) {
