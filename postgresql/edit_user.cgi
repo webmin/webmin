@@ -10,8 +10,9 @@ if ($in{'new'}) {
 	}
 else {
 	&ui_print_header(undef, $text{'user_edit'}, "");
+	($pg_table, $pg_cols) = &get_pg_shadow_table();
 	$s = &execute_sql_safe($config{'basedb'},
-		"select $pg_shadow_cols from pg_shadow ".
+		"select $pg_cols from $pg_table ".
 		"where usename = '$in{'user'}'");
 	@user = @{$s->{'data'}->[0]};
 	}

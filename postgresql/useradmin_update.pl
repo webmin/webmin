@@ -23,8 +23,9 @@ if ($config{'sync_create'}) {
 sub useradmin_delete_user
 {
 if ($config{'sync_delete'}) {
+	my ($pg_table, $pg_cols) = &get_pg_shadow_table();
 	local $s = &execute_sql($config{'basedb'},
-		"select $pg_shadow_cols from pg_shadow where usename = '$_[0]->{'user'}'");
+		"select $pg_cols from $pg_table where usename = '$_[0]->{'user'}'");
 	return if (!@{$s->{'data'}});
 	&execute_sql_logged($config{'basedb'}, "drop user \"$_[0]->{'user'}\"");
 	}
@@ -35,8 +36,9 @@ if ($config{'sync_delete'}) {
 sub useradmin_modify_user
 {
 if ($config{'sync_modify'}) {
+	my ($pg_table, $pg_cols) = &get_pg_shadow_table();
 	local $s = &execute_sql($config{'basedb'},
-		"select $pg_shadow_cols from pg_shadow where usename = '$_[0]->{'olduser'}'");
+		"select $pg_cols from $pg_table where usename = '$_[0]->{'olduser'}'");
 	return if (!@{$s->{'data'}});
 	local $version = &get_postgresql_version();
 	if ($_[0]->{'user'} ne $_[0]->{'olduser'}) {
