@@ -5,7 +5,7 @@ do 'mysql-lib.pl';
 # Returns files and directories that can be backed up
 sub backup_config_files
 {
-return ( $config{'my_cnf'} );
+return &get_all_mysqld_files();
 }
 
 # pre_backup(&files)

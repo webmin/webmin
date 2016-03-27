@@ -7,7 +7,9 @@ $access{'perms'} == 1 || &error($text{'cnf_ecannot'});
 &ReadParse();
 
 # Get the mysqld section
-&lock_file($config{'my_cnf'});
+foreach my $l (&get_all_mysqld_files()) {
+	&lock_file($l);
+	}
 $conf = &get_mysql_config();
 ($mysqld) = grep { $_->{'name'} eq 'mysqld' } @$conf;
 $mysqld || &error($text{'cnf_emysqld'});
@@ -91,8 +93,10 @@ foreach $w (@mysql_number_variables, @mysql_byte_variables) {
 	}
 
 # Write out file
-&flush_file_lines($config{'my_cnf'});
-&unlock_file($config{'my_cnf'});
+foreach my $l (&get_all_mysqld_files()) {
+	&flush_file_lines($l);
+	&unlock_file($l);
+	}
 if ($in{'restart'} && &is_mysql_running() > 0) {
 	&stop_mysql();
 	$err = &start_mysql();

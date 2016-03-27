@@ -1479,5 +1479,13 @@ if ($job) {
 	}
 }
 
+# get_all_mysqld_files()
+# Returns all config files used by MySQLd
+sub get_all_mysqld_files
+{
+my $conf = &get_mysql_config();
+return &unique(map { $_->{'file'} } @$conf);
+}
+
 1;
 
