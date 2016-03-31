@@ -48,7 +48,7 @@ else {
 		if ($match) {
 			# Get document root
 			$webroot = &apache::find_directive(
-				"DocumentRoot", $virt->{'members'});
+				"DocumentRoot", $virt->{'members'}, 1);
 			$webroot || &error(&text('letsencrypt_edroot', $sn));
 			last;
 			}
