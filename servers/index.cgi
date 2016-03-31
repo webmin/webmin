@@ -16,12 +16,14 @@ if ($in{'search'}) {
 	}
 
 # Show search form
+$form = 0;
 if (@servers > $config{'max_servers'} || $in{'search'}) {
 	print &ui_form_start("index.cgi");
 	print "<b>$text{'index_search'}</b> ",
 	      &ui_textbox("search", $in{'search'}, 40)," ",
 	      &ui_submit($text{'index_ok'}),"<p>\n";
 	print &ui_form_end();
+	$form++;
 	}
 
 # Work out links
@@ -29,8 +31,8 @@ my @linksrow;
 if ($access{'edit'}) {
 	if (@servers) {
 		print &ui_form_start("delete_servs.cgi");
-		push(@linksrow, &select_all_link("d", 1),
-				&select_invert_link("d", 1));
+		push(@linksrow, &select_all_link("d", $form),
+				&select_invert_link("d", $form));
 		}
 	if ($access{'add'}) {
 		push(@linksrow, &ui_link("edit_serv.cgi?new=1", $text{'index_add'}) );
