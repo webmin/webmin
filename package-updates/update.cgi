@@ -85,7 +85,7 @@ else {
 
 		# Do it
 		$msg = $in{'mode'} eq 'new' ? 'update_pkg2' : 'update_pkg';
-		if ($config{'update_multiple'}) {
+		if ($config{'update_multiple'} && @pkgs > 1) {
 			# Update all packages at once
 			@pkgnames = ( );
 			foreach my $ps (@pkgs) {
