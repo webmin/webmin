@@ -64,7 +64,7 @@ while(<CMD>) {
 	if (/^\[(update|install|deps):\s+(\S+)\s+/) {
 		push(@rv, $2);
 		}
-	elsif (/^(Installed|Dependency Installed|Updated|Dependency Updated|Updating):\s*(.*)/) {
+	elsif (/^(Installed|Dependency Installed|Updated|Dependency Updated|Updating|Upgrading):\s*(.*)/) {
 		# Line like :
 		# Updated:
 		#   wbt-virtual-server-theme.x86
@@ -86,7 +86,7 @@ while(<CMD>) {
 				}
 			}
 		}
-	elsif (/^\s+(Updating|Installing)\s+:\s+(\S+)/) {
+	elsif (/^\s+(Updating|Installing|Upgrading)\s+:\s+(\S+)/) {
 		# Line like :
 		#   Updating       : wbt-virtual-server-theme       1/2 
 		# or
