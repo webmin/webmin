@@ -244,15 +244,15 @@ if ($in{'bond'} || &iface_type($b->{'name'}) eq 'Bonded') {
 
 	# Select mii Monitoring Interval
 	print &ui_table_row($text{'bonding_miimon'},
-		&ui_textbox("miimon", $b->{'miimon'}, 5)." ms");
+		&ui_textbox("miimon", $b->{'miimon'} ? $b->{'miimon'} : "100", 5)." ms");
 
 	# Select updelay
 	print &ui_table_row($text{'bonding_updelay'},
-		&ui_textbox("updelay", $b->{'updelay'}, 5)." ms");
+		&ui_textbox("updelay", $b->{'updelay'} ? $b->{'updelay'} : "200", 5)." ms");
 
 	# Select downdelay
 	print &ui_table_row($text{'bonding_downdelay'},
-		&ui_textbox("downdelay", $b->{'downdelay'}, 5)." ms");
+		&ui_textbox("downdelay", $b->{'downdelay'} ? $b->{'downdelay'} : "200", 5)." ms");
 	}
 
 # Special Parameter for vlan tagging
