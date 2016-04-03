@@ -29,6 +29,10 @@ else {
 	@pkgs || &error($text{'update_enone'});
 	&ui_print_unbuffered_header(undef, $text{'update_title'}, "");
 
+	# Save this CGI from being killed by a webmin or apache upgrade
+	$SIG{'TERM'} = 'IGNORE';
+	$SIG{'PIPE'} = 'IGNORE';
+
 	# Work out what will be done, if possible
 	@ops = ( );
 	if (!$in{'confirm'}) {
