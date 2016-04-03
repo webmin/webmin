@@ -69,9 +69,10 @@ if ($letsencrypt_cmd) {
 		return (0, "<pre>".&html_escape($out || "No output from $letsencrypt_cmd")."</pre>");
 		}
 	my ($full, $cert, $key, $chain);
-	if ($out =~ /(\/.*\.pem)/) {
+	if ($out =~ /(\/[a-zA-Z0-9\.\_\-\/\n]*\.pem)/) {
 		# Output contained the full path
 		$full = $1;
+		$full =~ s/\s//g;
 		}
 	else {
 		&error("Output did not contain a PEM path!");
