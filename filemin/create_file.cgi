@@ -9,7 +9,7 @@ if(!$in{'name'}) {
     &redirect("index.cgi?path=$path");
 }
 
-if (-e "$cwd/$in{'name'}") {
+if (-f "$cwd/$in{'name'}") {
     print_errors("$in{'name'} $text{'error_exists'}");
 } else {
     if (open my $fh, "> $cwd/$in{'name'}") {
