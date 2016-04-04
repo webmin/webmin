@@ -9,7 +9,7 @@ if(!$in{'name'}) {
     &redirect("index.cgi?path=$path");
 }
 
-if (-e "$cwd/$in{'name'}") {
+if (-d "$cwd/$in{'name'}") {
     print_errors("$in{'name'} $text{'error_exists'}");
 } else {
     if( mkdir ("$cwd/$in{'name'}", oct(755)) ) {
