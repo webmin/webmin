@@ -10,7 +10,7 @@ else {
 
 $account_key = "$module_config_directory/letsencrypt.pem";
 
-$letsencrypt_chain_url = "https://letsencrypt.org/certs/lets-encrypt-x1-cross-signed.pem";
+$letsencrypt_chain_url = "https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem";
 
 # check_letsencrypt()
 # Returns undef if all dependencies are installed, or an error message
