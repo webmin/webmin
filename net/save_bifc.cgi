@@ -274,6 +274,9 @@ else {
 			$mode = $in{'bondmode'};
 			$b->{'mode'} = $mode;
 			}
+		if ($in{'primary'} ne ''){
+			$b->{'primary'} = $in{'primary'};
+			}
 		if ($in{'miimon'} ne ''){
 			$b->{'miimon'} = $in{'miimon'};
 			}

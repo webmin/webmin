@@ -60,8 +60,9 @@ foreach $iface (@ifaces) {
 				$cfg->{'miimon'} = $options{'miimon'};
 				$cfg->{'downdelay'} = $options{'downdelay'};
 				$cfg->{'updelay'} = $options{'updelay'};
+				$cfg->{'primary'} = $options{'primary'};
 				}
-			elsif($param =~ /^bond[_\-](mode|miimon|downdelay|updelay)$/) {
+			elsif($param =~ /^bond[_\-](mode|miimon|downdelay|updelay|primary)$/) {
 				$cfg->{$1} = $value;
 				}
 			elsif($param eq 'slaves') { 
@@ -214,9 +215,10 @@ if ($cfg->{'bridge'}) {
 # Set bonding parameters
 if(($cfg->{'bond'} == 1) && ($gconfig{'os_version'} >= 5)) {
 	push(@options, [&bonding_option('mode').' '.$cfg->{'mode'}]);
-	push(@options, [&bonding_option('miimon').' '.$cfg->{'miimon'}]);
-	push(@options, [&bonding_option('updelay').' '.$cfg->{'updelay'}]);
-	push(@options, [&bonding_option('downdelay').' '.$cfg->{'downdelay'}]);
+	push(@options, [&bonding_option('miimon').' '.$cfg->{'miimon'}]) if ($cfg->{'miimon'});
+	push(@options, [&bonding_option('updelay').' '.$cfg->{'updelay'}]) if ($cfg->{'updelay'});
+	push(@options, [&bonding_option('downdelay').' '.$cfg->{'downdelay'}]) if ($cfg->{'downdelay'});
+	push(@options, [&bonding_option('primary').' '.$cfg->{'primary'}]) if ($cfg->{'primary'});
 	push(@options, ['slaves '.$cfg->{'partner'}]);
 	}
 elsif ($cfg->{'bond'} == 1) {

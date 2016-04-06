@@ -116,7 +116,10 @@ bonding_create=Create Bonding Interface
 bonding_teamparts=Teaming Partners
 bonding_teampartsdesc=Seperate partners with whitespaces e.g. "eth2 eth4"
 bonding_teammode=Teaming Mode
+bonding_primary=Primary Interface
+bonding_primarydesc=Only applicable with activebackup, balance-tlb or balance-alb teaming modes
 bonding_miimon=Mii-Monitoring Interval
+bonding_miimondesc=(Leave blank to disable link monitoring)
 bonding_updelay=Updelay
 bonding_downdelay=Downdelay
 

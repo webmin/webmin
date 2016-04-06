@@ -242,9 +242,13 @@ if ($in{'bond'} || &iface_type($b->{'name'}) eq 'Bonded') {
 		&ui_select("bondmode", int($b->{'mode'}),
 			   [ map { [ $_, $mode[$_] ] } (0 .. $#mode) ]));
 
+	# Select bonding primary interface
+	print &ui_table_row($text{'bonding_primary'},
+		&ui_textbox("primary", $b->{'primary'}, 5)." ".$text{'bonding_primarydesc'});
+	
 	# Select mii Monitoring Interval
 	print &ui_table_row($text{'bonding_miimon'},
-		&ui_textbox("miimon", $b->{'miimon'} ? $b->{'miimon'} : "100", 5)." ms");
+		&ui_textbox("miimon", $b->{'miimon'} ? $b->{'miimon'} : "100", 5)." ms ".$text{'bonding_miimondesc'});
 
 	# Select updelay
 	print &ui_table_row($text{'bonding_updelay'},
