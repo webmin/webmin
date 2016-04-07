@@ -1629,7 +1629,8 @@ sub ui_config_link
 {
 return &theme_ui_config_link(@_) if (defined(&theme_ui_config_link));
 my ($text, $subs) = @_;
-my @subs = map { $_ || "../config.cgi?$module_name" }
+my $m = &get_module_name();
+my @subs = map { $_ || "../config.cgi?$m" }
 		  ($subs ? @$subs : ( undef ));
 return "<p>".&text($text, @subs)."<p>\n";
 }
