@@ -85,6 +85,9 @@ if ($letsencrypt_cmd) {
 	-r $key || return (0, &text('letsencrypt_ekey', $key));
 	$chain = $full."/chain.pem";
 	$chain = undef if (!-r $chain);
+	&set_ownership_permissions(undef, undef, 0600, $cert);
+	&set_ownership_permissions(undef, undef, 0600, $key);
+	&set_ownership_permissions(undef, undef, 0600, $chain);
 	return (1, $cert, $key, $chain);
 	}
 else {
@@ -155,6 +158,9 @@ else {
 	&copy_source_dest($cert, $certfinal);
 	&copy_source_dest($key, $keyfinal);
 	&copy_source_dest($chain, $chainfinal);
+	&set_ownership_permissions(undef, undef, 0600, $certfinal);
+	&set_ownership_permissions(undef, undef, 0600, $keyfinal);
+	&set_ownership_permissions(undef, undef, 0600, $chainfinal);
 	&unlink_file($cert);
 	&unlink_file($key);
 	&unlink_file($chain);
