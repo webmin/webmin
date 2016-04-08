@@ -10264,12 +10264,15 @@ foreach my $m (&get_available_module_infos()) {
 	my $dir = &module_root_directory($m->{'dir'});
 	my $mfile = "$dir/webmin_menu.pl";
 	next if (!-r $mfile);
-	&foreign_require($m->{'dir'}, "webmin_menu.pl");
-	foreach my $i (&foreign_call($m->{'dir'}, "list_webmin_menu",
-				     $data, $in)) {
-		$i->{'module'} = $m->{'dir'};
-		push(@rv, $i);
-		}
+	eval {
+		local $main::error_must_die = 1;
+		&foreign_require($m->{'dir'}, "webmin_menu.pl");
+		foreach my $i (&foreign_call($m->{'dir'}, "list_webmin_menu",
+					     $data, $in)) {
+			$i->{'module'} = $m->{'dir'};
+			push(@rv, $i);
+			}
+		};
 	}
 return sort { ($b->{'priority'} || 0) <=> ($a->{'priority'} || 0) } @rv;
 }
