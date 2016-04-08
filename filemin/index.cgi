@@ -4,7 +4,6 @@
 #$unsafe_index_cgi = 1;
 require './filemin-lib.pl';
 use lib './lib';
-use File::MimeInfo;
 #use File::Basename;
 
 &ReadParse();
