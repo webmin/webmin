@@ -16,7 +16,7 @@ if ($in{'search'}) {
 	}
 
 # Show search form
-$form = 0;
+my $form = 0;
 if (@servers > $config{'max_servers'} || $in{'search'}) {
 	print &ui_form_start("index.cgi");
 	print "<b>$text{'index_search'}</b> ",
