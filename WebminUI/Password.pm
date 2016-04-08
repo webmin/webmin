@@ -1,18 +1,18 @@
-package Webmin::Password;
-@ISA = ( "Webmin::Textbox" );
-use Webmin::Textbox;
+package WebminUI::Password;
+@ISA = ( "WebminUI::Textbox" );
+use WebminUI::Textbox;
 use WebminCore;
 
-=head2 new Webmin::Password(name, value, [size])
+=head2 new WebminUI::Password(name, value, [size])
 Create a new text input field, for a password
 =cut
 sub new
 {
-if (defined(&Webmin::Theme::Password::new)) {
-	return new Webmin::Theme::Password(@_[1..$#_]);
+if (defined(&WebminUI::Theme::Password::new)) {
+	return new WebminUI::Theme::Password(@_[1..$#_]);
 	}
 my ($self, $name, $value, $size) = @_;
-$self = new Webmin::Textbox($name, $value, $size);
+$self = new WebminUI::Textbox($name, $value, $size);
 bless($self);
 return $self;
 }

@@ -1,16 +1,16 @@
-package Webmin::Date;
-use Webmin::Input;
+package WebminUI::Date;
+use WebminUI::Input;
 use Time::Local;
 use WebminCore;
-@ISA = ( "Webmin::Input" );
+@ISA = ( "WebminUI::Input" );
 
-=head2 new Webmin::Date(name, time, [disabled])
+=head2 new WebminUI::Date(name, time, [disabled])
 Create a new field for selecting a date
 =cut
 sub new
 {
-if (defined(&Webmin::Theme::Date::new)) {
-        return new Webmin::Theme::Date(@_[1..$#_]);
+if (defined(&WebminUI::Theme::Date::new)) {
+        return new WebminUI::Theme::Date(@_[1..$#_]);
         }
 my ($self, $name, $value, $disabled) = @_;
 bless($self = { });

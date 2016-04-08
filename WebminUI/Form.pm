@@ -1,13 +1,13 @@
-package Webmin::Form;
+package WebminUI::Form;
 use WebminCore;
 
-=head2 new Webmin::Form(cgi, [method])
+=head2 new WebminUI::Form(cgi, [method])
 Creates a new form, which submits to the given CGI
 =cut
 sub new
 {
-if (defined(&Webmin::Theme::Form::new)) {
-        return new Webmin::Theme::Form(@_[1..$#_]);
+if (defined(&WebminUI::Theme::Form::new)) {
+        return new WebminUI::Theme::Form(@_[1..$#_]);
         }
 my ($self, $program, $method) = @_;
 $self = { 'method' => 'get',
@@ -102,7 +102,7 @@ return "<form action='$self->{'program'}' ".
 }
 
 =head2 add_section(section)
-Adds a Webmin::Section object to this form
+Adds a WebminUI::Section object to this form
 =cut
 sub add_section
 {
@@ -120,7 +120,7 @@ return $self->{'sections'}->[$idx];
 }
 
 =head2 add_button(button, [beside, ...])
-Adds a Webmin::Submit object to this form, for display at the bottom
+Adds a WebminUI::Submit object to this form, for display at the bottom
 =cut
 sub add_button
 {
@@ -312,7 +312,7 @@ foreach my $i ($self->list_inputs()) {
 return @dis;
 }
 
-=head2 set_page(Webmin::Page)
+=head2 set_page(WebminUI::Page)
 Called when this form is added to a page
 =cut
 sub set_page

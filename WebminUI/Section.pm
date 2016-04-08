@@ -1,14 +1,14 @@
-package Webmin::Section;
+package WebminUI::Section;
 use WebminCore;
 
-=head2 new Webmin::Section(header, [columns], [title], [width])
+=head2 new WebminUI::Section(header, [columns], [title], [width])
 Create a new form section, which has a header and contains some inputs
 =cut
 sub new
 {
-if (defined(&Webmin::Theme::Section::new) &&
-    caller() !~ /Webmin::Theme::Section/) {
-        return new Webmin::Theme::Section(@_[1..$#_]);
+if (defined(&WebminUI::Theme::Section::new) &&
+    caller() !~ /WebminUI::Theme::Section/) {
+        return new WebminUI::Theme::Section(@_[1..$#_]);
         }
 my ($self, $header, $columns, $title, $width) = @_;
 $self = { 'columns' => 4 };
@@ -52,7 +52,7 @@ return $rv;
 }
 
 =head2 add_input(label, input, [columns])
-Adds some Webmin::Input object to this form section
+Adds some WebminUI::Input object to this form section
 =cut
 sub add_input
 {
@@ -140,7 +140,7 @@ return undef;
 }
 
 =head2 set_form(form)
-Called by the Webmin::Form object when this section is added to it
+Called by the WebminUI::Form object when this section is added to it
 =cut
 sub set_form
 {
@@ -165,7 +165,7 @@ sub is_input
 {
 my ($object) = @_;
 return ref($object) && ref($object) =~ /::/ &&
-       $object->isa("Webmin::Input");
+       $object->isa("WebminUI::Input");
 }
 
 1;

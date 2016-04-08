@@ -1,15 +1,15 @@
-package Webmin::Radios;
-use Webmin::Input;
+package WebminUI::Radios;
+use WebminUI::Input;
 use WebminCore;
-@ISA = ( "Webmin::Input" );
+@ISA = ( "WebminUI::Input" );
 
-=head2 new Webmin::Radios(name, value, &options, [disabled])
+=head2 new WebminUI::Radios(name, value, &options, [disabled])
 Create a list of radio buttons, of which one may be selected
 =cut
 sub new
 {
-if (defined(&Webmin::Theme::Radios::new)) {
-        return new Webmin::Theme::Radios(@_[1..$#_]);
+if (defined(&WebminUI::Theme::Radios::new)) {
+        return new WebminUI::Theme::Radios(@_[1..$#_]);
         }
 my ($self, $name, $value, $options, $disabled) = @_;
 $self = { };

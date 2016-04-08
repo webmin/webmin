@@ -1,7 +1,7 @@
-package Webmin::DynamicHTML;
+package WebminUI::DynamicHTML;
 use WebminCore;
 
-=head2 new Webmin::DynamicHTML(&function, &args, [before])
+=head2 new WebminUI::DynamicHTML(&function, &args, [before])
 When the page is being rendered, executes the given function and prints any
 text that it returns.
 =cut
@@ -63,7 +63,7 @@ sub needs_unbuffered
 return 1;
 }
 
-=head2 set_page(Webmin::Page)
+=head2 set_page(WebminUI::Page)
 Called when this dynamic HTML element is added to a page
 =cut
 sub set_page

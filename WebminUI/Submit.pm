@@ -1,16 +1,16 @@
-package Webmin::Submit;
-use Webmin::Input;
+package WebminUI::Submit;
+use WebminUI::Input;
 use WebminCore;
-@ISA = ( "Webmin::Input" );
+@ISA = ( "WebminUI::Input" );
 
-=head2 new Webmin::Submit(label, [name], [disabled])
+=head2 new WebminUI::Submit(label, [name], [disabled])
 Create a form submit button
 =cut
 sub new
 {
-if (defined(&Webmin::Theme::Submit::new) &&
-    caller() !~ /Webmin::Theme::Submit/) {
-        return new Webmin::Theme::Submit(@_[1..$#_]);
+if (defined(&WebminUI::Theme::Submit::new) &&
+    caller() !~ /WebminUI::Theme::Submit/) {
+        return new WebminUI::Theme::Submit(@_[1..$#_]);
         }
 my ($self, $value, $name, $disabled) = @_;
 $self = { };

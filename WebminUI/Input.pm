@@ -1,4 +1,4 @@
-package Webmin::Input;
+package WebminUI::Input;
 use WebminCore;
 
 sub set_form

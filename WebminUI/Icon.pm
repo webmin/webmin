@@ -1,7 +1,7 @@
-package Webmin::Icon;
+package WebminUI::Icon;
 use WebminCore;
 
-=head2 Webmin::Icon(type, [message])
+=head2 WebminUI::Icon(type, [message])
 This object generates an icon indicating some status. Possible types are :
 ok - OK
 critial - A serious problem
@@ -11,8 +11,8 @@ Can be used inside tables and property lists
 =cut
 sub new
 {
-if (defined(&Webmin::Theme::Icon::new) && caller() !~ /Webmin::Theme::Icon/) {
-        return new Webmin::Theme::Icon(@_[1..$#_]);
+if (defined(&WebminUI::Theme::Icon::new) && caller() !~ /WebminUI::Theme::Icon/) {
+        return new WebminUI::Theme::Icon(@_[1..$#_]);
         }
 my ($self, $type, $message) = @_;
 $self = { };

@@ -1,19 +1,19 @@
-package Webmin::Multiline;
-use Webmin::Textarea;
+package WebminUI::Multiline;
+use WebminUI::Textarea;
 use WebminCore;
-@ISA = ( "Webmin::Textarea" );
+@ISA = ( "WebminUI::Textarea" );
 
-=head2 new Webmin::Multiline(name, &lines, rows, cols, [disabled])
+=head2 new WebminUI::Multiline(name, &lines, rows, cols, [disabled])
 Create a new input for entering multiple text entries. By default, just uses
 a textbox
 =cut
 sub new
 {
-if (defined(&Webmin::Theme::Multiline::new)) {
-        return new Webmin::Theme::Multiline(@_[1..$#_]);
+if (defined(&WebminUI::Theme::Multiline::new)) {
+        return new WebminUI::Theme::Multiline(@_[1..$#_]);
         }
 my ($self, $name, $lines, $rows, $cols, $wrap, $disabled) = @_;
-$self = new Webmin::Textarea($name, join("\n", @$lines), $rows, $cols, undef, $disabled);
+$self = new WebminUI::Textarea($name, join("\n", @$lines), $rows, $cols, undef, $disabled);
 bless($self);
 return $self;
 }

@@ -1,18 +1,18 @@
-package Webmin::OptTextarea;
-use Webmin::Textarea;
+package WebminUI::OptTextarea;
+use WebminUI::Textarea;
 use WebminCore;
-@ISA = ( "Webmin::Textarea" );
+@ISA = ( "WebminUI::Textarea" );
 
-=head2 new Webmin::OptTextarea(name, value, rows, cols, [default-msg], [other-msg])
+=head2 new WebminUI::OptTextarea(name, value, rows, cols, [default-msg], [other-msg])
 Create a text area whose value is optional.
 =cut
 sub new
 {
-if (defined(&Webmin::Theme::OptTextarea::new)) {
-        return new Webmin::Theme::OptTextarea(@_[1..$#_]);
+if (defined(&WebminUI::Theme::OptTextarea::new)) {
+        return new WebminUI::Theme::OptTextarea(@_[1..$#_]);
         }
 my ($self, $name, $value, $rows, $cols, $default, $other) = @_;
-$self = new Webmin::Textarea($name, $value, $rows, $cols);
+$self = new WebminUI::Textarea($name, $value, $rows, $cols);
 bless($self);
 $self->set_default($default || $text{'default'});
 $self->set_other($other) if ($other);
@@ -57,7 +57,7 @@ if (defined($self->get_value())) {
 	if ($self->get_value() eq "") {
 		return ( $text{'ui_nothing'} );
 		}
-	return Webmin::Textbox::validate($self);
+	return WebminUI::Textbox::validate($self);
 	}
 return ( );
 }

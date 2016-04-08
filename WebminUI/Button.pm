@@ -1,16 +1,16 @@
-package Webmin::Button;
-use Webmin::Input;
+package WebminUI::Button;
+use WebminUI::Input;
 use WebminCore;
-@ISA = ( "Webmin::Input" );
+@ISA = ( "WebminUI::Input" );
 
-=head2 new Webmin::Button(cgi, label, [name])
+=head2 new WebminUI::Button(cgi, label, [name])
 Creates a button that when clicked will link to some other page
 =cut
 sub new
 {
-if (defined(&Webmin::Theme::Button::new) &&
-    caller() !~ /Webmin::Theme::Button/) {
-        return new Webmin::Theme::Button(@_[1..$#_]);
+if (defined(&WebminUI::Theme::Button::new) &&
+    caller() !~ /WebminUI::Theme::Button/) {
+        return new WebminUI::Theme::Button(@_[1..$#_]);
         }
 my ($self, $cgi, $value, $name) = @_;
 $self = { };

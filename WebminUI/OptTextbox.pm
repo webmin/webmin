@@ -1,18 +1,18 @@
-package Webmin::OptTextbox;
-use Webmin::Textbox;
+package WebminUI::OptTextbox;
+use WebminUI::Textbox;
 use WebminCore;
-@ISA = ( "Webmin::Textbox" );
+@ISA = ( "WebminUI::Textbox" );
 
-=head2 new Webmin::OptTextbox(name, value, size, [default-msg], [other-msg])
+=head2 new WebminUI::OptTextbox(name, value, size, [default-msg], [other-msg])
 Create a text field whose value is optional.
 =cut
 sub new
 {
-if (defined(&Webmin::Theme::OptTextbox::new)) {
-        return new Webmin::Theme::OptTextbox(@_[1..$#_]);
+if (defined(&WebminUI::Theme::OptTextbox::new)) {
+        return new WebminUI::Theme::OptTextbox(@_[1..$#_]);
         }
 my ($self, $name, $value, $size, $default, $other) = @_;
-$self = new Webmin::Textbox($name, $value, $size);
+$self = new WebminUI::Textbox($name, $value, $size);
 bless($self);
 $self->set_default($default || $text{'default'});
 $self->set_other($other) if ($other);
@@ -39,7 +39,7 @@ if (defined($self->get_value())) {
 	if ($self->get_value() eq "") {
 		return ( $text{'ui_nothing'} );
 		}
-	return Webmin::Textbox::validate($self);
+	return WebminUI::Textbox::validate($self);
 	}
 return ( );
 }

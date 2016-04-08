@@ -1,16 +1,16 @@
-package Webmin::Page;
+package WebminUI::Page;
 use WebminCore;
 use WebminCore;
 
-=head2 new Webmin::Page(subheading, title, [help-name], [show-config],
+=head2 new WebminUI::Page(subheading, title, [help-name], [show-config],
 		      [no-module-index], [no-webmin-index], [rightside],
 		      [header], [body-tags], [below-text])
 Create a new page object, with the given heading and other details
 =cut
 sub new
 {
-if (defined(&Webmin::Theme::Page::new) && caller() !~ /Webmin::Theme::Page/) {
-        return new Webmin::Theme::Page(@_[1..$#_]);
+if (defined(&WebminUI::Theme::Page::new) && caller() !~ /WebminUI::Theme::Page/) {
+        return new WebminUI::Theme::Page(@_[1..$#_]);
         }
 my ($self, $subheading, $title, $help, $config, $noindex, $nowebmin, $right,
     $header, $body, $below) = @_;
@@ -216,7 +216,7 @@ print STDERR "Could not find $object in ",join(" ",@{$self->{'contents'}}),"\n";
 return scalar(@{$self->{'contents'}});
 }
 
-=head2 add_form(Webmin::Form)
+=head2 add_form(WebminUI::Form)
 Adds a form to be displayed on this page
 =cut
 sub add_form
@@ -246,7 +246,7 @@ push(@{$self->{'buttons'}}, [ $cgi, $label, $desc, join(" ", @$hiddens),
 			      $before, $after ]);
 }
 
-=head2 add_tabs(Webmin::Tags)
+=head2 add_tabs(WebminUI::Tags)
 Tells the page to display the given set of tabs at the top
 =cut
 sub add_tabs
@@ -255,7 +255,7 @@ my ($self, $tabs) = @_;
 $self->{'tabs'} = $tabs;
 }
 
-=head2 add_dynamic(Webmin::DynamicText|Webmin::DynamicProgress)
+=head2 add_dynamic(WebminUI::DynamicText|WebminUI::DynamicProgress)
 Adds an object that is dynamically generated, such as a text box or progress bar.
 =cut
 sub add_dynamic

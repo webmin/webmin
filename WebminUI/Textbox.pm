@@ -1,15 +1,15 @@
-package Webmin::Textbox;
-use Webmin::Input;
+package WebminUI::Textbox;
+use WebminUI::Input;
 use WebminCore;
-@ISA = ( "Webmin::Input" );
+@ISA = ( "WebminUI::Input" );
 
-=head2 new Webmin::Textbox(name, value, [size], [disabled])
+=head2 new WebminUI::Textbox(name, value, [size], [disabled])
 Create a new text input field
 =cut
 sub new
 {
-if (defined(&Webmin::Theme::Textbox::new)) {
-        return new Webmin::Theme::Textbox(@_[1..$#_]);
+if (defined(&WebminUI::Theme::Textbox::new)) {
+        return new WebminUI::Theme::Textbox(@_[1..$#_]);
         }
 my ($self, $name, $value, $size, $disabled) = @_;
 $self = { 'size' => 30 };

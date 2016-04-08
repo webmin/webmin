@@ -1,18 +1,18 @@
-package Webmin::File;
-use Webmin::Textbox;
+package WebminUI::File;
+use WebminUI::Textbox;
 use WebminCore;
-@ISA = ( "Webmin::Textbox" );
+@ISA = ( "WebminUI::Textbox" );
 
-=head2 new Webmin::File(name, value, size, [directory], [disabled])
+=head2 new WebminUI::File(name, value, size, [directory], [disabled])
 A text box for selecting a file
 =cut
 sub new
 {
-if (defined(&Webmin::Theme::File::new)) {
-        return new Webmin::Theme::File(@_[1..$#_]);
+if (defined(&WebminUI::Theme::File::new)) {
+        return new WebminUI::Theme::File(@_[1..$#_]);
         }
 my ($self, $name, $value, $size, $directory, $disabled) = @_;
-$self = new Webmin::Textbox($name, $value, $size, $disabled);
+$self = new WebminUI::Textbox($name, $value, $size, $disabled);
 bless($self);
 $self->set_directory($directory);
 return $self;
@@ -24,7 +24,7 @@ Returns the HTML for this file input
 sub html
 {
 my ($self) = @_;
-my $rv = Webmin::Textbox::html($self);
+my $rv = WebminUI::Textbox::html($self);
 my $name = $self->get_name();
 my $directory = $self->get_directory();
 my $add = 0;

@@ -1,14 +1,14 @@
-package Webmin::TitleList;
+package WebminUI::TitleList;
 use WebminCore;
 
-=head2 new Webmin::TitleList(title, &links, [alt-text])
+=head2 new WebminUI::TitleList(title, &links, [alt-text])
 Generates a title with a list of links under it
 =cut
 sub new
 {
 my ($self, $title, $links, $alt) = @_;
-if (defined(&Webmin::Theme::TitleList::new)) {
-        return new Webmin::Theme::TitleList(@_[1..$#_]);
+if (defined(&WebminUI::Theme::TitleList::new)) {
+        return new WebminUI::Theme::TitleList(@_[1..$#_]);
         }
 $self = { };
 bless($self);
@@ -88,7 +88,7 @@ my ($self, $name, $link) = @_;
 push(@{$self->{'links'}}, [ $name, $link ]);
 }
 
-=head2 set_page(Webmin::Page)
+=head2 set_page(WebminUI::Page)
 Called when this menu is added to a page
 =cut
 sub set_page

@@ -1,15 +1,15 @@
-package Webmin::Upload;
-use Webmin::Input;
+package WebminUI::Upload;
+use WebminUI::Input;
 use WebminCore;
-@ISA = ( "Webmin::Input" );
+@ISA = ( "WebminUI::Input" );
 
-=head2 new Webmin::Upload(name, [size])
+=head2 new WebminUI::Upload(name, [size])
 Create a new file upload field
 =cut
 sub new
 {
-if (defined(&Webmin::Theme::Upload::new)) {
-        return new Webmin::Theme::Upload(@_[1..$#_]);
+if (defined(&WebminUI::Theme::Upload::new)) {
+        return new WebminUI::Theme::Upload(@_[1..$#_]);
         }
 my ($self, $name, $size) = @_;
 $self = { 'size' => 30 };

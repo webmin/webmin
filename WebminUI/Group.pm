@@ -1,18 +1,18 @@
-package Webmin::Group;
-use Webmin::Textbox;
+package WebminUI::Group;
+use WebminUI::Textbox;
 use WebminCore;
-@ISA = ( "Webmin::Textbox" );
+@ISA = ( "WebminUI::Textbox" );
 
-=head2 new Webmin::Group(name, value, [multiple], [disabled])
+=head2 new WebminUI::Group(name, value, [multiple], [disabled])
 A text box for entering or selecting one or many Unix groupnames
 =cut
 sub new
 {
-if (defined(&Webmin::Theme::Group::new)) {
-        return new Webmin::Theme::Group(@_[1..$#_]);
+if (defined(&WebminUI::Theme::Group::new)) {
+        return new WebminUI::Theme::Group(@_[1..$#_]);
         }
 my ($self, $name, $value, $multiple, $disabled) = @_;
-$self = new Webmin::Textbox($name, $value, $multiple ? 40 : 15, $disabled);
+$self = new WebminUI::Textbox($name, $value, $multiple ? 40 : 15, $disabled);
 bless($self);
 $self->set_multiple($multiple);
 return $self;
@@ -24,7 +24,7 @@ Returns the HTML for this group input
 sub html
 {
 my ($self) = @_;
-my $rv = Webmin::Textbox::html($self);
+my $rv = WebminUI::Textbox::html($self);
 my $name = $self->get_name();
 my $multiple = $self->get_multiple();
 local $w = $multiple ? 500 : 300;

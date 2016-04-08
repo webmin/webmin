@@ -1,15 +1,15 @@
-package Webmin::Checkboxes;
-use Webmin::Input;
+package WebminUI::Checkboxes;
+use WebminUI::Input;
 use WebminCore;
-@ISA = ( "Webmin::Input" );
+@ISA = ( "WebminUI::Input" );
 
-=head2 new Webmin::Checkboxes(name, value|&values, &options, [disabled])
+=head2 new WebminUI::Checkboxes(name, value|&values, &options, [disabled])
 Create a list of checkboxes, of which zero or more may be selected
 =cut
 sub new
 {
-if (defined(&Webmin::Theme::Checkboxes::new)) {
-        return new Webmin::Theme::Checkboxes(@_[1..$#_]);
+if (defined(&WebminUI::Theme::Checkboxes::new)) {
+        return new WebminUI::Theme::Checkboxes(@_[1..$#_]);
         }
 my ($self, $name, $value, $options, $disabled) = @_;
 $self = { };

@@ -1,15 +1,15 @@
-package Webmin::Checkbox;
-use Webmin::Input;
+package WebminUI::Checkbox;
+use WebminUI::Input;
 use WebminCore;
-@ISA = ( "Webmin::Input" );
+@ISA = ( "WebminUI::Input" );
 
-=head2 new Webmin::Checkbox(name, return, label, checked, [disabled])
+=head2 new WebminUI::Checkbox(name, return, label, checked, [disabled])
 Create a single checkbox field
 =cut
 sub new
 {
-if (defined(&Webmin::Theme::Checkbox::new)) {
-        return new Webmin::Theme::Checkbox(@_[1..$#_]);
+if (defined(&WebminUI::Theme::Checkbox::new)) {
+        return new WebminUI::Theme::Checkbox(@_[1..$#_]);
         }
 my ($self, $name, $return, $label, $checked, $disabled) = @_;
 $self = { };

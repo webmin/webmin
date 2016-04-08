@@ -1,16 +1,16 @@
-package Webmin::Time;
-use Webmin::Input;
+package WebminUI::Time;
+use WebminUI::Input;
 use Time::Local;
 use WebminCore;
-@ISA = ( "Webmin::Input" );
+@ISA = ( "WebminUI::Input" );
 
-=head2 new Webmin::Time(name, time, [disabled])
+=head2 new WebminUI::Time(name, time, [disabled])
 Create a new field for selecting a time
 =cut
 sub new
 {
-if (defined(&Webmin::Theme::Time::new)) {
-        return new Webmin::Theme::Time(@_[1..$#_]);
+if (defined(&WebminUI::Theme::Time::new)) {
+        return new WebminUI::Theme::Time(@_[1..$#_]);
         }
 my ($self, $name, $value, $disabled) = @_;
 bless($self = { });

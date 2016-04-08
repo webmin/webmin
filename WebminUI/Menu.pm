@@ -1,14 +1,14 @@
-package Webmin::Menu;
+package WebminUI::Menu;
 use WebminCore;
 
-=head2 new Webmin::Menu(&options, [columns])
+=head2 new WebminUI::Menu(&options, [columns])
 Generates a menu of options, typically using icons.
 =cut
 sub new
 {
 my ($self, $options, $columns) = @_;
-if (defined(&Webmin::Theme::Menu::new)) {
-        return new Webmin::Theme::Menu(@_[1..$#_]);
+if (defined(&WebminUI::Theme::Menu::new)) {
+        return new WebminUI::Theme::Menu(@_[1..$#_]);
         }
 $self = { 'columns' => 4 };
 bless($self);
@@ -73,7 +73,7 @@ my ($self) = @_;
 return $self->{'columns'};
 }
 
-=head2 set_page(Webmin::Page)
+=head2 set_page(WebminUI::Page)
 Called when this menu is added to a page
 =cut
 sub set_page

@@ -1,16 +1,16 @@
-package Webmin::Select;
-use Webmin::Input;
+package WebminUI::Select;
+use WebminUI::Input;
 use WebminCore;
-@ISA = ( "Webmin::Input" );
+@ISA = ( "WebminUI::Input" );
 
-=head2 new Webmin::Select(name, value|&values, &options, [multiple-size],
+=head2 new WebminUI::Select(name, value|&values, &options, [multiple-size],
 			  [add-missing], [disabled])
 Create a menu or multiple-selection field
 =cut
 sub new
 {
-if (defined(&Webmin::Theme::Select::new)) {
-        return new Webmin::Theme::Select(@_[1..$#_]);
+if (defined(&WebminUI::Theme::Select::new)) {
+        return new WebminUI::Theme::Select(@_[1..$#_]);
         }
 my ($self, $name, $value, $options, $size, $missing, $disabled) = @_;
 $self = { 'size' => 1 };

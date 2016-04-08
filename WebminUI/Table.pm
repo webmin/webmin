@@ -1,15 +1,15 @@
-package Webmin::Table;
-use Webmin::JavascriptButton;
+package WebminUI::Table;
+use WebminUI::JavascriptButton;
 use WebminCore;
 
-=head2 new Webmin::Table(&headings, [width], [name], [heading])
+=head2 new WebminUI::Table(&headings, [width], [name], [heading])
 Create a multi-column table, with support for sorting, paging and so on
 =cut
 sub new
 {
-if (defined(&Webmin::Theme::Table::new) &&
-    caller() !~ /Webmin::Theme::Table/) {
-        return new Webmin::Theme::Table(@_[1..$#_]);
+if (defined(&WebminUI::Theme::Table::new) &&
+    caller() !~ /WebminUI::Theme::Table/) {
+        return new WebminUI::Theme::Table(@_[1..$#_]);
         }
 my ($self, $headings, $width, $name, $heading) = @_;
 $self = { 'sorter' => [ map { \&default_sorter } @$headings ] };
@@ -59,12 +59,12 @@ if (defined($sm) && @srows > $sm) {
 		$rv .= $self->get_searchmsg()."<br>\n";
 		}
 
-	my $form = new Webmin::Form($thisurl, "get");
+	my $form = new WebminUI::Form($thisurl, "get");
 	$form->set_input($self->{'form'}->{'in'});
-	my $section = new Webmin::Section(undef, 2);
+	my $section = new WebminUI::Section(undef, 2);
 	$form->add_section($section);
 
-	my $col = new Webmin::Select("ui_searchcol_".$name, undef);
+	my $col = new WebminUI::Select("ui_searchcol_".$name, undef);
 	my $i = 0;
 	foreach my $h (@{$self->get_headings()}) {
 		if ($self->{'sortable'}->[$i]) {
@@ -74,12 +74,12 @@ if (defined($sm) && @srows > $sm) {
 		}
 	$section->add_input($text{'ui_searchcol'}, $col);
 
-	my $for = new Webmin::Textbox("ui_searchfor_".$name, undef, 30);
+	my $for = new WebminUI::Textbox("ui_searchfor_".$name, undef, 30);
 	$section->add_input($text{'ui_searchfor'}, $for);
 
 	$rv .= $section->html();
 	my $url = $self->make_url(undef, undef, undef, undef, 1);
-	my $jsb = new Webmin::JavascriptButton($text{'ui_searchok'},
+	my $jsb = new WebminUI::JavascriptButton($text{'ui_searchok'},
 			"window.location = '$url'+'&'+'ui_searchfor_${name}'+'='+escape(form.ui_searchfor_${name}.value)+'&'+'ui_searchcol_${name}'+'='+escape(form.ui_searchcol_${name}.selectedIndex)");
 	$rv .= $jsb->html();
 	$rv .= "<br>\n";
@@ -252,7 +252,7 @@ if (@srows) {
 		for(my $i=0; $i<@$r || $i<@sheadings; $i++) {
 			if (ref($r->[$i]) eq "ARRAY") {
 				my $j = $r->[$i]->[0] &&
-					$r->[$i]->[0]->isa("Webmin::TableAction")
+					$r->[$i]->[0]->isa("WebminUI::TableAction")
 					? "&nbsp;|&nbsp;" : "&nbsp;";
 				$row[$i] = $selmap{$r,$i}.
 				  join($j, map { ref($_) ? $_->html() : $_ }
@@ -278,7 +278,7 @@ return $rv;
 }
 
 =head2 set_form(form)
-Called by the Webmin::Form object when this table is added to it
+Called by the WebminUI::Form object when this table is added to it
 =cut
 sub set_form
 {
@@ -309,7 +309,7 @@ else {
 sub default_sorter
 {
 my ($value1, $value2, $col) = @_;
-if (ref($value1) && $value1->isa("Webmin::TableAction")) {
+if (ref($value1) && $value1->isa("WebminUI::TableAction")) {
 	$value1 = $value1->get_value();
 	$value2 = $value2->get_value();
 	}
@@ -432,7 +432,7 @@ return $self->{'headings'};
 }
 
 =head2 set_selector(column, input)
-Takes a Webmin::Checkboxes or Webmin::Radios object, and uses it to add checkboxes
+Takes a WebminUI::Checkboxes or WebminUI::Radios object, and uses it to add checkboxes
 in the specified column.
 =cut
 sub set_selector

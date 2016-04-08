@@ -1,14 +1,14 @@
-package Webmin::Properties;
+package WebminUI::Properties;
 use WebminCore;
 
-=head2 new Webmin::Properties([heading], [columns], [width])
+=head2 new WebminUI::Properties([heading], [columns], [width])
 Creates a read-only properties list
 =cut
 sub new
 {
-if (defined(&Webmin::Theme::Properties::new) &&
-    caller() !~ /Webmin::Theme::Properties/) {
-        return new Webmin::Theme::Properties(@_[1..$#_]);
+if (defined(&WebminUI::Theme::Properties::new) &&
+    caller() !~ /WebminUI::Theme::Properties/) {
+        return new WebminUI::Theme::Properties(@_[1..$#_]);
         }
 my ($self, $heading, $columns, $width) = @_;
 $self = { 'columns' => 2 };
@@ -119,7 +119,7 @@ return $self->{'heading'};
 }
 
 
-=head2 set_page(Webmin::Page)
+=head2 set_page(WebminUI::Page)
 Called when this form is added to a page
 =cut
 sub set_page

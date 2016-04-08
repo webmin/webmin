@@ -1,16 +1,16 @@
-package Webmin::JavascriptButton;
-use Webmin::Input;
+package WebminUI::JavascriptButton;
+use WebminUI::Input;
 use WebminCore;
-@ISA = ( "Webmin::Input" );
+@ISA = ( "WebminUI::Input" );
 
-=head2 new Webmin::JavascriptButton(label, script, [disabled])
+=head2 new WebminUI::JavascriptButton(label, script, [disabled])
 Create a button that runs some Javascript when clicked
 =cut
 sub new
 {
-if (defined(&Webmin::Theme::JavascriptButton::new) &&
-    caller() !~ /Webmin::Theme::JavascriptButton/) {
-        return new Webmin::Theme::JavascriptButton(@_[1..$#_]);
+if (defined(&WebminUI::Theme::JavascriptButton::new) &&
+    caller() !~ /WebminUI::Theme::JavascriptButton/) {
+        return new WebminUI::Theme::JavascriptButton(@_[1..$#_]);
         }
 my ($self, $value, $script, $disabled) = @_;
 $self = { };

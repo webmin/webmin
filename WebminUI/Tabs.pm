@@ -1,14 +1,14 @@
-package Webmin::Tabs;
+package WebminUI::Tabs;
 use WebminCore;
 
-=head2 new Webmin::Tabs([&tabs])
+=head2 new WebminUI::Tabs([&tabs])
 Displayed at the top of a page, to allow selection of various pages
 =cut
 sub new
 {
 my ($self, $tabs) = @_;
-if (defined(&Webmin::Theme::Tabs::new)) {
-        return new Webmin::Theme::Tabs(@_[1..$#_]);
+if (defined(&WebminUI::Theme::Tabs::new)) {
+        return new WebminUI::Theme::Tabs(@_[1..$#_]);
         }
 $self = { 'tabs' => [ ],
 	  'tab' => 0 };

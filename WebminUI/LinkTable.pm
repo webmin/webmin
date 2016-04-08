@@ -1,18 +1,18 @@
-package Webmin::LinkTable;
-use Webmin::Table;
+package WebminUI::LinkTable;
+use WebminUI::Table;
 use WebminCore;
 
-=head2 new Webmin::LinkTable(heading, [columns], [width], [name])
+=head2 new WebminUI::LinkTable(heading, [columns], [width], [name])
 Creates a new table that just displays links, like in the Users and Groups module
 =cut
 sub new
 {
-if (defined(&Webmin::Theme::LinkTable::new) &&
-    caller() !~ /Webmin::Theme::LinkTable/) {
-        return new Webmin::Theme::LinkTable(@_[1..$#_]);
+if (defined(&WebminUI::Theme::LinkTable::new) &&
+    caller() !~ /WebminUI::Theme::LinkTable/) {
+        return new WebminUI::Theme::LinkTable(@_[1..$#_]);
         }
 my ($self, $heading, $columns, $width, $name) = @_;
-$self = { 'sorter' => \&Webmin::Table::default_sorter,
+$self = { 'sorter' => \&WebminUI::Table::default_sorter,
 	  'columns' => 4,
 	  'sortable' => 1 };
 bless($self);
@@ -245,7 +245,7 @@ return $self->{'columns'};
 }
 
 =head2 set_form(form)
-Called by the Webmin::Form object when this table is added to it
+Called by the WebminUI::Form object when this table is added to it
 =cut
 sub set_form
 {
@@ -257,7 +257,7 @@ if ($self->{'selectinput'}) {
 }
 
 =head2 set_selector(input)
-Takes a Webmin::Checkboxes or Webmin::Radios object, and uses it to add checkboxes
+Takes a WebminUI::Checkboxes or WebminUI::Radios object, and uses it to add checkboxes
 to all the entries
 =cut
 sub set_selector

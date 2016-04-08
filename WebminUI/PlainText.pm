@@ -1,14 +1,14 @@
-package Webmin::PlainText;
+package WebminUI::PlainText;
 use WebminCore;
 
-=head2 new Webmin::PlainText(text, columns)
+=head2 new WebminUI::PlainText(text, columns)
 Displays a block of plain fixed-width text, within a page or form.
 =cut
 sub new
 {
-if (defined(&Webmin::Theme::PlainText::new) &&
-    caller() !~ /Webmin::Theme::PlainText/) {
-        return new Webmin::Theme::PlainText(@_[1..$#_]);
+if (defined(&WebminUI::Theme::PlainText::new) &&
+    caller() !~ /WebminUI::Theme::PlainText/) {
+        return new WebminUI::Theme::PlainText(@_[1..$#_]);
         }
 my ($self, $text, $columns) = @_;
 $self = { 'columns' => 80 };
@@ -84,7 +84,7 @@ foreach $rest (split(/\n/, $_[0])) {
 return @rv;
 }
 
-=head2 set_page(Webmin::Page)
+=head2 set_page(WebminUI::Page)
 Called when this form is added to a page
 =cut
 sub set_page

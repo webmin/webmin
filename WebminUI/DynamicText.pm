@@ -1,8 +1,8 @@
 # XXX should support non-Javascript mode?
-package Webmin::DynamicText;
+package WebminUI::DynamicText;
 use WebminCore;
 
-=head2 new Webmin::DynamicText(&start-function, &args)
+=head2 new WebminUI::DynamicText(&start-function, &args)
 A page element for displaying text that takes time to generate, such as from
 a long-running script. Uses a non-editable text box, updated via Javascript.
 The function will be called when it is time to start producing output, with this
@@ -90,7 +90,7 @@ my ($self) = @_;
 return $self->{'wait'};
 }
 
-=head2 set_page(Webmin::Page)
+=head2 set_page(WebminUI::Page)
 Called when this dynamic text box is added to a page
 =cut
 sub set_page
