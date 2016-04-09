@@ -1479,7 +1479,7 @@ my ($script, $label, $desc, $hiddens, $after, $before) = @_;
 if (ref($hiddens)) {
 	$hiddens = join("\n", map { &ui_hidden(@$_) } @$hiddens);
 	}
-return "<form action='$script' class='ui_buttons_form'>\n".
+return "<form action='$script' class='ui_buttons_form' method=post>\n".
        $hiddens.
        "<tr class='ui_buttons_row'> ".
        "<td nowrap width=20% valign=top class=ui_buttons_label>".
