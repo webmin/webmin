@@ -36,6 +36,7 @@ foreach $h (readdir(DIR)) {
 			&read_file("$hdir/$h/$f", \%user);
 			$user{'modules'} = [ split(/\s+/, $user{'modules'}) ];
 			$user{'ownmods'} = [ split(/\s+/, $user{'ownmods'}) ];
+			$user{'olds'} = [ split(/\s+/, $user{'olds'}) ];
 			push(@{$host{'users'}}, \%user);
 			}
 		elsif ($f =~ /^(\S+)\.group$/) {
@@ -84,6 +85,7 @@ foreach $m (@{$_[0]->{'users'}}) {
 	local %u = %$m;
 	$u{'modules'} = join(" ", @{$u{'modules'}});
 	$u{'ownmods'} = join(" ", @{$u{'ownmods'}});
+	$u{'olds'} = join(" ", @{$u{'olds'}});
 	&write_file("$hdir/$_[0]->{'id'}/$u{'name'}.user", \%u);
 	delete($oldfile{"$u{'name'}.user"});
 	}

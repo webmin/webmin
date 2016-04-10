@@ -11,7 +11,7 @@ require './cluster-webmin-lib.pl';
 # Work out which hosts
 @phosts = &create_on_parse(undef, undef, undef, 1);
 
-# Build lists of all users and group
+# Build lists of all users and groups
 foreach $h (@hosts) {
 	local ($serv) = grep { $_->{'id'} == $h->{'id'} } @servers;
 	foreach $u (@{$h->{'users'}}) {
