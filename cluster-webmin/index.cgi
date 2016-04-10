@@ -93,7 +93,7 @@ if (@addservers) {
 	print "<form action=add.cgi><td>\n";
 	print "<input type=submit name=add value='$text{'index_add'}'>\n";
 	print "<select name=server>\n";
-	foreach $s (@addservers) {
+	foreach $s (sort { $a->{'host'} cmp $b->{'host'} } @addservers) {
 		print "<option value=$s->{'id'}>",&server_name($s),"</option>\n";
 		}
 	print "</select>\n";
