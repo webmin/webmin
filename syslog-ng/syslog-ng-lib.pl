@@ -519,6 +519,11 @@ local $sun_streams = &find("sun-streams", $source->{'members'});
 if ($sun_streams) {
         push(@rv, $text{'sources_typen'}." <tt>$sun_streams->{'value'}</tt>");
 	}
+local $network = &find("network", $source->{'members'});
+if ($network) {
+	local $ip = &find("ip", $network->{'members'});
+        push(@rv, $text{'sources_typenw'}." <tt>$ip->{'value'}</tt>");
+	}
 return join(", ", @rv);
 }
 

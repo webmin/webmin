@@ -216,6 +216,7 @@ sources_typeu=UDP server
 sources_typef=Kernel log file
 sources_typep=Named pipe
 sources_typen=Sun stream
+sources_typenw=Syslog server
 sources_return=log sources
 sources_none2=None
 
