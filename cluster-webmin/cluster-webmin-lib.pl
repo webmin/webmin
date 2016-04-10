@@ -124,7 +124,8 @@ return ( &servers::this_server(), grep { $_->{'user'} } @servers );
 # server_name(&server)
 sub server_name
 {
-return $_[0]->{'desc'} ? $_[0]->{'desc'} : $_[0]->{'host'};
+return ($_[0]->{'id'} == 0 ? &get_system_hostname() : $_[0]->{'host'}).
+       ($_[0]->{'desc'} ? " (".$_[0]->{'desc'}.")" : "");
 }
 
 # all_modules(&hosts)
