@@ -194,6 +194,31 @@ else {
 				$in{'sun_streams_door'}, 1);
 		}
 
+	# Save syslog protocol option
+	if ($in{'network'}) {
+		$net = { 'name' => 'network',
+		         'type' => 0,
+			 'values' => [ ] };
+		&save_directive($conf, $source, undef, $net, 1);
+
+		# Save local IP and port
+		if (!$in{'network_ip_def'}) {
+			&check_ipaddress($in{'network_ip'}) ||
+				&error($text{'source_eip'});
+			&save_directive($conf, $net, "ip",
+					$in{'network_ip'}, 1);
+			}
+		if (!$in{'network_port_def'}) {
+			$in{'network_port'} =~ /^\d+$/ ||
+				&error($text{'source_eport'});
+			&save_directive($conf, $net, "port",
+					$in{'network_port'}, 1);
+			}
+		if ($in{'network_transport'}) {
+			&save_directive($conf, $net, "transport",
+					$in{'network_transport'}, 1);
+			}
+		}
 
 	# Actually update the object
 	&save_directive($conf, undef, $old, $source, 0);

@@ -192,9 +192,37 @@ if (&supports_sun_streams()) {
 	$ttable .= "</td> </tr>\n";
 	}
 
+# Syslog server protocol
+$network = &find("network", $source->{'members'});
+$ttable .= "<tr> <td valign=top>".&ui_checkbox("network", 1, "<b>$text{'sources_typenw'}</b>", $network ? 1 : 0)."</td> <td><table>\n";
+if ($network) {
+	$network_ip = &find_value("ip", $network->{'members'});
+	$network_port = &find_value("port", $network->{'members'});
+	$network_transport = &find_value("transport", $network->{'members'});
+	}
+
+# IP and port
+$ttable .= "<tr> <td>$text{'source_ip'}</td> <td>".
+   &ui_opt_textbox("network_ip", $network_ip, 15, $text{'source_any'}).
+   "</td> </tr>\n";
+$ttable .= "<tr> <td>$text{'source_port'}</td> <td>".
+   &ui_opt_textbox("network_port", $network_port, 6, $text{'default'}." (601)").
+   "</td> </tr>\n";
+
+# Transport type
+$ttable .= "<tr> <td>$text{'source_transport'}</td> <td>".
+   &ui_select("network_transport", $network_transport,
+	      [ [ "", $text{'default'} ],
+		[ "tcp", "TCP" ],
+		[ "udp", "UDP" ] ]).
+   "</td> </tr>\n";
+
+$ttable .= "</table>\n";
+$ttable .= "</td> </tr>\n";
+
 # Show types table
 $ttable .= "</table>\n";
-print "<tr> <td colspan=2><b>$text{'source_type'}</b><br>\n";
+print "<tr> <td valign=top><b>$text{'source_type'}</b></td> <td>\n";
 print $ttable;
 print "</td> </tr>\n";
 

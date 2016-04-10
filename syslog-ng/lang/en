@@ -227,7 +227,7 @@ source_any=Any
 source_none=None
 source_egone=Source no longer exists!
 source_name=Source name
-source_type=Log source types ..
+source_type=Log source types
 source_owner=Socket file owner
 source_group=Socket file group
 source_perm=Permissions on socket file
@@ -255,6 +255,7 @@ source_epipe_name=Missing or invalid named pipe file name
 source_door=Door filename
 source_esun_streams_name=Missing or invalid Sun streams file name
 source_edoor=Missing or invalid Sun streams door file name
+source_transport=Network protocol
 
 view_title=View Logfile
 view_header=Last $1 lines of $2
