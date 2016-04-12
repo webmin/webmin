@@ -1,7 +1,6 @@
 webmin=1
 longdesc=Fast and light file manager written in perl
 name=File Manager
-os_support=*-linux freebsd
 usermin=1
 desc_no=Filbehandling
 desc=File Manager
