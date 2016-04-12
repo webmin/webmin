@@ -447,6 +447,10 @@ if ($name =~ /^(.*)\.(\d+)$/) {
 return "PPP" if ($name =~ /^ppp/);
 return "SLIP" if ($name =~ /^sl/);
 return "PLIP" if ($name =~ /^plip/);
+# Check if this is a VirtIO interface
+my $ethtool = &has_command("ethtool");
+my $out = &backquote_command("$ethtool -i $name 2>/dev/null");
+return "VirtIO Interface" if ($out =~ /driver:\s+virtio_net/i);
 return "Ethernet" if ($name =~ /^eth|em|eno|ens|enp|enx|p\d+p\d+/);
 return "Wireless Ethernet" if ($name =~ /^(wlan|ath)/);
 return "Arcnet" if ($name =~ /^arc/);
