@@ -2537,11 +2537,14 @@ if ($add_slaves) {
 if ($add_tmpl) {
 	# Create template records
 	local %bumped;
+	local %hash = ( 'ip' => $ip,
+			'dom' => $zone );
 	for(my $i=0; $config{"tmpl_$i"}; $i++) {
 		local @c = split(/\s+/, $config{"tmpl_$i"}, 3);
 		local $name = $c[0] eq '.' ? "$zone." : $c[0];
 		local $fullname = $name =~ /\.$/ ? $name : "$name.$zone.";
 		local $recip = $c[2] || $ip;
+		$recip = &substitute_template($recip, \%hash);
 		&create_record($file, $name, undef, "IN", $c[1], $recip);
 		if ($addrev && ($c[1] eq "A" || $c[1] eq "AAAA")) {
 			# Consider adding reverse record
@@ -2569,8 +2572,6 @@ if ($add_tmpl) {
 	if ($config{'tmpl_include'}) {
 		# Add whatever is in the template file
 		local $tmpl = &read_file_contents($config{'tmpl_include'});
-		local %hash = ( 'ip' => $ip,
-				'dom' => $zone );
 		$tmpl = &substitute_template($tmpl, \%hash);
 		&open_tempfile(FILE, ">>".&make_chroot($file));
 		&print_tempfile(FILE, $tmpl);
