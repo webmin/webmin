@@ -219,6 +219,9 @@ if ($cfg->{'bridge'}) {
 	else {
 		push(@options, [ 'pre-up', 'brctl addbr '.$name ]);
 		}
+	push(@options, [ 'bridge_stp', $cfg->{'bridgestp'} ]);
+	push(@options, [ 'bridge_fd', $cfg->{'bridgefd'} ]);
+	push(@options, [ 'bridge_waitport', $cfg->{'bridgewait'} ]);
 	}
 
 # Set bonding parameters
