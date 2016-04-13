@@ -311,6 +311,9 @@ else {
 		($bt->{'address'} || $bt->{'dhcp'} || $bt->{'bootp'}) &&
 			&error($text{'bifc_ebridgeto2'});
 		$b->{'bridgeto'} = $in{'bridgeto'};
+		$b->{'bridgestp'} = $in{'bridgestp'};
+		$b->{'bridgefd'} = $in{'bridgefd'};
+		$b->{'bridgewait'} = $in{'bridgewait'};
 		}
 
 	# Save the interface with its final name
