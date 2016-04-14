@@ -152,12 +152,12 @@ tdrop_title=Drop Table
 tdrop_rusure=Are you sure you want to drop the table $1 in database $2 ? $3 rows of data will be deleted.
 tdrop_ok=Drop Table
 
-tdrops_enone=No objects to drop selected
-tdrops_err=Failed to drop objects
-tdrops_ok=Drop Objects
-tdrops_title=Drop Objects
-tdrops_rusure=Are you sure you want to drop the $1 selected objects in database $2 ? $3 rows of data will be deleted.
-tdrops_rusure2=Are you sure you want to drop the $1 selected objects in database $2 ?
+tdrops_enone=No table(s) to drop selected
+tdrops_err=Failed to drop table(s)
+tdrops_ok=Drop
+tdrops_title=Drop Selected
+tdrops_rusure=Are you sure you want to drop $1 selected table(s) in database $2 ? $3 rows of data will be deleted.
+tdrops_rusure2=Are you sure you want to drop $1 selected table(s) in database $2 ?
 
 field_title1=Add Field
 field_title2=Modify Field
