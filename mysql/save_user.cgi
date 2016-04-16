@@ -28,16 +28,20 @@ else {
 	@pfields = map { $_->[0] } &priv_fields('user');
 	my @ssl_field_names = &ssl_fields();
 	my @ssl_field_values = map { '' } @ssl_field_names;
+	my @other_field_names = &other_user_fields();
+	my @other_field_values = map { '' } @other_field_names;
 	if ($in{'new'}) {
 		# Create a new user
 		$sql = "insert into user (host, user, ".
-		       join(", ", @pfields, @ssl_field_names).
+		       join(", ", @pfields, @ssl_field_names,
+				  @other_field_names).
 		       ") values (?, ?, ".
-		       join(", ", map { "?" } (@pfields, @ssl_field_names)).")";
+		       join(", ", map { "?" } (@pfields, @ssl_field_names,
+					       @other_field_names)).")";
 		&execute_sql_logged($master_db, $sql,
 			$host, $user,
 			(map { $perms{$_} ? 'Y' : 'N' } @pfields),
-			@ssl_field_values);
+			@ssl_field_values, @other_field_values);
 		}
 	else {
 		# Update existing user

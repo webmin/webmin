@@ -790,6 +790,15 @@ return grep { $fieldmap{$_} } ('ssl_type', 'ssl_cipher',
 			       'x509_issuer', 'x509_subject');
 }
 
+# other_user_fields()
+# Returns the names of other non-default new user fields
+sub other_user_fields
+{
+my @desc = &table_structure($master_db, 'user');
+my %fieldmap = map { $_->{'field'}, $_->{'index'} } @desc;
+return grep { $fieldmap{$_} } ('authentication_string');
+}
+
 sub is_blob
 {
 return $_[0]->{'type'} =~ /(text|blob)$/i;
