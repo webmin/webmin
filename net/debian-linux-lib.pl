@@ -76,6 +76,15 @@ foreach $iface (@ifaces) {
 			elsif ($param eq 'bridge_ports') {
 				$cfg->{'bridgeto'} = $value;
 				}
+			elsif ($param eq 'bridge_stp') {
+				$cfg->{'bridgestp'} = $value;
+				}
+			elsif ($param eq 'bridge_fd') {
+				$cfg->{'bridgefd'} = $value;
+				}
+			elsif ($param eq 'bridge_waitport') {
+				$cfg->{'bridgewait'} = $value;
+				}
 			elsif ($param eq 'pre-up' &&
 			       $value =~ /brctl\s+addif\s+br\d+\s+(\S+)/) {
 				$cfg->{'bridgeto'} = $1;
@@ -210,6 +219,9 @@ if ($cfg->{'bridge'}) {
 	else {
 		push(@options, [ 'pre-up', 'brctl addbr '.$name ]);
 		}
+	push(@options, [ 'bridge_stp', $cfg->{'bridgestp'} ]);
+	push(@options, [ 'bridge_fd', $cfg->{'bridgefd'} ]);
+	push(@options, [ 'bridge_waitport', $cfg->{'bridgewait'} ]);
 	}
 
 # Set bonding parameters

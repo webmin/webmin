@@ -300,6 +300,12 @@ if ($in{'bridge'} || $b && $b->{'bridge'}) {
 			   [ [ "", $text{'bifc_nobridge'} ],
 			     @ethboot ],
 			   1, 0, $in{'new'} ? 0 : 1));
+	print &ui_table_row($text{'bifc_bridgestp'},
+		&ui_radio("bridgestp", $b->{'bridgestp'} ? $b->{'bridgestp'} : "off", [["off", "Off"], ["on", "On"]]));
+	print &ui_table_row($text{'bifc_bridgefd'},
+		&ui_textbox("bridgefd", $b->{'bridgefd'} ? $b->{'bridgefd'} : "0", 3)." seconds");
+	print &ui_table_row($text{'bifc_bridgewait'},
+		&ui_textbox("bridgewait", $b->{'bridgewait'} ? $b->{'bridgewait'} : "0", 3)." seconds");
 	}
 
 print &ui_table_end();

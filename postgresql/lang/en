@@ -523,12 +523,12 @@ adv_and=Find records matching all criteria ..
 adv_or=Find records matching any criteria ..
 adv_ok=Search Now
 
-tdrops_enone=No objects to drop selected
-tdrops_err=Failed to drop objects
-tdrops_ok=Drop Objects
-tdrops_title=Drop Objects
-tdrops_rusure=Are you sure you want to drop the $1 selected objects in database $2 ? $3 rows of data will be deleted.
-tdrops_rusure2=Are you sure you want to drop the $1 selected objects in database $2 ?
+tdrops_enone=No table(s) to drop selected
+tdrops_err=Failed to drop table(s)
+tdrops_ok=Drop
+tdrops_title=Drop Selected
+tdrops_rusure=Are you sure you want to drop $1 selected table(s) in database $2 ? $3 rows of data will be deleted.
+tdrops_rusure2=Are you sure you want to drop $1 selected table(s) in database $2 ?
 
 ddrops_err=Failed to drop databases
 ddrops_title=Drop Databases
