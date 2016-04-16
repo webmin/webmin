@@ -63,7 +63,8 @@ elsif ($type eq 'user' || $type eq 'perm' || $type eq 'host' ||
 	$p->{'db'} = $text{'log_any'}
 		if ($p->{'db'} eq '-' || $p->{'db'} eq '%');
 	$p->{'host'} = $text{'log_any'}
-		if ($p->{'host'} eq '-' || $p->{'host'} eq '%');
+		if ($p->{'host'} eq '-' || $p->{'host'} eq '%' ||
+		    $p->{'host'} eq '');
 	local $t = "log_${type}_${action}";
 	if ($long && $text{$t.'_l'}) { $t .= '_l'; }
 	return &text($t, "<tt>$p->{'user'}</tt>",
