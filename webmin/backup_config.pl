@@ -10,10 +10,13 @@ my @rv = ( "$config_directory/config",
 	      "$config_directory/miniserv.conf",
 	      "$config_directory/webmin.cats",
 	      "$config_directory/webmin.catnames",
+	      "$config_directory/webmin.desc",
 	      $miniserv{'keyfile'},
 	      $miniserv{'certfile'},
 	      $miniserv{'ca'},
 	      $newmodule_users_file,
+	      "$config_directory/custom-lang",
+	      glob("$config_directory/*/custom-lang"),
 	    );
 return @rv;
 }
