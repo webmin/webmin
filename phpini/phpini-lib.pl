@@ -181,7 +181,17 @@ foreach my $ai (split(/\t+/, $access{'php_inis'})) {
 	local ($f, $d) = split(/=/, $ai);
 	push(@rv, [ $f, $d || $f ]);
 	}
-return @rv;
+if (&foreign_installed("virtual-server")) {
+	&foreign_require("virtual-server");
+	foreach my $v (&virtual_server::list_available_php_versions()) {
+		if ($v->[0]) {
+			my $ini = &virtual_server::get_global_php_ini($v->[0]);
+			push(@rv, [ $ini, "PHP $v->[0]" ]) if ($ini && -r $ini);
+			}
+		}
+	}
+my %done;
+return grep { !$done{$_->[0]}++ } @rv;
 }
 
 # onoff_radio(name)
