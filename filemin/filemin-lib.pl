@@ -66,7 +66,7 @@ sub get_paths {
     my $error = 1;
     for $allowed_path (@allowed_paths) {
         if (&is_under_directory($allowed_path, $cwd) ||
-            $allowed_path =~ /^$cwd/) {
+            $allowed_path =~ /^\Q$cwd\E/) {
             $error = 0;
         }
     }
