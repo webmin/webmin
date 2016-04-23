@@ -7,3 +7,5 @@ longdesc=Configure a Linux firewall using FirewallD, by editing allowed services
 longdesc_de=Konfiguriert eine Linux-Firewall mit FirewallD, indem es erlaubte Dienste und Ports editiert.
 desc_ca=FirewallD
 longdesc_ca=Configura un tallfocs Linux utilitzant FirewallD, bo i editant els serveis i els ports
+desc_pl=FirewallD
+longdesc_pl=Konfiguracja Firewalla Linuksa u¿ywaj±c FirewallD, poprzez edytowanie dozwolonych us³ug i portów.
