@@ -12,6 +12,12 @@ $account_key = "$module_config_directory/letsencrypt.pem";
 
 $letsencrypt_chain_url = "https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem";
 
+sub get_letsencrypt_python_cmd
+{
+return &has_command("python2.7") || &has_command("python27") ||
+	&has_command("python");
+}
+
 # check_letsencrypt()
 # Returns undef if all dependencies are installed, or an error message
 sub check_letsencrypt
@@ -20,10 +26,11 @@ if (&has_command($letsencrypt_cmd)) {
 	# Use built-in client
 	return undef;
 	}
-if (!&has_command("python") || !&has_command("openssl")) {
+my $python = &get_letsencrypt_python_cmd();
+if (!$python || !&has_command("openssl")) {
 	return $text{'letsencrypt_ecmds'};
 	}
-my $out = &backquote_command("python -c 'import argparse' 2>&1");
+my $out = &backquote_command("$python -c 'import argparse' 2>&1");
 if ($?) {
 	return &text('letsencrypt_epythonmod', 'argparse');
 	}
@@ -126,7 +133,7 @@ else {
 	&copy_source_dest($csr, "/tmp/lets.csr");
 
 	# Find a reasonable python version
-	my $python = &has_command("python2.7") || &has_command("python");
+	my $python = &get_letsencrypt_python_cmd();
 
 	# Request the cert and key
 	my $cert = &transname();
