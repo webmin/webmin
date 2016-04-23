@@ -85,7 +85,8 @@ print &ui_form_start("restore.cgi", "form-data");
 print &ui_table_start($text{'index_header2'}, undef, 2);
 
 print &ui_table_row($text{'edit_mods2'},
-		    &ui_select("mods", \@dmods,
+		    &ui_select("mods",
+		       [ map { $_->{'dir'} } @mods ],
 		       [ map { [ $_->{'dir'}, $_->{'desc'} ] } @mods ],
 		       5, 1));
 
