@@ -822,8 +822,11 @@ foreach my $l (@acl) {
 delete($gconfig{"lang_".$username});
 delete($gconfig{"notabs_".$username});
 delete($gconfig{"ownmods_".$username});
+delete($gconfig{"rbacdeny_".$username});
 delete($gconfig{"theme_".$username});
+delete($gconfig{"overlay_".$username});
 delete($gconfig{"readonly_".$username});
+delete($gconfig{"realname_".$username});
 &write_file("$config_directory/config", \%gconfig);
 
 # Delete all module .acl files
