@@ -1,0 +1,70 @@
+<body bgcolor=#ffffff>
+<title>Zaplanowane polecenia i zadania</title>
+<center><img src="images/cron.gif"></center><br>
+<h2><i>Ta strona jest niekompletna</i></h2>
+<hr>
+<h3>Wprowadzenie</h3>
+Ten modu³ mo¿e byæ u¿yty w celu automatycznego wykonywania
+poleceñ w okre¶lonym czasie. U¿ywa on standardowego deamona
+Unix <tt>cron</tt>, które umo¿liwia uruchamianie poleceñ jako
+ró¿ni u¿ytkownicy w wybranych minutach, godzinach, dniach, miesi±cach,
+dni tygodnia i miesi±ca oraz lat. Ka¿de zadanie jest w³asno¶ci±
+u¿ytkownika, wykonywane polecenie otrzymuje takie same
+uprawnienia jak ten u¿ytkownik. <p>
+
+G³ówna strona modu³u to lista wszystkich znanych zaplanowanych zadañ,
+pogrupowanych wed³ug u¿ytkownika. Niektóre systemy maj± zadania,
+które s± czê¶ci± systemu operacyjnego, ich w³a¶cicielem s± najczê¶ciej
+tacy u¿ytkownicy jak np. <tt>root</tt> lub <tt>sys</tt>. Mog± byæ tak¿e
+zadania utworzone przez u¿ytkowników u¿yw±c polecenia <tt>crontab</tt>
+nale¿±ce do u¿ytkownika, który je stworzy³. <p>
+
+<hr>
+<h3>Tworzenie nowego zaplanowanego zadania</h3>
+Aby utworzyæ nowe zadanie, naci¶nij na  <tt>Utwórz nowe zadanie dla crona</tt>
+poni¿ej listy istniej±cych zadañ. Wy¶wietli siê formularz, w który mo¿esz wpisaæ
+nastêpuj±ce parametry:
+	<ul>
+	<li><b>Uruchom zadanie crona jako</b><br>
+	    Nazwa u¿ytkownika Unix, z którego uprawnieniami zostanie uruchomione zadanie. <p>
+	<li><b>Aktywne?</b><br>
+	    Nawet je¿eli zadanie nie jest aktywne dalej bêdzie wy¶wietlane 
+	    na li¶cie znanych zadañ, jednak nie bêdzie ono uruchamiane. <p>
+	<li><b>Polecenie</b><br>
+	    Polecenie Unix, które zostanie uruchomione w zaplanowanym czasie.
+	    Mo¿e to byæ dowolne polecenie, które mo¿esz wpisaæ w terminalu. <p>
+	<li><b>Wej¶cie dla polecenia</b><br>
+	    Je¿eli to pole nie jest puste to cokolwiek wpiszesz bêdzie traktowane
+	    jako dane wej¶ciowe do polecenia przy uruchomieniu. Np. je¿eli poleceniem
+	    jest <tt>mail foo@bar.com</tt> i dane wej¶ciowe to <tt>hello world</tt>,
+	    to wpisany tekst bêdzie wys³any jako e-mail do <tt>foo@bar.com</tt>. <p>
+	<li><b>Kiedy uruchomiæ</b><br>
+	    Polecenie zostanie uruchomione w wybranym czasie wed³ug okre¶lenia minut,
+	    godzin, dni miesi±ca, miesiêcy, roku i dni tygodnia. Mo¿esz wybraæ
+	    <tt>Wszystkie</tt> lub czas kiedy zadanie ma zostaæ uruchomione<p>
+
+	    Na przyk³ad, je¿eli wybierzesz 5 jako godzinê i wtorek jako dzieñ tygodnia,
+	    to zadanie uruchomi siê w ka¿dej minucie od godziny 5 do godziny 5:59
+	    w ka¿dy wtorek. <br>
+	    Je¿eli wybierzesz 30 jako minuty i 14 jako godziny, to zadanie
+	    uruchomi siê ka¿dego dnia o 14:30 <p>
+	</ul><p>
+Po wype³nieniu wszystkich pól w formularzu naci¶nij na przycisk <tt>Utwórz</tt>
+na dole strony. Nowe zadanie zostanie natychmiast zastosowane. <p>
+
+<hr>
+<h3>Edycja istniej±cych zaplanowanych zadañ</h3>
+Aby edytowaæ istniej±ce zadanie, kliknij na polecenie, które chcesz
+edytowaæ na li¶cie zadañ na g³ównej stronie modu³u. Formularz
+edycji jest taki sam jak formularz tworzenia nowego zadania, który
+zosta³ opisany powy¿ej. Po dokonaniu po¿±danych zmian naci¶nij
+na przycisk <tt>Zapisz</tt> na dole strony. <p>
+
+Aby usun±æ zadanie, naci¶nij na przycisk <tt>Usuñ</tt> na
+dole formularza edycji. Zadanie zostanie natychmiast usuniête
+bez potwierdzenia. <p>
+
+<hr>
+<a href="/"><img alt="<-" align=middle border=0 src=/images/left.gif></a>
+&nbsp;&nbsp;<a href="">Wróæ do modu³u</a><p>
+

@@ -28,3 +28,4 @@ desc_sk.UTF-8=Z√°loha konfiguraƒçn√Ωch s√∫borov
 desc_no=Sikkerhetskopier konfig.filer
 longdesc_ms_MY=Lakukan salinan secara manual atau berjadual dan mengembalikan fail konfigurasi yang diuruskan oleh modul Webmin.
 desc_ms_MY=Backup Fail konfigurasi
+longdesc_pl=RÍczne lub zaplanowane tworzenie i przywracanie kopii zapasowych plikÛw konfiguracyjnych modu≥Ûw zarz±dzanych przez Webmina.

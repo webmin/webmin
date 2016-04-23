@@ -1,4 +1,11 @@
+line1=Opcje konfiguracyjne,11
 config_file=Modyfikowany plik konfiguracyjny fetchmaila,3,Pliki <tt>.fetchmailrc</tt> wszystkich u¿ytkowników
+view_mode=Wy¶wietl listê u¿ytkowników jako,1,1-Tylko nazwy u¿ytkowników,0-Nazwy u¿ytkowników i konfiguracje fetchmail
+max_users=Maksymalna liczba u¿ytkowników do wy¶wietlenia,3,Bez limitu
+daemon_user=U¿ytkownik&#44; jako który serwer fetchmail jest uruchamiany,0
+mda_command=Polecenie dostarczanie e-maili,3,U¿yj SMTP
+line2=Konfiguracja systemu,11
 fetchmail_path=¦cie¿ka do programu <tt>fetchmail</tt>,0
-daemon_user=U¿ytkownik, jako który serwer fetchmail jest uruchamiany,0
-pid_file=¦cie¿ka do pliku z&nbsp;numerem PID serwera fetchmail,0
+pid_file=¦cie¿ka do pliku daemona PID serwera fetchmail,0
+start_cmd=Polecenie uruchamiania daemona fetchmail,3,Tylko uruchom fetchmail
+stop_cmd=Polecenie zatrzymania daemona fetchmail,3,Tylko uruchom fetchmail -q

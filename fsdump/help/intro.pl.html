@@ -1,0 +1,20 @@
+<header>Kopia zapasowa systemu plików</header>
+
+Ten modu³ pozwala na tworzenie i przywracanie kopii ca³ego systemu plików
+u¿ywaj±c poleceñ z rodziny <tt>dump</tt> i <tt>restore</tt>. Kopia zapasowa
+systemu plików normalnie jest zapisywana na ta¶mie, ale mo¿e byæ tak¿e zapisana
+do pliku w innym systemie plików je¿eli nie posiadasz napêdu ta¶mowego. <p>
+
+Na niektórych systemach operacyjnych bêdzie u¿ywane polecenie <tt>tar</tt>
+przy tworzeniu kopii, je¿eli polecenie <tt>dump</tt> nie istnieje. Na przyk³ad
+NFS, FAT and Reiserfs nie posiadaj± okre¶lonych poleceñ dla kopii zapasowych.
+Format <tt>tar</tt> nie mo¿e przechowywaæ zaawansowanych informacji takich
+jak atrybuty XFS, EXT i ACL, wiêc preferowane jest u¿ycie <tt>dump</tt>, gdy
+to tylko mo¿liwe. <p>
+
+G³ówna strona tego modu³u zawiera listê skonfigurowanych kopii zapasowych
+(je¿eli istniej±), przycisk dodawania nowych kopii i przycisk przywracania
+kopii. <p>
+
+<hr>
+

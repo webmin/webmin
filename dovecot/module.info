@@ -18,3 +18,4 @@ desc_hu=Levelezõ szerver (Dovecot)
 longdesc_ms_MY=Mengkonfigurasi Dovecot IMAP dan POP3 sebagai pelayan menarik mel.
 desc_ms_MY=Pelayan Dovecot IMAP/POP3
 longdesc_de=Konfiguriert den Dovecot IMAP und POP3 Mail Abrufserver.
+longdesc_pl=Konfiguracja Dovecot - serwera pobierania e-maili przez IMAP i POP3.

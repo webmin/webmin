@@ -67,6 +67,7 @@ index_atboot=Uruchomiæ przy starcie?
 index_atbootdesc=Zmieñ tê opcjê w celu kontrolowania, czy serwer Fail2Ban ma byæ uruchamiany przy starcie systemu, czy nie.
 index_echeck=Wykryto b³±d w Fail2Ban w systemie : $1. Mo¿liwe, ¿e Fail2Ban nie jest zainstalowany, lub <a href='$2'>konfiguracja modu³u</a> jest nieprawid³owa.
 index_fail2ban=Fail2Ban
+index_header=Modu³ Fail2Ban
 index_restart=Restartuj serwer Fail2Ban
 index_restartdesc=Kliknij na ten przycisk, aby zastosowaæ aktualn± konfiguracjê przez ponowne uruchomienie serwera Fail2Ban.
 index_return=indeksu modu³u

@@ -4,6 +4,6 @@ hidden=1
 desc_ca=Servidor de Correu Exim
 desc=Exim Mailserver
 desc_nl=Exim Mailserver
-desc_pl=Serwer poczty Exim
+desc_pl=Exim - serwer poczty
 desc_hu=Levelezõ szerver (Exim)
 desc_ms_MY=Pelayan Mail Exim

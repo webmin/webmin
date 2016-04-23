@@ -1,7 +1,7 @@
 desc_ja_JP.euc=Fetchmail ¥á¡¼¥ë¸¡º÷
 category=servers
 desc_ko_KR.euc=Fetchmail ¸ÞÀÏ °Ë»ö 
-desc_pl=Pobieranie poczty przez fetchmaila
+desc_pl=Fetchmail  - pobieranie poczty
 desc=Fetchmail Mail Retrieval
 name=Fetchmail
 desc_ca=Lliurament de Correu Fetchmail
@@ -26,3 +26,4 @@ longdesc_hu=Levelek automatikus letöltése fetchmail segítségével másik szerverek
 desc_hu=Levelek lekérdezése (FetchMail)
 longdesc_ms_MY=Konfigurasi program fetchmail yang popular secara automatik menarik mel dari pelayan yang lain.
 desc_ms_MY=Fetchmail Menarik Mel
+longdesc_pl=Konfiguracja popularnego programu fetchmail do automatycznego pobierania e-maili z innych serwerów

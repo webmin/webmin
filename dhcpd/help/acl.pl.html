@@ -1,0 +1,63 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+   <meta name="GENERATOR" content="Mozilla/4.72 [en] (X11; U; Linux 2.2.14-6.1.1 i686) [Netscape]">
+</head>
+<body>
+
+<center>
+<h1>
+DHCPD podsystem ACL</h1></center>
+
+<h3>
+CELE:</h3>
+&nbsp;&nbsp;&nbsp; Głównym celem podsystemu acl jest zapwenienie
+potężnego i rozszerzalnego mechanizmu kontroli dostępu do różnych obiektów
+w konfiguracji dhcpd. Te obiekty to sieci współdzielone, podsieci, grupy hostów
+i hosty.
+<br>&nbsp;&nbsp;&nbsp; Dodatkowo podsystem acl pozwoli ci na kontrole innych
+funkcji takich jak: unikatlne nazwy obiektów, zastosowanie i zmienianie
+konfiguracji, wyświetlanie i usuwanie dzierżaw dhcp.
+<h3>
+KONCEPCJE:</h3>
+&nbsp;&nbsp;&nbsp; Plik konfiguracyjny dhcpd można wyświetlić w strukturze
+drzewa. Każdy węzeł w tym drzewie reprezentuje konfiguracje innego
+obiektu dhcp.
+Each node of this tree represents a configuration of different dhcp objects
+(rys. 0).
+<p>&nbsp;&nbsp;&nbsp; Podsystem acl posiada 2 poziomy uprawnień:
+<ul>
+<li>
+globalny: odczyt, zapis, tworzenie;</li>
+
+<li>
+na obiekt: odczyt, zapis.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Globalne uprawnienia istnieją w każdym typie obiektów
+(hosty, grupy, podsieci, współdzielone sieci) i kontrolują operacje w całym
+obiekcie.
+<br>Globalne tworzenie
+<br>Globalny odczyt
+<br>Globalny zapis
+<br>&nbsp;&nbsp;&nbsp;Na obiekt - te uprawnienia dają ci  więcej elastyczności
+przy kontroli dostępu. Uprawnienia na obiekt acl dla każdego obiektu istnieje
+pojedynczy obiekt. Aktualnie zaimplementowane są tylko uprawnienia na obiekt
+dla hostów i podsieci.
+<br>Na obiekt odczyt
+<br>Na obiekt zapis
+<br>&nbsp;&nbsp;&nbsp; Podsystem acl może operować na 4 różnych poziomach
+zabezpieczeń (lub trybach).
+<br><img SRC="ctree0.gif" ALT="drzewo konfiguracji dhcpd, poziom zabezpieczeń 0, check subnetX permissions" height=229 width=314>
+<br>&nbsp;
+<p><img SRC="ctree1.gif" ALT="drzewko konfiguracji dhcpd, poziom zabezpieczeń 1, check subnetX permissions" height=229 width=314>
+<p><img SRC="ctree2.gif" ALT="drzewko konfiguracji dhcpd, poziom zabezpieczeń 2, check subnetX permissions" height=229 width=314>
+<p><img SRC="ctree3.gif" ALT="drzewko konfiguracji dhcpd, poziom zabezpieczeń 3, check subnetX permissions" height=229 width=314>
+<h3>
+UWAGI:</h3>
+&nbsp;
+<h3>
+NOTATKI DEWELOPERA:</h3>
+
+</body>
+</html>

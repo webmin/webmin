@@ -1,0 +1,116 @@
+<header>Uczyniæ strftime subsytutem celów kopii zapasowych?</header>
+
+Je¿eli ta opcja jest ustawiona na <b>Tak</b>, to kody takie jak %d, %m, %Y i %u
+mog± byæ u¿yte w nazwie pliku docelowego kopii zapasowej. Zostan± one zast±pione
+przez dni, miesi±ce, lata i dni tygodnia wed³ug warto¶ci z momentu wykonania
+kopii. Jest to przydatne, je¿eli wykonujesz kopiê zapasow± ka¿dego dnia. Mo¿esz
+wtedy ³atwo przywróciæ kopiê z okre¶lonego dnia. <p>
+
+Niektóre z kodów, które mo¿esz u¿yæ :<br>
+
+<pre><font size=-1>
+ %a     skrótowa nazwa dnia tygodnia zgodnie z lokalizacj±
+ 
+ %A     pe³na nazwa dnia tygodnia zgodnie z lokalizacj±
+ 
+ %b     skrótowa nazwa miesi±ca zgodnie z lokalizacj±
+ 
+ %B     pe³na nazwa miesi±ca zgodnie z lokalizacj±
+ 
+ %c     preferowana reprezentacja daty i czasu zgodnie z 
+        lokalizacj±
+ 
+ %C     numer wieku (rok podzielony przez 100 i skrócony 
+        do liczby ca³kowitej, przedzia³ od 00 do 99)
+ 
+ %d     dzieñ miesi±ca jako liczba dziesiêtna (przedzia³ od 
+        01 do 31)
+ 
+ %D     to samo co %m/%d/%y
+ 
+ %e     dzieñ miesi±ca jako liczba dziesiêtna, przy czym
+        pojedyncza cyfra poprzedzona jest spacj± (przedzia³
+		od " 1" do "31")
+ 
+ %g     tak jak %G, ale bez uwzglêdnienia wieku
+ 
+ %G     rok w zapisie czterocyfrowym, powi±zany z numerem
+        tygodnia wg ISO. Symbol ten ma ten sam format i
+		warto¶æ jak %Y, z tym wyj±tkiem, ¿e je¶li numer
+		tygodnia wg ISO nale¿y do poprzedniego lub
+		nastêpnego roku, to poprzedni lub nastêpny rok
+		jest zwracany przez ten symbol.
+		
+ %h     tak jak %b
+ 
+ %H     godzina jako liczba dziesiêtna w systemie
+		24-godzinnym (przedzia³ od 00 do 23)
+ 
+ %I     godzina jako liczba dziesiêtna w systemie
+		12-godzinnym (przedzia³ od 01 do 12)
+ 
+ %j     dzieñ roku jako liczba dziesiêtna
+		(przedzia³ od 001 do 366)
+ 
+ %m     miesi±c jako liczba dziesiêtna
+		(przedzia³ od 01 do 12)
+ 
+ %M     minuty jako liczba dziesiêtna
+ 
+ %n     znak nowej linii
+ 
+ %p     albo "am" lub "pm" zgodnie z podanym czasem,
+		albo ³añcuchy znaków odpowiadaj±ce lokalizacji
+ 
+ %r     czas w notacji a.m. lub p.m.
+ 
+ %R     czas w notacji 24-godzinnej
+ 
+ %S     sekundy jako liczba dziesiêtna
+ 
+ %t     znak tabulacji
+ 
+ %T     aktualny czas, odpowiednik %H:%M:%S
+ 
+ %u     numer dnia tygodnia jako liczba dziesiêtna [1,7],
+		gdzie 1 oznacza poniedzia³ek 
+
+ %U     numer tygodnia aktualnego roku jako liczba
+		dziesiêtna, pocz±wszy od pierwszej niedzieli jako
+		pierwszego dnia pierwszego tygodnia
+
+ %V     numer tygodnia aktualnego roku wg ISO 8601:1988
+		jako liczba dziesiêtna, przedzia³ od 01 do 53,
+		gdzie tydzieñ 1 jest pierwszym tygodniem, którym ma
+		co najmniej 4 dni w aktualnym roku, przy czym
+		pierwszym dniem tygodnia jest poniedzia³ek.
+		(Przy u¿yciu %G lub %g otrzymuje siê rok, który
+		odpowiada numerowi tygodnia dla podanego znacznika
+		czasu).
+
+ %W     numer tygodnia aktualnego roku jako liczba dziesiêtna,
+		pocz±wszy od pierwszego poniedzia³ku, jako pierwszego
+		dnia pierwszego tygodnia
+
+ %w     dzieñ tygodnia jako liczba dziesiêtna, pocz±wszy od
+		niedzieli - numer 0
+
+ %x     preferowana reprezentacja daty, zgodnie z
+		lokalizacj±, bez czasu
+
+ %X     preferowana reprezentacja czasu, zgodnie z
+		lokalizacj±, bez daty
+
+ %y     rok jako liczba dziesiêtna, bez uwzglêdnienia
+		wieku (przedzia³ od 00 do 99)
+
+ %Y     rok jako liczba dziesiêtna, z wiekiem w³±cznie
+
+ %Z     strefa czasowa, nazwa lub skrót
+
+
+ %%     znak "%".
+</font></pre>
+
+<footer>
+

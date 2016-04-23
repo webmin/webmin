@@ -1,0 +1,11 @@
+hide_dot_files=Wy¶wietlaæ pliki zaczynaj±ce siê od kropki?,1,0-Tak,1-Nie
+iconsize=Rozmiar przycisków na pasku narzêdzi,1,1-Ma³e,0-Du¿e z etykietami
+nocharset=Próbowaæ u¿yæ w³a¶ciwego kodowania?,1,0-Tak,1-Nie
+extract=Wypakowaæ pliki .class z archiwów JAR?,1,1-Tak,0-Nie
+width=Szeroko¶æ skalowania obrazków,3,Domy¶lnie (300 pikseli)
+fixed=Rozmiar czcionki dla tekstu,3,Domy¶lnie (12 punktów)
+small_fixed=Rozmiar czcionki dla przycisków,3,Domy¶lnie (10 punktów)
+force_text=Edytor dla plików HTML,1,1-Edytor tekstowy,0-Edytor HTML
+defzip=Domy¶lny tryb wysy³ania archiwów,1,2-Wypakuj i usuñ,1-Wypakuj,0-Nic nie rób 
+defuser=Domy¶lny u¿ytkownik do wysy³ania,10,root-root,*-Taki sam jak katalog,Inny u¿ytkownik
+htmlexts=Rozszerzenia plików edytowanych jako HTML,3,Domy¶lnie (.htm and .html)

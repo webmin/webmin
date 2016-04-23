@@ -23,4 +23,4 @@ vixie_cron=Obsluga rozszerzeñ vixie-crona,1,1-Tak,0-Nie
 system_crontab=Scie¿ka do systemowego pliku zadañ vixie-crona,0
 single_file=¦cie¿ka do pliku crontab pojedynczego u¿ytkownika,0
 cronfiles_dir=¦cie¿ka do katalogu z dodatkowymi plikami crona,3,Brak
-run_parts=polecenie run-parts,0
+run_parts=Polecenie run-parts,0

@@ -1,4 +1,4 @@
-display_mode=Na g³ównej stronie ukazuj± siê,1,0-Wszystkie polecenia i&nbsp;parametry,1-Dowi±zania do poleceñ
+display_mode=Na g³ównej stronie ukazuj± siê,1,0-Wszystkie polecenia i parametry,1-Dowi±zania do poleceñ
 width=Szeroko¶æ okna edytora pliku,3,Domy¶lnie (80 znaków)
 height=Wysoko¶æ okna edytora pliku,3,Domy¶lnie (20 znaków)
 wrap=Tryb wrap edytora plików,1,-Domy¶lnie (miêkki),hard-Twardy,off-Wy³±czone

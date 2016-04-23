@@ -1,0 +1,28 @@
+<header>Fail2Ban - detektor intruzów</header>
+
+Fail2Ban jest serwerem, który skanuje pliki logów w poszukiwaniu wpisów
+dotycz±cych niepowodzeñ logowañ lub innych ataków i przeprowadza akcje
+takie jak firewall lub blokowanie ¼ród³a ataków w inny sposób. Mo¿e byæ
+u¿yty w celu zapobiegania ataków typu brute-force, które zgaduj± has³a
+przez blokowanie ataków po kilku próbach. <p>
+
+S± trzy g³ówne obiekty konfiguracyjne w Fail2Ban:
+
+<dl>
+<dt><b>Filtry logów</b>
+<dd>Filtr w zasadzie jest wyra¿eniem regularnym, które mo¿e byæ zastosowane na
+    plikach logów w celu zidentyfikowania b³êdnych logowañ i innych ataków. <p>
+
+<dt><b>Dopasowanie akcji</b>
+<dd>Akcje to ustawienie poleceñ, które bêd± uruchomione w celu blokowania ataku.
+    Akcj± mo¿e byæ tak¿e polecenie do odblokowania IP i polecenia, które zostan±
+    uruchomione przy uruchamianiu i wy³±czaniu Fail2Ban. <p>
+
+<dt><b>Jail - akcje filtra</b>
+<dd>Jail (wiêzienie) to kombinacja filtra , jednej lub wiêkszej ilo¶ci akcji i jednej 
+    lub wiêkszej ilo¶ci plików loga. Log jest stale skanowany w poszukiwaniu linii,
+    które pasuj± do filtra i je¿eli zostanie znaleziony to stosowana jest wybrana
+    akcja  <p>
+</dl>
+
+<footer>
