@@ -64,18 +64,22 @@ while(<CMD>) {
 	if (/^\[(update|install|deps):\s+(\S+)\s+/) {
 		push(@rv, $2);
 		}
-	elsif (/^(Installed|Dependency Installed|Updated|Dependency Updated|Updating|Upgrading):\s*(.*)/) {
+	elsif (/^(Installed|Dependency Installed|Updated|Dependency Updated|Updating|Upgrading|Upgraded):\s*(.*)/) {
 		# Line like :
 		# Updated:
 		#   wbt-virtual-server-theme.x86
 		local @pkgs = split(/\s+/, $2);
 		if (!@pkgs) {
-			# Wrapped to next line
-			local $pkgs = <CMD>;
-			print &html_escape($pkgs);
-			$pkgs =~ s/^\s+//;
-			$pkgs =~ s/\s+$//;
-			@pkgs = split(/\s+/, $_);
+			# Wrapped to next line(s)
+			while(1) {
+				local $pkgs = <CMD>;
+				print &html_escape($pkgs);
+				$pkgs =~ s/^\s+//;
+				$pkgs =~ s/\s+$//;
+				my @linepkgs = split(/\s+/, $_);
+				last if (!@linepkgs);
+				push(@pkgs, @linepkgs);
+				}
 			}
 		foreach my $p (@pkgs) {
 			if ($p !~ /:/ && $p =~ /^(\S+)\.(\S+)$/) {
