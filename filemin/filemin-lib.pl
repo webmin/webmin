@@ -136,7 +136,9 @@ sub print_interface {
         print "<script type=\"text/javascript\" src=\"unauthenticated/js/bootstrap-hover-dropdown.min.js\"></script>";
         print "<link rel=\"stylesheet\" type=\"text/css\" href=\"unauthenticated/css/style.css\" />";
         print "<link rel=\"stylesheet\" type=\"text/css\" href=\"unauthenticated/css/dataTables.bootstrap.css\" />";
-        init_datatables();
+        if ($current_theme eq 'bootstrap') {
+        	init_datatables();
+	}
         # Set "root" icon
         if($base eq '/') {
             $root_icon = "<i class='fa fa-hdd-o'></i>";
@@ -161,7 +163,7 @@ sub print_interface {
             print_template("unauthenticated/templates/quicks.html");
         }
         $page = 1;
-        $pagelimit = 9001; # IT'S OVER NINE THOUSAND!
+        $pagelimit = 4294967295; # The number of maximum files in a directory for EXT4. 9000+ is way to little
         print_template("unauthenticated/templates/dialogs.html");
     } else {
         # Interface for legacy themes
