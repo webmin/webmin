@@ -1425,13 +1425,13 @@ sub backup_database
 local ($db, $file, $compress, $drop, $where, $charset, $compatible,
        $tables, $user, $single, $quick) = @_;
 if ($compress == 0) {
-	$writer = ">".quotemeta($file);
+	$writer = "cat >".quotemeta($file);
 	}
 elsif ($compress == 1) {
-	$writer = "| gzip -c >".quotemeta($file);
+	$writer = "gzip -c >".quotemeta($file);
 	}
 elsif ($compress == 2) {
-	$writer = "| bzip2 -c >".quotemeta($file);
+	$writer = "bzip2 -c >".quotemeta($file);
 	}
 local $dropsql = $drop ? "--add-drop-table" : "";
 local $singlesql = $single ? "--single-transaction" : "";
@@ -1455,17 +1455,12 @@ eval {
 		$gtidsql = "--set-gtid-purged=OFF";
 		}
 	};
-local $dump_authstr = $authstr;
 if ($user && $user ne "root") {
-	# When running as another Unix user, authstr may be different
-	$dump_authstr = &make_authstr(undef, undef, undef, undef, undef, $user);
+	# Actual writing of output is done as another user
+	$writer = &command_as_user($user, undef, $writer);
 	}
-local $cmd = "$config{'mysqldump'} $dump_authstr $dropsql $singlesql $quicksql $wheresql $charsetsql $compatiblesql $quotingsql $routinessql ".quotemeta($db)." $tablessql $eventssql $gtidsql 2>&1 $writer";
-if ($user && $user ne "root") {
-	$cmd = &command_as_user($user, undef, $cmd);
-	}
+local $cmd = "$config{'mysqldump'} $authstr $dropsql $singlesql $quicksql $wheresql $charsetsql $compatiblesql $quotingsql $routinessql ".quotemeta($db)." $tablessql $eventssql $gtidsql 2>&1 | $writer";
 local $out = &backquote_logged("($cmd) 2>&1");
-&make_authstr();	# Put back old authstr
 if ($? || !-s $file) {
 	return $out;
 	}
