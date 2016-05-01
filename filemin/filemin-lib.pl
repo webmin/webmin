@@ -136,7 +136,9 @@ sub print_interface {
         print "<script type=\"text/javascript\" src=\"unauthenticated/js/bootstrap-hover-dropdown.min.js\"></script>";
         print "<link rel=\"stylesheet\" type=\"text/css\" href=\"unauthenticated/css/style.css\" />";
         print "<link rel=\"stylesheet\" type=\"text/css\" href=\"unauthenticated/css/dataTables.bootstrap.css\" />";
-        init_datatables();
+        if ($current_theme eq 'bootstrap') {
+        	init_datatables();
+	}
         # Set "root" icon
         if($base eq '/') {
             $root_icon = "<i class='fa fa-hdd-o'></i>";
