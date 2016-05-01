@@ -64,7 +64,7 @@ while(<CMD>) {
 	if (/^\[(update|install|deps):\s+(\S+)\s+/) {
 		push(@rv, $2);
 		}
-	elsif (/^(Installed|Dependency Installed|Updated|Dependency Updated|Updating|Upgrading|Upgraded):\s*(.*)/) {
+	elsif (/^(Installed|Dependency Installed|Updated|Dependency Updated|Upgraded):\s*(.*)/) {
 		# Line like :
 		# Updated:
 		#   wbt-virtual-server-theme.x86
@@ -73,6 +73,7 @@ while(<CMD>) {
 			# Wrapped to next line(s)
 			while(1) {
 				local $pkgs = <CMD>;
+				last if (!$pkgs);
 				print &html_escape($pkgs);
 				$pkgs =~ s/^\s+//;
 				$pkgs =~ s/\s+$//;
