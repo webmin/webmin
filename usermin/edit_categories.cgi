@@ -60,5 +60,3 @@ print &ui_columns_end();
 print ui_form_end([ [ "ok", $text{'categories_ok'} ] ]);
 ui_print_footer("", $text{'index_return'});
 
-&ui_print_footer("", $text{'index_return'});
-
