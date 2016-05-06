@@ -269,8 +269,12 @@ sub print_interface {
 
         $actions = "<a class='action-link' href='javascript:void(0)' onclick='renameDialog(\"$vlink\")' title='$text{'rename'}' data-container='body'>$rename_icon</a>";
 
-        if ($list[$count - 1][15] == 1) {
-            $href = "index.cgi?path=".&urlize("$path/$link");
+        if ( $list[ $count - 1 ][15] == 1 ) {
+            if ($path eq '/'. $link) {
+                $href = "index.cgi?path=" . &urlize("$path");
+            } else {
+                $href = "index.cgi?path=" . &urlize("$path/$link");
+            }
         } else {
             $href = "download.cgi?file=".&urlize($link)."&path=".&urlize($path);
             if($0 =~ /search.cgi/) {
@@ -288,8 +292,25 @@ sub print_interface {
             ) {
                 $actions = "$actions<a class='action-link' href='edit_file.cgi?file=".&urlize($link)."&path=".&urlize($path)."' title='$text{'edit'}' data-container='body'>$edit_icon</a>";
             }
-            if (index($type, "zip") != -1 or index($type, "compressed") != -1) {
-                $actions = "$actions <a class='action-link' href='extract.cgi?path=".&urlize($path)."&file=".&urlize($link)."' title='$text{'extract_archive'}' data-container='body'>$extract_icon</a> ";
+            if (   ( index( $type, "application-zip" ) != -1 && has_command('unzip') )
+                || ( index( $type, "application-x-7z-compressed" ) != -1 && has_command('7z') )
+                || ( index( $type, "application-x-rar" ) != -1           && has_command('unrar') )
+                || ((      index( $type, "x-compressed-tar" ) != -1
+                        || index( $type, "-x-tar" ) != -1
+                        || ( index( $type, "-x-bzip" ) != -1 && has_command('bzip2') )
+                        || ( index( $type, "-gzip" ) != -1   && has_command('gzip') )
+                        || ( index( $type, "-x-xz" ) != -1   && has_command('xz') )
+                    )
+                    && has_command('tar')
+                )
+                )
+            {
+                $actions
+                    = "$actions <a class='action-link' href='extract.cgi?path="
+                    . &urlize($path)
+                    . "&file="
+                    . &urlize($link)
+                    . "' title='$text{'extract_archive'}' data-container='body'>$extract_icon</a> ";
             }
         }
         @row_data = (
