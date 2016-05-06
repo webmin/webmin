@@ -6385,6 +6385,12 @@ elsif (-d $src) {
 		$err = $out;
 		}
 	}
+elsif (-l $src) {
+	# A link .. re-create
+	my $linkdst = readlink($src);
+	$ok = &symlink_logged($dst, $linkdst);
+	$err = $ok ? undef : $!;
+	}
 else {
 	# Can just copy with cp
 	my $out = &backquote_logged("cp -p ".quotemeta($src).
