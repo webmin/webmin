@@ -5,6 +5,7 @@
 require './filemin-lib.pl';
 use lib './lib';
 #use File::Basename;
+use File::MimeInfo;
 
 &ReadParse();
 
@@ -36,7 +37,8 @@ unless (opendir ( DIR, $cwd )) {
         @list = keys %hash;
     }
     # Get info about directory entries
-    @info = map { [ $_, stat($_), &guess_mime_type($_), -d $_ ] } @list;
+    @info = map { [ $_, stat($_), &mimetype($_), -d $_ ] } @list;
+    print "types=",join(" ", map { $_->[14] } @info),"<p>\n";
 
     # Filter out folders
     @folders = map {$_} grep {$_->[15] == 1 } @info;

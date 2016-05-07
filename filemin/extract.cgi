@@ -2,12 +2,13 @@
 
 require './filemin-lib.pl';
 use lib './lib';
+use File::MimeInfo;
 
 &ReadParse();
 
 get_paths();
 
-$archive_type = &guess_mime_type($cwd.'/'.$in{'file'});
+$archive_type = mimetype($cwd.'/'.$in{'file'});
 
 
 if ( index( $archive_type, "x-bzip" ) != -1 ) {
