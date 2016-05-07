@@ -6388,7 +6388,7 @@ elsif (-d $src) {
 elsif (-l $src) {
 	# A link .. re-create
 	my $linkdst = readlink($src);
-	$ok = &symlink_logged($dst, $linkdst);
+	$ok = &symlink_logged($linkdst, $dst);
 	$err = $ok ? undef : $!;
 	}
 else {
