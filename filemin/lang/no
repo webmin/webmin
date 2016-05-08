@@ -143,3 +143,7 @@ upload_files=Last opp filer
 uploading=Laster opp, vennligst vent...
 user_name=Brukernavn
 warning_title=Advarsel!!!
+info_total1=Total: $1 file and $2 folder
+info_total2=Total: $1 files and $2 folder
+info_total3=Total: $1 file and $2 folders
+info_total4=Total: $1 files and $2 folders
