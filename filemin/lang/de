@@ -64,3 +64,8 @@ size=Gr&#246;&#223;e
 type=Typ
 user_name=Benutzername
 warning_title=Warnung!!!
+
+info_total1=Total: $1 file and $2 folder
+info_total2=Total: $1 files and $2 folder
+info_total3=Total: $1 file and $2 folders
+info_total4=Total: $1 files and $2 folders
