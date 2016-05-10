@@ -338,7 +338,7 @@ sub print_interface {
         push @row_data, $permissions if($userconfig{'columns'} =~ /permissions/);
         push @row_data, $mod_time if($userconfig{'columns'} =~ /last_mod_time/);
 
-        print &ui_checked_columns_row(\@row_data, "", "name", $link);
+        print &ui_checked_columns_row(\@row_data, "", "name", $vlink);
     }
     print ui_columns_end();
     print &ui_hidden("path", $path),"\n";
