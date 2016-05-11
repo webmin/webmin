@@ -224,7 +224,21 @@ sub print_interface {
         print_template("unauthenticated/templates/legacy_quicks.html");
         print_template("unauthenticated/templates/legacy_dialogs.html");
     }
-    print "<div class='total'>" . &text('info_total', scalar @files, scalar @folders) . "</div>";
+    my $info_total;
+    my $info_files = scalar @files;
+    my $info_folders = scalar @folders;
+
+    if ($info_files eq 1 && $info_folders eq 1) {
+        $info_total = 'info_total1'
+    } elsif ($info_files ne 1 && $info_folders eq 1) {
+        $info_total = 'info_total2'
+    } elsif ($info_files eq 1 && $info_folders ne 1) {
+        $info_total = 'info_total3'
+    } else {
+        $info_total = 'info_total4'
+    }
+
+    print "<div class='total'>" . &text($info_total, scalar @files, scalar @folders) . "</div>";
 #    use Data::Dumper;
 #    print Dumper(\%allowed_for_edit);
 
@@ -324,7 +338,7 @@ sub print_interface {
         push @row_data, $permissions if($userconfig{'columns'} =~ /permissions/);
         push @row_data, $mod_time if($userconfig{'columns'} =~ /last_mod_time/);
 
-        print &ui_checked_columns_row(\@row_data, "", "name", $link);
+        print &ui_checked_columns_row(\@row_data, "", "name", $vlink);
     }
     print ui_columns_end();
     print &ui_hidden("path", $path),"\n";
