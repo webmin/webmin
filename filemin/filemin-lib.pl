@@ -102,7 +102,7 @@ sub print_template {
 
 sub print_errors {
     my @errors = @_;
-    &ui_print_header(undef, "Filemin", "");
+    &ui_print_header(undef, $module_info{'name'}, "");
     print $text{'errors_occured'};
     print "<ul>";
     foreach $error(@errors) {
