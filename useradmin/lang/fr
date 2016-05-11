@@ -19,7 +19,7 @@ index_notgroups2=Aucun groupe n'a &#233;t&#233; trouv&#233; sur ce syst&#232;me 
 index_creategroup=Cr&#233;er un nouveau groupe.
 index_nomoregroups=Vous n'&#234;tes pas autoris&#233; &#224; cr&#233;er des groupes suppl&#233;mentaires
 index_logins=Afficher les noms de connexion par
-index_return=&#224; la liste des utilisateurs et des groupes
+index_return=la liste des utilisateurs et des groupes
 index_equals=&#233;quivaut &#224;
 index_matches=correspond &#224; une expression r&#233;guli&#232;re
 index_nequals=n'est pas &#233;quivalent &#224;
@@ -30,15 +30,15 @@ index_lower=est plus petit que
 index_higher=est plus grand que
 index_who=Utilisateurs connect&#233;s
 index_mass=Supprimer l'(les) utilisateur(s) s&#233;lectionn&#233;(s)
-index_mass2=Désactiver sélection
-index_mass3=Activer sélection
+index_mass2=DÃ©sactiver sÃ©lection
+index_mass3=Activer sÃ©lection
 index_gmass=Supprimer le(s) groupe(s) s&#233;lectionn&#233;(s)
 
 search_title=R&#233;sultats d'une recherche
 search_notfound=Aucun utilisateur correspondant trouv&#233;
-search_found=$1 utilisateurs correspondants trouvés ..
+search_found=$1 utilisateurs correspondants trouvÃ©s ..
 search_gnotfound=Aucun groupe correspondant trouv&#233;
-search_gfound=$1 groupes correspondants trouvés ..
+search_gfound=$1 groupes correspondants trouvÃ©s ..
 
 uedit_title=Modification d'un utilisateur
 uedit_title2=Cr&#233;ation d'un utilisateur
@@ -275,7 +275,7 @@ acl_uedit_gid=Utilisateurs ayant des GID dans l'intervalle
 acl_uedit_group=Utilisateurs ayant des groupes
 acl_uedit_sec=Inclure les groupes secondaires ?
 acl_uedit_this=Seulement cet utilisateur
-acl_uedit_re=Utilisateurs correspondant à l'expression rationnelle
+acl_uedit_re=Utilisateurs correspondant Ã  l'expression rationnelle
 acl_ucreate=Peut cr&#233;er de nouveaux utilisateurs ?
 acl_uid=UID pour les utilisateurs nouveaux ou modifi&#233;s
 acl_umultiple=Plusieurs utilisateurs peuvent avoir le m&#234;me UID
@@ -377,7 +377,7 @@ batch_emkdir=Impossible de cr&#233;er le r&#233;pertoire personnel $1 : $2
 batch_egtaken=Nom de groupe d&#233;j&#224; en cours d'utilisation &#224; la ligne $1 : $2
 batch_eaction=Action invalide &#224; la ligne $1 : $2
 batch_enouser=L'utilisateur n'existe pas &#224; la ligne $1 : $2
-batch_erename=Vous n'êtes pas autorisé à renommer les utilisateurs aux lignes $1 : $2
+batch_erename=Vous n'Ãªtes pas autorisÃ© Ã  renommer les utilisateurs aux lignes $1 : $2
 batch_emove=Impossible de d&#233;placer le r&#233;pertoire personnel &#224; la ligne $1 : $2
 batch_created=Cr&#233;&#233; l'utilisateur $1
 batch_deleted=Supprim&#233; l'utilisateur $1
@@ -438,16 +438,16 @@ gmass_eroot=Vous n'&#234;tes pas autoris&#233; &#224; supprimer des groupes syst
 gmass_doing=Suppression du groupe $1 en cours...
 gmass_eprimary=Le groupe $1 ne peut pas &#234;tre supprim&#233;, car il est le groupe primaire de l'utilisateur $2.
 
-dmass_title=Désactiver les utilisateurs
-dmass_sure=Êtes-vous sur de vouloir désactiver les $1 utilisateurs sélectionnés? Ils pourront être réactivés ultérieurement sans modifier leurs mots de passe ni perte de données.
-dmass_dis=Désactiver les utilisateurs
+dmass_title=DÃ©sactiver les utilisateurs
+dmass_sure=ÃŠtes-vous sur de vouloir dÃ©sactiver les $1 utilisateurs sÃ©lectionnÃ©s? Ils pourront Ãªtre rÃ©activÃ©s ultÃ©rieurement sans modifier leurs mots de passe ni perte de donnÃ©es.
+dmass_dis=DÃ©sactiver les utilisateurs
 dmass_pass=Verrouillage temporaire du mot de passe ..
-dmass_doing=Désactivation en cours de l'utilisateur $1 ..
-dmass_already=.. déjà désactivé!
+dmass_doing=DÃ©sactivation en cours de l'utilisateur $1 ..
+dmass_already=.. dÃ©jÃ  dÃ©sactivÃ©!
 
 emass_title=Activer les utilisateurs
-emass_pass=Déverrouillage du mot de passe ..
+emass_pass=DÃ©verrouillage du mot de passe ..
 emass_doing=Actiivation en cours de l'utilisateur $1 ..
-emass_already.. déjà activé!
+emass_already.. dÃ©jÃ  activÃ©!
 
 
