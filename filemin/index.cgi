@@ -15,7 +15,7 @@ unless (opendir ( DIR, $cwd )) {
     $path="";
     print_errors("$text{'error_opendir'} $cwd $!");
 } else {
-    &ui_print_header(undef, "Filemin", "", undef, 0 , 0, 0, "<a href='config.cgi?path=$path' data-config-pagination='$userconfig{'per_page'}'>$text{'module_config'}</a>");
+    &ui_print_header(undef, $module_info{'name'}, "", undef, 0 , 0, 0, "<a href='config.cgi?path=$path' data-config-pagination='$userconfig{'per_page'}'>$text{'module_config'}</a>");
 
 ##########################################
 #---------LET DA BRAINF###ING BEGIN----------
