@@ -234,6 +234,7 @@ if ($rel1 ne "" && $rel2 ne "" && $config{'package_system'} eq 'rpm') {
 	}
 local @sp1 = split(/[\.\-\+\~]/, $_[0]);
 local @sp2 = split(/[\.\-\+\~]/, $_[1]);
+local $tmp;
 for(my $i=0; $i<@sp1 || $i<@sp2; $i++) {
 	local $v1 = $sp1[$i];
 	local $v2 = $sp2[$i];
