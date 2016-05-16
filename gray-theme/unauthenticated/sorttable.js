@@ -10,7 +10,7 @@ function sortables_init() {
     for (ti=0;ti<tbls.length;ti++) {
         thisTbl = tbls[ti];
 				if (!thisTbl.id) {
-      		thisTbl.id = 'sortableTable'+this.lastAssignedId++;
+      		thisTbl.id = 'sortableTable'+(lastAssignedId++);
     		}
         if (((' '+thisTbl.className+' ').indexOf("sortable") != -1) && (thisTbl.id)) {
             //initTable(thisTbl.id);
