@@ -176,7 +176,7 @@ $rv .= "<td>&nbsp;$text{'backup_pass'}&nbsp;</td><td> ".
 	&ui_password("$_[0]_pass", $mode == 1 ? $pass : undef, 20).
 	"</td> </tr>\n";
 $rv .= "<tr> <td></td>\n";
-$rv .= "<td colspan='3'>$text{'backup_port'} ".
+$rv .= "<td colspan='4'>$text{'backup_port'} ".
 	&ui_opt_textbox("$_[0]_port", $mode == 1 ? $port : undef, 5,
 			$text{'default'})."</td> </tr>\n";
 
@@ -196,7 +196,7 @@ $rv .= "<td>&nbsp;$text{'backup_pass'}&nbsp;</td><td> ".
 	&ui_password("$_[0]_spass", $mode == 2 ? $pass : undef, 20).
 	"</td> </tr>\n";
 $rv .= "<tr> <td></td>\n";
-$rv .= "<td colspan='3'>$text{'backup_port'} ".
+$rv .= "<td colspan='4'>$text{'backup_port'} ".
 	&ui_opt_textbox("$_[0]_sport", $mode == 2 ? $port : undef, 5,
 			$text{'default'})."</td> </tr>\n";
 
@@ -204,7 +204,7 @@ if ($_[2] == 1) {
 	# Uploaded file field
 	$rv .= "<tr><td>".&ui_oneradio("$_[0]_mode", 3, undef, $mode == 3).
 		"</td>\n";
-	$rv .= "<td colspan=3>$text{'backup_mode3'} ".
+	$rv .= "<td colspan=4>$text{'backup_mode3'} ".
 		&ui_upload("$_[0]_upload", 40).
 		"</td> </tr>\n";
 	}
@@ -212,7 +212,7 @@ elsif ($_[2] == 2) {
 	# Output to browser option
 	$rv .= "<tr><td>".&ui_oneradio("$_[0]_mode", 4, undef, $mode == 4).
 		"</td>\n";
-	$rv .= "<td colspan=3>$text{'backup_mode4'}</td> </tr>\n";
+	$rv .= "<td colspan=4>$text{'backup_mode4'}</td> </tr>\n";
 	}
 
 $rv .= "</table>\n";
@@ -707,7 +707,7 @@ elsif ($mode == 4) {
 
 =head2 date_subs(string)
 
-Given a string with strftime-style format characters in it like %Y and %S, 
+Given a string with strftime-style format characters in it like %Y and %S,
 replaces them with the correct values for the current date and time.
 
 =cut
