@@ -344,6 +344,7 @@ sessions_user=Webmin user
 sessions_login=Logged in at
 sessions_host=IP address
 sessions_lview=View logs..
+sessions_actions=Actions..
 
 hide_title=Hide Unused Modules
 hide_desc=The following modules will be removed from the module access list for $1 as their corresponding servers are not installed on your system ..

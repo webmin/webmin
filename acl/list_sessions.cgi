@@ -26,7 +26,8 @@ print &ui_columns_start([ $text{'sessions_id'},
 			  $text{'sessions_user'},
 			  $text{'sessions_host'},
 			  $haslog ? ( $text{'sessions_login'} ) : ( ),
-			  "" ], 100);
+			  $text{'sessions_actions'},
+			], 100);
 foreach my $k (sort { my @a = split(/\s+/, $sessiondb{$a});
 		      my @b = split(/\s+/, $sessiondb{$b}); $b[1] <=> $a[1] }
 		    keys %sessiondb) {
