@@ -338,13 +338,18 @@ unix_header=Unix user authentication settings
 unix_utable=Allowed Unix users
 
 sessions_title=Current Login Sessions
-sessions_desc=Current Webmin session logins are listed below. To cancel an existing session and force the user to login again, click on its session ID.
 sessions_id=Session ID
 sessions_user=Webmin user
 sessions_login=Logged in at
 sessions_host=IP address
 sessions_lview=View logs..
 sessions_actions=Actions..
+sessions_logouts=Also show logged-out sessions..
+sessions_state=State
+sessions_this=This login
+sessions_in=Logged in
+sessions_out=Logged out
+sessions_kill=Disconnect..
 
 hide_title=Hide Unused Modules
 hide_desc=The following modules will be removed from the module access list for $1 as their corresponding servers are not installed on your system ..
