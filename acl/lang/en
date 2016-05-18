@@ -351,6 +351,8 @@ sessions_in=Logged in
 sessions_out=Logged out
 sessions_kill=Disconnect..
 
+logins_title=Recent Webmin logins
+
 hide_title=Hide Unused Modules
 hide_desc=The following modules will be removed from the module access list for $1 as their corresponding servers are not installed on your system ..
 hide_ok=Hide Modules Now
