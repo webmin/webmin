@@ -1968,7 +1968,7 @@ my $conf = &build_ssl_config(\@cns);
 my $out = &backquote_logged(
 	"$cmd req -newkey rsa:$size -x509 -sha256 -nodes -out $ctemp -keyout $ktemp ".
 	"-days ".quotemeta($in{'days'})." -subj ".quotemeta($subject)." ".
-	"-config $conf -reqexts v3_req 2>&1");
+	"-config $conf -reqexts v3_req -utf8 2>&1");
 if (!-r $ctemp || !-r $ktemp || $?) {
 	return $text{'newkey_essl'}."<br>"."<pre>".&html_escape($out)."</pre>";
 	}
@@ -2174,7 +2174,8 @@ my $subject = &build_ssl_subject($country, $state, $city, $org, $orgunit, $cn,$e
 my $conf = &build_ssl_config($cn);
 my $out = &backquote_command(
 	"$cmd req -new -key $ktemp -out $ctemp -sha256 ".
-	"-subj ".quotemeta($subject)." -config $conf -reqexts v3_req 2>&1");
+	"-subj ".quotemeta($subject)." -config $conf -reqexts v3_req ".
+	"-utf8 2>&1");
 if (!-r $ctemp || $?) {
 	return (0, $out);
 	}
