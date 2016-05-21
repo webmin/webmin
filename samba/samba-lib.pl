@@ -962,6 +962,14 @@ else {
 	$out = &backquote_logged("$config{'net'} -s $config{'smb_conf'} maxrid 2>&1");
 	local $maxrid = $out =~ /rid:\s+(\d+)/ ? $1 + 1 : undef;
 	$maxrid = 1000 if ($maxrid < 1000);	# Should be >1000
+	if (&foreign_check("useradmin")) {
+		&foriegn_require("useradmin");
+		local %taken;
+		&useradmin::build_user_used(\%taken);
+		while($taken{$maxrid}) {
+			$maxrid++;
+			}
+		}
 	$out = &backquote_logged(
 		"$config{'net'} -s $config{'smb_conf'} groupmap add".
 		" rid=$maxrid".
