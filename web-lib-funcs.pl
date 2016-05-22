@@ -7347,6 +7347,7 @@ if ($ssl) {
 		return $error if ($error);
 		}
 	Net::SSLeay::set_fd($rv->{'ssl_con'}, fileno($rv->{'fh'}));
+	Net::SSLeay::set_tlsext_host_name($rv->{'ssl_con'}, $host);
 	Net::SSLeay::connect($rv->{'ssl_con'}) ||
 		return "SSL connect() failed";
 	if ($certreqs) {
