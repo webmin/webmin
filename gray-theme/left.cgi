@@ -89,7 +89,7 @@ push(@leftmenu, { 'type' => 'item',
 %gaccess = &get_module_acl(undef, "");
 if (&get_product_name() eq 'webmin' &&		# For Webmin
       !$ENV{'ANONYMOUS_USER'} &&
-      $gconfig{'nofeedbackcc'} != 2 &&
+      int($gconfig{'nofeedbackcc'}) != 2 &&
       $gaccess{'feedback'} &&
       $gconfig{'feedback_to'} ||
     &get_product_name() eq 'usermin' &&		# For Usermin
