@@ -2039,7 +2039,8 @@ while(@units) {
 	while(@args < 100 && @units) {
 		push(@args, shift(@units));
 		}
-	$out = &backquote_command("systemctl show -- ".join(" ", @args));
+	$out = &backquote_command("systemctl show -- ".join(" ", @args).
+				  " 2>/dev/null");
 	my @lines = split(/\r?\n/, $out);
 	my $curr;
 	foreach my $l (@lines) {
