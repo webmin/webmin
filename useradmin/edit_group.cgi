@@ -4,15 +4,23 @@
 
 require './user-lib.pl';
 &ReadParse();
+@glist = &list_groups();
 
 # Get group and show page header
 $n = $in{'group'};
 if ($n eq "") {
 	$access{'gcreate'} == 1 || &error($text{'gedit_ecreate'});
 	&ui_print_header(undef, $text{'gedit_title2'}, "", "create_group");
+	if ($in{'clone'} ne '') {
+		($clone_hash) = grep { $_->{'group'} eq $in{'clone'} } @glist;
+		$clone_hash || &error($text{'ugdit_egone'});
+		%group = %$clone_hash;
+		&can_edit_user(\%access, \%group) ||
+			&error($text{'gedit_eedit'});
+		$group{'group'} = '';
+		}
 	}
 else {
-	@glist = &list_groups();
 	($ginfo_hash) = grep { $_->{'group'} eq $n } @glist;
 	$ginfo_hash || &error($text{'gedit_egone'});
 	%group = %$ginfo_hash;
@@ -165,7 +173,8 @@ else {
 if ($n ne "") {
 	print &ui_form_end([
 		[ undef, $text{'save'} ],
-		$access{'gdelete'} ? ( [ 'delete', $text{'delete'} ] ) : ( ),
+		$access{'gcreate'} ? ( [ 'clone', $text{'gedit_clone'} ] ) : (),
+		$access{'gdelete'} ? ( [ 'delete', $text{'delete'} ] ) : (),
 		]);
 	}
 else {
