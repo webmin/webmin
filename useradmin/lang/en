@@ -134,6 +134,7 @@ uedit_uid_def=Automatic
 uedit_uid_calc=Calculated
 uedit_disabled=Login temporarily disabled
 uedit_sys=System default
+uedit_clone=Clone User
 
 usave_err=Failed to save user
 usave_eedit=You cannot edit this user
