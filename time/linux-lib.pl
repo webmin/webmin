@@ -1,18 +1,21 @@
 # Functions for getting and setting the timezone on Linux
 
-$timezones_file = "/usr/share/zoneinfo/zone.tab";
-$currentzone_link = "/etc/localtime";
-$currentzone_file = "/etc/timezone";
-$timezones_dir = "/usr/share/zoneinfo";
-$sysclock_file = "/etc/sysconfig/clock";
+use strict;
+use warnings;
+our $timezones_file = "/usr/share/zoneinfo/zone.tab";
+our $currentzone_link = "/etc/localtime";
+our $currentzone_file = "/etc/timezone";
+our $timezones_dir = "/usr/share/zoneinfo";
+our $sysclock_file = "/etc/sysconfig/clock";
 
 # list_timezones()
 sub list_timezones
 {
-local @rv;
-local %done;
-&open_readfile(ZONE, $timezones_file) || return ( );
-while(<ZONE>) {
+my @rv;
+my %done;
+my $fh = "ZONE";
+&open_readfile($fh, $timezones_file) || return ( );
+while(<$fh>) {
 	s/\r|\n//g;
 	s/^\s*#.*$//;
 	if (/^(\S+)\s+(\S+)\s+(\S+)\s+(\S.*)/) {
@@ -24,7 +27,7 @@ while(<ZONE>) {
 		$done{$3}++;
 		}
 	}
-close(ZONE);
+close($fh);
 push(@rv, [ "GMT", "GMT" ]) if (!$done{'GMT'});
 push(@rv, [ "UTC", "UTC" ]) if (!$done{'UTC'});
 return sort { $a->[0] cmp $b->[0] } @rv;
@@ -33,7 +36,7 @@ return sort { $a->[0] cmp $b->[0] } @rv;
 # get_current_timezone()
 sub get_current_timezone
 {
-local $lnk = readlink(&translate_filename($currentzone_link));
+my $lnk = readlink(&translate_filename($currentzone_link));
 if ($lnk) {
 	# Easy - it a link
 	$lnk =~ s/^\.\.//;
@@ -49,22 +52,24 @@ else {
 # set_current_timezone(zone)
 sub set_current_timezone
 {
+my ($zone) = @_;
 &lock_file($currentzone_link);
 unlink(&translate_filename($currentzone_link));
-symlink(&translate_filename("$timezones_dir/$_[0]"),
+symlink(&translate_filename("$timezones_dir/$zone"),
 	&translate_filename($currentzone_link));
 &unlock_file($currentzone_link);
 
 if (-r $currentzone_file) {
 	# This file is used on Debian systems
-	&open_lock_tempfile(FILE, ">$currentzone_file");
-	&print_tempfile(FILE, $_[0],"\n");
-	&close_tempfile(FILE);
+	my $fh = "FILE";
+	&open_lock_tempfile($fh, ">$currentzone_file");
+	&print_tempfile($fh, $zone,"\n");
+	&close_tempfile($fh);
 	}
 
-local %clock;
+my %clock;
 if (&read_env_file($sysclock_file, \%clock)) {
-	$clock{'ZONE'} = $_[0];
+	$clock{'ZONE'} = $zone;
 	&lock_file($sysclock_file);
 	&write_env_file($sysclock_file, \%clock);
 	&unlock_file($sysclock_file);
@@ -78,7 +83,7 @@ return -r $timezones_file;
 
 sub timezone_files
 {
-local @rv = ( $currentzone_link );
+my @rv = ( $currentzone_link );
 push(@rv, $currentzone_file) if (-r $currentzone_file);
 push(@rv, $sysclock_file) if (-r $sysclock_file);
 return @rv;

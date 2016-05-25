@@ -1,35 +1,39 @@
 # Functions for getting and setting the timezone on Linux
 
-$timezone_file = "/etc/TIMEZONE";
-$timezones_dir = "/usr/share/lib/zoneinfo";
-$rtc_config = "/etc/rtc_config";
+use strict;
+use warnings;
+our $timezone_file = "/etc/TIMEZONE";
+our $timezones_dir = "/usr/share/lib/zoneinfo";
+our $rtc_config = "/etc/rtc_config";
 
 # list_timezones()
 sub list_timezones
 {
-local @rv;
-local $file;
-&open_execute_command(FIND, "find $timezones_dir -type f", 1);
-while($file = <FIND>) {
+my @rv;
+my $file;
+my $fh = "FIND";
+&open_execute_command($fh, "find $timezones_dir -type f", 1);
+while($file = <$fh>) {
 	chop($file);
-	local $buf;
-	&open_readfile(INFO, $file);
-	read(INFO, $buf, 2);
-	close(INFO);
+	my $buf;
+	my $fh2 = "INFO";
+	&open_readfile($fh2, $file);
+	read($fh2, $buf, 2);
+	close($fh2);
 	if ($buf eq "TZ") {
 		# A timezone file we can use!
 		$file =~ s/^$timezones_dir\///;
 		push(@rv, [ $file, undef ]);
 		}
 	}
-close(FIND);
+close($fh);
 return sort { $a->[0] cmp $b->[0] } @rv;
 }
 
 # get_current_timezone()
 sub get_current_timezone
 {
-local %tz;
+my %tz;
 &read_env_file($timezone_file, \%tz);
 $tz{'TZ'} =~ s/^://;
 return $tz{'TZ'};
@@ -38,7 +42,7 @@ return $tz{'TZ'};
 # set_current_timezone(zone)
 sub set_current_timezone
 {
-local %tz;
+my %tz;
 &lock_file($timezone_file);
 &read_env_file($timezone_file, \%tz);
 $tz{'TZ'} = $_[0];
@@ -48,7 +52,7 @@ $tz{'TZ'} = $_[0];
 if (-r $rtc_config) {
 	# Update x86 RTC timezone too
 	&lock_file($rtc_config);
-	local %rtc;
+	my %rtc;
 	&read_env_file($rtc_config, \%rtc);
 	$rtc{'zone_info'} = $_[0];
 	&write_env_file($rtc_config, \%rtc);
