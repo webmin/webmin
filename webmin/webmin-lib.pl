@@ -524,10 +524,11 @@ else {
 		closedir(DIR);
 		}
 
-	my $type;
-	open(TYPE, "$mdir/install-type");
-	chop($type = <TYPE>);
-	close(TYPE);
+	my $type = '';
+	if (open(TYPE, "$mdir/install-type")) {
+		chop($type = <TYPE>);
+		close(TYPE);
+		}
 
 	# Run the module's uninstall script
 	if (&check_os_support(\%minfo) &&
