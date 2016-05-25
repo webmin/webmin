@@ -2161,19 +2161,22 @@ if (!$found_copy) {
 return $temp;
 }
 
-# generate_ssl_csr(keyfile, country, state, city, org, orgunit, cname|&cnames, email)
+# generate_ssl_csr(keyfile, country, state, city, org, orgunit, cname|&cnames,
+# 		   email, ["sha1"|"sha2"])
 # Generates a new CSR, and returns either 1 and the temp file path, or 0 and
 # an error message
 sub generate_ssl_csr
 {
-my ($ktemp, $country, $state, $city, $org, $orgunit, $cn, $email) = @_;
+my ($ktemp, $country, $state, $city, $org, $orgunit, $cn, $email, $ctype) = @_;
+$ctype ||= "sha2";
 &foreign_require("acl");
 my $ctemp = &transname();
 my $cmd = &acl::get_ssleay();
 my $subject = &build_ssl_subject($country, $state, $city, $org, $orgunit, $cn,$email);
 my $conf = &build_ssl_config($cn);
+my $ctypeflag = $ctype eq "sha2" ? "-sha256" : "";
 my $out = &backquote_command(
-	"$cmd req -new -key $ktemp -out $ctemp -sha256 ".
+	"$cmd req -new -key $ktemp -out $ctemp $ctypeflag ".
 	"-subj ".quotemeta($subject)." -config $conf -reqexts v3_req ".
 	"-utf8 2>&1");
 if (!-r $ctemp || $?) {
