@@ -1,15 +1,18 @@
 # Functions for getting and setting the timezone on Linux
 
-$timezones_file = "/usr/share/zoneinfo/zone.tab";
-$currentzone_link = "/etc/localtime";
-$timezones_dir = "/usr/share/zoneinfo";
+use strict;
+use warnings;
+our $timezones_file = "/usr/share/zoneinfo/zone.tab";
+our $currentzone_link = "/etc/localtime";
+our $timezones_dir = "/usr/share/zoneinfo";
 
 # list_timezones()
 sub list_timezones
 {
-local @rv;
-&open_readfile(ZONE, $timezones_file) || return ( );
-while(<ZONE>) {
+my @rv;
+my $fh = "ZONE";
+&open_readfile($fh, $timezones_file) || return ( );
+while(<$fh>) {
 	s/\r|\n//g;
 	s/^\s*#.*$//;
 	if (/^(\S+)\s+(\S+)\s+(\S+)\s+(\S.*)/) {
@@ -19,14 +22,14 @@ while(<ZONE>) {
 		push(@rv, [ $3, undef ]);
 		}
 	}
-close(ZONE);
+close($fh);
 return sort { $a->[0] cmp $b->[0] } @rv;
 }
 
 # get_current_timezone()
 sub get_current_timezone
 {
-local $lnk = readlink(&translate_filename($currentzone_link));
+my $lnk = readlink(&translate_filename($currentzone_link));
 if ($lnk) {
 	# Easy - it a link
 	$lnk =~ s/$timezones_dir\///;
@@ -41,9 +44,10 @@ else {
 # set_current_timezone(zone)
 sub set_current_timezone
 {
+my ($zone) = @_;
 &lock_file($currentzone_link);
 unlink(&translate_filename($currentzone_link));
-symlink(&translate_filename("$timezones_dir/$_[0]"),
+symlink(&translate_filename("$timezones_dir/$zone"),
 	&translate_filename($currentzone_link));
 &unlock_file($currentzone_link);
 }

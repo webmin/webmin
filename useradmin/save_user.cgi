@@ -25,6 +25,10 @@ elsif ($in{'delete'}) {
 	&redirect("delete_user.cgi?user=".&urlize($in{'old'}));
 	return;
 	}
+elsif ($in{'clone'}) {
+	&redirect("edit_user.cgi?clone=".&urlize($in{'old'}));
+	return;
+	}
 
 # Build list of used UIDs and GIDs
 &build_user_used(\%used);

@@ -1,11 +1,14 @@
 
+use strict;
+use warnings;
 do 'time-lib.pl';
+our ($module_config_file);
 
 # backup_config_files()
 # Returns files and directories that can be backed up
 sub backup_config_files
 {
-local @rv;
+my @rv;
 if (defined(&timezone_files)) {
 	push(@rv, &timezone_files());
 	}

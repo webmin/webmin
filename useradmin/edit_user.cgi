@@ -7,13 +7,22 @@ use Time::Local;
 &ReadParse();
 
 # Show header and get the user
+@ulist = &list_users();
 $n = $in{'user'};
-if ($n eq "") {
+if ($n eq '') {
+	# Creating a new user
 	$access{'ucreate'} || &error($text{'uedit_ecreate'});
 	&ui_print_header(undef, $text{'uedit_title2'}, "", "create_user");
+	if ($in{'clone'} ne '') {
+		($clone_hash) = grep { $_->{'user'} eq $in{'clone'} } @ulist;
+		$clone_hash || &error($text{'uedit_egone'});
+		%uinfo = %$clone_hash;
+		&can_edit_user(\%access, \%uinfo) || &error($text{'uedit_eedit'});
+		$uinfo{'user'} = '';
+		}
 	}
 else {
-	@ulist = &list_users();
+	# Editing an existing one
 	($uinfo_hash) = grep { $_->{'user'} eq $n } @ulist;
 	$uinfo_hash || &error($text{'uedit_egone'});
 	%uinfo = %$uinfo_hash;
@@ -595,6 +604,11 @@ if ($n ne "") {
 			push(@buts, [ "switch", $text{'uedit_swit'}, undef, 0,
 				"onClick='form.target=\"_blank\"'" ]);
 			}
+		}
+
+	# Clone user
+	if ($access{'ucreate'}) {
+		push(@buts, [ "clone", $text{'edit_clone'} ]);
 		}
 
 	# Delete user
