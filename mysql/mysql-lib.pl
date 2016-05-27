@@ -359,7 +359,7 @@ foreach my $p (@params) {
 	&error("Incorrect number of parameters") if ($pos < 0);
 	local $qp = $p;
 	$qp =~ s/'/''/g;
-	$qp = $qp eq '' ? 'NULL' : "'$qp'";
+	$qp = !defined($qp) ? 'NULL' : "'$qp'";
 	$sql = substr($sql, 0, $pos).$qp.substr($sql, $pos+1);
 	$pos += length($qp)-1;
 	}
