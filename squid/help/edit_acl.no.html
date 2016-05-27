@@ -1,0 +1,23 @@
+<header>Tilgangskontroll</header>
+
+<b>Tilgangskontroll lister</b>: ACLer er liste med termer som skal matches vha. regulære uttrykk.  En ACL kan også være en fil som inneholder et element eller regulært uttrykk per linje. ACL boksen på denne siden har flere felter som kan redigeres. Nye ACLer kan også opprettes.
+<p>
+Tilgjengelige felt er:
+<p>
+<em>Navn</em> er det navnet ACLen identifiseres med. Når du oppretter en <b>Proxy restriksjon</b> er det dette navnet som brukes til å definere hva som begrenses.
+<p>
+<em>Type</em> er informasjonstypen som ACLen matches mot. 
+<p>
+<em>Matcher..</em> er adressen, porten, URLen, brukeren, osv. som ACL vil bli matchet mot.
+<p>
+<b>Proxy restriksjoner</b>: er regler som enten tillater eller nekter en gitt forespørsel  basert på om dens  ACL matcher detaljene i forespørselen.  Det er tre felt i denne boksen.
+<p>
+<em>Handlin</em> er enten <em>allow</em> eller <em>deny</em>.
+<p>
+<em>ACLs</em> are the ACLs that will be matched against to decide whether the request is allowed or denied.  If prepended by an exclamation point the ACL will be negated, in other words everything <em>except</em> members of that ACL will be allowed or denied. 
+<p>
+<em>Move</em> allows the order of restrictions in the list.  The order in which they appear is important, because Squid only reads the list until it has found the first match.
+<p>
+<b>ICP restrictions</b>: This box is for restricting ICP requests.  ICP requests are requests from other neighbor caches.  This section work the same as <b>Proxy restrictions</b>.
+
+<hr>

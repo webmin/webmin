@@ -151,6 +151,7 @@ dnssec_eperiod=Manglende elelr ugyldig antall dager mellom re-signeringer
 dnssec_err=Kunne ikke lagre re-signering av DNSSEC n&#248;kkel
 dnssec_header=Innstillinger for re-signering av n&#248;kkel
 dnssec_period=Periode mellom re-signeringer?
+dnssec_secs=sekunder
 dnssec_title=Re-signering av DNSSEC n&#248;kkel
 dnssectools_title=DNNSEC-Verkt&#248;y Automasjon
 drecs_enone=Ingen valgt

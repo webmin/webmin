@@ -212,6 +212,7 @@ mail_sent=I liste med sendt e-post
 mail_sig=Rediger signatur
 mail_sign=Signer med n&#248;kkel
 mail_size=St&#248;rrelse
+mail_specialsync=Sync spesial
 mail_subfilter=Opprett filter per emne
 mail_subject=Emne
 mail_subsrch=Finn e-post med samme emne

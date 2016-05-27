@@ -101,6 +101,7 @@ cnf_ebind=Manglende eller ugyldig IP adresse &#229; lytte p&#229;
 cnf_edatadir=Manglende eller ugyldig katalog for databasefiler
 cnf_efile=Fant ikke MySQL konfigurasjonsfilen $1 p&#229; systemet ditt. Du m&#229; kanskje endre <a href='$2'>modulkonfigurasjonen</a> slik at den bruker riktig sti.
 cnf_ekey_buffer=Missing or invalid key buffer size
+cnf_ekey_buffer_size=Manglende eller ugyldig n&#248;kkel-buffer st&#248;rrelse
 cnf_emax_allowed_packet=Manglende eller ugyldig maks. pakkest&#248;rrelse
 cnf_emax_connections=Manglende eller ugyldig maks. antall datbasekoblinger
 cnf_emyisam_sort_buffer_size=Missing or invalid MyISAM sort buffer size
@@ -115,6 +116,7 @@ cnf_etable_cache=Missing or invalid tables to cache
 cnf_fpt=Separat fil for hver InnoDB tabell?
 cnf_header=Innstillinger for MySQL tjener
 cnf_key_buffer=Key buffer size
+cnf_key_buffer_size=N&#248;kkel-buffer st&#248;rrelse
 cnf_max_allowed_packet=Maks. pakkest&#248;rrelse
 cnf_max_connections=Maks. antall databasekoblinger
 cnf_myisam_sort_buffer_size=MyISAM sort buffer size
