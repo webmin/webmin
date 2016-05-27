@@ -608,7 +608,7 @@ if ($n ne "") {
 
 	# Clone user
 	if ($access{'ucreate'}) {
-		push(@buts, [ "clone", $text{'edit_clone'} ]);
+		push(@buts, [ "clone", $text{'uedit_clone'} ]);
 		}
 
 	# Delete user

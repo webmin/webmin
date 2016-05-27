@@ -1144,7 +1144,13 @@ elsif (@{$conf->{'domain'}}) {
 foreach my $i (@ifaces) {
 	local ($ns) = grep { $_->[0] eq 'dns-nameservers' } @{$i->[3]};
 	if ($ns) {
-		$ns->[1] = join(' ', @{$conf->{'nameserver'}});
+		if (@{$conf->{'nameserver'}}) {
+			$ns->[1] = join(' ', @{$conf->{'nameserver'}});
+			}
+		else {
+			$i->[3] = [ grep { $_->[0] ne 'nameservers' }
+					 @{$i->[3]} ];
+			}
 		$i->[3] = [ grep { $_->[0] ne 'dns-domain' &&
 				   $_->[0] ne 'dns-search' }
 				 @{$i->[3]} ];
@@ -1163,8 +1169,10 @@ if (!$need_apply && $generated_resolv) {
 		local ($a) = grep { $_->[0] eq 'address' &&
 			    &check_ipaddress($_->[1]) } @{$i->[3]};
 		next if (!$a);
-		push(@{$i->[3]}, [ 'dns-nameservers',
-			   join(' ', @{$conf->{'nameserver'}}) ]);
+		if (@{$conf->{'nameserver'}}) {
+			push(@{$i->[3]}, [ 'dns-nameservers',
+				   join(' ', @{$conf->{'nameserver'}}) ]);
+			}
 		push(@{$i->[3]}, @dnssearch);
 		&modify_interface_def($i->[0], $i->[1], $i->[2],
 				      $i->[3], 0);
