@@ -9,7 +9,11 @@ use Time::Local;
 
 if ($in{'delete'}) {
 	# Redirect to deletion page
-	&redirect("delete_group.cgi?group=$in{'old'}");
+	&redirect("delete_group.cgi?group=".&urlize($in{'old'}));
+	return;
+	}
+elsif ($in{'clone'}) {
+	&redirect("edit_group.cgi?clone=".&urlize($in{'old'}));
 	return;
 	}
 
