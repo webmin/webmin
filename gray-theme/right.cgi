@@ -31,6 +31,7 @@ if (@links) {
 		my $lnk = $_->{'link'};
 		$lnk = $gconfig{'webprefix'}.$lnk if ($lnk =~ /^\//);
 		&ui_link($lnk, $_->{'desc'}, undef,
+			 !$_->{'target'} ? '' :
 			 $_->{'target'} eq 'new' ? 'target=_blank' :
 			 $_->{'target'} eq 'window' ? 'target=_top' : '')
 			} @links;
