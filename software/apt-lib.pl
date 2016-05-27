@@ -19,9 +19,7 @@ local (@rv, @newpacks);
 
 # Build the command to run
 $ENV{'DEBIAN_FRONTEND'} = 'noninteractive';
-local $cmd = $apt_get_command eq "apt-get" ?
-  "$apt_get_command -y ".($force ? " --force-yes -f" : "")." install $update" :
-  "$apt_get_command -y".($force ? " -f" : "")." install $update";
+local $cmd = "$apt_get_command -y ".($force ? " -f" : "")." install $update";
 $update = join(" ", map { quotemeta($_) } split(/\s+/, $update));
 print "<b>",&text('apt_install', "<tt>$cmd</tt>"),"</b><p>\n";
 print "<pre>";
