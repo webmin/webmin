@@ -173,7 +173,8 @@ print &ui_table_row(&hlink($text{'shell'}, "shell"),
 	   ($shells ? "" : &ui_filebox("othersh", undef, 40, 1)));
 
 # Get the password, generate random if needed
-$pass = $n ne "" ? $uinfo{'pass'} : $config{'lock_string'};
+$pass = $in{'clone'} ne "" ? $uinfo{'pass'} :
+	$n ne "" ? $uinfo{'pass'} : $config{'lock_string'};
 if ($n eq "" && $config{'random_password'}) {
 	$random_password = &generate_random_password();
 	}
@@ -447,6 +448,9 @@ if ($config{'secmode'} != 1) {
 	foreach $g (@glist) {
 		@mems = split(/,/ , $g->{'members'});
 		$ismem = &indexof($uinfo{'user'}, @mems) >= 0;
+		if ($in{'clone'} ne '') {
+			$ismem ||= &indexof($in{'clone'}, @mems) >= 0;
+			}
 		if ($n eq "") {
 			$ismem = 1 if (&indexof($g->{'group'}, @defsecs) >= 0);
 			}
