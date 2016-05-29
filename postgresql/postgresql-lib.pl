@@ -1277,7 +1277,12 @@ if ($job) {
 # Returns the table containing users, and the list of columns (comma-separated)
 sub get_pg_shadow_table
 {
-if (&get_postgresql_version() >= 9.4) {
+if (&get_postgresql_version() >= 9.5) {
+	my $cols = $pg_shadow_cols;
+	$cols =~ s/usecatupd/'t'/g;
+	return ("pg_user", $cols);
+	}
+elsif (&get_postgresql_version() >= 9.4) {
 	return ("pg_user", $pg_shadow_cols);
 	}
 else {
