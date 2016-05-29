@@ -2548,8 +2548,8 @@ if ($add_tmpl) {
 		&create_record($file, $name, undef, "IN", $c[1], $recip);
 		if ($addrev && ($c[1] eq "A" || $c[1] eq "AAAA")) {
 			# Consider adding reverse record
-			local ($revconf, $revfile, $revrec) = &find_reverse(
-				$recip, $view);
+			local ($revconf, $revfile, $revrec) =
+				&find_reverse($recip);
 			if ($revconf && &can_edit_reverse($revconf) &&
 			    !$revrec) {
 				# Yes, add one
