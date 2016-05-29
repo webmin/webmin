@@ -2444,7 +2444,7 @@ return ( );
 # add_slave_server(&server)
 sub add_slave_server
 {
-&lock_file($module_config);
+&lock_file($module_config_file);
 &foreign_require("servers", "servers-lib.pl");
 local @sids = split(/\s+/, $config{'servers'});
 $config{'servers'} = join(" ", @sids, $_[0]->{'id'});
@@ -2454,21 +2454,21 @@ if ($_[0]->{'sec'}) {
 	}
 &sync_default_slave();
 &save_module_config();
-&unlock_file($module_config);
+&unlock_file($module_config_file);
 &servers::save_server($_[0]);
 }
 
 # delete_slave_server(&server)
 sub delete_slave_server
 {
-&lock_file($module_config);
+&lock_file($module_config_file);
 local @sids = split(/\s+/, $config{'servers'});
 $config{'servers'} = join(" ", grep { $_ != $_[0]->{'id'} } @sids);
 local @secsids = split(/\s+/, $config{'secservers'});
 $config{'secservers'} = join(" ", grep { $_ != $_[0]->{'id'} } @secsids);
 &sync_default_slave();
 &save_module_config();
-&unlock_file($module_config);
+&unlock_file($module_config_file);
 }
 
 sub sync_default_slave
@@ -3947,7 +3947,7 @@ sub dt_delete_dnssec_state
 		# remove key and krf files
 		keyrec_read($k_chroot);
 		@kskpaths = keyrec_keypaths($dom, "all");
-   	foreach (@kskpaths) {
+		foreach (@kskpaths) {
 			# remove any trailing ".key"
 			s/(.*).key$/\1/;
 			&unlink_file("$_.key");
