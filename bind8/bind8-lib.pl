@@ -1,8 +1,12 @@
 # bind8-lib.pl
 # Common functions for bind8 config files
+use strict;
+use warnings;
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
+our (%text, %config, %gconfig);
+
 my $dnssec_tools_minver = 1.13;
 my $have_dnssec_tools = eval "require Net::DNS::SEC::Tools::dnssectools;";
 
@@ -17,34 +21,45 @@ if ($have_dnssec_tools) {
 
 &init_config();
 do 'records-lib.pl';
-@extra_forward = split(/\s+/, $config{'extra_forward'});
-@extra_reverse = split(/\s+/, $config{'extra_reverse'});
-%is_extra = map { $_, 1 } (@extra_forward, @extra_reverse);
-%access = &get_module_acl();
-$zone_names_cache = "$module_config_directory/zone-names";
-$zone_names_version = 3;
+
+# Globals (yuck!)
+my @extra_forward = split(/\s+/, $config{'extra_forward'});
+my @extra_reverse = split(/\s+/, $config{'extra_reverse'});
+our %is_extra = map { $_, 1 } (@extra_forward, @extra_reverse);
+our %access = &get_module_acl();
+our $module_config;
+our $module_config_file;
+our $module_config_directory;
+our $module_name;
+my $zone_names_cache = "$module_config_directory/zone-names";
+my $zone_names_version = 3;
+my @list_zone_names_cache;
+my $slave_error;
+my %lines_count;
 
 # Where to find root zones file
-$internic_ftp_host = "rs.internic.net";
-$internic_ftp_ip = "199.7.52.73";
-$internic_ftp_file = "/domain/named.root";
-$internic_ftp_gzip = "/domain/root.zone.gz";
+my $internic_ftp_host = "rs.internic.net";
+my $internic_ftp_ip = "199.7.52.73";
+my $internic_ftp_file = "/domain/named.root";
+my $internic_ftp_gzip = "/domain/root.zone.gz";
 
 # Get the version number
-if (open(VERSION, "$module_config_directory/version")) {
-	chop($bind_version = <VERSION>);
-	close(VERSION);
+my $bind_version;
+if (open(my $VERSION, "<", "$module_config_directory/version")) {
+	chop($bind_version = <$VERSION>);
+	close($VERSION);
 	}
 else {
 	$bind_version = &get_bind_version();
 	}
 
-$dnssec_cron_cmd = "$module_config_directory/resign.pl";
+my $dnssec_cron_cmd = "$module_config_directory/resign.pl";
 
 # For automatic DLV setup
-$dnssec_dlv_zone = "dlv.isc.org.";
-@dnssec_dlv_key = ( 257, 3, 5, '"BEAAAAPHMu/5onzrEE7z1egmhg/WPO0+juoZrW3euWEn4MxDCE1+lLy2brhQv5rN32RKtMzX6Mj70jdzeND4XknW58dnJNPCxn8+jAGl2FZLK8t+1uq4W+nnA3qO2+DL+k6BD4mewMLbIYFwe0PG73Te9fZ2kJb56dhgMde5ymX4BI/oQ+cAK50/xvJv00Frf8kw6ucMTwFlgPe+jnGxPPEmHAte/URkY62ZfkLoBAADLHQ9IrS2tryAe7mbBZVcOwIeU/Rw/mRx/vwwMCTgNboMQKtUdvNXDrYJDSHZws3xiRXF1Rf+al9UmZfSav/4NWLKjHzpT59k/VStTDN0YUuWrBNh"' );
+my $dnssec_dlv_zone = "dlv.isc.org.";
+my @dnssec_dlv_key = ( 257, 3, 5, '"BEAAAAPHMu/5onzrEE7z1egmhg/WPO0+juoZrW3euWEn4MxDCE1+lLy2brhQv5rN32RKtMzX6Mj70jdzeND4XknW58dnJNPCxn8+jAGl2FZLK8t+1uq4W+nnA3qO2+DL+k6BD4mewMLbIYFwe0PG73Te9fZ2kJb56dhgMde5ymX4BI/oQ+cAK50/xvJv00Frf8kw6ucMTwFlgPe+jnGxPPEmHAte/URkY62ZfkLoBAADLHQ9IrS2tryAe7mbBZVcOwIeU/Rw/mRx/vwwMCTgNboMQKtUdvNXDrYJDSHZws3xiRXF1Rf+al9UmZfSav/4NWLKjHzpT59k/VStTDN0YUuWrBNh"' );
 
+my $rand_flag;
 if ($gconfig{'os_type'} =~ /-linux$/ && -r "/dev/urandom" &&
     !$config{'force_random'}) {
 	$rand_flag = "-r /dev/urandom";
@@ -82,6 +97,7 @@ if ($out =~ /(bind|named)\s+([0-9\.]+)/i) {
 return undef;
 }
 
+my @get_config_cache;
 # get_config()
 # Returns an array of references to assocs, each containing the details of
 # one directive
@@ -93,15 +109,16 @@ if (!@get_config_cache) {
 return \@get_config_cache;
 }
 
+my %get_config_parent_cache;
 # get_config_parent([file])
 # Returns a structure containing the top-level config as members
 sub get_config_parent
 {
-local $file = $_[0] || $config{'named_conf'};
+my $file = $_[0] || $config{'named_conf'};
 if (!defined($get_config_parent_cache{$file})) {
-	local $conf = &get_config();
+	my $conf = &get_config();
 	if (!defined($lines_count{$file})) {
-		local $lref = &read_file_lines($file);
+		my $lref = &read_file_lines($file);
 		$lines_count{$file} = @$lref;
 		}
 	$get_config_parent_cache{$file} =
@@ -118,11 +135,11 @@ return $get_config_parent_cache{$file};
 # Reads a config file and returns an array of values
 sub read_config_file
 {
-local($lnum, $line, $cmode, @ltok, @lnum, @tok,
-      @rv, $i, $t, $j, $ifile, @inc, $str);
+my ($lnum, $line, $cmode, @ltok, @lnum, @tok,
+      @rv, $i, $t, $ifile, @inc, $str);
 $lnum = 0;
-open(FILE, &make_chroot($_[0]));
-while($line = <FILE>) {
+open(my $FILE, "<", &make_chroot($_[0]));
+while($line = <$FILE>) {
 	# strip comments
 	$line =~ s/\r|\n//g;
 	$line =~ s/#.*$//g;
@@ -159,16 +176,17 @@ while($line = <FILE>) {
 			}
 		else { last; }
 		}
-	foreach $t (@ltok) {
+	foreach my $t (@ltok) {
 		push(@tok, $t); push(@lnum, $lnum);
 		}
 	$lnum++;
 	}
-close(FILE);
+close($FILE);
 $lines_count{$_[0]} = $lnum;
 
 # parse tokens into data structures
-$i = 0; $j = 0;
+my $i = 0;
+my $j = 0;
 while($i < @tok) {
 	$str = &parse_struct(\@tok, \@lnum, \$i, $j++, $_[0]);
 	if ($str) { push(@rv, $str); }
@@ -195,25 +213,23 @@ return @rv;
 # recursive_includes(&dirs, base)
 sub recursive_includes
 {
-local ($i, $j);
-local $any = 0;
-for($i=0; $i<@{$_[0]}; $i++) {
+my $any = 0;
+for(my $i=0; $i<@{$_[0]}; $i++) {
 	if (lc($_[0]->[$i]->{'name'}) eq "include") {
 		# found one.. replace the include directive with it
-		$ifile = $_[0]->[$i]->{'value'};
+		my $ifile = $_[0]->[$i]->{'value'};
 		if ($ifile !~ /^\//) {
 			$ifile = "$_[1]/$ifile";
 			}
-		local @inc = &read_config_file($ifile, 1);
+		my @inc = &read_config_file($ifile, 1);
 
 		# update index of included structures
-		local $j;
-		for($j=0; $j<@inc; $j++) {
+		for(my $j=0; $j<@inc; $j++) {
 			$inc[$j]->{'index'} += $_[0]->[$i]->{'index'};
 			}
 
 		# update index of structures after include
-		for($j=$i+1; $j<@{$_[0]}; $j++) {
+		for(my $j=$i+1; $j<@{$_[0]}; $j++) {
 			$_[0]->[$j]->{'index'} += scalar(@inc) - 1;
 			}
 		splice(@{$_[0]}, $i--, 1, @inc);
@@ -233,8 +249,8 @@ return $any;
 # Pos will end up at the start of the next structure
 sub parse_struct
 {
-local (%str, $i, $j, $t, @vals);
-$i = ${$_[2]};
+my (%str, $j, $t, @vals);
+my $i = ${$_[2]};
 $str{'line'} = $_[1]->[$i];
 if ($_[0]->[$i] ne '{') {
 	# Has a name
@@ -286,7 +302,7 @@ else {
 	$str{'value'} = $vals[0];
 	if ($t eq "{") {
 		# contains sub-structures.. parse them
-		local(@mems, $j);
+		my (@mems, $j);
 		$i++;		# skip {
 		$str{'type'} = 1;
 		$j = 0;
@@ -319,8 +335,8 @@ return \%str;
 # find(name, &array)
 sub find
 {
-local($c, @rv);
-foreach $c (@{$_[1]}) {
+my @rv;
+foreach my $c (@{$_[1]}) {
 	if ($c->{'name'} eq $_[0]) {
 		push(@rv, $c);
 		}
@@ -332,8 +348,7 @@ return @rv ? wantarray ? @rv : $rv[0]
 # find_value(name, &array)
 sub find_value
 {
-local(@v);
-@v = &find($_[0], $_[1]);
+my @v = &find($_[0], $_[1]);
 if (!@v) { return undef; }
 elsif (wantarray) { return map { $_->{'value'} } @v; }
 else { return $v[0]->{'value'}; }
@@ -345,7 +360,7 @@ sub base_directory
 {
 if ($_[1] || !-r $zone_names_cache) {
 	# Actually work out base
-	local ($opts, $dir, $conf);
+	my ($opts, $dir, $conf);
 	$conf = $_[0] ? $_[0] : &get_config();
 	if (($opts = &find("options", $conf)) &&
 	    ($dir = &find("directory", $opts->{'members'}))) {
@@ -358,7 +373,7 @@ if ($_[1] || !-r $zone_names_cache) {
 	}
 else {
 	# Use cache
-	local %znc;
+	my %znc;
 	&read_file_cached($zone_names_cache, \%znc);
 	return $znc{'base'} || &base_directory($_[0], 1);
 	}
@@ -371,23 +386,29 @@ else {
 # each line in the config file must contain part or all of only one directive.
 sub save_directive
 {
-local(@oldv, @newv, $pm, $i, $o, $n, $lref, @nl);
+my (@oldv, @newv, $pm, $o, $n, $lref, @nl, $ol);
 $pm = $_[0]->{'members'};
 @oldv = ref($_[1]) ? @{$_[1]} : &find($_[1], $pm);
 @newv = @{$_[2]};
-for($i=0; $i<@oldv || $i<@newv; $i++) {
-	local $oldeline = $i<@oldv ? $oldv[$i]->{'eline'} : undef;
+for(my $i=0; $i<@oldv || $i<@newv; $i++) {
+	my $oldeline = $i<@oldv ? $oldv[$i]->{'eline'} : undef;
 	if ($i < @newv) {
 		# Make sure new directive has 'value' set
-		local @v = @{$newv[$i]->{'values'}};
+		my @v;
+		if ($newv[$i]->{'values'}) {
+			@v = @{$newv[$i]->{'values'}};
+			}
+		else {
+			@v = undef;
+			}
 		$newv[$i]->{'value'} = @v ? $v[0] : undef;
 		}
 	if ($i >= @oldv && !$_[5]) {
 		# a new directive is being added.. put it at the end of
 		# the parent
 		if (!$_[4]) {
-			local $addfile = $newv[$i]->{'file'} || $_[0]->{'file'};
-			local $parent = &get_config_parent($addfile);
+			my $addfile = $newv[$i]->{'file'} || $_[0]->{'file'};
+			my $parent = &get_config_parent($addfile);
 			$lref = &read_file_lines(&make_chroot($addfile));
 			@nl = &directive_lines($newv[$i], $_[3]);
 			splice(@$lref, $_[0]->{'eline'}, 0, @nl);
@@ -404,7 +425,7 @@ for($i=0; $i<@oldv || $i<@newv; $i++) {
 		# a new directive is being added.. put it at the start of
 		# the parent
 		if (!$_[4]) {
-			local $parent = &get_config_parent($newv[$i]->{'file'} ||
+			my $parent = &get_config_parent($newv[$i]->{'file'} ||
 							   $_[0]->{'file'});
 			$lref = &read_file_lines(
 				&make_chroot($newv[$i]->{'file'} ||
@@ -423,7 +444,7 @@ for($i=0; $i<@oldv || $i<@newv; $i++) {
 	elsif ($i >= @newv) {
 		# a directive was deleted
 		if (!$_[4]) {
-			local $parent = &get_config_parent($oldv[$i]->{'file'});
+			my $parent = &get_config_parent($oldv[$i]->{'file'});
 			$lref = &read_file_lines(
 					&make_chroot($oldv[$i]->{'file'}));
 			$ol = $oldv[$i]->{'eline'} - $oldv[$i]->{'line'} + 1;
@@ -436,7 +457,7 @@ for($i=0; $i<@oldv || $i<@newv; $i++) {
 	else {
 		# updating some directive
 		if (!$_[4]) {
-			local $parent = &get_config_parent($oldv[$i]->{'file'});
+			my $parent = &get_config_parent($oldv[$i]->{'file'});
 			$lref = &read_file_lines(
 					&make_chroot($oldv[$i]->{'file'}));
 			@nl = &directive_lines($newv[$i], $_[3]);
@@ -454,14 +475,22 @@ for($i=0; $i<@oldv || $i<@newv; $i++) {
 	}
 }
 
+# directives that need their value to be quoted
+my %need_quote;
+my @need_quote = ( "file", "zone", "view", "pid-file", "statistics-file",
+	        "dump-file", "named-xfer", "secret" );
+foreach my $need (@need_quote) {
+	$need_quote{$need}++;
+	}
+
 # directive_lines(&directive, tabs)
 # Renders some directive into a number of lines of text
 sub directive_lines
 {
-local(@rv, $v, $m, $i);
+my (@rv, $i);
 $rv[0] = "\t" x $_[1];
 $rv[0] .= "$_[0]->{'name'}";
-foreach $v (@{$_[0]->{'values'}}) {
+foreach my $v (@{$_[0]->{'values'}}) {
 	if ($need_quote{$_[0]->{'name'}} && !$i) { $rv[0] .= " \"$v\""; }
 	else { $rv[0] .= " $v"; }
 	$i++;
@@ -469,7 +498,7 @@ foreach $v (@{$_[0]->{'values'}}) {
 if ($_[0]->{'type'} == 1) {
 	# multiple values.. include them as well
 	$rv[0] .= " {";
-	foreach $m (@{$_[0]->{'members'}}) {
+	foreach my $m (@{$_[0]->{'members'}}) {
 		push(@rv, &directive_lines($m, $_[1]+1));
 		}
 	push(@rv, ("\t" x ($_[1]+1))."}");
@@ -478,7 +507,7 @@ elsif ($_[0]->{'type'} == 2) {
 	# named sub-structures .. include them too
 	foreach my $sn (sort { $a cmp $b } (keys %{$_[0]->{'members'}})) {
 		$rv[0] .= " ".$sn." {";
-		foreach $m (@{$_[0]->{'members'}->{$sn}}) {
+		foreach my $m (@{$_[0]->{'members'}->{$sn}}) {
 			$rv[0] .= " ".join(" ", &directive_lines($m, 0));
 			}
 		$rv[0] .= " }";
@@ -499,16 +528,14 @@ if ($_[0]->{'file'} eq $_[2]) {
 	}
 if ($_[0]->{'type'} == 1) {
 	# Do sub-members
-	local $d;
-	foreach $d (@{$_[0]->{'members'}}) {
+	foreach my $d (@{$_[0]->{'members'}}) {
 		&renumber($d, $_[1], $_[2], $_[3]);
 		}
 	}
 elsif ($_[0]->{'type'} == 2) {
 	# Do sub-members
-	local ($sm, $d);
-	foreach $sm (keys %{$_[0]->{'members'}}) {
-		foreach $d (@{$_[0]->{'members'}->{$sm}}) {
+	foreach my $sm (keys %{$_[0]->{'members'}}) {
+		foreach my $d (@{$_[0]->{'members'}->{$sm}}) {
 			&renumber($d, $_[1], $_[2], $_[3]);
 			}
 		}
@@ -531,7 +558,7 @@ return &ui_table_row($_[0], &ui_radio($_[1], $v, \@opts));
 # Updates the config from a multi-value option
 sub save_choice
 {
-local($nd);
+my $nd;
 if ($in{$_[0]}) { $nd = { 'name' => $_[0], 'values' => [ $in{$_[0]} ] }; }
 &save_directive($_[1], $_[0], $nd ? [ $nd ] : [ ], $_[2]);
 }
@@ -556,12 +583,12 @@ return &ui_table_row($_[0],
 # save_addr_match(name, &parent, indent)
 sub save_addr_match
 {
-local($addr, @vals, $dir);
+my (@vals, $dir);
 if ($in{"$_[0]_def"}) { &save_directive($_[1], $_[0], [ ], $_[2]); }
 else {
 	$in{$_[0]} =~ s/\r//g;
-	foreach $addr (split(/\n+/, $in{$_[0]})) {
-		local ($n, @v) = split(/\s+/, $addr);
+	foreach my $addr (split(/\n+/, $in{$_[0]})) {
+		my ($n, @v) = split(/\s+/, $addr);
 		push(@vals, { 'name' => $n, 'values' => \@v });
 		}
 	$dir = { 'name' => $_[0], 'type' => 1, 'members' => \@vals };
@@ -579,7 +606,7 @@ sub address_port_input
     my $v = &find($_[4], $_[6]);
 
     my $port;
-    for ($i = 0; $i < @{$v->{'values'}}; $i++) {
+    for (my $i = 0; $i < @{$v->{'values'}}; $i++) {
       if ($v->{'values'}->[$i] eq $_[5]) {
 	$port = $v->{'values'}->[$i+1];
 	last;
@@ -597,9 +624,9 @@ sub address_port_input
 # address_input(text, name, &config, type)
 sub address_input
 {
-local($v, $av, @av);
+my ($v, @av);
 $v = &find($_[1], $_[2]);
-foreach $av (@{$v->{'members'}}) {
+foreach my $av (@{$v->{'members'}}) {
 	push(@av, join(" ", $av->{'name'}, @{$av->{'values'}}));
 	}
 if ($_[3] == 0) {
@@ -616,8 +643,8 @@ else {
 
 # save_port_address(name, portname, &config, indent)
 sub save_port_address {
-  local($addr, $port, @vals, $dir);
-  foreach $addr (split(/\s+/, $in{$_[0]})) {
+  my ($port, @vals, $dir, $n);
+  foreach my $addr (split(/\s+/, $in{$_[0]})) {
     $addr =~ /^\S+$/ || &error(&text('eipacl', $addr));
     push(@vals, { 'name' => $addr });
   }
@@ -630,9 +657,9 @@ sub save_port_address {
 # save_address(name, &parent, indent, ips-only)
 sub save_address
 {
-local ($addr, @vals, $dir, $i);
-local @sp = split(/\s+/, $in{$_[0]});
-for($i=0; $i<@sp; $i++) {
+my ($addr, @vals, $dir);
+my @sp = split(/\s+/, $in{$_[0]});
+for(my $i=0; $i<@sp; $i++) {
 	!$_[3] || &check_ipaddress($sp[$i]) || &error(&text('eip', $sp[$i]));
 	if (lc($sp[$i]) eq "key") {
 		push(@vals, { 'name' => $sp[$i],
@@ -676,8 +703,8 @@ return &ui_table_row($_[0],
 # save_forwarders(name, &parent, indent)
 sub save_forwarders
 {
-local ($i, $ip, $pr, @vals);
-for($i=0; defined($ip = $in{"$_[0]_ip_$i"}); $i++) {
+my ($ip, $pr, @vals);
+for(my $i=0; defined($ip = $in{"$_[0]_ip_$i"}); $i++) {
 	next if (!$ip);
 	&check_ipaddress($ip) || &check_ip6address($ip) ||
 		&error(&text('eip', $ip));
@@ -686,7 +713,7 @@ for($i=0; defined($ip = $in{"$_[0]_ip_$i"}); $i++) {
 	push(@vals, { 'name' => $ip,
 		      'values' => $pr ? [ "port", $pr ] : [ ] });
 	}
-local $dir = { 'name' => $_[0], 'type' => 1, 'members' => \@vals };
+my $dir = { 'name' => $_[0], 'type' => 1, 'members' => \@vals };
 &save_directive($_[1], $_[0], @vals ? [ $dir ] : [ ], $_[2]);
 }
 
@@ -704,7 +731,7 @@ return &ui_table_row($_[0],
 
 sub save_opt
 {
-local($dir, $n);
+my ($dir, $n, $err);
 ($n = $_[0]) =~ s/[^A-Za-z0-9_]/_/g;
 if ($in{"${n}_def"}) { &save_directive($_[2], $_[0], [ ], $_[3]); }
 elsif ($err = &{$_[1]}($in{$n})) {
@@ -716,24 +743,14 @@ else {
 	}
 }
 
-# directives that need their value to be quoted
-@need_quote = ( "file", "zone", "view", "pid-file", "statistics-file",
-	        "dump-file", "named-xfer", "secret" );
-foreach $need (@need_quote) {
-	$need_quote{$need}++;
-	}
-
-1;
-
 # find_reverse(address, [view])
 # Returns the zone and record structures for the PTR record for some address
 sub find_reverse
 {
-local($conf, @zl, $rev, $z, $revconf, $revfile, $revrec, @revrecs, $addr, $rr,
-      @octs, $i, @hexs, $ipv6, @zero);
+my ($rev, $revconf, $revfile, $revrec, $addr, $ipv6);
 
 # find reverse domain
-local @zl = grep { $_->{'type'} ne 'view' } &list_zone_names();
+my @zl = grep { $_->{'type'} ne 'view' } &list_zone_names();
 if ($_[1] ne '' && $_[1] ne 'any') {
 	@zl = grep { $_->{'view'} && $_->{'viewindex'} == $_[1] } @zl;
 	}
@@ -742,17 +759,17 @@ else {
 	}
 $ipv6 = $config{'support_aaaa'} && &check_ip6address($_[0]);
 if ($ipv6) {
-	@zero = (0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+	my @zero = (0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 	$addr = &expandall_ip6($_[0]);
 	$addr =~ s/://g;
-	@hexs = split('', $addr);
-	DOMAIN: for($i=30; $i>=0; $i--) {
+	my @hexs = split('', $addr);
+	DOMAIN: for(my $i=30; $i>=0; $i--) {
 		$addr = join(':',split(/(.{4})/,join('', (@hexs[0..$i],@zero[$i..30]))));
 		$addr =~ s/::/:/g;
 		$addr =~ s/(^:|:$)//g;
 		$rev = &net_to_ip6int($addr, 4*($i+1));
 		$rev =~ s/\.$//g;
-		foreach $z (@zl) {
+		foreach my $z (@zl) {
 			if (lc($z->{'name'}) eq $rev && $z->{'type'} eq 'master') {
 				# found the reverse master domain
 				$revconf = $z;
@@ -762,12 +779,12 @@ if ($ipv6) {
 		}
 	}
 else {
-	@octs = split(/\./, $_[0]);
-	DOMAIN: for($i=2; $i>=-1; $i--) {
+	my @octs = split(/\./, $_[0]);
+	DOMAIN: for(my $i=2; $i>=-1; $i--) {
 		$rev = $i<0 ? "in-addr.arpa"
 			    : &ip_to_arpa(join('.', @octs[0..$i]));
 		$rev =~ s/\.$//g;
-		foreach $z (@zl) {
+		foreach my $z (@zl) {
 			# Strip off prefix for partial reverse delegation
 			my $zname = $z->{'name'};
 			$zname =~ s/^(\d+)\/(\d+)\.//;
@@ -785,9 +802,9 @@ else {
 # find reverse record
 if ($revconf) {
 	$revfile = &absolute_path($revconf->{'file'});
-	@revrecs = &read_zone_file($revfile, $revconf->{'name'});
+	my @revrecs = &read_zone_file($revfile, $revconf->{'name'});
 	$addr = &make_reverse_name($_[0], $ipv6 ? "AAAA" : "A", $revconf, 128);
-	foreach $rr (@revrecs) {
+	foreach my $rr (@revrecs) {
 		if ($rr->{'type'} eq "PTR" &&
 		    lc($rr->{'name'}) eq lc($addr)) {
 			# found the reverse record
@@ -803,22 +820,22 @@ return ($revconf, $revfile, $revrec);
 # Returns the zone and record structures for the A record for some address
 sub find_forward
 {
-local ($fwdconf, $i, $fwdfile, $fwdrec, $fr, $ipv6);
+my ($fwdconf, $fwdfile, $fwdrec, $ipv6);
 
 # find forward domain
-local $host = $_[0]; $host =~ s/\.$//;
-local @zl = grep { $_->{'type'} ne 'view' } &list_zone_names();
+my $host = $_[0]; $host =~ s/\.$//;
+my @zl = grep { $_->{'type'} ne 'view' } &list_zone_names();
 if ($_[1] ne '' && $_[1] ne 'any') {
 	@zl = grep { $_->{'view'} && $_->{'viewindex'} == $_[1] } @zl;
 	}
 else {
 	@zl = grep { !$_->{'view'} } @zl;
 	}
-local @parts = split(/\./, $host);
-DOMAIN: for($i=1; $i<@parts; $i++) {
-	local $fwd = join(".", @parts[$i .. @parts-1]);
-	foreach $z (@zl) {
-		local $typed;
+my @parts = split(/\./, $host);
+DOMAIN: for(my $i=1; $i<@parts; $i++) {
+	my $fwd = join(".", @parts[$i .. @parts-1]);
+	foreach my $z (@zl) {
+		my $typed;
 		if ((lc($z->{'name'}) eq $fwd ||
 		     lc($z->{'name'}) eq "$fwd.") &&
 		    $z->{'type'} eq "master") {
@@ -832,8 +849,8 @@ DOMAIN: for($i=1; $i<@parts; $i++) {
 # find forward record
 if ($fwdconf) {
 	$fwdfile = &absolute_path($fwdconf->{'file'});
-	local @fwdrecs = &read_zone_file($fwdfile, $fwdconf->{'name'});
-	foreach $fr (@fwdrecs) {
+	my @fwdrecs = &read_zone_file($fwdfile, $fwdconf->{'name'});
+	foreach my $fr (@fwdrecs) {
 		if ($ipv6 ? $fr->{'type'} eq "AAAA" : $fr->{'type'} eq "A" &&
 		    $fr->{'name'} eq $_[0]) {
 			# found the forward record!
@@ -850,7 +867,7 @@ return ($fwdconf, $fwdfile, $fwdrec);
 # Returns the reverse record name for an IP
 sub make_reverse_name
 {
-local ($ip, $type, $revconf, $bits) = @_;
+my ($ip, $type, $revconf, $bits) = @_;
 if ($type eq "A") {
 	my $arpa = &ip_to_arpa($ip);
 	if ($revconf->{'name'} =~ /^(\d+)\/(\d+)\.(.*)/) {
@@ -870,8 +887,8 @@ else {
 # Returns 1 if some zone can be edited
 sub can_edit_zone
 {
-local %zcan;
-local ($zn, $vn, $file);
+my %zcan;
+my ($zn, $vn, $file);
 if ($_[0]->{'members'}) {
 	# A full zone structure
 	$zn = $_[0]->{'value'};
@@ -897,7 +914,7 @@ elsif ($access{'zones'} =~ /^\!/) {
 	}
 else {
 	# List of allowed zones
-	local $ok;
+	my $ok;
 	foreach my $z (split(/\s+/, $access{'zones'})) {
 		$ok++ if ($z eq $zn || ($vn && $z eq "view_".$vn));
 		}
@@ -909,7 +926,7 @@ if ($access{'inviews'} eq '*') {
 	# All views are OK
 	}
 else {
-	local $ok;
+	my $ok;
 	foreach my $v (split(/\s+/, $access{'inviews'})) {
 		$ok++ if ($v eq ($vn || "_"));
 		}
@@ -936,8 +953,8 @@ return $access{'reverse'} || &can_edit_zone($_[0]);
 # Display a form for editing or creating a DNS record
 sub record_input
 {
-local(%rec, @recs, $ttl, $ttlunit);
-local $type = $_[6] ? $_[6]->{'type'} : $_[2];
+my (%rec, @recs, $ttl, $ttlunit);
+my $type = $_[6] ? $_[6]->{'type'} : $_[2];
 print &ui_form_start("save_record.cgi");
 print &ui_hidden("zone", $_[0]);
 print &ui_hidden("view", $_[1]);
@@ -972,7 +989,7 @@ elsif ($type eq "NS") {
 		&ui_textbox("name", $rec{'name'}, 30));
 	}
 elsif ($type eq "SRV") {
-	local ($serv, $proto, $name) =
+	my ($serv, $proto, $name) =
 		$rec{'name'} =~ /^([^\.]+)\.([^\.]+)\.(\S+)/ ? ($1, $2, $3) :
 			(undef, undef, undef);
 	$serv =~ s/^_//;
@@ -1011,7 +1028,13 @@ print &ui_table_row($text{'edit_ttl'},
 	&time_unit_choice("ttlunit", $ttlunit));
 
 # Value(s) fields
-@v = @{$rec{'values'}};
+my @v;
+if ($rec{'values'}) {
+	@v = @{$rec{'values'}};
+	}
+else {
+	@v = undef;
+	}
 if ($type eq "A" || $type eq "AAAA") {
 	print &ui_table_row($text{'value_A1'},
 	    &ui_textbox("value0", $v[0], 20)." ".
@@ -1109,7 +1132,7 @@ elsif ($type eq "KEY") {
 elsif ($type eq "SPF") {
 	# SPF records are complex, as they have several attributes encoded
 	# in the TXT value
-	local $spf = &parse_spf(@v);
+	my $spf = &parse_spf(@v);
 	print &ui_table_row($text{'value_spfa'},
 		&ui_yesno_radio("spfa", $spf->{'a'} ? 1 : 0), 3);
 
@@ -1158,8 +1181,8 @@ elsif ($type eq "SPF") {
 elsif ($type eq "DMARC") {
 	# Like SPF, DMARC records have several attributes encoded in the
 	# TXT value
-	local $dmarc = &parse_dmarc(@v);
-	local @popts = ( [ "none", $text{'value_dmarcnone'} ],
+	my $dmarc = &parse_dmarc(@v);
+	my @popts = ( [ "none", $text{'value_dmarcnone'} ],
 		         [ "quarantine", $text{'value_dmarcquar'} ],
 		         [ "reject", $text{'value_dmarcreject'} ] );
 	print &ui_table_row($text{'value_dmarcp'},
@@ -1178,12 +1201,12 @@ elsif ($type eq "DMARC") {
 	print &ui_table_row($text{'value_dmarcadkim'},
 		&ui_yesno_radio("dmarcadkim", $dmarc->{'adkim'} eq 's'));
 
-	local $rua = $dmarc->{'rua'};
+	my $rua = $dmarc->{'rua'};
 	$rua =~ s/^mailto://;
 	print &ui_table_row($text{'value_dmarcrua'},
 	    &ui_opt_textbox("dmarcrua", $rua, 50, $text{'value_dmarcnor'}), 3);
 
-	local $ruf = $dmarc->{'ruf'};
+	my $ruf = $dmarc->{'ruf'};
 	$ruf =~ s/^mailto://;
 	print &ui_table_row($text{'value_dmarcruf'},
 	    &ui_opt_textbox("dmarcruf", $ruf, 50, $text{'value_dmarcnor'}), 3);
@@ -1257,9 +1280,8 @@ if (!$access{'ro'}) {
 # Returns a table of zones, with checkboxes to delete
 sub zones_table
 {
-local($i);
-local @tds = ( "width=5" );
-local $rv;
+my @tds = ( "width=5" );
+my $rv;
 if (&have_dnssec_tools_support()) {
 $rv .= &ui_columns_start([ "", $text{'index_zone'}, $text{'index_type'}, $text{'index_status'} ],
 			100, 0, \@tds);
@@ -1268,8 +1290,8 @@ $rv .= &ui_columns_start([ "", $text{'index_zone'}, $text{'index_type'} ],
 			100, 0, \@tds);
 }
 
-for($i=0; $i<@{$_[0]}; $i++) {
-	local @cols;
+for(my $i=0; $i<@{$_[0]}; $i++) {
+	my @cols;
 	if (&have_dnssec_tools_support()) {
 		@cols = ( &ui_link($_[0]->[$i], $_[1]->[$i]), $_[2]->[$i], $_[4]->[$i] );
 	} else {
@@ -1288,11 +1310,11 @@ return $rv;
 
 sub check_net_ip
 {
-local($j, $arg = $_[0]);
+my $arg = $_[0];
 if ($arg !~ /^(\d{1,3}\.){0,3}([0-9\-\/]+)$/) {
 	return 0;
 	}
-foreach $j (split(/\./, $arg)) {
+foreach my $j (split(/\./, $arg)) {
 	$j =~ /^(\d+)-(\d+)$/ && $1 < 255 && $2 < 255 ||
 	$j =~ /^(\d+)\/(\d+)$/ && $1 < 255 && $2 <= 32 ||
 		$j <= 255 || return 0;
@@ -1329,19 +1351,9 @@ $ip =~ s/(:|^)(\w)(?=:|$)/:000$2/g;
 return $ip;
 }
 
-# check_ip6address(ip)
-# Check if some IPv6 address is properly formatted
-sub check_ip6address
-{
-local($ip6);
-$ip6 = $_[0];
-$ip6 = &expand_ip6($ip6);
-return ($ip6 =~ /^([\da-f]{1,4}:){7}([\da-f]{1,4})$/i);
-}
-
 sub time_unit_choice 
 {
-local ($name, $value) = @_;
+my ($name, $value) = @_;
 return &ui_select($name, $value =~ /^(S?)$/i ? "" :
 			 $value =~ /M/i ? "M" :
 			 $value =~ /H/i ? "H" :
@@ -1356,8 +1368,8 @@ return &ui_select($name, $value =~ /^(S?)$/i ? "" :
 
 sub extract_time_units
 {
-local(@ret);
-foreach $j (@_) {
+my @ret;
+foreach my $j (@_) {
 	if ($j =~ /^(\d+)([SMHDW]?)$/is) {
 		push(@ret, $2); $j = $1;
 		}
@@ -1367,13 +1379,13 @@ return @ret;
 
 sub email_to_dotted
 {
-local $v = $_[0];
+my $v = $_[0];
 $v =~ s/\.$//;
 if ($v =~ /^([^.]+)\@(.*)$/) {
 	return "$1.$2.";
 	}
 elsif ($v =~ /^(.*)\@(.*)$/) {
-	local ($u, $d) = ($1, $2);
+	my ($u, $d) = ($1, $2);
 	$u =~ s/\./\\\./g;
 	return "$u.$d.";
 	}
@@ -1384,7 +1396,7 @@ else {
 
 sub dotted_to_email
 {
-local $v = $_[0];
+my $v = $_[0];
 if ($v ne ".") {
 	$v =~ s/([^\\])\./$1\@/;
 	$v =~ s/\\\./\./g;
@@ -1397,7 +1409,7 @@ return $v;
 # Sets the BIND ownership and permissions on some file
 sub set_ownership
 {
-local ($user, $group, $perms);
+my ($user, $group, $perms);
 if ($config{'file_owner'}) {
 	# From config
 	($user, $group) = split(/:/, $config{'file_owner'});
@@ -1413,6 +1425,7 @@ if ($config{'file_perms'}) {
 &set_ownership_permissions($user, $group, $perms, $_[0]);
 }
 
+my @cat_list;
 if ($bind_version >= 9) {
 	@cat_list = ( 'default', 'general', 'database', 'security', 'config',
 		      'resolver', 'xfer-in', 'xfer-out', 'notify', 'client',
@@ -1427,20 +1440,20 @@ else {
 		      'os', 'insist', 'maintenance', 'load', 'response-checks');
 	}
 
-@syslog_levels = ( 'kern', 'user', 'mail', 'daemon', 'auth', 'syslog',
+my @syslog_levels = ( 'kern', 'user', 'mail', 'daemon', 'auth', 'syslog',
 		   'lpr', 'news', 'uucp', 'cron', 'authpriv', 'ftp',
 		   'local0', 'local1', 'local2', 'local3',
 		   'local4', 'local5', 'local6', 'local7' );
 
-@severities = ( 'critical', 'error', 'warning', 'notice', 'info',
+my @severities = ( 'critical', 'error', 'warning', 'notice', 'info',
 		'debug', 'dynamic' );
 
 # can_edit_view(&view | &viewcache)
 # Returns 1 if some view can be edited
 sub can_edit_view
 {
-local %vcan;
-local $vn = $_[0]->{'members'} ? $_[0]->{'value'} : $_[0]->{'name'};
+my %vcan;
+my $vn = $_[0]->{'members'} ? $_[0]->{'value'} : $_[0]->{'name'};
 
 if ($access{'vlist'} eq '*') {
 	return 1;
@@ -1464,8 +1477,8 @@ else {
 # the given width
 sub wrap_lines
 {
-local $rest = $_[0];
-local @rv;
+my $rest = $_[0];
+my @rv;
 while(length($rest) > $_[1]) {
 	push(@rv, substr($rest, 0, $_[1]));
 	$rest = substr($rest, $_[1]);
@@ -1488,8 +1501,8 @@ if ($access{'zones'} ne '*' && $access{'zones'} !~ /^\!/) {
 # is_config_valid()
 sub is_config_valid
 {
-local $conf = &get_config();
-local ($opts, $dir);
+my $conf = &get_config();
+my ($opts, $dir);
 if (($opts = &find("options", $conf)) &&
     ($dir = &find("directory", $opts->{'members'})) &&
     !(-d &make_chroot($dir->{'value'}))) {
@@ -1502,11 +1515,12 @@ return 1;
 # Returns the --help output if non BIND 8/9, or undef if is
 sub check_bind_8
 {
-local $fflag = $gconfig{'os_type'} eq 'windows' ? '-f' : '';
-local $out = `$config{'named_path'} -help $fflag 2>&1`;
+my $fflag = $gconfig{'os_type'} eq 'windows' ? '-f' : '';
+my $out = `$config{'named_path'} -help $fflag 2>&1`;
 return $out !~ /\[-f\]/ && $out !~ /\[-f\|/ ? $out : undef;
 }
 
+my $get_chroot_cache;
 # get_chroot()
 # Returns the chroot directory BIND is running under
 sub get_chroot
@@ -1523,7 +1537,7 @@ if (!defined($get_chroot_cache)) {
 			}
 		}
 	if ($config{'auto_chroot'}) {
-		local $out = &backquote_command(
+		my $out = &backquote_command(
 			"$config{'auto_chroot'} 2>/dev/null");
 		if (!$?) {
 			$out =~ s/\r|\n//g;
@@ -1542,7 +1556,7 @@ return $get_chroot_cache;
 # Given a path that is relative to the chroot directory, return the real path
 sub make_chroot
 {
-local $chroot = &get_chroot();
+my $chroot = &get_chroot();
 return $_[0] if (!$chroot);
 return $_[0] if ($_[0] eq $config{'named_conf'} && $config{'no_chroot'});
 return $_[0] if ($_[0] eq $config{'rndc_conf'});	# don't chroot rndc.conf
@@ -1571,22 +1585,21 @@ sub get_pid_file
 {
 if ($_[0] || !-r $zone_names_cache) {
 	# Read real config
-	local $conf = &get_config();
-	local ($opts, $pidopt);
+	my $conf = &get_config();
+	my ($opts, $pidopt);
 	if (($opts = &find("options", $conf)) &&
 	    ($pidopt = &find("pid-file", $opts->{'members'}))) {
 		# read from PID file
-		local $pidfile = $pidopt->{'value'};
+		my $pidfile = $pidopt->{'value'};
 		if ($pidfile !~ /^\//) {
-			local $dir = &find("directory", $opts->{'members'});
+			my $dir = &find("directory", $opts->{'members'});
 			$pidfile = $dir->{'value'}."/".$pidfile;
 			}
 		return $pidfile;
 		}
 
 	# use default file
-	local $p;
-	foreach $p (split(/\s+/, $config{'pid_file'})) {
+	foreach my $p (split(/\s+/, $config{'pid_file'})) {
 		if (-r &make_chroot($p, 1)) {
 			return $p;
 			}
@@ -1595,7 +1608,7 @@ if ($_[0] || !-r $zone_names_cache) {
 	}
 else {
 	# Use cache if possible
-	local %znc;
+	my %znc;
 	&read_file_cached($zone_names_cache, \%znc);
 	if ($znc{'pidfile'} && -r $znc{'pidfile'}) {
 		return $znc{'pidfile'};
@@ -1610,8 +1623,7 @@ else {
 sub can_edit_type
 {
 return 1 if (!$access{'types'});
-local $t;
-foreach $t (split(/\s+/, $access{'types'})) {
+foreach my $t (split(/\s+/, $access{'types'})) {
 	return 1 if (lc($t) eq lc($_[0]));
 	}
 return 0;
@@ -1623,9 +1635,8 @@ return 0;
 sub add_to_file
 {
 if ($config{'zones_file'}) {
-	local $conf = &get_config();
-	local $f;
-	foreach $f (&get_all_config_files($conf)) {
+	my $conf = &get_config();
+	foreach my $f (&get_all_config_files($conf)) {
 		if (&same_file($f, $config{'zones_file'})) {
 			return $config{'zones_file'};
 			}
@@ -1638,8 +1649,8 @@ return $config{'named_conf'};
 # Returns a list of all config files used by named.conf, including includes
 sub get_all_config_files
 {
-local ($conf) = @_;
-local @rv = ( $config{'named_conf'} );
+my ($conf) = @_;
+my @rv = ( $config{'named_conf'} );
 foreach my $c (@$conf) {
 	push(@rv, $c->{'file'});
 	if ($c->{'type'} == 1) {
@@ -1664,47 +1675,48 @@ return &popup_window_button("free_chooser.cgi", 200, 500, 1,
 # or 3 if the view doesn't exist, or 4 if the slave file couldn't be created
 sub create_slave_zone
 {
-local $parent = &get_config_parent();
-local $conf = $parent->{'members'};
-local $opts = &find("options", $conf);
+my $parent = &get_config_parent();
+my $conf = $parent->{'members'};
+my $opts = &find("options", $conf);
 if (!$opts) {
 	return 1;
 	}
 
 # Check if exists in the view
+my @zones;
 if ($_[2]) {
-	local ($v) = grep { $_->{'value'} eq $_[2] } &find("view", $conf);
+	my ($v) = grep { $_->{'value'} eq $_[2] } &find("view", $conf);
 	@zones = &find("zone", $v->{'members'});
 	}
 else {
 	@zones = &find("zone", $conf);
 	}
-local ($z) = grep { $_->{'value'} eq $_[0] } @zones;
+my ($z) = grep { $_->{'value'} eq $_[0] } @zones;
 return 2 if ($z);
 
 # Create it
-local @mips = &unique($_[1], @{$_[4]});
-local $masters = { 'name' => 'masters',
-                   'type' => 1,
-                   'members' => [ map { { 'name' => $_ } } @mips ] };
-local $allow = { 'name' => 'allow-transfer',
-                 'type' => 1,
-                 'members' => [ map { { 'name' => $_ } } @mips ] };
-local $dir = { 'name' => 'zone',
-               'values' => [ $_[0] ],
-               'type' => 1,
-               'members' => [ { 'name' => 'type',
-                                'values' => [ 'slave' ] },
-                                $masters,
-				$allow,
-                            ]
+my @mips = &unique($_[1], @{$_[4]});
+my $masters = { 'name' => 'masters',
+                'type' => 1,
+                'members' => [ map { { 'name' => $_ } } @mips ] };
+my $allow = { 'name' => 'allow-transfer',
+              'type' => 1,
+              'members' => [ map { { 'name' => $_ } } @mips ] };
+my $dir = { 'name' => 'zone',
+            'values' => [ $_[0] ],
+            'type' => 1,
+            'members' => [ { 'name' => 'type',
+                             'values' => [ 'slave' ] },
+                             $masters,
+			     $allow,
+                         ]
 	     };
-local $base = $config{'slave_dir'} || &base_directory();
+my $base = $config{'slave_dir'} || &base_directory();
 if ($base !~ /^([a-z]:)?\//) {
 	# Slave dir is relative .. make absolute
 	$base = &base_directory()."/".$base;
 	}
-local $file;
+my $file;
 if (!$_[3]) {
 	# File has default name and is under default directory
 	$file = &automatic_filename($_[0], $_[0] =~ /in-addr/i ? 1 : 0, $base,
@@ -1721,13 +1733,14 @@ elsif ($_[3] ne "none") {
 
 # Create the slave file, so that BIND can write to it
 if ($file) {
-	&open_tempfile(ZONE, ">".&make_chroot($file), 1, 1) || return 4;
-	&close_tempfile(ZONE);
+	my $ZONE;
+	&open_tempfile($ZONE, ">".&make_chroot($file), 1, 1) || return 4;
+	&close_tempfile($ZONE);
         &set_ownership(&make_chroot($file));
 	}
 
 # Get and validate view(s)
-local @views;
+my @views;
 if ($_[2]) {
 	foreach my $vn (split(/\s+/, $_[2])) {
 		my ($view) = grep { $_->{'value'} eq $vn }
@@ -1757,34 +1770,35 @@ return 0;
 # or 3 if the view doesn't exist, or 4 if the zone file couldn't be created
 sub create_master_zone
 {
-local ($name, $slaves, $viewname, $file, $records) = @_;
-local $parent = &get_config_parent();
-local $conf = $parent->{'members'};
-local $opts = &find("options", $conf);
+my ($name, $slaves, $viewname, $file, $records) = @_;
+my $parent = &get_config_parent();
+my $conf = $parent->{'members'};
+my $opts = &find("options", $conf);
 if (!$opts) {
 	return 1;
 	}
 
 # Check if exists in the view
+my @zones;
 if ($viewname) {
-	local ($v) = grep { $_->{'value'} eq $viewname } &find("view", $conf);
+	my ($v) = grep { $_->{'value'} eq $viewname } &find("view", $conf);
 	@zones = &find("zone", $v->{'members'});
 	}
 else {
 	@zones = &find("zone", $conf);
 	}
-local ($z) = grep { $_->{'value'} eq $name } @zones;
+my ($z) = grep { $_->{'value'} eq $name } @zones;
 return 2 if ($z);
 
 # Create it
-local $dir = { 'name' => 'zone',
+my $dir = { 'name' => 'zone',
                'values' => [ $name ],
                'type' => 1,
                'members' => [ { 'name' => 'type',
                                 'values' => [ 'master' ] },
                             ]
 	     };
-local $base = $config{'master_dir'} || &base_directory();
+my $base = $config{'master_dir'} || &base_directory();
 if ($base !~ /^([a-z]:)?\//) {
 	# Master dir is relative .. make absolute
 	$base = &base_directory()."/".$base;
@@ -1815,8 +1829,9 @@ if (@$slaves) {
 	}
 
 # Create the zone file, with records
-&open_tempfile(ZONE, ">".&make_chroot($file), 1, 1) || return 4;
-&close_tempfile(ZONE);
+my $ZONE;
+&open_tempfile($ZONE, ">".&make_chroot($file), 1, 1) || return 4;
+&close_tempfile($ZONE);
 &set_ownership(&make_chroot($file));
 foreach my $r (@$records) {
 	if ($r->{'defttl'}) {
@@ -1833,7 +1848,7 @@ foreach my $r (@$records) {
 	}
 
 # Get and validate view(s)
-local @views;
+my @views;
 if ($viewname) {
 	foreach my $vn (split(/\s+/, $viewname)) {
 		my ($view) = grep { $_->{'value'} eq $vn }
@@ -1859,18 +1874,17 @@ return 0;
 # Returns the absolute path to a master zone records file
 sub get_master_zone_file
 {
-local ($name, $chroot) = @_;
-local $conf = &get_config();
-local @zones = &find("zone", $conf);
-local ($v, $z);
-foreach $v (&find("view", $conf)) {
+my ($name, $chroot) = @_;
+my $conf = &get_config();
+my @zones = &find("zone", $conf);
+foreach my $v (&find("view", $conf)) {
         push(@zones, &find("zone", $v->{'members'}));
         }
-local ($z) = grep { lc($_->{'value'}) eq lc($name) } @zones;
+my ($z) = grep { lc($_->{'value'}) eq lc($name) } @zones;
 return undef if (!$z);
-local $file = &find("file", $z->{'members'});
+my $file = &find("file", $z->{'members'});
 return undef if (!$file);
-local $filename = &absolute_path($file->{'values'}->[0]);
+my $filename = &absolute_path($file->{'values'}->[0]);
 $filename = &make_chroot($filename) if ($chroot);
 return $filename;
 }
@@ -1879,8 +1893,8 @@ return $filename;
 # Returns a list of all the records in a master zone, each of which is a hashref
 sub get_master_zone_records
 {
-local ($name) = @_;
-local $filename = &get_master_zone_file($name, 0);
+my ($name) = @_;
+my $filename = &get_master_zone_file($name, 0);
 return ( ) if (!$filename);
 return &read_zone_file($filename, $name);
 }
@@ -1889,11 +1903,12 @@ return &read_zone_file($filename, $name);
 # Update all the records in the master zone, based on a list of hashrefs
 sub save_master_zone_records
 {
-local ($name, $records) = @_;
-local $filename = &get_master_zone_file($name, 0);
+my ($name, $records) = @_;
+my $filename = &get_master_zone_file($name, 0);
 return 0 if (!$filename);
-&open_tempfile(ZONE, ">".&make_chroot($filename), 1, 1) || return 0;
-&close_tempfile(ZONE);
+my $ZONE;
+&open_tempfile($ZONE, ">".&make_chroot($filename), 1, 1) || return 0;
+&close_tempfile($ZONE);
 foreach my $r (@$records) {
 	if ($r->{'defttl'}) {
 		&create_defttl($filename, $r->{'defttl'});
@@ -1916,14 +1931,15 @@ return 1;
 # found.
 sub delete_zone
 {
-local $parent = &get_config_parent();
-local $conf = $parent->{'members'};
-local @zones;
+my $parent = &get_config_parent();
+my $conf = $parent->{'members'};
+my @zones;
 
 if ($_[1]) {
 	# Look in one or more views
+	my $v;
 	foreach my $vn (split(/\s+/, $_[1])) {
-		local ($v) = grep { $_->{'value'} eq $vn }
+		($v) = grep { $_->{'value'} eq $vn }
 				  &find("view", $conf);
 		if ($v) {
 			push(@zones, &find("zone", $v->{'members'}));
@@ -1941,7 +1957,7 @@ else {
 	}
 
 # Delete all zones in the list
-local $found = 0;
+my $found = 0;
 foreach my $z (grep { $_->{'value'} eq $_[0] } @zones) {
 	$found++;
 
@@ -1953,7 +1969,7 @@ foreach my $z (grep { $_->{'value'} eq $_[0] } @zones) {
 
 	if ($_[2]) {
 		# Remove file
-		local $f = &find("file", $z->{'members'});
+		my $f = &find("file", $z->{'members'});
 		if ($f) {
 			&unlink_logged(&make_chroot(
 				&absolute_path($f->{'value'})));
@@ -1971,12 +1987,12 @@ return $found ? 0 : 1;
 # not found.
 sub rename_zone
 {
-local $parent = &get_config_parent();
-local $conf = $parent->{'members'};
-local @zones;
+my $parent = &get_config_parent();
+my $conf = $parent->{'members'};
+my @zones;
 if ($_[2]) {
 	# Look in one view
-	local ($v) = grep { $_->{'value'} eq $_[2] } &find("view", $conf);
+	my ($v) = grep { $_->{'value'} eq $_[2] } &find("view", $conf);
 	return 2 if (!$v);
 	@zones = &find("zone", $v->{'members'});
 	$parent = $v;
@@ -1984,20 +2000,19 @@ if ($_[2]) {
 else {
 	# Look in all views
 	@zones = &find("zone", $conf);
-	local $v;
-	foreach $v (&find("view", $conf)) {
+	foreach my $v (&find("view", $conf)) {
 		push(@zones, &find("zone", $v->{'members'}));
 		}
 	}
-local ($z) = grep { $_->{'value'} eq $_[0] } @zones;
+my ($z) = grep { $_->{'value'} eq $_[0] } @zones;
 return 1 if (!$z);
 
 $z->{'values'} = [ $_[1] ];
 $z->{'value'} = $_[1];
-local $file = &find("file", $z->{'members'});
+my $file = &find("file", $z->{'members'});
 if ($file) {
 	# Update the file too
-	local $newfile = $file->{'values'}->[0];
+	my $newfile = $file->{'values'}->[0];
 	$newfile =~ s/$_[0]/$_[1]/g;
 	if ($newfile ne $file->{'values'}->[0]) {
 		rename(&make_chroot($file->{'values'}->[0]),
@@ -2026,7 +2041,7 @@ if ($config{'restart_cmd'} eq 'restart') {
 	}
 elsif ($config{'restart_cmd'}) {
 	# Custom command
-	local $out = &backquote_logged(
+	my $out = &backquote_logged(
 		"$config{'restart_cmd'} 2>&1 </dev/null");
 	if ($?) {
 		return &text('restart_ecmd', "<pre>$out</pre>");
@@ -2034,8 +2049,8 @@ elsif ($config{'restart_cmd'}) {
 	}
 else {
 	# Use signal
-	local $pidfile = &get_pid_file();
-	local $pid = &check_pid_file(&make_chroot($pidfile, 1));
+	my $pidfile = &get_pid_file();
+	my $pid = &check_pid_file(&make_chroot($pidfile, 1));
 	if (!$pid) {
 		return &text('restart_epidfile', $pidfile);
 		}
@@ -2052,8 +2067,8 @@ return undef;
 # message on failure.
 sub restart_zone
 {
-local ($dom, $view) = @_;
-local ($out, $ex);
+my ($dom, $view) = @_;
+my ($out, $ex);
 if ($view) {
 	# Reload a zone in a view
 	&try_cmd("freeze ".quotemeta($dom)." IN ".quotemeta($view).
@@ -2073,12 +2088,12 @@ else {
 	}
 if ($out =~ /not found/i) {
 	# Zone is not known to BIND yet - do a total reload
-	local $err = &restart_bind();
+	my $err = &restart_bind();
 	return $err if ($err);
 	if ($access{'remote'}) {
 		# Restart all slaves too
 		&error_setup();
-		local @slaveerrs = &restart_on_slaves();
+		my @slaveerrs = &restart_on_slaves();
 		if (@slaveerrs) {
 			return &text('restart_errslave',
 			     "<p>".join("<br>",
@@ -2099,9 +2114,9 @@ return undef;
 # error message on failure
 sub start_bind
 {
-local $chroot = &get_chroot();
-local $user;
-local $cmd;
+my $chroot = &get_chroot();
+my $user;
+my $cmd;
 if ($config{'named_user'}) {
 	$user = "-u $config{'named_user'}";
 	if (&get_bind_version() < 9) {
@@ -2110,8 +2125,8 @@ if ($config{'named_user'}) {
 			$user .= " -g $config{'named_group'}";
 			}
 		else {
-			local @u = getpwnam($config{'named_user'});
-			local @g = getgrgid($u[3]);
+			my @u = getpwnam($config{'named_user'});
+			my @g = getgrgid($u[3]);
 			$user .= " -g $g[0]";
 			}
 		}
@@ -2131,8 +2146,8 @@ else {
 	$cmd = "chroot $chroot $config{'named_path'} -c $config{'named_conf'} $user </dev/null 2>&1";
 	}
 
-local $out = &backquote_logged("$cmd 2>&1 </dev/null");
-local $rv = $?;
+my $out = &backquote_logged("$cmd 2>&1 </dev/null");
+my $rv = $?;
 if ($rv || $out =~ /chroot.*not available/i) {
 	return &text('start_error', $out ? "<tt>$out</tt>" : "Unknown error");
 	}
@@ -2146,15 +2161,15 @@ sub stop_bind
 {
 if ($config{'stop_cmd'}) {
 	# Just use a command
-	local $out = &backquote_logged("($config{'stop_cmd'}) 2>&1");
+	my $out = &backquote_logged("($config{'stop_cmd'}) 2>&1");
 	if ($?) {
 		return "<pre>$out</pre>";
 		}
 	}
 else {
 	# Kill the process
-	local $pidfile = &get_pid_file();
-	local $pid = &check_pid_file(&make_chroot($pidfile, 1));
+	my $pidfile = &get_pid_file();
+	my $pid = &check_pid_file(&make_chroot($pidfile, 1));
 	if (!$pid || !&kill_logged('TERM', $pid)) {
 		return $text{'stop_epid'};
 		}
@@ -2166,8 +2181,8 @@ return undef;
 # Returns the PID if BIND is running
 sub is_bind_running
 {
-local $pidfile = &get_pid_file();
-local $rv = &check_pid_file(&make_chroot($pidfile, 1));
+my $pidfile = &get_pid_file();
+my $rv = &check_pid_file(&make_chroot($pidfile, 1));
 if (!$rv && $gconfig{'os_type'} eq 'windows') {
 	# Fall back to checking for process
 	$rv = &find_byname("named");
@@ -2178,9 +2193,8 @@ return $rv;
 # version_atleast(v1, v2, v3)
 sub version_atleast
 {
-local @vsp = split(/\./, $bind_version);
-local $i;
-for($i=0; $i<@vsp || $i<@_; $i++) {
+my @vsp = split(/\./, $bind_version);
+for(my $i=0; $i<@vsp || $i<@_; $i++) {
 	return 0 if ($vsp[$i] < $_[$i]);
 	return 1 if ($vsp[$i] > $_[$i]);
 	}
@@ -2192,10 +2206,9 @@ return 1;	# same!
 sub get_zone_index
 {
 undef(@get_config_cache);
-local $conf = &get_config();
-local $vconf = $_[1] ne '' ? $conf->[$in{'view'}]->{'members'} : $conf;
-local $c;
-foreach $c (@$vconf) {
+my $conf = &get_config();
+my $vconf = $_[1] ne '' ? $conf->[$in{'view'}]->{'members'} : $conf;
+foreach my $c (@$vconf) {
 	if ($c->{'name'} eq 'zone' && $c->{'value'} eq $_[0]) {
 		return $c->{'index'};
 		}
@@ -2207,10 +2220,10 @@ return undef;
 # Convenience function for adding a new zone
 sub create_zone
 {
-local ($dir, $conf, $viewidx) = @_;
+my ($dir, $conf, $viewidx) = @_;
 if ($viewidx ne "") {
 	# Adding inside a view
-	local $view = $conf->[$viewidx];
+	my $view = $conf->[$viewidx];
         &lock_file(&make_chroot($view->{'file'}));
         &save_directive($view, undef, [ $dir ], 1);
         &flush_file_lines();
@@ -2219,7 +2232,7 @@ if ($viewidx ne "") {
 else {
 	# Adding at top level
         $dir->{'file'} = &add_to_file();
-        local $pconf = &get_config_parent($dir->{'file'});
+        my $pconf = &get_config_parent($dir->{'file'});
         &lock_file(&make_chroot($dir->{'file'}));
         &save_directive($pconf, undef, [ $dir ], 0);
         &flush_file_lines();
@@ -2228,27 +2241,28 @@ else {
 &flush_zone_names();
 }
 
-$heiropen_file = "$module_config_directory/heiropen";
+my $heiropen_file = "$module_config_directory/heiropen";
 
 # get_heiropen()
 # Returns an array of open categories
 sub get_heiropen
 {
-open(HEIROPEN, $heiropen_file);
-local @heiropen = <HEIROPEN>;
+open(my $HEIROPEN, "<", $heiropen_file);
+my @heiropen = <$HEIROPEN>;
 chop(@heiropen);
-close(HEIROPEN);
+close($HEIROPEN);
 return @heiropen;
 }
 
 # save_heiropen(&heir)
 sub save_heiropen
 {
-&open_tempfile(HEIR, ">$heiropen_file");
-foreach $h (@{$_[0]}) {
-	&print_tempfile(HEIR, $h,"\n");
+my $HEIR;
+&open_tempfile($HEIR, ">$heiropen_file");
+foreach my $h (@{$_[0]}) {
+	&print_tempfile($HEIR, $h,"\n");
 	}
-&close_tempfile(HEIR);
+&close_tempfile($HEIR);
 }
 
 # list_zone_names()
@@ -2256,19 +2270,19 @@ foreach $h (@{$_[0]}) {
 # built from the primary configuration.
 sub list_zone_names
 {
-local @st = stat($zone_names_cache);
-local %znc;
+my @st = stat($zone_names_cache);
+my %znc;
 &read_file_cached($zone_names_cache, \%znc);
 
 # Check if any files have changed, or if the master config has changed, or
 # the PID file.
-local @files;
-local ($k, $changed, $filecount, %donefile);
-foreach $k (keys %znc) {
+my %files;
+my ($changed, $filecount, %donefile);
+foreach my $k (keys %znc) {
 	if ($k =~ /^file_(.*)$/) {
 		$filecount++;
 		$donefile{$1}++;
-		local @fst = stat($1);
+		my @fst = stat($1);
 		if ($fst[9] > $st[9]) {
 			$changed = 1;
 			}
@@ -2280,15 +2294,14 @@ if ($changed || !$filecount || $znc{'version'} != $zone_names_version ||
     $config{'pid_file'} ne $znc{'pidfile_config'}) {
 	# Yes .. need to rebuild
 	%znc = ( );
-	local $conf = &get_config();
-	local @views = &find("view", $conf);
-	local ($v, $z);
-	local $n = 0;
-	foreach $v (@views) {
-		local @vz = &find("zone", $v->{'members'});
-		foreach $z (@vz) {
-			local $type = &find_value("type", $z->{'members'});
-			local $file = &find_value("file", $z->{'members'});
+	my $conf = &get_config();
+	my @views = &find("view", $conf);
+	my $n = 0;
+	foreach my $v (@views) {
+		my @vz = &find("zone", $v->{'members'});
+		foreach my $z (@vz) {
+			my $type = &find_value("type", $z->{'members'});
+			my $file = &find_value("file", $z->{'members'});
 			$znc{"zone_".($n++)} = join("\t", $z->{'value'},
 				$z->{'index'}, $type, $v->{'value'}, $file);
 			$files{$z->{'file'}}++;
@@ -2296,9 +2309,9 @@ if ($changed || !$filecount || $znc{'version'} != $zone_names_version ||
 		$znc{"view_".($n++)} = join("\t", $v->{'value'}, $v->{'index'});
 		$files{$v->{'file'}}++;
 		}
-	foreach $z (&find("zone", $conf)) {
-		local $type = &find_value("type", $z->{'members'});
-		local $file = &find_value("file", $z->{'members'});
+	foreach my $z (&find("zone", $conf)) {
+		my $type = &find_value("type", $z->{'members'});
+		my $file = &find_value("file", $z->{'members'});
 		$znc{"zone_".($n++)} = join("\t", $z->{'value'},
 			$z->{'index'}, $type, "*", $file);
 		$files{$z->{'file'}}++;
@@ -2311,9 +2324,9 @@ if ($changed || !$filecount || $znc{'version'} != $zone_names_version ||
 	$znc{'no_chroot_config'} = $config{'no_chroot'};
 
 	# Store source files
-	foreach $f (keys %files) {
-		local $realf = &make_chroot(&absolute_path($f));
-		local @st = stat($realf);
+	foreach my $f (keys %files) {
+		my $realf = &make_chroot(&absolute_path($f));
+		my @st = stat($realf);
 		$znc{"file_".$realf} = $st[9];
 		}
 
@@ -2328,10 +2341,10 @@ if (scalar(@list_zone_names_cache)) {
 	}
 
 # Construct the return value from the hash
-local (@rv, %viewidx);
-foreach $k (keys %znc) {
+my (@rv, %viewidx);
+foreach my $k (keys %znc) {
 	if ($k =~ /^zone_(\d+)$/) {
-		local ($name, $index, $type, $view, $file) =
+		my ($name, $index, $type, $view, $file) =
 			split(/\t+/, $znc{$k}, 5);
 		push(@rv, { 'name' => $name,
 			    'type' => $type,
@@ -2340,15 +2353,14 @@ foreach $k (keys %znc) {
 			    'file' => $file });
 		}
 	elsif ($k =~ /^view_(\d+)$/) {
-		local ($name, $index) = split(/\t+/, $znc{$k}, 2);
+		my ($name, $index) = split(/\t+/, $znc{$k}, 2);
 		push(@rv, { 'name' => $name,
 			    'index' => $index,
 			    'type' => 'view' });
 		$viewidx{$name} = $index;
 		}
 	}
-local $z;
-foreach $z (@rv) {
+foreach my $z (@rv) {
 	if ($z->{'type'} ne 'view' && $z->{'view'} ne '*') {
 		$z->{'viewindex'} = $viewidx{$z->{'view'}};
 		}
@@ -2369,10 +2381,9 @@ unlink($zone_names_cache);
 # Returns a zone cache object, looked up by name or index
 sub get_zone_name
 {
-local @zones = &list_zone_names();
-local $field = $_[0] =~ /^\d+$/ ? "index" : "name";
-local $z;
-foreach $z (@zones) {
+my @zones = &list_zone_names();
+my $field = $_[0] =~ /^\d+$/ ? "index" : "name";
+foreach my $z (@zones) {
 	if ($z->{$field} eq $_[0] &&
 	    ($_[1] eq 'any' ||
 	     $_[1] eq '' && !defined($z->{'viewindex'}) ||
@@ -2387,7 +2398,7 @@ return undef;
 # Looks up a zone by name and view, or calls error
 sub get_zone_name_or_error
 {
-local $zone = &get_zone_name(@_);
+my $zone = &get_zone_name(@_);
 if (!$zone) {
 	my $msg = $_[1] eq 'any' ? 'master_egone' :
 		  $_[1] eq '' ? 'master_egone2' : 'master_egone3';
@@ -2419,11 +2430,11 @@ return wantarray ? ( $z, $bconf, $parent ) : $z;
 sub list_slave_servers
 {
 &foreign_require("servers", "servers-lib.pl");
-local %ids = map { $_, 1 } split(/\s+/, $config{'servers'});
-local %secids = map { $_, 1 } split(/\s+/, $config{'secservers'});
-local @servers = &servers::list_servers();
+my %ids = map { $_, 1 } split(/\s+/, $config{'servers'});
+my %secids = map { $_, 1 } split(/\s+/, $config{'secservers'});
+my @servers = &servers::list_servers();
 if (%ids) {
-	local @rv = grep { $ids{$_->{'id'}} } @servers;
+	my @rv = grep { $ids{$_->{'id'}} } @servers;
 	foreach my $s (@rv) {
 		$s->{'sec'} = $secids{$s->{'id'}};
 		}
@@ -2431,7 +2442,7 @@ if (%ids) {
 	}
 elsif ($config{'default_slave'} && !defined($config{'servers'})) {
 	# Migrate old-style setting of single slave
-	local ($serv) = grep { $_->{'host'} eq $config{'default_slave'} }
+	my ($serv) = grep { $_->{'host'} eq $config{'default_slave'} }
 			     @servers;
 	if ($serv) {
 		&add_slave_server($serv);
@@ -2444,36 +2455,36 @@ return ( );
 # add_slave_server(&server)
 sub add_slave_server
 {
-&lock_file($module_config);
+&lock_file($module_config_file);
 &foreign_require("servers", "servers-lib.pl");
-local @sids = split(/\s+/, $config{'servers'});
+my @sids = split(/\s+/, $config{'servers'});
 $config{'servers'} = join(" ", @sids, $_[0]->{'id'});
 if ($_[0]->{'sec'}) {
-	local @secsids = split(/\s+/, $config{'secservers'});
+	my @secsids = split(/\s+/, $config{'secservers'});
 	$config{'secservers'} = join(" ", @secsids, $_[0]->{'id'});
 	}
 &sync_default_slave();
 &save_module_config();
-&unlock_file($module_config);
+&unlock_file($module_config_file);
 &servers::save_server($_[0]);
 }
 
 # delete_slave_server(&server)
 sub delete_slave_server
 {
-&lock_file($module_config);
-local @sids = split(/\s+/, $config{'servers'});
+&lock_file($module_config_file);
+my @sids = split(/\s+/, $config{'servers'});
 $config{'servers'} = join(" ", grep { $_ != $_[0]->{'id'} } @sids);
-local @secsids = split(/\s+/, $config{'secservers'});
+my @secsids = split(/\s+/, $config{'secservers'});
 $config{'secservers'} = join(" ", grep { $_ != $_[0]->{'id'} } @secsids);
 &sync_default_slave();
 &save_module_config();
-&unlock_file($module_config);
+&unlock_file($module_config_file);
 }
 
 sub sync_default_slave
 {
-local @servers = &list_slave_servers();
+my @servers = &list_slave_servers();
 if (@servers) {
 	$config{'default_slave'} = $servers[0]->{'host'};
 	}
@@ -2495,19 +2506,20 @@ return $_[0]->{'desc'} ? $_[0]->{'desc'} : $_[0]->{'host'};
 # an error message on failure.
 sub create_master_records
 {
-local ($file, $zone, $master, $email, $refresh, $retry, $expiry, $min,
-       $add_master, $add_slaves, $add_tmpl, $ip, $addrev) = @_;
+my ($file, $zone, $master, $email, $refresh, $retry, $expiry, $min,
+    $add_master, $add_slaves, $add_tmpl, $ip, $addrev) = @_;
 
 # Create the zone file
 &lock_file(&make_chroot($file));
-&open_tempfile(ZONE, ">".&make_chroot($file), 1) ||
+my $ZONE;
+&open_tempfile($ZONE, ">".&make_chroot($file), 1) ||
 	return &text('create_efile3', $file, $!);
-&print_tempfile(ZONE, "\$ttl $min\n")
+&print_tempfile($ZONE, "\$ttl $min\n")
 	if ($config{'master_ttl'});
-&close_tempfile(ZONE);
+&close_tempfile($ZONE);
 
 # create the SOA and NS records
-local $serial;
+my $serial;
 if ($config{'soa_style'} == 1) {
         $serial = &date_serial().sprintf("%2.2d", $config{'soa_start'});
         }
@@ -2515,7 +2527,7 @@ else {
 	# Use Unix time for date and running number serials
         $serial = time();
         }
-local $vals = "$master $email (\n".
+my $vals = "$master $email (\n".
         "\t\t\t$serial\n".
         "\t\t\t$refresh\n".
         "\t\t\t$retry\n".
@@ -2525,42 +2537,43 @@ local $vals = "$master $email (\n".
 &create_record($file, "$zone.", undef, "IN", "NS", $master)
 	if ($add_master);
 if ($add_slaves) {
-	local $slave;
-	foreach $slave (&list_slave_servers()) {
-		local @bn = $slave->{'nsname'} ||
+	foreach my $slave (&list_slave_servers()) {
+		my @bn = $slave->{'nsname'} ||
 				gethostbyname($slave->{'host'});
-		local $full = "$bn[0].";
+		my $full = "$bn[0].";
 		&create_record($file, "$zone.", undef, "IN", "NS", $full);
 		}
 	}
 
 if ($add_tmpl) {
 	# Create template records
-	local %bumped;
-	local %hash = ( 'ip' => $ip,
+	my %bumped;
+	my %hash = ( 'ip' => $ip,
 			'dom' => $zone );
 	for(my $i=0; $config{"tmpl_$i"}; $i++) {
-		local @c = split(/\s+/, $config{"tmpl_$i"}, 3);
-		local $name = $c[0] eq '.' ? "$zone." : $c[0];
-		local $fullname = $name =~ /\.$/ ? $name : "$name.$zone.";
-		local $recip = $c[2] || $ip;
+		my @c = split(/\s+/, $config{"tmpl_$i"}, 3);
+		my $name = $c[0] eq '.' ? "$zone." : $c[0];
+		my $fullname = $name =~ /\.$/ ? $name : "$name.$zone.";
+		my $recip = $c[2] || $ip;
 		$recip = &substitute_template($recip, \%hash);
 		&create_record($file, $name, undef, "IN", $c[1], $recip);
 		if ($addrev && ($c[1] eq "A" || $c[1] eq "AAAA")) {
 			# Consider adding reverse record
-			local ($revconf, $revfile, $revrec) = &find_reverse(
+			# XXX $view is undefined. Will never work if in view?
+			my $view; # XXX FIXME
+			my ($revconf, $revfile, $revrec) = &find_reverse(
 				$recip, $view);
 			if ($revconf && &can_edit_reverse($revconf) &&
 			    !$revrec) {
 				# Yes, add one
-				local $rname = $c[1] eq "A" ?
+				my $rname = $c[1] eq "A" ?
 					&ip_to_arpa($recip) :
 					&net_to_ip6int($recip);
 				&lock_file(&make_chroot($revfile));
 				&create_record($revfile, $rname,
 					undef, "IN", "PTR", $fullname);
 				if (!$bumped{$revfile}++) {
-					local @rrecs = &read_zone_file(
+					my @rrecs = &read_zone_file(
 						$revfile, $revconf->{'name'});
 					&bump_soa_record($revfile, \@rrecs);
 					&sign_dnssec_zone_if_key(
@@ -2571,19 +2584,20 @@ if ($add_tmpl) {
 		}
 	if ($config{'tmpl_include'}) {
 		# Add whatever is in the template file
-		local $tmpl = &read_file_contents($config{'tmpl_include'});
+		my $tmpl = &read_file_contents($config{'tmpl_include'});
 		$tmpl = &substitute_template($tmpl, \%hash);
-		&open_tempfile(FILE, ">>".&make_chroot($file));
-		&print_tempfile(FILE, $tmpl);
-		&close_tempfile(FILE);
+		my $FILE;
+		&open_tempfile($FILE, ">>".&make_chroot($file));
+		&print_tempfile($FILE, $tmpl);
+		&close_tempfile($FILE);
 		}
 	}
 
 # If DNSSEC for new zones was requested, sign now
-local $secerr;
+my $secerr;
 if ($config{'tmpl_dnssec'} && &supports_dnssec()) {
 	# Compute the size
-	($ok, $size) = &compute_dnssec_key_size($config{'tmpl_dnssecalg'},
+	my ($ok, $size) = &compute_dnssec_key_size($config{'tmpl_dnssecalg'},
 						$config{'tmpl_dnssecsizedef'},
 						$config{'tmpl_dnssecsize'});
 	if (!$ok) {
@@ -2592,7 +2606,7 @@ if ($config{'tmpl_dnssec'} && &supports_dnssec()) {
 		}
 	else {
 		# Create key and sign, saving any error
-		local $fake = { 'file' => $file,
+		my $fake = { 'file' => $file,
 			        'name' => $zone };
 		$secerr = &create_dnssec_key($fake, $config{'tmpl_dnssecalg'},
 					     $size);
@@ -2615,8 +2629,8 @@ return undef;
 # Returns a filename for a new zone
 sub automatic_filename
 {
-local ($zone, $rev, $base, $viewname) = @_;
-local ($subs, $format);
+my ($zone, $rev, $base, $viewname) = @_;
+my ($subs, $format);
 if ($rev) {
 	# create filename for reverse zone
 	$subs = &ip6int_to_net(&arpa_to_ip($zone));
@@ -2632,7 +2646,7 @@ if ($viewname) {
 	$subs .= ".".$viewname;
 	}
 $format =~ s/ZONE/$subs/g;
-return $file = $base."/".$format;
+return $base."/".$format;
 }
 
 # create_on_slaves(zone, master-ip, file, [&hostnames], [local-view],
@@ -2641,13 +2655,12 @@ return $file = $base."/".$format;
 # of errors
 sub create_on_slaves
 {
-local ($zone, $master, $file, $hosts, $localview, $moreslaves) = @_;
-local %on = map { $_, 1 } @$hosts;
+my ($zone, $master, $file, $hosts, $localview, $moreslaves) = @_;
+my %on = map { $_, 1 } @$hosts;
 &remote_error_setup(\&slave_error_handler);
-local $slave;
-local @slaveerrs;
-local @slaves = &list_slave_servers();
-foreach $slave (@slaves) {
+my @slaveerrs;
+my @slaves = &list_slave_servers();
+foreach my $slave (@slaves) {
 	# Skip if not on list to add to
 	next if (%on && !$on{$slave->{'host'}} && !$on{$slave->{'nsname'}});
 
@@ -2660,7 +2673,7 @@ foreach $slave (@slaves) {
 		}
 
 	# Work out other slave IPs
-	local @otherslaves;
+	my @otherslaves;
 	if ($config{'other_slaves'}) {
 		@otherslaves = grep { $_ ne '' }
 				  map { &to_ipaddress($_->{'host'}) }
@@ -2683,7 +2696,7 @@ foreach $slave (@slaves) {
 		}
 
 	# Create the zone
-	local $err = &remote_foreign_call($slave, "bind8",
+	my $err = &remote_foreign_call($slave, "bind8",
 		"create_slave_zone", $zone, $master,
 		$view, $file, \@otherslaves);
 	if ($err == 1) {
@@ -2705,12 +2718,11 @@ return @slaveerrs;
 # Delete some domain or all or listed slave servers
 sub delete_on_slaves
 {
-local ($dom, $slavehosts, $localview) = @_;
-local %on = map { $_, 1 } @$slavehosts;
+my ($dom, $slavehosts, $localview) = @_;
+my %on = map { $_, 1 } @$slavehosts;
 &remote_error_setup(\&slave_error_handler);
-local $slave;
-local @slaveerrs;
-foreach $slave (&list_slave_servers()) {
+my @slaveerrs;
+foreach my $slave (&list_slave_servers()) {
 	next if (%on && !$on{$slave->{'host'}} && !$on{$slave->{'nsname'}});
 
 	# Connect to server
@@ -2734,7 +2746,7 @@ foreach $slave (&list_slave_servers()) {
 		}
 
 	# Delete the zone
-	$err = &remote_foreign_call($slave, "bind8", "delete_zone",
+	my $err = &remote_foreign_call($slave, "bind8", "delete_zone",
 			    $dom, $view, 1);
 	if ($err == 1) {
 		push(@slaveerrs, [ $slave, $text{'delete_ezone'} ]);
@@ -2752,12 +2764,11 @@ return @slaveerrs;
 # Changes the name of some domain on all or listed slave servers
 sub rename_on_slaves
 {
-local ($olddom, $newdom, $on) = @_;
-local %on = map { $_, 1 } @$on;
+my ($olddom, $newdom, $on) = @_;
+my %on = map { $_, 1 } @$on;
 &remote_error_setup(\&slave_error_handler);
-local $slave;
-local @slaveerrs;
-foreach $slave (&list_slave_servers()) {
+my @slaveerrs;
+foreach my $slave (&list_slave_servers()) {
 	next if (%on && !$on{$slave->{'host'}} && !$on{$slave->{'nsname'}});
 
 	# Connect to server
@@ -2769,7 +2780,7 @@ foreach $slave (&list_slave_servers()) {
 		}
 
 	# Delete the zone
-	$err = &remote_foreign_call($slave, "bind8", "rename_zone",
+	my $err = &remote_foreign_call($slave, "bind8", "rename_zone",
 			    $olddom, $newdom, $slave->{'bind8_view'});
 	if ($err == 1) {
 		push(@slaveerrs, [ $slave, $text{'delete_ezone'} ]);
@@ -2787,11 +2798,10 @@ return @slaveerrs;
 # Re-starts BIND on all or listed slave servers, and returns a list of errors
 sub restart_on_slaves
 {
-local %on = map { $_, 1 } @{$_[0]};
+my %on = map { $_, 1 } @{$_[0]};
 &remote_error_setup(\&slave_error_handler);
-local $slave;
-local @slaveerrs;
-foreach $slave (&list_slave_servers()) {
+my @slaveerrs;
+foreach my $slave (&list_slave_servers()) {
 	next if (%on && !$on{$slave->{'host'}});
 
 	# Find the PID file
@@ -2801,9 +2811,9 @@ foreach $slave (&list_slave_servers()) {
 		push(@slaveerrs, [ $slave, $slave_error ]);
 		next;
 		}
-	local $sver = &remote_foreign_call($slave, "bind8",
+	my $sver = &remote_foreign_call($slave, "bind8",
 				     "get_webmin_version");
-	local $pidfile;
+	my $pidfile;
 	if ($sver >= 1.140) {
 		# Call new function to get PID file from slave
 		$pidfile = &remote_foreign_call(
@@ -2818,14 +2828,14 @@ foreach $slave (&list_slave_servers()) {
 		}
 
 	# Read the PID and restart
-	local $pid = &remote_foreign_call($slave, "bind8",
+	my $pid = &remote_foreign_call($slave, "bind8",
 				    "check_pid_file", $pidfile);
 	if (!$pid) {
 		push(@slaveerrs, [ $slave, &text('restart_erunning2',
 						 $slave->{'host'}) ]);
 		next;
 		}
-	$err = &remote_foreign_call($slave, "bind8", "restart_bind");
+	my $err = &remote_foreign_call($slave, "bind8", "restart_bind");
 	if ($err) {
 		push(@slaveerrs, [ $slave, &text('restart_esig2',
 						 $slave->{'host'}, $err) ]);
@@ -2854,9 +2864,9 @@ return ("PTR", "NS", "CNAME", @extra_reverse);
 # Try calling rndc and ndc with the same args, to see which one works
 sub try_cmd
 {
-local $args = $_[0];
-local $rndc_args = $_[1] || $_[0];
-local $out;
+my $args = $_[0];
+my $rndc_args = $_[1] || $_[0];
+my $out;
 if (&has_ndc() == 2) {
 	# Try with rndc
 	$out = &backquote_logged(
@@ -2884,12 +2894,12 @@ return $config{'checkzone'} && &has_command($config{'checkzone'});
 # Returns a list of errors from checking some zone file, if any
 sub check_zone_records
 {
-local ($zone) = @_;
-local ($zonename, $zonefile);
+my ($zone) = @_;
+my ($zonename, $zonefile);
 if ($zone->{'values'}) {
 	# Zone object
 	$zonename = $zone->{'values'}->[0];
-	local $f = &find("file", $zone->{'members'});
+	my $f = &find("file", $zone->{'members'});
 	$zonefile = $f->{'values'}->[0];
 	}
 else {
@@ -2897,7 +2907,7 @@ else {
 	$zonename = $zone->{'name'};
 	$zonefile = $zone->{'file'};
 	}
-local $out = &backquote_command(
+my $out = &backquote_command(
 	$config{'checkzone'}." ".quotemeta($zonename)." ".
 	quotemeta(&make_chroot(&absolute_path($zonefile)))." 2>&1 </dev/null");
 return $? ? split(/\r?\n/, $out) : ( );
@@ -2914,12 +2924,12 @@ return $config{'checkconf'} && &has_command($config{'checkconf'});
 # Checks the BIND configuration and returns a list of errors
 sub check_bind_config
 {
-local ($file) = @_;
+my ($file) = @_;
 $file ||= &make_chroot($config{'named_conf'});
-local $chroot = &get_chroot();
-local $out = &backquote_command("$config{'checkconf'} -h 2>&1 </dev/null");
-local $zflag = $out =~ /\[-z\]/ ? "-z" : "";
-local $out = &backquote_command(
+my $chroot = &get_chroot();
+my $out = &backquote_command("$config{'checkconf'} -h 2>&1 </dev/null");
+my $zflag = $out =~ /\[-z\]/ ? "-z" : "";
+$out = &backquote_command(
         $config{'checkconf'}.
 	($chroot && $chroot ne "/" ? " -t ".quotemeta($chroot) : "").
 	" $zflag 2>&1 </dev/null");
@@ -2931,21 +2941,21 @@ return $? ? grep { !/loaded\s+serial/ } split(/\r?\n/, $out) : ( );
 # journal or log files
 sub delete_records_file
 {
-local ($file) = @_;
-local $zonefile = &make_chroot(&absolute_path($file));
+my ($file) = @_;
+my $zonefile = &make_chroot(&absolute_path($file));
 &lock_file($zonefile);
 unlink($zonefile);
-local $logfile = $zonefile.".log";
+my $logfile = $zonefile.".log";
 if (-r $logfile) {
 	&lock_file($logfile);
 	unlink($logfile);
 	}
-local $jnlfile = $zonefile.".jnl";
+my $jnlfile = $zonefile.".jnl";
 if (-r $jnlfile) {
 	&lock_file($jnlfile);
 	unlink($jnlfile);
 	}
-local $signfile = $zonefile.".signed";
+my $signfile = $zonefile.".signed";
 if (-r $signfile) {
 	&lock_file($signfile);
 	unlink($signfile);
@@ -2956,8 +2966,8 @@ if (-r $signfile) {
 # If possible, returns a button row for moving this zone to another view
 sub move_zone_button
 {
-local ($conf, $view, $zonename) = @_;
-local @views = grep { &can_edit_view($_) } &find("view", $conf);
+my ($conf, $view, $zonename) = @_;
+my @views = grep { &can_edit_view($_) } &find("view", $conf);
 if ($view eq '' && @views || $view ne '' && @views > 1) {
 	return &ui_buttons_row("move_zone.cgi",
                 $text{'master_move'},
@@ -3015,10 +3025,10 @@ return undef;
 # in ui_print_header
 sub restart_links
 {
-local ($zone) = @_;
-local @rv;
+my ($zone) = @_;
+my @rv;
 if (!$access{'ro'} && $access{'apply'}) {
-	local $r = $ENV{'REQUEST_METHOD'} eq 'POST' ? 0 : 1;
+	my $r = $ENV{'REQUEST_METHOD'} eq 'POST' ? 0 : 1;
 	if (&is_bind_running()) {
 		if ($zone && ($access{'apply'} == 1 || $access{'apply'} == 2)) {
 			# Apply this zone
@@ -3066,7 +3076,7 @@ return $bind_version >= 9.4 ? 2 :
 # and an optional forced divisor.
 sub dnssec_size_range
 {
-local ($alg) = @_;
+my ($alg) = @_;
 return $alg eq 'RSAMD5' || $alg eq 'RSASHA1' ||
 	$alg eq 'RSASHA256' ? ( 512, 2048 ) :
        $alg eq 'DH' ? ( 128, 4096 ) :
@@ -3086,12 +3096,12 @@ return ("RSASHA1", "RSASHA256", "RSAMD5", "DSA", "DH", "HMAC-MD5",
 # Returns the directory in which to find DNSSEC keys for some zone
 sub get_keys_dir
 {
-local ($z) = @_;
+my ($z) = @_;
 if ($config{'keys_dir'}) {
 	return $config{'keys_dir'};
 	}
 else {
-	local $fn = &get_zone_file($z, 2);
+	my $fn = &get_zone_file($z, 2);
 	$fn =~ s/\/[^\/]+$//;
 	return $fn;
 	}
@@ -3102,9 +3112,10 @@ else {
 # as the zone file. Returns undef on success or an error message on failure.
 sub create_dnssec_key
 {
-local ($z, $alg, $size, $single) = @_;
-local $fn = &get_keys_dir($z);
+my ($z, $alg, $size, $single) = @_;
+my $fn = &get_keys_dir($z);
 $fn || return "Could not work keys directory!";
+my $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
 
 # Remove all keys for the same zone
 opendir(ZONEDIR, $fn);
@@ -3116,7 +3127,7 @@ foreach my $f (readdir(ZONEDIR)) {
 closedir(ZONEDIR);
 
 # Fork a background job to do lots of IO, to generate entropy
-local $pid;
+my $pid;
 if (!$rand_flag) {
 	$pid = fork();
 	if (!$pid) {
@@ -3126,7 +3137,7 @@ if (!$rand_flag) {
 	}
 
 # Work out zone key size
-local $zonesize;
+my $zonesize;
 if ($single) {
 	(undef, $zonesize) = &compute_dnssec_key_size($alg, 1);
 	}
@@ -3135,8 +3146,7 @@ else {
 	}
 
 # Create the zone key
-local $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
-local $out = &backquote_logged(
+my $out = &backquote_logged(
 	"cd ".quotemeta($fn)." && ".
 	"$config{'keygen'} -a ".quotemeta($alg)." -b ".quotemeta($zonesize).
 	" -n ZONE $rand_flag $dom 2>&1");
@@ -3161,7 +3171,7 @@ else {
 	}
 
 # Get the new keys
-local @keys = &get_dnssec_key($z);
+my @keys = &get_dnssec_key($z);
 @keys || return "No new keys found for zone : $out";
 foreach my $key (@keys) {
 	ref($key) || return "Failed to get new key for zone : $key";
@@ -3172,8 +3182,8 @@ if (!$single) {
 	}
 
 # Add the new DNSKEY record(s) to the zone
-local $chrootfn = &get_zone_file($z);
-local @recs = &read_zone_file($chrootfn, $dom);
+my $chrootfn = &get_zone_file($z);
+my @recs = &read_zone_file($chrootfn, $dom);
 for(my $i=$#recs; $i>=0; $i--) {
 	if ($recs[$i]->{'type'} eq 'DNSKEY') {
 		&delete_record($chrootfn, $recs[$i]);
@@ -3193,29 +3203,29 @@ return undef;
 # an error message on failure.
 sub resign_dnssec_key
 {
-local ($z) = @_;
-local $fn = &get_zone_file($z);
+my ($z) = @_;
+my $fn = &get_zone_file($z);
 $fn || return "Could not work out records file!";
-local $dir = &get_keys_dir($z);
+my $dir = &get_keys_dir($z);
 $dir || return "Could not work out keys directory!";
-local $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
+my $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
 
 # Get the old zone key record
-local @recs = &read_zone_file($fn, $dom);
-local $zonerec;
+my @recs = &read_zone_file($fn, $dom);
+my $zonerec;
 foreach my $r (@recs) {
 	if ($r->{'type'} eq 'DNSKEY' && $r->{'values'}->[0] % 2 == 0) {
 		$zonerec = $r;
 		}
 	}
 $zonerec || return "Could not find DNSSEC zone key record";
-local @keys = &get_dnssec_key($z);
+my @keys = &get_dnssec_key($z);
 @keys == 2 || return "Expected to find 2 keys, but found ".scalar(@keys);
-local ($zonekey) = grep { !$_->{'ksk'} } @keys;
+my ($zonekey) = grep { !$_->{'ksk'} } @keys;
 $zonekey || return "Could not find DNSSEC zone key";
 
 # Fork a background job to do lots of IO, to generate entropy
-local $pid;
+my $pid;
 if (!$rand_flag) {
 	$pid = fork();
 	if (!$pid) {
@@ -3225,12 +3235,12 @@ if (!$rand_flag) {
 	}
 
 # Work out zone key size
-local $zonesize;
-local $alg = $zonekey->{'algorithm'};
+my $zonesize;
+my $alg = $zonekey->{'algorithm'};
 (undef, $zonesize) = &compute_dnssec_key_size($alg, 1);
 
 # Generate a new zone key
-local $out = &backquote_logged(
+my $out = &backquote_logged(
 	"cd ".quotemeta($dir)." && ".
 	"$config{'keygen'} -a ".quotemeta($alg)." -b ".quotemeta($zonesize).
 	" -n ZONE $rand_flag $dom 2>&1");
@@ -3245,14 +3255,14 @@ if ($?) {
 
 # Update the zone file with the new key
 @keys = &get_dnssec_key($z);
-local ($newzonekey) = grep { !$_->{'ksk'} } @keys;
+my ($newzonekey) = grep { !$_->{'ksk'} } @keys;
 $newzonekey || return "Could not find new DNSSEC zone key";
 &modify_record($fn, $zonerec, $dom.".", undef, "IN", "DNSKEY",
 	       join(" ", @{$newzonekey->{'values'}}));
 &bump_soa_record($fn, \@recs);
 
 # Re-sign everything
-local $err = &sign_dnssec_zone($z);
+my $err = &sign_dnssec_zone($z);
 return "Re-signing failed : $err" if ($err);
 
 return undef;
@@ -3262,13 +3272,13 @@ return undef;
 # Deletes the key for a zone, and all DNSSEC records
 sub delete_dnssec_key
 {
-local ($z) = @_;
-local $fn = &get_zone_file($z);
+my ($z) = @_;
+my $fn = &get_zone_file($z);
 $fn || return "Could not work out records file!";
-local $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
+my $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
 
 # Remove the key
-local @keys = &get_dnssec_key($z);
+my @keys = &get_dnssec_key($z);
 foreach my $key (@keys) {
 	foreach my $f ('publicfile', 'privatefile') {
 		&unlink_file($key->{$f}) if ($key->{$f});
@@ -3276,8 +3286,8 @@ foreach my $key (@keys) {
 	}
 
 # Remove records
-local @recs = &read_zone_file($fn, $dom);
-local $tools = &have_dnssec_tools_support();
+my @recs = &read_zone_file($fn, $dom);
+my $tools = &have_dnssec_tools_support();
 for(my $i=$#recs; $i>=0; $i--) {
 	if ($recs[$i]->{'type'} eq 'NSEC' ||
 	    $recs[$i]->{'type'} eq 'NSEC3' ||
@@ -3294,31 +3304,31 @@ for(my $i=$#recs; $i>=0; $i--) {
 # Replaces a zone's file with one containing signed records.
 sub sign_dnssec_zone
 {
-local ($z, $bump) = @_;
-local $chrootfn = &get_zone_file($z, 2);
+my ($z, $bump) = @_;
+my $chrootfn = &get_zone_file($z, 2);
 $chrootfn || return "Could not work out records file!";
-local $dir = &get_keys_dir($z);
-local $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
-local $signed = $chrootfn.".webmin-signed";
+my $dir = &get_keys_dir($z);
+my $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
+my $signed = $chrootfn.".webmin-signed";
 
 # Up the serial number, if requested
-local $fn = &get_zone_file($z, 1);
+my $fn = &get_zone_file($z, 1);
 $fn =~ /^(.*)\/([^\/]+$)/;
-local @recs = &read_zone_file($fn, $dom);
+my @recs = &read_zone_file($fn, $dom);
 if ($bump) {
 	&bump_soa_record($fn, \@recs);
 	}
 
 # Get the zone algorithm
-local @keys = &get_dnssec_key($z);
-local ($zonekey) = grep { !$_->{'ksk'} } @keys;
-local $alg = $zonekey ? $zonekey->{'algorithm'} : "";
+my @keys = &get_dnssec_key($z);
+my ($zonekey) = grep { !$_->{'ksk'} } @keys;
+my $alg = $zonekey ? $zonekey->{'algorithm'} : "";
 
 # Create the signed file. Sometimes this fails with an error like :
 # task.c:310: REQUIRE(task->references > 0) failed
 # But re-trying works!?!
-local $out;
-local $tries = 0;
+my $out;
+my $tries = 0;
 while($tries++ < 10) {
 	$out = &backquote_logged(
 		"cd ".quotemeta($dir)." && ".
@@ -3339,7 +3349,7 @@ for(my $i=$#recs; $i>=0; $i--) {
 		&delete_record($fn, $recs[$i]);
 		}
 	}
-local @signedrecs = &read_zone_file($fn.".webmin-signed", $dom);
+my @signedrecs = &read_zone_file($fn.".webmin-signed", $dom);
 foreach my $r (@signedrecs) {
 	if ($r->{'type'} eq 'NSEC' ||
 	    $r->{'type'} eq 'NSEC3' ||
@@ -3358,7 +3368,7 @@ return undef;
 # Return 1 if yes, undef if not
 sub check_if_dnssec_tools_managed
 {
-	local ($dom) = @_;
+	my ($dom) = @_;
 	my $dt_managed;
 
 	if (&have_dnssec_tools_support()) {
@@ -3383,28 +3393,27 @@ sub check_if_dnssec_tools_managed
 # If a zone has a DNSSEC key, sign it. Calls error if signing fails
 sub sign_dnssec_zone_if_key
 {
-local ($z, $recs, $bump) = @_;
+my ($z, $recs, $bump) = @_;
 
 # Check if zones are managed by dnssec-tools
-local $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
+my $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
  
 # If zone is managed through dnssec-tools use zonesigner for resigning the zone 
 if (&check_if_dnssec_tools_managed($dom)) {
 	# Do the signing
-	local $zonefile = &get_zone_file($z); 
-	local $krfile = "$zonefile".".krf";
-	local $err;
+	my $zonefile = &get_zone_file($z); 
+	my $krfile = "$zonefile".".krf";
 
 	&lock_file(&make_chroot($zonefile));
-	$err = &dt_resign_zone($dom, $zonefile, $krfile, 0);
+	my $err = &dt_resign_zone($dom, $zonefile, $krfile, 0);
 	&unlock_file(&make_chroot($zonefile));
 	&error($err) if ($err);
 	return undef;
 	}
 
-local $keyrec = &get_dnskey_record($z, $recs);
+my $keyrec = &get_dnskey_record($z, $recs);
 if ($keyrec) {
-	local $err = &sign_dnssec_zone($z, $bump);
+	my $err = &sign_dnssec_zone($z, $bump);
 	&error(&text('sign_emsg', $err)) if ($err);
 	}
 }
@@ -3414,21 +3423,21 @@ if ($keyrec) {
 # message. The KSK is always returned first.
 sub get_dnssec_key
 {
-local ($z) = @_;
-local $dir = &get_keys_dir($z);
-local $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
-local %keymap;
+my ($z) = @_;
+my $dir = &get_keys_dir($z);
+my $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
+my %keymap;
 opendir(ZONEDIR, $dir);
 foreach my $f (readdir(ZONEDIR)) {
 	if ($f =~ /^K\Q$dom\E\.\+(\d+)\+(\d+)\.key$/) {
 		# Found the public key file .. read it
 		$keymap{$2} ||= { };
-		local $rv = $keymap{$2};
+		my $rv = $keymap{$2};
 		$rv->{'publicfile'} = "$dir/$f";
 		$rv->{'algorithmid'} = $1;
 		$rv->{'keyid'} = $2;
-		local $config{'short_names'} = 0;	# Force canonicalization
-		local ($pub) = &read_zone_file("$dir/$f", $dom, undef, 0, 1);
+		$config{'short_names'} = 0;	# Force canonicalization
+		my ($pub) = &read_zone_file("$dir/$f", $dom, undef, 0, 1);
 		$pub || return "Public key file $dir/$f does not contain ".
 			       "any records";
 		$pub->{'name'} eq $dom."." ||
@@ -3444,12 +3453,12 @@ foreach my $f (readdir(ZONEDIR)) {
 	elsif ($f =~ /^K\Q$dom\E\.\+(\d+)\+(\d+)\.private$/) {
 		# Found the private key file
 		$keymap{$2} ||= { };
-		local $rv = $keymap{$2};
+		my $rv = $keymap{$2};
 		$rv->{'privatefile'} = "$dir/$f";
-		local $lref = &read_file_lines("$dir/$f", 1);
+		my $lref = &read_file_lines("$dir/$f", 1);
 		foreach my $l (@$lref) {
 			if ($l =~ /^(\S+):\s*(.*)/) {
-				local ($n, $v) = ($1, $2);
+				my ($n, $v) = ($1, $2);
 				$n =~ s/\(\S+\)$//;
 				$n = lc($n);
 				$rv->{$n} = $v;
@@ -3462,7 +3471,7 @@ foreach my $f (readdir(ZONEDIR)) {
 closedir(ZONEDIR);
 
 # Sort to put KSK first
-local @rv = values %keymap;
+my @rv = values %keymap;
 @rv = sort { $b->{'ksk'} <=> $a->{'ksk'} } @rv;
 return wantarray ? @rv : $rv[0];
 }
@@ -3472,9 +3481,9 @@ return wantarray ? @rv : $rv[0];
 # 0 and an error message or 1 and the corrected size
 sub compute_dnssec_key_size
 {
-local ($alg, $def, $size) = @_;
-local ($min, $max, $factor) = &dnssec_size_range($alg);
-local $rv;
+my ($alg, $def, $size) = @_;
+my ($min, $max, $factor) = &dnssec_size_range($alg);
+my $rv;
 if ($def == 1) {
 	# Average
 	$rv = int(($max + $min) / 2);
@@ -3502,7 +3511,7 @@ return (1, $rv);
 sub get_dnssec_cron_job
 {
 &foreign_require("cron", "cron-lib.pl");
-local ($job) = grep { $_->{'user'} eq 'root' &&
+my ($job) = grep { $_->{'user'} eq 'root' &&
 		      $_->{'command'} =~ /^\Q$dnssec_cron_cmd\E/ }
 		    &cron::list_cron_jobs();
 return $job;
@@ -3555,9 +3564,10 @@ foreach my $ip (@$masters) {
 			}
 		else {
 			if ($file) {
-				&open_tempfile(XFER, ">$file");
-				&print_tempfile(XFER, $out);
-				&close_tempfile(XFER);
+				my $XFER;
+				&open_tempfile($XFER, ">$file");
+				&print_tempfile($XFER, $out);
+				&close_tempfile($XFER);
 				$file = undef;
 				}
 			}
@@ -3591,8 +3601,8 @@ sub get_dnssectools_config
 # Save new dnssec-tools configuration values to the configuration file
 sub save_dnssectools_directive
 {
-	local $conf = $_[0];
-	local $nv = $_[1];
+	my $conf = $_[0];
+	my $nv = $_[1];
 
 	&lock_file($config{'dnssectools_conf'});
 	my $lref = &read_file_lines($config{'dnssectools_conf'});
@@ -3664,16 +3674,17 @@ sub schedule_dnssec_cronjob
 # Replaces a zone's file with one containing signed records.
 sub dt_sign_zone
 {
-	local ($zone, $nsec3) = @_;
-	local @recs;
+	my ($zone, $nsec3) = @_;
+	my @recs;
 
-	local $z = &get_zone_file($zone);
-	local $d = $zone->{'name'};
-	local $z_chroot = &make_chroot($z);
-	local $k_chroot = $z_chroot.".krf";
-	local $usz = $z_chroot.".webmin-unsigned";
-	local $cmd;
-	local $out;
+	my $z = &get_zone_file($zone);
+	my $d = $zone->{'name'};
+	my $z_chroot = &make_chroot($z);
+	my $k_chroot = $z_chroot.".krf";
+	my $usz = $z_chroot.".webmin-unsigned";
+	my $cmd;
+	my $out;
+	my ($nsec3param, $zonesigner);
 
 	if ((($zonesigner=dt_cmdpath('zonesigner')) eq '')) {
 		return $text{'dt_zone_enocmd'};
@@ -3689,8 +3700,9 @@ sub dt_sign_zone
 	rollrec_lock();
 
 	# Remove DNSSEC records and save the unsigned zone file
-	@recs = &read_zone_file($z, $dom);
-	local $tools = &have_dnssec_tools_support();
+	#@recs = &read_zone_file($z, $dom);
+	@recs = &read_zone_file($z, $zone); # XXX FIXME Is $zone right?
+	my $tools = &have_dnssec_tools_support();
 	for(my $i=$#recs; $i>=0; $i--) {
 		if ($recs[$i]->{'type'} eq 'NSEC' ||
 			$recs[$i]->{'type'} eq 'NSEC3' ||
@@ -3720,21 +3732,21 @@ sub dt_sign_zone
 	}
 
 	# Create rollrec entry for zone
-	$rrfile = $config{"dnssectools_rollrec"};
+	my $rrfile = $config{"dnssectools_rollrec"};
 	&lock_file($rrfile);
-	open(OUT,">> $rrfile") || &error($text{'dt_zone_errfopen'});
-	print OUT "roll \"$d\"\n";
-	print OUT " zonename    \"$d\"\n";
-	print OUT " zonefile    \"$z_chroot\"\n";
-	print OUT " keyrec      \"$k_chroot\"\n";
-	print OUT " kskphase    \"0\"\n";
-	print OUT " zskphase    \"0\"\n";
-	print OUT " ksk_rolldate    \" \"\n";
-	print OUT " ksk_rollsecs    \"0\"\n";
-	print OUT " zsk_rolldate    \" \"\n";
-	print OUT " zsk_rollsecs    \"0\"\n";
-	print OUT " maxttl      \"0\"\n";
-	print OUT " phasestart  \"new\"\n";
+	open(my $OUT, ">>", "$rrfile") || &error($text{'dt_zone_errfopen'});
+	print $OUT "roll \"$d\"\n";
+	print $OUT " zonename    \"$d\"\n";
+	print $OUT " zonefile    \"$z_chroot\"\n";
+	print $OUT " keyrec      \"$k_chroot\"\n";
+	print $OUT " kskphase    \"0\"\n";
+	print $OUT " zskphase    \"0\"\n";
+	print $OUT " ksk_rolldate    \" \"\n";
+	print $OUT " ksk_rollsecs    \"0\"\n";
+	print $OUT " zsk_rolldate    \" \"\n";
+	print $OUT " zsk_rollsecs    \"0\"\n";
+	print $OUT " maxttl      \"0\"\n";
+	print $OUT " phasestart  \"new\"\n";
 	&unlock_file($rrfile);
 
 	# Setup zone to be auto-resigned every 30 days
@@ -3752,15 +3764,15 @@ sub dt_sign_zone
 # Replaces a zone's file with one containing signed records.
 sub dt_resign_zone
 {
-	local ($d, $z, $k, $t) = @_;
+	my ($d, $z, $k, $t) = @_;
 
-	local $zonesigner;
-	local @recs;
-	local $cmd;
-	local $out;
-	local $threshold = "";
-	local $z_chroot = &make_chroot($z);
-	local $usz = $z_chroot.".webmin-unsigned";
+	my $zonesigner;
+	my @recs;
+	my $cmd;
+	my $out;
+	my $threshold = "";
+	my $z_chroot = &make_chroot($z);
+	my $usz = $z_chroot.".webmin-unsigned";
 
 	if ((($zonesigner=dt_cmdpath('zonesigner')) eq '')) {
 		return $text{'dt_zone_enocmd'};
@@ -3769,8 +3781,8 @@ sub dt_resign_zone
 	rollrec_lock();
 
 	# Remove DNSSEC records and save the unsigned zone file
-	@recs = &read_zone_file($z, $dom);
-	local $tools = &have_dnssec_tools_support();
+	@recs = &read_zone_file($z, $d); # XXX FIXME Is $d == $dom?
+	my $tools = &have_dnssec_tools_support();
 	for(my $i=$#recs; $i>=0; $i--) {
 		if ($recs[$i]->{'type'} eq 'NSEC' ||
 			$recs[$i]->{'type'} eq 'NSEC3' ||
@@ -3809,11 +3821,12 @@ sub dt_resign_zone
 # Initates a zsk rollover operation for the zone 
 sub dt_zskroll_zone
 {
-	local ($d) = @_;
+	my ($d) = @_;
+	no strict "subs";
 	if (!rollmgr_sendcmd(CHANNEL_WAIT,ROLLCMD_ROLLZSK,$d)) {
 		return $text{'dt_zone_erollctl'};
 	}
-	
+	use strict "subs";
 	return undef;
 }
 
@@ -3821,11 +3834,12 @@ sub dt_zskroll_zone
 # Initates a ksk rollover operation for the zone 
 sub dt_kskroll_zone
 {
-	local ($d) = @_;
+	my ($d) = @_;
+	no strict "subs";
 	if (!rollmgr_sendcmd(CHANNEL_WAIT,ROLLCMD_ROLLKSK,$d)) {
 		return $text{'dt_zone_erollctl'};
 	}
-	
+	use strict "subs";
 	return undef;
 }
 
@@ -3833,11 +3847,12 @@ sub dt_kskroll_zone
 # Notifies rollerd that the new DS record has been published in the parent zone 
 sub dt_notify_parentzone
 {
-	local ($d) = @_;
+	my ($d) = @_;
+	no strict "subs";
 	if (!rollmgr_sendcmd(CHANNEL_WAIT,ROLLCMD_DSPUB,$d)) {
 		return $text{'dt_zone_erollctl'};
 	}
-	
+	use strict "subs";
 	return undef;
 }
 
@@ -3845,10 +3860,10 @@ sub dt_notify_parentzone
 # Restart the rollerd daemon 
 sub dt_rollerd_restart
 {
-	local $rollerd;
-	local $r;
-	local $cmd;
-	local $out;
+	my $rollerd;
+	my $r;
+	my $cmd;
+	my $out;
 
 	if ((($rollerd=dt_cmdpath('rollerd')) eq '')) {
 		return $text{'dt_zone_enocmd'};
@@ -3864,17 +3879,17 @@ sub dt_rollerd_restart
 # Generate a new krf file for the zone
 sub dt_genkrf
 {
-	local ($zone, $z_chroot, $k_chroot) = @_;
-	local $dom = $zone->{'name'};
-	local @keys = &get_dnssec_key($zone);
-	local $usz = $z_chroot.".webmin-unsigned";
-	local $zskcur = "";
-	local $kskcur = "";
-	local $cmd;
-	local $out;
+	my ($zone, $z_chroot, $k_chroot) = @_;
+	my $dom = $zone->{'name'};
+	my @keys = &get_dnssec_key($zone);
+	my $usz = $z_chroot.".webmin-unsigned";
+	my $zskcur = "";
+	my $kskcur = "";
+	my $cmd;
+	my $out;
 
-	local $oldkeydir = &get_keys_dir($zone);
-	local $keydir = $config{"dnssectools_keydir"};
+	my $oldkeydir = &get_keys_dir($zone);
+	my $keydir = $config{"dnssectools_keydir"};
 	mkdir($keydir);
 
 	foreach my $key (@keys) {
@@ -3900,6 +3915,7 @@ sub dt_genkrf
 		&unlink_file($oldkeydir."/"."dsset-".$dom.".");
 	}
 
+	my $genkrf;
 	if ((($genkrf=dt_cmdpath('genkrf')) eq '')) {
 		return $text{'dt_zone_enocmd'};
 	}
@@ -3923,14 +3939,14 @@ sub dt_genkrf
 # Delete all DNSSEC-Tools meta-data for a given zone 
 sub dt_delete_dnssec_state
 {
-	local ($zone) = @_;
+	my ($zone) = @_;
 
-	local $z = &get_zone_file($zone);
-	local $dom = $zone->{'members'} ? $zone->{'values'}->[0] : $zone->{'name'};
-	local $z_chroot = &make_chroot($z);
-	local $k_chroot = $z_chroot.".krf";
-	local $usz = $z_chroot.".webmin-unsigned";
-	local @recs;
+	my $z = &get_zone_file($zone);
+	my $dom = $zone->{'members'} ? $zone->{'values'}->[0] : $zone->{'name'};
+	my $z_chroot = &make_chroot($z);
+	my $k_chroot = $z_chroot.".krf";
+	my $usz = $z_chroot.".webmin-unsigned";
+	my @recs;
 
 	if (&check_if_dnssec_tools_managed($dom)) {
 		rollrec_lock();
@@ -3946,10 +3962,10 @@ sub dt_delete_dnssec_state
 
 		# remove key and krf files
 		keyrec_read($k_chroot);
-		@kskpaths = keyrec_keypaths($dom, "all");
+		my @kskpaths = keyrec_keypaths($dom, "all");
    	foreach (@kskpaths) {
 			# remove any trailing ".key"
-			s/(.*).key$/\1/;
+			s/(.*).key$/$1/;
 			&unlink_file("$_.key");
 			&unlink_file("$_.private");
 		}
@@ -3962,7 +3978,7 @@ sub dt_delete_dnssec_state
 
 		# remove DNSSEC records from zonefile
 		@recs = &read_zone_file($z, $dom);
-		local $tools = &have_dnssec_tools_support();
+		my $tools = &have_dnssec_tools_support();
 		for(my $i=$#recs; $i>=0; $i--) {
 			if ($recs[$i]->{'type'} eq 'NSEC' ||
 				$recs[$i]->{'type'} eq 'NSEC3' ||
