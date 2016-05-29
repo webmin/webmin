@@ -782,7 +782,7 @@ while(1) {
 			local ($user, $ltime, $lip) =
 				split(/\s+/, $sessiondb{$s});
 			if ($time_now - $ltime > 7*24*60*60) {
-				&run_logout_script($s, $user);
+				&run_logout_script($s, $user, undef, undef);
 				&write_logout_utmp($user, $lip);
 				if ($use_syslog && $user) {
 					syslog("info", "%s",
@@ -1076,6 +1076,10 @@ while(1) {
 						# wrong IP address
 						print $outfd "3 $ip\n";
 						}
+					elsif ($user =~ /^\!/) {
+						# Logged out session
+						print $outfd "0 0\n";
+						}
 					else {
 						# Session is OK
 						print $outfd "2 $user\n";
@@ -1101,9 +1105,11 @@ while(1) {
 				local $skey = $sessiondb{$session_id} ?
 						$session_id : 
 						&hash_session_id($session_id);
-				local @sdb = split(/\s+/, $sessiondb{$skey});
-				print $outfd $sdb[0],"\n";
-				delete($sessiondb{$skey});
+				local ($user, $ltime, $ip) =
+					split(/\s+/, $sessiondb{$skey});
+				$user =~ s/^\!//;
+				print $outfd $user,"\n";
+				$sessiondb{$skey} = "!$user $ltime $ip";
 				}
 			elsif ($inline =~ /^pamstart\s+(\S+)\s+(\S+)\s+(.*)/) {
 				# Starting a new PAM conversation
