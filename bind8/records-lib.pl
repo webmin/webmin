@@ -286,7 +286,7 @@ while($i < @tok) {
 		if ($dir{'type'} eq 'TXT' &&
 		    !$config{'spf_record'} &&
 		    ($spf=&parse_spf(@{$dir{'values'}}))) {
-			if (!@{$spf->{'other'}}) {
+			if (!$spf->{'other'} || !@{$spf->{'other'}}) {
 				$dir{'type'} = 'SPF';
 				}
 			}
