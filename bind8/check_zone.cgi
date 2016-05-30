@@ -1,18 +1,23 @@
 #!/usr/local/bin/perl
 # Check a zone's records and report problems
+use strict;
+use warnings;
 
 require './bind8-lib.pl';
+# Globals from bind8-lib.pl
+our (%access, %text, %in);
+
 &ReadParse();
 $access{'apply'} || &error($text{'check_ecannot'});
-$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 &can_edit_zone($zone) || &error($text{'master_ecannot'});
-$desc = &ip6int_to_net(&arpa_to_ip($dom));
+my $desc = &ip6int_to_net(&arpa_to_ip($dom));
 
 &ui_print_header($desc, $text{'check_title'}, "",
 		 undef, undef, undef, undef, &restart_links($zone));
 
-$file = &make_chroot($zone->{'file'});
-@errs = &check_zone_records($zone);
+my $file = &make_chroot($zone->{'file'});
+my @errs = &check_zone_records($zone);
 if (@errs) {
 	# Show list of errors
 	print "<b>",&text('check_errs', "<tt>$file</tt>"),"</b><p>\n";

@@ -1,12 +1,19 @@
 # Functions for managing BIND 4 and 8/9 records files
+use strict;
+use warnings;
+
+# Globals from Webmin or bind8-lib.pl
+our (%config, %text, %in);
+our $module_config_directory;
+our $bind_version;
 
 # read_zone_file(file, origin, [previous], [only-soa], [no-chroot])
 # Reads a DNS zone file and returns a data structure of records. The origin
 # must be a domain without the trailing dot, or just .
 sub read_zone_file
 {
-local($file, $lnum, $line, $t, @tok, @lnum, @coms,
-      $i, @rv, $origin, $num, $j, @inc, @oset, $comment);
+my ($file, $line, @tok, @lnum, @coms,
+      @rv, $origin, @inc, @oset, $comment);
 $origin = $_[1];
 if ($origin ne ".") {
 	# Remove trailing dots in origin name, as they are added automatically
@@ -14,22 +21,23 @@ if ($origin ne ".") {
 	$origin =~ s/\.*$//;
 	}
 $file = &absolute_path($_[0]);
-local $rootfile = $_[4] ? $file : &make_chroot($file);
+my $rootfile = $_[4] ? $file : &make_chroot($file);
+my $FILE;
 if (&is_raw_format_records($rootfile)) {
 	# Convert from raw format first
 	&has_command("named-compilezone") ||
 		&error("Zone file $rootfile is in raw format, but the ".
 		       "named-compilezone command is not installed");
-	&open_execute_command(FILE, "named-compilezone -f raw -F text -o - $origin $rootfile", 1, 1);
+	&open_execute_command($FILE, "named-compilezone -f raw -F text -o - $origin $rootfile", 1, 1);
 	}
 else {
 	# Can read text format records directly
-	open(FILE, $rootfile);
+	open($FILE, "<", $rootfile);
 	}
-$lnum = 0;
-local ($gotsoa, $aftersoa);
-while($line = <FILE>) {
-	local($glen, $merged_2, $merge);
+my $lnum = 0;
+my ($gotsoa, $aftersoa);
+while($line = <$FILE>) {
+	my ($glen, $merged_2, $merge);
 	# strip comments (# is not a valid comment separator here!)
 	$line =~ s/\r|\n//g;
 	# parsing splited into separate cases to fasten it
@@ -55,10 +63,10 @@ while($line = <FILE>) {
 		}
 
 	# split line into tokens
-	local $oset = 0;
+	my $oset = 0;
 	while(1) {
 		$merge = 1;
-		$base_oset = 0;
+		my $base_oset = 0;
 		if ($line =~ /^(\s*)\"((?:[^\"\\]|\\.)*)\"(.*)/ ||
 		    $line =~ /^(\s*)((?:[^\s\(\)\"\\]|\\.)+)(.*)/ ||
 		    ($merge = 0) || $line =~ /^(\s*)([\(\)])(.*)/) {
@@ -98,10 +106,10 @@ while($line = <FILE>) {
 		last;
 		}
 	}
-close(FILE);
+close($FILE);
 
 # parse into data structures
-$i = 0; $num = 0;
+my $i = 0; my $num = 0;
 while($i < @tok) {
 	if ($tok[$i] =~ /^\$origin$/i) {
 		# $ORIGIN directive (may be relative or absolute)
@@ -116,7 +124,7 @@ while($i < @tok) {
 		# including another file
 		if ($lnum[$i+1] == $lnum[$i+2]) {
 			# $INCLUDE zonefile origin
-			local $inc_origin;
+			my $inc_origin;
 			if ($tok[$i+2] =~ /^(\S+)\.$/) {
 				$inc_origin = $1 ? $1 : ".";
 				}
@@ -132,17 +140,17 @@ while($i < @tok) {
 					       @rv ? $rv[$#rv] : undef);
 			$i += 2;
 			}
-		foreach $j (@inc) { $j->{'num'} = $num++; }
+		foreach my $j (@inc) { $j->{'num'} = $num++; }
 		push(@rv, @inc);
 		}
 	elsif ($tok[$i] =~ /^\$generate$/i) {
 		# a generate directive .. add it as a special record
-		local $gen = { 'file' => $file,
+		my $gen = { 'file' => $file,
 			       'rootfile' => $rootfile,
 			       'comment' => $coms[$i],
 			       'line' => $lnum[$i],
 			       'num' => $num++ };
-		local @gv;
+		my @gv;
 		while($lnum[++$i] == $gen->{'line'}) {
 			push(@gv, $tok[$i]);
 			}
@@ -152,7 +160,7 @@ while($i < @tok) {
 	elsif ($tok[$i] =~ /^\$ttl$/i) {
 		# a ttl directive
 		$i++;
-		local $defttl = { 'file' => $file,
+		my $defttl = { 'file' => $file,
 				  'rootfile' => $rootfile,
 			       	  'line' => $lnum[$i],
 			          'num' => $num++,
@@ -161,14 +169,14 @@ while($i < @tok) {
 		}
 	elsif ($tok[$i] =~ /^\$(\S+)/i) {
 		# some other special directive
-		local $ln = $lnum[$i];
+		my $ln = $lnum[$i];
 		while($lnum[$i] == $ln) {
 			$i++;
 			}
 		}
 	else {
 		# A DNS record line
-		local(%dir, @values, $l);
+		my(%dir, @values, $l);
 		$dir{'line'} = $lnum[$i];
 		$dir{'file'} = $file;
 		$dir{'rootfile'} = $rootfile;
@@ -222,6 +230,7 @@ while($i < @tok) {
 			$i++;
 			}
 		if ($dir{'name'} eq '') {
+			my $prv;
 			# Name comes from previous record
 			for(my $p=$#rv; $p>=0; $p--) {
 				$prv = $rv[$p];
@@ -273,7 +282,7 @@ while($i < @tok) {
 		$dir{'num'} = $num++;
 
 		# If this is an SPF record .. adjust the class
-		local $spf;
+		my $spf;
 		if ($dir{'type'} eq 'TXT' &&
 		    !$config{'spf_record'} &&
 		    ($spf=&parse_spf(@{$dir{'values'}}))) {
@@ -283,7 +292,7 @@ while($i < @tok) {
 			}
 
 		# If this is a DMARC record .. adjust the class
-		local $dmarc;
+		my $dmarc;
 		if ($dir{'type'} eq 'TXT' &&
                     ($dmarc=&parse_dmarc(@{$dir{'values'}}))) {
                         if (!@{$dmarc->{'other'}}) {
@@ -306,9 +315,9 @@ return @rv;
 # Add a new record of some type to some zone file
 sub create_record
 {
-local $fn = &make_chroot(&absolute_path($_[0]));
+my $fn = &make_chroot(&absolute_path($_[0]));
 &is_raw_format_records($fn) && &error("Raw format zone files cannot be edited");
-local $lref = &read_file_lines($fn);
+my $lref = &read_file_lines($fn);
 push(@$lref, &make_record(@_[1..$#_]));
 &flush_file_lines($fn);
 }
@@ -317,10 +326,10 @@ push(@$lref, &make_record(@_[1..$#_]));
 # Updates an existing record in some zone file
 sub modify_record
 {
-local $fn = &make_chroot(&absolute_path($_[0]));
+my $fn = &make_chroot(&absolute_path($_[0]));
 &is_raw_format_records($fn) && &error("Raw format zone files cannot be edited");
-local $lref = &read_file_lines($fn);
-local $lines = $_[1]->{'eline'} - $_[1]->{'line'} + 1;
+my $lref = &read_file_lines($fn);
+my $lines = $_[1]->{'eline'} - $_[1]->{'line'} + 1;
 splice(@$lref, $_[1]->{'line'}, $lines, &make_record(@_[2..$#_]));
 &flush_file_lines($fn);
 }
@@ -329,10 +338,10 @@ splice(@$lref, $_[1]->{'line'}, $lines, &make_record(@_[2..$#_]));
 # Deletes a record in some zone file
 sub delete_record
 {
-local $fn = &make_chroot(&absolute_path($_[0]));
+my $fn = &make_chroot(&absolute_path($_[0]));
 &is_raw_format_records($fn) && &error("Raw format zone files cannot be edited");
-local $lref = &read_file_lines($fn);
-local $lines = $_[1]->{'eline'} - $_[1]->{'line'} + 1;
+my $lref = &read_file_lines($fn);
+my $lines = $_[1]->{'eline'} - $_[1]->{'line'} + 1;
 splice(@$lref, $_[1]->{'line'}, $lines);
 &flush_file_lines($fn);
 }
@@ -341,8 +350,8 @@ splice(@$lref, $_[1]->{'line'}, $lines);
 # Add a new $generate line to some zone file
 sub create_generator
 {
-local $f = &make_chroot(&absolute_path($_[0]));
-local $lref = &read_file_lines($f);
+my $f = &make_chroot(&absolute_path($_[0]));
+my $lref = &read_file_lines($f);
 push(@$lref, join(" ", '$generate', @_[1..4]).
 	     ($_[5] ? " ;$_[5]" : ""));
 &flush_file_lines($f);
@@ -352,8 +361,8 @@ push(@$lref, join(" ", '$generate', @_[1..4]).
 # Updates an existing $generate line in some zone file
 sub modify_generator
 {
-local $f = &make_chroot(&absolute_path($_[0]));
-local $lref = &read_file_lines($f);
+my $f = &make_chroot(&absolute_path($_[0]));
+my $lref = &read_file_lines($f);
 $lref->[$_[1]->{'line'}] = join(" ", '$generate', @_[2..5]).
 			   ($_[6] ? " ;$_[6]" : "");
 &flush_file_lines($f);
@@ -363,8 +372,8 @@ $lref->[$_[1]->{'line'}] = join(" ", '$generate', @_[2..5]).
 # Deletes a $generate line in some zone file
 sub delete_generator
 {
-local $f = &make_chroot(&absolute_path($_[0]));
-local $lref = &read_file_lines($f);
+my $f = &make_chroot(&absolute_path($_[0]));
+my $lref = &read_file_lines($f);
 splice(@$lref, $_[1]->{'line'}, 1);
 &flush_file_lines($f);
 }
@@ -373,8 +382,8 @@ splice(@$lref, $_[1]->{'line'}, 1);
 # Adds a $ttl line to a records file
 sub create_defttl
 {
-local $f = &make_chroot(&absolute_path($_[0]));
-local $lref = &read_file_lines($f);
+my $f = &make_chroot(&absolute_path($_[0]));
+my $lref = &read_file_lines($f);
 splice(@$lref, 0, 0, "\$ttl $_[1]");
 &flush_file_lines($f);
 }
@@ -383,8 +392,8 @@ splice(@$lref, 0, 0, "\$ttl $_[1]");
 # Updates the $ttl line with a new value
 sub modify_defttl
 {
-local $f = &make_chroot(&absolute_path($_[0]));
-local $lref = &read_file_lines($f);
+my $f = &make_chroot(&absolute_path($_[0]));
+my $lref = &read_file_lines($f);
 $lref->[$_[1]->{'line'}] = "\$ttl $_[2]";
 &flush_file_lines($f);
 }
@@ -393,8 +402,8 @@ $lref->[$_[1]->{'line'}] = "\$ttl $_[2]";
 # Removes the $ttl line from a records file
 sub delete_defttl
 {
-local $f = &make_chroot(&absolute_path($_[0]));
-local $lref = &read_file_lines($f);
+my $f = &make_chroot(&absolute_path($_[0]));
+my $lref = &read_file_lines($f);
 splice(@$lref, $_[1]->{'line'}, 1);
 &flush_file_lines($f);
 }
@@ -405,9 +414,9 @@ splice(@$lref, $_[1]->{'line'}, 1);
 # Returns a string for some zone record
 sub make_record
 {
-local ($name, $ttl, $cls, $type, $values, $cmt) = @_;
-local $type = $type eq "SPF" && !$config{'spf_record'} ? "TXT" :
-	      $type eq "DMARC" ? "TXT" : $type;
+my ($name, $ttl, $cls, $type, $values, $cmt) = @_;
+$type = $type eq "SPF" && !$config{'spf_record'} ? "TXT" :
+        $type eq "DMARC" ? "TXT" : $type;
 return $name . ($ttl ? "\t".$ttl : "") . "\t" . $cls . "\t" . $type ."\t" .
        $values . ($cmt ? "\t;$cmt" : "");
 }
@@ -416,14 +425,14 @@ return $name . ($ttl ? "\t".$ttl : "") . "\t" . $cls . "\t" . $type ."\t" .
 # Increase the serial number in some SOA record by 1
 sub bump_soa_record
 {
-local($i, $r, $v, $vals);
-for($i=0; $i<@{$_[1]}; $i++) {
+my($r, $v, $vals);
+for(my $i=0; $i<@{$_[1]}; $i++) {
 	$r = $_[1]->[$i];
 	if ($r->{'type'} eq "SOA") {
 		$v = $r->{'values'};
 		# already set serial if no acl allow it to update or update
 		# is disabled
-		$serial = $v->[2];
+		my $serial = $v->[2];
 		if ($config{'updserial_on'}) {
 			# automatically handle serial numbers ?
 			$serial = &compute_serial($v->[2]);
@@ -440,8 +449,8 @@ for($i=0; $i<@{$_[1]}; $i++) {
 # Returns a string like YYYYMMDD
 sub date_serial
 {
-local $now = time();
-local @tm = localtime($now);
+my $now = time();
+my @tm = localtime($now);
 return sprintf "%4.4d%2.2d%2.2d", $tm[5]+1900, $tm[4]+1, $tm[3];
 }
 
@@ -473,7 +482,7 @@ sub allowed_zone_file
 {
 return 0 if ($_[1] =~ /\.\./);
 return 0 if (-l $_[1] && !&allowed_zone_file($_[0], readlink($_[1])));
-local $l = length($_[0]->{'dir'});
+my $l = length($_[0]->{'dir'});
 return length($_[1]) > $l && substr($_[1], 0, $l) eq $_[0]->{'dir'};
 }
 
@@ -481,50 +490,61 @@ return length($_[1]) > $l && substr($_[1], 0, $l) eq $_[0]->{'dir'};
 sub sort_records
 {
 return @_ if (!@_);
-local $s = $in{'sort'} ? $in{'sort'} : $config{'records_order'};
+my $s = $in{'sort'} ? $in{'sort'} : $config{'records_order'};
 if ($s == 1) {
 	# Sort by name
 	if ($_[0]->{'type'} eq "PTR") {
-		return sort ptr_sort_func @_;
+		my @rv = sort ptr_sort_func @_; 
+		return @rv;
 		}
 	else {
-		return sort { $a->{'name'} cmp $b->{'name'} } @_;
+		my @rv = sort { $a->{'name'} cmp $b->{'name'} } @_;
+		return @rv;
 		}
 	}
 elsif ($s == 2) {
 	# Sort by value
 	if ($_[0]->{'type'} eq "A") {
-		return sort ip_sort_func @_;
+		my @rv = sort ip_sort_func @_;
+		return @rv;
 		}
 	elsif ($_[0]->{'type'} eq "MX") {
-		return sort { $a->{'values'}->[1] cmp $b->{'values'}->[1] } @_;
+		my @rv = sort { $a->{'values'}->[1] cmp $b->{'values'}->[1] } @_;
+		return @rv;
 		}
 	else {
-		return sort { $a->{'values'}->[0] cmp $b->{'values'}->[0] } @_;
+		my @rv = sort { $a->{'values'}->[0] cmp $b->{'values'}->[0] } @_;
+		return @rv;
 		}
 	}
 elsif ($s == 3) {
 	# Sort by IP address or by value if there is no IP
 	if ($_[0]->{'type'} eq "A") {
-		return sort ip_sort_func @_;
+		my @rv = sort ip_sort_func @_;
+		return @rv;
 		}
 	elsif ($_[0]->{'type'} eq "PTR") {
-		return sort ptr_sort_func @_;
+		my @rv = sort ptr_sort_func @_;
+		return @rv;
 		}
 	elsif ($_[0]->{'type'} eq "MX") {
-		return sort { $a->{'values'}->[1] cmp $b->{'values'}->[1] } @_;
+		my @rv = sort { $a->{'values'}->[1] cmp $b->{'values'}->[1] } @_;
+		return @rv;
 		}
 	else {
-		return sort { $a->{'values'}->[0] cmp $b->{'values'}->[0] } @_;
+		my @rv = sort { $a->{'values'}->[0] cmp $b->{'values'}->[0] } @_;
+		return @rv;
 		}
 	}
 elsif ($s == 4) {
 	# Sort by comment
-	return sort { $b->{'comment'} cmp $a->{'comment'} } @_;
+	my @rv = sort { $b->{'comment'} cmp $a->{'comment'} } @_;
+	return @rv;
 	}
 elsif ($s == 5) {
 	# Sort by type
-	return sort { $a->{'type'} cmp $b->{'type'} } @_;
+	my @rv = sort { $a->{'type'} cmp $b->{'type'} } @_;
+	return @rv;
 	}
 else {
 	return @_;
@@ -534,7 +554,7 @@ else {
 sub ptr_sort_func
 {
 $a->{'name'} =~ /^(\d+)\.(\d+)\.(\d+)\.(\d+)/;
-local ($a1, $a2, $a3, $a4) = ($1, $2, $3, $4);
+my ($a1, $a2, $a3, $a4) = ($1, $2, $3, $4);
 $b->{'name'} =~ /^(\d+)\.(\d+)\.(\d+)\.(\d+)/;
 return	$a4 < $4 ? -1 :
 	$a4 > $4 ? 1 :
@@ -549,7 +569,7 @@ return	$a4 < $4 ? -1 :
 sub ip_sort_func
 {
 $a->{'values'}->[0] =~ /^(\d+)\.(\d+)\.(\d+)\.(\d+)/;
-local ($a1, $a2, $a3, $a4) = ($1, $2, $3, $4);
+my ($a1, $a2, $a3, $a4) = ($1, $2, $3, $4);
 $b->{'values'}->[0] =~ /^(\d+)\.(\d+)\.(\d+)\.(\d+)/;
 return	$a1 < $1 ? -1 :
 	$a1 > $1 ? 1 :
@@ -581,13 +601,14 @@ if ($_[0] =~ /^([\d\-\.\/]+)$/) {
 return $_[0];
 }
 
-$ipv6revzone = $config{'ipv6_mode'} ? "ip6.arpa" : "ip6.int";
+my $ipv6revzone = $config{'ipv6_mode'} ? "ip6.arpa" : "ip6.int";
 
 # ip6int_to_net(name)
 # Converts an address like a.b.c.d.4.3.2.1.ip6.int. to 1234:dcba::
 sub ip6int_to_net
 {
-local($n, $addr = $_[0]);
+my $n;
+my $addr = $_[0];
 if ($addr =~ /^([\da-f]\.)+$ipv6revzone/i) {
 	$addr =~ s/\.$ipv6revzone/\./i;
 	$addr = reverse(split(/\./, $addr));
@@ -613,7 +634,8 @@ return $_[0];
 # Converts an IPv6 address like 1234:dcba:: to a.b.c.d.4.3.2.1.ip6.int.
 sub net_to_ip6int
 {
-local($addr = lc($_[0]), $n = $_[1] >> 2);
+my $addr = lc($_[0]);
+my $n = $_[1] >> 2;
 if (&check_ip6address($addr)) {
 	$addr = reverse(split(/\:/, &expandall_ip6($addr)));
 	$addr =~ s/(\w)/$1\./g;
@@ -625,13 +647,13 @@ if (&check_ip6address($addr)) {
 return $addr;
 }
 
-$uscore = $config{'allow_underscore'} ? "_" : "";
-$star = $config{'allow_wild'} ? "\\*" : "";
+my $uscore = $config{'allow_underscore'} ? "_" : "";
+my $star = $config{'allow_wild'} ? "\\*" : "";
 
 # valdnsname(name, wild, origin)
 sub valdnsname
 {
-local($fqdn);
+my($fqdn);
 $fqdn = $_[0] !~ /\.$/ ? "$_[0].$_[2]." : $_[0];
 if (length($fqdn) > 255) {
 	&error(&text('edit_efqdn', $fqdn));
@@ -680,8 +702,8 @@ sub parse_spf
 {
 my $txt = join(" ", @_);
 if ($txt =~ /^v=spf1/) {
-	local @w = split(/\s+/, $txt);
-	local $spf = { };
+	my @w = split(/\s+/, $txt);
+	my $spf = { };
 	foreach my $w (@w) {
 		$w = lc($w);
 		if ($w eq "a" || $w eq "mx" || $w eq "ptr") {
@@ -724,8 +746,8 @@ return undef;
 # into multiple quoted strings.
 sub join_spf
 {
-local ($spf) = @_;
-local @rv = ( "v=spf1" );
+my ($spf) = @_;
+my @rv = ( "v=spf1" );
 foreach my $s ("a", "mx", "ptr") {
 	push(@rv, $s) if ($spf->{$s});
 	}
@@ -744,8 +766,8 @@ if ($spf->{'all'} == 3) { push(@rv, "-all"); }
 elsif ($spf->{'all'} == 2) { push(@rv, "~all"); }
 elsif ($spf->{'all'} == 1) { push(@rv, "?all"); }
 elsif ($spf->{'all'} eq '0') { push(@rv, "all"); }
-local @rvwords;
-local $rvword;
+my @rvwords;
+my $rvword;
 while(@rv) {
 	my $w = shift(@rv);
 	if (length($rvword)+length($w)+1 >= 255) {
@@ -766,8 +788,8 @@ sub parse_dmarc
 {
 my $txt = join(" ", @_);
 if ($txt =~ /^v=dmarc1/i) {
-	local @w = split(/;\s*/, $txt);
-	local $dmarc = { };
+	my @w = split(/;\s*/, $txt);
+	my $dmarc = { };
 	foreach my $w (@w) {
 		$w = lc($w);
 		if ($w =~ /^(v|pct|ruf|rua|p|sp|adkim|aspf)=(\S+)$/i) {
@@ -788,16 +810,16 @@ return undef;
 # into multiple quoted strings.
 sub join_dmarc
 {
-local ($dmarc) = @_;
-local @rv = ( "v=DMARC1" );
+my ($dmarc) = @_;
+my @rv = ( "v=DMARC1" );
 foreach my $s ("pct", "ruf", "rua", "p", "sp", "adkim", "aspf") {
 	if ($dmarc->{$s} ne '') {
 		push(@rv, $s."=".$dmarc->{$s});
 		}
 	}
 push(@rv, @{$dmarc->{'other'}});
-local @rvwords;
-local $rvword;
+my @rvwords;
+my $rvword;
 while(@rv) {
 	my $w = shift(@rv);
 	if (length($rvword)+length($w)+1 >= 255) {
@@ -816,16 +838,16 @@ return join("\" \"", @rvwords);
 # with quoting if needed
 sub join_record_values
 {
-local ($r) = @_;
+my ($r) = @_;
 if ($r->{'type'} eq 'SOA') {
 	# Multiliple lines, with brackets
-	local $v = $r->{'values'};
+	my $v = $r->{'values'};
 	return "$v->[0] $v->[1] (\n\t\t\t$v->[2]\n\t\t\t$v->[3]\n".
 	       "\t\t\t$v->[4]\n\t\t\t$v->[5]\n\t\t\t$v->[6] )";
 	}
 else {
 	# All one one line
-	local @rv;
+	my @rv;
 	foreach my $v (@{$r->{'values'}}) {
 		push(@rv, $v =~ /\s/ ? "\"$v\"" : $v);
 		}
@@ -837,7 +859,7 @@ else {
 # Given an old serial number, returns a new one using the configured method
 sub compute_serial
 {
-local ($old) = @_;
+my ($old) = @_;
 if ($config{'soa_style'} == 1 && $old =~ /^(\d{8})(\d\d)$/) {
 	if ($1 >= &date_serial()) {
 		if ($2 >= 99) {
@@ -856,7 +878,7 @@ if ($config{'soa_style'} == 1 && $old =~ /^(\d{8})(\d\d)$/) {
 	}
 elsif ($config{'soa_style'} == 2) {
 	# Unix time
-	local $rv = time();
+	my $rv = time();
 	while($rv <= $old) {
 		$rv = $old + 1;
 		}
@@ -872,14 +894,14 @@ else {
 # Make a short name like foo a fully qualified name like foo.domain.com.
 sub convert_to_absolute
 {
-local ($name, $origin) = @_;
+my ($name, $origin) = @_;
 if ($name eq $origin ||
     $name =~ /\.\Q$origin\E$/) {
 	# Name already ends in domain name - add . automatically, so we don't
 	# re-append the domain name.
 	$name .= ".";
 	}
-local $rv = $name eq "" ? "$origin." :
+my $rv = $name eq "" ? "$origin." :
 	    $name eq "@" ? "$origin." :
 	    $name !~ /\.$/ ? "$name.$origin." : $name;
 $rv =~ s/\.+$/\./;
@@ -891,10 +913,10 @@ return $rv;
 # If absolute is 1, the path is made absolute. If 2, it is also un-chrooted
 sub get_zone_file
 {
-local ($z, $abs) = @_;
-local $fn;
+my ($z, $abs) = @_;
+my $fn;
 if ($z->{'members'}) {
-	local $file = &find("file", $z->{'members'});
+	my $file = &find("file", $z->{'members'});
 	return undef if (!$file);
 	$fn = $file->{'values'}->[0];
 	}
@@ -914,15 +936,15 @@ return $fn;
 # Returns the DNSKEY record(s) for some domain, or undef if none
 sub get_dnskey_record
 {
-local ($z, $recs) = @_;
-local @rv;
+my ($z, $recs) = @_;
+my @rv;
+my $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
 if (!$recs) {
 	# Need to get zone file and thus records
-	local $fn = &get_zone_file($z);
+	my $fn = &get_zone_file($z);
 	$recs = [ &read_zone_file($fn, $dom) ];
 	}
 # Find the record
-local $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
 foreach my $r (@$recs) {
 	if ($r->{'type'} eq 'DNSKEY' &&
 	    $r->{'name'} eq $dom.'.') {
@@ -964,15 +986,15 @@ else {
 # Returns the DNSKEY recordset for some domain, or an empty array if none 
 sub get_dnskey_rrset
 {
-	local ($z, $recs) = @_;
-	local @rv = ();
+	my ($z, $recs) = @_;
+	my @rv = ();
+	my $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
 	if (!$recs) {
 		# Need to get zone file and thus records
 		my $fn = &get_zone_file($z);
 		$recs = [ &read_zone_file($fn, $dom) ];
 	}
 	# Find the record
-	local $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
 	foreach my $r (@$recs) {
 		if ($r->{'type'} eq 'DNSKEY' &&
 			$r->{'name'} eq $dom.'.') {
@@ -987,10 +1009,10 @@ sub get_dnskey_rrset
 sub is_raw_format_records
 {
 my ($file) = @_;
-open(RAW, $file);
+open(my $RAW, "<", $file);
 my $buf;
-read(RAW, $buf, 3);
-close(RAW);
+read($RAW, $buf, 3);
+close($RAW);
 return $buf eq "\0\0\0";
 }
 

@@ -1,15 +1,19 @@
 #!/usr/local/bin/perl
 # conf_forwarding.cgi
 # Display global forwarding and transfer options
+use strict;
+use warnings;
+# Globals
+our (%access, %text);
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'forwarding_ecannot'});
 &ui_print_header(undef, $text{'forwarding_title'}, "",
 		 undef, undef, undef, undef, &restart_links());
 
-$conf = &get_config();
-$options = &find("options", $conf);
-$mems = $options->{'members'};
+my $conf = &get_config();
+my $options = &find("options", $conf);
+my $mems = $options->{'members'};
 
 # Start of the form
 print &ui_form_start("save_forwarding.cgi", "post");

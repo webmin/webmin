@@ -1,5 +1,9 @@
 #!/usr/local/bin/perl
 # Show a form to setup DNSSEC key rotation
+use strict;
+use warnings;
+# Globals
+our (%text, %access, %config);
 
 require './bind8-lib.pl';
 &ReadParse();
@@ -13,7 +17,7 @@ print &ui_form_start("save_dnssec.cgi", "post");
 print &ui_table_start($text{'dnssec_header'}, undef, 2);
 
 # Rotation enabled?
-$job = &get_dnssec_cron_job();
+my $job = &get_dnssec_cron_job();
 print &ui_table_row($text{'dnssec_enabled'},
 	&ui_yesno_radio("enabled", $job ? 1 : 0));
 
