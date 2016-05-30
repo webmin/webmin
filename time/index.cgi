@@ -122,14 +122,14 @@ if ($access{'timezone'} && &has_timezone()) {
 	my $cz = &get_current_timezone();
 	my $found = 0;
 	my @opts = ( );
-	my $lastpfx;
+	my $lastpfx = "";
 	foreach my $z (@zones) {
 		my $pfx;
 		if ($z->[0] =~ /^(.*)\/(.*)$/) {
 			$pfx = $1;
 			}
 		else {
-			$pfx = undef;
+			$pfx = "";
 			}
 		if ($pfx ne $lastpfx && $z ne $zones[0]) {
 			push(@opts, [ '', '----------' ]);

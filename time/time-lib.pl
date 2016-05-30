@@ -132,7 +132,7 @@ return undef;
 # Returns command-line flags for hwclock
 sub get_hwclock_flags
 {
-if ($config{'hwclock_flags'} eq "sysconfig") {
+if ($config{'hwclock_flags'} && $config{'hwclock_flags'} eq "sysconfig") {
 	my %clock;
 	&read_env_file("/etc/sysconfig/clock", \%clock);
 	return $clock{'CLOCKFLAGS'};
@@ -148,8 +148,9 @@ else {
 sub get_hardware_time
 {
 my $flags = &get_hwclock_flags();
+$flags ||= "";
 $get_hardware_time_error = undef;
-my $out = `hwclock $flags`;
+my $out = &backquote_command("hwclock $flags 2>/dev/null");
 if ($out =~ /^(\S+)\s+(\S+)\s+(\d+)\s+(\d+):(\d+):(\d+)\s+(\d+)\s+/) {
 	return ($6, $5, $4, $3, &month_to_number($2), $7-1900, &weekday_to_number($1));
 	}
