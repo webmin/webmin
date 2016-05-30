@@ -136,7 +136,7 @@ return $get_config_parent_cache{$file};
 sub read_config_file
 {
 my ($lnum, $line, $cmode, @ltok, @lnum, @tok,
-      @rv, $i, $t, $ifile, @inc, $str);
+      @rv, $t, $ifile, @inc, $str);
 $lnum = 0;
 open(my $FILE, "<", &make_chroot($_[0]));
 while($line = <$FILE>) {
