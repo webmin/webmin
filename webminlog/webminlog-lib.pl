@@ -421,7 +421,14 @@ if ($parser_cache{$act->{'module'}}) {
 	}
 elsif ($act->{'module'} eq 'global') {
 	# This module converts global actions
-	$d = $text{'search_global_'.$act->{'action'}};
+	if ($act->{'action'} eq 'failed') {
+		my $r = $text{'search_global_'.$act->{'object'}} ||
+			$act->{'object'};
+		$d = &text('search_global_failed', $r);
+		}
+	else {
+		$d = $text{'search_global_'.$act->{'action'}};
+		}
 	}
 return $d ? $d :
        $act->{'action'} eq '_config_' ? $text{'search_config'} :

@@ -1719,10 +1719,14 @@ if ($config{'userfile'}) {
 		else {
 			# Validate the user
 			if ($in{'user'} =~ /\r|\n|\s/) {
+				&run_failed_script($in{'user'}, 'baduser',
+						   $loghost, $localip);
 				&http_error(500, "Invalid username",
 				    "Username contains invalid characters");
 				}
 			if ($in{'pass'} =~ /\r|\n/) {
+				&run_failed_script($in{'user'}, 'badpass',
+						   $loghost, $localip);
 				&http_error(500, "Invalid password",
 				    "Password contains invalid characters");
 				}
@@ -1735,6 +1739,8 @@ if ($config{'userfile'}) {
 				$err = &validate_twofactor(
 					$wvu, $in{'twofactor'});
 				if ($err) {
+					&run_failed_script($vu, 'twofactor',
+							   $loghost, $localip);
 					$twofactor_msg = $err;
 					$vu = undef;
 					}
@@ -3877,6 +3883,22 @@ if ($config{'logout_script'}) {
 	}
 }
 
+# run_failed_script(username, reason-code, remoteip, localip)
+sub run_failed_script
+{
+if ($config{'failed_script'}) {
+	$_[0] =~ s/\r|\n/ /g;
+	alarm(5);
+	$SIG{'ALRM'} = sub { die "timeout" };
+	eval {
+		system($config{'failed_script'}.
+		       " ".join(" ", map { quotemeta($_) || '""' } @_).
+		       " >/dev/null 2>&1 </dev/null");
+		};
+	alarm(0);
+	}
+}
+
 # close_all_sockets()
 # Closes all the main listening sockets
 sub close_all_sockets
@@ -4059,6 +4081,8 @@ elsif ($ok && $expired &&
        ($config{'passwd_mode'} == 2 || $expired == 2)) {
 	# Login was ok, but password has expired or was temporary. Need
 	# to force display of password change form.
+	&run_failed_script($authuser, 'expiredpass',
+			   $loghost, $localip);
 	$validated = 1;
 	$authuser = undef;
 	$querystring = "&user=".&urlize($vu).
@@ -4076,6 +4100,9 @@ elsif ($ok && $expired &&
 else {
 	# Login failed, or password has expired. The login form will be
 	# displayed again by later code
+	&run_failed_script($vu, $handle_login ? 'wronguser' :
+				$expired ? 'expiredpass' : 'wrongpass',
+			   $loghost, $localip);
 	$failed_user = $vu;
 	$request_uri = $in{'page'};
 	$already_session_id = undef;
