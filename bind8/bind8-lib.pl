@@ -27,7 +27,6 @@ my @extra_forward = split(/\s+/, $config{'extra_forward'});
 my @extra_reverse = split(/\s+/, $config{'extra_reverse'});
 our %is_extra = map { $_, 1 } (@extra_forward, @extra_reverse);
 our %access = &get_module_acl();
-our $module_config;
 our $module_config_file;
 our $module_config_directory;
 our $module_name;
@@ -3699,7 +3698,7 @@ sub dt_sign_zone
 
 	# Remove DNSSEC records and save the unsigned zone file
 	#@recs = &read_zone_file($z, $dom);
-	@recs = &read_zone_file($z, $zone); # XXX FIXME Is $zone right?
+	@recs = &read_zone_file($z, $d); # XXX FIXME Is $d right?
 	my $tools = &have_dnssec_tools_support();
 	for(my $i=$#recs; $i>=0; $i--) {
 		if ($recs[$i]->{'type'} eq 'NSEC' ||
