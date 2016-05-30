@@ -74,6 +74,7 @@ open(LOG, $webmin_logfile);
 while(my ($id, $idx) = each %index) {
 	my ($pos, $time, $user, $module, $sid) = split(/\s+/, $idx);
 	$time ||= 0;
+	$sid ||= "";
 	if (($in{'uall'} == 1 ||
 	     $in{'uall'} == 0 && $in{'user'} eq $user ||
 	     $in{'uall'} == 3 && $in{'ouser'} eq $user ||
