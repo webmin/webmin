@@ -1,25 +1,31 @@
 #!/usr/local/bin/perl
 # Display NDC control interface options
+use strict;
+use warnings;
+# Globals
+our (%text, %access); 
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'controls_ecannot'});
 &ui_print_header(undef, $text{'controls_title'}, "",
 		 undef, undef, undef, undef, &restart_links());
 
-$conf = &get_config();
-$controls = &find("controls", $conf);
-$inet = &find("inet", $controls->{'members'});
-$unix = &find("unix", $controls->{'members'});
+my $conf = &get_config();
+my $controls = &find("controls", $conf);
+my $inet = &find("inet", $controls->{'members'});
+my $unix = &find("unix", $controls->{'members'});
 
 print &ui_form_start("save_controls.cgi", "post");
 print &ui_table_start($text{'controls_header'}, undef, 2);
 
 # Show options for inet control
+my $ip;
+my $port;
 if ($inet) {
-	@v = @{$inet->{'values'}};
+	my @v = @{$inet->{'values'}};
 	$ip = shift(@v);
 	while(@v) {
-		$n = shift(@v);
+		my $n = shift(@v);
 		if ($n eq "port") { $port = shift(@v); }
 		}
 	}
@@ -44,12 +50,13 @@ print &ui_table_row($text{'controls_keys'},
 
 print &ui_table_hr();
 
-# Show options for local socket control
+# Show options for local, socket control
+my ($path, $perm, $owner, $group);
 if ($unix) {
-	@v = @{$unix->{'values'}};
+	my @v = @{$unix->{'values'}};
 	$path = shift(@v);
 	while(@v) {
-		$n = shift(@v);
+		my $n = shift(@v);
 		if ($n eq "perm") { $perm = shift(@v); }
 		elsif ($n eq "owner") { $owner = getpwuid(shift(@v)); }
 		elsif ($n eq "group") { $group = getgrgid(shift(@v)); }
