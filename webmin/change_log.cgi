@@ -28,13 +28,16 @@ if (defined($in{'login'})) {
 		&foreign_require("cron");
 		&cron::create_wrapper($record_login_cmd,"","record-login.pl");
 		&cron::create_wrapper($record_logout_cmd,"","record-logout.pl");
+		&cron::create_wrapper($record_failed_cmd,"","record-failed.pl");
 		$miniserv{'login_script'} = $record_login_cmd;
 		$miniserv{'logout_script'} = $record_logout_cmd;
+		$miniserv{'failed_script'} = $record_failed_cmd;
 		}
 	else {
 		# Stop using
 		delete($miniserv{'login_script'});
 		delete($miniserv{'logout_script'});
+		delete($miniserv{'failed_script'});
 		}
 	}
 &put_miniserv_config(\%miniserv);
