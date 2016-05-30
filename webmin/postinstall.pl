@@ -35,7 +35,7 @@ elsif ($miniserv{'cipher_list_def'} == 2 || $miniserv{'cipher_list_def'} == 3) {
 	}
 
 # If this is the first install, enable recording of logins by default
-if (!-r $first_install_file) {
+if (!-r $first_install_file || $miniserv{'login_script'} eq $record_login_cmd) {
 	&foreign_require("cron");
 	&cron::create_wrapper($record_login_cmd, "", "record-login.pl");
 	&cron::create_wrapper($record_logout_cmd, "", "record-logout.pl");
