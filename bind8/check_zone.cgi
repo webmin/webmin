@@ -11,7 +11,7 @@ our (%access, %text, %in);
 $access{'apply'} || &error($text{'check_ecannot'});
 my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 &can_edit_zone($zone) || &error($text{'master_ecannot'});
-my $desc = &ip6int_to_net(&arpa_to_ip($dom));
+my $desc = &ip6int_to_net(&arpa_to_ip($zone->{'name'}));
 
 &ui_print_header($desc, $text{'check_title'}, "",
 		 undef, undef, undef, undef, &restart_links($zone));
