@@ -1,22 +1,27 @@
 #!/usr/local/bin/perl
 # conf_keys.cgi
 # Display options for other DNS servers
+use strict;
+use warnings;
 
 require './bind8-lib.pl';
+# Globals
+our (%access, %text);
+
 $access{'defaults'} || &error($text{'keys_ecannot'});
 &ui_print_header(undef, $text{'keys_title'}, "",
 		 undef, undef, undef, undef, &restart_links());
 
-$conf = &get_config();
-@keys = ( &find("key", $conf), { } );
+my $conf = &get_config();
+my @keys = ( &find("key", $conf), { } );
 
 # Build table of keys
-@table = ( );
-for($i=0; $i<@keys; $i++) {
-	$k = $keys[$i];
-	@algs = ( "hmac-md5" );
-	$alg = &find_value("algorithm", $k->{'members'});
-	$secret = &find_value("secret", $k->{'members'});
+my @table = ( );
+for(my $i=0; $i<@keys; $i++) {
+	my $k = $keys[$i];
+	my @algs = ( "hmac-md5" );
+	my $alg = &find_value("algorithm", $k->{'members'});
+	my $secret = &find_value("secret", $k->{'members'});
 	push(@table, [ &ui_textbox("id_$i", $k->{'value'}, 15),
 		       &ui_select("alg_$i", $alg, \@algs, 1, 0, $alg ? 1 : 0),
 		       &ui_textbox("secret_$i", $secret, 65) ]);
