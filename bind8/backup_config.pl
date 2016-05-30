@@ -1,31 +1,34 @@
+use strict;
+use warnings;
 
 do 'bind8-lib.pl';
+# Globals from bind8-lib.pl
+our (%config, %text, %in);
 
 # backup_config_files()
 # Returns files and directories that can be backed up
 sub backup_config_files
 {
-local @rv;
+my @rv;
 
 # Add main .conf files
-local $conf = &get_config();
+my $conf = &get_config();
 push(@rv, map { $_->{'file'} } @$conf);
 
 # Add all master and hint zone files
-local @views = &find("view", $conf);
-local ($v, @zones);
-foreach $v (@views) {
-	local @vz = &find("zone", $v->{'members'});
+my @views = &find("view", $conf);
+my @zones;
+foreach my $v (@views) {
+	my @vz = &find("zone", $v->{'members'});
 	push(@zones, @vz);
 	}
 push(@zones, &find("zone", $conf));
-local $z;
-foreach $z (@zones) {
-	local $tv = &find_value("type", $z->{'members'});
+foreach my $z (@zones) {
+	my $tv = &find_value("type", $z->{'members'});
 	next if ($tv ne "master" && $tv ne "hint");
-	local $file = &find_value("file", $z->{'members'});
+	my $file = &find_value("file", $z->{'members'});
 	next if (!$file);
-	local @recs = &read_zone_file($file, $z->{'value'});
+	my @recs = &read_zone_file($file, $z->{'value'});
 	push(@rv, map { $_->{'file'} } @recs);
 	}
 
@@ -58,7 +61,7 @@ return undef;
 sub post_restore
 {
 &flush_zone_names();
-local $pidfile = &get_pid_file();
+my $pidfile = &get_pid_file();
 if (&check_pid_file(&make_chroot($pidfile, 1))) {
 	return &restart_bind();
 	}
