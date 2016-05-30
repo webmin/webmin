@@ -2,10 +2,13 @@
 # Write an actions log for a logout
 
 BEGIN { push(@INC, ".."); };
+use strict;
+use warnings;
 use WebminCore;
+our ($remote_user);
 
 &init_config();
-($username, $sid, $remoteip, $remoteip) = @ARGV;
+my ($username, $sid, $remoteip, $localip) = @ARGV;
 if ($username && $sid && $remoteip) {
 	$WebminCore::remote_user = $remote_user = $username;
 	$main::session_id = $sid;
