@@ -64,9 +64,11 @@ else {
 print &ui_table_row($text{'user_db'},
 	&ui_yesno_radio("db", $user[2] =~ /t|1/));
 
-# Create create other users?
-print &ui_table_row($text{'user_other'},
-	&ui_yesno_radio("other", $user[4] =~ /t|1/));
+if (&get_postgresql_version() < 9.5) {
+	# Create create other users?
+	print &ui_table_row($text{'user_other'},
+		&ui_yesno_radio("other", $user[4] =~ /t|1/));
+	}
 
 # Valid until
 $user[6] = '' if ($user[6] !~ /\S/);

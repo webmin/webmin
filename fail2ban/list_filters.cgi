@@ -22,6 +22,7 @@ foreach my $f (@filters) {
 	my ($def) = grep { $_->{'name'} eq 'Definition' } @$f;
 	next if (!$def);	# Skip default config file
 	my $fail = &find_value("failregex", $def);
+	$fail ||= "";
 	my $fname = &filename_to_name($def->{'file'});
 	if (length($fail) > 80) {
 		$fail = substr($fail, 0, 80)." ...";

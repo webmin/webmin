@@ -30,11 +30,13 @@ else {
 	else {
 		$sql .= " nocreatedb";
 		}
-	if ($in{'other'}) {
-		$sql .= " createuser";
-		}
-	else {
-		$sql .= " nocreateuser";
+	if (&get_postgresql_version() < 9.5) {
+		if ($in{'other'}) {
+			$sql .= " createuser";
+			}
+		else {
+			$sql .= " nocreateuser";
+			}
 		}
 	if (!$in{'until_def'}) {
 		$sql .= " valid until '$in{'until'}'";

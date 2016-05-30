@@ -31,6 +31,7 @@ foreach my $j (@jails) {
 			    @{$action_dir->{'words'}});
 		}
 	my $enabled = &find_value("enabled", $j);
+	$enabled ||= "";
 	print &ui_checked_columns_row([
 		&ui_link("edit_jail.cgi?name=".&urlize($j->{'name'}),
 			 $j->{'name'}),

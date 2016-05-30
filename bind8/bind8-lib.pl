@@ -2559,10 +2559,8 @@ if ($add_tmpl) {
 		&create_record($file, $name, undef, "IN", $c[1], $recip);
 		if ($addrev && ($c[1] eq "A" || $c[1] eq "AAAA")) {
 			# Consider adding reverse record
-			# XXX $view is undefined. Will never work if in view?
-			my $view; # XXX FIXME
-			my ($revconf, $revfile, $revrec) = &find_reverse(
-				$recip, $view);
+			my ($revconf, $revfile, $revrec) =
+				&find_reverse($recip);
 			if ($revconf && &can_edit_reverse($revconf) &&
 			    !$revrec) {
 				# Yes, add one
@@ -3963,7 +3961,7 @@ sub dt_delete_dnssec_state
 		# remove key and krf files
 		keyrec_read($k_chroot);
 		my @kskpaths = keyrec_keypaths($dom, "all");
-   	foreach (@kskpaths) {
+		foreach (@kskpaths) {
 			# remove any trailing ".key"
 			s/(.*).key$/$1/;
 			&unlink_file("$_.key");
