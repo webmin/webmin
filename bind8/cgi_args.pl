@@ -1,5 +1,9 @@
+use strict;
+use warnings;
 
 do 'bind8-lib.pl';
+# Globals from bind8-lib.pl
+our (%config, %text, %in);
 
 sub cgi_args
 {
