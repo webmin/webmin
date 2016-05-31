@@ -1,6 +1,10 @@
 #!/usr/local/bin/perl
 # delegation_form.cgi
 # A form for creating a new delegation-only
+use strict;
+use warnings;
+# Globals
+our (%access, %text, %config);
 
 require './bind8-lib.pl';
 $access{'delegation'} || &error($text{'dcreate_ecannot'});
@@ -22,10 +26,10 @@ print &ui_table_row($text{'fcreate_dom'},
 	&ui_textbox("zone", undef, 60), 3);
 
 # In view
-$conf = &get_config();
-@views = &find("view", $conf);
+my $conf = &get_config();
+my @views = &find("view", $conf);
 if (@views) {
-	($defview) = grep { lc($_->{'values'}->[0]) eq
+	my ($defview) = grep { lc($_->{'values'}->[0]) eq
 			    lc($config{'default_view'}) } @views;
 	print &ui_table_row($text{'mcreate_view'},
 		&ui_select("view", $defview ? $defview->{'index'} : undef,
