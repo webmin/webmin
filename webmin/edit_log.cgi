@@ -34,6 +34,8 @@ print &ui_table_row($text{'log_clear2'},
 			&ui_textbox("logtime", $miniserv{'logtime'}, 10)) ],
 		    [ 0, $text{'no'} ] ]));
 
+print &ui_table_hr();
+
 # Webmin users to log for
 print &ui_table_row($text{'log_forusers'},
 	&ui_radio("uall", $gconfig{'logusers'} ? 0 : 1,
@@ -53,7 +55,7 @@ print &ui_table_row($text{'log_inmods'},
 	&ui_select("modules", [ split(/\s+/, $gconfig{'logmodules'}) ],
 		   [ map { [ $_->{'dir'}, $_->{'desc'} ] }
 			 grep { -r &module_root_directory($_)."/log_parser.pl" }
-			      sort { $a->{'desc'} cmp $b->{'desc'} }
+			      sort { lc($a->{'desc'}) cmp lc($b->{'desc'}) }
 				   &get_all_module_infos() ],
 		   5, 1));
 
