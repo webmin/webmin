@@ -1,6 +1,11 @@
 #!/usr/local/bin/perl
 # create_hint.cgi
 # Create a new root zone
+use strict;
+use warnings;
+# Globals
+our (%access, %text, %in);
+our $module_root_directory;
 
 require './bind8-lib.pl';
 &ReadParse();
@@ -12,14 +17,14 @@ $access{'ro'} && &error($text{'master_ero'});
 &allowed_zone_file(\%access, $in{'file'}) ||
 	&error(&text('hcreate_efile', $in{'file'}));
 &lock_file(&make_chroot($in{'file'}));
-open(FILE, ">>".&make_chroot($in{'file'})) ||
+open(my $FILE, ">>", &make_chroot($in{'file'})) ||
 	&error($text{'hcreate_efile2'});
-close(FILE);
+close($FILE);
 
 # Get the root server information
 if ($in{'real'} == 1) {
 	# Download from internic
-	$err = &download_root_zone($in{'file'});
+	my $err = &download_root_zone($in{'file'});
 	&error($err) if ($err);
 	}
 elsif ($in{'real'} == 2) {
@@ -29,13 +34,13 @@ elsif ($in{'real'} == 2) {
 	}
 else {
 	# Just check the existing file
-	@recs = &read_zone_file(&make_chroot($in{'file'}), ".");
+	my @recs = &read_zone_file(&make_chroot($in{'file'}), ".");
 	&error($text{'mcreate_erecs'}) if (@recs < 2);
 	}
 &unlock_file(&make_chroot($in{'file'}));
 
 # Create zone structure
-$dir = { 'name' => 'zone',
+my $dir = { 'name' => 'zone',
 	 'values' => [ '.' ],
 	 'type' => 1,
 	 'members' => [ { 'name' => 'type',
@@ -46,7 +51,7 @@ $dir = { 'name' => 'zone',
 	};
 
 # Add a new hint zone
-$conf = &get_config();
+my $conf = &get_config();
 &create_zone($dir, $conf, $in{'view'});
 &webmin_log("create", "hint", ".", \%in);
 &redirect("");
