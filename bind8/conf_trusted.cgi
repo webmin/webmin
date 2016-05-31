@@ -1,5 +1,10 @@
 #!/usr/local/bin/perl
 # Show a form for setting up DNSSEC verification and trusted keys
+use strict;
+use warnings;
+# Globals
+our (%access, %text);
+our $dnssec_dlv_zone;
 
 require './bind8-lib.pl';
 &ReadParse();
@@ -7,11 +12,11 @@ $access{'defaults'} || &error($text{'trusted_ecannot'});
 &supports_dnssec_client() || &error($text{'trusted_esupport'});
 &ui_print_header(undef, $text{'trusted_title'}, "",
 		 undef, undef, undef, undef, &restart_links());
-$conf = &get_config();
-$options = &find("options", $conf);
-$mems = $options->{'members'};
-@dlv = &find("dnssec-lookaside", $mems);
-$tkeys = &find("trusted-keys", $conf);
+my $conf = &get_config();
+my $options = &find("options", $conf);
+my $mems = $options->{'members'};
+my @dlv = &find("dnssec-lookaside", $mems);
+my $tkeys = &find("trusted-keys", $conf);
 $tkeys ||= { 'members' => [ ] };
 
 # Check if not setup at all
@@ -43,10 +48,10 @@ if (&supports_dnssec_client() == 2) {
 print &ui_table_hr();
 
 # Trusted DLVs
-@dtable = ( );
-$i = 0;
-foreach $d (@dlv, { 'values' => [ '.' ] }) {
-	$dlv = $d->{'values'}->[0];
+my @dtable = ( );
+my $i = 0;
+foreach my $d (@dlv, { 'values' => [ '.' ] }) {
+	my $dlv = $d->{'values'}->[0];
 	$dlv = "" if ($dlv eq ".");
 	push(@dtable, [ &ui_opt_textbox("anchor_$i", $d->{'values'}->[2],
 					30, $text{'trusted_none'}),
@@ -60,11 +65,11 @@ print &ui_table_row($text{'trusted_dlvs'},
 			  \@dtable), 3);
 
 # Trusted keys
-@ktable = ( );
+my @ktable = ( );
 $i = 0;
-foreach $k (@{$tkeys->{'members'}}, { }) {
-	@v = @{$k->{'values'}};
-	@wrapped = ( );
+foreach my $k (@{$tkeys->{'members'}}, { }) {
+	my @v = @{$k->{'values'}};
+	my @wrapped = ( );
 	while(length($v[3]) > 30) {
 		push(@wrapped, substr($v[3], 0, 30));
 		$v[3] = substr($v[3], 30);
