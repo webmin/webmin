@@ -7,7 +7,7 @@ require './bind8-lib.pl';
 
 $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 ($zconf, $conf, $parent) = &zone_to_config($zone);
-&can_edit_zone($zconf, $view) ||
+&can_edit_zone($zconf) ||
 	&error($text{'master_edelete'});
 
 $access{'ro'} && &error($text{'master_ero'});
