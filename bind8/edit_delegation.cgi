@@ -24,6 +24,7 @@ if (!$access{'ro'}) {
 	print &ui_buttons_start();
 
 	# Move to another view
+	my $bconf = &get_config();
 	print &move_zone_button($bconf, $zone->{'viewindex'}, $in{'zone'});
 
 	# Delete zone
