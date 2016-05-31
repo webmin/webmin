@@ -3697,8 +3697,7 @@ sub dt_sign_zone
 	rollrec_lock();
 
 	# Remove DNSSEC records and save the unsigned zone file
-	#@recs = &read_zone_file($z, $dom);
-	@recs = &read_zone_file($z, $d); # XXX FIXME Is $d right?
+	@recs = &read_zone_file($z, $d);
 	my $tools = &have_dnssec_tools_support();
 	for(my $i=$#recs; $i>=0; $i--) {
 		if ($recs[$i]->{'type'} eq 'NSEC' ||
@@ -3778,7 +3777,7 @@ sub dt_resign_zone
 	rollrec_lock();
 
 	# Remove DNSSEC records and save the unsigned zone file
-	@recs = &read_zone_file($z, $d); # XXX FIXME Is $d == $dom?
+	@recs = &read_zone_file($z, $d); 
 	my $tools = &have_dnssec_tools_support();
 	for(my $i=$#recs; $i>=0; $i--) {
 		if ($recs[$i]->{'type'} eq 'NSEC' ||
