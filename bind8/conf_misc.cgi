@@ -1,6 +1,10 @@
 #!/usr/local/bin/perl
 # conf_misc.cgi
 # Display miscellaneous options
+use strict;
+use warnings;
+# Globals
+our (%access, %text);
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'misc_ecannot'});
@@ -8,9 +12,9 @@ $access{'defaults'} || &error($text{'misc_ecannot'});
 		 undef, undef, undef, undef, &restart_links());
 
 &ReadParse();
-$conf = &get_config();
-$options = &find("options", $conf);
-$mems = $options->{'members'};
+my $conf = &get_config();
+my $options = &find("options", $conf);
+my $mems = $options->{'members'};
 
 # Start of the form
 print &ui_form_start("save_misc.cgi", "post");
