@@ -1,20 +1,19 @@
 #!/usr/local/bin/perl
 # Remove the signing key records for a zone
+use strict;
+use warnings;
+our (%access, %text, %in); 
 
 require './bind8-lib.pl';
 
-local $zone;
-local $dom;
-local $desc;
-
 &error_setup($text{'dt_zone_err'});
 &ReadParse();
-$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
-$dom = $zone->{'name'};
+my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+my $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
 $access{'dnssec'} || &error($text{'dnssec_ecannot'});
-$desc = &ip6int_to_net(&arpa_to_ip($dom));
+my $desc = &ip6int_to_net(&arpa_to_ip($dom));
 
 &ui_print_unbuffered_header($desc, $text{'dt_enable_title'}, "",
 						   undef, undef, undef, undef, &restart_links($zone));
