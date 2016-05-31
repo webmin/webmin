@@ -295,7 +295,7 @@ while($i < @tok) {
 		my $dmarc;
 		if ($dir{'type'} eq 'TXT' &&
                     ($dmarc=&parse_dmarc(@{$dir{'values'}}))) {
-                        if (!@{$dmarc->{'other'}}) {
+                        if (!$dmarc->{'other'} || !@{$dmarc->{'other'}}) {
                                 $dir{'type'} = 'DMARC';
                                 }
                         }
