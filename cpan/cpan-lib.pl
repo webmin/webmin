@@ -48,7 +48,6 @@ foreach $d (&expand_usr64($Config{'privlib'}),
 	next if ($donedir{$d});
 	local $f;
 	open(FIND, "find ".quotemeta($d)." -name .packlist -print |");
-	print STDERR "find ".quotemeta($d)." -name .packlist -print\n";
 	while($f = <FIND>) {
 		chop($f);
 		local @st = stat($f);
@@ -83,8 +82,6 @@ foreach $d (&expand_usr64($Config{'privlib'}),
 				local @rpath;
 				open(FIND2, "find ".quotemeta($d).
 					    " -name '$l' -print |");
-				print STDERR "find ".quotemeta($d).
-                                            " -name '$l' -print\n";
 				while(<FIND2>) {
 					chop;
 					push(@rpath, $_);

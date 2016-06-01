@@ -45,7 +45,6 @@ foreach $z (&find("zone", $vconf)) {
 	}
 
 # Create structure
-@mdirs = map { { 'name' => $_ } } @masters;
 $dir = { 'name' => 'zone',
 	 'values' => [ $in{'zone'} ],
 	 'type' => 1,

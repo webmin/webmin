@@ -13,7 +13,7 @@ $desc = &ip6int_to_net(&arpa_to_ip($dom));
 &lock_file(&make_chroot(&absolute_path($zone->{'file'})));
 $key = &get_dnssec_key($zone);
 if ($key) {
-	@keyfiles = map { $k->{$_} } ('publicfile', 'privatefile');
+	@keyfiles = map { $key->{$_} } ('publicfile', 'privatefile');
 	}
 foreach my $k (@keyfiles) {
 	&lock_file($k);
