@@ -4,6 +4,7 @@
 
 require './bind8-lib.pl';
 &ReadParse();
+our $ipv6revzone;
 
 $in{'view'} = 'any' if ($in{'view'} eq '');
 $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});

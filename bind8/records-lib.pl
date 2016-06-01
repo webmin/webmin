@@ -6,6 +6,7 @@ use warnings;
 our (%config, %text, %in);
 our $module_config_directory;
 our $bind_version;
+our $ipv6revzone = $config{'ipv6_mode'} ? "ip6.arpa" : "ip6.int";
 
 # read_zone_file(file, origin, [previous], [only-soa], [no-chroot])
 # Reads a DNS zone file and returns a data structure of records. The origin
@@ -600,8 +601,6 @@ if ($_[0] =~ /^([\d\-\.\/]+)$/) {
 	}
 return $_[0];
 }
-
-my $ipv6revzone = $config{'ipv6_mode'} ? "ip6.arpa" : "ip6.int";
 
 # ip6int_to_net(name)
 # Converts an address like a.b.c.d.4.3.2.1.ip6.int. to 1234:dcba::

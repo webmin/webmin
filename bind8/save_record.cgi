@@ -3,6 +3,7 @@
 # Adds or updates a record of some type
 
 require './bind8-lib.pl';
+our $ipv6revzone;
 &ReadParse();
 &error_setup($text{'edit_err'});
 $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
