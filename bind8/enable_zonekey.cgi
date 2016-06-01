@@ -1,17 +1,20 @@
 #!/usr/local/bin/perl
 # Create a signing key for a zone, add it, and sign the zone
+use strict;
+use warnings;
+our (%access, %text, %in);
 
 require './bind8-lib.pl';
 &error_setup($text{'zonekey_err'});
 &ReadParse();
-$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
-$dom = $zone->{'name'};
+my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+my $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
-$desc = &ip6int_to_net(&arpa_to_ip($dom));
+my $desc = &ip6int_to_net(&arpa_to_ip($dom));
 
 # Validate inputs and compute size
-($ok, $size) = &compute_dnssec_key_size($in{'alg'}, $in{'size_def'},
+my ($ok, $size) = &compute_dnssec_key_size($in{'alg'}, $in{'size_def'},
 					$in{'size'});
 &error($size) if (!$ok);
 
@@ -21,7 +24,7 @@ $desc = &ip6int_to_net(&arpa_to_ip($dom));
 # Create the key
 &lock_file(&make_chroot(&absolute_path($zone->{'file'})));
 print &text('zonekey_creating', $dom),"<br>\n";
-$err = &create_dnssec_key($zone, $in{'alg'}, $size, $in{'single'});
+my $err = &create_dnssec_key($zone, $in{'alg'}, $size, $in{'single'});
 if ($err) {
 	print &text('zonekey_ecreate', $err),"<p>\n";
 	}
