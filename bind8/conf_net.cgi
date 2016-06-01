@@ -1,5 +1,9 @@
 #!/usr/local/bin/perl
 # Display global networking options
+use strict;
+use warnings;
+# Globals
+our (%access, %text); 
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'net_ecannot'});
@@ -7,26 +11,26 @@ $access{'defaults'} || &error($text{'net_ecannot'});
 		 undef, undef, undef, undef, &restart_links());
 
 &ReadParse();
-$conf = &get_config();
-$options = &find("options", $conf);
-$mems = $options->{'members'};
+my $conf = &get_config();
+my $options = &find("options", $conf);
+my $mems = $options->{'members'};
 
 # Start of form
 print &ui_form_start("save_net.cgi", "post");
 print &ui_table_start($text{'net_header'}, "width=100%", 4);
 
 # Ports and addresses to listen on
-@listen = &find("listen-on", $mems);
-$ltable = &ui_radio("listen_def", @listen ? 0 : 1,
+my @listen = &find("listen-on", $mems);
+my $ltable = &ui_radio("listen_def", @listen ? 0 : 1,
 		    [ [ 1, $text{'default'} ],
 		      [ 0, $text{'net_below'} ] ])."<br>\n";
 
-@table = ( );
+my @table = ( );
 push(@listen, { });
-for($i=0; $i<@listen; $i++) {
-	$port = $listen[$i]->{'value'} eq 'port' ?
+for(my $i=0; $i<@listen; $i++) {
+	my $port = $listen[$i]->{'value'} eq 'port' ?
                         $listen[$i]->{'values'}->[1] : undef;
-	@vals = map { $_->{'name'} } @{$listen[$i]->{'members'}};
+	my @vals = map { $_->{'name'} } @{$listen[$i]->{'members'}};
 	push(@table, [
 		&ui_radio("pdef_$i", $port ? 0 : 1,
 		  [ [ 1, $text{'default'} ],
@@ -45,8 +49,9 @@ print &ui_table_row($text{'net_listen'}, $ltable, 3);
 print &ui_table_hr();
 
 # Source address for queries
-$src = &find("query-source", $mems);
-$srcstr = join(" ", @{$src->{'values'}});
+my $src = &find("query-source", $mems);
+my $srcstr = join(" ", @{$src->{'values'}});
+my ($sport, $saddr);
 $sport = $1 if ($srcstr =~ /port\s+(\d+)/i);
 $saddr = $1 if ($srcstr =~ /address\s+([0-9\.]+)/i);
 print &ui_table_row($text{'net_saddr'},
@@ -61,6 +66,7 @@ print &ui_table_row($text{'net_sport'},
 # Source port for transfers
 $src = &find("transfer-source", $mems);
 $srcstr = join(" ", @{$src->{'values'}});
+my ($tport, $taddr);
 $tport = $1 if ($srcstr =~ /port\s+(\d+)/i);
 $taddr = $1 if ($srcstr =~ /^([0-9\.]+|\*)/i);
 print &ui_table_row($text{'net_taddr'},

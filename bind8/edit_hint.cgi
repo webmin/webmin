@@ -1,11 +1,14 @@
 #!/usr/local/bin/perl
 # edit_hint.cgi
 # Display information about the hint (root) zone
+use strict;
+use warnings;
+our (%in, %text);
 
 require './bind8-lib.pl';
 &ReadParse();
-$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
-$dom = $zone->{'name'};
+my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+my $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'hint_ecannot'});
 

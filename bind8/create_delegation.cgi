@@ -1,15 +1,20 @@
 #!/usr/local/bin/perl
 # create_forward.cgi
 # Create a new forward zone
+use strict;
+use warnings;
+# Globals
+our (%access, %text, %in, %config);
 
 require './bind8-lib.pl';
 &ReadParse();
 &error_setup($text{'dcreate_err'});
 $access{'delegation'} || &error($text{'dcreate_ecannot'});
 $access{'ro'} && &error($text{'master_ero'});
-$conf = &get_config();
+my $conf = &get_config();
+my $vconf;
 if ($in{'view'} ne '') {
-	$view = $conf->[$in{'view'}];
+	my $view = $conf->[$in{'view'}];
 	&can_edit_view($view) || &error($text{'master_eviewcannot'});
 	$vconf = $view->{'members'};
 	}
@@ -19,7 +24,7 @@ else {
 
 # validate inputs
 if ($in{'rev'}) {
-	local($ipv4);
+	my $ipv4;
 	($ipv4 = &check_net_ip($in{'zone'})) ||
 	$config{'support_aaaa'} &&
 	(($in{'zone'} =~ /^([\w:]+)(\/\d+)$/) || &check_ip6address($1)) ||
@@ -38,14 +43,14 @@ else {
 		&error(&text('create_edom', $in{'zone'}));
 	}
 $in{'zone'} =~ s/\.$//;
-foreach $z (&find("zone", $vconf)) {
+foreach my $z (&find("zone", $vconf)) {
 	if (lc($z->{'value'}) eq lc($in{'zone'})) {
 		&error($text{'master_etaken'});
 		}
 	}
 
 # Create structure
-$dir = { 'name' => 'zone',
+my $dir = { 'name' => 'zone',
 	 'values' => [ $in{'zone'} ],
 	 'type' => 1,
 	 'members' => [ { 'name' => 'type',
@@ -58,7 +63,7 @@ $dir = { 'name' => 'zone',
 &webmin_log("create", "delegation", $in{'zone'}, \%in);
 
 # Get the new zone's index
-$idx = &get_zone_index($in{'zone'}, $in{'view'});
+my $idx = &get_zone_index($in{'zone'}, $in{'view'});
 
 &add_zone_access($in{'zone'});
 &redirect("edit_delegation.cgi?zone=$in{'zone'}&view=$in{'view'}");

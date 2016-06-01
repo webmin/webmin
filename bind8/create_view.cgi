@@ -1,19 +1,23 @@
 #!/usr/local/bin/perl
 # create_view.cgi
+use strict;
+use warnings;
+# Globals
+our (%access, %text, %in);
 
 require './bind8-lib.pl';
 &error_setup($text{'vcreate_err'});
 &ReadParse();
-$add_to_file = &add_to_file();
-$pconf = &get_config_parent($add_to_file);
-$conf = $pconf->{'members'};
+my $add_to_file = &add_to_file();
+my $pconf = &get_config_parent($add_to_file);
+my $conf = $pconf->{'members'};
 $access{'views'} == 1 || &error($text{'vcreate_ecannot'});
 $access{'ro'} && &error($text{'vcreate_ecannot'});
 
 # Validate inputs
 $in{'name'} =~ /^\S+$/ || &error($text{'vcreate_ename'});
-@views = &find("view", $conf);
-foreach $v (@views) {
+my @views = &find("view", $conf);
+foreach my $v (@views) {
 	&error($text{'vcreate_etaken'}) if ($v->{'value'} eq $in{'name'});
 	}
 $in{'class_def'} || $in{'class'} =~ /^[A-Za-z0-9]+$/ ||
@@ -21,7 +25,7 @@ $in{'class_def'} || $in{'class'} =~ /^[A-Za-z0-9]+$/ ||
 
 # Create the view
 &lock_file(&make_chroot($add_to_file));
-$dir = { 'name' => 'view',
+my $dir = { 'name' => 'view',
 	 'values' => [ $in{'name'}, $in{'class_def'} ? ( ) : ( $in{'class'} ) ],
 	 'type' => 1,
 	 'members' => [ ],
