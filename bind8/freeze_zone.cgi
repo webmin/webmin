@@ -1,12 +1,16 @@
 #!/usr/local/bin/perl
 # freeze_zone.cgi
 # Apply changes to one zone only using the ndc command
+use strict;
+use warnings;
+our (%access, %text, %in);
 
 require './bind8-lib.pl';
 &ReadParse();
 $access{'ro'} && &error($text{'restart_ecannot'});
 $access{'apply'} || &error($text{'restart_ecannot'});
-$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+my ($dom, $out);
 if ($zone->{'view'}) {
 	# Reload a zone in a view
 	$dom = $zone->{'name'};
@@ -24,7 +28,7 @@ if ($? || $out =~ /failed|not found|error/i) {
 	}
 &webmin_log("freeze", $dom);
 
-$tv = $zone->{'type'};
+my $tv = $zone->{'type'};
 &redirect(($tv eq "master" ? "edit_master.cgi" :
 	  $tv eq "forward" ? "edit_forward.cgi" : "edit_slave.cgi").
 	  "?zone=$in{'zone'}&view=$in{'view'}");
