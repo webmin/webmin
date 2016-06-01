@@ -1,6 +1,9 @@
 #!/usr/local/bin/perl
 # find_zones.cgi
 # Display zones matching some search
+use strict;
+use warnings;
+our (%in, %config, %text); 
 
 require './bind8-lib.pl';
 &ReadParse();
@@ -12,13 +15,15 @@ if (&have_dnssec_tools_support()) {
 	rollrec_read($config{"dnssectools_rollrec"});
 }
 
-@zones = &list_zone_names();
-foreach $z (@zones) {
-	$v = $z->{'name'};
+my @zones = &list_zone_names();
+my (@zlinks, @ztitles, @zdels, @ztypes, @zstatus, @zicons);
+my $len;
+foreach my $z (@zones) {
+	my $v = $z->{'name'};
 	next if ($z->{'type'} eq 'view' ||
 		 $v eq "." || !&can_edit_zone($z) ||
 		 &arpa_to_ip($v) !~ /\Q$in{'search'}\E/i);
-	$t = $z->{'type'};
+	my $t = $z->{'type'};
 	if ($z->{'view'}) {
 		push(@zlinks, "edit_$t.cgi?zone=$z->{'name'}".
 			      "&view=$z->{'viewindex'}");
@@ -72,7 +77,7 @@ print &text('find_match', "<tt>".&html_escape($in{'search'})."</tt>"),"<p>\n";
 
 if ($len) {
 	# sort list of zones
-	@zorder = sort { $ztitles[$a] cmp $ztitles[$b] } (0 .. $len-1);
+	my @zorder = sort { $ztitles[$a] cmp $ztitles[$b] } (0 .. $len-1);
 	@zlinks = map { $zlinks[$_] } @zorder;
 	@ztitles = map { $ztitles[$_] } @zorder;
 	@zicons = map { $zicons[$_] } @zorder;
@@ -82,12 +87,12 @@ if ($len) {
 
 	if ($config{'show_list'}) {
 		# display as list
-		$mid = int((@zlinks+1)/2);
+		my $mid = int((@zlinks+1)/2);
 		print &ui_form_start("mass_delete.cgi", "post");
-		@links = ( &select_all_link("d", 0),
+		my @links = ( &select_all_link("d", 0),
 			   &select_invert_link("d", 0) );
 		print &ui_links_row(\@links);
-		@grid = ( );
+		my @grid = ( );
 		if (&have_dnssec_tools_support()) {
 		push(@grid, &zones_table([ @zlinks[0 .. $mid-1] ],
 				      [ @ztitles[0 .. $mid-1] ],
@@ -106,7 +111,7 @@ if ($len) {
 					     [ @ztitles[$mid .. $#ztitles] ],
 					     [ @ztypes[$mid .. $#ztypes] ],
 											 [ @zdels[$mid .. $#zdels] ],
-											 [ @status[$mid .. $#zstatus] ]));
+											 [ @zstatus[$mid .. $#zstatus] ]));
 			} else {
 			push(@grid, &zones_table([ @zlinks[$mid .. $#zlinks] ],
 						 [ @ztitles[$mid .. $#ztitles] ],
