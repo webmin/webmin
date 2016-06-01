@@ -286,7 +286,7 @@ while($i < @tok) {
 		if ($dir{'type'} eq 'TXT' &&
 		    !$config{'spf_record'} &&
 		    ($spf=&parse_spf(@{$dir{'values'}}))) {
-			if (!@{$spf->{'other'}}) {
+			if (!$spf->{'other'} || !@{$spf->{'other'}}) {
 				$dir{'type'} = 'SPF';
 				}
 			}
@@ -295,7 +295,7 @@ while($i < @tok) {
 		my $dmarc;
 		if ($dir{'type'} eq 'TXT' &&
                     ($dmarc=&parse_dmarc(@{$dir{'values'}}))) {
-                        if (!@{$dmarc->{'other'}}) {
+                        if (!$dmarc->{'other'} || !@{$dmarc->{'other'}}) {
                                 $dir{'type'} = 'DMARC';
                                 }
                         }

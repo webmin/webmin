@@ -11,6 +11,7 @@ our $ipv6revzone;
 require './bind8-lib.pl';
 &ReadParse();
 
+<<<<<<< HEAD
 my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 my ($zconf, $conf, $parent) = &zone_to_config($zone);
 &can_edit_zone($zconf) ||

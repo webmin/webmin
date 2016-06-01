@@ -29,3 +29,5 @@ Actions in Webmin which produce output (like deleting a user or creating a domai
 Added a link to export actions log search results as CSV.
 ---- Changes since 1.570 ----
 Added a field for searching for actions by their description.
+---- Changes since 1.800 ----
+Failed Webmin logins are now recorded and displayed in the actions log.
