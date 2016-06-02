@@ -1,6 +1,9 @@
 #!/usr/local/bin/perl
 # hint_form.cgi
 # Display options for creating a new root zone
+use strict;
+use warnings;
+our (%access, %text, %config);
 
 require './bind8-lib.pl';
 $access{'master'} || &error($text{'hcreate_ecannot'});
@@ -8,16 +11,20 @@ $access{'ro'} && &error($text{'master_ero'});
 &ui_print_header(undef, $text{'hcreate_title'}, "",
 		 undef, undef, undef, undef, &restart_links());
 
-$conf = &get_config();
-@views = &find("view", $conf);
-foreach $v (@views) {
-	local @vz = &find("zone", $v->{'members'});
+my $conf = &get_config();
+my @views = &find("view", $conf);
+my %view;
+my @zones;
+foreach my $v (@views) {
+	my @vz = &find("zone", $v->{'members'});
 	map { $view{$_} = $v } @vz;
 	push(@zones, @vz);
 	}
 push(@zones, &find("zone", $conf));
-foreach $z (@zones) {
-	$tv = &find_value("type", $z->{'members'});
+my $file;
+my %hashint;
+foreach my $z (@zones) {
+	my $tv = &find_value("type", $z->{'members'});
 	if ($tv eq 'hint') {
 		$file = &find_value("file", $z->{'members'});
 		$hashint{$view{$z}}++;
@@ -43,7 +50,7 @@ print &ui_table_row($text{'hcreate_real'},
 # Create in view
 @views = grep { &can_edit_view($_) && !$hashint{$_} } @views;
 if (@views) {
-	($defview) = grep { lc($_->{'values'}->[0]) eq
+	my ($defview) = grep { lc($_->{'values'}->[0]) eq
 			    lc($config{'default_view'}) } @views;
 	print &ui_table_row($text{'mcreate_view'},
 		&ui_select("view", $defview ? $defview->{'index'} : undef,
