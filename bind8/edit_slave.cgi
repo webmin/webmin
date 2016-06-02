@@ -34,7 +34,6 @@ if ($zone->{'file'}) {
 	foreach $c (@rcodes) { $rnum{$c} = 0; }
 	foreach $r (@recs) {
 		$rnum{$r->{'type'}}++;
-		if ($r->{'type'} eq "SOA") { $soa = $r; }
 		}
 	if ($config{'show_list'}) {
 		# display as list
