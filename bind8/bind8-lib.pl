@@ -43,7 +43,7 @@ my $internic_ftp_file = "/domain/named.root";
 my $internic_ftp_gzip = "/domain/root.zone.gz";
 
 # Get the version number
-my $bind_version;
+our $bind_version;
 if (open(my $VERSION, "<", "$module_config_directory/version")) {
 	chop($bind_version = <$VERSION>);
 	close($VERSION);
