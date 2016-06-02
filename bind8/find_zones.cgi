@@ -110,8 +110,8 @@ if ($len) {
 			push(@grid, &zones_table([ @zlinks[$mid .. $#zlinks] ],
 					     [ @ztitles[$mid .. $#ztitles] ],
 					     [ @ztypes[$mid .. $#ztypes] ],
-											 [ @zdels[$mid .. $#zdels] ],
-											 [ @zstatus[$mid .. $#zstatus] ]));
+					     [ @zdels[$mid .. $#zdels] ],
+					     [ @zstatus[$mid .. $#zstatus] ]));
 			} else {
 			push(@grid, &zones_table([ @zlinks[$mid .. $#zlinks] ],
 						 [ @ztitles[$mid .. $#ztitles] ],
