@@ -1,11 +1,14 @@
 #!/usr/local/bin/perl
 # Delete a bunch of zones, after asking for confirmation
+use strict;
+use warnings;
+our (%access, %text, %in);
 
 require './bind8-lib.pl';
 &ReadParse();
-$conf = &get_config();
+my $conf = &get_config();
 
-$dparams = join("&", map { "d=".&urlize($_) } split(/\0/, $in{'d'}));
+my $dparams = join("&", map { "d=".&urlize($_) } split(/\0/, $in{'d'}));
 if ($in{'update'}) {
 	# Redirect to mass update form
 	&redirect("mass_update_form.cgi?".$dparams);
@@ -23,9 +26,11 @@ elsif ($in{'rdelete'}) {
 	}
 
 # Get the zones
-foreach $d (split(/\0/, $in{'d'})) {
-	($zonename, $viewidx) = split(/\s+/, $d);
-	$zone = &get_zone_name_or_error($zonename, $viewidx);
+my (@zones, @znames);
+foreach my $d (split(/\0/, $in{'d'})) {
+	my ($zonename, $viewidx) = split(/\s+/, $d);
+	my $zone = &get_zone_name_or_error($zonename, $viewidx);
+	my ($view, $zconf);
 	if ($zone->{'viewindex'} ne '') {
 		$view = $conf->[$zone->{'viewindex'}];
 		$zconf = $view->{'members'}->[$zone->{'index'}];
@@ -45,7 +50,7 @@ if (!$in{'confirm'}) {
 	# Ask the user if he is sure
 	&ui_print_header(undef, $text{'massdelete_title'}, "");
 
-	@servers = &list_slave_servers();
+	my @servers = &list_slave_servers();
 	print &ui_confirmation_form("mass_delete.cgi",
 		&text('massdelete_rusure', scalar(@zones),
 		      join(", ", @znames)),
@@ -62,14 +67,14 @@ else {
 	# Do it!
 	&ui_print_unbuffered_header(undef, $text{'massdelete_title'}, "");
 
-	foreach $zi (@zones) {
-		$zconf = $zi->[0];
-		$view = $zi->[1];
-		$type = &find_value("type", $zconf->{'members'});
+	foreach my $zi (@zones) {
+		my $zconf = $zi->[0];
+		my $view = $zi->[1];
+		my $type = &find_value("type", $zconf->{'members'});
 		print &text('massdelete_zone', $zconf->{'value'}),"<br>\n";
 
 		# delete the records file
-		$f = &find("file", $zconf->{'members'});
+		my $f = &find("file", $zconf->{'members'});
 		if ($f && $type ne 'hint') {
 			&delete_records_file($f->{'value'});
 			}
@@ -85,14 +90,14 @@ else {
 
 		# Also delete from slave servers
 		if ($in{'onslave'} && $access{'remote'}) {
-			$viewname = $view ? $view->{'values'}->[0] : undef;
+			my $viewname = $view ? $view->{'values'}->[0] : undef;
 			print &text('massdelete_slaves',
 				    $zconf->{'value'}),"<br>\n";
-			@slaveerrs = &delete_on_slaves(
+			my @slaveerrs = &delete_on_slaves(
 				$zconf->{'value'}, undef, $viewname);
 			if (@slaveerrs) {
 				print $text{'massdelete_failed'},"<br>\n";
-				foreach $s (@slaveerrs) {
+				foreach my $s (@slaveerrs) {
 					print "$s->[0]->{'host'} : $s->[1]<br>\n";
 					}
 				print "<p>\n";
