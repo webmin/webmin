@@ -46,11 +46,11 @@ $ltable .= &ui_columns_table(
 	1);
 
 print &ui_table_row($text{'net_listen'}, $ltable, 3);
-print &ui_table_hr();
+#print &ui_table_hr();
 
 # Source address for queries
 my $src = &find("query-source", $mems);
-my $srcstr = join(" ", @{$src->{'values'}});
+my $srcstr = join(" ", $src->{'values'});
 my ($sport, $saddr);
 $sport = $1 if ($srcstr =~ /port\s+(\d+)/i);
 $saddr = $1 if ($srcstr =~ /address\s+([0-9\.]+)/i);
@@ -65,7 +65,7 @@ print &ui_table_row($text{'net_sport'},
 
 # Source port for transfers
 $src = &find("transfer-source", $mems);
-$srcstr = join(" ", @{$src->{'values'}});
+$srcstr = join(" ", $src->{'values'});
 my ($tport, $taddr);
 $tport = $1 if ($srcstr =~ /port\s+(\d+)/i);
 $taddr = $1 if ($srcstr =~ /^([0-9\.]+|\*)/i);
