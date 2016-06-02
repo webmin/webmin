@@ -1,16 +1,20 @@
 #!/usr/local/bin/perl
 # Show a form for deleting a record in multiple zones
+use strict;
+use warnings;
+our (%text, %in, %config);
 
 require './bind8-lib.pl';
 &ReadParse();
 &error_setup($text{'rdmass_err'});
-@d = split(/\0/, $in{'d'});
+my @d = split(/\0/, $in{'d'});
 @d || &error($text{'rdmass_enone'});
 
 &ui_print_header(undef, $text{'rdmass_title'}, "");
 
 print &ui_form_start("mass_rdelete.cgi", "post");
-foreach $d (@d) {
+my $dc;
+foreach my $d (@d) {
 	print &ui_hidden("d", $d),"\n";
 	$dc++;
 	}
@@ -20,7 +24,7 @@ print &ui_table_start($text{'rdmass_header'}, undef, 2);
 print &ui_table_row($text{'umass_sel'}, $dc);
 
 # Type to delete
-@rtypes = ( 'A', 'CNAME', 'NS', 'MX', 'PTR', 'TXT', 'SPF',
+my @rtypes = ( 'A', 'CNAME', 'NS', 'MX', 'PTR', 'TXT', 'SPF',
 	    $config{'support_aaaa'} ? ( "AAAA" ) : ( ) );
 print &ui_table_row($text{'rdmass_type'},
 	&ui_select("type", "A",
