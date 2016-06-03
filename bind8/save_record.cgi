@@ -1,15 +1,18 @@
 #!/usr/local/bin/perl
 # save_record.cgi
 # Adds or updates a record of some type
+use strict;
+use warnings;
+our (%access, %text, %in, %config);
 
 require './bind8-lib.pl';
 our $ipv6revzone;
 &ReadParse();
 &error_setup($text{'edit_err'});
-$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
-$dom = $zone->{'name'};
-@zl = &list_zone_names();
-$reverse = ($in{'origin'} =~ /\.in-addr\.arpa/i ||
+my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+my $dom = $zone->{'name'};
+my @zl = &list_zone_names();
+my $reverse = ($in{'origin'} =~ /\.in-addr\.arpa/i ||
 	    $in{'origin'} =~ /\.$ipv6revzone/i);
 &can_edit_zone($zone) || &error($text{'recs_ecannot'});
 &can_edit_type($in{'type'}) ||
@@ -18,6 +21,7 @@ $access{'ro'} && &error($text{'master_ero'});
 &lock_file(&make_chroot(&absolute_path($zone->{'file'})));
 
 # Read the existing records
+my @recs;
 if ($config{'largezones'} && !defined($in{'num'})) {
 	# Adding to a large zone, so only read the SOA
 	@recs = &read_zone_file($in{'file'}, $in{'origin'}, undef, 1);
@@ -28,12 +32,14 @@ else {
 	}
 
 # get the old record if needed
+my $r;
 if (defined($in{'num'})) {
 	$r = &find_record_by_id(\@recs, $in{'id'}, $in{'num'});
 	$r || &error($text{'edit_egone'});
 	}
 
 # check for deletion
+my ($fulloldvalue0, $fulloldname);
 if ($in{'delete'}) {
 	# Check if confirmation is needed
 	if (!$in{'confirm'} && $config{'confirm_rec'}) {
@@ -60,7 +66,7 @@ if ($in{'delete'}) {
 					$in{'oldvalue0'}, $in{'origin'});
 		$fulloldname = &convert_to_absolute(
 					$in{'oldname'}, $in{'origin'});
-		($orevconf, $orevfile, $orevrec) = &find_reverse(
+		my ($orevconf, $orevfile, $orevrec) = &find_reverse(
 					$in{'oldvalue0'}, $in{'view'});
 		if ($in{'rev'} && $orevrec && &can_edit_reverse($orevconf) &&
 		    $fulloldname eq $orevrec->{'values'}->[0] &&
@@ -70,14 +76,15 @@ if ($in{'delete'}) {
 			&lock_file(&make_chroot($orevrec->{'file'}));
 			&delete_record($orevrec->{'file'} , $orevrec);
 			&lock_file(&make_chroot($orevfile));
-			@orrecs = &read_zone_file($orevfile, $orevconf->{'name'});
+			my @orrecs = &read_zone_file($orevfile, $orevconf->{'name'});
 			&bump_soa_record($orevfile, \@orrecs);
 			&sign_dnssec_zone_if_key($orevconf, \@orrecs);
 			}
 
 		# Update forward
-		local($ipv6 = ($fulloldvalue0 =~ /\.$ipv6revzone/i));
-		($ofwdconf, $ofwdfile, $ofwdrec) = &find_forward($fulloldvalue0, $ipv6);
+		my $ipv6;
+		($ipv6 = ($fulloldvalue0 =~ /\.$ipv6revzone/i));
+		my ($ofwdconf, $ofwdfile, $ofwdrec) = &find_forward($fulloldvalue0, $ipv6);
 		if ($in{'fwd'} && $ofwdrec && &can_edit_zone($ofwdconf) &&
 		    (!$ipv6 && &arpa_to_ip($in{'oldname'}) eq $ofwdrec->{'values'}->[0] ||
 		     $ipv6 && &expandall_ip6(&ip6int_to_net($in{'oldname'})) eq &expandall_ip6($ofwdrec->{'values'}->[0])) &&
@@ -85,7 +92,7 @@ if ($in{'delete'}) {
 			&lock_file(&make_chroot($ofwdrec->{'file'}));
 			&delete_record($ofwdrec->{'file'}, $ofwdrec);
 			&lock_file(&make_chroot($ofwdfile));
-			@ofrecs = &read_zone_file($ofwdfile, $ofwdconf->{'name'});
+			my @ofrecs = &read_zone_file($ofwdfile, $ofwdconf->{'name'});
 			&bump_soa_record($ofwdfile, \@ofrecs);
 			&sign_dnssec_zone_if_key($ofwdconf, \@ofrecs);
 			}
@@ -98,21 +105,23 @@ if ($in{'delete'}) {
 	}
 
 # Create values string based on inputs
+my $ttl;
 if (!$in{'ttl_def'}) {
 	$in{'ttl'} =~ /^\d+$/ ||
 		&error(&text('edit_ettl', $in{'ttl'}));
 	$ttl = $in{'ttl'}.$in{'ttlunit'};
 	}
-$vals = $in{'value0'};
-for($i=1; defined($in{"value$i"}); $i++) {
+my $vals = $in{'value0'};
+for(my $i=1; defined($in{"value$i"}); $i++) {
 	$vals .= " ".$in{"value$i"};
 	}
 $vals =~ s/^\s+//;
 $vals =~ s/\s+$//;
 
+my ($name, $fullname);
 if ($in{'type'} eq "PTR" && $reverse) {
 	# a reverse address
-	local($ipv4);
+	my $ipv4;
 	($ipv4 = $in{'origin'} =~ /in-addr\.arpa/i) ||
 	    $in{'origin'} =~ /\.$ipv6revzone/i ||
 		&error(&text('edit_eip', $in{'name'}));
@@ -132,7 +141,7 @@ if ($in{'type'} eq "PTR" && $reverse) {
 		$name = &net_to_ip6int($in{'name'});
 		}
 	&valname($in{'value0'}) ||
-		&error(&text('edit_ehost', $vals[0]));
+		&error(&text('edit_ehost', $vals));
 	if ($in{'value0'} !~ /\.$/) { $vals .= "."; }
 	}
 else {
@@ -145,12 +154,12 @@ else {
 		if (!$access{'multiple'}) {
 			# Is this address already in use? Search all domains
 			# to find out..
-			foreach $z (@zl) {
+			foreach my $z (@zl) {
 				next if ($z->{'type'} ne "master");
 				next if ($z->{'name'} =~ /in-addr\.arpa/i);
-				$file = $z->{'file'};
-				@frecs = &read_zone_file($file, $z->{'name'});
-				foreach $fr (@frecs) {
+				my $file = $z->{'file'};
+				my @frecs = &read_zone_file($file, $z->{'name'});
+				foreach my $fr (@frecs) {
 					if ($fr->{'type'} eq "A" &&
 					    $fr->{'values'}->[0] eq $vals &&
 					    $fr->{'name'} ne $r->{'name'}) {
@@ -167,12 +176,12 @@ else {
 		if (!$access{'multiple'}) {
 			# Is this address already in use? Search all domains
 			# to find out..
-			foreach $z (@zl) {
+			foreach my $z (@zl) {
 				next if ($z->{'type'} ne "master");
 				next if ($z->{'name'} =~ /\.$ipv6revzone/i);
-				$file = $z->{'file'};
-				@frecs = &read_zone_file($file, $z->{'name'});
-				foreach $fr (@frecs) {
+				my $file = $z->{'file'};
+				my @frecs = &read_zone_file($file, $z->{'name'});
+				foreach my $fr (@frecs) {
 					if ($fr->{'type'} eq "AAAA" &&
 					    &expandall_ip6($fr->{'values'}->[0]) eq &expandall_ip6($vals) &&
 					    $fr->{'name'} ne $r->{'name'}) {
@@ -217,11 +226,11 @@ else {
 		$vals = $in{'value0'}." ".$in{'value1'};
 		}
 	elsif ($in{'type'} eq "TXT") {
-		$fullvals = $in{'value0'};
+		my $fullvals = $in{'value0'};
 		$fullvals =~ s/\r//g;
 		$fullvals =~ s/\n/ /g;
 		$fullvals =~ s/((?:^|[^\\])(?:\\\\)*)[\"]/$1\\\"/g;
-		@splitvals = ( );
+		my @splitvals = ( );
 		while($fullvals) {
 			push(@splitvals, substr($fullvals, 0, 255));
 			$fullvals = substr($fullvals, 255);
@@ -234,9 +243,9 @@ else {
 		if (!$in{'value2'}) {
 			&error($text{'edit_eserv'});
 			}
-		@ws = split(/[\r\n]+|\s+/, $in{'value2'});
+		my @ws = split(/[\r\n]+|\s+/, $in{'value2'});
 		$vals = "$in{'value0'} $in{'value1'} (";
-		foreach $ws (@ws) {
+		foreach my $ws (@ws) {
 			$ws =~ /^[a-z]([\w\-]*\w)?$/i ||
 				&error(&text('edit_ebadserv', $ws));
 			$vals .= "\n\t\t\t\t\t$ws";
@@ -292,7 +301,7 @@ else {
 		}
 	elsif ($in{'type'} eq 'SPF') {
 		# For SPF records, build the SPF string from the inputs
-		$spf = $r ? &parse_spf(@{$r->{'values'}}) : { };
+		my $spf = $r ? &parse_spf(@{$r->{'values'}}) : { };
 		$spf->{'a'} = $in{'spfa'};
 		$spf->{'mx'} = $in{'spfmx'};
 		$spf->{'ptr'} = $in{'spfptr'};
@@ -342,7 +351,7 @@ else {
 		}
 	elsif ($in{'type'} eq 'DMARC') {
 		# Build DMARC record from inputs
-		$dmarc = $r ? &parse_dmarc(@{$r->{'values'}}) : { };
+		my $dmarc = $r ? &parse_dmarc(@{$r->{'values'}}) : { };
 		$dmarc->{'p'} = $in{'dmarcp'};
 
 		$in{'dmarcpct'} =~ /^\d+$/ && $in{'dmarcpct'} >= 0 &&
@@ -396,7 +405,7 @@ else {
 	else {
 		# For other record types, just save the lines
 		$in{'values'} =~ s/\r//g;
-		local @vlines = split(/\n/, $in{'values'});
+		my @vlines = split(/\n/, $in{'values'});
 		$vals = join(" ",map { $_ =~ /^\S+$/ ? $_ : "\"$_\"" } @vlines);
 		}
 	$fullname = &convert_to_absolute($in{'name'}, $in{'origin'});
@@ -410,9 +419,9 @@ else {
 
 # check for CNAME collision
 if (!defined($in{'num'}) || $name ne $r->{'name'}) {
-	foreach $cr (@recs) {
+	foreach my $cr (@recs) {
 		if ($cr->{'name'} eq $name) {
-			if ($in{'type'} eq CNAME) {
+			if ($in{'type'} eq 'CNAME') {
 				&error($text{'edit_ecname1'});
 				}
 			elsif ($cr->{'type'} eq 'CNAME') {
@@ -424,7 +433,7 @@ if (!defined($in{'num'}) || $name ne $r->{'name'}) {
 
 if ($in{'new'}) {
 	# adding a new record
-	($revconf, $revfile, $revrec) = &find_reverse($in{'value0'},
+	my ($revconf, $revfile, $revrec) = &find_reverse($in{'value0'},
 						      $in{'view'});
 	if ($in{'rev'} && $config{'rev_must'} && !$revconf) {
 		# Reverse zone must exist, but doesn't
@@ -437,7 +446,7 @@ if ($in{'new'}) {
 	       'comment' => $in{'comment'} };
 	if ($in{'rev'} && $revconf && &can_edit_reverse($revconf) &&
 	    $in{'value0'} !~ /\*/) {
-		local $rname = &make_reverse_name($in{'value0'}, $in{'type'},
+		my $rname = &make_reverse_name($in{'value0'}, $in{'type'},
 						  $revconf);
 		if ($revrec && $in{'rev'} == 2) {
 			# Upate the existing reverse for the domain
@@ -445,7 +454,7 @@ if ($in{'new'}) {
 			&modify_record($revrec->{'file'}, $revrec,
 				       $rname, $revrec->{'ttl'}, "IN", "PTR",
 				       $fullname);
-			@rrecs = &read_zone_file($revfile, $revconf->{'name'});
+			my @rrecs = &read_zone_file($revfile, $revconf->{'name'});
 			&bump_soa_record($revfile, \@rrecs);
 			&sign_dnssec_zone_if_key($revconf, \@rrecs);
 			}
@@ -456,19 +465,19 @@ if ($in{'new'}) {
 			&lock_file(&make_chroot($revfile));
 			&create_record($revfile, $rname,
 				$ttl, "IN", "PTR", $fullname);
-			@rrecs = &read_zone_file($revfile, $revconf->{'name'});
+			my @rrecs = &read_zone_file($revfile, $revconf->{'name'});
 			&bump_soa_record($revfile, \@rrecs);
 			&sign_dnssec_zone_if_key($revconf, \@rrecs);
 			}
 		}
 
-	($fwdconf, $fwdfile, $fwdrec) = &find_forward($vals, $vals =~ /\.$ipv6revzone/i);
+	my ($fwdconf, $fwdfile, $fwdrec) = &find_forward($vals, $vals =~ /\.$ipv6revzone/i);
 	if ($in{'fwd'} && $fwdconf && !$fwdrec &&
 	    &can_edit_zone($fwdconf)) {
 		# Add a forward record if we are the master for the forward
 		# domain, and if there is not already an A record
 		# for the address
-		local($rtype);
+		my ($rtype);
 		if (&check_ipaddress($in{'name'})) {
 			$rtype = "A";
 			}
@@ -480,7 +489,7 @@ if ($in{'new'}) {
 			&lock_file(&make_chroot($fwdfile));
 			&create_record($fwdfile, $vals,
 				       $ttl, "IN", $rtype, $in{'name'});
-			@frecs = &read_zone_file($fwdfile, $fwdconf->{'name'});
+			my @frecs = &read_zone_file($fwdfile, $fwdconf->{'name'});
 			&bump_soa_record($fwdfile, \@frecs);
 			&sign_dnssec_zone_if_key($fwdconf, \@frecs);
 			}
@@ -490,9 +499,9 @@ else {
 	# update an existing record
 	$fulloldvalue0 = &convert_to_absolute($in{'oldvalue0'}, $in{'origin'});
 	$fulloldname = &convert_to_absolute($in{'oldname'}, $in{'origin'});
-	($orevconf, $orevfile, $orevrec) = &find_reverse($in{'oldvalue0'},
+	my ($orevconf, $orevfile, $orevrec) = &find_reverse($in{'oldvalue0'},
 							 $in{'view'});
-	($revconf, $revfile, $revrec) = &find_reverse($in{'value0'},
+	my ($revconf, $revfile, $revrec) = &find_reverse($in{'value0'},
 						      $in{'view'});
 	if ($in{'rev'} && $config{'rev_must'} && !$revconf) {
 		# Reverse zone must exist, but doesn't
@@ -503,7 +512,7 @@ else {
 		       "IN", $in{'type'}, $vals, $in{'comment'});
 
 	# Build names for the new and old reverse records
-	local ($rname, $orname);
+	my ($rname, $orname);
 	if ($revconf) {
 		$rname = &make_reverse_name($in{'value0'}, $in{'type'},
 					    $revconf);
@@ -523,8 +532,8 @@ else {
 		# may now be in a different file!
 		&lock_file(&make_chroot($orevfile));
 		&lock_file(&make_chroot($revfile));
-		@orrecs = &read_zone_file($orevfile, $orevconf->{'name'});
-		@rrecs = &read_zone_file($revfile, $revconf->{'name'});
+		my @orrecs = &read_zone_file($orevfile, $orevconf->{'name'});
+		my @rrecs = &read_zone_file($revfile, $revconf->{'name'});
 		if ($revconf eq $orevconf && &can_edit_reverse($revconf)) {
 			# old and new in the same file
 			&modify_record($orevrec->{'file'} , $orevrec, 
@@ -558,16 +567,17 @@ else {
 		# we don't handle the old reverse domain but handle the new 
 		# one.. create a new reverse record
 	 	&lock_file(&make_chroot($revfile));
-		@rrecs = &read_zone_file($revfile, $revconf->{'name'});
+		my @rrecs = &read_zone_file($revfile, $revconf->{'name'});
 		&create_record($revfile, $rname,
 			       $ttl, "IN", "PTR", $fullname, $in{'comment'});
 		&bump_soa_record($revfile, \@rrecs);
 		&sign_dnssec_zone_if_key($revconf, \@rrecs);
 		}
 
-	local($ipv6 = ($in{'value0'} =~ /\.$ipv6revzone/i));
-	($ofwdconf, $ofwdfile, $ofwdrec) = &find_forward($fulloldvalue0, $ipv6);
-	($fwdconf, $fwdfile, $fwdrec) =	&find_forward($in{'value0'}, $ipv6);
+	my $ipv6;
+	($ipv6 = ($in{'value0'} =~ /\.$ipv6revzone/i));
+	my ($ofwdconf, $ofwdfile, $ofwdrec) = &find_forward($fulloldvalue0, $ipv6);
+	my ($fwdconf, $fwdfile, $fwdrec) =	&find_forward($in{'value0'}, $ipv6);
 	if ($in{'fwd'} && $ofwdrec && &can_edit_zone($ofwdconf) &&
 	    &expandall_ip6(&ip6int_to_net(&arpa_to_ip($in{'oldname'}))) eq
 	    &expandall_ip6($ofwdrec->{'values'}->[0]) &&
@@ -575,8 +585,8 @@ else {
 		# Updating the forward record
 		&lock_file(&make_chroot($ofwdfile));
 		&lock_file(&make_chroot($fwdfile));
-		@ofrecs = &read_zone_file($ofwdfile, $ofwdconf->{'name'});
-		@frecs = &read_zone_file($fwdfile, $fwdconf->{'name'});
+		my @ofrecs = &read_zone_file($ofwdfile, $ofwdconf->{'name'});
+		my @frecs = &read_zone_file($fwdfile, $fwdconf->{'name'});
 		if ($fwdconf eq $ofwdconf &&
 		    &can_edit_zone($fwdconf)) {
 			# old and new are in the same file
