@@ -1,0 +1,79 @@
+<header>Linux Firewall</header>
+
+<h3>Module introductie</h3>
+
+Met deze module kunt u de firewall IP-tafels configureren die aanwezig zijn
+in de Linux kernels van de 2.4 serie. Anders dan met andere firewall configuratie
+programma's zal deze firewall, in plaats van een shell script die de firewall instelt,
+een opgeslagen file lezen en bewerken dmv het uitvoeren van <tt>ip6tables-herstellen</tt>
+en <tt>ip6tables-opslaan</tt>. <p>
+
+Indien u reeds een firewall handmatig of middels een script heeft opgezet zal de
+module u vragen om dit te converteren naar een ip6tables file en die opslaan.
+Vervolgens zal er hiervoor een script gemaakt worden die zal worden uitgevoerd
+tijdens het booten van uw systeem om de regels van de file te activeren in de
+firewall.
+Echter indien u heeft gekozen voor deze optie moet u niet meer uw eigen script
+bewerken en deze direct verwijderen uit het boot gedeelte. <p>
+
+<h3>ip6tables overzicht</h3>
+
+Ieder netwerk pakket dat binnenkomt, het netwerk verlaat of word doorgestuurd door
+uw systeem zal gecontroleerd worden met 1 of meerdere ketens om te bepalen wat
+ermee moet gebeuren.
+Iedere keten bevat nullen of meerdere regels, waarbij aldoor de conditie word 
+gecontroleerd (om te bepalen welk pakket overeenkomt) en welke actie ondernomen
+moet worden (om te controleren wat er gebeurd met de overeenkomende pakketten).
+Iedere keten kan ook een standaard actie uitvoeren die bepaald wat er met dit pakket
+moet gebeuren als het niet overeenkomt met een regel. <p>
+
+Iedere keten is een onderdeel van een tabel, waarvan er momenteel 3 zijn :
+<ul>
+<li><b>Pakket filteren (<tt>filter</tt>)</b><br>
+    De ketens in deze tabel kunnen worden gebruikt om data te controleren wat
+    uw systeem binnenkomt van andere hosts op het netwerk, dat wat word verstuurd
+    vanaf uw systeem door gebruikers en processen en dat wat word doorgestuurd
+    indien yw systeem werkt als een router. <p>
+<li><b>Netwerk adres vertaling (<tt>nat</tt>)</b><br>
+    Deze tabel kan worden opgezet voor NAT of masquerading, wat erg handig kan
+    zijn indien u een heel netwerk met 1 IP adres toegang wilt verlenen tot het
+    internet. <p>
+<li><b>Pakket wijziging (<tt>mangle</tt>)</b><br>
+    Deze keten word gebruikt om pakketten te modificeren die worden doorgestuurd
+    of worden verzonden vanaf uw systeem. <p>
+</ul>
+
+Als toevoeging voor de standaard ketens die een onderdeel zijn van iedere tabel
+kunt u ook uw eigen ketens maken die kunnen worden uitgevoerd door regels in
+de ingebouwde ketens. Dit kan erg handig zijn indien u regels wilt groeperen
+en delen die worden gebruikt op diverse plekken. <p>
+
+<h3>De hoofd pagina</h3>
+
+De hoofdpagina van deze module toont een lijst van alle ketens en regels van
+1 van de beschikbare tafels die geselecteerd is van de lijst aan de linker
+bovenkant. Daaronder bevind zich een sectie voor iedere keten in de huidige
+tabel, met alle regels die in iedere keten zit en de conditie waarin die zich
+bevinden.
+Voor iedere keten kunt u de standaard actie wijzigen met gebruik van de 
+drop-down lijst indien de keten behoort tot een ingebouwde keten van de tabel,
+of u verwijdert deze met de "Verwijder keten" knop indien het gebruiker
+gedefinieerd is. <p>
+
+U kunt op iedere regel van een keten klikken om deze te bewerken, klik op de pijlen
+naast iedere rij om de regel op of neer te verplaatsen of klik op de regel 
+"Toevoegen" knop om een nieuwe toe te voegen. Als u kiest voor toevoegen of bewerken
+word u verplaatst naar een pagina waar u een actie kunt selecteren voor iedere regel,
+en de condities waarvoor de regel moet worden uitgevoerd. <p>
+
+Aan de onderkant van de pagina bevind zich een knop waarmee u de huidige firewall
+configuratie direct actief kunt maken, door deze in de kernel te laden met de 
+<tt>ip6tables-restore</tt> opdracht. Daaronder bevind zich een knop waarmee u het
+omgekeerde kunt doen, dus de IP tabellen uit de kernel halen waarna u deze 
+vervolgens kunt bewerken.
+
+Tot slot, indien uw distributie dit ondersteund is er ook een knop waarmee u kunt
+wijzigen of de firewall wel of niet tijdens het booten geactiveerd moet worden. <p>
+
+<hr>
+

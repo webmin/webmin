@@ -1,0 +1,72 @@
+<header>Firewall Linuksa</header>
+
+<h3>Wprowadzenie do modułu</h3>
+
+Ten moduł pozwala na konfigurację funkcji firewalla ip6tables znajdujących
+się w kernelach Linuksa 2.4. W odróżnieniu od innych programów konfiguracji
+firewalla ten moduł nie tworzy skryptów shell, a zamiast tego odczytuje
+i edytuje pliki w formacie umożliwiającym ich odczyt w <tt>ip6tables-restore</tt>
+i <tt>ip6tables-save</tt>. <p>
+
+Jeżeli masz już w systemie firewall skonfigurowany ręcznie lub przez plik
+skryptu, to ten moduł przekonwertuje go do odpowiedniego formatu ip6tables
+i utworzy skrypt do uruchamiania reguł przy starcie. Po tej operacji nie
+powinno się dłużej używać starych skryptów do edycji reguł, należy je
+także wyłączyć z autostartu. <p>
+
+<h3>Opis ip6tables</h3>
+
+Każdy pakiet sieciowy przesyłany do lub z twojego systemu jest sprawdzany z
+przynajmniej jednym łańcuchem, który określa co powinno się z nim stać.
+Każdy łańcuch zawiera zero lub więcej reguł, każdy z nich posiada warunek
+(określa, które pakiety do niego pasują) i akcję (do kontroli co się stanie
+z pasującym pakietem). Każdy łańcuch dodatkowo posiada akcję domyślną, która
+określa co się stanie z pakietami, które nie pasują do żadnej reguły. <p>
+
+Każdy łańcuch jest częścią tabeli, aktualnie dostępne są trzy :
+<ul>
+<li><b>Filtracja pakietu (<tt>filter</tt>)</b><br>
+    Łańcuchy w tej tabeli mogą być wykorzystane do kontroli danych pochodzących
+	do twojego systemu z innych hostów w sieci, danych wysyłanych ze twojego
+	systemu przez użytkowników i procesy oraz dane przekazane przez twój system,
+	jeśli działa jako router. <p>
+<li><b>Translacja adresów sieciowych (<tt>nat</tt>)</b><br>
+    Tabela ta może być używana do konfigurowania NAT lub maskowania, co jest
+	przydatne, jeśli chcesz dać całej sieci komputerów dostęp do Internetu za
+	pośrednictwem tylko jednego prawdziwego adresu IP. <p>
+<li><b>Przeróbka pakietów (<tt>mangle</tt>)</b><br>
+    Ta tabela dotyczy modyfikowania pakietów przekazywanych przez lub wysyłanych
+	z systemu.<p>
+</ul>
+
+Oprócz standardowych łańcuchów, które są częścią każdej tabeli, można również
+tworzyć własne łańcuchy, które mogą być uruchamiane przez reguły w łańcuchach
+wbudowanych. Może to być przydatne do grupowania i udostępniania zasad, które
+mogą być wykorzystane w wielu miejscach. <p>
+
+<h3>Główna strona modułu</h3>
+
+Strona główna tego modułu zawiera wszystkie łańcuchy i reguły z jednej z dostępnych
+tabel, wybranej z listy w lewym górnym rogu. Poniżej znajduje się sekcja każdego
+łańcucha w bieżącej tabeli, ze wszystkimi regułami w każdym wybranym łańcuchu i
+ich opisane warunki. Dla każdego łańcucha, można zmienić domyślną akcję,
+korzystając z listy rozwijanej, jeśli łańcuch jest jednym z tych, wbudowanych do
+tabeli, lub usunąć go za pomocą przycisku Usuń, jeżeli łańcuch jest zdefiniowany
+przez użytkownika. <p>
+
+W celu edycji dowolnej reguły w łańcuchu, kliknij na nią. Kliknij na strzałki
+po prawej stronie, aby przenieść w górę lub w dół lub kliknij na przycisk
+Dodaj regułę, aby dodać nową. Dodawanie lub edytowanie reguł przekieruje cię
+do strony, na której możesz wybrać akcję do każdej reguły i warunki, w celu
+określenia kiedy ta akcja ma być wykonana. <p>
+
+Na dole strony znajdują się przyciski umożliwiające aktywację aktualnej
+konfiguracji firewalla przez załadowanie do kernela polecenia
+<tt>ip6tables-restore</tt>. Poniżej jest przycisk, który działa odwrotnie
+tzn. pobiera aktywną konfigurację firewalla z kernela i umożliwia jej
+edycję w tym module. Na końcu, jeżeli twoja dystrybucja obsługuje tę
+funkcję znajduje się przycisk umożliwiający wybranie, czy firewall
+ma być aktywowany w momencie uruchamiania systemu czy nie. <p>
+
+<hr>
+

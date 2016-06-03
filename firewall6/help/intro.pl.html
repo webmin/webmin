@@ -1,0 +1,72 @@
+<header>Firewall Linuksa</header>
+
+<h3>Wprowadzenie do modu³u</h3>
+
+Ten modu³ pozwala na konfiguracjê funkcji firewalla ip6tables znajduj±cych
+siê w kernelach Linuksa 2.4. W odró¿nieniu od innych programów konfiguracji
+firewalla ten modu³ nie tworzy skryptów shell, a zamiast tego odczytuje
+i edytuje pliki w formacie umo¿liwiaj±cym ich odczyt w <tt>ip6tables-restore</tt>
+i <tt>ip6tables-save</tt>. <p>
+
+Je¿eli masz ju¿ w systemie firewall skonfigurowany rêcznie lub przez plik
+skryptu, to ten modu³ przekonwertuje go do odpowiedniego formatu ip6tables
+i utworzy skrypt do uruchamiania regu³ przy starcie. Po tej operacji nie
+powinno siê d³u¿ej u¿ywaæ starych skryptów do edycji regu³, nale¿y je
+tak¿e wy³±czyæ z autostartu. <p>
+
+<h3>Opis ip6tables</h3>
+
+Ka¿dy pakiet sieciowy przesy³any do lub z twojego systemu jest sprawdzany z
+przynajmniej jednym ³añcuchem, który okre¶la co powinno siê z nim staæ.
+Ka¿dy ³añcuch zawiera zero lub wiêcej regu³, ka¿dy z nich posiada warunek
+(okre¶la, które pakiety do niego pasuj±) i akcjê (do kontroli co siê stanie
+z pasuj±cym pakietem). Ka¿dy ³añcuch dodatkowo posiada akcjê domy¶ln±, która
+okre¶la co siê stanie z pakietami, które nie pasuj± do ¿adnej regu³y. <p>
+
+Ka¿dy ³añcuch jest czê¶ci± tabeli, aktualnie dostêpne s± trzy :
+<ul>
+<li><b>Filtracja pakietu (<tt>filter</tt>)</b><br>
+    £añcuchy w tej tabeli mog± byæ wykorzystane do kontroli danych pochodz±cych
+	do twojego systemu z innych hostów w sieci, danych wysy³anych ze twojego
+	systemu przez u¿ytkowników i procesy oraz dane przekazane przez twój system,
+	je¶li dzia³a jako router. <p>
+<li><b>Translacja adresów sieciowych (<tt>nat</tt>)</b><br>
+    Tabela ta mo¿e byæ u¿ywana do konfigurowania NAT lub maskowania, co jest
+	przydatne, je¶li chcesz daæ ca³ej sieci komputerów dostêp do Internetu za
+	po¶rednictwem tylko jednego prawdziwego adresu IP. <p>
+<li><b>Przeróbka pakietów (<tt>mangle</tt>)</b><br>
+    Ta tabela dotyczy modyfikowania pakietów przekazywanych przez lub wysy³anych
+	z systemu.<p>
+</ul>
+
+Oprócz standardowych ³añcuchów, które s± czê¶ci± ka¿dej tabeli, mo¿na równie¿
+tworzyæ w³asne ³añcuchy, które mog± byæ uruchamiane przez regu³y w ³añcuchach
+wbudowanych. Mo¿e to byæ przydatne do grupowania i udostêpniania zasad, które
+mog± byæ wykorzystane w wielu miejscach. <p>
+
+<h3>G³ówna strona modu³u</h3>
+
+Strona g³ówna tego modu³u zawiera wszystkie ³añcuchy i regu³y z jednej z dostêpnych
+tabel, wybranej z listy w lewym górnym rogu. Poni¿ej znajduje siê sekcja ka¿dego
+³añcucha w bie¿±cej tabeli, ze wszystkimi regu³ami w ka¿dym wybranym ³añcuchu i
+ich opisane warunki. Dla ka¿dego ³añcucha, mo¿na zmieniæ domy¶ln± akcjê,
+korzystaj±c z listy rozwijanej, je¶li ³añcuch jest jednym z tych, wbudowanych do
+tabeli, lub usun±æ go za pomoc± przycisku Usuñ, je¿eli ³añcuch jest zdefiniowany
+przez u¿ytkownika. <p>
+
+W celu edycji dowolnej regu³y w ³añcuchu, kliknij na ni±. Kliknij na strza³ki
+po prawej stronie, aby przenie¶æ w górê lub w dó³ lub kliknij na przycisk
+Dodaj regu³ê, aby dodaæ now±. Dodawanie lub edytowanie regu³ przekieruje ciê
+do strony, na której mo¿esz wybraæ akcjê do ka¿dej regu³y i warunki, w celu
+okre¶lenia kiedy ta akcja ma byæ wykonana. <p>
+
+Na dole strony znajduj± siê przyciski umo¿liwiaj±ce aktywacjê aktualnej
+konfiguracji firewalla przez za³adowanie do kernela polecenia
+<tt>ip6tables-restore</tt>. Poni¿ej jest przycisk, który dzia³a odwrotnie
+tzn. pobiera aktywn± konfiguracjê firewalla z kernela i umo¿liwia jej
+edycjê w tym module. Na koñcu, je¿eli twoja dystrybucja obs³uguje tê
+funkcjê znajduje siê przycisk umo¿liwiaj±cy wybranie, czy firewall
+ma byæ aktywowany w momencie uruchamiania systemu czy nie. <p>
+
+<hr>
+
