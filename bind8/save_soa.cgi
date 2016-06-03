@@ -1,24 +1,28 @@
 #!/usr/local/bin/perl
 # save_soa.cgi
 # Save changes to an SOA record
+use strict;
+use warnings;
+our (%access, %text, %in, %config);
 
 require './bind8-lib.pl';
 &ReadParse();
 &error_setup($text{'master_err2'});
-$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
-$dom = $zone->{'name'};
+my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+my $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
 $access{'ro'} && &error($text{'master_ero'});
 $access{'params'} || &error($text{'master_esoacannot'});
 
 # Get the SOA and file
-@recs = &read_zone_file($zone->{'file'}, $dom);
-foreach $r (@recs) {
+my @recs = &read_zone_file($zone->{'file'}, $dom);
+my $soa;
+foreach my $r (@recs) {
 	$soa = $r if ($r->{'type'} eq "SOA");
 	}
 $soa || &error($text{'master_esoagone'});
-$file = $soa->{'file'};
+my $file = $soa->{'file'};
 
 # check inputs
 &valdnsname($in{'master'}, 0, $in{'origin'}) ||
@@ -41,9 +45,9 @@ $in{'defttl_def'} || $in{'defttl'} =~ /^\d+$/ ||
 
 &lock_file(&make_chroot($file));
 @recs = &read_zone_file($file, $in{'origin'});
-$old = $recs[$in{'num'}];
+my $old = $recs[$in{'num'}];
 # already set serial if no acl allow it to update or update is disabled
-$serial = $old->{'values'}->[2];
+my $serial = $old->{'values'}->[2];
 if ($config{'updserial_on'}) {
 	# automatically handle serial numbers ?
 	$serial = &compute_serial($old->{'values'}->[2]);
@@ -52,7 +56,7 @@ else {
 	$in{'serial'} =~ /^\d+$/ || &error($text{'master_eserial'});
 	$serial = $in{'serial'};
 	}
-$vals = "$in{'master'} $in{'email'} (\n".
+my $vals = "$in{'master'} $in{'email'} (\n".
 	"\t\t\t$serial\n".
 	"\t\t\t$in{'refresh'}$in{'refunit'}\n".
 	"\t\t\t$in{'retry'}$in{'retunit'}\n".
@@ -61,7 +65,7 @@ $vals = "$in{'master'} $in{'email'} (\n".
 &modify_record($file, $old, $old->{'name'}, $old->{'ttl'},
 	       $old->{'class'}, "SOA", $vals);
 
-($defttl) = grep { $_->{'defttl'} } @recs;
+my ($defttl) = grep { $_->{'defttl'} } @recs;
 if (!$defttl && !$in{'defttl_def'}) {
 	&create_defttl($file, $in{'defttl'}.$in{'defttlunit'});
 	}
