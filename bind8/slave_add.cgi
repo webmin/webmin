@@ -45,6 +45,7 @@ $add_error_msg = join("", @_);
 $conf = &get_config();
 %zmap = ( );
 @zoneconfs = &find("zone", $conf);
+@views = &find("view", $conf);
 foreach $v (@views) {
 	push(@zoneconfs, &find("zone", $v->{'members'}));
 	}
