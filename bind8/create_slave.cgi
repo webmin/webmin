@@ -90,7 +90,7 @@ elsif ($in{'file_def'} == 2) {
 	}
 if ($file) {
 	my $ZONE;
-	&open_tempfile($ZONE, ">", &make_chroot($file), 1, 1) ||
+	&open_tempfile($ZONE, ">". &make_chroot($file), 1, 1) ||
 		&error(&text('create_efile3', $file, $!));
 	&close_tempfile($ZONE);
 	&set_ownership(&make_chroot($file));

@@ -1,6 +1,9 @@
 #!/usr/local/bin/perl
 # save_files.cgi
 # Save global files options
+use strict;
+use warnings;
+our (%access, %text, %in, %config);
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'files_ecannot'});
@@ -8,8 +11,8 @@ $access{'defaults'} || &error($text{'files_ecannot'});
 &ReadParse();
 
 &lock_file(&make_chroot($config{'named_conf'}));
-$conf = &get_config();
-$options = &find("options", $conf);
+my $conf = &get_config();
+my $options = &find("options", $conf);
 &save_opt("statistics-file", \&file_check, $options, 1);
 &save_opt("dump-file", \&file_check, $options, 1);
 &save_opt("pid-file", \&file_check, $options, 1);

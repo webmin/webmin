@@ -1,6 +1,9 @@
 #!/usr/local/bin/perl
 # save_forwarding.cgi
 # Save global forwarding options
+use strict;
+use warnings;
+our (%access, %text, %config);
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'forwarding_ecannot'});
@@ -8,8 +11,8 @@ $access{'defaults'} || &error($text{'forwarding_ecannot'});
 &ReadParse();
 
 &lock_file(&make_chroot($config{'named_conf'}));
-$conf = &get_config();
-$options = &find("options", $conf);
+my $conf = &get_config();
+my $options = &find("options", $conf);
 &save_forwarders('forwarders', $options, 1);
 &save_choice('forward', $options, 1);
 &save_opt('max-transfer-time-in', \&check_mins, $options, 1);

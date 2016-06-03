@@ -1,13 +1,16 @@
 #!/usr/local/bin/perl
 # save_view.cgi
 # Update an existing view
+use strict;
+use warnings;
+our (%access, %text, %in);
 
 require './bind8-lib.pl';
 &ReadParse();
 &error_setup($text{'view_err'});
-$pconf = &get_config_parent();
-$conf = $pconf->{'members'};
-$view = $conf->[$in{'index'}];
+my $pconf = &get_config_parent();
+my $conf = $pconf->{'members'};
+my $view = $conf->[$in{'index'}];
 $access{'views'} || &error($text{'view_ecannot'});
 &can_edit_view($view) || &error($text{'view_ecannot'});
 $access{'ro'} && &error($text{'view_ecannot'});
@@ -24,6 +27,7 @@ $access{'ro'} && &error($text{'view_ecannot'});
 if ($in{'transfer-source'})
 {
         &check_ipaddress($in{'transfer-source'}) || &error(&text('net_eaddr', $in{'transfer-source'}));
+        my @tvals;
         push(@tvals, $in{'transfer-source'});
         if (@tvals)
         {
