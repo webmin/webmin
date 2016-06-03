@@ -1,5 +1,10 @@
 #!/usr/local/bin/perl
 # Add lookaside and trusted key records for ICS's DLV zone
+use strict;
+use warnings;
+our (%access, %text, %config);
+our $dnssec_dlv_zone;
+our @dnssec_dlv_key;
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'trusted_ecannot'});
@@ -7,9 +12,9 @@ $access{'defaults'} || &error($text{'trusted_ecannot'});
 &ReadParse();
 
 &lock_file(&make_chroot($config{'named_conf'}));
-$parent = &get_config_parent();
-$conf = $parent->{'members'};
-$options = &find("options", $conf);
+my $parent = &get_config_parent();
+my $conf = $parent->{'members'};
+my $options = &find("options", $conf);
 
 # Enable DNSSEC
 &save_directive($options, "dnssec-enable",
@@ -28,7 +33,7 @@ if (&supports_dnssec_client() == 2) {
 		1);
 
 # ICS's key
-$trusted = &find("trusted-keys", $conf);
+my $trusted = &find("trusted-keys", $conf);
 if (!$trusted) {
 	# Need to create block
 	$trusted = { 'name' => 'trusted-keys',
