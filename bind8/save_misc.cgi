@@ -1,6 +1,9 @@
 #!/usr/local/bin/perl
 # save_misc.cgi
 # Save global miscellaneous options
+use strict;
+use warnings;
+our (%access, %text, %in, %config);
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'misc_ecannot'});
@@ -8,8 +11,8 @@ $access{'defaults'} || &error($text{'misc_ecannot'});
 &ReadParse();
 
 &lock_file(&make_chroot($config{'named_conf'}));
-$conf = &get_config();
-$options = &find("options", $conf);
+my $conf = &get_config();
+my $options = &find("options", $conf);
 &save_opt("coresize", \&size_check, $options, 1);
 &save_opt("datasize", \&size_check, $options, 1);
 &save_opt("files", \&files_check, $options, 1);
