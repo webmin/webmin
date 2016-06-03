@@ -1,14 +1,18 @@
 #!/usr/local/bin/perl
 # Add a record to multiple domains
+use strict;
+use warnings;
+our (%access, %text, %in);
 
 require './bind8-lib.pl';
 &ReadParse();
 &error_setup($text{'rmass_err'});
 
 # Get the zones
-foreach $d (split(/\0/, $in{'d'})) {
-	($zonename, $viewidx) = split(/\s+/, $d);
-	$zone = &get_zone_name_or_error($zonename, $viewidx);
+my @zones;
+foreach my $d (split(/\0/, $in{'d'})) {
+	my ($zonename, $viewidx) = split(/\s+/, $d);
+	my $zone = &get_zone_name_or_error($zonename, $viewidx);
 	$zone || &error($text{'umass_egone'});
 	&can_edit_zone($zone) ||
 		&error($text{'master_edelete'});
@@ -19,6 +23,7 @@ $access{'ro'} && &error($text{'master_ero'});
 # Validate inputs
 &valdnsname($in{'name'}) || $in{'name'} eq '@' || &error($text{'rmass_ename'});
 $in{'name'} =~ /\.$/ && &error($text{'rmass_ename2'});
+my $mxpri;
 if ($in{'type'} eq 'A') {
 	&check_ipaddress($in{'value'}) ||
 		&error(&text('edit_eip', $in{'value'}));
@@ -53,17 +58,18 @@ $in{'ttl_def'} || $in{'ttl'} =~ /^\d+$/ ||
 # Do each one
 &ui_print_unbuffered_header(undef, $text{'rmass_title'}, "");
 
-foreach $zi (@zones) {
+foreach my $zi (@zones) {
 	print &text('rmass_doing', "<tt>$zi->{'name'}</tt>"),"<br>\n";
 	if ($zi->{'type'} ne 'master') {
 		# Skip - not a master zone
 		print $text{'umass_notmaster'},"<p>\n";
 		next;
 		}
-	$fullname = $in{'name'} eq '@' ?
+	my $fullname = $in{'name'} eq '@' ?
 			$zi->{'name'}."." :
 			$in{'name'}.".".$zi->{'name'}.".";
-	@recs = &read_zone_file($zi->{'file'}, $zi->{'name'});
+	my @recs = &read_zone_file($zi->{'file'}, $zi->{'name'});
+	my $clash;
 	if ($in{'type'} eq 'CNAME' || $in{'clash'}) {
 		# Check if a record with the same name exists
 		if ($in{'type'} eq 'MX') {
@@ -97,7 +103,10 @@ foreach $zi (@zones) {
 		       $in{'type'}, $in{'value'});
 	&bump_soa_record($zi->{'file'}, \@recs);
 	eval {
+		# XXX Can't we use autodie or something standard here?
+		no warnings;
 		local $main::error_must_die = 1;
+		use warnings;
 		&sign_dnssec_zone_if_key($zi, \@recs);
 		};
 	if ($@) {

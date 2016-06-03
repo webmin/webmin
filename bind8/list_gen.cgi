@@ -1,20 +1,24 @@
 #!/usr/local/bin/perl
 # list_gen.cgi
 # Display $generate entries
+use strict;
+use warnings;
+our(%access, %text, %in); 
+our $bind_version;
 
 require './bind8-lib.pl';
 &ReadParse();
 $access{'gen'} || &error($text{'gen_ecannot'});
 
-$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
-$dom = $zone->{'name'};
+my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+my $dom = $zone->{'name'};
 &can_edit_zone($zone) || &error($text{'master_ecannot'});
 
-$desc = &text('recs_header', &ip6int_to_net(&arpa_to_ip($dom)));
+my $desc = &text('recs_header', &ip6int_to_net(&arpa_to_ip($dom)));
 &ui_print_header($desc, $text{'gen_title'}, "",
 		 undef, undef, undef, undef, &restart_links($zone));
 
-@gens = grep { $_->{'generate'} } &read_zone_file($zone->{'file'}, $dom);
+my @gens = grep { $_->{'generate'} } &read_zone_file($zone->{'file'}, $dom);
 print "$text{'gen_desc'}<p>\n";
 print &ui_form_start("save_gen.cgi", "post");
 print &ui_hidden("zone", $in{'zone'});
@@ -23,17 +27,18 @@ print &ui_hidden("view", $in{'view'});
 print &ui_columns_start([ $text{'gen_type'}, $text{'gen_range'},
 			  $text{'gen_name'}, $text{'gen_value'},
 			  $text{'gen_cmt'} ], 100);
-$i = 0;
+my @types;
 if ($bind_version >= 9) {
 	@types = ( 'PTR', 'CNAME', 'NS', 'A', 'AAAA', 'DNAME' );
 	}
 else {
 	@types = ( 'PTR', 'CNAME', 'NS' );
 	}
-foreach $g (@gens, { }) {
-	@gv = @{$g->{'generate'}};
-	@cols = ( );
-	local @r = $gv[0] =~ /^(\d+)-(\d+)(\/(\d+))?$/ ? ( $1, $2, $4 ) : ( );
+my $i = 0;
+foreach my $g (@gens, { }) {
+	my @gv = $g->{'generate'};
+	my @cols = ( );
+	my @r = $gv[0] =~ /^(\d+)-(\d+)(\/(\d+))?$/ ? ( $1, $2, $4 ) : ( );
 	push(@cols, &ui_select("type_$i", uc($gv[2]),
 		[ [ '', '&nbsp;' ],
 		  map { uc($_) } @types ]));
@@ -47,7 +52,7 @@ foreach $g (@gens, { }) {
 	$i++;
 	}
 print &ui_columns_end();
-@buts = ( [ undef, $text{'save'} ] );
+my @buts = ( [ undef, $text{'save'} ] );
 if (@gens) {
 	push(@buts, [ "show", $text{'gen_show'} ]);
 	}

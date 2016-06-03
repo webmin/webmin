@@ -1,33 +1,36 @@
 #!/usr/local/bin/perl
 # Display the signing key for a zone, or offer to set one up
+use strict;
+use warnings;
+our (%access, %in, %text, $in);
 
 require './bind8-lib.pl';
 &ReadParse();
-$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
-$dom = $zone->{'name'};
+my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+my $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
 $access{'dnssec'} || &error($text{'dnssec_ecannot'});
-$desc = &ip6int_to_net(&arpa_to_ip($dom));
+my $desc = &ip6int_to_net(&arpa_to_ip($dom));
 
 &ui_print_header($desc, $text{'zonekey_title'}, "",
 		 undef, undef, undef, undef, &restart_links($zone));
 
 # Check if the zone already has a key, from a DNSKEY record
-@keyrecs = &get_dnskey_record($zone);
+my @keyrecs = &get_dnskey_record($zone);
 if (@keyrecs) {
 	# Tell the user we already have it
 	print &text('zonekey_already'),"\n";
 	print $text{'zonekey_webmin'},"\n";
 	print "<p>\n";
 
-	@keys = &get_dnssec_key($zone);
-	foreach $key (@keys) {
+	my @keys = &get_dnssec_key($zone);
+	foreach my $key (@keys) {
 		# Collapsible section for key details
-		$kt = $key->{'ksk'} ? 'ksk' : 'zone';
-		($keyrec) = grep { $_->{'values'}->[0] ==
+		my $kt = $key->{'ksk'} ? 'ksk' : 'zone';
+		my ($keyrec) = grep { $_->{'values'}->[0] ==
 				 ($key->{'ksk'} ? 257 : 256) } @keyrecs;
-		$keyline = join(" ", $keyrec->{'name'}, $keyrec->{'class'},
+		my $keyline = join(" ", $keyrec->{'name'}, $keyrec->{'class'},
 				     $keyrec->{'type'}, @{$keyrec->{'values'}});
 		print &ui_hidden_start($text{'zonekey_expand'.$kt},
 				       $kt, 0, "edit_zonekey.cgi?$in");
@@ -49,7 +52,7 @@ if (@keyrecs) {
 		print &text('zonekey_noprivate'),"<p>\n";
 		}
 
-	$ds = &get_ds_record($zone);
+	my $ds = &get_ds_record($zone);
 	if ($ds) {
 		print $text{'zonekey_ds'},"<br>\n";
 		print &ui_textarea("ds", $ds."\n", 2, 80, "off", 0,

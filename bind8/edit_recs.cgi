@@ -1,25 +1,29 @@
 #!/usr/local/bin/perl
 # edit_recs.cgi
 # Display records of some type from some domain
+use strict;
+use warnings;
+our (%access, %text, %in, %config, %is_extra);
 
 require './bind8-lib.pl';
 &ReadParse();
-$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
-$dom = $zone->{'name'};
+my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+my $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'recs_ecannot'});
 &can_edit_type($in{'type'}, \%access) ||
 	&error($text{'recs_ecannottype'});
-$desc = &text('recs_header', &ip6int_to_net(&arpa_to_ip($dom)));
-$typedesc = $text{"recs_$in{'type'}"} || $in{'type'};
+my $desc = &text('recs_header', &ip6int_to_net(&arpa_to_ip($dom)));
+my $typedesc = $text{"recs_$in{'type'}"} || $in{'type'};
 &ui_print_header($desc, &text('recs_title', $typedesc), "",
 		 undef, undef, undef, undef, &restart_links($zone));
 
 # Show form for adding a record
-$type = $zone->{'type'};
-$file = $zone->{'file'};
-$form = 0;
-$newname = $in{'newname'} || ($in{'type'} eq 'DMARC' ? '_dmarc' : undef);
+my $type = $zone->{'type'};
+my $file = $zone->{'file'};
+my $form = 0;
+my $shown_create_form;
+my $newname = $in{'newname'} || ($in{'type'} eq 'DMARC' ? '_dmarc' : undef);
 if (!$access{'ro'} && $type eq 'master' && $in{'type'} ne 'ALL') {
 	&record_input($in{'zone'}, $in{'view'}, $in{'type'}, $file, $dom,
 		      undef, undef, $newname, $in{'newvalue'});
@@ -27,6 +31,8 @@ if (!$access{'ro'} && $type eq 'master' && $in{'type'} ne 'ALL') {
 	$shown_create_form = 1;
 	}
 
+my @allrecs;
+my $nosearch;
 if (!$config{'largezones'} || $in{'search'}) {
 	# Get all records
 	@allrecs = grep { !$_->{'generate'} && !$_->{'defttl'} }
@@ -47,16 +53,17 @@ if (!$nosearch) {
 	$form++;
 	}
 
+my @recs;
 if (!$config{'largezones'} || $in{'search'}) {
 	# Get all records
 	if ($in{'search'}) {
 		# Limit to records matching some search
-		foreach $r (@allrecs) {
+		foreach my $r (@allrecs) {
 			if ($r->{'name'} =~ /\Q$in{'search'}\E/i) {
 				push(@recs, $r);
 				}
 			else {
-				foreach $v (@{$r->{'values'}}) {
+				foreach my $v (@{$r->{'values'}}) {
 					if ($v =~ /\Q$in{'search'}\E/i) {
 						push(@recs, $r);
 						last;
@@ -79,14 +86,15 @@ else {
 	@recs = grep { $_->{'type'} eq $in{'type'} } @recs
 	}
 
+my %hmap;
 if (@recs) {
 	@recs = &sort_records(@recs);
-	foreach $v (keys %text) {
+	foreach my $v (keys %text) {
 		if ($v =~ /^value_([A-Z0-9]+)(\d+)/) {
 			$hmap{$1}->[$2-1] = $text{$v};
 			}
 		}
-	@links = ( );
+	my @links = ( );
 	if (!$access{'ro'} && $type eq 'master') {
 		print &ui_form_start("delete_recs.cgi", "post");
 		print &ui_hidden("zone", $in{'zone'}),"\n";
@@ -127,11 +135,10 @@ elsif (!$shown_create_form) {
 
 sub recs_table
 {
-my ($r, $i, $j, $k, $h);
 my $rv;
 
 # Generate header, with correct columns for record type
-local (@hcols, @tds);
+my (@hcols, @tds);
 if (!$access{'ro'} && $type eq 'master') {
 	push(@hcols, "");
 	push(@tds, "width=5");
@@ -139,8 +146,8 @@ if (!$access{'ro'} && $type eq 'master') {
 push(@hcols, &ui_link("edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'type'}&sort=1", ($in{'type'} eq "PTR" ? $text{'recs_addr'} : $text{'recs_name'}) ) );
 push(@hcols, &ui_link("edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'type'}&sort=5", $text{'recs_type'}) ) if ($in{'type'} eq "ALL");
 push(@hcols, $text{'recs_ttl'});
-@hmap = @{$hmap{$in{'type'}}};
-foreach $h (@hmap) {
+my @hmap = @{$hmap{$in{'type'}}};
+foreach my $h (@hmap) {
 	push(@hcols, &ui_link("edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'type'}&sort=2",$h) );
 	}
 if ($in{'type'} eq "ALL" || $is_extra{$in{'type'}}) {
@@ -152,17 +159,18 @@ if ($config{'allow_comments'} && $in{'type'} ne "WKS") {
 $rv .= &ui_columns_start(\@hcols, 100, 0, \@tds);
 
 # Show the actual records
-for($i=0; $i<@_; $i++) {
-	$r = $_[$i];
+for(my $i=0; $i<@_; $i++) {
+	my $r = $_[$i];
+	my $name;
 	if ($in{'type'} eq "PTR") {
 		$name = &ip6int_to_net(&arpa_to_ip($r->{'name'}));
 		}
 	else {
 		$name = $r->{'name'};
 		}
-	local @cols;
+	my @cols;
 	$name = &html_escape($name);
-	$id = &record_id($r);
+	my $id = &record_id($r);
 	if (!$access{'ro'} && $type eq 'master') {
 		push(@cols, &ui_link("edit_record.cgi?zone=$in{'zone'}&id=".&urlize($id)."&num=$r->{'num'}&type=$in{'type'}&sort=$in{'sort'}&view=$in{'view'}", $name) );
 		}
@@ -180,13 +188,13 @@ for($i=0; $i<@_; $i++) {
 		if ($r->{'ttl'} =~ s/W//i) { $r->{'ttl'} *= 604800; }
 		}
 	push(@cols, $r->{'ttl'} ? &html_escape($r->{'ttl'}) : $text{'default'});
-	for($j=0; $j<@hmap; $j++) {
-		local $v;
+	for(my $j=0; $j<@hmap; $j++) {
+		my $v;
 		if ($in{'type'} eq "RP" && $j == 0) {
 			$v .= &dotted_to_email($r->{'values'}->[$j]);
 			}
 		elsif ($in{'type'} eq "WKS" && $j == @hmap-1) {
-			for($k=$j; $r->{'values'}->[$k]; $k++) {
+			for(my $k=$j; $r->{'values'}->[$k]; $k++) {
 				$v .= $r->{'values'}->[$k];
 				$v .= ' ';
 				}
@@ -207,7 +215,7 @@ for($i=0; $i<@_; $i++) {
 		push(@cols, $v);
 		}
 	if ($in{'type'} eq "ALL" || $is_extra{$in{'type'}}) {
-		$joined = join(" ", @{$r->{'values'}});
+		my $joined = join(" ", @{$r->{'values'}});
 		if (length($joined) > 80) {
 			$joined = substr($joined, 0, 80)." ...";
 			}

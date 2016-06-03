@@ -1,6 +1,9 @@
 #!/usr/local/bin/perl
 # save_misc.cgi
 # Save global miscellaneous options
+use strict;
+use warnings;
+our (%access, %text, %in, %config);
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'misc_ecannot'});
@@ -8,7 +11,7 @@ $access{'defaults'} || &error($text{'misc_ecannot'});
 &ReadParse();
 
 &lock_file(&make_chroot($config{'named_conf'}));
-$conf = &get_config();
+my $conf = &get_config();
 my $controls = &find("controls", $conf);
 
 if ($in{'inet_def'} && $in{'unix_def'}) {
@@ -27,7 +30,7 @@ if ($in{'inet_def'} && $in{'unix_def'}) {
     my $port=$in{'inetport'};
     $port =~ /^\d+$/ || &error($text{'controls_eport'});
     my @allows=();
-    foreach $allow (split(/\s+/, $in{'inetallow'})) {
+    foreach my $allow (split(/\s+/, $in{'inetallow'})) {
       # Need to check acl is OK!
       push(@allows, { 'name' => $allow });
     }

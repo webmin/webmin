@@ -1,25 +1,23 @@
 #!/usr/local/bin/perl
 # Display the signing key for a zone, or offer to set one up
+use strict;
+use warnings;
+our (%access, %text, %in, %config, $in);
 
 require './bind8-lib.pl';
 
-local $zone;
-local $dom;
-local $desc;
-local $rrr;
-
 &ReadParse();
-$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
-$dom = $zone->{'name'};
+my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+my $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
 $access{'dnssec'} || &error($text{'dnssec_ecannot'});
-$desc = &ip6int_to_net(&arpa_to_ip($dom));
+my $desc = &ip6int_to_net(&arpa_to_ip($dom));
 
 &ui_print_header($desc, $text{'dt_zone_title'}, "",
 		 undef, undef, undef, undef, &restart_links($zone));
 
-
+my $rrr;
 # Check if zone is currently being managed by dnssec-tools
 if (&have_dnssec_tools_support()) {
 	my $rrfile = $config{"dnssectools_rollrec"};
@@ -35,9 +33,9 @@ if (&have_dnssec_tools_support()) {
 		print &ui_hidden_start($text{'dt_zone_expandsep'},
 							   "sep", 0, "edit_zonedt.cgi?$in");
 		my @keys = &get_dnskey_rrset($zone);
-		foreach $key (@keys) {
+		foreach my $key (@keys) {
 			# Check if this is a KSK
-		my $ksk = $key->{'values'}->[0] % 2 ? 1 : 0;
+			my $ksk = $key->{'values'}->[0] % 2 ? 1 : 0;
 	
 			# Collapsible section for KSK details
 			if ($ksk) {

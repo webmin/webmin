@@ -1,24 +1,27 @@
 #!/usr/local/bin/perl
 # move_zone.cgi
 # Move a zone to a different view
+use strict;
+use warnings;
+our (%text, %in, %config);
 
 require './bind8-lib.pl';
 &ReadParse();
 
-$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
-$z = &zone_to_config($zone);
-$zconf = $z->{'members'};
-$dom = $zone->{'name'};
+my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+my $z = &zone_to_config($zone);
+my $zconf = $z->{'members'};
+my $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
 
 # Get the object for the new view
-$pconf = &get_config_parent();
-$conf = $pconf->{'members'};
-$nconf = $conf->[$in{'newview'}];
+my $pconf = &get_config_parent();
+my $conf = $pconf->{'members'};
+my $nconf = $conf->[$in{'newview'}];
 
 # If the zone is in a view currently, get it too
-$oldpconf = $zone->{'viewindex'} ? $conf->[$zone->{'viewindex'}] : $pconf;
+my $oldpconf = $zone->{'viewindex'} ? $conf->[$zone->{'viewindex'}] : $pconf;
 
 $in{'view'} eq $in{'newview'} && &error($text{'master_emove'});
 &can_edit_view($nconf) || &error($text{'master_eviewcannot'});

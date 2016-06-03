@@ -1,14 +1,18 @@
 #!/usr/local/bin/perl
 # Delete all records of some type with some name
+use strict;
+use warnings;
+our (%access, %text, %in);
 
 require './bind8-lib.pl';
 &ReadParse();
 &error_setup($text{'umass_err'});
 
 # Get the zones
-foreach $d (split(/\0/, $in{'d'})) {
-	($zonename, $viewidx) = split(/\s+/, $d);
-	$zone = &get_zone_name_or_error($zonename, $viewidx);
+my @zones;
+foreach my $d (split(/\0/, $in{'d'})) {
+	my ($zonename, $viewidx) = split(/\s+/, $d);
+	my $zone = &get_zone_name_or_error($zonename, $viewidx);
 	$zone || &error($text{'umass_egone'});
 	&can_edit_zone($zone) ||
 		&error($text{'master_edelete'});
@@ -20,20 +24,20 @@ $in{'name_def'} || $in{'name'} || &error($text{'rdmass_ename'});
 # Do each one
 &ui_print_unbuffered_header(undef, $text{'rdmass_title'}, "");
 
-foreach $zi (@zones) {
+foreach my $zi (@zones) {
 	print &text('rdmass_doing', "<tt>$zi->{'name'}</tt>"),"<br>\n";
 	if ($zi->{'type'} ne 'master') {
 		# Skip - not a master zone
 		print $text{'umass_notmaster'},"<p>\n";
 		next;
 		}
-	$rcount = 0;
-	@recs = &read_zone_file($zi->{'file'}, $zi->{'name'});
-	$realfile = &make_chroot(&absolute_path($zi->{'file'}));
-	foreach $r (reverse(@recs)) {
-		$shortname = $r->{'name'};
+	my $rcount = 0;
+	my @recs = &read_zone_file($zi->{'file'}, $zi->{'name'});
+	my $realfile = &make_chroot(&absolute_path($zi->{'file'}));
+	foreach my $r (reverse(@recs)) {
+		my $shortname = $r->{'name'};
 		$shortname =~ s/\.$zi->{'name'}\.$//;
-		$v = join(" ", @{$r->{'values'}});
+		my $v = join(" ", @{$r->{'values'}});
 		if ($r->{'type'} eq $in{'type'} &&
 		    ($shortname eq $in{'name'} || $in{'name_def'}) &&
 		    ($v eq $in{'value'} || $in{'value_def'})) {
