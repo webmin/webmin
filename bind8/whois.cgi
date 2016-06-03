@@ -1,25 +1,28 @@
 #!/usr/local/bin/perl
 # whois.cgi
 # Call whois to get zone info
+use strict;
+use warnings;
+our (%access, %text, %in, %config);
 
 require './bind8-lib.pl';
 &ReadParse();
 $access{'whois'} || &error($text{'whois_ecannot'});
 
-$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
-$dom = $zone->{'name'};
+my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+my $dom = $zone->{'name'};
 &can_edit_zone($zone) || &error($text{'master_ecannot'});
 
-$tv = $zone->{'type'};
+my $tv = $zone->{'type'};
 $dom =~ s/\.$//;
-$desc = &ip6int_to_net(&arpa_to_ip($dom));
+my $desc = &ip6int_to_net(&arpa_to_ip($dom));
 &ui_print_header($desc, $text{'whois_title'}, "",
 		 undef, undef, undef, undef, &restart_links($zone));
 
-$qdom = quotemeta($dom);
-$cmd = "$config{'whois_cmd'} $qdom";
-$pcmd = "$config{'whois_cmd'} $dom";
-$out = `$cmd 2>&1`;
+my $qdom = quotemeta($dom);
+my $cmd = "$config{'whois_cmd'} $qdom";
+my $pcmd = "$config{'whois_cmd'} $dom";
+my $out = `$cmd 2>&1`;
 if ($out =~ /whois\s+server:\s+(\S+)/i) {
 	$cmd = "$config{'whois_cmd'} -h ".quotemeta($1)." $qdom";
 	$pcmd = "$config{'whois_cmd'} -h $1 $dom";
