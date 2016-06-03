@@ -150,7 +150,9 @@ sub get_hardware_time
 my $flags = &get_hwclock_flags();
 $flags ||= "";
 $get_hardware_time_error = undef;
+&clean_language();
 my $out = &backquote_command("hwclock $flags 2>/dev/null");
+&reset_environment();
 if ($out =~ /^(\S+)\s+(\S+)\s+(\d+)\s+(\d+):(\d+):(\d+)\s+(\d+)\s+/) {
 	return ($6, $5, $4, $3, &month_to_number($2), $7-1900, &weekday_to_number($1));
 	}
