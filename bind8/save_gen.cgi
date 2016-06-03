@@ -1,30 +1,36 @@
 #!/usr/local/bin/perl
 # save_gen.cgi
 # Save $generate records
+use strict;
+use warnings;
+our (%access, %text, %in);
+# From records-lib.pl
+our ($uscore, $star);
 
 require './bind8-lib.pl';
 &ReadParse();
 $access{'gen'} || &error($text{'gen_ecannot'});
 
-$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
-$dom = $zone->{'name'};
+my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+my $dom = $zone->{'name'};
 &can_edit_zone($zone) || &error($text{'master_ecannot'});
 
-$file = $zone->{'file'};
-@recs = &read_zone_file($file, $dom);
-@gens = grep { $_->{'generate'} } @recs;
+my $file = $zone->{'file'};
+my @recs = &read_zone_file($file, $dom);
+my @gens = grep { $_->{'generate'} } @recs;
 
 if ($in{'show'}) {
 	# Just show what would be generated
-	$desc = &text('recs_header', &ip6int_to_net(&arpa_to_ip($dom)));
+	my $desc = &text('recs_header', &ip6int_to_net(&arpa_to_ip($dom)));
 	&ui_print_header($desc, $text{'gen_title2'}, "",
 			 undef, undef, undef, undef, &restart_links($zone));
 
 	print &ui_columns_start([ $text{'recs_name'}, $text{'recs_type'},
 				  $text{'recs_ttl'}, $text{'recs_vals'},
 				  $text{'gen_raw'} ], 100);
-	foreach $g (@gens) {
-		@gv = @{$g->{'generate'}};
+	foreach my $g (@gens) {
+		my @gv = @{$g->{'generate'}};
+		my ($start, $end, $skip);
 		if ($gv[0] =~ /^(\d+)-(\d+)\/(\d+)$/) {
 			$start = $1; $end = $2; $skip = $3;
 			}
@@ -32,20 +38,20 @@ if ($in{'show'}) {
 			$start = $1; $end = $2; $skip = 1;
 			}
 		else { next; }
-		for($i=$start; $i<=$end; $i+=$skip) {
-			$lhs = $gv[1];
+		for(my $i=$start; $i<=$end; $i+=$skip) {
+			my $lhs = $gv[1];
 			$lhs =~ s/\$\$/\0/g;
 			$lhs =~ s/\$/$i/g;
 			$lhs =~ s/\0/\$/g;
-			$lhsfull = $lhs =~ /\.$/ ? $lhs :
+			my $lhsfull = $lhs =~ /\.$/ ? $lhs :
 				    $dom eq "." ? "$lhs." : "$lhs.$dom";
 
-			$rhs = $gv[3];
+			my $rhs = $gv[3];
 			$rhs =~ s/\$\$/\0/g;
 			#$rhs =~ s/\$/$i/g;
 			$rhs =~ s/(\$(\{[^\}]*\})?)/&expand_mods($i,$2)/ge;
 			$rhs =~ s/\0/\$/g;
-			$rhsfull = &check_ipaddress($rhs) ? $rhs :
+			my $rhsfull = &check_ipaddress($rhs) ? $rhs :
 				   $rhs =~ /\.$/ ? $rhs :
 				    $dom eq "." ? "$rhs." : "$rhs.$dom";
 
@@ -64,9 +70,9 @@ if ($in{'show'}) {
 
 # Parse and validate inputs
 &error_setup($text{'gen_err'});
-for($i=0; defined($in{"type_$i"}); $i++) {
+for(my $i=0; defined($in{"type_$i"}); $i++) {
 	if ($in{"type_$i"}) {
-		local @gv;
+		my @gv;
 		$in{"start_$i"} =~ /^\d+$/ ||
 			&error(&text('gen_estart', $i+1));
 		$in{"stop_$i"} =~ /^\d+$/ ||
@@ -97,7 +103,7 @@ for($i=0; defined($in{"type_$i"}); $i++) {
 	else {
 		if ($i < @gens) {
 			&delete_generator($gens[$i]->{'file'}, $gens[$i]);
-			foreach $g (@gens) {
+			foreach my $g (@gens) {
 				if ($g->{'line'} > $gens[$i]->{'line'}) {
 					$g->{'line'}--;
 					}
