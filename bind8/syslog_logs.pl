@@ -1,4 +1,7 @@
 # Contains a function to supply the syslog module with extra logs
+use strict;
+use warnings;
+our (%text);
 
 do 'bind8-lib.pl';
 
@@ -6,13 +9,13 @@ do 'bind8-lib.pl';
 # Returns a list of structures containing extra log files known to this module
 sub syslog_getlogs
 {
-local $conf = &get_config();
-local $logging = &find("logging", $conf);
+my $conf = &get_config();
+my $logging = &find("logging", $conf);
 return ( ) if (!$logging);
-local @chans = &find("channel", $logging->{'members'});
-local @rv;
+my @chans = &find("channel", $logging->{'members'});
+my @rv;
 foreach my $c (@chans) {
-	local $file = &find("file", $c->{'members'});
+	my $file = &find("file", $c->{'members'});
 	if ($file && $file->{'values'}->[0] =~ /^\//) {
 		push(@rv, { 'file' => $file->{'values'}->[0],
 			    'active' => 1,
