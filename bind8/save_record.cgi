@@ -132,7 +132,7 @@ if ($in{'type'} eq "PTR" && $reverse) {
 		$name = &net_to_ip6int($in{'name'});
 		}
 	&valname($in{'value0'}) ||
-		&error(&text('edit_ehost', $vals[0]));
+		&error(&text('edit_ehost', $vals));
 	if ($in{'value0'} !~ /\.$/) { $vals .= "."; }
 	}
 else {
