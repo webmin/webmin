@@ -646,8 +646,8 @@ if (&check_ip6address($addr)) {
 return $addr;
 }
 
-my $uscore = $config{'allow_underscore'} ? "_" : "";
-my $star = $config{'allow_wild'} ? "\\*" : "";
+our $uscore = $config{'allow_underscore'} ? "_" : "";
+our $star = $config{'allow_wild'} ? "\\*" : "";
 
 # valdnsname(name, wild, origin)
 sub valdnsname
