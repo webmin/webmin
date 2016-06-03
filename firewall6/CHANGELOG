@@ -1,0 +1,42 @@
+---- Changes since 1.160 ----
+Added button for re-setting the firewall to a default configuration.
+Added module configuration options for commands to run before and after the firewall is applied.
+The firewall configuration can now be copied automatically to multiple hosts in a cluster, and will be applied on all hosts when the the Apply button is clicked. Like other cluster features in Webmin, this requires that the servers be first setup in the Webmin Servers Index module.
+---- Changes since 1.180 ----
+Added button for deleting multiple rules from list.
+Added several new access control options for limiting allowed actions, cluster management, and creation and deletion of chains.
+---- Changes since 1.200 ----
+Additional ip6tables modules can now be specified when editing a rule.
+---- Changes since 1.240 ----
+Protocol numbers can be explicitly entered in a rule, along with the defaults of TCP, UDP and so on.
+---- Changes since 1.260 ----
+Added a Module Config option to have rule comments stored used the --comment ip6tables argument, rather than # comments in the save file.
+---- Changes since 1.270 ----
+The ICMP rejection type is now settable in all valid chains.
+---- Changes since 1.290 ----
+On Debian 3.1 systems, ip6tables rules are saved in /etc/ip6tables.up.rules and activated through /etc/network/interfaces, rather than using an init.d script.
+---- Changes since 1.350 ----
+Added a setup option to configure a firewall for a typical hosting server.
+---- Changes since 1.400 ----
+Show SNAT and masquerade inputs in custom NAT chains.
+---- Changes since 1.440 ----
+DNS queries are now allowed when the firewall is setup for web hosting.
+Rule coments using --comment containing spaces or - are now properly parsed.
+When initializing the firewall, the actual ports for Webmin, Usermin and SSHd are used instead of the standard ports.
+Added an option for the UNTRACKED state in rules.
+---- Changes since 1.450 ----
+Fixed 'Does not equal' option for multiple ports.
+---- Changes since 1.470 ----
+Disallow rules on virtual interfaces, as they don't work.
+---- Changes since 1.490 ----
+Removed invalid "Above" options for packet flow rate.
+---- Changes since 1.500 ----
+Added a button to move rules to another chain.
+Added a button to rename an existing custom chain.
+---- Changes since 1.510 ----
+Better handle the case where a rule has a --comment format description, but # format comments are enabled.
+Added support for physdev module options, for matching based on the bridged interface.
+---- Changes since 1.550 ----
+Added the open-ports.pl command which can be run from the shell to open ports on the firewall.
+---- Changes since 1.630 ----
+Updated all screens to use Webmin's new user interface library, for a more consistent look.

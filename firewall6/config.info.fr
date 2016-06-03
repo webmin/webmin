@@ -1,0 +1,8 @@
+line0=Options configurables,11
+view_condition=Afficher les conditions dans la liste des r&#232;gles?,1,1-Oui,0-Non
+view_comment=Afficher les commentaires dans la liste des r&#232;gles?,1,1-Oui,0-Non
+before_cmd=Commande &#224; lancer avant la modification des r&#232;gles,3,Aucune
+after_cmd=Commande &#224; lancer apr&#232;s la modification des r&#232;gles,3,Aucune
+before_apply_cmd=Commande &#224; lancer avant l'application de la configuration,3,Aucune
+after_apply_cmd=Commande &#224; lancer apr&#232;s l'application de la configuration,3,Aucune
+line1=Configuration du syst&#232;me,11

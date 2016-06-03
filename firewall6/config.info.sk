@@ -1,0 +1,12 @@
+line0=Nastaviteµné mo¾nosti,11
+view_condition=Zobrazi» podmienky v zozname pravidiel?,1,1-Áno,0-Nie
+view_comment=Zobrazi» komentáre v zozname pravidiel?,1,1-Áno,0-Nie
+comment_mod=Komentáre ulo¾i» pomocou,1,0-# komentáre v ulo¾ených súboroch,1-&#45;&#45;voµby komentára
+cluster_mode=Aktualizova» cluster serverov,1,0-Pri ka¾dej zmene,1-Pri aplikovaní konfigurácie
+before_cmd=Príkaz&#44; ktorý sa má spusti» pred zmenou pravidiel,3,®iadny
+after_cmd=Príkaz&#44; ktorý sa má spusti» po zmene pravidiel,3,®iadny
+before_apply_cmd=Príkaz&#44; ktorý sa má spusti» pred aplikovaním konfigurácie,3,®iadny
+after_apply_cmd=Príkaz&#44; ktorý sa má spusti» po zmene konfigurácie,3,®iadny
+line1=Konfigurácia systému,11
+save_file=Umiestnenie súboru s IP tabuµkami,3,Pou¾i» predvolené umiestnenie systému alebo Webminu
+direct=Meni» pravidlá firewallu priamo&#44; namiesto ukladania do súboru?,1,1-Áno,0-Nie
