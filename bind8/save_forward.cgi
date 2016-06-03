@@ -1,18 +1,21 @@
 #!/usr/local/bin/perl
 # save_forward.cgi
 # Save changes to forward zone options in named.conf
+use strict;
+use warnings;
+our (%access, %text, %in);
 
 require './bind8-lib.pl';
 &ReadParse();
 &error_setup($text{'fwd_err'});
 
-$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
-$z = &zone_to_config($zone);
-$zconf = $z->{'members'};
-$dom = $zone->{'name'};
+my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+my $z = &zone_to_config($zone);
+my $zconf = $z->{'members'};
+my $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
-$indent = $zone->{'view'} ? 2 : 1;
+my $indent = $zone->{'view'} ? 2 : 1;
 
 &lock_file(&make_chroot($z->{'file'}));
 $access{'ro'} && &error($text{'master_ero'});
