@@ -35,6 +35,7 @@ my $zone_names_version = 3;
 my @list_zone_names_cache;
 my $slave_error;
 my %lines_count;
+our $dnssec_cron_cmd = "$module_config_directory/resign.pl";
 
 # Where to find root zones file
 my $internic_ftp_host = "rs.internic.net";
@@ -51,8 +52,6 @@ if (open(my $VERSION, "<", "$module_config_directory/version")) {
 else {
 	$bind_version = &get_bind_version();
 	}
-
-my $dnssec_cron_cmd = "$module_config_directory/resign.pl";
 
 # For automatic DLV setup
 my $dnssec_dlv_zone = "dlv.isc.org.";
