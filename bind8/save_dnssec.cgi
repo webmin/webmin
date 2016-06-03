@@ -1,5 +1,11 @@
 #!/usr/local/bin/perl
 # Turn on or off the DNSSEC key rotation cron job
+use strict;
+use warnings;
+our (%access, %text, %in, %config);
+our $dnssec_cron_cmd;
+our $module_name;
+our $module_config_file;
 
 require './bind8-lib.pl';
 &foreign_require("cron", "cron-lib.pl");
@@ -10,7 +16,7 @@ $access{'defaults'} || &error($text{'dnssec_ecannot'});
 $in{'period'} =~ /^[1-9]\d*$/ || &error($text{'dnssec_eperiod'});
 
 # Create or delete the cron job
-$job = &get_dnssec_cron_job();
+my $job = &get_dnssec_cron_job();
 if ($job && !$in{'enabled'}) {
 	# Turn off cron job
 	&lock_file(&cron::cron_file($job));
