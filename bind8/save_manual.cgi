@@ -20,7 +20,7 @@ if ($in{'file'} eq $files[0]) {
 
 # Write to it
 my $DATA;
-&open_lock_tempfile($DATA, ">", &make_chroot($in{'file'}));
+&open_lock_tempfile($DATA, ">".&make_chroot($in{'file'}));
 &print_tempfile($DATA, $in{'data'});
 &close_tempfile($DATA);
 
