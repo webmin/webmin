@@ -1,5 +1,8 @@
 #!/usr/local/bin/perl
 # Save DNSSEC verification options
+use strict;
+use warnings;
+our (%access, %text, %in, %config);
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'trusted_ecannot'});
@@ -7,9 +10,9 @@ $access{'defaults'} || &error($text{'trusted_ecannot'});
 &ReadParse();
 
 &lock_file(&make_chroot($config{'named_conf'}));
-$parent = &get_config_parent();
-$conf = $parent->{'members'};
-$options = &find("options", $conf);
+my $parent = &get_config_parent();
+my $conf = $parent->{'members'};
+my $options = &find("options", $conf);
 
 # DNSSEC enabled
 &save_choice("dnssec-enable", $options, 1);
@@ -18,8 +21,9 @@ if (&supports_dnssec_client() == 2) {
 	}
 
 # Save DLV zones
-@dlvs = ( );
-for($i=0; defined($in{"anchor_$i"}); $i++) {
+my @dlvs = ( );
+my $dlv;
+for(my $i=0; defined($in{"anchor_$i"}); $i++) {
 	if (!$in{"anchor_${i}_def"}) {
 		$in{"anchor_$i"} =~ /^[a-z0-9\.\-\_]+$/ ||
 			&error(&text('trusted_eanchor', $i+1));
@@ -41,8 +45,8 @@ for($i=0; defined($in{"anchor_$i"}); $i++) {
 &save_directive($options, "dnssec-lookaside", \@dlvs, 1);
 
 # Save trusted keys
-@keys = ( );
-$trusted = &find("trusted-keys", $conf);
+my @keys = ( );
+my $trusted = &find("trusted-keys", $conf);
 if (!$trusted) {
 	# Need to create block
 	$trusted = { 'name' => 'trusted-keys',
@@ -50,7 +54,7 @@ if (!$trusted) {
 		     'members' => [ ] };
 	&save_directive($parent, "trusted-keys", [ $trusted ]);
 	}
-for($i=0; defined($in{"zone_$i"}); $i++) {
+for(my $i=0; defined($in{"zone_$i"}); $i++) {
 	next if ($in{"zone_${i}_def"});
 	$in{"zone_$i"} =~ /^[a-z0-9\.\-\_]+$/ ||
 		&error(&text('trusted_ezone', $i+1));
@@ -68,7 +72,7 @@ for($i=0; defined($in{"zone_$i"}); $i++) {
 				    $in{"alg_$i"}, '"'.$in{"key_$i"}.'"' ],
 		    });
 	}
-@oldkeys = @{$trusted->{'members'}};
+my @oldkeys = @{$trusted->{'members'}};
 &save_directive($trusted, \@oldkeys, \@keys, 1);
 
 &flush_file_lines();
