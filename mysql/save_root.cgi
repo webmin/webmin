@@ -24,6 +24,7 @@ foreach my $host (@hosts) {
 		&execute_sql_logged($master_db, $sql);
 		};
 	if ($@) {
+		# Try again with the new password
 		local $config{'pass'} = $in{'newpass1'};
 		&execute_sql_logged($master_db, $sql);
 		}
