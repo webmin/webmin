@@ -82,6 +82,10 @@ if (!$@) {
 		&ui_yesno_radio("logsyslog", int($gconfig{'logsyslog'})));
 	}
 
+print &ui_table_row($text{'log_email'},
+	&ui_opt_textbox("email", $gconfig{'logemail'}, 40,
+		        $text{'log_emailnone'}));
+
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 

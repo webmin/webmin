@@ -56,6 +56,7 @@ $gconfig{'logperms'} = $miniserv{'logperms'};
 !$in{'logfiles'} || &has_command("diff") ||
 	&error(&text('log_ediff', "diff"));
 $gconfig{'logsyslog'} = $in{'logsyslog'} if (defined($in{'logsyslog'}));
+$gconfig{'logemail'} = $in{'email_def'} ? undef : $in{'email'};
 &lock_file("$config_directory/config");
 &write_file("$config_directory/config", \%gconfig);
 &unlock_file("$config_directory/config");
