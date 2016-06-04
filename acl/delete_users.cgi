@@ -28,7 +28,8 @@ if ($in{'joingroup'}) {
 	foreach my $user (@d) {
 		my $uinfo = &get_user($user);
 		next if (!$uinfo);
-		next if (&indexof($user, @{$newgroup->{'members'}}) >= 0);
+		next if ($newgroup &&
+			 &indexof($user, @{$newgroup->{'members'}}) >= 0);
 
 		# Remove from old group, if any
 		my $oldgroup = &get_users_group($user);
