@@ -269,7 +269,7 @@ application/x-director		dcr dir dxr
 application/x-dvi		dvi # DVI
 application/x-futuresplash	spl
 application/x-gtar		gtar
-application/x-gzip # Gzipped data
+application/x-gzip		gz tgz # Gzipped data
 application/x-hdf		hdf
 application/x-javascript	js # Javascript source
 application/x-koan		skp skd skt skm
