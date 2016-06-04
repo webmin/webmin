@@ -1,6 +1,9 @@
 #!/usr/local/bin/perl
 # save_net.cgi
 # Save global address and topology options
+use strict;
+use warnings;
+our (%access, %text, %in, %config);
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'net_ecannot'});
@@ -8,19 +11,22 @@ $access{'defaults'} || &error($text{'net_ecannot'});
 &ReadParse();
 
 &lock_file(&make_chroot($config{'named_conf'}));
-$conf = &get_config();
-$options = &find("options", $conf);
+my $conf = &get_config();
+my $options = &find("options", $conf);
+my %used;
+my @listen;
 if (!$in{'listen_def'}) {
-	for($i=0; defined($addr = $in{"addrs_$i"}); $i++) {
+	my $addr;
+	for(my $i=0; defined($addr = $in{"addrs_$i"}); $i++) {
 		next if (!$addr);
-		local $l = { 'name' => 'listen-on',
+		my $l = { 'name' => 'listen-on',
 			     'type' => 1 };
 		if (!$in{"pdef_$i"}) {
 			$in{"port_$i"} =~ /^\d+$/ ||
 				&error(&text('net_eport', $in{"port_$i"}));
 			$l->{'values'} = [ 'port', $in{"port_$i"} ];
 			}
-		$port = $in{"pdef_$i"} ? 53 : $in{"port_$i"};
+		my $port = $in{"pdef_$i"} ? 53 : $in{"port_$i"};
 		$used{$port}++ && &error(&text('net_eusedport', $port));
 		$l->{'members'} =
 			[ map { { 'name' => $_ } } split(/\s+/, $addr) ];
@@ -30,6 +36,7 @@ if (!$in{'listen_def'}) {
 &save_directive($options, 'listen-on', \@listen, 1);
 
 # Save query source address and port
+my @qvals;
 if (!$in{'saddr_def'}) {
 	&check_ipaddress($in{'saddr'}) ||
 		&error(&text('net_eaddr', $in{'saddr'}));
@@ -49,6 +56,7 @@ else {
 	}
 
 # Save transfer source address and port
+my @tvals;
 if ($in{'taddr_def'} == 0) {
 	&check_ipaddress($in{'taddr'}) ||
 		&error(&text('net_eaddr', $in{'taddr'}));

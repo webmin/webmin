@@ -1,12 +1,15 @@
 #!/usr/local/bin/perl
 # view_text.cgi
 # Display the records in a zone
+use strict;
+use warnings;
+our (%access, %text, %in);
 
 require './bind8-lib.pl';
 &ReadParse();
-$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
-$file = &absolute_path($zone->{'file'});
-$tv = $zone->{'type'};
+my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+my $file = &absolute_path($zone->{'file'});
+my $tv = $zone->{'type'};
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
 $access{'file'} || &error($text{'text_ecannot'});
@@ -19,7 +22,7 @@ if (&is_raw_format_records(&make_chroot($file))) {
 else {
 	print &text('text_desc2', "<tt>$file</tt>"),"<p>\n";
 
-	$text = &read_file_contents(&make_chroot($file));
+	my $text = &read_file_contents(&make_chroot($file));
 	if ($text) {
 		print &ui_table_start(undef, "width=100%", 2);
 		print &ui_table_row(undef,

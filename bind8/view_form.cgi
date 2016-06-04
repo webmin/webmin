@@ -1,10 +1,13 @@
 #!/usr/local/bin/perl
 # view_form.cgi
 # Display options for creating a new view
+use strict;
+use warnings;
+our (%access, %text);
 
 require './bind8-lib.pl';
 &ReadParse();
-$conf = &get_config();
+my $conf = &get_config();
 $access{'views'} == 1 || &error($text{'vcreate_ecannot'});
 $access{'ro'} && &error($text{'vcreate_ecannot'});
 

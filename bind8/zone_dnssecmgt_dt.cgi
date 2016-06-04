@@ -1,21 +1,21 @@
 #!/usr/local/bin/perl
 # Perform one of a number of DNSSEC-related operations for the zone 
+use strict;
+use warnings;
+our (%access, %text, %in);
 
 require './bind8-lib.pl';
 
-local $zone;
-local $dom;
-local $err;
-
 &error_setup($text{'dt_zone_err'});
 &ReadParse();
-$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
-$dom = $zone->{'name'};
+my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+my $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
 $access{'dnssec'} || &error($text{'dnssec_ecannot'});
 
 if (&have_dnssec_tools_support()) {
+	my $err;
 	my $optype = $in{'optype'};
 	if ($optype eq "resign") {
 		# Do the signing
