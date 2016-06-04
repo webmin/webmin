@@ -16,6 +16,7 @@ my %miniserv;
 my @logins;
 foreach my $k (keys %sessiondb) {
 	next if ($k =~ /^1111111/);
+	next if (!$sessiondb{$k});
 	my ($user, $ltime, $lip) = split(/\s+/, $sessiondb{$k});
 	next if ($user ne $remote_user && $user ne "!".$remote_user);
 	push(@logins, [ $user, $ltime, $lip, $k ]);

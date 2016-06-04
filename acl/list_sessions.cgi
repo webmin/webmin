@@ -31,7 +31,7 @@ print &ui_columns_start([ $text{'sessions_id'},
 			], 100);
 foreach my $k (sort { my @a = split(/\s+/, $sessiondb{$a});
 		      my @b = split(/\s+/, $sessiondb{$b}); $b[1] <=> $a[1] }
-		    keys %sessiondb) {
+		    (grep { $sessiondb{$_} } keys %sessiondb)) {
 	next if ($k =~ /^1111111/);
 	my ($user, $ltime, $lip) = split(/\s+/, $sessiondb{$k});
 	next if ($user =~ /^\!/ && !$in{'logouts'});
