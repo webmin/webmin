@@ -528,8 +528,13 @@ else {
 			     $host, $serv->{'desc'});
 		}
 	elsif ($type eq 'email') {
-		return &text('monitor_email_'.$suffix,
-			     $host, $serv->{'desc'}, $now)."\n";
+		my $rv = &text('monitor_email_'.$suffix,
+			       $host, $serv->{'desc'}, $now)."\n";
+		if ($stat->{'desc'}) {
+			$rv .= &text('monitor_email_stat',
+				     $stat->{'desc'})."\n";
+			}
+		return $rv;
 		}
 	}
 }
