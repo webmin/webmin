@@ -37,3 +37,5 @@ Text for rules that match on headers is now automatically escaped unless the new
 The time between autoreplies to the same address now defaults to 1 hour.
 ---- Changes since 1.560 ----
 Added buttons on the Edit Filter page to show all email matching a filter, or apply the filter to email in some folder.
+---- Changes since 1.700 ----
+The quick autoreply form now has fields for the start and end dates.
