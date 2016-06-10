@@ -35,4 +35,16 @@ elsif ( index( $archive_type, "/x-rar" ) != -1 ) {
     &backquote_logged( "unrar x -r -y " . quotemeta("$cwd/$in{'file'}") . " " . quotemeta($cwd) );
     &redirect("index.cgi?path=$path");
 }
+elsif ( index( $archive_type, "/x-rpm" ) != -1 || index( $archive_type, "/x-deb" ) != -1 ) {
+    my $dir = fileparse( "$cwd/$name", qr/\.[^.]*/ );
+    my $path = quotemeta("$cwd/$dir");
+    &backquote_logged("mkdir $path");
+    if ( index( $archive_type, "/x-rpm" ) != -1 ) {
+        &backquote_logged(
+            "(rpm2cpio " . quotemeta("$cwd/$name") . " | (cd " . $path . "; cpio -idmv))" );
+    }
+    else {
+        &backquote_logged( "dpkg -x " . quotemeta("$cwd/$name") . " " . $path );
+    }
+}
 
