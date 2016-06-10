@@ -309,6 +309,8 @@ sub print_interface {
             if (   ( index( $type, "application-zip" ) != -1 && has_command('unzip') )
                 || ( index( $type, "application-x-7z-compressed" ) != -1 && has_command('7z') )
                 || ( index( $type, "application-x-rar" ) != -1           && has_command('unrar') )
+                || ( index( $type, "application-x-rpm" ) != -1 && has_command('rpm2cpio') && has_command('cpio') )
+                || ( index( $type, "application-x-deb" ) != -1 && has_command('dpkg') )
                 || ((      index( $type, "x-compressed-tar" ) != -1
                         || index( $type, "-x-tar" ) != -1
                         || ( index( $type, "-x-bzip" ) != -1 && has_command('bzip2') )
