@@ -3,5 +3,5 @@ virtualmin_config=Voller Pfad zum Virtualmin Konfigurationsverzeichnis,3,Nicht i
 warn_procmail=Zeige Warnung&#44; wenn Procmail nicht installiert ist?,1,1-Ja,0-Nein
 forward_procmail=Erstelle .forward Datei um Procmail auszuf&#252;hren?,1,1-Ja,0-Nein
 alias_files=Voller Pfad zu den globalen Alias Dateien,9,40,3,\t
-reply_min=Minimale Zeit zwischen Autoantwort-Nachrichten,3,Keine Limitierung,5,,Minuten
-reply_force=Erzwinge die Verwendung eines minimales Autoantwort-Intervalls,1,1-Ja,0-Nein
+reply_min=Minimale Zeit zwischen Autoantwort&#45;Nachrichten,3,Keine Limitierung,5,,Minuten
+reply_force=Erzwinge die Verwendung eines minimales Autoantwort&#45;Intervalls,1,1-Ja,0-Nein
