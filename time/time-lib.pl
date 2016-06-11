@@ -159,6 +159,10 @@ if ($out =~ /^(\S+)\s+(\S+)\s+(\d+)\s+(\d+):(\d+):(\d+)\s+(\d+)\s+/) {
 elsif ($out =~ /^(\S+)\s+(\d+)\s+(\S+)\s+(\d+)\s+(\d+):(\d+):(\d+)\s+(am|pm)\s+/i) {
 	return ($7, $6, $5+($8 eq 'pm' ? 12 : 0), $2, &month_to_number($3), $4-1900, &weekday_to_number($1));
 	}
+elsif ($out =~ /^(\d+)\-(\d+)\-(\d+)\s+(\d+):(\d+):(\d+)/) {
+	# Format like 2016-06-10 22:58:17.999536+3:00
+	return ($6, $5, $4, $3, $2-1, $1-1900);
+	}
 else {
 	$get_hardware_time_error = &text('index_ehwclock',
 			"<tt>".&html_escape("hwclock $flags")."</tt>",
