@@ -52,50 +52,45 @@ MAINLOOP: while(index($line,"$boundary--") == -1) {
     }
     
     if(defined($file)){
-        # OK, we have a file, let`s save it
-        if (-e "$cwd/$file") {
-            push @errors, "$path/$file $text{'error_exists'}";
-            next;
+    	# OK, we have a file, let`s save it
+        if (!open(OUTFILE, ">$cwd/$file")) {
+            push @errors, "$text{'error_opening_file_for_writing'} $path/$file - $!"; #die "Can't open $cwd/$file for writing - $!";
+            next;        
         } else {
-            if (!open(OUTFILE, ">$cwd/$file")) {
-                push @errors, "$text{'error_opening_file_for_writing'} $path/$file - $!"; #die "Can't open $cwd/$file for writing - $!";
-                next;        
-            } else {
-              binmode(OUTFILE);
-              # Skip "content-type" as we work in binmode anyway and skip empty line
-              <STDIN>; <STDIN>;
-              # Read all lines until next boundary or form data end
-              while(1) {
-                  $line = <STDIN>;
-		  if (!defined($line)) {
+          binmode(OUTFILE);
+          # Skip "content-type" as we work in binmode anyway and skip empty line
+          <STDIN>; <STDIN>;
+          # Read all lines until next boundary or form data end
+          while(1) {
+              $line = <STDIN>;
+	      if (!defined($line)) {
 		    push @errors, "Unexpected end of input"; 
 		    last MAINLOOP;
-		  }
-                  # Inform progress tracker about our actions
-                  $got += length($line);
-       	          &$cbfunc($got, $ENV{'CONTENT_LENGTH'}, $file, $in{'id'});
-                  # Some brainf###ing to deal with last CRLF
-                  if(index($line,"$boundary") != -1 ||
-		     index($line,"$boundary--") != -1) {
-                      chop($prevline);
-                      chop($prevline);
-                      if (!print OUTFILE $prevline) {
-                          push @errors, "text{'error_writing_file'} $path/$file";
-			  last MAINLOOP;
-                      }
-                      last;
-                  } else {
-                      if (!print OUTFILE $prevline) {
-                          push @errors, "text{'error_writing_file'} $path/$file";
-			  last MAINLOOP;
-                      }
-                      $prevline = $line;
+	      }
+              # Inform progress tracker about our actions
+              $got += length($line);
+       	      &$cbfunc($got, $ENV{'CONTENT_LENGTH'}, $file, $in{'id'});
+              # Some brainf###ing to deal with last CRLF
+              if(index($line,"$boundary") != -1 ||
+		 index($line,"$boundary--") != -1) {
+                  chop($prevline);
+                  chop($prevline);
+                  if (!print OUTFILE $prevline) {
+                      push @errors, "text{'error_writing_file'} $path/$file";
+		      last MAINLOOP;
                   }
+                  last;
+              } else {
+                  if (!print OUTFILE $prevline) {
+                      push @errors, "text{'error_writing_file'} $path/$file";
+		      last MAINLOOP;
+                  }
+              $prevline = $line;
               }
-              # File saved, let`s go further
-              close(OUTFILE);
-            }
-        }
+          }
+          # File saved, let`s go further
+          close(OUTFILE);
+      }
     } else {
         # Just skip everything until next boundary or form data end
         while(index($line, "$boundary") == -1 ||
