@@ -132,3 +132,5 @@ An SSL certificate can now be requested from Let's Encrypt using a new tab on th
 ---- Changes since 1.780 ----
 Added an option for automatically renewing Let's Encrypt certificates.
 If the Let's Encrypt client is not installed, Webmin will use its own built-in client code to request a certificate.
+---- Changes since 1.800 ----
+Added an option to the logging page for sending Webmin action log messages via email.

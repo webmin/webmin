@@ -5848,42 +5848,82 @@ if ($miniserv::page_capture_out) {
 	$miniserv::page_capture_out = undef;
 	}
 
+# Convert params to a format usable by parse_webmin_log
+my %params;
+foreach my $k (keys %{$_[3]}) {
+	my $v = $_[3]->{$k};
+	if (ref($v) eq 'ARRAY') {
+		$params{$k} = join("\0", @$v);
+		}
+	else {
+		$params{$k} = $v;
+		}
+	}
+
+# Construct description if one is needed
+my $logemail = $gconfig{'logemail'} &&
+	       (!$gconfig{'logmodulesemail'} ||
+	       &indexof($m, split(/\s+/, $gconfig{'logmodulesemail'})) >= 0) &&
+	       &foreign_check("mailboxes");
+my $msg = undef;
+my %minfo = &get_module_info($m);
+if ($logemail || $gconfig{'logsyslog'}) {
+	my $mod = &get_module_name();
+	my $mdir = module_root_directory($mod);
+	if (-r "$mdir/log_parser.pl") {
+		&foreign_require($mod, "log_parser.pl");
+		$msg = &foreign_call($mod, "parse_webmin_log",
+			$remote_user, $script_name,
+			$_[0], $_[1], $_[2], \%params);
+		$msg =~ s/<[^>]*>//g;	# Remove tags
+		}
+	elsif ($_[0] eq "_config_") {
+		my %wtext = &load_language("webminlog");
+		$msg = $wtext{'search_config'};
+		}
+	$msg ||= "$_[0] $_[1] $_[2]";
+	}
+
 # Log to syslog too
 if ($gconfig{'logsyslog'}) {
 	eval 'use Sys::Syslog qw(:DEFAULT setlogsock);
 	      openlog(&get_product_name(), "cons,pid,ndelay", "daemon");
 	      setlogsock("inet");';
 	if (!$@) {
-		# Syslog module is installed .. try to convert to a
-		# human-readable form
-		my $msg;
-		my $mod = &get_module_name();
-		my $mdir = module_root_directory($mod);
-		if (-r "$mdir/log_parser.pl") {
-			&foreign_require($mod, "log_parser.pl");
-			my %params;
-			foreach my $k (keys %{$_[3]}) {
-				my $v = $_[3]->{$k};
-				if (ref($v) eq 'ARRAY') {
-					$params{$k} = join("\0", @$v);
-					}
-				else {
-					$params{$k} = $v;
-					}
-				}
-			$msg = &foreign_call($mod, "parse_webmin_log",
-				$remote_user, $script_name,
-				$_[0], $_[1], $_[2], \%params);
-			$msg =~ s/<[^>]*>//g;	# Remove tags
-			}
-		elsif ($_[0] eq "_config_") {
-			my %wtext = &load_language("webminlog");
-			$msg = $wtext{'search_config'};
-			}
-		$msg ||= "$_[0] $_[1] $_[2]";
-		my %info = &get_module_info($m);
-		eval { syslog("info", "%s", "[$info{'desc'}] $msg"); };
+		eval { syslog("info", "%s", "[$minfo{'desc'}] $msg"); };
 		}
+	}
+
+# Log to email, if enabled and for this module
+if ($logemail) {
+	# Construct an email message
+	&foreign_require("mailboxes");
+	my $mdesc;
+	if ($m && $m ne "global") {
+		$mdesc = $minfo{'desc'} || $m;
+		}
+	my $body = $text{'log_email_desc'}."\n\n";
+	$body .= &text('log_email_mod', $m || "global")."\n";
+	if ($mdesc) {
+		$body .= &text('log_email_moddesc', $mdesc)."\n";
+		}
+	$body .= &text('log_email_time', &make_date(time()))."\n";
+	$body .= &text('log_email_system', &get_display_hostname())."\n";
+	$body .= &text('log_email_user', $remote_user)."\n";
+	$body .= &text('log_email_remote', $_[7] || $ENV{'REMOTE_HOST'})."\n";
+	$body .= &text('log_email_script', $script_name)."\n";
+	if ($main::session_id) {
+		$body .= &text('log_email_session', $main::session_id)."\n";
+		}
+	$body .= "\n";
+	$body .= $msg."\n";
+	&mailboxes::send_text_mail(
+		&mailboxes::get_from_address(),
+		$gconfig{'logemail'},
+		undef,
+		$mdesc ? &text('log_email_subject', $mdesc)
+		       : $text{'log_email_global'},
+		$body);
 	}
 }
 
