@@ -81,6 +81,7 @@ log_users=Only log actions by ..
 log_inmods=Modules to log Webmin actions in
 log_mall=Log actions in all modules
 log_modules=Only log actions in ..
+log_global=&lt;Global actions&gt;
 log_files=Log changes made to files by each action?
 log_fullfiles=Record all modified files before actions, for rollbacks?
 log_err=Failed to save logging options
@@ -92,6 +93,7 @@ log_syslog=Also log Webmin actions to syslog?
 log_login=Include Webmin logins and logouts in actions log?
 log_email=Send logged actions via email to
 log_emailnone=Don't send
+log_inmodsemail=Send email for actions in
 
 proxy_title=Proxy Servers and Downloads
 proxy_desc=If the host on which Webmin is running is behind a firewall of some kind, you may need to set the proxy server to use for accessing web and FTP sites. Certain modules, such as <tt>Software Packages</tt>, will use these proxies when downloading files or programs.

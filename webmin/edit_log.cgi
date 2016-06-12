@@ -47,17 +47,20 @@ print &ui_table_row($text{'log_forusers'},
 			      &acl::list_users() ],
 		   5, 1));
 
+# Create list of modules for which logging is possible
+@logmods = ( [ "global", $text{'log_global'} ],
+	     map { [ $_->{'dir'}, $_->{'desc'} ] }
+		 grep { -r &module_root_directory($_)."/log_parser.pl" }
+		      sort { lc($a->{'desc'}) cmp lc($b->{'desc'}) }
+			   &get_all_module_infos() );
+
 # Modules to log in
 print &ui_table_row($text{'log_inmods'},
 	&ui_radio("mall", $gconfig{'logmodules'} ? 0 : 1,
 		  [ [ 1, $text{'log_mall'} ], [ 0, $text{'log_modules'} ] ]).
 	"<br>\n".
 	&ui_select("modules", [ split(/\s+/, $gconfig{'logmodules'}) ],
-		   [ map { [ $_->{'dir'}, $_->{'desc'} ] }
-			 grep { -r &module_root_directory($_)."/log_parser.pl" }
-			      sort { lc($a->{'desc'}) cmp lc($b->{'desc'}) }
-				   &get_all_module_infos() ],
-		   5, 1));
+		   \@logmods, 5, 1));
 
 # Log logins and logouts?
 if (!$miniserv{'login_script'} ||
@@ -67,24 +70,38 @@ if (!$miniserv{'login_script'} ||
 		    $miniserv{'login_script'} eq $record_login_cmd));
 	}
 
+# Log file changes?
 print &ui_table_row($text{'log_files'},
 	&ui_yesno_radio("logfiles", int($gconfig{'logfiles'})));
 
+# Log full files?
 print &ui_table_row($text{'log_fullfiles'},
 	&ui_yesno_radio("logfullfiles", int($gconfig{'logfullfiles'})));
 
+# Logfile permissions
 print &ui_table_row($text{'log_perms'},
 	&ui_opt_textbox("perms", $gconfig{'logperms'}, 5, $text{'default'}));
 
+# Also log to syslog?
 eval "use Sys::Syslog qw(:DEFAULT setlogsock)";
 if (!$@) {
 	print &ui_table_row($text{'log_syslog'},
 		&ui_yesno_radio("logsyslog", int($gconfig{'logsyslog'})));
 	}
 
+# Log via email?
 print &ui_table_row($text{'log_email'},
 	&ui_opt_textbox("email", $gconfig{'logemail'}, 40,
 		        $text{'log_emailnone'}));
+
+# Modules for email log
+print &ui_table_row($text{'log_inmodsemail'},
+	&ui_radio("mallemail", $gconfig{'logmodulesemail'} ? 0 : 1,
+		  [ [ 1, $text{'log_mall'} ], [ 0, $text{'log_modules'} ] ]).
+	"<br>\n".
+	&ui_select("modulesemail",
+		   [ split(/\s+/, $gconfig{'logmodulesemail'}) ],
+		   \@logmods, 5, 1));
 
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
