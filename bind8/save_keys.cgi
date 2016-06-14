@@ -1,6 +1,9 @@
 #!/usr/local/bin/perl
 # save_keys.cgi
 # Update all the key directives
+use strict;
+use warnings;
+our (%access, %text, %in, %config);
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'keys_ecannot'});
@@ -8,13 +11,15 @@ $access{'defaults'} || &error($text{'keys_ecannot'});
 &ReadParse();
 
 &lock_file(&make_chroot($config{'named_conf'}));
-$conf = &get_config();
-@old = &find("key", $conf);
-for($i=0; defined($id = $in{"id_$i"}); $i++) {
+my $conf = &get_config();
+my @old = &find("key", $conf);
+my $id;
+my @keys;
+for(my $i=0; defined($id = $in{"id_$i"}); $i++) {
 	next if (!$id);
 	$id =~ /^\S+$/ || &error(&text('keys_ekey', $id));
 	$in{"secret_$i"} =~ /^\S+$/ || &error(&text('keys_esecret', $id));
-	local $k = { 'name' => 'key',
+	my $k = { 'name' => 'key',
 		     'type' => 1 };
 	$k->{'members'} = $old[$i] ? $old[$i]->{'members'} : [ ];
 	$k->{'values'} = [ $id ];

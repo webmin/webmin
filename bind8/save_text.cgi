@@ -1,12 +1,15 @@
 #!/usr/local/bin/perl
 # save_text.cgi
 # Save a manually edit zone file
+use strict;
+use warnings;
+our (%access, %text, %in);
 
 require './bind8-lib.pl';
 &ReadParseMime();
-$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
-$file = &absolute_path($zone->{'file'});
-$tv = $zone->{'type'};
+my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+my $file = &absolute_path($zone->{'file'});
+my $tv = $zone->{'type'};
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
 $access{'file'} || &error($text{'text_ecannot'});
@@ -16,12 +19,13 @@ $access{'ro'} && &error($text{'master_ero'});
 &lock_file(&make_chroot($file));
 $in{'text'} =~ s/\r//g;
 $in{'text'} .= "\n" if ($in{'text'} !~ /\n$/);
-&open_tempfile(FILE, ">".&make_chroot($file));
-&print_tempfile(FILE, $in{'text'});
-&close_tempfile(FILE);
+my $FILE;
+&open_tempfile($FILE, ">".&make_chroot($file));
+&print_tempfile($FILE, $in{'text'});
+&close_tempfile($FILE);
 
 # BUMP soa too
-@recs = &read_zone_file($file, $zone->{'name'});
+my @recs = &read_zone_file($file, $zone->{'name'});
 if ($in{'soa'}) {
 	&bump_soa_record($file, \@recs);
 	}

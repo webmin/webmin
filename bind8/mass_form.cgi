@@ -1,5 +1,8 @@
 #!/usr/local/bin/perl
 # Form for creating multiple zones from an uploaded file, local file or text
+use strict;
+use warnings;
+our (%access, %text, %config);
 
 require './bind8-lib.pl';
 &ReadParse();
@@ -23,7 +26,7 @@ print &ui_table_row($text{'mass_text'},
 print &ui_table_row($text{'mass_tmpl'},
 		    &ui_yesno_radio("tmpl", 1));
 
-@servers = &list_slave_servers();
+my @servers = &list_slave_servers();
 if (@servers && $access{'remote'}) {
 	print &ui_table_row($text{'mass_onslave'},
 	    &ui_radio("onslave", 1,
@@ -32,7 +35,7 @@ if (@servers && $access{'remote'}) {
 		 &to_ipaddress(&get_system_hostname()), 30));
 	}
 
-@views = grep { $_->{'type'} eq 'view' && &can_edit_view($_) }
+my @views = grep { $_->{'type'} eq 'view' && &can_edit_view($_) }
 	      &list_zone_names();
 if (@views) {
 	print &ui_table_row($text{'mass_view'},

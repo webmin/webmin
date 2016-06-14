@@ -50,8 +50,8 @@ print &ui_table_row($text{'auto_charset'},
 	&ui_textbox("charset", $csmode == 0 ? $cs : "", 20));
 
 # Period
+$r = $filter ? $filter->{'reply'} : undef;
 if (!$config{'reply_force'}) {
-	$r = $filter ? $filter->{'reply'} : undef;
 	$period = !$filter ? 60 :
 		  $r->{'replies'} && $r->{'period'} ? int($r->{'period'}/60) :
 		  $r->{'replies'} ? 60 : undef;
@@ -69,6 +69,30 @@ if (!$config{'reply_force'}) {
 			" ".$text{'index_mins'});
 		}
 	}
+
+# Start and end dates
+if ($r && $r->{'autoreply_start'}) {
+	@stm = localtime($r->{'autoreply_start'});
+	$stm[4]++; $stm[5] += 1900;
+	}
+if ($r && $r->{'autoreply_end'}) {
+	@etm = localtime($r->{'autoreply_end'});
+	$etm[4]++; $etm[5] += 1900;
+	}
+print &ui_table_row($text{'index_astart'},
+	&ui_radio("start_def", @stm ? 0 : 1,
+		  [ [ 1, $text{'index_forever'} ],
+		    [ 0, $text{'index_ondate'} ] ])." ".
+	&ui_date_input($stm[3], $stm[4], $stm[5],
+		       "dstart", "mstart", "ystart")." ".
+        &date_chooser_button("dstart", "mstart", "ystart"));
+print &ui_table_row($text{'index_aend'},
+	&ui_radio("end_def", @etm ? 0 : 1,
+		  [ [ 1, $text{'index_forever'} ],
+		    [ 0, $text{'index_ondate'} ] ])." ".
+	&ui_date_input($etm[3], $etm[4], $etm[5],
+		       "dend", "mend", "yend")." ".
+        &date_chooser_button("dend", "mend", "yend"));
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'save'} ] ]);

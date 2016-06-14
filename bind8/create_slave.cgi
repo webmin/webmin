@@ -4,6 +4,10 @@
 # Modified by Howard Wilkinson <howard@cohtech.co.uk> 7th NOvember 2001
 #        Added a facility to create a slave zone with the master(s)
 #        on a non-standard port
+use strict;
+use warnings;
+# Globals
+our (%access, %text, %in, %config);
 
 require './bind8-lib.pl';
 &ReadParse();
@@ -11,7 +15,8 @@ require './bind8-lib.pl';
 $access{'slave'} || &error($in{'type'} ? $text{'screate_ecannot1'}
 				       : $text{'screate_ecannot2'});
 $access{'ro'} && &error($text{'master_ero'});
-$conf = &get_config();
+my $conf = &get_config();
+my ($view, $vconf, $viewname);
 if ($in{'view'} ne '') {
 	$view = $conf->[$in{'view'}];
 	&can_edit_view($view) || &error($text{'master_eviewcannot'});
@@ -25,7 +30,7 @@ else {
 
 # validate inputs
 if ($in{'rev'}) {
-	local($ipv4);
+	my $ipv4;
 	($ipv4 = &check_net_ip($in{'zone'})) ||
 	$config{'support_aaaa'} &&
 	($in{'zone'} =~ /^([\w:]+)(\/\d+)$/ || &check_ip6address($1)) ||
@@ -44,21 +49,21 @@ else {
 		&error(&text('create_edom', $in{'zone'}));
         }
 $in{'zone'} =~ s/\.$//;
-foreach $z (&find("zone", $vconf)) {
+foreach my $z (&find("zone", $vconf)) {
 	if (lc($z->{'value'}) eq lc($in{'zone'})) {
 		&error($text{'master_etaken'});
 		}
 	}
-$masterport = $in{'port_def'} ? undef : $in{'port'};
-@masters = split(/\s+/, $in{'masters'});
-foreach $m (@masters) {
+my $masterport = $in{'port_def'} ? undef : $in{'port'};
+my @masters = split(/\s+/, $in{'masters'});
+foreach my $m (@masters) {
 	&check_ipaddress($m) || &check_ip6address($m) ||
 		&error(&text('create_emaster', $m));
 	}
 if (!@masters) {
 	&error($text{'create_enone'});
 	}
-$base = $access{'dir'} ne '/' ? $access{'dir'} :
+my $base = $access{'dir'} ne '/' ? $access{'dir'} :
 	$config{'slave_dir'} ? $config{'slave_dir'} :
 			       &base_directory($conf);
 $base =~ s/\/+$// if ($base ne '/');
@@ -66,6 +71,7 @@ if ($base !~ /^([a-z]:)?\//) {
 	# Slave dir is relative .. make absolute
 	$base = &base_directory()."/".$base;
 	}
+my $file;
 if ($in{'file_def'} == 0) {
 	# Use the entered filename
 	$in{'file'} =~ /^\S+$/ ||
@@ -83,21 +89,22 @@ elsif ($in{'file_def'} == 2) {
 				    $view ? $view->{'value'} : undef);
 	}
 if ($file) {
-	&open_tempfile(ZONE, ">".&make_chroot($file), 1, 1) ||
+	my $ZONE;
+	&open_tempfile($ZONE, ">". &make_chroot($file), 1, 1) ||
 		&error(&text('create_efile3', $file, $!));
-	&close_tempfile(ZONE);
+	&close_tempfile($ZONE);
 	&set_ownership(&make_chroot($file));
 	}
 
 # Create the structure
-@mdirs = map { { 'name' => $_ } } @masters;
-$masters = { 'name' => 'masters',
+my @mdirs = map { { 'name' => $_ } } @masters;
+my $masters = { 'name' => 'masters',
 	     'type' => 1,
 	     'members' => \@mdirs };
 if (defined($masterport)) {
 	$masters->{'values'} = [ 'port', $masterport ];
 	}
-$dir = { 'name' => 'zone',
+my $dir = { 'name' => 'zone',
 	 'values' => [ $in{'zone'} ],
 	 'type' => 1,
 	 'members' => [ { 'name' => 'type',
@@ -117,13 +124,13 @@ if ($file) {
 &webmin_log("create", $in{'type'} ? 'slave' : 'stub', $in{'zone'}, \%in);
 
 # Get the new zone's index
-$idx = &get_zone_index($in{'zone'}, $in{'view'});
+my $idx = &get_zone_index($in{'zone'}, $in{'view'});
 
 &add_zone_access($in{'zone'});
 
 # Create on slave servers
 if ($in{'onslave'} && $access{'remote'}) {
-	@slaveerrs = &create_on_slaves($in{'zone'}, $masters[0],
+	my @slaveerrs = &create_on_slaves($in{'zone'}, $masters[0],
 			$in{'file_def'} == 1 ? "none" :
 			$in{'file_def'} == 2 ? undef : $in{'sfile'},
 			undef, $viewname);

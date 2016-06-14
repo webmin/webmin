@@ -1,6 +1,10 @@
 #!/usr/local/bin/perl
 # conf_zonedef.cgi
 # Display defaults for master zones
+use strict;
+use warnings;
+# Globals
+our (%access, %text, %config);
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'zonedef_ecannot'});
@@ -10,6 +14,7 @@ $access{'defaults'} || &error($text{'zonedef_ecannot'});
 # Start of defaults for new zones form
 print &ui_form_start("save_zonedef.cgi", "post");
 print &ui_table_start($text{'zonedef_msg'}, "width=100%", 4);
+my %zd;
 &get_zone_defaults(\%zd);
 
 # Default refresh time
@@ -33,9 +38,9 @@ print &ui_table_row($text{'master_minimum'},
 	&time_unit_choice("minunit", $zd{'minunit'}));
 
 # Records for new zones, as a table
-@table = ( );
-for($i=0; $i<2 || $config{"tmpl_".($i-1)}; $i++) {
-	@c = split(/\s+/, $config{"tmpl_$i"}, 3);
+my @table = ( );
+for(my $i=0; $i<2 || $config{"tmpl_".($i-1)}; $i++) {
+	my @c = split(/\s+/, $config{"tmpl_$i"}, 3);
 	push(@table, [ &ui_textbox("name_$i", $c[0], 15),
 		       &ui_select("type_$i", $c[1],
 			[ map { [ $_, $text{"type_".$_} ] }
@@ -89,7 +94,7 @@ if (&supports_dnssec()) {
 			   [ &list_dnssec_algorithms() ]), 3);
 
 	# Default size
-	$sizedef = $config{'tmpl_dnssecsizedef'};
+	my $sizedef = $config{'tmpl_dnssecsizedef'};
 	$sizedef = 1 if ($sizedef eq '');
 	print &ui_table_row($text{'zonedef_size'},
 		&ui_radio("size_def", $sizedef,
@@ -108,10 +113,11 @@ if (&supports_dnssec()) {
 print &ui_table_end();
 
 # Start of table for global BIND options
-$conf = &get_config();
-$options = &find("options", $conf);
-$mems = $options->{'members'};
-foreach $c (&find("check-names", $mems)) {
+my $conf = &get_config();
+my $options = &find("options", $conf);
+my $mems = $options->{'members'};
+my %check;
+foreach my $c (&find("check-names", $mems)) {
 	$check{$c->{'values'}->[0]} = $c->{'values'}->[1];
 	}
 print &ui_table_start($text{'zonedef_msg2'}, "width=100%", 4);

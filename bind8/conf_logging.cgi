@@ -1,18 +1,22 @@
 #!/usr/local/bin/perl
 # conf_logging.cgi
 # Display global logging options
+use strict;
+use warnings;
+our (%access, %text, %in);
+our (@syslog_levels, @severities, @cat_list);
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'logging_ecannot'});
 &ui_print_header(undef, $text{'logging_title'}, "",
 		 undef, undef, undef, undef, &restart_links());
 &ReadParse();
-$conf = &get_config();
-$logging = &find("logging", $conf);
-$mems = $logging ? $logging->{'members'} : [ ];
+my $conf = &get_config();
+my $logging = &find("logging", $conf);
+my $mems = $logging ? $logging->{'members'} : [ ];
 
 # Start of tabs for channels and categories
-@tabs = ( [ "chans", $text{'logging_chans'}, "conf_logging.cgi?mode=chans" ],
+my @tabs = ( [ "chans", $text{'logging_chans'}, "conf_logging.cgi?mode=chans" ],
 	  [ "cats", $text{'logging_cats'}, "conf_logging.cgi?mode=cats" ] );
 print &ui_tabs_start(\@tabs, "mode", $in{'mode'} || "chans", 1);
 
@@ -20,8 +24,8 @@ print &ui_tabs_start_tab("mode", "chans");
 print $text{'logging_chansdesc'},"<p>\n";
 
 # Add default channels to table
-@table = ( );
-@defchans = ( { 'name' => 'default_syslog',
+my @table = ( );
+my @defchans = ( { 'name' => 'default_syslog',
 		'syslog' => 'daemon',
 		'severity' => 'info' },
 	      { 'name' => 'default_debug',
@@ -32,7 +36,7 @@ print $text{'logging_chansdesc'},"<p>\n";
 		'severity' => 'info' },
 	      { 'name' => 'null',
 		'null' => 1 } );
-foreach $c (@defchans) {
+foreach my $c (@defchans) {
 	push(@table, [
 		$c->{'name'},
 		$c->{'syslog'} ? $c->{'syslog'} :
@@ -47,17 +51,17 @@ foreach $c (@defchans) {
 
 # Add user-defined channels
 # XXX
-@chans = &find("channel", $mems);
-@channames = ( (map { $_->{'value'} } @chans) ,
+my @chans = &find("channel", $mems);
+my @channames = ( (map { $_->{'value'} } @chans) ,
 	       'default_syslog', 'default_debug', 'default_stderr', 'null' );
 push(@chans, { });
-for($i=0; $i<@chans; $i++) {
-	$cmems = $chans[$i]->{'members'};
-	$file = &find("file", $cmems);
-	$filestr = $file ? join(" ", @{$file->{'values'}}) : "";
-	$syslog = &find_value("syslog", $cmems);
-	$null = &find("null", $cmems);
-	$stderr = &find("stderr", $cmems);
+for(my $i=0; $i<@chans; $i++) {
+	my $cmems = $chans[$i]->{'members'};
+	my $file = &find("file", $cmems);
+	my $filestr = $file ? join(" ", @{$file->{'values'}}) : "";
+	my $syslog = &find_value("syslog", $cmems);
+	my $null = &find("null", $cmems);
+	my $stderr = &find("stderr", $cmems);
 	my @cols;
 
 	# Channel name
@@ -65,7 +69,7 @@ for($i=0; $i<@chans; $i++) {
 
 	# Log destination
 	my @dests;
-	$to = $file ? 0 : $syslog ? 1 : $stderr ? 3 : $null ? 2 : 0;
+	my $to = $file ? 0 : $syslog ? 1 : $stderr ? 3 : $null ? 2 : 0;
 	push(@dests, [ 0, $text{'logging_file'},
 		       &ui_filebox("file_$i", $file->{'value'}, 40) ]);
 	push(@dests, [ 1, $text{'logging_syslog'},
@@ -76,7 +80,7 @@ for($i=0; $i<@chans; $i++) {
 	push(@cols, &ui_radio_table("to_$i", $to, \@dests));
 
 	# Severity
-	$sev = &find("severity", $cmems);
+	my $sev = &find("severity", $cmems);
 	push(@cols, &ui_select("sev_$i", $sev->{'value'},
 		[ [ "", "&nbsp;" ],
 		  map { [ $_, $_ eq 'debug' ? $text{'logging_debug'} :
@@ -124,10 +128,10 @@ print $text{'logging_catsdesc'},"<p>\n";
 
 # Build table of categories
 @table = ( );
-@cats = ( &find("category", $mems), { } );
-for($i=0; $i<@cats; $i++) {
+my @cats = ( &find("category", $mems), { } );
+for(my $i=0; $i<@cats; $i++) {
 	my %cchan;
-	foreach $c (@{$cats[$i]->{'members'}}) {
+	foreach my $c (@{$cats[$i]->{'members'}}) {
 		$cchan{$c->{'name'}}++;
 		}
 	push(@table, [

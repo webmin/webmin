@@ -1,5 +1,9 @@
 #!/usr/local/bin/perl
 # save dnssec-tools related options
+use strict;
+use warnings;
+our (%access, %text, %in, %config);
+our $module_config_file;
 
 require './bind8-lib.pl';
 
@@ -7,8 +11,8 @@ require './bind8-lib.pl';
 &error_setup($text{'dt_conf_err'});
 $access{'defaults'} || &error($text{'dt_conf_ecannot'});
 
-local $conf = get_dnssectools_config();
-local %nv;
+my $conf = get_dnssectools_config();
+my %nv;
 
 $in{'dt_email'} =~ /(\b[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+\.[A-Za-z0-9-.]*\b)/ || 
 	&error($text{'dt_conf_eemail'});

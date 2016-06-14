@@ -1,16 +1,20 @@
 #!/usr/local/bin/perl
 # convert_slave.cgi
 # Convert a slave/stub zone into a master
+use strict;
+use warnings;
+# Globals
+our (%access, %text, %in);
 
 require './bind8-lib.pl';
 &ReadParse();
 &error_setup($text{'convert_err'});
 
-$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
-$zconf = &zone_to_config($zone);
+my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+my $zconf = &zone_to_config($zone);
 
 $access{'master'} || &error($text{'mcreate_ecannot'});
-$file = &find_value("file", $zconf->{'members'});
+my $file = &find_value("file", $zconf->{'members'});
 if (!$file) {
 	&error($text{'convert_efile'});
 	}
@@ -35,9 +39,9 @@ if (!-s $file) {
 if (&is_raw_format_records($file)) {
 	&has_command("named-compilezone") ||
 		&error($text{'convert_ebinary'});
-	$temp = &transname();
+	my $temp = &transname();
 	&copy_source_dest($file, $temp);
-	$out = &backquote_logged("named-compilezone -f raw -F text ".
+	my $out = &backquote_logged("named-compilezone -f raw -F text ".
 				 "-o $file $zone->{'name'} $temp 2>&1");
 	&error(&text('convert_ecompile', "<tt>".&html_escape($out)."</tt>"))
 		if ($?);

@@ -1,5 +1,9 @@
 #!/usr/local/bin/perl
 # Show a page for manually editing named.conf
+use strict;
+use warnings;
+# Globals
+our (%access, %text, %in);
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'manual_ecannot'});
@@ -8,8 +12,8 @@ $access{'defaults'} || &error($text{'manual_ecannot'});
 		 undef, undef, undef, undef, &restart_links());
 
 # Work out and show the files
-$conf = &get_config();
-@files = &get_all_config_files($conf);
+my $conf = &get_config();
+my @files = &get_all_config_files($conf);
 $in{'file'} ||= $files[0];
 &indexof($in{'file'}, @files) >= 0 || &error($text{'manual_efile'});
 print &ui_form_start("conf_manual.cgi");
@@ -23,7 +27,7 @@ print &ui_form_end();
 print &ui_form_start("save_manual.cgi", "form-data");
 print &ui_hidden("file", $in{'file'}),"\n";
 print &ui_table_start(undef, "width=100%", 2);
-$data = &read_file_contents(&make_chroot($in{'file'}));
+my $data = &read_file_contents(&make_chroot($in{'file'}));
 print &ui_table_row(undef,
 	&ui_textarea("data", $data, 20, 80, undef, 0, "style='width:100%'"), 2);
 print &ui_table_end();

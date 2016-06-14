@@ -2,17 +2,20 @@
 # find_free.cgi
 # Looks for free IP numbers
 # by Ivan Andrian, <ivan.andrian@elettra.trieste.it>, 11/07/2000
+use strict;
+use warnings;
+our (%access, %text, %in);
 
 require './bind8-lib.pl';
 &ReadParse();
 
-$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
-$dom = $zone->{'name'};
-$file = $zone->{'file'};
-$type = $zone->{'type'};
+my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+my $dom = $zone->{'name'};
+my $file = $zone->{'file'};
+my $type = $zone->{'type'};
 
 if (!$access{'findfree'}) {&error($text{'findfree_nofind'})};
-$desc = &text('findfree_header', &arpa_to_ip($dom));
+my $desc = &text('findfree_header', &arpa_to_ip($dom));
 &ui_print_header($desc, &text('findfree_title'), "",
 		 undef, undef, undef, undef, &restart_links($zone));
 
@@ -20,11 +23,12 @@ $desc = &text('findfree_header', &arpa_to_ip($dom));
 
 if ($in{'from'} && $in{'to'}) {
    # Do the search
-   @allrecs = &read_zone_file($file, $dom);
-   @recs = grep { ($_->{'type'} eq 'A') || ($_->{'type'} eq 'PTR')} @allrecs;
-   @gens = grep { $_->{'generate'} } @allrecs;
+   my @allrecs = &read_zone_file($file, $dom);
+   my @recs = grep { ($_->{'type'} eq 'A') || ($_->{'type'} eq 'PTR')} @allrecs;
+   my @gens = grep { $_->{'generate'} } @allrecs;
    foreach my $g (@gens) {
-	@gv = @{$g->{'generate'}};
+        my ($start, $end, $skip);
+	my @gv = @{$g->{'generate'}};
 	if ($gv[0] =~ /^(\d+)-(\d+)\/(\d+)$/) {
 		$start = $1; $end = $2; $skip = $3;
 		}
@@ -32,19 +36,19 @@ if ($in{'from'} && $in{'to'}) {
 		$start = $1; $end = $2; $skip = 1;
 		}
 	else { next; }
-	for($i=$start; $i<=$end; $i+=$skip) {
-		$lhs = $gv[1];
+	for(my $i=$start; $i<=$end; $i+=$skip) {
+		my $lhs = $gv[1];
 		$lhs =~ s/\$\$/\0/g;
 		$lhs =~ s/\$/$i/g;
 		$lhs =~ s/\0/\$/g;
-		$lhsfull = $lhs =~ /\.$/ ? $lhs :
+		my $lhsfull = $lhs =~ /\.$/ ? $lhs :
 			    $dom eq "." ? "$lhs." : "$lhs.$dom";
 
-		$rhs = $gv[3];
+		my $rhs = $gv[3];
 		$rhs =~ s/\$\$/\0/g;
 		$rhs =~ s/\$/$i/g;
 		$rhs =~ s/\0/\$/g;
-		$rhsfull = &check_ipaddress($rhs) ? $rhs :
+		my $rhsfull = &check_ipaddress($rhs) ? $rhs :
 			   $rhs =~ /\.$/ ? $rhs :
 			    $dom eq "." ? "$rhs." : "$rhs.$dom";
 		push(@recs, { 'name' => $lhsfull,
@@ -60,7 +64,7 @@ if ($in{'from'} && $in{'to'}) {
 	@recs = &sort_records(@recs);
 	my %frecs = &build_iprange($in{'from'}, $in{'to'});
 
-	for($i=0; $i<@recs; $i++) {
+	for(my $i=0; $i<@recs; $i++) {
 		my $hip;	# host IP
 		my $hname;	# hostname
 		
@@ -118,30 +122,26 @@ $_[1] =~ /^(\d+)\.(\d+)\.(\d+)\.(\d+)/;
 my @to = ($1, $2, $3, $4);
 return @to if (@to != 4);
 
-for ($i=0;$i<4;$i++) {
+for (my $i=0;$i<4;$i++) {
 	$from[$i]=$from[$i]==0?1:$from[$i];
 	$to[$i]=$to[$i]==255?254:$to[$i];
 }
 
 my %frecs;
 
-for ($byte0=$from[0]; $byte0<=$to[0]; $byte0++) {
-	for ($byte1=$byte0==$from[0]?$from[1]:1;
+for (my $byte0=$from[0]; $byte0<=$to[0]; $byte0++) {
+	for (my $byte1=$byte0==$from[0]?$from[1]:1;
 			$byte1<=(($byte0==$to[0]?$to[1]:254));
 			$byte1++) {
-		##print "================<BR>";
-		for ($byte2=($byte0==$from[0])&&($byte1==$from[1])?$from[2]:1;
+		for (my $byte2=($byte0==$from[0])&&($byte1==$from[1])?$from[2]:1;
 				$byte2<=(($byte0==$to[0])&&($byte1==$to[1])?$to[2]:254);
 				$byte2++) {
-			##print "----------------<BR>";
-			for ($byte3=($byte0==$from[0])&&($byte1==$from[1])&&($byte2==$from[2])?$from[3]:1;
+			for (my $byte3=($byte0==$from[0])&&($byte1==$from[1])&&($byte2==$from[2])?$from[3]:1;
 					$byte3<=(($byte0==$to[0])&&($byte1==$to[1])&&($byte2==$to[2])?$to[3]:254);
 					$byte3++) {
 				$frecs{"$byte0.$byte1.$byte2.$byte3"}->{'ip'}="$byte0.$byte1.$byte2.$byte3";
 				$frecs{"$byte0.$byte1.$byte2.$byte3"}->{'ttl'}=$text{'default'};
 				$frecs{"$byte0.$byte1.$byte2.$byte3"}->{'name'}='';
-				##push(@frecs, "$byte0.$byte1.$byte2.$byte3");
-				##print "$byte0.$byte1.$byte2.$byte3<BR>";
 			} #for $byte3
 		} #for $byte2
 	} #for $byte1
@@ -186,7 +186,7 @@ print &ui_grid_table(
 sub ffree_ip_sort_func
 {
 $a->{'ip'} =~ /^(\d+)\.(\d+)\.(\d+)\.(\d+)/;
-local ($a1, $a2, $a3, $a4) = ($1, $2, $3, $4);
+my ($a1, $a2, $a3, $a4) = ($1, $2, $3, $4);
 $b->{'ip'} =~ /^(\d+)\.(\d+)\.(\d+)\.(\d+)/;
 return	$a1 < $1 ? -1 :
 	$a1 > $1 ? 1 :
@@ -198,5 +198,3 @@ return	$a1 < $1 ? -1 :
 	$a4 > $4 ? 1 : 0;
 }
 
-
-#EOF

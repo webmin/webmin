@@ -1,18 +1,22 @@
 #!/usr/local/bin/perl
 # save_slave.cgi
 # Save changes to slave zone options in named.conf
+use strict;
+use warnings;
+our (%access, %text, %in);
 
 require './bind8-lib.pl';
 &ReadParse();
 &error_setup($text{'slave_err'});
 
-$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
-$z = &zone_to_config($zone);
-$zconf = $z->{'members'};
-$dom = $zone->{'name'};
+my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+my $z = &zone_to_config($zone);
+my $zconf = $z->{'members'};
+my $dom = $zone->{'name'};
+my $conf = &get_config();
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
-$indent = $zone->{'view'} ? 2 : 1;
+my $indent = $zone->{'view'} ? 2 : 1;
 
 $access{'ro'} && &error($text{'master_ero'});
 $access{'opts'} || &error($text{'master_eoptscannot'});
@@ -40,7 +44,7 @@ return $_[0] =~ /^\d+$/ ? undef : &text('slave_emax', $_[0]);
 sub file_check
 {
 return $text{'slave_efile'} if ($_[0] !~ /\S/);
-local $file = $_[0];
+my $file = $_[0];
 if ($_[0] !~ /^\//) {
 	$file = &base_directory($conf)."/".$file;
 	}

@@ -1,0 +1,67 @@
+<header>Firewall Linuxu</header>
+
+<h3>Úvod k modulu</h3>
+
+Tento modul umožňuje nakonfigurovať funkcie IP tabuliek firewallu, ktoré 
+sa nachádzajú v Linuxových jadrach rady 2.4. Na rozdiel od niektorých iných 
+programov na konfiguráciu firewallu namiesto vytvárania scriptu pre shell, 
+ktorý nastaví firewall, tento modul prečíta a edituje pravidlá z uloženého 
+súboru vo formáte, ktorý je načítavaný a zapisovaný programami
+<tt>ip6tables-restore</tt> a <tt>ip6tables-save</tt>. <p>
+
+Ak už máte vo Vašom systéme firewall, ktorý bol nastavený ručne alebo pomocou
+scriptu, modul ponúka aj jeho konverziu na IP tabuľky uložené v súbore a vytvorí 
+script, ktorý aktivuje pravidlá zo súboru pri zavádzaní systému. Avšak ak to urobíte 
+a nebudete chcieť pravidlá firewallu na dlhší čas používať, môžete tiež aktiváciu 
+pravidiel pri zavádzaní vypnúť. <p>
+
+<h3>Prehľad IP tabuliek</h3>
+
+Každý sieťový paket, ktorý prichádza dnu, odchádza von alebo je presmerovaný Vaším 
+systémom, je skontrolovaný jedným alebo viacerými zreťazeniami, ktoré určia, čo sa 
+s ním má stať. Každé zreťazenie obsahuje nula alebo viac pravidiel, z ktorých každé 
+má podmienku (určujúcu, pre ktoré pakety bude platiť) a akciu (určujúcu, čo sa má stať 
+s paketmi splňujúcimi podmienku). Každé zreťazenie má tiež predvolenú akciu, ktorá hovorí 
+čo sa má stať s paketmi, ktoré nespĺňajú ani jednu z uvedených podmienok. <p>
+	
+Každé zreťazenie je súčasťou jednej z troch tabuliek:
+<ul>
+<li><b>Filtrovanie paketov (<tt>filter</tt>)</b><br>
+    Zreťazenia v tejto tabuľke môžu byť použité na ovládanie dát prichádzajúcich do 
+    systému z iných staníc siete, dát odoslaných z Vášho systému používateľmi a procesmi
+    a dát presmerovaných vaším systémom, ak funguje ako router. <p>
+<li><b>Preklad sieťovej adresy (<tt>nat</tt>)</b><br>
+    Táto tabuľka môže byť použitá na nastavenie NAT alebo maškarády, čo je užitočné, ak chcete 
+    z celej vašej siete pristupovať do internetu iba s jednou skutočnou IP adresou. <p>
+<li><b>Zmena paketov (<tt>mangle</tt>)</b><br>
+    Toto zreťazenie slúži na úpravu paketov presmerovaných alebo odoslaných Vašim systémom. <p>
+</ul>
+
+Ako dodatok ku štandardným zreťazeniam, ktoré sú súčasťou každej tabuľky, môžete tiež vytvoriť 
+Vaše vlastné zreťazenie, ktoré môže byť spustené pravidlami zo zabudovaných zreťazení. To môže byť 
+užitočné pri skupinových a zdielaných pravidlách, ktoré by bolo inak potrebné použiť na viacerých 
+miestach. <p>
+
+<h3>Hlavná stránka</h3>
+
+Hlavná stránka tohto modulu zobrazuje všetky zreťazenia a pravidlá jednej 
+z dostupných tabuliek, vybranej zo zoznamu vľavo hore. Nižšie sú časti pre 
+každé zreťazenie v aktuálnej tabuľke so všetkými pravidlami a ich podmienkami, 
+ktoré najlepšie opisujú schopnosti modulu. Pre každé zreťazenie, ktoré je 
+zabudované v tabuľke, môžete definovať predvolenú akciu prostredníctvom 
+rozbaľovacieho poľa. Vlastnoručne zadefinované zreťazenia môžete odstrániť 
+pomocou tlačidla Odstrániť zreťazenie. <p>
+
+Môžete kliknúť na ľubovoľné pravidlo v zreťazení a upraviť ho, kliknúť na šipku 
+vpravo a presunúť ho vyššie alebo nižšie alebo kliknúť na tlačítko pridať a 
+zadefinovať nové pravidlo. Pridávanie alebo úprava pravidla Vás presunie na stránku, 
+na ktorej môžete vybrať pre pravidlo akciu a podmienku, pri ktorej sa má akcia vykonať. <p>
+
+V spodnej časti stránky je tlačidlo na aktivovanie aktuálnej konfigurácie, ktoré ju nahrá 
+do jadra pomocou <tt>ip6tables-restore</tt>. Pod ním je tlačidlo na vykonanie obnovy -
+vezme konfiguráciu, ktorá je nahraná v jadre a umožní ju upravovať. Ak to vaša distribúcia 
+podporuje, je tu ešte tlačidlo, ktoré nastaví, či sa má firewall aktivovať pri zavádzaní 
+systému alebo nie. <p>
+
+<hr>
+

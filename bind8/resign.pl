@@ -1,7 +1,10 @@
 #!/usr/local/bin/perl
 # Called from cron to re-sign all zones that are too old
+use strict;
+use warnings;
+our %config;
 
-$no_acl_check++;
+my $no_acl_check++;
 require './bind8-lib.pl';
 
 my $zonefile;
@@ -9,20 +12,21 @@ my $krfile;
 my $dom;
 my $err;
 
+my $debug;
 if ($ARGV[0] eq "--debug") {
 	$debug = 1;
 	}
 my $period = $config{'dnssec_period'} || 21;
 
-@zones = &list_zone_names();
-$errcount = 0;
-$donecount = 0;
-foreach $z (@zones) {
+my @zones = &list_zone_names();
+my $errcount = 0;
+my $donecount = 0;
+foreach my $z (@zones) {
 	# Get the key
 	next if ($z->{'type'} ne 'master');
-	$zonefile = &get_zone_file($z);
-	$krfile = "$zonefile".".krf";	
-	$dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
+	my $zonefile = &get_zone_file($z);
+	my $krfile = "$zonefile".".krf";	
+	my $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
 
 	print STDERR "Considering zone $z->{'name'}\n" if ($debug);
 
@@ -31,7 +35,7 @@ foreach $z (@zones) {
 	if (&have_dnssec_tools_support() &&
 	    &check_if_dnssec_tools_managed($dom)) {
 		&lock_file(&make_chroot($zonefile));
-		$err = &dt_resign_zone($dom, $zonefile, $krfile, $period);
+		my $err = &dt_resign_zone($dom, $zonefile, $krfile, $period);
 		&unlock_file(&make_chroot($zonefile));
 
 		if ($err) {
@@ -44,26 +48,26 @@ foreach $z (@zones) {
 		next;
 	}
 		
-	@keys = &get_dnssec_key($z);
+	my @keys = &get_dnssec_key($z);
 	print STDERR "  Key count ",scalar(@keys),"\n" if ($debug);
 	next if (@keys != 2);
-	($zonekey) = grep { !$_->{'ksk'} } @keys;
+	my ($zonekey) = grep { !$_->{'ksk'} } @keys;
 	next if (!$zonekey);
 	print STDERR "  Zone key in ",$zonekey->{'privatefile'},"\n"
 		if ($debug);
 
 	# Check if old enough
-	@st = stat($zonekey->{'privatefile'});
+	my @st = stat($zonekey->{'privatefile'});
 	if (!@st) {
 		print STDERR "  Private key file $zonekey->{'privatefile'} ",
 			     "missing\n" if ($debug);
 		next;
 		}
-	$old = (time() - $st[9]) / (24*60*60);
+	my $old = (time() - $st[9]) / (24*60*60);
 	print STDERR "  Age in days $old\n" if ($debug);
 	if ($old > $config{'dnssec_period'}) {
 		# Too old .. signing
-		$err = &resign_dnssec_key($z);
+		my $err = &resign_dnssec_key($z);
 		if ($err) {
 			print STDERR "  Re-signing of $z->{'name'} failed : $err\n";
 			$errcount++;

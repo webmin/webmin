@@ -1,0 +1,13 @@
+line0=Konfigurerbare innstillinger,11
+view_condition=Vis betingelse i regelliste?,1,1-Ja,0-Nei
+view_comment=Vis kommentarer i regelliste?1,1-Ja,0-Nei
+comment_mod=Lagre kommentarer som,1,0-# kommentarer i lagringsfil,1-&#45;&#45;kommentar innstilling
+cluster_mode=Oppdater klynge-tjenere,1,0-N&#229;r en endring er gjort,1-N&#229;r konfigurasjonen tas i bruk
+force_init=Start alltid brannmur fra init-script p&#229; Debian,1,1-Ja,0-Nei
+before_cmd=Kommando som kj&#248;res f&#248;r endrnig av regler,3,Ingen
+after_cmd=Kommando som kj&#248;res etter endrnig av regler,3,Ingen
+before_apply_cmd=Kommando som kj&#248;res f&#248;r konfigurasjon tas i bruk,3,Ingen
+after_apply_cmd=Kommando som skal kj&#248;res etter at konfigurasjon er tatt i bruk,3,Ingen
+line1=System konfigurasjon,11
+save_file=ip6tables lagrinsfil som skal redigeres,3,Bruk operativsystemets standard eller Webmin standard
+direct=Rediger brannmurregler direkte i stedet for lagringsfil?1,1-Ja,0-Nei

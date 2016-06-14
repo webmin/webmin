@@ -35,6 +35,7 @@ my $zone_names_version = 3;
 my @list_zone_names_cache;
 my $slave_error;
 my %lines_count;
+our $dnssec_cron_cmd = "$module_config_directory/resign.pl";
 
 # Where to find root zones file
 my $internic_ftp_host = "rs.internic.net";
@@ -43,7 +44,7 @@ my $internic_ftp_file = "/domain/named.root";
 my $internic_ftp_gzip = "/domain/root.zone.gz";
 
 # Get the version number
-my $bind_version;
+our $bind_version;
 if (open(my $VERSION, "<", "$module_config_directory/version")) {
 	chop($bind_version = <$VERSION>);
 	close($VERSION);
@@ -52,11 +53,9 @@ else {
 	$bind_version = &get_bind_version();
 	}
 
-my $dnssec_cron_cmd = "$module_config_directory/resign.pl";
-
 # For automatic DLV setup
-my $dnssec_dlv_zone = "dlv.isc.org.";
-my @dnssec_dlv_key = ( 257, 3, 5, '"BEAAAAPHMu/5onzrEE7z1egmhg/WPO0+juoZrW3euWEn4MxDCE1+lLy2brhQv5rN32RKtMzX6Mj70jdzeND4XknW58dnJNPCxn8+jAGl2FZLK8t+1uq4W+nnA3qO2+DL+k6BD4mewMLbIYFwe0PG73Te9fZ2kJb56dhgMde5ymX4BI/oQ+cAK50/xvJv00Frf8kw6ucMTwFlgPe+jnGxPPEmHAte/URkY62ZfkLoBAADLHQ9IrS2tryAe7mbBZVcOwIeU/Rw/mRx/vwwMCTgNboMQKtUdvNXDrYJDSHZws3xiRXF1Rf+al9UmZfSav/4NWLKjHzpT59k/VStTDN0YUuWrBNh"' );
+our $dnssec_dlv_zone = "dlv.isc.org.";
+our @dnssec_dlv_key = ( 257, 3, 5, '"BEAAAAPHMu/5onzrEE7z1egmhg/WPO0+juoZrW3euWEn4MxDCE1+lLy2brhQv5rN32RKtMzX6Mj70jdzeND4XknW58dnJNPCxn8+jAGl2FZLK8t+1uq4W+nnA3qO2+DL+k6BD4mewMLbIYFwe0PG73Te9fZ2kJb56dhgMde5ymX4BI/oQ+cAK50/xvJv00Frf8kw6ucMTwFlgPe+jnGxPPEmHAte/URkY62ZfkLoBAADLHQ9IrS2tryAe7mbBZVcOwIeU/Rw/mRx/vwwMCTgNboMQKtUdvNXDrYJDSHZws3xiRXF1Rf+al9UmZfSav/4NWLKjHzpT59k/VStTDN0YUuWrBNh"' );
 
 my $rand_flag;
 if ($gconfig{'os_type'} =~ /-linux$/ && -r "/dev/urandom" &&
@@ -3697,8 +3696,7 @@ sub dt_sign_zone
 	rollrec_lock();
 
 	# Remove DNSSEC records and save the unsigned zone file
-	#@recs = &read_zone_file($z, $dom);
-	@recs = &read_zone_file($z, $d); # XXX FIXME Is $d right?
+	@recs = &read_zone_file($z, $d);
 	my $tools = &have_dnssec_tools_support();
 	for(my $i=$#recs; $i>=0; $i--) {
 		if ($recs[$i]->{'type'} eq 'NSEC' ||
@@ -3778,7 +3776,7 @@ sub dt_resign_zone
 	rollrec_lock();
 
 	# Remove DNSSEC records and save the unsigned zone file
-	@recs = &read_zone_file($z, $d); # XXX FIXME Is $d == $dom?
+	@recs = &read_zone_file($z, $d); 
 	my $tools = &have_dnssec_tools_support();
 	for(my $i=$#recs; $i>=0; $i--) {
 		if ($recs[$i]->{'type'} eq 'NSEC' ||

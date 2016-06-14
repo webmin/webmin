@@ -1,19 +1,23 @@
 #!/usr/local/bin/perl
 # edit_soptions.cgi
 # Display options for an existing slave or stub zone
+use strict;
+use warnings;
+our (%access, %in, %text);
+our $scriptname;
 
 require './bind8-lib.pl';
 &ReadParse();
 
-$zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
-$z = &zone_to_config($zone);
-$zconf = $z->{'members'};
-$dom = $zone->{'name'};
+my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
+my $z = &zone_to_config($zone);
+my $zconf = $z->{'members'};
+my $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
 
 $access{'opts'} || &error($text{'slave_ecannot'});
-$desc = &ip6int_to_net(&arpa_to_ip($dom));
+my $desc = &ip6int_to_net(&arpa_to_ip($dom));
 &ui_print_header($desc, $text{'master_opts'}, "",
 		 undef, undef, undef, undef, &restart_links($zone));
 

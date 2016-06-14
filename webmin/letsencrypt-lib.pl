@@ -72,7 +72,7 @@ if ($letsencrypt_cmd) {
 	&close_tempfile(TEMP);
 	my $dir = $letsencrypt_cmd;
 	$dir =~ s/\/[^\/]+$//;
-	my $out = &backquote_command("cd $dir && (echo A | $letsencrypt_cmd certonly -a webroot ".join(" ", map { "-d ".quotemeta($_) } @doms)." --webroot-path ".quotemeta($webroot)." --duplicate --config $temp 2>&1)");
+	my $out = &backquote_command("cd $dir && (echo A | $letsencrypt_cmd certonly -a webroot ".join(" ", map { "-d ".quotemeta($_) } @doms)." --webroot-path ".quotemeta($webroot)." --duplicate --config $temp --rsa-key-size 2048 2>&1)");
 	if ($?) {
 		return (0, "<pre>".&html_escape($out || "No output from $letsencrypt_cmd")."</pre>");
 		}

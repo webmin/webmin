@@ -1,6 +1,9 @@
 #!/usr/local/bin/perl
 # save_logging.cgi
 # Save global logging options
+use strict;
+use warnings;
+our (%access, %text, %in, %config);
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'logging_ecannot'});
@@ -8,14 +11,16 @@ $access{'defaults'} || &error($text{'logging_ecannot'});
 &ReadParse();
 
 &lock_file(&make_chroot($config{'named_conf'}));
-$conf = &get_config();
-$logging = &find("logging", $conf);
+my $conf = &get_config();
+my $logging = &find("logging", $conf);
+my (@category, @channel);
 
 if ($in{'mode'} eq 'cats') {
 	# Save categories
-	for($i=0; defined($cat = $in{"cat_$i"}); $i++) {
+	my $cat;
+	for(my $i=0; defined($cat = $in{"cat_$i"}); $i++) {
 		next if (!$cat);
-		@cchan = split(/\0/, $in{"cchan_$i"});
+		my @cchan = split(/\0/, $in{"cchan_$i"});
 		push(@category, { 'name' => 'category',
 				  'values' => [ $cat ],
 				  'type' => 1,
@@ -26,15 +31,16 @@ if ($in{'mode'} eq 'cats') {
 	}
 else {
 	# Save channels
-	for($i=0; defined($cname = $in{"cname_$i"}); $i++) {
+	my $cname;
+	for(my $i=0; defined($cname = $in{"cname_$i"}); $i++) {
 		next if (!$cname);
 		$cname =~ /^\S+$/ || &error(&text('logging_ename', $cname));
-		local @mems;
+		my @mems;
 		if ($in{"to_$i"} == 0) {
 			$in{"file_$i"} || &error($text{'logging_efile'});
 			$in{"file_$i"} =~ /^\// ||
 				&error($text{'logging_efile2'});
-			local @fvals = ( $in{"file_$i"} );
+			my @fvals = ( $in{"file_$i"} );
 			if ($in{"vmode_$i"} == 1) {
 				push(@fvals, 'versions', 'unlimited');
 				}
@@ -66,7 +72,7 @@ else {
 			push(@mems, { 'name' => 'severity',
 				      'values' => [ $in{"sev_$i"} ] });
 			}
-		foreach $p ('print-category', 'print-severity', 'print-time') {
+		foreach my $p ('print-category', 'print-severity', 'print-time') {
 			push(@mems, { 'name' => $p,
 				      'values' => [ $in{"$p-$i"} ] }) if ($in{"$p-$i"});
 			}

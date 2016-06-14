@@ -1,6 +1,9 @@
 #!/usr/local/bin/perl
 # save_acls.cgi
 # Update all the acl directives
+use strict;
+use warnings;
+our (%access, %text, %in, %config);
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'acls_ecannot'});
@@ -8,15 +11,17 @@ $access{'defaults'} || &error($text{'acls_ecannot'});
 &ReadParse();
 
 # Convert inputs into ACL structures
-%depmap = ( );
+my %depmap = ( );
 &lock_file(&make_chroot($config{'named_conf'}));
-$conf = &get_config();
-for($i=0; defined($name = $in{"name_$i"}); $i++) {
+my $conf = &get_config();
+my $name;
+my @acls;
+for(my $i=0; defined($name = $in{"name_$i"}); $i++) {
 	next if (!$name);
 	$name =~ /^\S+$/ && $name !~ /;/ || &error(&text('acls_ename', $name));
 	$in{"values_$i"} =~ s/\r//g;
-	@vals = split(/\n+/, $in{"values_$i"});
-	foreach $v (@vals) {
+	my @vals = split(/\n+/, $in{"values_$i"});
+	foreach my $v (@vals) {
 		if ($v =~ /^[0-9\.]+\s+\S/ && $v !~ /;/) {
 			&error(&text('acls_eline', $name));
 			}

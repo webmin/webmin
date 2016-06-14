@@ -1,30 +1,38 @@
 #!/usr/local/bin/perl
 # Actually create multiple zones
+use strict;
+use warnings;
+our (%access, %in, %text, %config);
 
 require './bind8-lib.pl';
 &ReadParseMime();
 &ui_print_unbuffered_header(undef, $text{'mass_title'}, "");
 &error_setup($text{'mass_err'});
-$conf = &get_config();
+my $conf = &get_config();
 $access{'ro'} && &error($text{'master_ero'});
 
 # Check if the template needs IPs
+my $tmpl_ip;
 if ($in{'tmpl'}) {
-	for($i=0; $config{"tmpl_$i"}; $i++) {
-		@c = split(/\s+/, $config{"tmpl_$i"}, 3);
+	for(my $i=0; $config{"tmpl_$i"}; $i++) {
+		my @c = split(/\s+/, $config{"tmpl_$i"}, 3);
 		if ($c[1] eq 'A' && !$c[2]) {
 			$tmpl_ip++;
 			}
 		}
 	}
 
+my $vn;
+my @zones;
+my $zonecount;
+my $lnum;
 # Build map of taken zones
 if ($in{'view'} ne '') {
 	# In some view
 	@zones = grep { $_->{'viewindex'} eq $in{'view'} &&
 			$_->{'type'} ne 'view' }
 		      &list_zone_names();
-	$view = $conf->[$in{'view'}];
+	my $view = $conf->[$in{'view'}];
 	&can_edit_view($view) || &error($text{'mass_eviewcannot'});
 	$vn = $view->{'value'};
 	}
@@ -34,15 +42,16 @@ else {
 		      &list_zone_names();
 	$vn = undef;
 	}
-%taken = map { $_->{'name'}, $_ } @zones;
+my %taken = map { $_->{'name'}, $_ } @zones;
 
 # Get zone defaults
+my %zd;
 &get_zone_defaults(\%zd);
 
 if ($in{'local'}) {
 	&allowed_zone_file(\%access, $in{'local'}) ||
 		&error($text{'mass_elocalcannot'});
-	$local = &read_file_contents($in{'local'});
+	my $local = &read_file_contents($in{'local'});
 	$local || &error($text{'mass_elocal'});
 	print "<b>",&text('mass_dolocal', "<tt>$in{'local'}</tt>"),"</b><br>\n";
 	&execute_batchfile($local);
@@ -65,18 +74,18 @@ if ($in{'text'}) {
 # execute_batchfile(data)
 sub execute_batchfile
 {
-local @lines = split(/[\r\n]+/, $_[0]);
-local $l;
-local $lnum = 0;
-foreach $l (@lines) {
+my @lines = split(/[\r\n]+/, $_[0]);
+my $l;
+$lnum = 0;
+foreach my $l (@lines) {
 	$lnum++;
-	local @w = split(/:/, $l);
-	local $dom = $w[0];
+	my @w = split(/:/, $l);
+	my $dom = $w[0];
 	if ($dom !~ /^[a-z0-9\.\-\_]+$/) {
 		&line_error($l, $text{'mass_edom'});
 		next;
 		}
-	local $isrev = 0;
+	my $isrev = 0;
 	if (&check_ipaddress($dom)) {
 		$dom = &ip_to_arpa($dom);
 		$isrev = 1;
@@ -89,17 +98,18 @@ foreach $l (@lines) {
 		}
 
 	# Get the IP addresses
-	local @mips = split(/\s+/, $w[3]);
-	foreach $mip (@mips) {
+	my @mips = split(/\s+/, $w[3]);
+	foreach my $mip (@mips) {
 		if (!&check_ipaddress($mip)) {
 			&line_error($l, $text{'mass_eip'});
 			next;
 			}
 		}
 
-	local $type = $w[1] || "master";
-	local $file = $w[2];
-	local $dir;
+	my $type = $w[1] || "master";
+	my $file = $w[2];
+	my $dir;
+	my $base;
 	if ($type eq "master") {
 		# Creating a master zone
 		if (!$access{'master'}) {
@@ -141,11 +151,11 @@ foreach $l (@lines) {
 			}
 
 		# Create the zone file and initial records
-		local $master = $config{'default_prins'} ||
+		my $master = $config{'default_prins'} ||
 				&get_system_hostname();
 		$master =~ s/\.$//;
 		$master .= ".";
-		local $email = $config{'tmpl_email'} || "root\@$master";
+		my $email = $config{'tmpl_email'} || "root\@$master";
 		$email = &email_to_dotted($email);
 		&create_master_records($file, $dom, $master, $email,
 				       $zd{'refresh'}.$zd{'refunit'},
@@ -207,18 +217,19 @@ foreach $l (@lines) {
 
 		# Create the file now
 		if ($file) {
-			if (!open(ZONE, ">".&make_chroot($file))) {
+		        my $ZONE;
+			if (!open($ZONE, ">", &make_chroot($file))) {
 				&line_error($l, &text('create_efile3',
 						      $file, $!));
 				next;
 				}
-			close(ZONE);
+			close($ZONE);
 			&set_ownership(&make_chroot($file));
 			}
 
 		# Create the structure
-		local @mdirs = map { { 'name' => $_ } } @mips;
-		local $masters = { 'name' => 'masters',
+		my @mdirs = map { { 'name' => $_ } } @mips;
+		my $masters = { 'name' => 'masters',
 				   'type' => 1,
 				   'members' => \@mdirs };
 		$dir = { 'name' => 'zone',
@@ -249,8 +260,8 @@ foreach $l (@lines) {
 			}
 
 		# Create the structure
-		local @mdirs = map { { 'name' => $_ } } @mips;
-		local $masters = { 'name' => 'forwarders',
+		my @mdirs = map { { 'name' => $_ } } @mips;
+		my $masters = { 'name' => 'forwarders',
 				   'type' => 1,
 				   'members' => \@mdirs };
 		$dir = { 'name' => 'zone',
@@ -279,12 +290,12 @@ foreach $l (@lines) {
 
 	if ($type eq "master" && $in{'onslave'} && $access{'remote'}) {
 		# Create on slave servers
-		local @slaveerrs = &create_on_slaves($dom,
+		my @slaveerrs = &create_on_slaves($dom,
 		  $config{'this_ip'} || &to_ipaddress(&get_system_hostname()),
 		  undef, undef, $vn);
 		print "&nbsp;&nbsp;\n";
 		if (@slaveerrs) {
-			$serrs = join(", ", map { "$_->[0]->{'host'} : $_->[1]" } @slaveerrs);
+			my $serrs = join(", ", map { "$_->[0]->{'host'} : $_->[1]" } @slaveerrs);
 			print "<font color=#ff0000>",
 			      &text('mass_eonslave', $serrs),"</font><br>\n";
 			}

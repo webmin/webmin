@@ -1,6 +1,9 @@
 #!/usr/local/bin/perl
 # save_servers.cgi
 # Update all the server directives
+use strict;
+use warnings;
+our (%access, %text, %in, %config);
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'servers_ecannot'});
@@ -8,15 +11,17 @@ $access{'defaults'} || &error($text{'servers_ecannot'});
 &ReadParse();
 
 &lock_file(&make_chroot($config{'named_conf'}));
-$conf = &get_config();
-@old = &find("server", $conf);
-for($i=0; defined($ip = $in{"ip_$i"}); $i++) {
+my $conf = &get_config();
+my @old = &find("server", $conf);
+my $ip;
+my @servers;
+for(my $i=0; defined($ip = $in{"ip_$i"}); $i++) {
 	next if (!$ip);
 	&check_ipaddress($ip) || &check_ip6address($ip) ||
 		&error(&text('servers_eip', $ip));
 	$in{"trans_$i"} =~ /^\d*$/ ||
 		&error(&text('servers_etrans', $in{"trans_$i"}));
-	local $s = { 'name' => 'server',
+	my $s = { 'name' => 'server',
 		     'type' => 1 };
 	$s->{'members'} = $old[$i] ? $old[$i]->{'members'} : [ ];
 	$s->{'values'} = [ $ip ];
@@ -32,9 +37,9 @@ for($i=0; defined($ip = $in{"ip_$i"}); $i++) {
 				            'values' => [ $in{"trans_$i"} ] } ]
 				      : [ ], 1, 1);
 
-	@keys = split(/\0/, $in{"keys_$i"});
+	my @keys = split(/\0/, $in{"keys_$i"});
 	if (@keys) {
-		local @mems = map { { 'name' => $_ } } @keys;
+		my @mems = map { { 'name' => $_ } } @keys;
 		&save_directive($s, 'keys',
 			[ { 'name' => 'keys',
 			    'type' => 1,

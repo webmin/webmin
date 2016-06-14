@@ -1,6 +1,10 @@
 #!/usr/local/bin/perl
 # save_zonedef.cgi
 # Save zone defaults
+use strict;
+use warnings;
+our (%access, %text, %in, %config);
+our $module_config_directory;
 
 require './bind8-lib.pl';
 &ReadParse();
@@ -9,9 +13,10 @@ $access{'defaults'} || &error($text{'zonedef_ecannot'});
 
 &lock_file(&make_chroot($config{'named_conf'}));
 &lock_file("$module_config_directory/zonedef");
-$conf = &get_config();
-$options = &find("options", $conf);
-foreach $c ("master", "slave", "response") {
+my $conf = &get_config();
+my $options = &find("options", $conf);
+my @check;
+foreach my $c ("master", "slave", "response") {
 	push(@check, { 'name' => 'check-names',
 		       'values' => [ $c, $in{$c} ] }) if ($in{$c});
 	}
@@ -25,7 +30,7 @@ $in{'refresh'} =~ /^\d+$/ || &error(&text('master_erefresh', $in{'refresh'}));
 $in{'retry'} =~ /^\d+$/ || &error(&text('master_eretry', $in{'retry'}));
 $in{'expiry'} =~ /^\d+$/ || &error(&text('master_eexpiry', $in{'expiry'}));
 $in{'minimum'} =~ /^\d+$/ || &error(&text('master_eminimum', $in{'minimum'}));
-%zonedef = ( 'refresh', $in{'refresh'},
+my %zonedef = ( 'refresh', $in{'refresh'},
 	     'retry', $in{'retry'},
 	     'expiry', $in{'expiry'},
 	     'minimum', $in{'minimum'},
@@ -35,11 +40,11 @@ $in{'minimum'} =~ /^\d+$/ || &error(&text('master_eminimum', $in{'minimum'}));
 	     'minunit', $in{'minunit'} );
 
 &lock_file("$module_config_directory/config");
-foreach $k (keys %config) {
+foreach my $k (keys %config) {
 	delete($config{$k}) if ($k =~ /^tmpl_/);
 	}
-$j=0;
-for($i=0; defined($in{"name_$i"}); $i++) {
+my $j=0;
+for(my $i=0; defined($in{"name_$i"}); $i++) {
 	next if (!$in{"name_$i"});
 	$in{"type_$i"} eq 'A' || !$in{"def_$i"} ||
 		&error($text{'master_eiptmpl'});
@@ -71,7 +76,7 @@ if (defined($in{'dnssec'})) {
 		$config{'tmpl_dnssec_dne'} = $in{'dnssec_dne'};
 	} else {
 		$config{'tmpl_dnssecalg'} = $in{'alg'};
-		($ok, $err) = &compute_dnssec_key_size($in{'alg'}, $in{'size_def'},
+		my ($ok, $err) = &compute_dnssec_key_size($in{'alg'}, $in{'size_def'},
 											   $in{'size'});
 		&error($err) if (!$ok);
 		$config{'tmpl_dnssecsizedef'} = $in{'size_def'};

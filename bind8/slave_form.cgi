@@ -1,12 +1,15 @@
 #!/usr/local/bin/perl
 # slave_form.cgi
 # A form for creating a new slave or stub zone
+use strict;
+use warnings;
+our (%access, %text, %config);
 
 require './bind8-lib.pl';
-$type = ($0 =~ /slave_form/);
+my $type = ($0 =~ /slave_form/);
 $access{'slave'} || &error($type ? $text{'screate_ecannot1'}
 				 : $text{'screate_ecannot2'});
-$conf = &get_config();
+my $conf = &get_config();
 &ui_print_header(undef, $type ? $text{'screate_title1'}
 			      : $text{'screate_title2'}, "",
 		 undef, undef, undef, undef, &restart_links());
@@ -27,9 +30,9 @@ print &ui_table_row($text{'screate_dom'},
 	&ui_textbox("zone", undef, 60), 3);
 
 # Create in view
-@views = &find("view", $conf);
+my @views = &find("view", $conf);
 if (@views) {
-	($defview) = grep { lc($_->{'values'}->[0]) eq
+	my ($defview) = grep { lc($_->{'values'}->[0]) eq
 			    lc($config{'default_view'}) } @views;
 	print &ui_table_row($text{'mcreate_view'},
 		&ui_select("view", $defview ? $defview->{'index'} : undef,
@@ -55,7 +58,7 @@ print &ui_table_row($text{'slave_masterport'},
 		        $text{'slave_master_port'}));
 
 # Create on slave servers?
-@servers = grep { $_->{'sec'} } &list_slave_servers();
+my @servers = grep { $_->{'sec'} } &list_slave_servers();
 if (@servers && $access{'remote'}) {
 	print &ui_table_row($text{'master_onslave'},
 		&ui_yesno_radio("onslave", 1));

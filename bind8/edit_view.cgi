@@ -1,12 +1,15 @@
 #!/usr/local/bin/perl
 # edit_view.cgi
 # Display options for an existing view
+use strict;
+use warnings;
+our (%access, %text, %in);
 
 require './bind8-lib.pl';
 &ReadParse();
-$conf = &get_config();
-$view = $conf->[$in{'index'}];
-$vconf = $view->{'members'};
+my $conf = &get_config();
+my $view = $conf->[$in{'index'}];
+my $vconf = $view->{'members'};
 $access{'views'} || &error($text{'view_ecannot'});
 &can_edit_view($view) || &error($text{'view_ecannot'});
 
@@ -20,7 +23,7 @@ print &ui_table_start($text{'view_opts'}, "width=100%", 4,
 		      [ "width=30%", undef, "width=30%", undef ]);
 
 # View name
-@v = @{$view->{'values'}};
+my @v = @{$view->{'values'}};
 print &ui_table_row($text{'view_name'}, "<tt>$v[0]</tt>");
 
 # Class (not editable)
@@ -44,7 +47,7 @@ print &address_input($text{'master_query'}, "allow-query", $vconf);
 print &address_input($text{'master_notify2'}, "also-notify", $vconf);
 print &address_input($text{'master_notify3'}, "allow-notify", $vconf);
 
-$src = &find("transfer-source", $vconf);
+my $src = &find("transfer-source", $vconf);
 print &ui_table_row($text{'net_taddr'}, &ui_textbox("transfer-source", $src->{'values'}->[0], 15));
 
 print &ui_table_end();

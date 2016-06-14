@@ -2945,24 +2945,25 @@ return undef;
 # Finds a folder by ID, filename, server name or displayed name
 sub find_named_folder
 {
+local ($name, $folders, $cache) = @_;
 local $rv;
-if ($_[2] && exists($_[2]->{$_[0]})) {
+if ($cache && exists($cache->{$name})) {
 	# In cache
-	$rv = $_[2]->{$_[0]};
+	$rv = $cache->{$name};
 	}
 else {
 	# Need to lookup
-	($rv) = grep { $_->{'id'} eq $_[0] } @{$_[1]} if (!$rv);
+	($rv) = grep { &folder_name($_) eq $name } @$folders if (!$rv);
 	($rv) = grep { my $escfile = $_->{'file'};
 		       $escfile =~ s/\s/_/g;
-		       $escfile eq $_[0] ||
-		       $_->{'file'} eq $_[0] ||
-		       $_->{'server'} eq $_[0] } @{$_[1]} if (!$rv);
+		       $escfile eq $name ||
+		       $_->{'file'} eq $name ||
+		       $_->{'server'} eq $name } @$folders if (!$rv);
 	($rv) = grep { my $escname = $_->{'name'};
 		       $escname =~ s/\s/_/g;
-		       $escname eq $_[0] ||
-		       $_->{'name'} eq $_[0] } @{$_[1]} if (!$rv);
-	$_[2]->{$_[0]} = $rv if ($_[2]);
+		       $escname eq $name ||
+		       $_->{'name'} eq $name } @$folders if (!$rv);
+	$cache->{$name} = $rv if ($cache);
 	}
 return $rv;
 }

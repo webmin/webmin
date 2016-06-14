@@ -352,4 +352,16 @@ sql_eldapconnect=Failed to connect to LDAP server $1
 sql_eldaptls=Failed to start TLS encryption for LDAP : $1
 sql_eldaplogin=Failed to login to LDAP server as $1 : $2
 
+log_email_subject=Webmin action in $1
+log_email_global=Webmin global action
+log_email_desc=This email was sent by Webmin in response to a user action.
+log_email_mod=Webmin module: $1
+log_email_moddesc=Module title: $1
+log_email_time=Action performed at: $1
+log_email_system=Performed on system: $1
+log_email_user=Performed by user: $1
+log_email_script=Webmin script: $1
+log_email_session=Session ID: $1
+log_email_remote=Client address: $1
+
 __norefs=1
