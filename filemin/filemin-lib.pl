@@ -115,8 +115,6 @@ sub print_errors {
 sub print_interface {
     # Some vars for "upload" functionality
     local $upid = time().$$;
-    local @remote_user_info = getpwnam($remote_user);
-    local $uid = @remote_user_info[2];
     $bookmarks = get_bookmarks();
     @allowed_for_edit = split(/\s+/, $access{'allowed_for_edit'});
     %allowed_for_edit = map { $_ => 1} @allowed_for_edit;
