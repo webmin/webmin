@@ -40,9 +40,9 @@ my $pid = fork();
 if (!$pid) {
 	chdir("$module_root_directory/ajaxterm");
 	my $logfile = $ENV{'WEBMIN_VAR'}.'/ajaxterm.log';
-	untie(*STDIN); open(*STDIN, "<", "/dev/null");
-	untie(*STDOUT); open(*STDOUT, ">", $logfile);
-	untie(*STDERR); open(*STDERR, ">", $logfile);
+	untie(*STDIN); open(STDIN, "<", "/dev/null");
+	untie(*STDOUT); open(STDOUT, ">", $logfile);
+	untie(*STDERR); open(STDERR, ">", $logfile);
 	my $shell = &has_command("bash") ||
 		 &has_command("sh") || "/bin/sh";
 	my @uinfo = getpwnam("root");
@@ -55,10 +55,11 @@ if (!$pid) {
 
 # Wait for it to come up
 my $try = 0;
-my $TEST2;
+no strict "subs"; # TEST2 is weird. I dunno how to make it lexical without breaking.
+no warnings;
 while(1) {
 	my $err;
-	&open_socket("localhost", $port, $TEST2, \$err);
+	&open_socket("localhost", $port, TEST2, \$err);
 	last if (!$err);
 	$try++;
 	if ($try > 30) {
@@ -66,7 +67,9 @@ while(1) {
 		}
 	sleep(1);
 	}
-close($TEST2);
+close(TEST2);
+use strict "subs";
+use warnings;
 
 # Show the iframe
 print "<center>\n";
