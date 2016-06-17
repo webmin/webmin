@@ -676,8 +676,8 @@ elsif (!$olddir && $newdir) {
 # Update the line numbers and filenames in a list of directives
 sub recursive_set_lines_files
 {
-local ($dirs, $line, $file) = @_;
-foreach my $d (@$dirs) {
+my ($dirs, $line, $file) = @_;
+foreach my $dir (@$dirs) {
 	$dir->{'line'} = $line;
 	$dir->{'file'} = $file;
 	if ($dir->{'type'}) {
