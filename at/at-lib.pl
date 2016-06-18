@@ -1,10 +1,14 @@
 # at-lib.pl
 # Functions for listing and creating at jobs
+use strict;
+use warnings;
+our (%text, %config); 
+our $remote_user;
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
-%access = &get_module_acl();
+our %access = &get_module_acl();
 
 do "$config{'at_style'}-lib.pl";
 
@@ -13,9 +17,9 @@ do "$config{'at_style'}-lib.pl";
 # the given width
 sub wrap_lines
 {
-local @rv;
-local $w = $_[1];
-foreach $rest (split(/\n/, $_[0])) {
+my @rv;
+my $w = $_[1];
+foreach my $rest (split(/\n/, $_[0])) {
 	if ($rest =~ /\S/) {
 		while(length($rest) > $w) {
 			push(@rv, substr($rest, 0, $w));
@@ -34,7 +38,7 @@ return @rv;
 # can_edit_user(&access, user)
 sub can_edit_user
 {
-local %umap;
+my %umap;
 map { $umap{$_}++; } split(/\s+/, $_[0]->{'users'});
 if ($_[0]->{'mode'} == 1 && !$umap{$_[1]} ||
     $_[0]->{'mode'} == 2 && $umap{$_[1]}) { return 0; }
@@ -50,13 +54,16 @@ else {
 # Returns a list of all users in the cron allow file
 sub list_allowed
 {
-local(@rv, $_);
+local $_;
+my @rv;
+no strict "subs";
 &open_readfile(ALLOW, $config{allow_file});
 while(<ALLOW>) {
 	next if (/^\s*#/);
 	chop; push(@rv, $_) if (/\S/);
 	}
 close(ALLOW);
+use strict "subs";
 return @rv;
 }
 
@@ -65,13 +72,16 @@ return @rv;
 # Return a list of users from the cron deny file
 sub list_denied
 {
-local(@rv, $_);
+local $_;
+my @rv;
+no strict "subs";
 &open_readfile(DENY, $config{deny_file});
 while(<DENY>) {
 	next if (/^\s*#/);
 	chop; push(@rv, $_) if (/\S/);
 	}
 close(DENY);
+use strict "subs";
 return @rv;
 }
 
@@ -83,11 +93,13 @@ sub save_allowed
 &lock_file($config{allow_file});
 if (@_) {
 	local($_);
+	no strict "subs";
 	&open_tempfile(ALLOW, ">$config{allow_file}");
 	foreach my $u (@_) {
 		&print_tempfile(ALLOW, $u,"\n");
 		}
 	&close_tempfile(ALLOW);
+	use strict "subs";
 	chmod(0444, $config{allow_file});
 	}
 else {
@@ -103,11 +115,13 @@ sub save_denied
 {
 &lock_file($config{deny_file});
 if (@_ || !-r $config{'allow_file'}) {
+	no strict "subs";
 	&open_tempfile(DENY, ">$config{deny_file}");
 	foreach my $u (@_) {
 		&print_tempfile(DENY, $u,"\n");
 		}
 	&close_tempfile(DENY);
+	use strict "subs";
 	chmod(0444, $config{deny_file});
 	}
 else {
@@ -121,7 +135,8 @@ else {
 # any deny files.
 sub can_use_at
 {
-local ($user) = @_;
+my ($user) = @_;
+my (@allow, @deny, @denied);
 if (!$config{'allow_file'}) {
 	return 1;	# not supported by OS
 	}

@@ -5,6 +5,10 @@
 # F&AS : default parameters can be set 
 #   ext_user : default user
 #   ext_cmd  : default command
+use strict;
+use warnings;
+our (%access, %text, %in, %config);
+our ($module_name, $remote_user);
 
 require './at-lib.pl';
 use POSIX;
@@ -18,13 +22,13 @@ if (!&has_command("at")) {
 	}
 
 # Show list of existing jobs
-@jobs = &list_atjobs();
+my @jobs = &list_atjobs();
 @jobs = grep { &can_edit_user(\%access, $_->{'user'}) } @jobs;
 if (@jobs) {
 	print &ui_form_start("delete_jobs.cgi", "post");
 	@jobs = sort { $a->{'id'} <=> $b->{'id'} } @jobs;
-	@tds = ( "width=5", "nowrap" );
-	@links = ( &select_all_link("d"), &select_invert_link("d") );
+	my @tds = ( "width=5", "nowrap" );
+	my @links = ( &select_all_link("d"), &select_invert_link("d") );
 	print &ui_links_row(\@links);
 	print &ui_columns_start([
 		"",
@@ -33,13 +37,13 @@ if (@jobs) {
 		$text{'index_exec'},
 		$text{'index_created'},
 		$text{'index_cmd'} ], 100, 0, \@tds);
-	foreach $j (@jobs) {
-		local @cols;
+	foreach my $j (@jobs) {
+		my @cols;
 		push(@cols, &ui_link("edit_job.cgi?id=".$j->{'id'}, $j->{'id'}) );
 		push(@cols, &html_escape($j->{'user'}));
-		$date = localtime($j->{'date'});
+		my $date = localtime($j->{'date'});
 		push(@cols, "<tt>$date</tt>");
-		$created = localtime($j->{'created'});
+		my $created = localtime($j->{'created'});
 		push(@cols, "<tt>$created</tt>");
 		push(@cols, join("<br>", split(/\n/,
 				&html_escape($j->{'realcmd'}))));
@@ -57,7 +61,8 @@ print &ui_form_start("create_job.cgi");
 print &ui_table_start($text{'index_header'}, undef, 2);
 
 # User to run as
-$dir = "/";
+my $dir = "/";
+my ($user, $usel);
 if ($access{'mode'} == 1) {
 	$usel = &ui_select("user", undef,
 			   [ split(/\s+/, $access{'users'}) ]);
@@ -65,7 +70,7 @@ if ($access{'mode'} == 1) {
 elsif ($access{'mode'} == 3) {
 	$usel = "<tt>$remote_user</tt>";
 	print &ui_hidden("user", $remote_user);
-	@uinfo = getpwnam($remote_user);
+	my @uinfo = getpwnam($remote_user);
 	$dir = $uinfo[7];
 	}
 else {
@@ -74,7 +79,7 @@ else {
 print &ui_table_row($text{'index_user'}, $usel, undef, ["valign=middle","valign=middle"]);
 
 # Run date
-@now = localtime(time());
+my @now = localtime(time());
 print &ui_table_row($text{'index_date'},
 	&ui_textbox("day", $now[3], 2)."/".
 	&ui_select("month", $now[4],
@@ -87,7 +92,7 @@ print &ui_table_row($text{'index_time'},
 	&ui_textbox("hour", undef, 2).":".&ui_textbox("min", "00", 2), undef, ["valign=middle","valign=middle"]);
 
 # Current date and time
-($date, $time) = split(/\s+/, &make_date(time()));
+my ($date, $time) = split(/\s+/, &make_date(time()));
 print &ui_table_row($text{'index_cdate'}, $date, undef, ["valign=middle","valign=middle"]);
 print &ui_table_row($text{'index_ctime'}, $time, undef, ["valign=middle","valign=middle"]);
 
@@ -108,8 +113,8 @@ print &ui_form_end([ [ undef, $text{'create'} ] ]);
 
 if ($access{'allow'} && $config{'allow_file'}) {
 	# Show form to manage allowed and denied users
-	@allow = &list_allowed();
-	@deny = &list_denied();
+	my @allow = &list_allowed();
+	my @deny = &list_denied();
 	print &ui_hr();
 	print &ui_form_start("save_allow.cgi", "post");
 	print &ui_table_start($text{'index_allow'}, undef, 2);

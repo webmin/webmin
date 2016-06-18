@@ -1,3 +1,6 @@
+use strict;
+use warnings;
+our %config;
 
 do 'at-lib.pl';
 
@@ -5,9 +8,9 @@ do 'at-lib.pl';
 # Returns files and directories that can be backed up
 sub backup_config_files
 {
-local @rv;
-opendir(DIR, $config{'at_dir'});
-while($f = readdir(DIR)) {
+my @rv;
+opendir(my $DIR, $config{'at_dir'});
+while(my $f = readdir($DIR)) {
 	next if ($f eq "." || $f eq ".." || $f eq ".SEQ");
 	if (!-d "$config{'at_dir'}/$f") {
 		push(@rv, "$config{'at_dir'}/$f");
