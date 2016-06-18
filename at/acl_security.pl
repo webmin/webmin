@@ -1,3 +1,6 @@
+use strict;
+use warnings;
+our (%text, %in);
 
 require 'at-lib.pl';
 

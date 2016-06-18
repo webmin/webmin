@@ -1,24 +1,31 @@
 #!/usr/local/bin/perl
 # Start the Ajaxterm webserver on a random port, then print an iframe for
 # a URL that proxies to it
+use strict;
+use warnings;
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 use Socket;
+our(%text, %config, %gconfig);
+our $module_root_directory;
+our $module_name;
+
 &init_config();
 
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 
 # Check for python
-$python = &has_command("python");
+my $python = &has_command("python");
 if (!$python) {
 	&ui_print_endpage(&text('index_epython', "<tt>python</tt>"));
 	}
 
 # Pick a free port
+my %miniserv;
 &get_miniserv_config(\%miniserv);
-$port = $miniserv{'port'} + 1;
-$proto = getprotobyname('tcp');
+my $port = $miniserv{'port'} + 1;
+my $proto = getprotobyname('tcp');
 socket(TEST, PF_INET, SOCK_STREAM, $proto) ||
 	&error("Socket failed : $!");
 setsockopt(TEST, SOL_SOCKET, SO_REUSEADDR, pack("l", 1));
@@ -29,17 +36,17 @@ while(1) {
 close(TEST);
 
 # Run the Ajaxterm webserver
-$pid = fork();
+my $pid = fork();
 if (!$pid) {
 	chdir("$module_root_directory/ajaxterm");
-	$logfile = $ENV{'WEBMIN_VAR'}.'/ajaxterm.log';
-	untie(*STDIN); open(STDIN, "</dev/null");
-	untie(*STDOUT); open(STDOUT, ">$logfile");
-	untie(*STDERR); open(STDERR, ">$logfile");
-	$shell = &has_command("bash") ||
+	my $logfile = $ENV{'WEBMIN_VAR'}.'/ajaxterm.log';
+	untie(*STDIN); open(STDIN, "<", "/dev/null");
+	untie(*STDOUT); open(STDOUT, ">", $logfile);
+	untie(*STDERR); open(STDERR, ">", $logfile);
+	my $shell = &has_command("bash") ||
 		 &has_command("sh") || "/bin/sh";
-	@uinfo = getpwnam("root");
-	$home = $uinfo[7] || "/";
+	my @uinfo = getpwnam("root");
+	my $home = $uinfo[7] || "/";
 	$shell = "$shell -c ".quotemeta("cd '$home' ; exec $shell");
 	exec($python, "ajaxterm.py", "--port", $port, "--log",
 	     $config{'autologin'} ? ("--command", $shell) : ( ));
@@ -47,7 +54,9 @@ if (!$pid) {
 	}
 
 # Wait for it to come up
-$try = 0;
+my $try = 0;
+no strict "subs"; # TEST2 is weird. I dunno how to make it lexical without breaking.
+no warnings;
 while(1) {
 	my $err;
 	&open_socket("localhost", $port, TEST2, \$err);
@@ -59,6 +68,8 @@ while(1) {
 	sleep(1);
 	}
 close(TEST2);
+use strict "subs";
+use warnings;
 
 # Show the iframe
 print "<center>\n";
@@ -74,7 +85,7 @@ if (!fork()) {
 	untie(*STDIN); close(STDIN);
 	untie(*STDOUT); close(STDOUT);
 	untie(*STDERR); close(STDERR);
-	$statfile = "$ENV{'WEBMIN_VAR'}/ajaxterm/$port";
+	my $statfile = "$ENV{'WEBMIN_VAR'}/ajaxterm/$port";
 	while(1) {
 		my @st = stat($statfile);
 		if (@st && time() - $st[9] > $config{'timeout'}) {

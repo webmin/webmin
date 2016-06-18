@@ -1,3 +1,6 @@
+use strict;
+use warnings;
+our %access;
 
 do 'at-lib.pl';
 
