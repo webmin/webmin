@@ -1,5 +1,8 @@
 #!/usr/local/bin/perl
 # Update allowed or denied At users
+use strict;
+use warnings;
+our (%access, %text, %in);
 
 require './at-lib.pl';
 ReadParse();
@@ -11,13 +14,13 @@ if ($in{'amode'} == 0) {
 	&save_denied();
 	}
 elsif ($in{'amode'} == 1) {
-	@users = split(/\s+/, $in{'ausers'});
+	my @users = split(/\s+/, $in{'ausers'});
 	@users || &error($text{'allow_eusers'});
 	&save_allowed(@users);
 	&save_denied();
 	}
 elsif ($in{'amode'} == 2) {
-	@users = split(/\s+/, $in{'ausers'});
+	my @users = split(/\s+/, $in{'ausers'});
 	@users || &error($text{'allow_eusers'});
 	&save_allowed();
 	&save_denied(@users);
