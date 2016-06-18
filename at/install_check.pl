@@ -1,4 +1,6 @@
 # install_check.pl
+use strict;
+use warnings;
 
 do 'at-lib.pl';
 
