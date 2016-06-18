@@ -330,6 +330,7 @@ return undef;
 sub process_firewall_line
 {
 local ($line, $hours, $time_now) = @_;
+my @time_now = localtime($time_now);
 if ($line =~ /^(\S+)\s+(\d+)\s+(\d+):(\d+):(\d+).*BANDWIDTH_(IN|OUT):(IN=.*)/) {
 	# Found a valid line
 	local ($mon, $day, $hr, $min, $sec) = ($1, $2, $3, $4, $5);
