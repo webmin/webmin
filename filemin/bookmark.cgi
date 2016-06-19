@@ -5,7 +5,7 @@ use lib './lib';
 
 &ReadParse();
 
-switch_to_remote_user();
+&get_paths();
 
 $confdir = "$remote_user_info[7]/.filemin";
 if(!-e $confdir) {
