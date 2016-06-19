@@ -2337,7 +2337,7 @@ my $rcode = $1;
 while(1) {
 	$line = &read_http_connection($_[0]);
 	$line =~ tr/\r\n//d;
-	$line =~ /^(\S+):\s+(.*)$/ || last;
+	$line =~ /^(\S+):\s*(.*)$/ || last;
 	$header{lc($1)} = $2;
 	push(@headers, [ lc($1), $2 ]);
 	}
