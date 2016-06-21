@@ -3,7 +3,7 @@
 # Save global forwarding options
 use strict;
 use warnings;
-our (%access, %text, %config);
+our (%access, %text, %config, %in);
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'forwarding_ecannot'});
