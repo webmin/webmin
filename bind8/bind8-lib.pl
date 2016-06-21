@@ -23,8 +23,8 @@ if ($have_dnssec_tools) {
 do 'records-lib.pl';
 
 # Globals (yuck!)
-my @extra_forward = split(/\s+/, $config{'extra_forward'});
-my @extra_reverse = split(/\s+/, $config{'extra_reverse'});
+my @extra_forward = split(/\s+/, $config{'extra_forward'} || '');
+my @extra_reverse = split(/\s+/, $config{'extra_reverse'} || '');
 our %is_extra = map { $_, 1 } (@extra_forward, @extra_reverse);
 our %access = &get_module_acl();
 our $module_config_file;
@@ -51,6 +51,10 @@ if (open(my $VERSION, "<", "$module_config_directory/version")) {
 	}
 else {
 	$bind_version = &get_bind_version();
+	}
+if ($bind_version =~ /^(\d+\.\d+)\./) {
+	# Convery to properly formatted number
+	$bind_version = $1;
 	}
 
 # For automatic DLV setup
@@ -88,7 +92,7 @@ sub have_dnssec_tools_support
 # Returns the BIND verison number, or undef if unknown
 sub get_bind_version
 {
-my $out = `$config{'named_path'} -v 2>&1`;
+my $out = &backquote_command("$config{'named_path'} -v 2>&1");
 if ($out =~ /(bind|named)\s+([0-9\.]+)/i) {
 	return $2;
 	}
@@ -2117,7 +2121,7 @@ my $user;
 my $cmd;
 if ($config{'named_user'}) {
 	$user = "-u $config{'named_user'}";
-	if (&get_bind_version() < 9) {
+	if ($bind_version < 9) {
 		# Only version 8 takes the -g flag
 		if ($config{'named_group'}) {
 			$user .= " -g $config{'named_group'}";
@@ -2428,8 +2432,8 @@ return wantarray ? ( $z, $bconf, $parent ) : $z;
 sub list_slave_servers
 {
 &foreign_require("servers", "servers-lib.pl");
-my %ids = map { $_, 1 } split(/\s+/, $config{'servers'});
-my %secids = map { $_, 1 } split(/\s+/, $config{'secservers'});
+my %ids = map { $_, 1 } split(/\s+/, $config{'servers'} || '');
+my %secids = map { $_, 1 } split(/\s+/, $config{'secservers'} || '');
 my @servers = &servers::list_servers();
 if (%ids) {
 	my @rv = grep { $ids{$_->{'id'}} } @servers;
