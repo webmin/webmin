@@ -7,7 +7,7 @@ our (%access, %text, %in);
 
 require './bind8-lib.pl';
 &ReadParse();
-my $access{'ro'} && &error($text{'restart_ecannot'});
+$access{'ro'} && &error($text{'restart_ecannot'});
 $access{'apply'} || &error($text{'restart_ecannot'});
 my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 &can_edit_zone($zone) || &error($text{'restart_ecannot'});
