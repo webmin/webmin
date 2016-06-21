@@ -10,7 +10,7 @@ require './bind8-lib.pl';
 
 # Get the zones
 my @zones;
-foreach imy $d (split(/\0/, $in{'d'})) {
+foreach my $d (split(/\0/, $in{'d'})) {
 	my ($zonename, $viewidx) = split(/\s+/, $d);
 	my $zone = &get_zone_name_or_error($zonename, $viewidx);
 	$zone || &error($text{'umass_egone'});
