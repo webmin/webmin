@@ -751,11 +751,15 @@ foreach my $s ("a", "mx", "ptr") {
 	push(@rv, $s) if ($spf->{$s});
 	}
 foreach my $s ("a", "mx", "ip4", "ip6", "ptr", "include", "exists") {
-	foreach my $v (@{$spf->{"$s:"}}) {
-		push(@rv, "$s:$v");
+	if ($spf->{"$s:"}) {
+		foreach my $v (@{$spf->{"$s:"}}) {
+			push(@rv, "$s:$v");
+			}
 		}
 	}
-push(@rv, @{$spf->{'other'}});
+if ($spf->{'other'}) {
+	push(@rv, @{$spf->{'other'}});
+	}
 foreach my $m ("redirect", "exp") {
 	if ($spf->{$m}) {
 		push(@rv, $m."=".$spf->{$m});
