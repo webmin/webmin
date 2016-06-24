@@ -337,9 +337,10 @@ return \%str;
 # find(name, &array)
 sub find
 {
+my ($name, $conf) = @_;
 my @rv;
-foreach my $c (@{$_[1]}) {
-	if ($c->{'name'} eq $_[0]) {
+foreach my $c (@$conf) {
+	if ($c->{'name'} eq $name) {
 		push(@rv, $c);
 		}
 	}
@@ -390,7 +391,7 @@ sub save_directive
 {
 my (@oldv, @newv, $pm, $o, $n, $lref, @nl, $ol);
 $pm = $_[0]->{'members'};
-@oldv = ref($_[1]) ? @{$_[1]} : &find($_[1], $pm);
+@oldv = ref($_[1]) ? @{$_[1]} : $_[1] ? &find($_[1], $pm) : ( );
 @newv = @{$_[2]};
 for(my $i=0; $i<@oldv || $i<@newv; $i++) {
 	my $oldeline = $i<@oldv ? $oldv[$i]->{'eline'} : undef;
@@ -489,27 +490,29 @@ foreach my $need (@need_quote) {
 # Renders some directive into a number of lines of text
 sub directive_lines
 {
+my ($dir, $tabs) = @_;
+$tabs ||= 0;
 my (@rv, $i);
-$rv[0] = "\t" x $_[1];
-$rv[0] .= "$_[0]->{'name'}";
-foreach my $v (@{$_[0]->{'values'}}) {
-	if ($need_quote{$_[0]->{'name'}} && !$i) { $rv[0] .= " \"$v\""; }
+$rv[0] = "\t" x $tabs;
+$rv[0] .= $dir->{'name'};
+foreach my $v (@{$dir->{'values'}}) {
+	if ($need_quote{$dir->{'name'}} && !$i) { $rv[0] .= " \"$v\""; }
 	else { $rv[0] .= " $v"; }
 	$i++;
 	}
-if ($_[0]->{'type'} == 1) {
+if ($dir->{'type'} && $dir->{'type'} == 1) {
 	# multiple values.. include them as well
 	$rv[0] .= " {";
-	foreach my $m (@{$_[0]->{'members'}}) {
-		push(@rv, &directive_lines($m, $_[1]+1));
+	foreach my $m (@{$dir->{'members'}}) {
+		push(@rv, &directive_lines($m, $tabs + 1));
 		}
-	push(@rv, ("\t" x ($_[1]+1))."}");
+	push(@rv, ("\t" x ($tabs + 1))."}");
 	}
-elsif ($_[0]->{'type'} == 2) {
+elsif ($dir->{'type'} && $dir->{'type'} == 2) {
 	# named sub-structures .. include them too
-	foreach my $sn (sort { $a cmp $b } (keys %{$_[0]->{'members'}})) {
+	foreach my $sn (sort { $a cmp $b } (keys %{$dir->{'members'}})) {
 		$rv[0] .= " ".$sn." {";
-		foreach my $m (@{$_[0]->{'members'}->{$sn}}) {
+		foreach my $m (@{$dir->{'members'}->{$sn}}) {
 			$rv[0] .= " ".join(" ", &directive_lines($m, 0));
 			}
 		$rv[0] .= " }";
@@ -1529,7 +1532,8 @@ sub get_chroot
 {
 if (!defined($get_chroot_cache)) {
 	if ($gconfig{'real_os_type'} eq 'CentOS Linux' &&
-	    $gconfig{'real_os_version'} >= 6 &&
+	    $gconfig{'real_os_version'} =~ /^(\d+)/ && $1 >= 6 &&
+	    $config{'auto_chroot'} &&
 	    $config{'auto_chroot'} =~ /\/etc\/sysconfig\/named/) {
 		# Special case hack - on CentOS 6, chroot path in
 		# /etc/sysconfig/named isn't really used. Instead, files

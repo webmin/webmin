@@ -36,9 +36,10 @@ else {
 	open($FILE, "<", $rootfile);
 	}
 my $lnum = 0;
-my ($gotsoa, $aftersoa);
+my ($gotsoa, $aftersoa) = (0, 0);
 while($line = <$FILE>) {
 	my ($glen, $merged_2, $merge);
+	$glen = 0;
 	# strip comments (# is not a valid comment separator here!)
 	$line =~ s/\r|\n//g;
 	# parsing splited into separate cases to fasten it
@@ -147,10 +148,11 @@ while($i < @tok) {
 	elsif ($tok[$i] =~ /^\$generate$/i) {
 		# a generate directive .. add it as a special record
 		my $gen = { 'file' => $file,
-			       'rootfile' => $rootfile,
-			       'comment' => $coms[$i],
-			       'line' => $lnum[$i],
-			       'num' => $num++ };
+			    'rootfile' => $rootfile,
+			    'comment' => $coms[$i],
+			    'line' => $lnum[$i],
+			    'num' => $num++,
+			    'type' => '' };
 		my @gv;
 		while($lnum[++$i] == $gen->{'line'}) {
 			push(@gv, $tok[$i]);
@@ -162,10 +164,11 @@ while($i < @tok) {
 		# a ttl directive
 		$i++;
 		my $defttl = { 'file' => $file,
-				  'rootfile' => $rootfile,
-			       	  'line' => $lnum[$i],
-			          'num' => $num++,
-			       	  'defttl' => $tok[$i++] };
+			       'rootfile' => $rootfile,
+		      	       'line' => $lnum[$i],
+		               'num' => $num++,
+		       	       'defttl' => $tok[$i++],
+			       'type' => '' };
 		push(@rv, $defttl);
 		}
 	elsif ($tok[$i] =~ /^\$(\S+)/i) {
@@ -250,7 +253,7 @@ while($i < @tok) {
 		# read values until end of line, unless a ( is found, in which
 		# case read till the )
 		$l = $lnum[$i];
-		while($lnum[$i] == $l && $i < @tok) {
+		while($i < @tok && $lnum[$i] == $l) {
 			if ($tok[$i] eq "(") {
 				my $olnum = $lnum[$i];
 				while($tok[++$i] ne ")") {
@@ -770,7 +773,7 @@ elsif ($spf->{'all'} == 2) { push(@rv, "~all"); }
 elsif ($spf->{'all'} == 1) { push(@rv, "?all"); }
 elsif ($spf->{'all'} eq '0') { push(@rv, "all"); }
 my @rvwords;
-my $rvword;
+my $rvword = "";
 while(@rv) {
 	my $w = shift(@rv);
 	if (length($rvword)+length($w)+1 >= 255) {
@@ -917,6 +920,7 @@ return $rv;
 sub get_zone_file
 {
 my ($z, $abs) = @_;
+$abs ||= 0;
 my $fn;
 if ($z->{'members'}) {
 	my $file = &find("file", $z->{'members'});
