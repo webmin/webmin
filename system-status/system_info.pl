@@ -106,7 +106,7 @@ if ($info->{'drivetemps'} && &show_section('temp')) {
 	foreach my $t (@{$info->{'drivetemps'}}) {
 		my $short = $t->{'device'};
 		$short =~ s/^\/dev\///;
-		my $emsg;
+		my $emsg = "";
 		if ($t->{'errors'}) {
 			$emsg .= " (<font color=red>".
 			    &text('right_driveerr', $t->{'errors'}).
