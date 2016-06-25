@@ -5863,23 +5863,18 @@ foreach my $k (keys %{$_[3]}) {
 # Construct description if one is needed
 my $logemail = $gconfig{'logemail'} &&
 	       (!$gconfig{'logmodulesemail'} ||
-	       &indexof($m, split(/\s+/, $gconfig{'logmodulesemail'})) >= 0) &&
+	        &indexof($m, split(/\s+/, $gconfig{'logmodulesemail'})) >= 0) &&
 	       &foreign_check("mailboxes");
 my $msg = undef;
 my %minfo = &get_module_info($m);
 if ($logemail || $gconfig{'logsyslog'}) {
 	my $mod = &get_module_name();
 	my $mdir = module_root_directory($mod);
-	if (-r "$mdir/log_parser.pl") {
-		&foreign_require($mod, "log_parser.pl");
-		$msg = &foreign_call($mod, "parse_webmin_log",
-			$remote_user, $script_name,
-			$_[0], $_[1], $_[2], \%params);
+	if (&foreign_check("webminlog")) {
+		&foreign_require("webminlog");
+		my $act = &webminlog::parse_logline($line);
+		$msg = &webminlog::get_action_description($act, 0);
 		$msg =~ s/<[^>]*>//g;	# Remove tags
-		}
-	elsif ($_[0] eq "_config_") {
-		my %wtext = &load_language("webminlog");
-		$msg = $wtext{'search_config'};
 		}
 	$msg ||= "$_[0] $_[1] $_[2]";
 	}
