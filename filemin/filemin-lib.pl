@@ -82,6 +82,9 @@ sub get_paths {
 
     # Initiate per user config
     $confdir = "$remote_user_info[7]/.filemin";
+    if(!-e $confdir) {
+        mkdir $confdir or &error("$text{'error_creating_conf'}: $!");
+    }
     if(!-e "$confdir/.config") {
         &read_file_cached("$module_root_directory/defaultuconf", \%userconfig);
     } else {

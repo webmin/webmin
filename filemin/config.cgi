@@ -11,11 +11,6 @@ get_paths();
 $head = "<link rel='stylesheet' type='text/css' href='unauthenticated/css/style.css' />";
 print $head;
 
-$confdir = "$remote_user_info[7]/.filemin";
-if(!-e $confdir) {
-    mkdir $confdir or &error("$text{'error_creating_conf'}: $!");
-}
-
 if(!-e "$confdir/.config") {
     &read_file("$module_root_directory/defaultuconf", \%config);
 } else {

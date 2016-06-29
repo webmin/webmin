@@ -15,7 +15,6 @@ $columns =~ s/\0/,/g;
     'menu_style' => $in{'menu_style'}
 );
 
-$confdir = "$remote_user_info[7]/.filemin";
 &write_file("$confdir/.config", \%config);
 
 $bookmarks = $in{'bookmarks'};
