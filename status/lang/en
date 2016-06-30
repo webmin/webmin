@@ -410,6 +410,7 @@ monitor_sub3=Service monitor : $1 services
 monitor_run1=Running $1 on $2 ..
 monitor_run2=Running $1 ..
 monitor_runerr=Failed to run $1 on $2 : $3
+monitor_email_stat=Current status: $1
 
 deletes_egone=One of the selected monitors no longer exists
 deletes_enone=No monitors selected
