@@ -1245,8 +1245,10 @@ if ($type =~ /^ext\d+$/) {
 		&ui_yesno_radio("ext2_grpid", defined($options{"grpid"}) ||
 					      defined($options{"bsdgroups"})));
 
-	my $usrquota = defined($options{"usrquota"});
-	my $grpquota = defined($options{"grpquota"});
+	my $usrquota = defined($options{"usrquota"}) ||
+			defined($options{"usrjquota"});
+	my $grpquota = defined($options{"grpquota"}) ||
+			defined($options{"grpjquota"});
 	print &ui_table_row($text{'linux_quotas'},
 		&ui_select("ext2_quota", $usrquota && $grpquota ? 3 :
 					 $grpquota ? 2 :
@@ -1255,6 +1257,13 @@ if ($type =~ /^ext\d+$/) {
 			     [ 1, $text{'linux_usrquota'} ],
 			     [ 2, $text{'linux_grpquota'} ],
 			     [ 3, $text{'linux_usrgrpquota'} ] ]));
+
+	print &ui_table_row($text{'linux_quotaj'},
+		&ui_radio("ext2_quotaj",
+			  defined($options{"usrjquota"}) ||
+			   defined($options{"grpjquota"}) ? 1 : 0,
+			  [ [ 1, $text{'linux_quotaj1'} ],
+			    [ 0, $text{'linux_quotaj0'} ] ]));
 
 	print &ui_table_row($text{'linux_resuid'},
 		&ui_user_textbox("ext2_resuid", defined($options{"resuid"}) ?
@@ -1879,12 +1888,26 @@ elsif ($_[0] =~ /^ext\d+$/) {
 	if ($in{'ext2_resgid'})
 		{ $options{"resgid"} = getgrnam($in{'ext2_resgid'}); }
 
+	my $jufile = $options{"usrjquota"};
+	my $jgfile = $options{"grpjquota"};
 	delete($options{"quota"}); delete($options{"noquota"});
 	delete($options{"usrquota"}); delete($options{"grpquota"});
-	if ($in{'ext2_quota'} == 1) { $options{'usrquota'} = ""; }
-	elsif ($in{'ext2_quota'} == 2) { $options{'grpquota'} = ""; }
-	elsif ($in{'ext2_quota'} == 3)
-		{ $options{'usrquota'} = $options{'grpquota'} = ""; }
+	delete($options{"usrjquota"}); delete($options{"grpjquota"});
+	my ($u, $g) = ("usrquota", "grpquota");
+	if ($in{'ext2_quotaj'}) {
+		($u, $g) = ("usrjquota", "grpjquota");
+		$jufile ||= "aquota.user";
+		$jgfile ||= "aquota.group";
+		$options{"jqfmt"} = "vfsv0";
+		}
+	else {
+		$jufile = "";
+		$jgfile = "";
+		delete($options{"jqfmt"});
+		}
+	if ($in{'ext2_quota'} == 1) { $options{$u} = $jufile; }
+	elsif ($in{'ext2_quota'} == 2) { $options{$g} = $jgfile; }
+	elsif ($in{'ext2_quota'} == 3) { $options{$u} = $jufile; $options{$g} = $jgfile; }
 	}
 elsif ($_[0] eq "fat" || $_[0] eq "vfat" ||
        $_[0] eq "msdos" || $_[0] eq "umsdos" || $_[0] eq "fatx") {
