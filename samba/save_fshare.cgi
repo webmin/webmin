@@ -89,7 +89,8 @@ else {
 	# Creating a new share
 	&create_share($name);
 	if ($in{'create'} eq "yes" && !-d $in{'path'}) {
-		&make_dir($in{'path'}, oct($in{'createperms'}));
+		&make_dir($in{'path'}, oct($in{'createperms'})) ||
+			&error(&text('savefshare_emkdir', $!));
 		&set_ownership_permissions($in{'createowner'},
 					   $in{'creategroup'},
 					   oct($in{'createperms'}),

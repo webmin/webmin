@@ -365,6 +365,7 @@ savefshare_global=The name 'global' cannot be used for a share
 savefshare_owner=Missing or invalid owner for new directory
 savefshare_group=Missing or invalid group for new directory
 savefshare_perms=Missing or invalid permissions for new directory
+savefshare_emkdir=Failed to create directory : $1
 
 savemisc_fail=Failed to save options
 savemisc_lockdir=The directory containing the lock directory does not exist
