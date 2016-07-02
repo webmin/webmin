@@ -438,6 +438,7 @@ savefmisc_fail=Fehler beim Speichern 'Erweiterter Einstellungen'
 savefmisc_number='$1' ist keine g&#252;ltige Anzahl Verbindungen
 savefperm_fail=Fehler beim Speichern der Dateiberechtigungen
 savefperm_mode='$1' ist kein g&#252;ltiger UNIX Dateimodus
+savefshare_emkdir=Fehlgeschlagen Verzeichnis zu erstellen : $1
 savefshare_exist=Eine Freigabe namens '$1' existiert bereits
 savefshare_fail=Fehler beim Speichern der Freigabe
 savefshare_global=Der Name 'global' kann nicht f&#252;r eine Freigabe verwendet werden
