@@ -756,7 +756,7 @@ my ($rev, $revconf, $revfile, $revrec, $addr, $ipv6);
 
 # find reverse domain
 my @zl = grep { $_->{'type'} ne 'view' } &list_zone_names();
-if ($_[1] ne '' && $_[1] ne 'any') {
+if ($_[1] && $_[1] ne 'any') {
 	@zl = grep { $_->{'view'} && $_->{'viewindex'} == $_[1] } @zl;
 	}
 else {
