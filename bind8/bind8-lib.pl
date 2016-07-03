@@ -2355,7 +2355,7 @@ foreach my $k (keys %znc) {
 		push(@rv, { 'name' => $name,
 			    'type' => $type,
 			    'index' => $index,
-			    'view' => $view eq '*' ? undef : $view,
+			    'view' => !$view || $view eq '*' ? undef : $view,
 			    'file' => $file });
 		}
 	elsif ($k =~ /^view_(\d+)$/) {
@@ -2367,7 +2367,7 @@ foreach my $k (keys %znc) {
 		}
 	}
 foreach my $z (@rv) {
-	if ($z->{'type'} ne 'view' && $z->{'view'} ne '*') {
+	if ($z->{'type'} ne 'view' && $z->{'view'} && $z->{'view'} ne '*') {
 		$z->{'viewindex'} = $viewidx{$z->{'view'}};
 		}
 	}
