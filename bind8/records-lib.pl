@@ -233,7 +233,7 @@ while($i < @tok) {
 			$dir{'class'} = "IN";
 			$i++;
 			}
-		if ($dir{'name'} eq '') {
+		if (!defined($dir{'name'}) || $dir{'name'} eq '') {
 			my $prv;
 			# Name comes from previous record
 			for(my $p=$#rv; $p>=0; $p--) {
