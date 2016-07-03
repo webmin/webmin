@@ -2307,6 +2307,7 @@ if ($changed || !$filecount || $znc{'version'} != $zone_names_version ||
 		my @vz = &find("zone", $v->{'members'});
 		foreach my $z (@vz) {
 			my $type = &find_value("type", $z->{'members'});
+			next if (!$type);
 			my $file = &find_value("file", $z->{'members'});
 			$znc{"zone_".($n++)} = join("\t", $z->{'value'},
 				$z->{'index'}, $type, $v->{'value'}, $file);
@@ -2317,6 +2318,7 @@ if ($changed || !$filecount || $znc{'version'} != $zone_names_version ||
 		}
 	foreach my $z (&find("zone", $conf)) {
 		my $type = &find_value("type", $z->{'members'});
+		next if (!$type);
 		my $file = &find_value("file", $z->{'members'});
 		$file ||= "";	# slaves and other types with no file
 		$znc{"zone_".($n++)} = join("\t", $z->{'value'},
