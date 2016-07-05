@@ -81,9 +81,8 @@ if (&indexof('REJECT', @jumps) >= 0 && &can_jump("REJECT")) {
 	if ($rule->{'j'}->[1] eq 'REJECT') {
 		$rwith = $rule->{'reject-with'}->[1];
 		}
-	local @rtypes = ( "icmp-net-unreachable", "icmp-host-unreachable",
-			  "icmp-port-unreachable", "icmp-proto-unreachable",
-			  "icmp-net-prohibited", "icmp-host-prohibited",
+	local @rtypes = ( "icmp6-no-route", "icmp6-adm-pro-hibited",
+			  "icmp6-addr-unreachable", "icmp6-port-unreachable",
 			  "echo-reply", "tcp-reset" );
 	print &ui_table_row($text{'edit_rwith'},
 		&ui_radio("rwithdef", $rwith eq "" ? 1 : 0,
@@ -337,7 +336,7 @@ print &ui_table_row($text{'edit_physdevisbridged'},
 print &ui_table_hr();
 
 # Show unknown modules
-@mods = grep { !/^(tcp|udp|icmp|multiport|mac|limit|owner|state|tos|comment|physdev)$/ } map { $_->[1] } @{$rule->{'m'}};
+@mods = grep { !/^(tcp|udp|icmpv6|multiport|mac|limit|owner|state|tos|comment|physdev)$/ } map { $_->[1] } @{$rule->{'m'}};
 print &ui_table_row($text{'edit_mods'},
 	&ui_textbox("mods", join(" ", @mods), 60));
 
@@ -416,7 +415,7 @@ if ($types) {
 	@types = @$types;
 	}
 else {
-	open(ip6tables, "ip6tables -p icmp -h 2>/dev/null |");
+	open(ip6tables, "ip6tables -p icmpv6 -h 2>/dev/null |");
 	while(<ip6tables>) {
 		if (/valid\s+icmp\s+types:/i) {
 			$started = 1;
@@ -442,7 +441,7 @@ else {
 sub protocol_input
 {
 local ($name, $value) = @_;
-local @stdprotos = ( 'tcp', 'udp', 'icmp', undef );
+local @stdprotos = ( 'tcp', 'udp', 'icmpv6', undef );
 $value ||= "tcp";
 local @otherprotos;
 open(PROTOS, "/etc/protocols");
