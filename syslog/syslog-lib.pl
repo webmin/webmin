@@ -366,7 +366,13 @@ sub extra_log_files
 {
 local @rv;
 foreach my $fd (split(/\t+/, $config{'extras'}), split(/\t+/, $access{'extras'})) {
-	if ($fd =~ /^(\S+)\s+(\S.*)$/) {
+	if ($fd =~ /^"(\S+)"\s+"(\S.*)"$/) {
+		push(@rv, { 'file' => $1, 'desc' => $2 });
+		}
+	elsif ($fd =~ /^"(\S+)"$/) {
+		push(@rv, { 'file' => $1 });
+		}
+	elsif ($fd =~ /^(\S+)\s+(\S.*)$/) {
 		push(@rv, { 'file' => $1, 'desc' => $2 });
 		}
 	else {
