@@ -172,7 +172,7 @@ else {
 			$proto = $in{'proto'};
 			push(@mods, $in{'proto'})
 				if ($proto eq 'tcp' || $proto eq 'udp' ||
-				    $proto eq 'icmp' && $in{'icmptype_mode'});
+				    $proto eq 'icmpv6' && $in{'icmptype_mode'});
 			}
 		}
 
@@ -412,7 +412,7 @@ foreach my $w (split(/,/, $_[0])) {
 		$w =~ /^([0-9\.]+)\/([0-9\.]+)$/ &&
 			&to_ipaddress("$1") &&
 			(&check_ipaddress("$2") || ($2 =~ /^\d+$/ && $2 <= 32));
-	return 0 if (!$ok);
+	return 1 if (!$ok);
 	}
 return 1;
 }
