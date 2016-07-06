@@ -404,7 +404,8 @@ sub create_logical_volume
 {
 local $cmd = "lvcreate -n".quotemeta($_[0]->{'name'})." ";
 local $suffix;
-if ($_[0]->{'size_of'} eq 'VG' || $_[0]->{'size_of'} eq 'FREE') {
+if ($_[0]->{'size_of'} eq 'VG' || $_[0]->{'size_of'} eq 'FREE' ||
+    $_[0]->{'size_of'} eq 'ORIGIN') {
 	$cmd .= "-l ".quotemeta("$_[0]->{'size'}%$_[0]->{'size_of'}");
 	}
 elsif ($_[0]->{'size_of'}) {
