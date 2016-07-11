@@ -2191,8 +2191,10 @@ unlink($_[0]->{'file'});
 # Adds some message in maildir format to a directory
 sub write_maildir
 {
+my ($mail, $dir, $textonly) = @_;
+
 # Work out last modified time, and don't update cache if too new
-local $cachefile = &get_maildir_cachefile($_[1]);
+local $cachefile = &get_maildir_cachefile($dir);
 local $up2date = 0;
 if ($cachefile) {
 	local @cst = stat($cachefile);
@@ -2208,20 +2210,20 @@ if ($cachefile) {
 
 # Select a unique filename and write to it
 local $now = time();
-$_[0]->{'id'} = &unique_maildir_filename($_[1]);
-$mf = "$_[1]/$_[0]->{'id'}";
-&send_mail($_[0], $mf, $_[2], 1);
-$_[0]->{'file'} = $mf;
+$mail->{'id'} = &unique_maildir_filename($dir);
+$mf = "$dir/$mail->{'id'}";
+&send_mail($mail, $mf, $textonly, 1);
+$mail->{'file'} = $mf;
 
 # Set ownership of the new message file to match the directory
-local @st = stat($_[1]);
+local @st = stat($dir);
 if ($< == 0) {
 	&set_ownership_permissions($st[4], $st[5], undef, $mf);
 	}
 
 # Create tmp and new sub-dirs, if missing
 foreach my $sd ("tmp", "new") {
-	local $sdpath = "$_[1]/$sd";
+	local $sdpath = "$dir/$sd";
 	if (!-d $sdpath) {
 		mkdir($sdpath, 0755);
 		if ($< == 0) {
@@ -2235,7 +2237,7 @@ if ($up2date && $cachefile) {
 	# Bring cache up to date
 	$now--;
 	local $lref = &read_file_lines($cachefile);
-	push(@$lref, $_[0]->{'id'});
+	push(@$lref, $mail->{'id'});
 	&flush_file_lines($cachefile);
 	}
 }
