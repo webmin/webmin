@@ -274,6 +274,9 @@ else {
 
 	# Apache vhost or other path
 	my @opts;
+
+	my $webroot = $config{'letsencrypt_webroot'};
+	my $mode = $webroot ? 2 : 0;
 	if (&foreign_installed("apache")) {
 		&foreign_require("apache");
 		my $conf = &apache::get_config();
@@ -295,9 +298,9 @@ else {
 			}
 		}
 	push(@opts, [ 2, $text{'ssl_webroot2'},
-		      &ui_textbox("webroot", undef, 40) ]);
+		      &ui_textbox("webroot", $webroot, 40) ]);
 	print &ui_table_row($text{'ssl_webroot'},
-		&ui_radio_table("webroot_mode", 0, \@opts));
+		&ui_radio_table("webroot_mode", $mode, \@opts));
 
 	print &ui_table_row($text{'ssl_usewebmin'},
 		&ui_yesno_radio("use", 1));
@@ -309,7 +312,8 @@ else {
 		&ui_opt_textbox("renew", $renew, 4, $text{'ssl_letsnotrenew'}));
 
 	print &ui_table_end();
-	print &ui_form_end([ [ undef, $text{'ssl_letsok'} ] ]);
+	print &ui_form_end([ [ undef, $text{'ssl_letsok'} ],
+			     [ 'save', $text{'ssl_letsonly'} ] ]);
 	}
 
 print ui_tabs_end_tab();

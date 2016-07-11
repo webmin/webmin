@@ -409,6 +409,7 @@ ssl_webroot0=Apache virtual host matching hostname
 ssl_webroot1=A different Apache virtual host
 ssl_webroot2=Other directory
 ssl_letsok=Request Certificate
+ssl_letsonly=Just Update Renewal
 ssl_usewebmin=Copy new key and certificate to Webmin?
 ssl_letsrenew=Months between automatic renewal
 ssl_letsnotrenew=Only renew manually
