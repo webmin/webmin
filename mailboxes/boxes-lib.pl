@@ -930,7 +930,7 @@ elsif ($sm) {
 			&error("Failed to create SSL context");
 		$h->{'ssl_con'} = Net::SSLeay::new($h->{'ssl_ctx'}) ||
 			&error("Failed to create SSL connection");
-		Net::SSLeay::set_fd($h->{'ssl_con'}, fileno(MAIL));
+		Net::SSLeay::set_fd($h->{'ssl_con'}, fileno($h->{'fh'}));
 		Net::SSLeay::connect($h->{'ssl_con'}) ||
 			&error("SSL connect() failed");
 		}
