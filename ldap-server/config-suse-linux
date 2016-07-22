@@ -1,6 +1,6 @@
 config_file=/etc/openldap/slapd.d
 schema_dir=/etc/openldap/schema
-slapd=slapd
+slapd=/usr/lib/openldap/slapd
 ldap_user=ldap
 browse_max=100
 start_cmd=/etc/init.d/ldap start
