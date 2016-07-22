@@ -15,6 +15,16 @@ if ($in{'twofactor_provider'}) {
 	$err = defined(&$vfunc) && &$vfunc(\%in, \%miniserv);
 	&error($err) if ($err);
 	}
+else {
+	# Don't disable if any users have twofactor enabled
+	&foreign_require("acl");
+	@twos = grep { $_->{'twofactor_provider'} && $_->{'twofactor_id'} }
+		     &acl::list_users();
+	if (@twos) {
+		&error(&text('twofactor_eusers',
+			     join(" ", map { $_->{'name'} } @twos)));
+		}
+	}
 
 # Save settings
 &lock_file($ENV{'MINISERV_CONFIG'});
