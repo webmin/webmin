@@ -2907,12 +2907,12 @@ elsif ($ip = &to_ip6address($host)) {
 		if ($err) { $$err = $msg; return 0; }
 		else { &error($msg); }
 		}
-	if (!socket($fh, Socket6::PF_INET6(), SOCK_STREAM, $proto)) {
+	if (!socket($fh, PF_INET6(), SOCK_STREAM, $proto)) {
 		my $msg = "Failed to create IPv6 socket : $!";
 		if ($err) { $$err = $msg; return 0; }
 		else { &error($msg); }
 		}
-	my $addr = inet_pton(Socket6::AF_INET6(), $ip);
+	my $addr = inet_pton(AF_INET6(), $ip);
 	if (!connect($fh, pack_sockaddr_in6($port, $addr))) {
 		my $msg = "Failed to IPv6 connect to $host:$port : $!";
 		if ($err) { $$err = $msg; return 0; }
@@ -3042,11 +3042,11 @@ else {
 	# Perform IPv6 DNS lookup
 	my $inaddr;
 	(undef, undef, undef, $inaddr) =
-	    getaddrinfo($_[0], undef, Socket6::AF_INET6(), SOCK_STREAM);
+	    getaddrinfo($_[0], undef, AF_INET6(), SOCK_STREAM);
 	return undef if (!$inaddr);
 	my $addr;
 	(undef, $addr) = unpack_sockaddr_in6($inaddr);
-	return inet_ntop(Socket6::AF_INET6(), $addr);
+	return inet_ntop(AF_INET6(), $addr);
 	}
 }
 
@@ -3059,8 +3059,7 @@ sub to_hostname
 {
 my ($addr) = @_;
 if (&check_ip6address($addr) && &supports_ipv6()) {
-	return gethostbyaddr(inet_pton(Socket6::AF_INET6(), $addr),
-			     Socket6::AF_INET6());
+	return gethostbyaddr(inet_pton(AF_INET6(), $addr), AF_INET6());
 	}
 else {
 	return gethostbyaddr(inet_aton($addr), AF_INET);

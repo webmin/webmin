@@ -466,9 +466,9 @@ if ($config{'bind'}) {
 	if (&check_ip6address($config{'bind'})) {
 		# IP is v6
 		$use_ipv6 || die "Cannot bind to $config{'bind'} without IPv6";
-		push(@sockets, [ inet_pton(Socket6::AF_INET6(),$config{'bind'}),
+		push(@sockets, [ inet_pton(AF_INET6(),$config{'bind'}),
 				 $config{'port'},
-				 Socket6::PF_INET6() ]);
+				 PF_INET6() ]);
 		}
 	else {
 		# IP is v4
@@ -483,7 +483,7 @@ else {
 	if ($use_ipv6) {
 		# Also IPv6
 		push(@sockets, [ in6addr_any(), $config{'port'},
-				 Socket6::PF_INET6() ]);
+				 PF_INET6() ]);
 		}
 	}
 foreach $s (split(/\s+/, $config{'sockets'})) {
@@ -502,7 +502,7 @@ foreach $s (split(/\s+/, $config{'sockets'})) {
 				 PF_INET() ]);
 		if ($use_ipv6) {
 			push(@sockets, [ in6addr_any(), $1,
-					 Socket6::PF_INET6() ]);
+					 PF_INET6() ]);
 			}
 		}
 	elsif ($s =~ /^(\S+):(\d+)$/) {
@@ -510,9 +510,9 @@ foreach $s (split(/\s+/, $config{'sockets'})) {
 		my ($ip, $port) = ($1, $2);
 		if (&check_ip6address($ip)) {
 			$use_ipv6 || die "Cannot bind to $ip without IPv6";
-			push(@sockets, [ inet_pton(Socket6::AF_INET6(),
+			push(@sockets, [ inet_pton(AF_INET6(),
 						   $ip),
-					 $port, Socket6::PF_INET6() ]);
+					 $port, PF_INET6() ]);
 			}
 		else {
 			push(@sockets, [ inet_aton($ip), $port,
@@ -527,9 +527,9 @@ foreach $s (split(/\s+/, $config{'sockets'})) {
 	elsif (($s =~ /^([0-9a-f\:]+):\*$/ || $s =~ /^([0-9a-f\:]+)$/) &&
 	       $use_ipv6) {
 		# Listen on the main port on another IPv6 address
-		push(@sockets, [ inet_pton(Socket6::AF_INET6(), $1),
+		push(@sockets, [ inet_pton(AF_INET6(), $1),
 				 $sockets[0]->[1],
-				 Socket6::PF_INET6() ]);
+				 PF_INET6() ]);
 		}
 	}
 
@@ -2940,13 +2940,13 @@ foreach $i (@_) {
 		# Lookup IPv6 address
 		local ($inaddr, $addr);
 		(undef, undef, undef, $inaddr) =
-		    getaddrinfo($i, undef, Socket6::AF_INET6(), SOCK_STREAM);
+		    getaddrinfo($i, undef, AF_INET6(), SOCK_STREAM);
 		if ($inaddr) {
 			push(@rv, undef);
 			}
 		else {
 			(undef, $addr) = unpack_sockaddr_in6($inaddr);
-			push(@rv, inet_ntop(Socket6::AF_INET6(), $addr));
+			push(@rv, inet_ntop(AF_INET6(), $addr));
 			}
 		}
 	}
@@ -2959,8 +2959,8 @@ sub to_hostname
 {
 local ($addr) = @_;
 if (&check_ip6address($_[0])) {
-	return gethostbyaddr(inet_pton(Socket6::AF_INET6(), $addr),
-			     Socket6::AF_INET6());
+	return gethostbyaddr(inet_pton(AF_INET6(), $addr),
+			     AF_INET6());
 	}
 else {
 	return gethostbyaddr(inet_aton($addr), AF_INET);
@@ -3826,7 +3826,7 @@ sub get_address_ip
 local ($sn, $ipv6) = @_;
 if ($ipv6) {
 	local ($p, $b) = unpack_sockaddr_in6($sn);
-	return ($b, inet_ntop(Socket6::AF_INET6(), $b), $p);
+	return ($b, inet_ntop(AF_INET6(), $b), $p);
 	}
 else {
 	local ($p, $b) = unpack_sockaddr_in($sn);
@@ -3845,7 +3845,7 @@ if (!$get_socket_name_cache{$myaddr}) {
 	local $myname;
 	if (!$config{'no_resolv_myname'}) {
 		$myname = gethostbyaddr($mybin,
-					$ipv6 ? Socket6::AF_INET6() : AF_INET);
+					$ipv6 ? AF_INET6() : AF_INET);
 		}
 	$myname ||= $myaddr;
 	$get_socket_name_cache{$myaddr} = $myname;
@@ -5985,7 +5985,7 @@ if (length($addr) == 4 || !$use_ipv6) {
 	return inet_ntoa($addr);
 	}
 else {
-	return Socket6::inet_ntop(Socket6::AF_INET6(), $addr);
+	return inet_ntop(AF_INET6(), $addr);
 	}
 }
 
