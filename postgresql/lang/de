@@ -540,6 +540,7 @@ user_sync_modify=PostgreSQL-Benutzer aktualisieren, wenn der entsprechende Unix-
 user_syncwhen=Beim Synchronisieren
 user_title=PostgreSQL-Benutzer
 user_until=G&#252;ltig bis
+user_vwarning=WARNUNG: Dieser PostgreSQL-Benutzer ist der Verwaltungs-Login f&#252;r Virtualmin Domain $1. &#196;ndern der Einstellungen k&#246;nnen Fehler in Virtualmin verursachen.
 view_adv=Erweiterte Suche
 view_all=Alle ausw&#228;hlen
 view_auto=Automatisch

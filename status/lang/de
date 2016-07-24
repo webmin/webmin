@@ -219,6 +219,7 @@ mon_warndef=Ja, und benutze den Standard Berichtsmodus
 mon_webmin=Webmin nicht bereit
 monitor_email_down=Monitor auf $1 f&#252;r '$2' hat festgestellt, dass der Dienst auf $3 unten ist
 monitor_email_isdown=Monitor auf $1 f&#252;r '$2' hat festgestellt, dass der Dienst auf $3 unten ist
+monitor_email_stat=Aktueller Status: $1
 monitor_email_timed=Monitor auf $1 f&#252;r '$2' hat eine Zeit&#252;berschreitung bei $3
 monitor_email_un=Monitor auf $1 f&#252;r '$2' hat festgestellt, dass der Dienst bei $3 deinstalliert ist
 monitor_email_up=Monitor auf $1 f&#252;r '$2' hat festgestellt, dass der Dienst wiederhergestellt auf $3 wurde

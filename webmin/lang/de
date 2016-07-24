@@ -730,6 +730,7 @@ ssl_letserr2=Pr&#252;fe die <a href='$1'>Modulkonfiguration</a> Seite, um sicher
 ssl_letsheader=Optionen f&#252;r neues SSL-Zertifikat
 ssl_letsnotrenew=Nur manuelle erneuern
 ssl_letsok=Zertifikat anfragen
+ssl_letsonly=Nur Update-Erneuerung
 ssl_letsrenew=Monate zwischen automatischen Erneuern
 ssl_newcsr=Dieses Formular kann verwendet werden, um einen neuen SSL-Schl&#252;ssel und das Zertifikat Signing Request (CSR) f&#252;r Ihren Webmin-Server zu erstellen. Die CSR muss von einer Zertifizierungsstelle (CA) signiert werden, bevor sie verwendet werden k&#246;nnen.
 ssl_newfile=Schl&#252;ssel in Datei sichern
@@ -875,6 +876,7 @@ twofactor_etotpmatch=Falscher OTP-Code
 twofactor_etotpmodule=Das Perl-Modul <tt>$1</tt>, welches f&#252;r die 2-Faktor-Authentifizierung erforderlich ist, ist nicht installiert. Verwenden Sie die <a href='$2'>Perl Module</a> Seite in Webmin um es zu installieren.
 twofactor_etotpmodule2=Fehlendes Perl-Modul $1
 twofactor_etotptoken=Google Authenticator Token muss eine Zahl sein
+twofactor_eusers=Zwei-Faktor-Authentifizierung kann nicht deaktiviert werden, da die folgenden Benutzer derzeit angemeldet sind : $1
 twofactor_header=2-Faktor-Authentifizierung Optionen
 twofactor_none=Keine
 twofactor_phone=Mobiltelefon Telefonnummer
