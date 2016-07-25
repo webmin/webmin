@@ -112,6 +112,7 @@ return \@get_config_cache;
 }
 
 my %get_config_parent_cache;
+
 # get_config_parent([file])
 # Returns a structure containing the top-level config as members
 sub get_config_parent
@@ -532,7 +533,7 @@ if ($_[0]->{'file'} eq $_[2]) {
 	if ($_[0]->{'eline'} > $_[1]) { $_[0]->{'eline'} += $_[3]; }
 	}
 if ($_[0]->{'type'} == 1) {
-	# Do sub-members
+	# Do members
 	foreach my $d (@{$_[0]->{'members'}}) {
 		&renumber($d, $_[1], $_[2], $_[3]);
 		}
