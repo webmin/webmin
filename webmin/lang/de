@@ -876,7 +876,7 @@ twofactor_etotpmatch=Falscher OTP-Code
 twofactor_etotpmodule=Das Perl-Modul <tt>$1</tt>, welches f&#252;r die 2-Faktor-Authentifizierung erforderlich ist, ist nicht installiert. Verwenden Sie die <a href='$2'>Perl Module</a> Seite in Webmin um es zu installieren.
 twofactor_etotpmodule2=Fehlendes Perl-Modul $1
 twofactor_etotptoken=Google Authenticator Token muss eine Zahl sein
-twofactor_eusers=Zwei-Faktor-Authentifizierung kann nicht deaktiviert werden, da die folgenden Benutzer derzeit angemeldet sind : $1
+twofactor_eusers=2-Faktor-Authentifizierung kann nicht deaktiviert werden, da die folgenden Benutzer derzeit angemeldet sind : $1
 twofactor_header=2-Faktor-Authentifizierung Optionen
 twofactor_none=Keine
 twofactor_phone=Mobiltelefon Telefonnummer
