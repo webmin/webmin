@@ -19,6 +19,7 @@ if ($in{'clone'}) {
 	# Go back to the editing page
 	&redirect("edit_rule.cgi?new=1&clone=$in{'idx'}&".
 		  "table=".&urlize($in{'table'})."&".
+		  "after=$in{'idx'}&".
 		  "chain=".&urlize($rule->{'chain'}));
 	}
 
