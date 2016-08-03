@@ -1,4 +1,3 @@
 ssleay=/usr/sfw/bin/openssl
-select=0
 order=0
 display=1

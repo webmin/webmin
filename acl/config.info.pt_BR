@@ -1,5 +1,4 @@
 line1=Op&#231;&#245;es configur&#225;veis,11
-select=Exibir m&#243;dulos de usu&#225;rios em,1,0-Tabela,1-Menus
 order=Ordenar usu&#225;rios e grupos por,1,0-Ordem no arquivo,1-Nome
 line2=Configura&#231;&#227;o do sistema,11
 ssleay=Caminho para o programa openssl ou ssleay,0

@@ -73,11 +73,9 @@ else {
 	# Show usernames and modules
 	print &ui_subheading($text{'index_users'});
 	my @rowlinks = ( );
-	if (!$config{'select'}) {
-		print &ui_form_start("delete_users.cgi", "post");
-		push(@rowlinks, &select_all_link("d", $form),
-			     &select_invert_link("d", $form));
-		}
+	print &ui_form_start("delete_users.cgi", "post");
+	push(@rowlinks, &select_all_link("d", $form),
+		     &select_invert_link("d", $form));
 	push(@rowlinks, ui_link("edit_user.cgi", $text{'index_create'}))
 		if ($access{'create'});
 	print &ui_links_row(\@rowlinks);
@@ -104,10 +102,8 @@ else {
 		}
 	print &ui_columns_end();
 	print &ui_links_row(\@rowlinks);
-	if (!$config{'select'}) {
-		print &ui_form_end([ [ "delete", $text{'index_delete'} ],
-				     @gbut ]);
-		}
+	print &ui_form_end([ [ "delete", $text{'index_delete'} ],
+			     @gbut ]);
 	$shown_users = 1;
 	$form++;
 	}
@@ -136,11 +132,9 @@ if ($access{'groups'}) {
 	else {
 		# Show table of groups
 		my @rowlinks = ( );
-		if (!$config{'select'}) {
-			print &ui_form_start("delete_groups.cgi", "post");
-			push(@rowlinks, &select_all_link("d", $form),
-				     &select_invert_link("d", $form));
-			}
+		print &ui_form_start("delete_groups.cgi", "post");
+		push(@rowlinks, &select_all_link("d", $form),
+			     &select_invert_link("d", $form));
 		push(@rowlinks,
 		     ui_link("edit_group.cgi", $text{'index_gcreate'}));
 		print &ui_links_row(\@rowlinks);
@@ -168,9 +162,7 @@ if ($access{'groups'}) {
 			}
 		print &ui_columns_end();
 		print &ui_links_row(\@rowlinks);
-		if (!$config{'select'}) {
-			print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
-			}
+		print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
 		$form++;
 		}
 	}
@@ -235,44 +227,22 @@ sub show_modules
 my ($type, $who, $mods, $global, $prefix) = @_;
 $mods ||= [ ];
 my $rv;
-if ($config{'select'}) {
-	# Show as drop-down menu
-	$rv .= &ui_form_start("edit_acl.cgi");
-	$rv .= $prefix."<br>\n" if ($prefix);
-	if (@$mods) {
-		$rv .= &ui_hidden($type, $who);
-		if ($access{'acl'}) {
-			$rv .= &ui_submit($text{'index_edit'});
+$rv .= $prefix."<br>\n" if ($prefix);
+my @grid;
+foreach my $m (sort { $modname{$a} cmp $modname{$b} } @$mods) {
+	if ($modname{$m}) {
+		if ($mcan{$m} && $access{'acl'}) {
+			push(@grid, ui_link("edit_acl.cgi?mod=" .
+			      &urlize($m)."&$type=".&urlize($who),
+			      $modname{$m}));
 			}
-		my @opts;
-		foreach my $m (sort { $modname{$a} cmp $modname{$b} } @$mods) {
-			if ($modname{$m}) {
-				push(@opts, [ $m, $modname{$m} ]);
-				}
-			}
-		$rv .= &ui_select("mod", undef, \@opts);
-		}
-	$rv .= &ui_form_end();
-	}
-else {
-	# Show as table
-	$rv .= $prefix."<br>\n" if ($prefix);
-	my @grid;
-	foreach my $m (sort { $modname{$a} cmp $modname{$b} } @$mods) {
-		if ($modname{$m}) {
-			if ($mcan{$m} && $access{'acl'}) {
-				push(@grid, ui_link("edit_acl.cgi?mod=" .
-				      &urlize($m)."&$type=".&urlize($who),
-				      $modname{$m}));
-				}
-			else {
-				push(@grid, $modname{$m});
-				}
+		else {
+			push(@grid, $modname{$m});
 			}
 		}
-	$rv .= &ui_grid_table(\@grid, 3, 100,
-		[ "width=33%", "width=33%", "width=33%" ]);
 	}
+$rv .= &ui_grid_table(\@grid, 3, 100,
+	[ "width=33%", "width=33%", "width=33%" ]);
 return $rv;
 }
 
@@ -298,7 +268,7 @@ sub user_link
 {
 my $lck = $_[0]->{'pass'} =~ /^\!/ ? 1 : 0;
 my $ro = $_[0]->{'readonly'};
-return ($config{'select'} ? "" : &ui_checkbox("d", $_[0]->{'name'}, "", 0)).
+return &ui_checkbox("d", $_[0]->{'name'}, "", 0).
        ($lck ? "<i>" : "").
        ($ro ? "<b>" : "").
        ui_link("$_[1]?$_[2]=".&urlize($_[0]->{'name'}),
