@@ -99,7 +99,8 @@ if ($out =~ /(bind|named)\s+([0-9\.]+)/i) {
 return undef;
 }
 
-my @get_config_cache;
+our @get_config_cache;
+
 # get_config()
 # Returns an array of references to assocs, each containing the details of
 # one directive
@@ -111,7 +112,7 @@ if (!@get_config_cache) {
 return \@get_config_cache;
 }
 
-my %get_config_parent_cache;
+our %get_config_parent_cache;
 
 # get_config_parent([file])
 # Returns a structure containing the top-level config as members
@@ -238,7 +239,8 @@ for(my $i=0; $i<@{$_[0]}; $i++) {
 		splice(@{$_[0]}, $i--, 1, @inc);
 		$any++;
 		}
-	elsif ($_[0]->[$i]->{'type'} == 1) {
+	elsif ($_[0]->[$i]->{'type'} &&
+	       $_[0]->[$i]->{'type'} == 1) {
 		# Check sub-structures too
 		$any += &recursive_includes($_[0]->[$i]->{'members'}, $_[1]);
 		}
