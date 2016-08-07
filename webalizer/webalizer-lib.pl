@@ -237,7 +237,7 @@ print "</table>\n";
 # read_custom_logs()
 sub read_custom_logs
 {
-open(LOGS, $custom_logs_file);
+open(LOGS, $custom_logs_file) || return ();
 my @rv = map { /^(.*\S)\s+(\S+)/; { 'file' => $1, 'type' => $2 } } <LOGS>;
 close(LOGS);
 return @rv;
