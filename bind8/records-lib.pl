@@ -632,12 +632,12 @@ if ($addr =~ /^([\da-f]\.)+$ipv6revzone/i) {
 return $_[0];
 }
 
-# net_to_ip6int(address, bits)
+# net_to_ip6int(address, [bits])
 # Converts an IPv6 address like 1234:dcba:: to a.b.c.d.4.3.2.1.ip6.int.
 sub net_to_ip6int
 {
 my $addr = lc($_[0]);
-my $n = $_[1] >> 2;
+my $n = $_[1] ? $_[1] >> 2 : 0;
 if (&check_ip6address($addr)) {
 	$addr = reverse(split(/\:/, &expandall_ip6($addr)));
 	$addr =~ s/(\w)/$1\./g;

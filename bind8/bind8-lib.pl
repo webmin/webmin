@@ -1579,10 +1579,11 @@ return $chroot.$_[0];
 # Returns 2 if rndc is installed, 1 if ndc is instaled, or 0
 sub has_ndc
 {
-if ($config{'rndc_cmd'} =~ /^(\S+)/ && &has_command("$1") && $_[0] != 2) {
+my $mode = $_[0] || 0;
+if ($config{'rndc_cmd'} =~ /^(\S+)/ && &has_command("$1") && $mode != 2) {
 	return 2;
 	}
-if ($config{'ndc_cmd'} =~ /^(\S+)/ && &has_command("$1") && $_[0] != 1) {
+if ($config{'ndc_cmd'} =~ /^(\S+)/ && &has_command("$1") && $mode != 1) {
 	return 1;
 	}
 return 0;
