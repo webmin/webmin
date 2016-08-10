@@ -146,7 +146,7 @@ if (!$access{'ro'} && $type eq 'master') {
 push(@hcols, &ui_link("edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'type'}&sort=1", ($in{'type'} eq "PTR" ? $text{'recs_addr'} : $text{'recs_name'}) ) );
 push(@hcols, &ui_link("edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'type'}&sort=5", $text{'recs_type'}) ) if ($in{'type'} eq "ALL");
 push(@hcols, $text{'recs_ttl'});
-my @hmap = @{$hmap{$in{'type'}}};
+my @hmap = $hmap{$in{'type'}} ? @{$hmap{$in{'type'}}} : ( );
 foreach my $h (@hmap) {
 	push(@hcols, &ui_link("edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'type'}&sort=2",$h) );
 	}
