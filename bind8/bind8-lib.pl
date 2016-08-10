@@ -2667,7 +2667,13 @@ return $base."/".$format;
 sub create_on_slaves
 {
 my ($zone, $master, $file, $hosts, $localview, $moreslaves) = @_;
-my %on = map { $_, 1 } @$hosts;
+my %on;
+if ($hosts && !ref($hosts)) {
+	$hosts = [ split(/\s+/, $hosts) ];
+	}
+if ($hosts) {
+	%on = map { $_, 1 } @$hosts;
+	}
 &remote_error_setup(\&slave_error_handler);
 my @slaveerrs;
 my @slaves = &list_slave_servers();
