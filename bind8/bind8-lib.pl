@@ -49,9 +49,7 @@ if (open(my $VERSION, "<", "$module_config_directory/version")) {
 	chop($bind_version = <$VERSION>);
 	close($VERSION);
 	}
-else {
-	$bind_version = &get_bind_version();
-	}
+$bind_version ||= &get_bind_version();
 if ($bind_version =~ /^(\d+\.\d+)\./) {
 	# Convery to properly formatted number
 	$bind_version = $1;
