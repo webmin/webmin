@@ -969,7 +969,8 @@ sub record_id
 {
 my ($r) = @_;
 return $r->{'name'}."/".$r->{'type'}.
-       (uc($r->{'type'}) eq 'SOA' ? '' : '/'.join('/', @{$r->{'values'}}));
+       (uc($r->{'type'}) eq 'SOA' || !$r->{'values'} ? '' :
+		'/'.join('/', @{$r->{'values'}}));
 }
 
 # find_record_by_id(&recs, id, index)
