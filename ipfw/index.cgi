@@ -24,13 +24,18 @@ if ($?) {
 	}
 
 # Get the version number
-$vout = `$config{'ipfw'} 2>&1`;
-$vouth = `$config{'ipfw'} -h 2>&1`;
-if ($vout =~ /preproc/ || $vouth =~ /preproc/) {
-	$ipfw_version = 2;
+if ($config{'version'}) {
+	$ipfw_version = $config{'version'};
 	}
 else {
-	$ipfw_version = 1;
+	$vout = `$config{'ipfw'} 2>&1`;
+	$vouth = `$config{'ipfw'} -h 2>&1`;
+	if ($vout =~ /preproc/ || $vouth =~ /preproc/) {
+		$ipfw_version = 2;
+		}
+	else {
+		$ipfw_version = 1;
+		}
 	}
 open(VERSION, ">$module_config_directory/version");
 print VERSION $ipfw_version,"\n";
