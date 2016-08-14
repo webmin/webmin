@@ -827,7 +827,7 @@ if ($dmarc->{'other'}) {
 	push(@rv, @{$dmarc->{'other'}});
 	}
 my @rvwords;
-my $rvword;
+my $rvword = "";
 while(@rv) {
 	my $w = shift(@rv);
 	if (length($rvword)+length($w)+1 >= 255) {
