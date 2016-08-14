@@ -67,7 +67,7 @@ print &ui_table_row($text{'trusted_dlvs'},
 # Trusted keys
 my @ktable = ( );
 $i = 0;
-foreach my $k (@{$tkeys->{'members'}}, { }) {
+foreach my $k (@{$tkeys->{'members'}}, { 'values' => [ ] }) {
 	my @v = @{$k->{'values'}};
 	my @wrapped = ( );
 	while(length($v[3]) > 30) {
