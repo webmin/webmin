@@ -244,8 +244,8 @@ print &ui_table_hr();
 
 # ICMP packet type
 print &ui_table_row($text{'edit_icmptype'},
-	&print_mode("icmptype", $rule->{'icmp-type'})." ".
-	&icmptype_input("icmptype", $rule->{'icmp-type'}->[1]));
+	&print_mode("icmptype", $rule->{'icmpv6-type'})." ".
+	&icmptype_input("icmptype", $rule->{'icmpv6-type'}->[1]));
 
 # MAC address
 print &ui_table_row($text{'edit_mac'},

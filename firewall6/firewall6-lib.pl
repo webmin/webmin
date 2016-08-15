@@ -26,7 +26,7 @@ else {
 @known_tables = ( "filter", "mangle", "nat" );
 @known_args =   ('-p', '-m', '-s', '-d', '-i', '-o', '-f',
 		 '--dport', '--sport', '--tcp-flags', '--tcp-option',
-		 '--icmp-type', '--mac-source', '--limit', '--limit-burst',
+		 '--icmpv6-type', '--mac-source', '--limit', '--limit-burst',
 		 '--ports', '--uid-owner', '--gid-owner',
 		 '--pid-owner', '--sid-owner', '--state', '--tos', '-j',
 		 '--to-ports', '--to-destination', '--to-source',
@@ -201,7 +201,7 @@ sub describe_rule
 local (@c, $d);
 foreach $d ('p', 's', 'd', 'i', 'o', 'f', 'dport',
 	    'sport', 'tcp-flags', 'tcp-option',
-	    'icmp-type', 'mac-source', 'limit', 'limit-burst',
+	    'icmpv6-type', 'mac-source', 'limit', 'limit-burst',
 	    'ports', 'uid-owner', 'gid-owner',
 	    'pid-owner', 'sid-owner', 'state', 'tos',
 	    'dports', 'sports', 'physdev-in', 'physdev-out') {

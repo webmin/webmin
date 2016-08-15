@@ -262,9 +262,9 @@ else {
 			&error($text{'save_etcpoption'});
 		$rule->{'tcp-option'}->[1] = $in{"tcpoption"};
 		}
-	if (&parse_mode("icmptype", $rule, "icmp-type")) {
+	if (&parse_mode("icmptype", $rule, "icmpv6-type")) {
 		$proto eq "icmp" || &error($text{'save_eicmp'});
-		$rule->{'icmp-type'}->[1] = $in{'icmptype'};
+		$rule->{'icmpv6-type'}->[1] = $in{'icmptype'};
 		}
 	if (&parse_mode("macsource", $rule, "mac-source")) {
 		$in{"macsource"} =~ /^([0-9a-z]{2}:){5}[[0-9a-z]{2}$/i ||
