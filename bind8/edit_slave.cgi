@@ -28,7 +28,7 @@ if ($zone->{'file'}) {
 		 undef, undef, $lasttrans);
 
 my (@rcodes, @rtitles, @rlinks, @ricons, %rnum, $done_recs); 
-if ($zone->{'file'}) {
+if ($zone->{'file'} && -r $zone->{'file'}) {
 	print "<p>\n";
 	my @recs = &read_zone_file($zone->{'file'}, $dom);
 	if ($dom =~ /in-addr\.arpa/i || $dom =~ /\.$ipv6revzone/i) {
