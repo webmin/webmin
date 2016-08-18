@@ -29,7 +29,7 @@ if (&is_raw_format_records($rootfile)) {
 	&has_command("named-compilezone") ||
 		&error("Zone file $rootfile is in raw format, but the ".
 		       "named-compilezone command is not installed");
-	&open_execute_command($FILE, "named-compilezone -f raw -F text -o - $origin $rootfile", 1, 1);
+	open($FILE, "named-compilezone -f raw -F text -o - $origin $rootfile |");
 	}
 else {
 	# Can read text format records directly
