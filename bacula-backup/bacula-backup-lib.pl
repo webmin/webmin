@@ -948,9 +948,11 @@ foreach my $l (split(/\r?\n/, $status)) {
 	elsif ($l =~ /^Running\s+Jobs/i) { $sect = 2; }
 	elsif ($l =~ /^Terminated\s+Jobs/i) { $sect = 3; }
 
-	if ($sect == 1 && $l =~ /^\s*(\S+)\s+(\S+)\s+(\d+)\s+(\S+\s+\S+(\s+\d+:\d+)?)\s+(\S+)\s+(\S+)\s*$/) {
+	if ($sect == 1 && $l =~ /^\s*(\S+)\s+(\S+)\s+(\d+)\s+(\S+\s+\S+(\s+\d+:\d+)?)\s+(\S+)\s+(\S+)?\s*$/) {
 		# Scheduled job, like 
 		# Full Backup 10 27-Jun-14 17:30 ykfdc1-BackupJob wkly_1736
+		# copy jobs do not have any destination tape (=> ? on the latest field)
+		# Full Backup 11 19-Aug-16 17:50 ykfdc1-Copyjob
 		push(@sched, { 'level' => &full_level("$1"),
 			       'type' => $2,
 			       'pri' => $3,
