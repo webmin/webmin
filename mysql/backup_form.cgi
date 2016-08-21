@@ -40,7 +40,8 @@ if ($cron) {
 print "<p>\n";
 %c = $module_info{'usermin'} ? %userconfig : %config;
 
-print &ui_form_start("backup_db.cgi", "post");
+$download = $in{'all'} ? 'database' : $in{'db'};
+print &ui_form_start("backup_db.cgi/$download.sql", "post");
 print &ui_hidden("db", $in{'db'});
 print &ui_hidden("all", $in{'all'});
 print &ui_hidden_table_start($text{'backup_header1'}, "width=100%", 2, "main",
@@ -49,8 +50,11 @@ print &ui_hidden_table_start($text{'backup_header1'}, "width=100%", 2, "main",
 # Destination file or directory
 print &ui_table_row($in{'all'} ? $text{'backup_file2'}
 			       : $text{'backup_file'},
-	&ui_textbox("file", $c{'backup_'.$in{'db'}}, 60)." ".
-	&file_chooser_button("file"));
+	&ui_radio_table("dest", 0,
+		[ [ 1, $text{'backup_download'} ],
+		  [ 0, $text{'backup_path'}, 
+		       &ui_textbox("file", $c{'backup_'.$in{'db'}}, 60)." ".
+		       &file_chooser_button("file") ] ]));
 
 # Create destination dir
 if ($in{'all'}) {

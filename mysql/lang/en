@@ -601,6 +601,8 @@ backup_header2=Other backup options
 backup_header3=Backup schedule
 backup_file=Backup to file
 backup_file2=Backup to directory
+backup_download=Download in browser
+backup_path=Path on server
 backup_mkdir=Create destination directory?
 backup_where=Only backup rows matching <tt>where</tt> clause
 backup_none=All rows
@@ -660,6 +662,8 @@ backup_bodyok=.. backup of $1 created OK
 backup_bodytotal=Total backup size : $1
 backup_bodyspace=Filesystem size : $1  Free space : $2
 backup_bodyall=all
+backup_edownloadall=Only a single database backup can be downloaded
+backup_edownloadsave=Download mode cannot be used for scheduled backups
 
 import_title=Import Data
 import_uploadout=Importing data from uploaded file ..

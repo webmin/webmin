@@ -105,3 +105,5 @@ When executing SQL or restoring a backup file, the character set can now be sele
 When a database is deleted, any cron job for backing it up is also removed.
 ---- Changes since 1.770 ----
 Added support for the new password columns in the user table as seen in MySQL 5.7, and massively cleaned up all the code for user, host and DB permissions management.
+---- Changes since 1.810 ----
+Single database backups can now be downloaded in the browser.
