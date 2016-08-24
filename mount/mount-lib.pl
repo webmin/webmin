@@ -338,6 +338,10 @@ foreach my $m (@mounted) {
 			# Don't double-count same filesystem by device number
 			next;
 			}
+		if ($m->[1] eq "/dev/fuse") {
+			# Skip fuse user-space filesystem mounts
+			next;
+			}
 		# Get the size - for ZFS mounts, this comes from the underlying
 		# total pool size and free
 		my ($t, $f);
