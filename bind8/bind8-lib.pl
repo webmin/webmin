@@ -1434,7 +1434,7 @@ if ($config{'file_perms'}) {
 }
 
 my @cat_list;
-if ($bind_version >= 9) {
+if ($bind_version && $bind_version >= 9) {
 	@cat_list = ( 'default', 'general', 'database', 'security', 'config',
 		      'resolver', 'xfer-in', 'xfer-out', 'notify', 'client',
 		      'unmatched', 'network', 'update', 'queries', 'dispatch',
