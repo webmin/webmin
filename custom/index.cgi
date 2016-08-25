@@ -3,7 +3,7 @@
 # Display commands available for execution
 
 require './custom-lib.pl';
-&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1);
+&ui_print_header(undef, $module_info{'desc'}, "", "intro", 1, 1);
 
 @cust = grep { &can_run_command($_) } &list_commands();
 @cust = &sort_commands(@cust);
