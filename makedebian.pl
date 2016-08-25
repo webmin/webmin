@@ -307,6 +307,7 @@ fi
 rm -f /var/lock/subsys/$baseproduct
 if [ "$inetd" != "1" ]; then
 	if [ -x "`which invoke-rc.d 2>/dev/null`" ]; then
+		invoke-rc.d $baseproduct stop >/dev/null 2>&1 </dev/null
 		invoke-rc.d $baseproduct start >/dev/null 2>&1 </dev/null
 	else
 		/etc/$baseproduct/start >/dev/null 2>&1 </dev/null
