@@ -10,7 +10,10 @@ else {
 
 $account_key = "$module_config_directory/letsencrypt.pem";
 
-$letsencrypt_chain_url = "https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem";
+$letsencrypt_chain_urls = [
+	"https://letsencrypt.org/certs/lets-encrypt-x1-cross-signed.pem",
+	"https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem",
+	];
 
 sub get_letsencrypt_python_cmd
 {
@@ -149,14 +152,20 @@ else {
 				 "<pre>".&html_escape($out))."</pre>");
 		}
 
-	# Download the latest chained cert file
+	# Download the latest chained cert files
 	my $chain = &transname();
-	my ($host, $port, $page, $ssl) =
-		&parse_http_url($letsencrypt_chain_url);
-	my $err;
-	&http_download($host, $port, $page, $chain, \$err, undef, $ssl);
-	if ($err) {
-		return (0, &text('letsencrypt_echain', $err));
+	foreach my $url (@$letsencrypt_chain_urls) {
+		my $cout;
+		my ($host, $port, $page, $ssl) = &parse_http_url($url);
+		my $err;
+		&http_download($host, $port, $page, \$cout, \$err, undef, $ssl);
+		if ($err) {
+			return (0, &text('letsencrypt_echain', $err));
+			}
+		my $fh = "CHAIN";
+		&open_tempfile($fh, ">>$chain");
+		&print_tempfile($fh, $cout);
+		&close_tempfile($fh);
 		}
 
 	# Copy the per-domain files
