@@ -16,3 +16,4 @@ longdesc_ms_MY=Menguruskan pengguna dan grup yang disimpan di dalam pangkalan da
 desc_ms_MY=Pengguna dan Grup LDAP
 longdesc_de=Benutzer und Gruppen in einer LDAP-Datenbank gespeichert, die f&#252;r Unix, Samba und Cyrus IMAP-Authentifizierung verwendet werden.
 perldepends=Text::Unidecode
+longdesc_ca=Gestiona els usuaris i grups emmagatzemats en una base de dades LDAP utilitzada per a l'autenticació Unix, Samba i IMAP Cyrus.

@@ -19,3 +19,4 @@ desc_no=Administrer logiske volumer
 longdesc_ms_MY=Mengkonfigurasi volume groups, physical volumes and logical volumes pada LVM Linux.
 desc_ms_MY=Pengurusan Logical Volume
 longdesc_de=Konfiguriert Volumengruppen, physikalische und logischen Volumes f&#252;r Linux LVM.
+longdesc_ca=Configura grups de volums, volums físics i volums lògics del LVM de Linux.

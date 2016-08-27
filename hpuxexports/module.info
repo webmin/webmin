@@ -24,3 +24,4 @@ desc_ja_JP.UTF-8=NFS エクスポート
 desc_ko_KR.UTF-8=NFS 내보내기 
 desc_ru.UTF-8=NFS Ресурсы
 desc_pl.UTF-8=Zarządca udostępniania
+longdesc_ca=Edita les unitats compartides definides al fitxer /etc/exports file de HPUX.

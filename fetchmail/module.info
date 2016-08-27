@@ -27,3 +27,4 @@ desc_hu=Levelek lekérdezése (FetchMail)
 longdesc_ms_MY=Konfigurasi program fetchmail yang popular secara automatik menarik mel dari pelayan yang lain.
 desc_ms_MY=Fetchmail Menarik Mel
 longdesc_pl=Konfiguracja popularnego programu fetchmail do automatycznego pobierania e-maili z innych serwerów
+longdesc_ca=Configura el popular programa fetchmail per a recuperar automàticament el correu d'altres servidors.

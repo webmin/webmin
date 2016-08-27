@@ -58,7 +58,7 @@ index_bootup=Activa'l en engegar
 index_bootupdesc=Canvia aquesta opció per controlar si el tallafocs s'ha d'activar en engegar el sistema o no.
 index_return=a la llista de regles
 index_setup=Encara no s'ha configurat cap tallafocs IPtables al sistema. Webmin te'n pot configurar un i desar-lo al fitxer $1, amb uns valors inicials basats en el tipus de tallafocs seleccionat més avall...
-/
+index_rsetup=La configuració del tallafocs IPtables del sistema està a punt de ser reiniciada. Webmin configurarà noves regles per defecteew default rules per a ser desade al fitxer $1, amb els paràmetres inicials basats en la teva selecció de tipus de tallafocs de sota...
 index_auto0=Permet tot el trànsit
 index_auto1=Executa traducció d'adreces de xarxa sobre la interfície externa:
 index_auto2=Bloqueja totes les connexions d'entrada sobre la interfície externa:

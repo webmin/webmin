@@ -146,6 +146,7 @@ delete_err=No s'ha pogut suprimir l'usuari
 delete_eself=No et pots esborrar a tu mateix
 delete_ecannot=No tens permís per suprimir usuaris
 delete_euser=No tens permís per suprimir aquest usuari
+delete_eanonuser=Aquest usuari s'està utilitzant per a l'accés del mòdul anònim
 
 cert_title=Petició de Certificat
 cert_issue=Emissió de Certificat
@@ -337,12 +338,20 @@ unix_header=Paràmetres d'autenticació d'usuari Unix
 unix_utable=Usuaris Unix permesos
 
 sessions_title=Sessions d'Entrada Actuals
-sessions_desc=Les sessions d'entrada actuals de Webmin es llisten a sota. Per cancel·lar una sessió existent i forçar l'usuari a tornar a entrar, fes clic sobre l'ID de la sessió.
 sessions_id=ID de sessió
 sessions_user=Usuari Webmin
 sessions_login=Ha entrat a
 sessions_host=Adreça IP
 sessions_lview=Visualitza els registres...
+sessions_actions=Accions...
+sessions_logouts=Mostra també les sessións desconnectades...
+sessions_state=Estat
+sessions_this=Aquesta entrada
+sessions_in=Connectat
+sessions_out=Desconnectat
+sessions_kill=Desconnecta...
+
+logins_title=Entrades recents a Webmin
 
 hide_title=Amaga els Mòduls No Utilitzats
 hide_desc=Els mòduls següents es trauran de la llista d'accés de mòduls de $1, ja que els seus corresponents servidors no estan instal·lats al sistema...

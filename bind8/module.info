@@ -38,3 +38,4 @@ longdesc_ms_MY=Membuat dan mengubah domain, rekod DNS, 'options' dan 'views' pad
 desc_ms_MY=Pelayan DNS BIND
 longdesc_de=Erstellt und bearbeitet Domains, DNS-Eintr&#228;ge, BIND-Optionen und Ansichten.
 longdesc_pl=Twórz i edytuj domeny, rekordy DNS, opcje BIND i widoki.
+longdesc_ca=Crea i edita dominis, registres DNS records, opcions BIND i vistes.

@@ -26,3 +26,4 @@ desc_ms_MY=Sistem Fail Backup
 longdesc_de=Sichern und Wiederherstellen von Dateisystemen mit Sicherungs- und Wiederherstellungsfamilie von Befehlen.
 desc_pl=Kopia zapasowa systemu plików
 longdesc_pl=Twórz i przywracaj kopie zapasowe systemu plików
+longdesc_ca=Copia i restaura sitemes de fitxers utilitzant la família d'ordres de dump i restore.

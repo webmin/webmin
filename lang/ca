@@ -352,4 +352,16 @@ sql_eldapconnect=No s'ha pogut connectar amb el servidor LDAP $1
 sql_eldaptls=No s'ha pogut iniciar el xifratge TLS per a LDAP: $1
 sql_eldaplogin=No s'ha pogut entrar al servidor LDAP com a $1: $2
 
+log_email_subject=Acció de Webmin a $1
+log_email_global=Acció global de Webmin
+log_email_desc=Aquest correu ha estat enviat per Webmin en resposta a l'acció d'un usuari.
+log_email_mod=Mòdul de Webmin: $1
+log_email_moddesc=Títol del mòodul: $1
+log_email_time=Acció efectuada a: $1
+log_email_system=Efectuada al sistema: $1
+log_email_user=Efectuada per l'usuari: $1
+log_email_script=Script de Webmin: $1
+log_email_session=ID de sessió: $1
+log_email_remote=Adreça del client: $1
+
 __norefs=1

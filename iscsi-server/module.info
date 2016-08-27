@@ -9,3 +9,5 @@ longdesc_no=Del disk-enheter over nettverket ved hjelp av iSCSI protokollen med 
 desc_ms_MY=Pelayan iSCSI
 longdesc_ms_MY=Berkongsi peranti disk di seluruh rangkaian menggunakan protokol iSCSI dengan menggunakan pakej NetBSD-iSCSI.
 longdesc_de=Teile Plattenger&#228;te &#252;ber das Netzwerk mit dem iSCSI-Protokoll mit dem netbsd-iscsi Paket.
+desc_ca=Servidor iSCSI
+longdesc_ca=Comparteix els dispositius de disc a través de la xarxa utilitzant el protocol iSCSI amb el paquet netbsd-iscsi.

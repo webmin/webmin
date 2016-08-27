@@ -36,3 +36,4 @@ longdesc_hu=Webmin nyelvezetésnek és témájának módosítása
 longdesc_ms_MY=Membolehkan pengguna Webmin untuk menukar bahasa, tema dan mungkin kata laluan.
 desc_ms_MY=Tukar Bahasa dan Tema
 longdesc_pl=Pozwala aktualnemu u¿ytkownikowi Webimina na zmianê jêzyka, motywu i has³a (o ile to mo¿liwe).
+longdesc_ca=Permet que l'usuari actual de Webmin es canviï el seu idioma, tema i, possiblement, contrasenya.

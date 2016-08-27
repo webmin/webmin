@@ -36,3 +36,4 @@ longdesc_ms_MY=Sunting fail perkongsian NFS yang dinyatakan dalam /etc/eksport
 desc_ms_MY=NFS Eksport
 longdesc_de=Bearbeitet NFS-Dateifreigaben, welche in /etc/exports definiert sind.
 longdesc_pl=Edytuj udostêpnione pliki NFS zdefinowane w /etc/exports.
+longdesc_ca=Edita les unitats compartides NFS definides a /etc/exports.

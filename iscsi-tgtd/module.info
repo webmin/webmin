@@ -6,4 +6,4 @@ longdesc=Share disk devices across the network using the iSCSI protocol with the
 desc_de=iSCSI TGTd
 longdesc_de=Teilt Plattenger&#228;te &#252;ber das Netzwerk mit dem iSCSI-Protokoll mit dem TGTd Paket.
 desc_ca=iSCSI TGTd
-longdesc_ca=Compartició de dispositius de disc a través de la xarxa utilitzant el protocol iSCSI amb el paquet TGTd.
+longdesc_ca=Comparteix els dispositius de disc a trav�s de la xarxa utilitzant el protocol iSCSI amb el paquet TGTd.

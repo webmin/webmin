@@ -12,3 +12,4 @@ desc_cz.UTF-8=Démon idmapd
 desc_no=idmapd Daemon
 desc_ms_MY=daemon idmapd
 longdesc_ms_MY=Mengurus pemetaan ID NFS daemon.
+longdesc_ca=Gestiona el dimoni de mapejat d'IDs de NFS.

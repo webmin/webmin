@@ -7,3 +7,4 @@ desc_ca=Tallafocs BSD
 desc_de=BSD Firewall
 desc_nl=BSD Firewall
 longdesc_de=Konfiguriert eine BSD Firewall mit IPFW, durch Erstellen und Bearbeiten von Regeln.
+longdesc_ca=Configura un tallafocs BSD utilitzant IPFW, bo i creant i editant regles.

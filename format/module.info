@@ -26,3 +26,4 @@ desc_ko_KR.UTF-8=지역 디스크 파티션
 desc_pl.UTF-8=Partycje na dyskach lokalnych
 desc_hu.UTF-8=A lokális lemez partíciói
 desc_nl=Partities op Locale Harddisken
+longdesc_ca=Crea i edita particions dels discs locals a Solaris.

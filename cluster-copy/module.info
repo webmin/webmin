@@ -15,3 +15,4 @@ desc_hu=Cluster fájlok másolása
 longdesc_ms_MY=Jadualkan pemindahan fail dari pelayan ini ke pelayan yang lain dalam kluster Webmin.
 desc_ms_MY=Kluster Fail Salinan
 longdesc_pl=Zaplanowany transfer plików z tego serwera do innych serwerów w klastrze.
+longdesc_ca=Planifica la transferència de fitxers des d'aquest servidor a múltiples servidors d'un cluster Webmin.

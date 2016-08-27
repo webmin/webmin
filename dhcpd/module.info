@@ -34,3 +34,4 @@ longdesc_ms_MY=Mengurus perkongsian rangkaian, subnet, dan grup untuk ISC DHCPD.
 desc_ms_MY=Pelayan DHCP
 longdesc_de=Verwaltet freigegebene Netzwerke, Subnetze, Hosts und Gruppen f&#252;r ISC DHCPD.
 longdesc_pl=Zarz±dzaj udostêpnianiem sieci, podsieci, hostów i grup dla ISC DHCPD.
+longdesc_ca=Gestiona xarxes, subxarxes, hosts i grups compartits per DHCPD ISC.

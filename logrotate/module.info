@@ -24,3 +24,4 @@ desc_ms_MY=Putaran Fail Log
 longdesc_de=Richtet die automatische Rotation von Apache, Squid, Syslog und andere Log-Dateien ein.
 desc_pl=Rotacja logów
 longdesc_pl=Ustaw automatyczn± rotacjê dla Apache, Squid, Syslog i innych plików logów.
+longdesc_ca=Configura la rotació automàtica dels fitxers de registre d'Apache, Squid, Syslog i altres.

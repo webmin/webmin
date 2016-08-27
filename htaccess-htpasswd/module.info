@@ -24,3 +24,4 @@ desc_hu.UTF-8=Védett Web könyvtárak
 desc_no=Beskyttede Web kataloger
 longdesc_ms_MY=Cipta fail .htaccess dan htpasswd untuk melindungi capaian direktori web.
 desc_ms_MY=Melindungi Direktori Web
+longdesc_ca=Crea fitxers .htaccess i htpasswd per a protegir directoris accessibles per web.

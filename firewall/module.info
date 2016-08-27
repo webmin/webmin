@@ -24,3 +24,4 @@ desc_ms_MY=Firewall Linux
 longdesc_de=Konfiguriert eine Linux-Firewall mit iptables. Erm&#246;glicht die Bearbeitung aller Tabellen, Ketten, Regeln und Optionen.
 desc_pl=Firewall Linuksa
 longdesc_pl=Konfiguracja firewall linuksa u¿ywaj±c iptables. Pozwala na edycjê wszystkich tabel, regu³ i opcji.
+longdesc_ca=Configura un tallafocs Linux utilitzant iptables. Permet l'edició de totes les taules, cadenes, regles i opcions.

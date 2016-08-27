@@ -6,3 +6,4 @@ longdesc=Configure a firewall using the IPFilter package, by creating and editin
 desc_ca=Tallafocs IPFIlter
 desc_nl=IPFilter Firewall
 desc_de=IPFilter-Firewall 
+longdesc_ca=Configura un tallafocs utilitzant el paquet IPFilter, bo i creant i editant regles.

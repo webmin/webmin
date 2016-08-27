@@ -6,3 +6,4 @@ desc_de=Partitionen auf lokalen Festplatten
 longdesc=Create and edit paritions on local SCSI and IDE disks on FreeBSD.
 longdesc_de=Erstellt und bearbeitet Partitionen auf lokalen SCSI- und IDE-Festplatten auf FreeBSD.
 desc_ca=Particions dels Discs Locals
+longdesc_ca=Crea i edita les particions de discs locals SCSI i IDE a FreeBSD.

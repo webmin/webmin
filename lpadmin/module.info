@@ -35,3 +35,4 @@ desc_no=Skriver administrasjon
 longdesc_ms_MY=Mencipta dan menyunting pencetak lokal dan capaian jauh. Menyokong Windows print servers dan driver Ghostscript.
 desc_ms_MY=Pentadbir pencetak
 longdesc_pl=Twórz i edytuj lokalne oraz zdalne drukarki. Wsparcie dla serwerów drukowania Windows i sterowników Ghostscript.
+longdesc_ca=Crea i edita impressores locals i remotes. Suporta servidors d'impressió Windows i drivers d'impressió Ghostscript.

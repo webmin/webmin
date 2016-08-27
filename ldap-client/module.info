@@ -11,3 +11,4 @@ desc_no=LDAP klient
 desc_ms_MY=Klien LDAP
 longdesc_ms_MY=Mengkonfigurasi sistem anda sebagai klien LDAP untuk pengguna dan grup.
 longdesc_de=Konfiguriert ihr System als LDAP Client f&#252;r Benutzer und Gruppen.
+longdesc_ca=Configura el sistema com un client LDAP per als usuaris i grups.

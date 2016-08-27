@@ -12,3 +12,4 @@ desc_no=LDAP tjener
 desc_ms_MY=Pelayan LDAP
 longdesc_ms_MY=Menguruskan klien OpenLDAP dan objek didalam pangkalan datanya
 longdesc_de=Verwaltet den OpenLDAP-Server und Objekte in seiner Datenbank
+longdesc_ca=Gestiona el servidor OpenLDAP i els objectes de la seva base de dades.

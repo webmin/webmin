@@ -50,7 +50,7 @@ index_unapply2desc=Fes clic sobre aquest botó per desar la configuració de sobre
 index_table_filter=Filtratge de paquets (filter)
 index_table_nat=Traducció d'adreces de xarxa (nat)
 index_table_mangle=Alteració de paquets (mangle)
-index_existing=Webmin ha detectat $1 regles de tallafocs ip6tables actualment en ús, que no seran enregistrades al fitxer $2. Segurament, aquestes regles van ser configurades des d'un script, que aquest mòdul no sap llegir ni editar.<p>Si vols utilitzar aquest mòdul per gestionar el tallafocs ip6tables, fes clic sobre el botó de sota per convertir les regles existents a un fitxer, i desactivar llavors el teu script del tallafocs.
+index_existing=Webmin ha detectat $1 regles de tallafocs ip6tables actualment en ús, que no seran enregistrades al fitxer $2. Segurament, aquestes regles van ser configurades des d'un script, que aquest mòdul no sap llegir ni editar.<p>Si vols utilitzar aquest mòdul per gestionar el tallafocs IPtables, fes clic sobre el botó de sota per convertir les regles existents a un fitxer, i desactivar llavors el teu script del tallafocs.
 index_saveex=Desa les Regles del Tallafocs
 index_atboot=Activa el tallafocs en engegar el sistema
 index_headerex=Configuració existent del tallafocs
@@ -58,7 +58,7 @@ index_bootup=Activa'l en engegar
 index_bootupdesc=Canvia aquesta opció per controlar si el tallafocs s'ha d'activar en engegar el sistema o no.
 index_return=a la llista de regles
 index_setup=Encara no s'ha configurat cap tallafocs ip6tables al sistema. Webmin te'n pot configurar un i desar-lo al fitxer $1, amb uns valors inicials basats en el tipus de tallafocs seleccionat més avall...
-/
+index_rsetup=La configuració del tallafocs ip6tables del sistema està a punt de ser reiniciada. Webmin configurarà noves regles per defecteew default rules per a ser desade al fitxer $1, amb els paràmetres inicials basats en la teva selecció de tipus de tallafocs de sota...
 index_auto0=Permet tot el trànsit
 index_auto1=Executa traducció d'adreces de xarxa sobre la interfície externa:
 index_auto2=Bloqueja totes les connexions d'entrada sobre la interfície externa:
@@ -133,7 +133,7 @@ redhat_eoutput=S'ha produït un error en buscar l'estat d'ip6tables amb l'ordre $
 
 gentoo_escript=No s'ha trobat al sistema el script $1 d'inici d'ip6tables Gentoo.
 
-eip6tables=Línia del fitxer d'ip6tables desconeguda: $1
+eiptables=Línia del fitxer d'ip6tables desconeguda: $1
 
 edit_title1=Addició de Regla
 edit_title2=Edició de Regla
