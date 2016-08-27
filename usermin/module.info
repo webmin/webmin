@@ -30,3 +30,4 @@ desc_hu=Usermin beállítások
 longdesc_ms_MY=Mengkonfigurasi pilihan global untuk akaun pengguna pelayan pengurusan Usermin.
 desc_ms_MY=Konfigurasi Usermin
 longdesc_de=Konfiguriert globale Optionen f&#252;r die Verwaltung von Usermin-Server-Benutzerkonten.
+longdesc_ca=Configura les opcions globals del servidor de gestió de comptes d'Usuaris de Usermin.

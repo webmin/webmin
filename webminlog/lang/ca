@@ -56,6 +56,13 @@ search_err=La recerca ha fallat
 search_global=Cap
 search_global_login=Ha entrat a Webmin
 search_global_logout=Ha sortit de Webmin
+search_global_failed=L'entrada a Webmin ha fallat: $1
+search_global_expiredpass=La contrasenya ha caducat
+search_global_wronguser=L'usuari és invàlid
+search_global_wrongpass=La contrasenya és invàlida
+search_global_baduser=El nom d'usuari és incorrecte
+search_global_badpass=La contrasenya és incorrecta
+search_global_twofactor=El testimoni de dos factors és invàlid
 search_csv=Exporta com a CSV
 
 view_title=Detalls de l'Acció

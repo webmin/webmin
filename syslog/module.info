@@ -37,3 +37,4 @@ desc_no=System logger
 longdesc_ms_MY=Mengkonfigurasi pelayan syslog pada sistem anda dan melihat fail lognya.
 desc_ms_MY=Sistem Logs
 longdesc_de=Konfiguriert den Syslog-Server auf Ihrem System und zeigt Log-Dateien an.
+longdesc_ca=Configura el servidor syslog del sistema i en visualitza els fitxers de registre.

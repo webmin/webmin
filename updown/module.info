@@ -33,3 +33,4 @@ desc_ms_MY=Muat naik dan Muat turun
 longdesc_de=Hochladen mehrerer Dateien auf den Server sowie laden mehrere URLs entweder sofort oder im Hintergrund zu einem bestimmten Zeitpunkt.
 longdesc_pl=Wysy³anie wielu plików na serwer i pobieranie z i na serwer z URL przez harmonogram lub natychmiast.
 desc_pl=Wysy³anie i pobieranie
+longdesc_ca=Puja múltiples fitxers al servidor i baixa múltiples URLs, ja sigui immediatament o en segon pla a hores planificades.

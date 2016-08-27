@@ -23,3 +23,4 @@ longdesc_pl=Generuje raporty z serwera www, proxy i FTP
 longdesc_ms_MY=Menjana laporan daripada pelayan Web, pelayan proksi dan fail log FTP
 desc_ms_MY=Webalizer Analisis fail log
 longdesc_de=Generiert Berichte aus Webserver, Proxy-Server und FTP-Log-Dateien
+longdesc_ca=Genera informes apartir dels fitxers de registre del servidor web, el servidor proxy o el servidor FTP.

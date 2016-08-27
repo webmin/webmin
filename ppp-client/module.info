@@ -13,3 +13,4 @@ desc_ms_MY=Klien PPP Dialup
 longdesc_ms_MY=Mengkonfigurasi pakej WV-Dial untuk sambungan ke Internet dengan menggunakan sambungan modem PPP
 longdesc_de=Konfiguriert das WV-Dial-Paket, um mit dem Internet mit einer Modem-PPP-Verbindung sich zu verbinden
 desc_de=PPP-Dialup-Client
+longdesc_ca=Configura el paquet WV-Dial per connectar-se a internet amb una connexió PPP de mòdem.

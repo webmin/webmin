@@ -16,3 +16,4 @@ desc_ms_MY=Terowong HTTP
 longdesc_ms_MY=Mencapai pelayan HTTP yang lain melalui pelayan Webmin.
 longdesc_de=Verbindung zu einem anderen HTTP-Server &#252;ber einen Tunnel durch den Webmin-Server.
 desc_no=HTTP Tunnel
+longdesc_ca=Connecta amb un altre servidor HTTP via un túnel a través del servidor Webmin.

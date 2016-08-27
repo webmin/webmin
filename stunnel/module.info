@@ -19,3 +19,4 @@ longdesc_ms_MY=Menyediakan terowong SSL untuk menyulitkan perkhidmatan seperti P
 desc_ms_MY=Terowong SSL
 longdesc_ja_JP.euc=inetd ¤«¤é¡¢stunnelSSL ¤òÍøÍÑ¤·¡¢POP3 ¡¢IMAP ¤ÎÍÍ¤Ê¥µ¡¼¥Ó¥¹¤ò°Å¹æ²½¤¹¤ë¥È¥ó¥Í¥ë¤òÀßÄê¤·¤Ş¤¹
 desc_ja_JP.euc=SSL ¥È¥ó¥Í¥ë
+longdesc_ca=Configura túnels SSL per xifrar serveis com ara POP3 o IMAP utilitzant stunnel, executant-lo des d'inetd.

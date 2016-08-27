@@ -18,3 +18,4 @@ desc_hu=MTA szerver (QMail)
 longdesc_ms_MY=Mengkonfigurasi pelayan mel QMail, alternatif yang lebih mudah berbanding Sendmail.
 desc_ms_MY=Pelayan Mail QMail
 longdesc_de=Konfiguriert den QMail Mailserver, eine einfachere Alternative zu Sendmail.
+longdesc_ca=Configura el servidor de correu QMail, una alternativa més simple a Sendmail.

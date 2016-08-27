@@ -29,3 +29,4 @@ desc_hu=Adatbázis szerver (PostgresSQL)
 longdesc_ms_MY=Mengurus 'databases', 'tables' dan 'users' dalam pelayan pangkalan data PostgreSQL anda.
 desc_ms_MY=Pelayan Pangkalan Data PostgreSQL 
 longdesc_de=Verwaltet Datenbanken, Tabellen und Benutzer auf Ihrem PostgreSQL Datenbankserver.
+longdesc_ca=Gestiona les bases de dades, taules i usuaris del servidor de bases de dades PostgreSQL.

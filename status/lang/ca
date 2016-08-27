@@ -410,6 +410,7 @@ monitor_sub3=Monitor de servei: $1 serveis
 monitor_run1=S'està executant $1 a $2...
 monitor_run2=S'està executant $1...
 monitor_runerr=No s'ha pogut executar $1 a $2: $3
+monitor_email_stat=Estat actual: $1
 
 deletes_egone=Un dels monitors seleccionats ja no existeix
 deletes_enone=No has seleccionat cap monitor

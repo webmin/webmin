@@ -27,3 +27,4 @@ desc_hu=FTP szerver (ProFTPD)
 longdesc_ms_MY=Mengkonfigurasi pelayan FTP ProFTPD yang sangat hebat. Menyokong semua pilihan dalam kebanyakan modul standard.
 desc_ms_MY=Pelayan ProFTPD
 longdesc_de=Konfiguriert den leistungsstarken ProFTPD FTP-Server. Unterst&#252;tzt alle Optionen in den meisten Standardmodule.
+longdesc_ca=Configura el potent servidor FTP ProFTPD. Suporta totes les opcions de la majoria de mòduls estàndard.

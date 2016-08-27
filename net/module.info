@@ -38,3 +38,4 @@ longdesc_ms_MY=Mengkonfigurasi masa boot dan pengaktifan antara muka, DNS, lalua
 desc_ms_MY=Konfigurasi Rangkaian
 longdesc_de=Konfiguriert Boot-Zeit und aktive Schnittstellen, DNS, Routing und /etc/hosts.
 longdesc_pl=Konfiguracja uruchamianych i aktywnych interfejsów, DNS, trasowania i /etc/hosts.
+longdesc_ca=Configura les interfícies actives en el moment d'engegar, DNS, rutes i /etc/hosts.

@@ -225,6 +225,7 @@ newdb_template=Base de daes de plantilla
 newdb_notemplate=Cap
 
 user_title=Usuaris PostgreSQL
+user_vwarning=ATENCIÓ: Aquest usuari PostgreSQL és l'administrador del domini $1 de Virtualmin. Si canvies paràmetres aquí, es poden produir errors a Virtualmin.
 user_ecannot=No tens permís per editar els usuaris
 user_name=Usuari
 user_db=Pot crear bases de dades
@@ -522,12 +523,12 @@ adv_and=Busca registres que coincideixin amb tots els criteris...
 adv_or=Busca registres que coincideixin amb qualsevol criteri...
 adv_ok=Busca Ara
 
-tdrops_enone=No has introduït cap objecte per destruir
-tdrops_err=No s'han pogut destruir els objectes
-tdrops_ok=Destrueix els Objectes
-tdrops_title=Destrucció d'Objectes
-tdrops_rusure=Segur que vols destruir els $1 objectes seleccionats de la base de dades $2? Se suprimiran $3 files de dades.
-tdrops_rusure2=Segur que vols destruir els $1 objectes seleccionats de la base de dades $2?
+tdrops_enone=No has introduït cap taula per destruir
+tdrops_err=No s'han pogut destruir les taules
+tdrops_ok=Destrueix
+tdrops_title=Destrueix les Seleccionades
+tdrops_rusure=Segur que vols destruir les $1 taules seleccionades de la base de dades $2? Se suprimiran $3 files de dades.
+tdrops_rusure2=Segur que vols destruir les $1 taules seleccionades de la base de dades $2?
 
 ddrops_err=No s'han pogut destruir les bases de dades
 ddrops_title=Destrucció de Bases de Dades

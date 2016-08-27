@@ -134,6 +134,7 @@ uedit_uid_def=Automàtic
 uedit_uid_calc=Calculat
 uedit_disabled=Entrada desactivada temporalment
 uedit_sys=Per defecte del sistema
+uedit_clone=Clona l'Usuari
 
 usave_err=No s'ha pogut desar l'usuari
 usave_eedit=No pots editar aquest usuari
@@ -210,6 +211,7 @@ gedit_allu=Tots els usuaris
 gedit_selu=Els usuaris del grup
 gedit_pri=Membres del grup primari
 gedit_prinone=No hi ha cap usuari que tingui aquest grup com a primari
+gedit_clone=Clona el Grup
 
 gsave_err=No s'ha pogut desar el grup
 gsave_eedit=No pots editar aquest grup

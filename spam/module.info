@@ -15,3 +15,4 @@ desc_hu=Levelezõ szûrõ (SpamAssassin)
 longdesc_ms_MY=Mencipta dan mengkonfigurasi SpamAssassin untuk menapis emel yang diterima oleh sistem anda.
 desc_ms_MY=Penapis Mel SpamAssassin
 longdesc_de=Richtet ein und konfiguriert SpamAssassin, um empfangene E-Mails auf Ihrem System zu filtern.
+longdesc_ca=Configura SpamAssassin per filtrar el correu rebut pel sistema.

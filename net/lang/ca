@@ -109,6 +109,9 @@ bifc_nobridge=&lt;Cap&gt;
 bifc_ebridgeto=Cal seleccionar una interfície Ethernet existent per a utilitzar-la amb aquest pont
 bifc_ebridgeto2=La interfície seleccionada per al pont no pot tenir cap adreça assignada
 bifc_ebridge=La interfície pont ha de ser un número
+bifc_bridgestp=Protocol d'Expansió d'Arbre
+bifc_bridgefd=Retard de Reenviament
+bifc_bridgewait=Retard per esdevenir disponible
 bifc_ebond=La interfície d'enllaç ha de ser un número
 
 bonding_add=Afegeix una nova interfície d'enllaç.
@@ -116,7 +119,10 @@ bonding_create=Crea una Interfície d'Enllaç
 bonding_teamparts=Companys d'Equip
 bonding_teampartsdesc=Companys separats per espais, p. ex. "eth2 eth4"
 bonding_teammode=Mode d'Equip
+bonding_primary=Interfície Primària
+bonding_primarydesc=Aplicable només amb els modes activebackup, balance-tlb o balance-alb
 bonding_miimon=Interval de Monitorització Mii
+bonding_miimondesc=(deixa-ho en blanc per desactivar la monitorització d'enllaços)
 bonding_updelay=Retard superior
 bonding_downdelay=Retard inferior
 

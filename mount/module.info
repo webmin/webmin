@@ -39,3 +39,4 @@ desc_no=Disker og nettverksfilsystemer
 longdesc_ms_MY=Mount sistem fail dan fail swap yang kebiasaannya ditetapkan di /etc/fstab atau /etc/vfstab.
 desc_ms_MY=Disk dan Fail sistem rangkaian
 longdesc_de=Mounte Dateisysteme und SWAP Dateien, die &#252;blicherweise in /etc/fstab oder /etc/vfstab konfiguriert wurden.
+longdesc_ca=Munta els sistemes de fitxers i els fitxers de swap habitualment configurats a /etc/fstab o /etc/vfstab.

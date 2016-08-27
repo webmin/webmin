@@ -36,3 +36,4 @@ desc_hu=Lemezkvóták (Quota)
 longdesc_ms_MY=Menyediakan dan menyunting kuota disk pengguna atau grup bagi fail sistem setempat.
 desc_ms_MY=Kuota disk
 longdesc_de=Richtet ein und bearbeitet Benutzer oder Gruppe von Festplatten-Kontingenten f&#252;r lokale Dateisysteme.
+longdesc_ca=Configura i edita les quotes de disc d'usuaris o grups dels sistemes de fitxers locals.

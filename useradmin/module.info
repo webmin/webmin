@@ -38,3 +38,4 @@ longdesc_ms_MY=Mencipta dan menyunting pengguna Unix dan grup dalam fail /etc/pa
 desc_ms_MY=Pengguna dan Grup
 longdesc_de=Erstellt und editiert Unix-Benutzer und Gruppen aus den /etc/passwd und /etc/group Dateien.
 longdesc_pl=Twórz i edytuj u¿ytkowników i grupy Unix z plików /etc/passwd i /etc/group.
+longdesc_ca=Crea i edita usuaris i grups Unix s partir dels fitxer /etc/passwd i /etc/group.

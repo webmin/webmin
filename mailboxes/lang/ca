@@ -111,6 +111,7 @@ mail_esystem=S'ha produït un error en contactar amb el sistema de correu: $1. Ai
 mail_selread=Selecciona els llegits.
 mail_selunread=Selecciona els no llegits.
 mail_selspecial=Selecciona els especials.
+mail_specialsync=Sincronitza els especials
 
 view_title=Lectura del Correu
 view_desc=Missatge $1 a $2

@@ -365,6 +365,7 @@ savefshare_global=El nom 'global' o es pot utilitzar per a cap recurs
 savefshare_owner=Hi falta l'usuari del nou directori o bé és invàlid
 savefshare_group=Hi falta grup del nou directori o bé és invàlid
 savefshare_perms=Hi falten els permisos del nou directori o bé són invàlids
+savefshare_emkdir=No s'ha pogut crear el directori: $1
 
 savemisc_fail=No s'han pogut desar les opcions
 savemisc_lockdir=El directori que conté el directori de bloqueigs no existeix

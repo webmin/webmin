@@ -11,3 +11,4 @@ longdesc_pl=Okre¶l funkcje Webmina, które maj± byæ uruchamiane wed³ug regularneg
 desc_hu=Webmin ütemezett feladatok
 desc_ms_MY=Penjadualan Fungsi Webmin
 longdesc_ms_MY=Tentukan fungsi modul Webmin yang hendak dipanggil mengikut jadual tetap oleh pelayan Web Webmin
+longdesc_ca=Defineix les funcions del mòdul Webmin que es criden de forma planificada pel servidor web Webmin.

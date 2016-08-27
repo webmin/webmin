@@ -34,3 +34,4 @@ desc_hu=SSH hozzáférés
 longdesc_ms_MY=Log masuk ke sistem anda dengan menggunakan SSH atau telnet.
 desc_ms_MY=Log masuk SSH
 longdesc_de=Login auf Ihr System mit SSH oder Telnet.
+longdesc_ca=Entra al sistema amb SSH o telnet.

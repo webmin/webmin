@@ -30,3 +30,4 @@ desc_hu=NIS szerver és ügyfelek
 longdesc_ms_MY=Menyediakan sistem sebagai klien NIS,master atau slave master. Ambil perhatian bahawa NIS+ tidak disokong.
 desc_ms_MY=Klien NIS dan Pelayan
 longdesc_pl=Ustaw system jako klient NIS. Uwaga: NIS+ nie jest obs³ugiwany.
+longdesc_ca=Configura un sistema com un client NIS, o un servidor NIS mestre o esclau. Tingues en compte que NIS+ no està suportat.

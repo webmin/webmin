@@ -216,6 +216,7 @@ sources_typeu=Servidor UDP
 sources_typef=Fitxer de registre del nucli
 sources_typep=Pipe amb nom
 sources_typen=Stream de Sun
+sources_typenw=Servidor Syslog
 sources_return=als orígens de registre
 sources_none2=Cap
 
@@ -226,7 +227,7 @@ source_any=Qualsevol
 source_none=Cap
 source_egone=L'origen ja no existeix!
 source_name=Nom de l'origen
-source_type=Registre els tipus d'origen...
+source_type=Tipus d'origen dels registres
 source_owner=Usuari del fitxer de sòcol
 source_group=Grup del fitxer de sòcol
 source_perm=Permisos del fitxer de sòcol
@@ -254,6 +255,7 @@ source_epipe_name=Hi falta el fitxer de pipe amb nom o bé és invàlid
 source_door=Nom de fitxer porta
 source_esun_streams_name=Hi falta el nom del fitxer de stream de Sun o bé és invàlid
 source_edoor=Hi falta el nom del fitxer de porta de streams Sun o bé és invàlid
+source_transport=Protocol de xarxa
 
 view_title=Visualització de Fitxer de Registre
 view_header=Les darreres $1 línies de $2

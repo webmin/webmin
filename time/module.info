@@ -38,3 +38,4 @@ longdesc_ms_MY=Menetapkan masa sistem dan perkakasan sama ada secara manual atau
 desc_ms_MY=Masa Sistem
 longdesc_de=Stellt die System- und Hardware-Zeit entweder manuell oder von einem Zeitserver ein.
 longdesc_pl=Ustaw czas systemowy i sprzêtowy rêcznie lub z serwera czasu.
+longdesc_ca=Configura l'hora del maquinari i del sistema bé manualment, bé a partir d'un servidor horari.

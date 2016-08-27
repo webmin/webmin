@@ -12,3 +12,4 @@ desc_de=System Status
 desc_no=Systemstatus
 desc_pl=Stan systemu
 longdesc_pl=Biblioteki zbierania danych o stanu systemu w tle
+longdesc_ca=Llibreries de recol·lecció de l'estat del sistema en segon pla.

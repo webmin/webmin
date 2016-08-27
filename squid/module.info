@@ -32,3 +32,4 @@ desc_pl.UTF-8=Serwer proxy Squid
 longdesc_ms_MY=Mengkonfigurasi Squid opsyen, Acls, parameter caching dan pengguna proksi.
 desc_ms_MY=Pelayan Proksi Squid
 longdesc_de=Konfiguriert Squid-Optionen, ACLs, Caching-Parameter und Proxy-Nutzer.
+longdesc_ca=Configura les opcions, ACLs, paràmetres cau i usuaris proxy de Squid.
