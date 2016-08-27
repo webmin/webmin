@@ -297,6 +297,7 @@ else {
 }
 
 # read_opts_file(file)
+# Read the file containing possible menu options for a command
 sub read_opts_file
 {
 local @rv;
@@ -371,6 +372,11 @@ $cmd->{'args'} = [ ];
 my ($i, $name);
 for($i=0; defined($name = $in{"name_$i"}); $i++) {
 	if ($name) {
+		if ($in{"type_$i"} == 9 || $in{"type_$i"} == 12 ||
+		    $in{"type_$i"} == 13 || $in{"type_$i"} == 14) {
+			$in{"opts_$i"} =~ /\|$/ || -r $in{"opts_$i"} ||
+				&error(&text('save_eopts', $i+1));
+			}
 		push(@{$cmd->{'args'}}, { 'name' => $name,
 					  'desc' => $in{"desc_$i"},
 					  'type' => $in{"type_$i"},
