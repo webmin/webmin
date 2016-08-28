@@ -31,6 +31,13 @@ foreach $url (@urls) {
 		my %tinfo = &get_theme_info($u->[0]);
 		my %info = %minfo ? %minfo : %tinfo;
 
+		# Skip if we already have the version, perhaps from an earlier
+		# update in this run
+		my $nver = $u->[1];
+		$nver =~ s/^(\d+\.\d+)\..*$/$1/;
+		next if (%info && $info{'version'} &&
+			 $info{'version'} >= $nver);
+
 		if ($config{'upshow'}) {
 			# Just tell the user what would be done
 			$rv .= &text('update_mshow', $u->[0], $u->[1])."\n".
