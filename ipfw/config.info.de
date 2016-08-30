@@ -6,3 +6,4 @@ cluster_mode=Aktualisiere Cluster&#45;Server,1,0-Immer wenn eine &#196;nderung v
 line1=Systemkonfiguration,11
 save_file=IPFW speichern&#44; um Datei zu bearbeiten,3,Webmin's Standard oder automatisch
 ipfw=Voller Pfad zum ipfw Befehl,0
+version=IPFW Versionsnummer,1,0-Erkenne automatisch,1-Version 1,2-Version 2
