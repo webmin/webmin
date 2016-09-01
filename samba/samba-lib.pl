@@ -642,7 +642,7 @@ if ($has_pdbedit) {
 	&print_tempfile(TEMP, "\n\n");
 	&close_tempfile(TEMP);
 	local $out = &backquote_logged(
-		"cd / && $config{'pdbedit'} -a -s $config{'smb_conf'} -u ".
+		"cd / && $config{'pdbedit'} -a -s $config{'smb_conf'} -t -u ".
 		quotemeta($_[0]->{'name'}).
 		($config{'sync_gid'} ? " -G $config{'sync_gid'}" : "").
 		" -c '[".join("", @opts)."]' $ws <$temp 2>&1");
