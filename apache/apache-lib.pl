@@ -1393,7 +1393,7 @@ if ($httpd_modules{'core'} >= 1.301) {
 			}
 		}
 	local $out = &backquote_command("$cmd 2>&1");
-	if ($out && $out !~ /syntax\s+ok/i) {
+	if ($out && $out !~ /(syntax|Checking).*\s+ok/i) {
 		return $out;
 		}
 	}
