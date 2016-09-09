@@ -2328,6 +2328,7 @@ alarm(60);
 ($line = &read_http_connection($_[0])) =~ tr/\r\n//d;
 if ($line !~ /^HTTP\/1\..\s+(200|30[0-9]|400)(\s+|$)/) {
 	alarm(0);
+	&close_http_connection($_[0]);
 	if ($_[2]) { ${$_[2]} = $line; return; }
 	else { &error("Download failed : $line"); }
 	}
@@ -2343,6 +2344,7 @@ while(1) {
 	}
 alarm(0);
 if ($main::download_timed_out) {
+	&close_http_connection($_[0]);
 	if ($_[2]) { ${$_[2]} = $main::download_timed_out; return 0; }
 	else { &error($main::download_timed_out); }
 	}
@@ -2372,10 +2374,12 @@ if ($rcode >= 300 && $rcode < 400) {
 		}
 	elsif ($header{'location'}) {
 		# Assume relative to same dir .. not handled
+		&close_http_connection($_[0]);
 		if ($_[2]) { ${$_[2]} = "Invalid Location header $header{'location'}"; return; }
 		else { &error("Invalid Location header $header{'location'}"); }
 		}
 	else {
+		&close_http_connection($_[0]);
 		if ($_[2]) { ${$_[2]} = "Missing Location header"; return; }
 		else { &error("Missing Location header"); }
 		}
@@ -2399,6 +2403,7 @@ else {
 		# Write to a file
 		my $got = 0;
 		if (!&open_tempfile(PFILE, ">$_[1]", 1)) {
+			&close_http_connection($_[0]);
 			if ($_[2]) { ${$_[2]} = "Failed to write to $_[1] : $!"; return; }
 			else { &error("Failed to write to $_[1] : $!"); }
 			}
@@ -2411,6 +2416,7 @@ else {
 		&close_tempfile(PFILE);
 		if ($header{'content-length'} &&
 		    $got != $header{'content-length'}) {
+			&close_http_connection($_[0]);
 			if ($_[2]) { ${$_[2]} = "Download incomplete"; return; }
 			else { &error("Download incomplete"); }
 			}
