@@ -302,8 +302,14 @@ else {
 	print &ui_table_row($text{'ssl_webroot'},
 		&ui_radio_table("webroot_mode", $mode, \@opts));
 
+	# Install in Webmin now?
 	print &ui_table_row($text{'ssl_usewebmin'},
 		&ui_yesno_radio("use", 1));
+
+	# SSL key size
+	print &ui_table_row($text{'ssl_size'},
+		&ui_opt_textbox("size", undef, 6, $text{'default'}).
+				" ".$text{'ssl_bits'});
 
 	# Renewal option
 	my $job = &find_letsencrypt_cron_job();

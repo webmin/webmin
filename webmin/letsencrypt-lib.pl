@@ -41,13 +41,13 @@ if ($?) {
 return undef;
 }
 
-# request_letsencrypt_cert(domain|&domains, domain-webroot, [email])
+# request_letsencrypt_cert(domain|&domains, domain-webroot, [email], [keysize])
 # Attempt to request a cert using a generated key with the Let's Encrypt client
 # command, and write it to the given path. Returns a status flag, and either
 # an error message or the paths to cert, key and chain files.
 sub request_letsencrypt_cert
 {
-my ($dom, $webroot, $email) = @_;
+my ($dom, $webroot, $email, $size) = @_;
 my @doms = ref($dom) ? @$dom : ($dom);
 $email ||= "root\@$doms[0]";
 
@@ -75,7 +75,8 @@ if ($letsencrypt_cmd) {
 	&close_tempfile(TEMP);
 	my $dir = $letsencrypt_cmd;
 	$dir =~ s/\/[^\/]+$//;
-	my $out = &backquote_command("cd $dir && (echo A | $letsencrypt_cmd certonly -a webroot ".join(" ", map { "-d ".quotemeta($_) } @doms)." --webroot-path ".quotemeta($webroot)." --duplicate --config $temp --rsa-key-size 2048 2>&1)");
+	$size ||= 2048;
+	my $out = &backquote_command("cd $dir && (echo A | $letsencrypt_cmd certonly -a webroot ".join(" ", map { "-d ".quotemeta($_) } @doms)." --webroot-path ".quotemeta($webroot)." --duplicate --config $temp --rsa-key-size $size 2>&1)");
 	if ($?) {
 		return (0, "<pre>".&html_escape($out || "No output from $letsencrypt_cmd")."</pre>");
 		}
@@ -103,6 +104,7 @@ if ($letsencrypt_cmd) {
 	}
 else {
 	# Fall back to local Python client
+	$size ||= 4096;
 
 	# But first check if the native Let's Encrypt client was used previously
 	# for this system - if so, it must be used in future due to the account
@@ -122,7 +124,7 @@ else {
 
 	# Generate a key for the domain
 	my $key = &transname();
-	my $out = &backquote_logged("openssl genrsa 4096 2>&1 >$key");
+	my $out = &backquote_logged("openssl genrsa $size 2>&1 >$key");
 	if ($?) {
 		return (0, &text('letsencrypt_ekeygen', &html_escape($out)));
 		}

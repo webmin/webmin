@@ -21,6 +21,9 @@ foreach my $dom (@doms) {
 	}
 $in{'renew_def'} || $in{'renew'} =~ /^[1-9][0-9]*$/ ||
 	&error($text{'letsencrypt_erenew'});
+$in{'size_def'} || $in{'size'} =~ /^\d+$/ ||
+	&error($text{'newkey_esize'});
+my $size = $in{'size_def'} ? undef : $in{'size'};
 my $webroot;
 if ($in{'webroot_mode'} == 2) {
 	# Some directory
@@ -68,7 +71,7 @@ else {
 	print &text('letsencrypt_doing',
 		    "<tt>".&html_escape(join(", ", @doms))."</tt>",
 		    "<tt>".&html_escape($webroot)."</tt>"),"<p>\n";
-	my ($ok, $cert, $key, $chain) = &request_letsencrypt_cert(\@doms, $webroot);
+	my ($ok, $cert, $key, $chain) = &request_letsencrypt_cert(\@doms, $webroot, undef, $size);
 	if (!$ok) {
 		print &text('letsencrypt_failed', $cert),"<p>\n";
 		}
@@ -135,6 +138,7 @@ sub save_renewal_only
 my ($doms, $webroot) = @_;
 $config{'letsencrypt_doms'} = join(" ", @$doms);
 $config{'letsencrypt_webroot'} = $webroot;
+$config{'letsencrypt_size'} = $size;
 &save_module_config();
 if (&foreign_check("webmincron")) {
 	my $job = &find_letsencrypt_cron_job();

@@ -2713,6 +2713,7 @@ sub renew_letsencrypt_cert
 {
 my @doms = split(/\s+/, $config{'letsencrypt_doms'});
 my $webroot = $config{'letsencrypt_webroot'};
+my $size = $config{'letsencrypt_size'};
 if (!@doms) {
 	print "No domains saved to renew cert for!\n";
 	return;
@@ -2725,7 +2726,8 @@ elsif (!-d $webroot) {
 	print "Webroot $webroot does not exist!\n";
 	return;
 	}
-my ($ok, $cert, $key, $chain) = &request_letsencrypt_cert(\@doms, $webroot);
+my ($ok, $cert, $key, $chain) = &request_letsencrypt_cert(\@doms, $webroot,
+							  undef, $size);
 if (!$ok) {
 	print "Failed to renew certificate : $cert\n";
 	return;
