@@ -5,11 +5,11 @@
 require './usermin-lib.pl';
 $access{'upgrade'} || &error($text{'acl_ecannot'});
 &foreign_require("proc", "proc-lib.pl");
-if ($ENV{'REQUEST_METHOD'} eq 'GET') {
-	&ReadParse();
+if ($ENV{'CONTENT_TYPE'} =~ /boundary=) {
+	&ReadParseMime();
 	}
 else {
-	&ReadParseMime();
+	&ReadParse();
 	}
 &get_usermin_miniserv_config(\%miniserv);
 
