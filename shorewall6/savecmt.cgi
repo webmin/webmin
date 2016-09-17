@@ -15,7 +15,7 @@ if ($in{'delete'}) {
 else {
 	# Validate inputs
 	$in{'msg'} =~ /\S/ || &error($text{'comment_enone'});
-	$line = "COMMENT $in{'msg'}";
+	$line = (&version_atleast(4, 5, 11) ? "?" : "") . "COMMENT $in{'msg'}";
 
 	# Update or add
 	if ($in{'new'}) {

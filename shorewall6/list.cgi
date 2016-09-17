@@ -55,7 +55,7 @@ if (@table) {
 		@t = @{$table[$i]};
 		local @cols;
 		local @tds;
-		if ($t[0] eq "COMMENT") {
+		if ($t[0] =~ /\??COMMENT/) {
 			# Special case - a comment line
 			push(@cols, "<a href='editcmt.cgi?table=$in{'table'}&".
 				    "idx=$i'><i>".join(" ", @t[1..$#t]).
