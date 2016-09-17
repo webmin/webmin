@@ -120,7 +120,7 @@ if ($in{'auto'}) {
 		     { 'chain' => 'INPUT',
 		       'm' => [ [ "", "icmpv6" ] ],
 		       'p' => [ [ "", "icmpv6" ] ],
-		       'icmpv6-type' => [ "", "source-quench" ],
+		       'icmpv6-type' => [ "", "packet-too-big" ],
 		       'j' => [ "", 'ACCEPT' ],
 		       'cmt' => 'Accept notifications to reduce sending speed' },
 		     { 'chain' => 'INPUT',
