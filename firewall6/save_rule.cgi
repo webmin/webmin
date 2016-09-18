@@ -263,7 +263,7 @@ else {
 		$rule->{'tcp-option'}->[1] = $in{"tcpoption"};
 		}
 	if (&parse_mode("icmptype", $rule, "icmpv6-type")) {
-		$proto eq "icmp" || &error($text{'save_eicmp'});
+		$proto eq "icmpv6" || &error($text{'save_eicmp'});
 		$rule->{'icmpv6-type'}->[1] = $in{'icmptype'};
 		}
 	if (&parse_mode("macsource", $rule, "mac-source")) {
