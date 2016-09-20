@@ -577,7 +577,7 @@ sub addr_match_input
 {
 my @av;
 my $v = &find($_[1], $_[2]);
-if ($v) {
+if ($v && $v->{'members'}) {
 	foreach my $av (@{$v->{'members'}}) {
 		push(@av, join(" ", $av->{'name'}, @{$av->{'values'}}));
 		}
@@ -614,10 +614,12 @@ sub address_port_input
     my $v = &find($_[4], $_[6]);
 
     my $port;
-    for (my $i = 0; $i < @{$v->{'values'}}; $i++) {
-      if ($v->{'values'}->[$i] eq $_[5]) {
-	$port = $v->{'values'}->[$i+1];
-	last;
+    if ($v && $v->{'values'}) {
+      for (my $i = 0; $i < @{$v->{'values'}}; $i++) {
+        if ($v->{'values'}->[$i] eq $_[5]) {
+	  $port = $v->{'values'}->[$i+1];
+	  last;
+        }
       }
     }
 
@@ -634,8 +636,10 @@ sub address_input
 {
 my ($v, @av);
 $v = &find($_[1], $_[2]);
-foreach my $av (@{$v->{'members'}}) {
-	push(@av, join(" ", $av->{'name'}, @{$av->{'values'}}));
+if ($v && $v->{'members'}) {
+	foreach my $av (@{$v->{'members'}}) {
+		push(@av, join(" ", $av->{'name'}, @{$av->{'values'}}));
+		}
 	}
 if ($_[3] == 0) {
 	# text area
@@ -687,13 +691,15 @@ sub forwarders_input
 {
 my $v = &find($_[1], $_[2]);
 my (@ips, @prs);
-foreach my $av (@{$v->{'members'}}) {
-	push(@ips, $av->{'name'});
-	if ($av->{'values'}->[0] eq 'port') {
-		push(@prs, $av->{'values'}->[1]);
-		}
-	else {
-		push(@prs, undef);
+if ($v && $v->{'members'}) {
+	foreach my $av (@{$v->{'members'}}) {
+		push(@ips, $av->{'name'});
+		if ($av->{'values'}->[0] eq 'port') {
+			push(@prs, $av->{'values'}->[1]);
+			}
+		else {
+			push(@prs, undef);
+			}
 		}
 	}
 my @table;
