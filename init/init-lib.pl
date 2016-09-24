@@ -2023,6 +2023,14 @@ opendir(UNITS, &get_systemd_root());
 push(@units, grep { !/\.wants$/ && !/^\./ } readdir(UNITS));
 closedir(UNITS);
 
+# Also add units from list-unit-files that also don't show up
+$out = &backquote_command("systemctl list-unit-files");
+foreach my $l (split(/\r?\n/, $out)) {
+	if ($l =~ /^(\S+)\s+disabled/) {
+		push(@units, $1);
+		}
+	}
+
 # Skip useless units
 @units = grep { !/^sys-devices-/ &&
 	        !/^\-\.mount/ &&
