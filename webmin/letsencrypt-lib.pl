@@ -136,7 +136,7 @@ else {
 	if (!$ok) {
 		return &text('letsencrypt_ecsr', $csr);
 		}
-	&copy_source_dest($csr, "/tmp/lets.csr");
+	&copy_source_dest($csr, "/tmp/lets.csr", 1);
 
 	# Find a reasonable python version
 	my $python = &get_letsencrypt_python_cmd();
@@ -174,9 +174,9 @@ else {
 	my $certfinal = "$module_config_directory/$doms[0].cert";
 	my $keyfinal = "$module_config_directory/$doms[0].key";
 	my $chainfinal = "$module_config_directory/$doms[0].chain";
-	&copy_source_dest($cert, $certfinal);
-	&copy_source_dest($key, $keyfinal);
-	&copy_source_dest($chain, $chainfinal);
+	&copy_source_dest($cert, $certfinal, 1);
+	&copy_source_dest($key, $keyfinal, 1);
+	&copy_source_dest($chain, $chainfinal, 1);
 	&set_ownership_permissions(undef, undef, 0600, $certfinal);
 	&set_ownership_permissions(undef, undef, 0600, $keyfinal);
 	&set_ownership_permissions(undef, undef, 0600, $chainfinal);
