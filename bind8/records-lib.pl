@@ -1019,7 +1019,7 @@ sub get_dnskey_rrset
 sub is_raw_format_records
 {
 my ($file) = @_;
-open(my $RAW, "<", $file);
+open(my $RAW, "<", $file) || return 0;
 my $buf;
 read($RAW, $buf, 3);
 close($RAW);
