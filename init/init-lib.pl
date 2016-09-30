@@ -632,7 +632,7 @@ enabled), only the first parameter needs to be given.
 sub enable_at_boot
 {
 local $st = &action_status($_[0]);
-return if ($st == 0);	# does not exist
+return if ($st == 2);	# already exists and is enabled
 local ($daemon, %daemon);
 local $unit = $_[0];
 $unit .= ".service" if ($unit !~ /\.service$/);
