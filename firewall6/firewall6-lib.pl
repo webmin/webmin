@@ -5,6 +5,7 @@
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
+$config{'perpage'} ||= 50;	# a value of 0 can cause problems
 if ($config{'save_file'}) {
 	# Force use of a different save file, and webmin's functions
 	$ip6tables_save_file = $config{'save_file'};
