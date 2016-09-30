@@ -181,6 +181,35 @@ else {
 		print "<form action=save_policy.cgi>\n";
 		print &ui_hidden("table", $in{'table'});
 		print &ui_hidden("chain", $c);
+
+		if (@rules > $config{'perpage'}) {
+		        # Need to show arrows
+		        print "<center>\n";
+		        $s = int($in{'start'});
+		        $e = $in{'start'} + $config{'perpage'} - 1;
+		        $e = @rules-1 if ($e >= @rules);
+		        if ($s) {
+		                print &ui_link("?start=".
+		                                ($s - $config{'perpage'}),
+		                    "<img src=/images/left.gif border=0 align=middle>");
+		                }
+		        print "<font size=+1>",&text('index_position', $s+1, $e+1,
+		                                     scalar(@rules)),"</font>\n";
+		        if ($e < @rules-1) {
+		                print &ui_link("?start=".
+		                               ($s + $config{'perpage'}),
+		                   "<img src=/images/right.gif border=0 align=middle>");
+		                }
+		        print "</center>\n";
+		        }
+		else {
+		        # Can show them all
+		        $s = 0;
+		        $e = @rules - 1;
+		}
+	
+		@rules = @rules[$s..$e];
+
 		if (@rules) {
 			@links = ( &select_all_link("d", $form),
 				   &select_invert_link("d", $form) );

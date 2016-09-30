@@ -99,7 +99,7 @@ if (($table->{'name'} eq 'nat' && $rule->{'chain'} ne 'POSTROUTING') &&
 		($rtofrom, $rtoto) = split(/\-/, $rule->{'to-ports'}->[1]);
 		}
 	print &ui_table_row($text{'edit_rtoports'},
-		&ui_radio("rtodef", rtofrom eq "" ? 1 : 0,
+		&ui_radio("rtodef", $rtofrom eq "" ? 1 : 0,
 			  [ [ 1, $text{'default'} ],
 			    [ 0, &text('edit_prange',
 				       &ui_textbox("rtofrom", $rtofrom, 6),
@@ -125,7 +125,7 @@ if (($table->{'name'} eq 'nat' && $rule->{'chain'} ne 'POSTROUTING') &&
     &can_jump("DNAT")) {
 	if ($rule->{'j'}->[1] eq 'DNAT') {
 		if ($rule->{'to-destination'}->[1] =~
-		    /^([0-9\.]+)(\-([0-9\.]+))?(:(\d+)(\-(\d+))?)?$/) {
+		    /^\[([0-9A-Fa-f:]+)](\-([0-9A-Fa-f:]+))?(:(\d+)(\-(\d+))?)?$/) {
 			$dipfrom = $1;
 			$dipto = $3;
 			$dpfrom = $5;

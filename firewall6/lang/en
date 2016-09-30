@@ -73,6 +73,7 @@ index_reset=Reset Firewall
 index_resetdesc=Click this button to clear all existing firewall rules and set up new rules for a basic initial configuration.
 index_cluster=Cluster Servers
 index_clusterdesc=Click this button to set up additional Webmin servers to which the firewall configuration will be automatically copied.
+index_position=Rules $1 to $2 of $3
 
 desc_p=protocol is $1
 desc_p!=protocol is not $1
