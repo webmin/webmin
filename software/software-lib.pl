@@ -263,10 +263,11 @@ for(my $i=0; $i<@sp1 || $i<@sp2; $i++) {
 				}
 			}
 		}
-	elsif ($v1 =~ /^([^0-9]+)(\d+)$/ && ($tmp = $1) &&
-	       $v2 =~ /^([^0-9]+)(\d+)$/ &&
+	elsif ($v1 =~ /^([0-9]*[^0-9]+)(\d+)$/ && ($tmp = $1) &&
+	       $v2 =~ /^([0-9]*[^0-9]+)(\d+)$/ &&
 	       $tmp eq $1) {
-		# Strings that are the same followed by numeric
+		# Strings (like foo or 5foo) that are the same followed
+		# by a number
 		$v1 =~ /^([^0-9]+)(\d+)$/;
 		local $num1 = $2;
 		$v2 =~ /^([^0-9]+)(\d+)$/;
