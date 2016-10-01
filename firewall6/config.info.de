@@ -1,4 +1,5 @@
 line0=Konfigurierbare Optionen,11
+perpage=Anzahl der Regeln pro Seite zum anzeigen,3,50
 view_condition=Zeige Zustand in Regelliste?,1,1-Ja,0-Nein
 view_comment=Zeige Kommentare in Regelliste an?,1,1-Ja,0-Nein
 comment_mod=Speichere Kommentare als,1,0-# Kommentar in Datei speichern,1-&#45;&#45; Kommentaroption
