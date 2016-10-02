@@ -57,6 +57,7 @@ if( !$access{'sysdate'} )
 {
   # Show system time for editing
   print &ui_form_start("apply.cgi");
+  print &ui_hidden("mode", "sysdate");
   print &tabletime(&hlink($text{'sys_title'}, "system_time"), 0, %system_date);
   print &ui_submit($text{'action_apply'}, "action");
   if (&support_hwtime()) {
@@ -95,6 +96,7 @@ if (&support_hwtime()) {
 			}
 	    
 		print &ui_form_start("apply.cgi");
+		print &ui_hidden("mode", "hwdate");
 		print &tabletime(&hlink($text{'hw_title'}, "hardware_time"),
 				 0, %hw_date);
 		print &ui_submit($text{'action_save'}, "action");
@@ -154,6 +156,7 @@ if ( ( !$access{ 'sysdate' } && &has_command( "date" ) || !$access{ 'hwdate' } &
 	print $text{'index_descsync'},"<p>\n";
 
 	print &ui_form_start("apply.cgi");
+	print &ui_hidden("mode", "ntp");
 	print &ui_table_start(&hlink($text{'index_timeserver'}, "timeserver"),
 			      "width=100%", 2, [ "width=30%" ]);
 
