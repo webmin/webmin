@@ -240,11 +240,25 @@ for(my $i=0; $i<@sp1 || $i<@sp2; $i++) {
 	local $v2 = $sp2[$i];
 	local $comp;
 	if ($v1 =~ /^\d+$/ && $v2 =~ /^\d+$/) {
-		# Full numeric compare
+		# Numeric only
+		# ie. 5 vs 7
 		$comp = $v1 <=> $v2;
+		}
+	elsif ($v1 =~ /^(\d+[^0-9]+)(\d+)$/ && ($tmp = $1) &&
+	       $v2 =~ /^(\d+[^0-9]+)(\d+)$/ &&
+	       $tmp eq $1) {
+		# Numeric followed by a string followed by a number, where
+		# the first two components are the same
+		# ie. 4ubuntu8 vs 4ubuntu10
+		$v1 =~ /^(\d+[^0-9]+)(\d+)$/;
+		local $num1 = $2;
+		$v2 =~ /^(\d+[^0-9]+)(\d+)$/;
+		local $num2 = $2;
+		$comp = $num1 <=> $num2;
 		}
 	elsif ($v1 =~ /^\d+\S*$/ && $v2 =~ /^\d+\S*$/) {
 		# Numeric followed by string
+		# ie. 6redhat vs 8redhat
 		$v1 =~ /^(\d+)(\S*)$/;
 		local ($v1n, $v1s) = ($1, $2);
 		$v2 =~ /^(\d+)(\S*)$/;
@@ -263,11 +277,11 @@ for(my $i=0; $i<@sp1 || $i<@sp2; $i++) {
 				}
 			}
 		}
-	elsif ($v1 =~ /^([0-9]*[^0-9]+)(\d+)$/ && ($tmp = $1) &&
-	       $v2 =~ /^([0-9]*[^0-9]+)(\d+)$/ &&
+	elsif ($v1 =~ /^([^0-9]+)(\d+)$/ && ($tmp = $1) &&
+	       $v2 =~ /^([^0-9]+)(\d+)$/ &&
 	       $tmp eq $1) {
-		# Strings (like foo or 5foo) that are the same followed
-		# by a number
+		# String followed by a number, where the strings are the same
+		# ie. centos7 vs centos8
 		$v1 =~ /^([^0-9]+)(\d+)$/;
 		local $num1 = $2;
 		$v2 =~ /^([^0-9]+)(\d+)$/;
