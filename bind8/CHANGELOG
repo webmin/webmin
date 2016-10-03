@@ -146,3 +146,5 @@ Added support for NSEC3PARAM records.
 Added support for editing DMARC records, which are specially encoded TXT records for defining the response to SPF and DKIM violations.
 ---- Changes since 1.770 ----
 Automatic creation and deletion of reverse records in partial delegation zones now works the same as in full reverse zones.
+---- Changes since 1.810 ----
+Added support for editing TLSA (SSL Certificate) records.

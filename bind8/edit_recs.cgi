@@ -207,6 +207,18 @@ for(my $i=0; $i<@_; $i++) {
 			}
 		else {
 			$v = $r->{'values'}->[$j];
+			if ($in{'type'} eq "TLSA") {
+				# Display TLSA codes nicely
+				if ($j == 0) {
+					$v = $text{'tlsa_usage'.$v} || $v;
+					}
+				elsif ($j == 1) {
+					$v = $text{'tlsa_selector'.$v} || $v;
+					}
+				elsif ($j == 2) {
+					$v = $text{'tlsa_match'.$v} || $v;
+					}
+				}
 			}
 		if (length($v) > 80) {
 			$v = substr($v, 0, 80)." ...";

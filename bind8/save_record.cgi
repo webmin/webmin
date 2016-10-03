@@ -281,6 +281,21 @@ else {
 		&valname($in{'value3'}) ||
 			&error(&text('edit_etarget', $in{'value3'}));
 		}
+	elsif ($in{'type'} eq 'TLSA') {
+		$in{'serv'} =~ /^[A-Za-z0-9\-\_]+$/ ||
+			&error(&text('edit_eserv2', $in{'serv'}));
+		$in{'name'} = join(".", "_".$in{'serv'}, "_".$in{'proto'},
+				   $in{'name'} ? ( $in{'name'} ) : ( ));
+		$in{'value0'} =~ /^\d+$/ ||
+			&error(text('edit_eusage', $in{'value0'}));
+		$in{'value1'} =~ /^\d+$/ ||
+			&error(text('edit_eselector', $in{'value1'}));
+		$in{'value2'} =~ /^\d+$/ ||
+			&error(text('edit_ematch', $in{'value2'}));
+		$in{'value3'} =~ /^[a-f0-9]+$/ &&
+		    length($in{'value3'}) % 2 == 0 ||
+			&error(&text('edit_etlsa', $in{'value3'}));
+		}
 	elsif ($in{'type'} eq 'KEY') {
 		$in{'value0'} =~ /^(\d+|0x[0-9a-f]+={0,2})$/i ||
 			&error(text('edit_eflags', $in{'value0'}));

@@ -1002,7 +1002,7 @@ elsif ($type eq "NS") {
 	print &ui_table_row($text{'edit_zonename'},
 		&ui_textbox("name", $rec{'name'}, 30));
 	}
-elsif ($type eq "SRV") {
+elsif ($type eq "SRV" || $type eq "TLSA") {
 	my ($serv, $proto, $name) =
 		$rec{'name'} =~ /^([^\.]+)\.([^\.]+)\.(\S+)/ ? ($1, $2, $3) :
 			(undef, undef, undef);
@@ -1012,7 +1012,7 @@ elsif ($type eq "SRV") {
 		&ui_textbox("name", $name, 30));
 
 	print &ui_table_row($text{'edit_proto'},
-		&ui_select("proto", $proto,
+		&ui_select("proto", $proto || "tcp",
 			   [ [ "tcp", "TCP" ],
 			     [ "udp", "UDP" ],
 			     [ "tls", "TLS" ] ], undef, undef, 1));
@@ -1124,6 +1124,28 @@ elsif ($type eq "SRV") {
 
 	print &ui_table_row($text{'value_SRV4'},
 		&ui_textbox("value3", $v[3], 30));
+	}
+elsif ($type eq "TLSA") {
+	print &ui_table_row($text{'value_TLSA1'},
+		&ui_select("value0", $v[0],
+			   [ [ 0, $text{'tlsa_usage0'} ],
+			     [ 1, $text{'tlsa_usage1'} ],
+			     [ 2, $text{'tlsa_usage2'} ],
+			     [ 3, $text{'tlsa_usage3'} ] ]));
+
+	print &ui_table_row($text{'value_TLSA2'},
+		&ui_select("value1", $v[1],
+			   [ [ 0, $text{'tlsa_selector0'} ],
+			     [ 1, $text{'tlsa_selector1'} ] ]));
+
+	print &ui_table_row($text{'value_TLSA3'},
+		&ui_select("value2", $v[2],
+			   [ [ 0, $text{'tlsa_match0'} ],
+			     [ 1, $text{'tlsa_match1'} ],
+			     [ 2, $text{'tlsa_match2'} ] ]));
+
+	print &ui_table_row($text{'value_TLSA4'},
+		&ui_textbox("value3", $v[3], 70));
 	}
 elsif ($type eq "LOC") {
 	print &ui_table_row($text{'value_LOC1'},
@@ -2875,7 +2897,7 @@ $slave_error = $_[0];
 
 sub get_forward_record_types
 {
-return ("A", "NS", "CNAME", "MX", "HINFO", "TXT", "SPF", "DMARC", "WKS", "RP", "PTR", "LOC", "SRV", "KEY", "NSEC3PARAM", $config{'support_aaaa'} ? ( "AAAA" ) : ( ), @extra_forward);
+return ("A", "NS", "CNAME", "MX", "HINFO", "TXT", "SPF", "DMARC", "WKS", "RP", "PTR", "LOC", "SRV", "KEY", "TLSA", "NSEC3PARAM", $config{'support_aaaa'} ? ( "AAAA" ) : ( ), @extra_forward);
 }
 
 sub get_reverse_record_types
