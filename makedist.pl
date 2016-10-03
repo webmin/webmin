@@ -124,6 +124,9 @@ system("rm -rf $tardir/$dir/status/mailserver*");
 system("rm -rf $tardir/$dir/file/plugin.jar");
 system("rm -rf $tardir/$dir/authentic-theme/update");
 
+# Clear out minified JS
+system("cat /dev/null >$tardir/$dir/authentic-theme/extensions/csf.min.js");
+
 # Add other directories
 foreach $d (@dirlist) {
 	print "Adding directory $d\n";
