@@ -345,7 +345,8 @@ elsif (@zones) {
 		next if (!@zv);
 		print "<b>",&text('index_inview',
 				  "<tt>$vw->{'name'}</tt>"),"</b><br>\n";
-		my(@zlinks, @ztitles, @zsort, @zicons, @ztypes, @zdels);
+		my (@zlinks, @ztitles, @zsort, @zicons, @ztypes, @zdels);
+		my $len = 0;
 		foreach my $z (@zv) {
 			my $v = $z->{'name'};
 			my $t = $z->{'type'};
