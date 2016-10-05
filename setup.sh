@@ -505,6 +505,7 @@ else
 	echo "blockhost_failures=5" >> $cfile
 	echo "blockhost_time=60" >> $cfile
 	echo "syslog=1" >> $cfile
+	echo "ipv6=1" >> $cfile
 	if [ "$allow" != "" ]; then
 		echo "allow=$allow" >> $cfile
 	fi
