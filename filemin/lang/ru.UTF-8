@@ -132,4 +132,8 @@ upload_files=Зазгузить файлы
 uploading=Загрузка, пожалуйста подождите...
 user_name=Имя пользователя
 warning_title=Внимание!!!
-info_total=Всего: $1 файлов и $2 папок
+
+info_total1=Total: $1 файл and $2 папка
+info_total2=Total: $1 файлов and $2 папка
+info_total3=Total: $1 файл and $2 папок
+info_total4=Total: $1 файлов and $2 папок
