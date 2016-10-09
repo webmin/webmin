@@ -66,7 +66,7 @@ if (!-d $challenge) {
 		}
 	}
 
-if ($letsencrypt_cmd) {
+if ($letsencrypt_cmd && -d "/etc/letsencrypt/accounts") {
 	# Use the native Let's Encrypt client if possible
 	my $temp = &transname();
 	&open_tempfile(TEMP, ">$temp");
