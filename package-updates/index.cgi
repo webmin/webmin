@@ -120,35 +120,42 @@ foreach $p (sort { $a->{'name'} cmp $b->{'name'} } (@current, @avail)) {
 	$anysource++ if ($source);
 	}
 
-# Show the packages, if any
-if (@rows) {
-	print &text('index_count', scalar(@rows)),"<br>\n";
+if ($in{'mode'} eq 'new' && !$in{'search'}) {
+	# Prevent display of a huge list of new packages
+	print &text('index_manynew', scalar(@rows)),"<br>\n";
 	}
-print &ui_form_columns_table(
-	"update.cgi",
-	[ [ "ok", $in{'mode'} eq 'new' ? $text{'index_install'}
-				       : $text{'index_update'} ],
-	  undef,
-          [ "refresh", $text{'index_refresh'} ] ],
-	1,
-	undef,
-	[ [ "mode", $in{'mode'} ],
-	  [ "search", $in{'search'} ] ],
-	[ "", $text{'index_name'}, $text{'index_desc'}, $text{'index_status'},
-	  $anysource ? ( $text{'index_source'} ) : ( ), ],
-	100,
-	\@rows,
-	undef,
-	0,
-	undef,
-	$text{'index_none_'.$in{'mode'}},
-	1
-	);
-if (!@rows) {
-	print &ui_form_start("update.cgi");
-	print &ui_hidden("mode", $in{'mode'});
-	print &ui_hidden("search", $in{'search'});
-	print &ui_form_end([ [ "refresh", $text{'index_refresh'} ] ]);
+else {
+	# Show the packages, if any
+	if (@rows) {
+		print &text('index_count', scalar(@rows)),"<br>\n";
+		}
+	print &ui_form_columns_table(
+		"update.cgi",
+		[ [ "ok", $in{'mode'} eq 'new' ? $text{'index_install'}
+					       : $text{'index_update'} ],
+		  undef,
+		  [ "refresh", $text{'index_refresh'} ] ],
+		1,
+		undef,
+		[ [ "mode", $in{'mode'} ],
+		  [ "search", $in{'search'} ] ],
+		[ "", $text{'index_name'}, $text{'index_desc'},
+		  $text{'index_status'},
+		  $anysource ? ( $text{'index_source'} ) : ( ), ],
+		100,
+		\@rows,
+		undef,
+		0,
+		undef,
+		$text{'index_none_'.$in{'mode'}},
+		1
+		);
+	if (!@rows) {
+		print &ui_form_start("update.cgi");
+		print &ui_hidden("mode", $in{'mode'});
+		print &ui_hidden("search", $in{'search'});
+		print &ui_form_end([ [ "refresh", $text{'index_refresh'} ] ]);
+		}
 	}
 
 # Show scheduled report form
