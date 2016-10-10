@@ -136,3 +136,4 @@ If the Let's Encrypt client is not installed, Webmin will use its own built-in c
 Added an option to the logging page for sending Webmin action log messages via email.
 ---- Changes since 1.810 ----
 The Let's Encrypt key size can now be customized.
+When Perfect Forward Secrecy ciphers are selected, the required DH params file is now created and used by Webmin.

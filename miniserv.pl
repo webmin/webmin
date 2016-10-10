@@ -4336,6 +4336,23 @@ local $ssl_ctx;
 eval { $ssl_ctx = Net::SSLeay::new_x_ctx() };
 $ssl_ctx ||= Net::SSLeay::CTX_new();
 $ssl_ctx || die "Failed to create SSL context : $!";
+
+# Setup PFS, if ciphers are in use
+if (-r $config{'dhparams_file'}) {
+	eval {
+		my $bio = Net::SSLeay::BIO_new_file(
+				$config{'dhparams_file'}, 'r');
+		my $DHP = Net::SSLeay::PEM_read_bio_DHparams($bio);
+		Net::SSLeay::CTX_set_tmp_dh($ssl_ctx, $DHP);
+		my $nid = Net::SSLeay::OBJ_sn2nid("secp384r1");
+		my $curve = Net::SSLeay::EC_KEY_new_by_curve_name($nid);
+		Net::SSLeay::CTX_set_tmp_ecdh($ssl_ctx, $curve);
+		};
+	}
+if ($@) {
+	print STDERR "Failed to load $config{'dhparams_file'} : $@\n";
+	}
+
 if ($client_certs) {
 	Net::SSLeay::CTX_load_verify_locations(
 		$ssl_ctx, $config{'ca'}, "");
@@ -4355,7 +4372,7 @@ if ($extracas && $extracas ne "none") {
 		}
 	}
 
-Net::SSLeay::CTX_use_RSAPrivateKey_file(
+Net::SSLeay::CTX_use_PrivateKey_file(
 	$ssl_ctx, $keyfile,
 	&Net::SSLeay::FILETYPE_PEM) || die "Failed to open SSL key $keyfile";
 Net::SSLeay::CTX_use_certificate_file(
