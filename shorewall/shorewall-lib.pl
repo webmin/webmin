@@ -1215,7 +1215,7 @@ printf "<input type=checkbox name=net_def value=1 %s> %s\n",
 print "<input name=net size=20 value='$net'></td> </tr>\n";
 
 local ($mnet, $miface, $mode);
-if ($_[1] =~ /^[0-9\.\/]+$/) {
+if ($_[1] =~ /^[0-9\.\/]+(,[0-9\.\/]+)*$/) {
 	$mnet = $_[1];
 	$mode = 0;
 	}
@@ -1231,7 +1231,7 @@ else {
 print "<tr> <td valign=top><b>$text{'masq_1'}</b></td> <td colspan=3>\n";
 printf "<input type=radio name=mode value=0 %s> %s\n",
 	$mode == 0 ? "checked" : "", $text{'masq_mode0'};
-printf "<input name=mnet size=20 value='%s'><br>\n",
+printf "<input name=mnet size=60 value='%s'><br>\n",
 	$mode == 0 ? $mnet : "";
 printf "<input type=radio name=mode value=1 %s> %s\n",
 	$mode == 1 ? "checked" : "", $text{'masq_mode1'};
