@@ -155,7 +155,7 @@ foreach my $s (@add) {
 				push(@{$n->{'members'}}, { 'name' => $sip });
 				&lock_file($z->{'file'});
 				&save_directive($z, $d, [ $n ], 1);
-				&flush_file_lines($z->{'file'});
+				&flush_file_lines();
 				$dchanged++;
 				}
 			}
