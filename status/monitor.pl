@@ -304,7 +304,12 @@ local ($carrier) = grep { $_->{'id'} eq $config{'sched_carrier'} }
 			&list_sms_carriers();
 return if (!$carrier);
 local $email = $config{'sched_sms'}."\@".$carrier->{'domain'};
-&mailboxes::send_text_mail($from, $email, undef, undef, $text,
+local $subject = $config{'sched_subject'};
+if ($subject eq "*") {
+	$subject = $text;
+	$text = undef;
+	}
+&mailboxes::send_text_mail($from, $email, undef, $subject, $text,
 			   $config{'sched_smtp'});
 }
 
