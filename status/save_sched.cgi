@@ -29,6 +29,16 @@ else {
 		}
 	$config{'sched_sms'} = $in{'sms'};
 	}
+if ($in{'smode'} == 0) {
+	delete($config{'sched_subject'});
+	}
+elsif ($in{'smode'} == 1) {
+	$config{'sched_subject'} = '*';
+	}
+else {
+	$in{'subject'} =~ /\S/ || &error($text{'sched_esubject'});
+	$config{'sched_subject'} = $in{'subject'};
+	}
 if ($in{'from_def'}) {
 	delete($config{'sched_from'});
 	}

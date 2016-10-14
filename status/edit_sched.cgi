@@ -84,6 +84,16 @@ print &ui_table_row($text{'sched_sms'},
 	$text{'sched_smsnumber'}." ".
 	&ui_textbox("sms", $config{'sched_sms'}, 15), 3);
 
+# Pager / SMS message subject
+$smode = $config{'sched_subject'} eq '' ? 0 :
+	 $config{'sched_subject'} eq '*' ? 1 : 2;
+print &ui_table_row($text{'sched_subject'},
+	&ui_radio_table("smode", $smode,
+		[ [ 0, $text{'sched_subject0'} ],
+		  [ 1, $text{'sched_subject1'} ],
+		  [ 2, $text{'sched_subject2'},
+			&ui_textbox("subject", $smode == 2 ? $config{'sched_subject'} : "", 40) ] ]), 3);
+
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 
