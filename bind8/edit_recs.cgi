@@ -210,14 +210,16 @@ for(my $i=0; $i<@_; $i++) {
 			if ($in{'type'} eq "TLSA") {
 				# Display TLSA codes nicely
 				if ($j == 0) {
-					$v = $text{'tlsa_usage'.$v} || $v;
+					$v = $text{'tlsa_usage'.$v};
 					}
 				elsif ($j == 1) {
-					$v = $text{'tlsa_selector'.$v} || $v;
+					$v = $text{'tlsa_selector'.$v};
 					}
 				elsif ($j == 2) {
-					$v = $text{'tlsa_match'.$v} || $v;
+					$v = $text{'tlsa_match'.$v};
 					}
+				$v = $v ? $v." (".$r->{'values'}->[$j]).")"
+					: $r->{'values'}->[$j];
 				}
 			}
 		if (length($v) > 80) {

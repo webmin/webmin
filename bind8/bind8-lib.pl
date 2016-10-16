@@ -1128,21 +1128,21 @@ elsif ($type eq "SRV") {
 elsif ($type eq "TLSA") {
 	print &ui_table_row($text{'value_TLSA1'},
 		&ui_select("value0", $v[0],
-			   [ [ 0, $text{'tlsa_usage0'} ],
-			     [ 1, $text{'tlsa_usage1'} ],
-			     [ 2, $text{'tlsa_usage2'} ],
-			     [ 3, $text{'tlsa_usage3'} ] ]));
+			   [ [ 0, $text{'tlsa_usage0'}." (0)" ],
+			     [ 1, $text{'tlsa_usage1'}." (1)" ],
+			     [ 2, $text{'tlsa_usage2'}." (2)" ],
+			     [ 3, $text{'tlsa_usage3'}." (3)" ] ]));
 
 	print &ui_table_row($text{'value_TLSA2'},
 		&ui_select("value1", $v[1],
-			   [ [ 0, $text{'tlsa_selector0'} ],
-			     [ 1, $text{'tlsa_selector1'} ] ]));
+			   [ [ 0, $text{'tlsa_selector0'}." (0)" ],
+			     [ 1, $text{'tlsa_selector1'}." (1)" ] ]));
 
 	print &ui_table_row($text{'value_TLSA3'},
 		&ui_select("value2", $v[2],
-			   [ [ 0, $text{'tlsa_match0'} ],
-			     [ 1, $text{'tlsa_match1'} ],
-			     [ 2, $text{'tlsa_match2'} ] ]));
+			   [ [ 0, $text{'tlsa_match0'}." (0)" ],
+			     [ 1, $text{'tlsa_match1'}." (1)" ],
+			     [ 2, $text{'tlsa_match2'}." (2)" ] ]));
 
 	print &ui_table_row($text{'value_TLSA4'},
 		&ui_textbox("value3", $v[3], 70));
