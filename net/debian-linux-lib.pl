@@ -785,7 +785,7 @@ while (defined $line) {
 	if ($line =~ /^\s*auto/) {
 		# skip auto stanzas
 		$line = <CFGFILE>;
-		while(defined($line) && $line !~ /^\s*(iface|mapping|auto)/) {
+		while(defined($line) && $line !~ /^\s*(iface|mapping|auto|source)/) {
 			$line = <CFGFILE>;
 			next;
 			}
@@ -793,7 +793,7 @@ while (defined $line) {
 	elsif ($line =~ /^\s*mapping/) {
 		# skip mapping stanzas
 		$line = <CFGFILE>;
-		while(defined($line) && $line !~ /^\s*(iface|mapping|auto)/) {
+		while(defined($line) && $line !~ /^\s*(iface|mapping|auto|source)/) {
 			$line = <CFGFILE>;
 			next;
 			}
@@ -807,7 +807,7 @@ while (defined $line) {
 		my @iface_options;
 		# now read everything until the next iface definition
 		$line = <CFGFILE>;
-		while (defined $line && ! ($line =~ /^\s*(iface|mapping|auto)/)) {
+		while (defined $line && ! ($line =~ /^\s*(iface|mapping|auto|source)/)) {
 			# skip comments and empty lines
 			if ($line =~ /^\s*#/ || $line =~ /^\s*$/) {
 				$line = <CFGFILE>;
@@ -911,6 +911,7 @@ while (defined ($line=<OLDCFGFILE>)) {
 	elsif ($inside_modify_region == 1 &&
                ($line =~ /^\s*iface\s+\S+\s+\S+\s+\S+\s*$/ ||
 	        $line =~ /^\s*mapping/ ||
+	        $line =~ /^\s*source/ ||
 		$line =~ /^\s*auto/)) {
 	      	# End of an iface section
 		$inside_modify_region = 0;
