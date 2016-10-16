@@ -3512,7 +3512,7 @@ foreach my $f (readdir(ZONEDIR)) {
 			}
 		$rv->{'algorithm'} =~ s/^\d+\s+\((\S+)\)$/$1/;
 		$rv->{'privatetext'} = join("\n", @$lref)."\n";
-		while($rv->{'publictext'} =~ s/^;.*\r?\n//) { }
+		while($rv->{'privatetext'} =~ s/^;.*\r?\n//) { }
 		}
 	}
 closedir(ZONEDIR);
