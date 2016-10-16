@@ -3494,6 +3494,7 @@ foreach my $f (readdir(ZONEDIR)) {
 		$rv->{'public'} = $pub->{'values'}->[3];
 		$rv->{'values'} = $pub->{'values'};
 		$rv->{'publictext'} = &read_file_contents("$dir/$f");
+		while($rv->{'publictext'} =~ s/^;.*\r?\n//) { }
 		}
 	elsif ($f =~ /^K\Q$dom\E\.\+(\d+)\+(\d+)\.private$/) {
 		# Found the private key file
@@ -3511,6 +3512,7 @@ foreach my $f (readdir(ZONEDIR)) {
 			}
 		$rv->{'algorithm'} =~ s/^\d+\s+\((\S+)\)$/$1/;
 		$rv->{'privatetext'} = join("\n", @$lref)."\n";
+		while($rv->{'publictext'} =~ s/^;.*\r?\n//) { }
 		}
 	}
 closedir(ZONEDIR);
