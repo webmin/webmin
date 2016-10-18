@@ -912,7 +912,8 @@ if ($_[0]->{'members'}) {
 else {
 	# A cached zone object
 	$zn = $_[0]->{'name'};
-	$vn = $_[0]->{'view'} eq '*' ? undef : $_[0]->{'view'};
+	$vn = !defined($_[0]->{'view'}) ||
+	      $_[0]->{'view'} eq '*' ? undef : $_[0]->{'view'};
 	$file = $_[0]->{'file'};
 	}
 

@@ -44,6 +44,10 @@ if (my $out = &check_bind_8()) {
 
 # Try to get the version number, and save for later calls
 my $bind_version = &get_bind_version();
+if ($bind_version && $bind_version =~ /^(\d+\.\d+)\./) {
+	# Convery to properly formatted number
+	$bind_version = $1;
+	}
 my $VERSION;
 &open_tempfile($VERSION, ">$module_config_directory/version");
 &print_tempfile($VERSION, "$bind_version\n");
@@ -454,7 +458,8 @@ if ($access{'views'} && $bind_version >= 9) {
 	print &ui_subheading($text{'index_views'});
 
 	# Show a warning if any zones are not in a view
-	my @notinview = grep { $_->{'viewindex'} eq '' } @zones;
+	my @notinview = grep { !defined($_->{'viewindex'}) ||
+			       $_->{'viewindex'} eq '' } @zones;
 	if (@notinview && @views) {
 		print "<b>",&text('index_viewwarn',
 		  join(" , ", map { "<tt>".&ip6int_to_net(
