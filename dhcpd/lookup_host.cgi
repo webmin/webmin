@@ -11,6 +11,13 @@ $in{'host'} || &error($text{'lookup_ehostname'});
 $conf = &get_config();
 @hosts = &find_recursive("host", $conf);
 
+# Check to see if the host contains 6 hex bytes for a Mac address
+(my $justbytes = $in{'host'}) =~ s/[^A-Fa-f0-9]//g;
+if ($justbytes =~ /^[0-9a-f]{12}$/i) {
+    # Treat this host as a mac address with arbitrary formatting
+    $in{'host'} = join(':', unpack("(A2)*", $justbytes) );
+}
+
 # Look for a match
 %access = &get_module_acl();
 foreach $h (@hosts) {
