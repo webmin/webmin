@@ -1314,19 +1314,22 @@ elsif ($type eq "nfs" || $type eq "nfs4") {
 		&ui_opt_textbox("nfs_wsize", $options{"wsize"}, 6,
 				$text{'default'}));
 
+	my ($auth, $sec) = $options{"sec"} =~ /^(ntlmssp|ntlmv2|ntlm|spkm|lkey|krb5|sys)(p|i|)/ ? ($1, $2) : ( );
 	print &ui_table_row(&hlink($text{'linux_auth'}, "linux_auth"),
-		&ui_radio("nfs_auth", $options{"sec"} =~ /spkm/ ? 3 :
-				      $options{"sec"} =~ /lipkey/ ? 2 :
-				      $options{"sec"} =~ /krb5/ ? 1 : 0,
-			  [ [ 0, 'sys' ], [ 1, 'krb5' ],
-			    [ 2, 'lipkey' ], [ 3, 'spkm-3' ] ]));
+		&ui_radio("nfs_auth", $auth,
+			  [ [ '', 'sys' ],
+			    [ 'krb5', 'krb5 (Kerberos 5)' ],
+			    [ 'lkey', 'lkey' ],
+			    [ 'spkm', 'spkm-3' ],
+			    [ 'ntlm', 'ntlm (NTLM)' ],
+			    [ 'ntmlv2', 'ntmlv2 (NTLM version 2)' ],
+			    [ 'ntlmssp', 'ntlmssp (NTLMv2 in NTLMSSP)' ] ]));
 
 	print &ui_table_row(&hlink($text{'linux_sec'}, "linux_sec"),
-		&ui_radio("nfs_sec", $options{"sec"} =~ /i$/ ? 1 :
-				     $options{"sec"} =~ /p$/ ? 2 : 0,
-			  [ [ 0, $text{'config_none'} ],
-			    [ 1, $text{'linux_integrity'} ],
-			    [ 2, $text{'linux_privacy'} ] ]));
+		&ui_radio("nfs_sec", $sec,
+			  [ [ '', $text{'config_none'} ],
+			    [ 'i', $text{'linux_integrity'} ],
+			    [ 'p', $text{'linux_privacy'} ] ]));
 
 	print &ui_table_row(&hlink($text{'linux_nfsvers'}, "linux_nfsvers"),
 		&ui_select("nfs_nfsvers", $options{"nfsvers"},
@@ -1847,9 +1850,7 @@ if (($_[0] eq "nfs") || ($_[0] eq "nfs4")) {
 
 	# Only sys and krb5 for the moment
 	if ($in{nfs_auth}) {
-	    if ($in{nfs_sec} == 0) { $options{"sec"} = "krb5"; }
-	    if ($in{nfs_sec} == 1) { $options{"sec"} = "krb5i"; }
-	    if ($in{nfs_sec} == 2) { $options{"sec"} = "krb5p"; }
+	    $options{"sec"} = $in{"nfs_auth"}.$in{"nfs_sec"};
 	}
 
 	if ($in{'nfs_nfsvers'}) {
