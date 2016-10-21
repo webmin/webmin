@@ -1254,7 +1254,7 @@ $validated = undef;
 # check address against access list
 if (@deny && &ip_match($acptip, $localip, @deny) ||
     @allow && !&ip_match($acptip, $localip, @allow)) {
-	&http_error(403, "Access denied for $acptip");
+	&http_error(403, "Access denied for ".&html_strip($acptip));
 	return 0;
 	}
 
@@ -1262,7 +1262,8 @@ if ($use_libwrap) {
 	# Check address with TCP-wrappers
 	if (!hosts_ctl($config{'pam'}, STRING_UNKNOWN,
 		       $acptip, STRING_UNKNOWN)) {
-		&http_error(403, "Access denied for $acptip by TCP wrappers");
+		&http_error(403, "Access denied for ".&html_strip($acptip).
+				 " by TCP wrappers");
 		return 0;
 		}
 	}
@@ -1286,7 +1287,7 @@ if (!$sel) {
 		}
 	else {
 		&http_error(400, "Timeout",
-			    "Waited for that $to seconds for start of headers");
+			    "Waited for $to seconds for start of headers");
 		}
 	}
 $checked_timeout++;
@@ -1413,11 +1414,12 @@ while(1) {
 		$header{$lastheader} .= $headline;
 		}
 	else {
-		&http_error(400, "Bad Header $headline");
+		&http_error(400, "Bad Header ".&html_strip($headline));
 		}
 	if (&is_bad_header($header{$lastheader}, $lastheader)) {
 		delete($header{$lastheader});
-		&http_error(400, "Bad Header Contents $lastheader");
+		&http_error(400, "Bad Header Contents ".
+				 &html_strip($lastheader));
 		}
 	}
 
@@ -1524,7 +1526,7 @@ if ($method eq 'POST' &&
 
 # Reject CONNECT request, which isn't supported
 if ($method eq "CONNECT" || $method eq "TRACE") {
-	&http_error(405, "Method $method is not supported");
+	&http_error(405, "Method ".&html_strip($method)." is not supported");
 	}
 
 # work out accepted encodings
@@ -1596,7 +1598,7 @@ foreach my $d (@davpaths) {
 		}
 	}
 if (!$davpath && ($method eq "SEARCH" || $method eq "PUT")) {
-	&http_error(400, "Bad Request method $method");
+	&http_error(400, "Bad Request method ".&html_strip($method));
 	}
 
 # Check for password if needed
@@ -2016,7 +2018,8 @@ if ($config{'userfile'}) {
 				($>, $<) = ($u[2], $u[2]);
 				}
 			else {
-				&http_error(500, "Unix user $authuser does not exist");
+				&http_error(500, "Unix user ".
+				  &html_strip($authuser)." does not exist");
 				return 0;
 				}
 			}
@@ -2024,7 +2027,8 @@ if ($config{'userfile'}) {
 
 	# Check per-user IP access control
 	if (!&check_user_ip($baseauthuser)) {
-		&http_error(403, "Access denied for $acptip for $baseauthuser");
+		&http_error(403, "Access denied for $acptip for ".
+				 &html_strip($baseauthuser));
 		return 0;
 		}
 
@@ -2189,7 +2193,7 @@ print DEBUG "handle_request: full=$full\n";
 # check filename against denyfile regexp
 local $denyfile = $config{'denyfile'};
 if ($denyfile && $full =~ /$denyfile/) {
-	&http_error(403, "Access denied to ".&html_escape($page));
+	&http_error(403, "Access denied to ".&html_strip($page));
 	return 0;
 	}
 
@@ -2257,7 +2261,7 @@ if (-d _) {
 		$len = length($df); $rest = " "x(35-$len);
 		&write_data(sprintf 
 		 "<a href=\"%s\">%-${len}.${len}s</a>$rest %-20.20s %-10.10s\n",
-		 &urlize($df), &html_escape($df), $fdate, $stbuf[7]);
+		 &urlize($df), &html_strip($df), $fdate, $stbuf[7]);
 		}
 	closedir(DIR);
 	&log_request($loghost, $authuser, $reqline, $ok_code, &byte_count());
@@ -2654,7 +2658,7 @@ else {
 	&reset_byte_count();
 	&write_data("<h1>Error - $_[1]</h1>\n");
 	if ($_[2]) {
-		&write_data("<pre>$_[2]</pre>\n");
+		&write_data("<p>$_[2]</p>\n");
 		}
 	}
 &log_request($loghost, $authuser, $reqline, $_[0], &byte_count())
@@ -2976,7 +2980,7 @@ local($idx, $more, $rv);
 while(($idx = index($main::read_buffer, "\n")) < 0) {
 	if (length($main::read_buffer) > 100000 && !$nolimit) {
 		&http_error(414, "Request too long",
-		    "Received excessive line <pre>$main::read_buffer</pre>");
+		    "Received excessive line <pre>".&html_strip($main::read_buffer)."</pre>");
 		}
 
 	# need to read more..
@@ -5206,7 +5210,8 @@ if ($config{'dav_remoteuser'} && !$< && $validated) {
 			}
 		}
 	else {
-		&http_error(500, "Unix user $authuser does not exist");
+		&http_error(500, "Unix user ".&html_strip($authuser).
+				 " does not exist");
 		return 0;
 		}
 	}
@@ -6050,6 +6055,13 @@ $tmp =~ s/>/&gt;/g;
 $tmp =~ s/\"/&quot;/g;
 $tmp =~ s/\'/&#39;/g;
 $tmp =~ s/=/&#61;/g;
+return $tmp;
+}
+
+sub html_strip
+{
+my ($tmp) = @_;
+$tmp =~ s/<[^>]*>//g;
 return $tmp;
 }
 
