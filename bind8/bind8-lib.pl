@@ -3113,8 +3113,10 @@ return &has_command($config{'signzone'}) &&
 # dnssec-validation directive is not supported, 0 otherwise
 sub supports_dnssec_client
 {
-return $bind_version >= 9.4 ? 2 :
-       $bind_version >= 9 ? 1 : 0;
+my ($bind_major, $bind_minor) = split(/\./, $bind_version);
+
+return $bind_major > 9 ? 2 :
+       $bind_major == 9 ? ($bind_minor >= 4 ? 2 : 1) : 0;
 }
 
 # dnssec_size_range(algorithm)
