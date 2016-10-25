@@ -2072,7 +2072,7 @@ return 0;
 # an error message on failure.
 sub restart_bind
 {
-if ($config{'restart_cmd'} eq 'restart') {
+if ($config{'restart_cmd'} && $config{'restart_cmd'} eq 'restart') {
 	# Stop and start again
 	&stop_bind();
 	sleep(1);	# Systemd doesn't like rapid stops and starts
