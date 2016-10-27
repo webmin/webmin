@@ -13,7 +13,10 @@ if ($config{'sync_create'}) {
 	if ($_[0]->{'passmode'} == 3) {
 		$sql .= " with password '$_[0]->{'plainpass'}'";
 		}
-	$sql .= " nocreatedb nocreateuser";
+	$sql .= " nocreatedb";
+	if (&get_postgresql_version() < 9.5) {
+		$sql .= " nocreateuser";
+		}
 	&execute_sql_logged($config{'basedb'}, $sql);
 	}
 }
