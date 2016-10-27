@@ -377,6 +377,7 @@ for($i=0; defined($name = $in{"name_$i"}); $i++) {
 			$in{"opts_$i"} =~ /\|$/ || -r $in{"opts_$i"} ||
 				&error(&text('save_eopts', $i+1));
 			}
+		$in{"opts_$i"} =~ /:/ && &error(&text('save_eopts2', $i+1));
 		push(@{$cmd->{'args'}}, { 'name' => $name,
 					  'desc' => $in{"desc_$i"},
 					  'type' => $in{"type_$i"},

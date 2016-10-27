@@ -78,6 +78,7 @@ save_etimeout=Missing or invalid maximum time to wait
 save_eusermin=Commands that run on other servers cannot be run from Usermin
 save_eformat=Invalid output MIME type
 save_eopts=Missing options file for parameter $1
+save_eopts2=Options file or default value for parameter $1 cannot contain :
 
 run_err=Failed to execute command
 run_ecannot=You are not allowed to run this command
