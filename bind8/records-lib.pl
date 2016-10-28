@@ -50,7 +50,7 @@ while($line = <$FILE>) {
 	     $line =~ /^((?:[^;\\]|\\.)*);(.*)/) ||
 	     # expresion below is the most general, but very slow 
 	     # if ";" is quoted somewhere
-	     $line =~ /^((?:(?:[^;\"\\]|\\.)+|(?:\"(?:[^\"\\]|\\.)*\"))*);(.*)/) {
+	     $line =~ /^((?:(?:[^;\"\\]|\\.)+|(?:\"(?:[^\"\\]|\\.){0,100}\")){0,100});(.*)/) {
 		$comment = $2;
 		$line = $1;
 		if ($line =~ /^[^"]*"[^"]*$/) {
