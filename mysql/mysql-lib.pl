@@ -684,6 +684,9 @@ if (!defined($supports_views_cache)) {
 	if ($mysql_version < 5) {
 		$supports_views_cache = 0;
 		}
+	elsif ($mysql_version >= 5.5) {
+		$supports_views_cache = 1;
+		}
 	else {
 		local @dbs = &list_databases();
 		if (&indexof("information_schema", @dbs) >= 0) {
