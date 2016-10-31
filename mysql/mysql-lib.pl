@@ -680,31 +680,7 @@ return $out =~ /--routines/ ? 1 : 0;
 # Returns 1 if this MySQL install supports views
 sub supports_views
 {
-if (!defined($supports_views_cache)) {
-	if ($mysql_version < 5) {
-		$supports_views_cache = 0;
-		}
-	elsif ($mysql_version >= 5.5) {
-		$supports_views_cache = 1;
-		}
-	else {
-		local @dbs = &list_databases();
-		if (&indexof("information_schema", @dbs) >= 0) {
-			# Has information_schema DB .. but does it have views?
-			local @ist = &list_tables("information_schema", 1, 1);
-			if (&indexoflc("views", @ist) >= 0) {
-				$supports_views_cache = 1;
-				}
-			else {
-				$supports_views_cache = 0;
-				}
-			}
-		else {
-			$supports_views_cache = 0;
-			}
-		}
-	}
-return $supports_views_cache;
+return $mysql_version >= 5;
 }
 
 # supports_variables()
