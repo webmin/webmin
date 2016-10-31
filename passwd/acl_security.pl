@@ -60,8 +60,8 @@ my ($o) = @_;
 $o->{'mode'} = $in{'mode'};
 $o->{'users'} = $in{'mode'} == 1 ? $in{'users1'} :
 		$in{'mode'} == 2 ? $in{'users2'} :
-		$in{'mode'} == 5 ? $in{'groups'} :
 		$in{'mode'} == 6 ? $in{'match'} : undef;
+$o->{'groups'} = $in{'mode'} == 5 ? $in{'groups'} : undef;
 $o->{'notusers'} = $in{'mode'} == 5 ? $in{'notusers'} : undef;
 $o->{'low'} = $in{'low'};
 $o->{'high'} = $in{'high'};
