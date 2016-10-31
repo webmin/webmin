@@ -3329,7 +3329,7 @@ my $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
 my @keys = &get_dnssec_key($z);
 foreach my $key (@keys) {
 	foreach my $f ('publicfile', 'privatefile') {
-		&unlink_file($key->{$f}) if ($key->{$f});
+		&unlink_file($key->{$f}) if (ref($key) && $key->{$f});
 		}
 	}
 
@@ -3467,7 +3467,7 @@ if ($keyrec) {
 }
 
 # get_dnssec_key(&zone|&zone-name)
-# Returns a list of hash containing details of a zone's keys, or an error
+# Returns a list of hashes containing details of a zone's keys, or an error
 # message. The KSK is always returned first.
 sub get_dnssec_key
 {
