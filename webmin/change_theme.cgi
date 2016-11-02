@@ -31,6 +31,9 @@ else {
 &webmin_log('theme', undef, undef, \%in);
 &ui_print_header(undef, $text{'themes_title'}, "");
 print "$text{'themes_ok'}<p>\n";
+if (defined(&theme_post_change_theme)) {
+	&theme_post_change_theme();
+	}
 print &js_redirect("/", "top");
 &ui_print_footer("", $text{'index_return'});
 

@@ -86,6 +86,9 @@ print "$text{'change_done'}<p>\n";
 
 if ($access{'theme'} &&
     ($newtheme ne $oldtheme || $newoverlay ne $oldoverlay)) {
+	if (defined(&theme_post_change_theme)) {
+		&theme_post_change_theme();
+		}
 	print "$text{'change_redirect'}<br>\n";
 	print &js_redirect("/", "top");
 	print "$text{'change_done'}<p>\n";
