@@ -226,7 +226,7 @@ if ($cron) {
 	&unlock_file(&cron::cron_file($job));
 
 	# Tell the user what was done
-	print $text{$what},"<p>\n" if ($what);
+	print $text{$what},"<p>\n" if ($what && !$in{'dest'});
 	}
 
 &webmin_log("backup", undef, $in{'all'} ? "" : $in{'db'}, \%in);
