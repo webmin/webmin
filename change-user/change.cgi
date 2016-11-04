@@ -8,6 +8,8 @@ require './change-user-lib.pl';
 our (%text, %in, %gconfig, $base_remote_user, %access);
 &ReadParse();
 
+&ui_print_unbuffered_header(undef, $text{'change_title'}, "");
+
 my @users = &acl::list_users();
 my ($user) = grep { $_->{'name'} eq $base_remote_user } @users;
 my $oldtheme = $user->{'theme'};
@@ -73,8 +75,6 @@ if ($access{'pass'} && &can_change_pass($user) && !$in{'pass_def'}) {
 	$user->{'pass'} = &acl::encrypt_password($in{'pass'});
 	$user->{'temppass'} = 0;
 	}
-
-&ui_print_unbuffered_header(undef, $text{'change_title'}, "");
 
 print "$text{'change_user'}<br>\n";
 &acl::modify_user($user->{'name'}, $user);

@@ -5,6 +5,8 @@
 require './webmin-lib.pl';
 &ReadParse();
 
+&ui_print_header(undef, $text{'themes_title'}, "");
+
 &lock_file("$config_directory/config");
 ($gtheme, @others) = split(/\s+/, $gconfig{'theme'});
 if ($in{'theme'}) {
@@ -28,12 +30,12 @@ else {
 &unlock_file($ENV{'MINISERV_CONFIG'});
 &reload_miniserv();
 
-&webmin_log('theme', undef, undef, \%in);
-&ui_print_header(undef, $text{'themes_title'}, "");
 print "$text{'themes_ok'}<p>\n";
 if (defined(&theme_post_change_theme)) {
 	&theme_post_change_theme();
 	}
 print &js_redirect("/", "top");
+
+&webmin_log('theme', undef, undef, \%in);
 &ui_print_footer("", $text{'index_return'});
 
