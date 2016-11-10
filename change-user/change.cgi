@@ -76,6 +76,13 @@ if ($access{'pass'} && &can_change_pass($user) && !$in{'pass_def'}) {
 	$user->{'temppass'} = 0;
 	}
 
+if ($access{'theme'} &&
+    ($newtheme ne $oldtheme || $newoverlay ne $oldoverlay)) {
+        if (defined(&theme_pre_change_theme)) {
+                &theme_pre_change_theme();
+                }
+	}
+
 print "$text{'change_user'}<br>\n";
 &acl::modify_user($user->{'name'}, $user);
 print "$text{'change_done'}<p>\n";

@@ -7,8 +7,16 @@ require './webmin-lib.pl';
 
 &ui_print_header(undef, $text{'themes_title'}, "");
 
-&lock_file("$config_directory/config");
 ($gtheme, @others) = split(/\s+/, $gconfig{'theme'});
+
+# Call pre-change function
+if ($in{'theme'} ne $gtheme) {
+	if (defined(&theme_pre_change_theme)) {
+		&theme_pre_change_theme();
+		}
+	}
+
+&lock_file("$config_directory/config");
 if ($in{'theme'}) {
 	$gconfig{'theme'} = join(" ", $in{'theme'}, @others);
 	}
@@ -31,9 +39,14 @@ else {
 &reload_miniserv();
 
 print "$text{'themes_ok'}<p>\n";
-if (defined(&theme_post_change_theme)) {
-	&theme_post_change_theme();
+
+# Call post-change function
+if ($in{'theme'} ne $gtheme) {
+	if (defined(&theme_post_change_theme)) {
+		&theme_post_change_theme();
+		}
 	}
+
 print &js_redirect("/", "top");
 
 &webmin_log('theme', undef, undef, \%in);
