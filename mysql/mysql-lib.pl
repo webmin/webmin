@@ -703,7 +703,8 @@ else {
 # Returns 1 if the hosts table exists
 sub supports_hosts
 {
-return $mysql_version <= 5.7 ? 1 : 0;
+return $mysql_version <= 5.7 ? 1 :
+       $mysql_version =~ /^5\.7\.(\d+)/ && $1 < 16 ? 1 : 0;
 }
 
 # supports_env_pass([run-as-user])
