@@ -27,7 +27,7 @@ push(@EXPORT, qw(&unique));
 push(@EXPORT, qw($config_directory $var_directory $remote_error_handler %month_to_number_map %number_to_month_map $webmin_feedback_address $default_lang $default_charset $module_index_name $module_index_link %in $in @in $progress_callback_prefix $progress_callback_url $wait_for_debug $wait_for_input @matches $theme_no_table $webmin_logfile $pragma_no_cache));
 
 # Functions defined in themes
-push(@EXPORT, qw(&theme_post_save_domain &theme_post_save_domains &theme_post_save_server &theme_select_server &theme_select_domain &theme_post_save_folder &theme_post_change_modules &theme_address_button &theme_virtualmin_ui_rating_selector &theme_virtualmin_ui_show_cron_time &theme_virtualmin_ui_parse_cron_time &theme_virtualmin_ui_html_editor_bodytags &theme_virtualmin_ui_show_html_editor));
+push(@EXPORT, qw(&theme_post_save_domain &theme_post_save_domains &theme_post_save_server &theme_select_server &theme_select_domain &theme_post_save_folder &theme_post_change_modules &theme_address_button &theme_virtualmin_ui_rating_selector &theme_virtualmin_ui_show_cron_time &theme_virtualmin_ui_parse_cron_time &theme_virtualmin_ui_html_editor_bodytags &theme_virtualmin_ui_show_html_editor &theme_post_change_theme &theme_pre_change_theme));
 
 $called_from_webmin_core = 1;
 do "web-lib.pl";
