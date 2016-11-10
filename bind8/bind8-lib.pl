@@ -1596,6 +1596,7 @@ sub make_chroot
 {
 my $chroot = &get_chroot();
 return $_[0] if (!$chroot);
+return $_[0] if ($chroot eq "/");
 return $_[0] if ($_[0] eq $config{'named_conf'} && $config{'no_chroot'});
 return $_[0] if ($_[0] eq $config{'rndc_conf'});	# don't chroot rndc.conf
 if ($config{'no_pid_chroot'} && $_[1]) {
