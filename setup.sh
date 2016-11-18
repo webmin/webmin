@@ -301,8 +301,8 @@ else
 		$perl -e 'use Crypt::UnixCrypt' >/dev/null 2>&1
 	fi
 	if [ $? != "0" ]; then
-		echo "ERROR: Perl crypt function does not work. Maybe Perl has"
-		echo "not been properly installed on your system"
+		echo "ERROR: Perl crypt function does not work, and the"
+		echo "Crypt::UnixCrypt module is not installed."
 		echo ""
 		exit 8
 	fi
