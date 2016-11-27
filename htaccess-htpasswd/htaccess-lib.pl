@@ -61,7 +61,7 @@ sub list_directories
 {
 my @rv;
 my $fh;
-open($fh, $directories_file);
+open($fh, $directories_file) || return ();
 while(<$fh>) {
 	s/\r|\n//g;
 	my @dir = split(/\t+/, $_);
