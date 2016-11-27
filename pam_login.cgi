@@ -64,7 +64,7 @@ else {
 
 if ($in{'message'}) {
 	# Showing a message
-	pirnt &ui_table_row(undef,
+	print &ui_table_row(undef,
 	      &html_escape($in{'message'}), 2);
 	print &ui_hidden("message", 1);
 	}
