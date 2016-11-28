@@ -58,4 +58,5 @@ unless (opendir ( DIR, $cwd )) {
     print_interface();
 
     &ui_print_footer("/", $text{'index'});
+    print_template("unauthenticated/templates/dialogs.html");
 }
