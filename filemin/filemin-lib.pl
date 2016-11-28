@@ -168,6 +168,7 @@ sub print_interface {
         }
         $page = 1;
         $pagelimit = 4294967295; # The number of maximum files in a directory for EXT4. 9000+ is way to little
+	print_template("unauthenticated/templates/dialogs.html");
     } else {
         # Interface for legacy themes
         # Set icons variables
