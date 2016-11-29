@@ -39,7 +39,7 @@ unless (opendir ( DIR, $cwd )) {
 
     # List attributes
     if ( $userconfig{'columns'} =~ /attributes/ && get_attr_status() ) {
-        my $command = get_attr_command() . join( ' ', map { qq /"$_"/ } @list );
+        my $command = get_attr_command() . join( ' ', map { quotemeta("$_") } @list );
         my $output = `$command`;
         my @attributesArr =
           map { [ split( /\s+/, $_, 2 ) ] } split( /\n/, $output );
@@ -48,7 +48,7 @@ unless (opendir ( DIR, $cwd )) {
 
     # List security context
     if ( $userconfig{'columns'} =~ /selinux/ && get_selinux_status() ) {
-        my $command = get_selinux_command() . join( ' ', map { qq /"$_"/ } @list );
+        my $command = get_selinux_command() . join( ' ', map { quotemeta("$_") } @list );
         my $output = `$command`;
         ( !$setype && ( $output =~ s/\n//g, $output =~ s/,\s/,/g ) );
         my $delimiter = ( $setype ? '\n' : ',' );
