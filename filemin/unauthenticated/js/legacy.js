@@ -25,7 +25,7 @@ $( document ).ready(function() {
     );
 
     // MENUS
-    $('#flat').menu({ 
+    $('#flat').menu({
     content: $('#flat').next().html(), // grab content from this page
     showSpeed: 100
     });
@@ -163,6 +163,7 @@ function chownDialog() {
     }
 }
 
+
 function chownSelected() {
     var owner = $('#chownForm input[name=owner]').val();
     var group = $('#chownForm input[name=group]').val();
@@ -170,6 +171,59 @@ function chownSelected() {
 
     if (owner != null && owner != "" && group != null && group != "") {
         $('#list_form').attr('action', "chown.cgi?owner=" + owner + "&group=" + group + "&recursive=" + recursive);
+        $('#list_form').submit();
+    }
+}
+
+function chattrDialog() {
+  if(checkSelected()) {
+    $( "#chattrDialog" ).dialog({
+      modal: true,
+      buttons: {
+        "Change": function() {
+          chattrSelected();
+        },
+        "Cancel": function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+  }
+}
+
+function chattrSelected() {
+    var label = $('#chattrForm input[name=label]').val(),
+        recursive = $('#chattr-recursive').prop('checked');
+
+    if (label != null && label != "") {
+        $('#list_form').attr('action', "chattr.cgi?label=" + encodeURIComponent(label) + "&recursive=" + recursive);
+        $('#list_form').submit();
+    }
+}
+
+
+function chconDialog() {
+  if(checkSelected()) {
+    $( "#chconDialog" ).dialog({
+      modal: true,
+      buttons: {
+        "Change": function() {
+          chconSelected();
+        },
+        "Cancel": function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+  }
+}
+
+function chconSelected() {
+    var label = $('#chconForm input[name=label]').val(),
+        recursive = $('#chcon-recursive').prop('checked');
+
+    if (label != null && label != "") {
+        $('#list_form').attr('action', "chcon.cgi?label=" + label + "&recursive=" + recursive);
         $('#list_form').submit();
     }
 }

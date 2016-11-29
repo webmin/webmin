@@ -7,6 +7,27 @@ use Encode qw(decode encode);
 use File::Basename;
 use POSIX;
 
+sub get_attr_status {
+  return has_command('lsattr');
+}
+
+sub get_attr_command {
+  return 'lsattr -d ';
+}
+
+sub get_selinux_status {
+  # return 1;
+  return is_selinux_enabled();
+}
+sub get_selinux_command_type {
+  my $out = backquote_command("ls --help 2>&1 </dev/null");
+  return $out =~ /--scontext/ ? 1 : 0;
+}
+
+sub get_selinux_command {
+  return get_selinux_command_type() ? 'ls -d --scontext ' : 'ls -dmZ ';
+}
+
 sub get_paths {
     %access = &get_module_acl();
 
@@ -124,28 +145,27 @@ sub print_interface {
 
     # Set things up according to currently used theme
     if ($current_theme eq 'authentic-theme' or $current_theme eq 'bootstrap') {
+
         # Interface for Bootstrap 3 powered themes
         # Set icons variables
         $edit_icon = "<i class='fa fa-edit' alt='$text{'edit'}'></i>";
         $rename_icon = "<i class='fa fa-font' title='$text{'rename'}'></i>";
         $extract_icon = "<i class='fa fa-external-link' alt='$text{'extract_archive'}'></i>";
         $goto_icon = "<i class='fa fa-arrow-right' alt='$text{'goto_folder'}'></i>";
+
         # Add static files
+        print "<link rel=\"stylesheet\" type=\"text/css\" href=\"unauthenticated/css/style.css\" />";
         print "<script type=\"text/javascript\" src=\"unauthenticated/js/main.js\"></script>";
         print "<script type=\"text/javascript\" src=\"unauthenticated/js/chmod-calculator.js\"></script>";
-        print "<script type=\"text/javascript\" src=\"unauthenticated/js/dataTables.bootstrap.js\"></script>";
         print "<script type=\"text/javascript\" src=\"unauthenticated/js/bootstrap-hover-dropdown.min.js\"></script>";
-        print "<link rel=\"stylesheet\" type=\"text/css\" href=\"unauthenticated/css/style.css\" />";
-        print "<link rel=\"stylesheet\" type=\"text/css\" href=\"unauthenticated/css/dataTables.bootstrap.css\" />";
-        if ($current_theme eq 'bootstrap') {
-        	init_datatables();
-	}
+
         # Set "root" icon
         if($base eq '/') {
             $root_icon = "<i class='fa fa-hdd-o'></i>";
         } else {
             $root_icon = "~";
         }
+
         # Breadcrumbs
         print "<ol class='breadcrumb pull-left'><li><a href='index.cgi?path='>$root_icon</a></li>";
         my @breadcr = split('/', $path);
@@ -157,6 +177,7 @@ sub print_interface {
                   &html_escape($breadcr[$i])."</a></li>";
         }
         print "</ol>";
+
         # And toolbar
         if($userconfig{'menu_style'}) {
             print_template("unauthenticated/templates/menu.html");
@@ -173,6 +194,7 @@ sub print_interface {
         $rename_icon = "<img src='images/icons/quick/rename.png' alt='$text{'rename'}' />";
         $extract_icon = "<img src='images/icons/quick/extract.png' alt='$text{'extract_archive'}' />";
         $goto_icon = "<img src='images/icons/quick/go-next.png' alt='$text{'goto_folder'}'";
+
         # Add static files
         $head = "<link rel=\"stylesheet\" type=\"text/css\" href=\"unauthenticated/css/style.css\" />";
         $head.= "<script type=\"text/javascript\" src=\"unauthenticated/jquery/jquery.min.js\"></script>";
@@ -183,6 +205,7 @@ sub print_interface {
         $head.= "<link rel=\"stylesheet\" type=\"text/css\" href=\"unauthenticated/dropdown/fg.menu.css\" />";
         $head.= "<script type=\"text/javascript\" src=\"unauthenticated/dropdown/fg.menu.js\"></script>";
         print $head;
+
         # Set "root" icon
         if($base eq '/') {
             $root_icon = "<img src=\"images/icons/quick/drive-harddisk.png\" class=\"hdd-icon\" />";
@@ -221,6 +244,7 @@ sub print_interface {
             }
         }
         print "</div>";
+
         # And toolbar
         print_template("unauthenticated/templates/legacy_quicks.html");
         print_template("unauthenticated/templates/legacy_dialogs.html");
@@ -240,8 +264,6 @@ sub print_interface {
     }
 
     print "<div class='total'>" . &text($info_total, scalar @files, scalar @folders) . "</div>";
-#    use Data::Dumper;
-#    print Dumper(\%allowed_for_edit);
 
     # Render current directory entries
     print &ui_form_start("", "post", undef, "id='list_form'");
@@ -249,13 +271,15 @@ sub print_interface {
             '<input id="select-unselect" type="checkbox" onclick="selectUnselect(this)" />',
             ''
         );
-    push @ui_columns, $text{'name'};
-    push @ui_columns, $text{'type'} if($userconfig{'columns'} =~ /type/);
-    push @ui_columns, $text{'actions'};
-    push @ui_columns, $text{'size'} if($userconfig{'columns'} =~ /size/);
-    push @ui_columns, $text{'owner_user'} if($userconfig{'columns'} =~ /owner_user/);
-    push @ui_columns, $text{'permissions'} if($userconfig{'columns'} =~ /permissions/);
-    push @ui_columns, $text{'last_mod_time'} if($userconfig{'columns'} =~ /last_mod_time/);
+    push @ui_columns, ('<span data-head-name>' . $text{'name'} . '</span>');
+    push @ui_columns, ('<span data-head-type>' . $text{'type'} . '</span>') if($userconfig{'columns'} =~ /type/);
+    push @ui_columns, ('<span data-head-actions>' . $text{'actions'} . '</span>');
+    push @ui_columns, ('<span data-head-size>' . $text{'size'} . '</span>') if($userconfig{'columns'} =~ /size/);
+    push @ui_columns, ('<span data-head-owner_user>' . $text{'owner_user'} . '</span>') if($userconfig{'columns'} =~ /owner_user/);
+    push @ui_columns, ('<span data-head-permissions>' . $text{'permissions'} . '</span>') if($userconfig{'columns'} =~ /permissions/);
+    push @ui_columns, ('<span data-head-attributes>' . $text{'attributes'} . '</span>') if(get_attr_status() && $userconfig{'columns'} =~ /attributes/);
+    push @ui_columns, ('<span data-head-selinux>' . $text{'selinux'} . '</span>') if(get_selinux_status() && $userconfig{'columns'} =~ /selinux/);
+    push @ui_columns, ('<span data-head-last_mod_time>' . $text{'last_mod_time'} . '</span>') if($userconfig{'columns'} =~ /last_mod_time/);
 
     print &ui_columns_start(\@ui_columns);
     #foreach $link (@list) {
@@ -263,6 +287,8 @@ sub print_interface {
         if ($count > scalar(@list)) { last; }
         my $class = $count & 1 ? "odd" : "even";
         my $link = $list[$count - 1][0];
+        my $selinux;
+        my $attributes;
         $link =~ s/\Q$cwd\E\///;
         $link =~ s/^\///g;
         $vlink = html_escape($link);
@@ -274,12 +300,22 @@ sub print_interface {
 
         my $type = $list[$count - 1][14];
         $type =~ s/\//\-/g;
+
         my $img = "images/icons/mime/$type.png";
         unless (-e $img) { $img = "images/icons/mime/unknown.png"; }
         $size = &nice_size($list[$count - 1][8]);
         $user = getpwuid($list[$count - 1][5]) ? getpwuid($list[$count - 1][5]) : $list[$count - 1][5];
         $group = getgrgid($list[$count - 1][6]) ? getgrgid($list[$count - 1][6]) : $list[$count - 1][6];
         $permissions = sprintf("%04o", $list[$count - 1][3] & 07777);
+
+        if(get_selinux_status() && $userconfig{'columns'} =~ /selinux/) {
+          $selinux = $list[$count - 1][17];
+        }
+
+        if(get_attr_status() && $userconfig{'columns'} =~ /attributes/) {
+          $attributes = $list[$count - 1][18];
+        }
+
         $mod_time = POSIX::strftime('%Y/%m/%d - %T', localtime($list[$count - 1][10]));
 
         $actions = "<a class='action-link' href='javascript:void(0)' onclick='renameDialog(\"$vlink\")' title='$text{'rename'}' data-container='body'>$rename_icon</a>";
@@ -339,6 +375,8 @@ sub print_interface {
         push @row_data, $size if($userconfig{'columns'} =~ /size/);
         push @row_data, $user.':'.$group if($userconfig{'columns'} =~ /owner_user/);
         push @row_data, $permissions if($userconfig{'columns'} =~ /permissions/);
+        push @row_data, $attributes if(get_attr_status() && $userconfig{'columns'} =~ /attributes/);
+        push @row_data, $selinux if(get_selinux_status() && $userconfig{'columns'} =~ /selinux/);
         push @row_data, $mod_time if($userconfig{'columns'} =~ /last_mod_time/);
 
         print &ui_checked_columns_row(\@row_data, "", "name", $vlink);
@@ -346,70 +384,6 @@ sub print_interface {
     print ui_columns_end();
     print &ui_hidden("path", $path),"\n";
     print &ui_form_end();
-}
-
-sub init_datatables {
-    my ($a, $b, $c);
-    $a = '0, 1, 3';
-    $b = '4';
-    $c = '';
-    if ($userconfig{'columns'} =~ /type/) {
-        $a = '0, 1, 4';
-        $b = '5';
-    }
-    if ($userconfig{'columns'} =~ /size/) {
-        $c = '{ "type": "file-size", "targets": [' . $b . '] },';
-    }
-
-    if($userconfig{'disable_pagination'}) {
-        $bPaginate = 'false';
-    } else {
-        $bPaginate = 'true';
-    }
-print "<script>";
-print "\$( document ).ready(function() {";
-print "\$.fn.dataTableExt.sErrMode = 'throw';";
-print "\$('#list_form > table').dataTable({";
-print "\"order\": [],";
-print "\"aaSorting\": [],";
-print "\"bDestroy\": true,";
-print "\"bPaginate\": $bPaginate,";
-print " \"fnDrawCallback\": function(oSettings) {
-        if (oSettings.fnRecordsTotal() <= oSettings._iDisplayLength) {
-            \$('.dataTables_paginate').hide();
-        } else {
-            \$('.dataTables_paginate').show();
-        }
-    },";
-print " \"initComplete\": function() {
-        \$('div.dataTables_filter input').val('').trigger('keyup');
-        \$('div.dataTables_filter input').focus();
-        \$(document).on('keydown', function (event) {
-            var keycode = event.keyCode ? event.keyCode : event.which;
-            if (!\$('input').is(':focus') && !\$('select').is(':focus') && !\$('textarea').is(':focus')) {
-                if (keycode === 39) {
-                    \$('.paginate_button.next').trigger('click');
-                }
-                if (keycode === 37) {
-                    \$('.paginate_button.previous').trigger('click');
-                }
-            }
-        });
-    },";
-print "\"bInfo\": false,";
-print "\"destroy\": true,";
-print "\"oLanguage\": {";
-print "\"sSearch\": \" \"";
-print "},";
-print "\"columnDefs\": [ { \"orderable\": false, \"targets\": [$a] }, $c ],";
-print "\"bStateSave\": true,";
-print "\"iDisplayLength\": 50,";
-print "});";
-print "\$(\"form\").on('click', 'div.popover', function() {";
-print "\$(this).prev('input').popover('hide');";
-print "});";
-print "});";
-print "</script>";
 }
 
 sub get_bookmarks {
@@ -441,4 +415,3 @@ sub get_paste_buffer_file
 }
 
 1;
-

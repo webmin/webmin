@@ -103,6 +103,8 @@ table.dataTable thead .sorting_desc::after {
     top: 6px;
 }
 
+#chattrForm input,
+#chconForm input,
 #chownForm input {
     width: 200px;
 }
@@ -151,4 +153,10 @@ a.pages {
 .total {
     clear: both;
     margin-bottom: 10px;
+}
+
+span[data-attributes="s"],
+span[data-attributes="x"] {
+  font-family: monospace;
+  font-size: 10px;
 }

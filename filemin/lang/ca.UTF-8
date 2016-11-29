@@ -141,3 +141,17 @@ info_total1=Total: $1 file and $2 folder
 info_total2=Total: $1 files and $2 folder
 info_total3=Total: $1 file and $2 folders
 info_total4=Total: $1 files and $2 folders
+
+
+chcon_selected=Chcon Selected
+chattr_selected=Chattr Selected
+
+selinux=Security context
+attributes=Attributes
+
+context_label=Context to apply
+context_label_error=Security context can not be blank
+context_label_error_proc=Failed to change security context
+attr_label=Attributes to apply
+attr_label_error=Attributes must be specified
+attr_label_error_proc=Failed to change attributes
