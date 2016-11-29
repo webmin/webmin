@@ -130,16 +130,19 @@ sub print_interface {
         $rename_icon = "<i class='fa fa-font' title='$text{'rename'}'></i>";
         $extract_icon = "<i class='fa fa-external-link' alt='$text{'extract_archive'}'></i>";
         $goto_icon = "<i class='fa fa-arrow-right' alt='$text{'goto_folder'}'></i>";
-        # Add static files
-        print "<script type=\"text/javascript\" src=\"unauthenticated/js/main.js\"></script>";
-        print "<script type=\"text/javascript\" src=\"unauthenticated/js/chmod-calculator.js\"></script>";
-        print "<script type=\"text/javascript\" src=\"unauthenticated/js/dataTables.bootstrap.js\"></script>";
-        print "<script type=\"text/javascript\" src=\"unauthenticated/js/bootstrap-hover-dropdown.min.js\"></script>";
+        
+	# Add static files
         print "<link rel=\"stylesheet\" type=\"text/css\" href=\"unauthenticated/css/style.css\" />";
-        print "<link rel=\"stylesheet\" type=\"text/css\" href=\"unauthenticated/css/dataTables.bootstrap.css\" />";
+	print "<script type=\"text/javascript\" src=\"unauthenticated/js/main.js\"></script>";
+        print "<script type=\"text/javascript\" src=\"unauthenticated/js/chmod-calculator.js\"></script>";
+        print "<script type=\"text/javascript\" src=\"unauthenticated/js/bootstrap-hover-dropdown.min.js\"></script>";
+	
         if ($current_theme eq 'bootstrap') {
+	print "<link rel=\"stylesheet\" type=\"text/css\" href=\"unauthenticated/css/dataTables.bootstrap.css\" />";
+	print "<script type=\"text/javascript\" src=\"unauthenticated/js/dataTables.bootstrap.js\"></script>";
         	init_datatables();
 	}
+	
         # Set "root" icon
         if($base eq '/') {
             $root_icon = "<i class='fa fa-hdd-o'></i>";
@@ -165,7 +168,7 @@ sub print_interface {
         }
         $page = 1;
         $pagelimit = 4294967295; # The number of maximum files in a directory for EXT4. 9000+ is way to little
-        print_template("unauthenticated/templates/dialogs.html");
+	print_template("unauthenticated/templates/dialogs.html");
     } else {
         # Interface for legacy themes
         # Set icons variables
