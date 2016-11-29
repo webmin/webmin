@@ -136,3 +136,17 @@ menu_edit=Bearbeite
 menu_tools=Werkzeuge
 menu_bookmarks=Lesezeichen
 notallowed=Sie haben keine Erlaubnis, auf $1 zuzugreifen. Die erlaubten Verzeichnisse sind: $2
+
+
+chcon_selected=Chcon Selected
+chattr_selected=Chattr Selected
+
+selinux=Security context
+attributes=Attributes
+
+context_label=Context to apply
+context_label_error=Security context can not be blank
+context_label_error_proc=Failed to change security context
+attr_label=Attributes to apply
+attr_label_error=Attributes must be specified
+attr_label_error_proc=Failed to change attributes
