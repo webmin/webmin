@@ -58,7 +58,7 @@ unless (opendir ( DIR, $cwd )) {
     }
 
     # Get info about directory entries
-    @info = map { [ $_, stat($_), &mimetype($_), -d, -l $_, $secontext{$_}, $attributes{$_} ] } @list;
+    @info = map { [ $_, lstat($_), &mimetype($_), -d, -l $_, $secontext{$_}, $attributes{$_} ] } @list;
 
     # Filter out folders
     @folders = map {$_} grep {$_->[15] == 1 } @info;
