@@ -191,8 +191,6 @@ print "$text{'ssl_newcsr'}<p>\n";
 print ui_form_start("newcsr.cgi");
 print ui_table_start($text{'ssl_header2'}, undef, 2);
 
-$host = $ENV{'HTTP_HOST'};
-$host =~ s/:.*//;
 print show_ssl_key_form($host, undef, 
 			 "Webmin Webserver on ".get_system_hostname());
 
@@ -267,8 +265,8 @@ else {
 	print &ui_table_start($text{'ssl_letsheader'}, undef, 2);
 
 	# For domain names
-	my @doms = $host ? ( $host )
-			 : split(/\s+/, $config{'letsencrypt_doms'});
+	my @doms = $config{'letsencrypt_doms'} ?
+			split(/\s+/, $config{'letsencrypt_doms'}) : ( $host );
 	print &ui_table_row($text{'ssl_letsdoms'},
 		&ui_textarea("dom", join("\n", @doms), 5, 40));
 
