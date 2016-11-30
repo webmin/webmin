@@ -70,7 +70,7 @@ foreach my $zi (@zones) {
 	my @recs = &read_zone_file($zi->{'file'}, $zi->{'name'});
 	my $realfile = &make_chroot(&absolute_path($zi->{'file'}));
 	foreach my $r (@recs) {
-		my $v = join(" ", @{$r->{'values'}});
+		my $v = join(" ", @{$r->{'values'} || []});
 		if ($r->{'type'} eq $in{'type'} &&
 		    ($v eq $in{'old'} || $in{'old_def'})) {
 			# Found a regular record to fix
