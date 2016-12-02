@@ -275,7 +275,7 @@ sub print_interface {
     push @ui_columns, ('<span data-head-type>' . $text{'type'} . '</span>') if($userconfig{'columns'} =~ /type/);
     push @ui_columns, ('<span data-head-actions>' . $text{'actions'} . '</span>');
     push @ui_columns, ('<span data-head-size>' . $text{'size'} . '</span>') if($userconfig{'columns'} =~ /size/);
-    push @ui_columns, ('<span data-head-owner_user>' . $text{'owner_user'} . '</span>') if($userconfig{'columns'} =~ /owner_user/);
+    push @ui_columns, ('<span data-head-owner_user>' . $text{'ownership'} . '</span>') if($userconfig{'columns'} =~ /owner_user/);
     push @ui_columns, ('<span data-head-permissions>' . $text{'permissions'} . '</span>') if($userconfig{'columns'} =~ /permissions/);
     push @ui_columns, ('<span data-head-attributes>' . $text{'attributes'} . '</span>') if(get_attr_status() && $userconfig{'columns'} =~ /attributes/);
     push @ui_columns, ('<span data-head-selinux>' . $text{'selinux'} . '</span>') if(get_selinux_status() && $userconfig{'columns'} =~ /selinux/);
