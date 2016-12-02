@@ -155,3 +155,5 @@ context_label_error_proc=Failed to change security context
 attr_label=Attributes to apply
 attr_label_error=Attributes must be specified
 attr_label_error_proc=Failed to change attributes
+
+ownership=Ownership
