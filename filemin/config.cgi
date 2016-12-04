@@ -29,7 +29,7 @@ print &ui_table_start($text{'module_config'}, undef, 2);
 print &ui_table_row($text{'config_columns_to_display'},
     &ui_checkbox('columns', 'type', $text{'type'}, $config{'columns'} =~ /type/).
     &ui_checkbox('columns', 'size', $text{'size'}, $config{'columns'} =~ /size/).
-    &ui_checkbox('columns', 'owner_user', $text{'owner_user'}, $config{'columns'} =~ /owner_user/).
+    &ui_checkbox('columns', 'owner_user', $text{'ownership'}, $config{'columns'} =~ /owner_user/).
     &ui_checkbox('columns', 'permissions', $text{'permissions'}, $config{'columns'} =~ /permissions/).
     (get_attr_status() ? &ui_checkbox('columns', 'attributes', $text{'attributes'}, $config{'columns'} =~ /attributes/) : undef).
     (get_selinux_status() ? &ui_checkbox('columns', 'selinux', $text{'selinux'}, $config{'columns'} =~ /selinux/) : undef).
