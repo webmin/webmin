@@ -9,6 +9,7 @@ $access{'perms'} == 1 || &error($text{'perms_ecannot'});
 # Validate inputs
 $in{'newpass1'} || &error($text{'root_epass1'});
 $in{'newpass1'} eq $in{'newpass2'} || &error($text{'root_epass2'});
+$in{'newpass1'} =~ /\\/ && &error($text{'user_eslash'});
 
 # Update MySQL
 $esc = &escapestr($in{'newpass1'});

@@ -299,6 +299,7 @@ user_priv_create_tablespace=Create Tablespace
 user_err=Failed to save user
 user_euser=Missing or invalid username
 user_ehost=Missing or invalid allow host(s)
+user_eslash=MySQL does not support a password containing a backslash
 user_ssl=Required certificate type
 user_cipher=SSL cipher
 user_ssl_=None

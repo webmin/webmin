@@ -19,6 +19,9 @@ else {
 		&error($text{'user_euser'});
 	$in{'host_def'} || $in{'host'} =~ /^\S+$/ ||
 		&error($text{'user_ehost'});
+	if ($in{'mysqlpass_mode'} == 0 && $in{'mysqlpas'} =~ /\\/) {
+		&error($text{'user_eslash'});
+		}
 
 	%perms = map { $_, 1 } split(/\0/, $in{'perms'});
 	@desc = &table_structure($master_db, 'user');
