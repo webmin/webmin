@@ -130,7 +130,7 @@ if (!$in{'clear'}) {
 				}
 			$history .= $out;
 			}
-		@previous = &unique(@previous, $fullcmd);
+		@previous = &unique($fullcmd, @previous);
 		&lock_file($prevfile);
 		&open_tempfile(PREVFILE, ">>$prevfile");
 		&print_tempfile(PREVFILE, $fullcmd,"\n");
