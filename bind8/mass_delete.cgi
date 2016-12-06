@@ -38,7 +38,7 @@ foreach my $d (split(/\0/, $in{'d'})) {
 	else {
 		$zconf = $conf->[$zone->{'index'}];
 		}
-	&can_edit_zone($zconf, $view) ||
+	&can_edit_zone($zone) ||
 		&error($text{'master_edelete'});
 	push(@zones, [ $zconf, $view ]);
 	push(@znames, $zconf->{'value'});
