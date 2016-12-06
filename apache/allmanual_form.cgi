@@ -10,7 +10,7 @@ $access{'types'} eq '*' && $access{'virts'} eq '*' ||
 
 $conf = &get_config();
 @files = grep { -f $_ } &unique(map { $_->{'file'} } @$conf);
-$in{'file'} = $files[0] if (!$in{'file'});
+$in{'file'} = $files[0] if ($in{'file'} eq '');
 print "<form action=allmanual_form.cgi>\n";
 print "<input type=submit value='$text{'manual_file'}'>\n";
 print "<select name=file>\n";
