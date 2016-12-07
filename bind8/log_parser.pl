@@ -20,15 +20,15 @@ if ($type eq 'record') {
 		    $p->{'newvalues'}) {
 			return &text("log_${action}_record_v",
 				     $text{"type_$p->{'type'}"},
-				     "<tt>$p->{'name'}</tt>",
-				     "<tt>$object</tt>",
-				     "<tt>$p->{'newvalues'}</tt>");
+				     "<tt>".&html_escape($p->{'name'})."</tt>",
+				     "<tt>".&html_escape($object)."</tt>",
+				     "<tt>".&html_escape($p->{'newvalues'})."</tt>");
 			}
 		else {
 			return &text("log_${action}_record",
 				     $text{"type_$p->{'type'}"},
-				     "<tt>$p->{'name'}</tt>",
-				     "<tt>$object</tt>");
+				     "<tt>".&html_escape($p->{'name'})."</tt>",
+				     "<tt>".&html_escape($object)."</tt>");
 			}
 		}
 	}
