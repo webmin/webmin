@@ -213,7 +213,8 @@ elsif (@match) {
 		      "&return=".&urlize($in{'return'} || "").
 		      "&returndesc=".&urlize($in{'returndesc'} || "").
 		      "&file=".($in{'fall'} ? "" : &urlize($in{'file'})).
-		      "&search=".&urlize($in || ""), $desc) );
+		      "&search=".&urlize($in || ""),
+		      &filter_javascript($desc)) );
 		if ($anno) {
 			$cols[$#cols] .= "&nbsp;<img src=images/star.gif>";
 			}

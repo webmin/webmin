@@ -26,7 +26,7 @@ print &ui_hidden_table_start(&text('view_header', $act->{'id'}),
 
 # This "" is needed to make the label show properly!
 print &ui_table_row($text{'view_action'}."",
-		    &get_action_description($act, 1), 3);
+		    &filter_javascript(&get_action_description($act, 1)), 3);
 
 my %minfo = $act->{'module'} eq 'global' ?
 		( 'desc' => $text{'search_global'} ) :
