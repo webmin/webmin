@@ -25,11 +25,13 @@ if ($starting != 2 && $in{'boot'}) {
 	my $stopscript = "$module_config_directory/stop.sh";
 	my $startfh = "START";
 	&open_tempfile($startfh, ">$startscript");
+	&print_tempfile($startfh, "#!/bin/sh\n");
 	&print_tempfile($startfh, $startcmd,"\n");
 	&close_tempfile($startfh);
 	&set_ownership_permissions(undef, undef, 0755, $startscript);
 	my $stopfh = "STOP";
 	&open_tempfile($stopfh, ">$stopscript");
+	&print_tempfile($stopfh, "#!/bin/sh\n");
 	&print_tempfile($stopfh, $stopcmd,"\n");
 	&close_tempfile($stopfh);
 	&set_ownership_permissions(undef, undef, 0755, $stopscript);
