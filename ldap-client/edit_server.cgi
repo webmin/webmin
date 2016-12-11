@@ -62,12 +62,17 @@ print &ui_table_row($text{'server_bindpw'},
 	&ui_opt_textbox("bindpw", &find_svalue("bindpw", $conf), 20,
 			$text{'server_none'}));
 
+my $rootbindbn = &find_svalue("rootpwmoddn", $conf, 2) ?
+			&find_svalue("rootpwmoddn", $conf) :
+			&find_svalue("rootbinddn", $conf);
 print &ui_table_row($text{'server_rootbinddn'},
-	&ui_opt_textbox("rootbinddn", &find_svalue("rootbinddn", $conf), 40,
-			$text{'server_same'}));
+	&ui_opt_textbox("rootbinddn", $rootbindbn, 40, $text{'server_same'}));
 
+my $rootsecret = &find_svalue("rootpwmoddn", $conf, 2) ?
+			&find_svalue("rootpwmodpw", $conf) :
+			&get_rootbinddn_secret();
 print &ui_table_row($text{'server_rootbindpw'},
-	&ui_opt_textbox("rootbindpw", &get_rootbinddn_secret(), 20,
+	&ui_opt_textbox("rootbindpw", $rootsecret, 20,
 			$text{'server_none'}));
 
 # SSL options

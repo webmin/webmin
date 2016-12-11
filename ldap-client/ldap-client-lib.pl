@@ -29,13 +29,14 @@ if (!scalar(@get_config_cache)) {
 	&open_readfile(CONF, $file);
 	while(<CONF>) {
 		s/\r|\n//g;
-                s/#.*$//;
 		if (/^(#?)(\S+)\s*(.*)/) {
-			push(@get_config_cache, { 'name' => lc($2),
-						  'value' => $3,
-						  'enabled' => !$1,
-						  'line' => $lnum,
-						  'file' => $file });
+			my $dir = { 'name' => lc($2),
+				    'value' => $3,
+				    'enabled' => !$1,
+				    'line' => $lnum,
+				    'file' => $file };
+			$dir->{'value'} =~ s/\s+#.*$//;   # Trailing comments
+			push(@get_config_cache, $dir);
 			}
 		$lnum++;
 		}
@@ -44,7 +45,7 @@ if (!scalar(@get_config_cache)) {
 return \@get_config_cache;
 }
 
-# find(name, &conf, disabled-mode)
+# find(name, &conf, disabled-mode(0=enabled, 1=disabled, 2=both))
 # Returns the directive objects with some name
 sub find
 {
@@ -337,7 +338,8 @@ if ($err) {
 	}
 
 local ($dn, $password);
-local $rootbinddn = &find_svalue("rootbinddn", $conf);
+local $rootbinddn = &find_svalue("rootpwmoddn", $conf) ||
+		    &find_svalue("rootbinddn", $conf);
 if ($ldap_user) {
 	# Use login from config
 	$dn = $ldap_user;
@@ -346,7 +348,8 @@ if ($ldap_user) {
 elsif ($rootbinddn) {
 	# Use the root login if we have one
 	$dn = $rootbinddn;
-	$password = &get_rootbinddn_secret();
+	$password = &find_svalue("rootpwmodpw", $conf) ||
+		    &get_rootbinddn_secret();
 	}
 else {
 	# Use the normal login

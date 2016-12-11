@@ -83,21 +83,32 @@ else {
 	}
 
 # Save root login
+my $rootdir = &find_svalue("rootpwmoddn", $conf, 2) ?
+		"rootpwmoddn" : "rootbinddn";
 if ($in{'rootbinddn_def'}) {
-	&save_directive($conf, "rootbinddn", undef);
+	&save_directive($conf, $rootdir, undef);
 	}
 else {
 	$in{'rootbinddn'} =~ /\S/ || &error($text{'server_erootbinddn'});
-	&save_directive($conf, "rootbinddn", $in{'rootbinddn'});
+	&save_directive($conf, $rootdir, $in{'rootbinddn'});
 	}
 
 # Save root password
-if ($in{'rootbindpw_def'}) {
-	&save_rootbinddn_secret(undef);
+$in{'rootbindpw_def'} || $in{'rootbindpw'} =~ /\S/ ||
+	&error($text{'server_erootbindpw'});
+if (&find_svalue("rootpwmoddn", $conf), 2) {
+	# New format can put the password in the config file
+	&save_directive($conf, "rootpwmodpw",
+		$in{'rootbindpw_def'} ? undef : $in{'rootbindpw'});
 	}
 else {
-	$in{'rootbindpw'} =~ /\S/ || &error($text{'server_erootbindpw'});
-	&save_rootbinddn_secret($in{'rootbindpw'});
+	# Old format uses a separate secret file
+	if ($in{'rootbindpw_def'}) {
+		&save_rootbinddn_secret(undef);
+		}
+	else {
+		&save_rootbinddn_secret($in{'rootbindpw'});
+		}
 	}
 
 # SSL mode
