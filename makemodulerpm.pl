@@ -366,7 +366,7 @@ unlink("$rpm_source_dir/$mod.tar.gz");
 
 # Sign if requested
 if ($sign) {
-	system("rpm --resign $rpm_dir/$prefix$mod-$ver-$release.noarch.rpm $source_rpm_dir/$prefix$mod-$ver-$release.src.rpm");
+	system("echo | rpm --resign $rpm_dir/$prefix$mod-$ver-$release.noarch.rpm $source_rpm_dir/$prefix$mod-$ver-$release.src.rpm");
 	}
 
 if ($target_dir =~ /:/) {
