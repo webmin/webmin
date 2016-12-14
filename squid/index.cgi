@@ -44,7 +44,7 @@ if ($ver =~ /version\s+(\S+)/i) {
 	}
 my $squid_version;
 if ($ver =~ /^(1\.1)\.\d+/ || $ver =~ /^(1)\.NOVM/ ||
-    $ver =~ /^(2\.[01234567])\./ || $ver =~ /^(3\.[012345])/) {
+    $ver =~ /^([2-4]\.[0-9]+)\./) {
 	# Save version number
 	open(VERSION, ">$module_config_directory/version");
 	print VERSION $1,"\n";
