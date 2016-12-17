@@ -13,7 +13,7 @@ my $dom;
 my $err;
 
 my $debug;
-if ($ARGV[0] eq "--debug") {
+if (@ARGV && $ARGV[0] eq "--debug") {
 	$debug = 1;
 	}
 my $period = $config{'dnssec_period'} || 21;
