@@ -471,6 +471,7 @@ else {
 			}
 		}
 	}
+@rv = &filter_duplicates(\@rv);
 return @rv;
 }
 
