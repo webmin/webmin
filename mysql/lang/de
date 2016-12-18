@@ -652,6 +652,7 @@ user_emax_questions=Maximale Abfragen pro Stunde muss eine Zahl sein
 user_emax_updates=Maximale Updates pro Stunde muss eine Zahl sein
 user_emax_user_connections=Maximale gleichzeitige Logins muss eine Zahl sein
 user_err=Fehler beim Speichern des Benutzers
+user_eslash=MySQL unterst&#252;tzt kein Kennwort mit einem Backslash
 user_euser=Fehlender oder ung&#252;ltiger Benutzername
 user_header=MySQL-Benutzerdetails
 user_host=Hosts
