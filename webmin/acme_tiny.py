@@ -115,6 +115,7 @@ def get_crt(account_key, csr, acme_dir, log=LOGGER, CA=DEFAULT_CA):
         wellknown_path = os.path.join(acme_dir, token)
         with open(wellknown_path, "w") as wellknown_file:
             wellknown_file.write(keyauthorization)
+	    os.chmod(wellknown_path, 0777)
 
         # check that the file is in place
         wellknown_url = "http://{0}/.well-known/acme-challenge/{1}".format(domain, token)
