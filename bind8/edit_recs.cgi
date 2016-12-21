@@ -218,7 +218,7 @@ for(my $i=0; $i<@_; $i++) {
 				elsif ($j == 2) {
 					$v = $text{'tlsa_match'.$v};
 					}
-				$v = $v ? $v." (".$r->{'values'}->[$j]).")"
+				$v = $v ? $v." (".$r->{'values'}->[$j].")"
 					: $r->{'values'}->[$j];
 				}
 			}
