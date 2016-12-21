@@ -124,6 +124,7 @@ Linux Mint			17.1	debian-linux	8.0	`cat /etc/lsb-release 2>/dev/null | grep DIST
 Linux Mint			17.2	debian-linux	8.0	`cat /etc/lsb-release 2>/dev/null | grep DISTRIB_DESCRIPTION` =~ /^DISTRIB_DESCRIPTION="Linux Mint 17.2 Rafaela"/
 Linux Mint			17.3	debian-linux	8.0	`cat /etc/lsb-release 2>/dev/null | grep DISTRIB_DESCRIPTION` =~ /^DISTRIB_DESCRIPTION="Linux Mint 17.3 Rosa"/
 Linux Mint			18	debian-linux	8.0	`cat /etc/lsb-release 2>/dev/null | grep DISTRIB_DESCRIPTION` =~ /^DISTRIB_DESCRIPTION="Linux Mint 18 Sarah"/
+Linux Mint			18.1	debian-linux	8.0	`cat /etc/lsb-release 2>/dev/null | grep DISTRIB_DESCRIPTION` =~ /^DISTRIB_DESCRIPTION="Linux Mint 18.1 Serena"/
 
 # Debian Linux versions with numbers
 Debian Linux			$1	debian-linux	$1	$etc_issue =~ /Debian.*\s([0-9\.]+)\s/i || `cat /etc/debian_version 2>/dev/null` =~ /([0-9\.]+)/
@@ -145,6 +146,7 @@ Debian Linux			9.0	debian-linux	9.0	`cat /etc/debian_version 2>/dev/null` =~ /^(
 Debian Linux			9.0	debian-linux	9.0	`cat /etc/debian_version 2>/dev/null` =~ /^(sid)/i
 Debian Linux			9.0	debian-linux	9.0	`cat /etc/debian_version 2>/dev/null` =~ /^(stretch)/i
 Debian Linux			10.0	debian-linux	10.0	`cat /etc/debian_version 2>/dev/null` =~ /^(buster)/i
+Debian Linux			11.0	debian-linux	11.0	`cat /etc/debian_version 2>/dev/null` =~ /^(bullseye)/i
 
 # SuSE enterprise versions
 SuSE OpenExchange Linux		$1	suse-linux	8.2	`cat /etc/SLOX-release 2>/dev/null` =~ /VERSION\s+=\s+(\S+)/i
