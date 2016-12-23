@@ -157,6 +157,14 @@ if (!$in{'save'}) {
 		else {
 			# Temp file for download
 			$file = &transname();
+			if ($access{'buser'} && $access{'buser'} ne 'root') {
+				# Need to pre-create file owned by user who
+				# will be doing the writing
+				&open_tempfile(FILE, ">$file", 0, 1);
+				&close_tempfile(FILE);
+				&set_ownership_permissions($access{'buser'},
+					undef, undef, $file);
+				}
 			}
 		if ($cron && $cmode == 0) {
 			# Run and check before-backup command (for one DB)
