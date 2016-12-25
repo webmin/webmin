@@ -786,7 +786,8 @@ return $_[0]->{'type'} =~ /(text|blob)$/i;
 
 # get_mysql_version(&out)
 # Returns a version number, undef if one cannot be found, or -1 for a .so
-# problem
+# problem. This is the version of the *local* mysql command, not necessarily
+# the remote server.
 sub get_mysql_version
 {
 local $out = &backquote_command("\"$config{'mysql'}\" -V 2>&1");
@@ -800,6 +801,18 @@ elsif ($out =~ /distrib\s+((3|4|5|6|10)\.[0-9\.]*)/i) {
 else {
 	return undef;
 	}
+}
+
+# get_remote_mysql_version()
+# Returns the version of the MySQL server, or -1 if unknown
+sub get_remote_mysql_version
+{
+local $main::error_must_die = 1;
+local $data;
+eval { $data = &execute_sql_safe(undef, "select version()"); };
+return -1 if ($@);
+return -1 if (!@{$data->{'data'}});
+return $data->{'data'}->[0]->[0];
 }
 
 # date_subs(filename)
@@ -1295,7 +1308,7 @@ sub list_character_sets
 {
 local @rv;
 local $db = $_[0] || $master_db;
-if ($mysql_version < 4.1) {
+if (&get_remote_mysql_version() < 4.1) {
 	local $d = &execute_sql($db, "show variables like 'character_sets'");
 	@rv = map { [ $_, $_ ] } split(/\s+/, $d->{'data'}->[0]->[1]);
 	}
@@ -1313,7 +1326,7 @@ sub list_collation_orders
 {
 local @rv;
 local $db = $_[0] || $master_db;
-if ($mysql_version >= 5) {
+if (&get_remote_mysql_version() >= 5) {
 	local $d = &execute_sql($db, "show collation");
 	@rv = map { [ $_->[0], $_->[1] ] } @{$d->{'data'}};
 	}

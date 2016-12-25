@@ -12,10 +12,12 @@ print &ui_form_start("delete_users.cgi");
 	      &ui_link("edit_user.cgi?new=1",$text{'users_add'}) );
 print &ui_links_row(\@rowlinks);
 @tds = ( "width=5" );
+$remote_mysql_version = &get_remote_mysql_version();
 print &ui_columns_start([ "",
 			  $text{'users_user'},
 			  $text{'users_host'},
-			  $mysql_version >= 5 ? ( $text{'users_ssl'} ) : ( ),
+			  $remote_mysql_version >= 5 ? ( $text{'users_ssl'} )
+						     : ( ),
 			  $text{'users_perms'} ], 100, 0, \@tds);
 $d = &execute_sql_safe($master_db, "select * from user order by user");
 %fieldmap = map { $_->{'field'}, $_->{'index'} }
@@ -28,7 +30,7 @@ foreach $u (@{$d->{'data'}}) {
 		    "</a>");
 	push(@cols, $u->[0] eq '' || $u->[0] eq '%' ?
 		      $text{'user_any'} : &html_escape($u->[0]));
-	if ($mysql_version >= 5) {
+	if ($remote_mysql_version >= 5) {
 		$ssl = $u->[$fieldmap{'ssl_type'}];
 		push(@cols, $text{'user_ssl_'.lc($ssl)} || $ssl);
 		}

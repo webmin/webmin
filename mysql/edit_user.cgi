@@ -78,9 +78,10 @@ print &ui_table_row($text{'user_perms'},
 	&ui_select("perms", \@sel, \@opts, 10, 1, 1));
 
 # Various per-user limits
+$remote_mysql_version = &get_remote_mysql_version();
 foreach $f ('max_user_connections', 'max_connections',
 	    'max_questions', 'max_updates') {
-	if ($mysql_version >= 5 && $fieldmap{$f}) {
+	if ($remote_mysql_version >= 5 && $fieldmap{$f}) {
 		print &ui_table_row($text{'user_'.$f},
 			&ui_opt_textbox($f,
 				$u->[$fieldmap{$f}] || undef,
@@ -90,7 +91,7 @@ foreach $f ('max_user_connections', 'max_connections',
 	}
 
 # SSL needed?
-if ($mysql_version >= 5 && $fieldmap{'ssl_type'}) {
+if ($remote_mysql_version >= 5 && $fieldmap{'ssl_type'}) {
 	print &ui_table_row($text{'user_ssl'},
 		&ui_select("ssl_type", uc($u->[$fieldmap{'ssl_type'}]),
 			[ [ '', $text{'user_ssl_'} ],

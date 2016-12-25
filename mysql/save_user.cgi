@@ -71,9 +71,10 @@ else {
 		}
 
 	# Save various limits
+	$remote_mysql_version = &get_remote_mysql_version();
 	foreach $f ('max_user_connections', 'max_connections',
 		    'max_questions', 'max_updates') {
-		next if ($mysql_version < 5 || !defined($in{$f.'_def'}));
+		next if ($remote_mysql_version < 5 || !defined($in{$f.'_def'}));
 		$in{$f.'_def'} || $in{$f} =~ /^\d+$/ ||
 		       &error($text{'user_e'.$f});
 		&execute_sql_logged($master_db,
@@ -83,7 +84,7 @@ else {
 		}
 
 	# Set SSL fields
-	if ($mysql_version >= 5 && defined($in{'ssl_type'}) &&
+	if ($remote_mysql_version >= 5 && defined($in{'ssl_type'}) &&
 	    (!$in{'new'} || $in{'ssl_type'} || $in{'ssl_cipher'})) {
 		&execute_sql_logged($master_db,
 			"update user set ssl_type = ? ".

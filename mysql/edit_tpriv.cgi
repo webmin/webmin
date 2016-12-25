@@ -48,11 +48,13 @@ print &ui_table_row($text{'tpriv_host'},
 			$text{'tpriv_any'}));
 
 # Table permissions
+$remote_mysql_version = &get_remote_mysql_version();
 print &ui_table_row($text{'tpriv_perms1'},
 	&ui_select("perms1", [ split(/,/, $u->[6]) ],
 		   [ 'Select','Insert','Update','Delete','Create',
 		     'Drop','Grant','References','Index','Alter',
-		     ($mysql_version >= 5 ? ('Create View','Show view') : ( )) ],
+		     ($remote_mysql_version >= 5 ?
+			('Create View', 'Show view') : ( )) ],
 		   4, 1));
 
 # Field permissions
