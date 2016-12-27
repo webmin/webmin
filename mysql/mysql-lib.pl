@@ -27,10 +27,8 @@ if ($module_info{'usermin'}) {
 		$mysql_login = $userconfig{'login'};
 		$mysql_pass = $userconfig{'pass'};
 		}
-	if (open(VERSION, "$user_module_config_directory/version")) {
-		chop($mysql_version = <VERSION>);
-		close(VERSION);
-		}
+	chop($mysql_version = &read_file_contents(
+		"$user_module_config_directory/version"));
 	$max_dbs = $userconfig{'max_dbs'};
 	$commands_file = "$user_module_config_directory/commands";
 	$sql_charset = $userconfig{'charset'};
@@ -48,13 +46,9 @@ else {
 		$mysql_login = $config{'login'};
 		$mysql_pass = $config{'pass'};
 		}
-	if (open(VERSION, "$module_config_directory/version")) {
-		chop($mysql_version = <VERSION>);
-		close(VERSION);
-		}
-	else {
-		$mysql_version = &get_mysql_version();
-		}
+	chop($mysql_version = &read_file_contents(
+		"$module_config_directory/version"));
+	$mysql_version ||= &get_mysql_version();
 	$cron_cmd = "$module_config_directory/backup.pl";
 	$max_dbs = $config{'max_dbs'};
 	$commands_file = "$module_config_directory/commands";
@@ -813,6 +807,19 @@ eval { $data = &execute_sql_safe(undef, "select version()"); };
 return -1 if ($@);
 return -1 if (!@{$data->{'data'}});
 return $data->{'data'}->[0]->[0];
+}
+
+# save_mysql_version([number])
+# Update the saved local MySQL version number
+sub save_mysql_version
+{
+local ($ver) = @_;
+$ver ||= &get_mysql_version();
+if ($ver) {
+	&open_tempfile(VERSION, ">$module_config_directory/version");
+	&print_tempfile(VERSION, $ver,"\n");
+	&close_tempfile(VERSION);
+	}
 }
 
 # date_subs(filename)
