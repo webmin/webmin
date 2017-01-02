@@ -104,7 +104,7 @@
                     <select name="method">
                         <option value="tar">.tar.gz</option>
                         <option value="zip">.zip</option>
-                    </select> 
+                    </select>
                 </form>
             </div>
             <div class="modal-footer">
@@ -163,6 +163,56 @@
     </div>
 </div>
 
+<div id="chattrDialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="warning">$text{'chattr_selected'}</h4>
+            </div>
+            <div class="modal-body">
+                <form id="chattrForm">
+                    <div class="form-group">
+                        <label>$text{'attr_label'}</label>
+                        <input name="label" type="text" class="form-control">
+                        <label>$text{'dialog_recursive'}</label>
+                        <input id="chattr-recursive" type="checkbox" name="recursive" class="form-control">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="chattrSelected()">$text{'dialog_change'}</button>
+                <button type="button" class="btn bnt-default" data-dismiss="modal">$text{'dialog_cancel'}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="chconDialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="warning">$text{'chcon_selected'}</h4>
+            </div>
+            <div class="modal-body">
+                <form id="chconForm">
+                    <div class="form-group">
+                        <label>$text{'context_label'}</label>
+                        <input name="label" type="text" class="form-control">
+                        <label>$text{'dialog_recursive'}</label>
+                        <input id="chcon-recursive" type="checkbox" name="recursive" class="form-control">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="chconSelected()">$text{'dialog_change'}</button>
+                <button type="button" class="btn bnt-default" data-dismiss="modal">$text{'dialog_cancel'}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="chmodDialog" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -190,7 +240,7 @@
                             <td><input type="checkbox" name="group4" value="4" onclick="calc_chmod()"></td>
                             <td><input type="checkbox" name="other4" value="4" onclick="calc_chmod()"></td>
                         </tr>
-                        <tr>		
+                        <tr>
                             <td>$text{'chmod_write'}</td>
                             <td><input type="checkbox" name="owner2" value="2" onclick="calc_chmod()"></td>
                             <td><input type="checkbox" name="group2" value="2" onclick="calc_chmod()"></td>
@@ -318,3 +368,4 @@
         </div>
     </div>
 </div>
+
