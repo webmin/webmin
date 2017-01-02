@@ -53,9 +53,7 @@ elsif (!$mysql_version) {
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
-open(VERSION, ">$module_config_directory/version");
-print VERSION $mysql_version,"\n";
-close(VERSION);
+&save_mysql_version($mysql_version);
 
 # Check if MYSQL_PWD works
 ($r, $rout) = &is_mysql_running();
