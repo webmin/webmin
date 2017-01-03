@@ -52,9 +52,9 @@ $email ||= "root\@$doms[0]";
 
 # Create a challenges directory under the web root
 my $challenge = "$webroot/.well-known/acme-challenge";
+my @st = stat($webroot);
+my $user = getpwuid($st[4]);
 if (!-d $challenge) {
-	my @st = stat($webroot);
-	my $user = getpwuid($st[4]);
 	my $cmd = "mkdir -p -m 755 ".quotemeta($challenge);
 	if ($user && $user ne "root") {
 		$cmd = &command_as_user($user, 0, $cmd);
@@ -63,6 +63,17 @@ if (!-d $challenge) {
 	if ($?) {
 		return (0, "mkdir failed : $out");
 		}
+	}
+
+# Create a .htaccess file to ensure the directory is accessible 
+my $htaccess = "$challenge/.htaccess";
+if (!-r $htaccess) {
+	&open_tempfile(HT, ">$htaccess");
+	&print_tempfile(HT, "AuthType None\n");
+	&print_tempfile(HT, "Require all granted\n");
+	&print_tempfile(HT, "Satisfy any\n");
+	&close_tempfile(HT);
+	&set_ownership_permissions($user, undef, 0755, $htaccess);
 	}
 
 if ($letsencrypt_cmd && -d "/etc/letsencrypt/accounts") {
