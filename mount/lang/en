@@ -390,6 +390,8 @@ linux_iocharset=IO character set
 linux_ecodepage=Missing or invalid code page
 linux_eiocharset=Missing or invalid IO character set
 linux_nounix=Disable CIFS Unix extensions?
+linux_cvers=CIFS version
+linux_ecvers=CIFS version must be a number
 
 log_mount=Mounted $3
 log_mount_l=Mounted $2 $1 on $3
