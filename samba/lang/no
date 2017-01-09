@@ -438,6 +438,7 @@ savefmisc_fail=Kunne ikke lagre forskjellige innstillinger
 savefmisc_number='$1' er ikke et gyldig antall tilkoblinger
 savefperm_fail=Kunne ikke lagre filtillatelser
 savefperm_mode='$1' er ikke en gyldig Unix filmodus
+savefshare_emkdir=Kunne ikke opprette katalog : $1
 savefshare_exist=En ressurs med navn '$1' finnes allerede
 savefshare_fail=Kunne ikke lagre ressurs
 savefshare_global=Navnet 'global' kan ikke brukes som navn p&#229; en ressurs

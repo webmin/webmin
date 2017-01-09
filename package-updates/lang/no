@@ -16,6 +16,7 @@ index_email=Send oppdateringsrapport per e-post til
 index_err=Kunne ikke hente pakkeliste
 index_header=Innstillinger for tidsplanlagt sjekking
 index_install=Installer valgte pakker
+index_manynew=Det er $1 pakker tilgjengelige for installasjon. Bruk s&#248;keboksen ti l&#229; finne de du &#248;nsker &#229; installere.
 index_mode=Tilstander som skal vises:
 index_mode_current=Installert
 index_mode_new=Kun nye
