@@ -3132,13 +3132,16 @@ return $alg eq 'RSAMD5' || $alg eq 'RSASHA1' ||
        $alg eq 'DSA' ? ( 512, 1024, 64 ) :
        $alg eq 'HMAC-MD5' ? ( 1, 512 ) :
        $alg eq 'NSEC3RSASHA1' ? ( 512, 4096 ) :
-       $alg eq 'NSEC3DSA' ? ( 512, 1024, 64 ) : ( );
+       $alg eq 'NSEC3DSA' ? ( 512, 1024, 64 ) :
+       $alg eq 'ECDSAP256SHA256' ? ( 128, 512 ) :
+       $alg eq 'ECDSAP384SHA384' ? ( 128, 512 ) :
+       ( );
 }
 
 sub list_dnssec_algorithms
 {
 return ("RSASHA1", "RSASHA256", "RSAMD5", "DSA", "DH", "HMAC-MD5",
-	"NSEC3RSASHA1", "NSEC3DSA");
+	"NSEC3RSASHA1", "NSEC3DSA", "ECDSAP256SHA256", "ECDSAP384SHA384");
 }
 
 # get_keys_dir(&zone|&zone-name)
