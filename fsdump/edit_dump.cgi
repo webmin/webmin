@@ -45,7 +45,13 @@ else {
 	$dump = &get_dump($in{'id'});
 	$access{'edit'} && &can_edit_dir($dump) ||
 		&error($text{'dump_ecannot2'});
-	&ui_print_header(undef, $text{'edit_title2'}, "", "create");
+	if ($in{'clone'}) {
+		&ui_print_header(undef, $text{'edit_title3'}, "", "create");
+		delete($in{'id'});
+		}
+	else {
+		&ui_print_header(undef, $text{'edit_title2'}, "", "create");
+		}
 	}
 
 @tds = ( "width=30%" );
@@ -162,6 +168,7 @@ if ($in{'id'}) {
 	print &ui_form_end([ [ "save", $text{'save'} ],
 			     [ "savenow", $text{'edit_savenow'} ],
 			     [ "restore", $text{'edit_restore'} ],
+			     [ "clone", $text{'edit_clone'} ],
 			     [ "delete", $text{'delete'} ] ]);
 	}
 else {

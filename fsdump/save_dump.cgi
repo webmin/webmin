@@ -40,6 +40,10 @@ elsif ($in{'restore'}) {
 	# Redirect to restore form
 	&redirect("restore_form.cgi?fs=$dump->{'fs'}&id=$in{'id'}");
 	}
+elsif ($in{'clone'}) {
+	# Redirect to create form, but in clone mode
+	&redirect("edit_dump.cgi?id=$in{'id'}&clone=1");
+	}
 else {
 	# Validate and store inputs
 	if (&multiple_directory_support($in{'fs'})) {

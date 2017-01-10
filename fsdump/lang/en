@@ -115,6 +115,7 @@ edit_edir=Missing backup directory
 edit_efs=Filesystems of type $1 cannot be backed up by this module
 edit_title=Add New Backup
 edit_title2=Edit Backup
+edit_title3=Clone Backup
 edit_header=$1 filesystem backup details
 edit_header2=Backup schedule
 edit_header3=Backup options
@@ -132,6 +133,7 @@ edit_to=$1 to $2
 edit_tolevel=$1 to $2 (level $3)
 edit_special=Backup schedule
 edit_when=When to backup
+edit_clone=Clone
 
 save_err=Failed to save backup
 save_edir=Missing or invalid backup directory
