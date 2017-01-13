@@ -29,7 +29,7 @@ foreach $p (@parts) {
 		$anyfree++;
 		}
 	}
-if ($usedpri != 4) {
+if ($usedpri != 4 || $disk->{'table'} ne 'msdos') {
 	push(@edlinks, "<a href=\"edit_part.cgi?disk=$d->{'index'}&new=1\">".
 		       $text{'index_addpri'}."</a>");
 	}
