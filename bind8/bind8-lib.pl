@@ -3312,6 +3312,8 @@ $newzonekey || return "Could not find new DNSSEC zone key";
 &modify_record($fn, $zonerec, $dom.".", undef, "IN", "DNSKEY",
 	       join(" ", @{$newzonekey->{'values'}}));
 &bump_soa_record($fn, \@recs);
+&set_ownership($newzonekey->{'privatefile'});
+&set_ownership($newzonekey->{'publicfile'});
 
 # Re-sign everything
 my $err = &sign_dnssec_zone($z);
