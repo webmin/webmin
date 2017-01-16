@@ -547,7 +547,7 @@ return 1;
 sub clear_repository_cache
 {
 if ($software::update_system eq "yum") {
-	&execute_command("yum clean all");
+	&execute_command("$software::yum_command clean all");
 	}
 elsif ($software::update_system eq "apt") {
 	&execute_command("apt-get update");
@@ -582,7 +582,7 @@ my ($pkg) = @_;
 if ($pkg->{'system'} eq 'yum') {
 	# See if yum supports changelog
 	if (!defined($supports_yum_changelog)) {
-		my $out = &backquote_command("yum -h 2>&1 </dev/null");
+		my $out = &backquote_command("$software::yum_command -h 2>&1 </dev/null");
 		$supports_yum_changelog = $out =~ /changelog/ ? 1 : 0;
 		}
 	return undef if (!$supports_yum_changelog);
@@ -594,8 +594,9 @@ if ($pkg->{'system'} eq 'yum') {
 	if (!$cl) {
 		# Run it for this package and version
 		my $started = 0;
-		&open_execute_command(YUMCL, "yum changelog all ".
-					     quotemeta($pkg->{'name'}), 1, 1);
+		&open_execute_command(YUMCL,
+			"$software::yum_command changelog all ".
+		        quotemeta($pkg->{'name'}), 1, 1);
 		while(<YUMCL>) {
 			s/\r|\n//g;
 			if (/^\Q$pkg->{'name'}-$pkg->{'version'}\E/) {
