@@ -2943,8 +2943,10 @@ foreach $i (@_) {
 	else {
 		# Lookup IPv6 address
 		local ($inaddr, $addr);
-		(undef, undef, undef, $inaddr) =
-		    getaddrinfo($i, undef, AF_INET6(), SOCK_STREAM);
+		eval {
+			(undef, undef, undef, $inaddr) =
+			    getaddrinfo($i, undef, AF_INET6(), SOCK_STREAM);
+			};
 		if ($inaddr) {
 			push(@rv, undef);
 			}
