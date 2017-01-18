@@ -460,7 +460,7 @@ return "VmWare" if ($name =~ /^vmnet/);
 return "Wireless" if ($name =~ /^wlan/);
 return "Bonded" if ($name =~ /^bond/);
 return "OpenVZ" if ($name =~ /^venet/);
-return "Bridge" if ($name =~ /^br/);
+return "Bridge" if ($name =~ /^(br|xenbr|virbr)/);
 return $text{'ifcs_unknown'};
 }
 
