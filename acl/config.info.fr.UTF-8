@@ -1,0 +1,5 @@
+order=Trier les utilisateurs et les groupes par,1,0-Ordre dans le fichier,1-Nom
+line1=Options configurables,11
+ssleay=Chemin d'acc&#232;s au programme openssl ou ssleay,3,Automatique
+line2=Configuration du syst&#232;me,11
+display=Mode d'affichage des utilisateurs et des groupes,1,1-Noms seulement,0-Noms et modules
