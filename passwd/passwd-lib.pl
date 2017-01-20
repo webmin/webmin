@@ -46,10 +46,10 @@ elsif ($access{'mode'} == 5) {
 	return 0 if (&indexof($_[0]->[0],
 			      split(/\s+/, $access{'notusers'})) >= 0);
 	local $g = getgrgid($_[0]->[3]);
-	return 1 if (&indexof($g, split(/\s+/, $access{'users'})) >= 0);
+	return 1 if (&indexof($g, split(/\s+/, $access{'groups'})) >= 0);
 	if ($access{'sec'}) {
 		local $gname;
-		foreach $gname (split(/\s+/, $access{'users'})) {
+		foreach $gname (split(/\s+/, $access{'groups'})) {
 			local @g = getgrnam($gname);
 			return 1 if (&indexof($_[0]->[0],
 					      split(/\s+/, $g[3])) >= 0);

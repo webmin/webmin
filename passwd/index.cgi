@@ -29,7 +29,7 @@ elsif ($access{'mode'} == 3) {
 	}
 elsif ($access{'mode'} == 5) {
 	%notusers = map { $_, 1 } split(/\s+/, $access{'notusers'});
-	foreach $g (split(/\s+/, $access{'users'})) {
+	foreach $g (split(/\s+/, $access{'groups'})) {
 		@g = getgrnam($g);
 		$gcan{$g[2]}++;
 		if ($access{'sec'}) {
