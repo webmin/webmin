@@ -583,7 +583,7 @@ if ($pkg->{'system'} eq 'yum') {
 	# See if yum supports changelog
 	if (!defined($supports_yum_changelog)) {
 		my $out = &backquote_command("$software::yum_command -h 2>&1 </dev/null");
-		$supports_yum_changelog = $out =~ /changelog/ ? 1 : 0;
+		$supports_yum_changelog = $out =~ /changelog|updateinfo/ ? 1 : 0;
 		}
 	return undef if (!$supports_yum_changelog);
 
@@ -591,26 +591,34 @@ if ($pkg->{'system'} eq 'yum') {
 	my $cfile = $yum_changelog_cache_dir."/".
 		       $pkg->{'name'}."-".$pkg->{'version'};
 	my $cl = &read_file_contents($cfile);
-	if (!$cl) {
-		# Run it for this package and version
+	if (!$cl && $software::yum_command =~ /yum/) {
+		# Run yum changelog for this package and version
 		my $started = 0;
 		&open_execute_command(YUMCL,
 			"$software::yum_command changelog all ".
 		        quotemeta($pkg->{'name'}), 1, 1);
 		while(<YUMCL>) {
 			s/\r|\n//g;
-			if (/^\Q$pkg->{'name'}-$pkg->{'version'}\E/) {
+			if (/^\s*Description\s*:\s*(.*)/) {
 				$started = 1;
+				$cl .= $1."\n";
 				}
-			elsif (/^==========/ || /^changelog stats/) {
+			elsif ($started && /^\s*:\s*(.*)/) {
+				$cl .= $1."\n";
+				}
+			else {
 				$started = 0;
-				}
-			elsif ($started) {
-				$cl .= $_."\n";
 				}
 			}
 		close(YUMCL);
-
+		}
+	elsif (!$cl && $software::yum_command =~ /dnf/) {
+		# Run dnf updateinfo for this package and version
+		&open_execute_command(YUMCL,
+			"$software::yum_command updateinfo --info ".
+		        quotemeta($pkg->{'name'}), 1, 1);
+		}
+	if ($cl) {
 		# Save the cache
 		if (!-d $yum_changelog_cache_dir) {
 			&make_dir($yum_changelog_cache_dir, 0700);
