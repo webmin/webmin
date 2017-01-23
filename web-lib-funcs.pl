@@ -10490,6 +10490,25 @@ foreach my $veto (@vetos) {
 return sort { ($b->{'priority'} || 0) <=> ($a->{'priority'} || 0) } @rv;
 }
 
+=head2 shell_is_bash
+
+Returns 1 if /bin/sh is bash, 0 if not
+
+=cut
+sub shell_is_bash
+{
+my $bash = &has_command("bash");
+if ($bash && &same_file("/bin/sh", $bash)) {
+	# Symlink to /bin/bash
+	return 1;
+	}
+my $out = &backquote_command("/bin/sh --help 2>&1 </dev/null");
+if ($out =~ /GNU\s+bash/) {
+	return 1;
+	}
+return 0;
+}
+
 $done_web_lib_funcs = 1;
 
 1;
