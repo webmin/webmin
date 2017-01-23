@@ -1460,6 +1460,9 @@ if ($user && $user ne "root") {
 	$writer = &command_as_user($user, undef, $writer);
 	}
 local $cmd = "$config{'mysqldump'} $authstr $dropsql $singlesql $quicksql $wheresql $charsetsql $compatiblesql $quotingsql $routinessql ".quotemeta($db)." $tablessql $eventssql $gtidsql 2>&1 | $writer";
+if (&shell_is_bash()) {
+	$cmd = "set -o pipefail ; $cmd";
+	}
 local $out = &backquote_logged("($cmd) 2>&1");
 if ($? || !-s $file) {
 	return $out;
