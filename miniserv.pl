@@ -2940,7 +2940,7 @@ foreach $i (@_) {
 		# A pattern, not a hostname, so don't change
 		push(@rv, $i);
 		}
-	else {
+	elsif ($config{'ipv6'}) {
 		# Lookup IPv6 address
 		local ($inaddr, $addr);
 		eval {
