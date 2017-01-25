@@ -2283,10 +2283,10 @@ sub safe_html
 {
 local $html = $_[0];
 local $bodystuff;
-if ($html =~ s/^[\000-\377]*?<BODY([^>]*)>//i) {
+if ($html =~ s/^([\000-\377]*?)<BODY([^>]*)>/$1/i) {
 	$bodystuff = $1;
 	}
-$html =~ s/<\/BODY>[\000-\377]*$//i;
+$html =~ s/<\/BODY>([\000-\377]*)$/$1/i;
 $html =~ s/<base[^>]*>//i;
 $html = &filter_javascript($html);
 $html = &safe_urls($html);
