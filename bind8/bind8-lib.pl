@@ -1151,15 +1151,15 @@ elsif ($type eq "TLSA") {
 elsif ($type eq "SSHFP") {
 	print &ui_table_row($text{'value_SSHFP1'},
 		&ui_select("value0", $v[0],
-			   [ [ 0, $text{'sshfp_alg0'}." (0)" ],
-			     [ 1, $text{'sshfp_alg1'}." (1)" ],
+			   [ [ 1, $text{'sshfp_alg1'}." (1)" ],
 			     [ 2, $text{'sshfp_alg2'}." (2)" ],
-			     [ 3, $text{'sshfp_alg3'}." (3)" ] ]));
+			     [ 3, $text{'sshfp_alg3'}." (3)" ],
+			     [ 4, $text{'sshfp_alg4'}." (4)" ] ]));
 
 	print &ui_table_row($text{'value_SSHFP2'},
 		&ui_select("value1", $v[1],
-			   [ [ 0, $text{'sshfp_fp0'}." (0)" ],
-			     [ 1, $text{'sshfp_fp1'}." (1)" ] ]));
+			   [ [ 1, $text{'sshfp_fp1'}." (1)" ],
+			     [ 2, $text{'sshfp_fp2'}." (2)" ] ]));
 
 	print &ui_table_row($text{'value_SSHFP3'},
 		&ui_textbox("value2", $v[2], 70));
