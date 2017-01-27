@@ -218,6 +218,23 @@ for(my $i=0; $i<@_; $i++) {
 				elsif ($j == 2) {
 					$v = $text{'tlsa_match'.$v};
 					}
+				else {
+					$v = undef;
+					}
+				$v = $v ? $v." (".$r->{'values'}->[$j].")"
+					: $r->{'values'}->[$j];
+				}
+			elsif ($in{'type'} eq "SSHFP") {
+				# Display SSHFP codes nicely
+				if ($j == 0) {
+					$v = $text{'sshfp_alg'.$v};
+					}
+				elsif ($j == 1) {
+					$v = $text{'sshfp_fp'.$v};
+					}
+				else {
+					$v = undef;
+					}
 				$v = $v ? $v." (".$r->{'values'}->[$j].")"
 					: $r->{'values'}->[$j];
 				}

@@ -1148,6 +1148,23 @@ elsif ($type eq "TLSA") {
 	print &ui_table_row($text{'value_TLSA4'},
 		&ui_textbox("value3", $v[3], 70));
 	}
+elsif ($type eq "SSHFP") {
+	print &ui_table_row($text{'value_SSHFP1'},
+		&ui_select("value0", $v[0],
+			   [ [ 0, $text{'sshfp_alg0'}." (0)" ],
+			     [ 1, $text{'sshfp_alg1'}." (1)" ],
+			     [ 2, $text{'sshfp_alg2'}." (2)" ],
+			     [ 3, $text{'sshfp_alg3'}." (3)" ] ]));
+
+	print &ui_table_row($text{'value_SSHFP2'},
+		&ui_select("value1", $v[1],
+			   [ [ 0, $text{'sshfp_fp0'}." (0)" ],
+			     [ 1, $text{'sshfp_fp1'}." (1)" ] ]));
+
+	print &ui_table_row($text{'value_SSHFP3'},
+		&ui_textbox("value2", $v[2], 70));
+
+	}
 elsif ($type eq "LOC") {
 	print &ui_table_row($text{'value_LOC1'},
 		&ui_textbox("value0", join(" ", @v), 40), 3);
@@ -2899,7 +2916,7 @@ $slave_error = $_[0];
 
 sub get_forward_record_types
 {
-return ("A", "NS", "CNAME", "MX", "HINFO", "TXT", "SPF", "DMARC", "WKS", "RP", "PTR", "LOC", "SRV", "KEY", "TLSA", "NSEC3PARAM", $config{'support_aaaa'} ? ( "AAAA" ) : ( ), @extra_forward);
+return ("A", "NS", "CNAME", "MX", "HINFO", "TXT", "SPF", "DMARC", "WKS", "RP", "PTR", "LOC", "SRV", "KEY", "TLSA", "SSHFP", "NSEC3PARAM", $config{'support_aaaa'} ? ( "AAAA" ) : ( ), @extra_forward);
 }
 
 sub get_reverse_record_types

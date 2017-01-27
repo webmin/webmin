@@ -296,6 +296,14 @@ else {
 		    length($in{'value3'}) % 2 == 0 ||
 			&error(&text('edit_etlsa', $in{'value3'}));
 		}
+	elsif ($in{'type'} eq 'SSHFP') {
+		$in{'value0'} =~ /^\d+$/ ||
+			&error(text('edit_ealg', $in{'value0'}));
+		$in{'value1'} =~ /^\d+$/ ||
+			&error(text('edit_efp', $in{'value1'}));
+		$in{'value2'} =~ /^[a-f0-9]+$/ ||
+			&error(&text('edit_esshfp', $in{'value2'}));
+		}
 	elsif ($in{'type'} eq 'KEY') {
 		$in{'value0'} =~ /^(\d+|0x[0-9a-f]+={0,2})$/i ||
 			&error(text('edit_eflags', $in{'value0'}));

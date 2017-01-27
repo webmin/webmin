@@ -148,3 +148,5 @@ Added support for editing DMARC records, which are specially encoded TXT records
 Automatic creation and deletion of reverse records in partial delegation zones now works the same as in full reverse zones.
 ---- Changes since 1.810 ----
 Added support for editing TLSA (SSL Certificate) records.
+---- Changes since 1.830 ----
+Added support for editing SSHFP (SSH Public Key) records.
