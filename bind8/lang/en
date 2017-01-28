@@ -519,12 +519,12 @@ tlsa_match0=Unhashed contents
 tlsa_match1=SHA-256 hashed
 tlsa_match2=SHA-512 hashed
 
-sshfp_alg0=RSA
-sshfp_alg1=DSA
-sshfp_alg2=ECDSA
-sshfp_alg3=Ed25519
-sshfp_fp0=SHA-1
-sshfp_fp1=SHA-256
+sshfp_alg1=RSA
+sshfp_alg2=DSA
+sshfp_alg3=ECDSA
+sshfp_alg4=Ed25519
+sshfp_fp1=SHA-1
+sshfp_fp2=SHA-256
 
 warn=Warn
 fail=Fail
