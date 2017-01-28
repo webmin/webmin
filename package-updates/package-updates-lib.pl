@@ -597,7 +597,26 @@ if ($pkg->{'system'} eq 'yum') {
 		&open_execute_command(YUMCL,
 			"$software::yum_command changelog all ".
 		        quotemeta($pkg->{'name'}), 1, 1);
-		while(<YUMCL>) {
+                while(<YUMCL>) {
+                        s/\r|\n//g;
+                        if (/^\Q$pkg->{'name'}-$pkg->{'version'}\E/) {
+                                $started = 1;
+                                }
+                        elsif (/^==========/ || /^changelog stats/) {
+                                $started = 0;
+                                }
+                        elsif ($started) {
+                                $cl .= $_."\n";
+                                }
+                        }
+                close(YUMCL);
+		}
+	elsif (!$cl && $software::yum_command =~ /dnf/) {
+		# Run dnf updateinfo for this package and version
+		&open_execute_command(DNFUI,
+			"$software::yum_command updateinfo --info ".
+		        quotemeta($pkg->{'name'}), 1, 1);
+		while(<DNFUI>) {
 			s/\r|\n//g;
 			if (/^\s*Description\s*:\s*(.*)/) {
 				$started = 1;
@@ -610,13 +629,7 @@ if ($pkg->{'system'} eq 'yum') {
 				$started = 0;
 				}
 			}
-		close(YUMCL);
-		}
-	elsif (!$cl && $software::yum_command =~ /dnf/) {
-		# Run dnf updateinfo for this package and version
-		&open_execute_command(YUMCL,
-			"$software::yum_command updateinfo --info ".
-		        quotemeta($pkg->{'name'}), 1, 1);
+		close(DNFUI);
 		}
 	if ($cl) {
 		# Save the cache
