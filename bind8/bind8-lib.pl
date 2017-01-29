@@ -2441,13 +2441,15 @@ unlink($zone_names_cache);
 # Returns a zone cache object, looked up by name or index
 sub get_zone_name
 {
+my ($key, $viewidx) = @_;
+$viewidx ||= '';
 my @zones = &list_zone_names();
-my $field = $_[0] =~ /^\d+$/ ? "index" : "name";
+my $field = $key =~ /^\d+$/ ? "index" : "name";
 foreach my $z (@zones) {
-	if ($z->{$field} eq $_[0] &&
-	    ($_[1] eq 'any' ||
-	     $_[1] eq '' && !defined($z->{'viewindex'}) ||
-	     $_[1] ne '' && $z->{'viewindex'} == $_[1])) {
+	if ($z->{$field} eq $key &&
+	    ($viewidx eq 'any' ||
+	     $viewidx eq '' && !defined($z->{'viewindex'}) ||
+	     $viewidx ne '' && $z->{'viewindex'} == $_[1])) {
 		return $z;
 		}
 	}
