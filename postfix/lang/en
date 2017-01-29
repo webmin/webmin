@@ -909,7 +909,7 @@ chooser_elbind_dn=Missing login for LDAP server for map $1
 chooser_elbind_pw=Missing password for LDAP server for map $1
 
 mysql_ecfile=MySQL configuration file $1 was not found
-mysql_emysql=Failed to load the database driver $1
+mysql_edriver=Failed to load the database driver $1
 mysql_elogin=Failed to login to the database $1 : $2.
 mysql_equery=Failed to query table $1 : $2
 mysql_eadd=SQL insert failed : $1
