@@ -25,7 +25,12 @@ $in{'size_def'} || $in{'size'} =~ /^\d+$/ ||
 	&error($text{'newkey_esize'});
 my $size = $in{'size_def'} ? undef : $in{'size'};
 my $webroot;
-if ($in{'webroot_mode'} == 2) {
+my $mode = "web";
+if ($in{'webroot_mode'} == 3) {
+	# Validation via DNS
+	$mode = "dns";
+	}
+elsif ($in{'webroot_mode'} == 2) {
 	# Some directory
 	$in{'webroot'} =~ /^\/\S+/ && -d $in{'webroot'} ||
 		&error($text{'letsencrypt_ewebroot'});
@@ -61,7 +66,7 @@ else {
 
 if ($in{'save'}) {
 	# Just update renewal
-	&save_renewal_only(\@doms, $webroot);
+	&save_renewal_only(\@doms, $webroot, $mode);
 	&redirect("edit_ssl.cgi");
 	}
 else {
@@ -71,7 +76,7 @@ else {
 	print &text('letsencrypt_doing',
 		    "<tt>".&html_escape(join(", ", @doms))."</tt>",
 		    "<tt>".&html_escape($webroot)."</tt>"),"<p>\n";
-	my ($ok, $cert, $key, $chain) = &request_letsencrypt_cert(\@doms, $webroot, undef, $size);
+	my ($ok, $cert, $key, $chain) = &request_letsencrypt_cert(\@doms, $webroot, undef, $size, $mode, $in{'staging'});
 	if (!$ok) {
 		print &text('letsencrypt_failed', $cert),"<p>\n";
 		}
@@ -110,7 +115,7 @@ else {
 			&put_miniserv_config(\%miniserv);
 			&unlock_file($ENV{'MINISERV_CONFIG'});
 
-			&save_renewal_only(\@doms, $webroot);
+			&save_renewal_only(\@doms, $webroot, $mode);
 
 			&webmin_log("letsencrypt");
 			&restart_miniserv(1);
@@ -131,13 +136,14 @@ else {
 	&ui_print_footer("", $text{'index_return'});
 	}
 
-# save_renewal_only(&doms, webroot)
+# save_renewal_only(&doms, webroot, mode)
 # Save for future renewals
 sub save_renewal_only
 {
-my ($doms, $webroot) = @_;
+my ($doms, $webroot, $mode) = @_;
 $config{'letsencrypt_doms'} = join(" ", @$doms);
 $config{'letsencrypt_webroot'} = $webroot;
+$config{'letsencrypt_mode'} = $mode;
 $config{'letsencrypt_size'} = $size;
 &save_module_config();
 if (&foreign_check("webmincron")) {

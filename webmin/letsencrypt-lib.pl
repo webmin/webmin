@@ -40,40 +40,64 @@ if ($?) {
 return undef;
 }
 
-# request_letsencrypt_cert(domain|&domains, domain-webroot, [email], [keysize])
+# request_letsencrypt_cert(domain|&domains, webroot, [email], [keysize],
+# 			   [request-mode], [use-staging])
 # Attempt to request a cert using a generated key with the Let's Encrypt client
 # command, and write it to the given path. Returns a status flag, and either
 # an error message or the paths to cert, key and chain files.
 sub request_letsencrypt_cert
 {
-my ($dom, $webroot, $email, $size) = @_;
+my ($dom, $webroot, $email, $size, $mode, $staging) = @_;
 my @doms = ref($dom) ? @$dom : ($dom);
 $email ||= "root\@$doms[0]";
+$mode ||= "web";
 
-# Create a challenges directory under the web root
-my $challenge = "$webroot/.well-known/acme-challenge";
-my @st = stat($webroot);
-my $user = getpwuid($st[4]);
-if (!-d $challenge) {
-	my $cmd = "mkdir -p -m 755 ".quotemeta($challenge);
-	if ($user && $user ne "root") {
-		$cmd = &command_as_user($user, 0, $cmd);
+my $challenge;
+if ($mode eq "web") {
+	# Create a challenges directory under the web root
+	$challenge = "$webroot/.well-known/acme-challenge";
+	my @st = stat($webroot);
+	my $user = getpwuid($st[4]);
+	if (!-d $challenge) {
+		my $cmd = "mkdir -p -m 755 ".quotemeta($challenge);
+		if ($user && $user ne "root") {
+			$cmd = &command_as_user($user, 0, $cmd);
+			}
+		my $out = &backquote_logged("$cmd 2>&1");
+		if ($?) {
+			return (0, "mkdir failed : $out");
+			}
 		}
-	my $out = &backquote_logged("$cmd 2>&1");
-	if ($?) {
-		return (0, "mkdir failed : $out");
+
+	# Create a .htaccess file to ensure the directory is accessible 
+	my $htaccess = "$challenge/.htaccess";
+	if (!-r $htaccess) {
+		&open_tempfile(HT, ">$htaccess");
+		&print_tempfile(HT, "AuthType None\n");
+		&print_tempfile(HT, "Require all granted\n");
+		&print_tempfile(HT, "Satisfy any\n");
+		&close_tempfile(HT);
+		&set_ownership_permissions($user, undef, 0755, $htaccess);
+		}
+	}
+elsif ($mode eq "dns") {
+	# Make sure all the DNS zones exist
+	&foreign_require("bind8");
+	foreach my $d (@doms) {
+		my $z = &bind8::get_zone_name($d, "any");
+		$z || return (0, "DNS zone $d does not exist on this system");
 		}
 	}
 
-# Create a .htaccess file to ensure the directory is accessible 
-my $htaccess = "$challenge/.htaccess";
-if (!-r $htaccess) {
-	&open_tempfile(HT, ">$htaccess");
-	&print_tempfile(HT, "AuthType None\n");
-	&print_tempfile(HT, "Require all granted\n");
-	&print_tempfile(HT, "Satisfy any\n");
-	&close_tempfile(HT);
-	&set_ownership_permissions($user, undef, 0755, $htaccess);
+# Create DNS hook wrapper scripts
+my $dns_hook = "$module_config_directory/letsencrypt-dns.pl";
+my $cleanup_hook = "$module_config_directory/letsencrypt-cleanup.pl";
+if ($mode eq "dns") {
+	&foreign_require("cron");
+	&cron::create_wrapper($dns_hook, $module_name,
+			      "letsencrypt-dns.pl");
+	&cron::create_wrapper($cleanup_hook, $module_name,
+			      "letsencrypt-cleanup.pl");
 	}
 
 if ($letsencrypt_cmd && -d "/etc/letsencrypt/accounts") {
@@ -86,7 +110,38 @@ if ($letsencrypt_cmd && -d "/etc/letsencrypt/accounts") {
 	my $dir = $letsencrypt_cmd;
 	$dir =~ s/\/[^\/]+$//;
 	$size ||= 2048;
-	my $out = &backquote_command("cd $dir && (echo A | $letsencrypt_cmd certonly -a webroot ".join(" ", map { "-d ".quotemeta($_) } @doms)." --webroot-path ".quotemeta($webroot)." --duplicate --config $temp --rsa-key-size $size 2>&1)");
+	my $out;
+	if ($mode eq "web") {
+		# Webserver based validation
+		$out = &backquote_command(
+			"cd $dir && (echo A | $letsencrypt_cmd certonly".
+			" -a webroot ".
+			join(" ", map { "-d ".quotemeta($_) } @doms).
+			" --webroot-path ".quotemeta($webroot).
+			" --duplicate".
+			" --config $temp".
+			" --rsa-key-size $size".
+			($staging ? " --test-cert" : "").
+			"2>&1)");
+		}
+	elsif ($mode eq "dns") {
+		# DNS based validation, via hook script
+		$out = &backquote_command(
+			"cd $dir && (echo A | $letsencrypt_cmd certonly".
+			" --manual".
+			join(" ", map { "-d ".quotemeta($_) } @doms).
+			" --preferred-challenges=dns".
+			" --manual-auth-hook $dns_hook".
+			" --manual-cleanup-hook $cleanup_hook".
+			" --duplicate".
+			" --config $temp".
+			" --rsa-key-size $size".
+			($staging ? " --test-cert" : "").
+			"2>&1)");
+		}
+	else {
+		return (0, "Bad mode $mode");
+		}
 	if ($?) {
 		return (0, "<pre>".&html_escape($out || "No output from $letsencrypt_cmd")."</pre>");
 		}
@@ -152,12 +207,15 @@ else {
 	my $python = &get_letsencrypt_python_cmd();
 
 	# Request the cert and key
+	# XXX dns mode?
 	my $cert = &transname();
 	my $out = &backquote_logged(
 		"$python $module_root_directory/acme_tiny.py ".
 		"--account-key ".quotemeta($account_key)." ".
 		"--csr ".quotemeta($csr)." ".
 		"--acme-dir ".quotemeta($challenge)." ".
+		($staging ? "--ca https://acme-staging.api.letsencrypt.org "
+			  : "").
 		"2>&1 >".quotemeta($cert));
 	if ($?) {
 		return (0, &text('letsencrypt_etiny',

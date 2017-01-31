@@ -297,6 +297,7 @@ else {
 		}
 	push(@opts, [ 2, $text{'ssl_webroot2'},
 		      &ui_textbox("webroot", $webroot, 40) ]);
+	push(@opts, [ 3, $text{'ssl_webroot3'} ]);
 	print &ui_table_row($text{'ssl_webroot'},
 		&ui_radio_table("webroot_mode", $mode, \@opts));
 
@@ -308,6 +309,12 @@ else {
 	print &ui_table_row($text{'ssl_size'},
 		&ui_opt_textbox("size", undef, 6, $text{'default'}).
 				" ".$text{'ssl_bits'});
+
+	# Staging mode
+	print &ui_table_row($text{'ssl_staging'},
+		&ui_radio("staging", 0,
+			  [ [ 0, $text{'ssl_staging0'} ],
+			    [ 1, $text{'ssl_staging1'} ] ]));
 
 	# Renewal option
 	my $job = &find_letsencrypt_cron_job();

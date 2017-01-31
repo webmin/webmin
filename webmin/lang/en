@@ -410,11 +410,15 @@ ssl_webroot=Website root directory for validation file
 ssl_webroot0=Apache virtual host matching hostname
 ssl_webroot1=A different Apache virtual host
 ssl_webroot2=Other directory
+ssl_webroot3=Use DNS domains for validation
 ssl_letsok=Request Certificate
 ssl_letsonly=Just Update Renewal
 ssl_usewebmin=Copy new key and certificate to Webmin?
 ssl_letsrenew=Months between automatic renewal
 ssl_letsnotrenew=Only renew manually
+ssl_staging=Let's Encrypt server
+ssl_staging0=Real
+ssl_staging1=Staging (test only)
 
 newkey_err=Failed to create SSL key
 newkey_ecn=Missing or invalid server name
@@ -701,6 +705,8 @@ log_run_webmincron=Ran $1 scheduled functions
 log_save_webmincron=Updated scheduled function in module $1
 log_onedelete_webmincron=Deleted scheduled function in module $1
 log_letsencrypt=Requested new SSL certificate from Let's Encrypt
+log_letsencryptdns=Created Let's Encrypt DNS record for $1
+log_letsencryptcleanup=Removed Let's Encrypt DNS record for $1
 
 themes_title=Webmin Themes
 themes_desc=Themes control the appearance of the Webmin user interface, including icons, colours, backgrounds and the layout of pages. The selection box below can be used to choose one of the themes installed on your system.
