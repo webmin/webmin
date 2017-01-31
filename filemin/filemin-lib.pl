@@ -179,7 +179,7 @@ sub print_interface {
         print "</ol>";
 
         # And toolbar
-        if($userconfig{'menu_style'}) {
+        if($userconfig{'menu_style'} || $current_theme eq 'authentic-theme') {
             print_template("unauthenticated/templates/menu.html");
         } else {
             print_template("unauthenticated/templates/quicks.html");
