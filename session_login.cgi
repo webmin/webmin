@@ -39,8 +39,7 @@ if ($gconfig{'showhost'}) {
 &ui_print_unbuffered_header(
 	undef, undef, undef, undef, undef, 1, 1, undef,
 	"<title>$title</title>",
-	"onLoad='document.forms[0].pass.value = \"\"; ".
-	"document.forms[0].user.focus()'");
+	"onLoad='document.forms[0].user.focus()'");
 
 if ($tconfig{'inframe'}) {
 	# Framed themes lose original page
