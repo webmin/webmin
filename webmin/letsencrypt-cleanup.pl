@@ -16,6 +16,11 @@ $dname || die "Missing CERTBOT_DOMAIN environment variable";
 
 # Find the DNS domain and records
 my $zone = &bind8::get_zone_name($dname, "any");
+if (!$zone) {
+	# Maybe in the parent?
+	$dname =~ s/^[^\.]+\.//;
+	$zone = &bind8::get_zone_name($dname, "any");
+	}
 $zone || die "No zone named $dname found";
 &lock_file(&bind8::make_chroot(&bind8::absolute_path($zone->{'file'})));
 my @recs = &bind8::read_zone_file($zone->{'file'}, $dname);

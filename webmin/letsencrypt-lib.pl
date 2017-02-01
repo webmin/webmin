@@ -5,7 +5,9 @@ if ($config{'letsencrypt_cmd'}) {
 	}
 else {
 	$letsencrypt_cmd = &has_command("letsencrypt-auto") ||
-			   &has_command("letsencrypt");
+			   &has_command("letsencrypt") ||
+			   &has_command("certbot-auto") ||
+			   &has_command("certbot");
 	}
 
 $account_key = "$module_config_directory/letsencrypt.pem";
@@ -84,7 +86,10 @@ elsif ($mode eq "dns") {
 	# Make sure all the DNS zones exist
 	&foreign_require("bind8");
 	foreach my $d (@doms) {
-		my $z = &bind8::get_zone_name($d, "any");
+		my $bd = $d;
+		$bd =~ s/^[^\.]+\.//;
+		my $z = &bind8::get_zone_name($bd, "any") ||
+			&bind8::get_zone_name($d, "any");
 		$z || return (0, "DNS zone $d does not exist on this system");
 		}
 	}
@@ -116,28 +121,30 @@ if ($letsencrypt_cmd && -d "/etc/letsencrypt/accounts") {
 		$out = &backquote_command(
 			"cd $dir && (echo A | $letsencrypt_cmd certonly".
 			" -a webroot ".
-			join(" ", map { "-d ".quotemeta($_) } @doms).
+			join("", map { " -d ".quotemeta($_) } @doms).
 			" --webroot-path ".quotemeta($webroot).
 			" --duplicate".
+			" --manual-public-ip-logging-ok".
 			" --config $temp".
 			" --rsa-key-size $size".
 			($staging ? " --test-cert" : "").
-			"2>&1)");
+			" 2>&1)");
 		}
 	elsif ($mode eq "dns") {
 		# DNS based validation, via hook script
 		$out = &backquote_command(
 			"cd $dir && (echo A | $letsencrypt_cmd certonly".
 			" --manual".
-			join(" ", map { "-d ".quotemeta($_) } @doms).
+			join("", map { " -d ".quotemeta($_) } @doms).
 			" --preferred-challenges=dns".
 			" --manual-auth-hook $dns_hook".
 			" --manual-cleanup-hook $cleanup_hook".
 			" --duplicate".
+			" --manual-public-ip-logging-ok".
 			" --config $temp".
 			" --rsa-key-size $size".
 			($staging ? " --test-cert" : "").
-			"2>&1)");
+			" 2>&1)");
 		}
 	else {
 		return (0, "Bad mode $mode");
