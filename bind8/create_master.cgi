@@ -134,13 +134,19 @@ if ($in{'onslave'}) {
 	my @slaves = &list_slave_servers();
 	if (@slaves) {
 		my $also = { 'name' => 'also-notify',
-			  'type' => 1,
-			  'members' => [ ] };
+			     'type' => 1,
+			     'members' => [ ] };
+		my $allow = { 'name' => 'allow-transfer',
+			      'type' => 1,
+			      'members' => [ ] };
 		foreach my $s (@slaves) {
 			push(@{$also->{'members'}},
                              { 'name' => &to_ipaddress($s->{'host'}) });
+			push(@{$allow->{'members'}},
+                             { 'name' => &to_ipaddress($s->{'host'}) });
 			}
 		push(@{$dir->{'members'}}, $also);
+		push(@{$dir->{'members'}}, $allow);
 		push(@{$dir->{'members'}}, { 'name' => 'notify',
 					     'values' => [ 'yes' ] });
 		}
