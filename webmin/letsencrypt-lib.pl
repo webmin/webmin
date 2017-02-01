@@ -161,12 +161,12 @@ if ($letsencrypt_cmd && -d "/etc/letsencrypt/accounts") {
 	else {
 		&error("Output did not contain a PEM path!");
 		}
-	-r $full || return (0, &text('letsencrypt_efull', $full));
+	-r $full && -s $full || return (0, &text('letsencrypt_efull', $full));
 	$full =~ s/\/[^\/]+$//;
 	$cert = $full."/cert.pem";
-	-r $cert || return (0, &text('letsencrypt_ecert', $cert));
+	-r $cert && -s $cert || return (0, &text('letsencrypt_ecert', $cert));
 	$key = $full."/privkey.pem";
-	-r $key || return (0, &text('letsencrypt_ekey', $key));
+	-r $key && -s $key || return (0, &text('letsencrypt_ekey', $key));
 	$chain = $full."/chain.pem";
 	$chain = undef if (!-r $chain);
 	&set_ownership_permissions(undef, undef, 0600, $cert);
@@ -228,6 +228,7 @@ else {
 		return (0, &text('letsencrypt_etiny',
 				 "<pre>".&html_escape($out))."</pre>");
 		}
+	-r $cert && -s $cert || return (0, &text('letsencrypt_ecert', $cert));
 
 	# Download the latest chained cert files
 	my $chain = &transname();
