@@ -190,10 +190,12 @@ elsif ($norder == 2) {
 	}
 
 # display subnets and shared nets
+my @cansubn;
 foreach $u (@subn) {
 	local $can_view = &can('r', \%access, $u);
 	next if !$can_view && $access{'hide'};
 	local ($l, $t, $i);
+	push(@cansubn, $u);
 	if ($u->{'name'} eq "subnet") {
 		push(@ulinks, $l = $can_view ? 
 			"edit_subnet.cgi?idx=$u->{'index'}".
@@ -249,8 +251,8 @@ if ($access{'r_sub'} || $access{'c_sub'} ||
 				     undef, undef, undef, \@checkboxes);
 			}
 		else {
-			&net_table(\@subn, 0, scalar(@subn), \@links, \@titles,
-				   \@checkboxids);
+			&net_table(\@cansubn, 0, scalar(@cansubn), \@links,
+				   \@titles, \@checkboxids);
 			}
 		}
 	elsif (!@ulinks && !@slinks) {
@@ -321,9 +323,11 @@ elsif ($horder == 4) {
 	}
 
 # display hosts
+my @canhost;
 foreach $h (@host) {
 	local $can_view = &can('r', \%access, $h);
 	next if !$can_view && $access{'hide'};
+	push(@canhost, $h);
 	if ($h->{'name'} eq 'host') {
 		# Add icon for a host
 		push(@hlinks, $l = $can_view ?
@@ -401,8 +405,8 @@ if ($access{'r_hst'} || $access{'c_hst'} ||
 				     undef, undef, undef, \@hgcheckboxes);
 			}
 		else {
-			&host_table(\@host, 0, scalar(@host), \@links, \@titles,
-				    \@hgcheckboxids);
+			&host_table(\@canhost, 0, scalar(@canhost), \@links,
+				    \@titles, \@hgcheckboxids);
 			}
 		}
 	elsif (!@hlinks && !@glinks) {
