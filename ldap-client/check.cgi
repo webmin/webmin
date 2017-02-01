@@ -83,7 +83,8 @@ else {
 print $text{'check_nss'},"<br>\n";
 $nss = &get_nsswitch_config();
 ($passwd) = grep { $_->{'name'} eq 'passwd' } @$nss;
-($ldapsrc) = grep { $_->{'src'} eq 'ldap' } @{$passwd->{'srcs'}};
+($ldapsrc) = grep { $_->{'src'} eq 'ldap' ||
+		    $_->{'src'} eq 'sss' } @{$passwd->{'srcs'}};
 if (!$ldapsrc) {
 	&print_problem($text{'check_enss'});
 	goto END;
