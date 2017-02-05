@@ -224,7 +224,9 @@ else {
 		"$python $module_root_directory/acme_tiny.py ".
 		"--account-key ".quotemeta($account_key)." ".
 		"--csr ".quotemeta($csr)." ".
-		"--acme-dir ".quotemeta($challenge)." ".
+		($mode eq "web" ? "--acme-dir ".quotemeta($challenge)." "
+				: "--dns-hook $dns_hook ".
+				  "--cleanup-hook $cleanup_hook ").
 		($staging ? "--ca https://acme-staging.api.letsencrypt.org "
 			  : "").
 		"2>&1 >".quotemeta($cert));
