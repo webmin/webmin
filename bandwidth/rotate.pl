@@ -55,9 +55,11 @@ foreach $hour (@hours) {
 	&save_hour($hour);
 	}
 
-# Truncate the file and notify syslog
-open(LOG, ">$bandwidth_log");
-close(LOG);
+# Truncate the file (if it exists) and notify syslog
+if (-r $bandwidth_log) {
+	open(LOG, ">$bandwidth_log");
+	close(LOG);
+	}
 &foreign_call($syslog_module, "signal_syslog");
 
 # Remove PID file
