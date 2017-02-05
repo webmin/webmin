@@ -72,14 +72,18 @@ if ($mode eq "web") {
 		}
 
 	# Create a .htaccess file to ensure the directory is accessible 
-	my $htaccess = "$challenge/.htaccess";
-	if (!-r $htaccess) {
-		&open_tempfile(HT, ">$htaccess");
-		&print_tempfile(HT, "AuthType None\n");
-		&print_tempfile(HT, "Require all granted\n");
-		&print_tempfile(HT, "Satisfy any\n");
-		&close_tempfile(HT);
-		&set_ownership_permissions($user, undef, 0755, $htaccess);
+	if (&foreign_installed("apache")) {
+		&foreign_require("apache");
+		my $htaccess = "$challenge/.htaccess";
+		if (!-r $htaccess && $apache::httpd_modules{'core'} >= 2.2) {
+			&open_tempfile(HT, ">$htaccess");
+			&print_tempfile(HT, "AuthType None\n");
+			&print_tempfile(HT, "Require all granted\n");
+			&print_tempfile(HT, "Satisfy any\n");
+			&close_tempfile(HT);
+			&set_ownership_permissions(
+				$user, undef, 0755, $htaccess);
+			}
 		}
 	}
 elsif ($mode eq "dns") {
