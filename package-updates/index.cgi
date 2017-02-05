@@ -115,9 +115,14 @@ foreach $p (sort { $a->{'name'} cmp $b->{'name'} } (@current, @avail)) {
 		  &urlize($in{'search'}), $p->{'name'}),
 		$p->{'desc'},
 		$msg,
-		$source ? ( $source ) : $anysource ? ( "") : ( ),
+		$source ? ( $source ) : ( ),
 		]);
 	$anysource++ if ($source);
+	}
+if ($anysource) {
+	foreach my $r (@rows) {
+		$r->[4] ||= "";
+		}
 	}
 
 if ($in{'mode'} eq 'new' && !$in{'search'}) {
