@@ -156,7 +156,7 @@ def get_crt(account_key, csr, acme_dir, dns_hook, cleanup_hook, log=LOGGER, CA=D
         if code != 202:
             raise ValueError("Error triggering challenge: {0} {1}".format(code, result))
 
-        # wait for challenge to be verified (for up to 60 seconds)
+        # wait for challenge to be verified (for up to 120 seconds)
 	tries = 0
         while True:
             try:
@@ -167,7 +167,7 @@ def get_crt(account_key, csr, acme_dir, dns_hook, cleanup_hook, log=LOGGER, CA=D
                     e.code, json.loads(e.read().decode('utf8'))))
             if challenge_status['status'] == "pending":
 		tries = tries + 1
-		if tries > 30:
+		if tries > 60:
 		    raise ValueError("Gave up waiting for valiation")
                 time.sleep(2)
             elif challenge_status['status'] == "valid":
