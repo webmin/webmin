@@ -36,7 +36,7 @@ if ($r) {
 # Create the needed DNS record
 &bind8::create_record($zone->{'file'},
 		      "_acme-challenge.".$dname.".",
-		      60,
+		      5,
 		      "IN",
 		      "TXT",
 		      $val);
