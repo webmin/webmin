@@ -78,6 +78,7 @@ save_etimeout=Hi falta el temps màxim d'espera o bé és invàlid
 save_eusermin=Les ordres que s'executen en altres servidors no es poden executar des d'Usermin
 save_eformat=El tipus MIME de sortida és invàlid
 save_eopts=Hi falta el fitxer d'opcions per al paràmetre $1
+save_eopts2=El fitxer d'opcions o el valor per defecte del paràmetre $1 no pot contenir:
 
 run_err=No s'ha pogut executar l'ordre
 run_ecannot=No tens permís per executar aquesta ordre
