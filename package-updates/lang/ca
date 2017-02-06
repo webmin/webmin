@@ -41,6 +41,7 @@ index_none_updates=No s'ha trobat cap paquet disponible per a actualitzar.
 index_none_both=No s'ha trobat cap paquet nou per a instal·lar ni cap paquet disponible per a actualitzar.
 index_none_new=No s'ha trobat cap paquet nou per a instal·lar.
 index_count=S'han trobat $1 paquets coincidents...
+index_manynew=Hi ha $1 paquets disponibles per a instal·lar. Fes servir la caixa de cerca per trobar quins en vols instal·lar.
 index_search=Busca paquets que coincideixin amb:
 index_searchok=Busca
 index_clear=Mostra'ls Tots
