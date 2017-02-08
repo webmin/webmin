@@ -81,7 +81,7 @@ if (&indexof('REJECT', @jumps) >= 0 && &can_jump("REJECT")) {
 	if ($rule->{'j'}->[1] eq 'REJECT') {
 		$rwith = $rule->{'reject-with'}->[1];
 		}
-	local @rtypes = ( "icmp6-no-route", "icmp6-adm-pro-hibited",
+	local @rtypes = ( "icmp6-no-route", "icmp6-adm-prohibited",
 			  "icmp6-addr-unreachable", "icmp6-port-unreachable",
 			  "echo-reply", "tcp-reset" );
 	print &ui_table_row($text{'edit_rwith'},
