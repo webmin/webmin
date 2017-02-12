@@ -16,6 +16,7 @@ print &ui_table_start($text{'sql_header'}, undef, 2);
 
 my ($proto, $user, $pass, $host, $prefix, $args) =
 	&split_userdb_string($miniserv{'userdb'});
+$proto ||= '';
 
 # Build inputs for MySQL backend
 my @mysqlgrid = ( );
@@ -91,7 +92,7 @@ print &ui_table_row(undef,
 		  [ 'ldap', $text{'sql_ldap'}, $ldapgrid ] ]), 2);
 
 print &ui_table_row(undef,
-	&ui_radio("addto", int($miniserv{'userdb_addto'}),
+	&ui_radio("addto", int($miniserv{'userdb_addto'} || 0),
 		  [ [ 0, $text{'sql_addto0'} ],
 		    [ 1, $text{'sql_addto1'} ] ]), 2);
 
