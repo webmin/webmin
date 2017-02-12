@@ -190,7 +190,7 @@ if ($pkg1->{'system'} eq 'webmin' && $pkg2->{'system'} eq 'webmin') {
 my $ec = $pkg1->{'epoch'} <=> $pkg2->{'epoch'};
 if ($ec && ($pkg1->{'epoch'} eq '' || $pkg2->{'epoch'} eq '') &&
     $pkg1->{'system'} eq 'apt') {
-	# On some Debian systems, we don't have a my epoch
+	# On some Debian systems, we don't have any epoch
 	$ec = undef;
 	}
 return $ec ||
@@ -614,7 +614,7 @@ if ($pkg->{'system'} eq 'yum') {
 	elsif (!$cl && $software::yum_command =~ /dnf/) {
 		# Run dnf updateinfo for this package and version
 		&open_execute_command(DNFUI,
-			"$software::yum_command updateinfo --info ".
+			"$software::yum_command updateinfo info ".
 		        quotemeta($pkg->{'name'}), 1, 1);
 		while(<DNFUI>) {
 			s/\r|\n//g;
