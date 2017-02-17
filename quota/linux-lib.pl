@@ -82,6 +82,10 @@ the following :
 =cut
 sub quota_can
 {
+if ($_[0]->[2] =~ /^bind/) {
+	# Not possible on bind mounts
+	return 0;
+	}
 return ($_[1]->[3] =~ /usrquota|usrjquota/ ||
 	$_[0]->[3] =~ /usrquota|usrjquota/ ? 1 : 0) +
        ($_[1]->[3] =~ /grpquota|grpjquota/ ||
