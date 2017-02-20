@@ -73,7 +73,7 @@ sub get_paths {
             $base = '/';
         }
     }
-    $path = $in{'path'} ? $in{'path'} : '';
+    $path = $in{'path'} || '';
     $cwd = &simplify_path($base.$path);
 
     # Work out max upload size
@@ -133,7 +133,7 @@ sub print_errors {
         print("<li>$error</li>");
     }
     print "<ul>";
-    &ui_print_footer("index.cgi?path=$path", $text{'previous_page'});
+    &ui_print_footer("index.cgi?path=".&urlize($path), $text{'previous_page'});
 }
 
 sub print_interface {
