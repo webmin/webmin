@@ -11,9 +11,9 @@ get_paths();
 
 unless (opendir ( DIR, $cwd )) {
     $path="";
-    print_errors("$text{'error_opendir'} $cwd $!");
+    print_errors($text{'error_opendir'}." ".&html_escape($cwd)." ".$!);
 } else {
-    &ui_print_header(undef, $module_info{'name'}, "", undef, 0 , 0, 0, "<a href='config.cgi?path=$path' data-config-pagination='$userconfig{'per_page'}'>$text{'module_config'}</a>");
+    &ui_print_header(undef, $module_info{'name'}, "", undef, 0 , 0, 0, "<a href='config.cgi?path=".&urlize($path)."' data-config-pagination='$userconfig{'per_page'}'>$text{'module_config'}</a>");
 
     my $setype = get_selinux_command_type();
     my %secontext;
