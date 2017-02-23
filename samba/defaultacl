@@ -28,3 +28,5 @@ maint_gsync=1
 winbind=1
 conf_bind=1
 manual=1
+conf_fs=1
+conf_ps=1
