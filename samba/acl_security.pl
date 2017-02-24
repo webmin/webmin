@@ -84,6 +84,13 @@ printf "<input type=radio name=winbind value=0 %s> $text{'no'}</td>\n",
 		$_[0]->{'winbind'} ? "" : "checked";
 print "</tr>\n";
 
+print "<tr>\n<td><b>$text{'acl_bind'}</b></td> <td>\n";
+printf "<input type=radio name=conf_bind value=1 %s> $text{'yes'}\n",
+                $_[0]->{'conf_bind'} ? "checked" : "";
+printf "<input type=radio name=conf_bind value=0 %s> $text{'no'}</td>\n",
+                $_[0]->{'conf_bind'} ? "" : "checked";
+print "</tr>\n";
+
 print "<tr> <td colspan=4><hr></td> </tr>\n";
 
 # encripted passwords
@@ -223,6 +230,18 @@ sub acl_security_save
 if ($in{'r_fs'} < $in{'w_fs'} || $in{'r_ps'} < $in{'w_ps'}) {
 	&error($text{'acl_ernow'});
 	}
+
+# If create, read, AND write are all turned off... dont SHOW file shares...
+$_[0]->{'conf_fs'}=1;
+if ($in{'c_fs'} == "" && $in{'r_fs'} == "" && $in{'w_fs'} == "") {
+        $_[0]->{'conf_fs'}=0;
+        }
+# If create, read, AND write are all turned off... dont SHOW print shares...
+$_[0]->{'conf_ps'}=1;
+if ($in{'c_ps'} == "" && $in{'r_ps'} == "" && $in{'w_ps'} == "") {
+        $_[0]->{'conf_ps'}=0;
+        }
+
 $_[0]->{'apply'}=$in{'apply'};
 $_[0]->{'view_all_con'}=$in{'view_all_con'};
 $_[0]->{'kill_con'}=$in{'kill_con'};
@@ -250,6 +269,7 @@ $_[0]->{'maint_sync'}=$in{'maint_sync'};
 $_[0]->{'maint_groups'}=$in{'maint_groups'};
 $_[0]->{'maint_gsync'}=$in{'maint_gsync'};
 $_[0]->{'winbind'}=$in{'winbind'};
+$_[0]->{'conf_bind'}=$in{'conf_bind'};
 
 foreach (keys %in) {
 	  $_[0]->{$1} .= $in{$_} if /^\w\w_(ACL\w\w_\w+)$/;
