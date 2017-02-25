@@ -569,6 +569,7 @@ acl_group_opts=Samba group options
 acl_maint_groups=Can view, edit and add groups?
 acl_maint_gsync=Can maintain auto UNIX to SAMBA groups sync?
 acl_winbind=Can bind to domains?
+acl_bind=Can access winbind options?
 
 groups_title=Samba Groups
 groups_name=Group name
