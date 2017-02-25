@@ -2026,7 +2026,7 @@ closedir(UNITS);
 # Also add units from list-unit-files that also don't show up
 $out = &backquote_command("systemctl list-unit-files");
 foreach my $l (split(/\r?\n/, $out)) {
-	if ($l =~ /^(\S+)\.service\s+disabled/ ||
+	if ($l =~ /^(\S+\.service)\s+disabled/ ||
 	    $l =~ /^(\S+)\s+disabled/) {
 		push(@units, $1);
 		}
@@ -2039,6 +2039,10 @@ foreach my $l (split(/\r?\n/, $out)) {
 		!/^dev-/ &&
 		!/^systemd-/ } @units;
 @units = &unique(@units);
+
+# Filter out templates
+my @templates = grep { /\@$/ || /\@\.service$/ } @units;
+@units = grep { !/\@$/ && !/\@\.service$/ } @units;
 
 # Dump state of all of them, 100 at a time
 my %info;
