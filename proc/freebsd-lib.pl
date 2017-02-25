@@ -131,5 +131,28 @@ return ( $sysctl->{"hw.physmem"} / 1024,
 	 $swap_free );
 }
 
+# os_get_cpu_info()
+# Returns a list containing the 5, 10 and 15 minute load averages, and the
+# CPU mhz, model, vendor, cache and count
+sub os_get_cpu_info
+{
+local $out = &backquote_command("uptime");
+local @load;
+if ($out =~ /load\s+average:\s+([0-9\.]+),\s+([0-9\.]+),\s+([0-9\.]+)/) {
+	@load = ($1, $2, $3);
+	}
+else {
+	return ( );
+	}
+$out = &backquote_command("sysctl hw.model hw.ncpu");
+if ($out =~ /hw.model:\s+(\S+)\s+(\S.*\S)\s+\@\s+(\S+)/) {
+	push(@load, $3, $2, $1, undef);
+	if ($out =~ /hw.ncpu:\s+(\d+)/) {
+		push(@load, $1);
+		}
+	}
+return @load;
+}
+
 1;
 
