@@ -2047,6 +2047,10 @@ return (1, $h, $count, $uidnext);
 sub imap_command
 {
 local ($h, $c) = @_;
+if (!$h) {
+	local $err = "Invalid IMAP handle";
+	return (0, [ $err ], $err, $err);
+	}
 local @rv;
 
 # Send the command, and read lines until a non-* one is found
