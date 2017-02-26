@@ -1672,8 +1672,9 @@ authenticate as, as array references.
 =cut
 sub get_unixauth
 {
+my ($miniserv) = @_;
 my @rv;
-my @ua = split(/\s+/, $_[0]->{'unixauth'});
+my @ua = $miniserv->{'unixauth'} ? split(/\s+/, $miniserv->{'unixauth'}) : ( );
 foreach my $ua (@ua) {
 	if ($ua =~ /^(\S+)=(\S+)$/) {
 		push(@rv, [ $1, $2 ]);

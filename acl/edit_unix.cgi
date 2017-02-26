@@ -30,7 +30,8 @@ my @webmins = map { [ $_->{'name'} ] }
 	       sort { $a->{'name'} cmp $b->{'name'} } &list_users();
 foreach my $ua (@unixauth, [ ], [ ]) {
 	$utable .= &ui_columns_row([
-		&ui_select("mode_$i", $ua->[0] eq "" ? 0 :
+		&ui_select("mode_$i", !defined($ua->[0]) ? 0 :
+				      $ua->[0] eq "" ? 0 :
 				      $ua->[0] eq "*" ? 1 :
 				      $ua->[0] =~ /^\@/ ? 2 : 3,
 			   [ [ 0, " " ],
