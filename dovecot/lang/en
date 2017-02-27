@@ -53,7 +53,7 @@ ssl_title=SSL Configuration
 ssl_header=IMAP and POP3 SSL mode options
 ssl_key=SSL private key file
 ssl_cert=SSL certificate file
-ssl_ca=SSL CA certificate file
+ssl_ca=SSL client CA certificate file
 ssl_pass=Password for key file
 ssl_prompt=None needed
 ssl_regen=Interval between SSL parameter regeneration
@@ -63,7 +63,7 @@ ssl_plain=Disallow plaintext authentication in non-SSL mode?
 ssl_err=Failed to save SSL configuration
 ssl_ekey=Missing or non-existent private key file
 ssl_ecert=Missing or non-existent certificate file
-ssl_eca=Missing or non-existent CA certificate file
+ssl_eca=Missing or non-existent client CA certificate file
 ssl_eregen=Missing or non-numeric parameter regeneration interval
 ssl_epass=No SSL key file password entered
 
