@@ -784,7 +784,9 @@ while(1) {
 			if ($time_now - $ltime > 7*24*60*60) {
 				&run_logout_script($s, $user, undef, undef);
 				&write_logout_utmp($user, $lip);
-				if ($use_syslog && $user) {
+				if ($user =~ /^\!/) {
+					}
+				elsif ($use_syslog && $user) {
 					syslog("info", "%s",
 					      "Timeout of session for $user");
 					}
