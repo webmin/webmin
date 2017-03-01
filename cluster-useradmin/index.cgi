@@ -86,63 +86,142 @@ if (@groups) {
 	}
 print "</tr></table></form>\n";
 
+if ($config{'conf_add_user'} == 0 &&
+	$config{'conf_add_group'} == 0 &&
+	$config{'conf_allow_refresh'} == 0 &&
+	$config{'conf_allow_sync'} == 0 &&
+	$config{'conf_find_user'} == 0 &&
+	$config{'conf_find_group'} == 0) {
+	# If we have configured EVERY possible 'host' action off, then dont show
+	# the header/horizontal-rule/etc...
+	@hosts = ();
+	}
+
 if (@hosts) {
 	# Display search and add forms
 	print &ui_hr();
 	print &ui_subheading($text{'index_users'});
 
-	print "<table width=100%><tr>\n";
-	print "<form action=search_user.cgi><td>\n";
-	print "<b>$text{'index_finduser'}</b> <select name=field>\n";
-	print "<option value=user checked>$text{'user'}</option>\n";
-	print "<option value=real>$text{'real'}</option>\n";
-	print "<option value=shell>$text{'shell'}</option>\n";
-	print "<option value=home>$text{'home'}</option>\n";
-	print "<option value=uid>$text{'uid'}</option>\n";
-	print "</select> <select name=match>\n";
-	print "<option value=0 checked>$text{'index_equals'}</option>\n";
-	print "<option value=4>$text{'index_contains'}</option>\n";
-	print "<option value=1>$text{'index_matches'}</option>\n";
-	print "<option value=5>$text{'index_ncontains'}</option>\n";
-	print "<option value=3>$text{'index_nmatches'}</option>\n";
-	print "</select> <input name=what size=15>&nbsp;&nbsp;\n";
-	print "<input type=submit value=\"$text{'find'}\"></td></form>\n";
-
-	print "<form action=user_form.cgi><td align=right>\n";
-	print "<input type=hidden name=new value=1>\n";
-	print "<input type=submit value='$text{'index_newuser'}'>\n";
-	print "</td></form></tr>\n";
-
-	print "<tr><form action=search_group.cgi><td>\n";
-	print "<b>$text{'index_findgroup'}</b> <select name=field>\n";
-	print "<option value=group checked>$text{'gedit_group'}</option>\n";
-	print "<option value=members>$text{'gedit_members'}</option>\n";
-	print "<option value=gid>$text{'gedit_gid'}</option>\n";
-	print "</select> <select name=match>\n";
-	print "<option value=0 checked>$text{'index_equals'}</option>\n";
-	print "<option value=4>$text{'index_contains'}</option>\n";
-	print "<option value=1>$text{'index_matches'}</option>\n";
-	print "<option value=5>$text{'index_ncontains'}</option>\n";
-	print "<option value=3>$text{'index_nmatches'}</option>\n";
-	print "</select> <input name=what size=15>&nbsp;&nbsp;\n";
-	print "<input type=submit value=\"$text{'find'}\"></td></form>\n";
-
-	print "<form action=group_form.cgi><td align=right>\n";
-	print "<input type=hidden name=new value=1>\n";
-	print "<input type=submit value='$text{'index_newgroup'}'>\n";
-	print "</td></form></tr>\n";
-
-	print "<tr><form action=refresh.cgi>\n";
-	print "<td><input type=submit value='$text{'index_refresh'}'>\n";
-	&create_on_input(undef, 1);
-	print "</td>\n";
-	print "</form>\n";
-
-	print "<form action=sync_form.cgi>\n";
-	print "<td align=right><input type=submit ",
-	      "value='$text{'index_sync'}'></td>\n";
-	print "</form></tr> </table>\n";
+	print "<table width=100%>";
+	if ($config{'conf_find_user'} == 1 ||
+    	    $config{'conf_add_user'} == 1) {
+		print "<tr>\n";
+	}
+	if ($config{'conf_find_user'} == 1) {
+		print "<td>\n";
+		print "<form action=search_user.cgi>\n";
+		print "<b>$text{'index_finduser'}</b> <select name=field>\n";
+		print "<option value=user checked>$text{'user'}</option>\n";
+		print "<option value=real>$text{'real'}</option>\n";
+		print "<option value=shell>$text{'shell'}</option>\n";
+		print "<option value=home>$text{'home'}</option>\n";
+		print "<option value=uid>$text{'uid'}</option>\n";
+		print "</select> <select name=match>\n";
+		print "<option value=0 checked>$text{'index_equals'}";
+		print "</option>\n";
+		print "<option value=4>$text{'index_contains'}</option>\n";
+		print "<option value=1>$text{'index_matches'}</option>\n";
+		print "<option value=5>$text{'index_ncontains'}</option>\n";
+		print "<option value=3>$text{'index_nmatches'}</option>\n";
+		print "</select> <input name=what size=15>&nbsp;&nbsp;\n";
+		print "<input type=submit value=\"$text{'find'}\"></form>\n";
+		print "</td>\n";
 	}
 
-&ui_print_footer("/", $text{'index'});
+	if ($config{'conf_add_user'} == 1 &&
+    	    $config{'conf_find_user'} == 1) {
+		print "<td align=right>\n";
+	}
+	elsif ($config{'conf_add_user'} == 1) {
+		print "<td>\n";
+	}
+	if ($config{'conf_add_user'} == 1) {
+		print "<form action=user_form.cgi>\n";
+		print "<input type=hidden name=new value=1>\n";
+		print "<input type=submit value='$text{'index_newuser'}'>\n";
+		print "</form>\n";
+		print "</td>\n";
+	}
+	if ($config{'conf_find_user'} == 1 ||
+    	    $config{'conf_add_user'} == 1) {
+		print "</tr>\n";
+	}
 
+	if ($config{'conf_find_group'} == 1 ||
+    	    $config{'conf_add_group'} == 1) {
+		print "<tr>\n";
+	}
+	if ($config{'conf_find_group'} == 1) {
+		print "<td>\n";
+		print "<form action=search_group.cgi>";
+		print "<b>$text{'index_findgroup'}</b> <select name=field>\n";
+		print "<option value=group checked>$text{'gedit_group'}";
+		print "</option>\n";
+		print "<option value=members>$text{'gedit_members'}";
+		print "</option>\n";
+		print "<option value=gid>$text{'gedit_gid'}</option>\n";
+		print "</select> <select name=match>\n";
+		print "<option value=0 checked>$text{'index_equals'}";
+		print "</option>\n";
+		print "<option value=4>$text{'index_contains'}</option>\n";
+		print "<option value=1>$text{'index_matches'}</option>\n";
+		print "<option value=5>$text{'index_ncontains'}</option>\n";
+		print "<option value=3>$text{'index_nmatches'}</option>\n";
+		print "</select> <input name=what size=15>&nbsp;&nbsp;\n";
+		print "<input type=submit value=\"$text{'find'}\">";
+		print "</form>\n";
+		print "</td>";
+	}
+
+	if ($config{'conf_add_group'} == 1 &&
+    	    $config{'conf_find_group'} == 1) {
+		print "<td align=right>\n";
+	}
+	elsif ($config{'conf_add_group'} == 1) {
+		print "<td>\n";
+	}
+	if ($config{'conf_add_group'} == 1) {
+		print "<form action=group_form.cgi>\n";
+		print "<input type=hidden name=new value=1>\n";
+		print "<input type=submit value='$text{'index_newgroup'}'>\n";
+		print "</form></td>\n";
+	}
+	if ($config{'conf_find_group'} == 1 ||
+    	    $config{'conf_add_group'} == 1) {
+		print "</tr>\n";
+	}
+
+	if ($config{'conf_allow_refresh'} == 1 ||
+    	    $config{'conf_allow_sync'} == 1) {
+		print "<tr>\n";
+	}
+	if ($config{'conf_allow_refresh'} == 1) {
+		print "<td>\n";
+		print "<form action=refresh.cgi>\n";
+		print "<input type=submit value='$text{'index_refresh'}'>\n";
+		&create_on_input(undef, 1);
+		print "</form>\n";
+		print "</td>\n";
+	}
+
+	if ($config{'conf_allow_refresh'} == 1 &&
+    	    $config{'conf_allow_sync'} == 1) {
+		print "<td align=right>";
+	}
+	else {
+		print "<td>";
+	}
+	if ($config{'conf_allow_sync'} == 1) {
+		print "<form action=sync_form.cgi>\n";
+		print "<input type=submit value='$text{'index_sync'}'>\n";
+		print "</form>\n";
+		print "</td>\n";
+	}
+	if ($config{'conf_allow_refresh'} == 1 ||
+    	    $config{'conf_allow_sync'} == 1) {
+		print "</tr>\n";
+	}
+	print "</table>\n";
+}
+
+&ui_print_footer("/", $text{'index'});
