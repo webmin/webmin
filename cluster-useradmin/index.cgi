@@ -23,10 +23,13 @@ $formno = 0;
 foreach $h (@hosts) {
 	local ($s) = grep { $_->{'id'} == $h->{'id'} } @servers;
 	next if (!$s);
+	local ($link) = $config{'conf_host_links'} ? "edit_host.cgi?id=$h->{'id'}" : "#";
 	push(@titles, $s->{'desc'} ? $s->{'desc'}
 				   : "$s->{'host'}:$s->{'port'}");
-	push(@links, "edit_host.cgi?id=$h->{'id'}");
-	push(@icons, "$gconfig{'webprefix'}/servers/images/$s->{'type'}.gif");
+	push(@links, $link);
+	push(@icons, $gconfig{'webprefix'} ?
+		($gconfig{'webprefix'}."/servers/images/".$s->{'type'}.".gif") :
+		("../servers/images/".$s->{'type'}.".gif"));
 	push(@installed, @{$h->{'packages'}});
 	$gothost{$h->{'id'}}++;
 	}
@@ -43,8 +46,11 @@ if (@links) {
 			next if (!$s);
 			local ($type) = grep { $_->[0] eq $s->{'type'} }
 					     @servers::server_types;
+			local ($link) = $config{'conf_host_links'} ?
+				&ui_link("edit_host.cgi?id=$h->{'id'}",($s->{'host'} || &get_system_hostname())) :
+				($s->{'host'} || &get_system_hostname());
 			print &ui_columns_row([
-				&ui_link("edit_host.cgi?id=$h->{'id'}",($s->{'host'} || &get_system_hostname())),
+				$link,
 				$s->{'desc'},
 				scalar(@{$h->{'users'}}),
 				scalar(@{$h->{'groups'}}),
