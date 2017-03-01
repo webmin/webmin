@@ -93,7 +93,9 @@ foreach $h (@hosts) {
 	local ($og) = grep { $_->{'group'} eq $in{'group'} } @{$h->{'groups'}};
 	if ($og) {
 		local ($s) = grep { $_->{'id'} == $h->{'id'} } @servers;
-		push(@icons, "/servers/images/$s->{'type'}.gif");
+		push(@icons, $gconfig{'webprefix'} ?
+			($gconfig{'webprefix'}."/servers/images/".$s->{'type'}.".gif") :
+			("../servers/images/".$s->{'type'}.".gif"));
 		push(@links, "edit_host.cgi?id=$h->{'id'}");
 		push(@titles, $s->{'desc'} ? $s->{'desc'} : $s->{'host'});
 		}
@@ -116,7 +118,31 @@ print "</form></table><p>\n";
 
 print &ui_hr();
 print &ui_subheading($text{'uedit_hosts'});
-&icons_table(\@links, \@titles, \@icons);
+if ($config{'table_mode'}) {
+	# Show as table
+	print &ui_columns_start([ $text{'index_thost'},
+				  $text{'index_tdesc'},
+				  $text{'index_ttype'} ]);
+	foreach $h (@hosts) {
+		local ($s) = grep { $_->{'id'} == $h->{'id'} } @servers;
+		next if (!$s);
+		local ($type) = grep { $_->[0] eq $s->{'type'} }
+					@servers::server_types;
+		local ($link) = $config{'conf_host_links'} ?
+			&ui_link("edit_host.cgi?id=$h->{'id'}",($s->{'host'} || &get_system_hostname())) :
+			($s->{'host'} || &get_system_hostname());
+		print &ui_columns_row([
+			$link,
+			$s->{'desc'},
+			$type->[1],
+			]);
+		}
+	print &ui_columns_end();
+	}
+else {
+	# Show as icons
+	&icons_table(\@links, \@titles, \@icons);
+	}
 
 &ui_print_footer("", $text{'index_return'});
 
