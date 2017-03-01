@@ -6,3 +6,4 @@ conf_find_user=1
 conf_find_group=1
 conf_allow_refresh=1
 conf_allow_sync=1
+conf_host_links=1
