@@ -18,8 +18,13 @@ print "<tr $cb> <td><table width=100%>\n";
 
 print "<tr> <td><b>$text{'host_name'}</b></td>\n";
 if ($server->{'id'}) {
-	printf &ui_link("/servers/link.cgi/%s/","%s")."</td>\n",
-		$server->{'id'}, $server->{'desc'} ? "$server->{'desc'} ($server->{'host'}:$server->{'port'})" : "$server->{'host'}:$server->{'port'}";
+	print "<td>";
+	printf &ui_link("/servers/link.cgi/%s/","%s"),
+		$server->{'id'},
+		$server->{'desc'} ?
+			"$server->{'desc'} ($server->{'host'}:$server->{'port'})" :
+			"$server->{'host'}:$server->{'port'}";
+	print "</td>";
 	}
 else {
 	print "<td><a href=/>$text{'this_server'}</a></td>\n";
