@@ -57,6 +57,10 @@ if ($access{'create'}) {
 if ($config{cron_allow_file} && $config{cron_deny_file} && $access{'allow'}) {
 	push(@crlinks, &ui_link("edit_allow.cgi", $text{'index_allow'}) );
 	}
+my @files = &list_cron_files();
+if ($access{'acl_users'} == 0 && @files) {
+	push(@crlinks, &ui_link("edit_manual.cgi", $text{'index_manual'}));
+	}
 
 # Build a list of cron job rows to show
 $single_user = !&supports_users() || (@ulist == 1 && $access{'mode'});

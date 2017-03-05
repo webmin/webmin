@@ -1567,5 +1567,23 @@ foreach my $f (readdir(DIR)) {
 closedir(DIR);
 }
 
+=head2 list_cron_files()
+
+Returns a list of all files containing cron jobs
+
+=cut
+sub list_cron_files
+{
+my @jobs = &list_cron_jobs();
+my @files = map { $_->{'file'} } grep { $_->{'file'} } @jobs;
+if ($config{'system_crontab'}) {
+	push(@files, $config{'system_crontab'});
+	}
+if ($config{'cronfiles_dir'}) {
+	push(@files, glob(&translate_filename($config{'cronfiles_dir'})."/*"));
+	}
+return &unique(@files);
+}
+
 1;
 

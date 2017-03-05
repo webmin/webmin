@@ -10,6 +10,7 @@ index_none3=You do not have any cron jobs yet.
 index_create=Create a new scheduled cron job.
 index_ecreate=Create a new environment variable.
 index_allow=Control user access to cron jobs.
+index_manual=Manually edit cron jobs.
 index_return=cron list
 index_env=Environment variable
 index_move=Move
@@ -180,4 +181,12 @@ range_eend=Missing or invalid ending date in range to run
 
 delete_err=Failed to delete Cron jobs
 delete_enone=None selected
+
+manual_title=Manually Edit Cron Jobs
+manual_edit=Cron file to edit:
+manual_ok=Edit
+manual_editing=Use the text box below to edit Cron jobs in $1. Be careful, as no validation will be done by Webmin!
+manual_efile=Selected file is not valid!
+manual_ecannot=You are not allowed to manually edit cron jobs
+
 __norefs=1
