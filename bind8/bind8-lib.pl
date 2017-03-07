@@ -673,9 +673,9 @@ my ($addr, @vals, $dir);
 my @sp = split(/\s+/, $in{$_[0]});
 for(my $i=0; $i<@sp; $i++) {
 	!$_[3] || &check_ipaddress($sp[$i]) || &error(&text('eip', $sp[$i]));
-	if (lc($sp[$i]) eq "key") {
-		push(@vals, { 'name' => $sp[$i],
-			      'values' => [ $sp[++$i] ] });
+	if (lc($sp[$i+1]) eq "key") {
+		push(@vals, { 'name' => $sp[$i++],
+			      'values' => [ "key", $sp[++$i] ] });
 		}
 	else {
 		push(@vals, { 'name' => $sp[$i] });
