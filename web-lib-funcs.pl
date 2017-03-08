@@ -10563,14 +10563,14 @@ for(my $i=0; $i<@sp1 || $i<@sp2; $i++) {
 				}
 			}
 		}
-	elsif ($v1 =~ /^([^0-9]+)(\d+)$/ && ($tmp = $1) &&
-	       $v2 =~ /^([^0-9]+)(\d+)$/ &&
+	elsif ($v1 =~ /^(\S+[^0-9]+)(\d+)$/ && ($tmp = $1) &&
+	       $v2 =~ /^(\S+[^0-9]+)(\d+)$/ &&
 	       $tmp eq $1) {
 		# String followed by a number, where the strings are the same
 		# ie. centos7 vs centos8
-		$v1 =~ /^([^0-9]+)(\d+)$/;
+		$v1 =~ /^(\S+[^0-9]+)(\d+)$/;
 		my $num1 = $2;
-		$v2 =~ /^([^0-9]+)(\d+)$/;
+		$v2 =~ /^(\S+[^0-9]+)(\d+)$/;
 		my $num2 = $2;
 		$comp = $num1 <=> $num2;
 		}
