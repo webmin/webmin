@@ -785,7 +785,7 @@ while (defined $line) {
 	if ($line =~ /^\s*auto/) {
 		# skip auto stanzas
 		$line = <CFGFILE>;
-		while(defined($line) && $line !~ /^\s*(iface|mapping|auto|source)/) {
+		while(defined($line) && $line !~ /^\s*(iface|mapping|auto|source|allow-hotplug)/) {
 			$line = <CFGFILE>;
 			next;
 			}
@@ -793,7 +793,7 @@ while (defined $line) {
 	elsif ($line =~ /^\s*mapping/) {
 		# skip mapping stanzas
 		$line = <CFGFILE>;
-		while(defined($line) && $line !~ /^\s*(iface|mapping|auto|source)/) {
+		while(defined($line) && $line !~ /^\s*(iface|mapping|auto|source|allow-hotplug)/) {
 			$line = <CFGFILE>;
 			next;
 			}
@@ -802,12 +802,16 @@ while (defined $line) {
 		# Skip includes
 		$line = <CFGFILE>;
 		}
+	elsif ($line =~ /^\s*allow-hotplug/) {
+		# Skip hotplug lines
+		$line = <CFGFILE>;
+		}
 	elsif (my ($name, $addrfam, $method) = ($line =~ /^\s*iface\s+(\S+)\s+(\S+)\s+(\S+)\s*$/) ) {
 		# only lines starting with "iface" are expected here
 		my @iface_options;
 		# now read everything until the next iface definition
 		$line = <CFGFILE>;
-		while (defined $line && ! ($line =~ /^\s*(iface|mapping|auto|source)/)) {
+		while (defined $line && ! ($line =~ /^\s*(iface|mapping|auto|source|allow-hotplug)/)) {
 			# skip comments and empty lines
 			if ($line =~ /^\s*#/ || $line =~ /^\s*$/) {
 				$line = <CFGFILE>;
@@ -912,6 +916,7 @@ while (defined ($line=<OLDCFGFILE>)) {
                ($line =~ /^\s*iface\s+\S+\s+\S+\s+\S+\s*$/ ||
 	        $line =~ /^\s*mapping/ ||
 	        $line =~ /^\s*source/ ||
+	        $line =~ /^\s*allow-hotplug/ ||
 		$line =~ /^\s*auto/)) {
 	      	# End of an iface section
 		$inside_modify_region = 0;
