@@ -2649,12 +2649,14 @@ sub list_visible_themes
 {
 my ($curr) = @_;
 my @rv;
+my %done;
 foreach my $theme (&list_themes()) {
-	if (!-l $root_directory."/".$theme->{'dir'} ||
-	    $theme->{'dir'} !~ /\d+$/ ||
-	    $curr && $theme->{'dir'} eq $curr) {
-		push(@rv, $theme);
-		}
+	my $iscurr = $curr && $theme->{'dir'} eq $curr;
+	next if (-l $root_directory."/".$theme->{'dir'} &&
+		 $theme->{'dir'} =~ /\d+$/ &&
+		 !$iscurr);
+	next if ($done{$theme->{'desc'}}++ && !$iscurr);
+	push(@rv, $theme);
 	}
 return @rv;
 }
