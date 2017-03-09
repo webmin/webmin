@@ -16,6 +16,7 @@ index_email=E-Mail Updatebericht an
 index_err=Fehlgeschlagen Paketliste zu holen
 index_header=Geplante Pr&#252;foptionen
 index_install=Installiere ausgew&#228;hlte Pakete
+index_manynew=Es stehen $1 Pakete f&#252;r die Installation zur Verf&#252;gung. Verwenden Sie das Suchfeld, um diese zu finden und zu installieren.
 index_mode=Status der Anzeige:
 index_mode_current=Installiert
 index_mode_new=Nur neue
