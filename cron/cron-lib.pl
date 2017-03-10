@@ -171,6 +171,7 @@ if ($config{'single_file'}) {
 				    'name' => $2,
 				    'value' => $3,
 				    'user' => "NONE",
+				    'command' => '',
 				    'index' => scalar(@rv) });
 			}
 		$lnum++;
