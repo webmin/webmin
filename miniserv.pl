@@ -4063,7 +4063,7 @@ if ($ok && (!$expired ||
 		if (!$config{'no_httponly'}) {
 			$sec .= "; httpOnly";
 			}
-		if ($in{'page'} !~ /^\/[A-Za-z0-9\/\.\-\_]+$/) {
+		if ($in{'page'} !~ /^\/[A-Za-z0-9\/\.\-\_:]+$/) {
 			# Make redirect URL safe
 			$in{'page'} = "/";
 			}
