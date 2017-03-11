@@ -321,11 +321,7 @@ sub print_interface {
         $actions = "<a class='action-link' href='javascript:void(0)' onclick='renameDialog(\"$vlink\")' title='$text{'rename'}' data-container='body'>$rename_icon</a>";
 
         if ( $list[ $count - 1 ][15] == 1 ) {
-            if ($path eq '/'. $link) {
-                $href = "index.cgi?path=" . &urlize("$path");
-            } else {
-                $href = "index.cgi?path=" . &urlize("$path/$link");
-            }
+            $href = "index.cgi?path=" . &urlize("$path/$link");
         } else {
             $href = "download.cgi?file=".&urlize($link)."&path=".&urlize($path);
             if($0 =~ /search.cgi/) {
