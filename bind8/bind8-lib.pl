@@ -1,7 +1,9 @@
 # bind8-lib.pl
 # Common functions for bind8 config files
+
 use strict;
 use warnings;
+no warnings 'redefine';
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
