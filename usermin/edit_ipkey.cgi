@@ -18,7 +18,7 @@ print &ui_hidden("new", $in{'new'}),"\n";
 print &ui_hidden("idx", $in{'idx'}),"\n";
 print &ui_table_start($text{'ipkey_header'}, undef, 2);
 
-print &ui_table_row($text{'ipkey_ips'},
+print &ui_table_row($text{'ipkey_ips2'},
 		    &ui_textarea("ips", join("\n", @{$ipkey->{'ips'}}),
 				 3, 20));
 
