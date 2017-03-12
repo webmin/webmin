@@ -22,7 +22,7 @@ else {
 	@ips = split(/\s+/, $in{'ips'});
 	foreach $i (@ips) {
 		&check_ipaddress($i) || &check_ip6address($i) ||
-			&error(&text('ipkey_eip', $i));
+		    &to_ipaddress($i) || &error(&text('ipkey_eip2', $i));
 		}
 	@ips || &error(&text('ipkey_eips'));
 	$ipkey->{'ips'} = \@ips;

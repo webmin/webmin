@@ -129,13 +129,14 @@ print ui_table_row($text{'ssl_download'}, &ui_links_row(\@clinks));
 print ui_table_end();
 print ui_tabs_end_tab();
 
-# Table listing per-IP SSL certs
+# Table listing per-IP / domain SSL certs
 print ui_tabs_start_tab("mode", "ips");
 print "$text{'ssl_ipkeys'}<p>\n";
 my @ipkeys = get_ipkeys(\%miniserv);
 if (@ipkeys) {
-	print ui_columns_start([ $text{'ssl_ips'}, $text{'ssl_key'},
-				  $text{'ssl_cert'} ]);
+	print ui_columns_start([ $text{'ssl_ips'},
+				 $text{'ssl_key'},
+				 $text{'ssl_cert'} ]);
 	foreach my $k (@ipkeys) {
 		print ui_columns_row([
 			ui_link("edit_ipkey.cgi?idx=".$k->{'index'},
