@@ -1,5 +1,5 @@
-start_cmd=systemctl start mysqld.service
-stop_cmd=systemctl stop mysqld.service
+start_cmd=systemctl start mariadb.service
+stop_cmd=systemctl stop mariadb.service
 mysql=/usr/bin/mysql
 mysqldump=/usr/bin/mysqldump
 mysqlimport=/usr/bin/mysqlimport
