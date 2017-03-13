@@ -274,16 +274,19 @@ if ($use_ssl) {
 		}
 
 	# Setup per-hostname SSL contexts on the main IP
-	Net::SSLeay::CTX_set_tlsext_servername_callback($ssl_contexts{"*"},
-	    sub {
-		my $ssl = shift;
-		my $h = Net::SSLeay::get_servername($ssl);
-		my $c = $ssl_contexts{$h} ||
-			$h =~ /^[^\.]+\.(.*)$/ && $ssl_contexts{"*.$1"};
-		if ($c) {
-			Net::SSLeay::set_SSL_CTX($ssl, $c);
-			}
-		});
+	if (defined(&Net::SSLeay::CTX_set_tlsext_servername_callback)) {
+		Net::SSLeay::CTX_set_tlsext_servername_callback(
+		    $ssl_contexts{"*"},
+		    sub {
+			my $ssl = shift;
+			my $h = Net::SSLeay::get_servername($ssl);
+			my $c = $ssl_contexts{$h} ||
+				$h =~ /^[^\.]+\.(.*)$/ && $ssl_contexts{"*.$1"};
+			if ($c) {
+				Net::SSLeay::set_SSL_CTX($ssl, $c);
+				}
+			});
+		}
 	}
 
 # Load gzip library if enabled
