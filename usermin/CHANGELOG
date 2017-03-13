@@ -53,3 +53,5 @@ Updated the SSL Encryption page to have the same UI and features as Webmin.
 Added a button to copy the SSL certificate and other settings from Webmin.
 ---- Changes since 1.770 ----
 Converted all pages to use the new Webmin UI library, for a more consistent and themeable experience.
+---- Changes since 1.830 ----
+Per-domain-name SSL certificates can now be created as well as per-IP, allowing for multiple certs to exist on the same IP address.

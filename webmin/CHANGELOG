@@ -139,3 +139,4 @@ The Let's Encrypt key size can now be customized.
 When Perfect Forward Secrecy ciphers are selected, the required DH params file is now created and used by Webmin.
 ---- Changes since 1.830 ----
 Added DNS validation support for Let's Encrypt certificate requests, for use when a system is hosting the DNS zone that you want to request a cert for.
+Per-domain-name SSL certificates can now be created as well as per-IP, allowing for multiple certs to exist on the same IP address.
