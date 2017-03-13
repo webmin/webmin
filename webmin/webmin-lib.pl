@@ -1007,16 +1007,17 @@ line.
 =cut
 sub validate_key_cert
 {
-my $key = &read_file_contents($_[0]);
+my ($keyfile, $certfile) = @_;
+my $key = &read_file_contents($keyfile);
 $key =~ /BEGIN RSA PRIVATE KEY/i ||
     $key =~ /BEGIN PRIVATE KEY/i ||
-	&error(&text('ssl_ekey', $_[0]));
-if (!$_[1]) {
-	$key =~ /BEGIN CERTIFICATE/ || &error(&text('ssl_ecert', $_[0]));
+	&error(&text('ssl_ekey', $keyfile));
+if (!$certfile) {
+	$key =~ /BEGIN CERTIFICATE/ || &error(&text('ssl_ecert', $keyfile));
 	}
 else {
 	my $cert = &read_file_contents($_[1]);
-	$cert =~ /BEGIN CERTIFICATE/ || &error(&text('ssl_ecert', $_[1]));
+	$cert =~ /BEGIN CERTIFICATE/ || &error(&text('ssl_ecert', $certfile));
 	}
 }
 
