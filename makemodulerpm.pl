@@ -321,6 +321,7 @@ if [ "$force_theme" != "" -a "$istheme" = "1" ]; then
 	(/etc/$prog/stop && /etc/$prog/start) >/dev/null 2>&1
 fi
 rm -f /etc/$prog/module.infos.cache
+rm -f /var/$prog/module.infos.cache
 
 # Run post-install function
 if [ "$prog" = "webmin" ]; then

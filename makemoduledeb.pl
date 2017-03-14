@@ -358,6 +358,7 @@ if [ "$force_theme" != "" -a "$istheme" = "1" ]; then
 	(/etc/$product/stop && /etc/$product/start) >/dev/null 2>&1
 fi
 rm -f /etc/$product/module.infos.cache
+rm -f /var/$product/module.infos.cache
 
 # Run post-install function
 if [ "$product" = "webmin" ]; then
