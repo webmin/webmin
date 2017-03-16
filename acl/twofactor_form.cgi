@@ -13,8 +13,8 @@ my %miniserv;
 &get_miniserv_config(\%miniserv);
 if (!$miniserv{'twofactor_provider'}) {
 	&ui_print_header(undef, $text{'twofactor_title'}, "");
-	&ui_print_endpage(&text('twofactor_setup',
-				'../webmin/edit_twofactor.cgi'));
+	print &text('twofactor_setup', '../webmin/edit_twofactor.cgi'),"<p>\n";
+	&ui_print_footer("", $text{'index_return'});
 	return;
 	}
 
