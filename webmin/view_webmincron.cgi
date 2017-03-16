@@ -47,4 +47,4 @@ print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'save'} ],
 		     [ 'delete', $text{'delete'} ] ]);
 
-&ui_print_footer("", $text{'webmincron_return'});
+&ui_print_footer("edit_webmincron.cgi", $text{'webmincron_return'});
