@@ -232,15 +232,15 @@ sub print_interface {
         for(my $i = 1;$i <= $pages;$i++) {
             if($page eq $i) {
                 print "<a class='pages active' ".
-                      "href='?path=$path".
+                      "href='?path=".&urlize($path).
                       "&page=$i".
-                      "&query=$query".
+                      "&query=".&urlize($query).
                       "'>".&html_escape($i)."</a>";
             } else {
                 print "<a class='pages' ".
-                      "href='?path=$path".
+                      "href='?path=".&urlize($path).
                       "&page=$i".
-                      "&query=$query'>".&html_escape($i)."</a>";
+                      "&query=".&urlize($query)."'>".&html_escape($i)."</a>";
             }
         }
         print "</div>";
@@ -294,7 +294,6 @@ sub print_interface {
         $vlink = html_escape($link);
         $vlink = quote_escape($vlink);
         $vlink = decode('UTF-8', $vlink, Encode::FB_DEFAULT);
-        $path = html_escape($path);
         $vpath = quote_escape($vpath);
         $vpath = decode('UTF-8', $vpath, Encode::FB_DEFAULT);
 
