@@ -8,6 +8,11 @@ $access{'ifcs'} || &error($text{'ifcs_ecannot'});
 $allow_add = &can_create_iface() && !$noos_support_add_ifcs;
 &ui_print_header(undef, $text{'ifcs_title'}, "");
 
+# Get interfaces
+@act = &active_interfaces(1);
+@boot = &boot_interfaces();
+@boot = sort iface_sort @boot;
+
 # Start tabs for active/boot time interfaces
 @tabs = ( [ "active", $text{'ifcs_now'}, "list_ifcs.cgi?mode=active" ] );
 $defmode = "active";
@@ -18,7 +23,6 @@ if (!$access{'bootonly'}) {
 print &ui_tabs_start(\@tabs, "mode", $in{'mode'} || $defmode, 1);
 
 # Show interfaces that are currently active
-@act = &active_interfaces(1);
 if (!$access{'bootonly'}) {
 	# Table heading and links
 	print &ui_tabs_start_tab("mode", "active");
@@ -142,8 +146,6 @@ print &ui_columns_start([ "",
 			  &supports_address6() ? ( $text{'ifcs_ip6'} ) : ( ),
 			  $text{'ifcs_act'} ], 100, 0, \@tds);
 
-@boot = &boot_interfaces();
-@boot = sort iface_sort @boot;
 foreach $a (@boot) {
 	local $can = $a->{'edit'} && &can_iface($a);
 	next if ($access{'hide'} && !$can);	# skip hidden
