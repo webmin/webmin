@@ -89,8 +89,7 @@ print &ui_table_start($text{'general_title_others'}, "width=100%", 4);
 &option_radios_freefield("mynetworks", 60, $text{'opts_mynetworks_default'});
 
 &option_select("mynetworks_style",
-	       [ [ "", $text{'default'} ],
-		 [ "subnet", $text{'opts_mynetworks_subnet'} ],
+	       [ [ "subnet", $text{'opts_mynetworks_subnet'} ],
 		 [ "class", $text{'opts_mynetworks_class'} ],
 		 [ "host", $text{'opts_mynetworks_host'} ] ]);
 
