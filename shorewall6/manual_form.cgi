@@ -11,17 +11,10 @@ $file = "$config{'config_dir'}/$in{'table'}";
 $in{'table'} =~ /\.\./ && &error($text{'manual_efile'});
 print &text('manual_desc', "<tt>$file</tt>"),"<p>\n";
 
-print "<form action=manual_save.cgi method=post enctype=multipart/form-data>\n";
+print &ui_form_start("manual_save.cgi", "form-data");
 print &ui_hidden("table", $in{'table'});
-print "<textarea name=data rows=20 cols=80>";
-open(FILE, $file);
-while(<FILE>) {
-	print &html_escape($_);
-	}
-close(FILE);
-print "</textarea><br>\n";
-print "<input type=submit value='$text{'save'}'>\n";
-print "<input type=reset value='$text{'manual_reset'}'>\n";
-print "</form>\n";
+print &ui_textarea("data", &read_file_contents($file), 20, 80);
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
-&ui_print_footer("list.cgi?table=$in{'table'}", $text{$in{'tableclean'}."_return"});
+&ui_print_footer("list.cgi?table=$in{'table'}",
+		 $text{$in{'tableclean'}."_return"});
