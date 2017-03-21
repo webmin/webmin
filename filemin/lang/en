@@ -20,6 +20,7 @@ name=Name
 type=Type
 actions=Actions
 size=Size
+ownership=Owner
 owner_user=Owner User
 owner_group=Owner Group
 permissions=Permissions
