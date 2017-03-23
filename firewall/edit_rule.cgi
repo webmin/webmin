@@ -181,13 +181,19 @@ print &ui_table_start($text{'edit_header2'}, "width=100%", 2);
 
 # Packet source
 print &ui_table_row($text{'edit_source'},
-	&print_mode("source", $rule->{'s'})." ".
-	&ui_textbox("source", $rule->{'s'}->[1], 40));
+	&ui_grid_table([
+		&print_mode("source", $rule->{'s'}),
+		&ui_textarea("source", join(" ", split(/,/, $rule->{'s'}->[1])),
+			     4, 80),
+		], 2));
 
 # Packet destination
 print &ui_table_row($text{'edit_dest'},
-	&print_mode("dest", $rule->{'d'})." ".
-	&ui_textbox("dest", $rule->{'d'}->[1], 40));
+	&ui_grid_table([
+		&print_mode("dest", $rule->{'d'}),
+		&ui_textarea("dest", join(" ", split(/,/, $rule->{'d'}->[1])),
+			     4, 80),
+		], 2));
 
 # Incoming interface
 print &ui_table_row($text{'edit_in'},

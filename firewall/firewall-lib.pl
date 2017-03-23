@@ -208,6 +208,8 @@ foreach $d ('p', 's', 'd', 'i', 'o', 'f', 'dport',
 	if ($_[0]->{$d}) {
 		local ($n, @v) = @{$_[0]->{$d}};
 		@v = map { uc($_) } @v if ($d eq 'p');
+		@v = map { join(", ", split(/,/, $_)) } @v
+			if ($d eq 's' || $d eq 'd');
 		local $txt = &text("desc_$d$n", map { "<b>$_</b>" } @v);
 		push(@c, $txt) if ($txt);
 		}

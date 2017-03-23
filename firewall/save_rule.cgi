@@ -144,9 +144,10 @@ else {
 		}
 	if (&parse_mode("source", $rule, "s")) {
 		&check_ipmask($in{'source'}) || &error($text{'save_esource'});
-		$rule->{'s'}->[1] = $in{'source'};
+		$rule->{'s'}->[1] = join(",", split(/\s+/, $in{'source'}));
 		}
 	if (&parse_mode("dest", $rule, "d")) {
+		$in{'dest'} =~ s/\r|\n//g;
 		&check_ipmask($in{'dest'}) || &error($text{'save_edest'});
 		$rule->{'d'}->[1] = $in{'dest'};
 		}
@@ -408,7 +409,7 @@ else {
 
 sub check_ipmask
 {
-foreach my $w (split(/,/, $_[0])) {
+foreach my $w (split(/\s+/, $_[0])) {
 	my $ok = &to_ipaddress($w) ||
 		$w =~ /^([0-9\.]+)\/([0-9\.]+)$/ &&
 			&to_ipaddress("$1") &&
