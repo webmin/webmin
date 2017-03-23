@@ -11,7 +11,8 @@ $access{'winbind'} || &error($text{'winbind_ecannot'});
 $cmd = "$config{'net'} join";
 &error_setup($text{'winbind_err'});
 $in{'user'} || &error($text{'winbind_euser'});
-$cmd .= " -U ".quotemeta($in{'user'});
+$cmd .= " -U ".quotemeta($in{'user'}).
+        ($in{'pass'} ? "%".quotemeta($in{'pass'}) : "");
 if (!$in{'dom_def'}) {
 	$in{'dom'} || &error($text{'winbind_edom'});
 	$cmd .= " -S ".quotemeta($in{'dom'});
@@ -20,13 +21,9 @@ if (!$in{'dom_def'}) {
 # Run it
 &ui_print_header(undef, $text{'winbind_title'}, undef);
 print &text('winbind_cmd', "<tt>$cmd</tt>"),"\n";
-$temp = &transname();
-open(TEMP, ">$temp");
-print TEMP $in{'pass'},"\n";
-close(TEMP);
-$out = `$cmd 2>&1 <$temp`;
+$out = &backquote_command("$cmd 2>&1");
 unlink($temp);
-print "<pre>$out</pre>";
+print "<pre>",&html_escape($out),"</pre>\n";
 if ($? || $out =~ /error|failed/i) {
 	print "$text{'winbind_failed'}<br>\n";
 	}
