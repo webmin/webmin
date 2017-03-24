@@ -156,6 +156,10 @@ if (@vgs) {
 			  "<a href='edit_lv.cgi?vg=".&urlize($v->{'name'}).
 			  "&snap=1'>".&text('index_addlv2s', $v->{'name'}).
 			  "</a>");
+			push(@links,
+			  "<a href='thin_form.cgi?vg=".&urlize($v->{'name'}).
+			  "'>".&text('index_addlv3', $v->{'name'}).
+			  "</a>");
 			}
 		}
 	if (!@alllvs) {

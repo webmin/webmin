@@ -12,6 +12,7 @@ i2ndex_addpv=Add a physical volume to the group.
 index_addpv2=Add a physical volume to <tt>$1</tt>.
 index_addlv2=Create a logical volume in <tt>$1</tt>.
 index_addlv2s=Create a snapshot in <tt>$1</tt>.
+index_addlv3=Create a thin pool in <tt>$1</tt>.
 index_addlv=Create a new logical volume.
 index_addsnap=Create a new snapshot.
 index_return=volume groups
@@ -188,6 +189,14 @@ pvmove_title=Move Logical Volume
 pvmove_start=Moving logical volume $1 from $2 to $3 ..
 pvmove_failed=.. move failed!
 pvmove_done=.. move complete
+
+thin_title=Create Thin Pool
+thin_desc=A thin pool is a pair of LVs that can be used to create additional LVs that can be larger than the available extents. Space is only consumed when needed, rather than when the LVs inside the pool are created.
+thin_header=New thin pool details
+thin_datalv=Existing LV for data
+thin_metadatalv=Existing LV for metadata
+thin_ok=Convert LVs Into Thin Pool
+thin_elvs=No LVs that are not already in use were found in this VG!
 
 log_create_vg=Created volume group $1
 log_modify_vg=Modified volume group $1
