@@ -3265,6 +3265,8 @@ for(my $i=$#recs; $i>=0; $i--) {
 foreach my $key (@keys) {
 	&create_record($chrootfn, $dom.".", undef, "IN", "DNSKEY",
 		       join(" ", @{$key->{'values'}}));
+	&set_ownership($key->{'privatefile'});
+	&set_ownership($key->{'publicfile'});
 	}
 &bump_soa_record($chrootfn, \@recs);
 
