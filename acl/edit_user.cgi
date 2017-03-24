@@ -110,7 +110,7 @@ if ($miniserv{'extauth'}) {
 	push(@opts, [ 5, $text{'edit_extauth'} ]);
 	}
 push(@opts, [ 4, $text{'edit_lock'} ]);
-my ($lockbox, $tempbox);
+my ($lockbox, $tempbox) = ("", "");
 if ($passmode == 1) {
 	$lockbox = &ui_checkbox("lock", 1, $text{'edit_templock'},
 			               $user{'pass'} =~ /^\!/ ? 1 : 0);
@@ -152,7 +152,7 @@ print &ui_table_row($text{'edit_real'},
 # Storage type
 if ($in{'user'}) {
 	print &ui_table_row($text{'edit_proto'},
-		$text{'edit_proto_'.$user{'proto'}});
+		$text{'edit_proto_'.($user{'proto'} || '')});
 	}
 
 print &ui_hidden_table_end("rights");
@@ -186,7 +186,7 @@ if ($access{'lang'}) {
 if ($access{'cats'}) {
 	# Show categorized modules?
 	print &ui_table_row($text{'edit_notabs'},
-		&ui_radio("notabs", int($user{'notabs'}),
+		&ui_radio("notabs", $user{'notabs'} || 0,
 			  [ [ 1, $text{'yes'} ],
 			    [ 2, $text{'no'} ],
 			    [ 0, $text{'default'} ] ]));
@@ -262,8 +262,8 @@ if ($access{'ips'}) {
 			    [ 1, $text{'edit_allow'}."<br>" ],
 			    [ 2, $text{'edit_deny'}."<br>" ] ]).
 		&ui_textarea("ips",
-		    join("\n", split(/\s+/, $user{'allow'} ? $user{'allow'}
-						           : $user{'deny'})),
+		    join("\n", split(/\s+/, $user{'allow'} ||
+					    $user{'deny'} || "")),
 		    4, 30));
 	}
 
@@ -277,7 +277,7 @@ if (&supports_rbac() && $access{'mode'} == 0) {
 
 if ($access{'times'}) {
 	# Show allowed days of the week
-	my %days = map { $_, 1 } split(/,/, $user{'days'});
+	my %days = map { $_, 1 } split(/,/, $user{'days'} || '');
 	my $daysels = "";
 	for(my $i=0; $i<7; $i++) {
 		$daysels .= &ui_checkbox("days", $i, $text{'day_'.$i},
@@ -290,10 +290,10 @@ if ($access{'times'}) {
 		$daysels);
 
 	# Show allow hour/minute range
-	my ($hf, $mf) = split(/\./, $user{'hoursfrom'});
-	my ($ht, $mt) = split(/\./, $user{'hoursto'});
+	my ($hf, $mf) = split(/\./, $user{'hoursfrom'} || '');
+	my ($ht, $mt) = split(/\./, $user{'hoursto'} || '');
 	print &ui_table_row($text{'edit_hours'},
-		&ui_radio("hours_def", $user{'hoursfrom'} eq '' ? 1 : 0,
+		&ui_radio("hours_def", $hf eq '' ? 1 : 0,
 			[ [ 1, $text{'edit_allhours'} ],
 		  	  [ 0, &text('edit_selhours',
 				&ui_textbox("hours_hfrom", $hf, 2),
@@ -337,14 +337,14 @@ my @mlist = grep { $access{'others'} || $has{$_->{'dir'}} ||
 		   $mcan{$_->{'dir'}} } &list_module_infos();
 my @links = ( &select_all_link("mod", 0, $text{'edit_selall'}),
 	      &select_invert_link("mod", 0, $text{'edit_invert'}) );
-my @cats = &unique(map { $_->{'category'} || "" } @mlist);
+my @cats = &unique(map { $_->{'category'} || '' } @mlist);
 my %catnames;
 &read_file("$config_directory/webmin.catnames", \%catnames);
 my $grids = "";
 foreach my $c (sort { $b cmp $a } @cats) {
-	my @cmlist = grep { $_->{'category'} eq $c } @mlist;
+	my @cmlist = grep { ($_->{'category'} || '') eq $c } @mlist;
 	$grids .= "<b>".($catnames{$c} ||
-			    $text{'category_'.$c})."</b><br>\n";
+			 $text{'category_'.$c})."</b><br>\n";
 	my @grid = ( );
 	my $sw = 0;
 	foreach my $m (@cmlist) {
