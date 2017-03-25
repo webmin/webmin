@@ -113,7 +113,7 @@ print &ui_table_row($text{'lv_petotal'},
 print &ui_table_row($text{'lv_pesize'},
 	&nice_size($vg->{'pe_size'}*1024));
 
-if ($in{'lv'}) {
+if ($in{'lv'} && !$lv->{'thin'}) {
 	# Device file and current status
 	print &ui_table_row($text{'lv_device'}, "<tt>$lv->{'device'}</tt>");
 
@@ -207,8 +207,6 @@ if (!$lv->{'is_snap'}) {
                                  map { 2**$_ } ( 7 .. 16) ]));
         }
 
-
-
 # Show free disk space
 if (@stat && $stat[2]) {
 	($total, $free) = &mount::disk_space($stat[1], $stat[0]);
@@ -232,6 +230,9 @@ if ($in{'lv'}) {
 			&ui_grid_table(\@pvlist, 4), 3);
 		}
 	}
+
+# Show thin pool users
+# XXX
 
 print &ui_table_end();
 if (!&can_resize_lv_stat(@stat)) {
@@ -261,7 +262,7 @@ else {
 	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 
-if ($in{'lv'} && !$stat[2] && !$lv->{'is_snap'} &&
+if ($in{'lv'} && !$stat[2] && !$lv->{'is_snap'} && !$lv->{'thin'} &&
     $stat[1] ne 'cloudmin' && $stat[1] ne 'iscsi') {
 	print &ui_hr();
 	print &ui_buttons_start();
@@ -299,7 +300,7 @@ if ($in{'lv'} && !$stat[2] && !$lv->{'is_snap'} &&
 	}
 
 # Show PV move form
-if ($in{'lv'} && @pvs > 1) {
+if ($in{'lv'} && @pvs > 1 && @pvinfo) {
 	print &ui_form_start("pvmove.cgi");
 	print &ui_hidden("vg", $in{'vg'});
 	print &ui_hidden("lv", $in{'lv'});

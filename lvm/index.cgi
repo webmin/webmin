@@ -202,7 +202,8 @@ if (@vgs) {
 			  $v->{'name'},
 			  &nice_size(($l->{'cow_size'} || $l->{'size'})*1024),
 			  $usedmsg,
-			  (@stat ? &device_message(@stat) : undef).
+			  (@stat ? &device_message(@stat) :
+			   $l->{'thin'} ? $text{'index_thin'} : undef).
 			  ($snap ? " ".&text('index_snapof', $snap->{'name'})
 				 : ""),
 			  ]);

@@ -303,8 +303,17 @@ else {
 				'number' => scalar(@rv) };
 			push(@rv, $lv);
 			}
-		elsif (/LV\s+Name\s+[^\/]/) {
-			# Ignore this, as we got the name from LV Path line
+		elsif (/LV\s+Name\s+([^\/ ]+)/) {
+			# Ignore this, as we got the name from LV Path line.
+			# UNLESS it doesn't match the current LV, in which
+			# case it is the start of a new thinpool LV.
+			if (!@rv || $rv[$#rv]->{'name'} ne $1) {
+				$lv = { 'name' => $1,
+					'device' => $1,
+					'thin' => $1,
+					'number' => scalar(@rv) };
+				push(@rv, $lv);
+				}
 			}
 		elsif (/VG\s+Name\s+(.*)/) {
 			$lv->{'vg'} = $1;
@@ -696,6 +705,7 @@ return %rv;
 sub device_status
 {
 local ($dev) = @_;
+return ( ) if ($dev !~ /^\//);
 local @st = &fdisk::device_status($dev);
 return @st if (@st);
 if (&foreign_check("server-manager")) {
@@ -880,7 +890,7 @@ return $out =~ /^(\d+)\./ && $1 >= 3 ||
 sub create_thin_pool
 {
 local ($datalv, $metadatalv) = @_;
-local $cmd = "lvconvert --type thin-pool --poolmetadata ".
+local $cmd = "lvconvert -y --type thin-pool --poolmetadata ".
 	     quotemeta($metadatalv->{'device'})." ".
 	     quotemeta($datalv->{'device'});
 local $out = &backquote_logged("$cmd 2>&1 </dev/null");
