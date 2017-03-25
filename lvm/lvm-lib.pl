@@ -875,5 +875,17 @@ return $out =~ /^(\d+)\./ && $1 >= 3 ||
        $out =~ /^(\d+)\.(\d+)\.(\d+)/ && $1 == 2 && $2 == 6 && $3 >= 35;
 }
 
+# create_thin_pool(&data-lv, &metadata-lv)
+# Convert two LVs into a thin pool
+sub create_thin_pool
+{
+local ($datalv, $metadatalv) = @_;
+local $cmd = "lvconvert --type thin-pool --poolmetadata ".
+	     quotemeta($metadatalv->{'device'})." ".
+	     quotemeta($datalv->{'device'});
+local $out = &backquote_logged("$cmd 2>&1 </dev/null");
+return $? ? $out : undef;
+}
+
 1;
 
