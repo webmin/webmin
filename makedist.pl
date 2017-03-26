@@ -112,7 +112,7 @@ foreach $m (@mlist) {
 		         $f =~ /\.(tar|wbm|wbt)\.gz$/ || $f =~ /\.pyc$/ ||
 			 $f eq "README.md" || $f =~ /^makemodule.*\.pl$/ ||
 			 $f eq "linux.sh" || $f eq "freebsd.sh" || 
-			 $f eq "LICENCE");
+			 $f eq "LICENCE" || $f eq "version");
 		$flist .= " $m/$f";
 		}
 	closedir(DIR);
