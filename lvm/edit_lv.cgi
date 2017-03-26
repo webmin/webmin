@@ -285,14 +285,18 @@ if ($in{'lv'} && !$stat[2] && !$lv->{'is_snap'} && !$lv->{'thin'} &&
 		# Use FS from fstab
 		print &ui_buttons_row("mkfs_form.cgi", $text{'lv_mkfs2'},
 			      &text('lv_mkfsdesc2', uc($stat[1])),
-			      &ui_hidden("dev", $lv->{'device'}),
-			      &ui_hidden("fs", $stat[1]));
+			      &ui_hidden("dev", $lv->{'device'}).
+			      &ui_hidden("fs", $stat[1]).
+			      &ui_hidden("lv", $in{'lv'}).
+			      &ui_hidden("vg", $in{'vg'}));
 		}
 	else {
 		# Can select FS
 		print &ui_buttons_row("mkfs_form.cgi", $text{'lv_mkfs'},
 			      $text{'lv_mkfsdesc'},
-			      &ui_hidden("dev", $lv->{'device'}),
+			      &ui_hidden("dev", $lv->{'device'}).
+			      &ui_hidden("lv", $in{'lv'}).
+			      &ui_hidden("vg", $in{'vg'}),
 			      &ui_select("fs", "ext3",
 				[ map { [ $_, $fdisk::text{"fs_".$_}." ($_)" ] }
 				      &fdisk::supported_filesystems() ]));

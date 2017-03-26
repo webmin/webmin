@@ -122,6 +122,7 @@ lv_moveheader=Move off physical volume
 lv_pvfrom=Move blocks from physical volume
 lv_pvto=To physical volume
 lv_moveok=Move Blocks
+lv_return=logical volume
 
 mkfs_title=Create Filesystem
 mkfs_desc=This form allows you to build a new $2 ($1) filesystem on logical volume $3. All existing data will be erased.
