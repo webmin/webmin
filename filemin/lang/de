@@ -1,6 +1,7 @@
 about_to_delete=Sie sind dabei folgende Elemente zu l&#246;schen:
 acl_allowed_for_edit=Mimetypen erlaubt f&#252;r Editierungen vom eingebautem Editor
 acl_allowed_paths=Erlaube Zugriff auf Verzeichnisse
+acl_allowed_paths2=(F&#252;r Nicht-Root-Benutzer)
 acl_bytes=bytes
 acl_epath=Pfad $1 existiert nicht
 acl_euser=Ausgew&#228;hter Unix Benutzer existiert nicht!
@@ -118,6 +119,7 @@ notallowed=Sie sind nicht berechtigt auf $1 zuzugreifen. Erlaubte Verzeichnisse 
 nothing_selected=Nichts ausgew&#228;hlt
 owner_group=Eigent&#252;mer-Gruppe
 owner_user=Eigent&#252;mer-Benutzer
+ownership=Eigent&#252;mer
 paste=Einf&#252;gen
 permissions=Rechte
 previous_page=vorherige Seite
