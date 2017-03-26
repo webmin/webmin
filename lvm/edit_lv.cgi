@@ -138,16 +138,19 @@ if ($in{'lv'} && !$lv->{'thin'}) {
 if ($lv->{'is_snap'}) {
 	if ($in{'lv'}) {
 		# Show which LV this is a snapshot of
-		local @snapof;
+		local $snapof;
 		if ($lv->{'snap_of'}) {
-			@snapof = grep { $_->{'name'} eq $lv->{'snap_of'}} @lvs;
+			($snapof) = grep { $_->{'name'} eq $lv->{'snap_of'} }
+					 @lvs;
 			}
 		else {
-			@snapof = grep { $_->{'size'} == $lv->{'size'} &&
-					 $_->{'has_snap'} } @lvs;
+			($snapof) = grep { $_->{'size'} == $lv->{'size'} &&
+					   $_->{'has_snap'} } @lvs;
 			}
-		if (@snapof == 1) {
-			$snapsel = "<tt>$snapof[0]->{'name'}</tt>";
+		if ($snapof) {
+			$snapsel = &ui_link(
+				"edit_lv.cgi?vg=$in{'vg'}&lv=$snapof->{'name'}",
+				$snapof->{'name'});
 			}
 		else {
 			$snapsel = "<i>$text{'lv_nosnap'}</i>";

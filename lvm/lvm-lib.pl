@@ -350,7 +350,12 @@ else {
 				$lv->{'snap_active'} = 0;
 				}
 			}
-		 elsif (/Read ahead sectors\s+(\d+|auto)/) {
+		elsif (/LV\s+Thin\s+origin\s+name\s+(\S+)/) {
+			# Snapshot in a thin pool
+			$lv->{'is_snap'} = 1;
+			$lv->{'snap_of'} = $1;
+			}
+		elsif (/Read ahead sectors\s+(\d+|auto)/) {
                         $lv->{'readahead'} = $1;
                         }
 		elsif (/Stripes\s+(\d+)/) {

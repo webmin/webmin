@@ -5,11 +5,11 @@
 require './lvm-lib.pl';
 &ReadParse();
 
+@lvs = &list_logical_volumes($in{'vg'});
 ($vg) = grep { $_->{'name'} eq $in{'vg'} } &list_volume_groups();
 $vg || &error($text{'vg_egone'});
 if ($in{'lv'}) {
-	($lv) = grep { $_->{'name'} eq $in{'lv'} }
-		     &list_logical_volumes($in{'vg'});
+	($lv) = grep { $_->{'name'} eq $in{'lv'} } @lvs;
 	$lv || &error($text{'lv_egone'});
 	$oldlv = { %$lv };
 	}
@@ -39,6 +39,13 @@ elsif ($in{'delete'}) {
 	print &ui_hidden("lv", $in{'lv'});
 	print "<b>",&text($lv->{'is_snap'} ? 'lv_rusnap' : 'lv_rusure',
 			  "<tt>$lv->{'device'}</tt>"),"</b><p>\n";
+	if ($lv->{'thin'}) {
+		@thinc = grep { $_->{'thin_in'} eq $lv->{'name'} } @lvs;
+		if (@thinc) {
+			print "<b>",&text('lv_delthin',
+					  scalar(@thinc)),"</b><p>\n";
+			}
+		}
 	print &ui_form_end([ [ 'confirm', $text{'lv_deleteok'} ] ]);
 	print "</center>\n";
 	&ui_print_footer("index.cgi?mode=lvs", $text{'index_return'});
