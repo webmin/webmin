@@ -61,7 +61,8 @@ else {
 		}
 	elsif ($lv->{'thin_in'}) {
 		print &ui_table_row($text{'lv_thin2'},
-			"<tt>$lv->{'thin_in'}</tt>");
+			&ui_link("edit_lv.cgi?vg=$in{'vg'}&lv=$lv->{'thin_in'}",
+				 $lv->{'thin_in'}));
 		}
 
 	if (!$in{'lv'}) {

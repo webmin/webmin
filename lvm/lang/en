@@ -97,6 +97,7 @@ lv_snaprollback=Rollback Snapshot
 lv_rusure=Are you sure you want to delete the logical volume $1 ? Any data in a filesystem on this logical volume will be deleted forever!
 lv_rusnap=Are you sure you want to delete the snapshot $1 ?
 lv_rusnaprb=Are you sure you want to rollback the snapshot $1 ?
+lv_delthin=WARNING! This LV is a thin pool for $1 other thinly provisioned logical volumes, which will also be lost if it is deleted!
 lv_deleteok=Delete Now
 lv_snaprollbackok=Rollback Now
 lv_err2=Failed to delete logical volume
