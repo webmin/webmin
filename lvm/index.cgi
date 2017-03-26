@@ -176,6 +176,11 @@ if (@vgs) {
 					  $text{'index_lvuse'} ], 100);
 		foreach $l (@alllvs) {
 			($v) = grep { $_->{'name'} eq $l->{'vg'} } @vgs;
+			my @thinc;
+			if ($l->{'thin'}) {
+				@thinc = grep { $_->{'thin_in'} eq
+						$l->{'name'} } @alllvs;
+				}
 			if ($lv->{'is_snap'}) {
 				($snapof) = grep {
 					$_->{'size'} == $l->{'size'} &&
@@ -203,7 +208,8 @@ if (@vgs) {
 			  &nice_size(($l->{'cow_size'} || $l->{'size'})*1024),
 			  $usedmsg,
 			  (@stat ? &device_message(@stat) :
-			   $l->{'thin'} ? $text{'index_thin'} : undef).
+			   $l->{'thin'} ? &text('index_thin', scalar(@thinc)) :
+					  undef).
 			  ($snap ? " ".&text('index_snapof', $snap->{'name'})
 				 : ""),
 			  ]);

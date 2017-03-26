@@ -245,7 +245,16 @@ if ($in{'lv'}) {
 	}
 
 # Show thin pool users
-# XXX
+if ($in{'lv'} && $lv->{'thin'}) {
+	@thinc = grep { $_->{'thin_in'} eq $lv->{'name'} } @lvs;
+	if (@thinc) {
+		foreach $t (@thinc) {
+			push(@thinlist, &ui_link("edit_lv.cgi?vg=$in{'vg'}&lv=$t->{'name'}", $t->{'name'})." ".&nice_size($t->{'size'} * 1024));
+			}
+		print &ui_table_row($text{'lv_thincs'},
+			&ui_grid_table(\@thinlist, 4), 3);
+		}
+	}
 
 print &ui_table_end();
 if (!&can_resize_lv_stat(@stat)) {

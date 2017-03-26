@@ -39,7 +39,7 @@ index_lvsize=Size
 index_lvused=Space used
 index_lvuse=Used for
 index_snapof=(Snapshot of $1)
-index_thin=LVM thin pool storage
+index_thin=LVM thin pool for $1 LVs
 
 lv_edit=Edit Logical Volume
 lv_edit_snap=Edit Snapshot
@@ -116,6 +116,7 @@ lv_mountmsg=Mount this LV on new directory on your system, so that it can be use
 lv_free=Free percentage
 lv_freedisk=Free space
 lv_pvs=Physical volumes allocated
+lv_thincs=LVs in this thin pool
 lv_snapusage=Snapshot use percentage
 lv_egone=Logical volume no longer exists!
 lv_moveheader=Move off physical volume
