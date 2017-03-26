@@ -71,7 +71,11 @@ else {
 		       &list_logical_volumes($in{'vg'});
 	$same && (!$in{'lv'} || $in{'lv'} ne $in{'name'}) &&
 		&error($text{'lv_esame'});
-	if ($in{'size_mode'} == 0) {
+	if ($in{'size_mode'} == -1) {
+		# Cannot change
+		$size = undef;
+		}
+	elsif ($in{'size_mode'} == 0) {
 		# Absolute size
 		$in{'size'} =~ /^\d+$/ || &error($text{'lv_esize'});
 		$size = $in{'size'};
@@ -144,7 +148,7 @@ else {
 	elsif ($lv->{'is_snap'}) {
 		# Modifying a snapshot
 		$oldsize = $lv->{'cow_size'} || $lv->{'size'};
-		if ($oldsize != $size) {
+		if (defined($size) && $oldsize != $size) {
 			$err = &resize_snapshot_volume($lv, $size);
 			&error("<pre>$err</pre>") if ($err);
 			$lv->{'size'} = $size;

@@ -83,6 +83,10 @@ else {
 				&ui_select("pvof", undef, \@pvopts)) ],
 			  ]), 3);
 		}
+	elsif ($lv->{'snap_of'} && $lv->{'thin_in'}) {
+		# Snapshot inside a thin pool ... cannot resize
+		print &ui_hidden("size_mode", -1);
+		}
 	else {
 		# Check if size is exactly some number of TB, GB or MB, less
 		# than 10240
