@@ -129,6 +129,7 @@ else {
 			$lv->{'stripesize'} = $in{'stripesize'};
 			$lv->{'readahead'} = $in{'readahead'};
 			}
+		$lv->{'thin_in'} = $in{'thin'};
 		$err = &create_logical_volume($lv);
 		&error("<pre>$err</pre>") if ($err);
 		&webmin_log("create", "lv", $in{'name'}, $lv);

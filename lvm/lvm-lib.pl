@@ -362,6 +362,9 @@ else {
 		elsif (/Allocated\s+to\s+snapshot\s+([0-9\.]+)%/i) {
 			$lv->{'snapusage'} = $1;
 			}
+		elsif (/LV\s+Pool\s+name\s+(\S+)/) {
+			$lv->{'thin_in'} = $1;
+			}
 		}
 	close(DISPLAY);
 	@rv = grep { $_->{'vg'} eq $_[0] } @rv;
@@ -422,21 +425,29 @@ elsif ($_[0]->{'size_of'}) {
 	$suffix = " ".quotemeta("/dev/".$_[0]->{'size_of'});
 	}
 else {
-	$cmd .= "-L$_[0]->{'size'}k";
+	$cmd .= ($_[0]->{'thin_in'} ? "-V" : "-L").$_[0]->{'size'}."k";
 	}
 if ($_[0]->{'is_snap'}) {
 	$cmd .= " -s ".quotemeta("/dev/$_[0]->{'vg'}/$_[0]->{'snapof'}");
 	}
 else {
 	$cmd .= " -p ".quotemeta($_[0]->{'perm'});
-	$cmd .= " -C ".quotemeta($_[0]->{'alloc'});
+	if (!$_[0]->{'thin_in'}) {
+		$cmd .= " -C ".quotemeta($_[0]->{'alloc'});
+		}
 	$cmd .= " -r ".quotemeta($_[0]->{'readahead'})
 		if ($_[0]->{'readahead'} && $_[0]->{'readahead'} ne "auto");
 	$cmd .= " -i ".quotemeta($_[0]->{'stripe'})
 		if ($_[0]->{'stripe'});
 	$cmd .= " -I ".quotemeta($_[0]->{'stripesize'})
 		if ($_[0]->{'stripesize'} && $_[0]->{'stripe'});
-	$cmd .= " ".quotemeta($_[0]->{'vg'});
+	if ($_[0]->{'thin_in'}) {
+		$cmd .= " --thinpool ".quotemeta($_[0]->{'vg'})."/".
+				       quotemeta($_[0]->{'thin_in'});
+		}
+	else {
+		$cmd .= " ".quotemeta($_[0]->{'vg'});
+		}
 	}
 $cmd .= $suffix;
 local $out = &backquote_logged("$cmd 2>&1 </dev/null");

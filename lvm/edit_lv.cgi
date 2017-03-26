@@ -6,6 +6,7 @@ require './lvm-lib.pl';
 ($vg) = grep { $_->{'name'} eq $in{'vg'} } &list_volume_groups();
 $vg || &error($text{'vg_egone'});
 @lvs = &list_logical_volumes($in{'vg'});
+@thins = grep { $_->{'thin'} } @lvs;
 @pvs = &list_physical_volumes($in{'vg'});
 
 $vgdesc = &text('lv_vg', $vg->{'name'});
@@ -49,6 +50,18 @@ else {
 	else {
 		print &ui_table_row($text{'lv_name'},
 				    &ui_textbox("name", $lv->{'name'}, 30));
+		}
+
+	# Thinpool to create in, if any exist
+	if (!$in{'lv'} && @thins) {
+		print &ui_table_row($text{'lv_thin'},
+			&ui_select("thin", "",
+				   [ [ "", $text{'lv_nothin'} ],
+				     (map { $_->{'name'} } @thins) ]), 3);
+		}
+	elsif ($lv->{'thin_in'}) {
+		print &ui_table_row($text{'lv_thin2'},
+			"<tt>$lv->{'thin_in'}</tt>");
 		}
 
 	if (!$in{'lv'}) {
