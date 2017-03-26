@@ -427,6 +427,9 @@ elsif ($lv->{'size_of'}) {
 	$cmd .= "-l $lv->{'size'}%PVS";
 	$suffix = " ".quotemeta("/dev/".$lv->{'size_of'});
 	}
+elsif ($lv->{'thin_in'} && $lv->{'is_snap'}) {
+	# For a snapshot inside a thin pool, no size is needed
+	}
 else {
 	$cmd .= ($lv->{'thin_in'} ? "-V" : "-L").$lv->{'size'}."k";
 	}
