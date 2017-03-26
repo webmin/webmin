@@ -4372,6 +4372,7 @@ if (-r $config{'dhparams_file'}) {
 		my $nid = Net::SSLeay::OBJ_sn2nid("secp384r1");
 		my $curve = Net::SSLeay::EC_KEY_new_by_curve_name($nid);
 		Net::SSLeay::CTX_set_tmp_ecdh($ssl_ctx, $curve);
+		Net::SSLeay::BIO_free($bio);
 		};
 	}
 if ($@) {
