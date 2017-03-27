@@ -3,23 +3,24 @@
 # Create a Debian package for a webmin or usermin module or theme
 
 use POSIX;
+use Term::ANSIColor qw(:constants);
 
-$licence = "BSD";
-$email = "Jamie Cameron <jcameron\@webmin.com>";
-$target_dir = "/tmp";
+my $licence = "BSD";
+my $email = "Jamie Cameron <jcameron\@webmin.com>";
+my $target_dir = "/tmp";
 
-$tmp_dir = "/tmp/debian-module";
-$debian_dir = "$tmp_dir/DEBIAN";
-$control_file = "$debian_dir/control";
-$preinstall_file = "$debian_dir/preinst";
-$postinstall_file = "$debian_dir/postinst";
-$preuninstall_file = "$debian_dir/prerm";
-$postuninstall_file = "$debian_dir/postrm";
-$copyright_file = "$debian_dir/copyright";
-$changelog_file = "$debian_dir/changelog";
-$files_file = "$debian_dir/files";
+my $tmp_dir = "/tmp/debian-module";
+my $debian_dir = "$tmp_dir/DEBIAN";
+my $control_file = "$debian_dir/control";
+my $preinstall_file = "$debian_dir/preinst";
+my $postinstall_file = "$debian_dir/postinst";
+my $preuninstall_file = "$debian_dir/prerm";
+my $postuninstall_file = "$debian_dir/postrm";
+my $copyright_file = "$debian_dir/copyright";
+my $changelog_file = "$debian_dir/changelog";
+my $files_file = "$debian_dir/files";
 
--r "/etc/debian_version" || die "makemoduledeb.pl must be run on Debian";
+-r "/etc/debian_version" || die RED, "makemoduledeb.pl must be run on Debian", RESET;
 
 # Parse command-line args
 while(@ARGV) {
@@ -79,19 +80,21 @@ while(@ARGV) {
 
 # Validate args
 if (!$dir) {
-	print STDERR "usage: makemoduledeb.pl [--force-theme]\n";
-	print STDERR "                        [--deb-depends]\n";
-	print STDERR "                        [--no-prefix]\n";
-	print STDERR "                        [--licence name]\n";
-	print STDERR "                        [--email 'name <address>']\n";
-	print STDERR "                        [--upstream 'name <address>']\n";
-	print STDERR "                        [--provides provides]\n";
-	print STDERR "                        [--usermin]\n";
-	print STDERR "                        [--target-dir directory]\n";
-	print STDERR "                        [--dir directory-in-package]\n";
-	print STDERR "                        [--allow-overwrite]\n";
-	print STDERR "                        [--dsc-file file.dsc]\n";
-	print STDERR "                        <module> [version]\n";
+	print "usage: ", CYAN, "makemoduledeb.pl ";
+	print YELLOW, "[--force-theme]\n";
+	print "                        [--deb-depends]\n";
+	print "                        [--no-prefix]\n";
+	print "                        [--licence name]\n";
+	print "                        [--email 'name <address>']\n";
+	print "                        [--upstream 'name <address>']\n";
+	print "                        [--provides provides]\n";
+	print "                        [--usermin]\n";
+	print "                        [--target-dir directory]\n";
+	print "                        [--dir directory-in-package]\n";
+	print "                        [--allow-overwrite]\n";
+	print "                        [--dsc-file file.dsc]\n";
+	print CYAN, "                        <module> ";
+	print YELLOW, "[version]\n", RESET;
 	exit(1);
 	}
 chop($par = `dirname $dir`);
