@@ -105,7 +105,9 @@ $par = &untaint($par);
 chop($source_mod = `/bin/basename $dir`);
 $source_mod = &untaint($source_mod);
 $source_dir = "$par/$source_mod";
-$mod = $final_mod || $source_mod;
+&read_file("$source_dir/module.info", \%minfo);
+&read_file("$source_dir/theme.info", \%tinfo);
+$mod = $final_mod || $minfo{'default_dir'} || $tinfo{'default_dir'} || $source_mod;
 if (!-d $basedir) {
 	die "RPM directory $basedir does not exist";
 	}
@@ -122,7 +124,7 @@ if (!-d $spec_dir || !-d $rpm_source_dir || !-d $rpm_dir) {
 
 # Is this actually a module or theme directory?
 -d $source_dir || die "$dir is not a directory";
-if (&read_file("$source_dir/module.info", \%minfo) && $minfo{'desc'}) {
+if ($minfo{'desc'}) {
 	$depends = join(" ", map { s/\/[0-9\.]+//; $_ }
 				grep { !/^[0-9\.]+$/ }
 				  split(/\s+/, $minfo{'depends'}));
@@ -139,7 +141,7 @@ if (&read_file("$source_dir/module.info", \%minfo) && $minfo{'desc'}) {
 	$iver = $minfo{'version'};
 	$post_config = 1;
 	}
-elsif (&read_file("$source_dir/theme.info", \%tinfo) && $tinfo{'desc'}) {
+elsif ($tinfo{'desc'}) {
 	if ($tinfo{'usermin'} && (!$tinfo{'usermin'} || $force_usermin)) {
 		$prefix = "ust-";
 		$desc = "Usermin theme '$tinfo{'desc'}'";
