@@ -1,6 +1,8 @@
 #!/usr/bin/perl
 # makemoduledeb.pl
 # Create a Debian package for a webmin or usermin module or theme
+use strict;
+use warnings;
 
 use POSIX;
 use Term::ANSIColor qw(:constants);
@@ -20,11 +22,14 @@ my $copyright_file = "$debian_dir/copyright";
 my $changelog_file = "$debian_dir/changelog";
 my $files_file = "$debian_dir/files";
 
--r "/etc/debian_version" || die RED, "makemoduledeb.pl must be run on Debian", RESET;
+-r "/etc/debian_version" ||
+	die RED, "makemoduledeb.pl must be run on Debian", RESET;
 
 # Parse command-line args
+my ($force_theme, $url, $upstream, $debdepends, $no_prefix, $force_usermin, $release,
+    $allow_overwrite, $final_mod, $dsc_file, $dir, $ver);
 while(@ARGV) {
-	local $a = shift(@ARGV);
+	my $a = shift(@ARGV);
 	if ($a eq "--force-theme") {
 		$force_theme = 1;
 		}
@@ -41,7 +46,7 @@ while(@ARGV) {
 		$upstream = shift(@ARGV);
 		}
 	elsif ($a eq "--deb-depends") {
-		$rpmdepends = 1;
+		$debdepends = 1;
 		}
 	elsif ($a eq "--no-prefix") {
 		$no_prefix = 1;
@@ -97,16 +102,18 @@ if (!$dir) {
 	print YELLOW, "[version]\n", RESET;
 	exit(1);
 	}
-chop($par = `dirname $dir`);
-chop($source_mod = `basename $dir`);
-$source_dir = "$par/$source_mod";
-$mod = $final_mod || $source_mod;
+chop(my $par = `dirname $dir`);
+chop(my $source_mod = `basename $dir`);
+my $source_dir = "$par/$source_mod";
+my $mod = $final_mod || $source_mod;
 if ($mod eq "." || $mod eq "..") {
 	die "directory must be an actual directory (module) name, not \"$mod\"";
 	}
 
 # Is this actually a module or theme directory?
--d $source_dir || die "$source_dir is not a directory";
+my ($depends, $prefix, $desc, $product, $iver, $istheme, $post_config);
+-d $source_dir || die RED, "$source_dir is not a directory", RESET;
+my (%minfo, %tinfo);
 if (&read_file("$source_dir/module.info", \%minfo) && $minfo{'desc'}) {
 	$depends = join(" ", map { s/\/[0-9\.]+//; $_ }
 				grep { !/^[0-9\.]+$/ }
@@ -143,8 +150,8 @@ else {
 	die "$source_dir does not appear to be a webmin module or theme";
 	}
 $prefix = "" if ($no_prefix);
-$usr_dir = "$tmp_dir/usr/share/$product";
-$ucproduct = ucfirst($product);
+my $usr_dir = "$tmp_dir/usr/share/$product";
+my $ucproduct = ucfirst($product);
 $ver ||= $iver;		# Use module.info version, or 1
 $ver ||= 1;
 $ver .= "-".$release if ($release);
@@ -165,7 +172,7 @@ system("cd $usr_dir && chmod -R og-w .");
 if ($< == 0) {
         system("cd $usr_dir && chown -R root:bin .");
         }
-$size = int(`du -sk $tmp_dir`);
+my $size = int(`du -sk $tmp_dir`);
 system("find $usr_dir -name .svn | xargs rm -rf");
 system("find $usr_dir -name .xvpics | xargs rm -rf");
 system("find $usr_dir -name '*.bak' | xargs rm -rf");
@@ -185,10 +192,10 @@ system("(find $usr_dir -name '*.cgi' ; find $usr_dir -name '*.pl') | xargs chmod
 
 # Build list of dependencies on other Debian packages, for inclusion as a
 # Requires: header
-@rdeps = ( "base", "perl", $product );
-if ($rpmdepends) {
-	foreach $d (split(/\s+/, $minfo{'depends'})) {
-		local ($dwebmin, $dmod, $dver);
+my @rdeps = ( "base", "perl", $product );
+if ($debdepends) {
+	foreach my $d (split(/\s+/, $minfo{'depends'})) {
+		my ($dwebmin, $dmod, $dver);
 		if ($d =~ /^[0-9\.]+$/) {
 			# Depends on a version of Webmin
 			$dwebmin = $d;
@@ -205,7 +212,7 @@ if ($rpmdepends) {
 
 		# If the module is part of Webmin, we don't need to depend on it
 		if ($dmod) {
-			local %dinfo;
+			my %dinfo;
 			&read_file("$dmod/module.info", \%dinfo);
 			next if ($dinfo{'longdesc'});
 			}
@@ -214,12 +221,12 @@ if ($rpmdepends) {
 				     ($prefix.$dmod));
 		}
 	}
-$rdeps = join(", ", @rdeps);
+my $rdeps = join(", ", @rdeps);
 
 # Create the control file
-$kbsize = int(($size-1) / 1024)+1;
-open(CONTROL, ">$control_file");
-print CONTROL <<EOF;
+my $kbsize = int(($size-1) / 1024)+1;
+open(my $CONTROL, ">", "$control_file");
+print $CONTROL <<EOF;
 Package: $prefix$mod
 Version: $ver
 Section: admin
@@ -233,31 +240,31 @@ Maintainer: $email
 Provides: $prefix$mod
 Description: $desc
 EOF
-close(CONTROL);
+close($CONTROL);
 
 # Create the copyright file
-$nowstr = strftime("%a, %d %b %Y %H:%M:%S %z", localtime(time()));
-open(COPY, ">$copyright_file");
-print COPY "This package was debianized by $email on\n";
-print COPY "$nowstr.\n";
-print COPY "\n";
+my $nowstr = strftime("%a, %d %b %Y %H:%M:%S %z", localtime(time()));
+open(my $COPY, ">", "$copyright_file");
+print $COPY "This package was debianized by $email on\n";
+print $COPY "$nowstr.\n";
+print $COPY "\n";
 if ($url) {
-	print COPY "It was downloaded from: $url\n";
-	print COPY "\n";
+	print $COPY "It was downloaded from: $url\n";
+	print $COPY "\n";
 	}
-print COPY "Upstream author: $upstream\n";
-print COPY "\n";
-print COPY "Copyright: $licence\n";
-close(COPY);
+print $COPY "Upstream author: $upstream\n";
+print $COPY "\n";
+print $COPY "Copyright: $licence\n";
+close($COPY);
 
 # Read the module's CHANGELOG file
-$changes = { };
-$f = "$usr_dir/$mod/CHANGELOG";
+my $changes = { };
+my $f = "$usr_dir/$mod/CHANGELOG";
 if (-r $f) {
 	# Read its change log file
-	local $inversion;
-	open(LOG, $f);
-	while(<LOG>) {
+	my $inversion;
+	open(my $LOG, $f);
+	while(<$LOG>) {
 		s/\r|\n//g;
 		if (/^----\s+Changes\s+since\s+(\S+)\s+----/) {
 			$inversion = $1;
@@ -266,38 +273,39 @@ if (-r $f) {
 			push(@{$changes->{$inversion}}, $_);
 			}
 		}
-	close(LOG);
+	close($LOG);
 	}
 
 # Create the changelog file from actual changes
 if (%$changes) {
-	open(CHANGELOG, ">$changelog_file");
-	foreach $v (sort { $a <=> $b } (keys %$changes)) {
+	open(my $CHANGELOG, ">", "$changelog_file");
+	my $forv;
+	foreach my $v (sort { $a <=> $b } (keys %$changes)) {
 		if ($ver > $v && sprintf("%.2f0", $ver) == $v) {
 			$forv = $ver;
 			}
 		else {
 			$forv = sprintf("%.2f0", $v+0.01);
 			}
-		print CHANGELOG "$prefix$mod ($forv) stable; urgency=low\n";
-		print CHANGELOG "\n";
-		foreach $c (@{$changes->{$v}}) {
-			@lines = &wrap_lines($c, 65);
-			print CHANGELOG " * $lines[0]\n";
-			foreach $l (@lines[1 .. $#lines]) {
-				print CHANGELOG "   $l\n";
+		print $CHANGELOG "$prefix$mod ($forv) stable; urgency=low\n";
+		print $CHANGELOG "\n";
+		foreach my $c (@{$changes->{$v}}) {
+			my @lines = &wrap_lines($c, 65);
+			print $CHANGELOG " * $lines[0]\n";
+			foreach my $l (@lines[1 .. $#lines]) {
+				print $CHANGELOG "   $l\n";
 				}
 			}
-		print CHANGELOG "\n";
-		print CHANGELOG "-- $email\n";
-		print CHANGELOG "\n";
+		print $CHANGELOG "\n";
+		print $CHANGELOG "-- $email\n";
+		print $CHANGELOG "\n";
 		}
+	close($CHANGELOG);
 	}
-close(CHANGELOG);
 
 # Create the pre-install script, which checks if Webmin is installed
-open(SCRIPT, ">$preinstall_file");
-print SCRIPT <<EOF;
+open(my $PREINSTALL, ">", "$preinstall_file");
+print $PREINSTALL <<EOF;
 #!/bin/sh
 if [ ! -r /etc/$product/config -o ! -d /usr/share/$product ]; then
 	echo "$ucproduct does not appear to be installed on your system."
@@ -321,12 +329,12 @@ if [ -d /usr/share/$product/$mod -a "\$1" != "upgrade" -a "$allow_overwrite" != 
 	exit 1
 fi
 EOF
-close(SCRIPT);
+close($PREINSTALL);
 system("chmod 755 $preinstall_file");
 
 # Create the post-install script
-open(SCRIPT, ">$postinstall_file");
-print SCRIPT <<EOF;
+open(my $POSTINSTALL, ">", "$postinstall_file");
+print $POSTINSTALL <<EOF;
 #!/bin/sh
 if [ "$post_config" = "1" ]; then
 	# Copy config file to /etc/webmin or /etc/usermin
@@ -375,12 +383,12 @@ if [ -r "/usr/share/$product/$mod/postinstall.sh" ]; then
 	WEBMIN_CONFIG=/etc/$product WEBMIN_VAR=/var/$product /usr/share/$product/$mod/postinstall.sh
 fi
 EOF
-close(SCRIPT);
+close($POSTINSTALL);
 system("chmod 755 $postinstall_file");
 
 # Create the pre-uninstall script
-open(SCRIPT, ">$preuninstall_file");
-print SCRIPT <<EOF;
+open(my $PREUNINSTALL, ">", "$preuninstall_file");
+print $PREUNINSTALL <<EOF;
 #!/bin/sh
 # De-activate this theme, if in use and if we are not upgrading
 if [ "$istheme" = "1" -a "\$1" != "upgrade" ]; then
@@ -402,7 +410,7 @@ if [ "$product" = "webmin" -a "\$1" = "0" -a -r "/usr/share/$product/$mod/uninst
 fi
 /bin/true
 EOF
-close(SCRIPT);
+close($PREUNINSTALL);
 system("chmod 755 $preuninstall_file");
 
 # Run the actual build command
@@ -413,29 +421,29 @@ print "Wrote $target_dir/${prefix}${mod}_${ver}_all.deb\n";
 # Create the .dsc file, if requested
 if ($dsc_file) {
 	# Create the .diff file, which just contains the debian directory
-	$diff_file = $dsc_file;
+	my $diff_file = $dsc_file;
 	$diff_file =~ s/[^\/]+$//; $diff_file .= "$prefix$mod-$ver.diff";
-	$diff_orig_dir = "$tmp_dir/$prefix$mod-$ver-orig";
-	$diff_new_dir = "$tmp_dir/$prefix$mod-$ver";
+	my $diff_orig_dir = "$tmp_dir/$prefix$mod-$ver-orig";
+	my $diff_new_dir = "$tmp_dir/$prefix$mod-$ver";
 	mkdir($diff_orig_dir, 0755);
 	mkdir($diff_new_dir, 0755);
 	system("cp -r $debian_dir $diff_new_dir");
 	system("cd $tmp_dir && diff -r -N -u $prefix$mod-$ver-orig $prefix$mod-$ver >$diff_file");
-	$diffmd5 = `md5sum $diff_file`;
+	my $diffmd5 = `md5sum $diff_file`;
 	$diffmd5 =~ s/\s+.*\n//g;
-	@diffst = stat($diff_file);
+	my @diffst = stat($diff_file);
 
 	# Create a tar file of the module directory
-	$tar_file = $dsc_file;
+	my $tar_file = $dsc_file;
 	$tar_file =~ s/[^\/]+$//; $tar_file .= "$prefix$mod-$ver.tar.gz";
 	system("cd $par ; tar czf $tar_file $source_mod");
-	$md5 = `md5sum $tar_file`;
+	my $md5 = `md5sum $tar_file`;
 	$md5 =~ s/\s+.*\n//g;
-	@st = stat($tar_file);
+	my @st = stat($tar_file);
 
 	# Finally create the .dsc
-	open(DSC, ">$dsc_file");
-	print DSC <<EOF;
+	open(my $DSC, ">", "$dsc_file");
+	print $DSC <<EOF;
 Format: 1.0
 Source: $prefix$mod
 Version: $ver
@@ -449,25 +457,26 @@ Files:
   $md5 $st[7] ${prefix}${mod}-$ver.tar.gz
   $diffmd5 $diffst[7] ${prefix}${mod}-${ver}.diff
 EOF
-	close(DSC);
+	close($DSC);
 	}
 
 # Clean up
+# XXX Dangerous! Fix me.
 system("rm -rf $tmp_dir");
 
 # read_file(file, &assoc, [&order], [lowercase])
 # Fill an associative array with name=value pairs from a file
 sub read_file
 {
-open(ARFILE, $_[0]) || return 0;
-while(<ARFILE>) {
+open(my $ARFILE, "<", "$_[0]") || return 0;
+while(<$ARFILE>) {
 	s/\r|\n//g;
         if (!/^#/ && /^([^=]+)=(.*)$/) {
 		$_[1]->{$_[3] ? lc($1) : $1} = $2;
 		push(@{$_[2]}, $1) if ($_[2]);
         	}
         }
-close(ARFILE);
+close($ARFILE);
 return 1;
 }
 
@@ -476,10 +485,10 @@ return 1;
 # the given width
 sub wrap_lines
 {
-local @rv;
-local $w = $_[1];
-local $rest;
-foreach $rest (split(/\n/, $_[0])) {
+my @rv;
+my $w = $_[1];
+my $rest;
+foreach my $rest (split(/\n/, $_[0])) {
 	if ($rest =~ /\S/) {
 		while($rest =~ /^(.{1,$w}\S*)\s*([\0-\377]*)$/) {
 			push(@rv, $1);
