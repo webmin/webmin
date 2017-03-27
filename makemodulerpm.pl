@@ -1,24 +1,35 @@
 #!/usr/bin/perl
 # makemodulerpm.pl
 # Create an RPM for a webmin or usermin module or theme
+use strict;
+use warnings;
 
-$target_dir = "/tmp";	# where to copy the RPM to
+# Colors!
+use Term::ANSIColor qw(:constants);
 
-if (-d "/usr/src/OpenLinux") {
-	$basedir = "/usr/src/OpenLinux";
+my $basedir;
+# Does any system still have a redhat dir?
+if (-d "$ENV{'HOME'}" . "/redhat") {
+	$basedir = "$ENV{'HOME'}" . "/redhat";
 	}
-else {
-	$basedir = "/usr/src/redhat";
+elsif (-d "$ENV{'HOME'}" . "/rpmbuild") {
+	$basedir = "$ENV{'HOME'}" . "/rpmbuild";
 	}
-$licence = "Freeware";
-$release = 1;
-$< = $>;		# If running setuid
+my $target_dir = "$basedir" . "/RPMS/noarch";	# where to copy the RPM to
+
+my $licence = "BSD";
+my $release = 1;
 $ENV{'PATH'} = "/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin";
-$allow_overwrite = 0;
+my $allow_overwrite = 0;
+
+my ($force_theme, $rpmdepends, $no_prefix, $vendor, $provides, $url,
+    $force_usermin, $final_mod, $sign, $epoch, $dir, $ver);
+my @extrareqs;
 
 # Parse command-line args
 while(@ARGV) {
-	local $a = &untaint(shift(@ARGV));
+	# XXX Untainting isn't needed when running as non-root?
+	my $a = &untaint(shift(@ARGV));
 	if ($a eq "--force-theme") {
 		$force_theme = 1;
 		}
@@ -83,47 +94,54 @@ while(@ARGV) {
 
 # Validate args
 if (!$dir) {
-	print STDERR "usage: makemodulerpm.pl [--force-theme]\n";
-	print STDERR "                        [--rpm-dir directory]\n";
-	print STDERR "                        [--rpm-depends]\n";
-	print STDERR "                        [--no-prefix]\n";
-	print STDERR "                        [--vendor name]\n";
-	print STDERR "                        [--licence name]\n";
-	print STDERR "                        [--url url]\n";
-	print STDERR "                        [--provides provides]\n";
-	print STDERR "                        [--usermin]\n";
-	print STDERR "                        [--release number]\n";
-	print STDERR "                        [--epoch number]\n";
-	print STDERR "                        [--target-dir directory]\n";
-	print STDERR "                        [--dir directory-in-package]\n";
-	print STDERR "                        [--allow-overwrite]\n";
-	print STDERR "                        <module> [version]\n";
+	print "usage: ";
+	print CYAN, "makemodulerpm.pl ";
+	print YELLOW, "[--force-theme]\n";
+	print "                        [--rpm-dir directory]\n";
+	print "                        [--rpm-depends]\n";
+	print "                        [--no-prefix]\n";
+	print "                        [--vendor name]\n";
+	print "                        [--licence name]\n";
+	print "                        [--url url]\n";
+	print "                        [--provides provides]\n";
+	print "                        [--usermin]\n";
+	print "                        [--release number]\n";
+	print "                        [--epoch number]\n";
+	print "                        [--target-dir directory]\n";
+	print "                        [--dir directory-in-package]\n";
+	print "                        [--allow-overwrite]\n";
+	print CYAN, "                        <module> ";
+	print YELLOW, "[version]\n", RESET;
 	exit(1);
 	}
+my $par;
 chop($par = `/usr/bin/dirname $dir`);
 $par = &untaint($par);
+my $source_mod;
 chop($source_mod = `/bin/basename $dir`);
 $source_mod = &untaint($source_mod);
-$source_dir = "$par/$source_mod";
+my $source_dir = "$par/$source_mod";
+my (%minfo, %tinfo);
 &read_file("$source_dir/module.info", \%minfo);
 &read_file("$source_dir/theme.info", \%tinfo);
-$mod = $final_mod || $minfo{'default_dir'} || $tinfo{'default_dir'} || $source_mod;
+my $mod = $final_mod || $minfo{'default_dir'} || $tinfo{'default_dir'} || $source_mod;
 if (!-d $basedir) {
 	die "RPM directory $basedir does not exist";
 	}
 if ($mod eq "." || $mod eq "..") {
 	die "directory must be an actual directory (module) name, not \"$mod\"";
 	}
-$spec_dir = "$basedir/SPECS";
-$rpm_source_dir = "$basedir/SOURCES";
-$rpm_dir = "$basedir/RPMS/noarch";
-$source_rpm_dir = "$basedir/SRPMS";
+my $spec_dir = "$basedir/SPECS";
+my $rpm_source_dir = "$basedir/SOURCES";
+my $rpm_dir = "$basedir/RPMS/noarch";
+my $source_rpm_dir = "$basedir/SRPMS";
 if (!-d $spec_dir || !-d $rpm_source_dir || !-d $rpm_dir) {
 	die "RPM directory $basedir is not valid";
 	}
 
 # Is this actually a module or theme directory?
 -d $source_dir || die "$dir is not a directory";
+my ($depends, $prefix, $desc, $prog, $iver, $istheme, $post_config);
 if ($minfo{'desc'}) {
 	$depends = join(" ", map { s/\/[0-9\.]+//; $_ }
 				grep { !/^[0-9\.]+$/ }
@@ -160,7 +178,7 @@ else {
 	die "$source_dir does not appear to be a webmin module or theme";
 	}
 $prefix = "" if ($no_prefix);
-$ucprog = ucfirst($prog);
+my $ucprog = ucfirst($prog);
 $ver ||= $iver;		# Use module.info version, or 1
 $ver ||= 1;
 
@@ -180,7 +198,6 @@ if (-r "/tmp/makemodulerpm/$mod/EXCLUDE") {
 	system("cd /tmp/makemodulerpm/$mod && cat EXCLUDE | xargs rm -rf");
 	system("rm -f /tmp/makemodulerpm/$mod/EXCLUDE");
 	}
-system("/bin/chown -R root:bin /tmp/makemodulerpm/$mod");
 
 # Tar up the directory
 system("cd /tmp/makemodulerpm && tar czhf $rpm_source_dir/$mod.tar.gz $mod");
@@ -188,9 +205,11 @@ system("/bin/rm -rf /tmp/makemodulerpm");
 
 # Build list of dependencies on other RPMs, for inclusion as an RPM
 # Requires: header
+my $rdeps;
 if ($rpmdepends) {
-	foreach $d (split(/\s+/, $minfo{'depends'})) {
-		local ($dwebmin, $dmod, $dver);
+	my @rdeps;
+	foreach my $d (split(/\s+/, $minfo{'depends'})) {
+		my ($dwebmin, $dmod, $dver);
 		if ($d =~ /^[0-9\.]+$/) {
 			# Depends on a version of Webmin
 			$dwebmin = $d;
@@ -207,7 +226,7 @@ if ($rpmdepends) {
 
 		# If the module is part of Webmin, we don't need to depend on it
 		if ($dmod) {
-			local %dinfo;
+			my %dinfo;
 			&read_file("$dmod/module.info", \%dinfo);
 			next if ($dinfo{'longdesc'});
 			}
@@ -215,16 +234,16 @@ if ($rpmdepends) {
 			     $dver ? ($prefix.$dmod, ">=", $dver) :
 				     ($prefix.$dmod));
 		}
+	$rdeps = join(" ", @rdeps, @extrareqs);
 	}
-$rdeps = join(" ", @rdeps, @extrareqs);
 
 # Create the SPEC file
-$providesheader = $provides ? "Provides: $provides" : undef;
-$vendorheader = $vendor ? "Vendor: $vendor" : undef;
-$urlheader = $url ? "URL: $url" : undef;
-$epochheader = $epoch ? "Epoch: $epoch" : undef;
-open(SPEC, ">$spec_dir/$prefix$mod.spec");
-print SPEC <<EOF;
+my $providesheader = $provides ? "Provides: $provides" : undef;
+my $vendorheader = $vendor ? "Vendor: $vendor" : undef;
+my $urlheader = $url ? "URL: $url" : undef;
+my $epochheader = $epoch ? "Epoch: $epoch" : undef;
+open(my $SPEC, ">", "$spec_dir/$prefix$mod.spec");
+print $SPEC <<EOF;
 %define __spec_install_post %{nil}
 
 Summary: $desc
@@ -237,8 +256,6 @@ AutoReq: 0
 License: $licence
 Group: System/Tools
 Source: $mod.tar.gz
-Vendor: Jamie Cameron
-BuildRoot: /tmp/%{name}-%{version}
 BuildArchitectures: noarch
 $epochheader
 $providesheader
@@ -252,7 +269,6 @@ $desc in RPM format
 
 %build
 (find . -name '*.cgi' ; find . -name '*.pl') | perl -ne 'chop; open(F,\$_); \@l=<F>; close(F); \$l[0] = "#\!/usr/bin/perl\$1\n" if (\$l[0] =~ /#\!\\S*perl\\S*(.*)/); open(F,">\$_"); print F \@l; close(F)'
-(find . -name '*.cgi' ; find . -name '*.pl') | xargs chmod +x
 
 %install
 mkdir -p %{buildroot}/usr/libexec/$prog/$mod
@@ -263,7 +279,7 @@ echo rpm >%{buildroot}/usr/libexec/$prog/$mod/install-type
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
 %files
-/usr/libexec/$prog/$mod
+/usr/libexec/$prog/$mod/
 
 %pre
 # Check if webmin/usermin is installed
@@ -360,10 +376,10 @@ fi
 
 %postun
 EOF
-close(SPEC);
+close($SPEC);
 
 # Build the actual RPM
-$cmd = -x "/usr/bin/rpmbuild" ? "/usr/bin/rpmbuild" : "/bin/rpm";
+my $cmd = -x "/usr/bin/rpmbuild" ? "/usr/bin/rpmbuild" : "/bin/rpm";
 system("$cmd -ba $spec_dir/$prefix$mod.spec") && exit;
 unlink("$rpm_source_dir/$mod.tar.gz");
 
