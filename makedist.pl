@@ -78,7 +78,7 @@ else {
 	  "authentic-theme", "firewalld", "filemin", "firewall6",
 	  );
 	}
-@dirlist = ( "WebminUI" );
+@dirlist = ( "WebminUI", "JSON" );
 
 if (-d "/usr/local/webadmin") {
 	chdir("/usr/local/webadmin");
