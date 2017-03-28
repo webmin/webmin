@@ -693,6 +693,8 @@ if ($init_mode eq "systemd" && (!-r "$config{'init_dir'}/$_[0]" ||
 					$_[5]->{'fork'}, $_[5]->{'pidfile'},
 					$_[5]->{'exit'});
 		}
+	&system_logged("systemctl unmask ".
+		       quotemeta($unit)." >/dev/null 2>&1");
 	&system_logged("systemctl enable ".
 		       quotemeta($unit)." >/dev/null 2>&1");
 	return;
