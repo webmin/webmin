@@ -55,7 +55,8 @@ else {
 # Enable at boot
 if ($config{'init_script'}) {
 	&foreign_require("init");
-	my $st = &init::action_status($config{'init_script'});
+	my @inits = split(/\s+/, $config{'init_script'});
+	my $st = &init::action_status($inits[0]);
 	print &ui_buttons_row(
 		"atboot.cgi",
 		$text{'index_atboot'},

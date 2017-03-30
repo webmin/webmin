@@ -417,8 +417,11 @@ sub start_fail2ban_server
 {
 if ($config{'init_script'}) {
 	&foreign_require("init");
-	my ($ok, $out) = &init::start_action($config{'init_script'});
-	return $ok ? undef : $out;
+	foreach my $init (split(/\s+/, $config{'init_script'})) {
+		my ($ok, $out) = &init::start_action($init);
+		return $out if (!$ok);
+		}
+	return undef;
 	}
 else {
 	my $out = &backquote_logged("$config{'client_cmd'} -x start 2>&1 </dev/null");
@@ -433,8 +436,11 @@ sub stop_fail2ban_server
 {
 if ($config{'init_script'}) {
 	&foreign_require("init");
-	my ($ok, $out) = &init::stop_action($config{'init_script'});
-	return $ok ? undef : $out;
+	foreach my $init (split(/\s+/, $config{'init_script'})) {
+		my ($ok, $out) = &init::stop_action($init);
+		return $out if (!$ok);
+		}
+	return undef;
 	}
 else {
 	my $out = &backquote_logged("$config{'client_cmd'} stop 2>&1 </dev/null");
