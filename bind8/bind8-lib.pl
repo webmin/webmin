@@ -3422,7 +3422,8 @@ return $out if ($tries >= 10);
 for(my $i=$#recs; $i>=0; $i--) {
 	if ($recs[$i]->{'type'} eq 'NSEC' ||
 	    $recs[$i]->{'type'} eq 'NSEC3' ||
-	    $recs[$i]->{'type'} eq 'RRSIG') {
+	    $recs[$i]->{'type'} eq 'RRSIG' ||
+	    $recs[$i]->{'type'} eq 'NSEC3PARAM') {
 		&delete_record($fn, $recs[$i]);
 		}
 	}
@@ -3430,7 +3431,8 @@ my @signedrecs = &read_zone_file($fn.".webmin-signed", $dom);
 foreach my $r (@signedrecs) {
 	if ($r->{'type'} eq 'NSEC' ||
 	    $r->{'type'} eq 'NSEC3' ||
-	    $r->{'type'} eq 'RRSIG') {
+	    $r->{'type'} eq 'RRSIG' ||
+	    $r->{'type'} eq 'NSEC3PARAM') {
 		&create_record($fn, $r->{'name'}, $r->{'ttl'}, $r->{'class'},
 			       $r->{'type'}, join(" ", @{$r->{'values'}}),
 			       $r->{'comment'});
