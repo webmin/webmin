@@ -386,7 +386,7 @@ dawl_title=Delete All Auto-Whitelists
 
 manual_title=Edit Config Files
 manual_file=Edit config file:
-manual_ok=OK
+manual_ok=Edit
 manual_efile=Invalid configuration file!
 manual_err=Failed to save configuration file
 
