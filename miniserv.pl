@@ -2380,7 +2380,8 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 	$nph_script = ($full =~ /\/nph-([^\/]+)$/);
 	seek(STDERR, 0, 2);
 	if (!$config{'forkcgis'} &&
-	    ($first eq $perl_path || $first eq $linked_perl_path) &&
+	    ($first eq $perl_path || $first eq $linked_perl_path ||
+	     $first =~ /\/perl$/ || $first =~ /^\/\S+\/env\s+perl$/) &&
 	      $] >= 5.004 ||
             $config{'internalcgis'}) {
 		# setup environment for eval
