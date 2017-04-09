@@ -588,7 +588,7 @@ if (!$show) {
 	}
 
 # Extract contents (only files specified by manifests)
-my $flag = $show ? "t" : "x";
+my $flag = $show ? "t" : "xv";
 my $qfiles = join(" ", map { s/^\///; quotemeta($_) } &unique(@files));
 if ($gzipped) {
 	&execute_command("cd / ; gunzip -c $qfile | tar ${flag}f - $qfiles",
