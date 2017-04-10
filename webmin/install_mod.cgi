@@ -48,7 +48,13 @@ elsif ($in{'source'} == 2 || $in{'source'} == 4) {
 		$host = $1; $ffile = $3;
 		&ftp_download($host, $ffile, $file, \$error, \&progress_callback);
 		}
-	else { &inst_error($text{'install_eurl'}); }
+	else {
+		&inst_error($text{'install_eurl'});
+		}
+	if ($in{'checksig'} && !$error) {
+		$error = &check_update_signature($host, $port, $page,
+			$ssl, undef, undef, $file, 2);
+		}
 	&inst_error($error) if ($error);
 	}
 elsif ($in{'source'} == 3) {
@@ -78,6 +84,10 @@ elsif ($in{'source'} == 3) {
 	$file = &transname($info->[2]);
 	&http_download($host, $port, $page, $file, \$error,
 		       \&progress_callback, $ssl);
+	if ($in{'checksig'} && !$error) {
+		$error = &check_update_signature($host, $port, $page,
+			$ssl, undef, undef, $file, 2);
+		}
 	&inst_error($error) if ($error);
 	}
 

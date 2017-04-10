@@ -55,6 +55,9 @@ print &ui_table_row($text{'mods_grantto'},
 			 &ui_textbox("grantto", $base_remote_user, 30)."<br>" ],
 		    [ 1, $text{'mods_grant1'} ] ]));
 
+print &ui_table_row($text{'mods_checksig'},
+	&ui_yesno_radio("checksig", 0));
+
 print &ui_table_end();
 print &ui_form_end([ [ "", $text{'mods_installok'} ] ]);
 print &ui_tabs_end_tab();

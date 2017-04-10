@@ -61,10 +61,18 @@ if (!&shared_root_directory()) {
 	print &ui_tabs_start_tab("mode", "install");
 	print "$text{'themes_installdesc'}<p>\n";
 	print &ui_form_start("install_theme.cgi", "form-data");
-	print &ui_radio_table("source", 0,
-		[ [ 0, $text{'mods_local'}, &ui_filebox("file", undef ,40) ],
-		  [ 1, $text{'mods_uploaded'}, &ui_upload("upload") ],
-		  [ 2, $text{'mods_ftp'}, &ui_textbox("url", undef, 40) ] ]);
+	print &ui_table_start(undef, undef, 2);
+
+	print &ui_table_row($text{'mods_installsource'},
+		print &ui_radio_table("source", 0,
+			[ [ 0, $text{'mods_local'}, &ui_filebox("file", undef ,40) ],
+			  [ 1, $text{'mods_uploaded'}, &ui_upload("upload") ],
+			  [ 2, $text{'mods_ftp'}, &ui_textbox("url", undef, 40) ] ]));
+
+	print &ui_table_row($text{'mods_checksig'},
+		&ui_yesno_radio("checksig", 0));
+
+	print &ui_table_end();
 	print &ui_form_end([ [ undef, $text{'themes_installok'} ] ]);
 	print &ui_tabs_end_tab("mode", "install");
 	}

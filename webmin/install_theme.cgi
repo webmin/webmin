@@ -46,7 +46,13 @@ elsif ($in{'source'} == 2) {
 		&ftp_download($host, $ffile, $file, \$error,
 			      \&progress_callback);
 		}
-	else { &inst_error($text{'themes_eurl'}); }
+	else {
+		&inst_error($text{'themes_eurl'});
+		}
+	if ($in{'checksig'} && !$error) {
+		$error = &check_update_signature($host, $port, $page,
+			$ssl, undef, undef, $file, 2);
+		}
 	&inst_error($error) if ($error);
 	}
 

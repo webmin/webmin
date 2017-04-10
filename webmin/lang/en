@@ -203,6 +203,7 @@ mods_nodeps=Ignore dependencies?
 mods_nodeps2=Ignore module dependencies when deleting
 mods_grant2=Grant access only to users and groups :
 mods_grant1=Grant access to all Webmin users
+mods_checksig=Check signature file for downloaded modules?
 mods_installok=Install Module
 mods_desc2=If you wish to have more than one copy of the same module with different configurations, the form to the right allows you to clone any existing module. The clone will have a new name, a new module configuration, new access control options and may be made available to different users.
 mods_clone=Clone Module
