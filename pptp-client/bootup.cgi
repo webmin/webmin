@@ -18,7 +18,7 @@ if ($in{'tunnel'}) {
 	# Enable starting at boot
 	&init::enable_at_boot($module_name,
 			      "Startup or shutdown PPTP connection",
-			      $start_cmd, $stop_cmd);
+			      $start_cmd, $stop_cmd, undef, { 'fork' => 1 });
 	$config{'boot'} = $in{'tunnel'};
 	}
 else {
