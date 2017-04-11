@@ -3367,7 +3367,7 @@ for(my $i=0; $i<@files; $i++) {
 	local $type = $attach[$i]->{'type'} || "message/rfc822";
 	local $typedesc = $typemap{lc($type)} || $type;
 	local @cols = (
-		"<a href='$links[$i]'>$files[$i]</a>",
+		"<a href='$links[$i]'>".&html_escape($files[$i])."</a>",
 		$typedesc,
 		$sizes[$i],
 		&ui_links_row($actions[$i]),
