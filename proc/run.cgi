@@ -42,7 +42,7 @@ else {
 	# run and display output..
 	&ui_print_unbuffered_header(undef, $text{'run_title'}, "");
 	print "<p>\n";
-	print &text('run_output', "<tt>$in{'cmd'}</tt>"),"<p>\n";
+	print &text('run_output', "<tt>".&html_escape($in{'cmd'})."</tt>"),"<p>\n";
 	print "<pre>";
 	$got = &safe_process_exec_logged($cmd, 0, 0,
 					 STDOUT, $in{'input'}, 1);
