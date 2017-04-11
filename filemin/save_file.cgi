@@ -7,7 +7,15 @@ get_paths();
 
 my @errors;
 
-$file = $in{'file'};
+$file = &simplify_path($in{'file'});
+my $error = 1;
+for $allowed_path (@allowed_paths) {
+	if (&is_under_directory($allowed_path, $file)) {
+		$error = 0;
+		}
+	}
+$error && &error(&text('notallowed', &html_escape($file),
+		   &html_escape(join(" , ", @allowed_paths))));
 $data = $in{'data'};
 $data =~ s/\r\n/\n/g;
 open(SAVE, ">", $cwd.'/'.$file) or push @errors, "$text{'error_saving_file'} - $!";

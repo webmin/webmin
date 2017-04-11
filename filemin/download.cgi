@@ -10,7 +10,15 @@ use Cwd 'abs_path';
 
 get_paths();
 
-my $file = $cwd.'/'.$in{'file'};
+my $file = &simplify_path($cwd.'/'.$in{'file'});
+my $error = 1;
+for $allowed_path (@allowed_paths) {
+	if (&is_under_directory($allowed_path, $file)) {
+		$error = 0;
+		}
+	}
+$error && &error(&text('notallowed', &html_escape($file),
+		   &html_escape(join(" , ", @allowed_paths))));
 my $size = -s "$file";
 (my $name, my $dir, my $ext) = fileparse($file, qr/\.[^.]*/);
 print "Content-Type: application/x-download\n";
