@@ -64,7 +64,7 @@ if (!&shared_root_directory()) {
 	print &ui_table_start(undef, undef, 2);
 
 	print &ui_table_row($text{'mods_installsource'},
-		print &ui_radio_table("source", 0,
+		&ui_radio_table("source", 0,
 			[ [ 0, $text{'mods_local'}, &ui_filebox("file", undef ,40) ],
 			  [ 1, $text{'mods_uploaded'}, &ui_upload("upload") ],
 			  [ 2, $text{'mods_ftp'}, &ui_textbox("url", undef, 40) ] ]));
