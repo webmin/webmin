@@ -27,6 +27,7 @@ if ($in{'sec'} =~ /^(\d+)[^0-9]+$/) {
 	}
 SECT: foreach $sec (@sects) {
 	foreach $page ($in{'page'}, lc($in{'page'})) {
+		$page =~ /\// && &error($text{'man_epath'});
 		$qpage = quotemeta($page);
 		$qsec = quotemeta($sec);
 		$cmd = $ocmd;

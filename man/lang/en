@@ -60,6 +60,7 @@ doc_epath=Invalid package documentation path
 man_title=Manual Page
 man_header=Manual page for $1($2)
 man_noentry=Manual page for $1 does not exist!
+man_epath=Manual page cannot be path!
 
 kernel_title=Kernel Document
 kernel_header=Kernel document file $1
