@@ -27,7 +27,9 @@ print &ui_table_start($text{'smtp_title'}, "width=100%", 4);
 &option_radios_freefield("fallback_relay", 60, $default);
 
 &option_yesno("ignore_mx_lookup_error", 'help');
-&option_yesno("smtp_skip_4xx_greeting", 'help');
+if ($postfix_version <= 2) {
+	&option_yesno("smtp_skip_4xx_greeting", 'help');
+	}
 
 &option_yesno("smtp_skip_quit_response", 'help');
 
