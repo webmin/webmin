@@ -389,8 +389,9 @@ sub get_bookmarks {
     my $bookmarks = &read_file_lines($confdir.'/.bookmarks', 1);
     $result = '';
     foreach $bookmark(@$bookmarks) {
+        $bookmark = &html_escape($bookmark);
         $result.= "<li><a href='index.cgi?path=$bookmark'>".
-                  &html_escape($bookmark)."</a><li>";
+                  $bookmark."</a><li>";
     }
     return $result;
 }
