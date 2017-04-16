@@ -33,7 +33,7 @@ if (!$in{'login_none'}) {
 @opts = split(/\0/, $in{'sasl_opts'});
 &set_current_value("smtpd_sasl_security_options", join(" ", @opts));
 
-# Save relay options that we care about
+# Save recipient options that we care about
 @recip = split(/[\s,]+/, &get_current_value("smtpd_recipient_restrictions"));
 %newrecip = map { $_, 1 } split(/\0/, $in{'sasl_recip'});
 foreach $o (&list_smtpd_restrictions()) {
@@ -45,6 +45,19 @@ foreach $o (&list_smtpd_restrictions()) {
 		}
 	}
 &set_current_value("smtpd_recipient_restrictions", join(" ", @recip));
+
+# Save relay options that we care about
+@relay = split(/[\s,]+/, &get_current_value("smtpd_relay_restrictions"));
+%newrelay = map { $_, 1 } split(/\0/, $in{'sasl_relay'});
+foreach $o (&list_smtpd_restrictions()) {
+	if ($newrelay{$o}) {
+		push(@relay, $o) if (&indexof($o, @relay) < 0);
+		}
+	else {
+		@relay = grep { $_ ne $o } @relay;
+		}
+	}
+&set_current_value("smtpd_relay_restrictions", join(" ", @relay));
 
 # Save SSL options
 if ($postfix_version >= 2.3) {

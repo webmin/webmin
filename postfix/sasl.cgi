@@ -28,7 +28,7 @@ foreach $o ("noanonymous", "noplaintext") {
 	}
 print &ui_table_row($text{'sasl_opts'}, join("<br>\n", @cbs), 3);
 
-# SASL-related relay restrictions
+# SASL-related recipient restrictions
 %recip = map { $_, 1 }
 	    split(/[\s,]+/, &get_current_value("smtpd_recipient_restrictions"));
 @cbs = ( );
@@ -37,6 +37,16 @@ foreach $o (&list_smtpd_restrictions()) {
 				$recip{$o}));
 	}
 print &ui_table_row($text{'sasl_recip'}, join("<br>\n", @cbs), 3);
+
+# SASL-relayed relay restrictions
+%relay = map { $_, 1 }
+	    split(/[\s,]+/, &get_current_value("smtpd_relay_restrictions"));
+@cbs = ( );
+foreach $o (&list_smtpd_restrictions()) {
+	push(@cbs, &ui_checkbox("sasl_relay", $o, $text{'sasl_'.$o},
+				$relay{$o}));
+	}
+print &ui_table_row($text{'sasl_relay'}, join("<br>\n", @cbs), 3);
 
 # Delay bad logins
 &option_yesno("smtpd_delay_reject");
