@@ -474,7 +474,7 @@ if (&has_command("netstat")) {
 	&open_execute_command(ROUTES, "netstat -rn", 1, 1);
 	while(<ROUTES>) {
 		s/\s+$//;
-		if (/^([0-9\.]+)\s+([0-9\.]+)\s+([0-9\.]+)\s+\S+\s+\S+\s+\S+\s+\S+\s+(\S+)$/) {
+		if (/^([0-9\.]+)\s+([0-9\.]+)\s+([0-9\.]+)\s+\S+\s+\S+\s+\S+\s*\S+\s+(\S+)$/) {
 			push(@rv, { 'dest' => $1,
 				    'gateway' => $2,
 				    'netmask' => $3,
@@ -485,7 +485,7 @@ if (&has_command("netstat")) {
 	&open_execute_command(ROUTES, "netstat -rn -A inet6", 1, 1);
 	while(<ROUTES>) {
 		s/\s+$//;
-		if (/^([0-9a-z:]+)\/([0-9]+)\s+([0-9a-z:]+)\s+\S+\s+\S+\s+\S+\s+\S+\s+(\S+)$/) {
+		if (/^([0-9a-z:]+)\/([0-9]+)\s+([0-9a-z:]+)\s+\S+\s+\S+\s+\S+\s*\S+\s+(\S+)$/) {
 			push(@rv, { 'dest' => $1,
 				    'gateway' => $3,
 				    'netmask' => $2,
