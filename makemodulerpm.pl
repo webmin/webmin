@@ -8,12 +8,16 @@ use warnings;
 use Term::ANSIColor qw(:constants);
 
 my $basedir;
+
 # Does any system still have a redhat dir?
 if (-d "$ENV{'HOME'}" . "/redhat") {
 	$basedir = "$ENV{'HOME'}" . "/redhat";
 	}
 elsif (-d "$ENV{'HOME'}" . "/rpmbuild") {
 	$basedir = "$ENV{'HOME'}" . "/rpmbuild";
+	}
+else {
+	$basedir = "/usr/src/redhat";
 	}
 my $target_dir = "$basedir" . "/RPMS/noarch";	# where to copy the RPM to
 
@@ -256,6 +260,7 @@ AutoReq: 0
 License: $licence
 Group: System/Tools
 Source: $mod.tar.gz
+BuildRoot: /tmp/%{name}-%{version}
 BuildArchitectures: noarch
 $epochheader
 $providesheader
@@ -392,7 +397,7 @@ if ($target_dir =~ /:/) {
 	# scp to dest
 	system("scp $rpm_dir/$prefix$mod-$ver-$release.noarch.rpm $target_dir/$prefix$mod-$ver-$release.noarch.rpm");
 	}
-else {
+elsif ($rpm_dir ne $target_dir) {
 	# Just copy
 	system("/bin/cp $rpm_dir/$prefix$mod-$ver-$release.noarch.rpm $target_dir/$prefix$mod-$ver-$release.noarch.rpm");
 	}
