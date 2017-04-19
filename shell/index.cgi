@@ -43,19 +43,21 @@ if (!$in{'clear'}) {
 	$history = &un_urlize($in{'history'});
 	if ($cmd) {
 		# Execute the latest command
+		$chroot = $access{'chroot'} eq '/' ? '' : $access{'chroot'};
 		$fullcmd = $cmd;
-		$ok = chdir($pwd);
+		$ok = chdir($chroot.$pwd);
 		$history .= "<b>&gt; ".&html_escape($cmd, 1)."</b>\n";
 		if ($cmd =~ /^cd\s+"([^"]+)"\s*(;?\s*(.*))$/ ||
 		    $cmd =~ /^cd\s+'([^']+)'\s*(;?\s*(.*))$/ ||
 		    $cmd =~ /^cd\s+([^; ]*)\s*(;?\s*(.*))$/) {
 			$cmd = undef;
-			if (!chdir($1)) {
+			if (!chdir($chroot.$1)) {
 				$history .= &html_escape("$1: $!\n", 1);
 				}
 			else {
 				$cmd = $3 if ($2);
 				$pwd = &get_current_dir();
+				$pwd =~ s/^\Q$chroot\E//g;
 				}
 			}
 		if ($cmd) {
@@ -69,6 +71,10 @@ if (!$in{'clear'}) {
 				}
 			else {
 				$cmd = "($cmd)";
+				}
+			if ($chroot) {
+				$cmd = "chroot ".quotemeta($access{'chroot'}).
+				       "sh -c ".quotemeta($cmd);
 				}
 			$pid = &open_execute_command(OUTPUT, $cmd, 2, 0);
 			$out = "";
