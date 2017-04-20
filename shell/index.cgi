@@ -74,7 +74,7 @@ if (!$in{'clear'}) {
 				}
 			if ($chroot) {
 				$cmd = "chroot ".quotemeta($access{'chroot'}).
-				       "sh -c ".quotemeta($cmd);
+				       " sh -c ".quotemeta($cmd);
 				}
 			$pid = &open_execute_command(OUTPUT, $cmd, 2, 0);
 			$out = "";
