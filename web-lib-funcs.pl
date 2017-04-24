@@ -9666,15 +9666,17 @@ return $main::readonly_mode_cache;
 
 Returns a command to execute some command as the given user, using the
 su statement. If on Linux, the /bin/sh shell is forced in case the user
-does not have a valid shell. If with-env is set to 1, the -s flag is added
-to the su command to read the user's .profile or .bashrc file.
+does not have a valid shell. If with-env is set to 1, the - flag is added
+to the su command to read the user's .profile or .bashrc file. If with-env is
+set to 2, the user's shell is always used regardless. If set to 3, the user's
+shell is used AND the - flag is set.
 
 =cut
 sub command_as_user
 {
 my ($user, $env, @args) = @_;
 my @uinfo = getpwnam($user);
-if ($uinfo[8] ne "/bin/sh" && $uinfo[8] !~ /\/bash$/) {
+if ($uinfo[8] ne "/bin/sh" && $uinfo[8] !~ /\/bash$/ && $env < 2) {
 	# User shell doesn't appear to be valid
 	if ($gconfig{'os_type'} =~ /-linux$/) {
 		# Use -s /bin/sh to force it
@@ -9689,7 +9691,7 @@ if ($uinfo[8] ne "/bin/sh" && $uinfo[8] !~ /\/bash$/) {
 		$shellarg = " -m";
 		}
 	}
-my $rv = "su".($env ? " -" : "").$shellarg.
+my $rv = "su".($env == 1 || $env == 3 ? " -" : "").$shellarg.
 	 " ".quotemeta($user)." -c ".quotemeta(join(" ", @args));
 return $rv;
 }
