@@ -1,6 +1,7 @@
 # Functions for managing BIND 4 and 8/9 records files
 use strict;
 use warnings;
+no warnings 'redefine';
 
 # Globals from Webmin or bind8-lib.pl
 our (%config, %text, %in);
