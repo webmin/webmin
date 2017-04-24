@@ -310,7 +310,7 @@ else {
 		$in{'value1'} =~ /^\d+$/ ||
 			&error(text('edit_eproto', $in{'value1'}));
 		$in{'value2'} =~ /^\d+$/ ||
-			&error(text('edit_ealg', $in{'value2'}));
+			&error(text('edit_ealg2', $in{'value2'}));
 		$in{'value3'} =~ s/[ \r\n]//g;
 		$in{'value3'} =~ /^[a-zA-Z0-9\/\+]+$/ ||
 			&error(text('edit_ekey'));
