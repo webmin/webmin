@@ -62,17 +62,19 @@ if (!$in{'clear'}) {
 			}
 		if ($cmd) {
 			local $user = $access{'user'} || $remote_user;
+			local @uinfo;
 			&clean_environment() if ($config{'clear_envs'});
 			delete($ENV{'SCRIPT_NAME'});	# So that called Webmin
 							# programs get the right
 							# module, not this one!
 			if (&supports_users() && $user ne "root") {
-				$cmd = &command_as_user($user, 0, $cmd);
+				$cmd = &command_as_user($user, 2, $cmd);
+				@uinfo = getpwnam($user);
 				}
 			else {
 				$cmd = "($cmd)";
 				}
-			if ($chroot) {
+			if ($chroot && $uinfo[8] !~ /\/jk_chrootsh$/) {
 				$cmd = "chroot ".quotemeta($access{'chroot'}).
 				       " sh -c ".quotemeta($cmd);
 				}
