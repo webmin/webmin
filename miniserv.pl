@@ -5547,6 +5547,7 @@ local @substrings = (
     "iPhone",		  # Apple iPhone KHTML browser
     "iPod",		  # iPod touch browser
     "MobileSafari",	  # HTTP client in iPhone
+    "Mobile Safari",	  # Samsung Galaxy S6 browser
     "Opera Mini",	  # Opera Mini
     "HTC_P3700",	  # HTC mobile device
     "Pre/",		  # Palm Pre
