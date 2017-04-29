@@ -34,7 +34,7 @@ if (!$postfix_version) {
 	&close_tempfile(VERSION);
 	}
 
-if ($postfix_version >= 2) {
+if (&compare_version_numbers($postfix_version, 2) >= 0) {
 	$virtual_maps = "virtual_alias_maps";
 	$ldap_timeout = "ldap_timeout";
 	}
@@ -1731,9 +1731,11 @@ foreach my $q (@$qfiles) {
 # Show the table and form
 print &ui_form_columns_table("delete_queues.cgi",
 	[ [ undef, $text{'mailq_delete'} ],
-	  $postfix_version >= 1.1 ? ( [ 'move', $text{'mailq_move'} ] ) : ( ),
-	  $postfix_version >= 2 ? ( [ 'hold', $text{'mailq_hold'} ],
-				    [ 'unhold', $text{'mailq_unhold'} ] ) : ( ),
+	  &compare_version_numbers($postfix_version, 1.1) >= 0 ?
+		( [ 'move', $text{'mailq_move'} ] ) : ( ),
+	  &compare_version_numbers($postfix_version, 2) >= 0 ?
+		( [ 'hold', $text{'mailq_hold'} ],
+		  [ 'unhold', $text{'mailq_unhold'} ] ) : ( ),
 	],
 	1,
 	undef,
@@ -2173,8 +2175,9 @@ sub list_smtpd_restrictions
 {
 return ( "permit_mynetworks",
 	 "permit_inet_interfaces",
-	 $postfix_version < 2.3 ? "reject_unknown_client"
-				: "reject_unknown_reverse_client_hostname",
+	 &compare_version_numbers($postfix_version, 2.3) < 0 ?
+		"reject_unknown_client" :
+		"reject_unknown_reverse_client_hostname",
 	 "permit_sasl_authenticated",
 	 "reject_unauth_destination",
 	 "check_relay_domains",
@@ -2187,8 +2190,9 @@ sub list_client_restrictions
 {
 return ( "permit_mynetworks",
 	 "permit_inet_interfaces",
-	 $postfix_version < 2.3 ? "reject_unknown_client"
-				: "reject_unknown_reverse_client_hostname",
+	 &compare_version_numbers($postfix_version, 2.3) < 0 ?
+		"reject_unknown_client" :
+		"reject_unknown_reverse_client_hostname",
 	 "permit_tls_all_clientcerts",
 	);
 }
