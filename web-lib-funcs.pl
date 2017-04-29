@@ -5586,7 +5586,7 @@ if (exists($main::locked_file_data{$realfile})) {
 
 =head2 test_lock(file)
 
-Returns 1 if some file is currently locked, 0 if not.
+Returns the PID if some file is currently locked, 0 if not.
 
 =cut
 sub test_lock
@@ -7388,7 +7388,9 @@ if ($ssl) {
 		}
 	Net::SSLeay::set_fd($rv->{'ssl_con'}, fileno($rv->{'fh'}));
 	eval {
-		Net::SSLeay::set_tlsext_host_name($rv->{'ssl_con'}, $host);
+		my $snihost = $certreqs && $certreqs->{'host'};
+		$snihost ||= $host;
+		Net::SSLeay::set_tlsext_host_name($rv->{'ssl_con'}, $snihost);
 		};
 	Net::SSLeay::connect($rv->{'ssl_con'}) ||
 		return "SSL connect() failed";
