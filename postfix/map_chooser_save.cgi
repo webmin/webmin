@@ -65,7 +65,7 @@ for($i=0; defined($t = $in{"type_".$i}); $i++) {
 		&save_backend_config($file, "password", $in{"mpassword_$i"});
 
 		# Custom query
-		if ($postfix_version >= 2.2) {
+		if (&compare_version_numbers($postfix_version, 2.2) >= 0) {
 			if ($in{"mquery_${i}_def"}) {
 				&save_backend_config($file, "query", undef);
 				}

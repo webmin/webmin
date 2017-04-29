@@ -60,7 +60,7 @@ foreach $o (&list_smtpd_restrictions()) {
 &set_current_value("smtpd_relay_restrictions", join(" ", @relay));
 
 # Save SSL options
-if ($postfix_version >= 2.3) {
+if (&compare_version_numbers($postfix_version, 2.3) >= 0) {
 	&set_current_value("smtpd_tls_security_level",
 			   $in{'smtpd_tls_security_level'});
 	}

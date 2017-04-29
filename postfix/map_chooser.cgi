@@ -47,7 +47,7 @@ foreach $tv (@maps) {
 		&ui_textbox("mpassword_$i", $myconf->{'password'}, 30));
 	$mtable .= &ui_table_row($text{'chooser_mdbname'},
 		&ui_textbox("mdbname_$i", $myconf->{'dbname'}, 30));
-	if ($postfix_version >= 2.2) {
+	if (&compare_version_numbers($postfix_version, 2.2) >= 0) {
 		# Can use custom query
 		$mtable .= &ui_table_row($text{'chooser_mquery'},
 			&ui_opt_textbox("mquery_$i", $myconf->{'query'}, 40,

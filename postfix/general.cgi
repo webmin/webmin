@@ -104,7 +104,7 @@ print &ui_table_start($text{'general_title_others'}, "width=100%", 4);
 &option_freefield("process_id_directory", 20);
 &option_freefield("recipient_delimiter", 20);
 
-if ($postfix_version < 2.1) {
+if (&compare_version_numbers($postfix_version, 2.1) < 0) {
 	&option_freefield("program_directory", 45);
 	}
 

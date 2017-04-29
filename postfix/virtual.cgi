@@ -20,7 +20,7 @@ print &ui_table_start($text{'virtual_title'}, "width=100%", 2);
 
 &option_mapfield($virtual_maps, 60);
 
-if ($postfix_version >= 2) {
+if (&compare_version_numbers($postfix_version, 2) >= 0) {
 	&option_radios_freefield("virtual_alias_domains", 40,
 				 $text{'virtual_same'});
 	}
