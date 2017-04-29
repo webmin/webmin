@@ -1001,7 +1001,7 @@ local $temp = &transname();
 local $rv = &system_logged("($config{'start_cmd'}) >$temp 2>&1");
 local $out = `cat $temp`; unlink($temp);
 if ($rv || $out =~ /failed/i) {
-	return "<pre>$out</pre>";
+	return "<pre>".&html_escape($out)."</pre>";
 	}
 return undef;
 }
@@ -1019,7 +1019,7 @@ else {
 	$out = &backquote_logged("$config{'mysqladmin'} $authstr shutdown 2>&1");
 	}
 if ($? || $out =~ /failed/i) {
-	return "<pre>$out</pre>";
+	return "<pre>".&html_escape($out)."</pre>";
 	}
 return undef;
 }
