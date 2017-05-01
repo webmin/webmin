@@ -18,12 +18,17 @@ $error && &error(&text('notallowed', &html_escape($file),
 		   &html_escape(join(" , ", @allowed_paths))));
 $data = $in{'data'};
 $data =~ s/\r\n/\n/g;
+
+#52019
+if (get_charset() ne "UTF8" && get_charset() ne "UTF-8") {
+	$data = Encode::encode(get_charset(), Encode::decode('utf-8', $data));
+}
 open(SAVE, ">", $cwd.'/'.$file) or push @errors, "$text{'error_saving_file'} - $!";
 print SAVE $data;
 close SAVE;
 
 if (scalar(@errors) > 0) {
-    &ui_print_header(undef, "Filemin", "");
+    &ui_print_header(undef, $module_info{'name'}, "")
     print $text{'errors_occured'};
     print "<ul>";
     foreach $error(@errors) {
