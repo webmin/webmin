@@ -28,7 +28,7 @@ print SAVE $data;
 close SAVE;
 
 if (scalar(@errors) > 0) {
-    &ui_print_header(undef, $module_info{'name'}, "")
+    &ui_print_header(undef, $module_info{'name'}, "");
     print $text{'errors_occured'};
     print "<ul>";
     foreach $error(@errors) {
