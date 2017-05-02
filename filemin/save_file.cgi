@@ -19,11 +19,8 @@ $error && &error(&text('notallowed', &html_escape($file),
 $data = $in{'data'};
 $data =~ s/\r\n/\n/g;
 
-#52019
-if ( ( get_charset() ne "UTF8" && get_charset() ne "UTF-8" ) || $in{'encoding'} ) {
-    $data =
-      Encode::encode( ( $in{'encoding'} ? $in{'encoding'} : get_charset() ),
-                      Encode::decode( 'utf-8', $data ) );
+if ( $in{'encoding'} && lc( $in{'encoding'} ) ne "utf-8" ) {
+    $data = Encode::encode( $in{'encoding'}, Encode::decode( 'utf-8', $data ) );
 }
 open(SAVE, ">", $cwd.'/'.$file) or push @errors, "$text{'error_saving_file'} - $!";
 print SAVE $data;
