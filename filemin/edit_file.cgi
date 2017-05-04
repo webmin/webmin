@@ -7,8 +7,11 @@ get_paths();
 
 my $data = &read_file_contents( $cwd . '/' . $in{file} );
 
-use Encode::Detect::Detector;
-my $encoding_name = Encode::Detect::Detector::detect($data);
+my $encoding_name;
+eval "use Encode::Detect::Detector;";
+if (!$@) {
+	$encoding_name = Encode::Detect::Detector::detect($data);
+	}
 if ( $encoding_name && lc($encoding_name) ne "utf-8" ) {
     use Encode qw( encode decode );
     $data = Encode::encode( 'utf-8', Encode::decode( $encoding_name, $data ) );
