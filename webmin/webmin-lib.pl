@@ -2082,6 +2082,8 @@ return undef;
 sub build_ssl_subject
 {
 my ($country, $state, $city, $org, $orgunit, $cn, $email) = @_;
+$org =~ s/[\177-\377]//g;	# Remove non-ascii chars
+$orgunit =~ s/[\177-\377]//g;	# Remove non-ascii chars
 my @cns = ref($cn) ? @$cn : ( $cn );
 my $subject;
 $subject .= "/C=$country" if ($country);
