@@ -122,10 +122,18 @@ $_[1] =~ /^(\d+)\.(\d+)\.(\d+)\.(\d+)/;
 my @to = ($1, $2, $3, $4);
 return @to if (@to != 4);
 
-for (my $i=0;$i<4;$i++) {
-	$from[$i]=$from[$i]==0?1:$from[$i];
-	$to[$i]=$to[$i]==255?254:$to[$i];
-}
+for (my $i=3;$i>=0;$i--) {
+	my $e = 0;
+	if ($from[$i] == 0) {
+		$from[$i] = 1;
+		$e++;
+		}
+	if ($to[$i] == 255) {
+		$to[$i] = 254;
+		$e++;
+		}
+	last if ($e);
+	}
 
 my %frecs;
 
