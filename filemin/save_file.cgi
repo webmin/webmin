@@ -20,7 +20,7 @@ $data = $in{'data'};
 $data =~ s/\r\n/\n/g;
 
 if ( $in{'encoding'} && lc( $in{'encoding'} ) ne "utf-8" ) {
-    $data = Encode::encode( $in{'encoding'}, Encode::decode( 'utf-8', $data ) );
+    eval { $data = Encode::encode( $in{'encoding'}, Encode::decode( 'utf-8', $data ) ) };
 }
 open(SAVE, ">", $cwd.'/'.$file) or push @errors, "$text{'error_saving_file'} - $!";
 print SAVE $data;
