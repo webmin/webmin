@@ -40,6 +40,9 @@ our $primary_port = 80;
 our $webmin_key_email = "jcameron\@webmin.com";
 our $webmin_key_fingerprint = "1719 003A CE3E 5A41 E2DE  70DF D97A 3AE9 11F6 3C51";
 
+our $authentic_key_email = "ilia\@rostovtsev.ru";
+our $authentic_key_fingerprint = "EC60 F3DA 9CB7 9ADC CF56  0D1F 121E 166D D9C8 21AB";
+
 our $standard_host = $primary_host;
 our $standard_port = $primary_port;
 our $standard_page = "/download/modules/standard.txt";
@@ -614,21 +617,43 @@ sub gnupg_setup
 {
 return ( 1, &text('enogpg', "<tt>gpg</tt>") ) if (!&has_command($gpgpath));
 
+my ($ok, $err) = &import_gnupg_key(
+	$webmin_key_email, $webmin_key_fingerprint,
+	"$module_root_directory/jcameron-key.asc");
+return ($ok, $err) if ($ok);
+
+($ok, $err) = &import_gnupg_key(
+	$authentic_key_email, $authentic_key_fingerprint,
+	"$root_directory/authentic-theme/THEME.pgp");
+return ($ok, $err) if ($ok);
+
+return (0);
+}
+
+=head2 import_gnupg_key
+
+Imports the given key if not already in the key list
+
+=cut
+sub import_gnupg_key
+{
+my ($email, $finger, $path) = @_;
+return (0) if (!-r $path);
+
 # Check if we already have the key
 my @keys = &list_keys();
 foreach my $k (@keys) {
-	return ( 0 ) if ($k->{'email'}->[0] eq $webmin_key_email &&
-		         &key_fingerprint($k) eq $webmin_key_fingerprint);
+	return ( 0 ) if ($k->{'email'}->[0] eq $email &&
+		         &key_fingerprint($k) eq $finger);
 	}
 
 # Import it if not
 &list_keys();
-my $out = &backquote_logged(
-	"$gpgpath --import $module_root_directory/jcameron-key.asc 2>&1");
+my $out = &backquote_logged("$gpgpath --import $path 2>&1");
 if ($?) {
 	return (2, $out);
 	}
-return 0;
+return (0);
 }
 
 =head2 list_standard_modules
