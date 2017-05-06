@@ -5,7 +5,9 @@ require './filemin-lib.pl';
 
 get_paths();
 
-my $data = &read_file_contents( $cwd . '/' . $in{file} );
+my $file = &simplify_path($cwd.'/'.$in{'file'});
+&check_allowed_path($file);
+my $data = &read_file_contents($file);
 
 my $encoding_name;
 eval "use Encode::Detect::Detector;";

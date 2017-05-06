@@ -409,4 +409,20 @@ sub get_paste_buffer_file
     }
 }
 
+# check_allowed_path(file)
+# Calls error if some path isn't allowed
+sub check_allowed_path
+{
+my ($file) = @_;
+$file = &simplify_path($file);
+my $error = 1;
+foreach my $allowed_path (@allowed_paths) {
+	if (&is_under_directory($allowed_path, $file)) {
+		$error = 0;
+		}
+	}
+$error && &error(&text('notallowed', &html_escape($file),
+		   &html_escape(join(" , ", @allowed_paths))));
+}
+
 1;
