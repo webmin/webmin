@@ -3,15 +3,15 @@ addEvent(window, "load", sortables_init);
 var SORT_COLUMN_INDEX;
 
 function sortables_init() {
-		var lastAssignedId = 0;
+     var lastAssignedId = 0;
     // Find all tables with class sortable and make them sortable
     if (!document.getElementsByTagName) return;
     tbls = document.getElementsByTagName("table");
     for (ti=0;ti<tbls.length;ti++) {
         thisTbl = tbls[ti];
-				if (!thisTbl.id) {
-      		thisTbl.id = 'sortableTable'+(lastAssignedId++);
-    		}
+	if (!thisTbl.id) {
+      	    thisTbl.id = 'sortableTable'+(lastAssignedId++);
+    	}
         if (((' '+thisTbl.className+' ').indexOf("sortable") != -1) && (thisTbl.id)) {
             //initTable(thisTbl.id);
             ts_makeSortable(thisTbl);
@@ -76,7 +76,7 @@ function ts_resortTable(lnk,clid) {
     if (itm.match(/^\d\d[\/-]\d\d[\/-]\d\d\d\d$/)) sortfn = ts_sort_date;
     if (itm.match(/^\d\d[\/-]\S\S\S[\/-]\d\d\d\d$/)) sortfn = ts_sort_date;
     if (itm.match(/^\d\d[\/-]\d\d[\/-]\d\d$/)) sortfn = ts_sort_date;
-    if (itm.match(/^[£$]/)) sortfn = ts_sort_currency;
+    if (itm.match(/^[Â£$]/)) sortfn = ts_sort_currency;
     if (itm.match(/^[\d\.]+\s*(bytes|b|kb|tb|gb|mb)$/i)) sortfn = ts_sort_filesize;
     // Special cases for our mailbox lists
     if (itm.match(/^(Empty|Unlimited)$/)) sortfn = ts_sort_filesize;
