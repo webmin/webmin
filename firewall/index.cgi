@@ -50,6 +50,7 @@ if (!$config{'direct'} && &foreign_check("init")) {
 @livetables = &get_iptables_save("iptables-save 2>/dev/null |");
 &shorewall_message(\@livetables);
 &firewalld_message(\@livetables);
+&fail2ban_message(\@livetables);
 if (!$config{'direct'} &&
     (!-s $iptables_save_file || $in{'reset'}) && $access{'setup'}) {
 	@tables = @livetables;
@@ -429,5 +430,15 @@ if ($filter->{'defaults'}->{'INPUT_ZONES'}) {
 	      &text('index_firewalld', "$gconfig{'webprefix'}/firewalld/"),
 	      "</b></center><p>\n";
 	}
+}
+
+sub fail2ban_message
+{
+local ($filter) = grep { $_->{'name'} eq 'filter' } @{$_[0]};
+if ($filter->{'defaults'} ~~ /^f2b-|^fail2ban-/) {
+        print "<b><center>",
+              &text('index_fail2ban', "$gconfig{'webprefix'}/fail2ban/"),
+              "</b></center><p>\n";
+        }
 }
 
