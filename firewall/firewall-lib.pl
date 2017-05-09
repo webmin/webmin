@@ -55,7 +55,9 @@ open(FILE, $_[0] || ($config{'direct'} ? "iptables-save 2>/dev/null |"
 local $cmt;
 while(<FILE>) {
         local $read_comment;
-	s/\r|\n//g;
+	# regex to filter out chains not manage by firewall, i.e. fail2ban
+        next if ($config{'filter_chain'} && s/$config{'filter_chain'}//);
+        s/\r|\n//g;
 	if (s/#\s*(.*)$//) {
 		$cmt .= " " if ($cmt);
 		$cmt .= $1;
