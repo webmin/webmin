@@ -11,4 +11,4 @@ after_apply_cmd=Befehle zum Anwendung der Konfiguration,3,Keiner
 line1=System Konfiguration,11
 save_file=IPtables Speicherdatei zum Bearbeiten,3,Verwendung des Betriebssystems oder Webmin Standard
 direct=Direktes Bearbeiten der Firewall-Regeln anstatt von gespeicherter Datei?,1,1-Ja,0-Nein
-filter_chain=Regex zum Ausfiltern von Ketten die nicht von Firewall verwaltet werden, z.B. fail2ban,0
+filter_chain=Komma getrennte Liste von Regex zum Ausfiltern von Ketten die nicht von Firewall verwaltet werden,0
