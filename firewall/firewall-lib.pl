@@ -53,11 +53,24 @@ local $lnum = 0;
 open(FILE, $_[0] || ($config{'direct'} ? "iptables-save 2>/dev/null |"
 				       : $iptables_save_file));
 local $cmt;
+LINE:
 while(<FILE>) {
         local $read_comment;
-	# regex to filter out chains not manage by firewall, i.e. fail2ban
-        next if ($config{'filter_chain'} && s/$config{'filter_chain'}//);
         s/\r|\n//g;
+        # regex to filter out chains not managed by firewall, i.e. fail2ban
+        if ($config{'filter_chain'}) {
+             foreach $filter (split(',', $config{'filter_chain'})) {
+                 # :chain ... -> skip line if machtes filter_chain
+                 if (/^.?:(\S+)\s+.*/) {
+                         next LINE if($1 =~ /^$filter$/);
+                    }
+                 # -A|-I chain ... -j chain -> skip line if machtes filter_chain
+                 if (/^.?-(A|I)\s+(\S+).*\s+-j\s+(.*)/) {
+                         next LINE if($2 =~ /^$filter$/);
+                         next LINE if($3 =~ /^$filter$/);
+                    }
+                }
+            }
 	if (s/#\s*(.*)$//) {
 		$cmt .= " " if ($cmt);
 		$cmt .= $1;
