@@ -20,8 +20,9 @@ sub find_cron_job
 {
 &foreign_require("cron", "cron-lib.pl");
 my @jobs = &cron::list_cron_jobs();
-my ($job) = grep { $_->{'command'} eq $cron_cmd &&
-		      $_->{'user'} eq 'root' } @jobs;
+my ($job) = grep { $_->{'command'} && $_->{'user'} &&
+		   $_->{'command'} eq $cron_cmd &&
+		   $_->{'user'} eq 'root' } @jobs;
 return $job;
 }
 
