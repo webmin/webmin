@@ -202,6 +202,29 @@ if ($info->{'disk_total'} && &show_section('disk')) {
 		       'chart' => [ $total, $total-$free ] });
 	}
 
+# Warnings about filesytems running now on space
+if ($info->{'disk_fs'} && &show_section('disk')) {
+	foreach my $fs (@{$info->{'disk_fs'}}) {
+		if ($fs->{'total'} && $fs->{'free'} == 0) {
+			my $msg = &text('right_fsfull',
+					"<tt>$fs->{'dir'}</tt>",
+					&nice_size($fs->{'total'}));
+			push(@rv, { 'type' => 'warning',
+				    'level' => 'error',
+				    'warning' => $msg });
+			}
+		elsif ($fs->{'free'}*1.0 / $fs->{'total'} < 0.01) {
+			my $msg = &text('right_fsnearly',
+					"<tt>$fs->{'dir'}</tt>",
+					&nice_size($fs->{'total'}),
+					&nice_size($fs->{'free'}));
+			push(@rv, { 'type' => 'warning',
+				    'level' => 'warn',
+				    'warning' => $msg });
+			}
+		}
+	}
+
 # Package updates
 if ($info->{'poss'} && &show_section('poss')) {
 	my @poss = @{$info->{'poss'}};

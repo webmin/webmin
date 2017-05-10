@@ -54,7 +54,7 @@ if (&foreign_check("proc")) {
 # Disk space on local filesystems
 if (&foreign_check("mount")) {
 	&foreign_require("mount");
-	($info->{'disk_total'}, $info->{'disk_free'}) =
+	($info->{'disk_total'}, $info->{'disk_free'}, $info->{'disk_fs'}) =
 		&mount::local_disk_space();
 	}
 
