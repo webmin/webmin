@@ -58,16 +58,13 @@ while(<FILE>) {
         local $read_comment;
         s/\r|\n//g;
         # regex to filter out chains not managed by firewall, i.e. fail2ban
-        if ($config{'filter_chain'}) {
+        if ($config{'direct'} && $config{'filter_chain'}) {
              foreach $filter (split(',', $config{'filter_chain'})) {
-                 # :chain ... -> skip line if machtes filter_chain
-                 if (/^.?:(\S+)\s+.*/) {
-                         next LINE if($1 =~ /^$filter$/);
-                    }
+                 # NOTE: keep ":chain ..." as reference to avoid error when rebuild active config
                  # -A|-I chain ... -j chain -> skip line if machtes filter_chain
                  if (/^.?-(A|I)\s+(\S+).*\s+-j\s+(.*)/) {
                          next LINE if($2 =~ /^$filter$/);
-                         next LINE if($3 =~ /^$filter$/);
+                         #next LINE if($3 =~ /^$filter$/);
                     }
                 }
             }
