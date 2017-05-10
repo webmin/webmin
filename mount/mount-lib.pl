@@ -290,11 +290,13 @@ return ( );
 }
 
 # local_disk_space([&always-count])
-# Returns the total local and free disk space on the system.
+# Returns the total local and free disk space on the system, plus a list of
+# per-filesystem total and free
 sub local_disk_space
 {
 my ($always) = @_;
 my ($total, $free) = (0, 0);
+my @fs;
 my @mounted = &mount::list_mounted();
 my %donezone;
 my %donevzfs;
@@ -360,9 +362,14 @@ foreach my $m (@mounted) {
 			}
 		$total += $t*1024;
 		$free += $f*1024;
+		push(@fs, { 'total' => $t*1024,
+			    'free' => $f*1024,
+			    'dir' => $m->[0],
+			    'device' => $m->[1],
+			    'type' => $m->[2] });
 		}
 	}
-return ($total, $free);
+return ($total, $free, \@fs);
 }
 
 1;
