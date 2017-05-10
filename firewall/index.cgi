@@ -48,9 +48,9 @@ if (!$config{'direct'} && &foreign_check("init")) {
 # Check if the save file exists. If not, check for any existing firewall
 # rules, and offer to create a save file from them
 @livetables = &get_iptables_save("iptables-save 2>/dev/null |");
-&shorewall_message(\@livetables);
-&firewalld_message(\@livetables);
-&fail2ban_message(\@livetables);
+
+#display warnings about active external firewalls!
+&external_firewall_message(\@livetables);
 if (!$config{'direct'} &&
     (!-s $iptables_save_file || $in{'reset'}) && $access{'setup'}) {
 	@tables = @livetables;
@@ -172,16 +172,30 @@ else {
 		$form++;
 		}
 
-	# Display a table of rules for each chain
-	foreach $c (sort by_string_for_iptables keys %{$table->{'defaults'}}) {
-		print &ui_hr();
-		@rules = grep { lc($_->{'chain'}) eq lc($c) }
-			      @{$table->{'rules'}};
-		print "<b>",$text{"index_chain_".lc($c)} ||
-			    &text('index_chain', "<tt>$c</tt>"),"</b><br>\n";
-		print "<form action=save_policy.cgi>\n";
-		print &ui_hidden("table", $in{'table'});
-		print &ui_hidden("chain", $c);
+        # Display a table of rules for each chain
+        CHAIN:
+        foreach $c (sort by_string_for_iptables keys %{$table->{'defaults'}}) {
+                print &ui_hr();
+                @rules = grep { lc($_->{'chain'}) eq lc($c) }
+                              @{$table->{'rules'}};
+                print "<b>",$text{"index_chain_".lc($c)} ||
+                            &text('index_chain', "<tt>$c</tt>"),"</b><br>\n";
+
+                # check if chain is filtered out
+                if ($config{'filter_chain'}) {
+                    foreach $filter (split(',', $config{'filter_chain'})) {
+                        if($c =~ /^$filter$/) {
+				# not managed by firewall, do not dispaly or modify
+                                print "<em>".$text{'index_filter_chain'}."</em><br>\n";
+                                next CHAIN;
+                            }
+                        }
+                    }
+
+                print "<form action=save_policy.cgi>\n";
+                print &ui_hidden("table", $in{'table'});
+                print &ui_hidden("chain", $c);
+
 		if (@rules) {
 			@links = ( &select_all_link("d", $form),
 				   &select_invert_link("d", $form) );
@@ -210,7 +224,19 @@ else {
 				local $act =
 				  $text{"index_jump_".lc($r->{'j'}->[1])} ||
 				  &text('index_jump', $r->{'j'}->[1]);
-				if ($edit) {
+
+                                # check if chain jump TO is filtered out
+                                local $chain_filtered;
+                                if ($config{'filter_chain'}) {
+                                        foreach $filter (split(',', $config{'filter_chain'})) {
+                                                if($r->{'j'}->[1] =~ /^$filter$/) {
+                                                     $chain_filtered=&text('index_filter_chain');
+                                                     $act=$act."<br><em>$chain_filtered</em>";
+                                           }
+                                        }
+                                    }
+				# chain to jump to is filtered, switch of edit
+                                if ($edit && !$chain_filtered)) {
 					push(@cols, &ui_link("edit_rule.cgi?table=".&urlize($in{'table'})."&idx=$r->{'index'}",$act));
 					}
 				else {
@@ -262,16 +288,19 @@ else {
 				      "&chain=".&urlize($c)."&new=1&".
 				      "before=$r->{'index'}'><img src=".
 				      "images/before.gif border=0></a>";
-				push(@cols, $adder);
-
-				if ($edit) {
-					print &ui_checked_columns_row(
-					    \@cols, \@tds, "d", $r->{'index'});
-					}
-				else {
-					print &ui_columns_row(\@cols, \@tds);
-					}
-				}
+                                push(@cols, $adder);
+				# chain to jump to is filtered, switch of edit
+				if ($edit && !$chain_filtered) {
+                                        print &ui_checked_columns_row(
+                                            \@cols, \@tds, "d", $r->{'index'});
+                                        }
+                                else {
+                                        local $r=&ui_columns_row(\@cols, \@tds);
+                                        # fix missing first colum, need be a better solution ...
+                                        $r=~ s/<td /<td ><\/td><td width="30%" /;
+                                        print $r;
+                                        }
+                                }
 			print &ui_columns_end();
 			print &ui_links_row(\@links);
 			}
@@ -412,33 +441,32 @@ else {
 
 &ui_print_footer("/", $text{'index'});
 
-sub shorewall_message
-{
-local ($filter) = grep { $_->{'name'} eq 'filter' } @{$_[0]};
-if ($filter->{'defaults'}->{'shorewall'}) {
-	print "<b><center>",
-	      &text('index_shorewall', "$gconfig{'webprefix'}/shorewall/"),
-	      "</b></center><p>\n";
-	}
-}
+sub external_firewall_message
+   {
+	local $fwname="";
+	local $fwconfig="$gconfig{'webprefix'}/config.cgi?firewall";
 
-sub firewalld_message
-{
-local ($filter) = grep { $_->{'name'} eq 'filter' } @{$_[0]};
-if ($filter->{'defaults'}->{'INPUT_ZONES'}) {
-	print "<b><center>",
-	      &text('index_firewalld', "$gconfig{'webprefix'}/firewalld/"),
-	      "</b></center><p>\n";
-	}
-}
-
-sub fail2ban_message
-{
-local ($filter) = grep { $_->{'name'} eq 'filter' } @{$_[0]};
-if ($filter->{'defaults'} ~~ /^f2b-|^fail2ban-/) {
-        print "<b><center>",
-              &text('index_fail2ban', "$gconfig{'webprefix'}/fail2ban/"),
-              "</b></center><p>\n";
-        }
-}
-
+	# detect external firewalls
+	local ($filter) = grep { $_->{'name'} eq 'filter' } @{$_[0]};
+	if ($filter->{'defaults'}->{'shorewall'}) {
+        $fwname+='shorewall ';
+        	}
+	if ($filter->{'defaults'}->{'INPUT_ZONES'}) {
+        	$fwname+='firewalld ';
+        	}
+	if ($filter->{'defaults'} ~~ /^f2b-|^fail2ban-/) {
+        	$fwname+='fail2ban ';
+        	}
+	# warning about not using direct
+	if($fwname && !$config{'direct'}) {
+                print "<b><center>",
+                &text('index_filter_nodirect', $fwconfig),
+                "</b></center><p>\n";
+           }
+	# naming the detected firewall modules
+    	foreach my $word (split ' ', $fwname) {
+        	print "<center>",
+              	   &text("index_$word", "$gconfig{'webprefix'}/$word/", $fwconfig),
+                   "</center><p>\n";
+        	}
+   }
