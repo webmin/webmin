@@ -172,16 +172,30 @@ else {
 		$form++;
 		}
 
-	# Display a table of rules for each chain
-	foreach $c (sort by_string_for_iptables keys %{$table->{'defaults'}}) {
-		print &ui_hr();
-		@rules = grep { lc($_->{'chain'}) eq lc($c) }
-			      @{$table->{'rules'}};
-		print "<b>",$text{"index_chain_".lc($c)} ||
-			    &text('index_chain', "<tt>$c</tt>"),"</b><br>\n";
-		print "<form action=save_policy.cgi>\n";
-		print &ui_hidden("table", $in{'table'});
-		print &ui_hidden("chain", $c);
+        # Display a table of rules for each chain
+        CHAIN:
+        foreach $c (sort by_string_for_iptables keys %{$table->{'defaults'}}) {
+                print &ui_hr();
+                @rules = grep { lc($_->{'chain'}) eq lc($c) }
+                              @{$table->{'rules'}};
+                print "<b>",$text{"index_chain_".lc($c)} ||
+                            &text('index_chain', "<tt>$c</tt>"),"</b><br>\n";
+
+                # check if chain is filtered out
+                if ($config{'filter_chain'}) {
+                    foreach $filter (split(',', $config{'filter_chain'})) {
+                        if($c =~ /^$filter$/) {
+				# not managed by firewall, do not dispaly or modify
+                                print $text{'index_filter_chain'},"<br>\n";
+                                next CHAIN;
+                            }
+                        }
+                    }
+
+                print "<form action=save_policy.cgi>\n";
+                print &ui_hidden("table", $in{'table'});
+                print &ui_hidden("chain", $c);
+
 		if (@rules) {
 			@links = ( &select_all_link("d", $form),
 				   &select_invert_link("d", $form) );
