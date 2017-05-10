@@ -436,9 +436,15 @@ sub fail2ban_message
 {
 local ($filter) = grep { $_->{'name'} eq 'filter' } @{$_[0]};
 if ($filter->{'defaults'} ~~ /^f2b-|^fail2ban-/) {
-        print "<b><center>",
-              &text('index_fail2ban', "$gconfig{'webprefix'}/fail2ban/"),
-              "</b></center><p>\n";
+        local $fwconf="$gconfig{'webprefix'}/config.cgi?firewall";
+        if(!$config{'direct'}) {
+                 print "<b><center>",
+                &text('index_filter_nodirect', $fwconf),
+                "</b></center><p>\n";
+              }
+        print "<center>",
+              &text('index_fail2ban', "$gconfig{'webprefix'}/fail2ban/", $fwconf),
+              "</center><p>\n";
         }
 }
 
