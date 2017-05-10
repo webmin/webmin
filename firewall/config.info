@@ -11,4 +11,4 @@ after_apply_cmd=Command to run after applying configuration,3,None
 line1=System configuration,11
 save_file=IPtables save file to edit,3,Use operating system or Webmin default
 direct=Directly edit firewall rules instead of save file?,1,1-Yes,0-No
-filter_chain=Comma sepeated list of regexes to filter out chains not managed by firewall,0
+filter_chain=List of regexes to filter out chains not managed by firewall. You must activate "direct edit firewall rules" to use this feature,0
