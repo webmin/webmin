@@ -64,7 +64,7 @@ while(<FILE>) {
                  # -A|-I chain ... -j chain -> skip line if machtes filter_chain
                  if (/^.?-(A|I)\s+(\S+).*\s+-j\s+(.*)/) {
                          next LINE if($2 =~ /^$filter$/);
-                         next LINE if($3 =~ /^$filter$/);
+                         #next LINE if($3 =~ /^$filter$/);
                     }
                 }
             }
