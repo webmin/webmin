@@ -276,6 +276,7 @@ $desc in RPM format
 
 %build
 (find . -name '*.cgi' ; find . -name '*.pl') | perl -ne 'chop; open(F,\$_); \@l=<F>; close(F); \$l[0] = "#\!/usr/bin/perl\$1\n" if (\$l[0] =~ /#\!\\S*perl\\S*(.*)/); open(F,">\$_"); print F \@l; close(F)'
+rm -rf t/
 
 %install
 mkdir -p %{buildroot}/usr/libexec/$prog/$mod
