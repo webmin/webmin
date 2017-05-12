@@ -246,6 +246,8 @@ my $providesheader = $provides ? "Provides: $provides" : "";
 my $vendorheader = $vendor ? "Vendor: $vendor" : "";
 my $urlheader = $url ? "URL: $url" : "";
 my $epochheader = $epoch ? "Epoch: $epoch" : "";
+$force_theme //= "";
+$istheme //= "";
 open(my $SPEC, ">", "$spec_dir/$prefix$mod.spec");
 print $SPEC <<EOF;
 %define __spec_install_post %{nil}
