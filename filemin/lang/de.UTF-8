@@ -78,10 +78,12 @@ error_pasting_nonsence=Kopieren in das selbe Verzeichnis macht keinen Sinn
 error_exists=existiert bereits, abgebrochen
 error_copy=kopieren fehlgeschlagen mit Fehler:
 error_cut=verschieben fehlgeschlagen mit Fehler:
-error_create=erstellen fehlgeschalgen:
-error_rename=umbenennen fehlgeschalgen
+
+error_create=erstellen fehlgeschlagen:
+error_rename=umbenennen fehlgeschlagen
 error_chmod=Rechteänderung fehlgeschlagen
-error_chown=Benutzer ändern fehlgeschalgen
+error_chown=Benutzer ändern fehlgeschlagen
+
 error_delete=löschen nicht möglich
 error_user_not_found=Benutzer nicht im System gefunden
 error_group_not_found=Gruppe nicht im System gefunden
