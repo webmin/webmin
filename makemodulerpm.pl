@@ -242,10 +242,10 @@ if ($rpmdepends) {
 	}
 
 # Create the SPEC file
-my $providesheader = $provides ? "Provides: $provides" : undef;
-my $vendorheader = $vendor ? "Vendor: $vendor" : undef;
-my $urlheader = $url ? "URL: $url" : undef;
-my $epochheader = $epoch ? "Epoch: $epoch" : undef;
+my $providesheader = $provides ? "Provides: $provides" : "";
+my $vendorheader = $vendor ? "Vendor: $vendor" : "";
+my $urlheader = $url ? "URL: $url" : "";
+my $epochheader = $epoch ? "Epoch: $epoch" : "";
 open(my $SPEC, ">", "$spec_dir/$prefix$mod.spec");
 print $SPEC <<EOF;
 %define __spec_install_post %{nil}
@@ -254,7 +254,6 @@ Summary: $desc
 Name: $prefix$mod
 Version: $ver
 Release: $release
-PreReq: /bin/sh /usr/bin/perl /usr/libexec/$prog
 Requires: /bin/sh /usr/bin/perl /usr/libexec/$prog $rdeps
 AutoReq: 0
 License: $licence
@@ -417,10 +416,9 @@ while(<ARFILE>) {
 close(ARFILE);
 return 1;
 }
- 
+
 sub untaint
 {
 $_[0] =~ /^(.*)$/;
 return $1;
 }
-
