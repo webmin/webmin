@@ -16,43 +16,7 @@ ASK="YES"
 # help requested output usage
 if [[ "$1" == "-h" || "$1" == "--help" ]] ; then
     echo -e "\e[0m\e[49;0;33;82m ${PROD^} \e[0m update script"
-    if [[ "$1" == *"-repo"* ]]; then
-        if [[ "$1" == *":"* ]] ; then
-          REPO=${1##*:}
-          [[ "${ASK}" == "YES" ]] && echo -e "\e[49;0;31;82mWarning: using alternate repository <$HOST/$REPO> may break your installation!\e[0m"
-          shift
-        else
-          echo "./`basename $0`: found -repo without parameter"
-          exit 0
-        fi
-fi
-
-
-# Ask user to confirm update operation
-REPLY="y"
-[ "${ASK}" == "YES" ] && read -p "Would you like to update files for "${PROD^}" from ${HOST}/${REPO} [y/N] " -n 1 -r && echo
-
-if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-   echo -e "\e[49;1;35;82mOperation aborted.\e[0m"
-
-else
-  # OK lets update!
-  # Require privileged user to run the script
-  if [[ $EUID -ne 0 ]]; then
-    echo -e "\e[49;0;31;82mError: This command has to be run under the root user.\e[0m"
-  else
-
-    # Require `git` command availability
-    if type git >/dev/null 2>&1
-    then
-      # on usermin, get webmin module lang FIRST!
-      WEBMREPO=`echo ${REPO} | sed "s/\/usermin$/\/webmin/"`
-      if [[ "${REPO}" != "${WEBMREPO}" ]]; then
-          echo -e "\e[49;1;34;182mPulling Webmin files for Usermin first\e[0m"
-          $0 --yes -repo:$WEBMREPO $*
-      fi
-      # Pull latest changes
-echo "Usage:  ./`basename $0` { [-repo:yourname/xxxmin] [-beta] | [-release] | [-release:number] }"
+    echo "Usage:  ./`basename $0` { [-repo:yourname/xxxmin] [-beta] | [-release] | [-release:number] }"
     exit 0
 fi
 
@@ -158,5 +122,3 @@ fi
     fi
 
   fi
-
-fi
