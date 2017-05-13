@@ -49,7 +49,7 @@ if (!$config{'direct'} && &foreign_check("init")) {
 # rules, and offer to create a save file from them
 @livetables = &get_iptables_save("iptables-save 2>/dev/null |");
 
-#display warnings about active external firewalls!
+# Display warnings about active external firewalls!
 &external_firewall_message(\@livetables);
 if (!$config{'direct'} &&
     (!-s $iptables_save_file || $in{'reset'}) && $access{'setup'}) {
@@ -126,6 +126,15 @@ else {
 				}
 			}
 		@tables = &get_iptables_save() if ($need_reload);
+		}
+
+	# Check if the current config is valid
+	if (!$config{'direct'}) {
+		my $err = &validate_iptables_config();
+		if ($err) {
+			print "<b>",&text('index_evalid',
+					  &html_escape($err)),"</b><p>\n";
+			}
 		}
 
 	# Work out the default table
@@ -236,7 +245,7 @@ else {
                                         }
                                     }
 				# chain to jump to is filtered, switch of edit
-                                if ($edit && !$chain_filtered)) {
+                                if ($edit && !$chain_filtered) {
 					push(@cols, &ui_link("edit_rule.cgi?table=".&urlize($in{'table'})."&idx=$r->{'index'}",$act));
 					}
 				else {

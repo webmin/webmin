@@ -3,6 +3,7 @@ index_editing=Rules file $1
 index_ecommand=The command $1 was not found on your system. Webmin needs this command to configure IPtables.
 index_ekernel=An error occured when checking your current IPtables configuration : $1 This may indicate that your kernel does not support IPtables.
 index_header=Firewall configuration from $1
+index_evalid=WARNING! Your current IPtables configuration is invalid : $1
 index_change=Showing IPtable:
 index_chain_input=Incoming packets (INPUT) - Only applies to packets addressed to this host
 index_chain_output=Outgoing packets (OUTPUT) - Only applies to packets originated by this host
