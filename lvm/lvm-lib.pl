@@ -370,6 +370,10 @@ else {
 		elsif (/LV\s+Pool\s+name\s+(\S+)/) {
 			$lv->{'thin_in'} = $1;
 			}
+		elsif (/Allocated\s+pool\s+data\s+(\S+)%/) {
+			$lv->{'thin_percent'} = $1;
+			$lv->{'thin_used'} = $1 / 100.0 * $lv->{'size'};
+			}
 		}
 	close(DISPLAY);
 	@rv = grep { $_->{'vg'} eq $_[0] } @rv;
