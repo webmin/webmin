@@ -6,3 +6,7 @@ desc_no=Filbehandling
 desc=File Manager
 desc_ca=Gestor de Fitxers
 longdesc_ca=Gestor de fitxers lleuger i ràpid escrit en perl.
+desc_de=Datei Manager
+longdesc=Schneller, kleiner Datei Manager geschrieben in Perl.
+desc_de.UTF-8=Datei Manager
+longdesc_de.UTF-8=Schneller, kleiner Datei Manager geschrieben in Perl. 
