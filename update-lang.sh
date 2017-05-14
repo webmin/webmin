@@ -90,17 +90,18 @@ fi
         IGNORE="authentic-theme"
         echo -e "\e[49;32;5;82mstart copying files ...\e[0m"
 
-        for FILE in `ls -d */lang */ulang` `ls */config.info.* */module.info`
+        for FILE in `ls -d */lang */ulang */config.info.* */module.info 2>/dev/null`
         do
             MODUL=`dirname $FILE`; SKIP=`echo $MODUL | sed "s/$IGNORE/SKIP/"`
             if [ "$SKIP" == "SKIP" ]; then
                  echo -e "\e[49;3;37;182mskipping $MODUL ...\e[0m"
             else
+                [ -d .~files/$FILE ] && [ -d $DIR/$FILE ] && cp -r .~files/$FILE $DIR/$MODUL && echo -n "."
                 [ -f .~files/$FILE ] && [ -f $DIR/$FILE ] && cp -r .~files/$FILE $DIR/$FILE
             fi
         done
 
-        echo -e "\e[49;32;5;82mUpdating to lastest files from `cd .~files;git log -1 --format=%cd`, done.\e[0m"
+        echo -e "\n\e[49;32;5;82mUpdating to lastest files from `cd .~files;git log -1 --format=%cd`, done.\e[0m"
 
         # Restart Webmin/Usermin in case it's running
         if [[ "${ASK}" == "YES" ]] && [ "$2" != "-no-restart" ]; then
@@ -116,9 +117,11 @@ fi
       fi
 
       # remove temporary files
-      rm -rf "$DIR/.~files"
+      rm -rf "$DIR/.~files" "$DIR/.git"
     else
       echo -e "\e[49;0;33;82mError: Command \`git\` is not installed or not in the \`PATH\`.\e[0m";
     fi
 
   fi
+
+fi
