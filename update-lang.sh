@@ -75,7 +75,6 @@ else
       # remove old temporary files
       rm -rf "$DIR/.~files" "$DIR/.git"
       # Pull latest changes
-      [ -d "$DIR/.~file" ] && rm -rf "$DIR/.~file"
       if [[ "$1" == *"-release"* ]]; then
         if [[ "$1" == *":"* ]] && [[ "$1" != *"latest"* ]]; then
           RRELEASE=${1##*:}
