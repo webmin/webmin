@@ -7396,7 +7396,9 @@ if ($ssl) {
 		return "SSL connect() failed";
 	if ($certreqs) {
 		my $err = &validate_ssl_connection(
-			$rv->{'ssl_con'}, $certreqs->{'checkhost'} || $host,
+			$rv->{'ssl_con'},
+			$certreqs->{'checkhost'} ||
+			  $certreqs->{'host'} || $host,
 			$certreqs);
 		return "Invalid SSL certificate : $err" if ($err);
 		}
