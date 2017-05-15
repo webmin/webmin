@@ -26,6 +26,12 @@ if [[ "$1" == "-y" || "$1" == "--yes" ]] ; then
         shift
 fi
 
+# if we are on usermin, webmin must be also installed
+if [[ "$PROD" == "usermin" && ! -d "$DIR/../webmin" ]]; then
+        echo -e "\e[49;0;31;82mWebmin has to be installed to update ${PROD^}\e[0m"
+        exit 0
+fi
+
 # Clear the screen for better readability
 [[ "${ASK}" == "YES" ]] && clear
 
@@ -60,18 +66,21 @@ else
     # Require `git` command availability
     if type git >/dev/null 2>&1
     then
-      # on usermin, get webmin module lang FIRST!
+      # on usermin, update webmin module lang FIRST!
       WEBMREPO=`echo ${REPO} | sed "s/\/usermin$/\/webmin/"`
-      #if [[ "${REPO}" != "${WEBMREPO}" ]]; then
-      #    echo -e "\e[49;1;34;182mPulling Webmin files for Usermin first\e[0m"
-      #    $0 --yes -repo:$WEBMREPO $*
-      #fi
+      if [[ "${REPO}" != "${WEBMREPO}" ]]; then
+          echo -e "\e[49;1;34;182mPulling Webmin files first\e[0m"
+          ( cd ../webmin; $0 --yes -repo:$WEBMREPO $*)
+      fi
+      # remove old temporary files
+      rm -rf "$DIR/.~files" "$DIR/.git"
       # Pull latest changes
+      [ -d "$DIR/.~file" ] && rm -rf "$DIR/.~file"
       if [[ "$1" == *"-release"* ]]; then
         if [[ "$1" == *":"* ]] && [[ "$1" != *"latest"* ]]; then
           RRELEASE=${1##*:}
         else
-          RRELEASE=`curl -s -L https://raw.githubusercontent.com/$REPO/master/version`
+          RRELEASE=`curl -s -L https://raw.githubusercontent.com/$REPO/master/version.txt`
         fi
         echo -e "\e[49;1;34;182mPulling in latest release of\e[0m \e[49;1;37;182m ${PROD^}\e[0m $RRELEASE ($HOST/$REPO)..."
         RS="$(git clone --depth 1 --branch $RRELEASE -q $HOST/$REPO.git "$DIR/.~file" 2>&1)"
@@ -88,18 +97,29 @@ fi
 
         # we got it! start updating
         IGNORE="authentic-theme"
-        echo -e "\e[49;32;5;82mstart copying files ...\e[0m"
+        echo -e "\e[49;32;5;82mstart copying files ...\e[0m .=dir s=symlink S=dir symlink"
 
-        for FILE in `ls -d */lang */ulang */config.info.* */module.info 2>/dev/null`
+        # list all lang singe-files, lang dirs and linked modules here
+        for FILE in `ls -d */lang */ulang */config.info.* */module.info filemin 2>/dev/null`
         do
             MODUL=`dirname $FILE`; SKIP=`echo $MODUL | sed "s/$IGNORE/SKIP/"`
             if [ "$SKIP" == "SKIP" ]; then
                  echo -e "\e[49;3;37;182mskipping $MODUL ...\e[0m"
             else
-                [ -d .~files/$FILE ] && [ -d $DIR/$FILE ] && cp -r .~files/$FILE $DIR/$MODUL && echo -n "."
-                [ -f .~files/$FILE ] && [ -f $DIR/$FILE ] && cp -r .~files/$FILE $DIR/$FILE
+                # real files and dirs
+                [ -f .~files/$FILE ] && [ -f $DIR/$FILE ] && cp .~files/$FILE $DIR/$FILE && continue
+                [ -d .~files/$FILE ] && [ -d $DIR/$FILE ] && cp -r .~files/$FILE $DIR/$MODUL && \
+                         echo -n "." && continue
+                # to webmin symlinked files and dirs
+                if [ -h .~files/$FILE ]; then
+                    # get real symlink source
+                    SOURCE=`readlink .~files/$FILE | sed 's/.*web.*min\///'`
+                    [ -f $DIR/$FILE ] && cp $DIR/../webmin/$FILE $DIR/$SOURCE && echo -n "s" && continue
+                    [ -d $DIR/$FILE ] && cp -r $DIR/../webmin/$SOURCE $DIR/$MODUL && echo  -n "S"
+                fi
             fi
         done
+
 
         echo -e "\n\e[49;32;5;82mUpdating to lastest files from `cd .~files;git log -1 --format=%cd`, done.\e[0m"
 
