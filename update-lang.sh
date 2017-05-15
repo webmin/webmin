@@ -62,10 +62,10 @@ else
     then
       # on usermin, get webmin module lang FIRST!
       WEBMREPO=`echo ${REPO} | sed "s/\/usermin$/\/webmin/"`
-      if [[ "${REPO}" != "${WEBMREPO}" ]]; then
-          echo -e "\e[49;1;34;182mPulling Webmin files for Usermin first\e[0m"
-          $0 --yes -repo:$WEBMREPO $*
-      fi
+      #if [[ "${REPO}" != "${WEBMREPO}" ]]; then
+      #    echo -e "\e[49;1;34;182mPulling Webmin files for Usermin first\e[0m"
+      #    $0 --yes -repo:$WEBMREPO $*
+      #fi
       # Pull latest changes
       if [[ "$1" == *"-release"* ]]; then
         if [[ "$1" == *":"* ]] && [[ "$1" != *"latest"* ]]; then
