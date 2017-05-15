@@ -79,7 +79,7 @@ else
         if [[ "$1" == *":"* ]] && [[ "$1" != *"latest"* ]]; then
           RRELEASE=${1##*:}
         else
-          RRELEASE=`curl -s -L https://raw.githubusercontent.com/$REPO/master/version.txt`
+          RRELEASE=`curl -s -L https://raw.githubusercontent.com/$REPO/master/version`
         fi
         echo -e "\e[49;1;34;182mPulling in latest release of\e[0m \e[49;1;37;182m ${PROD^}\e[0m $RRELEASE ($HOST/$REPO)..."
         RS="$(git clone --depth 1 --branch $RRELEASE -q $HOST/$REPO.git "$DIR/.~file" 2>&1)"
