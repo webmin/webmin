@@ -26,8 +26,9 @@ my $files_file = "$debian_dir/files";
 	die RED, "makemoduledeb.pl must be run on Debian", RESET;
 
 # Parse command-line args
-my ($force_theme, $url, $upstream, $debdepends, $no_prefix, $force_usermin, $release,
-    $allow_overwrite, $final_mod, $dsc_file, $dir, $ver);
+my ($force_theme, $url, $upstream, $debdepends, $no_prefix, $force_usermin,
+    $release, $allow_overwrite, $final_mod, $dsc_file, $dir, $ver, @exclude);
+
 while(@ARGV) {
 	my $a = shift(@ARGV);
 	if ($a eq "--force-theme") {
@@ -68,6 +69,9 @@ while(@ARGV) {
 		}
 	elsif ($a eq "--dsc-file") {
 		$dsc_file = shift(@ARGV);
+		}
+	elsif ($a eq "--exclude") {
+		push(@exclude, shift(@ARGV));
 		}
 	elsif ($a =~ /^\-\-/) {
 		print STDERR "Unknown option $a\n";
@@ -152,9 +156,6 @@ else {
 $prefix = "" if ($no_prefix);
 my $usr_dir = "$tmp_dir/usr/share/$product";
 my $ucproduct = ucfirst($product);
-$ver ||= $iver;		# Use module.info version, or 1
-$ver ||= 1;
-$ver .= "-".$release if ($release);
 $upstream ||= $email;
 
 # Create the base directories
@@ -172,7 +173,7 @@ system("cd $usr_dir && chmod -R og-w .");
 if ($< == 0) {
         system("cd $usr_dir && chown -R root:bin .");
         }
-my $size = int(`du -sk $tmp_dir`);
+system("find $usr_dir -name .git | xargs rm -rf");
 system("find $usr_dir -name .svn | xargs rm -rf");
 system("find $usr_dir -name .xvpics | xargs rm -rf");
 system("find $usr_dir -name '*.bak' | xargs rm -rf");
@@ -185,6 +186,28 @@ if (-r "$usr_dir/$mod/EXCLUDE") {
 	system("cd $usr_dir/$mod && cat EXCLUDE | xargs rm -rf");
 	system("rm -f $usr_dir/$mod/EXCLUDE");
 	}
+foreach my $e (@exclude) {
+	system("find $usr_dir -name ".quotemeta($e)." | xargs rm -rf");
+	}
+my $out = `du -sk $tmp_dir`;
+my $size = $out =~ /^\s*(\d+)/ ? $1 : undef;
+
+# Set version in .info file to match command line, if given
+if ($ver) {
+	if ($minfo{'desc'}) {
+		$minfo{'version'} = $ver;
+		&write_file("$usr_dir/$mod/module.info", \%minfo);
+		}
+	elsif ($tinfo{'desc'}) {
+		$tinfo{'version'} = $ver;
+		&write_file("$usr_dir/$mod/theme.info", \%tinfo);
+		}
+	}
+else {
+	$ver ||= $iver;		# Use module.info version, or 1
+	$ver ||= 1;
+	}
+$ver .= "-".$release if ($release);
 
 # Fix up Perl paths
 system("(find $usr_dir -name '*.cgi' ; find $usr_dir -name '*.pl') | perl -ne 'chop; open(F,\$_); \@l=<F>; close(F); \$l[0] = \"#\!/usr/bin/perl\$1\n\" if (\$l[0] =~ /#\!\\S*perl\\S*(.*)/); open(F,\">\$_\"); print F \@l; close(F)'");
@@ -280,9 +303,11 @@ if (-r $f) {
 if (%$changes) {
 	open(my $CHANGELOG, ">", "$changelog_file");
 	my $forv;
+	my $clver = $ver;
+	$clver =~ s/\.[^0-9\.]*$//;
 	foreach my $v (sort { $a <=> $b } (keys %$changes)) {
-		if ($ver > $v && sprintf("%.2f0", $ver) == $v) {
-			$forv = $ver;
+		if ($clver > $v && sprintf("%.2f0", $clver) == $v) {
+			$forv = $clver;
 			}
 		else {
 			$forv = sprintf("%.2f0", $v+0.01);
@@ -478,6 +503,22 @@ while(<$ARFILE>) {
         }
 close($ARFILE);
 return 1;
+}
+
+# write_file(file, array)
+# Write out the contents of an associative array as name=value lines
+sub write_file
+{
+my (%old, @order);
+&read_file($_[0], \%old, \@order);
+open(ARFILE, ">$_[0]");
+foreach my $k (@order) {
+        print ARFILE $k,"=",$_[1]->{$k},"\n" if (exists($_[1]->{$k}));
+	}
+foreach my $k (keys %{$_[1]}) {
+        print ARFILE $k,"=",$_[1]->{$k},"\n" if (!exists($old{$k}));
+        }
+close(ARFILE);
 }
 
 # wrap_lines(text, width)
