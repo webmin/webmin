@@ -3,9 +3,9 @@
 # Create a Debian package for a webmin or usermin module or theme
 use strict;
 use warnings;
-
 use POSIX;
 use Term::ANSIColor qw(:constants);
+use 5.010;
 
 my $licence = "BSD";
 my $email = "Jamie Cameron <jcameron\@webmin.com>";
@@ -174,7 +174,7 @@ system("cd $usr_dir && chmod -R og-w .");
 if ($< == 0) {
         system("cd $usr_dir && chown -R root:bin .");
         }
-my $size = int(`du -sk $tmp_dir`);
+my $size = int(`du -sk $tmp_dir | cut -f 1`);
 system("find $usr_dir -name .git | xargs rm -rf");
 system("find $usr_dir -name .svn | xargs rm -rf");
 system("find $usr_dir -name .xvpics | xargs rm -rf");
@@ -308,6 +308,7 @@ if (%$changes) {
 
 # Create the pre-install script, which checks if Webmin is installed
 open(my $PREINSTALL, ">", "$preinstall_file");
+no warnings "uninitialized";
 print $PREINSTALL <<EOF;
 #!/bin/sh
 if [ ! -r /etc/$product/config -o ! -d /usr/share/$product ]; then
