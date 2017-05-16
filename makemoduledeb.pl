@@ -114,10 +114,12 @@ if ($mod eq "." || $mod eq "..") {
 my ($depends, $prefix, $desc, $product, $iver, $istheme, $post_config);
 -d $source_dir || die RED, "$source_dir is not a directory", RESET;
 my (%minfo, %tinfo);
-if (&read_file("$source_dir/module.info", \%minfo) && $minfo{'desc'}) {
-	$depends = join(" ", map { s/\/[0-9\.]+//; $_ }
-				grep { !/^[0-9\.]+$/ }
-				  split(/\s+/, $minfo{'depends'}));
+if (read_file("$source_dir/module.info", \%minfo) && exists($minfo{'desc'})) {
+	if (exists($minfo{'depends'})) {
+		$depends = join(" ", map { s/\/[0-9\.]+//; $_ }
+							 grep { !/^[0-9\.]+$/ }
+				  		 split(/\s+/, $minfo{'depends'}));
+	}
 	if ($minfo{'usermin'} && (!$minfo{'webmin'} || $force_usermin)) {
 		$prefix = "usermin-";
 		$desc = "Usermin module for '$minfo{'desc'}'";
@@ -131,7 +133,7 @@ if (&read_file("$source_dir/module.info", \%minfo) && $minfo{'desc'}) {
 	$iver = $minfo{'version'};
 	$post_config = 1;
 	}
-elsif (&read_file("$source_dir/theme.info", \%tinfo) && $tinfo{'desc'}) {
+elsif (read_file("$source_dir/theme.info", \%tinfo) && $tinfo{'desc'}) {
 	if ($tinfo{'usermin'} && (!$tinfo{'usermin'} || $force_usermin)) {
 		$prefix = "usermin-";
 		$desc = "Usermin theme '$tinfo{'desc'}'";
@@ -173,6 +175,7 @@ if ($< == 0) {
         system("cd $usr_dir && chown -R root:bin .");
         }
 my $size = int(`du -sk $tmp_dir`);
+system("find $usr_dir -name .git | xargs rm -rf");
 system("find $usr_dir -name .svn | xargs rm -rf");
 system("find $usr_dir -name .xvpics | xargs rm -rf");
 system("find $usr_dir -name '*.bak' | xargs rm -rf");
@@ -193,7 +196,7 @@ system("(find $usr_dir -name '*.cgi' ; find $usr_dir -name '*.pl') | xargs chmod
 # Build list of dependencies on other Debian packages, for inclusion as a
 # Requires: header
 my @rdeps = ( "base", "perl", $product );
-if ($debdepends) {
+if ($debdepends && exists($minfo{'depends'})) {
 	foreach my $d (split(/\s+/, $minfo{'depends'})) {
 		my ($dwebmin, $dmod, $dver);
 		if ($d =~ /^[0-9\.]+$/) {
@@ -213,7 +216,7 @@ if ($debdepends) {
 		# If the module is part of Webmin, we don't need to depend on it
 		if ($dmod) {
 			my %dinfo;
-			&read_file("$dmod/module.info", \%dinfo);
+			read_file("$dmod/module.info", \%dinfo);
 			next if ($dinfo{'longdesc'});
 			}
 		push(@rdeps, $dwebmin ? ("$product (>= $dwebmin)") :
@@ -290,7 +293,7 @@ if (%$changes) {
 		print $CHANGELOG "$prefix$mod ($forv) stable; urgency=low\n";
 		print $CHANGELOG "\n";
 		foreach my $c (@{$changes->{$v}}) {
-			my @lines = &wrap_lines($c, 65);
+			my @lines = wrap_lines($c, 65);
 			print $CHANGELOG " * $lines[0]\n";
 			foreach my $l (@lines[1 .. $#lines]) {
 				print $CHANGELOG "   $l\n";
@@ -502,5 +505,3 @@ foreach my $rest (split(/\n/, $_[0])) {
 	}
 return @rv;
 }
-
-
