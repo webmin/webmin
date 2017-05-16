@@ -138,8 +138,8 @@ sub os_get_cpu_info
 {
 local $out = &backquote_command("uptime");
 local @load;
-if ($out =~ /load\s+average:\s+([0-9\.]+),\s+([0-9\.]+),\s+([0-9\.]+)/) {
-	@load = ($1, $2, $3);
+if ($out =~ /load\s+(average|averages):\s+([0-9\.]+),\s+([0-9\.]+),\s+([0-9\.]+)/) {
+	@load = ($2, $3, $4);
 	}
 else {
 	return ( );
