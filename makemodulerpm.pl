@@ -27,9 +27,8 @@ $ENV{'PATH'} = "/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin";
 my $allow_overwrite = 0;
 
 my ($force_theme, $rpmdepends, $no_prefix, $vendor, $provides, $url,
-    $force_usermin, $final_mod, $sign, $epoch, $dir, $ver);
-my @extrareqs;
-my @exclude;
+    $force_usermin, $final_mod, $sign, $epoch, $dir, $ver, @extrareqs,
+    @exclude);
 
 # Parse command-line args
 while(@ARGV) {
@@ -209,7 +208,7 @@ foreach my $e (@exclude) {
 	system("/usr/bin/find /tmp/makemodulerpm -name ".quotemeta($e)." | xargs rm -rf");
 	}
 
-# Set version in .info file to make command line, if given
+# Set version in .info file to match command line, if given
 if ($ver) {
 	if ($minfo{'desc'}) {
 		$minfo{'version'} = $ver;
@@ -220,8 +219,10 @@ if ($ver) {
 		&write_file("/tmp/makemodulerpm/$mod/theme.info", \%tinfo);
 		}
 	}
-$ver ||= $iver;		# Use module.info version, or 1
-$ver ||= 1;
+else {
+	$ver ||= $iver;		# Use module.info version, or 1
+	$ver ||= 1;
+	}
 
 # Tar up the directory
 system("cd /tmp/makemodulerpm && tar czhf $rpm_source_dir/$mod.tar.gz $mod");
