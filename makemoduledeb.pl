@@ -306,6 +306,10 @@ if (%$changes) {
 	close($CHANGELOG);
 	}
 
+$depends //= "";
+$force_theme //= "";
+$istheme //= "";
+
 # Create the pre-install script, which checks if Webmin is installed
 open(my $PREINSTALL, ">", "$preinstall_file");
 no warnings "uninitialized";
