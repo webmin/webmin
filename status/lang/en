@@ -33,6 +33,7 @@ type_sslcert=SSL Certificate
 type_ftp=Remote FTP Service
 type_sendmail=Sendmail Server
 type_postfix=Postfix Server
+type_fail2ban=Fail2Ban Server
 type_ping=Remote Ping
 type_proc=Check Process
 type_mysql=MySQL Database Server

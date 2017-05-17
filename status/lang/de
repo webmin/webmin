@@ -470,6 +470,7 @@ type_dnsadmin=BIND 4 DNS-Server
 type_dovecot=Dovecot IMAP/POP3 Server
 type_du=Verzeichnisgr&#246;&#223;e
 type_exec=Befehl ausf&uuml;hren
+type_fail2ban=Fail2Ban Server
 type_file=Datei &uuml;berpr&uuml;fen
 type_ftp=Entfernter FTP Dienst
 type_hostsentry=Hostsentry Daemon

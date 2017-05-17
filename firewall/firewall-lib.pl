@@ -500,5 +500,16 @@ foreach $s (&list_cluster_servers()) {
 return undef;
 }
 
+# validate_iptables_config()
+# Tests that the rules file can be parsed
+sub validate_iptables_config
+{
+my $out = &backquote_command(
+	"iptables-restore --test <$iptables_save_file 2>&1");
+return undef if (!$?);
+$out =~ s/Try\s.*more\s+information.*//;
+return $out;
+}
+
 1;
 

@@ -262,6 +262,12 @@ if ($in{'lv'} && $lv->{'thin'}) {
 		print &ui_table_row($text{'lv_thincs'},
 			&ui_grid_table(\@thinlist, 4), 3);
 		}
+
+	print &ui_table_row($text{'lv_thinused'},
+		&nice_size($lv->{'thin_used'} * 1024));
+
+	print &ui_table_row($text{'lv_thinpercent'},
+		$lv->{'thin_percent'}."%");
 	}
 
 print &ui_table_end();

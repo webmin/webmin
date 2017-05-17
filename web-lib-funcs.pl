@@ -7394,9 +7394,11 @@ if ($ssl) {
 		};
 	Net::SSLeay::connect($rv->{'ssl_con'}) ||
 		return "SSL connect() failed";
-	if ($certreqs) {
+	if ($certreqs && !$certreqs->{'nocheckhost'}) {
 		my $err = &validate_ssl_connection(
-			$rv->{'ssl_con'}, $certreqs->{'checkhost'} || $host,
+			$rv->{'ssl_con'},
+			$certreqs->{'checkhost'} ||
+			  $certreqs->{'host'} || $host,
 			$certreqs);
 		return "Invalid SSL certificate : $err" if ($err);
 		}
