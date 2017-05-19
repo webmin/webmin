@@ -338,7 +338,7 @@ foreach $h (@hosts) {
 			# Can just run RPM command
 			# XXX doesn't actually check output!
 			&remote_eval($s->{'host'}, "webmin", "system(\"rpm --import \$root_directory/webmin/jcameron-key.asc >/dev/null 2>&1\")");
-			($out, $ex) = &remote_eval($s->{'host'}, "webmin", "\$out = `rpm -U --ignoreos --ignorearch '$rfile' >/dev/null 2>&1 </dev/null`; (\$out, \$?)");
+			($out, $ex) = &remote_eval($s->{'host'}, "webmin", "\$out = `rpm -U --ignoreos --ignorearch --nodeps '$rfile' >/dev/null 2>&1 </dev/null`; (\$out, \$?)");
 			&remote_eval($s->{'host'}, "webmin", "unlink('$rfile')")
 				if ($host_need_unlink);
 			if ($ex) {
