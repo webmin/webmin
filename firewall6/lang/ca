@@ -73,6 +73,7 @@ index_reset=Reinicia el Tallafocs
 index_resetdesc=Fes clic sobre aquest botó per eliminar totes les regles existents del tallafocs i establir-ne de noves per a una configuració inicial bàsica.
 index_cluster=Servidors del Cluster
 index_clusterdesc=Fes clic sobre aquest botó per configurar servidors Webmin addicionals als quals es copiarà automàticament la configuració del tallafocs.
+index_position=Regles $1 a $2 de $3
 
 desc_p=el protocol és $1
 desc_p!=el protocol no és $1

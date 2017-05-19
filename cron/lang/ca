@@ -10,6 +10,7 @@ index_none3=Encara no tens cap treball cron.
 index_create=Crea una nou treball planificat amb cron.
 index_ecreate=Crea una nova variable d'entorn.
 index_allow=Controla l'accés dels usuaris als treballs cron.
+index_manual=Edita manualment els treballs cron.
 index_return=a la llista de cron
 index_env=Variable d'entorn
 index_move=Desplaça
@@ -180,4 +181,12 @@ range_eend=Hi falta la data final de l'interval o bé és invàlida
 
 delete_err=No s'han pogut suprimir els treballs Cron
 delete_enone=No has seleccionat res
+
+manual_title=Edició Manual de Treballs Cron
+manual_edit=Fitxer cron a editar:
+manual_ok=Edita
+manual_editing=Utilitza la caixa de text de sota per editar el treballs Cronde $1. Ves amb compte, perquè Webmin no en farà cap validació!
+manual_efile=El fitxer seleccionat no és vàlid!
+manual_ecannot=No tens permís per editar manualment els treballs cron
+
 __norefs=1

@@ -51,4 +51,5 @@ apply_err=No s'ha pogut aplicar la configuració
 
 delete_err=No s'han pogut suprimir els processos
 delete_enone=No has seleccionat cap procés
+
 __norefs=1

@@ -295,4 +295,5 @@ relabel_ok=Neteja i Reetiqueta
 
 table_msdos=MS-DOS (Format estàndard de particions)
 table_gpt=GPT (Per a discs de 2T o més grans)
+
 __norefs=1

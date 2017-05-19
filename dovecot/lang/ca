@@ -53,7 +53,7 @@ ssl_title=Configuració SSL
 ssl_header=Opcions d'IMAP i POP3 en mode SSL
 ssl_key=Fitxer de claus privades SSL
 ssl_cert=Fitxer de certificats SSL
-ssl_ca=Fitxer de certificat CA SSL CA
+ssl_ca=Fitxer de certificat CA client SSL
 ssl_pass=Contrasenya del fitxer de claus
 ssl_prompt=No en cal cap
 ssl_regen=Interval entre regeneracions de paràmetres SSL
@@ -63,7 +63,7 @@ ssl_plain=Desactiva l'autenticació en text planer en mode no SSL
 ssl_err=No s'ha pogut desar la configuració SSL
 ssl_ekey=Hi falta el fitxer de claus privades o bé no existeix
 ssl_ecert=Hi falta el fitxer de certificats o bé no existeix
-ssl_eca=Hi falta el fitxer de certificat CA o bé no existeix
+ssl_eca=Hi falta el fitxer de certificat CA client o bé no existeix
 ssl_eregen=Hi falta l'interval de regeneració de paràmetres o bé no és numèric
 ssl_epass=No has introduït la contrasenya del fitxer de claus SSL
 
