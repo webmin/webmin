@@ -602,6 +602,8 @@ backup_header2=Altres opcions de còpia
 backup_header3=Planificació de la còpia
 backup_file=Aboca al fitxer
 backup_file2=Aboca al directori
+backup_download=Descarrega-ho al navegador
+backup_path=Caní al servidor
 backup_mkdir=Crea el directori destí
 backup_where=Aboca només les files que coincideixin amb la clàusula <tt>WHERE</tt>
 backup_none=Totes les files
@@ -661,6 +663,8 @@ backup_bodyok=...la còpia de $1 s'ha creat correctament
 backup_bodytotal=Mida total de la còpia: $1
 backup_bodyspace=Mida del sistema de fitxers: $1  Espai lliure: $2
 backup_bodyall=tot
+backup_edownloadall=Només es pot descarregar una còpia de seguretat d'una base de dades
+backup_edownloadsave=El mode de descàrrega no es pot utilitzar per a les còpies planificades
 
 import_title=Importació de Dades
 import_uploadout=S'estan important les dades des del fitxer pujat...

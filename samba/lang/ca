@@ -569,6 +569,7 @@ acl_group_opts=Opcions del grup Samba
 acl_maint_groups=Pot veure, editar i afegir grups
 acl_maint_gsync=Pot mantenir la sincronia automàtica entre grups Unix i Samba
 acl_winbind=Pot vincular a dominis
+acl_bind=Pot accedir a les opcions de winbind
 
 groups_title=Grups Samba
 groups_name=Nom del grup
