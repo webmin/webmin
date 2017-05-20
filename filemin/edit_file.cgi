@@ -1,4 +1,4 @@
-#!/usr/loacl/bin/perl
+#!/usr/local/bin/perl
 
 require './filemin-lib.pl';
 &ReadParse();
