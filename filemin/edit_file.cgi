@@ -13,6 +13,8 @@ my $encoding_name;
 eval "use Encode::Detect::Detector;";
 if (!$@) {
 	$encoding_name = Encode::Detect::Detector::detect($data);
+	# fix random iso-8869-* detection to be always iso-8859-1
+	if ( $encoding_name ~= /^iso-8859/ ) $encoding_name="iso-8859-1";
 	}
 if ( lc( get_charset() ) eq "utf-8" && ( $encoding_name && lc($encoding_name) ne "utf-8" ) ) {
     use Encode qw( encode decode );
