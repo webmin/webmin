@@ -119,7 +119,7 @@ if [[ $EUID -eq 0 ]]; then
 
         ####################
         # start processing pulled source
-	version="`head -c -1 ${TEMP}/version`.`cd ${TEMP}; git log -1 --format=%cd --date=format:'%m%d.%H%M'`"
+	version="`head -c -1 ${TEMP}/version`.`cd ${TEMP}; git log -1 --format=%cd --date=format:'%m%d.%H%M'`" 
         if [[ "${LANG}" != "YES" ]]; then
           ###############
           # FULL update
@@ -127,6 +127,16 @@ if [[ $EUID -eq 0 ]]; then
           # create dir,resolve links and some other processing
           mkdir ${TEMP}/tarballs
           ( cd ${TEMP}; perl makedist.pl ${version} ) 2>/dev/null
+
+          # check for additional standard modules
+          # fixed list better than guessing?
+          for module in `ls */module.info`
+          do 
+            if [[ -f ${TEMP}/${module} && ! -f  "${TEMP}/tarballs/${PROD}-${version}/$module" ]]; then
+              module=`dirname $module`
+              echo "Adding module $module" && cp -r -L ${TEMP}/$module ${TEMP}/tarballs/${PROD}-${version}/
+            fi
+          done
 
           #prepeare unattended upgrade
           config_dir=/etc/${PROD}
@@ -144,7 +154,7 @@ if [[ $EUID -eq 0 ]]; then
           echo -e "${GREEN}start updating LANG files for${NC} ${RPOD} ... ${LGREY}.=dir s=symlink S=dir symlink${NC}"
 
           # list all lang singe-files, lang dirs and linked modules here
-          for FILE in `ls -d lang */lang ulang */ulang */config.info.* */module.info filemin 2>/dev/null`
+          for FILE in `ls -d */lang */ulang */config.info.* */module.info filemin 2>/dev/null`
           do
             MODUL=`dirname $FILE`; SKIP=`echo $MODUL | sed "s/$IGNORE/SKIP/"`
             if [ "$SKIP" == "SKIP" ]; then
