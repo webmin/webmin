@@ -7874,6 +7874,7 @@ $rv =~ s/<\s*script[^>]*>([\000-\377]*?)<\s*\/script\s*>//gi;
 $rv =~ s/(on(Abort|BeforeUnload|Blur|Change|Click|ContextMenu|Copy|Cut|DblClick|Drag|DragEnd|DragEnter|DragLeave|DragOver|DragStart|DragDrop|Drop|Error|Focus|FocusIn|FocusOut|HashChange|Input|Invalid|KeyDown|KeyPress|KeyUp|Load|MouseDown|MouseEnter|MouseLeave|MouseMove|MouseOut|MouseOver|MouseUp|Move|Paste|PageShow|PageHide|Reset|Resize|Scroll|Search|Select|Submit|Toggle|Unload)=)/x$1/gi;
 $rv =~ s/(javascript:)/x$1/gi;
 $rv =~ s/(vbscript:)/x$1/gi;
+$rv =~ s/<([^>]*\s|)(on\S+=)(.*)>/<$1x$2$3>/gi;
 return $rv;
 }
 
