@@ -99,7 +99,7 @@ if [[ $EUID -eq 0 ]]; then
         if [[ "$1" == *":"* ]] && [[ "$1" != *"latest"* ]]; then
           RRELEASE=${1##*:}
         else
-          RRELEASE=`curl -s -L https://github.com/webmin/webmin/blob/master/version  | sed -n '/id="LC1"/s/.*">\([^<]*\).*/\1/p'`
+          RRELEASE=`curl -s -L https://github.com/${REPO}/blob/master/version  | sed -n '/id="LC1"/s/.*">\([^<]*\).*/\1/p'`
         fi
         echo -e "${BLUE}Pulling in latest release of${NC} ${GREY}${PROD^}${NC} $RRELEASE ($HOST/$REPO)..."
         RS="$(git clone --depth 1 --branch $RRELEASE -q $HOST/$REPO.git "${TEMP}" 2>&1)"
