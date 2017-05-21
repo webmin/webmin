@@ -61,6 +61,7 @@ fi
 if [[ "$1" == *"-repo"* ]]; then
         if [[ "$1" == *":"* ]] ; then
           REPO=${1##*:}
+          [[ "${REPO##*/}" != ${PROD} ]] && echo -e "${ORANGE}./`basename $0`:${NC} ${REPO} does not end with /${PROD}" && exit 0
           [[ "${ASK}" == "YES" ]] && echo -e "${RED}Warning:${NC} ${ORANGE}using alternate repository${NC} $HOST/$REPO ${ORANGE}may break your installation!${NC}"
           shift
         else
@@ -92,11 +93,13 @@ if [[ $EUID -eq 0 ]]; then
 
       #################
       # pull source from github
+      # remove temporary files from failed run
+      rm -rf .~files
       if [[ "$1" == *"-release"* ]]; then
         if [[ "$1" == *":"* ]] && [[ "$1" != *"latest"* ]]; then
           RRELEASE=${1##*:}
         else
-          RRELEASE=`curl -s -L https://raw.githubusercontent.com/$REPO/master/version`
+          RRELEASE=`curl -s -L https://github.com/webmin/webmin/blob/master/version  | sed -n '/id="LC1"/s/.*">\([^<]*\).*/\1/p'`
         fi
         echo -e "${BLUE}Pulling in latest release of${NC} ${GREY}${PROD^}${NC} $RRELEASE ($HOST/$REPO)..."
         RS="$(git clone --depth 1 --branch $RRELEASE -q $HOST/$REPO.git "${TEMP}" 2>&1)"
@@ -125,7 +128,7 @@ if [[ $EUID -eq 0 ]]; then
           # FULL update
           echo -e "${GREEN}start FULL update for${NC} $PROD ..."
           # create dir,resolve links and some other processing
-          mkdir ${TEMP}/tarballs
+          mkdir ${TEMP}/tarballs 2>/dev/null
           ( cd ${TEMP}; perl makedist.pl ${version} ) 2>/dev/null
 
           # check for additional standard modules
@@ -156,7 +159,7 @@ if [[ $EUID -eq 0 ]]; then
           echo -e "${GREEN}start updating LANG files for${NC} ${RPOD} ... ${LGREY}.=dir s=symlink S=dir symlink${NC}"
 
           # list all lang singe-files, lang dirs and linked modules here
-          for FILE in `ls -d */lang */ulang */config.info.* */module.info filemin 2>/dev/null`
+          for FILE in `ls -d lang */lang ulang */ulang */config.info.* */module.info filemin 2>/dev/null`
           do
             MODUL=`dirname $FILE`; SKIP=`echo $MODUL | sed "s/$IGNORE/SKIP/"`
             if [ "$SKIP" == "SKIP" ]; then
@@ -182,9 +185,15 @@ if [[ $EUID -eq 0 ]]; then
         echo -e "\n${GREEN}Updating ${PROD^} to Version `cat version`, done.${NC}"
 
         # update authentic, put dummy clear in PATH
-        Echo -e "#!/bin/sh\necho" > ${TEMP}/clear; chmod +x ${TEMP}/clear
+        echo -e "#!/bin/sh\necho" > ${TEMP}/clear; chmod +x ${TEMP}/clear
         export PATH="${TEMP}:${PATH}"
-        [[ -x authentic-theme/theme-update.sh ]] && authentic-theme/theme-update.sh
+        # check if alternatve repo exist
+        AUTHREPO=`echo ${REPO} | sed "s/\/.*min$/\/autehtic-theme/"`
+        if [[ "${REPO}" != "${AUTHREPO}" ]]; then
+           exist=`curl -s -L ${HOST}/${AUTHREPO}`
+           [[ "${#exist}" -lt 20 ]] && RREPO="${AUTHREPO}"
+        fi
+        [[ -x authentic-theme/theme-update.sh ]] && authentic-theme/theme-update.sh ${RREPO}
 
       else
         # something went wrong
