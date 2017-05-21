@@ -42,13 +42,13 @@ fi
 
 # dont ask -y given
 if [[ "$1" == "-y" || "$1" == "-yes" ]] ; then
-	ASK="NO"
+        ASK="NO"
         shift
 fi
 
 # update onyl lang files
 if [[ "$1" == "-l" || "$1" == "-lang" ]] ; then
-	LANG="YES"
+        LANG="YES"
         shift
 fi
 
@@ -61,10 +61,10 @@ fi
 if [[ "$1" == *"-repo"* ]]; then
         if [[ "$1" == *":"* ]] ; then
           REPO=${1##*:}
-	  [[ "${ASK}" == "YES" ]] && echo -e "${RED}Warning:${NC} ${ORANGE}using alternate repository${NC} $HOST/$REPO ${ORANGE}may break your installation!${NC}"
+          [[ "${ASK}" == "YES" ]] && echo -e "${RED}Warning:${NC} ${ORANGE}using alternate repository${NC} $HOST/$REPO ${ORANGE}may break your installation!${NC}"
           shift
         else
-	  echo -e "${ORANGE}./`basename $0`:${NC} found -repo without parameter"
+          echo -e "${ORANGE}./`basename $0`:${NC} found -repo without parameter"
           exit 0
         fi
 fi
@@ -119,11 +119,11 @@ if [[ $EUID -eq 0 ]]; then
 
         ####################
         # start processing pulled source
-	version="`head -c -1 ${TEMP}/version`.`cd ${TEMP}; git log -1 --format=%cd --date=format:'%m%d.%H%M'`" 
+        version="`head -c -1 ${TEMP}/version`.`cd ${TEMP}; git log -1 --format=%cd --date=format:'%m%d.%H%M'`" 
         if [[ "${LANG}" != "YES" ]]; then
           ###############
           # FULL update
-	  echo -e "${GREEN}start FULL update for${NC} $PROD ..."
+          echo -e "${GREEN}start FULL update for${NC} $PROD ..."
           # create dir,resolve links and some other processing
           mkdir ${TEMP}/tarballs
           ( cd ${TEMP}; perl makedist.pl ${version} ) 2>/dev/null
@@ -139,11 +139,13 @@ if [[ $EUID -eq 0 ]]; then
           done
 
           #prepeare unattended upgrade
+          [[ ! -f "${TEMP}/tarballs/${PROD}-${version}/setup.sh" ]] && \
+                   cp  "${TEMP}/setup.sh" "${TEMP}/tarballs/${PROD}-${version}/setup.sh"
           config_dir=/etc/${PROD}
           atboot="NO"
           makeboot="NO"
           nouninstall="YES"
-          nostart="YES"
+          #nostart="YES"
           export config_dir atboot nouninstall makeboot nostart
           ${TEMP}/tarballs/${PROD}-${version}/setup.sh ${DIR} | grep -v -e "^$" -e "done$"
 
@@ -180,7 +182,7 @@ if [[ $EUID -eq 0 ]]; then
         echo -e "\n${GREEN}Updating ${PROD^} to Version `cat version`, done.${NC}"
 
         # update authentic, put dummy clear in PATH
-	echo -e "#!/bin/sh\necho" > ${TEMP}/clear; chmod +x ${TEMP}/clear
+        Echo -e "#!/bin/sh\necho" > ${TEMP}/clear; chmod +x ${TEMP}/clear
         export PATH="${TEMP}:${PATH}"
         [[ -x authentic-theme/theme-update.sh ]] && authentic-theme/theme-update.sh
 
