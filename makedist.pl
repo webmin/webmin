@@ -17,7 +17,7 @@ $zipdir = "zips";
 	  "miniserv.pl", "os_list.txt", "perlpath.pl", "setup.sh", "setup.pl",
 	  "version", "web-lib.pl", "web-lib-funcs.pl", "README",
 	  "config_save.cgi", "chooser.cgi", "miniserv.pem",
-	  "config-aix",
+	  "config-aix", "update-from-repo.sh",
 	  "newmods.pl", "copyconfig.pl", "config-hpux", "config-freebsd",
 	  "changepass.pl", "help.cgi", "user_chooser.cgi",
 	  "group_chooser.cgi", "config-irix", "config-osf1", "thirdparty.pl",
