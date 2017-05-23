@@ -113,48 +113,37 @@ if (!$majordomo_alias) {
 @lists = sort { $a cmp $b } @lists if ($config{'sort_mode'});
 map { $lcan{$_}++ } split(/\s+/, $access{'lists'});
 # top links
-@crlinks = ( &ui_link("create_form.cgi",$text{'index_add'}) );
-push(@crlinks, &ui_link("digest_form.cgi",$text{'index_digest'}));
-#if ($access{'create'}) {
-	;# print &ui_links_row(\@crlinks);
-#	}
-# table header
-local (@hcols, @tds);
-push(@hcols, "", "");
-push(@tds, "width=5", "" );
-push(@hcols, $text{'index_name'});
-push(@tds, "width=200");
-push(@hcols, $text{'index_info'});
-push(@tds, "");
-push(@hcols, $text{'index_owner'}, $text{'index_count'});
-push(@tds, "width=200", "");
-print &ui_columns_start(\@hcols, 100, 0, \@tds);
-# mailing lists
-foreach $l (grep { $lcan{$_} || $lcan{"*"} } @lists) {
-	local @cols;
-	push(@cols, "<img src=images/smallicon.gif>");
-	push(@cols, "<a href=edit_list.cgi?name=$l>" . &html_escape($l) . "</a>" );
-	push(@cols, $l . " information");
-	push(@cols, $l . "-owner");
-	push(@cols, "#");
-	local $r=&ui_columns_row(\@cols, \@tds);
-	$r=~ s/<td /<td ><\/td><td width=10 /;
-	print $r;
+if ($access{'create'}) {
+	@crlinks = ( &ui_link("create_form.cgi",$text{'index_add'}) );
+	push(@crlinks, &ui_link("digest_form.cgi",$text{'index_digest'}));
 	}
-#if (@links) {
-#	@crlinks = ( &ui_link("create_form.cgi",$text{'index_add'}) );
-#	if (@links) {
-#		push(@crlinks, &ui_link("digest_form.cgi",$text{'index_digest'}));
-#		}
-#	if ($access{'create'}) {
-#		print &ui_links_row(\@crlinks);
-#		}
-#
-#	&icons_table(\@links, \@titles, \@icons, 4);
-#	}
-#else {
-#	print "<b>$text{'index_none'}</b>.<p>\n";
-#	}
+if (@lists) {
+    # table header
+    local @hcols, @tds;
+    push(@hcols,  "", "");
+    push(@hcols, $text{'index_name'}, $text{'index_info'}, $text{'index_owner'}, $text{'index_moderated'}, $text{'index_count'});
+    push(@tds, "width=5" ,"" );
+    push(@tds, "width=200", "", "width=200", "", "");
+    print &ui_columns_start(\@hcols, 100, 0, \@tds);
+    # mailing lists
+    foreach $l (grep { $lcan{$_} || $lcan{"*"} } @lists) {
+	local @cols,@list,@conf;
+	$list = &get_list( $l , &get_config());
+	$conf = &get_list_config($list->{'config'});
+	push(@cols, "","<a href=edit_list.cgi?name=$l><img src=images/smallicon.gif></a>");
+	push(@cols, "<a href=edit_list.cgi?name=$l>". &html_escape($l) ."</a>" );
+	open(INFO, $list->{'info'});
+	push(@cols, "<em>".<INFO>."</em>" ."&nbsp;&nbsp;<em>[<a href=edit_info.cgi?name=$l>edit</a>]</em>");
+	close(INFO);
+	#push(@cols, $l . "-owner");
+	push(@cols, "<em>". &find_value('reply_to', $conf) ."</em>");
+	push(@cols, "<em>". $text{&find_value('moderate', $conf)} ."</em>");
+	push(@cols, `cat $list->{'members'} | wc -l` . "&nbsp;&nbsp;<em>[<a href=edit_members.cgi?name=$l>edit</a>]</em>");
+	print&ui_columns_row(\@cols, \@tds);
+	}
+} else {
+	print "<b>$text{'index_none'}</b>.<p>\n";
+    }
 
 if ($access{'create'}) {
 	print &ui_links_row(\@crlinks);
