@@ -1,4 +1,4 @@
-line1=Konfigurierbare Optionen,11
+line1=Konfigurierbare Einstellungen,11
 dynamic=Benutze zuf&#228;llige Zahl als Listen&#45;Alias,1,1-Ja,0-Nein
 sort_mode=Sortiere Mailinglisten nach,1,1-Name,0-Erzeugter Reihenfolge
 perms=Berechtigungen f&#252;r die Majordomo&#45;Dateien,1,1-Beschreibbar durch Benutzer,0-Beschreibbar f&#252;r Benutzer und Gruppen

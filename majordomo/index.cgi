@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # index.cgi
 # Display all mailing lists and majordomo options
 
@@ -112,24 +112,50 @@ if (!$majordomo_alias) {
 @lists = &list_lists($conf);
 @lists = sort { $a cmp $b } @lists if ($config{'sort_mode'});
 map { $lcan{$_}++ } split(/\s+/, $access{'lists'});
+# top links
+@crlinks = ( &ui_link("create_form.cgi",$text{'index_add'}) );
+push(@crlinks, &ui_link("digest_form.cgi",$text{'index_digest'}));
+#if ($access{'create'}) {
+	;# print &ui_links_row(\@crlinks);
+#	}
+# table header
+local (@hcols, @tds);
+push(@hcols, "", "");
+push(@tds, "width=5", "" );
+push(@hcols, $text{'index_name'});
+push(@tds, "width=200");
+push(@hcols, $text{'index_info'});
+push(@tds, "");
+push(@hcols, $text{'index_owner'}, $text{'index_count'});
+push(@tds, "width=200", "");
+print &ui_columns_start(\@hcols, 100, 0, \@tds);
+# mailing lists
 foreach $l (grep { $lcan{$_} || $lcan{"*"} } @lists) {
-	push(@links, "edit_list.cgi?name=$l");
-	push(@titles, &html_escape($l));
-	push(@icons, "images/list.gif");
+	local @cols;
+	push(@cols, "<img src=images/smallicon.gif>");
+	push(@cols, "<a href=edit_list.cgi?name=$l>" . &html_escape($l) . "</a>" );
+	push(@cols, $l . " information");
+	push(@cols, $l . "-owner");
+	push(@cols, "#");
+	local $r=&ui_columns_row(\@cols, \@tds);
+	$r=~ s/<td /<td ><\/td><td width=10 /;
+	print $r;
 	}
-if (@links) {
-	@crlinks = ( &ui_link("create_form.cgi",$text{'index_add'}) );
-	if (@links) {
-		push(@crlinks, &ui_link("digest_form.cgi",$text{'index_digest'}));
-		}
-	if ($access{'create'}) {
-		print &ui_links_row(\@crlinks);
-		}
-	&icons_table(\@links, \@titles, \@icons, 5);
-	}
-else {
-	print "<b>$text{'index_none'}</b>.<p>\n";
-	}
+#if (@links) {
+#	@crlinks = ( &ui_link("create_form.cgi",$text{'index_add'}) );
+#	if (@links) {
+#		push(@crlinks, &ui_link("digest_form.cgi",$text{'index_digest'}));
+#		}
+#	if ($access{'create'}) {
+#		print &ui_links_row(\@crlinks);
+#		}
+#
+#	&icons_table(\@links, \@titles, \@icons, 4);
+#	}
+#else {
+#	print "<b>$text{'index_none'}</b>.<p>\n";
+#	}
+
 if ($access{'create'}) {
 	print &ui_links_row(\@crlinks);
 	}
