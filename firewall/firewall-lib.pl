@@ -222,7 +222,7 @@ foreach $d ('p', 's', 'd', 'i', 'o', 'f', 'dport',
 		@v = map { uc($_) } @v if ($d eq 'p');
 		@v = map { join(", ", split(/,/, $_)) } @v
 			if ($d eq 's' || $d eq 'd');
-		local $txt = &text("desc_$d$n", map { "<b>$_</b>" } @v);
+		local $txt = &text("desc_$d$n", map { "<strong>$_</strong>" } @v);
 		push(@c, $txt) if ($txt);
 		}
 	}
