@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 # index.cgi
 # Display current iptables firewall configuration from save file
 
