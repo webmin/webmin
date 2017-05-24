@@ -253,7 +253,7 @@ else {
 					push(@cols, "", $act);
 					}
 				if ($config{'view_condition'}) {
-					push(@cols, $tmp=&describe_rule($r));
+					push(@cols, &describe_rule($r));
 					}
 				if ($config{'view_comment'}) {
 					$cmt = $config{'comment_mod'} ||
