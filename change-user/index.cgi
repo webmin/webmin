@@ -23,8 +23,8 @@ print &ui_table_start(undef, undef, 2);
 
 if ($access{'lang'}) {
 	# Show personal language
-	my @langs = &list_languages();
 	my $glang = $gconfig{"lang"} || $default_lang;
+	my @langs = &list_languages($user->{'lang'} || $glang);
 	my ($linfo) = grep { $_->{'lang'} eq $glang } @langs;
 	print &ui_table_row($text{'index_lang'},
 		&ui_radio("lang_def", $user->{'lang'} ? 0 : 1,
