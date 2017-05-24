@@ -6,5 +6,5 @@ line2=Konfigurace systému,11
 majordomo_cf=Úplùná cesta ke konfiguraènímu souboru majordomu,0
 program_dir=Adresáø obsahující majordomo programy,0
 wrapper_path=Cesta k majordomo wrapper,3,V adresáøi programù
-aliases_file=Soubor aliasù Sendmail-stylu,3,Vzít z sendmail.cf
 smrsh_program_dir=Adresáø obsahující bezpeènostní programy ulo¾ení Sendmailu,3,Kdekoliv
+aliases_file=Soubor aliasù Sendmail-stylu,10,postfix-Get from Postfix,-Get from Sendmail,Other file
