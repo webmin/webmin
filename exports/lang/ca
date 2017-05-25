@@ -80,6 +80,7 @@ save_pfs='$1' ja està exportat com a directori
 save_create_dir=No es pot crear el directori '$1'
 save_eanonuid=L'usuari d'accès anònim és invàlid
 save_eanongid=El grup d'accés anònim és invàlid
+
 exports_webnfs=Clients&nbsp;WebNFS
 exports_ngroup=Grup de xarxa&nbsp;$1
 exports_net=Xarxa&nbsp;$1

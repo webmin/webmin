@@ -1,6 +1,6 @@
 majordomo_cf=Majordomo yapýlandýrma dosyasýnýn tam yolu,0
 program_dir=Majordomo programlarýný içeren dizin,0
-aliases_file=Sendmail stili takma adlar dosyasý,3,sendmail.cf'den al
 dynamic=Takma isimleri listemek için rastgele sayýlar kullan,1,1-Evet,0-Hayýr
 sort_mode=Posta listelerini sýralam,1,1-Ýsim,0-Oluþturulma sýrasýyla
 smrsh_program_dir=Sendmail güvenli programlarýný içeren dizin,3,Herhangi bir yer
+aliases_file=Sendmail stili takma adlar dosyasý,10,postfix-Get from Postfix,-Get from Sendmail,Other file

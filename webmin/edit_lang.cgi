@@ -15,16 +15,16 @@ $clang = $gconfig{'lang'} ? $gconfig{'lang'} : $default_lang;
 print &ui_table_row($text{'lang_lang'},
 	&ui_select("lang", $clang,
 	   [ map { [ $_->{'lang'}, "$_->{'desc'} (".uc($_->{'lang'}).")" ] }
-		 &list_languages() ]), undef, [ "valign=middle","valign=middle" ]);
+		 &list_languages($clang) ]));
 
 # Character set
 print &ui_table_row($text{'lang_charset'},
 	&ui_opt_textbox("charset", $gconfig{'charset'}, 15,
-			$text{'lang_chardef'}), undef, [ "valign=middle","valign=middle" ]);
+			$text{'lang_chardef'}));
 
 # Use language from browser?
 print &ui_table_row($text{'lang_accept'},
-	&ui_yesno_radio("acceptlang", int($gconfig{'acceptlang'})), undef, [ "valign=middle","valign=middle" ]);
+	&ui_yesno_radio("acceptlang", int($gconfig{'acceptlang'})));
 
 print &ui_table_end();
 print &ui_form_end([ [ "", $text{'lang_ok'} ] ]);

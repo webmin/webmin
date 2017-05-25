@@ -39,7 +39,7 @@ if ( $current_theme ne 'authentic-theme' ) {
 
 print $head;
 
-print ui_table_start( "$path/$in{'file'}", undef, 1 );
+print ui_table_start(&html_escape("$path/$in{'file'}"), undef, 1 );
 
 print &ui_form_start( "save_file.cgi", "post", undef, "data-encoding=\"$encoding_name\"" );
 print &ui_hidden( "file", $in{'file'} ), "\n";

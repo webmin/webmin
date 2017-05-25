@@ -16,20 +16,11 @@ $data =~ s/\r\n/\n/g;
 if ( $in{'encoding'} && lc( $in{'encoding'} ) ne "utf-8" ) {
     eval { $data = Encode::encode( $in{'encoding'}, Encode::decode( 'utf-8', $data ) ) };
 }
-open(SAVE, ">", $file) or push @errors, "$text{'error_saving_file'} - $!";
-print SAVE $data;
-close SAVE;
+&open_tempfile(SAVE, ">$file") || &error("$text{'error_saving_file'} : $!");
+&print_tempfile(SAVE, $data);
+&close_tempfile(SAVE);
 
-if (scalar(@errors) > 0) {
-    &ui_print_header(undef, $module_info{'name'}, "");
-    print $text{'errors_occured'};
-    print "<ul>";
-    foreach $error(@errors) {
-        print("<li>$error</li>");
-    }
-    print "<ul>";
-    &ui_print_footer("javascript:history.back();", $text{'previous_page'});
-} elsif ($in{'save_close'}) {
+if ($in{'save_close'}) {
     &redirect("index.cgi?path=$path");
 } else {
     &redirect("edit_file.cgi?path=$path&file=$in{'file'}");

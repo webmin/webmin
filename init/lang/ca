@@ -260,4 +260,5 @@ launchd_eclash=Ja existeix un agent amb el mateix nom
 launchd_return=a l'agent launchd
 launchd_econf=No has introduït la configuració de l'agent launchd
 launchd_estart=Hi falta l'ordre del servidor
+
 __norefs=1

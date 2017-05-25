@@ -147,9 +147,15 @@ else {
 $out = &backquote_command("sysctl hw.model hw.ncpu");
 if ($out =~ /hw.model:\s+(\S+)\s+(\S.*\S)\s+\@\s+(\S+)/) {
 	push(@load, $3, $2, $1, undef);
-	if ($out =~ /hw.ncpu:\s+(\d+)/) {
-		push(@load, $1);
-		}
+	}
+elsif ($out =~ /hw.model:\s+(\S+)\s+(\S.*\S)/) {
+	push(@load, undef, $2, $1, undef);
+	}
+else {
+	return @load;
+	}
+if ($out =~ /hw.ncpu:\s+(\d+)/) {
+	push(@load, $1);
 	}
 return @load;
 }

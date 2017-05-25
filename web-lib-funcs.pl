@@ -4787,7 +4787,6 @@ if (!$trust) {
 		}
 	print "<p>\n";
 
-	&footer("/", $text{'index'});
 	exit;
 	}
 $main::no_referers_check++;
@@ -5269,7 +5268,7 @@ $rv{"dir"} = $_[0];
 return %rv;
 }
 
-=head2 list_languages
+=head2 list_languages(current-lang)
 
 Returns an array of supported languages, taken from Webmin's os_list.txt file.
 Each is a hash reference with the following keys :
@@ -5287,6 +5286,7 @@ Each is a hash reference with the following keys :
 =cut
 sub list_languages
 {
+my ($current) = @_;
 if (!@main::list_languages_cache) {
 	my $o;
 	local $_;
@@ -5315,6 +5315,7 @@ if (!@main::list_languages_cache) {
 				$ul->{'lang'} = $utf8lang;
 				$ul->{'index'} =
 					scalar(@main::list_languages_cache);
+				$l->{'utf8_variant'} = $ul;
 				push(@main::list_languages_cache, $ul);
 				}
 			}
@@ -5322,6 +5323,12 @@ if (!@main::list_languages_cache) {
 	close(LANG);
 	@main::list_languages_cache = sort { $a->{'desc'} cmp $b->{'desc'} }
 				     @main::list_languages_cache;
+	}
+if ($current && $current =~ /\.UTF-8$/) {
+	# If the user is already using a UTF-8 language encoding, filter out
+	# languages that have a UTF-8 variant
+	return grep { $_->{'charset'} eq 'UTF-8' ||
+		      !$_->{'utf8_variant'} } @main::list_languages_cache;
 	}
 return @main::list_languages_cache;
 }
@@ -7872,9 +7879,10 @@ sub filter_javascript
 {
 my ($rv) = @_;
 $rv =~ s/<\s*script[^>]*>([\000-\377]*?)<\s*\/script\s*>//gi;
-$rv =~ s/(on(Abort|Blur|Change|Click|DblClick|DragDrop|Error|Focus|KeyDown|KeyPress|KeyUp|Load|MouseDown|MouseMove|MouseOut|MouseOver|MouseUp|Move|Reset|Resize|Select|Submit|Unload|Error)=)/x$1/gi;
+$rv =~ s/(on(Abort|BeforeUnload|Blur|Change|Click|ContextMenu|Copy|Cut|DblClick|Drag|DragEnd|DragEnter|DragLeave|DragOver|DragStart|DragDrop|Drop|Error|Focus|FocusIn|FocusOut|HashChange|Input|Invalid|KeyDown|KeyPress|KeyUp|Load|MouseDown|MouseEnter|MouseLeave|MouseMove|MouseOut|MouseOver|MouseUp|Move|Paste|PageShow|PageHide|Reset|Resize|Scroll|Search|Select|Submit|Toggle|Unload)=)/x$1/gi;
 $rv =~ s/(javascript:)/x$1/gi;
 $rv =~ s/(vbscript:)/x$1/gi;
+$rv =~ s/<([^>]*\s|)(on\S+=)(.*)>/<$1x$2$3>/gi;
 return $rv;
 }
 

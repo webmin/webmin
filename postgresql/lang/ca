@@ -1,7 +1,7 @@
 index_title=Servidor de BD PostgreSQL
 index_notrun=PostgreSQL no està en execució al sistema - no es pot recuperar la llista de bases de dades.
 index_start=Inicia el Servidor PostgreSQL
-index_startmsg=Fes clic sobre aquest botó per iniciar el servidor de bases de dades  PostgreSQL al sistema. Aquest mòdul de Webmin no pot administrar la base de dades fins que no s'iniciï.
+index_startmsg2=Fes clic sobre aquest botó per iniciar el servidor de bases de dades  PostgreSQL al sistema. Aquest mòdul de Webmin no pot administrar la base de dades fins que no s'iniciï.
 index_nopass=Webmin ha de saber el teu nom d'usuari i la teva contrasenya d'administració per tal de gestionar la base de dades. Introdueix el nom d'usuari i contrasenya aquí sota, si et plau.
 index_nouser=El teu compte Webmin està configurat per connectar-se al servidor PostgreSQL com a usuari $1, però aquest usuari ha estat denegat.
 index_ltitle=Connexió a PostgreSQL
@@ -221,7 +221,7 @@ newdb_epath=Hi falta el camí de la base de dades
 newdb_user=Propietat de l'usuari
 newdb_encoding=Codificació del joc de caràcters
 newdb_eencoding=Hi falta la codificació del joc de caràcters
-newdb_template=Base de daes de plantilla
+newdb_template=Base de dades de plantilla
 newdb_notemplate=Cap
 
 user_title=Usuaris PostgreSQL

@@ -840,4 +840,5 @@ ports_ename=Nom de port invàlid a la fila $1
 ports_eclash=Nom de port duplicat a la fila $1
 ports_eaddress=Hi falta l'adreça IP a la fila $1 o bé és invàlida
 ports_eport=Hi falta el número de port a la fila $1 o bé és invàlid
+
 __norefs=1

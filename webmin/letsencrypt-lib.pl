@@ -218,7 +218,6 @@ else {
 	my $python = &get_letsencrypt_python_cmd();
 
 	# Request the cert and key
-	# XXX dns mode?
 	my $cert = &transname();
 	my $out = &backquote_logged(
 		"$python $module_root_directory/acme_tiny.py ".

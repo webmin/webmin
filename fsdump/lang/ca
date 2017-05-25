@@ -115,6 +115,7 @@ edit_edir=Hi falta el directori a copiar
 edit_efs=Els sistemes de fitxers de tipus $1 no es poden copiar amb aquest mòdul
 edit_title=Addició de Nova Còpia
 edit_title2=Edició de Còpia
+edit_title3=Clonació de Còpia
 edit_header=Detalls de la còpia del sistema de fitxers $1
 edit_header2=Planificació de la còpia
 edit_header3=Opcions de la còpia
@@ -232,4 +233,5 @@ email_failed=La còpia ha fallat!
 
 newtape_subject=Canvi de la cinta $1 per a la còpia de $2 a $3
 newtape_body=La còpia de $2 a $3 ha atès la quantitat màxima de dades permesa a la cinta $1. Has de posar una nova cinta i prémer l'enllaç 'Cinta carregada' al mòdul de Còpia de Sistemes de Fitxers de Webmin per seguir amb la còpia.
+edit_clone=Clona
 __norefs=1

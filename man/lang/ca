@@ -60,6 +60,7 @@ doc_epath=Camí de la documentació del paquet invàlid
 man_title=Pàgina del Manual
 man_header=Pàgina del manual de $1($2)
 man_noentry=La pàgina del manual de $1 no existeix!
+man_epath=La pàgina del manual no pot ser un camí!
 
 kernel_title=Documentació del Nucli
 kernel_header=Fitxer $i de la documentació del nucli
