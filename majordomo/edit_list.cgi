@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 # edit_list.cgi
 # Edit an existing mailing list
 
