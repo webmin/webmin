@@ -279,7 +279,8 @@ Name: $prefix$mod
 Version: $ver
 Release: $release
 Requires: /bin/sh /usr/bin/perl /usr/libexec/$prog $rdeps
-AutoReq: 0
+Autoreq: 0
+Autoprov: 0
 License: $licence
 Group: System/Tools
 Source: $mod.tar.gz
