@@ -110,6 +110,5 @@ print "<div $bcss><form action=\"delete_list.cgi".$name_link."\" method=\"post\"
 	&ui_submit($text{'edit_delete'})."</form></div>\n";
 print "<div style=\"padding-top: 20px;\">$text{'edit_deletemsg'}</div>\n";
 
-
 &ui_print_footer("", $text{'index_return'});
 
