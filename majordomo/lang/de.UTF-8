@@ -220,4 +220,6 @@ index_globaldesc=Bearbeiten der globalen Majordomo-Einstellungen, die auf alle M
 delete_title=Lösche die Liste
 index_name=Name der Mailingliste
 index_info=Kurzbescheibung
+index_moderated=Modieriert
 index_count=# der Teilnehmer
+list_title=&Uuml;bersicht Mailingliste
