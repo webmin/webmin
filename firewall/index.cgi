@@ -213,10 +213,10 @@ else {
 			# Generate the header
 			local (@hcols, @tds);
 			push(@hcols, "", $text{'index_action'});
-			push(@tds, "width=5", "width=10% nowrap");
+			push(@tds, "width=5", "width=20% nowrap");
 			if ($config{'view_condition'}) {
 				push(@hcols, $text{'index_desc'});
-				push(@tds, "");
+				push(@tds, "nowrap");
 				}
 			if ($config{'view_comment'}) {
 				push(@hcols, $text{'index_comm'});
@@ -249,7 +249,8 @@ else {
 					push(@cols, &ui_link("edit_rule.cgi?table=".&urlize($in{'table'})."&idx=$r->{'index'}",$act));
 					}
 				else {
-					push(@cols, $act);
+                                        # add col for not visible checkmark
+					push(@cols, "", $act);
 					}
 				if ($config{'view_condition'}) {
 					push(@cols, &describe_rule($r));
@@ -304,10 +305,7 @@ else {
                                             \@cols, \@tds, "d", $r->{'index'});
                                         }
                                 else {
-                                        local $r=&ui_columns_row(\@cols, \@tds);
-                                        # fix missing first colum, need be a better solution ...
-                                        $r=~ s/<td /<td ><\/td><td width="30%" /;
-                                        print $r;
+                                        print &ui_columns_row(\@cols, \@tds);
                                         }
                                 }
 			print &ui_columns_end();
