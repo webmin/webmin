@@ -201,6 +201,7 @@ system("/usr/bin/find /tmp/makemodulerpm -name '.*.swp' | xargs rm -rf");
 system("/usr/bin/find /tmp/makemodulerpm -name core | xargs rm -rf");
 system("/usr/bin/find /tmp/makemodulerpm -name RELEASE | xargs rm -rf");
 system("/usr/bin/find /tmp/makemodulerpm -name RELEASE.sh | xargs rm -rf");
+system("/usr/bin/find /tmp/makemodulerpm -name t | xargs rm -rf");
 if (-r "/tmp/makemodulerpm/$mod/EXCLUDE") {
 	system("cd /tmp/makemodulerpm/$mod && cat EXCLUDE | xargs rm -rf");
 	system("rm -f /tmp/makemodulerpm/$mod/EXCLUDE");
@@ -298,7 +299,6 @@ $desc in RPM format
 
 %build
 (find . -name '*.cgi' ; find . -name '*.pl') | perl -ne 'chop; open(F,\$_); \@l=<F>; close(F); \$l[0] = "#\!/usr/bin/perl\$1\n" if (\$l[0] =~ /#\!\\S*perl\\S*(.*)/); open(F,">\$_"); print F \@l; close(F)'
-rm -rf t/
 
 %install
 mkdir -p %{buildroot}/usr/libexec/$prog/$mod
