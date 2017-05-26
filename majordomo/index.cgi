@@ -139,8 +139,10 @@ if (@lists) {
 	close(INFO);
 	#push(@cols, $l . "-owner");
 	push(@cols, "<em>". &find_value('reply_to', $conf) ."</em>");
-	push(@cols, "<center><em>". $text{&find_value('moderate', $conf)} ."</em></center>");
-	push(@cols, "<center>".`cat $list->{'members'} | wc -l` . "&nbsp;&nbsp;<em><a href=edit_members.cgi?name=$l><span>edit</span></a></em></center>");
+	push(@cols, "<center><em>". $text{&find_value('moderate', $conf)} .
+		"</em>" ."&nbsp;&nbsp;<em><a href=edit_subs.cgi?name=$l><span>edit</span></a></em><center>");
+	push(@cols, "<center>".`cat $list->{'members'} | wc -l` .
+		"&nbsp;&nbsp;<em><a href=edit_members.cgi?name=$l><span>edit</span></a></em></center>");
 	print&ui_columns_row(\@cols, \@tds);
 	}
 } else {
@@ -156,7 +158,7 @@ if ($access{'global'}) {
 &ui_print_footer("/", $text{'index'});
 print 	"<script>",
        	"f__lnk_t_btn(['/majordomo/', '/majordomo/index.cgi'], 'table tbody td',",
-       	" 'a[href*=\"edit_info.cgi?\"], a[href*=\"edit_members.cgi?\"]',",
+       	" 'a[href*=\"edit_info.cgi?\"], a[href*=\"edit_members.cgi?\"], a[href*=\"edit_subs.cgi?\"]',",
        	" 'btn btn-transparent btn-xs vertical-align-top margined-top-2', 'fa-edit');",
 	"document.querySelectorAll('tbody td .btn.btn-transparent').forEach(function(button) {",
 		" button.innerHTML=button.innerHTML.replace(/<\\/i>.*edit/,'');});",
