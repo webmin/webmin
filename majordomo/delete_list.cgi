@@ -84,11 +84,8 @@ if ($in{'confirm'}) {
 	}
 else {
 	# ask the user if he is sure
-	&ui_print_header(undef, $text{'delete_title'}, "");
-	print "<form action=delete_list.cgi>\n";
-	print "<input type=hidden name=name value=\"$name\">\n";
-	print "<input type=hidden name=confirm value=1>\n";
-	print "<b>",&text('delete_rusure', "<tt>".&html_escape($name)."</tt>"),
+	&ui_print_header(undef, $text{'delete_title'}."<br><font color=\"red\"><em>".&html_escape($name)."</em></font>", "");
+	print "<b>",&text('delete_rusure', "<font color=\"red\"><em>".&html_escape($name)."</em></font>"),
 	      "</b><br>\n";
 	print "<ul>\n";
 	foreach $f (@files) {
@@ -102,9 +99,9 @@ else {
 		      "</tt><br>\n";
 		}
 	print "</ul>\n";
-	print "<center><input type=submit ",
-	      "value='$text{'delete_ok'}'></center>\n";
-	print "</form>\n";
+	local $bcss=' style="padding: 10px; text-align: center;"';
+	print "<div $bcss><form action=\"delete_list.cgi".$name_link."&confirm=1\" method=\"post\">",
+        	&ui_submit($text{'delete_ok'})."</form></div>\n";
 	&ui_print_footer("edit_list.cgi?name=$name", $text{'edit_return'});
 	}
 
