@@ -83,23 +83,37 @@ if ($in{'confirm'}) {
 	&redirect("");
 	}
 else {
+	# css for table
+	local $tcss='style="width: 98%; margin: 1% !important;"';
+	local $dcss='style="text-align: right; vertical-align: top; padding: 5px !important; min_heigth: 5em;"';
+	local $vcss='style="width: 40%; border: 1px solid lightgrey; padding: 5px !important;"';
+
 	# ask the user if he is sure
-	&ui_print_header(undef, $text{'delete_title'}."<br><font color=\"red\"><em>".&html_escape($name)."</em></font>", "");
-	print "<b>",&text('delete_rusure', "<font color=\"red\"><em>".&html_escape($name)."</em></font>"),
+	&ui_print_header(undef, $text{'delete_title'}.": ".&html_escape($in{'name'}), "");
+	print "<table border width=100%>\n";
+	print "<tr $tb> <td>".&text('delete_rusure', "<font color=\"red\">".&html_escape($name)."</font>"),"</td>";
+	print "<tr $cb> <td><table $tcss>\n";
 	      "</b><br>\n";
 	print "<ul>\n";
 	foreach $f (@files) {
 		print "<tt>",&html_escape($f),"</tt><br>\n";
 		}
 	print "</ul>\n";
-	print "<b>$text{'delete_aliases'}</b><br>\n";
+	print "</td> </tr>\n";
+	print "</table></td></tr></table>\n";
+	print "<table border width=100%>\n";
+	print "<tr $tb> <td>".&text('delete_aliases'),"</td>";
+	print "<tr $cb> <td><table $tcss>\n";
 	print "<ul>\n";
 	foreach $a (@daliases) {
 		print "<tt>",&html_escape("$a->{'name'}: $a->{'value'}"),
 		      "</tt><br>\n";
 		}
 	print "</ul>\n";
+	print "</td> </tr>\n";
+	print "</table></td></tr></table>\n";
 	local $bcss=' style="padding: 10px; text-align: center;"';
+	local $name_link="?name=".&urlize($in{'name'});
 	print "<div $bcss><form action=\"delete_list.cgi".$name_link."&confirm=1\" method=\"post\">",
         	&ui_submit($text{'delete_ok'})."</form></div>\n";
 	&ui_print_footer("edit_list.cgi?name=$name", $text{'edit_return'});

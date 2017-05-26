@@ -11,7 +11,7 @@ $list = &get_list($in{'name'}, &get_config());
 $conf = &get_list_config($list->{'config'});
 local $moderate= (&find_value('moderate', $conf) =~ /no/) ? "" : " (".$text{'index_moderated'}.")";
 
-&ui_print_header(undef,  $text{'edit_title'}."<br><em>".&html_escape($in{'name'})."</em><tt>$moderate</tt>", "");
+&ui_print_header( $text{'misc_header'},  $text{'edit_title'}.": ".&html_escape($in{'name'})."<tt>$moderate</tt>", "");
 
 @links = ( "edit_subs.cgi",
 	   "edit_mesg.cgi", "edit_access.cgi",
