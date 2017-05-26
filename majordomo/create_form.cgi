@@ -6,6 +6,7 @@ require './majordomo-lib.pl';
 %access = &get_module_acl();
 $access{'create'} || &error($text{'create_ecannot'});
 &ui_print_header(undef, $text{'create_title'}, "");
+$bcss=' style="display: box; float: left; padding: 10px;"';
 
 print <<EOF;
 <form action=create_list.cgi method=post>
@@ -38,14 +39,16 @@ print <<EOF;
 
 <tr> <td><b>$text{'create_archive'}</b></td>
      <td><select name=archive>
-	 <option value='' selected>$text{'no'}</option>
-	 <option value=Y>$text{'create_archiveyear'}</option>
+	 <option value=''>$text{'no'}</option>
+	 <option value=Y selected>$text{'create_archiveyear'}</option>
 	 <option value=M>$text{'create_archivemonth'}</option>
 	 <option value=D>$text{'create_archiveday'}</option>
 	 </select></td> </tr>
 
 </table></td></tr></table>
-<input type=submit value="$text{'create'}"></form>
+<div $bcss>
 EOF
+print &ui_submit($text{'create'})."</form></div>";
+
 &ui_print_footer("", $text{'index_return'});
 
