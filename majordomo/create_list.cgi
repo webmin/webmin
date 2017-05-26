@@ -44,15 +44,26 @@ $in{'footer'} =~ s/\r//g;
 &set_permissions("$ldir/$in{'name'}");
 &unlock_file("$ldir/$in{'name'}");
 
+
+
 # Have majordomo create the new config file, by fooling the wrapper
 # into thinking it has received an email with a resend command
+#$lfile = "$ldir/$in{'name'}.config";
+#$cmd = "$wrapper_program_path resend -l $in{'name'} nobody";
+#open(WRAPPER, "|$cmd nobody >/dev/null 2>&1");
+#print WRAPPER "config $in{'name'} $in{'password'}\n\n";
+#close(WRAPPER);
+#&additional_log("exec", $cmd);
+#sleep(3);
+
+# use provided template, majordomo provides onyl minimal needed config
 $lfile = "$ldir/$in{'name'}.config";
-$cmd = "$wrapper_program_path resend -l $in{'name'} nobody";
-open(WRAPPER, "|$cmd nobody >/dev/null 2>&1");
-print WRAPPER "config $in{'name'} $in{'password'}\n\n";
-close(WRAPPER);
-&additional_log("exec", $cmd);
-sleep(3);
+# copy listdir template to list.info, fallback copy from template.dist
+if ( ! -f "template/list.config") { &copy_source_dest("template/list.config.dist","template/list.config"); }
+if ( ! -f "template/list.config") { &error("No default template found: template/list.config"); }
+if ( ! -f "$lfile") { &copy_source_dest("template/list.config", $lfile); }
+if ( ! -f "$lfile") { &error("Could not create list config: $file"); }
+&set_permissions("$lfile");
 
 # create the .info file
 &lock_file($lfile);
@@ -72,7 +83,10 @@ if (&find_value("date_info", $list) eq "yes") {
 # create the archive directory
 $adir = &perl_var_replace(&find_value("filedir", $conf), $conf);
 $aext = &perl_var_replace(&find_value("filedir_suffix", $conf), $conf);
-if ($adir && $aext) {
+if( -d "$adir") {
+	 $arch = "$adir/$in{'name'}";
+}
+elsif ($adir && $aext) {
 	&lock_file("$adir/$in{'name'}$aext");
 	mkdir("$adir/$in{'name'}$aext", 0755);
 	&set_permissions("$adir/$in{'name'}$aext");
