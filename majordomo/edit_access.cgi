@@ -83,7 +83,7 @@ print "</tr>\n";
 print "<tr> <td colspan=4>$text{'access_taboo'}</td> </tr>\n";
 
 print "</table></td></tr></table>\n";
-print "<input type=submit value=\"$text{'save'}\"></form>\n";
+print &ui_submit($text{'save'}),"</form>\n";
 
 &ui_print_footer("edit_list.cgi?name=$in{'name'}", $text{'edit_return'});
 

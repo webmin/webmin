@@ -30,6 +30,6 @@ print &multi_input("message_headers", $text{'head_headers'}, $conf);
 print "</tr>\n";
 
 print "</table></td></tr></table>\n";
-print "<input type=submit value=\"$text{'save'}\"></form>\n";
+print &ui_submit($text{'save'}),"</form>\n";
 
 &ui_print_footer("edit_list.cgi?name=$in{'name'}", $text{'edit_return'});

@@ -83,8 +83,9 @@ if (&find_value("date_info", $list) eq "yes") {
 # create the archive directory
 $adir = &perl_var_replace(&find_value("filedir", $conf), $conf);
 $aext = &perl_var_replace(&find_value("filedir_suffix", $conf), $conf);
-if( -d "$adir") {
-	 $arch = "$adir/$in{'name'}";
+if( -d "$adir" && $adir =~ /\/archive$/) {
+	# filedir exist and ends with /archive 
+	$arch = "$adir/$in{'name'}";
 }
 elsif ($adir && $aext) {
 	&lock_file("$adir/$in{'name'}$aext");

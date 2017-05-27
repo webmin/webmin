@@ -85,8 +85,8 @@ if ($in{'confirm'}) {
 else {
 	# css for table
 	local $tcss='style="width: 98%; margin: 1% !important;"';
-	local $dcss='style="text-align: right; vertical-align: top; padding: 5px !important; min_heigth: 5em;"';
-	local $vcss='style="width: 40%; border: 1px solid lightgrey; padding: 5px !important;"';
+	local $dcss='style="text-align: right; vertical-align: middle; padding: 0.3em 1em !important; min_heigth: 5em;"';
+	local $vcss='style="width: 40%; border: 1px solid lightgrey; padding: 0.3em !important;"';
 
 	# ask the user if he is sure
 	&ui_print_header(undef, $text{'delete_title'}.": ".&html_escape($in{'name'}), "");
