@@ -33,4 +33,4 @@ print   "<script>",
                 " button.innerHTML=button.innerHTML.replace(/^/,'<i class=\"fa fa-fw fa-cog\"></i>&nbsp;');});",
 	"</script>",
 	"<style>i.fa.fa-fw.fa-cog { padding: 0 !important; color: lightgrey;}",
-		" .btn:not(.btn-xxs):not(.btn-tiny):not(.ui_link_replaced), button.btn {min-width: 18em; text-align: left !important;}</style>";
+		" .panel-body .btn:not(.btn-xxs):not(.btn-tiny):not(.ui_link_replaced), .panel-body button.btn {min-width: 18em; text-align: left !important;}</style>";
