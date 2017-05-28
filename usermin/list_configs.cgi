@@ -12,15 +12,25 @@ $access{'configs'} || &error($text{'acl_ecannot'});
 print "$text{'configs_desc'}<p>\n";
 @grid = ( );
 
+local $buttons, $bcss=' style="min-width: 20em; display: box; float: left; padding: 0.5em 0.2em;"';
 foreach $m (@mods) {
 	if ((-r "$miniserv{'root'}/$m->{'dir'}/config.info" ||
 	    -r "$miniserv{'root'}/$m->{'dir'}/uconfig.info") &&
 	    &can_use_module($m->{'dir'})) {
-		push(@grid, &ui_link("edit_configs.cgi?mod=$m->{'dir'}","$m->{'desc'}"));
+		$buttons.="<div $bcss><form action=\"edit_configs.cgi?mod=".$m->{'dir'}."\" method=\"post\">".
+			&ui_submit($m->{'desc'})."</form></div>\n";
 		}
 	}
-print &ui_grid_table(\@grid, 4, 100,
-	[ "width=25%", "width=25%", "width=25%", "width=25%" ],
+push(@grid, $buttons);
+print &ui_grid_table(\@grid, 1, 100,
+	undef,
 	undef, $text{'configs_header'});
 
 &ui_print_footer("", $text{'index_return'});
+
+print   "<script>",
+        "document.querySelectorAll('.btn.btn-default').forEach(function(button) {",
+                " button.innerHTML=button.innerHTML.replace(/^/,'<i class=\"fa fa-fw fa-cog\"></i>&nbsp;');});",
+	"</script>",
+	"<style>i.fa.fa-fw.fa-cog { padding: 0 !important; color: lightgrey;}",
+		" .btn:not(.btn-xxs):not(.btn-tiny):not(.ui_link_replaced), button.btn {min-width: 18em; text-align: left !important;}</style>";
