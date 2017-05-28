@@ -3,6 +3,7 @@
 # Create an RPM for a webmin or usermin module or theme
 use strict;
 use warnings;
+use 5.010;
 
 # Colors!
 use Term::ANSIColor qw(:constants);
@@ -200,6 +201,7 @@ system("/usr/bin/find /tmp/makemodulerpm -name '.*.swp' | xargs rm -rf");
 system("/usr/bin/find /tmp/makemodulerpm -name core | xargs rm -rf");
 system("/usr/bin/find /tmp/makemodulerpm -name RELEASE | xargs rm -rf");
 system("/usr/bin/find /tmp/makemodulerpm -name RELEASE.sh | xargs rm -rf");
+system("/usr/bin/find /tmp/makemodulerpm -name t | xargs rm -rf");
 if (-r "/tmp/makemodulerpm/$mod/EXCLUDE") {
 	system("cd /tmp/makemodulerpm/$mod && cat EXCLUDE | xargs rm -rf");
 	system("rm -f /tmp/makemodulerpm/$mod/EXCLUDE");
@@ -263,10 +265,12 @@ if ($rpmdepends) {
 	}
 
 # Create the SPEC file
-my $providesheader = $provides ? "Provides: $provides" : undef;
-my $vendorheader = $vendor ? "Vendor: $vendor" : undef;
-my $urlheader = $url ? "URL: $url" : undef;
-my $epochheader = $epoch ? "Epoch: $epoch" : undef;
+my $providesheader = $provides ? "Provides: $provides" : "";
+my $vendorheader = $vendor ? "Vendor: $vendor" : "";
+my $urlheader = $url ? "URL: $url" : "";
+my $epochheader = $epoch ? "Epoch: $epoch" : "";
+$force_theme //= "";
+$istheme //= "";
 open(my $SPEC, ">", "$spec_dir/$prefix$mod.spec");
 print $SPEC <<EOF;
 %define __spec_install_post %{nil}
@@ -275,9 +279,9 @@ Summary: $desc
 Name: $prefix$mod
 Version: $ver
 Release: $release
-PreReq: /bin/sh /usr/bin/perl /usr/libexec/$prog
 Requires: /bin/sh /usr/bin/perl /usr/libexec/$prog $rdeps
-AutoReq: 0
+Autoreq: 0
+Autoprov: 0
 License: $licence
 Group: System/Tools
 Source: $mod.tar.gz
@@ -454,10 +458,9 @@ foreach my $k (keys %{$_[1]}) {
         }
 close(ARFILE);
 }
- 
+
 sub untaint
 {
 $_[0] =~ /^(.*)$/;
 return $1;
 }
-
