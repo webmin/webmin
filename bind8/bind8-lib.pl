@@ -2174,7 +2174,7 @@ return undef;
 sub start_bind
 {
 my $chroot = &get_chroot();
-my $user;
+my $user = "";
 my $cmd;
 if ($config{'named_user'}) {
 	$user = "-u $config{'named_user'}";
