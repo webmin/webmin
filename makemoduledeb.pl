@@ -3,9 +3,9 @@
 # Create a Debian package for a webmin or usermin module or theme
 use strict;
 use warnings;
-
 use POSIX;
 use Term::ANSIColor qw(:constants);
+use 5.010;
 
 my $licence = "BSD";
 my $email = "Jamie Cameron <jcameron\@webmin.com>";
@@ -118,10 +118,12 @@ if ($mod eq "." || $mod eq "..") {
 my ($depends, $prefix, $desc, $product, $iver, $istheme, $post_config);
 -d $source_dir || die RED, "$source_dir is not a directory", RESET;
 my (%minfo, %tinfo);
-if (&read_file("$source_dir/module.info", \%minfo) && $minfo{'desc'}) {
-	$depends = join(" ", map { s/\/[0-9\.]+//; $_ }
-				grep { !/^[0-9\.]+$/ }
-				  split(/\s+/, $minfo{'depends'}));
+if (read_file("$source_dir/module.info", \%minfo) && exists($minfo{'desc'})) {
+	if (exists($minfo{'depends'})) {
+		$depends = join(" ", map { s/\/[0-9\.]+//; $_ }
+							 grep { !/^[0-9\.]+$/ }
+				  		 split(/\s+/, $minfo{'depends'}));
+	}
 	if ($minfo{'usermin'} && (!$minfo{'webmin'} || $force_usermin)) {
 		$prefix = "usermin-";
 		$desc = "Usermin module for '$minfo{'desc'}'";
@@ -135,7 +137,7 @@ if (&read_file("$source_dir/module.info", \%minfo) && $minfo{'desc'}) {
 	$iver = $minfo{'version'};
 	$post_config = 1;
 	}
-elsif (&read_file("$source_dir/theme.info", \%tinfo) && $tinfo{'desc'}) {
+elsif (read_file("$source_dir/theme.info", \%tinfo) && $tinfo{'desc'}) {
 	if ($tinfo{'usermin'} && (!$tinfo{'usermin'} || $force_usermin)) {
 		$prefix = "usermin-";
 		$desc = "Usermin theme '$tinfo{'desc'}'";
@@ -216,7 +218,7 @@ system("(find $usr_dir -name '*.cgi' ; find $usr_dir -name '*.pl') | xargs chmod
 # Build list of dependencies on other Debian packages, for inclusion as a
 # Requires: header
 my @rdeps = ( "base", "perl", $product );
-if ($debdepends) {
+if ($debdepends && exists($minfo{'depends'})) {
 	foreach my $d (split(/\s+/, $minfo{'depends'})) {
 		my ($dwebmin, $dmod, $dver);
 		if ($d =~ /^[0-9\.]+$/) {
@@ -236,7 +238,7 @@ if ($debdepends) {
 		# If the module is part of Webmin, we don't need to depend on it
 		if ($dmod) {
 			my %dinfo;
-			&read_file("$dmod/module.info", \%dinfo);
+			read_file("$dmod/module.info", \%dinfo);
 			next if ($dinfo{'longdesc'});
 			}
 		push(@rdeps, $dwebmin ? ("$product (>= $dwebmin)") :
@@ -315,7 +317,7 @@ if (%$changes) {
 		print $CHANGELOG "$prefix$mod ($forv) stable; urgency=low\n";
 		print $CHANGELOG "\n";
 		foreach my $c (@{$changes->{$v}}) {
-			my @lines = &wrap_lines($c, 65);
+			my @lines = wrap_lines($c, 65);
 			print $CHANGELOG " * $lines[0]\n";
 			foreach my $l (@lines[1 .. $#lines]) {
 				print $CHANGELOG "   $l\n";
@@ -328,8 +330,13 @@ if (%$changes) {
 	close($CHANGELOG);
 	}
 
+$depends //= "";
+$force_theme //= "";
+$istheme //= "";
+
 # Create the pre-install script, which checks if Webmin is installed
 open(my $PREINSTALL, ">", "$preinstall_file");
+no warnings "uninitialized";
 print $PREINSTALL <<EOF;
 #!/bin/sh
 if [ ! -r /etc/$product/config -o ! -d /usr/share/$product ]; then
@@ -543,5 +550,3 @@ foreach my $rest (split(/\n/, $_[0])) {
 	}
 return @rv;
 }
-
-
