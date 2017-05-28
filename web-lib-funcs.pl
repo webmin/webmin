@@ -7465,25 +7465,39 @@ my ($ssl, $host, $reqs) = @_;
 $host = lc($host);
 my $x509 = Net::SSLeay::get_peer_certificate($ssl);
 $x509 || return "Could not fetch peer certificate";
-if ($reqs->{'host'}) {
+if ($reqs->{'host'} || $reqs->{'checkhost'}) {
 	# Check for sensible hostname
+	my @subjects;
 	my $subject = Net::SSLeay::X509_NAME_oneline(
 		Net::SSLeay::X509_get_subject_name($x509));
 	$subject =~ /CN=([a-z0-9\-\_\.\*]+)/i ||
 		return "No CN found in subject $subject";
-	my $cn = lc($1);
-	if ($cn =~ /^\*\.(.*)$/) {
-		# For a sub-domain
-		my $subcn = $1;
-		$host eq $subcn || $host =~ /\.\Q$subcn\E$/ ||
-			return "Certificate is for $cn, not $host";
+	push(@subjects, lc($1));
+	my @altlist = Net::SSLeay::X509_get_subjectAltNames($x509);
+	for(my $i=1; $i<@altlist; $i+=2) {
+		push(@subjects, lc($altlist[$i]));
 		}
-	elsif ($cn eq "*") {
-		# Matches anything .. but this may fail the self-signed check
+	my @errs;
+	foreach my $cn (@subjects) {
+		if ($cn =~ /^\*\.(.*)$/) {
+			# For a sub-domain
+			my $subcn = $1;
+			$host eq $subcn || $host =~ /\.\Q$subcn\E$/ ||
+			    push(@errs, "Certificate is for $cn, not $host.");
+			}
+		elsif ($cn eq "*") {
+			# Matches anything .. but this may fail the
+			# self-signed check
+			}
+		else {
+			# For an exact domain
+			$host eq $cn ||
+			    push(@errs, "Certificate is for $cn, not $host.");
+			}
 		}
-	else {
-		# For an exact domain
-		$host eq $cn || return "Certificate is for $cn, not $host";
+	if (scalar(@errs) == scalar(@subjects)) {
+		# All subjects were bad
+		return join(" ", @errs);
 		}
 	}
 if ($reqs->{'self'}) {
