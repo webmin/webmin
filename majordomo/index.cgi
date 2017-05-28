@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 # index.cgi
 # Display all mailing lists and majordomo options
 
@@ -113,17 +113,19 @@ if (!$majordomo_alias) {
 @lists = sort { $a cmp $b } @lists if ($config{'sort_mode'});
 map { $lcan{$_}++ } split(/\s+/, $access{'lists'});
 # top links
+local $otherbut, $bcss=' style="display: box; float: left; padding: 10px;"';
 if ($access{'create'}) {
-	@crlinks = ( &ui_link("create_form.cgi",$text{'index_add'}) );
-	push(@crlinks, &ui_link("digest_form.cgi",$text{'index_digest'}));
+        print "<div $bcss><form action=\"create_form.cgi\">".&ui_submit($text{'index_add'})."</form></div>\n";
+        print "<div $bcss><form action=\"digest_form.cgi\">".&ui_submit($text{'index_digest'})."</form></div>\n";
+	print "<style>hr {display: none;></style>"
 	}
 if (@lists) {
     # table header
     local @hcols, @tds;
     push(@hcols,  "", "");
-    push(@hcols, $text{'index_name'}, $text{'index_info'}, $text{'index_owner'}, $text{'index_moderated'}, $text{'index_count'});
-    push(@tds, "width=5" ,"" );
-    push(@tds, "width=200", "", "width=200", "", "");
+    push(@hcols, $text{'index_name'}, $text{'index_info'}, $text{'index_mail'}, $text{'index_moderated'}, $text{'index_count'});
+    push(@tds, "width=5" ,"width=100" );
+    push(@tds, "", "", "width=100", "", "");
     print &ui_columns_start(\@hcols, 100, 0, \@tds);
     # mailing lists
     foreach $l (grep { $lcan{$_} || $lcan{"*"} } @lists) {
@@ -133,30 +135,31 @@ if (@lists) {
 	push(@cols, "","<a href=edit_list.cgi?name=$l><img src=images/smallicon.gif></a>");
 	push(@cols, "<a href=edit_list.cgi?name=$l>". &html_escape($l) ."</a>" );
 	open(INFO, $list->{'info'});
-	push(@cols, "<em>".<INFO>."</em>" ."&nbsp;&nbsp;<em>[<a href=edit_info.cgi?name=$l>edit</a>]</em>");
+	push(@cols, "<em>".<INFO>."</em>" ."&nbsp;&nbsp;<em><a href=edit_info.cgi?name=$l><span>edit</span></a></em>");
 	close(INFO);
 	#push(@cols, $l . "-owner");
 	push(@cols, "<em>". &find_value('reply_to', $conf) ."</em>");
-	push(@cols, "<em>". $text{&find_value('moderate', $conf)} ."</em>");
-	push(@cols, `cat $list->{'members'} | wc -l` . "&nbsp;&nbsp;<em>[<a href=edit_members.cgi?name=$l>edit</a>]</em>");
+	push(@cols, "<center><em>". $text{&find_value('moderate', $conf)} ."</em></center>");
+	push(@cols, "<center>".`cat $list->{'members'} | wc -l` . "&nbsp;&nbsp;<em><a href=edit_members.cgi?name=$l><span>edit</span></a></em></center>");
 	print&ui_columns_row(\@cols, \@tds);
 	}
 } else {
 	print "<b>$text{'index_none'}</b>.<p>\n";
     }
 
-if ($access{'create'}) {
-	print &ui_links_row(\@crlinks);
-	}
-
 if ($access{'global'}) {
-	print &ui_hr();
-	print "<table> <tr>\n";
-	print "<form action=edit_global.cgi>\n";
-	print "<td><input type=submit value='$text{'index_global'}'></td>\n";
-	print "<td>$text{'index_globaldesc'}</td> </tr> </form>\n";
-	print "</table>\n";
+	print "<div $bcss><form action=\"edit_global.cgi\" method=\"post\">",
+        	&ui_submit($text{'index_global'})."</form></div>\n";
+	print "<div style=\"padding-top: 10px;\">$text{'index_globaldesc'}</div>\n";
 	}
 
 &ui_print_footer("/", $text{'index'});
+print 	"<script>",
+       	"f__lnk_t_btn(['/majordomo/', '/majordomo/index.cgi'], 'table tbody td',",
+       	" 'a[href*=\"edit_info.cgi?\"], a[href*=\"edit_members.cgi?\"]',",
+       	" 'btn btn-transparent btn-xs vertical-align-top margined-top-2', 'fa-edit');",
+	"document.querySelectorAll('tbody td .btn.btn-transparent').forEach(function(button) {",
+		" button.innerHTML=button.innerHTML.replace(/<\\/i>.*edit/,'');});",
+	"</script>",
+	"<style>.btn.btn-transparent { padding: 0 !important; color: grey;}</style>";
 

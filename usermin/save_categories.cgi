@@ -12,10 +12,11 @@ $access{'categories'} || &error($text{'acl_ecannot'});
 # Save built-in categories
 foreach $t (keys %utext) {
 	$t =~ s/^category_// || next;
-	if (!$in{"def_$t"}) {
-		$in{"desc_$t"} ||
+	$field = $t || "other";
+	if (!$in{$field."_def"}) {
+		$in{$field} ||
 			&error(&text('categories_edesc', $t ? $t : 'other'));
-		$catnames{$t} = $in{"desc_$t"};
+		$catnames{$t} = $in{$field};
 		}
 	}
 

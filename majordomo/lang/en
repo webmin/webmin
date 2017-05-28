@@ -18,8 +18,10 @@ index_global=Edit Majordomo Options
 index_globaldesc=Edit global Majordomo options that apply to all mailing lists
 index_return=mailing lists
 index_version=Majordomo version $1
-index_name=Name of list
+index_name=List name
 index_info=List info
+index_mail=Mail adress
+index_moderated=Moderated
 index_count=# of users
 
 global_title=Global Options
