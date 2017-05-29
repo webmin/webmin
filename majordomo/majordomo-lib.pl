@@ -129,6 +129,7 @@ $list{'members'} = "$ldir/$_[0]";
 $list{'config'} = "$ldir/$_[0].config";
 $list{'info'} = "$ldir/$_[0].info";
 $list{'intro'} = "$ldir/$_[0].intro";
+$list{'owner'} = "$ldir/$_[0].owner";
 return \%list;
 }
 
