@@ -5,17 +5,25 @@ require './filemin-lib.pl';
 
 get_paths();
 
-if(!$in{'name'}) {
-    &redirect("index.cgi?path=$path");
-}
+if (!$in{'name'}) {
+	&redirect("index.cgi?path=".&urlize($path));
+	return;
+	}
 
-if (-f "$cwd/$in{'name'}") {
-    print_errors("$in{'name'} $text{'error_exists'}");
-} else {
-    if (open my $fh, "> $cwd/$in{'name'}") {
-        close($fh);
-        &redirect("index.cgi?path=$path");
-    } else {
-        print_errors("$in{'name'} - $text{'error_create'} $!");
-    }
-}
+my $full = "$cwd/$in{'name'}";
+if (-e $full) {
+	print_errors(&html_escape($in{'name'})." ".$text{'error_exists'});
+	}
+else {
+	my @st = stat($cwd);
+	if (open(my $fh, ">$full")) {
+		close($fh);
+		&set_ownership_permissions($st[4], $st[5], undef, $full);
+		&redirect("index.cgi?path=".&urlize($path));
+		}
+	else {
+		print_errors($text{'error_create'}." ".
+			     &html_escape($in{'name'})." : ".$!);
+		}
+	}
+
