@@ -10,12 +10,16 @@ $list = &get_list($in{'name'}, &get_config());
 $desc = &text('edit_for', "<tt>".&html_escape($in{'name'})."</tt>");
 &ui_print_header($desc, $text{'members_title'}, "");
 
+print "<table border width=100%>\n";
+print "<tr $tb> <td><b>";
 if ($access{'edit'}) {
-	print "$text{'members_desc'}<br>\n";
+	print "$text{'members_desc'}\n";
 	}
 else {
-	print "$text{'members_rodesc'}<br>\n";
+	print "$text{'members_rodesc'}\n";
 	}
+print "</b></td> </tr>\n";
+print "<tr $cb> <td><table width=100%>\n";
 print "<form action=save_members.cgi method=post enctype=multipart/form-data>\n";
 print "<input type=hidden name=name value='$in{'name'}'>\n";
 print "<textarea rows=15 cols=60 name=members>\n";
@@ -26,28 +30,26 @@ while(<MEMS>) {
 close(MEMS);
 print "</textarea>\n";
 if (!$access{'edit'}) {
-	print "<p>\n";
+	print "<p></form></table>\n";
 	}
 else {
-	print "<br><input type=submit value=\"$text{'save'}\" name=update>\n";
-	print &ui_hr();
+	print "<br> <input class=\"btn btn-success\" type=submit value=\"$text{'save'}\" name=update>\n";
 
-	print "<table>\n";
+	print "<table width=100%>\n";
 	print "<tr> <td><b>$text{'members_sub'}</b></td>\n";
 	print "<td><input name=addr_a size=40> ",
-	      "<input type=submit name=add ",
-	      "value=\"$text{'members_add'}\"></td> </tr>\n";
+	      &ui_submit($text{'members_add'}, "add"),"</td> </tr>\n";
 
 	print "<tr> <td><b>$text{'members_unsub'}</b></td>\n";
-	print "<td><input name=addr_r size=40> ",
-	      "<input type=submit name=remove ",
-	      "value=\"$text{'members_rem'}\"></td> </tr>\n";
-	print "</table></form>\n";
+	print "<td width=500><input name=addr_r size=40> ",
+	      &ui_submit($text{'delete'}, "remove"), "</td> </tr>\n";
+	print "</table></form></table>\n";
 
-	print &ui_hr();
 	print "<form action=save_auto.cgi>\n";
 	print "<input type=hidden name=name value='$in{'name'}'>\n";
-	print "<table>\n";
+	print "<table border width=100%>\n";
+	print "<tr $tb> <td><small><strong>$text{'misc_header'}<strong></small></td> </tr>\n";
+	print "<tr $cba><table width=100%>\n";
 	$sync = $config{"sync_$in{'name'}"};
 	print "<tr> <td><b>$text{'members_sync'}</b></td> <td>\n";
 	printf "<input type=radio name=sync value=1 %s> %s\n",
@@ -57,11 +59,9 @@ else {
 
 	$shost = $config{"shost_$in{'name'}"};
 	print "<tr><td><b>$text{'members_dom'}</b></td>\n";
-	print "<td><input name=shost size=40 value='$shost'>\n";
-	print "<input type=submit value=\"$text{'save'}\"></td> </tr>\n";
-
-	print "</table></form>\n";
+	print "<td width=500><input name=shost size=40 value='$shost'>\n";
+	print &ui_submit($text{'save'}),"</td> </tr>\n";
+	print "</table></td></tr></table></form>\n";
 	}
 
 &ui_print_footer("edit_list.cgi?name=$in{'name'}", $text{'edit_return'});
-

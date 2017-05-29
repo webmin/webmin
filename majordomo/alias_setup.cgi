@@ -20,6 +20,6 @@ if ($in{'owner_a'}) {
 $email = { 'enabled' => 1,
 	   'name' => $in{'email_a'},
 	   'values' => [ "|$wrapper_path majordomo" ] };
-&foreign_call("sendmail", "create_alias", $email, $aliases_files);
+&foreign_call($aliases_module, "create_alias", $email, $aliases_files);
 &redirect("");
 

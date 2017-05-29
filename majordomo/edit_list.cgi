@@ -11,11 +11,9 @@ $list = &get_list($in{'name'}, &get_config());
 $conf = &get_list_config($list->{'config'});
 local $moderate= (&find_value('moderate', $conf) =~ /no/) ? "" : " (".$text{'index_moderated'}.")";
 
-&ui_print_header(undef,  $text{'edit_title'}."<br><em>".&html_escape($in{'name'})."</em><tt>$moderate</tt>", "");
+&ui_print_header( $text{'misc_header'},  $text{'edit_title'}.": ".&html_escape($in{'name'})."<tt>$moderate</tt>", "");
 
-@links = ( "edit_subs.cgi",
-	   "edit_mesg.cgi", "edit_access.cgi",
-	   "edit_misc.cgi" );
+@links = ( "edit_subs.cgi", "edit_access.cgi", "edit_misc.cgi" );
 foreach $a (&foreign_call($aliases_module, "list_aliases",
 			  &get_aliases_file())) {
 	if ($a->{'name'} =~ /-digestify$/i &&
@@ -39,8 +37,19 @@ print $otherbut;
 
 # css for table
 local $tcss='style="width: 98%; margin: 1% !important;"';
-local $dcss='style="text-align: right; vertical-align: top; padding: 5px !important; min_heigth: 5em;"';
-local $vcss='style="width: 40%; border: 1px solid lightgrey; padding: 5px !important;"';
+local $dcss='style="text-align: right; vertical-align: middle; padding: 0.3em 1em !important; min_heigth: 5em;"';
+local $vcss='style="width: 40%; border: 1px solid lightgrey; padding: 0.3em !important;"';
+
+# list optionen
+print "<table border width=100%>\n";
+print "<tr $tb> <td><b>$text{'mesg_header'}</b></td>";
+print "<td width=10% nowrap><form action=\"edit_mesg.cgi".$name_link."\" method=\"post\">",
+        &ui_submit($text{'modify'}),"</form>\n</tr>\n";
+print "<tr $cb> <td colspan=2><table $tcss>\n";
+
+print "<tr><td $dcss><b>".$text{'mesg_reply'}."</b></td><td $vcss>",&find_value("reply_to", $conf)."</td></tr>\n";
+print "<tr><td $dcss><b>".$text{'mesg_subject'}."</b></td><td $vcss>".&find_value("subject_prefix", $conf)."</td></tr>\n";
+print "</table></td></tr></table>\n";
 
 # title, descritpion, info
 print "<table border width=100%>\n";
@@ -111,4 +120,7 @@ print "<div $bcss><form action=\"delete_list.cgi".$name_link."\" method=\"post\"
 print "<div style=\"padding-top: 20px;\">$text{'edit_deletemsg'}</div>\n";
 
 &ui_print_footer("", $text{'index_return'});
-
+print   "<script>",
+        "document.querySelectorAll('.btn.btn-default').forEach(function(button) {",
+                " button.innerHTML=button.innerHTML.replace(/^/,'<i class=\"fa fa-fw fa-pencil-square-o\"></i>&nbsp;');});",
+        "</script>";

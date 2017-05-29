@@ -32,15 +32,15 @@ foreach $a (@aliases) {
 	$ownerlist = $a if (lc($a->{'name'}) eq lc("owner-$in{'name'}"));
 	$approval = $a if (lc($a->{'name'}) eq lc("$in{'name'}-approval"));
 	}
-&foreign_call('sendmail', 'modify_alias', $listowner,
+&foreign_call($aliases_module, 'modify_alias', $listowner,
 	      { 'name' => "$in{'name'}-owner",
 		'values' => [ $in{'owner'} ],
 		'enabled' => 1 }) if ($listowner);
-&foreign_call('sendmail', 'modify_alias', $ownerlist,
+&foreign_call($aliases_module, 'modify_alias', $ownerlist,
 	      { 'name' => "owner-$in{'name'}",
 		'values' => [ $in{'owner'} ],
 		'enabled' => 1 }) if ($ownerlist);
-&foreign_call('sendmail', 'modify_alias', $approval,
+&foreign_call($aliases_module, 'modify_alias', $approval,
 	      { 'name' => "$in{'name'}-approval",
 		'values' => [ $in{'approval'} ],
 		'enabled' => 1 }) if ($approval);
