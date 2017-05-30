@@ -60,6 +60,7 @@ create_archive=Archive mailing list?
 create_archiveyear=In yearly file
 create_archivemonth=In monthly file
 create_archiveday=In daily file
+create_minimum=Minimum required information
 
 cdigest_ecannot=You are not allowed to create new digest lists
 cdigest_title=Create Digest List

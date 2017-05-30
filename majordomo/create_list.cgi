@@ -124,6 +124,11 @@ else {
 &foreign_call($aliases_module, "unlock_alias_files", $aliases_files);
 
 # Update the new config file
+local $sprefix=$in{'subject_prefix'};
+$sprefix = "[".ucfirst($sprefix)."]" if ($sprefix ne "" && $sprefix !~ /^\[/ );
+&save_list_directive($list, $lfile, "subject_prefix", $sprefix);
+
+&save_list_directive($list, $lfile, "reply_to", $in{'reply_to'});
 &save_list_directive($list, $lfile, "description", $in{'desc'});
 &save_list_directive($list, $lfile, "admin_passwd", $in{'password'});
 &save_list_directive($list, $lfile, "approve_passwd", $in{'password'});
