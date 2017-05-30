@@ -35,7 +35,7 @@ foreach $a (@aliases) {
 	$approval = $a if (lc($a->{'name'}) eq lc("$in{'name'}-approval"));
 	}
 
-local $aliasowner=&set_alias_owner($in{'owner'});
+local $aliasowner=&set_alias_owner($in{'owner'}, $ldir);
 &foreign_call($aliases_module, 'modify_alias', $listowner,
 	      { 'name' => "$in{'name'}-owner",
 		'values' => [ $aliasowner ],
