@@ -135,12 +135,16 @@ if (@lists) {
 	push(@cols, "","<a href=edit_list.cgi?name=$l><img src=images/smallicon.gif></a>");
 	push(@cols, "<a href=edit_list.cgi?name=$l>". &html_escape($l) ."</a>" );
 	open(INFO, $list->{'info'});
-	push(@cols, "<em>".<INFO>."</em>" ."&nbsp;&nbsp;<em><a href=edit_info.cgi?name=$l><span>edit</span></a></em>");
+	local $info=<INFO>;
+	$info=<INFO> if ( $info =~ !/^\[Last updated on:/);
+	push(@cols, "<em>".$info."</em>" ."&nbsp;&nbsp;<em><a href=edit_info.cgi?name=$l><span>edit</span></a></em>");
 	close(INFO);
-	#push(@cols, $l . "-owner");
-	push(@cols, "<em>". &find_value('reply_to', $conf) ."</em>");
-	push(@cols, "<center><em>". $text{&find_value('moderate', $conf)} ."</em></center>");
-	push(@cols, "<center>".`cat $list->{'members'} | wc -l` . "&nbsp;&nbsp;<em><a href=edit_members.cgi?name=$l><span>edit</span></a></em></center>");
+	push(@cols, "<em>". &find_value('reply_to', $conf) .
+		"&nbsp;&nbsp;<em><a href=edit_mesg.cgi?name=$l><span>edit</span></a></em>");
+	push(@cols, "<center><em>". $text{&find_value('moderate', $conf)} .
+		"</em>" ."&nbsp;&nbsp;<em><a href=edit_subs.cgi?name=$l><span>edit</span></a></em><center>");
+	push(@cols, "<center>".`cat $list->{'members'} | wc -l` .
+		"&nbsp;&nbsp;<em><a href=edit_members.cgi?name=$l><span>edit</span></a></em></center>");
 	print&ui_columns_row(\@cols, \@tds);
 	}
 } else {
@@ -156,8 +160,9 @@ if ($access{'global'}) {
 &ui_print_footer("/", $text{'index'});
 print 	"<script>",
        	"f__lnk_t_btn(['/majordomo/', '/majordomo/index.cgi'], 'table tbody td',",
-       	" 'a[href*=\"edit_info.cgi?\"], a[href*=\"edit_members.cgi?\"]',",
-       	" 'btn btn-transparent btn-xs vertical-align-top margined-top-2', 'fa-edit');",
+       	" 'a[href*=\"edit_info.cgi?\"], a[href*=\"edit_members.cgi?\"], a[href*=\"edit_subs.cgi?\"],",
+		" a[href*=\"edit_mesg.cgi?\"]',",
+       		" 'btn btn-transparent btn-xs vertical-align-top margined-top-2', 'fa-edit');",
 	"document.querySelectorAll('tbody td .btn.btn-transparent').forEach(function(button) {",
 		" button.innerHTML=button.innerHTML.replace(/<\\/i>.*edit/,'');});",
 	"</script>",

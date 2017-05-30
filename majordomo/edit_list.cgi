@@ -11,11 +11,9 @@ $list = &get_list($in{'name'}, &get_config());
 $conf = &get_list_config($list->{'config'});
 local $moderate= (&find_value('moderate', $conf) =~ /no/) ? "" : " (".$text{'index_moderated'}.")";
 
-&ui_print_header(undef,  $text{'edit_title'}."<br><em>".&html_escape($in{'name'})."</em><tt>$moderate</tt>", "");
+&ui_print_header( $text{'misc_header'},  $text{'edit_title'}.": ".&html_escape($in{'name'})."<tt>$moderate</tt>", "");
 
-@links = ( "edit_subs.cgi",
-	   "edit_mesg.cgi", "edit_access.cgi",
-	   "edit_misc.cgi" );
+@links = ( "edit_access.cgi", "edit_misc.cgi" );
 foreach $a (&foreign_call($aliases_module, "list_aliases",
 			  &get_aliases_file())) {
 	if ($a->{'name'} =~ /-digestify$/i &&
@@ -39,8 +37,20 @@ print $otherbut;
 
 # css for table
 local $tcss='style="width: 98%; margin: 1% !important;"';
-local $dcss='style="text-align: right; vertical-align: top; padding: 5px !important; min_heigth: 5em;"';
-local $vcss='style="width: 40%; border: 1px solid lightgrey; padding: 5px !important;"';
+local $dcss='style="text-align: right; vertical-align: middle; padding: 0.3em 1em !important; min_heigth: 5em;"';
+local $vcss='style="width: 40%; border: 1px solid lightgrey; padding: 0.3em !important;"';
+local $xcss='style="width: 25%; border: 1px solid lightgrey; padding: 0.3em !important;"';
+
+# list options
+print "<table border width=100%>\n";
+print "<tr $tb> <td><b>$text{'mesg_header'}</b></td>";
+print "<td width=10% nowrap><form action=\"edit_mesg.cgi".$name_link."\" method=\"post\">",
+        &ui_submit($text{'modify'}),"</form>\n</tr>\n";
+print "<tr $cb> <td colspan=2><table $tcss>\n";
+
+print "<tr><td $dcss><b>".$text{'mesg_reply'}."</b></td><td $vcss>",&find_value("reply_to", $conf)."</td></tr>\n";
+print "<tr><td $dcss><b>".$text{'mesg_subject'}."</b></td><td $vcss>".&find_value("subject_prefix", $conf)."</td></tr>\n";
+print "</table></td></tr></table>\n";
 
 # title, descritpion, info
 print "<table border width=100%>\n";
@@ -85,6 +95,40 @@ print  &find_value("message_headers", $conf);
 print "</td></tr>\n";
 print "</table></td></tr></table>\n";
 
+# owner and moderation
+print "<table border width=100%>\n";
+print "<tr $tb> <td><b>$text{'subs_title'}</b></td>";
+print "<td width=10% nowrap><form action=\"edit_subs.cgi".$name_link."\" method=\"post\">",
+        &ui_submit($text{'modify'}),"</form>\n</tr>\n";
+print "<tr $cb> <td colspan=2><table $tcss>\n";
+
+$pol = &find_value("subscribe_policy", $conf);
+if ($pol =~ /(\S+)\+confirm/) { $pol = $1; $confirm = 1; }
+print "<tr> <td $dcss><b>$text{'subs_sub'}:</b></td> <td $xcss nowrap>\n";
+printf $text{'subs_s'.$pol};
+print "</td>\n";
+
+$upol = &find_value("unsubscribe_policy", $conf);
+print "<td $dcss><b>$text{'subs_unsub'}:</b></td> <td $xcss nowrap>\n";
+printf $text{'subs_u'.$upol};
+print "</td> </tr>\n";
+
+$aliases_files = &get_aliases_file();
+@aliases = &foreign_call($aliases_module, "list_aliases", $aliases_files);
+foreach $a (@aliases) {
+	$owner = $a->{'value'}
+		if (lc($a->{'name'}) eq lc("$in{'name'}-owner") ||
+		    lc($a->{'name'}) eq lc("owner-$in{'name'}"));
+	$approval = $a->{'value'}
+		if (lc($a->{'name'}) eq lc("$in{'name'}-approval"));
+	}
+print "<tr> <td $dcss><b>$text{'subs_owner'}</b></td>\n";
+print "<td $xcss >".&get_alias_owner($owner)."</td>\n";
+
+print "<td $dcss><b>$text{'subs_approval'}</b></td>\n";
+print "<td $xcss >".$approval."</td> </tr>\n";
+print "</table></td></tr></table>\n";
+
 # members
 print "<table border width=100%>\n";
 print "<tr $tb> <td><b>".$text{'members_title'}."</b></td>";
@@ -111,4 +155,3 @@ print "<div $bcss><form action=\"delete_list.cgi".$name_link."\" method=\"post\"
 print "<div style=\"padding-top: 20px;\">$text{'edit_deletemsg'}</div>\n";
 
 &ui_print_footer("", $text{'index_return'});
-

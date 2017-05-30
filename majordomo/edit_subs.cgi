@@ -85,13 +85,13 @@ foreach $a (@aliases) {
 		if (lc($a->{'name'}) eq lc("$in{'name'}-approval"));
 	}
 print "<tr> <td><b>$text{'subs_owner'}</b></td>\n";
-print "<td><input name=owner size=20 value='$owner'></td>\n";
+print "<td><input name=owner size=20 value=".&get_alias_owner($owner)."></td>\n";
 
 print "<td><b>$text{'subs_approval'}</b></td>\n";
 print "<td><input name=approval size=20 value='$approval'></td> </tr>\n";
 
 print "</table></td></tr></table>\n";
-print "<input type=submit value=\"$text{'save'}\"></form>\n";
+print &ui_submit($text{'save'}),"</form>\n";
 
 &ui_print_footer("edit_list.cgi?name=$in{'name'}", $text{'edit_return'});
 

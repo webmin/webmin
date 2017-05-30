@@ -129,6 +129,7 @@ $list{'members'} = "$ldir/$_[0]";
 $list{'config'} = "$ldir/$_[0].config";
 $list{'info'} = "$ldir/$_[0].info";
 $list{'intro'} = "$ldir/$_[0].intro";
+$list{'owner'} = "$ldir/$_[0].owner";
 return \%list;
 }
 
@@ -237,6 +238,40 @@ else {
 		}
 	}
 }
+
+
+# set_alias_owner(mail-adress, listdir)
+# return value to write to alias file
+sub set_alias_owner
+{
+# owner is stored in file
+if ($config{'owner_file'} eq "1" && $_[1] ne "" ) {
+	local $lowner=$_[1]."/".$in{'name'}.".owner";
+        &lock_file($lowner);
+        &open_tempfile(OWNER, ">$lowner");
+        &print_tempfile(OWNER, $_[0]);
+        &close_tempfile(OWNER);
+        &set_permissions($lowner);
+        &unlock_file($lowner);
+        # return :include:list.owner file instead of direkt alias
+        return ":include:$lowner";
+   }
+return $_[0];
+}
+
+# get_alias_owner()
+# return owner from given alias
+sub get_alias_owner
+{
+local $a=$_[0];
+if ( $a =~ s/^:include:// ) {
+	open(OWNER, $a);
+	$a=<OWNER>;
+	close(OWNER);
+    } 
+return $a;
+}
+
 
 # perl_unescape(string)
 # Converts a string like "hello\@there\\foo" to "hello@there\foo"

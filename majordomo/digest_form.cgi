@@ -40,7 +40,8 @@ print <<EOF;
 	 <input type=radio name=mode value=1> $lines</td> </tr>
 
 </table></td></tr></table>
-<input type=submit value="$text{'create'}"></form>
+EOF
+print &ui_submit($text{'create'}),"</form>";
 EOF
 &ui_print_footer("", $text{'index_return'});
 
