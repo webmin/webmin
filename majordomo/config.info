@@ -9,3 +9,4 @@ program_dir=Directory containing majordomo programs,0
 wrapper_path=Path to majordomo wrapper,3,In programs directory
 aliases_file=Path to aliases file,10,postfix-Get from Postfix,-Get from Sendmail,Other file
 smrsh_program_dir=Directory containing sendmail safe programs,3,Anywhere
+download=First Aid<br><br>If majordomo is not supported by your distribution or is not compatible with the installed version of perl: <a href="http://files1.directadmin.com/services/es_7.0_64/majordomo-1.94.5-patched.tar.gz">download a patched version here ...</a><br>&nbsp;,11
