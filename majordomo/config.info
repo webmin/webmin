@@ -1,5 +1,6 @@
 line1=Configurable options,11
 dynamic=Use random number for list alias?,1,1-Yes,0-No
+owner_file=Save list owner in <tt>list.owner</tt> instead of aliases file,1,1-Yes,0-No
 sort_mode=Sort mailing lists by,1,1-Name,0-Order created
 perms=Permissions for majordomo files,1,1-User writable,0-User and group writable
 line2=System configuration,11
