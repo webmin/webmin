@@ -109,13 +109,13 @@ if (defined($heading) || defined($rightheading)) {
 		$rv .= "<td><b>$heading</b></td>"
 		}
 	if (defined($rightheading)) {
-		$rv .= "<td align=right>$rightheading</td>";
+		$rv .= "<td align='right'>$rightheading</td>";
 		$colspan++;
 		}
 	$rv .= "</tr>\n";
 	}
-$rv .= "<tr".($cb ? " ".$cb : "")." class='ui_table_body'> <td colspan=$colspan>".
-       "<table width=100%>\n";
+$rv .= "<tr".($cb ? " ".$cb : "")." class='ui_table_body'> <td colspan='$colspan'>".
+       "<table width='100%'>\n";
 $main::ui_table_cols = $cols || 4;
 $main::ui_table_pos = 0;
 $main::ui_table_default_tds = $tds;
@@ -175,7 +175,7 @@ if ($main::ui_table_pos+$cols+1 > $main::ui_table_cols &&
 	# If the requested number of cols won't fit in the number
 	# remaining, start a new row
 	my $leftover = $main::ui_table_cols - $main::ui_table_pos;
-	$rv .= "<td colspan=$leftover></td>\n";
+	$rv .= "<td colspan='$leftover'></td>\n";
 	$rv .= "</tr>\n";
 	$main::ui_table_pos = 0;
 	}
@@ -188,9 +188,9 @@ if (defined($label) &&
 	my $id = $1;
 	$label = "<label for=\"".&quote_escape($id)."\">$label</label>";
 	}
-$rv .= "<td valign=top $tds->[0] class='ui_label'><b>$label</b></td>\n"
+$rv .= "<td valign='top' $tds->[0] class='ui_label'><b>$label</b></td>\n"
 	if (defined($label));
-$rv .= "<td valign=top colspan=$cols $tds->[1] class='ui_value'>$value</td>\n";
+$rv .= "<td valign='top' colspan='$cols' $tds->[1] class='ui_value'>$value</td>\n";
 $main::ui_table_pos += $cols+(defined($label) ? 1 : 0);
 if ($main::ui_table_pos%$main::ui_table_cols == 0) {
 	$rv .= "</tr>\n";
@@ -214,7 +214,7 @@ if ($ui_table_pos) {
 	$ui_table_pos = 0;
 	}
 $rv .= "<tr class='ui_table_hr'> ".
-       "<td colspan=$main::ui_table_cols><hr></td> </tr>\n";
+       "<td colspan='$main::ui_table_cols'><hr></td> </tr>\n";
 return $rv;
 }
 
@@ -233,7 +233,7 @@ if ($ui_table_pos) {
 	$ui_table_pos = 0;
 	}
 $rv .= "<tr class='ui_table_span'> ".
-       "<td colspan=$main::ui_table_cols>$text</td> </tr>\n";
+       "<td colspan='$main::ui_table_cols'>$text</td> </tr>\n";
 return $rv;
 }
 
@@ -259,10 +259,10 @@ return &theme_ui_columns_start(@_) if (defined(&theme_ui_columns_start));
 my ($heads, $width, $noborder, $tdtags, $title) = @_;
 my $rv;
 $rv .= "<table".($noborder ? "" : " border").
-		(defined($width) ? " width=$width%" : "")." class='ui_columns'>\n";
+		(defined($width) ? " width='$width%'" : "")." class='ui_columns'>\n";
 if ($title) {
 	$rv .= "<tr".($tb ? " ".$tb : "")." class='ui_columns_heading'>".
-	       "<td colspan=".scalar(@$heads)."><b>$title</b></td></tr>\n";
+	       "<td colspan='".scalar(@$heads)."'><b>$title</b></td></tr>\n";
 	}
 $rv .= "<tr".($tb ? " ".$tb : "")." class='ui_columns_heads'>\n";
 my $i;
@@ -462,14 +462,14 @@ if ($emptymsg && !@$data) {
 	}
 
 # Are there any checkboxes in each column? If so, make those columns narrow
-my @tds = map { "valign=top" } @$heads;
+my @tds = map { "valign='top'" } @$heads;
 my $maxwidth = 0;
 foreach my $r (@$data) {
 	my $cc = 0;
 	foreach my $c (@$r) {
 		if (ref($c) &&
 		    ($c->{'type'} eq 'checkbox' || $c->{'type'} eq 'radio')) {
-			$tds[$cc] .= " width=5" if ($tds[$cc] !~ /width=/);
+			$tds[$cc] .= " width='5'" if ($tds[$cc] !~ /width=/);
 			}
 		$cc++;
 		}
@@ -609,7 +609,7 @@ if (@$data) {
 if (@rightlinks) {
 	$links = &ui_grid_table([ &ui_links_row(\@leftlinks),
 				  &ui_links_row(\@rightlinks) ], 2, 100,
-			        [ undef, "align=right" ]);
+			        [ undef, "align='right'" ]);
 	}
 elsif (@leftlinks) {
 	$links = &ui_links_row(\@leftlinks);
@@ -664,7 +664,7 @@ $rv .= "<form class='ui_form' action='".&html_escape($script)."' ".
 	 $method eq "form-data" ?
 		"method='post' enctype='multipart/form-data'" :
 		"method='get'").
-	($target ? " target=$target" : "").
+	($target ? " target='$target'" : "").
         ($tags ? " ".$tags : "").">\n";
 return $rv;
 }
@@ -695,14 +695,14 @@ return &theme_ui_form_end(@_) if (defined(&theme_ui_form_end));
 my ($buttons, $width, $nojs) = @_;
 my $rv;
 if ($buttons && @$buttons) {
-	$rv .= "<table class='ui_form_end_buttons' ".($width ? " width=$width" : "")."><tr>\n";
+	$rv .= "<table class='ui_form_end_buttons' ".($width ? " width='$width'" : "")."><tr>\n";
 	my $b;
 	foreach $b (@$buttons) {
 		if (ref($b)) {
 			$rv .= "<td".(!$width ? "" :
-				      $b eq $buttons->[0] ? " align=left" :
+				      $b eq $buttons->[0] ? " align='left'" :
 				      $b eq $buttons->[@$buttons-1] ?
-					" align=right" : " align=center").">".
+					" align='right'" : " align='center'").">".
 			       &ui_submit($b->[1], $b->[0], $b->[3], $b->[4]).
 			       ($b->[2] ? " ".$b->[2] : "")."</td>\n";
 			}
@@ -755,8 +755,8 @@ return "<input class='ui_textbox' type='text' ".
        "name=\"".&html_escape($name)."\" ".
        "id=\"".&html_escape($name)."\" ".
        "value=\"".&html_escape($value)."\" ".
-       "size=$size".($dis ? " disabled=true" : "").
-       ($max ? " maxlength=$max" : "").
+       "size=$size".($dis ? " disabled='true'" : "").
+       ($max ? " maxlength='$max'" : "").
        ($tags ? " ".$tags : "").">";
 }
 
@@ -853,8 +853,8 @@ $size = &ui_max_text_width($size);
 return "<input class='ui_upload' type='file' ".
        "name=\"".&quote_escape($name)."\" ".
        "id=\"".&quote_escape($name)."\" ".
-       "size=$size".
-       ($dis ? " disabled=true" : "").
+       "size='$size'".
+       ($dis ? " disabled='true'" : "").
        ($multiple ? " multiple" : "").
        ($tags ? " ".$tags : "").">";
 }
@@ -874,8 +874,8 @@ return "<input class='ui_password' type='password' ".
        "name=\"".&quote_escape($name)."\" ".
        "id=\"".&quote_escape($name)."\" ".
        ($value ne "" ? "value=\"".&quote_escape($value)."\" " : "").
-       "size=$size".($dis ? " disabled=true" : "").
-       ($max ? " maxlength=$max" : "").
+       "size='$size'".($dis ? " disabled='true'" : "").
+       ($max ? " maxlength='$max'" : "").
        ($tags ? " ".$tags : "").">";
 }
 
@@ -924,7 +924,7 @@ my $rv;
 $rv .= "<select class='ui_select' ".
        "name=\"".&quote_escape($name)."\" ".
        "id=\"".&quote_escape($name)."\" ".
-       ($size ? " size=$size" : "").
+       ($size ? " size='$size'" : "").
        ($multiple ? " multiple" : "").
        ($dis ? " disabled=true" : "").($tags ? " ".$tags : "").">\n";
 my ($o, %opt, $s);
@@ -1101,7 +1101,7 @@ foreach $o (@$opts) {
 	       "name=\"".&quote_escape($name)."\" ".
                "value=\"".&quote_escape($o->[0])."\"".
 	       ($o->[0] eq $value ? " checked" : "").
-	       ($dis ? " disabled=true" : "").
+	       ($dis ? " disabled='true'" : "").
 	       " id=\"$id\"".
 	       ($o->[2] ? " ".$o->[2] : "")."> <label for=\"$id\">".
 	       $label."</label>".$after."\n";
@@ -1167,7 +1167,7 @@ if ($label =~ /^([^<]*)(<[\000-\377]*)$/) {
 return "<input class='ui_checkbox' type='checkbox' ".
        "name=\"".&quote_escape($name)."\" ".
        "value=\"".&quote_escape($value)."\" ".
-       ($sel ? " checked" : "").($dis ? " disabled=true" : "").
+       ($sel ? " checked" : "").($dis ? " disabled='true'" : "").
        " id=\"".&quote_escape("${name}_${value}")."\"".
        ($tags ? " ".$tags : "")."> ".
        ($label eq "" ? $after :
@@ -1204,7 +1204,7 @@ if ($label =~ /^([^<]*)(<[\000-\377]*)$/) {
 	}
 my $ret = "<input class='ui_radio' type='radio' name=\"".&quote_escape($name)."\" ".
        "value=\"".&quote_escape($value)."\" ".
-       ($sel ? " checked" : "").($dis ? " disabled=true" : "").
+       ($sel ? " checked" : "").($dis ? " disabled='true'" : "").
        " id=\"$id\"".
        ($tags ? " ".$tags : "").">";
     $ret .= " <label for=\"$id\">$label</label>" if ($label ne '');
@@ -1239,8 +1239,8 @@ $cols = &ui_max_text_width($cols, 1);
 return "<textarea class='ui_textarea' ".
        "name=\"".&quote_escape($name)."\" ".
        "id=\"".&quote_escape($name)."\" ".
-       "rows='$rows' cols='$cols'".($wrap ? " wrap=$wrap" : "").
-       ($dis ? " disabled=true" : "").
+       "rows='$rows' cols='$cols'".($wrap ? " wrap='$wrap'" : "").
+       ($dis ? " disabled='true'" : "").
        ($tags ? " $tags" : "").">".
        &html_escape($value).
        "</textarea>";
@@ -1311,8 +1311,8 @@ $rv .= "<input class='ui_opt_textbox' type='text' ".
        "name=\"".&quote_escape($name)."\" ".
        "id=\"".&quote_escape($name)."\" ".
        "size=$size value=\"".&quote_escape($value)."\"".
-       ($dis ? " disabled=true" : "").
-       ($max ? " maxlength=$max" : "").
+       ($dis ? " disabled='true'" : "").
+       ($max ? " maxlength='$max'" : "").
        ($tags ? " ".$tags : "").">";
 return $rv;
 }
@@ -1338,7 +1338,7 @@ return "<input class='ui_submit' type='submit'".
        ($name ne '' ? " name=\"".&quote_escape($name)."\"" : "").
        ($name ne '' ? " id=\"".&quote_escape($name)."\"" : "").
        " value=\"".&quote_escape($label)."\"".
-       ($dis ? " disabled=true" : "").
+       ($dis ? " disabled='true'" : "").
        ($tags ? " ".$tags : "").">\n";	
 }
 
@@ -1359,7 +1359,7 @@ sub ui_reset
 return &theme_ui_reset(@_) if (defined(&theme_ui_reset));
 my ($label, $dis, $tags) = @_;
 return "<input class='ui_reset' type='reset' value=\"".&quote_escape($label)."\"".
-       ($dis ? " disabled=true" : "").
+       ($dis ? " disabled='true'" : "").
        ($tags ? " ".$tags : "").">\n";		
 }
 
@@ -1385,7 +1385,7 @@ return "<input class='ui_button' type='button'".
        ($name ne '' ? " name=\"".&quote_escape($name)."\"" : "").
        ($name ne '' ? " id=\"".&quote_escape($name)."\"" : "").
        " value=\"".&quote_escape($label)."\"".
-       ($dis ? " disabled=true" : "").
+       ($dis ? " disabled='true'" : "").
        ($tags ? " ".$tags : "").">\n";
 }
 
@@ -1442,7 +1442,7 @@ generated by ui_buttons_row. Some example code :
 sub ui_buttons_start
 {
 return &theme_ui_buttons_start(@_) if (defined(&theme_ui_buttons_start));
-return "<table width=100% class='ui_buttons_table'>\n";
+return "<table width='100%' class='ui_buttons_table'>\n";
 }
 
 =head2 ui_buttons_end
@@ -1481,13 +1481,13 @@ my ($script, $label, $desc, $hiddens, $after, $before) = @_;
 if (ref($hiddens)) {
 	$hiddens = join("\n", map { &ui_hidden(@$_) } @$hiddens);
 	}
-return "<form action='$script' class='ui_buttons_form' method=post>\n".
+return "<form action='$script' class='ui_buttons_form' method='post'>\n".
        $hiddens.
        "<tr class='ui_buttons_row'> ".
-       "<td nowrap width=20% valign=top class=ui_buttons_label>".
+       "<td nowrap width='20%' valign='top' class='ui_buttons_label'>".
        ($before ? $before." " : "").
        &ui_submit($label).($after ? " ".$after : "")."</td>\n".
-       "<td width=80% valign=top class=ui_buttons_value>".
+       "<td width='80%' valign='top' class='ui_buttons_value'>".
        $desc."</td></tr>\n".
        "</form>\n";
 }
@@ -1502,10 +1502,10 @@ sub ui_buttons_hr
 my ($title) = @_;
 return &theme_ui_buttons_hr(@_) if (defined(&theme_ui_buttons_hr));
 if ($title) {
-	return "<tr class='ui_buttons_hr'><td colspan=2><table cellpadding=0 cellspacing=0 width=100%><tr><td width=50%><hr></td><td nowrap>$title</td><td width=50%><hr></td></tr></table></td></tr>\n";
+	return "<tr class='ui_buttons_hr'><td colspan='2'><table cellpadding='0' cellspacing='0' width='100%'><tr><td width='50%'><hr></td><td nowrap>$title</td><td width='50%'><hr></td></tr></table></td></tr>\n";
 	}
 else {
-	return "<tr class='ui_buttons_hr'><td colspan=2><hr></td></tr>\n";
+	return "<tr class='ui_buttons_hr'><td colspan='2'><hr></td></tr>\n";
 	}
 }
 
@@ -1523,7 +1523,7 @@ sub ui_post_header
 return &theme_ui_post_header(@_) if (defined(&theme_ui_post_header));
 my ($text) = @_;
 my $rv;
-$rv .= "<center class='ui_post_header'><font size=+1>$text</font></center>\n" if (defined($text));
+$rv .= "<center class='ui_post_header'><font size='+1'>$text</font></center>\n" if (defined($text));
 if (!$tconfig{'nohr'} && !$tconfig{'notophr'}) {
 	$rv .= "<hr id='post_header_hr'>\n";
 	}
@@ -1711,11 +1711,11 @@ var divobj = document.getElementById(divid);
 var openerobj = document.getElementById(openerid);
 if (divobj.className == 'opener_shown') {
   divobj.className = 'opener_hidden';
-  openerobj.innerHTML = '<img border=0 src=$imgdir/closed.gif>';
+  openerobj.innerHTML = '<img border='0' src=$imgdir/closed.gif>';
   }
 else {
   divobj.className = 'opener_shown';
-  openerobj.innerHTML = '<img border=0 src=$imgdir/open.gif>';
+  openerobj.innerHTML = '<img border='0' src=$imgdir/open.gif>';
   }
 }
 
@@ -1730,7 +1730,7 @@ for(var i=0; i<tabnames.length; i++) {
   var title = tabtitles[i];
   if (tabnames[i] == tabname) {
     // Selected table
-    tabobj.innerHTML = '<table cellpadding=0 cellspacing=0><tr>'+
+    tabobj.innerHTML = '<table cellpadding='0' cellspacing='0'><tr>'+
 		       '<td valign=top $jscb>'+
 		       '<img src=$imgdir/lc2.gif alt=""></td>'+
 		       '<td $jscb nowrap>'+
@@ -1742,14 +1742,14 @@ for(var i=0; i<tabnames.length; i++) {
     }
   else {
     // Non-selected tab
-    tabobj.innerHTML = '<table cellpadding=0 cellspacing=0><tr>'+
-		       '<td valign=top $jstb>'+
-		       '<img src=$imgdir/lc1.gif alt=""></td>'+
+    tabobj.innerHTML = '<table cellpadding='0' cellspacing='0'><tr>'+
+		       '<td valign='top' $jstb>'+
+		       '<img src='$imgdir/lc1.gif' alt=""></td>'+
 		       '<td $jstb nowrap>'+
                        '&nbsp;<a href=\\'\\' onClick=\\'return select_tab("'+
 		       name+'", "'+tabnames[i]+'")\\'>'+title+'</a>&nbsp;</td>'+
-		       '<td valign=top $jstb>'+
-    		       '<img src=$imgdir/rc1.gif alt=""></td>'+
+		       '<td valign='top' $jstb>'+
+    		       '<img src='$imgdir/rc1.gif' alt=""></td>'+
 		       '</tr></table>';
     divobj.className = 'opener_hidden';
     }
@@ -1835,7 +1835,7 @@ if ($title) {
 	}
 $rv .= "</table>\n";
 $rv .= "<div class='$defclass' id='$divid'>\n";
-$rv .= "<table width=100%>\n";
+$rv .= "<table width='100%'>\n";
 return $rv;
 }
 
@@ -1849,7 +1849,7 @@ sub ui_hidden_table_row_end
 return &theme_ui_hidden_table_row_end(@_)
 	if (defined(&theme_ui_hidden_table_row_end));
 my ($name) = @_;
-return "</table></div><table width=100%>\n";
+return "</table></div><table width='100%'>\n";
 }
 
 =head2 ui_hidden_table_start(heading, [tabletags], [cols], name, status, [&default-tds], [rightheading])
@@ -1895,15 +1895,15 @@ my $colspan = 1;
 if (defined($heading) || defined($rightheading)) {
 	$rv .= "<tr".($tb ? " ".$tb : "")."><td>";
 	if (defined($heading)) {
-		$rv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='$gconfig{'webprefix'}/images/$defimg'></a> <a href=\"javascript:hidden_opener('$divid', '$openerid')\"><b><font color=#$text>$heading</font></b></a></td>";
+		$rv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='$gconfig{'webprefix'}/images/$defimg'></a> <a href=\"javascript:hidden_opener('$divid', '$openerid')\"><b><font color='#$text'>$heading</font></b></a></td>";
 		}
 	if (defined($rightheading)) {
-                $rv .= "<td align=right>$rightheading</td>";
+                $rv .= "<td align='right'>$rightheading</td>";
                 $colspan++;
                 }
 	$rv .= "</td> </tr>\n";
 	}
-$rv .= "<tr".($cb ? " ".$cb : "")."><td colspan=$colspan><div class='$defclass' id='$divid'><table width=100%>\n";
+$rv .= "<tr".($cb ? " ".$cb : "")."><td colspan='$colspan'><div class='$defclass' id='$divid'><table width='100%'>\n";
 $main::ui_table_cols = $cols || 4;
 $main::ui_table_pos = 0;
 $main::ui_table_default_tds = $tds;
@@ -1973,28 +1973,28 @@ $rv .= "</script>\n";
 # Output the tabs
 my $imgdir = "$gconfig{'webprefix'}/images";
 $rv .= &ui_hidden($name, $sel)."\n";
-$rv .= "<table border=0 cellpadding=0 cellspacing=0 class='ui_tabs'>\n";
-$rv .= "<tr><td bgcolor=#ffffff colspan=".(scalar(@$tabs)*2+1).">";
+$rv .= "<table border='0' cellpadding='0' cellspacing='0' class='ui_tabs'>\n";
+$rv .= "<tr><td bgcolor='#ffffff' colspan='".(scalar(@$tabs)*2+1)."'>";
 if ($ENV{'HTTP_USER_AGENT'} !~ /msie/i) {
 	# For some reason, the 1-pixel space above the tabs appears huge on IE!
-	$rv .= "<img src=$imgdir/1x1.gif>";
+	$rv .= "<img src='$imgdir/1x1.gif'>";
 	}
 $rv .= "</td></tr>\n";
 $rv .= "<tr>\n";
-$rv .= "<td bgcolor=#ffffff width=1><img src=$imgdir/1x1.gif></td>\n";
+$rv .= "<td bgcolor='#ffffff' width='1'><img src='$imgdir/1x1.gif'></td>\n";
 foreach my $t (@$tabs) {
 	if ($t ne $$tabs[0]) {
 		# Spacer
-		$rv .= "<td width=2 bgcolor=#ffffff class='ui_tab_spacer'>".
-		       "<img src=$imgdir/1x1.gif></td>\n";
+		$rv .= "<td width='2' bgcolor='#ffffff' class='ui_tab_spacer'>".
+		       "<img src='$imgdir/1x1.gif'></td>\n";
 		}
 	my $tabid = "tab_".$t->[0];
-	$rv .= "<td id=${tabid} class='ui_tab'>";
-	$rv .= "<table cellpadding=0 cellspacing=0 border=0><tr>";
+	$rv .= "<td id='${tabid}' class='ui_tab'>";
+	$rv .= "<table cellpadding='0' cellspacing='0' border='0'><tr>";
 	if ($t->[0] eq $sel) {
 		# Selected tab
-		$rv .= "<td valign=top".($cb ? " ".$cb : "")." class='selectedTabLeft'>".
-		       "<img src=$imgdir/lc2.gif alt=\"\"></td>";
+		$rv .= "<td valign='top'".($cb ? " ".$cb : "")." class='selectedTabLeft'>".
+		       "<img src='$imgdir/lc2.gif' alt=\"\"></td>";
 		$rv .= "<td".($cb ? " ".$cb : "")." nowrap class='selectedTabMiddle'>".
 		       "&nbsp;<b>$t->[1]</b>&nbsp;</td>";
 		$rv .= "<td valign=top".($cb ? " ".$cb : "")." class='selectedTabRight'>".
@@ -2002,31 +2002,31 @@ foreach my $t (@$tabs) {
 		}
 	else {
 		# Other tab (which has a link)
-		$rv .= "<td valign=top".($tb ? " ".$tb : "").">".
-		       "<img src=$imgdir/lc1.gif alt=\"\"></td>";
+		$rv .= "<td valign='top'".($tb ? " ".$tb : "").">".
+		       "<img src='$imgdir/lc1.gif' alt=\"\"></td>";
 		$rv .= "<td".($tb ? " ".$tb : "")." nowrap>".
 		       "&nbsp;<a href='$t->[2]' ".
 		       "onClick='return select_tab(\"$name\", \"$t->[0]\")'>".
 		       "$t->[1]</a>&nbsp;</td>";
-		$rv .= "<td valign=top".($tb ? " ".$tb : "")." >".
-		       "<img src=$imgdir/rc1.gif ".
+		$rv .= "<td valign='top'".($tb ? " ".$tb : "")." >".
+		       "<img src='$imgdir/rc1.gif' ".
 		       "alt=\"\"></td>";
 		$rv .= "</td>\n";
 		}
 	$rv .= "</tr></table>";
 	$rv .= "</td>\n";
 	}
-$rv .= "<td bgcolor=#ffffff width=1><img src=$imgdir/1x1.gif></td>\n";
+$rv .= "<td bgcolor='#ffffff' width='1'><img src='$imgdir/1x1.gif'></td>\n";
 $rv .= "</table>\n";
 
 if ($border) {
 	# All tabs are within a grey box
-	$rv .= "<table width=100% cellpadding=0 cellspacing=0 border=0 ".
+	$rv .= "<table width='100%' cellpadding='0' cellspacing='0' border='0' ".
 	       "class='ui_tabs_box'>\n";
-	$rv .= "<tr> <td bgcolor=#ffffff rowspan=3 width=1><img src=$imgdir/1x1.gif></td>\n";
-	$rv .= "<td".($cb ? " ".$cb : "")." colspan=3 height=2><img src=$imgdir/1x1.gif></td> </tr>\n";
-	$rv .= "<tr> <td".($cb ? " ".$cb : "")." width=2><img src=$imgdir/1x1.gif></td>\n";
-	$rv .= "<td valign=top>";
+	$rv .= "<tr> <td bgcolor='#ffffff' rowspan='3' width='1'><img src='$imgdir/1x1.gif'></td>\n";
+	$rv .= "<td".($cb ? " ".$cb : "")." colspan='3' height='2'><img src='$imgdir/1x1.gif'></td> </tr>\n";
+	$rv .= "<tr> <td".($cb ? " ".$cb : "")." width='2'><img src='$imgdir/1x1.gif'></td>\n";
+	$rv .= "<td valign='top'>";
 	}
 $main::ui_tabs_selected = $sel;
 return $rv;
@@ -2046,9 +2046,9 @@ my $rv;
 my $imgdir = "$gconfig{'webprefix'}/images";
 if ($border) {
 	$rv .= "</td>\n";
-	$rv .= "<td".($cb ? " ".$cb : "")." width=2><img src=$imgdir/1x1.gif></td>\n";
+	$rv .= "<td".($cb ? " ".$cb : "")." width='2'><img src='$imgdir/1x1.gif'></td>\n";
 	$rv .= "</tr>\n";
-	$rv .= "<tr> <td".($cb ? " ".$cb : "")." colspan=3 height=2><img src=$imgdir/1x1.gif></td> </tr>\n";
+	$rv .= "<tr> <td".($cb ? " ".$cb : "")." colspan='3' height='2'><img src='$imgdir/1x1.gif'></td> </tr>\n";
 	$rv .= "</table>\n";
 	}
 return $rv;
@@ -2082,7 +2082,7 @@ sub ui_tabs_start_tabletab
 return &theme_ui_tabs_start_tabletab(@_)
 	if (defined(&theme_ui_tabs_start_tabletab));
 my $div = &ui_tabs_start_tab(@_);
-return "</table>\n".$div."<table width=100%>\n";
+return "</table>\n".$div."<table width='100%'>\n";
 }
 
 =head2 ui_tabs_end_tab
@@ -2105,7 +2105,7 @@ sub ui_tabs_end_tabletab
 {
 return &theme_ui_tabs_end_tabletab(@_)
 	if (defined(&theme_ui_tabs_end_tabletab));
-return "</table></div><table width=100%>\n";
+return "</table></div><table width='100%'>\n";
 }
 
 =head2 ui_max_text_width(width, [text-area?])
@@ -2152,7 +2152,7 @@ foreach my $o (@$opts) {
 $rv .= "<br>\n";
 foreach my $o (@$opts) {
 	my $cls = $o->[0] eq $sel ? "selector_shown" : "selector_hidden";
-	$rv .= "<div id=sel_${name}_$o->[0] class=$cls>".$o->[2]."</div>\n";
+	$rv .= "<div id='sel_${name}_$o->[0]' class='$cls'>".$o->[2]."</div>\n";
 	}
 return $rv;
 }
@@ -2204,13 +2204,13 @@ return &theme_ui_grid_table(@_) if (defined(&theme_ui_grid_table));
 my ($elements, $cols, $width, $tds, $tabletags, $title) = @_;
 return "" if (!@$elements);
 my $rv = "<table class='ui_grid_table'".
-	    ($width ? " width=$width%" : "").
+	    ($width ? " width='$width%'" : "").
 	    ($tabletags ? " ".$tabletags : "").
 	    ">\n";
 my $i;
 for($i=0; $i<@$elements; $i++) {
 	$rv .= "<tr class='ui_grid_row'>" if ($i%$cols == 0);
-	$rv .= "<td ".$tds->[$i%$cols]." valign=top class='ui_grid_cell'>".
+	$rv .= "<td ".$tds->[$i%$cols]." valign='top' class='ui_grid_cell'>".
 	       $elements->[$i]."</td>\n";
 	$rv .= "</tr>" if ($i%$cols == $cols-1);
 	}
@@ -2224,7 +2224,7 @@ if ($i%$cols) {
 	}
 $rv .= "</table>\n";
 if (defined($title)) {
-	$rv = "<table class=ui_table border ".
+	$rv = "<table class='ui_table border' ".
 	      ($width ? " width=$width%" : "").">\n".
 	      ($title ? "<tr".($tb ? " ".$tb : "")."><td><b>$title</b></td></tr>\n" : "").
               "<tr".($cb ? " ".$cb : "")."><td>$rv</td></tr>\n".
@@ -2255,13 +2255,13 @@ return "" if (!@$rows);
 my $rv = "<table class='ui_radio_table'>\n";
 foreach my $r (@$rows) {
 	$rv .= "<tr>\n";
-	$rv .= "<td valign=top".(defined($r->[2]) ? "" : " colspan=2").">".
+	$rv .= "<td valign='top'".(defined($r->[2]) ? "" : " colspan='2'").">".
 	       ($nobold ? "" : "<b>").
 	       &ui_oneradio($name, $r->[0], $r->[1], $r->[0] eq $sel, $r->[3]).
 	       ($nobold ? "" : "</b>").
 	       "</td>\n";
 	if (defined($r->[2])) {
-		$rv .= "<td valign=top>".$r->[2]."</td>\n";
+		$rv .= "<td valign='top'>".$r->[2]."</td>\n";
 		}
 	$rv .= "</tr>\n";
 	}
@@ -2296,14 +2296,14 @@ $upicon ||= "$imgdir/moveup.gif";
 $downicon ||= "$imgdir/movedown.gif";
 if ($downshow) {
 	$mover .= "<a class='ui_up_down_arrows_down' href='$downlink'>".
-	  "<img class='ui_up_down_arrows_down' src='$downicon' border=0></a>";
+	  "<img class='ui_up_down_arrows_down' src='$downicon' border='0'></a>";
 	}
 else {
 	$mover .= "<img class='ui_up_down_arrows_gap' src='$imgdir/movegap.gif'>";
 	}
 if ($upshow) {
 	$mover .= "<a class='ui_up_down_arrows_up' href='$uplink'>".
-	  "<img class='ui_up_down_arrows_up' src='$upicon' border=0></a>";
+	  "<img class='ui_up_down_arrows_up' src='$upicon' border='0'></a>";
 	}
 else {
 	$mover .= "<img class='ui_up_down_arrows_gap' src='$imgdir/movegap.gif'>";
@@ -2374,7 +2374,7 @@ foreach my $h (@$hiddens) {
 	}
 $rv .= "<b>$message</b><p>\n";
 if ($warning) {
-	$rv .= "<b><font color=#ff0000>$warning</font></b><p>\n";
+	$rv .= "<b><font color='#ff0000'>$warning</font></b><p>\n";
 	}
 if ($others) {
 	$rv .= $others."<p>\n";
@@ -2489,12 +2489,12 @@ $rv .= &ui_form_start($cgi) if ($cgi);
 if (@_ > 5) {
 	if ($farleft) {
 		$rv .= "<a href='$farleft'>".
-		       "<img src=$gconfig{'webprefix'}/images/first.gif ".
-		       "border=0 align=middle></a>\n";
+		       "<img src='$gconfig{'webprefix'}/images/first.gif' ".
+		       "border='0' align='middle'></a>\n";
 		}
 	else {
-		$rv .= "<img src=$gconfig{'webprefix'}/images/first-grey.gif ".
-		       "border=0 align=middle></a>\n";
+		$rv .= "<img src='$gconfig{'webprefix'}/images/first-grey.gif' ".
+		       "border='0' align='middle'></a>\n";
 		}
 	}
 
@@ -2502,11 +2502,11 @@ if (@_ > 5) {
 if ($left) {
 	$rv .= "<a href='$left'>".
 	       "<img src=$gconfig{'webprefix'}/images/left.gif ".
-	       "border=0 align=middle></a>\n";
+	       "border='0' align='middle'></a>\n";
 	}
 else {
 	$rv .= "<img src=$gconfig{'webprefix'}/images/left-grey.gif ".
-	       "border=0 align=middle></a>\n";
+	       "border='0' align='middle'></a>\n";
 	}
 
 # Message and inputs
@@ -2516,24 +2516,24 @@ $rv .= " ".$inputs if ($inputs);
 # Right link
 if ($right) {
 	$rv .= "<a href='$right'>".
-	       "<img src=$gconfig{'webprefix'}/images/right.gif ".
-	       "border=0 align=middle></a>\n";
+	       "<img src='$gconfig{'webprefix'}/images/right.gif' ".
+	       "border='0' align='middle'></a>\n";
 	}
 else {
-	$rv .= "<img src=$gconfig{'webprefix'}/images/right-grey.gif ".
-	       "border=0 align=middle></a>\n";
+	$rv .= "<img src='$gconfig{'webprefix'}/images/right-grey.gif' ".
+	       "border='0' align='middle'></a>\n";
 	}
 
 # Far right link, if needed
 if (@_ > 5) {
 	if ($farright) {
 		$rv .= "<a href='$farright'>".
-		       "<img src=$gconfig{'webprefix'}/images/last.gif ".
-		       "border=0 align=middle></a>\n";
+		       "<img src='$gconfig{'webprefix'}/images/last.gif' ".
+		       "border='0' align='middle'></a>\n";
 		}
 	else {
-		$rv .= "<img src=$gconfig{'webprefix'}/images/last-grey.gif ".
-		       "border=0 align=middle></a>\n";
+		$rv .= "<img src='$gconfig{'webprefix'}/images/last-grey.gif' ".
+		       "border='0' align='middle'></a>\n";
 		}
 	}
 
