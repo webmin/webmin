@@ -112,6 +112,7 @@ provide_search_query=Provide search query
 dialog_recursive=Recursive
 refresh=Refresh
 http_downloading=Downloading
+http_done=Downloaded $1 to $2.
 uploading=Uploading, please wait...
 acl_allowed_paths=Allow access to directories
 acl_allowed_paths2=(For non-root users)
