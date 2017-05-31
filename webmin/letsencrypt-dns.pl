@@ -17,15 +17,16 @@ $dname || die "Missing CERTBOT_DOMAIN environment variable";
 $val || die "Missing CERTBOT_VALIDATION environment variable";
 
 # Find the DNS domain and records
-my $zone = &bind8::get_zone_name($dname, "any");
+my $zname = $dname;
+my $zone = &bind8::get_zone_name($zname, "any");
 if (!$zone) {
 	# Maybe in the parent?
-	$dname =~ s/^[^\.]+\.//;
-	$zone = &bind8::get_zone_name($dname, "any");
+	$zname =~ s/^[^\.]+\.//;
+	$zone = &bind8::get_zone_name($zname, "any");
 	}
 $zone || die "No zone named $dname found";
 &lock_file(&bind8::make_chroot(&bind8::absolute_path($zone->{'file'})));
-my @recs = &bind8::read_zone_file($zone->{'file'}, $dname);
+my @recs = &bind8::read_zone_file($zone->{'file'}, $zname);
 
 # Remove any existing record
 my ($r) = grep { $_->{'name'} eq "_acme-challenge.".$dname."." } @recs;
