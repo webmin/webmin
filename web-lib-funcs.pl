@@ -876,7 +876,7 @@ my $text = defined($tconfig{'cs_text'}) ? $tconfig{'cs_text'} :
 	      defined($gconfig{'cs_text'}) ? $gconfig{'cs_text'} : "000000";
 my $bgimage = defined($tconfig{'bgimage'}) ? "background=$tconfig{'bgimage'}" : "";
 my $dir = $current_lang_info->{'dir'} ? "dir=\"$current_lang_info->{'dir'}\"" : "";
-my $html_body = "<body bgcolor=#$bgcolor link=#$link vlink=#$link text=#$text $bgimage $tconfig{'inbody'} $dir $_[8]>\n";
+my $html_body = "<body bgcolor=\"#$bgcolor\" link=\"#$link\" vlink=\"#$link\" text=\"#$text\" $bgimage $tconfig{'inbody'} $dir $_[8]>\n";
 $html_body =~ s/\s+\>/>/g;
 print $html_body;
 
@@ -4604,12 +4604,12 @@ foreach my $troot (@theme_root_directories) {
 	&read_file_cached("$troot/config", \%tconfig);
 	push(@theme_configs, \%onetconfig);
 	}
-$tb = defined($tconfig{'cs_header'}) ? "bgcolor=#$tconfig{'cs_header'}" :
-      defined($gconfig{'cs_header'}) ? "bgcolor=#$gconfig{'cs_header'}" :
-				       "bgcolor=#9999ff";
-$cb = defined($tconfig{'cs_table'}) ? "bgcolor=#$tconfig{'cs_table'}" :
-      defined($gconfig{'cs_table'}) ? "bgcolor=#$gconfig{'cs_table'}" :
-				      "bgcolor=#cccccc";
+$tb = defined($tconfig{'cs_header'}) ? "bgcolor=\"#$tconfig{'cs_header'}\"" :
+      defined($gconfig{'cs_header'}) ? "bgcolor=\"#$gconfig{'cs_header'}\"" :
+				       "bgcolor=\"#9999ff\"";
+$cb = defined($tconfig{'cs_table'}) ? "bgcolor=\"#$tconfig{'cs_table'}\"" :
+      defined($gconfig{'cs_table'}) ? "bgcolor=\"#$gconfig{'cs_table'}\"" :
+				      "bgcolor=\"#cccccc\"";
 $tb .= ' '.$tconfig{'tb'} if ($tconfig{'tb'});
 $cb .= ' '.$tconfig{'cb'} if ($tconfig{'cb'});
 if ($tconfig{'preload_functions'}) {
