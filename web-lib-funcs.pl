@@ -426,8 +426,8 @@ if (defined(&theme_generate_icon)) {
 	&theme_generate_icon(@_);
 	return;
 	}
-my $w = !defined($_[4]) ? "width=48" : $_[4] ? "width=$_[4]" : "";
-my $h = !defined($_[5]) ? "height=48" : $_[5] ? "height=$_[5]" : "";
+my $w = !defined($_[4]) ? "width='48'" : $_[4] ? "width='$_[4]'" : "";
+my $h = !defined($_[5]) ? "height='48'" : $_[5] ? "height='$_[5]'" : "";
 if ($tconfig{'noicons'}) {
 	if ($_[2]) {
 		print "$_[6]<a href=\"$_[2]\" $_[3]>$_[1]</a>$_[7]\n";
@@ -437,14 +437,14 @@ if ($tconfig{'noicons'}) {
 		}
 	}
 elsif ($_[2]) {
-	print "<table border><tr><td width=48 height=48>\n",
-	      "<a href=\"$_[2]\" $_[3]><img src=\"$_[0]\" alt=\"\" border=0 ",
+	print "<table border><tr><td width='48' height='48'>\n",
+	      "<a href=\"$_[2]\" $_[3]><img src=\"$_[0]\" alt=\"\" border='0' ",
 	      "$w $h></a></td></tr></table>\n";
 	print "$_[6]<a href=\"$_[2]\" $_[3]>$_[1]</a>$_[7]\n";
 	}
 else {
-	print "<table border><tr><td width=48 height=48>\n",
-	      "<img src=\"$_[0]\" alt=\"\" border=0 $w $h>",
+	print "<table border><tr><td width='48' height='48'>\n",
+	      "<img src=\"$_[0]\" alt=\"\" border='0' $w $h>",
 	      "</td></tr></table>\n$_[6]$_[1]$_[7]\n";
 	}
 }
@@ -846,7 +846,7 @@ if (defined(&theme_header)) {
 	$miniserv::page_capture = 1;
 	return;
 	}
-print "<!doctype html public \"-//W3C//DTD HTML 3.2 Final//EN\">\n";
+print "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n";
 print "<html>\n";
 print "<head>\n";
 if (defined(&theme_prehead)) {
@@ -876,7 +876,7 @@ my $text = defined($tconfig{'cs_text'}) ? $tconfig{'cs_text'} :
 	      defined($gconfig{'cs_text'}) ? $gconfig{'cs_text'} : "000000";
 my $bgimage = defined($tconfig{'bgimage'}) ? "background=$tconfig{'bgimage'}" : "";
 my $dir = $current_lang_info->{'dir'} ? "dir=\"$current_lang_info->{'dir'}\"" : "";
-my $html_body = "<body bgcolor=#$bgcolor link=#$link vlink=#$link text=#$text $bgimage $tconfig{'inbody'} $dir $_[8]>\n";
+my $html_body = "<body bgcolor=\"#$bgcolor\" link=\"#$link\" vlink=\"#$link\" text=\"#$text\" $bgimage $tconfig{'inbody'} $dir $_[8]>\n";
 $html_body =~ s/\s+\>/>/g;
 print $html_body;
 
@@ -904,13 +904,13 @@ if ($tconfig{'prebodyinclude'}) {
 if (@_ > 1) {
 	print $tconfig{'preheader'};
 	my %this_module_info = &get_module_info(&get_module_name());
-	print "<table class='header' width=100%><tr>\n";
+	print "<table class='header' width='100%'><tr>\n";
 	if ($gconfig{'sysinfo'} == 2 && $remote_user) {
-		print "<td id='headln1' colspan=3 align=center>\n";
+		print "<td id='headln1' colspan='3' align='center'>\n";
 		print &get_html_status_line(1);
 		print "</td></tr> <tr>\n";
 		}
-	print "<td id='headln2l' width=15% valign=top align=left>";
+	print "<td id='headln2l' width='15%' valign='top' align='left'>";
 	if ($ENV{'HTTP_WEBMIN_SERVERS'} && !$tconfig{'framed'}) {
 		print "<a href='$ENV{'HTTP_WEBMIN_SERVERS'}'>",
 		      "$text{'header_servers'}</a><br>\n";
@@ -963,20 +963,20 @@ if (@_ > 1) {
 	print "</td>\n";
 	if ($_[1]) {
 		# Title is a single image
-		print "<td id='headln2c' align=center width=70%>",
+		print "<td id='headln2c' align='center' width='70%'>",
 		      "<img alt=\"$_[0]\" src=\"$_[1]\"></td>\n";
 		}
 	else {
 		# Title is just text
 		my $ts = defined($tconfig{'titlesize'}) ?
 				$tconfig{'titlesize'} : "+2";
-		print "<td id='headln2c' align=center width=70%>",
-		      ($ts ? "<font size=$ts>" : ""),$_[0],
+		print "<td id='headln2c' align='center' width='70%'>",
+		      ($ts ? "<font size='$ts'>" : ""),$_[0],
 		      ($ts ? "</font>" : "");
 		print "<br>$_[9]\n" if ($_[9]);
 		print "</td>\n";
 		}
-	print "<td id='headln2r' width=15% valign=top align=right>";
+	print "<td id='headln2r' width='15%' valign='top' align='right'>";
 	print $_[6];
 	print "</td></tr></table>\n";
 	print $tconfig{'postheader'};
@@ -1121,7 +1121,7 @@ if (defined(&theme_popup_header)) {
 	$miniserv::page_capture = 1;
 	return;
 	}
-print "<!doctype html public \"-//W3C//DTD HTML 3.2 Final//EN\">\n";
+print "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n";
 print "<html>\n";
 print "<head>\n";
 if (defined(&theme_popup_prehead)) {
@@ -1141,11 +1141,11 @@ my $link = defined($tconfig{'cs_link'}) ? $tconfig{'cs_link'} :
 	      defined($gconfig{'cs_link'}) ? $gconfig{'cs_link'} : "0000ee";
 my $text = defined($tconfig{'cs_text'}) ? $tconfig{'cs_text'} : 
 	      defined($gconfig{'cs_text'}) ? $gconfig{'cs_text'} : "000000";
-my $bgimage = defined($tconfig{'bgimage'}) ? "background=$tconfig{'bgimage'}"
+my $bgimage = defined($tconfig{'bgimage'}) ? "background='$tconfig{'bgimage'}'"
 					      : "";
 if (!$_[3]) {
-	print "<body id='popup' bgcolor=#$bgcolor link=#$link vlink=#$link ",
-	      "text=#$text $bgimage $tconfig{'inbody'} $_[2]>\n";
+	print "<body id='popup' bgcolor='#$bgcolor' link='#$link' vlink='#$link' ",
+	      "text='#$text' $bgimage $tconfig{'inbody'} $_[2]>\n";
 	if (defined(&theme_popup_prebody)) {
 		&theme_popup_prebody(@_);
 		}
@@ -1188,7 +1188,7 @@ for(my $i=0; $i+1<@_; $i+=2) {
 			}
 		$url = "$gconfig{'webprefix'}$url" if ($url =~ /^\//);
 		if ($i == 0) {
-			print "<a href=\"$url\"><img alt=\"<-\" align=middle border=0 src=$gconfig{'webprefix'}/images/left.gif></a>\n";
+			print "<a href=\"$url\"><img alt=\"<-\" align='middle' border='0' src='$gconfig{'webprefix'}/images/left.gif'></a>\n";
 			}
 		else {
 			print "&nbsp;|\n";
@@ -3095,17 +3095,17 @@ if (defined(&theme_icons_table)) {
 my $need_tr;
 my $cols = $_[3] ? $_[3] : 4;
 my $per = int(100.0 / $cols);
-print "<table class='icons_table' width=100% cellpadding=5>\n";
+print "<table class='icons_table' width='100%' cellpadding='5'>\n";
 for(my $i=0; $i<@{$_[0]}; $i++) {
 	if ($i%$cols == 0) { print "<tr>\n"; }
-	print "<td width=$per% align=center valign=top>\n";
+	print "<td width='$per%' align='center' valign='top'>\n";
 	&generate_icon($_[2]->[$i], $_[1]->[$i], $_[0]->[$i],
 		       ref($_[4]) ? $_[4]->[$i] : $_[4], $_[5], $_[6],
 		       $_[7]->[$i], $_[8]->[$i]);
 	print "</td>\n";
         if ($i%$cols == $cols-1) { print "</tr>\n"; }
         }
-while($i++%$cols) { print "<td width=$per%></td>\n"; $need_tr++; }
+while($i++%$cols) { print "<td width='$per%'></td>\n"; $need_tr++; }
 print "</tr>\n" if ($need_tr);
 print "</table>\n";
 }
@@ -3272,7 +3272,7 @@ sub unix_group_input
 if (defined(&theme_unix_group_input)) {
 	return &theme_unix_group_input(@_);
 	}
-return "<input name=$_[0] size=13 value=\"$_[1]\"> ".
+return "<input name='$_[0]' size=13 value=\"$_[1]\"> ".
        &group_chooser_button($_[0], 0, $_[2] || 0)."\n";
 }
 
@@ -4604,12 +4604,12 @@ foreach my $troot (@theme_root_directories) {
 	&read_file_cached("$troot/config", \%tconfig);
 	push(@theme_configs, \%onetconfig);
 	}
-$tb = defined($tconfig{'cs_header'}) ? "bgcolor=#$tconfig{'cs_header'}" :
-      defined($gconfig{'cs_header'}) ? "bgcolor=#$gconfig{'cs_header'}" :
-				       "bgcolor=#9999ff";
-$cb = defined($tconfig{'cs_table'}) ? "bgcolor=#$tconfig{'cs_table'}" :
-      defined($gconfig{'cs_table'}) ? "bgcolor=#$gconfig{'cs_table'}" :
-				      "bgcolor=#cccccc";
+$tb = defined($tconfig{'cs_header'}) ? "bgcolor=\"#$tconfig{'cs_header'}\"" :
+      defined($gconfig{'cs_header'}) ? "bgcolor=\"#$gconfig{'cs_header'}\"" :
+				       "bgcolor=\"#9999ff\"";
+$cb = defined($tconfig{'cs_table'}) ? "bgcolor=\"#$tconfig{'cs_table'}\"" :
+      defined($gconfig{'cs_table'}) ? "bgcolor=\"#$gconfig{'cs_table'}\"" :
+				      "bgcolor=\"#cccccc\"";
 $tb .= ' '.$tconfig{'tb'} if ($tconfig{'tb'});
 $cb .= ' '.$tconfig{'cb'} if ($tconfig{'cb'});
 if ($tconfig{'preload_functions'}) {
@@ -7258,8 +7258,8 @@ sub help_search_link
 if (&foreign_available("man") && !$tconfig{'nosearch'}) {
 	my $for = &urlize(shift(@_));
 	return "<a href='$gconfig{'webprefix'}/man/search.cgi?".
-	       join("&", map { "section=$_" } @_)."&".
-	       "for=$for&exact=1&check=".&get_module_name()."'>".
+	       join("&amp;", map { "section=$_" } @_)."&amp;".
+	       "for=$for&amp;exact=1&amp;check=".&get_module_name()."'>".
 	       $text{'helpsearch'}."</a>\n";
 	}
 else {

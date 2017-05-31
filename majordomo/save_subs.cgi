@@ -6,21 +6,23 @@ require './majordomo-lib.pl';
 &ReadParse();
 %access = &get_module_acl();
 &can_edit_list(\%access, $in{'name'}) || &error($text{'edit_ecannot'});
-$list = &get_list($in{'name'}, &get_config());
+$conf = &get_config();
+$ldir = &perl_var_replace(&find_value("listdir", $conf), $conf);
+$list = &get_list($in{'name'},$conf);
 &lock_file($list->{'config'});
-$conf = &get_list_config($list->{'config'});
-&save_list_directive($conf, $list->{'config'}, "subscribe_policy",
+$lconf = &get_list_config($list->{'config'});
+&save_list_directive($lconf, $list->{'config'}, "subscribe_policy",
 		     $in{'subscribe_policy'}.$in{'subscribe_policy_c'});
-&save_list_directive($conf, $list->{'config'}, "unsubscribe_policy",
+&save_list_directive($lconf, $list->{'config'}, "unsubscribe_policy",
 		     $in{'unsubscribe_policy'});
-&save_choice($conf, $list->{'config'}, "welcome");
-&save_choice($conf, $list->{'config'}, "strip");
-&save_choice($conf, $list->{'config'}, "announcements");
-&save_choice($conf, $list->{'config'}, "administrivia");
-&save_opt($conf, $list->{'config'}, "admin_passwd", \&check_pass);
-&save_choice($conf, $list->{'config'}, "moderate");
-&save_opt($conf, $list->{'config'}, "moderator", \&check_email);
-&save_opt($conf, $list->{'config'}, "approve_passwd", \&check_pass);
+&save_choice($lconf, $list->{'config'}, "welcome");
+&save_choice($lconf, $list->{'config'}, "strip");
+&save_choice($lconf, $list->{'config'}, "announcements");
+&save_choice($lconf, $list->{'config'}, "administrivia");
+&save_opt($lconf, $list->{'config'}, "admin_passwd", \&check_pass);
+&save_choice($lconf, $list->{'config'}, "moderate");
+&save_opt($lconf, $list->{'config'}, "moderator", \&check_email);
+&save_opt($lconf, $list->{'config'}, "approve_passwd", \&check_pass);
 
 $in{'owner'} =~ /^\S+$/ || &error($text{'subs_eowner'});
 $in{'approval'} =~ /^\S+$/ || &error($text{'subs_eapproval'});
@@ -32,13 +34,15 @@ foreach $a (@aliases) {
 	$ownerlist = $a if (lc($a->{'name'}) eq lc("owner-$in{'name'}"));
 	$approval = $a if (lc($a->{'name'}) eq lc("$in{'name'}-approval"));
 	}
+
+local $aliasowner=&set_alias_owner($in{'owner'}, $ldir);
 &foreign_call($aliases_module, 'modify_alias', $listowner,
 	      { 'name' => "$in{'name'}-owner",
-		'values' => [ $in{'owner'} ],
+		'values' => [ $aliasowner ],
 		'enabled' => 1 }) if ($listowner);
 &foreign_call($aliases_module, 'modify_alias', $ownerlist,
 	      { 'name' => "owner-$in{'name'}",
-		'values' => [ $in{'owner'} ],
+		'values' => [ $aliasowner ],
 		'enabled' => 1 }) if ($ownerlist);
 &foreign_call($aliases_module, 'modify_alias', $approval,
 	      { 'name' => "$in{'name'}-approval",

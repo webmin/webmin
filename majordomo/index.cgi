@@ -165,9 +165,6 @@ print 	"<script>",
        		" 'btn btn-transparent btn-xs vertical-align-top margined-top-2', 'fa-edit');",
 	"document.querySelectorAll('tbody td .btn.btn-transparent').forEach(function(button) {",
 		" button.innerHTML=button.innerHTML.replace(/<\\/i>.*edit/,'');});",
-	"document.querySelectorAll('.btn.btn-default').forEach(function(button) {",
-                " button.className += \" btn-success\";",
-                " button.innerHTML=button.innerHTML.replace(/^/,'<i class=\"fa fa-fw fa-plus-circle\"></i>&nbsp;');});",
 	"</script>",
 	"<style>.btn.btn-transparent { padding: 0 !important; color: grey;}</style>";
 
