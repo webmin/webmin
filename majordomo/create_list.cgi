@@ -44,18 +44,6 @@ $in{'footer'} =~ s/\r//g;
 &set_permissions("$ldir/$in{'name'}");
 &unlock_file("$ldir/$in{'name'}");
 
-
-
-# Have majordomo create the new config file, by fooling the wrapper
-# into thinking it has received an email with a resend command
-#$lfile = "$ldir/$in{'name'}.config";
-#$cmd = "$wrapper_program_path resend -l $in{'name'} nobody";
-#open(WRAPPER, "|$cmd nobody >/dev/null 2>&1");
-#print WRAPPER "config $in{'name'} $in{'password'}\n\n";
-#close(WRAPPER);
-#&additional_log("exec", $cmd);
-#sleep(3);
-
 # use provided template, majordomo provides onyl minimal needed config
 $lfile = "$ldir/$in{'name'}.config";
 # copy listdir template to list.info, fallback copy from template.dist
@@ -116,14 +104,21 @@ else {
 				    "-l $in{'name'} $lname");
 	}
 &newlist_alias($lname, ":include:$ldir/$in{'name'}");
-&newlist_alias("owner-".$in{'name'}, $in{'owner'});
-&newlist_alias($in{'name'}."-owner", $in{'owner'});
-&newlist_alias($in{'name'}."-approval", $in{'owner'});
+
+local $aliasowner=&set_alias_owner($in{'owner'});
+&newlist_alias("owner-".$in{'name'}, $aliasowner);
+&newlist_alias($in{'name'}."-owner", $aliasowner);
+&newlist_alias($in{'name'}."-approval", $in{'name'}."-owner");
 &newlist_alias($in{'name'}."-request", "|$wrapper_path ".
 				       "majordomo -l $in{'name'}", 1);
 &foreign_call($aliases_module, "unlock_alias_files", $aliases_files);
 
 # Update the new config file
+local $sprefix=$in{'subject_prefix'};
+$sprefix = "[".ucfirst($sprefix)."]" if ($sprefix ne "" && $sprefix !~ /^\[/ );
+&save_list_directive($list, $lfile, "subject_prefix", $sprefix);
+
+&save_list_directive($list, $lfile, "reply_to", $in{'reply_to'});
 &save_list_directive($list, $lfile, "description", $in{'desc'});
 &save_list_directive($list, $lfile, "admin_passwd", $in{'password'});
 &save_list_directive($list, $lfile, "approve_passwd", $in{'password'});
