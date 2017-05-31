@@ -21,7 +21,8 @@ if ( $in{'encoding'} && lc( $in{'encoding'} ) ne "utf-8" ) {
 &close_tempfile(SAVE);
 
 if ($in{'save_close'}) {
-    &redirect("index.cgi?path=$path");
+    &redirect("index.cgi?path=".&urlize($path));
 } else {
-    &redirect("edit_file.cgi?path=$path&file=$in{'file'}");
+    &redirect("edit_file.cgi?path=".&urlize($path).
+	      "&file=".&urlize($in{'file'}));
 }

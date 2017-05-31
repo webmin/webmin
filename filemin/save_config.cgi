@@ -23,4 +23,4 @@ open(BOOK, ">", "$confdir/.bookmarks") or $info = $!;
 print BOOK $bookmarks;
 close BOOK;
 
-&redirect("index.cgi?path=$path");
+&redirect("index.cgi?path=".&urlize($path));

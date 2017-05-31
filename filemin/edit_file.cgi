@@ -55,4 +55,4 @@ print "<script type='text/javascript'>\$(document).ready( function() { change('"
   . $in{'file'}
   . "'); });</script>";
 
-&ui_print_footer( "index.cgi?path=$path", $text{'previous_page'} );
+&ui_print_footer( "index.cgi?path=".&urlize($path), $text{'previous_page'} );

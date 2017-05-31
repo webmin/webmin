@@ -7,7 +7,7 @@ require './filemin-lib.pl';
 get_paths();
 
 if(!$in{'owner'} or !$in{'group'}) {
-    &redirect("index.cgi?path=$path");
+    &redirect("index.cgi?path=".&urlize($path));
 }
 
 (my $login, my $pass, my $uid, my $gid) = getpwnam($in{'owner'});
@@ -37,6 +37,6 @@ if (scalar(@errors) > 0) {
     if (scalar(@errors) > 0) {
         print_errors(@errors);
     } else {
-        &redirect("index.cgi?path=$path");
+        &redirect("index.cgi?path=".&urlize($path));
     }
 }

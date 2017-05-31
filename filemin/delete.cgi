@@ -16,5 +16,5 @@ foreach $name (split(/\0/, $in{'name'})) {
 if (scalar(@errors) > 0) {
     print_errors(@errors);
 } else {
-    &redirect("index.cgi?path=$path");
+    &redirect("index.cgi?path=".&urlize($path));
 }

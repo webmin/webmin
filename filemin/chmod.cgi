@@ -74,5 +74,5 @@ if($in{'applyto'} eq '5') {
 if (scalar(@errors) > 0) {
     print_errors(@errors);
 } else {
-    &redirect("index.cgi?path=$path");
+    &redirect("index.cgi?path=".&urlize($path));
 }

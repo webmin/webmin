@@ -16,4 +16,4 @@ foreach $name (split(/\0/, $in{'name'})) {
 
 close($fh);
 
-&redirect("index.cgi?path=$path");
+&redirect("index.cgi?path=".&urlize($path));

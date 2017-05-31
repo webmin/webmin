@@ -46,4 +46,4 @@ print &ui_hidden('path', $path);
 
 print &ui_form_end([ [ save, $text{'save'} ] ]);
 
-&ui_print_footer("index.cgi?path=$path", $text{'previous_page'});
+&ui_print_footer("index.cgi?path=".&urlize($path), $text{'previous_page'});

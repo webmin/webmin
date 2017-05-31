@@ -5,7 +5,7 @@ require './filemin-lib.pl';
 get_paths();
 
 if(!$in{'arch'}) {
-    &redirect("index.cgi?path=$path");
+    &redirect("index.cgi?path=".&urlize($path));
 }
 
 my $command;
@@ -26,4 +26,4 @@ foreach my $name(split(/\0/, $in{'name'}))
 
 system_logged($command);
 
-&redirect("index.cgi?path=$path");
+&redirect("index.cgi?path=".&urlize($path));

@@ -15,4 +15,4 @@ $bookmarks = &read_file_lines($confdir.'/.bookmarks');
 push @$bookmarks, $path;
 &flush_file_lines("$confdir/.bookmarks");
 
-&redirect("index.cgi?path=$path");
+&redirect("index.cgi?path=".&urlize($path));
