@@ -42,22 +42,22 @@ local $vcss='style="width: 40%; border: 1px solid lightgrey; padding: 0.3em !imp
 local $xcss='style="width: 25%; border: 1px solid lightgrey; padding: 0.3em !important;"';
 
 # list options
-print "<table border width=100%>\n";
+print "<table border width=\"100%\">\n";
 print "<tr $tb> <td><b>$text{'mesg_header'}</b></td>";
-print "<td width=10% nowrap><form action=\"edit_mesg.cgi".$name_link."\" method=\"post\">",
+print "<td width=\"10%\" nowrap><form action=\"edit_mesg.cgi".$name_link."\" method=\"post\">",
         &ui_submit($text{'modify'}),"</form>\n</tr>\n";
-print "<tr $cb> <td colspan=2><table $tcss>\n";
+print "<tr $cb> <td colspan=\"2\"><table $tcss>\n";
 
 print "<tr><td $dcss><b>".$text{'mesg_reply'}."</b></td><td $vcss>",&find_value("reply_to", $conf)."</td></tr>\n";
 print "<tr><td $dcss><b>".$text{'mesg_subject'}."</b></td><td $vcss>".&find_value("subject_prefix", $conf)."</td></tr>\n";
 print "</table></td></tr></table>\n";
 
 # title, descritpion, info
-print "<table border width=100%>\n";
+print "<table border width=\"100%\">\n";
 print "<tr $tb> <td><b>".$text{'info_title'}."</b></td>";
-print "<td width=10% nowrap><form action=\"edit_info.cgi".$name_link."\" method=\"post\">",
+print "<td width=\"10%\" nowrap><form action=\"edit_info.cgi".$name_link."\" method=\"post\">",
 	&ui_submit($text{'modify'}),"</form>\n</tr>\n";
-print "<tr $cb> <td colspan=2><table $tcss>\n";
+print "<tr $cb> <td colspan=\"2\"><table $tcss>\n";
 print "<tr> <td $dcss><b>".$text{'info_desc'}."</b></td>\n";
 $desc = &find_value("description", $conf);
 print "<td $vcss>$desc</td> </tr>\n";
@@ -79,11 +79,11 @@ print "</td> </tr>\n";
 print "</table></td></tr></table>\n";
 
 # header and footer
-print "<table border width=100%>\n";
+print "<table border width=\"100%\">\n";
 print "<tr $tb> <td><b>".$text{'head_title'}."</b></td>";
-print "<td width=10% nowrap><form action=\"edit_head.cgi".$name_link."\" method=\"post\">",
+print "<td width=\"10%\" nowrap><form action=\"edit_head.cgi".$name_link."\" method=\"post\">",
 	&ui_submit($text{'modify'}),"</form>\n</tr>\n";
-print "<tr $cb> <td colspan=2><table $tcss>\n";
+print "<tr $cb> <td colspan=\"2\"><table $tcss>\n";
 print "<tr> <td $dcss><b>".$text{'head_fronter'}."</b></td> <td $vcss>\n";
 print  &find_value("message_fronter", $conf);
 print "</td></tr>\n";
@@ -96,21 +96,21 @@ print "</td></tr>\n";
 print "</table></td></tr></table>\n";
 
 # owner and moderation
-print "<table border width=100%>\n";
+print "<table border width=\"100%\">\n";
 print "<tr $tb> <td><b>$text{'subs_title'}</b></td>";
-print "<td width=10% nowrap><form action=\"edit_subs.cgi".$name_link."\" method=\"post\">",
+print "<td width=\"10%\" nowrap><form action=\"edit_subs.cgi".$name_link."\" method=\"post\">",
         &ui_submit($text{'modify'}),"</form>\n</tr>\n";
-print "<tr $cb> <td colspan=2><table $tcss>\n";
+print "<tr $cb> <td colspan=\"2\"><table $tcss>\n";
 
 $pol = &find_value("subscribe_policy", $conf);
 if ($pol =~ /(\S+)\+confirm/) { $pol = $1; $confirm = 1; }
 print "<tr> <td $dcss><b>$text{'subs_sub'}:</b></td> <td $xcss nowrap>\n";
-printf $text{'subs_s'.$pol};
+print $pol eq "closed" ? $text{'subs_closed'} : $text{'subs_s'.$pol};
 print "</td>\n";
 
-$upol = &find_value("unsubscribe_policy", $conf);
+$pol = &find_value("unsubscribe_policy", $conf);
 print "<td $dcss><b>$text{'subs_unsub'}:</b></td> <td $xcss nowrap>\n";
-printf $text{'subs_u'.$upol};
+print $pol eq "closed" ? $text{'subs_closed'} : $text{'subs_u'.$pol};
 print "</td> </tr>\n";
 
 $aliases_files = &get_aliases_file();
@@ -130,11 +130,11 @@ print "<td $xcss >".$approval."</td> </tr>\n";
 print "</table></td></tr></table>\n";
 
 # members
-print "<table border width=100%>\n";
+print "<table border width=\"100%\">\n";
 print "<tr $tb> <td><b>".$text{'members_title'}."</b></td>";
-print "<td width=10% nowrap><form action=\"edit_members.cgi".$name_link."\" method=\"post\">",
+print "<td width=\"10%\" nowrap><form action=\"edit_members.cgi".$name_link."\" method=\"post\">",
 	&ui_submit($text{'modify'}),"</form>\n</tr>\n";
-print "<tr $cb> <td colspan=2>\n";
+print "<tr $cb> <td colspan=\"2\">\n";
 local @cols, @tds, $count=0;
 print &ui_columns_start(\@cols, $tcss, 0, \@tds);
   open(MEMS, $list->{'members'});
