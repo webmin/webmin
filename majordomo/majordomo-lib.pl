@@ -321,7 +321,7 @@ local $v = &find_value($_[0], $_[2]);
 local $rv = "<td><b>$_[1]</b></td> <td nowrap>";
 for($i=3; $i<@_; $i+=2) {
 	local $ch = $v eq $_[$i] ? "checked" : "";
-	$rv .= "<input name=$_[0] type=radio value='$_[$i]' $ch> ".$_[$i+1];
+	$rv .= "<input name=\"$_[0]\" type=\"radio\" value=\"$_[$i]\" $ch> ".$_[$i+1];
 	}
 $rv .= "</td>\n";
 return $rv;
@@ -338,13 +338,13 @@ sub opt_input
 {
 local $v = &find_value($_[0], $_[2]);
 local $rv = "<td><b>$_[1]</b></td> <td nowrap ".
-	    ($_[4] > 30 ? "colspan=3" : "").">";
-$rv .= sprintf "<input type=radio name=$_[0]_def value=1 %s> $_[3]\n",
+	    ($_[4] > 30 ? "colspan=\"3\"" : "").">";
+$rv .= sprintf "<input type=\"radio\" name=\"$_[0]_def\" value=\"1\" %s> $_[3]\n",
 		$v eq "" ? "checked" : "";
-$rv .= sprintf "<input type=radio name=$_[0]_def value=0 %s>\n",
+$rv .= sprintf "<input type=\"radio\" name=\"$_[0]_def\" value=\"0\" %s>\n",
 		$v eq "" ? "" : "checked";
-local $passwd = $_[0] =~ /passwd/ ? "type=password" : "";
-$rv .= "<input $passwd name=$_[0] size=$_[4] value=\"$v\"> $_[5]</td>\n";
+local $passwd = $_[0] =~ /passwd/ ? "type=\"password\"" : "";
+$rv .= "<input $passwd name=\"$_[0]\" size=\"$_[4]\" value=\"$v\"> $_[5]</td>\n";
 return $rv;
 }
 
@@ -379,8 +379,8 @@ sub save_select
 sub multi_input
 {
 local $v = &find_value($_[0], $_[2]);
-local $rv = "<td valign=top><b>$_[1]</b></td> <td colspan=3>".
-	    "<textarea rows=4 cols=80 name=$_[0]>\n$v</textarea></td>\n";
+local $rv = "<td valign=\"top\"><b>$_[1]</b></td> <td colspan=\"3\">".
+	    "<textarea rows=\"4\" cols=\"80\" name=\"$_[0]\">\n$v</textarea></td>\n";
 return $rv;
 }
 
