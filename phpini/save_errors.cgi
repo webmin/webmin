@@ -53,7 +53,7 @@ elsif ($in{"error_log_def"} == 2) {
 
 &flush_file_lines_as_user($in{'file'});
 &unlock_file($in{'file'});
-&graceful_apache_restart();
+&graceful_apache_restart($in{'file'});
 &webmin_log("errors", undef, $in{'file'});
 
 &redirect("list_ini.cgi?file=".&urlize($in{'file'}));

@@ -14,7 +14,7 @@ $in{'data'} =~ /\S/ || &error($text{'manual_edata'});
 # Save the file
 &write_file_contents_as_user($in{'file'}, $in{'data'});
 
-&graceful_apache_restart();
+&graceful_apache_restart($in{'file'});
 &webmin_log("manual", $in{'file'});
 if ($in{'oneini'}) {
 	&redirect("list_ini.cgi?file=".&urlize($in{'file'}));

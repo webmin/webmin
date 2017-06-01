@@ -256,10 +256,11 @@ return &ui_radio($name, lc($v) eq "on" || lc($v) eq "true" ||
 		   [ "Off", $text{'no'} ] ]);
 }
 
-# graceful_apache_restart()
+# graceful_apache_restart([file])
 # Signal a graceful Apache restart, to pick up new php.ini settings
 sub graceful_apache_restart
 {
+local ($file) = @_;
 if (&foreign_installed("apache")) {
 	&foreign_require("apache", "apache-lib.pl");
 	if (&apache::is_apache_running() &&
@@ -268,6 +269,17 @@ if (&foreign_installed("apache")) {
 		&clean_environment();
 		&system_logged("$apache::config{'apachectl_path'} graceful >/dev/null 2>&1");
 		&reset_environment();
+		}
+	}
+if ($file && &get_config_fmt($file) eq "fpm" &&
+    &foreign_check("virtual-server")) {
+	# Looks like FPM format ... maybe a pool restart is needed
+	&foreign_require("virtual-server");
+	if (defined(&virtual_server::restart_php_fpm_server)) {
+		&virtual_server::push_all_print();
+		&virtual_server::set_all_null_print();
+		&virtual_server::restart_php_fpm_server();
+		&virtual_server::pop_all_print();
 		}
 	}
 }
