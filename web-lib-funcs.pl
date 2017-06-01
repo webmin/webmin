@@ -195,13 +195,16 @@ Useful for outputing HTML tag values.
 sub quote_escape
 {
 my ($tmp, $only) = @_;
+if (!defined $tmp) {
+    return ''; # empty string
+};
 if ($tmp !~ /\&[a-zA-Z]+;/ && $tmp !~ /\&#/) {
 	# convert &, unless it is part of &#nnn; or &foo;
 	$tmp =~ s/&([^#])/&amp;$1/g;
 	}
 $tmp =~ s/&$/&amp;/g;
-$tmp =~ s/\"/&quot;/g if ($only eq '' || $only eq '"');
-$tmp =~ s/\'/&#39;/g if ($only eq '' || $only eq "'");
+$tmp =~ s/\"/&quot;/g if (!$only || $only eq '"');
+$tmp =~ s/\'/&#39;/g if (!$only || $only eq "'");
 return $tmp;
 }
 
