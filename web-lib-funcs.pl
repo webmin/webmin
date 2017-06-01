@@ -174,6 +174,9 @@ This should be used when including data read from other sources in HTML pages.
 sub html_escape
 {
 my ($tmp) = @_;
+if (!defined $tmp) {
+    return ''; # empty string
+};
 $tmp =~ s/&/&amp;/g;
 $tmp =~ s/</&lt;/g;
 $tmp =~ s/>/&gt;/g;
