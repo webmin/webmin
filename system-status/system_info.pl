@@ -205,7 +205,8 @@ if ($info->{'disk_total'} && &show_section('disk')) {
 # Warnings about filesytems running now on space
 if ($info->{'disk_fs'} && &show_section('disk')) {
 	foreach my $fs (@{$info->{'disk_fs'}}) {
-		if ($fs->{'total'} && $fs->{'free'} == 0) {
+		next if (!$fs->{'total'});
+		if ($fs->{'free'} == 0) {
 			my $msg = &text('right_fsfull',
 					"<tt>$fs->{'dir'}</tt>",
 					&nice_size($fs->{'total'}));
