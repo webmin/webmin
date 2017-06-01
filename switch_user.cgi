@@ -10,7 +10,7 @@ use WebminCore;
 $id = $$.time();
 open(LOGOUT, ">$miniserv{'logout'}$id");
 printf LOGOUT "%d\n",
-	$ENV{'HTTP_USER_AGENT'} =~ /(MSIE\s+[6321]\.)|(Netscape\/[4321])|(Lynx)/ ? 1 : 2;
+	$ENV{'HTTP_USER_AGENT'} =~ /(MSIE\s+[6321]\.)|(Netscape\/[4321])|(Lynx)|(Mozilla\/5.0)/ ? 1 : 2;
 close(LOGOUT);
 &redirect("/?miniserv_logout_id=$id");
 
