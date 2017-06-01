@@ -150,10 +150,10 @@ foreach my $ifc (@rv) {
 	    $ifc->{'virtual'} eq '' && $ethtool) {
 		my $out = &backquote_command(
 			"$ethtool $ifc->{'fullname'} 2>/dev/null");
-		if ($out =~ /Speed:\s+(\S+)/i) {
+		if ($out =~ /Speed:\s+(\S+)/i && $1 ne "Unknown!") {
 			$ifc->{'speed'} = $1;
 			}
-		if ($out =~ /Duplex:\s+(\S+)/i) {
+		if ($out =~ /Duplex:\s+(\S+)/i && $1 ne "Unknown!") {
 			$ifc->{'duplex'} = $1;
 			}
 		if ($out =~ /Link\s+detected:\s+(\S+)/i) {
