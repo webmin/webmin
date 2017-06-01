@@ -21,6 +21,8 @@ manual_edata=No new contents entered
 list_title=Manage PHP Configuration
 list_ecannot=You are not allowed to manage this PHP configuration file
 list_return=PHP configuration
+list_format_ini=INI format
+list_format_fpm=FPM format
 
 vars_title=PHP Variables
 vars_header=PHP variable creation and quoting options

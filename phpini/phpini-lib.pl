@@ -5,42 +5,73 @@ use WebminCore;
 &init_config();
 %access = &get_module_acl();
 
+# get_config_fmt(file)
+# Returns a format code for php.ini or FPM config files
+sub get_config_fmt
+{
+local ($file) = @_;
+return $file =~ /\.conf$/ ? "fpm" : "ini";
+}
+
 # get_config([file])
 # Returns an array ref of PHP configuration directives from some file 
 sub get_config
 {
 local ($file) = @_;
 $file ||= &get_default_php_ini();
+local $fmt = &get_config_fmt($file);
 if (!defined($get_config_cache{$file})) {
 	local @rv = ( );
 	local $lnum = 0;
 	local $section;
 	open(CONFIG, $file) || return undef;
-	while(<CONFIG>) {
-		s/\r|\n//g;
-		s/\s+$//;
-		local $uq;
-		if (/^(;?)\s*(\S+)\s*=\s*"(.*)"/ ||
-		    /^(;?)\s*(\S+)\s*=\s*'(.*)'/ ||
-		    ($uq = ($_ =~ /^(;?)\s*(\S+)\s*=\s*(.*)/))) {
-			# Found a variable
-			push(@rv, { 'name' => $2,
-				    'value' => $3,
-				    'enabled' => !$1,
-				    'line' => $lnum,
-				    'file' => $file,
-				    'section' => $section,
-				  });
-			if ($uq) {
-				# Remove any comments
-				$rv[$#rv]->{'value'} =~ s/\s+;.*$//;
+	if ($fmt eq "ini") {
+		# Classic php.ini format
+		while(<CONFIG>) {
+			s/\r|\n//g;
+			s/\s+$//;
+			local $uq;
+			if (/^(;?)\s*(\S+)\s*=\s*"(.*)"/ ||
+			    /^(;?)\s*(\S+)\s*=\s*'(.*)'/ ||
+			    ($uq = ($_ =~ /^(;?)\s*(\S+)\s*=\s*(.*)/))) {
+				# Found a variable (php.ini format)
+				push(@rv, { 'name' => $2,
+					    'value' => $3,
+					    'enabled' => !$1,
+					    'line' => $lnum,
+					    'file' => $file,
+					    'section' => $section,
+					    'fmt' => $fmt,
+					  });
+				if ($uq) {
+					# Remove any comments
+					$rv[$#rv]->{'value'} =~ s/\s+;.*$//;
+					}
 				}
+			elsif (/^\[(.*)\]/) {
+				# A new section
+				$section = $1;
+				}
+			$lnum++;
 			}
-		elsif (/^\[(.*)\]/) {
-			# A new section
-			$section = $1;
+		}
+	else {
+		# FPM config file format, with php options
+		while(<CONFIG>) {
+			s/\r|\n//g;
+			s/\s+$//;
+			if (/^(;?)php_admin_value\[(\S+)\]\s*=\s*(.*)/) {
+				# Found an FPM config that sets a PHP variable
+				push(@rv, { 'name' => $2,
+					    'value' => $3,
+					    'enabled' => !$1,
+					    'line' => $lnum,
+					    'file' => $file,
+					    'fmt' => $fmt,
+					  });
+				}
+			$lnum++;
 			}
-		$lnum++;
 		}
 	close(CONFIG);
 	$get_config_cache{$file} = \@rv;
@@ -49,6 +80,7 @@ return $get_config_cache{$file};
 }
 
 # find(name, &config, [disabled-mode])
+# Look up a directive by name
 sub find
 {
 local ($name, $conf, $mode) = @_;
@@ -73,10 +105,16 @@ local ($conf, $name, $value, $newsection, $noquote) = @_;
 $newsection ||= "PHP";
 local $old = &find($name, $conf, 0);
 local $cmt = &find($name, $conf, 1);
+local $fmt = $old ? $old->{'fmt'} : @$conf ? $conf->[0]->{'fmt'} : "fpm";
 local $lref;
-local $newline = $name." = ".
-		 ($value !~ /\s/ || $noquote ? $value :
-		  $value =~ /"/ ? "'$value'" : "\"$value\"");
+if ($fmt eq "ini") {
+	$newline = $name." = ".
+		   ($value !~ /\s/ || $noquote ? $value :
+		    $value =~ /"/ ? "'$value'" : "\"$value\"");
+	}
+else {
+	$newline = "php_admin_value[".$name."] = ".$value;
+	}
 if (defined($value) && $old) {
 	# Update existing value
 	$lref = &read_file_lines($old->{'file'});
@@ -92,28 +130,39 @@ elsif (defined($value) && !$old && $cmt) {
 	}
 elsif (defined($value) && !$old && !$cmt) {
 	# Add a new value, at the end of the section
-	local $last;
-	foreach my $c (@$conf) {
-		if ($c->{'section'} eq $newsection) {
-			$last = $c;
+	my ($lastline, $lastfile);
+	if ($fmt eq "ini") {
+		# Find last directive in requested php.ini section
+		my $last;
+		foreach my $c (@$conf) {
+			if ($c->{'section'} eq $newsection) {
+				$last = $c;
+				}
 			}
-		}
-	if ($last) {
-		# Found last value in the section - add after it
-		$lref = &read_file_lines($last->{'file'});
-		splice(@$lref, $last->{'line'}+1, 0, $newline);
-		&renumber($conf, $last->{'line'}, 1);
-		push(@$conf, { 'name' => $name,
-			       'value' => $value,
-			       'enabled' => 1,
-			       'file' => $last->{'file'},
-			       'line' => $last->{'line'}+1,
-			       'section' => $newsection,
-			     });
+		$last || &error("Could not find any values in ".
+				"section $newsection");
+		$lastfile = $last->{'file'};
+		$lastline = $last->{'line'};
+		$lref = &read_file_lines($lastfile);
 		}
 	else {
-		&error("Could not find any values in section $newsection");
+		# Just add at the end
+		$lastfile = @$conf ? $conf->[0]->{'file'} : undef;
+		$lastfile || &error("Don't know which file to add to");
+		$lref = &read_file_lines($lastfile);
+		$lastline = scalar(@$lref);
 		}
+
+	# Found last value in the section - add after it
+	splice(@$lref, $lastline+1, 0, $newline);
+	&renumber($conf, $lastline, 1);
+	push(@$conf, { 'name' => $name,
+		       'value' => $value,
+		       'enabled' => 1,
+		       'file' => $lastfile,
+		       'line' => $lastline+1,
+		       'section' => $newsection,
+		     });
 	}
 elsif (!defined($value) && $old && $cmt) {
 	# Totally remove a value
