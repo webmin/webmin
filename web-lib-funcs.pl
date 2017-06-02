@@ -7264,8 +7264,8 @@ sub help_search_link
 if (&foreign_available("man") && !$tconfig{'nosearch'}) {
 	my $for = &urlize(shift(@_));
 	return "<a href='$gconfig{'webprefix'}/man/search.cgi?".
-	       join("&amp;", map { "section=$_" } @_)."&amp;".
-	       "for=$for&amp;exact=1&amp;check=".&get_module_name()."'>".
+	       join("&", map { "section=$_" } @_)."&".
+	       "for=$for&exact=1&check=".&get_module_name()."'>".
 	       $text{'helpsearch'}."</a>\n";
 	}
 else {
