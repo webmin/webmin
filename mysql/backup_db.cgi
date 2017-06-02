@@ -142,6 +142,7 @@ if (!$in{'save'}) {
 			}
 		}
 	foreach $db (@dbs) {
+		my $deletefile = 0;
 		if ($in{'all'}) {
 			# File in a directory
 			$dir = &date_subs($in{'file'});
@@ -149,10 +150,12 @@ if (!$in{'save'}) {
 			$file = $dir."/".$db.".sql".
 				($in{'compress'} == 1 ? ".gz" :
 				 $in{'compress'} == 2 ? ".bz2" : "");
+			$deletefile = 1;
 			}
 		elsif (!$in{'dest'}) {
 			# Single file
 			$file = &date_subs($in{'file'});
+			$deletefile = 1;
 			}
 		else {
 			# Temp file for download
@@ -176,7 +179,7 @@ if (!$in{'save'}) {
 				next;
 				}
 			}
-		unlink($file);
+		&unlink_file($file) if ($deletefile);
 		local $err = &backup_database($db, $file, $in{'compress'},
 			$in{'drop'}, $in{'where_def'} ? undef : $in{'where'},
 			$in{'charset_def'} ? undef : $in{'charset'},
