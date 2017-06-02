@@ -658,10 +658,17 @@ else {
 # save_port_address(name, portname, &config, indent)
 sub save_port_address {
   my ($port, @vals, $dir, $n);
-  foreach my $addr (split(/\s+/, $in{$_[0]})) {
-    $addr =~ /^\S+$/ || &error(&text('eipacl', $addr));
-    push(@vals, { 'name' => $addr });
-  }
+  my @sp = split(/\s+/, $in{$_[0]});
+  for(my $i=0; $i<@sp; $i++) {
+	$sp[$i] =~ /^\S+$/ || &error(&text('eipacl', $sp[$i]));
+	if (lc($sp[$i+1]) eq "key") {
+		push(@vals, { 'name' => $sp[$i++],
+			      'values' => [ "key", $sp[++$i] ] });
+		}
+	else {
+		push(@vals, { 'name' => $sp[$i] });
+		}
+	}
   $dir = { 'name' => $_[0], 'type' => 1, 'members' => \@vals };
   ($n = $_[1]) =~ s/[^A-Za-z0-9_]/_/g;
   $dir->{'values'} = [ $_[1], $in{$_[1]} ] if (!$in{"${n}_def"});
