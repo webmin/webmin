@@ -163,7 +163,15 @@ if ($letsencrypt_cmd && -d "/etc/letsencrypt/accounts") {
 		$full =~ s/\s//g;
 		}
 	else {
-		&error("Output did not contain a PEM path!");
+		# Try searching common paths
+		my @fulls = glob("/etc/letsencrypt/live/$doms[0]-*/cert.pem");
+		if (@fulls) {
+			# XXX sort by timestamp
+			$full = pop(@fulls);
+			}
+		else {
+			&error("Output did not contain a PEM path!");
+			}
 		}
 	-r $full && -s $full || return (0, &text('letsencrypt_efull', $full));
 	$full =~ s/\/[^\/]+$//;
