@@ -3314,7 +3314,7 @@ foreach my $a (@$attach) {
 		}
 	else {
 		# No filename
-		push(@files, "<i>$text{'view_anofile'}</i>");
+		push(@files, $text{'view_anofile'});
 		$fn = "file.".&type_to_extension($a->{'type'});
 		push(@detach, [ $a->{'idx'}, $fn ]);
 		}
