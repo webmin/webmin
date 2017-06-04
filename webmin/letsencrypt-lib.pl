@@ -166,7 +166,9 @@ if ($letsencrypt_cmd && -d "/etc/letsencrypt/accounts") {
 		# Try searching common paths
 		my @fulls = glob("/etc/letsencrypt/live/$doms[0]-*/cert.pem");
 		if (@fulls) {
-			# XXX sort by timestamp
+			my %stats = map { $_, [ stat($_) ] } @fulls;
+			@fulls = sort { $stats{$a}->[9] <=> $stats{$b}->[9] }
+				      @fulls;
 			$full = pop(@fulls);
 			}
 		else {
