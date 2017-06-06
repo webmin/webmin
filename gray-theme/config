@@ -1,5 +1,7 @@
-cs_header=D0E0FC class='maintitle'
-cs_table=f5f5f5 class='mainbody'
+cs_header=D0E0FC
+tb=class='maintitle'
+cs_table=f5f5f5
+cb=class='mainbody'
 cs_link=376ebd
 texttitles=1
 functions=theme.pl
