@@ -81,7 +81,7 @@ while(<CONF>) {
                              'line' => $line };
                 local $end = $2;
                 while(<CONF>) {
-                        $lnum++;
+                        $line++;
                         last if (/^$end[\r\n]+$/);
                         s/^--/-/;
                         s/^-\n/\n/;
