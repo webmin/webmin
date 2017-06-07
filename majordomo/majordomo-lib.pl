@@ -26,8 +26,8 @@ while(<CONF>) {
 	elsif (/^\s*\$(\S+)\s*=\s*<<\s*'(\S+)';\s*$/) {
 		# multiline config option
 		local $o = { 'name' => $1,
-			     'line' => $2 };
-		local $end = $3;
+			     'line' => $line };
+		local $end = $2;
 		while(<CONF>) {
 			$line++;
 			last if ($_ =~ /^$end[\r\n]+$/);
@@ -57,7 +57,46 @@ close(CONF);
 return \@rv;
 }
 
-# save_directive(&config, name, value)
+# get_list_config(file)
+sub get_list_config
+{
+local(@rv, $line);
+$line = 0;
+open(CONF, $_[0]);
+while(<CONF>) {
+        s/\r|\n//g;
+        s/#.*$//g;
+        if (/^\s*(\S+)\s*=\s*(.*)$/) {
+                # single value
+                push(@rv, { 'name' => $1,
+                            'value' => $2,
+                            'index' => scalar(@rv),
+                            'line' => $line,
+                            'eline' => $line });
+                }
+        elsif (/^\s*(\S+)\s*<<\s*(\S+)/) {
+                # multi-line value
+                local $c = { 'name' => $1,
+                             'index' => scalar(@rv),
+                             'line' => $line };
+                local $end = $2;
+                while(<CONF>) {
+                        $lnum++;
+                        last if (/^$end[\r\n]+$/);
+                        s/^--/-/;
+                        s/^-\n/\n/;
+                        $c->{'value'} .= $_;
+                        }
+                $c->{'eline'} = $line;
+                push(@rv, $c);
+                }
+        $line++;
+        }
+return \@rv;
+}
+
+
+# save_directive(&config, name, value, multiline)
 # Update some directive in the global config file
 sub save_directive
 {
@@ -65,16 +104,65 @@ local $old = &find($_[1], $_[0]);
 return if (!$old);
 local $lref = &read_file_lines($config{'majordomo_cf'});
 local $olen = $old->{'eline'} - $old->{'line'} + 1;
+local $pos = $old->{'line'};
 local $v = $_[2];
 $v =~ s/\n$//;
-if ($v =~ /\n/) {
-	splice(@$lref, $old->{'line'}, $olen,
-	       ( "\$$_[1] = <<'END';", split(/\n/, $v, -1), "END" ));
+
+if ($_[3]) {
+        local $ov = $old->{'value'};
+        $ov =~ s/\n$//;
+        local $v = $_[2];
+        $v =~ s/\n$//;
+        local @lines = split(/\n/, $v, -1);
+        @lines = map { s/^-/--/; s/^$/-/; $_ } @lines;
+        splice(@$lref, $pos, $olen, ("\$$_[1] = <<'END';", @lines, "END"))
+                if (!$old || $v ne $ov);
+        $nlen = (!$old || $v ne $ov) ? @lines + 2 : $olen;
 	}
 else {
 	$v =~ s/\@/\\@/g;
-	splice(@$lref, $old->{'line'}, $olen, "\$$_[1] = \"$v\";");
+	splice(@$lref, $pos, $olen, "\$$_[1] = \"$v\";");
 	}
+}
+
+# save_list_directive(&config, file, name, value, multiline)
+sub save_list_directive
+{
+local $old = &find($_[2], $_[0]);
+local $lref = &read_file_lines($_[1]);
+local ($pos, $olen, $nlen);
+if ($old) {
+        $olen = $old->{'eline'} - $old->{'line'} + 1;
+        $pos = $old->{'line'};
+        }
+else {
+        $olen = 0;
+        $pos = @$lref;
+        }
+if ($_[4]) {
+        local $ov = $old->{'value'};
+        $ov =~ s/\n$//;
+        local $v = $_[3];
+        $v =~ s/\n$//;
+        local @lines = split(/\n/, $v, -1);
+        @lines = map { s/^-/--/; s/^$/-/; $_ } @lines;
+        splice(@$lref, $pos, $olen, ("$_[2]        <<   END", @lines, "END"))
+                if (!$old || $v ne $ov);
+        $nlen = (!$old || $v ne $ov) ? @lines + 2 : $olen;
+        }
+else {
+        splice(@$lref, $pos, $olen, "$_[2] = $_[3]")
+                if (!$old || $_[3] ne $old->{'value'});
+        $nlen = 1;
+        }
+if ($old && $nlen != $olen) {
+        foreach $c (@{$_[0]}) {
+                if ($c->{'line'} > $old->{'eline'}) {
+                        $c->{'line'} += ($nlen - $olen);
+                        $c->{'eline'} += ($nlen - $olen);
+                        }
+                }
+        }
 }
 
 # find(name, &array)
@@ -131,84 +219,6 @@ $list{'info'} = "$ldir/$_[0].info";
 $list{'intro'} = "$ldir/$_[0].intro";
 $list{'owner'} = "$ldir/$_[0].owner";
 return \%list;
-}
-
-# get_list_config(file)
-sub get_list_config
-{
-local(@rv, $line);
-$lnum = 0;
-open(CONF, $_[0]);
-while(<CONF>) {
-	s/\r|\n//g;
-	s/#.*$//g;
-	if (/^\s*(\S+)\s*=\s*(.*)$/) {
-		# single value
-		push(@rv, { 'name' => $1,
-			    'value' => $2,
-			    'index' => scalar(@rv),
-			    'line' => $lnum,
-			    'eline' => $lnum });
-		}
-	elsif (/^\s*(\S+)\s*<<\s*(\S+)/) {
-		# multi-line value
-		local $c = { 'name' => $1,
-			     'index' => scalar(@rv),
-			     'line' => $lnum };
-		local $end = $2;
-		while(<CONF>) {
-			$lnum++;
-			last if (/^$end[\r\n]+$/);
-			s/^--/-/;
-			s/^-\n/\n/;
-			$c->{'value'} .= $_;
-			}
-		$c->{'eline'} = $lnum;
-		push(@rv, $c);
-		}
-	$lnum++;
-	}
-return \@rv;
-}
-
-# save_list_directive(&config, file, name, value, multiline)
-sub save_list_directive
-{
-local $old = &find($_[2], $_[0]);
-local $lref = &read_file_lines($_[1]);
-local ($pos, $olen, $nlen);
-if ($old) {
-	$olen = $old->{'eline'} - $old->{'line'} + 1;
-	$pos = $old->{'line'};
-	}
-else {
-	$olen = 0;
-	$pos = @$lref;
-	}
-if ($_[4]) {
-	local $ov = $old->{'value'};
-	$ov =~ s/\n$//;
-	local $v = $_[3];
-	$v =~ s/\n$//;
-	local @lines = split(/\n/, $v, -1);
-	@lines = map { s/^-/--/; s/^$/-/; $_ } @lines;
-	splice(@$lref, $pos, $olen, ("$_[2]        <<   END", @lines, "END"))
-		if (!$old || $v ne $ov);
-	$nlen = (!$old || $v ne $ov) ? @lines + 2 : $olen;
-	}
-else {
-	splice(@$lref, $pos, $olen, "$_[2] = $_[3]")
-		if (!$old || $_[3] ne $old->{'value'});
-	$nlen = 1;
-	}
-if ($old && $nlen != $olen) {
-	foreach $c (@{$_[0]}) {
-		if ($c->{'line'} > $old->{'eline'}) {
-			$c->{'line'} += ($nlen - $olen);
-			$c->{'eline'} += ($nlen - $olen);
-			}
-		}
-	}
 }
 
 # get_aliases_file()
@@ -390,6 +400,15 @@ sub save_multi
 $in{$_[2]} =~ s/\r//g;
 &save_list_directive($_[0], $_[1], $_[2], $in{$_[2]}, 1);
 }
+
+# save_multi_global(&config, name)
+sub save_multi_global
+{
+$in{$_[1]} =~ s/\r//g;
+&save_directive($_[0], $_[1], $in{$_[1]}, 1);
+}
+
+
 
 # can_edit_list(&access, name)
 sub can_edit_list

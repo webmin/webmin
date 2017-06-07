@@ -25,8 +25,10 @@ $in{'whoami_owner'} =~ /^\S+$/ ||
 &save_directive($conf, "whoami", $in{'whoami'});
 &save_directive($conf, "whoami_owner", $in{'whoami_owner'});
 &save_directive($conf, "sendmail_command", $in{'sendmail_command'});
+&save_multi_global($conf, "global_taboo_body");
+&save_multi_global($conf, "global_taboo_headers");
 &flush_file_lines();
 &unlock_file($config{'majordomo_cf'});
 &webmin_log("global", undef, undef, \%in);
-&redirect("");
+&redirect("edit_global.cgi?saved=true");
 

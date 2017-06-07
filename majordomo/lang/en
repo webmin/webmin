@@ -36,6 +36,7 @@ global_ewhereami=Missing or invalid mail server hostname
 global_ewhoami=Missing or invalid Majordomo address
 global_eowner=Missing or invalid owner's address
 global_esendmail=Sendmail command '$1' does not exist
+global_saved=(saved)
 
 create_ecannot=You are not allowed to create new lists
 create_title=Create Mailing List
@@ -184,7 +185,7 @@ access_res1=List members
 access_res2=Addresses in file
 access_tbody=Taboo body regexps
 access_theader=Taboo header regexps
-access_taboo=Note: all taboo and address regexps must begin and end with <tt>/</tt> , like <tt>/foobar.com/</tt> or <tt>/obscene/</tt>.
+access_taboo=Note: all taboo and address regexps must begin and end with <tt>/</tt> , like <tt>/foobar.com/</tt> or <tt>/obscene/</tt><br>For purpose of SPAM rejection enter e.g. <tt>/^X-Spam-Flag: YES/i</tt> or <tt>/^X-Spam-Level: \*\*\*\*\*/i</tt> as taboo header regex.
 
 head_title=Headers and Footers
 head_header=Resent email headers and footers
