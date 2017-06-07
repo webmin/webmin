@@ -1,7 +1,6 @@
 #!/usr/local/bin/perl
 # edit_global.cgi
 # Edit global majordomo options
-use Data::Dump 'dump';
 
 require './majordomo-lib.pl';
 &ReadParse();
