@@ -1,0 +1,7 @@
+# hint file if you translate non UTF-8 stuff
+# my be used if I extend update-lang to autogenerate UTF-8 files, i.e. for de.
+ö -> &#246;
+ü -> &#252;
+ä -> &#228;
+ß -> &#223;
+Ä -> &#196;
