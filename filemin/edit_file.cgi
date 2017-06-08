@@ -10,9 +10,18 @@ my $file = &simplify_path($cwd.'/'.$in{'file'});
 my $data = &read_file_contents($file);
 
 my $encoding_name;
+use Encode::Guess; 
 eval "use Encode::Detect::Detector;";
 if (!$@) {
 	$encoding_name = Encode::Detect::Detector::detect($data);
+        if ( $encoding_name =~ /iso-8859/i ) {
+          # try a second guess
+  	  my $dec = guess_encoding($data, qw/iso-8859-1 iso-8859-2 iso-8859-3 iso-8859-3 iso-8859-4 iso-8859-5 iso-8859-6 iso-8859-7 iso-8859-8 iso-8859-9/);
+  	  if (!ref $dec) {
+            # can be more than one iso-encoding, fallback to iso-8859-1
+            $encoding_name = "iso-8859-1";
+  	    }
+          }
 	}
 if ( lc( get_charset() ) eq "utf-8" && ( $encoding_name && lc($encoding_name) ne "utf-8" ) ) {
     use Encode qw( encode decode );
