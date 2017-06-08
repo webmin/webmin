@@ -114,3 +114,5 @@ import_upload_cert=Upload Certificate
 import_key_file=Key file to upload
 import_key_destination=Destination directory of key
 import_upload_key=Upload Key
+
+signcsr_e_nopassword=No CA private key password entered

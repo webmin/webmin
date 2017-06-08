@@ -15,7 +15,10 @@ if ($in{'submitted'} eq "sign") {
 	if (!$in{'signfile'}) {
 		$error.=$text{'signcsr_e_nosignfile'}."<br>\n";
 	}
-	if (!$in{'keyfile'} || !$in{'keycertfile'}) {
+	if (!$in{'cakeyfile'}) {
+		$error.=$text{'signcsr_e_nokeyfile'}."<br>\n";
+	}
+	if (!$in{'cacertfile'}) {
 		$error.=$text{'signcsr_e_nokeyfile'}."<br>\n";
 	}
 	if (!$error) {
@@ -27,8 +30,8 @@ if ($in{'submitted'} eq "sign") {
 		$config{'incsr_filename'}; }
 	if (!$in{'signfile'}) { $in{'signfile'}=$config{'ssl_cert_dir'}."/".
 		$config{'sign_filename'}; }
-	if (!$in{'keyfile'}) { $in{'keyfile'}=$config{'cakey_path'}; }
-	if (!$in{'keycertfile'}) { $in{'keycertfile'}=$config{'cacert_path'};}
+	if (!$in{'cacertfile'}) { $in{'cacertfile'}=$config{'cacert_path'}; }
+	if (!$in{'cakeyfile'}) { $in{'cakeyfile'}=$config{'cakey_path'}; }
 	if (!$in{'days'}) { $in{'days'}=$config{'default_days'}; }
 }
 
@@ -45,10 +48,12 @@ print &ui_hr();
 sub process{
 	&foreign_require("webmin", "webmin-lib.pl");
 	local %miniserv;
+    local ($tempdir, $des, $out, $url);
+    local $error=0;
 	&get_miniserv_config(\%miniserv);
 	if (!$miniserv{'ca'}) {
 		&webmin::setup_ca();
-		}
+	}
 	if ((-e $in{'signfile'})&&($in{'overwrite'} ne "yes")) {
 		&overwriteprompt();
 		print &ui_hr();
@@ -57,11 +62,19 @@ sub process{
 	}
 	$tempdir = &tempname();
 	mkdir($tempdir, 0700);
-	if ($in{'password'}){ $des="-passin pass:".quotemeta($in{'password'}); }
-	$out = `yes | $config{'openssl_cmd'} ca -in $in{'csrfile'} -out $in{'signfile'} -cert $in{'keycertfile'} -keyfile $in{'keyfile'} -outdir $tempdir -days $in{'days'} -config $config_directory/acl/openssl.cnf $des 2>&1`;
+    if (keyfile_is_encrypted($in{'cakeyfile'})) {
+        if ($in{'password'}) { $des="-passin pass:".quotemeta($in{'password'}); }
+        else {
+            print "<b>$text{'signcsr_e_signfailed'}</b>\n<pre>$text{'signcsr_e_nopassword'}</pre>\n";
+            print &ui_hr();
+            &footer("", $text{'index_return'});
+            exit;
+        }
+    }
+	$out = `yes | $config{'openssl_cmd'} ca -in $in{'csrfile'} -out $in{'signfile'} -cert $in{'cacertfile'} -keyfile $in{'cakeyfile'} -outdir $tempdir -days $in{'days'} -config $config{'ssl_cnf_file'} $des 2>&1`;
 
 	system("rm -rf $tempdir");
-	if (!-e $in{'csrfile'}) { 
+    if ($out =~ /^ERROR(.*$)/mi || $out =~ /:error:/mi) {
 		$error=$out;
 	} else{
 		$error=0;
@@ -108,4 +121,13 @@ sub overwriteprompt{
     print &ui_table_row(undef,$rv);
     print &ui_table_end();
 
+}
+
+sub keyfile_is_encrypted{
+    my $key=$_[0];
+    my $encrypted=0;
+    open(KFILE,$key)||return(0);
+    while(<KFILE>){ if (/^Proc.*ENCRYPTED.*$/mi) { $encrypted=1; last; } }
+	close(KFILE);
+    return($encrypted);
 }

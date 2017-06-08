@@ -135,6 +135,7 @@ signcsr_generate=Sign Certificate
 signcsr_e_nocsrfile=No CSR filename entered
 signcsr_e_nosignfile=No signed certificate filename entered
 signcsr_e_nokeyfile=No CA private key file or certificate file entered
+signcsr_e_nopassword=No CA private key password entered
 signcsr_e_signfailed=Error, signed certificate not generated
 signcsr_worked=Signed certificate generated
 signcsr_saved_cert=The certificate was saved as
