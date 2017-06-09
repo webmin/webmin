@@ -191,6 +191,7 @@ month_8=August&nbsp;
 month_9=September&nbsp;
 no=Nein
 ok=OK
+fail=Failed
 pam_header=Anmelden an Webmin
 pam_login=Fortsetzen
 pam_mesg=Sie müssen auf die Frage unten antworten um sich am Webmin-Server $1 anmelden zu können.
