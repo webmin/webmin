@@ -56,7 +56,6 @@ if ($access{'create'}) {
 if (@lists) {
     # table header
     local @hcols, @tds;
-    push(@hcols,  "", "");
     push(@hcols, $text{'index_name'}, $text{'index_info'}, $text{'index_mail'}, $text{'index_moderated'}, $text{'index_count'});
     push(@tds, "width=5" ,"width=100" );
     push(@tds, "", "", "width=100", "", "");
@@ -66,14 +65,15 @@ if (@lists) {
 	local @cols,@list,@conf;
 	$list = &get_list( $l , &get_config());
 	$conf = &get_list_config($list->{'config'});
-	push(@cols, "","<a href=edit_list.cgi?name=$l><img src=images/smallicon.gif></a>");
-	push(@cols, "<a href=edit_list.cgi?name=$l>". &html_escape($l) ."</a>" );
+	push(@cols, "&nbsp;&nbsp; <a href=edit_list.cgi?name=$l><img src=images/smallicon.gif> &nbsp;&nbsp;".
+			&html_escape(ucfirst($l)) ."</a>" );
 	open(INFO, $list->{'info'});
 	local $info=<INFO>;
 	$info=<INFO> if ( $info =~ !/^\[Last updated on:/);
 	push(@cols, "<em>".$info."</em>" ."&nbsp;&nbsp;<em><a href=edit_info.cgi?name=$l><span>edit</span></a></em>");
 	close(INFO);
-	push(@cols, "<em>". &find_value('reply_to', $conf) .
+	local $m=&find_value('reply_to', $conf);
+	push(@cols, "<em><a href=\"mailto:%22". ucfirst($l) ."%22%3c$m%3e\">$m</a>".
 		"&nbsp;&nbsp;<em><a href=edit_mesg.cgi?name=$l><span>edit</span></a></em>");
 	push(@cols, "<center><em>". $text{&find_value('moderate', $conf)} .
 		"</em>" ."&nbsp;&nbsp;<em><a href=edit_subs.cgi?name=$l><span>edit</span></a></em><center>");
