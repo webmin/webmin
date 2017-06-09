@@ -1,6 +1,6 @@
 #!/usr/local/bin/perl
-# index.cgi
-# Display all mailing lists and majordomo options
+# check_inst.cgi
+# check majordomo options and installation
 
 require './majordomo-lib.pl';
 use Fcntl ':mode';
@@ -28,7 +28,7 @@ local $res=$ok, $tocheck, $sec;
 # init / start table 
 local @tds;
 push(@tds, "width=40%", "width=40%", "");
-print &ui_columns_start(["Test for ...", "Result / additional check", "Status"], 100, 0, \@tds);
+print &ui_columns_start([ &text('check_test'), &text('check_result'), &text('check_status')], 100, 0, \@tds);
 
 # Check mailer / aliaes / config file
 local $aliases=$aliases_files->[0], $mailer=$config{'aliases_file'};
@@ -54,7 +54,7 @@ if ( $res eq $ok) {
 	print &ui_columns_row(["<b>&nbsp; Majordomo programm dir</b>", $tocheck, $res] , \@tds);
 	if ($res eq $ok) {
 		$res="$cdiv $ok $edviv";
-			$sec="$cdiv permissions $ediv";
+		$sec=$cdiv.&text('check_perm').$ediv;
 		$tocheck=$config{'program_dir'};
 		if (((stat($tocheck)) [2] & S_IXOTH) != 0) { $res=$fail; $sec .= ": world executable!"; }
 		if (((stat($tocheck)) [2] & S_IROTH) != 0) { $res=$fail; $sec .= ": world readable!"; }
@@ -73,7 +73,7 @@ if ( $res eq $ok) {
 	if (!&homedir_valid($conf)) { $res=$fail; $tocheck = &text('index_ehomedir', "<tt>$home</tt>"); }
 	print &ui_columns_row(["<b>&nbsp; Majordomo HOME dir</b>", $tocheck, $res] , \@tds);
 	$res="$cdiv $ok $edviv";
-	$sec="$cdiv permissions $ediv";
+	$sec=$cdiv.&text('check_perm').$ediv;
 	$tocheck=$home;
 	if (((stat($tocheck)) [2] & S_IXOTH) != 0) { $res=$fail; $sec .= ": world executable!"; }
 	if (((stat($tocheck)) [2] & S_IROTH) != 0) { $res=$fail; $sec .= ": world readable!"; }

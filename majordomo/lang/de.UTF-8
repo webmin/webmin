@@ -226,4 +226,8 @@ subs_unsub=Kündigungsregeln
 subs_uopen=Jeder kann sich selbst kündigen
 subs_welcome=Soll die einleitende Mitteilung versandt werden?
 
-check_title=Check Majordomo Config
+check_title=Testen der Majordomo Konfiguration
+check_test=Test f&uumlr ...
+check_result=Ergebis / weitere Tests
+check_status=Status
+check_perm=Zugriffsrechte

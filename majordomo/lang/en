@@ -243,4 +243,8 @@ alias_err=Failed to setup aliases
 alias_eowner=Missing owner email address
 
 check_title=Check Majordomo Config
+check_test=Test for ...
+check_result=Result / additional check
+check_status=Status
+check_perm=Permissions
 
