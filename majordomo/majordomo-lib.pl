@@ -480,14 +480,14 @@ if ($majordomo_version < 1.94 || $majordomo_version >= 2) {
 	}
 # Check $homedir in majordomo.cf
 if (!&homedir_valid($conf)) {
-	print &text('index_ehomedir', "<tt>$homedir</tt>"),"<p>\n";
+	print &text('index_emdomdir', '$homedir', $homedir),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
 # Check $listdir in majordomo.cf
 local $listdir = &perl_var_replace(&find_value("listdir", $conf), $conf);
 if (!-d $listdir) {
-	print &text('index_elistdir', "<tt>$listdir</tt>"),"<p>\n";
+	print &text('index_emdomdir', '$listdir', $listdir),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit 1;
 	}
