@@ -60,7 +60,8 @@ sub print_sign_form {
     print &ui_table_start($text{'signcsr_header'}, undef, 2);
     print &ui_table_row($text{'signcsr_csrfile'}, &ui_textbox("csrfile", $in{'csrfile'}, 40), undef, $valign_middle);
     print &ui_table_row($text{'signcsr_signfile'}, &ui_textbox("signfile", $in{'signfile'}, 40), undef, $valign_middle);
-    print &ui_table_row($text{'signcsr_keyfile'}, &ui_textbox("keycertfile", $in{'keycertfile'}, 40), undef, $valign_middle);
+    print &ui_table_row($text{'signcsr_keycertfile'}, &ui_textbox("cacertfile", $in{'cacertfile'}, 40), undef, $valign_middle);
+    print &ui_table_row($text{'signcsr_keyfile'}, &ui_textbox("cakeyfile", $in{'cakeyfile'}, 40), undef, $valign_middle);
     print &ui_table_row(&ui_link("/help.cgi/certmgr/signcsr_ca_pass",
                     "<b>$text{'signcsr_ca_passphrase'}</b>", undef,
                     "onClick='window.open(\"/help.cgi/certmgr/signcsr_ca_pass\", \"help\", \"toolbar=no,menubar=no,scrollbars=yes,width=400,height=300,resizable=yes\"); return false;'"), 

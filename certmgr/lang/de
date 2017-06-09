@@ -109,6 +109,7 @@ signcsr_days=Anzahl der Tage der Zertifizierung f&#252;r
 signcsr_desc=Auf dieser Seite k&#246;nnen Sie eine signiertes CSR von jemand anderem mit einem eigenen privaten Schl&#252;ssel signieren.
 signcsr_e_nocsrfile=Keinen CSR Dateinamen eingegeben
 signcsr_e_nokeyfile=Kein CA privater Schl&#252;ssel oder Zertifikats-Datei eingegeben
+signcsr_e_nopassword=Es wurde kein CA-Kennwort eingegeben
 signcsr_e_nosignfile=Kein signiertes Zertifikats-Dateiname eingegeben
 signcsr_e_signfailed=Fehler, signiertes Zertifikat nicht generiert
 signcsr_generate=Signiere Zertifikat
