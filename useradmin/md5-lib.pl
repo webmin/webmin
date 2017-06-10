@@ -242,12 +242,12 @@ if (!&check_blowfish()) {
 # SHA1
 if (!&check_sha512()) {
 	my $shash = &encrypt_sha512($passwd, $hash);
-	return 1 if ($shash eq $hash);
+	return 1 if ($shash && $shash eq $hash);
 	}
 
 # Some other hashing, maybe supported by crypt
 my $ohash = eval { crypt($passwd, $hash) };
-return 1 if ($ohash eq $hash);
+return 1 if ($ohash && $ohash eq $hash);
 
 return 0;
 }
