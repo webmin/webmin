@@ -2,8 +2,7 @@ index_title=Majordomo 列表管理器
 index_econfig=Majordomo 配置文件 $1 不存在.可能您的<a href='$2'>模块配置</a>不正确,或者 Majordomo 没有安装。
 index_eprograms=Majordomo 目录 $1 不存在.可能您的<a href='$2'>模块配置</a>不正确,或者 Majordomo 没有安装。
 index_eversion=Webmin 不支持您的 Majordomo 版本,它仅支持1.94或更高版本的Majordomo。
-index_ehomedir=您的 Majordomo 配置文件中的<tt>$homedir</tt>变量设置为 $1，但它不存在。
-index_elistdir=您的 Majordomo 配置文件中的<tt>$listdir</tt>变量设置为 $1,但它不存>在。
+index_emdomdir=您的 Majordomo 配置文件中的<tt>$1</tt>变量设置为 $1,但它不存>在。
 index_esendmail=Sendmail 配置文件 $1不存在,请检查您的<a href=/sendmail/>Sendmail 模块</a> 配置。
 index_esendmailversion=您的 sendmail 配置文件可能不是最新的版本, Webmin只能支持8.8或更高版本。
 index_setupdesc=Majordomo 已经安装在您的系统上,但未在 sendmail aliase 文件中正确设置。

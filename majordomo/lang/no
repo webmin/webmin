@@ -113,8 +113,7 @@ head_title=Topp- og bunntekster
 index_add=Legg til en ny e-post liste.
 index_digest=Legg til en ny sammendrag liste.
 index_econfig=Majordomo konfig.filen $1 finnes ikke. Kanskje <a href='$2'>modulkonfigurasjonen</a> er feil, eller s&#229; er majordomo ikke installert.
-index_ehomedir=<tt>$homedir</tt> variablene i fin majordomo konfig.fil er satt til $1. Denne katalogen finnes ikke.
-index_elistdir=<tt>$listdir</tt> variablene i fin majordomo konfig.fil er satt til $1. Denne katalogen finnes ikke.
+index_emdomdir=<tt>$1</tt> variablene i fin majordomo konfig.fil er satt til $1. Denne katalogen finnes ikke.
 index_epostfix=Postfix er enten ikke installert eller ikke riktig satt opp p&#229; systemet ditt. Sjekk <a href='$1'>Postfix modulens</a> konfigurasjon.
 index_eprograms=Majordomo katalogen $1 finnes ikke. Kanskje <a href='$2'>modulkonfigurasjonen</a> er feil, eller s&#229; er majordomo ikke installert.
 index_esendmail2=Sendmail er enten ikke installert eller satt opp riktig p&#229; systemet ditt. Sjekk <a href=$2>Sendmail modul</a> konfigurasjonen.

@@ -113,8 +113,7 @@ head_title=Cabeceras y Pies
 index_add=A&#241;adir una nueva lista de correo
 index_digest=A&#241;adir una nueva lista de resumen
 index_econfig=El archivo de configuraci&#243;n de majordomo $1 no existe. Quiz&#225;s tu <a href='$2'>configuraci&#243;n del m&#243;dulo</a> sea incorrecta o majordomo no est&#225; instalado.
-index_ehomedir=La variable <tt>$homedir</tt> de tu archivo de configuraci&#243;n de majordomo est&#225; configurada con el valor $1, el cual no existe.
-index_elistdir=La variable <tt>$listdir</tt> de tu archivo de configuraci&#243;n de majordomo est&#225; configurada con el valor $1, el cual no existe.
+index_emdomdir=La variable <tt>$1</tt> de tu archivo de configuraci&#243;n de majordomo est&#225; configurada con el valor $1, el cual no existe.
 index_eprograms=El directorio de majordomo $1 no existe. Quiz&#225;s tu <a href='$2'>configuraci&#243;n del m&#243;dulo</a> sea incorrecta o majordomo no est&#225; instalado.
 index_esendmail2=Sendmail o bien no est&#225; instalado o bien no est&#225; adecuadamente configurado en su sistema. Compruebe la configuraci&#243;n del <a href=$2>m&#243;dulo Sendmail</a>.
 index_esendmailversion=Tu archivo de configuraci&#243;n de sendmail no parece ser el de la &#250;ltima versi&#243;n de sendmail. Webmin s&#243;lo soporta versiones 8.8 y superiores.

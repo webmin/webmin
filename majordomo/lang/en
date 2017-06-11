@@ -3,8 +3,7 @@ index_econfig=The majordomo config file $1 does not exist. Maybe your <a href='$
 index_eprograms=The majordomo directory $1 does not exist. Maybe your <a href='$2'>module configuration</a> is incorrect, or majordomo is not installed.
 index_eversion=Your majordomo version is not supported by Webmin. Only versions 1.94 and above are supported.
 index_eversion2=The Majordomo version file $1 was not found under the programs directory $2. Maybe your <a href='$3'>module configuration</a> is incorrect, or majordomo is not installed.
-index_ehomedir=The <tt>$homedir</tt> variable in your majordomo config file is set to $1, which does not exist.
-index_elistdir=The <tt>$listdir</tt> variable in your majordomo config file is set to $1, which does not exist.
+index_emdomdir=The <tt>$1</tt> variable in your majordomo config file is set to $2, which does not exist.
 index_esendmail2=Sendmail is either not installed or not properly set up on your system. Check the <a href=$2>Sendmail module</a> configuration.
 index_epostfix=Postfix is either not installed or not properly set up on your system. Check the <a href='$1'>Postfix module</a> configuration.
 index_esendmail3=The Sendmail Webmin module needed to manage aliases is not installed.
@@ -242,3 +241,12 @@ acl_edit=Can edit list membership?
 alias_err=Failed to setup aliases
 alias_eowner=Missing owner email address
 
+check_title=Check Majordomo Config
+check_test=Test for ...
+check_result=Result / additional check
+check_status=Status
+check_perm=Permissions
+check_exec=world executable!
+check_write=world writeable!
+check_read=world readable!
+check_possible=Possible problem
