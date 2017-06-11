@@ -3,7 +3,7 @@ index_econfig=El fitxer de configuració $1 del majordomo no existeix. Pot ser qu
 index_eprograms=El directori $1 del majordomo no existeix. Pot ser que la <a href='$2'>configuració del mòdul</a> sigui incorrecta, o bé que el majordomo no estigui instal·lat.
 index_eversion=Aquesta versió del majordomo no està suportada per Webmin. Només estan suportades les versions 1.94 i posteriors.
 index_eversion2=No s'ha trobat el fitxer $1 de versió de Majordomo al directori de programes $2. Pot ser que la <a href='$3'>configuració del mòdul</a> sigui incorrecta, o bé que majordomo no estigui instal·lat.
-index_emdomdir=La variable <tt>$1</tt> del fitxer de configuració del majordomo està establerta a $1, que no existeix.
+index_emdomdir=La variable <tt>$1</tt> del fitxer de configuració del majordomo està establerta a <tt>$2</tt>, que no existeix.
 index_esendmail2=Sendmail no està instal·lat al sistema o bé no està configurat adequadament. Comprova la configuració del <a href=$2>mòdul Sendmail</a>.
 index_epostfix=O bé Postfix no està instal·lat al sistema, o bé no està adequadament configurat. Comprova la configuració del <a href='$1'>mòdul Postfix</a>.
 index_esendmail3=El mòdul Sendmail de Webmin necessari per gestionar àlies no està instal·lat.
