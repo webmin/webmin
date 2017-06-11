@@ -354,6 +354,9 @@ elsif ($l =~ /\.Z$/i) {
 elsif ($l =~ /\.bz2$/i) {
 	return &has_command("bunzip2") ? "bunzip2 -c $q" : undef;
 	}
+elsif ($l =~ /\.xz$/i) {
+	return &has_command("xz") ? "xz -d -c $q" : undef;
+	}
 else {
 	return "cat $q";
 	}
