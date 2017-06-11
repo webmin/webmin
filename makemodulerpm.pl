@@ -233,7 +233,7 @@ system("/bin/rm -rf /tmp/makemodulerpm");
 # Build list of dependencies on other RPMs, for inclusion as an RPM
 # Requires: header
 my $rdeps;
-if ($rpmdepends) {
+if ($rpmdepends && defined($minfo{'depends'})) {
 	my @rdeps;
 	foreach my $d (split(/\s+/, $minfo{'depends'})) {
 		my ($dwebmin, $dmod, $dver);
@@ -271,6 +271,8 @@ my $urlheader = $url ? "URL: $url" : "";
 my $epochheader = $epoch ? "Epoch: $epoch" : "";
 $force_theme //= "";
 $istheme //= "";
+$rdeps //= "";
+$depends //= "";
 open(my $SPEC, ">", "$spec_dir/$prefix$mod.spec");
 print $SPEC <<EOF;
 %define __spec_install_post %{nil}
