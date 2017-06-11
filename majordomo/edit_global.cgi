@@ -10,6 +10,10 @@ $conf = &get_config();
 $access{'global'} || &error($text{'global_ecannot'});
 &ui_print_header(undef, $text{'global_title'}, "");
 
+local $bcss=' style="display: box; float: left; padding: 10px;"';
+print "<div $bcss><form action=\"check_inst.cgi\" method=\"post\">",
+        	&ui_submit($text{'check_title'})."</form></div>\n";
+
 $saved = $text{'global_saved'} if $in{'saved'};
 print "<form action=save_global.cgi>\n";
 print "<table border width=\"100%\">\n";
@@ -45,8 +49,6 @@ print "<tr> <td colspan=4>$text{'access_taboo'}</td> </tr>\n";
 
 print "</table></td></tr></table>\n";
 print  &ui_submit($text{'save'}),"</form>\n";
-print "<form action=\"check_inst.cgi\" method=\"post\">",
-        	&ui_submit($text{'check_title'})."</form>\n";
 
 &ui_print_footer("", $text{'index_return'});
 
