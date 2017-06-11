@@ -389,8 +389,11 @@ sub save_select
 sub multi_input
 {
 local $v = &find_value($_[0], $_[2]);
+local $l = 1 + $v =~ tr/\n|\r//;
+$l=4  if ($l <= 4);
+$l=15 if ($l >= 14);
 local $rv = "<td valign=\"top\"><b>$_[1]</b></td> <td colspan=\"3\">".
-	    "<textarea rows=\"4\" cols=\"80\" name=\"$_[0]\">\n$v</textarea></td>\n";
+	    "<textarea rows=\"$l\" cols=\"80\" name=\"$_[0]\">\n$v</textarea></td>\n";
 return $rv;
 }
 
@@ -433,6 +436,79 @@ if (!-d $homedir) {
 		}
 	}
 return 1;
+}
+
+# mdom_help()
+# returns majordomo help link
+sub mdom_help
+{
+local $rv= &help_search_link("majordomo", "man", "doc", "google");
+return $rv;
+}
+
+# check_mdom_config($conf)
+# moved from index.cgi, can be used from others also
+sub check_mdom_config 
+{
+local $conf=$_[0];
+# Check for the majordomo config file
+if (!-r $config{'majordomo_cf'}) {
+	print &text('index_econfig', "<tt>$config{'majordomo_cf'}</tt>",
+		 "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+	&ui_print_footer("/", $text{'index'});
+	exit;
+	}
+# Check for the programs dir
+if (!-d $config{'program_dir'}) {
+	print &text('index_eprograms', "<tt>$config{'program_dir'}</tt>",
+		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+	&ui_print_footer("/", $text{'index'});
+	exit;
+	}
+# Check majordomo version
+if (!-r "$config{'program_dir'}/majordomo_version.pl") {
+	print &text('index_eversion2', "majordomo_version.pl",
+			  $config{'program_dir'},
+		 	  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+	&ui_print_footer("/", $text{'index'});
+	exit;
+	}
+if ($majordomo_version < 1.94 || $majordomo_version >= 2) {
+	print "$text{'index_eversion'}<p>\n";
+	&ui_print_footer("/", $text{'index'});
+	exit;
+	}
+# Check $homedir in majordomo.cf
+if (!&homedir_valid($conf)) {
+	print &text('index_emdomdir', '$homedir', $homedir),"<p>\n";
+	&ui_print_footer("/", $text{'index'});
+	exit;
+	}
+# Check $listdir in majordomo.cf
+local $listdir = &perl_var_replace(&find_value("listdir", $conf), $conf);
+if (!-d $listdir) {
+	print &text('index_emdomdir', '$listdir', $listdir),"<p>\n";
+	&ui_print_footer("/", $text{'index'});
+	exit 1;
+	}
+# Check if module needed for aliases is OK
+if ($config{'aliases_file'} eq 'postfix') {
+        # Postfix has to be installed
+        &foreign_installed("postfix", 1) ||
+                &ui_print_endpage(&text('index_epostfix', '../postfix/'));
+        }
+elsif ($config{'aliases_file'} eq '') {
+        # Sendmail has to be installed
+        &foreign_installed("sendmail", 1) ||
+                &ui_print_endpage(&text('index_esendmail2', '','../sendmail/'));
+        }
+else {
+        # Only the sendmail module has to be installed
+        &foreign_check("sendmail") ||
+                &ui_print_endpage(&text('index_esendmail3'));
+        }
+
+return 0;
 }
 
 1;

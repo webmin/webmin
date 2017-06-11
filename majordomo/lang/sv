@@ -2,8 +2,7 @@ index_title=Majordomos listhanterare
 index_econfig=Konfigurationsfilen $1 för majordomo finns inte. Dina <a href='$2'>modulinställningar</a> kanske är felaktiga, eller också har majordomo inte installerats.
 index_eprograms=Majordomo-katalogen $1 finns inte. Dina <a href='$2'>modulinställningar</a> kanske är felaktiga, eller också har majordomo inte installerats.
 index_eversion=Din version av majordomo stöds inte av Webmin. Endast versionerna 1.94 och högre stöds.
-index_ehomedir=Variabeln <tt>$homedir</tt> i din konfigurationsfil för majordomo är satt till $1, som inte finns.
-index_elistdir=Variabeln <tt>$listdir</tt> i din konfigurationsfil för majordomo är satt till $1, som inte finns.
+index_emdomdir=Variabeln <tt>$1</tt> i din konfigurationsfil för majordomo är satt till $1, som inte finns.
 index_esendmail=Konfigurationsfilen $1 för sendmail finns inte. Kontrollera inställningarna för din <a href=/sendmail/>Sendmail-modul</a>.
 index_esendmailversion=Din konfigurationsfil för sendmail verkar inte höra till den senaste sendmail-versionen. Webmin stödjer endast version 8.8 och uppåt.
 index_setupdesc=Majordomo är installerat på systemet, men har inte satts upp ordentligt i sendmails aliasfil.

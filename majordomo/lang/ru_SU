@@ -2,8 +2,7 @@ index_title=Менеджер списков рассылки Majordomo
 index_econfig=Файл настроек majordomo $1 не существует. Возможно некорректны <a href='$2'>настройки модуля</a>, либо majordomo не установлен.
 index_eprograms=Каталог majordomo $1 не существует. Возможно некорректны <a href='$2'>настройки модуля</a>, либо majordomo не установлен.
 index_eversion=Ваша версия majordomo не поддерживается Webmin. Поддерживаются только версии 1.94 и выше.
-index_ehomedir=Переменная <tt>$homedir</tt> в вашем файле настроек majordomo установлена в $1, чего не существует.
-index_elistdir=Переменная <tt>$listdir</tt> в вашем файле настроек majordomo установлена в $1, чего не существует.
+index_emdomdir=Переменная <tt>$1</tt> в вашем файле настроек majordomo установлена в $1, чего не существует.
 index_esendmail=Файл настроек sendmail $1 не существует. Проверьте настройки <a href=/sendmail/>модуля Sendmail</a>.
 index_esendmailversion=Ваш файл настроек sendmail предназначен для старых версий sendmail. Webmin поддерживает только версии 8.8 и выше.
 index_setupdesc=Majordomo установлен на вашей системе, но не настроен в файле псевдонимов sendmail (aliases).

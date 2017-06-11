@@ -62,6 +62,7 @@ modify=Modify
 reset=Reset
 ok=OK
 cancel=Cancel
+fail=Failed
 helpsearch=Search Docs..
 switch_remote_euser=The Unix user $1 does not exist.
 programname=Webmin
