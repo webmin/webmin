@@ -116,7 +116,7 @@ index_add=Neue Mailingliste
 index_count=# Teilnehmer
 index_digest=Neue &#220;bersichtsliste
 index_econfig=Die Majordomo-Konfigurationsdatei $1 gibt es nicht. Vielleicht ist Ihre <a href='$2'>Modulkonfiguration</a> falsch oder Majordomo ist nicht installiert.
-index_emdomdir=Die <tt>$1</tt> Variable in Ihrer Majordomo-Konfigurationsdatei ist auf $2 eingestellt. Dieses existiert jedoch nicht.
+index_emdomdir=Die <tt>$1</tt> Variable in Ihrer Majordomo-Konfigurationsdatei ist auf <tt>$2</tt> eingestellt. Dieses existiert jedoch nicht.
 index_epostfix=Postfix ist entweder nicht installiert oder nicht richtig auf Ihrem System eingestellt. Pr&#252;fe die <a href='$1'>Postfix Modul</a> Konfiguration.
 index_eprograms=Das Majordomo-Verzeichnis $1 gibt es nicht. Vielleicht ist Ihre <a href='$2'>Modulkonfiguration</a> falsch oder Majordomo ist nicht installiert.
 index_esendmail2=Sendmail ist entweder nicht nicht installiert oder nicht richtig auf Ihrem System eingerichtet. Pr&#252;fen Sie bitte die <a href=$2>Modulkonfiguration</a>.
