@@ -113,7 +113,7 @@ head_title=Headers en Footers
 index_add=Toevoegen nieuwe email lijst
 index_digest=Toevoegen nieuwe samenvatting lijst.
 index_econfig=De Majordomo config file $1 bestaat niet. Misschien is uw <a href='$2'>module configuratie</a> niet correct, of Majordomo is niet geinstalleerd.
-index_emdomdir=De <tt>$1</tt> variabel in uw Majordomo config file is ingesteld naar $1, en die bestaat niet.
+index_emdomdir=De <tt>$1</tt> variabel in uw Majordomo config file is ingesteld naar <tt>$2</tt>, en die bestaat niet.
 index_epostfix=Postfix is of niet geinstalleerd of niet goed geconfigureerd op uw systeem. Controleer de <a href='$1'>Postfix module</a> configuratie.
 index_eprograms=De Majordomo directory $1 bestaat niet. Misschien is uw <a href='$2'>module configuratie</a> niet correct, of Majordomo is niet geinstalleerd.
 index_esendmail2=Sendmail is of niet geinstalleerd of niet goed geconfigureerd op uw systeem. Controleer de <a href='$2'>Sendmail module</a> configuratie.

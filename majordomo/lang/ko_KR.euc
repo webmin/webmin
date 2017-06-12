@@ -2,7 +2,7 @@ index_title=majordomo 목록 관리자
 index_econfig=majordomo 구성 파일 $1이(가) 존재하지 않습니다. <a href='$2'>모듈 구성</a>이 정확하지 않거나 majordomo가 설치되지 않았을 수 있습니다.
 index_eprograms=majordomo 디렉토리 $1이(가) 존재하지 않습니다. <a href='$2'>모듈 구성</a>이 정확하지 않거나 majordomo가 설치되지 않았을 수 있습니다.
 index_eversion=Webmin에서 지원하지 않는 majordomo 버전입니다. Webmin에서는 1.94 이상 버전만 지원합니다.
-index_emdomdir=majordomo 구성 파일의<tt>$1</tt> 변수가 존재하지 않는 $1(으)로 설정되어 있습니다.
+index_emdomdir=majordomo 구성 파일의<tt>$1</tt> 변수가 존재하지 않는 <tt>$2</tt>(으)로 설정되어 있습니다.
 index_esendmail=sendmail 구성 파일 $1이(가) 존재하지 않습니다. <a href=/sendmail/>sendmail 모듈</a> 구성을 검사하십시오.
 index_esendmailversion=sendmail 구성 파일이 최신 sendmail 버전용이 아닙니다. Webmin에서는 8.8 이상 버전만 지원합니다.
 index_setupdesc=majordomo가 시스템에 설치되어 있지만 sendmail 별칭 파일에서 올바르게 설정되지 않았습니다.

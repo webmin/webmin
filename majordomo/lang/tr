@@ -2,7 +2,7 @@ index_title=Majordomo Liste Yöneticisi
 index_econfig=Majordomo yapýlandýrma dosyasý $1 mevcut deðil. <a href='$2'>Modül yapýlandýrmasý</a> yanlýþ ya da, majordomo kurulmamýþ olabilir.
 index_eprograms=Majordomo dizini $1 mevcut deðil. <a href='$2'>Modül yapýlandýrmasý</a> yanlýþ ya da, majordomo kurulmamýþ olabilir.
 index_eversion=Majordomo sürümünüz Webmin tarafýndan desteklenmemektedir. Sadece 1.94 ve üzeri sürümler desteklenmektedir
-index_emdomdir=Majordomo yapýlandýrma dosyasýndaki <tt>$1</tt> deðiþkeni olan $2 mevcut deðildir.
+index_emdomdir=Majordomo yapýlandýrma dosyasýndaki <tt>$1</tt> deðiþkeni olan <tt>$2</tt> mevcut deðildir.
 index_esendmail=Sendmail yapýlandýrma dosyasý $1 mevcut deðildir. <a href=/sendmail/>Sendmail modül</a> yapýlandýrmanýzý kontrol ediniz.
 index_esendmailversion=Sendmail yapýlandýrma dosyanýz en son sürüm sendmail'e sahip deðilsiniz gibi görünüyor. Webmin sadece 8.8 ve daha üstü sürümleri desteklemektedir.
 index_setupdesc=Majordomo sisteminizde kurulu fakat sendmail takma isimler dosyanýz deðiþtirilmemiþ.

@@ -2,7 +2,7 @@ index_title=Majordomo mana¾er mailových seznamù
 index_econfig=Majordomo konfiguraèní soubor $1 neexistuje. Mo¾ná va¹e <a href='$2'>konfigurace modulu</a> není správná, nebo majordomo není nainstalován.
 index_eprograms=Majordomo adresáø $1 neexistuje. Mo¾ná va¹e <a href='$2'>konfigurace modulu</a> není správná, nebo majordomo není nainstalován.
 index_eversion=Verze va¹eho majordomunení Webminem podporována. Jsou podporovány pouze verze 1.94 a vy¹¹í.
-index_emdomdir=Promìnná <tt>$1</tt> v konfiguraèním souboru va¹eho majordomu je nastavena na $1, av¹ak tato hodnota není platná.
+index_emdomdir=Promìnná <tt>$1</tt> v konfiguraèním souboru va¹eho majordomu je nastavena na <tt>$2</tt>, av¹ak tato hodnota není platná.
 index_esendmail=Konfiguraèní soubor Sendmailu $1 neexistuje. Zkontrolujte va¹i konfiguraci <a href=/sendmail/>modulu Sendmailu</a>.
 index_esendmailversion=Sendmail konfiguraèní soubor nevyhovuje posledním verzím Sendmailu. Webmin podporuje pouze verze 8.8 a vy¹¹í.
 index_setupdesc=Majordomo je ve va¹em systému nainstalován, není v¹ak pravdìpodobnì správnì nastaven v souburu Sendmail aliasù.
