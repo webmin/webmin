@@ -52,11 +52,11 @@ else {
 
 # Validate username, and check for a clash
 $in{'name'} =~ /^[A-z0-9\-\_\.\@]+$/ && $in{'name'} !~ /^\@/ ||
-	&error(&text('save_ename', $in{'name'}));
+	&error(&text('save_ename', &html_escape($in{'name'})));
 $in{'name'} eq 'webmin' && &error($text{'save_enamewebmin'});
 if (!$in{'old'} || $in{'old'} ne $in{'name'}) {
 	my $clash = &get_user($in{'name'});
-	$clash && &error(&text('save_edup', $in{'name'}));
+	$clash && &error(&text('save_edup', &html_escape($in{'name'})));
 	}
 !$access{'logouttime'} || $in{'logouttime_def'} ||
 	$in{'logouttime'} =~ /^\d+$/ || &error($text{'save_elogouttime'});
