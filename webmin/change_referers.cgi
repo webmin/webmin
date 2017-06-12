@@ -10,7 +10,8 @@ require './webmin-lib.pl';
 $gconfig{'referer'} = $in{'referer'};
 @refs = split(/\s+/, $in{'referers'});
 foreach my $r (@refs) {
-	$r =~ /^[a-z0-9\.\-\_]+$/ || &error(&text('referers_ehost', $r));
+	$r =~ /^[a-z0-9\.\-\_]+$/ ||
+		&error(&text('referers_ehost', &html_escape($r)));
 	}
 $gconfig{'referers'} = join(" ", @refs);
 $gconfig{'referers_none'} = int(!$in{'referers_none'});

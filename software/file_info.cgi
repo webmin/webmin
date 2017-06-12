@@ -20,7 +20,8 @@ else {
 	}
 
 if (!%file) {
-	print "<b>",&text('file_notfound', "<tt>$f</tt>"),"</b><p>\n";
+	print "<b>",&text('file_notfound',
+			  "<tt>".&html_escape($f)."</tt>"),"</b><p>\n";
 	}
 else {
 	# display file info
