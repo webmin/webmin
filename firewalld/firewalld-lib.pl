@@ -40,9 +40,6 @@ if ($?) {
 	}
 my $default_zone = backquote_command(
 	"$config{'firewall_cmd'} --get-default-zone</dev/null 2>&1");
-if ($?) {
-	&error("Failed to get default zone : $default_zone");
-}
 chomp($default_zone);
 my $zone;
 foreach my $l (split(/\r?\n/, $out)) {
