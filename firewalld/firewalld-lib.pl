@@ -38,12 +38,15 @@ my $out = &backquote_command("$config{'firewall_cmd'} --list-all-zones ".
 if ($?) {
 	&error("Failed to list zones : $out");
 	}
+my $default_zone = backquote_command(
+	"$config{'firewall_cmd'} --get-default-zone</dev/null 2>&1");
+chomp($default_zone);
 my $zone;
 foreach my $l (split(/\r?\n/, $out)) {
 	if ($l =~ /^(\S+)(\s+\(.*\))?/) {
 		# New zone
 		$zone = { 'name' => $1,
-			  'default' => $2 ? 1 : 0 };
+			  'default' => $default_zone eq $1 ? 1 : 0 };
 		push(@rv, $zone);
 		}
 	elsif ($l =~ /^\s+(\S+):\s*(.*)/ && $zone) {
@@ -217,4 +220,3 @@ return $? ? $out : undef;
 }
 
 1;
-
