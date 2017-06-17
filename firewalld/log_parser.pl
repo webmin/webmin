@@ -11,7 +11,7 @@ our (%text);
 sub parse_webmin_log
 {
 my ($user, $script, $action, $type, $object, $p) = @_;
-if ($type eq "port" || $type eq "serv") {
+if ($type eq "port" || $type eq "serv" || $type eq "forward") {
 	return &text("log_${action}_${type}",
 		     "<tt>".&html_escape($object)."</tt>");
 	}
