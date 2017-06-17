@@ -382,6 +382,28 @@ else {
 		$form++;
 		}
 
+
+	# Show ipset overview if ipsets are availibe
+        # may need to check if they are used by firewall rules
+	@ipsets  = &get_ipsets_active();
+	if (@ipsets) {	
+	    print &ui_hr();
+	    print "<b>$text{'index_ipset_title'}</b>";
+	    # Generate the header
+	    local (@hcols, @tds);
+	    push(@hcols, $text{'index_ipset'}, $text{'index_ipset_name'}, $text{'index_ipset_type'},
+				 $text{'index_ipset_elem'}, $text{'index_ipset_size'});
+	    push(@tds, "", "", "", "", "");
+	    print &ui_columns_start(\@hcols, 100, 0, \@tds);
+	    # Generate a row for each rule
+	    foreach $s (@ipsets) {
+		local @cols;
+		push(@cols, "", "<b>$s->{'Name'}</b>", $s->{'Type'},$s->{'Number'},$s->{'Size'});
+		print &ui_columns_row(\@cols, \@tds);
+                }
+	    print &ui_columns_end();
+	    }
+
 	# Display buttons for applying and un-applying the configuration,
 	# and for creating an init script if possible
 	print &ui_hr();
