@@ -108,6 +108,7 @@ if (!$config{'direct'} &&
 else {
 	$form = 0;
 	@tables = &get_iptables_save();
+	@ipsets  = &get_ipsets_active();
 	if (!$config{'direct'}) {
 		# Verify that all known tables exist, and if not add them to the
 		# save file
@@ -444,6 +445,23 @@ else {
 		}
 
 	print &ui_buttons_end();
+
+	# Show ipset overview
+	if (@ipsets) {	
+	    # Generate the header
+	    local (@hcols, @tds);
+	    print &ui_columns_start();
+	    push(@hcols, "", "List of active IP-set sets");
+	    push(@tds, "width=5", "");
+	    print &ui_columns_start(\@hcols, 100, 0, \@tds);
+	    # Generate a row for each rule
+	    foreach $s (@ipsets) {
+		local @cols;
+		push(@cols, "", $s);
+		print &ui_columns_row(\@cols, \@tds);
+                }
+	    print &ui_columns_end();
+	    }
 	}
 
 &ui_print_footer("/", $text{'index'});
