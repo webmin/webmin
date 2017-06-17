@@ -131,7 +131,9 @@ desc_physdev-out!=output physical interface is not $1
 desc_conds=If $1
 desc_and=and
 desc_always=Always
-desc_args--match-set=$2 adress is contained in IP-set $1  
+desc_args--match-set=$2 is contained in IP-set $1  
+desc_src=source
+desc_dest=destination
 
 redhat_einstalled=No <tt>iptables</tt> bootup action was found, indicating that the IPtables package is not installed on your system
 redhat_eoutput=An error occured getting IPtables status from the command $1. This probably indicates that your system has been configured to use IPchains instead of IPtables.

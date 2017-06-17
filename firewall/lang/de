@@ -41,7 +41,10 @@ delete_rusure=Sind Sie sicher, dass Sie die Kette $1 l&#246;schen m&#246;chten? 
 delete_title=L&#246;sche Regel
 desc_always=Immer
 desc_and=und
-desc_args--match-set=$2-Adresse in IP-Set $1 enthalten ist
+desc_args--match-set=$2 in IP-Set $1 enthalten ist
+desc_src=Quelle
+desc_dest=Ziel
+
 desc_conds=Wenn $1
 desc_d=Ziel ist $1
 desc_d!=Ziel ist nicht $1
