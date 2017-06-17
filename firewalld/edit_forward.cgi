@@ -24,6 +24,7 @@ if (!$in{'new'}) {
 		$mode = 0;
 		$port = $ports;
 		}
+	# XXX parse dst options
 	}
 else {
 	&ui_print_header(undef, $text{'forward_create'}, "");
@@ -64,7 +65,8 @@ print &ui_table_row($text{'forward_dstport'},
 			    &ui_textbox("dstport", $dstport, 6) ],
 			  [ 1, $text{'port_mode1'},
 			    &ui_textbox("dstportlow", $dstportlow, 6)." - ".
-			    &ui_textbox("dstporthigh", $dstporthigh, 6) ] ]));
+			    &ui_textbox("dstporthigh", $dstporthigh, 6) ],
+			  [ 2, $text{'port_mode2'} ] ]));
 
 # Destination address
 print &ui_table_row($text{'forward_dstaddr'},

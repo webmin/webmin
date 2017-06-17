@@ -131,10 +131,10 @@ my $out = &backquote_logged(
 	$config{'firewall_cmd'}." ".
 	"--zone ".quotemeta($zone->{'name'})." ".
 	"--permanent ".
-	"--add-forward-port=port=$srcport:proto=$srcproto ".
-	($dstport ? ":toport=$dstport " : "").
-	($dstaddr ? ":toaddr=$dstaddr " : "").
-	"2>&1");
+	"--add-forward-port=port=$srcport:proto=$srcproto".
+	($dstport ? ":toport=$dstport" : "").
+	($dstaddr ? ":toaddr=$dstaddr" : "").
+	" 2>&1");
 return $? ? $out : undef;
 }
 
@@ -251,6 +251,35 @@ my $cmd = "$config{'firewall_cmd'} --set-default-zone ".
 	  quotemeta($zone->{'name'});
 my $out = &backquote_logged($cmd." 2>&1 </dev/null");
 return $? ? $out : undef;
+}
+
+# parse_port_field(&in, name)
+# Either returns a port expression, or calls error
+sub parse_port_field
+{
+my ($in, $pfx) = @_;
+if ($in->{$pfx.'mode'} == 0) {
+	$in->{$pfx.'port'} =~ /^\d+$/ &&
+	  $in->{$pfx.'port'} > 0 && $in->{$pfx.'port'} < 65536 ||
+	  getservbyname($in->{$pfx.'port'}, $in->{'proto'}) ||
+	     &error($text{'port_eport'});
+	return $in->{$pfx.'port'};
+	}
+elsif ($in->{$pfx.'mode'} == 1) {
+	$in->{$pfx.'portlow'} =~ /^\d+$/ &&
+	  $in->{$pfx.'portlow'} > 0 && $in->{$pfx.'portlow'} < 65536 ||
+	     &error($text{'port_eportlow'});
+	$in->{$pfx.'porthigh'} =~ /^\d+$/ &&
+	  $in->{$pfx.'porthigh'} > 0 && $in->{$pfx.'porthigh'} < 65536 ||
+	     &error($text{'port_eporthigh'});
+	$in->{$pfx.'portlow'} < $in->{$pfx.'porthigh'} ||
+	     &error($text{'port_eportrange'});
+	return $in->{$pfx.'portlow'}."-".$in->{$pfx.'porthigh'};
+	}
+else {
+	# No port chosen
+	return undef;
+	}
 }
 
 1;

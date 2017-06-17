@@ -37,6 +37,7 @@ port_zone=Allowed in zone
 port_port=Port to allow
 port_mode0=Single port
 port_mode1=Port range
+port_mode2=Same as original port
 port_proto=Network protocol
 port_ezone=Zone does not exist!
 port_err=Failed to save port
@@ -60,6 +61,9 @@ forward_port=Source port
 forward_dstport=Desintation port
 forward_dstaddr=Destination address
 forward_dstlocal=This system
+forward_err=Failed to save forward
+forward_edstaddr=Invalid IPv4 destination address
+forward_eneither=Either a destination address or port or both must be entered
 
 check_ecmd=The FirewallD control command $1 was not found on your system
 
