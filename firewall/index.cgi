@@ -108,7 +108,6 @@ if (!$config{'direct'} &&
 else {
 	$form = 0;
 	@tables = &get_iptables_save();
-	@ipsets  = &get_ipsets_active();
 	if (!$config{'direct'}) {
 		# Verify that all known tables exist, and if not add them to the
 		# save file
@@ -384,13 +383,16 @@ else {
 		}
 
 
-	# Show ipset overview
+	# Show ipset overview if ipsets are availibe
+        # may need to check if they are used by firewall rules
+	@ipsets  = &get_ipsets_active();
 	if (@ipsets) {	
 	    print &ui_hr();
-	    print "<b>Aktive IP-Sets die von der Firewall verwendet werden k&ouml;nnen</b>";
+	    print "<b>$text{'index_ipset_title'}</b>";
 	    # Generate the header
 	    local (@hcols, @tds);
-	    push(@hcols, "IP-set", "Name", "Type", "Elements","Size");
+	    push(@hcols, $text{'index_ipset'}, $text{'index_ipset_name'}, $text{'index_ipset_type'},
+				 $text{'index_ipset_elem'}, $text{'index_ipset_size'});
 	    push(@tds, "", "", "", "", "");
 	    print &ui_columns_start(\@hcols, 100, 0, \@tds);
 	    # Generate a row for each rule
