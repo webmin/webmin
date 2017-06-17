@@ -121,6 +121,40 @@ my $out = &backquote_logged("$config{'firewall_cmd'} ".
 return $? ? $out : undef;
 }
 
+# create_firewalld_forward(&zone, src-port, src-proto, dst-port, dst-addr)
+# Create a new forwarding rule in some zone. Returns undef on success or an
+# error message on failure
+sub create_firewalld_forward
+{
+my ($zone, $srcport, $srcproto, $dstport, $dstaddr) = @_;
+my $out = &backquote_logged(
+	$config{'firewall_cmd'}." ".
+	"--zone ".quotemeta($zone->{'name'})." ".
+	"--permanent ".
+	"--add-forward-port=port=$srcport:proto=$srcproto ".
+	($dstport ? ":toport=$dstport " : "").
+	($dstaddr ? ":toaddr=$dstaddr " : "").
+	"2>&1");
+return $? ? $out : undef;
+}
+
+# delete_firewalld_forward(&zone, src-port, src-proto, dst-port, dst-addr)
+# Deletes a forwarding rule in some zone. Returns undef on success or an
+# error message on failure
+sub delete_firewalld_forward
+{
+my ($zone, $srcport, $srcproto, $dstport, $dstaddr) = @_;
+my $out = &backquote_logged(
+	$config{'firewall_cmd'}." ".
+	"--zone ".quotemeta($zone->{'name'})." ".
+	"--permanent ".
+	"--remove-forward-port=port=$srcport:proto=$srcproto ".
+	($dstport ? ":toport=$dstport " : "").
+	($dstaddr ? ":toaddr=$dstaddr " : "").
+	"2>&1");
+return $? ? $out : undef;
+}
+
 # apply_firewalld()
 # Make the current saved config active
 sub apply_firewalld

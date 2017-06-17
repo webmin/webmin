@@ -63,7 +63,10 @@ print &ui_form_end();
 my @links = ( &ui_link("edit_port.cgi?new=1&zone=".&urlize($zone->{'name'}),
 		       $text{'index_padd'}),
 	      &ui_link("edit_serv.cgi?new=1&zone=".&urlize($zone->{'name'}),
-                       $text{'index_sadd'}) );
+                       $text{'index_sadd'}),
+	      &ui_link("edit_forward.cgi?new=1&zone=".&urlize($zone->{'name'}),
+                       $text{'index_fadd'}),
+	    );
 if (@{$zone->{'services'}} || @{$zone->{'ports'}}) {
 	my @tds = ( "width=5" );
 	unshift(@links, &select_all_link("d", 1),
