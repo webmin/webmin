@@ -95,6 +95,18 @@ if (@{$zone->{'services'}} || @{$zone->{'ports'}}) {
 			&ui_link($url, uc($proto)),
 			], \@tds, "d", "port/".$p);
 		}
+	foreach my $f (@{$zone->{'forward-ports'}}) {
+		my ($port, $proto, $dstport, $dstaddr) =
+			&parse_firewalld_forward($f);
+		my $p = join("/", $port, $proto, $dstport, $dstaddr);
+		my $url = "edit_forward.cgi?id=".&urlize($p).
+			  "&zone=".&urlize($zone->{'name'});
+		print &ui_checked_columns_row([
+			&ui_link($url, $text{'index_tforward'}),
+			&ui_link($url, $port),
+			&ui_link($url, uc($proto)),
+			], \@tds, "d", "forward/".$p);
+		}
 	print &ui_columns_end();
 	print &ui_links_row(\@links);
 	print &ui_form_end([ [ undef, $text{'index_delete'} ] ]);

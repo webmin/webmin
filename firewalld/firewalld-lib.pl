@@ -148,11 +148,20 @@ my $out = &backquote_logged(
 	$config{'firewall_cmd'}." ".
 	"--zone ".quotemeta($zone->{'name'})." ".
 	"--permanent ".
-	"--remove-forward-port=port=$srcport:proto=$srcproto ".
-	($dstport ? ":toport=$dstport " : "").
-	($dstaddr ? ":toaddr=$dstaddr " : "").
-	"2>&1");
+	"--remove-forward-port=port=$srcport:proto=$srcproto".
+	($dstport ? ":toport=$dstport" : "").
+	($dstaddr ? ":toaddr=$dstaddr" : "").
+	" 2>&1");
 return $? ? $out : undef;
+}
+
+# parse_firewalld_forward(str)
+# Parses a forward string into port, proto, dstport and dstaddr
+sub parse_firewalld_forward
+{
+my ($str) = @_;
+my %w = map { split(/=/, $_) } split(/:/, $str);
+return ($w{'port'}, $w{'proto'}, $w{'toport'}, $w{'toaddr'});
 }
 
 # apply_firewalld()

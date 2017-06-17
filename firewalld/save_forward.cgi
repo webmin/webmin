@@ -14,14 +14,13 @@ my ($zone) = grep { $_->{'name'} eq $in{'zone'} } @zones;
 $zone || &error($text{'port_ezone'});
 my ($oldport, $oldproto, $olddstport, $olddstaddr);
 if ($in{'id'}) {
-	($oldport, $oldproto) = split(/\//, $in{'id'});
-	# XXX set other fields
+	($oldport, $oldproto, $olddstport, $olddstaddr) =
+		split(/\//, $in{'id'});
 	}
 
 my $logport;
 if ($in{'delete'}) {
 	# Just remove the existing rule
-	# XXX
 	my $err = &delete_firewalld_forward($zone, $oldport, $oldproto,
 					    $olddstport, $olddstaddr);
 	&error($err) if ($err);

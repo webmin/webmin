@@ -21,6 +21,7 @@ index_port=Port or service
 index_proto=Protocol
 index_tservice=Service
 index_tport=Port
+index_tforward=Forward
 index_padd=Add allowed port.
 index_sadd=Add allowed service.
 index_fadd=Add port forward.

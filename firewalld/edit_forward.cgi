@@ -12,10 +12,10 @@ my @zones = &list_firewalld_zones();
 my ($zone) = grep { $_->{'name'} eq $in{'zone'} } @zones;
 $zone || &error($text{'port_ezone'});
 my ($mode, $ports, $proto, $port, $portlow, $porthigh,
-    $dstmode, $dstport, $dstportlow, $dstporthigh, $dstaddr);
+    $dstmode, $dstports, $dstport, $dstportlow, $dstporthigh, $dstaddr);
 if (!$in{'new'}) {
 	&ui_print_header(undef, $text{'forward_edit'}, "");
-	($ports, $proto) = split(/\//, $in{'id'});
+	($ports, $proto, $dstports, $dstaddr) = split(/\//, $in{'id'});
 	if ($ports =~ /^(\d+)\-(\d+)$/) {
 		$mode = 1;
 		($portlow, $porthigh) = ($1, $2);
@@ -24,7 +24,14 @@ if (!$in{'new'}) {
 		$mode = 0;
 		$port = $ports;
 		}
-	# XXX parse dst options
+	if ($dstports =~ /^(\d+)\-(\d+)$/) {
+		$dstmode = 1;
+		($dstportlow, $dstporthigh) = ($1, $2);
+		}
+	else {
+		$dstmode = 0;
+		$dstport = $dstports;
+		}
 	}
 else {
 	&ui_print_header(undef, $text{'forward_create'}, "");
