@@ -206,6 +206,30 @@ else {
 	}
 }
 
+
+# get_ipsets_active()
+# return a list of active ipsets
+sub get_ipsets_active
+{
+local @rv, $name, $set={};
+open(FILE, "ipset list -t 2>/dev/null |");
+LINE:
+while(<FILE>) {
+	# remove newlines, get arg and value
+        s/\r|\n//g;
+	local ($n, $v) = split(/: /, $_);
+	($n) = $n =~ /(\S+)/;
+	# get values from name to number
+	$name=$v if ($n eq "Name");
+	$set->{$n}=$v;
+	if ($n eq "Number") {
+		 push(@rv, $set);
+		 $set={};
+		}
+	}
+return @rv;
+}
+
 # describe_rule(&rule)
 # Returns a human-readable description of some rule conditions
 sub describe_rule
@@ -216,12 +240,24 @@ foreach $d ('p', 's', 'd', 'i', 'o', 'f', 'dport',
 	    'icmp-type', 'mac-source', 'limit', 'limit-burst',
 	    'ports', 'uid-owner', 'gid-owner',
 	    'pid-owner', 'sid-owner', 'state', 'tos',
-	    'dports', 'sports', 'physdev-in', 'physdev-out') {
+	    'dports', 'sports', 'physdev-in', 'physdev-out', 'args') {
 	if ($_[0]->{$d}) {
+		# get name and values
 		local ($n, @v) = @{$_[0]->{$d}};
+		# with additional args
+		if ($d eq 'args') {
+			# get args
+			@v = grep {/\S/} split(/ / , $_[0]->{$d});
+			# first arg is name, next are values
+			$n=shift(@v);
+			# translate src and dest parameter for ipset
+			push(@v, &text("desc_". pop(@v))) if ($n eq "--match-set");
+			} 
+		# uppercase for p
 		@v = map { uc($_) } @v if ($d eq 'p');
-		@v = map { join(", ", split(/,/, $_)) } @v
-			if ($d eq 's' || $d eq 'd');
+		# merge all in one for s and d
+		@v = map { join(", ", split(/,/, $_)) } @v if ($d eq 's' || $d eq 'd' );
+		# compose desc_$n$d to get localized message, provide values as $1, ..., $n
 		local $txt = &text("desc_$d$n", map { "<strong>$_</strong>" } @v);
 		push(@c, $txt) if ($txt);
 		}

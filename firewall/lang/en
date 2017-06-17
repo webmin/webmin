@@ -71,12 +71,18 @@ index_add=Add
 index_shorewall=Note! It appears that Shorewall is being used to generate your system's firewall. Maybe you should use the <a href='$1'>Shoreline Firewall module</a> instead.
 index_firewalld=Note! It appears that FirewallD is being used to generate your system's firewall. Maybe you should use the <a href='$1'>FirewallD module</a> instead.
 index_fail2ban=Note! It appears that Fail2Ban is being used to manage some firewall rules. You should modify them with <a href='$1'>Fail2Ban module</a> and filter <a href=$2>f2b-.*</a> or <a href=$2>fail2ban-.*</a>.
-index_filter_chain=ist not managed by firewall.
+index_filter_chain=is not managed by firewall.
 index_filter_nodirect=Warning! External managed rules detected. Activate "<a href=$1>Directly edit firewall rules"</a> or your firewall rules may break.
 index_reset=Reset Firewall
 index_resetdesc=Click this button to clear all existing firewall rules and set up new rules for a basic initial configuration.
 index_cluster=Cluster Servers
 index_clusterdesc=Click this button to set up additional Webmin servers to which the firewall configuration will be automatically copied.
+index_ipset=IP-set
+index_ipset_title=Active IP-sets which can be used by firewall rules
+index_ipset_name=Name
+index_ipset_type=Type
+index_ipset_elem=# Elements
+index_ipset_size=Size
 
 desc_p=protocol is $1
 desc_p!=protocol is not $1
@@ -131,6 +137,9 @@ desc_physdev-out!=output physical interface is not $1
 desc_conds=If $1
 desc_and=and
 desc_always=Always
+desc_args--match-set=$2 is contained in IP-set $1  
+desc_src=source
+desc_dest=destination
 
 redhat_einstalled=No <tt>iptables</tt> bootup action was found, indicating that the IPtables package is not installed on your system
 redhat_eoutput=An error occured getting IPtables status from the command $1. This probably indicates that your system has been configured to use IPchains instead of IPtables.
