@@ -383,6 +383,25 @@ else {
 		$form++;
 		}
 
+
+	# Show ipset overview
+	if (@ipsets) {	
+	    print &ui_hr();
+	    print "<b>Aktive IP-Sets die von der Firewall verwendet werden k&ouml;nnen</b>";
+	    # Generate the header
+	    local (@hcols, @tds);
+	    push(@hcols, "IP-set", "Name", "Type", "Elements","Size");
+	    push(@tds, "", "", "", "", "");
+	    print &ui_columns_start(\@hcols, 100, 0, \@tds);
+	    # Generate a row for each rule
+	    foreach $s (@ipsets) {
+		local @cols;
+		push(@cols, "", "<b>$s->{'Name'}</b>", $s->{'Type'},$s->{'Number'},$s->{'Size'});
+		print &ui_columns_row(\@cols, \@tds);
+                }
+	    print &ui_columns_end();
+	    }
+
 	# Display buttons for applying and un-applying the configuration,
 	# and for creating an init script if possible
 	print &ui_hr();
@@ -445,23 +464,6 @@ else {
 		}
 
 	print &ui_buttons_end();
-
-	# Show ipset overview
-	if (@ipsets) {	
-	    # Generate the header
-	    local (@hcols, @tds);
-	    print &ui_columns_start();
-	    push(@hcols, "", "List of active IP-set sets");
-	    push(@tds, "width=5", "");
-	    print &ui_columns_start(\@hcols, 100, 0, \@tds);
-	    # Generate a row for each rule
-	    foreach $s (@ipsets) {
-		local @cols;
-		push(@cols, "", $s);
-		print &ui_columns_row(\@cols, \@tds);
-                }
-	    print &ui_columns_end();
-	    }
 	}
 
 &ui_print_footer("/", $text{'index'});
