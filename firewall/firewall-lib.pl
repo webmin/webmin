@@ -216,12 +216,16 @@ foreach $d ('p', 's', 'd', 'i', 'o', 'f', 'dport',
 	    'icmp-type', 'mac-source', 'limit', 'limit-burst',
 	    'ports', 'uid-owner', 'gid-owner',
 	    'pid-owner', 'sid-owner', 'state', 'tos',
-	    'dports', 'sports', 'physdev-in', 'physdev-out') {
+	    'dports', 'sports', 'physdev-in', 'physdev-out', 'args') {
 	if ($_[0]->{$d}) {
 		local ($n, @v) = @{$_[0]->{$d}};
+		if ($d eq 'args') {
+			@v = grep {/\S/} split(/ / , $_[0]->{$d});
+			$n=shift(@v);
+			} 
 		@v = map { uc($_) } @v if ($d eq 'p');
 		@v = map { join(", ", split(/,/, $_)) } @v
-			if ($d eq 's' || $d eq 'd');
+			if ($d eq 's' || $d eq 'd' );
 		local $txt = &text("desc_$d$n", map { "<strong>$_</strong>" } @v);
 		push(@c, $txt) if ($txt);
 		}
