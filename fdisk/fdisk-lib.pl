@@ -441,7 +441,7 @@ while(<FDISK>) {
 		$disk->{'size'} = $disk->{'cylinders'} * $disk->{'cylsize'};
 		}
 	elsif (/(\/dev\/\S+?(\d+))[ \t*]+\d+\s+(\d+)\s+(\d+)\s+(\S+)\s+(\S{1,2})\s+(.*)/ || /(\/dev\/\S+?(\d+))[ \t*]+(\d+)\s+(\d+)\s+(\S+)\s+(\S{1,2})\s+(.*)/) {
-		# Partition within the current disk from fdisk
+		# Partition within the current disk from fdisk (msdos format)
 		local $part = { 'number' => $2,
 				'device' => $1,
 				'type' => $6,
@@ -449,6 +449,21 @@ while(<FDISK>) {
 				'end' => $4,
 				'blocks' => int($5),
 				'extended' => $6 eq '5' || $6 eq 'f' ? 1 : 0,
+				'index' => scalar(@{$disk->{'parts'}}),
+			 	'edittype' => 1, };
+		$part->{'desc'} = &partition_description($part->{'device'});
+		$part->{'size'} = ($part->{'end'} - $part->{'start'} + 1) *
+				  $disk->{'cylsize'};
+		push(@{$disk->{'parts'}}, $part);
+		}
+	elsif (/(\/dev\/\S+?(\d+))\s+(\d+)\s+(\d+)\s+(\d+)\s+([0-9\.]+[kMGTP])\s+(\S.*)/) {
+		# Partition within the current disk from fdisk (gpt format)
+		local $part = { 'number' => $2,
+                                'device' => $1,
+				'type' => $7,
+				'start' => $3,
+				'end' => $4,
+				'blocks' => $5,
 				'index' => scalar(@{$disk->{'parts'}}),
 			 	'edittype' => 1, };
 		$part->{'desc'} = &partition_description($part->{'device'});
@@ -522,7 +537,11 @@ while(<FDISK>) {
 		push(@{$disk->{'parts'}}, $part);
 		}
 	elsif (/Partition\s+Table:\s+(\S+)/) {
-		# Parted partition table type
+		# Parted partition table type (from parted)
+		$disk->{'table'} = $1;
+		}
+	elsif (/Disklabel\s+type:\s+(\S+)/) {
+		# Parted partition table type (from fdisk)
 		$disk->{'table'} = $1;
 		}
 	}
