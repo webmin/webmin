@@ -5,8 +5,8 @@
 Met deze module kunt u de firewall IP-tafels configureren die aanwezig zijn
 in de Linux kernels van de 2.4 serie. Anders dan met andere firewall configuratie
 programma's zal deze firewall, in plaats van een shell script die de firewall instelt,
-een opgeslagen file lezen en bewerken dmv het uitvoeren van <tt>iptables-herstellen</tt>
-en <tt>iptables-opslaan</tt>. <p>
+een opgeslagen file lezen en bewerken dmv het uitvoeren van <tt>ipi(6)tables-herstellen</tt>
+en <tt>ipi(6)tables-opslaan</tt>. <p>
 
 Indien u reeds een firewall handmatig of middels een script heeft opgezet zal de
 module u vragen om dit te converteren naar een IPtables file en die opslaan.
@@ -68,7 +68,7 @@ en de condities waarvoor de regel moet worden uitgevoerd. <p>
 
 Aan de onderkant van de pagina bevind zich een knop waarmee u de huidige firewall
 configuratie direct actief kunt maken, door deze in de kernel te laden met de 
-<tt>iptables-restore</tt> opdracht. Daaronder bevind zich een knop waarmee u het
+<tt>ipi(6)tables-restore</tt> opdracht. Daaronder bevind zich een knop waarmee u het
 omgekeerde kunt doen, dus de IP tabellen uit de kernel halen waarna u deze 
 vervolgens kunt bewerken.
 
