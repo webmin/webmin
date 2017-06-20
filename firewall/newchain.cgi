@@ -2,7 +2,7 @@
 # newchain.cgi
 # Create a new user-defined chain
 
-require './firewall-lib.pl';
+require './firewall4-lib.pl';
 $access{'newchain'} || &error($text{'new_ecannot'});
 &ReadParse();
 @tables = &get_iptables_save();

@@ -1,7 +1,7 @@
 #!/usr/local/bin/perl
 # Remove some servers from the managed list
 
-require './firewall-lib.pl';
+require './firewall4-lib.pl';
 $access{'cluster'} || &error($text{'ecluster'});
 &ReadParse();
 &foreign_require("servers", "servers-lib.pl");

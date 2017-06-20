@@ -2,7 +2,7 @@
 # move.cgi
 # Swap two rules in some chain
 
-require './firewall-lib.pl';
+require './firewall4-lib.pl';
 &ReadParse();
 &lock_file($iptables_save_file);
 @tables = &get_iptables_save();

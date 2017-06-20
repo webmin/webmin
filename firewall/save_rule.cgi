@@ -2,7 +2,7 @@
 # save_rule.cgi
 # Save, create or delete a rule in a chain
 
-require './firewall-lib.pl';
+require './firewall4-lib.pl';
 &ReadParse();
 &error_setup($text{'save_err'});
 @tables = &get_iptables_save();

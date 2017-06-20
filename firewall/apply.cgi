@@ -2,7 +2,7 @@
 # apply.cgi
 # Apply the current firewall configuration
 
-require './firewall-lib.pl';
+require './firewall4-lib.pl';
 &ReadParse();
 $access{'apply'} || &error($text{'apply_ecannot'});
 &error_setup($text{'apply_err'});

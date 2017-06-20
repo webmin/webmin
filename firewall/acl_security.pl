@@ -1,5 +1,5 @@
 
-do 'firewall-lib.pl';
+do 'firewall4-lib.pl';
 @acl_features = ("newchain", "delchain", "policy", "apply", "unapply", "bootup", "setup", "cluster");
 
 # acl_security_form(&options)

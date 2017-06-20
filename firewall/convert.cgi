@@ -2,7 +2,7 @@
 # convert.cgi
 # Convert in-kernel firewall rules to the save file, and setup a bootup script
 
-require './firewall-lib.pl';
+require './firewall4-lib.pl';
 &ReadParse();
 $access{'setup'} || &error($text{'setup_ecannot'});
 &error_setup($text{'convert_err'});

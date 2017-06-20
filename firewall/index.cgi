@@ -2,7 +2,7 @@
 # index.cgi
 # Display current iptables firewall configuration from save file
 
-require './firewall-lib.pl';
+require './firewall4-lib.pl';
 &ReadParse();
 if ($iptables_save_file) {
 	$desc = &text('index_editing', "<tt>$iptables_save_file</tt>");

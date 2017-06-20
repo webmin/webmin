@@ -2,7 +2,7 @@
 # save_policy.cgi
 # Change the default policy for some chain
 
-require './firewall-lib.pl';
+require './firewall4-lib.pl';
 &ReadParse();
 @tables = &get_iptables_save();
 $table = $tables[$in{'table'}];

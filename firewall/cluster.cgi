@@ -1,7 +1,7 @@
 #!/usr/local/bin/perl
 # Show hosts in firewall cluster
 
-require './firewall-lib.pl';
+require './firewall4-lib.pl';
 $access{'cluster'} || &error($text{'ecluster'});
 &foreign_require("servers", "servers-lib.pl");
 &ReadParse();

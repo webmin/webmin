@@ -2,7 +2,7 @@
 # edit_rule.cgi
 # Display the details of one firewall rule, or allow the adding of a new one
 
-require './firewall-lib.pl';
+require './firewall4-lib.pl';
 &ReadParse();
 @tables = &get_iptables_save();
 $table = $tables[$in{'table'}];

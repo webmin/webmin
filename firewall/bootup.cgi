@@ -2,7 +2,7 @@
 # bootup.cgi
 # Enable or disable iptables at boot time
 
-require './firewall-lib.pl';
+require './firewall4-lib.pl';
 &ReadParse();
 $access{'bootup'} || &error($text{'bootup_ecannot'});
 if ($in{'boot'}) {

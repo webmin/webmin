@@ -2,7 +2,7 @@
 # unapply.cgi
 # Revert the firewall configuration from the kernel settings
 
-require './firewall-lib.pl';
+require './firewall4-lib.pl';
 &ReadParse();
 $access{'unapply'} || &error($text{'unapply_ecannot'});
 &error_setup($text{'apply_err'});

@@ -1,4 +1,4 @@
-# firewall-lib.pl
+# firewall4-lib.pl
 # Functions for parsing iptables-save format files
 # - help pages
 
@@ -497,7 +497,7 @@ if ($config{'direct'}) {
 	system("iptables-save >$ltemp 2>/dev/null");
 	}
 foreach $s (&list_cluster_servers()) {
-	&remote_foreign_require($s, "firewall", "firewall-lib.pl");
+	&remote_foreign_require($s, "firewall", "firewall4-lib.pl");
 	if ($config{'direct'}) {
 		# Directly activate on remote server!
 		local $rtemp = &remote_write($s, $ltemp);
@@ -527,7 +527,7 @@ if ($config{'cluster_mode'}) {
 	}
 local $s;
 foreach $s (&list_cluster_servers()) {
-	&remote_foreign_require($s->{'host'}, "firewall", "firewall-lib.pl");
+	&remote_foreign_require($s->{'host'}, "firewall", "firewall4-lib.pl");
 	local $err = &remote_foreign_call($s->{'host'}, "firewall", "apply_configuration");
 	if ($err) {
 		return &text('apply_remote', $s->{'host'}, $err);

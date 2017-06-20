@@ -1,7 +1,7 @@
 #!/usr/local/bin/perl
 # Add or update a server or group from the webmin servers module
 
-require './firewall-lib.pl';
+require './firewall4-lib.pl';
 $access{'cluster'} || &error($text{'ecluster'});
 &ReadParse();
 &foreign_require("servers", "servers-lib.pl");
@@ -47,7 +47,7 @@ foreach $s (@add) {
 		print &text('add_echeck', $s->{'host'}),"<p>\n";
 		next;
 		}
-	&remote_foreign_require($s->{'host'}, "firewall", "firewall-lib.pl");
+	&remote_foreign_require($s->{'host'}, "firewall", "firewall4-lib.pl");
 
 	local $missing = &remote_foreign_call($s->{'host'}, "firewall",
 					      "missing_firewall_commands");
