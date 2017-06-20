@@ -176,10 +176,11 @@ index_auto4=Blockiere alles ausgenommen SSH, IDENT, ping und hohe Ports auf Schn
 index_auto5=Blockiere alles ausgenommen Ports die f&#252;r virtuelles Hosting benutzt werden, auf Schnittstelle:
 index_bootup=Aktiviere beim Booten
 index_bootupdesc=&#196;ndert die Option, um zu kontrollieren, ob Ihre Firewall beim Booten aktiviert ist oder nicht.
+index_cadd=F&uuml;ge neue Kette hinzu:
 index_cclear=L&#246;sche alle Regeln
 index_cdelete=L&#246;sche Kette
 index_cdeletesel=L&#246;sches ausgew&#228;hltes
-index_chain=Regel $1
+index_chain=Kette $1
 index_chain_forward=Weitergeleitete Pakete (FORWARD) - Gilt nur f&#252;r Pakete, die dieser Host weitergeleitet hat
 index_chain_input=Eingehende Pakete (INPUT) - Gilt nur f&#252;r Pakete die an diesem Host adressiert sind
 index_chain_output=Ausgehende Pakete (OUTPUT) - Gilt nur f&#252;r Pakete, die von diesem Host stammen
@@ -198,12 +199,12 @@ index_ekernel=Ein Fehler ist beim &#220;berpr&#252;fen Ihrer aktuellen IPtables-
 index_evalid=WARNUNG! Ihre aktuelle IPtables-Konfiguration ist ung&#252;ltig : $1
 index_existing=Webmin hat erkannt, dass $1 IPtables Firewall-Regel(n) derzeit in Benutzung sind, die nicht in der Datei $2 gespeichert wurden. Diese Regeln wurden vermutlich von einem Skript einrichtet, jedoch dieses Modul nicht in der Lage ist, dieses zu lesen und zu bearbeiten.<p>Wenn Sie dieses Modul benutzen wollen, um Ihre IPtables-Firewall verwalten zu lassen, klicken Sie auf die Schaltfl&#228;che unten, um die bestehenden Regeln zu einer Sicherungsdatei zu konvertieren und anschlie&#223;end Ihr bestehendes Firewall-Skript zu deaktivieren.
 index_fail2ban=Hinweis! Verwendung von Fail2Ban wurde erkannt. Verwalten sie Fail2Ban mit dem <a href='$1'>Fail2Ban Modul</a> und filtern nach <a href=$2>f2b-.*</a> bzw. <a href=$2>fail2ban-.*</a>
-index_filter_chain=wird nicht von Linux-Firewall verwaltet.
+index_filter_chain=nicht von Linux-Firewall verwaltet.
 index_filter_nodirect=Warnung! Extern verwaltete Regeln erkannt. Bitte aktiveren sie die Option "<a href=$1>Direkte Bearbeitung von Firewall-Regeln"</a>.
 index_firewalld=Hinweis! Es scheint, dass FirewallD verwendet wird, um das Firewall-System zu generieren. Vielleicht sollten Sie die <a href='$1'>FirewallD Firewall-Modul</a> verwenden.
 index_header=Firewall Konfiguration von $1
 index_headerex=Bestehende Firewall Konfiguration
-index_jump=F&#252;hre Regel $1 aus
+index_jump=F&#252;hre Kette $1 aus
 index_jump_=Tue nichts
 index_jump_accept=<font color=#00aa00>Akzeptiert</font>
 index_jump_dnat=Ziel NAT
@@ -216,6 +217,7 @@ index_jump_reject=<font color=#ff4400>Zur&#252;ckweisen</font>
 index_jump_return=Beende Kette
 index_jump_snat=Quell NAT
 index_move=Verschieben
+index_none=F&uuml;r diese Kette sind keine Regeln vorhanden.
 index_policy=Setze Standard-Aktion auf:
 index_policy_accept=Akzeptieren
 index_policy_drop=Verwerfen

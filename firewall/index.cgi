@@ -8,7 +8,7 @@ if ($iptables_save_file) {
 	$desc = &text('index_editing', "<tt>$iptables_save_file</tt>");
 	}
 &ui_print_header(undef, $text{'index_title'}, undef, "intro", 1, 1, 0,
-	&help_search_link("iptables", "man", "doc"), undef, undef, $desc);
+	&help_search_link("iptables", "man", "doc"));
 
 # Check for iptables and iptables-restore commands
 if ($c = &missing_firewall_commands()) {
@@ -32,6 +32,17 @@ if (!$config{'direct'} && defined(&check_iptables) &&
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
+
+#print tabs for IPv4 and IPv6
+print <<EOF ;
+<ul class="nav nav-tabs">
+<li class="active">
+<a  href="#">$text{'index_title_v4'}</a>
+</li>
+</ul>
+EOF
+
+print "<br><b>$desc</b";
 
 # Check if firewall is being started at boot
 if (!$config{'direct'} && &foreign_check("init")) {
