@@ -1,0 +1,3 @@
+desc_icmpv6-type=ICMP type is $1
+desc_icmpv6-type!=ICMP type is not $1
+eip6tables=Unknown ip6tables save file line : $1

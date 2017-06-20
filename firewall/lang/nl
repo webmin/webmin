@@ -326,3 +326,4 @@ setup_ecannot=U bent niet bevoegd om een firewall in te stellen
 setup_eiface=Geen externe netwerk interface ingevuld
 unapply_ecannot=U bent niet bevoegd om de configuratie om te draaien
 unapply_err=Mislukt om de configuratie om te draaien
+eip6tables=Onbekende ip6tables file om op te slaan op regel: $1

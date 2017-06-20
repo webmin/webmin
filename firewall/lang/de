@@ -317,3 +317,6 @@ setup_ecannot=Es ist Ihnen nicht erlaubt die Firewall einzurichten
 setup_eiface=Keine externe Netzwerkschnittstelle eingegeben
 unapply_ecannot=Sie sind nicht berechtigt die Konfiguration zur&#252;ckzusetzen
 unapply_err=Fehlgeschlagen die Konfiguration zur&#252;ckzusetzen
+desc_icmpv6-type=ICMP-Typ ist $1
+desc_icmpv6-type!=ICMP-Typ ist nicht $1
+eip6tables=Unbekannt ip6tables Speicherdatei Zeile: $1

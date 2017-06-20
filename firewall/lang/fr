@@ -271,3 +271,4 @@ setup_ecannot=Vous n'&#234;tes pas autoris&#233; &#224; installer le parefeu
 setup_eiface=Pas d'interface r&#233;seau externe entr&#233;e
 unapply_ecannot=Vous n'&#234;tes pas autoris&#233; &#224; r&#233;voquer la configuration
 unapply_err=Impossible de r&#233;tablir la configuration
+eip6tables=Ligne inconnue dans le fichier ip6tables : $1

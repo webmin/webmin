@@ -237,3 +237,4 @@ log_bootup=Habilitar Firewall al arrancar
 log_bootdown=Deshabilitar Firewall al arrancar
 
 setup_eiface=Nose introdujo ningun interfaz de red externo
+eip6tables=Fichero de firewall desconocido linea: $1

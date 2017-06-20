@@ -244,3 +244,4 @@ log_bootdown=Disabilitato il firewall all&#39;avvio
 
 setup_eiface=Nessuna interfaccia di rete esterna inserita
 
+eip6tables=Riga sconosciuta salvata nel file di ip6tables: $1

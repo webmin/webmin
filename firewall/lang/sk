@@ -294,3 +294,4 @@ setup_ecannot=Nie je Vám povolené nastavova» firewall
 setup_eiface=Nebolo zadané vonkaj¹ie rozhranie siete
 unapply_ecannot=Nie je Vám povolené obnovi» konfiguráciu
 unapply_err=Nepodarilo sa obnovi» konfiguráciu
+eip6tables=Neznáme IP tabuµky ulo¾ené v súbore na riadku : $1

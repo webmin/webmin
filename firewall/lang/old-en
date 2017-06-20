@@ -76,3 +76,4 @@ desc_jump_return=return from chain
 desc_jump_masquerade=masquerade packet
 desc_jump=forward to chain $1
 desc_nojump=do nothing
+index_eip6tables=The command $1 was not found on your system. You need to install the ip6tables package to use this module.

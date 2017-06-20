@@ -237,3 +237,4 @@ save_etcpudp=発着信ポートの指定はTCPまたはUDPプロトコル選択時のみ使用できます
 save_euidowner=送信UNIXユーザが不正です
 setup_eiface=外部ネットワークインタフェースがありません
 unapply_err=設定を元に戻せませんでした
+eip6tables=不明なip6tables保存ファイル 行番号: $1

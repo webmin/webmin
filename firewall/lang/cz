@@ -293,3 +293,4 @@ setup_ecannot=Nemáte oprávnìní nastavit firewall
 setup_eiface=Nebylo vlo¾eno ¾ádné externí sí»ové rozhraní
 unapply_ecannot=Nemáte oprávnìní navrátit konfiguraci
 unapply_err=Chyba pøi zpìtné obnovì konfigurace
+eip6tables=Neznámý øádek v úlo¾ném souboru IP tabulek : $1

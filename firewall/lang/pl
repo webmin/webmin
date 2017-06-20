@@ -329,3 +329,4 @@ setup_ecannot=Nie masz uprawnieñ do ustawiania firewalla
 setup_eiface=Nie wpisano interfejsu zewnêtrznego sieci
 unapply_ecannot=Nie masz uprawnieñ do przywracania konfiguracji
 unapply_err=B³±d przywracania konfiguracji
+eip6tables=Nieznana linia zapisana w pliku ip6tables : $1

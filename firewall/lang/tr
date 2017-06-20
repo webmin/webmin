@@ -292,3 +292,4 @@ setup_ecannot=Güvenlik duvarýný kurmaya izniniz yoktur
 setup_eiface=Hiçbir dýþ að arabirimi girilmedi
 unapply_ecannot=Yapýlandýrmayý geri almanýza izin verilmiyor
 unapply_err=Yapýlandýrma geri alýrken hata oluþtug
+eip6tables=Bilinmeyen IP tablolarý $1 satýrýnda saklanýr

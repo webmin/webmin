@@ -362,3 +362,6 @@ rename_adjust=Modify other rules that jump to this chain?
 rename_none=None
 rename_ecannot=You are not allowed to rename chains
 __norefs=1
+desc_icmpv6-type=ICMP type is $1
+desc_icmpv6-type!=ICMP type is not $1
+eip6tables=Unknown ip6tables save file line : $1

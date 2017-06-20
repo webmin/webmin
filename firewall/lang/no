@@ -329,3 +329,6 @@ setup_ecannot=You are not allowed to setup the firewall
 setup_eiface=No external network interface entered
 unapply_ecannot=You are not allowed to revert the configuration
 unapply_err=Failed to revert configuration
+desc_icmpv6-type=ICMP type er %1
+desc_icmpv6-type!=ICMP type er ikk %1
+eip6tables=Unknown ip6tables save file line : $1
