@@ -79,9 +79,10 @@ index_cluster=Cluster Servers
 index_clusterdesc=Click this button to set up additional Webmin servers to which the firewall configuration will be automatically copied.
 index_ipset=IP-set
 index_ipset_title=Active IP-sets which can be used by firewall rules
-index_ipset_name=Name
+index_ipset_name=Name of IP set
 index_ipset_type=Type
 index_ipset_elem=# Elements
+index_ipset_maxe=# Max 
 index_ipset_size=Size
 
 desc_p=protocol is $1

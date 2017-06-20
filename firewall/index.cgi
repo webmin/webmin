@@ -391,14 +391,16 @@ else {
 	    print "<b>$text{'index_ipset_title'}</b>";
 	    # Generate the header
 	    local (@hcols, @tds);
-	    push(@hcols, $text{'index_ipset'}, $text{'index_ipset_name'}, $text{'index_ipset_type'},
-				 $text{'index_ipset_elem'}, $text{'index_ipset_size'});
+	    push(@hcols, $text{'index_ipset'}, "<b>$text{'index_ipset_name'}</b>&nbsp;&nbsp;", $text{'index_ipset_type'},
+				 $text{'index_ipset_elem'}, $text{'index_ipset_maxe'}, $text{'index_ipset_size'});
 	    push(@tds, "", "", "", "", "");
 	    print &ui_columns_start(\@hcols, 100, 0, \@tds);
 	    # Generate a row for each rule
 	    foreach $s (@ipsets) {
 		local @cols;
-		push(@cols, "", "<b>$s->{'Name'}</b>", $s->{'Type'},$s->{'Number'},$s->{'Size'});
+		local @h= split(/ /, $s->{'Header'});
+		push(@cols, "&nbsp;&nbsp;$h[0] $h[1]", "&nbsp;&nbsp;<b>$s->{'Name'}</b>", $s->{'Type'},$s->{'Number'},
+					$h[5], $s->{'Size'});
 		print &ui_columns_row(\@cols, \@tds);
                 }
 	    print &ui_columns_end();
