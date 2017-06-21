@@ -62,7 +62,6 @@ forward_port=Source port
 forward_dstport=Desintation port
 forward_dstaddr=Destination address
 forward_dstlocal=This system
-forward_err=Failed to save forward
 forward_edstaddr=Invalid IPv4 destination address
 forward_eneither=Either a destination address or port or both must be entered
 
