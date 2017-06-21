@@ -3,12 +3,27 @@
 # Display current ip6tables firewall configuration from save file
 
 require './firewall6-lib.pl';
+require './firewall-lib.pl';
+&set_ipvx_version('ipv6');
 &ReadParse();
 if ($ip6tables_save_file) {
-	$desc = &text('index_editing', "<tt>$ip6tables_save_file</tt>");
+	$desc = &text('index_editing', "<tt>$ipvx_save</tt>");
 	}
 &ui_print_header(undef, $text{'index_title'}, undef, "intro", 1, 1, 0,
-	&help_search_link("ip6tables", "man", "doc"), undef, undef, $desc);
+	&help_search_link("ip6ables", "man", "doc"));
+#print tabs for IPv4 and IPv6
+print <<EOF ;
+<ul class="nav nav-tabs">
+<li>
+<a  href="$ipv4_dir">$text{'index_title_v4'}</a>
+</li>
+<li class="active">
+<a  href="$ipv6_dir"><b>$text{'index_title_v6'}</b></a>
+</li>
+</ul>
+EOF
+
+print "<br><b>$desc</b><br>&nbsp;";
 
 # Check for ip6tables and ip6tables-restore commands
 if ($c = &missing_firewall_commands()) {

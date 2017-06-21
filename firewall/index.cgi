@@ -1,14 +1,29 @@
 #!/usr/local/bin/perl
 # index.cgi
 # Display current iptables firewall configuration from save file
+# unified for IPV4 and IPV6
 
 require './firewall4-lib.pl';
 &ReadParse();
-if ($iptables_save_file) {
-	$desc = &text('index_editing', "<tt>$iptables_save_file</tt>");
+if ($ipvx_save) {
+	$desc = &text('index_editing', "<tt>$ipvx_save</tt>");
 	}
 &ui_print_header(undef, $text{'index_title'}, undef, "intro", 1, 1, 0,
 	&help_search_link("iptables", "man", "doc"));
+#print tabs for IPv4 and IPv6
+print <<EOF ;
+<ul class="nav nav-tabs">
+<li class="active">
+<a  href="$ipv4_dir"><b>$text{'index_title_v4'}</b></a>
+</li>
+<li>
+<a  href="$ipv6_dir">$text{'index_title_v6'}</a>
+</li>
+</ul>
+EOF
+
+print "<br><b>$desc</b";
+
 
 # Check for iptables and iptables-restore commands
 if ($c = &missing_firewall_commands()) {
@@ -18,7 +33,7 @@ if ($c = &missing_firewall_commands()) {
 	}
 
 # Check if the kernel supports iptables
-$out = &backquote_command("iptables -n -t filter -L OUTPUT 2>&1");
+$out = &backquote_command("ip${ipvx}tables -n -t filter -L OUTPUT 2>&1");
 if ($?) {
 	print "<p>",&text('index_ekernel', "<pre>$out</pre>"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
@@ -32,17 +47,6 @@ if (!$config{'direct'} && defined(&check_iptables) &&
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
-
-#print tabs for IPv4 and IPv6
-print <<EOF ;
-<ul class="nav nav-tabs">
-<li class="active">
-<a  href="#">$text{'index_title_v4'}</a>
-</li>
-</ul>
-EOF
-
-print "<br><b>$desc</b";
 
 # Check if firewall is being started at boot
 if (!$config{'direct'} && &foreign_check("init")) {
@@ -58,12 +62,12 @@ if (!$config{'direct'} && &foreign_check("init")) {
 
 # Check if the save file exists. If not, check for any existing firewall
 # rules, and offer to create a save file from them
-@livetables = &get_iptables_save("iptables-save 2>/dev/null |");
+@livetables = &get_iptables_save("ip${ipvx}tables-save 2>/dev/null |");
 
 # Display warnings about active external firewalls!
 &external_firewall_message(\@livetables);
 if (!$config{'direct'} &&
-    (!-s $iptables_save_file || $in{'reset'}) && $access{'setup'}) {
+    (!-s $ipvx_save || $in{'reset'}) && $access{'setup'}) {
 	@tables = @livetables;
 	foreach $t (@tables) {
 		$rules++ if (@{$t->{'rules'}});
@@ -73,13 +77,13 @@ if (!$config{'direct'} &&
 		$hastable{$t->{'name'}}++;
 		}
 	foreach $t (@known_tables) {
-		system("iptables -t $t -n -L >/dev/null") if (!$hastable{$t});
+		system("ip${ipvx}tables -t $t -n -L >/dev/null") if (!$hastable{$t});
 		}
 	if (!$in{'reset'} && ($rules || $chains)) {
 		# Offer to save the current rules
 		print &ui_confirmation_form("convert.cgi",
 			&text('index_existing', $rules,
-			      "<tt>$iptables_save_file</tt>"),
+			      "<tt>$ipvx_save</tt>"),
 			undef,
 			[ [ undef, $text{'index_saveex'} ] ],
 			$init_support && !$atboot ?
@@ -88,7 +92,7 @@ if (!$config{'direct'} &&
 			);
 
 		print &ui_table_start($text{'index_headerex'}, "width=100%", 2);
-		$out = &backquote_command("iptables-save 2>/dev/null");
+		$out = &backquote_command("ip${ipvx}tables-save 2>/dev/null");
 		print &ui_table_row(undef,
 			"<pre>".&html_escape($out)."</pre>", 2);
 		print &ui_table_end();
@@ -96,7 +100,7 @@ if (!$config{'direct'} &&
 	else {
 		# Offer to set up a firewall
 		print &text($in{'reset'} ? 'index_rsetup' : 'index_setup',
-			    "<tt>$iptables_save_file</tt>"),"<p>\n";
+			    "<tt>$ipvx_save</tt>"),"<p>\n";
 		print &ui_form_start("setup.cgi");
 		print &ui_hidden("reset", $in{'reset'});
 		print "<center><table><tr><td>\n";
@@ -128,7 +132,7 @@ else {
 		foreach $t (@known_tables) {
 			if (!$hastable{$t}) {
 				local ($missing) = &get_iptables_save(
-				    "iptables-save --table $t 2>/dev/null |");
+				    "ip${ipvx}tables-save --table $t 2>/dev/null |");
 				if ($missing) {
 					delete($missing->{'line'});
 					&save_table($missing);
