@@ -3,8 +3,12 @@
 # Display current iptables firewall configuration from save file
 # unified for IPV4 and IPV6
 
-require './firewall4-lib.pl';
+require './firewall-lib.pl';
 &ReadParse();
+# what version IP protocaol version to use?
+if (&get_ipvx_version() == 6) { require './firewall6-lib.pl';
+	} else { require './firewall4-lib.pl'; }
+
 if ($ipvx_save) {
 	$desc = &text('index_editing', "<tt>$ipvx_save</tt>");
 	}
@@ -13,16 +17,17 @@ if ($ipvx_save) {
 #print tabs for IPv4 and IPv6
 print <<EOF ;
 <ul class="nav nav-tabs">
-<li class="active">
-<a  href="$ipv4_dir"><b>$text{'index_title_v4'}</b></a>
+<li class="$ipv4_active">
+<a  href="$ipv4_link"><b>$text{'index_title_v4'}</b></a>
 </li>
 <li>
-<a  href="$ipv6_dir">$text{'index_title_v6'}</a>
+<li class="$ipv6_active">
+<a  href="$ipv6_link">$text{'index_title_v6'}</a>
 </li>
 </ul>
 EOF
 
-print "<br><b>$desc</b";
+print "<br><b>$desc</b><br>&nbsp;";
 
 
 # Check for iptables and iptables-restore commands
@@ -442,9 +447,12 @@ else {
 	    foreach $s (@ipsets) {
 		local @cols;
 		local @h= split(/ /, $s->{'Header'});
-		push(@cols, "&nbsp;&nbsp;$h[0] $h[1]", "&nbsp;&nbsp;<b>$s->{'Name'}</b>", $s->{'Type'},$s->{'Number'},
-					$h[5], $s->{'Size'});
-		print &ui_columns_row(\@cols, \@tds);
+		# print matching pínet version
+		if ($h[1] =~ /inet${ipvx}$/) {
+			push(@cols, "&nbsp;&nbsp;$h[0] $h[1]", "&nbsp;&nbsp;<b>$s->{'Name'}</b>",
+					$s->{'Type'}, $s->{'Number'}, $h[5], $s->{'Size'});
+			print &ui_columns_row(\@cols, \@tds);
+			}
                 }
 	    print &ui_columns_end();
 	    }
@@ -528,7 +536,7 @@ sub external_firewall_message
 	if ($filter->{'defaults'}->{'INPUT_ZONES'}) {
         	$fwname.='firewalld ';
         	}
-	if ($filter->{'defaults'} ~~ /^f2b-|^fail2ban-/) {
+	if ($filter->{'defaults'} ~~ /^f2b-|^fail2ban-/ && ! $config{'filter_chain'} ) {
         	$fwname.='fail2ban ';
         	}
 	# warning about not using direct

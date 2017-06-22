@@ -57,6 +57,11 @@ sub get_ip6tables_save
 &get_iptables_save;
 }
 
+sub ip6tables_save
+{
+&iptables_save;
+}
+
 sub by_string_for_ip6tables
 {
 &by_string_for_iptables;

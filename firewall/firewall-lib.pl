@@ -1,22 +1,35 @@
 # firewall-lib.pl
 # Unified functions for iptable4-lib and iptable6-lib 
 # in iptabel4 and iptable6 need onyl to init and call
-# set_ip46_proto
+
+BEGIN { push(@INC, ".."); };
+use WebminCore;
+&init_config();
 
 # set_ipvx_version(version)
 # version can be ipv6 or ipv4,
 sub set_ipvx_version
 {
-$ipvx='';
 $ipvx_save=$iptables_save_file;
-$ipvx_lib='firewall4-lib.pl';
-$ipv4_dir='../firewall/';
-$ipv6_dir='../firewall6/';
-if ($_[0] =~ /ipv6/i) {
+$ipv4_link='../firewall/';
+$ipv6_link='../firewall6/';
+$ipv4_active='active';
+if ($_[0] =~ /6$/i) {
 	$ipvx='6';
 	$ipvx_save=$ip6tables_save_file;
-	$ipvx_lib='firewall6-lib.pl';
+	$ipv4_active='';
+	$ipv6_active='active';
 	}
+}
+
+# get_ipvx_version
+# get iptables version used from environment
+# if script runs in firewall6 or version=inet6, 6 is returned, else 4
+sub get_ipvx_version
+{
+if ( $in{'version'} =~ /6$/ || `pwd` =~ /6$/)
+	{ return 6; }
+return 4;
 }
 
 
