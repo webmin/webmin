@@ -78,9 +78,12 @@ sub show_cert_info {
 	my $certdata=$_[1];
 	my %issuer;
 	my %subject;
+    my %v3ext;
+    my $isreq=0;
+    my @gr;
 	my @fields=('CN','O','OU','L','ST','C');
 	my $field;
-    my $rv = "";
+    if ($certdata=~/^\s*Certificate\s+Request:.*$/mi) {$isreq=1;}
 	foreach $field (@fields){
 		if ($certdata=~/^\s*Issuer:.*?\s+$field=(.*?)(, [A-Z]{1,2}|\/\w+=|$)/m) { $issuer{$field}=$1; }
 		if ($certdata=~/^\s*Subject:.*?\s+$field=(.*?)(, [A-Z]{1,2}|\/\w+=|$)/m) { $subject{$field}=$1; }
@@ -90,10 +93,19 @@ sub show_cert_info {
 	if ($certdata=~/^\s*Subject:.*?\/Email=(\S*?)(,\s*|$)/m) { $subject{'emailAddress'}=$1;}
 	if ($certdata=~/^\s*Not\s*After\s*:\s*(.*?)\s*$/m) { $subject{'expires'}=$1;}
 	if ($certdata=~/^\s*Not\s*Before\s*:\s*(.*?)\s*$/m) { $subject{'issued'}=$1;}
-	if ($certdata=~/^\s*MD5\s*Fingerprint=(.*?)\s*$/m) { $subject{'md5fingerprint'}=$1;}
-	if ($certdata=~/^\s*(\S*)\s*Public\s*Key:\s*\((.*?)\s*bit\)\s*$/m) { $subject{'keytype'}=$1; $subject{'keysize'}=$2;}
-	if ($certdata=~/^\s*Modulus\s*\(\d*\s*bit\):\s*((([0-9a-fA-F]{2}:)*\s*)*[0-9a-fA-F]{2})/ms) { $subject{'modulus'}=$1; }
+	if ($certdata=~/^\s*MD5\s+Fingerprint=(.*?)\s*$/m) { $subject{'md5fingerprint'}=$1;}
+	if ($certdata=~/^\s*SHA1\s+Fingerprint=(.*?)\s*$/m) { $subject{'sha1fingerprint'}=$1;}
+	if ($certdata=~/^\s*SHA256\s+Fingerprint=(.*?)\s*$/m) { $subject{'sha256fingerprint'}=$1;}
+	if ($certdata=~/^\s*Public\s+Key\s+Algorithm:\s*(.*?)\s*$/mi) { $subject{'keytype'}=$1;}
+	if ($certdata=~/^\s*Public-Key:\s*\(\s*(\S*?)\s*bit\s*\)\s*$/m) { $subject{'keysize'}=$1;}
+	if ($certdata=~/^\s*Modulus:\s*((([0-9a-fA-F]{2}:)*\s*)*[0-9a-fA-F]{2})/ms) { $subject{'modulus'}=$1; }
 	if ($certdata=~/^\s*Exponent:\s*(.*?)\s*?$/m) { $subject{'exponent'}=$1; }
+	if ($certdata=~/^\s*X509v3 Subject Alternative Name:\s*(.*?)\s*?$/m) { $v3ext{'san'}=$1; }
+	if ($certdata=~/^\s*Serial\s+Number:\s*((([0-9a-fA-F]{2}:)*\s*)*[0-9a-fA-F]{2})\s+/ms) { $subject{'serial'}=$1;}
+    if (!$subject{'serial'}) {
+        if ($certdata=~/^\s*Serial\s+Number:\s*([0-9]+)\s*\(/ms) { $subject{'serial'}=$1;}
+    }
+	if ($certdata=~/^\s*Signature\s+Algorithm:\s*(.*)$/mi) { $subject{'sigalgorithm'}=$1;}
 	if ($subject{'L'} && ($subject{'ST'} || $subject{'C'})) {$subject{'L'}.=',';} #Append commas
 	if ($subject{'ST'} && $subject{'C'}) {$subject{'ST'}.=',';}                   #Append commas
 	if ($issuer{'L'} && ($issuer{'ST'} || $issuer{'C'})) {$issuer{'L'}.=',';}     #Append commas
@@ -101,30 +113,86 @@ sub show_cert_info {
 	$subject{'modulus'}=~s/$/<\/code><br>/msg;
 	$subject{'modulus'}=~s/^/<code>/msg;
 	$subject{'modulus'}=~s/\s+//msg;
-	$rv .= "<table width=100%>\n";
-	$rv .= "<tr><td width=50%><b>$text{'certmgrlib_subject'}</b></td><td width=50%><b>$text{'certmgrlib_issuer'}</b></td></tr>\n";
-	$rv .= "<tr><td>$subject{'CN'}</td><td>$issuer{'CN'}</td></tr>\n";
-	$rv .= "<tr><td>$subject{'O'}</td><td>$issuer{'O'}</td></tr>\n";
-	$rv .= "<tr><td>$subject{'OU'}</td><td>$issuer{'OU'}</td></tr>\n";
-	$rv .= "<tr><td>$subject{'L'} $subject{'ST'} $subject{'C'}</td><td>$issuer{'L'} $issuer{'ST'} $issuer{'C'}</td></tr>\n";
-	$rv .= "<tr><td>$subject{'emailAddress'}</td><td>$issuer{'emailAddress'}</td></tr>\n";
+    
+    push(@gr, '<span style="font-weight:bold;">'.$text{'certmgrlib_subject'}.'</span>');
+    push(@gr, '');
+    push(@gr, $text{'view_cn'});
+    push(@gr, $subject{'CN'});
+    if ($subject{'O'}) {
+        push(@gr, $text{'view_o'});
+        push(@gr, $subject{'O'});
+    }
+    if ($subject{'OU'}){
+        push(@gr, $text{'view_ou'});
+        push(@gr, $subject{'OU'});
+    }
+    if ($subject{'L'} || $subject{'ST'} || $subject{'C'}) {
+        push(@gr, $text{'view_location'});
+        push(@gr, $subject{'L'}.$subject{'ST'}.$subject{'C'});
+    }
+	if ($subject{'emailAddress'}){
+        push(@gr, $text{'view_email'});
+        push(@gr, $subject{'emailAddress'});
+    }
+    if ($v3ext{'san'}){
+        push(@gr, "subjectAltName");
+        push(@gr, $v3ext{'san'});
+    }
 	if ($subject{'issued'}){
-		$rv .= "<tr><td colspan=2>$text{'issued_on'} $subject{'issued'}</td></tr>\n";
-		$rv .= "<tr><td colspan=2>$text{'expires_on'} $subject{'expires'}</td></tr>\n";
-	}
-	if ($full){
-		$rv .= "<tr><td>$text{'keysize'}</td><td>$subject{'keysize'}</td></tr>\n";
-		$rv .= "<tr><td>$text{'keytype'}</td><td>$subject{'keytype'}</td></tr>\n";
-	}
-	if ($full){
-		$rv .= "<tr><td>$text{'publicExponent'}</td><td>$subject{'exponent'}</td></tr>\n";
-		$rv .= "<tr><td colspan=2>$text{'modulus'}:<br>$subject{'modulus'}</td></tr>\n";
+        push(@gr, $text{'issued_on'});
+        push(@gr, $subject{'issued'});
+        push(@gr, $text{'expires_on'});
+        push(@gr, $subject{'expires'});
 	}
 	if ($subject{'md5fingerprint'}){
-		$rv .= "<tr><td colspan=2>$text{'md5fingerprint'}:<br>$subject{'md5fingerprint'}</td></tr>\n";
+        push(@gr, $text{'md5fingerprint'});
+        push(@gr, $subject{'md5fingerprint'});
 	}
-	$rv .= "</table>\n";
-    return $rv;
+	if ($subject{'sha1fingerprint'}){
+        push(@gr, $text{'sha1fingerprint'});
+        push(@gr, $subject{'sha1fingerprint'});
+	}
+	if ($subject{'sha256fingerprint'}){
+        push(@gr, $text{'sha256fingerprint'});
+        push(@gr, $subject{'sha256fingerprint'});
+	}
+    if ($full) {
+        if ($subject{'serial'}) {
+            push(@gr, $text{'view_serial'});
+            push(@gr, $subject{'serial'});
+        }
+        if ($subject{'sigalgorithm'}) {
+            push(@gr, $text{'view_sig_algorithm'});
+            push(@gr, $subject{'sigalgorithm'});
+        }
+        push(@gr, $text{'keysize'});
+        push(@gr, $subject{'keysize'});
+        push(@gr, $text{'keytype'});
+        push(@gr, $subject{'keytype'});
+        push(@gr, $text{'publicExponent'});
+        push(@gr, $subject{'exponent'});
+        push(@gr, $text{'modulus'});
+        push(@gr, $subject{'modulus'});
+    }
+    if (!$isreq) {
+        push(@gr, '<br /><span style="font-weight:bold;">'.$text{'certmgrlib_issuer'}.'</span>');
+        push(@gr, '');
+        push(@gr, $text{'view_cn'});
+        push(@gr, $issuer{'CN'});
+        if ($issuer{'O'}) {
+            push(@gr, $text{'view_o'});
+            push(@gr, $issuer{'O'});
+        }
+        if ($issuer{'OU'}){
+            push(@gr, $text{'view_ou'});
+            push(@gr, $issuer{'OU'});
+        }
+        if ($issuer{'L'} || $issuer{'ST'} || $issuer{'C'}) {
+            push(@gr, $text{'view_location'});
+            push(@gr, $issuer{'L'}.$issuer{'ST'}.$issuer{'C'});
+        }
+    }
+   return &ui_grid_table(\@gr, 2, undef, ['style="padding:0;"', 'style="padding:0 0 0.5% 3%;width:75%;"']);
 }
 
 sub show_key_info {
@@ -154,6 +222,79 @@ sub show_key_info {
 	} }
 	$rv .= "</table>\n";
     return $rv;
+}
+
+sub show_crl_info {
+	my $full=$_[0];
+	my $crldata=$_[1];
+	my %issuer;
+    my %v3ext;
+    my ($ndx, $pos);
+    my $isreq=0;
+    my @gr;
+	my @fields=('CN','O','OU','L','ST','C');
+	my $field;
+	foreach $field (@fields){
+		if ($crldata=~/^\s*Issuer:.*?\/$field=(.*?)(, [A-Z]{1,2}|\/\w+=|$)/m) { $issuer{$field}=$1; }
+	}
+	if ($crldata=~/^\s*Signature\s+Algorithm:\s*(.*)$/mi) { $issuer{'sigalgorithm'}=$1;}
+ 	if ($crldata=~/^\s*Last\s+Update:\s*(.*?)\s*?$/m) { $v3ext{'lastupdate'}=$1; }
+ 	if ($crldata=~/^\s*Next\s+Update:\s*(.*?)\s*?$/m) { $v3ext{'nextupdate'}=$1; }
+ 	if ($crldata=~/^\s*X509v3 CRL Number:\s*(.*?)\s*?$/m) { $v3ext{'crlnum'}=$1; }
+	if ($issuer{'L'} && ($issuer{'ST'} || $issuer{'C'})) {$issuer{'L'}.=',';}     #Append commas
+	if ($issuer{'ST'} && $issuer{'C'}) {$issuer{'ST'}.=',';}                      #Append commas
+    push(@gr, '<span style="font-weight:bold;">'.$text{'crl'}.'</span>');
+    push(@gr, '');
+    push(@gr, $text{'view_cn'});
+    push(@gr, $issuer{'CN'});
+    if ($issuer{'O'}) {
+        push(@gr, $text{'view_o'});
+        push(@gr, $issuer{'O'});
+    }
+    if ($issuer{'OU'}){
+        push(@gr, $text{'view_ou'});
+        push(@gr, $issuer{'OU'});
+    }
+    if ($issuer{'L'} || $issuer{'ST'} || $issuer{'C'}) {
+        push(@gr, $text{'view_location'});
+        push(@gr, $issuer{'L'}.$issuer{'ST'}.$issuer{'C'});
+    }
+    if ($issuer{'sigalgorithm'}) {
+        push(@gr, $text{'view_sig_algorithm'});
+        push(@gr, $issuer{'sigalgorithm'});
+    }
+    if ($v3ext{'lastupdate'}) {
+        push(@gr, $text{'view_last_update'});
+        push(@gr, $v3ext{'lastupdate'});
+    }
+    if ($v3ext{'nextupdate'}) {
+        push(@gr, $text{'view_next_update'});
+        push(@gr, $v3ext{'nextupdate'});
+    }
+    if ($v3ext{'crlnum'}) {
+        push(@gr, $text{'view_crl_number'});
+        push(@gr, $v3ext{'crlnum'});
+    }
+    if ($full) {
+        push(@gr, "$text{'view_revoked_certs'}:");
+        push(@gr, "");
+        $ndx = index($crldata, "Serial Number:");
+        while ($ndx gt 0) {
+            $crldata = substr($crldata, $ndx);
+            $crldata=~/^\s*Serial Number:\s*(.*)$/mi;
+            push(@gr, "<span style=\"padding-left:10%;\">$text{'view_serial'}</span>");
+            push(@gr, $1);
+            $crldata=~/^\s*Revocation Date:\s*(.*)$/mi;
+            push(@gr, "<span style=\"padding-left:10%;\">$text{'view_revoke_date'}</span>");
+            push(@gr, $1);
+            $crldata=~/^\s*X509v3 CRL Reason Code:\s*(.*)$/mi;
+            push(@gr, "<span style=\"padding-left:10%;\">$text{'view_revoke_reason'}</span>");
+            push(@gr, $1);
+            $ndx = index($crldata, "Serial Number:", $ndx + 1);
+        }
+    }
+   
+   return &ui_grid_table(\@gr, 2, undef, ['style="padding:0;"', 'style="padding:0 0 0.5% 3%;width:65%;"']);
 }
 
 sub pem_or_der{
