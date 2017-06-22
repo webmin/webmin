@@ -9,7 +9,7 @@ if ($ipvx_save) {
 	$desc = &text('index_editing', "<tt>$ipvx_save</tt>");
 	}
 &ui_print_header(undef, $text{'index_title'}, undef, "intro", 1, 1, 0,
-	&help_search_link("iptables", "man", "doc"));
+	&help_search_link("ip${ipvx}tables", "man", "doc"));
 #print tabs for IPv4 and IPv6
 print <<EOF ;
 <ul class="nav nav-tabs">
@@ -56,7 +56,7 @@ if (!$config{'direct'} && &foreign_check("init")) {
 		}
 	else {
 		&foreign_require("init", "init-lib.pl");
-		$atboot = &init::action_status("webmin-iptables") == 2;
+		$atboot = &init::action_status("webmin-ip${ipvx}tables") == 2;
 		}
 	}
 
@@ -219,6 +219,34 @@ else {
                 print "<form action=save_policy.cgi>\n";
                 print &ui_hidden("table", $in{'table'});
                 print &ui_hidden("chain", $c);
+
+		if (@rules > $config{'perpage'}) {
+		        # Need to show arrows
+		        print "<center>\n";
+		        $s = int($in{'start'});
+		        $e = $in{'start'} + $config{'perpage'} - 1;
+		        $e = @rules-1 if ($e >= @rules);
+		        if ($s) {
+		                print &ui_link("?start=".
+		                                ($s - $config{'perpage'}),
+		                    "<img src=/images/left.gif border=0 align=middle>");
+		                }
+		        print "<font size=+1>",&text('index_position', $s+1, $e+1,
+		                                     scalar(@rules)),"</font>\n";
+		        if ($e < @rules-1) {
+		                print &ui_link("?start=".
+		                               ($s + $config{'perpage'}),
+		                   "<img src=/images/right.gif border=0 align=middle>");
+		                }
+		        print "</center>\n";
+		        }
+		else {
+		        # Can show them all
+		        $s = 0;
+		        $e = @rules - 1;
+			}
+	
+		@rules = @rules[$s..$e];
 
 		if (@rules) {
 			@links = ( &select_all_link("d", $form),
@@ -495,13 +523,13 @@ sub external_firewall_message
 	# detect external firewalls
 	local ($filter) = grep { $_->{'name'} eq 'filter' } @{$_[0]};
 	if ($filter->{'defaults'}->{'shorewall'}) {
-        $fwname+='shorewall ';
+        $fwname.='shorewall ';
         	}
 	if ($filter->{'defaults'}->{'INPUT_ZONES'}) {
-        	$fwname+='firewalld ';
+        	$fwname.='firewalld ';
         	}
 	if ($filter->{'defaults'} ~~ /^f2b-|^fail2ban-/) {
-        	$fwname+='fail2ban ';
+        	$fwname.='fail2ban ';
         	}
 	# warning about not using direct
 	if($fwname && !$config{'direct'}) {

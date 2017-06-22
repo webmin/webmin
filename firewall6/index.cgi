@@ -10,7 +10,7 @@ if ($ip6tables_save_file) {
 	$desc = &text('index_editing', "<tt>$ipvx_save</tt>");
 	}
 &ui_print_header(undef, $text{'index_title'}, undef, "intro", 1, 1, 0,
-	&help_search_link("ip6ables", "man", "doc"));
+	&help_search_link("ip6tables", "man", "doc"));
 #print tabs for IPv4 and IPv6
 print <<EOF ;
 <ul class="nav nav-tabs">
@@ -63,8 +63,9 @@ if (!$config{'direct'} && &foreign_check("init")) {
 # Check if the save file exists. If not, check for any existing firewall
 # rules, and offer to create a save file from them
 @livetables = &get_ip6tables_save("ip6tables-save 2>/dev/null |");
-&shorewall_message(\@livetables);
-&firewalld_message(\@livetables);
+
+# Display warnings about active external firewalls!
+&external_firewall_message(\@livetables);
 if (!$config{'direct'} &&
     (!-s $ip6tables_save_file || $in{'reset'}) && $access{'setup'}) {
 	@tables = @livetables;
@@ -193,6 +194,18 @@ else {
 			      @{$table->{'rules'}};
 		print "<b>",$text{"index_chain_".lc($c)} ||
 			    &text('index_chain', "<tt>$c</tt>"),"</b><br>\n";
+
+                # check if chain is filtered out
+                if ($config{'filter_chain'}) {
+                    foreach $filter (split(',', $config{'filter_chain'})) {
+                        if($c =~ /^$filter$/) {
+                                # not managed by firewall, do not dispaly or modify
+                                print "<em>".$text{'index_filter_chain'}."</em><br>\n";
+                                next CHAIN;
+                            }
+                        }
+                    }
+
 		print "<form action=save_policy.cgi>\n";
 		print &ui_hidden("table", $in{'table'});
 		print &ui_hidden("chain", $c);
@@ -221,7 +234,7 @@ else {
 		        # Can show them all
 		        $s = 0;
 		        $e = @rules - 1;
-		}
+			}
 	
 		@rules = @rules[$s..$e];
 
@@ -233,7 +246,7 @@ else {
 			# Generate the header
 			local (@hcols, @tds);
 			push(@hcols, "", $text{'index_action'});
-			push(@tds, "width=5", "width=10% nowrap");
+			push(@tds, "width=5", "width=20% nowrap");
 			if ($config{'view_condition'}) {
 				push(@hcols, $text{'index_desc'});
 				push(@tds, "");
@@ -257,7 +270,7 @@ else {
 					push(@cols, &ui_link("edit_rule.cgi?table=".&urlize($in{'table'})."&idx=$r->{'index'}",$act));
 					}
 				else {
-					push(@cols, $act);
+					push(@cols, "", $act);
 					}
 				if ($config{'view_condition'}) {
 					push(@cols, &describe_rule($r));
@@ -455,23 +468,32 @@ else {
 
 &ui_print_footer("/", $text{'index'});
 
-sub shorewall_message
-{
-local ($filter) = grep { $_->{'name'} eq 'filter' } @{$_[0]};
-if ($filter->{'defaults'}->{'shorewall'}) {
-	print "<b><center>",
-	      &text('index_shorewall', "$gconfig{'webprefix'}/shorewall/"),
-	      "</b></center><p>\n";
-	}
-}
+sub external_firewall_message
+   {
+	local $fwname="";
+	local $fwconfig="$gconfig{'webprefix'}/config.cgi?firewall";
 
-sub firewalld_message
-{
-local ($filter) = grep { $_->{'name'} eq 'filter' } @{$_[0]};
-if ($filter->{'defaults'}->{'INPUT_ZONES'}) {
-	print "<b><center>",
-	      &text('index_firewalld', "$gconfig{'webprefix'}/firewalld/"),
-	      "</b></center><p>\n";
-	}
-}
-
+	# detect external firewalls
+	local ($filter) = grep { $_->{'name'} eq 'filter' } @{$_[0]};
+	if ($filter->{'defaults'}->{'shorewall'}) {
+        $fwname.='shorewall ';
+        	}
+	if ($filter->{'defaults'}->{'INPUT_ZONES'}) {
+        	$fwname.='firewalld ';
+        	}
+	if ($filter->{'defaults'} ~~ /^f2b-|^fail2ban-/) {
+        	$fwname.='fail2ban ';
+        	}
+	# warning about not using direct
+	if($fwname && !$config{'direct'}) {
+                print "<b><center>",
+                &text('index_filter_nodirect', $fwconfig),
+                "</b></center><p>\n";
+           }
+	# naming the detected firewall modules
+    	foreach my $word (split ' ', $fwname) {
+        	print "<center>",
+              	   &text("index_$word", "$gconfig{'webprefix'}/$word/", $fwconfig),
+                   "</center><p>\n";
+        	}
+   }

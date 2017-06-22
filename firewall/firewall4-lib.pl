@@ -10,6 +10,7 @@ use WebminCore;
 require './firewall-lib.pl';
 
 # ipv4 initialization
+$config{'perpage'} ||= 50;	# a value of 0 can cause problems
 if ($config{'save_file'}) {
 	# Force use of a different save file, and webmin's functions
 	$iptables_save_file = $config{'save_file'};
