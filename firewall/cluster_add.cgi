@@ -1,9 +1,11 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # Add or update a server or group from the webmin servers module
 
-require './firewall4-lib.pl';
-$access{'cluster'} || &error($text{'ecluster'});
+require './firewall-lib.pl';
 &ReadParse();
+if (&get_ipvx_version() == 6) { require './firewall6-lib.pl';
+	} else { require './firewall4-lib.pl'; }
+$access{'cluster'} || &error($text{'ecluster'});
 &foreign_require("servers", "servers-lib.pl");
 @allservers = grep { $_->{'user'} } &servers::list_servers();
 
@@ -47,7 +49,7 @@ foreach $s (@add) {
 		print &text('add_echeck', $s->{'host'}),"<p>\n";
 		next;
 		}
-	&remote_foreign_require($s->{'host'}, "firewall", "firewall4-lib.pl");
+	&remote_foreign_require($s->{'host'}, "firewall", $ipvx_lib);
 
 	local $missing = &remote_foreign_call($s->{'host'}, "firewall",
 					      "missing_firewall_commands");
@@ -57,7 +59,7 @@ foreach $s (@add) {
 		}
 
 	@livetables = &remote_foreign_call($s->{'host'}, "firewall",
-				   "get_iptables_save", "iptables-save |");
+				   "get_iptables_save", "ip${ipvx}tables-save |");
 	$rc = 0;
 	foreach $t (@livetables) {
 		$rc += @{$t->{'rules'}};
