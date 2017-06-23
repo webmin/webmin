@@ -38,12 +38,15 @@ if (($in{'filename'}) && ($in{'view'} eq $text{'view_view'})) {
 	}
 	while(<FILE>){ $buffer.=$_;}
 	if ($buffer=~/^\s*-+BEGIN\s*RSA\s*PRIVATE\s*KEY-*\s*$/mi) { $key=1; }
+	if ($buffer=~/^\s*-+BEGIN\s*PRIVATE\s*KEY-*\s*$/mi) { $key=1; }
 	if ($buffer=~/^\s*-+BEGIN\s*CERTIFICATE-*\s*$/mi) { $cert=1; }
 	if ($buffer=~/^\s*-+BEGIN\s*CERTIFICATE\s*REQUEST-*\s*$/mi) { $csr=1; }
+	if ($buffer=~/^\s*-+BEGIN\s*X509\s*CRL-*\s*$/mi) { $crl=1; }
 	if (($key)&&($cert)) {$in{'keycertfile'}=$in{'filename'};}
 	elsif ($key) {$in{'keyfile'}=$in{'filename'};}
 	elsif ($cert) {$in{'certfile'}=$in{'filename'};}
 	elsif ($csr) {$in{'csrfile'}=$in{'filename'};}
+	elsif ($crl) {$in{'crlfile'}=$in{'filename'};}
 	else {
 		print "$text{'e_file'}<br>\n$text{'e_notcert'}\n<p>\n";
 		&footer("", $text{'index_return'});
@@ -135,6 +138,25 @@ if ($in{'keycertfile'}) {
 	exit;
 }
 
+if ($in{'crlfile'}) {
+	if ($in{'dl'} eq 'yes') {
+		# Just output in PEM format
+		&output_cert($in{'crlfile'});
+	}
+
+	open(OPENSSL,"$config{'openssl_cmd'} crl -in $in{'crlfile'} -text -noout|");
+	while(<OPENSSL>){ $buffer.=$_; }
+	close(OPENSSL);
+
+    print &ui_table_start($in{'crlfile'}, "width=60%", 2);
+    print &ui_table_row(undef, (!$buffer ? $text{'e_file'} : show_crl_info(1,$buffer) ) );
+    print &ui_table_end()."<br>";
+	&download_form("crlfile", $in{'crlfile'}, "CRL");
+	print &ui_hr();
+	&footer("", $text{'index_return'});
+	exit;
+}
+
 print &ui_form_start("view.cgi", "post");
 print &ui_table_start($text{'view_select'}, undef, 2);
 print &ui_table_row($text{'view_wildcard'}.": ".&ui_textbox("wildcard", $in{'wildcard'}), &ui_submit($text{'view_update'},"update"), undef, $valign_middle);
@@ -194,12 +216,14 @@ $rv1 .= &ui_hidden($mode, $keyfile);
 $rv1 .= &ui_submit("$text{'view_download'} $suffix");
 $rv1 .= "</form>";
 
-$rv2 = "<form id='view_p12filename' action='view.cgi/$p12filename' method=post>";
-$rv2 .= &ui_hidden("pkcs12", "yes");
-$rv2 .= &ui_hidden($mode, $keyfile);
-$rv2 .= &ui_submit("$text{'view_download'} $suffix $text{'view_pkcs12'}");
-$rv2 .= &ui_password("pass","",20);
-$rv2 .= "</form>";
+if ($mode ne "crlfile") {
+    $rv2 = "<form id='view_p12filename' action='view.cgi/$p12filename' method=post>";
+    $rv2 .= &ui_hidden("pkcs12", "yes");
+    $rv2 .= &ui_hidden($mode, $keyfile);
+    $rv2 .= &ui_submit("$text{'view_download'} $suffix $text{'view_pkcs12'}");
+    $rv2 .= &ui_password("pass","",20);
+    $rv2 .= "</form>";
+}
 
 $rv3 = "<form id='view' action='view.cgi' method=post>";
 $rv3 .= &ui_hidden("delete", "yes");
