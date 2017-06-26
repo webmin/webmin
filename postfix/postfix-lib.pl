@@ -738,6 +738,7 @@ sub get_maps
 			 $_[2] ? &get_maps_types_files($_[2]) :
 			         &get_maps_types_files(&get_real_value($_[0]));
 	my $number = 0;
+	$maps_cache{$_[0]} = [ ];
 	foreach my $maps_type_file (@maps_files)
 	{
 	    my ($maps_type, $maps_file) = @$maps_type_file;
