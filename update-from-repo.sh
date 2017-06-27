@@ -3,7 +3,7 @@
 # Update webmin/usermin to the latest develop version  from GitHub repo
 # inspired by authentic-theme/theme-update.sh script, thanks qooob
 #
-# Version 1.0, 2017-05-19
+# Version 1.1, 2017-07-27
 # Kay Marquardt, kay@rrr.de, https://github.com/gandelwartz
 #############################################################################
 
@@ -20,6 +20,7 @@ WTEMP="${DIR}/.~files/webadmin"
 UTEMP="${DIR}/.~files/useradmin" 
 TEMP=$WTEMP
 [[ "$PROD" == "usermin" ]] && TEMP=$UTEMP
+LTEMP="${DIR}/.~lang"
 
 # predefined colors for echo -e
 RED='\e[49;0;31;82m'
@@ -150,35 +151,34 @@ if [[ $EUID -eq 0 ]]; then
           #nostart="YES"
           export config_dir atboot nouninstall makeboot nostart
           ${TEMP}/tarballs/${PROD}-${version}/setup.sh ${DIR} | grep -v -e "^$" -e "done$"
-        fi
+        else
 
-        ################
-        # LANG update
+          ################
+          # LANG only update
           IGNORE="authentic-theme"
-          echo -e "${GREEN}start updating LANG files for${NC} ${RPOD} ... ${LGREY}.=dir s=symlink S=dir symlink${NC}"
+          echo -e "${GREEN}start updating LANG files for${NC} ${RPOD} ..."
 
+          [ ! -d "${LTEMP}" ] && mkdir ${LTEMP}
+          cp -L -r ${TEMP}/* "${LTEMP}"
           # list all lang singe-files, lang dirs and linked modules here
-          for FILE in `ls -d lang */lang ulang */ulang */config.info.* */module.info filemin 2>/dev/null`
+          FILES=`ls -d lang */lang ulang */ulang */config.info.* */module.info 2>/dev/null | sed '/UTF-8/d'`
+          for FILE in $FILES
           do
             MODUL=`dirname $FILE`; SKIP=`echo $MODUL | sed "s/$IGNORE/SKIP/"`
             if [ "$SKIP" == "SKIP" ]; then
-                 echo -e "${LGREY}skipping $MODUL ...${NC}"
+                 echo -e "${ORANGE}skipping $MODUL${NC}"
             else
-                # real files and dirs
-                [ -f "${TEMP}/${FILE}" ] && [ -f "$DIR/$FILE" ] && cp "${TEMP}/${FILE}" "$DIR/$FILE" && continue
-                [ -d "${TEMP}/${FILE}" ] && [ -d "$DIR/$FILE" ] && cp -r "${TEMP}/${FILE}" "$DIR/$MODUL" && \
-                         echo -n "." && continue
-                # to webmin symlinked files and dirs
-                if [ -h "${TEMP}/${FILE}" ]; then
-                    # get real symlink source
-                    SOURCE=`readlink .~files/$FILE | sed 's/.*web.*min\///'`
-                    [ -f "$DIR/$FILE" ] && cp "${WTEMP}/"$DIR/$FILE"${FILE}" "$DIR/$SOURCE" && echo -n "s" && continue
-                    [ -d "$DIR/$FILE" ] && cp -r "${WTEMP}/$SOURCE" "$DIR/$MODUL" && echo  -n "S"
-                fi
+
+                LANGFILES="${LANGFILES} ${FILE}"
+                # output some dots
+                [ -d "${TEMP}/${FILE}" ] && echo -n "." && continue
             fi
           done
+          ( cd ${LTEMP}; tar -cf - ${LANGFILES} 2>/dev/null ) | tar -xf - 
+        fi
         # "compile" UTF-8 lang files
-        perl "${TEMP}/chinese-to-utf8.pl" .
+        echo -en "\n${GREEN}compile UTF-8 lang files${NC} ..."
+        perl "${TEMP}/chinese-to-utf8.pl" . 2>&1 | while read line; do echo -n "."; done
 
 
         # write version to file
@@ -205,7 +205,7 @@ if [[ $EUID -eq 0 ]]; then
       ###########
       # we are at the end
       # remove temporary files
-      rm -rf .~files
+      rm -rf .~files .~lang
       # fix permissions, should be done by makedist.pl?
       chmod -R -x+X ${DIR}
       find ${DIR} \( -iname "*.pl" -o -iname "*.cgi" -o -iname "*.pm" -o -iname "*.sh" \) -a ! -iname "config*info" | \
