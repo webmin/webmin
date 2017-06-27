@@ -13,7 +13,6 @@ PROD=${DIR##*/} # => usermin or webmin
 # where to get source
 HOST="https://github.com"
 REPO="webmin/$PROD"
-
 ASK="YES"
 
 # temporary locations for git clone
@@ -151,10 +150,10 @@ if [[ $EUID -eq 0 ]]; then
           #nostart="YES"
           export config_dir atboot nouninstall makeboot nostart
           ${TEMP}/tarballs/${PROD}-${version}/setup.sh ${DIR} | grep -v -e "^$" -e "done$"
+        fi
 
-        else
-          ################
-          # LANG only update
+        ################
+        # LANG update
           IGNORE="authentic-theme"
           echo -e "${GREEN}start updating LANG files for${NC} ${RPOD} ... ${LGREY}.=dir s=symlink S=dir symlink${NC}"
 
@@ -178,9 +177,13 @@ if [[ $EUID -eq 0 ]]; then
                 fi
             fi
           done
-          # write version to file
-          echo "${version}-LANG" > version
-        fi
+        # "compile" UTF-8 lang files
+        perl "${TEMP}/chinese-to-utf8.pl" .
+
+
+        # write version to file
+        [[ "${LANG}" != "YES" ]] || echo "${version}-LANG" > version
+        
 
         echo -e "\n${GREEN}Updating ${PROD^} to Version `cat version`, done.${NC}"
 
