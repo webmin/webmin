@@ -294,7 +294,7 @@ else {
                                     }
 				# chain to jump to is filtered, switch of edit
                                 if ($edit && !$chain_filtered) {
-					push(@cols, &ui_link("edit_rule.cgi?table=".&urlize($in{'table'})."&idx=$r->{'index'}",$act));
+					push(@cols, &ui_link("edit_rule${ipvx}.cgi?table=".&urlize($in{'table'})."&idx=$r->{'index'}",$act));
 					}
 				else {
                                         # add col for not visible checkmark
@@ -336,12 +336,12 @@ else {
 
 				# Before / after adder
 				local $adder;
-				$adder .= "<a href='edit_rule.cgi?table=".
+				$adder .= "<a href='edit_rule${ipvx}.cgi?table=".
 				      &urlize($in{'table'}).
 				      "&chain=".&urlize($c)."&new=1&".
 				      "after=$r->{'index'}'><img src=".
 				      "images/after.gif border=0></a>";
-				$adder .= "<a href='edit_rule.cgi?table=".
+				$adder .= "<a href='edit_rule${ipvx}.cgi?table=".
 				      &urlize($in{'table'}).
 				      "&chain=".&urlize($c)."&new=1&".
 				      "before=$r->{'index'}'><img src=".

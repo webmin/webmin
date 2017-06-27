@@ -1,7 +1,6 @@
 #!/usr/local/bin/perl
 # edit_rule.cgi
 # Display the details of one firewall rule, or allow the adding of a new one
-
 require './firewall-lib.pl';
 &ReadParse();
 if (&get_ipvx_version() == 6) { require './firewall6-lib.pl';
@@ -83,9 +82,8 @@ if (&indexof('REJECT', @jumps) >= 0 && &can_jump("REJECT")) {
 	if ($rule->{'j'}->[1] eq 'REJECT') {
 		$rwith = $rule->{'reject-with'}->[1];
 		}
-	local @rtypes = ( "icmp-net-unreachable", "icmp-host-unreachable",
-			  "icmp-port-unreachable", "icmp-proto-unreachable",
-			  "icmp-net-prohibited", "icmp-host-prohibited",
+	local @rtypes = ( "icmp6-no-route", "icmp6-adm-prohibited",
+			  "icmp6-addr-unreachable", "icmp6-port-unreachable",
 			  "echo-reply", "tcp-reset" );
 	print &ui_table_row($text{'edit_rwith'},
 		&ui_radio("rwithdef", $rwith eq "" ? 1 : 0,
@@ -128,7 +126,7 @@ if (($table->{'name'} eq 'nat' && $rule->{'chain'} ne 'POSTROUTING') &&
     &can_jump("DNAT")) {
 	if ($rule->{'j'}->[1] eq 'DNAT') {
 		if ($rule->{'to-destination'}->[1] =~
-		    /^([0-9\.]+)(\-([0-9\.]+))?(:(\d+)(\-(\d+))?)?$/) {
+		    /^\[([0-9A-Fa-f:]+)](\-([0-9A-Fa-f:]+))?(:(\d+)(\-(\d+))?)?$/) {
 			$dipfrom = $1;
 			$dipto = $3;
 			$dpfrom = $5;
@@ -183,19 +181,13 @@ print &ui_table_start($text{'edit_header2'}, "width=100%", 2);
 
 # Packet source
 print &ui_table_row($text{'edit_source'},
-	&ui_grid_table([
-		&print_mode("source", $rule->{'s'}),
-		&ui_textarea("source", join(" ", split(/,/, $rule->{'s'}->[1])),
-			     4, 80),
-		], 2));
+	&print_mode("source", $rule->{'s'})." ".
+	&ui_textbox("source", $rule->{'s'}->[1], 40));
 
 # Packet destination
 print &ui_table_row($text{'edit_dest'},
-	&ui_grid_table([
-		&print_mode("dest", $rule->{'d'}),
-		&ui_textarea("dest", join(" ", split(/,/, $rule->{'d'}->[1])),
-			     4, 80),
-		], 2));
+	&print_mode("dest", $rule->{'d'})." ".
+	&ui_textbox("dest", $rule->{'d'}->[1], 40));
 
 # Incoming interface
 print &ui_table_row($text{'edit_in'},

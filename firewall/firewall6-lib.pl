@@ -48,7 +48,17 @@ else {
 &set_ipvx_version('ipv6');
 
 # IP V6 only functions
-# none :-)
+sub check_ipmask
+{
+foreach my $w (split(/,/, $_[0])) {
+	my $ok = &to_ipaddress($w) ||
+		$w =~ /^([0-9\.]+)\/([0-9\.]+)$/ &&
+			&to_ipaddress("$1") &&
+			(&check_ipaddress("$2") || ($2 =~ /^\d+$/ && $2 <= 32));
+	return 1 if (!$ok);
+	}
+return 1;
+}
 
 # renamed functions
 # pass current args to original

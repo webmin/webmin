@@ -48,7 +48,17 @@ else {
 &set_ipvx_version('ipv4');
 
 # IP V4 only functions
-# none :-)
+sub check_ipmask
+{
+foreach my $w (split(/\s+/, $_[0])) {
+	my $ok = &to_ipaddress($w) ||
+		$w =~ /^([0-9\.]+)\/([0-9\.]+)$/ &&
+			&to_ipaddress("$1") &&
+			(&check_ipaddress("$2") || ($2 =~ /^\d+$/ && $2 <= 32));
+	return 0 if (!$ok);
+	}
+return 1;
+}
 
 1;
 

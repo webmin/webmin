@@ -2,8 +2,10 @@
 # save_rule.cgi
 # Save, create or delete a rule in a chain
 
-require './firewall4-lib.pl';
+require './firewall-lib.pl';
 &ReadParse();
+if (&get_ipvx_version() == 6) { require './firewall6-lib.pl';
+	} else { require './firewall4-lib.pl'; }
 &error_setup($text{'save_err'});
 @tables = &get_iptables_save();
 $table = $tables[$in{'table'}];
@@ -23,7 +25,7 @@ if ($in{'clone'}) {
 		  "chain=".&urlize($rule->{'chain'}));
 	}
 
-&lock_file($iptables_save_file);
+&lock_file($ipvx_save);
 if ($in{'delete'}) {
 	# Just delete this rule
 	splice(@{$table->{'rules'}}, $in{'idx'}, 1);
@@ -174,7 +176,7 @@ else {
 			$proto = $in{'proto'};
 			push(@mods, $in{'proto'})
 				if ($proto eq 'tcp' || $proto eq 'udp' ||
-				    $proto eq 'icmp' && $in{'icmptype_mode'});
+				    $proto eq "icmp${ipvx_icmp}" && $in{'icmptype_mode'});
 			}
 		}
 
@@ -264,9 +266,9 @@ else {
 			&error($text{'save_etcpoption'});
 		$rule->{'tcp-option'}->[1] = $in{"tcpoption"};
 		}
-	if (&parse_mode("icmptype", $rule, "icmp-type")) {
-		$proto eq "icmp" || &error($text{'save_eicmp'});
-		$rule->{'icmp-type'}->[1] = $in{'icmptype'};
+	if (&parse_mode("icmptype", $rule, "icmp${ipvx_icmp}-type")) {
+		$proto eq "icmp${ipvx_icmp}" || &error($text{'save_eicmp'});
+		$rule->{"icmp${ipvx_icmp}-type"}->[1] = $in{'icmptype'};
 		}
 	if (&parse_mode("macsource", $rule, "mac-source")) {
 		$in{"macsource"} =~ /^([0-9a-z]{2}:){5}[[0-9a-z]{2}$/i ||
@@ -384,7 +386,7 @@ else {
 &save_table($table);
 &run_after_command();
 &copy_to_cluster();
-&unlock_file($iptables_save_file);
+&unlock_file($ipvx_save);
 &webmin_log($in{'delete'} ? "delete" : $in{'new'} ? "create" : "modify",
 	    "rule", undef, { 'chain' => $rule->{'chain'},
 			     'table' => $table->{'name'} });
@@ -407,15 +409,4 @@ else {
 	}
 }
 
-sub check_ipmask
-{
-foreach my $w (split(/\s+/, $_[0])) {
-	my $ok = &to_ipaddress($w) ||
-		$w =~ /^([0-9\.]+)\/([0-9\.]+)$/ &&
-			&to_ipaddress("$1") &&
-			(&check_ipaddress("$2") || ($2 =~ /^\d+$/ && $2 <= 32));
-	return 0 if (!$ok);
-	}
-return 1;
-}
 
