@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 # bootup.cgi
 # Enable or disable iptables at boot time
 

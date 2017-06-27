@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 # convert.cgi
 # Convert in-kernel firewall rules to the save file, and setup a bootup script
 

@@ -11,14 +11,14 @@ use WebminCore;
 sub set_ipvx_version
 {
 $ipvx_save=$iptables_save_file;
-$ipvx_lib='firewall4-lib.pl'
+$ipvx_lib='firewall4-lib.pl';
 $ipv4_link='../firewall/';
 $ipv6_link='../firewall6/';
 $ipv4_active='active';
 if ($_[0] =~ /6$/i) {
 	$ipvx='6';
 	$ipvx_save=$ip6tables_save_file;
-	$ipvx_lib='firewall6-lib.pl'
+	$ipvx_lib='firewall6-lib.pl';
 	$ipv4_active='';
 	$ipv6_active='active';
 	}
