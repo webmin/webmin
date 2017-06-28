@@ -38,12 +38,15 @@ my $out = &backquote_command("$config{'firewall_cmd'} --list-all-zones ".
 if ($?) {
 	&error("Failed to list zones : $out");
 	}
+my $default_zone = backquote_command(
+	"$config{'firewall_cmd'} --get-default-zone</dev/null 2>&1");
+chomp($default_zone);
 my $zone;
 foreach my $l (split(/\r?\n/, $out)) {
 	if ($l =~ /^(\S+)(\s+\(.*\))?/) {
 		# New zone
 		$zone = { 'name' => $1,
-			  'default' => $2 ? 1 : 0 };
+			  'default' => $default_zone eq $1 ? 1 : 0 };
 		push(@rv, $zone);
 		}
 	elsif ($l =~ /^\s+(\S+):\s*(.*)/ && $zone) {
@@ -116,6 +119,49 @@ my $out = &backquote_logged("$config{'firewall_cmd'} ".
 			    "--permanent --remove-service ".
 			    quotemeta($service)." 2>&1");
 return $? ? $out : undef;
+}
+
+# create_firewalld_forward(&zone, src-port, src-proto, dst-port, dst-addr)
+# Create a new forwarding rule in some zone. Returns undef on success or an
+# error message on failure
+sub create_firewalld_forward
+{
+my ($zone, $srcport, $srcproto, $dstport, $dstaddr) = @_;
+my $out = &backquote_logged(
+	$config{'firewall_cmd'}." ".
+	"--zone ".quotemeta($zone->{'name'})." ".
+	"--permanent ".
+	"--add-forward-port=port=$srcport:proto=$srcproto".
+	($dstport ? ":toport=$dstport" : "").
+	($dstaddr ? ":toaddr=$dstaddr" : "").
+	" 2>&1");
+return $? ? $out : undef;
+}
+
+# delete_firewalld_forward(&zone, src-port, src-proto, dst-port, dst-addr)
+# Deletes a forwarding rule in some zone. Returns undef on success or an
+# error message on failure
+sub delete_firewalld_forward
+{
+my ($zone, $srcport, $srcproto, $dstport, $dstaddr) = @_;
+my $out = &backquote_logged(
+	$config{'firewall_cmd'}." ".
+	"--zone ".quotemeta($zone->{'name'})." ".
+	"--permanent ".
+	"--remove-forward-port=port=$srcport:proto=$srcproto".
+	($dstport ? ":toport=$dstport" : "").
+	($dstaddr ? ":toaddr=$dstaddr" : "").
+	" 2>&1");
+return $? ? $out : undef;
+}
+
+# parse_firewalld_forward(str)
+# Parses a forward string into port, proto, dstport and dstaddr
+sub parse_firewalld_forward
+{
+my ($str) = @_;
+my %w = map { split(/=/, $_) } split(/:/, $str);
+return ($w{'port'}, $w{'proto'}, $w{'toport'}, $w{'toaddr'});
 }
 
 # apply_firewalld()
@@ -216,5 +262,33 @@ my $out = &backquote_logged($cmd." 2>&1 </dev/null");
 return $? ? $out : undef;
 }
 
-1;
+# parse_port_field(&in, name)
+# Either returns a port expression, or calls error
+sub parse_port_field
+{
+my ($in, $pfx) = @_;
+if ($in->{$pfx.'mode'} == 0) {
+	$in->{$pfx.'port'} =~ /^\d+$/ &&
+	  $in->{$pfx.'port'} > 0 && $in->{$pfx.'port'} < 65536 ||
+	  getservbyname($in->{$pfx.'port'}, $in->{'proto'}) ||
+	     &error($text{'port_eport'});
+	return $in->{$pfx.'port'};
+	}
+elsif ($in->{$pfx.'mode'} == 1) {
+	$in->{$pfx.'portlow'} =~ /^\d+$/ &&
+	  $in->{$pfx.'portlow'} > 0 && $in->{$pfx.'portlow'} < 65536 ||
+	     &error($text{'port_eportlow'});
+	$in->{$pfx.'porthigh'} =~ /^\d+$/ &&
+	  $in->{$pfx.'porthigh'} > 0 && $in->{$pfx.'porthigh'} < 65536 ||
+	     &error($text{'port_eporthigh'});
+	$in->{$pfx.'portlow'} < $in->{$pfx.'porthigh'} ||
+	     &error($text{'port_eportrange'});
+	return $in->{$pfx.'portlow'}."-".$in->{$pfx.'porthigh'};
+	}
+else {
+	# No port chosen
+	return undef;
+	}
+}
 
+1;

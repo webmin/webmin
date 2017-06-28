@@ -63,7 +63,10 @@ print &ui_form_end();
 my @links = ( &ui_link("edit_port.cgi?new=1&zone=".&urlize($zone->{'name'}),
 		       $text{'index_padd'}),
 	      &ui_link("edit_serv.cgi?new=1&zone=".&urlize($zone->{'name'}),
-                       $text{'index_sadd'}) );
+                       $text{'index_sadd'}),
+	      &ui_link("edit_forward.cgi?new=1&zone=".&urlize($zone->{'name'}),
+                       $text{'index_fadd'}),
+	    );
 if (@{$zone->{'services'}} || @{$zone->{'ports'}}) {
 	my @tds = ( "width=5" );
 	unshift(@links, &select_all_link("d", 1),
@@ -91,6 +94,18 @@ if (@{$zone->{'services'}} || @{$zone->{'ports'}}) {
 			&ui_link($url, $port),
 			&ui_link($url, uc($proto)),
 			], \@tds, "d", "port/".$p);
+		}
+	foreach my $f (@{$zone->{'forward-ports'}}) {
+		my ($port, $proto, $dstport, $dstaddr) =
+			&parse_firewalld_forward($f);
+		my $p = join("/", $port, $proto, $dstport, $dstaddr);
+		my $url = "edit_forward.cgi?id=".&urlize($p).
+			  "&zone=".&urlize($zone->{'name'});
+		print &ui_checked_columns_row([
+			&ui_link($url, $text{'index_tforward'}),
+			&ui_link($url, $port),
+			&ui_link($url, uc($proto)),
+			], \@tds, "d", "forward/".$p);
 		}
 	print &ui_columns_end();
 	print &ui_links_row(\@links);

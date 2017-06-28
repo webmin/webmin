@@ -34,7 +34,8 @@ if (@match == 1 && $in{'goto'}) {
 if (@match) {
 	@match = sort { lc($packages{$a,'name'}) cmp lc($packages{$b,'name'}) }
 		      @match;
-	print "<b>",&text('search_match', "<tt>$s</tt>"),"</b><p>\n";
+	print "<b>",&text('search_match',
+			  "<tt>".&html_escape($s)."</tt>"),"</b><p>\n";
 	print &ui_form_start("delete_packs.cgi", "post");
 	print &ui_hidden("search", $in{'search'});
 	@tds = ( "width=5" );

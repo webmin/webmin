@@ -299,7 +299,7 @@ while(<PKG>) {
 	if (/^\S+\s+\S+\s+(\S+?)\-([0-9]\S+)\.([^\.]+)$/) {
 		local ($name, $ver) = ($1, $2);
 		if ($done->{$name}) {
-			$done->{$name}->{'source'} = 'security';
+			$done->{$name}->{'source'} ||= 'security';
 			$done->{$name}->{'security'} = 1;
 			}
 		}

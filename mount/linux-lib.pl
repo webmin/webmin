@@ -2,6 +2,13 @@
 # Mount table functions for linux
 
 if (!$no_check_support) {
+	my %suppport;
+	my $fsfile = &read_file_contents("/proc/filesystems");
+	foreach my $l (split(/\n/, $fsfile)) {
+		my @w = split(/\s+/, $l);
+		my $fs = pop(@w);
+		$support{$fs} = 1;
+		}
 	if (&has_command("amd")) {
 		local $amd = &read_amd_conf();
 		$amd_support = $amd =~ /\[\s*global\s*\]/i ? 2 : 1;
@@ -23,22 +30,20 @@ if (!$no_check_support) {
 		$smbfs_fs = "smbfs";
 		}
 	$swaps_support = -r "/proc/swaps";
-	if (&backquote_command("uname -r") =~ /^(\d+\.\d+)/ && $1 >= 2.4) {
-		$tmpfs_support = 1;
-		$ext3_support = 1;
-		$no_mount_check = 1;
-		$bind_support = 1;	# XXX which version?
-		if ($1 >= 2.6) {
-			$ext4_support = 1;
-			}
+	$tmpfs_support = 1;
+	$ext3_support = 1;
+	$no_mount_check = 1;
+	$bind_support = 1;
+	if ($support{'ext4'}) {
+		$ext4_support = 1;
 		}
-	if (&has_command("mkfs.xfs")) {
+	if ($suppport{'xfs'} || &has_command("mkfs.xfs")) {
 		$xfs_support = 1;
 		}
-	if (&has_command("mkfs.jfs")) {
+	if ($suppport{'jfs'} || &has_command("mkfs.jfs")) {
 		$jfs_support = 1;
 		}
-	if (&has_command("mkfs.btrfs")) {
+	if ($suppport{'btrfs'} || &has_command("mkfs.btrfs")) {
 		$btrfs_support = 1;
 		}
 	}

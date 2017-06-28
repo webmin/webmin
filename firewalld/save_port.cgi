@@ -26,25 +26,7 @@ if ($in{'delete'}) {
 	}
 else {
 	# Validate inputs
-	my $port;
-	if ($in{'mode'} == 0) {
-		$in{'port'} =~ /^\d+$/ &&
-		  $in{'port'} > 0 && $in{'port'} < 65536 ||
-		  getservbyname($in{'port'}, $in{'proto'}) ||
-		     &error($text{'port_eport'});
-		$port = $in{'port'};
-		}
-	else {
-		$in{'portlow'} =~ /^\d+$/ &&
-		  $in{'portlow'} > 0 && $in{'portlow'} < 65536 ||
-		     &error($text{'port_eportlow'});
-		$in{'porthigh'} =~ /^\d+$/ &&
-		  $in{'porthigh'} > 0 && $in{'porthigh'} < 65536 ||
-		     &error($text{'port_eporthigh'});
-		$in{'portlow'} < $in{'porthigh'} ||
-		     &error($text{'port_eportrange'});
-		$port = $in{'portlow'}."-".$in{'porthigh'};
-		}
+	my $port = &parse_port_field(\%in, '');
 	my $proto = $in{'proto'};
 
 	# Create or update allowed port

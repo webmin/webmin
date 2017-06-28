@@ -90,6 +90,17 @@ if (-d $jdir) {
 	foreach my $f (glob("$jdir/*.conf")) {
 		push(@rv, &parse_config_file($f));
 		}
+
+	# Add jails from .local files that aren't directive-level overrides
+	my %names = map { $_->{'name'}, $_ } @rv;
+	foreach my $f (glob("$jdir/*.local")) {
+		my @lrv = &parse_config_file($f);
+		foreach my $j (@lrv) {
+			if (!$names{$j->{'name'}}) {
+				push(@rv, $j);
+				}
+			}
+		}
 	}
 return @rv;
 }

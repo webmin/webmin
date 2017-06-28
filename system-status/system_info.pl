@@ -211,7 +211,7 @@ if ($info->{'disk_fs'} && &show_section('disk')) {
 					"<tt>$fs->{'dir'}</tt>",
 					&nice_size($fs->{'total'}));
 			push(@rv, { 'type' => 'warning',
-				    'level' => 'error',
+				    'level' => 'danger',
 				    'warning' => $msg });
 			}
 		elsif ($fs->{'free'}*1.0 / $fs->{'total'} < 0.01) {
