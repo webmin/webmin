@@ -44,6 +44,14 @@ else {
 		 '--physdev-in',
 		 '--physdev-out');
 
+@ipvx_rtypes = ( "icmp-net-unreachable", "icmp-host-unreachable",
+		  "icmp-port-unreachable", "icmp-proto-unreachable",
+		  "icmp-net-prohibited", "icmp-host-prohibited",
+		  "echo-reply", "tcp-reset" );
+
+$ipvx_todestpattern='^([0-9\.]+)(\-([0-9\.]+))?(:(\d+)(\-(\d+))?)?$';
+
+
 # set IP Version
 &set_ipvx_version('ipv4');
 

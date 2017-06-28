@@ -44,6 +44,12 @@ else {
 		 '--physdev-in',
 		 '--physdev-out');
 
+@ipvx_rtypes = ( "icmp6-no-route", "icmp6-adm-prohibited",
+		  "icmp6-addr-unreachable", "icmp6-port-unreachable",
+		  "echo-reply", "tcp-reset" );
+
+$ipvx_todestpattern='^\[([0-9A-Fa-f:]+)](\-([0-9A-Fa-f:]+))?(:(\d+)(\-(\d+))?)?$';
+
 # set IP Version
 &set_ipvx_version('ipv6');
 
