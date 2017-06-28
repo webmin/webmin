@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 # move.cgi
 # Swap two rules in some chain
 

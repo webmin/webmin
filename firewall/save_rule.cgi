@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 # save_rule.cgi
 # Save, create or delete a rule in a chain
 

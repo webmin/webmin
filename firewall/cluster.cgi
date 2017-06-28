@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 # Show hosts in firewall cluster
 
 require './firewall-lib.pl';

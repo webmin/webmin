@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 # unapply.cgi
 # Revert the firewall configuration from the kernel settings
 

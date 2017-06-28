@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 # save_policy.cgi
 # Change the default policy for some chain
 

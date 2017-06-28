@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 # apply.cgi
 # Apply the current firewall configuration
 

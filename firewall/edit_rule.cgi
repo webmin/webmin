@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 # edit_rule.cgi
 # Display the details of one firewall rule, or allow the adding of a new one
 

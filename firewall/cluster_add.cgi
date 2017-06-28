@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 # Add or update a server or group from the webmin servers module
 
 require './firewall-lib.pl';
