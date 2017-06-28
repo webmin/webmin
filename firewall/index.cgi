@@ -106,7 +106,7 @@ if (!$config{'direct'} &&
 		# Offer to set up a firewall
 		print &text($in{'reset'} ? 'index_rsetup' : 'index_setup',
 			    "<tt>$ipvx_save</tt>"),"<p>\n";
-		print &ui_form_start("setup.cgi");
+		print &ui_form_start("setup${ipvx}.cgi");
                 print &ui_hidden("version", ${ipvx_arg});
 		print &ui_hidden("reset", $in{'reset'});
 		print "<center><table><tr><td>\n";

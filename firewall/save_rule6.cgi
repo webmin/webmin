@@ -21,7 +21,6 @@ if ($in{'clone'}) {
 	# Go back to the editing page
 	&redirect("edit_rule${ipvx}.cgi?version=${ipvx_arg}&new=1&clone=$in{'idx'}&".
 		  "table=".&urlize($in{'table'})."&".
-		  "after=$in{'idx'}&".
 		  "chain=".&urlize($rule->{'chain'}));
 	}
 
@@ -96,8 +95,8 @@ else {
 				&error($text{'save_edipfrom'});
 			!$in{'dipto'} || &check_ipaddress($in{'dipto'}) ||
 				&error($text{'save_edipto'});
-			local $v = $in{'dipfrom'};
-			$v .= "-".$in{'dipto'} if ($in{'dipto'});
+			local $v = "[".$in{'dipfrom'}."]";
+			$v .= "-[".$in{'dipto'}."]" if ($in{'dipto'});
 			if ($in{'dpfrom'} ne '') {
 				$in{'dpfrom'} =~ /^\d+$/ ||
 					&error($text{'save_edpfrom'});
@@ -146,10 +145,9 @@ else {
 		}
 	if (&parse_mode("source", $rule, "s")) {
 		&check_ipmask($in{'source'}) || &error($text{'save_esource'});
-		$rule->{'s'}->[1] = join(",", split(/\s+/, $in{'source'}));
+		$rule->{'s'}->[1] = $in{'source'};
 		}
 	if (&parse_mode("dest", $rule, "d")) {
-		$in{'dest'} =~ s/\r|\n//g;
 		&check_ipmask($in{'dest'}) || &error($text{'save_edest'});
 		$rule->{'d'}->[1] = $in{'dest'};
 		}
@@ -390,7 +388,7 @@ else {
 &webmin_log($in{'delete'} ? "delete" : $in{'new'} ? "create" : "modify",
 	    "rule", undef, { 'chain' => $rule->{'chain'},
 			     'table' => $table->{'name'} });
-&redirect("index.cgi?version=${ipvx_arg}&table=$in{'table'}");
+&redirect("index.cgi?table=$in{'table'}");
 
 # parse_mode(name, &rule, option)
 sub parse_mode
