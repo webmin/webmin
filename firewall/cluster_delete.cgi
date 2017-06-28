@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # Remove some servers from the managed list
 
 require './firewall-lib.pl';
@@ -21,5 +21,5 @@ else {
 	&webmin_log("delete", "group", scalar(@d));
 	}
 
-&redirect("cluster.cgi");
+&redirect("cluster.cgi?version=${ipvx_arg}");
 

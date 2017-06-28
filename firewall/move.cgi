@@ -1,10 +1,13 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # move.cgi
 # Swap two rules in some chain
 
-require './firewall4-lib.pl';
+require './firewall-lib.pl';
 &ReadParse();
-&lock_file($iptables_save_file);
+# what version IP protocaol version to use?
+if (&get_ipvx_version() == 6) { require './firewall6-lib.pl';
+	} else { require './firewall4-lib.pl'; }
+&lock_file($ipvx_save);
 @tables = &get_iptables_save();
 $table = $tables[$in{'table'}];
 &can_edit_table($table->{'name'}) || &error($text{'etable'});
@@ -29,8 +32,8 @@ else {
 &save_table($table);
 &run_after_command();
 &copy_to_cluster();
-&unlock_file($iptables_save_file);
+&unlock_file($ipvx_save);
 &webmin_log("move", "rule", undef, { 'table' => $table->{'name'},
 				     'chain' => $r->[$in{'idx'}]->{'chain'} });
-&redirect("index.cgi?table=$in{'table'}");
+&redirect("index.cgi?version=${ipvx_arg}&table=$in{'table'}");
 

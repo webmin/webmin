@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # bootup.cgi
 # Enable or disable iptables at boot time
 
@@ -18,5 +18,4 @@ else {
 	&init::disable_at_boot("webmin-ip${ipvx}tables");
 	}
 &webmin_log($in{'boot'} ? "bootup" : "bootdown");
-&redirect("index.cgi?table=$in{'table'}");
-
+&redirect("index.cgi?version=${ipvx_arg}&table=$in{'table'}");

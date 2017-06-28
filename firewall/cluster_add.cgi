@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # Add or update a server or group from the webmin servers module
 
 require './firewall-lib.pl';
@@ -76,5 +76,5 @@ else {
 	&webmin_log("add", "group", $in{'group'});
 	}
 
-&ui_print_footer("cluster.cgi", $text{'cluster_return'});
+&ui_print_footer("cluster.cgi?version=${ipvx_arg}", $text{'cluster_return'});
 

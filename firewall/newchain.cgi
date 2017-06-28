@@ -1,15 +1,18 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # newchain.cgi
 # Create a new user-defined chain
 
-require './firewall4-lib.pl';
-$access{'newchain'} || &error($text{'new_ecannot'});
+require './firewall-lib.pl';
 &ReadParse();
+# what version IP protocaol version to use?
+if (&get_ipvx_version() == 6) { require './firewall6-lib.pl';
+	} else { require './firewall4-lib.pl'; }
+$access{'newchain'} || &error($text{'new_ecannot'});
 @tables = &get_iptables_save();
 $table = $tables[$in{'table'}];
 &can_edit_table($table->{'name'}) || &error($text{'etable'});
 &error_setup($text{'new_err'});
-&lock_file($iptables_save_file);
+&lock_file($ipvx_save);
 $in{'chain'} =~ /^\S+$/ || &error($text{'new_ename'});
 $table->{'defaults'}->{$in{'chain'}} && &error($text{'new_etaken'});
 $table->{'defaults'}->{$in{'chain'}} = '-';
@@ -17,9 +20,9 @@ $table->{'defaults'}->{$in{'chain'}} = '-';
 &save_table($table);
 &run_after_command();
 &copy_to_cluster();
-&unlock_file($iptables_save_file);
+&unlock_file($ipvx_save);
 &webmin_log("create", "chain", undef, { 'chain' => $in{'chain'},
 					'table' => $table->{'name'} });
 
-&redirect("index.cgi?table=$in{'table'}");
+&redirect("index.cgi?version=${ipvx_arg}&table=$in{'table'}");
 

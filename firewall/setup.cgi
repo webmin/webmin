@@ -1,12 +1,15 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # setup.cgi
 # Setup an initial save file
 
-require './firewall4-lib.pl';
+require './firewall-lib.pl';
 &ReadParse();
+# what version IP protocaol version to use?
+if (&get_ipvx_version() == 6) { require './firewall6-lib.pl';
+	} else { require './firewall4-lib.pl'; }
 $access{'setup'} || &error($text{'setup_ecannot'});
 
-&lock_file($iptables_save_file);
+&lock_file($ipvx_save);
 if ($in{'reset'}) {
 	# Clear out all rules
 	foreach $t ("filter", "nat", "mangle") {
@@ -25,7 +28,7 @@ if (defined(&unapply_iptables)) {
 	&unapply_iptables();
 	}
 else {
-	&backquote_logged("iptables-save >$iptables_save_file 2>&1");
+	&backquote_logged("iptables-save >$ipvx_save 2>&1");
 	}
 
 # Get important variable ports
@@ -267,7 +270,7 @@ if ($in{'auto'}) {
 if ($in{'atboot'}) {
 	&create_firewall_init();
 	}
-&unlock_file($iptables_save_file);
+&unlock_file($ipvx_save);
 
 &webmin_log("setup");
 &redirect("");

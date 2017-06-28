@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # apply.cgi
 # Apply the current firewall configuration
 
@@ -13,5 +13,5 @@ $err = &apply_configuration();
 $err = &apply_cluster_configuration();
 &error($err) if ($err);
 &webmin_log("apply");
-&redirect("index.cgi?table=$in{'table'}");
+&redirect("index.cgi?version=${ipvx_arg}&table=$in{'table'}");
 

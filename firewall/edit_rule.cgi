@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # edit_rule.cgi
 # Display the details of one firewall rule, or allow the adding of a new one
 
@@ -26,7 +26,7 @@ else {
 	}
 
 print &ui_form_start("save_rule.cgi", "post");
-foreach $f ('table', 'idx', 'new', 'chain', 'before', 'after') {
+foreach $f ('version', 'table', 'idx', 'new', 'chain', 'before', 'after') {
 	print &ui_hidden($f, $in{$f});
 	}
 
@@ -365,7 +365,7 @@ else {
 			     [ 'delete', $text{'delete'} ] ]);
 	}
 
-&ui_print_footer("index.cgi?table=$in{'table'}", $text{'index_return'});
+&ui_print_footer("index.cgi?version=${ipvx_arg}", $text{'index_return'});
 
 # print_mode(name, &value, [yes-option, no-option], [no-no-option])
 sub print_mode

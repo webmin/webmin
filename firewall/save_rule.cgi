@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # save_rule.cgi
 # Save, create or delete a rule in a chain
 
@@ -390,7 +390,7 @@ else {
 &webmin_log($in{'delete'} ? "delete" : $in{'new'} ? "create" : "modify",
 	    "rule", undef, { 'chain' => $rule->{'chain'},
 			     'table' => $table->{'name'} });
-&redirect("index.cgi?table=$in{'table'}");
+&redirect("index.cgi?version=${ipvx_arg}&table=$in{'table'}");
 
 # parse_mode(name, &rule, option)
 sub parse_mode
