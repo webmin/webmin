@@ -14,7 +14,7 @@ $table = $tables[$in{'table'}];
 
 if ($in{'add'}) {
 	# Redirect to the rule page for adding a rule
-	&redirect("edit_rule${ipvx}.cgi?version=${ipvx_arg}&table=".&urlize($in{'table'}).
+	&redirect("edit_rule.cgi?version=${ipvx_arg}&table=".&urlize($in{'table'}).
 		  "&chain=".&urlize($in{'chain'})."&new=1");
 	}
 elsif ($in{'delete'} && $in{'confirm'}) {

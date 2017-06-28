@@ -1,0 +1,1 @@
+../firewall/setup6.cgi

@@ -25,8 +25,9 @@ else {
 	&can_jump($rule) || &error($text{'ejump'});
 	}
 
-print &ui_form_start("save_rule.cgi", "post");
-foreach $f ('version', 'table', 'idx', 'new', 'chain', 'before', 'after') {
+print &ui_form_start("save_rule${ipvx}.cgi", "post");
+print &ui_hidden("version", ${ipvx_arg});
+foreach $f ('table', 'idx', 'new', 'chain', 'before', 'after') {
 	print &ui_hidden($f, $in{$f});
 	}
 
@@ -83,15 +84,11 @@ if (&indexof('REJECT', @jumps) >= 0 && &can_jump("REJECT")) {
 	if ($rule->{'j'}->[1] eq 'REJECT') {
 		$rwith = $rule->{'reject-with'}->[1];
 		}
-	local @rtypes = ( "icmp-net-unreachable", "icmp-host-unreachable",
-			  "icmp-port-unreachable", "icmp-proto-unreachable",
-			  "icmp-net-prohibited", "icmp-host-prohibited",
-			  "echo-reply", "tcp-reset" );
 	print &ui_table_row($text{'edit_rwith'},
 		&ui_radio("rwithdef", $rwith eq "" ? 1 : 0,
 			  [ [ 1, $text{'default'} ],
 			    [ 0, &text('edit_rwithtype',
-			      &icmptype_input("rwithtype", $rwith, \@rtypes)) ],
+			      &icmptype_input("rwithtype", $rwith, \@ipvx_rtypes)) ],
 			  ]));
 	}
 
@@ -128,7 +125,7 @@ if (($table->{'name'} eq 'nat' && $rule->{'chain'} ne 'POSTROUTING') &&
     &can_jump("DNAT")) {
 	if ($rule->{'j'}->[1] eq 'DNAT') {
 		if ($rule->{'to-destination'}->[1] =~
-		    /^([0-9\.]+)(\-([0-9\.]+))?(:(\d+)(\-(\d+))?)?$/) {
+		    /$ipvx_todestpattern/) {
 			$dipfrom = $1;
 			$dipto = $3;
 			$dpfrom = $5;
