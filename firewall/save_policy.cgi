@@ -52,7 +52,7 @@ elsif ($in{'delete'} || $in{'clear'}) {
 	# Ask for confirmation on deleting the chain
 	$mode = $in{'delete'} ? "delete" : "clear";
 	$access{'delchain'} || &error($text{$mode.'_ecannot'});
-	&ui_print_header(undef, $text{$mode.'_title'}, "");
+	&ui_print_header($text{"index_title_v${ipvx}"}, $text{$mode.'_title'}, "");
 
 	@rules = grep { $_->{'chain'} eq $in{'chain'} } @{$table->{'rules'}};
 	print &ui_form_start("save_policy.cgi");
@@ -107,7 +107,7 @@ elsif ($in{'rename'} && $in{'newname'}) {
 	}
 elsif ($in{'rename'}) {
 	# Show chain rename form
-	&ui_print_header(undef, $text{'rename_title'}, "");
+	&ui_print_header($text{"index_title_v${ipvx}"}, $text{'rename_title'}, "")
 
 	print &ui_form_start("save_policy.cgi");
         print &ui_hidden("version", ${ipvx_arg});
@@ -177,7 +177,7 @@ elsif ($in{'movesel'} && $in{'dest'}) {
 	}
 elsif ($in{'movesel'}) {
 	# Show rule move form
-	&ui_print_header(undef, $text{'move_title'}, "");
+	&ui_undef, $text{'move_title'}, "");
 
 	print &ui_form_start("save_policy.cgi");
         print &ui_hidden("version", ${ipvx_arg});

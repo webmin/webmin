@@ -10,17 +10,17 @@ if (&get_ipvx_version() == 6) { require './firewall6-lib.pl';
 $table = $tables[$in{'table'}];
 &can_edit_table($table->{'name'}) || &error($text{'etable'});
 if ($in{'clone'} ne '') {
-	&ui_print_header(undef, $text{'edit_title3'}, "");
+	&ui_print_header($text{"index_title_v${ipvx}"}, $text{'edit_title3'}, "");
 	%clone = %{$table->{'rules'}->[$in{'clone'}]};
 	$rule = \%clone;
 	}
 elsif ($in{'new'}) {
-	&ui_print_header(undef, $text{'edit_title1'}, "");
+	&ui_print_header($text{"index_title_v${ipvx}"}, $text{'edit_title1'}, "");
 	$rule = { 'chain' => $in{'chain'},
 		  'j' => &can_jump('DROP') ? 'DROP' : "" };
 	}
 else {
-	&ui_print_header(undef, $text{'edit_title2'}, "");
+	&ui_print_header($text{"index_title_v${ipvx}"}, $text{'edit_title2'}, "");
 	$rule = $table->{'rules'}->[$in{'idx'}];
 	&can_jump($rule) || &error($text{'ejump'});
 	}

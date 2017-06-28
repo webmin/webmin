@@ -26,7 +26,7 @@ else {
 	$msg = &text('add_gmsg', $in{'group'});
 	}
 
-&ui_print_header(undef, $text{'add_title'}, "");
+&ui_print_header($text{"index_title_v${ipvx}"}, $text{'add_title'}, "");
 print "<b>$msg</b><p>\n";
 
 # Setup error handler for down hosts

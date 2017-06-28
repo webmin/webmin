@@ -12,13 +12,13 @@ if (&get_ipvx_version() == 6) { require './firewall6-lib.pl';
 if ($ipvx_save) {
 	$desc = &text('index_editing', "<tt>$ipvx_save</tt>");
 	}
-&ui_print_header(undef, $text{'index_title'}, undef, "intro", 1, 1, 0,
+&ui_print_header($text{"index_title_v${ipvx}"}, $text{'index_title'}, undef, "intro", 1, 1, 0,
 	&help_search_link("ip${ipvx}tables", "man", "doc"));
 #print tabs for IPv4 and IPv6
 print <<EOF ;
 <ul class="nav nav-tabs">
 <li class="$ipv4_active">
-<a  href="$ipv4_link"><b>$text{'index_title_v4'}</b></a>
+<a  href="$ipv4_link"><b>$text{'index_title_v'}</b></a>
 </li>
 <li>
 <li class="$ipv6_active">

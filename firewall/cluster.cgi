@@ -7,7 +7,7 @@ if (&get_ipvx_version() == 6) { require './firewall6-lib.pl';
 	} else { require './firewall4-lib.pl'; }
 $access{'cluster'} || &error($text{'ecluster'});
 &foreign_require("servers", "servers-lib.pl");
-&ui_print_header(undef, $text{'cluster_title'}, undef, "cluster");
+&ui_print_header($text{"index_title_v${ipvx}"}, $text{'cluster_title'}, undef, "cluster");
 
 # Show existing servers
 @servers = &list_cluster_servers();

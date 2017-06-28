@@ -1,4 +1,4 @@
-index_title=Firewall
+index_title=Firewall IPTables
 index_ecommand=El comando $1 no se encontro en su sistema. Allconnections necesita este comando para configurar el firewall.
 index_ekernel=Ocurrio un error al comprobar su configuracion de firewall actual: esto puede indicar que su kernel no tiene soporte de Firewall
 index_header=Configuracion de firewall para $1
