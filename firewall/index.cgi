@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # index.cgi
 # Display current iptables firewall configuration from save file
 # unified for IPV4 and IPV6
@@ -89,7 +89,7 @@ if (!$config{'direct'} &&
 		print &ui_confirmation_form("convert.cgi",
 			&text('index_existing', $rules,
 			      "<tt>$ipvx_save</tt>"),
-			undef,
+			( ['version'], [${ipvx_arg}] ),
 			[ [ undef, $text{'index_saveex'} ] ],
 			$init_support && !$atboot ?
 			  &ui_checkbox("atboot", 1, $text{'index_atboot'}, 0) :
@@ -107,6 +107,7 @@ if (!$config{'direct'} &&
 		print &text($in{'reset'} ? 'index_rsetup' : 'index_setup',
 			    "<tt>$ipvx_save</tt>"),"<p>\n";
 		print &ui_form_start("setup.cgi");
+                print &ui_hidden("version", ${ipvx_arg});
 		print &ui_hidden("reset", $in{'reset'});
 		print "<center><table><tr><td>\n";
 		print &ui_oneradio("auto", 0, $text{'index_auto0'}, 1),"<p>\n";
@@ -180,6 +181,7 @@ else {
 	print "<table width=100%><tr>\n";
 	print "<form action=index.cgi>\n";
 	print "<td><input type=submit value='$text{'index_change'}'>\n";
+        print &ui_hidden("version", ${ipvx_arg});
 	print "<select name=table onChange='form.submit()'>\n";
 	foreach $t (@tables) {
 		if (&can_edit_table($t->{'name'})) {
@@ -195,6 +197,7 @@ else {
 		# Show form to create a chain
 		print "<form action=newchain.cgi>\n";
 		print "<td align=right>",&ui_hidden("table", $in{'table'});
+                print &ui_hidden("version", ${ipvx_arg});
 		print "<input type=submit value='$text{'index_cadd'}'>\n";
 		print "<input name=chain size=20></td></form>\n";
 		print "</tr></table>\n";
@@ -222,6 +225,7 @@ else {
                     }
 
                 print "<form action=save_policy.cgi>\n";
+                print &ui_hidden("version", ${ipvx_arg});
                 print &ui_hidden("table", $in{'table'});
                 print &ui_hidden("chain", $c);
 
@@ -261,7 +265,7 @@ else {
 			# Generate the header
 			local (@hcols, @tds);
 			push(@hcols, "", $text{'index_action'});
-			push(@tds, "width=5", "width=20% nowrap");
+			push(@tds, "width=5", "width=30% nowrap");
 			if ($config{'view_condition'}) {
 				push(@hcols, $text{'index_desc'});
 				push(@tds, "nowrap");
@@ -294,7 +298,7 @@ else {
                                     }
 				# chain to jump to is filtered, switch of edit
                                 if ($edit && !$chain_filtered) {
-					push(@cols, &ui_link("edit_rule${ipvx}.cgi?table=".&urlize($in{'table'})."&idx=$r->{'index'}",$act));
+					push(@cols, &ui_link("edit_rule${ipvx}.cgi?version=${ipvx_arg}table=".&urlize($in{'table'})."&idx=$r->{'index'}",$act));
 					}
 				else {
                                         # add col for not visible checkmark
@@ -316,7 +320,7 @@ else {
 					$mover .= "<img src=images/gap.gif>";
 					}
 				else {
-					$mover .= "<a href='move.cgi?table=".
+					$mover .= "<a href='move.cgi?version=${ipvx_arg}table=".
 					      &urlize($in{'table'}).
 					      "&idx=$r->{'index'}&".
 					      "down=1'><img src=".
@@ -326,7 +330,7 @@ else {
 					$mover .= "<img src=images/gap.gif>";
 					}
 				else {
-					$mover .= "<a href='move.cgi?table=".
+					$mover .= "<a href='move.cgi?version=${ipvx_arg}table=".
 					      &urlize($in{'table'}).
 					      "&idx=$r->{'index'}&".
 					      "up=1'><img src=images/up.gif ".
@@ -336,12 +340,12 @@ else {
 
 				# Before / after adder
 				local $adder;
-				$adder .= "<a href='edit_rule${ipvx}.cgi?table=".
+				$adder .= "<a href='edit_rule${ipvx}.cgi?version=${ipvx_arg}table=".
 				      &urlize($in{'table'}).
 				      "&chain=".&urlize($c)."&new=1&".
 				      "after=$r->{'index'}'><img src=".
 				      "images/after.gif border=0></a>";
-				$adder .= "<a href='edit_rule${ipvx}.cgi?table=".
+				$adder .= "<a href='edit_rule${ipvx}.cgi?version=${ipvx_arg}table=".
 				      &urlize($in{'table'}).
 				      "&chain=".&urlize($c)."&new=1&".
 				      "before=$r->{'index'}'><img src=".

@@ -16,6 +16,7 @@ $ipv4_link='../firewall/';
 $ipv6_link='../firewall6/';
 $ipv4_active='active';
 $ipvx_icmp="";
+$ipvx_arg="inet4";
 
 if ($_[0] =~ /6$/i) {
 	$ipvx='6';
@@ -24,6 +25,7 @@ if ($_[0] =~ /6$/i) {
 	$ipv4_active='';
 	$ipv6_active='active';
 	$ipvx_icmp="v6";
+        $ipvx_arg="inet6";
 	}
 }
 
