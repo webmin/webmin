@@ -107,7 +107,7 @@ elsif ($in{'rename'} && $in{'newname'}) {
 	}
 elsif ($in{'rename'}) {
 	# Show chain rename form
-	&ui_print_header($text{"index_title_v${ipvx}"}, $text{'rename_title'}, "")
+	&ui_print_header($text{"index_title_v${ipvx}"}, $text{'rename_title'}, "");
 
 	print &ui_form_start("save_policy.cgi");
         print &ui_hidden("version", ${ipvx_arg});
@@ -177,7 +177,7 @@ elsif ($in{'movesel'} && $in{'dest'}) {
 	}
 elsif ($in{'movesel'}) {
 	# Show rule move form
-	&ui_undef, $text{'move_title'}, "");
+	&ui_print_header($text{"index_title_v${ipvx}"}, $text{'move_title'}, "");
 
 	print &ui_form_start("save_policy.cgi");
         print &ui_hidden("version", ${ipvx_arg});
