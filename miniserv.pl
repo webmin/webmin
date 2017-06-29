@@ -161,6 +161,7 @@ elsif (!$config{'no_pam'}) {
 if ($config{'pam_only'} && !$use_pam) {
 	print STDERR $startup_msg[0],"\n";
 	print STDERR "PAM use is mandatory, but could not be enabled!\n";
+	print STDERR "no_pam and pam_only both are set!\n" if ($config{no_pam});
 	exit(1);
 	}
 elsif ($pam_msg && !$use_pam) {
