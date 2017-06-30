@@ -2,7 +2,7 @@
 # Mount table functions for linux
 
 if (!$no_check_support) {
-	my %suppport;
+	my %support;
 	my $fsfile = &read_file_contents("/proc/filesystems");
 	foreach my $l (split(/\r?\n/, $fsfile)) {
 		my @w = split(/\s+/, $l);
@@ -37,13 +37,13 @@ if (!$no_check_support) {
 	if ($support{'ext4'}) {
 		$ext4_support = 1;
 		}
-	if ($suppport{'xfs'} || &has_command("mkfs.xfs")) {
+	if ($support{'xfs'} || &has_command("mkfs.xfs")) {
 		$xfs_support = 1;
 		}
-	if ($suppport{'jfs'} || &has_command("mkfs.jfs")) {
+	if ($support{'jfs'} || &has_command("mkfs.jfs")) {
 		$jfs_support = 1;
 		}
-	if ($suppport{'btrfs'} || &has_command("mkfs.btrfs")) {
+	if ($support{'btrfs'} || &has_command("mkfs.btrfs")) {
 		$btrfs_support = 1;
 		}
 	}
