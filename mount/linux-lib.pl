@@ -4,7 +4,7 @@
 if (!$no_check_support) {
 	my %suppport;
 	my $fsfile = &read_file_contents("/proc/filesystems");
-	foreach my $l (split(/\n/, $fsfile)) {
+	foreach my $l (split(/\r?\n/, $fsfile)) {
 		my @w = split(/\s+/, $l);
 		my $fs = pop(@w);
 		$support{$fs} = 1;
