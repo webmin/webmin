@@ -24,6 +24,7 @@ my @ignoreips = $in{'ignoreip_def'} ? ( ) : split(/\s+/, $in{'ignoreip'});
 foreach my $ip (@ignoreips) {
 	&check_ipaddress($ip) || &check_ip6address($ip) ||
 	    ($ip =~ /^([0-9\.]+)\/(\d+)/ && &check_ipaddress("$1")) ||
+	    &to_ipaddress($ip) ||
 		&error($text{'jail_eignoreip'});
 	}
 
