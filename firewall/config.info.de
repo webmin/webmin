@@ -9,6 +9,8 @@ after_cmd=Befehle zum Ausf&#252;hren nach &#196;nderung der Regeln,3,Keiner
 before_apply_cmd=Befehle zum Ausf&#252;hren vor Anwenden der Konfiguration,3,Keiner
 after_apply_cmd=Befehle zum Anwendung der Konfiguration,3,Keiner
 line1=System Konfiguration,11
-save_file=IPtables Speicherdatei zum Bearbeiten,3,Verwendung des Betriebssystems oder Webmin Standard
+save_file=Datei zum Speichern/Bearbeiten der <tt>IPv4</tt> Regeln,3,Verwendung des Betriebssystems oder Webmin Standard
+save_file6=Datei zum Speichern/Bearbeiten der <tt>IPv6</tt> Regeln,3,Verwendung des Betriebssystems oder Webmin Standard
 direct=Direktes Bearbeiten der Firewall-Regeln anstatt von gespeicherter Datei?,1,1-Ja,0-Nein
 filter_chain=Komma getrennte Liste von Regex zum Ausfiltern von Ketten die nicht von Firewall verwaltet werden,0
+
