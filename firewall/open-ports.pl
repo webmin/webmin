@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 # Open some ports on the firewall. Exit statuses are :
 # 0 - Nothing needed to be done
 # 1 - Given ports were opened up
