@@ -1,4 +1,4 @@
-line0=Konfigurierbare globale Optionen,11
+line0=Globale Konfiguration,11
 perpage=Anzahl der anzuzeigenden Regeln pro Seite,3,50
 view_condition=Zeige Zustand in Regelliste?,1,1-Ja,0-Nein
 view_comment=Zeige Kommentare in Regelliste an?,1,1-Ja,0-Nein
@@ -14,6 +14,5 @@ line2=IPv4 Konfiguration,11
 save_file=Datei zum Speichern/Bearbeiten der <tt>IPv4</tt> Regeln,3,Verwendung des Betriebssystems oder Webmin Standard
 direct=Bearbeite <tt>IPv4</tt> Firewall-Regeln direkt anstatt in Datei?,1,1-Ja,0-Nein
 line3=IPv6 Konfiguration,11
-save_file6=File to save/edit <tt>IPv6</tt> rules,3,Use operating system or Webmin default
 save_file6=Datei zum Speichern/Bearbeiten der <tt>IPv6</tt> Regeln,3,Verwendung des Betriebssystems oder Webmin Standard
 direct6=Bearbeite <tt>IPv6</tt> Firewall-Regeln direkt anstatt in Datei?,1,1-Ja,0-Nein
