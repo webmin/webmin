@@ -1,1 +1,0 @@
-../firewall/mandrake-linux-lib.pl

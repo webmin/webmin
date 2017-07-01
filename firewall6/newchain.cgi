@@ -1,1 +1,0 @@
-../firewall/newchain.cgi

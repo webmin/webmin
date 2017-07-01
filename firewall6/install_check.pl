@@ -1,1 +1,0 @@
-../firewall/install_check.pl
