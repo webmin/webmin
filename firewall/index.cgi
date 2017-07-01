@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # index.cgi
 # Display current iptables firewall configuration from save file
 # unified for IPV4 and IPV6
@@ -46,7 +46,7 @@ if ($?) {
 	}
 
 # Check if the distro supports iptables
-if (!$config{'direct'} && defined(&check_iptables) &&
+if (!$config{"direct${ipvx}"} && defined(&check_iptables) &&
     ($err = &check_iptables())) {
 	print "<p>$err</p>\n";
 	&ui_print_footer("/", $text{'index'});
@@ -54,7 +54,7 @@ if (!$config{'direct'} && defined(&check_iptables) &&
 	}
 
 # Check if firewall is being started at boot
-if (!$config{'direct'} && &foreign_check("init")) {
+if (!$config{"direct${ipvx}"} && &foreign_check("init")) {
 	$init_support++;
 	if (defined(&started_at_boot)) {
 		$atboot = &started_at_boot();
@@ -71,8 +71,7 @@ if (!$config{'direct'} && &foreign_check("init")) {
 
 # Display warnings about active external firewalls!
 &external_firewall_message(\@livetables);
-if (!$config{'direct'} &&
-    (!-s $ipvx_save || $in{'reset'}) && $access{'setup'}) {
+if (!$config{"direct${ipvx}"} && $in{'reset'} && $access{'setup'}) {
 	@tables = @livetables;
 	foreach $t (@tables) {
 		$rules++ if (@{$t->{'rules'}});
@@ -129,7 +128,7 @@ if (!$config{'direct'} &&
 else {
 	$form = 0;
 	@tables = &get_iptables_save();
-	if (!$config{'direct'}) {
+	if (!$config{"direct${ipvx}"}) {
 		# Verify that all known tables exist, and if not add them to the
 		# save file
 		foreach $t (@tables) {
@@ -150,7 +149,7 @@ else {
 		}
 
 	# Check if the current config is valid
-	if (!$config{'direct'}) {
+	if (!$config{"direct${ipvx}"}) {
 		my $err = &validate_iptables_config();
 		if ($err) {
 			print "<b>",&text('index_evalid',
@@ -466,7 +465,7 @@ else {
 	print &ui_hr();
 	print &ui_buttons_start();
 
-	if (!$config{'direct'}) {
+	if (!$config{"direct${ipvx}"}) {
 		# Buttons to apply and reset the config
 		if (&foreign_check("servers")) {
 			@servers = &list_cluster_servers();
@@ -544,7 +543,7 @@ sub external_firewall_message
         	$fwname.='fail2ban ';
         	}
 	# warning about not using direct
-	if($fwname && !$config{'direct'}) {
+	if($fwname && !$config{"direct${ipvx}"}) {
                 print "<b><center>",
                 &text('index_filter_nodirect', $fwconfig),
                 "</b></center><p>\n";
