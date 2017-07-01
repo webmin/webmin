@@ -1,4 +1,6 @@
-index_title=Linux Firewall
+index_title=Linux IPTables Firewall
+index_title_v=IPv4 Firewall
+index_title_v6=IPv6 Firewall
 index_editing=Rules file $1
 index_ecommand=The command $1 was not found on your system. Webmin needs this command to configure IPtables.
 index_ekernel=An error occured when checking your current IPtables configuration : $1 This may indicate that your kernel does not support IPtables.
@@ -79,9 +81,10 @@ index_cluster=Cluster Servers
 index_clusterdesc=Click this button to set up additional Webmin servers to which the firewall configuration will be automatically copied.
 index_ipset=IP-set
 index_ipset_title=Active IP-sets which can be used by firewall rules
-index_ipset_name=Name
+index_ipset_name=Name of IP set
 index_ipset_type=Type
 index_ipset_elem=# Elements
+index_ipset_maxe=# Max 
 index_ipset_size=Size
 
 desc_p=protocol is $1
@@ -141,7 +144,7 @@ desc_args--match-set=$2 is contained in IP-set $1
 desc_src=source
 desc_dest=destination
 
-redhat_einstalled=No <tt>iptables</tt> bootup action was found, indicating that the IPtables package is not installed on your system
+redhat_einstalled=No <tt>iptables(6)</tt> bootup action was found, indicating that the IPtables package is not installed on your system
 redhat_eoutput=An error occured getting IPtables status from the command $1. This probably indicates that your system has been configured to use IPchains instead of IPtables.
 
 gentoo_escript=The Gentoo IPtables startup script $1 was not found on your system.
@@ -362,3 +365,6 @@ rename_adjust=Modify other rules that jump to this chain?
 rename_none=None
 rename_ecannot=You are not allowed to rename chains
 __norefs=1
+desc_icmpv6-type=ICMP type is $1
+desc_icmpv6-type!=ICMP type is not $1
+eip6tables=Unknown ip6tables save file line : $1

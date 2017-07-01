@@ -1,4 +1,4 @@
-index_title=Linux Firewall
+index_title=Linux IPTables Firewall
 index_editing=Rules file $1
 index_ecommand=The command $1 was not found on your system. Webmin needs this command to configure IPtables.
 index_ekernel=An error occured when checking your current IPtables configuration : $1 This may indicate that your kernel does not support IPtables.
@@ -346,3 +346,4 @@ rename_adjust=Modify other rules that jump to this chain?
 rename_none=None
 rename_ecannot=You are not allowed to rename chains
 __norefs=1
+eip6tables=Unknown ip6tables save file line : $1

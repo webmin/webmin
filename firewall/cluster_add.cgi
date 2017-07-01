@@ -2,8 +2,10 @@
 # Add or update a server or group from the webmin servers module
 
 require './firewall-lib.pl';
-$access{'cluster'} || &error($text{'ecluster'});
 &ReadParse();
+if (&get_ipvx_version() == 6) { require './firewall6-lib.pl';
+	} else { require './firewall4-lib.pl'; }
+$access{'cluster'} || &error($text{'ecluster'});
 &foreign_require("servers", "servers-lib.pl");
 @allservers = grep { $_->{'user'} } &servers::list_servers();
 
@@ -24,7 +26,7 @@ else {
 	$msg = &text('add_gmsg', $in{'group'});
 	}
 
-&ui_print_header(undef, $text{'add_title'}, "");
+&ui_print_header($text{"index_title_v${ipvx}"}, $text{'add_title'}, "");
 print "<b>$msg</b><p>\n";
 
 # Setup error handler for down hosts
@@ -47,7 +49,7 @@ foreach $s (@add) {
 		print &text('add_echeck', $s->{'host'}),"<p>\n";
 		next;
 		}
-	&remote_foreign_require($s->{'host'}, "firewall", "firewall-lib.pl");
+	&remote_foreign_require($s->{'host'}, "firewall", $ipvx_lib);
 
 	local $missing = &remote_foreign_call($s->{'host'}, "firewall",
 					      "missing_firewall_commands");
@@ -57,7 +59,7 @@ foreach $s (@add) {
 		}
 
 	@livetables = &remote_foreign_call($s->{'host'}, "firewall",
-				   "get_iptables_save", "iptables-save |");
+				   "get_iptables_save", "ip${ipvx}tables-save |");
 	$rc = 0;
 	foreach $t (@livetables) {
 		$rc += @{$t->{'rules'}};
@@ -74,5 +76,5 @@ else {
 	&webmin_log("add", "group", $in{'group'});
 	}
 
-&ui_print_footer("cluster.cgi", $text{'cluster_return'});
+&ui_print_footer("cluster.cgi?version=${ipvx_arg}", $text{'cluster_return'});
 

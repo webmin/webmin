@@ -1,42 +1,44 @@
 # firewall-lib.pl
-# Functions for parsing iptables-save format files
-# - help pages
+# Unified functions for iptable4-lib and iptable6-lib 
+# in iptabel4 and iptable6 need onyl to init and call
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
-if ($config{'save_file'}) {
-	# Force use of a different save file, and webmin's functions
-	$iptables_save_file = $config{'save_file'};
+
+# set_ipvx_version(version)
+# version can be ipv6 or ipv4,
+sub set_ipvx_version
+{
+$ipvx_save=$iptables_save_file;
+$ipvx_lib='firewall4-lib.pl';
+$ipv4_link='../firewall/';
+$ipv6_link='../firewall6/';
+$ipv4_active='active';
+$ipvx_icmp="";
+$ipvx_arg="inet4";
+
+if ($_[0] =~ /6$/i) {
+	$ipvx='6';
+	$ipvx_save=$ip6tables_save_file;
+	$ipvx_lib='firewall6-lib.pl';
+	$ipv4_active='';
+	$ipv6_active='active';
+	$ipvx_icmp="v6";
+        $ipvx_arg="inet6";
 	}
-else {
-	if (-r "$module_root_directory/$gconfig{'os_type'}-lib.pl") {
-		# Use the operating system's save file and functions
-		do "$gconfig{'os_type'}-lib.pl";
-		}
+}
 
-	if (!$iptables_save_file) {
-		# Use webmin's own save file
-		$iptables_save_file = "$module_config_directory/iptables.save";
-		}
-	}
+# get_ipvx_version
+# get iptables version used from environment
+# if script runs in firewall6 or version=inet6, 6 is returned, else 4
+sub get_ipvx_version
+{
+if ( $in{'version'} =~ /6$/ || `pwd` =~ /6$/)
+	{ return 6; }
+return 4;
+}
 
-%access = &get_module_acl();
-
-@known_tables = ( "filter", "mangle", "nat" );
-@known_args =   ('-p', '-m', '-s', '-d', '-i', '-o', '-f',
-		 '--dport', '--sport', '--tcp-flags', '--tcp-option',
-		 '--icmp-type', '--mac-source', '--limit', '--limit-burst',
-		 '--ports', '--uid-owner', '--gid-owner',
-		 '--pid-owner', '--sid-owner', '--state', '--tos', '-j',
-		 '--to-ports', '--to-destination', '--to-source',
-		 '--reject-with', '--dports', '--sports',
-		 '--comment',
-		 '--physdev-is-bridged',
-		 '--physdev-is-in',
-		 '--physdev-is-out',
-		 '--physdev-in',
-		 '--physdev-out');
 
 # get_iptables_save([file])
 # Parse the iptables save file into a list of tables 
@@ -50,8 +52,9 @@ sub get_iptables_save
 {
 local (@rv, $table, %got);
 local $lnum = 0;
-open(FILE, $_[0] || ($config{'direct'} ? "iptables-save 2>/dev/null |"
-				       : $iptables_save_file));
+
+open(FILE, $_[0] || ($config{'direct'} ? "ip${ipvx}tables-save 2>/dev/null |"
+				       : $ipvx_save));
 local $cmt;
 LINE:
 while(<FILE>) {
@@ -64,7 +67,6 @@ while(<FILE>) {
                  # -A|-I chain ... -j chain -> skip line if machtes filter_chain
                  if (/^.?-(A|I)\s+(\S+).*\s+-j\s+(.*)/) {
                          next LINE if($2 =~ /^$filter$/);
-                         #next LINE if($3 =~ /^$filter$/);
                     }
                 }
             }
@@ -151,11 +153,11 @@ sub save_table
 local $lref;
 if ($config{'direct'}) {
 	# Read in the current iptables-save output
-	$lref = &read_file_lines("iptables-save 2>/dev/null |", 1);
+	$lref = &read_file_lines("ip${ipvx}tables-save 2>/dev/null |", 1);
 	}
 else {
 	# Updating the save file
-	$lref = &read_file_lines($iptables_save_file);
+	$lref = &read_file_lines($ipvx_save);
 	}
 local @lines = ( "*$_[0]->{'name'}" );
 local ($d, $r);
@@ -196,7 +198,7 @@ else {
 	}
 if ($config{'direct'}) {
 	# Pass new lines to iptables-restore
-	open(SAVE, "| iptables-restore");
+	open(SAVE, "| ip${ipvx}tables-restore");
 	print SAVE map { $_."\n" } @$lref;
 	close(SAVE);
 	}
@@ -206,29 +208,29 @@ else {
 	}
 }
 
-
 # get_ipsets_active()
 # return a list of active ipsets
 sub get_ipsets_active
 {
-local @rv, $name, $set={};
+local (@rv, $name, $set={});
 open(FILE, "ipset list -t 2>/dev/null |");
 LINE:
 while(<FILE>) {
-	# remove newlines, get arg and value
+      # remove newlines, get arg and value
         s/\r|\n//g;
-	local ($n, $v) = split(/: /, $_);
-	($n) = $n =~ /(\S+)/;
-	# get values from name to number
-	$name=$v if ($n eq "Name");
-	$set->{$n}=$v;
-	if ($n eq "Number") {
-		 push(@rv, $set);
-		 $set={};
-		}
-	}
+      local ($n, $v) = split(/: /, $_);
+      ($n) = $n =~ /(\S+)/;
+      # get values from name to number
+      $name=$v if ($n eq "Name");
+      $set->{$n}=$v;
+      if ($n eq "Number") {
+               push(@rv, $set);
+               $set={};
+              }
+      }
 return @rv;
 }
+
 
 # describe_rule(&rule)
 # Returns a human-readable description of some rule conditions
@@ -237,11 +239,12 @@ sub describe_rule
 local (@c, $d);
 foreach $d ('p', 's', 'd', 'i', 'o', 'f', 'dport',
 	    'sport', 'tcp-flags', 'tcp-option',
-	    'icmp-type', 'mac-source', 'limit', 'limit-burst',
+	    'icmp-type', 'icmpv6-type', 'mac-source', 'limit', 'limit-burst',
 	    'ports', 'uid-owner', 'gid-owner',
 	    'pid-owner', 'sid-owner', 'state', 'tos',
 	    'dports', 'sports', 'physdev-in', 'physdev-out', 'args') {
 	if ($_[0]->{$d}) {
+
 		# get name and values
 		local ($n, @v) = @{$_[0]->{$d}};
 		# with additional args
@@ -290,9 +293,9 @@ else {
 # Create (if necessary) the Webmin iptables init script
 sub create_webmin_init
 {
-local $res = &has_command("iptables-restore");
-local $ipt = &has_command("iptables");
-local $start = "$res <$iptables_save_file";
+local $res = &has_command("ip${ipvx}tables-restore");
+local $ipt = &has_command("ip${ipvx}tables");
+local $start = "$res <$ipvx_save";
 local $stop = "$ipt -t filter -F\n".
 	      "$ipt -t nat -F\n".
 	      "$ipt -t mangle -F\n".
@@ -305,7 +308,7 @@ local $stop = "$ipt -t filter -F\n".
 	      "$ipt -t mangle -P PREROUTING ACCEPT\n".
 	      "$ipt -t mangle -P OUTPUT ACCEPT";
 &foreign_require("init", "init-lib.pl");
-&init::enable_at_boot("webmin-iptables", "Load IPtables save file",
+&init::enable_at_boot("webmin-ip${ipvx}tables", "Load ip${ipvx}tables save file",
 		      $start, $stop, undef, { 'exit' => 1 });
 }
 
@@ -353,7 +356,7 @@ sub by_string_for_iptables
 sub missing_firewall_commands
 {
 local $c;
-foreach $c ("iptables", "iptables-restore", "iptables-save") {
+foreach $c ("ip${ipvx}tables", "ip${ipvx}tables-restore", "ip${ipvx}tables-save") {
 	return $c if (!&has_command($c));
 	}
 return undef;
@@ -363,7 +366,7 @@ return undef;
 # Activates the current firewall rules, and returns any error
 sub iptables_restore
 {
-local $out = &backquote_logged("cd / ; iptables-restore <$iptables_save_file 2>&1");
+local $out = &backquote_logged("cd / ; ip${ipvx}tables-restore <$ipvx_save 2>&1");
 return $? ? "<pre>$out</pre>" : undef;
 }
 
@@ -371,7 +374,7 @@ return $? ? "<pre>$out</pre>" : undef;
 # Saves the active firewall rules, and returns any error
 sub iptables_save
 {
-local $out = &backquote_logged("iptables-save >$iptables_save_file 2>&1");
+local $out = &backquote_logged("ip${ipvx}tables-save >$ipvx_save 2>&1");
 return $? ? "<pre>$out</pre>" : undef;
 }
 
@@ -494,16 +497,16 @@ local $ltemp;
 if ($config{'direct'}) {
 	# Dump current configuration
 	$ltemp = &transname();
-	system("iptables-save >$ltemp 2>/dev/null");
+	system("ip${ipvx}tables-save >$ltemp 2>/dev/null");
 	}
 foreach $s (&list_cluster_servers()) {
-	&remote_foreign_require($s, "firewall", "firewall-lib.pl");
+	&remote_foreign_require($s, "firewall", $ipvx_lib);
 	if ($config{'direct'}) {
 		# Directly activate on remote server!
 		local $rtemp = &remote_write($s, $ltemp);
 		unlink($ltemp);
 		local $err = &remote_eval($s, "firewall",
-		  "\$out = `iptables-restore <$rtemp 2>&1`; [ \$out, \$? ]"); 
+		  "\$out = `ip${ipvx}tables-restore <$rtemp 2>&1`; [ \$out, \$? ]"); 
 		&remote_eval($s, "firewall", "unlink('$rtemp')");
 		&error(&text('apply_remote', $s->{'host'}, $err->[0]))
 			if ($err->[1]);
@@ -511,8 +514,8 @@ foreach $s (&list_cluster_servers()) {
 	else {
 		# Can just copy across save file
 		local $rfile = &remote_eval($s, "firewall",
-					    "\$iptables_save_file");
-		&remote_write($s, $iptables_save_file, $rfile);
+					    "\$ip${ipvx}tables_save_file");
+		&remote_write($s, $ipvx_save, $rfile);
 		}
 	}
 }
@@ -527,7 +530,7 @@ if ($config{'cluster_mode'}) {
 	}
 local $s;
 foreach $s (&list_cluster_servers()) {
-	&remote_foreign_require($s->{'host'}, "firewall", "firewall-lib.pl");
+	&remote_foreign_require($s->{'host'}, "firewall", $ipvx_lib);
 	local $err = &remote_foreign_call($s->{'host'}, "firewall", "apply_configuration");
 	if ($err) {
 		return &text('apply_remote', $s->{'host'}, $err);
@@ -541,7 +544,7 @@ return undef;
 sub validate_iptables_config
 {
 my $out = &backquote_command(
-	"iptables-restore --test <$iptables_save_file 2>&1");
+	"iptables-restore --test <$ipvx_save 2>&1");
 return undef if (!$?);
 $out =~ s/Try\s.*more\s+information.*//;
 return $out;
