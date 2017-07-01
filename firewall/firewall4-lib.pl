@@ -1,16 +1,7 @@
 # firewall4-lib.pl
-# Functions for parsing iptables-save format files
-# include firewall-lib.pl, init, set IP version
-
-BEGIN { push(@INC, ".."); };
-use WebminCore;
-&init_config();
-
-# include common functions for ipv4 and ipv6
-require './firewall-lib.pl';
+# has to be included after firewall-lib from every cgi
 
 # ipv4 initialization
-$config{'perpage'} ||= 50;	# a value of 0 can cause problems
 if ($config{'save_file'}) {
 	# Force use of a different save file, and webmin's functions
 	$iptables_save_file = $config{'save_file'};

@@ -1,10 +1,13 @@
 # firewall-lib.pl
-# Unified functions for iptable4-lib and iptable6-lib 
-# in iptabel4 and iptable6 need onyl to init and call
+# Unified functions for firewall4-lib and firewall6-lib 
+# has to be included from every perl and cgi script
+# cgi scripts has also to include firewall4/6-lib based on result of get_ipvx_version() 
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
+
+$config{'perpage'} ||= 50;	# a value of 0 can cause problems
 
 # set_ipvx_version(version)
 # version can be ipv6 or ipv4,
@@ -12,8 +15,8 @@ sub set_ipvx_version
 {
 $ipvx_save=$iptables_save_file;
 $ipvx_lib='firewall4-lib.pl';
-$ipv4_link='../firewall/';
-$ipv6_link='../firewall6/';
+$ipv4_link='index.cgi?version=inet4';
+$ipv6_link='index.cgi?version=inet6';
 $ipv4_active='active';
 $ipvx_icmp="";
 $ipvx_arg="inet4";

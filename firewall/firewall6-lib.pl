@@ -1,19 +1,10 @@
 # firewall6-lib.pl
-# Functions for parsing ip6tables-save format files
-# - help pages
-
-BEGIN { push(@INC, ".."); };
-use WebminCore;
-&init_config();
-
-# include common functions for ipv4 and ipv6
-require './firewall-lib.pl';
+# has to be included after firewall-lib from every cgi
 
 # ipv6 initialization
-$config{'perpage'} ||= 50;	# a value of 0 can cause problems
-if ($config{'save_file'}) {
+if ($config{'save_file6'}) {
 	# Force use of a different save file, and webmin's functions
-	$ip6tables_save_file = $config{'save_file'};
+	$ip6tables_save_file = $config{'save6_file'};
 	}
 else {
 	if (-r "$module_root_directory/$gconfig{'os_type'}-lib.pl") {
@@ -64,23 +55,6 @@ foreach my $w (split(/,/, $_[0])) {
 	return 1 if (!$ok);
 	}
 return 1;
-}
-
-# renamed functions
-# pass current args to original
-sub get_ip6tables_save
-{
-&get_iptables_save;
-}
-
-sub ip6tables_save
-{
-&iptables_save;
-}
-
-sub by_string_for_ip6tables
-{
-&by_string_for_iptables;
 }
 
 1;
