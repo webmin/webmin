@@ -1712,11 +1712,11 @@ var divobj = document.getElementById(divid);
 var openerobj = document.getElementById(openerid);
 if (divobj.className == 'opener_shown') {
   divobj.className = 'opener_hidden';
-  openerobj.innerHTML = '<img border='0' src=$imgdir/closed.gif>';
+  openerobj.innerHTML = '<img border=0 src=$imgdir/closed.gif>';
   }
 else {
   divobj.className = 'opener_shown';
-  openerobj.innerHTML = '<img border='0' src=$imgdir/open.gif>';
+  openerobj.innerHTML = '<img border=0 src=$imgdir/open.gif>';
   }
 }
 
