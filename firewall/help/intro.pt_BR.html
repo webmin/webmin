@@ -35,5 +35,23 @@ Você pode clicar em qualquer regra em uma chain para editá-la, clicar nas setas 
 
 Na parte de baixo da página está um botão para tornar a configuração atual do firewall ativa, carregando-a através do comando <tt>ipi(6)tables-restore</tt>. A seguir está um botão para fazer o inverso - pegar a configuração que está corrente no kernel e torná-la disponível para edição. Finalmente, se sua distribuição suportar, existe um botão para indicar se o firewall será ativado durante o boot ou não. <p>
 
+
+<h3>Filtering chains</h3>
+
+For better collaboration with external iptables scripts you can exclude individual
+chains from the processing by the firewall. To do this, you must select direct
+processing of rules in the settings and enter a filter list, which excludes
+the appropriate chains from processing.
+Chains that are not exculded from editing are flagged with a "not managed by firewall" message.
+<p>
+
+<h3>IP Sets</h3>
+
+Newer versions of ip(6)table support the ipset extension.
+IP sets are lists of IP addresses in the main memory, which can be searched very efficiently
+and used as a condition in rules. On the main page, existing IP sets that can be used by 
+rules are displayed. Currently, however, it is not possible to manage these in the firewall.
+<p>
+
 <hr>
 

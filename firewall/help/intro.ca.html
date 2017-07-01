@@ -69,6 +69,24 @@ prendre la configuració que hi ha actualment al nucli i posar-la a
 disposició de l'editor. Finalment, si la distribució ho suporta, hi ha
 un botó per canviar si el tallafocs s'activa en engegar el sistema o no. <p>
 
-<hr>
 
+
+<h3>Filtering chains</h3>
+
+For better collaboration with external iptables scripts you can exclude individual
+chains from the processing by the firewall. To do this, you must select direct
+processing of rules in the settings and enter a filter list, which excludes
+the appropriate chains from processing.
+Chains that are not exculded from editing are flagged with a "not managed by firewall" message.
+<p>
+
+<h3>IP Sets</h3>
+
+Newer versions of ip(6)table support the ipset extension.
+IP sets are lists of IP addresses in the main memory, which can be searched very efficiently
+and used as a condition in rules. On the main page, existing IP sets that can be used by 
+rules are displayed. Currently, however, it is not possible to manage these in the firewall.
+<p>
+
+<hr>
 

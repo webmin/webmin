@@ -69,5 +69,20 @@ Schlie&szlig;lich gibt noch eine Schaltfl&auml;che, um zu einzustellen ob die Fi
 Bootens aktiviert wird oder nicht.
 <p>
 
+<h3>Filtern von Ketten</h3>
+
+F&uuml;r die bessere Zusammenarbeit mit exernen IPtables Scripten kann man einzelne Ketten von
+der Bearbeitung durch die Firewall ausnehmen. Dazu m&uuml;ssen sie in den Einstellungen die direkte
+Bearbeitung von Regeln ausw&auml;hlen und eine Filterliste
+eingeben, welche die passenden Ketten von der Bearbeitung ausnimmt.
+Ketten die nicht bearbeitet werden mit dem Hinweis "nichit von Firewall verwaltet" angezeigt<p>
+
+<h3>IP-Sets</h3>
+
+Neuere Versionen von IPtable unterst&uuml;tzen die Erweiterung ipset. IP-Sets sind Listen von IP-Adressen
+im Hauptspeicher, die sehr effizient durchsucht und als Bedingung in Regeln verwendet werden k&ouml;nnen.
+Auf der Hauptseite werden vorhandene IP-Sets die von der Regeln verwendet werden  k&ouml;nnen angezeigt.
+Derzeit ist es allerdings nicht m&ouml;glich diese in der Firewall zu verwalten.
+
 <hr>
 

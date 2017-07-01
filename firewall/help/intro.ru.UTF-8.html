@@ -40,5 +40,23 @@
 При попытке добавить или отредактировать правило, откроется новая страница на которой вы сможете выбрать <tt>Действие</tt> для правила, а так же <tt>Условие</tt>, при котором это Действие должно выполняться. <p>
 
 В самом низу главной страницы находятся несколько кнопок: <tt>Применить конфигурацию</tt> - активирует текущие настройки брандмауэра, загружая их в ядро командой <tt>ipi(6)tables-restore</tt>. <tt>Вернуть конфигурацию</tt> действует наоборот - загружает в окно для конфигурирования настройки, активные в данный момент в ядре. <tt>Включать при запуске</tt> позволяет настроить автозапуск брандмауэра (если поддерживается вашим дистрибутивом). <tt>Сбросить конфигурацию</tt> - очищает все цепочки и таблицы, чтобы начать настройку с нуля.<p>
+
+<h3>Filtering chains</h3>
+
+For better collaboration with external iptables scripts you can exclude individual
+chains from the processing by the firewall. To do this, you must select direct
+processing of rules in the settings and enter a filter list, which excludes
+the appropriate chains from processing.
+Chains that are not exculded from editing are flagged with a "not managed by firewall" message.
+<p>
+
+<h3>IP Sets</h3>
+
+Newer versions of ip(6)table support the ipset extension.
+IP sets are lists of IP addresses in the main memory, which can be searched very efficiently
+and used as a condition in rules. On the main page, existing IP sets that can be used by 
+rules are displayed. Currently, however, it is not possible to manage these in the firewall.
+<p>
+
 <hr>
 
