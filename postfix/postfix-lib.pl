@@ -131,6 +131,10 @@ if (!defined($out)) {
 		}
 	chop($out);
 	}
+else {
+	# Trim trailing whitespace
+	$out =~ s/\s+$//;
+	}
 if ($key) {
 	# If the value asked for was like foo:bar, extract from the value
 	# the parts after bar
