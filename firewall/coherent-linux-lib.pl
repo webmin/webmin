@@ -2,7 +2,7 @@
 # Deal with redhat's /etc/sysconfig/iptables save file and startup script
 
 &foreign_require("init", "init-lib.pl");
-$init_script = "$init::config{'init_dir'}/iptables";
+$init_script = "$init::config{'init_dir'}/ip${ipvx}tables";
 
 # check_iptables()
 # Returns an error message if something is wrong with iptables on this system
@@ -23,6 +23,7 @@ if (!$config{'done_check_iptables'}) {
 return undef;
 }
 
+$ip6tables_save_file = "/etc/sysconfig/ip6tables";
 $iptables_save_file = "/etc/sysconfig/iptables";
 
 # apply_iptables()
@@ -46,17 +47,17 @@ return $? || $out =~ /FAILED/ ? "<pre>$out</pre>" : undef;
 # started_at_boot()
 sub started_at_boot
 {
-return &init::action_status("iptables") == 2;
+return &init::action_status("ip${ipvx}tables") == 2;
 }
 
 sub enable_at_boot
 {
-&init::enable_at_boot("iptables");	 # Assumes init script exists
+&init::enable_at_boot("ip${ipvx}tables");	 # Assumes init script exists
 }
 
 sub disable_at_boot
 {
-&init::disable_at_boot("iptables");
+&init::disable_at_boot("ip${ipvx}tables");
 }
 
 1;
