@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # Open some ports on the firewall. Exit statuses are :
 # 0 - Nothing needed to be done
 # 1 - Given ports were opened up
@@ -13,7 +13,7 @@ $ENV{'WEBMIN_VAR'} = "/var/webmin";
 if ($0 =~ /^(.*\/)[^\/]+$/) {
 	chdir($1);
 	}
-require './firewall4-lib.pl';
+require './firewall-lib.pl';
 if ($module_name ne 'firewall') {
 	print STDERR "Command must be run with full path\n";
 	exit(5);

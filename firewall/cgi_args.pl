@@ -1,5 +1,5 @@
 
-do 'firewall4-lib.pl';
+do 'firewall-lib.pl';
 
 sub cgi_args
 {

@@ -1,5 +1,5 @@
 
-do 'firewall4-lib.pl';
+do 'firewall-lib.pl';
 
 # backup_config_files()
 # Returns files and directories that can be backed up

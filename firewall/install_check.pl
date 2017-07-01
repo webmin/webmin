@@ -1,6 +1,6 @@
 # install_check.pl
 
-do 'firewall4-lib.pl';
+do 'firewall-lib.pl';
 
 # is_installed(mode)
 # For mode 1, returns 2 if the server is installed and configured for use by

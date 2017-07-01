@@ -1,7 +1,7 @@
 # log_parser.pl
 # Functions for parsing this module's logs
 
-do 'firewall4-lib.pl';
+do 'firewall-lib.pl';
 
 # parse_webmin_log(user, script, action, type, object, &params)
 # Converts logged information from this module into human-readable form
