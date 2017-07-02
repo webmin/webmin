@@ -259,6 +259,7 @@ print "<script type='text/javascript' src='$gconfig{'webprefix'}/unauthenticated
 if ($ENV{'HTTP_USER_AGENT'} =~ /Chrome/) {
 	print "<style type=\"text/css\">\n";
 	print "textarea,pre { font-size:120%; }\n";
+	print "textarea { font-family:monospace; }\n";
 	print "</style>\n";
 	}
 }
