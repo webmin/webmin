@@ -27,8 +27,7 @@ sub theme_ui_post_header
 my ($text) = @_;
 my $rv;
 $rv .= "<div class='ui_post_header'>$text</div>\n" if (defined($text));
-#$rv .= "<div class='section'>\n";
-$rv .= "<p>" if (!defined($text));
+$rv .= "<p></p>" if (!defined($text));
 return $rv;
 }
 
@@ -37,7 +36,7 @@ return $rv;
 sub theme_ui_pre_footer
 {
 my $rv;
-$rv .= "</div><p>\n";
+$rv .= "<p></p>\n";
 return $rv;
 }
 
