@@ -1,11 +1,10 @@
 #!/usr/local/bin/perl
 # Command-line script to enable status collection
 
-BEGIN { push(@INC, '.'); };
 use strict;
 use warnings;
 our (%config);
-require 'system-status-lib.pl';
+require './system-status-lib.pl';
 my $zero = @ARGV ? $ARGV[0] : '';
 $zero eq 'none' || $zero =~ /^[1-9][0-9]*$/ && $zero <= 60 ||
 	die "usage: enable-collection.pl none|<mins>";
