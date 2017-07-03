@@ -417,7 +417,7 @@ if ($_[0]->get_value("uid")) {
 			'warn' => $_[0]->get_value("shadowWarning") || "",
 			'inactive' => $_[0]->get_value("shadowInactive") || "",
 		      );
-	$user{'pass'} =~ s/^(\!?){[a-z0-9]+}/$1/i;
+	$user{'pass'} =~ s/^(\!?)\{[a-z0-9]+\}/$1/i;
 	$user{'all_ldap_attrs'} = { map { lc($_), scalar($_[0]->get_value($_)) }
 					$_[0]->attributes() };
 	$user{'ldap_class'} = [ $_[0]->get_value('objectClass') ];
