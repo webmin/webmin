@@ -76,6 +76,7 @@ PERLLIB=$wadir
 if [ "$perllib" != "" ]; then
 	PERLLIB="$PERLLIB:$perllib"
 fi
+export PERLLIB
 
 # Validate source directory
 allmods=`cd "$srcdir"; echo */module.info | sed -e 's/\/module.info//g'`
