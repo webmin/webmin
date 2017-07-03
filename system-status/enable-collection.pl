@@ -1,6 +1,7 @@
 #!/usr/local/bin/perl
 # Command-line script to enable status collection
 
+BEGIN { push(@INC, '.'); };
 use strict;
 use warnings;
 our (%config);
