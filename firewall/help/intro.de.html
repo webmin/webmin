@@ -27,18 +27,19 @@ was mit Paketen passiert, die keiner Regel entsprechen.
 
 Jede Kette ist Teil einer Tabelle von denen es derzeit die drei folgenden gibt:
 <ul>
-<li><b>Packet filtering (<tt>filter</tt>)</b><br>
-    The chains in this table can be used to control data coming into your
-    system from other hosts on the network, data sent out from your system
-    by users and processes, and data forwarded by your system if it is acting
-    as a router. <p>
-<li><b>Network address translation (<tt>nat</tt>)</b><br>
-    This table can be used for setting up NAT or masquerading, which is useful
-    if you want to give an entire network of machines access to the internet
-    through only one real IP address. <p>
-<li><b>Packet alteration (<tt>mangle</tt>)</b><br>
-    This table is for modifying packets forwarded by or sent out from your
-    system. <p>
+<li><b>Paket Filter (<tt>filter</tt>)</b><br>
+Die Ketten in dieser Tabelle steuern die Daten die von Ihrem System
+von anderen Hosts im Netzwerk empfangen iwerden, die von Ihrem System 
+von Benutzern und Prozessen gesendet werden und Daten die von Ihrem System weitergeleitet werden.
+<p>
+
+<li><b>Network Adressen &Uuml;bersetzung (<tt>nat</tt>)</b><br>
+Diese Tabelle kann für die Einrichtung von NAT oder Masquerading verwendet werden,dies nutzt man
+wenn Sie einem ganzeen Netzwerk Zugang zum Internet &uuml;ber Ihr System geben wollen.
+<p>
+<li><b>Paket Berabeitung (<tt>mangle</tt>)</b><br>
+Diese Tablle kann Pakete die on Ihrem System gesendet oder weitergeleitet werden ver&auml;ndern.
+<p>
 </ul>
 
 Zus&auml;tzlich zu den Standard-Ketten, die Teil jeder Tabelle sind, k&ouml;nnen Sie auch

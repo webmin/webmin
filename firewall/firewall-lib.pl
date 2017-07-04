@@ -15,8 +15,8 @@ sub set_ipvx_version
 {
 $ipvx_save=$iptables_save_file;
 $ipvx_lib='firewall4-lib.pl';
-$ipv4_link='index.cgi?version=inet4';
-$ipv6_link='index.cgi?version=inet6';
+$ipv4_link='../firewall/';
+$ipv6_link='../firewall6/';
 $ipv4_active='active';
 $ipvx_icmp="";
 $ipvx_arg="inet4";
