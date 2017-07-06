@@ -78,7 +78,7 @@ def get_crt(account_key, csr, acme_dir, dns_hook, cleanup_hook, log=LOGGER, CA=D
     if proc.returncode != 0:
         raise IOError("Error loading {0}: {1}".format(csr, err))
     domains = set([])
-    common_name = re.search(r"Subject:.*? CN=([^\s,;/]+)", out.decode('utf8'))
+    common_name = re.search(r"Subject:.*? CN\s?=\s?([^\s,;/]+)", out.decode('utf8'))
     if common_name is not None:
         domains.add(common_name.group(1))
     alt_names = re.search(r"Subject:.*subjectAltName=([^\s,;/]+)", out.decode('utf8'))
