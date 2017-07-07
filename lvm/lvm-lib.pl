@@ -474,6 +474,32 @@ return $? ? $out : undef;
 sub delete_logical_volume
 {
 local ($lv) = @_;
+
+# First delete any /dev/mapper entries for the LV
+my $mapper = $lv->{'vg'}."-".$lv->{'lv'};
+my $dashvg = $lv->{'vg'};
+$dashvg =~ s/\-/\-\-/g;
+my $dashmapper = $dashvg."-".$lv->{'lv'};
+opendir(MAPPER, "/dev/mapper");
+my @files = readdir(MAPPER);
+closedir(MAPPER);
+my @delmaps;
+foreach my $f (@files) {
+	if ($f =~ /^\Q$mapper\Ep?\d+$/ ||
+	    $f =~ /^\Q$dashmapper\Ep?\d+$/) {
+		push(@delmaps, $f);
+		}
+	}
+foreach my $f (@files) {
+	if ($f eq $mapper || $f eq $dashmapper) {
+		push(@delmaps, $f);
+		}
+	}
+foreach my $f (@delmaps) {
+	&system_logged("dmsetup remove /dev/mapper/$f >/dev/null 2>&1");
+	}
+
+# Finally remove the LV
 local $cmd = "lvremove -f ".quotemeta($lv->{'device'});
 local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $? ? $out : undef;
