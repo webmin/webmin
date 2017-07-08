@@ -789,7 +789,7 @@ ${$_[0]} = $out if ($_[0]);
 if ($out =~ /lib\S+\.so/) {
 	return -1;
 	}
-elsif ($out =~ /distrib\s+((3|4|5|6|10)\.[0-9\.]*)/i) {
+elsif ($out =~ /distrib\s+((3|4|5|6|7|8|9|10)\.[0-9\.]*)/i) {
 	return $1;
 	}
 else {
