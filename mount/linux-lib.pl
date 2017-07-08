@@ -1649,14 +1649,16 @@ if (($_[0] eq "nfs") || ($_[0] eq "nfs4")) {
 		if ($in{nfs_host} !~ /^\S+$/) {
 			&error(&text('linux_ehost', $in{'nfs_host'}));
 			}
-		$out = &backquote_command("ping -c 1 '$in{nfs_host}' 2>&1");
+		$out = &backquote_command(
+			"ping -c 1 ".quotemeta($in{nfs_host})." 2>&1");
 		if ($out =~ /unknown host/) {
 			&error(&text('linux_ehost2', $in{'nfs_host'}));
 			}
 		elsif ($out =~ /100\% packet loss/) {
 			&error(&text('linux_edown', $in{'nfs_host'}));
 			}
-		$out = &backquote_command("showmount -e '$in{nfs_host}' 2>&1");
+		$out = &backquote_command(
+			"showmount -e ".quotemeta($in{nfs_host})." 2>&1");
 		if ($out =~ /Unable to receive/) {
 			&error(&text('linux_enfs', $in{'nfs_host'}));
 			}
