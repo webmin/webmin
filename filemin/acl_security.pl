@@ -5,7 +5,7 @@ sub acl_security_form {
 
     # Directories the user can access
     print &ui_table_row($text{'acl_allowed_paths'}."<br>\n".
-			$text{'acl_allowed_paths2'}
+			$text{'acl_allowed_paths2'},
 	ui_textarea("allowed_paths",
 		    join("\n", split(/\s+/, $access->{'allowed_paths'})),
 		    10, 80, undef, undef, "style='width: 100%'"), 2);
