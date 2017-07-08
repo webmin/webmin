@@ -1339,7 +1339,7 @@ elsif ($type eq "nfs" || $type eq "nfs4") {
 	print &ui_table_row(&hlink($text{'linux_nfsvers'}, "linux_nfsvers"),
 		&ui_select("nfs_nfsvers", $options{"nfsvers"},
 			   [ [ "", $text{'linux_nfsdefault'} ],
-			     2, 3, 4 ]));
+			     2, 3, 4, 4.1 ]));
 	}
 elsif ($type eq "fat" || $type eq "vfat" || $type eq "msdos" ||
        $type eq "umsdos" || $type eq "fatx"){
