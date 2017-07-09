@@ -73,10 +73,12 @@ if ($r == 0) {
 
 	if ($access{'stop'} && &is_mysql_local()) {
 		print &ui_hr();
-        print &ui_buttons_start();
-        print &ui_buttons_row("start.cgi",
-		      $text{'index_start'}, &text('index_startmsg',"<tt>$config{'start_cmd'}</tt>"));
-        print &ui_buttons_end();
+		print &ui_buttons_start();
+		print &ui_buttons_row("start.cgi",
+			$text{'index_start'},
+			&text('index_startmsg',
+			      "<tt>$config{'start_cmd'}</tt>"));
+		print &ui_buttons_end();
 		}
 	}
 elsif ($r == -1) {
