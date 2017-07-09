@@ -168,7 +168,7 @@ def get_crt(account_key, csr, acme_dir, dns_hook, cleanup_hook, log=LOGGER, CA=D
             if challenge_status['status'] == "pending":
 		tries = tries + 1
 		if tries > 60:
-		    raise ValueError("Gave up waiting for valiation")
+		    raise ValueError("Gave up waiting for validation")
                 time.sleep(2)
             elif challenge_status['status'] == "valid":
                 log.info("{0} verified!".format(domain))
