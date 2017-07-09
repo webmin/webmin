@@ -71,6 +71,8 @@ if ($r == 0) {
 	&main_header();
 	print "<p> <b>$text{'index_notrun'}</b> <p>\n";
 
+	print &text('index_emsg', "<tt>$rout</tt>"),"<p>\n";
+
 	if ($access{'stop'} && &is_mysql_local()) {
 		print &ui_hr();
 		print &ui_buttons_start();
