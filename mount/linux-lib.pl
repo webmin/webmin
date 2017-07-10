@@ -1644,7 +1644,7 @@ sub check_location
 if (($_[0] eq "nfs") || ($_[0] eq "nfs4")) {
 	local($out, $temp, $mout, $dirlist, @dirlist);
 
-	if (&has_command("showmount")) {
+	if (&has_command("showmount") && $config{'nfs_check'}) {
 		# Use ping and showmount to see if the host exists and is up
 		if ($in{nfs_host} !~ /^\S+$/) {
 			&error(&text('linux_ehost', $in{'nfs_host'}));
@@ -1665,21 +1665,21 @@ if (($_[0] eq "nfs") || ($_[0] eq "nfs4")) {
 		elsif ($?) {
 			&error(&text('linux_elist', $out));
 			}
+		}
 
-		# Validate directory name for NFSv3 (in v4 '/' exists)
-		foreach (split(/\n/, $out)) {
-			if (/^(\/\S+)/) {
-				$dirlist .= "$1\n";
-				push(@dirlist, $1);
-				}
+	# Validate directory name for NFSv3 (in v4 '/' exists)
+	foreach (split(/\n/, $out)) {
+		if (/^(\/\S+)/) {
+			$dirlist .= "$1\n";
+			push(@dirlist, $1);
 			}
-		
-		if ($_[0] ne "nfs4" && $in{'nfs_dir'} !~ /^\/.*$/ &&
-		    &indexof($in{'nfs_dir'}, @dirlist) < 0) {
-			&error(&text('linux_enfsdir', $in{'nfs_dir'},
-				     $in{'nfs_host'}, "<pre>$dirlist</pre>"));
-		    }
-	    }
+		}
+	
+	if ($_[0] ne "nfs4" && $in{'nfs_dir'} !~ /^\/.*$/ &&
+	    &indexof($in{'nfs_dir'}, @dirlist) < 0) {
+		&error(&text('linux_enfsdir', $in{'nfs_dir'},
+			     $in{'nfs_host'}, "<pre>$dirlist</pre>"));
+		}
 
 	# Try a test mount to see if filesystem is available
 	$temp = &tempname();
