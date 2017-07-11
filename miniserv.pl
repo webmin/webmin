@@ -1105,11 +1105,7 @@ while(1) {
 					else {
 						# Session is OK
 						print $outfd "2 $user\n";
-						if ($lot &&
-						    $time_now - $ltime >
-						    ($lot*60)/2) {
-							$sessiondb{$skey} = "$user $time_now $ip";
-							}
+						$sessiondb{$skey} = "$user $time_now $ip";
 						}
 					}
 				}
