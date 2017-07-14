@@ -4,6 +4,7 @@
 BEGIN { push(@INC, ".."); };
 use strict;
 use warnings;
+no warnings 'redefine';
 use WebminCore;
 our ($module_name, %config, $user_module_config_directory, %text);
 
