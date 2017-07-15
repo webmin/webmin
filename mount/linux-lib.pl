@@ -549,16 +549,16 @@ while(<SWAPS>) {
 	chop;
 	if (/^(\/\S+)\s+/) {
 		local $sf = $1;
-		if ($sf =~ /^\/dev\/ide\// || $sf =~ /^\/dev\/mapper\//) {
-			# check fstab for a mount on a device which is a symlink
-			local @st = stat($sf);
-			foreach $m (@mounts) {
-				local @fst = stat($m->[1]);
-				if ($m->[2] eq 'swap' && $fst[0] == $st[0] &&
-				    $fst[1] == $st[1]) {
-				    	$sf = $m->[1];
-					last;
-					}
+
+		# check fstab for a mount on a device which is a symlink
+		# to the path in /proc/swaps
+		local @st = stat($sf);
+		foreach $m (@mounts) {
+			local @fst = stat($m->[1]);
+			if ($m->[2] eq 'swap' && $fst[0] == $st[0] &&
+			    $fst[1] == $st[1]) {
+				$sf = $m->[1];
+				last;
 				}
 			}
 
