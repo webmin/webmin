@@ -293,6 +293,9 @@ sub main_header
 {
 &ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
 	&help_search_link("mysql", "man", "doc", "google"),
-	undef, undef, &text('index_version', $mysql_version));
+	undef, undef,
+	$config{'host'} ?
+		&text('index_version2', $mysql_version, $config{'host'}) :
+		&text('index_version', $mysql_version));
 }
 
