@@ -13,3 +13,4 @@ lines=20
 socket=0
 compressed=1
 others=1
+reverse=0

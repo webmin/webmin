@@ -131,6 +131,9 @@ elsif ($in{'view'}) {
 			# Just run tail on the file
 			$fullcmd = $tailcmd." ".quotemeta($file);
 			}
+		if ($config{'reverse'}) {
+			$fullcmd .= " | tac";
+			}
 		if ($fullcmd) {
 			$got = &proc::safe_process_exec(
 				$fullcmd, 0, 0, STDOUT, undef, 1, 0, undef, 1);

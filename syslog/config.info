@@ -4,6 +4,7 @@ refresh=Seconds between log view refreshes,3,Never
 compressed=Include compressed logs in searches?,1,1-Yes,0-No
 others=Show logs from other modules?,1,1-Yes,0-No
 extras=Other log files to show<br>(With optional descriptions),9,50,4,\t
+reverse=Log display order,1,1-Newest lines at top,0-Newest lines at bottom
 line2=System configuration,11
 syslog_conf=Path to syslog config file,0
 m4_conf=Syslog config is processed though m4?,1,1-Yes,0-No

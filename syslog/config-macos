@@ -14,3 +14,4 @@ socket=0
 compressed=1
 others=1
 restart_cmd=killall syslogd
+reverse=0

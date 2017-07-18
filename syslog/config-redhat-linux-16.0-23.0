@@ -23,3 +23,4 @@ start_cmd=/etc/init.d/rsyslog start
 restart_cmd=/etc/init.d/rsyslog reload
 compressed=1
 others=1
+reverse=0

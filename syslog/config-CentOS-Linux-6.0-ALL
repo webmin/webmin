@@ -23,3 +23,4 @@ start_cmd=service rsyslog start
 restart_cmd=service rsyslog reload
 compressed=1
 others=1
+reverse=0

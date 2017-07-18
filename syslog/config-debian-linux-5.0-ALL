@@ -16,3 +16,4 @@ restart_cmd=/etc/init.d/rsyslog reload
 signal_cmd=/etc/init.d/rsyslog restart ; /etc/init.d/klogd restart
 compressed=1
 others=1
+reverse=0

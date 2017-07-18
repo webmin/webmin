@@ -17,3 +17,4 @@ socket=0
 tail_cmd=tail -LINES
 compressed=1
 others=1
+reverse=0
