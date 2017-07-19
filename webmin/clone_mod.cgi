@@ -45,7 +45,7 @@ system("(find '$config_directory/$dst' -name '*.lock' | xargs rm -f) >/dev/null 
 
 # Grant access to the clone to this user
 &read_acl(undef, \%acl);
-&open_tempfile(ACL, "> ".&acl_filename());
+&open_lock_tempfile(ACL, "> ".&acl_filename());
 foreach $u (keys %acl) {
 	my @mods = @{$acl{$u}};
 	if ($u eq $base_remote_user) {
