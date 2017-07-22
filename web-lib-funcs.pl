@@ -2311,13 +2311,13 @@ if (!ref($h)) {
 	else { &error($h); }
 	}
 &complete_http_download($h, $dest, $error, $cbfunc, $osdn, $host, $port,
-			$headers, $ssl, $nocache);
+			$headers, $ssl, $nocache, $timeout);
 if ((!$error || !$$error) && !$nocache) {
 	&write_to_http_cache($url, $dest);
 	}
 }
 
-=head2 complete_http_download(handle, destfile, [&error], [&callback], [osdn], [oldhost], [oldport], [&send-headers], [old-ssl], [no-cache])
+=head2 complete_http_download(handle, destfile, [&error], [&callback], [osdn], [oldhost], [oldport], [&send-headers], [old-ssl], [no-cache], [timeout])
 
 Do a HTTP download, after the headers have been sent. For internal use only,
 typically called by http_download.
@@ -2325,24 +2325,25 @@ typically called by http_download.
 =cut
 sub complete_http_download
 {
+my ($h, $destfile, $error, $cbfunc, $osdn, $oldhost, $oldport, $headers,
+    $oldssl, $nocache, $timeout) = @_;
 local ($line, %header, @headers, $s);  # Kept local so that callback funcs
 				       # can access them.
-my $cbfunc = $_[3];
 
 # read headers
-alarm(60);
-($line = &read_http_connection($_[0])) =~ tr/\r\n//d;
+alarm($timeout || 60);
+($line = &read_http_connection($h)) =~ tr/\r\n//d;
 if ($line !~ /^HTTP\/1\..\s+(200|30[0-9]|400)(\s+|$)/) {
 	alarm(0);
-	&close_http_connection($_[0]);
-	if ($_[2]) { ${$_[2]} = $line; return; }
+	&close_http_connection($h);
+	if ($error) { ${$error} = $line; return; }
 	else { &error("Download failed : $line"); }
 	}
 my $rcode = $1;
 &$cbfunc(1, $rcode >= 300 && $rcode < 400 ? 1 : 0)
 	if ($cbfunc);
 while(1) {
-	$line = &read_http_connection($_[0]);
+	$line = &read_http_connection($h);
 	$line =~ tr/\r\n//d;
 	$line =~ /^(\S+):\s*(.*)$/ || last;
 	$header{lc($1)} = $2;
@@ -2350,8 +2351,8 @@ while(1) {
 	}
 alarm(0);
 if ($main::download_timed_out) {
-	&close_http_connection($_[0]);
-	if ($_[2]) { ${$_[2]} = $main::download_timed_out; return 0; }
+	&close_http_connection($h);
+	if ($error) { ${$error} = $main::download_timed_out; return 0; }
 	else { &error($main::download_timed_out); }
 	}
 &$cbfunc(2, $header{'content-length'}) if ($cbfunc);
@@ -2380,41 +2381,41 @@ if ($rcode >= 300 && $rcode < 400) {
 		}
 	elsif ($header{'location'}) {
 		# Assume relative to same dir .. not handled
-		&close_http_connection($_[0]);
-		if ($_[2]) { ${$_[2]} = "Invalid Location header $header{'location'}"; return; }
+		&close_http_connection($h);
+		if ($error) { ${$error} = "Invalid Location header $header{'location'}"; return; }
 		else { &error("Invalid Location header $header{'location'}"); }
 		}
 	else {
-		&close_http_connection($_[0]);
-		if ($_[2]) { ${$_[2]} = "Missing Location header"; return; }
+		&close_http_connection($h);
+		if ($error) { ${$error} = "Missing Location header"; return; }
 		else { &error("Missing Location header"); }
 		}
 	my $params;
 	($page, $params) = split(/\?/, $page);
 	$page =~ s/ /%20/g;
 	$page .= "?".$params if (defined($params));
-	&http_download($host, $port, $page, $_[1], $_[2], $cbfunc, $ssl,
+	&http_download($host, $port, $page, $destfile, $error, $cbfunc, $ssl,
 		       undef, undef, undef, $_[4], $_[9], $_[7]);
 	}
 else {
 	# read data
-	if (ref($_[1])) {
+	if (ref($destfile)) {
 		# Append to a variable
-		while(defined($buf = &read_http_connection($_[0], 1024))) {
-			${$_[1]} .= $buf;
-			&$cbfunc(3, length(${$_[1]})) if ($cbfunc);
+		while(defined($buf = &read_http_connection($h, 1024))) {
+			${$destfile} .= $buf;
+			&$cbfunc(3, length(${$destfile})) if ($cbfunc);
 			}
 		}
 	else {
 		# Write to a file
 		my $got = 0;
-		if (!&open_tempfile(PFILE, ">$_[1]", 1)) {
-			&close_http_connection($_[0]);
-			if ($_[2]) { ${$_[2]} = "Failed to write to $_[1] : $!"; return; }
-			else { &error("Failed to write to $_[1] : $!"); }
+		if (!&open_tempfile(PFILE, ">$destfile", 1)) {
+			&close_http_connection($h);
+			if ($error) { ${$error} = "Failed to write to $destfile : $!"; return; }
+			else { &error("Failed to write to $destfile : $!"); }
 			}
 		binmode(PFILE);		# For windows
-		while(defined($buf = &read_http_connection($_[0], 1024))) {
+		while(defined($buf = &read_http_connection($h, 1024))) {
 			&print_tempfile(PFILE, $buf);
 			$got += length($buf);
 			&$cbfunc(3, $got) if ($cbfunc);
@@ -2422,14 +2423,14 @@ else {
 		&close_tempfile(PFILE);
 		if ($header{'content-length'} &&
 		    $got != $header{'content-length'}) {
-			&close_http_connection($_[0]);
-			if ($_[2]) { ${$_[2]} = "Download incomplete"; return; }
+			&close_http_connection($h);
+			if ($error) { ${$error} = "Download incomplete"; return; }
 			else { &error("Download incomplete"); }
 			}
 		}
 	&$cbfunc(4) if ($cbfunc);
 	}
-&close_http_connection($_[0]);
+&close_http_connection($h);
 }
 
 
