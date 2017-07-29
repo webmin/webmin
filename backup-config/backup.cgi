@@ -47,7 +47,7 @@ else {
 		&unlink_file($temp);
 		&error($err);
 		}
-	print "Content-type: application/octet-stream\n\n";
+	print "Content-type: application/x-gzip\n\n";
 	my $buf;
 	open(TEMP, $temp);
 	while(read(TEMP, $buf, 1024)) {
