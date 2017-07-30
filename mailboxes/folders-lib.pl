@@ -88,7 +88,7 @@ elsif ($_[2]->{'type'} == 2) {
 		elsif ($cached{$u} == 1 || !$_[3]) {
 			# We need to get the entire mail
 			&pop3_command($h, "retr ".($i+1));
-			open(CACHE, ">$cd/$u.body");
+			open(CACHE, ">", "$cd/$u.body");
 			while(<$h>) {
 				s/\r//g;
 				last if ($_ eq ".\n");
@@ -101,7 +101,7 @@ elsif ($_[2]->{'type'} == 2) {
 		else {
 			# We just need the headers
 			&pop3_command($h, "top ".($i+1)." 0");
-			open(CACHE, ">$cd/$u.headers");
+			open(CACHE, ">", "$cd/$u.headers");
 			while(<$h>) {
 				s/\r//g;
 				last if ($_ eq ".\n");
@@ -135,7 +135,7 @@ elsif ($_[2]->{'type'} == 2) {
 				# Add size to the mail cache
 				$mail[$1-1]->{'size'} = $2;
 				local $u = &safe_uidl($uidl[$1-1]);
-				open(CACHE, ">>$cd/$u.headers");
+				open(CACHE, ">>", "$cd/$u.headers");
 				print CACHE $2,"\n";
 				close(CACHE);
 				}
@@ -382,7 +382,7 @@ elsif ($folder->{'type'} == 2) {
 		elsif ($cached{$u} == 1 || !$headersonly) {
 			# We need to get the entire mail
 			&pop3_command($h, "retr ".$uidlmap{$i});
-			open(CACHE, ">$cd/$u.body");
+			open(CACHE, ">", "$cd/$u.body");
 			while(<$h>) {
 				s/\r//g;
 				last if ($_ eq ".\n");
@@ -395,7 +395,7 @@ elsif ($folder->{'type'} == 2) {
 		else {
 			# We just need the headers
 			&pop3_command($h, "top ".$uidlmap{$i}." 0");
-			open(CACHE, ">$cd/$u.headers");
+			open(CACHE, ">", "$cd/$u.headers");
 			while(<$h>) {
 				s/\r//g;
 				last if ($_ eq ".\n");
@@ -430,7 +430,7 @@ elsif ($folder->{'type'} == 2) {
 				local ($ns) = $sizeneed{$1};
 				$ns->{'size'} = $2;
 				local $u = &safe_uidl($uidl[$1-1]);
-				open(CACHE, ">>$cd/$u.headers");
+				open(CACHE, ">>", "$cd/$u.headers");
 				print CACHE $2,"\n";
 				close(CACHE);
 				}
@@ -1576,7 +1576,7 @@ elsif (-d $f) {
 	}
 else {
 	# Check for MBX format
-	open(MBXTEST, $f);
+	open(MBXTEST, "<", $f);
 	my $first;
 	read(MBXTEST, $first, 5);
 	close(MBXTEST);
@@ -2382,7 +2382,7 @@ local ($h2, $lynx);
 if (($h2 = &has_command("html2text")) || ($lynx = &has_command("lynx"))) {
 	# Can use a commonly available external program
 	local $temp = &transname().".html";
-	open(TEMP, ">$temp");
+	open(TEMP, ">", $temp);
 	print TEMP $_[0];
 	close(TEMP);
 	open(OUT, ($lynx ? "$lynx -dump $temp" : "$h2 $temp")." 2>/dev/null |");

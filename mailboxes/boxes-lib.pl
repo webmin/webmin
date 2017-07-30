@@ -237,7 +237,7 @@ if (!$noperm) {
 local $idsfile = $ifile.".ids";
 local @ids;
 local $idschanged;
-if (!$noperm && open(IDSFILE, $idsfile)) {
+if (!$noperm && open(IDSFILE, "<", $idsfile)) {
 	@ids = <IDSFILE>;
 	chop(@ids);
 	close(IDSFILE);
@@ -353,7 +353,7 @@ if (!@st ||
 
 # Write out IDs file, if needed
 if ($idschanged && !$noperm) {
-	open(IDSFILE, ">$idsfile");
+	open(IDSFILE, ">", $idsfile);
 	foreach my $id (@ids) {
 		print IDSFILE $id,"\n";
 		}
@@ -1292,7 +1292,7 @@ $mail->{'lfile'} = $_[0];
 $mail->{'lfile'} =~ s/\/(qf|hf|Qf)/\/xf/;
 local $_;
 local @headers;
-open(QF, $_[0]) || return undef;
+open(QF, "<", $_[0]) || return undef;
 while(<QF>) {
 	s/\r|\n//g;
 	if (/^M(.*)/) {
@@ -1315,7 +1315,7 @@ foreach $h (@headers) {
 
 if ($mail->{'dfile'}) {
 	# Read the mail body
-	open(DF, $mail->{'dfile'});
+	open(DF, "<", $mail->{'dfile'});
 	while(<DF>) {
 		$mail->{'body'} .= $_;
 		}
@@ -2020,7 +2020,7 @@ else {
 	local @cst = $cachefile ? stat($cachefile) : ( );
 	if ($cst[9] >= $newest) {
 		# Can read the cache
-		open(CACHE, $cachefile);
+		open(CACHE, "<", $cachefile);
 		while(<CACHE>) {
 			chop;
 			push(@files, $_[0]."/".$_);
@@ -2909,7 +2909,7 @@ sub open_as_mail_user
 {
 my ($fh, $file) = @_;
 my $switched = &switch_to_mail_user();
-my $rv = open($fh, $file);
+my $rv = open($fh, "<", $file);
 if ($switched) {
 	# Now that it is open, switch back to root
 	$) = 0;
@@ -2936,7 +2936,7 @@ if (&should_switch_to_mail_user()) {
 	}
 else {
 	# Operating as root, so no special behaviour needed
-	return open($fh, $file);
+	return open($fh, "<", $file);
 	}
 }
 
