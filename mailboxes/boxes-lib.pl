@@ -2909,7 +2909,11 @@ sub open_as_mail_user
 {
 my ($fh, $file) = @_;
 my $switched = &switch_to_mail_user();
-my $rv = open($fh, "<", $file);
+my $mode = "<";
+if ($file =~ s/^(<|>>|>|\|)//) {
+	$mode = $1;
+	}
+my $rv = open($fh, $mode, $file);
 if ($switched) {
 	# Now that it is open, switch back to root
 	$) = 0;
