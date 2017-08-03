@@ -19,7 +19,7 @@ print &ui_table_row($text{'advanced_temp'},
 print &ui_table_row($text{'advanced_tempdelete'},
 		    &ui_opt_textbox("tempdelete", $gconfig{'tempdelete_days'},
 				    5, $text{'advanced_nodelete'})." ".
-		    $text{'advanced_days'}, undef, [ "valign=middle","valign=middle" ]);
+		    $text{'advanced_days'});
 
 # Per-module temp directories
 @mods = sort { $a->{'desc'} cmp $b->{'desc'} } &get_all_module_infos();
@@ -44,12 +44,12 @@ if (!@preloads && (!$miniserv{'premodules'} ||
 	# New-style preload possible or enabled
 	print &ui_table_row($text{'advanced_preload'},
 		    &ui_yesno_radio("preload",
-				    $miniserv{'premodules'} eq 'WebminCore'), undef, [ "valign=middle","valign=middle" ]);
+				    $miniserv{'premodules'} eq 'WebminCore'));
 	}
 elsif ($preloads[0]->[0] eq "main" && $preloads[0]->[1] eq "web-lib-funcs.pl") {
 	# Old-style preloads enabled
 	print &ui_table_row($text{'advanced_preload'},
-			    &ui_yesno_radio("preload", 1), undef, [ "valign=middle","valign=middle" ]);
+			    &ui_yesno_radio("preload", 1));
 	}
 
 # Files to pre-cache
@@ -65,12 +65,12 @@ print &ui_table_row($text{'advanced_precache'},
 
 # Umask for created files
 print &ui_table_row($text{'advanced_umask'},
-	    &ui_opt_textbox("umask", $gconfig{'umask'}, 5, $text{'default'}), undef, [ "valign=middle","valign=middle" ]);
+	    &ui_opt_textbox("umask", $gconfig{'umask'}, 5, $text{'default'}));
 
 # Overwrite immutable files
 if (&has_command("chattr")) {
 	print &ui_table_row($text{'advanced_chattr'},
-		    &ui_yesno_radio("chattr", $gconfig{'chattr'}), undef, [ "valign=middle","valign=middle" ]);
+		    &ui_yesno_radio("chattr", $gconfig{'chattr'}));
 	}
 
 # Nice level for cron jobs
@@ -80,7 +80,7 @@ if (&foreign_check("proc")) {
 	    &ui_radio("nice_def", $gconfig{'nice'} eq '' ? 1 : 0,
 	      [ [ 1, $text{'default'} ],
 		[ 0, $text{'advanced_pri'}." ".
-		     &proc::nice_selector("nice", $gconfig{'nice'} || 0) ] ]), undef, [ "valign=middle","valign=middle" ]);
+		     &proc::nice_selector("nice", $gconfig{'nice'} || 0) ] ]));
 
 	# IO scheduling class and priority
 	if (defined(&proc::os_list_scheduling_classes) &&
@@ -88,13 +88,13 @@ if (&foreign_check("proc")) {
 		print &ui_table_row($text{'advanced_sclass'},
 			&ui_select("sclass", $gconfig{'sclass'},
 				   [ [ undef, $text{'default'} ],
-				     @classes ]), undef, [ "valign=middle","valign=middle" ]);
+				     @classes ]));
 
 		@prios = &proc::os_list_scheduling_priorities();
 		print &ui_table_row($text{'advanced_sprio'},
 			&ui_select("sprio", $gconfig{'sprio'},
 				   [ [ undef, $text{'default'} ],
-				     @prios ]), undef, [ "valign=middle","valign=middle" ]);
+				     @prios ]));
 		}
 	}
 
