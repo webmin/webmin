@@ -144,50 +144,51 @@ sub read_config_file
 my ($lnum, $line, $cmode, @ltok, @lnum, @tok,
       @rv, $t, $ifile, @inc, $str);
 $lnum = 0;
-open(my $FILE, "<", &make_chroot($_[0]));
-while($line = <$FILE>) {
-	# strip comments
-	$line =~ s/\r|\n//g;
-	$line =~ s/#.*$//g;
-	$line =~ s/\/\*.*\*\///g;
-	$line =~ s/\/\/.*$//g if ($line !~ /".*\/\/.*"/);
-	while(1) {
-		if (!$cmode && $line =~ /\/\*/) {
-			# start of a C-style comment
-			$cmode = 1;
-			$line =~ s/\/\*.*$//g;
-			}
-		elsif ($cmode) {
-			if ($line =~ /\*\//) {
-				# end of comment
-				$cmode = 0;
-				$line =~ s/^.*\*\///g;
+if (open(my $FILE, "<", &make_chroot($_[0]))) {
+	while($line = <$FILE>) {
+		# strip comments
+		$line =~ s/\r|\n//g;
+		$line =~ s/#.*$//g;
+		$line =~ s/\/\*.*\*\///g;
+		$line =~ s/\/\/.*$//g if ($line !~ /".*\/\/.*"/);
+		while(1) {
+			if (!$cmode && $line =~ /\/\*/) {
+				# start of a C-style comment
+				$cmode = 1;
+				$line =~ s/\/\*.*$//g;
 				}
-			else { $line = ""; last; }
+			elsif ($cmode) {
+				if ($line =~ /\*\//) {
+					# end of comment
+					$cmode = 0;
+					$line =~ s/^.*\*\///g;
+					}
+				else { $line = ""; last; }
+				}
+			else { last; }
 			}
-		else { last; }
-		}
 
-	# split line into tokens
-	undef(@ltok);
-	while(1) {
-		if ($line =~ /^\s*\"([^"]*)"(.*)$/) {
-			push(@ltok, $1); $line = $2;
+		# split line into tokens
+		undef(@ltok);
+		while(1) {
+			if ($line =~ /^\s*\"([^"]*)"(.*)$/) {
+				push(@ltok, $1); $line = $2;
+				}
+			elsif ($line =~ /^\s*([{};])(.*)$/) {
+				push(@ltok, $1); $line = $2;
+				}
+			elsif ($line =~ /^\s*([^{}; \t]+)(.*)$/) {
+				push(@ltok, $1); $line = $2;
+				}
+			else { last; }
 			}
-		elsif ($line =~ /^\s*([{};])(.*)$/) {
-			push(@ltok, $1); $line = $2;
+		foreach my $t (@ltok) {
+			push(@tok, $t); push(@lnum, $lnum);
 			}
-		elsif ($line =~ /^\s*([^{}; \t]+)(.*)$/) {
-			push(@ltok, $1); $line = $2;
-			}
-		else { last; }
+		$lnum++;
 		}
-	foreach my $t (@ltok) {
-		push(@tok, $t); push(@lnum, $lnum);
-		}
-	$lnum++;
+	close($FILE);
 	}
-close($FILE);
 $lines_count{$_[0]} = $lnum;
 
 # parse tokens into data structures
