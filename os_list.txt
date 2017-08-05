@@ -325,6 +325,7 @@ Caixa Magica			10.0	suse-linux	9.2	`cat /etc/CxM-release 2>/dev/null` =~ /10\.0/
 openmamba Linux			$1	openmamba-linux	$1	`cat /etc/openmamba-release 2>/dev/null` =~ /openmamba\s+release\s+(\S+)/i
 
 # All FreeBSD versions
+FreeBSD				$1	freebsd		$1	`freebsd-version 2>/dev/null` =~ /([0-9]+\.[0-9\.]+)/i
 FreeBSD				$1	freebsd		$1	$uname =~ /FreeBSD.*?\s([0-9]+\.[0-9\.]+)/i
 
 # FreeBSD clones
