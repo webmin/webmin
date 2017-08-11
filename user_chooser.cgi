@@ -19,7 +19,7 @@ if ($in{'multi'}) {
 		# base frame
 		&PrintHeader();
 		print "<script type='text/javascript'>\n";
-		@ul = split(/\s+/, &filter_javascript($in{'user'}));
+		@ul = &split_quoted_string(/\s+/, &filter_javascript($in{'user'}));
 		$len = @ul;
 		print "sel = new Array($len);\n";
 		print "selr = new Array($len);\n";

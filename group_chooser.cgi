@@ -25,7 +25,7 @@ if ($in{'multi'}) {
 		# base frame
 		&PrintHeader();
 		print "<script type='text/javascript'>\n";
-		@ul = &split_quoted(&filter_javascript($in{'group'}));
+		@ul = &split_quoted_string(&filter_javascript($in{'group'}));
 		$len = @ul;
 		print "sel = new Array($len);\n";
 		print "selr = new Array($len);\n";
@@ -205,19 +205,5 @@ while(@ginfo = getgrent()) {
 	}
 endgrent() if ($gconfig{'os_type'} ne 'hpux');
 return sort { $a->[0] cmp $b->[0] } @groups;
-}
-
-# split_quoted(string)
-sub split_quoted
-{
-local @rv;
-local $str = $_[0];
-while($str =~ /^\s*(\S*"[^"]+"\S*)(.*)$/ || $str =~ /^\s*(\S+)(.*)$/) {
-	$str = $2;
-	local $g = $1;
-	$g =~ s/"//g;
-	push(@rv, $g);
-	}
-return @rv;
 }
 
