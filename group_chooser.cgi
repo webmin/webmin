@@ -79,6 +79,7 @@ if ($in{'multi'}) {
 		foreach $u (&get_groups_list()) {
 			if ($in{'group'} eq $u->[0]) { print "<tr class='filter_match' $cb>\n"; }
 			else { print "<tr class='filter_match'>\n"; }
+			$u->[0] =~ s/\\/\\\\/g;
 			print "<td width=20%><a href=\"\" onClick='return addgroup(\"$u->[0]\", \"$u->[3]\")'>$u->[0]</a></td>\n";
 			print "<td>$u->[3]</td> </tr>\n";
 			$cnt++;
