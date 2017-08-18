@@ -1,0 +1,12 @@
+<header>Sektorantal</header>
+Ställer in sektorantal för filsystem read-ahead.
+
+<p>Detta används för att förbättra sekventiell läsning av stora filer genom
+att hämta tillhörande block i förväg för att de troligen kommer att behövas
+för den pågående uppgiften. I denna kärnversion (2.0.10) är
+standardinställningen 8 sektorer (4 kB). Detta värde är lagom för
+de flesta tillämpningar, men i filsystem där huvuddelen av filåtkomsterna
+är slumpsökningar medför ett lägre värde bättre prestanda. Många IDE-diskar
+har också en separat, inbyggd read-ahead-funktion som underlättar för
+filsystemets read-ahead i många fall.
+<hr>

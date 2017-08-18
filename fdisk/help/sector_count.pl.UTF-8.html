@@ -1,0 +1,15 @@
+<header>Liczba sektorów</header>
+
+Ustawia liczbę sektorów dla odczytu wyprzedzającego systemu plików. <p>
+
+Wykorzystuje się to zwiększenia wydajności liniowego odczytu dużych plików,
+poprzez wyprzedzający wybór dodatkowych bloków, uprzedzając zapotrzebowanie
+na nie przez działający proces. W&nbsp;wersji kernela 2.0.10 domyślną
+wartością dla tego ustawienia jest 8 sektorów (4kB). To wartość wydaje się
+być właściwa dla większości zastosowań lecz w&nbsp;systemach, gdzie
+większość dostępów do plików polega na przypadkowych przeszukiwaniach,
+niższe ustawienie może zapewnić większą wydajność. Ponadto, wiele dysków IDE
+posiada osobną wbudowaną funkcję odczytu wyprzedzającego, która w&nbsp;wielu
+sytuacjach zaspokaja zapotrzebowanie systemu plików na odczyt wyprzedzający.
+
+<hr>
