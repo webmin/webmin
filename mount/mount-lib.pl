@@ -344,6 +344,10 @@ foreach my $m (@mounted) {
 			# Skip fuse user-space filesystem mounts
 			next;
 			}
+		if ($m->[2] eq "swap") {
+			# Skip virtual memory
+			next;
+			}
 		# Get the size - for ZFS mounts, this comes from the underlying
 		# total pool size and free
 		my ($t, $f);
