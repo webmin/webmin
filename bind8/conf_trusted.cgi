@@ -19,18 +19,6 @@ my @dlv = &find("dnssec-lookaside", $mems);
 my $tkeys = &find("trusted-keys", $conf);
 $tkeys ||= { 'members' => [ ] };
 
-# Check if not setup at all
-if (!@dlv && !@{$tkeys->{'members'}}) {
-	print "<center>\n";
-	print &ui_form_start("setup_trusted.cgi", "post");
-
-	print &text('trusted_setup', "<tt>$dnssec_dlv_zone</tt>"),"<p>\n";
-
-	print &ui_form_end([ [ undef, $text{'trusted_ok'} ] ]);
-	print "</center>\n";
-	print "<hr>\n";
-	}
-
 print &ui_form_start("save_trusted.cgi", "post");
 print &ui_table_start($text{'trusted_header'}, undef, 4);
 
@@ -41,6 +29,7 @@ print &choice_input($text{'trusted_dnssec'}, 'dnssec-enable', $mems,
 if (&supports_dnssec_client() == 2) {
 	print &choice_input($text{'trusted_validation'},
 			    'dnssec-validation', $mems,
+			    $text{'trusted_auto'}, 'auto',
 			    $text{'yes'}, 'yes', $text{'no'}, 'no',
 			    $text{'default'}, undef);
 	}

@@ -1250,6 +1250,7 @@ trusted_esupport=Your version of BIND does not support DNSSEC verification
 trusted_header=Options for DNSSEC verification of other zones
 trusted_dnssec=DNSSEC enabled?
 trusted_validation=DNSSEC response validation enabled?
+trusted_auto=Yes (automatic mode)
 trusted_dlvs=Additional trust anchors
 trusted_anchor=Anchor zone
 trusted_dlv=Real zone
