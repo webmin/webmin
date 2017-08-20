@@ -22,24 +22,32 @@ if (&supports_dnssec_client() == 2) {
 
 # Save DLV zones
 my @dlvs = ( );
-my $dlv;
-for(my $i=0; defined($in{"anchor_$i"}); $i++) {
-	if (!$in{"anchor_${i}_def"}) {
-		$in{"anchor_$i"} =~ /^[a-z0-9\.\-\_]+$/ ||
-			&error(&text('trusted_eanchor', $i+1));
-		$in{"anchor_$i"} .= "." if ($in{"anchor_$i"} !~ /\.$/);
-		if ($in{"dlv_${i}_def"}) {
-			$dlv = ".";
+if ($in{'dlv_auto'}) {
+	# Automatic mode
+	push(@dlvs, { 'name' => 'dnssec-lookaside',
+		      'values' => [ 'auto' ] });
+	}
+else {
+	# Listed zones
+	my $dlv;
+	for(my $i=0; defined($in{"anchor_$i"}); $i++) {
+		if (!$in{"anchor_${i}_def"}) {
+			$in{"anchor_$i"} =~ /^[a-z0-9\.\-\_]+$/ ||
+				&error(&text('trusted_eanchor', $i+1));
+			$in{"anchor_$i"} .= "." if ($in{"anchor_$i"} !~ /\.$/);
+			if ($in{"dlv_${i}_def"}) {
+				$dlv = ".";
+				}
+			else {
+				$in{"dlv_$i"} =~ /^[a-z0-9\.\-\_]+$/ ||
+					&error(&text('trusted_edlv', $i+1));
+				$dlv = $in{"dlv_$i"};
+				$dlv .= "." if ($dlv !~ /\.$/);
+				}
+			push(@dlvs, { 'name' => 'dnssec-lookaside',
+				      'values' => [ $dlv, "trust-anchor",
+						    $in{"anchor_$i"} ] });
 			}
-		else {
-			$in{"dlv_$i"} =~ /^[a-z0-9\.\-\_]+$/ ||
-				&error(&text('trusted_edlv', $i+1));
-			$dlv = $in{"dlv_$i"};
-			$dlv .= "." if ($dlv !~ /\.$/);
-			}
-		push(@dlvs, { 'name' => 'dnssec-lookaside',
-			      'values' => [ $dlv, "trust-anchor",
-					    $in{"anchor_$i"} ] });
 		}
 	}
 &save_directive($options, "dnssec-lookaside", \@dlvs, 1);
@@ -47,13 +55,6 @@ for(my $i=0; defined($in{"anchor_$i"}); $i++) {
 # Save trusted keys
 my @keys = ( );
 my $trusted = &find("trusted-keys", $conf);
-if (!$trusted) {
-	# Need to create block
-	$trusted = { 'name' => 'trusted-keys',
-		     'type' => 1,
-		     'members' => [ ] };
-	&save_directive($parent, "trusted-keys", [ $trusted ]);
-	}
 for(my $i=0; defined($in{"zone_$i"}); $i++) {
 	next if ($in{"zone_${i}_def"});
 	$in{"zone_$i"} =~ /^[a-z0-9\.\-\_]+$/ ||
@@ -71,6 +72,13 @@ for(my $i=0; defined($in{"zone_$i"}); $i++) {
 		      'values' => [ $in{"flags_$i"}, $in{"proto_$i"},
 				    $in{"alg_$i"}, '"'.$in{"key_$i"}.'"' ],
 		    });
+	}
+if (!$trusted && @keys) {
+	# Need to create block
+	$trusted = { 'name' => 'trusted-keys',
+		     'type' => 1,
+		     'members' => [ ] };
+	&save_directive($parent, "trusted-keys", [ $trusted ]);
 	}
 my @oldkeys = @{$trusted->{'members'}};
 &save_directive($trusted, \@oldkeys, \@keys, 1);

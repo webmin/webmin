@@ -20,7 +20,7 @@ my $tkeys = &find("trusted-keys", $conf);
 $tkeys ||= { 'members' => [ ] };
 
 print &ui_form_start("save_trusted.cgi", "post");
-print &ui_table_start($text{'trusted_header'}, undef, 4);
+print &ui_table_start($text{'trusted_header'}, undef, 2);
 
 # DNSSEC enabled?
 print &choice_input($text{'trusted_dnssec'}, 'dnssec-enable', $mems,
@@ -49,6 +49,10 @@ foreach my $d (@dlv, { 'values' => [ '.' ] }) {
 	$i++;
 	}
 print &ui_table_row($text{'trusted_dlvs'},
+	&ui_radio("dlv_auto",
+		  @dlv == 1 && $dlv[0]->{'values'}->[0] eq 'auto' ? 1 : 0,
+		  [ [ 1, $text{'trusted_dlvs1'} ],
+		    [ 0, $text{'trusted_dlvs0'} ] ])."<br>\n".
 	&ui_columns_table([ $text{'trusted_anchor'}, $text{'trusted_dlv'} ],
 			  undef,
 			  \@dtable), 3);
