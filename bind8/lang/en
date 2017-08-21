@@ -1254,6 +1254,7 @@ trusted_auto=Yes (automatic mode)
 trusted_dlvs=Additional trust anchors
 trusted_dlvs1=Determine automatically
 trusted_dlvs0=Listed below ...
+trusted_dlvs2=None
 trusted_anchor=Anchor zone
 trusted_dlv=Real zone
 trusted_keys=Additional trusted keys
