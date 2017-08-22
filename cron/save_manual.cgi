@@ -4,7 +4,7 @@
 require './cron-lib.pl';
 &ReadParseMime();
 &error_setup($text{'manual_err'});
-$access{'acl_users'} == 0 || &error($text{'manual_ecannot'});
+$access{'mode'} == 0 || &error($text{'manual_ecannot'});
 
 # Validate the file and update it
 my @files = &list_cron_files();
