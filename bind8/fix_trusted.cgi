@@ -29,6 +29,10 @@ if ($trusted) {
 
 &flush_file_lines();
 &unlock_file(&make_chroot($config{'named_conf'}));
+if (&is_bind_running()) {
+	my $err = &restart_bind();
+	&error($err) if ($err);
+	}
 &webmin_log("trusted");
 &redirect("");
 
