@@ -4122,5 +4122,22 @@ else {
 	}
 }
 
+# check_dnssec_client()
+# If the DNSSEC client config is invalid, return a warning message
+sub check_dnssec_client
+{
+my $conf = &get_config();
+my $options = &find("options", $conf);
+my $mems = $options ? $options->{'members'} : [ ];
+my $en = &find_value("dnssec-enable", $mems);
+return undef if ($en !~ /yes/i);
+my $tkeys = &find("trusted-keys", $conf);
+return undef if (!$tkeys || !@{$tkeys->{'members'}});
+return &text('trusted_warning',
+	     $gconfig{'webprefix'}.'/bind8/conf_trusted.cgi')."<p>\n".
+       &ui_form_start($gconfig{'webprefix'}.'/bind8/fix_trusted.cgi')."\n".
+       &ui_form_end([ [ undef, $text{'trusted_fix'} ] ]);
+}
+
 1;
 

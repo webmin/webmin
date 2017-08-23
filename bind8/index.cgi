@@ -101,7 +101,6 @@ if (@zones && $access{'zones'} eq '*' && !$access{'ro'}) {
 	foreach my $z (@zones) {
                 my $zonefile = &make_chroot(&absolute_path($z->{'file'}));
                 if ($z->{'type'} eq 'master' && $z->{'file'} && !-r $zonefile) {
-                        print STDERR "Missing chrooted zone file '${zonefile}'\n";
 			push(@missing, $z);
 			}
 		}
@@ -117,6 +116,12 @@ if (@zones && $access{'zones'} eq '*' && !$access{'ro'}) {
 		print "<b>",&text('index_checkconfig',
 				  "../config.cgi?$module_name"),"</b><p>\n";
 		}
+	}
+
+# Check for obsolete DNSSEC config
+if ($access{'defaults'}) {
+	my $err = &check_dnssec_client();
+	print "<center>".$err."</center>" if ($err);
 	}
 
 if ($access{'defaults'}) {

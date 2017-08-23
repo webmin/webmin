@@ -1276,6 +1276,8 @@ trusted_ealg=Missing or invalid algorithm number in row $1
 trusted_ekey=Missing base-64 encoded trusted zone key in row $1
 trusted_setup=For DNSSEC to be useful to verify the majority of signed zones on the Internet, BIND must be configured to use a DLV server. Webmin can set this up for you, using the ICS DLV server at $1.
 trusted_ok=Setup DLV and Enable DNSSEC Verification
+trusted_warning=Warning! Your BIND DNSSEC client configuration contains out of date keys that will stop working in October 2017. Either use the <a href='$1'>BIND DNSSEC Verification page</a> to adjust the configuration, or click the button below.
+trusted_fix=Fix DNSSEC Configuration
 
 xfer_title=Test Zone Transfer
 xfer_doing=Testing transfer of slave zone from $1 ..
