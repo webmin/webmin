@@ -169,13 +169,17 @@ if (!$in{'save'}) {
 					undef, undef, $file);
 				}
 			}
+		if (-d $file) {
+			print &text('backup_eisdir',
+				    &html_escape($file)),"<p>\n";
+			next;
+			}
 		if ($cron && $cmode == 0) {
 			# Run and check before-backup command (for one DB)
 			$bok = &execute_before($db, STDOUT, 1, $file,
 					       $in{'all'} ? undef : $db);
 			if (!$bok) {
-				print "$main::whatfailed : ",
-				      $text{'backup_ebefore'},"<p>\n";
+				print $text{'backup_ebefore'},"<p>\n";
 				next;
 				}
 			}
@@ -186,8 +190,8 @@ if (!$in{'save'}) {
 			\@compat, \@tables, $access{'buser'}, $in{'single'},
 			$in{'quick'});
 		if ($err) {
-			print "$main::whatfailed : ",
-			      &text('backup_ebackup',"<pre>$err</pre>"),"<p>\n";
+			print &text('backup_ebackup',
+				"<pre>".&html_escape($err)."</pre>"),"<p>\n";
 			}
 		elsif (!$in{'dest'}) {
 			@st = stat($file);
