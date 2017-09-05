@@ -2308,7 +2308,7 @@ alarm(0);
 $h = $main::download_timed_out if ($main::download_timed_out);
 if (!ref($h)) {
 	if ($error) { $$error = $h; return; }
-	else { &error($h); }
+	else { &error(&html_escape($h)); }
 	}
 &complete_http_download($h, $dest, $error, $cbfunc, $osdn, $host, $port,
 			$headers, $ssl, $nocache, $timeout);
@@ -2337,7 +2337,7 @@ if ($line !~ /^HTTP\/1\..\s+(200|30[0-9]|400)(\s+|$)/) {
 	alarm(0);
 	&close_http_connection($h);
 	if ($error) { ${$error} = $line; return; }
-	else { &error("Download failed : $line"); }
+	else { &error("Download failed : ".&html_escape($line)); }
 	}
 my $rcode = $1;
 &$cbfunc(1, $rcode >= 300 && $rcode < 400 ? 1 : 0)
@@ -2383,7 +2383,8 @@ if ($rcode >= 300 && $rcode < 400) {
 		# Assume relative to same dir .. not handled
 		&close_http_connection($h);
 		if ($error) { ${$error} = "Invalid Location header $header{'location'}"; return; }
-		else { &error("Invalid Location header $header{'location'}"); }
+		else { &error("Invalid Location header ".
+			      &html_escape($header{'location'})); }
 		}
 	else {
 		&close_http_connection($h);
@@ -2412,7 +2413,7 @@ else {
 		if (!&open_tempfile(PFILE, ">$destfile", 1)) {
 			&close_http_connection($h);
 			if ($error) { ${$error} = "Failed to write to $destfile : $!"; return; }
-			else { &error("Failed to write to $destfile : $!"); }
+			else { &error("Failed to write to ".&html_escape($destfile)." : ".&html_escape("$!")); }
 			}
 		binmode(PFILE);		# For windows
 		while(defined($buf = &read_http_connection($h, 1024))) {
