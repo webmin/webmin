@@ -94,7 +94,7 @@ elsif ($mode eq "dns") {
 		$bd =~ s/^[^\.]+\.//;
 		my $z = &bind8::get_zone_name($bd, "any") ||
 			&bind8::get_zone_name($d, "any");
-		$z || return (0, "DNS zone $d does not exist on this system");
+		$z || return (0, "DNS zone $d or $bd do not exist on this system");
 		}
 	}
 
