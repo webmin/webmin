@@ -90,11 +90,9 @@ elsif ($mode eq "dns") {
 	# Make sure all the DNS zones exist
 	&foreign_require("bind8");
 	foreach my $d (@doms) {
-		my $bd = $d;
-		$bd =~ s/^[^\.]+\.//;
-		my $z = &bind8::get_zone_name($bd, "any") ||
-			&bind8::get_zone_name($d, "any");
-		$z || return (0, "DNS zone $d or $bd do not exist on this system");
+		my $z = &get_bind_zone_for_domain($d);
+		$z || return (0, "Neither DNS zone $d or any of its ".
+				 "sub-domains exist on this system");
 		}
 	}
 
@@ -277,6 +275,24 @@ else {
 
 	return (1, $certfinal, $keyfinal, $chainfinal);
 	}
+}
+
+# get_bind_zone_for_domain(domain)
+# Given a hostname like www.foo.com, return the local BIND zone that contains
+# it like foo.com
+sub get_bind_zone_for_domain
+{
+my ($d) = @_;
+&foreign_require("bind8");
+my $bd = $d;
+while ($bd) {
+	my $z = &bind8::get_zone_name($bd, "any");
+	if ($z) {
+		return ($z, $bd);
+		}
+	$bd =~ s/^[^\.]+\.//;
+	}
+return ( );
 }
 
 1;
