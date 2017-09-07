@@ -5716,34 +5716,30 @@ if ($gconfig{'logclear'}) {
 
 # If an action script directory is defined, call the appropriate scripts
 if ($gconfig{'action_script_dir'}) {
-    my ($action, $type, $object) = ($_[0], $_[1], $_[2]);
-    my ($basedir) = $gconfig{'action_script_dir'};
-
-    for my $dir ($basedir/$type/$action, $basedir/$type, $basedir) {
-	if (-d $dir) {
-	    my ($file);
-	    opendir(DIR, $dir) or die "Can't open $dir: $!";
-	    while (defined($file = readdir(DIR))) {
-		next if ($file =~ /^\.\.?$/); # skip '.' and '..'
-		if (-x "$dir/$file") {
-		    # Call a script notifying it of the action
-		    my %OLDENV = %ENV;
-		    $ENV{'ACTION_MODULE'} = &get_module_name();
-		    $ENV{'ACTION_ACTION'} = $_[0];
-		    $ENV{'ACTION_TYPE'} = $_[1];
-		    $ENV{'ACTION_OBJECT'} = $_[2];
-		    $ENV{'ACTION_SCRIPT'} = $script_name;
-		    foreach my $p (keys %param) {
+	my ($action, $type, $object) = ($_[0], $_[1], $_[2]);
+	my ($basedir) = $gconfig{'action_script_dir'};
+	for my $dir ("$basedir/$type/$action", "$basedir/$type", $basedir) {
+		next if (!-d $dir);
+		my ($file);
+		opendir(DIR, $dir) or die "Can't open $dir: $!";
+		while (defined($file = readdir(DIR))) {
+			next if ($file =~ /^\.\.?$/); # skip . and ..
+			next if (!-x "$dir/$file");
+			my %OLDENV = %ENV;
+			$ENV{'ACTION_MODULE'} = &get_module_name();
+			$ENV{'ACTION_ACTION'} = $_[0];
+			$ENV{'ACTION_TYPE'} = $_[1];
+			$ENV{'ACTION_OBJECT'} = $_[2];
+			$ENV{'ACTION_SCRIPT'} = $script_name;
+			foreach my $p (keys %param) {
 			    $ENV{'ACTION_PARAM_'.uc($p)} = $param{$p};
 			    }
-		    system("$dir/$file", @_,
+			system("$dir/$file", @_,
 			   "<$null_file", ">$null_file", "2>&1");
-		    %ENV = %OLDENV;
-		    }
+			%ENV = %OLDENV;
+			}
 		}
-	    }
 	}
-    }
 
 # should logging be done at all?
 return if ($gconfig{'logusers'} && &indexof($base_remote_user,
