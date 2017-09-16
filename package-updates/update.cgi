@@ -3,8 +3,19 @@
 
 require './package-updates-lib.pl';
 &ReadParse();
-$redir = "index.cgi?mode=".&urlize($in{'mode'}).
-	 "&search=".&urlize($in{'search'});
+if ($in{'redir'}) {
+	$redir = $in{'redir'};
+	$redirdesc = $in{'redirdesc'};
+	}
+elsif ($in{'redirdesc'}) {
+	$redir = "javascript:history.back()";
+	$redirdesc = $in{'redirdesc'};
+	}
+else {
+	$redir = "index.cgi?mode=".&urlize($in{'mode'}).
+		 "&search=".&urlize($in{'search'});
+	$redirdesc = $text{'index_return'};
+	}
 
 if ($in{'refresh'}) {
 	&ui_print_unbuffered_header(undef, $text{'refresh_title'}, "");
@@ -21,7 +32,7 @@ if ($in{'refresh'}) {
 	print &text('refresh_done3', scalar(@avail)),"<p>\n";
 
 	&webmin_log("refresh");
-	&ui_print_footer($redir, $text{'index_return'});
+	&ui_print_footer($redir, $redirdesc);
 	}
 else {
 	# Upgrade some packages
@@ -153,5 +164,5 @@ else {
 			    { 'got' => \@got });
 		}
 
-	&ui_print_footer($redir, $text{'index_return'});
+	&ui_print_footer($redir, $redirdesc);
 	}
