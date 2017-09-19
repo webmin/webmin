@@ -2199,6 +2199,7 @@ return ( "permit_mynetworks",
 		"reject_unknown_client" :
 		"reject_unknown_reverse_client_hostname",
 	 "permit_tls_all_clientcerts",
+	 "permit_sasl_authenticated",
 	);
 }
 

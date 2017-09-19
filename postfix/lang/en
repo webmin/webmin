@@ -822,6 +822,7 @@ sasl_reject_unknown_client=Reject clients with no reverse hostname
 sasl_check_relay_domains=Allow only relay domains
 sasl_permit_mx_backup=Allow domains this system is a backup MX for
 sasl_permit_tls_all_clientcerts=Allow TLS clients with any certificate
+sasl_permit_sasl_authenticated=Allow SASL authenticated clients
 sasl_reject_unauth_pipelining=Reject early SMTP commands
 sasl_check_client_access=Check client access map :
 sasl_reject_rbl_client=Reject if client IP address is in RBL :
