@@ -1,0 +1,22 @@
+# thumbnails
+Thumbs.db
+.xvpics
+
+# python byte-compiled
+*.py[cod]
+
+# temp files
+*~
+*.bak
+test
+*.tmp
+*.site
+core
+
+# build files
+.builds
+.build
+
+# makedist.pl
+tarballs/
+minimal/
