@@ -1124,6 +1124,7 @@ letsencrypt_efull=Expected full certificate file $1 was not found
 letsencrypt_ecert=Expected certificate file $1 was not found
 letsencrypt_ekey=Expected private key file $1 was not found
 letsencrypt_doing=Requesting a new certificate for $1, using the website directory $2 ..
+letsencrypt_doingdns=Requesting a new certificate for $1, using DNS validation ..
 letsencrypt_failed=.. request failed : $1
 letsencrypt_done=.. request succeeded!
 letsencrypt_show=The new certificate and private key were written to the following files :
