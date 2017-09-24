@@ -221,6 +221,7 @@ return $name eq "apache" ? "httpd mod_.*" :
        $name eq "postgresql" ? "postgresql postgresql-libs postgresql-server" :
        $name eq "openldap" ? "openldap-servers openldap-clients" :
        $name eq "ldap" ? "nss-pam-ldapd pam_ldap nss_ldap" :
+       $name eq "virtualmin-modules" ? "wbm-.*" :
        			  $name;
 }
 
