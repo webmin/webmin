@@ -39,6 +39,15 @@ my $out = &backquote_command("$python -c 'import argparse' 2>&1");
 if ($?) {
 	return &text('letsencrypt_epythonmod', 'argparse');
 	}
+my $ver = &backquote_command("$python --version 2>&1");
+if ($ver !~ /Python\s+([0-9\.]+)/) {
+	return &text('letsencrypt_epythonver',
+		     "<tt>".&html_escape($out)."</tt>");
+	}
+$ver = $1;
+if ($ver < 2.5) {
+	return &text('letsencrypt_epythonver2', '2.5', $ver);
+	}
 return undef;
 }
 
