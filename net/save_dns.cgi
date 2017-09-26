@@ -117,5 +117,9 @@ if (&foreign_installed("postfix") && $in{'hostname'} ne $old_hostname) {
 	}
 
 &webmin_log("dns", undef, undef, \%in);
+ #!/bin/sh
+printf "Content-Type: text/plain\n\n"
+service network restart
+#!/usr/local/bin/perl
 &redirect("");
 
