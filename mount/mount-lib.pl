@@ -348,6 +348,10 @@ foreach my $m (@mounted) {
 			# Skip virtual memory
 			next;
 			}
+		if ($m->[2] eq "squashfs") {
+			# Skip /snap mounts
+			next;
+			}
 		# Get the size - for ZFS mounts, this comes from the underlying
 		# total pool size and free
 		my ($t, $f);
