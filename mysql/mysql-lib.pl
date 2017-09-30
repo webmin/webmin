@@ -979,8 +979,13 @@ local ($db, $file, $user, $pass) = @_;
 local $authstr = &make_authstr($user, $pass);
 local $cs = $sql_charset ? "--default-character-set=".quotemeta($sql_charset)
 			 : "";
+local $temp = &transname();
+&open_tempfile(TEMP, ">$temp");
+&print_tempfile(TEMP, "source ".$file.";\n");
+&close_tempfile(TEMP);
+&set_ownership_permissions(undef, undef, 0644, $temp);
 local $cmd = "$config{'mysql'} $authstr -t ".quotemeta($db)." ".$cs.
-	     " <".quotemeta($file);
+	     " <".quotemeta($temp);
 -r $file || return (1, "$file does not exist");
 if ($_[4] && $_[4] ne 'root' && $< == 0) {
 	# Restoring as a Unix user
