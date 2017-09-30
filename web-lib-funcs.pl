@@ -9512,8 +9512,10 @@ foreach my $s (keys %hash) {
 	next if ($s eq '');	# Prevent just $ from being subbed
 	my $us = uc($s);
 	my $sv = $hash{$s};
+	my $qsv = quotemeta($sv);
 	$rv =~ s/\$\{\Q$us\E\}/$sv/g;
 	$rv =~ s/\$\Q$us\E/$sv/g;
+	$rv =~ s/\$\{\\\Q$us\E\}/$qsv/g;
 	if ($sv) {
 		# Replace ${IF}..${ELSE}..${ENDIF} block with first value,
 		# and ${IF}..${ENDIF} with value
