@@ -8,6 +8,22 @@ require './hostconfig-lib.pl';
 &ui_print_header(&text('index_mode', $text{'mode_'.$init_mode}),
 		 $text{'index_title'}, "", undef, 1, 1);
 
+print &ui_buttons_start();
+if ($init_mode eq 'init' && $access{'bootup'} == 1) {
+	print &ui_buttons_row("change_rl.cgi", $text{'index_rlchange'},
+			      $text{'index_rlchangedesc'}, undef,
+			      &ui_select("level", $boot[0], \@runlevels));
+	}
+if ($access{'reboot'}) {
+	print &ui_buttons_row("reboot.cgi", $text{'index_reboot'},
+			      $text{'index_rebootmsg'});
+	}
+if ($access{'shutdown'}) {
+	print &ui_buttons_row("shutdown.cgi", $text{'index_shutdown'},
+			      $text{'index_shutdownmsg'});
+	}
+print &ui_buttons_end();
+
 if ($init_mode eq "osx" && $access{'bootup'}) {
 	# This hostconfig if block written by Michael A Peters <mpeters@mac.com>
 	# for OSX/Darwin.
