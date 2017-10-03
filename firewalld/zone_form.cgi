@@ -3,7 +3,7 @@
 
 use strict;
 use warnings;
-require 'firewalld-lib.pl';
+require './firewalld-lib.pl';
 our (%text, %in);
 &ReadParse();
 &ui_print_header(undef, $text{'zone_title'}, "");
