@@ -306,7 +306,7 @@ my %donedevno;
 # Get list of zone pools
 my %zpools = ( 'zones' => 1, 'zroot' => 1 );
 if (&has_command("zpool")) {
-	my @out = &backquote_command("zpool list -P || zpool list -p");
+	my @out = &backquote_command("zpool list -P 2>/dev/null || zpool list -p 2>/dev/null");
 	foreach my $l (@out) {
 		if (/^(\S+)\s+(\d+)\s+(\d+)\s+(\d+)/) {
 			$zpools{$1} = [ $2 / 1024, $4 / 1024 ];
