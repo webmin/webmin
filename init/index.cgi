@@ -8,6 +8,7 @@ require './hostconfig-lib.pl';
 &ui_print_header(&text('index_mode', $text{'mode_'.$init_mode}),
 		 $text{'index_title'}, "", undef, 1, 1);
 
+# reboot/shutdown buttons
 print &ui_buttons_start();
 if ($init_mode eq 'init' && $access{'bootup'} == 1) {
 	print &ui_buttons_row("change_rl.cgi", $text{'index_rlchange'},
