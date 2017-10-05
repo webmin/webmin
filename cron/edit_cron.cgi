@@ -66,8 +66,8 @@ $rpd = &is_run_parts($job->{'command'});
 if ($rpd) {
 	# run-parts command.. just show scripts that will be run
 	print &ui_table_row($text{'edit_commands'},
-		"<tt>".join("<br>",&expand_run_parts($rpd))."</tt>".
-		&ui_hidden("cmd", $job->{'command'}));
+		"<tt>".join("<br>",&expand_run_parts($rpd))."</tt>");
+	print &ui_hidden("cmd", $job->{'command'});
 	}
 elsif (!$access{'command'}) {
 	# Just show command, which cannot be edited
@@ -111,38 +111,34 @@ if ($rangeable) {
 	}
 
 if (!$in{'new'}) {
-	# Save button
-	print &ui_submit($text{'save'});
-	print &ui_submit($text{'edit_saverun'}, 'saverun');
-	print &ui_form_end();
-	# Run button
 	print "<table><tr>\n";
+
+	# Save button
+	print "<td>",&ui_submit($text{'save'}),"</td>\n";
+	print "<td>",&ui_submit($text{'edit_saverun'}, 'saverun'),"</td>\n";
+	print &ui_form_end();
+
+	# Run button
 	if (!$rpd) {
-		print "<td>";
 		print &ui_form_start("exec_cron.cgi");
 		print &ui_hidden("idx", $in{'idx'});
-		print &ui_submit($text{'edit_run'});
+		print "<td>",&ui_submit($text{'edit_run'}),"</td>\n";
 		print &ui_form_end();
-		print "</td>\n";
 		}
 
 	# Clone button
-	print "<td>";
 	print &ui_form_start("edit_cron.cgi");
 	print &ui_hidden("clone", $in{'idx'});
 	print &ui_hidden("new", 1);
-	print &ui_submit($text{'edit_clone'});
+	print "<td>",&ui_submit($text{'edit_clone'}),"</td>\n";
 	print &ui_form_end();
-	print "</td>";
 
 	# Delete button
 	if ($access{'delete'}) {
-		print "<td>";
 		print &ui_form_start("delete_cron.cgi");
 		print &ui_hidden("idx", $in{'idx'});
-		print &ui_submit($text{'delete'});
+		print "<td>",&ui_submit($text{'delete'}),"</td>\n";
 		print &ui_form_end();
-		print "</td>\n";
 		}
 	print "</tr></table>\n";
 	}
