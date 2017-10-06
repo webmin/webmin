@@ -43,9 +43,9 @@ $odir ||= &find_value("output_dir", $conf, 1);
 $sfile = &find_value("access_log", $conf);
 if ($sfile || $odir && -d $odir) {
 	print &ui_hr();
-	print &ui_buttons_start();
 	}
 if ($sfile) {
+	print &ui_buttons_start();
 	print &ui_buttons_row("generate.cgi", $text{'index_generate'},
 			      &text('index_generatedesc', "<tt>$odir</tt>").
 			      "<br><b>$text{'index_clear'}</b> ".
@@ -53,14 +53,14 @@ if ($sfile) {
 			      "<br><b>$text{'index_range'}</b> ".
 			      &gen_range_input());
 	print "<tr> <td><p></td> </tr>\n";
+	print &ui_buttons_end();
 	}
 if ($odir && -d $odir) {
+	print &ui_buttons_start();
 	print &ui_buttons_row(-r "$odir/index.html" ? "view.cgi/index.html"
 						    : "view.cgi/",
 			      $text{'index_view'},
 			      &text('index_viewdesc', "<tt>$odir</tt>"));
-	}
-if ($sfile || $odir && -r "$odir/index.html") {
 	print &ui_buttons_end();
 	}
 
