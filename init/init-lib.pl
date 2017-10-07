@@ -57,13 +57,15 @@ elsif ($config{'hostconfig'}) {
 elsif ($config{'rc_dir'}) {
 	$init_mode = "rc";
 	}
+elsif ($config{'init_base'} && -d "/etc/init" &&
+       &has_command("initctl") &&
+       &execute_command("/sbin/init --version") == 0) {
+	$init_mode = "upstart";
+	}
 elsif ($config{'init_base'} && -d "/etc/systemd" &&
        &has_command("systemctl") &&
        &execute_command("systemctl list-units") == 0) {
 	$init_mode = "systemd";
-	}
-elsif ($config{'init_base'} && -d "/etc/init" && &has_command("initctl")) {
-	$init_mode = "upstart";
 	}
 elsif ($config{'init_base'}) {
 	$init_mode = "init";
