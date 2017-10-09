@@ -136,7 +136,7 @@ return $name eq "dhcpd" && $gconfig{'os_version'} >= 7 ?
        $name eq "openldap" ? "slapd" :
        $name eq "ldap" ? "libnss-ldap libpam-ldap" :
        $name eq "dovecot" ? "dovecot-common dovecot-imapd dovecot-pop3d" :
-       $name eq "virtualmin-modules" ? webmin-.*" :
+       $name eq "virtualmin-modules" ? "webmin-.*" :
 			       $name;
 }
 
