@@ -54,6 +54,12 @@ if ($access{'create'}) {
 	print "<style>hr {display: none;></style>"
 	}
 
+if ($access{'global'}) {
+	print "<div $bcss><form action=\"edit_global.cgi\" method=\"post\">",
+        	&ui_submit($text{'index_global'})."</form></div>\n";
+	print "<div style=\"padding-top: 10px;\">$text{'index_globaldesc'}</div>\n";
+	}
+	
     # table header
     local @hcols, @tds;
     push(@hcols, $text{'index_name'}, $text{'index_info'}, $text{'index_mail'}, $text{'index_moderated'}, $text{'index_count'});
@@ -89,12 +95,6 @@ if (@lists) {
 	print "<b>$text{'index_none'}</b>.<p>\n";
     }
 
-if ($access{'global'}) {
-	print "<div $bcss><form action=\"edit_global.cgi\" method=\"post\">",
-        	&ui_submit($text{'index_global'})."</form></div>\n";
-	print "<div style=\"padding-top: 10px;\">$text{'index_globaldesc'}</div>\n";
-	}
-
 &ui_print_footer("/", $text{'index'});
 print 	"<script>",
        	"f__lnk_t_btn(['/majordomo/', '/majordomo/index.cgi'], 'table tbody td',",
@@ -105,4 +105,3 @@ print 	"<script>",
 		" button.innerHTML=button.innerHTML.replace(/<\\/i>.*edit/,'');});",
 	"</script>",
 	"<style>.btn.btn-transparent { padding: 0 !important; color: grey;}</style>";
-
