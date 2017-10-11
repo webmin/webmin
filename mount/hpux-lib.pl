@@ -676,24 +676,26 @@ sub check_location
 if ($_[0] eq "nfs") {
 	local($out, $temp, $mout, $dirlist);
 
-        # Use ping and showmount to see if the host exists and is up
-        if ($in{nfs_host} !~ /^\S+$/) {
-                &error("'$in{nfs_host}' is not a valid hostname");
-                }
-	&execute_command("ping -c 1 '$in{nfs_host}'", undef, \$out, \$out);
-        if ($out =~ /unknown host/i) {
-                &error("The host '$in{nfs_host}' does not exist");
-                }
-        elsif ($out =~ /100\% packet loss/) {
-                &error("The host '$in{nfs_host}' is down");
-                }
-	&execute_command("showmount -e '$in{nfs_host}'", undef, \$out, \$out);
-        if ($out =~ /Unable to receive/) {
-                &error("The host '$in{nfs_host}' does not support NFS");
-                }
-        elsif ($?) {
-                &error("Failed to get mount list : $out");
-                }
+	if ($config{'nfs_check'}) {
+		# Use ping and showmount to see if the host exists and is up
+		if ($in{nfs_host} !~ /^\S+$/) {
+			&error("'$in{nfs_host}' is not a valid hostname");
+			}
+		&execute_command("ping -c 1 '$in{nfs_host}'", undef, \$out, \$out);
+		if ($out =~ /unknown host/i) {
+			&error("The host '$in{nfs_host}' does not exist");
+			}
+		elsif ($out =~ /100\% packet loss/) {
+			&error("The host '$in{nfs_host}' is down");
+			}
+		&execute_command("showmount -e '$in{nfs_host}'", undef, \$out, \$out);
+		if ($out =~ /Unable to receive/) {
+			&error("The host '$in{nfs_host}' does not support NFS");
+			}
+		elsif ($?) {
+			&error("Failed to get mount list : $out");
+			}
+		}
 
         # Validate directory name
         foreach (split(/\n/, $out)) {

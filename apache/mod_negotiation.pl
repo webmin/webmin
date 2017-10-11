@@ -45,7 +45,7 @@ return (2, "$text{'mod_negotiation_pri'}",
 sub save_LanguagePriority
 {
 local $rv = &parse_opt("LanguagePriority", '\S', $text{'mod_negotiation_epri'});
-if ($rv) {
+if ($rv && @$rv) {
 	$rv->[0] =~ s/^"(.*)"/$1/g;
 	}
 return $rv;

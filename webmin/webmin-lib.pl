@@ -7,6 +7,7 @@ Common functions for configuring miniserv and adjusting global Webmin settings.
 BEGIN { push(@INC, ".."); };
 use strict;
 use warnings;
+no warnings 'redefine';
 use WebminCore;
 &init_config();
 our ($module_root_directory, %text, %gconfig, $root_directory, %config,
@@ -1033,8 +1034,7 @@ sub validate_key_cert
 {
 my ($keyfile, $certfile) = @_;
 my $key = &read_file_contents($keyfile);
-$key =~ /BEGIN RSA PRIVATE KEY/i ||
-    $key =~ /BEGIN PRIVATE KEY/i ||
+$key =~ /BEGIN (RSA | EC )? PRIVATE KEY/i ||
 	&error(&text('ssl_ekey', $keyfile));
 if (!$certfile) {
 	$key =~ /BEGIN CERTIFICATE/ || &error(&text('ssl_ecert', $keyfile));

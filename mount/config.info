@@ -11,3 +11,4 @@ auto_file=NFS automounts file,3
 autofs_file=Kernel automounts file,3
 smbclient_path=Full path to smbclient,3
 nmblookup_path=Full path to nmblookup,3
+nfs_check=Check NFS servers before attempting mount,1,1-Yes,0-No

@@ -95,6 +95,9 @@ elsif ($in{'view'}) {
 			@cats = ( "cat ".quotemeta($file) );
 			}
 		$cat = "(".join(" ; ", @cats).")";
+		if ($config{'reverse'}) {
+			$tailcmd .= " | tac";
+			}
 		$got = &proc::safe_process_exec(
 			"$cat | grep -i -a $filter | $tailcmd",
 			0, 0, STDOUT, undef, 1, 0, undef, 1);
@@ -130,6 +133,9 @@ elsif ($in{'view'}) {
 		else {
 			# Just run tail on the file
 			$fullcmd = $tailcmd." ".quotemeta($file);
+			}
+		if ($config{'reverse'}) {
+			$fullcmd .= " | tac";
 			}
 		if ($fullcmd) {
 			$got = &proc::safe_process_exec(

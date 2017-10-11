@@ -26,7 +26,7 @@ else {
 		foreach $r (@data) {
 			@prow = map { ref($_) eq 'ARRAY' ? join(", ", @$_)
 							 : $_ } @$r;
-			print &ui_columns_row(\@prow);
+			print &ui_columns_row([ map { &html_escape($_) } @prow ]);
 			}
 		print &ui_columns_end();
 		}

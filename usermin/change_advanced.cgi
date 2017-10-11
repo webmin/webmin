@@ -46,6 +46,17 @@ else {
 # Save password pass option
 $miniserv{'pass_password'} = $in{'pass'};
 
+if (defined($in{'preload'})) {
+	# Save preload option, forcing new mode
+	if ($in{'preload'}) {
+		$miniserv{'premodules'} = 'WebminCore';
+		}
+	else {
+		delete($miniserv{'premodules'});
+		}
+	&webmin::save_preloads(\%miniserv, [ ]);
+	}
+
 &lock_file($usermin_miniserv_config);
 &put_usermin_miniserv_config(\%miniserv);
 &unlock_file($usermin_miniserv_config);

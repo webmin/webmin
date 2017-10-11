@@ -71,12 +71,16 @@ if ($r == 0) {
 	&main_header();
 	print "<p> <b>$text{'index_notrun'}</b> <p>\n";
 
+	print &text('index_emsg', "<tt>$rout</tt>"),"<p>\n";
+
 	if ($access{'stop'} && &is_mysql_local()) {
 		print &ui_hr();
-        print &ui_buttons_start();
-        print &ui_buttons_row("start.cgi",
-		      $text{'index_start'}, &text('index_startmsg',"<tt>$config{'start_cmd'}</tt>"));
-        print &ui_buttons_end();
+		print &ui_buttons_start();
+		print &ui_buttons_row("start.cgi",
+			$text{'index_start'},
+			&text('index_startmsg',
+			      "<tt>$config{'start_cmd'}</tt>"));
+		print &ui_buttons_end();
 		}
 	}
 elsif ($r == -1) {
@@ -289,6 +293,9 @@ sub main_header
 {
 &ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
 	&help_search_link("mysql", "man", "doc", "google"),
-	undef, undef, &text('index_version', $mysql_version));
+	undef, undef,
+	$config{'host'} ?
+		&text('index_version2', $mysql_version, $config{'host'}) :
+		&text('index_version', $mysql_version));
 }
 

@@ -170,6 +170,7 @@ my $ififo = &get_input_fifo();
 my $rv = "(test -e ".$ififo." || mkfifo ".$ififo.") ; ".
 	 "cd ".$config{'minecraft_dir'}." && ".
 	 "(tail -f ".$ififo." | ".
+	 $config{'java_envs'}." ".
 	 &has_command($config{'java_cmd'})." ".
 	 $config{'java_args'}." ".
 	 " -jar ".$jar." nogui ".

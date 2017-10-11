@@ -19,7 +19,7 @@ if ($in{'multi'}) {
 		# base frame
 		&PrintHeader();
 		print "<script type='text/javascript'>\n";
-		@ul = split(/\s+/, &filter_javascript($in{'user'}));
+		@ul = &split_quoted_string(/\s+/, &filter_javascript($in{'user'}));
 		$len = @ul;
 		print "sel = new Array($len);\n";
 		print "selr = new Array($len);\n";
@@ -71,8 +71,9 @@ if ($in{'multi'}) {
 			if ($in{'user'} eq $u->[0]) { print "<tr class='filter_match' $cb>\n"; }
 			else { print "<tr class='filter_match'>\n"; }
 			$u->[6] =~ s/'/&#39;/g;
+			$u->[0] =~ s/\\/\\\\/g;
 			print "<td width=20%><a href=\"\" onClick='return adduser(\"$u->[0]\", \"$u->[6]\")'>$u->[0]</a></td>\n";
-			print "<td>$u->[6]</td> </tr>\n";
+			print "<td>",&html_escape($u->[6]),"</td> </tr>\n";
             		$cnt++;
 			}
 		print "</table>\n";

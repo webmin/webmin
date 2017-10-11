@@ -1,0 +1,18 @@
+<header>Nombre de sectors</header>
+
+Estableix el nombre de sectors per a la lectura anticipada de sistemes de
+fitxers.
+<p>
+Això s'utilitza per millorar el rendiment en les lectures seqüencials
+de fitxers grans, llegint prèviament blocs addicionals abans que li calguin
+a la tasca en execució. En la versió actual del nucli (2.0.10)m això té
+un valor per defecte de 8 sectors (4 Kb), Aquest valor sembla bo per a 
+la majoria de propòsits, però en un sistema on la majoria d'accessos són
+aleatoris, un valor més petit pot donar un rendiment millor. A més, moltes
+unitats IDE també tenen un funció de lectura anticipada integrada, que 
+alleuja la necessitat d'una lectura anticipada del sistema de fitxers en
+molts casos.
+
+<hr>
+
+

@@ -15,3 +15,4 @@ start_cmd=/etc/init.d/syslog start
 restart_cmd=/etc/init.d/syslog reload
 compressed=1
 others=1
+reverse=0

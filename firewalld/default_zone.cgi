@@ -3,7 +3,7 @@
 
 use strict;
 use warnings;
-require 'firewalld-lib.pl';
+require './firewalld-lib.pl';
 our (%text, %in);
 &ReadParse();
 &error_setup($text{'defzone_err'});

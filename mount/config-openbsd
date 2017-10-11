@@ -6,3 +6,4 @@ smbclient_path=smbclient
 long_fstypes=1
 fstab_file=/etc/fstab
 show_used=1
+nfs_check=1

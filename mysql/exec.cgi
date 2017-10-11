@@ -26,7 +26,7 @@ else {
 	if (@data) {
 		print &ui_columns_start($d->{'titles'});
 		foreach $r (@data) {
-			print &ui_columns_row($r);
+			print &ui_columns_row([ map { &html_escape($_) } @$r ]);
 			}
 		print &ui_columns_end();
 		}

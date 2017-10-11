@@ -49,7 +49,7 @@ open($fh, $file);
 while(<$fh>) {
 	s/\r|\n//g;
 	s/#.*$//;
-	if (/^\s*(.*){\s*$/) {
+	if (/^\s*(.*)\{\s*$/) {
 		# Start of a section
 		push(@name, &split_words($1));
 		$section = { 'name' => [ @name ],

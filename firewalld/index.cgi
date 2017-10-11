@@ -3,7 +3,7 @@
 
 use strict;
 use warnings;
-require 'firewalld-lib.pl';
+require './firewalld-lib.pl';
 our (%in, %text, %config, %access, $base_remote_user);
 &ReadParse();
 if ($in{'addzone'}) {

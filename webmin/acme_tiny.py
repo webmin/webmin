@@ -78,7 +78,7 @@ def get_crt(account_key, csr, acme_dir, dns_hook, cleanup_hook, log=LOGGER, CA=D
     if proc.returncode != 0:
         raise IOError("Error loading {0}: {1}".format(csr, err))
     domains = set([])
-    common_name = re.search(r"Subject:.*? CN=([^\s,;/]+)", out.decode('utf8'))
+    common_name = re.search(r"Subject:.*? CN\s?=\s?([^\s,;/]+)", out.decode('utf8'))
     if common_name is not None:
         domains.add(common_name.group(1))
     alt_names = re.search(r"Subject:.*subjectAltName=([^\s,;/]+)", out.decode('utf8'))
@@ -156,7 +156,7 @@ def get_crt(account_key, csr, acme_dir, dns_hook, cleanup_hook, log=LOGGER, CA=D
         if code != 202:
             raise ValueError("Error triggering challenge: {0} {1}".format(code, result))
 
-        # wait for challenge to be verified (for up to 120 seconds)
+        # wait for challenge to be verified (for up to 240 seconds)
 	tries = 0
         while True:
             try:
@@ -167,8 +167,8 @@ def get_crt(account_key, csr, acme_dir, dns_hook, cleanup_hook, log=LOGGER, CA=D
                     e.code, json.loads(e.read().decode('utf8'))))
             if challenge_status['status'] == "pending":
 		tries = tries + 1
-		if tries > 60:
-		    raise ValueError("Gave up waiting for valiation")
+		if tries > 120:
+		    raise ValueError("Gave up waiting for validation")
                 time.sleep(2)
             elif challenge_status['status'] == "valid":
                 log.info("{0} verified!".format(domain))

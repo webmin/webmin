@@ -48,13 +48,19 @@ print &ui_table_row(&hlink($text{'hdparm_conf_X'}, 'X'),
 		[ [ "0", $text{ 'hdparm_conf_X_defaut' } ], [ "1", $text{ 'hdparm_conf_X_disable' } ], [ "9", "PIO mode 1", ], [ "10", "PIO mode 2" ], [ "11", "PIO mode 3" ], [ "12", "PIO mode 4" ], [ "32", "Multimode DMA 0" ], [ "33", "Multimode DMA 1" ], [ "34", "Multimode DMA 2" ], [ "64", "Ultra DMA 0" ], [ "65", "Ultra DMA 1" ], [ "66", "Ultra DMA 2" ] ], 1, 0, 1));
 
 # Sector count
-print &ui_table_row(&hlink($text{'hdparm_conf_a'},"a"),
+print &ui_table_row(&hlink($text{'hdparm_conf_a'}, 'sector_count'),
 	&ui_textbox("a", $hdparm{'a'}, 2));
 
 # Other yes/no options
 foreach $o ('d', 'A', 'W', 'u', 'k', 'K', 'r', 'P') {
-	print &ui_table_row(&hlink($text{'hdparm_conf_'.$o}, $o),
-		&ui_yesno_radio($o, $hdparm{$o}));
+	if ($o eq 'k') {
+		print &ui_table_row(&hlink($text{'hdparm_conf_'.$o}, 'keep_settings'),
+			&ui_yesno_radio($o, $hdparm{$o}));
+		}
+	else {
+		print &ui_table_row(&hlink($text{'hdparm_conf_'.$o}, $o),
+			&ui_yesno_radio($o, $hdparm{$o}));
+		}
 	}
 
 # Standby timeout (slider)

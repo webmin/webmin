@@ -92,7 +92,7 @@ if ($gconfig{'os_type'} =~ /-linux$/ || $gconfig{'os_type'} eq 'freebsd') {
 		else {
 			# BSD format
 			# CPU user, kernel, idle
-			$info->{'cpu'} = [ $w[16], $w[17], $w[18], 0, 0 ];
+			$info->{'cpu'} = [ $w[14], $w[15], $w[16], 0, 0 ];
 			}
 		}
 	}

@@ -221,6 +221,7 @@ return $name eq "apache" ? "httpd mod_.*" :
        $name eq "postgresql" ? "postgresql postgresql-libs postgresql-server" :
        $name eq "openldap" ? "openldap-servers openldap-clients" :
        $name eq "ldap" ? "nss-pam-ldapd pam_ldap nss_ldap" :
+       $name eq "virtualmin-modules" ? "wbm-.*" :
        			  $name;
 }
 
@@ -286,7 +287,7 @@ while(<PKG>) {
 	if (/^\S+\s+\S+\s+(\S+?)\-([0-9]\S+)\.([^\.]+)$/) {
 		local ($name, $ver) = ($1, $2);
 		if ($done->{$name}) {
-			$done->{$name}->{'source'} = 'security';
+			$done->{$name}->{'source'} ||= 'security';
 			$done->{$name}->{'security'} = 1;
 			}
 		}

@@ -5,3 +5,4 @@ auto_file=
 smbclient_path=smbclient
 long_fstypes=1
 show_used=1
+nfs_check=1

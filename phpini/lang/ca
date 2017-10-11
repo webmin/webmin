@@ -21,6 +21,8 @@ manual_edata=No has introduït cap contingut nou
 list_title=Gestió de la Configuració de PHP
 list_ecannot=No tens permís per gestionar aquest fitxer de configuració de PHP
 list_return=a la configuració de PHP
+list_format_ini=Format INI
+list_format_fpm=Format FPM
 
 vars_title=Variables de PHP
 vars_header=Creació de variables de PHP i opcions de cometes

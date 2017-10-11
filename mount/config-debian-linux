@@ -6,3 +6,4 @@ nmblookup_path=nmblookup
 auto_file=/etc/am-utils/amd.conf
 autofs_file=/etc/auto.master
 show_used=1
+nfs_check=1

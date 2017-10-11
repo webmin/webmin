@@ -33,6 +33,7 @@ type_sslcert=Certificat SSL
 type_ftp=Servei FTP Remot
 type_sendmail=Servidor Sendmail
 type_postfix=Servidor Postfix
+type_fail2ban=Servidor Fail2Ban
 type_ping=Ping Remot
 type_proc=Verificació de Processos
 type_mysql=Servidor de BD MySQL

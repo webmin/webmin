@@ -3,7 +3,7 @@
 
 use strict;
 use warnings;
-require 'firewalld-lib.pl';
+require './firewalld-lib.pl';
 our (%in, %text);
 &error_setup($text{'forward_err'});
 &ReadParse();

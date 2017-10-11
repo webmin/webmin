@@ -853,7 +853,7 @@ if (defined(&theme_header)) {
 	return;
 	}
 print "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n";
-print "<html>\n";
+print "<html style=\"height:100%\">\n";
 print "<head>\n";
 if (defined(&theme_prehead)) {
 	&theme_prehead(@_);
@@ -882,7 +882,7 @@ my $text = defined($tconfig{'cs_text'}) ? $tconfig{'cs_text'} :
 	      defined($gconfig{'cs_text'}) ? $gconfig{'cs_text'} : "000000";
 my $bgimage = defined($tconfig{'bgimage'}) ? "background=$tconfig{'bgimage'}" : "";
 my $dir = $current_lang_info->{'dir'} ? "dir=\"$current_lang_info->{'dir'}\"" : "";
-my $html_body = "<body bgcolor=\"#$bgcolor\" link=\"#$link\" vlink=\"#$link\" text=\"#$text\" $bgimage $tconfig{'inbody'} $dir $_[8]>\n";
+my $html_body = "<body bgcolor=\"#$bgcolor\" link=\"#$link\" vlink=\"#$link\" text=\"#$text\" style=\"height:100%\" $bgimage $tconfig{'inbody'} $dir $_[8]>\n";
 $html_body =~ s/\s+\>/>/g;
 print $html_body;
 
@@ -2308,16 +2308,16 @@ alarm(0);
 $h = $main::download_timed_out if ($main::download_timed_out);
 if (!ref($h)) {
 	if ($error) { $$error = $h; return; }
-	else { &error($h); }
+	else { &error(&html_escape($h)); }
 	}
 &complete_http_download($h, $dest, $error, $cbfunc, $osdn, $host, $port,
-			$headers, $ssl, $nocache);
+			$headers, $ssl, $nocache, $timeout);
 if ((!$error || !$$error) && !$nocache) {
 	&write_to_http_cache($url, $dest);
 	}
 }
 
-=head2 complete_http_download(handle, destfile, [&error], [&callback], [osdn], [oldhost], [oldport], [&send-headers], [old-ssl], [no-cache])
+=head2 complete_http_download(handle, destfile, [&error], [&callback], [osdn], [oldhost], [oldport], [&send-headers], [old-ssl], [no-cache], [timeout])
 
 Do a HTTP download, after the headers have been sent. For internal use only,
 typically called by http_download.
@@ -2325,24 +2325,25 @@ typically called by http_download.
 =cut
 sub complete_http_download
 {
+my ($h, $destfile, $error, $cbfunc, $osdn, $oldhost, $oldport, $headers,
+    $oldssl, $nocache, $timeout) = @_;
 local ($line, %header, @headers, $s);  # Kept local so that callback funcs
 				       # can access them.
-my $cbfunc = $_[3];
 
 # read headers
-alarm(60);
-($line = &read_http_connection($_[0])) =~ tr/\r\n//d;
+alarm($timeout || 60);
+($line = &read_http_connection($h)) =~ tr/\r\n//d;
 if ($line !~ /^HTTP\/1\..\s+(200|30[0-9]|400)(\s+|$)/) {
 	alarm(0);
-	&close_http_connection($_[0]);
-	if ($_[2]) { ${$_[2]} = $line; return; }
-	else { &error("Download failed : $line"); }
+	&close_http_connection($h);
+	if ($error) { ${$error} = $line; return; }
+	else { &error("Download failed : ".&html_escape($line)); }
 	}
 my $rcode = $1;
 &$cbfunc(1, $rcode >= 300 && $rcode < 400 ? 1 : 0)
 	if ($cbfunc);
 while(1) {
-	$line = &read_http_connection($_[0]);
+	$line = &read_http_connection($h);
 	$line =~ tr/\r\n//d;
 	$line =~ /^(\S+):\s*(.*)$/ || last;
 	$header{lc($1)} = $2;
@@ -2350,8 +2351,8 @@ while(1) {
 	}
 alarm(0);
 if ($main::download_timed_out) {
-	&close_http_connection($_[0]);
-	if ($_[2]) { ${$_[2]} = $main::download_timed_out; return 0; }
+	&close_http_connection($h);
+	if ($error) { ${$error} = $main::download_timed_out; return 0; }
 	else { &error($main::download_timed_out); }
 	}
 &$cbfunc(2, $header{'content-length'}) if ($cbfunc);
@@ -2380,41 +2381,42 @@ if ($rcode >= 300 && $rcode < 400) {
 		}
 	elsif ($header{'location'}) {
 		# Assume relative to same dir .. not handled
-		&close_http_connection($_[0]);
-		if ($_[2]) { ${$_[2]} = "Invalid Location header $header{'location'}"; return; }
-		else { &error("Invalid Location header $header{'location'}"); }
+		&close_http_connection($h);
+		if ($error) { ${$error} = "Invalid Location header $header{'location'}"; return; }
+		else { &error("Invalid Location header ".
+			      &html_escape($header{'location'})); }
 		}
 	else {
-		&close_http_connection($_[0]);
-		if ($_[2]) { ${$_[2]} = "Missing Location header"; return; }
+		&close_http_connection($h);
+		if ($error) { ${$error} = "Missing Location header"; return; }
 		else { &error("Missing Location header"); }
 		}
 	my $params;
 	($page, $params) = split(/\?/, $page);
 	$page =~ s/ /%20/g;
 	$page .= "?".$params if (defined($params));
-	&http_download($host, $port, $page, $_[1], $_[2], $cbfunc, $ssl,
+	&http_download($host, $port, $page, $destfile, $error, $cbfunc, $ssl,
 		       undef, undef, undef, $_[4], $_[9], $_[7]);
 	}
 else {
 	# read data
-	if (ref($_[1])) {
+	if (ref($destfile)) {
 		# Append to a variable
-		while(defined($buf = &read_http_connection($_[0], 1024))) {
-			${$_[1]} .= $buf;
-			&$cbfunc(3, length(${$_[1]})) if ($cbfunc);
+		while(defined($buf = &read_http_connection($h, 1024))) {
+			${$destfile} .= $buf;
+			&$cbfunc(3, length(${$destfile})) if ($cbfunc);
 			}
 		}
 	else {
 		# Write to a file
 		my $got = 0;
-		if (!&open_tempfile(PFILE, ">$_[1]", 1)) {
-			&close_http_connection($_[0]);
-			if ($_[2]) { ${$_[2]} = "Failed to write to $_[1] : $!"; return; }
-			else { &error("Failed to write to $_[1] : $!"); }
+		if (!&open_tempfile(PFILE, ">$destfile", 1)) {
+			&close_http_connection($h);
+			if ($error) { ${$error} = "Failed to write to $destfile : $!"; return; }
+			else { &error("Failed to write to ".&html_escape($destfile)." : ".&html_escape("$!")); }
 			}
 		binmode(PFILE);		# For windows
-		while(defined($buf = &read_http_connection($_[0], 1024))) {
+		while(defined($buf = &read_http_connection($h, 1024))) {
 			&print_tempfile(PFILE, $buf);
 			$got += length($buf);
 			&$cbfunc(3, $got) if ($cbfunc);
@@ -2422,14 +2424,14 @@ else {
 		&close_tempfile(PFILE);
 		if ($header{'content-length'} &&
 		    $got != $header{'content-length'}) {
-			&close_http_connection($_[0]);
-			if ($_[2]) { ${$_[2]} = "Download incomplete"; return; }
+			&close_http_connection($h);
+			if ($error) { ${$error} = "Download incomplete"; return; }
 			else { &error("Download incomplete"); }
 			}
 		}
 	&$cbfunc(4) if ($cbfunc);
 	}
-&close_http_connection($_[0]);
+&close_http_connection($h);
 }
 
 
@@ -5714,34 +5716,30 @@ if ($gconfig{'logclear'}) {
 
 # If an action script directory is defined, call the appropriate scripts
 if ($gconfig{'action_script_dir'}) {
-    my ($action, $type, $object) = ($_[0], $_[1], $_[2]);
-    my ($basedir) = $gconfig{'action_script_dir'};
-
-    for my $dir ($basedir/$type/$action, $basedir/$type, $basedir) {
-	if (-d $dir) {
-	    my ($file);
-	    opendir(DIR, $dir) or die "Can't open $dir: $!";
-	    while (defined($file = readdir(DIR))) {
-		next if ($file =~ /^\.\.?$/); # skip '.' and '..'
-		if (-x "$dir/$file") {
-		    # Call a script notifying it of the action
-		    my %OLDENV = %ENV;
-		    $ENV{'ACTION_MODULE'} = &get_module_name();
-		    $ENV{'ACTION_ACTION'} = $_[0];
-		    $ENV{'ACTION_TYPE'} = $_[1];
-		    $ENV{'ACTION_OBJECT'} = $_[2];
-		    $ENV{'ACTION_SCRIPT'} = $script_name;
-		    foreach my $p (keys %param) {
+	my ($action, $type, $object) = ($_[0], $_[1], $_[2]);
+	my ($basedir) = $gconfig{'action_script_dir'};
+	for my $dir ("$basedir/$type/$action", "$basedir/$type", $basedir) {
+		next if (!-d $dir);
+		my ($file);
+		opendir(DIR, $dir) or die "Can't open $dir: $!";
+		while (defined($file = readdir(DIR))) {
+			next if ($file =~ /^\.\.?$/); # skip . and ..
+			next if (!-x "$dir/$file");
+			my %OLDENV = %ENV;
+			$ENV{'ACTION_MODULE'} = &get_module_name();
+			$ENV{'ACTION_ACTION'} = $_[0];
+			$ENV{'ACTION_TYPE'} = $_[1];
+			$ENV{'ACTION_OBJECT'} = $_[2];
+			$ENV{'ACTION_SCRIPT'} = $script_name;
+			foreach my $p (keys %param) {
 			    $ENV{'ACTION_PARAM_'.uc($p)} = $param{$p};
 			    }
-		    system("$dir/$file", @_,
+			system("$dir/$file", @_,
 			   "<$null_file", ">$null_file", "2>&1");
-		    %ENV = %OLDENV;
-		    }
+			%ENV = %OLDENV;
+			}
 		}
-	    }
 	}
-    }
 
 # should logging be done at all?
 return if ($gconfig{'logusers'} && &indexof($base_remote_user,
@@ -9514,8 +9512,10 @@ foreach my $s (keys %hash) {
 	next if ($s eq '');	# Prevent just $ from being subbed
 	my $us = uc($s);
 	my $sv = $hash{$s};
+	my $qsv = quotemeta($sv);
 	$rv =~ s/\$\{\Q$us\E\}/$sv/g;
 	$rv =~ s/\$\Q$us\E/$sv/g;
+	$rv =~ s/\$\{\\\Q$us\E\}/$qsv/g;
 	if ($sv) {
 		# Replace ${IF}..${ELSE}..${ENDIF} block with first value,
 		# and ${IF}..${ENDIF} with value

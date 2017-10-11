@@ -2,9 +2,9 @@
 # Mount table functions for linux
 
 if (!$no_check_support) {
-	my %suppport;
+	my %support;
 	my $fsfile = &read_file_contents("/proc/filesystems");
-	foreach my $l (split(/\n/, $fsfile)) {
+	foreach my $l (split(/\r?\n/, $fsfile)) {
 		my @w = split(/\s+/, $l);
 		my $fs = pop(@w);
 		$support{$fs} = 1;
@@ -37,13 +37,13 @@ if (!$no_check_support) {
 	if ($support{'ext4'}) {
 		$ext4_support = 1;
 		}
-	if ($suppport{'xfs'} || &has_command("mkfs.xfs")) {
+	if ($support{'xfs'} || &has_command("mkfs.xfs")) {
 		$xfs_support = 1;
 		}
-	if ($suppport{'jfs'} || &has_command("mkfs.jfs")) {
+	if ($support{'jfs'} || &has_command("mkfs.jfs")) {
 		$jfs_support = 1;
 		}
-	if ($suppport{'btrfs'} || &has_command("mkfs.btrfs")) {
+	if ($support{'btrfs'} || &has_command("mkfs.btrfs")) {
 		$btrfs_support = 1;
 		}
 	}
@@ -549,16 +549,16 @@ while(<SWAPS>) {
 	chop;
 	if (/^(\/\S+)\s+/) {
 		local $sf = $1;
-		if ($sf =~ /^\/dev\/ide\// || $sf =~ /^\/dev\/mapper\//) {
-			# check fstab for a mount on a device which is a symlink
-			local @st = stat($sf);
-			foreach $m (@mounts) {
-				local @fst = stat($m->[1]);
-				if ($m->[2] eq 'swap' && $fst[0] == $st[0] &&
-				    $fst[1] == $st[1]) {
-				    	$sf = $m->[1];
-					last;
-					}
+
+		# check fstab for a mount on a device which is a symlink
+		# to the path in /proc/swaps
+		local @st = stat($sf);
+		foreach $m (@mounts) {
+			local @fst = stat($m->[1]);
+			if ($m->[2] eq 'swap' && $fst[0] == $st[0] &&
+			    $fst[1] == $st[1]) {
+				$sf = $m->[1];
+				last;
 				}
 			}
 
@@ -1339,7 +1339,7 @@ elsif ($type eq "nfs" || $type eq "nfs4") {
 	print &ui_table_row(&hlink($text{'linux_nfsvers'}, "linux_nfsvers"),
 		&ui_select("nfs_nfsvers", $options{"nfsvers"},
 			   [ [ "", $text{'linux_nfsdefault'} ],
-			     2, 3, 4 ]));
+			     2, 3, 4, 4.1 ]));
 	}
 elsif ($type eq "fat" || $type eq "vfat" || $type eq "msdos" ||
        $type eq "umsdos" || $type eq "fatx"){
@@ -1644,40 +1644,42 @@ sub check_location
 if (($_[0] eq "nfs") || ($_[0] eq "nfs4")) {
 	local($out, $temp, $mout, $dirlist, @dirlist);
 
-	if (&has_command("showmount")) {
+	if (&has_command("showmount") && $config{'nfs_check'}) {
 		# Use ping and showmount to see if the host exists and is up
 		if ($in{nfs_host} !~ /^\S+$/) {
 			&error(&text('linux_ehost', $in{'nfs_host'}));
 			}
-		$out = &backquote_command("ping -c 1 '$in{nfs_host}' 2>&1");
+		$out = &backquote_command(
+			"ping -c 1 ".quotemeta($in{nfs_host})." 2>&1");
 		if ($out =~ /unknown host/) {
 			&error(&text('linux_ehost2', $in{'nfs_host'}));
 			}
 		elsif ($out =~ /100\% packet loss/) {
 			&error(&text('linux_edown', $in{'nfs_host'}));
 			}
-		$out = &backquote_command("showmount -e '$in{nfs_host}' 2>&1");
+		$out = &backquote_command(
+			"showmount -e ".quotemeta($in{nfs_host})." 2>&1");
 		if ($out =~ /Unable to receive/) {
 			&error(&text('linux_enfs', $in{'nfs_host'}));
 			}
 		elsif ($?) {
 			&error(&text('linux_elist', $out));
 			}
+		}
 
-		# Validate directory name for NFSv3 (in v4 '/' exists)
-		foreach (split(/\n/, $out)) {
-			if (/^(\/\S+)/) {
-				$dirlist .= "$1\n";
-				push(@dirlist, $1);
-				}
+	# Validate directory name for NFSv3 (in v4 '/' exists)
+	foreach (split(/\n/, $out)) {
+		if (/^(\/\S+)/) {
+			$dirlist .= "$1\n";
+			push(@dirlist, $1);
 			}
-		
-		if ($_[0] ne "nfs4" && $in{'nfs_dir'} !~ /^\/.*$/ &&
-		    &indexof($in{'nfs_dir'}, @dirlist) < 0) {
-			&error(&text('linux_enfsdir', $in{'nfs_dir'},
-				     $in{'nfs_host'}, "<pre>$dirlist</pre>"));
-		    }
-	    }
+		}
+	
+	if ($_[0] ne "nfs4" && $in{'nfs_dir'} !~ /^\/.*$/ &&
+	    &indexof($in{'nfs_dir'}, @dirlist) < 0) {
+		&error(&text('linux_enfsdir', $in{'nfs_dir'},
+			     $in{'nfs_host'}, "<pre>$dirlist</pre>"));
+		}
 
 	# Try a test mount to see if filesystem is available
 	$temp = &tempname();

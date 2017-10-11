@@ -53,6 +53,8 @@ XenServer Linux			$1	redhat-linux	13.0	`cat /etc/redhat-release 2>/dev/null` =~ 
 CloudLinux			$1	redhat-linux	$2+8.0	`cat /etc/redhat-release 2>/dev/null` =~ /CloudLinux.*release\s+(\S+)/
 MostlyLinux			$1	redhat-linux	$2+8.0	`cat /etc/redhat-release 2>/dev/null` =~ /MostlyLinux\s+Linux\s+release\s+(\d+)/
 Cloudrouter Linux		$1	redhat-linux	15	`cat /etc/cloudrouter-release 2>/dev/null` =~ /CloudRouter\s+release\s+(\d+)\s+/
+Sangoma Linux			$1	redhat-linux	$2+8.0	`cat /etc/sangoma-release 2>/dev/null` =~ /Sangoma\s+Linux\s+(\S+)/
+Virtuozzo Linux			$1	redhat-linux	$2+8.0	`cat /etc/vzlinux-release 2>/dev/null` =~ /Virtuozzo\s+Linux\s+release\s+(\S+)/
 
 # Redhat enterprise versions
 Redhat Enterprise Linux			2.1AS	redhat-linux	7.3	`cat /etc/redhat-release 2>/dev/null` =~ /(Advanced\s+Server.*2\.1)|(AS.*2\.1)/i
@@ -108,6 +110,10 @@ Ubuntu Linux			$1	debian-linux	9.0	$etc_issue =~ /Ubuntu.*\s(16\.[0-9\.]+)\s/i |
 Ubuntu Linux			$1	debian-linux	3.1	$etc_issue =~ /Ubuntu.*\s([0-9\.]+)\s/i
 Mepis Linux			$1	debian-linux	$1	$etc_issue =~ /MEPIS/ && `cat /etc/debian_version 2>/dev/null` =~ /([0-9\.]+)/
 Mepis Linux			$1	debian-linux	4.0	$etc_issue =~ /MEPIS/ && `cat /etc/debian_version 2>/dev/null` =~ /(stable)/
+Devuan Linux		$1	debian-linux	8.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_version 2>/dev/null` =~ /^(jessie)/i
+Devuan Linux		$1	debian-linux	9.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_version 2>/dev/null` =~ /^(ascii)/i
+Devuan Linux		$1	debian-linux	10.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_version 2>/dev/null` =~ /^(beowulf)/i
+Devuan Linux		$1	debian-linux	10.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_version 2>/dev/null` =~ /^(ceres)/i
 
 # Linux Mint (Mint should be before Debian to avoid false-positive)
 Linux Mint			6	debian-linux	5.0	`cat /etc/lsb-release 2>/dev/null | grep DISTRIB_DESCRIPTION` =~ /^DISTRIB_DESCRIPTION="Linux Mint 6 Felicia"/
@@ -324,6 +330,7 @@ Caixa Magica			10.0	suse-linux	9.2	`cat /etc/CxM-release 2>/dev/null` =~ /10\.0/
 openmamba Linux			$1	openmamba-linux	$1	`cat /etc/openmamba-release 2>/dev/null` =~ /openmamba\s+release\s+(\S+)/i
 
 # All FreeBSD versions
+FreeBSD				$1	freebsd		$1	`freebsd-version 2>/dev/null` =~ /([0-9]+\.[0-9\.]+)/i
 FreeBSD				$1	freebsd		$1	$uname =~ /FreeBSD.*?\s([0-9]+\.[0-9\.]+)/i
 
 # FreeBSD clones

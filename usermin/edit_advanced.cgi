@@ -39,6 +39,20 @@ print &ui_table_row($text{'advanced_stack'},
 print &ui_table_row($text{'advanced_pass'},
 		    &ui_yesno_radio("pass", int($miniserv{'pass_password'})));
 
+@preloads = &webmin::get_preloads(\%miniserv);
+if (!@preloads && (!$miniserv{'premodules'} ||
+		   $miniserv{'premodules'} eq 'WebminCore')) {
+	# New-style preload possible or enabled
+	print &ui_table_row($text{'advanced_preload'},
+		    &ui_yesno_radio("preload",
+				    $miniserv{'premodules'} eq 'WebminCore'));
+	}
+elsif ($preloads[0]->[0] eq "main" && $preloads[0]->[1] eq "web-lib-funcs.pl") {
+	# Old-style preloads enabled
+	print &ui_table_row($text{'advanced_preload'},
+			    &ui_yesno_radio("preload", 1));
+	}
+
 # Umask for created files
 print &ui_table_row($text{'advanced_umask'},
 	    &ui_opt_textbox("umask", $uconfig{'umask'}, 5, $text{'default'}));

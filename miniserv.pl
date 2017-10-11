@@ -159,8 +159,11 @@ elsif (!$config{'no_pam'}) {
 		}
 	}
 if ($config{'pam_only'} && !$use_pam) {
-	print STDERR $startup_msg[0],"\n";
+	foreach $msg (@startup_msg) {
+	     print STDERR $msg,"\n";
+	}
 	print STDERR "PAM use is mandatory, but could not be enabled!\n";
+	print STDERR "no_pam and pam_only both are set!\n" if ($config{no_pam});
 	exit(1);
 	}
 elsif ($pam_msg && !$use_pam) {
@@ -554,8 +557,11 @@ $proto = getprotobyname('tcp');
 $tried_inaddr_any = 0;
 for($i=0; $i<@sockets; $i++) {
 	$fh = "MAIN$i";
-	socket($fh, $sockets[$i]->[2], SOCK_STREAM, $proto) ||
-		die "Failed to open socket family $sockets[$i]->[2] : $!";
+	if (!socket($fh, $sockets[$i]->[2], SOCK_STREAM, $proto)) {
+		# Protocol not supported
+		push(@sockerrs, "Failed to open socket family $sockets[$i]->[2] : $!");
+		next;
+		}
 	setsockopt($fh, SOL_SOCKET, SO_REUSEADDR, pack("l", 1));
 	if ($sockets[$i]->[2] eq PF_INET()) {
 		$pack = pack_sockaddr_in($sockets[$i]->[1], $sockets[$i]->[0]);
@@ -1102,11 +1108,7 @@ while(1) {
 					else {
 						# Session is OK
 						print $outfd "2 $user\n";
-						if ($lot &&
-						    $time_now - $ltime >
-						    ($lot*60)/2) {
-							$sessiondb{$skey} = "$user $time_now $ip";
-							}
+						$sessiondb{$skey} = "$user $time_now $ip";
 						}
 					}
 				}

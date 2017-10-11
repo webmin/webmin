@@ -25,4 +25,4 @@ if($in{'caseins'}) {
 
 print_interface();
 
-&ui_print_footer("index.cgi?path=".&urize($path), $text{'previous_page'});
+&ui_print_footer("index.cgi?path=".&urlize($path), $text{'previous_page'});

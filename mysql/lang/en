@@ -23,6 +23,7 @@ index_db=Database name
 index_tables=Tables
 index_elibrary=The MySQL client program $1 could not be run because it could not find the MySQL shared libraries. Check the <a href='$2'>module configuration</a> and make sure the <i>Path to MySQL shared libraries</i> is set.
 index_version=MySQL version $1
+index_version2=MySQL version $1 on $2
 index_nomod=Warning: The Perl module $1 is not installed on your system, so Webmin will not be able to reliably access your MySQL database. <a href='$2'>Click here</a> to install it now.
 index_nomods=Warning: The Perl modules $1 and $2 are not installed on your system, so Webmin will not be able to reliably access your MySQL database. <a href='$3'>Click here</a> to install them now.
 index_mysqlver=The command <tt>$1</tt> returned :

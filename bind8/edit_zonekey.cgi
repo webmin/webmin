@@ -25,6 +25,13 @@ if (@keyrecs) {
 	print "<p>\n";
 
 	my @keys = &get_dnssec_key($zone);
+	if (!@keys) {
+		print &text('zonekey_noprivate'),"<p>\n";
+		}
+	elsif (!ref($keys[0])) {
+		print &text('zonekey_eprivate', $keys[0]),"<p>\n";
+		@keys = ( );
+		}
 	foreach my $key (@keys) {
 		# Collapsible section for key details
 		my $kt = $key->{'ksk'} ? 'ksk' : 'zone';
@@ -47,9 +54,6 @@ if (@keyrecs) {
 		print &text('zonekey_privatefile',
 			    "<tt>$key->{'privatefile'}</tt>"),"<br>\n";
 		print &ui_hidden_end();
-		}
-	if (!@keys) {
-		print &text('zonekey_noprivate'),"<p>\n";
 		}
 
 	my $ds = &get_ds_record($zone);

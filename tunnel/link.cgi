@@ -76,7 +76,7 @@ my $con = &make_http_connection($host, $port, $ssl, $meth, $path);
 if ($user) {
 	my $auth = &encode_base64("$user:$pass");
 	$auth =~ s/\n//g;
-	&write_http_connection($con, "Authorization: Basic $auth\r\n");
+	&write_http_connection($con, "Authorization: basic $auth\r\n");
 	}
 &write_http_connection($con, sprintf(
 			"Webmin-servers: %s://%s:%d/$module_name/\r\n",
@@ -126,10 +126,14 @@ elsif ($header{'www-authenticate'}) {
 		     "/$module_name/link.cgi/$path"));
 		}
 	elsif ($user) {
-		&error(&text('link_elogin', $host, $user));
+		&error(&text('link_elogin', $host, $user)." ".
+		       &text('link_mconfig',
+			"$gconfig{'webprefix'}/config.cgi?$module_name"));
 		}
 	else {
-		&error(&text('link_enouser', $host));
+		&error(&text('link_enouser', $host)." ".
+		       &text('link_mconfig',
+			"$gconfig{'webprefix'}/config.cgi?$module_name"));
 		}
 	}
 else {

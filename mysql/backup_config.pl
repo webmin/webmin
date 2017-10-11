@@ -26,6 +26,12 @@ return undef;
 # Called before the files are restored from a backup
 sub pre_restore
 {
+if (&is_mysql_running() != -1) {
+	%oldconfig = %config;
+	}
+else {
+	%oldconfig = ( );
+	}
 return undef;
 }
 
@@ -33,6 +39,14 @@ return undef;
 # Called after the files are restored from a backup
 sub post_restore
 {
+$authstr = &make_authstr();
+&read_file_cached($module_config_file, \%config);
+if (&is_mysql_running() == -1 && %oldconfig) {
+	# New restored login isn't valid .. put back the old one
+	$config{'login'} = $oldconfig{'login'};
+	$config{'pass'} = $oldconfig{'pass'};
+	&save_module_config();
+	}
 if (&is_mysql_running()) {
 	&stop_mysql();
 	return &start_mysql();

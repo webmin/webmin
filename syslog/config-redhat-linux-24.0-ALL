@@ -22,3 +22,4 @@ start_cmd=systemctl start rsyslog.service
 restart_cmd=systemctl restart rsyslog.service
 compressed=1
 others=1
+reverse=0

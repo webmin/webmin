@@ -192,13 +192,6 @@ my $ucprog = ucfirst($prog);
 system("/bin/mkdir -p /tmp/makemodulerpm");
 system("cd $par && /bin/cp -rpL $source_mod /tmp/makemodulerpm/$mod");
 system("/usr/bin/find /tmp/makemodulerpm -name .git | xargs rm -rf");
-system("/usr/bin/find /tmp/makemodulerpm -name .svn | xargs rm -rf");
-system("/usr/bin/find /tmp/makemodulerpm -name .xvpics | xargs rm -rf");
-system("/usr/bin/find /tmp/makemodulerpm -name '*.bak' | xargs rm -rf");
-system("/usr/bin/find /tmp/makemodulerpm -name '*~' | xargs rm -rf");
-system("/usr/bin/find /tmp/makemodulerpm -name '*.rej' | xargs rm -rf");
-system("/usr/bin/find /tmp/makemodulerpm -name '.*.swp' | xargs rm -rf");
-system("/usr/bin/find /tmp/makemodulerpm -name core | xargs rm -rf");
 system("/usr/bin/find /tmp/makemodulerpm -name RELEASE | xargs rm -rf");
 system("/usr/bin/find /tmp/makemodulerpm -name RELEASE.sh | xargs rm -rf");
 system("/usr/bin/find /tmp/makemodulerpm -name t | xargs rm -rf");
@@ -342,7 +335,9 @@ if [ "$post_config" = "1" ]; then
 	# Copy config file to /etc/webmin or /etc/usermin
 	os_type=`grep "^os_type=" /etc/$prog/config | sed -e 's/os_type=//g'`
 	os_version=`grep "^os_version=" /etc/$prog/config | sed -e 's/os_version=//g'`
-	/usr/bin/perl /usr/libexec/$prog/copyconfig.pl \$os_type \$os_version /usr/libexec/$prog /etc/$prog $mod
+	real_os_type=`grep "^real_os_type=" /etc/$prog/config | sed -e 's/real_os_type=//g'`
+	real_os_version=`grep "^real_os_version=" /etc/$prog/config | sed -e 's/real_os_version=//g'`
+	/usr/bin/perl /usr/libexec/$prog/copyconfig.pl "\$os_type/\$real_os_type" "\$os_version/\$real_os_version" /usr/libexec/$prog /etc/$prog $mod
 
 	# Update the ACL for the root user, or the first user in the ACL
 	grep "^root:" /etc/$prog/webmin.acl >/dev/null

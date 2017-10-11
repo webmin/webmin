@@ -152,6 +152,7 @@ if ($config{'dhcpd_version'} >= 3) {
 			local $atype = $1;
 			}
 		elsif ($o && $o->{'values'}->[4] eq 'string' ||
+		       $o && $o->{'values'}->[4] eq 'text' ||
 		       $cv !~ /^([0-9a-fA-F]{1,2}:)*[0-9a-fA-F]{1,2}$/ &&
 		       !&check_ipaddress($cv)) {
 			# Quote if type is a string, or unknown and not an IP
