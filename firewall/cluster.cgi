@@ -2,15 +2,18 @@
 # Show hosts in firewall cluster
 
 require './firewall-lib.pl';
+&ReadParse();
+if (&get_ipvx_version() == 6) { require './firewall6-lib.pl';
+	} else { require './firewall4-lib.pl'; }
 $access{'cluster'} || &error($text{'ecluster'});
 &foreign_require("servers", "servers-lib.pl");
-&ReadParse();
-&ui_print_header(undef, $text{'cluster_title'}, undef, "cluster");
+&ui_print_header($text{"index_title_v${ipvx}"}, $text{'cluster_title'}, undef, "cluster");
 
 # Show existing servers
 @servers = &list_cluster_servers();
 if (@servers) {
 	print "<form action=cluster_delete.cgi>\n";
+        print &ui_hidden("version", ${ipvx_arg});
 	print "<table border width=100%>\n";
 	print "<tr $tb> <td width=10><br></td> ",
 	      "<td><b>$text{'cluster_host'}</b></td> ",
@@ -37,6 +40,7 @@ else {
 
 # Show buttons to add
 print "<form action=cluster_add.cgi>\n";
+print &ui_hidden("version", ${ipvx_arg});
 print "<table width=100%><tr>\n";
 @allservers = grep { $_->{'user'} } &servers::list_servers();
 %gothost = map { $_->{'id'}, 1 } @servers;
@@ -65,5 +69,5 @@ if (!@allservers) {
 	print "<b>$text{'cluster_need'}</b><p>\n";
 	}
 
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer("index.cgi?version=${ipvx_arg}", $text{'index_return'});
 

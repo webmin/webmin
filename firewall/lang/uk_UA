@@ -129,7 +129,7 @@ apply_err=Не удалося застосувати конфігурацію
 index_radd=Додати правило
 index_ecommand=Команда $1 у вашій системі не виявлена. Ця команда необхідна Webmin для настроювання IPtables.
 edit_ports=Порт(ы) джерела і призначення
-index_title=Міжмережевий екран Linux (firewall)
+index_title=Міжмережевий екран Linux IPTables (firewall)
 save_egidowner=Група unix чи не зазначена зазначена невірно
 edit_state=Стану з'єднання
 edit_tcpoption=Встановлена опція TCP з номером
@@ -227,3 +227,4 @@ desc_tos!=поле типу служби не $1
 desc_d!=призначення не $1
 index_jump_queue=<font color=#0000ff>Userspace</font>
 
+eip6tables=Невідомий рядок у файлі збереженої конфігурації ip6tables : $1

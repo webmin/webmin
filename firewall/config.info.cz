@@ -8,5 +8,7 @@ after_cmd=Pøíkaz&#44; který má být spu¹tìn po zmìnì pravidel,3,Nic
 before_apply_cmd=Pøíkaz&#44; který má být spu¹tìn pøed uplatnìním konfigurace,3,Nic
 after_apply_cmd=Pøíkaz&#44; který má být spu¹tìn po uplatnìní konfigurace,3,Nic
 line1=Konfigurace systému,11
-save_file=Ulo¾ený soubor s IPtabulkami pro úpravu,3,Pou¾ít operaèní systém nebo výchozí ve Webminu
 direct=Pøímo editovat pravidla firewallu namísto ukládání souboru?,1,1-Ano,0-Ne
+save_file=File to save/edit <tt>IPv4</tt> rules,3,Use operating system or Webmin default
+save_file6=File to save/edit <tt>IPv6</tt> rules,3,Use operating system or Webmin default
+

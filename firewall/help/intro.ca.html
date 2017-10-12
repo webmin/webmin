@@ -6,7 +6,7 @@ Aquest mòdul permet configurar les característiques del tallafocs IPtables
 que es troba a la sèrie de nuclis Linux 2.4. Contràriament a altres
 programes de configuració de tallafocs, en lloc de crear un script shell
 que configura el tallafocs, llegeix i edita un fitxer en el format llegit
-i escrit per <tt>iptables-restore</tt> i <tt>iptables-save</tt>, respectivament. <p>
+i escrit per <tt>ipi(6)tables-restore</tt> i <tt>ipi(6)tables-save</tt>, respectivament. <p>
 
 Si ja tens al sistema un tallafocs que s'ha configurat manualment o des d'un
 fitxer de script, el mòdul t'oferirà de convertir-lo per tu a un fitxer
@@ -64,11 +64,29 @@ cada regla, i les condicions per les quals s'executa l'acció. <p>
 
 Al peu de la pàgina, hi ha un botó per fer activa la configuració
 actual del tallafocs, recarregant-la en el nucli amb l'ordre
-<tt>iptables-restore</tt>. A sota, hi ha un botó per fer just el contrari -
+<tt>ipi(6)tables-restore</tt>. A sota, hi ha un botó per fer just el contrari -
 prendre la configuració que hi ha actualment al nucli i posar-la a
 disposició de l'editor. Finalment, si la distribució ho suporta, hi ha
 un botó per canviar si el tallafocs s'activa en engegar el sistema o no. <p>
 
-<hr>
 
+
+<h3>Filtering chains</h3>
+
+For better collaboration with external iptables scripts you can exclude individual
+chains from the processing by the firewall. To do this, you must select direct
+processing of rules in the settings and enter a filter list, which excludes
+the appropriate chains from processing.
+Chains that are not exculded from editing are flagged with a "not managed by firewall" message.
+<p>
+
+<h3>IP Sets</h3>
+
+Newer versions of ip(6)table support the ipset extension.
+IP sets are lists of IP addresses in the main memory, which can be searched very efficiently
+and used as a condition in rules. On the main page, existing IP sets that can be used by 
+rules are displayed. Currently, however, it is not possible to manage these in the firewall.
+<p>
+
+<hr>
 

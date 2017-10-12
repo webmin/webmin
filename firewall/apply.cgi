@@ -4,6 +4,8 @@
 
 require './firewall-lib.pl';
 &ReadParse();
+if (&get_ipvx_version() == 6) { require './firewall6-lib.pl';
+	} else { require './firewall4-lib.pl'; }
 $access{'apply'} || &error($text{'apply_ecannot'});
 &error_setup($text{'apply_err'});
 $err = &apply_configuration();
@@ -11,5 +13,5 @@ $err = &apply_configuration();
 $err = &apply_cluster_configuration();
 &error($err) if ($err);
 &webmin_log("apply");
-&redirect("index.cgi?table=$in{'table'}");
+&redirect("index.cgi?version=${ipvx_arg}&table=$in{'table'}");
 

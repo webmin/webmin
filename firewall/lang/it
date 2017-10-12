@@ -1,7 +1,7 @@
 # ../firewall/lang/it
 # Tradotto il 24 Dicembre 2002 alle 12.10 da Michele (M@Z) Azzolari - MILANO (ITALY)
 
-index_title=Linux Firewall
+index_title=Linux IPTables Firewall
 index_ecommand=Il comando $1 non &egrave; stato trovato sul tuo sistema. Webmin ha bisogno di questo comando per configurare IPtables.
 index_ekernel=Si &egrave; verificato un errore rilevando la tua configurazione di IPtables: $1. Questo pu&ograve; indicare che il tuo kernel non supporta IPtables.
 index_header=Configurazione del Firewall da $1
@@ -244,3 +244,4 @@ log_bootdown=Disabilitato il firewall all&#39;avvio
 
 setup_eiface=Nessuna interfaccia di rete esterna inserita
 
+eip6tables=Riga sconosciuta salvata nel file di ip6tables: $1

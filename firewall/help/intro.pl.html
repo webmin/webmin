@@ -5,8 +5,8 @@
 Ten modu³ pozwala na konfiguracjê funkcji firewalla IPtables znajduj±cych
 siê w kernelach Linuksa 2.4. W odró¿nieniu od innych programów konfiguracji
 firewalla ten modu³ nie tworzy skryptów shell, a zamiast tego odczytuje
-i edytuje pliki w formacie umo¿liwiaj±cym ich odczyt w <tt>iptables-restore</tt>
-i <tt>iptables-save</tt>. <p>
+i edytuje pliki w formacie umo¿liwiaj±cym ich odczyt w <tt>ipi(6)tables-restore</tt>
+i <tt>ipi(6)tables-save</tt>. <p>
 
 Je¿eli masz ju¿ w systemie firewall skonfigurowany rêcznie lub przez plik
 skryptu, to ten modu³ przekonwertuje go do odpowiedniego formatu IPtables
@@ -62,11 +62,29 @@ okre¶lenia kiedy ta akcja ma byæ wykonana. <p>
 
 Na dole strony znajduj± siê przyciski umo¿liwiaj±ce aktywacjê aktualnej
 konfiguracji firewalla przez za³adowanie do kernela polecenia
-<tt>iptables-restore</tt>. Poni¿ej jest przycisk, który dzia³a odwrotnie
+<tt>ipi(6)tables-restore</tt>. Poni¿ej jest przycisk, który dzia³a odwrotnie
 tzn. pobiera aktywn± konfiguracjê firewalla z kernela i umo¿liwia jej
 edycjê w tym module. Na koñcu, je¿eli twoja dystrybucja obs³uguje tê
 funkcjê znajduje siê przycisk umo¿liwiaj±cy wybranie, czy firewall
 ma byæ aktywowany w momencie uruchamiania systemu czy nie. <p>
+
+
+<h3>Filtering chains</h3>
+
+For better collaboration with external iptables scripts you can exclude individual
+chains from the processing by the firewall. To do this, you must select direct
+processing of rules in the settings and enter a filter list, which excludes
+the appropriate chains from processing.
+Chains that are not exculded from editing are flagged with a "not managed by firewall" message.
+<p>
+
+<h3>IP Sets</h3>
+
+Newer versions of ip(6)table support the ipset extension.
+IP sets are lists of IP addresses in the main memory, which can be searched very efficiently
+and used as a condition in rules. On the main page, existing IP sets that can be used by 
+rules are displayed. Currently, however, it is not possible to manage these in the firewall.
+<p>
 
 <hr>
 

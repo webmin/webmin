@@ -6,3 +6,6 @@ after_cmd=Commande &#224; lancer apr&#232;s la modification des r&#232;gles,3,Au
 before_apply_cmd=Commande &#224; lancer avant l'application de la configuration,3,Aucune
 after_apply_cmd=Commande &#224; lancer apr&#232;s l'application de la configuration,3,Aucune
 line1=Configuration du syst&#232;me,11
+save_file=File to save/edit <tt>IPv4</tt> rules,3,Use operating system or Webmin default
+save_file6=File to save/edit <tt>IPv6</tt> rules,3,Use operating system or Webmin default
+

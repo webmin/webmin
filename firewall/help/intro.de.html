@@ -1,0 +1,89 @@
+<header>Linux Firewall</header>
+
+<h3>Einf&uuml;hrung</h3>
+
+Mit diesem Modul k&ouml;nnen Sie die IPtables-Firewall konfigurieren.
+Im Gegensatz zu anderen Firewall-Konfigurations
+Programmen die eine Firewall einrichten, wird eine Sicherungsdatei im Format von 
+<tt>ipi(6)tables-restore</tt> and <tt>ipi(6)tables-save</tt> gelesen und geschrieben.
+<br>&nbsp;<P>
+
+Wenn Sie bereits eine Firewall auf Ihrem System haben, die manuell eingerichtet wurde
+oder von einer Skriptdatei erstellt wird, wird das Modul anbieten es in eine IPtables
+Sicherungsdatei zu konvertieren und ein Script zu erstellen, das beim Starten des Systems ausgef&uuml;hrt wird.
+Wenn Sie dies tun, dann sollten Sie Ihr Firewall-Regeln-Skript nicht mehr nutzen und
+ihr Script beim Booten deaktivieren.
+<p>
+
+<h3>IPtables &Uuml;bersicht</h3>
+
+Jedes Netzwerkpaket das Ihr System empf&auml;gt, sendet oder weiterleitet
+wird gegen eine oder mehrere Ketten gepr&uuml;ft, um zu bestimmen was mit ihm geschehen soll.
+Jede Kette enth&auml;lt Regeln mit je einer Bedingung, gegen die die Pakete gepr&uuml;ft werden.
+Passt die eine Bedingung auf das Paket, wird die in der Regel definierte Aktion ausgef&uuml;hrt.
+Jede Kette hat auch eine Standardaktion, die bestimmt
+was mit Paketen passiert, die keiner Regel entsprechen.
+<br>&nbsp;<p>
+
+Jede Kette ist Teil einer Tabelle von denen es derzeit die drei folgenden gibt:
+<ul>
+<li><b>Paket Filter (<tt>filter</tt>)</b><br>
+Die Ketten in dieser Tabelle steuern die Daten die von Ihrem System
+von anderen Hosts im Netzwerk empfangen iwerden, die von Ihrem System 
+von Benutzern und Prozessen gesendet werden und Daten die von Ihrem System weitergeleitet werden.
+<p>
+
+<li><b>Network Adressen &Uuml;bersetzung (<tt>nat</tt>)</b><br>
+Diese Tabelle kann für die Einrichtung von NAT oder Masquerading verwendet werden,dies nutzt man
+wenn Sie einem ganzeen Netzwerk Zugang zum Internet &uuml;ber Ihr System geben wollen.
+<p>
+<li><b>Paket Berabeitung (<tt>mangle</tt>)</b><br>
+Diese Tablle kann Pakete die on Ihrem System gesendet oder weitergeleitet werden ver&auml;ndern.
+<p>
+</ul>
+
+Zus&auml;tzlich zu den Standard-Ketten, die Teil jeder Tabelle sind, k&ouml;nnen Sie auch
+Ihre eigenen Ketten erstellen, die durch Regeln in vorhandenen Ketten ausgef&uuml;hrt werden k&ouml;nnen. Dies
+kann f&uuml;r das Gruppieren und das Teilen von Regeln n&uuml;tzlich sein.
+<p>
+
+<h3>Die Hauptseite</h3>
+
+Die Hauptseite dieses Moduls listet alle Ketten und Regeln einer der
+verf&uuml;gbaren Tabellen, die anzuzeigende Kette wird in der Liste oben links ausgew&auml;t.
+Darunter ist ein Abschnitt f&uuml;r jede Kette in der aktuellen Tabelle, mit allen Regel der Kette
+und ihren Bedingungen.
+F&uuml;r jede Kette k&ouml;nnen Sie die Standardaktion &uuml;ber die Dropdown-Lise &auml;ndern,
+wenn es sich um eine Stadard-Kette handelt oder die Kette l&ouml;schen, wenn
+es sich um eine benutzerdefinierte Kette handelt.
+<br>&nbsp;<P>
+
+Sie k&ouml;nnen auf eine beliebige Regel einer Kette klicken, um sie zu bearbeiten.
+Klicken Sie auf einen der  Pfeile rechts in jeder Zeile, um eine Regel nach oben oder unten zu verschieben,
+oder klicken Sie auf die Schaltfl&auml;che Hinzuf&uuml;gen, um eine neue Regel zu erstellen.
+Hinzuf&uuml;gen bzw. Bearbeiten einer Regel leite Sie zu einer Seite, auf der Sie
+f&uuml;r die Regel die Bedingungen und die Aktion ausw&auml;hlen k&ouml;nnen.
+<br>&nbsp;<p>
+
+Am unteren Rand der Seite befindet sich eine Schaltfl&auml;che zum Aktivieren der aktuellen Firewall Konfiguration.
+Schlie&szlig;lich gibt noch eine Schaltfl&auml;che, um zu einzustellen ob die Firewall zum Zeitpunkt des
+Bootens aktiviert wird oder nicht.
+<p>
+
+<h3>Filtern von Ketten</h3>
+
+F&uuml;r die bessere Zusammenarbeit mit exernen IPtables Scripten kann man einzelne Ketten von
+der Bearbeitung durch die Firewall ausnehmen. Dazu m&uuml;ssen sie in den Einstellungen die direkte
+Bearbeitung von Regeln ausw&auml;hlen und eine Filterliste
+eingeben, welche die passenden Ketten von der Bearbeitung ausnimmt.
+Ketten die nicht bearbeitet werden mit dem Hinweis "nichit von Firewall verwaltet" angezeigt<p>
+
+<h3>IP-Sets</h3>
+
+Neuere Versionen von IPtable unterst&uuml;tzen die Erweiterung ipset. IP-Sets sind Listen von IP-Adressen
+im Hauptspeicher, die sehr effizient durchsucht und als Bedingung in Regeln verwendet werden k&ouml;nnen.
+Auf der Hauptseite werden vorhandene IP-Sets die von der Regeln verwendet werden  k&ouml;nnen angezeigt.
+Derzeit ist es allerdings nicht m&ouml;glich diese in der Firewall zu verwalten.
+
+<hr>
+

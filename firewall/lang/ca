@@ -1,4 +1,4 @@
-index_title=Tallafocs Linux
+index_title=Tallafocs Linux IPTables
 index_editing=Fitxer de regles $1
 index_ecommand=No s'ha trobat al sistema l'ordre $1. Webmin necessita aquesta ordre per configurar IPtables.
 index_ekernel=S'ha produït un error en comprovar la configuració actual d'IPtables: $1 Això pot indicar que el nucli no suporta IPtables.
@@ -141,7 +141,7 @@ desc_args--match-set=$2 està contingut al conjunt IP $1
 desc_src=origen
 desc_dest=destinació
 
-redhat_einstalled=No s'ha trobat cap acció d'engegada <tt>iptables</tt> que indiqui que el paquet IPtables no està instal·lat al sistema
+redhat_einstalled=No s'ha trobat cap acció d'engegada <tt>iptables(6)</tt> que indiqui que el paquet IPtables no està instal·lat al sistema
 redhat_eoutput=S'ha produït un error en buscar l'estat d'IPtables amb l'ordre $1. Això probablement indica que el sistema està configurat per utilitzar IPchains en lloc d'IPtables.
 
 gentoo_escript=No s'ha trobat al sistema el script $1 d'inici d'IPtables Gentoo.
