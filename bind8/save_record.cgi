@@ -345,14 +345,12 @@ else {
 			  ($ip =~ /^(\S+)\/\d+$/ && &check_ipaddress($1)) ||
 			    &error(&text('edit_espfip', $ip));
 			}
-		if (&supports_ipv6()) {
-			$spf->{'ip6:'} = [ split(/\s+/, $in{'spfip6s'}) ];
-			foreach my $ip (@{$spf->{'ip6:'}}) {
-				&check_ip6address($ip) ||
-				  ($ip =~ /^(\S+)\/\d+$/ &&
-				   &check_ip6address($1)) ||
-				    &error(&text('edit_espfip6', $ip));
-				}
+		$spf->{'ip6:'} = [ split(/\s+/, $in{'spfip6s'}) ];
+		foreach my $ip (@{$spf->{'ip6:'}}) {
+			&check_ip6address($ip) ||
+			  ($ip =~ /^(\S+)\/\d+$/ &&
+			   &check_ip6address($1)) ||
+			    &error(&text('edit_espfip6', $ip));
 			}
 		$spf->{'include:'} = [ split(/\s+/, $in{'spfincludes'}) ];
 		foreach my $i (@{$spf->{'include:'}}) {
