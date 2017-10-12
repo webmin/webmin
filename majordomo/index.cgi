@@ -53,15 +53,23 @@ if ($access{'create'}) {
         print "<div $bcss><form action=\"digest_form.cgi\">".&ui_submit($text{'index_digest'})."</form></div>\n";
 	print "<style>hr {display: none;></style>"
 	}
-if (@lists) {
+
+if ($access{'global'}) {
+	print "<div $bcss><form action=\"edit_global.cgi\" method=\"post\">",
+        	&ui_submit($text{'index_global'})."</form></div>\n";
+	print "<div style=\"padding-top: 10px;\">$text{'index_globaldesc'}</div>\n";
+	}
+	
     # table header
     local @hcols, @tds;
     push(@hcols, $text{'index_name'}, $text{'index_info'}, $text{'index_mail'}, $text{'index_moderated'}, $text{'index_count'});
     push(@tds, "width=5" ,"width=100" );
     push(@tds, "", "", "width=100", "", "");
     print &ui_columns_start(\@hcols, 100, 0, \@tds);
-    # mailing lists
-    foreach $l (grep { $lcan{$_} || $lcan{"*"} } @lists) {
+
+# mailing lists
+if (@lists) {
+        foreach $l (grep { $lcan{$_} || $lcan{"*"} } @lists) {
 	local @cols,@list,@conf;
 	$list = &get_list( $l , &get_config());
 	$conf = &get_list_config($list->{'config'});
@@ -81,15 +89,11 @@ if (@lists) {
 		"&nbsp;&nbsp;<em><a href=edit_members.cgi?name=$l><span>edit</span></a></em></center>");
 	print&ui_columns_row(\@cols, \@tds);
 	}
+	print &ui_columns_end();
 } else {
+	print &ui_columns_end();
 	print "<b>$text{'index_none'}</b>.<p>\n";
     }
-
-if ($access{'global'}) {
-	print "<div $bcss><form action=\"edit_global.cgi\" method=\"post\">",
-        	&ui_submit($text{'index_global'})."</form></div>\n";
-	print "<div style=\"padding-top: 10px;\">$text{'index_globaldesc'}</div>\n";
-	}
 
 &ui_print_footer("/", $text{'index'});
 print 	"<script>",
@@ -101,4 +105,3 @@ print 	"<script>",
 		" button.innerHTML=button.innerHTML.replace(/<\\/i>.*edit/,'');});",
 	"</script>",
 	"<style>.btn.btn-transparent { padding: 0 !important; color: grey;}</style>";
-
