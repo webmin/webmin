@@ -132,7 +132,6 @@ foreach $host (@phosts) {
 		}
 	print "</ul>\n";
 	}
-&webmin_log("sync", undef, undef, \%in);
 
 &ui_print_footer("", $text{'index_return'});
 
