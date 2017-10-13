@@ -624,6 +624,7 @@ backup_ewhere=Missing <tt>where</tt> clause
 backup_echarset=Missing character set
 backup_ebackup=<tt>mysqldump</tt> failed : $1
 backup_ebefore=Before-backup command failed!
+backup_eisdir=Backup destination $1 is a directory
 backup_done=Successfully backed up $3 bytes from database $1 to file $2.
 backup_sched=Scheduled backup enabled?
 backup_sched1=Yes, at times chosen below ..
