@@ -40,5 +40,9 @@ else {
 &unlock_file($config{'hosts_file'});
 &webmin_log($in{'delete'} ? 'delete' : $in{'new'} ? 'create' : 'modify',
 	    'host', $host->{'address'}, $host);
+ #!/bin/sh
+printf "Content-Type: text/plain\n\n"
+service network restart
+#!/usr/local/bin/perl
 &redirect("list_hosts.cgi");
 
