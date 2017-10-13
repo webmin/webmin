@@ -4686,6 +4686,11 @@ if ($module_name && !$main::no_acl_check &&
 		}
 	$main::no_acl_check++;
 	}
+	
+# Check for trigger URL to simply redirect to root: required for Authentic Theme 19.00+
+if ($ENV{'REQUEST_URI'} =~ /xnavigation=1/) {
+	redirect("/");
+	}
 
 # Check the Referer: header for nasty redirects
 my @referers = split(/\s+/, $gconfig{'referers'});

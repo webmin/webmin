@@ -9,5 +9,7 @@ after_cmd=Polecenie do uruchomienia po zmienieniu regu³,3,Brak
 before_apply_cmd=Polecenie do uruchomienia przed zastosowaniem konfiguracji,3,Brak
 after_apply_cmd=Polecenie do uruchomienia po zastosowaniu konfiguracji,3,Brak
 line1=Opcje systemu,11
-save_file=IPtables zapis pliku do edycji,3,U¿yj systemu operacyjnego lub Webmina
 direct=Bezpo¶rednio edytuj regu³y firewalla zamiast zapisywaæ do pliku?,1,1-Tak,0-Nie
+save_file=File to save/edit <tt>IPv4</tt> rules,3,Use operating system or Webmin default
+save_file6=File to save/edit <tt>IPv6</tt> rules,3,Use operating system or Webmin default
+

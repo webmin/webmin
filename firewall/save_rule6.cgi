@@ -2,10 +2,12 @@
 # save_rule.cgi
 # Save, create or delete a rule in a chain
 
-require './firewall6-lib.pl';
+require './firewall-lib.pl';
 &ReadParse();
+if (&get_ipvx_version() == 6) { require './firewall6-lib.pl';
+	} else { require './firewall4-lib.pl'; }
 &error_setup($text{'save_err'});
-@tables = &get_ip6tables_save();
+@tables = &get_iptables_save();
 $table = $tables[$in{'table'}];
 &can_edit_table($table->{'name'}) || &error($text{'etable'});
 if ($in{'new'}) {
@@ -17,12 +19,12 @@ else {
 	}
 if ($in{'clone'}) {
 	# Go back to the editing page
-	&redirect("edit_rule.cgi?new=1&clone=$in{'idx'}&".
+	&redirect("edit_rule.cgi?version=${ipvx_arg}&new=1&clone=$in{'idx'}&".
 		  "table=".&urlize($in{'table'})."&".
 		  "chain=".&urlize($rule->{'chain'}));
 	}
 
-&lock_file($ip6tables_save_file);
+&lock_file($ipvx_save);
 if ($in{'delete'}) {
 	# Just delete this rule
 	splice(@{$table->{'rules'}}, $in{'idx'}, 1);
@@ -89,9 +91,9 @@ else {
 		}
 	if ($table->{'name'} eq 'nat' && $rule->{'chain'} ne 'POSTROUTING') {
 		if ($rule->{'j'}->[1] eq 'DNAT' && !$in{'dnatdef'}) {
-			!$in{'dipfrom'} || &check_ip6address($in{'dipfrom'}) ||
+			!$in{'dipfrom'} || &check_ipaddress($in{'dipfrom'}) ||
 				&error($text{'save_edipfrom'});
-			!$in{'dipto'} || &check_ip6address($in{'dipto'}) ||
+			!$in{'dipto'} || &check_ipaddress($in{'dipto'}) ||
 				&error($text{'save_edipto'});
 			local $v = "[".$in{'dipfrom'}."]";
 			$v .= "-[".$in{'dipto'}."]" if ($in{'dipto'});
@@ -117,9 +119,9 @@ else {
 	    $rule->{'chain'} ne 'OUTPUT') {
 		if ($rule->{'j'}->[1] eq 'SNAT' && !$in{'snatdef'}) {
 			(!$in{'sipfrom'} && !$in{'sipto'}) ||
-			    &check_ip6address($in{'sipfrom'}) ||
+			    &check_ipaddress($in{'sipfrom'}) ||
 				&error($text{'save_esipfrom'});
-			!$in{'sipto'} || &check_ip6address($in{'sipto'}) ||
+			!$in{'sipto'} || &check_ipaddress($in{'sipto'}) ||
 				&error($text{'save_esipto'});
 			local $v = $in{'sipfrom'};
 			$v .= "-".$in{'sipto'} if ($in{'sipto'});
@@ -172,7 +174,7 @@ else {
 			$proto = $in{'proto'};
 			push(@mods, $in{'proto'})
 				if ($proto eq 'tcp' || $proto eq 'udp' ||
-				    $proto eq 'icmpv6' && $in{'icmptype_mode'});
+				    $proto eq "icmp${ipvx_icmp}" && $in{'icmptype_mode'});
 			}
 		}
 
@@ -262,9 +264,9 @@ else {
 			&error($text{'save_etcpoption'});
 		$rule->{'tcp-option'}->[1] = $in{"tcpoption"};
 		}
-	if (&parse_mode("icmptype", $rule, "icmpv6-type")) {
-		$proto eq "icmpv6" || &error($text{'save_eicmp'});
-		$rule->{'icmpv6-type'}->[1] = $in{'icmptype'};
+	if (&parse_mode("icmptype", $rule, "icmp${ipvx_icmp}-type")) {
+		$proto eq "icmp${ipvx_icmp}" || &error($text{'save_eicmp'});
+		$rule->{"icmp${ipvx_icmp}-type"}->[1] = $in{'icmptype'};
 		}
 	if (&parse_mode("macsource", $rule, "mac-source")) {
 		$in{"macsource"} =~ /^([0-9a-z]{2}:){5}[[0-9a-z]{2}$/i ||
@@ -382,11 +384,11 @@ else {
 &save_table($table);
 &run_after_command();
 &copy_to_cluster();
-&unlock_file($ip6tables_save_file);
+&unlock_file($ipvx_save);
 &webmin_log($in{'delete'} ? "delete" : $in{'new'} ? "create" : "modify",
 	    "rule", undef, { 'chain' => $rule->{'chain'},
 			     'table' => $table->{'name'} });
-&redirect("index.cgi?table=$in{'table'}");
+&redirect("index.cgi?version=${ipvx_arg}&table=$in{'table'}");
 
 # parse_mode(name, &rule, option)
 sub parse_mode
@@ -405,15 +407,4 @@ else {
 	}
 }
 
-sub check_ipmask
-{
-foreach my $w (split(/,/, $_[0])) {
-	my $ok = &to_ipaddress($w) ||
-		$w =~ /^([0-9\.]+)\/([0-9\.]+)$/ &&
-			&to_ipaddress("$1") &&
-			(&check_ip6address("$2") || ($2 =~ /^\d+$/ && $2 <= 32));
-	return 1 if (!$ok);
-	}
-return 1;
-}
 

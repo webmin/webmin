@@ -2,7 +2,7 @@
 
 <h3>Introdução ao Módulo</h3>
 
-Este módulo lhe permite configurar as características do firewall IPtables encontradas na série 2.4 do kernel do Linux. Diferente de alguns outros programas para configuração de firewall, ao invés de criar um shell script para configurar o firewall, ele lê e edita um arquivo salvo no formato de leitura e escrita do <tt>iptables-restore</tt> e <tt>iptables-save</tt> respectivamente. <p>
+Este módulo lhe permite configurar as características do firewall IPtables encontradas na série 2.4 do kernel do Linux. Diferente de alguns outros programas para configuração de firewall, ao invés de criar um shell script para configurar o firewall, ele lê e edita um arquivo salvo no formato de leitura e escrita do <tt>ipi(6)tables-restore</tt> e <tt>ipi(6)tables-save</tt> respectivamente. <p>
 
 Se você já possui um firewall em seu sistema que foi configurado manualmente ou a partir de um script, o módulo  oferecerá para convertê-lo para um arquivo salvo no formato do IPtables, e criar um script que poderá ser executado durante a inicialização para a ativação das regras contidas no arquivo. Entretanto, se você fizer isso, você não deverá editar mais o script com as regras do firewall e deverá desabilitar sua execução durante a inicialização do sistema. <p>
 
@@ -33,7 +33,25 @@ A página principal deste módulo lista todas as chains e regras de uma das tabela
 
 Você pode clicar em qualquer regra em uma chain para editá-la, clicar nas setas da direita de cada linha para movê-la para cima ou para baixo, ou clicar no botão Adicionar Regra para adicionar uma nova regra.Adicionando ou editando uma regra, você será levado para uma página na qual você poderá selecionar a ação para cada regra, e as condições para as quais a ação será executada. <p>
 
-Na parte de baixo da página está um botão para tornar a configuração atual do firewall ativa, carregando-a através do comando <tt>iptables-restore</tt>. A seguir está um botão para fazer o inverso - pegar a configuração que está corrente no kernel e torná-la disponível para edição. Finalmente, se sua distribuição suportar, existe um botão para indicar se o firewall será ativado durante o boot ou não. <p>
+Na parte de baixo da página está um botão para tornar a configuração atual do firewall ativa, carregando-a através do comando <tt>ipi(6)tables-restore</tt>. A seguir está um botão para fazer o inverso - pegar a configuração que está corrente no kernel e torná-la disponível para edição. Finalmente, se sua distribuição suportar, existe um botão para indicar se o firewall será ativado durante o boot ou não. <p>
+
+
+<h3>Filtering chains</h3>
+
+For better collaboration with external iptables scripts you can exclude individual
+chains from the processing by the firewall. To do this, you must select direct
+processing of rules in the settings and enter a filter list, which excludes
+the appropriate chains from processing.
+Chains that are not exculded from editing are flagged with a "not managed by firewall" message.
+<p>
+
+<h3>IP Sets</h3>
+
+Newer versions of ip(6)table support the ipset extension.
+IP sets are lists of IP addresses in the main memory, which can be searched very efficiently
+and used as a condition in rules. On the main page, existing IP sets that can be used by 
+rules are displayed. Currently, however, it is not possible to manage these in the firewall.
+<p>
 
 <hr>
 

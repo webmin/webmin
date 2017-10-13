@@ -1,9 +1,12 @@
 #!/usr/local/bin/perl
+
 # Remove some servers from the managed list
 
 require './firewall-lib.pl';
-$access{'cluster'} || &error($text{'ecluster'});
 &ReadParse();
+if (&get_ipvx_version() == 6) { require './firewall6-lib.pl';
+	} else { require './firewall4-lib.pl'; }
+$access{'cluster'} || &error($text{'ecluster'});
 &foreign_require("servers", "servers-lib.pl");
 @servers = &list_cluster_servers();
 
@@ -19,5 +22,5 @@ else {
 	&webmin_log("delete", "group", scalar(@d));
 	}
 
-&redirect("cluster.cgi");
+&redirect("cluster.cgi?version=${ipvx_arg}");
 

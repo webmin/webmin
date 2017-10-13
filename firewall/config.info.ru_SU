@@ -8,5 +8,7 @@ after_cmd=Команда для запуска после изменения правил,3,None
 before_apply_cmd=Команда для запуска до применения конфигурации,3,None
 after_apply_cmd=Команда для запуска после применения конфигурации,3,None
 line1=Конфигурация системы,11
-save_file=IPtables сохраняет файл для редактирования,3,По-умолчанию для Webmin или операционной системы
 direct=Изменять непосредственно правила брандмауэра&#44; вместо сохранения в файл?,1,1-Да,0-Нет
+save_file=File to save/edit <tt>IPv4</tt> rules,3,Use operating system or Webmin default
+save_file6=File to save/edit <tt>IPv6</tt> rules,3,Use operating system or Webmin default
+

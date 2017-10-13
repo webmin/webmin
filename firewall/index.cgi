@@ -1,14 +1,34 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # index.cgi
 # Display current iptables firewall configuration from save file
+# unified for IPV4 and IPV6
 
 require './firewall-lib.pl';
 &ReadParse();
-if ($iptables_save_file) {
-	$desc = &text('index_editing', "<tt>$iptables_save_file</tt>");
+# what version IP protocaol version to use?
+if (&get_ipvx_version() == 6) { require './firewall6-lib.pl';
+	} else { require './firewall4-lib.pl'; }
+
+if ($ipvx_save) {
+	$desc = &text('index_editing', "<tt>$ipvx_save</tt>");
 	}
-&ui_print_header(undef, $text{'index_title'}, undef, "intro", 1, 1, 0,
-	&help_search_link("iptables", "man", "doc"), undef, undef, $desc);
+&ui_print_header($text{"index_title_v${ipvx}"}, $text{'index_title'}, undef, "intro", 1, 1, 0,
+	&help_search_link("ip${ipvx}tables", "man", "doc"));
+#print tabs for IPv4 and IPv6
+print <<EOF ;
+<ul class="nav nav-tabs">
+<li class="$ipv4_active">
+<a  href="$ipv4_link"><b>$text{'index_title_v'}</b></a>
+</li>
+<li>
+<li class="$ipv6_active">
+<a  href="$ipv6_link">$text{'index_title_v6'}</a>
+</li>
+</ul>
+EOF
+
+print "<br><b>$desc</b><br>&nbsp;";
+
 
 # Check for iptables and iptables-restore commands
 if ($c = &missing_firewall_commands()) {
@@ -18,7 +38,7 @@ if ($c = &missing_firewall_commands()) {
 	}
 
 # Check if the kernel supports iptables
-$out = &backquote_command("iptables -n -t filter -L OUTPUT 2>&1");
+$out = &backquote_command("ip${ipvx}tables -n -t filter -L OUTPUT 2>&1");
 if ($?) {
 	print "<p>",&text('index_ekernel', "<pre>$out</pre>"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
@@ -26,7 +46,7 @@ if ($?) {
 	}
 
 # Check if the distro supports iptables
-if (!$config{'direct'} && defined(&check_iptables) &&
+if (!$config{"direct${ipvx}"} && defined(&check_iptables) &&
     ($err = &check_iptables())) {
 	print "<p>$err</p>\n";
 	&ui_print_footer("/", $text{'index'});
@@ -34,25 +54,24 @@ if (!$config{'direct'} && defined(&check_iptables) &&
 	}
 
 # Check if firewall is being started at boot
-if (!$config{'direct'} && &foreign_check("init")) {
+if (!$config{"direct${ipvx}"} && &foreign_check("init")) {
 	$init_support++;
 	if (defined(&started_at_boot)) {
 		$atboot = &started_at_boot();
 		}
 	else {
 		&foreign_require("init", "init-lib.pl");
-		$atboot = &init::action_status("webmin-iptables") == 2;
+		$atboot = &init::action_status("webmin-ip${ipvx}tables") == 2;
 		}
 	}
 
 # Check if the save file exists. If not, check for any existing firewall
 # rules, and offer to create a save file from them
-@livetables = &get_iptables_save("iptables-save 2>/dev/null |");
+@livetables = &get_iptables_save("ip${ipvx}tables-save 2>/dev/null |");
 
 # Display warnings about active external firewalls!
 &external_firewall_message(\@livetables);
-if (!$config{'direct'} &&
-    (!-s $iptables_save_file || $in{'reset'}) && $access{'setup'}) {
+if (!$config{"direct${ipvx}"} && $in{'reset'} && $access{'setup'}) {
 	@tables = @livetables;
 	foreach $t (@tables) {
 		$rules++ if (@{$t->{'rules'}});
@@ -62,14 +81,14 @@ if (!$config{'direct'} &&
 		$hastable{$t->{'name'}}++;
 		}
 	foreach $t (@known_tables) {
-		system("iptables -t $t -n -L >/dev/null") if (!$hastable{$t});
+		system("ip${ipvx}tables -t $t -n -L >/dev/null") if (!$hastable{$t});
 		}
 	if (!$in{'reset'} && ($rules || $chains)) {
 		# Offer to save the current rules
 		print &ui_confirmation_form("convert.cgi",
 			&text('index_existing', $rules,
-			      "<tt>$iptables_save_file</tt>"),
-			undef,
+			      "<tt>$ipvx_save</tt>"),
+			( ['version'], [${ipvx_arg}] ),
 			[ [ undef, $text{'index_saveex'} ] ],
 			$init_support && !$atboot ?
 			  &ui_checkbox("atboot", 1, $text{'index_atboot'}, 0) :
@@ -77,7 +96,7 @@ if (!$config{'direct'} &&
 			);
 
 		print &ui_table_start($text{'index_headerex'}, "width=100%", 2);
-		$out = &backquote_command("iptables-save 2>/dev/null");
+		$out = &backquote_command("ip${ipvx}tables-save 2>/dev/null");
 		print &ui_table_row(undef,
 			"<pre>".&html_escape($out)."</pre>", 2);
 		print &ui_table_end();
@@ -85,8 +104,9 @@ if (!$config{'direct'} &&
 	else {
 		# Offer to set up a firewall
 		print &text($in{'reset'} ? 'index_rsetup' : 'index_setup',
-			    "<tt>$iptables_save_file</tt>"),"<p>\n";
-		print &ui_form_start("setup.cgi");
+			    "<tt>$ipvx_save</tt>"),"<p>\n";
+		print &ui_form_start("setup${ipvx}.cgi");
+                print &ui_hidden("version", ${ipvx_arg});
 		print &ui_hidden("reset", $in{'reset'});
 		print "<center><table><tr><td>\n";
 		print &ui_oneradio("auto", 0, $text{'index_auto0'}, 1),"<p>\n";
@@ -108,7 +128,7 @@ if (!$config{'direct'} &&
 else {
 	$form = 0;
 	@tables = &get_iptables_save();
-	if (!$config{'direct'}) {
+	if (!$config{"direct${ipvx}"}) {
 		# Verify that all known tables exist, and if not add them to the
 		# save file
 		foreach $t (@tables) {
@@ -117,7 +137,7 @@ else {
 		foreach $t (@known_tables) {
 			if (!$hastable{$t}) {
 				local ($missing) = &get_iptables_save(
-				    "iptables-save --table $t 2>/dev/null |");
+				    "ip${ipvx}tables-save --table $t 2>/dev/null |");
 				if ($missing) {
 					delete($missing->{'line'});
 					&save_table($missing);
@@ -129,7 +149,7 @@ else {
 		}
 
 	# Check if the current config is valid
-	if (!$config{'direct'}) {
+	if (!$config{"direct${ipvx}"}) {
 		my $err = &validate_iptables_config();
 		if ($err) {
 			print "<b>",&text('index_evalid',
@@ -160,6 +180,7 @@ else {
 	print "<table width=100%><tr>\n";
 	print "<form action=index.cgi>\n";
 	print "<td><input type=submit value='$text{'index_change'}'>\n";
+        print &ui_hidden("version", ${ipvx_arg});
 	print "<select name=table onChange='form.submit()'>\n";
 	foreach $t (@tables) {
 		if (&can_edit_table($t->{'name'})) {
@@ -175,6 +196,7 @@ else {
 		# Show form to create a chain
 		print "<form action=newchain.cgi>\n";
 		print "<td align=right>",&ui_hidden("table", $in{'table'});
+                print &ui_hidden("version", ${ipvx_arg});
 		print "<input type=submit value='$text{'index_cadd'}'>\n";
 		print "<input name=chain size=20></td></form>\n";
 		print "</tr></table>\n";
@@ -202,8 +224,37 @@ else {
                     }
 
                 print "<form action=save_policy.cgi>\n";
+                print &ui_hidden("version", ${ipvx_arg});
                 print &ui_hidden("table", $in{'table'});
                 print &ui_hidden("chain", $c);
+
+		if (@rules > $config{'perpage'}) {
+		        # Need to show arrows
+		        print "<center>\n";
+		        $s = int($in{'start'});
+		        $e = $in{'start'} + $config{'perpage'} - 1;
+		        $e = @rules-1 if ($e >= @rules);
+		        if ($s) {
+		                print &ui_link("?start=".
+		                                ($s - $config{'perpage'}),
+		                    "<img src=/images/left.gif border=0 align=middle>");
+		                }
+		        print "<font size=+1>",&text('index_position', $s+1, $e+1,
+		                                     scalar(@rules)),"</font>\n";
+		        if ($e < @rules-1) {
+		                print &ui_link("?start=".
+		                               ($s + $config{'perpage'}),
+		                   "<img src=/images/right.gif border=0 align=middle>");
+		                }
+		        print "</center>\n";
+		        }
+		else {
+		        # Can show them all
+		        $s = 0;
+		        $e = @rules - 1;
+			}
+	
+		@rules = @rules[$s..$e];
 
 		if (@rules) {
 			@links = ( &select_all_link("d", $form),
@@ -213,7 +264,7 @@ else {
 			# Generate the header
 			local (@hcols, @tds);
 			push(@hcols, "", $text{'index_action'});
-			push(@tds, "width=5", "width=20% nowrap");
+			push(@tds, "width=5", "width=30% nowrap");
 			if ($config{'view_condition'}) {
 				push(@hcols, $text{'index_desc'});
 				push(@tds, "nowrap");
@@ -246,7 +297,7 @@ else {
                                     }
 				# chain to jump to is filtered, switch of edit
                                 if ($edit && !$chain_filtered) {
-					push(@cols, &ui_link("edit_rule.cgi?table=".&urlize($in{'table'})."&idx=$r->{'index'}",$act));
+					push(@cols, &ui_link("edit_rule.cgi?version=${ipvx_arg}&table=".&urlize($in{'table'})."&idx=$r->{'index'}",$act));
 					}
 				else {
                                         # add col for not visible checkmark
@@ -268,7 +319,7 @@ else {
 					$mover .= "<img src=images/gap.gif>";
 					}
 				else {
-					$mover .= "<a href='move.cgi?table=".
+					$mover .= "<a href='move.cgi?version=${ipvx_arg}&table=".
 					      &urlize($in{'table'}).
 					      "&idx=$r->{'index'}&".
 					      "down=1'><img src=".
@@ -278,7 +329,7 @@ else {
 					$mover .= "<img src=images/gap.gif>";
 					}
 				else {
-					$mover .= "<a href='move.cgi?table=".
+					$mover .= "<a href='move.cgi?version=${ipvx_arg}&table=".
 					      &urlize($in{'table'}).
 					      "&idx=$r->{'index'}&".
 					      "up=1'><img src=images/up.gif ".
@@ -288,12 +339,12 @@ else {
 
 				# Before / after adder
 				local $adder;
-				$adder .= "<a href='edit_rule.cgi?table=".
+				$adder .= "<a href='edit_rule.cgi?version=${ipvx_arg}&table=".
 				      &urlize($in{'table'}).
 				      "&chain=".&urlize($c)."&new=1&".
 				      "after=$r->{'index'}'><img src=".
 				      "images/after.gif border=0></a>";
-				$adder .= "<a href='edit_rule.cgi?table=".
+				$adder .= "<a href='edit_rule.cgi?version=${ipvx_arg}&table=".
 				      &urlize($in{'table'}).
 				      "&chain=".&urlize($c)."&new=1&".
 				      "before=$r->{'index'}'><img src=".
@@ -391,15 +442,20 @@ else {
 	    print "<b>$text{'index_ipset_title'}</b>";
 	    # Generate the header
 	    local (@hcols, @tds);
-	    push(@hcols, $text{'index_ipset'}, $text{'index_ipset_name'}, $text{'index_ipset_type'},
-				 $text{'index_ipset_elem'}, $text{'index_ipset_size'});
+	    push(@hcols, $text{'index_ipset'}, "<b>$text{'index_ipset_name'}</b>&nbsp;&nbsp;", $text{'index_ipset_type'},
+				 $text{'index_ipset_elem'}, $text{'index_ipset_maxe'}, $text{'index_ipset_size'});
 	    push(@tds, "", "", "", "", "");
 	    print &ui_columns_start(\@hcols, 100, 0, \@tds);
 	    # Generate a row for each rule
 	    foreach $s (@ipsets) {
 		local @cols;
-		push(@cols, "", "<b>$s->{'Name'}</b>", $s->{'Type'},$s->{'Number'},$s->{'Size'});
-		print &ui_columns_row(\@cols, \@tds);
+		local @h= split(/ /, $s->{'Header'});
+		# print matching pínet version
+		if ($h[1] =~ /inet${ipvx}$/) {
+			push(@cols, "&nbsp;&nbsp;$h[0] $h[1]", "&nbsp;&nbsp;<b>$s->{'Name'}</b>",
+					$s->{'Type'}, $s->{'Number'}, $h[5], $s->{'Size'});
+			print &ui_columns_row(\@cols, \@tds);
+			}
                 }
 	    print &ui_columns_end();
 	    }
@@ -409,7 +465,7 @@ else {
 	print &ui_hr();
 	print &ui_buttons_start();
 
-	if (!$config{'direct'}) {
+	if (!$config{"direct${ipvx}"}) {
 		# Buttons to apply and reset the config
 		if (&foreign_check("servers")) {
 			@servers = &list_cluster_servers();
@@ -478,16 +534,16 @@ sub external_firewall_message
 	# detect external firewalls
 	local ($filter) = grep { $_->{'name'} eq 'filter' } @{$_[0]};
 	if ($filter->{'defaults'}->{'shorewall'}) {
-        $fwname+='shorewall ';
+        $fwname.='shorewall ';
         	}
 	if ($filter->{'defaults'}->{'INPUT_ZONES'}) {
-        	$fwname+='firewalld ';
+        	$fwname.='firewalld ';
         	}
-	if ($filter->{'defaults'} =~ /^(f2b-|fail2ban-)/) {
-        	$fwname+='fail2ban ';
+	if ($filter->{'defaults'} ~~ /^f2b-|^fail2ban-/ && ! $config{'filter_chain'} ) {
+        	$fwname.='fail2ban ';
         	}
 	# warning about not using direct
-	if($fwname && !$config{'direct'}) {
+	if($fwname && !$config{"direct${ipvx}"}) {
                 print "<b><center>",
                 &text('index_filter_nodirect', $fwconfig),
                 "</b></center><p>\n";

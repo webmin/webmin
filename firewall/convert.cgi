@@ -4,16 +4,18 @@
 
 require './firewall-lib.pl';
 &ReadParse();
+if (&get_ipvx_version() == 6) { require './firewall6-lib.pl';
+	} else { require './firewall4-lib.pl'; }
 $access{'setup'} || &error($text{'setup_ecannot'});
 &error_setup($text{'convert_err'});
-&lock_file($iptables_save_file);
+&lock_file($ipvx_save);
 if (defined(&unapply_iptables)) {
 	# Call distro's unapply command
 	$err = &unapply_iptables();
 	}
 else {
 	# Manually run iptables-save
-	$out = &backquote_logged("iptables-save >$iptables_save_file 2>&1");
+	$out = &backquote_logged("ip${ipvy}tables-save >$ipvx_save 2>&1");
 	$err = "<pre>$out</pre>" if ($?);
 	}
 &error($err) if ($err);
@@ -21,7 +23,7 @@ else {
 if ($in{'atboot'}) {
 	&create_firewall_init();
 	}
-&unlock_file($iptables_save_file);
+&unlock_file($ipvx_save);
 
 &webmin_log("convert");
 &redirect("");

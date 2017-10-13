@@ -6,7 +6,7 @@ This module allows you to configure the IPtables firewall features found in
 the 2.4 series of Linux kernels. Unlike some other firewall configuration
 programs, instead of creating a shell script that sets up the firewall, it
 reads and edits a save file in the format read and written by
-<tt>iptables-restore</tt> and <tt>iptables-save</tt> respectively. <p>
+<tt>ipi(6)tables-restore</tt> and <tt>ipi(6)tables-save</tt> respectively. <p>
 
 If you already have a firewall on your system that has been setup manually
 or from a script file, the module will offer to convert it to an IPtables
@@ -63,10 +63,27 @@ is executed. <p>
 
 At the bottom of the page is a button for making the current firewall
 configuration active, by loading it into the kernel with the
-<tt>iptables-restore</tt> command. Below it is a button for doing the reverse -
+<tt>ipi(6)tables-restore</tt> command. Below it is a button for doing the reverse -
 taking the configuration that is currently in the kernel and making it
 available for editing. Finally, if your distribution supports it, there is
 a button to change whether the firewall is activated at boot time or not. <p>
+
+<h3>Filtering chains</h3>
+
+For better collaboration with external iptables scripts you can exclude individual
+chains from the processing by the firewall. To do this, you must select direct
+processing of rules in the settings and enter a filter list, which excludes
+the appropriate chains from processing.
+Chains that are not exculded from editing are flagged with a "not managed by firewall" message.
+<p>
+
+<h3>IP Sets</h3>
+
+Newer versions of ip(6)table support the ipset extension.
+IP sets are lists of IP addresses in the main memory, which can be searched very efficiently
+and used as a condition in rules. On the main page, existing IP sets that can be used by 
+rules are displayed. Currently, however, it is not possible to manage these in the firewall.
+<p>
 
 <hr>
 
