@@ -366,6 +366,9 @@ else {
 					&error(&text('edit_espf'.$m, 
 						     $in{'spf'.$m}));
 				$spf->{$m} = $in{'spf'.$m};
+				if ($m eq 'redirect') {
+					delete($spf->{'all'});
+					}
 				}
 			}
 		$vals = "\"".&join_spf($spf)."\"";
