@@ -2939,7 +2939,7 @@ sub try_cmd
 {
 my $args = $_[0];
 my $rndc_args = $_[1] || $_[0];
-my $out;
+my $out = "";
 if (&has_ndc() == 2) {
 	# Try with rndc
 	$out = &backquote_logged(
