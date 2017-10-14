@@ -1212,7 +1212,8 @@ if (&foreign_available($module_name) && !$noupdates &&
 			&save_module_config();
 			}
 		}
-	if ($config{'last_version_number'} > &get_webmin_version()) {
+	if ($config{'last_version_number'} &&
+	    $config{'last_version_number'} > &get_webmin_version()) {
 		# New version is out there .. offer to upgrade
 		my $mode = &get_install_type();
 		my $checksig = 0;
