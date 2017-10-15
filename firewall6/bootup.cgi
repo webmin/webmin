@@ -1,0 +1,1 @@
+../firewall/bootup.cgi
