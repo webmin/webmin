@@ -119,7 +119,7 @@ if ($passmode != 3 && $passmode != 4) {
 	$tempbox = &ui_checkbox("temp", 1, $text{'edit_temppass'},
 				$user{'temppass'});
 	}
-my $expmsg;
+my $expmsg = "";
 if ($user{'lastchange'} && $miniserv{'pass_maxdays'}) {
 	my $daysold = int((time() - $user{'lastchange'})/(24*60*60));
 	if ($miniserv{'pass_lockdays'} &&
@@ -284,7 +284,7 @@ if ($access{'times'}) {
 					 $days{$i});
 		}
 	print &ui_table_row($text{'edit_days'},
-		&ui_radio("days_def", $user{'days'} eq '' ? 1 : 0,
+		&ui_radio("days_def", !defined($user{'days'}) || $user{'days'} eq '' ? 1 : 0,
 			  [ [ 1, $text{'edit_alldays'} ],
 			    [ 0, $text{'edit_seldays'} ] ])."<br>".
 		$daysels);
@@ -293,7 +293,7 @@ if ($access{'times'}) {
 	my ($hf, $mf) = split(/\./, $user{'hoursfrom'} || '');
 	my ($ht, $mt) = split(/\./, $user{'hoursto'} || '');
 	print &ui_table_row($text{'edit_hours'},
-		&ui_radio("hours_def", $hf eq '' ? 1 : 0,
+		&ui_radio("hours_def", !defined($hf) || $hf eq '' ? 1 : 0,
 			[ [ 1, $text{'edit_allhours'} ],
 		  	  [ 0, &text('edit_selhours',
 				&ui_textbox("hours_hfrom", $hf, 2),
@@ -344,7 +344,7 @@ my $grids = "";
 foreach my $c (sort { $b cmp $a } @cats) {
 	my @cmlist = grep { ($_->{'category'} || '') eq $c } @mlist;
 	$grids .= "<b>".($catnames{$c} ||
-			 $text{'category_'.$c})."</b><br>\n";
+			 $text{'category_'.$c} || '')."</b><br>\n";
 	my @grid = ( );
 	my $sw = 0;
 	foreach my $m (@cmlist) {
