@@ -2940,7 +2940,12 @@ if (&should_switch_to_mail_user()) {
 	}
 else {
 	# Operating as root, so no special behaviour needed
-	return open($fh, "<", $file);
+	if ($file =~ /^(<|>)/) {
+		return open($fh, $file);
+		}
+	else {
+		return open($fh, "<", $file);
+		}
 	}
 }
 
