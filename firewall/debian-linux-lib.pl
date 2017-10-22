@@ -124,11 +124,15 @@ sub get_primary_network_interface
 &foreign_require("net", "net-lib.pl");
 local @boot = sort { $a->{'fullname'} cmp $b->{'fullname'} }
 		   &net::boot_interfaces();
+local $pri;
+if ($config{'iface'}) {
+	($pri) = grep { $_->{'fullname'} eq $config{'iface'} } @boot;
+	}
 local ($eth) = grep { $_->{'fullname'} =~ /^eth\d+$/ } @boot;
 local ($ppp) = grep { $_->{'fullname'} =~ /^ppp\d+$/ } @boot;
 local ($venetn) = grep { $_->{'fullname'} =~ /^venet\d+:\d+$/ } @boot;
 local ($venet) = grep { $_->{'fullname'} =~ /^venet\d+$/ } @boot;
-return $eth || $ppp || $venetn || $venet || $boot[0];
+return $pri || $eth || $ppp || $venetn || $venet || $boot[0];
 }
 
 1;
