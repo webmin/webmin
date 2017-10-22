@@ -275,8 +275,8 @@ foreach $iface (@ifaces) {
 		foreach my $o (@{$iface->[3]}) {
 			if ($o->[0] eq 'gateway' ||
 			    $o->[0] eq 'pre-up' && $o->[1] =~ /brctl/ ||
-			    $o->[0] =~ /^(pre-)?up$/ &&
-			      $o->[1] =~ /ip\s+route/) {
+			    $o->[0] =~ /^(pre-)?up$/ && $o->[1] =~ /ip\s+route/ ||
+			    $o->[0] eq 'post-up' && $o->[1] =~ /iptables-restore/) {
 				push(@options, $o);
 				}
 			}
