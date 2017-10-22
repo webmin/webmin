@@ -539,7 +539,7 @@ sub external_firewall_message
 	if ($filter->{'defaults'}->{'INPUT_ZONES'}) {
         	$fwname.='firewalld ';
         	}
-	if ($filter->{'defaults'} ~~ /^f2b-|^fail2ban-/ && ! $config{'filter_chain'} ) {
+	if ($filter->{'defaults'} =~ /^f2b-|^fail2ban-/ && !$config{'filter_chain'} ) {
         	$fwname.='fail2ban ';
         	}
 	# warning about not using direct
