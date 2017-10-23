@@ -539,6 +539,16 @@ if (scalar(@$updates)) {
 		"update.cgi?source=0&show=0&missing=0"),"<p>\n";
 	}
 
+# Force refresh of cached updates, in case webmin was included
+if (&foreign_check("system-status")) {
+	&foreign_require("system-status");
+	&system_status::refresh_possible_packages([ "webmin" ]);
+	}
+if (&foreign_check("virtual-server") && @got) {
+	&foreign_require("virtual-server");
+	&virtual_server::refresh_possible_packages([ "webmin" ]);
+	}
+
 &ui_print_footer("", $text{'index_return'});
 
 sub inst_error
