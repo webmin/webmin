@@ -10,7 +10,7 @@ require './cron-lib.pl';
 
 if ($in{'delete'}) {
 	# Delete selected jobs
-	foreach $d (sort { $b <=> $c } @d) {
+	foreach $d (sort { $b <=> $a } @d) {
 		$job = $jobs[$d];
 		&lock_file($job->{'file'});
 		$access{'delete'} && &can_edit_user(\%access, $job->{'user'}) ||
