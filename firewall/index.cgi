@@ -5,30 +5,33 @@
 
 require './firewall-lib.pl';
 &ReadParse();
-# what version IP protocaol version to use?
-if (&get_ipvx_version() == 6) { require './firewall6-lib.pl';
-	} else { require './firewall4-lib.pl'; }
+
+# Load the correct library
+$ipvx_version = &get_ipvx_version();
+if ($ipvx_version == 6) {
+	require './firewall6-lib.pl';
+	}
+else {
+	require './firewall4-lib.pl';
+	}
 
 if ($ipvx_save) {
 	$desc = &text('index_editing', "<tt>$ipvx_save</tt>");
 	}
-&ui_print_header($text{"index_title_v${ipvx}"}, $text{'index_title'}, undef, "intro", 1, 1, 0,
-	&help_search_link("ip${ipvx}tables", "man", "doc"));
-#print tabs for IPv4 and IPv6
-print <<EOF ;
-<ul class="nav nav-tabs">
-<li class="$ipv4_active">
-<a  href="$ipv4_link"><b>$text{'index_title_v'}</b></a>
-</li>
-<li>
-<li class="$ipv6_active">
-<a  href="$ipv6_link">$text{'index_title_v6'}</a>
-</li>
-</ul>
-EOF
+&ui_print_header($text{"index_title_v${ipvx}"}, $text{'index_title'}, undef,
+		 "intro", 1, 1, 0,
+		 &help_search_link("ip${ipvx}tables", "man", "doc"));
+
+# Firewall protocol selector
+my @vlinks;
+push(@vlinks, $ipvx_version == 4 ? "<b>$text{'index_ipvx4'}</b>" :
+		&ui_link($ipv4_link, $text{'index_ipvx4'}));
+push(@vlinks, $ipvx_version == 6 ? "<b>$text{'index_ipvx6'}</b>" :
+		&ui_link($ipv6_link, $text{'index_ipvx6'}));
+print "<b>$text{'index_ipvxmode'}</b>\n",
+      &ui_links_row(\@vlinks),"\n";
 
 print "<br><b>$desc</b><br>&nbsp;";
-
 
 # Check for iptables and iptables-restore commands
 if ($c = &missing_firewall_commands()) {
