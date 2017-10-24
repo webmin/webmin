@@ -58,6 +58,9 @@ else {
 if (!$in{'name_def'}) {
 	@names = split(/\s+/, $in{'name'});
 	@names || &error(&text('cvirt_ename', $in{'name'}));
+	foreach my $n (@names) {
+		$n =~ /^[a-z0-9\.\_\-]+$/i || &error(&text('vserv_ename', $n));
+		}
 	}
 
 # Check if the virtual server already exists

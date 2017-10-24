@@ -98,7 +98,7 @@ else {
 
 	# Check server name
 	if (!$in{'name_def'}) {
-		$in{'name'} =~ /^\S+$/ ||
+		$in{'name'} =~ /^[a-z0-9\.\_\-]+$/i ||
 			&error(&text('vserv_ename', $in{'name'}));
 		$name = $in{'name'};
 		}
