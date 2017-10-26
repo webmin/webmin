@@ -103,7 +103,7 @@
 </div>
 
 <div id="readyForUploadDialog" class="modal">
-    <form id='upload-form' method='post' action='upload.cgi?path=$path&id=$upid' enctype='multipart/form-data' onsubmit='window.open("/uptracker.cgi?id=$upid&uid=$uid", "uptracker", "toolbar=no, menubar=no, scrollbars=no, location=no, resizable=no, width=screen.width, height=screen.height")'>
+    <form id='upload-form' method='post' action='upload.cgi?path=$path&id=$upid' enctype='multipart/form-data' onsubmit='window.open("$gconfig{'webprefix'}/uptracker.cgi?id=$upid&uid=$uid", "uptracker", "toolbar=no, menubar=no, scrollbars=no, location=no, resizable=no, width=screen.width, height=screen.height")'>
         <input type='file' id='upfiles' name='upfiles' multiple onchange='countUploads(this)'>
         <input type='hidden' name='path' value='$path'>
     </form>
