@@ -533,21 +533,22 @@ return @rv;
 # of all those greater than some line by the given count
 sub renumber
 {
-if ($_[0]->{'file'} eq $_[2]) {
-	if ($_[0]->{'line'} > $_[1]) { $_[0]->{'line'} += $_[3]; }
-	if ($_[0]->{'eline'} > $_[1]) { $_[0]->{'eline'} += $_[3]; }
+my ($parent, $lnum, $file, $c) = @_;
+if ($parent->{'file'} eq $file) {
+	if ($parent->{'line'} > $lnum) { $parent->{'line'} += $c; }
+	if ($parent->{'eline'} > $lnum) { $parent->{'eline'} += $c; }
 	}
-if ($_[0]->{'type'} == 1) {
+if ($parent->{'type'} && $parent->{'type'} == 1) {
 	# Do members
-	foreach my $d (@{$_[0]->{'members'}}) {
-		&renumber($d, $_[1], $_[2], $_[3]);
+	foreach my $d (@{$parent->{'members'}}) {
+		&renumber($d, $lnum, $file, $c);
 		}
 	}
-elsif ($_[0]->{'type'} == 2) {
+elsif ($parent->{'type'} && $parent->{'type'} == 2) {
 	# Do sub-members
-	foreach my $sm (keys %{$_[0]->{'members'}}) {
-		foreach my $d (@{$_[0]->{'members'}->{$sm}}) {
-			&renumber($d, $_[1], $_[2], $_[3]);
+	foreach my $sm (keys %{$parent->{'members'}}) {
+		foreach my $d (@{$parent->{'members'}->{$sm}}) {
+			&renumber($d, $lnum, $file, $c);
 			}
 		}
 	}
