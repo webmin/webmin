@@ -46,7 +46,7 @@ elsif ($access{'mode'} == 5) {
 setpwent();
 my %doneu;
 while(local @u = getpwent()) {
-	next if ($doneu{$u->[0]}++);
+	next if ($doneu{$u[0]}++);
 	if ($access{'mode'} == 0 ||
 	    $access{'mode'} == 1 && $ucan{$u[0]} ||
 	    $access{'mode'} == 2 && !$ucannot{$u[0]} ||
