@@ -44,7 +44,9 @@ elsif ($access{'mode'} == 5) {
 
 # Show all unix users who can be edited
 setpwent();
+my %doneu;
 while(local @u = getpwent()) {
+	next if ($doneu{$u->[0]}++);
 	if ($access{'mode'} == 0 ||
 	    $access{'mode'} == 1 && $ucan{$u[0]} ||
 	    $access{'mode'} == 2 && !$ucannot{$u[0]} ||
