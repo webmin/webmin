@@ -29,7 +29,7 @@ eval {
 		}
 	&write_http_connection($con, "\r\n");
 	local $line = &read_http_connection($con);
-	$up = $line =~ /^HTTP\/1\..\s+(200|301|302|303)\s+/ ? 1 : 0;
+	$up = $line =~ /^HTTP\/1\..\s+(200|301|302|303|307|308)\s+/ ? 1 : 0;
 	if ($re && $up) {
 		# Read the headers
 		local %header;
