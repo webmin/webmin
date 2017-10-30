@@ -7,7 +7,8 @@ use lib './lib';
 
 get_paths();
 
-&ui_print_header(undef, $text{'module_config'}, "");
+&ui_print_header(&text('config_dir', $module_info{'desc'}),
+		 $text{'config_title'}, "", $help, 0, 1);
 $head = "<link rel='stylesheet' type='text/css' href='unauthenticated/css/style.css' />";
 print $head;
 
@@ -25,7 +26,8 @@ if(!-e "$confdir/.bookmarks") {
 
 print &ui_form_start("save_config.cgi", "post");
 
-print &ui_table_start($text{'module_config'}, undef, 2);
+print &ui_table_start(&text('config_header', $module_info{'desc'}),
+		      "width=100%", 2);
 print &ui_table_row($text{'config_columns_to_display'},
     &ui_checkbox('columns', 'type', $text{'type'}, $config{'columns'} =~ /type/).
     &ui_checkbox('columns', 'size', $text{'size'}, $config{'columns'} =~ /size/).
