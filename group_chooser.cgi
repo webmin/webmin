@@ -191,7 +191,9 @@ if ($access{'gedit_mode'} == 2 || $access{'gedit_mode'} == 3) {
 	map { $gcan{$_}++ } split(/\s+/, $access{'gedit'});
 	}
 setgrent();
+local %doneg;
 while(@ginfo = getgrent()) {
+	next if ($doneg{$ginfo[0]}++);
 	@mems = &unique( split(/ /, $ginfo[3]), @{$members{$ginfo[2]}} );
 	if (@mems > 3) { @mems = (@mems[0..1], "..."); }
 	$ginfo[3] = join(' ', @mems);

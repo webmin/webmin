@@ -182,7 +182,9 @@ if ($access{'uedit_mode'} == 2 || $access{'uedit_mode'} == 3) {
 	map { $ucan{$_}++ } split(/\s+/, $access{'uedit'});
 	}
 setpwent();
+local %doneu;
 while(@uinfo = getpwent()) {
+	next if ($doneu{$uinfo[0]}++);
 	if ($access{'uedit_mode'} == 5 && $access{'uedit'} !~ /^\d+$/) {
 		# Get group for matching by group name
 		@ginfo = getgrgid($uinfo[3]);
