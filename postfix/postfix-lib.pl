@@ -121,8 +121,8 @@ foreach my $l (@$lref) {
 if (!defined($out)) {
 	# Fall back to asking Postfix
 	# -h tells postconf not to output the name of the parameter
-	$out = &backquote_command(
-	  "$config{'postfix_config_command'} -c $config_dir -h $name 2>/dev/null", 1);
+	$out = &backquote_command("$config{'postfix_config_command'} -c $config_dir -h ".
+				  quotemeta($name)." 2>/dev/null", 1);
 	if ($?) {
 		&error(&text('query_get_efailed', $name, $out));
 		}
@@ -1462,7 +1462,17 @@ if (defined($save_file)) {
 # Returns the value of a parameter, with $ substitions done
 sub get_real_value
 {
-my $v = &get_current_value($_[0]);
+my ($name) = @_;
+my $v = &get_current_value($name);
+if ($postfix_version >= 2.1 && $v =~ /\$/) {
+	# Try to use the built-in command to expand the param
+	my $out = &backquote_command("$config{'postfix_config_command'} -c $config_dir -x -h ".
+				     quotemeta($name)." 2>/dev/null", 1);
+	if (!$? && $out !~ /warning:.*unknown\s+parameter/) {
+		chop($out);
+		return $out;
+		}
+	}
 $v =~ s/\$(\{([^\}]+)\}|([A-Za-z0-9\.\-\_]+))/get_real_value($2 || $3)/ge;
 return $v;
 }
