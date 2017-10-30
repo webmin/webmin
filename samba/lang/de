@@ -2,6 +2,7 @@ __norefs=1
 acl_afs=Zugriff auf Dateifreigaben
 acl_apply=Darf Ver&#228;nderungen durchf&#252;hren?
 acl_aps=Zugriff auf Druckerfreigaben
+acl_bind=Kann auf winbind Optionen zugreifen?
 acl_c=Erstellen
 acl_conf_misc=Darf erweiterte Einstellungen ver&#228;ndern?
 acl_conf_net=Darf UNIX Netzwerkoptionen ver&#228;ndern?

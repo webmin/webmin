@@ -11,3 +11,4 @@ auto_file=NFS&#45;Automounts&#45;Datei,3
 autofs_file=Kernel&#45;Automounts&#45;Datei,3
 smbclient_path=Vollst&#228;ndiger Pfad zu smbclient,3
 nmblookup_path=Vollst&#228;ndiger Pfad zu nmblookup,3
+nfs_check=&#220;berpr&#252;fe NFS-Server, bevor diese eingeh&#228;ngt werden,1,1-Ja,0-Nein

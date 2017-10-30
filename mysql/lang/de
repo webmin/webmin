@@ -61,6 +61,7 @@ backup_edownloadsave=Download-Modus kann nicht f&#252;r geplante Sicherungen ver
 backup_edump=Das MySQL-Datensicherungsprogramm konnte auf Ihrem System nicht gefunden werden. M&#246;glicherweise ist Ihre <a href='$2'>Modulkonfiguration</a> fehlerhaft.
 backup_efile=Fehlender oder ung&#252;ltiger Sicherungsdateiname
 backup_efile2=Fehlendes oder ung&#252;ltiges Backup-Verzeichnis
+backup_eisdir=Sicherungsziel $1 ist ein Verzeichnis
 backup_email=Verschicke Backup Status E-Mail an
 backup_epath=Ung&#252;ltiger Sicherungspfad
 backup_err=Datenbanksicherung fehlgeschlagen
@@ -442,6 +443,7 @@ index_toomany=Es gibt zu viele Datenbanken zum anzeigen. Findet die passenden Da
 index_type=Indextyp
 index_unique=Unique
 index_version=MySQL-Version $1
+index_version2=MySQL-Version $1 auf $2
 kill_ecannot=Sie sind nicht berechtigt Datenbank-Verbindungen zu verwalten
 kill_enone=Nichts ausgew&#228;hlt
 kill_err=Konnte Datenbank-Verbindungen nicht t&#246;ten
