@@ -413,8 +413,6 @@ splice(@$lref, $_[1]->{'line'}, 1);
 &flush_file_lines($f);
 }
 
-
-
 # make_record(name, ttl, class, type, values, comment)
 # Returns a string for some zone record
 sub make_record
