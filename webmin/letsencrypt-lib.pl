@@ -294,7 +294,7 @@ sub get_bind_zone_for_domain
 my ($d) = @_;
 &foreign_require("bind8");
 my $bd = $d;
-while ($bd) {
+while ($bd =~ /\./) {
 	my $z = &bind8::get_zone_name($bd, "any");
 	if ($z) {
 		return ($z, $bd);
