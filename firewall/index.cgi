@@ -28,6 +28,8 @@ push(@vlinks, $ipvx_version == 4 ? "<b>$text{'index_ipvx4'}</b>" :
 		&ui_link($ipv4_link, $text{'index_ipvx4'}));
 push(@vlinks, $ipvx_version == 6 ? "<b>$text{'index_ipvx6'}</b>" :
 		&ui_link($ipv6_link, $text{'index_ipvx6'}));
+print "<style>.panel-body b+.ui_link{background-color: lightgrey;} .panel-body b+a+b,",
+      ".panel-body b+b{background-color: antiquewhite; padding: .39em 1em .65em 1em; height: 2em; font-size: 1.1em}</style>";
 print "<b>$text{'index_ipvxmode'}</b>\n",
       &ui_links_row(\@vlinks),"\n";
 
