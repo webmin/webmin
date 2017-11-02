@@ -13,7 +13,7 @@ print &ui_table_row($text{'web_expires'},
 	&ui_opt_textbox("expires", $miniserv{'expires'}, 10,
 			$text{'web_expiresdef'}, $text{'web_expiressecs'}), undef, [ "valign=middle","valign=middle" ]);
 
-# Additonal expiry times based on path
+# Additional expiry times based on path
 my @expires_paths;
 foreach my $pe (split(/\t+/, $miniserv{'expires_paths'})) {
 	my ($p, $e) = split(/=/, $pe);

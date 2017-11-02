@@ -214,7 +214,7 @@ if ($curr ne $in{$name}) {
 }
 
 # config_exists(&config, name, [yes], [no])
-# Returns HTML for a table row for yes/no checkboxes, based on the existance
+# Returns HTML for a table row for yes/no checkboxes, based on the existence
 # of some config item
 sub config_exists
 {

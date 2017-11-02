@@ -41,7 +41,7 @@ Created a page showing database connections, with checkboxes and a button for ki
 Create a page listing MySQL server variables, with the ability to edit system variables.
 Column headings in the Table Data page can be clicked to sort the data by that column.
 ---- Changes since 1.300 ----
-Added options on the backup form for selecting a compatability format for exporting to other database types.
+Added options on the backup form for selecting a compatibility format for exporting to other database types.
 Added an option to compress backups with gzip or bzip2.
 When executing an SQL file (such as a backup), it will be automatically un-compressed if needed.
 Re-factored backup code into a separate function, which can be called from other modules.

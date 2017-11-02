@@ -49,7 +49,7 @@ do {
 		elsif (/Installation of <(.*)> failed/i) {
 			$failed = 1;
 			}
-		elsif (/dependancy\s+(\S+)\s+.*not up to date/i) {
+		elsif (/dependency\s+(\S+)\s+.*not up to date/i) {
 			# Needs a dependecy .. so we will need to re-run!
 			local $dep = $1;
 			$update = join(" ", &unique(

@@ -1566,7 +1566,7 @@ foreach my $m (@mobile_prefixes) {
 		}
 	}
 
-# check for the logout flag file, and if existant deny authentication
+# check for the logout flag file, and if existent deny authentication
 if ($config{'logout'} && -r $config{'logout'}.$in{'miniserv_logout_id'}) {
 	print DEBUG "handle_request: logout flag set\n";
 	$deny_authentication++;
@@ -2254,7 +2254,7 @@ if (-d _) {
 	@stfull = stat($full) if (!$foundidx);
 	}
 if (-d _) {
-	# This is definately a directory.. list it
+	# This is definitely a directory.. list it
 	print DEBUG "handle_request: listing directory\n";
 	local $resp = "HTTP/1.0 $ok_code $ok_message\r\n".
 		      "Date: $datestr\r\n".

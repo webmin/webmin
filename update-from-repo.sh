@@ -40,13 +40,13 @@ if [[ "$1" == "-h" || "$1" == "--help" ]] ; then
     exit 0
 fi
 
-# dont ask -y given
+# don't ask -y given
 if [[ "$1" == "-y" || "$1" == "-yes" ]] ; then
         ASK="NO"
         shift
 fi
 
-# update onyl lang files
+# update only lang files
 if [[ "$1" == "-l" || "$1" == "-lang" ]] ; then
         LANG="YES"
         shift

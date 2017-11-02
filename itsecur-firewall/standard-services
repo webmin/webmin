@@ -1,4 +1,4 @@
-AOL			TCP	5190	 	#AOL Instant Messanger
+AOL			TCP	5190	 	#AOL Instant Messenger
 AP-Defender		TCP	2626	 	#Defender Authentication Service
 BackDoor-Setup		TCP	5000	 	#Use by Boinet Lite, Blazer 5, Bubbel Trojans
 Backage			TCP	 411	 	#Backage Trojan
@@ -61,7 +61,7 @@ lpdw0rm			TCP	 515		#Used by Ramen Trojans and Printer Service
 Madster			TCP	5025		#Formally called Aimster
 ####Microsoft-TS		TCP	 445		#Microsoft CIFS's over TCP
 Mneah			TCP	4666		#The Mneah Trojan
-MSN-File Transfer	TCP	6891-6900	#MSN File Tranfer
+MSN-File Transfer	TCP	6891-6900	#MSN File Transfer
 MSN-Messenger		TCP	1863		#MSN Instant Messenger
 MSSQL-Mon		TCP	1434		#MSSQL Monitor
 MSSQL			TCP	1433		#MSSQL Server
@@ -79,7 +79,7 @@ NCP			TCP	 524		#Novell Netware Core Protocol
 NetShow			TCP	1755		#Microsoft NetShow-Windows Media Player
 NetSTAT			TCP	  15		#UNIX NetSTAT Protocol
 NFSD			TCP	2049	UDP	2049		#Network File System Deamon
-NNTP			TCP	 119		#Network News Tranfer Protocol
+NNTP			TCP	 119		#Network News Transfer Protocol
 NTP			TCP	 123	UDP	123		#Network Time Protocol
 OAS-NameServer		TCP	2649		#Oracle Application Server
 OAS-ORB			TCP	2651		#Oracle Application Server
@@ -87,7 +87,7 @@ OpenWindows		TCP	2000		#Open Windows
 ####Orbix-1570		TCP	1570		#IONA Orbix Deamon
 ####Orbix-1571		TCP	1571		#IONA Orbix Deamon
 PcAnywhere-Date		TCP	5631		#pcAnywhere
-PcTele-FileSync		TCP	2299		#Symantec PcTelecommute File Syncronization
+PcTele-FileSync		TCP	2299		#Symantec PcTelecommute File Synchronization
 POP2			TCP	 109		#Post Office Protocol Verion 2
 POP3			TCP	 110		#Post Office Protocol Verion 3
 667-Trojans		TCP	 667		#Misc Trojans
@@ -101,12 +101,12 @@ Remote-Strom		TCP	1025		#Used by Fraggle Rock, NetSPY and MD5 BackDoor Trojans
 Secure-ID-Prop		TCP	5510		#Token based Authentication Service
 ShadyShell		TCP	1337		#ShadyShell Trojan
 ####RSH			TCP	 514		#Remote Shell
-SMTP			TCP	  25		#Simple Mail Tranfer Protocol
+SMTP			TCP	  25		#Simple Mail Transfer Protocol
 Sockets-DES		TCP	   1		#Also used by the TCP MUX Service
-SQLNET-1		TCP	1521		#Oracle SQL Net Verison 1 Service
-SQLNET-2-1521		TCP	1521		#Part of Oracle SQLNet Verison 2 Service
-SQLNET-2-1525		TCP	1525		#Part of Oracle SQLNet Verison 2 Service
-SQLNET-2-1526		TCP	1526		#Part of Oracle SQLNet Verison 2 Service
+SQLNET-1		TCP	1521		#Oracle SQL Net Version 1 Service
+SQLNET-2-1521		TCP	1521		#Part of Oracle SQLNet Version 2 Service
+SQLNET-2-1525		TCP	1525		#Part of Oracle SQLNet Version 2 Service
+SQLNET-2-1526		TCP	1526		#Part of Oracle SQLNet Version 2 Service
 SSH			TCP	  22		#Secure Shell
 ####SSH2			TCP	  22		#Secure Shell Version 2 also blocks version 1
 Safe-T-Net		TCP	32557		#Safe-T-Net Configuration

@@ -27,7 +27,7 @@ $in{retry} =~ /^[0-9]+$/ ||
 $in{expire} =~ /^[0-9]+$/ ||
 	&error("$in{expire} is not a valid expire time");
 $in{min} =~ /^[0-9]+$/ ||
-	&error("$in{min} is not a valid minumum TTL");
+	&error("$in{min} is not a valid minimum TTL");
 
 # Save and bounce back
 $data[$soa] = "$in{serv} $in{mail} $in{serial} $in{refresh} $in{retry} $in{expire} $in{min}";

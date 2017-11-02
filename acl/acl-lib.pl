@@ -520,7 +520,7 @@ if ($clone) {
 
 =head2 modify_user(old-name, &details)
 
-Updates an existing Webmin user, identified by the old-name paramter. The
+Updates an existing Webmin user, identified by the old-name parameter. The
 details hash must be in the same format as returned by list_users or passed
 to create_user.
 

@@ -123,7 +123,7 @@
  - Fixed copy/cut/paste functionality.
  - FreeBSD support added.
    Module uses Regexp::Common and URI packages to validate URIs in HTTP/FTP download functionality.
-   Be sure to install theese to make functionality work.
+   Be sure to install these to make functionality work.
    Admin user created during Webmin installation is not UNIX user, so module won't work for him.
    If you want to provide some "system" file operations then convert "root" to Webmin user.
 

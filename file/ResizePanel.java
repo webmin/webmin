@@ -14,7 +14,7 @@ public class ResizePanel extends Panel implements LayoutManager
 	int border = 100;
 
 	// Provide two components where component one initially occupies rt fraction of
-	// parent area. When vertical=true components are layed out one above the other
+	// parent area. When vertical=true components are laid out one above the other
 	public ResizePanel(Component one, Component two, double rt, boolean vertical)
 	{
 		this.one = one;

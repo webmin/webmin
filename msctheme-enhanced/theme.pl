@@ -2,7 +2,7 @@
 
 #theme_prebody - called just before the main body of every page, so it can print any HTML it likes.
 #theme_postbody - called just after the main body of every page.
-#theme_header - called instead of the normal header function, with the same parameters. You could use this to re-write the header function in your own style with help and index links whereever you want them.
+#theme_header - called instead of the normal header function, with the same parameters. You could use this to re-write the header function in your own style with help and index links wherever you want them.
 #theme_footer - called instead of the footer function with the same parameters.
 #theme_error - called instead of the error function, with the same parameters.
 
@@ -481,7 +481,7 @@ if (@_ > 1 && !$one && $remote_user && !$notabs) {
 
         } else {
 
-###UNKNOWN CATAGORY [ACTIVE]
+###UNKNOWN CATEGORY [ACTIVE]
 
                 print qq~<td nowrap><center><a href="/?cat=$c" onMouseOver="if (menuLive) showMenu('$c\_menu');"><img src="/images/cats/unknown_over.jpg" alt="$t" width="43" height="44" border="0"></a><img src="/images/list.gif" width="10" height="44" border="0" onClick="setLive(); showMenu('$c\_menu');" onMouseOver="if (menuLive) showMenu('$c\_menu');"><a href="/?cat=$c" onMouseOver="if (menuLive) showMenu('$c\_menu');"><br>~;
 
@@ -523,7 +523,7 @@ if (@_ > 1 && !$one && $remote_user && !$notabs) {
               }
         } else {
 
-###UNKNOWN CATAGORY [NON-ACTIVE]
+###UNKNOWN CATEGORY [NON-ACTIVE]
 
                 print qq~<td nowrap><center><a href="/?cat=$c" onMouseOver="if (menuLive) showMenu('$c\_menu'); mouseover('$c\_image','/images/cats/unknown_over.jpg');" onMouseOut="mouseout('$c\_image','/images/cats/unknown.jpg');"><img src="/images/cats/unknown.jpg" alt="$t" width="43" height="44" border="0" name="$c\_image"></a><img src="/images/list.gif" width="10" height="44" border="0" onClick="setLive(); showMenu('$c\_menu');" onMouseOver="if (menuLive) showMenu('$c\_menu'); mouseover('$c\_image','/images/cats/unknown_over.jpg');" onMouseOut="mouseout('$c\_image','/images/cats/unknown.jpg');"><a href="/?cat=$c" onMouseOver="if (menuLive) showMenu('$c\_menu'); mouseover('$c\_image','/images/cats/unknown_over.jpg');" onMouseOut="mouseout('$c\_image','/images/cats/unknown.jpg');"><br>~;
 

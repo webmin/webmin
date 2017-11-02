@@ -45,7 +45,7 @@ if (my $out = &check_bind_8()) {
 # Try to get the version number, and save for later calls
 my $bind_version = &get_bind_version();
 if ($bind_version && $bind_version =~ /^(\d+\.\d+)\./) {
-	# Convery to properly formatted number
+	# Convert to properly formatted number
 	$bind_version = $1;
 	}
 my $VERSION;

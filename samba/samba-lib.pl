@@ -338,7 +338,7 @@ return undef;
 
 # setval(name, value, [default])
 # Sets some value in %share. Synonyms with the same meaning are removed.
-# If the value is the same as the share or given default, dont store it
+# If the value is the same as the share or given default, don't store it
 sub setval
 {
 local($_);
@@ -571,7 +571,7 @@ local $n;
 return &ui_group_textbox($n, &getval($_[0]));
 }
 
-@sock_opts = ("SO_KEEPALIVE", "SO_REUSEADDR", "SO_BROADCAST", "TCP_NODELAY", 
+@sock_opts = ("SO_KEEPALIVE", "SO_REUSEADDR", "SO_BROADCAST", "TCP_NODELAY",
 	      "IPTOS_LOWDELAY", "IPTOS_THROUGHPUT", "SO_SNDBUF*", "SO_RCVBUF*",
 	      "SO_SNDLOWAT*", "SO_RCVLOWAT*");
 
@@ -833,7 +833,7 @@ if ($acc->{'per_' . $stype . '_acls'}) {
 		return 0 if index($acl, $_) == -1;
 		}
 	}
-return 1;	
+return 1;
 }
 
 # save_samba_acl($permissions_string, \%access, $share_name)

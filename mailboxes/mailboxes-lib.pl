@@ -715,7 +715,7 @@ return $_[0] !~ /^\//;
 }
 
 # list_mail_users([max], [filterfunc])
-# Returns getpw* style structures for all users who can recieve mail. Those with
+# Returns getpw* style structures for all users who can receive mail. Those with
 # duplicate info are skipped.
 sub list_mail_users
 {

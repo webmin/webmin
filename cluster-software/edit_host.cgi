@@ -81,7 +81,7 @@ foreach $c (sort { $a cmp $b } &unique(map { $_->{'class'} } @packages)) {
 %heiropen = map { $_, 1 } &get_heiropen($in{'id'});
 $heiropen{""}++;
 
-# traverse the heirarchy
+# traverse the hierarchy
 $spacer = "&nbsp;"x3;
 print &ui_hr();
 print &ui_subheading($text{'host_installed'});

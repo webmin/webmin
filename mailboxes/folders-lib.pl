@@ -2330,7 +2330,7 @@ if ($url =~ /^#/) {
 	return $before.$url.$after;
 	}
 elsif ($url =~ /^cid:/i) {
-	# Definately safe (CIDs are harmless)
+	# Definitely safe (CIDs are harmless)
 	return $before.$url.$after;
 	}
 elsif ($url =~ /^(http:|https:)/) {

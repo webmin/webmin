@@ -75,7 +75,7 @@ Spaces are now allowed in Host Information records.
 ---- Changes since 1.420 ----
 The default TTL for multiple zones can now be changed on the Update Records in Zones page.
 When adding a cluster slave server, multiple views can be entered to have slave zones created in all of them.
-Record names or values entered like ns.foo.com in the domain foo.com automatically have a . added to make them absolute as the user presumably expected, rather than being coverted to ns.foo.com.foo.com.
+Record names or values entered like ns.foo.com in the domain foo.com automatically have a . added to make them absolute as the user presumably expected, rather than being converted to ns.foo.com.foo.com.
 Update serial number (by default) when editing records manually.
 Try downloading root zone files from the IP for rs.internic.net if the hostname cannot be resolved, to avoid catch-22 problem.
 Access control lists are now automatically re-ordered to handle dependencies.

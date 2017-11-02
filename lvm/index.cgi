@@ -1,6 +1,6 @@
 #!/usr/local/bin/perl
 # index.cgi
-# Display a table of all volumne groups and their physical and logical volumes.
+# Display a table of all volume groups and their physical and logical volumes.
 
 require './lvm-lib.pl';
 &ReadParse();

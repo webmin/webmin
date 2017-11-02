@@ -102,7 +102,7 @@ print &ui_table_row($text{'backup_charset'},
 			[ &list_character_sets($in{'db'}) ]) ] ]));
 
 if ($mysql_version >= 5.0) {
-	# Show compatability format option
+	# Show compatibility format option
 	$cf = $c{'backup_compatible_'.$in{'db'}};
 	print &ui_table_row($text{'backup_compatible'},
 		&ui_radio("compatible_def", $cf ? 0 : 1,

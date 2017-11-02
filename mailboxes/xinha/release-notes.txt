@@ -183,7 +183,7 @@ Xinha 0.94
  * fixed Ticket #1048 Full Screen plugin doesn't load if many editors on page
  * fixed Ticket #1053 ListType plugin doesn't work in panel config with multiple editors
  * fixed Ticket #1026 Skins referenced with <link>-tags don't work anymore
- * fixed Ticket #1059 [Equation] loosing formula onsubmit
+ * fixed Ticket #1059 [Equation] losing formula onsubmit
  * fixed Ticket #1060 [Equation] various updates
  * [Equation] preserve formula on reload in Mozilla
  * [Equation] updated ASCIIMathML.js
@@ -194,7 +194,7 @@ Xinha 0.94
  * added Thai translation for core
  * added complete Portuguese Brazilian translation
  * updated lc_parse script
- * fixed Ticket #1071 [ExtendedFileManager] external image URL image inserted with width/height 0, amking it invisible
+ * fixed Ticket #1071 [ExtendedFileManager] external image URL image inserted with width/height 0, making it invisible
  * fixed Ticket #1074 [SuperClean] throws warnings in PHP 5
  * fixed Ticket #1079 [DynamicCSS] lists Xinha internal CSS
  * fixed Ticket #1080 Some plugins leave behind stylesheet links in fullpage mode
@@ -212,7 +212,7 @@ Xinha 0.93
  - fixwd Ticket #963 DOMwalk IE: head tag attributes without quotes and closing slash
  - Ticket #962 DOMwalk Mozilla: improved source indentation
  - fixed Ticket #957 If item in in xinha_editors is not a textarea: skip gracefully
- - fixed Ticket #900: catch an fatal error that occured sometimes when switching between modes in fullpage mode in Mozilla
+ - fixed Ticket #900: catch an fatal error that occurred sometimes when switching between modes in fullpage mode in Mozilla
  - fixed Ticket #969 DOMwalk Gecko: line breaks rendered as <br>s inside <pre> blocks
  - fixed Ticket #976 Loading message misplaced in IE7
  - fixed Ticket #977 TableOperations toolbar off-place in ext_example.html

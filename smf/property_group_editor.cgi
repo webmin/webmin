@@ -97,7 +97,7 @@ foreach $pg (@pgroup_listing) {
 	print "<input type=checkbox name=\"applyto\" value=\"$sinst/$name\">";
 	print "</td><td>\n";
 	print "$sinst</td><td>\n";
-	# dont allow edit of nonpersistent items!
+	# don't allow edit of nonpersistent items!
 	if ($type =~ /NONPERSISTENT/) {
 		print "$name";
 	} else {

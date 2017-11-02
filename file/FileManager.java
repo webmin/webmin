@@ -1834,7 +1834,7 @@ class FindReplaceWindow extends FixedFrame implements CbButtonCallback
 	if (findtxt.length() == 0)
 		return;
 	if (b == find_b) {
-		// Find the next occurrance of the text, starting from
+		// Find the next occurrence of the text, starting from
 		// the cursor + 1, and select it
 		int pos = edittxt.indexOf(findtxt,
 					   editor.edit.getSelectionStart()+1);
@@ -1868,7 +1868,7 @@ class FindReplaceWindow extends FixedFrame implements CbButtonCallback
 		click(find_b);
 		}
 	else if (b == all_b) {
-		// Replace all occurrances of the text in the editor
+		// Replace all occurrences of the text in the editor
 		int pos = 0;
 		int len = findtxt.length();
 		int st = editor.edit.getSelectionStart(),

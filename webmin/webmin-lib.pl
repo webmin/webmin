@@ -132,10 +132,10 @@ Installs a webmin module or theme, and returns either an error message
 or references to three arrays for descriptions, directories and sizes.
 On success or failure, the file is deleted if the unlink parameter is set.
 Unless the nodeps parameter is set to 1, any missing dependencies will cause
-installation to fail. 
+installation to fail.
 
 Any new modules will be granted to the users and groups named in the fourth
-paramter, which must be an array reference.
+parameter, which must be an array reference.
 
 =cut
 sub install_webmin_module
@@ -280,7 +280,7 @@ else {
 		return $text{'install_enone'};
 		}
 
-	# Get the module.info or theme.info files to check dependancies
+	# Get the module.info or theme.info files to check dependencies
 	my $ver = &get_webmin_version();
 	my $tmpdir = &transname();
 	mkdir($tmpdir, 0700);
@@ -455,7 +455,7 @@ sub grant_user_module
 my %acl;
 &read_acl(undef, \%acl);
 my $fh = "GRANTS";
-&open_tempfile($fh, ">".&acl_filename()); 
+&open_tempfile($fh, ">".&acl_filename());
 my $u;
 foreach $u (keys %acl) {
 	my @mods = @{$acl{$u}};
@@ -843,7 +843,7 @@ return @sockets;
 
 =head2 fetch_updates(url, [login, pass], [sig-mode])
 
-Returns a list of updates from some URL, or calls &error. Each element is an 
+Returns a list of updates from some URL, or calls &error. Each element is an
 array reference containing :
 
 =item Module directory name.
@@ -1126,7 +1126,7 @@ if (($realos{'os_version'} ne $gconfig{'os_version'} ||
 		}
 	else {
 		# Large enough change to tell the user
-		push(@notifs, 
+		push(@notifs,
 		    &ui_form_start("$gconfig{'webprefix'}/webmin/fix_os.cgi").
 		    &text('os_incorrect', $realos{'real_os_type'},
 		    		          $realos{'real_os_version'})."<p>\n".
@@ -1396,7 +1396,7 @@ if (exists($gconfig{'shared_root'}) && $gconfig{'shared_root'} eq '1') {
 	return 1;
 	}
 elsif (exists($gconfig{'shared_root'}) && $gconfig{'shared_root'} eq '0') {
-	# Definately not shared
+	# Definitely not shared
 	return 0;
 	}
 if (&running_in_zone()) {

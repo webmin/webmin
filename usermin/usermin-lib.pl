@@ -481,7 +481,7 @@ else {
 		return $text{'install_enone'};
 		}
 
-	# Get the module.info files to check dependancies
+	# Get the module.info files to check dependencies
 	local $ver = &get_usermin_version();
 	local $tmpdir = &transname();
 	mkdir($tmpdir, 0700);
@@ -815,7 +815,7 @@ sub flush_modules_cache
 
 =head2 stop_usermin
 
-Kills the running Usermin server process, returning undef on sucess or an
+Kills the running Usermin server process, returning undef on success or an
 error message on failure.
 
 =cut

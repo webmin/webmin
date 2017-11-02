@@ -30,7 +30,7 @@ print SAVE ":OUTPUT ACCEPT [0:0]\n";
 print SAVE ":FORWARD ACCEPT [0:0]\n";
 print SAVE ":SYN-FLOOD -\n";
 
-# Disable bandwith monitor
+# Disable bandwidth monitor
 # Have a lots of issues. 
 # AA 2006-02-21
 

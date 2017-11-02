@@ -25,7 +25,7 @@ if ( $setting =~ /[ ]/ ) {
 	$setting = "\"$setting\"";
 	}
 
-# not all possibile blunders are fixed, but at least intelligently
+# not all possible blunders are fixed, but at least intelligently
 # made ones...
 
 $setting = "$in{'action'}=$setting";

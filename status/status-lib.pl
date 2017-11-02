@@ -387,7 +387,7 @@ return $group->{'name'}." (".
 }
 
 # list_notification_modes()
-# Returns a list of available notifcation modes (like email, sms, etc..)
+# Returns a list of available notification modes (like email, sms, etc..)
 sub list_notification_modes
 {
 my @rv = ( "email" );
