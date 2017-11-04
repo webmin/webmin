@@ -2492,7 +2492,9 @@ push(@headers, [ "Host", $host ]);
 push(@headers, [ "User-agent", "Webmin" ]);
 push(@headers, [ "Accept-language", "en" ]);
 push(@headers, [ "Content-type", "application/x-www-form-urlencoded" ]);
-push(@headers, [ "Content-length", length($content) ]);
+if (defined($content)) {
+	push(@headers, [ "Content-length", length($content) ]);
+	}
 if ($user) {
 	my $auth = &encode_base64("$user:$pass");
 	$auth =~ tr/\r\n//d;
