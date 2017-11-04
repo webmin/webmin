@@ -553,10 +553,8 @@ sub external_firewall_message
                 &text('index_filter_nodirect', $fwconfig),
                 "</b></center><p>\n";
            }
-	# naming the detected firewall modules
-    	foreach my $word (split ' ', $fwname) {
-        	print "<center>",
-              	   &text("index_$word", "$gconfig{'webprefix'}/$word/", $fwconfig),
-                   "</center><p>\n";
-        	}
+        # alert about the detected firewall modules
+        foreach my $word (split ' ', $fwname) {
+                print ui_alert_box(&text("index_$word", "$gconfig{'webprefix'}/$word/", $fwconfig), 'warn');
+                }
    }
