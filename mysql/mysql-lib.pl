@@ -77,7 +77,9 @@ EOF
 
 @mysql_set_variables = ( $mysql_version >= 5.5 ? "key_buffer_size"
 					       : "key_buffer",
-			 "sort_buffer", "net_buffer_length" );
+			 $mysql_version >= 5.5 ? "sort_buffer_size"
+					       : "sort_buffer",
+			 "net_buffer_length" );
 @mysql_number_variables = ( $mysql_version >= 5.6 ? "table_open_cache"
 						  : "table_cache",
 			    "max_connections" );
