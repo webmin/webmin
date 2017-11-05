@@ -22,7 +22,8 @@ index_nouser=El teu compte Webmin està configurat per connectar-te al servidor M
 index_db=Base de Dades
 index_tables=Taules
 index_elibrary=No es pot executar el programa client MySQL $1 perquè no es troben les llibreries compartides de MySQL. Comprova la <a href='$2'>configuració del mòdul</a> i assegura't que el <i>Camí del les llibreries compartides de MySQL</i> està posat.
-index_version=Versió MySQL $1
+index_version=Versió $1 de MySQL
+index_version2=Versió $1 de MySQL a $2
 index_nomod=Atenció: El mòdul Perl $1 no està instal·lat al sistema, de manera que Webmin no podrà accedir de forma fiable a la base de dades MySQL. <a href='$2'>Fes clic aquí</a> per instal·lar-lo ara.
 index_nomods=Atenció: Els mòduls Perl $1 i $2 no està instal·lat al sistema, de manera que Webmin no podrà accedir de forma fiable a la base de dades MySQL. <a href='$3'>Fes clic aquí</a> per instal·lar-lo ara.
 index_mysqlver=L'ordre <tt>$1</tt> ha retornat:
@@ -623,6 +624,7 @@ backup_ewhere=No hi ha clàusula <tt>WHERE</tt> o bé és incorrecta
 backup_echarset=Hi falta el joc de caràcters
 backup_ebackup=<tt>mysqldump</tt> ha fallat: $1
 backup_ebefore=L'ordre a executar abans de la còpia ha fallat!
+backup_eisdir=La destinació $1 de la còpia de seguretat és un directori
 backup_done=S'han abocat amb èxit $3 bytes de la base de dades $1 al fitxer $2.
 backup_sched=Còpia planificada activada
 backup_sched1=Sí, a les hores triades a sota...

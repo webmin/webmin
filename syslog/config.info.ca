@@ -4,6 +4,7 @@ refresh=Segons entre refrescs de la visualització de registres,3,Mai
 compressed=Inclou els registres comprimits a les recerques,1,1-Sí,0-No
 others=Mostra els registres d'altres mòduls,1,1-Sí,0-No
 extras=Altres fitxers a mostrar<br>(Amb descripcions opcionals),9,50,4,\t
+reverse=Ordre de mostra del registre,1,1-Línies més noves a dalt,0-Línies més noves a baix
 line2=Configuració del sistema,11
 syslog_conf=Camí del fitxer de registre de syslog,0
 m4_conf=La configuració de syslog es processa amb m4,1,1-Sí,0-No

@@ -11,3 +11,4 @@ auto_file=Fitxer de muntatges automàtics NFS,3
 autofs_file=Fitxer de muntatges automàtics de nucli,3
 smbclient_path=Camí complet de smbclient,3
 nmblookup_path=Camí complet de nmblookup,3
+nfs_check=Comprova els servidors NFS abans d'intentar el muntatge,1,1-Sí,0-No
