@@ -36,6 +36,7 @@ if ($file !~ /^\//) {
 	}
 
 # Set up webmin environment
+push(@INC, ".", $root);
 $ENV{'WEBMIN_CONFIG'} = $config;
 $ENV{'WEBMIN_VAR'} = $var;
 $no_acl_check++;
