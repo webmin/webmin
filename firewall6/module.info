@@ -5,5 +5,5 @@ name=Firewall6
 desc_de=Linux IPv6 Firewall
 os_support=*-linux
 desc_ca=Tallafocs Linux IPv6
-longdesc_ca=Configura un tallafocs Linux utilitzant ip6tables. Permet l'ediciÃ³ de totes les taules, cadenes, regles i opcions.
+longdesc_ca=Configura un tallafocs Linux utilitzant ip6tables. Permet l'edició de totes les taules, cadenes, regles i opcions.
 longdesc_de=Konfiguriert eine Linux-Firewall mit ip6tables. Erm&#246;glicht die Bearbeitung aller Tabellen, Ketten, Regeln und Optionen.
