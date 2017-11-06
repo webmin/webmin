@@ -28,10 +28,10 @@ if ($in{'multi'}) {
 		print "</script>\n";
 		print "<title>$text{'modules_title1'}</title>\n";
 		print "<frameset cols='50%,50%'>\n";
-		print "<frame src=\"/module_chooser.cgi?frame=1&multi=1\">\n";
+		print "<frame src=\"$gconfig{'webprefix'}/module_chooser.cgi?frame=1&multi=1\">\n";
 		print "<frameset rows='*,50' frameborder=no>\n";
-		print " <frame src=\"/module_chooser.cgi?frame=2&multi=1\">\n";
-		print " <frame src=\"/module_chooser.cgi?frame=3&multi=1\" scrolling=no>\n";
+		print " <frame src=\"$gconfig{'webprefix'}/module_chooser.cgi?frame=2&multi=1\">\n";
+		print " <frame src=\"$gconfig{'webprefix'}/module_chooser.cgi?frame=3&multi=1\" scrolling=no>\n";
 		print "</frameset>\n";
 		print "</frameset>\n";
 		}
@@ -137,5 +137,3 @@ else {
 	print "</table>\n";
 	&popup_footer();
 	}
-
-
