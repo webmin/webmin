@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 # edit_global.cgi
 # Edit global majordomo options
 
