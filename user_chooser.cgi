@@ -26,7 +26,7 @@ if ($in{'multi'}) {
 		for($i=0; $i<$len; $i++) {
 			print "sel[$i] = \"".
 			      &quote_javascript($ul[$i])."\";\n";
-            
+
 			# samba valid system user can start with @ + &
 			$gn = $ul[$i];
 			$gn =~ s/^(@|\+|&)+//g;
@@ -42,10 +42,10 @@ if ($in{'multi'}) {
 		print "</script>\n";
 		print "<title>$text{'users_title1'}</title>\n";
 		print "<frameset cols='50%,50%'>\n";
-		print "<frame src=\"user_chooser.cgi?frame=1&multi=1\">\n";
+		print "<frame src=\"$gconfig{'webprefix'}/user_chooser.cgi?frame=1&multi=1\">\n";
 		print "<frameset rows='*,50' frameborder=no>\n";
-		print " <frame src=\"user_chooser.cgi?frame=2&multi=1\">\n";
-		print " <frame src=\"user_chooser.cgi?frame=3&multi=1\" scrolling=no>\n";
+		print " <frame src=\"$gconfig{'webprefix'}/user_chooser.cgi?frame=2&multi=1\">\n";
+		print " <frame src=\"$gconfig{'webprefix'}/user_chooser.cgi?frame=3&multi=1\" scrolling=no>\n";
 		print "</frameset>\n";
 		print "</frameset>\n";
 		}
@@ -204,4 +204,3 @@ while(@uinfo = getpwent()) {
 endpwent() if ($gconfig{'os_type'} ne 'hpux');
 return sort { $a->[0] cmp $b->[0] } @users;
 }
-

@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # chooser.cgi
-# Outputs HTML for a frame-based file chooser 
+# Outputs HTML for a frame-based file chooser
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
@@ -116,10 +116,10 @@ if ($in{'frame'} == 0) {
 		}
 	print "<frameset rows='*,50'>\n";
 	print "<frame marginwidth=5 marginheight=5 name=topframe ",
-	     "src=\"chooser.cgi?frame=1&file=".$ufile.
+	     "src=\"$gconfig{'webprefix'}/chooser.cgi?frame=1&file=".$ufile.
 	     "&chroot=".$uchroot."&type=".$utype."&add=$add\">\n";
 	print "<frame marginwidth=0 marginheight=0 name=bottomframe ",
-	      "src=\"chooser.cgi?frame=2&file=".$ufile.
+	      "src=\"$gconfig{'webprefix'}/chooser.cgi?frame=2&file=".$ufile.
 	      "&chroot=".$uchroot."&type=".$utype."&add=$add\" scrolling=no>\n";
 	print "</frameset>\n";
 	}

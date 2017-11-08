@@ -1,6 +1,6 @@
 #!/usr/local/bin/perl
 # chooser.cgi
-# Outputs HTML for a frame-based svc chooser 
+# Outputs HTML for a frame-based svc chooser
 
 require './smf-lib.pl';
 
@@ -42,16 +42,16 @@ if ($in{'frame'} == 0) {
 	&PrintHeader();
 	if ($in{'type'} eq "svc")
 		{ print "<title>$text{'svc_chooser_titlesvc'}</title>\n"; }
-	elsif ($in{'type'} eq "inst") 
+	elsif ($in{'type'} eq "inst")
 		{ print "<title>$text{'svc_chooser_titleinst'}</title>\n";}
 	else
 		{ print "<title>$text{'svc_chooser_titleboth'}</title>\n";}
 
 	print "<frameset rows='*,50'>\n";
 	print "<frame marginwidth=10 marginheight=10 name=topframe ",
-	    "src=\"svc_chooser.cgi?frame=1&fmri=$fmri&add=$add&type=$type\">\n";
+	    "src=\"$gconfig{'webprefix'}/svc_chooser.cgi?frame=1&fmri=$fmri&add=$add&type=$type\">\n";
 	print "<frame marginwidth=10 marginheight=10 name=bottomframe ",
-	    "src=\"svc_chooser.cgi?frame=2&add=$add&fmri=$fmri&type=$type\" ",
+	    "src=\"$gconfig{'webprefix'}/svc_chooser.cgi?frame=2&add=$add&fmri=$fmri&type=$type\" ",
 	    "scrolling=no>\n";
 	print "</frameset>\n";
 	}
@@ -89,7 +89,7 @@ EOF
 			$elt = "$1";
 			# check if its an instance, if so add colon
 			if ($fmri =~ /.*\:$/) {
-				$elt = ":$elt";	
+				$elt = ":$elt";
 				}
 			push(@flist, "$elt");
 			}
