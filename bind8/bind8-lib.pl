@@ -4128,7 +4128,7 @@ my $conf = &get_config();
 my $options = &find("options", $conf);
 my $mems = $options ? $options->{'members'} : [ ];
 my $en = &find_value("dnssec-enable", $mems);
-return undef if ($en !~ /yes/i);
+return undef if (!$en || $en !~ /yes/i);
 my $tkeys = &find("trusted-keys", $conf);
 return undef if (!$tkeys || !@{$tkeys->{'members'}});
 return &text('trusted_warning',
