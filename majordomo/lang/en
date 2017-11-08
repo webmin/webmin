@@ -185,7 +185,7 @@ access_res1=List members
 access_res2=Addresses in file
 access_tbody=Taboo body regexps
 access_theader=Taboo header regexps
-access_taboo=Note: all taboo and address regexps must begin and end with <tt>/</tt> , like <tt>/foobar.com/</tt> or <tt>/obscene/</tt><br>For purpose of SPAM rejection enter e.g. <tt>/^X-Spam-Flag: YES/i</tt> or <tt>/^X-Spam-Level: \*\*\*\*\*/i</tt> as taboo header regex.
+access_taboo=All taboo and address regexps must begin and end with <tt>/</tt> , like <tt>/foobar.com/</tt> or <tt>/obscene/</tt><br>For purpose of SPAM rejection enter e.g. <tt>/^X-Spam-Flag: YES/i</tt> or <tt>/^X-Spam-Level: \*\*\*\*\*/i</tt> as taboo header regex.
 
 head_title=Headers and Footers
 head_header=Resent email headers and footers

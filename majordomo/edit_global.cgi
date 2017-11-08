@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # edit_global.cgi
 # Edit global majordomo options
 
@@ -11,31 +11,24 @@ $access{'global'} || &error($text{'global_ecannot'});
 &ui_print_header(undef, $text{'global_title'}, "");
 
 local $bcss=' style="display: box; float: left; padding: 10px;"';
-print "<div $bcss><form action=\"check_inst.cgi\" method=\"post\">",
-        	&ui_submit($text{'check_title'})."</form></div>\n";
+print  "<div $bcss>".ui_form_start("check_inst.cgi", "post").
+                        &ui_submit($text{'check_title'}).ui_form_end()."</div>";
 
-$saved = $text{'global_saved'} if $in{'saved'};
-print "<form action=save_global.cgi>\n";
-print "<table border width=\"100%\">\n";
-print "<tr $tb> <td><b>$text{'global_header'}</b><div id=\"saved\">$saved</div></td> </tr>\n";
-print "<tr $cb> <td><table width=\"100%\">\n";
+print ui_form_start('save_global.cgi', 'post');
+print ui_table_start(&text('global_header'), undef, 2);
 
 $whereami = &find_value("whereami", $conf);
-print "<tr> <td><b>$text{'global_whereami'}</b></td>\n";
-print "<td><input name=whereami size=30 value=\"$whereami\"></td> </tr>\n";
+print ui_columns_row(["<b>$text{'global_whereami'}</b>", ui_textbox('whereami', $whereami, 40)], undef);
 
 $whoami = &find_value("whoami", $conf);
-print "<tr> <td><b>$text{'global_whoami'}</b></td>\n";
-print "<td><input name=whoami size=40 value=\"$whoami\"></td> </tr>\n";
+print ui_columns_row(["<b>$text{'global_whoami'}</b>", ui_textbox('whoami', $whoami, 40)], undef);
 
 $whoami_o = &find_value("whoami_owner", $conf);
-print "<tr> <td><b>$text{'global_owner'}</b></td>\n";
-print "<td><input name=whoami_owner size=40 value=\"$whoami_o\"></td> </tr>\n";
+print ui_columns_row(["<b>$text{'global_owner'}</b>", ui_textbox('whoami_owner', $whoami_o, 40)], undef);
 
 $sendmail = &find_value("sendmail_command", $conf);
-print "<tr> <td><b>$text{'global_sendmail'}</b></td>\n";
-print "<td><input name=sendmail_command size=40 value=\"$sendmail\">",
-	&file_chooser_button("sendmail_command", 0),"</td> </tr>\n";
+print ui_columns_row(["<b>$text{'global_sendmail'}</b>", ui_textbox('whoami_command', $sendmail, 40).
+		&file_chooser_button("sendmail_command", 0)], undef);
 
 print "<tr>\n";
 print &multi_input("global_taboo_headers", $text{'access_theader'}, $conf);
@@ -45,18 +38,10 @@ print "<tr>\n";
 print &multi_input("global_taboo_body", $text{'access_tbody'}, $conf);
 print "</tr>\n";
 
-print "<tr> <td colspan=4>$text{'access_taboo'}</td> </tr>\n";
+print ui_table_span(ui_alert_box($text{'access_taboo'}, 'info'));
 
-print "</table></td></tr></table>\n";
-print  &ui_submit($text{'save'}),"</form>\n";
+print ui_table_end();
+print  &ui_submit($text{'save'}), ui_form_end();
 
 &ui_print_footer("", $text{'index_return'});
-
-# hide "saved" after klick
-print <<'EOF';
-<script type="text/javascript">
-  function hidesaved() { document.getElementById('saved').style.display = 'none'; };
-  setTimeout(hidesaved, 5000); document.onmousedown=hidesaved;
-</script>
-EOF
 
