@@ -1,0 +1,68 @@
+index_title=ADSL Client
+index_eadsl=The RP-PPPoE command $1 was not found on your system or is not valid. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_econfig=The RP-PPPoE ADSL configuration file $1 was not found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_emodem=The current configuration file is for a modem on Redhat Linux, not an ADSL connection. Use the <a href='$2'>module configuration</a> page to specify one of the other <tt>ifcfg-ppp*</tt> files in $1, or one that does not exist yet so that the module can create it for you.
+index_stop=Shut down ADSL
+index_stopdesc=Your ADSL connection is currently active with IP address $1. Click this button to shut it down with the command $2.
+index_start=Start up ADSL
+index_startdesc=Your ADSL connection is currently inactive. Click this button to start it up with the command $1.
+index_boot=Start at boot time
+index_bootdesc=Change this option to control whether your ADSL connection is brought up at boot time or not.
+index_return=module index
+index_version=RP-PPPoE version $1
+index_esetup=The Redhat ADSL configuration file $1 does not exist on your system. However, this module can set it up for you with basic defaults by clicking the button below.
+index_setup=Setup configuration file
+index_cancel=Cancel Connection
+index_canceldesc=The ADSL client is currently trying to establish a connection. Click this button to cancel the attempt with the command $1.
+index_cdemand=Cancel On-Demand
+index_cdemanddesc=The ADSL client is currently waiting for an on-demand connection request. Click this button to stop it with the comnmand $1.
+
+index_header=ADSL client configuration options
+index_desc=The settings below apply to any new ADSL connection started by your system. If you change them, the connection must be shut down and re-started for the modifications to take effect.
+index_eth=Ethernet interface
+index_other=Other..
+index_demand=Connect on demand?
+index_timeout=Yes, with timeout
+index_secs=seconds
+index_user=Login as user
+index_sec=Login with password
+index_dns=Get DNS configuration from ISP?
+index_save=Save configuration
+index_mss=Limit packet size?
+index_psize=Yes, to
+index_bytes=bytes
+index_fw=Firewall to activate on connection
+index_fw_none=None
+index_fw_standalone=For single host
+index_fw_masquerade=For NAT gateway
+index_connect=Time to attempt connection for
+index_forever=Forever
+
+start_err=Failed to start ADSL connection
+start_title=Start up ADSL
+start_ip=An ADSL connection has been established with IP address $1.
+start_demand=Because connect on demand mode is enabled, your ADSL connection will only be started when needed.
+start_bg=The ADSL connection was not started within 20 seconds. The ADSL client will continue trying to connect in the background until successful.
+
+save_err=Failed to save ADSL configuration
+save_eeth=Missing or invalid-looking ethernet interface
+save_etimeout=Missing or invalid on-demand timeout
+save_euser=Missing or invalid username
+save_econnect=Missing or invalid connection timeout
+save_emss=Missing or invalid maximum packet size
+save_title=Save Configuration
+save_desc=Your ADSL client configuration has been successfully saved, but will not be used until you re-connect.
+
+stop_err=Failed to shut down ADSL connection
+stop_title=Shut Down ADSL
+stop_ok=Your ADSL connection was successfully shut down.
+stop_failed=Your ADSL connection is still active for some reason!
+
+log_save=Saved client configuration
+log_stop=Shut down ADSL
+log_start=Started up ADSL
+log_bootup=Enabled ADSL at boot time
+log_bootdown=Disabled ADSL at boot time
+log_setup=Set up default configuration
+
+__norefs=1
