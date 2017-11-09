@@ -24,7 +24,7 @@ if ($in{'new'}) {
 	@eservices = split /,\s?|\s+/, $2;
     } else {
 	@services = split /,\s?|\s+/, $rule->{'service'};
-    } 
+    }
 
     if (@xservices) {
 	# try to find all services (daemons) in xinetd/inetd
@@ -43,7 +43,7 @@ if ($in{'new'}) {
 	$ehosts = $2
     } else {
 	$hosts = $rule->{'host'};
-    } 
+    }
 }
 
 # Form header
@@ -65,7 +65,7 @@ else {
 	print &ui_table_row($text{'edit_service'},
 		&ui_textbox("service_custom", join(",",@services), 40));
 	print &ui_table_row($text{'edit_except'},
-		&ui_textbox("service_except_custom", join(",",@eservices), 40));    
+		&ui_textbox("service_except_custom", join(",",@eservices), 40));
 	}
 
 print &ui_table_hr();
@@ -90,9 +90,9 @@ print &ui_table_hr();
 $label = $text{'edit_cmd'};
 for ($i = 0; $i <= $#cmds; $i++) {
     $cmds[$i] =~ s/^\s*//;
-    my $choosed = $cmds[$i] =~ /^(spawn|twist)/ ? $1 : 'none';
-    $cmds[$i] =~ s/^\s*${choosed}\s*// if ($cmds[$i] =~ /^\s*(spawn)|(twist)/); 
-    print &ui_table_row($label, &ui_select("cmd_directive_$i", $choosed, \@directives).' '.&ui_textbox("cmd_$i", $cmds[$i], 50), 3);
+    my $chosen = $cmds[$i] =~ /^(spawn|twist)/ ? $1 : 'none';
+    $cmds[$i] =~ s/^\s*${chosen}\s*// if ($cmds[$i] =~ /^\s*(spawn)|(twist)/);
+    print &ui_table_row($label, &ui_select("cmd_directive_$i", $chosen, \@directives).' '.&ui_textbox("cmd_$i", $cmds[$i], 50), 3);
     $label = "";
 }
 

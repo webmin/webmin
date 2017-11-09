@@ -518,7 +518,7 @@ else {
 =head2 block_size(dir, [for-filesys])
 
 Returns the size (in bytes) of blocks on some filesystem, if known. All
-quota functions deal with blocks, so they must be multipled by the value
+quota functions deal with blocks, so they must be multiplied by the value
 returned by this function before display to users.
 
 =cut

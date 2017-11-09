@@ -849,7 +849,7 @@ return $rv;
 
 # execute_before(db, handle, escape, path, db-for-config)
 # Executes the before-backup command for some DB, and sends output to the
-# given file handle. Returns 1 if the command suceeds, or 0 on failure
+# given file handle. Returns 1 if the command succeeds, or 0 on failure
 sub execute_before
 {
 local $cmd = $config{'backup_before_'.$_[4]};
@@ -1390,7 +1390,7 @@ return @rv;
 }
 
 # list_compatible_formats()
-# Returns a list of two-element arrays, containing compatability format
+# Returns a list of two-element arrays, containing compatibility format
 # codes and descriptions
 sub list_compatible_formats
 {
@@ -1400,7 +1400,7 @@ return map { [ $_, $text{'compat_'.$_} ] }
 }
 
 # list_compatible_options()
-# Returns a list of two-element arrays, containing compatability options
+# Returns a list of two-element arrays, containing compatibility options
 sub list_compatible_options
 {
 return map { [ $_, $text{'compat_'.$_} ] }

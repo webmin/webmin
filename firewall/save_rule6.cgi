@@ -354,7 +354,7 @@ else {
 		push(@mods, "physdev");
 		}
 
-	# Add custom paramters and modules
+	# Add custom parameters and modules
 	$rule->{'args'} = $in{'args'};
 	push(@mods, split(/\s+/, $in{'mods'}));
 

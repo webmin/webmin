@@ -2,7 +2,7 @@
 
 #theme_prebody - called just before the main body of every page, so it can print any HTML it likes.
 #theme_postbody - called just after the main body of every page.
-#theme_header - called instead of the normal header function, with the same parameters. You could use this to re-write the header function in your own style with help and index links whereever you want them.
+#theme_header - called instead of the normal header function, with the same parameters. You could use this to re-write the header function in your own style with help and index links wherever you want them.
 #theme_footer - called instead of the footer function with the same parameters.
 #theme_error - called instead of the error function, with the same parameters.
 

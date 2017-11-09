@@ -434,7 +434,7 @@ print "</select>\n";
 print "<input name=other size=40> ",&file_chooser_button("other", 1),"\n";
 }
 
-# job_select(&dbh, [volumne])
+# job_select(&dbh, [volume])
 # XXX needs value input?
 # XXX needs flag for use of 'any' field?
 sub job_select

@@ -125,7 +125,7 @@ my $rv = &read_file_cached(@_);
 $main::read_file_cache_time{$realfile} = $st[9];
 return $rv;
 }
- 
+
 =head2 write_file(file, &hash, [join-char])
 
 Write out the contents of a hash as name=value lines. The parameters are :
@@ -376,7 +376,7 @@ sub check_ip6address
   return 0 if (@blocks == 0 || @blocks > 8);
 
   # The address/netmask format is accepted. So we're looking for a "/" to isolate a possible netmask.
-  # After that, we delete the netmask to control the address only format, but we verify whether the netmask 
+  # After that, we delete the netmask to control the address only format, but we verify whether the netmask
   # value is in [0;128].
   my $ib = $#blocks;
   my $where = index($blocks[$ib],"/");
@@ -387,8 +387,8 @@ sub check_ip6address
     $blocks[$ib]=$b;
   }
 
-  # The netmask must take its value in [0;128] 
-  return 0 if ($m <0 || $m >128); 
+  # The netmask must take its value in [0;128]
+  return 0 if ($m <0 || $m >128);
 
   # Check the different blocks of the address : 16 bits block in hexa notation.
   # Possibility of 1 empty block or 2 if the address begins with "::".
@@ -878,7 +878,7 @@ my $bgcolor = defined($tconfig{'cs_page'}) ? $tconfig{'cs_page'} :
 		 defined($gconfig{'cs_page'}) ? $gconfig{'cs_page'} : "ffffff";
 my $link = defined($tconfig{'cs_link'}) ? $tconfig{'cs_link'} :
 	      defined($gconfig{'cs_link'}) ? $gconfig{'cs_link'} : "0000ee";
-my $text = defined($tconfig{'cs_text'}) ? $tconfig{'cs_text'} : 
+my $text = defined($tconfig{'cs_text'}) ? $tconfig{'cs_text'} :
 	      defined($gconfig{'cs_text'}) ? $gconfig{'cs_text'} : "000000";
 my $bgimage = defined($tconfig{'bgimage'}) ? "background=$tconfig{'bgimage'}" : "";
 my $dir = $current_lang_info->{'dir'} ? "dir=\"$current_lang_info->{'dir'}\"" : "";
@@ -1145,7 +1145,7 @@ my $bgcolor = defined($tconfig{'cs_page'}) ? $tconfig{'cs_page'} :
 		 defined($gconfig{'cs_page'}) ? $gconfig{'cs_page'} : "ffffff";
 my $link = defined($tconfig{'cs_link'}) ? $tconfig{'cs_link'} :
 	      defined($gconfig{'cs_link'}) ? $gconfig{'cs_link'} : "0000ee";
-my $text = defined($tconfig{'cs_text'}) ? $tconfig{'cs_text'} : 
+my $text = defined($tconfig{'cs_text'}) ? $tconfig{'cs_text'} :
 	      defined($gconfig{'cs_text'}) ? $gconfig{'cs_text'} : "000000";
 my $bgimage = defined($tconfig{'bgimage'}) ? "background='$tconfig{'bgimage'}'"
 					      : "";
@@ -1162,7 +1162,7 @@ $miniserv::page_capture = 1;
 =head2 footer([page, name]+, [noendbody])
 
 Outputs the footer for a Webmin HTML page, possibly with links back to other
-pages. The links are specified by pairs of parameters, the first of which is 
+pages. The links are specified by pairs of parameters, the first of which is
 a link destination, and the second the link text. For example :
 
  footer('/', 'Webmin index', '', 'Module menu');
@@ -1514,7 +1514,7 @@ exit;
 
 =head2 error_setup(message)
 
-Registers a message to be prepended to all error messages displayed by the 
+Registers a message to be prepended to all error messages displayed by the
 error function.
 
 =cut
@@ -1952,7 +1952,7 @@ return "$config_directory/webmin.acl";
 
 =head2 acl_check
 
-Does nothing, but kept around for compatability.
+Does nothing, but kept around for compatibility.
 
 =cut
 sub acl_check
@@ -2077,7 +2077,7 @@ if (!$nowait) {
 =head2 reload_miniserv([ignore-errors])
 
 Sends a USR1 signal to the miniserv process, telling it to read-read it's
-configuration files. Not all changes will be applied though, such as the 
+configuration files. Not all changes will be applied though, such as the
 IP addresses and ports to accept connections on.
 
 =cut
@@ -2851,7 +2851,7 @@ return 1;
 
 =head2 no_proxy(host)
 
-Checks if some host is on the no proxy list. For internal use by the 
+Checks if some host is on the no proxy list. For internal use by the
 http_download and ftp_download functions.
 
 =cut
@@ -2867,7 +2867,7 @@ return 0;
 
 =head2 open_socket(host, port, handle, [&error])
 
-Open a TCP connection to some host and port, using a file handle. The 
+Open a TCP connection to some host and port, using a file handle. The
 parameters are :
 
 =item host - Hostname or IP address to connect to.
@@ -3471,7 +3471,7 @@ with the same name as the module. The parameters are :
 
 =item file - The API file in that module, like sendmail-lib.pl. If missing, all API files are loaded.
 
-=item package - Perl package to place the module's functions and global variables in. 
+=item package - Perl package to place the module's functions and global variables in.
 
 If the original module name contains dashes, they will be replaced with _ in
 the package name.
@@ -4688,7 +4688,7 @@ if ($module_name && !$main::no_acl_check &&
 		}
 	$main::no_acl_check++;
 	}
-	
+
 # Check for trigger URL to simply redirect to root: required for Authentic Theme 19.00+
 if ($ENV{'REQUEST_URI'} =~ /xnavigation=1/) {
 	redirect("/");
@@ -5389,7 +5389,7 @@ script. The parameters are :
 
 =item hash - Hash reference of names and values to write.
 
-=item export - If set to 1, preceed each variable setting with the word 'export'.
+=item export - If set to 1, prepend each variable setting with the word 'export'.
 
 =cut
 sub write_env_file
@@ -5641,7 +5641,7 @@ foreach $f (keys %main::locked_file_list) {
 
 =head2 can_lock_file(file)
 
-Returns 1 if some file should be locked, based on the settings in the 
+Returns 1 if some file should be locked, based on the settings in the
 Webmin Configuration module. For internal use by lock_file only.
 
 =cut
@@ -5672,7 +5672,7 @@ else {
 =head2 webmin_log(action, type, object, &params, [module], [host, script-on-host, client-ip])
 
 Log some action taken by a user. This is typically called at the end of a
-script, once all file changes are complete and all commands run. The 
+script, once all file changes are complete and all commands run. The
 parameters are :
 
 =item action - A short code for the action being performed, like 'create'.
@@ -6526,7 +6526,7 @@ return &remote_rpc_call($_[0], { 'action' => 'call',
 
 =head2 remote_foreign_check(server, module, [api-only])
 
-Checks if some module is installed and supported on a remote server. Equivilant
+Checks if some module is installed and supported on a remote server. Equivalent
 to foreign_check, but for the remote Webmin system specified by the server
 parameter.
 
@@ -7531,7 +7531,7 @@ return undef;
 =head2 read_http_connection(&handle, [bytes])
 
 Reads either one line or up to the specified number of bytes from the handle,
-originally supplied by make_http_connection. 
+originally supplied by make_http_connection.
 
 =cut
 sub read_http_connection
@@ -8169,12 +8169,12 @@ my @licrv;
 if ($main::licence_module) {
 	foreach my $m (@themerv) {
 		if (&foreign_call($main::licence_module,
-				  "check_module_licence", $m->{'dir'})) {	
+				  "check_module_licence", $m->{'dir'})) {
 			push(@licrv, $m);
 			}
 		}
 	}
-else {	
+else {
 	@licrv = @themerv;
 	}
 
@@ -9487,9 +9487,9 @@ return "<input type=button onClick='ifield = document.forms[$form].$_[0]; choose
 
 =head2 substitute_template(text, &hash)
 
-Given some text and a hash reference, for each ocurrance of $FOO or ${FOO} in
+Given some text and a hash reference, for each occurrence of $FOO or ${FOO} in
 the text replaces it with the value of the hash key foo. Also supports blocks
-like ${IF-FOO} ... ${ENDIF-FOO}, whose contents are only included if foo is 
+like ${IF-FOO} ... ${ENDIF-FOO}, whose contents are only included if foo is
 non-zero, and ${IF-FOO} ... ${ELSE-FOO} ... ${ENDIF-FOO}.
 
 =cut
@@ -10130,7 +10130,7 @@ $main::clear_time_locale_count--;
 
 =head2 callers_package(filehandle)
 
-Convert a non-module filehandle like FOO to one qualified with the 
+Convert a non-module filehandle like FOO to one qualified with the
 caller's caller's package, like fsdump::FOO. For internal use only.
 
 =cut
@@ -10440,7 +10440,7 @@ to display. Each is a hash ref with the following keys :
 
 =item html - In "html" mode, the raw HTML to display
 
-=item usage - In "usage" mode, an array ref of things to show some kind of 
+=item usage - In "usage" mode, an array ref of things to show some kind of
 	      usage for. Each is a hash ref with keys described below.
 
 =item titles - In "usage" mode, an 3-element array ref of titles to show above

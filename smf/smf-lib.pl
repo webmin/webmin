@@ -91,7 +91,7 @@ $wizard = "page=smfwizard_service.cgi,min=1,max=1; \
 # Run all smf commands (separated by ";", check if expected retvals match
 # (if needed) and return response(s)
 #
-# Paramters: cmdlist, [expected_retval]
+# Parameters: cmdlist, [expected_retval]
 #
 sub run_smf_cmds()
 {
@@ -130,7 +130,7 @@ return $response;
 
 # Import supplied manifest into repository, expect success
 #
-# Paramters: manifest
+# Parameters: manifest
 #
 sub svc_import()
 {
@@ -286,7 +286,7 @@ foreach $pgroup_info (@pgroup_list) {
 return @listing;
 }
 
-# Set property (creates if doesnt yet exist)
+# Set property (creates if doesn't yet exist)
 #
 # Parameters: fmri, service_or_instance, pgname, name, type, value
 #
@@ -799,7 +799,7 @@ if ($tree_ref->{"$fmri"}->{'exists'} != 1) {
 		$dep_grouping = &svc_grouping_cmd($parent, $child);
 		# we need to determine if dep has children, in order
 		# to disable the expand button if not. however, we
-		# dont recurse if it does unless it was on expand list
+		# don't recurse if it does unless it was on expand list
 		$tree_ref->{"$fmri"}->{'haschildren'} = 1;
 		chomp($dep_fmri);
 		push(@{$tree_ref->{"$fmri"}->{'children'}},

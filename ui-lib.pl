@@ -1,4 +1,4 @@
-use vars qw($theme_no_table $ui_radio_selector_donejs $module_name 
+use vars qw($theme_no_table $ui_radio_selector_donejs $module_name
 	    $ui_multi_select_donejs, $ui_formcount);
 
 =head1 ui-lib.pl
@@ -321,7 +321,7 @@ return $rv;
 
 =head2 ui_checked_columns_row(&columns, &tdtags, checkname, checkvalue, [checked?], [disabled], [tags])
 
-Returns HTML for a row in a multi-column table, in which the first column 
+Returns HTML for a row in a multi-column table, in which the first column
 contains a checkbox. The parameters are :
 
 =item columns - Reference to an array containing the HTML to show in the columns for this row.
@@ -1339,7 +1339,7 @@ return "<input class='ui_submit' type='submit'".
        ($name ne '' ? " id=\"".&quote_escape($name)."\"" : "").
        " value=\"".&quote_escape($label)."\"".
        ($dis ? " disabled='true'" : "").
-       ($tags ? " ".$tags : "").">\n";	
+       ($tags ? " ".$tags : "").">\n";
 }
 
 =head2 ui_reset(label, [disabled?], [tags])
@@ -1360,7 +1360,7 @@ return &theme_ui_reset(@_) if (defined(&theme_ui_reset));
 my ($label, $dis, $tags) = @_;
 return "<input class='ui_reset' type='reset' value=\"".&quote_escape($label)."\"".
        ($dis ? " disabled='true'" : "").
-       ($tags ? " ".$tags : "").">\n";		
+       ($tags ? " ".$tags : "").">\n";
 }
 
 =head2 ui_button(label, [name], [disabled?], [tags])
@@ -1456,7 +1456,7 @@ return &theme_ui_buttons_end(@_) if (defined(&theme_ui_buttons_end));
 return "</table>\n";
 }
 
-=head2 ui_buttons_row(script, button-label, description, [hiddens], [after-submit], [before-submit]) 
+=head2 ui_buttons_row(script, button-label, description, [hiddens], [after-submit], [before-submit])
 
 Returns HTML for a button with a description next to it, and perhaps other
 inputs. The parameters are :
@@ -1888,7 +1888,7 @@ my $divid = "hiddendiv_$name";
 my $openerid = "hiddenopener_$name";
 my $defimg = $status ? "open.gif" : "closed.gif";
 my $defclass = $status ? 'opener_shown' : 'opener_hidden';
-my $text = defined($tconfig{'cs_text'}) ? $tconfig{'cs_text'} : 
+my $text = defined($tconfig{'cs_text'}) ? $tconfig{'cs_text'} :
 	      defined($gconfig{'cs_text'}) ? $gconfig{'cs_text'} : "000000";
 $rv .= "<table class='ui_table' border $tabletags>\n";
 my $colspan = 1;
@@ -2057,7 +2057,7 @@ return $rv;
 =head2 ui_tabs_start_tab(name, tab)
 
 Must be called before outputting the HTML for the named tab, and returns HTML
-for the required <div> block. 
+for the required <div> block.
 
 =cut
 sub ui_tabs_start_tab
@@ -2072,7 +2072,7 @@ return $rv;
 
 =head2 ui_tabs_start_tabletab(name, tab)
 
-Behaves like ui_tabs_start_tab, but for use within a ui_table_start block. 
+Behaves like ui_tabs_start_tab, but for use within a ui_table_start block.
 I recommend against using this where possible, as it is difficult for themes
 to implement.
 
@@ -2358,7 +2358,7 @@ action, such as deleting a user. The parameters are :
 
 =item buttons - Array ref of two-element array refs, containing form button names and labels.
 
-=item otherinputs - HTML for extra inputs to include in ther form.
+=item otheirinputs - HTML for extra inputs to include in their form.
 
 =item extra-warning - An additional separate warning message to show.
 

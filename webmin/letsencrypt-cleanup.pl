@@ -33,5 +33,5 @@ if ($r) {
 
 # Apply the change
 &bind8::restart_bind();
-sleep(10);	# Wait for DNS propogation
+sleep(10);	# Wait for DNS propagation
 &webmin_log("letsencryptcleanup", undef, $dname);

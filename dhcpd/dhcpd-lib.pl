@@ -626,7 +626,7 @@ return @rv;
 %obj_names2types = qw(host hst group grp subnet sub shared-network sha);
 
 # get_branch(objtype, [addmode]) 
-# usefull for edit_*.cgi and save_*.cgi scripts
+# useful for edit_*.cgi and save_*.cgi scripts
 # $objtype = one of 'hst' 'grp' 'sub' 'sha'
 sub get_branch
 {
@@ -805,7 +805,7 @@ return &save_module_acl($_[1]);
 
 # find_recursive(name, &config, [parent])
 # Returns a list of all config entries with some name, no matter where they
-# are in the heirarchy
+# are in the hierarchy
 sub find_recursive
 {
 local ($c, @rv);

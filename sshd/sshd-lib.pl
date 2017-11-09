@@ -322,7 +322,7 @@ else {
 
 # get_mlvalues(file, id, [splitchar])
 # Return an array with values from a file, where the
-# values are one per line with an id preceeding them
+# values are one per line with an id preceding them
 sub get_mlvalues
 {
 local @rv;

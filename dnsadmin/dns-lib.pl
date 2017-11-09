@@ -22,7 +22,7 @@ if (!@get_config_cache) {
 return \@get_config_cache;
 }
 
-# read_config_file(filename, [dont expand includes])
+# read_config_file(filename, [don't expand includes])
 # Read and parse a BIND4 format config file
 sub read_config_file
 {

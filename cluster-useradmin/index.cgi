@@ -98,7 +98,7 @@ if ($config{'conf_add_user'} == 0 &&
 	$config{'conf_allow_sync'} == 0 &&
 	$config{'conf_find_user'} == 0 &&
 	$config{'conf_find_group'} == 0) {
-	# If we have configured EVERY possible 'host' action off, then dont show
+	# If we have configured EVERY possible 'host' action off, then don't show
 	# the header/horizontal-rule/etc...
 	@hosts = ();
 	}

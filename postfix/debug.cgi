@@ -3,7 +3,7 @@
 # postfix-module by Guillaume Cottenceau <gc@mandrakesoft.com>,
 # for webmin by Jamie Cameron
 #
-# A form for controling debugging features.
+# A form for controlling debugging features.
 #
 # << Here are all options seen in Postfix sample-debug.cf >>
 

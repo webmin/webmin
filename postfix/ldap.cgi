@@ -3,7 +3,7 @@
 # postfix-module by Guillaume Cottenceau <gc@mandrakesoft.com>,
 # for webmin by Jamie Cameron
 #
-# A form for controling ldap lookups.
+# A form for controlling ldap lookups.
 #
 # << Here are all options seen in Postfix sample-ldap.cf >>
 

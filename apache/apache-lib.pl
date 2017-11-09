@@ -321,7 +321,7 @@ return wantarray ? @vals : !@vals ? undef : $vals[$#vals];
 }
 
 # find_directive_struct(name, &directives)
-# Returns references to directives maching some name
+# Returns references to directives matching some name
 sub find_directive_struct
 {
 local (@vals, $ref);

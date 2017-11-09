@@ -231,12 +231,12 @@ if ($in{'r_fs'} < $in{'w_fs'} || $in{'r_ps'} < $in{'w_ps'}) {
 	&error($text{'acl_ernow'});
 	}
 
-# If create, read, AND write are all turned off... dont SHOW file shares...
+# If create, read, AND write are all turned off... don't SHOW file shares...
 $_[0]->{'conf_fs'}=1;
 if ($in{'c_fs'} == "" && $in{'r_fs'} == "" && $in{'w_fs'} == "") {
         $_[0]->{'conf_fs'}=0;
         }
-# If create, read, AND write are all turned off... dont SHOW print shares...
+# If create, read, AND write are all turned off... don't SHOW print shares...
 $_[0]->{'conf_ps'}=1;
 if ($in{'c_ps'} == "" && $in{'r_ps'} == "" && $in{'w_ps'} == "") {
         $_[0]->{'conf_ps'}=0;

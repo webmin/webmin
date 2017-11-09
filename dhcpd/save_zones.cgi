@@ -25,7 +25,7 @@ $key=$in{'key'};
 
 
 # Prepare data structure
-local $oldzone=$zone; # backup (neccessary if name changes)
+local $oldzone=$zone; # backup (necessary if name changes)
 local $zone = {
 	'values' => [ $zonename ],
 	'comment' => $in{'desc'},

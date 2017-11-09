@@ -7,7 +7,7 @@ require './software-lib.pl';
 
 $spacer = "&nbsp;"x3;
 
-# work out the package heirarchy..
+# work out the package hierarchy..
 $n = &list_packages();
 for($i=0; $i<$n; $i++) {
 	push(@pack, $packages{$i,'name'});
@@ -39,7 +39,7 @@ foreach $c (sort { $a cmp $b } &unique(@class)) {
 %heiropen = map { $_, 1 } &get_heiropen();
 $heiropen{""} = 1;
 
-# traverse the heirarchy
+# traverse the hierarchy
 print "<table width=100%>\n";
 &traverse("", 0);
 print "</table>\n";

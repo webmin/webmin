@@ -117,7 +117,7 @@ $add_disabled = "";
 $update_disabled = "disabled=\"disabled\"";
 $new_disabled = "disabled=\"disabled\"";
 $remove_disabled="disabled=\"disabled\"";
-# if we have data already for page, dont disable remove/clear, disable add,
+# if we have data already for page, don't disable remove/clear, disable add,
 # enable update
 @thispage_datafiles = &list_wizard_datafiles("$pagename.$pageinst");
 if (@thispage_datafiles > 0) {
@@ -397,7 +397,7 @@ if (($button_name eq "$text{'wizard_add'}") ||
 	&redirect("$pagename?pageinst=$pageinst&validate=1&next_pagename=$next_pagename&next_pageinst=$next_pageinst");
 	}
 
-# Shouldnt be here!
+# Shouldn't be here!
 &error("Invalid button name $button_name!");
 }
 

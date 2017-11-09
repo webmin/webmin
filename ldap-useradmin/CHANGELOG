@@ -60,7 +60,7 @@ By default, all new Unix users are given the person object class too, as this se
 Added support for LDAP SSHA passwords, thanks to Bill Moyers and John Gray.
 ---- Changes since 1.430 ----
 The order of the first name and surname in the real name can be changed by a new Module Config setting.
-Coverted all pages to use the new Webmin UI library, for a more consistent look. Also updated the groups chooser to use a left-right selector.
+Converted all pages to use the new Webmin UI library, for a more consistent look. Also updated the groups chooser to use a left-right selector.
 ---- Changes since 1.440 ----
 Added a Module Config option to allow / as an IMAP folder separator, thanks to Bas van den Heuvel.
 Added a check on the module's main page to ensure that the LDAP schema is accessible.

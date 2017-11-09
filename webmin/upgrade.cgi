@@ -284,7 +284,7 @@ elsif ($in{'mode'} eq 'solaris-pkg' || $in{'mode'} eq 'sun-pkg') {
 	my @p = &foreign_call("software", "file_packages", $file);
 	#
 	# The package name will always include "webmin" in lower case,
-	# but may be preceeded by the source package source ("WS" for the
+	# but may be preceded by the source package source ("WS" for the
 	# Webmin.com package, "SUNW" for the Sun distributed package).
 	# and it could have trailing characters to define a set of items
 	# that are installed separately ("r" for the Sun "root" package,

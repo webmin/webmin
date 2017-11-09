@@ -51,7 +51,7 @@ Added a section to the SSL Encryption page for uploading an existing PEM format 
 Added buttons on the Proxy Servers and Downloads page for viewing and deleting cached files, and clearing the entire cache.
 Fixed a bug that prevents module installs from RPMs from working.
 ---- Changes since 1.320 ----
-Added an option to the Advanced page for supressing the display of Perl errors.
+Added an option to the Advanced page for suppressing the display of Perl errors.
 Added a new Mobile Device Options page for defining a custom theme and login process for mobile browsers.
 ---- Changes since 1.330 ----
 Added an option to the Logging page to write Webmin actions to syslog.

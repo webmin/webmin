@@ -53,7 +53,7 @@ if (open(my $VERSION, "<", "$module_config_directory/version")) {
 	}
 $bind_version ||= &get_bind_version();
 if ($bind_version && $bind_version =~ /^(\d+\.\d+)\./) {
-	# Convery to properly formatted number
+	# Convert to properly formatted number
 	$bind_version = $1;
 	}
 
@@ -89,7 +89,7 @@ sub have_dnssec_tools_support
 }
 
 # get_bind_version()
-# Returns the BIND verison number, or undef if unknown
+# Returns the BIND version number, or undef if unknown
 sub get_bind_version
 {
 if (&has_command($config{'named_path'})) {

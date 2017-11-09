@@ -7,8 +7,8 @@
 
 # Works out if local system has the module Digest::MD4, and uses it
 # if it does, otherwise uses ported version of the md4 algorithm
-# Performance is alot better with Digest::MD4, so its recommended to
-# get Digest::MD4 installed if you intend to generate alot of hashes
+# Performance is a lot better with Digest::MD4, so its recommended to
+# get Digest::MD4 installed if you intend to generate a lot of hashes
 # in a small amount of time.
 my $HaveDigestMD4;
 

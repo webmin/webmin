@@ -10,7 +10,7 @@ do "hpux-lib.pl";
 # parse_options($options, \%options)
 # Parse a mount options string like rw=foo,nosuid,... into a associative
 # options array. Parts with no value are given an empty string as the value
-# usefull for HPUX and DFS - perhaps for linux, too
+# useful for HPUX and DFS - perhaps for linux, too
 sub parse_options
 {
 local($opt);
@@ -28,7 +28,7 @@ foreach $opt (split(/,/, $_[0])) {
 # join_options(\%options)
 # Returns a list of options from a options array, in the form used in
 # the exports file
-# usefull for HPUX and DFS - perhaps for linux, too
+# useful for HPUX and DFS - perhaps for linux, too
 sub join_options
 {
 local $o = $_[0];

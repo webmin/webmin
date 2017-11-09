@@ -44,7 +44,7 @@ $in{'footer'} =~ s/\r//g;
 &set_permissions("$ldir/$in{'name'}");
 &unlock_file("$ldir/$in{'name'}");
 
-# use provided template, majordomo provides onyl minimal needed config
+# use provided template, majordomo provides only minimal needed config
 $lfile = "$ldir/$in{'name'}.config";
 # copy listdir template to list.info, fallback copy from template.dist
 if ( ! -f "template/list.config") { &copy_source_dest("template/list.config.dist","template/list.config"); }

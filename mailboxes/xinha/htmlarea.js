@@ -1,6 +1,6 @@
  
   /*--------------------------------------:noTabs=true:tabSize=2:indentSize=2:--
-    --  COMPATABILITY FILE
+    --  COMPATIBILITY FILE
     --  htmlarea.js is now XinhaCore.js  
     --
     --  $HeadURL:http://svn.xinha.webfactional.com/trunk/htmlarea.js $

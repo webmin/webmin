@@ -78,7 +78,7 @@ else {
 		&ui_textbox("other", $_[0]->{'fs'}, 30));
 	}
 
-# Minumum free space
+# Minimum free space
 local $min = $_[0]->{'min'};
 local $pc = ($min =~ s/\%$// ? 1 : 0);
 print &ui_table_row($text{'space_min2'},

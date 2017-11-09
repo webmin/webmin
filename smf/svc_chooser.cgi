@@ -131,7 +131,7 @@ EOF
 				$isvalid = 1;
 				$expand = 0;
 			} elsif ($type eq "inst") {
-				# cannnot select svc...
+				# cannot select svc...
 				$isvalid = 0;
 				$expand = 1;
 			} else {
