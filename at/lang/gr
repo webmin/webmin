@@ -1,0 +1,68 @@
+index_title=Προγραμματισμένες Εντολές
+index_header=Νέα προγραμματισμένη εντολή
+index_user=Εκτέλεση ως χρήστης
+index_date=Εκτέλεση στην ημερομηνία
+index_time=Εκτέλεση στην ώρα
+index_cmd=Εντολές προς εκτέλεση
+index_mail=Αποστολή μηνύματος ηλ. ταχυδρομείου κατά την ολοκλήρωση;
+index_id=ID εργασίας
+index_exec=Εκτέλεση στις
+index_created=Δημιουργήθηκε στις
+index_dir=Εκτέλεση στο φάκελο
+index_return=λίστα εντολών
+index_cdate=Τρέχουσα ημερομηνία
+index_ctime=Τρέχουσα ώρα
+index_allow=Χρήστες που επιτρέπεται να έχουν προγραμματισμένες εντολές
+index_amode=Χρήστες που επιτρέπονται
+index_amode0=Όλοι οι χρήστες Unix
+index_amode1=Μόνοι οι χρήστες της λίστας ..
+index_amode2=Όλοι εκτός από τους χρήστες της λίστας ..
+index_delete=Ακύρωση Επιλεγμένων Εντολών
+index_noat=Η εντολή $1 δεν βρέθηκε στο σύστημά σας - ίσως δεν είναι εγκατεστημένη, ή δεν είναι διαθέσιμη για το λειτουργικό σας σύστημα.
+
+edit_title=Προγραμματισμένη Εντολή
+edit_cmd=Πλήρες αρχείο εντολών προς εκτέλεση
+edit_shortcmd=Εντολή προς εκτέλεση
+edit_header=Λεπτομέρειες προγραμματισμένης εντολής
+edit_delete=Ακύρωση αυτής της εντολής
+edit_run=Εκτέλεση Τώρα
+edit_ejob=Scheduled command no longer exists!
+edit_ecannot=You are not allowed to edit this scheduled command
+edit_showfull=Show full script.
+
+create_err=Failed to created schedule command
+create_euser=Missing or invalid username
+create_edate=Missing or invalid date or time
+create_ecmd=No commands entered
+create_efuture=Date and time is in the past
+create_edir=Missing or invalid directory
+create_ecannot=You are not allowed to create scheduled commands for this user
+create_eallow=The specified user is not allowed to run scheduled commands
+
+delete_err=Failed to cancel command
+delete_egone=Command already run or deleted
+
+acl_users=Can edit scheduled commands for
+acl_all=All users
+acl_this=Current Webmin user
+acl_only=Only users
+acl_except=All except users
+acl_allow=Can edit allowed At users?
+
+run_title=Running Command
+run_output=Output from scheduled command ..
+run_none=No output generated
+
+allow_err=Failed to save allowed users
+allow_ecannot=You are not allowed to manage allowed users
+allow_eusers=No users entered
+
+deletes_err=Failed to cancel commands
+deletes_enone=None selected
+
+log_allow=Changed allowed users
+log_create_job=Created scheduled command for $1
+log_delete_job=Cancelled scheduled command for $1
+log_exec_job=Executed scheduled command for $1
+log_delete_jobs=Cancelled $1 scheduled commands
+__norefs=1
