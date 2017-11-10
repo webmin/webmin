@@ -1,0 +1,6 @@
+index_title=Σύνδεση Τερματικού
+index_epython=Το Ajaxterm χρειάζεται Python για να εκτελεστεί, αλλά η εντολή $1 δεν βρέθηκε στο σύστημά σας.
+index_estart=το Ajaxterm δεν ξεκίνησε να δέχεται συνδέσεις στη θύρα $2 μετά από $1 δευτερόλεπτα.
+index_popup=Άνοιγμα σε ξεχωριστό παράθυρο ..
+index_credits=Χρησιμοποιεί κώδικα από το <a href='$1' target=_new>Ajaxterm</a> του Antony Lesuisse.
+__norefs=1
