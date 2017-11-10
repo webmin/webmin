@@ -26,43 +26,43 @@ edit_shortcmd=Εντολή προς εκτέλεση
 edit_header=Λεπτομέρειες προγραμματισμένης εντολής
 edit_delete=Ακύρωση αυτής της εντολής
 edit_run=Εκτέλεση Τώρα
-edit_ejob=Scheduled command no longer exists!
-edit_ecannot=You are not allowed to edit this scheduled command
-edit_showfull=Show full script.
+edit_ejob=Η προγραμματισμένη εντολή δεν υπάρχει πλέον!
+edit_ecannot=Δεν σας επιτρέπεται να επεξεργαστείτε αυτή την προγραμματισμένη εντολή
+edit_showfull=Προβολή πλήρους αρχείου εντολών.
 
-create_err=Failed to created schedule command
-create_euser=Missing or invalid username
-create_edate=Missing or invalid date or time
-create_ecmd=No commands entered
-create_efuture=Date and time is in the past
-create_edir=Missing or invalid directory
-create_ecannot=You are not allowed to create scheduled commands for this user
-create_eallow=The specified user is not allowed to run scheduled commands
+create_err=Αποτυχία δημιουργίας προγραμματισμένης εντολής
+create_euser=Μη ορισμένο ή μη έγκυρο όνομα χρήστη
+create_edate=Μη ορισμένη ή μη έγκυρη ημερομηνία ή ώρα
+create_ecmd=Δεν εισήχθησαν εντολές
+create_efuture=Η ημερομηνία και η ώρα είναι στο περελθόν
+create_edir=Μη ορισμένος ή μη έγκυρος φάκελος
+create_ecannot=Δεν σας επιτρέπεται να δημιουργήσετε προγραμματισμένες εντολές για αυτόν τον χρήστη
+create_eallow=Ο συγκεκριμένος χρήστης δεν επιτρέπεται να εκτελεί προγραμματισμένες εντολές
 
-delete_err=Failed to cancel command
-delete_egone=Command already run or deleted
+delete_err=Αποτυχία ακύρωσης εντολής
+delete_egone=Η εντολή έχει ήδη εκτελεστεί ή διαγραφεί
 
-acl_users=Can edit scheduled commands for
-acl_all=All users
-acl_this=Current Webmin user
-acl_only=Only users
-acl_except=All except users
-acl_allow=Can edit allowed At users?
+acl_users=Μπορεί να επεξεργαστεί προγραμματισμένες εντολές για
+acl_all=Όλους τους χρήστες
+acl_this=Τον τρέχων χρήστη Webmin
+acl_only=Μόνο τους χρήστες
+acl_except=Όλους εκτός από τους χρήστες
+acl_allow=Μπορεί να επεξεργαστεί τους επιτρεπόμενους χρήστες;
 
-run_title=Running Command
-run_output=Output from scheduled command ..
-run_none=No output generated
+run_title=Εκτέλεση Εντολής
+run_output=Κείμενο εξόδου της προγραμματισμένης εντολής
+run_none=Δεν δημιουργήθηκε κείμενο εξόδου
 
-allow_err=Failed to save allowed users
-allow_ecannot=You are not allowed to manage allowed users
-allow_eusers=No users entered
+allow_err=Αποτυχία αποθήκευσης επιτρεπόμενων χρηστών
+allow_ecannot=Δεν σας επιτρέπεται να διαχειριστείτε τους επιτρεπόμενους χρήστες
+allow_eusers=Δεν εισήχθησαν χρήστες
 
-deletes_err=Failed to cancel commands
-deletes_enone=None selected
+deletes_err=Αποτυχία ακύρωσης εντολών
+deletes_enone=Καμία δεν επιλέχτηκε
 
-log_allow=Changed allowed users
-log_create_job=Created scheduled command for $1
-log_delete_job=Cancelled scheduled command for $1
-log_exec_job=Executed scheduled command for $1
-log_delete_jobs=Cancelled $1 scheduled commands
+log_allow=Άλλαξε τους επιτρεπόμενους χρήστες
+log_create_job=Δημιούργησε προγραμματισμένη εντολή για $1
+log_delete_job=Ακύρωσε προγραμματισμένη εντολή για $1
+log_exec_job=Εκτέλεσε προγραμματισμένη εντολή για $1
+log_delete_jobs=Ακύρωσε $1 προγραμματισμένες εντολές
 __norefs=1
