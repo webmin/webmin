@@ -529,7 +529,7 @@ while(<FDISK>) {
 			}
 		$part->{'type'} = 'ext2' if (!$part->{'type'} ||
 					     $part->{'type'} =~ /^ext/);
-		$part->{'type'} = 'raid' if ($part->{'type'} eq 'ext2' &&
+		$part->{'type'} = 'raid' if ($part->{'type'} =~ /^ext/ &&
 					     $part->{'raid'});
 		$part->{'desc'} = &partition_description($part->{'device'});
 		$part->{'size'} = ($part->{'end'} - $part->{'start'} + 1) *
