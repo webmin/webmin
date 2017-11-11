@@ -112,7 +112,7 @@ else {
 
 	# Save directives within the section
 	&save_directive("enabled", $in{'enabled'} ? 'true' : 'false', $jail);
-	&save_directive("filter", $in{'filter'}, $jail);
+	&save_directive("filter", $in{'filter'} || undef, $jail);
 	&save_directive("action", @actions ? join("\n", @actions)
 					   : undef, $jail);
 	&save_directive("logpath", join("\n", @logpaths), $jail);

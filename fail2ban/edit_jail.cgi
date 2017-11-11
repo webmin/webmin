@@ -43,7 +43,8 @@ my $filter = &find_value("filter", $jail);
 print &ui_table_row($text{'jail_filter'},
 	&ui_select("filter",
 		   $filter,
-		   [ map { &filename_to_name($_->[0]->{'file'}) } @filters ],
+		   [ [ undef, "&lt;$text{'default'}&gt;" ],
+		     map { &filename_to_name($_->[0]->{'file'}) } @filters ],
 		   1, 0, $filter ? 1 : 0));
 
 # Actions to run
