@@ -1,0 +1,206 @@
+index_title=Τρέχουσες Διεργασίες
+index_display=Προβολή
+index_tree=PID
+index_user=Χρήστης
+index_size=Μνήμη
+index_cpu=Επεξεργαστής
+index_search=Αναζήτηση
+index_zone=Ζώνη
+index_run=Εκτέλεση..
+index_return=λίστα διεργασιών
+index_mem2=<b>Πραγματική μνήμη:</b> $1 σύνολο / $2 ελεύθερα
+index_mem3=<b>Πραγματική μνήμη:</b> $1 σύνολο / $2 ελεύθερα / $3 στην cache
+index_swap2=<b>Χώρος swap:</b> $1 σύνολο / $2 ελεύθερα
+index_burst=<b>Burstable μνήμη:</b> $1 σύνολο
+index_loadname=Μέσοι όροι φόρτου επεξεργαστή:
+index_loadnums=$1 (1 λεπτό) , $2 (5 λεπτά) , $3 (15 λεπτά)
+index_cpuname=Τύπος Επεξεργαστή:
+index_inzone=Στη ζώνη $1
+
+pid=ID
+owner=Ιδιοκτήτης
+command=Εντολή
+cpu=Επεξεργαστής
+size=Μέγεθος
+parent=Διεργασία γονέας
+runtime=Χρόνος εκτέλεσης
+nice=Επίπεδο προτεραιότητας
+stime=Ξεκίνησε
+sclass=Κλάση προγραμματισμού IO
+sprio=Προτεραιότητα IO
+
+search_user=Ανήκει σε
+search_match=Ταιριάζει
+search_cpupc=χρησιμοποιεί πάνω από $1% του επεξεργαστή
+search_cpupc2=Χρησιμοποιεί περισσότερο επεξεργαστή από
+search_fs=Χρησιμοποιεί το σύστημα αρχείων
+search_files=Χρησιμοποιεί το αρχείο
+search_submit=Αναζήτηση
+search_none=Δεν βρέθηκαν ταιριαστές διεργασίες
+search_kill=Αποστολή Σινιάλου
+search_ignore=Αγνόηση διεργασιών αναζήτησης στο αποτέλεσμα
+search_return=φόρμα αναζήτησης
+search_sigterm=Διακοπή Διεργασιών
+search_sigkill=Σκότωμα Διεργασιών
+search_port=χρησιμοποιεί τη θύρα
+search_protocol=πρωτόκολλο
+search_ip=Χρησιμοποιεί τη διέυθυνση IP
+
+run_command=Εντολή για εκτέλεση
+run_submit=Εκτέλεση
+run_mode=Λειτουργία εκτέλεσης
+run_bg=Εκτέλεση στο παρασκήνιο
+run_fg=Αναμονή μέχρι να ολοκληρωθεί
+run_input=Εισαγωγή στην εντολή
+run_title=Έξοδος Εντολής
+run_output=Έξοδος από $1 ..
+run_none=δεν δημιουργήθηκε έξοδος
+run_ecannot=Δεν σας επιτρέπεται να εκτελέσετε εντολές
+run_as=Εκτέσεση ως χρήστης
+run_euser=Μη ορισμένο ή μη έγκυρο όνομα χρήστη
+run_euser2=Δεν σας επιτρέπεται να εκτελέσετε εντολές ως ο χρήστης που επιλέξατε
+
+edit_title=Process Information
+edit_gone=This process is no longer running
+edit_sub=Subprocesses
+edit_subid=ID
+edit_subcmd=Sub-process command
+edit_kill=Send Signal
+edit_change=Change
+edit_prilow=Low priority
+edit_prihigh=High priority
+edit_pridef=Default
+edit_none=None
+edit_ecannot=You are not allowed to edit processes
+edit_sigterm=Terminate
+edit_sigkill=Kill
+edit_sigstop=Suspend
+edit_sigcont=Resume
+edit_open=Files and Connections
+edit_trace=Trace Process
+edit_return=process details
+
+kill_err=Failed to send signal $1 to process $2
+kill_title=Send Signal
+kill_sent=sent
+kill_ecannot=You are not allowed to kill processes
+
+renice_err=Failed to renice process $1
+renice_ecannot=You are not allowed to renice processes
+
+linux_pri=Priority
+linux_tty=TTY
+linux_status=Status
+linux_wchan=Waiting In
+linux_mem=Memory
+linux_group=Group
+linux_ruser=Real user
+linux_rgroup=Real group
+linux_pgid=Process group ID
+linux_stime=Started
+
+linuxstat_R=Running
+linuxstat_S=Sleeping
+linuxstat_D=Deep sleep
+linuxstat_T=Stopped
+linuxstat_Z=Zombie
+
+linux_real=Real time
+linux_be=Best effort
+linux_idle=Idle
+
+freebsd_ruser=Real user
+freebsd_rgroup=Real group
+freebsd_tty=TTY
+freebsd_pgid=Process group
+freebsd_stime=Started
+freebsd_lim=Memory limit
+
+hpux_pri=Priority
+hpux_tty=TTY
+hpux_status=Status
+hpux_wchan=Waiting for
+hpux_stime=Started
+
+hpuxstat_0=Nonexistent
+hpuxstat_S=Sleeping
+hpuxstat_W=Waiting
+hpuxstat_R=Running
+hpuxstat_I=Intermediate
+hpuxstat_Z=Zombie
+hpuxstat_T=Stopped
+hpuxstat_G=Growing
+
+macos_tty=TTY
+
+sysv_group=Group
+sysv_ruser=Real user
+sysv_rgroup=Real group
+sysv_pgid=Process group ID
+sysv_tty=TTY
+sysv_stime=Started
+sysv_task=Task ID
+sysv_zone=Zone name
+
+log_run=Ran command "$1"
+log_kill=Sent signal $1 to process $2
+log_kills=Send signal $1 to $2 processes
+log_kill_l=Sent signal $1 to process $2
+log_kills_l=Sent signal $1 to processes<br>$2
+log_renice=Changed priority of process $2 to $1
+
+acl_manage=Manage processes as user
+acl_manage_def=Current Webmin user
+acl_edit=Can kill and renice processes?
+acl_run=Can run commands?
+acl_only=Can only see own processes?
+acl_who=Can manage processes for users
+acl_who0=All users
+acl_who1=Current Webmin user
+acl_who2=Listed users ..
+
+kill_kill=Kill Process
+kill_term=&nbsp;Terminate&nbsp;&nbsp;
+kill_hup=&nbsp;&nbsp;Restart&nbsp;&nbsp;&nbsp;
+kill_stop=&nbsp;&nbsp;&nbsp;&nbsp;Stop&nbsp;&nbsp;&nbsp;&nbsp;
+kill_cont=&nbsp;&nbsp;Continue&nbsp;&nbsp;
+
+open_title=Open Files and Connections
+open_proc=For process $1 (PID $2)
+open_header1=Open files
+open_header2=Open network connections
+open_type=Type
+open_proto=Protocol
+open_desc=Details
+open_fd=File Descriptor
+open_listen1=Listening on port $1
+open_listen2=Listening on address $1 port $2
+open_recv=Receiving on $1:$2
+open_conn=Connected from $1 to $2 in state $3
+open_cwd=Current dir
+open_rtd=Root dir
+open_txt=Program code
+open_mem=Shared library
+open_dir=Directory
+open_reg=Regular file
+open_chr=Character special
+open_blk=Block special
+open_size=File size
+open_inode=Inode
+open_file=Path
+
+trace_title=Διαδικασία Ανίχνευσης
+trace_start=Starting system call trace for $1 ..
+trace_doing=System call trace for $1 :
+trace_done=.. διεργασία έχει τερματιστεί.
+trace_failed=.. ανίχνευση απέτυχε!
+trace_sorry=Αυτή η σελίδα απαιτεί υποστήριξη Java στο πρόγραμμα περιήγησης. Για να χρησιμοποιήσετε ανίχνευση διεργασίας σε μορφή μόνο κειμένου, ρυθμίστε τις ρυθμίσεις της ενότητας.
+trace_syscalls=Trace system calls:
+trace_all=Όλες
+trace_sel=Listed..
+trace_change=Αλλαγή
+
+windows_threads=Threads in process
+
+syslog_dmesg=Μυνήματα πυρήνα
+__norefs=1
