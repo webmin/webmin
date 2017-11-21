@@ -96,8 +96,7 @@ elsif ($_[0]->{'mismatch'} && $_[0]->{'url'} &&
 		$ok++ if ($host =~ /^$match$/i);
 		}
 	if (!$ok) {
-		$desc = &text('sslcert_ematch', "<tt>$host</tt>",
-			      "<tt>$cn</tt>");
+		$desc = &text('sslcert_ematch', $host, $cn);
 		}
 	}
 
