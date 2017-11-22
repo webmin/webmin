@@ -21,6 +21,12 @@ def dns_digest(key):
     rv = base64.b64encode(out).replace("+", "-").replace("/", "_").rstrip("=")
     return rv
 
+def extract_detail(result):
+    rv = json.loads(result.decode('utf8'))
+    if 'detail' in rv:
+        return rv['detail']
+    return result
+
 def get_crt(account_key, csr, acme_dir, dns_hook, cleanup_hook, log=LOGGER, CA=DEFAULT_CA):
     # helper function base64 encode for jose spec
     def _b64(b):
@@ -32,6 +38,7 @@ def get_crt(account_key, csr, acme_dir, dns_hook, cleanup_hook, log=LOGGER, CA=D
         stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     out, err = proc.communicate()
     if proc.returncode != 0:
+	log.error("OpenSSL Error: {0}".format(err))
         raise IOError("OpenSSL Error: {0}".format(err))
     pub_hex, pub_exp = re.search(
         r"modulus:\n\s+00:([a-f0-9\:\s]+?)\npublicExponent: ([0-9]+)",
@@ -76,6 +83,7 @@ def get_crt(account_key, csr, acme_dir, dns_hook, cleanup_hook, log=LOGGER, CA=D
         stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     out, err = proc.communicate()
     if proc.returncode != 0:
+        log.error("Error loading {0}: {1}".format(csr, err))
         raise IOError("Error loading {0}: {1}".format(csr, err))
     domains = set([])
     common_name = re.search(r"Subject:.*? CN\s?=\s?([^\s,;/]+)", out.decode('utf8'))
@@ -103,6 +111,7 @@ def get_crt(account_key, csr, acme_dir, dns_hook, cleanup_hook, log=LOGGER, CA=D
     elif code == 409:
         log.info("Already registered!")
     else:
+	log.error("Error registering: {0}".format(extract_detail(result)))
         raise ValueError("Error registering: {0} {1}".format(code, result))
 
     # verify each domain
@@ -119,6 +128,7 @@ def get_crt(account_key, csr, acme_dir, dns_hook, cleanup_hook, log=LOGGER, CA=D
             "identifier": {"type": "dns", "value": domain},
         })
         if code != 201:
+            log.error("Error requesting challenges: {0}".format(extract_detail(result)))
             raise ValueError("Error requesting challenges: {0} {1}".format(code, result))
 
 	# create the challenge string
@@ -154,6 +164,7 @@ def get_crt(account_key, csr, acme_dir, dns_hook, cleanup_hook, log=LOGGER, CA=D
             "keyAuthorization": keyauthorization,
         })
         if code != 202:
+            log.error("Error triggering challenge: {0}".format(extract_detail(result)))
             raise ValueError("Error triggering challenge: {0} {1}".format(code, result))
 
         # wait for challenge to be verified (for up to 240 seconds)
@@ -163,11 +174,13 @@ def get_crt(account_key, csr, acme_dir, dns_hook, cleanup_hook, log=LOGGER, CA=D
                 resp = urlopen(challenge['uri'])
                 challenge_status = json.loads(resp.read().decode('utf8'))
             except IOError as e:
+		log.error("Error checking challenge: {0}".format(e.code))
                 raise ValueError("Error checking challenge: {0} {1}".format(
                     e.code, json.loads(e.read().decode('utf8'))))
             if challenge_status['status'] == "pending":
 		tries = tries + 1
 		if tries > 120:
+		    log.error("Gave up waiting for validation")
 		    raise ValueError("Gave up waiting for validation")
                 time.sleep(2)
             elif challenge_status['status'] == "valid":
@@ -180,6 +193,7 @@ def get_crt(account_key, csr, acme_dir, dns_hook, cleanup_hook, log=LOGGER, CA=D
                     os.remove(wellknown_path)
                 break
             else:
+		log.error("{0} challenge did not pass: {1}".format(domain, challenge_status['error']['detail']))
                 raise ValueError("{0} challenge did not pass: {1}".format(
                     domain, challenge_status))
 
@@ -193,6 +207,7 @@ def get_crt(account_key, csr, acme_dir, dns_hook, cleanup_hook, log=LOGGER, CA=D
         "csr": _b64(csr_der),
     })
     if code != 201:
+	log.error("Error signing certificate: {0} {1}".format(code, extract_detail(result)))
         raise ValueError("Error signing certificate: {0} {1}".format(code, result))
 
     # return signed certificate!
