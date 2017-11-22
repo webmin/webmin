@@ -247,6 +247,18 @@ else {
 			  : "").
 		"2>&1 >".quotemeta($cert));
 	if ($?) {
+		my @lines = split(/\r?\n/, $out);
+		my $trace;
+		for(my $i=1; $i<@lines; $i++) {
+			if ($lines[$i] =~ /^Traceback\s+/) {
+				$trace = $i;
+				last;
+				}
+			}
+		if ($trace) {
+			@lines = @lines[0 .. $trace-1];
+			$out = join("\n", @lines);
+			}
 		return (0, &text('letsencrypt_etiny',
 				 "<pre>".&html_escape($out))."</pre>");
 		}
