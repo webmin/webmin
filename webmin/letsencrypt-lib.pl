@@ -245,6 +245,7 @@ else {
 				  "--cleanup-hook $cleanup_hook ").
 		($staging ? "--ca https://acme-staging.api.letsencrypt.org "
 			  : "").
+		"--quiet ".
 		"2>&1 >".quotemeta($cert));
 	if ($?) {
 		my @lines = split(/\r?\n/, $out);
