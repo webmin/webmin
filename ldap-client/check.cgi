@@ -21,10 +21,10 @@ if (&get_ldap_client() eq "nss") {
 else {
 	# Newer LDAP versions have a base starting with 'user', but fall back
 	# to the one with no DB
-	($user_base) = map { /^\S+\s+(\S+)/; $1 }
+	($user_base) = map { /^\S+\s+(\S+=*)/; $1 }
 		           grep { /^passwd\s/ } @bases;
 	if (!$user_base) {
-		($user_base) = grep { /^\S+$/ } @bases;
+		($user_base) = grep { /^\S+=.*$/ } @bases;
 		}
 	}
 if (!$user_base) {
