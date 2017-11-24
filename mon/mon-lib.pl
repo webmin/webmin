@@ -167,7 +167,7 @@ local $idx = &indexof($_[1], @{$_[0]}) if ($_[1]);
 local $olen = $_[1]->{'eline'} - $_[1]->{'line'} + 1 if ($_[1]);
 local $conf = &get_mon_config();
 local @dirs = &directive_lines($_[2], $_[2]->{'indent'}) if ($_[2]);
-if ($_[1]) {
+if ($_[1] && $_[2]) {
 	# Replace the old directive
 	splice(@$lref, $_[1]->{'line'}, $_[1]->{'eline'} - $_[1]->{'line'} + 1,
 	       @dirs);
@@ -176,7 +176,7 @@ if ($_[1]) {
 	$_[2]->{'line'} = $_[1]->{'line'};
 	$_[2]->{'eline'} = $_[2]->{'line'} + @dirs - 1;
 	}
-elsif (!$_[2]) {
+elsif ($_[1] && !$_[2]) {
 	# Remove the old directive
 	splice(@$lref, $_[1]->{'line'}, $_[1]->{'eline'} - $_[1]->{'line'} + 1);
 	splice(@{$_[0]}, $idx, 1);
