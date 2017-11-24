@@ -28,6 +28,8 @@ while(<LANG>) {
 close(LANG);
 
 # Find languages with common character sets
+@fiveone_langs = map { $_->{'lang'} }
+		       grep { $_->{'charset'} eq 'windows-1251' } @langs;
 @fivenine_langs = map { $_->{'lang'} }
 		      grep { $_->{'charset'} eq 'iso-8859-2' } @langs;
 @fifteen_langs = map { $_->{'lang'} }
@@ -52,6 +54,11 @@ foreach $m (@modules) {
 		}
 	if (-r "$m/lang/ru_SU") {
 		system("iconv -f KOI8-R -t UTF-8 - <$m/lang/ru_SU >$m/lang/ru.UTF-8");
+		}
+	foreach $l (@fiveone_langs) {
+		if (-r "$m/lang/$l") {
+			system("iconv -f windows-1251 -t UTF-8 - <$m/lang/$l >$m/lang/$l.UTF-8");
+			}
 		}
 	foreach $l (@fivenine_langs) {
 		if (-r "$m/lang/$l") {
@@ -87,6 +94,12 @@ foreach $m (@modules) {
 		}
 	if ($minfo{'desc_ru_SU'}) {
 		$minfo{'desc_ru.UTF-8'} = &KOI8ToUTF8($minfo{'desc_ru_SU'});
+		}
+	foreach $l (@fiveone_langs) {
+		if ($minfo{'desc_'.$l}) {
+			$minfo{'desc_'.$l.'.UTF-8'} =
+				&Windows1251ToUTF8($minfo{'desc_'.$l});
+			}
 		}
 	foreach $l (@fivenine_langs) {
 		if ($minfo{'desc_'.$l}) {
@@ -148,6 +161,16 @@ foreach $m (@modules) {
 			$cinfo{$k} = &KOI8ToUTF8($cinfo{$k});
 			}
 		&write_file_diff("$m/config.info.ru.UTF-8", \%cinfo);
+		}
+	foreach $l (@fiveone_langs) {
+		%cinfo = ( );
+		if (&read_file("$m/config.info.$l", \%cinfo)) {
+			local %ocinfo = %cinfo;
+			foreach $k (keys %cinfo) {
+				$cinfo{$k} = &Windows1251ToUTF8($cinfo{$k});
+				}
+			&write_file_diff("$m/config.info.$l.UTF-8", \%cinfo);
+			}
 		}
 	foreach $l (@fivenine_langs) {
 		%cinfo = ( );
@@ -229,6 +252,17 @@ foreach $m (@modules) {
 			close(IN);
 			}
 		else {
+			foreach $l (@fiveone_langs) {
+				if ($h =~ /(\S+)\.$l\.html$/) {
+					open(IN, "$m/help/$h");
+					open(OUT, ">$m/help/$1.$l.UTF-8.html");
+					while(<IN>) {
+						print OUT &Windows1251ToUTF8($_);
+						}
+					close(OUT);
+					close(IN);
+					}
+				}
 			foreach $l (@fivenine_langs) {
 				if ($h =~ /(\S+)\.$l\.html$/) {
 					open(IN, "$m/help/$h");
@@ -323,6 +357,18 @@ open(TEMP, ">$temp");
 print TEMP $str;
 close(TEMP);
 local $out = `iconv -f KOI8-R -t UTF-8 - <$temp`;
+unlink($temp);
+return $out;
+}
+
+sub Windows1251ToUTF8
+{
+local ($str) = @_;
+local $temp = "/tmp/$$.cn";
+open(TEMP, ">$temp");
+print TEMP $str;
+close(TEMP);
+local $out = `iconv -f windows-1251 -t UTF-8 - <$temp`;
 unlink($temp);
 return $out;
 }
