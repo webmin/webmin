@@ -485,5 +485,21 @@ if (&has_command("sensors")) {
 return @rv;
 }
 
+# get_cpu_io_usage()
+# Returns a list containing CPU user, kernel, idle, io and VM time, and IO
+# blocks in and out
+sub get_cpu_io_usage
+{
+my $out = &backquote_command("vmstat 1 2 2>/dev/null");
+return ( ) if ($?);
+my @lines = split(/\r?\n/, $out);
+my @w = split(/\s+/, $lines[$#lines]);
+shift(@w) if ($w[0] eq '');
+if ($w[8] =~ /^\d+$/ && $w[9] =~ /^\d+$/) {
+	return ( @w[12..16], $w[8], $w[9] );
+	}
+return undef;
+}
+
 1;
 

@@ -75,27 +75,14 @@ my @drive = &get_current_drive_temps();
 $info->{'drivetemps'} = \@drive if (@drive);
 
 # IO input and output
-if ($gconfig{'os_type'} =~ /-linux$/ || $gconfig{'os_type'} eq 'freebsd') {
-	my $out = &backquote_command("vmstat 1 2 2>/dev/null");
-	if (!$?) {
-		my @lines = split(/\r?\n/, $out);
-		my @w = split(/\s+/, $lines[$#lines]);
-		shift(@w) if ($w[0] eq '');
-		if ($gconfig{'os_type'} =~ /-linux$/) {
-			# Linux format
-			if ($w[8] =~ /^\d+$/ && $w[9] =~ /^\d+$/) {
-				# Blocks in and out
-				$info->{'io'} = [ $w[8], $w[9] ];
-
-				# CPU user, kernel, idle, io, vm
-				$info->{'cpu'} = [ @w[12..16] ];
-				}
-			}
-		else {
-			# BSD format
-			# CPU user, kernel, idle
-			$info->{'cpu'} = [ $w[-3], $w[-2], $w[-1], 0, 0 ];
-			}
+if (defined(&proc::get_cpu_io_usage)) {
+	my ($user, $kernel, $idle, $io, $vm, $bin, $bout) =
+		&proc::get_cpu_io_usage();
+	if (defined($bin)) {
+		$info->{'io'} = [ $bin, $bout ];
+		}
+	if (defined($user)) {
+		$info->{'cpu'} = [ $user, $kernel, $idle, $io, $vm ];
 		}
 	}
 

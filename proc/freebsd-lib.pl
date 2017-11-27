@@ -160,5 +160,18 @@ if ($out =~ /hw.ncpu:\s+(\d+)/) {
 return @load;
 }
 
+# get_cpu_io_usage()
+# Returns a list containing CPU user, kernel and idle time
+# blocks in and out
+sub get_cpu_io_usage
+{
+my $out = &backquote_command("vmstat 1 2 2>/dev/null");
+return ( ) if ($?);
+my @lines = split(/\r?\n/, $out);
+my @w = split(/\s+/, $lines[$#lines]);
+shift(@w) if ($w[0] eq '');
+return ( $w[-3], $w[-2], $w[-1], 0, 0, undef, undef );
+}
+
 1;
 
