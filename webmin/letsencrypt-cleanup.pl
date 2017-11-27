@@ -2,11 +2,15 @@
 # Called by the let's encrypt client to remove a DNS record for validation
 
 $no_acl_check++;
-$ENV{'WEBMIN_CONFIG'} = "/etc/webmin";
-$ENV{'WEBMIN_VAR'} = "/var/webmin";
+$ENV{'WEBMIN_CONFIG'} ||= "/etc/webmin";
+$ENV{'WEBMIN_VAR'} ||= "/var/webmin";
 if ($0 =~ /^(.*\/)[^\/]+$/) {
         chdir($1);
         }
+else {
+	chop($pwd = `pwd`);
+	}
+$0 = "$pwd/letsencrypt-cleanup.pl";
 require './webmin-lib.pl';
 &foreign_require("bind8");
 
