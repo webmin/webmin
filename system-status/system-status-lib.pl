@@ -26,7 +26,7 @@ my $info = { };
 
 if (&foreign_check("proc")) {
 	# CPU and memory
-	&foreign_require("proc", "proc-lib.pl");
+	&foreign_require("proc");
 	if (defined(&proc::get_cpu_info)) {
 		my @c = &proc::get_cpu_info();
 		$info->{'load'} = \@c;
@@ -67,8 +67,10 @@ if (&foreign_installed("package-updates") && $config{'collect_pkgs'}) {
 	}
 
 # CPU and drive temps
-my @cpu = &get_current_cpu_temps();
-$info->{'cputemps'} = \@cpu if (@cpu);
+if (!$config{'collect_notemp'} && defined(&proc::get_current_cpu_temps)) {
+	my @cpu = &proc::get_current_cpu_temps();
+	$info->{'cputemps'} = \@cpu if (@cpu);
+	}
 my @drive = &get_current_drive_temps();
 $info->{'drivetemps'} = \@drive if (@drive);
 
@@ -429,30 +431,6 @@ if (!$config{'collect_notemp'} &&
 				}
 			}
 		}
-	}
-return @rv;
-}
-
-# get_current_cpu_temps()
-# Returns a list of hashes containing core and temp keys
-sub get_current_cpu_temps
-{
-my @rv;
-if (!$config{'collect_notemp'} &&
-    $gconfig{'os_type'} =~ /-linux$/ && &has_command("sensors")) {
-	my $fh = "SENSORS";
-	&open_execute_command($fh, "sensors </dev/null 2>/dev/null", 1);
-	while(<$fh>) {
-		if (/Core\s+(\d+):\s+([\+\-][0-9\.]+)/) {
-			push(@rv, { 'core' => $1,
-				    'temp' => $2 });
-			}
-		elsif (/CPU:\s+([\+\-][0-9\.]+)/) {
-			push(@rv, { 'core' => 0,
-				    'temp' => $1 });
-			}
-		}
-	close($fh);
 	}
 return @rv;
 }

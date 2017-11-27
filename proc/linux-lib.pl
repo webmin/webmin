@@ -462,5 +462,28 @@ local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $? ? $out : undef;
 }
 
+# get_current_cpu_temps()
+# Returns a list of hash refs containing CPU temperatures
+sub get_current_cpu_temps
+{
+my @rv;
+if (&has_command("sensors")) {
+        my $fh = "SENSORS";
+        &open_execute_command($fh, "sensors </dev/null 2>/dev/null", 1);
+        while(<$fh>) {
+                if (/Core\s+(\d+):\s+([\+\-][0-9\.]+)/) {
+                        push(@rv, { 'core' => $1,
+                                    'temp' => $2 });
+                        }
+                elsif (/CPU:\s+([\+\-][0-9\.]+)/) {
+                        push(@rv, { 'core' => 0,
+                                    'temp' => $1 });
+                        }
+                }
+        close($fh);
+        }
+return @rv;
+}
+
 1;
 
