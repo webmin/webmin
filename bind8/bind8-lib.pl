@@ -3417,7 +3417,7 @@ while($tries++ < 10) {
 		"cd ".quotemeta($dir)." && ".
 		"$config{'signzone'} -o ".quotemeta($dom).
 		($alg =~ /^NSEC3/ ? " -3 -" : "").
-		" -f ".quotemeta($signed)." ".
+		" -f ".quotemeta($signed)." -P ".
 		quotemeta($chrootfn)." 2>&1");
 	last if (!$?);
 	}
