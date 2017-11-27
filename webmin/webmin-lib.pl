@@ -2112,10 +2112,10 @@ $org =~ s/[\177-\377]//g if ($org);		# Remove non-ascii chars
 $orgunit =~ s/[\177-\377]//g if ($orgunit);
 my @cns = ref($cn) ? @$cn : ( $cn );
 my $subject;
-$city = substr($city, 0, 64) if (length($city) > 64);
-$org = substr($org, 0, 64) if (length($org) > 64);
-$orgunit = substr($orgunit, 0, 64) if (length($org) > 64);
-$email = substr($email, 0, 64) if (length($email) > 64);
+$city = substr($city, 0, 64) if ($city && length($city) > 64);
+$org = substr($org, 0, 64) if ($org && length($org) > 64);
+$orgunit = substr($orgunit, 0, 64) if ($orgunit && length($orgunit) > 64);
+$email = substr($email, 0, 64) if ($email && length($email) > 64);
 $subject .= "/C=$country" if ($country);
 $subject .= "/ST=$state" if ($state);
 $subject .= "/L=$city" if ($city);
