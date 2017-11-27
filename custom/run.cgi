@@ -40,8 +40,9 @@ if ($cmd->{'format'} ne 'redirect' && $cmd->{'format'} ne 'form') {
 		print "\n";
 		}
 	else {
-		&ui_print_unbuffered_header($cmd->{'desc'}, $text{'run_title'},
-					    "", -d "help" ? "run" : undef);
+		&ui_print_unbuffered_header(
+			&html_escape($cmd->{'desc'}), $text{'run_title'},
+			"", -d "help" ? "run" : undef);
 		}
 	}
 
