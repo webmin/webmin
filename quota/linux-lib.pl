@@ -84,7 +84,7 @@ sub quota_can
 {
 my %exclude_mounts;
 if (&has_command("findmnt")) {
-	%exclude_mounts = map { $_ => 1 } split( /\n/m, backquote_command('findmnt | grep -oP \'\[\K[^\]]+\'') );
+	%exclude_mounts = map { $_ => 1 } split( /\n/m, backquote_command('findmnt -r | grep -oP \'^(\S+)(?=.*\[\/)\'') );
 	}
     
 # Not possible on bind mounts
