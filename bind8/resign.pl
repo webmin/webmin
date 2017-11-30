@@ -65,7 +65,7 @@ foreach my $z (@zones) {
 		}
 	my $old = (time() - $st[9]) / (24*60*60);
 	print STDERR "  Age in days $old\n" if ($debug);
-	if ($old > $config{'dnssec_period'}) {
+	if ($old > $period) {
 		# Too old .. signing
 		my $err = &resign_dnssec_key($z);
 		if ($err) {
