@@ -165,7 +165,10 @@ return @load;
 # blocks in and out
 sub get_cpu_io_usage
 {
-my $out = &backquote_command("vmstat 1 2 2>/dev/null");
+my $out = &backquote_command("vmstat 0.1 2 2>/dev/null");
+if ($?) {
+	$out = &backquote_command("vmstat 1 2 2>/dev/null");
+	}
 return ( ) if ($?);
 my @lines = split(/\r?\n/, $out);
 my @w = split(/\s+/, $lines[$#lines]);
