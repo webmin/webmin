@@ -29,16 +29,16 @@ foreach $a (@aliases) {
 
 # Offer to setup aliases
 if (!$majordomo_alias) {
-	print "<p>$text{'index_setupdesc'}\n";
-	print "<center><form action=alias_setup.cgi>\n";
+	print ui_alert_box($text{'index_setupdesc'}, "warn");
+	print ui_form_start("alias_setup.cgi", "post");
 	if (!$majordomo_owner) {
 		print "<b>$text{'index_owner'}</b>\n";
-		print "<input name=owner size=25>\n";
-		print "<input type=hidden name=owner_a value='$owner'>\n";
+		print ui_textbox("owner", "", 25);
+		print ui_hidden("owner_a", $owner);
 		}
-	print "<input type=hidden name=email_a value='$email'>\n";
-	print "<input type=submit value=\"$text{'index_setup'}\">\n";
-	print "</form></center>\n";
+	print ui_hidden("email_a", $email);
+	print ui_submit($text{'index_setup'});
+	print ui_form_end();
 	print &ui_hr();
 	}
 
@@ -49,15 +49,13 @@ map { $lcan{$_}++ } split(/\s+/, $access{'lists'});
 # top links
 local $otherbut, $bcss=' style="display: box; float: left; padding: 10px;"';
 if ($access{'create'}) {
-        print "<div $bcss><form action=\"create_form.cgi\">".&ui_submit($text{'index_add'})."</form></div>\n";
-        print "<div $bcss><form action=\"digest_form.cgi\">".&ui_submit($text{'index_digest'})."</form></div>\n";
-	print "<style>hr {display: none;></style>"
+        print "<div $bcss>".ui_form_start("create_form.cgi", "post").&ui_submit($text{'index_add'}).ui_form_end()."</div>";
+        print "<div $bcss>".ui_form_start("digest_form.cgi", "post").&ui_submit($text{'index_digest'}).ui_form_end()."</div>";
 	}
 
 if ($access{'global'}) {
-	print "<div $bcss><form action=\"edit_global.cgi\" method=\"post\">",
-        	&ui_submit($text{'index_global'})."</form></div>\n";
-	print "<div style=\"padding-top: 10px;\">$text{'index_globaldesc'}</div>\n";
+	print  "<div $bcss>".ui_form_start("edit_global.cgi", "post").&ui_submit($text{'index_global'}).ui_form_end()."</div>";
+	#print "$text{'index_globaldesc'}\n";
 	}
 	
     # table header
@@ -92,16 +90,7 @@ if (@lists) {
 	print &ui_columns_end();
 } else {
 	print &ui_columns_end();
-	print "<b>$text{'index_none'}</b>.<p>\n";
+	print  ui_alert_box($text{'index_none'}, "info");#"<b>$text{'index_none'}</b>.<p>\n";
     }
 
 &ui_print_footer("/", $text{'index'});
-print 	"<script>",
-       	"f__lnk_t_btn(['/majordomo/', '/majordomo/index.cgi'], 'table tbody td',",
-       	" 'a[href*=\"edit_info.cgi?\"], a[href*=\"edit_members.cgi?\"], a[href*=\"edit_subs.cgi?\"],",
-		" a[href*=\"edit_mesg.cgi?\"]',",
-       		" 'btn btn-transparent btn-xs vertical-align-top margined-top-2', 'fa-edit');",
-	"document.querySelectorAll('tbody td .btn.btn-transparent').forEach(function(button) {",
-		" button.innerHTML=button.innerHTML.replace(/<\\/i>.*edit/,'');});",
-	"</script>",
-	"<style>.btn.btn-transparent { padding: 0 !important; color: grey;}</style>";

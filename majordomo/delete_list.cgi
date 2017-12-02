@@ -90,8 +90,7 @@ else {
 
 	# ask the user if he is sure
 	&ui_print_header(undef, $text{'delete_title'}.": ".&html_escape($in{'name'}), "");
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td>".&text('delete_rusure', "<font color=\"red\">".&html_escape($name)."</font>"),"</td>";
+	print ui_table_start(&text('delete_rusure', "<font color=\"red\">".&html_escape($name)."</font>", undef, 2);
 	print "<tr $cb> <td><table $tcss>\n";
 	      "</b><br>\n";
 	print "<ul>\n";
