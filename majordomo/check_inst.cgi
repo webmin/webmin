@@ -116,8 +116,8 @@ if ( $res eq $ok) {
 		if ($? != 0) {$res=$fail;}
 		print &ui_checked_columns_row(["<b>Run Majormomo internal test</b>", $cmd, $res] ,
 				\@tds,undef, undef, 0,1);
-		print "<td></td><td></td>";
-		print "<td colspan=\"2\"><pre>$text</pre></td>";
+	        print &ui_checked_columns_row(["", "<pre>${text}</pre>", ""],
+			 \@tds,undef, undef, 0,1);
 		}
 	}
 print &ui_columns_end();
