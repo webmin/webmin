@@ -183,8 +183,9 @@ else {
 
 	# Allow selection of a table
 	print "<table width=100%><tr>\n";
+	print "<td>\n";
 	print "<form action=index.cgi>\n";
-	print "<td><input type=submit value='$text{'index_change'}'>\n";
+	print "<input type=submit value='$text{'index_change'}'>\n";
         print &ui_hidden("version", ${ipvx_arg});
 	print "<select name=table onChange='form.submit()'>\n";
 	foreach $t (@tables) {
@@ -194,19 +195,22 @@ else {
 			    &text('index_table_'.$t->{'name'}) || $t->{'name'};
 			}
 		}
-	print "</select></td></form>\n";
+	print "</select></form>\n";
+	print "</td>\n";
 	$form++;
 
 	if ($access{'newchain'}) {
 		# Show form to create a chain
+		print "<td align=right>\n";
 		print "<form action=newchain.cgi>\n";
-		print "<td align=right>",&ui_hidden("table", $in{'table'});
+		print &ui_hidden("table", $in{'table'});
                 print &ui_hidden("version", ${ipvx_arg});
 		print "<input type=submit value='$text{'index_cadd'}'>\n";
-		print "<input name=chain size=20></td></form>\n";
-		print "</tr></table>\n";
+		print "<input name=chain size=20></form>\n";
+		print "</td>\n";
 		$form++;
 		}
+	print "</tr></table>\n";
 
         # Display a table of rules for each chain
         CHAIN:
