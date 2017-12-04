@@ -971,6 +971,8 @@ return $uinfo;
 sub get_auto_whitelist_file
 {
 local ($user) = @_;
+local @uinfo = $module_info{'usermin'} ? @remote_user_info :
+	       $user ? getpwnam($user) : ( );
 local $conf = &get_config();
 local $awp = &find("auto_whitelist_path", $conf);
 if (!$awp) {
@@ -979,8 +981,6 @@ if (!$awp) {
 $awp ||= "~/.spamassassin/auto-whitelist";
 if ($awp !~ /^\//) {
 	# Make absolute
-	local @uinfo = $module_info{'usermin'} ? @remote_user_info :
-		       $user ? getpwnam($user) : ( );
 	return undef if (scalar(@uinfo) == 0);
 	$awp =~ s/^(\~|\$HOME)\//$uinfo[7]\//;
 	if ($awp !~ /^\//) {
@@ -991,6 +991,10 @@ if ($awp !~ /^\//) {
 if (!-r $awp) {
 	local @real = glob("$awp.*");
 	$awp = undef if (!@real);
+	}
+# Is it under the user's home?
+if (!&is_under_directory($uinfo[7], $awp)) {
+	$awp = undef;
 	}
 return $awp;
 }
