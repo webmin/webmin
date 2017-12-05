@@ -202,5 +202,5 @@ trace_change=Αλλαγή
 
 windows_threads=Νήματα σε εξέλιξη
 
-syslog_dmesg=Μυνήματα πυρήνα
+syslog_dmesg=Μηνύματα πυρήνα
 __norefs=1
