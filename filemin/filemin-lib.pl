@@ -67,7 +67,7 @@ sub get_paths {
         @allowed_paths = map { $_ eq '$HOME' ? @remote_user_info[7] : $_ }
                              @allowed_paths;
         @allowed_paths = map { s/\$USER/$remote_user/g; $_ } @allowed_paths;
-        if (scalar(@allowed_paths == 1)) {
+        if (scalar(@allowed_paths) == 1) {
             $base = $allowed_paths[0];
         } else {
             $base = '/';
