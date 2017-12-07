@@ -483,7 +483,6 @@ else
 	echo "errorlog=$var_dir/miniserv.error" >> $cfile
 	echo "pidfile=$var_dir/miniserv.pid" >> $cfile
 	echo "logtime=168" >> $cfile
-	echo "ppath=$ppath" >> $cfile
 	echo "ssl=$ssl" >> $cfile
 	echo "no_ssl2=1" >> $cfile
 	echo "no_ssl3=1" >> $cfile
