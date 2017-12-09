@@ -1542,7 +1542,7 @@ for(my $i=1; $i<@_; $i++) {
 		# Compare with an IPv6 network
 		my $v6size = $2;
 		my $v6addr = &canonicalize_ip6($1);
-		my $bytes = $v6size / 16;
+		my $bytes = $v6size / 8;
 		my @mo = split(/:/, $v6addr);
 		my @io = split(/:/, &canonicalize_ip6($_[0]));
 		for(my $j=0; $j<$bytes; $j++) {
@@ -1614,8 +1614,8 @@ elsif ($h =~ /^([a-f0-9:]+)\/(\d+)$/) {
 		return &text('access_eip6', $1);
 	$2 >= 0 && $2 <= 128 ||
 		return &text('access_ecidr6', "$2");
-	$2 % 16 == 0 ||
-		return &text('access_ecidr16', "$2");
+	$2 % 8 == 0 ||
+		return &text('access_ecidr8', "$2");
 	}
 elsif ($h =~ /^[a-f0-9:]+$/) {
 	# IPv6 address

@@ -2849,7 +2849,7 @@ for($i=2; $i<@_; $i++) {
 		# Compare with an IPv6 network
 		local $v6size = $2;
 		local $v6addr = &canonicalize_ip6($1);
-		local $bytes = $v6size / 16;
+		local $bytes = $v6size / 8;
 		@mo = split(/:/, $v6addr);
 		local @io6 = split(/:/, &canonicalize_ip6($_[0]));
 		for($j=0; $j<$bytes; $j++) {
