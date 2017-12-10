@@ -67,9 +67,12 @@ index_ecmd=Der Befehl $1 wurde auf Ihrem System nicht gefunden. Vielleicht ist e
 index_edir=Das Shorewall Konfigurationsverzeichnis $1 wurde auf Ihrem System nicht gefunden. Vielleicht ist es nicht installiert ist oder die <a href='$2'>Modulkonfiguration </a> ist falsch.
 index_refresh=Konfiguration aktualisieren
 index_restart=Konfiguration anwenden
+index_restartdesc=Klicken auf diese Schaltfl&#228;che, um die aktuelle Shorewall-Konfiguration mit dem Befehl <tt>shorewall restart</tt> zu aktivieren.
 index_return=Liste der Tabellen
 index_start=Starte Firewall
+index_startdesc=Klicken auf diese Schaltfl&#228;che, um Shorewall mit der aktuellen Konfiguration mit dem Befehl <tt>shorewall start</tt> zu starten.
 index_status=Zeige Status
+index_statusdesc=Klicken auf diese Schaltfl&#228;che, um zu &#252;berpr&#252;fen, ob Shorewall mit dem Befehl <tt>shorewall status</tt> auf diesem System gestartet wurde.
 index_stop=Stoppe Firewall
 index_title=Shoreline Firewall
 index_version=Shorewall Version $1

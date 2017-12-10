@@ -86,6 +86,7 @@ interfaces_1=Zone Name
 interfaces_2=Optionen
 interfaces_add=F&#252;ge eine neue Netzwerk-Schnittstelle hinzu.
 interfaces_create=Erstelle Netzwerk-Schnittstelle
+interfaces_desc=Jede der Netzwerkschnittstellen auf Ihrem System, die Shorewall verwalten soll, sollte auf dieser Seite aufgelistet und der Zone zugeordnet sein, mit der sie verbunden ist. Die Loopback-Schnittstelle <tt>lo</tt> darf niemals aufgelistet werden.
 interfaces_detect=Automatisch
 interfaces_ebroad=Fehlende oder ung&#252;ltige Broadcast-Adresse
 interfaces_edit=Editiere Netzwerk-Schnittstelle
