@@ -4,8 +4,8 @@
 $no_acl_check++;
 $ENV{'WEBMIN_CONFIG'} ||= "/etc/webmin";
 $ENV{'WEBMIN_VAR'} ||= "/var/webmin";
-if ($0 =~ /^(.*\/)[^\/]+$/) {
-        chdir($1);
+if ($0 =~ /^(.*)\/[^\/]+$/) {
+        chdir($pwd = $1);
         }
 else {
 	chop($pwd = `pwd`);
