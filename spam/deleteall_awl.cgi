@@ -21,12 +21,16 @@ endpwent();
 foreach $u (@users) {
 	next if (!&can_edit_awl($u));
 	print "doing $u<br>\n";
-	&open_auto_whitelist_dbm($u) || next;
-	foreach $k (keys %awl) {
-		delete($awl{$k});
-		$count++;
-		}
-	&close_auto_whitelist_dbm();
+	&eval_as_unix_user($u->[0],
+		sub
+		{
+		&open_auto_whitelist_dbm($u) || next;
+		foreach $k (keys %awl) {
+			delete($awl{$k});
+			$count++;
+			}
+		&close_auto_whitelist_dbm();
+		});
 	$ucount++;
 	}
 endpwent();
