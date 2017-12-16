@@ -137,7 +137,7 @@ if (defined($_[1])) {
 	}
 else {
 	delete($dialer->{'values'}->{$n});
-	delete(dialer->{'onames'}->{$n});
+	delete($dialer->{'onames'}->{$n});
 	}
 }
 
