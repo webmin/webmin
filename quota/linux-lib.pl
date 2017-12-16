@@ -88,7 +88,8 @@ if (&has_command("findmnt")) {
 	}
     
 # Not possible on bind mounts
-if ($_[0]->[2] =~ /^bind/ || exists($exclude_mounts{$_[0]->[0]})) {
+if ($_[0]->[2] =~ /^bind/ ||
+    exists($exclude_mounts{$_[0]->[0]}) && $_[0]->[2] !~ /^simfs/) {
 	return 0;
 	}
 
