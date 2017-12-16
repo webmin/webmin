@@ -37,7 +37,9 @@ else {
 
 	# Save included files
 	$in{'include'} =~ s/\r//g;
-	$in{'include'} =~ s/\\/\//g;
+	if ($in{'include'} !~ /^\\\|/) {
+		$in{'include'} =~ s/\\/\//g;
+		}
 	@include = split(/\n+/, $in{'include'});
 	$inc = &find("Include", $fileset->{'members'});
 	if (!$inc) {
@@ -55,7 +57,9 @@ else {
 
 	# Save excluded files
 	$in{'exclude'} =~ s/\r//g;
-	$in{'exclude'} =~ s/\\/\//g;
+	if ($in{'exclude'} !~ /^\\\|/) {
+		$in{'exclude'} =~ s/\\/\//g;
+		}
 	@exclude = split(/\n+/, $in{'exclude'});
 	$exc = &find("Exclude", $fileset->{'members'});
 	if (!$exc && @exclude) {
