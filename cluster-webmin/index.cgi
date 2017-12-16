@@ -90,14 +90,14 @@ $groupsel .= "</select>\n";
 print "<table width=100%><tr>\n";
 @addservers = grep { !$gothost{$_->{'id'}} } @servers;
 if (@addservers) {
-	print "<form action=add.cgi><td>\n";
+	print "<td><form action=add.cgi>\n";
 	print "<input type=submit name=add value='$text{'index_add'}'>\n";
 	print "<select name=server>\n";
 	foreach $s (sort { $a->{'host'} cmp $b->{'host'} } @addservers) {
 		print "<option value=$s->{'id'}>",&server_name($s),"</option>\n";
 		}
 	print "</select>\n";
-	print "</td></form>\n";
+	print "</form></td>\n";
 	$formno++;
 	}
 else { print "<td></td>\n"; }
