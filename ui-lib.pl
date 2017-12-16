@@ -1730,7 +1730,7 @@ for(var i=0; i<tabnames.length; i++) {
   var title = tabtitles[i];
   if (tabnames[i] == tabname) {
     // Selected table
-    tabobj.innerHTML = '<table cellpadding='0' cellspacing='0'><tr>'+
+    tabobj.innerHTML = '<table cellpadding="0" cellspacing="0"><tr>'+
 		       '<td valign=top $jscb>'+
 		       '<img src=$imgdir/lc2.gif alt=""></td>'+
 		       '<td $jscb nowrap>'+
@@ -1742,14 +1742,14 @@ for(var i=0; i<tabnames.length; i++) {
     }
   else {
     // Non-selected tab
-    tabobj.innerHTML = '<table cellpadding='0' cellspacing='0'><tr>'+
-		       '<td valign='top' $jstb>'+
-		       '<img src='$imgdir/lc1.gif' alt=""></td>'+
+    tabobj.innerHTML = '<table cellpadding="0" cellspacing="0"><tr>'+
+		       '<td valign="top" $jstb>'+
+		       '<img src="$imgdir/lc1.gif" alt=""></td>'+
 		       '<td $jstb nowrap>'+
                        '&nbsp;<a href=\\'\\' onClick=\\'return select_tab("'+
 		       name+'", "'+tabnames[i]+'")\\'>'+title+'</a>&nbsp;</td>'+
-		       '<td valign='top' $jstb>'+
-    		       '<img src='$imgdir/rc1.gif' alt=""></td>'+
+		       '<td valign="top" $jstb>'+
+    		       '<img src="$imgdir/rc1.gif" alt=""></td>'+
 		       '</tr></table>';
     divobj.className = 'opener_hidden';
     }
