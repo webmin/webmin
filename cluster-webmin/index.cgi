@@ -183,14 +183,16 @@ if (@hosts) {
 	print &ui_hr();
 	print &ui_subheading($text{'index_modules'});
 	print "<table width=100%><tr>\n";
-	print "<form action=edit_mod.cgi><td>\n";
+	print "<td><form action=edit_mod.cgi>\n";
 	print "<input type=submit value=\"$text{'index_edit'}\">\n";
 	print $modsel;
-	print "</td>\n";
+	print "</form></td>\n";
 
-	print "<td align=right><input type=submit name=tedit value=\"$text{'index_tedit'}\">\n";
+	print "<td align=right><form action=edit_mod.cgi>\n";
+	print "<input type=submit name=tedit value=\"$text{'index_tedit'}\">\n";
 	print $themesel;
-	print "</td></form></tr></table><p>\n";
+	print "</form></td>\n";
+	print "</tr></table><p>\n";
 	$formno++;
 
 	print "<form action=install.cgi method=post ",
