@@ -102,11 +102,15 @@ else {
 	$http_host = $ENV{'SERVER_NAME'};
 	$http_port = $ENV{'SERVER_PORT'};
 	}
+my $http_prot = $ENV{'HTTPS'} eq "ON" ? "https" : "http";
 &write_http_connection($con, sprintf(
 			"Webmin-servers: %s://%s:%d/%s\n",
-			$ENV{'HTTPS'} eq "ON" ? "https" : "http",
-			$http_host, $http_port,
+			$http_prot, $http_host, $http_port,
 			$tconfig{'inframe'} ? "" : "$module_name/"));
+&write_http_connection($con, sprintf(
+			"Webmin-path: %s://%s:%d/%s/link.cgi%s\n",
+			$http_prot, $http_host, $http_port,
+			$module_name, $ENV{'PATH_INFO'}));
 my $cl = $ENV{'CONTENT_LENGTH'};
 &write_http_connection($con, "Content-length: $cl\r\n") if ($cl);
 &write_http_connection($con, "Content-type: $ENV{'CONTENT_TYPE'}\r\n")
