@@ -6,19 +6,19 @@ require './init-lib.pl';
 &ReadParse();
 $access{'shutdown'} || &error($text{'shutdown_ecannot'});
 &ui_print_header(undef, $text{'shutdown_title'}, "");
-print "<p>\n";
-$ttcmd = "<tt>$config{'shutdown_command'}</tt>";
+
+$ttcmd = "<tt>".&html_escape($config{'shutdown_command'})."</tt>";
 if ($in{'confirm'}) {
-	print "<font size=+1>",&text('shutdown_exec', $ttcmd),"</font><p>\n";
+	print &ui_subheading(&text('shutdown_exec', $ttcmd));
 	&shutdown_system();
 	&webmin_log("shutdown");
 	}
 else {
-	print "<font size=+1>",&text('shutdown_rusure', $ttcmd),"</font>\n";
-	print "<center><form action=shutdown.cgi>\n";
-	print "<input type=submit value=\"$text{'shutdown_ok'}\" ",
-	      "name=confirm>\n";
-	print "</form></center>\n";
+	print &ui_confirmation_form(
+		"shutdown.cgi",
+		&text('shutdown_rusure', $ttcmd),
+		undef,
+		[ [ "confirm", $text{'shutdown_ok'} ] ]);
 	}
 &ui_print_footer("", $text{'index_return'});
 
