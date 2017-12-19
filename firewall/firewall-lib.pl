@@ -544,7 +544,7 @@ return undef;
 sub validate_iptables_config
 {
 my $out = &backquote_command(
-	"iptables-restore --test <$ipvx_save 2>&1");
+	"ip${ipvx}tables-restore --test <$ipvx_save 2>&1");
 return undef if (!$?);
 $out =~ s/Try\s.*more\s+information.*//;
 return $out;
