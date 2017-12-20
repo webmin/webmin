@@ -387,9 +387,6 @@ if (!$config{'inetd'}) {
 		if ($@) {
 			print STDERR "Failed to pre-load $mod : $@\n";
 			}
-		else {
-			print STDERR "Pre-loaded $mod\n";
-			}
 		}
 	}
 
