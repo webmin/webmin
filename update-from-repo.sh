@@ -161,10 +161,11 @@ if [[ $EUID -eq 0 ]]; then
           #prepeare unattended upgrade
           [[ ! -f "${TEMP}/tarballs/${PROD}-${version}/setup.sh" ]] && \
                    cp  "${TEMP}/setup.sh" "${TEMP}/tarballs/${PROD}-${version}/setup.sh"
-          echo -en "${CYAN}search minserv.conf ...${NC}"
-          MINICONF=`find / -name miniserv.conf | head -n 1`
-          MINICONF=`grep env_WEBMIN_CONFIG= ${MINICONF}| sed 's/env_WEBMIN_CONFIG=//'`
-          echo  -e "${GREY}found: ${MINICONF}${NC}"
+          echo -en "${CYAN}search minserv.conf ... ${NC}"
+          MINICONF=`find / -maxdepth 6 -name miniserv.conf 2>/dev/null | grep ${PROD} | head -n 1`
+          MINICONF=`grep env_WEBMIN_CONFIG= ${MINICONF}| sed 's/.*_WEBMIN_CONFIG=//'`
+
+          echo  -e "${ORANGE}found: ${MINICONF}${NC}"
           config_dir=${MINICONF}
           atboot="NO"
           makeboot="NO"
