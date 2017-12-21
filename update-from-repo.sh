@@ -43,18 +43,18 @@ if [[ "$1" == "-h" || "$1" == "--help" ]] ; then
 fi
 
 if [[ "${GIT}" == ""  ]] ; then
-	GIT="git"
-	# git not in PATH, search for alternate locations
-	for INSTALL in /opt/git/git /opt/git/bin/git /usr/local/bin/git /usr/local/git/bin/git
-	do
-		[[ -f "${INSTALL}" && -x "${INSTALL}" ]] && GIT="${INSTALL}" && break
-	done
+    GIT="git"
+    # git not in PATH, search for alternate locations
+    for INSTALL in /opt/git/git /opt/git/bin/git /usr/local/bin/git /usr/local/git/bin/git
+    do
+        [[ -f "${INSTALL}" && -x "${INSTALL}" ]] && GIT="${INSTALL}" && break
+    done
 fi
 
 if [[ "${PROD}" != "webmin" && "${PROD}" != "usermin" ]] ; then
-	echo -e "${NC}${RED}error: the current dir name hast to be webmin or usermin, no update possible!${NC}"
-	echo -e "possible solution: ${ORANGE}ln -s ${PROD} ../webmini; cd ../webmin${NC} or ${ORANGE}ln -s ${PROD} ../usermin; cd ../webmin ${NC}"
-	exit 0
+    echo -e "${NC}${RED}error: the current dir name hast to be webmin or usermin, no update possible!${NC}"
+    echo -e "possible solution: ${ORANGE}ln -s ${PROD} ../webmini; cd ../webmin${NC} or ${ORANGE}ln -s ${PROD} ../usermin; cd ../webmin ${NC}"
+    exit 0
 fi
 
 # don't ask -y given
@@ -161,10 +161,10 @@ if [[ $EUID -eq 0 ]]; then
           #prepeare unattended upgrade
           [[ ! -f "${TEMP}/tarballs/${PROD}-${version}/setup.sh" ]] && \
                    cp  "${TEMP}/setup.sh" "${TEMP}/tarballs/${PROD}-${version}/setup.sh"
-		  echo -en "${CYAN}search minserv.conf ...${NC}"
-		  MINICONF=`find / -name miniserv.conf | head -n 1`
-		  MINICONF=`grep env_WEBMIN_CONFIG= ${MINICONF}| sed 's/env_WEBMIN_CONFIG=//'`
-		  echo  -e "${GREY}found: ${MINICONF}${NC}"
+          echo -en "${CYAN}search minserv.conf ...${NC}"
+          MINICONF=`find / -name miniserv.conf | head -n 1`
+          MINICONF=`grep env_WEBMIN_CONFIG= ${MINICONF}| sed 's/env_WEBMIN_CONFIG=//'`
+          echo  -e "${GREY}found: ${MINICONF}${NC}"
           config_dir=${MINICONF}
           atboot="NO"
           makeboot="NO"
@@ -197,16 +197,16 @@ if [[ $EUID -eq 0 ]]; then
           done
           ( cd ${LTEMP}; tar -cf - ${LANGFILES} 2>/dev/null ) | tar -xf - 
         fi
-		#############
-		# postprocessing
+        #############
+        # postprocessing
 
         # "compile" UTF-8 lang files
         echo -en "\n${CYAN}compile UTF-8 lang files${NC} ..."
-		if [[ `which iconv 2> /dev/null` != '' ]] ; then
+        if [[ `which iconv 2> /dev/null` != '' ]] ; then
             perl "${TEMP}/chinese-to-utf8.pl" . 2>&1 | while read line; do echo -n "."; done
         else
-			echo -e "${BLUE} iconv not found, skipping lang files!${NC}"
-		fi
+            echo -e "${BLUE} iconv not found, skipping lang files!${NC}"
+        fi
 
         # write version to file
         [[ "${LANG}" != "YES" ]] || echo "${version}-LANG" > version
@@ -230,16 +230,16 @@ if [[ $EUID -eq 0 ]]; then
       # we are at the end, clean up
 
       # remove temporary files
-	  echo -e "\n${BLUE}clean up temporary files ...${NC}"
+      echo -e "\n${BLUE}clean up temporary files ...${NC}"
       rm -rf .~files .~lang
       # fix permissions, should be done by makedist.pl?
-	  echo -e "${CYAN}make scripts executable ...${NC}"
+      echo -e "${CYAN}make scripts executable ...${NC}"
       chmod -R -x+X ${DIR}
       chmod +x *.pl *.cgi *.pm *.sh
       find ${DIR} \( -iname "*.pl" -o -iname "*.cgi" -o -iname "*.pm" -o -iname "*.sh" \) -a ! -iname "config*info" -exec chmod +x '{}' + 
       
-	  # thats all folks
-	  echo -e "\n${CYAN}Updating ${PROD^} to Version `cat version`, done.${NC}"
+      # thats all folks
+      echo -e "\n${CYAN}Updating ${PROD^} to Version `cat version`, done.${NC}"
     else
       echo -e "${RED}Error: Command \`git\` is not installed or not in the \`PATH\`.${NC}";
     fi
