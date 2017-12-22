@@ -220,14 +220,12 @@ $str =~ s/["'<>&\\]/sprintf('\x%02x', ord $&)/ge;
 return $str;
 }
 
-=head2 tempname([filename])
+=head2 tempname_dir()
 
-Returns a mostly random temporary file name, typically under the /tmp/.webmin
-directory. If filename is given, this will be the base name used. Otherwise
-a unique name is selected randomly.
+Returns the base directory under which temp files can be created.
 
 =cut
-sub tempname
+sub tempname_dir
 {
 my $tmp_base = $gconfig{'tempdir_'.&get_module_name()} ?
 			$gconfig{'tempdir_'.&get_module_name()} :
@@ -240,6 +238,20 @@ my $tmp_dir = -d $remote_user_info[7] && !$gconfig{'nohometemp'} ?
 		 @remote_user_info ? $tmp_base."-".$remote_user :
 		 $< != 0 ? $tmp_base."-".getpwuid($<) :
 				     $tmp_base;
+return $tmp_dir;
+}
+
+=head2 tempname([filename])
+
+Returns a mostly random temporary file name, typically under the /tmp/.webmin
+directory. If filename is given, this will be the base name used. Otherwise
+a unique name is selected randomly.
+
+=cut
+sub tempname
+{
+my ($filename) = @_;
+my $tmp_dir = &tempname_dir();
 if ($gconfig{'os_type'} eq 'windows' || $tmp_dir =~ /^[a-z]:/i) {
 	# On Windows system, just create temp dir if missing
 	if (!-d $tmp_dir) {
@@ -267,8 +279,8 @@ else {
 		}
 	}
 my $rv;
-if (defined($_[0]) && $_[0] !~ /\.\./) {
-	$rv = "$tmp_dir/$_[0]";
+if (defined($filename) && $filename !~ /\.\./) {
+	$rv = "$tmp_dir/$filename";
 	}
 else {
 	$main::tempfilecount++;
