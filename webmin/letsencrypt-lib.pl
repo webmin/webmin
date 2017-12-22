@@ -129,6 +129,7 @@ if ($letsencrypt_cmd && -d "/etc/letsencrypt/accounts") {
 	my $out;
 	if ($mode eq "web") {
 		# Webserver based validation
+		&clean_environment();
 		$out = &backquote_command(
 			"cd $dir && (echo A | $letsencrypt_cmd certonly".
 			" -a webroot ".
@@ -140,9 +141,11 @@ if ($letsencrypt_cmd && -d "/etc/letsencrypt/accounts") {
 			" --rsa-key-size $size".
 			($staging ? " --test-cert" : "").
 			" 2>&1)");
+		&reset_environment();
 		}
 	elsif ($mode eq "dns") {
 		# DNS based validation, via hook script
+		&clean_environment();
 		$out = &backquote_command(
 			"cd $dir && (echo A | $letsencrypt_cmd certonly".
 			" --manual".
@@ -156,6 +159,7 @@ if ($letsencrypt_cmd && -d "/etc/letsencrypt/accounts") {
 			" --rsa-key-size $size".
 			($staging ? " --test-cert" : "").
 			" 2>&1)");
+		&reset_environment();
 		}
 	else {
 		return (0, "Bad mode $mode");
