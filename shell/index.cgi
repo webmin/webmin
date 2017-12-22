@@ -23,7 +23,7 @@ else {
 	open(PREVFILE, $prevfile);
 	chop(@previous = <PREVFILE>);
 	close(PREVFILE);
-	@previous = &unique(@previous);
+	@previous = @previous;
 	}
 $cmd = $in{'doprev'} ? $in{'pcmd'} : $in{'cmd'};
 
