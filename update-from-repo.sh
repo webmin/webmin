@@ -3,7 +3,7 @@
 # Update webmin/usermin to the latest develop version  from GitHub repo
 # inspired by authentic-theme/theme-update.sh script, thanks qooob
 #
-# Version 1.1, 2017-07-27
+# Version 1.2, 2017-12-21
 # Kay Marquardt, kay@rrr.de, https://github.com/gandelwartz
 #############################################################################
 
@@ -14,6 +14,7 @@ PROD=${DIR##*/} # => usermin or webmin
 HOST="https://github.com"
 REPO="webmin/$PROD"
 ASK="YES"
+GIT=`which git`
 
 # temporary locations for git clone
 WTEMP="${DIR}/.~files/webadmin" 
@@ -30,6 +31,7 @@ ORANGE='\e[49;0;33;82m'
 PURPLE='\e[49;1;35;82m'
 LGREY='\e[49;1;37;182m'
 GREY='\e[1;30m'
+CYAN='\e[36m'
 NC='\e[0m'
 
 
@@ -37,6 +39,21 @@ NC='\e[0m'
 if [[ "$1" == "-h" || "$1" == "--help" ]] ; then
     echo -e "${NC}${ORANGE}${PROD^}${NC} update script"
     echo "Usage:  ./`basename $0` { [-lang] } { [-repo:yourname/xxxmin] } { [-release] | [-release:number] }"
+    exit 0
+fi
+
+if [[ "${GIT}" == ""  ]] ; then
+    GIT="git"
+    # git not in PATH, search for alternate locations
+    for INSTALL in /opt/git/git /opt/git/bin/git /usr/local/bin/git /usr/local/git/bin/git
+    do
+        [[ -f "${INSTALL}" && -x "${INSTALL}" ]] && GIT="${INSTALL}" && break
+    done
+fi
+
+if [[ "${PROD}" != "webmin" && "${PROD}" != "usermin" ]] ; then
+    echo -e "${NC}${RED}error: the current dir name hast to be webmin or usermin, no update possible!${NC}"
+    echo -e "possible solution: ${ORANGE}ln -s ${PROD} ../webmini; cd ../webmin${NC} or ${ORANGE}ln -s ${PROD} ../usermin; cd ../webmin ${NC}"
     exit 0
 fi
 
@@ -61,7 +78,7 @@ fi
 if [[ "$1" == *"-repo"* ]]; then
         if [[ "$1" == *":"* ]] ; then
           REPO=${1##*:}
-          [[ "${REPO##*/}" != ${PROD} ]] && echo -e "${ORANGE}./`basename $0`:${NC} ${REPO} does not end with /${PROD}" && exit 0
+          [[ "${REPO##*/}" != "webmin" && "${REPO##*/}" != "usermin" ]] && echo -e "${RED}error: ${ORANGE} ${REPO} is not a valid repo name!${NC}" && exit 0
           [[ "${ASK}" == "YES" ]] && echo -e "${RED}Warning:${NC} ${ORANGE}using alternate repository${NC} $HOST/$REPO ${ORANGE}may break your installation!${NC}"
           shift
         else
@@ -88,7 +105,7 @@ fi
 # here we go
 # need to be root and git installed
 if [[ $EUID -eq 0 ]]; then
-    if type git >/dev/null 2>&1
+    if type ${GIT} >/dev/null 2>&1
     then
 
       #################
@@ -101,20 +118,20 @@ if [[ $EUID -eq 0 ]]; then
         else
           RRELEASE=`curl -s -L https://github.com/${REPO}/blob/master/version  | sed -n '/id="LC1"/s/.*">\([^<]*\).*/\1/p'`
         fi
-        echo -e "${BLUE}Pulling in latest release of${NC} ${GREY}${PROD^}${NC} $RRELEASE ($HOST/$REPO)..."
-        RS="$(git clone --depth 1 --branch $RRELEASE -q $HOST/$REPO.git "${TEMP}" 2>&1)"
+        echo -e "${CYAN}Pulling in latest release of${NC} ${GREY}${PROD^}${NC} $RRELEASE ($HOST/$REPO)..."
+        RS="$(${GIT} clone --depth 1 --branch $RRELEASE -q $HOST/$REPO.git "${TEMP}" 2>&1)"
         if [[ "$RS" == *"ould not find remote branch"* ]]; then
           ERROR="Release ${RRELEASE} doesn't exist. "
         fi
       else
-        echo -e "${BLUE}Pulling in latest changes for${NC} ${GREY}${PROD^}${NC} $RRELEASE ($HOST/$REPO) ..."
-        git clone --depth 1 --quiet  $HOST/$REPO.git "${TEMP}"
+        echo -e "${CYAN}Pulling in latest changes for${NC} ${GREY}${PROD^}${NC} $RRELEASE ($HOST/$REPO) ..."
+        ${GIT} clone --depth 1 --quiet  $HOST/$REPO.git "${TEMP}"
       fi
       # on usermin!! pull also webmin to resolve symlinks later!
       WEBMREPO=`echo ${REPO} | sed "s/\/usermin$/\/webmin/"`
       if [[ "${REPO}" != "${WEBMREPO}" ]]; then
-        echo -e "${BLUE}Pulling in latest changes for${NC} ${GREY}Webmin${NC} ($HOST/$WEBMREPO) ..."
-        git clone --depth 1 --quiet  $HOST/$WEBMREPO.git "${WTEMP}"
+        echo -e "${CYAN}Pulling in latest changes for${NC} ${GREY}Webmin${NC} ($HOST/$WEBMREPO) ..."
+        ${GIT} clone --depth 1 --quiet  $HOST/$WEBMREPO.git "${WTEMP}"
       fi
 
       # Check for possible errors
@@ -122,11 +139,11 @@ if [[ $EUID -eq 0 ]]; then
 
         ####################
         # start processing pulled source
-        version="`head -c -1 ${TEMP}/version`.`cd ${TEMP}; git log -1 --format=%cd --date=format:'%m%d.%H%M'`" 
+        version="`head -c -1 ${TEMP}/version`.`cd ${TEMP}; ${GIT} log -1 --format=%cd --date=format:'%m%d.%H%M'`" 
         if [[ "${LANG}" != "YES" ]]; then
           ###############
           # FULL update
-          echo -e "${GREEN}start FULL update for${NC} $PROD ..."
+          echo -e "${CYAN}start FULL update for${NC} $PROD ..."
           # create dir,resolve links and some other processing
           mkdir ${TEMP}/tarballs 2>/dev/null
           ( cd ${TEMP}; perl makedist.pl ${version} ) 2>/dev/null
@@ -144,19 +161,27 @@ if [[ $EUID -eq 0 ]]; then
           #prepeare unattended upgrade
           [[ ! -f "${TEMP}/tarballs/${PROD}-${version}/setup.sh" ]] && \
                    cp  "${TEMP}/setup.sh" "${TEMP}/tarballs/${PROD}-${version}/setup.sh"
-          config_dir=/etc/${PROD}
+          echo -en "${CYAN}search minserv.conf ... ${NC}"
+          if [[ -f "/etc/webmin/miniserv.conf" ]] ; then
+              MINICONF=`find /etc -name miniserv.conf 2>/dev/null | grep ${PROD} | head -n 1`
+          else
+              MINICONF=`find /* -maxdepth 6 -name miniserv.conf 2>/dev/null | grep ${PROD} | head -n 1`
+          fi
+          MINICONF=`grep env_WEBMIN_CONFIG= ${MINICONF}| sed 's/.*_WEBMIN_CONFIG=//'`
+          echo  -e "${ORANGE}found: ${MINICONF}${NC}"
+          config_dir=${MINICONF}
           atboot="NO"
           makeboot="NO"
           nouninstall="YES"
           #nostart="YES"
           export config_dir atboot nouninstall makeboot nostart
-          ${TEMP}/tarballs/${PROD}-${version}/setup.sh ${DIR} | grep -v -e "^$" -e "done$"
+          ${TEMP}/tarballs/${PROD}-${version}/setup.sh ${DIR} | grep -v -e "^$" -e "done$" -e "chmod" -e "chgrp" -e "chown"
         else
 
           ################
           # LANG only update
           IGNORE="authentic-theme"
-          echo -e "${GREEN}start updating LANG files for${NC} ${RPOD} ..."
+          echo -e "${CYAN}start updating LANG files for${NC} ${RPOD} ..."
 
           [ ! -d "${LTEMP}" ] && mkdir ${LTEMP}
           cp -L -r ${TEMP}/* "${LTEMP}"
@@ -176,17 +201,20 @@ if [[ $EUID -eq 0 ]]; then
           done
           ( cd ${LTEMP}; tar -cf - ${LANGFILES} 2>/dev/null ) | tar -xf - 
         fi
-        # "compile" UTF-8 lang files
-        echo -en "\n${GREEN}compile UTF-8 lang files${NC} ..."
-        perl "${TEMP}/chinese-to-utf8.pl" . 2>&1 | while read line; do echo -n "."; done
+        #############
+        # postprocessing
 
+        # "compile" UTF-8 lang files
+        echo -en "\n${CYAN}compile UTF-8 lang files${NC} ..."
+        if [[ `which iconv 2> /dev/null` != '' ]] ; then
+            perl "${TEMP}/chinese-to-utf8.pl" . 2>&1 | while read line; do echo -n "."; done
+        else
+            echo -e "${BLUE} iconv not found, skipping lang files!${NC}"
+        fi
 
         # write version to file
         [[ "${LANG}" != "YES" ]] || echo "${version}-LANG" > version
         
-
-        echo -e "\n${GREEN}Updating ${PROD^} to Version `cat version`, done.${NC}"
-
         # update authentic, put dummy clear in PATH
         echo -e "#!/bin/sh\necho" > ${TEMP}/clear; chmod +x ${TEMP}/clear
         export PATH="${TEMP}:${PATH}"
@@ -203,13 +231,19 @@ if [[ $EUID -eq 0 ]]; then
         echo -e "${RED}${ERROR}Updating files, failed.${NC}"
       fi
       ###########
-      # we are at the end
+      # we are at the end, clean up
+
       # remove temporary files
+      echo -e "\n${BLUE}clean up temporary files ...${NC}"
       rm -rf .~files .~lang
       # fix permissions, should be done by makedist.pl?
+      echo -e "${CYAN}make scripts executable ...${NC}"
       chmod -R -x+X ${DIR}
-      find ${DIR} \( -iname "*.pl" -o -iname "*.cgi" -o -iname "*.pm" -o -iname "*.sh" \) -a ! -iname "config*info" | \
-              xargs chmod +x 
+      chmod +x *.pl *.cgi *.pm *.sh
+      find ${DIR} \( -iname "*.pl" -o -iname "*.cgi" -o -iname "*.pm" -o -iname "*.sh" \) -a ! -iname "config*info" -exec chmod +x '{}' + 
+      
+      # thats all folks
+      echo -e "\n${CYAN}Updating ${PROD^} to Version `cat version`, done.${NC}"
     else
       echo -e "${RED}Error: Command \`git\` is not installed or not in the \`PATH\`.${NC}";
     fi
