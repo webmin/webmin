@@ -63,10 +63,11 @@ if (@dirs) {
 		local @cols;
 		if ($can_create) {
 			push(@cols, "<a href='edit_dir.cgi?dir=".
-				    &urlize($d->[0])."'>$d->[0]</a>");
+				    &urlize($d->[0])."'>".
+				    &html_escape($d->[0])."</a>");
 			}
 		else {
-			push(@cols, $d->[0]);
+			push(@cols, &html_escape($d->[0]));
 			}
 
 		# Show the users
@@ -80,7 +81,8 @@ if (@dirs) {
 		for($i=0; $i<@$users; $i++) {
 			$u = $users->[$i];
 			$link = "<a href='edit_user.cgi?idx=$u->{'index'}&dir=".
-				&urlize($d->[0])."'>$u->{'user'}</a>";
+				&urlize($d->[0])."'>".
+				&html_escape($u->{'user'})."</a>";
 			if ($u->{'enabled'}) {
 				push(@grid, $link);
 				}
@@ -106,7 +108,8 @@ if (@dirs) {
 			for($i=0; $i<@$groups; $i++) {
 				$u = $groups->[$i];
 				$link= "<a href='edit_group.cgi?idx=$u->{'index'}&dir=".
-				       &urlize($d->[0])."'>$u->{'group'} (".
+				       &urlize($d->[0])."'>".
+				       &html_escape($u->{'group'})." (".
 				       scalar(@{$u->{'members'}}).")</a>";
 				if ($u->{'enabled'}) {
 					push(@grid, $link);
