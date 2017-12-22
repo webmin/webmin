@@ -121,8 +121,21 @@ else {
 	}
 
 if ($in{'dest'}) {
-	print "Content-Type: text/plain\n";
-	print "Content-Disposition: Attachment\n";
+	my $mt;
+	my $fn = "backup.sql";
+	if ($in{'compress'} == 1) {
+		$mt = "application/x-gzip";
+		$fn .= ".gz";
+		}
+	elsif ($in{'compress'} == 2) {
+		$mt = "application/x-bzip2";
+		$fn .= ".bz2";
+		}
+	else {
+		$mt = "text/plain";
+		}
+	print "Content-Type: $mt\n";
+	print "Content-Disposition: Attachment; filename=\"$fn\"\n";
 	print "\n";
 	}
 else {
