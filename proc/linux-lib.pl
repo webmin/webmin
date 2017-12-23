@@ -308,7 +308,7 @@ if ($c{'cache size'} =~ /^(\d+)\s+KB/i) {
 elsif ($c{'cache size'} =~ /^(\d+)\s+MB/i) {
 	$c{'cache size'} = $1*1024*1024;
 	}
-if ($c{'cpu mhz'}) {
+if ($c{'model name'}) {
 	return ( $load[0], $load[1], $load[2],
 		 int($c{'cpu mhz'}), $c{'model name'}, $c{'vendor_id'},
 		 $c{'cache size'}, $c{'processor'}+1 );
