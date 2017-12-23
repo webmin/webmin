@@ -490,15 +490,23 @@ return @rv;
 # blocks in and out
 sub get_cpu_io_usage
 {
-my $out = &backquote_command("vmstat 1 2 2>/dev/null");
-return ( ) if ($?);
-my @lines = split(/\r?\n/, $out);
-my @w = split(/\s+/, $lines[$#lines]);
-shift(@w) if ($w[0] eq '');
-if ($w[8] =~ /^\d+$/ && $w[9] =~ /^\d+$/) {
-	return ( @w[12..16], $w[8], $w[9] );
-	}
-return undef;
+my $out,@lines,@w;
+if (&has_command("vmstat")) {
+        $out = &backquote_command("vmstat 1 2 2>/dev/null");
+        @lines = split(/\r?\n/, $out);
+        @w = split(/\s+/, $lines[$#lines]);
+        shift(@w) if ($w[0] eq '');
+        if ($w[8] =~ /^\d+$/ && $w[9] =~ /^\d+$/) {
+            return ( @w[12..16], $w[8], $w[9] );
+        }
+    } elsif (&has_command("dstat")) {
+        $out = &backquote_command("dstat 1 1 2>/dev/null");
+        @lines = split(/\r?\n/, $out);
+        @w = split(/[\s|]+/, $lines[$#lines]);
+        shift(@w) if ($w[0] eq '');
+        return( @w[0..4], @w[6..7]);
+    }
+    return undef;
 }
 
 1;
