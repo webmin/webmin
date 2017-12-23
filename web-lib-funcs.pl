@@ -4702,8 +4702,27 @@ if ($module_name && !$main::no_acl_check &&
 	}
 
 # Check for trigger URL to simply redirect to root: required for Authentic Theme 19.00+
-if ($ENV{'REQUEST_URI'} =~ /xnavigation=1/) {
-	redirect("/");
+if ($current_theme =~ /authentic-theme/ && $ENV{'REQUEST_URI'} =~ /xnavigation=1/) {
+
+  # Redirect user to the entered URL upon next page load; store URL into temporary file
+  if ($main::session_id && $remote_user) {
+      my $xnav = "xnavigation=1";
+
+      my $protocol = lc($ENV{'HTTPS'}) eq 'on' ? "https" : "http";
+      my $url = "$protocol://$ENV{'HTTP_HOST'}$ENV{'REQUEST_URI'}";
+      $url =~ s/[?|&]$xnav//g;
+      $url =~ s/[^\p{L}\p{N},;:.%&#=_@\+\?\-\/]//g;
+
+      my $tmp  = 'tmp';
+      my $salt = encode_base64($main::session_id);
+      $salt =~ tr/A-Za-z0-9//cd;
+
+      my %var;
+      my $key = 'goto';
+      $var{$key} = $url;
+      write_file((tempname_dir() . '/.' . $tmp . '_' . $salt . '_' . get_product_name() . '_' . $key . '_' . $remote_user), \%var);
+  		}
+  redirect("/");
 	}
 
 # Check the Referer: header for nasty redirects
