@@ -1646,7 +1646,7 @@ a package name and the relative path of the .pl file to pre-load.
 =cut
 sub get_preloads
 {
-my @rv = map { [ split(/=/, $_) ] } split(/\s+/, $_[0]->{'preload'});
+my @rv = map { [ split(/=/, $_) ] } split(/\s+/, $_[0]->{'preload'} || "");
 return @rv;
 }
 
