@@ -93,12 +93,15 @@ return $info;
 # Returns the most recently collected system information, or the current info
 sub get_collected_info
 {
-my $infostr = $config{'collect_interval'} eq 'none' ? undef :
-			&read_file_contents($collected_info_file);
-if ($infostr) {
-	my $info = &unserialise_variable($infostr);
-	if (ref($info) eq 'HASH' && keys(%$info) > 0) {
-		return $info;
+my @st = stat($collected_info_file);
+my $i = $config{'collect_interval'} || 'none';
+if ($i ne 'none' && @st && $st[9] > time() - $i * 60 * 2) {
+	my $infostr = &read_file_contents($collected_info_file);
+	if ($infostr) {
+		my $info = &unserialise_variable($infostr);
+		if (ref($info) eq 'HASH' && keys(%$info) > 0) {
+			return $info;
+			}
 		}
 	}
 return &collect_system_info();
