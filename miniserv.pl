@@ -1699,10 +1699,6 @@ if ($config{'userfile'}) {
 			&http_error(500, "Invalid password",
 				    "Password contains invalid characters");
 			}
-		if ($twofactor{$wvu}) {
-			&http_error(500, "No two-factor support",
-				    "HTTP authentication cannot be used when two-factor is enabled");
-			}
 
 		if ($config{'passdelay'} && !$config{'inetd'} && $authuser) {
 			# check with main process for delay
@@ -1754,15 +1750,19 @@ if ($config{'userfile'}) {
 			local ($vu, $expired, $nonexist, $wvu) =
 				&validate_user($in{'user'}, $in{'pass'}, $host,
 					       $acptip, $port);
-			if ($vu && $wvu && $twofactor{$wvu}) {
-				# Check two-factor token ID
-				$err = &validate_twofactor(
-					$wvu, $in{'twofactor'});
-				if ($err) {
-					&run_failed_script($vu, 'twofactor',
-							   $loghost, $localip);
-					$twofactor_msg = $err;
-					$vu = undef;
+			if ($vu && $wvu) {
+				my $uinfo = &get_user_details($wvu);
+				if ($uinfo && $uinfo->{'twofactor_provider'}) {
+					# Check two-factor token ID
+					$err = &validate_twofactor(
+						$wvu, $in{'twofactor'});
+					if ($err) {
+						&run_failed_script(
+							$vu, 'twofactor',
+							$loghost, $localip);
+						$twofactor_msg = $err;
+						$vu = undef;
+						}
 					}
 				}
 			local $hrv = &handle_login(
@@ -4671,6 +4671,9 @@ if (exists($users{$username})) {
 		 'nochange' => $nochange{$username},
 		 'temppass' => $temppass{$username},
 		 'preroot' => $config{'preroot_'.$username},
+		 'twofactor_provider' => $twofactor{$username}->{'provider'},
+		 'twofactor_id' => $twofactor{$username}->{'id'},
+		 'twofactor_apikey' => $twofactor{$username}->{'apikey'},
 	       };
 	}
 if ($config{'userdb'}) {
@@ -6095,14 +6098,15 @@ return $tmp;
 sub validate_twofactor
 {
 my ($user, $token) = @_;
+local $uinfo = &get_user_details($user);
 $token =~ s/^\s+//;
 $token =~ s/\s+$//;
 $token || return "No two-factor token entered";
-my $tf = $twofactor{$user};
-$tf || return undef;
+$uinfo->{'twofactor_provider'} || return undef;
 pipe(TOKENr, TOKENw);
 my $pid = &execute_webmin_command($config{'twofactor_wrapper'},
-	[ $user, $tf->{'provider'}, $tf->{'id'}, $token, $tf->{'apikey'} ],
+	[ $user, $uinfo->{'twofactor_provider'}, $uinfo->{'twofactor_id'},
+	  $token, $uinfo->{'twofactor_apikey'} ],
 	TOKENw);
 close(TOKENw);
 waitpid($pid, 0);
