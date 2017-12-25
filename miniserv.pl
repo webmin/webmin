@@ -3120,15 +3120,16 @@ sub reset_byte_count { $write_data_count = 0; }
 sub byte_count { return $write_data_count; }
 
 # log_request(hostname, user, request, code, bytes)
+# Write an HTTP request to the log file
 sub log_request
 {
+local ($host, $user, $request, $code, $bytes) = @_;
+foreach my $nolog (split(/\s+/, $config{'nolog'})) {
+	return if ($request =~ /^$nolog$/);
+	}
 if ($config{'log'}) {
-	local ($user, $ident, $headers);
-	if ($config{'logident'}) {
-		# add support for rfc1413 identity checking here
-		}
-	else { $ident = "-"; }
-	$user = $_[1] ? $_[1] : "-";
+	local $ident = "-";
+	$user ||= "-";
 	local $dstr = &make_datestr();
 	if (fileno(MINISERVLOG)) {
 		seek(MINISERVLOG, 0, 2);
@@ -3148,8 +3149,8 @@ if ($config{'log'}) {
 	else {
 		$headers = "";
 		}
-	print MINISERVLOG "$_[0] $ident $user [$dstr] \"$_[2]\" ",
-			  "$_[3] $_[4]$headers\n";
+	print MINISERVLOG "$host $ident $user [$dstr] \"$request\" ",
+			  "$code $bytes$headers\n";
 	close(MINISERVLOG);
 	}
 }
