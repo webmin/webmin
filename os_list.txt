@@ -406,7 +406,7 @@ Sun Java Desktop System		2.0 (Solaris)	solaris		9	$uname =~ /SunOS.*\s5\.9\s/i &
 
 
 # Synology NAS Linux, Version is DSM version not kernel version
-Synology NAS    $1  syno-linux  $1  `grep  productversion= /etc.defaults/VERSION` =~ /productversion="([0-9]+\.[0-9+])\./
+Synology DSM      $1  generic-linux $1  `grep  productversion= /etc.defaults/VERSION` =~ /productversion="([0-9]+\.[0-9+])\./
 
 # All other Linux variants, identified by kernel version
 Generic Linux			$1	generic-linux	$1	`uname -r` =~ /^([0-9]+\.[0-9+])\./
