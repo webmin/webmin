@@ -764,6 +764,8 @@ Rounds a version number down to the nearest .01
 =cut
 sub base_version
 {
+#remove waning about (possible) postfixes from update-from-repo.sh
+$_[0] =~ s/[-a-z:_].*//gi;
 return sprintf("%.2f0", $_[0]);
 }
 
