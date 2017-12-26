@@ -281,7 +281,8 @@ else {
 				      $_[0]->{'type'} != 3);
 	push(@c, $_[0]->{'command'});
 	}
-return join(" ", @c);
+	# fix: some older/embedded crond needs tab instead of spaces
+return join("\t", @c);
 }
 
 =head2 copy_cron_temp(&job)
@@ -489,7 +490,13 @@ local($pwd);
 if (&read_file_contents($cron_temp_file) =~ /\S/) {
 	local $temp = &transname();
 	local $rv;
-	if ($config{'cron_edit_command'}) {
+	if (!$config{'cron_crontab'}) {
+	    # we have no crontab command
+		# emulate by copy back to user file
+		$rv = system("cat $cron_temp_file".
+			" >$config{'cron_dir'}/$_[0] 2>/dev/null");
+
+	} elsif ($config{'cron_edit_command'}) {
 		# fake being an editor
 		# XXX does not work in translated command mode!
 		local $notemp = &transname();
@@ -515,8 +522,8 @@ if (&read_file_contents($cron_temp_file) =~ /\S/) {
 			}
 		unlink($notemp);
 		chdir($oldpwd);
-		}
-	else {
+
+	} else {
 		# use the cron copy command
 		if ($single_user) {
 			$rv = &execute_command(
@@ -528,7 +535,7 @@ if (&read_file_contents($cron_temp_file) =~ /\S/) {
 				&user_sub($config{'cron_copy_command'}, $_[0]),
 				$cron_temp_file, $temp, $temp);
 			}
-		}
+	}
 	local $out = &read_file_contents($temp);
 	unlink($temp);
 	if ($rv || $out =~ /error/i) {
@@ -538,14 +545,22 @@ if (&read_file_contents($cron_temp_file) =~ /\S/) {
 	}
 else {
 	# No more cron jobs left, so just delete
-	if ($single_user) {
-		&execute_command($config{'cron_user_delete_command'});
-		}
-	else {
-		&execute_command(&user_sub(
-			$config{'cron_delete_command'}, $_[0]));
+	if (!$config{'cron_crontab'}) {
+	    # we have no crontab command
+		# emulate by deleting user crontab
+		&unlink_logged("$config{'cron_dir'}/$_[0]");
+
+	} else {
+		if ($single_user) {
+			&execute_command($config{'cron_user_delete_command'});
+			}
+		else {
+			&execute_command(&user_sub(
+				$config{'cron_delete_command'}, $_[0]));
+			}
 		}
 	}
+if (!$config{'cron_crontab'}) { &kill_byname("crond", "SIGHUP"); } # to reload config
 unlink($cron_temp_file);
 }
 
@@ -1508,14 +1523,19 @@ sub check_cron_config
 if ($config{'single_file'} && !-r $config{'single_file'}) {
 	return &text('index_esingle', "<tt>$config{'single_file'}</tt>");
 	}
-if ($config{'cron_get_command'} =~ /^(\S+)/ && !&has_command("$1")) {
+if (!$config{'cron_crontab'} && $config{'cron_get_command'} =~ /^(\S+)/ && !&has_command("$1")) {
 	return &text('index_ecmd', "<tt>$1</tt>");
 	}
 # Check for directory
 local $fcron = ($config{'cron_dir'} =~ /\/fcron$/);
 if (!$single_user && !$config{'single_file'} &&
     !$fcron && !-d $config{'cron_dir'}) {
-	return &text('index_ecrondir', "<tt>$config{'cron_dir'}</tt>");
+	if (!$in{'create_dir'}) {
+		return &text('index_ecrondir', "<tt>$config{'cron_dir'}</tt>").
+		"<p><a href=\"index.cgi?create_dir=yes\">".&text('index_ecrondir_create' ,"<tt>$config{'cron_dir'}</tt>")."</a></p>";
+	} else {
+		&make_dir($config{'cron_dir'}, 0755);
+		}
 	}
 return undef;
 }
