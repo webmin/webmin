@@ -21,9 +21,9 @@ if ($in{'clearcmds'}) {
 	}
 else {
 	open(PREVFILE, $prevfile);
-	chop(@previous = <PREVFILE>);
+	chop(@allprevious = <PREVFILE>);
 	close(PREVFILE);
-	@previous = &unique(@previous);
+	@previous = &unique(@allprevious);
 	}
 $cmd = $in{'doprev'} ? $in{'pcmd'} : $in{'cmd'};
 
@@ -182,7 +182,7 @@ print "</tr>\n";
 
 print &ui_hidden("pwd", $pwd);
 print &ui_hidden("history", &urlize($history));
-foreach $p (@previous) {
+foreach $p (@allprevious) {
 	print &ui_hidden("previous", $p);
 	}
 
