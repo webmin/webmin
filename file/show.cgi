@@ -132,7 +132,8 @@ else {
 	@st = stat($p);
 	print "X-no-links: 1\n";
 	print "Content-length: $st[7]\n";
-	print "Content-Disposition: Attachment\n" if ($download);
+	($fn = $p) =~ s/^.*\///;
+	print "Content-Disposition: Attachment filename=\"$fn\"\n" if ($download);
 	print "X-Content-Type-Options: nosniff\n";
 	&print_content_type($type);
 	if ($type =~ /^text\/html/i && !$in{'edit'}) {
