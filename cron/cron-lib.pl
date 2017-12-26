@@ -548,7 +548,7 @@ else {
 	if (!$config{'cron_crontab'}) {
 	    # we have no crontab command
 		# emulate by deleting user crontab
-		$rv = system("rm >$config{'cron_dir'}/$_[0] 2>/dev/null");
+		&unlink_logged("$config{'cron_dir'}/$_[0]");
 
 	} else {
 		if ($single_user) {
@@ -1534,7 +1534,7 @@ if (!$single_user && !$config{'single_file'} &&
 		return &text('index_ecrondir', "<tt>$config{'cron_dir'}</tt>").
 		"<p><a href=\"index.cgi?create_dir=yes\">".&text('index_ecrondir_create' ,"<tt>$config{'cron_dir'}</tt>")."</a></p>";
 	} else {
-		system("mkdir $config{'cron_dir'}");
+		&make_dir($config{'cron_dir'}, 0755);
 		}
 	}
 return undef;
