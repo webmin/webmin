@@ -26,7 +26,7 @@ foreach $f (&find_type("F", $conf)) {
 
 # Add other maps
 local $afiles = &aliases_file($conf);
-push(@rv, $afiles);
+push(@rv, @$afiles);
 local $vfile = &virtusers_file($conf);
 push(@rv, $vfile) if ($vfile);
 local $mfile = &mailers_file($conf);
