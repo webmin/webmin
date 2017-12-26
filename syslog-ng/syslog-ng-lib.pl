@@ -46,6 +46,7 @@ while($line = <CONF>) {
 	$line =~ s/\/\/.*$//g if ($line !~ /".*\/\/.*"/);
 	$line =~ s/\/\*.*\*\///g;	# Remove multi-line comment
 	$line =~ s/^\s*@.*$//g;		# Remove @version line
+	next if ($line =~ /^\s*include\s.*/);
 	while(1) {
 		if (!$cmode && $line =~ /\/\*/) {
 			# start of a C-style comment
