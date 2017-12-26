@@ -70,7 +70,8 @@ for($i=0; defined($in{"upload$i"}); $i++) {
 		else {
 			$path = $in{'dir'};
 			}
-		print &text('upload_saving', "<tt>$path</tt>"),"<br>\n";
+		print &text('upload_saving',
+			    "<tt>".&html_escape($path)."</tt>"),"<br>\n";
 		if (!&open_tempfile(FILE, ">$path", 1)) {
 			&error(&text('upload_eopen', "<tt>$path</tt>", $!));
 			}
