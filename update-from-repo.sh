@@ -139,7 +139,7 @@ if [[ $EUID -eq 0 ]]; then
 
         ####################
         # start processing pulled source
-        version="`head -c -1 ${TEMP}/version`.`cd ${TEMP}; ${GIT} log -1 --format=%cd --date=format:'%m%d.%H%M'`" 
+        version="`head -c -1 ${TEMP}/version`-`cd ${TEMP}; ${GIT} log -1 --format=%cd --date=format:'%m%d.%H%M'`" 
         if [[ "${LANG}" != "YES" ]]; then
           ###############
           # FULL update
