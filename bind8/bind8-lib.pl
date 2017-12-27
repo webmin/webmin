@@ -3,11 +3,12 @@
 
 use strict;
 use warnings;
+use Time::Local;
 no warnings 'redefine';
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
-our (%text, %config, %gconfig);
+our (%text, %config, %gconfig, $module_var_directory);
 
 my $dnssec_tools_minver = 1.13;
 my $have_dnssec_tools = eval "require Net::DNS::SEC::Tools::dnssectools;";
@@ -23,6 +24,8 @@ if ($have_dnssec_tools) {
 
 &init_config();
 do 'records-lib.pl';
+
+my $dnssec_expiry_cache = "$module_var_directory/dnssec-expiry-cache";
 
 # Globals (yuck!)
 my @extra_forward = split(/\s+/, $config{'extra_forward'} || '');
@@ -2043,6 +2046,7 @@ foreach my $z (grep { $_->{'value'} eq $_[0] } @zones) {
 	}
 
 &flush_zone_names();
+&flush_dnssec_expired_domains();
 return $found ? 0 : 1;
 }
 
@@ -4135,6 +4139,57 @@ return &text('trusted_warning',
 	     $gconfig{'webprefix'}.'/bind8/conf_trusted.cgi')."<p>\n".
        &ui_form_start($gconfig{'webprefix'}.'/bind8/fix_trusted.cgi')."\n".
        &ui_form_end([ [ undef, $text{'trusted_fix'} ] ]);
+}
+
+# list_dnssec_expired_domains()
+# Returns a list of all DNS zones with DNSSEC enabled that are close to expiry
+sub list_dnssec_expired_domains
+{
+my @rv;
+my %cache;
+&read_file($dnssec_expiry_cache, \%cache);
+my $changed = 0;
+foreach my $z (&list_zone_names()) {
+	next if ($z->{'type'} ne 'master');
+	my ($t, $e);
+	if ($cache{$z->{'name'}}) {
+		($t, $e) = split(/\s+/, $cache{$z->{'name'}});
+		}
+	my @st = stat(&make_chroot($z->{'file'}));
+	next if (!@st);
+	if (!defined($t) || $st[9] != $t) {
+		# Not in cache, or file has changed
+		my @recs = &read_zone_file($z->{'file'}, $z->{'name'});
+		$changed = 1;
+		$e = 0;
+		foreach my $r (@recs) {
+			next if ($r->{'type'} ne 'RRSIG');
+			next if ($r->{'values'}->[4] !~ /^(\d\d\d\d)(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)/);
+			eval {
+				$e = timegm($6, $5, $4, $3, $2-1, $1-1900);
+				last;
+				}
+			}
+		$cache{$z->{'name'}} = "$st[9] $e";
+		}
+	if ($e && time() > $e - 86400) {
+		# Expires within 1 day
+		my $rvz = { %$z };
+		$rvz->{'expiry'} = $e;
+		push(@rv, $rvz);
+		}
+	}
+if ($changed) {
+	&write_file($dnssec_expiry_cache, \%cache);
+	}
+return @rv;
+}
+
+# flush_dnssec_expired_domains()
+# Clear the cache of DNSSEC expiry times
+sub flush_dnssec_expired_domains
+{
+&unlink_file($dnssec_expiry_cache);
 }
 
 1;
