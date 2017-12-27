@@ -483,4 +483,12 @@ push(@rv, "$config{'config_dir'}/jail.local");
 return grep { -r $_ } @rv;
 }
 
+# get_fail2ban_version()
+# Returns the version number, or undef if it cannot be found
+sub get_fail2ban_version
+{
+my $out = &backquote_command("$config{'client_cmd'} -V 2>/dev/null </dev/null");
+return !$? && $out =~ /v([0-9\.]+)/ ? $1 : undef;
+}
+
 1;
