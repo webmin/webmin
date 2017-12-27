@@ -1,0 +1,7 @@
+sort_mode=0
+majordomo_cf=/usr/local/majordomo/majordomo.cf
+program_dir=/usr/local/majordomo
+dynamic=0
+perms=0
+owner_file=0
+aliases_file=postfix

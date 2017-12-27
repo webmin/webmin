@@ -1,0 +1,10 @@
+mode=0
+addto=0
+sa_learn=/var/packages/MailServer/target/bin/sa-learn
+spamassassin=/var/packages/MailServer/target/bin/spamassassin
+local_cf=/var/packages/MailServer/target/etc/spamassassin/local.cf
+procmail_cmd=*
+call_spam=1
+max_awl=200
+processes=spamd amavisd
+warn_procmail=1

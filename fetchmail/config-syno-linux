@@ -1,0 +1,5 @@
+daemon_user=root
+max_users=400
+pid_file=/var/run/fetchmail.pid
+fetchmail_path=/var/packages/MailStation/target/bin/fetchmail
+view_mode=1

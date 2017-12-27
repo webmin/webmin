@@ -1,0 +1,5 @@
+start_cmd=/usr/etc/rc.d/S03initd.sh start
+lookup_servs=1
+xinetd_conf=/etc/inetd.conf
+pid_file=/var/run/inetd.pid
+protocols_file=/etc/protocols

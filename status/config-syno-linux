@@ -1,0 +1,13 @@
+sort_mode=0
+sched_offset=0
+snmp_version=2
+pager_cmd=yaps
+subject_mode=0
+snmp_trap=1.3.6.1.4.1.10000.1.1
+columns=2
+output=0
+history_show=50
+index_status=1
+history_purge=30
+sysinfo=0
+sysinfo_users=0

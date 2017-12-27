@@ -1,0 +1,12 @@
+path=/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/syno/bin:/usr/syno/sbin:/opt/bin:/opt/sbin
+find_pid_command=ps | grep NAME | grep -v grep | awk '{ print $1 }'
+ld_env=LD_LIBRARY_PATH
+passwd_file=/etc/shadow
+by_view=0
+passwd_uindex=0
+passwd_pindex=1
+passwd_mindex=4
+passwd_cindex=2
+tempdelete_days=7
+lang_recovery=en
+theme_recovery=gray-theme

@@ -1,0 +1,5 @@
+pid_file=/var/run/syslog.ng.pid
+syslogng_cmd=syslog-ng
+syslogng_conf=/etc/syslog-ng/syslog-ng.conf
+lines=20
+compressed=1
