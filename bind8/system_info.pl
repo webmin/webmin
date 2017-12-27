@@ -8,11 +8,9 @@ my @rv;
 if (&foreign_available($module_name) && $access{'defaults'}) {
 	my $err = &check_dnssec_client();
 	if ($err) {
-		push(@rv, { 'type' => 'html',
-			    'open' => 1,
-			    'id' => $module_name.'_dnssec',
-			    'priority' => 100,
-			    'html' => $err });
+		push(@rv, { 'type' => 'warning',
+			    'level' => 'warn',
+			    'warning' => $err });
 		}
 	}
 return @rv;
