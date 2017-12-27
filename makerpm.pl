@@ -225,6 +225,7 @@ export config_dir var_dir perl autoos port login crypt host ssl nochown autothir
 chmod 600 \$tempdir/webmin-setup.out
 rm -f /var/lock/subsys/webmin
 if [ "\$inetd" != "1" -a "\$startafter" = "1" ]; then
+	/etc/init.d/webmin stop >/dev/null 2>&1 </dev/null
 	/etc/init.d/webmin start >/dev/null 2>&1 </dev/null
 fi
 cat >/etc/webmin/uninstall.sh <<EOFF

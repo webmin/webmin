@@ -310,6 +310,7 @@ if [ "$inetd" != "1" ]; then
 		invoke-rc.d $baseproduct stop >/dev/null 2>&1 </dev/null
 		invoke-rc.d $baseproduct start >/dev/null 2>&1 </dev/null
 	else
+		/etc/$baseproduct/stop >/dev/null 2>&1 </dev/null
 		/etc/$baseproduct/start >/dev/null 2>&1 </dev/null
 	fi
 fi
