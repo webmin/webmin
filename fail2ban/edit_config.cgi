@@ -17,10 +17,17 @@ print &ui_table_start($text{'config_header'}, undef, 2);
 
 # Logging level
 my $loglevel = &find_value("loglevel", $def) || 3;
+my @loglevels;
+if (&compare_version_numbers(&get_fail2ban_version(), "0.9") >= 0) {
+	@loglevels = ( "CRITICAL", "ERROR", "WARNING",
+		       "NOTICE", "INFO", "DEBUG" );
+	}
+else {
+	@loglevels = ( [ 1, "ERROR" ], [ 2, "WARN" ],
+		       [ 3, "INFO" ], [ 4, "DEBUG" ] );
+	}
 print &ui_table_row($text{'config_loglevel'},
-	&ui_select("loglevel", $loglevel,
-		   [ [ 1, "ERROR" ], [ 2, "WARN" ],
-		     [ 3, "INFO" ], [ 4, "DEBUG" ] ]));
+	&ui_select("loglevel", $loglevel, \@loglevels));
 
 # Log file
 my $logtarget = &find_value("logtarget", $def);
