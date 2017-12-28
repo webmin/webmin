@@ -1,0 +1,7 @@
+portsentry_umode=udp
+hostsentry=/usr/local/abacus/hostsentry/hostsentry.py
+hostsentry_config=/usr/local/abacus/hostsentry/hostsentry.conf
+portsentry_tmode=tcp
+logcheck=/usr/local/etc/logcheck.sh
+portsentry=/usr/local/psionic/portsentry
+portsentry_config=/usr/local/psionic/portsentry/portsentry.conf

@@ -1,0 +1,7 @@
+exim_dbmext=.dbm
+exim_virt_dir=/etc/exim4/aliases
+exim_addrfile=/etc/exim4/email-addresses
+exim_dir=/etc/exim4
+mail_system=1
+exim_dbmfile=/etc/exim4/local_domains
+exim_mail_file=Maildir

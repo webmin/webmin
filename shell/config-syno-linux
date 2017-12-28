@@ -1,0 +1,3 @@
+max_output=100000
+max_runtime=86400
+clear_envs=0

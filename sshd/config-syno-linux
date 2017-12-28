@@ -1,0 +1,12 @@
+sync_auth=1
+sshd_config=/etc/ssh/sshd_config
+keygen_path=/usr/syno/bin/ssh-keygen
+start_cmd=/usr/syno/etc/rc.d/S95sshd.sh start
+sync_pass=0
+restart_cmd=/usr/syno/etc/rc.d/S95sshd.sh restart
+sync_gnupg=0
+client_config=/etc/ssh/ssh_config
+sshd_path=/bin/sshd
+stop_cmd=/usr/syno/etc/rc.d/S95sshd.sh stop
+sync_create=0
+pid_file=/var/run/sshd.pid

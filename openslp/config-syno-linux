@@ -1,0 +1,5 @@
+slpd_log=/var/log/slpd.log
+slpd_pid=/var/run/slpd.pid
+slpd_conf=/etc/slp.conf
+slpd=/usr/sbin/slpd
+slpd_reg=/etc/slp.reg
