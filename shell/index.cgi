@@ -156,6 +156,7 @@ if (!$in{'clear'}) {
 			$history .= $out;
 			}
 		@previous = ((grep { $_ ne $fullcmd } @previous), $fullcmd);
+		push(@allprevious, $fullcmd);
 		&lock_file($prevfile);
 		&open_tempfile(PREVFILE, ">>$prevfile");
 		&print_tempfile(PREVFILE, $fullcmd,"\n");
