@@ -127,6 +127,7 @@ save_edesc=Keine Beschreibung angegeben
 save_edir=Fehlendes oder ung&#252;ltiges Verzeichnis
 save_eformat=Ung&#252;ltiger MIME-Typ Output
 save_eopts=Fehlende Optionsdatei f&#252;r den Parameter $1
+save_eopts2=Die Optionsdatei oder der Standardwert f&#252;r den Parameter $1 darf nicht enthalten:
 save_eorder=Die Auflistung auf der Hauptseite mu&#223; eine Nummer sein
 save_err=Fehler beim Speichern des Befehls
 save_etimeout=Fehlende oder ung&#252;ltige maximale Zeit, die auf Ausf&#252;hrung gewartet wird
