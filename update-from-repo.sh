@@ -3,7 +3,7 @@
 # Update webmin/usermin to the latest develop version  from GitHub repo
 # inspired by authentic-theme/theme-update.sh script, thanks qooob
 #
-# Version 1.2, 2017-12-21
+# Version 1.3, 2017-12-27
 # Kay Marquardt, kay@rrr.de, https://github.com/gandelwartz
 #############################################################################
 
@@ -14,7 +14,7 @@ PROD=${DIR##*/} # => usermin or webmin
 HOST="https://github.com"
 REPO="webmin/$PROD"
 ASK="YES"
-GIT=`which git`
+GIT="git"
 
 # temporary locations for git clone
 WTEMP="${DIR}/.~files/webadmin" 
@@ -42,15 +42,6 @@ if [[ "$1" == "-h" || "$1" == "--help" ]] ; then
     exit 0
 fi
 
-if [[ "${GIT}" == ""  ]] ; then
-    GIT="git"
-    # git not in PATH, search for alternate locations
-    for INSTALL in /opt/git/git /opt/git/bin/git /usr/local/bin/git /usr/local/git/bin/git
-    do
-        [[ -f "${INSTALL}" && -x "${INSTALL}" ]] && GIT="${INSTALL}" && break
-    done
-fi
-
 if [[ "${PROD}" != "webmin" && "${PROD}" != "usermin" ]] ; then
     echo -e "${NC}${RED}error: the current dir name hast to be webmin or usermin, no update possible!${NC}"
     echo -e "possible solution: ${ORANGE}ln -s ${PROD} ../webmini; cd ../webmin${NC} or ${ORANGE}ln -s ${PROD} ../usermin; cd ../webmin ${NC}"
@@ -73,6 +64,18 @@ fi
 # lets start
 # Clear screen for better readability
 [[ "${ASK}" == "YES" ]] && clear
+
+# use path from miniser.conf
+echo -en "${CYAN}search minserv.conf ... ${NC}"
+if [[ -f "/etc/webmin/miniserv.conf" ]] ; then
+	# default location
+    MINICONF="/etc/webmin/miniserv.conf"
+else
+    # possible other locations
+    MINICONF=`find /* -maxdepth 6 -name miniserv.conf 2>/dev/null | grep ${PROD} | head -n 1`
+    echo  -e "${ORANGE}found: ${MINICONF}${NC} (alternative location)"
+fi
+[[ "${MINICONF}" != "" ]] && export path=`grep path= ${MINICONF}| sed 's/^path=//'`
 
 # alternative repo given
 if [[ "$1" == *"-repo"* ]]; then
@@ -139,7 +142,7 @@ if [[ $EUID -eq 0 ]]; then
 
         ####################
         # start processing pulled source
-        version="`head -c -1 ${TEMP}/version`-`cd ${TEMP}; ${GIT} log -1 --format=%cd --date=format:'%m%d.%H%M'`" 
+        version="`head -c -1 ${TEMP}/version`.`cd ${TEMP}; ${GIT} log -1 --format=%cd --date=format:'%m%d.%H%M'`" 
         if [[ "${LANG}" != "YES" ]]; then
           ###############
           # FULL update
@@ -161,15 +164,8 @@ if [[ $EUID -eq 0 ]]; then
           #prepeare unattended upgrade
           [[ ! -f "${TEMP}/tarballs/${PROD}-${version}/setup.sh" ]] && \
                    cp  "${TEMP}/setup.sh" "${TEMP}/tarballs/${PROD}-${version}/setup.sh"
-          echo -en "${CYAN}search minserv.conf ... ${NC}"
-          if [[ -f "/etc/webmin/miniserv.conf" ]] ; then
-              MINICONF=`find /etc -name miniserv.conf 2>/dev/null | grep ${PROD} | head -n 1`
-          else
-              MINICONF=`find /* -maxdepth 6 -name miniserv.conf 2>/dev/null | grep ${PROD} | head -n 1`
-          fi
-          MINICONF=`grep env_WEBMIN_CONFIG= ${MINICONF}| sed 's/.*_WEBMIN_CONFIG=//'`
-          echo  -e "${ORANGE}found: ${MINICONF}${NC}"
-          config_dir=${MINICONF}
+          config_dir=`grep env_WEBMIN_CONFIG= ${MINICONF}| sed 's/.*_WEBMIN_CONFIG=//'`
+          echo  -e "${ORANGE}found: ${config_dir}${NC}"
           atboot="NO"
           makeboot="NO"
           nouninstall="YES"

@@ -1,0 +1,3 @@
+dovecot_config=/var/packages/MailServer/target/etc/dovecot/dovecot.conf
+dovecot=/var/packages/MailServer/target/sbin/dovecot
+pid_file=/var/run/dovecot/master.pid

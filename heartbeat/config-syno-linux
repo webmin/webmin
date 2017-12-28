@@ -1,0 +1,7 @@
+start_cmd=/usr/lib/heartbeat/heartbeat
+pid_file=/var/run/heartbeat.pid
+heartbeat=/usr/syno/sbin
+serials=/dev/ttyS*
+ha_dir=/etc
+req_resource_cmd=/usr/lib/heartbeat/req_resource
+stop_cmd=kill `cat /var/run/heartbeat.pid`

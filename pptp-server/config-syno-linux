@@ -1,0 +1,6 @@
+ppp_options=/etc/ppp/options
+pap_file=/etc/ppp/chap-secrets
+log_file=/var/log/messages
+file=/etc/pptpd.conf
+pptpd=pptpd
+pid_file=/var/run/pptpd.pid

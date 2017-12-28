@@ -1,0 +1,6 @@
+webalizer=/var/packages/Webalizer/target/bin/webalizer
+skip_old=0
+alt_conf=/var/packages/Webalizer/target/synology_added/webalizer.conf
+naked=0
+webalizer_conf=/usr/local/etc/webalizer.conf
+auto=apache,squid,proftpd,wuftpd
