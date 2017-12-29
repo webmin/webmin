@@ -164,6 +164,7 @@ if [[ $EUID -eq 0 ]]; then
           #prepeare unattended upgrade
           [[ ! -f "${TEMP}/tarballs/${PROD}-${version}/setup.sh" ]] && \
                    cp  "${TEMP}/setup.sh" "${TEMP}/tarballs/${PROD}-${version}/setup.sh"
+          echo  -en "${CYAN}search for config dir ... ${NC}"
           config_dir=`grep env_WEBMIN_CONFIG= ${MINICONF}| sed 's/.*_WEBMIN_CONFIG=//'`
           echo  -e "${ORANGE}found: ${config_dir}${NC}"
           atboot="NO"
