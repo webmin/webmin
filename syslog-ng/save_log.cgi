@@ -19,7 +19,7 @@ else {
 		  'members' => [ ] };
 	}
 
-&lock_file($config{'syslogng_conf'});
+&lock_all_files($conf);
 if ($in{'delete'}) {
 	# Just delete it!
 	&save_directive($conf, undef, $log, undef, 0);
@@ -73,7 +73,7 @@ else {
 	&save_directive($conf, undef, $old, $log, 0);
 	}
 
-&unlock_file($config{'syslogng_conf'});
+&unlock_all_files();
 &webmin_log($in{'delete'} ? 'delete' : $in{'new'} ? 'create' : 'modify',
 	    'log');
 &redirect("list_logs.cgi");

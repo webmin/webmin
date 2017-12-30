@@ -43,9 +43,9 @@ $mems = $options->{'members'};
 &save_yesno_option("sanitize_filenames");
 
 # Write out options section
-&lock_file($config{'syslogng_conf'});
+&lock_all_files($conf);
 &save_directive($conf, undef, "options", $options, 0);
-&unlock_file($config{'syslogng_conf'});
+&unlock_all_files();
 &webmin_log("options");
 
 &redirect("");
