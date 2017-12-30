@@ -164,6 +164,7 @@ if [[ $EUID -eq 0 ]]; then
           #prepeare unattended upgrade
           [[ ! -f "${TEMP}/tarballs/${PROD}-${version}/setup.sh" ]] && \
                    cp  "${TEMP}/setup.sh" "${TEMP}/tarballs/${PROD}-${version}/setup.sh"
+          echo  -en "${CYAN}search for config dir ... ${NC}"
           config_dir=`grep env_WEBMIN_CONFIG= ${MINICONF}| sed 's/.*_WEBMIN_CONFIG=//'`
           echo  -e "${ORANGE}found: ${config_dir}${NC}"
           atboot="NO"
@@ -235,8 +236,7 @@ if [[ $EUID -eq 0 ]]; then
       # fix permissions, should be done by makedist.pl?
       echo -e "${CYAN}make scripts executable ...${NC}"
       chmod -R -x+X ${DIR}
-      chmod +x *.pl *.cgi *.pm *.sh
-      find ${DIR} \( -iname "*.pl" -o -iname "*.cgi" -o -iname "*.pm" -o -iname "*.sh" \) -a ! -iname "config*info" -exec chmod +x '{}' + 
+      chmod +x *.pl *.cgi *.pm *.sh */*.pl */*.cgi */*.pm */*.sh
       
       # thats all folks
       echo -e "\n${CYAN}Updating ${PROD^} to Version `cat version`, done.${NC}"
