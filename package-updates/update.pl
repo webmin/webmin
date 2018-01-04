@@ -46,7 +46,7 @@ if ($tellcount) {
 	&get_miniserv_config(\%miniserv);
 	$proto = $miniserv{'ssl'} ? 'https' : 'http';
 	$port = $miniserv{'port'};
-	$url = $proto."://".&get_system_hostname().":".$port."/$module_name/";
+	$url = $proto."://".&get_system_hostname().":".$port."/$module_name/?xnavigation=1";
 	$body .= "Updates can be installed at $url\n\n";
 	}
 
@@ -67,4 +67,3 @@ if ($config{'sched_email'} && $body) {
 		print STDERR $body;
 		}
 	}
-
