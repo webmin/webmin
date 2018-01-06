@@ -2580,5 +2580,35 @@ if ($url =~ /^\//) {
 return "<script type='text/javascript'>${window}.location = '".&quote_escape($url)."';</script>\n";
 }
 
+=head2 ui_webmin_link(module, page)
+
+Returns the URL for a link to this Webmin instance that can be used in an email
+
+=cut
+sub ui_webmin_link
+{
+my ($mod, $page) = @_;
+if (defined(&theme_ui_webmin_link)) {
+	return &theme_ui_webmin_link(@_);
+	}
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+my $proto = $miniserv{'ssl'} ? 'https' : 'http';
+my $port = $miniserv{'port'};
+my $host = $ENV{'HTTP_HOST'} || &get_display_hostname();
+if ($host =~ /^([a-zA-Z0-9\-\_\.]+):(\d+)$/) {
+	$host = $1;
+	$port = $2;
+	}
+my $rv = $proto."://$host:$port";
+if ($mod) {
+	$rv .= "/$mod";
+	}
+if ($page) {
+	$rv .= "/$page";
+	}
+return $rv;
+}
+
 1;
 

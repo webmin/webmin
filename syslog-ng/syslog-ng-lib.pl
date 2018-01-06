@@ -36,17 +36,30 @@ sub read_config_file
 {
 local ($file) = @_;
 local (@rv, @tok, @ltok, @lnum);
-&open_readfile(CONF, $file);
-local $lnum = 0;
+local $lref = &read_file_lines($file, 1);
 local $cmode;
-while($line = <CONF>) {
+local @allincs;
+for(my $lnum=0; $lnum<@$lref; $lnum++) {
 	# strip comments
+	my $line = $lref->[$lnum];
 	$line =~ s/\r|\n//g;
 	$line =~ s/#.*$//g;		# Remove hash comment
 	$line =~ s/\/\/.*$//g if ($line !~ /".*\/\/.*"/);
 	$line =~ s/\/\*.*\*\///g;	# Remove multi-line comment
-	$line =~ s/^\s*@.*$//g;		# Remove @version line
-	next if ($line =~ /^\s*include\s.*/);
+	if ($line =~ /^\@include\s+"(.*)"/) {
+		# Found an include .. replace with contents of the file(s)
+		local $incs = $1;
+		if ($incs !~ /^\//) {
+			$file =~ /^(.*)\//;
+			$incs = $1."/".$incs;
+			}
+		foreach my $inc (glob($incs)) {
+			push(@allincs, &read_config_file($inc));
+			}
+		$lnum++;
+		next;
+		}
+	$line =~ s/^\s*@.*$//g;		# Remove lines like @version
 	while(1) {
 		if (!$cmode && $line =~ /\/\*/) {
 			# start of a C-style comment
@@ -97,7 +110,6 @@ while($line = <CONF>) {
 		push(@tok, $t);
 		push(@lnum, $lnum);
 		}
-	$lnum++;
 	}
 
 # parse tokens into data structures
@@ -109,7 +121,7 @@ while($i < @tok) {
 		push(@rv, $str);
 		}
 	}
-close(CONF);
+push(@rv, @allincs);
 return @rv;
 }
 
@@ -242,8 +254,6 @@ local $new = !$value ? undef : ref($value) ? $value :
 		  'type' => 0 };
 
 # Read the config file and work out the lines used
-local $lref;
-$lref = &read_file_lines($config{'syslogng_conf'}) if (!$nowrite);
 local ($mems, $memseline);
 if ($parent) {
 	$mems = $parent->{'members'};
@@ -263,6 +273,10 @@ if ($old) {
 	$idx >= 0 || &error("Failed to find $old in array of ",scalar(@$mems));
 	$oldlen = $old->{'eline'} - $old->{'line'} + 1;
 	}
+local $file = $old ? $old->{'file'} :
+	      $parent ? $parent->{'file'} :
+			$config{'syslogng_conf'};
+local $lref = $nowrite ? undef : &read_file_lines($file);
 if ($new) {
 	@lines = &directive_lines($new);
 	$newlen = scalar(@lines);
@@ -279,7 +293,7 @@ if ($old && $new) {
 		}
 	if (!$nowrite) {
 		# Update it in the file
-		&renumber($conf, $new->{'line'}, $newlen - $oldlen);
+		&renumber($conf, $new->{'line'}, $newlen - $oldlen, $file);
 		splice(@$lref, $old->{'line'}, $oldlen, @lines);
 		}
 	$mems[$idx] = $new;
@@ -289,7 +303,7 @@ elsif ($old && !$new) {
 	splice(@$mems, $idx, 1);
 	if (!$nowrite) {
 		# Remove from the file
-		&renumber($conf, $old->{'line'}, -$oldlen);
+		&renumber($conf, $old->{'line'}, -$oldlen, $file);
 		splice(@$lref, $old->{'line'}, $oldlen);
 		}
 	}
@@ -304,7 +318,9 @@ elsif (!$old && $new) {
 		}
 	push(@$mems, $new);
 	}
-&flush_file_lines($config{'syslogng_conf'}) if (!$nowrite);
+if (!$nowrite) {
+	&flush_file_lines($file);
+	}
 }
 
 # save_multiple_directives(&conf, &parent, &oldlist, &newlist, no-write)
@@ -319,15 +335,17 @@ for(my $i=0; $i<@$oldlist || $i<@$newlist; $i++) {
 	}
 }
 
-# renumber(&conf, line, offset)
-# Changes the line numbers of all directives AFTER the given line
+# renumber(&conf, line, offset, file)
+# Changes the line numbers of all directives AFTER the given line in the file
 sub renumber
 {
-local ($conf, $line, $offset) = @_;
+local ($conf, $line, $offset, $file) = @_;
 foreach my $c (@$conf) {
-	$c->{'line'} += $offset if ($c->{'line'} > $line);
-	$c->{'eline'} += $offset if ($c->{'eline'} > $line);
-	&renumber($c->{'members'}, $line, $offset) if ($c->{'members'});
+	$c->{'line'} += $offset
+		if ($c->{'file'} eq $file && $c->{'line'} > $line);
+	$c->{'eline'} += $offset
+		if ($c->{'file'} eq $file && $c->{'eline'} > $line);
+	&renumber($c->{'members'}, $line, $offset, $file) if ($c->{'members'});
 	}
 }
 
@@ -554,7 +572,7 @@ return @rv;
 sub rename_dependencies
 {
 local ($type, $oldname, $newname) = @_;
-#return if ($oldname eq $newname);
+return if ($oldname eq $newname);
 local $conf = &get_config();
 local @logs = &find("log", $conf);
 local @rv;
@@ -564,7 +582,6 @@ foreach my $l (@logs) {
         foreach my $d (@deps) {
                 if ($d->{'value'} eq $oldname) {
 			$d->{'values'} = [ $newname ];
-			#&save_directive($conf, $l, $d, $d, 1);
 			$changed = 1;
 			}
 		}
@@ -774,6 +791,28 @@ foreach my $l (@rv) {
 	$l->{'index'} = $i++;
 	}
 return @rv;
+}
+
+# lock_all_files([&config])
+# Takes a lock on all config files
+sub lock_all_files
+{
+my ($conf) = @_;
+$conf ||= &get_config();
+@all_locked_files = &unique(map { $_->{'file'} } @$conf);
+foreach my $f (@all_locked_files) {
+	&lock_file($f);
+	}
+}
+
+# unlock_all_files()
+# Releases all config locks
+sub unlock_all_files
+{
+foreach my $f (@all_locked_files) {
+	&unlock_file($f);
+	}
+@all_locked_files = ( );
 }
 
 1;

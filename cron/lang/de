@@ -141,6 +141,7 @@ log_modify_l=Cron-Auftrag "$2" f&#252;r $1 ge&#228;ndert
 log_move=Cron-Auftrag verschoben f&#252;r $1
 manual_ecannot=Sie sind nicht berechtigt, Cron-Auftr&#228;ge manuell zu bearbeiten
 manual_edit=Cron Datei zum editieren:
+manual_editing=Verwende das Textfeld unten, um Cron-Jobs in $1 zu bearbeiten. Seie vorsichtig, da Webmin keine Validierung durchf&#252;hrt!
 manual_efile=Ausgew&#228;hlte Datei ist ung&#252;ltig!
 manual_ok=Editieren
 manual_title=Editiere manuell Cron-Auftr&#228;ge

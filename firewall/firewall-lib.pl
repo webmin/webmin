@@ -500,20 +500,20 @@ if ($config{"direct${ipvx}"}) {
 	system("ip${ipvx}tables-save >$ltemp 2>/dev/null");
 	}
 foreach $s (&list_cluster_servers()) {
-	&remote_foreign_require($s, "firewall", $ipvx_lib);
+	&remote_foreign_require($s, $module_name);
 	if ($config{"direct${ipvx}"}) {
 		# Directly activate on remote server!
 		local $rtemp = &remote_write($s, $ltemp);
 		unlink($ltemp);
-		local $err = &remote_eval($s, "firewall",
+		local $err = &remote_eval($s, $module_name,
 		  "\$out = `ip${ipvx}tables-restore <$rtemp 2>&1`; [ \$out, \$? ]"); 
-		&remote_eval($s, "firewall", "unlink('$rtemp')");
+		&remote_foreign_call($s, $module_name, "unlink_file", $rtemp);
 		&error(&text('apply_remote', $s->{'host'}, $err->[0]))
 			if ($err->[1]);
 		}
 	else {
 		# Can just copy across save file
-		local $rfile = &remote_eval($s, "firewall",
+		local $rfile = &remote_eval($s, $module_name,
 					    "\$ip${ipvx}tables_save_file");
 		&remote_write($s, $ipvx_save, $rfile);
 		}
@@ -530,8 +530,9 @@ if ($config{'cluster_mode'}) {
 	}
 local $s;
 foreach $s (&list_cluster_servers()) {
-	&remote_foreign_require($s->{'host'}, "firewall", $ipvx_lib);
-	local $err = &remote_foreign_call($s->{'host'}, "firewall", "apply_configuration");
+	&remote_foreign_require($s->{'host'}, $module_name);
+	local $err = &remote_foreign_call(
+		$s->{'host'}, $module_name, "apply_configuration");
 	if ($err) {
 		return &text('apply_remote', $s->{'host'}, $err);
 		}

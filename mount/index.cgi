@@ -66,10 +66,10 @@ if (@visible) {
 		local @cols;
 		if ($canedit && !$access{'only'}) {
 			if (defined($midx)) {
-				push(@cols, &ui_link("edit_mount.cgi?index=$midx", &html_escape($p)) );
+				push(@cols, &ui_link("edit_mount.cgi?index=$midx", $p));
 				}
 			else {
-				push(@cols, &ui_link("edit_mount.cgi?temp=1&index=$medidx", &html_escape($p)) );
+				push(@cols, &ui_link("edit_mount.cgi?temp=1&index=$medidx", $p));
 				}
 			}
 		else {

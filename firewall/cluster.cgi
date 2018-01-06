@@ -12,27 +12,22 @@ $access{'cluster'} || &error($text{'ecluster'});
 # Show existing servers
 @servers = &list_cluster_servers();
 if (@servers) {
-	print "<form action=cluster_delete.cgi>\n";
+	print &ui_form_start("cluster_delete.cgi", "post");
         print &ui_hidden("version", ${ipvx_arg});
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td width=10><br></td> ",
-	      "<td><b>$text{'cluster_host'}</b></td> ",
-	      "<td><b>$text{'cluster_desc'}</b></td> ",
-	      "<td><b>$text{'cluster_os'}</b></td> </tr>\n";
+	print &ui_columns_start([ "",
+				  $text{'cluster_host'},
+				  $text{'cluster_desc'},
+				  $text{'cluster_os'} ], 100);
 	foreach $s (@servers) {
-		print "<tr $cb>\n";
-		print "<td width=10><input type=checkbox name=d value=$s->{'id'}></td>\n";
-		print "<td>",$s->{'host'},"</td>\n";
-		print "<td>",$s->{'desc'} || "<br>","</td>\n";
-		foreach $t (@servers::server_types) {
-			if ($t->[0] eq $s->{'type'}) {
-				print "<td>$t->[1]</td>\n";
-				}
-			}
-		print "</tr>\n";
+		($t) = grep { $_->[0] eq $s->{'type'} } @servers::server_types;
+		print &ui_checked_columns_row([
+			&html_escape($s->{'host'}),
+			&html_escape($s->{'desc'}),
+			$t->[1],
+			], undef, "d", $s->{'id'});
 		}
-	print "</table>\n";
-	print "<input type=submit value='$text{'cluster_delete'}'></form>\n";
+	print &ui_columns_end();
+	print &ui_form_end([ [ undef, $text{'cluster_delete'} ] ]);
 	}
 else {
 	print "<b>$text{'cluster_none'}</b><p>\n";

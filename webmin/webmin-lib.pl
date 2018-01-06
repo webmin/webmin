@@ -764,9 +764,13 @@ Rounds a version number down to the nearest .01
 =cut
 sub base_version
 {
+my ($ver) = @_;
 #remove waning about (possible) postfixes from update-from-repo.sh
-$_[0] =~ s/[-a-z:_].*//gi;
-return sprintf("%.2f0", $_[0]);
+$ver =~ s/[-a-z:_].*//gi;
+if ($ver =~ /^((\d+)\.(\d+))\.*/) {
+	$ver = $1;
+	}
+return sprintf("%.2f0", $ver);
 }
 
 =head2 get_newmodule_users

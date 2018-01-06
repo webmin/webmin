@@ -25,6 +25,7 @@ else {
 	&error_setup($text{'add_gerr'});
 	$msg = &text('add_gmsg', $in{'group'});
 	}
+@add || &error($text{'add_enone'});
 
 &ui_print_header($text{"index_title_v${ipvx}"}, $text{'add_title'}, "");
 print "<b>$msg</b><p>\n";
@@ -40,7 +41,7 @@ $add_error_msg = join("", @_);
 foreach $s (@add) {
 	$add_error_msg = undef;
 	local $host = { 'id' => $s->{'id'} };
-	local $firewall = &remote_foreign_check($s->{'host'}, "firewall");
+	local $firewall = &remote_foreign_check($s->{'host'}, $module_name);
 	if ($add_error_msg) {
 		print "$add_error_msg<p>\n";
 		next;
@@ -49,17 +50,17 @@ foreach $s (@add) {
 		print &text('add_echeck', $s->{'host'}),"<p>\n";
 		next;
 		}
-	&remote_foreign_require($s->{'host'}, "firewall", $ipvx_lib);
+	&remote_foreign_require($s->{'host'}, $module_name);
 
-	local $missing = &remote_foreign_call($s->{'host'}, "firewall",
+	local $missing = &remote_foreign_call($s->{'host'}, $module_name,
 					      "missing_firewall_commands");
 	if ($missing) {
-		print &text('add_emissing', "<tt>$missing</tt>"),"<p>\n";
+		print &text('add_emissing', $s->{'host'}, "<tt>$missing</tt>"),"<p>\n";
 		next;
 		}
 
-	@livetables = &remote_foreign_call($s->{'host'}, "firewall",
-				   "get_iptables_save", "ip${ipvx}tables-save |");
+	@livetables = &remote_foreign_call($s->{'host'}, $module_name,
+			   "get_iptables_save", "ip${ipvx}tables-save |");
 	$rc = 0;
 	foreach $t (@livetables) {
 		$rc += @{$t->{'rules'}};

@@ -19,7 +19,7 @@ else {
 		  'members' => [ ] };
 	}
 
-&lock_file($config{'syslogng_conf'});
+&lock_all_files($conf);
 if ($in{'delete'}) {
 	# Just delete it!
 	&check_dependencies('source', $in{'old'}) &&
@@ -229,7 +229,7 @@ else {
 		}
 	}
 
-&unlock_file($config{'syslogng_conf'});
+&unlock_all_files();
 &webmin_log($in{'delete'} ? 'delete' : $in{'new'} ? 'create' : 'modify',
 	    'source', $in{'old'} || $in{'name'});
 &redirect("list_sources.cgi");
