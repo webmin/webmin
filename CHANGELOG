@@ -230,3 +230,7 @@ Fixed an XSS bug that allowed xmlrpc.cgi to be abused by a malicious link.
 For new installs, switched the location of data files in many modules to /var/webmin instead of /etc/webmin.
 ---- Changes since 1.790 ----
 Added a recent logins section to the System Information page.
+---- Changes since 1.870 ----
+German translation updates, thanks to Raymond Vetter.
+Catalan translation updates from Jaume Badiella.
+Bulgarian translations from Grigor Gatchev.
