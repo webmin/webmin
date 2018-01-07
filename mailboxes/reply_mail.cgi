@@ -457,26 +457,31 @@ if ($in{'new'}) {
 print &ui_table_start($text{'reply_body'}, "width=100%", 2, undef,
 		      &ui_links_row(\@bodylinks));
 if ($html_edit) {
-	# Output HTML editor textarea
-	print <<EOF;
-<script type="text/javascript">
-  _editor_url = "$gconfig{'webprefix'}/$module_name/xinha/";
-  _editor_lang = "en";
-</script>
-<script type="text/javascript" src="xinha/XinhaCore.js"></script>
+	if ($current_theme !~ /authentic-theme/) {
+		# Output HTML editor textarea
+		print <<EOF;
+	<script type="text/javascript">
+	  _editor_url = "$gconfig{'webprefix'}/$module_name/xinha/";
+	  _editor_lang = "en";
+	</script>
+	<script type="text/javascript" src="xinha/XinhaCore.js"></script>
 
-<script type="text/javascript">
-xinha_init = function()
-{
-xinha_editors = [ "body" ];
-xinha_plugins = [ ];
-xinha_config = new Xinha.Config();
-xinha_config.hideSomeButtons(" print showhelp about killword toggleborders ");
-xinha_editors = Xinha.makeEditors(xinha_editors, xinha_config, xinha_plugins);
-Xinha.startEditors(xinha_editors);
-}
-</script>
+	<script type="text/javascript">
+	xinha_init = function()
+	{
+	xinha_editors = [ "body" ];
+	xinha_plugins = [ ];
+	xinha_config = new Xinha.Config();
+	xinha_config.hideSomeButtons(" print showhelp about killword toggleborders ");
+	xinha_editors = Xinha.makeEditors(xinha_editors, xinha_config, xinha_plugins);
+	Xinha.startEditors(xinha_editors);
+	}
+	</script>
 EOF
+		}
+	else {
+	print '<script type="text/javascript">xinha_init = function(){}</script>';
+		}
 	print &ui_table_row(undef,
 		&ui_textarea("body", $quote, 40, 80, undef, 0,
 		  	     "style='width:99%' id=body"), 2);
@@ -543,4 +548,3 @@ foreach $s (@sub) {
 	$mail = $amail;
 	}
 }
-
