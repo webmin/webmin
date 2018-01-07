@@ -1,7 +1,7 @@
 name=At
 desc=Scheduled Commands
 desc_pl=Zaplanowane polecenia
-os_support=solaris slackware-linux redhat-linux mandrake-linux debian-linux suse-linux united-linux open-linux turbo-linux corel-linux msc-linux freebsd netbsd openbsd generic-linux openserver macos gentoo-linux irix sol-linux coherent-linux openmamba-linux
+os_support=solaris slackware-linux redhat-linux mandrake-linux debian-linux suse-linux united-linux open-linux turbo-linux corel-linux msc-linux freebsd netbsd openbsd generic-linux openserver macos gentoo-linux irix sol-linux coherent-linux openmamba-linux syno-linux
 category=system
 desc_ca=Ordres Planificades
 desc_de=Geplante Auftr&#228;ge (AT)

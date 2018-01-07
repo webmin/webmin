@@ -1,0 +1,17 @@
+show_opts=0
+shutdown_command=/sbin/poweroff
+init_base=/usr/syno/etc/rc.d
+init_dir=/usr/syno/etc/rc.d
+extra_init=/etc/rc.d/rc.local
+order=1
+sort_mode=0
+order_digits=2
+reboot_command=/sbin/poweroff
+inittab_id=id
+expert=0
+soft_links=1
+start_stop_msg=0
+status_check=1
+boot_levels=2 3 5
+no_chkconfig=1
+desc=1
