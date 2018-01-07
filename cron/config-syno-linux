@@ -1,0 +1,17 @@
+kill_subs=1
+cron_deny_file=/etc/cron.deny
+hourly_only=0
+cron_allow_file=/etc/cron.allow
+system_crontab=/etc/crontab
+cron_deny_all=2
+vixie_cron=1
+max_jobs=100
+show_comment=1
+cron_input=0
+max_len=80
+cron_dir=/var/spool/cron/crontabs/
+show_run=0
+show_time=1
+cron_crontab=0
+match_mode=0
+match_user=1

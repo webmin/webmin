@@ -121,19 +121,19 @@ if [[ $EUID -eq 0 ]]; then
         else
           RRELEASE=`curl -s -L https://github.com/${REPO}/blob/master/version  | sed -n '/id="LC1"/s/.*">\([^<]*\).*/\1/p'`
         fi
-        echo -e "${CYAN}Pulling in latest release of${NC} ${GREY}${PROD^}${NC} $RRELEASE ($HOST/$REPO)..."
+        echo -e "${CYAN}Pulling in latest release of${NC} ${ORANGE}${PROD^}${NC} $RRELEASE ($HOST/$REPO)..."
         RS="$(${GIT} clone --depth 1 --branch $RRELEASE -q $HOST/$REPO.git "${TEMP}" 2>&1)"
         if [[ "$RS" == *"ould not find remote branch"* ]]; then
           ERROR="Release ${RRELEASE} doesn't exist. "
         fi
       else
-        echo -e "${CYAN}Pulling in latest changes for${NC} ${GREY}${PROD^}${NC} $RRELEASE ($HOST/$REPO) ..."
+        echo -e "${CYAN}Pulling in latest changes for${NC} ${ORANGE}${PROD^}${NC} $RRELEASE ($HOST/$REPO) ..."
         ${GIT} clone --depth 1 --quiet  $HOST/$REPO.git "${TEMP}"
       fi
       # on usermin!! pull also webmin to resolve symlinks later!
       WEBMREPO=`echo ${REPO} | sed "s/\/usermin$/\/webmin/"`
       if [[ "${REPO}" != "${WEBMREPO}" ]]; then
-        echo -e "${CYAN}Pulling in latest changes for${NC} ${GREY}Webmin${NC} ($HOST/$WEBMREPO) ..."
+        echo -e "${CYAN}Pulling in latest changes for${NC} ${ORANGE}Webmin${NC} ($HOST/$WEBMREPO) ..."
         ${GIT} clone --depth 1 --quiet  $HOST/$WEBMREPO.git "${WTEMP}"
       fi
 
@@ -142,7 +142,7 @@ if [[ $EUID -eq 0 ]]; then
 
         ####################
         # start processing pulled source
-        version="`head -c -1 ${TEMP}/version`.`cd ${TEMP}; ${GIT} log -1 --format=%cd --date=format:'%m%d.%H%M'`" 
+        version="`head -c -1 ${TEMP}/version`-`cd ${TEMP}; ${GIT} log -1 --format=%cd --date=format:'%m%d.%H%M'`" 
         if [[ "${LANG}" != "YES" ]]; then
           ###############
           # FULL update
@@ -204,7 +204,7 @@ if [[ $EUID -eq 0 ]]; then
         # "compile" UTF-8 lang files
         echo -en "\n${CYAN}compile UTF-8 lang files${NC} ..."
         if [[ `which iconv 2> /dev/null` != '' ]] ; then
-            perl "${TEMP}/chinese-to-utf8.pl" . 2>&1 | while read line; do echo -n "."; done
+            perl "${TEMP}/chinese-to-utf8.pl" . 2>&1 | while read input; do ((line++)); [ ${line} -eq 50 ] && { echo -n "." ; line=0;}; done
         else
             echo -e "${BLUE} iconv not found, skipping lang files!${NC}"
         fi

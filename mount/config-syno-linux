@@ -1,0 +1,6 @@
+long_fstypes=1
+fstab_file=/etc/fstab
+smbclient_path=smbclient
+nmblookup_path=nmblookup
+show_used=1
+nfs_check=1

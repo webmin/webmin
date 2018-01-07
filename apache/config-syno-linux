@@ -1,0 +1,15 @@
+allow_virtualmin=0
+test_always=0
+httpd_conf=/opt/etc/apache2/httpd.conf
+show_names=1
+show_order=0
+apachectl_path=/opt/sbin/apachectl
+test_apachectl=1
+httpd_dir=/opt/etc/apache2
+test_manual=1
+auto_mods=1
+pid_file=/var/run/httpd-user.pid
+test_config=1
+show_list=0
+httpd_path=/opt/sbin/httpd
+max_servers=100

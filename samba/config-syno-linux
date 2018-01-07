@@ -1,0 +1,11 @@
+sort_mode=1
+name_server=/bin/nmbd
+dont_convert=-499
+net=/bin/net
+text_lists=0
+smb_passwd=/etc/samba/private/smbpasswd
+samba_server=/bin/smbd
+samba_status_program=/bin/smbstatus
+smb_conf=/etc/samba/smb.conf
+list_printers_command=lpc status | grep "[A-z0-9]:" | sed -e 's/://g'
+run_from_inetd=0
