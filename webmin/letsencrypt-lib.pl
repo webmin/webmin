@@ -240,6 +240,7 @@ else {
 
 	# Request the cert and key
 	my $cert = &transname();
+	&clean_environment();
 	my $out = &backquote_logged(
 		"$python $module_root_directory/acme_tiny.py ".
 		"--account-key ".quotemeta($account_key)." ".
@@ -251,6 +252,7 @@ else {
 			  : "").
 		"--quiet ".
 		"2>&1 >".quotemeta($cert));
+	&reset_environment();
 	if ($?) {
 		my @lines = split(/\r?\n/, $out);
 		my $trace;
