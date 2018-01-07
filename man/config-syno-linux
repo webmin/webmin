@@ -1,0 +1,7 @@
+man_cmd_sect=man SECTION PAGE
+man_dir=/opt/share/man:/opt/man/opt/share/man
+list_cmd_sect=man -w SECTION PAGE
+man_cmd=man PAGE
+search_cmd=apropos PAGE
+list_cmd=man -w PAGE
+man2html_path=man2html
