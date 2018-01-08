@@ -18,11 +18,22 @@ if (&foreign_available($module_name) && !$access{'noconfig'}) {
 	# Show DNSSEC expired domains
 	my @exps = &list_dnssec_expired_domains();
 	if (@exps) {
-		my @msgs = map { $_->{'name'}." (".&make_date($_->{'expiry'}, 1).")" } @exps;
+		my @doms = map { $_->{'name'}." (".&make_date($_->{'expiry'}, 1).")" } @exps;
+		my $msg = &text('index_eexpired', join(", ", @doms))."<p>\n";
+		my $job = &get_dnssec_cron_job();
+		if (!$job) {
+			$msg .= &text('index_eexpired_conf',
+				      &ui_link("/$module_name/conf_dnssec.cgi",
+					       $text{'dnssec_title'}));
+			}
+		else {
+			$msg .= &text('index_eexpired_mod',
+				      &ui_link("/$module_name/",
+					       $text{'index_title'}));
+			}
 		push(@rv, { 'type' => 'warning',
 			    'level' => 'danger',
-			    'warning' => &text('index_eexpired',
-					       join(", ", @msgs)) });
+			    'warning' => $msg });
 		}
 	}
 return @rv;
