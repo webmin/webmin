@@ -37,66 +37,56 @@ else {
 		# Check if shorewall is running by looking for the 'shorewall'
 		# chain in the filter table
 		print &ui_hr();
-		print "<table width=100%>\n";
-		system("$config{'shorewall'} status 2>&1");
-		if ($?) {
-		  # Down .. offer to start
-		  # unless no permissions
-		  unless ($access{'nochange'}) {
-		    print "<form action=start.cgi>\n";
-		    print "<tr> <td><input type=submit ",
-		      "value='$text{'index_start'}'></td>\n";
-		    print "<td>$text{'index_startdesc'}</td> </tr>\n";
-		    print "</form>\n";
-		  }
-		}
-		else {
-		  # Up .. offer to restart, clear and stop
-		  # unless nochange is set
-		  unless ($access{'nochange'}) {
-		    print "<form action=restart.cgi>\n";
-		    print "<tr> <td><input type=submit ",
-		      "value='$text{'index_restart'}'></td>\n";
-		    print "<td>$text{'index_restartdesc'}</td> </tr>\n";
-		    print "</form>\n";
+		print &ui_buttons_start();
+		my $ex = system("$config{'shorewall'} status 2>&1");
 
-		    print "<form action=refresh.cgi>\n";
-		    print "<tr> <td><input type=submit ",
-		      "value='$text{'index_refresh'}'></td>\n";
-		    print "<td>$text{'index_refreshdesc'}</td> </tr>\n";
-		    print "</form>\n";
+		if ($ex && !$access{'nochange'}) {
+			# Down .. offer to start
+			print &ui_buttons_row(
+				"start.cgi",
+				$text{'index_start'},
+				$text{'index_startdesc'});
+			}
+		elsif (!$ex && !$access{'nochange'}) {
+			# Up .. offer to restart, clear and stop
+			print &ui_buttons_row(
+				"restart.cgi",
+				$text{'index_restart'},
+				$text{'index_restartdesc'});
 
-		    print "<form action=clear.cgi>\n";
-		    print "<tr> <td><input type=submit ",
-		      "value='$text{'index_clear'}'></td>\n";
-		    print "<td>$text{'index_cleardesc'}</td> </tr>\n";
-		    print "</form>\n";
+			print &ui_buttons_row(
+				"refresh.cgi",
+				$text{'index_refresh'},
+				$text{'index_refreshdesc'});
 
-		    print "<form action=stop.cgi>\n";
-		    print "<tr> <td><input type=submit ",
-		      "value='$text{'index_stop'}'></td>\n";
-		    print "<td>$text{'index_stopdesc'}</td> </tr>\n";
-		    print "</form>\n";
-		  }
-		  print "<form action=status.cgi>\n";
-		  print "<tr> <td><input type=submit ",
-		    "value='$text{'index_status'}'></td>\n";
-		  print "<td>$text{'index_statusdesc'}</td> </tr>\n";
-		  print "</form>\n";
-		}
+			print &ui_buttons_row(
+				"clear.cgi",
+				$text{'index_clear'},
+				$text{'index_cleardesc'});
 
-		# Always offer to check
-		print "<form action=check.cgi>\n";
-		print "<tr> <td><input type=submit ",
-		      "value='$text{'index_check'}'></td>\n";
-		print "<td>$text{'index_checkdesc'}</td> </tr>\n";
-		print "</form>\n";
-		print "<form action=dump.cgi>\n";
-		print "<tr> <td><input type=submit ",
-		  "value='$text{'index_dump'}'></td>\n";
-		print "<td>$text{'index_dumpdesc'}</td> </tr>\n";
-		print "</form>\n";
-		print "</table>\n";
+			print &ui_buttons_row(
+				"stop.cgi",
+				$text{'index_stop'},
+				$text{'index_stopdesc'});
+			}
+		if (!$ex) {
+			print &ui_buttons_row(
+				"status.cgi",
+				$text{'index_status'},
+				$text{'index_statusdesc'});
+			}
+
+		# Check and dump buttons
+		print &ui_buttons_row(
+			"check.cgi",
+			$text{'index_check'},
+			$text{'index_checkdesc'});
+		print &ui_buttons_row(
+			"dump.cgi",
+			$text{'index_dump'},
+			$text{'index_dumpdesc'});
+
+		print &ui_buttons_end();
 		}
 	}
 
