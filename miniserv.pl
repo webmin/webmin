@@ -2847,8 +2847,8 @@ for($i=2; $i<@_; $i++) {
 		local $v6size = $2;
 		local $v6addr = &canonicalize_ip6($1);
 		local $bytes = $v6size / 8;
-		@mo = split(/:/, $v6addr);
-		local @io6 = split(/:/, &canonicalize_ip6($_[0]));
+		@mo = &expand_ipv6_bytes($v6addr);
+		local @io6 = &expand_ipv6_bytes(&canonicalize_ip6($_[0]));
 		for($j=0; $j<$bytes; $j++) {
 			if ($mo[$j] ne $io6[$j]) {
 				$mismatch = 1;
@@ -6233,6 +6233,19 @@ foreach my $w (@w) {
 		}
 	}
 return lc(join(":", @w));
+}
+
+# expand_ipv6_bytes(address)
+# Given a canonical IPv6 address, split it into an array of bytes
+sub expand_ipv6_bytes
+{
+my ($addr) = @_;
+my @rv;
+foreach my $w (split(/:/, $addr)) {
+	$w =~ /^(..)(..)$/ || return ( );
+	push(@rv, hex($1), hex($2));
+	}
+return @rv;
 }
 
 sub get_somaxconn

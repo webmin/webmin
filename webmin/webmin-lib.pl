@@ -1549,8 +1549,8 @@ for(my $i=1; $i<@_; $i++) {
 		my $v6size = $2;
 		my $v6addr = &canonicalize_ip6($1);
 		my $bytes = $v6size / 8;
-		my @mo = split(/:/, $v6addr);
-		my @io = split(/:/, &canonicalize_ip6($_[0]));
+		my @mo = &expand_ipv6_bytes($v6addr);
+		my @io = &expand_ipv6_bytes(&canonicalize_ip6($_[0]));
 		for(my $j=0; $j<$bytes; $j++) {
 			if ($mo[$j] ne $io[$j]) {
 				$mismatch = 1;
@@ -1565,6 +1565,24 @@ for(my $i=1; $i<@_; $i++) {
 	}
 return 0;
 }
+
+=head2 expand_ipv6_bytes(address)
+
+Given a canonical IPv6 address, split it into an array of bytes
+
+=cut
+sub expand_ipv6_bytes
+{
+my ($addr) = @_;
+my @rv;
+foreach my $w (split(/:/, $addr)) {
+	$w =~ /^(..)(..)$/ || return ( );
+	push(@rv, hex($1), hex($2));
+	}
+return @rv;
+}
+
+
 
 =head2 prefix_to_mask(prefix)
 
