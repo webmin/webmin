@@ -1822,25 +1822,25 @@ local $_;
 open(OUT, "openssl x509 -in ".quotemeta($_[0])." -issuer -subject -enddate -text |");
 while(<OUT>) {
 	s/\r|\n//g;
-	if (/subject=.*CN=([^\/]+)/) {
+	if (/subject=.*CN\s*=\s*([^\/]+)/) {
 		$rv{'cn'} = $1;
 		}
-	if (/subject=.*O=([^\/]+)/) {
+	if (/subject=.*O\s*=\s*([^\/]+)/) {
 		$rv{'o'} = $1;
 		}
-	if (/subject=.*Email=([^\/]+)/) {
+	if (/subject=.*Email\s*=\s*([^\/]+)/) {
 		$rv{'email'} = $1;
 		}
-	if (/issuer=.*CN=([^\/]+)/) {
+	if (/issuer=.*CN\s*=\s*([^\/]+)/) {
 		$rv{'issuer_cn'} = $1;
 		}
-	if (/issuer=.*O=([^\/]+)/) {
+	if (/issuer=.*O\s*=\s*([^\/]+)/) {
 		$rv{'issuer_o'} = $1;
 		}
-	if (/issuer=.*Email=([^\/]+)/) {
+	if (/issuer=.*Email\s*=\s*([^\/]+)/) {
 		$rv{'issuer_email'} = $1;
 		}
-	if (/notAfter=(.*)/) {
+	if (/notAfter\s*=\s*(.*)/) {
 		$rv{'notafter'} = $1;
 		}
 	if (/Subject\s+Alternative\s+Name/i) {
