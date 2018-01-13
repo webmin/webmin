@@ -227,6 +227,7 @@ sub is_server_port
 sub check_firewall_rules
 {
 &foreign_require("firewall", "firewall-lib.pl");
+&foreign_require("firewall", "firewall4-lib.pl");
 local @tables = &firewall::get_iptables_save();
 local ($filter) = grep { $_->{'name'} eq 'filter' } @tables;
 
@@ -242,6 +243,7 @@ return $inrule && $outrule && $fwdinrule && $fwdoutrule;
 sub setup_firewall_rules
 {
 &foreign_require("firewall", "firewall-lib.pl");
+&foreign_require("firewall", "firewall4-lib.pl");
 local @tables = &firewall::get_iptables_save();
 local ($filter) = grep { $_->{'name'} eq 'filter' } @tables;
 $filter ||= { 'name' => 'filter',
@@ -301,6 +303,7 @@ return undef;
 sub delete_firewall_rules
 {
 &foreign_require("firewall", "firewall-lib.pl");
+&foreign_require("firewall", "firewall4-lib.pl");
 local @tables = &firewall::get_iptables_save();
 local ($filter) = grep { $_->{'name'} eq 'filter' } @tables;
 local $inrule = &find_rule($filter, "INPUT", $config{'iface'}, "i");
