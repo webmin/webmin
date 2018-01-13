@@ -9,6 +9,9 @@ use WebminCore;
 
 $config{'perpage'} ||= 50;	# a value of 0 can cause problems
 
+# provide default values if only firewall-lib is included, e.g. foreign_require(firewall, firewall-lib.pl) calls
+set_ipvx_version(get_ipvx_version);
+
 # set_ipvx_version(version)
 # version can be ipv6 or ipv4,
 sub set_ipvx_version
