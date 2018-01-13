@@ -34,7 +34,7 @@ if ($_[0] =~ /6$/i) {
 # if script runs in firewall6 or version=inet6, 6 is returned, else 4
 sub get_ipvx_version
 {
-if ( $in{'version'} =~ /6$/ || `pwd` =~ /6$/)
+if ( $in{'version'} =~ /6$/ || $module_name =~ /6$/)
 	{ return 6; }
 return 4;
 }
