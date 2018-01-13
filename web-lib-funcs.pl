@@ -4701,30 +4701,6 @@ if ($module_name && !$main::no_acl_check &&
 	$main::no_acl_check++;
 	}
 
-# Check for trigger URL to simply redirect to root: required for Authentic Theme 19.00+
-if ($current_theme =~ /authentic-theme/ && $ENV{'REQUEST_URI'} =~ /xnavigation=1/) {
-
-  # Redirect user to the entered URL upon next page load; store URL into temporary file
-  if ($main::session_id && $remote_user) {
-      my $xnav = "xnavigation=1";
-
-      my $url = "$gconfig{'webprefix'}$ENV{'REQUEST_URI'}";
-      $url =~ s/[?|&]$xnav//g;
-      $url =~ s/[^\p{L}\p{N},;:.%&#=_@\+\?\-\/]//g;
-
-      my $tmp  = 'tmp';
-      my $salt = encode_base64($main::session_id);
-      $salt =~ tr/A-Za-z0-9//cd;
-
-      my %var;
-      my $key = 'goto';
-      $var{$key} = $url;
-			write_file(tempname('.theme_' . $salt . '_' . get_product_name() . '_' . $key . '_' . $remote_user), \%var);
-  		}
-  redirect("/");
-	}
-
-
 # Check the Referer: header for nasty redirects
 my @referers = split(/\s+/, $gconfig{'referers'});
 my $referer_site;
@@ -4810,6 +4786,28 @@ elsif ($referer_site eq $http_host &&
 else {
 	# Unknown link source
 	$trust = 0;
+	}
+# Check for trigger URL to simply redirect to root: required for Authentic Theme 19.00+
+if ($ENV{'REQUEST_URI'} =~ /xnavigation=1/) {
+	# Store requested URI if safe
+	if ($trust || !$referer_site) {
+		if ($ENV{'REQUEST_URI'} && $ENV{'REQUEST_URI'} !~ /xhr/ && $ENV{'REQUEST_URI'} !~ /pjax/ && $main::session_id && $remote_user) {
+		  my $xnav = "xnavigation=1";
+		  my $url = "$gconfig{'webprefix'}$ENV{'REQUEST_URI'}";
+		  $url =~ s/[?|&]$xnav//g;
+		  $url =~ s/[^\p{L}\p{N},;:.%&#=_@\+\?\-\/]//g;
+
+		  my $tmp  = 'tmp';
+		  my $salt = substr(encode_base64($main::session_id), 0, 16);
+		  $salt =~ tr/A-Za-z0-9//cd;
+
+		  my %var;
+		  my $key = 'goto';
+		  $var{$key} = $url;
+			write_file(tempname('.theme_' . $salt . '_' . get_product_name() . '_' . $key . '_' . $remote_user), \%var);
+			}
+		}
+  &redirect("/");
 	}
 if (!$trust) {
 	# Looks like a link from elsewhere .. show an error
