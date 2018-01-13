@@ -10234,7 +10234,13 @@ elsif ($proto eq "ldap") {
 	my $mesg;
 	if ($args->{'tls'}) {
 		# Switch to TLS mode
-		eval { $mesg = $ldap->start_tls(); };
+		if ($args->{'tls'} eq "1_1" or $args->{'tls'} eq "1_2") {
+			eval { $mesg = $ldap->start_tls(
+					sslversion => "TLSv".$args->{'tls'}) };
+			}
+		else {
+			eval { $mesg = $ldap->start_tls(); };
+			}
 		if ($@ || !$mesg || $mesg->code) {
 			return &text('sql_eldaptls',
 			    $@ ? $@ : $mesg ? $mesg->error : "Unknown error");
