@@ -19,15 +19,25 @@ return ("ipkg");
 sub list_packages
 {
 local $i = 0;
-local $arg = @_ ? join(" ", map { quotemeta($_) } @_) : "-a";
+local $arg = join(" ", map { quotemeta($_) } @_);
 %packages = ( );
 &open_execute_command(PKGINFO, "ipkg list $arg", 1, 1);
 while(<PKGINFO>) {
-	if (/^(\S+) - (\S+) - (.*)/) {
+	if (/^(.+?) - (.+?) - (.*)/) {
+		local $desc = $3;
 		$packages{$i,'name'} = $1;
 		$packages{$i,'version'} = "$2";
-		$packages{$i,'class'} = "";
-		$packages{$i,'desc'} = $3;
+		$packages{$i,'desc'} = $desc;
+
+		# generate categories from names, lib and x
+		$1 =~ m/^([^-0-9]*)/;
+		local $cat= $1;
+		if ($cat =~ m/^(lib)/i) {
+			$cat=$1;
+		} elsif ($cat =~ /^x/ && $desc =~ /X |Xorg|X11|XDMCP|Xinerama|Athena/) {
+			$cat = "x11";
+		}
+		$packages{$i,'class'} = $cat; 
 		$i++;
 		}
 	}
@@ -44,13 +54,14 @@ local $qm = quotemeta($_[0]);
 local $out = &backquote_command("ipkg info $_[0] 2>&1", 1);
 return () if ($?);
 local @rv = ( $_[0] );
-push(@rv, "");
-push(@rv, $out =~ /Description:\n([\0-\177]*\S)/i ? $1 : $text{'bsd_unknown'});
-push(@rv, $system_arch);
-push(@rv, $_[0] =~ /-([^\-]+)$/ ? $1 : $text{'bsd_unknown'});
-push(@rv, "OpenBSD");
-local @st = stat(&translate_filename("$package_dir/$_[0]"));
-push(@rv, @st ? ctime($st[9]) : $text{'bsd_unknown'});
+push(@rv, $out =~ /Section: (.+)/i);
+push(@rv, $out =~ /Description: (.+)/i ? $1 : $text{'bsd_unknown'});
+push(@rv, $out =~ /Architecture: (.+)/i );
+push(@rv, $out =~ /Version: (.+)/i );
+push(@rv, $out =~ /Maintainer: (.+)/i);
+push(@rv, $out =~ /Installed-Time: (.+)/i ? ctime($out =~ /Installed-Time: (.+)/i) : "not installed");
+push(@rv, $out =~ /Installed-Time: (.+)/i ? "" : false);
+push(@rv, false);
 return @rv;
 }
 
