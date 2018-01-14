@@ -1,0 +1,3 @@
+apt_mode=0
+package_system=ipkg
+update_system=*

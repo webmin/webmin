@@ -389,3 +389,22 @@ yum_upgradedesc=Upgrade alle Pakete mit dem Befehl $1 ..
 yum_upgradefailed=.. Upgrade fehlgeschlagen!
 yum_upgradeok=.. Upgrade komplett.
 yum_version=Version
+
+log_IPKG_update=Aktualisiere verfuegbare IPKG Pakete
+log_IPKG_upgrade=Aktualisiere installierte IPKG Pakete
+
+IPKG_name=IPKG
+IPKG_input=Paket von IPKG
+IPKG_find=Suche in IPKG ..
+IPKG_form=Upgrade alle Pakete 
+IPKG_update=Aktualisiere verf&uuml;gbare IPKG Pakete
+IPKG_upgrade=Aktualisiere installierte IPKG Pakete
+IPKG_title_update=Aktualisiere installierte Pakete
+IPKG_title_upgrade=Upgrade installierte Pakete
+IPKG_updatedesc=Ausf&uuml;hrung von Befehl $1 fehlgeschlagen..
+IPKG_upgradefailed=.. fehlgeschlagen!
+IPKG_upgradeok=.. durchgef&uml;hrt.
+IPKG_install=Installiere Paket(e) mit Befehl $1 ..
+IPKG_ok=.. Installation erfolgreich.
+IPKG_failed=.. Installation fehlgeschlagen!
+
