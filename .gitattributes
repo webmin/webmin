@@ -16,12 +16,12 @@
 **/lang/ru_RU        working-tree-encoding=windows-1251     git-encoding=windows-1251
 **/lang/zh_TW.Big5   working-tree-encoding=Big5         git-encoding=Big5
 **/lang/zh_CN        working-tree-encoding=GB2312       git-encoding=GB2312
-**/lang/hu       working-tree-encoding=iso-8859-2       git-encoding=8859-2
-**/lang/he       working-tree-encoding=iso-8859-8-I     git-encoding=8859-8-I
-**/lang/tr       working-tree-encoding=iso-8859-9       git-encoding=8859-9
-**/lang/pl       working-tree-encoding=iso-8859-2       git-encoding=8859-2
+**/lang/hu       working-tree-encoding=iso-8859-2       git-encoding=iso-8859-2
+**/lang/he       working-tree-encoding=iso-8859-8-I     git-encoding=iso-8859-8-I
+**/lang/tr       working-tree-encoding=iso-8859-9       git-encoding=iso-8859-9
+**/lang/pl       working-tree-encoding=iso-8859-2       git-encoding=iso-8859-2
 **/lang/ja_JP.euc    working-tree-encoding=EUC-JP       git-encoding=EUC-JP
-**/lang/si       working-tree-encoding=iso-8859-2       git-encoding=8859-2
+**/lang/si       working-tree-encoding=iso-8859-2       git-encoding=iso-8859-2
 **/lang/ko_KR.euc    working-tree-encoding=EUC-KR       git-encoding=EUC-KR
 **/lang/cz       working-tree-encoding=iso-8859-2       git-encoding=iso-8859-2
 **/lang/th       working-tree-encoding=tis-620          git-encoding=tis-620
