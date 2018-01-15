@@ -74,25 +74,19 @@ my $jfile = "$config{'config_dir'}/jail.conf";
 if (-r $jfile) {
 	push(@rv, &parse_config_file($jfile));
 	}
-my $jlfile = "$config{'config_dir'}/jail.local";
-if (-r $jlfile) {
-	# Add jails from .local file that aren't directive-level overrides
-	my @lrv = &parse_config_file($jlfile);
-	my %names = map { $_->{'name'}, $_ } @rv;
-	foreach my $j (@lrv) {
-		if (!$names{$j->{'name'}}) {
-			push(@rv, $j);
-			}
-		}
-	}
+my %names = map { $_->{'name'}, $_ } @rv;
+
 my $jdir = "$config{'config_dir'}/jail.d";
 if (-d $jdir) {
+	# Read separate config files
 	foreach my $f (glob("$jdir/*.conf")) {
-		push(@rv, &parse_config_file($f));
+		my @crv = &parse_config_file($f);
+		push(@rv, @crv);
+		%names = (%names, map { $_->{'name'}, $_ } @rv);
 		}
 
-	# Add jails from .local files that aren't directive-level overrides
-	my %names = map { $_->{'name'}, $_ } @rv;
+	# Add jails from separate .local files that aren't directive-level
+	# overrides
 	foreach my $f (glob("$jdir/*.local")) {
 		my @lrv = &parse_config_file($f);
 		foreach my $j (@lrv) {
@@ -102,6 +96,19 @@ if (-d $jdir) {
 			}
 		}
 	}
+
+my $jlfile = "$config{'config_dir'}/jail.local";
+if (-r $jlfile) {
+	# Add jails from global .local file that aren't directive-level 
+	# overrides
+	my @lrv = &parse_config_file($jlfile);
+	foreach my $j (@lrv) {
+		if (!$names{$j->{'name'}}) {
+			push(@rv, $j);
+			}
+		}
+	}
+
 return @rv;
 }
 
