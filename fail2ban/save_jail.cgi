@@ -26,10 +26,10 @@ else {
 
 if ($in{'delete'}) {
 	# Just delete the jail
-	&lock_file($jail->{'file'});
+	&lock_all_files();
 	&delete_section($jail->{'file'}, $jail,
 			$jail->{'file'} =~ /jail.local$/ ? 1 : 0);
-	&unlock_file($jail->{'file'});
+	&unlock_all_files();
 	}
 else {
 	# Validate inputs
@@ -102,7 +102,7 @@ else {
 		}
 
 	# Create new section or rename existing if needed
-	&lock_file($jail->{'file'});
+	&lock_all_files();
 	if ($in{'new'}) {
 		&create_section($jail->{'file'}, $jail);
 		}
@@ -122,7 +122,7 @@ else {
 	&save_directive("ignoreip",
 		@ignoreips ? join(" ", @ignoreips) : undef, $jail);
 
-	&unlock_file($jail->{'file'});
+	&unlock_all_files();
 	}
 
 # Log and redirect

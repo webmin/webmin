@@ -12,6 +12,7 @@ our (%in, %text, %config);
 my @d = split(/\0/, $in{'d'});
 @d || &error($text{'filters_enone'});
 my @filters = &list_filters();
+&lock_all_files();
 foreach my $file (@d) {
 	my ($filter) = grep { $_->[0]->{'file'} eq $file } @filters;
 	next if (!$filter);
@@ -21,10 +22,9 @@ foreach my $file (@d) {
 	@users && &error(&text('filters_einuse',
 			&filename_to_name($file),
 			join(" ", map { $_->{'name'} } @users)));
-	&lock_file($file);
 	&delete_section($file, $def);
-	&unlock_file($file);
 	}
+&unlock_all_files();
 
 &webmin_log("delete", "filters", scalar(@d));
 &redirect("list_filters.cgi");

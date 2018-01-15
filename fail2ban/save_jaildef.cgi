@@ -30,7 +30,7 @@ foreach my $ip (@ignoreips) {
 
 
 # Update the jail
-&lock_file($jail->{'file'});
+&lock_all_files();
 foreach my $f ("maxretry", "findtime", "bantime") {
 	&save_directive($f, $in{$f."_def"} ? undef : $in{$f}, $jail);
 	}
@@ -40,7 +40,7 @@ foreach my $f ("maxretry", "findtime", "bantime") {
 		$jail);
 &save_directive("banaction", $in{'banaction'} || undef, $jail);
 &save_directive("protocol", $in{'protocol'} || undef, $jail);
-&unlock_file($jail->{'file'});
+&unlock_all_files();
 
 &webmin_log("jaildef");
 &redirect("list_jails.cgi");

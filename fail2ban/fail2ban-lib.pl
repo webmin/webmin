@@ -490,6 +490,22 @@ push(@rv, "$config{'config_dir'}/jail.local");
 return grep { -r $_ } @rv;
 }
 
+sub lock_all_files
+{
+@all_files_for_lock = &list_all_config_files();
+foreach my $f (@all_files_for_lock) {
+	&lock_file($f);
+	}
+}
+
+sub unlock_all_files
+{
+foreach my $f (reverse(@all_files_for_lock)) {
+	&unlock_file($f);
+	}
+@all_files_for_lock = ();
+}
+
 # get_fail2ban_version()
 # Returns the version number, or undef if it cannot be found
 sub get_fail2ban_version

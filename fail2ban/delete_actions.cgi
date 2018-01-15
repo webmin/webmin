@@ -12,6 +12,7 @@ our (%in, %text, %config);
 my @d = split(/\0/, $in{'d'});
 @d || &error($text{'actions_enone'});
 my @actions = &list_actions();
+&lock_all_files();
 foreach my $file (@d) {
 	my ($action) = grep { $_->[0]->{'file'} eq $file } @actions;
 	next if (!$action);
@@ -21,10 +22,9 @@ foreach my $file (@d) {
 	@users && &error(&text('actions_einuse',
 			&filename_to_name($file),
 			join(" ", map { $_->{'name'} } @users)));
-	&lock_file($file);
 	&delete_section($file, $def);
-	&unlock_file($file);
 	}
+&unlock_all_files();
 
 &webmin_log("delete", "actions", scalar(@d));
 &redirect("list_actions.cgi");

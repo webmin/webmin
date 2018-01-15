@@ -21,7 +21,7 @@ if (!$in{'socket_def'}) {
 	}
 
 # Update config file
-&lock_file($def->{'file'});
+&lock_all_files();
 
 &save_directive("loglevel", $in{'loglevel'}, $def);
 &save_directive("logtarget",
@@ -30,6 +30,6 @@ if (!$in{'socket_def'}) {
 					 $in{'logtarget_def'}, $def);
 &save_directive("socket", $in{'socket_def'} ? undef : $in{'socket'}, $def);
 
-&unlock_file($def->{'file'});
+&unlock_all_files();
 &webmin_log("config");
 &redirect("");

@@ -12,13 +12,13 @@ our (%in, %text, %config);
 my @d = split(/\0/, $in{'d'});
 @d || &error($text{'jails_enone'});
 my @jails = &list_jails();
+&lock_all_files();
 foreach my $name (@d) {
 	my ($jail) = grep { $_->{'name'} eq $name } @jails;
 	next if (!$jail);
-	&lock_file($jail->{'file'});
 	&delete_section($jail->{'file'}, $jail);
-	&unlock_file($jail->{'file'});
 	}
+&unlock_all_files();
 
 &webmin_log("delete", "jails", scalar(@d));
 &redirect("list_jails.cgi");
