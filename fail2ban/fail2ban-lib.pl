@@ -7,6 +7,7 @@ use WebminCore;
 &init_config();
 our ($module_root_directory, %text, %config, %gconfig, $base_remote_user);
 our %access = &get_module_acl();
+our @all_files_for_lock;
 
 # check_fail2ban()
 # Returns undef if installed, or an appropriate error message if missing
@@ -69,43 +70,50 @@ return @rv;
 # Returns a list of all sections from the jails file
 sub list_jails
 {
+# Read the main config file
 my @rv;
 my $jfile = "$config{'config_dir'}/jail.conf";
 if (-r $jfile) {
 	push(@rv, &parse_config_file($jfile));
 	}
-my %names = map { $_->{'name'}, $_ } @rv;
 
+# Read separate config files under jail.d
 my $jdir = "$config{'config_dir'}/jail.d";
 if (-d $jdir) {
-	# Read separate config files
 	foreach my $f (glob("$jdir/*.conf")) {
 		my @crv = &parse_config_file($f);
 		push(@rv, @crv);
-		%names = (%names, map { $_->{'name'}, $_ } @rv);
-		}
-
-	# Add jails from separate .local files that aren't directive-level
-	# overrides
-	foreach my $f (glob("$jdir/*.local")) {
-		my @lrv = &parse_config_file($f);
-		foreach my $j (@lrv) {
-			if (!$names{$j->{'name'}}) {
-				push(@rv, $j);
-				}
-			}
 		}
 	}
 
+# Read the main local file, and separate files under jail.d
+my @lrv;
 my $jlfile = "$config{'config_dir'}/jail.local";
 if (-r $jlfile) {
-	# Add jails from global .local file that aren't directive-level 
-	# overrides
-	my @lrv = &parse_config_file($jlfile);
-	foreach my $j (@lrv) {
-		if (!$names{$j->{'name'}}) {
-			push(@rv, $j);
-			}
+	push(@lrv, &parse_config_file($jlfile));
+	}
+if (-d $jdir) {
+	foreach my $f (glob("$jdir/*.local")) {
+		push(@lrv, &parse_config_file($f));
+		}
+	}
+
+# Use local file entries to override the global config
+my %names = map { $_->{'name'}, $_ } @rv;
+foreach my $l (@lrv) {
+	my $r = $names{$l->{'name'}};
+	if ($r) {
+		# Section exists in the global config, so put the local
+		# directives first
+		my $m = { %$l };
+		$m->{'local'} = 1;
+		$m->{'origfile'} = $r->{'file'};
+		push(@{$m->{'members'}}, @{$r->{'members'}});
+		$rv[&indexof($r, @rv)] = $m;
+		}
+	else {
+		# Section does not exist, so just add it
+		push(@rv, $l);
 		}
 	}
 
@@ -167,25 +175,6 @@ while(<$fh>) {
 	$lnum++;
 	}
 close($fh);
-if ($file =~ /^(.*)\.conf$/) {
-	# Read local overrides file, which takes effect first for each block
-	my $localfile = $1.".local";
-	if (-r $localfile) {
-		my @lrv = &parse_config_file($localfile);
-		my %lsects = map { $_->{'name'}, $_ } @lrv;
-		foreach my $sect (@rv) {
-			# For each section in the .conf file, put directives
-			# from the .local file in first
-			my $lsect = $lsects{$sect->{'name'}};
-			next if (!$lsect);
-			my $msect = { %$lsect };
-			$msect->{'local'} = 1;
-			$msect->{'origfile'} = $sect->{'file'};
-			push(@{$msect->{'members'}}, @{$sect->{'members'}});
-			$rv[&indexof($sect, @rv)] = $msect;
-			}
-		}
-	}
 return @rv;
 }
 
@@ -345,11 +334,24 @@ if ($old && defined($dir) && $old->{'value'} ne $dir->{'value'}) {
 	}
 elsif (!$old && defined($dir)) {
 	# Add new
-	splice(@$lref, $sect->{'eline'}+1, 0, @dirlines);
-	$dir->{'line'} = $sect->{'eline'}+1;
-	$dir->{'file'} = $sect->{'file'};
-	$sect->{'eline'} += scalar(@dirlines);
-	$dir->{'eline'} = $sect->{'eline'};
+	if (!$sect->{'local'} && $file =~ /^(.*)\.conf$/) {
+		# New directives should go in a .local file. We can assume at
+		# this point that it doesn't exist yet, or that there is no
+		# section in it
+		my $lfile = $1.".local";
+		&unflush_file_lines($file);
+		$file = $lfile;
+		$lref = &read_file_lines($file);
+		# XXX need to add section
+		}
+	else {
+		# Just add to section file
+		splice(@$lref, $sect->{'eline'}+1, 0, @dirlines);
+		$dir->{'line'} = $sect->{'eline'}+1;
+		$dir->{'file'} = $sect->{'file'};
+		$sect->{'eline'} += scalar(@dirlines);
+		$dir->{'eline'} = $sect->{'eline'};
+		}
 	}
 elsif ($old && !defined($dir)) {
 	# Remove existing
