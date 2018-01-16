@@ -162,8 +162,9 @@ if [[ $EUID -eq 0 ]]; then
           done
 
           #prepeare unattended upgrade
-          [[ ! -f "${TEMP}/tarballs/${PROD}-${version}/setup.sh" ]] && \
-                   cp  "${TEMP}/setup.sh" "${TEMP}/tarballs/${PROD}-${version}/setup.sh"
+          cp "${TEMP}/maketemp.pl" "${TEMP}/tarballs/${PROD}-${version}"
+          cp  "${TEMP}/setup.sh" "${TEMP}/tarballs/${PROD}-${version}"
+          cp "${temp}/chinese-to-utf-8.pl" .
           echo  -en "${CYAN}search for config dir ... ${NC}"
           config_dir=`grep env_WEBMIN_CONFIG= ${MINICONF}| sed 's/.*_WEBMIN_CONFIG=//'`
           echo  -e "${ORANGE}found: ${config_dir}${NC}"
