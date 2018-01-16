@@ -4791,11 +4791,12 @@ else {
 if ($ENV{'REQUEST_URI'} =~ /xnavigation=1/) {
 	# Store requested URI if safe
 	if ($trust || !$referer_site) {
-		if ($ENV{'REQUEST_URI'} && $ENV{'REQUEST_URI'} !~ /xhr/ && $ENV{'REQUEST_URI'} !~ /pjax/ && $main::session_id && $remote_user) {
+		if ($ENV{'REQUEST_URI'} !~ /xhr/ && $ENV{'REQUEST_URI'} !~ /pjax/ && $main::session_id && $remote_user) {
 		  my $xnav = "xnavigation=1";
 		  my $url = "$gconfig{'webprefix'}$ENV{'REQUEST_URI'}";
 		  $url =~ s/[?|&]$xnav//g;
-		  $url =~ s/[^\p{L}\p{N},;:.%&#=_@\+\?\-\/]//g;
+			$url =~ s/[^\p{L}\p{N},;:.%&#=_@\?\-\/]//g;
+		  $url =~ s/%20\s+//g;
 
 		  my $tmp  = 'tmp';
 		  my $salt = substr(encode_base64($main::session_id), 0, 16);
