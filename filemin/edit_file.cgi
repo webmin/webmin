@@ -14,8 +14,8 @@ eval "use Encode::Detect::Detector;";
 if (!$@) {
     $encoding_name = Encode::Detect::Detector::detect($data);
 }
-my $coding = qr/-\*-\s*coding[=:]\s*([-\w.]+)\s*-\*-/;
-my $forced = ($data =~ /$coding/g);
+my $forced = ($data =~ /(.*\n)(.*\n)(.*\n)/);
+$forced = (($1 . $2 . $3) =~ /coding[=:]\s*([-\w.]+)/);
 if ((lc(get_charset()) eq "utf-8" && ($encoding_name && lc($encoding_name) ne "utf-8")) || $forced) {
     if ($forced) {
         $encoding_name = "$1";
