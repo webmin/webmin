@@ -492,7 +492,7 @@ push(@rv, "$config{'config_dir'}/jail.local");
 return grep { -r $_ } @rv;
 }
 
-sub lock_all_files
+sub lock_all_config_files
 {
 @all_files_for_lock = &list_all_config_files();
 foreach my $f (@all_files_for_lock) {
@@ -500,7 +500,7 @@ foreach my $f (@all_files_for_lock) {
 	}
 }
 
-sub unlock_all_files
+sub unlock_all_config_files
 {
 foreach my $f (reverse(@all_files_for_lock)) {
 	&unlock_file($f);

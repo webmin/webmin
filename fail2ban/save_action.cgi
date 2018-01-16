@@ -29,9 +29,9 @@ if ($in{'delete'}) {
 	my @users = &find_jail_by_action($action);
 	@users && &error(&text('action_einuse',
 			join(" ", map { $_->{'name'} } @users)));
-	&lock_all_files();
+	&lock_all_config_files();
 	&delete_section($file, $def);
-	&unlock_all_files();
+	&unlock_all_config_files();
 	}
 else {
 	# Validate inputs
@@ -44,7 +44,7 @@ else {
 		}
 
 	# Create new section if needed
-	&lock_all_files();
+	&lock_all_config_files();
 	if ($in{'new'}) {
 		&create_section($file, $def);
 		}
@@ -61,7 +61,7 @@ else {
 	$in{'unban'} =~ s/\r//g;
 	&save_directive("actionunban", $in{'unban'}, $def);
 
-	&unlock_all_files();
+	&unlock_all_config_files();
 	}
 
 # Log and redirect
