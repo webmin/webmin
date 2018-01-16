@@ -41,12 +41,11 @@ else {
 	print &ui_link("edit.cgi?new=1",$text{'index_add'}),"<p>\n";
 
 	print &ui_hr();
-	print "<table width=100%>\n";
-	print "<tr><form action=edit_opts.cgi>\n";
-	print "<td><input type=submit ",
-	      "value='$text{'index_opts'}'></td>\n";
-	print "<td>$text{'index_optsdesc'}</td>\n";
-	print "</form></tr>\n";
+	print &ui_buttons_start();
+
+	# Show edit options button
+	print &ui_buttons_row("edit_opts.cgi",
+		$text{'index_opts'}, $text{'index_optsdesc'});
 
 	@conns = grep { $tunnels{$_->[0]} } &list_connected();
 	%conns = map { @$_ } @conns;
@@ -54,60 +53,41 @@ else {
 
 	if (@notconns) {
 		# Show connect button, if any are disconnected
-		print "<tr><form action=conn.cgi><td nowrap>\n";
-		print "<input type=submit value='$text{'index_conn'}'>\n";
-		print "<select name=tunnel>\n";
-		foreach $t (@notconns) {
-			printf "<option %s>%s</option>\n",
-			  $config{'tunnel'} eq $t->{'name'} ? "selected" : "",
-			  $t->{'name'};
-			}
-		print "</select>\n";
-		print $text{'index_pass'}," ",&ui_password("cpass", undef, 10);
-		print "</td>\n";
-		print "<td>$text{'index_conndesc'}</td> </form></tr>\n";
+		print &ui_buttons_row("conn.cgi",
+			$text{'index_conn'},
+			$text{'index_conndesc'},
+			undef,
+			&ui_select("tunnel", $config{'tunnel'},
+				[ map { $_->{'name'} } @notconns ])." ".
+			    $text{'index_pass'}." ".
+			    &ui_password("cpass", undef, 10));
 		}
 
 	if (@conns) {
 		# If any tunnels appear to be active, show disconnect button
-		print "<tr><form action=disc.cgi><td nowrap>\n";
-		print "<input type=submit value='$text{'index_disc'}'>\n";
-		print "<select name=tunnel>\n";
-		foreach $t (@conns) {
-			printf "<option %s>%s</option>\n",
-				$config{'tunnel'} eq $t->[0] ? "selected" : "",
-				$t->[0];
-			}
-		print "</select></td>\n";
-		print "<td>$text{'index_discdesc'}</td> </form></tr>\n";
+		print &ui_buttons_row("disc.cgi",
+			$text{'index_disc'},
+			$text{'index_discdesc'},
+			undef,
+			&ui_select("tunnel", $config{'tunnel'},
+				[ map { $_->{'name'} } @conns ]));
 		}
 
 	# Show at-boot button
 	if (&foreign_check("init") && @tunnels) {
-		print "<tr>\n";
-		&foreign_require("init", "init-lib.pl");
+		&foreign_require("init");
 		$starting = &init::action_status($module_name);
 		$config{'boot'} = undef if ($starting != 2);
-		print "<form action=bootup.cgi>\n";
-		print "<input type=hidden name=starting value='$starting'>\n";
-		print "<td nowrap><input type=submit value='$text{'index_boot'}'>\n";
-		print "<select name=tunnel>\n";
-		printf "<option value='' %s>%s</option>\n",
-			$config{'boot'} ? "" : "selected",
-			$text{'index_noboot'};
-		foreach $t (@tunnels) {
-			printf "<option value='%s' %s>%s</option>\n",
-			  $t->{'name'},
-			  $t->{'name'} eq $config{'boot'} ?
-				"selected" : "",
-			  $t->{'name'};
-			}
-		print "</select></td>\n";
-		print "<td>$text{'index_bootdesc'}</td>\n";
-		print "</form></tr>\n";
+		print &ui_buttons_row("bootup.cgi",
+			$text{'index_boot'},
+			$text{'index_bootdesc'},
+			&ui_hidden("starting", $starting),
+			&ui_select("tunnel", $config{'boot'},
+				[ [ "", $text{'index_noboot'} ],
+				  map { [ $_->{'name'} ] } @tunnels ]));
 		}
 
-	print "</table>\n";
+	print &ui_buttons_end();
 	}
 
 &ui_print_footer("/", $text{'index'});
