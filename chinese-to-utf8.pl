@@ -7,7 +7,8 @@
 chdir($ARGV[0] || "/usr/local/webadmin");
 @modules = ( "." );
 opendir(DIR, ".");
-foreach $d (readdir(DIR)) {
+foreach $d ( sort readdir(DIR)) {
+	next if ($d =~ m/^\./);
 	push(@modules, $d) if (-r "$d/module.info");
 	}
 closedir(DIR);
@@ -80,45 +81,64 @@ foreach $m (@modules) {
 	local %minfo;
 	&read_file("$m/module.info", \%minfo);
 	local %ominfo = %minfo;
-	if ($minfo{'desc_zh_TW.Big5'}) {
+	if ( ! -d "$m/lang" ) {
+	  # process module info if no lang dir exist
+	  if ($minfo{'desc_zh_TW.Big5'}) {
 		$minfo{'desc_zh_TW.UTF-8'} = &Big5ToUTF8($minfo{'desc_zh_TW.Big5'});
 		}
-	if ($minfo{'desc_zh_CN'}) {
+	  if ($minfo{'desc_zh_CN'}) {
 		$minfo{'desc_zh_CN.UTF-8'} = &GB2312ToUTF8($minfo{'desc_zh_CN'});
 		}
-	if ($minfo{'desc_ja_JP.euc'}) {
+	  if ($minfo{'desc_ja_JP.euc'}) {
 		$minfo{'desc_ja_JP.UTF-8'} = &EUCToUTF8($minfo{'desc_ja_JP.euc'});
 		}
-	if ($minfo{'desc_ko_KR.euc'}) {
+	  if ($minfo{'desc_ko_KR.euc'}) {
 		$minfo{'desc_ko_KR.UTF-8'} = &KRToUTF8($minfo{'desc_ko_KR.euc'});
 		}
-	if ($minfo{'desc_ru_SU'}) {
+	  if ($minfo{'desc_ru_SU'}) {
 		$minfo{'desc_ru.UTF-8'} = &KOI8ToUTF8($minfo{'desc_ru_SU'});
 		}
-	foreach $l (@fiveone_langs) {
+	  foreach $l (@fiveone_langs) {
 		if ($minfo{'desc_'.$l}) {
 			$minfo{'desc_'.$l.'.UTF-8'} =
 				&Windows1251ToUTF8($minfo{'desc_'.$l});
 			}
 		}
-	foreach $l (@fivenine_langs) {
+	  foreach $l (@fivenine_langs) {
 		if ($minfo{'desc_'.$l}) {
 			$minfo{'desc_'.$l.'.UTF-8'} =
 				&ISO88592ToUTF8($minfo{'desc_'.$l});
 			}
 		}
-	foreach $l (@fifteen_langs) {
+	  foreach $l (@fifteen_langs) {
 		if ($minfo{'desc_'.$l}) {
 			$minfo{'desc_'.$l.'.UTF-8'} =
 				&ISO885915ToUTF8($minfo{'desc_'.$l});
 			}
 		}
-	foreach $l (@default_langs) {
+	  foreach $l (@default_langs) {
 		if ($minfo{'desc_'.$l}) {
 			$minfo{'desc_'.$l.'.UTF-8'} =
 				&DefaultToUTF8($minfo{'desc_'.$l});
 			}
 		}
+	  } else {
+	  # process lang files and copy module desc to module.info
+	  opendir(DIR, "$m/lang");
+	  foreach $lang (sort readdir(DIR)) {
+		next if ($lang =~ m/^\./);
+		local $desc='desc_'.$lang;
+		$desc='desc'.$lang =~ s/^en// if ( $lang =~  m/^en/ );
+		local %dinfo;
+		&read_file("$m/lang/$lang", \%dinfo);
+		if ($dinfo{'desc'}) {
+			$minfo{$desc} = $dinfo{'desc'};
+			}
+		if ($dinfo{'longdesc'}) {
+			$minfo{'long'.$desc} = $dinfo{'longdesc'};
+			}
+	  }
+	}
 	&write_file_diff("$m/module.info", \%minfo);
 
 	# Translate the config.info file
