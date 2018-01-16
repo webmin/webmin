@@ -47,7 +47,9 @@ edit_vend=Vendor
 edit_arch=Architecture
 edit_inst=Installed
 edit_list=List Files
+edit_listdesc=Show all the files in this package, and their current verification state.
 edit_uninst=Uninstall
+edit_uninstdesc=Remove this package from your system.
 edit_return=package details
 edit_egone=Package is no longer installed
 
