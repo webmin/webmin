@@ -7,7 +7,8 @@
 chdir($ARGV[0] || "/usr/local/webadmin");
 @modules = ( "." );
 opendir(DIR, ".");
-foreach $d (readdir(DIR)) {
+foreach $d ( sort readdir(DIR)) {
+	next if ($d =~ m/^\./);
 	push(@modules, $d) if (-r "$d/module.info");
 	}
 closedir(DIR);
@@ -81,6 +82,7 @@ foreach $m (@modules) {
 	&read_file("$m/module.info", \%minfo);
 	local %ominfo = %minfo;
 	if ( ! -d "$m/lang" ) {
+	  # process module info if no lang dir exist
 	  if ($minfo{'desc_zh_TW.Big5'}) {
 		$minfo{'desc_zh_TW.UTF-8'} = &Big5ToUTF8($minfo{'desc_zh_TW.Big5'});
 		}
@@ -121,9 +123,10 @@ foreach $m (@modules) {
 			}
 		}
 	  } else {
-	  # copy module desc from lang files to module.info
+	  # process lang files and copy module desc to module.info
 	  opendir(DIR, "$m/lang");
-	  foreach $lang (readdir(DIR)) {
+	  foreach $lang (sort readdir(DIR)) {
+		next if ($lang =~ m/^\./);
 		local $desc='desc_'.$lang;
 		$desc='desc'.$lang =~ s/^en// if ( $lang =~  m/^en/ );
 		local %dinfo;
