@@ -43,6 +43,8 @@ my $dir = "$config{'config_dir'}/filter.d";
 my @rv;
 foreach my $f (glob("$dir/*.conf")) {
 	my @conf = &parse_config_file($f);
+	my @lconf = &parse_config_file(&make_local_file($f));
+	&merge_local_files(\@conf, \@lconf);
 	if (@conf) {
 		push(@rv, \@conf);
 		}
@@ -59,6 +61,8 @@ my $dir = "$config{'config_dir'}/action.d";
 my @rv;
 foreach my $f (glob("$dir/*.conf")) {
 	my @conf = &parse_config_file($f);
+	my @lconf = &parse_config_file(&make_local_file($f));
+	&merge_local_files(\@conf, \@lconf);
 	if (@conf) {
 		push(@rv, \@conf);
 		}
@@ -81,14 +85,13 @@ if (-r $jfile) {
 my $jdir = "$config{'config_dir'}/jail.d";
 if (-d $jdir) {
 	foreach my $f (glob("$jdir/*.conf")) {
-		my @crv = &parse_config_file($f);
-		push(@rv, @crv);
+		push(@rv, &parse_config_file($f));
 		}
 	}
 
 # Read the main local file, and separate files under jail.d
 my @lrv;
-my $jlfile = "$config{'config_dir'}/jail.local";
+my $jlfile = &make_local_file($jfile);
 if (-r $jlfile) {
 	push(@lrv, &parse_config_file($jlfile));
 	}
@@ -99,8 +102,18 @@ if (-d $jdir) {
 	}
 
 # Use local file entries to override the global config
-my %names = map { $_->{'name'}, $_ } @rv;
-foreach my $l (@lrv) {
+&merge_local_files(\@rv, \@lrv);
+
+return @rv;
+}
+
+# merge_local_files(&rv, &locals)
+# Merges .local file entries in with .conf files
+sub merge_local_files
+{
+my ($rv, $lrv) = @_;
+my %names = map { $_->{'name'}, $_ } @$rv;
+foreach my $l (@$lrv) {
 	my $r = $names{$l->{'name'}};
 	if ($r) {
 		# Section exists in the global config, so put the local
@@ -109,22 +122,31 @@ foreach my $l (@lrv) {
 		$m->{'local'} = 1;
 		$m->{'origfile'} = $r->{'file'};
 		push(@{$m->{'members'}}, @{$r->{'members'}});
-		$rv[&indexof($r, @rv)] = $m;
+		$rv->[&indexof($r, @$rv)] = $m;
 		}
 	else {
 		# Section does not exist, so just add it
-		push(@rv, $l);
+		push(@$rv, $l);
 		}
 	}
+}
 
-return @rv;
+# make_local_file(path)
+sub make_local_file
+{
+my ($f) = @_;
+$f =~ s/\.conf$/\.local/g;
+return $f;
 }
 
 # get_config()
 # Returns the global config as an array ref of directives
 sub get_config
 {
-my @conf = &parse_config_file("$config{'config_dir'}/fail2ban.conf");
+my $file = "$config{'config_dir'}/fail2ban.conf";
+my @conf = &parse_config_file($file);
+my @lconf = &parse_config_file(&make_local_file($file));
+&merge_local_files(\@conf, \@lconf);
 return \@conf;
 }
 
@@ -489,6 +511,8 @@ push(@rv, glob("$config{'config_dir'}/action.d/*.conf"));
 push(@rv, glob("$config{'config_dir'}/action.d/*.local"));
 push(@rv, "$config{'config_dir'}/jail.conf");
 push(@rv, "$config{'config_dir'}/jail.local");
+push(@rv, glob("$config{'config_dir'}/jail.d/*.conf"));
+push(@rv, glob("$config{'config_dir'}/jail.d/*.local"));
 return grep { -r $_ } @rv;
 }
 
