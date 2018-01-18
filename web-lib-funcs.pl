@@ -4788,10 +4788,13 @@ else {
 	$trust = 0;
 	}
 # Check for trigger URL to simply redirect to root: required for Authentic Theme 19.00+
-if ($ENV{'REQUEST_URI'} =~ /xnavigation=1/) {
+if ($ENV{'HTTP_X_REQUESTED_WITH'} ne "XMLHttpRequest" &&
+    $ENV{'REQUEST_URI'} !~ /xhr/  &&
+    $ENV{'REQUEST_URI'} !~ /pjax/ &&
+    $ENV{'REQUEST_URI'} =~ /xnavigation=1/) {
 	# Store requested URI if safe
 	if ($trust || !$referer_site) {
-		if ($ENV{'REQUEST_URI'} !~ /xhr/ && $ENV{'REQUEST_URI'} !~ /pjax/ && $main::session_id && $remote_user) {
+		if ($main::session_id && $remote_user) {
 		  my $xnav = "xnavigation=1";
 		  my $url = "$gconfig{'webprefix'}$ENV{'REQUEST_URI'}";
 		  $url =~ s/[?|&]$xnav//g;
