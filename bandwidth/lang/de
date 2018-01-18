@@ -2,8 +2,8 @@ __norefs=1
 acl_setup=Darf Monitoring einrichten und abschalten?
 index_all=&lt;alles&gt;
 index_by=Zeige Traffic nach
-index_edir=Das Verzeichnis um Daten der Bandbreitenmessung $1 zu speichern existiert nicht oder ist kein Verzeichnis. Bitte stellen Sie in der <a href='$2'>Modulkonfiguration</a> einen richtigen Pfad ein.
-index_efiresys=Keine der unterst&#252;tzen Firewalls (IPtables, IPFW, IPFilter oder Shorewall) wurde auf Ihrem System gefunden. &#220;berpr&#252;fen Sie die entsprechenden Module um eine korrekte Konfiguration sicherzustellen.
+index_edir=Das Verzeichnis um Daten der Bandbreitenmessung $1 zu speichern existiert nicht oder ist kein Verzeichnis. Bitte stellen Sie in der <a href='$2'>Modulkonfiguration</a> einen abweichenden Pfad ein.
+index_efiresys=Keine der unterst&#252;tzen Firewalls (IPtables, IPFW, IPFilter oder Shorewall) wurde auf Ihrem System gefunden. &#220;berpr&#252;fen Sie die entsprechenden Module, um eine korrekte Konfiguration sicherzustellen.
 index_efiresys2=Das konfigurierte Firewall-System $1 wurde auf Ihrem System nicht gefunden. &#220;berpr&#252;fen Sie die <a href='$2'>Modulkonfiguration</a> um die richtige Firewall einzustellen.
 index_efrom=Ung&#252;ltige(s) Startdatum und -zeit
 index_ehost=Fehlender oder ung&#252;ltiger Host
