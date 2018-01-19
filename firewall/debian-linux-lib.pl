@@ -65,7 +65,7 @@ elsif ($has_new_debian_iptables) {
 	foreach my $o (@{$debpri->[3]}) {
 		if (($o->[0] eq "pre-up" || $o->[0] eq "post-up") &&
 		    $o->[1] =~ /\S*ip${ipvx}tables-restore\s+<\s+(\S+)/ &&
-		    $1 eq $iptables_save_file) {
+		    $1 eq $ipvx_save) {
 			return 1;
 			}
 		}
@@ -89,7 +89,7 @@ elsif ($has_new_debian_iptables) {
 			       &net::get_interface_defs();
 	if ($debpri && !&started_at_boot()) {
 		push(@{$debpri->[3]},
-		     [ "post-up", "ip${ipvx}tables-restore < $iptables_save_file" ]);
+		     [ "post-up", "ip${ipvx}tables-restore < $ipvx_save" ]);
 		&net::modify_interface_def(@$debpri);
 		}
 	}
