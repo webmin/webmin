@@ -92,6 +92,9 @@ elsif ($action eq 'set') {
 elsif ($action eq 'root') {
 	return $text{'log_root'};
 	}
+elsif ($action eq 'manual') {
+	return $text{'log_manual'};
+	}
 else {
 	return undef;
 	}

@@ -591,6 +591,7 @@ log_importupload=Imported data from uploaded file
 log_importfile=Imported data from file $1
 log_set=Changed $1 MySQL variables
 log_root=Changed administration password
+log_manual=Manually edited config file
 
 backup_title=Backup Database
 backup_title2=Backup All Databases
@@ -738,6 +739,12 @@ cnf_emyisam_sort_buffer_size=Missing or invalid MyISAM sort buffer size
 cnf_emax_connections=Missing or invalid maximum number of connections
 cnf_restart=Save and Restart MySQL
 cnf_fpt=Separate file for each InnoDB table?
+
+manual_title=Edit Config Files
+manual_file=Edit config file:
+manual_ok=OK
+manual_efile=Invalid configuration file!
+manual_err=Failed to save configuration file
 
 index_title1=Create Index
 index_header1=Index options
