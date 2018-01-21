@@ -2123,7 +2123,7 @@ return $max && $w > $max ? $max : $w;
 
 ####################### radio hidden functions
 
-=head2 ui_radio_selector(&opts, name, selected)
+=head2 ui_radio_selector(&opts, name, selected, [dropdown-mode])
 
 Returns HTML for a set of radio buttons, each of which shows a different
 block of HTML when selected. The parameters are :
@@ -2134,20 +2134,30 @@ block of HTML when selected. The parameters are :
 
 =item selected - Value for the initially selected button.
 
+=item dropdown - Use a <select> dropdown menu instead of radio buttons
+
 =cut
 sub ui_radio_selector
 {
 return &theme_ui_radio_selector(@_) if (defined(&theme_ui_radio_selector));
-my ($opts, $name, $sel) = @_;
+my ($opts, $name, $sel, $dropdown) = @_;
 my $rv;
 if (!$main::ui_radio_selector_donejs++) {
 	$rv .= &ui_radio_selector_javascript();
 	}
 my $optnames =
 	"[".join(",", map { "\"".&html_escape($_->[0])."\"" } @$opts)."]";
-foreach my $o (@$opts) {
-	$rv .= &ui_oneradio($name, $o->[0], $o->[1], $sel eq $o->[0],
-	    "onClick='selector_show(\"$name\", \"$o->[0]\", $optnames)'");
+if ($dropdown) {
+	$rv .= &ui_select($name, $sel,
+		[ map { [ $_->[0], $_->[1] ] } @$opts ],
+		1, 0, 0, 0,
+		"onChange='selector_show(\"$name\", $name.value, $optnames)'");
+	}
+else {
+	foreach my $o (@$opts) {
+		$rv .= &ui_oneradio($name, $o->[0], $o->[1], $sel eq $o->[0],
+		    "onClick='selector_show(\"$name\", \"$o->[0]\", $optnames)'");
+		}
 	}
 $rv .= "<br>\n";
 foreach my $o (@$opts) {
