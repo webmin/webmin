@@ -36,7 +36,9 @@ return undef;
 # Called after the files are restored from a backup
 sub post_restore
 {
-# XXX apply config
+if (&is_fail2ban_running()) {
+	return &restart_fail2ban_server();
+	}
 return undef;
 }
 
