@@ -60,6 +60,7 @@ push(@rv, $out =~ /Version: (.+)/i );
 push(@rv, $out =~ /Maintainer: (.+)/i);
 push(@rv, $out =~ /Installed-Time: (.+)/i ? ctime($out =~ /Installed-Time: (.+)/i) : "not installed");
 push(@rv, $out =~ /Installed-Time: (.+)/i ? "" : false);
+push(@rv, $out =~ /Installed-Time: (.+)/i ? "" : false);
 return @rv;
 }
 
