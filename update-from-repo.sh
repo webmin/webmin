@@ -75,7 +75,7 @@ else
     MINICONF=`find /* -maxdepth 6 -name miniserv.conf 2>/dev/null | grep ${PROD} | head -n 1`
     echo  -e "${ORANGE}found: ${MINICONF}${NC} (alternative location)"
 fi
-[[ "${MINICONF}" != "" ]] && export path=`grep path= ${MINICONF}| sed 's/^path=//'`
+[[ "${MINICONF}" != "" ]] && export PATH="${PATH}:`grep path= ${MINICONF}| sed 's/^path=//'`"
 
 # alternative repo given
 if [[ "$1" == *"-repo"* ]]; then
@@ -162,7 +162,7 @@ if [[ $EUID -eq 0 ]]; then
           done
 
           #prepeare unattended upgrade
-          cp "${TEMP}/maketemp.pl" "${TEMP}/tarballs/${PROD}-${version}"
+		  cp "${TEMP}/maketemp.pl" "${TEMP}/tarballs/${PROD}-${version}"
           cp  "${TEMP}/setup.sh" "${TEMP}/tarballs/${PROD}-${version}"
           cp "${temp}/chinese-to-utf-8.pl" .
           echo  -en "${CYAN}search for config dir ... ${NC}"
