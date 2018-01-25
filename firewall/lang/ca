@@ -1,4 +1,6 @@
-index_title=Tallafocs Linux
+index_title=Tallafocs IPTables Linux
+index_title_v=Tallafocs IPv4
+index_title_v6=Tallafocs IPv6
 index_editing=Fitxer de regles $1
 index_ecommand=No s'ha trobat al sistema l'ordre $1. Webmin necessita aquesta ordre per configurar IPtables.
 index_ekernel=S'ha produït un error en comprovar la configuració actual d'IPtables: $1 Això pot indicar que el nucli no suporta IPtables.
@@ -68,21 +70,25 @@ index_auto4=Bloqueja-les totes excepte SSH, IDENT, ping i ports alts a la interf
 index_auto5=Bloqueja-les totes excepte els ports utilitzats per a hostalatge virtual a la interfície:
 index_auto=Configura el Tallafocs
 index_add=Afegeix
-index_shorewall=Avís! Sembla que s'està utilitzant Shorewall per generar el tallafocs del sistema. Pot ser que hagis d'utilitzar el <a href='$1'>mòdul de Tallafocs Shoreline</a> en lloc d'aquest.
-index_firewalld=Avís! Sembla que s'està utilitzant FirewallD per a generar el tallafocs del sistema. Potser hauries d'utilitzar el <a href='$1'>mòdul FirewallD</a> en lloc d'aquest.
-index_fail2ban=Avís! Sembla que Fail2Ban s'està utilitzant per a gestionar algunes regles del tallafocs. Les hauries de modificar amb el <a href='$1'>mòdul Fail2Ban</a> i filtrar-les amb <a href=$2>f2b-.*</a> o bé <a href=$2>fail2ban-.*</a>.
+index_shorewall=Sembla que s'està utilitzant Shorewall per generar el tallafocs del sistema. Pot ser que hagis d'utilitzar el <a href='$1'>mòdul de Tallafocs Shoreline</a> en lloc d'aquest.
+index_firewalld=Sembla que s'està utilitzant FirewallD per a generar el tallafocs del sistema. Potser hauries d'utilitzar el <a href='$1'>mòdul FirewallD</a> en lloc d'aquest.
+index_fail2ban=Sembla que s'està utilitzant Fail2Ban per a gestionar algunes regles del tallafocs. Potser les hauries de modificar amb el <a href='$1'>mòdul Fail2Ban</a> i filtrar <a href=$2>f2b-.*</a> o <a href=$2>fail2ban-.*</a>.
 index_filter_chain=no està gestionat pel tallafocs.
-index_filter_nodirect=Atenció! S'han detectat regles gestionades externament. Activa "<a href=$1>Edita directament les regles del tallafocs</a>" o les teves regles del tallafocs poden petar.
+index_filter_nodirect=S'han detectat regles gestionades externament. Activa "<a href=$1>Edita directament les regles del tallafocs</a>" o les teves regles del tallafocs poden petar.
 index_reset=Reinicia el Tallafocs
 index_resetdesc=Fes clic sobre aquest botó per eliminar totes les regles existents del tallafocs i establir-ne de noves per a una configuració inicial bàsica.
 index_cluster=Servidors del Cluster
 index_clusterdesc=Fes clic sobre aquest botó per configurar servidors Webmin addicionals als quals es copiarà automàticament la configuració del tallafocs.
 index_ipset=conjunt IP
 index_ipset_title=Els conjunts IP actius que es poden utilitzar a les regles del tallafocs
-index_ipset_name=Nom
+index_ipset_name=Conjunt de noms o IPs
 index_ipset_type=Tipus
 index_ipset_elem=# Elements
+index_ipset_maxe=# Màx
 index_ipset_size=Mida
+index_ipvxmode=Canvia la versió del protocol IP:
+index_ipvx4=IPv4
+index_ipvx6=IPv6
 
 desc_p=el protocol és $1
 desc_p!=el protocol no és $1
@@ -141,7 +147,7 @@ desc_args--match-set=$2 està contingut al conjunt IP $1
 desc_src=origen
 desc_dest=destinació
 
-redhat_einstalled=No s'ha trobat cap acció d'engegada <tt>iptables</tt> que indiqui que el paquet IPtables no està instal·lat al sistema
+redhat_einstalled=No s'ha trobat cap acció d'engegada <tt>iptables(6)</tt> que indiqui que el paquet IPtables no està instal·lat al sistema
 redhat_eoutput=S'ha produït un error en buscar l'estat d'IPtables amb l'ordre $1. Això probablement indica que el sistema està configurat per utilitzar IPchains en lloc d'IPtables.
 
 gentoo_escript=No s'ha trobat al sistema el script $1 d'inici d'IPtables Gentoo.
@@ -362,3 +368,6 @@ rename_adjust=Modifica les altres regles que salten a aquesta cadena
 rename_none=Cap
 rename_ecannot=No tens permís per renomenar cadenes
 __norefs=1
+desc_icmpv6-type=El tipus ICMP és $1
+desc_icmpv6-type!=El tipus ICMP no és $1
+eip6tables=Línia del ditxer de desat d'ip6tables desconeguda: $1
