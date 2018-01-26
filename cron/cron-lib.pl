@@ -281,8 +281,7 @@ else {
 				      $_[0]->{'type'} != 3);
 	push(@c, $_[0]->{'command'});
 	}
-	# fix: some older/embedded crond needs tab instead of spaces
-return join("\t", @c);
+return join(" ", @c);
 }
 
 =head2 copy_cron_temp(&job)
