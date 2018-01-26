@@ -52,43 +52,34 @@ print "<tr> <td width=20%><b>$text{'edit_arch'}</b></td> <td>$pinfo[3]</td>\n";
 print "<td width=20%><b>$text{'edit_inst'}</b></td> <td>$pinfo[6]</td> </tr>\n";
 print "</table></td></tr></table><p>\n";
 
-print "<table width=100%> <tr>\n";
+print &ui_buttons_start();
 
 # Show button to list files, if possible
+@opts = map { [ $_->{'id'},
+                ($_->{'desc'} || $_->{'realhost'} || $_->{'host'}) ] } @got;
 if (!$pinfo[8]) {
-	print "<form action=list_pack.cgi>\n";
-	print "<input type=hidden name=package value=\"$pinfo[0]\">\n";
-	print "<input type=hidden name=search value=\"$in{'search'}\">\n";
-	print "<td align=left><input type=submit value=\"$text{'edit_list'}\">\n";
-	print "<select name=server>\n";
-	foreach $s (@got) {
-		print "<option value='$s->{'id'}'>",
-			$s->{'desc'} || $s->{'realhost'} || $s->{'host'},
-			"</option>";
-		}
-	print "</select></td>\n";
-	print "</form>\n";
+	$ssel = &ui_select("server", undef, \@opts);
+        print &ui_buttons_row("list_pack.cgi",
+                $text{'edit_list'},
+                $text{'edit_listdesc'},
+                &ui_hidden("package", $pinfo[0]).
+                &ui_hidden("search", $in{'search'}),
+		$ssel);
 	}
 
 # Show button to un-install, if possible
 if (!$pinfo[7]) {
-	print "<form action=delete_pack.cgi>\n";
-	print "<input type=hidden name=package value=\"$pinfo[0]\">\n";
-	print "<input type=hidden name=search value=\"$in{'search'}\">\n";
-	print "<td align=right>\n";
-	print "<input type=submit value=\"$text{'edit_uninst'}\">\n";
-	print "<select name=server>\n";
-	print "<option value=-1>$text{'edit_all'}</option>\n";
-	foreach $s (@got) {
-		print "<option value='$s->{'id'}'>",
-			$s->{'desc'} || $s->{'realhost'} || $s->{'host'},
-			"</option>";
-		}
-	print "</select></td>\n";
-	print "</form>\n";
+	$ssel = &ui_select("server", undef, 
+		[ [ -1, $text{'edit_all'} ], @opts ]);
+        print &ui_buttons_row("delete_pack.cgi",
+                $text{'edit_uninst'},
+                $text{'edit_uninstdesc'},
+                &ui_hidden("package", $pinfo[0]).
+                &ui_hidden("search", $in{'search'}),
+		$ssel);
 	}
 
-print "</tr> </table><p>\n";
+print &ui_buttons_end();
 
 # Show hosts with the package
 print &ui_hr();
