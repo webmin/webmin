@@ -7,7 +7,7 @@ require './software-lib.pl';
 &ReadParse();
 @pinfo = &package_info($in{'package'}, $in{'version'});
 $pinfo[0] || &error($text{'edit_egone'});
-&ui_print_header(undef, $text{'edit_title'}, "", "edit_pack");
+&ui_print_header(undef, $text{'IPKG-edit_title'}, "", "edit_pack");
 
 @pinfo = &show_package_info($in{'package'}, $in{'version'}, 1);
 print &ui_buttons_start();

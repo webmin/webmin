@@ -410,3 +410,4 @@ IPKG_failed=.. Installation fehlgeschlagen!
 IPKG_index_tree=Verwalte IPKG Pakete
 IPKG_install_package=Installieren
 IPKG_noupgrade=Nichts zu aktualisieren
+IPKG-edit_title=Verwalte IPKG Paket

@@ -441,7 +441,7 @@ IPKG_upgradeok=.. complete.
 IPKG_install=Installing package(s) with command $1 ..
 IPKG_ok=.. install complete.
 IPKG_failed=.. install failed!
-IPKG_index_tree=Manage Available Packages
+IPKG_index_tree=Manage IPKG Packages
 IPKG_install_package=Install
-PKG_noupgrade=Nothing to upgrade
-
+IPKG_noupgrade=Nothing to upgrade
+IPKG-edit_title=Manage IPKG Package
