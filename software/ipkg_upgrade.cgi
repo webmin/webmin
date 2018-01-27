@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/opt/bin/perl
 # Upgrade all packages, or update the database of IPKG packages
 
 require './software-lib.pl';
@@ -16,6 +16,7 @@ else {
 	
 &ui_print_unbuffered_header(undef, $text{'IPKG_title_'.$mode}, "");
 
+local $out;
 print "<b>",&text('IPKG_updatedesc', "<tt>$cmd</tt>"),"</b><p>\n";
 print "<pre>";
 &additional_log("exec", undef, $cmd);
@@ -23,7 +24,9 @@ print "<pre>";
 open(CMD, "$cmd 2>&1 </dev/null |");
 while(<CMD>) {
 	print &html_escape($_);
+	$out .= $_;
 	}
+print &html_escape("$text{'IPKG_noupgrade'}") if ($out eq "");
 close(CMD);
 &reset_environment();
 print "</pre>\n";

@@ -6,7 +6,6 @@ chop($system_arch = `uname -m`);
 $package_dir = "/var/db/pkg";
 $has_update_system = 1;
 $no_package_install = 1;
-$no_package_filesearch =1;
 
 sub list_package_system_commands
 {
@@ -15,28 +14,37 @@ return ("ipkg");
 
 # list_packages([package]*)
 # Fills the array %packages with a list of all packages
-# e.g. man - 1.6g-1 - unix manual page reader
+# ipkg extension: if ALL is specified list alos uninstalled packages
 sub list_packages
 {
 local $i = 0;
 local $arg = join(" ", map { quotemeta($_) } @_);
+local $cmd = "ipkg list-installed";
+$cmd = "ipkg list" if ($arg eq "ALL");
 %packages = ( );
-&open_execute_command(PKGINFO, "ipkg list $arg", 1, 1);
+&open_execute_command(PKGINFO, $cmd, 1, 1);
 while(<PKGINFO>) {
-	if (/^(.+?) - (.+?) - (.*)/) {
-		local $desc = $3;
+	if (/^(.+?) - (.+)/) {
 		$packages{$i,'name'} = $1;
 		$packages{$i,'version'} = "$2";
-		$packages{$i,'desc'} = $desc;
+		if ($2 =~ /^(.+) - (.+)/) {
+			$packages{$i,'version'} = "$1";
+			$packages{$i,'desc'} = $2;
+		}
 
 		# generate categories from names, lib and x
-		$1 =~ m/^([^-0-9]*)/;
+		local $desc=$2;
+		$packages{$i,'name'} =~ m/^([^-0-9]*)/;
 		local $cat= $1;
-		if ($cat =~ m/^(lib)/i) {
+		if ($cat =~ m/^(lib|^(gnu)|^(gtk)|^(perl)|^(net)|^ncurses)/i) {
 			$cat=$1;
-		} elsif ($cat =~ /^x/ && $desc =~ /X |Xorg|X11|XDMCP|Xinerama|Athena/) {
+		} elsif ($cat =~ /^x|motif/ && $desc =~ /X |Xorg|X11|XDMCP|Xinerama|Athena|Motif/) {
 			$cat = "x11";
-		}
+		} elsif ($cat =~ /^x/ && $desc eq "") {
+			$cat = "x";
+		} elsif ($cat =~ /^arc|^bzip|^cpio|^freeze|^gzip|^lha|^lzo|^tar|^upx|^xz|^zip|^zlib|^zoo|^unzip|^unrar/) {
+			$cat = "archiver";
+		} 
 		$packages{$i,'class'} = $cat; 
 		$i++;
 		}
@@ -61,7 +69,7 @@ push(@rv, $out =~ /Version: (.+)/i );
 push(@rv, $out =~ /Maintainer: (.+)/i);
 push(@rv, $out =~ /Installed-Time: (.+)/i ? ctime($out =~ /Installed-Time: (.+)/i) : "not installed");
 push(@rv, $out =~ /Installed-Time: (.+)/i ? "" : false);
-push(@rv, false);
+push(@rv, $out =~ /Installed-Time: (.+)/i ? "" : false);
 return @rv;
 }
 
@@ -73,9 +81,10 @@ sub check_files
 local $i = 0;
 local $file;
 local $qm = quotemeta($_[0]);
-&open_execute_command(PKGINFO, "pkg_info -L $qm", 1, 1);
+&open_execute_command(PKGINFO, "ipkg files $qm", 1, 1);
 while($file = <PKGINFO>) {
 	$file =~ s/\r|\n//g;
+	next if ($file =~ /^Package /);
 	next if ($file !~ /^\//);
 	local $real = &translate_filename($file);
 	local @st = stat($real);
@@ -91,6 +100,47 @@ while($file = <PKGINFO>) {
 	}
 return $i;
 }
+
+
+# installed_file(file)
+# Given a filename, fills %file with details of the given file and returns 1.
+# If the file is not known to the package system, returns 0
+# Usable values in %file are  path type user group mode size packages
+sub installed_file
+{
+local (%packages, $file, $i, @pkgin);
+local $n = &list_packages();
+for($i=0; $i<$n; $i++) {
+	&open_execute_command(PKGINFO, "ipkg files $packages{$i,'name'}", 1,1);
+	while($file = <PKGINFO>) {
+		next if ($file =~ /^Package /);
+		$file =~ s/\r|\n//g;
+		if ($file eq $_[0]) {
+			# found it
+			push(@pkgin, $packages{$i,'name'});
+			}
+		}
+	close(PKGINFO);
+	}
+if (@pkgin) {
+	local $real = &translate_filename($_[0]);
+	local @st = stat($real);
+	$file{'path'} = $_[0];
+	$file{'type'} = -l $real ? 3 :
+		-d $real ? 1 : 0;
+	$file{'user'} = getpwuid($st[4]);
+	$file{'group'} = getgrgid($st[5]);
+	$file{'mode'} = sprintf "%o", $st[2] & 07777;
+	$file{'size'} = $st[7];
+	$file{'link'} = readlink($real);
+	$file{'packages'} = join(" ", @pkgin);
+	return 1;
+	}
+else {
+	return 0;
+	}
+}
+
 
 # install_package(file, package)
 # Installs the package in the given file, with options from %in
@@ -166,10 +216,15 @@ else {
 sub update_system_form
 {
 print &ui_subheading($text{'IPKG_form'});
+print &ui_buttons_start();
 print &ui_form_start("ipkg_upgrade.cgi");
 print &ui_submit($text{'IPKG_update'}, "update"),"<br>\n";
-print &ui_submit($text{'IPKG_upgrade'}, "upgrade"),"<br>\n";
+print &ui_submit($text{'IPKG_upgrade'}, "upgrade");
+print &ui_form_end(), "</td><td align=\"right\">";
+print &ui_form_start("ipkg-tree.cgi");
+print &ui_submit($text{'IPKG_index_tree'});
 print &ui_form_end();
+print &ui_buttons_end();
 }
 
 # update_system_resolve(name)
