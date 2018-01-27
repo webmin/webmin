@@ -33,15 +33,18 @@ while(<PKGINFO>) {
 		}
 
 		# generate categories from names, lib and x
+		local $desc=$2;
 		$packages{$i,'name'} =~ m/^([^-0-9]*)/;
 		local $cat= $1;
-		if ($cat =~ m/^(lib)/i) {
+		if ($cat =~ m/^(lib|^(gnu)|^(gtk)|^(perl)|^(net)|^ncurses)/i) {
 			$cat=$1;
-		} elsif ($cat =~ /^x/ && $desc =~ /X |Xorg|X11|XDMCP|Xinerama|Athena/) {
+		} elsif ($cat =~ /^x|motif/ && $desc =~ /X |Xorg|X11|XDMCP|Xinerama|Athena|Motif/) {
 			$cat = "x11";
 		} elsif ($cat =~ /^x/ && $desc eq "") {
 			$cat = "x";
-		}
+		} elsif ($cat =~ /^arc|^bzip|^cpio|^freeze|^gzip|^lha|^lzo|^tar|^upx|^xz|^zip|^zlib|^zoo|^unzip|^unrar/) {
+			$cat = "archiver";
+		} 
 		$packages{$i,'class'} = $cat; 
 		$i++;
 		}
@@ -213,15 +216,15 @@ else {
 sub update_system_form
 {
 print &ui_subheading($text{'IPKG_form'});
-print "<table width=100%><tr>\n";
+print &ui_buttons_start();
 print &ui_form_start("ipkg_upgrade.cgi");
-print "<td>" ,&ui_submit($text{'IPKG_update'}, "update"),"<br>\n";
-print &ui_submit($text{'IPKG_upgrade'}, "upgrade"),"</td>";
-print &ui_form_end();
+print &ui_submit($text{'IPKG_update'}, "update"),"<br>\n";
+print &ui_submit($text{'IPKG_upgrade'}, "upgrade");
+print &ui_form_end(), "</td><td align=\"right\">";
 print &ui_form_start("ipkg-tree.cgi");
-print "<td align=right>",&ui_submit($text{'IPKG_index_tree'}),"</td>\n";
+print &ui_submit($text{'IPKG_index_tree'});
 print &ui_form_end();
-print "</tr></table>\n";
+print &ui_buttons_end();
 }
 
 # update_system_resolve(name)
