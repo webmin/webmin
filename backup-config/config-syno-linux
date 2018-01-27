@@ -1,5 +1,0 @@
-dest=/var/packages/webmin/target/backup/webmin_backup.tgz
-apply=1
-date_subs=0
-mods=apache webmin
-webmin_subs=0

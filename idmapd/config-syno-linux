@@ -1,3 +1,0 @@
-idmapd_path=/usr/sbin/rpc.idmapd
-idmapd_conf=/etc/idmapd.conf
-restart_command=if killall -HUP rpc.idmapd; then /bin/true; else rpc.idmapd; fi
