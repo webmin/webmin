@@ -11,8 +11,12 @@ use WebminCore;
 		"cgi", "text.gif",
 		"html", "text.gif",
 		"htm", "text.gif",
+		"php", "text.gif",
+		"php5", "text.gif",
 		"gif", "image.gif",
 		"jpg", "image.gif",
+		"jpeg", "image.gif",
+		"png", "image.gif",
 		"tar", "binary.gif"
 		);
 
