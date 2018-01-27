@@ -424,16 +424,16 @@ pkgsrc_input=Package from pkgsrc
 
 __norefs=1
 
-log_IPKG_update=Updated available IPKG packages
+log_IPKG_update=Updated IPKG database
 log_IPKG_upgrade=Upgraded installed IPKG packages
 
 IPKG_name=IPKG
 IPKG_input=Package from IPKG
 IPKG_find=Browse IPKG ..
-IPKG_form=Upgrade All Packages
-IPKG_update=Update Available IPKG Packages
-IPKG_upgrade=Upgrade Installed IPKG Packages To Latest Versions
-IPKG_title_update=Updating Available Packages
+IPKG_form=Manage IPKG Packages
+IPKG_update=Update IPKG Package Database
+IPKG_upgrade=Upgrade Installed IPKG Packages
+IPKG_title_update=Updating IPKG Databse
 IPKG_title_upgrade=Upgrading Installed Packages
 IPKG_updatedesc=Running command $1 ..
 IPKG_upgradefailed=.. failed!
@@ -441,4 +441,7 @@ IPKG_upgradeok=.. complete.
 IPKG_install=Installing package(s) with command $1 ..
 IPKG_ok=.. install complete.
 IPKG_failed=.. install failed!
-
+IPKG_index_tree=Manage IPKG Packages
+IPKG_install_package=Install
+IPKG_noupgrade=Nothing to upgrade
+IPKG-edit_title=Manage IPKG Package
