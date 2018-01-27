@@ -3,7 +3,7 @@
 # Add all classes to the open list
 
 require './software-lib.pl';
-$n = &list_packages();
+$n = &list_packages("ALL");
 for($i=0; $i<$n; $i++) {
 	@w = split(/\//, $packages{$i,'class'});
 	for($j=0; $j<@w; $j++) {

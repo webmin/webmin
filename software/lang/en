@@ -443,5 +443,6 @@ IPKG_ok=.. install complete.
 IPKG_failed=.. install failed!
 IPKG_index_tree=Manage IPKG Packages
 IPKG_install_package=Install
+IPKG_install_packagedesc=Install this package on your system
 IPKG_noupgrade=Nothing to upgrade
 IPKG-edit_title=Manage IPKG Package
