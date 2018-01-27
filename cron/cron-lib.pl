@@ -281,7 +281,12 @@ else {
 				      $_[0]->{'type'} != 3);
 	push(@c, $_[0]->{'command'});
 	}
-return join(" ", @c);
+if ($gconfig{'os_type'} eq 'syno-linux') {
+	return join("\t", @c);
+	}
+else {
+	return join(" ", @c);
+	}
 }
 
 =head2 copy_cron_temp(&job)
