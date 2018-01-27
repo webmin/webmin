@@ -14,27 +14,33 @@ return ("ipkg");
 
 # list_packages([package]*)
 # Fills the array %packages with a list of all packages
-# e.g. man - 1.6g-1 - unix manual page reader
+# ipkg extension: if ALL is specified list alos uninstalled packages
 sub list_packages
 {
 local $i = 0;
 local $arg = join(" ", map { quotemeta($_) } @_);
+local $cmd = "ipkg list-installed";
+$cmd = "ipkg list" if ($arg eq "ALL");
 %packages = ( );
-&open_execute_command(PKGINFO, "ipkg list $arg", 1, 1);
+&open_execute_command(PKGINFO, $cmd, 1, 1);
 while(<PKGINFO>) {
-	if (/^(.+?) - (.+?) - (.*)/) {
-		local $desc = $3;
+	if (/^(.+?) - (.+)/) {
 		$packages{$i,'name'} = $1;
 		$packages{$i,'version'} = "$2";
-		$packages{$i,'desc'} = $desc;
+		if ($2 =~ /^(.+) - (.+)/) {
+			$packages{$i,'version'} = "$1";
+			$packages{$i,'desc'} = $2;
+		}
 
 		# generate categories from names, lib and x
-		$1 =~ m/^([^-0-9]*)/;
+		$packages{$i,'name'} =~ m/^([^-0-9]*)/;
 		local $cat= $1;
 		if ($cat =~ m/^(lib)/i) {
 			$cat=$1;
 		} elsif ($cat =~ /^x/ && $desc =~ /X |Xorg|X11|XDMCP|Xinerama|Athena/) {
 			$cat = "x11";
+		} elsif ($cat =~ /^x/ && $desc eq "") {
+			$cat = "x";
 		}
 		$packages{$i,'class'} = $cat; 
 		$i++;
@@ -207,10 +213,15 @@ else {
 sub update_system_form
 {
 print &ui_subheading($text{'IPKG_form'});
+print "<table width=100%><tr>\n";
 print &ui_form_start("ipkg_upgrade.cgi");
-print &ui_submit($text{'IPKG_update'}, "update"),"<br>\n";
-print &ui_submit($text{'IPKG_upgrade'}, "upgrade"),"<br>\n";
+print "<td>" ,&ui_submit($text{'IPKG_update'}, "update"),"<br>\n";
+print &ui_submit($text{'IPKG_upgrade'}, "upgrade"),"</td>";
 print &ui_form_end();
+print &ui_form_start("ipkg-tree.cgi");
+print "<td align=right>",&ui_submit($text{'IPKG_index_tree'}),"</td>\n";
+print &ui_form_end();
+print "</tr></table>\n";
 }
 
 # update_system_resolve(name)
