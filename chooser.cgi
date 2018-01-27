@@ -171,8 +171,8 @@ EOF
 	print &ui_textbox("filter",$text{'ui_filterbox'}, 50, 0, undef,"style='width:100%;color:#aaa;' onkeyup=\"filter_match(this.value,'row',true);\" onfocus=\"if (this.value == '".$text{'ui_filterbox'}."') {this.value = '';this.style.color='#000';}\" onblur=\"if (this.value == '') {this.value = '".$text{'ui_filterbox'}."';this.style.color='#aaa';}\"");
 	print &ui_hr("style='width:100%;'")."</div>";
 	print "<b>",&text('chooser_dir', &html_escape($dir)),"</b>\n";
-	opendir(DIR, $in{'chroot'}.$dir) ||
-		&popup_error(&text('chooser_eopen', "$!"));
+	$ok = opendir(DIR, $in{'chroot'}.$dir);
+	&popup_error(&text('chooser_eopen', "$!")) if (!$ok && !$in{'chroot'});
 	print &ui_columns_start(undef, 100);
     	my $cnt = 0;
 	foreach $f (sort { $a cmp $b } readdir(DIR)) {
