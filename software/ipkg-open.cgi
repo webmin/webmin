@@ -1,4 +1,4 @@
-#!/opt/bin/perl
+#!/usr/local/bin/perl
 # open.cgi
 # Add some class to the open list
 

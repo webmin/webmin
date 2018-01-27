@@ -1,4 +1,4 @@
-#!/opt/bin/perl
+#!/usr/local/bin/perl
 # closeall.cgi
 # Empty the open list
 
