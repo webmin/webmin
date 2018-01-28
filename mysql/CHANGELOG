@@ -107,3 +107,5 @@ When a database is deleted, any cron job for backing it up is also removed.
 Added support for the new password columns in the user table as seen in MySQL 5.7, and massively cleaned up all the code for user, host and DB permissions management.
 ---- Changes since 1.810 ----
 Single database backups can now be downloaded in the browser.
+---- Changes since 1.870 ----
+Added a page for manually editing the MySQL config files, and implemented support for config includes.
