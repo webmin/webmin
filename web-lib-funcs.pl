@@ -5120,10 +5120,20 @@ if (-l $mdir) {
 			}
 		}
 	}
+
+# Apply language-specific override files
+foreach $o (@lang_order_list) {
+	next if ($o eq "en");
+	&read_file_cached("$mdir/module.info.$o", \%rv);
+	}
+
+# Apply desc_$LANG overrides
 foreach $o (@lang_order_list) {
 	$rv{"desc"} = $rv{"desc_$o"} if ($rv{"desc_$o"});
 	$rv{"longdesc"} = $rv{"longdesc_$o"} if ($rv{"longdesc_$o"});
 	}
+
+# Apply overrides if this is a cloned module
 if ($clone && !$_[1] && $config_directory) {
 	$rv{'clone'} = $rv{'desc'};
 	$rv{'cloneof'} = $clone;
@@ -5141,7 +5151,7 @@ $rv{'realcategory'} = $rv{'category'};
 $rv{'category'} = $module_categories{$_[0]}
 	if (defined($module_categories{$_[0]}));
 
-# Apply description overrides
+# Apply site-specific description overrides
 $rv{'realdesc'} = $rv{'desc'};
 my %descs;
 &read_file_cached("$config_directory/webmin.descs", \%descs);
@@ -5154,7 +5164,7 @@ foreach my $o (@lang_order_list) {
 	}
 
 if (!$_[2]) {
-	# Apply per-user description overridde
+	# Apply per-user description override
 	my %gaccess = &get_module_acl(undef, "");
 	if ($gaccess{'desc_'.$_[0]}) {
 		$rv{'desc'} = $gaccess{'desc_'.$_[0]};
