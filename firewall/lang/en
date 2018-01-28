@@ -348,6 +348,7 @@ add_gerr=Failed to add group
 add_echeck=Server $1 does not have the Linux Firewall module
 add_emissing=Server $1 is missing the firewall command $2
 add_ok=Added $1, with $2 active firewall rules.
+add_enone=No servers to add selected!
 
 policy_ecannot=You are not allowed to change the default policy for this chain
 
