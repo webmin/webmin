@@ -1,4 +1,4 @@
-#!/opt/bin/perl
+#!/usr/local/bin/perl
 # edit_pack.cgi
 # Displays the details of an existing package, with links to uninstall and
 # other options
@@ -32,11 +32,11 @@ if (!$pinfo[7]) {
 		&ui_hidden("search", $in{'search'}));
 	} else {
 # Show botton to install
-		print &ui_form_start("install_pack.cgi"),
+	print &ui_buttons_row("install_pack.cgi",
+		$text{'IPKG_install_package'},
+		$text{'IPKG_install_packagedesc'},
 		&ui_hidden("update", $pinfo[0]).
-		&ui_hidden("source", 3).
-		&ui_submit($text{'IPKG_install_package'});
-		ui_form_end();
+		&ui_hidden("source", 3));
 	}
 
 

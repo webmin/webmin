@@ -1,5 +1,0 @@
-pap_file=/etc/ppp/chap-secrets
-timeout=30
-pptp=pptp
-peers_dir=/etc/ppp/peers
-pptp_options=/etc/ppp/options

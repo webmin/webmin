@@ -1,3 +1,0 @@
-hosts_deny=/etc/hosts.deny
-inetd_services=0
-hosts_allow=/etc/hosts.allow
