@@ -6,7 +6,7 @@ Aquest mòdul permet configurar les característiques del tallafocs IPtables
 que es troba a la sèrie de nuclis Linux 2.4. Contràriament a altres
 programes de configuració de tallafocs, en lloc de crear un script shell
 que configura el tallafocs, llegeix i edita un fitxer en el format llegit
-i escrit per <tt>iptables-restore</tt> i <tt>iptables-save</tt>, respectivament. <p>
+i escrit per <tt>ipi(6)tables-restore</tt> i <tt>ipi(6)tables-save</tt>, respectivament. <p>
 
 Si ja tens al sistema un tallafocs que s'ha configurat manualment o des d'un
 fitxer de script, el mòdul t'oferirà de convertir-lo per tu a un fitxer
@@ -47,14 +47,13 @@ es poden utilitzar a llocs diferents. <p>
 
 <h3>La pàgina principal</h3>
 
-La pàgina principal d'aquest mòdul llista totes les cadenes i regles 
-d'una de les taules disponibles, seleccionades de la llista de la part
-superior esquerra.  A sota hi ha una selecció per a cada cadena de la 
-taula actual, amb totes les regles de cada cadena llistades i les seves
-condicions descrites tant bé com el mòdul n'és capaç. Per a cada cadena,
-pots canviar l'acció per defecte utilitzant la llista desplegable si
-la cadena és una de les ja integrades a la taula, o bé suprimir-la 
-amb el botó Suprimeix la cadena si està definida per l'usuari. <p>
+La pàgina principal d'aquest mòdul llista totes les cadenes i regles d'una de
+les taules disponibles, seleccionades de la llista de la part superior esquerra.
+A sota hi ha una selecció per a cada cadena de la taula actual, amb totes les
+regles de cada cadena llistades i les seves condicions descrites tant bé com el
+mòdul n'és capaç. Per a cada cadena, pots canviar l'acció per defecte utilitzant
+la llista desplegable si la cadena és una de les ja integrades a la taula, o bé
+suprimir-la amb el botó Suprimeix la cadena si està definida per l'usuari. <p>
 
 Pots fer clic sobre qualsevol regla d'una cadena per editar-la, fer clic
 sobre les fletxes de l'esquerra per desplaçar-les amunt i avall, o fer 
@@ -64,11 +63,27 @@ cada regla, i les condicions per les quals s'executa l'acció. <p>
 
 Al peu de la pàgina, hi ha un botó per fer activa la configuració
 actual del tallafocs, recarregant-la en el nucli amb l'ordre
-<tt>iptables-restore</tt>. A sota, hi ha un botó per fer just el contrari -
+<tt>ipi(6)tables-restore</tt>. A sota, hi ha un botó per fer just el contrari -
 prendre la configuració que hi ha actualment al nucli i posar-la a
 disposició de l'editor. Finalment, si la distribució ho suporta, hi ha
 un botó per canviar si el tallafocs s'activa en engegar el sistema o no. <p>
 
-<hr>
+<h3>Cadenes de filtratge</h3>
 
+Per a una millor col·laboració amb scripts d'iptables externs, pots excloure cadenes
+individuals del processament del tallafocs. Per fer-ho, has de seleccionar el
+processament directe de les regles als paràmetrres i introduir una llista de 
+filtres que exclouen les cadenes apropiades del processament.
+Les cadenes que no s'han exclòs de l'edició es marquen amb el missatge "no gestionada pel tallafocs".
+<p>
+
+<h3>Conjunts d'IPs</h3>
+
+Les noves versions d'ip(6)table suporten l'extensió ipset.
+Els conjunts d'IPs són llistes d'adreces IP en memòria principal, que es poden buscar eficientment
+i s'usen com a condició en les regles, A la pàgina principal es mostren els conjunts d'IPs existents
+que es poden fer servir com a condició a les regles. Actualment, però, no és possible gestionar-los al tallafocs.
+<p>
+
+<hr>
 
