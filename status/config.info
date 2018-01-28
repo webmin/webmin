@@ -15,3 +15,4 @@ snmp_community=SNMP community string,0
 snmp_trap=SNMP OID for traps,0
 history_show=Number of historical statuses to show,0
 history_purge=Days to keep historical statuses,0
+email_interval=Minimum interval between alerts per monitor,3,No limit,5,,minutes

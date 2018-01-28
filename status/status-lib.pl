@@ -25,6 +25,12 @@ if (!-r $fails_file) {
 	$fails_file = "$module_var_directory/fails";
 	}
 
+# Last email sent for each monitor
+$lastsent_file = "$module_config_directory/lastsent";
+if (!-r $lastsent_file) {
+	$lastsent_file = "$module_var_directory/lastsent";
+	}
+
 # Directory of historic results for each monitor
 $history_dir = "$module_config_directory/history";
 if (!-d $history_dir) {

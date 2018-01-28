@@ -30,6 +30,8 @@ else {
 &read_file($oldstatus_file, \%oldstatus);
 &lock_file($fails_file);
 &read_file($fails_file, \%fails);
+&lock_file($lastsent_file);
+&read_file($lastsent_file, \%lastsent);
 
 # Get the list of services, ordered so that those with dependencies are first
 @services = &list_services();
@@ -167,7 +169,8 @@ foreach $serv (@services) {
 			}
 
 		# If something happened, notify people
-		if ($suffix) {
+		if ($suffix &&
+		    $nowunix - $lastsent{$serv->{'id'}} > $config{'email_interval'} * 60) {
 			$subj = &text('monitor_sub_'.$suffix,
 				      $serv->{'desc'}, $host);
 			if ($notify{'pager'}) {
@@ -191,6 +194,7 @@ foreach $serv (@services) {
 				$thisemail .= "\n";
 				$ecount++;
 				}
+			$lastsent{$serv->{'id'}} = $nowunix;
 			}
 		$newstats->{$r} = $up;
 		$newvalues->{$r} = $stat->{'value'};
@@ -246,11 +250,13 @@ foreach $serv (@services) {
 	$oldstatus{$serv->{'id'}} = $newstatus_str;
 	}
 
-# Close oldstatus and fails files
+# Close oldstatus, fails and lastsent files
 &write_file($oldstatus_file, \%oldstatus);
 &unlock_file($oldstatus_file);
 &write_file($fails_file, \%fails);
 &unlock_file($fails_file);
+&write_file($lastsent_file, \%lastsent);
+&unlock_file($lastsent_file);
 
 # Send the email and page with all messages, if necessary
 if ($ecount && !$config{'sched_single'}) {
