@@ -359,15 +359,22 @@ elsif (!$old && defined($dir)) {
 	if (!$sect->{'local'} && $file =~ /^(.*)\.conf$/) {
 		# New directives should go in a .local file. We can assume at
 		# this point that it doesn't exist yet, or that there is no
-		# section in it
+		# section in it. So convert this section object to local.
 		my $lfile = $1.".local";
 		&unflush_file_lines($file);
 		$file = $lfile;
 		$lref = &read_file_lines($file);
-		# XXX need to add section
+		$sect->{'line'} = $sect->{'eline'} = scalar(@$lref);
+		$sect->{'file'} = $file;
+		splice(@$lref, $sect->{'eline'}, 0, "[$sect->{'name'}]");
+		splice(@$lref, $sect->{'eline'}+1, 0, @dirlines);
+		$dir->{'line'} = $sect->{'eline'}+1;
+		$dir->{'file'} = $sect->{'file'};
+		$sect->{'eline'} += scalar(@dirlines);
+		$dir->{'eline'} = $sect->{'eline'};
 		}
 	else {
-		# Just add to section file
+		# Just add to the file the section is in (which will be local)
 		splice(@$lref, $sect->{'eline'}+1, 0, @dirlines);
 		$dir->{'line'} = $sect->{'eline'}+1;
 		$dir->{'file'} = $sect->{'file'};
