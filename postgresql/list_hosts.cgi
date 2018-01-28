@@ -68,5 +68,11 @@ print &ui_columns_end();
 print &ui_links_row(\@rowlinks);
 print &ui_form_end([ [ "delete", $text{'user_delete'} ] ]);
 
+print &ui_hr();
+print &ui_buttons_start();
+print &ui_buttons_row("edit_manual.cgi", $text{'host_manual'},
+		      $text{'host_manualdesc'});
+print &ui_buttons_end();
+
 &ui_print_footer("", $text{'index_return'});
 

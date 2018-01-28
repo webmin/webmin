@@ -69,6 +69,9 @@ elsif ($action eq 'backup') {
 		     "<tt>$object</tt>",
 		     "<tt>".&html_escape($p->{'file'})."</tt>");
 	}
+elsif ($action eq 'manual') {
+	return $text{'log_manual'};
+	}
 else {
 	return undef;
 	}
