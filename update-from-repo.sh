@@ -141,28 +141,35 @@ fi
         ####################
         # start processing pulled source
         version="`head -c -1 ${TEMP}/version`-`cd ${TEMP}; ${GIT} log -1 --format=%cd --date=format:'%m%d.%H%M'`" 
+		DOTVER=`echo ${version} | sed 's/-/./'`
+		TARBALL="${TEMP}/tarballs/${PROD}-${DOTVER}"
         ###############
         # FULL update
         echo -e "${CYAN}start FULL update for${NC} $PROD ..."
-        # create dir,resolve links and some other processing
-        mkdir ${TEMP}/tarballs 
-        ( cd ${TEMP}; perl makedist.pl ${version} ) | sed '/^cp: | cp /d'
+        # create missing dirs, simulate authentic present
+        mkdir ${TEMP}/tarballs ${TEMP}/authentic-theme 
+        cp authentic-theme/LICENSE ${TEMP}/authentic-theme
+        # run makedist.pl
+        ( cd ${TEMP}; perl makedist.pl ${DOTVER} ) 
+		if [[ ! -d "${TARBALL}" ]] ; then
+            echo -e "${RED}Error: makedist.pl failed! ${NC}aborting ..."
+            rm -rf .~files
+			exit 1
+		fi
 
         # check for additional standard modules
         # fixed list better than guessing?
         for module in `ls */module.info`
         do 
-            if [[ -f ${TEMP}/${module} && ! -f  "${TEMP}/tarballs/${PROD}-${version}/$module" ]]; then
+            if [[ -f ${TEMP}/${module} && ! -f  "${TARBALL}/$module" ]]; then
               module=`dirname $module`
-              echo "Adding nonstandard $module" && cp -r -L ${TEMP}/$module ${TEMP}/tarballs/${PROD}-${version}/
+              echo "Adding nonstandard $module" && cp -r -L ${TARBALL}/
             fi
         done
 
-        #prepeare unattended upgrade
-        echo "${version}" >"${TEMP}/tarballs/${PROD}-${version}/version"
-        #cp "${TEMP}/maketemp.pl" "${TEMP}/tarballs/${PROD}-${version}"
-        #cp  "${TEMP}/setup.sh" "${TEMP}/tarballs/${PROD}-${version}"
-        #cp "${TEMP}/chinese-to-utf8.pl" .
+        # prepeare unattended upgrade
+        echo "${version}" >"${TARBALL}/version"
+        cp "${TEMP}/chinese-to-utf8.pl" .
         echo  -en "${CYAN}search for config dir ... ${NC}"
         config_dir=`grep env_WEBMIN_CONFIG= ${MINICONF}| sed 's/.*_WEBMIN_CONFIG=//'`
         echo  -e "${ORANGE}found: ${config_dir}${NC}"
@@ -171,7 +178,7 @@ fi
         nouninstall="YES"
         #nostart="YES"
         export config_dir atboot nouninstall makeboot nostart
-        ( cd ${TEMP}/tarballs/${PROD}-${version}; ./setup.sh ${DIR} ) | grep -v -e "^$" -e "done$" -e "chmod" -e "chgrp" -e "chown"
+        ( cd ${TARBALL}; ./setup.sh ${DIR} ) | grep -v -e "^$" -e "done$" -e "chmod" -e "chgrp" -e "chown"
 
         #############
         # postprocessing
@@ -184,9 +191,6 @@ fi
             echo -e "${BLUE} iconv not found, skipping lang files!${NC}"
         fi
 
-        # write version to file
-        [[ "${LANG}" != "YES" ]] || echo "${version}-LANG" > version
-        
         # update authentic, put dummy clear in PATH
         echo -e "#!/bin/sh\necho" > ${TEMP}/clear; chmod +x ${TEMP}/clear
         export PATH="${TEMP}:${PATH}"
