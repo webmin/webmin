@@ -146,7 +146,7 @@ fi
         echo -e "${CYAN}start FULL update for${NC} $PROD ..."
         # create dir,resolve links and some other processing
         mkdir ${TEMP}/tarballs 
-        ( cd ${TEMP}; perl makedist.pl ${version} )
+        ( cd ${TEMP}; perl makedist.pl ${version} ) | sed '/^cp: | cp /d'
 
         # check for additional standard modules
         # fixed list better than guessing?
