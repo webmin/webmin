@@ -4,6 +4,16 @@
 # inspired by authentic-theme/theme-update.sh script, thanks qooob
 #
 # Version 1.4, 2018-01-31
+#
+# exit codes:
+#    0 - success
+#    1 - abort on error or user request, nothing changed
+#    2 - not run as root
+#    3 - git not found
+#    4 - git clone failed 
+#    5 - makedist failed 
+#    5 - makedist failed 
+#
 # Kay Marquardt, kay@rrr.de, https://github.com/gandelwartz
 #############################################################################
 
@@ -45,7 +55,7 @@ fi
 if [[ "${PROD}" != "webmin" && "${PROD}" != "usermin" ]] ; then
     echo -e "${NC}${RED}error: the current dir name hast to be webmin or usermin, no update possible!${NC}"
     echo -e "possible solution: ${ORANGE}ln -s ${PROD} ../webmini; cd ../webmin${NC} or ${ORANGE}ln -s ${PROD} ../usermin; cd ../webmin ${NC}"
-    exit 0
+    exit 1
 fi
 
 # don't ask -y given
@@ -57,7 +67,7 @@ fi
 # need to be root 
 if [[ $EUID -ne 0 ]]; then
     echo -e "${RED}Error: This command has to be run under the root user.${NC}"
-    exit 1
+    exit 2
 fi
 
 # git has to be installed
@@ -72,7 +82,12 @@ else
 fi
 [[ "${MINICONF}" != "" ]] && export PATH="${PATH}:`grep path= ${MINICONF}| sed 's/^path=//'`"
 
-type ${GIT} >/dev/null 2>&1 || echo -e "${RED}Error: Command \`git\` is not installed or not in the \`PATH\`.${NC}";
+if type ${GIT} >/dev/null 2>&1 ; then
+    true
+else
+    echo -e "${RED}Error: Command \`git\` is not installed or not in the \`PATH\`.${NC}"
+    exit 3
+fi
 
 
 ################
@@ -88,7 +103,7 @@ if [[ "$1" == *"-repo"* ]]; then
           shift
         else
           echo -e "${ORANGE}./`basename $0`:${NC} found -repo without parameter"
-          exit 0
+          exit 1
         fi
 fi
 
@@ -104,7 +119,7 @@ REPLY="y"
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
    # something different the y entered
    echo -e "${PURPLE}Operation aborted.${NC}"
-   exit
+   exit 1
 fi
 
 ################
@@ -151,10 +166,10 @@ fi
         cp authentic-theme/LICENSE ${TEMP}/authentic-theme
         # run makedist.pl
         ( cd ${TEMP}; perl makedist.pl ${DOTVER} ) 
-		if [[ ! -d "${TARBALL}" ]] ; then
+		if [[ ! -f "${TARBALL}/webmin*.tar" ]] ; then
             echo -e "${RED}Error: makedist.pl failed! ${NC}aborting ..."
             rm -rf .~files
-			exit 1
+			exit 5
 		fi
 
         # check for additional standard modules
@@ -179,6 +194,11 @@ fi
         #nostart="YES"
         export config_dir atboot nouninstall makeboot nostart
         ( cd ${TARBALL}; ./setup.sh ${DIR} ) | grep -v -e "^$" -e "done$" -e "chmod" -e "chgrp" -e "chown"
+        if [[ "${TARBALL}/version" -nt "${MINICONF}" ]] ; then
+            echo -e "${RED}Error: setup failed, ${PROD} may in a bad state! ${NC}aborting ..."
+            rm -rf .~files
+            exit 6
+		fi
 
         #############
         # postprocessing
@@ -205,6 +225,7 @@ fi
   else
         # something went wrong
         echo -e "${RED}${ERROR}Updating files, failed.${NC}"
+		exit 4
   fi
 
   ###########
@@ -220,3 +241,6 @@ fi
       
   # thats all folks
   echo -e "\n${CYAN}Updating ${PROD^} to Version `cat version`, done.${NC}"
+
+# update success
+exit 0
