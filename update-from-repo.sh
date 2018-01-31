@@ -5,14 +5,6 @@
 #
 # Version 1.4, 2018-01-31
 #
-# exit codes:
-#    0 - success
-#    1 - abort on error or user request, nothing changed
-#    2 - not run as root
-#    3 - git not found
-#    4 - git clone failed 
-#    5 - makedist failed 
-#    6 - update with setup.sh failed, installation may in bad state!
 #
 # Kay Marquardt, kay@rrr.de, https://github.com/gandelwartz
 #############################################################################
@@ -47,8 +39,30 @@ NC='\e[0m'
 
 # help requested output usage
 if [[ "$1" == "-h" || "$1" == "--help" ]] ; then
-    echo -e "${NC}${ORANGE}${PROD^}${NC} update script"
-    echo "Usage:  ./`basename $0` { [-repo:yourname/xxxmin] } { [-release] | [-release:number] }"
+    echo -e "${NC}${ORANGE}This is the unofficial webmin update script${NC}"
+    echo "Usage:  ./`basename $0` [-yes] [-repo:username/xxxmin] [-release[:number]]"
+	[[ "$1" == "--help" ]] && cat <<EOF
+
+Parameters:
+	-yes
+		unattended install, do not ask
+	-repo
+		pull from alternative github repo, format: -repo:username/reponame
+		reponame can be "webmin" or "usermin"
+		default github repo: webmin/webmin
+	-release
+		pull a released version, default release: -release:latest
+
+Exit codes:
+	0 - success
+	1 - abort on error or user request, nothing changed
+	2 - not run as root
+	3 - git not found
+	4 - stage 1: git clone failed
+	5 - stage 2: makedist failed
+	6 - stage 3: update with setup.sh failed, installation may in bad state!
+
+EOF
     exit 0
 fi
 
