@@ -12,7 +12,7 @@
 #    3 - git not found
 #    4 - git clone failed 
 #    5 - makedist failed 
-#    5 - makedist failed 
+#    6 - update with setup.sh failed, installation may in bad state!
 #
 # Kay Marquardt, kay@rrr.de, https://github.com/gandelwartz
 #############################################################################
@@ -195,7 +195,7 @@ fi
         export config_dir atboot nouninstall makeboot nostart
         ( cd ${TARBALL}; ./setup.sh ${DIR} ) | grep -v -e "^$" -e "done$" -e "chmod" -e "chgrp" -e "chown"
         if [[ "${TARBALL}/version" -nt "${MINICONF}" ]] ; then
-            echo -e "${RED}Error: setup failed, ${PROD} may in a bad state! ${NC}aborting ..."
+            echo -e "${RED}Error: update failed, ${PROD} may in a bad state! ${NC}aborting ..."
             rm -rf .~files
             exit 6
 		fi
