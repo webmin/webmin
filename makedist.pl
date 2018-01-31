@@ -7,7 +7,7 @@ if ($ARGV[0] eq "-minimal" || $ARGV[0] eq "--minimal") {
 	shift(@ARGV);
 	}
 $vers = $ARGV[0];
-$vers =~ /^[0-9\.]+$/ || usage();
+$vers =~ /^[-0-9\.]+$/ || usage();
 $tardir = $min ? "minimal" : "tarballs";
 $vfile = $min ? "$vers-minimal" : $vers;
 $zipdir = "zips";
