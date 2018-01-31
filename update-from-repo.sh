@@ -54,12 +54,6 @@ if [[ "$1" == "-y" || "$1" == "-yes" ]] ; then
         shift
 fi
 
-# update only lang files
-if [[ "$1" == "-l" || "$1" == "-lang" ]] ; then
-        LANG="YES"
-        shift
-fi
-
 # need to be root 
 if [[ $EUID -ne 0 ]]; then
     echo -e "${RED}Error: This command has to be run under the root user.${NC}"
@@ -116,7 +110,6 @@ fi
 ################
 # here we go
 
-#################
   # remove temporary files from failed run
   rm -rf .~files
   # pull source from github
