@@ -23,7 +23,7 @@ category_net=Networking
 category_syslet=Syslets
 category_cluster=Cluster
 category_info=Information
-category_=Others
+category_=Tools
 
 longcategory_servers=Modules for configuration web, email, FTP and other servers
 longcategory_hardware=Modules for printer, disk and other hardware configuration
