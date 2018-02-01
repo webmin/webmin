@@ -5,7 +5,6 @@
 #
 # Version 1.4, 2018-01-31
 #
-#
 # Kay Marquardt, kay@rrr.de, https://github.com/gandelwartz
 #############################################################################
 
@@ -25,17 +24,24 @@ TEMP=$WTEMP
 [[ "$PROD" == "usermin" ]] && TEMP=$UTEMP
 LTEMP="${DIR}/.~lang"
 
-# predefined colors for echo -e
-RED='\e[49;0;31;82m'
-BLUE='\e[49;1;34;182m'
-GREEN='\e[49;32;5;82m'
-ORANGE='\e[49;0;33;82m'
-PURPLE='\e[49;1;35;82m'
-LGREY='\e[49;1;37;182m'
-GREY='\e[1;30m'
-CYAN='\e[36m'
-NC='\e[0m'
+# don't ask -y given
+if [[ "$1" == "-y" || "$1" == "-yes" ]] ; then
+        ASK="NO"
+        shift
+fi
 
+# predefined colors for echo -e on terminal
+if [[ -t 1 && ${ASK} == "YES" ]] ;  then
+    RED='\e[49;0;31;82m'
+    BLUE='\e[49;1;34;182m'
+    GREEN='\e[49;32;5;82m'
+    ORANGE='\e[49;0;33;82m'
+    PURPLE='\e[49;1;35;82m'
+    LGREY='\e[49;1;37;182m'
+    GREY='\e[1;30m'
+    CYAN='\e[36m'
+    NC='\e[0m'
+fi
 
 # help requested output usage
 if [[ "$1" == "-h" || "$1" == "--help" ]] ; then
@@ -70,12 +76,6 @@ if [[ "${PROD}" != "webmin" && "${PROD}" != "usermin" ]] ; then
     echo -e "${NC}${RED}error: the current dir name hast to be webmin or usermin, no update possible!${NC}"
     echo -e "possible solution: ${ORANGE}ln -s ${PROD} ../webmini; cd ../webmin${NC} or ${ORANGE}ln -s ${PROD} ../usermin; cd ../webmin ${NC}"
     exit 1
-fi
-
-# don't ask -y given
-if [[ "$1" == "-y" || "$1" == "-yes" ]] ; then
-        ASK="NO"
-        shift
 fi
 
 # need to be root 
@@ -180,7 +180,7 @@ fi
         cp authentic-theme/LICENSE ${TEMP}/authentic-theme
         # run makedist.pl
         ( cd ${TEMP}; perl makedist.pl ${DOTVER} ) 
-		if [[ ! -f "${TARBALL}/webmin*.tar" ]] ; then
+		if [[ ! -f "${TEMP}/tarballs/webmin-${DOTVER}.tar.gz" ]] ; then
             echo -e "${RED}Error: makedist.pl failed! ${NC}aborting ..."
             rm -rf .~files
 			exit 5
@@ -220,7 +220,7 @@ fi
         # "compile" UTF-8 lang files
         echo -en "\n${CYAN}compile UTF-8 lang files${NC} ..."
         if [[ `which iconv 2> /dev/null` != '' ]] ; then
-            perl "${TEMP}/chinese-to-utf8.pl" . 2>&1 | while read input; do ((line++)); [ ${line} -eq 50 ] && { echo -n "." ; line=0;}; done
+            perl "${TEMP}/chinese-to-utf8.pl" . 2>&1 | while read input; do echo -n "."; done
         else
             echo -e "${BLUE} iconv not found, skipping lang files!${NC}"
         fi
