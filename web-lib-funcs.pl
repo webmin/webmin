@@ -4791,25 +4791,30 @@ else {
 if ($ENV{'HTTP_X_REQUESTED_WITH'} ne "XMLHttpRequest" &&
     $ENV{'REQUEST_URI'} !~ /xhr/  &&
     $ENV{'REQUEST_URI'} !~ /pjax/ &&
+		$ENV{'REQUEST_URI'} !~ /link.cgi\/\d+/ &&
     $ENV{'REQUEST_URI'} =~ /xnavigation=1/) {
-	# Store requested URI if safe
-	if ($trust || !$referer_site) {
+		# Store requested URI if safe
 		if ($main::session_id && $remote_user) {
-		  my $xnav = "xnavigation=1";
-		  my $url = "$gconfig{'webprefix'}$ENV{'REQUEST_URI'}";
-		  $url =~ s/[?|&]$xnav//g;
-			$url =~ s/[^\p{L}\p{N},;:.%&#=_@\?\-\/]//g;
-		  $url =~ s/%20\s+//g;
+	    my %var;
+	    my $key  = 'goto';
+	    my $xnav = "xnavigation=1";
+	    my $url  = "$gconfig{'webprefix'}$ENV{'REQUEST_URI'}";
+	    my $salt = substr(encode_base64($main::session_id), 0, 16);
+	    $url =~ s/[?|&]$xnav//g;
+	    $salt =~ tr/A-Za-z0-9//cd;
 
-		  my $tmp  = 'tmp';
-		  my $salt = substr(encode_base64($main::session_id), 0, 16);
-		  $salt =~ tr/A-Za-z0-9//cd;
-
-		  my %var;
-		  my $key = 'goto';
-		  $var{$key} = $url;
-			write_file(tempname('.theme_' . $salt . '_' . get_product_name() . '_' . $key . '_' . $remote_user), \%var);
-			}
+	    if (!$trust) {
+	        my @parent_dir = split('/', $url);
+	        $url = $gconfig{'webprefix'} ? $parent_dir[2] : $parent_dir[1];
+	        if ($url =~ /.cgi/) {
+	            $url = "/";
+	        	}
+					else {
+	            $url = "/" . $url . "/";
+	        	}
+	    	}
+	    $var{$key} = $url;
+	    write_file(tempname('.theme_' . $salt . '_' . get_product_name() . '_' . $key . '_' . $remote_user), \%var);
 		}
   &redirect("/");
 	}
