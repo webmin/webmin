@@ -4791,6 +4791,7 @@ else {
 if ($ENV{'HTTP_X_REQUESTED_WITH'} ne "XMLHttpRequest" &&
     $ENV{'REQUEST_URI'} !~ /xhr/  &&
     $ENV{'REQUEST_URI'} !~ /pjax/ &&
+    $ENV{'REQUEST_URI'} !~ /link.cgi\/\d+/ &&
     $ENV{'REQUEST_URI'} =~ /xnavigation=1/) {
 	# Store requested URI if safe
 	if ($trust || !$referer_site) {
@@ -4798,8 +4799,12 @@ if ($ENV{'HTTP_X_REQUESTED_WITH'} ne "XMLHttpRequest" &&
 		  my $xnav = "xnavigation=1";
 		  my $url = "$gconfig{'webprefix'}$ENV{'REQUEST_URI'}";
 		  $url =~ s/[?|&]$xnav//g;
-			$url =~ s/[^\p{L}\p{N},;:.%&#=_@\?\-\/]//g;
-		  $url =~ s/%20\s+//g;
+
+			# Filter out potentially dangerous request but only for un-trusted source
+			if (!$referer_site) {
+				$url =~ s/[^\p{L}\p{N},;:.%&#=_@\?\-\/]//g;
+				$url =~ s/%20\s+//g;
+				}
 
 		  my $tmp  = 'tmp';
 		  my $salt = substr(encode_base64($main::session_id), 0, 16);
