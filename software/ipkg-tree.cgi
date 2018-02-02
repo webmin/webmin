@@ -9,6 +9,19 @@ require './software-lib.pl';
 # read package list
 $n = &list_packages("ALL");
 
+# filter array
+if ($in{'filter'}) {
+    for($i=0; $i<$n; $i++) {
+	    if (index($packages{$i, 'name'}, $in{'filter'}) == -1) {
+            $packages{$i, 'name'}='';
+            $packages{$i, 'version'}='';
+            $packages{$i, 'desc'}='';
+            $packages{$i, 'class'}='';
+        }
+    }
+}
+
+
 # prcoess openall / closeall actions
 if ( $in{'mode'} eq "closeall" ) {
   &save_heiropen([ ]);
@@ -48,11 +61,23 @@ foreach $c (sort { $a cmp $b } &unique(@class)) {
 $heiropen{""} = 1;
 
 # traverse the hierarchy
+print &ui_form_start("ipkg-tree.cgi");
+print &ui_submit($text{'IPKG_filter'});
+print &ui_textbox("filter", $in{'filter'}, 50);
+print &ui_hidden("mode", "openall");
+print &ui_form_end(),"<p>\n";
+
 print &ui_link("ipkg-tree.cgi?mode=closeall", $text{'index_close'});
 print &ui_link("ipkg-tree.cgi?mode=openall", $text{'index_open'});
 print "<table width=\"95%\">\n";
 &traverse("", 0);
 print "</table>\n";
+print &ui_form_start("ipkg-tree.cgi");
+print &ui_submit($text{'IPKG_filter'});
+print &ui_textbox("filter", $in{'filter'}, 50);
+print &ui_hidden("mode", "openall");
+print &ui_form_end(),"<p>\n";
+
 print &ui_link("ipkg-tree.cgi?mode=closeall", $text{'index_close'});
 print &ui_link("ipkg-tree.cgi?mode=openall", $text{'index_open'});
 print "<p>\n";
@@ -82,6 +107,7 @@ if ($heiropen{$_[0]}) {
 	# print packages followed by sub-folders
 	foreach $i (@order) {
 		if ($class[$i] eq $_[0]) {
+			next if ($vers[$i] == '');
 			print "<tr> <td nowrap>", $spacer x ($_[1]+1);
 			print "<img border=0 src=images/pack.gif>&nbsp;\n";
 			print &ui_link("ipkg-edit_pack.cgi?package=".  &urlize($pack[$i]).
