@@ -15,3 +15,4 @@ snmp_community=SNMP community string,0
 snmp_trap=SNMP OID f&#252;r traps,0
 history_show=Anzahl an historischen Stati zum Anzeigen,0
 history_purge=Tage&#44; um historische Stati zu behalten,0
+email_interval=Mindestintervall zwischen Alarmen pro Monitor,3,Kein Limit,5,,Minuten
