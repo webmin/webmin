@@ -5,7 +5,6 @@
 #
 # Version 1.4, 2018-01-31
 #
-#
 # Kay Marquardt, kay@rrr.de, https://github.com/gandelwartz
 #############################################################################
 
@@ -25,42 +24,49 @@ TEMP=$WTEMP
 [[ "$PROD" == "usermin" ]] && TEMP=$UTEMP
 LTEMP="${DIR}/.~lang"
 
-# predefined colors for echo -e
-RED='\e[49;0;31;82m'
-BLUE='\e[49;1;34;182m'
-GREEN='\e[49;32;5;82m'
-ORANGE='\e[49;0;33;82m'
-PURPLE='\e[49;1;35;82m'
-LGREY='\e[49;1;37;182m'
-GREY='\e[1;30m'
-CYAN='\e[36m'
-NC='\e[0m'
+# don't ask -y given
+if [[ "$1" == "-y" || "$1" == "-yes"  || "$1" == "-f" || "$1" == "-force" ]] ; then
+        ASK="NO"
+        shift
+fi
 
+# predefined colors for echo -e on terminal
+if [[ -t 1 && ${ASK} == "YES" ]] ;  then
+    RED='\e[49;0;31;82m'
+    BLUE='\e[49;1;34;182m'
+    GREEN='\e[49;32;5;82m'
+    ORANGE='\e[49;0;33;82m'
+    PURPLE='\e[49;1;35;82m'
+    LGREY='\e[49;1;37;182m'
+    GREY='\e[1;30m'
+    CYAN='\e[36m'
+    NC='\e[0m'
+fi
 
 # help requested output usage
 if [[ "$1" == "-h" || "$1" == "--help" ]] ; then
     echo -e "${NC}${ORANGE}This is the unofficial webmin update script${NC}"
-    echo "Usage:  ./`basename $0` [-yes] [-repo:username/xxxmin] [-release[:number]]"
-	[[ "$1" == "--help" ]] && cat <<EOF
+    echo "Usage:  ./`basename $0` [-force] [-repo:username/xxxmin] [-release[:number]]"
+    [[ "$1" == "--help" ]] && cat <<EOF
 
 Parameters:
-	-yes
-		unattended install, do not ask
-	-repo
-		pull from alternative github repo, format: -repo:username/reponame
-		reponame can be "webmin" or "usermin"
-		default github repo: webmin/webmin
-	-release
-		pull a released version, default release: -release:latest
+    -force (-yes)
+        unattended install, do not ask
+    -repo
+        pull from alternative github repo, format: -repo:username/reponame
+        reponame can be "webmin" or "usermin"
+        default github repo: webmin/webmin
+    -release
+        pull a released version, default release: -release:latest
 
 Exit codes:
-	0 - success
-	1 - abort on error or user request, nothing changed
-	2 - not run as root
-	3 - git not found
-	4 - stage 1: git clone failed
-	5 - stage 2: makedist failed
-	6 - stage 3: update with setup.sh failed, installation may in bad state!
+    0 - success
+    1 - abort on error or user request, nothing changed
+    2 - not run as root
+    3 - git not found
+    4 - stage 1: git clone failed
+    5 - stage 2: makedist failed
+    6 - stage 3: update with setup.sh failed, installation may in bad state!
 
 EOF
     exit 0
@@ -72,12 +78,6 @@ if [[ "${PROD}" != "webmin" && "${PROD}" != "usermin" ]] ; then
     exit 1
 fi
 
-# don't ask -y given
-if [[ "$1" == "-y" || "$1" == "-yes" ]] ; then
-        ASK="NO"
-        shift
-fi
-
 # need to be root 
 if [[ $EUID -ne 0 ]]; then
     echo -e "${RED}Error: This command has to be run under the root user.${NC}"
@@ -87,8 +87,9 @@ fi
 # git has to be installed
 echo -en "${CYAN}search minserv.conf ... ${NC}"
 if [[ -f "/etc/webmin/miniserv.conf" ]] ; then
- 	# default location
+     # default location
     MINICONF="/etc/webmin/miniserv.conf"
+    echo  -e "${ORANGE}found: ${MINICONF}${NC}"
 else
     # possible other locations
     MINICONF=`find /* -maxdepth 6 -name miniserv.conf 2>/dev/null | grep ${PROD} | head -n 1`
@@ -127,8 +128,14 @@ fi
 ################
 # really update?
 REPLY="y"
-[[ "$1" != "-release"* ]] && echo -e "${RED}Warning:${NC} ${ORANGE}update from non release repository${NC} $HOST/$REPO ${ORANGE}may break your installation!${NC}"
-[ "${ASK}" == "YES" ] && read -p "Would you like to update "${PROD^}" from ${HOST}/${REPO} [y/N] " -n 1 -r && echo
+
+if [ "${ASK}" == "YES" ] ; then
+    if [[ "$1" != "-release"* ]] ; then
+        echo -e "${RED}Warning:${NC} ${ORANGE}update from non release repository${NC} $HOST/$REPO ${ORANGE}may break your installation!${NC}"
+    fi
+    read -p "Would you like to update "${PROD^}" from ${HOST}/${REPO} [y/N] " -n 1 -r
+    echo
+fi
 
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
    # something different the y entered
@@ -170,8 +177,8 @@ fi
         ####################
         # start processing pulled source
         version="`head -c -1 ${TEMP}/version`-`cd ${TEMP}; ${GIT} log -1 --format=%cd --date=format:'%m%d.%H%M'`" 
-		DOTVER=`echo ${version} | sed 's/-/./'`
-		TARBALL="${TEMP}/tarballs/${PROD}-${DOTVER}"
+        DOTVER=`echo ${version} | sed 's/-/./'`
+        TARBALL="${TEMP}/tarballs/${PROD}-${DOTVER}"
         ###############
         # FULL update
         echo -e "${CYAN}start FULL update for${NC} $PROD ..."
@@ -180,11 +187,11 @@ fi
         cp authentic-theme/LICENSE ${TEMP}/authentic-theme
         # run makedist.pl
         ( cd ${TEMP}; perl makedist.pl ${DOTVER} ) 
-		if [[ ! -f "${TARBALL}/webmin*.tar" ]] ; then
+        if [[ ! -f "${TEMP}/tarballs/webmin-${DOTVER}.tar.gz" ]] ; then
             echo -e "${RED}Error: makedist.pl failed! ${NC}aborting ..."
             rm -rf .~files
-			exit 5
-		fi
+            exit 5
+        fi
 
         # check for additional standard modules
         # fixed list better than guessing?
@@ -192,7 +199,7 @@ fi
         do 
             if [[ -f ${TEMP}/${module} && ! -f  "${TARBALL}/$module" ]]; then
               module=`dirname $module`
-              echo "Adding nonstandard $module" && cp -r -L ${TARBALL}/
+              echo "Adding nonstandard $module" && cp -r -L ${TEMP}/${module} ${TARBALL}/
             fi
         done
 
@@ -212,7 +219,7 @@ fi
             echo -e "${RED}Error: update failed, ${PROD} may in a bad state! ${NC}aborting ..."
             rm -rf .~files
             exit 6
-		fi
+        fi
 
         #############
         # postprocessing
@@ -220,7 +227,7 @@ fi
         # "compile" UTF-8 lang files
         echo -en "\n${CYAN}compile UTF-8 lang files${NC} ..."
         if [[ `which iconv 2> /dev/null` != '' ]] ; then
-            perl "${TEMP}/chinese-to-utf8.pl" . 2>&1 | while read input; do ((line++)); [ ${line} -eq 50 ] && { echo -n "." ; line=0;}; done
+            perl "${TEMP}/chinese-to-utf8.pl" . 2>&1 | while read input; do echo -n "."; done
         else
             echo -e "${BLUE} iconv not found, skipping lang files!${NC}"
         fi
@@ -231,15 +238,21 @@ fi
         # check if alternatve repo exist
         AUTHREPO=`echo ${REPO} | sed "s/\/.*min$/\/autehtic-theme/"`
         if [[ "${REPO}" != "${AUTHREPO}" ]]; then
-           exist=`curl -s -L ${HOST}/${AUTHREPO}`
-           [[ "${#exist}" -lt 20 ]] && RREPO="${AUTHREPO}"
+             exist=`curl -s -L ${HOST}/${AUTHREPO}`
+             [[ "${#exist}" -lt 20 ]] && RREPO="${AUTHREPO}"
         fi
-        [[ -x authentic-theme/theme-update.sh ]] && authentic-theme/theme-update.sh ${RREPO}
-
+        # run authenric-thme update, possible unattended
+        if [[ -x authentic-theme/theme-update.sh ]] ; then
+            if [[ "${ASK}" == "YES" ]] ; then
+                authentic-theme/theme-update.sh ${RREPO}
+            else
+                yes | authentic-theme/theme-update.sh ${RREPO}
+            fi
+        fi
   else
         # something went wrong
         echo -e "${RED}${ERROR}Updating files, failed.${NC}"
-		exit 4
+        exit 4
   fi
 
   ###########
