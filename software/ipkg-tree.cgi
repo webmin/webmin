@@ -45,6 +45,7 @@ for($i=0; $i<$n; $i++) {
 	push(@vers, $packages{$i,'version'});
 	push(@class, $packages{$i,'class'});
 	push(@desc, $packages{$i,'desc'});
+	push(@inst, $packages{$i,'install'});
 	}
 @order = sort { lc($pack[$a]) cmp lc($pack[$b]) } (0 .. $n-1);
 $heir{""} = "";
@@ -113,10 +114,11 @@ if ($heiropen{$_[0]}) {
 		if ($class[$i] eq $_[0]) {
 			next if ($vers[$i] == '');
 			print "<tr> <td nowrap>", $spacer x ($_[1]+1);
-			print "<img border=0 src=images/pack.gif>&nbsp;\n";
-				print &ui_link("ipkg-edit_pack.cgi?package=".  &urlize($pack[$i]).
+        	print "<font size=\"+1\" color=\"red\">", ($inst[$i] ? "&#9989;" : "&nbsp;&#10008;&nbsp;"), "</font>";
+			print &ui_link("ipkg-edit_pack.cgi?package=".  &urlize($pack[$i]).
 			      "&version=".  &urlize($vers[$i]). "&filter=". &urlize($in{'filter'}),
 				  "<b>".&html_escape($pack[$i]. ($vers[$i] ? " $vers[$i]" : ""))."</b>" );
+			print $packages{$pack[$i], 'install'}, "...";
 			print "</td> <td>",&html_escape($desc[$i]),"</td>\n";
 			print "</tr>\n";
 			}
