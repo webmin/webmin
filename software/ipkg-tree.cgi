@@ -1,4 +1,4 @@
-#!/opt/bin/perl
+#!/usr/local/bin/perl
 # ikpg-tree.cgi
 # Display the IPKG package tree
 
@@ -36,6 +36,7 @@ for($i=0; $i<$n; $i++) {
 @order = sort { lc($pack[$a]) cmp lc($pack[$b]) } (0 .. $n-1);
 $heir{""} = "";
 foreach $c (sort { $a cmp $b } &unique(@class)) {
+	# note: this is optimize for having only one level!
 	if (!$c) { next; }
 	@w = $c;
 	$p = join('/', @w[0..$#w-1]);		# parent class
