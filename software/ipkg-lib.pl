@@ -54,7 +54,7 @@ while(<PKGINFO>) {
 				$cat = "x";
 			} elsif ($cat =~ /^(esmtp|fetchmail|mail|mini|mutt|mpop|msmtp|pop|postfix|postgrey|procmail|putmail|qpopper|sendmail|xmail)/ ) {
 				$cat = "mail";
-			} elsif ($cat =~ /^(arc|bzip|cabex|cpio|freeze|gzip|lha|lzo|p7||tar|upx|unarj|xz|zip|zlib|zoo|unzip|unrar)/) {
+			} elsif ($cat =~ /^(arc|bzip|cabex|cpio|freeze|gzip|lha|lzo|p7|tar|upx|unarj|xz|zip|zlib|zoo|unzip|unrar)/) {
 				$cat = "archiver";
 			} 
 			$packages{$i,'class'} = $cat; 
