@@ -414,4 +414,5 @@ IPKG_install_package=Installieren
 IPKG_install_packagedesc=Installiere dieses Paket auf Deinem System
 IPKG_noupgrade=Nichts zu aktualisieren
 IPKG-edit_title=Verwalte IPKG Paket
-IPKG_filter=Filtern nach ...
+IPKG_filter=Filtere Pakete
+IPKG_filterclear=Filter l&ouml;schen

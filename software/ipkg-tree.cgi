@@ -27,7 +27,7 @@ if ( $in{'mode'} eq "closeall" ) {
   &save_heiropen([ ]);
 }
 
-if ( $in{'mode'} eq "openall" ) {
+if ( $in{'mode'} eq "openall" || $in{'filter'} ) {
   for($i=0; $i<$n; $i++) {
 	@w = split(/\//, $packages{$i,'class'});
 	for($j=0; $j<@w; $j++) {
@@ -64,22 +64,22 @@ $heiropen{""} = 1;
 print &ui_form_start("ipkg-tree.cgi");
 print &ui_submit($text{'IPKG_filter'});
 print &ui_textbox("filter", $in{'filter'}, 50);
-print &ui_hidden("mode", "openall");
 print &ui_form_end(),"<p>\n";
 
 print &ui_link("ipkg-tree.cgi?mode=closeall", $text{'index_close'});
 print &ui_link("ipkg-tree.cgi?mode=openall", $text{'index_open'});
+print &ui_link("ipkg-tree.cgi", $text{'IPKG_filterclear'}) if ($in{'filter'});
 print "<table width=\"95%\">\n";
 &traverse("", 0);
 print "</table>\n";
 print &ui_form_start("ipkg-tree.cgi");
 print &ui_submit($text{'IPKG_filter'});
 print &ui_textbox("filter", $in{'filter'}, 50);
-print &ui_hidden("mode", "openall");
 print &ui_form_end(),"<p>\n";
 
 print &ui_link("ipkg-tree.cgi?mode=closeall", $text{'index_close'});
 print &ui_link("ipkg-tree.cgi?mode=openall", $text{'index_open'});
+print &ui_link("ipkg-tree.cgi", $text{'IPKG_filterclear'}) if ($in{'filter'});
 print "<p>\n";
 
 &ui_print_footer("", $text{'index_return'});
@@ -91,11 +91,15 @@ local($s, $act, $i);
 # Show the icon and class name
 print "<tr style=\"border-top: 1px solid lightgrey\"> <td>", $spacer x $_[1];
 if ($_[0]) {
-	print "<a name=\"$_[0]\"></a>\n";
-	$act = $heiropen{$_[0]} ? "close" : "open";
-    my $link = "ipkg-$act.cgi?what=".&urlize($_[0]);
+	if ($in{'filter'}) {
+		print "<img border=0 src='images/close.gif'>";
+	} else {
+		print "<a name=\"$_[0]\"></a>\n";
+		$act = $heiropen{$_[0]} ? "close" : "open";
+		my $link = "ipkg-$act.cgi?what=".&urlize($_[0]);
+		print &ui_link($link, "<img border=0 src='images/$act.gif'>");
+	}
 	$_[0] =~ /([^\/]+)$/;
-	print &ui_link($link, "<img border=0 src='images/$act.gif'>");
     print "&nbsp; $1</td>\n";
 	}
 else {
@@ -110,8 +114,8 @@ if ($heiropen{$_[0]}) {
 			next if ($vers[$i] == '');
 			print "<tr> <td nowrap>", $spacer x ($_[1]+1);
 			print "<img border=0 src=images/pack.gif>&nbsp;\n";
-			print &ui_link("ipkg-edit_pack.cgi?package=".  &urlize($pack[$i]).
-			      "&version=".  &urlize($vers[$i]),
+				print &ui_link("ipkg-edit_pack.cgi?package=".  &urlize($pack[$i]).
+			      "&version=".  &urlize($vers[$i]). "&filter=". &urlize($in{'filter'}),
 				  "<b>".&html_escape($pack[$i]. ($vers[$i] ? " $vers[$i]" : ""))."</b>" );
 			print "</td> <td>",&html_escape($desc[$i]),"</td>\n";
 			print "</tr>\n";
