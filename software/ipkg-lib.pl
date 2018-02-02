@@ -24,17 +24,13 @@ $cmd = "ipkg list" if ($arg eq "ALL");
 %packages = ( );
 &open_execute_command(PKGINFO, $cmd, 1, 1);
 while(<PKGINFO>) {
-	if (/^(.+?) - (.+)/) {
-		$packages{$i,'name'} = $1;
-		$packages{$i,'version'} = "$2";
-		if ($2 =~ /^(.+) - (.+)/) {
-			$packages{$i,'version'} = "$1";
-			$packages{$i,'desc'} = $2;
-		}
+		local ($name, $version, $desc) = split(/ - /, $_);
+		$packages{$i,'name'} = "$name";
+		$packages{$i,'version'} = "$version";
+		$packages{$i,'desc'} = "$desc";
 
 		# generate categories from names, lib and x
-		local $desc=$2;
-		$packages{$i,'name'} =~ m/^([^-0-9]*)/;
+		$name =~ m/^([^-0-9]*)/;
 		local $cat= $1;
 		if ($cat =~ m/^(lib|^(gnu)|^(gtk)|^(perl)|^(net)|^ncurses)/i) {
 			$cat=$1;
@@ -48,7 +44,6 @@ while(<PKGINFO>) {
 		$packages{$i,'class'} = $cat; 
 		$i++;
 		}
-	}
 close(PKGINFO);
 return $i;
 }
