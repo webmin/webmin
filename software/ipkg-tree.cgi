@@ -1,6 +1,6 @@
-#!/usr/local/bin/perl
-# tree.cgi
-# Display the package tree
+#!/opt/bin/perl
+# ikpg-tree.cgi
+# Display the IPKG package tree
 
 require './software-lib.pl';
 &ReadParse();
@@ -30,8 +30,6 @@ $spacer = "&nbsp;"x3;
 for($i=0; $i<$n; $i++) {
 	push(@pack, $packages{$i,'name'});
 	push(@vers, $packages{$i,'version'});
-	#push(@svers, $packages{$i,'shortversion'} ||
-	#	     $packages{$i,'version'});
 	push(@class, $packages{$i,'class'});
 	push(@desc, $packages{$i,'desc'});
 	}
@@ -39,18 +37,9 @@ for($i=0; $i<$n; $i++) {
 $heir{""} = "";
 foreach $c (sort { $a cmp $b } &unique(@class)) {
 	if (!$c) { next; }
-	@w = split(/\//, $c);
+	@w = $c;
 	$p = join('/', @w[0..$#w-1]);		# parent class
-	#if (!defined($heir{$p})) {
-	#	$pp = join('/', @w[0..$#w-2]);	# grandparent class
-	#	$heir{$pp} .= "$p\0";
-	#	$ppp = join('/', @w[0..$#w-3]);	# great-grandparent class
-	#	if ($ppp || 1) {
-	#		$heir{$ppp} .= "$pp\0";
-	#		}
-	#	}
 	$heir{$p} .= "$c\0";
-	#$hasclasses++;
 	}
 
 # get the current open list
@@ -58,15 +47,14 @@ foreach $c (sort { $a cmp $b } &unique(@class)) {
 $heiropen{""} = 1;
 
 # traverse the hierarchy
+print &ui_link("ipkg-tree.cgi?mode=closeall", $text{'index_close'});
+print &ui_link("ipkg-tree.cgi?mode=openall", $text{'index_open'});
 print "<table width=\"95%\">\n";
 &traverse("", 0);
 print "</table>\n";
-#if ($hasclasses) {
-	print &ui_link("ipkg-tree.cgi?mode=closeall", $text{'index_close'});
-    print "\n";
-	print &ui_link("ipkg-tree.cgi?mode=openall", $text{'index_open'});
-    print "<p>\n";
-#	}
+print &ui_link("ipkg-tree.cgi?mode=closeall", $text{'index_close'});
+print &ui_link("ipkg-tree.cgi?mode=openall", $text{'index_open'});
+print "<p>\n";
 
 &ui_print_footer("", $text{'index_return'});
 
