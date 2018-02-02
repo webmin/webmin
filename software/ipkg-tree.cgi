@@ -118,7 +118,6 @@ if ($heiropen{$_[0]}) {
 			print &ui_link("ipkg-edit_pack.cgi?package=".  &urlize($pack[$i]).
 			      "&version=".  &urlize($vers[$i]). "&filter=". &urlize($in{'filter'}),
 				  "<b>".&html_escape($pack[$i]. ($vers[$i] ? " $vers[$i]" : ""))."</b>" );
-			print $packages{$pack[$i], 'install'}, "...";
 			print "</td> <td>",&html_escape($desc[$i]),"</td>\n";
 			print "</tr>\n";
 			}

@@ -52,10 +52,12 @@ while(<PKGINFO>) {
 				$cat = "x11";
 			} elsif ($cat =~ /^x/ && $desc eq "") {
 				$cat = "x";
-			} elsif ($cat =~ /^(esmtp|fetchmail|mail|mini|mutt|mpop|msmtp|pop|postfix|postgrey|procmail|putmail|qpopper|sendmail|xmail)/ ) {
+			} elsif ($cat =~ /^(amavisdesmtp|fetchmail|mail|mini|mutt|mpop|msmtp|pop|postfix|postgrey|procmail|putmail|qpopper|sendmail|xmail)$/ ) {
 				$cat = "mail";
-			} elsif ($cat =~ /^(arc|bzip|cabex|cpio|freeze|gzip|lha|lzo|p7|tar|upx|unarj|xz|zip|zlib|zoo|unzip|unrar)/) {
+			} elsif ($cat =~ /^(arc|bzi2p|cabextract|cpio|freeze|gzip|lha|lzo|p7|tar|upx|unarj|xz|zip|zlib|zoo|unzip|unrar)$/) {
 				$cat = "archiver";
+			} elsif ($cat =~ /^(apache|cherokee|hiawatha|lighttpd|minihttpd|mod|thttpd)$|^shell/) {
+				$cat = "www";
 			} 
 			$packages{$i,'class'} = $cat; 
 			$inst='';
