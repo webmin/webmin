@@ -40,7 +40,6 @@ while(<PKGINFO>) {
 			$packages{$i,'version'} = $version;
 			$packages{$i,'desc'} = $desc;
 			$packages{$i,'install'} = $inst;  
-			#$packages{$i,'class'} = $class; 
 			# generate categories from names, lib and x
 			$name =~ m/^(..[^-0-9]*)/;
 			local $cat= $1;
@@ -50,8 +49,6 @@ while(<PKGINFO>) {
 				$cat=$1;
 			} elsif ($cat =~ /^x|motif/ && $desc =~ /X |Xorg|X11|XDMCP|Xinerama|Athena|Motif/) {
 				$cat = "x11";
-			} elsif ($cat =~ /^x/ && $desc eq "") {
-				$cat = "x";
 			} elsif ($cat =~ /^(amavisd|esmtp|fetchmail|mail|mini|mutt|mpop|msmtp|pop|postfix|postgrey|procmail|putmail|qpopper|sendmail|xmail)$/ ) {
 				$cat = "mail";
 			} elsif ($cat =~ /^(arc|bzi2p|cabextract|cpio|freeze|gzip|lha|lzo|p7|tar|upx|unarj|xz|zip|zlib|zoo|unzip|unrar)$/) {

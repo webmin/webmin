@@ -448,3 +448,4 @@ IPKG_noupgrade=Nothing to upgrade
 IPKG-edit_title=Manage IPKG Package
 IPKG_filter=Filter Packages
 IPKG_filterclear=Clear Filter
+IPKG_filtered=Displaying <tt>$1</tt> packages out of <tt>$2</tt>

@@ -416,3 +416,4 @@ IPKG_noupgrade=Nichts zu aktualisieren
 IPKG-edit_title=Verwalte IPKG Paket
 IPKG_filter=Filtere Pakete
 IPKG_filterclear=Filter l&ouml;schen
+IPKG_filtered=Es werden <tt>$1</tt> von <tt>$2</tt> Pakten angezeigt

@@ -13,6 +13,7 @@ $n = &list_packages("ALL");
 if ($in{'filter'}) {
     for($i=0; $i<$n; $i++) {
 	    if (index($packages{$i, 'name'}, $in{'filter'}) == -1) {
+			$filter++;
             $packages{$i, 'name'}='';
             $packages{$i, 'version'}='';
             $packages{$i, 'desc'}='';
@@ -20,7 +21,6 @@ if ($in{'filter'}) {
         }
     }
 }
-
 
 # prcoess openall / closeall actions
 if ( $in{'mode'} eq "closeall" ) {
@@ -69,7 +69,10 @@ print &ui_form_end(),"<p>\n";
 
 print &ui_link("ipkg-tree.cgi?mode=closeall", $text{'index_close'});
 print &ui_link("ipkg-tree.cgi?mode=openall", $text{'index_open'});
-print &ui_link("ipkg-tree.cgi", $text{'IPKG_filterclear'}) if ($in{'filter'});
+if ($in{'filter'}) {
+	print &ui_link("ipkg-tree.cgi", $text{'IPKG_filterclear'});
+	print "&nbsp;&nbsp;", &text('IPKG_filtered',$n-$filter,$n+1), "\n";
+}
 print "<table width=\"95%\">\n";
 &traverse("", 0);
 print "</table>\n";
@@ -80,7 +83,10 @@ print &ui_form_end(),"<p>\n";
 
 print &ui_link("ipkg-tree.cgi?mode=closeall", $text{'index_close'});
 print &ui_link("ipkg-tree.cgi?mode=openall", $text{'index_open'});
-print &ui_link("ipkg-tree.cgi", $text{'IPKG_filterclear'}) if ($in{'filter'});
+if ($in{'filter'}) {
+	print &ui_link("ipkg-tree.cgi", $text{'IPKG_filterclear'});
+	print "&nbsp;&nbsp;", &text('IPKG_filtered',$n-$filter,$n+1), "\n";
+}
 print "<p>\n";
 
 &ui_print_footer("", $text{'index_return'});
