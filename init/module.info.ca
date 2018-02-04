@@ -1,0 +1,2 @@
+desc_ca=Engegada i Tancament
+longdesc_ca=Configura scripts per executar a l'hora d'engegar a partir de /etc/init.d o /etc/rc.local.

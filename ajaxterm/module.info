@@ -1,12 +1,3 @@
 desc=Text Login
 name=ajaxterm
 longdesc=Access the shell on your system without the need for a separate SSH client, using Ajaxterm
-desc_ca=Entrada en Mode Text
-desc_no=Tekst-terminal
-desc_nl=Tekst Login
-desc_pl=Tryb tekstowy (konsola)
-desc_hu=Shell hozzáférés (Ajaxterm)
-desc_ms_MY=Log masuk Teks
-longdesc_ms_MY=Akses shell pada sistem anda tanpa menggunakan klien SSH secara berasingan dengan menggunaka Ajaxterm
-longdesc_pl=Dostêp do pow³oki systemowej bez konieczno¶ci u¿ywania oddzielnego klienta SSH, u¿ywaj±c Ajaxterm
-longdesc_ca=Accedeix a la shell del sistema sense necessitat d'un client SSH separat utilitzant Ajaxterm

@@ -1,0 +1,1 @@
+desc_es=Cortafuegos Shorewall6

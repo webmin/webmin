@@ -1,0 +1,2 @@
+desc_ca=FirewallD
+longdesc_ca=Configura un tallfocs Linux utilitzant FirewallD, bo i editant els serveis i els ports

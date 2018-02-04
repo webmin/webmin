@@ -1,0 +1,1 @@
+desc_no=Fail2Ban innbrudds-oppdager

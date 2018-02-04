@@ -2,6 +2,3 @@ desc=RBAC and Projects
 longdesc=Manage RBAC user attributes, profiles and authorizations.
 os_support=solaris/10 solaris{-r "/etc/user_attr"}
 category=system
-desc_ca=RBAC i Projectes
-desc_nl=RBAG en Projecten
-longdesc_ca=Gestiona els atributs, perfils i autoritzacions d'usuaris RBAC.

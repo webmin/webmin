@@ -1,0 +1,2 @@
+desc_de=Bootkonfiguration (SysV)
+longdesc_de=Konfiguriert Low-Level-Dienste, die beim Booten ausgef&#252;hrt werden und w&#228;hlt den Anfangslevel.

@@ -1,16 +1,5 @@
 name=Kerberos5 Configuration
 category=net
 desc=Kerberos5
-desc_fr=Kerberos5
 longdesc=Configure the Kerberos 5 client on your system.
 os_support=*-linux
-desc_de=Kerberos5
-desc_ca=Configuració de Kerberos5
-desc_cz=Kerberos5
-desc_nl=Kerberos5 Configuratie
-desc_no=Kerberos5
-desc_cz.UTF-8=Kerberos5
-desc_ms_MY=Kerberos5
-longdesc_ms_MY=Mengkonfigurasi klien Kerberos 5 pada sistem anda.
-longdesc_de=Konfiguriert den Kerberos 5 Client auf Ihrem System.
-longdesc_ca=Configura el client Kerberos 5 al sistema 

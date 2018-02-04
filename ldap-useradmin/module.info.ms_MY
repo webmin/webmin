@@ -1,0 +1,2 @@
+desc_ms_MY=Pengguna dan Grup LDAP
+longdesc_ms_MY=Menguruskan pengguna dan grup yang disimpan di dalam pangkalan data LDAP, digunakan untuk pengesahan Unix, Samba dan Cyrus IMAP.

@@ -1,0 +1,2 @@
+desc_ca=Rotació de Fitxers de Registre
+longdesc_ca=Configura la rotació automàtica dels fitxers de registre d'Apache, Squid, Syslog i altres.

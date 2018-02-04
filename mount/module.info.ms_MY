@@ -1,0 +1,2 @@
+desc_ms_MY=Disk dan Fail sistem rangkaian
+longdesc_ms_MY=Mount sistem fail dan fail swap yang kebiasaannya ditetapkan di /etc/fstab atau /etc/vfstab.

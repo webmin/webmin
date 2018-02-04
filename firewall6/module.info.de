@@ -1,0 +1,2 @@
+desc_de=Linux IPv6 Firewall
+longdesc_de=Konfiguriert eine Linux-Firewall mit ip6tables. Erm&#246;glicht die Bearbeitung aller Tabellen, Ketten, Regeln und Optionen.

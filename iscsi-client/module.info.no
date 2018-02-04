@@ -1,0 +1,2 @@
+desc_no=iSCSI klient 
+longdesc_no=F&#229; tilgang til disk-enheter over nettverket ved hjelp av iSCSI protokollen

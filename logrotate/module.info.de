@@ -1,0 +1,2 @@
+desc_de=Logdatei-Rotation
+longdesc_de=Richtet die automatische Rotation von Apache, Squid, Syslog und andere Log-Dateien ein.

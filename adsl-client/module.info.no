@@ -1,0 +1,1 @@
+desc_no=ADSL klient

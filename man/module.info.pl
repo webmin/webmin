@@ -1,0 +1,1 @@
+desc_pl=Dokumentacja systemu

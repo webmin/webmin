@@ -1,15 +1,5 @@
 name=Idmapd Daemon
 category=net
 desc=idmapd daemon
-desc_fr=d&#233;mon idmapd
 longdesc=Manage the NFS ID mapping daemon.
 os_support=*-linux
-desc_de=IdmapD&#45;Daemon
-desc_ca=Dimoni Idmapd
-desc_cz=Démon idmapd
-desc_nl=IDmapd Deamon
-desc_cz.UTF-8=DÃ©mon idmapd
-desc_no=idmapd Daemon
-desc_ms_MY=daemon idmapd
-longdesc_ms_MY=Mengurus pemetaan ID NFS daemon.
-longdesc_ca=Gestiona el dimoni de mapejat d'IDs de NFS.

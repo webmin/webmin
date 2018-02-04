@@ -1,0 +1,2 @@
+desc_ms_MY=Kluster Pengguna dan Grup
+longdesc_ms_MY=Mencipta, mengemaskini dan memadam pengguna dan grup di seluruh pelbagai pelayan. Tidak seperti NIS, setiap pelayan mempunyai fail passwd dan group sendiri yang dikemaskini secara jauh oleh modul ini.

@@ -1,0 +1,2 @@
+desc_ca=Usuaris i Grups LDAP
+longdesc_ca=Gestiona els usuaris i grups emmagatzemats en una base de dades LDAP utilitzada per a l'autenticació Unix, Samba i IMAP Cyrus.

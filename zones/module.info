@@ -4,5 +4,3 @@ category=system
 longdesc=Create and manage Solaris 10 zones.
 depends=net mount time useradmin
 nozone=1
-desc_ca=Zones Solaris
-longdesc_ca=Crea i gestiona zones Solaris 10.

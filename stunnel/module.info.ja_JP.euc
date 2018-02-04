@@ -1,0 +1,2 @@
+longdesc_ja_JP.euc=inetd から、stunnelSSL を利用し、POP3 、IMAP の様なサービスを暗号化するトンネルを設定します
+desc_ja_JP.euc=SSL トンネル

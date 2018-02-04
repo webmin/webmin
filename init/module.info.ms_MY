@@ -1,0 +1,2 @@
+desc_ms_MY=Bootup dan Shutdown
+longdesc_ms_MY=Skrip Persediaan untuk dijalankan pada masa boot dari /etc/init.d atau /etc/rc.local.

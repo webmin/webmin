@@ -1,0 +1,1 @@
+desc_no=Filtrer og videresend e-post

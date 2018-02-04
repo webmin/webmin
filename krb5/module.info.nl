@@ -1,0 +1,1 @@
+desc_nl=Kerberos5 Configuratie

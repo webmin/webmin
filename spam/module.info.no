@@ -1,0 +1,1 @@
+desc_no=SpamAssassin E-post filter

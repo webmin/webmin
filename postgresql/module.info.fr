@@ -1,0 +1,1 @@
+desc_fr=Serveur de bases de données PostgreSQL

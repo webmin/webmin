@@ -1,0 +1,2 @@
+desc_ca=Servidor i Client NIS
+longdesc_ca=Configura un sistema com un client NIS, o un servidor NIS mestre o esclau. Tingues en compte que NIS+ no està suportat.

@@ -1,0 +1,2 @@
+desc_de=GRUB - Boot-Konfiguration
+longdesc_de=Konfiguriert den Linux-Bootloader GRUB, um die Auswahl der verschiedenen Betriebssysteme und Kernel zur Bootzeit zu erm&#246;glichen.

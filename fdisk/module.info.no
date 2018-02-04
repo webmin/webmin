@@ -1,0 +1,1 @@
+desc_no=Partisjoner p&#229; lokale disker

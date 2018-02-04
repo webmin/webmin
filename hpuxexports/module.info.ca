@@ -1,0 +1,2 @@
+desc_ca=Exportacions NFS
+longdesc_ca=Edita les unitats compartides definides al fitxer /etc/exports file de HPUX.

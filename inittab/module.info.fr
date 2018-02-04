@@ -1,0 +1,1 @@
+desc_fr=Processus d'initialisation SysV

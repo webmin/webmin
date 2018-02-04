@@ -1,0 +1,2 @@
+desc_ca=Túnels SSL
+longdesc_ca=Configura túnels SSL per xifrar serveis com ara POP3 o IMAP utilitzant stunnel, executant-lo des d'inetd.
