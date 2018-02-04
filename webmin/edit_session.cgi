@@ -128,9 +128,10 @@ print &ui_table_row($text{'session_extauth'},
 
 # Password encryption format
 print &ui_table_row($text{'session_md5'},
-	&ui_radio("md5pass", $gconfig{'md5pass'} ? 1 : 0,
+	&ui_radio("md5pass", $gconfig{'md5pass'} || 0,
 		  [ [ 0, $text{'session_md5off'}."<br>" ],
-		    [ 1, $text{'session_md5on'} ] ]));
+		    [ 1, $text{'session_md5on'} ],
+		    [ 2, $text{'session_sha512'} ] ]));
 
 print ui_table_end();
 print ui_form_end([ [ "save", $text{'save'} ] ]);

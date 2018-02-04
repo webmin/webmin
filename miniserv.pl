@@ -93,6 +93,13 @@ if ($use_md5) {
 	push(@startup_msg, "Using MD5 module $use_md5");
 	}
 
+# Check if the SHA512 perl module is available
+eval "use Crypt::SHA";
+$use_sha512 = $@ ? "Crypt::SHA" : undef;
+if ($use_sha512) {
+	push(@startup_msg, "Using SHA512 module $use_sha512");
+	}
+
 # Get miniserv's perl path and location
 $miniserv_path = $0;
 open(SOURCE, $miniserv_path);
@@ -5174,6 +5181,9 @@ local ($pass, $salt) = @_;
 if ($salt =~ /^\$1\$/ && $use_md5) {
 	return &encrypt_md5($pass, $salt);
 	}
+elsif ($salt =~ /^\$6\$/ && $use_sha512) {
+	return &encrypt_sha512($pass, $salt);
+	}
 else {
 	return &unix_crypt($pass, $salt);
 	}
@@ -5763,6 +5773,19 @@ if ($salt) {
 else {
 	return $rv;
 	}
+}
+
+# encrypt_sha512(password, [salt])
+# Hashes a password, possibly with the given salt, with SHA512
+sub encrypt_sha512
+{
+my ($passwd, $salt) = @_;
+if ($salt =~ /^\$6\$([^\$]+)/) {
+	# Extract actual salt from already encrypted password
+	$salt = $1;
+	}
+$salt ||= '$6$'.substr(time(), -8).'$';
+return crypt($passwd, $salt);
 }
 
 sub to64

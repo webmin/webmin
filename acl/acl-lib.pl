@@ -1651,10 +1651,13 @@ is not given, a salt will be selected randomly.
 sub encrypt_password
 {
 my ($pass, $salt) = @_;
-if ($gconfig{'md5pass'}) {
+if ($gconfig{'md5pass'} == 1) {
 	# Use MD5 encryption
-	$salt ||= '$1$'.substr(time(), -8).'$xxxxxxxxxxxxxxxxxxxxxx';
 	return &encrypt_md5($pass, $salt);
+	}
+elsif ($gconfig{'md5pass'} == 2) {
+	# Use SHA512 encryption
+	return &encrypt_sha512($pass, $salt);
 	}
 else {
 	# Use Unix DES
