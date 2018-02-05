@@ -21,7 +21,7 @@ print "<b>",&text('IPKG_updatedesc', "<tt>$cmd</tt>"),"</b><p>\n";
 print "<pre>";
 &additional_log("exec", undef, $cmd);
 &clean_environment();
-open(CMD, "$cmd 2>&1 </dev/null |");
+open(CMD, "($cmd; ipkg list-upgradable) 2>&1 </dev/null |");
 while(<CMD>) {
 	print &html_escape($_);
 	$out .= $_;

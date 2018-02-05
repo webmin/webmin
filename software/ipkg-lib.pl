@@ -21,43 +21,40 @@ local $i = 0;
 local $arg = join(" ", map { quotemeta($_) } @_);
 %packages = ( );
 &open_execute_command(PKGINFO, "ipkg info", 1, 1);
+local %temp = ();
 while(<PKGINFO>) {
 		$_ =~ s/\r|\n//g;
-		local ($param, $val) = split(/: /, $_);
-		if ($param eq 'Package') {
-			$name=$val;
-		} elsif ($param eq 'Version') {
-			$version=$val;
-		} elsif ($param eq 'Description') {
-			$desc=$val;
-		} elsif ($param eq 'Section') {
-			$class=$val;
-		} elsif ($param eq 'Installed-Time') {
-			$inst=$val;
-		} elsif ($val eq '') {
-		    next if (! $inst && $arg ne "ALL");
-			$packages{$i,'name'} = $name;
-			$packages{$i,'version'} = $version;
-			$packages{$i,'desc'} = $desc;
-			$packages{$i,'install'} = $inst;  
-			# generate categories from names, lib and x
-			$name =~ m/^(..[^-0-9]*)/;
+		if ($_) {
+			local ($param, $val) = split(/: /, $_);
+			$temp{$param}=$val;
+		} else {
+		    next if (! $temp{'Installed-Time'}  && $arg ne "ALL");
+			$packages{$i,'name'} = $temp{'Package'};
+			$packages{$i,'version'} = $temp{'Version'};
+			$packages{$i,'desc'} = $temp{'Description'};
+			$packages{$i,'install'} = $temp{'Installed-Time'};  
+			# generate categories from names, Section
+			$temp{'Package'} =~ m/^(..[^-0-9]*)/;
 			local $cat= $1;
-			if ($class =~ m/^(audio|editor|games)/) {
-				$cat=$1;
-			} elsif ($cat =~ m/^(audio|auto|diff|lib|ffmpeg|gnu|gtk|perl|net|ncurses)/) {
-				$cat=$1;
+			if ($temp{'Section'} =~ m/^(audio|editor|games)/) {
+				$cat=ucfirst($1);
+			} elsif ($cat =~ /^(audio|auto|diff|lib|ffmpeg|gnu|gtk|perl|net|ncurses|py)/) {
+				$cat=ucfirst($1);
+			} elsif ($cat =~ /^(amavisd|cyrus|esmtp|fetchmail|imap|mail|mini|mutt|mpop|msmtp|offlineimap|pop|postfix|postgrey|procmail|putmail|up|qpopper|sendmail|xmail)$/ ) {
+				$cat = "Mail";
+			} elsif ($cat =~ /^(arc|bzi2p|cabextract|cpio|freeze|gzip|lha|lzo|p7zip|tar|upx|unarj|xz|zip|zlib|zoo|unzip|unrar)$/) {
+				$cat = "Archiver";
 			} elsif ($cat =~ /^x|motif/ && $desc =~ /X |Xorg|X11|XDMCP|Xinerama|Athena|Motif/) {
-				$cat = "x11";
-			} elsif ($cat =~ /^(amavisd|esmtp|fetchmail|mail|mini|mutt|mpop|msmtp|pop|postfix|postgrey|procmail|putmail|qpopper|sendmail|xmail)$/ ) {
-				$cat = "mail";
-			} elsif ($cat =~ /^(arc|bzi2p|cabextract|cpio|freeze|gzip|lha|lzo|p7|tar|upx|unarj|xz|zip|zlib|zoo|unzip|unrar)$/) {
-				$cat = "archiver";
+				$cat = "X11";
+			} elsif ($cat =~ /^([^v]+sh|sharutils)$/) {
+				$cat = "Shell";
+			} elsif ($cat =~ /^(ed|gawk|sed|vim)$/) {
+				$cat = "Editor";
 			} elsif ($cat =~ /^(apache|cherokee|hiawatha|lighttpd|minihttpd|mod|thttpd)$|^shell/) {
-				$cat = "www";
+				$cat = "WWW";
 			} 
 			$packages{$i,'class'} = $cat; 
-			$inst='';
+			%temp = ();
 			$i++;
 			}
 		}
