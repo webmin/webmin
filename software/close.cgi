@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!//usr/local/bin/perl
 # close.cgi
 # Remove some class from the open list
 
@@ -7,5 +7,4 @@ require './software-lib.pl';
 @heiropen = &get_heiropen();
 @heiropen = grep { $_ ne $in{'what'} } @heiropen;
 &save_heiropen(\@heiropen);
-&redirect("tree.cgi#$in{'what'}");
-
+&redirect("tree.cgi#".&urlize($in{'what'}));

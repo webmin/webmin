@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/local/bin/bin/perl
 # tree.cgi
 # Display the package tree
 
@@ -40,6 +40,12 @@ foreach $c (sort { $a cmp $b } &unique(@class)) {
 $heiropen{""} = 1;
 
 # traverse the hierarchy
+if ($hasclasses) {
+	print &ui_link("closeall.cgi", $text{'index_close'});
+    print "\n";
+	print &ui_link("openall.cgi", $text{'index_open'});
+    print "<p>\n";
+	}
 print "<table width=100%>\n";
 &traverse("", 0);
 print "</table>\n";
@@ -76,7 +82,7 @@ if ($heiropen{$_[0]}) {
 	foreach $i (@order) {
 		if ($class[$i] eq $_[0]) {
 			print "<tr> <td nowrap>", $spacer x ($_[1]+1);
-			print "<img border=0 src=images/pack.gif></a>&nbsp;\n";
+			print "<img border=0 src=images/pack.gif>&nbsp;\n";
 			print &ui_link("edit_pack.cgi?package=".
 			      &urlize($pack[$i])."&version=".
 			      &urlize($vers[$i]), &html_escape($pack[$i].
