@@ -14,39 +14,54 @@ return ("ipkg");
 
 # list_packages([package]*)
 # Fills the array %packages with a list of all packages
-# ipkg extension: if ALL is specified list alos uninstalled packages
+# ipkg extension: if ALL is specified list also uninstalled packages
 sub list_packages
 {
 local $i = 0;
 local $arg = join(" ", map { quotemeta($_) } @_);
-local $cmd = "ipkg list-installed";
-$cmd = "ipkg list" if ($arg eq "ALL");
 %packages = ( );
-&open_execute_command(PKGINFO, $cmd, 1, 1);
+&open_execute_command(PKGINFO, "ipkg info", 1, 1);
+local %temp = ();
 while(<PKGINFO>) {
-		local ($name, $version, $desc) = split(/ - /, $_);
-		$packages{$i,'name'} = "$name";
-		$packages{$i,'version'} = "$version";
-		$packages{$i,'desc'} = "$desc";
-
-		# generate categories from names, lib and x
-		$name =~ m/^([^-0-9]*)/;
-		local $cat= $1;
-		if ($cat =~ m/^(lib|^(gnu)|^(gtk)|^(perl)|^(net)|^ncurses)/i) {
-			$cat=$1;
-		} elsif ($cat =~ /^x|motif/ && $desc =~ /X |Xorg|X11|XDMCP|Xinerama|Athena|Motif/) {
-			$cat = "x11";
-		} elsif ($cat =~ /^x/ && $desc eq "") {
-			$cat = "x";
-		} elsif ($cat =~ /^arc|^bzip|^cpio|^freeze|^gzip|^lha|^lzo|^tar|^upx|^xz|^zip|^zlib|^zoo|^unzip|^unrar/) {
-			$cat = "archiver";
-		} 
-		$packages{$i,'class'} = $cat; 
-		$i++;
+		$_ =~ s/\r|\n//g;
+		if ($_) {
+			local ($param, $val) = split(/: /, $_);
+			$temp{$param}=$val;
+		} else {
+		    next if (! $temp{'Installed-Time'}  && $arg ne "ALL");
+			$packages{$i,'name'} = $temp{'Package'};
+			$packages{$i,'version'} = $temp{'Version'};
+			$packages{$i,'desc'} = $temp{'Description'};
+			$packages{$i,'install'} = $temp{'Installed-Time'};  
+			# generate categories from names, Section
+			$temp{'Package'} =~ m/^(..[^-0-9]*)/;
+			local $cat= $1;
+			if ($temp{'Section'} =~ m/^(audio|editor|games)/) {
+				$cat=ucfirst($1);
+			} elsif ($cat =~ /^(audio|auto|diff|lib|ffmpeg|gnu|gtk|perl|net|ncurses|py)/) {
+				$cat=ucfirst($1);
+			} elsif ($cat =~ /^(amavisd|cyrus|esmtp|fetchmail|imap|mail|mini|mutt|mpop|msmtp|offlineimap|pop|postfix|postgrey|procmail|putmail|up|qpopper|sendmail|xmail)$/ ) {
+				$cat = "Mail";
+			} elsif ($cat =~ /^(arc|bzi2p|cabextract|cpio|freeze|gzip|lha|lzo|p7zip|tar|upx|unarj|xz|zip|zlib|zoo|unzip|unrar)$/) {
+				$cat = "Archiver";
+			} elsif ($cat =~ /^x|motif/ && $desc =~ /X |Xorg|X11|XDMCP|Xinerama|Athena|Motif/) {
+				$cat = "X11";
+			} elsif ($cat =~ /^([^v]+sh|sharutils)$/) {
+				$cat = "Shell";
+			} elsif ($cat =~ /^(ed|gawk|sed|vim)$/) {
+				$cat = "Editor";
+			} elsif ($cat =~ /^(apache|cherokee|hiawatha|lighttpd|minihttpd|mod|thttpd)$|^shell/) {
+				$cat = "WWW";
+			} 
+			$packages{$i,'class'} = $cat; 
+			%temp = ();
+			$i++;
+			}
 		}
 close(PKGINFO);
 return $i;
 }
+
 
 # package_info(package)
 # Returns an array of package information in the order

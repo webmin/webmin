@@ -45,8 +45,10 @@ print &ui_buttons_end();
 if ($in{'search'}) {
 	&ui_print_footer("search.cgi?search=$in{'search'}", $text{'search_return'});
 	}
+elsif ($in{'filter'}) {
+	&ui_print_footer("ipkg-tree.cgi?filter=$in{'filter'}#$pinfo[1]", $text{'index_treturn'});
+	}
 else {
 	&ui_print_footer("ipkg-tree.cgi#$pinfo[1]", $text{'index_treturn'});
-	}
-
+}
 
