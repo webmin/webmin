@@ -1,4 +1,4 @@
-#!/usr/local/bin/bin/perl
+#!/usr/local/bin/perl
 # tree.cgi
 # Display the package tree
 
