@@ -7,5 +7,5 @@ require './software-lib.pl';
 @heiropen = &get_heiropen();
 @heiropen = grep { $_ ne $in{'what'} } @heiropen;
 &save_heiropen(\@heiropen);
-&redirect("ipkg-tree.cgi#$in{'what'}");
+&redirect("ipkg-tree.cgi#".&urlize($in{'what'}));
 
