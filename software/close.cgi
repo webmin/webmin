@@ -1,4 +1,4 @@
-#!//usr/local/bin/perl
+#!/usr/local/bin/perl
 # close.cgi
 # Remove some class from the open list
 
