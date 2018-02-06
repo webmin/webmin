@@ -36,14 +36,14 @@ while(<PKGINFO>) {
 			# generate categories from names, Section
 			$temp{'Package'} =~ m/^(..[^-0-9]*)/;
 			local $cat= $1;
-			if ($temp{'Section'} =~ m/^(audio|editor|games)/) {
+			if ($temp{'Section'} =~ m/^(audio|editor|media|print|games|shell|sys|utils)/) {
 				$cat=ucfirst($1);
-			} elsif ($cat =~ /^(audio|auto|diff|lib|ffmpeg|gnu|gtk|perl|net|ncurses|py)/) {
+			} elsif ($cat =~ /^(audio|auto|core|compression|diff|lib|ffmpeg|gnu|gtk|perl|net|ncurses|py)/) {
 				$cat=ucfirst($1);
 			} elsif ($cat =~ /^(amavisd|cyrus|esmtp|fetchmail|imap|mail|mini|mutt|mpop|msmtp|offlineimap|pop|postfix|postgrey|procmail|putmail|up|qpopper|sendmail|xmail)$/ ) {
 				$cat = "Mail";
-			} elsif ($cat =~ /^(arc|bzi2p|cabextract|cpio|freeze|gzip|lha|lzo|p7zip|tar|upx|unarj|xz|zip|zlib|zoo|unzip|unrar)$/) {
-				$cat = "Archiver";
+			} elsif ($cat =~ /^(arc|bzip|cabextract|cpio|freeze|gzip|lha|lzo|p7zip|tar|upx|unarj|xz|zip|zlib|zoo|unzip|unrar)$/) {
+				$cat = "Compression";
 			} elsif ($cat =~ /^x|motif/ && $desc =~ /X |Xorg|X11|XDMCP|Xinerama|Athena|Motif/) {
 				$cat = "X11";
 			} elsif ($cat =~ /^([^v]+sh|sharutils)$/) {
@@ -51,7 +51,7 @@ while(<PKGINFO>) {
 			} elsif ($cat =~ /^(ed|gawk|sed|vim)$/) {
 				$cat = "Editor";
 			} elsif ($cat =~ /^(apache|cherokee|hiawatha|lighttpd|minihttpd|mod|thttpd)$|^shell/) {
-				$cat = "WWW";
+				$cat = "Web";
 			} 
 			$packages{$i,'class'} = $cat; 
 			%temp = ();
