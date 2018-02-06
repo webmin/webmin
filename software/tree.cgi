@@ -76,7 +76,7 @@ if ($heiropen{$_[0]}) {
 	foreach $i (@order) {
 		if ($class[$i] eq $_[0]) {
 			print "<tr> <td nowrap>", $spacer x ($_[1]+1);
-			print "<img border=0 src=images/pack.gif></a>&nbsp;\n";
+			print "<img border=0 src=images/pack.gif>&nbsp;\n";
 			print &ui_link("edit_pack.cgi?package=".
 			      &urlize($pack[$i])."&version=".
 			      &urlize($vers[$i]), &html_escape($pack[$i].
