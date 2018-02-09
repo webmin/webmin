@@ -7,5 +7,5 @@ require './software-lib.pl';
 @heiropen = &get_heiropen();
 push(@heiropen, $in{'what'});
 &save_heiropen(\@heiropen);
-&redirect("tree.cgi#$in{'what'}");
+&redirect("tree.cgi#".&urlize($in{'what'}));
 
