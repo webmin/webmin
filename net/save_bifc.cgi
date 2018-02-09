@@ -67,18 +67,18 @@ else {
 		&can_create_iface() || &error($text{'ifcs_ecannot'});
 		&can_iface($b) || &error($text{'ifcs_ecannot'});
 		}
-	elsif ($in{'name'} =~ /^([a-z]+\d*(\.\d+)?):(\d+)$/) {
+	elsif ($in{'name'} =~ /^([a-z]+\d*(s\d*)?(\.\d+)?):(\d+)$/) {
 		# also creating a virtual interface
 		foreach $eb (@boot) {
-			if ($eb->{'name'} eq $1 &&
-			    $eb->{'virtual'} eq $3) {
+			if ($eb->{'name'} eq $2 &&
+			    $eb->{'virtual'} eq $4) {
 				&error(&text('bifc_evirtdup', $in{'name'}));
 				}
 			}
-		$3 >= $min_virtual_number ||
+		$4 >= $min_virtual_number ||
 			&error(&text('aifc_evirtmin', $min_virtual_number));
 		$b->{'name'} = $1;
-		$b->{'virtual'} = $3;
+		$b->{'virtual'} = $4;
 		$b->{'fullname'} = $b->{'name'}.":".$b->{'virtual'};
 		}
 	elsif ($in{'bridge'}) {
