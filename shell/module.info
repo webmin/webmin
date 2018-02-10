@@ -2,3 +2,4 @@ risk=high
 desc=Command Shell
 name=Shell
 longdesc=Execute shell commands and view their output.
+desc_bg=Командна обвивка
