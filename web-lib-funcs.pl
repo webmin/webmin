@@ -5664,7 +5664,7 @@ sub test_lock
 my ($file) = @_;
 my $realfile = &translate_filename($file);
 return 0 if (!$file);
-return 1 if (defined($main::locked_file_list{$realfile}));
+return $$ if (defined($main::locked_file_list{$realfile}));
 return 0 if (!&can_lock_file($realfile));
 my $pid;
 if (open(LOCKING, "$realfile.lock")) {
@@ -5672,7 +5672,7 @@ if (open(LOCKING, "$realfile.lock")) {
 	$pid = int($pid);
 	close(LOCKING);
 	}
-return $pid && kill(0, $pid);
+return $pid && kill(0, $pid) ? $pid : undef;
 }
 
 =head2 unlock_all_files
