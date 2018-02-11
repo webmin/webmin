@@ -17,7 +17,7 @@ else {
 	$redirdesc = $text{'index_return'};
 	}
 
-if ($in{'refresh'}) {
+if ($in{'refresh'} || $in{refresh_top}) {
 	&ui_print_unbuffered_header(undef, $text{'refresh_title'}, "");
 
 	# Clear all caches
