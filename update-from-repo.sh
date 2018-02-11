@@ -8,22 +8,6 @@
 # Kay Marquardt, kay@rrr.de, https://github.com/gandelwartz
 #############################################################################
 
-# Get webmin/usermin dir based on script's location
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-PROD="webmin" # default
-# where to get source
-HOST="https://github.com"
-REPO="webmin/$PROD"
-ASK="YES"
-GIT="git"
-
-# temporary locations for git clone
-WTEMP="${DIR}/.~files/webadmin" 
-UTEMP="${DIR}/.~files/useradmin" 
-TEMP=$WTEMP
-[[ "$PROD" == "usermin" ]] && TEMP=$UTEMP
-LTEMP="${DIR}/.~lang"
-
 # don't ask -y given
 if [[ "$1" == "-y" || "$1" == "-yes"  || "$1" == "-f" || "$1" == "-force" ]] ; then
         ASK="NO"
@@ -42,6 +26,27 @@ if [[ -t 1 && ${ASK} == "YES" ]] ;  then
     CYAN='\e[36m'
     NC='\e[0m'
 fi
+
+# Get webmin/usermin dir based on script's location
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PROD="webmin" # default
+if [[ -r "${DIR}/usermin-init" &&  -r "${DIR}/uconfig.cgi" ]] ; then
+    echo -e "${ORANGE}Usermin detected ...${NC}"
+	PROD="usermin"
+fi
+# where to get source
+HOST="https://github.com"
+REPO="webmin/$PROD"
+ASK="YES"
+GIT="git"
+
+# temporary locations for git clone
+WTEMP="${DIR}/.~files/webadmin" 
+UTEMP="${DIR}/.~files/useradmin" 
+TEMP=$WTEMP
+[[ "$PROD" == "usermin" ]] && TEMP=$UTEMP
+LTEMP="${DIR}/.~lang"
+
 
 # help requested output usage
 if [[ "$1" == "-h" || "$1" == "--help" ]] ; then
@@ -109,12 +114,6 @@ fi
 # lets start
 # Clear screen for better readability
 [[ "${ASK}" == "YES" ]] && clear
-
-# determine if its usermin
-if [[ -r "${DIR}/usermin-init" &&  -r "${DIR}/uconfig.cgi" ]] ; then
-    echo -e "${ORANGE}Usermin detected ...${NC}"
-	PROD="usermin"
-fi
 
 # alternative repo given
 if [[ "$1" == *"-repo"* ]]; then
