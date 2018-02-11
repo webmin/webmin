@@ -206,7 +206,7 @@ fi
     export PATH="${TEMP}:${PATH}"
     # run makedist.pl
     ( cd ${TEMP}; perl makedist.pl ${DOTVER} ) | while read input; do echo -n "."; done
-	echo -e "\n"
+    echo -e "\n"
     if [[ ! -f "${TEMP}/tarballs/webmin-${DOTVER}.tar.gz" ]] ; then
         echo -e "${RED}Error: makedist.pl failed! ${NC}aborting ..."
         rm -rf .~files
@@ -273,17 +273,17 @@ fi
         FILES="$*"
         for file in ${FILES}
         do
-			if [[ -d "${TEMP}/tarballs/webmin-${DOTVER}/${file}" ]] ; then
-				echo -e "${BLUE}Copy dir ${ORANGE}${file}${NC} from ${ORANGE}${REPO}${NC} to ${PROD^} ..."
-				dest=${file%%/*}
-				[[ "${dest}" == "${file}" ]] && dest="."
-				cp -r -v "${TEMP}/tarballs/webmin-${DOTVER}/${file}" "${dest}" | sed 's/^.*\/tarballs\///'
-			else
-				echo -e "${CYAN}Copy file ${ORANGE}${file}${NC} from ${ORANGE}${REPO}${NC} to ${PROD^} ..."
-				mv "${file}" "${file}.bak"
-				cp "${TEMP}/tarballs/webmin-${DOTVER}/${file}" "${file}"
-				rm -rf "${file}.bak"
-			fi
+            if [[ -d "${TEMP}/tarballs/webmin-${DOTVER}/${file}" ]] ; then
+                echo -e "${BLUE}Copy dir ${ORANGE}${file}${NC} from ${ORANGE}${REPO}${NC} to ${PROD^} ..."
+                dest=${file%%/*}
+                [[ "${dest}" == "${file}" ]] && dest="."
+                cp -r -v "${TEMP}/tarballs/webmin-${DOTVER}/${file}" "${dest}" | sed 's/^.*\/tarballs\///'
+            else
+                echo -e "${CYAN}Copy file ${ORANGE}${file}${NC} from ${ORANGE}${REPO}${NC} to ${PROD^} ..."
+                mv "${file}" "${file}.bak"
+                cp "${TEMP}/tarballs/webmin-${DOTVER}/${file}" "${file}"
+                rm -rf "${file}.bak"
+            fi
         done
     fi
   else
