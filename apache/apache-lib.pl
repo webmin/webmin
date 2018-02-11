@@ -233,14 +233,16 @@ while($line = <$fh>) {
 			'file', $_[2],
 			'type', 1,
 			'name', $2,
-			'value', $3,
-			'indent', length($1));
+			'value', $3);
+		local $indent = $1;
 		$dir{'value'} =~ s/\s+$//g;
 		$dir{'words'} = &wsplit($dir{'value'});
 		$_[1]++;
 		@members = &parse_config_file($fh, $_[1], $_[2], $dir{'name'});
 		$dir{'members'} = \@members;
 		$dir{'eline'} = $_[1]-1;
+		$indent =~ s/\t/        /g;
+		$dir{'indent'} = length($indent);
 		push(@rv, \%dir);
 		}
 	elsif ($line =~ /^(\s*)(\S+)\s*(.*)$/) {
@@ -251,8 +253,10 @@ while($line = <$fh>) {
 			'file', $_[2],
 			'type', 0,
 			'name', $2,
-			'value', $3,
-			'indent', length($1));
+			'value', $3);
+		local $indent = $1;
+		$indent =~ s/\t/        /g;
+		$dir{'indent'} = length($indent);
 		if ($dir{'value'} =~ s/\\$//g) {
 			# multi-line directive!
 			while($line = <$fh>) {
