@@ -3,26 +3,10 @@
 # Update webmin/usermin to the latest develop version  from GitHub repo
 # inspired by authentic-theme/theme-update.sh script, thanks qooob
 #
-# Version 1.4, 2018-01-31
+# Version 1.4, 2018-02-11
 #
 # Kay Marquardt, kay@rrr.de, https://github.com/gandelwartz
 #############################################################################
-
-# Get webmin/usermin dir based on script's location
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-PROD=${DIR##*/} # => usermin or webmin
-# where to get source
-HOST="https://github.com"
-REPO="webmin/$PROD"
-ASK="YES"
-GIT="git"
-
-# temporary locations for git clone
-WTEMP="${DIR}/.~files/webadmin" 
-UTEMP="${DIR}/.~files/useradmin" 
-TEMP=$WTEMP
-[[ "$PROD" == "usermin" ]] && TEMP=$UTEMP
-LTEMP="${DIR}/.~lang"
 
 # don't ask -y given
 if [[ "$1" == "-y" || "$1" == "-yes"  || "$1" == "-f" || "$1" == "-force" ]] ; then
@@ -42,6 +26,27 @@ if [[ -t 1 && ${ASK} == "YES" ]] ;  then
     CYAN='\e[36m'
     NC='\e[0m'
 fi
+
+# Get webmin/usermin dir based on script's location
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PROD="webmin" # default
+if [[ -r "${DIR}/usermin-init" &&  -r "${DIR}/uconfig.cgi" ]] ; then
+    echo -e "${ORANGE}Usermin detected ...${NC}"
+	PROD="usermin"
+fi
+# where to get source
+HOST="https://github.com"
+REPO="webmin/$PROD"
+ASK="YES"
+GIT="git"
+
+# temporary locations for git clone
+WTEMP="${DIR}/.~files/webadmin" 
+UTEMP="${DIR}/.~files/useradmin" 
+TEMP=$WTEMP
+[[ "$PROD" == "usermin" ]] && TEMP=$UTEMP
+LTEMP="${DIR}/.~lang"
+
 
 # help requested output usage
 if [[ "$1" == "-h" || "$1" == "--help" ]] ; then
@@ -72,21 +77,21 @@ EOF
     exit 0
 fi
 
-if [[ "${PROD}" != "webmin" && "${PROD}" != "usermin" ]] ; then
-    echo -e "${NC}${RED}error: the current dir name hast to be webmin or usermin, no update possible!${NC}"
-    echo -e "possible solution: ${ORANGE}ln -s ${PROD} ../webmini; cd ../webmin${NC} or ${ORANGE}ln -s ${PROD} ../usermin; cd ../webmin ${NC}"
+# check for required webmin / usermin files in current dir
+if [[ ! -r "${DIR}/setup.sh" || ! -r "${DIR}/miniserv.pl" ]] ; then
+    echo -e "${NC}${RED}error: the current dir seems not to contain a webmin installation, no update possible!${NC}"
     exit 1
 fi
 
 # need to be root 
 if [[ $EUID -ne 0 ]]; then
-    echo -e "${RED}Error: This command has to be run under the root user.${NC}"
+    echo -e "${RED}error: This command has to be run under the root user.${NC}"
     exit 2
 fi
 
 # git has to be installed
 echo -en "${CYAN}search minserv.conf ... ${NC}"
-if [[ -f "/etc/webmin/miniserv.conf" ]] ; then
+if [[ -r "/etc/webmin/miniserv.conf" ]] ; then
      # default location
     MINICONF="/etc/webmin/miniserv.conf"
     echo  -e "${ORANGE}found: ${MINICONF}${NC}"
@@ -114,7 +119,7 @@ fi
 if [[ "$1" == *"-repo"* ]]; then
         if [[ "$1" == *":"* ]] ; then
           REPO=${1##*:}
-          [[ "${REPO##*/}" != "webmin" && "${REPO##*/}" != "usermin" ]] && echo -e "${RED}error: ${ORANGE} ${REPO} is not a valid repo name!${NC}" && exit 0
+          [[ "${REPO##*/}" != "webmin" && "${REPO##*/}" != "usermin" ]] && echo -e "${RED}error: ${ORANGE} ${REPO} is not a valid repo name!${NC}" && exit 1
           shift
         else
           echo -e "${ORANGE}./`basename $0`:${NC} found -repo without parameter"
