@@ -3,19 +3,25 @@
 # Update webmin/usermin to the latest develop version  from GitHub repo
 # inspired by authentic-theme/theme-update.sh script, thanks qooob
 #
-# Version 1.4, 2018-02-11
+# Version 1.5, 2018-02-11
 #
 # Kay Marquardt, kay@rrr.de, https://github.com/gandelwartz
 #############################################################################
 
 # don't ask -y given
+ASK="YES"
 if [[ "$1" == "-y" || "$1" == "-yes"  || "$1" == "-f" || "$1" == "-force" ]] ; then
         ASK="NO"
         shift
 fi
 
+if [[ "$1" == "-nc" ]] ; then
+    NCOLOR="YES"
+    shift
+fi
+
 # predefined colors for echo -e on terminal
-if [[ -t 1 && ${ASK} == "YES" ]] ;  then
+if [[ -t 1 && "${ASK}" == "YES" && "${NCOLOR}" != "YES" ]] ;  then
     RED='\e[49;0;31;82m'
     BLUE='\e[49;1;34;182m'
     GREEN='\e[49;32;5;82m'
@@ -32,12 +38,11 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PROD="webmin" # default
 if [[ -r "${DIR}/usermin-init" &&  -r "${DIR}/uconfig.cgi" ]] ; then
     echo -e "${ORANGE}Usermin detected ...${NC}"
-	PROD="usermin"
+    PROD="usermin"
 fi
 # where to get source
 HOST="https://github.com"
 REPO="webmin/$PROD"
-ASK="YES"
 GIT="git"
 
 # temporary locations for git clone
@@ -51,18 +56,22 @@ LTEMP="${DIR}/.~lang"
 # help requested output usage
 if [[ "$1" == "-h" || "$1" == "--help" ]] ; then
     echo -e "${NC}${ORANGE}This is the unofficial webmin update script${NC}"
-    echo "Usage:  ./`basename $0` [-force] [-repo:username/xxxmin] [-release[:number]]"
+    echo "Usage:  ./`basename $0` [-force] [-repo:username/xxxmin] [-release[:number]] [-file file ...]"
     [[ "$1" == "--help" ]] && cat <<EOF
 
 Parameters:
     -force (-yes)
         unattended install, do not ask
+    -nc or STDOUT is a pipe (|)
+        do not output colors
     -repo
         pull from alternative github repo, format: -repo:username/reponame
         reponame can be "webmin" or "usermin"
         default github repo: webmin/webmin
     -release
         pull a released version, default release: -release:latest
+    -file
+        pull only the given file(s) from repo
 
 Exit codes:
     0 - success
@@ -79,18 +88,18 @@ fi
 
 # check for required webmin / usermin files in current dir
 if [[ ! -r "${DIR}/setup.sh" || ! -r "${DIR}/miniserv.pl" ]] ; then
-    echo -e "${NC}${RED}error: the current dir seems not to contain a webmin installation, no update possible!${NC}"
+    echo -e "${NC}${RED}Error: the current dir seems not to contain a webmin installation, no update possible!${NC}"
     exit 1
 fi
 
 # need to be root 
 if [[ $EUID -ne 0 ]]; then
-    echo -e "${RED}error: This command has to be run under the root user.${NC}"
+    echo -e "${RED}Error: This command has to be run under the root user.${NC}"
     exit 2
 fi
 
 # git has to be installed
-echo -en "${CYAN}search minserv.conf ... ${NC}"
+echo -en "${CYAN}Search for minserv.conf ... ${NC}"
 if [[ -r "/etc/webmin/miniserv.conf" ]] ; then
      # default location
     MINICONF="/etc/webmin/miniserv.conf"
@@ -122,7 +131,7 @@ if [[ "$1" == *"-repo"* ]]; then
           [[ "${REPO##*/}" != "webmin" && "${REPO##*/}" != "usermin" ]] && echo -e "${RED}error: ${ORANGE} ${REPO} is not a valid repo name!${NC}" && exit 1
           shift
         else
-          echo -e "${ORANGE}./`basename $0`:${NC} found -repo without parameter"
+          echo -e "${ORANGE}./`basename $0`:${NC} Argument -repo needs parameter"
           exit 1
         fi
 fi
@@ -160,6 +169,7 @@ fi
         else
           RRELEASE=`curl -s -L https://github.com/${REPO}/blob/master/version  | sed -n '/id="LC1"/s/.*">\([^<]*\).*/\1/p'`
         fi
+        shift
         echo -e "${CYAN}Pulling in latest release of${NC} ${ORANGE}${PROD^}${NC} $RRELEASE ($HOST/$REPO)..."
         RS="$(${GIT} clone --depth 1 --branch $RRELEASE -q $HOST/$REPO.git "${TEMP}" 2>&1)"
         if [[ "$RS" == *"ould not find remote branch"* ]]; then
@@ -179,39 +189,45 @@ fi
   # Check for possible errors
   if [ $? -eq 0 ] && [ -f "${TEMP}/version" ]; then
 
-        ####################
-        # start processing pulled source
-        version="`head -c -1 ${TEMP}/version`-`cd ${TEMP}; ${GIT} log -1 --format=%cd --date=format:'%m%d.%H%M'`" 
-        DOTVER=`echo ${version} | sed 's/-/./'`
-        TARBALL="${TEMP}/tarballs/${PROD}-${DOTVER}"
-        ###############
-        # FULL update
-        echo -e "${CYAN}start FULL update for${NC} $PROD ..."
-        # create missing dirs, simulate authentic present
-        mkdir ${TEMP}/tarballs ${TEMP}/authentic-theme 
-        cp authentic-theme/LICENSE ${TEMP}/authentic-theme
-        # run makedist.pl
-        ( cd ${TEMP}; perl makedist.pl ${DOTVER} ) 
-        if [[ ! -f "${TEMP}/tarballs/webmin-${DOTVER}.tar.gz" ]] ; then
-            echo -e "${RED}Error: makedist.pl failed! ${NC}aborting ..."
-            rm -rf .~files
-            exit 5
+    ####################
+    # start processing pulled source
+    version="`head -c -1 ${TEMP}/version`-`cd ${TEMP}; ${GIT} log -1 --format=%cd --date=format:'%m%d.%H%M'`" 
+    DOTVER=`echo ${version} | sed 's/-/./'`
+    TARBALL="${TEMP}/tarballs/${PROD}-${DOTVER}"
+    ###############
+    # start update
+    echo -en "${CYAN}Start update for${NC} ${PROD^} ..."
+    # create missing dirs, simulate authentic present
+    mkdir ${TEMP}/tarballs ${TEMP}/authentic-theme 
+    cp authentic-theme/LICENSE ${TEMP}/authentic-theme
+    # put dummy clear and tar in PATH
+    echo -e "#!/bin/sh\necho" > ${TEMP}/clear; chmod +x ${TEMP}/clear
+    echo -e "#!/bin/sh\necho" > ${TEMP}/tar; chmod +x ${TEMP}/tar
+    export PATH="${TEMP}:${PATH}"
+    # run makedist.pl
+    ( cd ${TEMP}; perl makedist.pl ${DOTVER} ) | while read input; do echo -n "."; done
+	echo -e "\n"
+    if [[ ! -f "${TEMP}/tarballs/webmin-${DOTVER}.tar.gz" ]] ; then
+        echo -e "${RED}Error: makedist.pl failed! ${NC}aborting ..."
+        rm -rf .~files
+        exit 5
+    fi
+
+    # check for additional standard modules
+    # fixed list better than guessing?
+    for module in `ls */module.info`
+    do 
+        if [[ -f ${TEMP}/${module} && ! -f  "${TARBALL}/$module" ]]; then
+          module=`dirname $module`
+          echo "${CYAN}Adding nonstandard${NC} ${ORANGE}$module${NC} to ${PROD^}" && cp -r -L ${TEMP}/${module} ${TARBALL}/
         fi
+    done
 
-        # check for additional standard modules
-        # fixed list better than guessing?
-        for module in `ls */module.info`
-        do 
-            if [[ -f ${TEMP}/${module} && ! -f  "${TARBALL}/$module" ]]; then
-              module=`dirname $module`
-              echo "Adding nonstandard $module" && cp -r -L ${TEMP}/${module} ${TARBALL}/
-            fi
-        done
-
+    if [[ "$1" != "-file" ]] ; then
         # prepeare unattended upgrade
         echo "${version}" >"${TARBALL}/version"
         cp "${TEMP}/chinese-to-utf8.pl" .
-        echo  -en "${CYAN}search for config dir ... ${NC}"
+        echo  -en "${CYAN}Search for config dir ... ${NC}"
         config_dir=`grep env_WEBMIN_CONFIG= ${MINICONF}| sed 's/.*_WEBMIN_CONFIG=//'`
         echo  -e "${ORANGE}found: ${config_dir}${NC}"
         atboot="NO"
@@ -230,16 +246,13 @@ fi
         # postprocessing
 
         # "compile" UTF-8 lang files
-        echo -en "\n${CYAN}compile UTF-8 lang files${NC} ..."
+        echo -en "\n${CYAN}Compile UTF-8 lang files${NC} ..."
         if [[ `which iconv 2> /dev/null` != '' ]] ; then
             perl "${TEMP}/chinese-to-utf8.pl" . 2>&1 | while read input; do echo -n "."; done
         else
             echo -e "${BLUE} iconv not found, skipping lang files!${NC}"
         fi
 
-        # update authentic, put dummy clear in PATH
-        echo -e "#!/bin/sh\necho" > ${TEMP}/clear; chmod +x ${TEMP}/clear
-        export PATH="${TEMP}:${PATH}"
         # check if alternatve repo exist
         AUTHREPO=`echo ${REPO} | sed "s/\/.*min$/\/autehtic-theme/"`
         if [[ "${REPO}" != "${AUTHREPO}" ]]; then
@@ -254,9 +267,21 @@ fi
                 yes | authentic-theme/theme-update.sh ${RREPO}
             fi
         fi
+    else
+        # pull specifed files only
+        shift
+        FILES="$*"
+        for file in ${FILES}
+        do
+            echo -e "${CYAN}Copy file ${ORANGE}${file}${NC} from ${ORANGE}${REPO}${NC} to ${PROD^} ..."
+            mv "${file}" "${file}.bak"
+            cp "${TEMP}/tarballs/webmin-${DOTVER}/${file}" "${file}"
+            rm -rf "${file}.bak"
+        done
+    fi
   else
         # something went wrong
-        echo -e "${RED}${ERROR}Updating files, failed.${NC}"
+        echo -e "${RED}${ERROR}Error: updating files, failed.${NC}"
         exit 4
   fi
 
@@ -264,15 +289,15 @@ fi
   # we are at the end, clean up
 
   # remove temporary files
-  echo -e "\n${BLUE}clean up temporary files ...${NC}"
-  rm -rf .~files .~lang
+  echo -e "\n${CYAN}Clean up temporary files ...${NC}"
+  rm -rf .~files 
   # fix permissions, should be done by makedist.pl?
-  echo -e "${CYAN}make scripts executable ...${NC}"
+  echo -e "${CYAN}Make scripts executable ...${NC}"
   chmod -R -x+X ${DIR}
   chmod +x *.pl *.cgi *.pm *.sh */*.pl */*.cgi */*.pm */*.sh
       
   # thats all folks
-  echo -e "\n${CYAN}Updating ${PROD^} to Version `cat version`, done.${NC}"
+  echo -e "\n${CYAN}Updateing ${PROD^} ${ORANGE}${FILES}${NC} to Version `cat version`, done.${NC}"
 
 # update success
 exit 0
