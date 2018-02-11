@@ -223,6 +223,24 @@ if ($info->{'disk_fs'} && &show_section('disk')) {
 				    'level' => 'warn',
 				    'warning' => $msg });
 			}
+		next if (!$fs->{'itotal'});
+		if ($fs->{'ifree'} == 0) {
+			my $msg = &text('right_ifsfull',
+					"<tt>$fs->{'dir'}</tt>",
+					$fs->{'itotal'});
+			push(@rv, { 'type' => 'warning',
+				    'level' => 'danger',
+				    'warning' => $msg });
+			}
+		elsif ($fs->{'free'}*1.0 / $fs->{'total'} < 0.01) {
+			my $msg = &text('right_ifsnearly',
+					"<tt>$fs->{'dir'}</tt>",
+					$fs->{'itotal'},
+					$fs->{'ifree'});
+			push(@rv, { 'type' => 'warning',
+				    'level' => 'warn',
+				    'warning' => $msg });
+			}
 		}
 	}
 
