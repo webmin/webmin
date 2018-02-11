@@ -297,7 +297,7 @@ fi
   chmod +x *.pl *.cgi *.pm *.sh */*.pl */*.cgi */*.pm */*.sh
       
   # thats all folks
-  echo -e "\n${CYAN}Updateing ${PROD^} ${ORANGE}${FILES}${NC} to Version `cat version`, done.${NC}"
+  echo -e "\n${CYAN}Updating ${PROD^} ${ORANGE}${FILES}${NC} to Version `cat version`, done.${NC}"
 
 # update success
 exit 0
