@@ -133,24 +133,23 @@ else {
 	# Show the packages, if any
 	if (@rows) {
 		print &text('index_count', scalar(@rows)),"<br>\n";
-		print &ui_form_start("update.cgi");
+		print &ui_form_start("update.cgi", "post");
 		print &ui_hidden("mode", $in{'mode'});
 		print &ui_hidden("search", $in{'search'});
-		print &ui_form_end( [ [ "ok", $in{'mode'} eq 'new' ? $text{'index_install'}
-					       : $text{'index_update'} ],
-		  undef,
-		  [ "refresh", $text{'index_refresh'} ] ] );
+		print &ui_submit($in{'mode'} eq 'new' ? $text{'index_install'}
+		                           : $text{'index_update'}, "ok" );
+		print &ui_submit($text{'index_refresh'}, "refresh"), "<br>";
 		}
 	print &ui_form_columns_table(
-		"update.cgi",
+		"",
 		[ [ "ok", $in{'mode'} eq 'new' ? $text{'index_install'}
 					       : $text{'index_update'} ],
 		  undef,
 		  [ "refresh", $text{'index_refresh'} ] ],
 		1,
 		undef,
-		[ [ "mode", $in{'mode'} ],
-		  [ "search", $in{'search'} ] ],
+		undef, #[ [ "mode", $in{'mode'} ],
+		#  [ "search", $in{'search'} ] ],
 		[ "", $text{'index_name'}, $text{'index_desc'},
 		  $text{'index_status'},
 		  $anysource ? ( $text{'index_source'} ) : ( ), ],
@@ -163,7 +162,7 @@ else {
 		1
 		);
 	if (!@rows) {
-		print &ui_form_start("update.cgi");
+		print &ui_form_start("update.cgi", "post");
 		print &ui_hidden("mode", $in{'mode'});
 		print &ui_hidden("search", $in{'search'});
 		print &ui_form_end([ [ "refresh", $text{'index_refresh'} ] ]);
