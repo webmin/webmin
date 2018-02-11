@@ -1,4 +1,4 @@
-#!/opt/bin/perl
+#!/usr/local/bin/perl
 # Update selected packages
 
 require './package-updates-lib.pl';
