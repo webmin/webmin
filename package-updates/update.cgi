@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/opt/bin/perl
 # Update selected packages
 
 require './package-updates-lib.pl';
@@ -17,7 +17,7 @@ else {
 	$redirdesc = $text{'index_return'};
 	}
 
-if ($in{'refresh'}) {
+if ($in{'refresh'} || $in{refresh_top}) {
 	&ui_print_unbuffered_header(undef, $text{'refresh_title'}, "");
 
 	# Clear all caches
