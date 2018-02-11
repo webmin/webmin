@@ -134,8 +134,6 @@ else {
 	if (@rows) {
 		print &text('index_count', scalar(@rows)),"<br>\n";
 		print &ui_form_start("update.cgi", "post");
-		print &ui_hidden("mode", $in{'mode'});
-		print &ui_hidden("search", $in{'search'});
 		print &ui_submit($in{'mode'} eq 'new' ? $text{'index_install'}
 		                           : $text{'index_update'}, "ok" );
 		print &ui_submit($text{'index_refresh'}, "refresh"), "<br>";
@@ -148,8 +146,8 @@ else {
 		  [ "refresh", $text{'index_refresh'} ] ],
 		1,
 		undef,
-		undef, #[ [ "mode", $in{'mode'} ],
-		#  [ "search", $in{'search'} ] ],
+		[ [ "mode", $in{'mode'} ],
+		  [ "search", $in{'search'} ] ],
 		[ "", $text{'index_name'}, $text{'index_desc'},
 		  $text{'index_status'},
 		  $anysource ? ( $text{'index_source'} ) : ( ), ],
@@ -162,7 +160,7 @@ else {
 		1
 		);
 	if (!@rows) {
-		print &ui_form_start("update.cgi", "post");
+		print &ui_form_start("update.cgi");
 		print &ui_hidden("mode", $in{'mode'});
 		print &ui_hidden("search", $in{'search'});
 		print &ui_form_end([ [ "refresh", $text{'index_refresh'} ] ]);
