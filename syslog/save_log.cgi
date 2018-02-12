@@ -98,8 +98,9 @@ elsif ($in{'view'}) {
 		if ($config{'reverse'}) {
 			$tailcmd .= " | tac";
 			}
+		$eflag = $gconfig{'os_type'} =~ /-linux/ ? "-E" : "";
 		$got = &proc::safe_process_exec(
-			"$cat | grep -i -a $filter | $tailcmd",
+			"$cat | grep -i -a $eflag $filter | $tailcmd",
 			0, 0, STDOUT, undef, 1, 0, undef, 1);
 	} else {
 		# Not filtering .. so cat the most recent non-empty file
