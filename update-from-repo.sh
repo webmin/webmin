@@ -232,6 +232,7 @@ fi
     cp authentic-theme/LICENSE ${TEMP}/authentic-theme
     # put dummy clear and tar in PATH
     echo -e "#!/bin/sh\necho" > ${TEMP}/clear; chmod +x ${TEMP}/clear
+    echo -e "#!/bin/sh\necho" > ${TEMP}/tar; chmod +x ${TEMP}/tar
     export PATH="${TEMP}:${PATH}"
     # run makedist.pl
     ( cd ${TEMP}; perl makedist.pl ${DOTVER} ) | while read input; do echo -n "."; done
@@ -241,6 +242,7 @@ fi
         rm -rf .~files
         exit 5
     fi
+    rm -rf ${TEMP}/tar
 
     # check for additional standard modules not in default dist
     for module in `ls */module.info`
