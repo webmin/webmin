@@ -3,11 +3,11 @@
 # Update webmin/usermin to the latest develop version  from GitHub repo
 # inspired by authentic-theme/theme-update.sh script, thanks qooob
 #
-# Version 1.5, 2018-02-11
+# Version 1.5, 2018-02-12
 #
 # Kay Marquardt, kay@rrr.de, https://github.com/gandelwartz
 #############################################################################
-
+IAM=`basename $0`
 # don't ask -y given
 ASK="YES"
 if [[ "$1" == "-y" || "$1" == "-yes"  || "$1" == "-f" || "$1" == "-force" ]] ; then
@@ -56,7 +56,7 @@ LTEMP="${DIR}/.~lang"
 # help requested output usage
 if [[ "$1" == "-h" || "$1" == "--help" ]] ; then
     echo -e "${NC}${ORANGE}This is the unofficial webmin update script${NC}"
-    echo "Usage:  ./`basename $0` [-force] [-repo:username/xxxmin] [-release[:number]] [-file file ...]"
+    echo "Usage:  ${IAM} [-force] [-repo:username/xxxmin] [-release[:number]] [-file file ...]"
     [[ "$1" == "--help" ]] && cat <<EOF
 
 Parameters:
@@ -66,12 +66,31 @@ Parameters:
         do not output colors
     -repo
         pull from alternative github repo, format: -repo:username/reponame
-        reponame can be "webmin" or "usermin"
+        reponame must "webmin" or "usermin"
         default github repo: webmin/webmin
     -release
-        pull a released version, default release: -release:latest
+        pull a released version, default: -release:latest
     -file
         pull only the given file(s) or dir(s) from repo
+
+Examples:
+	${IAM}
+		uodate everthing from default webmin repository
+	${IAM} -force or ${IAM} -yes
+		same but without asking,
+	${IAM} -fore -repo:qooob/webmin
+		updadte from qooobs repository without asking
+	${IAM} -file module/module.info
+		pull module.info for given module
+	${IAM} -file cpan
+		pull everything in cpan
+	${IAM} -file cpan/*
+		pull only existing files / dirs in cpan
+	${IAM} -file module/lang
+		pull all lang files of a module
+	${IAM} -fore -repo:qooob/webmin -file */lang
+		pull lang files for all existing */lang from qooobs
+		repository without asking
 
 Exit codes:
     0 - success
