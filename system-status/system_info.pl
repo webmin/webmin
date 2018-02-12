@@ -232,7 +232,7 @@ if ($info->{'disk_fs'} && &show_section('disk')) {
 				    'level' => 'danger',
 				    'warning' => $msg });
 			}
-		elsif ($fs->{'free'}*1.0 / $fs->{'total'} < 0.01) {
+		elsif ($fs->{'ifree'}*1.0 / $fs->{'itotal'} < 0.01) {
 			my $msg = &text('right_ifsnearly',
 					"<tt>$fs->{'dir'}</tt>",
 					$fs->{'itotal'},
