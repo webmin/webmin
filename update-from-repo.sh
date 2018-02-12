@@ -7,7 +7,7 @@
 #
 # Kay Marquardt, kay@rrr.de, https://github.com/gandelwartz
 #############################################################################
-IAM=`basename $0`
+
 # don't ask -y given
 ASK="YES"
 if [[ "$1" == "-y" || "$1" == "-yes"  || "$1" == "-f" || "$1" == "-force" ]] ; then
@@ -33,6 +33,9 @@ if [[ -t 1 && "${NCOLOR}" != "YES" ]] ;  then
     NC='\e[0m'
 fi
 
+# Clear screen for better readability
+[[ "${ASK}" == "YES" ]] && clear
+
 # Get webmin/usermin dir based on script's location
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PROD="webmin" # default
@@ -56,7 +59,7 @@ LTEMP="${DIR}/.~lang"
 # help requested output usage
 if [[ "$1" == "-h" || "$1" == "--help" ]] ; then
     echo -e "${NC}${ORANGE}This is the unofficial webmin update script${NC}"
-    echo "Usage:  ${IAM} [-force] [-repo:username/xxxmin] [-release[:number]] [-file file ...]"
+    echo "Usage:  ./`basename $0` [-force] [-repo:username/xxxmin] [-release[:number]] [-file file ...]"
     [[ "$1" == "--help" ]] && cat <<EOF
 
 Parameters:
@@ -66,31 +69,12 @@ Parameters:
         do not output colors
     -repo
         pull from alternative github repo, format: -repo:username/reponame
-        reponame must "webmin" or "usermin"
+        reponame can be "webmin" or "usermin"
         default github repo: webmin/webmin
     -release
-        pull a released version, default: -release:latest
+        pull a released version, default release: -release:latest
     -file
         pull only the given file(s) or dir(s) from repo
-
-Examples:
-	${IAM}
-		uodate everthing from default webmin repository
-	${IAM} -force or ${IAM} -yes
-		same but without asking,
-	${IAM} -fore -repo:qooob/webmin
-		updadte from qooobs repository without asking
-	${IAM} -file module/module.info
-		pull module.info for given module
-	${IAM} -file cpan
-		pull everything in cpan
-	${IAM} -file cpan/*
-		pull only existing files / dirs in cpan
-	${IAM} -file module/lang
-		pull all lang files of a module
-	${IAM} -fore -repo:qooob/webmin -file */lang
-		pull lang files for all existing */lang from qooobs
-		repository without asking
 
 Exit codes:
     0 - success
@@ -107,7 +91,7 @@ fi
 
 # check for required webmin / usermin files in current dir
 if [[ ! -r "${DIR}/setup.sh" || ! -r "${DIR}/miniserv.pl" ]] ; then
-    echo -e "${NC}${RED}Error: the current dir seems not to contain a webmin installation, no update possible!${NC}"
+    echo -e "${NC}${RED}Error: the current dir does not contain a webmin installation, aborting ...${NC}"
     exit 1
 fi
 
@@ -117,19 +101,29 @@ if [[ $EUID -ne 0 ]]; then
     exit 2
 fi
 
-# git has to be installed
-echo -en "${CYAN}Search for minserv.conf ... ${NC}"
-if [[ -r "/etc/webmin/miniserv.conf" ]] ; then
-     # default location
-    MINICONF="/etc/webmin/miniserv.conf"
-    echo  -e "${ORANGE}found: ${MINICONF}${NC}"
-else
-    # possible other locations
+# search for config location
+echo -en "${CYAN}Search for ${RPOD^} configuration ... ${NC}"
+for conf in /etc/${PROD} /var/packages/${PROD}/target/etc
+do
+    if [[ -r "${conf}/miniserv.conf" ]] ; then
+        MINICONF="${conf}/miniserv.conf"
+        echo  -e "${ORANGE}found: ${MINICONF}${NC}"
+        break
+    fi
+done
+
+# check for other locations if not in default
+if [[ "${MINICONF}" == "" ]] ; then
     MINICONF=`find /* -maxdepth 6 -name miniserv.conf 2>/dev/null | grep ${PROD} | head -n 1`
     echo  -e "${ORANGE}found: ${MINICONF}${NC} (alternative location)"
 fi
-[[ "${MINICONF}" != "" ]] && export PATH="${PATH}:`grep path= ${MINICONF}| sed 's/^path=//'`"
 
+# add PATH from config to system PATH
+if [[ "${MINICONF}" != "" ]] ; then
+    export PATH="${PATH}:`grep path= ${MINICONF} | sed 's/^path=//'`"
+fi
+
+# check if git is availible
 if type ${GIT} >/dev/null 2>&1 ; then
     true
 else
@@ -140,23 +134,21 @@ fi
 
 ################
 # lets start
-# Clear screen for better readability
-[[ "${ASK}" == "YES" ]] && clear
 
 # alternative repo given
 if [[ "$1" == *"-repo"* ]]; then
         if [[ "$1" == *":"* ]] ; then
           REPO=${1##*:}
-          [[ "${REPO##*/}" != "webmin" && "${REPO##*/}" != "usermin" ]] && echo -e "${RED}error: ${ORANGE} ${REPO} is not a valid repo name!${NC}" && exit 1
+          [[ "${REPO##*/}" != "webmin" && "${REPO##*/}" != "usermin" ]] && echo -e "${RED}Error: ${REPO} is not a valid repo name!${NC}" && exit 1
           shift
         else
-          echo -e "${ORANGE}./`basename $0`:${NC} Argument -repo needs parameter"
+          echo -e "${ORANGE}./`basename $0`:${NC} Missing argument for parameter -repo. aborting ..."
           exit 1
         fi
 fi
 
 # warn about possible side effects because webmins makedist.pl try cd to /usr/local/webmin (and more)
-[[ -d "/usr/local/webadmin" ]] && echo -e "${RED}Warning:${NC} /usr/local/webadmin ${ORANGE}exist, update may fail!${NC}"
+[[ -d "/usr/local/webadmin" ]] && echo -e "${ORANGE}Warning: Develop dir /usr/local/webadmin exist, update may fail!${NC}"
 
 ################
 # really update?
@@ -307,7 +299,7 @@ fi
     fi
   else
         # something went wrong
-        echo -e "${RED}${ERROR}Error: updating files, failed.${NC}"
+        echo -e "${RED}${ERROR} Error: updating files, failed.${NC}"
         exit 4
   fi
 
