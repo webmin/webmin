@@ -232,7 +232,6 @@ fi
     cp authentic-theme/LICENSE ${TEMP}/authentic-theme
     # put dummy clear and tar in PATH
     echo -e "#!/bin/sh\necho" > ${TEMP}/clear; chmod +x ${TEMP}/clear
-    echo -e "#!/bin/sh\necho" > ${TEMP}/tar; chmod +x ${TEMP}/tar
     export PATH="${TEMP}:${PATH}"
     # run makedist.pl
     ( cd ${TEMP}; perl makedist.pl ${DOTVER} ) | while read input; do echo -n "."; done
