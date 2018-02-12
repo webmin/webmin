@@ -224,8 +224,7 @@ fi
         exit 5
     fi
 
-    # check for additional standard modules
-    # fixed list better than guessing?
+    # check for additional standard modules not in default dist
     for module in `ls */module.info`
     do 
         if [[ -f ${TEMP}/${module} && ! -f  "${TARBALL}/$module" ]]; then
@@ -234,18 +233,24 @@ fi
         fi
     done
 
+    # insert perl path
+    config_dir=`grep env_WEBMIN_CONFIG= ${MINICONF}| sed 's/.*_WEBMIN_CONFIG=//'`
+    perl=`cat $config_dir/perl-path`
+    echo  -e "${CYAN}Insert perl path${NC} ${perl} ..."
+    ( cd ${TARBALL}; sed -i --follow-symlinks "1 s|#\!/.*$|#!${perl}|" `find . -name '*.cgi' ; find . -name '*.pl'` )
+
+	####
+	# copy all or only given files ...
     if [[ "$1" != "-file" ]] ; then
         # prepeare unattended upgrade
         echo "${version}" >"${TARBALL}/version"
         cp "${TEMP}/chinese-to-utf8.pl" .
-        echo  -en "${CYAN}Search for config dir ... ${NC}"
-        config_dir=`grep env_WEBMIN_CONFIG= ${MINICONF}| sed 's/.*_WEBMIN_CONFIG=//'`
-        echo  -e "${ORANGE}found: ${config_dir}${NC}"
         atboot="NO"
         makeboot="NO"
         nouninstall="YES"
+        [[ -x "${perl}" ]] && noperlpath="YES"
         #nostart="YES"
-        export config_dir atboot nouninstall makeboot nostart
+        export config_dir atboot nouninstall makeboot nostart noperlpath
         ( cd ${TARBALL}; ./setup.sh ${DIR} ) | grep -v -e "^$" -e "done$" -e "chmod" -e "chgrp" -e "chown"
         if [[ "${TARBALL}/version" -nt "${MINICONF}" ]] ; then
             echo -e "${RED}Error: update failed, ${PROD} may in a bad state! ${NC}aborting ..."
