@@ -21,7 +21,7 @@ if [[ "$1" == "-nc" ]] ; then
 fi
 
 # predefined colors for echo -e on terminal
-if [[ -t 1 && "${ASK}" == "YES" && "${NCOLOR}" != "YES" ]] ;  then
+if [[ -t 1 && "${NCOLOR}" != "YES" ]] ;  then
     RED='\e[49;0;31;82m'
     BLUE='\e[49;1;34;182m'
     GREEN='\e[49;32;5;82m'
@@ -71,7 +71,7 @@ Parameters:
     -release
         pull a released version, default release: -release:latest
     -file
-        pull only the given file(s) from repo
+        pull only the given file(s) or dir(s) from repo
 
 Exit codes:
     0 - success
@@ -206,7 +206,7 @@ fi
     export PATH="${TEMP}:${PATH}"
     # run makedist.pl
     ( cd ${TEMP}; perl makedist.pl ${DOTVER} ) | while read input; do echo -n "."; done
-	echo -e "\n"
+    echo -e "\n"
     if [[ ! -f "${TEMP}/tarballs/webmin-${DOTVER}.tar.gz" ]] ; then
         echo -e "${RED}Error: makedist.pl failed! ${NC}aborting ..."
         rm -rf .~files
@@ -273,10 +273,17 @@ fi
         FILES="$*"
         for file in ${FILES}
         do
-            echo -e "${CYAN}Copy file ${ORANGE}${file}${NC} from ${ORANGE}${REPO}${NC} to ${PROD^} ..."
-            mv "${file}" "${file}.bak"
-            cp "${TEMP}/tarballs/webmin-${DOTVER}/${file}" "${file}"
-            rm -rf "${file}.bak"
+            if [[ -d "${TEMP}/tarballs/webmin-${DOTVER}/${file}" ]] ; then
+                echo -e "${BLUE}Copy dir ${ORANGE}${file}${NC} from ${ORANGE}${REPO}${NC} to ${PROD^} ..."
+                dest=${file%%/*}
+                [[ "${dest}" == "${file}" ]] && dest="."
+                cp -r -v "${TEMP}/tarballs/webmin-${DOTVER}/${file}" "${dest}" | sed 's/^.*\/tarballs\///'
+            else
+                echo -e "${CYAN}Copy file ${ORANGE}${file}${NC} from ${ORANGE}${REPO}${NC} to ${PROD^} ..."
+                mv "${file}" "${file}.bak"
+                cp "${TEMP}/tarballs/webmin-${DOTVER}/${file}" "${file}"
+                rm -rf "${file}.bak"
+            fi
         done
     fi
   else
