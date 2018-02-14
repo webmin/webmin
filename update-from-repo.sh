@@ -3,10 +3,11 @@
 # Update webmin/usermin to the latest develop version  from GitHub repo
 # inspired by authentic-theme/theme-update.sh script, thanks qooob
 #
-# Version 1.5, 2018-02-11
+# Version 1.5, 2018-02-12
 #
 # Kay Marquardt, kay@rrr.de, https://github.com/gandelwartz
 #############################################################################
+IAM=`basename $0`
 
 # don't ask -y given
 ASK="YES"
@@ -33,6 +34,9 @@ if [[ -t 1 && "${NCOLOR}" != "YES" ]] ;  then
     NC='\e[0m'
 fi
 
+# Clear screen for better readability
+[[ "${ASK}" == "YES" ]] && clear
+
 # Get webmin/usermin dir based on script's location
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PROD="webmin" # default
@@ -56,7 +60,7 @@ LTEMP="${DIR}/.~lang"
 # help requested output usage
 if [[ "$1" == "-h" || "$1" == "--help" ]] ; then
     echo -e "${NC}${ORANGE}This is the unofficial webmin update script${NC}"
-    echo "Usage:  ./`basename $0` [-force] [-repo:username/xxxmin] [-release[:number]] [-file file ...]"
+    echo "Usage:  ${IAM} [-force] [-repo:username/xxxmin] [-release[:number]] [-file file ...]"
     [[ "$1" == "--help" ]] && cat <<EOF
 
 Parameters:
@@ -66,12 +70,30 @@ Parameters:
         do not output colors
     -repo
         pull from alternative github repo, format: -repo:username/reponame
-        reponame can be "webmin" or "usermin"
+        reponame must be "webmin" or "usermin"
         default github repo: webmin/webmin
     -release
-        pull a released version, default release: -release:latest
+        pull a released version, default: -release:latest
     -file
         pull only the given file(s) or dir(s) from repo
+Examples:
+    ${IAM}
+    	uodate everthing from default webmin repository
+    ${IAM} -force or ${IAM} -yes
+    	same but without asking,
+    ${IAM} -fore -repo:qooob/webmin
+    	updadte from qooobs repository without asking
+    ${IAM} -file module/module.info
+    	pull module.info for given module
+    ${IAM} -file cpan
+    	pull everything in cpan
+    ${IAM} -file cpan/*
+    	pull only existing files / dirs in cpan
+    ${IAM} -file module/lang
+    	pull all lang files of a module
+    ${IAM} -fore -repo:qooob/webmin -file */lang
+    	pull lang files for all existing */lang from qooobs
+    	repository without asking
 
 Exit codes:
     0 - success
@@ -88,7 +110,7 @@ fi
 
 # check for required webmin / usermin files in current dir
 if [[ ! -r "${DIR}/setup.sh" || ! -r "${DIR}/miniserv.pl" ]] ; then
-    echo -e "${NC}${RED}Error: the current dir seems not to contain a webmin installation, no update possible!${NC}"
+    echo -e "${NC}${RED}Error: the current dir does not contain a webmin installation, aborting ...${NC}"
     exit 1
 fi
 
@@ -98,19 +120,29 @@ if [[ $EUID -ne 0 ]]; then
     exit 2
 fi
 
-# git has to be installed
-echo -en "${CYAN}Search for minserv.conf ... ${NC}"
-if [[ -r "/etc/webmin/miniserv.conf" ]] ; then
-     # default location
-    MINICONF="/etc/webmin/miniserv.conf"
-    echo  -e "${ORANGE}found: ${MINICONF}${NC}"
-else
-    # possible other locations
+# search for config location
+echo -en "${CYAN}Search for ${RPOD^} configuration ... ${NC}"
+for conf in /etc/${PROD} /var/packages/${PROD}/target/etc
+do
+    if [[ -r "${conf}/miniserv.conf" ]] ; then
+        MINICONF="${conf}/miniserv.conf"
+        echo  -e "${ORANGE}found: ${MINICONF}${NC}"
+        break
+    fi
+done
+
+# check for other locations if not in default
+if [[ "${MINICONF}" == "" ]] ; then
     MINICONF=`find /* -maxdepth 6 -name miniserv.conf 2>/dev/null | grep ${PROD} | head -n 1`
     echo  -e "${ORANGE}found: ${MINICONF}${NC} (alternative location)"
 fi
-[[ "${MINICONF}" != "" ]] && export PATH="${PATH}:`grep path= ${MINICONF}| sed 's/^path=//'`"
 
+# add PATH from config to system PATH
+if [[ "${MINICONF}" != "" ]] ; then
+    export PATH="${PATH}:`grep path= ${MINICONF} | sed 's/^path=//'`"
+fi
+
+# check if git is availible
 if type ${GIT} >/dev/null 2>&1 ; then
     true
 else
@@ -121,23 +153,21 @@ fi
 
 ################
 # lets start
-# Clear screen for better readability
-[[ "${ASK}" == "YES" ]] && clear
 
 # alternative repo given
 if [[ "$1" == *"-repo"* ]]; then
         if [[ "$1" == *":"* ]] ; then
           REPO=${1##*:}
-          [[ "${REPO##*/}" != "webmin" && "${REPO##*/}" != "usermin" ]] && echo -e "${RED}error: ${ORANGE} ${REPO} is not a valid repo name!${NC}" && exit 1
+          [[ "${REPO##*/}" != "webmin" && "${REPO##*/}" != "usermin" ]] && echo -e "${RED}Error: ${REPO} is not a valid repo name!${NC}" && exit 1
           shift
         else
-          echo -e "${ORANGE}./`basename $0`:${NC} Argument -repo needs parameter"
+          echo -e "${ORANGE}./`basename $0`:${NC} Missing argument for parameter -repo. aborting ..."
           exit 1
         fi
 fi
 
 # warn about possible side effects because webmins makedist.pl try cd to /usr/local/webmin (and more)
-[[ -d "/usr/local/webadmin" ]] && echo -e "${RED}Warning:${NC} /usr/local/webadmin ${ORANGE}exist, update may fail!${NC}"
+[[ -d "/usr/local/webadmin" ]] && echo -e "${ORANGE}Warning: Develop dir /usr/local/webadmin exist, update may fail!${NC}"
 
 ################
 # really update?
@@ -212,9 +242,9 @@ fi
         rm -rf .~files
         exit 5
     fi
+    rm -rf ${TEMP}/tar
 
-    # check for additional standard modules
-    # fixed list better than guessing?
+    # check for additional standard modules not in default dist
     for module in `ls */module.info`
     do 
         if [[ -f ${TEMP}/${module} && ! -f  "${TARBALL}/$module" ]]; then
@@ -223,18 +253,24 @@ fi
         fi
     done
 
+    # insert perl path
+    config_dir=`grep env_WEBMIN_CONFIG= ${MINICONF}| sed 's/.*_WEBMIN_CONFIG=//'`
+    perl=`cat $config_dir/perl-path`
+    echo  -e "${CYAN}Insert perl path${NC} ${perl} ..."
+    ( cd ${TARBALL}; sed -i --follow-symlinks "1 s|#\!/.*$|#!${perl}|" `find . -name '*.cgi' ; find . -name '*.pl'` )
+
+	####
+	# copy all or only given files ...
     if [[ "$1" != "-file" ]] ; then
         # prepeare unattended upgrade
         echo "${version}" >"${TARBALL}/version"
         cp "${TEMP}/chinese-to-utf8.pl" .
-        echo  -en "${CYAN}Search for config dir ... ${NC}"
-        config_dir=`grep env_WEBMIN_CONFIG= ${MINICONF}| sed 's/.*_WEBMIN_CONFIG=//'`
-        echo  -e "${ORANGE}found: ${config_dir}${NC}"
         atboot="NO"
         makeboot="NO"
         nouninstall="YES"
+        [[ -x "${perl}" ]] && noperlpath="YES"
         #nostart="YES"
-        export config_dir atboot nouninstall makeboot nostart
+        export config_dir atboot nouninstall makeboot nostart noperlpath
         ( cd ${TARBALL}; ./setup.sh ${DIR} ) | grep -v -e "^$" -e "done$" -e "chmod" -e "chgrp" -e "chown"
         if [[ "${TARBALL}/version" -nt "${MINICONF}" ]] ; then
             echo -e "${RED}Error: update failed, ${PROD} may in a bad state! ${NC}aborting ..."
@@ -288,7 +324,7 @@ fi
     fi
   else
         # something went wrong
-        echo -e "${RED}${ERROR}Error: updating files, failed.${NC}"
+        echo -e "${RED}${ERROR} Error: updating files, failed.${NC}"
         exit 4
   fi
 
