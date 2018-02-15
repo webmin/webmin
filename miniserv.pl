@@ -5178,15 +5178,17 @@ return $logout_time_cache{$user,$sid};
 sub password_crypt
 {
 local ($pass, $salt) = @_;
+local $rval;
 if ($salt =~ /^\$1\$/ && $use_md5) {
-	return &encrypt_md5($pass, $salt);
+	$rval = &encrypt_md5($pass, $salt);
 	}
 elsif ($salt =~ /^\$6\$/ && $use_sha512) {
-	return &encrypt_sha512($pass, $salt);
+	$rval = &encrypt_sha512($pass, $salt);
 	}
-else {
-	return &unix_crypt($pass, $salt);
+if (!defined($rval) || $salt ne $rval) {
+	$rval = &unix_crypt($pass, $salt);
 	}
+return $rval;
 }
 
 # unix_crypt(password, salt)
