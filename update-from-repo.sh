@@ -249,7 +249,7 @@ fi
     do 
         if [[ -f ${TEMP}/${module} && ! -f  "${TARBALL}/$module" ]]; then
           module=`dirname $module`
-          echo "${CYAN}Adding nonstandard${NC} ${ORANGE}$module${NC} to ${PROD^}" && cp -r -L ${TEMP}/${module} ${TARBALL}/
+          echo -e "${CYAN}Adding nonstandard${NC} ${ORANGE}$module${NC} to ${PROD^}" && cp -r -L ${TEMP}/${module} ${TARBALL}/
         fi
     done
 
