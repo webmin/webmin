@@ -31,12 +31,12 @@ else {
 	$subject = &find("subject_tag", $conf);
 	print &ui_table_row($text{'report_subject'},
 		&opt_field("subject_tag", $subject, 15, "*****SPAM*****"));
-	}
+	$header = &find("report_header", $conf);
+	# Include report in headers
+	print &ui_table_row($text{'report_rheader'},
+		&yes_no_field("report_header", $header, 0));
 
-# Include report in headers
-$header = &find("report_header", $conf);
-print &ui_table_row($text{'report_rheader'},
-	&yes_no_field("report_header", $header, 0));
+	}
 
 # Terse report mode
 $terse = &find("use_terse_report", $conf);

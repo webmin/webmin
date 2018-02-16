@@ -35,8 +35,8 @@ if (&version_atleast(3.0)) {
 else {
 	&parse_yes_no($conf, "rewrite_subject");
 	&parse_opt($conf, "subject_tag", undef);
+	&parse_yes_no($conf, "report_header");
 	}
-&parse_yes_no($conf, "report_header");
 &parse_yes_no($conf, "use_terse_report");
 &parse_yes_no($conf, "fold_headers");
 &parse_yes_no($conf, "detailed_phrase_score");
