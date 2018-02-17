@@ -12,7 +12,7 @@ $conf = &get_config();
 print "$text{'report_desc'}<p>\n";
 &start_form("save_report.cgi", $text{'report_header'});
 
-if (&version_atleast(3.0)) {
+if (&version_atleast(2.6)) {
 	# New version can replace subject, from and to headers
 	@rheader = &find("rewrite_header", $conf);
 	foreach $h ("subject", "from", "to") {
@@ -36,12 +36,12 @@ else {
 	print &ui_table_row($text{'report_rheader'},
 		&yes_no_field("report_header", $header, 0));
 
+	# Terse report mode
+	$terse = &find("use_terse_report", $conf);
+	print &ui_table_row($text{'report_useterse'},
+		&yes_no_field("use_terse_report", $terse, 0));
 	}
 
-# Terse report mode
-$terse = &find("use_terse_report", $conf);
-print &ui_table_row($text{'report_useterse'},
-	&yes_no_field("use_terse_report", $terse, 0));
 
 # Split status header?
 $fold = &find("fold_headers", $conf);
@@ -53,7 +53,7 @@ $detail = &find("detailed_phrase_score", $conf);
 print &ui_table_row($text{'report_detail'},
 	&yes_no_field("detailed_phrase_score", $detail, 0));
 
-if (!&version_atleast(3.0)) {
+if (!&version_atleast(2.6)) {
 	# Include stars header
 	$stars = &find("spam_level_stars", $conf);
 	print &ui_table_row($text{'report_stars'},
@@ -61,6 +61,7 @@ if (!&version_atleast(3.0)) {
 	}
 
 # Character for stars
+# note: has to be replaced in save.cgi with add_header all Level _STARS(.)_ as of 2.6
 $char = &find("spam_level_char", $conf);
 print &ui_table_row($text{'report_char'},
 	&opt_field("spam_level_char", $char, 2, "*"));
@@ -91,16 +92,19 @@ print &ui_table_row($text{'report_report'},
 	&ui_textarea("report", join("\n", @report), 5, 80));
 
 # Extra report to attach to spam messages, for terse mode
-@report = &find_value("terse_report", $conf);
-$clear = &find("clear_terse_report_template", $conf);
-print &ui_table_row($text{'report_terse'},
-	&ui_radio("clear_terse", $clear ? 1 : 0,
-		  [ [ 0, $text{'report_noclear'} ],
-		    [ 1, $text{'report_clear'} ] ])."<br>\n".
-	&ui_textarea("terse", join("\n", @report), 5, 80));
+# note terse report is deprecated in 2.6 and does nothing, will be removed in future
+if (!&version_atleast(2.6)) {
+	@report = &find_value("terse_report", $conf);
+	$clear = &find("clear_terse_report_template", $conf);
+	print &ui_table_row($text{'report_terse'},
+		&ui_radio("clear_terse", $clear ? 1 : 0,
+			  [ [ 0, $text{'report_noclear'} ],
+				[ 1, $text{'report_clear'} ] ])."<br>\n".
+		&ui_textarea("terse", join("\n", @report), 5, 80));
+}
 
 # Additional headers to add
-if (&version_atleast(3)) {
+if (&version_atleast(2.6)) {
 	print &ui_table_hr();
 	$table = &ui_columns_start([ $text{'report_addfor'},
 				  $text{'report_addheader'},
