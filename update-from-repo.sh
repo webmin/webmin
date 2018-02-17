@@ -235,9 +235,9 @@ fi
     echo -e "#!/bin/sh\necho" > ${TEMP}/tar; chmod +x ${TEMP}/tar
     export PATH="${TEMP}:${PATH}"
     # run makedist.pl
-    ( cd ${TEMP}; perl makedist.pl ${DOTVER} ) | while read input; do echo -n "."; done
+    ( cd ${TEMP}; perl makedist.pl ${DOTVER} 2>&1) | while read input; do echo -n "."; done
     echo -e "\n"
-    if [[ ! -f "${TEMP}/tarballs/webmin-${DOTVER}.tar.gz" ]] ; then
+    if [[ ! -f "${TARBALL}.tar.gz" ]] ; then
         echo -e "${RED}Error: makedist.pl failed! ${NC}aborting ..."
         rm -rf .~files
         exit 5
@@ -264,7 +264,7 @@ fi
     if [[ "$1" != "-file" ]] ; then
         # prepeare unattended upgrade
         echo "${version}" >"${TARBALL}/version"
-        cp "${TEMP}/chinese-to-utf8.pl" .
+        cp "${WTEMP}/chinese-to-utf8.pl" .
         atboot="NO"
         makeboot="NO"
         nouninstall="YES"
