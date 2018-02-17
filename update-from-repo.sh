@@ -3,7 +3,7 @@
 # Update webmin/usermin to the latest develop version  from GitHub repo
 # inspired by authentic-theme/theme-update.sh script, thanks qooob
 #
-# Version 1.5, 2018-02-12
+# Version 1.5.1, 2018-02-17
 #
 # Kay Marquardt, kay@rrr.de, https://github.com/gandelwartz
 #############################################################################
@@ -221,7 +221,7 @@ fi
 
     ####################
     # start processing pulled source
-    version="`head -c -1 ${TEMP}/version`-`cd ${TEMP}; ${GIT} log -1 --format=%cd --date=format:'%m%d.%H%M'`" 
+    version="`head -c -1 ${TEMP}/version``cd ${TEMP}; ${GIT} log -1 --format=%cd --date=format:'%m%d%H%M'`" 
     DOTVER=`echo ${version} | sed 's/-/./'`
     TARBALL="${TEMP}/tarballs/${PROD}-${DOTVER}"
     ###############
