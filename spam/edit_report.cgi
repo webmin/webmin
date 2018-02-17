@@ -12,7 +12,7 @@ $conf = &get_config();
 print "$text{'report_desc'}<p>\n";
 &start_form("save_report.cgi", $text{'report_header'});
 
-if (&version_atleast(2.6)) {
+if (&version_atleast(3.0)) {
 	# New version can replace subject, from and to headers
 	@rheader = &find("rewrite_header", $conf);
 	foreach $h ("subject", "from", "to") {
@@ -33,8 +33,8 @@ else {
 		&opt_field("subject_tag", $subject, 15, "*****SPAM*****"));
 	$header = &find("report_header", $conf);
 	# Include report in headers
-	print &ui_table_row($text{'report_rheader'},
-		&yes_no_field("report_header", $header, 0));
+	#print &ui_table_row($text{'report_rheader'},
+	#	&yes_no_field("report_header", $header, 0));
 
 	# Terse report mode
 	$terse = &find("use_terse_report", $conf);
