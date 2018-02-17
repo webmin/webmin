@@ -55,8 +55,7 @@ if (&version_atleast(2.6)) {
 		push(@adds, "$addfor $addheader $addtext");
 		}
 	if (!in{"spam_level_char_def"} && &char_check($in{"spam_level_char"})) {
-		push(@adds, { 'name' => 'add_header',
-		                'value' => "all Level _STARS(".$in{ "spam_level_char"} .")_" });
+		push(@adds, "all Level _STARS(".$in{ "spam_level_char"} .")_" );
 		}
 	&save_directives($conf, "add_header", \@adds, 1);
 	}
