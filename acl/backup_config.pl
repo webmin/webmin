@@ -83,17 +83,18 @@ foreach my $k (keys %aclbackup) {
 	}
 &write_file("$config_directory/config", \%gconfig);
 
-# Splice miniserv.conf entries for users into real config
+# Splice miniserv.conf entries for users and password restrictions into
+# real config
 %aclbackup = ( );
 &read_file("$config_directory/miniserv.conf.aclbackup", \%aclbackup);
 unlink("$config_directory/miniserv.conf.aclbackup");
 my %miniserv;
 &get_miniserv_config(\%miniserv);
 foreach my $k (keys %miniserv) {
-	delete($miniserv{$k}) if ($k =~ /^(preroot_)/);
+	delete($miniserv{$k}) if ($k =~ /^(preroot_|pass_)/);
 	}
 foreach my $k (keys %aclbackup) {
-	$miniserv{$k} = $aclbackup{$k} if ($k =~ /^(preroot_)/);
+	$miniserv{$k} = $aclbackup{$k} if ($k =~ /^(preroot_|pass_)/);
 	}
 &put_miniserv_config(\%miniserv);
 
