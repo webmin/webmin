@@ -3,7 +3,7 @@
 # Update webmin/usermin to the latest develop version  from GitHub repo
 # inspired by authentic-theme/theme-update.sh script, thanks qooob
 #
-# Version 1.5.1, 2018-02-17
+# Version 1.5.2, 2018-02-19
 #
 # Kay Marquardt, kay@rrr.de, https://github.com/gandelwartz
 #############################################################################
@@ -48,6 +48,7 @@ fi
 HOST="https://github.com"
 REPO="webmin/$PROD"
 GIT="git"
+BRANCH=""
 
 # temporary locations for git clone
 WTEMP="${DIR}/.~files/webadmin" 
@@ -60,7 +61,7 @@ LTEMP="${DIR}/.~lang"
 # help requested output usage
 if [[ "$1" == "-h" || "$1" == "--help" ]] ; then
     echo -e "${NC}${ORANGE}This is the unofficial webmin update script${NC}"
-    echo "Usage:  ${IAM} [-force] [-repo:username/xxxmin] [-release[:number]] [-file file ...]"
+    echo "Usage:  ${IAM} [-force] [-repo:username/xxxmin] [-branch:xxx] [-release[:number]] [-file file ...]"
     [[ "$1" == "--help" ]] && cat <<EOF
 
 Parameters:
@@ -72,6 +73,8 @@ Parameters:
         pull from alternative github repo, format: -repo:username/reponame
         reponame must be "webmin" or "usermin"
         default github repo: webmin/webmin
+    - branch
+        pull branch of given repository
     -release
         pull a released version, default: -release:latest
     -file
@@ -166,6 +169,17 @@ if [[ "$1" == *"-repo"* ]]; then
         fi
 fi
 
+# alternative branch given
+if [[ "$1" == *"-branch"* ]]; then
+        if [[ "$1" == *":"* ]] ; then
+          BRANCH=" --branch ${1##*:}"
+          shift
+        else
+          echo -e "${ORANGE}./`basename $0`:${NC} Missing argument for parameter -branch aborting ..."
+          exit 1
+        fi
+fi
+
 # warn about possible side effects because webmins makedist.pl try cd to /usr/local/webmin (and more)
 [[ -d "/usr/local/webadmin" ]] && echo -e "${ORANGE}Warning: Develop dir /usr/local/webadmin exist, update may fail!${NC}"
 
@@ -175,9 +189,9 @@ REPLY="y"
 
 if [ "${ASK}" == "YES" ] ; then
     if [[ "$1" != "-release"* ]] ; then
-        echo -e "${RED}Warning:${NC} ${ORANGE}update from non release repository${NC} $HOST/$REPO ${ORANGE}may break your installation!${NC}"
+        echo -e "${RED}Warning:${NC} ${ORANGE}update from non release repository${NC} ${HOST}/${REPO}${BRANCH} ${ORANGE}may break your installation!${NC}"
     fi
-    read -p "Would you like to update "${PROD^}" from ${HOST}/${REPO} [y/N] " -n 1 -r
+    read -p "Would you like to update "${PROD^}" from ${HOST}/${REPO}${BRANCH} [y/N] " -n 1 -r
     echo
 fi
 
@@ -206,8 +220,8 @@ fi
           ERROR="Release ${RRELEASE} doesn't exist. "
         fi
   else
-        echo -e "${CYAN}Pulling in latest changes for${NC} ${ORANGE}${PROD^}${NC} $RRELEASE ($HOST/$REPO) ..."
-        ${GIT} clone --depth 1 --quiet  $HOST/$REPO.git "${TEMP}"
+        echo -e "${CYAN}Pulling in latest changes for${NC} ${ORANGE}${PROD^}${NC} $RRELEASE (${HOST}/${REPO}${BRANCH}) ..."
+        ${GIT} clone --depth 1 --quiet  ${BRANCH} $HOST/$REPO.git "${TEMP}"
   fi
   # on usermin!! pull also webmin to resolve symlinks later!
   WEBMREPO=`echo ${REPO} | sed "s/\/usermin$/\/webmin/"`
@@ -324,7 +338,7 @@ fi
     fi
   else
         # something went wrong
-        echo -e "${RED}${ERROR} Error: updating files, failed.${NC}"
+        echo -e "${RED}${ERROR} Error: update failed:${NC}${ORANGE} ${GIT} clone ${BRANCH} $RRELEASE $HOST/$REPO.git ${NC}"
         exit 4
   fi
 
