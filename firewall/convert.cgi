@@ -4,8 +4,12 @@
 
 require './firewall-lib.pl';
 &ReadParse();
-if (&get_ipvx_version() == 6) { require './firewall6-lib.pl';
-	} else { require './firewall4-lib.pl'; }
+if (&get_ipvx_version() == 6) {
+	require './firewall6-lib.pl';
+	}
+else {
+	require './firewall4-lib.pl';
+	}
 $access{'setup'} || &error($text{'setup_ecannot'});
 &error_setup($text{'convert_err'});
 &lock_file($ipvx_save);

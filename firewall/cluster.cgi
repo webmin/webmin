@@ -3,8 +3,12 @@
 
 require './firewall-lib.pl';
 &ReadParse();
-if (&get_ipvx_version() == 6) { require './firewall6-lib.pl';
-	} else { require './firewall4-lib.pl'; }
+if (&get_ipvx_version() == 6) {
+	require './firewall6-lib.pl';
+	}
+else {
+	require './firewall4-lib.pl';
+	}
 $access{'cluster'} || &error($text{'ecluster'});
 &foreign_require("servers", "servers-lib.pl");
 &ui_print_header($text{"index_title_v${ipvx}"}, $text{'cluster_title'}, undef, "cluster");

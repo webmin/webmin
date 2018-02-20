@@ -4,9 +4,12 @@
 
 require './firewall-lib.pl';
 &ReadParse();
-# what version IP protocaol version to use?
-if (&get_ipvx_version() == 6) { require './firewall6-lib.pl';
-	} else { require './firewall4-lib.pl'; }
+if (&get_ipvx_version() == 6) {
+	require './firewall6-lib.pl';
+	}
+else {
+	require './firewall4-lib.pl';
+	}
 $access{'unapply'} || &error($text{'unapply_ecannot'});
 &error_setup($text{'apply_err'});
 if (defined(&unapply_iptables)) {

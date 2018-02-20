@@ -4,8 +4,12 @@
 
 require './firewall-lib.pl';
 &ReadParse();
-if (&get_ipvx_version() == 6) { require './firewall6-lib.pl';
-	} else { require './firewall4-lib.pl'; }
+if (&get_ipvx_version() == 6) {
+	require './firewall6-lib.pl';
+	}
+else {
+	require './firewall4-lib.pl';
+	}
 &error_setup($text{'save_err'});
 @tables = &get_iptables_save();
 $table = $tables[$in{'table'}];
