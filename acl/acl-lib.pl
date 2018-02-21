@@ -1344,9 +1344,11 @@ my ($miniserv, $username) = @_;
 return 1 if (&is_readonly_mode());
 &open_session_db($miniserv);
 foreach my $s (keys %sessiondb) {
-	my ($u, $t) = split(/\s+/, $sessiondb{$s});
-	if ($u eq $username) {
-		delete($sessiondb{$s});
+	if ($sessiondb{$s}) {
+		my ($u, $t) = split(/\s+/, $sessiondb{$s});
+		if ($u eq $username) {
+			delete($sessiondb{$s});
+			}
 		}
 	}
 dbmclose(%sessiondb);
