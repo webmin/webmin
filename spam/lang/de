@@ -161,6 +161,7 @@ razor_desc=&quot;Vipul's Razor&quot; ist ein kollaboratives Spamerkennungs- und 
 report_leave=Unver&#228;ndert lassen
 connect_eldaplogin=Konnte nicht auf LDAP-Server $1 als $2 : $3 einloggen
 score_hits=Hits h&#246;her als, damit eine E-Mail als Spam klassifiziert wird
+score_other=<br><em>Hinweis: Wenn Du Amavisd als Spam Filter benutzt, wird diese Einstellung ignoriert.</em>
 user_dheader=F&#252;ge DCC-E-Mail-Header den E-Mails hinzu?
 report_addall=Alle
 simple_describe=Beschreibung
