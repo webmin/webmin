@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # edit_score.cgi
 # Display a form for editing spam scoring options
 
@@ -16,7 +16,8 @@ print "$text{'score_desc'}<p>\n";
 # Required score before considering spam
 $hits_param = &version_atleast(3.0) ? "required_score" : "required_hits";
 $hits = &find($hits_param, $conf);
-print &ui_table_row("$text{'score_hits'} <br>Note: sndkfhksdf",
+$score_other=$text{'score_other'} if ($warn_procmail != 1);
+print &ui_table_row($text{'score_hits'}.$score_other,
 	&opt_field($hits_param, $hits, 5, "5"));
 
 # Auto-whitelist factor
