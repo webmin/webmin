@@ -3,7 +3,7 @@
 # Update webmin/usermin to the latest develop version  from GitHub repo
 # inspired by authentic-theme/theme-update.sh script, thanks qooob
 #
-# Version 1.5.2, 2018-02-19
+VERS="1.5.3, 2018-02-22"
 #
 # Kay Marquardt, kay@rrr.de, https://github.com/gandelwartz
 #############################################################################
@@ -60,7 +60,7 @@ LTEMP="${DIR}/.~lang"
 
 # help requested output usage
 if [[ "$1" == "-h" || "$1" == "--help" ]] ; then
-    echo -e "${NC}${ORANGE}This is the unofficial webmin update script${NC}"
+    echo -e "${NC}${ORANGE}This is the unofficial webmin update script, ${VERS}${NC}"
     echo "Usage:  ${IAM} [-force] [-repo:username/xxxmin] [-branch:xxx] [-release[:number]] [-file file ...]"
     [[ "$1" == "--help" ]] && cat <<EOF
 
@@ -73,8 +73,8 @@ Parameters:
         pull from alternative github repo, format: -repo:username/reponame
         reponame must be "webmin" or "usermin"
         default github repo: webmin/webmin
-    - branch
-        pull branch of given repository
+    -branch
+        pull given branch from repository
     -release
         pull a released version, default: -release:latest
     -file
@@ -235,7 +235,10 @@ fi
 
     ####################
     # start processing pulled source
-    version="`head -c -1 ${TEMP}/version``cd ${TEMP}; ${GIT} log -1 --format=%cd --date=format:'%m%d%H%M'`" 
+	# get latest changeset date, if it fails get actual date
+    version="`cd ${TEMP}; ${GIT} log -1 --format=%cd --date=format:'%m%d%H%M' 2>/dev/null`" 
+	[[ "${version}" == "" ]] && version="`date '+%Y%m%d%H%M'`"
+    version="`head -c -1 ${TEMP}/version`${version}" 
     DOTVER=`echo ${version} | sed 's/-/./'`
     TARBALL="${TEMP}/tarballs/${PROD}-${DOTVER}"
     ###############
