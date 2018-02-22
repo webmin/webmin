@@ -79,19 +79,20 @@ Parameters:
         pull a released version, default: -release:latest
     -file
         pull only the given file(s) or dir(s) from repo
+
 Examples:
     ${IAM}
     	uodate everthing from default webmin repository
     ${IAM} -force or ${IAM} -yes
     	same but without asking,
-    ${IAM} -fore -repo:qooob/webmin
+    ${IAM} -force -repo:qooob/webmin
     	updadte from qooobs repository without asking
     ${IAM} -file module/module.info
     	pull module.info for given module
     ${IAM} -file cpan
     	pull everything in cpan
     ${IAM} -file cpan/*
-    	pull only existing files / dirs in cpan
+    	pull only already existing files / dirs in cpan
     ${IAM} -file module/lang
     	pull all lang files of a module
     ${IAM} -fore -repo:qooob/webmin -file */lang
