@@ -3,7 +3,7 @@
 # Update webmin/usermin to the latest develop version  from GitHub repo
 # inspired by authentic-theme/theme-update.sh script, thanks qooob
 #
-VERS="1.5.3, 2018-02-22"
+VERS="1.5.4, 2018-02-22"
 #
 # Kay Marquardt, kay@rrr.de, https://github.com/gandelwartz
 #############################################################################
@@ -235,15 +235,13 @@ fi
 
     ####################
     # start processing pulled source
-	# get latest changeset date, if it fails get actual date
-    version="`cd ${TEMP}; ${GIT} log -1 --format=%cd --date=format:'%m%d%H%M' 2>/dev/null`" 
-	[[ "${version}" == "" ]] && version="`date '+%Y%m%d%H%M'`"
-    version="`head -c -1 ${TEMP}/version`${version}" 
+	# add latest changeset date to original version, works with git 1.7+
+    version="`head -c -1 ${TEMP}/version``cd ${TEMP}; date -d @$(${GIT} log -n1 --format='%at') '+%m%d%H%M'`" 
     DOTVER=`echo ${version} | sed 's/-/./'`
     TARBALL="${TEMP}/tarballs/${PROD}-${DOTVER}"
     ###############
     # start update
-    echo -en "${CYAN}Start update for${NC} ${PROD^} ..."
+    echo -en "${CYAN}Start update for${NC} ${PROD^} ${version}..."
     # create missing dirs, simulate authentic present
     mkdir ${TEMP}/tarballs ${TEMP}/authentic-theme 
     cp authentic-theme/LICENSE ${TEMP}/authentic-theme
