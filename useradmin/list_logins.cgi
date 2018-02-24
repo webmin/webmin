@@ -27,12 +27,14 @@ elsif ($access{'logins'} ne "*") {
 foreach $l (&list_last_logins($u, $config{'last_count'})) {
 	$tm = defined(&mailboxes::parse_mail_date) ?
 		&mailboxes::parse_mail_date($l->[3]) : undef;
+	$tm2 = defined(&mailboxes::parse_mail_date) ?
+		&mailboxes::parse_mail_date($l->[4]) : undef;
 	push(@table, [
 		$u ? ( ) : ( "<tt>".&html_escape($l->[0])."</tt>" ),
 		&html_escape($l->[2]) || $text{'logins_local'},
 		&html_escape($l->[1]),
 		&html_escape($tm ? &make_date($tm) : $l->[3]),
-		$l->[4] ? ( &html_escape($l->[4]),
+		$l->[4] ? ( &html_escape($tm2 ? &make_date($tm2) : $l->[4]),
 			    &html_escape($l->[5]) )
 			: ( "<i>$text{'logins_still'}</i>", "" ),
 		]);
