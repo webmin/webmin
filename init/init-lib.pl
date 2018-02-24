@@ -2023,8 +2023,9 @@ foreach my $l (split(/\r?\n/, $out)) {
 
 # Also find unit files for units that may be disabled at boot and not running,
 # and so don't show up in systemctl list-units
-opendir(UNITS, &get_systemd_root());
-push(@units, grep { !/\.wants$/ && !/^\./ } readdir(UNITS));
+my $root = &get_systemd_root();
+opendir(UNITS, $root);
+push(@units, grep { !/\.wants$/ && !/^\./ && !-d "$root/$_" } readdir(UNITS));
 closedir(UNITS);
 
 # Also add units from list-unit-files that also don't show up
