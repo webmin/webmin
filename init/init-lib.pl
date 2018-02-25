@@ -2029,7 +2029,7 @@ push(@units, grep { !/\.wants$/ && !/^\./ && !-d "$root/$_" } readdir(UNITS));
 closedir(UNITS);
 
 # Also add units from list-unit-files that also don't show up
-$out = &backquote_command("systemctl list-unit-files");
+$out = &backquote_command("systemctl list-unit-files -t service --no-legend");
 foreach my $l (split(/\r?\n/, $out)) {
 	if ($l =~ /^(\S+\.service)\s+disabled/ ||
 	    $l =~ /^(\S+)\s+disabled/) {
