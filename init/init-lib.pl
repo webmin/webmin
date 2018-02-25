@@ -2008,7 +2008,7 @@ systemd automatically includes init scripts).
 sub list_systemd_services
 {
 # Get all systemd unit names
-my $out = &backquote_command("systemctl list-units --full --all");
+my $out = &backquote_command("systemctl list-units --full --all -t service --no-legend");
 &error("Failed to list systemd units : $out") if ($?);
 foreach my $l (split(/\r?\n/, $out)) {
 	$l =~ s/^[^a-z0-9\-\_\.]+//i;
