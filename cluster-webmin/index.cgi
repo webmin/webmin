@@ -104,14 +104,14 @@ else { print "<td></td>\n"; }
 
 @groups = &servers::list_all_groups(\@servers);
 if (@groups) {
-	print "<form action=add.cgi><td align=right>\n";
+	print "<td align=right><form action=add.cgi>\n";
 	print "<input type=submit name=gadd value='$text{'index_gadd'}'>\n";
 	print "<select name=group>\n";
 	foreach $g (@groups) {
 		print "<option>$g->{'name'}</option>\n";
 		}
 	print "</select>\n";
-	print "</td></form>\n";
+	print "</form></td>\n";
 	$formno++;
 	}
 else { print "<td></td>\n"; }
