@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # index.cgi
 # Display a menu of spamassassin config category icons
 
@@ -131,6 +131,7 @@ else {
 		push(@pages, 'razor') if (!$razor && $module_info{'usermin'});
 		push(@pages, 'setup') if ($spam_enabled == 0);
 		push(@pages, 'procmail') if ($delivery_enabled == 1);
+		push(@pages, 'amavisd') if ($delivery_enabled != 1);
 		push(@pages, 'db') if (!$module_info{'usermin'});
 		push(@pages, 'awl') if (&supports_auto_whitelist());
 		push(@pages, 'manual');
