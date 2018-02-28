@@ -4,8 +4,12 @@
 
 require './firewall-lib.pl';
 &ReadParse();
-if (&get_ipvx_version() == 6) { require './firewall6-lib.pl';
-	} else { require './firewall4-lib.pl'; }
+if (&get_ipvx_version() == 6) {
+	require './firewall6-lib.pl';
+	}
+else {
+	require './firewall4-lib.pl';
+	}
 $access{'cluster'} || &error($text{'ecluster'});
 &foreign_require("servers", "servers-lib.pl");
 @servers = &list_cluster_servers();

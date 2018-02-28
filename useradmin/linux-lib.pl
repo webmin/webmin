@@ -21,7 +21,8 @@ return &password_file($config{'gshadow_file'}) ? 2 : 0;
 sub open_last_command
 {
 local ($fh, $user) = @_;
-open($fh, "last $user |");
+local $quser = quotemeta($user);
+open($fh, "(last -F $quser || last $quser) |");
 }
 
 # read_last_line(handle)
@@ -35,9 +36,15 @@ while(1) {
 	if (!$line) { return (); }
 	if ($line =~ /system boot/) { next; }
 	if ($line =~ /^(\S+)\s+(\S+)\s+(\S+)?\s+(\S+\s+\S+\s+\d+\s+\d+:\d+)\s+\-\s+(\S+)\s+\((\d+:\d+)\)/) {
+		# jcameron  pts/0  fudu Thu Feb 22 09:47 - 10:15
+		return ($1, $2, $3, $4, $5 eq "down" ? "Shutdown" : $5, $6);
+		}
+	elsif ($line =~ /^(\S+)\s+(\S+)\s+(\S+)?\s+(\S+\s+\S+\s+\d+\s+\d+:\d+:\d+\s+\d+)\s+\-\s+(\S+\s+\S+\s+\d+\s+\d+:\d+:\d+\s+\d+)\s+\((\d+:\d+)\)/) {
+		# jcameron  pts/0  fudu Thu Feb 22 09:47 - 10:15
 		return ($1, $2, $3, $4, $5 eq "down" ? "Shutdown" : $5, $6);
 		}
 	elsif ($line =~ /^(\S+)\s+(\S+)\s+(\S+)?\s+(\S+\s+\S+\s+\d+\s+\d+:\d+)\s+still/) {
+		# root  pts/0  fudu  Fri Feb 23 18:46  still logged in   
 		return ($1, $2, $3, $4);
 		}
 	}

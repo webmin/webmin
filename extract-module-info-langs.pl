@@ -18,7 +18,10 @@ foreach my $f (@files) {
 	my %extract;
 	foreach my $k (@keys) {
 		if ($k =~ /^(desc|longdesc)_(\S+)/) {
-			$extract{$2} ||= { };
+			if (!$extract{$2}) {
+				$extract{$2} ||= { };
+				&read_file($f.".".$2, $extract{$2});
+				}
 			$extract{$2}->{$k} = $minfo{$k};
 			delete($minfo{$k});
 			}
