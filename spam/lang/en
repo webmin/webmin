@@ -1,7 +1,9 @@
 index_title=SpamAssassin Mail Filter
 index_ecmd=The SpamAssassin command $1 was not found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
 index_ecmd2=The SpamAssassin command $1 was not found on your system.
+index_aconfig=The Amavisd configuration file $1 was not found on your system. Maybe Amavisd is not installed, or your <a href='$2'>module configuration</a> is incorrect.
 index_econfig=The SpamAssassin local configuration file or directory $1 was not found on your system. Maybe SpamAssassin is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_unknown=unknown
 index_edb=Failed to connect to the SpamAssassin configuration database : $1. Check the <a href='$2'>module configuration</a> to be sure you are using the correct settings.
 index_version=SpamAssassin version $1
 index_warn_usermin=SpamAssassin does not appear to be set up in your Procmail configuration file $2 or the global file $1, so any configuration done using this module will have no effect unless SpamAssassin has been setup globally.
