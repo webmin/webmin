@@ -13,36 +13,23 @@ local(@rv, $line);
 open(CONF, $config{'amavisdconf'});
 while(<CONF>) {
 	s/\r|\n//g;
-	if (/^\s*#|^\s*$/) { next; }
-	if (/^\s*\$(\S+)\s*=\s*"(.*)";\s*$/ ||
-	    /^\s*\$(\S+)\s*=\s*'(.*)';\s*$/) {
+	if (/^\s*\$(\S+)\s*=\s*"(.*)";/ ||
+	    /^\s*\$(\S+)\s*=\s*'(.*)';/) {
 		# static config option
 		push(@rv, { 'name' => $1,
 			    'value' => &perl_unescape($2),
 			    'line' => $line,
 			    'eline' => $line });
-#print "<pre>--$_--</pre>";
+#print "<pre>$line: $1 = $2</pre>";
 		}
-	elsif (/^\s*\$(\S+)\s*=\s*<<\s*'(\S+)';\s*$/) {
-		# multiline config option
-		local $o = { 'name' => $1,
-			     'line' => $line };
-		local $end = $2;
-		while(<CONF>) {
-			$line++;
-			last if ($_ =~ /^$end[\r\n]+$/);
-			$o->{'value'} .= $_;
-			}
-		$o->{'eline'} = $line;
-		push(@rv, $o);
-		}
-	elsif (/^\s*\$(\S+)\s*=\s*(.*);\s*$/) {
+	elsif (/^\s*\$(\S+)\s*=\s*(.*);/) {
 		# computed config option
 		push(@rv, { 'name' => $1,
 			    'value' => $2,
 			    'computed' => 1,
 			    'line' => $line,
 			    'eline' => $line });
+#print "<pre>$line: $1 = $2</pre>";
 		}
 	$line++;
 	}
@@ -63,21 +50,8 @@ local $pos = $old->{'line'};
 local $v = $_[2];
 $v =~ s/\n$//;
 
-if ($_[3]) {
-        local $ov = $old->{'value'};
-        $ov =~ s/\n$//;
-        local $v = $_[2];
-        $v =~ s/\n$//;
-        local @lines = split(/\n/, $v, -1);
-        @lines = map { s/^-/--/; s/^$/-/; $_ } @lines;
-        splice(@$lref, $pos, $olen, ("\$$_[1] = <<'END';", @lines, "END"))
-                if (!$old || $v ne $ov);
-        $nlen = (!$old || $v ne $ov) ? @lines + 2 : $olen;
-	}
-else {
 	$v =~ s/\@/\\@/g;
 	splice(@$lref, $pos, $olen, "\$$_[1] = \"$v\";");
-	}
 }
 
 # amavis_find(name, &array)
