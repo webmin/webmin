@@ -8,7 +8,7 @@ $conf = &get_config();
 &ui_print_header(undef, $text{'amavisd_title'}, "");
 	
 my $local_cf=$config{'amavisdconf'};
-$local_cf=$text{'index_unknown'} if ($local_cf == "");
+$local_cf=$text{'index_unknown'} if (!$local_cf);
 if (!-r $local_cf ) {
 	# Config not found
 	print &text('index_aconfig',
