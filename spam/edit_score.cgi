@@ -16,7 +16,7 @@ print "$text{'score_desc'}<p>\n";
 # Required score before considering spam
 $hits_param = &version_atleast(3.0) ? "required_score" : "required_hits";
 $hits = &find($hits_param, $conf);
-$score_other=$text{'score_other'} if ($warn_procmail != 1);
+$score_other="<br><tt>$text{'amavis_warn'}</tt>" if ($warn_procmail != 1);
 print &ui_table_row($text{'score_hits'}.$score_other,
 	&opt_field($hits_param, $hits, 5, "5"));
 

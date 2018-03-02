@@ -105,13 +105,12 @@ else {
 			}
 		if ($spam_enabled == 0) {
 			if ($module_info{'usermin'}) {
-				print &text('index_warn_usermin',
-					    "<tt>$pmrcs[0]</tt>",
-					    "<tt>$pmrcs[1]</tt>"),"<p>\n";
+				print &ui_alert_box(&text('index_warn_usermin',
+					    "<tt>$pmrcs[0]</tt>","<tt>$pmrcs[1]</tt>"), 'warn');
 				}
 			else {
-				print &text('index_warn_webmin',
-					    "<tt>$pmrcs[0]</tt>"),"<p>\n";
+				print &ui_alert_box(&text('index_warn_webmin',
+					    "<tt>$pmrcs[0]</tt>"), 'warn');
 				}
 			}
 
