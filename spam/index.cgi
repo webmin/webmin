@@ -5,8 +5,7 @@
 require './spam-lib.pl';
 &ReadParse();
 $hsl = $module_info{'usermin'} ? undef :
-		&help_search_link("spamassassin", "perl", "google");
-&set_config_file_in(\%in);
+		&help_search_link("spamassassin procmail amavisd", "man","doc", "google");
 
 if (!&has_command($config{'spamassassin'}) ||
     (!$module_info{'usermin'} && !($vers = &get_spamassassin_version(\$out)))) {

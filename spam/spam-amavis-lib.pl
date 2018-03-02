@@ -13,24 +13,24 @@ local(@rv, $line);
 open(CONF, $config{'amavisdconf'});
 while(<CONF>) {
 	s/\r|\n//g;
+	if (/^\s*#|^\s*$/) { $line++; next; }
 	if (/^\s*\$(\S+)\s*=\s*"(.*)";/ ||
 	    /^\s*\$(\S+)\s*=\s*'(.*)';/) {
-		# static config option
+		# STRING config option
 		push(@rv, { 'name' => $1,
 			    'value' => &perl_unescape($2),
 			    'line' => $line,
 			    'eline' => $line });
-#print "<pre>$line: $1 = $2</pre>";
 		}
 	elsif (/^\s*\$(\S+)\s*=\s*(.*);/) {
-		# computed config option
+		# VALUE or computed config option
 		push(@rv, { 'name' => $1,
 			    'value' => $2,
 			    'computed' => 1,
 			    'line' => $line,
 			    'eline' => $line });
-#print "<pre>$line: $1 = $2</pre>";
 		}
+	# ignore multiline options for now ....
 	$line++;
 	}
 close(CONF);
@@ -180,16 +180,6 @@ sub save_amavis_multi_global
 {
 $in{$_[1]} =~ s/\r//g;
 &save_amavis_directive($_[0], $_[1], $in{$_[1]}, 1);
-}
-
-
-
-# amavis_help()
-# returns majordomo help link
-sub amavis_help
-{
-local $rv= &help_search_link("amavisd", "man", "doc", "google");
-return $rv;
 }
 
 1;
