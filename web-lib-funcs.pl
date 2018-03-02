@@ -1689,6 +1689,10 @@ formatted like dd/mmm/yyyy hh:mm:ss. Parameters are :
 =cut
 sub make_date
 {
+&load_theme_library();
+if (defined(&theme_make_date)) {
+	return &theme_make_date(@_);
+	}
 my ($secs, $only, $fmt) = @_;
 my @tm = localtime($secs);
 my $date;
