@@ -28,12 +28,12 @@ print &text('amavisd_desc'),"<p>\n";
 # spam tag2 level, when is classiefied as spam
 $hits = &amavis_find('sa_tag2_level_deflt', $conf);
 print &ui_table_row($text{'score_hits'},
-	&opt_field('sa_tag2_level_deflt', $hits, 7, "6.5"));
+	&opt_field('sa_tag2_level_deflt', $hits, 7, 6.5));
 
 # amavis quarantine spam level
 $hits = &amavis_find('sa_kill_level_deflt', $conf);
 print &ui_table_row($text{'amavis_quarantine_level'},
-	&opt_field('sa_kill_level_deflt', $hits, 7, "6.5"));
+	&opt_field('sa_kill_level_deflt', $hits, 7, 6.5));
 
 # amavis delete spam level
 $hits = &amavis_find('sa_quarantine_cutoff_level', $conf);

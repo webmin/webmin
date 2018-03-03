@@ -294,6 +294,7 @@ amavis_ekill=Hits above which a Spam message is quarantined is not numeric!
 amavis_ecut=Hits above which a Spam message is deleted is not numeric!
 amavis_eheader=Value for Modify Subject: header is not numeric!
 amavis_esize=Value for size above witch a message is not checked for Spam is not numeric!
+amavis_esubject=Value for Prepend text to Subject: header is not numeric!
 amavis_elocal=Value for disable Internet sources is not numeric!
 amavis_quarantine_level=Hits above which a Spam message is quarantined.
 amavis_delete_level=Hits above which a Spam message is deleted.

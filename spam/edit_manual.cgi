@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # Show a config file for manual editing
 
 require './spam-lib.pl';
@@ -9,6 +9,7 @@ require './spam-lib.pl';
 
 $conf = &get_config();
 @files = &unique(map { $_->{'file'} } @$conf);
+push(@files, $config{'amavisdconf'}) if (!$warn_procmail && -r $config{'amavisdconf'});
 $in{'manual'} ||= $files[0];
 &indexof($in{'manual'}, @files) >= 0 ||
 	&error($text{'manual_efile'});
