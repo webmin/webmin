@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 # Show a config file for manual editing
 
 require './spam-lib.pl';
