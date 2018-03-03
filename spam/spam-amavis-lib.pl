@@ -39,7 +39,7 @@ return \@rv;
 
 # amavis_check_value(value, numeric)
 # check if value is ok or not
-sub amavis_check_value
+sub check_amavis_value
 {
 if ($_[1]) {
 	return $_[0] =~ m/^[0-9\.\,\*\-\+\/]+$|\^$/;
@@ -57,7 +57,7 @@ local $lref = &read_file_lines($config{'amavisdconf'});
 if (!$old) {
     pop(@$lref);
     push(@$lref, "# new config added by webmin");
-    if (&amavis_check_value($v, 1)) {
+    if (&check_amavis_value($v, 1)) {
 	push(@$lref, "\$$n = $v;");
     } else {
 	push(@$lref, "\$$n = \"$v\";");

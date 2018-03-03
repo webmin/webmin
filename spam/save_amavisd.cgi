@@ -13,14 +13,18 @@ $conf = &get_amavis_config();
 
 
 # Check inputs
-#$in{'whereami'} =~ /^[A-z0-9\-\.]+$/ ||
-#	&error($text{'global_ewhereami'});
-#$in{'whoami'} =~ /^\S+$/ ||
-#	&error($text{'global_ewhoami'});
-#$in{'whoami_owner'} =~ /^\S+$/ ||
-#	&error($text{'global_eowner'});
-#-x $in{'sendmail_command'} ||
-#	&error(&text('global_esendmail', "<tt>$in{'sendmail_command'}</tt>"));
+&check_amavis_value($in{'sa_tag2_level_deflt'}, 1) ||
+	&error($text{'amavis_ehit'});
+&check_amavis_value($in{'sa_kill_level_deflt'}, 1) ||
+	&error($text{'amavis_ekill'});
+&check_amavis_value($in{'sa_quarantine_cutoff_level'}, 1) ||
+	&error($text{'amavis_ecut'});
+&check_amavis_value($in{'sa_spam_report_header'}, 1) ||
+	&error($text{'amavis_eheader'});
+&check_amavis_value($in{'sa_mail_body_size_limit'}, 1) ||
+	&error($text{'amavis_esize'});
+&check_amavis_value($in{'sa_local_tests_only'}, 1) ||
+	&error($text{'amavis_elocal'});
 
 # Save inputs
 &save_amavis_directive($conf, 'sa_tag2_level_deflt', $in{'sa_tag2_level_deflt'});
