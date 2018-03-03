@@ -1470,24 +1470,28 @@ if ($v ne ".") {
 return $v;
 }
 
-# set_ownership(file)
+# set_ownership(file, [slave-mode])
 # Sets the BIND ownership and permissions on some file
 sub set_ownership
 {
+my ($file, $slave) = @_;
 my ($user, $group, $perms);
 if ($config{'file_owner'}) {
 	# From config
 	($user, $group) = split(/:/, $config{'file_owner'});
 	}
-elsif ($_[0] =~ /^(.*)\/([^\/]+)$/) {
+elsif ($file =~ /^(.*)\/([^\/]+)$/) {
 	# Match parent dir
 	my @st = stat($1);
 	($user, $group) = ($st[4], $st[5]);
 	}
-if ($config{'file_perms'}) {
+if ($slave && $config{'slave_file_perms'}) {
+	$perms = oct($config{'slave_file_perms'});
+	}
+elsif ($config{'file_perms'}) {
 	$perms = oct($config{'file_perms'});
 	}
-&set_ownership_permissions($user, $group, $perms, $_[0]);
+&set_ownership_permissions($user, $group, $perms, $file);
 }
 
 my @cat_list;
