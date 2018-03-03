@@ -35,6 +35,7 @@ forwardzonefilename_format=Format for the name of forward zone files,0
 reversezonefilename_format=Format for the name of reverse zone files,0
 file_owner=Owner for zone files (user:group),3,Default
 file_perms=Permissions for zone files (in octal),3,Default
+slave_file_perms=Permissions for slave zone files (in octal),3,Same as above
 default_prins=Default master server for master zones,3,System's hostname
 default_master=Default master server(s) for slave zones,0
 updserial_on=Automatically update serial numbers,1,1-Yes,0-No

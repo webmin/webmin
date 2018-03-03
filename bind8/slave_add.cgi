@@ -123,8 +123,8 @@ foreach my $s (@add) {
 		my $sip = &to_ipaddress($s->{'host'});
 		my %zerrs;
 		foreach my $zone (grep { !$rgot{$_->{'name'}} } @zones) {
-			my ($slaveerr) = &create_on_slaves($zone->{'name'}, $myip,
-				undef, [ $s->{'host'} ], $zone->{'view'});
+			my ($slaveerr) = &create_on_slaves($zone->{'name'},
+			  $myip, undef, [ $s->{'host'} ], $zone->{'view'});
 			if ($slaveerr) {
 				$zerrs{$slaveerr->[0]->{'host'}} ||=
 					$slaveerr->[1];
@@ -148,11 +148,23 @@ foreach my $s (@add) {
 			next if (!$z || !$sip);
 			foreach my $d ("also-notify", "allow-transfer") {
 				my $n = &find($d, $z->{'members'});
-				next if (!$n);
-				my ($got) = grep { $_->{'name'} eq $sip }
-					      @{$n->{'members'}};
-				next if ($got);
-				push(@{$n->{'members'}}, { 'name' => $sip });
+				if ($n) {
+					# Block already exists
+					my ($got) =
+					    grep { $_->{'name'} eq $sip }
+						 @{$n->{'members'}};
+					next if ($got);
+					push(@{$n->{'members'}},
+					     { 'name' => $sip });
+					}
+				else {
+					# Need to add block
+					$n = { 'name' => $d,
+					       'type' => 1,
+					       'members' => [
+						     { 'name' => $sip },
+					       ] };
+					}
 				&lock_file($z->{'file'});
 				&save_directive($z, $d, [ $n ], 1);
 				&flush_file_lines();
