@@ -15,6 +15,7 @@ if (!-r $amavis_cf ) {
 		"<tt>$amavis_cf</tt>",
 		"../config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer($redirect_url, $text{'index_return'});
+	exit
 	}
 
 $conf = &get_amavis_config();
@@ -22,7 +23,7 @@ $conf = &get_amavis_config();
 print &text('amavisd_desc'),"<p>\n";
 
 # Find the existing config
-&start_form("save_amavis.cgi", $text{'score_header'});
+&start_form("save_amavisd.cgi", $text{'score_header'});
 
 # spam tag2 level, when is classiefied as spam
 $hits = &amavis_find('sa_tag2_level_deflt', $conf);
@@ -43,7 +44,7 @@ print &ui_table_hr();
 # should amavis rewrite subject
 $rewrite = &amavis_find('sa_spam_modifies_subj', $conf);
 print &ui_table_row($text{'report_rewrite'},
-	&yes_no_field("rewrite_subject", $rewrite, 0));
+	&yes_no_field('sa_spam_modifies_subj', $rewrite, 0));
 
 # do how to modify subject 
 $hits = &amavis_find('sa_spam_subject_tag', $conf);
@@ -52,7 +53,7 @@ print &ui_table_row($text{'report_rsubject'},
 
 # insert X-Spam header 
 $hits = &amavis_find('sa_spam_report_header', $conf);
-print &ui_table_row($text{'report_rsubject'},
+print &ui_table_row($text{'amavis_add_header'},
 	&yes_no_field('sa_spam_report_header', $hits, 0));
 
 # do not check mail larger then

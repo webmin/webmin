@@ -37,21 +37,45 @@ close(CONF);
 return \@rv;
 }
 
+# amavis_check_value(value, numeric)
+# check if value is ok or not
+sub amavis_check_value
+{
+if ($_[1]) {
+	return $_[0] =~ m/^[0-9\.\,\*\-\+\/]+$|\^$/;
+    }
+return 1;
+}
 
 # save_amavis_directive(&config, name, value, multiline)
 # Update some directive in the global config file
 sub save_amavis_directive
 {
-local $old = &findamavis_find($_[1], $_[0]);
-return if (!$old);
-local $lref = &read_file_lines($config{'majordomo_cf'});
+local ($c,$n,$v,$m) = @_;
+local $old = &amavis_find($n, $c);
+local $lref = &read_file_lines($config{'amavisdconf'});
+if (!$old) {
+    pop(@$lref);
+    push(@$lref, "# new config added by webmin");
+    if (&amavis_check_value($v, 1)) {
+	push(@$lref, "\$$n = $v;");
+    } else {
+	push(@$lref, "\$$n = \"$v\";");
+    }
+    push(@$lref, "1;");
+    return;
+}
+
 local $olen = $old->{'eline'} - $old->{'line'} + 1;
 local $pos = $old->{'line'};
-local $v = $_[2];
 $v =~ s/\n$//;
 
 	$v =~ s/\@/\\@/g;
-	splice(@$lref, $pos, $olen, "\$$_[1] = \"$v\";");
+	if ($old->{'computed'}) {
+		splice(@$lref, $pos, $olen, "\$$n = $v; # modified by webmin");
+	} else {
+		splice(@$lref, $pos, $olen, "\$$n = \"$v\"; # modified by webmin");
+	}
 }
 
 # amavis_find(name, &array)
@@ -71,7 +95,7 @@ return @rv ? wantarray ? @rv : $rv[0]
 sub amavis_find_value
 {
 local(@v);
-@v = &findamavis_find($_[0], $_[1]);
+@v = &amavis_find($_[0], $_[1]);
 @v = grep { !$_->{'computed'} } @v;
 if (!@v) { return undef; }
 elsif (wantarray) { return map { $_->{'value'} } @v; }
@@ -96,90 +120,10 @@ local $str = $_[0];
 local %donevar;
 while($str =~ /\$([A-z0-9\_]+)/ && !$donevar{$1}) {
 	$donevar{$1}++;
-	local $val = &find_value($1, $_[1]);
+	local $val = &amavis_find_value($1, $_[1]);
 	$str =~ s/\$([A-z0-9\_]+)/$val/;
 	}
 return $str;
-}
-
-# amavis_choice_input(name, text, &config, [opt, display]+)
-sub amavis_choice_input
-{
-local $v = &find_value($_[0], $_[2]);
-local $rv = "<td><b>$_[1]</b></td> <td nowrap>";
-for($i=3; $i<@_; $i+=2) {
-	local $ch = $v eq $_[$i] ? "checked" : "";
-	$rv .= "<input name=\"$_[0]\" type=\"radio\" value=\"$_[$i]\" $ch> ".$_[$i+1];
-	}
-$rv .= "</td>\n";
-return $rv;
-}
-
-# amavis_save_choice(&config, file, name)
-sub amavis_save_choice
-{
-&save_list_directive($_[0], $_[1], $_[2], $in{$_[2]});
-}
-
-# amavis_opt_input(name, text, &config, default, size, [units])
-sub amavis_opt_input
-{
-local $v = &find_value($_[0], $_[2]);
-local $rv = "<td><b>$_[1]</b></td> <td nowrap ".
-	    ($_[4] > 30 ? "colspan=\"3\"" : "").">";
-$rv .= sprintf "<input type=\"radio\" name=\"$_[0]_def\" value=\"1\" %s> $_[3]\n",
-		$v eq "" ? "checked" : "";
-$rv .= sprintf "<input type=\"radio\" name=\"$_[0]_def\" value=\"0\" %s>\n",
-		$v eq "" ? "" : "checked";
-local $passwd = $_[0] =~ /passwd/ ? "type=\"password\"" : "";
-$rv .= "<input $passwd name=\"$_[0]\" size=\"$_[4]\" value=\"$v\"> $_[5]</td>\n";
-return $rv;
-}
-
-# amavis_save_opt(&config, file, name, [&func])
-sub amavis_save_opt
-{
-if ($in{"$_[2]_def"}) { &save_list_directive($_[0], $_[1], $_[2], ""); }
-elsif ($_[3] && ($err = &{$_[3]}($in{$_[2]}))) { &error($err); }
-else { &save_list_directive($_[0], $_[1], $_[2], $in{$_[2]}); }
-}
-
-# amavis_select_input(name, text, &config, [opt, display]+)
-sub amavis_select_input
-{
-local $v = &find_value($_[0], $_[2]);
-local $rv = "<td><b>$_[1]</b></td> <td nowrap><select name=$_[0]>";
-for($i=3; $i<@_; $i+=2) {
-	local $ch = $v eq $_[$i] ? "selected" : "";
-	$rv .= "<option value='$_[$i]' $ch>".$_[$i+1]."</option>";
-	}
-$rv .= "</select></td>\n";
-return $rv;
-}
-
-# save_select(&config, file, name)
-sub amavis_save_select
-{
-&save_list_directive($_[0], $_[1], $_[2], $in{$_[2]});
-}
-
-# multi_input(name, text, &config)
-sub amavis_multi_input
-{
-local $v = &find_value($_[0], $_[2]);
-local $l = 1 + $v =~ tr/\n|\r//;
-$l=4  if ($l <= 4);
-$l=15 if ($l >= 14);
-local $rv = "<td valign=\"top\"><b>$_[1]</b></td> <td colspan=\"3\">".
-	    "<textarea rows=\"$l\" cols=\"80\" name=\"$_[0]\">\n$v</textarea></td>\n";
-return $rv;
-}
-
-# save_multi_global(&config, name)
-sub save_amavis_multi_global
-{
-$in{$_[1]} =~ s/\r//g;
-&save_amavis_directive($_[0], $_[1], $in{$_[1]}, 1);
 }
 
 1;
