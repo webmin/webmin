@@ -3,7 +3,7 @@
 # Update webmin/usermin to the latest develop version  from GitHub repo
 # inspired by authentic-theme/theme-update.sh script, thanks qooob
 #
-# Version 1.5.1, 2018-02-17
+VERS="1.5.4, 2018-02-22"
 #
 # Kay Marquardt, kay@rrr.de, https://github.com/gandelwartz
 #############################################################################
@@ -48,6 +48,7 @@ fi
 HOST="https://github.com"
 REPO="webmin/$PROD"
 GIT="git"
+BRANCH=""
 
 # temporary locations for git clone
 WTEMP="${DIR}/.~files/webadmin" 
@@ -59,8 +60,8 @@ LTEMP="${DIR}/.~lang"
 
 # help requested output usage
 if [[ "$1" == "-h" || "$1" == "--help" ]] ; then
-    echo -e "${NC}${ORANGE}This is the unofficial webmin update script${NC}"
-    echo "Usage:  ${IAM} [-force] [-repo:username/xxxmin] [-release[:number]] [-file file ...]"
+    echo -e "${NC}${ORANGE}This is the unofficial webmin update script, ${VERS}${NC}"
+    echo "Usage:  ${IAM} [-force] [-repo:username/xxxmin] [-branch:xxx] [-release[:number]] [-file file ...]"
     [[ "$1" == "--help" ]] && cat <<EOF
 
 Parameters:
@@ -72,23 +73,26 @@ Parameters:
         pull from alternative github repo, format: -repo:username/reponame
         reponame must be "webmin" or "usermin"
         default github repo: webmin/webmin
+    -branch
+        pull given branch from repository
     -release
         pull a released version, default: -release:latest
     -file
         pull only the given file(s) or dir(s) from repo
+
 Examples:
     ${IAM}
     	uodate everthing from default webmin repository
     ${IAM} -force or ${IAM} -yes
     	same but without asking,
-    ${IAM} -fore -repo:qooob/webmin
+    ${IAM} -force -repo:qooob/webmin
     	updadte from qooobs repository without asking
     ${IAM} -file module/module.info
     	pull module.info for given module
     ${IAM} -file cpan
     	pull everything in cpan
     ${IAM} -file cpan/*
-    	pull only existing files / dirs in cpan
+    	pull only already existing files / dirs in cpan
     ${IAM} -file module/lang
     	pull all lang files of a module
     ${IAM} -fore -repo:qooob/webmin -file */lang
@@ -166,6 +170,17 @@ if [[ "$1" == *"-repo"* ]]; then
         fi
 fi
 
+# alternative branch given
+if [[ "$1" == *"-branch"* ]]; then
+        if [[ "$1" == *":"* ]] ; then
+          BRANCH=" --branch ${1##*:}"
+          shift
+        else
+          echo -e "${ORANGE}./`basename $0`:${NC} Missing argument for parameter -branch aborting ..."
+          exit 1
+        fi
+fi
+
 # warn about possible side effects because webmins makedist.pl try cd to /usr/local/webmin (and more)
 [[ -d "/usr/local/webadmin" ]] && echo -e "${ORANGE}Warning: Develop dir /usr/local/webadmin exist, update may fail!${NC}"
 
@@ -175,9 +190,9 @@ REPLY="y"
 
 if [ "${ASK}" == "YES" ] ; then
     if [[ "$1" != "-release"* ]] ; then
-        echo -e "${RED}Warning:${NC} ${ORANGE}update from non release repository${NC} $HOST/$REPO ${ORANGE}may break your installation!${NC}"
+        echo -e "${RED}Warning:${NC} ${ORANGE}update from non release repository${NC} ${HOST}/${REPO}${BRANCH} ${ORANGE}may break your installation!${NC}"
     fi
-    read -p "Would you like to update "${PROD^}" from ${HOST}/${REPO} [y/N] " -n 1 -r
+    read -p "Would you like to update "${PROD^}" from ${HOST}/${REPO}${BRANCH} [y/N] " -n 1 -r
     echo
 fi
 
@@ -206,8 +221,8 @@ fi
           ERROR="Release ${RRELEASE} doesn't exist. "
         fi
   else
-        echo -e "${CYAN}Pulling in latest changes for${NC} ${ORANGE}${PROD^}${NC} $RRELEASE ($HOST/$REPO) ..."
-        ${GIT} clone --depth 1 --quiet  $HOST/$REPO.git "${TEMP}"
+        echo -e "${CYAN}Pulling in latest changes for${NC} ${ORANGE}${PROD^}${NC} $RRELEASE (${HOST}/${REPO}${BRANCH}) ..."
+        ${GIT} clone --depth 1 --quiet  ${BRANCH} $HOST/$REPO.git "${TEMP}"
   fi
   # on usermin!! pull also webmin to resolve symlinks later!
   WEBMREPO=`echo ${REPO} | sed "s/\/usermin$/\/webmin/"`
@@ -221,12 +236,13 @@ fi
 
     ####################
     # start processing pulled source
-    version="`head -c -1 ${TEMP}/version``cd ${TEMP}; ${GIT} log -1 --format=%cd --date=format:'%m%d%H%M'`" 
+	# add latest changeset date to original version, works with git 1.7+
+    version="`head -c -1 ${TEMP}/version``cd ${TEMP}; date -d @$(${GIT} log -n1 --format='%at') '+%m%d%H%M'`" 
     DOTVER=`echo ${version} | sed 's/-/./'`
     TARBALL="${TEMP}/tarballs/${PROD}-${DOTVER}"
     ###############
     # start update
-    echo -en "${CYAN}Start update for${NC} ${PROD^} ..."
+    echo -en "${CYAN}Start update for${NC} ${PROD^} ${version}..."
     # create missing dirs, simulate authentic present
     mkdir ${TEMP}/tarballs ${TEMP}/authentic-theme 
     cp authentic-theme/LICENSE ${TEMP}/authentic-theme
@@ -235,9 +251,9 @@ fi
     echo -e "#!/bin/sh\necho" > ${TEMP}/tar; chmod +x ${TEMP}/tar
     export PATH="${TEMP}:${PATH}"
     # run makedist.pl
-    ( cd ${TEMP}; perl makedist.pl ${DOTVER} ) | while read input; do echo -n "."; done
+    ( cd ${TEMP}; perl makedist.pl ${DOTVER} 2>&1) | while read input; do echo -n "."; done
     echo -e "\n"
-    if [[ ! -f "${TEMP}/tarballs/webmin-${DOTVER}.tar.gz" ]] ; then
+    if [[ ! -f "${TARBALL}.tar.gz" ]] ; then
         echo -e "${RED}Error: makedist.pl failed! ${NC}aborting ..."
         rm -rf .~files
         exit 5
@@ -264,7 +280,7 @@ fi
     if [[ "$1" != "-file" ]] ; then
         # prepeare unattended upgrade
         echo "${version}" >"${TARBALL}/version"
-        cp "${TEMP}/chinese-to-utf8.pl" .
+        cp "${WTEMP}/chinese-to-utf8.pl" .
         atboot="NO"
         makeboot="NO"
         nouninstall="YES"
@@ -324,7 +340,7 @@ fi
     fi
   else
         # something went wrong
-        echo -e "${RED}${ERROR} Error: updating files, failed.${NC}"
+        echo -e "${RED}${ERROR} Error: update failed:${NC}${ORANGE} ${GIT} clone ${BRANCH} $RRELEASE $HOST/$REPO.git ${NC}"
         exit 4
   fi
 

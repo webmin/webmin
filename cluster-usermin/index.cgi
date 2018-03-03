@@ -78,7 +78,7 @@ $themesel .= "</select>\n";
 print "<table width=100%><tr>\n";
 @addservers = grep { !$gothost{$_->{'id'}} } @servers;
 if (@addservers) {
-	print "<form action=add.cgi><td>\n";
+	print "<td><form action=add.cgi><td>\n";
 	print "<input type=submit name=add value='$text{'index_add'}'>\n";
 	print "<select name=server>\n";
 	foreach $s (@addservers) {
@@ -93,14 +93,14 @@ else { print "<td></td>\n"; }
 # Show button for adding server group
 @groups = &servers::list_all_groups(\@servers);
 if (@groups) {
-	print "<form action=add.cgi><td align=right>\n";
+	print "<td align=right><form action=add.cgi>\n";
 	print "<input type=submit name=gadd value='$text{'index_gadd'}'>\n";
 	print "<select name=group>\n";
 	foreach $g (@groups) {
 		print "<option>$g->{'name'}</option>\n";
 		}
 	print "</select>\n";
-	print "</td></form>\n";
+	print "</form></td>\n";
 	$formno++;
 	}
 else { print "<td></td>\n"; }

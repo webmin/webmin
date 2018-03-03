@@ -62,8 +62,7 @@ elsif ($config{'init_base'} && -d "/etc/init" &&
        &execute_command("/sbin/init --version") == 0) {
 	$init_mode = "upstart";
 	}
-elsif ($config{'init_base'} && -d "/etc/systemd" &&
-       &has_command("systemctl") &&
+elsif (-d "/etc/systemd" && &has_command("systemctl") &&
        &execute_command("systemctl list-units") == 0) {
 	$init_mode = "systemd";
 	}
@@ -2008,7 +2007,7 @@ systemd automatically includes init scripts).
 sub list_systemd_services
 {
 # Get all systemd unit names
-my $out = &backquote_command("systemctl list-units --full --all");
+my $out = &backquote_command("systemctl list-units --full --all -t service --no-legend");
 &error("Failed to list systemd units : $out") if ($?);
 foreach my $l (split(/\r?\n/, $out)) {
 	$l =~ s/^[^a-z0-9\-\_\.]+//i;
@@ -2023,12 +2022,13 @@ foreach my $l (split(/\r?\n/, $out)) {
 
 # Also find unit files for units that may be disabled at boot and not running,
 # and so don't show up in systemctl list-units
-opendir(UNITS, &get_systemd_root());
-push(@units, grep { !/\.wants$/ && !/^\./ } readdir(UNITS));
+my $root = &get_systemd_root();
+opendir(UNITS, $root);
+push(@units, grep { !/\.wants$/ && !/^\./ && !-d "$root/$_" } readdir(UNITS));
 closedir(UNITS);
 
 # Also add units from list-unit-files that also don't show up
-$out = &backquote_command("systemctl list-unit-files");
+$out = &backquote_command("systemctl list-unit-files -t service --no-legend");
 foreach my $l (split(/\r?\n/, $out)) {
 	if ($l =~ /^(\S+\.service)\s+disabled/ ||
 	    $l =~ /^(\S+)\s+disabled/) {
