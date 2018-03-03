@@ -288,7 +288,7 @@ razor_failed=.. failed! See the error output above for the reason why.
 
 amavisd_title=Amavisd Spam Delivery
 amavisd_ok=Change Amavisd Delivery
-amavis_desc=The form can be used to change the Amavisd configuration that determines what happens to messages classified as spam.
+amavisd_desc=The form can be used to change the Amavisd configuration that determines what happens to messages classified as spam.
 amavis_warn=If you use Amavisd for Spam filtering, some options will be ignored.
 amavis_ehit=Hits above which a message is considered spam is not numeric!
 amavis_ekill=Hits above which a Spam message is quarantined is not numeric!
