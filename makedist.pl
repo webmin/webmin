@@ -137,6 +137,7 @@ foreach $d (@dirlist) {
 opendir(DIR, "$tardir/$dir");
 while($d = readdir(DIR)) {
 	# set depends in module.info to this version
+	next if ($d eq "authentic-theme");	# Theme version matters
 	local $minfo = "$tardir/$dir/$d/module.info";
 	local $tinfo = "$tardir/$dir/$d/theme.info";
 	if (-r $minfo) {
