@@ -1,40 +1,41 @@
-lang=en,titles=1	English US
-lang=en_GB,titles=1,fallback=en	English UK
-lang=de,titles=1	German
-lang=ru_SU,charset=koi8-r,titles=0	Russian
-lang=ru_RU,charset=windows-1251,titles=0	Russian
-lang=es,titles=1	Spanish
-lang=fr,titles=1	French
-lang=pt,titles=1	Portuguese
-lang=pt_BR,titles=1,fallback=pt	Portuguese (Brazilian)
-lang=zh_TW.Big5,charset=Big5,titles=0	Traditional Chinese
-lang=zh_CN,titles=0,charset=GB2312	Simplified Chinese
-lang=sv,titles=1	Swedish
-lang=it,titles=1	Italian
-lang=hu,titles=1,charset=iso-8859-2	Hungarian
-lang=he,titles=0,charset=iso-8859-8-I	Hebrew
-lang=tr,titles=1,charset=iso-8859-9	Turkish
-lang=pl,charset=iso-8859-2,titles=1	Polish
-lang=nl,titles=1	Dutch
-lang=ja_JP.euc,charset=EUC-JP,titles=0	Japanese
-lang=si,charset=iso-8859-2,titles=0	Slovenian
-lang=ko_KR.euc,charset=EUC-KR,titles=0	Korean
-lang=ca,titles=1        Catalan
-lang=cz,charset=iso-8859-2,titles=0	Czech
-lang=th,charset=tis-620,titles=0	Thai
-lang=no,titles=1,charset=iso-8859-15	Norwegian
 lang=af,titles=1	Afrikaans
-lang=sk,titles=1,charset=iso-8859-2	Slovak
-lang=lt,titles=1,charset=windows-1257	Lithuanian
+lang=ar,titles=0,charset=iso-8859-6-i,rtl=1	Arabic
 lang=bg,charset=windows-1251,titles=1	Bulgarian
-lang=el,titles=0,charset=iso-8859-7	Greek
+lang=ca,titles=1	Catalan
+lang=cz,charset=iso-8859-2,titles=0	Czech
 lang=da,titles=1	Danish
-lang=uk_UA,titles=0,charset=windows-1251		Ukranian
-lang=ar,titles=0,charset=iso-8859-6-I,rtl=1	Arabic
-lang=tl,titles=1	Klingon
-lang=ms,titles=1	Malay
-lang=ms_MY,titles=1	Bahasa Malaysia
-lang=fa,titles=0,dir=rtl,charset=UTF-8	Persian
-lang=ro,titles=1	Romanian
-lang=fi,titles=1	Finnish
+lang=de,titles=1	German
+lang=el,titles=0,charset=iso-8859-7	Greek
+lang=en,titles=1	English US
+lang=en_gb,titles=1,fallback=en	English UK
+lang=es,titles=1	Spanish
 lang=eu,titles=1	Basque
+lang=fa,titles=0,dir=rtl,charset=utf-8	Persian
+lang=fi,titles=1	Finnish
+lang=fr,titles=1	French
+lang=he,titles=0,charset=iso-8859-8-i	Hebrew
+lang=hu,titles=1,charset=iso-8859-2	Hungarian
+lang=it,titles=1	Italian
+lang=ja_jp.euc,charset=euc-jp,titles=0	Japanese
+lang=ko_kr.euc,charset=euc-kr,titles=0	Korean
+lang=lt,titles=1,charset=windows-1257	Lithuanian
+lang=lv,titles=1,charset=utf-8	Latvian
+lang=ms,titles=1	Malay
+lang=ms_my,titles=1	Bahasa Malaysia
+lang=nl,titles=1	Dutch
+lang=no,titles=1,charset=iso-8859-15	Norwegian
+lang=pl,charset=iso-8859-2,titles=1	Polish
+lang=pt,titles=1	Portuguese
+lang=pt_br,titles=1,fallback=pt	Portuguese (Brazilian)
+lang=ro,titles=1	Romanian
+lang=ru_ru,charset=windows-1251,titles=0	Russian
+lang=ru_su,charset=koi8-r,titles=0	Russian
+lang=si,charset=iso-8859-2,titles=0	Slovenian
+lang=sk,titles=1,charset=iso-8859-2	Slovak
+lang=sv,titles=1	Swedish
+lang=th,charset=tis-620,titles=0	Thai
+lang=tl,titles=1	Klingon
+lang=tr,titles=1,charset=iso-8859-9	Turkish
+lang=uk_ua,titles=0,charset=windows-1251	Ukranian
+lang=zh_cn,titles=0,charset=gb2312	Simplified Chinese
+lang=zh_tw.big5,charset=big5,titles=0	Traditional Chinese
