@@ -28,12 +28,17 @@ print &text('amavisd_desc'),"<p>\n";
 # spam tag2 level, when is classiefied as spam
 $hits = &amavis_find('sa_tag2_level_deflt', $conf);
 print &ui_table_row($text{'amavis_hits'},
-	&opt_field('sa_tag2_level_deflt', $hits, 7, 6.5));
+	&opt_field('sa_tag2_level_deflt', $hits, 5, "undef"));
 
 # amavis quarantine spam level
 $hits = &amavis_find('sa_kill_level_deflt', $conf);
 print &ui_table_row($text{'amavis_quarantine_level'},
-	&opt_field('sa_kill_level_deflt', $hits, 7, 6.5));
+	&opt_field('sa_kill_level_deflt', $hits, 5, "undef"));
+
+# amavis no DSN spam level
+$hits = &amavis_find('sa_dsn_cutoff_level', $conf);
+print &ui_table_row($text{'amavis_dsn_level'},
+	&opt_field('sa_dsn_cutoff_level', $hits, 5, "undef"));
 
 # amavis delete spam level
 $hits = &amavis_find('sa_quarantine_cutoff_level', $conf);
@@ -44,7 +49,7 @@ print &ui_table_hr();
 # should amavis rewrite subject
 $rewrite = &amavis_find('sa_spam_modifies_subj', $conf);
 print &ui_table_row($text{'amavis_rewrite'},
-	&yes_no_field('sa_spam_modifies_subj', $rewrite, 0));
+	&yes_no_field('sa_spam_modifies_subj', $rewrite, "undef"));
 
 # do how to modify subject 
 $hits = &amavis_find('sa_spam_subject_tag', $conf);
@@ -56,15 +61,20 @@ $hits = &amavis_find('sa_spam_report_header', $conf);
 print &ui_table_row($text{'amavis_report_header'},
 	&yes_no_field('sa_spam_report_header', $hits, 0));
 
-# do not check mail larger then
-$hits = &amavis_find('sa_mail_body_size_limit', $conf);
-print &ui_table_row($text{'amavis_size_limit'},
-	&opt_field('sa_mail_body_size_limit', $hits, 9, "undef"));
+# character to use for spam level 
+$hits = &amavis_find('sa_spam_level_char', $conf);
+print &ui_table_row($text{'amavis_level_char'},
+	&opt_field('sa_spam_level_char', $hits, 2, "*"));
 
 # network checks enabled?
 $rewrite = &amavis_find('sa_local_tests_only', $conf);
 print &ui_table_row($text{'amavis_local_only'},
 	&yes_no_field('sa_local_tests_only', $rewrite, 0));
+
+# do not check mail larger then
+$hits = &amavis_find('sa_mail_body_size_limit', $conf);
+print &ui_table_row($text{'amavis_size_limit'},
+	&opt_field('sa_mail_body_size_limit', $hits, 9, "undef"));
 
 
 &end_form(undef, $text{'amavis_ok'});
