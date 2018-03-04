@@ -293,6 +293,7 @@ amavis_econfig=The Amavisd configuration file $1 was not found on your system. M
 amavis_hits=Hits above which a message is considered spam.
 amavis_ehit=Hits above which a message is considered spam is not a value!
 amavis_ekill=Hits above which a Spam message is quarantined is not a value!
+amavis_edsn=Hits above which no notification is sent to sender is not a value!
 amavis_ecut=Hits above which a Spam message is deleted is not a value!
 amavis_eheader=Value for Modify Subject: header is not a value!
 amavis_esize=Value for size above witch a message is not checked for Spam is not a value!
