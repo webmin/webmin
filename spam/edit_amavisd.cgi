@@ -22,7 +22,12 @@ $conf = &get_amavis_config();
 
 print &text('amavisd_desc'),"<p>\n";
 
+# tabbed interface for config and quaratine
+@tabs=(['config', $text{'amavis_tab_config'}], [ 'quarantine', $text{'amavis_tab_quarantine'} ]);
+print &ui_tabs_start(\@tabs, 'mode','config');
+
 # Find the existing config
+print &ui_tabs_start_tab("mode", "config");
 &start_form("save_amavisd.cgi", $text{'score_header'});
 
 # spam tag2 level, when is classiefied as spam
@@ -78,6 +83,55 @@ print &ui_table_row($text{'amavis_size_limit'},
 
 
 &end_form(undef, $text{'amavis_ok'});
+print &ui_tabs_end_tab("mode", "config");
+
+# list quarantine
+print &ui_tabs_start_tab("mode", "quarantine");
+print &ui_table_start($text{'amavis_tab_quarantine'}, "width=100%", 2);
+
+# get amavids.conf values
+$dir=&amavis_find_value('QUARANTINEDIR', $conf);
+$to=&amavis_find_value('spam_quarantine_to', $conf);
+$method=&amavis_find_value('spam_quarantine_method', $conf);
+$admin=&amavis_find_value('spam_admin', $conf);
+$admin="undef" if (!$admin);
+
+$in="smtp:[".&amavis_find_value('inet_socket_bind', $conf)."]:".&amavis_find_value('inet_socket_port', $conf);
+$out=&amavis_find_value('forward_method', $conf);
+
+print &ui_table_span($text{'amavis_quarantine_desc'}."<p>");
+
+print &ui_table_row($text{'amavis_spam_admin'}, $admin);
+
+if (!$to && $method =~ /^local:/) {
+	print &ui_table_span("<b>".&text('amavis_quarantine_off',$text{'amavisdconf'})."<p>".$text{'amavis_nostat'}."</b>");
+	print &ui_table_span("<b>".$text{'amavis_nostat'."</b>"});
+} else {
+    if ($to =~ /@/) {
+	# spam is forwarded to mail adress
+	print &ui_table_row("Your Spam is forwarded to mail adress");
+	print &ui_table_span("<b>".$text{'amavis_nostat'."</b>"});
+    } else {
+	if ($method =~ s/^bsmtp://) {
+	    # spam is quarantined in bsmtp format
+	    $method =~ s/\%.*$/*/;
+	    print &ui_table_row($text{'amavis_quarantine_bsmtp'}, $dir."/".$method);
+	} else {
+	    # spam is qurantined local
+	    $method =~ s/^local:(.*?)\%.*$/\1*/;
+	    print &ui_table_row($text{'amavis_quarantine_local'}, $dir."/".$method);
+	}
+	# display spamstat ...
+	print &ui_table_hr();
+	print &ui_table_row($text{'amavis_quarantine_total'},`ls $dir/$method| wc -l`);
+    }
+}
+
+print &ui_table_end();
+print &ui_tabs_end_tab("mode", "quarantine");
+
+#end tabbed interface
+print &ui_tabs_end(1);
 
 &ui_print_footer($redirect_url, $text{'index_return'});
 
