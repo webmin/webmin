@@ -9,6 +9,8 @@ after_ecmd=Nach dem Speichern-Befehl fehlgeschlagen: $1
 amavisd_title=Amavisd Spam Konfiguration
 amavisd_desc=Das Formular kann verwendet werden, um in der Amavisd-Konfiguration festzulegen wann Nachrichten als unerw&uuml;scht eingestuft und wie diese behandelt werden.
 amavis_ok=&Auml;ndere Amavisd Konfiguration 
+amavis_tab_config=Amavisd Konfiguration
+amavis_tab_quarantine=Quarant&auml;ne Status
 amavis_hits=Spam-Wert, ab dem eine Mail als Spam klassifiziert wird
 amavis_econfig=Die Amavisd-Konfigurationsdatei $1 wurde nicht auf Ihrem System gefunden. Entweder ist Amavisd nicht installiert, oder Ihre <a href='$2'>Modulkonfiguration</a> ist falsch.
 amavis_ehit=Spam-Wert, ab dem eine Mail als Spam klassifiziert wird ist keine Zahl!

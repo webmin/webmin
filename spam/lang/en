@@ -288,6 +288,8 @@ razor_failed=.. failed! See the error output above for the reason why.
 amavisd_title=Amavisd Spam Delivery
 amavisd_desc=The form can be used to change the Amavisd configuration that determines what happens to messages classified as spam.
 amavis_ok=Change Amavisd Delivery
+amavis_tab_config=Amavisd Configuration
+amavis_tab_quarantine=Quarantine Status
 amavis_warn=If you use Amavisd for Spam filtering, some options will be ignored.
 amavis_econfig=The Amavisd configuration file $1 was not found on your system. Maybe Amavisd is not installed, or your <a href='$2'>module configuration</a> is incorrect.
 amavis_hits=Hits above which a message is considered spam.
