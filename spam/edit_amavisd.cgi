@@ -11,7 +11,7 @@ my $amavis_cf=$config{'amavisdconf'};
 $amavis_cf=$text{'index_unknown'} if (!$amavis_cf);
 if (!-r $amavis_cf ) {
 	# Config not found
-	print &text('index_aconfig',
+	print &text('amavis_econfig',
 		"<tt>$amavis_cf</tt>",
 		"../config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer($redirect_url, $text{'index_return'});
@@ -27,7 +27,7 @@ print &text('amavisd_desc'),"<p>\n";
 
 # spam tag2 level, when is classiefied as spam
 $hits = &amavis_find('sa_tag2_level_deflt', $conf);
-print &ui_table_row($text{'score_hits'},
+print &ui_table_row($text{'amavis_hits'},
 	&opt_field('sa_tag2_level_deflt', $hits, 7, 6.5));
 
 # amavis quarantine spam level
@@ -43,17 +43,17 @@ print &ui_table_row($text{'amavis_delete_level'},
 print &ui_table_hr();
 # should amavis rewrite subject
 $rewrite = &amavis_find('sa_spam_modifies_subj', $conf);
-print &ui_table_row($text{'report_rewrite'},
+print &ui_table_row($text{'amavis_rewrite'},
 	&yes_no_field('sa_spam_modifies_subj', $rewrite, 0));
 
 # do how to modify subject 
 $hits = &amavis_find('sa_spam_subject_tag', $conf);
-print &ui_table_row($text{'report_rsubject'},
+print &ui_table_row($text{'amavis_rsubject'},
 	&opt_field('sa_spam_subject_tag', $hits, 9, "undef"));
 
 # insert X-Spam header 
 $hits = &amavis_find('sa_spam_report_header', $conf);
-print &ui_table_row($text{'amavis_add_header'},
+print &ui_table_row($text{'amavis_report_header'},
 	&yes_no_field('sa_spam_report_header', $hits, 0));
 
 # do not check mail larger then
@@ -63,12 +63,11 @@ print &ui_table_row($text{'amavis_size_limit'},
 
 # network checks enabled?
 $rewrite = &amavis_find('sa_local_tests_only', $conf);
-print &ui_table_row($text{'amavis_local_tests_only'},
+print &ui_table_row($text{'amavis_local_only'},
 	&yes_no_field('sa_local_tests_only', $rewrite, 0));
 
 
-
-&end_form(undef, $text{'amavisd_ok'});
+&end_form(undef, $text{'amavis_ok'});
 
 &ui_print_footer($redirect_url, $text{'index_return'});
 

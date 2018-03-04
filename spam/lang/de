@@ -6,9 +6,11 @@ acl_awl=Erlaube Benutzern die Bearbeitung der Auto-Whitelist
 acl_filedef=Globale Konfigurationsdatei
 acl_file=SpamAssassin-Konfigurationsdatei zu bearbeiten
 after_ecmd=Nach dem Speichern-Befehl fehlgeschlagen: $1
-amavisd_desc=Das Formular kann verwendet werden, um in der Amavisd-Konfiguration festzulegen wann Nachrichten als unerw&uuml;scht eingestuft und wie diese behandelt werden.
-amavisd_ok=&Auml;ndere Amavisd Konfiguration 
 amavisd_title=Amavisd Spam Konfiguration
+amavisd_desc=Das Formular kann verwendet werden, um in der Amavisd-Konfiguration festzulegen wann Nachrichten als unerw&uuml;scht eingestuft und wie diese behandelt werden.
+amavis_ok=&Auml;ndere Amavisd Konfiguration 
+amavis_hits=Spam-Wert, ab dem eine Mail als Spam klassifiziert wird
+amavis_econfig=Die Amavisd-Konfigurationsdatei $1 wurde nicht auf Ihrem System gefunden. Entweder ist Amavisd nicht installiert, oder Ihre <a href='$2'>Modulkonfiguration</a> ist falsch.
 amavis_ehit=Spam-Wert, ab dem eine Mail als Spam klassifiziert wird ist keine Zahl!
 amavis_ekill=Spam Wert, ab dem eine Spam-Mail in Quarant&auml;ne geschickt wird ist keine Zahl!
 amavis_ecut=Spam Wert, ab dem eine Spam-Mail in gel&ouml;scht wird ist keine Zahl!
@@ -19,9 +21,11 @@ amavis_elocal=Wert f&uuml;r Internet Dienste zum Klassifizieren der Mail ist kei
 amavis_warn=Wenn Du Amavisd als Spam Filter benutzt, werden einige Einstellungen ignoriert.
 amavis_quarantine_level=Spam Wert, ab dem eine Spam-Mail in Quarant&auml;ne geschickt wird.
 amavis_delete_level=Spam Wert, ab dem eine Spam-Mail in gel&ouml;scht wird.
-amavis_add_header=X-Spam-Header in Spam-Mail einf&uuml;gen?
+amavis_rewrite=&Auml;ndere den Betreff-E-Mail-Header von Spam?
+amavis_rsubject=Spam Markierung vor dem Betreff:-Header.
+amavis_report_header=X-Spam-Header in Spam-Mail einf&uuml;gen?
 amavis_size_limit=Gr&ouml;&szlig;e in Byte ab der eine Mail nicht mehr auf Spam &uuml;berpr&uuml;ft wird.
-amavis_local_tests_only=Keine Internet Dienste zum Klassifizieren der Mail verwenden?
+amavis_local_only=Keine Internet Dienste zum Klassifizieren der Mail verwenden?
 apply_err=Konnte &Auml;nderungen nicht anwenden
 apply_none=Es wurde kein SpamAssassin-Daemon-Prozess gefunden!
 awl_black=Permanentes Ablehnen
@@ -141,7 +145,6 @@ import_err=Konnte Adressen nicht importieren
 import_ok1=$2 E-Mail-Adressen wurden in der Datei gefunden, wobei $1 neu sind und der Liste der erlaubten E-Mail-Adressen hinzugef&uuml;gt wurden.
 import_ok2=$1 E-Mail-Adressen wurden in der Datei gefunden, aber diese befinden sich bereits in der Liste der erlaubten E-Mail-Adressen.
 import_title=Importiere Adressen
-index_aconfig=Die Amavisd-Konfigurationsdatei $1 wurde nicht auf Ihrem System gefunden. Entweder ist Amavisd nicht installiert, oder Ihre <a href='$2'>Modulkonfiguration</a> ist falsch.
 index_apply=&Auml;nderungen anwenden
 index_applydesc=Klicken Sie auf diesen Button, um die momentan SpamAssassin-Konfiguration anzuwenden, indem Sie ein HUP-Signal an alle $1 laufenden Prozesse schicken.
 index_cpan=Da SpamAssassin ein Perl-Modul ist, k&ouml;nnen Sie es auch automatisch durch das Webmin-Modul <a href='$2'>Perl-Module (CPAN)</a> aus CPAN herunterladen und installieren lassen.
