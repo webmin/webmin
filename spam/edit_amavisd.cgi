@@ -94,23 +94,22 @@ $dir=&amavis_find_value('QUARANTINEDIR', $conf);
 $to=&amavis_find_value('spam_quarantine_to', $conf);
 $method=&amavis_find_value('spam_quarantine_method', $conf);
 $admin=&amavis_find_value('spam_admin', $conf);
-$admin="undef" if (!$admin);
-
-$in="smtp:[".&amavis_find_value('inet_socket_bind', $conf)."]:".&amavis_find_value('inet_socket_port', $conf);
-$out=&amavis_find_value('forward_method', $conf);
+$admin=&amavis_find_value('daemon_user', $conf)."@".&amavis_find_value('myhostname', $conf) if (!$admin);
 
 print &ui_table_span($text{'amavis_quarantine_desc'}."<p>");
 
 print &ui_table_row($text{'amavis_spam_admin'}, $admin);
 
 if (!$to && $method =~ /^local:/) {
-	print &ui_table_span("<b>".&text('amavis_quarantine_off',$text{'amavisdconf'})."<p>".$text{'amavis_nostat'}."</b>");
-	print &ui_table_span("<b>".$text{'amavis_nostat'."</b>"});
+	print &ui_table_span("<br><b>".&text('amavis_quarantine_off', $config{'amavisdconf'})."</b>");
+	print &ui_table_hr();
+	print &ui_table_span("<b>".$text{'amavis_nostat'}."</b>");
 } else {
     if ($to =~ /@/) {
 	# spam is forwarded to mail adress
-	print &ui_table_row("Your Spam is forwarded to mail adress");
-	print &ui_table_span("<b>".$text{'amavis_nostat'."</b>"});
+	print &ui_table_row($text{'amavis_quarantine_mail'}, $to);
+	print &ui_table_hr();
+	print &ui_table_span("<b>".$text{'amavis_nostat'}."</b>");
     } else {
 	if ($method =~ s/^bsmtp://) {
 	    # spam is quarantined in bsmtp format
@@ -123,7 +122,10 @@ if (!$to && $method =~ /^local:/) {
 	}
 	# display spamstat ...
 	print &ui_table_hr();
-	print &ui_table_row($text{'amavis_quarantine_total'},`ls $dir/$method| wc -l`);
+	print &ui_table_row($text{'amavis_quarantine_total'},&backquote_command("ls $dir/$method| wc -l"));
+	print &ui_table_row($text{'amavis_quarantine_today'},&backquote_command("find $dir/$method -ctime -1| wc -l"));
+	print &ui_table_row($text{'amavis_quarantine_week'},&backquote_command("find $dir/$method -ctime -7| wc -l"));
+	print &ui_table_row($text{'amavis_quarantine_month'},&backquote_command("find $dir/$method -ctime -30| wc -l"));
     }
 }
 
