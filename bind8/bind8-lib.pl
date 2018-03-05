@@ -2043,8 +2043,10 @@ foreach my $z (grep { $_->{'value'} eq $_[0] } @zones) {
 		# Remove file
 		my $f = &find("file", $z->{'members'});
 		if ($f) {
-			&unlink_logged(&make_chroot(
-				&absolute_path($f->{'value'})));
+			my $path = &make_chroot(&absolute_path($f->{'value'}));
+			if (-f $path) {
+				&unlink_logged($path);
+				}
 			}
 		}
 	}
