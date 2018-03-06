@@ -70,7 +70,7 @@ else {
 			$text{'index_discdesc'},
 			undef,
 			&ui_select("tunnel", $config{'tunnel'},
-				[ map { $_->{'name'} } @conns ]));
+				[ map { $_->[0] } @conns ]));
 		}
 
 	# Show at-boot button
