@@ -1,7 +1,9 @@
 index_title=SpamAssassin Mail Filter
 index_ecmd=The SpamAssassin command $1 was not found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
 index_ecmd2=The SpamAssassin command $1 was not found on your system.
+index_aconfig=The Amavisd configuration file $1 was not found on your system. Maybe Amavisd is not installed, or your <a href='$2'>module configuration</a> is incorrect.
 index_econfig=The SpamAssassin local configuration file or directory $1 was not found on your system. Maybe SpamAssassin is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_unknown=unknown
 index_edb=Failed to connect to the SpamAssassin configuration database : $1. Check the <a href='$2'>module configuration</a> to be sure you are using the correct settings.
 index_version=SpamAssassin version $1
 index_warn_usermin=SpamAssassin does not appear to be set up in your Procmail configuration file $2 or the global file $1, so any configuration done using this module will have no effect unless SpamAssassin has been setup globally.
@@ -12,7 +14,6 @@ index_applydesc=Click this button to apply the current SpamAssassin configuratio
 index_cpan=Because SpamAssassin is a Perl module, you can also install it automatically using Webmin's <a href='$2'>Perl Modules</a> module to download $1 from CPAN.
 index_spamassassin=SpamAssassin
 index_ecannot=You are not allowed to manage the SpamAssassin configuration file $1
-
 white_title=Allowed and Denied Addresses
 white_desc=The tables on this page allow you to specify From: and To: addresses for email that is always or never categorized as spam. Any other email will be processed as normal by SpamAssassin's rules. All email addresses can contain wildcards, like *@foo.com or *.foo.com to match entire domains.
 white_from=Senders to never classify as spam
@@ -285,6 +286,22 @@ razor_doing=Now attempting to register and setup Razor ..
 razor_done=.. done.
 razor_failed=.. failed! See the error output above for the reason why.
 
+amavisd_title=Amavisd Spam Delivery
+amavisd_ok=Change Amavisd Delivery
+amavisd_desc=The form can be used to change the Amavisd configuration that determines what happens to messages classified as spam.
+amavis_warn=If you use Amavisd for Spam filtering, some options will be ignored.
+amavis_ehit=Hits above which a message is considered spam is not numeric!
+amavis_ekill=Hits above which a Spam message is quarantined is not numeric!
+amavis_ecut=Hits above which a Spam message is deleted is not numeric!
+amavis_eheader=Value for Modify Subject: header is not numeric!
+amavis_esize=Value for size above witch a message is not checked for Spam is not numeric!
+amavis_esubject=Value for Prepend text to Subject: header is not numeric!
+amavis_elocal=Value for disable Internet sources is not numeric!
+amavis_quarantine_level=Hits above which a Spam message is quarantined.
+amavis_delete_level=Hits above which a Spam message is deleted.
+amavis_add_header=Insert X-Spam-Header in Spam message?
+amavis_size_limit=Message size in bytes above witch a message is not checked for Spam.
+amavis_local_tests_only=Disable Internet sources for Spam checks?
 procmail_title=Procmail Spam Delivery
 procmail_ok=Change Procmail Delivery
 procmail_desc=The form can be used to change the Procmail configuration that determines what happens to messages classified as spam.

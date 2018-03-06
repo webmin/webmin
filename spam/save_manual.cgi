@@ -11,6 +11,7 @@ require './spam-lib.pl';
 # Validate the filename
 $conf = &get_config();
 @files = &unique(map { $_->{'file'} } @$conf);
+push(@files, $config{'amavisdconf'}) if (!$warn_procmail && -r $config{'amavisdconf'});
 $in{'manual'} ||= $files[0];
 &indexof($in{'manual'}, @files) >= 0 ||
 	&error($text{'manual_efile'});

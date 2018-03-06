@@ -10,6 +10,7 @@ require './spam-lib.pl';
 $conf = &get_config();
 
 print "$text{'report_desc'}<p>\n";
+print &ui_alert_box($text{'amavis_warn'}, 'info') if ($warn_procmail != 1);
 &start_form("save_report.cgi", $text{'report_header'});
 
 if (&version_atleast(3.0)) {
