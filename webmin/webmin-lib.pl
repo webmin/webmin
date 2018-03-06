@@ -1041,7 +1041,7 @@ sub validate_key_cert
 my ($keyfile, $certfile) = @_;
 -r $keyfile || return &error(&text('ssl_ekey', $keyfile));
 my $key = &read_file_contents($keyfile);
-$key =~ /BEGIN (RSA | EC )?PRIVATE KEY/i ||
+$key =~ /BEGIN (RSA |EC )?PRIVATE KEY/i ||
 	&error(&text('ssl_ekey2', $keyfile));
 if (!$certfile) {
 	$key =~ /BEGIN CERTIFICATE/ || &error(&text('ssl_ecert2', $keyfile));
