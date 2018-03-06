@@ -298,6 +298,7 @@ amavis_edsn=Hits above which no notification is sent to sender is not a value!
 amavis_ecut=Hits above which a Spam message is deleted is not a value!
 amavis_eheader=Value for Modify Subject: header is not a value!
 amavis_esize=Value for size above witch a message is not checked for Spam is not a value!
+amavis_echar=A single character must be entered for the X-Spam-Level: header
 amavis_esubject=Value for Prepend text to Subject: header is not a value!
 amavis_elocal=Value for disable Internet sources is not a value!
 amavis_quarantine_level=Hits above which a Spam message is Quarantined.

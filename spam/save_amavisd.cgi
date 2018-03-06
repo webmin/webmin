@@ -50,6 +50,7 @@ $local=0 if ($in{'sa_local_tests_only'}==-1);
 	&error($text{'amavis_esize'});
 &check_amavis_value($size, 1) ||
 	&error($text{'amavis_elocal'});
+&error($text{'amavis_echar'}) if (length($char) != 1);
 
 # Save inputs
 &save_amavis_directive($conf, 'sa_tag2_level_deflt', $tag2);

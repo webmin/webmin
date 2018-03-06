@@ -18,6 +18,7 @@ amavis_ehit=Spam-Wert, ab dem eine Mail als Spam klassifiziert wird ist keine Za
 amavis_ekill=Spam Wert, ab dem eine Spam-Mail in Quarant&auml;ne geschickt wird ist kein g&uuml;ltiger Wert!
 amavis_elocal=Wert f&uuml;r Internet Dienste zum Klassifizieren der Mail ist kein g&uuml;ltiger Wert!
 amavis_esize=Wert f&uuml;r Gr&ouml;&szlig;e ab der eine Mail nicht mehr auf Spam &uuml;berpr&uuml;ft wd ist kein g&uuml;ltiger Wert!
+amavis_echar=Es ist nur ein einzelnes Zeichen X-Spam-Level:-Header zul&auml;ssig
 amavis_esubject=Wert f&uuml;r Spam Markierung vor dem Betreff:-Headerist kein g&uuml;ltiger Wert!
 amavis_hits=Spam-Wert, ab dem eine Mail als Spam klassifiziert wird
 amavis_level_char=Zeichen zum Anzeigen des Spam-Levels im X-Spam-Level:-Header
