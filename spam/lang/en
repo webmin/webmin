@@ -52,7 +52,6 @@ score_score=SpamAssassin test scores
 score_name=Test name
 score_points=Points
 score_hits=Hits above which a message is considered spam
-score_other=<br><em>Note: If you use Amavisd as spam filter this setting is ignored.</em>
 score_rbl=Skip RBL open-relay check?
 score_mx=Number of times to check From: address MX
 score_mxdelay=Seconds to wait between MX checks
