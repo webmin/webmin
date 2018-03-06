@@ -5,7 +5,6 @@ acl_awl2=Nur Mitglieder der Gruppe $1
 acl_awl=Erlaube Benutzern die Bearbeitung der Auto-Whitelist
 acl_filedef=Globale Konfigurationsdatei
 acl_file=SpamAssassin-Konfigurationsdatei zu bearbeiten
-acore_other=avis_level_char=Zeichen zum Anzeigen des Spam-Levels im X-Spam-Level:-Header
 after_ecmd=Nach dem Speichern-Befehl fehlgeschlagen: $1
 amavisd_desc=Das Formular kann verwendet werden, um in der Amavisd-Konfiguration festzulegen wann Nachrichten als unerw&uuml;scht eingestuft und wie diese behandelt werden.
 amavis_delete_level=Spam Wert, ab dem eine Spam-Mail in gel&ouml;scht wird.
@@ -44,6 +43,7 @@ amavis_tab_quarantine=Spam Quarant&auml;ne
 amavis_warn=Wenn Du Amavisd als Spam Filter benutzt, werden einige Einstellungen ignoriert.
 apply_err=Konnte &Auml;nderungen nicht anwenden
 apply_none=Es wurde kein SpamAssassin-Daemon-Prozess gefunden!
+avis_level_char=Zeichen zum Anzeigen des Spam-Levels im X-Spam-Level:-Header
 awl_black=Permanentes Ablehnen
 awl_cannot=Usermin konnte Ihre Auto-Whitelist Datei <tt>$1</tt> nicht &ouml;ffnen, vielleicht weil sie in einem nicht unterst&uuml;tzten Format ist.
 awl_cannotuser=Sie sind nicht berechtigt, die Auto-Whitelist f&uuml;r den Benutzer $1 zu bearbeiten.
