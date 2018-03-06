@@ -449,3 +449,5 @@ IPKG-edit_title=Manage IPKG Package
 IPKG_filter=Filter Packages
 IPKG_filterclear=Clear Filter
 IPKG_filtered=Displaying <tt>$1</tt> packages out of <tt>$2</tt>
+IPKG_update_avail=Update availible:
+IPKG_not_installed=Package is not installed
