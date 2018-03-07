@@ -1779,32 +1779,7 @@ if ($miniserv{'pass_nouser'}) {
 	$pass =~ /\Q$name\E/i && return $text{'cpass_name'};
 	}
 if ($miniserv{'pass_nodict'}) {
-	my $temp = &transname();
-	my $fh = "TEMP";
-	&open_tempfile($fh, ">$temp", 0, 1);
-	&print_tempfile($fh, $pass,"\n");
-	&close_tempfile($fh);
-	my $unknown;
-	if (&has_command("ispell")) {
-		open(SPELL, "ispell -a <$temp |");
-		while(<SPELL>) {
-			if (/^(#|\&|\?)/) {
-				$unknown++;
-				}
-			}
-		close(SPELL);
-		}
-	elsif (&has_command("spell")) {
-		open(SPELL, "spell <$temp |");
-		my $line = <SPELL>;
-		$unknown++ if ($line);
-		close(SPELL);
-		}
-	else {
-		return &text('cpass_spellcmd', "<tt>ispell</tt>",
-					       "<tt>spell</tt>");
-		}
-	$unknown || return $text{'cpass_dict'};
+	&is_dictionary_word($pass) && return $text{'cpass_dict'};
 	}
 if ($miniserv{'pass_oldblock'} && $user) {
 	my $c = 0;
