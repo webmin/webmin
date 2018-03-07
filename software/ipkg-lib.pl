@@ -75,10 +75,11 @@ return $i;
 #  name, class, description, arch, version, vendor, installtime
 sub package_info
 {
+local $qm = quotemeta($_[0]);
 local $pos=&list_packages($_[0]);
 return () if (!$pos--);
 
-local $upgrade =  $pos ? &backquote_command("ipkg list-upgradable | grep $_[0] 2>&1", 1) : undef; 
+local $upgrade =  $pos ? &backquote_command("ipkg list-upgradable | grep $qm 2>&1", 1) : undef; 
 local @rv = ( $_[0] );
 push(@rv, $packages{$pos, 'class'});
 push(@rv, $packages{$pos, 'desc'});
@@ -269,14 +270,19 @@ return $name eq "dhcpd" ? "dhcp-server" :
 # including updated versions
 sub update_system_available
 {
-local @update;
-local %done;
-&open_execute_command(PKG, "ipkg list-upgradable", 1, 1);
+local @rv;
+
+&open_execute_command(PKGINFO, "ipkg list-upgradable", 1, 1);
 while(<PKG>) {
-	if (/^(\S+)\-(\d[^\-]*)\-([^\.]+)\.(\S+)/) {
-		}
+	s/\r|\n//g;
+	if (/^\s*(.+?) - (.+?) - (.+)/) {
+		local $pkg = {  'name' => $1,
+						'version' => $3 }
+		push(@rv, $pkg);
 	}
+}
 close(PKG);
+
 return @rv;
 }
 
