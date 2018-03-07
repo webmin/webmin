@@ -1,7 +1,6 @@
 index_title=SpamAssassin Mail Filter
 index_ecmd=The SpamAssassin command $1 was not found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
 index_ecmd2=The SpamAssassin command $1 was not found on your system.
-index_aconfig=The Amavisd configuration file $1 was not found on your system. Maybe Amavisd is not installed, or your <a href='$2'>module configuration</a> is incorrect.
 index_econfig=The SpamAssassin local configuration file or directory $1 was not found on your system. Maybe SpamAssassin is not installed, or your <a href='$2'>module configuration</a> is incorrect.
 index_unknown=unknown
 index_edb=Failed to connect to the SpamAssassin configuration database : $1. Check the <a href='$2'>module configuration</a> to be sure you are using the correct settings.
@@ -53,7 +52,6 @@ score_score=SpamAssassin test scores
 score_name=Test name
 score_points=Points
 score_hits=Hits above which a message is considered spam
-score_other=<br><em>Note: If you use Amavisd as spam filter this setting is ignored.</em>
 score_rbl=Skip RBL open-relay check?
 score_mx=Number of times to check From: address MX
 score_mxdelay=Seconds to wait between MX checks
@@ -287,21 +285,43 @@ razor_done=.. done.
 razor_failed=.. failed! See the error output above for the reason why.
 
 amavisd_title=Amavisd Spam Delivery
-amavisd_ok=Change Amavisd Delivery
 amavisd_desc=The form can be used to change the Amavisd configuration that determines what happens to messages classified as spam.
+amavis_ok=Change Amavisd Delivery
+amavis_tab_config=Amavisd Configuration
+amavis_tab_quarantine=Spam Quarantine
 amavis_warn=If you use Amavisd for Spam filtering, some options will be ignored.
-amavis_ehit=Hits above which a message is considered spam is not numeric!
-amavis_ekill=Hits above which a Spam message is quarantined is not numeric!
-amavis_ecut=Hits above which a Spam message is deleted is not numeric!
-amavis_eheader=Value for Modify Subject: header is not numeric!
-amavis_esize=Value for size above witch a message is not checked for Spam is not numeric!
-amavis_esubject=Value for Prepend text to Subject: header is not numeric!
-amavis_elocal=Value for disable Internet sources is not numeric!
-amavis_quarantine_level=Hits above which a Spam message is quarantined.
+amavis_econfig=The Amavisd configuration file $1 was not found on your system. Maybe Amavisd is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+amavis_hits=Hits above which a message is considered spam.
+amavis_ehit=Hits above which a message is considered spam is not a value!
+amavis_ekill=Hits above which a Spam message is Quarantined is not a value!
+amavis_edsn=Hits above which no notification is sent to sender is not a value!
+amavis_ecut=Hits above which a Spam message is deleted is not a value!
+amavis_eheader=Value for Modify Subject: header is not a value!
+amavis_esize=Value for size above witch a message is not checked for Spam is not a value!
+amavis_echar=A single character must be entered for the X-Spam-Level: header
+amavis_esubject=Value for Prepend text to Subject: header is not a value!
+amavis_elocal=Value for disable Internet sources is not a value!
+amavis_quarantine_level=Hits above which a Spam message is Quarantined.
+amavis_dsn_level=Hits above which no notification is sent to sender.
 amavis_delete_level=Hits above which a Spam message is deleted.
-amavis_add_header=Insert X-Spam-Header in Spam message?
+amavis_report_header=Insert X-Spam-Header in Spam message?
+amavis_level_char=Character used to display Spam-Level in X-Spam-Level: header.
+amavis_rewrite=Modify Subject: header of spam?
+amavis_rsubject=Prepend text to Subject: header
 amavis_size_limit=Message size in bytes above witch a message is not checked for Spam.
-amavis_local_tests_only=Disable Internet sources for Spam checks?
+amavis_local_only=Disable Internet sources for Spam checks?
+amavis_quarantine_desc=Show where Spam is Quarantined by Amavisd, display also Spam Stats if local Quarantine is enabled. If Quarantine is disabled or forwarded to a mail adress, Spam Stats can not be displayed.
+amavis_quarantine_off=Spam Quarantine is disabled on your system. Change <tt>$spam_Quarantine_to</tt> to <tt>spam-quarantine</tt> in file <tt>$1</tt> to enable Quaratine.
+amavis_nostat=It's not possible to display Spam Stats.
+amavis_spam_admin=Mail adress where notifications are sent from (Spam admin)
+amavis_quarantine_mail=Spam in Quarantine is forwarded to mail adress
+amavis_quarantine_bsmtp=Spam is Quarantined in BSMTP format on local file system as
+amavis_quarantine_local=Spam is Quarantined in MBOX format on local file system as 
+amavis_quarantine_today=Spam mails in Quarantine today (24h)
+amavis_quarantine_week=Spam mails in Quarantine this week (7 days)
+amavis_quarantine_month=Spam mails in Quarantine this month (30 days)
+amavis_quarantine_total=Total number of Spam mails in Quarantine
+
 procmail_title=Procmail Spam Delivery
 procmail_ok=Change Procmail Delivery
 procmail_desc=The form can be used to change the Procmail configuration that determines what happens to messages classified as spam.
