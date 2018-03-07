@@ -18,9 +18,14 @@ return ("ipkg");
 sub list_packages
 {
 local $i = 0;
-local $arg = join(" ", map { quotemeta($_) } @_);
+local $arg, $all;
+if ($_[0] ne "ALL") {
+	$arg = join(" ", map { quotemeta($_) } @_);
+} else {
+	$all=$_[0];
+}
 %packages = ( );
-&open_execute_command(PKGINFO, "ipkg info", 1, 1);
+&open_execute_command(PKGINFO, "ipkg info $arg", 1, 1);
 local %temp = ();
 while(<PKGINFO>) {
 		$_ =~ s/\r|\n//g;
@@ -28,11 +33,13 @@ while(<PKGINFO>) {
 			local ($param, $val) = split(/: /, $_);
 			$temp{$param}=$val;
 		} else {
-		    next if (! $temp{'Installed-Time'}  && $arg ne "ALL");
+		    next if ((!$temp{'Installed-Time'} && $all ne "ALL") && !$arg );
 			$packages{$i,'name'} = $temp{'Package'};
 			$packages{$i,'version'} = $temp{'Version'};
 			$packages{$i,'desc'} = $temp{'Description'};
 			$packages{$i,'install'} = $temp{'Installed-Time'};  
+			$packages{$i,'arch'} = $temp{'Architecture'};  
+			$packages{$i,'vendor'} = $temp{'Maintainer'};  
 			# generate categories from names, Section
 			$temp{'Package'} =~ m/^(..[^-0-9]*)/;
 			local $cat= $1;
@@ -54,7 +61,7 @@ while(<PKGINFO>) {
 				$cat = "Web";
 			} 
 			$packages{$i,'class'} = $cat; 
-			%temp = ();
+			$temp{'Installed-Time'}=undef;
 			$i++;
 			}
 		}
@@ -69,17 +76,24 @@ return $i;
 sub package_info
 {
 local $qm = quotemeta($_[0]);
-local $out = &backquote_command("ipkg info $_[0] 2>&1", 1);
-return () if ($?);
+local $pos=&list_packages($_[0]);
+return () if (!$pos--);
+
+local $upgrade =  $pos ? &backquote_command("ipkg list-upgradable | grep $qm 2>&1", 1) : undef; 
 local @rv = ( $_[0] );
-push(@rv, $out =~ /Section: (.+)/i);
-push(@rv, $out =~ /Description: (.+)/i ? $1 : $text{'bsd_unknown'});
-push(@rv, $out =~ /Architecture: (.+)/i );
-push(@rv, $out =~ /Version: (.+)/i );
-push(@rv, $out =~ /Maintainer: (.+)/i);
-push(@rv, $out =~ /Installed-Time: (.+)/i ? ctime($out =~ /Installed-Time: (.+)/i) : "not installed");
-push(@rv, $out =~ /Installed-Time: (.+)/i ? "" : false);
-push(@rv, $out =~ /Installed-Time: (.+)/i ? "" : false);
+push(@rv, $packages{$pos, 'class'});
+push(@rv, $packages{$pos, 'desc'});
+push(@rv, $packages{$pos, 'arch'});
+push(@rv, $packages{$pos, 'version'});
+push(@rv, $packages{$pos, 'vendor'});
+if ($pos) {
+	$upgrade =~ /.* - (.*)/;
+	push(@rv, $text{'IPKG_update_avail'} ." ".$1);
+} else {
+	push(@rv, $packages{$pos, 'install'} ? ctime($packages{0, 'install'}) : $text{'IPKG_not_installed'});
+}
+push(@rv, $packages{$pos, 'install'} ? "" : false);
+push(@rv, $packages{$pos, 'install'} ? "" : false);
 return @rv;
 }
 
@@ -253,21 +267,22 @@ return $name eq "dhcpd" ? "dhcp-server" :
 
 # update_system_available()
 # Returns a list of package names and versions that are available from IPKG
+# including updated versions
 sub update_system_available
 {
 local @rv;
-local %done;
-&open_execute_command(PKG, "ipkg list-upgradable", 1, 1);
+
+&open_execute_command(PKGINFO, "ipkg list-upgradable", 1, 1);
 while(<PKG>) {
-	if (/^(\S+)\-(\d[^\-]*)\-([^\.]+)\.(\S+)/) {
-		next if ($done{$1,$2}++);
-		push(@rv, { 'name' => $1,
-			    'version' => $2,
-			    'release' => $3,
-			    'arch' => $4 });
-		}
+	s/\r|\n//g;
+	if (/^\s*(.+?) - (.+?) - (.+)/) {
+		local $pkg = {  'name' => $1,
+						'version' => $3 }
+		push(@rv, $pkg);
 	}
+}
 close(PKG);
+
 return @rv;
 }
 
