@@ -41,8 +41,8 @@ return \@rv;
 # check if value is ok or not
 sub check_amavis_value
 {
-if ($_[1]) {
-	return $_[0] =~ m/^[0-9\.\,\*\-\+\/]+$|\^$/;
+if ($_[1] && $_[1] eq "*") {
+	return $_[0] =~ m/^[0-9\.\,\*\-\+\/]+$|undef/;
     }
 return 1;
 }
@@ -71,7 +71,7 @@ local $pos = $old->{'line'};
 $v =~ s/\n$//;
 
 	$v =~ s/\@/\\@/g;
-	if ($old->{'computed'}) {
+	if ($old->{'computed'} && $v ne "*") {
 		splice(@$lref, $pos, $olen, "\$$n = $v; # modified by webmin");
 	} else {
 		splice(@$lref, $pos, $olen, "\$$n = \"$v\"; # modified by webmin");
