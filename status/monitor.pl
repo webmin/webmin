@@ -248,6 +248,11 @@ foreach $serv (@services) {
 
 	# Update old status hash
 	$oldstatus{$serv->{'id'}} = $newstatus_str;
+
+	# If successful, clear the last-sent time
+	if ($ok == 1) {
+		delete($lastsent{$serv->{'id'}});
+		}
 	}
 
 # Close oldstatus, fails and lastsent files
