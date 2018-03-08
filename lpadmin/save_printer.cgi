@@ -6,6 +6,12 @@ require './lpadmin-lib.pl';
 &ReadParse();
 &error_setup($text{'save_err'});
 
+if ($in{'delete'}) {
+	# Redirect to delete page
+	&redirect("delete_printer.cgi?name=".&urlize($in{'name'}));
+	return;
+	}
+
 # Check ACL
 if ($in{'new'}) {
 	$access{'add'} || &error($text{'save_eadd'});

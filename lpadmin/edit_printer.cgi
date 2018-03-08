@@ -277,19 +277,18 @@ if ($in{'new'} || &printer_support('editdest')) {
 print "<input type=hidden name=webmin value=\"$webmin\">\n";
 
 if ($in{'new'}) {
-	print "<input type=submit value=\"$text{'create'}\"></form><p>\n";
+	print "<input type=submit value=\"$text{'create'}\"><p>\n";
 	}
 else {
-	print "<table width=100%>\n";
-	print "<tr> <td><input type=submit value=\"$text{'save'}\"></td>\n";
+	print "<table width=100%><tr>\n";
+	print "<td><input type=submit value=\"$text{'save'}\"></td>\n";
 	if ($access{'delete'}) {
-		print "</form><form action=\"delete_printer.cgi\">\n";
-		print "<input type=hidden name=name value=\"$in{'name'}\">\n";
-		print "<td align=right><input type=submit ",
-		      "value=\"$text{'delete'}\"></td> </tr>\n";
+		print "<td align=right><input type=submit name=delete ",
+		      "value=\"$text{'delete'}\"></td>\n";
 		}
-	print "</form></table>\n";
+	print "</tr></table>\n";
 	}
+print "</form>\n";
 print $after;
 
 &ui_print_footer("", $text{'index_return'});
