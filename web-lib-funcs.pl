@@ -611,9 +611,12 @@ while(1) {
 	# Save content type separately
 	if ($header{'content-type'} =~ /^([^\s;]+)/) {
 		my $foo = $name."_content_type";
-		if ($arrays) {
+		if ($arrays == 1) {
 			$in{$foo} ||= [];
 			push(@{$in{$foo}}, $1);
+			}
+		elsif ($arrays == 2) {
+			$in{$foo} ||= $1;
 			}
 		else {
 			$in{$foo} .= "\0" if (defined($in{$foo}));
@@ -646,9 +649,12 @@ while(1) {
 		$data .= $line;
 		}
 	chop($data); chop($data);
-	if ($arrays) {
+	if ($arrays == 1) {
 		$in{$name} ||= [];
 		push(@{$in{$name}}, $data);
+		}
+	elsif ($arrays == 2) {
+		$in{$name} ||= $data;
 		}
 	else {
 		$in{$name} .= "\0" if (defined($in{$name}));
@@ -659,7 +665,7 @@ while(1) {
 &$cbfunc(-1, $ENV{'CONTENT_LENGTH'}, $file, @$cbargs) if ($cbfunc);
 }
 
-=head2 ReadParse([&hash], [method], [noplus])
+=head2 ReadParse([&hash], [method], [noplus], [array-mode])
 
 Fills the given hash reference with CGI parameters, or uses the global hash
 %in if none is given. Also sets the global variables $in and @in. The other
@@ -668,6 +674,8 @@ parameters are :
 =item method - For use of this HTTP method, such as GET
 
 =item noplus - Don't convert + in parameters to spaces.
+
+=item array-mode - If set to 1, values in %in are arrays. If set to 0, multiple values are joined with \0. If set to 2, only the first value is used.
 
 =cut
 sub ReadParse
@@ -694,7 +702,16 @@ foreach my $i (@in) {
 		}
 	$k =~ s/%(..)/pack("c",hex($1))/ge;
 	$v =~ s/%(..)/pack("c",hex($1))/ge;
-	$a->{$k} = defined($a->{$k}) ? $a->{$k}."\0".$v : $v;
+	if ($_[3] == 1) {
+		$a->{$k} ||= [];
+		push(@{$a->{$k}}, $v);
+		}
+	elsif ($_[3] == 2) {
+		$a->{$k} ||= $v;
+		}
+	else {
+		$a->{$k} = defined($a->{$k}) ? $a->{$k}."\0".$v : $v;
+		}
 	}
 }
 
