@@ -537,7 +537,7 @@ and store it in the global %in hash. The optional parameters are :
 
 =item cbargs - Additional parameters to the callback function.
 
-=item array-mode - Values in %in are arrays, not strings joined with \0
+=item array-mode - If set to 1, values in %in are arrays. If set to 0, multiple values are joined with \0. If set to 2, only the first value is used.
 
 =cut
 sub ReadParseMime
@@ -588,9 +588,12 @@ while(1) {
 				if ($1 eq "filename") {
 					$file = $2;
 					}
-				if ($arrays) {
+				if ($arrays == 1) {
 					$in{$foo} ||= [];
 					push(@{$in{$foo}}, $2);
+					}
+				elsif ($arrays == 2) {
+					$in{$foo} ||= $2;
 					}
 				else {
 					$in{$foo} .= "\0"
