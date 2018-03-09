@@ -123,58 +123,58 @@ if (@hosts) {
 	print &ui_subheading($text{'index_users'});
 	print "<table width=100%>\n";
 
-	print "<tr><form action=edit_user.cgi><td>\n";
+	print "<tr><td><form action=edit_user.cgi>\n";
 	print "<input type=submit value='$text{'index_euser'}'>\n";
 	print $usersel;
-	print "</td></form>\n";
+	print "</form></td>\n";
 	$formno++;
 
-	print "<form action=edit_acl.cgi><td>\n";
+	print "<td><form action=edit_acl.cgi>\n";
 	print "<input type=submit value='$text{'index_euseracl'}'>\n";
 	print $usersel;
 	print "$text{'index_inmod'}\n";
 	print $modsel2;
-	print "</td></form>\n";
+	print "</form></td>\n";
 	$formno++;
 
-	print "<form action=user_form.cgi><td align=right>\n";
+	print "<td align=right><form action=user_form.cgi>\n";
 	print "<input type=submit value='$text{'index_cuser'}'>\n";
-	print "</td></form></tr>\n";
+	print "</form></td></tr>\n";
 	$formno++;
 
 	if (@wgroups) {
-		print "<tr><form action=edit_group.cgi><td>\n";
+		print "<tr><td><form action=edit_group.cgi>\n";
 		print "<input type=submit value='$text{'index_egroup'}'>\n";
 		print $groupsel;
-		print "</td></form>\n";
+		print "</form></td>\n";
 		$formno++;
 
-		print "<form action=edit_acl.cgi><td>\n";
+		print "<td><form action=edit_acl.cgi>\n";
 		print "<input type=submit value='$text{'index_egroupacl'}'>\n";
 		print $groupsel;
 		print "$text{'index_inmod'}\n";
 		print $modsel2;
-		print "</td></form>\n";
+		print "</form></td>\n";
 		$formno++;
 		}
 	else {
 		print "<tr> <td colspan=2></td>\n";
 		}
 
-	print "<form action=group_form.cgi><td align=right>\n";
+	print "<td align=right><form action=group_form.cgi>\n";
 	print "<input type=submit value='$text{'index_cgroup'}'>\n";
-	print "</td></form></tr>\n";
+	print "</form></td></tr>\n";
 	$formno++;
 
-	print "<tr> <form action=refresh.cgi><td align=left colspan=2>\n";
+	print "<tr> <td align=left colspan=2><form action=refresh.cgi>\n";
 	print "<input type=submit value='$text{'index_refresh'}'>\n";
 	&create_on_input(undef, 1, 1);
-	print "</td></form>\n";
+	print "</form></td>\n";
 	$formno++;
 
-	print "<form action=sync_form.cgi><td align=right>\n";
+	print "<td align=right><form action=sync_form.cgi>\n";
 	print "<input type=submit value='$text{'index_sync'}'>\n";
-	print "</td></form></tr>\n";
+	print "</form></td></tr>\n";
 	$formno++;
 
 	print "</table>\n";
