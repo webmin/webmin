@@ -3,9 +3,9 @@
 # Update webmin/usermin to the latest develop version  from GitHub repo
 # inspired by authentic-theme/theme-update.sh script, thanks qooob
 #
-VERS="1.5.4, 2018-02-22"
+VERS="1.6.1, 2018-03-09"
 #
-# Kay Marquardt, kay@rrr.de, https://github.com/gandelwartz
+COPY=" Kay Marquardt <kay@rrr.de>         https://github.com/gnadelwartz"
 #############################################################################
 IAM=`basename $0`
 
@@ -22,7 +22,7 @@ if [[ "$1" == "-nc" ]] ; then
 fi
 
 # predefined colors for echo -e on terminal
-if [[ -t 1 && "${NCOLOR}" != "YES" ]] ;  then
+if [[ -t 1 && "${NCOLOR}" != "YES" || "$1" == "--help" ]] ;  then
     RED='\e[49;0;31;82m'
     BLUE='\e[49;1;34;182m'
     GREEN='\e[49;32;5;82m'
@@ -60,9 +60,22 @@ LTEMP="${DIR}/.~lang"
 
 # help requested output usage
 if [[ "$1" == "-h" || "$1" == "--help" ]] ; then
-    echo -e "${NC}${ORANGE}This is the unofficial webmin update script, ${VERS}${NC}"
-    echo "Usage:  ${IAM} [-force] [-repo:username/xxxmin] [-branch:xxx] [-release[:number]] [-file file ...]"
-    [[ "$1" == "--help" ]] && cat <<EOF
+    if [[ "$1" != "--help" ]] ; then
+        echo -e "${NC}${ORANGE}This is the webmin develop update script, ${VERS}${NC}"
+        echo "Usage:  ${IAM} [-force] [-repo:username/xxxmin] [-branch:xxx] [-release[:number]] [-file file|dir/ ...]"
+    else
+        cat <<EOF | more 
+
+${IAM}                                           ${VERS}
+
+Name:
+    update-from-repo.sh - webmin script to pull new versions or files from repo
+
+Usage:
+    ${IAM} 
+        [-force] [-repo:username/xxxmin] [-branch:xxx] [-release[:number]]
+        [-file file|dir/ ...]
+        [-h|--help]
 
 Parameters:
     -force (-yes)
@@ -78,26 +91,40 @@ Parameters:
     -release
         pull a released version, default: -release:latest
     -file
-        pull only the given file(s) or dir(s) from repo
+        pull only the given file(s) or dir(s)/ from repo
+        dir has to be specified with trailling '/'
+        file or dir/ must not start with a slash and
+        must not contain '../'
+    -h
+        short usage line
+    --help
+        display this help page
 
 Examples:
     ${IAM}
-    	uodate everthing from default webmin repository
-    ${IAM} -force or ${IAM} -yes
-    	same but without asking,
+        update everthing from default webmin repository
+
+    ${IAM} -force   OR   ${IAM} -yes
+        same but without asking,
+
     ${IAM} -force -repo:qooob/webmin
-    	updadte from qooobs repository without asking
+        update from qooobs repository without asking
+
     ${IAM} -file module/module.info
-    	pull module.info for given module
-    ${IAM} -file cpan
-    	pull everything in cpan
+        pull module.info for given module
+
+    ${IAM} -file cpan/
+        pull everything in dir cpan
+
     ${IAM} -file cpan/*
-    	pull only already existing files / dirs in cpan
-    ${IAM} -file module/lang
-    	pull all lang files of a module
-    ${IAM} -fore -repo:qooob/webmin -file */lang
-    	pull lang files for all existing */lang from qooobs
-    	repository without asking
+        pull only already existing files in cpan
+
+    ${IAM} -file module/lang/
+        pull all files in lang/ dir of a module
+
+    ${IAM} -fore -repo:qooob/webmin -file */lang/
+        pull lang files for all existing */lang/ dirs from qooobs
+        repository without asking
 
 Exit codes:
     0 - success
@@ -108,7 +135,11 @@ Exit codes:
     5 - stage 2: makedist failed
     6 - stage 3: update with setup.sh failed, installation may in bad state!
 
+Author:
+    ${COPY}
+
 EOF
+    fi
     exit 0
 fi
 
@@ -144,6 +175,7 @@ fi
 # add PATH from config to system PATH
 if [[ "${MINICONF}" != "" ]] ; then
     export PATH="${PATH}:`grep path= ${MINICONF} | sed 's/^path=//'`"
+    ETC="`grep env_WEBMIN_CONFIG= ${MINICONF} | sed 's/^env_WEBMIN_CONFIG=//'`"
 fi
 
 # check if git is availible
@@ -159,7 +191,7 @@ fi
 # lets start
 
 # alternative repo given
-if [[ "$1" == *"-repo"* ]]; then
+if [[ "$1" == "-repo" ]]; then
         if [[ "$1" == *":"* ]] ; then
           REPO=${1##*:}
           [[ "${REPO##*/}" != "webmin" && "${REPO##*/}" != "usermin" ]] && echo -e "${RED}Error: ${REPO} is not a valid repo name!${NC}" && exit 1
@@ -236,7 +268,7 @@ fi
 
     ####################
     # start processing pulled source
-	# add latest changeset date to original version, works with git 1.7+
+    # add latest changeset date to original version, works with git 1.7+
     version="`head -c -1 ${TEMP}/version``cd ${TEMP}; date -d @$(${GIT} log -n1 --format='%at') '+%m%d%H%M'`" 
     DOTVER=`echo ${version} | sed 's/-/./'`
     TARBALL="${TEMP}/tarballs/${PROD}-${DOTVER}"
@@ -265,9 +297,11 @@ fi
     do 
         if [[ -f ${TEMP}/${module} && ! -f  "${TARBALL}/$module" ]]; then
           module=`dirname $module`
-          echo -e "${CYAN}Adding nonstandard${NC} ${ORANGE}$module${NC} to ${PROD^}" && cp -r -L ${TEMP}/${module} ${TARBALL}/
+          echo -e "${CYAN}Adding nonstandard${NC} ${ORANGE}$module${NC} to ${PROD^}"
+		  cp -r -L ${TEMP}/${module} ${TARBALL}/
         fi
     done
+    cp "${WTEMP}/chinese-to-utf8.pl" "${TARBALL}/"
 
     # insert perl path
     config_dir=`grep env_WEBMIN_CONFIG= ${MINICONF}| sed 's/.*_WEBMIN_CONFIG=//'`
@@ -275,12 +309,11 @@ fi
     echo  -e "${CYAN}Insert perl path${NC} ${perl} ..."
     ( cd ${TARBALL}; sed -i --follow-symlinks "1 s|#\!/.*$|#!${perl}|" `find . -name '*.cgi' ; find . -name '*.pl'` )
 
-	####
-	# copy all or only given files ...
+    # copy all or only given files ...
     if [[ "$1" != "-file" ]] ; then
-        # prepeare unattended upgrade
+        ############
+        # prepeare unattended FULL upgrade
         echo "${version}" >"${TARBALL}/version"
-        cp "${WTEMP}/chinese-to-utf8.pl" .
         atboot="NO"
         makeboot="NO"
         nouninstall="YES"
@@ -294,9 +327,7 @@ fi
             exit 6
         fi
 
-        #############
         # postprocessing
-
         # "compile" UTF-8 lang files
         echo -en "\n${CYAN}Compile UTF-8 lang files${NC} ..."
         if [[ `which iconv 2> /dev/null` != '' ]] ; then
@@ -320,23 +351,48 @@ fi
             fi
         fi
     else
+        ##################
         # pull specifed files only
         shift
         FILES="$*"
         for file in ${FILES}
         do
-            if [[ -d "${TEMP}/tarballs/webmin-${DOTVER}/${file}" ]] ; then
+            # check for / and ../
+            if [[ "${file}" == "/"* || "${file}" == *"../"* ]] ; then
+                echo -e "${RED}Warning: / and ../ are not allowed!${NC} skipping ${file} ..."
+                ERRORS="yes"
+                continue
+            fi
+            if [[ "$file" == *"/" && -d "${TARBALL}/${file}" ]] ; then
                 echo -e "${BLUE}Copy dir ${ORANGE}${file}${NC} from ${ORANGE}${REPO}${NC} to ${PROD^} ..."
                 dest=${file%%/*}
                 [[ "${dest}" == "${file}" ]] && dest="."
-                cp -r -v "${TEMP}/tarballs/webmin-${DOTVER}/${file}" "${dest}" | sed 's/^.*\/tarballs\///'
+                cp -r "${TARBALL}/${file}" "${dest}" | sed 's/^.*\/tarballs\///'
+                FOUND="${FOUND}${file} "
             else
-                echo -e "${CYAN}Copy file ${ORANGE}${file}${NC} from ${ORANGE}${REPO}${NC} to ${PROD^} ..."
-                mv "${file}" "${file}.bak"
-                cp "${TEMP}/tarballs/webmin-${DOTVER}/${file}" "${file}"
-                rm -rf "${file}.bak"
+                if [ -f "${TARBALL}/${file}" ] ; then
+                    echo -e "${CYAN}Copy file ${ORANGE}${file}${NC} from ${ORANGE}${REPO}${NC} to ${PROD^} ..."
+                    mv "${file}" "${file}.bak"
+                    cp "${TARBALL}/${file}" "${file}"
+                    if [[ "$?" -eq "0" ]] ; then
+                        rm -rf "${file}.bak"
+                    else
+                        echo -e "${RED}cp ${file} failed,${NC} restore original!"
+                        ERRORS="yes"
+                    fi
+                    FOUND="${FOUND}${file} "
+                elif [[ ! -d "${TARBALL}/${file}" ]] ; then
+                    echo -e "${RED}Warning: No such file or directory: ${file},${NC} skipping ..."
+                    ERRORS="yes"
+                fi
             fi
         done
+        FILES='$*'
+        # restart webmin
+        if [[ -d "${ETC}" ]] ; then
+            echo
+            ${ETC}/restart
+        fi
     fi
   else
         # something went wrong
@@ -356,7 +412,8 @@ fi
   chmod +x *.pl *.cgi *.pm *.sh */*.pl */*.cgi */*.pm */*.sh
       
   # thats all folks
-  echo -e "\n${CYAN}Updating ${PROD^} ${ORANGE}${FILES}${NC} to Version `cat version`, done.${NC}"
+  [[ "${ERRORS}" != "" ]] && ERRORS="(with warnings)"
+  echo -e "\n${CYAN}Updating ${PROD^} ${ORANGE}${FOUND}${NC} to Version `cat version`, done ${RED}${ERRORS}${NC}"
 
 # update success
 exit 0
