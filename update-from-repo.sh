@@ -353,23 +353,12 @@ fi
             echo -e "${BLUE} iconv not found, skipping lang files!${NC}"
         fi
 
-        # check if alternatve repo exist
-        AUTHREPO=`echo ${REPO} | sed "s/\/.*min$/\/autehtic-theme/"`
-        if [[ "${REPO}" != "${AUTHREPO}" ]]; then
-            if [[ "${CURL}" != "" ]] ; then
-                exist=`${CURL} -s -L ${HOST}/${AUTHREPO}`
-                [[ "${#exist}" -lt 20 ]] && RREPO="${AUTHREPO}"
-            else
-                echo -e "${RED}Warning: Command \`curl\` is not installed or not in the \`PATH\`,${NC} using default repo ..."
-                WARNINGS="yes"
-            fi
-        fi
         # run authenric-thme update, possible unattended
         if [[ -x authentic-theme/theme-update.sh ]] ; then
             if [[ "${ASK}" == "YES" ]] ; then
-                authentic-theme/theme-update.sh ${RREPO}
+                authentic-theme/theme-update.sh
             else
-                yes | authentic-theme/theme-update.sh ${RREPO}
+                yes | authentic-theme/theme-update.sh
             fi
         fi
     else
