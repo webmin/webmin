@@ -145,10 +145,11 @@ EOF
 fi
 
 # check for required webmin / usermin files in current dir
-if [[ ! -r "${DIR}/setup.sh" || ! -r "${DIR}/miniserv.pl" ]] ; then
-    echo -e "${NC}${RED}Error: the current dir does not contain a webmin installation, aborting ...${NC}"
+if [[ ! -r "${DIR}/setup.sh" || ! -r "${DIR}/miniserv.pl" || ! -d "${DIR}/authentic-theme" ]] ; then
+    echo -e "${NC}${RED}Error: the current dir does not contain a valid webmin installation, aborting ...${NC}"
     exit 1
 fi
+
 
 # need to be root 
 if [[ $EUID -ne 0 ]]; then
