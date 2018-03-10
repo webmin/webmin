@@ -191,7 +191,7 @@ fi
 # lets start
 
 # alternative repo given
-if [[ "$1" == "-repo" ]]; then
+if [[ "$1" == "-repo"* ]]; then
         if [[ "$1" == *":"* ]] ; then
           REPO=${1##*:}
           [[ "${REPO##*/}" != "webmin" && "${REPO##*/}" != "usermin" ]] && echo -e "${RED}Error: ${REPO} is not a valid repo name!${NC}" && exit 1
