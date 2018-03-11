@@ -63,10 +63,13 @@ my @doms = ref($dom) ? @$dom : ($dom);
 $email ||= "root\@$doms[0]";
 $mode ||= "web";
 
-my $challenge;
+my ($challenge, $wellknown, $challenge_new, $wellknown_new);
 if ($mode eq "web") {
 	# Create a challenges directory under the web root
-	$challenge = "$webroot/.well-known/acme-challenge";
+	$wellknown = "$webroot/.well-known";
+	$challenge = "$wellknown/acme-challenge";
+	$wellknown_new = !-d $wellknown ? $wellknown : undef;
+	$challenge_new = !-d $challenge ? $challenge : undef;
 	my @st = stat($webroot);
 	my $user = getpwuid($st[4]);
 	if (!-d $challenge) {
@@ -162,9 +165,11 @@ if ($letsencrypt_cmd && -d "/etc/letsencrypt/accounts") {
 		&reset_environment();
 		}
 	else {
+		&cleanup_wellknown($wellknown_new, $challenge_new);
 		return (0, "Bad mode $mode");
 		}
 	if ($?) {
+		&cleanup_wellknown($wellknown_new, $challenge_new);
 		return (0, "<pre>".&html_escape($out || "No output from $letsencrypt_cmd")."</pre>");
 		}
 	my ($full, $cert, $key, $chain);
@@ -183,6 +188,7 @@ if ($letsencrypt_cmd && -d "/etc/letsencrypt/accounts") {
 			$full = pop(@fulls);
 			}
 		else {
+			&cleanup_wellknown($wellknown_new, $challenge_new);
 			&error("Output did not contain a PEM path!");
 			}
 		}
@@ -197,6 +203,7 @@ if ($letsencrypt_cmd && -d "/etc/letsencrypt/accounts") {
 	&set_ownership_permissions(undef, undef, 0600, $cert);
 	&set_ownership_permissions(undef, undef, 0600, $key);
 	&set_ownership_permissions(undef, undef, 0600, $chain);
+	&cleanup_wellknown($wellknown_new, $challenge_new);
 	return (1, $cert, $key, $chain);
 	}
 else {
@@ -206,14 +213,17 @@ else {
 	# But first check if the native Let's Encrypt client was used previously
 	# for this system - if so, it must be used in future due to the account
 	# key.
-	-d "/etc/letsencrypt/accounts" &&
+	if (-d "/etc/letsencrypt/accounts") {
+		&cleanup_wellknown($wellknown_new, $challenge_new);
 		return (0, &text('letsencrypt_enative', '/etc/letsencrypt'));
+		}
 
 	# Generate the account key if missing
 	if (!-r $account_key) {
 		my $out = &backquote_logged(
 			"openssl genrsa 4096 2>&1 >$account_key");
 		if ($?) {
+			&cleanup_wellknown($wellknown_new, $challenge_new);
 			return (0, &text('letsencrypt_eaccountkey',
 					 &html_escape($out)));
 			}
@@ -223,6 +233,7 @@ else {
 	my $key = &transname();
 	my $out = &backquote_logged("openssl genrsa $size 2>&1 >$key");
 	if ($?) {
+		&cleanup_wellknown($wellknown_new, $challenge_new);
 		return (0, &text('letsencrypt_ekeygen', &html_escape($out)));
 		}
 
@@ -231,6 +242,7 @@ else {
 	my ($ok, $csr) = &generate_ssl_csr($key, undef, undef, undef,
 					   undef, undef, \@doms, undef);
 	if (!$ok) {
+		&cleanup_wellknown($wellknown_new, $challenge_new);
 		return &text('letsencrypt_ecsr', $csr);
 		}
 	&copy_source_dest($csr, "/tmp/lets.csr", 1);
@@ -266,6 +278,7 @@ else {
 			@lines = @lines[0 .. $trace-1];
 			$out = join("\n", @lines);
 			}
+		&cleanup_wellknown($wellknown_new, $challenge_new);
 		return (0, &text('letsencrypt_etiny',
 				 "<pre>".&html_escape($out))."</pre>");
 		}
@@ -279,6 +292,7 @@ else {
 		my $err;
 		&http_download($host, $port, $page, \$cout, \$err, undef, $ssl);
 		if ($err) {
+			&cleanup_wellknown($wellknown_new, $challenge_new);
 			return (0, &text('letsencrypt_echain', $err));
 			}
 		my $fh = "CHAIN";
@@ -301,8 +315,19 @@ else {
 	&unlink_file($key);
 	&unlink_file($chain);
 
+	&cleanup_wellknown($wellknown_new, $challenge_new);
 	return (1, $certfinal, $keyfinal, $chainfinal);
 	}
+}
+
+# cleanup_wellknown(wellknown, challenge)
+# Delete directories that were created as part of this process
+sub cleanup_wellknown
+{
+my ($wellknown_new, $challenge_new) = @_;
+print STDERR "deleting $wellknown_new and $challenge_new\n";
+&unlink_file($challenge_new) if ($challenge_new);
+&unlink_file($wellknown_new) if ($wellknown_new);
 }
 
 # get_bind_zone_for_domain(domain)
