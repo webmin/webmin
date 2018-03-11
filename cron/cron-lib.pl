@@ -494,15 +494,13 @@ local($pwd);
 if (&read_file_contents($cron_temp_file) =~ /\S/) {
 	local $temp = &transname();
 	local $rv;
-	if (!$config{'cron_crontab'}) {
-	    # we have no crontab command
-		# emulate by copy back to user file
+	if (!&has_crontab_cmd()) {
+		# We have no crontab command .. emulate by copying to user file
 		$rv = system("cat $cron_temp_file".
 			" >$config{'cron_dir'}/$_[0] 2>/dev/null");
-
-	} elsif ($config{'cron_edit_command'}) {
+		}
+	elsif ($config{'cron_edit_command'}) {
 		# fake being an editor
-		# XXX does not work in translated command mode!
 		local $notemp = &transname();
 		&open_tempfile(NO, ">$notemp");
 		&print_tempfile(NO, "No\n");
@@ -549,12 +547,12 @@ if (&read_file_contents($cron_temp_file) =~ /\S/) {
 	}
 else {
 	# No more cron jobs left, so just delete
-	if (!$config{'cron_crontab'}) {
-	    # we have no crontab command
-		# emulate by deleting user crontab
+	if (!&has_crontab_cmd()) {
+		# We have no crontab command .. emulate by deleting user crontab
+		$_[0] || &error("No user given!");
 		&unlink_logged("$config{'cron_dir'}/$_[0]");
-
-	} else {
+		}
+	else{
 		if ($single_user) {
 			&execute_command($config{'cron_user_delete_command'});
 			}
@@ -564,7 +562,10 @@ else {
 			}
 		}
 	}
-if (!$config{'cron_crontab'}) { &kill_byname("crond", "SIGHUP"); } # to reload config
+if (!&has_crontab_cmd()) {
+	# to reload config
+	&kill_byname("crond", "SIGHUP");
+	}
 unlink($cron_temp_file);
 }
 
@@ -1527,7 +1528,8 @@ sub check_cron_config
 if ($config{'single_file'} && !-r $config{'single_file'}) {
 	return &text('index_esingle', "<tt>$config{'single_file'}</tt>");
 	}
-if (!$config{'cron_crontab'} && $config{'cron_get_command'} =~ /^(\S+)/ && !&has_command("$1")) {
+if (!&has_crontab_cmd() && $config{'cron_get_command'} =~ /^(\S+)/ &&
+    !&has_command("$1")) {
 	return &text('index_ecmd', "<tt>$1</tt>");
 	}
 # Check for directory
@@ -1608,6 +1610,18 @@ if ($config{'cronfiles_dir'}) {
 	push(@files, glob(&translate_filename($config{'cronfiles_dir'})."/*"));
 	}
 return &unique(@files);
+}
+
+=head2 has_crontab_cmd()
+
+Returns 1 if the crontab command exists on this system
+
+=cut
+sub has_crontab_cmd
+{
+my $cmd = $config{'cron_user_edit_command'} || "crontab";
+($cmd) = &split_strings($cmd);
+return &has_command($cmd);
 }
 
 1;
