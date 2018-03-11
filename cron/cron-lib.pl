@@ -1620,7 +1620,7 @@ Returns 1 if the crontab command exists on this system
 sub has_crontab_cmd
 {
 my $cmd = $config{'cron_user_edit_command'} || "crontab";
-($cmd) = &split_strings($cmd);
+($cmd) = &split_quoted_string($cmd);
 return &has_command($cmd);
 }
 
