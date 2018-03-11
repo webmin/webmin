@@ -1,15 +1,4 @@
 name=CFEngine
 desc=Configuration Engine
 category=cluster
-desc_ca=Motor de Configuració
-desc_es=Motor de Configuración
-desc_de=Konfigurations-Automat
-desc_fr=Moteur de configuration
 os_support=!windows
-desc_sv=Konfigurations Motor
-desc_cz=Konfiguraèní stroj
-desc_nl=Configuratie Engine
-desc_cz.UTF-8=KonfiguraÄnÃ­ stroj
-desc_pl=Konfiguracja silnika
-desc_ms_MY=Enjin Konfigurasi
-desc_no=Konfigurasjonsmotor

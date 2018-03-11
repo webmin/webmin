@@ -2,4 +2,3 @@ desc=Cluster Shutdown
 category=cluster
 depends=servers
 version=1.0
-desc_de=Cluster - Herunterfahren

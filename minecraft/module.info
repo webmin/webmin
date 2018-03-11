@@ -1,5 +1,4 @@
 desc=Minecraft Server
 depends=init proc
 category=servers
-desc_de=Minecraft Server
 version=1.6

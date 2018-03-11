@@ -1,11 +1,3 @@
 desc=Frox FTP Proxy
 category=servers
 os_support=*-linux freebsd
-desc_de=Frox FTP-Proxyserver
-desc_ca=Proxy FTP Frox
-desc_es=Frox - Proxy FTP
-desc_cz=Frox FTP-Proxy server
-desc_nl=Frox FTP Proxy-server
-desc_cz.UTF-8=Frox FTP-Proxy server
-desc_no=Frox FTP proxy tjener
-desc_ms_MY=Proksi FTP Frox

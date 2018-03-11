@@ -1,14 +1,5 @@
-desc_zh_TW.Big5=VNC «È¤áºİ
 desc=VNC Client
 name=VNCviewer
-desc_ko_KR.euc=VNC Å¬¶óÀÌ¾ğÆ®
-desc_ja_JP.euc=VNC ¥¯¥é¥¤¥¢¥ó¥È
-desc_sk=VNC klient
 version=1.1
 webmin=1
 usermin=1
-desc_zh_TW.UTF-8=VNC å®¢æˆ¶ç«¯
-desc_ja_JP.UTF-8=VNC ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆ
-desc_ko_KR.UTF-8=VNC í´ë¼ì´ì–¸íŠ¸
-desc_sk.UTF-8=VNC klient
-desc_de=VNC Client
