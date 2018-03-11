@@ -82,11 +82,11 @@ if (@addservers && $access{'add'}) {
 
 # Show button for compare form
 if (@hosts) {
-	print "<form action=compare_form.cgi>\n";
 	print "<td align=center width=33%>\n";
+	print "<form action=compare_form.cgi>\n";
 	print "<input type=submit value='$text{'index_compare'}'>\n";
-	print "</td>\n";
 	print "</form>\n";
+	print "</td>\n";
 	}
 
 # Show form for adding a group of servers
