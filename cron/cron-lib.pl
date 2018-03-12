@@ -498,6 +498,7 @@ if (&read_file_contents($cron_temp_file) =~ /\S/) {
 		# We have no crontab command .. emulate by copying to user file
 		$rv = system("cat $cron_temp_file".
 			" >$config{'cron_dir'}/$_[0] 2>/dev/null");
+		system("chmod 600 $_[0] $config{'cron_dir'}/$_[0] 2>/dev/null");
 		}
 	elsif ($config{'cron_edit_command'}) {
 		# fake being an editor
@@ -1528,7 +1529,7 @@ sub check_cron_config
 if ($config{'single_file'} && !-r $config{'single_file'}) {
 	return &text('index_esingle', "<tt>$config{'single_file'}</tt>");
 	}
-if (!&has_crontab_cmd() && $config{'cron_get_command'} =~ /^(\S+)/ &&
+if (&has_crontab_cmd() && $config{'cron_get_command'} =~ /^(\S+)/ &&
     !&has_command("$1")) {
 	return &text('index_ecmd', "<tt>$1</tt>");
 	}
@@ -1619,9 +1620,11 @@ Returns 1 if the crontab command exists on this system
 =cut
 sub has_crontab_cmd
 {
-my $cmd = $config{'cron_user_edit_command'} || "crontab";
-($cmd) = &split_quoted_string($cmd);
-return &has_command($cmd);
+my $cmd = &split_quoted_string($config{'cron_user_edit_command'});
+if (&has_command($cmd) || &has_command("crontab")) {
+	return 1;
+	}
+return 0;
 }
 
 1;
