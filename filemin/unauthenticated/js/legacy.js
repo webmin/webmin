@@ -16,7 +16,7 @@ $( document ).ready(function() {
     $('tr').removeAttr('onmouseover');
     $('tr').removeAttr('onmouseout');
     $('input').removeAttr('onclick');
-    $('#select-unselect').change(function() { selectUnselect($(this)); });
+    $('._select-unselect_').change(function() { selectUnselect($(this)); });
 
     // BUTTONS
     $('.fg-button').hover(
