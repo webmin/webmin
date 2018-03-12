@@ -1529,8 +1529,8 @@ sub check_cron_config
 if ($config{'single_file'} && !-r $config{'single_file'}) {
 	return &text('index_esingle', "<tt>$config{'single_file'}</tt>");
 	}
-if (&has_crontab_cmd() && $config{'cron_get_command'} =~ /^(\S+)/ &&
-    !&has_command("$1")) {
+if (&has_crontab_cmd() && ($config{'cron_get_command'} =~ /^\s*$/ ||
+    $config{'cron_edit_command'} =~ /^\s*$/)) {
 	return &text('index_ecmd', "<tt>$1</tt>");
 	}
 # Check for directory
@@ -1620,11 +1620,7 @@ Returns 1 if the crontab command exists on this system
 =cut
 sub has_crontab_cmd
 {
-my $cmd = &split_quoted_string($config{'cron_user_edit_command'});
-if (&has_command($cmd) || &has_command("crontab")) {
-	return 1;
-	}
-return 0;
+&has_command("crontab");
 }
 
 1;
