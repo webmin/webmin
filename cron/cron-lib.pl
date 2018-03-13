@@ -1531,7 +1531,7 @@ if ($config{'single_file'} && !-r $config{'single_file'}) {
 	}
 if (&has_crontab_cmd() && ($config{'cron_get_command'} =~ /^\s*$/ ||
     $config{'cron_edit_command'} =~ /^\s*$/)) {
-	return &text('index_ecmd', "<tt>$1</tt>");
+	return &text('index_ecmd', "<tt>$1</tt>", "/config.cgi?cron");
 	}
 # Check for directory
 local $fcron = ($config{'cron_dir'} =~ /\/fcron$/);
@@ -1620,7 +1620,7 @@ Returns 1 if the crontab command exists on this system
 =cut
 sub has_crontab_cmd
 {
-&has_command("crontab");
+return &has_command( &split_quoted_string( $config{'cron_edit_command'})) || &has_command("crontab");
 }
 
 1;
