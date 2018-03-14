@@ -84,7 +84,7 @@ index_comment=Beschreibung
 index_create=Einen neuen Cron-Auftrag erstellen
 index_delete=L&#246;sche ausgew&#228;hlte Auftr&#228;ge
 index_disable=Deaktiviere ausgew&#228;hlte Auftr&#228;ge
-index_ecmd=Das Kommando $1 um Cron Benutzer Konfigurationen zu bearbeiten wurde nicht gefunden. Vielleicht ist Cron nicht auf Ihrem System installiert?
+index_ecmd=Das Kommando $1 um Cron Benutzer Konfigurationen zu bearbeiten wurde nicht gefunden. Vielleicht ist Cron nicht auf Ihrem System installiert oder die <a href='$2'>Modulkonfiguration</a>  ist falsch?
 index_econfigcheck=Cron Auftr&#228;ge k&#246;nnen auf Ihrem System nicht gesteuert werden, weil die Modul-Konfiguration nicht g&#252;ltig ist.
 index_ecreate=Eine neue Umgebungsvariable erzeugen.
 index_ecrondir=Das Cron Auftr&auml;ge Verzeichnis $1 existiert nicht. Vielleicht ist die Modul-Konfiguration falsch oder Cron ist nicht installiert?

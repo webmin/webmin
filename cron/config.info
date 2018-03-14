@@ -11,7 +11,6 @@ hourly_only=Only allow jobs to be at most hourly?,1,0-No,1-Yes
 add_file=Add new jobs to file,3,User's regular crontab file
 line2=System configuration,11
 cron_dir=Crontab Directory,0
-cron_crontab=System has <tt>crontab</tt> command availible?,1,0-No&#44; webmin processes user files itself,1-Yes&#44; use following crontab commands for users:
 cron_get_command=Command to read a user's cron job,0
 cron_edit_command=Command to edit a user's cron job,0
 cron_copy_command=Command to accept a user's cron job on stdin,0

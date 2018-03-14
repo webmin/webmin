@@ -15,7 +15,7 @@ index_return=cron list
 index_env=Environment variable
 index_move=Move
 index_run=Running?
-index_ecmd=The command $1 for managing user Cron configurations was not found. Maybe Cron is not installed on this system?
+index_ecmd=The command $1 for managing user Cron configurations was not found. Maybe Cron is not installed or you <a href='$2'>rmodule konfiguration</a> is wrong on this system?
 index_esingle=The file $1 listing Cron jobs does not exist. Maybe Cron is not installed on this system?
 index_ecrondir=The Cron jobs directory $1 does not exist. Maybe the module's configuration is incorrect, or Cron is not installed?
 index_ecrondir_create=Try to create jobs directory $1 ?
