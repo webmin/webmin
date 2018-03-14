@@ -22,7 +22,9 @@ if (!&has_command($config{'rndcconf_cmd'})) {
 
 # Check if already working
 my $out;
-&execute_command("$config{'rndc_cmd'} status", undef, \$out);
+&execute_command($config{'rndc_cmd'}.
+		 ($config{'rndc_conf'} ? " -c $config{'rndc_conf'}" : "").
+		 " status", undef, \$out);
 if (!$? && $out !~ /failed/) {
 	print "<b>",$text{'rndc_desc2'},"</b><p>\n";
 	}
