@@ -3,7 +3,7 @@
 # Update webmin/usermin to the latest develop version  from GitHub repo
 # inspired by authentic-theme/theme-update.sh script, thanks qooob
 #
-VERS="1.6.1, 2018-03-09"
+VERS="1.6.2, 2018-03-10"
 #
 COPY=" Kay Marquardt <kay@rrr.de>         https://github.com/gnadelwartz"
 #############################################################################
@@ -22,7 +22,7 @@ if [[ "$1" == "-nc" ]] ; then
 fi
 
 # predefined colors for echo -e on terminal
-if [[ -t 1 && "${NCOLOR}" != "YES" || "$1" == "--help" ]] ;  then
+if [[ -t 1 && "${NCOLOR}" != "YES" ]] ;  then
     RED='\e[49;0;31;82m'
     BLUE='\e[49;1;34;182m'
     GREEN='\e[49;32;5;82m'
@@ -48,6 +48,7 @@ fi
 HOST="https://github.com"
 REPO="webmin/$PROD"
 GIT="git"
+CURL="curl"
 BRANCH=""
 
 # temporary locations for git clone
@@ -144,10 +145,11 @@ EOF
 fi
 
 # check for required webmin / usermin files in current dir
-if [[ ! -r "${DIR}/setup.sh" || ! -r "${DIR}/miniserv.pl" ]] ; then
-    echo -e "${NC}${RED}Error: the current dir does not contain a webmin installation, aborting ...${NC}"
+if [[ ! -r "${DIR}/setup.sh" || ! -r "${DIR}/miniserv.pl" || ! -d "${DIR}/authentic-theme" ]] ; then
+    echo -e "${NC}${RED}Error: the current dir does not contain a valid webmin installation, aborting ...${NC}"
     exit 1
 fi
+
 
 # need to be root 
 if [[ $EUID -ne 0 ]]; then
@@ -186,12 +188,20 @@ else
     exit 3
 fi
 
+# check if curl is availible
+if type ${CURL} >/dev/null 2>&1 ; then
+    true
+else
+    # flag as not availible, not needed without -repo or -release:latest
+    CURL=""
+fi
+
 
 ################
 # lets start
 
 # alternative repo given
-if [[ "$1" == "-repo" ]]; then
+if [[ "$1" == "-repo"* ]]; then
         if [[ "$1" == *":"* ]] ; then
           REPO=${1##*:}
           [[ "${REPO##*/}" != "webmin" && "${REPO##*/}" != "usermin" ]] && echo -e "${RED}Error: ${REPO} is not a valid repo name!${NC}" && exit 1
@@ -243,8 +253,11 @@ fi
   if [[ "$1" == *"-release"* ]]; then
         if [[ "$1" == *":"* ]] && [[ "$1" != *"latest"* ]]; then
           RRELEASE=${1##*:}
+        elif [[ "${CURL}" != "" ]] ; then
+          RRELEASE=`${CURL} -s -L https://github.com/${REPO}/blob/master/version  | sed -n '/id="LC1"/s/.*">\([^<]*\).*/\1/p'`
         else
-          RRELEASE=`curl -s -L https://github.com/${REPO}/blob/master/version  | sed -n '/id="LC1"/s/.*">\([^<]*\).*/\1/p'`
+          echo -e "${RED}Error: Command \`curl\` is not installed or not in the \`PATH\`.${NC} try with -release:1.880"
+          exit 3
         fi
         shift
         echo -e "${CYAN}Pulling in latest release of${NC} ${ORANGE}${PROD^}${NC} $RRELEASE ($HOST/$REPO)..."
@@ -269,7 +282,11 @@ fi
     ####################
     # start processing pulled source
     # add latest changeset date to original version, works with git 1.7+
-    version="`head -c -1 ${TEMP}/version``cd ${TEMP}; date -d @$(${GIT} log -n1 --format='%at') '+%m%d%H%M'`" 
+    if [[ "${RRELEASE}" == "" ]] ; then
+        version="`head -c -1 ${TEMP}/version``cd ${TEMP}; date -d @$(${GIT} log -n1 --format='%at') '+%m%d%H%M'`" 
+    else
+        version="${RRELEASE}"
+    fi
     DOTVER=`echo ${version} | sed 's/-/./'`
     TARBALL="${TEMP}/tarballs/${PROD}-${DOTVER}"
     ###############
@@ -298,7 +315,7 @@ fi
         if [[ -f ${TEMP}/${module} && ! -f  "${TARBALL}/$module" ]]; then
           module=`dirname $module`
           echo -e "${CYAN}Adding nonstandard${NC} ${ORANGE}$module${NC} to ${PROD^}"
-		  cp -r -L ${TEMP}/${module} ${TARBALL}/
+          cp -r -L ${TEMP}/${module} ${TARBALL}/
         fi
     done
     cp "${WTEMP}/chinese-to-utf8.pl" "${TARBALL}/"
@@ -336,18 +353,12 @@ fi
             echo -e "${BLUE} iconv not found, skipping lang files!${NC}"
         fi
 
-        # check if alternatve repo exist
-        AUTHREPO=`echo ${REPO} | sed "s/\/.*min$/\/autehtic-theme/"`
-        if [[ "${REPO}" != "${AUTHREPO}" ]]; then
-             exist=`curl -s -L ${HOST}/${AUTHREPO}`
-             [[ "${#exist}" -lt 20 ]] && RREPO="${AUTHREPO}"
-        fi
         # run authenric-thme update, possible unattended
         if [[ -x authentic-theme/theme-update.sh ]] ; then
             if [[ "${ASK}" == "YES" ]] ; then
-                authentic-theme/theme-update.sh ${RREPO}
+                authentic-theme/theme-update.sh
             else
-                yes | authentic-theme/theme-update.sh ${RREPO}
+                yes | authentic-theme/theme-update.sh
             fi
         fi
     else
@@ -360,7 +371,7 @@ fi
             # check for / and ../
             if [[ "${file}" == "/"* || "${file}" == *"../"* ]] ; then
                 echo -e "${RED}Warning: / and ../ are not allowed!${NC} skipping ${file} ..."
-                ERRORS="yes"
+                WARNINGS="yes"
                 continue
             fi
             if [[ "$file" == *"/" && -d "${TARBALL}/${file}" ]] ; then
@@ -378,12 +389,12 @@ fi
                         rm -rf "${file}.bak"
                     else
                         echo -e "${RED}cp ${file} failed,${NC} restore original!"
-                        ERRORS="yes"
+                        WARNINGS="yes"
                     fi
                     FOUND="${FOUND}${file} "
                 elif [[ ! -d "${TARBALL}/${file}" ]] ; then
                     echo -e "${RED}Warning: No such file or directory: ${file},${NC} skipping ..."
-                    ERRORS="yes"
+                    WARNINGS="yes"
                 fi
             fi
         done
@@ -412,8 +423,8 @@ fi
   chmod +x *.pl *.cgi *.pm *.sh */*.pl */*.cgi */*.pm */*.sh
       
   # thats all folks
-  [[ "${ERRORS}" != "" ]] && ERRORS="(with warnings)"
-  echo -e "\n${CYAN}Updating ${PROD^} ${ORANGE}${FOUND}${NC} to Version `cat version`, done ${RED}${ERRORS}${NC}"
+  [[ "${WARNINGS}" != "" ]] && WARNINGS="(with warnings)"
+  echo -e "\n${CYAN}Updating ${PROD^} ${ORANGE}${FOUND}${NC} to Version `cat version`, done ${RED}${WARNINGS}${NC}"
 
 # update success
 exit 0
