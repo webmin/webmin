@@ -1619,10 +1619,14 @@ Returns 1 if the crontab command exists on this system
 =cut
 sub has_crontab_cmd
 {
-my $cmd = $config{'cron_edit_command'} || "crontab";
-$cmd =~ s/^su.*-c\s+//;
-($cmd) = &split_quoted_string($cmd);
-return &has_command($cmd);
+my $cmd = $config{'cron_edit_command'};
+if ($cmd) {
+	$cmd =~ s/^su.*-c\s+//;
+	($cmd) = &split_quoted_string($cmd);
+	my $rv = &has_command($cmd);
+	return $rv if ($rv);
+	}
+return &has_command("crontab");
 }
 
 1;
