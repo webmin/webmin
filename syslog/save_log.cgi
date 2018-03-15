@@ -24,6 +24,8 @@ elsif ($in{'view'}) {
 		# The drop-down selector on this page has chosen a file
 		$in{'file'} = $in{'idx'};
 		delete($in{'idx'});
+		delete($in{'oidx'});
+		delete($in{'extra'});
 		}
 	if ($in{'idx'} ne '') {
 		# From syslog
