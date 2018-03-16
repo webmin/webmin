@@ -498,6 +498,8 @@ if (&read_file_contents($cron_temp_file) =~ /\S/) {
 		# We have no crontab command .. emulate by copying to user file
 		$rv = system("cat $cron_temp_file".
 			" >$config{'cron_dir'}/$_[0] 2>/dev/null");
+		&set_ownership_permissions($_[0], undef, 0600,
+			"$config{'cron_dir'}/$_[0]");
 		}
 	elsif ($config{'cron_edit_command'}) {
 		# fake being an editor
