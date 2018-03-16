@@ -1,4 +1,4 @@
-#!//usr/local/bin/perl
+#!/usr/local/bin/perl
 # A very simple perl web server used by Webmin
 
 # Require basic libraries
