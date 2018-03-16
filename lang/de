@@ -76,6 +76,7 @@ elock_tries2=Konnte die Datei $1 nach $2 Minuten nicht sperren. Letzter Fehler w
 emodule=Zugriff verweigert: Benutzer $1 ist nicht berechtigt, das $2 Modul zu benutzen
 emodulecheck=Das $1 Modul ist auf Ihrem System nicht verfügbar
 error=Fehler
+error_403=Zugriff verweigert!
 error_file=Datei
 error_line=Zeile
 error_previous=Vorherige Seite

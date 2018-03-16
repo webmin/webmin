@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!//usr/local/bin/perl
 # A very simple perl web server used by Webmin
 
 # Require basic libraries
@@ -2669,7 +2669,9 @@ if ($eh) {
 	$querystring = "code=$_[0]&message=".&urlize($_[1]).
 		       "&body=".&urlize($_[2]);
 	$error_handler_recurse++;
-	$ok_code = $_[0];
+	# return 200 to statisfy PCI scanners, see
+	# https://github.com/webmin/webmin/issues/833
+	$ok_code = 200; # $_[0];
 	$ok_message = $_[1];
 	goto rerun;
 	}
