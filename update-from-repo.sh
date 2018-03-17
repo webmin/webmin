@@ -3,7 +3,7 @@
 # Update webmin/usermin to the latest develop version  from GitHub repo
 # inspired by authentic-theme/theme-update.sh script, thanks qooob
 #
-VERS="1.6.2, 2018-03-10"
+VERS="1.6.3, 2018-03-17"
 #
 COPY=" Kay Marquardt <kay@rrr.de>         https://github.com/gnadelwartz"
 #############################################################################
@@ -40,9 +40,15 @@ fi
 # Get webmin/usermin dir based on script's location
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PROD="webmin" # default
+
 if [[ -r "${DIR}/usermin-init" &&  -r "${DIR}/uconfig.cgi" ]] ; then
+  if [[ -d "${DIR}/webmin" ]] ; then
+    echo -e "${RED}Error: cannot detect if current dir is webmin or usermin. aborting ...${NC}"
+    exit 1
+  else
     echo -e "${ORANGE}Usermin detected ...${NC}"
     PROD="usermin"
+  fi
 fi
 # where to get source
 HOST="https://github.com"
@@ -146,14 +152,14 @@ fi
 
 # check for required webmin / usermin files in current dir
 if [[ ! -r "${DIR}/setup.sh" || ! -r "${DIR}/miniserv.pl" || ! -d "${DIR}/authentic-theme" ]] ; then
-    echo -e "${NC}${RED}Error: the current dir does not contain a valid webmin installation, aborting ...${NC}"
+    echo -e "${NC}${RED}Error: the current dir does not contain a valid webmin or usermin installation, aborting ...${NC}"
     exit 1
 fi
 
 
 # need to be root 
 if [[ $EUID -ne 0 ]]; then
-    echo -e "${RED}Error: This command has to be run under the root user.${NC}"
+    echo -e "${RED}Error: This command has to be run under the root user. aborting ...${NC}"
     exit 2
 fi
 
@@ -170,21 +176,33 @@ done
 
 # check for other locations if not in default
 if [[ "${MINICONF}" == "" ]] ; then
-    MINICONF=`find /* -maxdepth 6 -name miniserv.conf 2>/dev/null | grep ${PROD} | head -n 1`
+    MINICONF=`find /* -maxdepth 6 -regex ".*/${PROD}.*/miniserv\.conf" 2>/dev/null | grep ${PROD} | head -n 1`
     echo  -e "${ORANGE}found: ${MINICONF}${NC} (alternative location)"
 fi
 
-# add PATH from config to system PATH
+# check if miniserv.conf found
 if [[ "${MINICONF}" != "" ]] ; then
+    # add PATH from config to system PATH
     export PATH="${PATH}:`grep path= ${MINICONF} | sed 's/^path=//'`"
     ETC="`grep env_WEBMIN_CONFIG= ${MINICONF} | sed 's/^env_WEBMIN_CONFIG=//'`"
+	echo  -e "${ORANGE}Config path for ${PROD^} is: ${NC} ${ETC}"
+	echo  -e "${ORANGE}Install path for ${PROD^} is:${NC} ${DIR}\n"
+else
+    echo -e "${RED}Error: found no miniserv configuration. aborting ...${NC}"
+    exit 1
+fi
+
+# check if PROD is in ETC and DIR
+if [[ "${ETC}" != *"${RPOD}"* || "${DIR}" != *"${RPOD}"* ]] ; then
+    echo -e "${RED}Warning:${ORANGE} Config or Install path does not contain \"${PROD}\"!${NC} consider to ${ORANGE}NOT${NC} update!\n"    
+    WARNINGS="yes"
 fi
 
 # check if git is availible
 if type ${GIT} >/dev/null 2>&1 ; then
     true
 else
-    echo -e "${RED}Error: Command \`git\` is not installed or not in the \`PATH\`.${NC}"
+    echo -e "${RED}Error: Command \`git\` is not installed or not in the \`PATH\`. aborting ...${NC}"
     exit 3
 fi
 
@@ -204,10 +222,17 @@ fi
 if [[ "$1" == "-repo"* ]]; then
         if [[ "$1" == *":"* ]] ; then
           REPO=${1##*:}
-          [[ "${REPO##*/}" != "webmin" && "${REPO##*/}" != "usermin" ]] && echo -e "${RED}Error: ${REPO} is not a valid repo name!${NC}" && exit 1
+          if [[ "${REPO##*/}" != "webmin" && "${REPO##*/}" != "usermin" ]] ; then
+			  echo -e "${RED}Error: \"${REPO}\" is not a valid repository name! aborting ...${NC}"
+			  exit 1
+		  fi
+          if [[ "${REPO##*/}" != "${PROD}" ]] ; then
+			  echo -e "${RED}Error: \"${REPO}\" is not a valid ${PROD^} repository name! aborting ...${NC}"
+			  exit 1
+		  fi
           shift
         else
-          echo -e "${ORANGE}./`basename $0`:${NC} Missing argument for parameter -repo. aborting ..."
+          echo -e "${RED}Error: Missing argument for parameter \"-repo\". aborting ...${NC}"
           exit 1
         fi
 fi
@@ -224,7 +249,7 @@ if [[ "$1" == *"-branch"* ]]; then
 fi
 
 # warn about possible side effects because webmins makedist.pl try cd to /usr/local/webmin (and more)
-[[ -d "/usr/local/webadmin" ]] && echo -e "${ORANGE}Warning: Develop dir /usr/local/webadmin exist, update may fail!${NC}"
+[[ -d "/usr/local/webadmin" ]] && echo -e "${RED}Warning:${ORANGE} Develop dir /usr/local/webadmin exist, update may fail!${NC}"
 
 ################
 # really update?
@@ -232,7 +257,7 @@ REPLY="y"
 
 if [ "${ASK}" == "YES" ] ; then
     if [[ "$1" != "-release"* ]] ; then
-        echo -e "${RED}Warning:${NC} ${ORANGE}update from non release repository${NC} ${HOST}/${REPO}${BRANCH} ${ORANGE}may break your installation!${NC}"
+        echo -e "${RED}Warning:${ORANGE} update from non release repository${NC} ${HOST}/${REPO}${BRANCH} ${ORANGE}may break your installation!${NC}"
     fi
     read -p "Would you like to update "${PROD^}" from ${HOST}/${REPO}${BRANCH} [y/N] " -n 1 -r
     echo
@@ -256,7 +281,7 @@ fi
         elif [[ "${CURL}" != "" ]] ; then
           RRELEASE=`${CURL} -s -L https://github.com/${REPO}/blob/master/version  | sed -n '/id="LC1"/s/.*">\([^<]*\).*/\1/p'`
         else
-          echo -e "${RED}Error: Command \`curl\` is not installed or not in the \`PATH\`.${NC} try with -release:1.880"
+          echo -e "${RED}Error: Command \`curl\` is not installed or not in the \`PATH\`.${NC} try with -release:1.881"
           exit 3
         fi
         shift
@@ -272,7 +297,7 @@ fi
   # on usermin!! pull also webmin to resolve symlinks later!
   WEBMREPO=`echo ${REPO} | sed "s/\/usermin$/\/webmin/"`
   if [[ "${REPO}" != "${WEBMREPO}" ]]; then
-        echo -e "${CYAN}Pulling in latest changes for${NC} ${ORANGE}Webmin${NC} ($HOST/$WEBMREPO) ..."
+        echo -e "${CYAN}Pulling also latest changes for${NC} ${ORANGE}Webmin${NC} ($HOST/$WEBMREPO) ..."
         ${GIT} clone --depth 1 --quiet  $HOST/$WEBMREPO.git "${WTEMP}"
   fi
 
@@ -370,7 +395,7 @@ fi
         do
             # check for / and ../
             if [[ "${file}" == "/"* || "${file}" == *"../"* ]] ; then
-                echo -e "${RED}Warning: / and ../ are not allowed!${NC} skipping ${file} ..."
+                echo -e "${RED}Warning:${ORANGE} / and ../ are not allowed!${NC} skipping ${file} ..."
                 WARNINGS="yes"
                 continue
             fi
@@ -388,12 +413,12 @@ fi
                     if [[ "$?" -eq "0" ]] ; then
                         rm -rf "${file}.bak"
                     else
-                        echo -e "${RED}cp ${file} failed,${NC} restore original!"
+                        echo -e "${RED}Warning:${ORANGE} cp ${file} failed,${NC} restore original!"
                         WARNINGS="yes"
                     fi
                     FOUND="${FOUND}${file} "
                 elif [[ ! -d "${TARBALL}/${file}" ]] ; then
-                    echo -e "${RED}Warning: No such file or directory: ${file},${NC} skipping ..."
+                    echo -e "${RED}Warning:${ORANGE} No such file or directory: ${file},${NC} skipping ..."
                     WARNINGS="yes"
                 fi
             fi
