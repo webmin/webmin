@@ -325,7 +325,6 @@ else {
 sub cleanup_wellknown
 {
 my ($wellknown_new, $challenge_new) = @_;
-print STDERR "deleting $wellknown_new and $challenge_new\n";
 &unlink_file($challenge_new) if ($challenge_new);
 &unlink_file($wellknown_new) if ($wellknown_new);
 }
