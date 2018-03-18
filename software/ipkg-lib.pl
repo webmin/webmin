@@ -3,13 +3,27 @@
 
 use POSIX;
 chop($system_arch = `uname -m`);
-$package_dir = "/var/db/pkg";
 $has_update_system = 1;
 $no_package_install = 1;
 
+if (&use_pkg_ng()) {
+    # check whether the opkg manager is available and use that.
+    $ipkg    = "opkg";
+} else {
+    $ipkg    = "ipkg";
+    # If not, default to the ipkg manager tools
+}
+
+
+sub use_pkg_ng
+{
+return 0 if (-x "/opt/bin/opkg");
+}
+
+
 sub list_package_system_commands
 {
-return ("ipkg");
+return ($ipkg);
 }
 
 # list_packages([package]*)
@@ -25,7 +39,7 @@ if ($_[0] ne "ALL") {
 	$all=$_[0];
 }
 %packages = ( );
-&open_execute_command(PKGINFO, "ipkg info $arg", 1, 1);
+&open_execute_command(PKGINFO, "$ipkg info $arg", 1, 1);
 local %temp = ();
 while(<PKGINFO>) {
 		$_ =~ s/\r|\n//g;
@@ -79,7 +93,7 @@ local $qm = quotemeta($_[0]);
 local $pos=&list_packages($_[0]);
 return () if (!$pos--);
 
-local $upgrade =  $pos ? &backquote_command("ipkg list-upgradable | grep $qm 2>&1", 1) : undef; 
+local $upgrade =  $pos ? &backquote_command("$ipkg list-upgradable | grep $qm 2>&1", 1) : undef; 
 local @rv = ( $_[0] );
 push(@rv, $packages{$pos, 'class'});
 push(@rv, $packages{$pos, 'desc'});
@@ -105,7 +119,7 @@ sub check_files
 local $i = 0;
 local $file;
 local $qm = quotemeta($_[0]);
-&open_execute_command(PKGINFO, "ipkg files $qm", 1, 1);
+&open_execute_command(PKGINFO, "$ipkg files $qm", 1, 1);
 while($file = <PKGINFO>) {
 	$file =~ s/\r|\n//g;
 	next if ($file =~ /^Package /);
@@ -135,7 +149,7 @@ sub installed_file
 local (%packages, $file, $i, @pkgin);
 local $n = &list_packages();
 for($i=0; $i<$n; $i++) {
-	&open_execute_command(PKGINFO, "ipkg files $packages{$i,'name'}", 1,1);
+	&open_execute_command(PKGINFO, "$ipkg files $packages{$i,'name'}", 1,1);
 	while($file = <PKGINFO>) {
 		next if ($file =~ /^Package /);
 		$file =~ s/\r|\n//g;
@@ -170,7 +184,7 @@ else {
 # Installs the package in the given file, with options from %in
 sub install_package
 {
-local $out = &backquote_logged("ipkg install $_[1] 2>&1");
+local $out = &backquote_logged("$ipkg install $_[1] 2>&1");
 if ($?) {
 	return "<pre>$out</pre>";
 	}
@@ -181,7 +195,7 @@ return undef;
 # Totally remove some package
 sub delete_package
 {
-local $out = &backquote_logged("ipkg remove $_[0] 2>&1");
+local $out = &backquote_logged("$ipkg remove $_[0] 2>&1");
 if ($?) { return "<pre>$out</pre>"; }
 return undef;
 }
@@ -193,12 +207,12 @@ return &text('bsd_manager', "SYNOLOGY");
 
 sub package_help
 {
-return "ipkg";
+return $ipkg;
 }
 
 sub list_update_system_commands
 {
-return ("ipkg");
+return $ipkg;
 }
 
 # update_system_install([package])
@@ -207,7 +221,7 @@ sub update_system_install
 {
 local $update = $_[0] || $in{'update'};
 local (@rv, @newpacks);
-local $cmd = "ipkg install";
+local $cmd = "$ipkg install";
 print "<b>",&text('IPKG_install', "<tt>$cmd</tt>"),"</b><p>\n";
 print "<pre>";
 &additional_log('exec', undef, "$cmd $update");
@@ -272,12 +286,12 @@ sub update_system_available
 {
 local @rv;
 
-&open_execute_command(PKGINFO, "ipkg list-upgradable", 1, 1);
+&open_execute_command(PKGINFO, "$ipkg list-upgradable", 1, 1);
 while(<PKG>) {
 	s/\r|\n//g;
 	if (/^\s*(.+?) - (.+?) - (.+)/) {
 		local $pkg = {  'name' => $1,
-						'version' => $3 }
+						'version' => $3 };
 		push(@rv, $pkg);
 	}
 }
