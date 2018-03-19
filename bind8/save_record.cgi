@@ -21,6 +21,7 @@ $access{'ro'} && &error($text{'master_ero'});
 &lock_file(&make_chroot(&absolute_path($zone->{'file'})));
 
 # Read the existing records
+&before_editing($zone);
 my @recs;
 if ($config{'largezones'} && !defined($in{'num'})) {
 	# Adding to a large zone, so only read the SOA
@@ -35,7 +36,7 @@ else {
 my $r;
 if (defined($in{'num'})) {
 	$r = &find_record_by_id(\@recs, $in{'id'}, $in{'num'});
-	$r || &error($text{'edit_egone'});
+	$r || &error_unfreeze($text{'edit_egone'});
 	}
 
 # check for deletion
@@ -108,7 +109,7 @@ if ($in{'delete'}) {
 my $ttl;
 if (!$in{'ttl_def'}) {
 	$in{'ttl'} =~ /^\d+$/ ||
-		&error(&text('edit_ettl', $in{'ttl'}));
+		&error_unfreeze(&text('edit_ettl', $in{'ttl'}));
 	$ttl = $in{'ttl'}.$in{'ttlunit'};
 	}
 my $vals = $in{'value0'};
@@ -124,7 +125,7 @@ if ($in{'type'} eq "PTR" && $reverse) {
 	my $ipv4;
 	($ipv4 = $in{'origin'} =~ /in-addr\.arpa/i) ||
 	    $in{'origin'} =~ /\.$ipv6revzone/i ||
-		&error(&text('edit_eip', $in{'name'}));
+		&error_unfreeze(&text('edit_eip', $in{'name'}));
 	if ($ipv4) {
 		if ($in{'name'} =~ /^\d+$/) {
 			$in{'name'} = &arpa_to_ip($in{'origin'}).".".$in{'name'};
@@ -132,25 +133,25 @@ if ($in{'type'} eq "PTR" && $reverse) {
 		&check_ipaddress($in{'name'}) ||
 		    ($in{'name'} =~ /^(.*)\.(\d+)$/ && &check_ipaddress("$1")) ||
 		    ($in{'name'} =~ /^(.*)\.(\d+)$/ && $1 eq &arpa_to_ip($in{'origin'})) ||
-			&error(&text('edit_eip', $in{'name'}));
+			&error_unfreeze(&text('edit_eip', $in{'name'}));
 		$name = &ip_to_arpa($in{'name'});
 		}
 	else {
 		&check_ip6address($in{'name'}) ||
-			&error(&text('edit_eip6', $in{'name'}));
+			&error_unfreeze(&text('edit_eip6', $in{'name'}));
 		$name = &net_to_ip6int($in{'name'});
 		}
 	&valname($in{'value0'}) ||
-		&error(&text('edit_ehost', $vals));
+		&error_unfreeze(&text('edit_ehost', $vals));
 	if ($in{'value0'} !~ /\.$/) { $vals .= "."; }
 	}
 else {
 	# some other kind of record
 	$in{'name'} eq "" || $in{'name'} eq "@" || &valnamewild($in{'name'}) ||
-		&error(&text('edit_ename', $in{'name'}));
+		&error_unfreeze(&text('edit_ename', $in{'name'}));
 	if ($in{'type'} eq "A") {
 		&check_ipaddress($vals) ||
-			&error(&text('edit_eip', $vals));
+			&error_unfreeze(&text('edit_eip', $vals));
 		if (!$access{'multiple'}) {
 			# Is this address already in use? Search all domains
 			# to find out..
@@ -163,7 +164,7 @@ else {
 					if ($fr->{'type'} eq "A" &&
 					    $fr->{'values'}->[0] eq $vals &&
 					    $fr->{'name'} ne $r->{'name'}) {
-						&error(&text('edit_edupip',
+						&error_unfreeze(&text('edit_edupip',
 							     $vals));
 						}
 					}
@@ -172,7 +173,7 @@ else {
 		}
 	elsif ($in{'type'} eq "AAAA") {
 		&check_ip6address($vals) ||
-			&error(&text('edit_eip6', $vals));
+			&error_unfreeze(&text('edit_eip6', $vals));
 		if (!$access{'multiple'}) {
 			# Is this address already in use? Search all domains
 			# to find out..
@@ -185,7 +186,7 @@ else {
 					if ($fr->{'type'} eq "AAAA" &&
 					    &expandall_ip6($fr->{'values'}->[0]) eq &expandall_ip6($vals) &&
 					    $fr->{'name'} ne $r->{'name'}) {
-						&error(&text('edit_edupip',
+						&error_unfreeze(&text('edit_edupip',
 							     $vals));
 						}
 					}
@@ -194,7 +195,7 @@ else {
 		}
 	elsif ($in{'type'} eq "NS") {
 		&valname($vals) ||
-			&error(&text('edit_ens', $vals));
+			&error_unfreeze(&text('edit_ens', $vals));
 		if ($vals =~ /\.\Q$in{'origin'}\E$/) {
 			# Make absolute
 			$vals .= ".";
@@ -202,25 +203,25 @@ else {
 		}
 	elsif ($in{'type'} eq "CNAME") {
 		&valname($vals) || $vals eq '@' ||
-			&error(&text('edit_ecname', $vals));
+			&error_unfreeze(&text('edit_ecname', $vals));
 		if ($vals =~ /\.\Q$in{'origin'}\E$/) {
 			$vals .= ".";
 			}
 		}
 	elsif ($in{'type'} eq "MX") {
 		&valname($in{'value1'}) ||
-			&error(&text('edit_emx', $in{'value1'}));
+			&error_unfreeze(&text('edit_emx', $in{'value1'}));
 		$in{'value0'} =~ /^\d+$/ ||
-			&error(&text('edit_epri', $in{'value0'}));
+			&error_unfreeze(&text('edit_epri', $in{'value0'}));
 		if ($vals =~ /\.\Q$in{'origin'}\E$/) {
 			$vals .= ".";
 			}
 		}
 	elsif ($in{'type'} eq "HINFO") {
 		$in{'value0'} =~ /\S/ ||
-			&error($text{'edit_ehard'});
+			&error_unfreeze($text{'edit_ehard'});
 		$in{'value1'} =~ /\S/ ||
-			&error($text{'edit_eos'});
+			&error_unfreeze($text{'edit_eos'});
 		$in{'value0'} = "\"$in{'value0'}\"" if ($in{'value0'} =~ /\s/);
 		$in{'value1'} = "\"$in{'value1'}\"" if ($in{'value1'} =~ /\s/);
 		$vals = $in{'value0'}." ".$in{'value1'};
@@ -239,15 +240,15 @@ else {
 		}
 	elsif ($in{'type'} eq "WKS") {
 		&check_ipaddress($in{'value0'}) ||
-			&error(&text('edit_eip', $in{'value0'}));
+			&error_unfreeze(&text('edit_eip', $in{'value0'}));
 		if (!$in{'value2'}) {
-			&error($text{'edit_eserv'});
+			&error_unfreeze($text{'edit_eserv'});
 			}
 		my @ws = split(/[\r\n]+|\s+/, $in{'value2'});
 		$vals = "$in{'value0'} $in{'value1'} (";
 		foreach my $ws (@ws) {
 			$ws =~ /^[a-z]([\w\-]*\w)?$/i ||
-				&error(&text('edit_ebadserv', $ws));
+				&error_unfreeze(&text('edit_ebadserv', $ws));
 			$vals .= "\n\t\t\t\t\t$ws";
 			}
 		$vals .= " )";
@@ -257,70 +258,70 @@ else {
 			$in{'value0'} = ".";
 			}
 		elsif (!&valemail($in{'value0'})) {
-			&error(&text('edit_eemail', $in{'value0'}));
+			&error_unfreeze(&text('edit_eemail', $in{'value0'}));
 			}
 		&valname($in{'value1'}) ||
-			&error(&text('edit_etxt', $in{'value1'}));
+			&error_unfreeze(&text('edit_etxt', $in{'value1'}));
 		$in{'value0'} = &email_to_dotted($in{'value0'});
 		$vals = "$in{'value0'} $in{'value1'}";
 		}
 	elsif ($in{'type'} eq "LOC") {
-		$in{'value0'} =~ /\S/ || &error($text{'edit_eloc'});
+		$in{'value0'} =~ /\S/ || &error_unfreeze($text{'edit_eloc'});
 		}
 	elsif ($in{'type'} eq 'SRV') {
 		$in{'serv'} =~ /^[A-Za-z0-9\-\_]+$/ ||
-			&error(&text('edit_eserv2', $in{'serv'}));
+			&error_unfreeze(&text('edit_eserv2', $in{'serv'}));
 		$in{'name'} = join(".", "_".$in{'serv'}, "_".$in{'proto'},
 				   $in{'name'} ? ( $in{'name'} ) : ( ));
 		$in{'value0'} =~ /^\d+$/ ||
-			&error(text('edit_epri', $in{'value0'}));
+			&error_unfreeze(text('edit_epri', $in{'value0'}));
 		$in{'value1'} =~ /^\d+$/ ||
-			&error(text('edit_eweight', $in{'value1'}));
+			&error_unfreeze(text('edit_eweight', $in{'value1'}));
 		$in{'value2'} =~ /^\d+$/ ||
-			&error(text('edit_eport', $in{'value2'}));
+			&error_unfreeze(text('edit_eport', $in{'value2'}));
 		&valname($in{'value3'}) ||
-			&error(&text('edit_etarget', $in{'value3'}));
+			&error_unfreeze(&text('edit_etarget', $in{'value3'}));
 		}
 	elsif ($in{'type'} eq 'TLSA') {
 		$in{'serv'} =~ /^[A-Za-z0-9\-\_]+$/ ||
-			&error(&text('edit_eserv2', $in{'serv'}));
+			&error_unfreeze(&text('edit_eserv2', $in{'serv'}));
 		$in{'name'} = join(".", "_".$in{'serv'}, "_".$in{'proto'},
 				   $in{'name'} ? ( $in{'name'} ) : ( ));
 		$in{'value0'} =~ /^\d+$/ ||
-			&error(text('edit_eusage', $in{'value0'}));
+			&error_unfreeze(text('edit_eusage', $in{'value0'}));
 		$in{'value1'} =~ /^\d+$/ ||
-			&error(text('edit_eselector', $in{'value1'}));
+			&error_unfreeze(text('edit_eselector', $in{'value1'}));
 		$in{'value2'} =~ /^\d+$/ ||
-			&error(text('edit_ematch', $in{'value2'}));
+			&error_unfreeze(text('edit_ematch', $in{'value2'}));
 		$in{'value3'} =~ /^[a-f0-9]+$/ &&
 		    length($in{'value3'}) % 2 == 0 ||
-			&error(&text('edit_etlsa', $in{'value3'}));
+			&error_unfreeze(&text('edit_etlsa', $in{'value3'}));
 		}
 	elsif ($in{'type'} eq 'SSHFP') {
 		$in{'value0'} =~ /^\d+$/ ||
-			&error(text('edit_ealg', $in{'value0'}));
+			&error_unfreeze(text('edit_ealg', $in{'value0'}));
 		$in{'value1'} =~ /^\d+$/ ||
-			&error(text('edit_efp', $in{'value1'}));
+			&error_unfreeze(text('edit_efp', $in{'value1'}));
 		$in{'value2'} =~ /^[a-f0-9]+$/ ||
-			&error(&text('edit_esshfp', $in{'value2'}));
+			&error_unfreeze(&text('edit_esshfp', $in{'value2'}));
 		}
 	elsif ($in{'type'} eq 'KEY') {
 		$in{'value0'} =~ /^(\d+|0x[0-9a-f]+={0,2})$/i ||
-			&error(text('edit_eflags', $in{'value0'}));
+			&error_unfreeze(text('edit_eflags', $in{'value0'}));
 		$in{'value1'} =~ /^\d+$/ ||
-			&error(text('edit_eproto', $in{'value1'}));
+			&error_unfreeze(text('edit_eproto', $in{'value1'}));
 		$in{'value2'} =~ /^\d+$/ ||
-			&error(text('edit_ealg2', $in{'value2'}));
+			&error_unfreeze(text('edit_ealg2', $in{'value2'}));
 		$in{'value3'} =~ s/[ \r\n]//g;
 		$in{'value3'} =~ /^[a-zA-Z0-9\/\+]+$/ ||
-			&error(text('edit_ekey'));
+			&error_unfreeze(text('edit_ekey'));
 		$vals = join(" ", $in{'value0'}, $in{'value1'},
 				  $in{'value2'}, $in{'value3'});
 		}
 	elsif ($in{'type'} eq 'PTR') {
 		$vals = $in{'value0'};
 		&valname($vals) ||
-			&error(&text('edit_eptr', $vals));
+			&error_unfreeze(&text('edit_eptr', $vals));
 		}
 	elsif ($in{'type'} eq 'SPF') {
 		# For SPF records, build the SPF string from the inputs
@@ -330,31 +331,31 @@ else {
 		$spf->{'ptr'} = $in{'spfptr'};
 		$spf->{'a:'} = [ split(/\s+/, $in{'spfas'}) ];
 		foreach my $a (@{$spf->{'a:'}}) {
-			&to_ipaddress($a) || &error(&text('edit_espfa', $a));
-			&check_ipaddress($a) && &error(&text('edit_espfa2',$a));
+			&to_ipaddress($a) || &error_unfreeze(&text('edit_espfa', $a));
+			&check_ipaddress($a) && &error_unfreeze(&text('edit_espfa2',$a));
 			}
 		$spf->{'mx:'} = [ split(/\s+/, $in{'spfmxs'}) ];
 		foreach my $mx (@{$spf->{'mx:'}}) {
-			&valname($mx) || &error(&text('edit_espfmx', $mx));
+			&valname($mx) || &error_unfreeze(&text('edit_espfmx', $mx));
 			}
 		@{$spf->{'mx:'}} <= 10 ||
-			&error(&text('edit_espfmxmax', 10));
+			&error_unfreeze(&text('edit_espfmxmax', 10));
 		$spf->{'ip4:'} = [ split(/\s+/, $in{'spfip4s'}) ];
 		foreach my $ip (@{$spf->{'ip4:'}}) {
 			&check_ipaddress($ip) ||
 			  ($ip =~ /^(\S+)\/\d+$/ && &check_ipaddress($1)) ||
-			    &error(&text('edit_espfip', $ip));
+			    &error_unfreeze(&text('edit_espfip', $ip));
 			}
 		$spf->{'ip6:'} = [ split(/\s+/, $in{'spfip6s'}) ];
 		foreach my $ip (@{$spf->{'ip6:'}}) {
 			&check_ip6address($ip) ||
 			  ($ip =~ /^(\S+)\/\d+$/ &&
 			   &check_ip6address($1)) ||
-			    &error(&text('edit_espfip6', $ip));
+			    &error_unfreeze(&text('edit_espfip6', $ip));
 			}
 		$spf->{'include:'} = [ split(/\s+/, $in{'spfincludes'}) ];
 		foreach my $i (@{$spf->{'include:'}}) {
-			&valname($i) || &error(&text('edit_espfinclude', $i));
+			&valname($i) || &error_unfreeze(&text('edit_espfinclude', $i));
 			}
 		$spf->{'all'} = $in{'spfall'};
 		foreach my $m ('redirect', 'exp') {
@@ -363,7 +364,7 @@ else {
 				}
 			else {
 				&valname($in{'spf'.$m}) || 
-					&error(&text('edit_espf'.$m, 
+					&error_unfreeze(&text('edit_espf'.$m, 
 						     $in{'spf'.$m}));
 				$spf->{$m} = $in{'spf'.$m};
 				if ($m eq 'redirect') {
@@ -379,7 +380,7 @@ else {
 		$dmarc->{'p'} = $in{'dmarcp'};
 
 		$in{'dmarcpct'} =~ /^\d+$/ && $in{'dmarcpct'} >= 0 &&
-		  $in{'dmarcpct'} <= 100 || &error($text{'edit_edmarcpct'});
+		  $in{'dmarcpct'} <= 100 || &error_unfreeze($text{'edit_edmarcpct'});
 		$dmarc->{'pct'} = $in{'dmarcpct'};
 
 		if ($in{'dmarcsp'}) {
@@ -397,7 +398,7 @@ else {
 			}
 		else {
 			$in{'dmarcrua'} =~ /^\S+$/ ||
-				&error($text{'edit_edmarcrua'});
+				&error_unfreeze($text{'edit_edmarcrua'});
 			$in{'dmarcrua'} = 'mailto:'.$in{'dmarcrua'}
 				if ($in{'dmarcrua'} !~ /^[a-z]+:/i);
 			$dmarc->{'rua'} = $in{'dmarcrua'};
@@ -408,7 +409,7 @@ else {
 			}
 		else {
 			$in{'dmarcruf'} =~ /^\S+$/ ||
-				&error($text{'edit_edmarcruf'});
+				&error_unfreeze($text{'edit_edmarcruf'});
 			$in{'dmarcruf'} = 'mailto:'.$in{'dmarcruf'}
 				if ($in{'dmarcruf'} !~ /^[a-z]+:/i);
 			$dmarc->{'ruf'} = $in{'dmarcruf'};
@@ -419,9 +420,9 @@ else {
 	elsif ($in{'type'} eq 'NSEC3PARAM') {
 		# Save DNSSEC parameters
 		$in{'value2'} =~ /^\d+$/ ||
-			&error($text{'edit_ensec3value2'});
+			&error_unfreeze($text{'edit_ensec3value2'});
 		$in{'value4'} =~ /^[a-zA-Z0-9\+\/]+$/ ||
-			&error($text{'edit_ensec3value2'});
+			&error_unfreeze($text{'edit_ensec3value2'});
 		$vals = join(" ", "(", $in{'value0'}, $in{'value1'},
                                        $in{'value2'}, length($in{'value4'}),
 				       $in{'value4'}, ")");
@@ -446,10 +447,10 @@ if (!defined($in{'num'}) || $name ne $r->{'name'}) {
 	foreach my $cr (@recs) {
 		if ($cr->{'name'} eq $name) {
 			if ($in{'type'} eq 'CNAME') {
-				&error($text{'edit_ecname1'});
+				&error_unfreeze($text{'edit_ecname1'});
 				}
 			elsif ($cr->{'type'} eq 'CNAME') {
-				&error($text{'edit_ecname2'});
+				&error_unfreeze($text{'edit_ecname2'});
 				}
 			}
 		}
@@ -461,7 +462,7 @@ if ($in{'new'}) {
 						      $in{'view'});
 	if ($in{'rev'} && $config{'rev_must'} && !$revconf) {
 		# Reverse zone must exist, but doesn't
-		&error($text{'edit_erevmust'});
+		&error_unfreeze($text{'edit_erevmust'});
 		}
 	&create_record($in{'file'}, $name, $ttl, "IN", $in{'type'}, $vals,
 		       $in{'comment'});
@@ -529,7 +530,7 @@ else {
 						      $in{'view'});
 	if ($in{'rev'} && $config{'rev_must'} && !$revconf) {
 		# Reverse zone must exist, but doesn't
-		&error($text{'edit_erevmust'});
+		&error_unfreeze($text{'edit_erevmust'});
 		}
 	&lock_file(&make_chroot($r->{'file'}));
 	&modify_record($r->{'file'}, $r, $name, $ttl,
@@ -645,6 +646,7 @@ else {
 	}
 &bump_soa_record($in{'file'}, \@recs);
 &sign_dnssec_zone_if_key($zone, \@recs);
+&after_editing($zone);
 &unlock_all_files();
 $r->{'newvalues'} = $vals;
 &webmin_log($in{'new'} ? 'create' : 'modify', 'record', $in{'origin'}, $r);
@@ -663,3 +665,8 @@ sub valnamewild
 return valdnsname($_[0], 1, $in{'origin'});
 }
 
+sub error_unfreeze
+{
+&after_editing($zone);
+&error(@_);
+}

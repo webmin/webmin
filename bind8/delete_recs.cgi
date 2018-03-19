@@ -37,6 +37,7 @@ if (!$in{'confirm'} && $config{'confirm_rec'}) {
 	}
 else {
 	# Delete them
+	&before_editing($zone);
 	my @recs = &read_zone_file($zone->{'file'}, $dom);
 
 	my %bumpedrev;
@@ -76,6 +77,7 @@ else {
 		}
 	&bump_soa_record($zone->{'file'}, \@recs);
 	&sign_dnssec_zone_if_key($zone, \@recs);
+	&after_editing($zone);
 	&unlock_all_files();
 
 	&webmin_log("delete", "recs", scalar(@d));

@@ -150,3 +150,5 @@ Automatic creation and deletion of reverse records in partial delegation zones n
 Added support for editing TLSA (SSL Certificate) records.
 ---- Changes since 1.830 ----
 Added support for editing SSHFP (SSH Public Key) records.
+---- Changes since 1.880 ----
+Before a zone is updated, BIND will be told to freeze it and thaw afterwards. This ensures that dynamic updates are preserved.

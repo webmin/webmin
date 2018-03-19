@@ -16,6 +16,10 @@ my $dom = $zone->{'name'};
 &can_edit_zone($zone) || &error($text{'master_ecannot'});
 
 my $file = $zone->{'file'};
+if (!$in{'show'}) {
+	&lock_all_files();
+	&before_editing($zone);
+	}
 my @recs = &read_zone_file($file, $dom);
 my @gens = grep { $_->{'generate'} } @recs;
 
@@ -74,23 +78,23 @@ for(my $i=0; defined($in{"type_$i"}); $i++) {
 	if ($in{"type_$i"}) {
 		my @gv;
 		$in{"start_$i"} =~ /^\d+$/ ||
-			&error(&text('gen_estart', $i+1));
+			&error_unfreeze(&text('gen_estart', $i+1));
 		$in{"stop_$i"} =~ /^\d+$/ ||
-			&error(&text('gen_estop', $i+1));
+			&error_unfreeze(&text('gen_estop', $i+1));
 		$in{"start_$i"} <= $in{"stop_$i"} ||
-			&error(&text('gen_erange', $i+1));
+			&error_unfreeze(&text('gen_erange', $i+1));
 		$in{"skip_$i"} =~ /^\d*$/ ||
-			&error(&text('gen_eskip', $i+1));
+			&error_unfreeze(&text('gen_eskip', $i+1));
 		push(@gv, $in{"start_$i"}."-".$in{"stop_$i"});
 		if ($in{"skip_$i"}) {
 			$gv[$#gv] .= "/".$in{"skip_$i"};
 			}
 		$in{"name_$i"} =~ /^[A-Za-z0-9\.\-$uscore$star\$\{\},]+$/ ||
-			&error(&text('gen_ename', $i+1));
+			&error_unfreeze(&text('gen_ename', $i+1));
 		push(@gv, $in{"name_$i"});
 		push(@gv, $in{"type_$i"});
 		$in{"value_$i"} =~ /^[A-Za-z0-9\.\-$uscore$star\$\{\},]+$/ ||
-			&error(&text('gen_evalue', $i+1));
+			&error_unfreeze(&text('gen_evalue', $i+1));
 		push(@gv, $in{"value_$i"});
 		push(@gv, $in{"cmt_$i"}) if ($in{"cmt_$i"});
 		if ($i < @gens) {
@@ -113,6 +117,8 @@ for(my $i=0; defined($in{"type_$i"}); $i++) {
 	}
 &bump_soa_record($file, \@recs);
 &sign_dnssec_zone_if_key($zone, \@recs);
+&after_editing($zone);
+&unlock_all_files();
 &redirect("edit_master.cgi?zone=$in{'zone'}&view=$in{'view'}");
 
 sub expand_mods
@@ -137,4 +143,10 @@ $b ||= "d";
 $i += $o;
 $i = sprintf("%".($w ? "0".$w : "").$b, $i);
 return $i;
+}
+
+sub error_unfreeze
+{
+&after_editing($zone);
+&error(@_);
 }

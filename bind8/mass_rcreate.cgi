@@ -68,6 +68,7 @@ foreach my $zi (@zones) {
 	my $fullname = $in{'name'} eq '@' ?
 			$zi->{'name'}."." :
 			$in{'name'}.".".$zi->{'name'}.".";
+	&before_editing($zi);
 	my @recs = &read_zone_file($zi->{'file'}, $zi->{'name'});
 	my $clash;
 	if ($in{'type'} eq 'CNAME' || $in{'clash'}) {
@@ -115,6 +116,7 @@ foreach my $zi (@zones) {
 	else {
 		print $text{'rmass_done'},"<p>\n";
 		}
+	&after_editing($zi);
 	}
 
 &unlock_all_files();

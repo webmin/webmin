@@ -32,6 +32,7 @@ foreach my $zi (@zones) {
 		next;
 		}
 	my $rcount = 0;
+	&before_editing($zi);
 	my @recs = &read_zone_file($zi->{'file'}, $zi->{'name'});
 	my $realfile = &make_chroot(&absolute_path($zi->{'file'}));
 	foreach my $r (reverse(@recs)) {
@@ -55,6 +56,7 @@ foreach my $zi (@zones) {
 	else {
 		print &text('rdmass_none', scalar(@recs)),"<p>\n";
 		}
+	&after_editing($zi);
 	}
 
 &unlock_all_files();

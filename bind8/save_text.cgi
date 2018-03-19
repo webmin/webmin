@@ -17,6 +17,7 @@ $access{'ro'} && &error($text{'master_ero'});
 
 # Write out the file
 &lock_file(&make_chroot($file));
+&before_editing($zone);
 $in{'text'} =~ s/\r//g;
 $in{'text'} .= "\n" if ($in{'text'} !~ /\n$/);
 my $FILE;
@@ -33,6 +34,7 @@ if ($in{'soa'}) {
 # Sign too
 &sign_dnssec_zone_if_key($zone, \@recs);
 
+&after_editing($zone);
 &unlock_file(&make_chroot($file));
 &webmin_log("text", undef, $zone->{'name'},
 	    { 'file' => $file });

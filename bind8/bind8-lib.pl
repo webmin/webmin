@@ -2137,6 +2137,25 @@ else {
 return undef;
 }
 
+# before_editing(&zone)
+# Must be called before reading a zone file with intent to edit
+# XXX what if thaw doesn't get called?
+sub before_editing
+{
+my ($zone) = @_;
+&try_cmd("freeze ".quotemeta($zone->{'name'})." IN ".quotemeta($zone->{'view'}).
+	 " 2>&1 </dev/null");
+}
+
+# after_editing(&zone)
+# Must be called after updating a zone file
+sub after_editing
+{
+my ($zone) = @_;
+&try_cmd("thaw ".quotemeta($zone->{'name'})." IN ".quotemeta($zone->{'view'}).
+	 " 2>&1 </dev/null");
+}
+
 # restart_zone(domain, [view])
 # Call ndc or rndc to apply a single zone. Returns undef on success or an error
 # message on failure.
