@@ -17,6 +17,8 @@ $yum_cache_file = &cache_file_path("yumcache");
 $apt_cache_file = &cache_file_path("aptcache");
 $yum_changelog_cache_dir = &cache_file_path("yumchangelog");
 
+$update_progress_dir = "$module_var_directory/progress";
+
 # cache_file_path(name)
 # Returns a path in the /var directory unless the file already exists under
 # /etc/webmin
@@ -674,6 +676,41 @@ if ($gconfig{'os_type'} eq 'debian-linux') {
         return -e "/var/run/reboot-required" ? 1 : 0;
         }
 return 0;
+}
+
+# start_update_progress(&packages)
+# Record that a bunch of package updates are in progress by this process
+sub start_update_progress
+{
+my ($pkgs) = @_;
+if (!-d $update_progress_dir) {
+	&make_dir($update_progress_dir, 0700);
+	}
+my $f = "$update_progress_dir/$$";
+&write_file($f, { 'pid' => $$,
+		  'pkgs' => join(' ', @$pkgs) });
+}
+
+# end_update_progress()
+# Clear update progress marker file
+sub end_update_progress
+{
+my $f = "$update_progress_dir/$$";
+&unlink_file($f);
+}
+
+# get_update_progress()
+# Returns a list of hash refs, one per update in progress
+sub get_update_progress
+{
+my @rv;
+foreach my $f (glob("$update_progress_dir/*")) {
+	my %u;
+	&read_file($f, $u) || next;
+	kill(0, $u->{'pid'}) || next;
+	push(@rv, $u);
+	}
+return @rv;
 }
 
 1;

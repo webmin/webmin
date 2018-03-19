@@ -100,6 +100,7 @@ else {
 
 		# Do it
 		$msg = $in{'mode'} eq 'new' ? 'update_pkg2' : 'update_pkg';
+		&start_update_progress(\@pkgs);
 		if ($config{'update_multiple'} && @pkgs > 1) {
 			# Update all packages at once
 			@pkgnames = ( );
@@ -136,6 +137,7 @@ else {
 		else {
 			print $text{'update_failed'},"<p>\n";
 			}
+		&end_update_progress(\@pkgs);
 
 		# Refresh collected package info
 		if (&foreign_check("system-status")) {
