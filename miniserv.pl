@@ -2259,6 +2259,9 @@ if (-d _) {
 	}
 if (-d _) {
 	# This is definitely a directory.. list it
+	if ($config{'nolistdir'}) {
+		&http_error(500, "Directory is missing an index file");
+		}
 	print DEBUG "handle_request: listing directory\n";
 	local $resp = "HTTP/1.0 $ok_code $ok_message\r\n".
 		      "Date: $datestr\r\n".

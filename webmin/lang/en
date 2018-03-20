@@ -886,6 +886,7 @@ advanced_egzip=Gzip compression cannot be enabled unless the $1 perl module is i
 advanced_redir=URL format for redirects
 advanced_redir1=Path only
 advanced_redir0=Protocol, host, port and path
+advanced_listdir=List directories without an index file?
 
 syslog_errorlog=Webmin error log
 

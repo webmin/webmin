@@ -47,6 +47,9 @@ $miniserv{'gzip'} = $in{'gzip'};
 # Save redirect type
 $gconfig{'relative_redir'} = $in{'redir'};
 
+# Save directory list option
+$miniserv{'nolistdir'} = !$in{'listdir'};
+
 # Save global config
 &lock_file("$config_directory/config");
 &write_file("$config_directory/config", \%gconfig);

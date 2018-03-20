@@ -60,6 +60,10 @@ print &ui_table_row($text{'advanced_redir'},
 		  [ [ 1, $text{'advanced_redir1'} ],
 		    [ 0, $text{'advanced_redir0'} ] ]), undef, [ "valign=middle","valign=middle" ]);
 
+# Allow directory listing
+print &ui_table_row($text{'advanced_listdir'},
+	&ui_yesno_radio("listdir", !$miniserv{'nolistdir'}));
+
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 
