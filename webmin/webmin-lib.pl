@@ -144,6 +144,7 @@ my ($file, $need_unlink, $nodeps, $grant) = @_;
 my (@mdescs, @mdirs, @msizes);
 my (@newmods, $m);
 my $install_root_directory = $gconfig{'install_root'} || $root_directory;
+my $is_patch=0;
 
 # Uncompress the module file if needed
 my $two;
@@ -270,7 +271,7 @@ else {
 			}
 		}
 	foreach $m (keys %mods) {
-		if (!$hasfile{$m,"module.info"} && !$hasfile{$m,"theme.info"}) {
+		if (!$hasfile{$m,"module.info"} && !$hasfile{$m,"theme.info"} && !$hasfile{$m,"patch.info"}) {
 			unlink($file) if ($need_unlink);
 			return &text('install_einfo', "<tt>$m</tt>");
 			}
@@ -280,7 +281,7 @@ else {
 		return $text{'install_enone'};
 		}
 
-	# Get the module.info or theme.info files to check dependencies
+	# Get the module.info, theme.info or patch.info files to check dependencies
 	my $ver = &get_webmin_version();
 	my $tmpdir = &transname();
 	mkdir($tmpdir, 0700);
@@ -288,12 +289,14 @@ else {
 	my @realmods;
 	foreach $m (keys %mods) {
 		next if (!$hasfile{$m,"module.info"} &&
-			 !$hasfile{$m,"theme.info"});
+			 !$hasfile{$m,"theme.info"} && !$hasfile{$m,"patch.info"} );
 		push(@realmods, $m);
 		my %minfo;
-		system("cd $tmpdir ; tar xf \"$file\" $m/module.info ./$m/module.info $m/theme.info ./$m/theme.info >/dev/null 2>&1");
+		system("cd $tmpdir ; tar xf \"$file\" $m/module.info ./$m/module.info $m/theme.info ./$m/theme.info $m/patch.info ./$m/patch.info>/dev/null 2>&1");
+		$is_patch=1 if ($hasfile{$m,"patch.info"});
 		if (!&read_file("$tmpdir/$m/module.info", \%minfo) &&
-		    !&read_file("$tmpdir/$m/theme.info", \%minfo)) {
+		    !&read_file("$tmpdir/$m/theme.info", \%minfo) &&
+			!&read_file("$tmpdir/$m/patch.info", \%minfo)) {
 			$err = &text('install_einfo', "<tt>$m</tt>");
 			}
 		elsif (!&check_os_support(\%minfo)) {
@@ -360,7 +363,7 @@ else {
 	my @grantmods;
 	foreach $m (@realmods) {
 		push(@grantmods, $m) if (!&foreign_exists($m));
-		if ($m ne "webmin") {
+		if ($m ne "webmin" && ! $is_patch) {
 			system("rm -rf ".quotemeta("$install_root_directory/$m")." 2>&1 >/dev/null");
 			}
 		}
@@ -388,13 +391,21 @@ else {
 				    { 'desc' => $minfo{'desc'} });
 			push(@newmods, $moddir);
 			}
-		else {
+		elsif ($hasfile{$moddir,"theme.info"})  {
 			my %tinfo = &get_theme_info($moddir);
 			push(@mdescs, $tinfo{'desc'});
 			push(@mdirs, $pwd);
 			push(@msizes, &disk_usage_kb($pwd));
 			&webmin_log("tinstall", undef, $moddir,
 				    { 'desc' => $tinfo{'desc'} });
+			}
+		else {
+			my %pinfo = &get_patch_info($moddir);
+			push(@mdescs, $pinfo{'desc'});
+			push(@mdirs, $pwd);
+			push(@msizes, &disk_usage_kb($pwd));
+			&webmin_log("tinstall", undef, $moddir,
+				    { 'desc' => $pinfo{'desc'} });
 			}
 		system("cd $install_root_directory ; (find $pwd -name '*.cgi' ; find $pwd -name '*.pl') 2>/dev/null | $perl $root_directory/perlpath.pl $perl -");
 		system("cd $install_root_directory ; chown -R $st[4]:$st[5] $pwd");
@@ -441,6 +452,21 @@ foreach $m (@newmods) {
 
 return [ \@mdescs, \@mdirs, \@msizes ];
 }
+
+sub get_patch_info
+{
+return () if ($_[0] =~ /^\./);
+my %rv;
+my $tdir = &module_root_directory($_[0]);
+&read_file("$tdir/patch.info", \%rv) || return ();
+foreach my $o (@lang_order_list) {
+	$rv{"desc"} = $rv{"desc_$o"} if ($rv{"desc_$o"});
+	}
+$rv{"dir"} = $_[0];
+return %rv;
+}
+
+
 
 =head2 grant_user_module(&users/groups, &modules)
 
