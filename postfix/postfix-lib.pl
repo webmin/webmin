@@ -2085,6 +2085,13 @@ if ($value =~ /^[\/\.]/) {
 		}
 	-r $cfile || &error(&text('mysql_ecfile', "<tt>$cfile</tt>"));
 	$conf = &get_backend_config($cfile);
+	
+	if ($conf->{'query'} =~ /^select\s+(\S+)\s+from\s+(\S+)\s+where\s+(\S+)\s*=\s*'\%s'/i && !$conf->{'table'}) {
+		# Try to extract table and fields from the query
+		$conf->{'select_field'} = $1;
+		$conf->{'table'} = $2;
+		$conf->{'where_field'} = $3;
+		}
 	}
 else {
 	# Backend name
