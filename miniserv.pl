@@ -3134,6 +3134,7 @@ sub byte_count { return $write_data_count; }
 sub log_request
 {
 local ($host, $user, $request, $code, $bytes) = @_;
+local $headers;
 foreach my $nolog (split(/\s+/, $config{'nolog'})) {
 	return if ($request =~ /^$nolog$/);
 	}
