@@ -54,7 +54,7 @@ if (&version_atleast(2.6)) {
 			&error(&text('report_eaddheader', $i+1));
 		push(@adds, "$addfor $addheader $addtext");
 		}
-	if (!in{"spam_level_char_def"} && &char_check($in{"spam_level_char"})) {
+	if (!$in{"spam_level_char_def"} && &char_check($in{"spam_level_char"})) {
 		push(@adds, "all Level _STARS(".$in{ "spam_level_char"} .")_" );
 		}
 	&save_directives($conf, "add_header", \@adds, 1);
