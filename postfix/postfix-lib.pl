@@ -1912,11 +1912,12 @@ elsif ($type eq "mysql") {
 		$conf->{'dbname'} || return &text('mysql_esource', $value);
 		}
 
-	# Do we have the field and table info?
-	foreach my $need ('table', 'select_field', 'where_field') {
-		$conf->{$need} || return &text('mysql_eneed', $need);
+	if (!$conf->{"query"}) {
+		# Do we have the field and table info?
+		foreach my $need ('table', 'select_field', 'where_field') {
+			$conf->{$need} || return &text('mysql_eneed', $need);
+			}
 		}
-
 	# Try a connect, and a query
 	local $dbh = &connect_mysql_db($conf);
 	if (!ref($dbh)) {
