@@ -1912,11 +1912,12 @@ elsif ($type eq "mysql") {
 		$conf->{'dbname'} || return &text('mysql_esource', $value);
 		}
 
-	# Do we have the field and table info?
-	foreach my $need ('table', 'select_field', 'where_field') {
-		$conf->{$need} || return &text('mysql_eneed', $need);
+	if (!$conf->{"query"}) {
+		# Do we have the field and table info?
+		foreach my $need ('table', 'select_field', 'where_field') {
+			$conf->{$need} || return &text('mysql_eneed', $need);
+			}
 		}
-
 	# Try a connect, and a query
 	local $dbh = &connect_mysql_db($conf);
 	if (!ref($dbh)) {
@@ -2085,6 +2086,13 @@ if ($value =~ /^[\/\.]/) {
 		}
 	-r $cfile || &error(&text('mysql_ecfile', "<tt>$cfile</tt>"));
 	$conf = &get_backend_config($cfile);
+		
+	if ($conf->{'query'} =~ /^select\s+(\S+)\s+from\s+(\S+)\s+where\s+(\S+)\s*=\s*'\%s'/i && !$conf->{'table'}) {
+		# Try to extract table and fields from the query
+		$conf->{'select_field'} = $1;
+		$conf->{'table'} = $2;
+		$conf->{'where_field'} = $3;
+		}
 	}
 else {
 	# Backend name
@@ -2095,7 +2103,7 @@ else {
 		local $v = &get_real_value($value."_".$k);
 		$conf->{$k} = $v;
 		}
-	if ($conf->{'query'} =~ /^select\s+(\S+)\s+from\s+(\S+)\s+where\s+(\S+)\s+=\s+'\%s'/i && !$conf->{'table'}) {
+	if ($conf->{'query'} =~ /^select\s+(\S+)\s+from\s+(\S+)\s+where\s+(\S+)\s*=\s*'\%s'/i && !$conf->{'table'}) {
 		# Try to extract table and fields from the query
 		$conf->{'select_field'} = $1;
 		$conf->{'table'} = $2;
