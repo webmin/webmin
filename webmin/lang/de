@@ -484,7 +484,7 @@ newmod_def=Standard-Verhalten - Ordne neue Module <tt>root</tt> oder <tt>admin</
 newmod_desc=Wenn Webmin aktualisiert wird, so werden neue Module automatisch einem oder mehreren Benutzern zugeordnet und f&#252;r die Nutzung freigegeben. Hier k&#246;nnen Sie einstellen, welchen Benutzern neue Module zugeordnet werden. Diese Einstellung ist sowohl f&#252;r die Aktualisierung &#252;ber das obige Formular, als auch f&#252;r die Kommandozeile g&#252;ltig.
 newmod_header=Zuordnung neuer Module
 newmod_users=Ordne neue Module folgendem/folgenden Benutzer(n) zu :
-notif_changenow=Sie k&#246;nnen unter '&#196;ndern der Sprache und des Designs' <a href='$1'>Ihr Passwort jetzt &#228;ndern</a>.
+notif_changenow=Sie k&#246;nnen unter 'Sprache und Designs &auml;ndern' <a href='$1'>Ihr Passwort jetzt &#228;ndern</a>.
 notif_passchange=Ihr Webmin Passwort wurde zuletzt am $1 ge&#228;ndert, und muss in $2 Tage gewechselt werden.
 notif_passexpired=Ihr Webmin Passwort ist abgelaufen! Sie werden gezwungen, es bei der n&#228;chsten Anmeldung &#228;ndern.
 notif_passlock=Ihr Webmin Passwort wurde zuletzt am $1 ge&#228;ndert, und Ihr Konto wird in $2 Tage gesperrt werden, wenn es nicht ge&#228;ndert wird.
