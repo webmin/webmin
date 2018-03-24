@@ -52,37 +52,47 @@ $hiddens = &ui_hidden("db", $in{'db'}).&ui_hidden("table", $in{'table'});
 print "<table><tr>\n";
 
 # Add field button
+print "<td nowrap>";
 print &ui_form_start("edit_field.cgi");
 print $hiddens;
-print "<td nowrap>",&ui_submit($text{'table_add'});
+print &ui_submit($text{'table_add'});
 print &ui_select("type", undef, \@type_list);
-print "</td>",&ui_form_end();
+print &ui_form_end();
+print "</td>\n";
 
 # View and edit data button
+print "<td>";
 print &ui_form_start("view_table.cgi", "form-data");
 print $hiddens;
-print "<td>",&ui_submit($text{'table_data'});
-print "</td>",&ui_form_end();
+print &ui_submit($text{'table_data'});
+print &ui_form_end();
+print "</td>\n";
 
 # CSV export button
+print "<td>";
 print &ui_form_start("csv_form.cgi");
 print $hiddens;
-print "<td>",&ui_submit($text{'table_csv'});
-print "</td>",&ui_form_end();
+print &ui_submit($text{'table_csv'});
+print &ui_form_end();
+print "</td>\n";
 
 if ($access{'indexes'}) {
 	# Create index button
+	print "<td>";
 	print &ui_form_start("edit_index.cgi");
 	print $hiddens;
-	print "<td>",&ui_submit($text{'table_index'});
-	print "</td>",&ui_form_end();
+	print &ui_submit($text{'table_index'});
+	print &ui_form_end();
+	print "</td>\n";
 	}
 
 # Drop table button
+print "<td>";
 print &ui_form_start("drop_table.cgi");
 print $hiddens;
-print "<td>",&ui_submit($text{'table_drop'});
-print "</td>",&ui_form_end();
+print &ui_submit($text{'table_drop'});
+print &ui_form_end();
+print "</td>\n";
 
 print "</tr></table>\n";
 
