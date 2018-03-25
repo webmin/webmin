@@ -20,12 +20,19 @@ if ($in{'delete'}) {
 	}
 elsif ($in{'view'}) {
 	# Viewing a log file
+	@extras = &extra_log_files();
 	if ($in{'idx'} =~ /^\//) {
 		# The drop-down selector on this page has chosen a file
-		$in{'file'} = $in{'idx'};
+		if (&indexof($in{'idx'}, (map { $_->{'file'} } @extras)) >= 0) {
+			$in{'extra'} = $in{'idx'};
+			delete($in{'file'});
+			}
+		else {
+			$in{'file'} = $in{'idx'};
+			delete($in{'extra'});
+			}
 		delete($in{'idx'});
 		delete($in{'oidx'});
-		delete($in{'extra'});
 		}
 	if ($in{'idx'} ne '') {
 		# From syslog
@@ -49,7 +56,6 @@ elsif ($in{'view'}) {
 		}
 	elsif ($in{'extra'}) {
 		# Extra log file
-		@extras = &extra_log_files();
 		($extra) = grep { $_->{'file'} eq $in{'extra'} } @extras;
 		$extra || &error($text{'save_ecannot7'});
 		&can_edit_log($extra) || &error($text{'save_ecannot2'});
