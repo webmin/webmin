@@ -202,6 +202,10 @@ if (open(PARTS, "/proc/partitions")) {
 			# SD card / MMC, seen on Raspberry Pi
 			push(@devs, "/dev/$1");
 			}
+		elsif (/\d+\s+\d+\s+\d+\s+(nvme\d+n\d+)\s/) {
+			# NVME SSD
+			push(@devs, "/dev/$1");
+			}
 		}
 	close(PARTS);
 
@@ -402,6 +406,12 @@ while(<FDISK>) {
 			$disk->{'desc'} = &text('select_promise', $dd);
 			$disk->{'type'} = 'raid';
 			$disk->{'prefix'} =~ s/disc$/part/g;
+			}
+		elsif ($disk->{'device'} =~ /\/nvme(\d+)n(\d+)$/) {
+			# NVME SSD controller
+			$disk->{'desc'} = &text('select_nvme', "$1", "$2");
+			$disk->{'type'} = 'scsi';
+			$disk->{'prefix'} = $disk->{'device'}.'p';
 			}
 
 		# Work out short name, like sda
@@ -630,6 +640,8 @@ return $device =~ /(s|h|xv|v)d([a-z]+)(\d+)$/ ?
 	 &text('select_smartpart', "$1", "$2", "$3") :
        $device =~ /ataraid\/disc(\d+)\/part(\d+)$/ ?
 	 &text('select_ppart', "$1", "$2") :
+       $device =~ /nvme(\d+)n(\d+)p(\d+)$/ ?
+	 &text('select_nvmepart', "$1", "$2", "$3") :
 	 "???";
 }
 

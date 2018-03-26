@@ -64,6 +64,8 @@ select_smart=Compaq Smart Array $1 drive $2
 select_smartpart=Compaq Smart Array $1 drive $2 partition $3
 select_promise=Promise RAID drive $1
 select_ppart=Promise RAID drive $1 partition $2
+select_nvme=NVME SSD $1 drive $2
+select_nvmepart=NVME SSD $1 drive $2 partition $3
 
 edit_title=Edit Partition
 create_title=Create Partition
