@@ -100,7 +100,7 @@ else {
 
 		# Do it
 		$msg = $in{'mode'} eq 'new' ? 'update_pkg2' : 'update_pkg';
-		&start_update_progress(\@pkgs);
+		&start_update_progress([ map { (split(/\//, $_))[0] } @pkgs ]);
 		if ($config{'update_multiple'} && @pkgs > 1) {
 			# Update all packages at once
 			@pkgnames = ( );

@@ -706,9 +706,10 @@ sub get_update_progress
 my @rv;
 foreach my $f (glob("$update_progress_dir/*")) {
 	my %u;
-	&read_file($f, $u) || next;
-	kill(0, $u->{'pid'}) || next;
-	push(@rv, $u);
+	&read_file($f, \%u) || next;
+	$u{'pid'} || next;
+	kill(0, $u{'pid'}) || next;
+	push(@rv, \%u);
 	}
 return @rv;
 }

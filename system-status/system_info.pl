@@ -247,6 +247,12 @@ if ($info->{'disk_fs'} && &show_section('disk')) {
 # Package updates
 if ($info->{'poss'} && &show_section('poss')) {
 	my @poss = @{$info->{'poss'}};
+	&foreign_require("package-updates");
+	my %prog;
+	foreach my $p (&package_updates::get_update_progress()) {
+		%prog = (%prog, (map { $_, 1 } split(/\s+/, $p->{'pkgs'})));
+		}
+	@poss = grep { !$prog{$_->{'name'}} } @poss;
 	my @secs = grep { $_->{'security'} } @poss;
 	my $msg;
 	if (@poss && @secs) {

@@ -17,7 +17,7 @@ foreach $a (@todo) {
 # Install packages that are needed
 $tellcount = 0;
 %already = ( );
-&start_update_progress(\@todo);
+&start_update_progress([ map { $_->{'name'} } @todo ]);
 foreach $t (@todo) {
 	next if ($already{$t->{'update'}});
 	if ($t->{'level'} <= $config{'sched_action'}) {
@@ -41,7 +41,7 @@ foreach $t (@todo) {
 		$tellcount++;
 		}
 	}
-&end_update_progress(\@todo);
+&end_update_progress();
 
 if ($tellcount) {
 	# Add link to Webmin
