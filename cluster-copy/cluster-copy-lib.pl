@@ -115,6 +115,13 @@ foreach $s (@run) {
 		# Run the command in a subprocess
 		close($rh);
 
+		if (!$s->{'fast'}) {
+			print $wh &serialise_variable(
+				[ 0, "Fast RPC mode must be enabled ".
+				     "for copies to work" ]);
+			exit;
+			}
+
 		&remote_foreign_require($s->{'host'}, "webmin",
 					"webmin-lib.pl");
 		if ($inst_error_msg) {
