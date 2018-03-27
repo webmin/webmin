@@ -3,7 +3,7 @@
 # Update webmin/usermin to the latest develop version  from GitHub repo
 # inspired by authentic-theme/theme-update.sh script, thanks qooob
 #
-VERS="1.6.3, 2018-03-17"
+VERS="1.6.4, 2018-03-27"
 #
 COPY=" Kay Marquardt <kay@rrr.de>         https://github.com/gnadelwartz"
 #############################################################################
@@ -41,15 +41,21 @@ fi
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PROD="webmin" # default
 
-if [[ -r "${DIR}/usermin-init" &&  -r "${DIR}/uconfig.cgi" ]] ; then
+if [[ -r "${DIR}/uconfig.cgi" ]] ; then
   if [[ -d "${DIR}/webmin" ]] ; then
-    echo -e "${RED}Error: cannot detect if current dir is webmin or usermin. aborting ...${NC}"
+    echo -e "${RED}Error: found Usermin but also Webmin files. aborting ...${NC}"
     exit 1
-  else
-    echo -e "${ORANGE}Usermin detected ...${NC}"
-    PROD="usermin"
   fi
+  PROD="usermin"
+else
+  if [[ -d "${DIR}/language" ]] ; then
+    echo -e "${RED}Error: found Webmin but also Usermin files. aborting ...${NC}"
+    exit 1
+  fi
+  PROD="webmin"
 fi
+echo -e "${ORANGE}${PROD^} detected ...${NC}"
+
 # where to get source
 HOST="https://github.com"
 REPO="webmin/$PROD"
@@ -444,7 +450,7 @@ fi
   rm -rf .~files 
   # fix permissions, should be done by makedist.pl?
   echo -e "${CYAN}Make scripts executable ...${NC}"
-  chmod -R -x+X ${DIR}
+  chmod -R +X ${DIR}
   chmod +x *.pl *.cgi *.pm *.sh */*.pl */*.cgi */*.pm */*.sh
       
   # thats all folks
