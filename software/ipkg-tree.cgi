@@ -47,16 +47,24 @@ for($i=0; $i<$n; $i++) {
 	push(@desc, $packages{$i,'desc'});
 	push(@inst, $packages{$i,'install'});
 	}
+
 @order = sort { lc($pack[$a]) cmp lc($pack[$b]) } (0 .. $n-1);
 $heir{""} = "";
 foreach $c (sort { $a cmp $b } &unique(@class)) {
-	# note: this is optimize for having only one level!
 	if (!$c) { next; }
-	@w = $c;
+	@w = split(/\//, $c);
 	$p = join('/', @w[0..$#w-1]);		# parent class
+	if (!defined($heir{$p})) {
+		$pp = join('/', @w[0..$#w-2]);	# grandparent class
+		$heir{$pp} .= "$p\0";
+		$ppp = join('/', @w[0..$#w-3]);	# great-grandparent class
+		if ($ppp || 1) {
+			$heir{$ppp} .= "$pp\0";
+			}
+		}
 	$heir{$p} .= "$c\0";
+	$hasclasses++;
 	}
-
 # get the current open list
 %heiropen = map { $_, 1 } &get_heiropen();
 $heiropen{""} = 1;
