@@ -63,29 +63,29 @@ $heiropen{""} = 1;
 
 # traverse the hierarchy
 print &ui_form_start("ipkg-tree.cgi");
-print &ui_submit($text{'IPKG_filter'});
+print &ui_submit($text{'index_filter'});
 print &ui_textbox("filter", $in{'filter'}, 50);
 print &ui_form_end(),"<p>\n";
 
 print &ui_link("ipkg-tree.cgi?mode=closeall", $text{'index_close'});
 print &ui_link("ipkg-tree.cgi?mode=openall", $text{'index_open'});
 if ($in{'filter'}) {
-	print &ui_link("ipkg-tree.cgi", $text{'IPKG_filterclear'});
-	print "&nbsp;&nbsp;", &text('IPKG_filtered',$n-$filter,$n+1), "\n";
+	print &ui_link("ipkg-tree.cgi", $text{'index_filterclear'});
+	print "&nbsp;&nbsp;", &text('index_filtered',$n-$filter,$n+1), "\n";
 }
 print "<table width=\"95%\">\n";
 &traverse("", 0);
 print "</table>\n";
 print &ui_form_start("ipkg-tree.cgi");
-print &ui_submit($text{'IPKG_filter'});
+print &ui_submit($text{'index_filter'});
 print &ui_textbox("filter", $in{'filter'}, 50);
 print &ui_form_end(),"<p>\n";
 
 print &ui_link("ipkg-tree.cgi?mode=closeall", $text{'index_close'});
 print &ui_link("ipkg-tree.cgi?mode=openall", $text{'index_open'});
 if ($in{'filter'}) {
-	print &ui_link("ipkg-tree.cgi", $text{'IPKG_filterclear'});
-	print "&nbsp;&nbsp;", &text('IPKG_filtered',$n-$filter,$n+1), "\n";
+	print &ui_link("ipkg-tree.cgi", $text{'index_filterclear'});
+	print "&nbsp;&nbsp;", &text('index_filtered',$n-$filter,$n+1), "\n";
 }
 print "<p>\n";
 
