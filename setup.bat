@@ -6,6 +6,7 @@ ECHO .
 :: prepare unautenticated Setup
 SET WEBMIN_download=https://sourceforge.net/projects/webadmin/
 SET WRT_download=https://www.microsoft.com/download/details.aspx?id=17657
+SET PROCESS_download=http://retired.beyondlogic.org/solutions/processutil/processutil.htm
 SET PERL_download=https://www.activestate.com/activeperl/
 SET perl_path32=C:\Perl
 SET perl_path64=C:\Perl64
@@ -17,8 +18,6 @@ SET var_dir=%inst_dir%\var
 SET port=10000
 SET admin=10000
 SET ssl=0
-::SET atboot=n
-::SET nostart=y
 SET login=admin
 SET password=admin
 SET INSTALL=setup.pl
@@ -51,6 +50,16 @@ IF EXIST %perl_path32% (
 	ECHO .
 	SET INSTALL=false
     )
+)
+
+:: check if process.exe is installed
+WHERE process >nul 2>&1
+IF %ERRORLEVEL% NEQ 0 (
+	ECHO Required process.exe is not installed! Please download it from
+	ECHO %PROCESS_download% and xopy it to C:\Windows!
+	start "" %PROCESS_download%
+	ECHO .
+	SET INSTALL=false
 )
 
 :: check if rescource kit is installed
