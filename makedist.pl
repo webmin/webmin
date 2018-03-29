@@ -14,7 +14,7 @@ $zipdir = "zips";
 
 @files = ("config.cgi", "config-*-linux",
 	  "config-solaris", "images", "index.cgi", "mime.types",
-	  "miniserv.pl", "os_list.txt", "perlpath.pl", "setup.sh", "setup.pl",
+	  "miniserv.pl", "os_list.txt", "perlpath.pl", "setup.sh", "setup.pl, setup.bat",
 	  "version", "web-lib.pl", "web-lib-funcs.pl", "README",
 	  "config_save.cgi", "chooser.cgi", "miniserv.pem",
 	  "config-aix", "update-from-repo.sh",
