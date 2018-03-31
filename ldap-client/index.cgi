@@ -5,13 +5,14 @@ require './ldap-client-lib.pl';
 &ui_print_header(undef, $module_info{'desc'}, "", "intro", 1, 1);
 
 # Make sure the config file exists
-if (!-r &get_ldap_config_file()) {
+my $cfile = &get_ldap_config_file();
+if (!$cfile || !-r $cfile) {
 	&foreign_require("software");
 	$lnk = &software::missing_install_link("ldap", $text{'index_ldapmod'},
                         "../$module_name/", $module_info{'desc'});
 	&ui_print_endpage(
 		&ui_config_link('index_econf',
-			[ "<tt>".&get_ldap_config_file()."</tt>", undef ]).
+			[ "<tt>".$cfile."</tt>", undef ]).
 		($lnk ? "<p>\n".$lnk : ""));
 	}
 
