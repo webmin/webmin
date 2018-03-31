@@ -104,7 +104,7 @@ if (-r "$config_directory/config") {
 # We can now load the main Webmin library
 $ENV{'WEBMIN_CONFIG'} = $config_directory;
 $ENV{'WEBMIN_VAR'} = "/var/webmin";	# not really used
-require "$wadir/web-lib.pl";
+require "$srcdir/web-lib-funcs.pl";
 
 # Check if upgrading from an old version
 if ($upgrading) {
@@ -758,7 +758,7 @@ if ($wadir ne $srcdir) {
 		}
 	else {
 		# Looks like Windows .. use xcopy command
-		system("xcopy \"$srcdir\" \"$wadir\" /Y /E /I");
+		system("xcopy \"$srcdir\" \"$wadir\" /Y /E /I /Q");
 		}
 	print "..done\n";
 	print "\n";
