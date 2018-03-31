@@ -84,7 +84,7 @@ if ($in{'filter'}) {
 print "<table width=\"95%\">\n";
 &traverse("", 0);
 print "</table>\n";
-print &ui_form_start("ipkg-tree.cgi");
+print &ui_form_start("tree.cgi");
 print &ui_submit($text{'index_filter'});
 print &ui_textbox("filter", $in{'filter'}, 50);
 print &ui_form_end(),"<p>\n";

@@ -57,9 +57,7 @@ while(<PKGINFO>) {
 			# generate categories from names, Section
 			$temp{'Package'} =~ m/^(..[^-0-9]*)/;
 			local $cat= $1;
-			if ($temp{'Section'} =~ m/^(audio|editor|media|print|games|shell|sys|utils)/) {
-				$cat=ucfirst($1);
-			} elsif ($cat =~ /^(audio|auto|core|compression|diff|lib|ffmpeg|gnu|gtk|perl|net|ncurses|py)/) {
+			if ($cat =~ /^(asterisk|audio|auto|core|compression|diff|lib|gnu|gtk|perl|net|ncurses|py)/) {
 				$cat=ucfirst($1);
 			} elsif ($cat =~ /^(amavisd|cyrus|esmtp|fetchmail|imap|mail|mini|mutt|mpop|msmtp|offlineimap|pop|postfix|postgrey|procmail|putmail|up|qpopper|sendmail|xmail)$/ ) {
 				$cat = "Mail";
@@ -73,7 +71,11 @@ while(<PKGINFO>) {
 				$cat = "Editor";
 			} elsif ($cat =~ /^(apache|cherokee|hiawatha|lighttpd|minihttpd|mod|thttpd)$|^shell/) {
 				$cat = "Web";
-			} 
+			} elsif ($temp{'Section'} =~ /^(doc|lang|lib|net|sys|text|util)/ ) {
+				$cat=ucfirst($1);
+			} else {
+				$cat=ucfirst($temp{'Section'});
+			}
 			$packages{$i,'class'} = $cat; 
 			$temp{'Installed-Time'}=undef;
 			$i++;
