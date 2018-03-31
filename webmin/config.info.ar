@@ -1,0 +1,5 @@
+standard_url=URL of standard modules list,3,On www.webmin.com
+third_url=URL of third party modules list,3,On www.webmin.com
+cron_mode=عرض أوقات التحديث كـ,1,0-واجهة بسيطة,1-اختيار وقت Cron
+warn_days=أيام قبل انتهاء صلاحية كلمة المرور لتحذير المستخدمين,0,5
+letsencrypt_cmd=المسار الكامل لأمر تشفير العميل,0

@@ -1,0 +1,15 @@
+__norefs=1
+acl_user=تنفيذ الأوامر كمستخدم
+acl_user_def=مستخدم Webmin الحالي
+index_clear=تنظف السجل
+index_clearcmds=تنظيف الأوامر
+index_desc=أدخل أمر shell لتنفيذه في حقل النص أدناه. يمكن استخدام الأمر <tt>cd</tt> لتغيير الدليل للأوامر التالية.
+index_edit=تحرير السابق
+index_history=أمر السجل
+index_ok=تنفيذ الأوامر:
+index_pok=تنفيذ الأمر السابق
+index_timedout=تم إنهاء الأمر بعد التشغيل لمدة $1 ثانية واحدة.
+index_title=اوامر الشل
+index_trunced=تم اقتطاع إجمالي الناتج $2 عند $1.
+log_clear=مسح سجل الأوامر
+log_run=تشغيل أمر $1

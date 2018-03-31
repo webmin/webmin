@@ -1,0 +1,6 @@
+index_title=دخول النص
+index_epython=يتطلب Ajaxterm تشغيل Python ، ولكن لم يتم العثور على أمر $1 على النظام الخاص بك.
+index_estart=لم يبدأ Ajaxterm بقبول الاتصالات على المنفذ $2 بعد $1 ثانية.
+index_popup=فتح في نافذة منفصلة ..
+index_credits=استخدام كود من <a href='$1' target=_new>Ajaxterm</a> بواسطة Antony Lesuisse.
+__norefs=1

@@ -1,0 +1,77 @@
+index_title=توثيق النظام
+index_header=بحث وثائق النظام
+index_for=البحث عن
+index_where=البحث في
+index_alldoc=كل الوثائق
+index_man=صفحات يدوية
+index_doc=وثائق الحزم
+index_kernel=وثائق النواة
+index_info=صفحات المعلومات
+index_howto=وثائق HOWTO
+index_kde=وثائق KDE
+index_perl=وثائق وحدة Perl
+index_custom=وثائق مخصصة
+index_help=مساعدة Webmin
+index_reset=إعادة تعيين
+index_search=البحث
+index_return=نموذج البحث
+index_type=المباراة
+index_name=الاسم فقط
+index_data=الاسم والمحتويات
+index_google=محرك بحث Google
+index_others=عند البحث عن وثائق من وحدة أخرى ، اسمح بالبحث في ..
+index_other_man=صفحات يدوية
+index_other_help=تعليمات Webmin
+index_other_doc=وثائق الحزم
+index_other_kernel=وثائق النواة
+index_other_howto=وثائق HOWTO
+index_other_perl=وثائق وحدة Perl
+index_other_google=محرك بحث Google
+index_other_kde=وثائق KDE
+index_and=تطابق الكل
+index_or=مطابقة أي
+
+search_efor=لا توجد صفحة يدوية للبحث عنها
+search_title=نتائج البحث
+search_desc=الوصف
+search_type=نوع
+search_file=صفحة أو ملف
+search_man=صفحة يدوية
+search_howto=وثيقة HOWTO
+search_doc=وثائق الحزم
+search_kernel=وثائق النواة
+search_kde=وثائق KDE
+search_perl=Perl module
+search_help=مساعدة Webmin
+search_custom=وثائق مخصصة
+search_none=لم يتم العثور على وثائق مطابقة $1.
+search_for=لـ $1
+search_google=نتيجة بحث Google
+search_doxfer=وثائق Webmin على الانترنت
+
+howto_title=وثيقة HOWTO
+howto_header=ملف المستند HOWTO $1
+howto_epath=مسار مستند HOWTO غير صالح
+
+doc_title=وثائق الحزم
+doc_header=ملف وثيقة الحزمة $1
+doc_epath=مسار وثائق الحزمة غير صحيح
+
+man_title=صفحة يدوية
+man_header=صفحة يدوية لـ $1($2)
+man_noentry=لا توجد صفحة يدوية لـ $1!
+man_epath=لا يمكن أن تكون الصفحة اليدوية مسارًا!
+
+kernel_title=وثيقة النواة
+kernel_header=ملف وثيقة النواة $1
+kernel_epath=مسار مستند النواة غير صالح
+
+kde_title=وثائق KDE
+kde_header=ملف مستند KDE $1
+kde_epath=مسار وثائق KDE غير صالح
+
+perl_title=Perl وحدات
+perl_header=توثيق وحدة Perl $1
+perl_emod=اسم وحدة Perl غير صالح
+
+__norefs=1

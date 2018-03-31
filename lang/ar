@@ -1,320 +1,370 @@
-main_return=الرجوع الى $1
-main_homepage=وبمن
-main_feedback=تعليقات..
-main_switch=تبديل المستخدم..
-main_logout=تسجيل الخروج
-main_version=الاصدار $1 on $2 ($3)
-main_title=وبمن $1 on $2 ($3)
-main_title2=وبمن
-main_none=ليس لديك الصلاحية للدخول لاي وحدة من 
-وحدات وبمن
+main_homepage=الصفحة الرئيسية
+main_feedback=ملاحظات ..
+main_switch=تبديل المستخدم ..
+main_logout=الخروج
+main_version=الإصدار $1 على $2 ($3)
+main_title=Webmin $1 على $2 ($3)
+main_title2=Webmin
+main_title3=Webmin $1 ($2)
+main_none=ليس لديك إمكانية الوصول إلى أي وحدات Webmin.
 main_skill=مستوى المهارة
-main_readonly=(نمط القراءة فقط)
+main_readonly=(وضع القراءة فقط)
+main_return=الرجوع إلى $1
+main_unused=الوحدات غير المستخدمة
+main_refreshmods=تحديث الوحدات
 
-link_essl=The Net::SSLeay Perl module needed to make HTTPS connections is 
-not installed on your system.
+link_essl=وحدة Net :: SSLeay Perl اللازمة لإجراء اتصالات HTTPS غير مثبتة على نظامك.
 
 category_servers=الخوادم
-category_hardware=العتاد
+category_hardware=الأجهزة
 category_system=النظام
-category_webmin=وبمن
-category_net=الشبكة
-category_syslet=أدوات النظام
-category_cluster=قطاع
+category_webmin=Webmin
+category_net=الشبكات
+category_syslet=الملاحقات
+category_cluster=العنقودية
 category_info=معلومات
 category_=أخرى
 
-longcategory_servers=وحدات لاجراء تعديلات على 
-الخوادم
-longcategory_hardware=وحدات لاجراء تعديلات على 
-الطابعات والاقراص الصلبة
-longcategory_system=وحدات للمستخدمين ونظام 
-الملفات واعدادات أخرى للنظام
-longcategory_webmin=وحدات للتعديل على نظام وبمن
-longcategory_net=Modules for configuring networking and network services
-longcategory_cluster=Modules that can manage multiple servers from a single 
-interface
-longcategory_info=Modules that display information about your system
-longcategory_=Modules that do not fall into any other category
+longcategory_servers=وحدات لتكوين الويب والبريد الإلكتروني وبروتوكول نقل الملفات والخوادم الأخرى
+longcategory_hardware=وحدات الطابعة والقرص وتكوين الأجهزة الأخرى
+longcategory_system=الوحدات النمطية للمستخدمين ، أنظمة الملفات ، وظائف Cron وغيرها من إعدادات النظام
+longcategory_webmin=الوحدات النمطية لتكوين Webmin نفسها
+longcategory_net=وحدات لتكوين الشبكات وخدمات الشبكة
+longcategory_cluster=الوحدات النمطية التي يمكنها إدارة خوادم متعددة من واجهة واحدة
+longcategory_info=الوحدات النمطية التي تعرض معلومات حول النظام الخاص بك
+longcategory_=الوحدات التي لا تقع في أي فئة أخرى
 
-header_webmin=الصفحة الرئيسة لوبمن
-header_module=Module Index
-header_help=Help..
-header_config=Module Config
-header_servers=خوادم وبمن
+header_webmin=مؤشر Webmin
+header_module=مؤشر الوحدة
+header_help=مساعدة ..
+header_config=تكوين الوحدة
+header_servers=خوادم Webmin
 
-index=index
+index=مؤشر
 yes=نعم
 no=لا
 save=حفظ
-create=انشاء
+create=إنشاء
 delete=حذف
-find=بحث
+find=عثور
 error=خطأ
 error_previous=الصفحة السابقة
-efilewrite=فشلت الكتابة الى $1 : $2
-efileclose=تابة الى $1 : $2 $1عند اقفالg : $2
-efileopen=Failed to open $1 for writing : $2
-default=الافتراضي
+error_stack=استدعاء مكدس التتبع
+error_file=ملف
+error_line=خط
+error_sub=وظيفة
+error_stackline=في الملف $1 عند السطر $2 الاتصال بـ $3
+efilewrite=فشل الكتابة إلى $1: $2
+efileclose=فشل الكتابة إلى $1 عند الإغلاق: $2
+efileopen=فشل في فتح $1 للكتابة: $2
+default=افتراضي
 modify=تعديل
-reset=اعادة الى الحالة الاصلية
+reset=إعادة تعيين
 ok=موافق
-cancel=الغاء
-helpsearch=بحث في المستندات
-switch_remote_euser=The Unix user $1 does not exist.
-programname=وبمن
+cancel=إلغاء
+fail=فشل
+helpsearch=البحث في المستندات ..
+switch_remote_euser=مستخدم Unix $1 غير موجود.
+programname=Webmin
+euserdbacl=فشل في إحظار مستخدم ACL : $1
+euserdbacl2=فشل في تحديث مستخدم ACL : $1
+egroupdbacl=فشل في إحضار مجموعة ACL : $1
+egroupdbacl2=فشل في تحديث مجموعة ACL : $1
 
-chooser_title1=اختار ملف
-chooser_title2=مجلد
-chooser_dir=Directory of $1
+chooser_title1=اختيار ملف ..
+chooser_title2=اختيار الدليل
+chooser_dir=دليل $1
 chooser_ok=موافق
-chooser_date=اختار التاريخ
+chooser_date=اختر التاريخ
+chooser_eopen=فشل الإدراج: $1
 
-users_title1=اختار مجموعة مستخدمين
-users_title2=اختار مستخدم واحد
-users_sel=المستخدمين الذين تم اختيارهم
-users_all=كل المستخدمين
+users_title1=حدد المستخدمين ..
+users_title2=حدد المستخدم ..
+users_sel=المستخدمين المحددين
+users_all=جميع المستخدمين
 users_ok=موافق
 users_cancel=الغاء
 users_clear=مسح
 
-groups_title1=اختار مجموعات
-groups_title2=اختار مجموعة
+groups_title1=حدد المجموعات
+groups_title2=حدد مجموعة ..
 groups_all=كل المجموعات
 groups_sel=المجموعات المختارة
 groups_ok=موافق
 groups_cancel=الغاء
 groups_clear=مسح
 
-modules_title1=Select Modules..
-modules_title2=Select Module..
-modules_sel=Selected Modules
-modules_all=All Modules
+modules_title1=حدد وحدات
+modules_title2=حدد وحدة ..
+modules_sel=الوحدات المختارة
+modules_all=جميع الوحدات
 modules_ok=موافق
 modules_cancel=الغاء
 modules_clear=مسح
 
-config_ecannot=You are not allowed to configure this module
-config_title=Configuration
-config_dir=For module $1
-config_header=Configurable options for $1
-config_none=None
-config_eaccess=You are not allowed to access this module
-config_err=Failed to save config
-config_nochange=Don't change
-config_setto=Set to
-config_ewebmin=Parameter type 14 only works in Webmin
+config_ecannot=غير مسموح لك بتكوين هذه الوحدة
+config_title=تكوين
+config_dir=وحدة $1
+config_header=تكوين خيارات $1
+config_none=لا شيء
+config_eaccess=غير مسموح لك بالوصول إلى هذه الوحدة
+config_err=فشل حفظ التكوين
+config_nochange=لا تتغير
+config_setto=تعيين إلى
+config_ewebmin=يعمل نوع المعلمة 14 فقط في Webmin
 
-help_err=Failed to display help
-help_epath=Missing or invalid help path
-help_efile=Failed to read help file $1
-help_eheader=Missing &lt;header&gt; section
-help_einclude=Failed to include $1
-help_eif=$1 failed : $2
-help_eexec=$1 failed : $2
+help_err=فشل عرض المساعدة
+help_epath=مسار المساعدة مفقود أو غير صالح
+help_efile=فشل في قراءة ملف المساعدة $1
+help_eheader=مفقود &lt;header&gt; الجزء
+help_einclude=فشل تضمين $1
+help_eif=فشل $1: $2
+help_eexec=فشل $1: $2
 
-referer_title=تحذير امان
-referer_warn=<b>Warning!</b> Webmin has detected that the program $2 was 
-linked to from the URL $1, which appears to be outside the Webmin server. 
-This may be an attempt to trick your server into executing a dangerous 
-command.
-referer_warn_unknown=<b>Warning!</b> Webmin has detected that the program $1 
-was linked to from an unknown URL, which appears to be outside the Webmin 
-server. This may be an attempt to trick your server into executing a 
-dangerous command.
-referer_ok=Continue executing Webmin program
-referer_again=لا تظهر هذا التحذير في المستقبل.
+referer_title=تحذير الأمان
+referer_warn=<b>تحذير!</b> لقد اكتشفت Webmin أن البرنامج $2 تم ربطه من URL $1 ، والذي يبدو خارج خادم Webmin. قد يكون هذا محاولة لخداع الخادم الخاص بك لتنفيذ أمر خطير.
+referer_warn_unknown=<b>تحذير!</b> اكتشف Webmin أنه تم ربط البرنامج $1 من عنوان URL غير معروف ، يبدو أنه خارج خادم Webmin. قد يكون هذا محاولة لخداع الخادم الخاص بك لتنفيذ أمر خطير.
+referer_fix1=إذا كان هذا رابطًا شرعيًا ، فيمكنك السماح بالارتباطات من عنوان URL هذا كما يلي : <ul><li> تسجيل الدخول إلى Webmin بشكل عادي . <li>انتقل إلى <b> تكوين Webmin </b>. <li> انقر فوق رمز "المُحِق الموثوق بهم" . <li> أدخل اسم المضيف $1 في حقل <b>المواقع الموثوقة</b> ، وانقر فوق<b> حفظ </b>. </ul>
+referer_fix2=بدلاً من ذلك ، يمكنك تكوين Webmin للسماح بهذا الارتباط من سطر الأوامر بواسطة: <ul><li> تسجيل الدخول كـ <tt>root</tt> ، وتحرير ملف <tt> /etc/webmin/config </tt><li> أضف السطر <tt> referers=$1 </tt> في النهاية ، أو إذا كان سطر <tt> referers </tt> موجودًا بالفعل ، فأضف <tt> $1 </tt> إليه. <li> احفظ الملف. </ul>
+referer_fix3u=تأكد من تكوين المستعرض الخاص بك لإرسال معلومات المحيل بحيث يمكن التحقق من خلال Webmin.
+referer_fix2u=بدلاً من ذلك ، يمكنك تكوين Webmin للسماح بالارتباطات من محولات غير معروفة بواسطة :
+<ul><li>تسجيل الدخول كـ root ، وتحرير ملف /etc/webmin/config</li><li>البحث عن السطر <tt>referers_none=0</tt> وتغييره إلى <tt>referers_none=0</tt> .</li><li>احفظ الملف</li></ul>
+<p>تحذير - هذا له الأثر الجانبي لفتح نظامك حتى ينعكس هجمات XSS ولذا لا ينصح !!</p>
 
-session_header=الدخول الى وبمن
-session_mesg=لابد من ادخال اسم مستخدم وكلمة 
-مرور للدخول $1.
-session_mesg2=لابد من ادخال اسم مستخدم وكلمة 
-مرور للدخول
+session_header=تسجيل الدخول إلى Webmin
+session_mesg=يجب عليك إدخال اسم مستخدم وكلمة مرور لتسجيل الدخول إلى خادم Webmin على $1.
+session_mesg2=يجب إدخال اسم المستخدم وكلمة المرور لتسجيل الدخول.
 session_user=اسم المستخدم
 session_pass=كلمة المرور
-session_login=دخول
+session_twofactor=رمز مميز ثنائي
+session_login=الدخول
 session_clear=مسح
-session_failed=فشل تسجيل الدخول الرجاء المحاولة 
-مرة أخرى
-session_logout=تم تسجيل الخروج بنجاح ، الرجاء 
-استخدام النموذج التالي للدخول مرة أخرى
-session_timed_out=Session timed out after $1 minutes of inactivity.
-session_save=هل تريد ان يقوم المتصفح بتذكر 
-معلومات الدخول  ؟
+session_failed=فشل تسجيل الدخول. حاول مرة اخرى.
+session_twofailed=فشل المصادقة الثنائية: $1
+session_logout=تم تسجيل الخروج بنجاح. استخدم النموذج أدناه لتسجيل الدخول مرة أخرى.
+session_timed_out=انتهت مهلة الجلسة بعد مرور دقيقة واحدة من عدم النشاط.
+session_save=تذكر الدخول بشكل دائم؟
 
-pam_header=الدخول الى وبمن
-pam_mesg=You must respond to the question below to login to Webmin server on 
-$1.
-pam_mesg2=You must respond to the question below to login.
-pam_login=المواصلة
-pam_restart=اعادة التشغيل
+pam_header=تسجيل الدخول إلى Webmin
+pam_mesg=يجب أن ترد على السؤال أدناه لتسجيل الدخول إلى خادم Webmin على $1.
+pam_mesg2=يجب أن ترد على السؤال أدناه لتسجيل الدخول.
+pam_login=متابعة
+pam_restart=إعادة تشغيل
 
-acl_root=Root directory for file chooser
-acl_nodot=Hide dot files in file chooser?
-acl_home=User's home directory
-acl_uedit=Users visible in user chooser
+acl_root=الدليل الجذر لملف محدد
+acl_otherdirs=أدلة مرئية أخرى في محدد الملف
+acl_nodot=إخفاء ملفات النقطة في محدد الملف؟
+acl_home=دليل المستخدم الرئيسي
+acl_uedit=المستخدمون مرئيون في محدد المستخدم
 acl_uedit_all=جميع المستخدمين
-acl_uedit_none=لا يوجد مستخدمين
-acl_uedit_only=المستخدمين فقط
-acl_uedit_except=الجميع ما عدا المستخدمين
-acl_uedit_uid=Users with UIDs in range
-acl_uedit_group=المستخدمين الذين ينتمون الى 
-مجموعات
-acl_gedit=Groups visible in group chooser
+acl_uedit_none=لا يوجد مستخدمون
+acl_uedit_only=المستخدمون فقط
+acl_uedit_except=جميع المستخدمين باستثناء
+acl_uedit_uid=المستخدمون الذين لديهم معرفات UID في النطاق
+acl_uedit_group=المستخدمون الذين لديهم مجموعة
+acl_gedit=المجموعات مرئية في المجموعة المختارة
 acl_gedit_all=جميع المجموعات
-acl_gedit_none=لا يوجد مجموعات
-acl_gedit_only=فقط المجموعات
-acl_gedit_except=الجميع ما عدا المجموعات
-acl_gedit_gid=Groups with GIDs in range
-acl_feedback=Can send feedback email?
-acl_feedback2=موافق
-acl_feedback1=موافق ولكن بدون ملفات الاعدادات
+acl_gedit_none=لا توجد مجموعات
+acl_gedit_only=المجموعات فقط
+acl_gedit_except=جميع المجموعات باستثناء
+acl_gedit_gid=المجموعات ذات GID في النطاق
+acl_feedback=هل يمكن إرسال تعليقات عبر البريد الإلكتروني؟
+acl_feedback2=نعم
+acl_feedback1=نعم ، ولكن ليس مع ملفات التكوين
 acl_feedback0=لا
-acl_feedback3=موافق مع ارفاق ملفات الاعدادات
-acl_rpc=Can accept RPC calls?
-acl_rpc2=Only for <tt>root</tt> or <tt>admin</tt>
-acl_rpc1=موافق
+acl_feedback3=نعم ، مع ملفات التكوين
+acl_rpc=هل يمكن قبول مكالمات RPC؟
+acl_rpc2=فقط لـ <tt>root</tt> أو <tt>المشرف</tt>
+acl_rpc1=نعم
 acl_rpc0=لا
-acl_readonly=User is in demo mode?<br>(Some modules may not be available)
+acl_readonly2=المستخدم في وضع العرض؟
+acl_readonlyyes=نعم (بعض الوحدات قد لا تكون متاحة)
+acl_negative=منح أذونات الوحدة الجديدة للمستخدم؟
+acl_fileunix=تصفح الملفات كمستخدم Unix
+acl_sameunix=نفس تسجيل دخول Webmin
+acl_webminsearch=إظهار حقل بحث Webmin؟
 
 month_1=يناير
 month_2=فبراير
 month_3=مارس
-month_4=ابريل
+month_4=أبريل
 month_5=مايو
-month_6=جون
-month_7=يوليه
-month_8=اغسطس
+month_6=يونيو
+month_7=يوليو
+month_8=أغسطس
 month_9=سبتمبر
-month_10=أوكتوبر
+month_10=أكتوبر
 month_11=نوفمبر
 month_12=ديسمبر
 
-day_0=اﻷحد
-day_1=اﻷثنين
+day_0=الأحد
+day_1=الاثنين
 day_2=الثلاثاء
 day_3=الاربعاء
 day_4=الخميس
 day_5=الجمعة
 day_6=السبت
 
-month_1=يناير
-month_2=فبراير
-month_3=مارس
-month_4=ابريل
-month_5=مايو
-month_6=جون
-month_7=يوليه
-month_8=اغسطس
-month_9=سبتمبر
-month_10=أوكتوبر
-month_11=نوفمبر
-month_12=ديسمبر
+smonth_1=يناير
+smonth_2=فبراير
+smonth_3=مارس
+smonth_4=أبريل
+smonth_5=مايو
+smonth_6=يونيو
+smonth_7=يوليو
+smonth_8=أغسطس
+smonth_9=سبتمبر
+smonth_10=أكتوبر
+smonth_11=نوفمبر
+smonth_12=ديسمبر
 
-day_0=اﻷحد
-day_1=اﻷثنين
-day_2=الثلاثاء
-day_3=الاربعاء
-day_4=الخميس
-day_5=الجمعة
-day_6=السبت
+sday_0=أح
+sday_1=اث
+sday_2=ثلا
+sday_3=ار
+sday_4=خم
+sday_5=جم
+sday_6=سب
 
-emodule=Access denied : User $1 is not allowed to use the $2 module
-elock_tries=Failed to lock file $1 after $2 minutes
+emodule=تم رفض الوصول: لا يُسمح للمستخدم $1 باستخدام الوحدة $2
+emodulecheck=الوحدة $1 غير متوفرة على نظامك
+elock_tries2=فشل قفل الملف $1 بعد 2$ دقائق. آخر خطأ كان: $3
 
-skill_high=خبير
+skill_high=الخبراء
 skill_medium=متوسط
-skill_low=قليل الخبرة
+skill_low=المبتدئ
 
-feedback_title=Webmin Feedback
-feedback_desc=This form allows you to report bugs on make suggestions to the 
-Webmin developers regarding any problems or missing features that you have 
-found. When the Send button is clicked, the details entered into the form 
-will be emailed to $1.
-feedback_desc2=This feedback will be sent to the developer of Webmin, not 
-your system administrator, ISP or hosting company. Please write your 
-feedback in english, even if you are currently running Webmin in another 
-language.
-feedback_header=Feedback details
-feedback_name=الاسم
-feedback_email=البريد الالكتروني
-feedback_module=Regarding module
-feedback_all=All modules
+feedback_title=ملاحظات Webmin
+feedback_desc=يتيح لك هذا النموذج الإبلاغ عن الخلل في تقديم اقتراحات لمطوري Webmin فيما يتعلق بأية مشكلات أو ميزات مفقودة عثرت عليها. عند النقر فوق الزر "إرسال" ، سيتم إرسال التفاصيل التي تم إدخالها في النموذج إلى $1.
+feedback_desc2=سيتم إرسال هذه التعليقات إلى مطور Webmin ، وليس مسؤول النظام أو ISP أو شركة الاستضافة. يرجى كتابة تعليقاتك باللغة الإنجليزية ، حتى إذا كنت تستخدم حاليا Webmin بلغة أخرى.
+feedback_header=ملاحظاتك التفاصيل
+feedback_name=اسمك
+feedback_email=عنوان بريدك الإلكتروني
+feedback_module=بخصوص الوحدة
+feedback_all=جميع الوحدات
 feedback_text=وصف المشكلة أو الاقتراح
-feedback_os=Include operating system details in email?
-feedback_osdesc=If this option is selected, the automatic feedback email 
-will include your operating system name and version.
-feedback_config=Include module configuration in email?
-feedback_configdesc=If this is selected, the email will include the 
-configuration of the related module and the contents of any config files 
-that the module uses. For example, if the feedback was related to the 
-<i>Users and Groups</i> module, your <tt>/etc/passwd</tt> and 
-<tt>/etc/shadow</tt> files would be sent.
-feedback_attach=Additional files to attach
-feedback_send=Send Feedback
-feedback_mailserver=الارسال عبر ملقم البريد الصادر
-feedback_mailserver_def=Local sendmail program
-feedback_err=Failed to send feedback
-feedback_emodule=You chose to include module configuration in the email, but 
-did not select a module.
-feedback_emodule2=Selected module does not exist
-feedback_econfig=You do not have full access to the selected module.
-feedback_via=Sent feedback to $1 via SMTP server $2
-feedback_prog=Sent feedback to $1 using sendmail program $2
-feedback_esend=Failed to send feedback via sendmail program or local SMTP 
-server.
-feedback_to=ارسل تعليقات الى العناوين
-feedback_enoto=لم يتم ادخال عناوين ليتم ارسال 
-التعليقات اليها
-feedback_ecannot=غير مسموح لك بارسال تعليقات
-feedback_ecannot2=غير مسموح لك بارسال تعليقات 
-مدمجة مع ملفات اعدادات
+feedback_os=تضمين تفاصيل نظام التشغيل في البريد الإلكتروني؟
+feedback_osdesc=إذا تم تحديد هذا الخيار ، سيتضمن البريد الإلكتروني للتعليقات التلقائية اسم وإصدار نظام التشغيل.
+feedback_config=هل تريد تضمين تكوين الوحدة في البريد الإلكتروني؟
+feedback_configdesc=إذا تم تحديد ذلك ، فإن البريد الإلكتروني سيتضمن تكوين الوحدة النمطية ذات الصلة ومحتويات أي ملفات تكوين تستخدمها الوحدة. على سبيل المثال ، إذا كانت التعليقات مرتبطة بالوحدة النمطية <i> المستخدمين والمجموعات </i> ، فسيتم إرسال ملفات <tt> /etc/passwd </tt> و <tt> /etc/shadow </tt> .
+feedback_attach=ملفات إضافية لإرفاقها
+feedback_send=إرسال تعليقات
+feedback_mailserver=إرسال عبر خادم SMTP
+feedback_mailserver_def=برنامج إرسال البريد المحلي
+feedback_err=فشل إرسال ملاحظات
+feedback_emodule=اخترت تضمين تكوين الوحدة النمطية في البريد الإلكتروني ، ولكن لم تحدد وحدة نمطية.
+feedback_emodule2=الوحدة المختارة غير موجودة
+feedback_econfig=ليس لديك حق الوصول الكامل إلى الوحدة النمطية المحددة.
+feedback_via=تم إرسال التعليقات إلى $1 عبر خادم SMTP $2
+feedback_prog=إرسال التعليقات إلى $1 باستخدام برنامج ارسل بريد $2
+feedback_esend=فشل إرسال ملاحظات عبر برنامج ارسل بريد أو خادم SMTP المحلي.
+feedback_to=إرسال تعليقات إلى العناوين
+feedback_enoto=لم يتم إدخال عناوين لإرسال ملاحظات إليها
+feedback_ecannot=غير مسموح لك بإرسال ملاحظات
+feedback_ecannot2=غير مسموح لك بإرسال ملاحظات تحتوي على ملفات تكوين
 
-progress_size=جاري التحميل $1 ($2 bytes) ..
-progress_nosize=جاري التحميل $1 ..
-progress_data=تم تلقي $1 bytes ($2 %)
-progress_data2=تم تلقي $1 bytes
-progress_done=.. انتهى التحميل
-progress_incache=Found $1 in cache ..
+progress_size2=تنزيل $1 ($2) ..
+progress_nosize=تنزيل $1 ..
+progress_datan=تم استلام $1 ($2٪)
+progress_data2n=تم استلام $1
+progress_done=.. تم التحميل.
+progress_incache=تم العثور على $1 في ذاكرة التخزين المؤقت ..
 
-readparse_cdheader=Missing Content-Disposition header
-readparse_enc=Expecting form-data encoding, but got normal encoding
-readparse_max=Data exceeded maximum size of $1 bytes
+readparse_cdheader=عنوان ترتيب المحتوى مفقود
+readparse_enc=توقع تشفير بيانات النموذج ، لكن تم ترميزها بشكل طبيعي
+readparse_max=تجاوزت البيانات الحد الأقصى لحجم $1 بايت
 
-password_expired=تم انتهاء صلاحية كلمة المرور 
-ويجب تحديد كلمة مرور جديدة
-password_header=قم باختيار كلمة مرور جديدة
+password_expired=انتهت صلاحية كلمة المرور الخاصة بك ، ويجب اختيار واحدة جديدة.
+password_temp=يجب عليك تحديد كلمة مرور جديدة لاستبدال تسجيل الدخول المؤقت الخاص بك.
+password_header=اختر كلمة مرور جديدة
 password_user=اسم المستخدم
 password_old=كلمة المرور الحالية
-password_new1=كلمة المرور الجديدة
-password_new2=تأكيد كلمة المرور الجديدة
+password_new1=كلمة مرور جديدة
+password_new2=كلمة مرور جديدة مرة أخرى
 password_ok=تغيير
 password_clear=مسح
-password_done=Your password has been successfully changed. You may now <a 
-href='$1'>login again</a> with the new password.
-password_err=فشل تغيير كلمة المرور
-password_euser=لم اجد اسمك في قائمة المستخدمين
+password_done=تم تغيير كلمة المرور الخاصة بك بنجاح. يمكنك الآن <a href='$1'> تسجيل الدخول مرة أخرى </a> باستخدام كلمة المرور الجديدة.
+password_err=فشل في تغيير كلمة المرور
+password_euser=لم يتم العثور على اسم تسجيل الدخول الخاص بك في ملف كلمة المرور!
 password_eold=كلمة المرور الحالية غير صحيحة
-password_enew1=لم تقم بادخال كلمة مرور جديدة
-password_enew2=كلمة المرور غير مطابقة
-password_epam=PAM error : $1
-password_emodpam=لم يتم تنصيب وحدة بيرل الضرورية 
-لاجراء التعديلات على كلمة المرور
+password_enew1=لم يتم إدخال كلمة مرور جديدة
+password_enew2=لا تتطابق كلمات المرور الجديدة
+password_epam=خطأ PAM: $1
+password_emodpam=لم يتم تثبيت الوحدة النمطية Authen :: PAM perl اللازمة لإجراء تغييرات كلمة المرور!
+password_enewpass=كلمة مرور جديدة غير مسموح بها: $1
 
-ui_mandatory=هذا الحقل اجباري
-ui_checkmandatory=لم يتم الاختيار
-ui_errors=تم ايجاد عدة اخطاء :
-ui_nothing=لم يتم ادخال شيئ
-ui_searchcol=Find rows where
-ui_searchfor=تحتوي على النص
-ui_searchok=بحث
-ui_selall=اختيار الكل
-ui_selinv=عكس الاختيار.
-ui_edate=تاريخ غير صحيح
-ui_etime=وقت غير صحيح
-ui_paging=Showing rows $1 to $2 of $3
-ui_rowlabel=$2 in row $1 :
+ui_mandatory=هذا الحقل إلزامي
+ui_checkmandatory=لم يتم تحديد أي شيء
+ui_errors=تم العثور على أخطاء متعددة:
+ui_nothing=لم يتم إدخال أي شيء
+ui_searchcol=البحث عن صفوف أين
+ui_searchfor=يحتوي على النص
+ui_searchok=البحث
+ui_selall=تحديد الكل.
+ui_selinv=عكس التحديد.
+ui_edate=تاريخ غير صالح
+ui_etime=وقت غير صالح
+ui_paging=عرض الصفوف من $1 إلى $2 من $3
+ui_rowlabel=$2 في الصف $1:
+ui_filterbox=اكتب للتصفية ..
 
-header_statusmsg=$1 logged into $2 $3 on $4 ($5)
+header_statusmsg=$1 تم تسجيل الدخول إلى $2 $3 على $4 ($5)
 
+uptracker_title=تحميل الملف
+uptracker_file=اسم الملف
+uptracker_size=الحجم
+uptracker_pc=التقدم
+uptracker_eid=لم يتم تحديد معرف التحميل
+uptracker_eid2=معرف التحميل غير صالح!
+uptracker_of=$1 من $2
 
+wsearch_title=ابحث عن $1
+wsearch_modt=وحدة
+wsearch_mtitle=اسم الوحدة
+wsearch_what=صفحة مطابقة
+wsearch_type=نوع المطابقة
+wsearch_mod=$1 وحدة
+wsearch_config_webmin=الوحدة النمطية Webmin التكوين
+wsearch_config_usermin=تفضيلات Usermin
+wsearch_help=صفحة المساعدة
+wsearch_inmod=في $1
+wsearch_text=نص واجهة المستخدم
+wsearch_esearch=لم يتم إدخال أي شيء للبحث عنه.
+wsearch_enone=لم يتم العثور على وحدات Webmin أو صفحات مطابقة $1.
+wsearch_on=(على $1)
+wsearch_helpfor=تعليمات لـ <i>$1</ i>
+wsearch_htext=مطابقة النص
+wsearch_htype=المصدر
+wsearch_hcgis=المراجع
+wsearch_type_mod=اسم الوحدة النمطية
+wsearch_type_config=تكوين
+wsearch_type_help=صفحة المساعدة
+wsearch_type_text=واجهة المستخدم
+wsearch_type_dir=عنوان URL للوحدة
+wsearch_hmod=وحدة
+wsearch_moddir=مسار عنوان URL /$1/
+wsearch_searching=البحث عن $1. .
+wsearch_found=تم العثور على نتائج $1:
+
+sql_emysqldriver=فشل تحميل برنامج تشغيل MySQL DBI
+sql_emysqlconnect=فشل الاتصال بقاعدة بيانات MySQL: $1
+sql_epostgresqldriver=فشل تحميل برنامج تشغيل DBG PostgreSQL
+sql_epostgresqlconnect=فشل الاتصال بقاعدة بيانات PostgreSQL: $1
+sql_eldapdriver=فشل تحميل وحدة LDAP perl
+sql_eldapconnect=فشل الاتصال بخادم LDAP $1
+sql_eldaptls=فشل في بدء تشفير TLS لـ LDAP: $1
+sql_eldaplogin=فشل في تسجيل الدخول إلى خادم LDAP باعتباره $1: $2
+
+log_email_subject=إجراء Webmin في $1
+log_email_global=إجراء Webmin العالمي
+log_email_desc=تم إرسال هذه الرسالة الإلكترونية بواسطة Webmin ردًا على إجراء المستخدم.
+log_email_mod=وحدة Webmin: $1
+log_email_moddesc=عنوان الوحدة : $1
+log_email_time=تم تنفيذ الإجراء على : $1
+log_email_system=تم التنفيذ على النظام : $1
+log_email_user=تم تنفيذها بواسطة المستخدم : $1
+log_email_script=Webmin سكربت : $1
+log_email_session=معرف الجلسة : $1
+log_email_remote=عنوان العميل : $1
+
+__norefs=1

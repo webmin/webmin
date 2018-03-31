@@ -1,0 +1,15 @@
+__norefs=1
+index_title=القرص و شبكة أنظمة الملفات
+index_dir=تركيبه كـ
+index_type=النوع
+index_dev=الموقع
+index_used=المستعمل
+index_use=قيد الاستخدام؟
+index_perm=المحفوظ؟
+index_add=إضافة تركيب
+index_auto=نوع غير معروف
+index_swap=الذاكرة الظاهرية
+index_return=قائمة أنظمة الملفات
+index_none=ليس لديك إمكانية الوصول إلى أي أنظمة ملفات محملة.
+index_mount2=تتزايد مع كلمة المرور:
+index_root=نظام ملفات Root
