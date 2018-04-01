@@ -528,7 +528,9 @@ my (@caches, $coss);
 my @cachestruct = &find_config("cache_dir", $conf);
 my $disabled = 0;
 if ($distoo && !@cachestruct) {
+	# Check disabled cache directives, but exclude ones that don't exist
 	@cachestruct = &find_config("cache_dir", $conf, 1);
+	@cachestruct = grep { -e $_->{'values'}->[1] } @cachestruct;
 	$disabled = 1 if (@cachestruct);
 	}
 if (@cachestruct) {
@@ -548,13 +550,13 @@ if (!@caches) {
 if ($coss) {
 	# Allow COSS files too
 	foreach my $c (@caches) {
-		return 0 if (!-f $c && (!-d $c || !-d "$c/00"));
+		return 0 if (!-f $c && (!-d $c || (!-d "$c/00" && !-r "$c/rock")));
 		}
 	}
 else {
 	# Check for dirs only
 	foreach my $c (@caches) {
-		return 0 if (!-d $c || !-d "$c/00");
+		return 0 if (!-d $c || (!-d "$c/00" && !-r "$c/rock"));
 		}
 	}
 return 1;
