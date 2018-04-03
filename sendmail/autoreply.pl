@@ -277,7 +277,7 @@ if ($rbody =~ /[\177-\377]/) {
 	# High-ascii
 	$enc = "quoted-printable";
 	$encrbody = &quoted_encode($rbody);
-	$type .= "; charset=".($cs || "iso-8859-1");
+	$type .= "; charset=".($cs || "UTF-8");
 	}
 else {
 	$enc = undef;
