@@ -17,6 +17,7 @@ use Socket;
 use POSIX;
 eval "use Socket6";
 $ipv6_module_error = $@;
+our $error_handler_funcs = [ ];
 
 use vars qw($user_risk_level $loaded_theme_library $wait_for_input
 	    $done_webmin_header $trust_unknown_referers $unsafe_index_cgi
@@ -1464,7 +1465,8 @@ if ($main::error_must_die) {
 		}
 	die @_;
 	}
-elsif (!$ENV{'REQUEST_METHOD'}) {
+&call_error_handlers();
+if (!$ENV{'REQUEST_METHOD'}) {
 	# Show text-only error
 	print STDERR "$text{'error'}\n";
 	print STDERR "-----\n";
@@ -1531,7 +1533,8 @@ $main::no_miniserv_userdb = 1;
 if ($main::error_must_die) {
 	die @_;
 	}
-elsif (defined(&theme_popup_error)) {
+&call_error_handlers();
+if (defined(&theme_popup_error)) {
 	&theme_popup_error(@_);
 	}
 else {
@@ -1542,6 +1545,34 @@ else {
 &unlock_all_files();
 &cleanup_tempnames();
 exit;
+}
+
+=head2 register_error_handler(&func, arg, ...)
+
+Register a function that will be called when this process exits, such as by
+calling &error
+
+=cut
+sub register_error_handler
+{
+my ($f, @args) = @_;
+push(@$error_handler_funcs, [ $f, @args ]);
+}
+
+
+=head2 call_error_handlers()
+
+Internal function to call all registered error handlers
+
+=cut
+sub call_error_handlers
+{
+my @funcs = @$error_handler_funcs;
+$error_handler_funcs = [ ];
+foreach my $e (@funcs) {
+	my ($f, @args) = @$e;
+	&$f(@args);
+	}
 }
 
 =head2 error_setup(message)
