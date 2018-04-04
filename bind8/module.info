@@ -7,3 +7,4 @@ depends=servers
 longdesc=Create and edit domains, DNS records, BIND options and views.
 readonly=1
 syslog=1
+desc_bg=BIND DNS Server
