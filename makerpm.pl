@@ -253,10 +253,12 @@ musthost=`grep musthost= /etc/webmin/miniserv.conf | sed -e 's/musthost=//'`
 if [ "$musthost" != "" ]; then
 	host=$musthost
 fi
-if [ "\$sslmode" = "1" ]; then
-	echo "Webmin install complete. You can now login to https://\$host:\$port/"
-else
-	echo "Webmin install complete. You can now login to http://\$host:\$port/"
+if [ "\$1" == 1 ]; then
+	if [ "\$sslmode" = "1" ]; then
+		echo "Webmin install complete. You can now login to https://\$host:\$port/"
+	else
+		echo "Webmin install complete. You can now login to http://\$host:\$port/"
+	fi
 fi
 echo "as root with your root password."
 /bin/true
