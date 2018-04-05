@@ -339,28 +339,26 @@ sub print_interface {
             ) {
                 $actions = "$actions<a class='action-link' href='edit_file.cgi?file=".&urlize($link)."&path=".&urlize($path)."' title='$text{'edit'}' data-container='body'>$edit_icon</a>";
             }
-            if (   ( index( $type, "application-zip" ) != -1 && has_command('unzip') )
-                || ( index( $type, "application-x-7z-compressed" ) != -1 && has_command('7z') )
-                || ( index( $type, "application-x-rar" ) != -1           && has_command('unrar') )
-                || ( index( $type, "application-x-rpm" ) != -1 && has_command('rpm2cpio') && has_command('cpio') )
-                || ( index( $type, "application-x-deb" ) != -1 && has_command('dpkg') )
-                || ((      index( $type, "x-compressed-tar" ) != -1
-                        || index( $type, "-x-tar" ) != -1
-                        || ( index( $type, "-x-bzip" ) != -1 && has_command('bzip2') )
-                        || ( index( $type, "-gzip" ) != -1   && has_command('gzip') )
-                        || ( index( $type, "-x-xz" ) != -1   && has_command('xz') )
-                    )
-                    && has_command('tar')
-                )
-                )
-            {
-                $actions
-                    = "$actions <a class='action-link' href='extract.cgi?path="
-                    . &urlize($path)
-                    . "&file="
-                    . &urlize($link)
-                    . "' title='$text{'extract_archive'}' data-container='body'>$extract_icon</a> ";
-            }
+            if ((index($type, "application-zip") != -1             && has_command('unzip')) ||
+              (index($type, "application-x-7z-compressed") != -1 && has_command('7z'))    ||
+              ((index($type, "application-x-rar") != -1 || index($type, "application-vnd.rar") != -1) && has_command('unrar')) ||
+              (index($type, "application-x-rpm") != -1 && has_command('rpm2cpio') && has_command('cpio')) ||
+              (index($type, "application-x-deb") != -1 && has_command('dpkg'))
+              ||
+              (
+                  (index($type, "x-compressed-tar") != -1 ||
+                   index($type, "-x-tar") != -1           ||
+                   (index($type, "-x-bzip") != -1 && has_command('bzip2')) ||
+                   (index($type, "-gzip") != -1   && has_command('gzip'))  ||
+                   (index($type, "-x-xz") != -1   && has_command('xz'))
+                  ) &&
+                  has_command('tar')))
+          {
+              $actions =
+                "$actions <a class='action-link' href='extract.cgi?path=" . &urlize($path) .
+                "&file=" . &urlize($link) . "' title='$text{'extract_archive'}' data-container='body'>$extract_icon</a> ";
+          }
+
         }
         @row_data = (
             "<a href='$href'><img src=\"$img\"></a>",
