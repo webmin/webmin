@@ -258,6 +258,9 @@ if (&has_command("apt-show-versions")) {
 	close(PKGS);
 	&reset_environment();
 	@rv = &filter_held_packages(@rv);
+	foreach my $pkg (@rv) {
+		$pkg->{'security'} = 1 if ($pkg->{'source'} =~ /security/i);
+		}
 	return @rv;
 	}
 else {
