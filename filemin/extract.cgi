@@ -24,7 +24,7 @@ elsif ($archive_type =~ /x-7z/) {
 elsif ($archive_type =~ /\/zip/) {
 	$cmd = "unzip ".quotemeta("$cwd/$in{'file'}")." -d ".quotemeta($cwd);
 	}
-elsif ($archive_type =~ /\/x-rar/) {
+elsif ($archive_type =~ /\/x-rar|\/vnd\.rar/) {
 	$cmd = "unrar x -r -y ".quotemeta("$cwd/$in{'file'}").
 	       " ".quotemeta($cwd);
 	}
