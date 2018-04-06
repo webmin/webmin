@@ -259,8 +259,8 @@ if [ "\$1" == 1 ]; then
 	else
 		echo "Webmin install complete. You can now login to http://\$host:\$port/"
 	fi
+	echo "as root with your root password."
 fi
-echo "as root with your root password."
 /bin/true
 
 %preun
