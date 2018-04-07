@@ -2,6 +2,7 @@
 # setup.cgi
 # Setup an initial save file
 
+require './firewall-lib.pl';
 require './firewall6-lib.pl';
 &ReadParse();
 $access{'setup'} || &error($text{'setup_ecannot'});
