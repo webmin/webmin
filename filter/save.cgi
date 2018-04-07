@@ -85,7 +85,9 @@ else {
 		$filter->{'condheader'} =~ /^[a-zA-Z0-9\-]+$/ ||
 			&error($text{'save_econdheader'});
 		if (!$in{'condregexp'} &&
-		    $in{'condvalue'} !~ /^[a-zA-Z0-9_ ]+$/) {
+		    $in{'condvalue'} =~ /[\^\$\.\*\+\?\|\(\)\[\]\{\}\\]/) {
+			# If the user didn't ask for a regexp but there are
+			# regexp special characters, escape them
 			$in{'condvalue'} = quotemeta($in{'condvalue'});
 			}
 		if ($in{'condmode'} == 0) {
