@@ -151,8 +151,8 @@ if ($access{'find'} || $access{'auto'}) {
 		      "<td valign=middle>".&ui_textbox("port", $port, 20)."</td> </tr>".
 		      "</table>\n"
 		      );
-        $t =~ s/valign=top class=ui_buttons_value/valign=middle class=ui_buttons_value/g;
-        print $t;
+		$t =~ s/valign=top class=ui_buttons_value/valign=middle class=ui_buttons_value/g;
+		print $t;
 		}
 	if ($access{'auto'}) {
 		# Button for auto-discovery form
