@@ -29,6 +29,9 @@ if ($auto) {
 	elsif (-r "/etc/issue") {
 		$etc_issue = `cat /etc/issue`;
 		}
+	if (-r "/etc/os-release") {
+		$os_release = `cat /etc/os-release`;
+		}
 	$uname = `uname -a 2>/dev/null`;
 	foreach $o (@list) {
 		if ($o->[4] && eval "$o->[4]") {
