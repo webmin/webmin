@@ -12,6 +12,7 @@ our (%text, %config, %gconfig, $module_var_directory);
 
 my $dnssec_tools_minver = 1.13;
 my $have_dnssec_tools = eval "require Net::DNS::SEC::Tools::dnssectools;";
+my %freeze_zone_count;
 
 if ($have_dnssec_tools) {
 	eval "use Net::DNS::SEC::Tools::dnssectools;
@@ -1639,6 +1640,7 @@ return $chroot.$_[0];
 
 # has_ndc(exclude-mode)
 # Returns 2 if rndc is installed, 1 if ndc is instaled, or 0
+# Mode 2 = try ndc only, 1 = try rndc only, 0 = both
 sub has_ndc
 {
 my $mode = $_[0] || 0;
@@ -2139,12 +2141,15 @@ return undef;
 
 # before_editing(&zone)
 # Must be called before reading a zone file with intent to edit
-# XXX what if thaw doesn't get called?
 sub before_editing
 {
 my ($zone) = @_;
-&try_cmd("freeze ".quotemeta($zone->{'name'})." IN ".quotemeta($zone->{'view'}).
+my ($out, $ok) = &try_cmd("freeze ".quotemeta($zone->{'name'})." IN ".quotemeta($zone->{'view'}).
 	 " 2>&1 </dev/null");
+if ($ok) {
+	$freeze_zone_count{$zone->{'name'}}++;
+	&register_error_handler(\&after_editing, $zone);
+	}
 }
 
 # after_editing(&zone)
@@ -2152,8 +2157,10 @@ my ($zone) = @_;
 sub after_editing
 {
 my ($zone) = @_;
-&try_cmd("thaw ".quotemeta($zone->{'name'})." IN ".quotemeta($zone->{'view'}).
-	 " 2>&1 </dev/null");
+if ($freeze_zone_count{$zone->{'name'}}--) {
+	&try_cmd("thaw ".quotemeta($zone->{'name'})." IN ".quotemeta($zone->{'view'}).
+		 " 2>&1 </dev/null");
+	}
 }
 
 # restart_zone(domain, [view])
@@ -2970,20 +2977,23 @@ sub try_cmd
 my $args = $_[0];
 my $rndc_args = $_[1] || $_[0];
 my $out = "";
+my $ex;
 if (&has_ndc() == 2) {
 	# Try with rndc
 	$out = &backquote_logged(
 		$config{'rndc_cmd'}.
 		($config{'rndc_conf'} ? " -c $config{'rndc_conf'}" : "").
 		" ".$rndc_args." 2>&1 </dev/null");
+	$ex = $?;
 	}
 if (&has_ndc() != 2 || $out =~ /connect\s+failed/i) {
 	if (&has_ndc(2)) {
-		# Try with rndc if rndc is not install or failed
+		# Try with ndc if rndc is not install or failed
 		$out = &backquote_logged("$config{'ndc_cmd'} $args 2>&1 </dev/null");
+		$ex = $?;
 		}
 	}
-return $out;
+return wantarray ? ($out, !$ex) : $out;
 }
 
 # supports_check_zone()
