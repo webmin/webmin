@@ -668,9 +668,12 @@ else {
 	}
 }
 
-@interfaces_opts = ( 'dhcp', 'noping', 'filterping', 'routestopped', 'norfc1918',
-		     'multi', 'routefilter', 'dropunclean', 'logunclean',
-		     'blacklist', 'maclist', 'tcpflags', 'proxyarp' );
+@interfaces_opts = ( 'dhcp', 'multi', 'routefilter',
+		     'maclist', 'tcpflags', 'proxyarp' );
+if (!&version_atleast(5, 0, 4)) {
+	push(@interfaces_opts, 'noping', 'filterping', 'routestopped',
+		       'norfc1918', 'dropunclean', 'logunclean', 'blacklist');
+	}
 if (&version_atleast(3)) {
 	push(@interfaces_opts, "logmartians", "routeback", "arp_filter",
 			       "arp_ignore", "nosmurfs", "detectnets", "upnp");
