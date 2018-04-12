@@ -33,8 +33,8 @@ foreach $l (&list_last_logins($u, $config{'last_count'})) {
 		$u ? ( ) : ( "<tt>".&html_escape($l->[0])."</tt>" ),
 		&html_escape($l->[2]) || $text{'logins_local'},
 		&html_escape($l->[1]),
-		&html_escape($tm ? &make_date($tm) : $l->[3]),
-		$l->[4] ? ( &html_escape($tm2 ? &make_date($tm2) : $l->[4]),
+		$tm ? &make_date($tm) : &html_escape($l->[3]),
+		$l->[4] ? ( $tm2 ? &make_date($tm2) : &html_escape($l->[4]),
 			    &html_escape($l->[5]) )
 			: ( "<i>$text{'logins_still'}</i>", "" ),
 		]);
