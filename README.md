@@ -54,3 +54,42 @@ For documentation, see http://doxfer.webmin.com/
 Jamie Cameron
 jcameron@webmin.com
 
+
+# Maintainers
+
+Our current list of [Maintainers](MAINTAINERS.md).
+
+# Contributors
+
+Webmin exists thanks to [all the people who contribute](https://github.com/webmin/webmin/graphs/contributors).
+
+[How To Contribute](CONTRIBUTING.rst).
+
+<a href="https://github.com/webmin/webmin/graphs/contributors"><img src="https://opencollective.com/webmin/contributors.svg?width=890" /></a>
+
+
+# Backers
+
+Thank you to all our backers!   [Become a backer](https://opencollective.com/webmin#backer)
+
+<a href="https://opencollective.com/webmin#backers" target="_blank"><img src="https://opencollective.com/webmin/backers.svg?width=890"></a>
+
+
+# Sponsors
+
+Support Webmin by becoming a sponsor. Your logo will show up here with a link to your website.
+
+[Become A Sponsor of Webmin.](https://opencollective.com/webmin#sponsor)
+
+<a href="https://opencollective.com/webmin/sponsor/0/website" target="_blank"><img src="https://opencollective.com/webmin/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/webmin/sponsor/1/website" target="_blank"><img src="https://opencollective.com/webmin/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/webmin/sponsor/2/website" target="_blank"><img src="https://opencollective.com/webmin/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/webmin/sponsor/3/website" target="_blank"><img src="https://opencollective.com/webmin/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/webmin/sponsor/4/website" target="_blank"><img src="https://opencollective.com/webmin/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/webmin/sponsor/5/website" target="_blank"><img src="https://opencollective.com/webmin/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/webmin/sponsor/6/website" target="_blank"><img src="https://opencollective.com/webmin/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/webmin/sponsor/7/website" target="_blank"><img src="https://opencollective.com/webmin/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/webmin/sponsor/8/website" target="_blank"><img src="https://opencollective.com/webmin/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/webmin/sponsor/9/website" target="_blank"><img src="https://opencollective.com/webmin/sponsor/9/avatar.svg"></a>
+
+
