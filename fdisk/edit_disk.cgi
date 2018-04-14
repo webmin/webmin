@@ -41,6 +41,10 @@ elsif ($usedpri != 4 && &supports_extended()) {
 	push(@edlinks, "<a href=\"edit_part.cgi?disk=$d->{'index'}&new=3\">".
 			$text{'index_addext'}."</a>");
 	}
+if ($d->{'table'} eq 'unknown') {
+	# Must create a partition table first
+	@edlinks = ( $text{'disk_needtable'} );
+	}
 
 # Show brief disk info
 @info = ( );
@@ -52,7 +56,12 @@ if ($d->{'model'}) {
 	}
 push(@info, &text('disk_cylinders', $d->{'cylinders'}));
 if ($d->{'table'}) {
-	push(@info, &text('disk_table', uc($d->{'table'})));
+	if ($d->{'table'} eq 'unknown') {
+		push(@info, $text{'disk_notable'});
+		}
+	else {
+		push(@info, &text('disk_table', uc($d->{'table'})));
+		}
 	}
 print &ui_links_row(\@info),"<p>\n";
 
@@ -125,9 +134,18 @@ if (&supports_smart($d)) {
 			      &ui_hidden("drive", $d->{'device'}));
 	}
 if (&supports_relabel($d)) {
-	print &ui_buttons_row("edit_relabel.cgi", $text{'index_relabel'},
-			      $text{'index_relabeldesc'},
-			      &ui_hidden("device", $d->{'device'}));
+	if ($d->{'table'} eq 'unknown') {
+		print &ui_buttons_row(
+			"edit_relabel.cgi", $text{'index_relabel2'},
+			$text{'index_relabeldesc2'},
+			&ui_hidden("device", $d->{'device'}));
+		}
+	else {
+		print &ui_buttons_row(
+			"edit_relabel.cgi", $text{'index_relabel'},
+			$text{'index_relabeldesc'},
+			&ui_hidden("device", $d->{'device'}));
+		}
 	}
 print &ui_buttons_end();
 
