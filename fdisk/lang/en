@@ -289,7 +289,7 @@ disk_model=<b>Make and model:</b> $1
 disk_cylinders=<b>Cylinders:</b> $1
 disk_table=<b>Partition table format:</b> $1
 disk_notable=<b>>Partition table format:</b> None created
-disk_needtable=No partitons can be created without a partition table.
+disk_needtable=No partitions can be created without a partition table.
 disk_return=list of partitions
 
 relabel_title=Wipe Partitions
