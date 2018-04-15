@@ -16,8 +16,8 @@ $d || &error($text{'disk_egone'});
 
 # Work out links to add partitions
 foreach $p (@parts) {
-	$usedpri++ if ($p->{'number'} <= 4);
 	$extended++ if ($p->{'extended'});
+	$regular++ if (!$p->{'extended'});
 	if ($p->{'end'} > $d->{'cylinders'}) {
 		$d->{'cylinders'} = $p->{'end'};
 		}
@@ -29,7 +29,7 @@ foreach $p (@parts) {
 		$anyfree++;
 		}
 	}
-if ($usedpri != 4 || $disk->{'table'} ne 'msdos') {
+if ($regular < 4 || $disk->{'table'} ne 'msdos') {
 	push(@edlinks, "<a href=\"edit_part.cgi?disk=$d->{'index'}&new=1\">".
 		       $text{'index_addpri'}."</a>");
 	}
@@ -37,7 +37,7 @@ if ($extended) {
 	push(@edlinks, "<a href=\"edit_part.cgi?disk=$d->{'index'}&new=2\">".
 		       $text{'index_addlog'}."</a>");
 	}
-elsif ($usedpri != 4 && &supports_extended()) {
+elsif ($regular < 4 && &supports_extended()) {
 	push(@edlinks, "<a href=\"edit_part.cgi?disk=$d->{'index'}&new=3\">".
 			$text{'index_addext'}."</a>");
 	}
