@@ -48,7 +48,7 @@ aliases_delete=Delete Selected Aliases
 
 postfinger_title=Configuration Check
 postfinger_show=Show
-postfinger_ecannot=You are not allowed to check the postfix configuration
+postfinger_ecannot=You are not allowed to check the Postfix configuration
 
 mailclean_title=Clean MailQueue
 mailclean_ecannot=No privileges to clean MailQueues
