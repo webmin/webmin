@@ -33,6 +33,7 @@ forwardzonefilename_format=Format f&#252;r die Namen von forward-Zonendateien,0
 reversezonefilename_format=Format f&#252;r die Namen von reverse&#45;Zonendateien,0
 file_owner=Besitzer f&#252;r Zonendateien (Benutzer:Gruppe),3,Standard
 file_perms=Rechte f&#252;r Zonendateien (in oktaler Schreibweise),3,Standard
+slave_file_perms=Berechtigungen f&#252;r Slave-Zonendateien (in Oktal),3,wie oben
 default_prins=Standard Master&#45;Server f&#252;r Master&#45;Zonen,3,Hostname des Systems
 default_master=Standard Master&#45;Server f&#252;r Slave&#45;Zonen,0
 updserial_on=Automatische Aktualisierung der seriellen Nummern,1,1-Ja,0-Nein
