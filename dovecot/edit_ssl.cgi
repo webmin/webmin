@@ -9,7 +9,7 @@ print &ui_form_start("save_ssl.cgi", "post");
 print &ui_table_start($text{'ssl_header'}, "width=100%", 4);
 
 # SSL cert and key files
-if (&find_value("ssl_cert", $conf, 2)) {
+if (&find_value("ssl_cert", $conf, 2) || &version_atleast("2.2")) {
 	$cert = &find_value("ssl_cert", $conf, 0, "");
 	$cert =~ s/^<//;
 	}
@@ -20,7 +20,7 @@ print &ui_table_row($text{'ssl_cert'},
 	    &ui_opt_textbox("cert", $cert, 40, &getdef("ssl_cert_file")), 3,
 	    [ undef, "nowrap" ]);
 
-if (&find_value("ssl_key", $conf, 2)) {
+if (&find_value("ssl_key", $conf, 2) || &version_atleast("2.2")) {
 	$key = &find_value("ssl_key", $conf, 0, "");
 	$key =~ s/^<//;
 	}
@@ -38,7 +38,7 @@ print &ui_table_row($text{'ssl_pass'},
 	    [ undef, "nowrap" ]);
 
 # SSL CA file
-if (&find_value("ssl_ca", $conf, 2)) {
+if (&find_value("ssl_ca", $conf, 2) || &version_atleast("2.2")) {
 	$ca = &find_value("ssl_ca", $conf, 0, "");
 	$ca =~ s/^<//;
 	}

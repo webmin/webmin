@@ -411,8 +411,18 @@ return $text{'default'};
 # Returns the dovecot version number, or undef if not available
 sub get_dovecot_version
 {
-local $out = `$config{'dovecot'} --version 2>&1`;
+local $out = &backquote_command("$config{'dovecot'} --version 2>&1");
 return $out =~ /([0-9\.]+)/ ? $1 : undef;
+}
+
+# version_atleast(ver)
+# Returns 1 if running at least some version or above
+sub version_atleast
+{
+local ($wantver) = @_;
+local $ver = &get_dovecot_version();
+return 0 if (!$ver);
+return &compare_version_numbers($wantver, $ver) >= 0;
 }
 
 sub list_lock_methods

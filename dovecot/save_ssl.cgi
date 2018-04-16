@@ -10,7 +10,7 @@ $conf = &get_config();
 # Save SSL cert and key
 $in{'cert_def'} || -r $in{'cert'} || $in{'cert'} =~ /^[<>\|]/ ||
 	&error($text{'ssl_ecert'});
-if (&find_value("ssl_cert", $conf, 2)) {
+if (&find_value("ssl_cert", $conf, 2) || &version_atleast("2.2")) {
 	$in{'cert'} = "<".$in{'cert'} if ($in{'cert'} =~ /^\//);
 	&save_directive($conf, "ssl_cert",
 		        $in{'cert_def'} ? undef : $in{'cert'}, "");
@@ -19,9 +19,10 @@ else {
 	&save_directive($conf, "ssl_cert_file",
 		        $in{'cert_def'} ? undef : $in{'cert'});
 	}
+
 $in{'key_def'} || -r $in{'key'} || $in{'key'} =~ /^[<>\|]/ ||
 	&error($text{'ssl_ekey'});
-if (&find_value("ssl_key", $conf, 2)) {
+if (&find_value("ssl_key", $conf, 2) || &version_atleast("2.2")) {
 	$in{'key'} = "<".$in{'key'} if ($in{'key'} =~ /^\//);
 	&save_directive($conf, "ssl_key",
 		        $in{'key_def'} ? undef : $in{'key'}, "");
@@ -34,7 +35,7 @@ else {
 # Save SSL CA cert
 $in{'ca_def'} || -r $in{'ca'} || $in{'ca'} =~ /^[<>\|]/ ||
 	&error($text{'ssl_eca'});
-if (&find_value("ssl_ca", $conf, 2)) {
+if (&find_value("ssl_ca", $conf, 2) || &version_atleast("2.2")) {
 	$in{'ca'} = "<".$in{'ca'} if ($in{'ca'} =~ /^\//);
 	&save_directive($conf, "ssl_ca",
 		        $in{'ca_def'} ? undef : $in{'ca'}, "");
