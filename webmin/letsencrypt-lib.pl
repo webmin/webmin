@@ -295,6 +295,10 @@ else {
 			&cleanup_wellknown($wellknown_new, $challenge_new);
 			return (0, &text('letsencrypt_echain', $err));
 			}
+		if ($cout !~ /\S/ && !-r $chain) {
+			&cleanup_wellknown($wellknown_new, $challenge_new);
+			return (0, &text('letsencrypt_echain2', $url));
+			}
 		my $fh = "CHAIN";
 		&open_tempfile($fh, ">>$chain");
 		&print_tempfile($fh, $cout);
