@@ -148,8 +148,7 @@ print &ui_table_row($text{'edit_arch'},
 
 if ($pinfo[6]) {
 	# Install date
-	print &ui_table_row($text{'edit_inst'},
-		&html_escape($pinfo[6]));
+	print &ui_table_row($text{'edit_inst'}, $pinfo[6]);
 	}
 
 print &ui_table_end();
