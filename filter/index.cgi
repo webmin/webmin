@@ -2,7 +2,7 @@
 # Show a table of simple actions
 
 require './filter-lib.pl';
-&foreign_require("mailbox", "mailbox-lib.pl");
+&foreign_require("mailbox");
 &ui_print_header(undef, $text{'index_title'}, "", undef, 0, 1);
 
 if (&get_product_name() eq 'webmin') {

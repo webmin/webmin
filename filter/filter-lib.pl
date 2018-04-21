@@ -576,7 +576,7 @@ else {
 	local $folder = &file_to_folder($f->{'action'}, $folders, $home);
 	if ($folder) {
 		if (&get_product_name() eq 'usermin') {
-			&foreign_require("mailbox", "mailbox-lib.pl");
+			&foreign_require("mailbox");
 			local $id = &mailbox::folder_name($folder);
 			$action = &text('index_afolder',
 			   "<a href='../mailbox/index.cgi?id=$id'>".
