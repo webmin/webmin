@@ -2,7 +2,6 @@
 # Create, update or delete an autoreply filter
 
 require './filter-lib.pl';
-&foreign_require("mailbox");
 &ReadParse();
 &error_setup($text{'auto_err'});
 use Time::Local;

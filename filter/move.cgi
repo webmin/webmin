@@ -2,7 +2,6 @@
 # Apply a filter to email in some folder
 
 require './filter-lib.pl';
-&foreign_require("mailbox");
 &ReadParse();
 &error_setup($text{'move_err'});
 

@@ -2,7 +2,6 @@
 # Create, update or delete a filter
 
 require './filter-lib.pl';
-&foreign_require("mailbox");
 use Time::Local;
 &ReadParse();
 
@@ -84,6 +83,7 @@ else {
 		$filter->{'condheader'} = $in{'condmenu'} || $in{'condheader'};
 		$filter->{'condheader'} =~ /^[a-zA-Z0-9\-]+$/ ||
 			&error($text{'save_econdheader'});
+		$in{'condvalue'} = &mailbox::encode_mimeword($in{'condvalue'});
 		if (!$in{'condregexp'} &&
 		    $in{'condvalue'} =~ /[\^\$\.\*\+\?\|\(\)\[\]\{\}\\]/) {
 			# If the user didn't ask for a regexp but there are

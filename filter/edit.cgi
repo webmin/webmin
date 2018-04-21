@@ -2,7 +2,6 @@
 # Show details of one filter
 
 require './filter-lib.pl';
-&foreign_require("mailbox");
 &ReadParse();
 
 # Show page header and get the filter
