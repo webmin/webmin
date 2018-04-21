@@ -533,6 +533,7 @@ return wantarray ? ( $cond, $lastalways ) : $cond;
 
 # prettify_regexp(string)
 # If a string contains only \ quoted special characters, remove the \s
+# Also, undo any mimewords encoding.
 sub prettify_regexp
 {
 my ($str) = @_;
@@ -541,7 +542,7 @@ $re =~ s/\\./x/g;
 if ($re =~ /^[a-zA-Z0-9_ ]*$/) {
 	$str =~ s/\\(.)/$1/g;
 	}
-return $str;
+return &mailbox::decode_mimewords($str);
 }
 
 # describe_action(&filter, &folder, [homedir])

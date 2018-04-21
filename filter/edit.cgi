@@ -87,6 +87,7 @@ else {
 		$regexp = 1;
 		}
 	}
+$condvalue = &mailbox::decode_mimewords($condvalue);
 print &ui_table_row(
 	&ui_oneradio("cmode", 4, $text{'edit_cmode4'}, $cmode == 4),
 	&text('edit_cheader2',

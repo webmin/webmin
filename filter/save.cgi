@@ -83,7 +83,10 @@ else {
 		$filter->{'condheader'} = $in{'condmenu'} || $in{'condheader'};
 		$filter->{'condheader'} =~ /^[a-zA-Z0-9\-]+$/ ||
 			&error($text{'save_econdheader'});
-		$in{'condvalue'} = &mailbox::encode_mimeword($in{'condvalue'});
+		if ($in{'condvalue'} !~ /^[\000-\177]*$/) {
+			$in{'condvalue'} = &mailbox::encode_mimewords(
+				$in{'condvalue'}, 'Charset' => &get_charset());
+			}
 		if (!$in{'condregexp'} &&
 		    $in{'condvalue'} =~ /[\^\$\.\*\+\?\|\(\)\[\]\{\}\\]/) {
 			# If the user didn't ask for a regexp but there are
