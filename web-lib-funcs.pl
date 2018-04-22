@@ -278,6 +278,16 @@ else {
 		my @st = lstat($tmp_dir);
 		&error("Failed to create temp directory $tmp_dir : uid=$st[4] mode=$st[2]");
 		}
+	# If running as root, check parent dir (usually /tmp) to make sure it's
+	# world-writable and owned by root
+	my $tmp_parent = $tmp_dir;
+	$tmp_parent =~ s/\/[^\/]+$//;
+	if ($tmp_parent eq "/tmp") {
+		my @st = stat($tmp_parent);
+		if (($st[2] & 0555) != 0555) {
+			&error("Base temp directory $tmp_parent is not world readable and listable");
+			}
+		}
 	}
 my $rv;
 if (defined($filename) && $filename !~ /\.\./) {
