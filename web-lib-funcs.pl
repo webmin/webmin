@@ -8531,7 +8531,14 @@ file, which defaults to the current module.
 sub save_module_config
 {
 my $c = $_[0] || { &get_module_variable('%config') };
-my $m = defined($_[1]) ? $_[1] : &get_module_name();
+my $m;
+if (defined($_[1])) {
+	$m = $_[1];
+	}
+else {
+	$m = &get_module_name();
+	$m || &error("could not compute current module in save_module_config");
+	}
 &write_file("$config_directory/$m/config", $c);
 }
 
