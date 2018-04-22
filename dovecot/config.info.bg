@@ -1,0 +1,4 @@
+dovecot=Сървърен софтуер Dovecot,0
+dovecot_config=Пълен път към конфигурационния файл на Dovecot,0
+init_script=Име на инициализационния скрипт на Dovecot,3,Няма такъв
+pid_file=PID файл на Dovecot сървъра,0
