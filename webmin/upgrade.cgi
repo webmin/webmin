@@ -271,6 +271,7 @@ elsif ($in{'mode'} eq 'deb') {
 	$ENV{'tempdir'} = $gconfig{'tempdir'};
 	print "<p>",$text{'upgrade_setupdeb'},"<p>\n";
 	print "<pre>";
+	$ENV{'DEBIAN_FRONTEND'} = 'noninteractive';
 	&proc::safe_process_exec("dpkg --install $qfile", 0, 0,
 				 STDOUT, undef, 1, 1);
 	unlink($file) if ($need_unlink);
