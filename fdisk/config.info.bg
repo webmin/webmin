@@ -1,0 +1,2 @@
+mode=Команда за управление на дялове,1,fdisk-Fdisk,parted-Parted,-Автоматичен избор
+format=Подразбиращ се формат за таблица за дялове,1,msdos-MSDOS,gpt-GPT
