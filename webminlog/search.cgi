@@ -60,7 +60,7 @@ else {
 	}
 
 if ($in{'csv'}) {
-	print "Content-type: text/csv\n\n";
+	&PrintHeader(undef, "text/csv");
 	}
 else {
 	&ui_print_header(undef, $text{'search_title'}, "");
