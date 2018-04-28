@@ -1754,7 +1754,7 @@ formatted like dd/mmm/yyyy hh:mm:ss. Parameters are :
 sub make_date
 {
 &load_theme_library();
-if (defined(&theme_make_date)) {
+if (defined(&theme_make_date) && $main::header_content_type eq "text/html") {
 	return &theme_make_date(@_);
 	}
 my ($secs, $only, $fmt) = @_;
