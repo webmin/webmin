@@ -826,7 +826,7 @@ else {
 	}
 }
 
-=head2 PrintHeader(charset)
+=head2 PrintHeader(charset, [mime-type])
 
 Outputs the HTTP headers for an HTML page. The optional charset parameter
 can be used to set a character set. Normally this function is not called
@@ -835,6 +835,8 @@ directly, but is rather called by ui_print_header or header.
 =cut
 sub PrintHeader
 {
+my ($cs, $mt) = @_;
+$mt ||= "text/html";
 if ($pragma_no_cache || $gconfig{'pragma_no_cache'}) {
 	print "pragma: no-cache\n";
 	print "Expires: Thu, 1 Jan 1970 00:00:00 GMT\n";
@@ -847,12 +849,13 @@ if (!$gconfig{'no_frame_options'}) {
 if (!$gconfig{'no_content_security_policy'}) {
 	print "Content-Security-Policy: script-src 'self' 'unsafe-inline' 'unsafe-eval'; frame-src 'self'; child-src 'self'\n";
 	}
-if (defined($_[0])) {
-	print "Content-type: text/html; Charset=$_[0]\n\n";
+if (defined($cs)) {
+	print "Content-type: $mt; Charset=$cs\n\n";
 	}
 else {
-	print "Content-type: text/html\n\n";
+	print "Content-type: $mt\n\n";
 	}
+$main::header_content_type = $mt;
 }
 
 =head2 header(title, image, [help], [config], [nomodule], [nowebmin], [rightside], [head-stuff], [body-stuff], [below])
