@@ -144,7 +144,7 @@ elsif ($in{'view'}) {
 			# Just run tail on the file
 			$fullcmd = $tailcmd." ".quotemeta($file);
 			}
-		if ($config{'reverse'}) {
+		if ($config{'reverse'} && $fullcmd) {
 			$fullcmd .= " | tac";
 			}
 		if ($fullcmd) {
