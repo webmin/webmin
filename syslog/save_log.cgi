@@ -108,9 +108,15 @@ elsif ($in{'view'}) {
 			}
 		$eflag = $gconfig{'os_type'} =~ /-linux/ ? "-E" : "";
 		$dashflag = $gconfig{'os_type'} =~ /-linux/ ? "--" : "";
-		$got = &proc::safe_process_exec(
-			"$cat | grep -i -a $eflag $dashflag $filter | $tailcmd",
-			0, 0, STDOUT, undef, 1, 0, undef, 1);
+		if (@cats) {
+			$got = &proc::safe_process_exec(
+				"$cat | grep -i -a $eflag $dashflag $filter ".
+				"| $tailcmd",
+				0, 0, STDOUT, undef, 1, 0, undef, 1);
+			}
+		else {
+			$got = undef;
+			}
 	} else {
 		# Not filtering .. so cat the most recent non-empty file
 		if ($cmd) {
