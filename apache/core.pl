@@ -1183,7 +1183,7 @@ $rv .= "<tr $tb> <td><b>$text{'core_error'}</b></td> <td><b>$text{'core_resp'}</
 $len = @{$_[0]} + 1;
 for($i=0; $i<$len; $i++) {
 	$v = $_[0]->[$i]->{'value'};
-	if ($v =~ /^(\d+)\s+((http|ftp|gopher):\S+)$/)
+	if ($v =~ /^(\d+)\s+((http|https|ftp|gopher):\S+)$/)
 		{ $code = $1; $type = 0; $url = $2; }
 	elsif ($v =~ /^(\d+)\s+(\/.*)$/) { $code = $1; $type = 0; $url = $2; }
 	elsif ($v =~ /^(\d+)\s+"(.*)"$/) { $code = $1; $type = 1; $url = $2; }
