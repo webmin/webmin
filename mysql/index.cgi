@@ -66,6 +66,16 @@ if ($r > 0 && !&working_env_pass()) {
 	exit;
 	}
 
+# Check if my.cnf was found
+if (&is_mysql_local() && $config{'my_cnf'} && !-r $config{'my_cnf'}) {
+	&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
+		&help_search_link("mysql", "man", "doc", "google"));
+	print &text('index_ecnf', "<tt>$config{'my_cnf'}</tt>",
+		    "../config.cgi?$module_name"),"<p>\n";
+	&ui_print_footer("/", $text{'index'});
+	exit;
+	}
+
 if ($r == 0) {
 	# Not running .. need to start it
 	&main_header();
