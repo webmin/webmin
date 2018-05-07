@@ -7,7 +7,6 @@ require './acl-lib.pl';
 our (%in, %text, %config, %access, $base_remote_user);
 &ReadParse();
 &error_setup($in{'joingroup'} ? $text{'udeletes_jerr'} : $text{'udeletes_err'});
-$access{'delete'} || &error($text{'delete_ecannot'});
 
 # Validate inputs
 my @d = split(/\0/, $in{'d'});
@@ -25,6 +24,11 @@ foreach my $user (@d) {
 if ($in{'joingroup'}) {
 	# Add users to a group
 	my $newgroup = &get_group($in{'group'});
+	if ($access{'gassign'} ne '*') {
+		my @gcan = split(/\s+/, $access{'gassign'});
+		&indexof($in{'group'}, @gcan) >= 0 ||
+			&error($text{'save_egroup'});
+		}
 	foreach my $user (@d) {
 		my $uinfo = &get_user($user);
 		next if (!$uinfo);
@@ -77,6 +81,7 @@ if ($in{'joingroup'}) {
 	}
 elsif ($in{'confirm'}) {
 	# Do it
+	$access{'delete'} || &error($text{'delete_ecannot'});
 	foreach my $user (@d) {
 		&delete_user($user);
 		&delete_from_groups($user);
@@ -88,6 +93,7 @@ elsif ($in{'confirm'}) {
 	}
 else {
 	# Ask the user if he is sure
+	$access{'delete'} || &error($text{'delete_ecannot'});
 	&ui_print_header(undef, $text{'udeletes_title'}, "");
 
 	print &ui_confirmation_form(
