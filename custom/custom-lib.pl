@@ -311,6 +311,7 @@ if ($file !~ /^\// && $file !~ /\|\s*$/) {
 open(FILE, $file);
 while(<FILE>) {
 	s/\r|\n//g;
+	next if (/^#/);
 	if (/^"([^"]*)"\s+"([^"]*)"$/) {
 		push(@rv, [ $1, $2 ]);
 		}
