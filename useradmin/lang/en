@@ -281,7 +281,7 @@ gdel_dothers=Delete group in other modules?
 gdel_other=Deleting from other modules ..
 
 many_title=Create Multiple Users
-many_desc=This form allows you to create many users at once either from an uploaded or local text file. Each line is the file specifies one user in the following format&nbsp;:
+many_desc=This form allows you to create many users at once either from an uploaded or local text file. Each line in the file specifies one user in the following format&nbsp;:
 many_desc2=username:passwd:uid:gid:realname:homedir:shell:min:max:warn:inactive:expire
 many_desc1=username:passwd:uid:gid:realname:homedir:shell:class:change:expire
 many_desc0=username:passwd:uid:gid:realname:homedir:shell
