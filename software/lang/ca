@@ -47,7 +47,9 @@ edit_vend=Distribuïdor
 edit_arch=Arquitectura
 edit_inst=Instal·lat
 edit_list=Llista els Fitxers
+edit_listdesc=Mostra tots els fitxers d'aquest paquet i el seu estat actual de verificació.
 edit_uninst=Desinstal·la
+edit_uninstdesc=Elimina aquest paquet del sistema.
 edit_return=al detall dels paquets
 edit_egone=El paquet ja no està instal·lat
 
@@ -421,3 +423,31 @@ pkgsrc_find=Busca pkgng
 pkgsrc_input=Paquet de pkgsrc
 
 __norefs=1
+
+log_IPKG_update=S'ha actualitzat la base de dades IPKG
+log_IPKG_upgrade=S'han actualitzat els paquets IPKG instal·lats
+
+IPKG_name=IPKG
+IPKG_input=Paquet d'IPKG
+IPKG_find=Navega a IPKG...
+IPKG_form=Gestiona els Paquest IPKG
+IPKG_update=Actualitza la Base de dades de Paquets IPKG
+IPKG_upgrade=Actualitza els Paquets IPKG Instal·lats
+IPKG_title_update=S'està actualitzant la Base de dades IPKG
+IPKG_title_upgrade=S'estan actualitzant el Paquets Instal·lats
+IPKG_updatedesc=S'està executant l'ordre $1...
+IPKG_upgradefailed=...ha fallat!
+IPKG_upgradeok=...completat.
+IPKG_install=S'estan instal·lant el(s) paquet(s) amb l'ordre $1...
+IPKG_ok=...instal·lació completa.
+IPKG_failed=...la instal·lació ha fallat!
+IPKG_index_tree=Gestiona els Paquests IPKG
+IPKG_install_package=Instal·la
+IPKG_install_packagedesc=Instal·la aquest paquet al teu sistema
+IPKG_noupgrade=No hi ha res per actualitzar
+IPKG-edit_title=Gestiona el Paquet IPKG
+index_filter=Filtra els Paquets
+index_filterclear=Esborra el filtre
+index_filtered=S'estan mostrant <tt>$1</tt> paquets de <tt>$2</tt>
+IPKG_update_avail=Actualització disponible:
+IPKG_not_installed=El paquet no està instal·lat

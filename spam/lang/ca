@@ -2,6 +2,7 @@ index_title=Filtre de Correu SpamAssassin
 index_ecmd=No s'ha trobat al sistema l'ordre $1 de SpamAssassin. Pot ser que no estigui instal·lada, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_ecmd2=No s'ha trobat al sistema l'ordre $1 de spamassassin. 
 index_econfig=No s'ha trobat al sistema el directori o fitxer de configuració local $1 de SpamAssassin. Pot ser que SpamAssassin no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
+index_unknown=desconegut
 index_edb=No s'ha pogut connectar amb la base de dades de configuracio de SpamAssassin: $1. Comprova la <a href='$2'>configuració del mòdul</a> per assegurar que estàs utilitzant els valors correctes.
 index_version=SpamAssassin versió $1
 index_warn_usermin=No sembla que SpamAssassin estigui configurat al fitxer de configuració $2 de Procmail ni al fitxer global $1, així que cap configuració feta utilitzant aquest mòdul tindrà cap efecte a menys que SpamAssassin s'hagi configurat globalment.
@@ -12,7 +13,6 @@ index_applydesc=Fes clic sobre aquest botó per aplica la configuració actual de 
 index_cpan=Com que SpamAssassin és un mòdul Perl, també el pots instal·lar automàticament utilitzant el mòdul <a href='$2'>Mòduls Perl</a> de Webmin per descarregar $1 de CPAN.
 index_spamassassin=SpamAssassin
 index_ecannot=No tens permís per gestionar el fitxer de configuració $1 de SpamAssassin
-
 white_title=Adreces Permeses i Denegades
 white_desc=Les taules d'aquesta pàgina permeten especificar adreces de correu From: i To: que sempre o mai estan classificades com a spam. Qualsevol altre correu es processarà com a normal per part de les regles de SpamAssassin. Totes les adreces de correu poden contenir escarrassos, com ara *@foo.com o *.foo.com per a coincidir amb dominis sencers.
 white_from=Remitents que no s'han de classificar mai com a spam
@@ -283,6 +283,44 @@ razor_epass=Hi falta la contrasenya
 razor_doing=S'està intentant registrar i configurar Razor...
 razor_done=...fet.
 razor_failed=...ha fallat! Mira el missatge d'error de sobre per saber-ne el motiu.
+
+amavisd_title=Lliurament de Spam Amavisd
+amavisd_desc=Pots fer servir el formulari per canviar la configuració d'Amavisd que determina què passa quan els missatges es classifiquen com a spam.
+amavis_ok=Canvia el Lliurament d'Amavisd
+amavis_tab_config=Configuració d'Amavisd
+amavis_tab_quarantine=Quarantena de Spam
+amavis_warn=Si utilitzes Amavisd per al filtratge de Spam, s'ignoraran algunes opcions.
+amavis_econfig=No s'ha trobat al sistema el fitxer de configuració d'Amavisd $1. Pot ser que Amavisd no estigui instal·lait, o bé que la <a href='$2'>configuració del mòdu</a> sigui incorrecta.
+amavis_hits=Impactes per damunt dels quals un missatge es considera spam.
+amavis_ehit=Els impactes per damunt dels quals un missage es considera spam no és un valor!
+amavis_ekill=Els impactes per damunt dels quals un missatge de Spam es posa en Quarantena no és un valor!
+amavis_edsn=Els impactes per damunt dels quals no s'envia notificació al remitent no és un valor!
+amavis_ecut=Els impactes per damunt dels quals se suprimeix un missatge de Spam no és un valor!
+amavis_eheader=El valor de Modificació de la capçalera Assumpte: no és un valor!
+amavis_esize=El valor de la mida per sobre de la qual no es comprova si el missatge és Spam no és un valor!
+amavis_echar=Cal introduir un sol caràcter per a la capçalera X-Spam-Level:
+amavis_esubject=El valor del text prefixat a l capçalera Assumpte: no és un valor!
+amavis_elocal=El valor per desactivar els orígens d'Internet no és un valor!
+amavis_quarantine_level=Impactes per sobre dels quals un missatge de Spam es posa en Quarantena.
+amavis_dsn_level=Impactes per sobre dels quals no s'envia notificació al remitent.
+amavis_delete_level=Impactes per sobre dels quals s'esborra un missatge de Spam.
+amavis_report_header=Insereix la capçalera X-Spam-Header al missatge
+amavis_level_char=Caràcter utilitzat per mostrar el nivell de Spam a la capçalera X-Spam-Level:
+amavis_rewrite=Modifica la capçalera Assumpte: de spam
+amavis_rsubject=Prefixa text a la capçalera Subject: 
+amavis_size_limit=Mida de missatge en bytes per sobre de la qual no es comprova si el missatge és Spam.
+amavis_local_only=Desactiva els orígens d'Internet per a la comprovació de Spam
+amavis_quarantine_desc=Mostra on posa Amavisd el Spam en Quarantena, mostra també les Estadístiques de Spam si està activada la Quarantena local. Si la Quarantena està desactivada o reenviada a una adreça de correu, no es podem mostrar les Estadístiques de Spam.
+amavis_quarantine_off=La Quarantena de Spam està desactivada al sistema. Canvia <tt>$spam_Quarantine_to</tt> per <tt>spam-quarantine</tt> al fitxer <tt>$1</tt> per activar la Quarantena.
+amavis_nostat=No és possible mostrar les Estadístiques de Spam.
+amavis_spam_admin=L'adreça de correu des d'on on s'envien les notificacions (administrador de Spam)
+amavis_quarantine_mail=El Spam en Quarantena es reenvia a l'adreça de correu
+amavis_quarantine_bsmtp=El Spam està en Quarantena en format BSMTP al sistema de fitxers local com a
+amavis_quarantine_local=El Spam està en Quarantena en format MBOX al sistema de fitxers local com a
+amavis_quarantine_today=Correus Spam en Quarantena avui (24h)
+amavis_quarantine_week=Correus Spam en Quarantena aquesta setmana (7 dies)
+amavis_quarantine_month=Correus Spam en Quarantena aquest mes (30 dies)
+amavis_quarantine_total=Nombre total de correus Spam en Quarantena
 
 procmail_title=Lliurament de Spam Procmail
 procmail_ok=Canvia el Lliurament Procmail

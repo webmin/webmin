@@ -15,3 +15,4 @@ snmp_community=Cadena de la comunitat SNMP,0
 snmp_trap=OID SNMP de les trampes,0
 history_show=Nombre d'estats històrics a mostrar,0
 history_purge=Dies a mantenir els estats històrics,0
+email_interval=Interval mínim entre alertes per monitor,3,Sense límit,5,,minuts

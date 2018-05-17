@@ -552,7 +552,7 @@ log_tables_delete=S'han destruït $1 objectes de la base de dades $2
 log_field_create=S'ha afegit la columna $1 $4 a $2 de la base de dades $3
 log_field_modify=S'ha modificat la columna $1 $4 a $2 de la base de dades $3
 log_field_delete=S'ha suptimit la columna $1 de $2 de la base de dades $3
-log_fields_delete=S'han suprimit $1 camps de $1 a la base de dades $2
+log_fields_delete=S'han suprimit $1 camps de $2 a la base de dades $3
 log_data_create=S'ha afegit la fila a la taula $2 de la base de dades $3
 log_data_modify=S'han modificat $1 files a la taula $2 de la base de dades $3
 log_data_delete=S'han suprimit $1 files de la taula $2 de la base de dades $3
@@ -591,6 +591,7 @@ log_importupload=S'han importat les dades del fitxer pujat
 log_importfile=S'han importat les dades del fitxer $1
 log_set=S'han canviat $1 variables MySQL
 log_root=S'ha canviat la contrasenya d'administració
+log_manual=S'ha editat manualment el fitxer de configuració
 
 backup_title=Abocament de la Base de Dades
 backup_title2=Abocament de Totes les Bases de Dades
@@ -738,6 +739,12 @@ cnf_emyisam_sort_buffer_size=Hi falta la mida del buffer d'ordenació MyISAM o bé
 cnf_emax_connections=Hi falta el nombre màxim de connexions o bé és invàlid
 cnf_restart=Desa-ho i Reinicia MySQL
 cnf_fpt=Un fitxer separat per a cada taula InnoDB
+
+manual_title=Edició de Fitxers de  Configuració
+manual_file=Edita el fitxer de configuració:
+manual_ok=Bé
+manual_efile=Fitxer de configuració invàlid!
+manual_err=No s'ha pogut desar el fitxer de configuració
 
 index_title1=Creació d'Índex
 index_header1=Opcions de l'índex
