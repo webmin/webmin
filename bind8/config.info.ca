@@ -35,6 +35,7 @@ forwardzonefilename_format=Format del nom dels fitxers de zones de reemissió,0
 reversezonefilename_format=Format del nom dels fitxers de zona inversa,0
 file_owner=Propietari dels fitxers de zones (usuari:grup),3,Defecte
 file_perms=Permisos dels fitxers de zones (en octal),3,Defecte
+slave_file_perms=Permisos dels fitxers de zona esclava (en octal),3,Igual que els de dalt
 default_prins=Servidor mestre de les zones mestres per defecte,3,Nom de host del sistema
 default_master=Servidor(s) mestre(s) per defecte de les zones esclaves,0
 updserial_on=Actualitza automàticament els números de sèrie,1,1-Sí,0-No

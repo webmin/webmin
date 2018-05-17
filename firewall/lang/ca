@@ -348,6 +348,7 @@ add_gerr=No s'ha pogut afegir el grup
 add_echeck=El servidor $1 no té el mòdul de Tallafocs Linux
 add_emissing=El servidor $1 no té l'ordre $2 del tallafocs
 add_ok=S'ha afegit $1, amb $2 regles actives del tallafocs.
+add_enone=No has seleccionat cap servidor per afegir!
 
 policy_ecannot=No tens permís per canviar la política per defecte d'aquesta cadena
 

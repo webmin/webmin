@@ -63,6 +63,10 @@ index_bind=BIND
 index_ewrongchroot=Atenció: El directori <i>chroot</i> $2 que Webmin creu que BIND està utilitzant pot ser incorrecte. No s'han trobat els fitxers de zona dels dominis $1.
 index_emissingchroot=Atenció: Webmin creu que BIND no està utilitzant un directori <i>chroot</i>, però aizò pot ser incorrecte. No s'han trobat els fitxers de zona dels dominis $1.
 index_checkconfig=Assegura't que el directori <i>chroot</i> està configurat correctament a la pàgina de <a href='$1'>configuració del mòdul</a>.
+index_eexpired=Atenció: Les zones següents tenen signatures DNSSEC caducades: $1
+index_eexpired_conf=Caldria reactiva la signatura automàtica a la pàgina $1.
+index_eexpired_mod=Fes servi el mòdul $1 per desactivar DNSSEC per a aquest dominis, o bé comprova perquè està fallant la signatura.
+
 master_title=Edició de Zona Mestra
 master_ecannot=No tens permís per editar aquesta zona
 master_egone=La zona $1 no existeix a cap vista

@@ -1,4 +1,5 @@
 index_title=Detector d'Intrusions Fail2Ban
+index_ver=Versió $1
 index_echeck=S'ha produït un error en detectar Fail2Ban en aquest sistema: $1. O bé no està instal·lat, o bé la <a href='$2'>configuració del mòdul</a> és incorrecta.
 index_fail2ban=Fail2Ban
 index_atboot=Inicia en engegar el sistema

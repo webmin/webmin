@@ -18,6 +18,7 @@ index_run=En execució
 index_ecmd=No s'ha trobat l'ordre $1 en gestionar les configuracions d'usuari de Cron. Pot ser que Cron no estigui instal·lat en aquest sistema?
 index_esingle=El fitxer $1 que llista els treballs Cron no existeix. Pot ser que Cron no estigui instal·lat en aquest sistema?
 index_ecrondir=El directori de treballs Cron $1 no existeix.  Pot ser que la configuracio del mòdul sigui incorrecta o bé que Cron no estigui instal·lat?
+index_ecrondir_create=Prova de crear el directori de treballs $1
 index_delete=Suprimeix els Treballs Seleccionats
 index_disable=Desactiva els Treballs Seleccionats
 index_enable=Activa els Treballs Seleccionats
