@@ -528,11 +528,13 @@ else {
 	}
 }
 
-# can_view_process(user)
+# can_view_process(&process)
 # Returns 1 if processes belong to this user can be seen
 sub can_view_process
 {
-local ($user) = @_;
+local ($p) = @_;
+return 0 if ($p->{'pid'} == $$ && $config{'hide_self'});
+local $user = $p->{'user'};
 if ($hide{$user}) {
 	return 0;
 	}

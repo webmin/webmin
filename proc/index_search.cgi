@@ -104,7 +104,7 @@ print &ui_form_end([ [ undef, $text{'search_submit'} ] ]);
 if (%in) {
 	# search for processes
 	@procs = &list_processes();
-	@procs = grep { &can_view_process($_->{'user'}) } @procs;
+	@procs = grep { &can_view_process($_) } @procs;
 	if ($in{mode} == 0) {
 		# search by user
 		@dis = grep { $_->{'user'} eq $in{'user'} } @procs;

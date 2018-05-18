@@ -29,7 +29,7 @@ print &ui_columns_start([
 	], 100);
 
 @procs = sort { $b->{'size'} <=> $a->{'size'} } &list_processes();
-@procs = grep { &can_view_process($_->{'user'}) } @procs;
+@procs = grep { &can_view_process($_) } @procs;
 foreach $pr (@procs) {
 	$p = $pr->{'pid'};
 	local @cols;

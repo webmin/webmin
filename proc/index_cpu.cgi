@@ -32,7 +32,7 @@ if (defined(&get_cpu_info)) {
 print &ui_columns_start([ $text{'pid'}, $text{'owner'},
 			  $text{'cpu'}, $text{'command'} ], 100);
 @procs = sort { $b->{'cpu'} <=> $a->{'cpu'} } &list_processes();
-@procs = grep { &can_view_process($_->{'user'}) } @procs;
+@procs = grep { &can_view_process($_) } @procs;
 foreach $pr (@procs) {
 	$p = $pr->{'pid'};
 	local @cols;

@@ -3,3 +3,4 @@ ps_style=osf
 base_ppid=1
 cut_length=80
 trace_java=0
+hide_self=1

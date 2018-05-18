@@ -6,7 +6,7 @@ require './proc-lib.pl';
 
 &index_links("zone");
 @procs = sort { $b->{'cpu'} <=> $a->{'cpu'} } &list_processes();
-@procs = grep { &can_view_process($_->{'user'}) } @procs;
+@procs = grep { &can_view_process($_) } @procs;
 @zones = &unique(map { $_->{'_zone'} } @procs);
 foreach $z (@zones) {
 	print "<dt><font size=+1>",&text('index_inzone', "<tt>$z</tt>"),"</font><br>\n";

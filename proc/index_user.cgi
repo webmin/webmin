@@ -6,7 +6,7 @@ require './proc-lib.pl';
 
 &index_links("user");
 @procs = sort { $b->{'cpu'} <=> $a->{'cpu'} } &list_processes();
-@procs = grep { &can_view_process($_->{'user'}) } @procs;
+@procs = grep { &can_view_process($_) } @procs;
 @users = &unique(map { $_->{'user'} } @procs);
 foreach $u (@users) {
 	if (&supports_users()) {
