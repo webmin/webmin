@@ -3046,15 +3046,16 @@ foreach my $folder (@$folders) {
 	}
 }
 
-# mail_preview(&mail)
+# mail_preview(&mail, [characters])
 # Returns a short text preview of a message body
 sub mail_preview
 {
-local ($mail) = @_;
+local ($mail, $chars) = @_;
+$chars ||= 100;
 local ($textbody, $htmlbody, $body) = &find_body($mail, 0);
 local $data = $body->{'data'};
 $data =~ s/\r?\n/ /g;
-$data = substr($data, 0, 100);
+$data = substr($data, 0, $chars);
 if ($data =~ /\S/) {
 	return $data;
 	}
