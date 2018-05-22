@@ -194,7 +194,7 @@ mods_grantto=Grant access to
 mods_install=Install Module
 mods_local=From local file
 mods_uploaded=From uploaded file
-mods_ftp=From ftp or http URL
+mods_ftp=From HTTP or FTP URL
 mods_standard=Standard module from <a href='$1' target=_new>www.webmin.com</a>
 mods_standard2=Standard module
 mods_third=Third party module from
