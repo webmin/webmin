@@ -234,11 +234,25 @@ my $tmp_base = $gconfig{'tempdir_'.&get_module_name()} ?
 		  $ENV{'TEMP'} && $ENV{'TEMP'} ne "/tmp" ? $ENV{'TEMP'} :
 		  $ENV{'TMP'} && $ENV{'TMP'} ne "/tmp" ? $ENV{'TMP'} :
 		  -d "c:/temp" ? "c:/temp" : "/tmp/.webmin";
-my $tmp_dir = -d $remote_user_info[7] && !$gconfig{'nohometemp'} ?
-			"$remote_user_info[7]/.tmp" :
-		 @remote_user_info ? $tmp_base."-".$remote_user :
-		 $< != 0 ? $tmp_base."-".getpwuid($<) :
-				     $tmp_base;
+my $tmp_dir;
+if (-d $remote_user_info[7] && !$gconfig{'nohometemp'}) {
+	$tmp_dir = "$remote_user_info[7]/.tmp";
+	}
+elsif (@remote_user_info) {
+	$tmp_dir = $tmp_base."-".$remote_user_info[2]."-".$remote_user;
+	}
+elsif ($< != 0) {
+	my $u = getpwuid($<);
+	if ($u) {
+		$tmp_dir = $tmp_base."-".$<."-".$u;
+		}
+	else {
+		$tmp_dir = $tmp_base."-".$<;
+		}
+	}
+else {
+	$tmp_dir = $tmp_base;
+	}
 return $tmp_dir;
 }
 
