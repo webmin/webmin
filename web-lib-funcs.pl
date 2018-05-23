@@ -3853,8 +3853,16 @@ if (!$get_webmin_version) {
 	open(VERSION, "$root_directory/version") || return 0;
 	($get_webmin_version = <VERSION>) =~ tr/\r|\n//d;
 	close(VERSION);
+	if (length($get_webmin_version) > 6) {
+		$get_webmin_version_ui = substr($get_webmin_version, 0, 5) . "." . substr($get_webmin_version, 5, 5 - 1) . "." . substr($get_webmin_version, 5 * 2 - 1);
+		}
 	}
-return $get_webmin_version;
+if ($main::webmin_script_type eq 'web' && $get_webmin_version_ui) {
+	return $get_webmin_version_ui;
+	}
+else {
+	return $get_webmin_version;
+	}
 }
 
 =head2 get_module_acl([user], [module], [no-rbac], [no-default])
