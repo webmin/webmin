@@ -1801,6 +1801,7 @@ sub hash_session_id
 {
 my ($sid) = @_;
 my $use_md5 = &md5_perl_module();
+$use_md5 || &error("No Perl MD5 hashing module found!");
 if (!$hash_session_id_cache{$sid}) {
         if ($use_md5) {
                 # Take MD5 hash
@@ -1823,6 +1824,7 @@ sub hash_md5_session
 {
 my ($passwd) = @_;
 my $use_md5 = &md5_perl_module();
+$use_md5 || &error("No Perl MD5 hashing module found!");
 
 # Add the password
 my $ctx = eval "new $use_md5";
