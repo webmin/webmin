@@ -49,7 +49,7 @@ if (&foreign_installed("sshd")) {
 $ssh_port ||= 22;
 
 if ($in{'auto'}) {
-	@tables = &get_ip6tables_save();
+	@tables = &get_iptables_save();
 	if ($in{'auto'} == 1) {
 		# Add a single rule to the nat table for masquerading
 		$iface = $in{'iface1'} eq 'other' ? $in{'iface1_other'}
