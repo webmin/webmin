@@ -6,7 +6,7 @@ BEGIN { push(@INC, ".."); };
 use WebminCore;
 
 &init_config();
-do 'webmin-search-lib.pl';
+do "$root_directory/webmin-search-lib.pl";
 &ReadParse();
 
 $prod = &get_product_name();
