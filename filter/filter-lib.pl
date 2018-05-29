@@ -542,7 +542,17 @@ $re =~ s/\\./x/g;
 if ($re =~ /^[a-zA-Z0-9_ ]*$/) {
 	$str =~ s/\\(.)/$1/g;
 	}
-return &mailbox::decode_mimewords($str);
+if (&get_product_name() eq "webmin") {
+	&foreign_require("mailboxes");
+	return &mailboxes::decode_mimewords($str);
+	}
+elsif (&get_product_name() eq "usermin") {
+	&foreign_require("mailbox");
+	return &mailbox::decode_mimewords($str);
+	}
+else {
+	return $str;
+	}
 }
 
 # describe_action(&filter, &folder, [homedir])
