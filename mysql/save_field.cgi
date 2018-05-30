@@ -10,7 +10,13 @@ $access{'edonly'} && &error($text{'dbase_ecannot'});
 
 # Build default clause
 if ($in{'default_def'} == 0) {
-	$default = "default NULL";
+	if ($in{'type'} eq 'timestamp') {
+		# Default is already null
+		$default = "";
+		}
+	else {
+		$default = "default NULL";
+		}
 	}
 elsif ($in{'default_def'} == 2) {
 	$default = "default CURRENT_TIMESTAMP";
@@ -36,7 +42,7 @@ elsif ($in{'new'}) {
 	$in{'size'} = $size = &validate_size();
 	$sql = sprintf "alter table %s add %s %s%s %s %s %s",
 		&quotestr($in{'table'}), &quotestr($in{'field'}), $in{'type'},
-		$size, $in{'null'} ? '' : 'not null',
+		$size, $in{'null'} ? 'null' : 'not null',
 		$default,
 		$in{'ext'};
 	&execute_sql_logged($in{'db'}, $sql);
