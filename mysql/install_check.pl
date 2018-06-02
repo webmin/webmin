@@ -9,7 +9,7 @@ do 'mysql-lib.pl';
 sub is_installed
 {
 return 0 if (!-x $config{'mysqladmin'} || !-x $config{'mysql'});
-return 0 if ($config{'my_cnf'} && !-r $config{'my_cnf'});
+return 0 if (&is_mysql_local() && $config{'my_cnf'} && !-r $config{'my_cnf'});
 return 0 if (&get_mysql_version(\$dummy) <= 0);
 if ($_[0]) {
 	# Check if can login
