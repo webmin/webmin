@@ -140,6 +140,16 @@ else {
 	$rbody = "Failed to open autoreply file $ARGV[0] : $!";
 	}
 
+if ($header{'x-original-to'} && $rheader{'No-Forward-Reply'}) {
+	# Don't autoreply to a forwarded email
+	($ot) = &split_addresses($header{'x-original-to'});
+	if ($ot->[0] =~ /^([^\@\s]+)/ && $1 ne $ARGV[1] &&
+	    $ot->[0] ne $ARGV[1]) {
+		print STDERR "Cancelling autoreply to forwarded message\n";
+		exit 0;
+		}
+	}
+
 # Open the replies tracking DBM, if one was set
 my $rtfile = $rheader{'Reply-Tracking'};
 if ($rtfile) {
