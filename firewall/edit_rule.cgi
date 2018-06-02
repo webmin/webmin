@@ -306,13 +306,15 @@ if ($rule->{'chain'} eq 'OUTPUT') {
 print &ui_table_hr();
 
 # Connection states
+my $sd = &supports_conntrack() ? "ctstate" : "state";
 print &ui_table_row($text{'edit_state'},
 	"<table cellpadding=0 cellspacing=0><tr><td valign=top>".
-	&print_mode("state", $rule->{'state'})."</td>\n".
+	&print_mode($sd, $rule->{$sd})."</td>\n".
 	"<td>&nbsp;".
-	&ui_select("state", [ split(/,/, $rule->{'state'}->[1]) ],
+	&ui_select($sd, [ split(/,/, $rule->{$sd}->[1]) ],
 	   [ map { [ $_, $text{"edit_state_".lc($_)} ] }
-		 ('NEW', 'ESTABLISHED', 'RELATED', 'INVALID', 'UNTRACKED') ], 5, 1).
+		 ('NEW', 'ESTABLISHED', 'RELATED', 'INVALID', 'UNTRACKED',
+		  $sd eq "state" ? ( ) : ('SNAT', 'DNAT')) ], 5, 1).
 	"</td></tr></table>");
 
 # Type of service
@@ -346,7 +348,7 @@ print &ui_table_row($text{'edit_physdevisbridged'},
 print &ui_table_hr();
 
 # Show unknown modules
-@mods = grep { !/^(tcp|udp|icmp${ipvx_icmp}|multiport|mac|limit|owner|state|tos|comment|physdev)$/ } map { $_->[1] } @{$rule->{'m'}};
+@mods = grep { !/^(tcp|udp|icmp${ipvx_icmp}|multiport|mac|limit|owner|state|conntrack|tos|comment|physdev)$/ } map { $_->[1] } @{$rule->{'m'}};
 print &ui_table_row($text{'edit_mods'},
 	&ui_textbox("mods", join(" ", @mods), 60));
 

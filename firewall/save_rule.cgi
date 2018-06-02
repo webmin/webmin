@@ -320,11 +320,12 @@ else {
 		}
 
 	# Save connection states and TOS
-	if (&parse_mode("state", $rule, "state")) {
-		@states = split(/\0/, $in{'state'});
+	my $sd = &supports_conntrack() ? "ctstate" : "state";
+	if (&parse_mode($sd, $rule, $sd)) {
+		@states = split(/\0/, $in{$sd});
 		@states || &error($text{'save_estates'});
-		$rule->{'state'}->[1] = join(",", @states);
-		push(@mods, "state");
+		$rule->{$sd}->[1] = join(",", @states);
+		push(@mods, $sd eq "state" ? "state" : "conntrack");
 		}
 	if (&parse_mode("tos", $rule, "tos")) {
 		$rule->{'tos'}->[1] = $in{'tos'};

@@ -244,7 +244,7 @@ foreach $d ('p', 's', 'd', 'i', 'o', 'f', 'dport',
 	    'sport', 'tcp-flags', 'tcp-option',
 	    'icmp-type', 'icmpv6-type', 'mac-source', 'limit', 'limit-burst',
 	    'ports', 'uid-owner', 'gid-owner',
-	    'pid-owner', 'sid-owner', 'state', 'tos',
+	    'pid-owner', 'sid-owner', 'state', 'ctstate', 'tos',
 	    'dports', 'sports', 'physdev-in', 'physdev-out', 'args') {
 	if ($_[0]->{$d}) {
 
@@ -552,6 +552,15 @@ my $out = &backquote_command(
 return undef if (!$?);
 $out =~ s/Try\s.*more\s+information.*//;
 return $out;
+}
+
+sub supports_conntrack
+{
+if (!defined($supports_conntrack_cache)) {
+	my $out = &backquote_command("uname -r 2>/dev/null");
+	$supports_conntrack_cache = $out =~ /^[3-9]\./ ? 1 : 0;
+	}
+return $supports_conntrack_cache;
 }
 
 1;
