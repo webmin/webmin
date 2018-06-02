@@ -56,30 +56,27 @@ else {
 
 		# Start or stop/apply buttons
 		print &ui_hr();
-		print "<table width=100%>\n";
+		print &ui_buttons_start();
 		$pid = &get_pptpd_pid();
 		if ($access{'apply'}) {
 			if ($pid && kill(0, $pid)) {
-				print "<form action=apply.cgi>\n";
-				print "<tr> <td><input type=submit ",
-				      "value='$text{'index_apply'}'></td>\n";
-				print "<td>$text{'index_applydesc'}</td></tr></form>\n";
+				print &ui_buttons_row("apply.cgi",
+					$text{'index_apply'},
+					$text{'index_applydesc'});
 				if ($access{'stop'}) {
-					print "<form action=stop.cgi>\n";
-					print "<tr> <td><input type=submit ",
-					      "value='$text{'index_stop'}'></td>\n";
-					print "<td>$text{'index_stopdesc'}</td></tr></form>\n";
+					print &ui_buttons_row("stop.cgi",
+						$text{'index_stop'},
+						$text{'index_stopdesc'});
 					}
 				}
 			else {
-				print "<form action=start.cgi>\n";
-				print "<tr> <td><input type=submit ",
-				      "value='$text{'index_start'}'></td>\n";
-				print "<td>$text{'index_startdesc'}</td></tr></form>\n";
+				print &ui_buttons_row("start.cgi",
+					$text{'index_start'},
+					$text{'index_startdesc'});
 				}
 			}
+		print &ui_buttons_end();
 		}
-		print "</table>\n";
 	}
 
 &ui_print_footer("/", $text{'index'});
