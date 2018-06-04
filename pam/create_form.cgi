@@ -6,7 +6,7 @@ require './pam-lib.pl';
 &ui_print_header(undef, $text{'create_title'}, "");
 
 print "<form action=create_pam.cgi>\n";
-print "<table border>\n";
+print "<table border style=\"width: 100%\">\n";
 print "<tr $tb> <td><b>$text{'create_header'}</b></td> </tr>\n";
 print "<tr $cb> <td><table width=100%>\n";
 
@@ -26,4 +26,3 @@ print "</table></td></tr></table>\n";
 print "<input type=submit value='$text{'create'}'></form>\n";
 
 &ui_print_footer("", $text{'index_return'});
-
