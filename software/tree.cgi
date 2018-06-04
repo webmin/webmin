@@ -81,7 +81,7 @@ if ($in{'filter'}) {
 	print &ui_link("tree.cgi", $text{'index_filterclear'});
 	print "&nbsp;&nbsp;", &text('index_filtered',$n-$filter,$n+1), "\n";
 }
-print "<table width=\"95%\">\n";
+print "<table width=\"100%\">\n";
 &traverse("", 0);
 print "</table>\n";
 print &ui_form_start("tree.cgi");
@@ -104,7 +104,7 @@ sub traverse
 local($s, $act, $i);
 
 # Show the icon and class name
-print "<tr style=\"border-top: 1px solid lightgrey\"> <td>", $spacer x $_[1];
+print "<tr style=\"border-top: 1px solid #aaaaaa33\"> <td>", $spacer x $_[1];
 if ($_[0]) {
 	print "<a name=\"$_[0]\"></a>\n";
 	$act = $heiropen{$_[0]} ? "close" : "open";
@@ -137,4 +137,3 @@ if ($heiropen{$_[0]}) {
 		}
 	}
 }
-
