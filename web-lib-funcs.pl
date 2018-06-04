@@ -8638,7 +8638,7 @@ else {
 	}
 my $sz = sprintf("%.2f", ($_[0]*1.0 / $units));
 $sz =~ s/\.00$//;
-return $sz." ".$uname;
+return '<span data-filesize-bytes="' . $_[0] . '">' . ($sz . " " . $uname) . '</span>';
 }
 
 =head2 get_perl_path
