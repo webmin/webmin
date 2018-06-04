@@ -29,7 +29,7 @@
 -- Version 0.9.5 --
  - Made top level menu items translatable.
  - Added https://github.com/Real-Gecko/filemin/pull/29
-   Selected rows also highlight on hover + color tweaks, by https://github.com/qooob
+   Selected rows also highlight on hover + color tweaks, by https://github.com/rostovtsev
  - Some code cleanup, got rid of Regexp::Common and URI dependencies.
    Thanks to Jamie Cameron.
  - Added error message if file saving fails.
@@ -64,7 +64,7 @@
 
   #21 fixed:
  - Added Codemirror to module for syntax highlighting, thanks to https://github.com/pabloko for solution.
- - Under Authentic 14.01 now works too, thanks to https://github.com/qooob for fix.
+ - Under Authentic 14.01 now works too, thanks to https://github.com/rostovtsev for fix.
 
   #24 fixed:
  - Added zip compression method, user now can select between 'zip' and 'tar' compression methods.
@@ -133,7 +133,7 @@
 -- Version 0.9.1 --
 #8 fixed:
  - Not sure if it was an issue, cause I was unable to reproduce "User without $HOME" scenario. However added some code to handle this, just in case.
- 
+
 #7 fixed:
  - Removed Archive::* dependencies, all archive extraction procedures now go through system calls. *.tar.gz, *.tar.xz, *.tar.bz2, *.zip archive types tested.
 
@@ -169,7 +169,7 @@ Mielstone reached:
 
 #1 fixed:
  - After long discussion upper-left toolbar finally looks good in modern interface
- - Thanks to https://github.com/Goeny for his brilliant solution and https://github.com/qooob for debugging
+ - Thanks to https://github.com/Goeny for his brilliant solution and https://github.com/rostovtsev for debugging
 
 #3 fixed:
  - Some misspellings fixed
