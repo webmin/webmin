@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #############################################################################
 # Update webmin/usermin to the latest develop version  from GitHub repo
-# inspired by authentic-theme/theme-update.sh script, thanks qooob
+# inspired by authentic-theme/theme-update.sh script, thanks @rostovtsev
 #
 VERS="1.6.4, 2018-03-27"
 #
@@ -64,8 +64,8 @@ CURL="curl"
 BRANCH=""
 
 # temporary locations for git clone
-WTEMP="${DIR}/.~files/webadmin" 
-UTEMP="${DIR}/.~files/useradmin" 
+WTEMP="${DIR}/.~files/webadmin"
+UTEMP="${DIR}/.~files/useradmin"
 TEMP=$WTEMP
 [[ "$PROD" == "usermin" ]] && TEMP=$UTEMP
 LTEMP="${DIR}/.~lang"
@@ -77,7 +77,7 @@ if [[ "$1" == "-h" || "$1" == "--help" ]] ; then
         echo -e "${NC}${ORANGE}This is the webmin develop update script, ${VERS}${NC}"
         echo "Usage:  ${IAM} [-force] [-repo:username/xxxmin] [-branch:xxx] [-release[:number]] [-file file|dir/ ...]"
     else
-        cat <<EOF | more 
+        cat <<EOF | more
 
 ${IAM}                                           ${VERS}
 
@@ -85,7 +85,7 @@ Name:
     update-from-repo.sh - webmin script to pull new versions or files from repo
 
 Usage:
-    ${IAM} 
+    ${IAM}
         [-force] [-repo:username/xxxmin] [-branch:xxx] [-release[:number]]
         [-file file|dir/ ...]
         [-h|--help]
@@ -120,8 +120,8 @@ Examples:
     ${IAM} -force   OR   ${IAM} -yes
         same but without asking,
 
-    ${IAM} -force -repo:qooob/webmin
-        update from qooobs repository without asking
+    ${IAM} -force -repo:rostovtsev/webmin
+        update from rostovtsev's repository without asking
 
     ${IAM} -file module/module.info
         pull module.info for given module
@@ -135,8 +135,8 @@ Examples:
     ${IAM} -file module/lang/
         pull all files in lang/ dir of a module
 
-    ${IAM} -fore -repo:qooob/webmin -file */lang/
-        pull lang files for all existing */lang/ dirs from qooobs
+    ${IAM} -fore -repo:rostovtsev/webmin -file */lang/
+        pull lang files for all existing */lang/ dirs from rostovtsev
         repository without asking
 
 Exit codes:
@@ -163,7 +163,7 @@ if [[ ! -r "${DIR}/setup.sh" || ! -r "${DIR}/miniserv.pl" || ! -d "${DIR}/authen
 fi
 
 
-# need to be root 
+# need to be root
 if [[ $EUID -ne 0 ]]; then
     echo -e "${RED}Error: This command has to be run under the root user. aborting ...${NC}"
     exit 2
@@ -200,7 +200,7 @@ fi
 
 # check if PROD is in ETC and DIR
 if [[ "${ETC}" != *"${RPOD}"* || "${DIR}" != *"${RPOD}"* ]] ; then
-    echo -e "${RED}Warning:${ORANGE} Config or Install path does not contain \"${PROD}\"!${NC} consider to ${ORANGE}NOT${NC} update!\n"    
+    echo -e "${RED}Warning:${ORANGE} Config or Install path does not contain \"${PROD}\"!${NC} consider to ${ORANGE}NOT${NC} update!\n"
     WARNINGS="yes"
 fi
 
@@ -314,7 +314,7 @@ fi
     # start processing pulled source
     # add latest changeset date to original version, works with git 1.7+
     if [[ "${RRELEASE}" == "" ]] ; then
-        version="`head -c -1 ${TEMP}/version``cd ${TEMP}; date -d @$(${GIT} log -n1 --format='%at') '+%m%d%H%M'`" 
+        version="`head -c -1 ${TEMP}/version``cd ${TEMP}; date -d @$(${GIT} log -n1 --format='%at') '+%m%d%H%M'`"
     else
         version="${RRELEASE}"
     fi
@@ -324,7 +324,7 @@ fi
     # start update
     echo -en "${CYAN}Start update for${NC} ${PROD^} ${version}..."
     # create missing dirs, simulate authentic present
-    mkdir ${TEMP}/tarballs ${TEMP}/authentic-theme 
+    mkdir ${TEMP}/tarballs ${TEMP}/authentic-theme
     cp authentic-theme/LICENSE ${TEMP}/authentic-theme
     # put dummy clear and tar in PATH
     echo -e "#!/bin/sh\necho" > ${TEMP}/clear; chmod +x ${TEMP}/clear
@@ -342,7 +342,7 @@ fi
 
     # check for additional standard modules not in default dist
     for module in `ls */module.info`
-    do 
+    do
         if [[ -f ${TEMP}/${module} && ! -f  "${TARBALL}/$module" ]]; then
           module=`dirname $module`
           echo -e "${CYAN}Adding nonstandard${NC} ${ORANGE}$module${NC} to ${PROD^}"
@@ -447,12 +447,12 @@ fi
 
   # remove temporary files
   echo -e "\n${CYAN}Clean up temporary files ...${NC}"
-  rm -rf .~files 
+  rm -rf .~files
   # fix permissions, should be done by makedist.pl?
   echo -e "${CYAN}Make scripts executable ...${NC}"
   chmod -R +X ${DIR}
   chmod +x *.pl *.cgi *.pm *.sh */*.pl */*.cgi */*.pm */*.sh
-      
+
   # thats all folks
   [[ "${WARNINGS}" != "" ]] && WARNINGS="(with warnings)"
   echo -e "\n${CYAN}Updating ${PROD^} ${ORANGE}${FOUND}${NC} to Version `cat version`, done ${RED}${WARNINGS}${NC}"

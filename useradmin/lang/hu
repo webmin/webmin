@@ -248,7 +248,7 @@ ui_hnm0=Real hostname
 ui_hnm1=Hostname from URL
 ui_hnm2=Domain name from URL
 ui_hnm3=Other name..
-ui_tabs=Categorise modules?
+ui_tabs=Categorize modules?
 
 upgrade_title=Upgrade Usermin
 upgrade_title2=Install Usermin

@@ -172,22 +172,22 @@ elsif ($n) {
 			else {
 				push(@cols, &html_escape($pc_sblocks)."%");
 				}
-			}local $ublocks = $group{$i,'ublocks'}; 
+			}local $ublocks = $group{$i,'ublocks'};
 		if ($bsize) {
 			$ublocks = &nice_size($ublocks*$bsize);
 			}
 		if ($group{$i,'hblocks'} &&
 		    $group{$i,'ublocks'} > $group{$i,'hblocks'}) {
 			push(@cols, "<font color=#ff0000>".
-				&html_escape($ublocks)."</font>");
+				$ublocks."</font>");
 			}
 		elsif ($group{$i,'sblocks'} &&
 		       $group{$i,'ublocks'} > $group{$i,'sblocks'}) {
 			push(@cols, "<font color=#ff7700>".
-				&html_escape($ublocks)."</font>");
+				$ublocks."</font>");
 			}
 		else {
-			push(@cols, &html_escape($ublocks));
+			push(@cols, $ublocks);
 			}
 		push(@cols, &nice_limit($group{$i,'sblocks'}, $bsize));
 		push(@cols, &nice_limit($group{$i,'hblocks'}, $bsize));
@@ -308,4 +308,3 @@ if ($access{'email'} && &foreign_check("cron") &&
 print &ui_tabs_end(1);
 
 &ui_print_footer("", $text{'lgroups_return'});
-

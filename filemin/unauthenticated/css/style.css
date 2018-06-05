@@ -136,7 +136,7 @@ select, input[type="button"][onclick], button.btn-default.file_chooser_button, b
 a:hover {
  cursor:pointer;
 }
-/* by https://github.com/qooob */
+/* by https://github.com/rostovtsev */
 #list_form tbody tr.checked:hover,
 #list_form tbody tr:hover {
     background: #d3e4f4 !important;
