@@ -444,7 +444,7 @@ newcsr_ok2=This CSR must be sent to a signing authority, who will return a signe
 
 startpage_title=Index Page Options
 startpage_intro2=This page allows you to control the appearance of the main Webmin menu. Some options may only be effective when using the default theme.
-startpage_tabs=Categorise modules?
+startpage_tabs=Categorize modules?
 startpage_nocol=Number of columns
 startpage_alt=Use alternative header?
 startpage_ecols='$1' is not a valid number of columns
