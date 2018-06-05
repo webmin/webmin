@@ -8611,6 +8611,7 @@ smallest units to use - so you could pass 1024*1024 to never show bytes or kB.
 sub nice_size
 {
 my ($units, $uname);
+&load_theme_library();
 if (defined(&theme_nice_size) &&
     $main::header_content_type eq "text/html" &&
     $main::webmin_script_type eq "web") {
