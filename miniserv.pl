@@ -4799,6 +4799,9 @@ if ($config{'userdb'}) {
 		$user->{'nochange'} = $attrs{'nochange'};
 		$user->{'temppass'} = $attrs{'temppass'};
 		$user->{'preroot'} = $attrs{'theme'};
+		$user->{'twofactor_provider'} = $attrs{'twofactor_provider'};
+		$user->{'twofactor_id'} = $attrs{'twofactor_id'};
+		$user->{'twofactor_apikey'} = $attrs{'twofactor_apikey'};
 		}
 	&disconnect_userdb($config{'userdb'}, $dbh);
 	$get_user_details_cache{$user->{'name'}} = $user;
