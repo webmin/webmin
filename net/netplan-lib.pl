@@ -69,6 +69,72 @@ foreach my $f (glob("$netplan_dir/*.yaml")) {
 return @rv;
 }
 
+# can_edit(what)
+# Can some boot-time interface parameter be edited?
+sub can_edit
+{
+return $_[0];
+}
+
+# valid_boot_address(address)
+# Is some address valid for a bootup interface
+sub valid_boot_address
+{
+return &check_ipaddress_any($_[0]);
+}
+
+# get_hostname()
+sub get_hostname
+{
+local $hn = &read_file_contents("/etc/hostname");
+$hn =~ s/\r|\n//g;
+if ($hn) {
+	return $hn;
+	}
+return &get_system_hostname(1);
+}
+
+# save_hostname(name)
+sub save_hostname
+{
+local (%conf, $f);
+&system_logged("hostname $_[0] >/dev/null 2>&1");
+foreach $f ("/etc/hostname", "/etc/HOSTNAME", "/etc/mailname") {
+	if (-r $f) {
+		&open_lock_tempfile(HOST, ">$f");
+		&print_tempfile(HOST, $_[0],"\n");
+		&close_tempfile(HOST);
+		}
+	}
+undef(@main::get_system_hostname);      # clear cache
+}
+
+# get_domainname()
+sub get_domainname
+{
+local $d;
+&execute_command("domainname", undef, \$d, undef);
+chop($d);
+return $d;
+}
+
+# save_domainname(domain)
+sub save_domainname
+{
+local %conf;
+&execute_command("domainname ".quotemeta($_[0]));
+}
+
+sub routing_config_files
+{
+return ( $netplan_dir, $sysctl_config );
+}
+
+sub network_config_files
+{
+return ( "/etc/hostname", "/etc/HOSTNAME", "/etc/mailname" );
+}
+
 # read_yaml_file(file)
 # Converts a YAML file into a nested hash ref
 sub read_yaml_file
