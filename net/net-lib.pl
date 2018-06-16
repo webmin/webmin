@@ -7,6 +7,7 @@ use WebminCore;
 %access = &get_module_acl();
 $access{'ipnodes'} = $access{'hosts'};
 
+# XXX detect this automatically rather than using a bunch of links?
 if (-r "$module_root_directory/$gconfig{'os_type'}-$gconfig{'os_version'}-lib.pl") {
 	do "$gconfig{'os_type'}-$gconfig{'os_version'}-lib.pl";
 	}
@@ -19,6 +20,10 @@ elsif ($gconfig{'os_type'} eq 'slackware-linux' &&
        $gconfig{'os_version'} >= 9.1) {
 	# Special case for Slackware 9.1+
 	do "$gconfig{'os_type'}-9.1-ALL-lib.pl";
+	}
+elsif ($gconfig{'os_type'} eq 'debian-linux' && -d "/etc/netplan") {
+	# Special case for newer Ubuntu versions
+	do "netplan-lib.pl";
 	}
 else {
 	do "$gconfig{'os_type'}-lib.pl";
