@@ -4,13 +4,16 @@ $netplan_dir = "/etc/netplan";
 
 do 'linux-lib.pl';
 
-sub boot_interface
+sub boot_interfaces
 {
 my @rv;
 foreach my $f (glob("$netplan_dir/*.yaml")) {
 	my $yaml = &read_yaml_file($f);
-	next if (!$yaml || !$yaml->{'network'});
-	my $ens = $yaml->{'network'}->{'ethernets'};
+	next if (!$yaml || !@$yaml);
+	my ($network) = grep { $_->{'name'} eq 'network' } @$yaml;
+	next if (!$network);
+	my ($ens) = grep { $_->{'name'} eq 'ethernets' }
+			 @{$network->{'members'}};
 	next if (!$ens);
 	foreach my $e (@{$ens->{'members'}}) {
 		my $cfg = { 'name' => $e->{'name'},
@@ -67,6 +70,42 @@ foreach my $f (glob("$netplan_dir/*.yaml")) {
 		}
 	}
 return @rv;
+}
+
+sub supports_bonding
+{
+return 0;	# XXX fix later
+}
+
+sub supports_vlans
+{
+return 0;	# XXX fix later
+}
+
+sub boot_iface_hardware
+{
+return $_[0] =~ /^(eth|em)/;
+}
+
+# supports_address6([&iface])
+# Returns 1 if managing IPv6 interfaces is supported
+sub supports_address6
+{
+local ($iface) = @_;
+return !$iface || $iface->{'virtual'} eq '';
+}
+
+# Returns 1, as boot-time interfaces on Debian can exist without an IP (such as
+# for bridging)
+sub supports_no_address
+{
+return 1;
+}
+
+# Bridge interfaces can be created on debian
+sub supports_bridges
+{
+return 0;	# XXX fix later
 }
 
 # can_edit(what)
@@ -148,10 +187,10 @@ my $parent = { 'members' => $rv,
 foreach my $origl (@$lref) {
 	my $l = $origl;
 	$l =~ s/#.*$//;
-	if ($l =~ /^(\s*)(\S+):\s*(.*)/) {
+	if ($l =~ /^(\s*)(\S+):\s*(\S.*)/) {
 		# Value line
 		my $i = length($1);
-		my $dir = { 'indent' => $1,
+		my $dir = { 'indent' => length($1),
 			    'name' => $2,
 			    'value' => $3,
 			  };
@@ -163,7 +202,7 @@ foreach my $origl (@$lref) {
 	elsif ($l =~ /^(\s*)(\S+):\s*$/) {
 		# Section header line
 		my $i = length($1);
-		my $dir = { 'indent' => $1,
+		my $dir = { 'indent' => length($1),
 			    'name' => $2,
 			    'members' => [ ],
 			  };
