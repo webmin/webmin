@@ -18,6 +18,7 @@ foreach my $f (glob("$netplan_dir/*.yaml")) {
 	foreach my $e (@{$ens->{'members'}}) {
 		my $cfg = { 'name' => $e->{'name'},
 			    'fullname' => $e->{'name'},
+			    'file' => $f,
 			    'up' => 1 };
 		my ($dhcp) = grep { $_->{'name'} eq 'dhcp4' }
 				  @{$e->{'members'}};
@@ -62,6 +63,22 @@ foreach my $f (glob("$netplan_dir/*.yaml")) {
 			$cfg->{'gateway6'} = $gateway6->{'value'};
 			}
 		push(@rv, $cfg);
+
+		# Nameservers (which are used to generate resolv.conf)
+		my ($nameservers) = grep { $_->{'name'} eq 'nameservers' }
+                                         @{$e->{'members'}};
+		if ($nameservers) {
+			my ($nsa) = grep { $_->{'name'} eq 'addresses' }
+					 @{$nameservers->{'members'}};
+			my ($search) = grep { $_->{'name'} eq 'search' }
+					 @{$nameservers->{'members'}};
+			if ($nsa) {
+				$cfg->{'nameserver'} = $nsa->{'value'};
+				}
+			if ($search) {
+				$cfg->{'search'} = $search->{'value'};
+				}
+			}
 
 		# Add IPv4 alias interfaces
 		foreach my $aa (@addrs) {

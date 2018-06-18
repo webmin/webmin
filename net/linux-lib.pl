@@ -719,6 +719,7 @@ sub get_dns_config
 {
 local $dns = { };
 local $rc;
+local $dnsfile;
 if ($use_suse_dns && ($rc = &parse_rc_config()) && $rc->{'NAMESERVER'}) {
 	# Special case - get DNS settings from SuSE config
 	local @ns = split(/\s+/, $rc->{'NAMESERVER'}->{'value'});
@@ -727,8 +728,20 @@ if ($use_suse_dns && ($rc = &parse_rc_config()) && $rc->{'NAMESERVER'}) {
 	$dns->{'domain'} = [ split(/\s+/, $src->{'value'}) ] if ($src);
 	$dnsfile = $rc_config;
 	}
-elsif ($gconfig{'os_type'} eq 'debian-linux' &&
-       -l "/etc/resolv.conf") {
+elsif ($gconfig{'os_type'} eq 'debian-linux' && -l "/etc/resolv.conf" &&
+       $netplan_dir) {
+	# On Ubuntu 18+, /etc/resolv.conf is auto-generated from netplan config
+	my @boot = &boot_interfaces();
+	foreach my $b (@boot) {
+		if ($b->{'nameserver'}) {
+			$dns->{'nameserver'} = $b->{'nameserver'};
+			$dns->{'domain'} = $b->{'search'};
+			$dnsfile = $b->{'file'};
+			last;
+			}
+		}
+	}
+elsif ($gconfig{'os_type'} eq 'debian-linux' && -l "/etc/resolv.conf") {
 	# On Ubuntu 12+, /etc/resolv.conf is auto-generated from network
 	# interface config
 	my @ifaces = &get_interface_defs();
