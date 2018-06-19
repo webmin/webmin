@@ -58,7 +58,7 @@ else {
 			$pv->{'vg'} = $1;
 			$pv->{'vg'} =~ s/\s+\(.*\)//;
 			}
-		elsif (/PV\s+Size\s+(\S+)\s+(\S+)/i) {
+		elsif (/PV\s+Size\s+<?(\S+)\s+(\S+)/i) {
 			$pv->{'size'} = &mult_units($1, $2);
 			}
 		elsif (/PE\s+Size\s+\(\S+\)\s+(\S+)/i) {
@@ -187,7 +187,7 @@ else {
 			$vg = { 'name' => $1 };
 			push(@rv, $vg);
 			}
-		elsif (/VG\s+Size\s+(\S+)\s+(\S+)/i) {
+		elsif (/VG\s+Size\s+<?(\S+)\s+(\S+)/i) {
 			$vg->{'size'} = &mult_units($1, $2);
 			}
 		elsif (/PE\s+Size\s+(\S+)\s+(\S+)/i) {
@@ -318,7 +318,7 @@ else {
 		elsif (/VG\s+Name\s+(.*)/) {
 			$lv->{'vg'} = $1;
 			}
-		elsif (/LV\s+Size\s+(\S+)\s+(\S+)/i) {
+		elsif (/LV\s+Size\s+<?(\S+)\s+(\S+)/i) {
 			$lv->{'size'} = &mult_units($1, $2);
 			}
 		elsif (/Current\s+LE\s+(\d+)/ && $vg) {
