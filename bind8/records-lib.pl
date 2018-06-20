@@ -17,6 +17,13 @@ sub read_zone_file
 my ($file, $line, @tok, @lnum, @coms,
       @rv, $origin, @inc, @oset, $comment);
 $origin = $_[1];
+if (&has_ndc() == 2) {
+	# Flush the zone file
+	&backquote_command(
+		$config{'rndc_cmd'}.
+		($config{'rndc_conf'} ? " -c $config{'rndc_conf'}" : "").
+		" sync ".quotemeta($origin)." 2>&1 </dev/null");
+	}
 if ($origin ne ".") {
 	# Remove trailing dots in origin name, as they are added automatically
 	# in the code below.
