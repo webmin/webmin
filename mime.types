@@ -388,6 +388,7 @@ multipart/related
 multipart/report
 multipart/signed
 multipart/voice-message
+text/asp			asp aspx
 text/calendar
 text/css			css # Cascading style sheel
 text/directory
