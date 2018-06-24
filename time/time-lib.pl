@@ -95,7 +95,7 @@ return undef;
 sub sync_time_cron
 {
 my $err = &sync_time($config{'timeserver'}, $config{'timeserver_hardware'});
-print STDERR $err;
+print STDERR $err if ($err);
 }
 
 sub has_timezone
