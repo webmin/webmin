@@ -95,7 +95,64 @@ return @rv;
 # Create or update a boot-time interface
 sub save_interface
 {
-my ($cfg) = @_;
+my ($iface) = @_;
+if ($iface->{'alias'}) {
+	# XXX alias interface
+	}
+else {
+	# Build interface config lines
+	my $id = " " x 8;
+	my @lines;
+	push(@lines, $id.$iface->{'fullname'});
+	my @addrs;
+	if ($iface->{'dhcp'}) {
+		push(@lines, $id."    "."dhp4: true");
+		}
+	else {
+		push(@addrs, $iface->{'address'}."/".
+			     &mask_to_prefix($iface->{'netmask'}));
+		}
+	for(my $i=0; $i<@{$iface->{'address6'}}; $i++) {
+		push(@addrs, $iface->{'address6'}->[$i]."/".
+			     $iface->{'netmask6'}->[$i]);
+		}
+	if (@addrs) {
+		push(@lines, $id."    "."addresses: [".join(",", @addrs)."]");
+		}
+	if ($iface->{'gateway'}) {
+		push(@lines, $id."    "."gateway4: ".$iface->{'gateway'});
+		}
+	if ($iface->{'gateway6'}) {
+		push(@lines, $id."    "."gateway6: ".$iface->{'gateway6'});
+		}
+	if ($iface->{'nameserver'}) {
+		push(@lines, $id."    "."nameservers:");
+		push(@lines, $id."        "."addresses: [".
+			     join(",", @{$iface->{'nameserver'}})."]");
+		if ($iface->{'search'}) {
+			push(@lines, $id."        "."search: ".
+				     $iface->{'search'});
+			}
+		}
+
+	if ($iface->{'file'}) {
+		# Replacing an existing interface
+		my $lref = &read_file_lines($iface->{'file'});
+		splice(@$lref, $iface->{'line'},
+		       $iface->{'eline'} - $iface->{'line'} + 1, @lines);
+		&flush_file_lines($iface->{'file'});
+		}
+	else {
+		# Adding a new one (to it's own file)
+		$iface->{'file'} = $netplan_dir."/".$iface->{'name'}.".yaml";
+		@lines = ( "network:",
+			   "    ethernets:",
+			   @lines );
+		my $lref = &read_file_lines($iface->{'file'});
+		push(@$lref, @lines);
+		&flush_file_lines($iface->{'file'});
+		}
+	}
 }
 
 # delete_interface(&details)
@@ -107,8 +164,6 @@ my $lref = &read_file_lines($cfg->{'file'});
 splice(@$lref, $cfg->{'line'}, $cfg->{'eline'} - $cfg->{'line'} + 1);
 &flush_file_lines($cfg->{'file'});
 }
-
-
 
 sub supports_bonding
 {
