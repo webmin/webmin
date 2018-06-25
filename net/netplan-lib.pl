@@ -91,13 +91,22 @@ foreach my $f (glob("$netplan_dir/*.yaml")) {
 return @rv;
 }
 
-# save_interface(&details)
+# save_interface(&details, [&all-interfaces])
 # Create or update a boot-time interface
 sub save_interface
 {
-my ($iface) = @_;
-if ($iface->{'alias'}) {
-	# XXX alias interface
+my ($iface, $boot) = @_;
+$boot ||= [ &boot_interfaces() ];
+if ($iface->{'virtual'} ne '') {
+	# Find the parent config entry
+	my ($parent) = grep { $_->{'fullname'} eq $iface->{'name'} }
+			    &boot_interfaces();
+	$parent || &error("No interface named $iface->{'name'} exists");
+	if (!$iface->{'file'}) {
+		# Add to complete interface list
+		push(@$boot, $iface);
+		}
+	&save_interface($parent, $boot);
 	}
 else {
 	# Build interface config lines
@@ -115,6 +124,12 @@ else {
 	for(my $i=0; $i<@{$iface->{'address6'}}; $i++) {
 		push(@addrs, $iface->{'address6'}->[$i]."/".
 			     $iface->{'netmask6'}->[$i]);
+		}
+	foreach my $a (@$boot) {
+		if ($a->{'virtual'} ne '' && $a->{'name'} eq $iface->{'name'}) {
+			push(@addrs, $a->{'address'}."/".
+				     &mask_to_prefix($a->{'netmask'}));
+			}
 		}
 	if (@addrs) {
 		push(@lines, $id."    "."addresses: [".join(",", @addrs)."]");
