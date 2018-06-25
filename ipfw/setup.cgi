@@ -158,7 +158,7 @@ if (&get_ipfw_format() == 1) {
 &copy_to_cluster();
 
 if ($in{'atboot'}) {
-	&create_firewall_init();
+	&enable_boot();
 	}
 
 &webmin_log("setup");
