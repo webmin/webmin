@@ -19,6 +19,8 @@ foreach my $f (glob("$netplan_dir/*.yaml")) {
 		my $cfg = { 'name' => $e->{'name'},
 			    'fullname' => $e->{'name'},
 			    'file' => $f,
+			    'line' => $e->{'line'},
+			    'eline' => $e->{'eline'},
 			    'up' => 1 };
 		my ($dhcp) = grep { $_->{'name'} eq 'dhcp4' }
 				  @{$e->{'members'}};
@@ -88,6 +90,25 @@ foreach my $f (glob("$netplan_dir/*.yaml")) {
 	}
 return @rv;
 }
+
+# save_interface(&details)
+# Create or update a boot-time interface
+sub save_interface
+{
+my ($cfg) = @_;
+}
+
+# delete_interface(&details)
+# Remove a boot-time interface
+sub delete_interface
+{
+my ($cfg) = @_;
+my $lref = &read_file_lines($cfg->{'file'});
+splice(@$lref, $cfg->{'line'}, $cfg->{'eline'} - $cfg->{'line'} + 1);
+&flush_file_lines($cfg->{'file'});
+}
+
+
 
 sub supports_bonding
 {
@@ -191,6 +212,13 @@ sub network_config_files
 return ( "/etc/hostname", "/etc/HOSTNAME", "/etc/mailname" );
 }
 
+# apply_network()
+# Apply the interface and routing settings
+sub apply_network
+{
+&system_logged("(cd / ; netplan apply) >/dev/null 2>&1");
+}
+
 # read_yaml_file(file)
 # Converts a YAML file into a nested hash ref
 sub read_yaml_file
@@ -210,11 +238,15 @@ foreach my $origl (@$lref) {
 		my $dir = { 'indent' => length($1),
 			    'name' => $2,
 			    'value' => $3,
+			    'line' => $lnum,
+			    'eline' => $lnum,
+			    'parent' => $parent,
 			  };
 		if ($dir->{'value'} =~ /^\[(.*)\]$/) {
 			$dir->{'value'} = [ split(/,/, $1) ];
 			}
 		push(@{$parent->{'members'}}, $dir);
+		&set_parent_elines($parent, $lnum);
 		}
 	elsif ($l =~ /^(\s*)(\S+):\s*$/) {
 		# Section header line
@@ -222,11 +254,14 @@ foreach my $origl (@$lref) {
 		my $dir = { 'indent' => length($1),
 			    'name' => $2,
 			    'members' => [ ],
+			    'line' => $lnum,
+			    'eline' => $lnum,
 			  };
 		if ($i > $parent->{'indent'}) {
 			# Start of a sub-section inside the current directive
 			push(@{$parent->{'members'}}, $dir);
 			$dir->{'parent'} = $parent;
+			&set_parent_elines($parent, $lnum);
 			$parent = $dir;
 			}
 		else {
@@ -236,8 +271,17 @@ foreach my $origl (@$lref) {
 				}
 			}
 		}
+	$lnum++;
 	}
 return $rv;
+}
+
+# set_parent_elines(&conf, eline)
+sub set_parent_elines
+{
+my ($c, $eline) = @_;
+$c->{'eline'} = $eline;
+&set_parent_elines($c->{'parent'}) if ($c->{'parent'});
 }
 
 # split_addr_netmask(addr-string)
