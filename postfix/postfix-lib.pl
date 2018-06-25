@@ -15,9 +15,16 @@ do 'aliases-lib.pl';
 $config{'perpage'} ||= 20;      # a value of 0 can cause problems
 
 # Get the saved version number
-if (&open_readfile(VERSION, "$module_config_directory/version")) {
+$version_file = "$module_config_directory/version";
+if (&open_readfile(VERSION, $version_file)) {
 	chop($postfix_version = <VERSION>);
 	close(VERSION);
+	my @vst = stat($version_file);
+	my @cst = stat(&has_command($config{'postfix_config_command'}));
+	if (@cst && $cst[9] > $vst[9]) {
+		# Postfix was probably upgraded
+		$postfix_version = undef;
+		}
 	}
 
 if (!$postfix_version) {
@@ -29,7 +36,7 @@ if (!$postfix_version) {
 		}
 
 	# And save for other callers
-	&open_tempfile(VERSION, ">$module_config_directory/version", 0, 1);
+	&open_tempfile(VERSION, ">$version_file", 0, 1);
 	&print_tempfile(VERSION, "$postfix_version\n");
 	&close_tempfile(VERSION);
 	}
