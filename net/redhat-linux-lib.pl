@@ -778,16 +778,6 @@ if (@boot) {
 	}
 }
 
-sub os_feedback_files
-{
-opendir(DIR, $net_scripts_dir);
-local @f = readdir(DIR);
-closedir(DIR);
-return ( (map { "$net_scripts_dir/$_" } grep { /^ifcfg-/ } @f),
-	 $network_config, $static_route_config, "/etc/resolv.conf",
-	 "/etc/nsswitch.conf", "/etc/HOSTNAME" );
-}
-
 # interface_sel(name, value)
 # Returns a menu for all boot-time interfaces
 sub interface_sel

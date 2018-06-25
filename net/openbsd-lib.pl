@@ -503,13 +503,6 @@ sub parse_routing
       }
   }
 
-sub os_feedback_files
-{
-return ( split(" ", `echo -n /etc/hostname.*[!~]`),
-	 "/etc/resolv.conf", "/etc/myname", "/etc/mygate", "/etc/rc.conf",
-	 "/etc/sysctl.conf" );
-}
-
 # supports_address6([&iface])
 # Returns 1 if managing IPv6 interfaces is supported
 sub supports_address6

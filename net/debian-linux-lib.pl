@@ -988,12 +988,6 @@ local ($name, $addrfam, $method) = @_;
 &modify_module_def($name, 1);
 }
 
-sub os_feedback_files
-{
-return ( $network_interfaces_config, "/etc/nsswitch.conf", "/etc/resolv.conf",
-	 "/etc/HOSTNAME" );
-}
-
 # apply_network()
 # Apply the interface and routing settings
 sub apply_network

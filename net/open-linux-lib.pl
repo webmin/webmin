@@ -213,16 +213,6 @@ $in{'script'} =~ s/\r//g;
 &system_logged("chmod +x $static_route_config");
 }
 
-sub os_feedback_files
-{
-opendir(DIR, $net_scripts_dir);
-local @f = readdir(DIR);
-closedir(DIR);
-return ( (map { "$net_scripts_dir/$_" } grep { /^ifcfg-/ } @f),
-	 $network_config, $static_route_config, $nis_conf, "/etc/resolv.conf",
-	 "/etc/nsswitch.conf", "/etc/HOSTNAME" );
-}
-
 # apply_network()
 # Apply the interface and routing settings
 sub apply_network

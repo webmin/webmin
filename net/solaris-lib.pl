@@ -589,15 +589,6 @@ if (!-r $_[0]) {
 	}
 }
 
-sub os_feedback_files
-{
-opendir(DIR, "/etc");
-local @f = map { "/etc/$_" } grep { /^hostname\./ } readdir(DIR);
-closedir(DIR);
-return ( @f, "/etc/netmasks", "/etc/resolv.conf", "/etc/nsswitch.conf",
-	 "/etc/defaultrouter", "/etc/notrouter", "/etc/gateways" );
-}
-
 # get_default_gateway()
 # Returns the default gateway IP (if one is set) boot time
 # settings.

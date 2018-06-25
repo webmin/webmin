@@ -333,11 +333,6 @@ else {
 	}
 }
 
-sub os_feedback_files
-{
-return ( $rc_config, $route_conf, "/etc/resolv.conf", "/etc/nsswitch.conf" );
-}
-
 # supports_address6([&iface])
 # Returns 1 if managing IPv6 interfaces is supported
 sub supports_address6

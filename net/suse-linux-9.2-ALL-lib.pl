@@ -404,16 +404,6 @@ elsif (!$def && $_[0]) {
 &save_routes_config(\@routes);
 }
 
-sub os_feedback_files
-{
-opendir(DIR, $net_scripts_dir);
-local @f = readdir(DIR);
-closedir(DIR);
-return ( (map { "$net_scripts_dir/$_" } grep { /^ifcfg-/ } @f),
-	 $network_config, $static_route_config, "/etc/resolv.conf",
-	 "/etc/nsswitch.conf", "/etc/HOSTNAME" );
-}
-
 # apply_network()
 # Apply the interface and routing settings
 sub apply_network

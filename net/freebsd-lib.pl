@@ -690,12 +690,6 @@ foreach my $i (&active_interfaces()) {
 chdir($oldpwd);
 }
 
-sub os_feedback_files
-{
-return ( "/etc/rc.conf", "/etc/resolv.conf", "/etc/host.conf",
-	 "/etc/resolv.conf" );
-}
-
 # supports_address6([&iface])
 # Returns 1 if managing IPv6 interfaces is supported
 sub supports_address6

@@ -465,11 +465,6 @@ close(HOST);
 return \%rv;
 }
 
-sub os_feedback_files
-{
-return ( "/etc/hostconfig", "/etc/resolv.conf", "/etc/iftab" );
-}
-
 # apply_network()
 # Apply the interface and routing settings
 #sub apply_network

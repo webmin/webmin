@@ -410,15 +410,6 @@ if (!-r $_[0]) {
 	}
 }
 
-sub os_feedback_files
-{
-opendir(DIR, "/etc");
-local @f = map { "/etc/$_" } grep { /^hostname\./ } readdir(DIR);
-closedir(DIR);
-return ( @f, "/etc/netmasks", "/etc/resolv.conf", "/etc/nsswitch.conf",
-	 "/etc/defaultrouter", "/etc/notrouter", "/etc/gateways" );
-}
-
 # supports_address6([&iface])
 # Returns 1 if managing IPv6 interfaces is supported
 sub supports_address6
