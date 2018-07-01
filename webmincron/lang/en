@@ -16,4 +16,7 @@ edit_special_weekly=Weekly (on Sunday)
 edit_special_monthly=Monthly (on the 1st)
 edit_special_yearly=Yearly (on 1st Jan)
 
+log_success=Successfully ran <tt>$2</tt> in <tt>$1</tt>
+log_failure=Failed to run <tt>$2</tt> in <tt>$1</tt> : $3
+
 __norefs=1

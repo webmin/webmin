@@ -17,5 +17,15 @@ for(my $i=0; defined($cron->{'arg'.$i}); $i++) {
 $main::webmin_script_type = 'cron';
 
 # Require the module, call the function
-&foreign_require($cron->{'module'}, $cron->{'file'});
-&foreign_call($cron->{'module'}, $cron->{'func'}, @args);
+eval {
+	local $main::error_must_die = 1;
+	&foreign_require($cron->{'module'}, $cron->{'file'});
+	&foreign_call($cron->{'module'}, $cron->{'func'}, @args);
+	};
+$log = { %$cron };
+if ($@) {
+	$log->{'error'} = $@;
+	}
+
+# Log it
+&webmin_log("run", "webmincron", $cron->{'id'}, $log);
