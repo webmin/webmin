@@ -2,7 +2,7 @@
 # Search Webmin modules and help pages and text and config.info
 
 $trust_unknown_referers = 1;
-BEGIN { push(@INC, ".."); };
+BEGIN { push(@INC, "."); };
 use WebminCore;
 
 &init_config();

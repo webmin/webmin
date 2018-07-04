@@ -2,7 +2,7 @@
 # group_chooser.cgi
 # This CGI generated the HTML for choosing a group or list of groups.
 
-BEGIN { push(@INC, ".."); };
+BEGIN { push(@INC, "."); };
 use WebminCore;
 
 &init_config();

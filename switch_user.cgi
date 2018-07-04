@@ -2,7 +2,7 @@
 # switch_user.cgi
 # Force the webserver to re-authenticate
 
-BEGIN { push(@INC, ".."); };
+BEGIN { push(@INC, "."); };
 use WebminCore;
 
 &init_config();

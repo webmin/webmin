@@ -2,7 +2,7 @@
 # config.cgi
 # Display a form for editing the configuration of a module.
 
-BEGIN { push(@INC, ".."); };
+BEGIN { push(@INC, "."); };
 use WebminCore;
 require './config-lib.pl';
 &init_config();

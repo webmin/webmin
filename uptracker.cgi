@@ -1,7 +1,7 @@
 #!/usr/local/bin/perl
 # Output Javascript in a loop to track an upload
 
-BEGIN { push(@INC, ".."); };
+BEGIN { push(@INC, "."); };
 use WebminCore;
 
 &init_config();

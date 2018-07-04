@@ -1,7 +1,7 @@
 #!/usr/local/bin/perl
 # Ask one PAM question
 
-BEGIN { push(@INC, ".."); };
+BEGIN { push(@INC, "."); };
 use WebminCore;
 
 $pragma_no_cache = 1;

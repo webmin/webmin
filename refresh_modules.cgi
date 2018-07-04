@@ -1,7 +1,7 @@
 #!/usr/local/bin/perl
 # Refresh the list of visible modules
 
-BEGIN { push(@INC, ".."); };
+BEGIN { push(@INC, "."); };
 use WebminCore;
 
 &init_config();

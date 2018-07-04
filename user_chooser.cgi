@@ -3,7 +3,7 @@
 # This CGI generated the HTML for choosing a user or list of users.
 
 $trust_unknown_referers = 1;
-BEGIN { push(@INC, ".."); };
+BEGIN { push(@INC, "."); };
 use WebminCore;
 
 &init_config();

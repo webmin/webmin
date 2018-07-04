@@ -2,7 +2,7 @@
 # feedback_form.cgi
 # Display a form so that the user can send in a webmin bug report
 
-BEGIN { push(@INC, ".."); };
+BEGIN { push(@INC, "."); };
 use WebminCore;
 
 &init_config();

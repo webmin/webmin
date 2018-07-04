@@ -2,7 +2,7 @@
 # chooser.cgi
 # Outputs HTML for a frame-based file chooser
 
-BEGIN { push(@INC, ".."); };
+BEGIN { push(@INC, "."); };
 use WebminCore;
 
 @icon_map = (	"c", "text.gif",

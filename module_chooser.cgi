@@ -1,7 +1,7 @@
 #!/usr/local/bin/perl
 # This CGI generates the HTML for choosing a module or list of modules
 
-BEGIN { push(@INC, ".."); };
+BEGIN { push(@INC, "."); };
 use WebminCore;
 
 &init_config();

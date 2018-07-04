@@ -2,7 +2,7 @@
 # password_form.cgi
 # Display the form that allows users to change their passwords at login time
 
-BEGIN { push(@INC, ".."); };
+BEGIN { push(@INC, "."); };
 use WebminCore;
 
 $pragma_no_cache = 1;

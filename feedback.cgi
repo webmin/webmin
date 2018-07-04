@@ -1,7 +1,7 @@
 #!/usr/local/bin/perl
 # Send the webmin feedback form
 
-BEGIN { push(@INC, ".."); };
+BEGIN { push(@INC, "."); };
 use WebminCore;
 
 &init_config();

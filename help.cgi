@@ -2,7 +2,7 @@
 # help.cgi
 # Displays help HTML for some module, with substitutions
 
-BEGIN { push(@INC, ".."); };
+BEGIN { push(@INC, "."); };
 use WebminCore;
 
 &init_config();

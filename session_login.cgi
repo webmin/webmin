@@ -2,7 +2,7 @@
 # session_login.cgi
 # Display the login form used in session login mode
 
-BEGIN { push(@INC, ".."); };
+BEGIN { push(@INC, "."); };
 use WebminCore;
 
 $pragma_no_cache = 1;

@@ -2,7 +2,7 @@
 # switch_skill.cgi
 # Change the skill level of the current user
 
-BEGIN { push(@INC, ".."); };
+BEGIN { push(@INC, "."); };
 use WebminCore;
 
 &init_config();

@@ -2,7 +2,7 @@
 # date_chooser.cgi
 # Display a table of days in the current month
 
-BEGIN { push(@INC, ".."); };
+BEGIN { push(@INC, "."); };
 use WebminCore;
 use Time::Local;
 

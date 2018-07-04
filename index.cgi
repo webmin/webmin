@@ -1,7 +1,7 @@
 #!/usr/local/bin/perl
 # Display all Webmin modules visible to the current user
 
-BEGIN { push(@INC, ".."); };
+BEGIN { push(@INC, "."); };
 use WebminCore;
 
 &init_config();

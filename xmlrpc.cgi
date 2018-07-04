@@ -15,7 +15,7 @@ if (!$ENV{'GATEWAY_INTERFACE'}) {
 	$command_line = 1;
 	$> == 0 || die "xmlrpc.cgi must be run as root";
 	}
-BEGIN { push(@INC, ".."); };
+BEGIN { push(@INC, "."); };
 use WebminCore;
 use POSIX;
 use Socket;
