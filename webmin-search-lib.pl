@@ -285,13 +285,13 @@ sub cgi_page_title
 local ($m, $cgi) = @_;
 local $data = &read_file_contents(&module_root_directory($m)."/".$cgi);
 local $rv;
-if ($data =~ /(ui_print_header|ui_print_unbuffered_header)\([^,]+,[^,]*(\$text{'([^']+)'|\$text{"([^"]+)"|\&text\('([^']+)'|\&text\("([^"]+)")/) {
+if ($data =~ /(ui_print_header|ui_print_unbuffered_header)\([^,]+,[^,]*(\$text\{'([^']+)'|\$text\{"([^"]+)"|\&text\('([^']+)'|\&text\("([^"]+)")/) {
 	# New header function, with arg before title
 	local $msg = $3 || $4 || $5 || $6;
 	local %mtext = &load_language($m);
 	$rv = $mtext{$msg};
 	}
-elsif ($data =~ /(^|\s|mail_page_)header\(\s*(\$text{'([^']+)'|\$text{"([^"]+)"|\&text\('([^']+)'|\&text\("([^"]+)")/) {
+elsif ($data =~ /(^|\s|mail_page_)header\(\s*(\$text\{'([^']+)'|\$text\{"([^"]+)"|\&text\('([^']+)'|\&text\("([^"]+)")/) {
 	# Old header function
 	local $msg = $3 || $4 || $5 || $6;
 	local %mtext = &load_language($m);
