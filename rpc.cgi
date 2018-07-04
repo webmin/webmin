@@ -6,7 +6,7 @@
 # seconds of inactivity)
 # access{'rpc'}  0=not allowed 1=allowed 2=allowed if root or admin
 
-BEGIN { push(@INC, ".."); };
+BEGIN { push(@INC, "."); };
 use WebminCore;
 use POSIX;
 

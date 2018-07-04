@@ -4,7 +4,7 @@
 # client. From then on, direct TCP connections can be made to this port
 # to send requests and get replies.
 
-BEGIN { push(@INC, ".."); };
+BEGIN { push(@INC, "."); };
 use WebminCore;
 use POSIX;
 use Socket;
