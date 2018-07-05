@@ -21,6 +21,7 @@ foreach my $f (glob("$netplan_dir/*.yaml")) {
 			    'file' => $f,
 			    'line' => $e->{'line'},
 			    'eline' => $e->{'eline'},
+			    'edit' => 1,
 			    'up' => 1 };
 		my ($dhcp) = grep { $_->{'name'} eq 'dhcp4' }
 				  @{$e->{'members'}};
@@ -64,6 +65,7 @@ foreach my $f (glob("$netplan_dir/*.yaml")) {
 		if ($gateway6) {
 			$cfg->{'gateway6'} = $gateway6->{'value'};
 			}
+		$cfg->{'index'} = scalar(@rv);
 		push(@rv, $cfg);
 
 		# Nameservers (which are used to generate resolv.conf)
@@ -83,8 +85,19 @@ foreach my $f (glob("$netplan_dir/*.yaml")) {
 			}
 
 		# Add IPv4 alias interfaces
+		my $i = 0;
 		foreach my $aa (@addrs) {
-			# XXX
+			my $acfg = { 'name' => $cfg->{'name'},
+				     'virtual' => $i,
+				     'fullname' => $cfg->{'name'}.":".$i,
+				     'file' => $f,
+				     'edit' => 1,
+				     'up' => 1, };
+			($acfg->{'address'}, $acfg->{'netmask'}) =
+				&split_addr_netmask($aa);
+			$acfg->{'index'} = scalar(@rv);
+			push(@rv, $acfg);
+			$i++;
 			}
 		}
 	}
@@ -106,13 +119,19 @@ if ($iface->{'virtual'} ne '') {
 		# Add to complete interface list
 		push(@$boot, $iface);
 		}
+	else {
+		# Update in complete list
+		my ($oldiface) = grep { $_->{'fullname'} eq $iface->{'fullname'} } @$boot;
+		$oldiface || &error("No existing interface named $iface->{'fullname'} found");
+		$boot->[$oldiface->{'index'}] = $iface;
+		}
 	&save_interface($parent, $boot);
 	}
 else {
 	# Build interface config lines
 	my $id = " " x 8;
 	my @lines;
-	push(@lines, $id.$iface->{'fullname'});
+	push(@lines, $id.$iface->{'fullname'}.":");
 	my @addrs;
 	if ($iface->{'dhcp'}) {
 		push(@lines, $id."    "."dhp4: true");
