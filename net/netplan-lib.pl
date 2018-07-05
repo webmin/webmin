@@ -1,4 +1,7 @@
 # Networking functions for Ubuntu 17+, which uses Netplan by default
+# XXX enabled at boot?
+# XXX MAC address
+# XXX MTU
 
 $netplan_dir = "/etc/netplan";
 
@@ -112,8 +115,7 @@ my ($iface, $boot) = @_;
 $boot ||= [ &boot_interfaces() ];
 if ($iface->{'virtual'} ne '') {
 	# Find the parent config entry
-	my ($parent) = grep { $_->{'fullname'} eq $iface->{'name'} }
-			    &boot_interfaces();
+	my ($parent) = grep { $_->{'fullname'} eq $iface->{'name'} } @$boot;
 	$parent || &error("No interface named $iface->{'name'} exists");
 	if (!$iface->{'file'}) {
 		# Add to complete interface list
@@ -121,7 +123,8 @@ if ($iface->{'virtual'} ne '') {
 		}
 	else {
 		# Update in complete list
-		my ($oldiface) = grep { $_->{'fullname'} eq $iface->{'fullname'} } @$boot;
+		my ($oldiface) = grep { $_->{'fullname'} eq
+					$iface->{'fullname'} } @$boot;
 		$oldiface || &error("No existing interface named $iface->{'fullname'} found");
 		$boot->[$oldiface->{'index'}] = $iface;
 		}
@@ -171,10 +174,14 @@ else {
 
 	if ($iface->{'file'}) {
 		# Replacing an existing interface
-		my $lref = &read_file_lines($iface->{'file'});
-		splice(@$lref, $iface->{'line'},
-		       $iface->{'eline'} - $iface->{'line'} + 1, @lines);
-		&flush_file_lines($iface->{'file'});
+		my ($old) = grep { $_->{'fullname'} eq $iface->{'fullname'} } @$boot;
+		$old || &error("No interface named $iface->{'fullname'} found");
+		&lock_file($old->{'file'});
+		my $lref = &read_file_lines($old->{'file'});
+		splice(@$lref, $old->{'line'},
+		       $old->{'eline'} - $old->{'line'} + 1, @lines);
+		&flush_file_lines($old->{'file'});
+		&unlock_file($old->{'file'});
 		}
 	else {
 		# Adding a new one (to it's own file)
@@ -182,9 +189,11 @@ else {
 		@lines = ( "network:",
 			   "    ethernets:",
 			   @lines );
+		&lock_file($iface->{'file'});
 		my $lref = &read_file_lines($iface->{'file'});
 		push(@$lref, @lines);
 		&flush_file_lines($iface->{'file'});
+		&unlock_file($iface->{'file'});
 		}
 	}
 }
@@ -193,10 +202,25 @@ else {
 # Remove a boot-time interface
 sub delete_interface
 {
-my ($cfg) = @_;
-my $lref = &read_file_lines($cfg->{'file'});
-splice(@$lref, $cfg->{'line'}, $cfg->{'eline'} - $cfg->{'line'} + 1);
-&flush_file_lines($cfg->{'file'});
+my ($iface) = @_;
+if ($iface->{'virtual'} ne '') {
+	# Just remove the virtual address
+	my $boot = [ &boot_interfaces() ];
+	my ($parent) = grep { $_->{'fullname'} eq $iface->{'name'} } @$boot;
+	$parent || &error("No interface named $iface->{'name'} exists");
+	$boot = [ grep { $_->{'fullname'} ne $iface->{'fullname'} } @$boot ];
+	&save_interface($parent, $boot);
+	}
+else {
+	# Delete all the lines
+	&lock_file($iface->{'file'});
+	my $lref = &read_file_lines($iface->{'file'});
+	splice(@$lref, $iface->{'line'},
+	       $iface->{'eline'} - $iface->{'line'} + 1);
+	&flush_file_lines($iface->{'file'});
+	&unlock_file($iface->{'file'});
+	# XXX also delete file if empty?
+	}
 }
 
 sub supports_bonding
@@ -333,6 +357,9 @@ foreach my $origl (@$lref) {
 			  };
 		if ($dir->{'value'} =~ /^\[(.*)\]$/) {
 			$dir->{'value'} = [ split(/,/, $1) ];
+			}
+		while($i <= $parent->{'indent'}) {
+			$parent = $parent->{'parent'};
 			}
 		push(@{$parent->{'members'}}, $dir);
 		&set_parent_elines($parent, $lnum);
