@@ -38,15 +38,7 @@ else {
 		# Modifying an interface
 		$oldb = $boot[$in{'idx'}];
 		&can_iface($oldb) || &error($text{'ifcs_ecannot_this'});
-		$b->{'name'} = $oldb->{'name'};
-		$b->{'file'} = $oldb->{'file'};
-		$b->{'gateway'} = $oldb->{'gateway'};
-		$b->{'gateway6'} = $oldb->{'gateway6'};
-		$b->{'virtual'} = $oldb->{'virtual'}
-			if (defined($oldb->{'virtual'}));
-		$b->{'code'} = $oldb->{'code'};
-		$b->{'fullname'} = $oldb->{'fullname'};
-		$b->{'bridge'} = $oldb->{'bridge'};
+		$b = { %$oldb };
 		}
 	elsif (defined($in{'virtual'})) {
 		# creating a virtual interface
