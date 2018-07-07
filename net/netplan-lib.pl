@@ -1,7 +1,8 @@
 # Networking functions for Ubuntu 17+, which uses Netplan by default
 # XXX enabled at boot?
 # XXX MAC address
-# XXX MTU
+# XXX preserve other fields
+# XXX nameservers?
 
 $netplan_dir = "/etc/netplan";
 $sysctl_config = "/etc/sysctl.conf";
@@ -90,6 +91,13 @@ foreach my $f (glob("$netplan_dir/*.yaml")) {
 				}
 			}
 
+		# MAC address
+		my ($macaddress) = grep { $_->{'name'} eq 'macaddress' }
+                                         @{$e->{'members'}};
+		if ($macaddress) {
+			$cfg->{'ether'} = $macaddress->{'value'};
+			}
+
 		# Add IPv4 alias interfaces
 		my $i = 0;
 		foreach my $aa (@addrs) {
@@ -173,6 +181,9 @@ else {
 			push(@lines, $id."        "."search: ".
 				     $iface->{'search'});
 			}
+		}
+	if ($iface->{'ether'}) {
+		push(@lines, $id."    "."macaddress: ".$ifac->{'ether'});
 		}
 
 	if ($iface->{'file'}) {
@@ -266,7 +277,8 @@ return 0;	# XXX fix later
 # Can some boot-time interface parameter be edited?
 sub can_edit
 {
-return $_[0];
+my ($f) = @_;
+return $f ne "mtu";
 }
 
 # valid_boot_address(address)
