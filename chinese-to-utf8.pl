@@ -128,7 +128,7 @@ foreach $m (@modules) {
 			%tminfo = ( );
 			foreach $k (keys %minfo) {
 				($tk = $k) =~ s/$l$/$l.UTF-8/;
-				$minfo{$tk} = &Windows1251ToUTF8($minfo{$k});
+				$tminfo{$tk} = &Windows1251ToUTF8($minfo{$k});
 				}
 			&write_file_diff("$m/module.info.$l.UTF-8", \%tminfo);
 			}
@@ -139,7 +139,7 @@ foreach $m (@modules) {
 			%tminfo = ( );
 			foreach $k (keys %minfo) {
 				($tk = $k) =~ s/$l$/$l.UTF-8/;
-				$minfo{$k} = &ISO88592ToUTF8($minfo{$k});
+				$tminfo{$tk} = &ISO88592ToUTF8($minfo{$k});
 				}
 			&write_file_diff("$m/module.info.$l.UTF-8", \%tminfo);
 			}
