@@ -354,6 +354,7 @@ return ($?, $out);
 sub get_add_file
 {
 local ($filename) = @_;
+$filename =~ s/\*/ALL/g;
 if ($config{'add_file'} && -d $config{'add_file'} && $filename) {
 	# Adding to a new file in a directory
 	return "$config{'add_file'}/$filename.conf";
