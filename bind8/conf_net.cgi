@@ -63,9 +63,9 @@ print &ui_table_row($text{'net_sport'},
 	&ui_opt_textbox("sport", $sport, 5, $text{'default'},
 			$text{'net_port'}));
 
-# Source port for transfers
+# Source port for transfers (IPv4)
 $src = &find("transfer-source", $mems);
-$srcstr = join(" ", $src->{'values'});
+$srcstr = $src ? join(" ", @{$src->{'values'}}) : "";
 my ($tport, $taddr);
 $tport = $1 if ($srcstr =~ /port\s+(\d+)/i);
 $taddr = $1 if ($srcstr =~ /^([0-9\.]+|\*)/i);
@@ -77,10 +77,31 @@ print &ui_table_row($text{'net_taddr'},
 		      &ui_textbox("taddr", $taddr eq "*" ? "" : $taddr, 15) ],
 		  ]));
 
-# Source port for transfers
+# Source port for transfers (IPv4)
 print &ui_table_row($text{'net_tport'},
 	&ui_opt_textbox("tport", $tport, 5, $text{'default'},
 			$text{'net_port'}));
+
+# Source port for transfers (IPv6)
+my $src6 = &find("transfer-source-v6", $mems);
+my $srcstr6 = $src6 ? join(" ", @{$src6->{'values'}}) : "";
+my ($tport6, $taddr6);
+$tport6 = $1 if ($srcstr6 =~ /port\s+(\d+)/i);
+$taddr6 = $1 if ($srcstr6 =~ /^([0-9a-f:]+|\*)/i);
+print &ui_table_row($text{'net_taddr6'},
+	&ui_radio("taddr6_def", $taddr6 eq "" ? 1 : $taddr6 eq "*" ? 2 : 0,
+		  [ [ 1, $text{'default'} ],
+		    [ 2, $text{'net_taddrdef'} ],
+		    [ 0, $text{'net_ip'}." ".
+		      &ui_textbox("taddr6", $taddr6 eq "*" ? "" : $taddr6, 30) ],
+		  ]));
+
+# Source port for transfers (IPv6)
+print &ui_table_row($text{'net_tport6'},
+	&ui_opt_textbox("tport6", $tport6, 5, $text{'default'},
+			$text{'net_port'}));
+
+
 
 print &addr_match_input($text{'net_topol'}, 'topology', $mems, 1);
 print &addr_match_input($text{'net_recur'}, 'allow-recursion', $mems, 1);

@@ -55,7 +55,7 @@ else {
 	&save_directive($options, 'query-source', [ ], 1);
 	}
 
-# Save transfer source address and port
+# Save IPv4 transfer source address and port
 my @tvals;
 if ($in{'taddr_def'} == 0) {
 	&check_ipaddress($in{'taddr'}) ||
@@ -78,6 +78,32 @@ if (@tvals) {
 else {
 	&save_directive($options, 'transfer-source', [ ], 1);
 	}
+
+# Save IPv6 transfer source address and port
+my @tvals6;
+if ($in{'taddr6_def'} == 0) {
+	&check_ip6address($in{'taddr6'}) ||
+		&error(&text('net_eaddr6', $in{'taddr6'}));
+	push(@tvals6, $in{'taddr6'});
+	}
+elsif ($in{'taddr6_def'} == 2) {
+	push(@tvals6, "*");
+	}
+if ($in{'tport6_def'} == 0) {
+	@tvals6 || &error($text{'net_etport'});
+	$in{'tport6'} =~ /^\d+$/ || &error(&text('net_eport', $in{'sport'}));
+	push(@tvals6, "port", $in{'tport6'});
+	}
+if (@tvals6) {
+	&save_directive($options, 'transfer-source-v6',
+			[ { 'name' => 'transfer-source-v6',
+			    'values' => \@tvals6 } ], 1);
+	}
+else {
+	&save_directive($options, 'transfer-source-v6', [ ], 1);
+	}
+
+
 
 $in{'topology_def'} || $in{'topology'} || &error($text{'net_etopology'});
 &save_addr_match('topology', $options, 1);
