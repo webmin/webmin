@@ -715,6 +715,7 @@ return 0;
 
 # get_dns_config()
 # Returns a hashtable containing keys nameserver, domain, search & order
+# XXX factor out to os_ functions
 sub get_dns_config
 {
 local $dns = { };

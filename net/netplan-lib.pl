@@ -1,8 +1,7 @@
 # Networking functions for Ubuntu 17+, which uses Netplan by default
 # XXX enabled at boot?
-# XXX MAC address
 # XXX preserve other fields
-# XXX nameservers?
+# XXX apply one interface?
 
 $netplan_dir = "/etc/netplan";
 $sysctl_config = "/etc/sysctl.conf";
@@ -178,12 +177,12 @@ else {
 		push(@lines, $id."        "."addresses: [".
 			     join(",", @{$iface->{'nameserver'}})."]");
 		if ($iface->{'search'}) {
-			push(@lines, $id."        "."search: ".
-				     $iface->{'search'});
+			push(@lines, $id."        "."search: [".
+				     join(",", @{$iface->{'search'}})."]");
 			}
 		}
 	if ($iface->{'ether'}) {
-		push(@lines, $id."    "."macaddress: ".$ifac->{'ether'});
+		push(@lines, $id."    "."macaddress: ".$iface->{'ether'});
 		}
 
 	if ($iface->{'file'}) {
@@ -480,6 +479,21 @@ foreach my $iface (&boot_interfaces()) {
 	}
 }
 
+# os_save_dns_config(&config)
+# On Ubuntu 18+, DNS servers are stored in the Netplan config files
+sub os_save_dns_config
+{
+my ($conf) = @_;
+my @boot = &boot_interfaces();
+my @fix = grep { $_->{'nameserver'} } @boot;
+@fix = @boot if (!@fix);
+foreach my $iface (@fix) {
+	$iface->{'nameserver'} = $conf->{'nameserver'};
+	$iface->{'search'} = $conf->{'domain'};
+	&save_interface($iface);
+	}
+}
+
 # read_yaml_file(file)
 # Converts a YAML file into a nested hash ref
 sub read_yaml_file
@@ -545,7 +559,7 @@ sub set_parent_elines
 {
 my ($c, $eline) = @_;
 $c->{'eline'} = $eline;
-&set_parent_elines($c->{'parent'}) if ($c->{'parent'});
+&set_parent_elines($c->{'parent'}, $eline) if ($c->{'parent'});
 }
 
 # split_addr_netmask(addr-string)
