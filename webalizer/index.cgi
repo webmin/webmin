@@ -38,7 +38,7 @@ if (!$webalizer_version) {
 	exit;
 	}
 
-if ($webalizer_version < 2) {
+if (&compare_version_numbers($webalizer_version, 2) < 0) {
 	&main_header();
 	print &text('index_eversion', "<tt>$config{'webalizer'}</tt>",
 			  "$webalizer_version", "2.0"),"<p>\n";

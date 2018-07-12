@@ -342,6 +342,9 @@ if (&foreign_installed("wuftpd") && $auto{'wuftpd'}) {
 
 # Add custom logfiles
 push(@logs, map { $_->{'custom'} = 1; $_ } &read_custom_logs());
+foreach my $l (@logs) {
+	$l->{'custom'} ||= 0;
+	}
 
 return @logs;
 }
