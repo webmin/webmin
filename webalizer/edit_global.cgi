@@ -49,11 +49,11 @@ print &ui_table_row($text{'global_index'},
 
 my $gmt = &find_value("GMTTime", $conf);
 print &ui_table_row($text{'global_gmt'},
-	&ui_yesno_radio("gmt", $gmt =~ /^y/i ? 1 : 0));
+	&ui_yesno_radio("gmt", $gmt && $gmt =~ /^y/i ? 1 : 0));
 
 my $fold = &find_value("FoldSeqErr", $conf);
 print &ui_table_row($text{'global_fold'},
-	&ui_yesno_radio("fold", $fold =~ /^y/i ? 1 : 0));
+	&ui_yesno_radio("fold", $fold && $fold =~ /^y/i ? 1 : 0));
 
 my $visit = &find_value("VisitTimeout", $conf);
 print &ui_table_row($text{'global_visit'},
@@ -85,7 +85,7 @@ foreach my $g ('DailyGraph', 'DailyStats', 'HourlyGraph',
 	       'HourlyStats', 'CountryGraph', 'GraphLegend') {
 	my $v = &find_value($g, $conf);
 	push(@grid, &ui_checkbox($g, 1, $text{"global_$g"},
-				 $v =~ /^n/i ? 0 : 1));
+				 $v && $v =~ /^n/i ? 0 : 1));
 	}
 print &ui_table_row($text{'global_display'}, &ui_grid_table(\@grid, 4));
 
@@ -95,7 +95,8 @@ foreach my $t ('TopSites', 'TopKSites', 'TopURLs', 'TopKURLs', 'TopReferrers',
 	       'TopSearch', 'TopUsers') {
 	my $v = &find_value($t, $conf);
 	push(@grid, "<b>".$text{'global_'.$t}."</b>");
-	push(@grid, &ui_radio($t."_def", $v eq "" ? 1 : $v eq "0" ? 2 : 0,
+	push(@grid, &ui_radio($t."_def",
+			      !defined($v) || $v eq "" ? 1 : $v eq "0" ? 2 : 0,
 			      [ [ 1, $text{'default'} ],
 				[ 2, $text{'global_none'} ],
 				[ 0, &ui_textbox($t, $v ? $v : "", 4) ] ]));
@@ -107,7 +108,7 @@ foreach my $a ('AllSites', 'AllURLs', 'AllReferrers', 'AllAgents',
 	       'AllSearchStr', 'AllUsers') {
 	my $v = &find_value($a, $conf);
 	push(@grid, &ui_checkbox($a, 1, $text{"global_$a"},
-				 $v =~ /^y/i ? 1 : 0));
+				 $v && $v =~ /^y/i ? 1 : 0));
 	}
 print &ui_table_row($text{'global_all'}, &ui_grid_table(\@grid, 4));
 
