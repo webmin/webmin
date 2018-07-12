@@ -1,6 +1,5 @@
 # Networking functions for Ubuntu 17+, which uses Netplan by default
 # XXX preserve other fields
-# XXX apply one interface?
 
 $netplan_dir = "/etc/netplan";
 $sysctl_config = "/etc/sysctl.conf";
