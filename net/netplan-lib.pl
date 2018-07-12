@@ -1,5 +1,4 @@
 # Networking functions for Ubuntu 17+, which uses Netplan by default
-# XXX enabled at boot?
 # XXX preserve other fields
 # XXX apply one interface?
 
@@ -29,10 +28,19 @@ foreach my $f (glob("$netplan_dir/*.yaml")) {
 			    'eline' => $e->{'eline'},
 			    'edit' => 1,
 			    'up' => 1 };
+
+		# Is DHCP enabled?
 		my ($dhcp) = grep { $_->{'name'} eq 'dhcp4' }
 				  @{$e->{'members'}};
 		if (&is_true_value($dhcp)) {
 			$cfg->{'dhcp'} = 1;
+			}
+
+		# Is optional at boot?
+		my ($optional) = grep { $_->{'name'} eq 'optional' }
+				      @{$e->{'members'}};
+		if (&is_true_value($optional)) {
+			$cfg->{'up'} = 0;
 			}
 
 		# IPv4 and v6 addresses
@@ -146,6 +154,9 @@ else {
 	my @lines;
 	push(@lines, $id.$iface->{'fullname'}.":");
 	my @addrs;
+	if (!$iface->{'up'}) {
+		push(@lines, $id."    "."optional: true");
+		}
 	if ($iface->{'dhcp'}) {
 		push(@lines, $id."    "."dhp4: true");
 		}
