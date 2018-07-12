@@ -101,7 +101,7 @@ print &ui_table_row($text{'edit_sched'},
 		  [ [ 0, $text{'edit_sched0'} ],
 		    [ 1, $text{'edit_sched1'} ] ]));
 
-if ($lconf->{'mins'} eq '') {
+if (!defined($lconf->{'mins'}) || $lconf->{'mins'} eq '') {
 	$lconf->{'mins'} = $lconf->{'hours'} = 0;
 	$lconf->{'days'} = $lconf->{'months'} = $lconf->{'weekdays'} = '*';
 	}
