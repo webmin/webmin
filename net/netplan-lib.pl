@@ -174,7 +174,8 @@ else {
 			}
 		}
 	if (@addrs) {
-		push(@lines, $id."    "."addresses: [".join(",", @addrs)."]");
+		push(@lines, $id."    "."addresses: [".
+				&join_addr_netmask(@addrs)."]");
 		}
 	if ($iface->{'gateway'}) {
 		push(@lines, $id."    "."gateway4: ".$iface->{'gateway'});
@@ -185,10 +186,10 @@ else {
 	if ($iface->{'nameserver'}) {
 		push(@lines, $id."    "."nameservers:");
 		push(@lines, $id."        "."addresses: [".
-			     join(",", @{$iface->{'nameserver'}})."]");
+			     &join_addr_netmask(@{$iface->{'nameserver'}})."]");
 		if ($iface->{'search'}) {
 			push(@lines, $id."        "."search: [".
-				     join(",", @{$iface->{'search'}})."]");
+			     &join_addr_netmask(",", @{$iface->{'search'}})."]");
 			}
 		}
 	if ($iface->{'ether'}) {
@@ -577,6 +578,8 @@ $c->{'eline'} = $eline;
 sub split_addr_netmask
 {
 my ($a) = @_;
+$a =~ s/^'(.*)'$/$1/g;
+$a =~ s/^"(.*)"$/$1/g;
 if ($a =~ /^([0-9\.]+)\/(\d+)$/) {
 	return ($1, &prefix_to_mask($2));
 	}
@@ -586,6 +589,22 @@ elsif ($a =~ /^([0-9\.]+)\/([0-9\.]+)$/) {
 else {
 	return $a;
 	}
+}
+
+# join_addr_netmask(addr, ...)
+# Returns a string of properly joined addresses 
+sub join_addr_netmask
+{
+my @rv;
+foreach my $a (@_) {
+	if ($a =~ /\/|\s/) {
+		push(@rv, "'$a'");
+		}
+	else {
+		push(@rv, $a);
+		}
+	}
+return join(",", @rv);
 }
 
 sub is_true_value
