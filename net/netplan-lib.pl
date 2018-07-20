@@ -597,7 +597,7 @@ sub join_addr_netmask
 {
 my @rv;
 foreach my $a (@_) {
-	if ($a =~ /\/|\s/) {
+	if ($a =~ /\/|\s|:/) {
 		push(@rv, "'$a'");
 		}
 	else {
