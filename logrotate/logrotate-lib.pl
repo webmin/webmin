@@ -96,7 +96,6 @@ while(<$fh>) {
 				map { $_->{'index'} += @$addto } @$inc;
 				push(@$addto, @$inc);
 				}
-			closedir(DIR);
 			}
 		else {
 			# A single file
