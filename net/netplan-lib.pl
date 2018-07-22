@@ -189,7 +189,7 @@ else {
 			     &join_addr_netmask(@{$iface->{'nameserver'}})."]");
 		if ($iface->{'search'}) {
 			push(@lines, $id."        "."search: [".
-			     &join_addr_netmask(",", @{$iface->{'search'}})."]");
+			     &join_addr_netmask(@{$iface->{'search'}})."]");
 			}
 		}
 	if ($iface->{'ether'}) {
