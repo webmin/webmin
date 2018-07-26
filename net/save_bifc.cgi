@@ -85,7 +85,7 @@ else {
 		$b->{'name'} = $b->{'fullname'} = "bond".$in{'name'};
 		$b->{'bond'} = 1;
 		}
-	elsif ($in{'name'} =~/^[a-z]+\d*(\.\d+)?$/) {
+	elsif ($in{'name'} =~/^[a-z]+\d*(s\d*)?(\.\d+)?$/) {
 		# creating a real interface
 		$b->{'name'} = $in{'name'};
 		$b->{'fullname'} = $in{'name'};

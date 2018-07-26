@@ -45,7 +45,7 @@ else {
 		&can_create_iface() || &error($text{'ifcs_ecannot'});
 		&can_iface($a) || &error($text{'ifcs_ecannot'});
 		}
-	elsif ($in{'name'} =~ /^([a-z]+\d*(\.\d+)?):(\d+)$/) {
+	elsif ($in{'name'} =~ /^([a-z]+\d*(s\d*)?(\.\d+)?):(\d+)$/) {
 		# also creating a virtual interface
 		foreach $ea (@acts) {
 			if ($ea->{'name'} eq $1 &&
