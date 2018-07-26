@@ -157,7 +157,7 @@ else {
 		push(@lines, $id."    "."optional: true");
 		}
 	if ($iface->{'dhcp'}) {
-		push(@lines, $id."    "."dhp4: true");
+		push(@lines, $id."    "."dhcp4: true");
 		}
 	else {
 		push(@addrs, $iface->{'address'}."/".
