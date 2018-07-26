@@ -518,7 +518,7 @@ elsif ($folder->{'type'} == 5 || $folder->{'type'} == 6) {
 			local $sfn = &folder_name($sf);
 			$namemap{$sfn} = $sf;
 			}
-		@allids = &mailbox_idlist($folder); 
+		@allids = &mailbox_idlist($folder);
 		}
 
 	# For each sub-folder, get the IDs we need, and put them into the
@@ -1075,7 +1075,7 @@ elsif ($folder->{'type'} == 4) {
 			}
 		}
 	@rv = &imap_command($h, "UID SEARCH $searches");
-	&error(&text('save_esearch', $rv[3])) if (!$rv[0]); 
+	&error(&text('save_esearch', $rv[3])) if (!$rv[0]);
 
 	# Get back the IDs we want
 	local ($srch) = grep { $_ =~ /^\*\s+SEARCH/i } @{$rv[1]};
@@ -1202,10 +1202,10 @@ elsif ($f->{'type'} == 4) {
 	foreach $m (@_) {
 		@rv = &imap_command($h, "UID STORE ".$m->{'id'}.
 					" +FLAGS (\\Deleted)");
-		&error(&text('save_edelete', $rv[3])) if (!$rv[0]); 
+		&error(&text('save_edelete', $rv[3])) if (!$rv[0]);
 		}
 	@rv = &imap_command($h, "EXPUNGE");
-	&error(&text('save_edelete', $rv[3])) if (!$rv[0]); 
+	&error(&text('save_edelete', $rv[3])) if (!$rv[0]);
 	}
 elsif ($f->{'type'} == 5 || $f->{'type'} == 6) {
 	# Delete from underlying folder(s), and from virtual index
@@ -1284,10 +1284,10 @@ elsif ($f->{'type'} == 4) {
 	for($i=1; $i<=$count; $i++) {
 		@rv = &imap_command($h, "STORE ".$i.
 					" +FLAGS (\\Deleted)");
-		&error(&text('save_edelete', $rv[3])) if (!$rv[0]); 
+		&error(&text('save_edelete', $rv[3])) if (!$rv[0]);
 		}
 	@rv = &imap_command($h, "EXPUNGE");
-	&error(&text('save_edelete', $rv[3])) if (!$rv[0]); 
+	&error(&text('save_edelete', $rv[3])) if (!$rv[0]);
 	}
 elsif ($f->{'type'} == 5) {
 	# Empty each sub-folder
@@ -1646,7 +1646,7 @@ elsif ($_[1]->{'type'} == 4) {
 	$text =~ s/^From.*\r?\n//;	# Not part of IMAP format
 	@rv = &imap_command($h, sprintf "APPEND \"%s\" {%d}\r\n%s",
 			$_[1]->{'mailbox'} || "INBOX", length($text), $text);
-	&error(&text('save_eappend', $rv[3])) if (!$rv[0]); 
+	&error(&text('save_eappend', $rv[3])) if (!$rv[0]);
 	$needid = 1;
 	}
 elsif ($_[1]->{'type'} == 5) {
@@ -1863,27 +1863,32 @@ if ($folder->{'type'} == 4) {
 		local $pm = $f->[0] ? "+" : "-";
 		@rv = &imap_command($h, "UID STORE ".$mail->{'id'}.
 					" ".$pm."FLAGS (".$f->[1].")");
-		&error(&text('save_eflag', $rv[3])) if (!$rv[0]); 
+		&error(&text('save_eflag', $rv[3])) if (!$rv[0]);
 		}
 	}
 elsif ($folder->{'type'} == 1) {
 	# Add flag to special characters at end of filename
-	local ($base, %flags);
-	if ($mail->{'file'} =~ /^(.*):2,([A-Z]*)$/) {
+	my $file = $mail->{'file'} || $mail->{'id'};
+	my $path;
+	if (!$mail->{'file'}) {
+		$path = "$folder->{'file'}/";
+		}
+	my ($base, %flags);
+	if ($file =~ /^(.*):2,([A-Z]*)$/) {
 		$base = $1;
 		%flags = map { $_, 1 } split(//, $2);
 		}
 	else {
-		$base = $mail->{'file'};
+		$base = $file;
 		}
 	$flags{'S'} = $read;
 	$flags{'F'} = $special;
 	$flags{'R'} = $replied if (defined($replied));
-	local $newfile = $base.":2,".
-			 join("", grep { $flags{$_} } keys %flags);
-	if ($newfile ne $mail->{'file'}) {
+	my $newfile = $base.":2,".
+			 join("", grep { $flags{$_} } sort(keys %flags));
+	if ($newfile ne $file) {
 		# Need to rename file
-		rename($mail->{'file'}, $newfile);
+		rename("$path$file", "$path$newfile");
 		$newfile =~ s/^(.*)\/((cur|tmp|new)\/.*)$/$2/;
 		$mail->{'id'} = $newfile;
 		&flush_maildir_cachefile($folder->{'file'});
@@ -2274,7 +2279,7 @@ elsif ($_[1] == 3) {
 		}
 	elsif ($htmlbody) {
 		local $text = &html_to_text($htmlbody->{'data'});
-		$body = $textbody = 
+		$body = $textbody =
 			{ 'data' => $text };
 		}
 	}
@@ -3731,4 +3736,3 @@ else {
 }
 
 1;
-
