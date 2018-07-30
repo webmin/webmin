@@ -106,11 +106,6 @@ if ($in{'auto'}) {
 		       'dport' => [ "", "1024:65535" ],
 		       'j' => [ "", 'ACCEPT' ],
 		       'cmt' => 'Accept responses to DNS queries' },
-		     { 'chain' => 'INPUT',
-		       'm' => [ [ "", "icmpv6" ] ],
-		       'p' => [ [ "", "icmpv6" ] ],
-		       'j' => [ "", 'ACCEPT' ],
-		       'cmt' => 'Accept all ICMPv6 traffic' },
 			);
 		if ($in{'auto'} >= 3) {
 			# Allow ssh and ident
