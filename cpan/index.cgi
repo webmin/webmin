@@ -116,9 +116,9 @@ if (@recs) {
 		       @recs ],
 		 [ map { [ $_->[0],
 			   &text('index_user', $_->[0], $_->[1]->{'desc'}) ] }
-		       @allrecs ],
+		       @recs ],
 		 20, 1, 0,
-		 $text{'index_allmods'}, $text{'index_wantmods'}, 300),"<br>\n";
+		 $text{'index_allmods2'}, $text{'index_wantmods'}, 300),"<br>\n";
 	print &ui_submit($text{'index_recsok'});
 	print &ui_form_end();
 	}
