@@ -106,7 +106,9 @@ print &ui_table_row($text{'edit_location'},
 		$dinfo->{'device'});
 
 # Device name
-$dev = $dinfo->{'prefix'}.$np;
+$dev = $dinfo->{'prefix'} =~ /^\/dev\/mmcblk.*/ ?
+	$dinfo->{'prefix'}.'p'.$np :
+	$dinfo->{'prefix'}.$np;
 print &ui_table_row($text{'edit_device'}, $dev);
 
 # Partition type
