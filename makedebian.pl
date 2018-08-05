@@ -428,10 +428,16 @@ Files:
 
 EOF
 close(DSC);
+print "Creating signature deb/${product}_$ver$rel.dsc\n";
 unlink("deb/${product}_$ver$rel.dsc");
-system("gpg --output deb/${product}_$ver$rel.dsc --clearsign deb/${product}_$ver$rel.plain");
-unlink("deb/${product}_$ver$rel.plain");
-print "Wrote source deb/${product}_$ver$rel.dsc\n";
+$ex = system("gpg --output deb/${product}_$ver$rel.dsc --clearsign deb/${product}_$ver$rel.plain");
+if ($ex) {
+	print "Failed to create deb/${product}_$ver$rel.dsc\n";
+	}
+else {
+	unlink("deb/${product}_$ver$rel.plain");
+	print "Wrote source deb/${product}_$ver$rel.dsc\n";
+	}
 
 $dir = "sarge";
 if (-d "/usr/local/webadmin/deb/repository") {
@@ -443,8 +449,10 @@ if (-d "/usr/local/webadmin/deb/repository") {
 	}
 
 # Create PGP signature
+print "Signing sigs/${product}_${ver}${rel}_all.deb-sig.asc\n";
 unlink("sigs/${product}_${ver}${rel}_all.deb-sig.asc");
 system("gpg --armor --output sigs/${product}_${ver}${rel}_all.deb-sig.asc --default-key jcameron\@webmin.com --detach-sig deb/${product}_${ver}${rel}_all.deb");
+print "Wrote sigs/${product}_${ver}${rel}_all.deb-sig.asc\n";
 
 # read_file(file, &assoc, [&order], [lowercase])
 # Fill an associative array with name=value pairs from a file
