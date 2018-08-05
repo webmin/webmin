@@ -1286,6 +1286,9 @@ elsif ($_[0]->{'special'}) {
 	$pfx = $_[1] ? "" : "lc";
 	return $text{$pfx.'edit_special_'.$_[0]->{'special'}};
 	}
+elsif ($_[0]->{'boot'}) {
+	return &text($pfx.'when_boot');
+	}
 elsif ($_[0]->{'mins'} eq '*' && $_[0]->{'hours'} eq '*' && $_[0]->{'days'} eq '*' && $_[0]->{'months'} eq '*' && $_[0]->{'weekdays'} eq '*') {
 	return $text{$pfx.'when_min'};
 	}

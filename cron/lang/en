@@ -153,6 +153,7 @@ when_month=on day $3 every month at $2:$1
 when_weekday=every $3 at $2:$1
 when_cron=at cron time $1
 when_interval=every $1 seconds
+when_boot=at startup time
 
 ucwhen_min=Every minute
 ucwhen_hour=Every hour at $1 past the hour
@@ -161,6 +162,7 @@ ucwhen_month=On day $3 every month at $2:$1
 ucwhen_weekday=Every $3 at $2:$1
 ucwhen_cron=At cron time $1
 ucwhen_interval=Every $1 seconds
+ucwhen_boot=At startup time
 
 move_err=Failed to move Cron job
 move_etype=This job cannot be moved
