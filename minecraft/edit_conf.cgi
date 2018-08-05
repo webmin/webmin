@@ -27,6 +27,7 @@ print &ui_table_row($text{'conf_type'},
 	&ui_select("type", $type,
 		[ [ "DEFAULT", $text{'conf_type_default'} ],
 		  [ "FLAT", $text{'conf_type_flat'} ],
+		  [ "AMPLIFIED", $text{'conf_type_amplified'} ],
 		  [ "LARGEBIOMES", $text{'conf_type_largebiomes'} ] ], 1, 0,1));
 
 # Generate structures in new worlds

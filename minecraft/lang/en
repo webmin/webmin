@@ -33,6 +33,7 @@ conf_random=Choose randomly
 conf_type=Type for new worlds
 conf_type_default=Default
 conf_type_flat=Flat land
+conf_type_amplified=Amplified
 conf_type_largebiomes=Large biomes
 conf_structs=Generate NPC villages?
 conf_nether=Allow access to Nether?
