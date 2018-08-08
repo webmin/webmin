@@ -127,6 +127,9 @@ if (-d "$tardir/$dir/authentic-theme/extensions") {
 	system("cat /dev/null >$tardir/$dir/authentic-theme/extensions/csf.min.js");
 	}
 
+# Remove theme settings files
+system("find $tardir/$dir/authentic-theme -name 'settings_*.js' | xargs rm");
+
 # Add other directories
 foreach $d (@dirlist) {
 	print "Adding directory $d\n";
