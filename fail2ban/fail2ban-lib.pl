@@ -112,9 +112,8 @@ return @rv;
 sub merge_local_files
 {
 my ($rv, $lrv) = @_;
-my %names = map { $_->{'name'}, $_ } @$rv;
 foreach my $l (@$lrv) {
-	my $r = $names{$l->{'name'}};
+	my ($r) = grep { $_->{'name'} eq $l->{'name'} } @$rv;
 	if ($r) {
 		# Section exists in the global config, so put the local
 		# directives first
