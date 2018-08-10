@@ -53,10 +53,15 @@ foreach my $f (glob("$netplan_dir/*.yaml")) {
 		my @addrs;
 		my @addrs6;
 		if ($addresses) {
-			@addrs = grep { !&check_ip6address($_) }
-				      @{$addresses->{'value'}};
-			@addrs6 = grep { &check_ip6address($_) }
-				       @{$addresses->{'value'}};
+			foreach my $v (@{$addresses->{'value'}}) {
+				my ($a) = split(/\//, $v);
+				if (&check_ip6address($a)) {
+					push(@addrs6, $v);
+					}
+				else {
+					push(@addrs, $v);
+					}
+				}
 			my $a = shift(@addrs);
 			($cfg->{'address'}, $cfg->{'netmask'}) =
 				&split_addr_netmask($a);
