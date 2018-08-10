@@ -46,7 +46,7 @@ my $squid_version;
 if ($ver =~ /Version\s+([2-4]\.[0-9]+)/ ||
     $ver =~ /^(1\.1)\.\d+/ ||
     $ver =~ /^(1)\.NOVM/ ||
-    $ver =~ /^([2-4]\.[0-9]+)\./) {
+    $ver =~ /^([2-4]\.[0-9]+)/) {
 	# Save version number
 	open(VERSION, ">$module_config_directory/version");
 	print VERSION $1,"\n";
@@ -182,4 +182,3 @@ if ($config{'restart_pos'} != 1) {
 	}
 
 &ui_print_footer("/", $text{'index_return'});
-
