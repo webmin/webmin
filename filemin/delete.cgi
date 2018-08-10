@@ -8,7 +8,7 @@ get_paths();
 my @errors;
 
 foreach $name (split(/\0/, $in{'name'})) {
-    if(!&unlink_logged($cwd.'/'.$name)) {
+    if(!&unlink_file($cwd.'/'.$name)) {
         push @errors, "$name - $text{'error_delete'}: $!";
     }
 }
