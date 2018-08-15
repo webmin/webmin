@@ -244,7 +244,7 @@ return undef;
 
 sub number_to_weekday
 {
-return ucfirst($weekday_names[$_[0]]);
+return defined($_[0]) ? ucfirst($weekday_names[$_[0]]) : undef;
 }
 
 # Returns 1 if this system supports setting the hardware clock.
