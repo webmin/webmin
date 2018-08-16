@@ -88,7 +88,7 @@ if ($rh) {
 	$pmap = &get_maps("smtp_sasl_password_maps");
 	foreach my $o (@$pmap) {
 		if ($o->{'name'} eq $rh) {
-			($ruser, $rpass) = split(/:/, $o->{'value'});
+			($ruser, $rpass) = split(/:/, $o->{'value'}, 2);
 			}
 		}
 	}

@@ -23,7 +23,7 @@ if ($in{'smtpd_tls_CAfile_def'} eq "__USE_FREE_FIELD__") {
 # Validate remote mail server login
 if (!$in{'login_none'}) {
 	$in{'login_user'} =~ /^[^: ]+$/ || &error($text{'sasl_elogin'});
-	$in{'login_pass'} =~ /^[^: ]*$/ || &error($text{'sasl_epass'});
+	$in{'login_pass'} =~ /^[^ ]*$/ || &error($text{'sasl_epass'});
 	}
 
 &lock_postfix_files();

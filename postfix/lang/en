@@ -846,8 +846,8 @@ sasl_level_secure=Secure-channel TLS
 sasl_login=SMTP login to outgoing mail host
 sasl_nologin=None needed
 sasl_userpass=Login as $1 with password $2
-sasl_elogin=Missing or invalid SMTP login
-sasl_epass=Invalid SMTP password
+sasl_elogin=Missing or invalid SMTP login (no spaces or colons allowed)
+sasl_epass=Invalid SMTP password (no spaces allowed)
 
 client_title=SMTP Client Restrictions
 client_ecannot=You are not allowed to edit SMTP client restrictions
