@@ -116,6 +116,7 @@ Devuan Linux		$1	debian-linux	8.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_ver
 Devuan Linux		$1	debian-linux	9.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_version 2>/dev/null` =~ /^(ascii)/i
 Devuan Linux		$1	debian-linux	10.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_version 2>/dev/null` =~ /^(beowulf)/i
 Devuan Linux		$1	debian-linux	10.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_version 2>/dev/null` =~ /^(ceres)/i
+Raspbian Linux		$1	debian-linux	$1	`cat /etc/os-release 2>/dev/null` =~ /Raspbian\s+GNU\/Linux\s+(\S+)/
 
 # Linux Mint (Mint should be before Debian to avoid false-positive)
 Linux Mint			6	debian-linux	5.0	`cat /etc/lsb-release 2>/dev/null | grep DISTRIB_DESCRIPTION` =~ /^DISTRIB_DESCRIPTION="Linux Mint 6 Felicia"/
