@@ -718,7 +718,7 @@ else {
 
 sub interfaces_validate
 {
-$in{'iface'} =~ /^[a-z]+\d*(\.\d+)?$/ ||
+$in{'iface'} =~ /^[a-z]+\d*(s\d*)?(\.\d+)?$/ ||
 	$in{'iface'} =~ /^[a-z]+\+$/ || &error($text{'interfaces_eiface'});
 local @result = ( $in{'zone'}, $in{'iface'});
 if (not &new_interfaces_format()) {
