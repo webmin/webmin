@@ -518,7 +518,7 @@ if ($tmpl && $tmpl->{$type}) {
 		}
 	if ($stat) {
 		foreach my $k ('value', 'nice_value', 'desc') {
-			$hash{'STATUS_'.uc($k)} = $stat->{$k} if ($stat->{$k});
+			$hash{'STATUS_'.uc($k)} = $stat->{$k} ? $stat->{$k} : "";
 			}
 		}
 	foreach my $k (keys %$serv) {
