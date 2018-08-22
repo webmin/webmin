@@ -10810,7 +10810,7 @@ if (!$@) {
 		}
 	}
 else {
-	error("Something went wrong : $@");
+	error("The JSON::PP Perl module is not available on your system : $@");
 	}
 }
 
