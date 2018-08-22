@@ -352,6 +352,10 @@ foreach my $m (@mounted) {
 			# Skip /snap mounts
 			next;
 			}
+		if ($m->[1] =~ /^\/dev\/sr/) {
+			# Skip CDs
+			next;
+			}
 		# Get the size - for ZFS mounts, this comes from the underlying
 		# total pool size and free
 		my ($t, $f);
