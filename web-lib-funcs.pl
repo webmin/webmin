@@ -10810,7 +10810,7 @@ if (!$@) {
 		}
 	}
 else {
-	return "$@";
+	error("Something went wrong : $@");
 	}
 }
 
