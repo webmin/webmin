@@ -10791,6 +10791,42 @@ for(my $i=0; $i<@sp1 || $i<@sp2; $i++) {
 return 0;
 }
 
+=head2 convert_to_json(data)
+
+Converts the given Perl data structure to encoded binary string
+
+=item data parameter is a hash/array reference
+
+=cut
+sub convert_to_json
+{
+eval "use JSON::PP";
+if (!$@) {
+	if (@_) {
+		return JSON::PP->new->pretty->encode(@_);
+		}
+	else {
+		return JSON::PP->new->pretty->encode({});
+		}
+	}
+else {
+	return "$@";
+	}
+}
+
+=head2 print_json(data)
+
+Prints JSON data
+
+=item data parameter is a hash/array reference
+
+=cut
+sub print_json
+{
+print "Content-type: application/json; charset=@{[lc(get_charset())]}\n\n";
+print convert_to_json(@_);
+}
+
 $done_web_lib_funcs = 1;
 
 1;
