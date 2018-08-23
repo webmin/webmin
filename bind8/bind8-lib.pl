@@ -2145,10 +2145,8 @@ sub before_editing
 {
 my ($zone) = @_;
 if (!$freeze_zone_count{$zone->{'name'}}) {
-	my ($out, $ok) = &try_cmd(
-		"freeze ".quotemeta($zone->{'name'})." IN ".
-		quotemeta($zone->{'view'} || "").
-		" 2>&1 </dev/null");
+	my ($out, $ok) = &try_cmd("freeze ".quotemeta($zone->{'name'})." IN ".quotemeta($zone->{'view'}).
+		 " 2>&1 </dev/null");
 	if ($ok) {
 		$freeze_zone_count{$zone->{'name'}}++;
 		&register_error_handler(\&after_editing, $zone);
@@ -2163,8 +2161,7 @@ sub after_editing
 my ($zone) = @_;
 if ($freeze_zone_count{$zone->{'name'}}) {
 	$freeze_zone_count{$zone->{'name'}}--;
-	&try_cmd("thaw ".quotemeta($zone->{'name'})." IN ".
-		 quotemeta($zone->{'view'} || "").
+	&try_cmd("thaw ".quotemeta($zone->{'name'})." IN ".quotemeta($zone->{'view'}).
 		 " 2>&1 </dev/null");
 	}
 }
@@ -2178,14 +2175,20 @@ my ($dom, $view) = @_;
 my ($out, $ex);
 if ($view) {
 	# Reload a zone in a view
+	&try_cmd("freeze ".quotemeta($dom)." IN ".quotemeta($view).
+		 " 2>&1 </dev/null");
 	$out = &try_cmd("reload ".quotemeta($dom)." IN ".quotemeta($view).
 			" 2>&1 </dev/null");
 	$ex = $?;
+	&try_cmd("thaw ".quotemeta($dom)." IN ".quotemeta($view).
+		 " 2>&1 </dev/null");
 	}
 else {
 	# Just reload one top-level zone
+	&try_cmd("freeze ".quotemeta($dom)." 2>&1 </dev/null");
 	$out = &try_cmd("reload ".quotemeta($dom)." 2>&1 </dev/null");
 	$ex = $?;
+	&try_cmd("thaw ".quotemeta($dom)." 2>&1 </dev/null");
 	}
 if ($out =~ /not found/i) {
 	# Zone is not known to BIND yet - do a total reload
