@@ -10803,10 +10803,10 @@ sub convert_to_json
 eval "use JSON::PP";
 if (!$@) {
 	if (@_) {
-		return JSON::PP->new->pretty->encode(@_);
+		return JSON::PP->new->latin1->encode(@_);
 		}
 	else {
-		return JSON::PP->new->pretty->encode({});
+		return JSON::PP->new->latin1->encode({});
 		}
 	}
 else {
@@ -10823,7 +10823,7 @@ Prints JSON data
 =cut
 sub print_json
 {
-print "Content-type: application/json; charset=@{[lc(get_charset())]}\n\n";
+print "Content-type: application/json;\n\n";
 print convert_to_json(@_);
 }
 
