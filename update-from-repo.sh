@@ -3,7 +3,7 @@
 # Update webmin/usermin to the latest develop version  from GitHub repo
 # inspired by authentic-theme/theme-update.sh script, thanks @rostovtsev
 #
-VERS="1.6.4, 2018-03-27"
+VERS="1.6.7, 2018-08-23"
 #
 COPY=" Kay Marquardt <kay@rrr.de>         https://github.com/gnadelwartz"
 #############################################################################
@@ -263,7 +263,7 @@ REPLY="y"
 
 if [ "${ASK}" == "YES" ] ; then
     if [[ "$1" != "-release"* ]] ; then
-        echo -e "${RED}Warning:${ORANGE} update from non release repository${NC} ${HOST}/${REPO}${BRANCH} ${ORANGE}may break your installation!${NC}"
+        echo -e "${RED}Warning:${ORANGE} you are updating from DEV repository${NC} ${HOST}/${REPO}${BRANCH} ${ORANGE}, this may break your installation!${NC}"
     fi
     read -p "Would you like to update "${PROD^}" from ${HOST}/${REPO}${BRANCH} [y/N] " -n 1 -r
     echo
