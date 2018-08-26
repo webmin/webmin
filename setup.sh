@@ -119,7 +119,7 @@ if [ ! -d $config_dir ]; then
 		exit 2
 	fi
 fi
-if [ -r "$config_dir/config" ]; then
+if [ -r "$config_dir/config" -a -r "$config_dir/var-path" -a -r "$config_dir/perl-path" ]; then
 	echo "Found existing Webmin configuration in $config_dir"
 	echo ""
 	upgrading=1
