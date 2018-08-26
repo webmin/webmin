@@ -128,7 +128,9 @@ if (-d "$tardir/$dir/authentic-theme/extensions") {
 	}
 
 # Remove theme settings files
-system("find $tardir/$dir/authentic-theme -name 'settings_*.js' | xargs rm");
+if (-d "$tardir/$dir/authentic-theme") {
+	system("find $tardir/$dir/authentic-theme -name 'settings_*.js' | xargs rm");
+	}
 
 # Add other directories
 foreach $d (@dirlist) {
