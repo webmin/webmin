@@ -55,7 +55,7 @@ eval {
 		# Use Webmin's built in FTP code
 		&ftp_download($_[0]->{'host'}, $_[0]->{'file'}, $temp, \$error,
 			      undef, $_[0]->{'user'}, $_[0]->{'pass'},
-			      $_[0]->{'port'});
+			      $_[0]->{'port'}, 0, 0);
 		}
 	alarm(0);
 	$up = $error ? 0 : 1;
