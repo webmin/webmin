@@ -2398,9 +2398,10 @@ foreach my $hname (keys %$headers) {
 # Actually download it
 $main::download_timed_out = undef;
 local $SIG{ALRM} = \&download_timeout;
-alarm($timeout || 60);
+$timeout = 60 if (!defined($timeout));
+alarm($timeout) if ($timeout);
 my $h = &make_http_connection($host, $port, $ssl, "GET", $page, \@headers);
-alarm(0);
+alarm(0) if ($timeout);
 $h = $main::download_timed_out if ($main::download_timed_out);
 if (!ref($h)) {
 	if ($error) { $$error = $h; return; }
@@ -2427,10 +2428,11 @@ local ($line, %header, @headers, $s);  # Kept local so that callback funcs
 				       # can access them.
 
 # read headers
-alarm($timeout || 60);
+$timeout = 60 if (!defined($timeout));
+alarm($timeout) if ($timeout);
 ($line = &read_http_connection($h)) =~ tr/\r\n//d;
 if ($line !~ /^HTTP\/1\..\s+(200|30[0-9]|400)(\s+|$)/) {
-	alarm(0);
+	alarm(0) if ($timeout);
 	&close_http_connection($h);
 	if ($error) { ${$error} = $line; return; }
 	else { &error("Download failed : ".&html_escape($line)); }
@@ -2445,7 +2447,7 @@ while(1) {
 	$header{lc($1)} = $2;
 	push(@headers, [ lc($1), $2 ]);
 	}
-alarm(0);
+alarm(0) if ($timeout);
 if ($main::download_timed_out) {
 	&close_http_connection($h);
 	if ($error) { ${$error} = $main::download_timed_out; return 0; }
@@ -2603,9 +2605,10 @@ foreach my $hname (keys %$headers) {
 # Actually download it
 $main::download_timed_out = undef;
 local $SIG{ALRM} = \&download_timeout;
-alarm($timeout || 60);
+$timeout = 60 if (!defined($timeout));
+alarm($timeout) if ($timeout);
 my $h = &make_http_connection($host, $port, $ssl, "POST", $page, \@headers);
-alarm(0);
+alarm(0) if ($timeout);
 $h = $main::download_timed_out if ($main::download_timed_out);
 if (!ref($h)) {
 	if ($error) { $$error = $h; return; }
@@ -2638,11 +2641,14 @@ Download data from an FTP site to a local file. The parameters are :
 
 =item no-cache - If set to 1, Webmin's internal caching for this URL is disabled.
 
+=item timeout - Timeout for connections, defaults to 60s
+
 =cut
 sub ftp_download
 {
-my ($host, $file, $dest, $error, $cbfunc, $user, $pass, $port, $nocache) = @_;
+my ($host, $file, $dest, $error, $cbfunc, $user, $pass, $port, $nocache, $timeout) = @_;
 $port ||= 21;
+$timeout = 60 if (!defined($timeout));
 if ($gconfig{'debug_what_net'}) {
 	&webmin_debug_log('FTP', "host=$host port=$port file=$file".
 				 ($user ? " user=$user pass=$pass" : "").
@@ -2680,7 +2686,7 @@ if ($cfile && !$nocache) {
 # Actually download it
 $main::download_timed_out = undef;
 local $SIG{ALRM} = \&download_timeout;
-alarm(60);
+alarm($timeout) if ($timeout);
 my $connected;
 if ($gconfig{'ftp_proxy'} =~ /^http:\/\/(\S+):(\d+)/ && !&no_proxy($_[0])) {
 	# download through http-style proxy
@@ -2688,7 +2694,7 @@ if ($gconfig{'ftp_proxy'} =~ /^http:\/\/(\S+):(\d+)/ && !&no_proxy($_[0])) {
 	if (&open_socket($1, $2, "SOCK", \$error)) {
 		# Connected OK
 		if ($main::download_timed_out) {
-			alarm(0);
+			alarm(0) if ($timeout);
 			if ($error) {
 				$$error = $main::download_timed_out;
 				return 0;
@@ -2715,7 +2721,7 @@ if ($gconfig{'ftp_proxy'} =~ /^http:\/\/(\S+):(\d+)/ && !&no_proxy($_[0])) {
 		$connected = 1;
 		}
 	elsif (!$gconfig{'proxy_fallback'}) {
-		alarm(0);
+		alarm(0) if ($timeout);
 		if ($error) {
 			$$error = $main::download_timed_out;
 			return 0;
@@ -2729,7 +2735,7 @@ if ($gconfig{'ftp_proxy'} =~ /^http:\/\/(\S+):(\d+)/ && !&no_proxy($_[0])) {
 if (!$connected) {
 	# connect to host and login with real FTP protocol
 	&open_socket($host, $port, "SOCK", $_[3]) || return 0;
-	alarm(0);
+	alarm(0) if ($timeout);
 	if ($main::download_timed_out) {
 		if ($error) {
 			$$error = $main::download_timed_out;
