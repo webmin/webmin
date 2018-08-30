@@ -930,9 +930,11 @@ if (@_ > 0) {
 	}
 print "$tconfig{'headhtml'}\n" if ($tconfig{'headhtml'});
 if ($tconfig{'headinclude'}) {
-	print &read_file_contents(
-		"$theme_root_directory/$tconfig{'headinclude'}");
-	}
+  my ($theme, $overlay) = split(' ', $gconfig{'theme'});
+  my $file_contents = read_file_contents("$root_directory/$overlay/$tconfig{'headinclude'}");;
+  $file_contents = replace_meta($file_contents);
+  print $file_contents;
+  }
 print "</head>\n";
 my $bgcolor = defined($tconfig{'cs_page'}) ? $tconfig{'cs_page'} :
 		 defined($gconfig{'cs_page'}) ? $gconfig{'cs_page'} : "ffffff";
@@ -949,24 +951,18 @@ print $html_body;
 if (defined(&theme_prebody)) {
 	&theme_prebody(@_);
 	}
-my $hostname = &get_display_hostname();
-my $version = &get_webmin_version();
+
 my $prebody = $tconfig{'prebody'};
 if ($prebody) {
-	$prebody =~ s/%HOSTNAME%/$hostname/g;
-	$prebody =~ s/%VERSION%/$version/g;
-	$prebody =~ s/%USER%/$remote_user/g;
-	$prebody =~ s/%OS%/$os_type $os_version/g;
+	$prebody = replace_meta($prebody);
 	print "$prebody\n";
 	}
-if ($tconfig{'prebodyinclude'}) {
-	local $_;
-	open(INC, "$theme_root_directory/$tconfig{'prebodyinclude'}");
-	while(<INC>) {
-		print;
+	if ($tconfig{'prebodyinclude'}) {
+    my ($theme, $overlay) = split(' ', $gconfig{'theme'});
+    my $file_contents = read_file_contents("$root_directory/$overlay/$tconfig{'prebodyinclude'}");
+    $file_contents = replace_meta($file_contents);
+    print $file_contents;
 		}
-	close(INC);
-	}
 if (@_ > 1) {
 	print $tconfig{'preheader'};
 	my %this_module_info = &get_module_info(&get_module_name());
@@ -1266,26 +1262,15 @@ print "<br>\n";
 if (!$_[$i]) {
 	my $postbody = $tconfig{'postbody'};
 	if ($postbody) {
-		my $hostname = &get_display_hostname();
-		my $version = &get_webmin_version();
-		my $os_type = $gconfig{'real_os_type'} ||
-			      $gconfig{'os_type'};
-		my $os_version = $gconfig{'real_os_version'} ||
-				 $gconfig{'os_version'};
-		$postbody =~ s/%HOSTNAME%/$hostname/g;
-		$postbody =~ s/%VERSION%/$version/g;
-		$postbody =~ s/%USER%/$remote_user/g;
-		$postbody =~ s/%OS%/$os_type $os_version/g;
+		$postbody = replace_meta($postbody);
 		print "$postbody\n";
 		}
 	if ($tconfig{'postbodyinclude'}) {
-		local $_;
-		open(INC, "$theme_root_directory/$tconfig{'postbodyinclude'}");
-		while(<INC>) {
-			print;
-			}
-		close(INC);
-		}
+    my ($theme, $overlay) = split(' ', $gconfig{'theme'});
+    my $file_contents = read_file_contents("$root_directory/$overlay/$tconfig{'postbodyinclude'}");
+    $file_contents = replace_meta($file_contents);
+    print $file_contents;
+    }
 	if (defined(&theme_postbody)) {
 		&theme_postbody(@_);
 		}
@@ -3220,6 +3205,29 @@ for(my $i=0; $i<@{$_[0]}; $i++) {
 while($i++%$cols) { print "<td width='$per%'></td>\n"; $need_tr++; }
 print "</tr>\n" if ($need_tr);
 print "</table>\n";
+}
+
+=head2 replace_meta($string)
+
+Replaces all occurrences of meta words
+
+=item string - String value to search/replace in
+
+=cut
+sub replace_meta
+{
+  my ($string) = @_;
+
+  my $hostname   = &get_display_hostname();
+  my $version    = &get_webmin_version();
+  my $os_type    = $gconfig{'real_os_type'} || $gconfig{'os_type'};
+  my $os_version = $gconfig{'real_os_version'} || $gconfig{'os_version'};
+  $string =~ s/%HOSTNAME%/$hostname/g;
+  $string =~ s/%VERSION%/$version/g;
+  $string =~ s/%USER%/$remote_user/g;
+  $string =~ s/%OS%/$os_type $os_version/g;
+
+  return $string;
 }
 
 =head2 replace_file_line(file, line, [newline]*)
