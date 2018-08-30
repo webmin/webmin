@@ -58,7 +58,7 @@ foreach my $f (glob("$netplan_dir/*.yaml")) {
 				if (&check_ip6address($a)) {
 					push(@addrs6, $v);
 					}
-				else {
+				elsif (&check_ipaddress($a)) {
 					push(@addrs, $v);
 					}
 				}
