@@ -8899,6 +8899,7 @@ else {
 	# Actually opening
 	my ($fh, $file, $noerror, $notemp, $safe) = @_;
 	$fh = &callers_package($fh);
+	$main::open_tempfiles_noerror{$file} = $noerror;
 
 	my %gaccess = &get_module_acl(undef, "");
 	my $db = $gconfig{'debug_what_write'};
@@ -9020,12 +9021,17 @@ my $fh = &callers_package($_[0]);
 
 if (defined($file = $main::open_temphandles{$fh})) {
 	# Closing a handle
-	close($fh) || &error(&text("efileclose", $file, $!));
+	my $noerror = $main::open_tempfiles_noerror{$file};
+	if (!close($fh)) {
+		if ($noerror) { return 0; }
+		else { &error(&text("efileclose", $file, $!)); }
+		}
 	delete($main::open_temphandles{$fh});
 	return &close_tempfile($file);
 	}
 elsif (defined($main::open_tempfiles{$_[0]})) {
 	# Closing a file
+	my $noerror = $main::open_tempfiles_noerror{$_[0]};
 	&webmin_debug_log("CLOSE", $_[0]) if ($gconfig{'debug_what_write'});
 	my @st = stat($_[0]);
 	if (&is_selinux_enabled() && &has_command("chcon")) {
@@ -9035,7 +9041,10 @@ elsif (defined($main::open_tempfiles{$_[0]})) {
 		       " >/dev/null 2>&1");
 		}
 	my @old_attributes = &get_clear_file_attributes($_[0]);
-	rename($main::open_tempfiles{$_[0]}, $_[0]) || &error("Failed to replace $_[0] with $main::open_tempfiles{$_[0]} : $!");
+	if (!rename($main::open_tempfiles{$_[0]}, $_[0])) {
+		if ($noerror) { return 0; }
+		else { &error("Failed to replace $_[0] with $main::open_tempfiles{$_[0]} : $!"); }
+		}
 	if (@st) {
 		# Set original permissions and ownership
 		chmod($st[2], $_[0]);
@@ -9043,6 +9052,7 @@ elsif (defined($main::open_tempfiles{$_[0]})) {
 		}
 	&reset_file_attributes($_[0], \@old_attributes);
 	delete($main::open_tempfiles{$_[0]});
+	delete($main::open_tempfiles_noerror{$_[0]});
 	@main::temporary_files = grep { $_ ne $main::open_tempfiles{$_[0]} } @main::temporary_files;
 	if ($main::open_templocks{$_[0]}) {
 		&unlock_file($_[0]);
