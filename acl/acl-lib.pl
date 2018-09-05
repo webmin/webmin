@@ -1919,7 +1919,7 @@ my ($path, $mod) = @_;
 # Find out what users and paths we grant access to currently
 my %miniserv;
 &get_miniserv_config(\%miniserv);
-my @anon = split(/\s+/, $miniserv{'anonymous'});
+my @anon = split(/\s+/, $miniserv{'anonymous'} || "");
 my $found = 0;
 my $user;
 foreach my $a (@anon) {
