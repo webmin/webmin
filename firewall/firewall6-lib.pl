@@ -25,7 +25,7 @@ else {
 		 '--dport', '--sport', '--tcp-flags', '--tcp-option',
 		 '--icmpv6-type', '--mac-source', '--limit', '--limit-burst',
 		 '--ports', '--uid-owner', '--gid-owner',
-		 '--pid-owner', '--sid-owner', '--state', '--cstate', '--tos',
+		 '--pid-owner', '--sid-owner', '--state', '--ctstate', '--tos',
 		 '-j', '--to-ports', '--to-destination', '--to-source',
 		 '--reject-with', '--dports', '--sports',
 		 '--comment',
