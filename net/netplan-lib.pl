@@ -1,5 +1,7 @@
 # Networking functions for Ubuntu 17+, which uses Netplan by default
 # XXX preserve other fields
+# XXX 'match' section
+# XXX 'set-name' directive
 
 $netplan_dir = "/etc/netplan";
 $sysctl_config = "/etc/sysctl.conf";
@@ -188,7 +190,7 @@ else {
 		}
 	if (@addrs) {
 		push(@lines, $id."    "."addresses: [".
-				&join_addr_netmask(@addrs)."]");
+				&join_addr_list(@addrs)."]");
 		}
 	if ($iface->{'gateway'}) {
 		push(@lines, $id."    "."gateway4: ".$iface->{'gateway'});
@@ -199,10 +201,10 @@ else {
 	if ($iface->{'nameserver'}) {
 		push(@lines, $id."    "."nameservers:");
 		push(@lines, $id."        "."addresses: [".
-			     &join_addr_netmask(@{$iface->{'nameserver'}})."]");
+			     &join_addr_list(@{$iface->{'nameserver'}})."]");
 		if ($iface->{'search'}) {
 			push(@lines, $id."        "."search: [".
-			     &join_addr_netmask(@{$iface->{'search'}})."]");
+			     &join_addr_list(@{$iface->{'search'}})."]");
 			}
 		}
 	if ($iface->{'ether'}) {
@@ -528,11 +530,12 @@ my $lnum = 0;
 my $rv = [ ];
 my $parent = { 'members' => $rv,
 	       'indent' => -1 };
+my $lastdir;
 foreach my $origl (@$lref) {
 	my $l = $origl;
 	$l =~ s/#.*$//;
-	if ($l =~ /^(\s*)(\S+):\s*(\S.*)/) {
-		# Value line
+	if ($l =~ /^(\s*)(\S+):\s*(.*)/) {
+		# Name and possibly value
 		my $i = length($1);
 		my $dir = { 'indent' => length($1),
 			    'name' => $2,
@@ -540,38 +543,39 @@ foreach my $origl (@$lref) {
 			    'line' => $lnum,
 			    'eline' => $lnum,
 			    'parent' => $parent,
+			    'members' => [],
 			  };
 		if ($dir->{'value'} =~ /^\[(.*)\]$/) {
-			$dir->{'value'} = [ split(/,/, $1) ];
+			$dir->{'value'} = [ &split_addr_list("$1") ];
 			}
-		while($i <= $parent->{'indent'}) {
-			$parent = $parent->{'parent'};
-			}
-		push(@{$parent->{'members'}}, $dir);
-		&set_parent_elines($parent, $lnum);
-		}
-	elsif ($l =~ /^(\s*)(\S+):\s*$/) {
-		# Section header line
-		my $i = length($1);
-		my $dir = { 'indent' => length($1),
-			    'name' => $2,
-			    'members' => [ ],
-			    'line' => $lnum,
-			    'eline' => $lnum,
-			  };
-		if ($i > $parent->{'indent'}) {
-			# Start of a sub-section inside the current directive
+		if (!$lastdir || $i == $lastdir->{'indent'}) {
+			# At same level as previous directive, which puts it
+			# underneath current parent
 			push(@{$parent->{'members'}}, $dir);
-			$dir->{'parent'} = $parent;
-			&set_parent_elines($parent, $lnum);
-			$parent = $dir;
 			}
-		else {
-			# Pop up a level (or more)
-			while($i <= $parent->{'indent'}) {
+		elsif ($i > $lastdir->{'indent'}) {
+			# A further ident by one level, meaning that it is under
+			# the previous directive
+			$parent = $lastdir;
+			push(@{$parent->{'members'}}, $dir);
+			}
+		elsif ($i < $lastdir->{'indent'}) {
+			# Indent has decreased, so this must be under a previous
+			# parent directive
+			$parent = $parent->{'parent'};
+			while($i < $parent->{'indent'}) {
 				$parent = $parent->{'parent'};
 				}
+			push(@{$parent->{'members'}}, $dir);
 			}
+		$lastdir = $dir;
+		&set_parent_elines($parent, $lnum);
+		}
+	elsif ($l =~ /^(\s*)\-\s*(\S+)\s*$/) {
+		# Value-only line that is an extra value for the previous dir
+		push(@{$lastdir->{'value'}}, $2);
+		$lastdir->{'eline'} = $lnum;
+		&set_parent_elines($parent, $lnum);
 		}
 	$lnum++;
 	}
@@ -604,9 +608,9 @@ else {
 	}
 }
 
-# join_addr_netmask(addr, ...)
+# join_addr_list(addr, ...)
 # Returns a string of properly joined addresses 
-sub join_addr_netmask
+sub join_addr_list
 {
 my @rv;
 foreach my $a (@_) {
@@ -618,6 +622,23 @@ foreach my $a (@_) {
 		}
 	}
 return join(",", @rv);
+}
+
+# split_addr_list(string)
+# Split up a string of properly formatted addresses
+sub split_addr_list
+{
+my ($str) = @_;
+my @rv;
+foreach my $a (split(/,/, $str)) {
+	if ($a =~ /^'(.*)'$/ || $a =~ /^"(.*)"$/) {
+		push(@rv, $1);
+		}
+	else {
+		push(@rv, $a);
+		}
+	}
+return @rv;
 }
 
 sub is_true_value
