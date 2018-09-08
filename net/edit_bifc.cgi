@@ -215,7 +215,7 @@ if ($mtufield) {
 	}
 
 # Virtual sub-interfaces
-if ($b && $b->{'virtual'} eq "") {
+if ($b && $b->{'virtual'} eq "" && !$in{'new'}) {
 	$vcount = 0;
 	foreach $vb (@boot) {
 		if ($vb->{'virtual'} ne "" && $vb->{'name'} eq $b->{'name'}) {

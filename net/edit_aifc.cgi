@@ -153,7 +153,7 @@ if ((!$a && $in{'virtual'} eq "") ||
 	}
 
 # Virtual sub-interfaces
-if ($a && $a->{'virtual'} eq "") {
+if ($a && $a->{'virtual'} eq "" && !$in{'new'}) {
 	$vcount = 0;
 	foreach $va (@act) {
 		if ($va->{'virtual'} ne "" && $va->{'name'} eq $a->{'name'}) {
