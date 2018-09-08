@@ -291,10 +291,10 @@ return <<EOF
 <script type='text/javascript'>
 function setparent(sel)
 {
-var idx = document.forms[0].assign.selectedIndex;
-var v = document.forms[0].assign.options[idx].value;
+var idx = document.getElementsByName("assign")[0].selectedIndex;
+var v = document.getElementsByName("assign")[0].options[idx].value;
 var vv = v.split(";");
-var parent = document.forms[0].parent;
+var parent = document.getElementsByName("parent")[0];
 parent.length = 0;
 
 if (v==1) {
