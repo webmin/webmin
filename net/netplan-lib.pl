@@ -25,6 +25,7 @@ foreach my $f (glob("$netplan_dir/*.yaml")) {
 		my $cfg = { 'name' => $e->{'name'},
 			    'fullname' => $e->{'name'},
 			    'file' => $f,
+			    'yaml' => $e,
 			    'line' => $e->{'line'},
 			    'eline' => $e->{'eline'},
 			    'edit' => 1,
@@ -209,6 +210,16 @@ else {
 		}
 	if ($iface->{'ether'}) {
 		push(@lines, $id."    "."macaddress: ".$iface->{'ether'});
+		}
+
+	# Add all extra YAML directives from the original config
+	my @poss = ( "optional", "dhcp4", "dhcp6", "addresses", "gateway4",
+		     "gateway6", "nameservers", "macaddress" );
+	if ($iface->{'yaml'}) {
+		foreach my $y (@{$yaml->{'members'}}) {
+			next if (&indexof($y->{'name'}, @poss) >= 0);
+			push(@lines, &yaml_lines($y, $id."    "));
+			}
 		}
 
 	if ($iface->{'file'}) {
@@ -580,6 +591,23 @@ foreach my $origl (@$lref) {
 	$lnum++;
 	}
 return $rv;
+}
+
+# yaml_lines(&directive, indent-string)
+sub yaml_lines
+{
+my ($yaml, $id) = @_;
+my @rv;
+push(@rv, $id.$yaml->{'name'}.":".
+	  (ref($yaml->{'value'}) eq 'ARRAY' ?
+		" [".&join_addr_list(@{$yaml->{'value'}})."]" :
+	   defined($yaml->{'value'}) ? " ".$yaml->{'value'} : ""));
+if ($yaml->{'members'}) {
+	foreach my $m (@{$yaml->{'members'}}) {
+		push(@rv, &yaml_lines($m, $id."    "));
+		}
+	}
+return @rv;
 }
 
 # set_parent_elines(&conf, eline)
