@@ -1,1 +1,1 @@
-desc_nl=Shoreline Firewall
+desc_nl=Shorewall Firewall

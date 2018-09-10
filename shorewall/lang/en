@@ -1,4 +1,4 @@
-index_title=Shoreline Firewall
+index_title=Shorewall Firewall
 index_ecmd=The command $1 was not found on your system. Maybe it is not installed, or the <a href='$2'>module configuration</a> is incorrect.
 index_edir=The Shorewall configuration directory $1 was not found on your system. Maybe it is not installed, or the <a href='$2'>module configuration</a> is incorrect.
 index_version=Shorewall version $1

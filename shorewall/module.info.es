@@ -1,1 +1,1 @@
-desc_es=Cortafuegos Shoreline
+desc_es=Cortafuegos Shorewall

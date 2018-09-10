@@ -1,4 +1,4 @@
-index_title=Tallafocs Shoreline
+index_title=Tallafocs Shorewall
 index_ecmd=No s'ha trobat al sistema l'ordre $1. Pot ser que no estigui instal·lada, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_edir=No s'ha trobat al sistema el directori $1 de configuració de Shorewall. Pot ser que no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_version=Shorewall versió $1
