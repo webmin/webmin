@@ -25,10 +25,6 @@ open(HELP, $path) || &helperror(&text('help_efile', $path));
 read(HELP, $help, $st[7]);
 close(HELP);
 
-if (text_subs_ambiguous($ENV{'SCRIPT_NAME'})) {
-	$help = text_subs_ambiguous($ENV{'SCRIPT_NAME'}, $help);
-	}
-
 # find and replace the <header> section
 if ($help =~ s/<header>([^<]+)<\/header>//i) {
 	&popup_header($1);
@@ -103,3 +99,4 @@ print "<center><h2>$text{'error'}</h2></center>\n";
 print "<hr><p><b>",@_,"</b><p><hr>\n";
 exit;
 }
+

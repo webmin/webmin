@@ -29,7 +29,7 @@
 
 # generate_config(&config, info-file, [module], [&can-config], [checkbox-name],
 #		  [only-section])
-# Prints HTML for
+# Prints HTML for 
 sub generate_config
 {
 my ($configref, $file, $module, $canconfig, $cbox, $section) = @_;
@@ -232,10 +232,6 @@ foreach my $c (@info_order) {
 		$field = &ui_password($c, undef, $p[2] || 40, 0, $p[3]);
 		}
 	$label = "<a name=$c>$label</a>";
-	if (text_subs_ambiguous($ENV{'REQUEST_URI'})) {
-		$label = text_subs_ambiguous($ENV{'REQUEST_URI'}, $label);
-		}
-
 	print &ui_table_row($label, $field, 1, [ "width=30% nowrap" ]);
 	}
 }
@@ -352,3 +348,4 @@ return @new_order;
 }
 
 1;
+

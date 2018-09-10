@@ -5066,92 +5066,7 @@ if (!$norefs) {
 if (defined(&theme_load_language)) {
 	&theme_load_language(\%text, $_[0]);
 	}
-if (text_subs_ambiguous($_[0])) {
-	my %text_replaced = text_subs_ambiguous($_[0], 0, \%text);
-	return %text_replaced;
-	}
 return %text;
-}
-
-=head2 text_subs_ambiguous(module)
-
-Used to replace certain text strings that meet requirements from (meanwhile internal %modules)
-
-=item $module - Module name to trigger substitutions on
-
-=item $replacement - Actual string where to replace
-
-=item %text - hash reference (derived from language file) to run substitutions in.
-
-=cut
-sub text_subs_ambiguous
-{
-	my ($module, $replacement, $text_hashref) = @_;
-
-	my ($script_name) = ($module =~ /\?/ ? $module : $ENV{'SCRIPT_NAME'});
-
-	# Configurable options for certain modules/pages where hash's key is the mandatory module name, and value is an array of:
-	#		1. Text to replace from/to (required)
-	# 	2. Other pages to run this replacement on (besides module name)
-	#		3. Module's executable reference, that provides the command output to test the string below
-	#		4. Searched string to test against the command output (if not set it will be equal to the replaced value)
-	my %modules = (
-   'mysql' => [['MySQL', 'MariaDB'],
-               [
-							 	'/help.cgi',
-							 	'/config.cgi?mysql',
-							 	'/config.cgi?virtual-server',
-							 	'/virtual-server/wizard.cgi',
-							  '/virtual-server/list_databases.cgi',
-							  '/virtual-server/edit_domain.cgi',
-								'/virtual-server/edit_newmysqls.cgi'
-							 ],
-               'mysql'
-   ]);
-
-	# Check for extra pages to run replacements for
-	my @pages;
-	foreach my $_module (keys %modules) {
-		my $pages = $modules{$_module}[1];
-		if (grep {$_ eq $script_name} @$pages) {
-			push(@pages, $_module);
-			$module = $_module;
-			}
-		}
-
-	# Step 2. Call to run the replacement
-	if ($text_hashref) {
-		my %text_hashref_replaced = map { $_ => text_subs_ambiguous($module, $text_hashref->{$_}) } keys %{ $text_hashref };
-		return %text_hashref_replaced;
-		}
-
-	# Step 3. Test and replace all strings
-	if ($replacement) {
-		my $from = $modules{$module}[0][0];
-		my $to = $modules{$module}[0][1];
-		$replacement =~ s/$from/$to/g;
-		return $replacement;
-		}
-
-	# Step 1. Quickly test if we need to run replacement at all (if we do, respond time will be slightly
-	# slower than before, depending on the module
-	if (indexof($module, keys %modules) >= 0 || @pages) {
-		# Replace only when condition 3 is set
-		if ($modules{$module}[2]) {
-			read_file("$config_directory/$module/config", \%{ "$module" . '_conf' });
-			my $searched_string = $modules{$module}[3] || $modules{$module}[0][1];
-			if (backquote_command("\"${\"$module\". '_conf'}{$modules{$module}[2]}\" -V 2>&1") =~ /$searched_string/i) {
-				return 1;
-				}
-			}
-			# Replace in any case, when module name or page name matches
-			else {
-				return 1;
-			}
-		}
-		# Do not replace anything (as fast as before)
-		else {
-			}
 }
 
 =head2 text_subs(string)
@@ -5375,10 +5290,6 @@ if ($rv{'longdesc'}) {
 # Call theme-specific override function
 if (defined(&theme_get_module_info)) {
 	%rv = &theme_get_module_info(\%rv, $_[0], $_[1], $_[2]);
-	}
-if (text_subs_ambiguous($_[0])) {
-	my %rv_replaced = text_subs_ambiguous($_[0], 0, \%rv);
-	return %rv_replaced;
 	}
 
 return %rv;
