@@ -1,7 +1,4 @@
 # Networking functions for Ubuntu 17+, which uses Netplan by default
-# XXX preserve other fields
-# XXX 'match' section
-# XXX 'set-name' directive
 
 $netplan_dir = "/etc/netplan";
 $sysctl_config = "/etc/sysctl.conf";
@@ -216,7 +213,7 @@ else {
 	my @poss = ( "optional", "dhcp4", "dhcp6", "addresses", "gateway4",
 		     "gateway6", "nameservers", "macaddress" );
 	if ($iface->{'yaml'}) {
-		foreach my $y (@{$yaml->{'members'}}) {
+		foreach my $y (@{$iface->{'yaml'}->{'members'}}) {
 			next if (&indexof($y->{'name'}, @poss) >= 0);
 			push(@lines, &yaml_lines($y, $id."    "));
 			}
