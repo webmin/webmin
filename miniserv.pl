@@ -3135,8 +3135,10 @@ sub log_request
 {
 local ($host, $user, $request, $code, $bytes) = @_;
 local $headers;
-foreach my $nolog (split(/\s+/, $config{'nolog'})) {
-	return if ($request =~ /^$nolog$/);
+if ($config{'nolog'}) {
+	foreach my $nolog (split(/\s+/, $config{'nolog'})) {
+		return if ($request =~ /^$nolog$/);
+		}
 	}
 if ($config{'log'}) {
 	local $ident = "-";
