@@ -376,7 +376,7 @@ sub split_addresses
 {
 local (@rv, $str = $_[0]);
 while(1) {
-	if ($str =~ /^[\s,]*(([^<>\(\)\s]+)\s+\(([^\(\)]+)\))(.*)$/) {
+	if ($str =~ /^[\s,]*(([^<>\(\)"\s]+)\s+\(([^\(\)]+)\))(.*)$/) {
 		# An address like  foo@bar.com (Fooey Bar)
 		push(@rv, [ $2, $3, $1 ]);
 		$str = $4;
