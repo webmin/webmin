@@ -298,10 +298,10 @@ else {
 # run sendmail and feed it the reply
 ($rfrom) = &split_addresses($rheader{'From'});
 if ($rfrom->[0]) {
-	open(MAIL, "|$config{'sendmail_path'} -t -f$rfrom->[0]");
+	open(MAIL, "|$config{'sendmail_path'} -t -f".quotemeta($rfrom->[0]));
 	}
 else {
-	open(MAIL, "|$config{'sendmail_path'} -t -f$to");
+	open(MAIL, "|$config{'sendmail_path'} -t -f".quotemeta($to));
 	}
 foreach $h (keys %rheader) {
 	print MAIL "$h: $rheader{$h}\n";
