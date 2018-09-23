@@ -151,7 +151,7 @@ view_markas1=Read
 view_markas2=Special
 view_return=original email
 view_sub=Attached Email
-view_sub2=Attached email from <i>$1</i>
+view_sub2=Attached email from $1
 view_egone=This message no longer exists
 view_eugone=This user does not exist
 
