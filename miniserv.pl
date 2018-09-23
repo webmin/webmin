@@ -5947,7 +5947,7 @@ foreach my $f (readdir(CRONS)) {
 				}
 			}
 		if (!$cron{'interval'} && $cron{'mins'} eq '' &&
-		    $cron{'special'} eq '') {
+		    $cron{'special'} eq '' && !$cron->{'boot'}) {
 			print STDERR "Cron $1 missing any time spec\n";
 			$broken = 1;
 			}
