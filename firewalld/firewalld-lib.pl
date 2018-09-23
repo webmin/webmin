@@ -76,6 +76,26 @@ $out =~ s/\r|\n//g;
 return split(/\s+/, $out);
 }
 
+# list_firewalld_services_with_ports()
+# Returns an array of service names and descriptions
+sub list_firewalld_services_with_ports
+{
+my @rv;
+foreach my $s (&list_firewalld_services()) {
+	my @n = getservbyname($s, "tcp");
+	if (!@n) {
+		@n = getservbyname($s, "udp");
+		}
+	if (@n) {
+		push(@rv, [ $s, $s." (".$n[2]." ".uc($n[3]).")" ]);
+		}
+	else {
+		push(@rv, [ $s, $s ]);
+		}
+	}
+return @rv;
+}
+
 # create_firewalld_port(&zone, port|range, proto)
 # Adds a new allowed port to a zone. Returns undef on success or an error
 # message on failure

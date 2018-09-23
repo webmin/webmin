@@ -32,7 +32,7 @@ print &ui_table_row($text{'port_zone'},
 
 # Service name
 print &ui_table_row($text{'serv_name'},
-	&ui_select("serv", $serv, [ &list_firewalld_services() ]));
+	&ui_select("serv", $serv, [ &list_firewalld_services_with_ports() ]));
 
 print &ui_table_end();
 if ($in{'new'}) {
