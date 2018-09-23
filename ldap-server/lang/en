@@ -262,6 +262,7 @@ gencert_same=Current config files
 gencert_dir=Directory
 gencert_err=Failed to generate certificate
 gencert_edest=Destination directory does not exist
+gencert_epath=Certificate and key files in the LDAP server config must be absolute paths
 
 perms_err=Failed to fix file ownership
 

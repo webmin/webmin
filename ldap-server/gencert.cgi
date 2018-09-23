@@ -13,6 +13,8 @@ $conf = &get_config();
 if ($in{'dest_def'}) {
 	$keyfile = &find_value("TLSCertificateKeyFile", $conf);
 	$certfile = &find_value("TLSCertificateFile", $conf);
+	$keyfile =~ /^\// || &error($text{'gencert_epath'});
+	$certfile =~ /^\// || &error($text{'gencert_epath'});
 	}
 else {
 	# In some dir
