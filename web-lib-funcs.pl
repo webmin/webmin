@@ -4920,7 +4920,7 @@ if ($ENV{'HTTP_X_REQUESTED_WITH'} ne "XMLHttpRequest" &&
 	        	}
 	    	}
 			# Append hex URL representation to stored file name, to process multiple, simultaneous requests
-			my $url_salt  = unpack("H*", $url);
+			my $url_salt  = substr(unpack("H*", $url), -180);
 	    $var{$key} = $url;
 	    write_file(tempname('.theme_' . $salt . '_' . $url_salt . '_' . get_product_name() . '_' . $key . '_' . $remote_user), \%var);
 		}
