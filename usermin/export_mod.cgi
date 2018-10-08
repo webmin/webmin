@@ -29,9 +29,10 @@ if ($in{'to'} == 0) {
 	# Output the file
 	print "Content-type: application/octet-stream\n\n";
 	open(TEMP, $temp);
-	while(<TEMP>) {
-		print $_;
-		}
+        my $buf;         
+        while(read(TEMP, $buf, 32768)) {
+                print $buf;
+                }
 	close(TEMP);
 	unlink($temp);
 	}
