@@ -55,7 +55,7 @@ if ($?) {
 # Output the ZIP
 print "Content-type: application/zip\n\n";
 open(ZIP, $zip);
-while(read(ZIP, $buf, 1024) > 0) {
+while(read(ZIP, $buf, 32768) > 0) {
 	print $buf;
 	}
 close(ZIP);
