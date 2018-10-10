@@ -381,5 +381,5 @@ else {
 	&webmin_log("create", "user", $user{'name'}, \%in);
 	}
 &reload_miniserv();
-&redirect("");
+&redirect("index.cgi?refresh=1");
 

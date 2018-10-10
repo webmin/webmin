@@ -6,6 +6,7 @@ use strict;
 use warnings;
 require './acl-lib.pl';
 our (%in, %text, %config, %access, $base_remote_user);
+&ReadParse();
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 
 # Fetch user and group lists, if possible
@@ -217,6 +218,10 @@ if ($access{'sql'}) {
 if (@icons) {
 	print &ui_hr();
 	&icons_table(\@links, \@titles, \@icons);
+	}
+
+if ($in{'refresh'} && defined(&theme_post_change_modules)) {
+	&theme_post_change_modules();
 	}
 
 &ui_print_footer("/", $text{'index'});
