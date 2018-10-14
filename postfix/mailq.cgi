@@ -33,23 +33,16 @@ elsif ($config{'mailq_sort'} == 6) {
 if (@qfiles) {
 	if (@qfiles > $config{'perpage'}) {
 		# Need to show arrows
-		print "<center>\n";
 		$s = int($in{'start'});
 		$e = $in{'start'} + $config{'perpage'} - 1;
 		$e = @qfiles-1 if ($e >= @qfiles);
-		if ($s) {
-			print &ui_link("mailq.cgi?start=".
-					($s - $config{'perpage'}),
-			    "<img src=/images/left.gif border=0 align=middle>");
-			}
-		print "<font size=+1>",&text('mail_pos', $s+1, $e+1,
-					     scalar(@qfiles)),"</font>\n";
-		if ($e < @qfiles-1) {
-			print &ui_link("mailq.cgi?start=".
-				       ($s + $config{'perpage'}),
-			    "<img src=/images/right.gif border=0 align=middle>");
-			}
-		print "</center>\n";
+		print &ui_page_flipper(
+			&text('mail_pos', $s+1, $e+1, scalar(@qfiles)),
+			undef,
+			undef,
+			$s ? "mailq.cgi?start=".($s - $config{'perpage'}) : "",
+			$e < @qfiles-1 ? "mailq.cgi?start=".($s + $config{'perpage'}) : "",
+			);
 		}
 	else {
 		# Can show them all
