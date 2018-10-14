@@ -64,16 +64,23 @@ if (@qfiles) {
 	print &ui_submit($text{'mail_ok'});
 	print &ui_form_end();
 
-	# Show flush button, if the needed command is installed
+	print &ui_hr();
+	print &ui_buttons_start();
+
+	# Show buttons to flush and refresh mail queue
 	if (&has_command($config{'postfix_queue_command'})) {
-		print &ui_hr();
-		print &ui_buttons_start();
 		print &ui_buttons_row("flushq.cgi", $text{'mailq_flush'},
 				      $text{'mailq_flushdesc'});
 		print &ui_buttons_row("mailq.cgi?$in", $text{'mailq_refresh'},
 				      $text{'mailq_refreshdesc'});
-		print &ui_buttons_end();
 		}
+
+	# Show button to clear the mail queue entirely
+	print &ui_buttons_row("delete_queues.cgi", $text{'mailq_deleteall'},
+			      $text{'mailq_deletealldesc'},
+			      [ [ "all", 1 ] ]);
+
+	print &ui_buttons_end();
 	}
 else {
 	print "<b>$text{'mailq_none'}</b> <p>\n";

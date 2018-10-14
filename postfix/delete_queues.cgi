@@ -28,7 +28,14 @@ elsif ($in{'unhold'}) {
 		}
 	}
 else {
-	@files = split(/\0/, $in{'file'});
+	if ($in{'all'}) {
+		# All the files
+		@files = map { $_->{'id'} } &list_queue(1);
+		}
+	else {
+		# Selected files
+		@files = split(/\0/, $in{'file'});
+		}
 	if ($in{'confirm'} || !$config{'delete_confirm'}) {
 		# Deleting messages
 		if (&compare_version_numbers($postfix_version, 1.1) < 0) {
