@@ -555,11 +555,12 @@ else {
 			     !$cmd->{'raw'} && !$cmd->{'format'}, 0,
 			     $cmd->{'timeout'});
 	}
+local $ex = $?;
 &reset_environment() if ($cmd->{'clear'});
 close(OUTTEMP);
 local $rv = &read_file_contents($outtemp);
 unlink($outtemp);
-return ($got, $rv, $proc::safe_process_exec_timeout ? 1 : 0);
+return ($got, $rv, $proc::safe_process_exec_timeout ? 1 : 0, $ex);
 }
 
 # show_parameter_input(&arg, formno)
