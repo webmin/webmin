@@ -2145,8 +2145,9 @@ sub before_editing
 {
 my ($zone) = @_;
 if (!$freeze_zone_count{$zone->{'name'}}) {
-	my ($out, $ok) = &try_cmd("freeze ".quotemeta($zone->{'name'})." IN ".quotemeta($zone->{'view'}).
-		 " 2>&1 </dev/null");
+	my ($out, $ok) = &try_cmd(
+		"freeze ".quotemeta($zone->{'name'})." IN ".
+		quotemeta($zone->{'view'} || "")." 2>&1 </dev/null");
 	if ($ok) {
 		$freeze_zone_count{$zone->{'name'}}++;
 		&register_error_handler(\&after_editing, $zone);
@@ -2161,8 +2162,9 @@ sub after_editing
 my ($zone) = @_;
 if ($freeze_zone_count{$zone->{'name'}}) {
 	$freeze_zone_count{$zone->{'name'}}--;
-	&try_cmd("thaw ".quotemeta($zone->{'name'})." IN ".quotemeta($zone->{'view'}).
-		 " 2>&1 </dev/null");
+	&try_cmd(
+		"thaw ".quotemeta($zone->{'name'})." IN ".
+		quotemeta($zone->{'view'} || "")." 2>&1 </dev/null");
 	}
 }
 
