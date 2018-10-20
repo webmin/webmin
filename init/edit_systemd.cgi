@@ -59,11 +59,13 @@ else {
 			    &ui_yesno_radio("boot", $u->{'boot'}));
 		}
 	print &ui_table_row($text{'systemd_status'},
-		$u->{'status'} && $u->{'pid'} ?
+		$u->{'status'} == 1 && $u->{'pid'} ?
 			&text('systemd_status1', $u->{'pid'}) :
-		$u->{'status'} ?
+		$u->{'status'} == 1 ?
 			$text{'systemd_status2'} :
-			$text{'systemd_status0'});
+		$u->{'status'} == 0 ?
+			$text{'systemd_status0'} :
+			$text{'systemd_status3'});
 	}
 
 print &ui_table_end();

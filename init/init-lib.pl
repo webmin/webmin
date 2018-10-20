@@ -2088,7 +2088,7 @@ foreach my $name (keys %info) {
 		    'legacy' => 0,
 		    'boot' => $i->{'UnitFileState'} eq 'enabled' ? 1 :
 			      $i->{'UnitFileState'} eq 'static' ? 2 : 0,
-		    'status' => $i->{'ActiveState'} eq 'active',
+		    'status' => $i->{'ActiveState'} eq 'active' ? 1 : 0,
 		    'start' => $i->{'ExecStart'},
 		    'stop' => $i->{'ExecStop'},
 		    'reload' => $i->{'ExecReload'},
@@ -2113,7 +2113,7 @@ foreach my $a (&list_actions()) {
 	my $hasarg = &get_action_args($f);
 	if ($hasarg->{'status'}) {
 		my $r = &action_running($f);
-		$s->{'status'} = $r == 1 ? 1 : 0;
+		$s->{'status'} = $r;
 		}
 	push(@rv, $s);
 	}

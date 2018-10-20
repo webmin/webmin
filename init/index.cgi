@@ -361,8 +361,10 @@ elsif ($init_mode eq "systemd" && $access{'bootup'}) {
 			$u->{'boot'} == 1 ? $text{'yes'} :
 			  $u->{'boot'} == 2 ? $text{'index_always'} :
 			  "<font color=#ff0000>$text{'no'}</font>",
-			$u->{'status'} ? $text{'yes'} :
-			  "<font color=#ff0000>$text{'no'}</font>",
+			$u->{'status'} == 1 ? $text{'yes'} :
+			  $u->{'status'} == 0 ?
+			  "<font color=#ff0000>$text{'no'}</font>" :
+			  "<i>$text{'index_unknown'}</i>",
 			]);
 		}
 	print &ui_columns_end();
