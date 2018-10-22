@@ -6,6 +6,15 @@ require './cluster-cron-lib.pl';
 &error_setup($text{'save_err'});
 &ReadParse();
 
+if ($in{'exec'}) {
+	&redirect("exec.cgi?id=".&urlize($in{'id'}));
+	return;
+	}
+elsif ($in{'delete'}) {
+	&redirect("delete.cgi?id=".&urlize($in{'id'}));
+	return;
+	}
+
 @jobs = &list_cluster_jobs();
 if ($in{'new'}) {
 	$job = { 'type' => 0,

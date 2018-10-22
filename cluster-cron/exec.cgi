@@ -10,6 +10,7 @@ require './cluster-cron-lib.pl';
 # Run on all servers and show output
 @jobs = &list_cluster_jobs();
 ($job) = grep { $_->{'cluster_id'} eq $in{'id'} } @jobs;
+$job || &error($text{'edit_emissing'});
 print &text('exec_cmd', "<tt>$job->{'cluster_command'}</tt>"),"<p>\n";
 @run = &run_cluster_job($job, \&callback);
 if (!@run) {

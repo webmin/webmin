@@ -13,6 +13,7 @@ edit_servers=Run on servers
 edit_group=Members of $1
 edit_this=this server
 edit_all=&lt;All hosts&gt;
+edit_emissing=Cron job no longer exists!
 
 save_err=Failed to save cluster cron job
 
