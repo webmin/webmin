@@ -48,7 +48,7 @@ list_status=Állapot
 delete_err=A(z) $1 csomag törlése nem sikerült
 delete_epack=A(z) $1 csomag nem létezik
 delete_title=Csomag törlése
-delete_rusure=Biztosan törölni akarja a(z) $1 csomagot? $2 darab fájl ($3 bájt) örökre le lesz törölve.
+delete_rusure=Biztosan törölni akarja a(z) $1 csomagot? $2 darab fájl ($3) örökre le lesz törölve.
 delete_ok=Töröl
 
 file_title=Fájl információk

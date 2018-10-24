@@ -51,7 +51,7 @@ list_ok=OK
 delete_err=パッケージ $1 を削除できませんでした
 delete_epack=パッケージ $1 は存在しません
 delete_title=パッケージの削除
-delete_rusure=パッケージ $1 を削除してもよろしいですか? $2 ファイル ($3 バイト) まで永久に削除されます。
+delete_rusure=パッケージ $1 を削除してもよろしいですか? $2 ファイル ($3) まで永久に削除されます。
 delete_ok=削除
 
 file_title=ファイルの情報

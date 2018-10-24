@@ -48,7 +48,7 @@ list_status=Estado
 delete_err=Erro ao apagar o pacote $1
 delete_epack=O pacote $1 não existe
 delete_title=Apagar Pacote
-delete_rusure=Tem a certeza que quer apagar o pacote $1 ? Todos os $2 ficheiros ($3 bytes) serão apagados para sempre.
+delete_rusure=Tem a certeza que quer apagar o pacote $1 ? Todos os $2 ficheiros ($3) serão apagados para sempre.
 delete_ok=Apagar
 
 file_title=Informação do Ficheiro

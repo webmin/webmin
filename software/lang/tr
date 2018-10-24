@@ -49,7 +49,7 @@ list_status=Durum
 delete_err=$1 paketinin silinmesinde hata oluþtu
 delete_epack=$1 paketi mevcut deðil
 delete_title=Paketi Sil
-delete_rusure=$1 paketini silmek istediðinizden eminmisiniz? $2 dosyalarý($3 byte) silinecektir.
+delete_rusure=$1 paketini silmek istediðinizden eminmisiniz? $2 dosyalarý($3) silinecektir.
 delete_ok=Sil
 
 file_title=Dosya Bilgisi

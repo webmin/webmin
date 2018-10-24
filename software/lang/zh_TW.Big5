@@ -48,7 +48,7 @@ list_status=狀態
 delete_err=無法刪除套件 $1
 delete_epack=套件 $1 不存在
 delete_title=刪除套件
-delete_rusure=您確定要刪除套件 $1 嗎? 總共有 $2 個檔案 ($3 位元組) 將會被永遠刪除.
+delete_rusure=您確定要刪除套件 $1 嗎? 總共有 $2 個檔案 ($3) 將會被永遠刪除.
 delete_ok=確定刪除
 
 file_title=檔案資訊
