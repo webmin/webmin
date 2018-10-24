@@ -10840,6 +10840,25 @@ else {
 	}
 }
 
+=head2 convert_from_json(data)
+
+Parses given JSON string
+
+=item data parameter is encoded JSON string
+
+=cut
+sub convert_from_json
+{
+eval "use JSON::PP";
+if (!$@) {
+	my ($json_text) = @_;
+	return JSON::PP->new->utf8->decode($json_text);
+	}
+else {
+	error("The JSON::PP Perl module is not available on your system : $@");
+	}
+}
+
 =head2 print_json(data)
 
 Prints JSON data
