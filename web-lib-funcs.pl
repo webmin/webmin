@@ -1499,16 +1499,16 @@ elsif (defined(&theme_error)) {
 	&theme_error(@_);
 	}
 elsif ($in{'json-error'} eq '1') {
-		my %jerror;
-		my $error_what = ($main::whatfailed ? "$main::whatfailed: " : "");
-		my $error_message = join(",", @_);
-		my $error = ($error_what . $error_message);
-		%jerror = (error => $error,
-				   error_fatal => 1, 
-				   error_what => $error_what, 
-				   error_message => $error_message
-				  );
-		print_json(\%jerror);
+	my %jerror;
+	my $error_what = ($main::whatfailed ? "$main::whatfailed: " : "");
+	my $error_message = join(",", @_);
+	my $error = ($error_what . $error_message);
+	%jerror = (error => $error,
+		   error_fatal => 1, 
+		   error_what => $error_what, 
+		   error_message => $error_message
+		  );
+	print_json(\%jerror);
 	}
 else {
 	&header($text{'error'}, "");
