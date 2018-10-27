@@ -1196,7 +1196,7 @@ local ($cmd) = @_;
 $cmd = &has_command($cmd);
 local @st = stat($cmd);
 local %cache;
-&read_file($httpd_info_cache, \%cache);
+&read_file_cached($httpd_info_cache, \%cache);
 if ($cache{'cmd'} eq $cmd && $cache{'time'} == $st[9]) {
 	# Cache looks up to date
 	return ($cache{'version'}, [ split(/\s+/, $cache{'mods'}) ]);
