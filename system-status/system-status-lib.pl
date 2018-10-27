@@ -17,6 +17,7 @@ our $historic_info_dir = "$module_config_directory/history";
 if (!-e $historic_info_dir) {
 	$historic_info_dir = "$module_var_directory/history";
 	}
+our $get_collected_info_cache;
 
 # collect_system_info()
 # Returns a hash reference containing system information
@@ -93,6 +94,10 @@ return $info;
 # Returns the most recently collected system information, or the current info
 sub get_collected_info
 {
+if ($get_collected_info_cache) {
+	# Already in RAM
+	return $get_collected_info_cache;
+	}
 my @st = stat($collected_info_file);
 my $i = $config{'collect_interval'} || 'none';
 if ($i ne 'none' && @st && $st[9] > time() - $i * 60 * 2) {
@@ -100,11 +105,12 @@ if ($i ne 'none' && @st && $st[9] > time() - $i * 60 * 2) {
 	if ($infostr) {
 		my $info = &unserialise_variable($infostr);
 		if (ref($info) eq 'HASH' && keys(%$info) > 0) {
-			return $info;
+			$get_collected_info_cache = $info;
 			}
 		}
 	}
-return &collect_system_info();
+$get_collected_info_cache ||= &collect_system_info();
+return $get_collected_info_cache;
 }
 
 # save_collected_info(&info)
