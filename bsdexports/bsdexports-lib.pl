@@ -34,9 +34,11 @@ while(<EXP>) {
 	s/\r|\n//g;	# remove newlines
 	s/#.*$//g;	# remove comments
 	next if (!/\S/);
+	s/\\ /<sp>/g;	# hack to support splitting on space
 	local @w = split(/[\s=]+/, $_);
 	local %exp;
 	for($i=0; $i<@w; $i++) {
+		$w[$i] =~ s/<sp>/ /g;
 		if ($w[$i] =~ /^\//) { push(@{$exp{'dirs'}}, $w[$i]); }
 		elsif ($w[$i] eq "-maproot") { $exp{'maproot'} = $w[++$i]; }
 		elsif ($w[$i] eq "-r") { $exp{'maproot'} = $w[++$i]; }
@@ -84,6 +86,9 @@ sub delete_export
 sub export_line
 {
 local %exp = %{$_[0]};
+foreach my $d (@{$exp{'dirs'}}) {
+	$d =~ s/ /\\ /g;
+	}
 local $rv = join(' ', @{$exp{'dirs'}});
 if ($exp{'alldirs'}) { $rv .= " -alldirs"; }
 if ($exp{'ro'}) { $rv .= " -ro"; }
