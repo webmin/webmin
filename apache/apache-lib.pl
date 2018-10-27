@@ -16,6 +16,7 @@ else {
 	}
 map { $access_types{$_}++ } @access_types;
 $site_file = ($config{'webmin_apache'} || $module_config_directory)."/site";
+$httpd_info_cache = $module_config_directory."/httpd-info";
 
 # Check if a list of supported modules needs to be built. This is done
 # if the Apache binary changes, when Webmin is upgraded, or once every five
@@ -1191,8 +1192,17 @@ return @rv;
 # Returns the httpd version and modules array
 sub httpd_info
 {
+local ($cmd) = @_;
+$cmd = &has_command($cmd);
+local @st = stat($cmd);
+local %cache;
+&read_file($httpd_info_cache, \%cache);
+if ($cache{'cmd'} eq $cmd && $cache{'time'} == $st[9]) {
+	# Cache looks up to date
+	return ($cache{'version'}, [ split(/\s+/, $cache{'mods'}) ]);
+	}
 local(@mods, $verstr, $ver, $minor);
-$verstr = &backquote_command("\"$_[0]\" -v 2>&1");
+$verstr = &backquote_command(quotemeta($cmd)." -v 2>&1");
 if ($config{'httpd_version'}) {
 	$config{'httpd_version'} =~ /(\d+)\.([\d\.]+)/;
 	$ver = $1; $minor = $2; $minor =~ s/\.//g; $ver .= ".$minor";
@@ -1246,6 +1256,11 @@ else {
 		}
 	@mods = &unique(@mods);
 	}
+$cache{'cmd'} = $cmd;
+$cache{'time'} = $st[9];
+$cache{'version'} = $ver;
+$cache{'mods'} = join(" ", @mods);
+&write_file($httpd_info_cache, \%cache);
 return ($ver, \@mods);
 }
 
