@@ -11,6 +11,7 @@ sub list_system_info
 my $info = &get_collected_info();
 my @rv;
 my @table;
+my @raw = \$info;
 
 # Refresh button for root
 if (&foreign_available($module_name) && $config{'collect_interval'} ne 'none') {
@@ -26,7 +27,8 @@ my $table = { 'type' => 'table',
 	      'id' => 'sysinfo',
 	      'desc' => $text{'right_header'},
 	      'priority' => 100,
-	      'table' => \@table };
+	      'table' => \@table,
+	      'raw' => \@raw };
 push(@rv, $table);
 
 if (&show_section('host')) {
@@ -38,16 +40,19 @@ if (&show_section('host')) {
 		       'value' => &get_system_hostname().$ip });
 
 	# Operating system
-	push(@table, { 'desc' => $text{'right_os'},
-		       'value' => &html_escape($gconfig{'os_version'} eq '*' ?
+	my $os = &html_escape($gconfig{'os_version'} eq '*' ?
 				$gconfig{'real_os_type'} :
 				$gconfig{'real_os_type'}.' '.
-				  $gconfig{'real_os_version'})
+				  $gconfig{'real_os_version'});
+	push(@table, { 'desc' => $text{'right_os'},
+		       'value' => $os
 		     });
 
 	# Webmin version
+	my $webmin_version = &get_webmin_version();
 	push(@table, { 'desc' => $text{'right_webmin'},
-		       'value' => &get_webmin_version() });
+		       'value' => $webmin_version });
+	push(@raw, { 'webmin_version' => $webmin_version });
 
 	# Versions of other important modules, where available
 	# I fully admit that putting this here rather than in module-specific
@@ -58,6 +63,8 @@ if (&show_section('host')) {
 			my %vinfo = &get_module_info($v->[0]);
 			push(@table, { 'desc' => $v->[1],
 				       'value' => $vinfo{'version'} });
+			push(@raw, { ($v->[0] eq 'virtual-server' ? 
+				'vm_version' : 'cm_version') => $vinfo{'version'} });
 			}
 		}
 
