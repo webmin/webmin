@@ -11,7 +11,7 @@ sub list_system_info
 my $info = &get_collected_info();
 my @rv;
 my @table;
-my @raw = \$info;
+my @raw = $info;
 
 # Refresh button for root
 if (&foreign_available($module_name) && $config{'collect_interval'} ne 'none') {
