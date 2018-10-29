@@ -114,15 +114,5 @@ close(PKG);
 return sort { lc($a->{'name'}) cmp lc($b->{'name'}) } @rv;
 }
 
-# update_system_form()
-# Shows a form for updating all packages on the system
-sub update_system_form
-{
-print &ui_subheading($text{'csw_form'});
-print &ui_form_start("csw_upgrade.cgi");
-print &ui_submit($text{'csw_upgrade'});
-print &ui_form_end();
-}
-
 1;
 

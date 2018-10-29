@@ -196,15 +196,6 @@ if (&compare_versions($pinfo[4], "2.1.10") > 0) {
 return undef;
 }
 
-# update_system_form()
-# Shows a form for updating all packages on the system
-sub update_system_form
-{
-print &ui_subheading($text{'yum_form'});
-print &ui_form_start("yum_upgrade.cgi");
-print &ui_form_end([ [ undef, $text{'yum_apply'} ] ]);
-}
-
 # update_system_resolve(name)
 # Converts a standard package name like apache, sendmail or squid into
 # the name used by YUM.
