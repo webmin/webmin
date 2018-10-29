@@ -156,7 +156,7 @@ my $temp = &transname();
 my @rv;
 open(SHELL, "$yum_command shell $temp |");
 while(<SHELL>) {
-	if (/Package\s+(\S+)\s+(\S+)\s+set/i) {
+	if (/Package\s+(\S+)\s+(\S+)\s+(set|will\s+be\s+updated)/i) {
 		my $pkg = { 'name' => $1,
 			    'version' => $2 };
 		if ($pkg->{'name'} =~ s/\.([^\.]+)$//) {
