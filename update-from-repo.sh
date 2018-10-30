@@ -3,7 +3,7 @@
 # Update webmin/usermin to the latest develop version  from GitHub repo
 # inspired by authentic-theme/theme-update.sh script, thanks @rostovtsev
 #
-VERS="1.6.7, 2018-08-23"
+VERS="1.6.8, 2018-10-30"
 #
 COPY=" Kay Marquardt <kay@rrr.de>         https://github.com/gnadelwartz"
 #############################################################################
@@ -277,7 +277,10 @@ fi
 
 ################
 # here we go
-
+    
+  # Enter to the dir first - important if run from different location
+  cd ${DIR}
+  
   # remove temporary files from failed run
   rm -rf .~files
   # pull source from github
