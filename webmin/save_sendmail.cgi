@@ -59,7 +59,7 @@ if ($in{'from_def'}) {
 	delete($mconfig{'webmin_from'});
 	}
 else {
-	$in{'from'} =~ /^\S+\@\S+$/ || &error($text{'sendmail_efrom'});
+	$in{'from'} =~ /^\S+$/ || &error($text{'sendmail_efrom'});
 	$mconfig{'webmin_from'} = $in{'from'};
 	}
 
