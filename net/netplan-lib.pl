@@ -99,10 +99,10 @@ foreach my $f (glob("$netplan_dir/*.yaml")) {
 					 @{$nameservers->{'members'}};
 			my ($search) = grep { $_->{'name'} eq 'search' }
 					 @{$nameservers->{'members'}};
-			if ($nsa) {
+			if ($nsa && @{$nsa->{'value'}}) {
 				$cfg->{'nameserver'} = $nsa->{'value'};
 				}
-			if ($search) {
+			if ($search && @{$search->{'value'}}) {
 				$cfg->{'search'} = $search->{'value'};
 				}
 			}
@@ -571,7 +571,7 @@ foreach my $origl (@$lref) {
 			# Indent has decreased, so this must be under a previous
 			# parent directive
 			$parent = $parent->{'parent'};
-			while($i < $parent->{'indent'}) {
+			while($i <= $parent->{'indent'}) {
 				$parent = $parent->{'parent'};
 				}
 			push(@{$parent->{'members'}}, $dir);
@@ -581,6 +581,8 @@ foreach my $origl (@$lref) {
 		}
 	elsif ($l =~ /^(\s*)\-\s*(\S+)\s*$/) {
 		# Value-only line that is an extra value for the previous dir
+		$lastdir->{'value'} ||= [ ];
+		$lastdir->{'value'} = [ $lastdir->{'value'} ] if (!ref($lastdir->{'value'}));
 		push(@{$lastdir->{'value'}}, $2);
 		$lastdir->{'eline'} = $lnum;
 		&set_parent_elines($parent, $lnum);
