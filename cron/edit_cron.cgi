@@ -115,6 +115,7 @@ if (!$in{'new'}) {
 	print &ui_submit($text{'save'});
 	print &ui_submit($text{'edit_saverun'}, 'saverun');
 	print &ui_form_end();
+
 	# Run button
 	print "<table class='ui_table_end_submit_right'><tr>\n";
 	if (!$rpd) {
