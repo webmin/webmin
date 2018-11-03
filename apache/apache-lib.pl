@@ -559,7 +559,15 @@ for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 			local($f, %v, $j);
 			$f = $_[2]->[0]->{'file'};
 			for($j=0; $_[2]->[$j]->{'file'} eq $f; $j++) { }
-			$l = $_[2]->[$j-1]->{'eline'}+1;
+			$lref = &read_file_lines($f);
+			if ($_[2] eq $_[3]) {
+				# Top-level, so add to the end of the file
+				$l = scalar(@$lref) + 1;
+				}
+			else {
+				# Add after last directive in the same section
+				$l = $_[2]->[$j-1]->{'eline'}+1;
+				}
 			%v = (	"line", $l,
 				"eline", $l,
 				"file", $f,
@@ -569,7 +577,6 @@ for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 				"words", &wsplit($v) );
 			&renumber($_[3], $l, $f, 1);
 			splice(@{$_[2]}, $j, 0, \%v);
-			$lref = &read_file_lines($f);
 			push(@files, $f);
 			splice(@$lref, $l, 0, "$_[0] $v");
 			}
