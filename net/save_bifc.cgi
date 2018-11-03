@@ -315,8 +315,8 @@ else {
 	else {
 		$b->{'fullname'} = $b->{'name'}.
 				( $b->{'virtual'} eq '' ? '' : ':'.$b->{'virtual'});
-	}
-	&save_interface($b);
+		}
+	&save_interface($b, \@boot);
 
 	if ($in{'activate'}) {
 		# Make this interface active (if possible)
