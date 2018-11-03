@@ -17,10 +17,9 @@ $shorewall6_version = &get_shorewall6_version(0);
 %access = &get_module_acl();
 
 @shorewall6_files = ( 'zones', 'interfaces', 'policy', 'rules', 'tos',
-	   	     'proxyndp', 'routestopped',
-	   	     'tunnels', 'hosts', 'blacklist',
-		     'providers', 'params', 'shorewall6.conf',
-);
+	   	      'proxyndp', 'routestopped',
+	   	      'tunnels', 'hosts', 'blacklist',
+		      'providers', 'params', 'shorewall6.conf' );
 @comment_tables = ( 'rules', 'tcrules' );
 
 sub debug_message
