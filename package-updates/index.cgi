@@ -209,5 +209,7 @@ print &ui_table_row($text{'index_action'},
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 
+# Show install form
+
 &ui_print_footer("/", $text{'index'});
 

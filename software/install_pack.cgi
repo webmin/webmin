@@ -13,7 +13,17 @@ else {
 	}
 &error_setup($text{'install_err'});
 
-if ($in{source} >= 2) {
+if ($in{'source'} == 3 && &foreign_installed("package-updates")) {
+	# Use the package updates module instead, as it has a nicer UI
+	&redirect("/package-updates/update.cgi?redir=/$module_name/".
+		  "&redirdesc=".&urlize($module_info{'desc'}).
+		  "&mode=new".
+		  "&".join("&", map { "u=".&urlize($_) }
+				    split(/\s+/, $in{'update'})));
+	return;
+	}
+
+if ($in{'source'} >= 2) {
 	&ui_print_unbuffered_header(undef, $text{'install_title'}, "", "install");
 	}
 else {

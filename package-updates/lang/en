@@ -47,6 +47,7 @@ index_searchok=Search
 index_clear=Show All
 
 update_title=Update Packages
+update_title2=Install Packages
 update_pkg=Now updating $1 ..
 update_pkg2=Now installing $1 ..
 update_done=Installed package $1 $2.
@@ -78,8 +79,8 @@ update_oldver=Current version
 update_newver=New version
 update_confirm=Install Now
 update_none=None
-update_ops=Building complete list of updates ..
-update_rebootdesc=One of the updated packages requires a reboot to be fully applied.
+update_ops=Building complete list of packages ..
+update_rebootdesc=One of the installed packages requires a reboot to be fully applied.
 update_reboot=Reboot Now
 
 sched_title=Scheduled Update

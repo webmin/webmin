@@ -38,7 +38,8 @@ else {
 	# Upgrade some packages
 	my @pkgs = split(/\0/, $in{'u'});
 	@pkgs || &error($text{'update_enone'});
-	&ui_print_unbuffered_header(undef, $text{'update_title'}, "");
+	&ui_print_unbuffered_header(undef,
+	    $in{'mode'} eq 'new' ? $text{'update_title2'} : $text{'update_title'}, "");
 
 	# Save this CGI from being killed by a webmin or apache upgrade
 	$SIG{'TERM'} = 'IGNORE';
@@ -61,6 +62,8 @@ else {
 		print &ui_form_start("update.cgi", "post");
 		print &ui_hidden("mode", $in{'mode'});
 		print &ui_hidden("search", $in{'search'});
+		print &ui_hidden("redir", $in{'redir'});
+		print &ui_hidden("redirdesc", $in{'redirdesc'});
 		foreach $ps (@pkgs) {
 			print &ui_hidden("u", $ps);
 			}

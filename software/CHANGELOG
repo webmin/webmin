@@ -41,3 +41,5 @@ Added support for updating and installing packages from FreeBSD ports.
 Added support for the FreeBSD pkgng binary package repository as an alternative to ports.
 ---- Changes since 1.740 ----
 MacOS systems with PKGsrc installed can now use this module to manage and install binary packages.
+---- Changes since 1.890 ----
+When installing a package, the list of other dependencies that will be also installed is displayed for confirmation.
