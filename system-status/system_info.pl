@@ -302,6 +302,7 @@ sub show_section
 {
 my ($s) = @_;
 my %access = &get_module_acl();
+$access{'show'} ||= "";
 if ($access{'show'} eq '*') {
 	return 1;
 	}
