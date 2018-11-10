@@ -369,7 +369,9 @@ return undef;
 # Activates the current firewall rules, and returns any error
 sub iptables_restore
 {
-local $out = &backquote_logged("cd / ; ip${ipvx}tables-restore <$ipvx_save 2>&1");
+local $rcmd = &has_command("ip${ipvx}tables-legacy-restore") ||
+	      "ip${ipvx}tables-restore";
+local $out = &backquote_logged("cd / && $rcmd <$ipvx_save 2>&1");
 return $? ? "<pre>$out</pre>" : undef;
 }
 
@@ -377,7 +379,9 @@ return $? ? "<pre>$out</pre>" : undef;
 # Saves the active firewall rules, and returns any error
 sub iptables_save
 {
-local $out = &backquote_logged("ip${ipvx}tables-save >$ipvx_save 2>&1");
+local $scmd = &has_command("ip${ipvx}tables-legacy-save") ||
+	      "ip${ipvx}tables-save";
+local $out = &backquote_logged("$scmd >$ipvx_save 2>&1");
 return $? ? "<pre>$out</pre>" : undef;
 }
 
