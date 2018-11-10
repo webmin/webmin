@@ -115,8 +115,8 @@ else {
 			print &text($msg, "<tt>".join(" ", @pkgnames)."</tt>"),
 			      "<br>\n";
 			print "<ul>\n";
-			@got = &package_install_multiple(\@pkgnames,
-							 $pkgsystem);
+			@got = &package_install_multiple(
+				\@pkgnames, $pkgsystem, $in{'mode'} eq 'new');
 			print "</ul><br>\n";
 			}
 		else {
@@ -126,7 +126,8 @@ else {
 				next if ($donedep{$p});
 				print &text($msg, "<tt>$p</tt>"),"<br>\n";
 				print "<ul>\n";
-				@pgot = &package_install($p, $s);
+				@pgot = &package_install(
+					$p, $s, $in{'mode'} eq 'new');
 				foreach $g (@pgot) {
 					$donedep{$g}++;
 					}
