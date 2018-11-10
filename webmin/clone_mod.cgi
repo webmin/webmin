@@ -1,6 +1,6 @@
 #!/usr/local/bin/perl
 # clone_mod.cgi
-# Clone an existing module under a new name
+# Clones an existing module under a new name
 
 require './webmin-lib.pl';
 &ReadParse();
