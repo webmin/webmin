@@ -17,7 +17,7 @@ our $module_name;
 &ReadParse();
 my @doms = split(/\s+/, $in{'dom'});
 foreach my $dom (@doms) {
-	$dom =~ /^[a-z0-9\-\.\_]+$/i || &error($text{'letsencrypt_edom'});
+	$dom =~ /^(\*\.)?[a-z0-9\-\.\_]+$/i || &error($text{'letsencrypt_edom'});
 	}
 $in{'renew_def'} || $in{'renew'} =~ /^[1-9][0-9]*$/ ||
 	&error($text{'letsencrypt_erenew'});
