@@ -28,7 +28,7 @@ return &has_command("python2.7") || &has_command("python27") ||
 sub check_letsencrypt
 {
 if (&has_command($letsencrypt_cmd)) {
-	# Use built-in client
+	# Use official client
 	return undef;
 	}
 my $python = &get_letsencrypt_python_cmd();
@@ -62,10 +62,21 @@ my ($dom, $webroot, $email, $size, $mode, $staging) = @_;
 my @doms = ref($dom) ? @$dom : ($dom);
 $email ||= "root\@$doms[0]";
 $mode ||= "web";
+my ($challenge, $wellknown, $challenge_new, $wellknown_new, $wildcard);
 
-my ($challenge, $wellknown, $challenge_new, $wellknown_new);
+# Wildcard mode?
+foreach my $d (@doms) {
+	if ($d =~ /^\*/) {
+		$wildcard = $d;
+		}
+	}
+
 if ($mode eq "web") {
 	# Create a challenges directory under the web root
+	if ($wildcard) {
+		return (0, "Wildcard hostname $wildcard can only be ".
+			   "validated in DNS mode");
+		}
 	$wellknown = "$webroot/.well-known";
 	$challenge = "$wellknown/acme-challenge";
 	$wellknown_new = !-d $wellknown ? $wellknown : undef;
@@ -100,12 +111,20 @@ if ($mode eq "web") {
 	}
 elsif ($mode eq "dns") {
 	# Make sure all the DNS zones exist
+	if ($wildcard && !$letsencrypt_cmd) {
+		return (0, "Wildcard hostname $wildcard can only be ".
+			   "validated when the native Let's Encrypt client ".
+			   "is installed");
+		}
 	&foreign_require("bind8");
 	foreach my $d (@doms) {
 		my $z = &get_bind_zone_for_domain($d);
 		$z || return (0, "Neither DNS zone $d or any of its ".
 				 "sub-domains exist on this system");
 		}
+	}
+else {
+	return (0, "Unknown mode $mode");
 	}
 
 # Create DNS hook wrapper scripts
@@ -119,7 +138,7 @@ if ($mode eq "dns") {
 			      "letsencrypt-cleanup.pl");
 	}
 
-if ($letsencrypt_cmd && -d "/etc/letsencrypt/accounts") {
+if (($letsencrypt_cmd && -d "/etc/letsencrypt/accounts") || $wildcard) {
 	# Use the native Let's Encrypt client if possible
 	my $temp = &transname();
 	&open_tempfile(TEMP, ">$temp");
