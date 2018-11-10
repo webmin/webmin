@@ -294,12 +294,12 @@ if (!scalar(@updates_available_cache)) {
 return @updates_available_cache;
 }
 
-# package_install(package-name, [system])
+# package_install(package-name, [system], [new-install])
 # Install some package, either from an update system or from Webmin. Returns
 # a list of updated package names.
 sub package_install
 {
-my ($name, $system) = @_;
+my ($name, $system, $install) = @_;
 my @rv;
 my $pkg;
 
@@ -314,6 +314,11 @@ if (!$pkg) {
 			($_->{'system'} eq $system || !$system) }
 		      sort { &compare_versions($b, $a) }
 			   &list_available(0);
+	}
+if (!$pkg && $install) {
+	# Assume that it will exist
+	$pkg = { 'system' => $system || $software::update_system,
+		 'name' => $name };
 	}
 if (!$pkg) {
 	print &text('update_efindpkg', $name),"<p>\n";
@@ -358,12 +363,12 @@ unlink($current_cache_file);
 return @rv;
 }
 
-# package_install_multiple(&package-names, system)
+# package_install_multiple(&package-names, system, [new-install])
 # Install multiple packages, either from an update system or from Webmin.
 # Returns a list of updated package names.
 sub package_install_multiple
 {
-my ($names, $system) = @_;
+my ($names, $system, $install) = @_;
 my @rv;
 my $pkg;
 
