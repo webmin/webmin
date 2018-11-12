@@ -40,7 +40,7 @@ else {
 			next if (!$ahost);	# Invalid URL??
 
 			my $afile = &transname();
-			&http_download($ahost, $aport, $apage, $afile, \aerr,
+			&http_download($ahost, $aport, $apage, $afile, \$aerr,
 				       undef, $assl, undef, undef, 5);
 			last if ($err);
 			my %a;
@@ -64,6 +64,7 @@ else {
 	}
 
 # Now we have the announcement hash refs, turn them into messages
+# XXX need dismiss buttons
 my @rv;
 my $i = 0;
 foreach my $a (@ann) {
