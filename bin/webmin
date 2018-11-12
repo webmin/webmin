@@ -1,0 +1,78 @@
+#!/usr/bin/env perl
+# Webmin CLI - Allows performing a variety of common Webmin-related
+# functions on the command line.
+use strict;
+use warnings;
+BEGIN { $Pod::Usage::Formatter = 'Pod::Text::Color'; }
+use 5.010; # Version in CentOS 6
+
+use Getopt::Long qw( GetOptionsFromArray );
+use Pod::Usage;
+
+sub main {
+    my ( $argv ) = @_;
+    my ( $help, $config, $list, $subcmd );
+    GetOptions(
+        'help|h' => \$help,
+        'config|c=s' => \$config,
+        'list-commands|l' => \$list,
+        '<>' => sub {
+            # Handled unrecognized options, inc. subcommands.
+            my($arg) => @_;
+            if ($arg =~ m{^-}) {
+                say "Usage error: Unknown option $arg.";
+                pod2usage(0);
+            } else {
+                # It must be a subcommand.
+                $subcmd = $arg;
+            }
+        })
+    );
+    pod2usage(0) if ( $help );
+
+    webmin_command( $subcmd );
+    
+    return 0;
+}
+exit main( \@ARGV ) if !caller(0);
+
+1; #
+
+=pod
+
+=head1 NAME
+
+webmin
+
+=head1 SYNOPSIS
+
+webmin [options] subcommand [subcommand options]
+
+=head1 OPTIONS
+
+=over
+
+=item --help, -h
+
+Print this usage summary and exit. Subcommands may also have a usage summary.
+
+=item --config, -c
+
+Specify the full path to the Webmin miniserv.conf file. Defaults to
+C</etc/webmin/miniserv.conf>
+
+=item --list-commands, -l
+
+List available subcommands.
+
+=head1 EXIT CODES
+
+0 on success
+
+non-0 on error
+
+=head1 LICENSE AND COPYRIGHT
+
+Copyright 2018 Jamie Cameron <jcameron@webmin.com>, Joe Cooper
+<joe@virtualmin.com>.
+
