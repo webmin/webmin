@@ -31,6 +31,10 @@ else {
 	if (!$err) {
 		# Parse the announcements index file
 		foreach my $l (split(/\r?\n/, $out)) {
+			$l =~ s/^#.*//;		# Skip comments and spaces
+			$l =~ s/^\s+//;
+			$l =~ s/\s+$//;
+			next if (!$l);
 			my ($ahost, $aport, $apage, $assl) =
 				&parse_http_url($l, $host, $port, $page, $ssl);
 			next if (!$ahost);	# Invalid URL??
