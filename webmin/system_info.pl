@@ -82,10 +82,10 @@ foreach my $a (@ann) {
 		# A message possibly with some buttons
 		$info->{'type'} = 'html';
 		$info->{'html'} = &html_escape($a->{'message'});
-		for(my $b=0; defined($a->{'link'}.$b); $b++) {
+		for(my $b=0; defined($a->{'link'.$b}); $b++) {
 			$info->{'html'} .= "\n<p>\n" if ($b == 0);
-			$info->{'html'} .= &ui_link($a->{'link'}.$b,
-						    $a->{'desc'}.$b,
+			$info->{'html'} .= &ui_link($a->{'link'.$b},
+						    $a->{'desc'.$b},
 						    undef,
 						    "target=_new")."\n";
 			}
