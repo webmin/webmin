@@ -16,7 +16,7 @@ my $rawcache = &read_file_contents($webmin_announce_cache);
 my $cache = $rawcache ? &unserialise_variable($rawcache) : undef;
 my @st = stat($webmin_announce_cache);
 my @ann;
-if (@st && $st[7] > time() - $webmin_announce_cache_time) {
+if (@st && $st[9] > time() - $webmin_announce_cache_time) {
 	# Cache is new enough to use
 	@ann = @$cache;
 	}
@@ -61,6 +61,12 @@ else {
 		# Cannot fetch, and no cache
 		return ( );
 		}
+	else {
+		# Write to the cache
+		&open_tempfile(CACHE, ">$webmin_announce_cache");
+		&print_tempfile(CACHE, &serialise_variable(\@ann));
+		&close_tempfile(CACHE);
+		}
 	}
 
 # Now we have the announcement hash refs, turn them into messages
@@ -82,10 +88,10 @@ foreach my $a (@ann) {
 		# A message possibly with some buttons
 		$info->{'type'} = 'html';
 		$info->{'html'} = &html_escape($a->{'message'});
-		for(my $b=0; defined($a->{'link'}.$b); $b++) {
+		for(my $b=0; defined($a->{'link'.$b}); $b++) {
 			$info->{'html'} .= "\n<p>\n" if ($b == 0);
-			$info->{'html'} .= &ui_link($a->{'link'}.$b,
-						    $a->{'desc'}.$b,
+			$info->{'html'} .= &ui_link($a->{'link'.$b},
+						    $a->{'desc'.$b},
 						    undef,
 						    "target=_new")."\n";
 			}
