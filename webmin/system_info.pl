@@ -16,7 +16,7 @@ my $rawcache = &read_file_contents($webmin_announce_cache);
 my $cache = $rawcache ? &unserialise_variable($rawcache) : undef;
 my @st = stat($webmin_announce_cache);
 my @ann;
-if (@st && $st[7] > time() - $webmin_announce_cache_time) {
+if (@st && $st[9] > time() - $webmin_announce_cache_time) {
 	# Cache is new enough to use
 	@ann = @$cache;
 	}
@@ -60,6 +60,12 @@ else {
 	elsif ($err) {
 		# Cannot fetch, and no cache
 		return ( );
+		}
+	else {
+		# Write to the cache
+		&open_tempfile(CACHE, ">$webmin_announce_cache");
+		&print_tempfile(CACHE, &serialise_variable(\@ann));
+		&close_tempfile(CACHE);
 		}
 	}
 
