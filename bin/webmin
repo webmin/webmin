@@ -67,7 +67,8 @@ sub run_command {
         for my $dir (@module_dirs) {
             if (index($subcmd, $dir) == 0) {
                 $module_name = $dir;
-                $command = File::Spec->catfile($root, $dir, 'bin', $subcmd);
+                my $barecmd = substr($subcmd, -(length($subcmd)-length($module_name)-1));
+                $command = File::Spec->catfile($root, $dir, 'bin', $barecmd);
                 die "$command doesn't exist or is not executable" unless
                     ( -x $command );
                 last; # Found one, and it's executable.
