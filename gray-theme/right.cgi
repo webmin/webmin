@@ -52,8 +52,16 @@ if (&get_product_name() eq 'webmin') {
 foreach my $info (@info) {
 	if ($info->{'type'} eq 'warning') {
 		# An alert message
-		print &ui_alert_box($info->{'warning'},
-				    $info->{'level'} || 'warn');
+                my $w = &ui_alert_box($info->{'warning'},
+                                      $info->{'level'} || 'warn');
+                if ($info->{'desc'}) {
+                        print &ui_table_start($info->{'desc'}, "width=100%");
+                        print &ui_table_row(undef, $w, 4);
+                        print &ui_table_end();
+                        }
+                else {
+                        print $w;
+                        }
 		}
 	else {
 		my $open = defined($info->{'open'}) ? $info->{'open'} : 1;
