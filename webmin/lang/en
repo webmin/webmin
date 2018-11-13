@@ -1148,4 +1148,6 @@ letsencrypt_ecsr=Failed to generate CSR : $1
 letsencrypt_ekeygen=Failed to generate private key : $1
 letsencrypt_enative=The native Let's Encrypt client was used previously on this system, and must be used for all future certificate requests
 
+announce_hide=Hide This Announcement
+
 __norefs=1

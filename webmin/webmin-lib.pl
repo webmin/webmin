@@ -83,7 +83,7 @@ our $newmodule_users_file = "$config_directory/newmodules";
 
 our $first_install_file = "$config_directory/first-install";
 
-our $hidden_announce_file = "$config_directory/announce-hidden";
+our $hidden_announce_file = "$module_config_directory/announce-hidden";
 
 =head2 setup_ca
 

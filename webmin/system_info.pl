@@ -1,8 +1,11 @@
 
+use strict;
+use warnings;
 do 'webmin-lib.pl';
+our ($module_var_directory, %gconfig, $hidden_announce_file, $module_name, %text);
 
 our $webmin_announce_url = "https://announce.webmin.com:443/index.txt";
-our $webmin_announce_cache = "$module_var_directory/cache";
+our $webmin_announce_cache = "$module_var_directory/announce-cache";
 our $webmin_announce_cache_time = 24*60*60;
 
 # list_system_info()
@@ -40,10 +43,10 @@ else {
 			next if (!$ahost);	# Invalid URL??
 
 			my $afile = &transname();
-			&http_download($ahost, $aport, $apage, $afile, \$aerr,
+			&http_download($ahost, $aport, $apage, $afile, \$err,
 				       undef, $assl, undef, undef, 5);
 			last if ($err);
-			my %a;
+			my %a = ( 'file' => $l );
 			&read_file($afile, \%a);
 			&unlink_file($afile);
 			push(@ann, \%a);
@@ -63,38 +66,52 @@ else {
 		}
 	else {
 		# Write to the cache
-		&open_tempfile(CACHE, ">$webmin_announce_cache");
-		&print_tempfile(CACHE, &serialise_variable(\@ann));
-		&close_tempfile(CACHE);
+		my $fh = "CACHE";
+		&open_tempfile($fh, ">$webmin_announce_cache");
+		&print_tempfile($fh, &serialise_variable(\@ann));
+		&close_tempfile($fh);
 		}
 	}
 
 # Now we have the announcement hash refs, turn them into messages
-# XXX need dismiss buttons
+my %hide;
+&read_file($hidden_announce_file, \%hide);
 my @rv;
 my $i = 0;
+my %vminfo = &get_module_info("virtual-server");
+my $vmpro = %vminfo && $vminfo{'version'} !~ /gpl/;
+my %cminfo = &get_module_info("server-manager");
+my $cmpro = %cminfo && $cminfo{'version'} !~ /gpl/;
 foreach my $a (@ann) {
-	my $info = { 'id' => "announce".($i++),
+	# Check if this announcement should be skipped
+	next if ($hide{$a->{'file'}});
+	next if ($a->{'skip_virtualmin_pro'} && $vmpro);
+	next if ($a->{'skip_cloudmin_pro'} && $cmpro);
+	next if ($a->{'skip_pro'} && ($vmpro || $cmpro));
+
+	my $info = { 'id' => "announce_".$a->{'file'},
 		     'open' => 1,
 		     'desc' => $a->{'title'},
 		   };
+	my $hide = &ui_link_button(
+		"/$module_name/hide.cgi?id=".&urlize($a->{'file'}),
+		$text{'announce_hide'});
 	if ($a->{'type'} eq 'warning') {
 		# A warning message
 		$info->{'type'} = 'warning';
 		$info->{'level'} = $a->{'level'} || 'info';
-		$info->{'warning'} = &html_escape($a->{'message'});
+		$info->{'warning'} = &html_escape($a->{'message'})."<p>\n";
+		$info->{'warning'} .= $hide;
 		}
 	elsif ($a->{'type'} eq 'message') {
 		# A message possibly with some buttons
 		$info->{'type'} = 'html';
-		$info->{'html'} = &html_escape($a->{'message'});
+		$info->{'html'} = &html_escape($a->{'message'})."<p>\n";
 		for(my $b=0; defined($a->{'link'.$b}); $b++) {
-			$info->{'html'} .= "\n<p>\n" if ($b == 0);
-			$info->{'html'} .= &ui_link($a->{'link'.$b},
-						    $a->{'desc'.$b},
-						    undef,
-						    "target=_new")."\n";
+			$info->{'html'} .= &ui_link_button(
+				$a->{'link'.$b}, $a->{'desc'.$b}, "_new")."\n";
 			}
+		$info->{'html'} .= $hide;
 		}
 	else {
 		# Unknown type??
