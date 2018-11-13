@@ -6,37 +6,110 @@ use warnings;
 BEGIN { $Pod::Usage::Formatter = 'Pod::Text::Color'; }
 use 5.010; # Version in CentOS 6
 
-use Getopt::Long qw( GetOptionsFromArray );
+use Getopt::Long qw(:config permute pass_through);
 use Pod::Usage;
+use Term::ANSIColor qw(:constants);
+use File::Spec;
 
 sub main {
     my ( $argv ) = @_;
-    my ( $help, $config, $list, $subcmd );
+    my ( %opt, $subcmd );
     GetOptions(
-        'help|h' => \$help,
-        'config|c=s' => \$config,
-        'list-commands|l' => \$list,
+        'help|h' => \$opt{'help'},
+        'config|c=s' => \$opt{'config'},
+        'list-commands|l' => \$opt{'list'},
         '<>' => sub {
             # Handled unrecognized options, inc. subcommands.
-            my($arg) => @_;
+            my($arg) = @_;
             if ($arg =~ m{^-}) {
                 say "Usage error: Unknown option $arg.";
                 pod2usage(0);
             } else {
                 # It must be a subcommand.
                 $subcmd = $arg;
+                die "!FINISH";
             }
-        })
+        }
     );
-    pod2usage(0) if ( $help );
+    pod2usage(0) if ( $opt{'help'} );
 
-    webmin_command( $subcmd );
+    $opt{'config'} ||= "/etc/webmin";
+
+    my @remain = @ARGV;
+    if ($subcmd) {
+        run_command( \%opt, $subcmd, \@remain );
+    }
     
     return 0;
 }
 exit main( \@ARGV ) if !caller(0);
 
-1; #
+# run_command - Run a subcommand 
+# $optref is a reference to an options object passed down from global options
+# like --help or a --config path.
+sub run_command {
+    my ( $optref, $subcmd, $remainref ) = @_;
+
+    # Figure out the Webmin root directory
+    my $root = root($optref->{'config'});
+
+    say $root;
+
+    my ($command, $module_name);
+    # Check for a root-level command (in "$root/bin")
+    my $command_path = File::Spec->catfile($root, 'bin', $subcmd);
+    say $command_path;
+    if ( -x $command_path) {
+        $command = $command_path;
+    } else {
+        # Try to extract a module name from the command
+        # Get list of directories
+        opendir (my $DIR, $root);
+        my @module_dirs = grep { -d "$root/$_" } readdir($DIR);
+        # See if any of them are a substring of $subcmd
+        for my $dir (@module_dirs) {
+            if (index($subcmd, $dir) == 0) {
+                $module_name = $dir;
+                $command = File::Spec->catfile($root, $dir, 'bin', $subcmd);
+                die "$command doesn't exist or is not executable" unless
+                    ( -x $command );
+                last; # Found one, and it's executable.
+            }
+        }
+    }
+
+    # Run that binch
+    system($command, @$remainref);
+}
+
+sub root {
+    my ($config) = @_;
+    say $config;
+    if ($config) {
+        $ENV{'WEBMIN_CONFIG'} = $config;
+    }
+    $ENV{'WEBMIN_CONFIG'} ||= "/etc/webmin";
+    open(my $CONF, "<", "$ENV{'WEBMIN_CONFIG'}/miniserv.conf") || die RED,
+        "Failed to open miniserv.conf", RESET;
+    my $root;
+    while (<$CONF>) {
+        if (/^root=(.*)/) {
+            $root = $1;
+        }
+    }
+    close($CONF);
+    # Does the Webmin root exist?
+    if ( $root ) {
+        die "$root is not a directory. Is --config correct?" unless (-d $root);
+    } else {
+        # Try to guess where Webmin lives, since config file didn't know.
+        die "Unable to determin Webmin installation directory from $ENV{'WEBMIN_CONFIG'}";
+    }
+
+    return $root;
+}
+
+1;
 
 =pod
 
