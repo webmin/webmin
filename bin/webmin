@@ -69,15 +69,26 @@ sub run_command {
                 $module_name = $dir;
                 my $barecmd = substr($subcmd, -(length($subcmd)-length($module_name)-1));
                 $command = File::Spec->catfile($root, $dir, 'bin', $barecmd);
-                die "$command doesn't exist or is not executable" unless
-                    ( -x $command );
-                last; # Found one, and it's executable.
+                # Could be .pl or no extension
+                if ( -x $command ) {
+                    last;
+                } elsif ( -x $command . ".pl" ) {
+                    $command = $command . ".pl";
+                    last;
+                } else {
+                    die "$command doesn't exist or is not executable"
+                }
             }
         }
     }
 
+    # Merge the options
+    # Only handling config, right now...
+    # XXX Should we do this with libraries instead of commands?
+    # Would need less boilerplate if they weren't standalone commands.
+    my @allopts = ("--config $optref->{'config'}", @$remainref);
     # Run that binch
-    system($command, @$remainref);
+    system($command, @allopts);
 }
 
 sub root {
