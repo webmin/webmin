@@ -69,6 +69,30 @@ my ($src, $alt, $title, $class, $tags) = @_;
 return ("<img src='".$src."' class='ui_img".($class ? " ".$class : "")."' alt='$alt' ".($title ? "title='$title'" : "").($tags ? " ".$tags : "").">");
 }
 
+=head2 ui_link_button(href, text, [target], [tags])
+
+Returns HTML for a button, which opens a URL when clicked. The parameters are :
+
+=item href - Link URL
+
+=item text - Text to display on the button
+
+=item target - Window name to open the link in
+
+=item tags - Additional HTML attributes for the <input> tag.
+
+=cut
+
+sub ui_link_button
+{
+return &theme_ui_link_button(@_) if (defined(&theme_ui_link_button));
+my ($href, $label, $target, $tags) = @_;
+$target ||= "_self";
+return &ui_button($label, undef, 0,
+	"onClick='window.open(\"".&quote_javascript($href)."\", \"$target\")' ".
+	$tags);
+}
+
 ####################### table generation functions
 
 =head2 ui_table_start(heading, [tabletags], [cols], [&default-tds], [right-heading])
@@ -1002,9 +1026,9 @@ if (defined($opts_title)) {
 $rv .= "<tr class='ui_multi_select_row'>";
 $rv .= "<td>".&ui_select($name."_opts", [ ], $leftover,
 			 $size, 1, 0, $dis, $wstyle)."</td>\n";
-$rv .= "<td>".&ui_button("▶", $name."_add", $dis,
+$rv .= "<td>".&ui_button("â¶", $name."_add", $dis,
 		 "onClick='multi_select_move(\"$name\", form, 1)'")."<br>".
-	      &ui_button("◀", $name."_remove", $dis,
+	      &ui_button("â", $name."_remove", $dis,
 		 "onClick='multi_select_move(\"$name\", form, 0)'")."</td>\n";
 $rv .= "<td>".&ui_select($name."_vals", [ ], $values,
 			 $size, 1, 0, $dis, $wstyle)."</td>\n";
