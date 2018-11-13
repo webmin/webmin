@@ -53,12 +53,9 @@ sub run_command {
     # Figure out the Webmin root directory
     my $root = root($optref->{'config'});
 
-    say $root;
-
     my ($command, $module_name);
     # Check for a root-level command (in "$root/bin")
     my $command_path = File::Spec->catfile($root, 'bin', $subcmd);
-    say $command_path;
     if ( -x $command_path) {
         $command = $command_path;
     } else {
@@ -84,7 +81,6 @@ sub run_command {
 
 sub root {
     my ($config) = @_;
-    say $config;
     if ($config) {
         $ENV{'WEBMIN_CONFIG'} = $config;
     }
