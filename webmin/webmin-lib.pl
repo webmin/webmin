@@ -18,7 +18,6 @@ do "$module_root_directory/gnupg-lib.pl";
 do "$module_root_directory/letsencrypt-lib.pl";
 use Socket;
 
-
 our @cs_codes = ( 'cs_page', 'cs_text', 'cs_table', 'cs_header', 'cs_link' );
 our @cs_names = map { $text{$_} } @cs_codes;
 
@@ -43,6 +42,7 @@ our $webmin_key_email = "jcameron\@webmin.com";
 our $webmin_key_fingerprint = "1719 003A CE3E 5A41 E2DE  70DF D97A 3AE9 11F6 3C51";
 
 our $authentic_key_email = "ilia\@rostovtsev.io";
+our $authentic_key_email_old = "ilia\@rostovtsev.ru";
 our $authentic_key_fingerprint = "EC60 F3DA 9CB7 9ADC CF56  0D1F 121E 166D D9C8 21AB";
 
 our $standard_host = $primary_host;
@@ -82,6 +82,8 @@ our $pfs_ssl_ciphers = "EECDH+AES:EDH+AES:-SHA1:EECDH+RC4:EDH+RC4:RC4-SHA:EECDH+
 our $newmodule_users_file = "$config_directory/newmodules";
 
 our $first_install_file = "$config_directory/first-install";
+
+our $hidden_announce_file = "$config_directory/announce-hidden";
 
 =head2 setup_ca
 
@@ -630,14 +632,15 @@ my ($ok, $err) = &import_gnupg_key(
 return ($ok, $err) if ($ok);
 
 ($ok, $err) = &import_gnupg_key(
-	$authentic_key_email, $authentic_key_fingerprint,
+	$authentic_key_email."|".$authentic_key_email_old,
+	$authentic_key_fingerprint,
 	"$root_directory/authentic-theme/THEME.pgp");
 return ($ok, $err) if ($ok);
 
 return (0);
 }
 
-=head2 import_gnupg_key
+=head2 import_gnupg_key(email, fingerprint, keyfile)
 
 Imports the given key if not already in the key list
 
@@ -650,7 +653,7 @@ return (0) if (!-r $path);
 # Check if we already have the key
 my @keys = &list_keys();
 foreach my $k (@keys) {
-	return ( 0 ) if ($k->{'email'}->[0] eq $email &&
+	return ( 0 ) if ($k->{'email'}->[0] =~ /^$email$/ &&
 		         &key_fingerprint($k) eq $finger);
 	}
 
