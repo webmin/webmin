@@ -88,7 +88,8 @@ foreach my $a (@ann) {
 	next if ($a->{'skip_virtualmin_pro'} && $vmpro);
 	next if ($a->{'skip_cloudmin_pro'} && $cmpro);
 	next if ($a->{'skip_pro'} && ($vmpro || $cmpro));
-
+	
+	(my $id = $a->{'file'}) =~ s/\.//;
 	my $info = { 'id' => "announce_".$a->{'file'},
 		     'open' => 1,
 		     'desc' => $a->{'title'},
@@ -106,6 +107,7 @@ foreach my $a (@ann) {
 	elsif ($a->{'type'} eq 'message') {
 		# A message possibly with some buttons
 		$info->{'type'} = 'html';
+		$info->{'level'} = $a->{'level'} || undef;
 		$info->{'html'} = &html_escape($a->{'message'})."<p>\n";
 		for(my $b=0; defined($a->{'link'.$b}); $b++) {
 			$info->{'html'} .= &ui_link_button(
