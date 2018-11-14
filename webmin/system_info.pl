@@ -4,7 +4,7 @@ use warnings;
 do 'webmin-lib.pl';
 our ($module_var_directory, %gconfig, $hidden_announce_file, $module_name, %text);
 
-our $webmin_announce_url = "https://announce.webmin.com:443/index.txt";
+our $webmin_announce_url = "https://announce.webmin.com/index.txt";
 our $webmin_announce_cache = "$module_var_directory/announce-cache";
 our $webmin_announce_cache_time = 24*60*60;
 
