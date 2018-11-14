@@ -90,7 +90,7 @@ foreach my $a (@ann) {
 	next if ($a->{'skip_pro'} && ($vmpro || $cmpro));
 	
 	(my $id = $a->{'file'}) =~ s/\.//;
-	my $info = { 'id' => "announce_".$a->{'file'},
+	my $info = { 'id' => "announce_".$id,
 		     'open' => 1,
 		     'desc' => $a->{'title'},
 		   };
