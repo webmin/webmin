@@ -73,21 +73,49 @@ else {
 		}
 	}
 
+# Is Virtualmin or Cloudmin pro installed?
+my %vminfo = &get_module_info("virtual-server");
+my $vmpro = %vminfo && $vminfo{'version'} !~ /gpl/;
+my %cminfo = &get_module_info("server-manager");
+my $cmpro = %cminfo && $cminfo{'version'} !~ /gpl/;
+my $ver = &get_webmin_version();
+
+# What type of user is this?
+my $utype;
+if (&foreign_check("virtual-server")) {
+	&foreign_require("virtual-server");
+	if (&virtual_server::reseller_admin()) {
+		$utype = "reseller";
+		}
+	elsif (&virtual_server::extra_admin()) {
+		$utype = "extra";
+		}
+	elsif (!&virtual_server::master_admin()) {
+		$utype = "domain";
+		}
+	}
+if (!$utype && &foreign_check("server-manager")) {
+	&foreign_require("server-manager");
+	if ($server_manager::access{'owner'}) {
+		$utype = "owner";
+		}
+	}
+$utype ||= "master";
+
 # Now we have the announcement hash refs, turn them into messages
 my %hide;
 &read_file($hidden_announce_file, \%hide);
 my @rv;
 my $i = 0;
-my %vminfo = &get_module_info("virtual-server");
-my $vmpro = %vminfo && $vminfo{'version'} !~ /gpl/;
-my %cminfo = &get_module_info("server-manager");
-my $cmpro = %cminfo && $cminfo{'version'} !~ /gpl/;
 foreach my $a (@ann) {
 	# Check if this announcement should be skipped
 	next if ($hide{$a->{'file'}});
 	next if ($a->{'skip_virtualmin_pro'} && $vmpro);
 	next if ($a->{'skip_cloudmin_pro'} && $cmpro);
 	next if ($a->{'skip_pro'} && ($vmpro || $cmpro));
+	next if ($a->{'atleast_version'} && $ver < $a->{'atleast_version'});
+	next if ($a->{'atmost_version'} && $ver > $a->{'atmost_version'});
+	next if ($a->{'user_types'} && $a->{'user_types'} !~ /\Q$utype\E/);
 	
 	(my $id = $a->{'file'}) =~ s/\.//;
 	my $info = { 'id' => "announce_".$id,
