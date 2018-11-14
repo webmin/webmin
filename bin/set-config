@@ -1,0 +1,118 @@
+#!/usr/bin/env perl
+# set-config - Set a Webmin configuration option to the value provided and 
+# restart Webmin to apply the change.
+use strict;
+use warnings;
+BEGIN { $Pod::Usage::Formatter = 'Pod::Text::Color'; }
+use 5.010; # Version in CentOS 6
+
+use Getopt::Long qw(:config permute pass_through);
+use Pod::Usage;
+use Term::ANSIColor qw(:constants);
+use Fcntl qw( :flock );
+
+sub main {
+    my ( $argv ) = @_;
+    my %opt;
+    GetOptions(
+        'help|h' => \$opt{'help'},
+        'config|c=s' => \$opt{'config'},
+        'module|m=s' => \$opt{'module'},
+        'option|o=s' => \$opt{'option'},
+        'value|v=s' => \$opt{'value'}
+    );
+    pod2usage(0) if ( $opt{'help'} );
+
+    $opt{'config'} ||= "/etc/webmin";
+
+    set_config( \%opt );
+    
+    return 0;
+}
+exit main( \@ARGV ) if !caller(0);
+
+sub set_config {
+    my ($optref) = @_;
+    my $key = $optref->{'option'};
+    my $value = $optref->{'value'};
+
+    my @config_lines;
+    # Module or root-level config?
+    my $config_file;
+    if ($optref->{'module'}) {
+        $config_file = "$optref->{'config'}/$optref->{'module'}/config";
+    } else {
+        $config_file = "$optref->{'config'}/miniserv.conf";
+    }
+    # Read'em
+    open my $fh, '+<', $config_file
+      or die RED, "Unable to open $config_file", RESET;
+    flock($fh, LOCK_EX) or die RED, "Unable to lock $config_file", RESET;
+    chomp(@config_lines = <$fh>);
+    # Change'em
+    my $found = 0;
+    my $exit_code = 0;
+    for (@config_lines) {
+        if (/^${key}=(.*)/) {
+            s/^${key}=(.*)/${key}=${value}/;
+            $found++;
+        }
+    }
+    unless ($found > 0) {
+        push(@config_lines, "$key=$value");
+        $exit_code++;
+    }
+    # Write'em
+    seek($fh, 0, 0);
+    print $fh qq|$_\n| for @config_lines;
+    close $fh;
+    exit $exit_code;
+}
+
+1;
+
+=pod
+
+=head1 NAME
+
+set-config
+
+=head1 SYNOPSIS
+
+set-config [options] [--module] --option <option-name> --value <value>
+
+=head1 OPTIONS
+
+=over
+
+=item --help, -h
+
+Print this usage summary and exit. Subcommands may also have a usage summary.
+
+=item --config, -c
+
+Specify the full path to the Webmin configuration directory. Defaults to
+C</etc/webmin>
+
+=item --module, -m
+
+Specify which module configuration to modify. If none given, configuration will be assumed to be the Webmin core configuration (/etc/webmin/miniserv.conf).
+
+=item --option, -o
+
+Specify the option to change.
+
+=head1 EXIT CODES
+
+0 on successfully replacing a config variable
+
+1 on successfully adding a new config variable (the specified option did not
+already exist in the file, and was added)
+
+>1 on error
+
+=head1 LICENSE AND COPYRIGHT
+
+Copyright 2018 Jamie Cameron <jcameron@webmin.com>, Joe Cooper
+<joe@virtualmin.com>.
+

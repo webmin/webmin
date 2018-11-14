@@ -19,7 +19,7 @@ sub main {
         'config|c=s' => \$opt{'config'},
         'list-commands|l' => \$opt{'list'},
         '<>' => sub {
-            # Handled unrecognized options, inc. subcommands.
+            # Handle unrecognized options, inc. subcommands.
             my($arg) = @_;
             if ($arg =~ m{^-}) {
                 say "Usage error: Unknown option $arg.";
@@ -86,19 +86,23 @@ sub run_command {
     # Only handling config, right now...
     # XXX Should we do this with libraries instead of commands?
     # Would need less boilerplate if they weren't standalone commands.
+    # Maybe detect .pm for that possibility.
     my @allopts = ("--config $optref->{'config'}", @$remainref);
     # Run that binch
     system($command, @allopts);
+    # Try to exit with the passed through exit code (rarely used, but 
+    # why not?)
+    if ($? == -1) {
+        die RED, "Failed to execute $command: $!", RESET;
+    } else {
+        exit $? >> 8;
+    }
 }
 
 sub root {
     my ($config) = @_;
-    if ($config) {
-        $ENV{'WEBMIN_CONFIG'} = $config;
-    }
-    $ENV{'WEBMIN_CONFIG'} ||= "/etc/webmin";
-    open(my $CONF, "<", "$ENV{'WEBMIN_CONFIG'}/miniserv.conf") || die RED,
-        "Failed to open miniserv.conf", RESET;
+    open(my $CONF, "<", "$config/miniserv.conf") || die RED,
+        "Failed to open $config/miniserv.conf", RESET;
     my $root;
     while (<$CONF>) {
         if (/^root=(.*)/) {
@@ -111,7 +115,7 @@ sub root {
         die "$root is not a directory. Is --config correct?" unless (-d $root);
     } else {
         # Try to guess where Webmin lives, since config file didn't know.
-        die "Unable to determin Webmin installation directory from $ENV{'WEBMIN_CONFIG'}";
+        die "Unable to determine Webmin installation directory from $ENV{'WEBMIN_CONFIG'}";
     }
 
     return $root;
@@ -139,8 +143,8 @@ Print this usage summary and exit. Subcommands may also have a usage summary.
 
 =item --config, -c
 
-Specify the full path to the Webmin miniserv.conf file. Defaults to
-C</etc/webmin/miniserv.conf>
+Specify the full path to the Webmin configuration directory. Defaults to
+C</etc/webmin>.
 
 =item --list-commands, -l
 

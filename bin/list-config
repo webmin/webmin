@@ -1,0 +1,129 @@
+#!/usr/bin/env perl
+# list-config - List one or all config directives for Webmin or a specific
+# module.
+use strict;
+use warnings;
+BEGIN { $Pod::Usage::Formatter = 'Pod::Text::Color'; }
+use 5.010; # Version in CentOS 6
+
+use Getopt::Long qw(:config permute pass_through);
+use Pod::Usage;
+use Term::ANSIColor qw(:constants);
+
+sub main {
+    my ( $argv ) = @_;
+    my %opt;
+    GetOptions(
+        'help|h' => \$opt{'help'},
+        'config|c=s' => \$opt{'config'},
+        'module|m=s' => \$opt{'module'},
+        'option|o=s' => \$opt{'option'}
+    );
+    pod2usage(0) if ( $opt{'help'} );
+
+    $opt{'config'} ||= "/etc/webmin";
+
+    list_config( \%opt );
+    
+    return 0;
+}
+exit main( \@ARGV ) if !caller(0);
+
+sub list_config {
+    my ($optref) = @_;
+
+    my @config_lines;
+    # Module or root-level config?
+    if ($optref->{'module'}) {
+        # Read the module config file
+        @config_lines = load_config($optref->{'config'}, "$optref->{'module'}/config");
+    } else {
+        @config_lines = load_config($optref->{'config'}, "miniserv.conf");
+    }
+
+    # Display either a single item or the whole thing
+    if ($optref->{'option'}) {
+        # Show one item
+        my $value = get_config_value($optref->{'option'}, \@config_lines)
+            || die RED, "Unable to retrieve value of $optref->{'option'}", RESET;
+        say $value;
+    } else {
+        # Show all
+        say for @config_lines;
+    }
+}
+
+sub load_config {
+    my ($config_dir, $file_path) = @_;
+
+    my @config_lines;
+    if (-e "$config_dir/$file_path") {
+        open my $fh, '<', "$config_dir/$file_path"
+            || die RED, "Unable to open $config_dir/$file_path", RESET;
+        chomp(@config_lines = <$fh>);
+        close $fh;
+    } else {
+        die RED, "Unable to open $config_dir/$file_path.", RESET;
+    }
+    return @config_lines;
+}
+
+# get_config_var
+# Read the file at $config and return the value of key
+sub get_config_value {
+    my ($key, $config_lines_ref) = @_;
+    my $value;
+    
+    foreach my $line (@$config_lines_ref) {
+        if ($line =~ /^${key}=(.*)/) {
+            $value = $1;
+        }
+    }
+
+    return $value;
+}
+
+1;
+
+=pod
+
+=head1 NAME
+
+list-config
+
+=head1 SYNOPSIS
+
+list-config [options]
+
+=head1 OPTIONS
+
+=over
+
+=item --help, -h
+
+Print this usage summary and exit. Subcommands may also have a usage summary.
+
+=item --config, -c
+
+Specify the full path to the Webmin configuration directory. Defaults to
+C</etc/webmin>
+
+=item --module, -m
+
+Specify which module configuration to display. If none given, configuration will be assumed to be the Webmin core configuration (/etc/webmin/miniserv.conf).
+
+=item --option, -o
+
+Specify a single option to display. By default, the entire configuration file will be displayed. If this option is given, only the option specified will be shown.
+
+=head1 EXIT CODES
+
+0 on success
+
+non-0 on error
+
+=head1 LICENSE AND COPYRIGHT
+
+Copyright 2018 Jamie Cameron <jcameron@webmin.com>, Joe Cooper
+<joe@virtualmin.com>.
+
