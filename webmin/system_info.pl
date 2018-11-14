@@ -107,6 +107,7 @@ foreach my $a (@ann) {
 	elsif ($a->{'type'} eq 'message') {
 		# A message possibly with some buttons
 		$info->{'type'} = 'html';
+		$info->{'level'} = $a->{'level'};
 		$info->{'html'} = &html_escape($a->{'message'})."<p>\n";
 		for(my $b=0; defined($a->{'link'.$b}); $b++) {
 			$info->{'html'} .= &ui_link_button(
