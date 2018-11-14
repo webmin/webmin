@@ -19,7 +19,8 @@ sub main {
         'config|c=s' => \$opt{'config'},
         'module|m=s' => \$opt{'module'},
         'option|o=s' => \$opt{'option'},
-        'value|v=s' => \$opt{'value'}
+        'value|v=s' => \$opt{'value'},
+        'force|f' => \$opt{'force'}
     );
     pod2usage(0) if ( $opt{'help'} );
 
@@ -35,6 +36,7 @@ sub set_config {
     my ($optref) = @_;
     my $key = $optref->{'option'};
     my $value = $optref->{'value'};
+    $key or die RED, "An --option must be specified", RESET;
 
     my @config_lines;
     # Module or root-level config?
@@ -52,6 +54,10 @@ sub set_config {
     # Change'em
     my $found = 0;
     my $exit_code = 0;
+    # Validate it against the config.info if this is a module and
+    if ($optref->{'module'} && !($optref->{'force'})) {
+        validate_config_option($optref);
+    }
     for (@config_lines) {
         if (/^${key}=(.*)/) {
             s/^${key}=(.*)/${key}=${value}/;
@@ -66,7 +72,56 @@ sub set_config {
     seek($fh, 0, 0);
     print $fh qq|$_\n| for @config_lines;
     close $fh;
+
+    # Restart Webmin if editing miniserv.conf
+    unless ($optref->{'module'}) {
+        say "Restarting Webmin to apply miniserv.conf changes...";
+        system("$optref->{'config'}/restart");
+    }
     exit $exit_code;
+}
+
+sub validate_config_option {
+    my ($optref) = @_;
+
+    my $root = root($optref->{'config'});
+    my $key = $optref->{'option'};
+
+    # Load the config.info
+    open my $fh, '<', "$root/$optref->{'module'}/config.info";
+    # Does this key exist?
+    my $found;
+    while (<$fh>) {
+        if (/^${key}=(.*)/) {
+            $found++;
+        }
+    }
+    close $fh;
+    $found or
+      die RED, "Option '$key' is unknown in module $optref->{'module'}", RESET;
+    return 1;
+}
+
+sub root {
+    my ($config) = @_;
+    open(my $CONF, "<", "$config/miniserv.conf") || die RED,
+        "Failed to open $config/miniserv.conf", RESET;
+    my $root;
+    while (<$CONF>) {
+        if (/^root=(.*)/) {
+            $root = $1;
+        }
+    }
+    close($CONF);
+    # Does the Webmin root exist?
+    if ( $root ) {
+        die "$root is not a directory. Is --config correct?" unless (-d $root);
+    } else {
+        # Try to guess where Webmin lives, since config file didn't know.
+        die "Unable to determine Webmin installation directory from $ENV{'WEBMIN_CONFIG'}";
+    }
+
+    return $root;
 }
 
 1;
@@ -101,6 +156,14 @@ Specify which module configuration to modify. If none given, configuration will 
 =item --option, -o
 
 Specify the option to change.
+
+=item --value, -o
+
+The value to change the option to.
+
+==item --force, -f
+
+Skip validation of the option name. Allows modifying hidden options, and adding unknown options.
 
 =head1 EXIT CODES
 
