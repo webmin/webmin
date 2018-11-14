@@ -102,6 +102,10 @@ foreach my $a (@ann) {
 		$info->{'type'} = 'warning';
 		$info->{'level'} = $a->{'level'} || 'info';
 		$info->{'warning'} = &html_escape($a->{'message'})."<p>\n";
+		for(my $b=0; defined($a->{'link'.$b}); $b++) {
+			$info->{'warning'} .= &ui_link_button(
+				$a->{'link'.$b}, $a->{'desc'.$b}, "_new")."\n";
+			}
 		$info->{'warning'} .= $hide;
 		}
 	elsif ($a->{'type'} eq 'message') {
