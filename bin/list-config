@@ -193,6 +193,8 @@ Specify a single option to display. By default, the entire configuration file wi
 
 Display the description of the option from the module C<config.info> file, instead of it's current value. This option is only available for modules, as miniserv.conf does not have a config.info.
 
+=back
+
 =head1 EXIT CODES
 
 0 on success

@@ -169,6 +169,8 @@ The value to change the option to.
 
 Skip validation of the option name. Allows modifying hidden options, and adding unknown options.
 
+=back
+
 =head1 EXIT CODES
 
 0 on successfully replacing a config variable

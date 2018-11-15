@@ -206,6 +206,8 @@ List available subcommands.
 
 When listing commands, briefly describe what they do.
 
+=back
+
 =head1 EXIT CODES
 
 0 on success
