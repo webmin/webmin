@@ -164,7 +164,7 @@ Specify the option to change.
 
 The value to change the option to.
 
-==item --force, -f
+=item --force, -f
 
 Skip validation of the option name. Allows modifying hidden options, and adding unknown options.
 
