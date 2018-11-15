@@ -1,6 +1,5 @@
 #!/usr/bin/env perl
-# enable-proxy - Set Webmin configuration options to support being served
-# through a proxy.
+# disable-proxy - Reverse/remove the configuration options set by enable-proxy.
 use strict;
 use warnings;
 BEGIN { $Pod::Usage::Formatter = 'Pod::Text::Color'; }
@@ -18,8 +17,6 @@ sub main {
     GetOptions(
         'help|h' => \$opt{'help'},
         'config|c=s' => \$opt{'config'},
-        'prefix|p=s' => \$opt{'prefix'},
-        'referer|r=s' => \$opt{'referer'}
     );
     pod2usage(0) if ( $opt{'help'} );
 
@@ -47,16 +44,14 @@ sub enable_proxy {
     # Setup Webmin
     if ($optref->{'prefix'}) {
         # Set'em up for proxying on https://domain.tld/prefix
-        set_config('webprefix', $optref->{'prefix'}, $file);
-        set_config('webprefix_noredir', '1', $file);
-        set_config('referer', $referer, $file);
-        set_config('ssl_redirect', '0', "$optref->{'config'}/miniserv.conf");
-        set_config('ssl', '0', "$optref->{'config'}/miniserv.conf");
+        set_config('webprefix', '', $file);
+        set_config('webprefix_noredir', '', $file);
+        set_config('ssl_redirect', '1', "$optref->{'config'}/miniserv.conf");
+        set_config('ssl', '1', "$optref->{'config'}/miniserv.conf");
     } else {
         # No prefix, just proxying at the root level: https://domain.tld/
-        set_config('referer', $referer, $file);
-        set_config('ssl_redirect', '0', "$optref->{'config'}/miniserv.conf");
-        set_config('ssl', '0', "$optref->{'config'}/miniserv.conf");
+        set_config('ssl_redirect', '1', "$optref->{'config'}/miniserv.conf");
+        set_config('ssl', '1', "$optref->{'config'}/miniserv.conf");
     }
 
     # Setup the local web server?
@@ -149,16 +144,6 @@ Print this usage summary and exit.
 
 Specify the full path to the Webmin configuration directory. Defaults to
 C</etc/webmin>
-
-=item --prefix, -p
-
-To use a directory prefix for URLs (e.g. https://domain.tld/webmin) provide
-it using this option.
-
-=item --referer, -r
-
-The hostname you'll be using in your browser to contact the server. (e.g. 
-domain.tld)
 
 =back
 

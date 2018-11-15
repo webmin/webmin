@@ -117,7 +117,6 @@ sub root {
     if ( $root ) {
         die "$root is not a directory. Is --config correct?" unless (-d $root);
     } else {
-        # Try to guess where Webmin lives, since config file didn't know.
         die "Unable to determine Webmin installation directory from $ENV{'WEBMIN_CONFIG'}";
     }
 
