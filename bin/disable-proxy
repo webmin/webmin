@@ -122,15 +122,15 @@ sub root {
 
 =head1 NAME
 
-enable-proxy
+disable-proxy
 
 =head1 DESCRIPTION
 
-Configure the Webmin web server to be proxied through another web server, like Apache or nginx. This is not usually recommended, and disables some security features, but can help traverse a firewall.
+Disable proxy-related features in Webmin.
 
 =head1 SYNOPSIS
 
-enable-proxy [options]
+disable-proxy [options]
 
 =head1 OPTIONS
 

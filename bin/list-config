@@ -17,7 +17,7 @@ sub main {
         'help|h' => \$opt{'help'},
         'config|c=s' => \$opt{'config'},
         'module|m=s' => \$opt{'module'},
-        option|o=s' => \$opt{'option'},
+        'option|o=s' => \$opt{'option'},
         'describe|d' => \$opt{'describe'}
     );
     pod2usage(0) if ( $opt{'help'} );
