@@ -114,6 +114,9 @@ sub list_commands {
     # Find and list global commands
     for my $command (glob ("$root/bin/*")) {
         my ($bin, $path) = fileparse($command);
+        if ($bin =~ "webmin") {
+            next;
+        }
         if ($optref->{'describe'}) {
             # Display name and description
             say YELLOW, "$bin", RESET;
