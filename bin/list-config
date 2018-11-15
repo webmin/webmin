@@ -174,7 +174,7 @@ list-config [options]
 
 =item --help, -h
 
-Print this usage summary and exit. Subcommands may also have a usage summary.
+Print this usage summary and exit.
 
 =item --config, -c
 
