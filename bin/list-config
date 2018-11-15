@@ -17,7 +17,7 @@ sub main {
         'help|h' => \$opt{'help'},
         'config|c=s' => \$opt{'config'},
         'module|m=s' => \$opt{'module'},
-        'option|o=s' => \$opt{'option'},
+        option|o=s' => \$opt{'option'},
         'describe|d' => \$opt{'describe'}
     );
     pod2usage(0) if ( $opt{'help'} );
@@ -159,6 +159,10 @@ sub root {
 =head1 NAME
 
 list-config
+
+=head1 DESCRIPTION
+
+List one or all configuration directives for C<miniserv.conf> or a module C<config> file.
 
 =head1 SYNOPSIS
 

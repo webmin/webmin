@@ -132,6 +132,10 @@ sub root {
 
 set-config
 
+=head1 DESCRIPTION
+
+Set a configuration directive in either miniserv.conf (the core Webmin config) or in the specified module config.
+
 =head1 SYNOPSIS
 
 set-config [options] [--module] --option <option-name> --value <value>

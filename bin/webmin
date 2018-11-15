@@ -10,6 +10,7 @@ use Getopt::Long qw(:config permute pass_through);
 use Pod::Usage;
 use Term::ANSIColor qw(:constants);
 use File::Spec;
+use File::Basename;
 
 sub main {
     my ( $argv ) = @_;
@@ -18,6 +19,7 @@ sub main {
         'help|h' => \$opt{'help'},
         'config|c=s' => \$opt{'config'},
         'list-commands|l' => \$opt{'list'},
+        'describe|d' => \$opt{'describe'},
         '<>' => sub {
             # Handle unrecognized options, inc. subcommands.
             my($arg) = @_;
@@ -34,6 +36,13 @@ sub main {
     pod2usage(0) if ( $opt{'help'} );
 
     $opt{'config'} ||= "/etc/webmin";
+
+    # List commands?
+    if ($opt{'list'}) {
+        list_commands(\%opt);
+
+        return 0;
+    }
 
     my @remain = @ARGV;
     if ($subcmd) {
@@ -85,7 +94,6 @@ sub run_command {
     # Merge the options
     # Only handling config, right now...
     # XXX Should we do this with libraries instead of commands?
-    # Would need less boilerplate if they weren't standalone commands.
     # Maybe detect .pm for that possibility.
     my @allopts = ("--config $optref->{'config'}", @$remainref);
     # Run that binch
@@ -96,6 +104,44 @@ sub run_command {
         die RED, "Failed to execute $command: $!", RESET;
     } else {
         exit $? >> 8;
+    }
+}
+
+sub list_commands {
+    my ($optref) = @_;
+
+    my $root = root($optref->{'config'});
+    # Find and list global commands
+    for my $command (glob ("$root/bin/*")) {
+        my ($bin, $path) = fileparse($command);
+        if ($optref->{'describe'}) {
+            # Display name and description
+            say YELLOW, "$bin", RESET;
+            pod2usage( -verbose => 99,
+                       -sections => [ qw(DESCRIPTION) ],
+                       -input => $command,
+                       -exitval => "NOEXIT");
+        } else {
+            # Just list the names
+            say "$bin";
+        }
+    } 
+    my @modules;
+    # Find all module directories with something in bin
+    for my $command (glob ("$root/*/bin/*")) {
+        my ($bin, $path) = fileparse($command);
+        my $module = (split /\//, $path)[-2];
+        if ($optref->{'describe'}) {
+            # Display name and description
+            say YELLOW, "$module-$bin", RESET;
+            pod2usage( -verbose => 99,
+                       -sections => [ qw(DESCRIPTION) ],
+                       -input => $command,
+                       -exitval => "NOEXIT");
+        } else {
+            # Just list the names
+            say "$module-$bin";
+        }
     }
 }
 
@@ -114,7 +160,6 @@ sub root {
     if ( $root ) {
         die "$root is not a directory. Is --config correct?" unless (-d $root);
     } else {
-        # Try to guess where Webmin lives, since config file didn't know.
         die "Unable to determine Webmin installation directory from $ENV{'WEBMIN_CONFIG'}";
     }
 
@@ -128,6 +173,10 @@ sub root {
 =head1 NAME
 
 webmin
+
+=head1 DESCRIPTION
+
+Webmin CLI command to perform many common Webmin tasks from the command line or from scripts.
 
 =head1 SYNOPSIS
 
@@ -149,6 +198,10 @@ C</etc/webmin>.
 =item --list-commands, -l
 
 List available subcommands.
+
+=item --describe, -d
+
+When listing commands, briefly describe what they do.
 
 =head1 EXIT CODES
 
