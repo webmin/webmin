@@ -17,7 +17,8 @@ sub main {
         'help|h' => \$opt{'help'},
         'config|c=s' => \$opt{'config'},
         'module|m=s' => \$opt{'module'},
-        'option|o=s' => \$opt{'option'}
+        'option|o=s' => \$opt{'option'},
+        'describe|d' => \$opt{'describe'}
     );
     pod2usage(0) if ( $opt{'help'} );
 
@@ -44,11 +45,21 @@ sub list_config {
     # Display either a single item or the whole thing
     if ($optref->{'option'}) {
         # Show one item
-        my $value = get_config_value($optref->{'option'}, \@config_lines)
-            || die RED, "Unable to retrieve value of $optref->{'option'}", RESET;
+        my $value;
+        if ($optref->{'module'} and $optref->{'describe'}) {
+            $value = get_description($optref);
+        } else {
+            $value = get_config_value($optref->{'option'}, \@config_lines)
+                || die RED, "Unable to retrieve value of $optref->{'option'}", RESET;
+        }
         say $value;
     } else {
         # Show all
+        if ($optref->{'module'} and $optref->{'describe'}) {
+            @config_lines = get_description($optref);
+        } elsif ($optref->{'describe'}) {
+            die RED, "--describe only available for modules", RESET;
+        }
         say for @config_lines;
     }
 }
@@ -83,6 +94,64 @@ sub get_config_value {
     return $value;
 }
 
+# get_description
+# Return a description of one or more options from config.info
+sub get_description {
+    my ($optref) = @_;
+
+    my $root = root($optref->{'config'});
+    my $config_info = "$root/$optref->{'module'}/config.info";
+    my $key = $optref->{'option'};
+
+    open my $fh, '<', $config_info
+      or die RED, "Unable to open $config_info", RESET;
+    if ($optref->{'option'}) {
+        my $found = 0;
+        # return one description
+        while (<$fh>) {
+            if (/^${key}=([^,]*)/) {
+                $found++;
+                return "$key - $1";
+            }
+        }
+        $found or die RED, "Unknown option $key", RESET;
+    } else {
+        my $found;
+        # return all descriptions
+        my @lines;
+        while (<$fh>) {
+            if (/^(.*)=([^,]*)/) {
+                push (@lines, "$1 - $2");
+                $found++;
+            }
+        }
+        $found or die RED, "No options found for module $optref->{'module'}";
+        return @lines;
+    }
+}
+
+sub root {
+    my ($config) = @_;
+    open(my $CONF, "<", "$config/miniserv.conf") || die RED,
+        "Failed to open $config/miniserv.conf", RESET;
+    my $root;
+    while (<$CONF>) {
+        if (/^root=(.*)/) {
+            $root = $1;
+        }
+    }
+    close($CONF);
+    # Does the Webmin root exist?
+    if ( $root ) {
+        die "$root is not a directory. Is --config correct?" unless (-d $root);
+    } else {
+        # Try to guess where Webmin lives, since config file didn't know.
+        die "Unable to determine Webmin installation directory from $ENV{'WEBMIN_CONFIG'}";
+    }
+
+    return $root;
+}
+
 1;
 
 =pod
@@ -115,6 +184,10 @@ Specify which module configuration to display. If none given, configuration will
 =item --option, -o
 
 Specify a single option to display. By default, the entire configuration file will be displayed. If this option is given, only the option specified will be shown.
+
+=item --describe, -d
+
+Display the description of the option from the module C<config.info> file, instead of it's current value. This option is only available for modules, as miniserv.conf does not have a config.info.
 
 =head1 EXIT CODES
 
