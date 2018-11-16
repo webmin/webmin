@@ -1,0 +1,125 @@
+#!/usr/bin/env perl
+# disable-twofactor - Disable two-factor authentication for a user. 
+use strict;
+use warnings;
+BEGIN { $Pod::Usage::Formatter = 'Pod::Text::Color'; }
+use 5.010; # Version in CentOS 6
+
+use Getopt::Long;
+use Pod::Usage;
+use Term::ANSIColor qw(:constants);
+
+sub main {
+    my ( $argv ) = @_;
+    my %opt;
+    GetOptions(
+        'help|h' => \$opt{'help'},
+        'config|c=s' => \$opt{'config'},
+        'user|u=s' => \$opt{'user'}
+    );
+    pod2usage(0) if ( $opt{'help'} );
+
+    $opt{'config'} ||= "/etc/webmin";
+
+    # Boilerplate, boilerplate, boilerplate...
+    $ENV{'WEBMIN_CONFIG'} = $opt{'config'};
+    $ENV{'WEBMIN_VAR'}    ||= "/var/webmin";
+    $ENV{'MINISERV_CONFIG'} = $ENV{'WEBMIN_CONFIG'} . "/miniserv.conf";
+
+    my $root = root($opt{'config'});
+    chdir($root);
+    $0 = "$root/bin/webmin";
+    push(@INC, $root);
+    eval 'use WebminCore'; ## no critic
+    init_config();
+    foreign_require('acl', 'acl-lib.pl');
+    our (%config);
+
+    # Get the user
+    my @users = acl::list_users();
+    my $user;
+    ($user) = grep { $_->{'name'} eq $opt{'user'} } @users;
+
+    # Cancel twofactor authentication
+    $user->{'twofactor_provider'} = undef;
+    $user->{'twofactor_id'} = undef;
+    $user->{'twofactor_apikey'} = undef;
+    acl::modify_user($user->{'name'}, $user);
+    reload_miniserv();
+    webmin_log("onefactor", "user", $user->{'name'});
+
+    exit 0;
+}
+exit main( \@ARGV ) if !caller(0);
+
+sub root {
+    my ($config) = @_;
+    open(my $CONF, "<", "$config/miniserv.conf") || die RED,
+        "Failed to open $config/miniserv.conf", RESET;
+    my $root;
+    while (<$CONF>) {
+        if (/^root=(.*)/) {
+            $root = $1;
+        }
+    }
+    close($CONF);
+    # Does the Webmin root exist?
+    if ( $root ) {
+        die "$root is not a directory. Is --config correct?" unless (-d $root);
+    } else {
+        die "Unable to determine Webmin installation directory from $ENV{'WEBMIN_CONFIG'}";
+    }
+
+    return $root;
+}
+
+1;
+
+=pod
+
+=head1 NAME
+
+disable-twofactor
+
+=head1 DESCRIPTION
+
+Disable two factor authentication for a given user. Useful in cases where the
+second factor (e.g. phone or USB key) has been lost.
+
+=head1 SYNOPSIS
+
+disable-twofactor --user username
+
+=head1 OPTIONS
+
+=over
+
+=item --help, -h
+
+Print this usage summary and exit.
+
+=item --config, -c
+
+Specify the full path to the Webmin configuration directory. Defaults to
+C</etc/webmin>
+
+=item --user, -u
+
+Name of the user to disable two-factor authentication for.
+
+=back
+
+=head1 EXIT CODES
+
+0 on successfully replacing a config variable
+
+1 on successfully adding a new config variable (the specified option did not
+already exist in the file, and was added)
+
+>1 on error
+
+=head1 LICENSE AND COPYRIGHT
+
+Copyright 2018 Jamie Cameron <jcameron@webmin.com>, Joe Cooper
+<joe@virtualmin.com>.
+

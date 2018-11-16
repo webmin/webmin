@@ -114,7 +114,7 @@ sub get_description {
                 return "$key - $1";
             }
         }
-        $found or die RED, "Unknown option $key", RESET;
+        $found or die RED, "Unrecognized option $key", RESET;
     } else {
         my $found;
         # return all descriptions
