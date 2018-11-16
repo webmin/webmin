@@ -20,6 +20,7 @@ sub main {
         'config|c=s' => \$opt{'config'},
         'list-commands|l' => \$opt{'list'},
         'describe|d' => \$opt{'describe'},
+        'man|m' => \$opt{'man'},
         '<>' => sub {
             # Handle unrecognized options, inc. subcommands.
             my($arg) = @_;
@@ -40,8 +41,11 @@ sub main {
     # List commands?
     if ($opt{'list'}) {
         list_commands(\%opt);
-
-        return 0;
+        exit 0;
+    } elsif ($opt{'man'}) {
+        # Show the full manual page
+        man_command(\%opt, $subcmd);
+        exit 0;
     }
 
     my @remain = @ARGV;
@@ -62,9 +66,30 @@ sub run_command {
     # Figure out the Webmin root directory
     my $root = root($optref->{'config'});
 
-    my ($command, $module_name);
+    my ($command_path) = get_command_path($root, $subcmd);
+    
+    # Merge the options
+    # Only handling config, right now...
+    # XXX Should we do this with libraries instead of commands?
+    # Maybe detect .pm for that possibility.
+    my @allopts = ("--config $optref->{'config'}", @$remainref);
+    # Run that binch
+    system($command_path, @allopts);
+    # Try to exit with the passed through exit code (rarely used, but 
+    # why not?)
+    if ($? == -1) {
+        die RED, "Failed to execute $command_path: $!", RESET;
+    } else {
+        exit $? >> 8;
+    }
+}
+
+sub get_command_path {
+    my ($root, $subcmd) = @_;
     # Check for a root-level command (in "$root/bin")
     my $command_path = File::Spec->catfile($root, 'bin', $subcmd);
+    my $module_name;
+    my $command;
     if ( -x $command_path) {
         $command = $command_path;
     } else {
@@ -91,20 +116,7 @@ sub run_command {
         }
     }
 
-    # Merge the options
-    # Only handling config, right now...
-    # XXX Should we do this with libraries instead of commands?
-    # Maybe detect .pm for that possibility.
-    my @allopts = ("--config $optref->{'config'}", @$remainref);
-    # Run that binch
-    system($command, @allopts);
-    # Try to exit with the passed through exit code (rarely used, but 
-    # why not?)
-    if ($? == -1) {
-        die RED, "Failed to execute $command: $!", RESET;
-    } else {
-        exit $? >> 8;
-    }
+    return ($command);
 }
 
 sub list_commands {
@@ -148,6 +160,15 @@ sub list_commands {
     }
 }
 
+sub man_command {
+    my ($optref, $subcmd) = @_;
+
+    my $root = root($optref->{'config'});
+    my $command_path = get_command_path($root, $subcmd);
+
+    pod2usage( -verbose => 99,
+               -input => $command_path);
+}
 sub root {
     my ($config) = @_;
     open(my $CONF, "<", "$config/miniserv.conf") || die RED,
@@ -205,6 +226,10 @@ List available subcommands.
 =item --describe, -d
 
 When listing commands, briefly describe what they do.
+
+=item --man, -m
+
+Display the manual page for the given subcommand.
 
 =back
 
