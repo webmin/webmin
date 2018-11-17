@@ -12,7 +12,6 @@ use Term::ANSIColor qw(:constants);
 use Fcntl qw( :flock );
 
 sub main {
-    my ( $argv ) = @_;
     my %opt;
     GetOptions(
         'help|h' => \$opt{'help'},

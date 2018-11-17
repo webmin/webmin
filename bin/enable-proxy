@@ -13,7 +13,6 @@ use Fcntl qw( :flock );
 use Sys::Hostname;
 
 sub main {
-    my ( $argv ) = @_;
     my %opt;
     GetOptions(
         'help|h' => \$opt{'help'},
