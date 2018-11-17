@@ -85,7 +85,12 @@ sub run_command {
 sub get_command_path {
     my ($root, $subcmd) = @_;
     # Check for a root-level command (in "$root/bin")
-    my $command_path = File::Spec->catfile($root, 'bin', $subcmd);
+    my $command_path;
+    if ($subcmd) {
+        $command_path = File::Spec->catfile($root, 'bin', $subcmd);
+    } else {
+        $command_path = File::Spec->catfile($root, 'bin', 'webmin');
+    }
     my $module_name;
     my $command;
     if ( -x $command_path) {
@@ -107,14 +112,16 @@ sub get_command_path {
                 } elsif ( -x $command . ".pl" ) {
                     $command = $command . ".pl";
                     last;
-                } else {
-                    die RED, "$command doesn't exist or is not executable", RESET;
                 }
             }
         }
     }
 
-    return ($command);
+    if ($command) {
+        return $command;
+    } else {
+        die RED, "Unrecognized subcommand: $subcmd", RESET;
+    }
 }
 
 sub list_commands {
@@ -164,9 +171,13 @@ sub man_command {
     my $root = root($optref->{'config'});
     my $command_path = get_command_path($root, $subcmd);
 
+    $ENV{'PAGER'} ||= "more";
+    open(my $PAGER, "|-", "$ENV{'PAGER'}");
     pod2usage( -verbose => 99,
-               -input => $command_path);
+               -input => $command_path,
+               -output => $PAGER);
 }
+
 sub root {
     my ($config) = @_;
     open(my $CONF, "<", "$config/miniserv.conf") || die RED,
