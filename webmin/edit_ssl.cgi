@@ -295,6 +295,9 @@ else {
 			push(@opts, [ 1, $text{'ssl_webroot1'},
 				      &ui_select("vhost", undef, \@snames) ]);
 			}
+		else {
+			$webroot ||= &apache::find_directive("DocumentRoot", $conf);
+			}
 		}
 	push(@opts, [ 2, $text{'ssl_webroot2'},
 		      &ui_textbox("webroot", $webroot, 40) ]);
