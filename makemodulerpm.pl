@@ -11,11 +11,11 @@ use Term::ANSIColor qw(:constants);
 my $basedir;
 
 # Does any system still have a redhat dir?
-if (-d "$ENV{'HOME'}" . "/redhat") {
-	$basedir = "$ENV{'HOME'}" . "/redhat";
+if (-d "$ENV{'HOME'}/redhat") {
+	$basedir = "$ENV{'HOME'}/redhat";
 	}
-elsif (-d "$ENV{'HOME'}" . "/rpmbuild") {
-	$basedir = "$ENV{'HOME'}" . "/rpmbuild";
+elsif (-d "$ENV{'HOME'}/rpmbuild") {
+	$basedir = "$ENV{'HOME'}/rpmbuild";
 	}
 else {
 	$basedir = "/usr/src/redhat";

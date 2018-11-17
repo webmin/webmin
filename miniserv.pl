@@ -1458,6 +1458,24 @@ if ($config{'trust_real_ip'}) {
 		# If a remote IP was given, use it for all access control checks
 		# from now on.
 		$acptip = $headerhost;
+		
+		# re-check remote address against access list
+		if (@deny && &ip_match($acptip, $localip, @deny) ||
+		    @allow && !&ip_match($acptip, $localip, @allow)) {
+			&http_error(403, "Access denied for ".&html_strip($acptip));
+			return 0;
+			}
+		
+		if ($use_libwrap) {
+			# Check address with TCP-wrappers
+			if (!hosts_ctl($config{'pam'}, STRING_UNKNOWN,
+				       $acptip, STRING_UNKNOWN)) {
+				&http_error(403, "Access denied for ".&html_strip($acptip).
+						 " by TCP wrappers");
+				return 0;
+				}
+			}
+		print DEBUG "handle_request: passed Remote IP checks\n";
 		}
 	$loghost = $acpthost;
 	}

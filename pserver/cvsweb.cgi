@@ -1964,7 +1964,7 @@ sub printLog($;$) {
 	if (/^1\.1\.1\.\d+$/) {
 	    print " <i>(vendor branch)</i>";
 	}
-	if (defined @mytz) {
+	if (@mytz) {
 	    my ($est) = $mytz[(localtime($date{$_}))[8]];
 	    print ", <i>" . scalar localtime($date{$_}) . " $est</i> (";
 	} else {

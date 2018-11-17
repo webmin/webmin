@@ -40,7 +40,7 @@ if ($in{'delete'}) {
 	local ($m);
 	foreach $m (@maps) {
 		&error($text{'group_in_use_nat'})
-			if (@$m->[1] eq $group->{'name'} );
+			if ($m->[1] eq $group->{'name'} );
 		}
 	
 	local $g;
@@ -128,8 +128,8 @@ else {
 				}
 			}
 		foreach $m (@maps) {
-			if (@$m->[1] eq "$oldname") {
-				@$m->[1] = "$group->{'name'}";
+			if ($m->[1] eq "$oldname") {
+				$m->[1] = "$group->{'name'}";
 				} 
 			}			
 		&save_nat($iface, @nets, @maps);      
