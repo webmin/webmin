@@ -82,7 +82,7 @@ if ($in{'new'} && $in{'virtual'}) {
 	}
 elsif ($in{'new'}) {
 	# New real interface
-	if ($in{'vlan'} == 1) {
+	if ($in{'vlan'}) {
 		$namefield = "auto".&ui_hidden("name", "auto");
 		}
 	elsif ($in{'bridge'}) {
@@ -260,7 +260,7 @@ if ($in{'bond'} || &iface_type($b->{'name'}) eq 'Bonded') {
 	}
 
 # Special Parameter for vlan tagging
-if(($in{'vlan'}) or (&iface_type($b->{'name'}) =~ /^(.*) (VLAN)$/)) {
+if ($in{'vlan'} || &iface_type($b->{'name'}) =~ /^(.*) (VLAN)$/) {
 	$b->{'name'} =~ /(\S+)\.(\d+)/;
 	$physical = $1;
 	$vlanid = $2;
