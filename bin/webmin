@@ -13,7 +13,6 @@ use File::Spec;
 use File::Basename;
 
 sub main {
-    my ( $argv ) = @_;
     my ( %opt, $subcmd );
     GetOptions(
         'help|h' => \$opt{'help'},
