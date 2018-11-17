@@ -44,7 +44,7 @@ sub main {
     $user->{'twofactor_provider'} = undef;
     $user->{'twofactor_id'} = undef;
     $user->{'twofactor_apikey'} = undef;
-    acl::modify_user($user->{'name'}, $user);
+    acl::modify_user($user->{'name'}, $user); 
     reload_miniserv();
     webmin_log("onefactor", "user", $user->{'name'});
 
@@ -111,12 +111,9 @@ Name of the user to disable two-factor authentication for.
 
 =head1 EXIT CODES
 
-0 on successfully replacing a config variable
+0 on successfully replacing configuration options
 
-1 on successfully adding a new config variable (the specified option did not
-already exist in the file, and was added)
-
->1 on error
+non-0 on error
 
 =head1 LICENSE AND COPYRIGHT
 

@@ -133,7 +133,7 @@ set-config
 
 =head1 DESCRIPTION
 
-Set a configuration directive in either miniserv.conf (the core Webmin config) or in the specified module config.
+Set a configuration directive in either C<miniserv.conf> (the core Webmin config) or in the specified module C<config>.
 
 =head1 SYNOPSIS
 

@@ -34,7 +34,6 @@ sub main {
             }
         }
     );
-    pod2usage(0) if ( $opt{'help'} );
 
     $opt{'config'} ||= "/etc/webmin";
 
@@ -43,7 +42,7 @@ sub main {
     if ($opt{'list'}) {
         list_commands(\%opt);
         exit 0;
-    } elsif ($opt{'man'}) {
+    } elsif ($opt{'man'} || $opt{'help'}) {
         # Show the full manual page
         man_command(\%opt, $subcmd);
         exit 0;
@@ -165,6 +164,7 @@ sub list_commands {
     }
 }
 
+# Display either a short usage message (--help) or a full manual (--man)
 sub man_command {
     my ($optref, $subcmd) = @_;
 
@@ -173,9 +173,13 @@ sub man_command {
 
     $ENV{'PAGER'} ||= "more";
     open(my $PAGER, "|-", "$ENV{'PAGER'}");
-    pod2usage( -verbose => 99,
-               -input => $command_path,
-               -output => $PAGER);
+    if ($optref->{'help'}) {
+        pod2usage( -input => $command_path );
+    } else {
+        pod2usage( -verbose => 99,
+                   -input => $command_path,
+                   -output => $PAGER);
+    }
 }
 
 sub root {
