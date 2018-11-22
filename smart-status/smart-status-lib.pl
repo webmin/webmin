@@ -279,6 +279,12 @@ Returns a hash reference containing the status of some drive
 sub get_drive_status
 {
 local ($device, $drive) = @_;
+if ($device =~ /^(\/dev\/nvme\d+)n\d+$/) {
+	# For NVME drives, try the underlying device first
+	local $nd = $1;
+	local $st = &get_drive_status($nd, $drive);
+	return $st if ($st->{'support'} && $st->{'enabled'});
+	}
 local %rv;
 local $qd = quotemeta($device);
 local $extra_args = &get_extra_args($device, $drive);
