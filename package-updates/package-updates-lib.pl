@@ -300,6 +300,7 @@ return @updates_available_cache;
 sub package_install
 {
 my ($name, $system, $install) = @_;
+$system ||= $software::update_system;
 my @rv;
 my $pkg;
 
@@ -369,6 +370,7 @@ return @rv;
 sub package_install_multiple
 {
 my ($names, $system, $install) = @_;
+$system ||= $software::update_system;
 my @rv;
 my $pkg;
 
