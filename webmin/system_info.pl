@@ -33,6 +33,7 @@ else {
 
 	if (!$err) {
 		# Parse the announcements index file
+		$out ||= "";
 		foreach my $l (split(/\r?\n/, $out)) {
 			$l =~ s/^#.*//;		# Skip comments and spaces
 			$l =~ s/^\s+//;
