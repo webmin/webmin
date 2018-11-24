@@ -59,6 +59,15 @@ if ($fpt || $in{'fpt'}) {
 			[ $in{'fpt'} ]);
 	}
 
+if ($in{'ilt_def'}) {
+	&save_directive($conf, $mysqld, "innodb_lock_wait_timeout", [ ]);
+	}
+else {
+	$in{'ilt'} =~ /^\d+$/ || &error($text{'cnf_eilt'});
+	&save_directive($conf, $mysqld, "innodb_lock_wait_timeout",
+			[ $in{'ilt'} ]);
+	}
+
 &save_directive($conf, $mysqld, "big-tables",
 		$in{'big-tables'} ? [ "" ] : [ ]);
 

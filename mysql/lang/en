@@ -740,6 +740,8 @@ cnf_emyisam_sort_buffer_size=Missing or invalid MyISAM sort buffer size
 cnf_emax_connections=Missing or invalid maximum number of connections
 cnf_restart=Save and Restart MySQL
 cnf_fpt=Separate file for each InnoDB table?
+cnf_ilt=InnoDB lock timeout (in seconds)
+cnf_eilt=InnoDB lock timeout must be an integer
 
 manual_title=Edit Config Files
 manual_file=Edit config file:
