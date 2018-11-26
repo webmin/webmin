@@ -988,8 +988,7 @@ while(1) {
 			# this sub-process is asking about a password
 			local $infd = $passin[$i];
 			local $outfd = $passout[$i];
-			#local $inline = <$infd>;
-			local $inline = &sysread_line($infd);
+			local $inline = <$infd>;
 			if ($inline) {
 				print DEBUG "main: inline $inline";
 				}
@@ -3084,22 +3083,6 @@ else {
 	sysread(SOCK, $buf, $_[0]) || return undef;
 	return $buf;
 	}
-}
-
-# sysread_line(fh)
-# Read a line from a file handle, using sysread to get a byte at a time
-sub sysread_line
-{
-local ($fh) = @_;
-local $line;
-while(1) {
-	local ($buf, $got);
-	$got = sysread($fh, $buf, 1);
-	last if ($got <= 0);
-	$line .= $buf;
-	last if ($buf eq "\n");
-	}
-return $line;
 }
 
 # wait_for_data(secs)
