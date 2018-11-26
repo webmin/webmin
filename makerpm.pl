@@ -1,8 +1,11 @@
 #!/usr/local/bin/perl
 # Build an RPM package of Webmin
 
-if (-r "/usr/src/OpenLinux") {
-	$base_dir = "/usr/src/OpenLinux";
+if (-d "$ENV{'HOME'}/redhat") {
+	$base_dir = "$ENV{'HOME'}/redhat";
+	}
+elsif (-d "$ENV{'HOME'}/rpmbuild") {
+	$base_dir = "$ENV{'HOME'}/rpmbuild";
 	}
 else {
 	$base_dir = "/usr/src/redhat";
