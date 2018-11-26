@@ -83,7 +83,6 @@ else {
 if (-d "/usr/local/webadmin") {
 	chdir("/usr/local/webadmin");
 	system("./koi8-to-cp1251.pl");
-	system("./make-small-icons.pl /usr/local/webadmin");
 	}
 $dir = "webmin-$vers";
 system("rm -rf $tardir/$dir");
