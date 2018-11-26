@@ -806,7 +806,7 @@ while(1) {
 		foreach $s (keys %sessiondb) {
 			local ($user, $ltime, $lip) =
 				split(/\s+/, $sessiondb{$s});
-			if ($time_now - $ltime > 7*24*60*60) {
+			if ($ltime && $time_now - $ltime > 7*24*60*60) {
 				&run_logout_script($s, $user, undef, undef);
 				&write_logout_utmp($user, $lip);
 				if ($user =~ /^\!/ || $sessiondb{$s} eq '') {
