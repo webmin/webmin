@@ -89,5 +89,5 @@ else {
 	print &ui_form_end([ [ undef, $text{'pv_create2'} ] ]);
 	}
 
-&ui_print_footer("index.cgi?mode=pvs", $text{'index_return'});
+&ui_print_footer("index.cgi?mode=pvs", $text{'index_return2'});
 

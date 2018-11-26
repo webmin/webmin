@@ -20,5 +20,5 @@ print &ui_table_start($text{'mkfs_header'}, undef, 4);
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'create'} ] ]);
 
-&ui_print_footer("index.cgi?mode=lvs", $text{'index_return'});
+&ui_print_footer("index.cgi?mode=lvs", $text{'index_return3'});
 

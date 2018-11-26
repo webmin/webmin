@@ -48,7 +48,7 @@ elsif ($in{'delete'}) {
 		}
 	print &ui_form_end([ [ 'confirm', $text{'lv_deleteok'} ] ]);
 	print "</center>\n";
-	&ui_print_footer("index.cgi?mode=lvs", $text{'index_return'});
+	&ui_print_footer("index.cgi?mode=lvs", $text{'index_return3'});
 	}
 elsif ($in{'rollback'}) {
 	# Ask the user if he is sure
@@ -61,7 +61,7 @@ elsif ($in{'rollback'}) {
 			"<tt>$lv->{'device'}</tt>"),"</b><p>\n";
 	print &ui_form_end([ [ 'confirm_rollback', $text{'lv_snaprollbackok'} ] ]);
 	print "</center>\n";
-	&ui_print_footer("index.cgi?mode=lvs", $text{'index_return'});
+	&ui_print_footer("index.cgi?mode=lvs", $text{'index_return3'});
 	}
 else {
 	# Validate inputs
@@ -222,7 +222,7 @@ else {
 					print "<b>$err</b> <p>\n";
 					print "<input type=submit name=sizeconfirm value='$text{'resize_ok'}'>\n";
 					print "</form></center>\n";
-					&ui_print_footer("", $text{'index_return'});
+					&ui_print_footer("index.cgi?mode=lvs", $text{'index_return3'});
 					exit;
 					}
 				}

@@ -21,6 +21,6 @@ $config{'lasttype_'.$in{'dev'}} = $in{'fs'};
 &save_module_config();
 &webmin_log("mkfs", "lv", $in{'dev'}, \%in);
 
-&ui_print_footer("index.cgi?mode=lvs", $text{'index_return'},
+&ui_print_footer("index.cgi?mode=lvs", $text{'index_return3'},
 		 "edit_lv.cgi?vg=$in{'vg'}&lv=$in{'lv'}", $text{'lv_return'});
 

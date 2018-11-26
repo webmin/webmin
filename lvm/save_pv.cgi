@@ -32,7 +32,7 @@ elsif ($in{'delete'}) {
 			  "<tt>$pv->{'device'}</tt>"),"</b><p>\n";
 	print &ui_form_end([ [ 'confirm', $text{'pv_deleteok'} ] ]);
 	print "</center>\n";
-	&ui_print_footer("index.cgi?mode=pvs", $text{'index_return'});
+	&ui_print_footer("index.cgi?mode=pvs", $text{'index_return2'});
 	}
 elsif ($in{'resize'}) {
 	# Scale up to match device

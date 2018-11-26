@@ -16,6 +16,8 @@ index_addlv3=Create a thin pool in <tt>$1</tt>.
 index_addlv=Create a new logical volume.
 index_addsnap=Create a new snapshot.
 index_return=volume groups
+index_return2=physical volumes
+index_return3=logical volumes
 index_init=This may be because LVM has not been activated yet. <a href='$1'>Activate it now</a> to view all volume groups.
 index_eversion=Webmin only supports LVM versions 1.0 and above. The output from $1 on your system was : $2
 index_version=LVM version $1

@@ -359,5 +359,5 @@ if ($in{'lv'} && @pvs > 1 && @pvinfo) {
 	print &ui_form_end([ [ undef, $text{'lv_moveok'} ] ]);
 	}
 
-&ui_print_footer("index.cgi?mode=lvs", $text{'index_return'});
+&ui_print_footer("index.cgi?mode=lvs", $text{'index_return3'});
 
