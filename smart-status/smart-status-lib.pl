@@ -317,7 +317,8 @@ if (&get_smart_version() > 5.0) {
 		# Not enabled!
 		$rv{'enabled'} = 0;
 		}
-	if ($device =~ /^\/dev\/nvme/ && $out =~ /Model Number:/i) {
+	if ($device =~ /^\/dev\/nvme/ &&
+	    $out =~ /(Model\s+Number|Device\s+Model):/i) {
 		# For NVME devices, surprisingly smart support/enabled info is
 		# not shown. So assume they work
 		$rv{'support'} = 1;
