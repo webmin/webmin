@@ -57,9 +57,7 @@ else {
 		# HTTP download failed somewhere, so fall back to the cache
 		# and reset it's validity to prevent a failed retry storm
 		@ann = @$cache;
-		my $fh;
-		open($fh, ">>$webmin_announce_cache");
-		close($fh);
+		&execute_command("touch ".quotemeta($webmin_announce_cache));
 		}
 	elsif ($err) {
 		# Cannot fetch, and no cache
