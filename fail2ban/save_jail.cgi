@@ -48,7 +48,7 @@ else {
 		next if (!$in{"action_$i"});
 		my @opts;
 		if ($in{"name_$i"}) {
-			$in{"name_$i"} =~ /^[A-Za-z0-9\.\_\-]+$/ ||
+			$in{"name_$i"} =~ /^(%\(\S+\))?[A-Za-z0-9\.\_\-]+$/ ||
 				&error(&text('jail_eaname', $i+1));
 			push(@opts, "name=".$in{"name_$i"});
 			}
@@ -59,6 +59,7 @@ else {
 				  $p =~ /^\d+:\d+$/ ||
 				    getservbyname($p,
 					  $in{"protocol_$i"} || "tcp") ||
+				      $p =~ /%\(\S+\)s/ ||
 					&error(&text('jail_eport', $i+1));
 				}
 			if (@p > 1) {
