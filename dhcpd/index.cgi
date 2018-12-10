@@ -595,6 +595,7 @@ print &ui_columns_start([ "", $text{'index_hostgroup'},
 for ($i = $_[1]; $i < $_[2]; $i++) {
 	local @cols;
 	local $firstcol;
+	$parent = "";
 	$h = $_[0]->[$i];
 	if ($h->{'name'} eq 'host') {
 		$firstcol .= $sp;
