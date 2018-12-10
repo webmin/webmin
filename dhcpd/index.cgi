@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # $Id: index.cgi,v 1.6 2005/04/16 14:30:21 jfranken Exp $
 # * List all subnets and shared networks
 #
@@ -596,6 +596,7 @@ for ($i = $_[1]; $i < $_[2]; $i++) {
 	local @cols;
 	local $firstcol;
 	$parent = "";
+	$par_type = "";
 	$h = $_[0]->[$i];
 	if ($h->{'name'} eq 'host') {
 		$firstcol .= $sp;
@@ -626,7 +627,7 @@ for ($i = $_[1]; $i < $_[2]; $i++) {
 	if ($config{'desc_name'} && $par{$h}->{'comment'}) {
 	    $parent = $par{$h}->{'comment'};
 	}
-	push(@cols, "$par_type:  $parent");
+	push(@cols, "$par_type  $parent");
 	push(@cols, $_[3]->[$i] ? &hardware($h) : "");
 	push(@cols, $_[3]->[$i] ? &fixedaddr($h) : "");
 	print &ui_checked_columns_row(\@cols, \@tds, "d", $_[5]->[$i]);
