@@ -100,7 +100,7 @@ my $acl = "$config_directory/acl";
 $conf =~ s/DIRECTORY/$acl/g;
 
 &lock_file("$acl/openssl.cnf");
-my $cfh;
+my $cfh = "CONF";
 &open_tempfile($cfh, ">$acl/openssl.cnf");
 &print_tempfile($cfh, $conf);
 &close_tempfile($cfh);
@@ -108,14 +108,14 @@ chmod(0600, "$acl/openssl.cnf");
 &unlock_file("$acl/openssl.cnf");
 
 &lock_file("$acl/index.txt");
-my $ifh;
+my $ifh = "INDEX";
 &open_tempfile($ifh, ">$acl/index.txt");
 &close_tempfile($ifh);
 chmod(0600, "$acl/index.txt");
 &unlock_file("$acl/index.txt");
 
 &lock_file("$acl/serial");
-my $sfh;
+my $sfh = "SERIAL";
 &open_tempfile($sfh, ">$acl/serial");
 &print_tempfile($sfh, "011E\n");
 &close_tempfile($sfh);
@@ -2041,7 +2041,7 @@ my $certout = &read_file_contents($ctemp);
 my $keyout = &read_file_contents($ktemp);
 unlink($ctemp, $ktemp);
 
-my ($kfh, $cfh);
+my ($kfh, $cfh) = ("KEY", "CERT");
 &open_lock_tempfile($kfh, ">$keyfile");
 &print_tempfile($kfh, $keyout);
 if ($certfile) {
