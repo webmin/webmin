@@ -55,7 +55,7 @@ print &ui_table_row($text{'edit_servers'},
 
 # Command to run
 print &ui_table_row($cron::text{'edit_command'},
-	&ui_textbox("cmd", job->{'cluster_command'}, 70), 3);
+	&ui_textbox("cmd", $job->{'cluster_command'}, 70), 3);
 
 if ($cron::config{'cron_input'}) {
 	# Input to command
