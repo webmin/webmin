@@ -39,6 +39,7 @@ foreach (0..100) {
 &close_tempfile(YESFILE);
 
 # Run the command
+&clean_language();
 &open_execute_command(CMD, "$cmd <$yesfile", 2);
 while(<CMD>) {
 	if (/setting\s+up\s+(\S+)/i && !/as\s+MDA/i) {
@@ -54,6 +55,7 @@ while(<CMD>) {
 	print &html_escape("$_");
 	}
 close(CMD);
+&reset_environment();
 if (!@rv && $config{'package_system'} ne 'debian' && !$?) {
 	# Other systems don't list the packages installed!
 	@rv = @newpacks;
@@ -74,7 +76,9 @@ $ENV{'DEBIAN_FRONTEND'} = 'noninteractive';
 my $cmd = "apt-get -s install ".
 	  join(" ", map { quotemeta($_) } split(/\s+/, $packages)).
 	  " </dev/null 2>&1";
+&clean_language();
 my $out = &backquote_command($cmd);
+&reset_environment();
 my @rv;
 foreach my $l (split(/\r?\n/, $out)) {
 	if ($l =~ /Inst\s+(\S+)\s+\[(\S+)\]\s+\(([^ \)]+)/ ||
