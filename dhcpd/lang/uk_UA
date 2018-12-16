@@ -210,7 +210,7 @@ pool_deny=Заборонені клієнти
 esh_groups=Групи точно усередині поділюваної мережі
 cdel_group=група
 eacl_psg=вибір групи
-index_togroup=Група
+index_togroup=Група:
 eacl_psh=вибір вузла
 eacl_pdg=видалення групи
 sshared_nosubnet=Поділювана мережа '$1' не містить ніякої підмережі.
@@ -288,7 +288,7 @@ log_options_group=Змінені параметри групи з $1 вузлів
 index_norder0=Призначення
 index_norder1=Структура файлу
 index_norder2=Ім'я/Адреса IP
-index_tosubnet=Підмережа
+index_tosubnet=Підмережа:
 log_delete_group=Вилучена група з $1 вузлів
 index_parent=Батько
 eopt_custom=Окремі параметри
@@ -314,7 +314,7 @@ acl_r=читання
 ehost_retsubn=підмережа
 acl_w=запис
 index_hostgroup=Вузол/Група
-index_toshared=Мережа
+index_toshared=Мережа:
 log_create_host=Створений вузол $1
 ssub_nosubnet=Поділювана мережа '$1' не містить ніякої підмережі.
 ehost_retgroup=група

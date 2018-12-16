@@ -41,9 +41,9 @@ index_return=главное меню
 index_start=Нажмите на эту кнопку для запуска сервера DHCP с использованием текущих настроек.
 index_subtitle=Подсети и разделяемые сети
 index_title=Сервер DHCP
-index_togroup=Группа
-index_toshared=Сеть
-index_tosubnet=Подсеть
+index_togroup=Группа:
+index_toshared=Сеть:
+index_tosubnet=Подсеть:
 index_version=ISC DHCPd версии $1
 
 butt_save=Сохранение
