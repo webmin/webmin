@@ -22,3 +22,4 @@ hourly_only=0
 max_jobs=100
 vixie_cron=0
 
+show_next=0

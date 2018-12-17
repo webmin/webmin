@@ -159,6 +159,13 @@ foreach $u (@ulist) {
 			push(@cols, $job->{'comment'});
 			}
 
+		# Show next run time
+		if ($config{'show_next'} || $userconfig{'show_next'}) {
+			my $n = &next_run($job);
+			push(@cols, $n ? &make_date($n)
+				       : "<i>$text{'index_nunknown'}</i>");
+			}
+
 		# Show running indicator
 		if ($config{'show_run'}) {
 			if ($job->{'name'}) {
@@ -252,6 +259,7 @@ elsif (@rows) {
 		  $userconfig{'show_time'} ? ( $text{'index_when'} ) : ( ),
 		$config{'show_comment'} || $userconfig{'show_comment'} ?
 		  ( $text{'index_comment'} ) : ( ),
+		$config{'show_next'} ? ( $text{'index_next'} ) : ( ),
 		$config{'show_run'} ? ( $text{'index_run'} ) : ( ),
 		$access{'move'} ? ( $text{'index_move'}, "" ) : ( ),
 		], 100, 0, \@tds);

@@ -1634,5 +1634,114 @@ if ($cmd) {
 return &has_command("crontab");
 }
 
+=head2 next_run(&job)
+
+Given a cron job, returns the unix time on which it will run next.
+
+=cut
+sub next_run
+{
+my ($job) = @_;
+my $now = time();
+my @tm = localtime($now);
+if ($job->{'special'} eq 'hourly') {
+	$job = { 'mins' => 0,
+		 'hours' => '*',
+		 'days' => '*',
+		 'months' => '*',
+		 'weekdays' => '*' };
+	}
+elsif ($job->{'special'} eq 'daily') {
+	$job = { 'mins' => 0,
+		 'hours' => 0,
+		 'days' => '*',
+		 'months' => '*',
+		 'weekdays' => '*' };
+	}
+elsif ($job->{'special'} eq 'weekly') {
+	$job = { 'mins' => 0,
+		 'hours' => 0,
+		 'days' => '*',
+		 'months' => '*',
+		 'weekdays' => 0 };
+	}
+elsif ($job->{'special'} eq 'yearly') {
+	$job = { 'mins' => 0,
+		 'hours' => 0,
+		 'days' => 1,
+		 'months' => 1,
+		 'weekdays' => '*' };
+	}
+my @mins = &cron_all_ranges($job->{'mins'}, 0, 59);
+my @hours = &cron_all_ranges($job->{'hours'}, 0, 23);
+my @days = &cron_all_ranges($job->{'days'}, 1, 31);
+my @months = &cron_all_ranges($job->{'months'}, 1, 12);
+my @weekdays = &cron_all_ranges($job->{'weekdays'}, 0, 6);
+my ($min, $hour, $day, $month, $year);
+my @possible;
+foreach $min (@mins) {
+	foreach $hour (@hours) {
+		foreach $day (@days) {
+			foreach $month (@months) {
+				foreach $year ($tm[5] .. $tm[5]+7) {
+					my $tt;
+					eval { $tt = timelocal(0, $min, $hour, $day, $month-1, $year) };
+					next if ($tt < $now);
+					my @ttm = localtime($tt);
+					next if (&indexof($ttm[6], @weekdays) < 0);
+					push(@possible, $tt);
+					last;
+					}
+				}
+			}
+		}
+	}
+@possible = sort { $a <=> $b } @possible;
+return $possible[0];
+}
+
+=head2 cron_range(range, min, max)
+
+=cut
+sub cron_range
+{
+my ($w, $min, $max) = @_;
+my $j;
+my %inuse;
+if ($w eq "*") {
+	# all values
+	for($j=$min; $j<=$max; $j++) { $inuse{$j}++; }
+	}
+elsif ($w =~ /^\*\/(\d+)$/) {
+	# only every Nth
+	for($j=$min; $j<=$max; $j+=$1) { $inuse{$j}++; }
+	}
+elsif ($w =~ /^(\d+)-(\d+)\/(\d+)$/) {
+	# only every Nth of some range
+	for($j=$1; $j<=$2; $j+=$3) { $inuse{int($j)}++; }
+	}
+elsif ($w =~ /^(\d+)-(\d+)$/) {
+	# all of some range
+	for($j=$1; $j<=$2; $j++) { $inuse{int($j)}++; }
+	}
+else {
+	# One value
+	$inuse{int($w)}++;
+	}
+return sort { $a <=> $b } (keys %inuse);
+}
+
+=head2 cron_all_ranges(comma-list, min, max)
+
+=cut
+sub cron_all_ranges
+{
+my @rv;
+foreach $r (split(/,/, $_[0])) {
+	push(@rv, &cron_range($r, $_[1], $_[2]));
+	}
+return sort { $a <=> $b } @rv;
+}
+
 1;
 

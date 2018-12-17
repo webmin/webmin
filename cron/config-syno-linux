@@ -14,3 +14,4 @@ show_run=0
 show_time=1
 match_mode=0
 match_user=1
+show_next=0

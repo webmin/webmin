@@ -4,6 +4,7 @@ max_jobs=Maximum Cron jobs to show,3,Unlimited
 show_time=Show job schedules?,1,1-Yes,0-No
 show_comment=Show job comments?,1,1-Yes,0-No
 show_run=Display running status of jobs?,1,2-Yes&#44; and allow starting and stopping,1-Yes,0-No
+show_next=Show next time each job will run?,1,1-Yes,0-No
 match_mode=Find job processes by,1,1-Command only,0-Command and arguments
 match_user=Match usernames when finding job processes?,1,1-Yes,0-No
 kill_subs=Kill sub-processes when terminating jobs?,1,1-Yes,0-No

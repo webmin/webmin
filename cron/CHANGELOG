@@ -43,3 +43,5 @@ Fixed a security hole what could be exploited by passing in an invalid username.
 Added buttons to move cron jobs to the top and bottom of the list.
 ---- Changes since 1.830 ----
 Added a page for manually editing cron jobs.
+---- Changes since 1.900 ----
+The next run time of each cron job can be displayed by enable a new config option.
