@@ -23,9 +23,7 @@ $data = &read_file_contents($file);
 print &ui_form_start("save_manual.cgi", "form-data");
 print &ui_hidden("file", $file);
 print &text('manual_editing', "<tt>$file</tt>"),"<br>\n";
-print &ui_table_start();
-print &ui_table_row(undef, &ui_textarea("data", $data, 20, 80), 2);
-print &ui_table_end();
+print &ui_textarea("data", $data, 20, 80);
 print &ui_form_end([ [ "save", $text{'save'} ] ] );
 
 &ui_print_footer("", $text{'index_return'});
