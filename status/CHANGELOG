@@ -88,3 +88,5 @@ Extended the Execute Command monitor to be able to check the output of a command
 Added a Module Config option to show the last collected status on the Webmin system information page.
 ---- Changes since 1.870 ----
 Added a config option to set a minimum interval between notifications for each monitor.
+---- Changes since 1.900 ----
+Added support for file ownership checks to the File or Directory monitor.

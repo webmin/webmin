@@ -255,6 +255,12 @@ file_efile=Missing file or directory name to check
 file_esize=Invalid file size
 file_elarge=Files too large : $1
 file_esmall=Files too small : $1
+file_eowner=Files with wrong owner : $1
+file_egroup=Files with wrong group : $1
+file_owner=File owner must be
+file_group=File group must be
+file_nocheck=Anything
+file_perms=Octal permissions must be
 
 traffic_iface=Interface to monitor
 traffic_bytes=Maximum bytes/second
