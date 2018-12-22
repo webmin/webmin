@@ -48,14 +48,14 @@ ifcs_nonetmask=Cap
 ifcs_mode=Adreça IPv4
 ifcs_mode6=Adreces IPv6
 ifcs_address6=Adreça IPv6
-ifcs_netmask6=M+ascara de subxarxa
+ifcs_netmask6=Màscara de subxarxa
 ifcs_mode6a=Adreces IPv6
 ifcs_none6=IPv6 desactivat
 ifcs_link=Estat de l'enllaç de xarxa
 ifcs_linkyes=Connectat
 ifcs_linkno=Desconnectat
 ifcs_speed=Velocitat de la interfície
-ifcs_duplex=, $1 duplex
+ifcs_duplex=, $1 dúplex
 
 aifc_create=Creació d'Interfície Activa
 aifc_edit=Edició d'Interfície Activa
@@ -178,7 +178,7 @@ routes_dest=Destinació
 routes_gw=Portal
 routes_iface=Interfície
 routes_def=Ruta per Defecte
-routes_def6=RUta IPv6 per Defecte
+routes_def6=Ruta IPv6 per Defecte
 routes_active=Rutes Actives
 routes_nogw=Cap
 routes_delete=Suprimeix les Rutes Seleccionades
@@ -296,7 +296,7 @@ apply_ecannot=No tens permís per aplicar la configuració
 
 mod_egone=La interfície ja no està activa!
 mod_title=Interfície Activa
-mod_desc=La interfície $1 s'està utilitzant per a $2, i per tant no es pot gestionar utlitzant aquest mòdul.
+mod_desc=La interfície $1 s'està utilitzant per a $2, i per tant no es pot gestionar utilitzant aquest mòdul.
 mod_link=No obstant, en lloc d'això, pots utilitzar el mòdul <a href='$1'>$2</a> per gestionar-la.
 mod_ppp=una connexió manual PPP a $1
 mod_adsl=una connexió PPP ADSL

@@ -151,7 +151,7 @@ view_markas1=Llegit
 view_markas2=Especial
 view_return=al correu original
 view_sub=Correu Adjunt
-view_sub2=Correu Adjunt de <i>$1</i>
+view_sub2=Correu Adjunt de $1
 view_egone=Aquest missatge ja no existeix
 view_eugone=Aquest usuari no existeix
 
@@ -333,7 +333,7 @@ detach_ok=S'ha escrit l'adjunció al fitxer del servidor $1 ($2).
 
 sform_title=Cerca Avançada
 sform_header=Opcions avançades de recerca de correu
-sform_andmode=Mode dels riteris
+sform_andmode=Mode dels criteris
 sform_and=Busca missatges que coincideixin amb els criteris de recerca de sota...
 sform_or=Busca missatges que coincideixin amb qualsevol dels criteris de recerca de sota...
 sform_neg0=conté
@@ -410,7 +410,7 @@ razor_report2=S'està informant dels missatges seleccionats a Razor i altres base
 razor_report3=S'està desinformant els missatges seleccionats a Razor i altres bases de dades SpamAssassin de bloqueig de spam...
 razor_done=... fet.
 razor_err=... ha fallat! Mira el missatge d'error de sobre per saber-ne el motiu.
-razor_moved=...fet, i s'ha desaplaçat a la carpeta $1.
+razor_moved=...fet, i s'ha desplaçat a la carpeta $1.
 razor_deleted=...fet, i també s'ha suprimit el missatge.
 
 ham_title=Informació com a Ham

@@ -23,7 +23,7 @@ Hi ha disponibles les restriccions següents (* és part d'un valor per defecte):
 <li><tt>reject_unknown_client:</tt> rebutja la petició si el nom de host client és desconegut.
 <li><tt>reject_maps_rbl:</tt> rebutja si el client està llistat a
         <a href=opt_maps_rbl_domains><tt>$maps_rbl_domains</tt></a>.
-<li><tt>reject_invalid_hostname:</tt> rebutja nom de host HELO amb sintaxi incorrecte.
+<li><tt>reject_invalid_hostname:</tt> rebutja nom de host HELO amb sintaxi incorrecta.
 <li><tt>reject_unknown_hostname:</tt> rebutja nom de host HELO sense registre DNS A o MX.
 <li><tt>reject_unknown_sender_domain:</tt> rebutja el domini remitent sense registre DNS A o MX.
 <li><tt>*check_relay_domains:</tt> permet només el correu:
@@ -80,10 +80,10 @@ Hi ha disponibles les restriccions següents (* és part d'un valor per defecte):
 <li>  <tt>reject_non_fqdn_sender:</tt> rebutja l'adreça del remitent que no està en format.
 <li>  <tt>reject_non_fqdn_recipient:</tt> rebutja l'adreça del destinatari que no està en format FQDN.
 <li>  <tt>reject:</tt> rebutja la petició. Posa-ho al final d'una restricció.
-<li>  <tt>permit:</tt> permet the petició. Posa-ho al final d'una restricció.
+<li>  <tt>permit:</tt> permet la petició. Posa-ho al final d'una restricció.
 </ul>
 
-Les restrixccions s'apliquen en l'ordre especificat: la primera restricció
+Les restriccions s'apliquen en l'ordre especificat: la primera restricció
 que coincideix guanya.
 
 <p>

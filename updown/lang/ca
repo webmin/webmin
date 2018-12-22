@@ -74,7 +74,7 @@ download_title=Descàrrega de Fitxers
 download_done=S'han descarregat amb èxit els següents fitxers:
 download_failed=La descàrrega ha fallat: $1
 download_eaccess=No tens permís per descarregar fitxers a $1
-download_eucannot=No tens permís per desacrregar fitxers com a usuari $1
+download_eucannot=No tens permís per descarregar fitxers com a usuari $1
 download_egcannot=El grup seleccionat no conté l'usuari seleccionat.
 
 cancel_err=No s'han pogut cancel·lar les descàrregues

@@ -11,7 +11,7 @@ index_pass=amb la contrasenya opcional:
 index_conndesc=Fes clic sobre aquest botó per connectar el túnel VPN PPTP seleccionat utilitzant la seva configuració actual.
 index_disc=Desconnecta:
 index_discdesc=Fes clic sobre aquest botó per desconnectar el túnel VPN PPTP actiu seleccionat i treure totes les rutes que hi passen.
-index_return=a la llista de PPTP tunnel list
+index_return=a la llista de túnels PPTP
 index_opts=Edita les Opcions Globals PPP
 index_optsdesc=Fes clic sobre aquest botó per editar les opcions PPP que s'apliquen a tots els túnels VPN PPTP.
 index_version=PPPd versió $1
@@ -65,7 +65,7 @@ edit_global=Fitxer global estàndard
 edit_ofile=Un altre fitxer...
 
 save_err=No s'ha pogut desar el nom del túnel
-save_ename=Hi falta tunnel name
+save_ename=Hi falta el nom del túnel
 save_eserver=Hi falta el servidor a connectar o bé és invàlid
 save_elogin=Hi falta el nom d'usuari o bé és invàlid
 save_eremote=Hi falta el nom del servidor remot o bé és invàlid
@@ -76,7 +76,7 @@ save_egw=Portal invàlid per a la xarxa a la ruta $1
 save_ehost=Adreça IP del host invàlida a la ruta $1
 save_emask2=No cal màscara per a la ruta del host $1
 save_egw2=Portal del host invàlid a la ruta $1
-save_erename=No s'ha pogut renomenar el fitxer del túnel
+save_erename=No s'ha pogut reanomenar el fitxer del túnel
 save_eclash=Ja existeix un túnel o un <i>peer</i> PPP amb el mateix nom
 save_efile=Hi falta el fitxer d'opcions PPP o bé és invàlid
 

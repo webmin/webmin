@@ -56,7 +56,7 @@ db_port=Port servidor MySQL per defecte
 db_unlimited=Il·limitades
 db_s=segons
 db_header2=Configuració de la connexió a la base de dades PostgreSQL
-db_reset=Reestableix automàticament les connexions persistents
+db_reset=Restableix automàticament les connexions persistents
 db_err=No s'ha pogut desar la configuració de bases de dades
 db_emaxpersist=Hi falta el nombre màxim de connexions persistents o bé és invàlid
 db_emaxlinks=Hi falta el nombre màxim total de connexions o bé és invàlid
@@ -140,7 +140,7 @@ errors_efile=Hi falta el fitxer de registre d'errors
 
 misc_title=Altres Configuracions
 misc_header=Altres configuracions diverses de PHP
-misc_short=Permet els scripts PHP que comencen amb &lt;?
+misc_short=Permet els scripts PHP que comencen amb &lt;
 misc_asp=Permet les etiquetes &lt;% %&gt;
 misc_zlib=Comprimeix la sortida amb zlib
 misc_flush=Aboca la sortida a cada escriptura
@@ -155,7 +155,7 @@ misc_esmtp_port=Hi falta el port SMTP o bé no és numèric
 misc_esendmail=L'ordre per enviar correu és invàlida
 misc_esendmail2=Hi falta l'ordre per enviar correu
 misc_include=Permet l'obertura d'<i>Includes</i> remots
-misc_path=Informació del Camí de Correció de CGI
+misc_path=Informació del Camí de Correcció de CGI
 misc_timezone=Zona horària PHP
 misc_charset=Joc de caràcters per defecte
 

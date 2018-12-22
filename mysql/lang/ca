@@ -27,7 +27,8 @@ index_version2=Versió $1 de MySQL a $2
 index_nomod=Atenció: El mòdul Perl $1 no està instal·lat al sistema, de manera que Webmin no podrà accedir de forma fiable a la base de dades MySQL. <a href='$2'>Fes clic aquí</a> per instal·lar-lo ara.
 index_nomods=Atenció: Els mòduls Perl $1 i $2 no està instal·lat al sistema, de manera que Webmin no podrà accedir de forma fiable a la base de dades MySQL. <a href='$3'>Fes clic aquí</a> per instal·lar-lo ara.
 index_mysqlver=L'ordre <tt>$1</tt> ha retornat:
-index_eenvpass=El programa client MySQL $1 no accepta contrasenyes passades utilitzant la variable d'entorn <tt>MYSQL_PWD</tt>. Per assegurar que Webmin és capaç de comunicar-se de forma completa amb MySQL, caldria desactivar aquesta opció a la pàgina de <a href='$2'>configuració del mòdul</a>.
+index_eenvpass=El programa client MySQL $1 no accepta contrasenyes passades utilitzant la variable d'entorn <tt>MYSQL_PWD</tt>. Per assegurar que Webmin és capaç de comunicar-se de forma completa amb MySQL, caldria desactivar aquesta opció a la pàgina de <a href='$2'>configuració del mòdul</a>. Alternativament, pots eliminar les contrasenyes establertes al fitxer <tt>.my.cnf</tt> de l'usuari <tt>root</tt>.
+index_ecnf=No s'ha trobat al sistema el fitxer $1 de configuració de MySQL. Utilitza la pàgina de <a href='$2'>configuració del mòdul</a> per establir el camí correcte.
 index_nodbs=No tens accés a cap base de dades MySQL.
 index_nodbs2=No s'ha trobat cap base de dades MySQL al sistema.
 index_nodbs3=No hi ha cap base de dades MySQL que coincideixi amb la cerca.
@@ -251,7 +252,7 @@ users_derr=No s'han pogut suprimir els usuaris
 users_enone=No has seleccionat cap usuari
 users_ssl=Certificat
 users_dtitle=Supressió de Permisos d'Usuari
-users_drusure=Segur que vols suprimir els $1 permisos d'usuari MySQL seleccionts?
+users_drusure=Segur que vols suprimir els $1 permisos d'usuari MySQL seleccionats?
 users_dok=Suprimeix els Permisos
 
 user_title1=Creació d'Usuari
@@ -292,7 +293,7 @@ user_priv_repl_client=Replicar clients
 user_priv_create_view=Crear Vistes
 user_priv_show_view=Mostrar Vistes
 user_priv_create_routine=Crear Rutines
-user_priv_alter_routine=Modificar Routines
+user_priv_alter_routine=Modificar Rutines
 user_priv_create_user=Crear Usuaris
 user_priv_event=Crear Esdeveniments
 user_priv_trigger=Crear Disparadors
@@ -400,7 +401,7 @@ exec_header2=Selecciona el fitxer d'ordres SQL per executar a la base de dades $
 exec_header2a=Això també es pot utilitzar per restaurar una còpia de seguretat de MySQL; que és un fitxer d'ordres SQL.
 exec_file=Des d'un fitxer local
 exec_upload=Des d'un fitxer pujat
-exec_err=No s'ha pogut executar l'SQL
+exec_err=No s'ha pogut executar el SQL
 exec_out=Resposta de l'ordre SQL $1 ...
 exec_none=No s'ha retornat cap dada
 exec_eupload=No has seleccionat cap fitxer per pujar
@@ -444,7 +445,7 @@ tprivs_none=Cap
 tprivs_derr=No s'ha pogut suprimir els permisos de les taules
 tprivs_enone=No has seleccionat cap taula
 tprivs_dtitle=Supressió de Permisos de Taula
- tprivs_drusure=Segur que vols suprim,ir els $1 permisos de taula MySQL seleccionats?
+ tprivs_drusure=Segur que vols suprimir els $1 permisos de taula MySQL seleccionats?
 tprivs_dok=Suprimeix els Permisos
 
 tpriv_title1=Creació de Permisos de Taules
@@ -501,7 +502,7 @@ cpriv_euser=No hi ha el nom de l'usuari o bé és incorrecte
 cpriv_ehost=No hi ha el nom de host o bé és incorrecte
 cpriv_edb=Hi falta el nom de la base de dades o bé és invàlid
 
-esql=L'SQL $1 ha fallat: $2
+esql=El SQL $1 ha fallat: $2
 eparse=Webmin no pot analitzar la sortida de l'ordre $1 degut a la natura de les dades de la base de dades. Hauries d'instal·lar els mòduls Perl $2 i $3 per resoldre aquest problema.
 edenied=No tens accés a aquesta base de dades MySQL
 perms_ecannot=No tens permís per editar els permisos
@@ -551,7 +552,7 @@ log_view_modify=S'ha modificat la vista $1 a la base de dades $2
 log_tables_delete=S'han destruït $1 objectes de la base de dades $2
 log_field_create=S'ha afegit la columna $1 $4 a $2 de la base de dades $3
 log_field_modify=S'ha modificat la columna $1 $4 a $2 de la base de dades $3
-log_field_delete=S'ha suptimit la columna $1 de $2 de la base de dades $3
+log_field_delete=S'ha suprimit la columna $1 de $2 de la base de dades $3
 log_fields_delete=S'han suprimit $1 camps de $2 a la base de dades $3
 log_data_create=S'ha afegit la fila a la taula $2 de la base de dades $3
 log_data_modify=S'han modificat $1 files a la taula $2 de la base de dades $3
@@ -762,8 +763,8 @@ index_title2=Edició d'Índex
 index_header=Índex $1 a la base de dades $2
 index_ecannot=No tens permís per gestionar índexs
 
-syslog_desc=Misatges d'error de MySQL
-syslog_logdesc=Consultes de ySQL
+syslog_desc=Missatges d'error de MySQL
+syslog_logdesc=Consultes de MySQL
 
 fdrop_err=No s'han pogut suprimir els camps
 fdrop_enone=No has seleccionat cap camp
@@ -773,8 +774,8 @@ view_title1=Creació de Vista
 view_title2=Edició de Vista
 view_header1=Detalls de la vista
 view_name=Nom de la vista
-view_query=COnsulta de selecció SQL
-view_algorithm=Algortime de processament de la vista
+view_query=Consulta de selecció SQL
+view_algorithm=Algoritme de processament de la vista
 view_undefined=Automàtic
 view_merge=Refon SQL
 view_temptable=Utilitza una taula temporal

@@ -49,7 +49,7 @@ os_title=Sistema Operatiu i Entorn
 os_desc3=Aquesta pàgina mostra el sistema operatiu detectat per Usermin a l'hora d'instal·lar-lo, i el sistema detectat actualment. Si són diferents, pots triar d'actualitzar la informació del SO d'Usermin, cosa que pot ser necessària si has fet una actualització recentment.
 os_desc2=També pots canviar el camí de recerca que utilitza Webmin quan executa programes, i la llibreria compartida que es passa a tots els programes.
 os_usermin=Sistema operatiu d'acord amb Usermin
-os_iusermin=Codi intern d'OS utilitzat per Usermin
+os_iusermin=Codi intern de SO utilitzat per Usermin
 os_update=Actualitza l'Usermin per utilitzar el SO detectat
 
 lang_title=Idioma
@@ -130,7 +130,7 @@ acl_desc=Utilitza aquesta pàgina per seleccionar quins mòduls instal·lats d'User
 
 ssl_title=Xifratge SSL
 ssl_desc1=No sembla que el host on s'està executant Usermin tingui instal·lat el mòdul perl SSLeay. Amb això, Usermin suporta comunicació xifrada SSL entre el navegador i el servidor. Si els usuaris accedeixen al servidor Usermin a través d'Internet, llavors has de considerar seriosament utilitzar SSL per evitar que un atacant els prengui les contrasenyes.
-ssl_desc2=Atenció - activa el suport SSL només si tens un navegador que suporti SSL, i no hi ha cap tallafocs bloquejant les peticions <tt>https</tt> entre el navegador i el host Usermin.
+ssl_desc2=Atenció - activa el suport SSL només si tens un navegador que suporti SSL, i no hi ha cap tallafoc bloquejant les peticions <tt>https</tt> entre el navegador i el host Usermin.
 ssl_newkey=Aquest formulari es pot utilitzar per crear una nova clau SSL per al servidor Usermin.
 ssl_hole=Com que actualment estàs utilitzant la clau SSL per defecte d'Usermin a la qual tothom té accés, hauries de generar immediatament una clau nova. Altrament, la teva connexió SSL no serà segura!
 ssl_savekey=Aquest formulari permet carregar un certificat i una clau privada SSL existents en format PEM per a ús del servidor Usermin.
@@ -246,7 +246,7 @@ ui_feedbackhost=Nom de host a l'adreça From: d'opinions
 ui_feedbackthis=Nom de host del sistema
 ui_hostnamemode=Nom de host a mostrar a Usermin
 ui_hnm0=Nom de host real
-ui_hnm1=Nom de host apartir de l'URL
+ui_hnm1=Nom de host a partir de l'URL
 ui_hnm2=Nom de domini a partir de l'URL
 ui_hnm3=Un altre nom...
 ui_tabs=Categoritza els mòduls
@@ -309,7 +309,7 @@ assignment_desc=Aquest formulari permet configurar sota quina categoria es mostr
  
 categories_title=Edició de Categories
 categories_header=ID de Categoria i descripcions
-categories_desc=Aquest formulari permet renomenar les categories Usermin existents i crear-ne de noves per assignar-hi mòduls. La part de dalt de la taula és per canviar les descripcions de les categories integrades, mentre que la de baix és per afegir nous IDs i descripcions de categoria.
+categories_desc=Aquest formulari permet reanomenar les categories Usermin existents i crear-ne de noves per assignar-hi mòduls. La part de dalt de la taula és per canviar les descripcions de les categories integrades, mentre que la de baix és per afegir nous IDs i descripcions de categoria.
 categories_ok=Desa les Categories
 categories_err=No s'han pogut desar les categories
 categories_edesc=Hi falta la descripció de $1
@@ -380,7 +380,7 @@ update_subject=Informe d'actualització de mòduls Usermin
 update_version=Hi ha una nova versió d'Usermin (versió $1) disponible per a descarregar. Les pròximes actualitzacions només estaran disponibles per a la darrera versió.
 
 restrict_title=Restriccions dels Mòduls
-restrict_desc=Aquesta pàgina permet controlar quins mòduls d'Usermin estan disponibles per a diferents usuaris i grups. S'apliquen totes les addicions i substraccions de la llista, no només la primera que coincideixi amb cada usuari.<br>Els mòduls que no estiguin seleccionats a la pàgina de <a href='$1'>mòduls disponibles</a> no estaran mai disponibles pels usuaris, encara que aquí estiguin seleccionats.
+restrict_desc=Aquesta pàgina permet controlar quins mòduls d'Usermin estan disponibles per a diferents usuaris i grups. S'apliquen totes les addicions i subtraccions de la llista, no només la primera que coincideixi amb cada usuari.<br>Els mòduls que no estiguin seleccionats a la pàgina de <a href='$1'>mòduls disponibles</a> no estaran mai disponibles pels usuaris, encara que aquí estiguin seleccionats.
 restrict_who=Usuari Usermin
 restrict_what=Mòduls disponibles
 restrict_all=Tots els usuaris
@@ -404,7 +404,7 @@ restrict_modsdesc=(els que estan en vermell han estat desactivats a la pàgina de
 restrict_mmode0=Només els seleccionats...
 restrict_mmode1=Afegeix els seleccionats...
 restrict_mmode2=Treu els seleccionats...
-restrict_return=a la llistia de restriccions
+restrict_return=a la llista de restriccions
 restrict_err=No s'han pogut desar les restriccions
 restrict_euser=Hi falta el nom de l¡usuari o bé és invàlid
 restrict_egroup=Hi falta el nom del grup o bé és invàlid

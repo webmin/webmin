@@ -1,5 +1,5 @@
 index_title=Client PPP
-index_ewvdial=El programa $1 de WvDial no s'ha trobat al sistema o é no és vàlid. Pot ser que no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
+index_ewvdial=El programa $1 de WvDial no s'ha trobat al sistema o bé no és vàlid. Pot ser que no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_init=El fitxer $1 de configuració de WvDial no existeix, cosa que normalment vol dir que el programa encara no ha estat configurat. Fes clic sobre el botó de sota per tal de detectar el mòdem connectat al sistema i crear la configuració apropiadament.
 index_ok=Crea la Configuració
 index_global=Edita els Valors Globals
@@ -21,7 +21,7 @@ index_discdesc2=Hi ha una connexió PPP actualment activa amb PID $1 feta amb alg
 index_discdesc3=La teva connexió PPP que utilitza $2 està actualment activa. Fes clic sobre aquest botó per tancar-la.
 index_eversion=La teva versió de WvDial és $1, però aquest mòdul només suporta les versions $2 en amunt.
 index_out=La sortida de $1 ha estat
-ndex_boot=Connect at boot with:
+index_boot=Connecta en engegar amb:
 index_noboot=&lt;No et connectis&gt;
 index_bootdesc=Canvia aquesta opció per controlar si la connexió PPP seleccionada s'inicia en engegar el sistema o no.
 
@@ -84,7 +84,7 @@ edit_from=Del trucador...
 
 save_err=No s'ha pogut desar el trucador
 save_err2=No s'ha pogut suprimir el trucador
-save_ename=Hi falta el nom del trucador obé és invàlid
+save_ename=Hi falta el nom del trucador o bé és invàlid
 save_ephone=Hi falta el número de telèfon o bé és invàlid
 save_eprefix=Hi falta el prefix de trucada o bé és invàlid
 save_eother=Número de telèfon alternatiu invàlid

@@ -16,4 +16,7 @@ edit_special_weekly=Cada setmana (el diumenge)
 edit_special_monthly=Cada mes (el dia 1)
 edit_special_yearly=Cada any (el dia 1 de Gener)
 
+log_success=S'ha executat correctament <tt>$2</tt> a <tt>$1</tt>
+log_failure=No s'ha pogut executar <tt>$2</tt> a <tt>$1</tt>: $3
+
 __norefs=1

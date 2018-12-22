@@ -2,7 +2,7 @@
 
 <b>Adreces inicials de prova de DNS</b>: Servidors DNS que Squid consultarà per saber si les consultes DNS funcionen correctament.
 <p>
-<b>Rotacions del fitxer de registre SIGUSR1</b>: Per defecte, 10 o 0, depenent del sistema. Especifica el nombre de rotacions de fitxers de registre a efectuar quan introdueixes 'squid -k rotate'. Per defecte és 10, que rotarà amb les extensions 0 a 9. Establint logfile_rotate a 0, es desactiva la rotació, però els fitxers de registres es tanquen i es reobren.  Això permetrà de renomenar el fitxer abans d'enviar el senyal de rotació.
+<b>Rotacions del fitxer de registre SIGUSR1</b>: Per defecte, 10 o 0, depenent del sistema. Especifica el nombre de rotacions de fitxers de registre a efectuar quan introdueixes 'squid -k rotate'. Per defecte és 10, que rotarà amb les extensions 0 a 9. Establint logfile_rotate a 0, es desactiva la rotació, però els fitxers de registres es tanquen i es reobren.  Això permetrà de reanomenar el fitxer abans d'enviar el senyal de rotació.
 <p>
 Tingues en compte que l'ordre 'squid -k rotate' normalment envia un senyal USR1 al procés squid en execució. En certes situacions (p. ex., Linux amb E/S asíncrona), USR1 s'utilitza per altres propòsits, de manera que -k utilitza un altre senyal, És millor acostumar-se a utilitzar 'squid -k rotate' en lloc de 'kill -USR1 <pid>'.
 <p>
@@ -38,7 +38,7 @@ Hi ha dos mètodes per utilitzar l'opció. Pots permetre capçaleres específiques (
 <p>
 <b>Adreça del Router WCCP</b>: Utilitza aquesta opció per a definir el teu <i>router</i> "arrel" per a Squid.
 <p>
-<b>Adreça WCCP d'entrada</b>: Utilitza aquesta opció si necessites que els missategs WCCP es rebin només en una sola interfície. NO utilitzis aquesta opció si no està segur/a de quantes interfícies tens o si saps que només en tens una.
+<b>Adreça WCCP d'entrada</b>: Utilitza aquesta opció si necessites que els missatges WCCP es rebin només en una sola interfície. NO utilitzis aquesta opció si no està segur/a de quantes interfícies tens o si saps que només en tens una.
 <p>
 <b>Adreça WCCP de sortida</b>: Utilitza aquesta opció si necessites que els missatges WCCP s'enviïn des d'una sola interfície. NO utilitzis aquesta opció si no està segur/a de quantes interfícies tens o si saps que només en tens una.
 <p>

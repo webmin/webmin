@@ -106,7 +106,7 @@ acl_ssel=Seleccionats...
 acl_auto=Pot configurar la detecció automàtica de servidors
 acl_add=Pot registrar nous servidors
 acl_forcefast=Força el mode RPC ràpid al valor per defecte
-acl_forcetype=Força el tipus d'OS al valor per defecte
+acl_forcetype=Força el tipus de SO al valor per defecte
 acl_forcelink=Força el tipus d'entrada al valor per defecte
 acl_links=Es pot connectar als servidors
 
@@ -143,7 +143,7 @@ auto_emins=Hi falta  el nombre de minuts o bé és invàlid
 auto_enet=Hi falta l'adreça de la xarxa o bé és invàlida
 auto_eiface=Hi falta la interfície de xarxa o bé és invàlida
 auto_euser=Hi falta l'usuari
-auto_cluster_software=Afegeix als Paquets de Programari de Cluster
+auto_cluster_software=Afegeix als Paquets de Programari de Clúster
 auto_remove=Elimina els servidors registrats que no s'hagin trobat
 auto_email=Envia les notificacions de correu a
 auto_none=No enviïs res

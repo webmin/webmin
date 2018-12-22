@@ -145,7 +145,7 @@ exec_uploadout=Sortida de les ordres SQL pujades...
 exec_fileout=Sortida de les ordres SQL del fitxer $1...
 exec_noout=No s'ha generat cap missatge
 exec_import=Taula per importar-hi les dades
-exec_header3=Selecciona in fitxer de dades de text per importar a la base de dades PostgreSQL $1...
+exec_header3=Selecciona un fitxer de dades de text per importar a la base de dades PostgreSQL $1...
 exec_header4=Aquest fitxer ha de contenir un registre de la base de dades per línia, amb els camps separats per tabuladors o en format CSV.
 exec_importmode=Origen del fitxer CSV
 exec_delete=Suprimeix primer les dades de la taula
@@ -307,11 +307,11 @@ host_ssl=cal una connexió SSL
 host_viassl=Via SSL
 host_derr=No s'han pogut suprimir els hosts seleccionats
 host_enone=No has seleccionat cap host
-> host_manual=Edit Config File
-> host_manualdesc=Click this button to manually edit the allowed hosts configuration file. 
-> 
-> manual_title=Edit Config File
-> manual_err=Failed to save config file
+host_manual=Edita el Fitxer de Configuració
+host_manualdesc=Fes clic sobre aquest botó per editar manualment el fitxer de configuració de hosts permesos. 
+
+manual_title=Edició del Fitxer de Configuració
+manual_err=No d'ha pogut desar el fitxer de configuració
 
 grant_title=Concessió de Drets
 grant_tvi=Objecte
@@ -332,7 +332,7 @@ grant_view=Vista o índex
 grant_users=Concedeix drets a
 grant_user=Usuari
 grant_what=Drets
-grant_r=Table
+grant_r=Taula
 grant_v=Vista
 grant_i=Índex
 grant_S=Seqüència
@@ -442,7 +442,7 @@ acl_seqs=Pot veure i gestionar seqüències
 
 fdrop_err=No s'han pogut suprimir els camps
 fdrop_enone=No has seleccionat cap camp
-fdrop_eall=No pots suprimir tots elss camps d'una taula!
+fdrop_eall=No pots suprimir tots els camps d'una taula!
 
 setup_err=No s'han pogut inicialitzar la base de dades
 setup_ecannot=No tens permís per inicialitzar la base de dades
@@ -620,7 +620,7 @@ seq_cycle=Retorna al mínim quan s'atenyi el màxim
 seq_none=Cap
 seq_err=No s'ha pogut desar la seqüència
 seq_ename=Hi falta el nom de la seqüència o bé és invàlid
-seq_eclash=Ja existeix una seqencia amb el mateix nom
+seq_eclash=Ja existeix una seqüència amb el mateix nom
 seq_emin=Hi falta el valor mínim o bé és invàlid
 seq_emax=Hi falta el valor màxim o bé és invàlid
 seq_ecache=Hi falta el nombre de valors a desar en cau o bé és invàlid

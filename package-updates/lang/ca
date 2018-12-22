@@ -11,7 +11,7 @@ index_update=Actualitza els Paquets Seleccionats
 index_install=Instal·la els Paquets Seleccionats
 index_return=a la llista de paquets
 index_header=Opcions de comprovació periòdica
-index_sched=Comprova lea actualitzacions periòdicament
+index_sched=Comprova les actualitzacions periòdicament
 index_sched1=No
 index_sched0=Sí, cada
 index_schedh=hora
@@ -47,6 +47,7 @@ index_searchok=Busca
 index_clear=Mostra'ls Tots
 
 update_title=Actualització de Paquets
+update_title2=Instal·lació de Paquets
 update_pkg=S'està actualitzant $1...
 update_pkg2=S'està instal·lant ara $1...
 update_done=S'ha instal·lat el paquet $1 $2.
@@ -78,8 +79,8 @@ update_oldver=Versió actual
 update_newver=Versió nova
 update_confirm=Instal·la-ho Ara
 update_none=Cap
-update_ops=S'està construint la llista completa d'actualitzacions...
-update_rebootdesc=Un dels paquets actualitzats necessita reeengegar el sistema per a aplicar-se completament.
+update_ops=S'està construint la llista completa de paquets...
+update_rebootdesc=Un dels paquets instal·lats necessita reeengegar el sistema per a aplicar-se completament.
 update_reboot=Reengega Ara
 
 sched_title=Actualització Periòdica

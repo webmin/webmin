@@ -163,7 +163,7 @@ service_known2=Període definit
 status_title=Estat de MON
 status_ecgi=El programa CGI $1 d'estat de MON no existeix. Pot ser que no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 status_eperl=El programa CGI d'estat de MON necessita el mòdul Perl $1. <a href='$2'>Fes clic aquí</a> per instal·lar-lo directament des de CPAN.
-status_esame=El programa CGI d'estat de MON $1 s'ha configurat al script <tt>mon.cgi</tt> en aquest mòdul de Webmin, no el prorama CGI que ve amb MON. Ajusteu la <a href='$2'>configuració del mòdul</a> per utilitzar el camí correcte.
+status_esame=El programa CGI d'estat de MON $1 s'ha configurat al script <tt>mon.cgi</tt> en aquest mòdul de Webmin, no el programa CGI que ve amb MON. Ajusteu la <a href='$2'>configuració del mòdul</a> per utilitzar el camí correcte.
 
 users_title=Usuaris de MON
 users_etype=No es pot editar la llista d'usuaris de MON perquè MON no està actualment configurat per utilitzar-lo per a autenticació a la pàgina d'<a href='$1'>opcions Globals</a>e.

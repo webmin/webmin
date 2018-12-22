@@ -26,7 +26,7 @@ index_viewfile=Visualitza el fitxer de registre:
 index_viewok=Visualitza
 
 restart_ekill=No s'ha pogut enviar el senyal al procés syslog $1: $2
-restart_ecannot=No tens permés per reiniciar syslog
+restart_ecannot=No tens permès per reiniciar syslog
 start_ecannot=NO tens permís per iniciar syslog
 
 edit_title=Edició de Registre

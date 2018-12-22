@@ -14,9 +14,9 @@ index_ehwclock=$1 ha fallat: $2
 index_tabtime=Establiment de l'hora
 index_tabzone=Canvi de la zona horària
 index_tabsync=Sincronització de servidor horari
-index_desctime=Aquest formulari és per a canviar l'hora actual del sistema, que és utilitzat per tots els processos en execució. AMb sistemes operatius que utilitzen un rellotge de maquinari a part, també es pot utilitzar per establir aquest.
+index_desctime=Aquest formulari és per a canviar l'hora actual del sistema, que és utilitzat per tots els processos en execució. Amb sistemes operatius que utilitzen un rellotge de maquinari a part, també es pot utilitzar per establir aquest.
 index_desczone=Aquest formulari permet canvia la zona horària per defecte del sistema, que s'utilitza per convertir l'hora del sistema a un format humanament llegible.
-index_descsync=Aquest formulari és per configurar el sistema per sincronitzar automàticament l'hora amb un servidor remot. La sincronització es farà utilitzatnt el protocol <tt>time</tt> de Unix o el protocol NTP, depenent de quines ordres hi hagi instal·lades i del que suportin els servidor remots.
+index_descsync=Aquest formulari és per configurar el sistema per sincronitzar automàticament l'hora amb un servidor remot. La sincronització es farà utilitzant el protocol <tt>time</tt> de Unix o el protocol NTP, depenent de quines ordres hi hagi instal·lades i del que suportin els servidor remots.
 
 action_save=Desa
 action_apply=Aplica

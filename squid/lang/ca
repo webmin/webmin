@@ -25,7 +25,7 @@ index_delay=Pools de Retard
 index_authparam=Programes D'autenticació
 index_headeracc=Control d'Accés de Capçaleres
 index_refresh=Refresca les Regles
-index_cachemgr=Conrasenyes del gestor del Cau
+index_cachemgr=Contrasenyes del gestor del Cau
 index_calamaris=Anàlisi de Registres Calamaris
 index_return=a l'índex
 index_squidver=L'ordre <tt>$1</tt> ha retornat:
@@ -136,7 +136,7 @@ cach_ecannot=No tens permís per accedir a les estadístiques de gestió del cau
 cach_err=Error
 cach_nfound=No s'ha trobat al sistema el programa <tt>$1</tt> de gestió del cau de Squid. Pot ser que la <a href=/config.cgi?$2 >configuració del mòdul</a> sigui incorrecta.
 cach_return=a l'índex de squid
-cach_esame=L'<b>executable cachemgr.cgi de Squid</b> està configurat al programa cachemgr.cgi de Webmin, no elque ve amb Squid.
+cach_esame=L'<b>executable cachemgr.cgi de Squid</b> està configurat al programa cachemgr.cgi de Webmin, no el que ve amb Squid.
 
 chown_header=Canvi de Propietari
 chown_stop=S'està aturant squid...
@@ -298,7 +298,7 @@ ech_header1=Edició de Host Cau
 ech_cho=Opcions de Host Cau
 ech_h=Nom de Host
 ech_parent=pare
-ech_sibling=sibling
+ech_sibling=fill
 ech_multicast=multicast
 ech_t=Tipus
 ech_pp=Port de proxy
@@ -330,9 +330,9 @@ ech_buttdel=Suprimeix
 ech_return=a la llista del cau
 ech_timeo=Temps límit de connexió del host
 ech_digest=URL de resum del cau del host
-ech_maxconn=Màxim nombre de connexions concorrents
+ech_maxconn=Màxim nombre de connexions concurrents
 ech_miss=Permet la pèrdua de peticions
-ech_htcp=Utilitza HTCP en lloc d'ICP?
+ech_htcp=Utilitza HTCP en lloc d'ICP
 ech_origin=Tracta el host com el servidor origen
 ech_force=Força la capçalera Host: a
 ech_same=Sense canvis
@@ -346,8 +346,8 @@ eicp_aac=Afegeix un altre cau.
 eicp_cso=Opcions de Selecció de Cau
 eicp_fdfd=Pren-les directament dels dominis
 eicp_fdfi=Pren-les directament de les IPs
-eicp_dif=Dominis dins del tallafocs
-eicp_iif=IPs dins del tallafocs
+eicp_dif=Dominis dins del tallafoc
+eicp_iif=IPs dins del tallafoc
 eicp_dfuc=Ves a buscar directament les URLs que contenen
 eicp_d=Defecte
 eicp_bpfsp=Omet el <i>ping</i> per a un sol pare
@@ -519,7 +519,7 @@ eprogs_crp=Programa de redirecció personalitzat
 eprogs_norp=Nombre de programes de redirecció
 eprogs_startup=Programes a iniciar inicialment
 eprogs_idle=Nombre mínim de programes a executar
-eprogs_concurrency=Nombre de peticions concorrents per programa
+eprogs_concurrency=Nombre de peticions concurrents per programa
 eprogs_cap=Programa d'Autenticació
 eprogs_capweb=El de Webmin per defecte
 eprogs_noap=Nombre de programes d'autenticació
@@ -949,18 +949,18 @@ drefresh_err=No s'han pogut suprimir les regles de refresc
 drefesh_enone=No has seleccionat cap regla de refresc
 
 ptables_title=Configuració del Redireccionament de Port
-iptables_inst0=No sembla que estiguin instal·lades al sistema les ordres necessàries per a configurar el redireccionament de ports. Mira el mòdul <a href='$1'>Tallafocs Linux</a> per a més detalls.
-iptables_inst1=No sembla que el mòdul <a href='$1'>Tallafocs Linux</a> estigui completament configurat en aquest sistema. Aquest mòdul fa ús d'aquell per a configurar el redireccionament de ports Frox.
-iptables_desc=Squid pot dur a terme procuració HTTP transparent per a les peticions sobre el port $1 configurant les regles del tallafocs per redireccionar-les automàticament al port $2, que és el que escolta Squid. Això només funcionarà si el sistema que està executant Squid també és l'encaminador de la teva xarxa. Això es pot fer afegint una regla d'IPtables al tallafocs, assumint que està gestionat amb el mòdul <a href='$3'>Tallafocs Linux</a>.
+iptables_inst0=No sembla que estiguin instal·lades al sistema les ordres necessàries per a configurar el redireccionament de ports. Mira el mòdul <a href='$1'>Tallafoc Linux</a> per a més detalls.
+iptables_inst1=No sembla que el mòdul <a href='$1'>Tallafoc Linux</a> estigui completament configurat en aquest sistema. Aquest mòdul fa ús d'aquell per a configurar el redireccionament de ports Frox.
+iptables_desc=Squid pot dur a terme procuració HTTP transparent per a les peticions sobre el port $1 configurant les regles del tallafoc per redireccionar-les automàticament al port $2, que és el que escolta Squid. Això només funcionarà si el sistema que està executant Squid també és l'encaminador de la teva xarxa. Això es pot fer afegint una regla d'IPtables al tallafoc, assumint que està gestionat amb el mòdul <a href='$3'>Tallafoc Linux</a>.
 iptables_disabled=El redireccionament de ports està desactivat
 iptables_enabled3=El redireccionament de ports està activat per als clients de la xarxa
 iptables_enabled4=El redireccionament de ports està activat per als clients de la interfície
-iptables_apply=Aplica la configuració del tallafocs i de Squid
+iptables_apply=Aplica la configuració del tallafoc i de Squid
 iptables_save=Desa i Aplica
 iptables_err=No s'ha pogut desar el redireccionament dels ports
 iptables_enet=Hi falta l'adreça de xarxa o bé és invàlida (hauria de ser com ara 192.168.1.0/24)
 iptables_eiface=Hi falta la interfície de xarxa o bé és invàlida
-iptables_eapply=L'aplicació del tallafocs ha fallat: $1
+iptables_eapply=L'aplicació del tallafoc ha fallat: $1
 iptables_eapply2=L'aplicació de Squid ha fallat: $1
 
 syslog_access=Registre d'accés de Squid
@@ -990,6 +990,6 @@ cachemgr_disable=Accions desactivades
 cachemsg_actions=Aplica a les accions
 cachemgr_all=Utilitza aquesta contrasenya per a totes les accions
 cachemgr_others=Altres accions:
-cachemgr_enone=No n'has introduït cap - hauries de selecccionar <i>No en cal cap</i>
+cachemgr_enone=No n'has introduït cap - hauries de seleccionar <i>No en cal cap</i>
 cachemgr_err=No s'han pogut desar les contrasenyes del gestor del cau
 __norefs=1

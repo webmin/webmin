@@ -7,4 +7,4 @@ ppp_options=Fitxer d'opcions PPP per defecte,0
 pptp_ppp_options=Fitxer d'opcions PPP de PPTP,3,Defecte (/etc/ppp/options.pptp)
 start_cmd=Ordre per iniciar el dimoni PPTP,3,Executa el programa
 stop_cmd=Ordre per aturar el dimoni PPTP,3,Mata el programa
-log_file=Fitxer en es registren els missatges de PPP,0
+log_file=Fitxer on es registren els missatges de PPP,0
