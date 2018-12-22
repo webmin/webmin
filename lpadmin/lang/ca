@@ -21,7 +21,7 @@ index_restartmsg=Fes clic sobre aquest botó per reiniciar el gestor d'impressió.
 index_return=a la llista d'impressores
 index_esystem=Instal·la el programari del sistema d'impressió triat, o bé utilitza la <a href='$1'>configuració del mòdul</a> per canviar-lo.
 index_style=Sistema d'impressió: $1
-index_cluster=Servidors de Cluster
+index_cluster=Servidors de Clúster
 index_clusterdesc=Fes clic sobre aquest botó per configurar servidors Webmin addicionals en els quals es crearan, actualitzaran i suprimiran impressores.
 index_delete=Suprimeix les Impressores Seleccionades
 
@@ -99,9 +99,9 @@ save_eremote=Amb les impressores remotes Unix no es poden utilitzar controladors
 save_edhost=El host directe '$1' no existeix
 save_edport=Hi falta el port directe o no és vàlid
 save_evalid=El sistema d'impressió no ha permès aquesta impressora
-save_errslave=La impressora s'ha creat bé en aquest sistema, però s'han produït els errors següents als sistemes del cluster: $1
+save_errslave=La impressora s'ha creat bé en aquest sistema, però s'han produït els errors següents als sistemes del clúster: $1
 save_egone=No s'ha trobat cap impressora anomenada '$1'
-save_errdelslave=La impressora s'ha suprimit bé en aquest sistema, però s'han produït els errors següents als sistemes del cluster: $1
+save_errdelslave=La impressora s'ha suprimit bé en aquest sistema, però s'han produït els errors següents als sistemes del clúster: $1
 
 jobs_title=Treballs d'Impressió
 jobs_header=Treballs d'impressió de $1
@@ -213,7 +213,7 @@ acl_user=Gestiona els treballs d'impressió propietat de
 acl_user_all=Tots els usuaris
 acl_user_this=L'usuari Webmin actual
 acl_delete=Pot suprimir impressores
-acl_cluster=Pot gestionar el cluster d'impressores
+acl_cluster=Pot gestionar el clúster d'impressores
 
 log_stop=S'ha aturat el servidor d'impressió
 log_start=S'ha iniciat el servidor d'impressió
@@ -293,17 +293,17 @@ aix_port=Port d'impressora $1
 aix_edesc=Descripció invàlida - només es permeten lletres i números, sense espais
 aix_ecmd=No s'ha trobat el servidor d'impressió $1 d'AIX. Pot ser que no estigui instal·lat o que hi hagi un altre sistema d'impressió en ús.
 
-cluster_title=Servidors d'Impressió del Cluster
-cluster_none=Encara no s'ha afegit cap servidor al cluster d'impressió.
+cluster_title=Servidors d'Impressió del Clúster
+cluster_none=Encara no s'ha afegit cap servidor al clúster d'impressió.
 cluster_host=Nom de host
 cluster_desc=Descripció
 cluster_os=Sistema operatiu
 cluster_add=Afegeix servidor
 cluster_gadd=Afegeix servidors al grup
 cluster_need=Has d'afegir servidors amb un usuari i una contrasenya al mòdul d'Índex de Servidors Webmin abans de poder-los gestionar aquí.
-cluster_return=als servidors del cluster
+cluster_return=als servidors del clúster
 cluster_delete=Elimina els Seleccionats
-cluster_ecannot=No tens permís per gestionar els servidors d'impressió del cluster
+cluster_ecannot=No tens permís per gestionar els servidors d'impressió del clúster
 
 add_title=Addició de Servidors
 add_msg=S'està afegint $1...

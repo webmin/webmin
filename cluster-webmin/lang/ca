@@ -1,4 +1,4 @@
-index_title=Servidors de Cluster Webmin
+index_title=Servidors de Clúster Webmin
 index_hosts=Servidors gestionats
 index_nohosts=No s'ha registrat cap servidor Webmin per a la seva gestió.
 index_add=Afegeix servidor
@@ -38,7 +38,7 @@ index_updatedesc=Aquest formulari permet actualitzar els mòduls Webmin que conte
 index_thost=Nom de host
 index_tdesc=Descripció
 index_tver=Versió
-index_ttype=Tipus d'OS
+index_ttype=Tipus de SO
 
 this_server=aquest servidor
 
@@ -168,7 +168,7 @@ user_notabs=Categoritza els mòduls
 user_allow=Permet només des de les adreces llistades
 user_deny=Denega des de les adreces llistades
 user_mods=Mòduls
-user_sall=Seleccciona'ls tots
+user_sall=Selecciona'ls tots
 user_snone=No en seleccionis cap
 user_sinvert=Inverteix la selecció
 user_err1=No s'ha pogut crear l'usuari
@@ -272,7 +272,7 @@ acl_failed=No s'ha pogut establir el control d'accés a $1: $2
 acl_done=...fet
 
 sync_title=Sincronització de Servidors
-sync_desc=Aquest formulari permet crear usuaris i grups Webmin als servidors que actualment no els tenen, per tal de sincronitzar els comptes a través de tots els servidors del cluster.
+sync_desc=Aquest formulari permet crear usuaris i grups Webmin als servidors que actualment no els tenen, per tal de sincronitzar els comptes a través de tots els servidors del clúster.
 sync_hosts=Servidors to sincronitzar
 sync_hall=Tots els servidors
 sync_hsel=Seleccionats...
@@ -315,9 +315,9 @@ upgrade_efast=Només es poden actualitzar els servidors que utilitzen el mode RPC
 upgrade_ereconn=No s'ha pogut reconnectar amb Webmin després de l'actualització!: $1
 
 update_title=Actualització de Mòduls
-update_header=S'està actualitzant els mòduls a tots els hosts...
-update_header5=S'està actualitzant els mòduls a $2...
-update_header4=S'està actualitzant els mòduls  ls membres de $2...
+update_header=S'estan actualitzant els mòduls a tots els hosts...
+update_header5=S'estan actualitzant els mòduls a $2...
+update_header4=S'estan actualitzant els mòduls als membres de $2...
 update_onhost=Resultats de l'actualització a $1...
 update_failed=...l'actualització ha fallat: $1
 update_none=...no s'ha trobat cap actualització.

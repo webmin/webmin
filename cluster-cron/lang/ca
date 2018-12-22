@@ -1,22 +1,23 @@
-index_title=Treballs Cron de Cluster
-index_add=Crea un nou treball cron de cluster.
-index_none=No s'ha definit cap treball cron de cluster.
+index_title=Treballs Cron de Clúster
+index_add=Crea un nou treball cron de clúster.
+index_none=No s'ha definit cap treball cron de clúster.
 index_servers=Executa'l als servidors
-index_return=a la llista de treballs cron de cluster
+index_return=a la llista de treballs cron de clúster
 index_more=$1 més...
 index_run=Executa&nbsp;l&#039;Ordre&nbsp;ara...
 index_actions=Accions
 
-edit_title=Edició de Treball Cron de Cluster
-create_title=Creació de Treball Cron de Cluster
+edit_title=Edició de Treball Cron de Clúster
+create_title=Creació de Treball Cron de Clúster
 edit_servers=Executa als servidors
 edit_group=Membres de $1
 edit_this=aquest servidor
 edit_all=&lt;Tots els servidors&gt;
+edit_emissing=El treball cron ja no existeix!
 
-save_err=No s'ha pogut desar el treball cron de cluster
+save_err=No s'ha pogut desar el treball cron de clúster
 
-exec_title=Execució de Treball Cron de Cluster
+exec_title=Execució de Treball Cron de Clúster
 exec_cmd=S'està executant $1 als servidors seleccionats...
 exec_failed=No s'ha pogut executar a $1: $2
 exec_success=Resposta de $1...
@@ -24,14 +25,14 @@ exec_nohosts=No has seleccionat cat host per executar o bé els grups seleccionat
 
 log_run=S'ha executat $1 a $2 servidors
 log_run_l=S'ha executat $1 a $2
-log_create=S'ha creat el treball cron de cluster de $1
-log_create_l=S'ha creat el treball cron de cluster $2 de $1
-log_modify=S'ha modificat el treball cron de cluster de $1
-log_modify_l=S'ha modificat el treball cron de cluster $2 de $1
-log_delete=S'ha suprimit el treball cron de cluster de $1
-log_delete_l=S'ha suprimit el treball cron de cluster $2 de $1
-log_deletes=S'han suprimit $1 treballs cron de cluster
+log_create=S'ha creat el treball cron de clúster de $1
+log_create_l=S'ha creat el treball cron de clúster $2 de $1
+log_modify=S'ha modificat el treball cron de clúster de $1
+log_modify_l=S'ha modificat el treball cron de clúster $2 de $1
+log_delete=S'ha suprimit el treball cron de clúster de $1
+log_delete_l=S'ha suprimit el treball cron de clúster $2 de $1
+log_deletes=S'han suprimit $1 treballs cron de clúster
 
-delete_err=No s'han pogut suprimir els treballs cron de cluster
+delete_err=No s'han pogut suprimir els treballs cron de clúster
 delete_enone=No has seleccionat cap treball
 __norefs=1

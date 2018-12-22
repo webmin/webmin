@@ -39,7 +39,7 @@ index_lvsize=Mida
 index_lvused=Espai utilitzat
 index_lvuse=Utilitzat per a
 index_snapof=(Instantània de $1)
-index_thin=Pool prrim LVM per als VLs de $1
+index_thin=Pool prim LVM per als VLs de $1
 
 lv_edit=Edita Volum Lògic
 lv_edit_snap=Edita la instantània
@@ -114,7 +114,7 @@ lv_snapof=Instantània del volum lògic
 lv_nosnap=No s'ha pogut determinar!
 lv_newmount=Munta VL a:
 lv_mountmsg=Munta aquest VL en un directori nou del sistema, de manera que es pugui utilitzar per emmagatzemar fitxers. Cal haver-hi creat abans un sistema de fitxers.
-lv_free=Percentage lliure
+lv_free=Percentatge lliure
 lv_freedisk=Espai lliure
 lv_pvs=Volums físics allotjats
 lv_thincs=VLs d'aquest pool prim

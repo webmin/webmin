@@ -1,4 +1,4 @@
-index_title=Paquets de Programari de Cluster
+index_title=Paquets de Programari de Clúster
 index_hosts=Servidors Gestionats
 index_nohosts=No s'ha registrat cap servidor Webmin per a la gestió de programari.
 index_add=Afegeix servidor
@@ -20,7 +20,7 @@ index_compare=Compara els Servidors
 index_thost=Nom de host
 index_tdesc=Descripció
 index_tcount=Paquets
-index_ttype=Tipus d'OS
+index_ttype=Tipus de SO
 
 install_err=No s'ha pogut instal·lar el paquet
 install_elocal=No has donat cap fitxer local
@@ -121,7 +121,7 @@ delete_epack=El paquet $1 no existeix
 delete_title=Supressió de Paquets
 delete_rusure=Segur que vols suprimir el paquet $1 de tots els servidors? S'esborraran definitivament un total de $2 fitxers ($3 bytes).
 delete_rusure2=Segur que vols suprimir el paquet $1 de $4 ? S'esborraran definitivament un total de $2 fitxers ($3 bytes).
-delete_rusurenone=Segur que vols suprimir el paquet $1 de tots els sevidors?
+delete_rusurenone=Segur que vols suprimir el paquet $1 de tots els servidors?
 delete_rusure2none=Segur que vols suprimir el paquet $1 de $4?
 delete_ok=Suprimeix
 delete_error=No s'ha pogut esborrar de $1: $2

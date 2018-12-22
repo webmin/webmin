@@ -1,4 +1,4 @@
-index_title=Servidor Usermin de Cluster
+index_title=Servidor Usermin de Clúster
 index_hosts=Servidors Gestionats
 index_nohosts=No s'ha registrat cap servidor Usermin per a la seva gestió.
 index_add=Afegeix un Servidor
@@ -38,7 +38,7 @@ index_updatedesc=Aquest formulari permet actualitzar els mòduls d'Usermin que te
 index_thost=Nom de host
 index_tdesc=Descripció
 index_tver=Versió
-index_ttype=Tipus d'OS
+index_ttype=Tipus de SO
 
 this_server=aquest servidor
 
@@ -270,7 +270,7 @@ acl_failed=No s'ha pogut configurar el control d'accés a $1: $2
 acl_done=...fet
 
 sync_title=Sincronització de Servidors
-sync_desc=Aquest formulari permet crear usuaris i grups d'Usermin als servidors que actualment no els tenen, per tal de sincronitzar els comptes a través de tots els servidors del cluster.
+sync_desc=Aquest formulari permet crear usuaris i grups d'Usermin als servidors que actualment no els tenen, per tal de sincronitzar els comptes a través de tots els servidors del clúster.
 sync_hosts=Servidors a sincronitzar
 sync_hall=Tots els servidors
 sync_hsel=Els seleccionats...

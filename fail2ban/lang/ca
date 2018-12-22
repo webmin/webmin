@@ -41,7 +41,7 @@ filter_err=No s'ha pogut desar el filtre
 filter_ename=Hi falta el nom del filtre o bé és invàlid
 filter_eclash=El nom del filtre ja està en ús
 filter_efail=No has introduït cap expressió regular
-filter_einuse=Aquest filter no es pot suprimir, ja que està en ús per part deles presons: $1
+filter_einuse=Aquest filtre no es pot suprimir, ja que està en ús per part de les presons: $1
 
 actions_title=Accions de Coincidència
 actions_name=Nom de l'acció

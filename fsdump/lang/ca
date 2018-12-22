@@ -107,7 +107,7 @@ dump_ermt=Hi falta el camí del programa <tt>rmt</tt> o bé és invàlid
 dump_reverify=Intenta fer una prova de restauració després de la còpia per verificar-la
 dump_remount=Remunta amb l'opció <tt>noatime</tt> durant la còpia
 dump_eftpupdate=No és possible afegir fitxers a un arxiu existent utilitzant FTP.
-dump_eleveldir=Per als directoris que bno són punts de muntatge, només es permeten còpies de nivell 0
+dump_eleveldir=Per als directoris que no són punts de muntatge, només es permeten còpies de nivell 0
 dump_eupdatedir=El fitxer <tt>/etc/dumpdates</tt> només es pot actualitzar per a aquells directoris que són punts de muntatge
 
 edit_err=No s'ha pogut crear la còpia

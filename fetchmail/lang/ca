@@ -24,7 +24,7 @@ index_version=Fetchmail versió $1
 index_header=Usuaris amb configuracions Fetchmail
 index_search=Mostra la configuració Fetchmail de:
 index_show=Mostra
-index_toomany=Hi ha massa usuaris al sistema com per mostar-los tots.
+index_toomany=Hi ha massa usuaris al sistema com per mostrar-los tots.
 
 poll_create=Afegeix Servidor
 poll_edit=Edita Servidor

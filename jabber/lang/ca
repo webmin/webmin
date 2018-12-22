@@ -29,14 +29,14 @@ general_pidfile=Fitxer d'ID de procés
 general_err=No s'han pogut desar les opcions generals
 general_ehost=Hi falta el nom de host del servidor o bé és invàlid
 general_eelog=Hi falta el fitxer de registre d'errors o bé és invàlid
-general_eelogfmt=Hi falta el format del registre d'errors o bé és invàlid Missing error log format
+general_eelogfmt=Hi falta el format del registre d'errors o bé és invàlid
 general_erlog=Hi falta el fitxer de registre de trànsit o bé és invàlid
 general_erlogfmt=Hi falta el format dels registres de trànsit o bé és invàlid
 general_epidfile=Hi falta el fitxer d'ID de procés o bé és invàlid
 
 messages_title=Missatges
 messages_header=Missatge del servidor Jabber per als clients
-messages_wsubject=Tema del missatge de benvinguda
+messages_wsubject=Assumpte del missatge de benvinguda
 messages_wbody=Cos del missatge de benvinguda
 messages_vcard=vCard del servidor
 messages_rinstr=Instruccions d'enregistrament

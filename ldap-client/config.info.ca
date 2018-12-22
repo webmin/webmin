@@ -1,10 +1,11 @@
+line0=Paràmetres del fitxer de configuració LDAP,11
 auth_ldap=Fitxers de configuració del client LDAP,8
 pam_ldap=Fitxer de configuració PAM de LDAP,3,EL mateix que el fitxer del client LDAP
 secret=Fitxers arrel de contrasenyes del client LDAP,9,50,2,\t
 init_name=Nom del script d'inicialització del dimoni LDAP local,0
-line0=Configuració de la validació el fullejador LDAP,11
+line1=Configuració de la validació el fullejador LDAP,11
 ldap_hosts=Hosts del servidor LDAP,3,Del fitxer de configuració,50
 ldap_port=Port del servidor LDAP,3,Del fitxer de configuració,5
-ldap_tls=Utilitza una connexió SSn,1,-Del fitxer de configuració,1-Sí,2-Sí amb TLS,0-No
+ldap_tls=Utilitza una connexió SSL,1,-Del fitxer de configuració,1-Sí,2-Sí amb TLS,0-No
 ldap_user=Entra amb l'usuari,3,Del fitxer de configuració
 ldap_pass=Entra amb la contrasenya,3,Del fitxer de configuració

@@ -1,4 +1,4 @@
 at_style=Tipus de sistema <tt>at</tt>,1,linux-Linux,solaris-Solaris,freebsd-FreeBSD,irix-Irix,macos-MacOS X,openserver-OpenServer
 at_dir=Directori de treballs <tt>at</tt>,0
 allow_file=Fitxer d'usuaris At permesos,3,Cap
-deny_file=DItxer d'usuaris At denegats,3,Cap
+deny_file=Fitxer d'usuaris At denegats,3,Cap

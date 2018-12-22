@@ -30,7 +30,7 @@ change_ecolon=La contrasenya no pot contenir el caràcter:
 change_epass2=Les noves contrasenyes no coincideixen
 change_epass=La nova contrasenya no és vàlida: $1
 change_eoverlay=No pots seleccionar una capa de tema si no tries també un tema d'interfície d'usuari
-change_eoverlay2=La capa selccionada del tema no és compatible amb el tema d'interfície d'usuari triat
+change_eoverlay2=La capa seleccionada del tema no és compatible amb el tema d'interfície d'usuari triat
 
 acl_lang=Pot canviar l'idioma
 acl_theme=Pot canviar el tema

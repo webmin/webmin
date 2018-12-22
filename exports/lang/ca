@@ -78,7 +78,7 @@ save_euids=Els UIDs no fiables han de ser una llista de números o rangs separada
 save_egids=Els GIDs no fiables han de ser una llista de números o rangs separada per comes
 save_pfs='$1' ja està exportat com a directori
 save_create_dir=No es pot crear el directori '$1'
-save_eanonuid=L'usuari d'accès anònim és invàlid
+save_eanonuid=L'usuari d'accés anònim és invàlid
 save_eanongid=El grup d'accés anònim és invàlid
 
 exports_webnfs=Clients&nbsp;WebNFS

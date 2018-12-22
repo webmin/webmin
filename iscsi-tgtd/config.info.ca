@@ -1,4 +1,4 @@
-config_file=FItxer de configuració de iSCSI TGTD,0
+config_file=Fitxer de configuració de iSCSI TGTD,0
 add_file=Afegeix objectius nous a,3,Fitxer primari de configuració
 tgtd=Camí complet de l'ordre tgtd,0
 tgtadm=Camí complet de l'ordre tgtadm,0

@@ -46,7 +46,7 @@ uedit_sambaacctflags=Banderins del compte
 
 usave_eadd=No s'ha pogut afegir l'usuari a la base de dades LDAP: $1
 usave_emod=No s'ha pogut modificar l'usuari de la base de dades LDAP: $1
-usave_emoddn=No s'ha pogut renomenar l'usuari de la base de dades LDAP: $1
+usave_emoddn=No s'ha pogut reanomenar l'usuari de la base de dades LDAP: $1
 usave_egroupmod=No s'ha pogut modificar el grup $1 a la base de dades LDAP: $2
 usave_edelete=No s'ha pogut suprimir l'usuari de la base de dades LDAP: $1
 usave_eicreate=No s'ha pogut crear l'usuari
@@ -59,7 +59,7 @@ usave_eilogin=No s'ha pogut entrar amb el nou usuari
 usave_ecyruspass=Cal introduir la contrasenya normal de l'usuari o bé seleccionar l'opció "Sense contrasenya" en activar IMAP.
 usave_ebook=No s'ha pogut crear l'entrada de la llibreta d'adreces: $1
 usave_emodbook=No s'ha pogut modificar l'entrada de la llibreta d'adreces: $1
-usave_emodbookdn=No s'ha pogut renomenar l'entrada de la llibreta d'adreces: $1
+usave_emodbookdn=No s'ha pogut reanomenar l'entrada de la llibreta d'adreces: $1
 usave_egone=L'usuari ja no existeix!
 usave_ex86=Aquest usuari no serveix per a establir la contrasenya d'un usuari Samba en sistemes no Intel, ja que depèn d'un programa compilat x86.
 usave_esamba=Aquest mòdul no es pot utilitzar per establir la contrasenya d'un usuari Samba, ja que el mòdul de Compartició de Fitxers Windows Samba no està instal·lat.
@@ -81,7 +81,7 @@ gsave_egone=El grup ja no existeix!
 gsave_edelete=No s'ha pogut suprimir el grup de la base de dades LDAP: $1
 gsave_eadd=No s'ha pogut afegir el grup a la base de dades LDAP: $1
 gsave_emod=No s'ha pogut modificar el grup a la base de dades LDAP: $1
-gsave_emoddn=No s'ha pogut renomenar el grup a la base de dades LDAP: $1
+gsave_emoddn=No s'ha pogut reanomenar el grup a la base de dades LDAP: $1
 
 gdel_group=S'està suprimint l'entrada de grup LDAP...
 

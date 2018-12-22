@@ -30,7 +30,7 @@ index_eglist=No s'han pogut llistar els grups: $1
 
 edit_title=Edició d'Usuari Webmin
 edit_title2=Creació d'Usuari Webmin
-edit_readonly=Aquest usuari Webmin no s'hauria d'editar, per tal com es troba gestionat pel mòdul $1. <a href='$2'>Fés clic aquí</a> per ignorar aquest avís i editar l'usuari - però tingues en compte que els canvis manuals poden ser reescrits!
+edit_readonly=Aquest usuari Webmin no s'hauria d'editar, per tal com es troba gestionat pel mòdul $1. <a href='$2'>Fes clic aquí</a> per ignorar aquest avís i editar l'usuari - però tingues en compte que els canvis manuals poden ser reescrits!
 edit_rights=Drets d'accés de l'usuari Webmin
 edit_user=Usuari
 edit_cloneof=Clonació de l'usuari Webmin
@@ -56,7 +56,7 @@ edit_twofactorcancel=Elimina el requeriment d'autenticació de dos factors
 edit_twofactornone=Encara no n'hi ha cap de configurada
 edit_twofactoradd=Activa Dos Factors Per a l'Usuari
 edit_lang=Idioma
-edit_notabs=Categorització de mòduls
+edit_notabs=Categoritza els mòduls
 edit_logout=Temps d'expulsió per inactivitat
 edit_mins=minuts
 edit_chars=lletres
@@ -151,7 +151,7 @@ delete_eanonuser=Aquest usuari s'està utilitzant per a l'accés del mòdul anònim
 cert_title=Petició de Certificat
 cert_issue=Emissió de Certificat
 cert_header=Detalls del nou certificat
-cert_msg=Aquest formulari permet demanar un cerfificat client SSL que s'utilitzarà en el futur per concedir-te l'accés a Webmin, en lloc del teu nom d'usuari i contrasenya. Això és més segur, però com que l'autenticació és automàtica, no podràs canviar a un usuari diferent utilitzant el certificat.
+cert_msg=Aquest formulari permet demanar un certificat client SSL que s'utilitzarà en el futur per concedir-te l'accés a Webmin, en lloc del teu nom d'usuari i contrasenya. Això és més segur, però com que l'autenticació és automàtica, no podràs canviar a un usuari diferent utilitzant el certificat.
 cert_ebrowser=Webmin no sap com generar certificats client per al teu navegador ($1)
 cert_cn=El teu nom
 cert_email=La teva adreça e-mail
@@ -188,7 +188,7 @@ acl_own=Només els seus propis mòduls
 acl_sel=Mòduls seleccionats...
 acl_create=Pot crear usuaris nous
 acl_delete=Pot suprimir usuaris
-acl_rename=Pot renomenar usuaris
+acl_rename=Pot reanomenar usuaris
 acl_acl=Pot editar el control d'accés al mòdul
 acl_lang=Pot canviar l'idioma
 acl_chcert=Pot canviar el nom del certificat SSL
@@ -344,7 +344,7 @@ sessions_login=Darrera activitat a
 sessions_host=Adreça IP
 sessions_lview=Visualitza els registres...
 sessions_actions=Accions...
-sessions_logouts=Mostra també les sessións desconnectades...
+sessions_logouts=Mostra també les sessions desconnectades...
 sessions_state=Estat
 sessions_this=Aquesta entrada
 sessions_in=Connectat
@@ -366,7 +366,7 @@ switch_eold=No s'ha trobat la sessió existent!
 rbac_title=Configuració de RBAC
 rbac_desc=La integració de Webmin amb RBAC proporciona una forma de determinar els permisos d'ACL i mòduls d'usuari des d'una base de dades RBAC (Role Based Access Control), en lloc d'utilitzar els fitxers propis de configuració de Webmin. Un cop s'ha activat el suport RBAC, tot usuari per al qual s'hagi seleccionat l'opció <b>RBAC controla totes les ACLs i mòduls</b> tindrà les seves capacitats determinades per RBAC en lloc de la configuració de control d'accés de Webmin.
 rbac_esolaris=De moment, RBAC només està suportat per Solaris, així que no es pot utilitzar en aquest sistema $1.
-rbac_eperl=El mòdul Perl $1 necessari per a la integració amb RBAC no està instal·lat. Fés clic <a href='$2'>aquí</a> per instal·lar-lo ara.
+rbac_eperl=El mòdul Perl $1 necessari per a la integració amb RBAC no està instal·lat. Fes clic <a href='$2'>aquí</a> per instal·lar-lo ara.
 rbac_ecpan=No tens accés a la pàgina de Mòduls Perl de Webmin per tal d'instal·lar el mòdul $1 necessari per a la integració amb RBAC.
 rbac_ok=La integració amb RBAC està disponible en aquest sistema, i es pot activar en base a cada usuari a la pàgina d'Edició d'Usuaris Webmin.
 
@@ -408,7 +408,7 @@ pass_emaxdays=Hi falta el nombre de dies abans del canvi de contrasenya o bé és 
 pass_elockdays=Hi falta el nombre de dies abans del bloqueig de compte o bé és invàlid
 pass_eoldblock=Hi falta el nombre de contrasenyes antigues a rebutjar o bé és invàlid
 
-cpass_minsize=Ha de ternir almenys $1 lletres de llarg
+cpass_minsize=Ha de tenir almenys $1 lletres de llarg
 cpass_notre=Coincideix amb un patró rebutjat
 cpass_re=No coincideix amb el patró demanat
 cpass_name=Conté el nom d'usuari
@@ -451,7 +451,7 @@ sql_eprefix=Hi falta el DN base o bé és invàlid (no es permeten espais)
 sql_eprefix2=El DN base sembla invàlid - ha de ser una cosa com ara <tt>dc=elmeudomini,dc=com</tt>
 sql_title2=Creació de les Taules que Falten
 sql_tableerr=Els paràmetres de la base de dades d'usuaris i grups són vàlids, però hi falten algunes taules que Webmin necessita: $1
-sql_tableerr2=Fes clic al botó <b>Crea les Taules</b> de sota per fer que es creïn automàticamebnt, o bé executa manualment el SQL d'aquí sota.
+sql_tableerr2=Fes clic al botó <b>Crea les Taules</b> de sota per fer que es creïn automàticament, o bé executa manualment el SQL d'aquí sota.
 sql_make=Crea les Taules
 sql_title3=Creació del DN que Falta
 sql_dnerr=Els paràmetres de la base de dades d'usuaris i grups són vàlids, però hi falta el DN LDAP que Webmin necessita: $1

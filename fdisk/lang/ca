@@ -28,6 +28,8 @@ index_smartdesc=Mostra l'informe d'estat d'aquesta unitat, incloent-hi la temper
 index_blink=Identifica la unitat
 index_relabel=Neteja les Particions
 index_relabeldesc=Suprimeix totes les particions existents i crea una nova taula de particions amb un format diferent.
+index_relabel2=Crea una Taula de Particions
+index_relabeldesc2=Crea una nova taula de particions buida en quest disc, de manera que s'hi puguin afegir particions.
 index_use=Utilitzat
 index_free=Lliure
 index_return=a la llista de discs
@@ -64,6 +66,8 @@ select_smart=Compaq Smart Array $1 unitat $2
 select_smartpart=Compaq Smart Array $1 unitat $2 partició $3
 select_promise=Unitat RAID Promise $1
 select_ppart=Unitat RAID Promise $1 partició $2
+select_nvme=Unitat $1 SSD NVME $2
+select_nvmepart=Unitat $1 SSD NVME $2 partició $3
 
 edit_title=Edició de Partició
 create_title=Creació de Partició
@@ -183,7 +187,7 @@ msdos_F_other=Altres...
 msdos_i=ID del volum
 msdos_n=Nom del volum
 msdos_r=Entrades arrel
-msdos_s=Mida del cluster
+msdos_s=Mida del clúster
 msdos_c=Verifica els blocs dolents
 
 minix_n=Llargada dels noms de fitxers
@@ -198,7 +202,7 @@ xfs_force=Força la creació del sistema de fitxers
 xfs_b=Mida del bloc
 
 jfs_s=Mida del registre
-jfs_c=Verifica els blocks dolents
+jfs_c=Verifica els blocs dolents
 
 btrfs_l=Mida de la fulla
 btrfs_n=Mida del node
@@ -242,7 +246,7 @@ hdparm_speedres=Resultats del test de velocitat
 
 blink_title=Identificació d'Unitat
 blink_desc=Ara el LED d'activitat de la unitat s'encendrà seixanta cops
-blink_back=Torna Eerere
+blink_back=Torna Enrere
 
 log_modify=S'ha modificat $1
 log_create=S'ha creat $1
@@ -267,7 +271,7 @@ delete_title=Supressió de Partició
 delete_rusure=Segur que vols suprimir $1 ($2)? Les dades d'aquesta partició es perdran per sempre.
 delete_ok=Suprimeix-la Ara
 
-disk_title=Edicio de Particions de Disc
+disk_title=Edició de Particions de Disc
 disk_egone=El disc ja no existeix!
 disk_no=Número
 disk_type=Tipus
@@ -276,14 +280,16 @@ disk_start=Inici
 disk_end=Final
 disk_use=Utilitzada per a
 disk_free=Espai lliure
-disk_vm=Mamòria virtual
+disk_vm=Memòria virtual
 disk_iscsi=Dispositiu compartit iSCSI $1
 disk_none=Aquest disc encara no té cap partició.
 disk_size=Mida
 disk_dsize=<b>Mida del disc:</b> $1
 disk_model=<b>Fabricant i model:</b> $1
 disk_cylinders=<b>Cilindres:</b> $1
-disk_table=<b>Format de les particions:</b> $1
+disk_table=<b>Format de la taula de particions:</b> $1
+disk_notable=<b>Format de taula de particions:</b> No n'hi ha cap de creada
+disk_needtable=No es pot crear cap partició sense una taula de particions.
 disk_return=a la llista de particions
 
 relabel_title=Neteja de Particions

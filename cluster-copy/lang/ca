@@ -1,8 +1,8 @@
-index_title=Còpia de Fitxers en Cluster
+index_title=Còpia de Fitxers en Clúster
 index_add=Crea una nova còpia de fitxers planificada
 index_none=No s'ha definit cap còpia de fitxers planificada.
 index_servers=Copia als servidors
-index_return=a la llista de còpies de cluster
+index_return=a la llista de còpies de clúster
 index_more=$1 més...
 index_run=Executa-la&nbsp;ara...
 index_files=Fitxers a copiar
@@ -12,14 +12,14 @@ index_act=Acció
 index_exec=Executa
 index_delete=Suprimeix les Còpies Seleccionades
 
-edit_title=Edició de Còpia de Cluster
-create_title=Creació de Còpia de Cluster
-edit_header=Detalls de la còpia de cluster
+edit_title=Edició de Còpia de Clúster
+create_title=Creació de Còpia de Clúster
+edit_header=Detalls de la còpia de clúster
 edit_files=Fitxers a copiar
 edit_dest=Directori destí
 edit_cmd=Ordre a executar després de copiar
 edit_before=Ordre a executar abans de copiar
-edit_remote=ls servidors remots
+edit_remote=Als servidors remots
 edit_dmode0=Copia els camins complets per sota del directori
 edit_dmode1=Copia a aquest directori
 edit_servers=Copia-la als servidors
@@ -29,11 +29,11 @@ edit_all=&lt;Tots els hosts&gt;
 edit_sched=Copia de forma planificada
 edit_schedyes=Sí, a les hores seleccionades a sota...
 edit_run=Copia-ho Ara
-edit_return=a la còpia del cluster
+edit_return=a la còpia del clúster
 edit_email=Envia la sortida a
 edit_none=Ningú
 
-save_err=No s'ha pogut desar el treball cron del cluster
+save_err=No s'ha pogut desar el treball cron del clúster
 save_efiles=No has introduït cap fitxer per copiar
 save_edest=Hi falta el directori de destí
 save_eservers=No has introduït cap servidor per copiar
@@ -60,8 +60,8 @@ log_delete=S'ha suprimit la còpia de $1 a $2 servidors
 log_exec=S'ha copiat $1 a $2 servidors
 log_deletes=S'han suprimit $1 còpies
  
-email_subject_succeeded=La còpia de cluster de $1 ha reeixit
-email_subject_failed=La còpia de cluster de $1 ha fallat
+email_subject_succeeded=La còpia de clúster de $1 ha reeixit
+email_subject_failed=La còpia de clúster de $1 ha fallat
 
 delete_err=No s'han pogut suprimir les còpies
 delete_enone=No has seleccionat cap còpia

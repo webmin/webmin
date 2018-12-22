@@ -24,9 +24,9 @@ index_recsgot=Webmin ha instal·lat tots els mòduls Perl recomanats següents: $1
 index_ezone=Sembla que Perl està compartit amb la zona global. així que els mòduls no es poden instal·lar aquí. S'han d'instal·lar a la zona global.
 index_none=No s'ha trobat cap mòdul Perl instal·lat al sistema.
 index_tabmods=Mòduls existents
-index_tabinstall=Instal·la el mòdule
+index_tabinstall=Instal·la el mòdul
 index_tabsuggest=Mòduls suggerits
-index_allmods=Tots els mòduls utilitzats per Webmin
+index_allmods=Mòduls que falten utilitzats per Webmin
 index_wantmods=Mòduls a instal·lar
 
 download_err=No s'ha pogut instal·lar el mòdul
@@ -85,7 +85,7 @@ install_err=La instal·lació de $1 ha fallat. Comprova la sortida i prova d'insta
 install_err2=També pots instal·lar el mòdul des de CPAN amb l'ordre $1.
 install_exec=S'està executant $1...
 install_efile=El fitxer $1 del mòdul ja no existeix
-install_needunlink=Pots provar de fer un altre cop la instal·lació tornant enrera a la pàgina anterior i seleccionant opcions diferents. Altrament, <a href='$1'>fes clic aquí per suprimir els fitxers temporals del paquet</a> per tal d'estalviar espai al disc.
+install_needunlink=Pots provar de fer un altre cop la instal·lació tornant enrere a la pàgina anterior i seleccionant opcions diferents. Altrament, <a href='$1'>fes clic aquí per suprimir els fitxers temporals del paquet</a> per tal d'estalviar espai al disc.
 
 cpan_sel=Mòduls de $1 ..
 cpan_title=Selecció de mòdul Perl
@@ -124,5 +124,5 @@ uninstalls_title=Desinstal·lació de Mòduls
 uninstalls_err=No s'han pogut desinstal·lar els mòduls
 uninstalls_enone=No n'hi ha cap de seleccionat
 uninstalls_emod=$1 ha fallat: $2
-uninstalls_rusure=Segur que vols desisnstal·lar els $1 mòduls seleccionats? S'eliminaran $2 submòduls i $3 fitxers.
+uninstalls_rusure=Segur que vols desinstal·lar els $1 mòduls seleccionats? S'eliminaran $2 submòduls i $3 fitxers.
 __norefs=1

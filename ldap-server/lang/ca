@@ -132,8 +132,8 @@ browser_save=Desa
 browser_sub=Subobjecte
 browser_sadd=Afegeix un nou subobjecte.
 browser_clone=Clona aquest objecte.
-browser_rename=Renomena...
-browser_rsave=Renomena
+browser_rename=Reanomena...
+browser_rsave=Reanomena
 browser_return=a l'explorador de la base de dades
 browser_toomany=El nombre de subobjectes és més gran que el límit de $1 de Webmin.
 browser_toomany2=El nombre de subobjectes que coincideixen amb $1 és més gran que el límit de $2 de Webmin.
@@ -160,7 +160,7 @@ sdelete_err=No s'han pogut suprimir els objectes
 sdelete_edn=No s'ha trobat l'objecte $1
 sdelete_edel=La supressió LDAP de $1 ha fallat: $2
 
-rename_err=No s'ha pogut renomenar l'objecte
+rename_err=No s'ha pogut reanomenar l'objecte
 rename_eget=No s'ha pogut trobar l'objecte amb DN $1
 rename_enew=Sembla que el nou nom no és vàlid
 rename_erename=El newdn LDAP de $2 de $1 ha fallat: $3
@@ -262,6 +262,7 @@ gencert_same=Fitxers de configuració actuals
 gencert_dir=Directori
 gencert_err=No s'ha pogut generar el certificat
 gencert_edest=El directori de destinació no existeix
+gencert_epath=El certificat i els fitxers de clau de la configuració del servidor LDAP han de ser camins absoluts
 
 perms_err=No s'ha pogut corregit el propietari
 

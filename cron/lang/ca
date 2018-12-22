@@ -17,7 +17,7 @@ index_move=Desplaça
 index_run=En execució
 index_ecmd=No s'ha trobat l'ordre $1 en gestionar les configuracions d'usuari de Cron. Pot ser que Cron no estigui instal·lat en aquest sistema?
 index_esingle=El fitxer $1 que llista els treballs Cron no existeix. Pot ser que Cron no estigui instal·lat en aquest sistema?
-index_ecrondir=El directori de treballs Cron $1 no existeix.  Pot ser que la configuracio del mòdul sigui incorrecta o bé que Cron no estigui instal·lat?
+index_ecrondir=El directori de treballs Cron $1 no existeix.  Pot ser que la configuració del mòdul sigui incorrecta o bé que Cron no estigui instal·lat?
 index_ecrondir_create=Prova de crear el directori de treballs $1
 index_delete=Suprimeix els Treballs Seleccionats
 index_disable=Desactiva els Treballs Seleccionats
@@ -26,7 +26,7 @@ index_esearch=No hi ha cap treball que coincideixi amb la recerca de $1.
 index_toomany2=Hi ha massa treballs per mostrar. Utilitza el formulari de cerca de dalt per limitar la llista.
 index_search=Busca els treballs Cron que coincideixin amb
 index_ok=Busca
-index_searchres=Treballs cron que coincideien amb...
+index_searchres=Treballs cron que coincideixen amb...
 index_reset=Reinici la cerca.
 index_econfigcheck=No es poden gestionar treballs Cron al sistema perquè la configuració del mòdul no és vàlida: $1
 
@@ -153,6 +153,7 @@ when_month=el dia $3 de cada mes a les $2:$1
 when_weekday=cada $3 a les $2:$1
 when_cron=a l'hora $1 de cron
 when_interval=cada $1 segons
+when_boot=en engegar
 
 ucwhen_min=Cada minut
 ucwhen_hour=Cada hora a $1 minuts passada l'hora
@@ -161,6 +162,7 @@ ucwhen_month=El dia $3 de cada mes a les $2:$1
 ucwhen_weekday=Cada $3 a les $2:$1
 ucwhen_cron=A l'hora $1 de cron
 ucwhen_interval=Cada $1 segons
+ucwhen_boot=En engegar
 
 move_err=No s'ha pogut desplaçar el treball Cron
 move_etype=Aquest treball cron no es pot desplaçar
@@ -186,7 +188,7 @@ delete_enone=No has seleccionat res
 manual_title=Edició Manual de Treballs Cron
 manual_edit=Fitxer cron a editar:
 manual_ok=Edita
-manual_editing=Utilitza la caixa de text de sota per editar el treballs Cronde $1. Ves amb compte, perquè Webmin no en farà cap validació!
+manual_editing=Utilitza la caixa de text de sota per editar el treballs Cron de $1. Ves amb compte, perquè Webmin no en farà cap validació!
 manual_efile=El fitxer seleccionat no és vàlid!
 manual_ecannot=No tens permís per editar manualment els treballs cron
 

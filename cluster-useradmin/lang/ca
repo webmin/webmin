@@ -1,4 +1,4 @@
-index_title=Usuaris i Grups de Cluster
+index_title=Usuaris i Grups de Clúster
 index_hosts=Servidors Gestionats
 index_nohosts=No s'ha registrat cap servidor Webmin per a la gestió d'usuaris.
 index_add=Afegeix servidor
@@ -16,7 +16,7 @@ index_thost=Nom de host
 index_tdesc=Descripció
 index_tucount=Usuaris
 index_tgcount=Grups
-index_ttype=Tipus d'OS
+index_ttype=Tipus de SO
 
 add_title=Addició Servidors
 add_msg=S'està afegint $1...
@@ -84,7 +84,7 @@ usave_update=S'està actualitzant l'entrada del fitxer de contrasenyes...
 usave_move=S'està desplaçant el directori arrel...
 usave_gid=S'està canviant el GID als fitxers...
 usave_uid=S'està canviant el UID als fitxers...
-usave_rgroups=S'està renomenant als grups...
+usave_rgroups=S'està reanomenant als grups...
 usave_mothers=S'està actualitzant els altres mòduls...
 usave_failed=No s'ha pogut desar l'usuari: $1
 usave_gone=L'usuari ja no existeix.
@@ -126,7 +126,7 @@ gedit_del=Treu usuaris
 gedit_donthave=&lt;hosts que no ho tenen&gt;
 
 sync_title=Sincronització de Servidors
-sync_desc=Aquest formulari permet crear usuaris i grups als servidors que actualment no els tenen, per tal de tenir els comptes sincronitzats a través de tots els servidors del <i>cluster</i>.
+sync_desc=Aquest formulari permet crear usuaris i grups als servidors que actualment no els tenen, per tal de tenir els comptes sincronitzats a través de tots els servidors del clúster.
 sync_hosts=Servidors a sincronitzar
 sync_hall=Tots els servidors
 sync_hsel=Seleccionats...
@@ -153,7 +153,7 @@ sync_makehome=Crea els directoris arrel
 sync_copy=Copia els fitxers als directoris arrel
 sync_others=Crea l'usuari en els altres mòduls
 
-log_create_user=S'ha create l'usuari $1
+log_create_user=S'ha creat l'usuari $1
 log_delete_user=S'ha suprimit l'usuari $1
 log_modify_user=S'ha modificat l'usuari $1
 log_create_group=S'ha creat el grup $1

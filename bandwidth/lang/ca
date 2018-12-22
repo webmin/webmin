@@ -1,16 +1,16 @@
 index_title=Monitorització d'Amplada de Banda
-index_efiresys=No s'ha detectat al sistema cap dels tallafocs suportats (IPtables, IPFW, IPFilter o Shorewall). Comprova els mòduls apropiats per assegurar que estan configurats.
-index_efiresys2=No s'ha trobat al sistema el tallafocs $1 configurat. Ajusta la <a href='$2'>configuració del mòdul</a> per utilitzar el tallafocs correcte.
+index_efiresys=No s'ha detectat al sistema cap dels tallafoc suportats (IPtables, IPFW, IPFilter o Shorewall). Comprova els mòduls apropiats per assegurar que estan configurats.
+index_efiresys2=No s'ha trobat al sistema el tallafoc $1 configurat. Ajusta la <a href='$2'>configuració del mòdul</a> per utilitzar el tallafoc correcte.
 index_elog=El fitxer $1 utilitzat per al registre d'amplada de banda és de fet un directori del sistema. Ajusta la <a href='$2'>configuració del mòdul</a> per utilitzar un camí diferent.
 index_edir=El directori per emmagatzemar les dades $1 de bandwidth no existeix, o no és un directori. Ajusta la <a href='$2'>configuració del mòdul</a> per utilitzar un camí diferent.
 index_emod=El mòdul $1 de Webmin no es troba instal·lat al sistema, o bé no està suportat pel SO. El mòdul de Monitorització d'Amplada de Banda no pot operar sense ell.
 index_esyslog=No hi ha cap mòdul de Registres del Sistema instal·lat ni suportat pel sistema. El mòdul de Monitorització d'Amplada de Banda no pot operar sense  un d'ells.
-index_firesys=S'està utilitzant el tallafocs $1 i $2
+index_firesys=S'està utilitzant el tallafoc $1 i $2
 index_setupcannot=De totes maneres, tu no tens permís per configurar-lo.
 index_setupdesc=Abans que aquest mòdul pugui informar de l'ús de la xarxa al sistema, cal configurar-lo per monitoritzar el trànsit en la interfície de xarxa externa seleccionada.
-index_setupdesc2=<b>Atenció - aquest mòdule registrarà TOT el transit de xarxa enviat o rebut sobre la interfície seleccionada. Això consumirà molt espai al disc dur i molt temps de CPU en una connexió de xraxa ràpida.</b>
-index_missing3=S'han d'afegir algunes regles del tallafocs, i crear una entrada de configuració de syslog.
-index_missing2=S'han d'afegir algunes regles del tallafocs.
+index_setupdesc2=<b>Atenció - aquest mòdul registrarà TOT el transit de xarxa enviat o rebut sobre la interfície seleccionada. Això consumirà molt espai al disc dur i molt temps de CPU en una connexió de xarxa ràpida.</b>
+index_missing3=S'han d'afegir algunes regles del tallafoc, i crear una entrada de configuració de syslog.
+index_missing2=S'han d'afegir algunes regles del tallafoc.
 index_missing1=S'ha de crear una entrada de configuració de syslog.
 index_iface=Interfície de xarxa externa
 index_other=Altres...
@@ -52,10 +52,10 @@ index_low=Només els ports del servidor
 index_resolv=Resol els noms de host
 index_nomatch=No hi ha trànsit que coincideixi amb els criteris seleccionats.
 index_turnoff=Desactiva la Monitorització
-index_turnoffdesc=Fes clic sobre aquest botó per eliminar les regles del tallafocs, la configuració syslog i el treball cron utilitzats per a la monitorització de l'amplada de banda. Totes les dades recollides existents es mantindran intactes.
+index_turnoffdesc=Fes clic sobre aquest botó per eliminar les regles del tallafoc, la configuració syslog i el treball cron utilitzats per a la monitorització de l'amplada de banda. Totes les dades recollides existents es mantindran intactes.
 index_rotate=Actualitza les Estadístiques
 index_rotatedesc=Fes clic sobre aquest botó per processar tot el trànsit de xarxa registrat fins ara, fent-lo immediatament disponible per a l'informe.
-index_eiptables=Atenció - La teva configuració d'IPtables té un error: $1. Establir la monitorització d'amplada de banda esborrarà totes les regles del tallafocs.
+index_eiptables=Atenció - La teva configuració d'IPtables té un error: $1. Establir la monitorització d'amplada de banda esborrarà totes les regles del tallafoc.
 index_return=al formulari d'informe
 
 log_setup=S'ha configurat la monitorització de l'amplada de banda sobre la interfície $1

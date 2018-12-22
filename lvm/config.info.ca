@@ -1,2 +1,2 @@
-show_table=Mostra els volums els grups com a,1,1-Taula,0-Icones
+show_table=Mostra els volums i els grups com a,1,1-Taula,0-Icones
 lvm_conf=Camí del fitxer de configuració de LVM,8

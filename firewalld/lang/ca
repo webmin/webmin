@@ -1,18 +1,18 @@
 index_title=FirewallD
-index_atboot=Activa el tallafocs en engegar el sistema
+index_atboot=Activa el tallafoc en engegar el sistema
 index_bootup=Activa en engegar
-index_bootupdesc=Canvia aquest opció per controlar si el tallafocs s'activa en engegar el sistema o no.
+index_bootupdesc=Canvia aquest opció per controlar si el tallafoc s'activa en engegar el sistema o no.
 index_apply=Aplica la Configuració
-index_applydesc=Fes clic sobre aquest botó per activar la configuracio del tallafocs llistada més amunt. Totes les regles del tallafocs que estiguin actualment en efecte seran descartades i substituïdes.
+index_applydesc=Fes clic sobre aquest botó per activar la configuració del tallafoc llistada més amunt. Totes les regles del tallafoc que estiguin actualment en efecte seran descartades i substituïdes.
 index_restart=Aplica la Configuració
-index_restartdesc=Activa tots els serveis permesos i els ports llistats més amunr a totes les zones. Totes aquelles regles actives que no s'hagin creat de forma permanent seran substituïdes.
+index_restartdesc=Activa tots els serveis permesos i els ports llistats més amunt a totes les zones. Totes aquelles regles actives que no s'hagin creat de forma permanent seran substituïdes.
 index_start=Inicia FirewallD
 index_startdesc=Inicia el servidor FirewallD i aplica les regles llistades més amunt.
 index_stop=Atura FirewallD
 index_stopdesc=Tanca el servidor FirewallD i elimina totes les regles llistades és amunt.
 index_cerr=No es pot utilitzar el mòdul FirewallD: $1
-index_zone=Mostra les regles de la zone:
-index_zoneok=Cnvia
+index_zone=Mostra les regles de la zona:
+index_zoneok=Canvia
 index_zoneadd=Afegeix una Zona...
 index_zonedel=Suprimeix la Zona
 index_zonedef=Fes Zona per Defecte
@@ -63,7 +63,7 @@ forward_dstport=Port de destinació
 forward_dstaddr=Adreça de destinació
 forward_dstlocal=Aquest sistema
 forward_edstaddr=Adreça de destinació IPv4 invàlida
-forward_eneither=Cal introduir obé una adreça de destinació o bé un port
+forward_eneither=Cal introduir o bé una adreça de destinació o bé un port
 
 check_ecmd=No s'ha trobat al sistema l'ordre $1 de control de FirewallD
 
@@ -97,7 +97,7 @@ start_err=No s'ha pogut iniciar FirewallD
 
 log_stop=S'ha aturat FirewallD
 log_start=S'ha iniciat FirewallD
-log_restart=S'ha aplicat la configuracio de  FirewallD
+log_restart=S'ha aplicat la configuració de  FirewallD
 log_bootup=S'ha activat FirewallD en engegar
 log_bootdown=S'ha desactivat FirewallD en engegar
 log_create_port=S'ha afegit el port permès $1
