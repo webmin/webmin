@@ -14,6 +14,7 @@ my $allup = 1;
 my @badsizes;
 my @badowners;
 my @badgroups;
+my @badperms;
 my @allsizes;
 foreach my $f (@files) {
 	local @st = stat($f);
@@ -50,6 +51,7 @@ foreach my $f (@files) {
 			push(@badowners, $f);
 			}
 		}
+
 	if ($_[0]->{'group'}) {
 		# Check for group
 		my $g = getgrgid($st[5]);
@@ -59,6 +61,15 @@ foreach my $f (@files) {
 			push(@badgroups, $f);
 			}
 		}
+
+	if ($_[0]->{'perms'}) {
+		# Check for permissions
+		if (($st[2]&0777) != oct($_[0]->{'perms'})) {
+			$allup = 0;
+			push(@badperms, $f);
+			}
+		}
+
 	push(@allsizes, $size) if (defined($size));
 	}
 
@@ -79,6 +90,9 @@ if (@badowners) {
 	}
 if (@badgroups) {
 	push(@descs, &text('file_egroup', join(" ", @badgroups)));
+	}
+if (@badperms) {
+	push(@descs, &text('file_eperm', join(" ", @badperms)));
 	}
 
 my $rv = { 'up' => $allup,
@@ -113,6 +127,10 @@ print &ui_table_row($text{'file_owner'},
 print &ui_table_row($text{'file_group'},
 	&ui_opt_textbox("group", $_[0]->{'group'}, 20,
 			$text{'file_nocheck'}), 3);
+
+print &ui_table_row($text{'file_perms'},
+	&ui_opt_textbox("perms", $_[0]->{'perms'}, 4,
+			$text{'file_nocheck'}), 3);
 }
 
 sub parse_file_dialog
@@ -126,5 +144,6 @@ $_[0]->{'greater'} = $in{'greater'};
 $_[0]->{'lesser'} = $in{'lesser'};
 $_[0]->{'owner'} = $in{'owner_def'} ? undef : $in{'owner'};
 $_[0]->{'group'} = $in{'group_def'} ? undef : $in{'group'};
+$_[0]->{'perms'} = $in{'perms_def'} ? undef : $in{'perms'};
 }
 

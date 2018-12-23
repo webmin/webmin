@@ -261,6 +261,7 @@ file_owner=File owner must be
 file_group=File group must be
 file_nocheck=Anything
 file_perms=Octal permissions must be
+file_eperm=Files with wrong permissions : $1
 
 traffic_iface=Interface to monitor
 traffic_bytes=Maximum bytes/second
