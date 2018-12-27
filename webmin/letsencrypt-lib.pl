@@ -113,7 +113,7 @@ elsif ($mode eq "dns") {
 	# Make sure all the DNS zones exist
 	if ($wildcard && !$letsencrypt_cmd) {
 		return (0, "Wildcard hostname $wildcard can only be ".
-			   "validated when the native Let's Encrypt client ".
+			   "validated when the certbot Let's Encrypt client ".
 			   "is installed");
 		}
 	&foreign_require("bind8");
