@@ -82,6 +82,20 @@ else {
 		push(@leases, $lease);
 		}
 
+	# Find leases which have been obsoleted by a more recent one, even if
+	# they are still valid
+	my %already;
+	foreach my $l (reverse(@leases)) {
+		my $client = &find('client-hostname', $l->{'members'});
+		my $ch = $client ? $client->{'values'}->[0] : undef;
+		if ($already{$l->{'values'}->[0],$ch}++) {
+			$l->{'obsolete'} = 1;
+			}
+		}
+	if (!$in{'all'}) {
+		@leases = grep { !$_->{'obsolete'} } @leases;
+		}
+
 	# Show links to select mode, if not showing a single subnet
 	if (!$in{'network'}) {
 		@links = ( );
@@ -191,7 +205,8 @@ else {
 			local $mems = $lease->{'members'};
 			local $starts = &find('starts', $mems);
 			local $ends = &find('ends', $mems);
-			local $ht = $lease->{'expired'} ? "i" : "tt";
+			local $ht = $lease->{'expired'} ||
+				    $lease->{'obsolete'} ? "i" : "tt";
 			push(@cols, "<$ht>$lease->{'values'}->[0]</$ht>");
 			local $hard = &find('hardware', $mems);
 			push(@cols,$hard->{'values'}->[1] ?
