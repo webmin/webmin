@@ -3643,6 +3643,7 @@ if (!fork()) {
 close(INr);
 close(OUTw);
 local $indent = "&nbsp;" x 4;
+local $SIG{'PIPE'} = 'IGNORE';
 local @errs;
 foreach $line (split(/\n+/, $plainbody)) {
 	next if ($line !~ /\S/);
