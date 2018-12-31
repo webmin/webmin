@@ -21,6 +21,7 @@ right_procs=Running processes
 right_disk=Local disk space
 right_used=$2 used, $1 total
 right_used2=$2 used, $1 guaranteed, $3 burstable
+right_used3=$2 used, $3 cached, $1 total
 right_out=$1&nbsp;of&nbsp;$2
 right_fsfull=Warning! The $2 filesystem mounted at $1 has no free disk space!
 right_fsnearly=Warning! The $2 filesystem mounted at $1 has only $3 of free disk space

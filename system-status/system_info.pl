@@ -182,7 +182,17 @@ if (&show_section('load')) {
 # Memory usage
 if ($info->{'mem'} && &show_section('mem')) {
 	my @m = @{$info->{'mem'}};
-	if (@m && $m[0]) {
+	if (@m && $m[0] && $m[4]) {
+		# Show RAM total, used and cached
+		push(@table, { 'desc' => $text{'right_real'},
+			       'value' => &text('right_used3',
+					&nice_size($m[0]*1024),
+					&nice_size(($m[0]-$m[1])*1024),
+					&nice_size($m[4]*1024),),
+			       'chart' => [ $m[0], $m[0]-$m[1], $m[4] ] });
+		}
+	elsif (@m && $m[0]) {
+		# Show RAM total and used
 		push(@table, { 'desc' => $text{'right_real'},
 			       'value' => &text('right_used',
 					&nice_size($m[0]*1024),
