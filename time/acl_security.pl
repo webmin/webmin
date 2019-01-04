@@ -7,13 +7,13 @@ our (%text);
 sub acl_security_form
 {
 my ($o) = @_;
-print &ui_table_row(text{'acl_sys'},
+print &ui_table_row($text{'acl_sys'},
 	&ui_yesno_radio("sysdate", $o->{'sysdate'}, 0, 1));
-print &ui_table_row(text{'acl_hw'},
+print &ui_table_row($text{'acl_hw'},
 	&ui_yesno_radio("hwdate", $o->{'hwdate'}, 0, 1));
-print &ui_table_row(text{'acl_timezone'},
+print &ui_table_row($text{'acl_timezone'},
 	&ui_yesno_radio("timezone", $o->{'timezone'}));
-print &ui_table_row(text{'acl_ntp'},
+print &ui_table_row($text{'acl_ntp'},
 	&ui_yesno_radio("ntp", $o->{'ntp'}));
 }
 
