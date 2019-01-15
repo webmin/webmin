@@ -190,7 +190,11 @@ while(1) {
 	elsif ($arg->{'action'} eq 'tcpread') {
 		# Transfer data from a file over TCP connection
 		print STDERR "fastrpc: tcpread $arg->{'file'}\n" if ($gconfig{'rpcdebug'});
-		if (!open(FILE, $arg->{'file'})) {
+		if (-d $arg->{'file'}) {
+			$rawrv = &serialise_variable(
+				{ 'status' => 1, 'rv' => [ undef, "$arg->{'file'} is a directory" ] } );
+			}
+		elsif (!open(FILE, $arg->{'file'})) {
 			$rawrv = &serialise_variable(
 				{ 'status' => 1, 'rv' => [ undef, "Failed to open $arg->{'file'} : $!" ] } );
 			}
