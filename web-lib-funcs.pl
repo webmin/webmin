@@ -6757,7 +6757,8 @@ my $serv = ref($host) ? $host->{'host'} : $host;
 &open_socket($serv || "localhost", $rv->[1], TWRITE, \$error);
 return &$main::remote_error_handler("Failed to transfer file : $error")
 	if ($error);
-open(FILE, $localfile);
+open(FILE, $localfile) ||
+	return &$main::remote_error_handler("Failed to open $localfile : $!");
 while(read(FILE, $got, 1024) > 0) {
 	print TWRITE $got;
 	}
@@ -6794,7 +6795,8 @@ my $serv = ref($host) ? $host->{'host'} : $host;
 return &$main::remote_error_handler("Failed to transfer file : $error")
 	if ($error);
 my $got;
-open(FILE, ">$localfile");
+open(FILE, ">$localfile") ||
+	return &$main::remote_error_handler("Failed to open $localfile : $!");
 while(read(TREAD, $got, 1024) > 0) {
 	print FILE $got;
 	}
