@@ -73,7 +73,7 @@ sub get_paths {
             $base = '/';
         }
     }
-    @allowed_paths = &unique(@allowed_paths);
+    @allowed_paths = map { &simplify_path($_) } &unique(@allowed_paths);
     $path = $in{'path'} || '';
     $cwd = &simplify_path($base.$path);
 
