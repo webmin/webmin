@@ -74,7 +74,7 @@ sub get_ups_values
 {
 if (!scalar(@get_ups_cache)) {
 	local @rv;
-	open(SENS, "upsc ".quotemeta($_[0])." |");
+	open(SENS, "upsc ".quotemeta($_[0])." 2>/dev/null |");
 	while(<SENS>) {
 		if (/^(\S+):\s+(.*)/) {
 			push(@rv, { 'name' => $1,
