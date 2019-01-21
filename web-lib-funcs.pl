@@ -290,7 +290,7 @@ else {
 		}
 	if ($tries >= 10) {
 		my @st = lstat($tmp_dir);
-		&error("Failed to create temp directory $tmp_dir : uid=$st[4] mode=$st[2]");
+		&error("Failed to create temp directory $tmp_dir");
 		}
 	# If running as root, check parent dir (usually /tmp) to make sure it's
 	# world-writable and owned by root
