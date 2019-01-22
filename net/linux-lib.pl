@@ -32,7 +32,7 @@ if (&has_command("ip")) {
 			$ifc{'address'} = $1;
 			$ifc{'netmask'} = &prefix_to_mask("$3");
 			}
-		elsif ($l =~ /\sinet\s+([0-9\.]+)\/(\d+)/ && !$ifc{'address'}) {
+		elsif ($l =~ /\sinet\s+([0-9\.]+)\/(\d+)\s+brd\s+(\S+)\s+scope\s+global\s+(\S+)/ && $4 eq $ifc{'name'}) {
 			# Line like :
 			# inet 193.9.101.120/24 brd 193.9.101.255 scope global br0
 			$ifc{'address'} = $1;
@@ -71,9 +71,14 @@ if (&has_command("ip")) {
 		$ifc{'index'} = scalar(@rv);
 		push(@rv, \%ifc);
 
+		# Strip off the line for the primary IP, but only if there
+		# is one
+		if ($ifc{'address'}) {
+			$l =~ s/\sinet\s+([0-9\.]+)\s+peer// ||
+				$l =~ s/\sinet\s+([0-9\.]+)\/(\d+)//;
+			}
+
 		# Add extra IPs as fake virtual interfaces
-		$l =~ s/\sinet\s+([0-9\.]+)\s+peer// ||
-			$l =~ s/\sinet\s+([0-9\.]+)\/(\d+)//;
 		my $i = 0;
 		my $bn = $ifc{'name'};
 		while($l =~ s/\sinet\s+([0-9\.]+)\/(\d+).*?\Q$bn\E:(\d+)//) {
