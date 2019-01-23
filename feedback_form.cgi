@@ -89,5 +89,5 @@ print "<td><input type=file name=attach0></td>",
 print "</table></td></tr></table>\n";
 print "<input type=submit value='$text{'feedback_send'}'></form>\n";
 
-&ui_print_footer("/?cat=$minfo{'category'}", $text{'index'});
+&ui_print_footer("/", $text{'index'});
 

@@ -210,7 +210,7 @@ if ($sent) {
 			    "<tt>localhost</tt>"),"\n";
 		}
 	print "<p>\n";
-	&ui_print_footer("/?cat=$minfo{'category'}", $text{'index'});
+	&ui_print_footer("/", $text{'index'});
 
 	# Save settings in config
 	$gconfig{'feedback_name'} = $in{'name'};
