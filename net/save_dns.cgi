@@ -110,6 +110,13 @@ if (&foreign_installed("postfix") && $in{'hostname'} ne $old_hostname) {
 					    $in{'hostname'});
 		}
 
+	# Update postfix myhostname
+	$myhostname = &postfix::get_current_value("myhostname");
+	if ($myhostname eq $old_hostname) {
+		&postfix::set_current_value("myhostname",
+					    $in{'hostname'});
+		}
+
 	&postfix::unlock_postfix_files();
 	if (&postfix::is_postfix_running()) {
 		&postfix::reload_postfix();
