@@ -6917,7 +6917,7 @@ if ($serv->{'fast'} || !$sn) {
 		# read back the response
 		my $line = &read_http_connection($con);
 		$line =~ tr/\r\n//d;
-		if ($line =~ /^HTTP\/1\..\s+401\s+/) {
+		if ($line =~ /^HTTP\/1\..\s+40[13]\s+/) {
 			return &$main::remote_error_handler("Login to RPC server as $user rejected");
 			}
 		$line =~ /^HTTP\/1\..\s+200\s+/ ||
