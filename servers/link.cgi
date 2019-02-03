@@ -111,6 +111,17 @@ my $http_prot = $ENV{'HTTPS'} eq "ON" ? "https" : "http";
 			"Webmin-path: %s://%s:%d/%s/link.cgi%s\n",
 			$http_prot, $http_host, $http_port,
 			$module_name, $ENV{'PATH_INFO'}));
+if ($ENV{'HTTP_WEBMIN_PATH'}) {
+	&write_http_connection($con, sprintf(
+			"Complete-webmin-path: %s%s\n",
+			$ENV{'HTTP_WEBMIN_PATH'}));
+	}
+else {
+	&write_http_connection($con, sprintf(
+			"Complete-webmin-path: %s://%s:%d/%s/link.cgi%s\n",
+			$http_prot, $http_host, $http_port,
+			$module_name, $ENV{'PATH_INFO'}));
+	}
 my $cl = $ENV{'CONTENT_LENGTH'};
 &write_http_connection($con, "Content-length: $cl\r\n") if ($cl);
 &write_http_connection($con, "Content-type: $ENV{'CONTENT_TYPE'}\r\n")
