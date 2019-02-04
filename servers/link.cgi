@@ -104,8 +104,9 @@ else {
 	}
 my $http_prot = $ENV{'HTTPS'} eq "ON" ? "https" : "http";
 &write_http_connection($con, sprintf(
-			"Webmin-servers: %s://%s:%d/%s\n",
+			"Webmin-servers: %s://%s:%d%s/%s\n",
 			$http_prot, $http_host, $http_port,
+			$gconfig{'webprefix'},
 			$tconfig{'inframe'} ? "" : "$module_name/"));
 &write_http_connection($con, sprintf(
 			"Webmin-path: %s://%s:%d%s/%s/link.cgi%s\n",
