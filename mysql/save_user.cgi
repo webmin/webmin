@@ -57,11 +57,21 @@ else {
 			$in{'oldhost'}, $in{'olduser'});
 		}
 	&execute_sql_logged($master_db, 'flush privileges');
+
+	# Update the password using the correct syntax for the mysql version
+	$remote_mysql_version = &get_remote_mysql_version();
 	if ($in{'mysqlpass_mode'} == 0) {
 		$esc = &escapestr($in{'mysqlpass'});
-		&execute_sql_logged($master_db,
-			"set password for '".$user."'\@'".$host."' = ".
-			"$password_func('$esc')");
+		if ($remote_mysql_version >= 8) {
+			&execute_sql_logged($master_db,
+				"set password for '".$user."'\@'".$host."' = ".
+				"'$esc'");
+			}
+		else {
+			&execute_sql_logged($master_db,
+				"set password for '".$user."'\@'".$host."' = ".
+				"$password_func('$esc')");
+			}
 		}
 	elsif ($in{'mysqlpass_mode'} == 2) {
 		&execute_sql_logged($master_db,
@@ -71,7 +81,6 @@ else {
 		}
 
 	# Save various limits
-	$remote_mysql_version = &get_remote_mysql_version();
 	foreach $f ('max_user_connections', 'max_connections',
 		    'max_questions', 'max_updates') {
 		next if ($remote_mysql_version < 5 || !defined($in{$f.'_def'}));
