@@ -1468,13 +1468,6 @@ if (!$main::error_must_die) {
 	}
 &load_theme_library();
 if ($main::error_must_die) {
-	if ($gconfig{'error_stack'}) {
-		print STDERR "Error: ",$msg,"\n";
-		for(my $i=0; my @stack = caller($i); $i++) {
-			print STDERR "File: $stack[1] Line: $stack[2] ",
-				     "Function: $stack[3]\n";
-			}
-		}
 	die @_;
 	}
 &call_error_handlers();
