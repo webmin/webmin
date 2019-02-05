@@ -2608,7 +2608,7 @@ else {
 	print DEBUG "handle_request: outputting file $full\n";
 	$gzfile = $full.".gz";
 	$gzipped = 0;
-	if ($config{'gzip'} ne '0' && -r $gzfile && $acceptenc{'gzip'}) {
+	if (!length($config{'gzip'}) && -r $gzfile && $acceptenc{'gzip'}) {
 		# Using gzipped version
 		@stopen = stat($gzfile);
 		if ($stopen[9] >= $stfull[9] && open(FILE, $gzfile)) {
