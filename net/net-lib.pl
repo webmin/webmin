@@ -141,9 +141,11 @@ return join(".", (hex($1), hex($2), hex($3), hex($4)));
 # Returns HTML for a javascript button for choosing an interface or interfaces
 sub interfaces_chooser_button
 {
-  local $form = @_ > 2 ? $_[2] : 0;
-  local $w = $_[1] ? 500 : 300;
-  return "<input type=button onClick='ifield = document.forms[$form].$_[0]; chooser = window.open(\"$gconfig{'webprefix'}/net/interface_chooser.cgi?multi=$_[1]&interface=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=$w,height=200\"); chooser.ifield = ifield' value=\"...\">\n";
+return &theme_interfaces_chooser_button(@_)
+	if (defined(&theme_interfaces_chooser_button));
+local $form = @_ > 2 ? $_[2] : 0;
+local $w = $_[1] ? 500 : 300;
+return "<input type=button onClick='ifield = document.forms[$form].$_[0]; chooser = window.open(\"$gconfig{'webprefix'}/net/interface_chooser.cgi?multi=$_[1]&interface=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=$w,height=200\"); chooser.ifield = ifield' value=\"...\">\n";
 }
 
 # prefix_to_mask(prefix)
