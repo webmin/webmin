@@ -5,83 +5,71 @@ require 'net-lib.pl';
 # Output HTML for editing security options for the net module
 sub acl_security_form
 {
-print "<tr> <td valign=top><b>$text{'acl_ifcs'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=ifcs value=2 %s> $text{'yes'}\n",
-	$_[0]->{'ifcs'} == 2 ? "checked" : "";
-printf "<input type=radio name=ifcs value=1 %s> $text{'acl_view'}\n",
-	$_[0]->{'ifcs'} == 1 ? "checked" : "";
-printf "<input type=radio name=ifcs value=0 %s> $text{'no'}<br>\n",
-	$_[0]->{'ifcs'} ? "" : "checked";
-printf "<input type=radio name=ifcs value=3 %s> $text{'acl_ifcs_only'}\n",
-	$_[0]->{'ifcs'} == 3 ? "checked" : "";
-print "<input name=interfaces3 size=30 value='".$_[0]->{'interfaces'}."'> ",
-	&interfaces_chooser_button("interfaces", 1),"<br>\n";
-printf "<input type=radio name=ifcs value=4 %s> $text{'acl_ifcs_ex'}\n",
-	$_[0]->{'ifcs'} == 4 ? "checked" : "";
-print "<input name=interfaces4 size=30 value='".$_[0]->{'interfaces'}."'> ",
-	&interfaces_chooser_button("interfaces", 1),"</td> </tr>\n";
+print &ui_table_row($text{'acl_ifcs'},
+	&ui_radio_table("ifcs", $_[0]->{'ifcs'},
+		[ [ 2, $text{'yes'} ],
+		  [ 1, $text{'acl_view'} ],
+		  [ 0, $text{'no'} ],
+		  [ 3, $text{'acl_ifcs_only'},
+		    &ui_textbox("interfaces3", $_[0]->{'interfaces'}, 30)." ".
+		    &interfaces_chooser_button("interfaces3", 1) ],
+		  [ 4, $text{'acl_ifcs_ex'},
+		    &ui_textbox("interfaces4", $_[0]->{'interfaces'}, 30)." ".
+		    &interfaces_chooser_button("interfaces4", 1) ] ]), 3);
 
-print "<tr> <td><b>$text{'acl_bootonly'}</b></td>\n";
-print "<td>",&ui_radio("bootonly", $_[0]->{'bootonly'},
-		 [ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]),"</td>\n";
+print &ui_table_row($text{'acl_bootonly'},
+	&ui_radio("bootonly", $_[0]->{'bootonly'},
+		 [ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]));
 
-print "<td><b>$text{'acl_netmask'}</b></td>\n";
-print "<td>",&ui_radio("netmask", $_[0]->{'netmask'},
-		 [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]),"</td> </tr>\n";
+print &ui_table_row($text{'acl_netmask'},
+	&ui_radio("netmask", $_[0]->{'netmask'},
+		 [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 
-print "<tr> <td><b>$text{'acl_broadcast'}</b></td>\n";
-print "<td>",&ui_radio("broadcast", $_[0]->{'broadcast'},
-		 [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]),"</td>\n";
+print &ui_table_row($text{'acl_broadcast'},
+	&ui_radio("broadcast", $_[0]->{'broadcast'},
+		 [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 
-print "<td><b>$text{'acl_mtu'}</b></td>\n";
-print "<td>",&ui_radio("mtu", $_[0]->{'mtu'},
-		 [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]),"</td> </tr>\n";
+print &ui_table_row($text{'acl_mtu'},
+	&ui_radio("mtu", $_[0]->{'mtu'},
+		 [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 
-print "<tr> <td><b>$text{'acl_up'}</b></td>\n";
-print "<td>",&ui_radio("up", $_[0]->{'up'},
-		 [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]),"</td>\n";
+print &ui_table_row($text{'acl_up'},
+	&ui_radio("up", $_[0]->{'up'},
+		 [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 
-print "<td><b>$text{'acl_virt'}</b></td>\n";
-print "<td>",&ui_radio("virt", $_[0]->{'virt'},
-		 [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]),"</td> </tr>\n";
+print &ui_table_row($text{'acl_virt'},
+	&ui_radio("virt", $_[0]->{'virt'},
+		 [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 
-print "<tr> <td><b>$text{'acl_delete'}</b></td>\n";
-print "<td>",&ui_radio("delete", $_[0]->{'delete'},
-		 [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]),"</td>\n";
+print &ui_table_row($text{'acl_delete'},
+	&ui_radio("delete", $_[0]->{'delete'},
+		 [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 
-print "<td><b>$text{'acl_hide'}</b></td>\n";
-print "<td>",&ui_radio("hide", $_[0]->{'hide'},
-		 [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]),"</td> </tr>\n";
+print &ui_table_row($text{'acl_hide'},
+	&ui_radio("hide", $_[0]->{'hide'},
+		 [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 
-print "<tr> <td><b>$text{'acl_routes'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=routes value=2 %s> $text{'yes'}\n",
-	$_[0]->{'routes'} == 2 ? "checked" : "";
-printf "<input type=radio name=routes value=1 %s> $text{'acl_view'}\n",
-	$_[0]->{'routes'} == 1 ? "checked" : "";
-printf "<input type=radio name=routes value=0 %s> $text{'no'}</td> </tr>\n",
-	$_[0]->{'routes'} ? "" : "checked";
+print &ui_table_row($text{'acl_routes'},
+	&ui_radio("routes", $_[0]->{'routes'},
+		  [ [ 2, $text{'yes'} ],
+		    [ 1, $text{'acl_view'} ],
+		    [ 0, $text{'no'} ] ]));
 
-print "<tr> <td><b>$text{'acl_dns'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=dns value=2 %s> $text{'yes'}\n",
-	$_[0]->{'dns'} == 2 ? "checked" : "";
-printf "<input type=radio name=dns value=1 %s> $text{'acl_view'}\n",
-	$_[0]->{'dns'} == 1 ? "checked" : "";
-printf "<input type=radio name=dns value=0 %s> $text{'no'}</td> </tr>\n",
-	$_[0]->{'dns'} ? "" : "checked";
+print &ui_table_row($text{'acl_dns'},
+	&ui_radio("dns", $_[0]->{'dns'},
+		  [ [ 2, $text{'yes'} ],
+		    [ 1, $text{'acl_view'} ],
+		    [ 0, $text{'no'} ] ]));
 
-print "<tr> <td><b>$text{'acl_hosts'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=hosts value=2 %s> $text{'yes'}\n",
-	$_[0]->{'hosts'} == 2 ? "checked" : "";
-printf "<input type=radio name=hosts value=1 %s> $text{'acl_view'}\n",
-	$_[0]->{'hosts'} == 1 ? "checked" : "";
-printf "<input type=radio name=hosts value=0 %s> $text{'no'}</td> </tr>\n",
-	$_[0]->{'hosts'} ? "" : "checked";
+print &ui_table_row($text{'acl_hosts'},
+	&ui_radio("hosts", $_[0]->{'hosts'},
+                  [ [ 2, $text{'yes'} ],
+                    [ 1, $text{'acl_view'} ],
+                    [ 0, $text{'no'} ] ]));
 
-print "<tr> <td><b>$text{'acl_apply'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=apply value=2 %s> $text{'yes'}\n",
-	$_[0]->{'apply'} == 1 ? "checked" : "";
-printf "<input type=radio name=apply value=0 %s> $text{'no'}</td> </tr>\n",
-	$_[0]->{'apply'} ? "" : "checked";
+print &ui_table_row($text{'acl_apply'},
+	&ui_radio("apply", $_[0]->{'apply'},
+		 [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 }
 
 # acl_security_save(&options)
