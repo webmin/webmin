@@ -2998,6 +2998,7 @@ if (&has_ndc() != 2 || $out && $out =~ /connect\s+failed/i) {
 		$ex = $?;
 		}
 	}
+sleep(1);
 return wantarray ? ($out, !$ex) : $out;
 }
 
