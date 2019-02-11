@@ -216,6 +216,8 @@ acl_switch=Can switch to other users?
 acl_times=Can change allowed login times?
 acl_pass=Can change password restrictions?
 acl_sql=Can configure user and group database?
+acl_rbacenable=Can setup RBAC?
+acl_twofactor=Can configure Two-Factor Authentication?
 
 log_modify=Modified Webmin user $1
 log_rename=Renamed Webmin user $1 to $2
