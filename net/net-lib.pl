@@ -141,6 +141,7 @@ return join(".", (hex($1), hex($2), hex($3), hex($4)));
 # Returns HTML for a javascript button for choosing an interface or interfaces
 sub interfaces_chooser_button
 {
+&load_theme_library();
 return &theme_interfaces_chooser_button(@_)
 	if (defined(&theme_interfaces_chooser_button));
 local $form = @_ > 2 ? $_[2] : 0;
