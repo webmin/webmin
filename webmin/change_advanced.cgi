@@ -64,6 +64,14 @@ if (defined($in{'sclass'})) {
 	$gconfig{'sprio'} = $in{'sprio'};
 	}
 
+# Save HTTP headers
+@hl = ( );
+foreach my $l (split(/\r?\n/, $in{'headers'})) {
+	$l =~ /^\S+:\s+\S+$/ || &error($text{'advanced_eheader'});
+	push(@hl, $l);
+	}
+$gconfig{'extra_headers'} = join("\t", @hl);
+
 &lock_file("$config_directory/config");
 &write_file("$config_directory/config", \%gconfig);
 &unlock_file("$config_directory/config");

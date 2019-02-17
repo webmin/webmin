@@ -857,6 +857,11 @@ if ($pragma_no_cache || $gconfig{'pragma_no_cache'}) {
 	print "Cache-Control: no-store, no-cache, must-revalidate\n";
 	print "Cache-Control: post-check=0, pre-check=0\n";
 	}
+if ($gconfig{'extra_headers'}) {
+	foreach my $l (split(/\t+/, $gconfig{'extra_headers'})) {
+		print $l."\n";
+		}
+	}
 if (!$gconfig{'no_frame_options'}) {
 	print "X-Frame-Options: SAMEORIGIN\n";
 	}

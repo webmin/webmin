@@ -887,6 +887,8 @@ advanced_redir=URL format for redirects
 advanced_redir1=Path only
 advanced_redir0=Protocol, host, port and path
 advanced_listdir=List directories without an index file?
+advanced_headers=Extra HTTP headers
+advanced_eheader=Headers must be formatted like <tt>Header: Value</tt>
 
 syslog_errorlog=Webmin error log
 

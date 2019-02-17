@@ -98,6 +98,11 @@ if (&foreign_check("proc")) {
 		}
 	}
 
+# Extra HTTP headers
+print &ui_table_row($text{'advanced_headers'},
+	&ui_textarea("headers",
+		join("\n", split(/\t/, $gconfig{'extra_headers'})), 10, 80));
+
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 
