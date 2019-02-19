@@ -952,18 +952,20 @@ return $fn;
 sub get_dnskey_record
 {
 my ($z, $recs) = @_;
-my @rv;
 my $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
-if (!$recs) {
-	# Need to get zone file and thus records
-	my $fn = &get_zone_file($z);
-	$recs = [ &read_zone_file($fn, $dom) ];
-	}
-# Find the record
-foreach my $r (@$recs) {
-	if ($r->{'type'} eq 'DNSKEY' &&
-	    $r->{'name'} eq $dom.'.') {
-		push(@rv, $r);
+my @rv;
+if ($dom) {
+	if (!$recs) {
+		# Need to get zone file and thus records
+		my $fn = &get_zone_file($z);
+		$recs = [ &read_zone_file($fn, $dom) ];
+		}
+	# Find the record
+	foreach my $r (@$recs) {
+		if ($r->{'type'} eq 'DNSKEY' &&
+		    $r->{'name'} eq $dom.'.') {
+			push(@rv, $r);
+			}
 		}
 	}
 return wantarray ? @rv : $rv[0];
