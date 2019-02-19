@@ -13,7 +13,7 @@ print &ui_table_start($text{'newdb_header'}, undef, 2);
 print &ui_table_row($text{'newdb_db'},
 	&ui_textbox("db", undef, 20));
 
-if ($mysql_version >= 4.1) {
+if (&compare_version_numbers($mysql_version, "4.1") >= 0) {
 	# Character set option
 	@charsets = &list_character_sets();
 	%csmap = map { $_->[0], $_->[1] } @charsets;

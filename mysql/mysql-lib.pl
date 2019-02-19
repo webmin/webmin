@@ -75,16 +75,22 @@ use DBI;
 EOF
 }
 
-@mysql_set_variables = ( $mysql_version >= 5.5 ? "key_buffer_size"
-					       : "key_buffer",
-			 $mysql_version >= 5.5 ? "sort_buffer_size"
-					       : "sort_buffer",
-			 "net_buffer_length" );
-@mysql_number_variables = ( $mysql_version >= 5.6 ? "table_open_cache"
-						  : "table_cache",
-			    "max_connections" );
+if (&compare_version_numbers($mysql_version, "5.5") >= 0) {
+	@mysql_set_variables = ( "key_buffer_size", "sort_buffer_size",
+				 "net_buffer_length" );
+	}
+else {
+	@mysql_set_variables = ( "key_buffer", "sort_buffer",
+				 "net_buffer_length" );
+	}
+if (&compare_version_numbers($mysql_version, "5.6") >= 0) {
+	@mysql_number_variables = ( "table_open_cache", "max_connections" );
+	}
+else {
+	@mysql_number_variables = ( "table_cache", "max_connections" );
+	}
 @mysql_byte_variables = ( "query_cache_size", "max_allowed_packet" );
-if ($mysql_version >= 5) {
+if (&compare_version_numbers($mysql_version, "5") >= 0) {
 	push(@mysql_byte_variables, "myisam_sort_buffer_size");
 	}
 else {
@@ -109,7 +115,8 @@ return ($sock ? " -S $sock" : "").
        ($port ? " -P $port" : "").
        ($login ? " -u ".quotemeta($login) : "").
        (&supports_env_pass($unix) ? "" :    # Password comes from environment
-        $pass && $mysql_version >= 4.1 ? " --password=".quotemeta($pass) :
+        $pass && &compare_version_numbers($mysql_version, "4.1") >= 0 ?
+	" --password=".quotemeta($pass) :
         $pass ? " -p".quotemeta($pass) : "");
 }
 
@@ -639,16 +646,7 @@ return $rv;
 # Returns 1 if running mysql version 3.23.6 or later
 sub supports_quoting
 {
-if ($mysql_version =~ /^(\d+)\.(\d+)\.(\d+)$/ &&
-    ($1 > 3 || ($1 == 3 && $2 > 23) || ($1 == 3 && $2 == 23 && $3 >= 6))) {
-	return 1;
-	}
-elsif ($mysql_version > 4) {
-	return 1;
-	}
-else {
-	return 0;
-	}
+return &compare_version_numbers($mysql_version, "3.23.6") >= 0;
 }
 
 # supports_mysqldump_events()
@@ -656,12 +654,7 @@ else {
 # the events flag
 sub supports_mysqldump_events
 {
-if ($mysql_version >= 6 ||
-    $mysql_version =~ /^(\d+)\.(\d+)/ && $1 == 5 && $2 >= 2 ||
-    $mysql_version =~ /^(\d+)\.(\d+)\.(\d+)/ && $1 == 5 && $2 == 1 && $3 >= 8) {
-	return 1;
-	}
-return 0;
+return &compare_version_numbers($mysql_version, "5.1.8") >= 0;
 }
 
 # supports_routines()
@@ -676,31 +669,21 @@ return $out =~ /--routines/ ? 1 : 0;
 # Returns 1 if this MySQL install supports views
 sub supports_views
 {
-return $mysql_version >= 5;
+return &compare_version_numbers($mysql_version, "5") >= 0;
 }
 
 # supports_variables()
 # Returns 1 if running mysql version 4.0.3 or later
 sub supports_variables
 {
-if ($mysql_version =~ /^(\d+)\.(\d+)\.(\d+)$/ &&
-    ($1 > 4 || ($1 == 4 && $2 > 0) || ($1 == 4 && $2 == 0 && $3 >= 3))) {
-	return 1;
-	}
-elsif ($mysql_version > 4) {
-	return 1;
-	}
-else {
-	return 0;
-	}
+return &compare_version_numbers($mysql_version, "4.0.3") >= 0;
 }
 
 # supports_hosts()
 # Returns 1 if the hosts table exists
 sub supports_hosts
 {
-return $mysql_version < 5.7 ? 1 :
-       $mysql_version =~ /^5\.7\.(\d+)/ && $1 < 16 ? 1 : 0;
+return &compare_version_numbers($mysql_version, "5.7.16") < 0;
 }
 
 # supports_env_pass([run-as-user])
@@ -708,7 +691,7 @@ return $mysql_version < 5.7 ? 1 :
 sub supports_env_pass
 {
 local ($user) = @_;
-if ($mysql_version >= 4.1 && !$config{'nopwd'}) {
+if (&compare_version_numbers($mysql_version, "4.1") >= 0 && !$config{'nopwd'}) {
 	# Theortically possible .. but don't do this if ~/.my.cnf contains
 	# a [client] block with password= in it
 	my @uinfo = $user ? getpwnam($user) : getpwuid($<);
@@ -783,7 +766,7 @@ return $_[0]->{'type'} =~ /(text|blob)$/i;
 # get_mysql_version(&out)
 # Returns a version number, undef if one cannot be found, or -1 for a .so
 # problem. This is the version of the *local* mysql command, not necessarily
-# the remote server.
+# the remote server. Maybe include the suffix -MariaDB.
 sub get_mysql_version
 {
 local $out = &backquote_command("\"$config{'mysql'}\" -V 2>&1");
@@ -791,7 +774,7 @@ ${$_[0]} = $out if ($_[0]);
 if ($out =~ /lib\S+\.so/) {
 	return -1;
 	}
-elsif ($out =~ /(distrib|Ver)\s+((3|4|5|6|7|8|9|10)\.[0-9\.]*)/i) {
+elsif ($out =~ /(distrib|Ver)\s+((3|4|5|6|7|8|9|10)\.[0-9\.]*\-[a-z0-9]+)/i) {
 	return $2;
 	}
 else {
@@ -1322,7 +1305,7 @@ sub list_character_sets
 {
 local @rv;
 local $db = $_[0] || $master_db;
-if (&get_remote_mysql_version() < 4.1) {
+if (&compare_version_numbers(&get_remote_mysql_version(), "4.1") < 0) {
 	local $d = &execute_sql($db, "show variables like 'character_sets'");
 	@rv = map { [ $_, $_ ] } split(/\s+/, $d->{'data'}->[0]->[1]);
 	}
@@ -1340,7 +1323,7 @@ sub list_collation_orders
 {
 local @rv;
 local $db = $_[0] || $master_db;
-if (&get_remote_mysql_version() >= 5) {
+if (&compare_version_numbers(&get_remote_mysql_version(), "5") >= 0) {
 	local $d = &execute_sql($db, "show collation");
 	@rv = map { [ $_->[0], $_->[1] ] } @{$d->{'data'}};
 	}
@@ -1457,7 +1440,7 @@ eval {
 	$main::error_must_die = 1;
 	local $d = &execute_sql($master_db, "show variables like 'gtid_mode'");
 	if (@{$d->{'data'}} && uc($d->{'data'}->[0]->[1]) eq 'ON' &&
-	    $mysql_version >= 5.6) {
+	    &compare_version_numbers($mysql_version, "5.6") >= 0) {
 		# Add flag to support GTIDs
 		$gtidsql = "--set-gtid-purged=OFF";
 		}
