@@ -11,7 +11,7 @@ chop($v = `cat $dir/version`);
 print "Copying $dir to /opt/webmin ..\n";
 system("rm -rf /opt/webmin");
 mkdir("/opt/webmin", 0755);
-system("cd $dir ; tar cf - . | (cd /opt/webmin ; tar xf -)");
+system("cd $dir && /opt/csw/bin/gtar cf - . | (cd /opt/webmin ; /opt/csw/bin/gtar xf -)");
 open(MODE, ">/opt/webmin/install-type");
 print MODE "solaris-pkg\n";
 close(MODE);
