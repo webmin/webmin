@@ -119,7 +119,7 @@ if ($in{'format'}) {
 	}
 else {
 	if (!open(FILE, "<", $p)) {
-		# Unix permissions prevent access
+		# Unix permissions prevent access, or file doesn't exist
 		&error_exit(&text('view_eopen', $p, $!));
 		}
 
