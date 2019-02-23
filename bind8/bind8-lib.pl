@@ -4208,8 +4208,8 @@ foreach my $z (&list_zone_names()) {
 			next if ($r->{'values'}->[4] !~ /^(\d\d\d\d)(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)/);
 			eval {
 				$e = timegm($6, $5, $4, $3, $2-1, $1-1900);
-				last;
-				}
+				};
+			last if ($e);
 			}
 		$cache{$z->{'name'}} = "$st[9] $e";
 		}
