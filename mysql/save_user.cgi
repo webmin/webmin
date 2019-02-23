@@ -59,10 +59,13 @@ else {
 	&execute_sql_logged($master_db, 'flush privileges');
 
 	# Update the password using the correct syntax for the mysql version
-	$remote_mysql_version = &get_remote_mysql_version();
+	($ver, $variant) = &get_remote_mysql_variant();
 	if ($in{'mysqlpass_mode'} == 0) {
 		$esc = &escapestr($in{'mysqlpass'});
-		if ($remote_mysql_version >= 8) {
+		if ($variant eq "mysql" &&
+		      &compare_version_numbers($ver, "8") >= 0 ||
+		    $variant eq "mariadb" &&
+		      &compare_version_numbers($ver, "10.2") >= 0) {
 			&execute_sql_logged($master_db,
 				"set password for '".$user."'\@'".$host."' = ".
 				"'$esc'");
@@ -83,7 +86,8 @@ else {
 	# Save various limits
 	foreach $f ('max_user_connections', 'max_connections',
 		    'max_questions', 'max_updates') {
-		next if ($remote_mysql_version < 5 || !defined($in{$f.'_def'}));
+		next if (&compare_version_numbers($ver, 5) < 0 ||
+			 !defined($in{$f.'_def'}));
 		$in{$f.'_def'} || $in{$f} =~ /^\d+$/ ||
 		       &error($text{'user_e'.$f});
 		&execute_sql_logged($master_db,
@@ -93,7 +97,8 @@ else {
 		}
 
 	# Set SSL fields
-	if ($remote_mysql_version >= 5 && defined($in{'ssl_type'}) &&
+	if (&compare_version_numbers($ver, 5) >= 0 &&
+	    defined($in{'ssl_type'}) &&
 	    (!$in{'new'} || $in{'ssl_type'} || $in{'ssl_cipher'})) {
 		&execute_sql_logged($master_db,
 			"update user set ssl_type = ? ".

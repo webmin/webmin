@@ -30,8 +30,11 @@ if ($config{'sync_create'}) {
 	&execute_sql_logged($master_db, 'flush privileges');
 	if ($user->{'passmode'} == 3) {
 		$esc = &escapestr($user->{'plainpass'});
-		$remote_mysql_version = &get_remote_mysql_version();
-		if ($remote_mysql_version >= 8) {
+		($ver, $variant) = &get_remote_mysql_variant();
+		if ($variant eq "mysql" &&
+		      &compare_version_numbers($ver, "8") >= 0 ||
+		    $variant eq "mariadb" &&
+		      &compare_version_numbers($ver, "10.2") >= 0) {
 			&execute_sql_logged($master_db,
 				"set password for '".$user->{'user'}."'\@'".
 				$config{'sync_host'}."' = '$esc'");

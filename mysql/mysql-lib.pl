@@ -794,6 +794,23 @@ return -1 if (!@{$data->{'data'}});
 return $data->{'data'}->[0]->[0];
 }
 
+# get_remote_mysql_variant()
+# Like get_remote_mysql_version, but returns a version number and variant
+sub get_remote_mysql_variant
+{
+my $rv = &get_remote_mysql_version();
+return ($rv) if ($rv <= 0);
+my $variant = "mysql";
+if ($rv =~ /^([0-9\.]+)\-(.*)/) {
+	$rv = $1;
+	$variant = $2;
+	if ($variant =~ /mariadb/i) {
+		$variant = "mariadb";
+		}
+	}
+return ($rv, $variant);
+}
+
 # save_mysql_version([number])
 # Update the saved local MySQL version number
 sub save_mysql_version
