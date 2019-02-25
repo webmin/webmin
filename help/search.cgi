@@ -48,18 +48,17 @@ foreach $m (@mods) {
 # Display the results
 if (@match) {
 	print "<b>",&text('search_results', "<tt>$terms</tt>"),"</b><p>\n";
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'search_page'}</b></td> ",
-	      "<td><b>$text{'search_mod'}</b></td> ",
-	      "<td><b>$text{'search_line'}</b></td> </tr>\n";
+	print &ui_columns_start([ $text{'search_page'},
+				  $text{'search_mod'},
+				  $text{'search_line'} ]);
 	foreach $m (@match) {
-		print "<tr $cb>\n";
-		print "<td>",&hlink($m->[3], $m->[2], $m->[0]),"</td>\n";
-		print "<td>$m->[1]</td>\n";
-		print "<td>$m->[4]</td>\n";
-		print "</tr>\n";
+		print &ui_columns_row([
+			&hlink($m->[3], $m->[2], $m->[0]),
+			$m->[1],
+			$m->[4],
+			]);
 		}
-	print "</table><p>\n";
+	print &ui_columns_end();
 	}
 else {
 	print "<p><b>$text{'search_none'}</b> <p>\n";
