@@ -22,7 +22,7 @@ else {
 ($terms = $in{'terms'}) =~ s/\\/\\\\/g;
 foreach $m (@mods) {
 	local %minfo = &get_module_info($m);
-	local $dir = "../$m/help";
+	local $dir = &module_root_directory($m)."/help";
 	local @pfx;
 	opendir(DIR, $dir);
 	while($f = readdir(DIR)) {
@@ -30,11 +30,8 @@ foreach $m (@mods) {
 		}
 	closedir(DIR);
 	foreach $p (&unique(@pfx)) {
-		local $file = &help_file($dir, $p);
-		open(HELP, $file);
-		local @st = stat($file);
-		read(HELP, $help, $st[7]);
-		close(HELP);
+		local $file = &help_file($m, $p);
+		local $help = &read_file_contents($file);
 		if ($help =~ /<header>([^<]+)<\/header>/) {
 			$header = $1;
 			}
