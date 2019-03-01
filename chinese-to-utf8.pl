@@ -161,7 +161,7 @@ foreach $m (@modules) {
 			%tminfo = ( );
 			foreach $k (keys %minfo) {
 				($tk = $k) =~ s/$l$/$l.UTF-8/;
-				$tinfo{$tk} = &DefaultToUTF8($minfo{$k});
+				$tminfo{$tk} = &DefaultToUTF8($minfo{$k});
 				}
 			&write_file_diff("$m/module.info.$l.UTF-8", \%tminfo);
 			}
