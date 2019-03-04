@@ -12,6 +12,7 @@ elsif (&has_command("dnf")) {
 	}
 
 $yum_command = &has_command("dnf") || &has_command("yum") || "yum";
+$yum_repos_dir = "/etc/yum.repos.d";
 
 sub list_update_system_commands
 {
@@ -348,6 +349,58 @@ while(<CONF>) {
 	}
 close(CONF);
 return \@rv;
+}
+
+# list_package_repos()
+# Returns a list of configured repositories
+sub list_package_repos
+{
+my @rv;
+
+# Parse the raw repo files
+my $repo;
+foreach my $f (glob("$yum_repos_dir/*.repo")) {
+	my $lref = &read_file_lines($f, 1);
+	my $lnum = 0;
+	foreach my $l (@$lref) {
+		$l =~ s/#.*$//;
+		if ($l =~ /^\[(\S+)\]/) {
+			# Start of a new repo
+			$repo = { 'file' => $f,
+				  'line' => $lnum,
+				  'eline' => $lnum,
+				  'id' => $1,
+				};
+			push(@rv, $repo);
+			}
+		elsif ($l =~ /^([^= ]+)=(.*)$/ && $repo) {
+			# Line in a repo
+			$repo->{'raw'}->{$1} = $2;
+			$repo->{'eline'} = $lnum;
+			}
+		$lnum++;
+		}
+	}
+
+# Extract common information
+foreach my $repo (@rv) {
+	my $name = $repo->{'raw'}->{'name'};
+	$name =~ s/\s*-.*//;
+	$name =~ s/\s*\$[a-z0-9]+//gi;
+	$repo->{'name'} = $repo->{'id'}." (".$name.")";
+	$repo->{'url'} = $repo->{'raw'}->{'baseurl'};
+	$repo->{'enabled'} = $repo->{'raw'}->{'enabled'};
+	}
+
+return @rv;
+}
+
+sub create_package_repo
+{
+}
+
+sub delete_package_repo
+{
 }
 
 1;

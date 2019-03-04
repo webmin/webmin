@@ -45,6 +45,17 @@ index_manynew=There are $1 packages available for installation. Use the search b
 index_search=Find packages matching:
 index_searchok=Search
 index_clear=Show All
+index_tabpkgs=Package Updates
+index_tabscheds=Scheduled Upgrades
+index_tabsrepos=Package Repositories
+index_scheddesc=This form can be used to automatically install package updates on a regular schedule.
+index_reposdesc=This page allows you to configure which respositories will be used for new or updated packages.
+index_reposname=Repository name
+index_reposenabled=Enabled?
+index_reposurl=Package URL
+index_reposdisable=Disable Repositories
+index_reposenable=Enable Repositories
+index_reposdelete=Delete Repositories
 
 update_title=Update Packages
 update_title2=Install Packages
