@@ -4,7 +4,6 @@ index_mods=Modules to search
 index_all=All
 index_sel=Selected modules ..
 index_search=Search
-index_reset=Reset
 index_header=Global Webmin help search
 index_return=search form
 
