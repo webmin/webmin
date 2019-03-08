@@ -495,4 +495,8 @@ freebsd_edevfile=The device file '$1' does not exist
 cswap_file=The swap file $1 does not exist.
 cswap_size=Create and mount a swap file with size
 
+acl_sysinfo=Show available disk data on Dashboard?
+sysinfo_total=Total
+sysinfo_dev=Device ID
+
 __norefs=1
