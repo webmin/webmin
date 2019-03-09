@@ -9,8 +9,9 @@ sub list_system_info
     }
 
     my @disk_space = defined(&mount::local_disk_space) ? mount::local_disk_space() : ();
-   	my $desc = ucwords($text{'edit_usage'});
+    my $desc = ucwords($text{'edit_usage'});
     my $html;
+    my $open = 0;
     if (@disk_space) {
         $html = ui_columns_start(
                                  [ucwords($text{'index_dir'}), ucwords($text{'index_type'}),
@@ -28,18 +29,31 @@ sub list_system_info
                     my $free         = $disk->{'free'};
                     my $free_nice    = nice_size($disk->{'free'});
                     my $free_percent = int(($total - $free) / $total * 100);
-                    $html .= ui_columns_row([$dir, $type, $free_percent . "% ($free_nice)", $total_nice, $dev_id,]);
+
+                    if ($free_percent > 85) {
+                        $open = 1;
+                    }
+                    
+                    my $free_percent_html;
+                    if ($free_percent < 50) {
+                        $free_percent_html = ui_text_type("$free_percent%", 'success');
+                    } elsif ($free_percent <= 85) {
+                        $free_percent_html = ui_text_type("$free_percent%", 'warn');
+                    } else {
+                        $free_percent_html = ui_text_type("$free_percent%", 'danger');
+                    }
+                    $html .= ui_columns_row([$dir, $type, $free_percent_html . " ($free_nice)", $total_nice, $dev_id,]);
                 }
             }
         }
         $html .= ui_columns_end();
     }
     return (
-            { 'type'     => 'html',
-              'desc'     => $desc,
-              'open'     => 1,
-              'id'       => $module_name . '_disks_info',
-              'html'     => $html
+            { 'type' => 'html',
+              'desc' => $desc,
+              'open' => $open,
+              'id'   => $module_name . '_disks_info',
+              'html' => $html
             });
 }
 
