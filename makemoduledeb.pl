@@ -126,12 +126,12 @@ if (read_file("$source_dir/module.info", \%minfo) && exists($minfo{'desc'})) {
 	}
 	if ($minfo{'usermin'} && (!$minfo{'webmin'} || $force_usermin)) {
 		$prefix = "usermin-";
-		$desc = "Usermin module for '$minfo{'desc'}'";
+		$desc = "Usermin module $minfo{'desc'}";
 		$product = "usermin";
 		}
 	else {
 		$prefix = "webmin-";
-		$desc = "Webmin module for '$minfo{'desc'}'";
+		$desc = "Webmin module $minfo{'desc'}";
 		$product = "webmin";
 		}
 	$iver = $minfo{'version'};
@@ -140,12 +140,12 @@ if (read_file("$source_dir/module.info", \%minfo) && exists($minfo{'desc'})) {
 elsif (read_file("$source_dir/theme.info", \%tinfo) && $tinfo{'desc'}) {
 	if ($tinfo{'usermin'} && (!$tinfo{'usermin'} || $force_usermin)) {
 		$prefix = "usermin-";
-		$desc = "Usermin theme '$tinfo{'desc'}'";
+		$desc = "Usermin theme $tinfo{'desc'}";
 		$product = "usermin";
 		}
 	else {
 		$prefix = "webmin-";
-		$desc = "Webmin theme '$tinfo{'desc'}'";
+		$desc = "Webmin theme $tinfo{'desc'}";
 		$product = "webmin";
 		}
 	$iver = $tinfo{'version'};

@@ -156,12 +156,12 @@ if ($minfo{'desc'}) {
 				  split(/\s+/, $minfo{'depends'}));
 	if ($minfo{'usermin'} && (!$minfo{'webmin'} || $force_usermin)) {
 		$prefix = "usm-";
-		$desc = "Usermin module for '$minfo{'desc'}'";
+		$desc = "Usermin module $minfo{'desc'}";
 		$prog = "usermin";
 		}
 	else {
 		$prefix = "wbm-";
-		$desc = "Webmin module for '$minfo{'desc'}'";
+		$desc = "Webmin module $minfo{'desc'}";
 		$prog = "webmin";
 		}
 	$iver = $minfo{'version'};
@@ -170,12 +170,12 @@ if ($minfo{'desc'}) {
 elsif ($tinfo{'desc'}) {
 	if ($tinfo{'usermin'} && (!$tinfo{'usermin'} || $force_usermin)) {
 		$prefix = "ust-";
-		$desc = "Usermin theme '$tinfo{'desc'}'";
+		$desc = "Usermin theme $tinfo{'desc'}";
 		$prog = "usermin";
 		}
 	else {
 		$prefix = "wbt-";
-		$desc = "Webmin theme '$tinfo{'desc'}'";
+		$desc = "Webmin theme $tinfo{'desc'}";
 		$prog = "webmin";
 		}
 	$iver = $tinfo{'version'};
@@ -287,7 +287,7 @@ $providesheader
 $vendorheader
 $urlheader
 %description
-$desc in RPM format
+$desc
 
 %prep
 %setup -n $mod
