@@ -1026,9 +1026,9 @@ if (defined($opts_title)) {
 $rv .= "<tr class='ui_multi_select_row'>";
 $rv .= "<td>".&ui_select($name."_opts", [ ], $leftover,
 			 $size, 1, 0, $dis, $wstyle)."</td>\n";
-$rv .= "<td>".&ui_button("▶", $name."_add", $dis,
+$rv .= "<td>".&ui_button("â¶", $name."_add", $dis,
 		 "onClick='multi_select_move(\"$name\", form, 1)'")."<br>".
-	      &ui_button("◀", $name."_remove", $dis,
+	      &ui_button("â", $name."_remove", $dis,
 		 "onClick='multi_select_move(\"$name\", form, 0)'")."</td>\n";
 $rv .= "<td>".&ui_select($name."_vals", [ ], $values,
 			 $size, 1, 0, $dis, $wstyle)."</td>\n";
@@ -2415,6 +2415,35 @@ if ($others) {
 	}
 $rv .= &ui_form_end($buttons);
 $rv .= "</center>\n";
+return $rv;
+}
+
+=head2 ui_text_type(text, type)
+
+Returns HTML for a text string, with its color determined by $type.
+
+=item text - contains any text string
+
+=item type - returned text color
+
+=cut
+
+sub ui_text_type
+{
+my ($text, $type) = @_;
+my ($rv, $color);
+
+if (defined (&theme_ui_text_type)) {
+    return &theme_ui_text_type(@_);
+    }
+
+if ($type eq "success") { $color = "3c763d"; }
+elsif ($type eq "info") { $color = "31708f"; }
+elsif ($type eq "warn") { $color = "8a6d3b"; }
+elsif ($type eq "danger") { $color = "a94442"; }
+
+$rv .= "<span class='ui_text_type text_type_$type' style='color: #$color'>$text</span>\n";
+
 return $rv;
 }
 
