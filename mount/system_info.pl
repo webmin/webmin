@@ -29,17 +29,14 @@ sub list_system_info
                     my $free         = $disk->{'free'};
                     my $free_nice    = nice_size($disk->{'free'});
                     my $free_percent = int(($total - $free) / $total * 100);
-
-                    if ($free_percent > 85) {
-                        $open = 1;
-                    }
-                    
                     my $free_percent_html;
+
                     if ($free_percent < 50) {
                         $free_percent_html = ui_text_type("$free_percent%", 'success');
                     } elsif ($free_percent <= 85) {
                         $free_percent_html = ui_text_type("$free_percent%", 'warn');
                     } else {
+                        $open = 1;
                         $free_percent_html = ui_text_type("$free_percent%", 'danger');
                     }
                     $html .= ui_columns_row([$dir, $type, $free_percent_html . " ($free_nice)", $total_nice, $dev_id,]);
