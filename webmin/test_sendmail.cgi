@@ -28,4 +28,4 @@ else {
 	print $text{'testmail_done'},"<p>\n";
 	}
 
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer("edit_sendmail.cgi", $text{'sendmail_title'});

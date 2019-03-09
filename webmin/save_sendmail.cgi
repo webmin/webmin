@@ -66,5 +66,5 @@ else {
 &save_module_config(\%mconfig, "mailboxes");
 &unlock_file($mailboxes::module_config_file);
 &webmin_log("sendmail");
-&redirect("");
+&redirect("edit_sendmail.cgi");
 

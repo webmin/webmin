@@ -33,7 +33,10 @@ print "<tr> <td><b>$text{'acl_browse'}</b></td>\n";
 print "<td>",&ui_radio("browse", $_[0]->{'browse'},
 	       [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]),"</td>\n";
 
-print "</tr>\n";
+print "<td><b>$text{'acl_sysinfo'}</b></td>\n";
+print "<td>",&ui_radio("sysinfo", $_[0]->{'sysinfo'},
+	       [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]),"</td> </tr>\n";
+
 }
 
 # acl_security_save(&options)
@@ -47,5 +50,6 @@ $_[0]->{'create'} = $in{'create'};
 $_[0]->{'user'} = $in{'user'};
 $_[0]->{'hide'} = $in{'hide'};
 $_[0]->{'browse'} = $in{'browse'};
+$_[0]->{'sysinfo'} = $in{'sysinfo'};
 }
 

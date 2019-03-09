@@ -5,6 +5,7 @@ long_fstypes=Show long filesystem type names,1,1-Yes,0-No
 sort_mode=Sort filesystems by,1,2-Mount point,1-Type,0-Order in files
 show_used=Show used disk space in filesystems list,1,1-Yes,0-No
 delete_under=Delete directory when un-mounting if under,3,Never delete
+sysinfo=Show available disk data on Dashboard?,1,1-Yes,0-No
 line2=System configuration,11
 fstab_file=File listing filesystems mounted at boot time,0
 auto_file=NFS automounts file,3
