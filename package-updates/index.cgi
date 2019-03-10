@@ -255,6 +255,7 @@ if ($has_repos) {
 		}
 
 	# Form to add a repo
+	# XXX
 
 	print &ui_tabs_end_tab("tab", "repos");
 	}

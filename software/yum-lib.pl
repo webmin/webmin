@@ -389,7 +389,8 @@ foreach my $repo (@rv) {
 	$name =~ s/\s*\$[a-z0-9]+//gi;
 	$repo->{'name'} = $repo->{'id'}." (".$name.")";
 	$repo->{'url'} = $repo->{'raw'}->{'baseurl'};
-	$repo->{'enabled'} = $repo->{'raw'}->{'enabled'};
+	$repo->{'enabled'} = defined($repo->{'raw'}->{'enabled'}) ?
+				$repo->{'raw'}->{'enabled'} : 1;
 	}
 
 return @rv;
@@ -399,8 +400,42 @@ sub create_package_repo
 {
 }
 
+# delete_package_repo(&repo)
+# Delete a repository from it's config file. Does not delete the file even if
+# empty, to prevent it from being re-created if it came from an RPM package.
 sub delete_package_repo
 {
+my ($repo) = @_;
+&lock_file($repo->{'file'});
+my $lref = &read_file_lines($repo->{'file'});
+splice(@$lref, $repo->{'line'}, $repo->{'eline'}-$repo->{'line'}+1);
+&flush_file_lines($repo->{'file'});
+&unlock_file($repo->{'file'});
+}
+
+# enable_package_repo(&repo, enable?)
+# Enable or disable a repository
+sub enable_package_repo
+{
+my ($repo, $enable) = @_;
+&lock_file($repo->{'file'});
+my $lref = &read_file_lines($repo->{'file'});
+my $e = "enabled=".($enable ? 1 : 0);
+if (defined($repo->{'raw'}->{'enabled'})) {
+	# There's a line to update already
+	for(my $i=$repo->{'line'}; $i<=$repo->{'eline'}; $i++) {
+		if ($lref->[$i] =~ /^enabled=/) {
+			$lref->[$i] = $e;
+			last;
+			}
+		}
+	}
+else {
+	# Need to add a line
+	splice(@$lref, $repo->{'eline'}, 0, $e);
+	}
+&flush_file_lines($repo->{'file'});
+&unlock_file($repo->{'file'});
 }
 
 1;

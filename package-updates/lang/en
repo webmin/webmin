@@ -129,4 +129,14 @@ system_csw=CSW (Blastwave)
 system_webmin=Webmin module
 system_usermin=Usermin module
 system_tgz=Webmin or Usermin tar.gz
+
+repos_err_disable=Failed to disable repositories
+repos_err_enable=Failed to enable repositories
+repos_err_delete=Failed to delete repositories
+repos_ebutton=No button clicked!
+repos_enone=None selected
+repos_title=Delete Repositories
+repos_rusure=Are you sure you want to delete the $1 selected package repositories? Packages installed from them will still be available, but may not be updatable. 
+repos_ok=Delete Now
+
 __norefs=1
