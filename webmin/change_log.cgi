@@ -50,6 +50,7 @@ $gconfig{'logusers'} =
 	$in{'uall'} ? '' : join(" ", split(/\0/, $in{'users'}));
 $gconfig{'logmodules'} =
 	$in{'mall'} ? '' : join(" ", split(/\0/, $in{'modules'}));
+$gconfig{'logsched'} = $in{'logsched'};
 $gconfig{'logfiles'} = $in{'logfiles'};
 $gconfig{'logfullfiles'} = $in{'logfullfiles'};
 $gconfig{'logperms'} = $miniserv{'logperms'};

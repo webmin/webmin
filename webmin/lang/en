@@ -82,6 +82,7 @@ log_inmods=Modules to log Webmin actions in
 log_mall=Log actions in all modules
 log_modules=Only log actions in ..
 log_global=&lt;Global actions&gt;
+log_sched=Log scheduled functions?
 log_files=Log changes made to files by each action?
 log_fullfiles=Record all modified files before actions, for rollbacks?
 log_err=Failed to save logging options

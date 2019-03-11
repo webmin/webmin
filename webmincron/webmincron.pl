@@ -27,5 +27,7 @@ if ($@) {
 	$log->{'error'} = $@;
 	}
 
-# Log it
-&webmin_log("run", "webmincron", $cron->{'id'}, $log);
+# Log it, if enabled
+if ($gconfig{'logsched'}) {
+	&webmin_log("run", "webmincron", $cron->{'id'}, $log);
+	}

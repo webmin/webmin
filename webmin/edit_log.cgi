@@ -70,6 +70,10 @@ if (!$miniserv{'login_script'} ||
 		    $miniserv{'login_script'} eq $record_login_cmd));
 	}
 
+# Log scheduled actions?
+print &ui_table_row($text{'log_sched'},
+	&ui_yesno_radio("logsched", $gconfig{'logsched'}));
+
 # Log file changes?
 print &ui_table_row($text{'log_files'},
 	&ui_yesno_radio("logfiles", int($gconfig{'logfiles'})));
