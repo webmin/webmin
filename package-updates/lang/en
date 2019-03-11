@@ -102,6 +102,9 @@ log_update=Installed $1 updated packages
 log_sched=Enabled scheduled updates
 log_unsched=Disabled scheduled updates
 log_refresh=Refreshed available packages
+log_enable_repos=Enabled $1 package repositories
+log_disable_repos=Disabled $1 package repositories
+log_delete_repos=Deleted $1 package repositories
 
 refresh_title=Refreshing Packages
 refresh_clearing=Clearing package caches ..
