@@ -45,8 +45,8 @@ else {
 			[ [ 'confirm', $text{'repos_ok'} ] ],
 			);
 
-		print &ui_form_end("index.cgi?tab=repos",
-				   $text{'index_return'});
+		&ui_print_footer("index.cgi?tab=repos",
+				 $text{'index_return'});
 		}
 	}
 
