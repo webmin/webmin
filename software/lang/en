@@ -22,6 +22,9 @@ index_epackagecheck=The selected package management system is not valid : $1.<br
 index_eupdatecheck=The selected update system is not valid : $1.<br>You may need to select a different update method on the <a href='$2'>module configuration</a> page.
 index_echeckpackage=No package system was detected!
 index_echeckupdate=No update system was detected!
+index_filter=Filter Packages
+index_filterclear=Clear Filter
+index_filtered=Displaying <tt>$1</tt> packages out of <tt>$2</tt>
 
 search_title=Package Search
 search_nomatch=No packages matched $1
@@ -257,6 +260,16 @@ yum_title=Browse YUM
 yum_name=YUM
 yum_enable=Enable repository:
 yum_none=&lt;None&gt;
+yum_repo_id=Repository ID
+yum_repo_name=Repository description
+yum_repo_url=Package base URL
+yum_repo_gpg=GPG certificate file
+yum_repo_none=Not signed
+yum_repo_eid=Missing or invalid repository ID - only letters and numbers allowed
+yum_repo_eidclash=Repository ID is already in use
+yum_repo_ename=Missing repository name
+yum_repo_eurl=Missing or invalid repository URL
+yum_repo_egpg=GPG cert file missing or does not exist
 
 urpmi_name=URPMI
 urpmi_input=Package from URPMI
@@ -446,8 +459,5 @@ IPKG_install_package=Install
 IPKG_install_packagedesc=Install this package on your system
 IPKG_noupgrade=Nothing to upgrade
 IPKG-edit_title=Manage IPKG Package
-index_filter=Filter Packages
-index_filterclear=Clear Filter
-index_filtered=Displaying <tt>$1</tt> packages out of <tt>$2</tt>
 IPKG_update_avail=Update availible:
 IPKG_not_installed=Package is not installed
