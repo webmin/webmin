@@ -16,8 +16,12 @@ if (keys %$playtime) {
 				  $text{'playtime_time'},
 				  $text{'playtime_ltime'},
 				  $text{'playtime_now'} ], 100);
+	my $total = 0;
+	my $ltotal = 0;
 	foreach my $u (sort { $playtime->{$b} <=> $playtime->{$a} }
 			    keys %$playtime) {
+		$total += $playtime->{$u};
+		$ltotal += $limit_playtime->{$u};
 		print &ui_columns_row([
 			&ui_link("view_conn.cgi?name=".&urlize($u),
 				 &html_escape($u)),
@@ -28,6 +32,12 @@ if (keys %$playtime) {
 			    "<font color=red>$text{'playtime_off'}</a>",
 			]);
 		}
+	print &ui_columns_row([
+		"<b>$text{'playtime_total'}</b>",
+		&nice_seconds($total),
+		&nice_seconds($ltotal),
+		undef,
+		]);
 	print &ui_columns_end();
 	}
 else {

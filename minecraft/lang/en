@@ -346,3 +346,4 @@ playtime_emax=Maximum time must be a number
 playtime_eusers=No users to limit entered
 playtime_edays=No days of the week selected
 playtime_eips=No IP addresses entered
+playtime_total=Total time
