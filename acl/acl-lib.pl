@@ -362,6 +362,7 @@ sub create_user
 my ($user, $clone) = @_;
 my %miniserv;
 my @mods = &list_modules();
+$user->{'name'} eq "webmin" && &error("Invalid username webmin for new user");
 
 &get_miniserv_config(\%miniserv);
 
@@ -530,6 +531,8 @@ sub modify_user
 my ($username, $user) = @_;
 my (%miniserv, @pwfile, @acl, @mods, $m);
 &get_miniserv_config(\%miniserv);
+$user->{'name'} eq "webmin" &&
+	&error("Invalid username webmin for modified user");
 
 if ($user->{'proto'}) {
 	# In users and groups DB

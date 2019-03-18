@@ -4134,6 +4134,7 @@ sub save_module_acl
 {
 my $u = defined($_[1]) ? $_[1] : $base_remote_user;
 my $m = defined($_[2]) ? $_[2] : &get_module_name();
+$u eq "webmin" && &error("Invalid username webmin for ACL");
 if (!$_[3] && &foreign_check("acl")) {
 	# Check if this user is a member of a group, and if he gets the
 	# module from a group. If so, update its ACL as well
