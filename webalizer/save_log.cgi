@@ -26,10 +26,12 @@ if (!$in{'new'} && !$in{'view'} && !$in{'run'}) {
 if ($in{'view'}) {
 	# Re-direct to the view page
 	&redirect("view_log.cgi/".&urlize(&urlize($in{'file'}))."/index.html");
+	exit;
 	}
 elsif ($in{'global'}) {
 	# Re-direct to the options page
 	&redirect("edit_global.cgi?file=".&urlize($in{'file'})."&type=$in{'type'}&custom=$in{'custom'}");
+	exit;
 	}
 elsif ($in{'run'}) {
 	# Force report generation and show the output
