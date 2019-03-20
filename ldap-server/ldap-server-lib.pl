@@ -871,11 +871,72 @@ foreach my $f (@ldap_lock_files) {
 	}
 }
 
+# regenerate_crc32(file)
+# Re-create the CRC32 line if needed
+sub regenerate_crc32
+{
+my ($f) = @_;
+my $lref = &read_file_lines($f);
+my $fixed = 0;
+foreach my $l (@$lref) {
+	if ($l =~ /^#\s+CRC32\s+(\S+)/) {
+		my $old32 = $1;
+		my $txt = "";
+		foreach my $l2 (@$lref) {
+			$txt .= $l2."\n" if ($l2 !~ /^#/);
+			}
+		my $new32 = sprintf("%x", &compute_crc32($txt));
+		if ($new32 ne $old32) {
+			$l = "# CRC32 ".$new32;
+			$fixed = 1;
+			}
+		}
+	}
+if ($fixed) {
+	&flush_file_lines($f);
+	}
+else {
+	&unflush_file_lines($f);
+	}
+}
+
+sub compute_crc32 {
+ my ($input, $init_value, $polynomial) = @_;
+
+ $init_value = 0 unless (defined $init_value);
+ $polynomial = 0xedb88320 unless (defined $polynomial);
+
+ my @lookup_table;
+
+ for (my $i=0; $i<256; $i++) {
+   my $x = $i;
+   for (my $j=0; $j<8; $j++) {
+     if ($x & 1) {
+       $x = ($x >> 1) ^ $polynomial;
+     } else {
+       $x = $x >> 1;
+     }
+   }
+   push @lookup_table, $x;
+ }
+
+ my $crc = $init_value ^ 0xffffffff;
+
+ foreach my $x (unpack ('C*', $input)) {
+   $crc = (($crc >> 8) & 0xffffff) ^ $lookup_table[ ($crc ^ $x) & 0xff ];
+ }
+
+ $crc = $crc ^ 0xffffffff;
+
+ return $crc;
+}
+
 # unlock_slapd_files()
 # Un-lock all LDAP config file(s)
 sub unlock_slapd_files
 {
 foreach my $f (@ldap_lock_files) {
+	&regenerate_crc32($f);
 	&unlock_file($f);
 	}
 @ldap_lock_files = ( );
