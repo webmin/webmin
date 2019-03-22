@@ -14,6 +14,10 @@ $columns =~ s/\0/,/g;
     'disable_pagination' => $in{'disable_pagination'},
     'menu_style' => $in{'menu_style'}
 );
+my $max_allowed = $in{'max_allowed'};
+if($max_allowed) {
+    $config{'max_allowed'} = $max_allowed;
+}
 
 &write_file("$confdir/.config", \%config);
 
