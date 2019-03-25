@@ -105,6 +105,7 @@ cnf_datadir=Datenbanken-Dateien-Verzeichnis
 cnf_ebind=Fehlende oder ung&#252;ltige IP-Adresse, um zu laufen auf
 cnf_edatadir=Fehlendes oder ung&#252;ltiges Datenbank-Dateien-Verzeichnis
 cnf_efile=Die MySQL-Konfigurationsdatei $1 wurde nicht auf Ihrem System gefunden. M&#246;glicherweise m&#252;ssen Sie die <a href='$2'>Modulkonfiguration</a> anzupassen, um den richtigen Pfad zu verwenden.
+cnf_eilt=Das InnoDB-Sperrzeitlimit muss eine ganze Zahl sein
 cnf_ekey_buffer=Fehlende oder ung&#252;ltige Schl&#252;ssel-Puffergr&#246;&#223;e
 cnf_ekey_buffer_size=Fehlende oder ung&#252;ltige Schl&#252;ssel-Puffergr&#246;&#223;e
 cnf_emax_allowed_packet=Fehlende oder ung&#252;ltige maximale Paketgr&#246;&#223;e
@@ -121,6 +122,7 @@ cnf_esort_buffer_size=Fehlende oder ung&#252;ltige Sortierpuffergr&#246;&#223;e
 cnf_etable_cache=Fehlende oder ung&#252;ltige Tabelle zum cachen
 cnf_fpt=Separate Datei f&#252;r jede InnoDB-Tabelle?
 cnf_header=MySQL Server Optionen
+cnf_ilt=InnoDB-Sperrzeitlimit (in Sekunden)
 cnf_key_buffer=Schl&#252;ssel-Puffergr&#246;&#223;e
 cnf_key_buffer_size=Schl&#252;ssel-Puffergr&#246;&#223;e
 cnf_max_allowed_packet=Maximale Paketgr&#246;&#223;e

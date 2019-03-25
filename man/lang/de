@@ -43,6 +43,7 @@ kde_title=KDE-Dokumentation
 kernel_epath=Ung&uuml;ltiger Kernel-Dokumentenpfad
 kernel_header=Kernel-Dokumentendatei $1
 kernel_title=Kernel-Dokument
+man_epath=Manpage kann kein Pfad sein!
 man_header=Handbuch f&uuml;r $1 ($2)
 man_noentry=Handbuch f&uuml;r $1 nicht vorhanden!
 man_title=Handbuch

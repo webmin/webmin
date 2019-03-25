@@ -6,3 +6,5 @@ depends=webmin acl
 readonly=1
 syslog=1
 os_support=!windows
+longdesc_de=Konfiguriert globale Optionen f&#252;r den Usermin-Benutzerkontenverwaltungsserver.
+desc_de=Benutzerkonfiguration
