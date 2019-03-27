@@ -4,8 +4,7 @@
 
 use strict;
 use warnings;
-our (%text, %in, %access, $squid_version, %config, %acl_types,
-     @caseless_acl_types);
+our (%text, %in, %access, $squid_version, %config, %acl_types);
 require './squid-lib.pl';
 $access{'actrl'} || &error($text{'eacl_ecannot'});
 &ReadParseMime();
@@ -22,6 +21,7 @@ if (defined($in{'index'})) {
 if (defined($in{'dindex'})) {
 	$deny = $conf->[$in{'dindex'}];
 	}
+my @aclopts = ( );
 my $logacl;
 if ($in{'delete'}) {
 	# Is there more than one ACL with this name?
@@ -71,6 +71,7 @@ else {
 
 	my @vals;
 	if ($in{'type'} eq "src" || $in{'type'} eq "dst") {
+		push(@aclopts, "-n") if ($in{'nodns'});
 		for(my $i=0; defined(my $from = $in{"from_$i"}); $i++) {
 			my $to = $in{"to_$i"};
 			my $mask = $in{"mask_$i"};
@@ -105,6 +106,7 @@ else {
 		if (!@vals && !$in{'keep'}) { &error($text{'aclsave_ecdom'}); }
 		}
 	elsif ($in{'type'} eq "dstdomain") {
+		push(@aclopts, "-n") if ($in{'nodns'});
 		push(@vals, split(/[\r\n]+/, $in{'vals'}));
 		if (!@vals && !$in{'keep'}) { &error($text{'aclsave_esdom'}); }
 		}
@@ -121,11 +123,11 @@ else {
 			}
 		}
 	elsif ($in{'type'} eq "url_regex") {
-		push(@vals, "-i") if ($in{'caseless'});
+		push(@aclopts, "-i") if ($in{'caseless'});
 		push(@vals, split(/[\r\n]+/, $in{'vals'}));
 		}
 	elsif ($in{'type'} eq "urlpath_regex") {
-		push(@vals, "-i") if ($in{'caseless'});
+		push(@aclopts, "-i") if ($in{'caseless'});
 		push(@vals, split(/[\r\n]+/, $in{'vals'}));
 		}
 	elsif ($in{'type'} eq "port") {
@@ -157,11 +159,12 @@ else {
 		}
 	elsif ($in{'type'} eq "proxy_auth_regex" ||
 	       $in{'type'} eq "ident_regex") {
-		push(@vals, "-i") if ($in{'caseless'});
+		push(@aclopts, "-i") if ($in{'caseless'});
 		push(@vals, split(/[\r\n]+/, $in{'vals'}));
 		}
 	elsif ($in{'type'} eq "srcdom_regex" || $in{'type'} eq "dstdom_regex") {
-		push(@vals, "-i") if ($in{'caseless'});
+		push(@aclopts, "-i") if ($in{'caseless'});
+		push(@aclopts, "-n") if ($in{'nodns'});
 		push(@vals, split(/[\r\n]+/, $in{'vals'}));
 		}
 	elsif ($in{'type'} eq "myport") {
@@ -194,13 +197,6 @@ else {
 		$in{'file'} || &error($text{'aclsave_enofile'});
 		&can_access($in{'file'}) ||
 			&error(&text('aclsave_efile', $in{'file'}));
-		my @notvals;
-		if ($in{'type'} eq 'external' ||
-		    &indexof($in{'type'}, @caseless_acl_types) >= 0 &&
-		    $vals[0] eq "-i") {
-			# Special case .. first parameter does NOT go into file
-			@notvals = ( shift(@vals) );
-			}
 		if (!$in{'keep'}) {
 			if (!$acl && -e $in{'file'}) {
 				&error($text{'aclsave_ealready'});
@@ -212,7 +208,7 @@ else {
 				}
 			&close_tempfile($fh);
 			}
-		@vals = ( $in{'name'}, $in{'type'}, @notvals,
+		@vals = ( $in{'name'}, $in{'type'}, @aclopts,
 			  "\"$in{'file'}\"" );
 		}
 	else {
@@ -226,7 +222,7 @@ else {
 				}
 			
 			}
-		@vals = ( $in{'name'}, $in{'type'}, @vals );
+		@vals = ( $in{'name'}, $in{'type'}, @aclopts, @vals );
 		}
 	my $newacl = { 'name' => 'acl', 'values' => \@vals };
 	$logacl = $newacl;

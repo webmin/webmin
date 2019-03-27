@@ -87,6 +87,7 @@ acl_eusers=External Auth Users
 acl_eusersall=All users
 acl_euserssel=Only those listed..
 acl_case=Ignore case?
+acl_nodns=Disable lookups?
 acl_eusersre=External Auth User Regexps
 acl_asnum=AS Numbers
 acl_rtime=Refresh Time
