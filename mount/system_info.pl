@@ -28,12 +28,12 @@ sub list_system_info
                     my $total_nice   = nice_size($disk->{'total'});
                     my $free         = $disk->{'free'};
                     my $free_nice    = nice_size($disk->{'free'});
-                    my $free_percent = int(($total - $free) / $total * 100);
+                    my $free_percent = 100 - int(($total - $free) / $total * 100);
                     my $free_percent_html;
 
-                    if ($free_percent < 50) {
+                    if ($free_percent > 49) {
                         $free_percent_html = ui_text_type("$free_percent%", 'success');
-                    } elsif ($free_percent <= 85) {
+                    } elsif ($free_percent > 9) {
                         $free_percent_html = ui_text_type("$free_percent%", 'warn');
                     } else {
                         $open = 1;
