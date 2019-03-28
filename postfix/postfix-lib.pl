@@ -1830,8 +1830,8 @@ sub get_maps_types_files
 my ($v) = @_;
 my @rv;
 foreach my $w (split(/[, \t]+/, $v)) {
-	if ($w =~ /^([^:]+):(\/.*)$/) {
-		push(@rv, [ $1, $2 ]);
+	if ($w =~ /^(proxy:)?([^:]+):(\/.*)$/) {
+		push(@rv, [ $2, $3 ]);
 		}
 	}
 return @rv;
