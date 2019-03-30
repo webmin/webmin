@@ -5,14 +5,14 @@
 use strict;
 use warnings;
 our (%text, %in, %access, $squid_version, %config, %acl_types,
-     @caseless_acl_types);
+     @caseless_acl_types, @nodns_acl_types);
 require './squid-lib.pl';
 $access{'actrl'} || &error($text{'eacl_ecannot'});
 &ReadParse();
 my $conf = &get_config();
 
 my $type;
-my (@acl, @deny, @vals, $file);
+my (@acl, @aclopts, @deny, @vals, $file, $acloptfound);
 if ($in{'type'}) {
 	&ui_print_header(undef, $text{'acl_header1'}, "", undef, 0, 0, 0,
 			 &restart_button());
@@ -24,12 +24,29 @@ else {
 			 &restart_button());
 	@acl = @{$conf->[$in{'index'}]->{'values'}};
 	$type = $acl[1];
-	if (($type eq "external" ||
-	     &indexof($type, @caseless_acl_types) >= 0) &&
-	    $acl[3] =~ /^"(.*)"$/) {
+	$acloptfound = 0;
+	if ($type eq "external" ||
+	     &indexof($type, @caseless_acl_types) >= 0 ||
+	     &indexof($type, @nodns_acl_types) >= 0) {
+	    if ($acl[3] =~ /^"(.*)"$/) {
 		# Extra parameters come from file
 		@vals = ( $acl[2] );
 		$file = $1;
+		$acloptfound = 1;
+		}
+	    elsif ($acl[4] =~ /^"(.*)"$/) {
+		# Extra parameters come from file
+		@vals = @acl[2..3];
+		$file = $1;
+		$acloptfound = 1;
+		}
+	    if ($type ne "external") {
+		@aclopts = @vals;
+		@vals = ( );
+		}
+	}
+	if ($acloptfound) {
+		# do nothing
 		}
 	elsif ($acl[2] =~ /^"(.*)"$/) {
 		# All values come from a file
@@ -37,7 +54,22 @@ else {
 		}
 	else {
 		# All values come from acl parameters
-		@vals = @acl[2..$#acl];
+		@vals = ( );
+		for(my $i=2; $i<=$#acl; $i++) {
+		    if ($acl[$i] eq "--") {
+			# end of options push everything remaining
+			push (@vals, @acl[$i..$#acl]);
+			last;
+			}
+		    elsif (($acl[$i] eq "-i" && &indexof($type, @caseless_acl_types) >= 0) ||
+			   ($acl[$i] eq "-n" && &indexof($type, @nodns_acl_types) >= 0)) {
+			push (@aclopts, $acl[$i]);
+			$acloptfound = 1;
+			}
+		    else {
+			push (@vals, $acl[$i]);
+			}
+		    }
 		}
 	if ($file) {
 		my @newvals = split(/\r?\n/, &read_file_contents($file));
@@ -69,6 +101,8 @@ print &ui_table_row($text{'acl_name'},
 
 if ($type eq "src" || $type eq "dst") {
 	# By source or dest address/network
+	my $nodns;
+	$nodns = 1 if ($type eq 'dst' && grep (/^\-n$/, @aclopts));
 	my $table = &ui_columns_start([ $text{'acl_fromip'},
 					$text{'acl_toip'},
 					$text{'acl_nmask'} ]);
@@ -95,6 +129,8 @@ if ($type eq "src" || $type eq "dst") {
 		}
 	$table .= &ui_columns_end();
 	print &ui_table_row(undef, $table, 2);
+	print &ui_table_row(undef,
+		&ui_checkbox("nodns", 1, $text{'acl_nodns'}, $nodns)) if ($type eq "dst");
 	}
 elsif ($type eq "myip") {
 	# By local IP address
@@ -116,8 +152,12 @@ elsif ($type eq "myip") {
 	}
 elsif ($type eq "srcdomain" || $type eq "dstdomain") {
 	# Source or destination domain
+	my $nodns;
+	$nodns = 1 if ($type eq 'dstdomain' && grep (/^\-n$/, @aclopts));
 	print &ui_table_row($text{'acl_domains'},
 		&ui_textarea("vals", join("\n", @vals), 6, 60));
+	print &ui_table_row(undef,
+		&ui_checkbox("nodns", 1, $text{'acl_nodns'}, $nodns)) if ($type eq "dstdomain");
 	}
 elsif ($type eq "time") {
 	# Day or week and time of day
@@ -159,10 +199,7 @@ elsif ($type eq "time") {
 elsif ($type eq "url_regex" || $type eq "urlpath_regex") {
 	# URL regular expression
 	my $caseless;
-	if ($vals[0] eq '-i') {
-		$caseless++;
-		shift(@vals);
-		}
+	$caseless = 1 if (grep (/^\-i$/, @aclopts));
 	print &ui_table_row($text{'acl_regexp'},
 		&ui_checkbox("caseless", 1, $text{'acl_case'}, $caseless).
 		"<br>\n".
@@ -220,10 +257,7 @@ elsif ($type eq "proxy_auth" && $squid_version >= 2.3) {
 elsif ($type eq "proxy_auth_regex") {
 	# Username regexp
 	my $caseless;
-	if ($vals[0] eq '-i') {
-		$caseless++;
-		shift(@vals);
-		}
+	$caseless = 1 if (grep (/^\-i$/, @aclopts));
 	print &ui_table_row($text{'acl_eusers'},
 		&ui_checkbox("caseless", 1, $text{'acl_case'}, $caseless).
 		"<br>\n".
@@ -231,14 +265,14 @@ elsif ($type eq "proxy_auth_regex") {
 	}
 elsif ($type eq "srcdom_regex" || $type eq "dstdom_regex") {
 	# Source or destination domain regexp
-	my $caseless;
-	if ($vals[0] eq '-i') {
-		$caseless++;
-		shift(@vals);
-		}
+	my ($caseless, $nodns, $dnshtml);
+	$caseless = 1 if (grep (/^\-i$/, @aclopts));
+	$nodns = 1 if ($type eq "dstdom_regex" && grep (/^\-n$/, @aclopts));
+	$dnshtml = "";
+        $dnshtml = &ui_checkbox("nodns", 1, $text{'acl_nodns'}, $nodns) . "<br>\n" if ($type eq "dstdom_regex");
 	print &ui_table_row($text{'acl_regexp'},
 		&ui_checkbox("caseless", 1, $text{'acl_case'}, $caseless).
-		"<br>\n".
+		"<br>\n" . $dnshtml .
 		&ui_textarea("vals", join("\n", @vals), 6, 60));
 	}
 elsif ($type eq "ident") {
@@ -249,10 +283,7 @@ elsif ($type eq "ident") {
 elsif ($type eq "ident_regex") {
 	# IDENT protocol username regexp
 	my $caseless;
-	if ($vals[0] eq '-i') {
-		$caseless++;
-		shift(@vals);
-		}
+	$caseless = 1 if (grep (/^\-i$/, @aclopts));
 	print &ui_table_row($text{'acl_rfcusersr'},
 		&ui_checkbox("caseless", 1, $text{'acl_case'}, $caseless).
                 "<br>\n".

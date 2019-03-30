@@ -36,7 +36,7 @@ if (@acl) {
 		push(@cols, &ui_link("acl.cgi?index=$a->{'index'}",
 				     &html_escape($v[0])));
 		push(@cols, $acl_types{$v[1]});
-		if ($v[2] =~ /^"(.*)"$/ || $v[3] =~ /^"(.*)"$/) {
+		if ($v[2] =~ /^"(.*)"$/ || $v[3] =~ /^"(.*)"$/ || $v[4] =~ /^"(.*)"$/) {
 			push(@cols, &text('eacl_file', "<tt>$1</tt>"));
 			}
 		else {

@@ -14,6 +14,7 @@ our $auth_program = "$module_config_directory/squid-auth.pl";
 our $auth_database = "$module_config_directory/users";
 our @caseless_acl_types = ( "url_regex", "urlpath_regex", "proxy_auth_regex",
 			    "srcdom_regex", "dstdom_regex", "ident_regex" );
+our @nodns_acl_types = ( "dst", "dstdomain", "dstdom_regex" );
 
 # Get the squid version
 our $squid_version = &read_file_contents("$module_config_directory/version") || 0;
@@ -625,7 +626,7 @@ push(@rv, $file) if ($file);
 # Add files from ACLs
 my @acl = &find_config("acl", $conf);
 foreach my $a (@acl) {
-	if ($a->{'values'}->[2] =~ /^"(.*)"$/ || $a->{'values'}->[3] =~ /^"(.*)"$/) {
+	if ($a->{'values'}->[2] =~ /^"(.*)"$/ || $a->{'values'}->[3] =~ /^"(.*)"$/ || $a->{'values'}->[4] =~ /^"(.*)"$/) {
 		push(@rv, $1);
 		}
 	}
