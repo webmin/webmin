@@ -628,6 +628,9 @@ for($n=0; $n<@rep; $n++) {
 		if (!$st && $what->{$nn,$mode} !~ /^\d+$/ &&
 			    !$hasu{$what->{$nn,$mode}}) {
 			# User/group name was truncated! Try to find him..
+			local $has = $mode eq "user" ? getpwnam($nn)
+						     : getgrnam($nn);
+			$hasu{$what->{$nn,$mode}} = $has ? 1 : 0;
 			foreach $u (keys %hasu) {
 				if (substr($u, 0, length($what->{$nn,$mode})) eq
 				    $what->{$nn,$what}) {
