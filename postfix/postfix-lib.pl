@@ -866,7 +866,7 @@ sub generate_map_edit
     }
 
     # Make sure the user is allowed to edit them
-    foreach my $f (&get_maps_types_files(&get_current_value($_[0]))) {
+    foreach my $f (&get_maps_types_files(&get_real_value($_[0]))) {
       if (&file_map_type($f->[0])) {
 	  &is_under_directory($access{'dir'}, $f->[1]) ||
 		&error(&text('mapping_ecannot', $access{'dir'}));
@@ -874,7 +874,7 @@ sub generate_map_edit
     }
 
     # Make sure we *can* edit them
-    foreach my $f (&get_maps_types_files(&get_current_value($_[0]))) {
+    foreach my $f (&get_maps_types_files(&get_real_value($_[0]))) {
        my $err = &can_access_map(@$f);
        if ($err) {
 	  print "<b>",&text('map_cannot', $err),"</b><p>\n";
