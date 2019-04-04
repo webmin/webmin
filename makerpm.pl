@@ -74,7 +74,7 @@ Version: $ver
 Release: $rel
 Provides: %{name}-%{version} perl(WebminCore)
 PreReq: /bin/sh /usr/bin/perl /bin/rm
-Requires: /bin/sh /usr/bin/perl /bin/rm perl(Net::SSLeay) perl(Time::Local) perl(Encode::Detect) openssl
+Requires: /bin/sh /usr/bin/perl /bin/rm perl(Net::SSLeay) perl(Time::Local) perl(Encode::Detect) perl(Data::Dumper) openssl
 AutoReq: 0
 License: Freeware
 Group: System/Tools
