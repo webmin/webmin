@@ -3780,6 +3780,13 @@ if (!$main::get_system_hostname[$m]) {
 			if ($nc{'HOSTNAME'}) {
 				$fromfile = $nc{'HOSTNAME'};
 				}
+			else {
+				my $hn = &read_file_contents("/etc/hostname");
+				if ($hn) {
+					$hn =~ s/\r|\n//g;
+					$fromfile = $hn;
+					}
+				}
 			}
 		elsif ($gconfig{'os_type'} eq 'debian-linux') {
 			my $hn = &read_file_contents("/etc/hostname");
