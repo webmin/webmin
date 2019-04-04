@@ -24,7 +24,7 @@ actions=Actions
 size=Size
 owner_user=Owner user
 owner_group=Owner group
-permissions=Permissions
+permissions=Mode
 selinux=Security context
 attributes=Attributes
 last_mod_time=Modified
@@ -161,4 +161,4 @@ info_total2=Total: $1 files and $2 directory
 info_total3=Total: $1 file and $2 directories
 info_total4=Total: $1 files and $2 directories
 
-ownership=Ownership
+ownership=Owner
