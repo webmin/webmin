@@ -26,13 +26,13 @@ if (&has_command("ip")) {
 		$l =~ /^\d+:\s+(\S+):/ || next;
 		$ifc{'name'} = $1;
 		$ifc{'fullname'} = $1;
-		if ($l =~ /\sinet\s+([0-9\.]+)\s+peer\s+([0-9\.]+)\/(\d+)\s+brd\s+([0-9\.]+)\s+scope\s+global\s+(\S+)/ && $5 eq $ifc{'name'}) {
+		if ($l =~ /\sinet\s+([0-9\.]+)\s+peer\s+([0-9\.]+)\/(\d+)(\s+brd\s+([0-9\.]+))?\s+scope\s+global\s+(\S+)/ && $6 eq $ifc{'name'}) {
 			# Line like :
 			# inet 193.9.101.120 peer 193.9.101.104/32 brd 193.9.101.120 scope global eth0
 			$ifc{'address'} = $1;
 			$ifc{'netmask'} = &prefix_to_mask("$3");
 			}
-		elsif ($l =~ /\sinet\s+([0-9\.]+)\/(\d+)\s+brd\s+(\S+)\s+scope\s+global\s+(\S+)/ && $4 eq $ifc{'name'}) {
+		elsif ($l =~ /\sinet\s+([0-9\.]+)\/(\d+)(\s+brd\s+(\S+))?\s+scope\s+global\s+(\S+)/ && $5 eq $ifc{'name'}) {
 			# Line like :
 			# inet 193.9.101.120/24 brd 193.9.101.255 scope global br0
 			$ifc{'address'} = $1;
