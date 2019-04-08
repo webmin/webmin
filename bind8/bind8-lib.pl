@@ -538,7 +538,7 @@ return @rv;
 sub renumber
 {
 my ($parent, $lnum, $file, $c) = @_;
-if ($parent->{'file'} eq $file) {
+if ($parent->{'file'} && $file && $parent->{'file'} eq $file) {
 	if ($parent->{'line'} > $lnum) { $parent->{'line'} += $c; }
 	if ($parent->{'eline'} > $lnum) { $parent->{'eline'} += $c; }
 	}
