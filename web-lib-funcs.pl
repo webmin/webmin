@@ -3780,6 +3780,13 @@ if (!$main::get_system_hostname[$m]) {
 			if ($nc{'HOSTNAME'}) {
 				$fromfile = $nc{'HOSTNAME'};
 				}
+			else {
+				my $hn = &read_file_contents("/etc/hostname");
+				if ($hn) {
+					$hn =~ s/\r|\n//g;
+					$fromfile = $hn;
+					}
+				}
 			}
 		elsif ($gconfig{'os_type'} eq 'debian-linux') {
 			my $hn = &read_file_contents("/etc/hostname");
@@ -4926,7 +4933,7 @@ if ($ENV{'HTTP_X_REQUESTED_WITH'} ne "XMLHttpRequest" &&
 	        if ($url =~ /.cgi/) {
 	            $url = "/";
 	        	}
-					else {
+	        	else {
 	            $url = "/" . $url . "/";
 	        	}
 	    	}
@@ -4935,7 +4942,7 @@ if ($ENV{'HTTP_X_REQUESTED_WITH'} ne "XMLHttpRequest" &&
 	    $var{$key} = $url;
 	    write_file(tempname('.theme_' . $salt . '_' . $url_salt . '_' . get_product_name() . '_' . $key . '_' . $remote_user), \%var);
 		}
-  &redirect("/");
+  &redirect($gconfig{'webprefix'} . "/");
 	}
 if (!$trust) {
 	# Looks like a link from elsewhere .. show an error
