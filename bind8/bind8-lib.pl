@@ -1727,7 +1727,7 @@ my ($conf) = @_;
 my @rv = ( $config{'named_conf'} );
 foreach my $c (@$conf) {
 	push(@rv, $c->{'file'});
-	if ($c->{'type'} == 1) {
+	if (defined($c->{'type'}) && $c->{'type'} == 1) {
 		push(@rv, &get_all_config_files($c->{'members'}));
 		}
 	}
@@ -2327,7 +2327,7 @@ return undef;
 sub create_zone
 {
 my ($dir, $conf, $viewidx) = @_;
-if ($viewidx ne "") {
+if (defined($viewidx) && $viewidx ne "") {
 	# Adding inside a view
 	my $view = $conf->[$viewidx];
         &lock_file(&make_chroot($view->{'file'}));
