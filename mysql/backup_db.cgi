@@ -100,6 +100,8 @@ if ($module_info{'usermin'}) {
 else {
 	if (!$in{'dest'}) {
 		$config{'backup_'.$in{'db'}} = $in{'file'};
+		$config{'backup_prefix_'.$in{'db'}} = $in{'prefix'};
+		$in{'prefix'} =~ /\// && &error($text{'backup_eprefix'});
 		}
 	$config{'backup_mkdir_'.$in{'db'}} = $in{'mkdir'};
 	$config{'backup_where_'.$in{'db'}} =
@@ -160,7 +162,7 @@ if (!$in{'save'}) {
 			# File in a directory
 			$dir = &date_subs($in{'file'});
 			&make_dir($dir, 0755) if ($in{'mkdir'});
-			$file = $dir."/".$db.".sql".
+			$file = $dir."/".$in{'prefix'}.$db.".sql".
 				($in{'compress'} == 1 ? ".gz" :
 				 $in{'compress'} == 2 ? ".bz2" : "");
 			$deletefile = 1;
