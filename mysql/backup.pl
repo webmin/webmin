@@ -14,6 +14,13 @@ else {
 	$cmode = 0;
 	}
 
+$prefix = "";
+if (defined $ARGV[3] and defined $ARGV[4]) {
+    if ($ARGV[3] eq "--prefix" and $ARGV[4] ne "") {
+        $prefix = $ARGV[4];
+    }
+}
+
 # Check if MySQL is running
 $ex = 0;
 ($r, $out) = &is_mysql_running();
@@ -50,7 +57,7 @@ foreach $db (@dbs) {
 	if ($all) {
 		$dir = &date_subs($config{'backup_'});
 		&make_dir($dir, 0755) if ($config{'backup_mkdir_'});
-		$file = $dir."/".$db.".sql".
+		$file = $dir."/".$prefix.$db.".sql".
 			($config{'backup_compress_'.$sf} == 1 ? ".gz" :
 			 $config{'backup_compress_'.$sf} == 2 ? ".bz2" : "");
 		}
