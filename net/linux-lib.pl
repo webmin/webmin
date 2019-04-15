@@ -23,7 +23,7 @@ if (&has_command("ip")) {
 	&reset_environment();
 	foreach my $l (@lines) {
 		my %ifc;
-		$l =~ /^\d+:\s+(\S+):/ || next;
+		$l =~ /^\d+:\s+([^ \t\r\n\@]+):/ || next;
 		$ifc{'name'} = $1;
 		$ifc{'fullname'} = $1;
 		if ($l =~ /\sinet\s+([0-9\.]+)\s+peer\s+([0-9\.]+)\/(\d+)(\s+brd\s+([0-9\.]+))?\s+scope\s+global\s+(\S+)/ && $6 eq $ifc{'name'}) {
