@@ -14,6 +14,13 @@ else {
 	$cmode = 0;
 	}
 
+$prefix = "";
+if (defined $ARGV[3] and defined $ARGV[4]) {
+    if ($ARGV[3] eq "--prefix" and $ARGV[4] ne "") {
+        $prefix = $ARGV[4];
+    }
+}
+
 # Check if MySQL is running
 $ex = 0;
 ($r, $out) = &is_mysql_running();
