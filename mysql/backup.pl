@@ -49,8 +49,9 @@ foreach $db (@dbs) {
 	$sf = $all ? "" : $db;
 	if ($all) {
 		$dir = &date_subs($config{'backup_'});
+		$prefix = &date_subs($config{'backup_prefix_'});
 		&make_dir($dir, 0755) if ($config{'backup_mkdir_'});
-		$file = $dir."/".$db.".sql".
+		$file = $dir."/".$prefix.$db.".sql".
 			($config{'backup_compress_'.$sf} == 1 ? ".gz" :
 			 $config{'backup_compress_'.$sf} == 2 ? ".bz2" : "");
 		}

@@ -5676,6 +5676,12 @@ while(1) {
 			}
 		last;
 		}
+	elsif ($pid) {
+		$last_lock_err = "Locked by PID $pid";
+		}
+	elsif (!$pid) {
+		$last_lock_err = "Lock file contains no PID";
+		}
 tryagain:
 	sleep(1);
 	if ($lock_tries_count++ > 5*60) {

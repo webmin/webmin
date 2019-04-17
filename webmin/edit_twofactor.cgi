@@ -20,7 +20,7 @@ print "<script>\n";
 print "function show_prov(name) {\n";
 foreach $p (@provs) {
 	print "d = document.getElementById(\"hiddendiv_$p->[0]\");\n";
-	print "d.className = name == \"$p->[0]\" ? \"opener_shown\" : \"opener_hidden\";\n";
+	print "d && (d.className = name == \"$p->[0]\" ? \"opener_shown\" : \"opener_hidden\");\n";
 	}
 print "}\n";
 print "</script>\n";
@@ -36,15 +36,13 @@ print ui_table_row($text{'twofactor_provider'},
 		  1, 0, 0, 0, "onChange='show_prov(value)'"), undef, [ "valign=middle","valign=middle" ]);
 
 foreach $p (@provs) {
-	$dis = $p->[0] eq $miniserv{'twofactor_provider'} ? "opener_shown"
-							  : "opener_hidden";
-	print &ui_hidden_table_row_start(undef, $p->[0],
-		$p->[0] eq $miniserv{'twofactor_provider'}, undef);
-	$sfunc = "show_twofactor_apikey_".$p->[0];
+	my $sfunc = "show_twofactor_apikey_".$p->[0];
 	if (defined(&$sfunc)) {
+		print &ui_hidden_table_row_start(undef, $p->[0],
+			$p->[0] eq $miniserv{'twofactor_provider'}, undef);
 		print &$sfunc(\%miniserv);
+		print &ui_hidden_table_row_end($p->[0]);
 		}
-	print &ui_hidden_table_row_end($p->[0]);
 	}
 
 print ui_table_end();
