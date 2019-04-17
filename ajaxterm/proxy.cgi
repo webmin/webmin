@@ -5,10 +5,7 @@ use warnings;
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
-
-# Since this script is run on every keypress, init_config is intentionally
-# not called to reduce startup time.
-#&init_config();
+&init_config();
 
 # Parse out port
 $ENV{'PATH_INFO'} =~ /^\/(\d+)(.*)$/ ||
