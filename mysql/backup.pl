@@ -13,6 +13,10 @@ else {
 	$ARGV[0] || die "Missing database parameter";
 	$cmode = 0;
 	}
+$extra_prefix = "";
+if ($ARGV[1] eq "--prefix") {
+	$extra_prefix = $ARGV[2];
+	}
 
 # Check if MySQL is running
 $ex = 0;
@@ -51,7 +55,7 @@ foreach $db (@dbs) {
 		$dir = &date_subs($config{'backup_'});
 		$prefix = &date_subs($config{'backup_prefix_'});
 		&make_dir($dir, 0755) if ($config{'backup_mkdir_'});
-		$file = $dir."/".$prefix.$db.".sql".
+		$file = $dir."/".$extra_prefix.$prefix.$db.".sql".
 			($config{'backup_compress_'.$sf} == 1 ? ".gz" :
 			 $config{'backup_compress_'.$sf} == 2 ? ".bz2" : "");
 		}
