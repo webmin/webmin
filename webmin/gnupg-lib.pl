@@ -501,12 +501,15 @@ close($fh);
 return @rv;
 }
 
-# return gpg current version
-sub gpg_version() {
-	my $gpg = quotemeta($gpgpath);
-	$gpg = `$gpg --version`;
-	$gpg =~ /(\*|\d+(\.\d+){0,2})/;
-	return $1;
+# returns current version of gpg command
+sub get_gpg_version
+{
+my ($gpg) = @_;
+$gpg = "gpg" if (!$gpg);
+$gpg = quotemeta($gpg);
+$gpg = `$gpg --version`;
+$gpg =~ /(\*|\d+(\.\d+){0,2})/;
+return $1;
 }
 
 1;
