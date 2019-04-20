@@ -25,10 +25,13 @@ sub list_keys
 my (@rv, %kmap);
 &clean_language();
 open(GPG, "$gpgpath --list-keys 2>/dev/null |");
+
 while(<GPG>) {
-	if (/^pub\s+(\S+)\/(\S+)\s+(\S+)\s+(.*)\s+<(\S+)>/ ||
+	if (/^pub\s+([a-z0-9]+)(\s+)([\d]{4}-[\d]{2}-[\d]{2})/ ||
+	    /^pub\s+(\S+)\/(\S+)\s+(\S+)\s+(.*)\s+<(\S+)>/ ||
 	    /^pub\s+(\S+)\/(\S+)\s+(\S+)\s+(.*)/) {
-		my $k = { 'size' => $1,
+
+		my $k = {'size' => $1,
 			     'key' => $2,
 			     'date' => $3,
 			     'name' => $4 ? [ $4 ] : [ ],
@@ -54,6 +57,10 @@ while(<GPG>) {
 				push(@{$k->{'name'}}, $1);
 				push(@{$k->{'email'}}, $2);
 				}
+			elsif (/^\s+([A-F0-9]{0,40}+)/) {
+				$k->{'key'} = $1;
+				$kmap{$1} = $k;
+				}
 			}
 		push(@rv, $k);
 		}
@@ -61,7 +68,8 @@ while(<GPG>) {
 close(GPG);
 open(GPG, "$gpgpath --list-secret-keys 2>/dev/null |");
 while(<GPG>) {
-	if (/^sec\s+(\S+)\/(\S+)\s+(\S+)\s+(.*)/ && $kmap{$2}) {
+	if ((/^sec\s+(\S+)\/(\S+)\s+(\S+)\s+(.*)/ || 
+	    /^(\s+)([A-F0-9]{0,40}+)/) && $kmap{$2}) {
 		$kmap{$2}->{'secret'}++;
 		}
 	}
@@ -493,5 +501,15 @@ close($fh);
 return @rv;
 }
 
-1;
+# returns current version of gpg command
+sub get_gpg_version
+{
+my ($gpg) = @_;
+$gpg = "gpg" if (!$gpg);
+$gpg = quotemeta($gpg);
+$gpg = `$gpg --version`;
+$gpg =~ /(\*|\d+(\.\d+){0,2})/;
+return $1;
+}
 
+1;

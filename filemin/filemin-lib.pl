@@ -93,8 +93,8 @@ sub get_paths {
         }
     }
     if ($error) {
-        &error(&text('notallowed', &html_escape($cwd),
-                                   &html_escape(join(" , ", @allowed_paths))));
+        &error(&text('notallowed', '`' . &html_escape($cwd) . '`',
+                                   '`' . &html_escape(join(" , ", @allowed_paths)) . '`.'));
     }
 
     if (index($cwd, $base) == -1)
@@ -421,8 +421,8 @@ foreach my $allowed_path (@allowed_paths) {
 		$error = 0;
 		}
 	}
-$error && &error(&text('notallowed', &html_escape($file),
-		   &html_escape(join(" , ", @allowed_paths))));
+$error && &error(&text('notallowed', '`' . &html_escape($file) . '`',
+		   '`' . &html_escape(join(" , ", @allowed_paths)) . '`.'));
 }
 
 1;
