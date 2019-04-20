@@ -39,9 +39,11 @@ if (@serv) {
 		@serv = sort { $oldstatus{$a->{'id'}} <=> $oldstatus{$b->{'id'}} } @serv;
 		}
 	if (!$config{'index_status'} && $oldstatus) {
-		local @st = stat("$module_config_directory/oldstatus");
-		local $t = localtime($st[9]);
-		print &text('index_oldtime', $t),"<br>\n";
+		local @st = stat($oldstatus_file);
+		if (@st) {
+			local $t = &make_date($st[9]);
+			print &text('index_oldtime', $t),"<br>\n";
+			}
 		}
 
 	# Show table of defined monitors
