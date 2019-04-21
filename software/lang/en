@@ -270,6 +270,7 @@ yum_repo_eidclash=Repository ID is already in use
 yum_repo_ename=Missing repository name
 yum_repo_eurl=Missing or invalid repository URL
 yum_repo_egpg=GPG cert file missing or does not exist
+yum_repo_efile=Repository file already exists!
 
 urpmi_name=URPMI
 urpmi_input=Package from URPMI

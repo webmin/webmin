@@ -388,7 +388,8 @@ foreach my $repo (@rv) {
 	$name =~ s/\s*-.*//;
 	$name =~ s/\s*\$[a-z0-9]+//gi;
 	$repo->{'name'} = $repo->{'id'}." (".$name.")";
-	$repo->{'url'} = $repo->{'raw'}->{'baseurl'};
+	$repo->{'url'} = $repo->{'raw'}->{'baseurl'} ||
+			 $repo->{'raw'}->{'mirrorlist'};
 	$repo->{'enabled'} = defined($repo->{'raw'}->{'enabled'}) ?
 				$repo->{'raw'}->{'enabled'} : 1;
 	}
@@ -418,7 +419,7 @@ return $rv;
 sub create_repo_parse
 {
 my ($in) = @_;
-my $repo = { 'raw' => { } };
+my $repo = { 'raw' => { 'enabled' => 1 } };
 
 # ID must be valid and unique
 $in->{'id'} =~ /^[a-z0-9\-\_]+$/i || return $text{'yum_repo_eid'};
@@ -448,6 +449,20 @@ return $repo;
 # Creates a new repository from the given hash (returned by create_repo_parse)
 sub create_package_repo
 {
+my ($repo) = @_;
+my $file = "$yum_repos_dir/$repo->{'id'}.repo";
+-r $file && return $text{'yum_repo_efile'};
+
+&lock_file($file);
+my $lref = &read_file_lines($file);
+push(@$lref, "[$repo->{'id'}]");
+foreach my $r (keys %{$repo->{'raw'}}) {
+	push(@$lref, $r."=".$repo->{'raw'}->{$r});
+	}
+&flush_file_lines($file);
+&unlock_file($file);
+
+return undef;
 }
 
 # delete_package_repo(&repo)

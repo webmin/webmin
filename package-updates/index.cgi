@@ -255,7 +255,11 @@ if ($has_repos) {
 		}
 
 	# Form to add a repo
-	# XXX
+	print &ui_form_start("create_repo.cgi", "post");
+	print &ui_table_start($text{'index_repoheader'}, undef, 2);
+	print &software::create_repo_form();
+	print &ui_table_end();
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 
 	print &ui_tabs_end_tab("tab", "repos");
 	}

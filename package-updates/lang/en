@@ -56,6 +56,7 @@ index_reposurl=Package URL
 index_reposdisable=Disable Repositories
 index_reposenable=Enable Repositories
 index_reposdelete=Delete Repositories
+index_repoheader=New package repository options
 
 update_title=Update Packages
 update_title2=Install Packages
@@ -136,6 +137,7 @@ system_tgz=Webmin or Usermin tar.gz
 repos_err_disable=Failed to disable repositories
 repos_err_enable=Failed to enable repositories
 repos_err_delete=Failed to delete repositories
+repos_err_create=Failed to create repository
 repos_ebutton=No button clicked!
 repos_enone=None selected
 repos_title=Delete Repositories
