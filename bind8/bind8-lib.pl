@@ -2394,8 +2394,7 @@ foreach my $k (keys %znc) {
 			}
 		}
 	}
-if ($changed || !$filecount || $znc{'version'} != $zone_names_version ||
-    !$donefile{$config{'named_conf'}} ||
+if ($changed || $znc{'version'} != $zone_names_version ||
     $config{'no_chroot'} != $znc{'no_chroot_config'} ||
     $config{'pid_file'} ne $znc{'pidfile_config'}) {
 	# Yes .. need to rebuild
