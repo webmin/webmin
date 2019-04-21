@@ -3810,6 +3810,18 @@ if (!$main::get_system_hostname[$m]) {
 				}
 			}
 
+		# Append domain name from DNS config if needed
+		if ($fromfile && $fromfile !~ /\./) {
+			my $lref = &read_file_lines("/etc/resolv.conf", 1);
+			foreach my $l (@$lref) {
+				if ($l =~ /^(search|domain)\s+(\S+)/) {
+					$dname = $2;
+					last;
+					}
+				}
+			$fromfile .= ".".$dname;
+			}
+
 		# If we found a hostname in a file, use it
 		if ($fromfile && ($m || $fromfile =~ /\./)) {
 			if ($m) {
