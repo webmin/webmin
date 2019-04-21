@@ -252,6 +252,7 @@ if(($cfg->{'vlan'} == 1) && ($gconfig{'os_version'} < 5)) {
 				  $cfg->{'vlanid'}]);
 	push(@options, ['post-down', 'vconfig rem '.$cfg->{'physical'}.' '.
 				     $cfg->{'vlanid'}]);
+	push(@options, ['vlan-raw-device', $cfg->{'physical'}]);
 	}
 if(($cfg->{'vlan'} == 1) && ($cfg->{'mtu'})) {
 	push(@options, ['pre-up', '/sbin/ifconfig '.$cfg->{'physical'}.' mtu '.$cfg->{'mtu'}]);
