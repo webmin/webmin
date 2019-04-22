@@ -3,6 +3,8 @@
 
 $apt_get_command = $config{'apt_mode'} ? "aptitude" : "apt-get";
 $apt_search_command = $config{'apt_mode'} ? "aptitude" : "apt-cache";
+$sources_list_file = "/etc/apt/sources.list";
+$sources_list_dir = "/etc/apt/sources.list.d";
 
 sub list_update_system_commands
 {
@@ -400,3 +402,39 @@ if (&has_command("aptitude")) {
 
 return grep { !$hold{$_->{'name'}} } @pkgs;
 }
+
+# list_package_repos()
+# Returns a list of configured repositories
+sub list_package_repos
+{
+my @rv;
+
+# Read all repos files
+foreach my $f ($sources_list_file, glob("$sources_list_dir/*")) {
+	my $lref = &read_file_lines($f, 1);
+	my $lnum = 0;
+	foreach my $l (@$lref) {
+		if ($l =~ /^(#*)\s*deb\s+((http|https)\S+)\s+(\S.*)/) {
+			my $repo = { 'file' => $f,
+				     'line' => $lnum,
+				     'words' => \@w,
+				     'url' => $2,
+				     'enabled' => !$1 };
+			my @w = split(/\s+/, $4);
+			$repo->{'name'} = join("/", @w);
+			$repo->{'id'} = $repo->{'url'}.$repo->{'name'};
+			push(@rv, $repo);
+			}
+		$lnum++;
+		}
+	}
+
+return @rv;
+}
+
+sub create_repo_form 
+{
+return "XXX";
+}
+
+
