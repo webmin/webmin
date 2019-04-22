@@ -21,7 +21,12 @@ if ($mode eq 'enable' || $mode eq 'disable') {
 	foreach my $repo (@delrepos) {
 		&software::enable_package_repo($repo, $mode eq 'enable');
 		}
-	&webmin_log($mode, 'repos', scalar(@delrepos));
+	if (@delrepos == 1) {
+		&webmin_log($mode, 'repo', $delrepos[0]->{'id'});
+		}
+	else {
+		&webmin_log($mode, 'repos', scalar(@delrepos));
+		}
 	&redirect("index.cgi?tab=repos");
 	}
 else {
@@ -30,7 +35,12 @@ else {
 		foreach my $repo (@delrepos) {
 			&software::delete_package_repo($repo);
 			}
-		&webmin_log('delete', 'repos', scalar(@delrepos));
+		if (@delrepos == 1) {
+			&webmin_log('delete', 'repo', $delrepos[0]->{'id'});
+			}
+		else {
+			&webmin_log('delete', 'repos', scalar(@delrepos));
+			}
 		&redirect("index.cgi?tab=repos");
 		}
 	else {

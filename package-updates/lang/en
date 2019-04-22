@@ -106,6 +106,10 @@ log_refresh=Refreshed available packages
 log_enable_repos=Enabled $1 package repositories
 log_disable_repos=Disabled $1 package repositories
 log_delete_repos=Deleted $1 package repositories
+log_enable_repo=Enabled package repository $1
+log_disable_repo=Disabled package repository $1
+log_delete_repo=Deleted package repository $1
+log_create_repo=Created package repository $1
 
 refresh_title=Refreshing Packages
 refresh_clearing=Clearing package caches ..
