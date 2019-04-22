@@ -437,4 +437,31 @@ sub create_repo_form
 return "XXX";
 }
 
+# delete_package_repo(&repo)
+# Delete a repo from the sources.list file
+sub delete_package_repo
+{
+my ($repo) = @_;
+&lock_file($repo->{'file'});
+my $lref = &read_file_lines($repo->{'file'});
+splice(@$lref, $repo->{'line'}, 1);
+&flush_file_lines($repo->{'file'});
+&unlock_file($repo->{'file'});
+}
 
+# enable_package_repo(&repo, enable?)
+# Enable or disable a repository
+sub enable_package_repo
+{
+my ($repo, $enable) = @_;
+&lock_file($repo->{'file'});
+my $lref = &read_file_lines($repo->{'file'});
+$lref->[$repo->{'line'}] =~ s/^#+\s*//;
+if (!$enable) {
+	$lref->[$repo->{'line'}] = "# ".$lref->[$repo->{'line'}];
+	}
+&flush_file_lines($repo->{'file'});
+&unlock_file($repo->{'file'});
+}
+
+1;
