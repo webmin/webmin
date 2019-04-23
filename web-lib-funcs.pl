@@ -4950,7 +4950,7 @@ if (!$main::redirect_built &&
 	            $url = "/" . $url . "/";
 	        	}
 	    	}
-	    # Append hex URL representation to stored file name, to process multiple, simultaneous requests
+	    # Append random string to stored file name, to process multiple, simultaneous requests
 	    my $url_salt  = int(rand() * 10000000);
 	    $var{$key} = $url;
 	    write_file(tempname('.theme_' . $salt . '_' . $url_salt . '_' . get_product_name() . '_' . $key . '_' . $remote_user), \%var);
