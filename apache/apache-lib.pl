@@ -879,7 +879,7 @@ foreach $e (@{$_[0]}) {
 		$names = " (";
 		foreach $ed (split(/\s+/, $e->{'name'})) {
 			# nodo50 v0.1 - Change 000004 - Open new window for Help in Apache module and mod_apachessl Help from http://www.apache-ssl.org and
-			# nodo50 v0.1 - Change 000004 - Abre nueva ventana para Ayuda del módulo Apache y para mod_apachessl busca la Ayuda en http://www.apache-ssl.org and
+			# nodo50 v0.1 - Change 000004 - Abre nueva ventana para Ayuda del mÃ³dulo Apache y para mod_apachessl busca la Ayuda en http://www.apache-ssl.org and
 			$names .= "<tt>".&ui_link( ($e->{'module'} eq 'mod_apachessl' ? 'http://www.apache-ssl.org/docs.html#'.$ed : $apache_docbase."/".$e->{'module'}.".html#".lc($ed)), $ed )."</tt>&nbsp;";
 			#$names .= "<tt><a href='".$apache_docbase."/".$e->{'module'}.".html#".lc($ed)."'>".$ed."</a></tt> ";
 			# nodo50 v0.1 - Change 000004 - End
@@ -1155,7 +1155,7 @@ print "<p>\n";
 sub restart_button
 {
 local $rv;
-$args = "redir=".&urlize(&this_url());
+$args = "redir=".&urlize($gconfig{'webprefix'} . &this_url());
 local @rv;
 if (&is_apache_running()) {
 	if ($access{'apply'}) {
