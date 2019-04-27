@@ -4927,34 +4927,39 @@ else {
 if ($ENV{'HTTP_X_REQUESTED_WITH'} ne "XMLHttpRequest" &&
     $ENV{'REQUEST_URI'} !~ /xhr/  &&
     $ENV{'REQUEST_URI'} !~ /pjax/ &&
-		$ENV{'REQUEST_URI'} !~ /link.cgi\/\d+/ &&
+    $ENV{'REQUEST_URI'} !~ /link.cgi\/\d+/ &&
     $ENV{'REQUEST_URI'} =~ /xnavigation=1/) {
 		# Store requested URI if safe
 		if ($main::session_id && $remote_user) {
-	    my %var;
-	    my $key  = 'goto';
-	    my $xnav = "xnavigation=1";
-	    my $url  = "$gconfig{'webprefix'}$ENV{'REQUEST_URI'}";
-	    my $salt = substr(encode_base64($main::session_id), 0, 16);
-	    $url =~ s/[?|&]$xnav//g;
-	    $salt =~ tr/A-Za-z0-9//cd;
+		    my %var;
+		    my $key  = 'goto';
+		    my $xnav = "xnavigation=1";
+		    my $url  = "$gconfig{'webprefix'}$ENV{'REQUEST_URI'}";
+		    my $salt = substr(encode_base64($main::session_id), 0, 16);
+		    $url =~ s/[?|&]$xnav//g;
+		    $salt =~ tr/A-Za-z0-9//cd;
 
-	    if (!$trust) {
-	        my @parent_dir = split('/', $url);
-	        $url = $gconfig{'webprefix'} ? $parent_dir[2] : $parent_dir[1];
-	        if ($url =~ /.cgi/) {
-	            $url = "/";
-	        	}
-	        	else {
-	            $url = "/" . $url . "/";
-	        	}
-	    	}
-			# Append hex URL representation to stored file name, to process multiple, simultaneous requests
-			my $url_salt  = substr(unpack("H*", $url), -180);
-	    $var{$key} = $url;
-	    write_file(tempname('.theme_' . $salt . '_' . $url_salt . '_' . get_product_name() . '_' . $key . '_' . $remote_user), \%var);
+		    if (!$trust) {
+		        my @parent_dir = split('/', $url);
+		        $url = $gconfig{'webprefix'} ? $parent_dir[2] : $parent_dir[1];
+		        if ($url =~ /.cgi/) {
+		            $url = "/";
+		        	}
+		        	else {
+		            $url = "/" . $url . "/";
+		        	}
+		    	}
+		    # Append random string to stored file name, to process multiple, simultaneous requests
+		    my $url_salt  = int(rand() * 10000000);
+		    $var{$key} = $url;
+
+		    # Write follow URL only once
+		    if (!$main::redirect_built) {
+		    	write_file(tempname('.theme_' . $salt . '_' . $url_salt . '_' . get_product_name() . '_' . $key . '_' . $remote_user), \%var);
+		    	}
+		    $main::redirect_built++
 		}
-  &redirect($gconfig{'webprefix'} . "/");
+  &redirect("/");
 	}
 if (!$trust) {
 	# Looks like a link from elsewhere .. show an error
