@@ -67,6 +67,13 @@ if (@rv) {
 			else {
 				$cargs = "?".$cargs if ($cargs ne '' &&
 							$cargs !~ /^(\/|%2F)/);
+				# Don't print it two times, it's very confusing
+				if (grep(/^$ctitle$/, @links)) {
+				    my $i = 0;
+				    my $c = scalar @links;
+				    $i++ until $links[$i] eq $ctitle or $i == $c;
+				    splice(@links, $i, 1);
+					}
 				push(@links,
 				   "<a href='$cmod/$cpage$cargs'>$ctitle</a>");
 				}
@@ -78,7 +85,7 @@ if (@rv) {
 			$hi,
 			$text{'wsearch_type_'.$r->{'type'}},
 			"<a href='$r->{'mod'}->{'dir'}/'>$r->{'mod'}->{'desc'}</a>",
-			&ui_links_row(\@links),
+			&ui_links_row(\@links, 1),
 			]);
 		}
 	print &ui_columns_end();
