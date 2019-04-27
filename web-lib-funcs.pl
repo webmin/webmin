@@ -4959,7 +4959,7 @@ if ($ENV{'HTTP_X_REQUESTED_WITH'} ne "XMLHttpRequest" &&
 		    	}
 		    $main::redirect_built++
 		}
-  &redirect($gconfig{'webprefix'} . "/");
+  &redirect("/");
 	}
 if (!$trust) {
 	# Looks like a link from elsewhere .. show an error
