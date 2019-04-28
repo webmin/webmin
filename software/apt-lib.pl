@@ -432,9 +432,54 @@ foreach my $f ($sources_list_file, glob("$sources_list_dir/*")) {
 return @rv;
 }
 
+# create_repo_form()
+# Returns HTML for a package repository creation form
 sub create_repo_form 
 {
-return "XXX";
+my $rv;
+$rv .= &ui_table_row($text{'apt_repo_url'},
+		     &ui_textbox("url", undef, 40));
+$rv .= &ui_table_row($text{'apt_repo_path'},
+		     &ui_textbox("path", undef, 40));
+return $rv;
+}
+
+# create_repo_parse(&in)
+# Parses input from create_repo_form, and returns either a new repo object or
+# an error string
+sub create_repo_parse
+{
+my ($in) = @_;
+my $repo = { 'enabled' => 1 };
+
+# Parse base URL
+$in->{'url'} =~ /^(http|https|ftp|file):\S+$/ ||
+	return $text{'apt_repo_eurl'};
+$repo->{'url'} = $in->{'url'};
+
+# Parse distro components
+my @w = split(/\s+|\//, $in->{'path'});
+@w || $text{'apt_repo_epath'};
+$repo->{'name'} = join("/", @w);
+$repo->{'id'} = $repo->{'url'}.$repo->{'name'};
+
+return $repo;
+}
+
+# create_package_repo(&repo)
+# Creates a new repository from the given hash (returned by create_repo_parse)
+sub create_package_repo
+{
+my ($repo) = @_;
+&lock_file($sources_list_file);
+my $lref = &read_file_lines($sources_list_file);
+push(@$lref, ($repo->{'enabled'} ? "" : "# ").
+	     "deb ".
+	     $repo->{'url'}." ".
+	     join(" ", split(/\//, $repo->{'name'})));
+&flush_file_lines($sources_list_file);
+&unlock_file($sources_list_file);
+return undef;
 }
 
 # delete_package_repo(&repo)

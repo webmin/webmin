@@ -240,6 +240,10 @@ apt_search=Find packages matching :
 apt_find=Search APT ..
 apt_title=Search APT
 apt_name=APT
+apt_repo_url=Repository base URL
+apt_repo_path=Distribution path components
+apt_repo_eurl=Missing or invalid-looking base URL
+apt_repo_epath=Missing distribution path
 
 yum_input=Package from YUM
 yum_install=Installing package(s) with command $1 ..
