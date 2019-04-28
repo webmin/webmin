@@ -12,7 +12,7 @@ if ($type eq 'repos') {
 	return &text('log_'.$action.'_repos', $object);
 	}
 elsif ($type eq 'repo') {
-	return &text('log_'.$action.'_repos',
+	return &text('log_'.$action.'_repo',
 		     "<tt>".&html_escape($object)."</tt>");
 	}
 elsif ($action eq 'update') {
