@@ -36,6 +36,7 @@ foreach $t (keys %text) {
 			$text{'default'}, $text{'categories_custom'}),
 		], [ "valign=middle","valign=middle" ]);
 	$realcat{$t}++;
+	$realcat{'other'}++ if ($t eq '');
 	}
 
 # Show new categories
