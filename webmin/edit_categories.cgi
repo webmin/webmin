@@ -26,6 +26,7 @@ print &ui_columns_start([ $text{'categories_code'},
 $file = "$config_directory/webmin.catnames";
 $file .= ".".$in{'lang'} if ($in{'lang'});
 read_file($file, \%catnames);
+$catnames{''} ||= $catnames{'other'};
 foreach $t (keys %text) {
 	$t =~ s/^category_// || next;
 	$field = $t || "other";

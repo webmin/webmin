@@ -12,6 +12,7 @@ foreach $t (keys %text) {
 	if (!$in{$field."_def"}) {
 		$in{$field} || &error(&text('categories_edesc', $t || 'other'));
 		$catnames{$t} = $in{$field};
+		$catnames{'other'} = $in{$field} if ($t eq "");
 		}
 	}
 

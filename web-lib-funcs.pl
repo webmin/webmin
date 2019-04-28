@@ -9881,6 +9881,7 @@ my (%cats, %catnames);
 foreach my $o (@lang_order_list) {
 	&read_file("$config_directory/webmin.catnames.$o", \%catnames);
 	}
+$catnames{''} ||= $catnames{'other'};
 if ($empty) {
 	%cats = %catnames;
 	}
