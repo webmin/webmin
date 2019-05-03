@@ -57,7 +57,7 @@ while(<GPG>) {
 				push(@{$k->{'name'}}, $1);
 				push(@{$k->{'email'}}, $2);
 				}
-			elsif (/^\s+([A-F0-9]{0,40}+)/) {
+			elsif (/^\s+([A-F0-9]{0,40})/) {
 				$k->{'key'} = $1;
 				$kmap{$1} = $k;
 				}
@@ -69,7 +69,7 @@ close(GPG);
 open(GPG, "$gpgpath --list-secret-keys 2>/dev/null |");
 while(<GPG>) {
 	if ((/^sec\s+(\S+)\/(\S+)\s+(\S+)\s+(.*)/ || 
-	    /^(\s+)([A-F0-9]{0,40}+)/) && $kmap{$2}) {
+	    /^(\s+)([A-F0-9]{0,40})/) && $kmap{$2}) {
 		$kmap{$2}->{'secret'}++;
 		}
 	}
