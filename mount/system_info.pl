@@ -21,11 +21,12 @@ sub list_system_info
         foreach my $disks (@disk_space) {
             if (ref($disks)) {
                 foreach my $disk (@$disks) {
+                    my $total = $disk->{'total'};
+                    next if (!$total);
                     my $dev_id       = $disk->{'device'};
                     my $dir          = $disk->{'dir'};
                     my $type         = $disk->{'type'};
-                    my $total        = $disk->{'total'};
-                    my $total_nice   = nice_size($disk->{'total'});
+                    my $total_nice   = nice_size($total);
                     my $free         = $disk->{'free'};
                     my $free_nice    = nice_size($disk->{'free'});
                     my $free_percent = 100 - int(($total - $free) / $total * 100);
