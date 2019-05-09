@@ -1672,6 +1672,9 @@ elsif ($job->{'special'} eq 'yearly') {
 		 'months' => 1,
 		 'weekdays' => '*' };
 	}
+elsif ($job->{'special'} eq 'reboot') {
+	return undef;
+	}
 my @mins = &cron_all_ranges($job->{'mins'}, 0, 59);
 my @hours = &cron_all_ranges($job->{'hours'}, 0, 23);
 my @days = &cron_all_ranges($job->{'days'}, 1, 31);
