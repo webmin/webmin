@@ -362,7 +362,7 @@ if (!glob($ifile."*")) {
 	}
 dbmopen(%$index, $ifile, 0600);
 my @st = stat($webmin_logfile);
-if (@st && $st[9] > $index->{'lastchange'}) {
+if (@st && (!$index->{'lastchange'} || $st[9] > $index->{'lastchange'})) {
 	# Log has changed .. perhaps need to rebuild
 	open(LOG, $webmin_logfile);
 	if ($index->{'lastsize'} && $st[7] >= $index->{'lastsize'}) {
