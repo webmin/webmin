@@ -30,8 +30,8 @@ if ($config{'cron_mode'} == 0) {
 $config{'upshow'} = $in{'show'};
 $config{'upmissing'} = $in{'missing'};
 $config{'upquiet'} = $in{'quiet'};
-$config{'upemail'} = $in{'email'};
-!$in{'show'} || $in{'email'} || &error($text{'update_eemail'});
+$config{'upemail'} = $in{'upemail'};
+!$in{'show'} || $in{'upemail'} || &error($text{'update_eemail'});
 &write_file("$module_config_directory/config", \%config);
 &unlock_file("$module_config_directory/config");
 
