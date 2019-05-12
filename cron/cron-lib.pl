@@ -1717,11 +1717,13 @@ if ($w eq "*") {
 	}
 elsif ($w =~ /^\*\/(\d+)$/) {
 	# only every Nth
-	for($j=$min; $j<=$max; $j+=$1) { $inuse{$j}++; }
+	my $step = $1 || 1;
+	for($j=$min; $j<=$max; $j+=$step) { $inuse{$j}++; }
 	}
 elsif ($w =~ /^(\d+)-(\d+)\/(\d+)$/) {
 	# only every Nth of some range
-	for($j=$1; $j<=$2; $j+=$3) { $inuse{int($j)}++; }
+	my $step = $3 || 1;
+	for($j=$1; $j<=$2; $j+=$step) { $inuse{int($j)}++; }
 	}
 elsif ($w =~ /^(\d+)-(\d+)$/) {
 	# all of some range
