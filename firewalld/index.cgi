@@ -41,8 +41,12 @@ else {
 	($zone) = grep { $_->{'default'} } @zones;
 	}
 $zone ||= $zones[0];
-my @azones = &list_firewalld_zones(1);
-my ($azone) = grep { $_->{'name'} eq $zone->{'name'} } @azones;
+my ($azone);
+eval {
+	local $main::error_must_die = 1;
+	my @azones = &list_firewalld_zones(1);
+	($azone) = grep { $_->{'name'} eq $zone->{'name'} } @azones;
+	};
 
 # Show zone selector
 print &ui_form_start("index.cgi");
@@ -116,17 +120,19 @@ else {
 	print &ui_links_row(\@links);
 	}
 
-# Show interfaces for this zone
-print &ui_form_start("save_ifaces.cgi");
-print &ui_hidden("zone", $zone->{'name'});
-print "<b>$text{'index_ifaces'}</b>\n";
-my %zifcs = map { $_, 1 } &unique(@{$azone->{'interfaces'}},
-				  @{$zone->{'interfaces'}});
-foreach my $i (&list_system_interfaces()) {
-	print &ui_checkbox("iface", $i, $i, $zifcs{$i}),"\n";
+if ($azone) {
+	# Show interfaces for this zone
+	print &ui_form_start("save_ifaces.cgi");
+	print &ui_hidden("zone", $zone->{'name'});
+	print "<b>$text{'index_ifaces'}</b>\n";
+	my %zifcs = map { $_, 1 } &unique(@{$azone->{'interfaces'}},
+					  @{$zone->{'interfaces'}});
+	foreach my $i (&list_system_interfaces()) {
+		print &ui_checkbox("iface", $i, $i, $zifcs{$i}),"\n";
+		}
+	print &ui_submit($text{'save'});
+	print &ui_form_end();
 	}
-print &ui_submit($text{'save'});
-print &ui_form_end();
 
 # Show start/apply buttons
 print &ui_hr();
