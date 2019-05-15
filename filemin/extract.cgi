@@ -22,7 +22,8 @@ elsif ($archive_type =~ /x-7z/) {
 	$cmd = "7z x ".quotemeta("$cwd/$in{'file'}")." -o" .quotemeta($cwd);
 	}
 elsif ($archive_type =~ /\/zip/) {
-	$cmd = "unzip -UU -o ".quotemeta("$cwd/$in{'file'}")." -d ".quotemeta($cwd);
+	my $uu = ($gconfig{'os_type'} =~ /-linux$/ ? '-UU' : undef);
+	$cmd = "unzip $uu -o ".quotemeta("$cwd/$in{'file'}")." -d ".quotemeta($cwd);
 	}
 elsif ($archive_type =~ /\/x-rar|\/vnd\.rar/) {
 	$cmd = "unrar x -r -y ".quotemeta("$cwd/$in{'file'}").
