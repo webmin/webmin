@@ -62,7 +62,7 @@ print &ui_table_row($text{'edit_active'},
 	&ui_yesno_radio("active", $job->{'active'} ? 1 : 0));
 
 # Next run time
-if (!$in{'new'}) {
+if (!$in{'new'} && ($config{'show_next'} || $userconfig{'show_next'})) {
 	$n = &next_run($job);
 	print &ui_table_row($text{'edit_next'},
 		$n ? &make_date($n) : "<i>$text{'index_nunknown'}</i>");
