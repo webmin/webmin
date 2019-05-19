@@ -160,6 +160,28 @@ closedir(DIR);
 return @rv;
 }
 
+=head2 list_visible_themes([current-theme])
+
+Lists all themes the user should be able to use, possibly including their
+current theme if one is set.
+
+=cut
+sub list_visible_themes
+{
+my ($curr) = @_;
+my @rv;
+my %done;
+foreach my $theme (&list_themes()) {
+        my $iscurr = $curr && $theme->{'dir'} eq $curr;
+        next if (-l $root_directory."/".$theme->{'dir'} &&
+                 $theme->{'dir'} =~ /\d+$/ &&
+                 !$iscurr);
+        next if ($done{$theme->{'desc'}}++ && !$iscurr);
+        push(@rv, $theme);
+        }
+return @rv;
+}
+
 =head2 list_modules
 
 Returns a list of all usermin modules installed and supported on this system.
