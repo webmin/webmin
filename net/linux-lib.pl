@@ -48,7 +48,7 @@ if (&has_command("ip")) {
 			# Line like :
 			# inet 127.0.0.1/8 scope host lo
                         $ifc{'address'} = $1;
-                        $ifc{'netmask'} = &prefix_to_mask("$3");
+                        $ifc{'netmask'} = &prefix_to_mask("$2");
 			}
 		if ($l =~ /\sbrd\s+([0-9\.]+)/) {
 			$ifc{'broadcast'} = $1;
