@@ -44,6 +44,12 @@ if (&has_command("ip")) {
 			$ifc{'address'} = $1;
 			$ifc{'netmask'} = &prefix_to_mask("$3");
 			}
+		elsif ($l =~ /\sinet\s+([0-9\.]+)\/(\d+)(\s+brd\s+(\S+))?\s+scope\s+host\s+(\S+)/ && $5 eq $ifc{'name'}) {
+			# Line like :
+			# inet 127.0.0.1/8 scope host lo
+                        $ifc{'address'} = $1;
+                        $ifc{'netmask'} = &prefix_to_mask("$3");
+			}
 		if ($l =~ /\sbrd\s+([0-9\.]+)/) {
 			$ifc{'broadcast'} = $1;
 			}
