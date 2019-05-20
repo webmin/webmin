@@ -231,14 +231,25 @@ else {
 		&unlock_file($old->{'file'});
 		}
 	else {
-		# Adding a new one (to it's own file)
+		# Adding a new one (possibly to it's own file)
 		$iface->{'file'} = $netplan_dir."/".$iface->{'name'}.".yaml";
-		@lines = ( "network:",
-			   "    ethernets:",
-			   @lines );
 		&lock_file($iface->{'file'});
 		my $lref = &read_file_lines($iface->{'file'});
-		push(@$lref, @lines);
+		my $nline = -1;
+		my $eline = -1;
+		for(my $i=0; $i<@$lref; $i++) {
+			$nline = $i if ($lref->[$i] =~ /^\s*network:/);
+			$eline = $i if ($lref->[$i] =~ /^\s*ethernets:/);
+			}
+		if ($nline < 0) {
+			$nline = scalar(@$lref);
+			push(@$lref, "network:");
+			}
+		if ($eline < 0) {
+			$eline = $nline + 1;
+			splice(@$lref, $nline+1, 0, "    ethernets:");
+			}
+		splice(@$lref, $eline+1, 0, @lines);
 		&flush_file_lines($iface->{'file'});
 		&unlock_file($iface->{'file'});
 		}
