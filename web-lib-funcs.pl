@@ -4592,7 +4592,7 @@ if (defined($ENV{'FOREIGN_MODULE_NAME'}) && $ENV{'FOREIGN_ROOT_DIRECTORY'}) {
 	}
 elsif ($ENV{'SCRIPT_NAME'}) {
 	my $sn = $ENV{'SCRIPT_NAME'};
-	$sn =~ s/^$gconfig{'webprefix'}//
+	$sn =~ s/^$gconfig{'webprefix'}\//\//
 		if (!$gconfig{'webprefixnoredir'});
 	if ($sn =~ /^\/([^\/]+)\//) {
 		# Get module name from CGI path
