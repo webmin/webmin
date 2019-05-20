@@ -682,6 +682,12 @@ sub check_reboot_required
 if ($gconfig{'os_type'} eq 'debian-linux') {
         return -e "/var/run/reboot-required" ? 1 : 0;
         }
+elsif ($gconfig{'os_type'} eq 'redhat-linux' &&
+       &has_command("needs-restarting")) {
+	my $ex = &execute_command(
+		"needs-restarting -r", undef, undef, undef, 0, 1);
+	return $ex ? 1 : 0;
+	}
 return 0;
 }
 
