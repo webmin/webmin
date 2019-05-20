@@ -26,7 +26,7 @@ index_emd5=Dieses Modul ist <a href='$1'>konfiguriert</a> um MD5-Passwortverschl
 index_eperl=Das Perl Module $1 das ben&ouml;tigt wird ist nicht installiert oder funktioniert nicht korrekt.
 index_eperl2=Die Fehlermeldung von Perl beim Laden des Modules war :
 index_eschema=Webmin ist mit dem LDAP Server verbunden, konnte jedoch nicht das Schema holen. Stellen Sie sicher, dass der Zugriff nicht im <a href='$1'>LDAP Server</a> Module verweigert wird.
-index_eslappasswd=Dieses Modul ist <a href='$1'>konfiguriert</a> um MD5-Passwortverschl&uuml;sselung zu benutzen, aber das Programm <tt>$2</tt> das f&uuml;r die Verschl&uuml;sselung benutzt wird ist nicht installiert.
+index_eslappasswd=Dieses Modul ist <a href='$1'>konfiguriert</a> um LDAP MD5-Passwortverschl&uuml;sselung zu benutzen, aber das Programm <tt>$2</tt> das f&uuml;r die Verschl&uuml;sselung benutzt wird ist nicht installiert.
 index_eusearch=Suche nach Benutzern unter $1 fehlgeschlagen: $2
 index_gadd=Eine neue LDAP-Gruppe hinzuf&uuml;gen.
 index_gnone=Es wurde keine LDAP-Gruppe unter $1 gefunden.
@@ -61,7 +61,7 @@ uedit_raw=LDAP-Attribute
 uedit_return=Benutzer-Details
 uedit_samba=Samba Login?
 uedit_sambaacctflags=Konto-Flags
-uedit_sambabadpasswordcount=Anzahl ung&#252;ltige Passw&#246;rter 
+uedit_sambabadpasswordcount=Anzahl ung&#252;ltige Passw&#246;rter
 uedit_sambapassopts=Samba Passwort Optionen
 uedit_sambapwdcanchange=Passwort kann ge&#228;ndert werden
 uedit_sambapwdlastset=Letztes Passwort Update

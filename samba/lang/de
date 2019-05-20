@@ -8,7 +8,7 @@ acl_conf_misc=Darf erweiterte Einstellungen ver&#228;ndern?
 acl_conf_net=Darf Unix Netzwerkoptionen ver&#228;ndern?
 acl_conf_pass=Darf Authentifizierungseinstellungen ver&#228;ndern?
 acl_conf_print=Darf Druckereinstellungen ver&#228;ndern?
-acl_conf_smb=Darf Windows Einstellungen ver&#228;ndern?
+acl_conf_smb=Darf Windows Netzwerk-Einstellungen ver&#228;ndern?
 acl_copy=Darf Freigaben kopieren?
 acl_edit=Bearbeiten
 acl_enc_passwd_opts=Einstellungen f&#252;r verschl&#252;sselte Passw&#246;rter.
@@ -66,7 +66,7 @@ bind_users=Auflistung der Benutzer verbieten?
 check_group1=$1 : Gruppen werden nur in Samba ab Version 3 unterst&#252;tzt.
 check_group2=$1 : Weder der Pfad zu <i>smbgroupedit</i> oder <i>net</i> sind in der <a href='$2'>Modulkonfiguration</a> eingerichtet.
 check_user1=$1 : Verschl&#252;sselte Passworte sind in der <a href='$2'>Authentifizierung</a> eingerichtet.
-check_user2=$1 : Weder die <i>Samba Passwort-Datei</i> oder der Pfad zu <i>pdbedit</i> sind in der <a href='$2'>Modulkonfiguration</a> eingerichtet.
+check_user2=$1 : Weder die <i>Samba Passwort-Datei</i> noch der Pfad zu <i>pdbedit</i> sind in der <a href='$2'>Modulkonfiguration</a> eingerichtet.
 config_all=Alle
 config_bytes=Bytes
 config_mins=Min

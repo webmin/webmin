@@ -3,3 +3,4 @@ longdesc=Manage the OpenLDAP server and objects in its database
 category=servers
 depends=ldap-client
 perldepends=Net::LDAP
+desc_de=LDAP Server
