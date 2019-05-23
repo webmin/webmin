@@ -54,7 +54,7 @@ unless (opendir ( DIR, $cwd )) {
         my $delimiter = ( $setype ? '\n' : ',' );
         my @searray =
           map { [ split( /\s+/, $_, 2 ) ] } split( /$delimiter/, $output );
-        %secontext = map { $_->[1] => ($_->[0] eq "?" ? undef : ('<span data-attributes="x">' . $_->[0] . '</span>') ) } @searray;
+        %secontext = map { $_->[1] => ($_->[0] eq "?" ? undef : ('<span>' . $_->[0] . '</span>') ) } @searray;
     }
 
     # Get info about directory entries
