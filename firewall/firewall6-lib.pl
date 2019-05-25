@@ -4,7 +4,7 @@
 # ipv6 initialization
 if ($config{'save_file6'}) {
 	# Force use of a different save file, and webmin's functions
-	$ip6tables_save_file = $config{'save6_file'};
+	$ip6tables_save_file = $config{'save_file6'};
 	}
 else {
 	if (-r "$module_root_directory/$gconfig{'os_type'}-lib.pl") {
