@@ -59,7 +59,8 @@ else {
 		&can_create_iface() || &error($text{'ifcs_ecannot'});
 		&can_iface($b) || &error($text{'ifcs_ecannot'});
 		}
-	elsif ($in{'name'} =~ /^([a-z]+\d*(s\d*)?(\.\d+)?):(\d+)$/) {
+	elsif ($in{'name'} =~ /^([a-z]+\d*(s\d*)?(\.\d+)?):(\d+)$/ ||
+	       $in{'name'} =~ /^(en[0-9a-z]+(s\d*)?(\.\d+)?):(\d+)$/) {
 		# also creating a virtual interface
 		foreach $eb (@boot) {
 			if ($eb->{'name'} eq $2 &&
@@ -85,7 +86,8 @@ else {
 		$b->{'name'} = $b->{'fullname'} = "bond".$in{'name'};
 		$b->{'bond'} = 1;
 		}
-	elsif ($in{'name'} =~/^[a-z]+\d*(s\d*)?(\.\d+)?$/) {
+	elsif ($in{'name'} =~ /^[a-z]+\d*(s\d*)?(\.\d+)?$/ ||
+	       $in{'name'} =~ /^en[0-9a-z]+(s\d*)?(\.\d+)?$/) {
 		# creating a real interface
 		$b->{'name'} = $in{'name'};
 		$b->{'fullname'} = $in{'name'};
