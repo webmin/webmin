@@ -316,7 +316,7 @@ elsif (@zones && (!@views || !$config{'by_view'})) {
 				@{$ztree{$par}} = &unique(@{$ztree{$par}}, $ch);
 				}
 			}
-		print "<table>\n";
+		print "<table data-recursive_tree>\n";
 		&recursive_tree("");
 		print "</table>\n";
 		}
