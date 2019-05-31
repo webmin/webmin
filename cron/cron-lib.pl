@@ -813,8 +813,10 @@ change_special_mode(form, 0);
 
 function change_special_mode(form, special)
 {
-form.special_def[0].checked = special;
-form.special_def[1].checked = !special;
+  if(form.special_def) {
+    form.special_def[0].checked = special;
+    form.special_def[1].checked = !special;
+  }
 }
 </script>
 EOF
@@ -971,8 +973,10 @@ change_special_mode(form, 0);
 
 function change_special_mode(form, special)
 {
-form.special_def[0].checked = special;
-form.special_def[1].checked = !special;
+  if(form.special_def) {
+    form.special_def[0].checked = special;
+    form.special_def[1].checked = !special;
+  }
 }
 </script>
 EOF
