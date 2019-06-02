@@ -35,6 +35,7 @@ while(<$fh>) {
 	s/\s+$//;
 	while(s/\\$//) {
 		local $cont = <$fh>;
+		last if (!$cont);
 		$cont =~ s/\s+$//;
 		$cont =~ s/^\s+//;
 		$_ .= $cont;
@@ -43,6 +44,7 @@ while(<$fh>) {
 	while(/^\s*([^\s=]+)\s*=([^"]*)"([^"]*)$/) {
 		# Quote in environment variable that is not ended!
 		local $cont = <$fh>;
+		last if (!$cont);
 		$cont =~ s/\r|\n//g;
 		$_ .= "\n".$cont;
 		$lnum++;
