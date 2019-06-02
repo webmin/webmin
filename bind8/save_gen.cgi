@@ -1,6 +1,7 @@
 #!/usr/local/bin/perl
 # save_gen.cgi
 # Save $generate records
+
 use strict;
 use warnings;
 our (%access, %text, %in);
@@ -17,7 +18,7 @@ my $dom = $zone->{'name'};
 
 my $file = $zone->{'file'};
 if (!$in{'show'}) {
-	&lock_all_files();
+	&lock_file(&make_chroot(&absolute_path($zone->{'file'})));
 	&before_editing($zone);
 	}
 my @recs = &read_zone_file($file, $dom);
@@ -118,7 +119,7 @@ for(my $i=0; defined($in{"type_$i"}); $i++) {
 &bump_soa_record($file, \@recs);
 &sign_dnssec_zone_if_key($zone, \@recs);
 &after_editing($zone);
-&unlock_all_files();
+&unlock_file(&make_chroot(&absolute_path($zone->{'file'})));
 &redirect("edit_master.cgi?zone=$in{'zone'}&view=$in{'view'}");
 
 sub expand_mods
