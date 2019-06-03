@@ -495,4 +495,9 @@ freebsd_edevfile=El fitxer de dispositiu '$1' no existeix
 cswap_file=El fitxer d'intercanvi $1 no existeix.
 cswap_size=Crea i munta un fitxer d'intercanvi de mida
 
+
+acl_sysinfo=Mostra les dades disponibles en disc al Tauler
+sysinfo_total=Total
+sysinfo_dev=ID de dispositiu
+
 __norefs=1

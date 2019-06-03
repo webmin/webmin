@@ -255,6 +255,13 @@ file_efile=Hi falta el nom del fitxer o directori a verificar
 file_esize=Mida de fitxer invàlida
 file_elarge=Fitxers massa grans: $1
 file_esmall=Fitxers massa petits: $1
+file_eowner=Fitxers amb propietari incorrecte: $1
+file_egroup=Fitxers amb grup incorrecte: $1
+file_owner=El propietari del fitxer ha de ser
+file_group=El grup del fitxer ha de ser
+file_nocheck=Qualsevol cosa
+file_perms=Els permisos octals han de ser
+file_eperm=Fitxers amb permisos incorrectes: $1
 
 traffic_iface=Interfície a monitoritzar
 traffic_bytes=Nombre màxim de bytes/segon

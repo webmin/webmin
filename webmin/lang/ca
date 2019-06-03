@@ -82,6 +82,7 @@ log_inmods=Mòduls les accions dels quals cal registrar
 log_mall=Registra les accions de tots els mòduls
 log_modules=Registra només les accions de...
 log_global=&lt;Accions globals&gt;
+log_sched=Registra les funcions planificades
 log_files=Registra els canvis de cada acció fets a fitxers
 log_fullfiles=Registra tots els fitxers modificats abans de les accions per a la seva reversió
 log_err=No s'han pogut desar les opcions de registre
@@ -465,7 +466,7 @@ upgrade_descsun-pkg=Aquest formulari permet actualitzar tota la instal·lació Web
 upgrade_descgentoo=Aquest formulari et permet actualitzar tota la instal·lació de Webmin a una versió nova traient el paquet actual Gentoo Emerge i instal·lant-ne un de nou. Pots instal·lar-lo a partir d'un fitxer local, un fitxer pujat o a partir de la versió més recent del repositori de Gentoo. Igual que per a l'actualització manual, es conservaran tots els valors de configuració i tots els mòduls de terceres parts.
 upgrade_local=Des d'un fitxer local
 upgrade_uploaded=Des d'un fitxer pujat
-upgrade_url=des d'un URL ftp o http
+upgrade_url=des d'un URL FTP o HTTP
 upgrade_delete=Suprimeix el directori de la versió anterior després de l'actualització
 upgrade_ftp=Versió més recent de www.webmin.com
 upgrade_emerge=Versió més recent del repositori Emerge
@@ -887,6 +888,8 @@ advanced_redir=Format de l'URL per a redireccions
 advanced_redir1=Només el camí
 advanced_redir0=Protocol, host, port i camí
 advanced_listdir=Llista els directoris sense fitxer índex
+advanced_headers=Capçaleres HTTP extra
+advanced_eheader=Les capçaleres han d'estar formatades com a <tt>Header: Valor</tt>
 
 syslog_errorlog=Registre d'errors de Webmin
 
@@ -1146,7 +1149,7 @@ letsencrypt_echain=No s'ha pogut baixar el certificat encadenat: $1
 letsencrypt_echain2=El certificat encadenat descarregat des de $1 està buit
 letsencrypt_ecsr=No s'ha pogut generar la petició CSR: $1
 letsencrypt_ekeygen=No s'ha pogut generar la clau privada: $1
-letsencrypt_enative=S'ha utilitzat anteriorment el client nadiu de Let's Encrypt en aquest sistema, i s'ha de seguir utilitzant per a totes les peticions futures de certificats
+letsencrypt_enative=S'ha utilitzat anteriorment el client nadiu de Let's Encrypt (certbot) en aquest sistema, i s'ha de seguir utilitzant per a totes les peticions futures de certificats
 
 announce_hide=Amaga Aquest Anunci
 

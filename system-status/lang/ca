@@ -21,6 +21,7 @@ right_procs=Processos en execució
 right_disk=Espai local en disc
 right_used=$1 total, $2 utilitzat
 right_used2=$2 utilitzat, $1 garantit, $3 extra
+right_used3=$2 utilitzat, $3 en cau, $1 total
 right_out=$1&nbsp;de&nbsp;$2
 right_fsfull=Atenció! El sistema de fitxers $2 muntat a $1 no té espai lliure al disc!
 right_fsnearly=Atenció! El sistema de fitxers $2 muntat a $1 només té $3 d'espai lliure as disc

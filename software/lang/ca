@@ -22,6 +22,9 @@ index_epackagecheck=El sistema de gestió de paquets seleccionat no és vàlid: $1.
 index_eupdatecheck=El sistema d'actualització seleccionat no és vàlid: $1.<br>Pot ser que hagis de seleccionar un mètode d'actualització diferent a la pàgina de <a href='$2'>configuració del mòdul</a>.
 index_echeckpackage=No s'ha detectat cap sistema de paquets!
 index_echeckupdate=No s'ha detectat cap sistema d'actualització!
+index_filter=Filtra els Paquets
+index_filterclear=Treu el Filtre
+index_filtered=S'estan mostrant <tt>$1</tt> paquets de <tt>$2</tt>
 
 search_title=Cerca de Paquet
 search_nomatch=No hi ha cap paquet que coincideixi amb '$1'
@@ -237,6 +240,10 @@ apt_search=Busca els paquets que coincideixin amb:
 apt_find=Busca a APT...
 apt_title=Recerca a APT
 apt_name=APT
+apt_repo_url=URL base del repositori
+apt_repo_path=Components del camí de distribució
+apt_repo_eurl=Hi falta l'URL base o bé sembla invàlid
+apt_repo_epath=Hi falta el camí de distribució
 
 yum_input=Paquet de YUM
 yum_install=S'esta(n) instal·lant el(s) paquet(s) amb l'ordre $1...
@@ -257,6 +264,17 @@ yum_title=Exploració de YUM
 yum_name=YUM
 yum_enable=Activa el repositori:
 yum_none=&lt;Cap&gt;
+yum_repo_id=ID del repositori
+yum_repo_name=Descripció del repositori
+yum_repo_url=URL base dels paquets
+yum_repo_gpg=Fitxer de certificat GPG
+yum_repo_none=Sense signar
+yum_repo_eid=Hi falta l'ID del repositori o bé és invàlid - només espermeten lletres i números
+yum_repo_eidclash=L'ID de repositori ja està en ús
+yum_repo_ename=Hi falta el nom del repositori
+yum_repo_eurl=Hi falt al'URL del repositori o bé és invàlid
+yum_repo_egpg=Hi falta el fitxer de certificat GPG o bé no existeix
+yum_repo_efile=El fitxer del repositori ja existeix!
 
 urpmi_name=URPMI
 urpmi_input=Paquet d'URPMI
@@ -446,8 +464,5 @@ IPKG_install_package=Instal·la
 IPKG_install_packagedesc=Instal·la aquest paquet al teu sistema
 IPKG_noupgrade=No hi ha res per actualitzar
 IPKG-edit_title=Gestiona el Paquet IPKG
-index_filter=Filtra els Paquets
-index_filterclear=Esborra el filtre
-index_filtered=S'estan mostrant <tt>$1</tt> paquets de <tt>$2</tt>
 IPKG_update_avail=Actualització disponible:
 IPKG_not_installed=El paquet no està instal·lat

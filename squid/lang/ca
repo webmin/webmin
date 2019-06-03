@@ -87,6 +87,7 @@ acl_eusers=Usuaris Auth Externs
 acl_eusersall=Tots els usuaris
 acl_euserssel=Només els llistats
 acl_case=Ignora la caixa
+acl_nodns=Desactiva les consultes
 acl_eusersre=Expressions Regulars dels Usuaris Auth Externs
 acl_asnum=Números AS
 acl_rtime=Temps de Refresc

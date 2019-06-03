@@ -16,6 +16,9 @@ index_addlv3=Crea un pool prim a <tt>$1</tt>.
 index_addlv=Crea un nou volum lògic.
 index_addsnap=Crea una nova instantània.
 index_return=als grups de volums
+index_return2=als volums físics
+index_return3=als volums lògics
+
 index_init=Això pot ser perquè encara no has activat LVM. <a href='$1'>Activa'l ara</a> per veure tots els grups de volums.
 index_eversion=Webmin només suporta les versions LVM 1.0  superiors. La sortida de $1 al sistema és: $2
 index_version=LVM versió $1
