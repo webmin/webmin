@@ -1,5 +1,5 @@
-virtualmin_config=Camí complet del directori de configuracio de Virtualmin,3,No instal·lat
-virtualmin_spam=Camí complet del programa de consulta d'usuaris de spam de Virtualmin,3,No instal·lat,40
+virtualmin_spam=Camí complet del programa de consulta de spam d'usuaris de Virtualmin,3,No està instal·lat,40
+virtualmin_config=Camí complet del directori de configuració de Virtualmin,3,No instal·lat
 warn_procmail=Mostra un avís si Procmail no està instal·lat,1,1-Sí,0-No
 forward_procmail=Crea fitxer .forward per executar procmail,1,1-Sí,0-No
 alias_files=Camí complet dels fitxers d'àlies globals,9,40,3,\t
