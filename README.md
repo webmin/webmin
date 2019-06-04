@@ -50,4 +50,4 @@ Complete set of documentation for Webmin and all of its modules can be found at 
 
 ## License
 
-Webmin is released under the [BSD License](https://github.com/webmin/webmin/blob/master/LICENSE).
+Webmin is released under the [BSD License](https://github.com/webmin/webmin/blob/master/LICENCE).
