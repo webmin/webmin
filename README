@@ -1,56 +1,53 @@
-Webmin Version 1.911
---------------------
-Webmin is a web-based interface for system administration for Unix. 
-Using any browser that supports tables and forms, you can setup user
-accounts, Apache, internet services, DNS, file sharing and so on. 
+## Contents
+* [Changelog](https://github.com/webmin/webmin/blob/master/CHANGELOG.md)
+* [About](#about)
+* [Installation](#installation)[<img src="https://github.com/webmin-devel/webmin/blob/master/media/download-23x14-stable.png?raw=true" title="Stable Versions">](http://webmin.com/download.html)[<img src="https://github.com/webmin-devel/webmin/blob/master/media/download-23x14-devel.png?raw=true" title="Development Versions">](http://webmin.com/devel.html)
+* [Documentation](#documentation)
+* [Development](#development)
+* [License](#license)
 
-Webmin consists of a simple web server, and a number of CGI programs
-which directly update system files like /etc/inetd.conf and /etc/passwd.
-The web server and all CGI programs are written in Perl version 5, and use
-only the standard perl modules. 
+## About
 
-Webmin can be installed in two different ways :
+**Webmin** is a web-based system administration tool for Unix-like servers, and services with over _1,000,000_ installations worldwide. Using it, it is possible to configure operating system internals, such as users, disk quotas, services or configuration files, as well as modify, and control open-source apps, such as BIND DNS Server, Apache HTTP Server, PHP, MySQL, and [many more](https://doxfer.webmin.com/Webmin/Introduction). 
 
-1) By just running the setup.sh script in the same directory as this README
-   file, with no arguments. You will be asked a series of questions such as
-   the configuration directory, your chosen login name and password, and
-   possibly your operating system. For questions where a default is shown
-   in square brackets, you can just hit enter to accept the default (which
-   is usually correct).
+![](https://github.com/webmin-devel/webmin/blob/master/media/webmin-demo-basic.gif?raw=true)
 
-   If the configuration directory you enter is the same as that used by
-   a previous install of Webmin, it will be automatically upgraded with all
-   configurable settings preserved.
+Usability can be expanded by installing modules, which can be custom made. Aside from this, there are two other major projects that extend its functionality:
 
-   This will set up Webmin to run directly from this directory. After running
-   setup.sh, do not delete the directory as it contains all the scripts and
-   programs that will be used by Webmin when it is running. Unlike in the second
-   installation method, the Webmin scripts do not get copied to another
-   location when installing.
+* [Virtualmin](https://www.virtualmin.com) is a powerful, flexible, most popular, and most comprehensive web-hosting control panel for Linux, and BSD systems, with over _100,000_ installations worldwide. It is available in an open-source community-supported version, and a more feature-filled version with premium support;
+* [Usermin](https://github.com/webmin/usermin) presents and controls a subset of user-centred features, rather than administrator-level tasks.
 
-2) By running the setup.sh script in this directory, but with a command-line
-   argument such as /usr/local/webmin . When a directory like this is provided,
-   Webmin's scripts will be copied to the chosen directory and it will be
-   configured to run from that location.
+Webmin includes _116_ [standard modules](https://doxfer.webmin.com/Webmin/Webmin_Modules), and there are at least as many third-party modules.
 
-   The exact same questions will be asked by setup.sh when it is run with
-   a directory argument, and upgrading will work in the same way. If you
-   are upgrading an old install, you should enter the same directory argument
-   so that the new files overwrite the old in order to save disk space.
 
-   After Webmin has been installed to a specific directory using this method,
-   the directory extracted from the tar.gz file can be safely deleted.
+### Requirements
+Perl 5.10 or higher.
 
-If you are installing Webmin on a Windows system, you must run the command
-perl setup.pl instead, as shell scripts will not typically run on a Windows
-system. The Windows version depends on several programs and modules that may
-not be part of the standard distribution. You will need the process.exe
-commmand, the sc.exe command and the Win32::Daemon Perl module.
+## Installation
+Webmin can be installed in two different ways:
 
-For more information, see http://www.webmin.com/
+ 1. By downloading a pre-built package, available for different distributions (CentOS, Fedora, SuSE, Mandriva, Debian, Ubuntu, Solaris and [other](http://www.webmin.com/support.html)) from our [download page](http://webmin.com/download.html);
+  <kbd>Note: It is highly recommended to [add repository](https://doxfer.webmin.com/Webmin/Installation) to your system for having automatic updates.</kbd>
 
-For documentation, see http://doxfer.webmin.com/
+ 2. By downloading, extracting [source file](https://prdownloads.sourceforge.net/webadmin/webmin-1.910.tar.gz), and running [_setup.sh_](http://www.webmin.com/tgz.html) script, with no arguments, which will setup to run it directly from this directory, or with a command-line argument, such as targeted directory.
+  <kbd>Note: If you are installing Webmin [on Windows](http://www.webmin.com/windows.html) system, you must run the command `perl setup.pl` instead. The Windows version depends on several programs, and modules that may not be part of the standard distribution. You will need _process.exe_ commmand, _sc.exe_ command, and _Win32::Daemon_ Perl module.</kbd>
 
-Jamie Cameron
-jcameron@webmin.com
+## Documentation
+Complete set of documentation for Webmin and all of its modules can be found at out [Wiki page](https://doxfer.webmin.com/Webmin/Main_Page).
 
+## Development
+
+### Lead developer
+
+* [Jamie Cameron](http://www.webmin.com/about.html) [![](https://github.com/webmin-devel/webmin/blob/master/media/linkedin-15x15.png?raw=true)](https://www.linkedin.com/in/jamiecameron2)
+
+### Contributors
+
+* [Joe Cooper](https://github.com/swelljoe)
+* [Ilia Rostovtsev](https://github.com/rostovtsev)
+* [Kay Marquardt](https://github.com/gnadelwartz)
+* [Nawawi Jamili](https://github.com/nawawi) + [57 more..](https://github.com/webmin/webmin/graphs/contributors)
+
+## License
+
+Webmin is released under the [BSD License](https://github.com/webmin/webmin/blob/master/LICENSE).
