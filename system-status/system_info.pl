@@ -223,6 +223,7 @@ if ($info->{'disk_total'} && &show_section('disk')) {
 if ($info->{'disk_fs'} && &show_section('disk')) {
 	foreach my $fs (@{$info->{'disk_fs'}}) {
 		next if (!$fs->{'total'});
+		next if ($fs->{'type'} eq 'iso9660');
 		if ($fs->{'free'} == 0) {
 			my $msg = &text('right_fsfull',
 					"<tt>$fs->{'dir'}</tt>",
