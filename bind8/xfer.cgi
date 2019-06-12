@@ -26,12 +26,12 @@ my @ips;
 my $conf = &get_config();
 my @confmasters = &find("masters", $conf);
 foreach my $av (@{$masters->{'members'}}) {
-	my $done = false;
+	my $done = 0;
 	foreach my $cm (@confmasters) {
 		if ($av->{'name'} eq $cm->{'value'}) {
 			foreach my $mb (@{$cm->{'members'}}) {
 				push(@ips, $mb->{name});
-				$done = true;
+				$done = 1;
 				}
 			}
 		}
