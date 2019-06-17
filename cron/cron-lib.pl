@@ -726,8 +726,9 @@ $dir = "$config{'run_parts_dir'}/$dir"
 opendir(DIR, &translate_filename($dir));
 local @rv = readdir(DIR);
 closedir(DIR);
-@rv = grep { !/^\./ } @rv;
+@rv = grep { /^[a-zA-Z0-9\_\-]+$/ } @rv;
 @rv = map { $dir."/".$_ } @rv;
+@rv = grep { -x $_ } @rv;
 return @rv;
 }
 
