@@ -152,9 +152,6 @@ elsif ($in{'razor'} || $in{'ham'}) {
 		else {
 			print "<b>$text{'razor_done'}</b><p>\n";
 			}
-		print "<script>\n";
-		print "window.location = 'list_mail.cgi?folder=$in{'folder'}&user=$in{'user'}';\n";
-		print "</script>\n";
 		}
 	&ui_print_footer("list_mail.cgi?folder=$in{'folder'}&user=$in{'user'}&dom=$in{'dom'}", $text{'mail_return'}, &user_list_link(), $text{'index_return'});
 	}
