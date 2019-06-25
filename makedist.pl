@@ -61,7 +61,7 @@ else {
 	  "fetchmail", "passwd", "at", "proftpd", "sshd",
 	  "heartbeat", "cluster-software", "cluster-useradmin", "qmailadmin",
 	  "mon", "jabber", "stunnel", "burner", "usermin",
-	  "fsdump", "lvm", "procmail",
+	  "fsdump", "lvm", "procmail", "majordomo"
 	  "cluster-webmin", "firewall", "sgiexports", "vgetty", "openslp",
 	  "webalizer", "shorewall", "adsl-client", "updown", "ppp-client",
 	  "pptp-server", "pptp-client", "ipsec", "ldap-useradmin",
