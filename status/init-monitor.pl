@@ -20,6 +20,7 @@ print &ui_table_row($text{'init_action'},
 sub parse_init_dialog
 {
 &depends_check($_[0], "init");
+$in{'action'} || &error($text{'init_eaction'});
 $_[0]->{'action'} = $in{'action'};
 }
 

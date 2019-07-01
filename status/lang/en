@@ -64,6 +64,7 @@ type_mailserver=Mailserver Response
 type_sshd=SSH Server
 type_raid=RAID Device Status
 type_iface=Network Interface Status
+type_init=Bootup Action
 type_sensors=LM Sensor Status
 type_nut=NUT UPS Value
 type_mailq=Mail Queue Size
@@ -348,6 +349,9 @@ raid_notfound=RAID device $1 not found
 raid_other=Other..
 
 iface_iface=Interface to check
+
+init_action=Action to check
+init_eaction=No action selected
 
 refresh_title=Refresh Status
 refresh_doing=Refreshing the status of all monitors ..
