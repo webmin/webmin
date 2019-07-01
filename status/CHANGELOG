@@ -90,3 +90,5 @@ Added a Module Config option to show the last collected status on the Webmin sys
 Added a config option to set a minimum interval between notifications for each monitor.
 ---- Changes since 1.900 ----
 Added support for file ownership and permission checks to the File or Directory monitor.
+---- Changes since 1.910 ----
+Added a monitor type to check if a bootup action is running or not.
