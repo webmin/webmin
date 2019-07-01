@@ -1387,6 +1387,34 @@ else {
 	}
 }
 
+=head2 list_action_names()
+
+Returns a list of just action names
+
+=cut
+sub list_action_names
+{
+if ($init_mode eq "upstart") {
+	return map { $_->{'name'} } &list_upstart_services();
+	}
+elsif ($init_mode eq "systemd") {
+	return map { $_->{'name'} } &list_systemd_services();
+	}
+elsif ($init_mode eq "init") {
+	return map { my @w = split(/\s+/, $_); $w[0] } &list_actions();
+	}
+elsif ($init_mode eq "win32") {
+	return map { $_->{'name'} } &list_win32_services();
+	}
+elsif ($init_mode eq "rc") {
+	return map { $_->{'name'} } &list_rc_scripts();
+	}
+elsif ($init_mode eq "launchd") {
+	return map { $_->{'name'} } &list_launchd_agents();
+	}
+return ( );
+}
+
 =head2 get_action_mode(name)
 
 Returns the init mode used by some action. May be different from the global
