@@ -60,6 +60,7 @@ index_repoheader=New package repository options
 
 update_title=Update Packages
 update_title2=Install Packages
+update_enone=No packages selected
 update_pkg=Now updating $1 ..
 update_pkg2=Now installing $1 ..
 update_done=Installed package $1 $2.
