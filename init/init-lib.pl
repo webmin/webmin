@@ -1371,10 +1371,11 @@ elsif ($action_mode eq "upstart") {
 	}
 elsif ($action_mode eq "systemd") {
 	# Check with systemd if it is running
-	my @systemds = &list_systemd_services();
-	my ($u) = grep { $_->{'name'} eq $name ||
-			 $_->{'name'} eq $name.".service" } @systemds;
-	return !$u ? -1 : $u->{'status'} ? 1 : 0;
+	my $out = &backquote_command(
+		"systemctl is-failed ".quotemeta($name)." 2>/dev/null");
+	$out =~ s/\r?\n//g;
+	return $out eq "active" ? 1 : 
+	       $out eq "inactive" || $out eq "failed" ? 0 : -1;
 	}
 elsif ($action_mode eq "launchd") {
 	my @agents = &list_launchd_agents();
