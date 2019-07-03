@@ -221,6 +221,7 @@ dns_hoststoo=Update hostname in host addresses if changed?
 dns_dhcp=Hostname is set by DHCP server?
 
 hosts_title=Host Addresses
+hosts_active=Enabled?
 hosts_ip=IP Address
 hosts_host=Hostnames
 hosts_add=Add a new host address.

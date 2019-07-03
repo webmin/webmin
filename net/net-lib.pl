@@ -39,14 +39,19 @@ local $line="";
 
 &open_readfile(HOSTS, $config{'hosts_file'});
 while($line=<HOSTS>) {
+	local $comment = 0;
 	$line =~ s/\r|\n//g;
+	if ($line =~ s/^\s*#+\s*//) {
+		$comment = 1;
+		}
 	$line =~ s/#.*$//g;
 	$line =~ s/\s+$//g;
-	local(@f)=split(/\s+/, $line);
-	local($ipaddr)=shift(@f);
+	local @f = split(/\s+/, $line);
+	local $ipaddr = shift(@f);
 	if (check_ipaddress_any($ipaddr)) {
 		push(@rv, { 'address' => $ipaddr,
 			    'hosts' => [ @f ],
+			    'active' => !$comment,
 			    'line', $lnum,
 			    'index', scalar(@rv) });
 		}
@@ -56,12 +61,22 @@ close(HOSTS);
 return @rv;
 }
 
+# make_host_line(&host)
+# Internal function to return a line for the hosts file
+sub make_host_line
+{
+local ($host) = @_;
+return ($host->{'active'} ? "" : "# ").
+       $host->{'address'}."\t".join(" ",@{$host->{'hosts'}})."\n";
+}
+
 # create_host(&host)
 # Add a new host to /etc/hosts
 sub create_host
 {
+local ($host) = @_;
 &open_tempfile(HOSTS, ">>$config{'hosts_file'}");
-&print_tempfile(HOSTS, $_[0]->{'address'},"\t",join(" ",@{$_[0]->{'hosts'}}),"\n");
+&print_tempfile(HOSTS, &make_host_line($host));
 &close_tempfile(HOSTS);
 }
 
@@ -69,16 +84,17 @@ sub create_host
 # Update the address and hosts of a line in /etc/hosts
 sub modify_host
 {
+local ($host) = @_;
 &replace_file_line($config{'hosts_file'},
-		   $_[0]->{'line'},
-		   $_[0]->{'address'}."\t".join(" ",@{$_[0]->{'hosts'}})."\n");
+		   $_[0]->{'line'}, &make_host_line($host));
 }
 
 # delete_host(&host)
 # Delete a host from /etc/hosts
 sub delete_host
 {
-&replace_file_line($config{'hosts_file'}, $_[0]->{'line'});
+local ($host) = @_;
+&replace_file_line($config{'hosts_file'}, $host->{'line'});
 }
 
 # list_ipnodes()

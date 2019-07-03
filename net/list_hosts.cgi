@@ -16,16 +16,21 @@ if ($access{'hosts'} == 2) {
 	}
 print &ui_columns_start([ $access{'hosts'} == 2 ? ( "" ) : ( ),
 			  $text{'hosts_ip'},
+			  $text{'hosts_active'},
 			  $text{'hosts_host'} ], undef, 0, \@tds);
 foreach $h (&list_hosts()) {
 	local @cols;
+	local $lnk;
 	if ($access{'hosts'} == 2) {
-		push(@cols, "<a href=\"edit_host.cgi?idx=$h->{'index'}\">".
-			    &html_escape($h->{'address'})."</a>");
+		$lnk = &ui_link("edit_host.cgi?idx=$h->{'index'}",
+			        &html_escape($h->{'address'}));
 		}
 	else {
-		push(@cols, &html_escape($h->{'address'}));
+		$lnk = &html_escape($h->{'address'});
 		}
+	push(@cols, $lnk);
+	push(@cols, $h->{'active'} ? $text{'yes'}
+				   : "<font color=red>$text{'no'}</font>");
 	push(@cols, join(" , ", map { &html_escape($_) }
 				    @{$h->{'hosts'}}));
 	if ($access{'hosts'} == 2) {

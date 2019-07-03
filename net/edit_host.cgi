@@ -7,6 +7,7 @@ $access{'hosts'} == 2 || &error($text{'hosts_ecannot'});
 &ReadParse();
 if ($in{'new'}) {
 	&ui_print_header(undef, $text{'hosts_create'}, "");
+	$h = { 'active' => 1 };
 	}
 else {
 	&ui_print_header(undef, $text{'hosts_edit'}, "");
@@ -19,6 +20,10 @@ print &ui_form_start("save_host.cgi");
 print &ui_hidden("new", $in{'new'});
 print &ui_hidden("idx", $in{'idx'});
 print &ui_table_start($text{'hosts_detail'}, undef, 2);
+
+# Active?
+print &ui_table_row($text{'hosts_active'},
+	&ui_yesno_radio("active", $h->{'active'}));
 
 # IP address
 print &ui_table_row($text{'hosts_ip'},

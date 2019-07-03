@@ -77,3 +77,5 @@ Added support for IPv6, DHCP and new ethernet device names on FreeBSD.
 Added support for configuring intefaces with the "ip" command, as seen on RHEL 7, CentOS 7 and other new Linux distributions.
 ---- Changes since 1.760 ----
 On CentOS, Fedora and Redhat systems, the DNSn lines in ifcfg-* files are now updated in sync with resolv.conf.
+---- Changes since 1.910 ----
+Added an option to disable (comment out) hosts file entries.

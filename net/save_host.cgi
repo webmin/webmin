@@ -26,7 +26,8 @@ else {
 	if ($in{'new'}) {
 		# saving a host
 		$host = { 'address' => $in{'address'},
-			  'hosts' => \@h };
+			  'hosts' => \@h,
+			  'active' => $in{'active'} };
 		&create_host($host);
 		}
 	else {
@@ -34,6 +35,7 @@ else {
 		$host = $hosts[$in{'idx'}];
 		$host->{'address'} = $in{'address'};
 		$host->{'hosts'} = \@h;
+		$host->{'active'} = $in{'active'};
 		&modify_host($host);
 		}
 	}
