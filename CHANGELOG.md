@@ -1,5 +1,8 @@
 ## Changelog
 
+#### Version 1.920 (July 04, 2019)
+This update includes the latest theme version, translation updates, the ability to disable hosts file entries, easier monitoring of bootup actions, and a bunch of bugfixes.
+
 #### Version 1.910 (May 09, 2019)
 This release includes theme and translation updates, a page for editing package repositories, cron and status module improvements, and a bunch of other bugfixes and small improvements.
 
