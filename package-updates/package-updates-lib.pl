@@ -682,11 +682,47 @@ sub check_reboot_required
 if ($gconfig{'os_type'} eq 'debian-linux') {
         return -e "/var/run/reboot-required" ? 1 : 0;
         }
-elsif ($gconfig{'os_type'} eq 'redhat-linux' &&
-       &has_command("needs-restarting")) {
-	my $ex = &execute_command(
-		"needs-restarting -r", undef, undef, undef, 0, 1);
-	return $ex ? 1 : 0;
+elsif ($gconfig{'os_type'} eq 'redhat-linux') {
+	my $needs_restarting = has_command("needs-restarting");
+	my $needs_restarting_correct = 0;
+	if ($needs_restarting) {
+		($needs_restarting_correct) = `needs-restarting -h` =~ /reboothint/;
+		}
+	if ($needs_restarting && $needs_restarting_correct) {
+		my $ex = &execute_command(
+			"needs-restarting -r", undef, undef, undef, 0, 1);
+		return $ex ? 1 : 0;
+		}
+	else {
+		my ($new_kernel_install_time, $last_reboot_time, $new_kernel, $cur_kernel);
+		
+		&execute_command('rpm -q kernel --qf "%{INSTALLTIME}\n"', undef, \$new_kernel_install_time);
+		$new_kernel_install_time =~ /(.*$)/;
+		$new_kernel_install_time = $1;
+
+		&execute_command("sed -n '/^btime /s///p' /proc/stat", undef, \$last_reboot_time);
+
+		&execute_command("rpm -q --last kernel", undef, \$new_kernel);
+		$new_kernel =~ /(kernel-\S+)/;
+		$new_kernel = $1;
+		$new_kernel =~ s/^\s+|\s+$//g;
+
+		&execute_command("uname -r", undef, \$cur_kernel);
+		$cur_kernel =~ /^(\S+)$/;
+		# make sure to prevent false positive alerts on custom kernels 
+		&execute_command("rpm -q kernel-$cur_kernel", undef, \$cur_kernel);
+		$cur_kernel =~ s/^\s+|\s+$//g;
+		$cur_kernel = undef if ($cur_kernel =~ /not installed/);
+
+		if ($new_kernel_install_time && $last_reboot_time && 
+			$new_kernel_install_time > $last_reboot_time &&
+			$cur_kernel && $new_kernel && $cur_kernel ne $new_kernel) {
+			return 1;
+			}
+		else {
+			return 0;
+			}
+		}
 	}
 return 0;
 }
