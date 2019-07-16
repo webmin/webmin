@@ -161,6 +161,7 @@ if (($letsencrypt_cmd && -d "/etc/letsencrypt/accounts") || $wildcard) {
 			" --manual-public-ip-logging-ok".
 			" --config $temp".
 			" --rsa-key-size $size".
+			" --cert-name ".quotemeta($doms[0]).
 			($staging ? " --test-cert" : "").
 			" 2>&1)");
 		&reset_environment();
@@ -179,6 +180,7 @@ if (($letsencrypt_cmd && -d "/etc/letsencrypt/accounts") || $wildcard) {
 			" --manual-public-ip-logging-ok".
 			" --config $temp".
 			" --rsa-key-size $size".
+			" --cert-name ".quotemeta($doms[0]).
 			($staging ? " --test-cert" : "").
 			" 2>&1)");
 		&reset_environment();
