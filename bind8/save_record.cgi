@@ -431,7 +431,7 @@ else {
 		# For other record types, just save the lines
 		$in{'values'} =~ s/\r//g;
 		my @vlines = split(/\n/, $in{'values'});
-		$vals = join(" ",map { $_ =~ /^\S+$/ ? $_ : "\"$_\"" } @vlines);
+		$vals = join(" ",map { $_ =~ /\s|;/ ? "\"$_\"" : $_ } @vlines);
 		}
 	$fullname = &convert_to_absolute($in{'name'}, $in{'origin'});
 	if ($config{'short_names'}) {
