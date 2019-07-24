@@ -29,7 +29,7 @@ Webmin can be installed in two different ways:
  1. By downloading a pre-built package, available for different distributions (CentOS, Fedora, SuSE, Mandriva, Debian, Ubuntu, Solaris and [other](http://www.webmin.com/support.html)) from our [download page](http://webmin.com/download.html);
   <kbd>Note: It is highly recommended to [add repository](https://doxfer.webmin.com/Webmin/Installation) to your system for having automatic updates.</kbd>
 
- 2. By downloading, extracting [source file](https://prdownloads.sourceforge.net/webadmin/webmin-1.910.tar.gz), and running [_setup.sh_](http://www.webmin.com/tgz.html) script, with no arguments, which will setup to run it directly from this directory, or with a command-line argument, such as targeted directory.
+ 2. By downloading, extracting [source file](https://prdownloads.sourceforge.net/webadmin/webmin-1.921.tar.gz), and running [_setup.sh_](http://www.webmin.com/tgz.html) script, with no arguments, which will setup to run it directly from this directory, or with a command-line argument, such as targeted directory.
   <kbd>Note: If you are installing Webmin [on Windows](http://www.webmin.com/windows.html) system, you must run the command `perl setup.pl` instead. The Windows version depends on several programs, and modules that may not be part of the standard distribution. You will need _process.exe_ commmand, _sc.exe_ command, and _Win32::Daemon_ Perl module.</kbd>
 
 ## Documentation
