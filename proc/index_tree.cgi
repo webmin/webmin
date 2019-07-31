@@ -16,7 +16,7 @@ foreach $pr (@procs) {
 	$procmap{$p} = $pr;
 	$argmap{$p} = $pr->{'args'};
 	$usermap{$p} = $pr->{'user'};
-	$stimemap{$p} = $pr->{'_stime'};
+	$stimemap{$p} = &format_stime($pr);
 	push(@{$children{$pp}}, $p);
 	$inlist{$pr->{'pid'}}++;
 	}

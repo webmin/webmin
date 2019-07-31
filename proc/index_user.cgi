@@ -30,7 +30,7 @@ foreach $u (@users) {
 			}
 		push(@cols, $pr->{'cpu'});
 		if ($info_arg_map{'_stime'}) {
-			push(@cols, $pr->{'_stime'});
+			push(@cols, &format_stime($pr));
 			}
 		push(@cols, &html_escape(&cut_string($pr->{'args'})));
 		print &ui_columns_row(\@cols);

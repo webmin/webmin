@@ -641,5 +641,21 @@ else {
 	}
 }
 
+# format_stime(&proc)
+# Returns the process start time in human-readable format
+sub format_stime
+{
+my ($p) = @_;
+if (!$p->{'_stime_unix'}) {
+	return $p->{'_stime'}
+	}
+elsif (time() - $p->{'_stime_unix'} > 86400) {
+	return &make_date($p->{'_stime_unix'}, 1);
+	}
+else {
+	return &make_date($p->{'_stime_unix'});
+	}
+}
+
 1;
 
