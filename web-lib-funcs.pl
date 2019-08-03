@@ -720,6 +720,7 @@ if ($ENV{'QUERY_STRING'}) {
 	}
 @in = split(/\&/, $in);
 foreach my $i (@in) {
+	$i =~ /\0/ && &error("Null byte in query string");
 	my ($k, $v) = split(/=/, $i, 2);
 	if (!$_[2]) {
 		$k =~ tr/\+/ /;
