@@ -1118,6 +1118,7 @@ foreach (@$lref) {
 	elsif (/^\s*\!includedir\s+(\S+)/) {
 		# Including sections from files in a directory
 		my $dir = $1;
+		$dir =~ s/\/$//;
 		opendir(DIR, $dir);
 		my @files = map { $dir."/".$_ } readdir(DIR);
 		closedir(DIR);
