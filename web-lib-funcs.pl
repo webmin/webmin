@@ -7307,7 +7307,7 @@ elsif ($v[0] eq 'REF') {
 elsif ($v[0] eq 'UNDEF') {
 	$rv = undef;
 	}
-elsif ($v[0] =~ /^OBJECT\s+(.*)$/) {
+elsif ($v[0] =~ /^OBJECT\s+([A-Za-z0-9_:]+)$/) {
 	# An object hash that we have to re-bless
 	my $cls = $1;
 	$rv = { };
