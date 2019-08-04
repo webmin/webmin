@@ -12,7 +12,7 @@ if ($in{'save'} || !@d) {
 	foreach $v (keys %in) {
 		if ($v =~ /^value_(\S+)$/) {
 			&execute_sql_logged($master_db,
-					    "set global $1 = $in{$v}");
+					    "set global $1 = '$in{$v}'");
 			$first ||= $1;
 			$count++;
 			}
