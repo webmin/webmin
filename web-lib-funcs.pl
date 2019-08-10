@@ -1272,11 +1272,11 @@ if (!$_[$i]) {
 		print "$postbody\n";
 		}
 	if ($tconfig{'postbodyinclude'}) {
-    my ($theme, $overlay) = split(' ', $gconfig{'theme'});
-    my $file_contents = read_file_contents("$root_directory/$overlay/$tconfig{'postbodyinclude'}");
-    $file_contents = replace_meta($file_contents);
-    print $file_contents;
-    }
+		my ($theme, $overlay) = split(' ', $gconfig{'theme'});
+		my $file_contents = read_file_contents("$root_directory/$overlay/$tconfig{'postbodyinclude'}");
+		$file_contents = replace_meta($file_contents);
+		print $file_contents;
+		}
 	if (defined(&theme_postbody)) {
 		&theme_postbody(@_);
 		}
@@ -4985,6 +4985,7 @@ if (!$trust) {
 		}
 	print "<p>\n";
 
+	&footer();
 	exit;
 	}
 $main::no_referers_check++;
