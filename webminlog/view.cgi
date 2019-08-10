@@ -43,10 +43,10 @@ else {
 	}
 
 print &ui_table_row($text{'view_user'},
-		    $act->{'user'});
+		    &html_escape($act->{'user'}));
 
 print &ui_table_row($text{'view_ip'},
-		    $act->{'ip'});
+		    &html_escape($act->{'ip'}));
 
 if ($act->{'sid'} ne '-') {
 	print &ui_table_row($text{'view_sid'},

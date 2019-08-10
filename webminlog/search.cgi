@@ -219,7 +219,9 @@ elsif (@match) {
 		if ($anno) {
 			$cols[$#cols] .= "&nbsp;<img src=images/star.gif>";
 			}
-		push(@cols, $minfo->{'desc'}, $act->{'user'}, $act->{'ip'});
+		push(@cols, $minfo->{'desc'},
+			    &html_escape($act->{'user'}),
+			    &html_escape($act->{'ip'}));
 		if ($config{'host_search'}) {
 			push(@cols, $act->{'webmin'});
 			}
