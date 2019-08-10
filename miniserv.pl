@@ -1451,6 +1451,11 @@ while(1) {
 # for logging unless trust_real_ip is set
 local $headerhost = $header{'x-forwarded-for'} ||
 		    $header{'x-real-ip'};
+if ($headerhost) {
+	# Only real IPs are allowed
+	$headerhost = undef if (!&check_ipaddress($headerhost) &&
+				!&check_ip6address($headerhost));
+	}
 if ($config{'trust_real_ip'}) {
 	$acpthost = $headerhost || $acpthost;
 	if (&check_ipaddress($headerhost) || &check_ip6address($headerhost)) {
