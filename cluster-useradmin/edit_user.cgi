@@ -429,11 +429,11 @@ if (@icons < @hosts) {
 	      "value=\"$text{'uedit_sync'}\"></td>\n";
 	}
 
-print "</form><form action=\"delete_user.cgi\">\n";
+print "</tr></table></form><p><form action=\"delete_user.cgi\">\n";
 print "<input type=hidden name=user value=\"$uinfo{'user'}\">\n";
-print "<td align=right><input type=submit ",
-      "value=\"$text{'delete'}\"></td> </tr>\n";
-print "</form></table><p>\n";
+print "<input type=submit ",
+      "value=\"$text{'delete'}\">\n";
+print "</form><p>\n";
 
 print &ui_hr();
 print &ui_subheading($text{'uedit_hosts'});
