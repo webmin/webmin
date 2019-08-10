@@ -4964,6 +4964,7 @@ if ($ENV{'HTTP_X_REQUESTED_WITH'} ne "XMLHttpRequest" &&
 	}
 if (!$trust) {
 	# Looks like a link from elsewhere .. show an error
+	$current_theme = undef;
 	&header($text{'referer_title'}, "", undef, 0, 1, 1);
 
 	$prot = lc($ENV{'HTTPS'}) eq 'on' ? "https" : "http";
