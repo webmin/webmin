@@ -7,7 +7,7 @@
       <div class="form-group">
           <label>$text{'new_folder_name'}</label>
           <input id="name" name="name" type="text" title="$text{'provide_folder_name'}">
-          <input type='hidden' name='path' value='$path'>
+          <input type='hidden' name='path' value='$urlized_path'>
       </div>
   </form>
 </div>
@@ -17,7 +17,7 @@
       <div class="form-group">
           <label>$text{'new_file_name'}</label>
           <input name="name" type="text">
-          <input type='hidden' name='path' value='$path'>
+          <input type='hidden' name='path' value='$urlized_path'>
       </div>
   </form>
 </div>
@@ -28,7 +28,7 @@
           <label>$text{'new_name'}</label>
           <input name="name" type="text">
           <input type='hidden' name='file' value='' required>
-          <input type='hidden' name='path' value='$path'>
+          <input type='hidden' name='path' value='$urlized_path'>
       </div>
   </form>
 </div>
@@ -97,15 +97,15 @@
       <input name="username" type="text"><br>
       <label>$text{'dialog_user_pass'}</label>
       <input name="password" type="password">
-      <input type='hidden' name='path' value='$path'>
+      <input type='hidden' name='path' value='$urlized_path'>
     </div>
   </form>
 </div>
 
 <div id="readyForUploadDialog" class="modal">
-    <form id='upload-form' method='post' action='upload.cgi?path=$path&id=$upid' enctype='multipart/form-data' onsubmit='window.open("$gconfig{'webprefix'}/uptracker.cgi?id=$upid&uid=$uid", "uptracker", "toolbar=no, menubar=no, scrollbars=no, location=no, resizable=no, width=screen.width, height=screen.height")'>
+    <form id='upload-form' method='post' action='upload.cgi?path=$urlized_path&id=$upid' enctype='multipart/form-data' onsubmit='window.open("$gconfig{'webprefix'}/uptracker.cgi?id=$upid&uid=$uid", "uptracker", "toolbar=no, menubar=no, scrollbars=no, location=no, resizable=no, width=screen.width, height=screen.height")'>
         <input type='file' id='upfiles' name='upfiles' multiple onchange='countUploads(this)'>
-        <input type='hidden' name='path' value='$path'>
+        <input type='hidden' name='path' value='$urlized_path'>
     </form>
     <div id="readyForUploadList" class="well">
     </div>
@@ -179,7 +179,7 @@
           <label>$text{'search_label'}</label>
           <input id="query" name="query" type="text" title="$text{'provide_search_query'}"><br>
           <input id="caseins" name="caseins" type="checkbox" checked="checked"> $text{'search_insensitive'}
-          <input type='hidden' name='path' value='$path'>
+          <input type='hidden' name='path' value='$urlized_path'>
       </div>
   </form>
 </div>

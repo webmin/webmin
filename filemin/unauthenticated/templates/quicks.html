@@ -2,7 +2,7 @@
 <button class="btn btn-inverse" onclick='searchDialog()' title="$text{'search'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
 	<i class="fa fa-search" aria-hidden="true"></i>
 </button>
-<button class="btn btn-inverse" onclick="location.href='bookmark.cgi?path=$path'" title="$text{'bookmark_folder'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
+<button class="btn btn-inverse" onclick="location.href='bookmark.cgi?path=$urlized_path'" title="$text{'bookmark_folder'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
 	<i class="fa fa-bookmark-o" aria-hidden="true"></i>
 </button>
 <div class="btn-group">
@@ -13,7 +13,7 @@
     $bookmarks
   </ul>
 </div>
-<button class="btn btn-inverse" onclick='window.location.href="index.cgi?path=$path"' title="$text{'refresh'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
+<button class="btn btn-inverse" onclick='window.location.href="index.cgi?path=$urlized_path"' title="$text{'refresh'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
 	<i class="fa fa-refresh" aria-hidden="true"></i>
 </button>
 <button class="btn btn-inverse" onclick='selectAll()' title="$text{'select_all'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
@@ -28,7 +28,7 @@
 <button class="btn btn-inverse" onclick='cutSelected()' title="$text{'cut_selected'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
     <i class="fa fa-cut" aria-hidden="true"></i>
 </button>
-<button class="btn btn-inverse" onclick="location.href='paste.cgi?path=$path'" title="$text{'paste'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
+<button class="btn btn-inverse" onclick="location.href='paste.cgi?path=$urlized_path'" title="$text{'paste'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
     <i class="fa fa-paste" aria-hidden="true"></i>
 </button>
 <button class="btn btn-inverse" onclick='createFolderDialog()' title="$text{'create_folder'}" data-toggle="tooltip" data-placement="bottom" data-container="body">

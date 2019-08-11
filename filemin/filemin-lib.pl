@@ -76,6 +76,9 @@ sub get_paths {
     }
     @allowed_paths = map { &simplify_path($_) } &unique(@allowed_paths);
     $path = $in{'path'} || '';
+    $html_escaped_path = html_escape($path);
+    $urlized_path = urlize($path);
+    
     $cwd = &simplify_path($base.$path);
 
     # Work out max upload size
@@ -378,7 +381,7 @@ sub print_interface {
         print &ui_checked_columns_row(\@row_data, "", "name", $vlink);
     }
     print ui_columns_end();
-    print &ui_hidden("path", $path),"\n";
+    print &ui_hidden("path", $urlized_path),"\n";
     print &ui_form_end();
 }
 
