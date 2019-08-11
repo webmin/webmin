@@ -5,7 +5,7 @@
   <button class="btn btn-inverse" onclick='invertSelection()' title="$text{'invert_selection'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
       <i class="fa fa-check-square" aria-hidden="true"></i>
   </button>
-  <button class="btn btn-inverse" onclick='window.location.href="index.cgi?path=$path"' title="$text{'refresh'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
+  <button class="btn btn-inverse" onclick='window.location.href="index.cgi?path=$urlized_path"' title="$text{'refresh'}" data-toggle="tooltip" data-placement="bottom" data-container="body">
   	<i class="fa fa-refresh" aria-hidden="true"></i>
   </button>
   <div class="btn-group">
@@ -50,7 +50,7 @@
         </a>
       </li>
       <li>
-        <a onclick="location.href='paste.cgi?path=$path'">
+        <a onclick="location.href='paste.cgi?path=$urlized_path'">
             <i class="fa fa-paste" aria-hidden="true"></i> $text{'paste'}
         </a>
       </li>
@@ -97,7 +97,7 @@
     $text{'menu_bookmarks'} <span class="caret"></span></button>
     <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1">
       <li>
-        <a href="bookmark.cgi?path=$path">
+        <a href="bookmark.cgi?path=$urlized_path">
         	<i class="fa fa-bookmark-o" aria-hidden="true"></i> $text{'bookmark_folder'}
         </a>
         $bookmarks

@@ -1,6 +1,6 @@
 <div id="quicks" style="float:right">
 <a href="javascript:void(0)" onclick='searchDialog()' title="$text{'search'}"><img src='images/icons/quick/edit-find.png' alt="$text{'search'}" /></a>
-<a href="bookmark.cgi?path=$path" title="$text{'bookmark_folder'}"><img src='images/icons/quick/bookmark-new.png' alt="$text{'bookmark_folder'}" /></a>
+<a href="bookmark.cgi?path=$urlized_path" title="$text{'bookmark_folder'}"><img src='images/icons/quick/bookmark-new.png' alt="$text{'bookmark_folder'}" /></a>
 <a tabindex="0" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="flat">
   <img src="images/icons/quick/go-down.png" alt="$text{'config_bookmarks'}">
 </a>
@@ -13,7 +13,7 @@
 <a href="javascript:void(0)" onclick='invertSelection()' title="$text{'invert_selection'}"><img src='images/icons/quick/invert.png' alt="$text{'invert_selection'}" /></a>
 <a href="javascript:void(0)" onclick='copySelected()' title="$text{'copy_selected'}"><img src='images/icons/quick/edit-copy.png' alt="$text{'copy_selected'}" /></a>
 <a href="javascript:void(0)" onclick='cutSelected()' title="$text{'cut_selected'}"><img src='images/icons/quick/edit-cut.png' alt="$text{'cut_selected'}" /></a>
-<a href='paste.cgi?path=$path' title="$text{'paste'}"><img src='images/icons/quick/edit-paste.png' alt="$text{'paste'}" /></a>
+<a href='paste.cgi?path=$urlized_path' title="$text{'paste'}"><img src='images/icons/quick/edit-paste.png' alt="$text{'paste'}" /></a>
 <a href="javascript:void(0)" onclick='createFolderDialog()' title="$text{'create_folder'}"><img src='images/icons/quick/folder-new.png' alt="$text{'create_folder'}" /></a>
 <a href="javascript:void(0)" onclick='createFileDialog()' title="$text{'create_file'}"><img src='images/icons/quick/document-new.png' alt="$text{'create_file'}" /></a>
 <a href="javascript:void(0)" onclick='compressDialog()' title="$text{'compress_selected'}"><img src='images/icons/quick/compress.png' alt="$text{'compress_selected'}" /></a>
