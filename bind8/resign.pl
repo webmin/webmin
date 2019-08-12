@@ -67,7 +67,9 @@ foreach my $z (@zones) {
 	print STDERR "  Age in days $old\n" if ($debug);
 	if ($old > $period) {
 		# Too old .. signing
+		before_editing($z);
 		my $err = &resign_dnssec_key($z);
+		after_editing($z);
 		if ($err) {
 			print STDERR "  Re-signing of $z->{'name'} failed : $err\n";
 			$errcount++;
