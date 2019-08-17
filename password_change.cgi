@@ -2,7 +2,7 @@
 # password_change.cgi
 # Actually update a user's password by directly modifying /etc/shadow
 
-BEGIN { push(@INC, ".."); };
+BEGIN { push(@INC, "."); };
 use WebminCore;
 
 $ENV{'MINISERV_INTERNAL'} || die "Can only be called by miniserv.pl";
