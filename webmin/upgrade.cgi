@@ -272,8 +272,11 @@ elsif ($in{'mode'} eq 'deb') {
 	print "<p>",$text{'upgrade_setupdeb'},"<p>\n";
 	print "<pre>";
 	$ENV{'DEBIAN_FRONTEND'} = 'noninteractive';
-	&proc::safe_process_exec("dpkg --install $qfile", 0, 0,
-				 STDOUT, undef, 1, 1);
+	my $cmd = "dpkg --install --force-depends $qfile";
+	if (&has_command("apt-get")) {
+		$cmd = "apt-get install $qfile || $cmd";
+		}
+	&proc::safe_process_exec($cmd, 0, 0, STDOUT, undef, 1, 1);
 	unlink($file) if ($need_unlink);
 	print "</pre>\n";
 	}
