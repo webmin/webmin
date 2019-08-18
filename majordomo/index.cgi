@@ -61,7 +61,7 @@ if ($access{'global'}) {
     # table header
     local @hcols, @tds;
     push(@hcols, $text{'index_name'}, $text{'index_info'}, $text{'index_mail'}, $text{'index_moderated'}, $text{'index_count'});
-    push(@tds, "width=5" ,"width=100" );
+    push(@tds, "" ,"width=400" );
     push(@tds, "", "", "width=100", "", "");
     print &ui_columns_start(\@hcols, 100, 0, \@tds);
 
