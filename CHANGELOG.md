@@ -1,5 +1,8 @@
 ## Changelog
 
+#### Version 1.930 (August 18, 2019)
+These updates fix a [security vulnerability](http://webmin.com/security.html) and should be installed IMMEDIATELY by all users. Although it is not exploitable in a Webmin install with the default configuration, upgrading is strongly recommended.
+
 #### Version 1.920 (July 04, 2019)
 This update includes the latest theme version, translation updates, the ability to disable hosts file entries, easier monitoring of bootup actions, and a bunch of bugfixes.
 
