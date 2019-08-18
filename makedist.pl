@@ -60,7 +60,7 @@ else {
 	  "status", "cpan", "pam", "nis", "shell", "grub",
 	  "fetchmail", "passwd", "at", "proftpd", "sshd",
 	  "heartbeat", "cluster-software", "cluster-useradmin", "qmailadmin",
-	  "mon", "jabber", "stunnel", "burner", "usermin",
+	  "mon", "jabber", "stunnel", "usermin",
 	  "fsdump", "lvm", "procmail",
 	  "cluster-webmin", "firewall", "sgiexports", "vgetty", "openslp",
 	  "webalizer", "shorewall", "adsl-client", "updown", "ppp-client",
