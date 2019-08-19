@@ -91,7 +91,7 @@ print "<table width=100%><tr>\n";
 @addservers = grep { !$gothost{$_->{'id'}} } @servers;
 if (@addservers) {
 	print "<td><form action=add.cgi>\n";
-	print "<input type=submit name=add value='$text{'index_add'}'>\n";
+	print "<br><p></p><input type=submit name=add value='$text{'index_add'}'>\n";
 	print "<select name=server>\n";
 	foreach $s (sort { $a->{'host'} cmp $b->{'host'} } @addservers) {
 		print "<option value=$s->{'id'}>",&server_name($s),"</option>\n";
