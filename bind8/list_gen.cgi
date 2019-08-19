@@ -36,7 +36,7 @@ else {
 	}
 my $i = 0;
 foreach my $g (@gens, { }) {
-	my @gv = $g->{'generate'};
+	my @gv = @{$g->{'generate'}};
 	my @cols = ( );
 	my @r = $gv[0] =~ /^(\d+)-(\d+)(\/(\d+))?$/ ? ( $1, $2, $4 ) : ( );
 	push(@cols, &ui_select("type_$i", uc($gv[2]),
