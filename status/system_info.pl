@@ -36,7 +36,7 @@ foreach my $s (@serv) {
 	my @ups = map { defined($stat->{$_}) ? ( $stat->{$_} ) : ( ) } @remotes;
 	my @icons = map { "<img src=".&get_status_icon($_)."> ".
 			  &status_to_string($_) } @ups;
-	$down += length(grep { $_ == 0 } @ups);
+	$down += scalar(grep { $_ == 0 } @ups);
 	my $desc = &html_escape($s->{'desc'});
 	if ($can) {
 		$desc = &ui_link("/$module_name/edit_mon.cgi?id=".
