@@ -75,7 +75,7 @@ sub get_paths {
         }
     }
     @allowed_paths = map { &simplify_path($_) } &unique(@allowed_paths);
-    $path = $in{'path'} || '';
+    $path = un_urlize($in{'path'}) || '';
     $html_escaped_path = html_escape($path);
     $urlized_path = urlize($path);
     
