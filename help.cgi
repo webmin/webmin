@@ -50,9 +50,6 @@ $help =~ s/<if\s+([^>]*)>([\000-\177]*?)<else>([\000-\177]*?)<\/if>/ifhelp($1, $
 # find and replace <if> directives
 $help =~ s/<if\s+([^>]*)>([\000-\177]*?)<\/if>/ifhelp($1, $2)/ige;
 
-# find and replace <exec> directives
-$help =~ s/<exec\s+([^>]*)>/exechelp($1)/ige;
-
 # output the HTML
 print $help;
 &popup_footer();
@@ -82,14 +79,6 @@ local $rv = eval $_[0];
 if ($@) { return "<i>".&text('help_eif', $_[0], $@)."</i><br>\n"; }
 elsif ($rv) { return $_[1]; }
 else { return $_[2]; }
-}
-
-# exechelp(perl)
-sub exechelp
-{
-local $rv = eval $_[0];
-if ($@) { return "<i>".&text('help_eexec', $_[0], $@)."</i><br>\n"; }
-else { return $rv; }
 }
 
 sub helperror
