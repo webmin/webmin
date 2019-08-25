@@ -1,10 +1,8 @@
 #!/usr/local/bin/perl
-# Create zh_TW.UTF-8 files from zh_TW.Big5 files, and zh_CN.UTF-8 files from
-# zh_CN files, ja_JP.UTF-8 from ja_JP.euc, and ko_KR.UTF-8 from ko_KR.euc
-#
-# Also creates ru.UTF-8 from ru_SU files
+# Creates UTF-8 encoded language files from their native encodings
 
-chdir($ARGV[0] || "/usr/local/webadmin");
+@ARGV == 1 || die "Usage: $0 <directory>";
+chdir($ARGV[0]) || die "Failed to chdir to $ARGV[0] : $!";
 @modules = ( "." );
 opendir(DIR, ".");
 foreach $d (readdir(DIR)) {
