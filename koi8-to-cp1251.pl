@@ -39,7 +39,8 @@
 0xD2,0xD3,0xD4,0xD5,0xC6,0xC8,0xC3,0xDE,0xDB,0xDD,0xDF,0xD9,0xD8,0xDC,0xC0,0xD1)
 ;
 
-chdir($ARGV[0] || "/usr/local/webadmin");
+@ARGV == 1 || die "Usage: $0 <directory>";
+chdir($ARGV[0]) || die "Failed to chdir to $ARGV[0] : $!";
 @modules = ( "." );
 opendir(DIR, ".");
 foreach $d (readdir(DIR)) {
