@@ -249,7 +249,8 @@ else {
 	open(FDISK, "fdisk -l -u=cylinders $devs 2>/dev/null || fdisk -l $devs 2>/dev/null |");
 	}
 while(<FDISK>) {
-	if (/Disk\s+([^ :]+):\s+(\d+)\s+\S+\s+(\d+)\s+\S+\s+(\d+)/ ||
+	if (($m4 = ($_ =~ /Disk\s+([^ :]+):\s+(\d+)\s+(\S+),\s+(\d+)\s+bytes,\s+(\d+)\s+sectors/)) ||
+	    ($m1 = ($_ =~ /Disk\s+([^ :]+):\s+(\d+)\s+\S+\s+(\d+)\s+\S+\s+(\d+)/)) ||
 	    ($m2 = ($_ =~ /Disk\s+([^ :]+):\s+(.*)\s+bytes/)) ||
 	    ($m3 = ($_ =~ /Disk\s+([^ :]+):\s+([0-9\.]+)cyl/))) {
 		# New disk section
@@ -261,6 +262,7 @@ while(<FDISK>) {
 			}
 		elsif ($m2) {
 			# New style fdisk
+			# Disk /dev/sda: 85.8 GB, 85899345920 bytes
 			$disk = { 'device' => $1,
 				  'prefix' => $1,
 				  'table' => 'msdos', };
@@ -268,6 +270,14 @@ while(<FDISK>) {
 			$disk->{'heads'} = $1;
 			$disk->{'sectors'} = $2;
 			$disk->{'cylinders'} = $3;
+			}
+		elsif ($m4) {
+			# Even newer disk (sectors/etc come later)
+			# Disk /dev/sda: 10 GiB, 10737418240 bytes, 20971520 sectors
+			$disk = { 'device' => $1,
+				  'prefix' => $1,
+				  'size' => $4,
+				  'table' => 'msdos', };
 			}
 		else {
 			# Old style fdisk
@@ -432,7 +442,14 @@ while(<FDISK>) {
 
 		push(@disks, $disk);
 		}
-	elsif (/^Units\s+=\s+cylinders\s+of\s+(\d+)\s+\*\s+(\d+)/) {
+	elsif (/Geometry:\s+(\d+)\s+heads,\s+(\d+)\s+sectors\/track,\s+(\d+)\s+cylinders/) {
+		# Separate geometry line
+		# Geometry: 255 heads, 63 sectors/track, 1305 cylinders
+		$disk->{'heads'} = $1;
+		$disk->{'sectors'} = $2;
+		$disk->{'cylinders'} = $3;
+		}
+	elsif (/^Units\s*[=:]\s+cylinders\s+of\s+(\d+)\s+\*\s+(\d+)/) {
 		# Unit size for disk from fdisk
 		$disk->{'bytes'} = $2;
 		$disk->{'cylsize'} = $disk->{'heads'} * $disk->{'sectors'} *
@@ -450,8 +467,25 @@ while(<FDISK>) {
 						        $disk->{'sectors'};
 		$disk->{'size'} = $disk->{'cylinders'} * $disk->{'cylsize'};
 		}
+	elsif (/(\/dev\/\S+?(\d+))[ \t*]+(\d+)\s+(\d+)\s+(\d+)\s+(\S+)\s+(\S{1,2})\s+(.*)/) {
+		# Partition within the current disk from fdisk (msdos format)
+		# /dev/sda1 * 1 1306 1306 10G 83 Linux
+		local $part = { 'number' => $2,
+				'device' => $1,
+				'type' => $7,
+				'start' => $3,
+				'end' => $4,
+				'extended' => $7 eq '5' || $6 eq 'f' ? 1 : 0,
+				'index' => scalar(@{$disk->{'parts'}}),
+			 	'edittype' => 1, };
+		$part->{'desc'} = &partition_description($part->{'device'});
+		$part->{'size'} = ($part->{'end'} - $part->{'start'} + 1) *
+				  $disk->{'cylsize'};
+		push(@{$disk->{'parts'}}, $part);
+		}
 	elsif (/(\/dev\/\S+?(\d+))[ \t*]+\d+\s+(\d+)\s+(\d+)\s+(\S+)\s+(\S{1,2})\s+(.*)/ || /(\/dev\/\S+?(\d+))[ \t*]+(\d+)\s+(\d+)\s+(\S+)\s+(\S{1,2})\s+(.*)/) {
 		# Partition within the current disk from fdisk (msdos format)
+		# /dev/sda1 * 1 9327 74919096 83 Linux
 		local $part = { 'number' => $2,
 				'device' => $1,
 				'type' => $6,
