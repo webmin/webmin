@@ -1,6 +1,9 @@
 #!/usr/local/bin/perl
 # Builds a tar.gz package of a specified Webmin version
 
+if ($0 =~ /^(.*)\//) {
+	chdir($1);
+	}
 @ARGV == 1 || @ARGV == 2 || usage();
 if ($ARGV[0] eq "-minimal" || $ARGV[0] eq "--minimal") {
 	$min++;
@@ -80,10 +83,6 @@ else {
 	}
 @dirlist = ( "WebminUI", "JSON" );
 
-if (-d "/usr/local/webadmin") {
-	chdir("/usr/local/webadmin");
-	system("./koi8-to-cp1251.pl");
-	}
 $dir = "webmin-$vers";
 system("rm -rf $tardir/$dir");
 mkdir("$tardir/$dir", 0755);
@@ -165,8 +164,8 @@ closedir(DIR);
 
 # Create UTF-8 encodings
 print "Creating UTF-8 language encodings\n";
-system("/usr/local/webadmin/koi8-to-cp1251.pl $tardir/$dir");
-system("/usr/local/webadmin/chinese-to-utf8.pl $tardir/$dir");
+system("./koi8-to-cp1251.pl $tardir/$dir");
+system("./chinese-to-utf8.pl $tardir/$dir");
 
 # Remove useless .bak, test and other files, and create the tar.gz file
 print "Creating webmin-$vfile.tar.gz\n";
