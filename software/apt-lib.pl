@@ -140,6 +140,8 @@ return $name eq "dhcpd" && $gconfig{'os_version'} >= 7 ?
        $name eq "dhcpd" && $gconfig{'os_version'} < 7 ?
 		"dhcp3-server" :
        $name eq "bind" ? "bind9" :
+       $name eq "mysql" && $gconfig{'os_version'} >= 10 ?
+		"mariadb-client mariadb-server" :
        $name eq "mysql" && $gconfig{'os_version'} >= 7 ?
 		"mysql-client mysql-server" :
        $name eq "mysql" && $gconfig{'os_version'} < 7 ?
