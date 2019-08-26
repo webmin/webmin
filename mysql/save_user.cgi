@@ -63,9 +63,7 @@ else {
 	if ($in{'mysqlpass_mode'} == 0) {
 		$esc = &escapestr($in{'mysqlpass'});
 		if ($variant eq "mysql" &&
-		      &compare_version_numbers($ver, "8") >= 0 ||
-		    $variant eq "mariadb" &&
-		      &compare_version_numbers($ver, "10.2") >= 0) {
+		    &compare_version_numbers($ver, "8") >= 0) {
 			&execute_sql_logged($master_db,
 				"set password for '".$user."'\@'".$host."' = ".
 				"'$esc'");
