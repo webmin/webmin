@@ -23,7 +23,6 @@ if ($ENV{'REQUEST_METHOD'} eq 'POST') {
 else {
 	$rawarg = $ENV{'QUERY_STRING'};
 	}
-$arg = &unserialise_variable($rawarg);
 $| = 1;
 print "Content-type: text/plain\n\n";
 
@@ -35,6 +34,7 @@ if ($access{'rpc'} == 0 || $access{'rpc'} == 2 &&
 	print &serialise_variable( { 'status' => 0 } );
 	exit;
 	}
+$arg = &unserialise_variable($rawarg);
 
 if ($arg->{'newsession'}) {
 	# Need to fork a new session-handler process
