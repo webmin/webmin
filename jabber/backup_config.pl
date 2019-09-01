@@ -33,6 +33,7 @@ return undef;
 # Called after the files are restored from a backup
 sub post_restore
 {
+return undef if (!$got_xml_parser);
 if (&check_pid_file(&jabber_pid_file())) {
 	$err = &stop_jabber();
 	return $err if ($err);
