@@ -19,14 +19,16 @@ $in{'new1'} eq $in{'new2'} || &pass_error($text{'password_enew2'});
 if (&foreign_check("acl")) {
 	&foreign_require("acl", "acl-lib.pl");
 	($wuser) = grep { $_->{'name'} eq $in{'user'} } &acl::list_users();
-	if ($wuser->{'pass'} eq 'x') {
-		# A Webmin user, but using Unix authentication
-		$wuser = undef;
-		}
-	elsif ($wuser->{'pass'} eq '*LK*' ||
-	       $wuser->{'pass'} =~ /^\!/) {
-		&pass_error("Webmin users with locked accounts cannot change ".
-		       	    "their passwords!");
+	if ($wuser) {
+		if ($wuser->{'pass'} eq 'x') {
+			# A Webmin user, but using Unix authentication
+			$wuser = undef;
+			}
+		elsif ($wuser->{'pass'} eq '*LK*' ||
+		       $wuser->{'pass'} =~ /^\!/) {
+			&pass_error("Webmin users with locked accounts cannot change ".
+				    "their passwords!");
+			}
 		}
 	}
 if (!$in{'pam'} && !$wuser) {
