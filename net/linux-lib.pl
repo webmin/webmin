@@ -20,12 +20,29 @@ if (&has_command("ip")) {
 		else { $lines[$#lines] .= $_; }
 		}
 	close(IFC);
+	
 	&reset_environment();
 	foreach my $l (@lines) {
 		my %ifc;
-		$l =~ /^\d+:\s+([^ \t\r\n\@]+):/ || next;
-		$ifc{'name'} = $1;
-		$ifc{'fullname'} = $1;
+		if ($l =~ /^\d:\s+([^ \t\r\n\@]+\d+\.(\d+))@([^ \t\r\n\@]+\d+):/) {
+			# Line like :
+			#3: eth0.99@eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+			$ifc{'fullname'} = $1;
+			$ifc{'name'} = $ifc{'fullname'};
+			$ifc{'vlanid'} = $2;
+			$ifc{'virtual'} = $3;
+		}
+		elsif ($l =~ /^\d+:\s+([^ \t\r\n\@]+):/) {
+			# Line like :
+			#2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+			#$cfg->{'name'} = $cfg->{'fullname'};
+			$ifc{'fullname'} = $1;
+			$ifc{'name'} = $ifc{'fullname'}
+		}
+		else {
+			next;
+		}
+		
 		if ($l =~ /\sinet\s+([0-9\.]+)\s+peer\s+([0-9\.]+)\/(\d+)(\s+brd\s+([0-9\.]+))?\s+scope\s+global(\s+noprefixroute)?(\s+dynamic)?\s+(\S+)/ && $8 eq $ifc{'name'}) {
 			# Line like :
 			# inet 193.9.101.120 peer 193.9.101.104/32 brd 193.9.101.120 scope global eth0
