@@ -261,12 +261,12 @@ feedback_enoto=フィードバック送信先アドレスが指定されてい�
 feedback_ecannot=フィードバック送信の許可がされていません。
 feedback_ecannot2=設定ファイルを同梱したフィードバックを送信する許可がされていません。
 
-progress_size2=Downloading $1 ($2) ..
-progress_nosize=Downloading $1 ..
-progress_datan=Received $1 ($2 %)
-progress_data2n=Received $1
-progress_done=.. download complete.
-progress_incache=Found $1 in cache ..
+progress_size2=ダウンロード中 $1 ($2) ..
+progress_nosize=ダウンロード中 $1 ..
+progress_datan=受信済み $1 ($2 %)
+progress_data2n=受信済み $1
+progress_done=.. ダウンロード完了.
+progress_incache=$1 をキャッシュから見つけました ..
 
 readparse_cdheader=Missing Content-Disposition header
 readparse_enc=Expecting form-data encoding, but got normal encoding
