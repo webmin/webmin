@@ -95,7 +95,7 @@ my $val;
 if (&foreign_check("net")) {
 	%got = map { $_, 1 } split(/\s+/, $iface);
 	&foreign_require("net", "net-lib.pl");
-	@ifaces = grep { $_->{'virtual'} eq '' } &net::active_interfaces();
+	@ifaces = &net::active_interfaces();
 	$sz = scalar(@ifaces);
     my @iface_sel;
 	foreach $i (@ifaces) {
