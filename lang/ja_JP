@@ -272,24 +272,24 @@ readparse_cdheader=Content-Disposition ヘッダが見つかりません。
 readparse_enc=form-data エンコードではなく、通常のエンコードが使用されています。
 readparse_max=$1 バイトの上限を超えたデータサイズです。
 
-password_expired=Your password has expired, and a new one must be chosen.
-password_temp=You must select a new password to replace your temporary login.
-password_header=Select New Password
-password_user=Username
-password_old=Current password
-password_new1=New password
-password_new2=New password again
-password_ok=Change
-password_clear=Clear
-password_done=Your password has been successfully changed. You may now <a href='$1'>login again</a> with the new password.
-password_err=Failed to change password
-password_euser=Your login name was not found in the password file!
-password_eold=The current password is incorrect
-password_enew1=No new password was entered
-password_enew2=Your new passwords do not match
-password_epam=PAM error : $1
-password_emodpam=The Authen::PAM perl module needed to do password changes is not installed!
-password_enewpass=New password is not allowed : $1
+password_expired=パスワードは失効しています。新しいものを選択して下さい。
+password_temp=一時的なログインのために新しいパスワードを選択する必要があります。
+password_header=新しいパスワード
+password_user=ユーザネーム
+password_old=現在のパスワード
+password_new1=新しいパスワード
+password_new2=新しいパスワード（確認）
+password_ok=変更
+password_clear=クリア
+password_done=パスワードは正しく変更されました。<a href='$1'>再ログイン</a> を新しいパスワードで行って下さい。
+password_err=パスワード変更に失敗しました。
+password_euser=ログイン名がパスワードファイル内に見つかりません。
+password_eold=現在のパスワードが間違っています。
+password_enew1=新しいパスワードが入力されていません。
+password_enew2=新しいパスワード（確認）が間違っています。
+password_epam=PAM エラー : $1
+password_emodpam=インストールされていない Authen::PAM perl モジュールがパスワード変更には必要です。
+password_enewpass=新しいパスワードは許可されていません : $1
 
 ui_mandatory=This field is mandatory
 ui_checkmandatory=Nothing was selected
