@@ -1497,7 +1497,7 @@ if (!$ENV{'REQUEST_METHOD'}) {
 elsif (defined(&theme_error)) {
 	&theme_error(@_);
 	}
-elsif ($in{'json-error'} eq '1') {
+elsif ($ENV{'REQUEST_URI'} =~ /json-error=1/) {
 	my %jerror;
 	my $error_what = ($main::whatfailed ? "$main::whatfailed: " : "");
 	my $error_message = join(",", @_);
