@@ -74,7 +74,7 @@ egroupdbacl2= グループACLの更新に失敗しました : $1
 chooser_title1= ファイルを選ぶ..
 chooser_title2= ディレクトリを選択..
 chooser_dir= $1のディレクトリ
-chooser_ok=Ok
+chooser_ok=OK
 chooser_date= 日付を選択
 chooser_eopen= リスティングに失敗 : $1
 
@@ -82,7 +82,7 @@ users_title1= ユーザーを選択してください。
 users_title2= ユーザーを選択します。
 users_sel= 選択されたユーザー
 users_all= すべてのユーザー
-users_ok=Ok
+users_ok=OK
 users_cancel= キャンセル
 users_clear= クリア
 
@@ -90,7 +90,7 @@ groups_title1= グループを選択..
 groups_title2= グループを選択..
 groups_all= すべてのグループ
 groups_sel= 選択したグループ
-groups_ok=Ok
+groups_ok=OK
 groups_cancel= キャンセル
 groups_clear=クリア
 
@@ -98,7 +98,7 @@ modules_title1= モジュールを選択..
 modules_title2= モジュールを選択..
 modules_sel= 選択されたモジュール
 modules_all= すべてのモジュール
-modules_ok=Ok
+modules_ok=OK
 modules_cancel=キャンセル
 modules_clear=クリア
 
