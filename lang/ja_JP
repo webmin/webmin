@@ -291,20 +291,20 @@ password_epam=PAM エラー : $1
 password_emodpam=インストールされていない Authen::PAM perl モジュールがパスワード変更には必要です。
 password_enewpass=新しいパスワードは許可されていません : $1
 
-ui_mandatory=This field is mandatory
-ui_checkmandatory=Nothing was selected
-ui_errors=Multiple errors were found :
-ui_nothing=Nothing entered
-ui_searchcol=Find rows where
-ui_searchfor=Contains the text
-ui_searchok=Search
-ui_selall=Select all.
-ui_selinv=Invert selection.
-ui_edate=Invalid date
-ui_etime=Invalid time
-ui_paging=Showing rows $1 to $2 of $3
-ui_rowlabel=$2 in row $1 :
-ui_filterbox=Type to filter..
+ui_mandatory=このフィールドは必須です
+ui_checkmandatory=何も選択されていません
+ui_errors=複数のエラーが見つかりました :
+ui_nothing=入力なし
+ui_searchcol=行を探す
+ui_searchfor=テキストを含む
+ui_searchok=検索
+ui_selall=全件選択
+ui_selinv=選択を反転
+ui_edate=日付を反転
+ui_etime=時刻を反転
+ui_paging=行を表示 $1 から $2 全 $3 中
+ui_rowlabel=$1 行の $2 :
+ui_filterbox=フィルタに入力..
 
 header_statusmsg=$1 logged into $2 $3 on $4 ($5)
 
