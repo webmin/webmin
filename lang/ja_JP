@@ -268,9 +268,9 @@ progress_data2n=受信済み $1
 progress_done=.. ダウンロード完了.
 progress_incache=$1 をキャッシュから見つけました ..
 
-readparse_cdheader=Missing Content-Disposition header
-readparse_enc=Expecting form-data encoding, but got normal encoding
-readparse_max=Data exceeded maximum size of $1 bytes
+readparse_cdheader=Content-Disposition ヘッダが見つかりません。
+readparse_enc=form-data エンコードではなく、通常のエンコードが使用されています。
+readparse_max=$1 バイトの上限を超えたデータサイズです。
 
 password_expired=Your password has expired, and a new one must be chosen.
 password_temp=You must select a new password to replace your temporary login.
