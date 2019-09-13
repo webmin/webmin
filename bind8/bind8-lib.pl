@@ -1292,8 +1292,8 @@ elsif ($type eq "NSEC3PARAM") {
 	print &ui_table_row($text{'value_NSEC3PARAM3'},
 		&ui_textbox("value2", $v[2], 4));
 
-	print &ui_table_row($text{'value_NSEC3PARAM5'},
-		&ui_textbox("value4", $v[4], 20));
+	print &ui_table_row($text{'value_NSEC3PARAM4'},
+		&ui_textbox("value3", $v[3], 20));
 
 	}
 else {
