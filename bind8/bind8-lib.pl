@@ -3782,7 +3782,7 @@ sub schedule_dnssec_cronjob
 			'active' => 1,
 			'command' => $dnssec_cron_cmd,
 			'mins' => int(rand()*60),
-			'hours' => int(rand()*24),
+			'hours' => '*',
 			'days' => '*',
 			'months' => '*',
 			'weekdays' => '*' };
