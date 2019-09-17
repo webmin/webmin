@@ -45,6 +45,6 @@ if ($r) {
 
 # Apply the change
 &restart_zone($zone->{'name'}, $zone->{'view'});
-sleep(10);	# Wait for DNS propagation
+sleep($config{'letsencrypt_dns_wait'} || 10);	# Wait for DNS propagation
 &webmin_log("letsencryptdns", undef, $dname);
 exit(0);

@@ -3,3 +3,4 @@ third_url=URL of third party modules list,3,On www.webmin.com
 cron_mode=Show update times as,1,0-Simple interface,1-Cron time selector
 warn_days=Days before password expiry to warn users,0,5
 letsencrypt_cmd=Full path to Let's Encrypt client command,3,Find automatically
+letsencrypt_dns_wait=Seconds to wait for Let's Encrypt DNS propogation,0,5

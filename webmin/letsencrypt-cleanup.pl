@@ -36,5 +36,4 @@ if ($r) {
 
 # Apply the change
 &restart_zone($zone->{'name'}, $zone->{'view'});
-sleep(10);	# Wait for DNS propagation
 &webmin_log("letsencryptcleanup", undef, $dname);
