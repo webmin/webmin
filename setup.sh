@@ -324,7 +324,7 @@ else
 		if [ "$autoos" = "" ]; then
 			autoos=2
 		fi
-		$perl "$srcdir/oschooser.pl" "$srcdir/os_list.txt" $tempdir/$$.os $autoos
+		$perl "$srcdir/oschooser.pl" "$srcdir/os_list.txt" "$tempdir/$$.os" $autoos
 		if [ $? != 0 ]; then
 			exit $?
 		fi
