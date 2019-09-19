@@ -5780,9 +5780,11 @@ if (exists($main::locked_file_data{$realfile})) {
 		if (!defined($main::locked_file_data{$realfile})) {
 			$type = "create";
 			}
+		my $u = umask(0700);
 		open(ORIGFILE, ">$realfile.webminorig");
 		print ORIGFILE $main::locked_file_data{$realfile};
 		close(ORIGFILE);
+		umask($u);
 		$diff = &backquote_command(
 			"diff ".quotemeta("$realfile.webminorig")." ".
 				quotemeta($realfile)." 2>/dev/null");
