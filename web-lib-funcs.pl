@@ -8911,7 +8911,8 @@ which defaults to application/octet-stream.
 =cut
 sub guess_mime_type
 {
-if ($_[0] =~ /\.([A-Za-z0-9\-]+)$/) {
+my ($file, $def) = @_;
+if ($file =~ /\.([A-Za-z0-9\-]+)$/) {
 	my $ext = $1;
 	foreach my $t (&list_mime_types()) {
 		foreach my $e (@{$t->{'exts'}}) {
@@ -8919,7 +8920,7 @@ if ($_[0] =~ /\.([A-Za-z0-9\-]+)$/) {
 			}
 		}
 	}
-return @_ > 1 ? $_[1] : "application/octet-stream";
+return $def || "application/octet-stream";
 }
 
 =head2 open_tempfile([handle], file, [no-error], [no-tempfile], [safe?])
