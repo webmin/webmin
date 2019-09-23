@@ -325,6 +325,11 @@ if (!$c{'cpu mhz'} && $c{'model name'}) {
 	$c{'model name'} .= " @ ".$c{'bogomips'}." bMips";
 	}
 
+# Merge in info from /proc/device-tree
+if (!$c{'model name'}) {
+	$c{'model name'} = &read_file_contents("/proc/device-tree/model");
+	}
+
 if ($c{'model name'}) {
 	return ( $load[0], $load[1], $load[2],
 		 int($c{'cpu mhz'}), $c{'model name'}, $c{'vendor_id'},
