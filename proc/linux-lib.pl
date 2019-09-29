@@ -53,17 +53,21 @@ if ($ver >= 2) {
 		$plist[$i]->{"bytes"} = $w[8]*1024;
 		$plist[$i]->{"time"} = $w[11];
 		$plist[$i]->{"_stime"} = $w[12];
-		if ($w[12] =~ /^(\d+):(\d+)$/ ||
-		    $w[12] =~ /^(\d+):(\d+):(\d+)$/) {
-			# Started today
-			$plist[$i]->{"_stime_unix"} =
-			  timelocal($3 || 0, $2, $1, $now[3], $now[4], $now[5]);
-			}
-		elsif ($w[12] =~ /^(\S\S\S)\s*(\d+)$/) {
-			# Started on some other day
-			$plist[$i]->{"_stime_unix"} =
-			  timelocal(0, 0, 0, $2, &month_to_number($1), $now[5]);
-			}
+		eval {
+			if ($w[12] =~ /^(\d+):(\d+)$/ ||
+			    $w[12] =~ /^(\d+):(\d+):(\d+)$/) {
+				# Started today
+				$plist[$i]->{"_stime_unix"} =
+					timelocal($3 || 0, $2, $1,
+						  $now[3], $now[4], $now[5]);
+				}
+			elsif ($w[12] =~ /^(\S\S\S)\s*(\d+)$/) {
+				# Started on some other day
+				$plist[$i]->{"_stime_unix"} =
+					timelocal(0, 0, 0, $2,
+						&month_to_number($1), $now[5]);
+				}
+			};
 		$plist[$i]->{"nice"} = $w[9];
 		$plist[$i]->{"args"} = @w<15 ? "defunct" : join(' ', @w[14..$#w]);
 		$plist[$i]->{"_group"} = $w[2];
