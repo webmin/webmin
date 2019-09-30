@@ -10,7 +10,7 @@ if (!&can_access($in{'file'})) {
 	print $text{'facl_eaccess'},"\n";
 	}
 else {
-	$out = `lsattr -d '$in{'file'}' 2>&1`;
+	$out = &backquote_command("lsattr -d ".quotemeta($in{'file'})." 2>&1");
 	$out =~ s/^lsattr.*\n//;
 	if ($? || $out !~ /^(\S+)\s/) {
 		print $out,"\n";

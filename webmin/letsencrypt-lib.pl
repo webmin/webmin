@@ -158,6 +158,7 @@ if (($letsencrypt_cmd && -d "/etc/letsencrypt/accounts") || $wildcard) {
 			join("", map { " -d ".quotemeta($_) } @doms).
 			" --webroot-path ".quotemeta($webroot).
 			" --duplicate".
+			" --force-renewal".
 			" --manual-public-ip-logging-ok".
 			" --config $temp".
 			" --rsa-key-size $size".
@@ -177,6 +178,7 @@ if (($letsencrypt_cmd && -d "/etc/letsencrypt/accounts") || $wildcard) {
 			" --manual-auth-hook $dns_hook".
 			" --manual-cleanup-hook $cleanup_hook".
 			" --duplicate".
+			" --force-renewal".
 			" --manual-public-ip-logging-ok".
 			" --config $temp".
 			" --rsa-key-size $size".

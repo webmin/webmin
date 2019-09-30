@@ -10,7 +10,7 @@ if (!&can_access($in{'file'})) {
 	print $text{'facl_eaccess'},"\n";
 	}
 else {
-	$out = `attr -l '$in{'file'}' 2>&1`;
+	$out = &backquote_command("attr -l ".quotemeta($in{'file'})." 2>&1");
 	if ($?) {
 		print $out,"\n";
 		}
@@ -19,7 +19,9 @@ else {
 			if ($l =~ /Attribute\s+"(.*)"/i) {
 				# Get the valid for this attribute
 				local $name = $1;
-				$got = `attr -g '$name' '$in{'file'}' 2>&1`;
+				$got = &backquote_command(
+					"attr -g ".quotemeta($name)." ".
+					quotemeta($in{'file'})." 2>&1");
 				if ($? || $got !~ /^(.*)\n([\0-\377]*)\n$/) {
 					print $got,"\n";
 					exit;

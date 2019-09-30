@@ -35,6 +35,5 @@ if ($r) {
 &unlock_file(&bind8::make_chroot(&bind8::absolute_path($zone->{'file'})));
 
 # Apply the change
-&bind8::restart_bind();
-sleep(10);	# Wait for DNS propagation
+&restart_zone($zone->{'name'}, $zone->{'view'});
 &webmin_log("letsencryptcleanup", undef, $dname);

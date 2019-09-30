@@ -43,7 +43,7 @@ return 4;
 }
 
 
-# get_iptables_save([file])
+# get_iptables_save([file|"direct"])
 # Parse the iptables save file into a list of tables 
 # format seems to be:
 #  *table
@@ -53,11 +53,20 @@ return 4;
 #  COMMIT
 sub get_iptables_save
 {
+local ($file) = @_;
 local (@rv, $table, %got);
 local $lnum = 0;
 
-open(FILE, $_[0] || ($config{"direct${ipvx}"} ? "ip${ipvx}tables-save 2>/dev/null |"
-				       : $ipvx_save));
+local $direct = "ip${ipvx}tables-save 2>/dev/null |";
+if (!$file) {
+	# Use default file
+	$file = $config{"direct${ipvx}"} ? $direct : $ipvx_save;
+	}
+elsif ($file eq "direct") {
+	# Read active rules
+	$file = $direct;
+	}
+open(FILE, $file);
 local $cmt;
 LINE:
 while(<FILE>) {

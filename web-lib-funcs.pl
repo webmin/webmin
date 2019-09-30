@@ -1497,7 +1497,7 @@ if (!$ENV{'REQUEST_METHOD'}) {
 elsif (defined(&theme_error)) {
 	&theme_error(@_);
 	}
-elsif ($in{'json-error'} eq '1') {
+elsif ($ENV{'REQUEST_URI'} =~ /json-error=1/) {
 	my %jerror;
 	my $error_what = ($main::whatfailed ? "$main::whatfailed: " : "");
 	my $error_message = join(",", @_);
@@ -5780,9 +5780,11 @@ if (exists($main::locked_file_data{$realfile})) {
 		if (!defined($main::locked_file_data{$realfile})) {
 			$type = "create";
 			}
+		my $u = umask(0700);
 		open(ORIGFILE, ">$realfile.webminorig");
 		print ORIGFILE $main::locked_file_data{$realfile};
 		close(ORIGFILE);
+		umask($u);
 		$diff = &backquote_command(
 			"diff ".quotemeta("$realfile.webminorig")." ".
 				quotemeta($realfile)." 2>/dev/null");
@@ -8909,7 +8911,8 @@ which defaults to application/octet-stream.
 =cut
 sub guess_mime_type
 {
-if ($_[0] =~ /\.([A-Za-z0-9\-]+)$/) {
+my ($file, $def) = @_;
+if ($file =~ /\.([A-Za-z0-9\-]+)$/) {
 	my $ext = $1;
 	foreach my $t (&list_mime_types()) {
 		foreach my $e (@{$t->{'exts'}}) {
@@ -8917,7 +8920,7 @@ if ($_[0] =~ /\.([A-Za-z0-9\-]+)$/) {
 			}
 		}
 	}
-return @_ > 1 ? $_[1] : "application/octet-stream";
+return $def || "application/octet-stream";
 }
 
 =head2 open_tempfile([handle], file, [no-error], [no-tempfile], [safe?])
