@@ -20,3 +20,5 @@ core
 # makedist.pl
 tarballs/
 minimal/
+
+*.deb
