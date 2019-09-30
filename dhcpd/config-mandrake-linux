@@ -12,3 +12,4 @@ show_mac=0
 group_name=0
 display_max=100
 desc_name=0
+list_listen_interfaces=0
