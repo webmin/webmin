@@ -428,6 +428,7 @@ if (!$config{'collect_notemp'} &&
 		my $st = &smart_status::get_drive_status($d->{'device'}, $d);
 		foreach my $a (@{$st->{'attribs'}}) {
 			if (($a->[0] =~ /^Temperature\s+Celsius$/i ||
+			     $a->[0] =~ /^Temperature$/i ||
 			     $a->[0] =~ /^Airflow\s+Temperature\s+Cel/i) &&
 			    $a->[1] > 0) {
 				push(@rv, { 'device' => $d->{'device'},
