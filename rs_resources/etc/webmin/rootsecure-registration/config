@@ -1,0 +1,2 @@
+rootsecure_conf=/etc/rs_registration.conf
+rootsecure_uuid=/rootsecure/uuid

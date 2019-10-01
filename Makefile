@@ -5,9 +5,13 @@ all: deb
 
 deb:
 	@echo "Building Webmin ${VERSION} Debian Package"
+	@echo "Checking for rs-webmin source..."
+	@cp -r ../rs-webmin/rootsecure-registration-module .
 	@echo "Building Docker Container..."
-	@docker build --tag webminpkg .
+	@docker build --build-arg version=${VERSION} --tag webminpkg .
 	@echo "Copying .deb from container"
-	@docker cp $(shell docker ps -l -f ancestor=webminpkg --format "{{.ID}}"):/webmin/deb/webmin_${VERSION}_all.deb ./webmin_${VERSION}.deb
-	@echo Done
+	@./rs_copy_deb ${VERSION}
+	@rm -r rootsecure-registration-module
+	@echo "Done. Debian packages available:"
+	@ls -1 *.deb
 

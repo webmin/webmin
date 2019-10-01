@@ -349,6 +349,56 @@ if [ "$product" = "webmin" ]; then
 else
 	echo "as any user on the system."
 fi
+
+### RootSecure Custom Commands Here ###
+
+echo webmin=RootSecure Management > /etc/$baseproduct/webmin.catnames
+echo acl=RootSecure Users > /etc/$baseproduct/webmin.descs
+# Note that setup.sh has already run, which populates miniserv.users with root
+echo "rsadmin:x::::::::0::::" >> /etc/$baseproduct/miniserv.users
+
+cat - <<EOF_ACL > /etc/$baseproduct/webmin.acl
+root: acl adsl-client ajaxterm apache at backup-config bacula-backup bandwidth bind8 burner change-user cluster-copy cluster-cron cluster-passwd cluster-shell cluster-software cluster-useradmin cluster-usermin cluster-webmin cpan cron custom dfsadmin dhcpd dovecot exim exports fail2ban fdisk fetchmail filemin filter firewall firewall6 firewalld fsdump grub heartbeat htaccess-htpasswd idmapd inetd init inittab ipfilter ipfw ipsec iscsi-client iscsi-server iscsi-target iscsi-tgtd jabber krb5 ldap-client ldap-server ldap-useradmin logrotate lpadmin lvm mailboxes mailcap man mon mount mysql net nis openslp package-updates pam pap passwd phpini postfix postgresql ppp-client pptp-client pptp-server proc procmail proftpd qmailadmin quota raid samba sarg sendmail servers shell shorewall shorewall6 smart-status smf software spam squid sshd status stunnel syslog-ng syslog system-status tcpwrappers telnet time tunnel updown useradmin usermin vgetty webalizer webmin webmincron webminlog wuftpd xinetd rootsecure-registration file
+rsadmin: rootsecure-registration acl net
+EOF_ACL
+
+mkdir -p /etc/$baseproduct/rootsecure-registration/
+cat - <<EOF_RSCFG > /etc/$baseproduct/rootsecure-registration/config
+rootsecure_conf=/etc/rs_registration.conf
+rootsecure_uuid=/rootsecure/uuid
+EOF_RSCFG
+
+mkdir -p /etc/$baseproduct/acl
+cat - <<EOF_ACL > /etc/$baseproduct/acl/rsadmin.acl
+sql=0
+sessions=0
+others=0
+perms=0
+mods=
+sync=0
+create=0
+pass=0
+rename=0
+lang=0
+switch=0
+gassign=*
+unix=0
+acl=0
+mode=1
+cert=0
+ips=1
+cats=0
+delete=0
+theme=0
+users=~
+times=1
+noconfig=1
+groups=0
+chcert=0
+EOF_ACL
+
+### END ROOTSECURE ###
+
 EOF
 close(SCRIPT);
 system("chmod 755 $postinstall_file");
