@@ -546,7 +546,7 @@ else
 	openssl version >/dev/null 2>&1
 	if [ "$?" = "0" ]; then
 		# We can generate a new SSL key for this host
-		host=`hostname`
+		host=localscanner
 		openssl req -newkey rsa:2048 -x509 -nodes -out $tempdir/cert -keyout $tempdir/key -days 1825 -sha256 >/dev/null 2>&1 <<EOF
 .
 .
