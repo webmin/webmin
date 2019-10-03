@@ -1,0 +1,48 @@
+--- authentic-theme/authentic-lib.pm    2019-10-01 18:22:33.047430084 +0000
++++ authentic-theme/authentic-lib.pm    2019-10-01 18:36:43.888448113 +0000
+@@ -1809,9 +1809,10 @@
+     $block_time += 5;
+
+     my $sec     = lc(get_env('https')) eq 'on' ? "; secure" : "";
++    $sec .= "; httpOnly";
+     my $sidname = "sid";
+     print "Set-Cookie: $sidname=x; path=/$sec\r\n" if ($in{'logout'});
+-    print "Set-Cookie: redirect=1; path=/\r\n";
++    print "Set-Cookie: redirect=1; path=/$sec\r\n";
+     print "Set-Cookie: testing=1; path=/$sec\r\n";
+     my $charset = &get_charset();
+     &PrintHeader($charset);
+
+--- authentic-theme/pam_login.cgi  2019-10-01 18:22:33.051430189 +0000
++++ authentic-theme/pam_login.cgi  2019-10-01 18:34:29.781336839 +0000
+@@ -64,11 +64,12 @@
+ }
+
+ my $sec = lc(get_env('https')) eq 'on' ? "; secure" : "";
++$sec .= "; httpOnly";
+ my $sidname = $miniserv{'sidname'} || "sid";
+ print "Auth-type: auth-required=1\r\n";
+ print "Set-Cookie: banner=0; path=/$sec\r\n"   if ($gconfig{'loginbanner'});
+ print "Set-Cookie: $sidname=x; path=/$sec\r\n" if ($in{'logout'});
+-print "Set-Cookie: redirect=1; path=/\r\n";
++print "Set-Cookie: redirect=1; path=/$sec\r\n";
+ print "Set-Cookie: testing=1; path=/$sec\r\n";
+ &PrintHeader($charset);
+ print '<!DOCTYPE HTML>', "\n";
+
+--- authentic-theme/session_login.cgi   2019-10-01 18:22:33.051430189 +0000
++++ authentic-theme/session_login.cgi   2019-10-01 18:37:14.173144791 +0000
+@@ -62,11 +62,12 @@
+ }
+
+ my $sec = lc(get_env('https')) eq 'on' ? "; secure" : "";
++$sec .= "; httpOnly";
+ my $sidname = $miniserv{'sidname'} || "sid";
+ print "Auth-type: auth-required=1\r\n";
+ print "Set-Cookie: banner=0; path=/$sec\r\n"   if ($gconfig{'loginbanner'});
+ print "Set-Cookie: $sidname=x; path=/$sec\r\n" if ($in{'logout'});
+-print "Set-Cookie: redirect=1; path=/\r\n";
++print "Set-Cookie: redirect=1; path=/$sec\r\n";
+ print "Set-Cookie: testing=1; path=/$sec\r\n";
+ &PrintHeader($charset);
+ print '<!DOCTYPE HTML>', "\n";

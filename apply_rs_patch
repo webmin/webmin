@@ -3,7 +3,7 @@
 echo "Applying RootSecure patches"
 
 # Fix Webmin vs. RootSecure branding
-sed -i -e 's/Webmin/RootSecure/g' acl/lang/en authentic-theme/lang/en
+sed -i -e 's/Webmin/RootSecure/g' acl/lang/en authentic-theme/lang/en* lang/en
 
 # This may break in future if \f08a is no longer the key we need to replace
 sed -i -e "s/content:'\\\\f08a'/background-image:url('RootSecure_Mag_glass.png');background-size:30px 30px;width:30px;height:30px;display:inline-block;content:'';/" /webmin/authentic-theme/unauthenticated/css/bundle.min.css
@@ -13,3 +13,6 @@ gzip --keep /webmin/authentic-theme/unauthenticated/css/bundle.min.css
 
 mv -v rs_resources/favicon* authentic-theme/images/favicons/webmin/
 mv -v rs_resources/RootSecure_Mag_glass.png authentic-theme/unauthenticated/css/
+
+# Code patches
+patch --verbose -p0 < patches/httpOnly.patch
