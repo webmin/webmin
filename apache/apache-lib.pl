@@ -942,6 +942,7 @@ sub parse_opt
 {
 local($i, $re);
 local $v = $in{$_[0]};
+$v =~ /\r|\n|\0/ && &error($text{'enewline'});
 if ($in{"$_[0]_def"}) { return ( [ ] ); }
 for($i=1; $i<@_; $i+=2) {
 	$re = $_[$i];
@@ -979,8 +980,13 @@ return $rv;
 # parse_choice(name, default)
 sub parse_choice
 {
-if (lc($in{$_[0]}) eq lc($_[1])) { return ( [ ] ); }
-else { return ( [ $in{$_[0]} ] ); }
+if (lc($in{$_[0]}) eq lc($_[1])) {
+	return ( [ ] );
+	}
+else {
+	$in{$_[0]} =~ /\r|\n|\0/ && &error($text{'enewline'});
+	return ( [ $in{$_[0]} ] );
+	}
 }
 
 # select_input(value, name, default, [choice]+)
@@ -1027,8 +1033,13 @@ return &ui_select($_[1], undef, \@sel, 1);
 # parse_handler(name)
 sub parse_handler
 {
-if ($in{$_[0]} eq "") { return ( [ ] ); }
-else { return ( [ $in{$_[0]} ] ); }
+if ($in{$_[0]} eq "") {
+	return ( [ ] );
+	}
+else {
+	$in{$_[0]} =~ /\r|\n|\0/ && &error($text{'enewline'});
+	return ( [ $in{$_[0]} ] );
+	}
 }
 
 # filters_input(&values, name)
@@ -1054,6 +1065,7 @@ return $rv;
 # parse_filters(name)
 sub parse_filters
 {
+$in{$_[0]} =~ /\r|\n|\0/ && &error($text{'enewline'});
 local @f = split(/\0/, $in{$_[0]});
 return @f ? ( [ join(";", @f) ] ) : ( [ ] );
 }

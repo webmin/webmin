@@ -81,6 +81,7 @@ auth_return=access control
 default_serv=default server
 bytes=bytes
 eafter=Configuration verification failed : $1 Changes have not been saved.
+enewline=Invalid character in value
 
 global_ecannot=You are not allowed to edit global options
 global_mime=Global MIME types list
