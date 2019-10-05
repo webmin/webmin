@@ -401,6 +401,11 @@ if ($config{'attribs'}) {
 			push(@attribs, [ $2, $10, undef, $4 ]);
 			$attribs[$#attribs]->[0] =~ s/_/ /g;
 			}
+		elsif (/^(?|(\w+.*):\s+([0-9]+(,[0-9]+)+)|(\w+.*):\s+(\d+x\d+)|(\w+.*):\s+(\d+%)|^(\w+.*):\s+(\d+))/) {
+			# NVME style
+			$doneknown = 1;
+			push(@attribs, [ $1, $2, undef, undef ]);			
+			}
 		elsif (/^(\S.*\S):\s+\(\s*(\S+)\)\s*(.*)/ && !$doneknown) {
 			# A known attribute
 			local $attrib = [ $1, $2, $3 ];
