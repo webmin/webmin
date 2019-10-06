@@ -117,13 +117,13 @@ else {
 	}
 if (defined($value) && $old) {
 	# Update existing value
-	$lref = &read_file_lines($old->{'file'});
+	$lref = &read_file_lines_as_user($old->{'file'});
 	$lref->[$old->{'line'}] = $newline;
 	$old->{'value'} = $value;
 	}
 elsif (defined($value) && !$old && $cmt) {
 	# Update existing commented value
-	$lref = &read_file_lines($cmt->{'file'});
+	$lref = &read_file_lines_as_user($cmt->{'file'});
 	$lref->[$cmt->{'line'}] = $newline;
 	$cmt->{'value'} = $value;
 	$cmt->{'enabled'} = 1;
@@ -143,13 +143,13 @@ elsif (defined($value) && !$old && !$cmt) {
 				"section $newsection");
 		$lastfile = $last->{'file'};
 		$lastline = $last->{'line'};
-		$lref = &read_file_lines($lastfile);
+		$lref = &read_file_lines_as_user($lastfile);
 		}
 	else {
 		# Just add at the end
 		$lastfile = @$conf ? $conf->[0]->{'file'} : undef;
 		$lastfile || &error("Don't know which file to add to");
-		$lref = &read_file_lines($lastfile);
+		$lref = &read_file_lines_as_user($lastfile);
 		$lastline = scalar(@$lref);
 		}
 
@@ -166,14 +166,14 @@ elsif (defined($value) && !$old && !$cmt) {
 	}
 elsif (!defined($value) && $old && $cmt) {
 	# Totally remove a value
-	$lref = &read_file_lines($old->{'file'});
+	$lref = &read_file_lines_as_user($old->{'file'});
 	splice(@$lref, $old->{'line'}, 1);
 	@$conf = grep { $_ ne $old } @$conf;
 	&renumber($conf, $old->{'line'}, -1);
 	}
 elsif (!defined($value) && $old && !$cmt) {
 	# Turn a value into a comment
-	$lref = &read_file_lines($old->{'file'});
+	$lref = &read_file_lines_as_user($old->{'file'});
 	$old->{'enabled'} = 0;
 	$lref->[$old->{'line'}] = "; ".$lref->[$old->{'line'}];
 	}
@@ -326,6 +326,19 @@ if ($access{'user'} && $access{'user'} ne 'root' && $< == 0) {
 	}
 else {
 	&write_file_contents($file, $data);
+	}
+}
+
+# read_file_lines_as_user(file, ...)
+sub read_file_lines_as_user
+{
+local @args = @_;
+if ($access{'user'} && $access{'user'} ne 'root' && $< == 0) {
+	return &eval_as_unix_user(
+		$access{'user'}, sub { &read_file_lines(@args) });
+	}
+else {
+	return &read_file_lines(@args);
 	}
 }
 
