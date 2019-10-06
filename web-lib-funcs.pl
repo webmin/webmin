@@ -5781,6 +5781,7 @@ if (exists($main::locked_file_data{$realfile})) {
 			$type = "create";
 			}
 		my $u = umask(0700);
+		unlink("$realfile.webminorig");
 		open(ORIGFILE, ">$realfile.webminorig");
 		print ORIGFILE $main::locked_file_data{$realfile};
 		close(ORIGFILE);
