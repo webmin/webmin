@@ -1,6 +1,7 @@
 #!/bin/bash
 
-echo "Applying RootSecure patches"
+prod=$1
+echo "Applying RootSecure patches [prod=$prod]"
 
 # Fix Webmin vs. RootSecure branding
 sed -i -e 's/Webmin/RootSecure/g' acl/lang/en authentic-theme/lang/en* lang/en
@@ -16,3 +17,8 @@ mv -v rs_resources/RootSecure_Mag_glass.png authentic-theme/unauthenticated/css/
 
 # Code patches
 patch --verbose -p0 < patches/httpOnly.patch
+
+# Change webmin registration endpoint
+if $prod ; then
+    sed -i -e 's|register-sensor-dev|register-sensor|' rootsecure-registration/rootsecure-registration-lib.pl
+fi

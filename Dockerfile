@@ -1,6 +1,7 @@
 FROM ubuntu:18.04
 
 ARG version=1.931
+ARG prod=false
 
 # --no-install-recommends \
 RUN apt-get -y update && apt-get install -y \
@@ -24,7 +25,7 @@ RUN ln -s /usr/bin/ /usr/local/
 # Won't make anything if we don't manually create the destination folders for some reason
 RUN mkdir tarballs deb
 
-RUN ./apply_rs_patch
+RUN ./apply_rs_patch ${prod}
 
 # Make the tarball
 RUN ./makedist.pl ${version}
