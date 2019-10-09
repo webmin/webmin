@@ -92,7 +92,7 @@ if ($< == 0) {
 $size = int(`du -sk $tmp_dir`);
 
 # Create the control file
-@deps = ( "perl", "libnet-ssleay-perl", "openssl", "libauthen-pam-perl", "libpam-runtime", "libio-pty-perl", "apt-show-versions", "unzip", "shared-mime-info" );
+@deps = ( "perl", "libnet-ssleay-perl", "openssl", "libauthen-pam-perl", "libpam-runtime", "libio-pty-perl", "apt-show-versions", "unzip", "shared-mime-info", "liblwp-protocol-https-perl", "libjson-perl" );
 if ($baseproduct eq "webmin") {
 	push(@deps, "python");
 	}
