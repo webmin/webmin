@@ -1,6 +1,7 @@
 #!/bin/bash
 
 VERSION="$1"
+PROD="$2"
 
 if [ -z "$VERSION" ] ; then
     echo "Version not provided to $0: Unable to proceed." >&2
@@ -12,5 +13,10 @@ docker run -it webminpkg /bin/true
 # Find latest (the one we just made)
 latest=$(docker ps -l -f ancestor=webminpkg --format "{{.ID}}")
 
-echo "Copying from $latest"
-docker cp $latest:/webmin/deb/webmin_${VERSION}_all.deb ./webmin_${VERSION}.deb
+preface="dev_"
+if $PROD ; then
+    preface=""
+fi
+
+echo "Copying from $latest (version=$VERSION, prod=$PROD)"
+docker cp $latest:/webmin/deb/webmin_${VERSION}_all.deb ./${preface}rootsecure_webmin_${VERSION}.deb

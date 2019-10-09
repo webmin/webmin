@@ -11,7 +11,7 @@ deb:
 	@echo "Building Docker Container... (version=${VERSION}, prod=${PROD})"
 	@docker build --build-arg version=${VERSION} --build-arg prod=${PROD} --tag webminpkg .
 	@echo "Copying .deb from container"
-	@./rs_copy_deb ${VERSION}
+	@./rs_copy_deb ${VERSION} ${PROD}
 	@rm -r rootsecure-registration
 	@echo "Done. Debian packages available:"
 	@ls -1 *.deb
