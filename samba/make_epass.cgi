@@ -100,7 +100,7 @@ while(@uinfo = getpwent()) {
 		else {
 			$nu->{'opts'} = \@flags;
 			}
-		&create_user($nu);
+		&create_user($nu, $in{'newmode'} == 2 ? $in{'newpass'} : undef);
 		$created++;
 		}
 	if ($m) {
