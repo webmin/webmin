@@ -2594,7 +2594,7 @@ if ($user) {
 	$auth =~ tr/\r\n//d;
 	push(@headers, [ "Authorization", "Basic $auth" ]);
 	}
-@headers = grep { !$headers->{$_} } @headers;
+@headers = grep { !$headers->{$_->[0]} } @headers;
 foreach my $hname (keys %$headers) {
 	push(@headers, [ $hname, $headers->{$hname} ]);
 	}
