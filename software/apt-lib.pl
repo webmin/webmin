@@ -22,6 +22,7 @@ local (@rv, @newpacks);
 # Build the command to run
 $ENV{'DEBIAN_FRONTEND'} = 'noninteractive';
 $update = join(" ", map { quotemeta($_) } split(/\s+/, $update));
+$update =~ s/\\(-)|\\(.)/$1$2/g;
 local $cmd = "$apt_get_command -y ".($force ? " -f" : "")." install $update";
 print "<b>",&text('apt_install', "<tt>$cmd</tt>"),"</b><p>\n";
 print "<pre>";
