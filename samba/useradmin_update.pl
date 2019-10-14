@@ -5,32 +5,34 @@ do 'samba-lib.pl';
 # Create a new samba user if sync is enabled
 sub useradmin_create_user
 {
+local ($user) = @_;
 &get_share("global");
 if (&istrue("encrypt passwords") && ($config{'smb_passwd'} || $has_pdbedit) &&
-    $config{'sync_add'} && !&get_user($_[0]->{'user'})) {
+    $config{'sync_add'} && !&get_user($user->{'user'})) {
 	# Add a user to smbpasswd
 	&lock_file($config{'smb_passwd'});
-	local $u = { 'name' => $_[0]->{'user'},
-		     'uid' => $_[0]->{'uid'} };
+	local $u = { 'name' => $user->{'user'},
+		     'uid' => $user->{'uid'} };
 	if ($samba_version >= 2) {
 		local @opts = ("U");
-		push(@opts, "N") if ($_[0]->{'passmode'} == 0);
-		push(@opts, "D") if ($_[0]->{'passmode'} == 1);
+		push(@opts, "N") if ($user->{'passmode'} == 0);
+		push(@opts, "D") if ($user->{'passmode'} == 1);
 		$u->{'opts'} = \@opts;
 		}
 	else {
-		$u->{'real'} = $_[0]->{'real'};
-		$u->{'home'} = $_[0]->{'home'};
-		$u->{'shell'} = $_[0]->{'shell'};
+		$u->{'real'} = $user->{'real'};
+		$u->{'home'} = $user->{'home'};
+		$u->{'shell'} = $user->{'shell'};
 		}
 	$u->{'pass1'} = $u->{'pass2'} = ("X" x 32);
-	if ($_[0]->{'passmode'} == 0) {
+	if ($user->{'passmode'} == 0) {
 		$u->{'pass1'} = "NO PASSWORDXXXXXXXXXXXXXXXXXXXXX";
 		$u->{'pass2'} = $u->{'pass1'};
 		}
-	&create_user($u);
-	if ($_[0]->{'passmode'} == 3) {
-		&set_password($_[0]->{'user'}, $_[0]->{'plainpass'});
+	&create_user($u, $user->{'passmode'} == 3 ? $user->{'plainpass'}
+						  : undef);
+	if ($user->{'passmode'} == 3) {
+		&set_password($user->{'user'}, $user->{'plainpass'});
 		}
 	&unlock_file($config{'smb_passwd'});
 	}

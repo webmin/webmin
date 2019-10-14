@@ -2594,6 +2594,7 @@ if ($user) {
 	$auth =~ tr/\r\n//d;
 	push(@headers, [ "Authorization", "Basic $auth" ]);
 	}
+@headers = grep { !$headers->{$_->[0]} } @headers;
 foreach my $hname (keys %$headers) {
 	push(@headers, [ $hname, $headers->{$hname} ]);
 	}
@@ -5781,6 +5782,7 @@ if (exists($main::locked_file_data{$realfile})) {
 			$type = "create";
 			}
 		my $u = umask(0700);
+		unlink("$realfile.webminorig");
 		open(ORIGFILE, ">$realfile.webminorig");
 		print ORIGFILE $main::locked_file_data{$realfile};
 		close(ORIGFILE);

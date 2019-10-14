@@ -5,6 +5,7 @@
 require './apache-lib.pl';
 &ReadParse();
 ($conf, $v) = &get_virtual_config($in{'virt'});
+&can_edit_virt($v) || &error($text{'virt_ecannot'});
 $desc = &text('virt_header', &virtual_name($v));
 &ui_print_header($desc, $text{'show_title'}, "");
 

@@ -629,21 +629,22 @@ return $config{'samba_password_program'}.
        $config{'smb_conf'}." ".$args;
 }
 
-# create_user(&user)
+# create_user(&user, [plainpass])
 # Add a user to the samba password file
 sub create_user
 {
+local ($user, $plainpass) = @_;
 if ($has_pdbedit) {
 	# Use the pdbedit command
-	local $ws = &indexof("W", @{$_[0]->{'opts'}}) >= 0 ? "-m" : "";
-	local @opts = grep { $_ ne "U" && $_ ne "W" } @{$_[0]->{'opts'}};
+	local $ws = &indexof("W", @{$user->{'opts'}}) >= 0 ? "-m" : "";
+	local @opts = grep { $_ ne "U" && $_ ne "W" } @{$user->{'opts'}};
 	local $temp = &transname();
 	&open_tempfile(TEMP, ">$temp", 0, 1);
-	&print_tempfile(TEMP, "\n\n");
+	&print_tempfile(TEMP, $plainpass."\n".$plainpass."\n");
 	&close_tempfile(TEMP);
 	local $out = &backquote_logged(
 		"cd / && $config{'pdbedit'} -a -s $config{'smb_conf'} -t -u ".
-		quotemeta($_[0]->{'name'}).
+		quotemeta($user->{'name'}).
 		($config{'sync_gid'} ? " -G $config{'sync_gid'}" : "").
 		" -c '[".join("", @opts)."]' $ws <$temp 2>&1");
 	$? && &error("$config{'pdbedit'} failed : <pre>$out</pre>");
@@ -653,14 +654,14 @@ else {
 	local $out = &backquote_logged(
 		"cd / && ".&smbpasswd_cmd(
 		  "-a ".
-		  (&indexof("D", @{$_[0]->{'opts'}}) >= 0 ? "-d " : "").
-		  (&indexof("N", @{$_[0]->{'opts'}}) >= 0 ? "-n " : "").
-		  (&indexof("W", @{$_[0]->{'opts'}}) >= 0 ? "-m " : "").
-		  quotemeta($_[0]->{'name'})));
+		  (&indexof("D", @{$user->{'opts'}}) >= 0 ? "-d " : "").
+		  (&indexof("N", @{$user->{'opts'}}) >= 0 ? "-n " : "").
+		  (&indexof("W", @{$user->{'opts'}}) >= 0 ? "-m " : "").
+		  quotemeta($user->{'name'})));
 	if ($?) {
 		# Add direct to Samba password file
 		&open_tempfile(PASS, ">>$config{'smb_passwd'}");
-		&print_tempfile(PASS, &user_string($_[0]));
+		&print_tempfile(PASS, &user_string($user));
 		&close_tempfile(PASS);
 		chown(0, 0, $config{'smb_passwd'});
 		chmod(0600, $config{'smb_passwd'});

@@ -1445,7 +1445,7 @@ local $dropsql = $drop ? "--add-drop-table" : "";
 local $singlesql = $single ? "--single-transaction" : "";
 local $forcesql = $force ? "--force" : "";
 local $quicksql = $quick ? "--quick" : "";
-local $wheresql = $where ? "\"--where=$in{'where'}\"" : "";
+local $wheresql = $where ? "--where=".quotemeta($in{'where'}) : "";
 local $charsetsql = $charset ?
 	"--default-character-set=".quotemeta($charset) : "";
 local $compatiblesql = @$compatible ?
