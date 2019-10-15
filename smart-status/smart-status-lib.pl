@@ -404,7 +404,7 @@ if ($config{'attribs'}) {
 		elsif (/^((\w+.*):\s+([0-9]+(,[0-9]+)+)|(\w+.*):\s+(\d+x\d+)|(\w+.*):\s+(\d+%)|^(\w+.*):\s+(\d+))/) {
 			# NVME style
 			$doneknown = 1;
-			push(@attribs, [ $1, $2, undef, undef ]);			
+			push(@attribs, [ $5 || $7 || $9 || $2, $6 || $8 || $10 || $3, undef, undef ]);
 			}
 		elsif (/^(\S.*\S):\s+\(\s*(\S+)\)\s*(.*)/ && !$doneknown) {
 			# A known attribute
