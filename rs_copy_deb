@@ -20,3 +20,4 @@ fi
 
 echo "Copying from $latest (version=$VERSION, prod=$PROD)"
 docker cp $latest:/webmin/deb/webmin_${VERSION}_all.deb ./${preface}rootsecure_webmin_${VERSION}.deb
+docker rm $latest

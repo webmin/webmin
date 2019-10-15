@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for dock in $(docker ps -f ancestor=webminpkg -a -q) ; do
+	docker rm $dock
+done
+
+for image in $(docker images -a --filter "dangling=true" -q) ; do
+	docker rmi $image
+done
