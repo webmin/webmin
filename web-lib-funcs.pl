@@ -8667,45 +8667,51 @@ if (!$ucd) {
 &write_file("$ucd/$m/config", $c);
 }
 
-=head2 nice_size(bytes, [min])
+=head2 nice_size(bytes, [min], [units])
 
-Converts a number of bytes into a number followed by a suffix like GB, MB
-or kB. Rounding is to two decimal digits. The optional min parameter sets the
-smallest units to use - so you could pass 1024*1024 to never show bytes or kB.
+Converts a number of bytes into a number followed by a suffix like GiB, 
+MiB or kiB (or GB, MB, kB, if optional parameter [units] is set to true). 
+Output value is clipped to two decimal digits. The optional min parameter 
+sets the smallest units to use - so you could pass 1024*1024 to never show 
+bytes or kB.
 
 =cut
 sub nice_size
 {
-my ($units, $uname);
+my ($bytes, $minimal, $decimal) = @_;
 &load_theme_library();
 if (defined(&theme_nice_size) &&
     $main::header_content_type eq "text/html" &&
     $main::webmin_script_type eq "web") {
 	return &theme_nice_size(@_);
 	}
-if (abs($_[0]) > 1024*1024*1024*1024 || $_[1] >= 1024*1024*1024*1024) {
-	$units = 1024*1024*1024*1024;
-	$uname = "TB";
+my ($decimal_units, $binary_units) = (1000, 1024);
+my $bytes_initial = $bytes;
+my $unit          = $decimal ? $decimal_units : $binary_units;
+my $label         = sub {
+    my ($item) = @_;
+    my $text_prefix = 'nice_size_';
+    my $unit = ($unit > $decimal_units ? 'i' : undef);
+    my @labels = ($text{"${text_prefix}b"},
+                  $text{"${text_prefix}k${unit}B"},
+                  $text{"${text_prefix}M${unit}B"},
+                  $text{"${text_prefix}G${unit}B"},
+                  $text{"${text_prefix}T${unit}B"},
+                  $text{"${text_prefix}P${unit}B"});
+    return $labels[$item];
+	};
+
+my $item = 0;
+if (abs($bytes) >= $unit) {
+    do {
+        $bytes /= $unit;
+        ++$item;
+    	} while ((abs($bytes) >= $decimal_units || $minimal >= $decimal_units) && $item < 5);
 	}
-elsif (abs($_[0]) > 1024*1024*1024 || $_[1] >= 1024*1024*1024) {
-	$units = 1024*1024*1024;
-	$uname = "GB";
-	}
-elsif (abs($_[0]) > 1024*1024 || $_[1] >= 1024*1024) {
-	$units = 1024*1024;
-	$uname = "MB";
-	}
-elsif (abs($_[0]) > 1024 || $_[1] >= 1024) {
-	$units = 1024;
-	$uname = "kB";
-	}
-else {
-	$units = 1;
-	$uname = "bytes";
-	}
-my $sz = sprintf("%.2f", ($_[0]*1.0 / $units));
-$sz =~ s/\.00$//;
-return $sz." ".$uname;
+
+my $factor    = 10**2;
+my $formatted = int($bytes * $factor) / $factor;
+return $formatted." ".&$label($item);
 }
 
 =head2 get_perl_path

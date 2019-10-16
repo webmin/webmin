@@ -365,4 +365,16 @@ log_email_script=Webmin script: $1
 log_email_session=Session ID: $1
 log_email_remote=Client address: $1
 
+nice_size_PB=PB
+nice_size_PiB=PiB
+nice_size_TB=TB
+nice_size_TiB=TiB
+nice_size_GB=GB
+nice_size_GiB=GiB
+nice_size_MB=MB
+nice_size_MiB=MiB
+nice_size_kB=kB
+nice_size_kiB=kiB
+nice_size_b=bytes
+
 __norefs=1
