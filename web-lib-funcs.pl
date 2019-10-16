@@ -8667,11 +8667,11 @@ if (!$ucd) {
 &write_file("$ucd/$m/config", $c);
 }
 
-=head2 nice_size(bytes, [min], [units])
+=head2 nice_size(bytes, [minimal], [decimal])
 
 Converts a number of bytes into a number followed by a suffix like GiB, 
-MiB or kiB (or GB, MB, kB, if optional parameter [units] is set to true). 
-Output value is clipped to two decimal digits. The optional min parameter 
+MiB or kiB (or GB, MB, kB, if optional parameter [decimal] is set to true). 
+Output value is clipped to two decimal digits. The optional [minimal] parameter 
 sets the smallest units to use - so you could pass 1024*1024 to never show 
 bytes or kB.
 
