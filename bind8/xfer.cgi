@@ -23,8 +23,21 @@ my $src = &find("transfer-source", $options->{'members'});
 # Get master IPs
 my $masters = &find("masters", $zconf);
 my @ips;
+my $conf = &get_config();
+my @confmasters = &find("masters", $conf);
 foreach my $av (@{$masters->{'members'}}) {
-	push(@ips, join(" ", @{$av->{'values'}}));
+	my $done = 0;
+	foreach my $cm (@confmasters) {
+		if ($av->{'name'} eq $cm->{'value'}) {
+			foreach my $mb (@{$cm->{'members'}}) {
+				push(@ips, $mb->{name});
+				$done = 1;
+				}
+			}
+		}
+	if (not $done)  {
+		push(@ips, $av->{'name'});
+		}
 	}
 print &text('xfer_doing', join(" ", @ips)),"<br>\n";
 my $temp = &transname();
