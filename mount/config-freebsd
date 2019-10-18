@@ -8,3 +8,4 @@ fstab_file=/etc/fstab
 show_used=1
 nfs_check=1
 sysinfo=1
+sort_mode=2
