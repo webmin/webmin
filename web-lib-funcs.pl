@@ -145,13 +145,13 @@ my $join = defined($_[2]) ? $_[2] : "=";
 my $realfile = &translate_filename($_[0]);
 &read_file($_[0], \%old, \@order);
 &open_tempfile(ARFILE, ">$_[0]");
-foreach $k (@order) {
+foreach $k (sort @order) {
 	if (exists($_[1]->{$k})) {
 		(print ARFILE $k,$join,$_[1]->{$k},"\n") ||
 			&error(&text("efilewrite", $realfile, $!));
 		}
 	}
-foreach $k (keys %{$_[1]}) {
+foreach $k (sort keys %{$_[1]}) {
 	if (!exists($old{$k})) {
 		(print ARFILE $k,$join,$_[1]->{$k},"\n") ||
 			&error(&text("efilewrite", $realfile, $!));
