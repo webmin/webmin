@@ -5,3 +5,4 @@ nmblookup_path=nmblookup
 autofs_file=/etc/autofs/auto.master
 show_used=1
 nfs_check=1
+sysinfo=1
