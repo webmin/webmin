@@ -44,7 +44,7 @@ if ($r) {
 &unlock_file(&bind8::make_chroot(&bind8::absolute_path($zone->{'file'})));
 
 # Apply the change
-&restart_zone($zone->{'name'}, $zone->{'view'});
+&bind8::restart_zone($zone->{'name'}, $zone->{'view'});
 sleep($config{'letsencrypt_dns_wait'} || 10);	# Wait for DNS propagation
 &webmin_log("letsencryptdns", undef, $dname);
 exit(0);
