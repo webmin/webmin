@@ -108,6 +108,7 @@ config_dir=For module $1
 config_header=Configurable options for $1
 config_none=None
 config_eaccess=You are not allowed to access this module
+config_emodule=Module does not exist
 config_err=Failed to save config
 config_nochange=Don't change
 config_setto=Set to

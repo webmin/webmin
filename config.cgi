@@ -8,11 +8,12 @@ require './config-lib.pl';
 &init_config();
 &ReadParse();
 $m = $in{'module'} || $ARGV[0];
+%module_info = &get_module_info($m);
+%module_info || &error($text{'config_emodule'});
 &foreign_available($m) || &error($text{'config_eaccess'});
 %access = &get_module_acl(undef, $m);
 $access{'noconfig'} &&
 	&error($text{'config_ecannot'});
-%module_info = &get_module_info($m);
 if (-r &help_file($m, "config_intro")) {
 	$help = [ "config_intro", $m ];
 	}
