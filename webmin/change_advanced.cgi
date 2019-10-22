@@ -72,6 +72,11 @@ foreach my $l (split(/\r?\n/, $in{'headers'})) {
 	}
 $gconfig{'extra_headers'} = join("\t", @hl);
 
+# Sort config file's keys alphabetically
+if (defined($in{'sortconfigs'})) {
+	$gconfig{'sortconfigs'} = $in{'sortconfigs'};
+	}
+
 &lock_file("$config_directory/config");
 &write_file("$config_directory/config", \%gconfig);
 &unlock_file("$config_directory/config");

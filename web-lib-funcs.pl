@@ -147,7 +147,7 @@ my $join = defined($_[2]) ? $_[2] : "=";
 my $realfile = &translate_filename($_[0]);
 &read_file($_[0], \%old, \@order);
 &open_tempfile(ARFILE, ">$_[0]");
-if ($_[3]) {
+if ($_[3] || $gconfig{'sortconfigs'}) {
 	foreach $k (sort keys %{$_[1]}) {
 		(print ARFILE $k,$join,$_[1]->{$k},"\n") ||
 			&error(&text("efilewrite", $realfile, $!));
