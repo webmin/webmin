@@ -1047,11 +1047,13 @@ if ($config{'short_names'} && defined($_[5])) {
 	}
 
 # TTL field
-if ($rec{'ttl'} =~ /^(\d+)([SMHDW]?)$/i) {
-	$ttl = $1; $ttlunit = $2;
+if ($rec{'ttl'} && $rec{'ttl'} =~ /^(\d+)([SMHDW]?)$/i) {
+	$ttl = $1;
+	$ttlunit = $2;
 	}
 else {
-	$ttl = $rec{'ttl'}; $ttlunit = "";
+	$ttl = $rec{'ttl'} || '';
+	$ttlunit = "";
 	}
 print &ui_table_row($text{'edit_ttl'},
 	&ui_opt_textbox("ttl", $ttl, 8, $text{'default'})." ".
@@ -1063,7 +1065,7 @@ if ($rec{'values'}) {
 	@v = @{$rec{'values'}};
 	}
 else {
-	@v = undef;
+	@v = ( );
 	}
 if ($type eq "A" || $type eq "AAAA") {
 	print &ui_table_row($text{'value_A1'},
@@ -3086,6 +3088,7 @@ sub move_zone_button
 {
 my ($conf, $view, $zonename) = @_;
 my @views = grep { &can_edit_view($_) } &find("view", $conf);
+$view = '' if (!defined($view));
 if ($view eq '' && @views || $view ne '' && @views > 1) {
 	return &ui_buttons_row("move_zone.cgi",
                 $text{'master_move'},
@@ -3150,9 +3153,9 @@ if (!$access{'ro'} && $access{'apply'}) {
 	if (&is_bind_running()) {
 		if ($zone && ($access{'apply'} == 1 || $access{'apply'} == 2)) {
 			# Apply this zone
-            my $link = "restart_zone.cgi?return=$r&".
-                        "view=$zone->{'viewindex'}&".
-                        "zone=$zone->{'name'}";
+		        my $link = "restart_zone.cgi?return=$r&".
+				   "view=$zone->{'viewindex'}&".
+				   "zone=$zone->{'name'}";
 			push(@rv, &ui_link($link, $text{'links_apply'}) );
 			}
 		# Apply whole config

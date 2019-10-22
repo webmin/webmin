@@ -8,7 +8,7 @@ our (%access, %text, %in, %config, %is_extra);
 require './bind8-lib.pl';
 &ReadParse();
 our $ipv6revzone;
-$in{'view'} = 'any' if ($in{'view'} eq '');
+$in{'view'} = 'any' if (!$in{'view'} || $in{'view'} eq '');
 my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 my $dom = $zone->{'name'};
 &can_edit_zone($zone) || &error($text{'master_ecannot'});

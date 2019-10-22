@@ -180,7 +180,7 @@ for(my $i=0; $i<@_; $i++) {
 	if ($in{'type'} eq 'ALL') {
 		push(@cols, $r->{'type'});
 		}
-	if ($r->{'ttl'} =~ /(\d+)([SMHDW]?)/i) {
+	if ($r->{'ttl'} && $r->{'ttl'} =~ /(\d+)([SMHDW]?)/i) {
 		$r->{'ttl'} =~ s/S//i;
 		if ($r->{'ttl'} =~ s/M//i) { $r->{'ttl'} *= 60; }
 		if ($r->{'ttl'} =~ s/H//i) { $r->{'ttl'} *= 3600; }
