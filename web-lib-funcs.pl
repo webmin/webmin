@@ -8691,10 +8691,14 @@ sub nice_size
 {
 my ($bytes, $minimal, $decimal) = @_;
 &load_theme_library();
+if ($gconfig{'nicesizenobinary'} eq '1' && !$decimal) {
+	$decimal = 1;
+	$_[2] = 1;
+}
 if (defined(&theme_nice_size) &&
     $main::header_content_type eq "text/html" &&
     $main::webmin_script_type eq "web") {
-	return &theme_nice_size(@_);
+	return &theme_nice_size($_[0], $_[1], $_[2]);
 	}
 my ($decimal_units, $binary_units) = (1000, 1024);
 my $bytes_initial = $bytes;

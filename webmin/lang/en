@@ -160,6 +160,7 @@ ui_err=Failed to save user interface options
 ui_ergb=Invalid hexidecimal color value for '$1'
 ui_feedback=Send feedback to
 ui_feedbackmode=Allow sending of feedback?
+ui_nice_size_type=Use binary units of measurement (KiB, MiB, GiB rather than KB, MB, GB)
 ui_feednocc=Only to address above
 ui_hostnamemode=Hostname to display in Webmin
 ui_hnm0=Real hostname
