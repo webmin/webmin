@@ -160,6 +160,7 @@ ui_err=Failed to save user interface options
 ui_ergb=Invalid hexidecimal color value for '$1'
 ui_feedback=Send feedback to
 ui_feedbackmode=Allow sending of feedback?
+ui_nice_size_type=Use binary units of measurement (KiB, MiB, GiB rather than KB, MB, GB)
 ui_feednocc=Only to address above
 ui_hostnamemode=Hostname to display in Webmin
 ui_hnm0=Real hostname
@@ -890,6 +891,7 @@ advanced_redir0=Protocol, host, port and path
 advanced_listdir=List directories without an index file?
 advanced_headers=Extra HTTP headers
 advanced_eheader=Headers must be formatted like <tt>Header: Value</tt>
+advanced_sortconfigs=Save config files sorted by its keys?
 
 syslog_errorlog=Webmin error log
 

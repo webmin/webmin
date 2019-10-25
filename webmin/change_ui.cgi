@@ -25,6 +25,7 @@ $in{'hostnamemode'} != 3 || $in{'hostnamedisplay'} =~ /^[a-z0-9\.\_\-]+$/i ||
 $gconfig{'hostnamedisplay'} = $in{'hostnamedisplay'};
 $gconfig{'feedback_to'} = $in{'feedback_def'} ? undef : $in{'feedback'};
 $gconfig{'nofeedbackcc'} = $in{'nofeedbackcc'};
+$gconfig{'nicesizenobinary'} = $in{'nicesizenobinary'};
 $gconfig{'dateformat'} = $in{'dateformat'};
 
 $in{'width_def'} || $in{'width'} =~ /^\d+$/ || &error($text{'ui_ewidth'});

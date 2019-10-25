@@ -127,7 +127,7 @@ $main::read_file_cache_time{$realfile} = $st[9];
 return $rv;
 }
 
-=head2 write_file(file, &hash, [join-char])
+=head2 write_file(file, &hash, [join-char], [sort])
 
 Write out the contents of a hash as name=value lines. The parameters are :
 
@@ -137,6 +137,8 @@ Write out the contents of a hash as name=value lines. The parameters are :
 
 =item join-char - If given, names and values are separated by this instead of =
 
+=item sort - If given, passed hash reference will be sorted by its keys
+
 =cut
 sub write_file
 {
@@ -145,18 +147,27 @@ my $join = defined($_[2]) ? $_[2] : "=";
 my $realfile = &translate_filename($_[0]);
 &read_file($_[0], \%old, \@order);
 &open_tempfile(ARFILE, ">$_[0]");
-foreach $k (sort @order) {
-	if (exists($_[1]->{$k})) {
+if ($_[3] || $gconfig{'sortconfigs'}) {
+	foreach $k (sort keys %{$_[1]}) {
 		(print ARFILE $k,$join,$_[1]->{$k},"\n") ||
 			&error(&text("efilewrite", $realfile, $!));
-		}
+		
+	    }
 	}
-foreach $k (sort keys %{$_[1]}) {
-	if (!exists($old{$k})) {
-		(print ARFILE $k,$join,$_[1]->{$k},"\n") ||
-			&error(&text("efilewrite", $realfile, $!));
+else {
+	foreach $k (@order) {
+		if (exists($_[1]->{$k})) {
+			(print ARFILE $k,$join,$_[1]->{$k},"\n") ||
+				&error(&text("efilewrite", $realfile, $!));
+			}
 		}
-        }
+	foreach $k (keys %{$_[1]}) {
+		if (!exists($old{$k})) {
+			(print ARFILE $k,$join,$_[1]->{$k},"\n") ||
+				&error(&text("efilewrite", $realfile, $!));
+			}
+	    }
+	}
 &close_tempfile(ARFILE);
 if (defined($main::read_file_cache{$realfile})) {
 	%{$main::read_file_cache{$realfile}} = %{$_[1]};
@@ -8680,10 +8691,14 @@ sub nice_size
 {
 my ($bytes, $minimal, $decimal) = @_;
 &load_theme_library();
+if ($gconfig{'nicesizenobinary'} eq '1' && !defined($decimal)) {
+	$decimal = 1;
+	$_[2] = 1;
+	}
 if (defined(&theme_nice_size) &&
     $main::header_content_type eq "text/html" &&
     $main::webmin_script_type eq "web") {
-	return &theme_nice_size(@_);
+	return &theme_nice_size($_[0], $_[1], $_[2]);
 	}
 my ($decimal_units, $binary_units) = (1000, 1024);
 my $bytes_initial = $bytes;
