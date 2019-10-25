@@ -47,7 +47,7 @@ if (!$in{'domain_def'}) {
 			&error(&text('dns_edomain', $d));
 		push(@{$dns->{'domain'}}, $d);
 		}
-	@dlist>0 || &error($text{'dns_esearch'});
+	@dlist || &error($text{'dns_esearch'});
 	}
 &parse_order($dns);
 &save_dns_config($dns);
