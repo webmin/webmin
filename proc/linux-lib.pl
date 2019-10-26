@@ -62,7 +62,7 @@ if ($ver >= 2) {
 					timelocal($3 || 0, $2, $1,
 						  $now[3], $now[4], $now[5]);
 				}
-			elsif ($w[12] =~ /^(\S\S\S)\s*(\d+)$/) {
+			elsif ($w[12] =~ /^(\S\S\S)\s*(\d+)$/ && $2 < 32) {
 				# Started on some other day
 				$plist[$i]->{"_stime_unix"} =
 					timelocal(0, 0, 0, $2,
