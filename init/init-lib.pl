@@ -1344,6 +1344,33 @@ else {
 	}
 }
 
+=head2 reload_action(action)
+
+Does a config reload for some action.
+
+=cut
+sub reload_action
+{
+local ($name) = @_;
+local $action_mode = &get_action_mode($name);
+if ($action_mode eq "upstart") {
+	return &reload_upstart_service($name);
+	}
+elsif ($action_mode eq "systemd") {
+	return &reload_systemd_service($name);
+	}
+elsif ($action_mode eq "init") {
+	local $file = &action_filename($name);
+	local $hasarg = &get_action_args($file);
+	if ($hasarg->{'reload'}) {
+		local $cmd = $file." reload";
+		local $out = &backquote_logged("$cmd 2>&1 </dev/null");
+		return $? ? (0, $out) : (1, undef);
+		}
+	}
+return (0, "Not implemented");
+}
+
 =head2 status_action(name)
 
 Returns 1 if some action is running right now, 0 if not, or -1 if unknown
@@ -1969,6 +1996,19 @@ my $out = &backquote_logged(
 return (!$?, $out);
 }
 
+=head2 reload_upstart_service(name)
+
+Reload the upstart service with some name, and return an OK flag and output
+
+=cut
+sub reload_upstart_service
+{
+my ($name) = @_;
+my $out = &backquote_logged(
+	"service ".quotemeta($name)." reload 2>&1 </dev/null");
+return (!$?, $out);
+}
+
 =head2 create_upstart_service(name, description, command, [pre-script], [fork])
 
 Create a new upstart service with the given details.
@@ -2189,6 +2229,19 @@ sub restart_systemd_service
 my ($name) = @_;
 my $out = &backquote_logged(
 	"systemctl restart ".quotemeta($name)." 2>&1 </dev/null");
+return (!$?, $out);
+}
+
+=head2 reload_systemd_service(name)
+
+Reload the systemd service with some name, and return an OK flag and output
+
+=cut
+sub reload_systemd_service
+{
+my ($name) = @_;
+my $out = &backquote_logged(
+	"systemctl reload ".quotemeta($name)." 2>&1 </dev/null");
 return (!$?, $out);
 }
 
