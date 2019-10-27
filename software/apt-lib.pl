@@ -403,6 +403,19 @@ if (&has_command("aptitude")) {
 	&reset_environment();
 	}
 
+# Get holds from apt-mark
+if (&has_command("apt-mark")) {
+	&clean_language();
+	&open_execute_command(PKGS, "apt-mark showhost 2>/dev/null", 1, 1);
+	while(<PKGS>) { 
+		if (/^([^:\s]+)/) {
+			$hold{$1} = 1;
+			}
+		}
+	close(PKGS);
+	&reset_environment();
+	}
+
 return grep { !$hold{$_->{'name'}} } @pkgs;
 }
 
