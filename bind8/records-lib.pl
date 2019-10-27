@@ -824,7 +824,7 @@ sub join_dmarc
 {
 my ($dmarc) = @_;
 my @rv = ( "v=DMARC1" );
-foreach my $s ("pct", "ruf", "rua", "p", "sp", "adkim", "aspf") {
+foreach my $s ("p", "pct", "ruf", "rua", "sp", "adkim", "aspf") {
 	if ($dmarc->{$s} && $dmarc->{$s} ne '') {
 		push(@rv, $s."=".$dmarc->{$s});
 		}
