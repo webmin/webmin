@@ -415,7 +415,7 @@ sub save_hostname
 {
 local $old = &get_hostname();
 local %conf;
-&system_logged("hostname $_[0] >/dev/null 2>&1");
+&system_logged("hostname ".quotemeta($_[0])." >/dev/null 2>&1");
 &open_lock_tempfile(HOST, ">/etc/HOSTNAME");
 &print_tempfile(HOST, $_[0],"\n");
 &close_tempfile(HOST);
@@ -442,6 +442,12 @@ if (-r "/etc/hostname") {
 	&open_lock_tempfile(HOST, ">/etc/hostname");
 	&print_tempfile(HOST, $_[0],"\n");
 	&close_tempfile(HOST);
+	}
+
+# Use the hostnamectl command as well
+if (&has_command("hostnamectl")) {
+	&system_logged("hostnamectl set-hostname ".quotemeta($_[0]).
+		       " >/dev/null 2>&1");
 	}
 
 undef(@main::get_system_hostname);	# clear cache
@@ -1089,6 +1095,13 @@ foreach my $b (&boot_interfaces()) {
 		# Add an empty DNS1 line so that we know to update this file
 		# later if DNS resolves come back
 		$ifc{'DNS1'} = ''
+		}
+	my @d = @{$conf->{'domain'}};
+	if (@d) {
+		$ifc{'DOMAIN'} = $d[0];
+		}
+	else {
+		delete($ifc{'DOMAIN'});
 		}
 	&write_env_file($b->{'file'}, \%ifc);
 	&unlock_file($b->{'file'});
