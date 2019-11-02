@@ -15,11 +15,13 @@ else {
 
 if ($in{'source'} == 3 && &foreign_installed("package-updates")) {
 	# Use the package updates module instead, as it has a nicer UI
-	&redirect("/package-updates/update.cgi?redir=/$module_name/".
-		  "&redirdesc=".&urlize($module_info{'desc'}).
-		  "&mode=new".
-		  "&".join("&", map { "u=".&urlize($_) }
-				    split(/\s+/, $in{'update'})));
+	&redirect(
+	  "/package-updates/update.cgi?".
+	  "redir=".&urlize($in{'return'} || "/$module_name/").
+	  "&redirdesc=".&urlize($in{'returndesc'} || $module_info{'desc'}).
+	  "&mode=new".
+	  "&".join("&", map { "u=".&urlize($_) }
+			    split(/\s+/, $in{'update'})));
 	return;
 	}
 
