@@ -799,9 +799,10 @@ else {
 	}
 }
 
+# get_proftpd_version([&output])
 sub get_proftpd_version
 {
-local $out = `$config{'proftpd_path'} -v 2>&1`;
+local $out = &backquote_command("$config{'proftpd_path'} -v 2>&1");
 ${$_[0]} = $out if ($_[0]);
 if ($out =~ /ProFTPD\s+Version\s+(\d+)\.([0-9\.]+)/i ||
     $out =~ /ProFTPD\s+(\d+)\.([0-9\.]+)/i) {
