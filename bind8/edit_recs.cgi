@@ -89,7 +89,7 @@ else {
 my %hmap;
 if (@recs) {
 	@recs = &sort_records(@recs);
-	foreach my $v (keys %text) {
+	foreach my $v (sort { $a cmp $b } keys %text) {
 		if ($v =~ /^value_([A-Z0-9]+)(\d+)/) {
 			$hmap{$1}->[$2-1] = $text{$v};
 			}
@@ -237,6 +237,14 @@ for(my $i=0; $i<@_; $i++) {
 					}
 				$v = $v ? $v." (".$r->{'values'}->[$j].")"
 					: $r->{'values'}->[$j];
+				}
+			elsif ($in{'type'} eq "CAA") {
+				if ($j == 0) {
+					$v = $v ? $text{'yes'} : $text{'no'};
+					}
+				elsif ($j == 1) {
+					$v = $text{'value_caa_'.$v} || $v;
+					}
 				}
 			}
 		if (length($v) > 80) {

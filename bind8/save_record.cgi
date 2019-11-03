@@ -427,6 +427,12 @@ else {
                                        $in{'value2'},
 				       $in{'value3'}, ")");
 		}
+	elsif ($in{'type'} eq 'CAA') {
+		$in{'value2'} =~ /^\S+$/ ||
+			&error($text{'edit_ecaavalue2'});
+		$vals = join(" ", $in{'value0'}, $in{'value1'},
+				  "\"$in{'value2'}\"");
+		}
 	else {
 		# For other record types, just save the lines
 		$in{'values'} =~ s/\r//g;

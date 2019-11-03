@@ -310,9 +310,11 @@ edit_ensec3value3=Missing or non-base64 salt
 edit_edmarcpct=Percentage of messages must be an integer between 0 and 100
 edit_edmarcrua=Missing aggregate feedback address
 edit_edmarcruf=Missing forensic information address
+edit_ecaavalue2=Missing or invalid-looking domain name
 
 text_title=Edit Records File
 text_title2=View Records File
+text_desc3=This form allows you to manually edit the DNS records file $1. No syntax checking will be done by Webmin.
 text_desc3=This form allows you to manually edit the DNS records file $1. No syntax checking will be done by Webmin.
 text_desc2=This page shows the DNS records file $1, created by BIND when the zone was transferred from the master server.
 text_undo=Undo
@@ -399,6 +401,7 @@ type_LOC=Location
 type_SRV=Service Address
 type_ALL=All Record Types
 type_KEY=Public Key
+type_CAA=Certificate Authority
 
 edit_A=Address
 edit_AAAA=IPv6 Address
@@ -418,6 +421,7 @@ edit_KEY=Public Key
 edit_NSEC3PARAM=DNSSEC Parameters
 edit_TLSA=SSL Certificate
 edit_SSHFP=SSH Public Key
+edit_CAA=Certificate Authority
 
 recs_defttl=Default TTL
 recs_A=Address
@@ -439,6 +443,7 @@ recs_KEY=Public Key
 recs_NSEC3PARAM=DNSSEC Parameters
 recs_TLSA=SSL Certificate
 recs_SSHFP=SSH Public Key
+recs_CAA=Certificate Authority
 recs_delete=Delete Selected
 
 value_A1=Address
@@ -511,6 +516,12 @@ value_dmarcnop=Same as this domain
 value_dmarcaspf=Require strict SPF alignment
 value_dmarcadkim=Require strict DKIM alignment
 value_dmarcnor=Don't send
+value_CAA1=Require enforcement? 
+value_CAA2=Authorization type
+value_CAA3=CA domain name
+value_caa_issue=Single domain cert
+value_caa_issuewild=Wildcard cert
+value_caa_iodef=Policy violation URL
 
 tlsa_usage0=Certificate authority
 tlsa_usage1=End entity
@@ -1223,7 +1234,6 @@ zonekey_other=Other size (in bits)
 zonekey_enable=Create and Add Key
 zonekey_err=Failed to create DNSSEC key
 zonekey_esize=Key size must be a number of bits between $1 and $2
-zonekey_efactor=Key size must be a multiple of $1
 zonekey_creating=Creating DNSSEC key for $1 ..
 zonekey_ecreate=.. creation failed : $1
 zonekey_done=.. done

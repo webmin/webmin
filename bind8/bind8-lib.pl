@@ -1298,6 +1298,20 @@ elsif ($type eq "NSEC3PARAM") {
 		&ui_textbox("value3", $v[3], 20));
 
 	}
+elsif ($type eq "CAA") {
+	# CAA records have a flag, tag and issuer domain
+	print &ui_table_row($text{'value_CAA0'},
+		&ui_yesno_radio("value0", $v[0] || 0));
+
+	print &ui_table_row($text{'value_CAA1'},
+		&ui_select("value1", $v[1],
+			   [ [ "issue", $text{'value_caa_issue'} ],
+			     [ "issuewild", $text{'value_caa_issuewild'} ],
+			     [ "iodef", $text{'value_caa_iodef'} ] ]));
+
+	print &ui_table_row($text{'value_CAA2'},
+		&ui_textbox("value2", $v[2], 40));
+	}
 else {
 	# All other types just have a text box
 	print &ui_table_row($text{'value_other'},
@@ -2968,7 +2982,7 @@ $slave_error = $_[0];
 
 sub get_forward_record_types
 {
-return ("A", "NS", "CNAME", "MX", "HINFO", "TXT", "SPF", "DMARC", "WKS", "RP", "PTR", "LOC", "SRV", "KEY", "TLSA", "SSHFP", "NSEC3PARAM", $config{'support_aaaa'} ? ( "AAAA" ) : ( ), @extra_forward);
+return ("A", "NS", "CNAME", "MX", "HINFO", "TXT", "SPF", "DMARC", "WKS", "RP", "PTR", "LOC", "SRV", "KEY", "TLSA", "SSHFP", "CAA", "NSEC3PARAM", $config{'support_aaaa'} ? ( "AAAA" ) : ( ), @extra_forward);
 }
 
 sub get_reverse_record_types
