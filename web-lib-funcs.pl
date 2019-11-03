@@ -10824,6 +10824,8 @@ for(my $i=0; $i<@sp1 || $i<@sp2; $i++) {
 	my $v1 = $sp1[$i];
 	my $v2 = $sp2[$i];
 	my $comp;
+	$v1 =~ s/^ubuntu//g;
+	$v2 =~ s/^ubuntu//g;
 	if ($v1 =~ /^\d+$/ && $v2 =~ /^\d+$/) {
 		# Numeric only
 		# ie. 5 vs 7
