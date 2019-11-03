@@ -38,7 +38,7 @@ sub get_sslprotos
 {
 my @sslprotos = ("SSLv2", "SSLv3", "TLSv1" );
 if ($httpd_modules{'core'} >= 2.215) {
-	push(@sslprotos, "TLSv1.1", "TLSv1.2");
+	push(@sslprotos, "TLSv1.1", "TLSv1.2", "TLSv1.3");
 	}
 return @sslprotos;
 }
