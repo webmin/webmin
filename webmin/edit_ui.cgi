@@ -41,10 +41,6 @@ print &ui_table_row($text{'ui_feedbackmode'},
 		  [ [ 0, $text{'yes'} ], [ 1, $text{'ui_feednocc'} ],
 		    [ 2, $text{'no'} ] ]), undef, [ "valign=middle","valign=middle" ]);
 
-print &ui_table_row($text{'ui_nice_size_type'},
-	&ui_radio("nicesizenobinary", int($gconfig{'nicesizenobinary'}),
-		  [ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]), undef, [ "valign=middle","valign=middle" ]);
-
 print &ui_table_row($text{'ui_dateformat'},
 	&ui_select("dateformat", $gconfig{'dateformat'} || "dd/mon/yyyy",
 		   [ map { [ $_, $text{'ui_dateformat_'.$_} ] }
