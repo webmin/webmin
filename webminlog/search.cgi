@@ -1,4 +1,4 @@
-#!/usr/libexec/webmin/perl-wrapper -X
+#!/usr/local/bin/perl
 # search.cgi
 # Find webmin actions
 
