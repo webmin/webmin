@@ -1523,7 +1523,7 @@ elsif ($ENV{'REQUEST_URI'} =~ /json-error=1/) {
 else {
 	&header($text{'error'}, "");
 	print "<hr>\n";
-	print "<h3>",($main::whatfailed ? "$main::whatfailed : " : ""),
+	print "<h3 data-fatal-error-text>",($main::whatfailed ? "$main::whatfailed : " : ""),
 		     @_,"</h3>\n";
 	if ($gconfig{'error_stack'}) {
 		# Show call stack
