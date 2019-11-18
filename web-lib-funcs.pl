@@ -10428,6 +10428,7 @@ On failure returns an error message string. In an array context, returns the
 protocol type too.
 
 =cut
+my $lastldapserver;
 sub connect_userdb
 {
 my ($str) = @_;
@@ -10463,10 +10464,21 @@ elsif ($proto eq "ldap") {
 	if (!$port) {
 		$port = $scheme eq 'ldaps' ? 636 : 389;
 		}
-	my $ldap = Net::LDAP->new($host,
-				  port => $port,
-				  'scheme' => $scheme);
+	my $ldap;
+	if ($lastldapserver ne "") {
+		$ldap = Net::LDAP->new($lastldapserver,
+					port => $port,
+					'scheme' => $scheme,
+					'timeout' => 2);
+		}
+	if (! $ldap) {
+		$ldap = Net::LDAP->new([ split(/,/, $host) ],
+					port => $port,
+					'scheme' => $scheme,
+					'timeout' => 2);
+		}
 	$ldap || return &text('sql_eldapconnect', $host);
+	$lastldapserver = $ldap->host();
 	my $mesg;
 	if ($args->{'tls'}) {
 		# Switch to TLS mode
@@ -10530,7 +10542,7 @@ Converts a string like mysql://user:pass@host/db into separate parts
 sub split_userdb_string
 {
 my ($str) = @_;
-if ($str =~ /^([a-z]+):\/\/([^:]*):([^\@]*)\@([a-z0-9\.\-\_]+)\/([^\?]+)(\?(.*))?$/) {
+if ($str =~ /^([a-z]+):\/\/([^:]*):([^\@]*)\@([a-z0-9\.\-\_,]+)\/([^\?]+)(\?(.*))?$/) {
 	my ($proto, $user, $pass, $host, $prefix, $argstr) =
 		($1, $2, $3, $4, $5, $7);
 	my %args = map { split(/=/, $_, 2) } split(/\&/, $argstr);
