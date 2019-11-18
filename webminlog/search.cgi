@@ -5,6 +5,7 @@
 use strict;
 use warnings;
 use Time::Local;
+use File::Basename;
 require './webminlog-lib.pl';
 our (%text, %config, %gconfig, $webmin_logfile, %in, $in);
 &foreign_require("acl", "acl-lib.pl");
@@ -66,11 +67,47 @@ else {
 	&ui_print_header(undef, $text{'search_title'}, "");
 	}
 
+# create summary log file in case of rotated search
+if ($gconfig{'logsearch_rotated'} == 1) {
+	if (-e $webmin_logfile) {
+		if ((! -e "$webmin_logfile.sum") || ((stat($webmin_logfile))[9] > (stat("$webmin_logfile.sum"))[9])) {
+			my $dir = dirname($webmin_logfile);
+			my $base = basename($webmin_logfile);
+			my $entry;
+			my $mod;
+			my %files;
+			unlink("$webmin_logfile.sum");
+			opendir(DIR, $dir);
+			foreach $entry (readdir(DIR)) {
+				if ($entry =~ /^($base)/) {
+					push(@{$files{(stat($dir . "/" . $entry))[9]}}, $entry);
+				}
+			}
+			closedir(DIR);
+			open(OUT, ">$webmin_logfile.sum");
+			foreach $mod (sort(keys(%files))) {
+				foreach $entry (@{$files{$mod}}) {
+					open(IN, "$dir/$entry");
+					while(<IN>) {
+						print OUT $_;
+					}
+					close(IN);
+				}
+			}
+			close(OUT);
+		}
+	}
+}
+
 # Perform initial search in index
 my @match;
 my %index;
 &build_log_index(\%index);
-open(LOG, $webmin_logfile);
+if ($gconfig{'logsearch_rotated'} == 1) {
+	open(LOG, "$webmin_logfile.sum");
+} else {
+	open(LOG, $webmin_logfile);
+}
 while(my ($id, $idx) = each %index) {
 	my ($pos, $time, $user, $module, $sid) = split(/\s+/, $idx);
 	$time ||= 0;

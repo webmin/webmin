@@ -20,7 +20,7 @@ our %access_mods = map { $_, 1 } split(/\s+/, $access{'mods'});
 our %access_users = map { $_, 1 } split(/\s+/, $access{'users'});
 our %parser_cache;
 our (%text, $module_config_directory, $root_directory, $webmin_logfile,
-     $module_var_directory);
+     $module_var_directory,%gconfig);
 
 =head2 list_webmin_log([only-user], [only-module], [start-time, end-time])
 
@@ -44,7 +44,11 @@ my ($onlyuser, $onlymodule, $start, $end) = @_;
 my %index;
 &build_log_index(\%index);
 my @rv;
-open(LOG, $webmin_logfile);
+if ($gconfig{'logsearch_rotated'} == 1) {
+	open(LOG, "$webmin_logfile.sum");
+} else {
+	open(LOG, $webmin_logfile);
+}
 my ($id, $idx);
 while(($id, $idx) = each %index) {
 	my ($pos, $time, $user, $module, $sid) = split(/\s+/, $idx);
@@ -338,7 +342,11 @@ sub get_action
 {
 my %index;
 &build_log_index(\%index);
-open(LOG, $webmin_logfile);
+if ($gconfig{'logsearch_rotated'} == 1) {
+	open(LOG, "$webmin_logfile.sum");
+} else {
+	open(LOG, $webmin_logfile);
+}
 my @idx = split(/\s+/, $index{$_[0]});
 seek(LOG, $idx[0], 0);
 my $line = <LOG>;
@@ -361,10 +369,19 @@ if (!glob($ifile."*")) {
 	$ifile = "$module_var_directory/logindex";
 	}
 dbmopen(%$index, $ifile, 0600);
-my @st = stat($webmin_logfile);
+my @st;
+if ($gconfig{'logsearch_rotated'} == 1) {
+	@st = stat("$webmin_logfile.sum");
+} else {
+	@st = stat($webmin_logfile);
+}
 if (@st && (!$index->{'lastchange'} || $st[9] > $index->{'lastchange'})) {
 	# Log has changed .. perhaps need to rebuild
-	open(LOG, $webmin_logfile);
+	if ($gconfig{'logsearch_rotated'} == 1) {
+		open(LOG, "$webmin_logfile.sum");
+	} else {
+		open(LOG, $webmin_logfile);
+	}
 	if ($index->{'lastsize'} && $st[7] >= $index->{'lastsize'}) {
 		# Gotten bigger .. just add new lines
 		seek(LOG, $index->{'lastpos'}, 0);
