@@ -32,7 +32,7 @@ home_style=Automatische home directory stijl,4,0,home/username,1,home/u/username
 line6=Nieuwe gebruiker opties,11
 base_uid=Laagste UID voor nieuwe gebruikers,3,Van Gebruikers en Groepen module
 base_gid=Laagste GID voor nieuwe groepen,3,Van Gebruikers en Groepen module
-md5=Encryptie methoden voor wachtwoorden,1,3-LDAP MD5,1-Unix MD5,0-crypt,2-Platte tekst,4-LDAP SSHA,5-Unix SHA
+md5=Encryptie methoden voor wachtwoorden,1,3-LDAP MD5,1-Unix MD5,0-crypt,2-Platte tekst,4-LDAP SSHA,5-Unix SHA,6-SHA512
 
 shells=Bouw een lijst van shells van,2,vaste ingebouwde lijst,paswd-Systeem gebruikers,shells-/etc/shells
 line7=Nieuwe gebruiker standaarden,11
