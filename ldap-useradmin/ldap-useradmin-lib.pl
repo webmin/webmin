@@ -166,6 +166,15 @@ if ($config{'md5'} == 3) {
 	$out =~ s/^\{md5\}//i;
 	return $out;
 	}
+if ($config{'md5'} == 6) {
+	# SHA512 encryption
+	local $err = &useradmin::check_sha512();
+	if ($err) {
+		&error($text{'usave_edigestsha512'});
+		}
+	local $out = &useradmin::encrypt_sha512($pass, $salt);
+	return "{CRYPT}" . $out;
+	}
 if ($config{'md5'} == 1) {
 	# Unix MD5 encryption
 	&foreign_require("useradmin", "user-lib.pl");
