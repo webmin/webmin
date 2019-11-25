@@ -124,7 +124,7 @@ else {
 		exit;
 		}
 
-	&main_header();
+	&main_header(&get_remote_mysql_variant());
 	print &ui_subheading($text{'index_dbs'}) if ($access{'perms'});
 	if ($in{'search'}) {
 		# Limit to those matching search
@@ -299,13 +299,20 @@ else {
 
 &ui_print_footer("/", "index");
 
+# main_header(ver, variant)
 sub main_header
 {
+my ($ver, $variant) = @_;
+if (!$ver) {
+	$ver = $mysql_version;
+	$variant = "mysql";
+	}
+my $vn = $variant eq "mysql" ? "MySQL" : "MariaDB";
 &ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
 	&help_search_link("mysql", "man", "doc", "google"),
 	undef, undef,
 	$config{'host'} ?
-		&text('index_version2', $mysql_version, $config{'host'}) :
-		&text('index_version', $mysql_version));
+		&text('index_version2', $ver, $config{'host'}, $vn) :
+		&text('index_version', $ver, $vn));
 }
 
