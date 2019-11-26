@@ -25,6 +25,7 @@ sub update_system_install
 {
 local $update = $_[0] || $in{'update'};
 local $in = $_[1];
+$update =~ s/\.\*/\*/g;
 local $enable;
 if ($in->{'enablerepo'}) {
 	$enable = "enablerepo=".quotemeta($in->{'enablerepo'});
