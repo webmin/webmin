@@ -115,6 +115,7 @@ foreach my $a (@ann) {
 	next if ($a->{'atleast_version'} && $ver < $a->{'atleast_version'});
 	next if ($a->{'atmost_version'} && $ver > $a->{'atmost_version'});
 	next if ($a->{'user_types'} && $a->{'user_types'} !~ /\Q$utype\E/);
+	next if ($a->{'beta'} && !$gconfig{'beta_announce'});
 	
 	(my $id = $a->{'file'}) =~ s/\.//;
 	my $info = { 'id' => "announce_".$id,
