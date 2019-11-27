@@ -8,9 +8,14 @@ use WebminCore;
 &init_config();
 &foreign_require("useradmin");
 &foreign_require("ldap-client");
+# get the own acl the acl from useradmin module and merge the not present rights
 %access = &get_module_acl();
-$useradmin::access{'udelete'} = 1;	# needed for users_table / groups_table
-$useradmin::access{'gdelete'} = 1;
+%useradminaccess = &get_module_acl(undef, "useradmin");
+foreach $accesskey (keys(%useradminaccess)) {
+	if (!defined($access{$accesskey})) {
+		$access{$accesskey} = $useradminaccess{$accesskey};
+		}
+	}
 
 %utext = &load_language("useradmin");
 foreach $t (keys %utext) {
