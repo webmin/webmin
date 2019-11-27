@@ -53,7 +53,7 @@ if ($in{'all'}) {
 	    &ui_textbox("file", $c{'backup_'.$in{'db'}}, 60)." ".
 	    &file_chooser_button("file"));
 	print &ui_table_row($text{'backup_prefix'},
-	    &ui_opt_textbox("prefix", $c{'prefix_'}, 10,
+	    &ui_opt_textbox("prefix", $c{'backup_prefix_'}, 10,
 			    $text{'backup_noprefix'}));
 	}
 else {

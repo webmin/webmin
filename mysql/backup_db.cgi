@@ -161,8 +161,9 @@ if (!$in{'save'}) {
 		if ($in{'all'}) {
 			# File in a directory
 			$dir = &date_subs($in{'file'});
+			$prefix = &date_subs($in{'prefix'});
 			&make_dir($dir, 0755) if ($in{'mkdir'});
-			$file = $dir."/".$in{'prefix'}.$db.".sql".
+			$file = $dir."/".$prefix.$db.".sql".
 				($in{'compress'} == 1 ? ".gz" :
 				 $in{'compress'} == 2 ? ".bz2" : "");
 			$deletefile = 1;
