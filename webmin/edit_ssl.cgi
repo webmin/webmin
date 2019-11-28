@@ -257,6 +257,9 @@ print "$text{'ssl_letsdesc'}<p>\n";
 my $err = &check_letsencrypt();
 if ($err) {
 	print "<b>",&text('ssl_letserr', $err),"</b><p>\n";
+	print &get_letsencrypt_install_message(
+		"/$module_name/edit_ssl.cgi?mode=lets", $text{'ssl_title'});
+	print "<p>\n";
 	print &text('ssl_letserr2', "../config.cgi?$module_name"),"<p>\n";
 	}
 else {

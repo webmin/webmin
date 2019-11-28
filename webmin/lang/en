@@ -407,7 +407,7 @@ ssl_already1=Previously generated private key :
 ssl_already2=Previously generated certificate signing request :
 ssl_letsdesc=Let's Encrypt is a free, automated, and open certificate authority that can be used to generate an SSL certificate for use by Webmin.
 ssl_letserr=Unfortunately, Let's Encrypt cannot be used on your system : $1.
-ssl_letserr2=Check the <a href='$1'>module configuration</a> page to ensure you are using the correct path to the <tt>letsencrypt</tt> or <tt>letsencrypt-auto</tt> command.
+ssl_letserr2=Alternately, check the <a href='$1'>module configuration</a> page to ensure you are using the correct path to the <tt>letsencrypt</tt> command.
 ssl_letsdesc2=This page can be used to request a new certificate, which will overwrite any other currently have configured in Webmin. However, the Let's Encrypt service requires that your ownership of the certificate domain be validated by checking that this system hosts the website for the domain. This is done by placing a small temporary file in the website's document directory.
 ssl_letsheader=Options for new SSL certificate
 ssl_letsdoms=Hostnames for certificate
@@ -1123,10 +1123,8 @@ twofactor_esession=Two-factor authentication cannot be used unless session-based
 
 letsencrypt_title=Let's Encrypt Certificate Request
 letsencrypt_err=Failed to request certificate
-letsencrypt_ecmds=Neither the Let's Encrypt client command <tt>letsencrypt-auto</tt> or the <tt>python</tt> command were found on your system
-letsencrypt_epythonmod=The Python module $1 needed by the built-in Let's Encrypt client is not installed
-letsencrypt_epythonver=Failed to get the Python version : $1
-letsencrypt_epythonver2=Python version $1 or above is required, but you only have version $2.
+letsencrypt_ecmds2=The Let's Encrypt client command <tt>letsencrypt</tt> or <tt>certbot</tt> was not found on your system
+letsencrypt_certbot=Certbot
 letsencrypt_edroot=The Apache virtual host $1 has no document directory!
 letsencrypt_edom=Missing or invalid domain name
 letsencrypt_erenew=Missing or non-numeric renewal interval
