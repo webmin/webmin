@@ -103,7 +103,7 @@ sub traverse
 local($s, $act, $i);
 
 # Show the icon and class name
-print "<tr style=\"border-top: 1px solid #aaaaaa33\"> <td>", $spacer x $_[1];
+print "<tr style=\"border-top: 1px solid #aaaaaa28\"> <td>", $spacer x $_[1];
 if ($_[0]) {
 	if ($in{'filter'}) {
 		print "<img border=0 src='images/close.gif'>";

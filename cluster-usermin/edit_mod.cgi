@@ -170,16 +170,16 @@ else {
 print "</table></td></tr></table><p>\n";
 
 print "<table width=100%><tr>\n";
-print "<form action=delete_mod.cgi>\n";
+print "<td><form action=delete_mod.cgi>\n";
 print "<input type=hidden name=type value=\"$type\">\n";
 print "<input type=hidden name=mod value=\"$name\">\n";
-print "<td><input type=submit value='",$text{"edit_uninst_$type"},"'>\n";
+print "<input type=submit value='",$text{"edit_uninst_$type"},"'>\n";
 print "<select name=server>\n";
 print "<option value=-1>$text{'edit_all'}</option>\n";
 foreach $s (@got) {
 	print "<option value='$s->{'id'}'>",&server_name($s),"</option>\n";
 	}
-print "</select></td></form>\n";
+print "</select></form></td>\n";
 
 print "</tr></table>\n";
 
@@ -191,6 +191,7 @@ print &ui_subheading($text{'edit_hosts'});
 @titles = map { &server_name($_).
 	        ($_->{'module'}->{'version'} ? " ($text{'host_version2'} $_->{'module'}->{'version'})" : "") } @got;
 &icons_table(\@links, \@titles, \@icons);
+print "<br>";
 
 &remote_finished();
 &ui_print_footer("", $text{'index_return'});

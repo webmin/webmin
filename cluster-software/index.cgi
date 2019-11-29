@@ -69,7 +69,7 @@ $formno++;
 print "<table width=100%><tr>\n";
 @addservers = grep { !$gothost{$_->{'id'}} } @servers;
 if (@addservers && $access{'add'}) {
-	print "<td width=33%><form action=add.cgi>\n";
+	print "<td><form action=add.cgi>\n";
 	print "<input type=submit name=add value='$text{'index_add'}'>\n";
 	print "<select name=server>\n";
 	foreach $s (sort { $a->{'host'} cmp $b->{'host'} } @addservers) {
@@ -82,7 +82,7 @@ if (@addservers && $access{'add'}) {
 
 # Show button for compare form
 if (@hosts) {
-	print "<td align=center width=33%>\n";
+	print "<td align=right>\n";
 	print "<form action=compare_form.cgi>\n";
 	print "<input type=submit value='$text{'index_compare'}'>\n";
 	print "</form>\n";

@@ -96,8 +96,8 @@ foreach (1 .. 15) {
 	$random_password .= $random_password_chars[
 				rand(scalar(@random_password_chars))];
 	}
-print "<td valign=top rowspan=4><b>$text{'pass'}</b>",
-      "</td> <td rowspan=4 valign=top>\n";
+print "<td valign=top rowspan=3><b>$text{'pass'}</b>",
+      "</td> <td rowspan=3 valign=top>\n";
 printf "<input type=radio name=passmode value=0> %s<br>\n",
 	$uconfig{'empty_mode'} ? $text{'none1'} : $text{'none2'};
 printf "<input type=radio name=passmode value=1 checked> %s<br>\n",
@@ -129,8 +129,8 @@ if ($pft == 1 || $pft == 6) {
 	print " &nbsp; <input name=changeh size=3>";
 	print ":<input name=changemi size=3></td>\n";
 
-	print "<td><b>$text{'expire2'}</b></td>\n";
-	print "<td>";
+	print "<td colspan=1><b>$text{'expire2'}</b></td>\n";
+	print "<td colspan=3>";
 	&date_input("", "", "", 'expire');
 	print " &nbsp; <input name=expireh size=3>";
 	print ":<input name=expiremi size=3></td> </tr>\n";
@@ -147,8 +147,8 @@ elsif ($pft == 2) {
 	print "<tr $tb> <td><b>$text{'uedit_passopts'}</b></td> </tr>\n";
 	print "<tr $cb> <td><table width=100%>\n";
 
-	print "<td><b>$text{'expire'}</b></td>\n";
-	print "<td>";
+	print "<td colspan=1><b>$text{'expire'}</b></td>\n";
+	print "<td colspan=3>";
 	&date_input($eday, $emon, $eyear, 'expire');
 	print "</td> </tr>\n";
 
@@ -204,7 +204,7 @@ print "<table border width=100%>\n";
 print "<tr $tb> <td><b>$text{'uedit_gmem'}</b></td> </tr>\n";
 print "<tr $cb> <td><table width=100%>\n";
 print "<tr> <td valign=top><b>$text{'group'}</b></td> <td valign=top>\n";
-printf "<input name=gid size=8 value=\"%s\">\n",
+printf "<input name=gid size=15 value=\"%s\">\n",
 	$uconfig{'default_group'};
 print "<input type=button onClick='ifield = document.forms[0].gid; chooser = window.open(\"/useradmin/my_group_chooser.cgi?multi=0&group=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=300,height=200\"); chooser.ifield = ifield' value=\"...\"></td>\n";
 
@@ -248,9 +248,9 @@ print "<td><input type=radio name=others value=0> $text{'no'}</td> </tr>\n";
 # Show selector for hosts to create on
 &create_on_input($text{'uedit_servers'});
 
-print "</table></td> </tr></table><p>\n";
+print "</table></td> </tr></table><p></p><p></p>\n";
 
-print "<input type=submit value=\"$text{'create'}\"></form><p>\n";
+print "<input type=submit value=\"$text{'create'}\"></form>\n";
 
 &ui_print_footer("", $text{'index_return'});
 

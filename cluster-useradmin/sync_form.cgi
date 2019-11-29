@@ -8,7 +8,7 @@ require './cluster-useradmin-lib.pl';
 
 print "$text{'sync_desc'}<p>\n";
 print "<form action=sync.cgi>\n";
-print "<table>\n";
+print "<table width='100%'>\n";
 
 print "<tr> <td valign=top><b>$text{'sync_hosts'}</b></td> <td>\n";
 &create_on_input(undef, 1, 1);
@@ -67,7 +67,7 @@ print "<tr> <td><b>$text{'sync_others'}</b></td>\n";
 print "<td><input type=radio name=others value=1 checked> $text{'yes'}\n";
 print "<input type=radio name=others value=0> $text{'no'}</td> </tr>\n";
 
-print "</table>\n";
+print "</table><p></p><p></p>\n";
 print "<input type=submit value='$text{'sync_ok'}'></form>\n";
 
 &ui_print_footer("", $text{'index_return'});

@@ -45,15 +45,15 @@ for($i=$mp*2; $i<@mods; $i++) {
 print "</select>\n";
 
 print "<br>\n";
-print "<a href='' onClick='for(i=0; i<document.forms[0].mods1.options.length; i++) { document.forms[0].mods1.options[i].selected = true; } for(i=0; i<document.forms[0].mods2.options.length; i++) { document.forms[0].mods2.options[i].selected = true; } for(i=0; i<document.forms[0].mods3.options.length; i++) { document.forms[0].mods3.options[i].selected = true; } return false'>$text{'user_sall'}</a>&nbsp;\n";
-print "<a href='' onClick='for(i=0; i<document.forms[0].mods1.options.length; i++) { document.forms[0].mods1.options[i].selected = false; } for(i=0; i<document.forms[0].mods2.options.length; i++) { document.forms[0].mods2.options[i].selected = false; } for(i=0; i<document.forms[0].mods3.options.length; i++) { document.forms[0].mods3.options[i].selected = false; } return false'>$text{'user_snone'}</a>&nbsp;\n";
-print "<a href='' onClick='for(i=0; i<document.forms[0].mods1.options.length; i++) { document.forms[0].mods1.options[i].selected = !document.forms[0].mods1.options[i].selected; } for(i=0; i<document.forms[0].mods2.options.length; i++) { document.forms[0].mods2.options[i].selected = !document.forms[0].mods2.options[i].selected; } for(i=0; i<document.forms[0].mods3.options.length; i++) { document.forms[0].mods3.options[i].selected = !document.forms[0].mods3.options[i].selected; } return false'>$text{'user_sinvert'}</a><br>\n";
+print "<button class='btn btn-tiny' type='button' onClick='for(i=0; i<this.form.mods1.options.length; i++) { this.form.mods1.options[i].selected = true; } for(i=0; i<this.form.mods2.options.length; i++) { this.form.mods2.options[i].selected = true; } for(i=0; i<this.form.mods3.options.length; i++) { this.form.mods3.options[i].selected = true; } return false'>$text{'user_sall'}</button>\n";
+print "<button class='btn btn-tiny' type='button' onClick='for(i=0; i<this.form.mods1.options.length; i++) { this.form.mods1.options[i].selected = false; } for(i=0; i<this.form.mods2.options.length; i++) { this.form.mods2.options[i].selected = false; } for(i=0; i<this.form.mods3.options.length; i++) { this.form.mods3.options[i].selected = false; } return false'>$text{'user_snone'}</button>\n";
+print "<button class='btn btn-tiny' type='button' onClick='for(i=0; i<this.form.mods1.options.length; i++) { this.form.mods1.options[i].selected = !this.form.mods1.options[i].selected; } for(i=0; i<this.form.mods2.options.length; i++) { this.form.mods2.options[i].selected = !this.form.mods2.options[i].selected; } for(i=0; i<this.form.mods3.options.length; i++) { this.form.mods3.options[i].selected = !this.form.mods3.options[i].selected; } return false'>$text{'user_sinvert'}</a><br>\n";
 
 print "</td> </tr>\n";
 
-&create_on_input($text{'group_servers'}, 0, 1);
+&create_on_input($text{'group_servers'}, 0, 1, undef, 3);
 
-print "</table></td></tr></table><br>\n";
+print "</table></td></tr></table><p></p><p></p>\n";
 print "<input type=submit value='$text{'create'}'></form>\n";
 
 &ui_print_footer("", $text{'index_return'});

@@ -53,7 +53,7 @@ printf "<td>%s</td> </tr>\n", $host->{'version'};
 print "</table></td></tr></table>\n";
 
 # Show delete and refresh buttons
-print "<table width=100%><tr>\n";
+print "<p></p><table width=100%><tr>\n";
 
 print "<td><form action=delete_host.cgi>\n";
 print "<input type=hidden name=id value=$in{'id'}>\n";
@@ -68,14 +68,23 @@ print "</form></td>\n";
 print "</tr></table>\n";
 
 # Show table of modules and themes
-print "<table border width=100%>\n";
+print "<p></p><table border width=100%>\n";
 print "<tr $tb> <td><b>$text{'host_header_m'}</b></td> </tr>\n";
 print "<tr $cb> <td><table width=100%>\n";
 
 $i = 0;
+my $total_cells = scalar(@modules);
 foreach $m (sort { $a->{'desc'} cmp $b->{'desc'} } @modules) {
+	my $colspan = '';
+	if ($total_cells == $i + 1 && $total_cells%$i == 1) {
+		if ($i%3 == 0) {
+			$colspan = " colspan=3 ";
+		} elsif($i%3 == 1) {
+			$colspan = " colspan=2 ";
+		}
+	}
 	print "<tr>\n" if ($i%3 == 0);
-	print "<td width=33%><a href='edit_mod.cgi?mod=$m->{'dir'}&host=$in{'id'}'>",$m->{'desc'},"</td>\n";
+	print "<td $colspan width=33%><a href='edit_mod.cgi?mod=$m->{'dir'}&host=$in{'id'}'>",$m->{'desc'},"</td>\n";
 	print "</tr>\n" if ($i%3 == 2);
 	$i++;
 	}
@@ -84,9 +93,18 @@ if (@themes) {
 	print "</table></td></tr>\n";
 	print "<tr $tb> <td><b>$text{'host_header_t'}</b></td> </tr>\n";
 	print "<tr $cb> <td><table width=100%>\n";
+	my $total_cells_themes = scalar(@themes);
 	foreach $t (sort { $a->{'desc'} cmp $b->{'desc'} } @themes) {
+		my $colspan = '';
+		if ($total_cells_themes == $i + 1 && $total_cells_themes%$i == 1) {
+			if ($i%3 == 0) {
+				$colspan = " colspan=3 ";
+			} elsif($i%3 == 1) {
+				$colspan = " colspan=2 ";
+			}
+		}
 		print "<tr>\n" if ($i%3 == 0);
-		print "<td width=33%><a href='edit_mod.cgi?theme=$t->{'dir'}$in{'id'}'>",$t->{'desc'},"</td>\n";
+		print "<td $colspan width=33%><a href='edit_mod.cgi?theme=$t->{'dir'}$in{'id'}'>",$t->{'desc'},"</td>\n";
 		print "</tr>\n" if ($i%3 == 2);
 		$i++;
 		}
@@ -94,7 +112,7 @@ if (@themes) {
 print "</table></td></tr></table><br>\n";
 
 # Show table of users and groups
-print "<table border width=100%>\n";
+print "<p></p><table border width=100%>\n";
 print "<tr $tb> <td><b>$text{'host_header_u'}</b></td> </tr>\n";
 print "<tr $cb> <td><table width=100%>\n";
 $i = 0;

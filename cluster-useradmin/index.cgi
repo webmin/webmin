@@ -68,7 +68,7 @@ else {
 	print "<b>$text{'index_nohosts'}</b><p>\n";
 	}
 $formno++;
-print "<br><br><form action=add.cgi>\n";
+print "<form data-post-icon-row-submit action=add.cgi>\n";
 print "<table width=100%><tr>\n";
 @addservers = grep { !$gothost{$_->{'id'}} } @servers;
 if (@addservers) {

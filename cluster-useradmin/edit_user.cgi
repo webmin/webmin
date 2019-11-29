@@ -202,7 +202,7 @@ elsif ($pft == 2) {
 		}
 	else { print "$text{'uedit_unknown'}\n"; }
 	if ($uinfo{'max'}) {
-		print "<input type=checkbox name=forcechange value=1> ",
+		print "&nbsp; <input type=checkbox name=forcechange value=1> ",
 		      "$text{'uedit_forcechange'}\n";
 		}
 	print "</td> </tr>\n";
@@ -374,7 +374,7 @@ print "<tr $cb> <td><table>\n";
 
 print "<tr> <td><b>$text{'uedit_movehome'}</b></td>\n";
 print "<td><input type=radio name=movehome value=1 checked> $text{'yes'}</td>\n";
-print "<td><input type=radio name=movehome value=0> $text{'no'}</td> </tr>\n";
+print "<td colspan=2><input type=radio name=movehome value=0> $text{'no'}</td> </tr>\n";
 
 print "<tr> <td><b>$text{'uedit_chuid'}</b></td>\n";
 print "<td><input type=radio name=chuid value=0> $text{'no'}</td>\n";
@@ -392,11 +392,11 @@ print "<td><input type=radio name=chgid value=2> ",
 
 print "<tr> <td><b>$text{'uedit_servs'}</b></td>\n";
 print "<td><input type=radio name=servs value=1> $text{'uedit_mall'}</td>\n";
-print "<td><input type=radio name=servs value=0 checked> $text{'uedit_mthis'}</td> </tr>\n";
+print "<td colspan=2><input type=radio name=servs value=0 checked> $text{'uedit_mthis'}</td> </tr>\n";
 
 print "<tr> <td><b>$text{'uedit_mothers'}</b></td>\n";
 print "<td><input type=radio name=others value=1 checked> $text{'yes'}</td>\n";
-print "<td><input type=radio name=others value=0> $text{'no'}</td> </tr>\n";
+print "<td colspan=2><input type=radio name=others value=0> $text{'no'}</td> </tr>\n";
 
 print "</table></td> </tr></table><p>\n";
 
@@ -461,6 +461,7 @@ if ($config{'table_mode'}) {
 else {
 	# Show as icons
 	&icons_table(\@links, \@titles, \@icons);
+	print "<br>";
 	}
 
 &ui_print_footer("", $text{'index_return'});

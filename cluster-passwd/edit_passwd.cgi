@@ -43,11 +43,8 @@ if ($access{'others'} == 2) {
 	    &ui_checkbox("others", 1, $passwd::text{'passwd_others'}, 1), 2);
 	}
 
-print &ui_table_row(undef,
-		    &ui_submit($passwd::text{'passwd_change'})."\n".
-		    &ui_reset($passwd::text{'passwd_reset'}), 2);
 print &ui_table_end();
-print &ui_form_end();
+print &ui_form_end([ [ undef, $passwd::text{'passwd_change'} ] ]);
 
 &ui_print_footer($in{'one'} ? ( "/", $text{'index'} )
 			    : ( "", $passwd::text{'index_return'} ));

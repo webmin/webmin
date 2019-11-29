@@ -27,7 +27,7 @@ if ($server->{'id'}) {
 	print "</td>";
 	}
 else {
-	print "<td><a href=/>$text{'this_server'}</a></td>\n";
+	print "<td colspan=3><a href=/>$text{'this_server'}</a></td>\n";
 	}
 
 if ($server->{'id'}) {
@@ -48,7 +48,7 @@ printf "<td>%d</td> </tr>\n", scalar(@{$host->{'groups'}});
 print "</table></td></tr></table>\n";
 
 # Show delete and refresh buttons
-print "<table width=100%><tr>\n";
+print "<p><table width=100%><tr>\n";
 
 print "<td><form action=delete_host.cgi>\n";
 print "<input type=hidden name=id value=$in{'id'}>\n";

@@ -169,14 +169,15 @@ return sort { $a->{'name'} cmp $b->{'name'} }
 	 map { @{$_->{'users'}} } @{$_[0]};
 }
 
-# create_on_input(desc, [no-donthave], [no-have], [multiple])
+# create_on_input(desc, [no-donthave], [no-have], [multiple], [colspan])
 sub create_on_input
 {
 local @hosts = &list_webmin_hosts();
 local @servers = &list_servers();
 if ($_[0]) {
 	print "<tr> <td><b>$_[0]</b></td>\n";
-	print "<td>\n";
+	my $colspan = "colspan=$_[4]" if ($_[4]);
+	print "<td $colspan>\n";
 	}
 if ($_[3]) {
 	print "<select name=server size=5 multiple>\n";
