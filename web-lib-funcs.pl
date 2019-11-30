@@ -1776,9 +1776,10 @@ sub make_date
 {
 &load_theme_library();
 if (defined(&theme_make_date) &&
-    !$main::theme_prevent_make_date &&
-    $main::header_content_type eq "text/html" &&
-    $main::webmin_script_type eq "web") {
+    !$main::theme_prevent_make_date && 
+    (($main::header_content_type eq "text/html" &&
+    $main::webmin_script_type eq "web") || 
+    $main::theme_allow_make_date)) {
 	return &theme_make_date(@_);
 	}
 my ($secs, $only, $fmt) = @_;
