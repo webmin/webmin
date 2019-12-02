@@ -150,7 +150,7 @@ return &get_postgresql_version() >= 7.3;
 sub list_databases
 {
 local $force_nodbi = 1;
-local $t = &execute_sql_safe($config{'basedb'}, 'select * from pg_database order by datname');
+local $t = &execute_sql_safe($config{'basedb'}, 'select datname from pg_database order by datname');
 return sort { lc($a) cmp lc($b) } map { $_->[0] } @{$t->{'data'}};
 }
 
