@@ -755,9 +755,9 @@ my ($user, $oldpass, $miniserv) = @_;
 if ($oldpass ne $user->{'pass'} &&
     "!".$oldpass ne $user->{'pass'} &&
     $oldpass ne "!".$user->{'pass'} &&
-    $user->{'pass'} ne 'x' &&
-    $user->{'pass'} ne 'e' &&
-    $user->{'pass'} ne '*LK*') {
+    $oldpass ne 'x' &&
+    $oldpass ne 'e' &&
+    $oldpass ne '*LK*') {
 	# Password change detected .. update change time
 	# and save the old one
 	my $nolock = $oldpass;
