@@ -207,6 +207,12 @@ printf "<input type=radio name=gdelete value=1 %s> $text{'yes'}\n",
 printf "<input type=radio name=gdelete value=0 %s> $text{'no'}</td> </tr>\n",
 	$o->{'gdelete'} ? "" : "checked";
 
+print "<tr> <td><b>$text{'acl_grename'}</b></td> <td>\n";
+printf "<input type=radio name=grename value=1 %s> $text{'yes'}\n",
+	$o->{'grename'} ? "checked" : "";
+printf "<input type=radio name=grename value=0 %s> $text{'no'}</td> </tr>\n",
+	$o->{'grename'} ? "" : "checked";
+
 print "<tr> <td colspan=4><hr></td> </tr>\n";
 
 print "<tr><td valign=top><b>$text{'acl_logins'}</b></td> <td colspan=3>\n";
@@ -288,5 +294,6 @@ foreach $o ('chuid', 'chgid', 'movehome', 'mothers',
 $_[0]->{'udelete'} = $in{'udelete'};
 $_[0]->{'urename'} = $in{'urename'};
 $_[0]->{'gdelete'} = $in{'gdelete'};
+$_[0]->{'grename'} = $in{'grename'};
 }
 
