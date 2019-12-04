@@ -523,8 +523,10 @@ urlize function.
 =cut
 sub un_urlize
 {
-my ($rv) = @_;
-$rv =~ s/\+/ /g;
+my ($rv, $plus) = @_;
+if (!$plus) {
+	$rv =~ s/\+/ /g;
+	}
 $rv =~ s/%(..)/pack("c",hex($1))/ge;
 return $rv;
 }
