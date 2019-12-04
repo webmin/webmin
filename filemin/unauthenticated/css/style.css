@@ -134,8 +134,8 @@ a:hover {
  cursor:pointer;
 }
 /* by https://github.com/rostovtsev */
-#list_form tbody tr.checked:hover,
-#list_form tbody tr:hover {
+#list_form tbody tr.checked:not(.m-active-o):not(.m-not-active):hover,
+#list_form tbody tr:hover:not(.m-active-o):not(.m-not-active) {
     background: #d3e4f4 !important;
 }
 
