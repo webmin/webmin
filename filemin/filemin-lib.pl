@@ -224,7 +224,7 @@ sub print_interface {
         for(my $i = 1; $i <= scalar(@breadcr)-1; $i++) {
             chomp($breadcr[$i]);
             $cp = $cp.'/'.$breadcr[$i];
-            print "<a href='index.cgi?path=$cp'>".
+            print "<a href='index.cgi?path=".&urlize($cp)."'>".
                   &html_escape($breadcr[$i])."</a> / ";
         }
         print "<br />";
