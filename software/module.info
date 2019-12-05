@@ -1,4 +1,3 @@
-risk=high
 name=PackageAdmin
 category=system
 os_support=solaris coherent-linux redhat-linux mandrake-linux suse-linux united-linux hpux open-linux openserver unixware freebsd/3.0-* slackware-linux/4.0-* debian-linux/2.0-* turbo-linux openbsd corel-linux cobalt-linux netbsd msc-linux aix gentoo-linux trustix-linux openmamba-linux cygwin windows syno-linux

@@ -1,4 +1,3 @@
-risk=high
 name=AdminUsers
 category=webmin
 desc=Webmin Users

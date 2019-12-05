@@ -1,4 +1,3 @@
-risk=low medium high
 name=Quota
 category=system
 os_support=solaris *-linux hpux freebsd unixware openbsd irix netbsd macos 

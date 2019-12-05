@@ -1,4 +1,3 @@
-risk=low medium high
 name=DFSadmin
 category=net
 os_support=solaris unixware

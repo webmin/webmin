@@ -1,5 +1,4 @@
 category=servers
-risk=low medium high
 desc=MySQL Database Server
 name=MySQL
 longdesc=Setup databases, tables and permissions in your MySQL database server.

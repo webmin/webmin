@@ -1,4 +1,3 @@
-risk=low medium high
 name=User Manager
 category=system
 os_support=slackware-linux redhat-linux mandrake-linux solaris debian-linux suse-linux united-linux hpux freebsd osf1 open-linux unixware turbo-linux openbsd corel-linux cobalt-linux irix aix netbsd msc-linux openserver generic-linux macos gentoo-linux trustix-linux sol-linux coherent-linux openmamba-linux pardus-linux syno-linux

@@ -1,5 +1,4 @@
 category=servers
-risk=low medium high
 desc=Postfix Mail Server
 name=Postfix
 longdesc=Configure the Postfix mail server.

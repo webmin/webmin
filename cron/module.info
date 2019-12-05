@@ -3,6 +3,5 @@ category=system
 os_support=solaris *-linux hpux freebsd osf1 irix unixware openserver macos openbsd aix netbsd windows 
 depends=proc
 readonly=1
-risk=low medium high
 desc=Scheduled Cron Jobs
 longdesc=Create, edit and delete Cron jobs.

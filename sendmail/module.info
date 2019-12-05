@@ -1,4 +1,3 @@
-risk=low medium high
 name=Sendmail
 category=servers
 os_support=solaris slackware-linux redhat-linux mandrake-linux suse-linux united-linux debian-linux freebsd hpux irix macos open-linux openserver unixware turbo-linux openbsd corel-linux cobalt-linux aix netbsd msc-linux osf1 generic-linux gentoo-linux{-r "/etc/sendmail.cf" || -r "/etc/mail/sendmail.cf"} sol-linux coherent-linux

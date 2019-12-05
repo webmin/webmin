@@ -1,4 +1,3 @@
-risk=low medium high
 longdesc=Edit NFS v4 file shares defined in /etc/exports.
 name=Export Manager
 category=net

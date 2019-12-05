@@ -1,4 +1,3 @@
-risk=low medium high
 name=Export Manager
 category=net
 os_support=hpux

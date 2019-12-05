@@ -1,4 +1,3 @@
-risk=low medium high
 desc=System and Server Status
 name=Status
 depends=servers cron mailboxes

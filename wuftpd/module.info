@@ -1,4 +1,3 @@
-risk=low medium high
 name=FTP
 category=servers
 os_support=open-linux solaris coherent-linux redhat-linux mandrake-linux suse-linux united-linux debian-linux slackware-linux turbo-linux freebsd openbsd hpux aix osf1 macos lfs-linux aix netbsd msc-linux generic-linux openserver irix
