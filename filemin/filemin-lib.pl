@@ -385,7 +385,7 @@ sub print_interface {
         print &ui_checked_columns_row(\@row_data, "", "name", $vlink);
     }
     print ui_columns_end();
-    print &ui_hidden("path", $urlized_path),"\n";
+    print &ui_hidden("path", $path),"\n";
     print &ui_form_end();
 }
 
