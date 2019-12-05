@@ -2405,7 +2405,7 @@ foreach my $k (keys %znc) {
 		$filecount++;
 		$donefile{$1}++;
 		my @fst = stat($1);
-		if ($fst[9] > $st[9]) {
+		if (!@fst || $fst[9] > $st[9]) {
 			$changed = 1;
 			}
 		}
