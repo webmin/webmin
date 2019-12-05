@@ -3938,10 +3938,12 @@ sub get_module_acl
 {
 my $u = defined($_[0]) ? $_[0] : $base_remote_user;
 my $m = defined($_[1]) ? $_[1] : &get_module_name();
+my $norbac = $_[2];
+my $nodef = $_[3];
 $m ||= "";
 my $mdir = &module_root_directory($m);
 my %rv;
-if (!$_[3]) {
+if (!$nodef) {
 	# Read default ACL first, to be overridden by per-user settings
 	&read_file_cached("$mdir/defaultacl", \%rv);
 
@@ -3954,7 +3956,7 @@ if (!$_[3]) {
 		}
 	}
 my %usersacl;
-if (!$_[2] && &supports_rbac($m) && &use_rbac_module_acl($u, $m)) {
+if (!$norbac && &supports_rbac($m) && &use_rbac_module_acl($u, $m)) {
 	# RBAC overrides exist for this user in this module
 	my $rbac = &get_rbac_module_acl(
 			defined($_[0]) ? $_[0] : $remote_user, $m);
