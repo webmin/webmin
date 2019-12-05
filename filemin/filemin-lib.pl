@@ -80,7 +80,7 @@ sub get_paths {
     } else {
         $path = $in{'path'} || '';
     }
-    $html_escaped_path = html_escape($path);
+    $quote_escaped_path = quote_escape($path);
     $urlized_path = urlize($path);
     
     $cwd = &simplify_path($base.$path);
@@ -303,7 +303,7 @@ sub print_interface {
         $vlink = html_escape($link);
         $vlink = quote_escape($vlink);
         $vlink = decode('UTF-8', $vlink, Encode::FB_DEFAULT);
-	my $hlink = html_escape($vlink);
+        my $hlink = html_escape($vlink);
         $vpath = quote_escape($vpath);
         $vpath = decode('UTF-8', $vpath, Encode::FB_DEFAULT);
 
