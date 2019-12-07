@@ -31,7 +31,7 @@ $zipdir = "zips";
 	  "config-macos", "LICENCE",
 	  "session_login.cgi", "acl_security.pl",
 	  "defaultacl", "rpc.cgi", "date_chooser.cgi", "switch_skill.cgi",
-	  "install-module.pl", "LICENCE.ja", 
+	  "safeacl", "install-module.pl", "LICENCE.ja", 
 	  "favicon.ico", "config-netbsd", "fastrpc.cgi",
 	  "defaulttheme", "feedback.cgi", "feedback_form.cgi",
 	  "javascript-lib.pl", "webmin-pam", "webmin-debian-pam", "maketemp.pl",
