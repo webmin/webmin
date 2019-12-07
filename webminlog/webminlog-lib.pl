@@ -317,7 +317,7 @@ sub can_user
 {
 my ($user) = @_;
 return $access_users{'*'} ||
-       $access_users{'~'} && $user eq $remote_user ||
+       $access_users{'x'} && $user eq $remote_user ||
        $access_users{$user};
 }
 

@@ -23,7 +23,7 @@ print &ui_table_row($text{'acl_mods'},
 # Allowed users
 print &ui_table_row($text{'acl_users'},
 	&ui_radio("users_def", $o->{'users'} eq "*" ? 1
-			       $o->{'users'} eq "~" ? 2 : 0,
+			       $o->{'users'} eq "x" ? 2 : 0,
 		  [ [ 1, $text{'acl_all'} ],
 		    [ 2, $text{'acl_self'} ],
 		    [ 0, $text{'acl_sel'} ] ])."<br>\n".
@@ -45,7 +45,7 @@ sub acl_security_save
 my ($o) = @_;
 $o->{'mods'} = $in{'mods_def'} ? "*" : join(" ", split(/\0/, $in{'mods'}));
 $o->{'users'} = $in{'users_def'} == 1 ? "*" :
-		$in{'users_def'} == 2 ? "~" :
+		$in{'users_def'} == 2 ? "x" :
 			join(" ", split(/\0/,$in{'users'}));
 $o->{'rollback'} = $in{'rollback'};
 }
