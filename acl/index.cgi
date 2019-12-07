@@ -54,7 +54,10 @@ if (!@canulist) {
 		print &ui_subheading($text{'index_users'})
 			if (!$config{'display'});
 		print "<b>$text{'index_nousers'}</b><p>\n";
-		print ui_link("edit_user.cgi", $text{'index_create'}) . "\n";
+		print &ui_links_row([
+			&ui_link("edit_user.cgi", $text{'index_create'}),
+			&ui_link("edit_user.cgi?ssfe=1", $text{'index_screate'})
+			]);
 		$shown_users = 1;
 		}
 	}
@@ -64,7 +67,8 @@ elsif ($config{'display'}) {
 	print &ui_form_start("delete_users.cgi", "post");
 	&show_name_table(\@canulist, "edit_user.cgi",
 			 $access{'create'} ? $text{'index_create'} : undef,
-			 $text{'index_users'}, "user");
+			 $text{'index_users'}, "user",
+			 $access{'create'} ? $text{'index_screate'} : undef);
 	print &ui_form_end([ [ "delete", $text{'index_delete'} ],
 			     @gbut ]);
 	$shown_users = 1;
@@ -77,7 +81,8 @@ else {
 	print &ui_form_start("delete_users.cgi", "post");
 	push(@rowlinks, &select_all_link("d", $form),
 		     &select_invert_link("d", $form));
-	push(@rowlinks, ui_link("edit_user.cgi", $text{'index_create'}))
+	push(@rowlinks, ui_link("edit_user.cgi", $text{'index_create'}),
+			ui_link("edit_user.cgi?safe=1", $text{'index_screate'});
 		if ($access{'create'});
 	print &ui_links_row(\@rowlinks);
 
@@ -251,20 +256,24 @@ $rv .= &ui_grid_table(\@grid, 3, 100,
 return $rv;
 }
 
-# show_name_table(&users|&groups, cgi, create-text, header-text, param)
+# show_name_table(&users|&groups, cgi, create-text, header-text, param,
+# 		  safe-text)
 sub show_name_table
 {
+my ($users, $cgi, $ctext, $htext, $param, $stext) = @_;
+
 # Show table of users, and maybe create links
 my @rowlinks = ( &select_all_link("d", $form),
 		 &select_invert_link("d", $form) );
-push(@rowlinks, ui_link("$_[1]", $_[2])) if ($_[2]);
+push(@rowlinks, ui_link($cgi, $ctext)) if ($ctext);
+push(@rowlinks, ui_link($cgi."?safe=1", $stext)) if ($stext);
 print &ui_links_row(\@rowlinks);
 my @links;
-for(my $i=0; $i<@{$_[0]}; $i++) {
-	push(@links, &user_link($_[0]->[$i], $_[1], $_[4]));
+for(my $i=0; $i<@$users; $i++) {
+	push(@links, &user_link($users->[$i], $cgi, $param));
 	}
 print &ui_grid_table(\@links, 4, 100,
-	[ "width=25%", "width=25%", "width=25%", "width=25%" ], undef, $_[3]);
+	[ "width=25%", "width=25%", "width=25%", "width=25%" ], undef, $htext);
 print &ui_links_row(\@rowlinks);
 }
 

@@ -371,6 +371,19 @@ if ($in{'old'} && $in{'acl_security_form'} && !$newgroup) {
 	&unlock_file($aclfile);
 	}
 
+# If the user is in safe mode, set ACLs on all new modules
+if ($in{'safe'}) {
+	foreach my $m ("", @mods) {
+		my %macl = &get_module_acl($in{'name'}, $m, 0, 1);
+		my $safe = &get_safe_acl($m);
+		if (!%macl && $safe) {
+			%macl = %$safe;
+			$macl{'_safe'} = 1;
+			&save_module_acl(\%macl, $in{'name'}, $m);
+			}
+		}
+	}
+
 # Log the event
 delete($in{'pass'});
 delete($in{'oldpass'});

@@ -2167,5 +2167,16 @@ foreach $a (split(/\s+/, $miniserv{'anonymous'})) {
 return @rv;
 }
 
+# get_safe_acl(module)
+# Returns the safe ACL hash ref for a module, if there is one, or undef
+sub get_safe_acl
+{
+my ($m) = @_;
+my $mdir = &module_root_directory($m);
+my %rv;
+&read_file_cached("$mdir/safeacl", \%rv) || return undef;
+return \%rv;
+}
+
 1;
 

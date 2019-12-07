@@ -17,20 +17,27 @@ if ($in{'user'}) {
 	$u = &get_user($in{'user'});
 	$u || &error($text{'edit_egone'});
 	%user = %$u;
+	my %gacl = &get_module_acl($in{'user'}, '');
+	$safe = $gacl{'_safe'};
 	}
 else {
 	# Creating a new user
 	$access{'create'} || &error($text{'edit_ecreate'});
-	&ui_print_header(undef, $text{'edit_title2'}, "");
 	if ($in{'clone'}) {
 		# Initial settings come from clone
 		$u = &get_user($in{'clone'});
 		%user = %$u;
 		delete($user{'name'});
+		my %gacl = &get_module_acl($in{'clone'}, '');
+		$safe = $gacl{'_safe'};
 		}
 	else {
+		# User starts out empty
 		%user = ( );
+		$safe = $in{'safe'};
 		}
+	&ui_print_header(undef, $safe ? $text{'edit_title3'}
+				      : $text{'edit_title2'}, "");
 	}
 my $me = &get_user($base_remote_user);
 
@@ -51,6 +58,7 @@ if ($in{'user'}) {
 if ($in{'clone'}) {
 	print &ui_hidden("clone", $in{'clone'});
 	}
+print &ui_hidden("safe", $safe);
 print &ui_hidden_table_start($text{'edit_rights'}, "width=100%", 2, "rights",
 			     1, [ "width=30%" ]);
 
@@ -332,9 +340,16 @@ my @groups = &list_groups();
 print &ui_hidden_table_start(@groups ? $text{'edit_modsg'} : $text{'edit_mods'},
 			     "width=100%", 2, "mods");
 
+# Build list of modules, based on safe mode
+@allmods = &list_module_infos();
+if ($safe) {
+	@allmods = grep { $has{$_->{'dir'}} ||
+			  &get_safe_acl($_->{'dir'}) } @allmods;
+	}
+
 # Show available modules, under categories
 my @mlist = grep { $access{'others'} || $has{$_->{'dir'}} ||
-		   $mcan{$_->{'dir'}} } &list_module_infos();
+		   $mcan{$_->{'dir'}} } @allmods;
 my @links = ( &select_all_link("mod", 0, $text{'edit_selall'}),
 	      &select_invert_link("mod", 0, $text{'edit_invert'}) );
 my @cats = &unique(map { $_->{'category'} || '' } @mlist);
@@ -359,7 +374,7 @@ foreach my $c (sort { $b cmp $a } @cats) {
 			}
 		elsif ($mcan{$md}) {
 			my $label;
-			if ($access{'acl'} && $in{'user'}) {
+			if ($access{'acl'} && $in{'user'} && !$safe) {
 				# Show link for editing ACL
 				$label = ui_link("edit_acl.cgi?" .
 				     "mod=" . urlize($m->{'dir'}) .
