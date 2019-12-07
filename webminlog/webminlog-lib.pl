@@ -315,7 +315,10 @@ Returns 1 if the current Webmin user can view log entries for the given user.
 =cut
 sub can_user
 {
-return $access_users{'*'} || $access_users{$_[0]};
+my ($user) = @_;
+return $access_users{'*'} ||
+       $access_users{'~'} && $user eq $remote_user ||
+       $access_users{$user};
 }
 
 =head2 can_mod(module)
@@ -325,7 +328,8 @@ Returns 1 if the current Webmin user can view log entries for the given module.
 =cut
 sub can_mod
 {
-return $access_mods{'*'} || $access_mods{$_[0]};
+my ($mod) = @_;
+return $access_mods{'*'} || $access_mods{$mod};
 }
 
 =head2 get_action(id)
