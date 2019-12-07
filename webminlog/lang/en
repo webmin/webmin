@@ -102,6 +102,7 @@ view_rawvalue=Parameter value
 acl_mods=Can view logs in modules
 acl_all=All
 acl_sel=Selected below ..
+acl_self=Only self
 acl_users=Can view actions by users
 acl_rollback=Can roll back actions?
 
