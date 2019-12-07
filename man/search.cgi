@@ -114,7 +114,8 @@ if ($section{'perl'}) {
 				if ($doc->{'package'} && $modfile) {
 					push(@rv, [ $text{'search_perl'},
 					  "view_perl.cgi?mod=$doc->{'package'}",
-					  $doc->{'package'}, $doc->{'name'},
+					  $doc->{'package'},
+					  &html_escape($doc->{'name'}),
 					  1 ]);
 					}
 				}
@@ -168,7 +169,8 @@ if ($section{'help'}) {
 			    (!$in{'and'} && $matches)) {
 				push(@rv, [ $text{'search_help'},
 					    "/help.cgi/$m/$p?x=1",
-					    "$m/$p", $header,
+					    "$m/$p",
+					    &html_escape($header),
 					    2 ]);
 				}
 			}
@@ -215,7 +217,8 @@ if ($section{'man'}) {
 
 			push(@rv, [ $text{'search_man'},
 				    "view_man.cgi?page=$pp[0]&sec=$3&opts=".
-				    $opts{'man'}, "$pp[0] ($sect)", $desc,
+				    $opts{'man'}, "$pp[0] ($sect)",
+				    &html_escape($desc),
 				    $exact ? 4 : 3 ]);
 			}
 		}
@@ -245,6 +248,7 @@ if ($section{'google'}) {
 					$matches++ if ($desc =~ /\Q$f\E/i);
 					}
 				next if ($url =~ /^\/search/);	# More results
+				next if ($url =~ /^\/imgres/);	# Image
 				if ($url =~ /^\/url\?(.*)/) {
 					# Extract real URL
 					local $qs = $1;
@@ -291,7 +295,7 @@ if (@rv) {
 			push(@cols, &ui_link($r->[1]."&for=".&urlize($in{'for'}), &html_escape($r->[2]) ) );
 			}
 		push(@cols, $r->[0]);
-		push(@cols, &html_escape($r->[3]));
+		push(@cols, $r->[3]);
 		print &ui_columns_row(\@cols, [ undef, "nowrap", undef ]);
 		}
 	print &ui_columns_end();
@@ -337,7 +341,8 @@ foreach $f (@f) {
 			    !$in{'and'} && $matches) {
 				local ($desc, $data) = &read_doc_file($p);
 				if ($desc !~ /^#!/ && $desc !~ /^#\%/) {
-					push(@rv, [ $p, $desc, $f, $matches ]);
+					push(@rv, [ $p, $desc, $f,
+						&html_escape($matches) ]);
 					}
 				}
 			}
@@ -351,7 +356,8 @@ foreach $f (@f) {
 			if (($in{'and'} && $dmatches == @{$_[1]} ||
 			     !$in{'and'} && $dmatches) &&
 			    $desc !~ /^#!/ && $desc !~ /^#\%/) {
-				push(@rv, [ $p, $desc, $f, $matches ]);
+				push(@rv, [ $p, $desc, $f,
+					    &html_escape($matches) ]);
 				}
 			}
 		}
