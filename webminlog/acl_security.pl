@@ -7,41 +7,31 @@ do 'webminlog-lib.pl';
 sub acl_security_form
 {
 # Allowed modules
-print "<tr> <td valign=top><b>$text{'acl_mods'}</b></td> <td>\n";
-printf "<input type=radio name=mods_def value=1 %s> %s\n",
-	$_[0]->{'mods'} eq "*" ? "checked" : "", $text{'acl_all'};
-printf "<input type=radio name=mods_def value=0 %s> %s<br>\n",
-	$_[0]->{'mods'} eq "*" ? "" : "checked", $text{'acl_sel'};
-local %gotmod = map { $_, 1 } split(/\s+/, $_[0]->{'mods'});
-print "<select name=mods multiple size=10 width=400>\n";
-my $m;
-foreach $m (sort { $a->{'desc'} cmp $b->{'desc'} } &get_all_module_infos()) {
-	printf "<option value=%s %s>%s</option>\n",
-		$m->{'dir'}, $gotmod{$m->{'dir'}} ? "selected" : "",
-		$m->{'desc'};
-	}
-print "</select></td> </tr>\n";
+print &ui_table_row($text{'acl_mods'},
+	&ui_radio("mods_def", $_[0]->{'mods'} eq "*" ? 1 : 0,
+		  [ [ 1, $text{'acl_all'} ],
+                    [ 0, $text{'acl_sel'} ] ])."<br>\n".
+	&ui_select("mods",
+		   [ split(/\s+/, $_[0]->{'mods'}) ],
+		   [ map { [ $_->{'dir'}, $_->{'desc'} ] }
+			 &get_all_module_infos() ],
+		   10, 1),
+	3);
 
 # Allowed users
-print "<tr> <td valign=top><b>$text{'acl_users'}</b></td> <td>\n";
-printf "<input type=radio name=users_def value=1 %s> %s\n",
-	$_[0]->{'users'} eq "*" ? "checked" : "", $text{'acl_all'};
-printf "<input type=radio name=users_def value=0 %s> %s<br>\n",
-	$_[0]->{'users'} eq "*" ? "" : "checked", $text{'acl_sel'};
-local %gotuser = map { $_, 1 } split(/\s+/, $_[0]->{'users'});
-print "<select name=users multiple size=10 width=400>\n";
-my $u;
-foreach $u (sort { $a->{'name'} cmp $b->{'name'} } &acl::list_users()) {
-	printf "<option value=%s %s>%s</option>\n",
-		$u->{'name'}, $gotuser{$u->{'name'}} ? "selected" : "",
-		$u->{'name'};
-	}
-print "</select></td> </tr>\n";
+print &ui_table_row($text{'acl_users'},
+	&ui_radio("users_def", $_[0]->{'users'} eq "*" ? 1 : 0,
+		  [ [ 1, $text{'acl_all'} ],
+		    [ 0, $text{'acl_sel'} ] ])."<br>\n".
+	&ui_select("users",
+		   [ split(/\s+/, $_[0]->{'users'}) ],
+		   [ map { $_->{'name'} } &acl::list_users() ],
+		   10, 1),
+	3);
 
 # Rollback
-print "<tr> <td><b>$text{'acl_rollback'}</b></td>\n";
-print "<td>",&ui_radio("rollback", $_[0]->{'rollback'},
-		[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]),"</td> </tr>\n";
+print &ui_table_row($text{'acl_rollback'},
+	&ui_yesno_radio("rollback", $_[0]->{'rollback'}));
 }
 
 # acl_security_save(&options)
