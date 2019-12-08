@@ -74,4 +74,8 @@ perl_title=Perl Module
 perl_header=Documentation for Perl module $1
 perl_emod=Invalid Perl module name
 
+acl_allow=Can edit allowed search types?
+
+check_ecannot=You are not allowed to edit allowed search types
+
 __norefs=1

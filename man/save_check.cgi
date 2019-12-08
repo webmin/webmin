@@ -4,6 +4,7 @@
 # from help_search_link()
 
 require './man-lib.pl';
+$access{'allow'} || &error($text{'check_ecannot'});
 &ReadParse();
 &lock_file("$module_config_directory/config");
 @check = split(/\0/, $in{'check'});
