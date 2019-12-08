@@ -19,10 +19,10 @@ eval "use Socket6";
 $ipv6_module_error = $@;
 our $error_handler_funcs = [ ];
 
-use vars qw($user_risk_level $loaded_theme_library $wait_for_input
+use vars qw($loaded_theme_library $wait_for_input
 	    $done_webmin_header $trust_unknown_referers $unsafe_index_cgi
 	    %done_foreign_require $webmin_feedback_address
-	    $user_skill_level $pragma_no_cache $foreign_args);
+	    $pragma_no_cache $foreign_args);
 # Globals
 use vars qw($module_index_name $number_to_month_map $month_to_number_map
 	    $umask_already $default_charset $licence_status $os_type
@@ -3964,14 +3964,6 @@ if (!$norbac && &supports_rbac($m) && &use_rbac_module_acl($u, $m)) {
 		$rv{$r} = $rbac->{$r};
 		}
 	}
-elsif ($gconfig{"risk_$u"} && $m) {
-	# ACL is defined by user's risk level
-	my $rf = $gconfig{"risk_$u"}.'.risk';
-	&read_file_cached("$mdir/$rf", \%rv);
-
-	my $sf = $gconfig{"skill_$u"}.'.skill';
-	&read_file_cached("$mdir/$sf", \%rv);
-	}
 elsif ($u ne '') {
 	# Use normal Webmin ACL, if a user is set
 	my $userdb = &get_userdb_string();
@@ -4055,6 +4047,13 @@ elsif ($u ne '') {
 			}
 		}
 	}
+
+# If the ACL says the user should get only safe settings for this module,
+# read and apply them
+if ($rv{'_safe'}) {
+	&read_file_cached("$mdir/safeacl", \%rv);
+	}
+
 if ($tconfig{'preload_functions'}) {
 	&load_theme_library();
 	}
@@ -8333,20 +8332,11 @@ sub get_available_module_infos
 {
 my (%acl, %uacl);
 &read_acl(\%acl, \%uacl, [ $base_remote_user ]);
-my $risk = $gconfig{'risk_'.$base_remote_user};
 my @rv;
 foreach my $minfo (&get_all_module_infos($_[0])) {
 	next if (!&check_os_support($minfo));
-	if ($risk) {
-		# Check module risk level
-		next if ($risk ne 'high' && $minfo->{'risk'} &&
-			 $minfo->{'risk'} !~ /$risk/);
-		}
-	else {
-		# Check user's ACL
-		next if (!$acl{$base_remote_user,$minfo->{'dir'}} &&
-			 !$acl{$base_remote_user,"*"});
-		}
+	next if (!$acl{$base_remote_user,$minfo->{'dir'}} &&
+		 !$acl{$base_remote_user,"*"});
 	next if (&is_readonly_mode() && !$minfo->{'readonly'});
 	push(@rv, $minfo);
 	}
