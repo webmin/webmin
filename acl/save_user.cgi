@@ -359,15 +359,24 @@ else {
 		}
 	}
 
-if ($in{'old'} && $in{'acl_security_form'} && !$newgroup) {
+my $aclfile = "$config_directory/$in{'name'}.acl";
+if ($in{'old'} && $in{'acl_security_form'} && !$newgroup && !$in{'safe'}) {
 	# Update user's global ACL
 	&foreign_require("", "acl_security.pl");
 	my %uaccess;
 	&foreign_call("", "acl_security_save", \%uaccess, \%in);
-	my $aclfile = "$config_directory/$in{'name'}.acl";
 	&lock_file($aclfile);
 	&save_module_acl(\%uaccess, $in{'name'}, "", 1);
 	&set_ownership_permissions(undef, undef, 0640, $aclfile);
+	&unlock_file($aclfile);
+	}
+
+# Clear safe setting
+if ($in{'unsafe'}) {
+	&lock_file($aclfile);
+	my %uaccess = &get_module_acl($in{'name'}, "", 1, 1);
+	delete($uaccess{'_safe'});
+	&save_module_acl(\%uaccess, $in{'name'}, "", 1);
 	&unlock_file($aclfile);
 	}
 

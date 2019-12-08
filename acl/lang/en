@@ -112,6 +112,10 @@ edit_proto_mysql=MySQL database
 edit_proto_postgresql=PostgreSQL database
 edit_proto_ldap=LDAP server
 edit_proto_=Local files
+edit_safe=Privilege level
+edit_safe0=Unrestricted
+edit_safe1=Safe modules only
+edit_unsafe=Reset to unrestricted
 
 save_err=Failed to save user
 save_ename='$1' is not a valid username

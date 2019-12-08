@@ -82,7 +82,7 @@ else {
 	push(@rowlinks, &select_all_link("d", $form),
 		     &select_invert_link("d", $form));
 	push(@rowlinks, ui_link("edit_user.cgi", $text{'index_create'}),
-			ui_link("edit_user.cgi?safe=1", $text{'index_screate'});
+			ui_link("edit_user.cgi?safe=1", $text{'index_screate'}))
 		if ($access{'create'});
 	print &ui_links_row(\@rowlinks);
 
