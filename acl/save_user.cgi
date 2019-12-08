@@ -388,6 +388,7 @@ if ($in{'safe'}) {
 		if (!%macl && $safe) {
 			%macl = %$safe;
 			$macl{'_safe'} = 1;
+			$macl{'noconfig'} = 1;
 			&save_module_acl(\%macl, $in{'name'}, $m);
 			}
 		}

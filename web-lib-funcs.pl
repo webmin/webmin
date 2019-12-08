@@ -4052,6 +4052,7 @@ elsif ($u ne '') {
 # read and apply them
 if ($rv{'_safe'}) {
 	&read_file_cached("$mdir/safeacl", \%rv);
+	$rv{'noconfig'} = 1;
 	}
 
 if ($tconfig{'preload_functions'}) {
