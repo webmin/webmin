@@ -17,8 +17,8 @@
 # Global state for wrapper
 # if 0, wrapper isn't on, add one and open it, if 1 close it, if 2+, subtract
 # but don't close
-$WRAPPER_OPEN = 0;
-$COLUMNS_WRAPPER_OPEN = 0;
+$main::WRAPPER_OPEN = 0;
+$main::COLUMNS_main::WRAPPER_OPEN = 0;
 
 # theme_ui_post_header([subtext])
 # Returns HTML to appear directly after a standard header() call
@@ -283,11 +283,11 @@ if (defined($main::ui_table_cols)) {
 my $rv;
 my $colspan = 1;
 
-if (!$WRAPPER_OPEN) {
+if (!$main::WRAPPER_OPEN) {
 	$rv .= "<table class='shrinkwrapper' $tabletags>\n";
 	$rv .= "<tr><td>\n";
 	}
-$WRAPPER_OPEN++;
+$main::WRAPPER_OPEN++;
 $rv .= "<table class='ui_table' $tabletags>\n";
 if (defined($heading) || defined($rightheading)) {
         $rv .= "<thead><tr>";
@@ -362,12 +362,12 @@ else {
   $main::ui_table_default_tds = undef;
   }
 $rv .= "</tbody></table></td></tr></table>\n";
-if ($WRAPPER_OPEN==1) {
+if ($main::WRAPPER_OPEN==1) {
 	#$rv .= "</div>\n";
 	$rv .= "</td></tr>\n";
 	$rv .= "</table>\n";
 	}
-$WRAPPER_OPEN--;
+$main::WRAPPER_OPEN--;
 return $rv;
 }
 
@@ -460,14 +460,14 @@ my ($heads, $width, $noborder, $tdtags, $title) = @_;
 my ($href) = grep { $_ =~ /<a\s+href/i } @$heads;
 my $rv;
 $theme_ui_columns_row_toggle = 0;
-if (!$noborder && !$COLUMNS_WRAPPER_OPEN) {
+if (!$noborder && !$main::COLUMNS_main::WRAPPER_OPEN) {
 	$rv .= "<table class='wrapper' width="
 	     . ($width ? $width : "100")
 	     . "%>\n";
 	$rv .= "<tr><td>\n";
 	}
 if (!$noborder) {
-	$COLUMNS_WRAPPER_OPEN++;
+	$main::COLUMNS_main::WRAPPER_OPEN++;
 	}
 my @classes;
 push(@classes, "ui_table") if (!$noborder);
@@ -514,10 +514,10 @@ sub theme_ui_columns_end
 {
 my $rv;
 $rv = "</tbody> </table>\n";
-if ($COLUMNS_WRAPPER_OPEN == 1) { # Last wrapper
+if ($main::COLUMNS_main::WRAPPER_OPEN == 1) { # Last wrapper
 	$rv .= "</td> </tr> </table>\n";
 	}
-$COLUMNS_WRAPPER_OPEN--;
+$main::COLUMNS_main::WRAPPER_OPEN--;
 return $rv;
 }
 
@@ -580,11 +580,11 @@ my $defimg = $status ? "open.gif" : "closed.gif";
 my $defclass = $status ? 'opener_shown' : 'opener_hidden';
 my $text = defined($tconfig{'cs_text'}) ? $tconfig{'cs_text'} :
         defined($gconfig{'cs_text'}) ? $gconfig{'cs_text'} : "000000";
-if (!$WRAPPER_OPEN) { # If we're not already inside of a wrapper, wrap it
+if (!$main::WRAPPER_OPEN) { # If we're not already inside of a wrapper, wrap it
 	$rv .= "<table class='shrinkwrapper' $tabletags>\n";
 	$rv .= "<tr><td>\n";
 	}
-$WRAPPER_OPEN++;
+$main::WRAPPER_OPEN++;
 my $colspan = 1;
 $rv .= "<table class='ui_table' $tabletags>\n";
 if (defined($heading) || defined($rightheading)) {
@@ -612,12 +612,12 @@ sub theme_ui_hidden_table_end
 {
 my ($name) = @_;
 local $rv = "</table></div></td></tr></tbody></table>\n";
-if ( $WRAPPER_OPEN == 1 ) {
-	$WRAPPER_OPEN--;
+if ( $main::WRAPPER_OPEN == 1 ) {
+	$main::WRAPPER_OPEN--;
 	#$rv .= "</div>\n";
 	$rv .= "</td></tr></table>\n";
 	}
-elsif ($WRAPPER_OPEN) { $WRAPPER_OPEN--; }
+elsif ($main::WRAPPER_OPEN) { $main::WRAPPER_OPEN--; }
 return $rv;
 }
 
