@@ -204,7 +204,7 @@ local $pkg = &update_system_resolve($name);
 return undef if (!$pkg);
 local ($cpkg) = caller();
 local $caller = eval '$'.$cpkg.'::module_name';
-return &ui_form_start("/$module_name/install_pack.cgi", "get").
+return &ui_form_start("$gconfig{'webprefix'}/$module_name/install_pack.cgi", "get").
        &text('missing_msg', $desc, $text{$update_system."_name"})."\n".
        &ui_hidden("source", 3).
        &ui_hidden("update", $pkg).
