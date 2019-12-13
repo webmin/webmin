@@ -1502,10 +1502,18 @@ if (defined($header{'host'})) {
 		&http_error(400, "Invalid HTTP hostname");
 		}
 	}
-$portstr = $port == 80 && !$ssl ? "" :
-	   $port == 443 && $ssl ? "" : ":$port";
-$hostport = &check_ip6address($host) ? "[".$host."]".$portstr
-				     : $host.$portstr;
+
+# Create strings for use in redirects
+$ssl = $config{'redirect_ssl'} ne '' ? $config{'redirect_ssl'} :
+	$use_ssl || $config{'inetd_ssl'};
+$redirport = $config{'redirect_port'} || $port;
+$portstr = $redirport == 80 && !$ssl ? "" :
+	   $redirport == 443 && $ssl ? "" : ":".$redirport;
+$redirhost = $config{'redirect_host'} || $host;
+$hostport = &check_ip6address($redirhost) ? "[".$redirhost."]".$portstr
+				          : $redirhost.$portstr;
+$prot = $ssl ? "https" : "http";
+
 undef(%in);
 if ($page =~ /^([^\?]+)\?(.*)$/) {
 	# There is some query string information
@@ -1628,8 +1636,6 @@ if (defined($redir)) {
 	&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
 	&write_data("Date: $datestr\r\n");
 	&write_data("Server: $config{'server'}\r\n");
-	local $ssl = $use_ssl || $config{'inetd_ssl'};
-	$prot = $ssl ? "https" : "http";
 	&write_data("Location: $prot://$hostport$redir\r\n");
 	&write_keep_alive(0);
 	&write_data("\r\n");
@@ -2251,12 +2257,8 @@ if (-d _) {
 	if ($page !~ /\/$/) {
 		# It doesn't.. redirect
 		&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
-		$ssl = $use_ssl || $config{'inetd_ssl'};
-		$portstr = $port == 80 && !$ssl ? "" :
-			   $port == 443 && $ssl ? "" : ":$port";
 		&write_data("Date: $datestr\r\n");
 		&write_data("Server: $config{server}\r\n");
-		$prot = $ssl ? "https" : "http";
 		&write_data("Location: $prot://$hostport$page/\r\n");
 		&write_keep_alive(0);
 		&write_data("\r\n");
@@ -4092,10 +4094,6 @@ if ($ok && (!$expired ||
 		&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
 		&write_data("Date: $datestr\r\n");
 		&write_data("Server: $config{'server'}\r\n");
-		local $ssl = $use_ssl || $config{'inetd_ssl'};
-		$portstr = $port == 80 && !$ssl ? "" :
-			   $port == 443 && $ssl ? "" : ":$port";
-		$prot = $ssl ? "https" : "http";
 		local $sec = $ssl ? "; secure" : "";
 		if (!$config{'no_httponly'}) {
 			$sec .= "; httpOnly";
