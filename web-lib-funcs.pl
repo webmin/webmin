@@ -1341,10 +1341,15 @@ typically a relative URL like index.cgi or list_users.cgi.
 =cut
 sub redirect
 {
-my $port = $ENV{'SERVER_PORT'} == 443 && uc($ENV{'HTTPS'}) eq "ON" ? "" :
-	   $ENV{'SERVER_PORT'} == 80 && uc($ENV{'HTTPS'}) ne "ON" ? "" :
-		":$ENV{'SERVER_PORT'}";
-my $prot = uc($ENV{'HTTPS'}) eq "ON" ? "https" : "http";
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+my $redirhost = $miniserv{'redirect_host'} || $ENV{'SERVER_NAME'};
+my $redirport = $miniserv{'redirect_port'} || $ENV{'SERVER_PORT'};
+my $redirssl = $miniserv{'redirect_ssl'} ne '' ? $miniserv{'redirect_ssl'} :
+	       uc($ENV{'HTTPS'}) eq "ON" ? 1 : 0;
+my $port = $redirport == 443 && $redirssl ? "" :
+	   $redirport == 80 && !$redirssl ? "" : ":".$redirport;
+my $prot = $redirssl ? "https" : "http";
 my $wp = $gconfig{'webprefixnoredir'} ? undef : $gconfig{'webprefix'};
 my $url;
 if ($_[0] =~ /^(http|https|ftp|gopher):/) {
@@ -1357,7 +1362,7 @@ elsif ($_[0] =~ /^\//) {
 		$url = "$wp$_[0]";
 		}
 	else {
-		$url = "$prot://$ENV{'SERVER_NAME'}$port$wp$_[0]";
+		$url = "$prot://$redirhost$port$wp$_[0]";
 		}
 	}
 elsif ($ENV{'SCRIPT_NAME'} =~ /^(.*)\/[^\/]*$/) {
@@ -1366,7 +1371,7 @@ elsif ($ENV{'SCRIPT_NAME'} =~ /^(.*)\/[^\/]*$/) {
 		$url = "$wp$1/$_[0]";
 		}
 	else {
-		$url = "$prot://$ENV{'SERVER_NAME'}$port$wp$1/$_[0]";
+		$url = "$prot://$redirhost$port$wp$1/$_[0]";
 		}
 	}
 else {
@@ -1374,7 +1379,7 @@ else {
 		$url = "$wp$_[0]";
 		}
 	else {
-		$url = "$prot://$ENV{'SERVER_NAME'}$port/$wp$_[0]";
+		$url = "$prot://$redirhost$port/$wp$_[0]";
 		}
 	}
 &load_theme_library();
