@@ -14,7 +14,7 @@
 # set all non iso8859-1 lang files to correct encoding
 **/lang/ru_SU        working-tree-encoding=koi8-r       git-encoding=koi8-r
 **/lang/ru_RU        working-tree-encoding=windows-1251     git-encoding=windows-1251
-**/lang/zh_TW.Big5   working-tree-encoding=Big5         git-encoding=Big5
+**/lang/zh_TW.Big5   working-tree-encoding=Big5
 **/lang/zh_CN        working-tree-encoding=GB2312       git-encoding=GB2312
 **/lang/hu       working-tree-encoding=iso-8859-2       git-encoding=iso-8859-2
 **/lang/he       working-tree-encoding=iso-8859-8-I     git-encoding=iso-8859-8-I
@@ -37,7 +37,7 @@
 # set all non iso8859-1 config.info files to correct encoding
 */config.info.ru_SU       working-tree-encoding=koi8-r          git-encoding=koi8-r
 */config.info.ru_RU      working-tree-encoding=windows-1251    git-encoding=windows-1251
-*/config.info.zh_TW.Big5  working-tree-encoding=Big5            git-encoding=Big5
+*/config.info.zh_TW.Big5  working-tree-encoding=Big5
 */config.info.zh_CN       working-tree-encoding=GB2312          git-encoding=GB2312
 */config.info.hu         working-tree-encoding=iso-8859-2      git-encoding=iso-8859-2
 */config.info.he          working-tree-encoding=iso-8859-8-I    git-encoding=iso-8859-8-I
