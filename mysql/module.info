@@ -5,5 +5,3 @@ longdesc=Setup databases, tables and permissions in your MySQL database server.
 readonly=1
 syslog=1
 cpan=1
-longdesc_de=Richtet Datenbanken, Tabellen und Berechtigungen in Ihrem MySQL-Datenbankserver ein.
-desc_de=MySQL-Datenbankserver
