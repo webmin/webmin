@@ -7,7 +7,9 @@
 # set all .UTF-8 to UTF-8
 *.UTF-8      working-tree-encoding=UTF-8 git-encoding=UTF-8
 
-*.gif        working-tree-encoding=binary git-encoding=binary
+*.gif        binary
+*.png        binary
+*.jpg        binary
 
 # per-language encodings
 **/lang/ru_SU        working-tree-encoding=koi8-r        git-encoding=koi8-r
