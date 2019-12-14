@@ -2,57 +2,8 @@
 # webmin .gitattribues file
 # help git / github to know the encoding of webmin (lang) files
 
-# set default encoding to iso-8859-1 aka ASCII
-#*        working-tree-encoding=iso8859-1 git-encoding=iso8859-1
-
 # force module.info to iso-8859-1 even it contains other encodings
 */module.info        working-tree-encoding=iso8859-1 git-encoding=iso8859-1
 
 # set all .UTF-8 to UTF-8
 *.UTF-8      working-tree-encoding=UTF-8 git-encoding=UTF-8
-
-# set all non iso8859-1 lang files to correct encoding
-**/lang/ru_SU        working-tree-encoding=koi8-r       git-encoding=koi8-r
-**/lang/ru_RU        working-tree-encoding=windows-1251     git-encoding=windows-1251
-#**/lang/zh_TW.Big5   working-tree-encoding=Big5
-**/lang/zh_CN        working-tree-encoding=GB2312       git-encoding=GB2312
-**/lang/hu       working-tree-encoding=iso-8859-2       git-encoding=iso-8859-2
-**/lang/he       working-tree-encoding=iso-8859-8-I     git-encoding=iso-8859-8-I
-**/lang/tr       working-tree-encoding=iso-8859-9       git-encoding=iso-8859-9
-**/lang/pl       working-tree-encoding=iso-8859-2       git-encoding=iso-8859-2
-**/lang/ja_JP.euc    working-tree-encoding=EUC-JP       git-encoding=EUC-JP
-**/lang/si       working-tree-encoding=iso-8859-2       git-encoding=iso-8859-2
-**/lang/ko_KR.euc    working-tree-encoding=EUC-KR       git-encoding=EUC-KR
-**/lang/cz       working-tree-encoding=iso-8859-2       git-encoding=iso-8859-2
-**/lang/th       working-tree-encoding=tis-620          git-encoding=tis-620
-**/lang/no       working-tree-encoding=iso-8859-15      git-encoding=iso-8859-15
-**/lang/sk       working-tree-encoding=iso-8859-2       git-encoding=iso-8859-2
-**/lang/lt       working-tree-encoding=windows-1257     git-encoding=windows-1257
-**/lang/bg       working-tree-encoding=windows-1251     git-encoding=windows-1251
-**/lang/el       working-tree-encoding=iso-8859-7       git-encoding=iso-8859-7
-**/lang/uk_UA    working-tree-encoding=windows-1251     git-encoding=windows-1251
-**/lang/ar       working-tree-encoding=iso-8859-6-I     git-encoding=iso-8859-6-I
-**/lang/fa       working-tree-encoding=UTF-8            git-encoding=UTF-8
-
-# set all non iso8859-1 config.info files to correct encoding
-*/config.info.ru_SU       working-tree-encoding=koi8-r          git-encoding=koi8-r
-*/config.info.ru_RU      working-tree-encoding=windows-1251    git-encoding=windows-1251
-#*/config.info.zh_TW.Big5  working-tree-encoding=Big5
-*/config.info.zh_CN       working-tree-encoding=GB2312          git-encoding=GB2312
-*/config.info.hu         working-tree-encoding=iso-8859-2      git-encoding=iso-8859-2
-*/config.info.he          working-tree-encoding=iso-8859-8-I    git-encoding=iso-8859-8-I
-*/config.info.tr          working-tree-encoding=iso-8859-9      git-encoding=iso-8859-9
-*/config.info.pl          working-tree-encoding=iso-8859-2      git-encoding=iso-8859-2
-*/config.info.ja_JP.euc   working-tree-encoding=EUC-JP          git-encoding=EUC-JP
-*/config.info.si          working-tree-encoding=iso-8859-2      git-encoding=iso-8859-2
-*/config.info.ko_KR.euc   working-tree-encoding=EUC-KR          git-encoding=EUC-KR
-*/config.info.cz         working-tree-encoding=iso-8859-2      git-encoding=iso-8859-2
-*/config.info.th         working-tree-encoding=tis-620         git-encoding=tis-620
-*/config.info.no          working-tree-encoding=iso-8859-15     git-encoding=iso-8859-15
-*/config.info.sk          working-tree-encoding=iso-8859-2      git-encoding=iso-8859-2
-*/config.info.lt          working-tree-encoding=windows-1257    git-encoding=windows-1257
-*/config.info.bg         working-tree-encoding=windows-1251    git-encoding=windows-1251
-*/config.info.el          working-tree-encoding=iso-8859-7      git-encoding=iso-8859-7
-*/config.info.uk_UA       working-tree-encoding=windows-1251    git-encoding=windows-1251
-*/config.info.ar          working-tree-encoding=iso-8859-6-I    git-encoding=iso-8859-6-I
-*/config.info.fa          working-tree-encoding=UTF-8           git-encoding=UTF-8
