@@ -119,6 +119,7 @@ edit_unsafe=Reset to unrestricted
 
 save_err=Failed to save user
 save_ename='$1' is not a valid username
+save_eunixname=The username '$1' is not a Unix user, and so cannot be used in safe mode
 save_enamewebmin=The username 'webmin' is reserved for internal use
 save_edup=The username '$1' is already in use
 save_eoverlay=A theme overlay cannot be selected unless a theme is

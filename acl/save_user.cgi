@@ -62,6 +62,10 @@ if (!$in{'old'} || $in{'old'} ne $in{'name'}) {
 	$in{'logouttime'} =~ /^\d+$/ || &error($text{'save_elogouttime'});
 !$access{'minsize'} || $in{'minsize_def'} ||
 	$in{'minsize'} =~ /^\d+$/ || &error($text{'save_eminsize'});
+if ($in{'safe'} && !$in{'unsafe'}) {
+	getpwnam($in{'name'}) ||
+		&error(&text('save_eunixname', &html_escape($in{'name'})));
+	}
 
 # Validate password
 if ($in{'pass_def'} == 0) {
