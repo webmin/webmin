@@ -1278,9 +1278,24 @@ same as ui_textbox.
 =cut
 sub ui_user_textbox
 {
+my ($name, $value, $form, $dis, $tags) = @_;
 return &theme_ui_user_textbox(@_) if (defined(&theme_ui_user_textbox));
-return &ui_textbox($_[0], $_[1], 13, $_[3], undef, $_[4])." ".
-       &user_chooser_button($_[0], 0, $_[2]);
+return &ui_textbox($name, $value, 13, $dis, undef, $tags)." ".
+       &user_chooser_button($name, 0, $form);
+}
+
+=head2 ui_users_textbox(name, value, [form], [disabled?], [tags])
+
+Returns HTML for an input for selecting multiple Unix users. Parameters are the
+same as ui_textbox.
+
+=cut
+sub ui_users_textbox
+{
+my ($name, $value, $form, $dis, $tags) = @_;
+return &theme_ui_users_textbox(@_) if (defined(&theme_ui_users_textbox));
+return &ui_textbox($name, $value, 60, $dis, undef, $tags)." ".
+       &user_chooser_button($name, 1, $form);
 }
 
 =head2 ui_group_textbox(name, value, [form], [disabled?], [tags])
@@ -1291,9 +1306,24 @@ same as ui_textbox.
 =cut
 sub ui_group_textbox
 {
+my ($name, $value, $form, $dis, $tags) = @_;
 return &theme_ui_group_textbox(@_) if (defined(&theme_ui_group_textbox));
-return &ui_textbox($_[0], $_[1], 13, $_[3], undef, $_[4])." ".
-       &group_chooser_button($_[0], 0, $_[2]);
+return &ui_textbox($name, $value, 13, $dis, undef, $tags)." ".
+       &group_chooser_button($name, 0, $form);
+}
+
+=head2 ui_groups_textbox(name, value, [form], [disabled?], [tags])
+
+Returns HTML for an input for selecting Unix groups. Parameters are the
+same as ui_textbox.
+
+=cut
+sub ui_groups_textbox
+{
+my ($name, $value, $form, $dis, $tags) = @_;
+return &theme_ui_groups_textbox(@_) if (defined(&theme_ui_groups_textbox));
+return &ui_textbox($name, $value, 60, $dis, undef, $tags)." ".
+       &group_chooser_button($name, 1, $form);
 }
 
 =head2 ui_opt_textbox(name, value, size, option1, [option2], [disabled?], [&extra-fields], [max])
