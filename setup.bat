@@ -1,6 +1,8 @@
 @ECHO off
-ECHO Helper Script to install Webmin on Windows
-ECHO (c) gnadelwartz https:://gitbub.com/gnadelwartz
+;; (c) gnadelwartz https:://gitbub.com/gnadelwartz
+ECHO UNOFFICIAL helper script to guide less experienced users on Windows
+ECHO for official information about installing webmin on Windows see:
+ECHO http://www.webmin.com/windows.html
 ECHO .
 
 :: prepare unautenticated Setup
@@ -36,6 +38,7 @@ IF NOT EXIST %INSTALL% (
 )
 
 :: check if perl is installed
+ECHO Check for Webmin  prerequisites ...
 IF EXIST %perl_path32% (
     SET perl_path=%perl_path32%
     ECHO Perl detected
@@ -44,7 +47,7 @@ IF EXIST %perl_path32% (
 	SET perl_path=%perl_path64%
 	echo Perl64 detected
     ) ELSE (
-	ECHO Perl is not installed! Please download it from
+	ECHO No Perl detected! Please adjust perl_path or download active state perl
 	ECHO %PERL_download% and install it!
 	start "" %PERL_download%
 	ECHO .
@@ -56,7 +59,7 @@ IF EXIST %perl_path32% (
 WHERE process >nul 2>&1
 IF %ERRORLEVEL% NEQ 0 (
 	ECHO Required process.exe is not installed! Please download it from
-	ECHO %PROCESS_download% and xopy it to C:\Windows!
+	ECHO %PROCESS_download% and copy it to C:\Windows!
 	start "" %PROCESS_download%
 	ECHO .
 	SET INSTALL=false
@@ -92,7 +95,8 @@ IF EXIST %INSTALL% (
     SET perl_path=%perl_path%\bin\perl.exe
     perl %INSTALL% %wa_dir%
 ) ELSE (
-	ECHO Webmin can not installed becasue of missing depedencies!
+	ECHO Webmin can not installed becasue of missing  prerequisites!
+	ECHO see http://www.webmin.com/windows.html for manual installation instructions
 )
 ECHO .
 PAUSE
