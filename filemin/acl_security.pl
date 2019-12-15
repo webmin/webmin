@@ -60,3 +60,7 @@ sub acl_security_save {
     }
     $access->{'max'} = $in->{'max_def'} ? undef : $in{'max'};
 }
+
+sub acl_security_noconfig {
+    return 1;
+}
