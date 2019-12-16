@@ -11,7 +11,7 @@ ECHO .
 :: prepare unautenticated Setup
 SET WEBMIN_download=https://sourceforge.net/projects/webadmin/
 SET WRT_download=https://www.microsoft.com/download/details.aspx?id=17657
-SET PROCESS_download=http://retired.beyondlogic.org/solutions/processutil/processutil.htm
+SET PROCESS_download=https://web.archive.org/web/20180105215524/http://retired.beyondlogic.org/solutions/processutil/processutil.htm
 SET PERL_download=https://www.activestate.com/activeperl/
 SET perl_path32=C:\Perl
 SET perl_path64=C:\Perl64
