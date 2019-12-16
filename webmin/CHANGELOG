@@ -143,5 +143,5 @@ Per-domain-name SSL certificates can now be created as well as per-IP, allowing 
 ---- Changes since 1.890 ----
 Wildcard SSL certs can now be requested via Let's Encrypt in DNS mode, if the native client is installed.
 Announcements to all Webmin users can now be displayed on the System Information page.
----- Changes since 1.930 ----
+---- Changes since 1.940 ----
 The host, port and SSL mode for redirects can now be customized via miniserv.conf options.
