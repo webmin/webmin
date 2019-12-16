@@ -236,7 +236,7 @@ else {
 		if (!&has_command("process.exe")) {
 			&errorexit("The command process.exe must be installed to run Webmin on Windows");
 			}
-		if (! eval "use Win32::Daemon; 1") {
+		if (eval "use Win32::Daemon; 1") {
 			&errorexit("The Perl module Win32::Daemon must be installed to run Webmin on Windows");
 			}
 		}
