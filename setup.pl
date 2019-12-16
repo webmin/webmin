@@ -213,7 +213,7 @@ else {
 	print "***********************************************************************\n";
 	$autoos = $ENV{'autoos'} || 2;
 	$temp = &tempname();
-	$ex = system("$perl ".&quote_path("$srcdir/oschooser.pl")." ".&quote_path("$srcdir/os_list.txt")")." ".&quote_path($temp)." $autoos");
+	$ex = system("$perl ".&quote_path("$srcdir/oschooser.pl")." ".&quote_path("$srcdir/os_list.txt")." ".&quote_path($temp)." $autoos");
 	exit($ex) if ($ex);
 	&read_env_file($temp, \%osinfo);
 	$os_type = $osinfo{'os_type'};
