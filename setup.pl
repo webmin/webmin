@@ -729,6 +729,9 @@ if (!$ENV{'nostart'}) {
 		print "presented, as it does not recognize the CA. Say yes.\n";
 		print "\n";
 		}
+	} else {
+		print "***********************************************************************\n";
+		print "Webmin has been installed but not started!";
 	}
 
 if ($oldwadir ne $wadir && $upgrading && !$ENV{'deletedold'}) {
