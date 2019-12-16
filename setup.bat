@@ -1,8 +1,11 @@
 @ECHO off
 ;; (c) gnadelwartz https:://gitbub.com/gnadelwartz
 ECHO UNOFFICIAL helper script to guide less experienced users on Windows
-ECHO for official information about installing webmin on Windows see:
+ECHO for information on installing webmin on Windows manually see:
 ECHO http://www.webmin.com/windows.html
+ECHO .
+ECHO NOTE: Webmin on Windows is community provided and not suppored officially!
+ECHO last reported working insallations was on Windows 8.1
 ECHO .
 
 :: prepare unautenticated Setup
@@ -95,8 +98,10 @@ IF EXIST %INSTALL% (
     SET perl_path=%perl_path%\bin\perl.exe
     perl %INSTALL% %wa_dir%
 ) ELSE (
-	ECHO Webmin can not installed becasue of missing  prerequisites!
+	ECHO Webmin can not installed because of missing  prerequisites!
 	ECHO see http://www.webmin.com/windows.html for manual installation instructions
+	ECHO .
+	ECHO If you are able to improve/fix installtion on newer Windows Versions report them pls
 )
 ECHO .
 PAUSE
