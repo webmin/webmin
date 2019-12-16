@@ -25,6 +25,7 @@ SET admin=10000
 SET ssl=0
 SET login=admin
 SET password=admin
+SET nostart=nostart
 SET INSTALL=setup.pl
 
 :: check if we are in webmin dir
