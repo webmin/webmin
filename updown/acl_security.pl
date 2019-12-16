@@ -8,11 +8,11 @@ sub acl_security_form
 my ($o) = @_;
 
 print &ui_table_row($text{'acl_upload'},
-	&ui_yesno_radio("upload", $o->{'upload'}));
+	&ui_yesno_radio("upload", $o->{'upload'}), 3);
 
 print &ui_table_row($text{'acl_max'},
 	&ui_opt_textbox("max", $o->{'max'}, 8,  $text{'acl_unlim'})." ".
-	$text{'acl_b'});
+	$text{'acl_b'}, 3);
 
 print &ui_table_row($text{'acl_download'},
 	&ui_radio("download", $o->{'download'},
@@ -34,7 +34,7 @@ print &ui_table_row($text{'acl_dirs'},
 	&ui_checkbox("home", 1, $text{'acl_home'}, $o->{'home'}), 3);
 
 print &ui_table_row($text{'acl_fetch'},
-	&ui_yesno_radio("fetch", $o->{'fetch'}));
+	&ui_yesno_radio("fetch", $o->{'fetch'}), 3);
 }
 
 # acl_security_save(&options)
