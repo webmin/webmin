@@ -1,5 +1,5 @@
 @ECHO off
-;; (c) gnadelwartz https:://gitbub.com/gnadelwartz
+:: (c) gnadelwartz https:://gitbub.com/gnadelwartz
 ECHO UNOFFICIAL helper script to guide less experienced users on Windows
 ECHO for information on installing webmin on Windows manually see:
 ECHO http://www.webmin.com/windows.html
