@@ -72,11 +72,11 @@ IF %ERRORLEVEL% NEQ 0 (
 :: check if rescource kit is installed
 WHERE sc >nul 2>&1
 IF %ERRORLEVEL% NEQ 0 (
-	ECHO Windows Resource Toolkit is not installed! Please download it from
-	ECHO %WRT_download% and install it!
+	ECHO Windows Resource Toolkit is not installed you may not able to run Webmin as a Service!
+	ECHO Please download from %WRT_download% and install it!
 	start "" %WRT_download%
 	ECHO .
-	SET INSTALL=false
+	:: SET INSTALL=false (optional now)
 )
 
 :: check if needed dir exist
