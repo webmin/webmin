@@ -731,7 +731,7 @@ if (!$ENV{'nostart'}) {
 		}
 	} else {
 		print "***********************************************************************\n";
-		print "Webmin has been installed but not started!";
+		print "Webmin has been installed but not started!\n\n";
 	}
 
 if ($oldwadir ne $wadir && $upgrading && !$ENV{'deletedold'}) {
