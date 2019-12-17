@@ -754,7 +754,7 @@ sub copy_to_wadir
 {
 if ($wadir ne $srcdir) {
 	print "Copying files to $wadir ..\n";
-	if ("$^O" != 'MSWin32') {
+	if ("$^O" !~ /MSWin32/) {
 		# Unix tar exists
 		system("cd ".&quote_path($srcdir)." && tar cf - . | (cd ".&quote_path($wadir)." ; tar xf -)");
 		}
