@@ -36,7 +36,7 @@ if ($auto) {
 		$uname = `uname -a 2>/dev/null`;
 		}
 	foreach $o (@list) {
-		if ("$^O" == 'MSWin32' && "$o->[2]" !~ /windows/) {
+		if ("$^O" =~ /MSWin32/ && "$o->[2]" !~ /windows/) {
 			next;
 		}
 		if ($o->[4] && eval "$o->[4]") {
