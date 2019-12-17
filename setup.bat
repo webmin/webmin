@@ -76,7 +76,6 @@ IF %ERRORLEVEL% NEQ 0 (
 	ECHO Please download from %WRT_download% and install it!
 	start "" %WRT_download%
 	ECHO .
-	:: SET INSTALL=false (optional now)
 )
 
 :: check if needed dir exist
