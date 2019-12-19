@@ -9014,7 +9014,7 @@ else {
 		if (-d $file) {
 			# Cannot open a directory!
 			if ($noerror) { return 0; }
-			else { &error("Cannot write to directory $file"); }
+			else { &error("Cannot write to directory @{[html_escape($file)]}"); }
 			}
 		my @oldst = stat($file);
 		my $directopen = 0;
@@ -9031,7 +9031,7 @@ else {
 			$main::open_temphandles{$fh} = $file;
 			}
 		if (!$ex && !$noerror) {
-			&error(&text("efileopen", $file, $!));
+			&error(&text("efileopen", html_escape($file), $!));
 			}
 		binmode($fh);
 		if (@oldst && !$directopen) {
@@ -9050,7 +9050,7 @@ else {
 		&reset_file_attributes($file, \@old_attributes);
 		$main::open_temphandles{$fh} = $file;
 		if (!$ex && !$noerror) {
-			&error(&text("efileopen", $file, $!));
+			&error(&text("efileopen", html_escape($file), $!));
 			}
 		binmode($fh);
 		return $ex;
@@ -9065,7 +9065,7 @@ else {
 		&reset_file_attributes($file, \@old_attributes);
 		$main::open_temphandles{$fh} = $file;
 		if (!$ex && !$noerror) {
-			&error(&text("efileopen", $file, $!));
+			&error(&text("efileopen", html_escape($file), $!));
 			}
 		binmode($fh);
 		return $ex;
@@ -9123,7 +9123,7 @@ elsif (defined($main::open_tempfiles{$_[0]})) {
 	my @old_attributes = &get_clear_file_attributes($_[0]);
 	if (!rename($main::open_tempfiles{$_[0]}, $_[0])) {
 		if ($noerror) { return 0; }
-		else { &error("Failed to replace $_[0] with $main::open_tempfiles{$_[0]} : $!"); }
+		else { &error("Failed to replace @{[html_escape($_[0])]} with @{[html_escape($main::open_tempfiles{$_[0]})]} : $!"); }
 		}
 	if (@st) {
 		# Set original permissions and ownership
