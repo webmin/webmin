@@ -22,7 +22,7 @@ print &ui_table_row($text{'acl_mods'},
 
 # Allowed users
 print &ui_table_row($text{'acl_users'},
-	&ui_radio("users_def", $o->{'users'} eq "*" ? 1
+	&ui_radio("users_def", $o->{'users'} eq "*" ? 1 :
 			       $o->{'users'} eq "x" ? 2 : 0,
 		  [ [ 1, $text{'acl_all'} ],
 		    [ 2, $text{'acl_self'} ],
