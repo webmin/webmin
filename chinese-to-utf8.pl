@@ -73,7 +73,42 @@ foreach $m (@modules) {
 			system("iconv -f iso-8859-1 -t UTF-8 - <$m/lang/$l >$m/lang/$l.UTF-8");
 			}
 		}
-
+        # Translate the ulang/* files
+	if (-r "$m/ulang/zh_TW.Big5") {
+		system("iconv -f Big5 -t UTF-8 - <$m/ulang/zh_TW.Big5 >$m/ulang/zh_TW.UTF-8");
+		}
+	if (-r "$m/ulang/zh_CN") {
+		system("iconv -f GB2312 -t UTF-8 - <$m/ulang/zh_CN >$m/ulang/zh_CN.UTF-8");
+		}
+	if (-r "$m/ulang/ja_JP.euc") {
+		system("iconv -f EUC-JP -t UTF-8 - <$m/ulang/ja_JP.euc >$m/ulang/ja_JP.UTF-8");
+		}
+	if (-r "$m/ulang/ko_KR.euc") {
+		system("iconv -f EUC-KR -t UTF-8 - <$m/ulang/ko_KR.euc >$m/ulang/ko_KR.UTF-8");
+		}
+	if (-r "$m/ulang/ru_SU") {
+		system("iconv -f KOI8-R -t UTF-8 - <$m/ulang/ru_SU >$m/ulang/ru.UTF-8");
+		}
+	foreach $l (@fiveone_langs) {
+		if (-r "$m/ulang/$l") {
+			system("iconv -f windows-1251 -t UTF-8 - <$m/ulang/$l >$m/ulang/$l.UTF-8");
+			}
+		}
+	foreach $l (@fivenine_langs) {
+		if (-r "$m/ulang/$l") {
+			system("iconv -f iso-8859-2 -t UTF-8 - <$m/ulang/$l >$m/ulang/$l.UTF-8");
+			}
+		}
+	foreach $l (@fifteen_langs) {
+		if (-r "$m/ulang/$l") {
+			system("iconv -f iso-8859-15 -t UTF-8 - <$m/ulang/$l >$m/ulang/$l.UTF-8");
+			}
+		}
+	foreach $l (@default_langs) {
+		if (-r "$m/ulang/$l") {
+			system("iconv -f iso-8859-1 -t UTF-8 - <$m/ulang/$l >$m/ulang/$l.UTF-8");
+			}
+		}
 	# Translate the module.info.LANG files
 	local %minfo;
 	if (&read_file("$m/module.info.zh_TW.Big5", \%minfo)) {
