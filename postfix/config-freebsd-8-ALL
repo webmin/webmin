@@ -29,3 +29,4 @@ ldap_doms=0
 delete_confirm=1
 start_cmd=/usr/local/etc/rc.d/postfix forcestart
 stop_cmd=/usr/local/etc/rc.d/postfix forcestop
+max_maps=100

@@ -3481,6 +3481,10 @@ while($tries++ < 10) {
 		" -f ".quotemeta($signed)." ".
 		quotemeta($chrootfn)." 2>&1");
 	last if (!$?);
+	if ($out =~ /out\s+of\s+range/i) {
+		# Journal files are out of sync
+		&try_cmd("sync -clean 2>&1 </dev/null");
+		}
 	}
 return $out if ($tries >= 10);
 
