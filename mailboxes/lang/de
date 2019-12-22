@@ -424,3 +424,8 @@ view_whitemove=Erlaube Absender und Eingang
 white_already=Die E-Mail-Adresse $1 befindet sich bereits in der Whitelist von SpamAssassin.
 white_done=Die E-Mail-Adresse $1 wurde der Whitelist von SpamAssassin hinzugef&#252;gt.
 white_title=Erlaube Absender
+index_esystem=Keinen der unterstuetzten Mailserver (Exim, Qmail, Postfix and Sendmail) auf dem System gefunden. Bitte in der <a href='$1'>Module Konfiguration</a> den Mailserver und die Mail Pfade anpassen.
+index_esystem2=Der in der <a href='$1'>Module Konfiguration</a> angegeben Mailserver wurde nicht gefunden. Bitte die Konfiguration anpasen.
+index_esystem3=Bei Ansprechen des in der <a href='$1'>Module Konfiguration</a> angegebenen Mailservers gab es folgenden Fehler: $2.
+index_eperl=Das Perl Module $1 fuer den gewahlten SMTP Auth Modus ist nicht installiert oder es fehlt ein weiteres Modul. Zum Installieren <a href='$2'>hier klicken</a>.
+emodified=Das Verzeichnis wurde seit dem Einlesen veraendert! Gehte zurueck zur <a href='$1'>Mailueberischt</a> und versuche es nochmal.
