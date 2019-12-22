@@ -1,27 +1,27 @@
 __norefs=1
 index_boot=ADSL-Verbindung beim Booten hochfahren
-index_bootdesc=&#196;ndern Sie diese Option, wenn Sie Ihre ADSL-Verbindung schon beim Booten verf&#252;gbar haben wollen, oder nicht.
+index_bootdesc=Ändern Sie diese Option, wenn Sie Ihre ADSL-Verbindung schon beim Booten verfügbar haben wollen, oder nicht.
 index_bytes=Bytes
 index_cancel=Verbindung beenden
 index_canceldesc=Es wird momentan eine ADSL-Verbindung hergestellt. Klicken Sie auf diesen Button, um diesen Vorgang mit dem Befehl $1 abzubrechen.
 index_cdemand=Auf Verlangen abbrechen
-index_cdemanddesc=Der ADSL-Client wartet derzeit darauf, Benutzer auf Verlangen die Verbindung zu beenden. Klicken Sie auf diesen Button, wenn Sie dies mit dem Befehl $1 ausf&#252;hren m&#246;chten.
+index_cdemanddesc=Der ADSL-Client wartet derzeit darauf, Benutzer auf Verlangen die Verbindung zu beenden. Klicken Sie auf diesen Button, wenn Sie dies mit dem Befehl $1 ausführen möchten.
 index_connect=Konfigurierbare Dauer der Verbindung
 index_demand=Verbindung auf Wunsch?
-index_desc=Diese Einstellungen werden erst bei der n&#228;chsten Anmeldung des ADSL-Clients aktiv. Wenn Sie diese &#228;ndern, dann m&#252;ssen Sie die Verbindung beenden und neu aufbauen, damit die &#196;nderungen wirksam werden.
-index_dns=DNS-Konfiguration des ISP &#252;bernehmen?
-index_eadsl=Der RP-PPPoE-Befehl $1 wurde auf Ihrem System nicht gefunden oder ist nicht g&#252;ltig. Entweder ist er nicht installiert, oder Ihre <a href='$2'>Modulkonfiguration</a> ist falsch.
+index_desc=Diese Einstellungen werden erst bei der nächsten Anmeldung des ADSL-Clients aktiv. Wenn Sie diese ändern, dann müssen Sie die Verbindung beenden und neu aufbauen, damit die Änderungen wirksam werden.
+index_dns=DNS-Konfiguration des ISP übernehmen?
+index_eadsl=Der RP-PPPoE-Befehl $1 wurde auf Ihrem System nicht gefunden oder ist nicht gültig. Entweder ist er nicht installiert, oder Ihre <a href='$2'>Modulkonfiguration</a> ist falsch.
 index_econfig=Die RP-PPPoE ADSL-Konfigurationsdatei $1 wurde auf Ihrem System nicht gefunden. Entweder ist sie nicht installiert, oder Ihre <a href='$2'>Modulkonfiguration</a> ist falsch.
-index_emodem=Die aktuelle Konfigurationsdatei wurde f&#252;r ein Modem unter RedHat-Linux geschrieben, und nicht f&#252;r eine ADSL-Verbindung. Benutzen Sie die <a href='$2'>Modulkonfiguration</a>, um entweder eine der <tt>ifcfg-ppp*</tt>-Dateien unter $1 zu nutzen, oder ein neues Interface anzugeben, welches von Webmin eingerichtet werden soll.
-index_esetup=Die RedHat-ADSL-Konfigurationsdatei $1 wurde auf Ihrem System nicht gefunden. Webmin kann dies jedoch mit Basisfunktionen f&#252;r Sie einrichten, wenn Sie den unten stehenden Button anklicken.
+index_emodem=Die aktuelle Konfigurationsdatei wurde für ein Modem unter RedHat-Linux geschrieben, und nicht für eine ADSL-Verbindung. Benutzen Sie die <a href='$2'>Modulkonfiguration</a>, um entweder eine der <tt>ifcfg-ppp*</tt>-Dateien unter $1 zu nutzen, oder ein neues Interface anzugeben, welches von Webmin eingerichtet werden soll.
+index_esetup=Die RedHat-ADSL-Konfigurationsdatei $1 wurde auf Ihrem System nicht gefunden. Webmin kann dies jedoch mit Basisfunktionen für Sie einrichten, wenn Sie den unten stehenden Button anklicken.
 index_eth=Netzwerkinterface
 index_forever=Immer
 index_fw=Firewall bei Verbindung hochfahren
-index_fw_masquerade=F&#252;r ein NAT-Gateway
+index_fw_masquerade=Für ein NAT-Gateway
 index_fw_none=Keine
-index_fw_standalone=F&#252;r diesen Rechner
+index_fw_standalone=Für diesen Rechner
 index_header=ADSL-Client - Konfigurierbare Optionen
-index_mss=Paketgr&#246;&#223;e einschr&#228;nken?
+index_mss=Paketgröße einschränken?
 index_other=Andere ...
 index_psize=Ja, auf
 index_return=Modulindex
@@ -43,20 +43,20 @@ log_save=Client-Konfiguration gespeichert
 log_setup=Standard-Konfiguration angelegt
 log_start=ADSL-Verbindung gestartet
 log_stop=ADSL-Verbindung beendet
-save_desc=Ihre ADSL-Client-Konfiguration wurde erfolgreich gespeichert, wird jedoch erst bei der n&#228;chsten Anmeldung/Anwahl aktiv.
-save_econnect=Fehlendes oder ung&#252;ltiges "timeout"
-save_eeth=Fehlende oder ung&#252;ltige aussehende Ethernetschnittstelle
-save_emss=Fehlende oder ung&#252;ltige Maximum-Paketgr&#246;&#223;e
+save_desc=Ihre ADSL-Client-Konfiguration wurde erfolgreich gespeichert, wird jedoch erst bei der nächsten Anmeldung/Anwahl aktiv.
+save_econnect=Fehlendes oder ungültiges "timeout"
+save_eeth=Fehlende oder ungültige aussehende Ethernetschnittstelle
+save_emss=Fehlende oder ungültige Maximum-Paketgröße
 save_err=Konnte ADSL-Verbindung nicht speichern
-save_etimeout=Fehlendes oder ung&#252;ltige "Verbindung auf Wunsch"-Zeitangabe (timeout)
-save_euser=Fehlender oder ung&#252;ltiger Benutzername
+save_etimeout=Fehlendes oder ungültige "Verbindung auf Wunsch"-Zeitangabe (timeout)
+save_euser=Fehlender oder ungültiger Benutzername
 save_title=Konfiguration speichern
 start_bg=Die ADSL-Verbindung konnte nicht innerhalb von 20 Sekunden aktiviert werden. Der ADSL-Client wird es solange versuchen, bis es klappt.
-start_demand=Da Sie "Verbindung auf Wunsch" angew&#228;hlt haben, wird Ihre ADSL-Verbindung nur dann aktiviert, wenn diese ben&#246;tigt wird.
+start_demand=Da Sie "Verbindung auf Wunsch" angewählt haben, wird Ihre ADSL-Verbindung nur dann aktiviert, wenn diese benötigt wird.
 start_err=Konnte ADSL-Verbindung nicht starten
 start_ip=Eine ADSL-Verbindung wurde eingerichtet. Derzeitige IP-Adresse: $1.
 start_title=Starte ADSL-Verbindung
 stop_err=Konnte ADSL-Verbindung nicht beenden
-stop_failed=Ihre ADSL-Verbindung ist aus unerkl&#228;rlichen Gr&#252;nden immer noch aktiv!
+stop_failed=Ihre ADSL-Verbindung ist aus unerklärlichen Gründen immer noch aktiv!
 stop_ok=Ihre ADSL-Verbindung wurde erfolgreich beendet.
 stop_title=Beende ADSL-Verbindung
