@@ -3067,7 +3067,8 @@ $out = &backquote_command(
         $config{'checkconf'}.
 	($chroot && $chroot ne "/" ? " -t ".quotemeta($chroot) : "").
 	" $zflag 2>&1 </dev/null");
-return $? ? grep { !/loaded\s+serial/ } split(/\r?\n/, $out) : ( );
+return $? ? &unique(grep { !/loaded\s+serial|already\s+exists/ }
+		         split(/\r?\n/, $out)) : ( );
 }
 
 # delete_records_file(file)
