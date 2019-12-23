@@ -909,7 +909,7 @@ sub generate_map_edit
     elsif ($config{'max_maps'} && @{$mappings} > $config{'max_maps'} &&
            !$in{'search'}) {
 	# If there are too many, show a search form
-	print &ui_form_start($ENV{'SCRIPT_NAME'});
+	print &ui_form_start($gconfig{'webprefix'}.$ENV{'SCRIPT_NAME'});
 	foreach my $i (keys %in) {
 		next if ($i eq 'search');
 		print &ui_hidden($i, $in{$i});
