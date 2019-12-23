@@ -1,0 +1,6 @@
+<header>OpenSLP</header>
+Service Location Protocol (SLP) ist ein IETF-Standard Track-Protokoll, das ein Framework für Netzwerkanwendungen bietet und ermöglicht Anwendungen, die Existenz, Standort und Konfiguration von vernetzten Diensten in Unternehmensnetzwerken zu entdecken.
+
+<center><form><input type="button" value="close" onclick="self.close()"></form></center>
+
+<hr>

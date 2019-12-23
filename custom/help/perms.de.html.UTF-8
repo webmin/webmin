@@ -1,0 +1,5 @@
+<header>Dateiberechtigungen</header>
+
+Es gibt hier zwei M&ouml;glichkeiten&#58; Sie k&ouml;nnen zum einen die Dateiberechtigung so lassen&#44; wie sie ist oder zum anderen eine 3&#45;stellige Oktalzahl angeben&#44; welche die Rechte repr&auml;sentiert. Die Dateirechte werden von WebMin mit dem Kommando <tt>chmod</tt> nach dem Erstellen&#47;Modifizieren einer Datei gesetzt. Wenn eine Datei nicht existiert und diese Option nicht gesetzt ist&#44; so werden die Dateirechte wahrscheinlich <tt>644</tt> sein.
+<hr>
+<!-- zuletzt geaendert: 07.08.2003 - Martin Mewes - webmin@webmin.mamemu.de -->

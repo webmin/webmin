@@ -1,0 +1,6 @@
+<header>Auszuführender Befehl</header>
+
+Ein Befehl oder Befehle zum Ausführen. Da die Standard-Shell <tt>/bin/sh</tt>
+verwendet wird, um den Befehl auszuführen, können Sie spezielle Operatoren wie
+<tt>;</tt> , <tt>&lt;</tt> , <tt>|</tt> and <tt>&amp;&amp;</tt> verwenden.
+<hr>

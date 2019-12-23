@@ -1,0 +1,3 @@
+date_subs=<tt>strftime</tt> der Backupziele?,1,1-Ja,0-Nein
+webmin_subs=Webmin Variablensubstitution auf Backupziele?,1,1-Ja,0-Nein
+from_addr=Absender-Mail-Adresse für Mails,3,webmin@hostname

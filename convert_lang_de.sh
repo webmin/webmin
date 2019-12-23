@@ -7,7 +7,6 @@ TO="UTF-8"
 LANG="de"
 
 DOIT="yes"
-DOIT="no"
 
 ####
 # process all de files, change lang code for other lang
@@ -58,5 +57,5 @@ do
 		file -i ${file}
 	fi
 	# check if UTF-8
-	#file -i ${file}.${TO}
+	file -i ${file}.${TO}
 done

@@ -1,0 +1,12 @@
+line1=Konfigurierbare Einstellungen,11
+dynamic=Benutze zufällige Zahl als Listen-Alias,1,1-Ja,0-Nein
+sort_mode=Sortiere Mailinglisten nach,1,1-Name,0-Erzeugter Reihenfolge
+perms=Berechtigungen für die Majordomo-Dateien,1,1-Beschreibbar durch Benutzer,0-Beschreibbar für Benutzer und Gruppen
+line2=Systemkonfiguration,11
+majordomo_cf=Absoluter Pfad zur Majordomo-Konfigurationsdatei,0
+program_dir=Verzeichnis, das die Majordomo-Programme enthält,0
+wrapper_path=Pfad zum Majordomo-Wrapper,3,Im Programm-Verzeichnis
+aliases_file=Alias-Datei in Sendmail-Form,10,postfix-Von Postfix Konfiguration,-Von Sendmail,Andere Datei
+owner_file=Speichere Listen Owner in <tt>list.owner</tt> statt in Alias-Datei,1,1-Ja,0-Nein
+smrsh_program_dir=Verzeichnis, das die Sendmail-"Safe"-Programme enthält,3,Beliebig
+download=Erste Hilfe<br><br>Falls Majordomo nicht in ihrer Distribution enthalten ist oder Probleme mit der installierten Perl Version hat: <a href="http://files1.directadmin.com/services/es_7.0_64/majordomo-1.94.5-patched.tar.gz">Laden sie eine angepaste Version von hier ...</a><br> ,11

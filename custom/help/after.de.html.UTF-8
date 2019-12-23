@@ -1,0 +1,4 @@
+<header>Befehl der nach dem Speichern ausgeführt werden soll</header>
+
+Egal welches Kommando hier angegeben wird&#58; Er wird nach der Speicherung als <tt>root</tt> ausgef&uuml;hrt. Dies kann sinnvoll sein&#44; wenn man eine Datei z&#46;B&#46; auf einen anderen Server kopieren möchte.
+<hr>

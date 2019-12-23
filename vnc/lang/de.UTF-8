@@ -1,0 +1,7 @@
+__norefs=1
+index_credits=VNC-Client-Applet erstellt von AT&T. Besuchen Sie <a href=http://www.uk.research.att.com/vnc>http://www.uk.research.att.com/vnc</a> für mehr Informationen.
+index_ecmd=Das benötigte VNC-Serverprogramm $1 für ein spezifisches Programm ist nicht installiert.
+index_esocket=Es läuft kein VNC-Server auf $1 Port $2.
+index_nojava=Dieses Module benötigt JAVA, aber Ihr Browser unterstützt kein JAVA.
+index_title=VNC-Client
+index_warn=Achtung! Diese VNC-Sitzung ist <b>NICHT</b> verschlüsselt.

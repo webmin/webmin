@@ -1,0 +1,13 @@
+<header>Ausgehende Post via Host senden</header>
+
+<center><tt>relayhost</tt></center>
+<hr>
+
+Üblicherweise verwenden Sie <tt>Deliver directly</tt>, so dass Postfix alle ausgehende Post, die nicht an Users ihres Systems bestimmt sind, an den angegebenen Host weiterleitet. 
+
+<p>
+
+Falls Sie die ganze Post, ausser Post für die lokale Maschine, an ein Intranet <b>mail gateway</b> (zum Beispiel, wenn ihr Intranet eine Firewall hat) weiterleiten wollen, richten Sie den Wert auf ihren Post Gateway ein. Organisationen haben meistens interne MX Aufzeichnungen, so dass die direkte Verwendung ihres Domain-Namen mit der Post-Gateway Maschine verknüpft wird. 
+
+<hr>
+

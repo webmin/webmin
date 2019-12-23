@@ -1,2 +1,1 @@
-desc_de=PAM-Authentifizierung
-longdesc_de=Konfiguriert die PAM-Authentifizierungs-Schritte, welche durch Dienste wie Telnet, POP und FTP benutzt werden.
+module.info.de.UTF-8

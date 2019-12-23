@@ -1,0 +1,5 @@
+<header>Dateisystemattribute einfügen?</header>
+
+Wenn diese Option auf Ja gesetzt ist, wird das Backup jede erweiterten Attributengruppe von Dateien, die mit dem Befehl dem <tt>attr</tt>-Befehl erstellt worden. <p>
+
+<hr>

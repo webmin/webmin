@@ -1,0 +1,18 @@
+sec1=Portsentry-Optionen,11
+portsentry=Pfad zum Portsentry-Daemon,0
+portsentry_config=Pfad zur Portsentry-Konfigurationsdatei,0
+portsentry_pid=Portsentry PID-Datei,3,Keine
+portsentry_ignore=Portsentry-Datei mit ignorierten Hosts,3,Finde aus Konfiguration
+portsentry_start=Befehl zum Start von Portsentry,3,Starte Daemons in untenstehenden Modi
+portsentry_stop=Befehl zum Stopp von Portsentry,3,Beende Prozesse
+portsentry_tmode=Portsentry TCP-Modus,1,tcp-Basis-Modus,stcp-Stealth-Modus,atcp-Advanced Stealth-Modus
+portsentry_umode=Portsentry UDP-Modus,1,udp-Basis-Modus,sudp-Stealth-Modus,audp-Advanced Stealth-Modus
+
+sec2=Hostsentry-Optionen,11
+hostsentry=Pfad zum hostsentry.py Python-Skript,0
+hostsentry_config=Pfad zur hostsentry Konfigurationsdatei,0
+hostsentry_start=Befehl zum Start von hostsentry,3,Starte Python-Skript
+hostsentry_stop=Befehl zum Stopp von hostsentry,3,Beende Prozesse
+
+sec3=Logcheck-Optionen,11
+logcheck=Pfad zum logcheck.sh-Skript,0

@@ -1,0 +1,3 @@
+sarg=Voller Pfad zur ausführbaren Datei von sarg,0
+sarg_conf=Voller Pfad zur SARG-Konfigurationsdatei,0
+naked=Webmin Kopf- und Fußzeile auf SARG Bericht hinzufügen?,1,0-Ja,1-Nein

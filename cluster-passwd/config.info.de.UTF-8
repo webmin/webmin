@@ -1,0 +1,3 @@
+max_users=Maximal anzuzeigende Benutzer,0
+input_type=Benutzerauswahl,1,1-Liste,0-Textfeld
+sort_mode=Sortiere Benutzer nach,1,0-Reihenfolge in Datei,1-Benutzername

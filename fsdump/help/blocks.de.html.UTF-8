@@ -1,0 +1,8 @@
+<header>Bandgröße</header>
+
+Wenn 'automatisch" gewählt wird, wird der Backup geschrieben werden, bis
+Das Band oder der Dateisystem der Speicherplatz ausgeht. Alternativ können Sie auch die
+richtige Anzahl an Kilobyte, die zur Verfügung steht, angeben. Dies könnte nützlich sein, wenn die
+automatische Größenerkennung das falsche Ergebnis produziert. <p>
+
+<hr>

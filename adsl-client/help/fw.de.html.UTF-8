@@ -1,0 +1,6 @@
+<header>Firewall beim Start der ADSL-Verbindung hochfahren?</header>
+
+Hier k&#246;nnen Sie angeben, ob Sie eine 'ipchains'-Firewall hochfahren lassen m&#246;chten, sobald eine ADSL-Verbindung gestartet wird. Sie k&#246;nnen dazu Webmin's Linux-Firewall-Modul benutzen um eine Firewall ganz nach Ihren W&#252;nschen einzurichten.<p>
+
+<hr>
+

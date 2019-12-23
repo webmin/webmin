@@ -1,0 +1,6 @@
+<header>Daten nach der Sicherung überprüfen?</header>
+
+Wenn diese Option aktiviert ist, wird der Inhalt des Backup-Bandes oder eine Datei
+gegen die ursprünglichen Quelldateien überprüft werden, sobald die Sicherung abgeschlossen ist. <p>
+
+<hr>

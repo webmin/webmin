@@ -1,0 +1,7 @@
+<header>Globale Optionen</header>
+
+Die Rotationsoptionen auf dieser Seite finden Anwendung auf alle Dateien, es sei denn, sie werden durch Einstellungen für eine bestimmte Logdatei verworfen. Dies erlaubt Ihnen einen Zeitplan zu erstellen oder zu editieren, die maximale Größe oder Anzahl alter Logdateien zu bestimmen. Übliche von allen Logrotationen verwendete Felder beinhalten:
+<p>
+
+<include log>
+

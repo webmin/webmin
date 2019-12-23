@@ -1,0 +1,12 @@
+__norefs=1
+domain=Domainname
+error_dir=Verzeichnis $1 existiert nicht
+general=Generelle Konfiguration
+index_eidmapd=Der Idmapd-Daemon $1 wurde nicht gefunden. Entweder ist er nicht installiert, oder Ihre <a href='$2'>Modulkonfiguration</a> ist falsch.
+index_title=Idmapd-Konfiguration
+mapping=Mapping-Konfiguration
+nobody_group=Nobody-Gruppe
+nobody_user=Nobody-Benutzer
+pipefs_dir=Pipefs-Verzeichnis
+save=Speichere Konfiguration und starte Daemon neu
+save_err=Konnte Konfigurationsdatei $1 nicht speichern

@@ -1,0 +1,2 @@
+desc_de=FirewallD
+longdesc_de=Konfiguriert eine Linux-Firewall mit FirewallD, indem es erlaubte Dienste und Ports editiert.

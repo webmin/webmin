@@ -1,0 +1,9 @@
+minecraft_dir=Basisverzeichnis für Minecraft Server,0
+minecraft_jar=Voller Pfad zur Minecraft JAR Datei,3,minecraft_server.jar im Basisverzeichnis
+java_cmd=Voller Pfad zum java Befehl,0
+java_envs=Zusätzliche Umgebungsvariablen,0
+unix_user=Führe Minecraft Server als Benutzer aus,5
+init_name=Name des initialen Skripts,0
+history_size=Befehlshistorie Größe,0
+port=Minecraft-Server-Port-Nummer,3,Standard (25565)
+download_version=Version von Minecraft zum herunterladen,3,Letzte

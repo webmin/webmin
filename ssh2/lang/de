@@ -1,8 +1,1 @@
-index_title=SSH-/Telnet-Anmeldung
-index_warn=Warnung! Diese Telnet-Sitzung ist <B>nicht</B> verschlüsselt!
-index_esocket=Es läuft kein Telnet-Server auf $1 (Anschluss $2)
-index_esocket2=Es läuft kein SSH-Server auf $1 (Anschluss $2)
-index_nojava=Dieses Modul benötigt Java, aber Ihr Browser unterstützt kein Java
-index_credits=Applet entwickelt unter GPL von <a href='$1' target=_top>Matthias L. Jugel & Marcus Meißner</a>
-index_elookup=Konnte die IP-Adresse für $1, um Telnet- oder SSH-Server zu testen, nicht finden.
-__norefs=1
+de.UTF-8

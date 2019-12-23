@@ -1,0 +1,6 @@
+<header>Limitiere Backup auf ein Dateisystem?</header>
+
+Wenn diese Option aktiviert ist, wird das Backup nicht Dateien einbeziehen in jedem anderen
+Dateisystem unter den gesicherten Verzeichnissen. <p>
+
+<hr>

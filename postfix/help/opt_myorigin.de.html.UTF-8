@@ -1,0 +1,16 @@
+<header>Welche Domain zu verwenden in ausgehender Mail</header>
+
+<center><tt>myorigin</tt></center>
+<hr>
+
+Bestimmen Sie die im Mail erscheinende Domain, die auf dieser Maschine aufgelistet ist. 
+Standardeinstellung ist die Postfix Konfiguration. Name der lokalen Maschine verwenden,
+<tt>hostname</tt>.
+
+<p>
+
+Ausser wenn Sie eine sehr kleine Site laufen lassen, ändern Sie dies bitte 
+in <tt>domainname</tt>, mit Standardeinstellung wie Parent Domain des Maschinen
+Namen.
+
+<hr>

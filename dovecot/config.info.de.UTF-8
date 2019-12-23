@@ -1,0 +1,4 @@
+dovecot=Dovecot Server Programm,0
+dovecot_config=Voller Pfad zur Dovecot Konfigurationsdatei,0
+init_script=Dovecot Init-Skript Name,3,Keiner vorhanden
+pid_file=Dovecot Server PID-Datei,0

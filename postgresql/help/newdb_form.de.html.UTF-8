@@ -1,0 +1,6 @@
+<header>Datenbank erstellen</header>
+
+Dieses Formular ermöglicht es Ihnen, eine neuen PostgreSQL-Datenbank zu erstellen. Sie müssen
+einen Namen der Datenbank eingeben und können auch ein Verzeichnis, in dem die Datenbank-Dateien gespeichert werden sollen, vergeben.
+Wenn Sie fertig sind, klicken Sie auf <tt>Erstellen</tt> um die Datenbank sofort zu erstellen. <p>
+<hr>

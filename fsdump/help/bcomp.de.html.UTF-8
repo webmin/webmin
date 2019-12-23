@@ -1,0 +1,6 @@
+<header>Puffere komprimierte Daten in Blöcke?</header>
+
+Wenn aktiviert, bewirkt diese Option, dass komprimierte Daten in Blöcke gepuffert werden,
+so dass sie auf ein Bandlaufwerk effizienter geschrieben werden können. <p>
+
+<hr>

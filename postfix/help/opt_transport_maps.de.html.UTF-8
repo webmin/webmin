@@ -1,0 +1,22 @@
+<header>Transport Mapping Nachschlagetabellen</header>
+
+<center><tt>transport_maps</tt></center>
+<hr>
+
+Dieser Parameter gibt optionale Tabellen an, die eine Domain für Mapping (transport, nexthop) enthalten. Siehe <a href=transport>Transport mapping</a> für Syntax Details.
+
+<p>
+
+In Standardeinstellung ist dieses Feature deaktiviert. Bestimmen Sie die verwendeten Datenbank-Typen.
+
+<p>
+
+Mögliche sensible Werte:
+<ul>
+<li> <tt>dbm:/etc/postfix/transport</tt> 
+<li> <tt>hash:/etc/postfix/transport</tt> 
+<li> <tt>hash:/etc/postfix/transport, nis:transport</tt> 
+<li> <tt>hash:/etc/postfix/transport, netinfo:/transport</tt> 
+</ul>
+
+<hr>

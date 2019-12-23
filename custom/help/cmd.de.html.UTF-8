@@ -1,0 +1,38 @@
+Jedes Kommando hat eine Beschreibung&#44; angezeigt auf dem Button auf der Hauptseite&#44; und ein Kommando&#44; welches ausgef&uuml;hrt werden soll. Kommandos werden von <tt>sh</tt> ausgef&uuml;hrt und k&ouml;nnen daher Shell-Metacharakter wie <tt>|</tt>, <tt>&gt;</tt> und <tt>&amp;</tt> beinhalten. Ebenso k&ouml;nnen Parameter wie <tt>$foo</tt> eingebracht werden&#44; welche vom Benutzer vor der Ausf&uuml;hrung abgefragt werden.
+<p>
+Diese Parameter k&ouml;nnen in die Tabelle unten eingetragen werden. F&uuml;r jeden Parameter m&uuml;ssen folgende Angaben gemacht werden&#58;
+<dl>
+<dt><b>Name</b>
+<dd>Ein eindeutiger Code für den Parameter. Wenn der Name <tt>foo</tt> ist&#44; dann wird
+    <tt>$foo</tt> ersetzt durch diese Eingabe&#44; wenn das Kommando ausgef&uuml;hrt wird<p>
+<dt><b>Beschreibung</b>
+<dd>Diese Beschreibung erscheint neben den Parametern auf der Hauptseite<p>
+<dt><b>Typ</b>
+<dd>Diese Option kontrolliert&#44; wie der Parameter eingegeben wird. M&ouml;gliche Optionen sind:
+	<ul>
+	<li><b>Text</b><br>
+	    Reine Text-Eingabe
+	<li><b>User</b><br>
+	    Eine Benutername Ihres Systems
+	<li><b>UID</b><br>
+	    Die UID eines Benutzers Ihres Systems
+	<li><b>Gruppe</b><br>
+	    Ein Gruppenname Ihres Systems
+	<li><b>GID</b><br>
+	    Die GID einer Gruppe Ihres Systems
+	<li><b>Datei</b><br>
+	    Der volle Pfad zu einer Datei
+	<li><b>Verzeichnis</b><br>
+	    Der volle Pfad zu einem Verzeichnis
+	<li><b>Option</b><br>
+		Eine Ja&#47;Nein-Eingabe&#44; welche den Parameter auf den Wert setzt&#44; welcher im Feld daneben eingetragen ist. Aber nur dann&#44; wenn <tt>JA</tt> ausgew&auml;hlt wurde.
+	<li><b>Passwort</b><br>
+	    Eine vollkommen freie Texteingabe&#44; jedoch wird die Eingabe als &quot;&#42;&quot; angezeigt.
+	<li><b>Men&uuml;</b><br>
+		Ein Dropdown-Men&uuml; mit Optionen&#44; welche der Datei entnommen wird&#44; die im Feld daneben eingtragen wird.
+	</ul><p>
+<dt><b>Parameter zitieren?</b>
+<dd>Wenn <tt>Ja</tt>&#44; dann werden die Parameter vor der Ausführung in &quot; eingefasst. Dieses erlaubt die Ausf&uuml;hrung von Parametern mit Leerzeichen.<p>
+</dl>
+
+<hr>

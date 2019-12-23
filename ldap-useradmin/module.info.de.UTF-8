@@ -1,0 +1,2 @@
+desc_de=LDAP Nutzer und Gruppen
+longdesc_de=Benutzer und Gruppen in einer LDAP-Datenbank gespeichert, die f&#252;r Unix, Samba und Cyrus IMAP-Authentifizierung verwendet werden.

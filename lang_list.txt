@@ -1,6 +1,6 @@
 lang=en,titles=1	English US
 lang=en_GB,titles=1,fallback=en	English UK
-lang=de,titles=1	German
+lang=de,titles=1,charset=UTF-8	German
 lang=ru_SU,charset=koi8-r,titles=0	Russian
 lang=ru_RU,charset=windows-1251,titles=0	Russian
 lang=es,titles=1	Spanish
