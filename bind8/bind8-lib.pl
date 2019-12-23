@@ -3062,7 +3062,7 @@ my ($file) = @_;
 $file ||= &make_chroot($config{'named_conf'});
 my $chroot = &get_chroot();
 my $out = &backquote_command("$config{'checkconf'} -h 2>&1 </dev/null");
-my $zflag = $out =~ /\[-z\]/ ? "-z" : "";
+my $zflag = $out =~ /\[-z\]|\[-\S*z\S*\]/ ? "-z" : "";
 $out = &backquote_command(
         $config{'checkconf'}.
 	($chroot && $chroot ne "/" ? " -t ".quotemeta($chroot) : "").
