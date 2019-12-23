@@ -9,6 +9,7 @@
 
 
 require './postfix-lib.pl';
+&ReadParse();
 
 $access{'virtual'} || &error($text{'virtual_ecannot'});
 &ui_print_header(undef, $text{'virtual_title'}, "", "virtual");

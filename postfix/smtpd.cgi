@@ -9,6 +9,7 @@
 # << Here are all options seen in Postfix sample-smtpd.cf >>
 
 require './postfix-lib.pl';
+&ReadParse();
 
 $access{'smtpd'} || &error($text{'smtpd_ecannot'});
 &ui_print_header(undef, $text{'smtpd_title'}, "");

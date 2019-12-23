@@ -12,7 +12,7 @@ $no_ = $text{'opts_no'};
 
 # Form start
 print &ui_form_start("save_sasl.cgi");
-print &ui_table_start($text{'sasl_title'}, "width=100%", 4);
+print &ui_table_start($text{'sasl_title'}, "width=100%", 2);
 
 # Enabled, accept broken clients
 &option_yesno("smtpd_sasl_auth_enable");

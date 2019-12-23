@@ -893,8 +893,36 @@ sub generate_map_edit
 			      $text{'new_manual'}));
 	}
 
-    if ($#{$mappings} ne -1)
-    {
+    if ($in{'search'}) {
+        # Filter down to matching entries
+        $mappings = [ grep { $_->{'name'} =~ /\Q$in{'search'}\E/i ||
+			   $_->{'value'} =~ /\Q$in{'search'}\E/i } @$mappings ];
+        print "<b>",&text('mapping_match', &html_escape($in{'search'})),
+	      "</b><p>\n";
+        }
+
+    if ($#{$mappings} == -1) {
+        # None, so just show edit link
+        print "<b>$text{'mapping_none'}</b><p>\n";
+        print &ui_links_row(\@links);
+	}
+    elsif ($config{'max_maps'} && @{$mappings} > $config{'max_maps'} &&
+           !$in{'search'}) {
+	# If there are too many, show a search form
+	print &ui_form_start($ENV{'SCRIPT_NAME'});
+	foreach my $i (keys %in) {
+		next if ($i eq 'search');
+		print &ui_hidden($i, $in{$i});
+		}
+	print &text('mapping_toomany', scalar(@{$mappings}),
+		    $config{'max_maps'}),"<p>\n";
+	print $text{'mapping_find'}," ",
+	      &ui_textbox("search", $in{'search'}, 20)," ",
+	      &ui_submit($text{'mapping_search'}),"\n";
+	print &ui_form_end();
+	print &ui_links_row(\@links);
+	}
+    else {
         # Map description
 	print $_[1],"<p>\n";
 
@@ -963,11 +991,6 @@ sub generate_map_edit
  	# Main form end
 	print &ui_links_row(\@links);
 	print &ui_form_end([ [ "delete", $text{'mapping_delete'} ] ]);
-    }
-    else {
-        # None, so just show edit link
-        print "<b>$text{'mapping_none'}</b><p>\n";
-        print &ui_links_row(\@links);
     }
 }
 

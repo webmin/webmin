@@ -383,6 +383,10 @@ map_noname=Missing or invalid mapping name
 map_cannot=This map cannot be edited : $1
 map_unknown=Webmin does not support the map type $1
 mapping_none=No mappings of this type have been defined yet.
+mapping_toomany=There are $1 map entries, which is above the display limit of $2.
+mapping_find=Show mappings matching:
+mapping_search=Search
+mapping_match=Map file entries matching <tt>$1</tt> ..
 
 virtual_title=Virtual Domains
 virtual_ecannot=You are not allowed to edit the virtual domains mapping configuration
