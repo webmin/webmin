@@ -86,3 +86,5 @@ Added a refresh button to the mail queue.
 Added a new page, visible for Postfix 2.7 and later, for editing sender dependent transport mappings.
 ---- Changes since 1.730 ----
 Added a button to reload the Postfix configuration.
+---- Changes since 1.930 ----
+Maps with more than 100 entries by default are now shown with a search box.
