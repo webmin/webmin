@@ -39,74 +39,74 @@ close(LANG);
 foreach $m (@modules) {
 	# Translate the lang/* files
 	if (-r "$m/lang/zh_TW.Big5") {
-		system("iconv -f Big5 -t UTF-8 - <$m/lang/zh_TW.Big5 >$m/lang/zh_TW.UTF-8");
+		system("iconv -c -f Big5 -t UTF-8 - <$m/lang/zh_TW.Big5 >$m/lang/zh_TW.UTF-8");
 		}
 	if (-r "$m/lang/zh_CN") {
-		system("iconv -f GB2312 -t UTF-8 - <$m/lang/zh_CN >$m/lang/zh_CN.UTF-8");
+		system("iconv -c -f GB2312 -t UTF-8 - <$m/lang/zh_CN >$m/lang/zh_CN.UTF-8");
 		}
 	if (-r "$m/lang/ja_JP.euc") {
-		system("iconv -f EUC-JP -t UTF-8 - <$m/lang/ja_JP.euc >$m/lang/ja_JP.UTF-8");
+		system("iconv -c -f EUC-JP -t UTF-8 - <$m/lang/ja_JP.euc >$m/lang/ja_JP.UTF-8");
 		}
 	if (-r "$m/lang/ko_KR.euc") {
-		system("iconv -f EUC-KR -t UTF-8 - <$m/lang/ko_KR.euc >$m/lang/ko_KR.UTF-8");
+		system("iconv -c -f EUC-KR -t UTF-8 - <$m/lang/ko_KR.euc >$m/lang/ko_KR.UTF-8");
 		}
 	if (-r "$m/lang/ru_SU") {
-		system("iconv -f KOI8-R -t UTF-8 - <$m/lang/ru_SU >$m/lang/ru.UTF-8");
+		system("iconv -c -f KOI8-R -t UTF-8 - <$m/lang/ru_SU >$m/lang/ru.UTF-8");
 		}
 	foreach $l (@fiveone_langs) {
 		if (-r "$m/lang/$l") {
-			system("iconv -f windows-1251 -t UTF-8 - <$m/lang/$l >$m/lang/$l.UTF-8");
+			system("iconv -c -f windows-1251 -t UTF-8 - <$m/lang/$l >$m/lang/$l.UTF-8");
 			}
 		}
 	foreach $l (@fivenine_langs) {
 		if (-r "$m/lang/$l") {
-			system("iconv -f iso-8859-2 -t UTF-8 - <$m/lang/$l >$m/lang/$l.UTF-8");
+			system("iconv -c -f iso-8859-2 -t UTF-8 - <$m/lang/$l >$m/lang/$l.UTF-8");
 			}
 		}
 	foreach $l (@fifteen_langs) {
 		if (-r "$m/lang/$l") {
-			system("iconv -f iso-8859-15 -t UTF-8 - <$m/lang/$l >$m/lang/$l.UTF-8");
+			system("iconv -c -f iso-8859-15 -t UTF-8 - <$m/lang/$l >$m/lang/$l.UTF-8");
 			}
 		}
 	foreach $l (@default_langs) {
 		if (-r "$m/lang/$l") {
-			system("iconv -f iso-8859-1 -t UTF-8 - <$m/lang/$l >$m/lang/$l.UTF-8");
+			system("iconv -c -f iso-8859-1 -t UTF-8 - <$m/lang/$l >$m/lang/$l.UTF-8");
 			}
 		}
         # Translate the ulang/* files
 	if (-r "$m/ulang/zh_TW.Big5") {
-		system("iconv -f Big5 -t UTF-8 - <$m/ulang/zh_TW.Big5 >$m/ulang/zh_TW.UTF-8");
+		system("iconv -c -f Big5 -t UTF-8 - <$m/ulang/zh_TW.Big5 >$m/ulang/zh_TW.UTF-8");
 		}
 	if (-r "$m/ulang/zh_CN") {
-		system("iconv -f GB2312 -t UTF-8 - <$m/ulang/zh_CN >$m/ulang/zh_CN.UTF-8");
+		system("iconv -c -f GB2312 -t UTF-8 - <$m/ulang/zh_CN >$m/ulang/zh_CN.UTF-8");
 		}
 	if (-r "$m/ulang/ja_JP.euc") {
-		system("iconv -f EUC-JP -t UTF-8 - <$m/ulang/ja_JP.euc >$m/ulang/ja_JP.UTF-8");
+		system("iconv -c -f EUC-JP -t UTF-8 - <$m/ulang/ja_JP.euc >$m/ulang/ja_JP.UTF-8");
 		}
 	if (-r "$m/ulang/ko_KR.euc") {
-		system("iconv -f EUC-KR -t UTF-8 - <$m/ulang/ko_KR.euc >$m/ulang/ko_KR.UTF-8");
+		system("iconv -c -f EUC-KR -t UTF-8 - <$m/ulang/ko_KR.euc >$m/ulang/ko_KR.UTF-8");
 		}
 	if (-r "$m/ulang/ru_SU") {
-		system("iconv -f KOI8-R -t UTF-8 - <$m/ulang/ru_SU >$m/ulang/ru.UTF-8");
+		system("iconv -c -f KOI8-R -t UTF-8 - <$m/ulang/ru_SU >$m/ulang/ru.UTF-8");
 		}
 	foreach $l (@fiveone_langs) {
 		if (-r "$m/ulang/$l") {
-			system("iconv -f windows-1251 -t UTF-8 - <$m/ulang/$l >$m/ulang/$l.UTF-8");
+			system("iconv -c -f windows-1251 -t UTF-8 - <$m/ulang/$l >$m/ulang/$l.UTF-8");
 			}
 		}
 	foreach $l (@fivenine_langs) {
 		if (-r "$m/ulang/$l") {
-			system("iconv -f iso-8859-2 -t UTF-8 - <$m/ulang/$l >$m/ulang/$l.UTF-8");
+			system("iconv -c -f iso-8859-2 -t UTF-8 - <$m/ulang/$l >$m/ulang/$l.UTF-8");
 			}
 		}
 	foreach $l (@fifteen_langs) {
 		if (-r "$m/ulang/$l") {
-			system("iconv -f iso-8859-15 -t UTF-8 - <$m/ulang/$l >$m/ulang/$l.UTF-8");
+			system("iconv -c -f iso-8859-15 -t UTF-8 - <$m/ulang/$l >$m/ulang/$l.UTF-8");
 			}
 		}
 	foreach $l (@default_langs) {
 		if (-r "$m/ulang/$l") {
-			system("iconv -f iso-8859-1 -t UTF-8 - <$m/ulang/$l >$m/ulang/$l.UTF-8");
+			system("iconv -c -f iso-8859-1 -t UTF-8 - <$m/ulang/$l >$m/ulang/$l.UTF-8");
 			}
 		}
 	# Translate the module.info.LANG files
@@ -387,7 +387,7 @@ local $temp = "/tmp/$$.big5";
 open(TEMP, ">$temp");
 print TEMP $str;
 close(TEMP);
-local $out = `iconv -f Big5 -t UTF-8 - <$temp`;
+local $out = `iconv -c -f Big5 -t UTF-8 - <$temp`;
 unlink($temp);
 return $out;
 }
@@ -399,7 +399,7 @@ local $temp = "/tmp/$$.cn";
 open(TEMP, ">$temp");
 print TEMP $str;
 close(TEMP);
-local $out = `iconv -f GB2312 -t UTF-8 - <$temp`;
+local $out = `iconv -c -f GB2312 -t UTF-8 - <$temp`;
 unlink($temp);
 return $out;
 }
@@ -411,7 +411,7 @@ local $temp = "/tmp/$$.cn";
 open(TEMP, ">$temp");
 print TEMP $str;
 close(TEMP);
-local $out = `iconv -f EUC-JP -t UTF-8 - <$temp`;
+local $out = `iconv -c -f EUC-JP -t UTF-8 - <$temp`;
 unlink($temp);
 return $out;
 }
@@ -423,7 +423,7 @@ local $temp = "/tmp/$$.cn";
 open(TEMP, ">$temp");
 print TEMP $str;
 close(TEMP);
-local $out = `iconv -f EUC-KR -t UTF-8 - <$temp`;
+local $out = `iconv -c -f EUC-KR -t UTF-8 - <$temp`;
 unlink($temp);
 return $out;
 }
@@ -435,7 +435,7 @@ local $temp = "/tmp/$$.cn";
 open(TEMP, ">$temp");
 print TEMP $str;
 close(TEMP);
-local $out = `iconv -f KOI8-R -t UTF-8 - <$temp`;
+local $out = `iconv -c -f KOI8-R -t UTF-8 - <$temp`;
 unlink($temp);
 return $out;
 }
@@ -447,7 +447,7 @@ local $temp = "/tmp/$$.cn";
 open(TEMP, ">$temp");
 print TEMP $str;
 close(TEMP);
-local $out = `iconv -f windows-1251 -t UTF-8 - <$temp`;
+local $out = `iconv -c -f windows-1251 -t UTF-8 - <$temp`;
 unlink($temp);
 return $out;
 }
@@ -459,7 +459,7 @@ local $temp = "/tmp/$$.cn";
 open(TEMP, ">$temp");
 print TEMP $str;
 close(TEMP);
-local $out = `iconv -f iso-8859-2 -t UTF-8 - <$temp`;
+local $out = `iconv -c -f iso-8859-2 -t UTF-8 - <$temp`;
 unlink($temp);
 return $out;
 }
@@ -471,7 +471,7 @@ local $temp = "/tmp/$$.cn";
 open(TEMP, ">$temp");
 print TEMP $str;
 close(TEMP);
-local $out = `iconv -f iso-8859-15 -t UTF-8 - <$temp`;
+local $out = `iconv -c -f iso-8859-15 -t UTF-8 - <$temp`;
 unlink($temp);
 return $out;
 }
@@ -483,7 +483,7 @@ local $temp = "/tmp/$$.cn";
 open(TEMP, ">$temp");
 print TEMP $str;
 close(TEMP);
-local $out = `iconv -f iso-8859-1 -t UTF-8 - <$temp`;
+local $out = `iconv -c -f iso-8859-1 -t UTF-8 - <$temp`;
 unlink($temp);
 return $out;
 }
