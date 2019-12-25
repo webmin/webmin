@@ -230,6 +230,11 @@ foreach my $ai (split(/\t+/, $access{'php_inis'})) {
 	local ($f, $d) = split(/=/, $ai);
 	push(@rv, [ $f, $d || $f ]);
 	}
+foreach my $i (@rv) {
+	if (-d $i->[0] && -r "$i->[0]/php.ini") {
+		$i->[0] = "$i->[0]/php.ini";
+		}
+	}
 if (&foreign_installed("virtual-server")) {
 	&foreign_require("virtual-server");
 	foreach my $v (&virtual_server::list_available_php_versions()) {
