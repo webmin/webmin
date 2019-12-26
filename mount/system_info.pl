@@ -13,6 +13,7 @@ sub list_system_info
     my $html;
     my $open = 0;
     if (@disk_space) {
+        &load_theme_library();
         $html = ui_columns_start(
                                  [ucwords($text{'index_dir'}), ucwords($text{'index_type'}),
                                   ucwords($text{'edit_free'}), ucwords($text{'sysinfo_total'}),
