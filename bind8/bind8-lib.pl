@@ -2163,7 +2163,7 @@ my ($zone) = @_;
 if (!$freeze_zone_count{$zone->{'name'}}) {
 	my ($out, $ok) = &try_cmd(
 		"freeze ".quotemeta($zone->{'name'})." IN ".
-		quotemeta($zone->{'view'} || "")." 2>&1 </dev/null");
+		quotemeta($zone->{'view'} || ""));
 	if ($ok) {
 		$freeze_zone_count{$zone->{'name'}}++;
 		&register_error_handler(\&after_editing, $zone);
@@ -2178,9 +2178,8 @@ sub after_editing
 my ($zone) = @_;
 if ($freeze_zone_count{$zone->{'name'}}) {
 	$freeze_zone_count{$zone->{'name'}}--;
-	&try_cmd(
-		"thaw ".quotemeta($zone->{'name'})." IN ".
-		quotemeta($zone->{'view'} || "")." 2>&1 </dev/null");
+	&try_cmd("thaw ".quotemeta($zone->{'name'})." IN ".
+		 quotemeta($zone->{'view'} || ""));
 	}
 }
 
@@ -2193,20 +2192,17 @@ my ($dom, $view) = @_;
 my ($out, $ex);
 if ($view) {
 	# Reload a zone in a view
-	&try_cmd("freeze ".quotemeta($dom)." IN ".quotemeta($view).
-		 " 2>&1 </dev/null");
-	$out = &try_cmd("reload ".quotemeta($dom)." IN ".quotemeta($view).
-			" 2>&1 </dev/null");
+	&try_cmd("freeze ".quotemeta($dom)." IN ".quotemeta($view));
+	$out = &try_cmd("reload ".quotemeta($dom)." IN ".quotemeta($view));
 	$ex = $?;
-	&try_cmd("thaw ".quotemeta($dom)." IN ".quotemeta($view).
-		 " 2>&1 </dev/null");
+	&try_cmd("thaw ".quotemeta($dom)." IN ".quotemeta($view));
 	}
 else {
 	# Just reload one top-level zone
-	&try_cmd("freeze ".quotemeta($dom)." 2>&1 </dev/null");
-	$out = &try_cmd("reload ".quotemeta($dom)." 2>&1 </dev/null");
+	&try_cmd("freeze ".quotemeta($dom));
+	$out = &try_cmd("reload ".quotemeta($dom));
 	$ex = $?;
-	&try_cmd("thaw ".quotemeta($dom)." 2>&1 </dev/null");
+	&try_cmd("thaw ".quotemeta($dom));
 	}
 if ($out =~ /not found/i) {
 	# Zone is not known to BIND yet - do a total reload
@@ -2994,15 +2990,16 @@ return ("PTR", "NS", "CNAME", @extra_reverse);
 # Try calling rndc and ndc with the same args, to see which one works
 sub try_cmd
 {
-my $args = $_[0];
-my $rndc_args = $_[1] || $_[0];
+my ($args, $rndc_args) = @_;
+$rndc_args ||= $args;
 my $out = "";
 my $ex;
 if (&has_ndc() == 2) {
 	# Try with rndc
+	my $conf = $config{'rndc_conf'} && -r $config{'rndc_conf'} ?
+			" -c $config{'rndc_conf'}" : "";
 	$out = &backquote_logged(
-		$config{'rndc_cmd'}.
-		($config{'rndc_conf'} ? " -c $config{'rndc_conf'}" : "").
+		$config{'rndc_cmd'}.$conf.
 		" ".$rndc_args." 2>&1 </dev/null");
 	$ex = $?;
 	}
@@ -3484,7 +3481,7 @@ while($tries++ < 10) {
 	last if (!$?);
 	if ($out =~ /out\s+of\s+range/i) {
 		# Journal files are out of sync
-		&try_cmd("sync -clean 2>&1 </dev/null");
+		&try_cmd("sync -clean");
 		}
 	}
 return $out if ($tries >= 10);
