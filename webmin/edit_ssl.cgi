@@ -85,9 +85,10 @@ print ui_table_row($text{'ssl_honorcipherorder'},
 			$miniserv{'ssl_honorcipherorder'}));
 
 my $clist = $miniserv{'ssl_cipher_list'};
+my $clist_def = $miniserv{'cipher_list_def'};
 my $cmode = !$clist ? 1 :
-	 $clist eq $strong_ssl_ciphers ? 2 :
-	 $clist eq $pfs_ssl_ciphers ? 3 :
+	 ($clist_def && $clist eq $strong_ssl_ciphers) ? 2 :
+	 ($clist_def && $clist eq $pfs_ssl_ciphers) ? 3 :
 	 0;
 print ui_table_row($text{'ssl_cipher_list'},
 	ui_radio("cipher_list_def", $cmode,
