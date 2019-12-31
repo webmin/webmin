@@ -8711,16 +8711,28 @@ my $label         = sub {
                   $text{"${text_prefix}G${unit}B"},
                   $text{"${text_prefix}T${unit}B"},
                   $text{"${text_prefix}P${unit}B"});
-    return $labels[$item];
+    return $labels[$item - 1];
 	};
+my $allowed = sub {
+	my ($item) = @_;
+	return $minimal >= $unit && $minimal >= ($unit**$item);
+    };
+my $do = sub {
+	my ($bytes) = @_;
+	return abs($bytes) >= $unit;
+    };
 
-my $item = 0;
-if (abs($bytes) >= $unit) {
+my $item = 1;
+if (&$do($bytes)) {
     do {
         $bytes /= $unit;
         ++$item;
-    	} while ((abs($bytes) >= $decimal_units || $minimal >= $decimal_units) && $item < 5);
+    	} while ((&$do($bytes) || &$allowed($item)) && $item <= 5);
 	}
+ 	elsif (&$allowed($item)) {
+		$item = int(log($minimal) / log($unit)) + 1;
+		$bytes /= ($unit**$item);
+		}
 
 my $factor    = 10**2;
 my $formatted = int($bytes * $factor) / $factor;
