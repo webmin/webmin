@@ -55,12 +55,20 @@ else {
 	$cmd = "install";
 	}
 
-print "<b>",&text('yum_install', "<tt>$yum_command $enable -y $cmd $update</tt>"),"</b><p>\n";
+# Work out the command to run, which may enable some repos
+my $fullcmd = "$yum_command $enable -y $cmd $update";
+foreach my $u (@updates) {
+	my $repo = &update_system_repo($u);
+	if ($repo) {
+		$fullcmd = "$yum_command -y $cmd $repo ; $fullcmd";
+		}
+	}
+
+print "<b>",&text('yum_install', "<tt>".&html_escape($fullcmd)."</tt>"),"</b><p>\n";
 print "<pre>";
-&additional_log('exec', undef, "$yum_command $enable -y install $update");
+&additional_log('exec', undef, $fullcmd);
 $SIG{'TERM'} = 'ignore';	# Installing webmin itself may kill this script
-local $qm = join(" ", map { quotemeta($_) } @names);
-&open_execute_command(CMD, "$yum_command $enable -y $cmd $qm </dev/null", 2);
+&open_execute_command(CMD, "$fullcmd </dev/null", 2);
 while(<CMD>) {
 	s/\r|\n//g;
 	if (/^\[(update|install|deps):\s+(\S+)\s+/) {
@@ -216,6 +224,15 @@ return $name eq "apache" ? "httpd mod_.*" :
        $name eq "ldap" ? "nss-pam-ldapd pam_ldap nss_ldap" :
        $name eq "virtualmin-modules" ? "wbm-.*" :
        			  $name;
+}
+
+# update_system_repo(package)
+# Returns the extra repo package that needs to be installed first before
+# installing some package, if needed
+sub update_system_repo
+{
+local ($name) = @_;
+return $name eq "certbot" ? "epel-release" : undef;
 }
 
 # update_system_available()
