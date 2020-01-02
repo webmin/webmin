@@ -41,8 +41,10 @@ elsif ($in{'source'} == 2) {
 	$error && &inst_error($error);
 	open(FILE, $file);
 	while(<FILE>) {
-		if (/usermin-([0-9\.]+)\.tar\.gz/) {
+		if (/usermin-([0-9\.]+)-(\d+)\.tar\.gz/ ||
+		    /usermin-([0-9\.]+)\.tar\.gz/) {
 			$version = $1;
+			$release = $2;
 			last;
 			}
 		}
@@ -69,16 +71,19 @@ elsif ($in{'source'} == 2) {
 		}
 
 	if ($in{'mode'} eq 'rpm') {
+		$release ||= 1;
 		$progress_callback_url = &convert_osdn_url(
-		    "http://$webmin::osdn_host/webadmin/${product}-${version}-1.noarch.rpm");
+		    "http://$webmin::osdn_host/webadmin/${product}-${version}-${release}.noarch.rpm");
 		}
 	elsif ($in{'mode'} eq 'deb') {
+		$release = $release ? "-".$release : "";
 		$progress_callback_url = &convert_osdn_url(
-		    "http://$webmin::osdn_host/webadmin/${product}_${version}_all.deb");
+		    "http://$webmin::osdn_host/webadmin/${product}_${version}${release}_all.deb");
 		}
 	else {
+		$release = $release ? "-".$release : "";
 		$progress_callback_url = &convert_osdn_url(
-		    "http://$webmin::osdn_host/webadmin/${product}-${version}.tar.gz");
+		    "http://$webmin::osdn_host/webadmin/${product}-${version}${release}.tar.gz");
 		}
 	($host, $port, $page, $ssl) = &parse_http_url($progress_callback_url);
 	&http_download($host, $port, $page, $file, \$error,
