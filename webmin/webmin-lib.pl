@@ -2307,20 +2307,22 @@ Returns 1 and the latest version of Webmin available on www.webmin.com, or
 sub get_latest_webmin_version
 {
 my $file = &transname();
-my ($error, $version);
+my ($error, $version, $release);
 &http_download($primary_host, $primary_port, '/', $file, \$error, undef, 0,
 	       undef, undef, 5);
 return (0, $error) if ($error);
 open(FILE, $file);
 while(<FILE>) {
-	if (/webmin-([0-9\.]+)\.tar\.gz/) {
+	if (/webmin-([0-9\.]+)-(\d+)\.tar\.gz/ ||
+	    /webmin-([0-9\.]+)\.tar\.gz/) {
 		$version = $1;
+		$release = $2;
 		last;
 		}
 	}
 close(FILE);
 unlink($file);
-return $version ? (1, $version)
+return $version ? (1, $version, $release)
 		: (0, "No version number found at $primary_host");
 }
 
