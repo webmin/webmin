@@ -1123,7 +1123,10 @@ twofactor_esession=Two-factor authentication cannot be used unless session-based
 
 letsencrypt_title=Let's Encrypt Certificate Request
 letsencrypt_err=Failed to request certificate
-letsencrypt_ecmds2=The Let's Encrypt client command <tt>letsencrypt</tt> or <tt>certbot</tt> was not found on your system
+letsencrypt_ecmds=Neither the Let's Encrypt client command <tt>certbot</tt> or the <tt>python</tt> command were found on your system
+letsencrypt_epythonmod=The Python module $1 needed by the built-in Let's Encrypt client is not installed
+letsencrypt_epythonver=Failed to get the Python version : $1
+letsencrypt_epythonver2=Python version $1 or above is required, but you only have version $2.
 letsencrypt_certbot=Certbot
 letsencrypt_edroot=The Apache virtual host $1 has no document directory!
 letsencrypt_edom=Missing or invalid domain name
