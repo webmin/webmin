@@ -49,7 +49,7 @@ elsif ($in{'source'} == 1) {
 elsif ($in{'source'} == 2) {
 	# find latest version at www.webmin.com by looking at index page
 	&error_setup($text{'upgrade_err3'});
-	($ok, $version) = &get_latest_webmin_version();
+	($ok, $version, $release) = &get_latest_webmin_version();
 	$ok || &inst_error($version);
 	if (!$in{'force'}) {
 		if ($version == &get_webmin_version()) {
@@ -61,23 +61,27 @@ elsif ($in{'source'} == 2) {
 		}
 	if ($in{'mode'} eq 'rpm') {
 		# Downloading RPM
+		$release ||= 1;
 		$progress_callback_url = &convert_osdn_url(
-		    "http://$osdn_host/webadmin/webmin-$version-1.noarch.rpm");
+		    "http://$osdn_host/webadmin/webmin-${version}-${release}.noarch.rpm");
 		}
 	elsif ($in{'mode'} eq 'deb') {
 		# Downloading Debian package
+		$release = $release ? "-".$release : "";
 		$progress_callback_url = &convert_osdn_url(
-		    "http://$osdn_host/webadmin/webmin_${version}_all.deb");
+		    "http://$osdn_host/webadmin/webmin_${version}${release}_all.deb");
 		}
 	elsif ($in{'mode'} eq 'solaris-pkg') {
 		# Downloading my Solaris package
+		$release = $release ? "-".$release : "";
 		$progress_callback_url = &convert_osdn_url(
-		    "http://$osdn_host/webadmin/webmin-$version.pkg.gz");
+		    "http://$osdn_host/webadmin/webmin-${version}${release}.pkg.gz");
 		}
 	else {
 		# Downloading tar.gz file
+		$release = $release ? "-".$release : "";
 		$progress_callback_url = &convert_osdn_url(
-			"http://$osdn_host/webadmin/webmin-$version.tar.gz");
+			"http://$osdn_host/webadmin/webmin-${version}${release}.tar.gz");
 		}
 	($host, $port, $page, $ssl) = &parse_http_url($progress_callback_url);
 	$file = &transname();
