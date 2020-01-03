@@ -194,7 +194,9 @@ else {
 		$log->{'pipe'} = $in{'pipe'};
 		}
 	elsif ($in{'mode'} == 2) {
-		&to_ipaddress($in{'host'}) || &to_ip6address($in{'host'}) ||
+		my $host = $in{'host'};
+		$host =~ s/:\d+$//;
+		&to_ipaddress($host) || &to_ip6address($host) ||
 			&error(&text('save_ehost', $in{'host'}));
 		$log->{'host'} = $in{'host'};
 		}
