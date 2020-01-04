@@ -3316,7 +3316,11 @@ foreach my $a (@$attach) {
 	elsif ($a->{'filename'}) {
 		# Known filename
 		$fn = &decode_mimewords($a->{'filename'});
-		push(@files, $fn);
+		local $shortfn = $fn;
+		if (length($shortfn) > 80) {
+			$shortfn = substr($shortfn, 0, 80)."...";
+			}
+		push(@files, $shortfn);
 		push(@detach, [ $a->{'idx'}, $fn ]);
 		}
 	else {
@@ -3332,7 +3336,7 @@ foreach my $a (@$attach) {
 		}
 	$fn =~ s/ /_/g;
 	$fn =~ s/\#/_/g;
-	$fn = &html_escape($fn);
+	$fn = &urlize($fn);
 	local @a;
 	local $detachfile = $detachurl;
 	$detachfile =~ s/\?/\/$fn\?/;
