@@ -108,12 +108,12 @@ my @v = map { { 'name' => $name,
 &save_directive($conf, $name, \@v);
 }
 
-# save_directive(&config, name, &values, [after])
+# save_directive(&config, name, &values, [after], [before])
 # Given a structure containing a directive name, type, values and members
 # add, update or remove that directive in config structure and data files.
 sub save_directive
 {
-my ($conf, $name, $values, $after) = @_;
+my ($conf, $name, $values, $after, $before) = @_;
 my @oldv = &find_config($name, $conf);
 my @newv = map { my %n = %$_; \%n } @$values;
 my $lref = &read_file_lines($config{'squid_conf'});
@@ -122,13 +122,25 @@ for(my $i=0; $i<@oldv || $i<@newv; $i++) {
 	if ($i >= @oldv) {
 		# a new directive is being added.. 
 		my $nl = &directive_line($newv[$i]);
-		my @after = ref($after) ? ( $after ) :
-			    $after ? &find_config($after, $conf) : ( );
-		my $after = @after ? $after[$#after] : undef;
+		my @afterdirs = ref($after) ? ( $after ) :
+			        $after ? &find_config($after, $conf) : ( );
+		my $afterdir = @afterdirs ? $afterdirs[$#afterdirs] : undef;
+		my @beforedirs = ref($before) ? ( $before ) :
+			        $before ? &find_config($before, $conf) : ( );
+		my $beforedir = @beforedirs ? $beforedirs[0] : undef;
 		my @comment = &find_config($_[1], $_[0], 3);
 		my $comment = @comment ? $comment[$#comment] : undef;
-		if ($change &&
-		    (!$after || $after->{'line'} < $change->{'line'})) {
+		if ($beforedir) {
+			# put it before the specified type of directive
+			my $blnum = $beforedir->{'line'};
+			&renumber($conf, $beforedir->{'line'}-1, 1);
+			$newv[$i]->{'line'} = $blnum;
+			splice(@$lref, $newv[$i]->{'line'}, 0, $nl);
+			splice(@$conf, &indexof($beforedir, @$conf),
+			       0, $newv[$i]);
+			}
+		elsif ($change &&
+		      (!$afterdir || $afterdir->{'line'} < $change->{'line'})) {
 			# put it after any directives of the same type
 			$newv[$i]->{'line'} = $change->{'line'}+1;
 			splice(@$lref, $newv[$i]->{'line'}, 0, $nl);
