@@ -37,7 +37,7 @@ if (!$python || !&has_command("openssl")) {
         }
 my $out = &backquote_command("$python -c 'import argparse' 2>&1");
 if ($?) {
-        return &text('letsencrypt_epythonmod', 'argparse');
+        return &text('letsencrypt_epythonmod', '<tt>argparse</tt>');
         }
 my $ver = &backquote_command("$python --version 2>&1");
 if ($ver !~ /Python\s+([0-9\.]+)/) {
