@@ -1129,7 +1129,7 @@ return $config{'host'} eq '' || $config{'host'} eq 'localhost' ||
 sub backup_database
 {
 local ($db, $path, $format, $tables, $user) = @_;
-local $tablesarg = join(" ", map { " -t ".quotemeta($_) } @$tables);
+local $tablesarg = join(" ", map { " -t ".quotemeta('"'.$_.'"') } @$tables);
 local $cmd = &quote_path($config{'dump_cmd'}).
 	     (!$postgres_login ? "" :
 	      &supports_pgpass() ? " -U $postgres_login" : " -u").
@@ -1160,7 +1160,7 @@ return undef;
 sub restore_database
 {
 local ($db, $path, $only, $clean, $tables) = @_;
-local $tablesarg = join(" ", map { " -t ".quotemeta($_) } @$tables);
+local $tablesarg = join(" ", map { " -t ".quotemeta('"'.$_.'"') } @$tables);
 local $cmd = &quote_path($config{'rstr_cmd'}).
 	     (!$postgres_login ? "" :
 	      &supports_pgpass() ? " -U $postgres_login" : " -u").
