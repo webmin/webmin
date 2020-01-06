@@ -67,7 +67,7 @@ if (defined($in{'sclass'})) {
 # Save HTTP headers
 @hl = ( );
 foreach my $l (split(/\r?\n/, $in{'headers'})) {
-	$l =~ /^\S+:\s+\S+$/ || &error($text{'advanced_eheader'});
+	$l =~ /^\S+:\s+\S.*$/ || &error($text{'advanced_eheader'});
 	push(@hl, $l);
 	}
 $gconfig{'extra_headers'} = join("\t", @hl);
