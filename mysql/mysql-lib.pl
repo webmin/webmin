@@ -801,7 +801,7 @@ sub get_remote_mysql_variant
 my $rv = &get_remote_mysql_version();
 return ($rv) if ($rv <= 0);
 my $variant = "mysql";
-if ($rv =~ /^([0-9\.]+)\-(.*)/) {
+if ($rv =~ /^([0-9\.]+)\-(.*)/ && $rv !~ /ubuntu/i) {
 	$rv = $1;
 	$variant = $2;
 	if ($variant =~ /mariadb/i) {
