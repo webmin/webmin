@@ -8731,7 +8731,7 @@ if (&$do($bytes)) {
 	}
  	elsif (&$allowed($item)) {
 		$item = int(log($minimal) / log($unit)) + 1;
-		$bytes = $item == 2 ? $bytes / ($unit // $item) : 0;
+		$bytes = $item == 2 ? $bytes / (defined($unit) ? $unit : $item) : 0;
 		}
 
 my $factor    = 10**2;
