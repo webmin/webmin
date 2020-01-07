@@ -1138,7 +1138,7 @@ if (($realos{'os_version'} ne $gconfig{'os_version'} ||
 	my ($minor) = split(/\./, $gconfig{'os_version'});
 	if ($realos{'os_type'} eq $gconfig{'os_type'} &&
 	    $realminor == $minor) {
-		# Only the minor version number changed - no need to apply
+		# Only the minor version number changed - just apply silently
 		&apply_new_os_version(\%realos);
 		}
 	else {
