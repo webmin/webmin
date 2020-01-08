@@ -159,3 +159,4 @@ restart_err=Fehlgeschlagen Server neu zu starten
 start_err=Fehlgeschlagen Server zu starten
 stop_err=Fehlgeschlagen Server zu stoppen
 syslog_logtarget=Fail2Ban Aktion Log
+index_ver=Version $1

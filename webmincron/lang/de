@@ -16,3 +16,5 @@ edit_special_monthly=Monatlich (am 1.)
 edit_special_weekly=W&#246;chentlich (am Sonntag)
 edit_special_yearly=J&#228;hrlich (am 1. Januar)
 edit_weekdays=W&#246;chentlich
+log_success=Successfully ran <tt>$2</tt> in <tt>$1</tt>
+log_failure=Failed to run <tt>$2</tt> in <tt>$1</tt> : $3
