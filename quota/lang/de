@@ -319,5 +319,3 @@ umass_title=Aktualisiere Benutzer-Kontingente
 umass_unlimited=Setze auf unbegrenzt
 ggracef_info=Each filesystem has a grace time for block and file quotas. The grace time determines how long a group can remain over the soft limit before no more files are allowed to be created.
 ugracef_info=Each filesystem has a grace time for block and file quotas. The grace time determines how long a user can remain over the soft limit before no more files are allowed to be created.
-log_grace_u=Changed user grace times on $1
-log_grace_g=Changed group grace times on $1

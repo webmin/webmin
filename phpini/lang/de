@@ -159,6 +159,3 @@ safe_einclude=Missing or invalid allowed directory for included files
 errors_source=Ignore source when checking for repeats?
 misc_flush=Flush output after every write?
 misc_include=Allow opening of remote Includes?
-log_safe=Changed safe mode options in $1
-log_limits=Changed resource limits in $1
-log_errors=Changed error logging in $1

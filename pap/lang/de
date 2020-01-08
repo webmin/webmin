@@ -127,10 +127,6 @@ secrets_title=PPP-Konten
 sync_title=Benutzer-Synchronisation
 index_none=You do not have access to any of the features of this module.
 index_delete=Delete Selected Accounts
-log_dialin_create=Created caller ID number $1
-log_dialin_modify=Modified caller ID number $1
-log_dialin_delete=Delete caller ID number $1
-log_dialin_move=Moved caller ID number $1
 options_epppd=The PPP server $1 installed on your system does not appear to be the Linux PPP daemon supported by this module.
 options_elogin=The Mgetty login options file $1 was not found on your system. Maybe Mgetty is not installed, or your <a href='$2'>module configuration</a> is incorrect.
 options_desc=The options below will apply to all PPP connections received by your server, on all serial ports. They will override any port-specific options set from the Serial Port Configuration page.

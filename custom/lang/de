@@ -164,4 +164,4 @@ view_efile=Schreiben von $1 fehlgeschlagen : $2
 view_err=Fehler beim Bearbeiten der Datei
 view_header=Editiere Datei $1
 view_title=Datei bearbeiten
-run_failed=Command failed with exit status $1
+run_failed=Befehl mit Fehercode $1 fehlgeschlagen

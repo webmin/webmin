@@ -36,8 +36,8 @@ while read message
 do
 	# skip empty lines
 	[ "$message" == "" ] && continue
-	# skip comments and __noref
-	if [[ "$message" == "#"* ]] || [[ "$message" == "__norefs"* ]]; then
+	# skip comments, __noref and log_* messsages
+	if [[ "$message" == "#"* ]] || [[ "$message" == "__norefs"* ]] || [[ "$message" == "log_"* ]]; then
 		echo "skip $message" 1>&2
 		continue
 	fi

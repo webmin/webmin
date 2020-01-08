@@ -101,6 +101,3 @@ forward_dstaddr=Destination address
 forward_dstlocal=This system
 forward_edstaddr=Invalid IPv4 destination address
 forward_eneither=Either a destination address or port or both must be entered
-log_create_forward=Added forward $1
-log_delete_forward=Removed forward $1
-log_update_forward=Updated forward $1

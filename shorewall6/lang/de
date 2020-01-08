@@ -438,6 +438,3 @@ opts_blacklist=Reject packets on blacklist
 opts_detectnets=Taylor zone to include only routed hosts
 opts_upnp=Remap packets via UPNP
 opts_ignore=Ignore up/down events
-log_modify_table=Modified entry in the $1 table
-log_up_table=Moved up entry in the $1 table
-log_down_table=Moved down entry in the $1 table
