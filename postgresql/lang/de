@@ -592,3 +592,7 @@ view_title=Tabellendaten
 view_title1=Erstelle Ansicht
 view_title2=Editiere Ansicht
 view_warn=Warnung - Daten in <tt>text</tt> oder <tt>bytea</tt> Felder zu laden und Ihren Inhalt zu betrachten wird nicht funktionieren solange nicht die Perlmodule $1 und $2 installiert sind.
+host_identarg0=Keine Usermap benutzen
+host_identarg2=Nutze Usermap Datei
+grant_delete=Zuteilung zur&#252;cksetzen
+dgrant_err=Zur&#252;cksetzen der Zuteilungen fehlgeschlagen
