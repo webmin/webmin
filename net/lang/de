@@ -316,3 +316,4 @@ vlan_add=VLAN getaggte Schnittstellen hinzuf&#252;gen
 vlan_create=Erstelle VLAN Schnittstelle
 vlan_id=VLAN ID
 vlan_physical=Physikalisches Ger&#228;t
+hosts_active=Aktiviert?
