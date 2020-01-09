@@ -1,0 +1,3 @@
+hosts_allow=TCP-Wrappers Erlaubtdatei,0
+hosts_deny=TCP-Wrappers Verbotdatei,0
+inetd_services=Hole m&#246;gliche Dienste von inetd?,1,1-Ja,0-Nein

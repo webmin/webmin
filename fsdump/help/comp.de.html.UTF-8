@@ -1,0 +1,5 @@
+<header>Daten komprimieren?</header>
+
+Wenn diese Option aktiviert ist, werden die Daten mit dem bzip Algorithmus komprimiert, bevor sie auf das Sicherungsmedium geschrieben werden. <p>
+
+<hr>

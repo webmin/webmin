@@ -1,0 +1,6 @@
+<header>Cluster KOMMANDOZEILE</header>
+
+Dieses Modul ist dem Modul <b>Kommandozeile</b> nachempfunden, erlaubt jedoch das Ausführen von einzelnen Befehlen oder Befehlsketten auf mehreren Servern gleichzeitig. Auf der Hauptseite geben Sie einen üblichen Shell-Befehl ein (oder wählen einen alten aus der History aus) und suchen sich dann einen oder mehrere Server oder definierte Gruppen, um Ihren Befehl zur Ausführung kommen zu lassen. Beachten Sie jedoch, dass Sie hier nur Server zur Auswahl haben, wenn diese mit Benutzernamen und Passwort im Modul <b>Webmin-Server-Index</b> hinterlegt wurden.
+<p>
+<hr>
+

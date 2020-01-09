@@ -1,0 +1,7 @@
+<header>Einen neuen Datei-Editor erstellen</header>
+
+Diese Seite erlaubt es, einen neuen Datei-Editor zu definieren. Einmal gespeichert, wird ein Button auf der Hauptseite angezeigt.
+
+<include editor>
+
+<!-- zuletzt geaendert: 07.08.2003 - Martin Mewes - webmin@webmin.mamemu.de -->

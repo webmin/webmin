@@ -1,0 +1,14 @@
+<header>Handbücher ('manpages')</header>
+
+Dieses Modul erlaubt Ihnen, die System-Handbücher so zu durchsuchen, als ob Sie den <tt>man</tt>-Befehl benutzen.<p>
+Geben Sie den Befehl oder die Funktion ein wonach Sie suchen, wählen Sie, ob Sie
+nach einer exakten Übereinstimmung für den Befehlsnamen oder ein Wort in der Beschreibung suchen,
+wählen Sie den Handbuchbereich für die Suche, und drücken Sie die <tt>Suchen</tt>-Schaltfläche. <p>
+
+Wenn Sie nach einer exakten Übereinstimmung suchen, wird die Handbuchseite für den Befehl oder die Funktion
+angezeigt, wenn sie gefunden wird. <p>
+Wenn sie nach einer Beschreibung suchen, wird
+Ihnen eine Liste der übereinstimmenden Handbücher angezeigt, damit Sie die anzuzeigenden
+Befehle/Funktionen auswählen können. <p>
+
+<hr>

@@ -1,0 +1,14 @@
+line2=Systemkonfiguration,11
+man_cmd=Kommando zum Anzeigen der Hilfeseite (man page),0
+man_cmd_sect=Kommando zum Anzeigen der Hilfeseite einer Sektion,0
+search_cmd=Kommando zum Durchsuchen der Seiten,0
+man_dir=Verzeichnis der Hilfeseiten (MANPATH),9,50,3,:
+list_cmd=Kommando zum Anzeigen des Datei&#45;Pfades zu den Anleitungen,0
+list_cmd_sect=Kommando zum Anzeigen des Datei&#45;Pfades zu den Anleitungen einer Sektion,0
+man2html_path=Pfad zu 'man2html',3,Kein 'man2html' benutzen
+doc_dir=Paket&#45;Dokumentation Verzeichnis,3,Kein
+howto_dir=HOWTO&#45;Dokument Verzeichnis,3,Kein
+kernel_dir=Kernel&#45;Dokumentation Verzeichnis,3,Kein
+kde_dir=KDE&#45;Dokumentation Verzeichnis,3,Kein
+custom_dir=Allgemeines Dokumentations&#45;Verzeichnis,3,Kein
+custom_desc=Allgemeiner Dokumentations&#45;Name,3,Standard

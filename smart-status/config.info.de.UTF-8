@@ -1,0 +1,5 @@
+mode=Anzeigemodus,1,1-Ein Laufwerk,0-Alle Laufwerke
+attribs=Zeige alle Attribute,1,1-Ja,0-Nein
+smartctl=Voller Pfad zum <tt>smartctl</tt>&#45;Befehl,0
+ata=Erzwinge ATA-Abfrage-Modus?,1,1-Ja,0-Nein
+extra=Zus&#228;tzliche Kommandozeilen-Parameter zu smartctl,3,Keine

@@ -1,0 +1,14 @@
+<header>Max. Anzahl paralleler Zustellungen an die gleiche Destination. </header>
+
+<center><tt>smtp_destination_concurrency_limit</tt></center>
+<hr>
+
+Dieser Parameter limitiert die Anzahl paralleler Zustellungen an die gleiche Destination via 
+smtp delivery agent.
+
+<p>
+
+Standardeinstellung fürs Limit ist der <a href=opt_default_destination_concurrency_limit>
+<tt>default_destination_concurrency_limit</tt></a> Parameter. Es ist jedoch sicherer, den gleichzeitigen Zugriff auf 10 zu limitieren. 
+
+<hr>

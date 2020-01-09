@@ -1,0 +1,6 @@
+<header>Paketgröße limitieren?</header>
+
+Mit dieser Option können Sie die maximale Größe der Datenpakete einstellen, welche über Ihre ADSL-Verbindung geschickt werden. Wenn Sie hinter dem Modem ein LAN betreiben, dann sollte hier '1412' eingestellt werden, um Probleme mit großen Ethernetpaketen zu vermeiden.<p>
+
+<hr>
+

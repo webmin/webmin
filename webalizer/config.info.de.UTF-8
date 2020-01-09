@@ -1,0 +1,8 @@
+line1=Konfigurierbare Optionen,11
+auto=Automatisch nach Logfiles suchen von,2,apache-Apache,squid-Squid,proftpd-ProFTPd,wuftpd-WUFTPd
+naked=Webmin-Header und Footer im Webalizer-Report einf&uuml;gen?,1,0-Ja,1-Nein
+skip_old=Beziehe alte rotierende Protokolldateien ein?,1,0-Ja,1-Nein
+line2=Systemkonfiguration,11
+webalizer=Pfad zu Webalizer,0
+webalizer_conf=Pfad zur Webalizer&#45;Konfigurationsdatei,0
+alt_conf=Pfad zur Beispiel&#45;Webalizer&#45;Konfigurationsdatei,3,Keine

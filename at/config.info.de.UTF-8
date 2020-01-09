@@ -1,0 +1,5 @@
+line2=Systemkonfiguration,11
+at_style=AT-Systemtyp,1,linux-Linux,solaris-Solaris,freebsd-FreeBSD,irix-Irix,macos-MacOS X,openserver-OpenServer
+at_dir=AT-Auftragsverzeichnis,0
+allow_file=Datei f&#252;r die Benutzer&#44; die AT nutzen d&#252;rfen,3, Keine
+deny_file=Datei f&#252;r die Benutzer&#44; die AT nicht nutzen d&#252;rfen,3, Keine

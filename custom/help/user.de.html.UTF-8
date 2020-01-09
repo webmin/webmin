@@ -1,0 +1,5 @@
+<header>Als Benutzer ausführen</header>
+
+Hier geben Sie den Unix-Benutzernamen an, mit dessen Rechten das Kommando ausgeführt werden soll. Sie sollten grundsätzlich Kommandos mit dem niedrigstmöglichen Privilegien ausführen. Bitte benutzen Sie <tt>root</tt> nur dann, wenn es absolut erforderlich ist, vor allem dann, wenn andere WebMin-Benutzer diesen Befehl ausführen sollen.
+<hr>
+<!-- zuletzt geaendert: 07.08.2003 - Martin Mewes - webmin@webmin.mamemu.de -->

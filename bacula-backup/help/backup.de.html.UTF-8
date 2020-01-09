@@ -1,0 +1,5 @@
+<header>Führe Backup-Job aus</ header>
+
+Dieses Formular kann verwendet werden, um die sofortige Ausführung eines Bacula Backup zu starten. Um einen Job ausführen zu können, müssen Sie diesen nur aus der Liste auswählen, und wählen Sie optional, ob Webmin den endgültigen Status abwarten soll um diesen angezeigen. <p>
+
+<footer>

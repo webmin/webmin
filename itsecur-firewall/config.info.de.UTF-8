@@ -1,0 +1,15 @@
+line1=Konfigurierbare Optionen,11
+fw_any=Bezieht Firewall in <b>Jedem</b> Ziel ein?,1,1-Ja,0-Nein
+frags=Fragmentierte Pakete blockieren?,1,1-Ja,0-Nein
+auto_dir=Automatisches Backup-Verzeichnis,3,Keins
+rusure=Frage nach einer Best&#228;tigung vor dem Speichern der Regel?,1,1-Ja,0-Nein
+show_desc=Zeige Regel Beschreibungen,1,1-Ja,0-Nein
+perpage=Anzahl Logs pro Seite,0,5
+refresh=Sekunden zwischen Aktualisierung der Log-Ansicht,3,Niemals
+all_files=Rotierende Versionen von Log-Datei,1,1-Ja,0-Nein
+from=Von: Adresse f&#252;r E-Mails,3,Automatisch (webmin@hostname)
+open_log=&#214;ffnet Logs im neuen Fenster?,1,1-Ja,0-Nein
+line2=Systemkonfiguration,11
+type=Firewalltyp,1,iptables-IPtables,ipf-IPF
+log=Firewall Log-Datei,3,Automatisch basierend auf dem Firewalltyp
+authlog=Sicherheits-Log-Datei,3,Automatisch basierend auf OS

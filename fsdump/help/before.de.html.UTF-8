@@ -1,0 +1,7 @@
+<header>Kommando vor der Sicherung ausführen</header>
+
+Jeder Shell-Befehl, den Sie in diesem Bereich eintragen, wird als Root ausgeführt werden, nur
+nachdem die Sicherung abgeschlossen ist, entweder manuell oder nach Plan. Die Ausgabe des
+Befehls wird in dem dump Bericht aufgenommen werden. <p>
+
+<hr>

@@ -1,0 +1,2 @@
+desc_de=iSCSI-Server 
+longdesc_de=Teile Plattengeräte über das Netzwerk mit dem iSCSI-Protokoll mit dem netbsd-iscsi Paket.

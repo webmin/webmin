@@ -1,0 +1,4 @@
+config_dir=Fail2Ban Konfigurationsverzeichnis,0
+client_cmd=Voller Pfad f&#252;r fail2ban-client Befehl,0
+server_cmd=Voller Pfad zu fail2ban-server Befehl,0
+init_script=Boot Aktionsname,3,Keine konfiguriert

@@ -1,0 +1,8 @@
+line2=System Konfiguration,11
+jabber_config=Jabber XML-Konfigurationsdatei,0
+jabber_dir=Jabber Basis-Verzeichnis,0
+jabber_daemon=Pfad zum Jabber Server-Programm,3,Unter Basis&#045Verzeichnis
+jabber_spool=Jabber Hosts-Verzeichnis,3,Unter Basis&#045Verzeichnis
+jabber_lib=Jabber freigegebenes Bibliotheken-Verzeichnis,3,Kein
+start_cmd=Befehl zum Starten von Jabber,0
+stop_cmd=Befehl zum Stoppen von Jabber,3,Beende Prozess

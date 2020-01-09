@@ -1,0 +1,5 @@
+standard_url=URL der Standardmodul&#45;Liste,3,Von www.webmin.com
+third_url=URL der Drittanbieter&#45;Webmin&#45;Modulliste,3,Von www.webmin.com
+cron_mode=Zeige Aktualisierungszeiten als,1,0-Einfache Anzeige,1-Cron&#45;Zeit&#45;Auswahl
+warn_days=Tage vor Ablauf des Passworts zu warnen an Benutzer,0,5
+letsencrypt_cmd=Voller Pfad zum Let's Encrypt Client&#45;Befehl,0

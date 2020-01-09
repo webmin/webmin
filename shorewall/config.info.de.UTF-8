@@ -1,0 +1,9 @@
+config_dir=Shorewall Konfigurationsverzeichnis,0
+shorewall=Pfad zum Shorewall Befehl,0
+actions=Standard Aktionsdateien,9,40,5,\t
+macros=Makro Dateiverzeichnis,0
+before_apply_cmd=Befehl&#44; bevor Konfiguration ausgef&#252;hrt wird,3,None
+after_apply_cmd=Befehl&#44; der nach der Anwendung der Konfiguration ausgef&#252;hrt wird,3,Keiner
+before_refresh_cmd=Befehl&#44; vordem Blackliste aktualisiert wird,3,None
+after_refresh_cmd=Befehl&#44; nachdem Blackliste aktualisiert wird,3,None
+display_zone_descriptions=Zeige Zone Beschreibungen in Regeldatei?,1,0-Nein,1-Ja

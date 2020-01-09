@@ -1,0 +1,10 @@
+auth_ldap=LDAP-Client-Konfigurationsdateien,8
+pam_ldap=PAM-LDAP-Konfigurationsdatei,3,Gleiche wie LDAP-Client-Datei
+secret=Root LDAP-Client-Passwort-Dateien,9,50,2,\t
+init_name=Lokaler LDAP D&#228;mon init Skript&#45;Name,0
+line0=LDAP-Browser und Validierung Einstellungen,11
+ldap_hosts=LDAP-Server-Hosts,3,Von Konfigurationsdatei,50
+ldap_port=LDAP-Server-Port,3,Von Konfigurationsdatei,5
+ldap_tls=Verwendet SSL-Verbindung,1,-Von Konfigurationsdatei,1-Ja,2-Ja mit TLS,0-Nein
+ldap_user=Einloggen mit Benutzername,3,Von Konfigurationsdatei
+ldap_pass=Anmeldung mit Passwort,3,Von Konfigurationsdatei

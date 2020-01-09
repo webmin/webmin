@@ -1,0 +1,5 @@
+<header>Verfügbar in UserMin?</header>
+
+Mit dieser Option können Sie bestimmen, ob dieses Kommando auch in UserMin zur Verfügung stehen soll. Seien Sie dabei jedoch vorsichtig, weil es dort von <tt>jedem</tt> Benutzer ausgeführt werden kann.
+<hr>
+<!-- zuletzt geaendert: 07.08.2003 - Martin Mewes - webmin@webmin.mamemu.de -->

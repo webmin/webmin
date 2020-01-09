@@ -1,0 +1,8 @@
+file=FreeSWAN IPsec Konfigurationsdatei,0
+secrets=IPsec-Secrets-Datei,0
+ipsec=Voller Pfad zum ipsec Befehl,0
+policies_dir=Policy-Dateien Verzeichnis,0
+start_cmd=Befehl um den IPsec-Server zu starten,0
+stop_cmd=Befehl um den IPsec-Server zu stoppen,0
+restart_cmd=Befehl um den IPsec-Server neu zu starten,3,Nur stoppen und starten
+logfile=Datei zu dem IPsec Nachrichten geloggt werden,0

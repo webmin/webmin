@@ -1,0 +1,5 @@
+hosts_file=Datei in der Hosts und Adressen aufgelistet werden,0
+ipnodes_file=Datei-Auflistung IPv6-Hosts und Adressen,0
+def_netmask=Standard Netzmaske,0
+def_broadcast=Standard Broadcast-Adresse,0
+def_mtu=Standard MTU,0

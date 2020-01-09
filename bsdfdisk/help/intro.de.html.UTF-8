@@ -1,0 +1,26 @@
+<header>Partitionen auf lokalen Festplatten</header>
+
+Dieses Modul ermöglicht es Ihnen, Slices und Partitionen auf Festplatten, die in Ihrem
+FreeBSD-System sich befindet, zu erstellen. Es gibt drei Ebenen von Objekten, die auf einem FreeBSD-System verwaltet werden können, im Vergleich zu nur zwei auf Linux: <p>
+
+<dl>
+<dt> <b>Festplatte</b>
+<dd>Eine Festplatte ist ein physisches Laufwerk an das System angeschlossen, entweder intern oder über
+     einen externen Bus wie USB. Festplatten können entweder SCSI oder IDE sein. <p>
+
+<dt> <b> Slices </ b>
+<dd> Ein Slice ist ein Teil einer Festplatte, deren "Extents" in der Laufwerk-Partitionstabelle gespeichert
+     wird. Auf einem Linux- oder Windows-System werden diese "Partitionen" genannt. <p>
+
+<dt> <b>Partition</b>
+<dd> Ein Slice kann bis zu vier Partitionen, von denen jeder entweder
+     ein Dateisystem oder für den virtuellen Speicher verwendet werden kann. <p>
+</dl>
+
+Nach dem Hinzufügen einer neuen Festplatte zu einem System, müssen Sie zunächst einen slice
+es (oder ändern Sie den vorhandenen Slice-Typ in BSD/386), und fügen Sie eine Partition
+des Typs 4.2BSD innerhalb dieser Slice. <p>
+
+Die Größe und Bereiche der Platten, Slices und Partitionen sind alle in Blöcken gemessen und sind in der Regel 512 Bytes groß. <p>
+
+<footer>

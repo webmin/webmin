@@ -1,0 +1,4 @@
+link=URL zum verlinken auf,0
+desc=Beschreibung f&#252;r URL,3,Automatisch
+immediate=Gehe sofort zur URL,1,1-Ja,0-Nein
+window=&#214;ffne im separatem Fenster?,1,1-Ja,0-Nein

@@ -1,0 +1,4 @@
+<header>Dateieigentümer</header>
+
+Es gibt hier zwei Möglichkeiten:; Sie können zum einen den Dateieigentümer so lassen, wie er ist oder zum anderen einen Benutzer und eine Gruppe angeben, die dann Dateieigentümer werden. Dies ist sehr nützlich bei neu anzulegenden Dateien. Wenn eine Datei nicht existiert und diese Option nicht gesetzt ist, so wird die Datei dem Benutzer und der Gruppe gehören, unter dem die Webmin-Software auf Ihrem System läuft:; Wahrscheinlich <tt>root</tt> und <tt>root</tt>.
+<hr>

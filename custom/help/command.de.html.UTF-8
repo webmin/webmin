@@ -1,0 +1,5 @@
+<header>Befehl</header>
+
+Ein Kommando, welches ausgeführt werden soll. Kommandos werden von <tt>sh</tt> ausgeführt und können daher Shell-Metacharakter wie <tt>|</tt>, <tt>></tt> und <tt>&</tt> beinhalten. <p>
+
+<hr>

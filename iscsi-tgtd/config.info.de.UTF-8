@@ -1,0 +1,9 @@
+config_file=iSCSI&#45;TGTD&#45;Konfigurationsdatei,0
+add_file=F&#252;ge neue Ziele zu,3,Prim&#228;re Konfigurationsdatei
+tgtd=Voller Pfad zum tgtd&#45;Befehl,0
+tgtadm=Voller Pfad zum tgtadm&#45;Befehl,0
+tgtadmin=Voller Pfad zum tgt&#45;admin&#45;Befehl,0
+init_name=Boot&#45;Skript&#45;Name,0
+start_cmd=Befehl zum Starten von iSCSI TGTd,3,Start von Init-Skript
+stop_cmd=Befehl zum Stoppen von iSCSI TGTd,3,Stoppen von Init-Skript
+restart_cmd=Befehl zum Neustarten von iSCSI TGTd,3,Init-Skript neu starten

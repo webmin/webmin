@@ -1,0 +1,10 @@
+port=Port zum Verbinden,3,Standard
+sizemode=Applet&#45;Gr&#246;&#223;e,1,0-80x24 Zeichen (Standardschriftart),1-Maximum,2-Benutzerdefinierte Gr&#246;&#223;e
+size=Benutzerdefinierte Breite x H&#246;he,0
+fontsize=Schriftgr&#246;&#223;e in Punkten,3,Standard
+detach=Separater Fenster-Modus,1,1-Ja,0-Nein
+no_test=Teste SSH-Server?,1,0-Ja,1-Nein
+foreground=Vordergrundfarbe f&#252;r Text (R&#44;G&#44;B),3,Standard
+background=Texthintergrundfarbe (R&#44;G&#44;B),3,Standard
+term=Terminaltyp,3,Standard
+encoding=Text-Codierung,3,Standard

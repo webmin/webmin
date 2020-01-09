@@ -1,0 +1,20 @@
+<header>DNS-Domains für Nachschlage-Blacklists</header>
+
+<center><tt>maps_rbl_domains</tt></center>
+<hr>
+
+Dieser Parameter gibt eine optionale Liste mit DNS-Domains an, die Netzwerk-Adressen von Hosts, die auf der Blacklist verzeichnet sind, publizieren. 
+
+
+<p>
+
+In Standardeinstellung sind die RBL Nachschlage-Blacklists deaktiviert. Siehe
+<a href=opt_smtpd_client_restrictions><tt>smtpd_client_restrictions</tt></a>
+Parameter.
+
+<p>
+
+Die Blackhole-Liste in Echtzeit funktioniert wie folgt: Netzwerk-Adresse des Clienten stornieren und Dienstleistung ablehnen, falls unter einer der folgender Domains aufgelistet. 
+
+
+<hr>

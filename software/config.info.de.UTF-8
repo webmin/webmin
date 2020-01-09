@@ -1,0 +1,3 @@
+package_system=System Paket&#45;Management,1,rpm-RPM,pkgadd-Solaris,hpux-HPUX,freebsd-FreeBSD,slackware-Slackware,debian-Debian,aix-AIX,emerge-Gentoo,cygwin-Cygwin,msi-Microsoft Installer,pkgsrc-PKGsrc,ipkg-Synology IOKG
+update_system=Paket&#45;Update&#45;System,1,-Automatisch erkennen,apt-APT,yum-YUM,rhn-Redhat Network,csw-Blastwave CSW,urpmi-URPMI,emerge-Emerge,ports-FreeBSD Ports,pkg-FreeBSD pkgng,pkgsrc-PKGsrc,ipkg-Synology IPKG Update,*-Kein
+apt_mode=Befehl&#44; um APTs zu installieren,1,0-apt&#45;get,1-aptitude

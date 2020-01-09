@@ -1,0 +1,9 @@
+line2=Systemkonfiguration,11
+pppd=Pfad zu pppd Server,0
+pap_file=PAP Passwort-Datei,0
+encrypt_pass=Verschl&uuml;ssele Passw&#246;rter in Passwort-Datei,1,1-Ja,0-Nein
+ppp_options=PPP Optionsdatei,0
+mgetty=Pfad zum mgetty Programm,0
+login_config=Mgetty login Konfigurationsdatei,0
+dialin_config=Mgetty dialin Konfigurationsdatei,0
+serials=Muster der seriellen Ports,0

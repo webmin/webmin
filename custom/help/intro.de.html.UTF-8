@@ -1,0 +1,12 @@
+<header>Eigene Befehle</header>
+
+Dieses Modul erlaubt es Ihnen, Befehle, die sie regelmäßig ausführen, einzurichten und mit sogar mit Parametern auszuführen. Dem Bestreben nach, daß Administration eigentlich Arbeitsvermeidung bedeutet, kann dies vor allem dann nützlich sein, wenn man diese Kommandos erfahrenen Usern zur Verfügung stellt.
+<p>
+Auf der Hauptseite wird für jeden Befehl ein Button dargestellt und darunter haben Sie einen Link, um bereits eingerichtete Befehle zu bearbeiten. Sie können jedes Kommando durch einen Klick auf den Button ganz einfach ausführen und es wird der komplette Auswurf des Kommandos auf der Folgeseite dargestellt.
+<p>
+Um einen existierenden Befehl zu bearbeiten, klicken Sie einfach auf <tt>Editor bearbeiten</tt> oder <tt>Befehl bearbeiten</tt> unter den entsprechenden Buttons. Um einen neuen Befehl zu erstellen, klicken Sie auf <tt>Einen neuen eigenen Befehl erstellen</tt> oder <tt>Einen neuen Datei-Editor erstellen</tt>. Bitte beachten Sie, daß diese Befehle nicht allen Webmin-Nutzern zur Verfügung stehen.
+<p>
+
+<include fintro>
+
+<hr>

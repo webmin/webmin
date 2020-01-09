@@ -1,0 +1,15 @@
+<header>Email Content Filter</header>
+
+<center><tt>content_filter</tt></center>
+<hr>
+
+Dieser Parameter gibt den Namen eines Mail-Zustellungstransportes an, der Mail filtert, nachdem es in der Warteschlange war.  
+<p>
+
+In Standardeinstellung ist dieses Feature deaktiviert. 
+
+<p>
+
+Möglicher sensibler Wert: <tt>spamfilter</tt>, vorausgesetzt, dass ein Transport mit dem Namen spamfilter definiert wurde. <p>
+
+<hr>

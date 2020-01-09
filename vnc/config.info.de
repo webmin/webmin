@@ -1,5 +1,1 @@
-port=Port zum Verbinden,0
-host=Host zum Verbinden,3,Webmin-Server
-width=Breite des Applets,0
-height=H&ouml;he des Applets,0
-program=Verbinde zu folgender X&#8722;Anwendung,3,Normaler VNC&#8722;Server
+config.info.de.UTF-8

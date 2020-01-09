@@ -1,0 +1,14 @@
+line0=Konfigurierbare Optionen,11
+view_condition=Zeige Bedingungen?,1,1-Ja,0-Nein
+view_comment=Zeige Kommentar?,1,1-Ja,0-Nein
+cluster_mode=Aktualisiert Cluster-Server,1,0-Immer, wenn eine &#196;nderung vorgenommen wird,1-Bei der Anwendung der Konfiguration
+cluster_nat=Sende NAT-Konfiguration auch um Cluster?,1,1-Ja,0-Nein
+line1=Systemkonfiguration,11
+ipf_conf=IPfilter Firewall-Konfigurationsdatei zum bearbeiten,0
+ipnat_conf=IPfilter NAT-Konfigurationsdatei zum bearbeiten,0
+ipf=Voller Pfad zum ipf Befehl,0
+ipfstat=Voller Pfad zum ipfstat Befehl,0
+ipnat=Voller Pfad zum ipnat Befehl,0
+apply_cmd=Befehl zum Anwenden der Konfiguration,3,Nur ipf ausf&#252;hren
+init=IPfilter bootup Skriptnamen,3,Automatisch
+smf=IPfilter SMF Servicenamen,3,Keine

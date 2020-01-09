@@ -1,0 +1,5 @@
+<header>Maximale Zeit, die auf Ausführung gewartet wird?</header>
+
+Hier geben Sie die Dauer der Leerlaufzeit an. Es kann sein, daß benötigte Befehle nicht mehr existieren oder ein Systemaufruf zu lange dauert. So stellen Sie sicher, daß Ihr Befehl nach einer gewissen Wartezeit abbricht.
+<hr>
+<!-- zuletzt geaendert: 07.08.2003 - Martin Mewes - webmin@webmin.mamemu.de -->

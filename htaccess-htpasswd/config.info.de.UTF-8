@@ -1,0 +1,9 @@
+htaccess=Name der Apache&#45;Options&#45;Datei,0
+htpasswd=Name der Datei mit zugangsberechtigten Benutzern,0
+htgroups=Dateiname f&#252;r die Gruppen,0
+sort=Sortiere Benutzernamen nach,1,1-Benutzername,0-Reihenfolge in der Datei
+md5=Anbieten von MD5&#45;Verschl&#252;sselung?,1,1-Ja,0-Nein
+sha1=Anbieten von SHA1&#45;Verschl&#252;sselung?,1,1-Ja,0-Nein
+digest=Anbieten von Digest-Verschl&#252;sselung?,1,1-Ja,0-Nein
+extra_directives=Extra-Direktiven in .htaccess einbeziehen,9,0,0,\t
+perms=Rechte f&#252;r erstellte Dateien,3,Standard (644)

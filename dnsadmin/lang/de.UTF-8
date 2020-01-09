@@ -1,0 +1,27 @@
+log_servers=Ander DNS Server geändert
+log_logging=Logging und Fehler geändert 
+log_acls=ACL geändert
+log_files=Datein und Verzeichnise geändert
+log_forwarding=Forwarding und Transfers geändert
+log_net=Adressen und Topology geändert
+log_misc=Diverse Optionen geändert
+log_zonedef=Zonen Standards geändert
+log_apply=Änderungen angewendet
+log_start=DNS Server gestartet 
+log_master=Master Zone $1 erstellt
+log_slave=Slave Zone $1 erstellt
+log_stub=Stub Zone $1 erstellt
+log_forward=Forward Zone $1 erstellt
+log_delete_master=Master Zone $1 gelöscht
+log_delete_slave=Slave Zone $1 gelöscht
+log_delete_stub=Stub Zone $1 gelöscht
+log_delete_forward=Forward Zone $1 gelöscht
+log_text=Einträge für $1 wurden manuell bearbeitet
+log_soa=Zonen Parameter für $1 geändert
+log_opts=Zonen Optionen für $1 geändert
+log_delete_record=Gelöscht $1 Eintrag $2 in Zone $3
+log_create_record=Erstellt $1 Eintrag $2 in Zone $3
+log_modify_record=Bearbeitet $1 Eintrag $2 in Zone $3
+log_boot=Primäre Konfigurationsdatei erstellt
+
+

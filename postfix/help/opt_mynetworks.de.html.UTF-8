@@ -1,0 +1,16 @@
+<header>Lokale Netzwerke</header>
+
+<center><tt>mynetworks</tt></center>
+<hr>
+
+Dieser Parameter gibt die Liste der Netzwerke an, die lokal auf dieser Maschine sind. Die Liste wird von der anti-UCE Software benutzt, um lokale Clienten von fremden zu unterscheiden. Siehe <tt>permit_mynetworks</tt> und
+<a href=opt_smtpd_recipient_restrictions><tt>smtpd_recipient_restrictions</tt></a>
+in der SMTP Konfiguration.
+
+<p>
+
+Standardeinstellung ist Liste aller Netzwerke, die an diese Maschine angehängt sind: vollständiges Netzwerk Klasse A (X.0.0.0/8), vollständiges Netzwerk Klasse B (X.X.0.0/16), und so weiter. Falls Sie eine stärkere Kontrolle wollen, bestimmen Sie ein Netzwerk/Masken Muster, wobei die Maske die Anzahl bits im Netzwerk-Abschnitt einer Host-Adresse bestimmt. Sie können auch den absoluten Pfadnamen des Pattern-Files bestimmen, anstatt die Muster hier aufzulisten.
+
+
+
+<hr>

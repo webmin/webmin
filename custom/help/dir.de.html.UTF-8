@@ -1,0 +1,5 @@
+<header>Ausführen in Verzeichnis</header>
+
+Hier geben Sie an, in welchem Verzeichnis das Kommando ausgeführt werden soll. Dies macht Sinn, wenn der User, der dieses Kommando ausführen soll, <tt>chrot</tt>et ist und das Verzechnis nicht wechseln darf.
+<hr>
+<!-- zuletzt geaendert: 07.08.2003 - Martin Mewes - webmin@webmin.mamemu.de -->

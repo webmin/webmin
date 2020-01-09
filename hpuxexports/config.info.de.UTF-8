@@ -1,0 +1,3 @@
+line2=Systemkonfiguration,11
+exports_file=Datei mit exportierten Dateisystemen,0
+restart_command=Befehl zum Neustart des Export&#45;Servers,0

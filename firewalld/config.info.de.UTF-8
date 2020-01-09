@@ -1,0 +1,2 @@
+firewall_cmd=Voller Pfad zum firewall-cmd Programm,0
+init_name=FirewallD init&#45;script&#45;Name,0

@@ -1,0 +1,80 @@
+<header>Geplante Cron-Aufträge</header>
+<body bgcolor=#ffffff>
+<title>Geplante Cron-Aufträge</title>
+<center><img src="images/icon.gif"></center><br>
+<h2><i>Diese Hilfe-Seite ist unvollständig</i></h2>
+<!-- zuletzt geaendert: 05.08.2003 - Martin Mewes - webmin@webmin.mamemu.de -->
+<hr>
+<h3>Einführung</h3>
+Dieses Modul kann dazu genutzt werden, um automatisch Befehle zu bestimmten Zeiten 
+vom System ausführen zu lassen. Hier wird der Unix-Standard-Daemon <strong><em>cron</em></strong> 
+eingesetzt, welcher Befehle unter der Nutzerkennung unterschiedlichster Unix-Benutzer 
+zu bestimmten Minuten, Stunden, Tagen einer Woche und Monaten eines Jahres ausführen 
+kann. Jeder Auftrag "gehört" einem Unix-Benutzer und wenn der Auftrag 
+ausgeführt wird, so läuft dieser mit den Rechten dieses Benutzers. 
+<p> Die Hauptseite des Modules listet alle bekannten geplanten Aufträge auf, 
+  sortiert nach den Namen der Unix-Benutzer, die die Aufträge eingerichtet 
+  haben. Einige Systeme haben bereits nach der Erstinstallation diverse Aufträge, 
+  die im Auftrag des Super-Unix-Benutzers "root" oder "sys" 
+  ausgeführt werden. Vielleicht sehen Sie hier auch schon Aufträge, 
+  welche durch Ihre Benutzer mit dem Kommando <strong><em>crontab</em></strong> 
+  eingerichtet wurden und die diesen gehören.
+<p>
+
+<hr>
+<h3>Einen neuen Cron-Auftrag einrichten</h3>
+Um einen neuen <strong>Cron-Auftrag</strong> einzurichten, klicken Sie auf <strong><em>Einen 
+neuen Cron-Auftrag erstellen</em></strong> oberhalb oder unterhalb der Liste, 
+der bereits existierenden Aufträge. Sie sehen dann ein Formular, wo Sie folgende 
+Angaben machen können: 
+<ul>
+  <li><b>Führe Cron-Auftrag aus als</b><br>
+    Der Unix-Benutzername für den der Auftrag eingerichtet wird. 
+    <p> 
+  <li><b>Aktiviert?</b><br>
+    Wenn ein Auftrag nicht aktiviert ist, wird er zwar in der Liste angezeigt, 
+    aber wird nicht ausgeführt werden. 
+    <p> 
+  <li><b>Befehl</b><br>
+    Der eigentliche Befehl, der ausgeführt werden soll. Das kann jeder Befehl 
+    sein, den Sie sonst über die Kommandozeile angeben könnten. 
+    <p> 
+  <li><b>Eingabe an Befehl</b><br>
+    Wenn dieses Feld nicht leer ist, dann wird alles was Sie hier eintippen als 
+    Parameter an den Befehl weitergegeben. Wenn Sie zum Beispiel dem Befehl <em>mail 
+    foo@bar.com</em> die Eingabe <em>hello word</em> mit auf den Weg geben, dann 
+    würde foo@bar.com eine eMail mit dem Inhalt (Body) hello world erhalten. 
+    <p> 
+  <li><b>Wann soll das Programm ausgeführt werden?</b><br>
+    Die Zeiten, zu denen ein <strong>Cron-Auftrag</strong> läuft, wird durch 
+    die Eingabe von Minuten, Stunden, Tage eines Monats, Monate eines Jahres und 
+    Tage einer Woche näher spezifiziert. Für jedes der Felder können 
+    Sie entweder <em>Alle</em> oder durch Anklicken von <em>Gewählte ...</em> 
+    bestimmte Zeitpunkte definieren. 
+    <p> Zum Beispiel: Wenn Sie <em>5</em> für die <em>Stunde</em> auswählen 
+      und <em>Dienstag</em> als <em>Wochentag</em>, dann wird der <strong>Cron-Auftrag</strong> 
+      jede Minute zwischen 5.00 Uhr und 5.59 Uhr morgens und das jeden Dienstag 
+      ausgeführt.<br>
+      Alternativ könnten Sie zum Beispiel <em>30</em> für die <em>Minuten</em> 
+      und <em>14</em> bei den <em>Stunden</em> anmarkern und der <strong>Cron-Auftrag</strong> 
+      würde jeden Tag um 14.30 Uhr laufen. 
+    <p> 
+</ul>
+<p> Wenn das Formular ausgefüllt haben, dann klicken Sie bitte den <strong>Erstellen</strong>-Button 
+  am unteren Ende der Seite. Diese Einstellungen werden sofort gültig. 
+<p>
+
+<hr>
+<h3>Einen bestehenden Cron-Auftrag bearbeiten</h3>
+Um einen existenten <strong>Cron-Auftrag</strong> zu bearbeiten, klicken Sie bitte 
+auf der Hauptseite den Befehl an, den Sie ändern möchten. Das Formular 
+um einen existenten <strong>Cron-Auftrag</strong> zu bearbeiten, ist exakt das 
+gleiche wie zum <em><strong>Erstellen eines neuen Cron-Auftrages</strong></em>. 
+Ändern Sie einfach nach Belieben und klicken Sie dann auf den <strong>Speichern</strong>-Button 
+am unteren Ende der Seite. 
+<hr>
+<h3>Einen bestehenden Cron-Auftrag löschen </h3>
+<p>Um einen <strong>Cron-Auftrag</strong> zu löschen, folgen Sie den Anweisungen 
+  für <em><strong>Einen bestehenden Cron-Auftrag bearbeiten</strong></em>, 
+  nur daß Sie dann unten rechts auf den <strong>Löschen</strong>-Button 
+  klicken. Auch diese Einstellung wird dann ohne Rückfrage aktiv.

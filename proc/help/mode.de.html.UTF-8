@@ -1,0 +1,11 @@
+<header>Ausführmodus</header>
+
+<dl>
+<dt><b>Führe im Hintergrund aus</b>
+<dd>Der Befehl wird im Hintergrund gestartet und Ihr Browser wird
+    in die Liste der laufenden Prozesse gerichtet. <p>
+<dt><b>Warte bis Beendigung</b>
+<dd>Der Befehl wird ausgeführt und die Ausgabe angezeigt. Diese Option sollte nicht
+    für Befehle, die immer laufen, wie Server-Prozesse verwendet werden. <p>
+</dl>
+<hr>

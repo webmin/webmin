@@ -1,0 +1,7 @@
+dirs=Verzeichnisse zum Indexieren,9,50,5,\t
+skip=Verzeichnisse zum &#252;berspringen,9,50,3,\t
+fs=Dateisystem Typ zum &#252;berspringen,0
+units=Minimale Einheiten f&#252;r Gr&#246;&#223;en,1,1-Byte,1024-kB,1048576-MB,1073741824-GB
+min=Minimale Verzeichnisgr&#246;&#223;e zum anzeigen,0,10,,Bytes
+xdev=Limitiere Suche auf ein Dateisystem?,1,1-Ja,0-Nein
+bsize=Dateisystem Blockgr&#246;&#223;e (in Bytes),3,Unbekannt

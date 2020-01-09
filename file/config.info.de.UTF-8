@@ -1,0 +1,11 @@
+hide_dot_files=Zeige Dateien mit einem Punkt am Anfang?,1,0-Ja,1-Nein
+iconsize=Gr&#246;&#223;e der Buttons in der Toolbar,1,1-Klein,0-Gro&#223; mit Bildunterschrift
+nocharset=Versuche passende Zeichens&#228;tze zu benutzen?,1,0-Ja,1-Nein
+extract=.class&#45;Dateien aus dem JAR extrahieren?,1,1-Ja,0-Nein
+width=Breite f&#252;r skalierte Bilder,3,Standard (300 Pixel)
+fixed=Schriftgr&#246;&#223;e f&#252;r Text,3,Standard (12 Punkte)
+small_fixed=Schriftgr&#246;&#223;e f&#252;r Buttons,3,Standard (10 Punkte)
+force_text=Editor f&#252;r HTML Dateien,1,1-Text-Editor,0-HTML-Editor
+defzip=Standard-Archiv-Modus f&#252;r Uploads,1,2-Extrahieren und l&#246;schen,1-Extrahieren,0-Nichts tun
+defuser=Standard Benutzer f&#252;r Uploads,10,root-root,*-Wie Verzeichnis,von anderen Benutzer
+htmlexts=Dateierweiterungen zum Bearbeiten wie HTML,3,Standard (.htm und .html)

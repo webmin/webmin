@@ -1,0 +1,8 @@
+date_subs=<tt>strftime</tt>&#45;Substitution der Backup&#45;Ziele?,1,1-Ja,0-Nein
+webmin_subs=Webmin Variablesubstitution auf Backup&#45;Zielen?,1,1-Ja,0-Nein
+smtp_server=Sende E&#45;Mail &#252;ber SMTP&#45;Server,3,Lese Benutzer&#45;E&#45;Mail&#45;Modul
+run_mode=Starte Backups im,1,0-Vordergrund,1-Hintergrund
+nonewtape=Aktion&#44; wenn Band voll ist,1,1-Sofort fehlschlagen,0-Aufforderung f&#252;r ein neues Band
+always_tar=Benutze immer TAR&#45;Format f&#252;r Backups?,1,1-Ja,0-Nein
+error_email=Sende Benachrichtigungs&#45;E&#45;Mail,1,0-Immer,1-Nur wenn Fehler auftreten
+simple_sched=Schedule&#45;Selektor&#45;Format,1,1-Einfach,0-Komplex

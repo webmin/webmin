@@ -1,0 +1,5 @@
+<header>Systemzeit</header>
+Konfigurations-Werkzeug zum Setzen der <b>Systemzeit</b> und der <b>Hardware-Zeit</b> (eingebaute Echtzeit-Uhr).<p>
+
+Es kann auch benutzt werden, um Systemzeit und Hardware-Zeit zu synchronisieren.
+<hr>

@@ -1,0 +1,5 @@
+<header>Kommando gibt HTML aus?</header>
+
+Wird ein Kommando über WebMin aufgerufen, so werden die Zeichen <, > und & automatisch konvertiert, damit Sie richtig dargestellt werden. Wenn Ihr Kommando jedoch HTML auswirft, dann sollten Sie hier JA angeben, damit eine Konvertierung nicht stattfindet.
+<hr>
+<!-- zuletzt geaendert: 07.08.2003 - Martin Mewes - webmin@webmin.mamemu.de -->

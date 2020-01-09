@@ -1,0 +1,5 @@
+<header>Client-Status</header>
+
+Diese Seite zeigt Backup-Aufträge, die derzeit ausgeführt werden und die 10 am häufigsten ausgeführten Aufträge auf einem ausgewählten Bacula Client-System. Diejenigen die ausgeführt werden oder auf einen anderen Client ausgeführt werden, werden nicht angezeigt. <p>
+
+<footer>
