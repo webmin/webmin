@@ -1567,6 +1567,10 @@ elsif ($type eq $smbfs_fs || $type eq "cifs") {
 		print &ui_table_row($text{'linux_cvers'},
 			&ui_opt_textbox("smbfs_vers", $options{"vers"},
 					5, $text{'linux_auto'}));
+
+		print &ui_table_row($text{'linux_noserverino'},
+			&ui_yesno_radio("smbfs_noserverino",
+					defined($options{"noserverino"})));
 		}
 	}
 elsif ($type eq "reiserfs") {
@@ -2134,6 +2138,9 @@ elsif ($_[0] eq $smbfs_fs || $_[0] eq "cifs") {
 
 		delete($options{'nounix'});
 		if ($in{'smbfs_nounix'}) { $options{'nounix'} = ''; }
+
+		delete($options{'noserverino'});
+		if ($in{'smbfs_noserverino'}) { $options{'noserverino'} = ''; }
 
 		delete($options{'vers'});
 		if (!$in{'smbfs_vers_def'}) {
