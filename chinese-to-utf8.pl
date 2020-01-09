@@ -69,7 +69,7 @@ foreach $m (@modules) {
 			}
 		}
 	foreach $l (@default_langs) {
-		if (-r "$m/lang/$l") {
+		if (-r "$m/lang/$l" && -e "$m/lang/$l.UTF-8") {
 			system("iconv -c -f iso-8859-1 -t UTF-8 - <$m/lang/$l >$m/lang/$l.UTF-8");
 			}
 		}
@@ -105,7 +105,7 @@ foreach $m (@modules) {
 			}
 		}
 	foreach $l (@default_langs) {
-		if (-r "$m/ulang/$l") {
+		if (-r "$m/lang/$l" && -e "$m/lang/$l.UTF-8") {
 			system("iconv -c -f iso-8859-1 -t UTF-8 - <$m/ulang/$l >$m/ulang/$l.UTF-8");
 			}
 		}
