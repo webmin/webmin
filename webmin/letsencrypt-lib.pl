@@ -170,6 +170,7 @@ if ($letsencrypt_cmd) {
 			" --duplicate".
 			" --force-renewal".
 			" --manual-public-ip-logging-ok".
+			" --non-interactive ".
 			" --config $temp".
 			" --rsa-key-size $size".
 			" --cert-name ".quotemeta($doms[0]).
@@ -190,6 +191,7 @@ if ($letsencrypt_cmd) {
 			" --duplicate".
 			" --force-renewal".
 			" --manual-public-ip-logging-ok".
+			" --non-interactive ".
 			" --config $temp".
 			" --rsa-key-size $size".
 			" --cert-name ".quotemeta($doms[0]).
