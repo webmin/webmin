@@ -69,7 +69,8 @@ foreach $m (@modules) {
 			}
 		}
 	foreach $l (@default_langs) {
-		if (-r "$m/lang/$l") {
+		# do convert if readable and not a symlink
+		if (-r "$m/lang/$l" && ! -l "$m/lang/$l") {
 			system("iconv -c -f iso-8859-1 -t UTF-8 - <$m/lang/$l >$m/lang/$l.UTF-8");
 			}
 		}
@@ -105,7 +106,8 @@ foreach $m (@modules) {
 			}
 		}
 	foreach $l (@default_langs) {
-		if (-r "$m/ulang/$l") {
+		# do convert if readable and not a symlink
+		if (-r "$m/lang/$l" && ! -l "$m/lang/$l") {
 			system("iconv -c -f iso-8859-1 -t UTF-8 - <$m/ulang/$l >$m/ulang/$l.UTF-8");
 			}
 		}
@@ -190,7 +192,8 @@ foreach $m (@modules) {
 		}
 	foreach $l (@default_langs) {
 		%minfo = ( );
-		if (&read_file("$m/module.info.$l", \%minfo)) {
+		# do convert if readable and not a symlink
+		if (! -l "$m/module.info.$l" && &read_file("$m/module.info.$l", \%minfo)) {
 			%tminfo = ( );
 			foreach $k (keys %minfo) {
 				($tk = $k) =~ s/$l$/$l.UTF-8/;
@@ -273,7 +276,8 @@ foreach $m (@modules) {
 		}
 	foreach $l (@default_langs) {
 		%cinfo = ( );
-		if (&read_file("$m/config.info.$l", \%cinfo)) {
+		# do convert if readable and not a symlink
+		if (! -l ("$m/config.info.$l" && &read_file("$m/config.info.$l", \%cinfo)) {
 			local %ocinfo = %cinfo;
 			foreach $k (keys %cinfo) {
 				$cinfo{$k} = &DefaultToUTF8($cinfo{$k});
@@ -365,7 +369,8 @@ foreach $m (@modules) {
 					}
 				}
 			foreach $l (@default_langs) {
-				if ($h =~ /(\S+)\.$l\.html$/) {
+				# do convert if readable and not a symlink
+				if (! -l "$m/help/$h" && $h =~ /(\S+)\.$l\.html$/) {
 					open(IN, "$m/help/$h");
 					open(OUT, ">$m/help/$1.$l.UTF-8.html");
 					while(<IN>) {
