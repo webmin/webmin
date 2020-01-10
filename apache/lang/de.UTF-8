@@ -1067,4 +1067,5 @@ worker_eminspare=Minimale spare Threads muss eine Ganzzahl sein
 worker_ethreads=Anzahl der Threads pro Kindprozess muss eine Ganzzahl sein
 worker_maxspare=Maximale spare Threads
 worker_minspare=Minimale spare Threads
+enewline=Ungueltiges Zeichen in der Eingabe
 worker_threads=Threads pro Kindprozess

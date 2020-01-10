@@ -125,3 +125,4 @@ view_type_sql=SQL-Statement in Datenbank $1 ausgeführt
 view_type_symlink=Link erzeugt: $1 -> $2
 view_type_unsymlink=Link gelöscht: $1 -> $2
 view_user=Webminbenutzer
+acl_self=Only self

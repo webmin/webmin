@@ -1098,3 +1098,6 @@ webmincron_title=Webmin geplante Funktionen
 webmincron_when=Führe aus am
 webmincron_when0=Reguläres Intervall
 webmincron_when1=Spezifische Zeit
+ui_nice_size_type=Nutze Binaere Einheiten (KiB, MiB, GiB statt KB, MB, GB)
+advanced_sortconfigs=Konfigurationsdateien nach Schluesseln sortieren?
+letsencrypt_certbot=Certbot

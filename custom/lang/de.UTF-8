@@ -163,4 +163,5 @@ view_ecannot=Sie sind nicht berechtigt, diese Datei zu bearbeiten
 view_efile=Schreiben von $1 fehlgeschlagen : $2
 view_err=Fehler beim Bearbeiten der Datei
 view_header=Editiere Datei $1
+run_failed=Befehl mit Fehercode $1 fehlgeschlagen
 view_title=Datei bearbeiten
