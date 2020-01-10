@@ -5,8 +5,8 @@ portsentry_pid=Portsentry PID-Datei,3,Keine
 portsentry_ignore=Portsentry-Datei mit ignorierten Hosts,3,Finde aus Konfiguration
 portsentry_start=Befehl zum Start von Portsentry,3,Starte Daemons in untenstehenden Modi
 portsentry_stop=Befehl zum Stopp von Portsentry,3,Beende Prozesse
-portsentry_tmode=Portsentry TCP-Modus,1,tcp-Basis&#045Modus,stcp-Stealth&#045Modus,atcp-Advanced Stealth&#045Modus
-portsentry_umode=Portsentry UDP-Modus,1,udp-Basis&#045Modus,sudp-Stealth&#045Modus,audp-Advanced Stealth&#045Modus
+portsentry_tmode=Portsentry TCP-Modus,1,tcp-Basis-Modus,stcp-Stealth-Modus,atcp-Advanced Stealth-Modus
+portsentry_umode=Portsentry UDP-Modus,1,udp-Basis-Modus,sudp-Stealth-Modus,audp-Advanced Stealth-Modus
 
 sec2=Hostsentry-Optionen,11
 hostsentry=Pfad zum hostsentry.py Python-Skript,0

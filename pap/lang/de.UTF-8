@@ -125,26 +125,3 @@ secrets_none=Keine PPP-Konten wurden erstellt.
 secrets_return=Index
 secrets_title=PPP-Konten
 sync_title=Benutzer-Synchronisation
-index_none=You do not have access to any of the features of this module.
-index_delete=Delete Selected Accounts
-options_epppd=The PPP server $1 installed on your system does not appear to be the Linux PPP daemon supported by this module.
-options_elogin=The Mgetty login options file $1 was not found on your system. Maybe Mgetty is not installed, or your <a href='$2'>module configuration</a> is incorrect.
-options_desc=The options below will apply to all PPP connections received by your server, on all serial ports. They will override any port-specific options set from the Serial Port Configuration page.
-options_auth0=No, but prevent routed IPs
-options_ctrl=Control lines mode
-options_login=Also do unix authentication?
-options_ecannot=You are not allowed to edit PPP options
-mgetty_desc=For your server to allow logins on a serial port via modem or a direct connection, it must be listed below. When you add a port to this list, the $1 program will be configured to answer modem connections and display a login prompt.
-mgetty_applydesc=Click this button to apply the current serial port configuration by running the command $1 and killing all Mgetty processes.
-dialin_title=Caller ID Access
-dialin_desc=This page allows you to configure Mgetty to allow or deny dialin access based on the phone number of a caller. When a call comes in, the first entry in the list that matches the phone number will determine whether the call is accepted or not.
-dialin_efile=The Mgetty caller ID access control file $1 was not found on your system. Maybe Mgetty is not installed, or your <a href='$2'>module configuration</a> is incorrect.
-dialin_add=Add a new caller ID number.
-dialin_nonumbers=No caller ID numbers have been configured yet. All calls will be accepted.
-dialin_return=caller ID list
-dialin_edit=Edit Caller ID Number
-dialin_create=Create Caller ID Number
-dialin_header=Caller ID number details
-dialin_err=Failed to save caller ID number
-dialin_ecannot=You are not allowed to edit caller ID access
-sync_ecannot=You are not allowed to edit unix-ppp synchronization options

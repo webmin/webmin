@@ -277,4 +277,3 @@ tunefs_u=Reservierter Benutzer
 tunefs_weeks=Wochen
 xfs_b=Blockgröße
 xfs_force=Erzwinge Dateisystemerzeugung (XFS)
-index_relabeldesc2=Erzeugt eine neue leere Partitionstabelle auf der Festplatte, damit Patritionen angelegt werden können.

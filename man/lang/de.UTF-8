@@ -67,5 +67,3 @@ search_none=Keine Anleitung passend zu '$1' gefunden
 search_perl=Perl-Modul Dokumentation
 search_title=Suchergebnisse
 search_type=Typ
-acl_allow=Erlaubte Suchtypen bearbeiten?
-check_ecannot=Keine Berechtigung zum Bearbeiten der Suchtypen
