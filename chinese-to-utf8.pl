@@ -107,7 +107,7 @@ foreach $m (@modules) {
 		}
 	foreach $l (@default_langs) {
 		# do convert if readable and not a symlink
-		if (-r "$m/lang/$l" && ! -l "$m/lang/$l") {
+		if (-r "$m/ulang/$l" && ! -l "$m/ulang/$l") {
 			system("iconv -c -f iso-8859-1 -t UTF-8 - <$m/ulang/$l >$m/ulang/$l.UTF-8");
 			}
 		}
@@ -277,7 +277,7 @@ foreach $m (@modules) {
 	foreach $l (@default_langs) {
 		%cinfo = ( );
 		# do convert if readable and not a symlink
-		if (! -l ("$m/config.info.$l" && &read_file("$m/config.info.$l", \%cinfo)) {
+		if (! -l "$m/config.info.$l" && &read_file("$m/config.info.$l", \%cinfo)) {
 			local %ocinfo = %cinfo;
 			foreach $k (keys %cinfo) {
 				$cinfo{$k} = &DefaultToUTF8($cinfo{$k});
