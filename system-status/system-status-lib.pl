@@ -203,8 +203,8 @@ if (&foreign_check("net") && $gconfig{'os_type'} =~ /-linux$/) {
 		my $out = &backquote_command(
 			"ifconfig ".quotemeta($iname)." 2>/dev/null");
 		&reset_environment();
-		my $rx = $out =~ /RX\s+bytes:\s*(\d+)/i ? $1 : undef;
-		my $tx = $out =~ /TX\s+bytes:\s*(\d+)/i ? $1 : undef;
+		my $rx = $out =~ /RX\s+bytes:\s*(\d+)/i ? $1 : 0;
+		my $tx = $out =~ /TX\s+bytes:\s*(\d+)/i ? $1 : 0;
 		$rxtotal += $rx;
 		$txtotal += $tx;
 		}
