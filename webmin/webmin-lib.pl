@@ -653,8 +653,9 @@ return (0) if (!-r $path);
 # Check if we already have the key
 my @keys = &list_keys();
 foreach my $k (@keys) {
+	my $fp = &key_fingerprint($k);
 	return ( 0 ) if ($k->{'email'}->[0] =~ /^$email$/ &&
-		         &key_fingerprint($k) eq $finger);
+		         $fp && $fp eq $finger);
 	}
 
 # Import it if not
