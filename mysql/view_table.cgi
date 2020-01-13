@@ -425,7 +425,8 @@ elsif (!$check) {
 elsif ($total) {
 	print &ui_form_end([ [ "edit", $text{'view_edit'} ],
 			     [ "new", $text{'view_new'} ],
-			     [ "delete", $text{'view_delete'} ] ]);
+			     [ "delete", $text{'view_delete'} ],
+			     [ "refresh", $text{'view_refresh'} ] ]);
 	}
 else {
 	print &ui_form_end([ [ "new", $text{'view_new'} ] ]);

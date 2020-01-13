@@ -201,6 +201,7 @@ view_none=This table contains no data.
 view_edit=Edit selected rows
 view_new=Add row
 view_delete=Delete selected rows
+view_refresh=Refresh
 view_nokey=Data in this table cannot be edited because it has no primary key.
 view_all=Select all
 view_invert=Invert selection
