@@ -444,8 +444,8 @@ if (!$in{'field'} && $total > $displayconfig{'perpage'}) {
 			[ map { [ $_->{'field'}, $_->{'field'} ] } @str ]);
 	$match = &ui_select("match", 0,
 			[ map { [ $_, $text{'view_match'.$_} ] } (0.. 5) ]);
-	print "<b>",&text('view_search2', &ui_textbox("for", "", 20),
-			  $sel, $match),"</b>\n";
+	print &text('view_search2', &ui_textbox("for", "", 20),
+			  $sel, $match),"\n";
 	print &ui_submit($text{'view_searchok'});
 	print &ui_form_end();
 
