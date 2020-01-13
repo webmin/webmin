@@ -223,6 +223,7 @@ view_sortreset=Reset sort
 view_field=Field name
 view_data=New data
 view_jump=Jump to row
+view_go=Go
 view_download=Download..
 view_keep=Leave unchanged
 view_set=Set to contents of file..

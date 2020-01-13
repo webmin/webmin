@@ -463,7 +463,7 @@ if (!$in{'field'} && $total > $displayconfig{'perpage'}) {
 	print &ui_hidden("db", $in{'db'});
 	print &ui_hidden("table", $in{'table'});
 	print &ui_textbox("jump", "", 6);
-	print &ui_submit($text{'chooser_ok'});
+	print &ui_submit($text{'view_go'});
 	print &ui_form_end();
 	}
 
