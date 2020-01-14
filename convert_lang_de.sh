@@ -80,12 +80,20 @@ do
 	# keep backup if you test ?
 	# cp ${file} ${file}.bak
 
+	# module.info change key from xx= to xx.UTF-8=
+	if [[ "$file" == *"module.info.${MYLANG}" ]]; then
+		sed -i 's/\(.*\)\?=/\1.UTF-8=/'  "${TO}"
+	fi
+
+
 	if [ "$DOIT" == "yes" ]; then
 	# replace file with symlink
+	     if [[ "$file" != *"module.info.${MYLANG}" ]]; then
 		rm "${file}"
 		ln -s "$(basename "${OUT}")" "${file}"
 		#file -i "${file}"
 		# check if UTF-8
+	     fi
 		file -i "${OUT}"
 	else
 		echo "dry run ... ${OUT}"
