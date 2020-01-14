@@ -82,7 +82,7 @@ do
 
 	# module.info change key from xx= to xx.UTF-8=
 	if [[ "$file" == *"module.info.${MYLANG}" ]]; then
-		sed -i 's/\(.*\)\?=/\1.UTF-8=/'  "${TO}"
+		sed -i 's/\(.*\)\?=/\1.UTF-8=/'  "${OUT}"
 	fi
 
 
