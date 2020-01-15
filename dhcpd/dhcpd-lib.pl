@@ -958,7 +958,12 @@ sub get_pid_file
 {
 local $conf = &get_config();
 local $file = &find_value("pid-file-name", $conf);
-return $file || $config{'pid_file'};
+return $file if ($file);
+local @pids = split(/\s+/, $config{'pid_file'});
+foreach my $f (@pids) {
+	return $f if (-r $f);
+	}
+return $pids[0];
 }
 
 sub expand_ip_range

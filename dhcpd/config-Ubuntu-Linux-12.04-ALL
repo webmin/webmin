@@ -1,5 +1,5 @@
 dhcpd_conf=/etc/dhcp/dhcpd.conf
-pid_file=/var/run/dhcpd.pid
+pid_file=/var/run/dhcpd.pid /run/dhcp-server/dhcpd.pid
 dhcpd_path=/usr/sbin/dhcpd
 lease_file=/var/lib/dhcp/dhcpd.leases
 lease_sort=0
