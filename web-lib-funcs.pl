@@ -882,6 +882,7 @@ if (!$gconfig{'no_frame_options'}) {
 if (!$gconfig{'no_content_security_policy'}) {
 	print "Content-Security-Policy: script-src 'self' 'unsafe-inline' 'unsafe-eval'; frame-src 'self'; child-src 'self'\n";
 	}
+print "X-Content-Type-Options: nosniff\n";
 if (defined($cs)) {
 	print "Content-type: $mt; Charset=$cs\n\n";
 	}
