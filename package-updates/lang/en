@@ -148,7 +148,7 @@ repos_enone=None selected
 repos_title=Delete Repositories
 repos_rusure=Are you sure you want to delete the $1 selected package repositories? Packages installed from them will still be available, but may not be updatable. 
 repos_ok=Delete Now
-index_install_disallowed_backports=By default backports repositories have a lower priority than stable (100), thus they won't be installed or upgraded unless explicitly configured to (or the package only exists in backports) - packages from backports must be installed using command line, using special flags
+index_install_disallowed_backports=By default backports repositories have a lower priority than stable (100), thus they won't be installed or upgraded unless explicitly configured to (or the package only exists in backports) - packages from backports must be installed using command line, with special flags
 index_new_backports=Backports new version $1
 index_caninstall_backports=Available for manual installation
 
