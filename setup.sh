@@ -619,7 +619,15 @@ fi
 echo "#!/bin/sh" >>$config_dir/stop
 echo "echo Stopping Webmin server in $wadir" >>$config_dir/stop
 echo "pidfile=\`grep \"^pidfile=\" $config_dir/miniserv.conf | sed -e 's/pidfile=//g'\`" >>$config_dir/stop
-echo "kill \`cat \$pidfile\`" >>$config_dir/stop
+echo "pid=\`cat \$pidfile\`" >>$config_dir/stop
+echo "if [ \"\$pid\" != \"\" ]; then" >>$config_dir/stop
+echo "  kill \$pid || exit 1" >>$config_dir/stop
+echo "  sleep 1" >>$config_dir/stop
+echo "  kill -9 \$pid" >>$config_dir/stop
+echo "  exit 0" >>$config_dir/stop
+echo "else" >>$config_dir/stop
+echo "  exit 1" >>$config_dir/stop
+echo "fi" >>$config_dir/stop
 
 echo "#!/bin/sh" >>$config_dir/restart
 echo "$config_dir/stop && $config_dir/start" >>$config_dir/restart
