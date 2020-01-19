@@ -217,7 +217,8 @@ if ($letsencrypt_cmd) {
 		}
 	else {
 		# Try searching common paths
-		my @fulls = glob("/etc/letsencrypt/live/$doms[0]-*/cert.pem");
+		my @fulls = (glob("/etc/letsencrypt/live/$doms[0]-*/cert.pem"),
+			     glob("/usr/local/etc/letsencrypt/live/$doms[0]-*/cert.pem"));
 		if (@fulls) {
 			my %stats = map { $_, [ stat($_) ] } @fulls;
 			@fulls = sort { $stats{$a}->[9] <=> $stats{$b}->[9] }
