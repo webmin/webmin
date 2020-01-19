@@ -2448,7 +2448,7 @@ $rv .= "</center>\n";
 return $rv;
 }
 
-=head2 ui_text_type(text, type)
+=head2 ui_text_color(text, type)
 
 Returns HTML for a text string, with its color determined by $type.
 
@@ -2458,13 +2458,13 @@ Returns HTML for a text string, with its color determined by $type.
 
 =cut
 
-sub ui_text_type
+sub ui_text_color
 {
 my ($text, $type) = @_;
 my ($rv, $color);
 
-if (defined (&theme_ui_text_type)) {
-    return &theme_ui_text_type(@_);
+if (defined (&theme_ui_text_color)) {
+    return &theme_ui_text_color(@_);
     }
 
 if ($type eq "success") { $color = "3c763d"; }
@@ -2472,7 +2472,7 @@ elsif ($type eq "info") { $color = "31708f"; }
 elsif ($type eq "warn") { $color = "8a6d3b"; }
 elsif ($type eq "danger") { $color = "a94442"; }
 
-$rv .= "<span class='ui_text_type text_type_$type' style='color: #$color'>$text</span>\n";
+$rv .= "<span class='ui_text_color text_type_$type' style='color: #$color'>$text</span>\n";
 
 return $rv;
 }

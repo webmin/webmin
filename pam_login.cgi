@@ -22,11 +22,11 @@ if ($gconfig{'loginbanner'} && $ENV{'HTTP_COOKIE'} !~ /banner=1/ &&
 	close(BANNER);
 	return;
 	}
+&get_miniserv_config(\%miniserv);
 $sec = uc($ENV{'HTTPS'}) eq 'ON' ? "; secure" : "";
-if (!$config{'no_httponly'}) {
+if (!$miniserv{'no_httponly'}) {
 	$sec .= "; httpOnly";
 }
-&get_miniserv_config(\%miniserv);
 $sidname = $miniserv{'sidname'} || "sid";
 print "Set-Cookie: banner=0; path=/$sec\r\n" if ($gconfig{'loginbanner'});
 print "Set-Cookie: $sidname=x; path=/$sec\r\n" if ($in{'logout'});
