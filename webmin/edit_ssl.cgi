@@ -305,7 +305,9 @@ else {
 		}
 	push(@opts, [ 2, $text{'ssl_webroot2'},
 		      &ui_textbox("webroot", $webroot, 40) ]);
-	push(@opts, [ 3, $text{'ssl_webroot3'} ]);
+	if ($letsencrypt_cmd) {
+		push(@opts, [ 3, $text{'ssl_webroot3'} ]);
+		}
 	print &ui_table_row($text{'ssl_webroot'},
 		&ui_radio_table("webroot_mode", $mode, \@opts));
 
