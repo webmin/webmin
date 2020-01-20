@@ -659,7 +659,7 @@ foreach my $a (@_) {
 		push(@rv, $a);
 		}
 	}
-return join(",", @rv);
+return join(", ", @rv);
 }
 
 # split_addr_list(string)
@@ -668,7 +668,7 @@ sub split_addr_list
 {
 my ($str) = @_;
 my @rv;
-foreach my $a (split(/,/, $str)) {
+foreach my $a (split(/\s*,\s*/, $str)) {
 	if ($a =~ /^'(.*)'$/ || $a =~ /^"(.*)"$/) {
 		push(@rv, $1);
 		}
