@@ -27,4 +27,4 @@ show_cmts=0
 prefix_cmts=0
 ldap_doms=0
 delete_confirm=1
-max_maps=100
+max_maps=400
