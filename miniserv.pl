@@ -117,6 +117,16 @@ if (-l $perl_path) {
 # Check vital config options
 &update_vital_config();
 
+# Check if already running via the PID file
+if (open(PIDFILE, $config{'pidfile'})) {
+	my $already = <PIDFILE>;
+	close(PIDFILE);
+	chop($already);
+	if ($already && kill(0, $already)) {
+		die "Webmin is already running with PID $already";
+		}
+	}
+
 $sidname = $config{'sidname'};
 die "Session authentication cannot be used in inetd mode"
 	if ($config{'inetd'} && $config{'session'});
