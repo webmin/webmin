@@ -123,7 +123,7 @@ if (open(PIDFILE, $config{'pidfile'})) {
 	close(PIDFILE);
 	chop($already);
 	if ($already && kill(0, $already)) {
-		die "Webmin is already running with PID $already";
+		die "Webmin is already running with PID $already\n";
 		}
 	}
 
