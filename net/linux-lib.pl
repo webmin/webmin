@@ -31,17 +31,24 @@ if (&has_command("ip")) {
 			$ifc{'name'} = $ifc{'fullname'};
 			$ifc{'vlanid'} = $2;
 			$ifc{'virtual'} = $3;
-		}
+			}
 		elsif ($l =~ /^\d+:\s+([^ \t\r\n\@]+):/) {
 			# Line like :
 			#2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
-			#$cfg->{'name'} = $cfg->{'fullname'};
 			$ifc{'fullname'} = $1;
 			$ifc{'name'} = $ifc{'fullname'}
-		}
+			}
+		elsif ($l =~ /^\d:\s+([^ \t\r\n\@]+\d+)@([^ \t\r\n\@]+\d+):/) {
+			# Line like :
+			#3: eth0@if0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+			$ifc{'fullname'} = $1;
+			$ifc{'name'} = $ifc{'fullname'};
+			$ifc{'ifname'} = $2;
+			}
 		else {
+			# Unknown line!
 			next;
-		}
+			}
 		
 		if ($l =~ /\sinet\s+([0-9\.]+)\s+peer\s+([0-9\.]+)\/(\d+)(\s+brd\s+([0-9\.]+))?\s+scope\s+global(\s+noprefixroute)?(\s+dynamic)?\s+(\S+)/ && $8 eq $ifc{'name'}) {
 			# Line like :
