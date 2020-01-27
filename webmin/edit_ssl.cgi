@@ -17,6 +17,7 @@ our $pfs_ssl_ciphers;
 our $info;
 our $root_directory;
 our %config;
+our $letsencrypt_cmd;
 
 ui_print_header(undef, $text{'ssl_title'}, "");
 ReadParse();
