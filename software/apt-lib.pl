@@ -185,11 +185,6 @@ while(<DUMP>) {
 	elsif (/^\s*File:\s*(\S+)/ && $pkg) {
 		$pkg->{'file'} ||= $1;
 		}
-	# By default Debian backports repositories have a lower priority than stable (100) thus they won't 
-	# be installed or upgraded unless explicitly configured to (or the package only exists in backports).
-	if ($pkg->{'file'} =~ /dists_.*-backports/) {
-		$pkg->{'disallowed'} = "/Backports";
-		}
 	}
 close(DUMP);
 &reset_environment();

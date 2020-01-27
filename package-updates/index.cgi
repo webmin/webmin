@@ -64,18 +64,12 @@ foreach $p (sort { $a->{'name'} cmp $b->{'name'} } (@current, @avail)) {
 	# Work out the status
 	$c = $current{$p->{'name'}."/".$p->{'system'}};
 	$a = $avail{$p->{'name'}."/".$p->{'system'}};
-	$bp = $a->{'disallowed'} =~ /\/Backports/;
 
 	if ($a && $c && &compare_versions($a, $c) > 0) {
 		# An update is available
-		if ($bp) {
-			$msg = '<b>'.&ui_text_color(&text('index_new_backports', $a->{'version'}), 'success').'</b>';
-			}
-		else {
-			$msg = "<b><font color=#00aa00>".
-			       &text('index_new', $a->{'version'})."</font></b>";
-			$need = 1;
-			}
+		$msg = "<b><font color=#00aa00>".
+		       &text('index_new', $a->{'version'})."</font></b>";
+		$need = 1;
 		next if ($in{'mode'} eq 'security' && !$a->{'security'});
 		next if ($in{'mode'} ne 'updates' &&
 			 $in{'mode'} ne 'current' &&
@@ -84,12 +78,7 @@ foreach $p (sort { $a->{'name'} cmp $b->{'name'} } (@current, @avail)) {
 	elsif ($a && !$c) {
 		# Could be installed, but isn't currently
 		next if (!&installation_candiate($a));
-		if ($bp) {
-			$msg = &ui_text_color($text{'index_caninstall_backports'}, 'success');
-			}
-		else {
-			$msg = "<font color=#00aa00>$text{'index_caninstall'}</font>";
-			}
+		$msg = "<font color=#00aa00>$text{'index_caninstall'}</font>";
 		$need = 0;
 		next if ($in{'mode'} ne 'new');
 		}
@@ -111,10 +100,7 @@ foreach $p (sort { $a->{'name'} cmp $b->{'name'} } (@current, @avail)) {
 		next if ($in{'mode'} ne 'current');
 		}
 	$source = ucfirst($a->{'source'});
-	if ($bp) {
-		$source = &ui_text_color("<span title=\"$text{'index_install_disallowed_backports'}\">$source$a->{'disallowed'} <sup><b>&quest;</b></sup></span>", 'info');
-		}
-	elsif ($a->{'security'}) {
+	if ($a->{'security'}) {
 		$source = "<font color=#ff0000>$source</font>";
 		}
 
@@ -131,13 +117,11 @@ foreach $p (sort { $a->{'name'} cmp $b->{'name'} } (@current, @avail)) {
 	push(@rows, [
 		{ 'type' => 'checkbox', 'name' => 'u',
 		  'value' => $p->{'update'}."/".$p->{'system'},
-		  'checked' => $need,
-		  'disabled' => $bp ? 1 : 0 },
-		($bp ? $p->{'name'} : 
-			&ui_link("view.cgi?mode=$in{'mode'}&name=".
-			  &urlize($p->{'name'})."&system=".
-			  &urlize($p->{'system'})."&search=".
-			  &urlize($in{'search'}), $p->{'name'})),
+		  'checked' => $need },
+		&ui_link("view.cgi?mode=$in{'mode'}&name=".
+		  &urlize($p->{'name'})."&system=".
+		  &urlize($p->{'system'})."&search=".
+		  &urlize($in{'search'}), $p->{'name'}),
 		$p->{'desc'},
 		$msg,
 		$source ? ( $source ) : ( ),
