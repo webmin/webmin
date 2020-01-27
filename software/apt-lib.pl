@@ -168,7 +168,7 @@ local (@rv, $pkg, %done);
 # Use dump to get versions
 &execute_command("$apt_get_command update");
 &clean_language();
-&open_execute_command(DUMP, "apt-cache dump 2>/dev/null", 1, 1);
+&open_execute_command(DUMP, "apt-cache dumpavail 2>/dev/null", 1, 1);
 while(<DUMP>) {
 	if (/^\s*Package:\s*(\S+)/) {
 		$pkg = { 'name' => $1 };
