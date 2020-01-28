@@ -379,22 +379,22 @@ SCO OpenServer			5	openserver	5	$uname =~ /SCO_SV.*\s5\./i
 SCO OpenServer			6	openserver	6	$uname =~ /SCO_SV.*\s6\./i
 
 # Apple's OS X versions
-macOS Catalina		10.15	macos		19.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.15/i
-macOS Mojave		10.14	macos		18.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.14/i
-macOS High Sierra	10.13	macos		17.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.13/i
-macOS Sierra		10.12	macos		16.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.12/i
-Mac OS X El Capitan	10.11	macos		15.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.11/i
-Mac OS X Yosemite	10.10	macos		14.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.10/i
-Mac OS X Mavericks	10.9	macos		13.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.9/i
-Mac OS X Mountain Lion	10.8	macos		12.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.8/i
-Mac OS X Lion		10.7	macos		11.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.7/i
-Mac OS X Snow Leopard	10.6	macos		10.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.6/i
-Mac OS X Leopard	10.5	macos		9.2	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.5/i
-Mac OS X Tiger		10.4	macos		8.1	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.4/i
-Mac OS X Panther	10.3	macos		7.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.3/i
-Mac OS X Jaguar		10.2	macos		6.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.2/i
-Mac OS X Puma		10.1	macos		1.4	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.1/i
-Mac OS X Cheetah	10.0	macos		1.3	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.0/i
+macOS Catalina			10.15	macos		19.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.15/i
+macOS Mojave			10.14	macos		18.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.14/i
+macOS High Sierra		10.13	macos		17.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.13/i
+macOS Sierra			10.12	macos		16.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.12/i
+Mac OS X				10.11	macos		15.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.11/i
+Mac OS X				10.10	macos		14.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.10/i
+Mac OS X				10.9	macos		13.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.9/i
+Mac OS X				10.8	macos		12.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.8/i
+Mac OS X				10.7	macos		11.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.7/i
+Mac OS X				10.6	macos		10.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.6/i
+Mac OS X				10.5	macos		9.2		`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.5/i
+Mac OS X				10.4	macos		8.1		`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.4/i
+Mac OS X				10.3	macos		7.0		`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.3/i
+Mac OS X				10.2	macos		6.0		`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.2/i
+Mac OS X				10.1	macos		1.4		`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.1/i
+Mac OS X				10.0	macos		1.3		`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.0/i
 
 # Darwin, the open source version of OS X
 Darwin				$1	macos		$1	$uname =~ /Darwin.*\s([0-9\.]+)/
