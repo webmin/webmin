@@ -235,7 +235,7 @@ foreach my $i (@rv) {
 		$i->[0] = "$i->[0]/php.ini";
 		}
 	}
-if (&foreign_installed("virtual-server")) {
+if ($access{'global'} && &foreign_installed("virtual-server")) {
 	&foreign_require("virtual-server");
 	foreach my $v (&virtual_server::list_available_php_versions()) {
 		if ($v->[0]) {
