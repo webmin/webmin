@@ -168,7 +168,7 @@ local (@rv, $pkg, %done);
 # Use dump to get versions
 &execute_command("$apt_get_command update");
 &clean_language();
-&open_execute_command(DUMP, "apt-cache dump 2>/dev/null", 1, 1);
+&open_execute_command(DUMP, "apt-cache dumpavail 2>/dev/null", 1, 1);
 while(<DUMP>) {
 	if (/^\s*Package:\s*(\S+)/) {
 		$pkg = { 'name' => $1 };
@@ -184,11 +184,6 @@ while(<DUMP>) {
 		}
 	elsif (/^\s*File:\s*(\S+)/ && $pkg) {
 		$pkg->{'file'} ||= $1;
-		}
-	# By default Debian backports repositories have a lower priority than stable (100) thus they won't 
-	# be installed or upgraded unless explicitly configured to (or the package only exists in backports).
-	if ($pkg->{'file'} =~ /dists_.*-backports/) {
-		$pkg->{'disallowed'} = "/Backports";
 		}
 	}
 close(DUMP);

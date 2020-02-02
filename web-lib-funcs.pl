@@ -8696,7 +8696,8 @@ my ($bytes, $minimal, $decimal) = @_;
 &load_theme_library();
 if (defined(&theme_nice_size) &&
     $main::header_content_type eq "text/html" &&
-    $main::webmin_script_type eq "web") {
+    $main::webmin_script_type eq "web" &&
+    !$main::theme_forbid_nice_size) {
 	return &theme_nice_size($_[0], $_[1], $_[2]);
 	}
 my ($decimal_units, $binary_units) = (1000, 1024);
