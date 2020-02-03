@@ -276,9 +276,32 @@ else {
 	splice(@$lref, $iface->{'line'},
 	       $iface->{'eline'} - $iface->{'line'} + 1);
 	&flush_file_lines($iface->{'file'});
+	if (&is_yaml_empty($iface->{'file'})) {
+		&unlink_file($iface->{'file'});
+		}
 	&unlock_file($iface->{'file'});
-	# XXX also delete file if empty?
 	}
+}
+
+# is_yaml_empty(file)
+# Return 1 if a YAML file contains only network and ethernets line, with no
+# other interfaces
+sub is_yaml_empty
+{
+my ($file) = @_;
+my $yaml = &read_yaml_file($file);
+return 1 if (!$yaml);
+my @rest = grep { $_->{'name'} ne 'network' } @$yaml;
+return 0 if (@rest);
+foreach my $n (@$yaml) {
+	my @rest = grep { $_->{'name'} ne 'ethernets' }
+			@{$network->{'members'}};
+	return 0 if (@rest);
+	foreach my $ens (@{$network->{'members'}}) {
+		return 0 if (@{$ens->{'members'}});
+		}
+	}
+return 1;
 }
 
 sub supports_bonding
@@ -576,6 +599,7 @@ foreach my $origl (@$lref) {
 			# A further ident by one level, meaning that it is under
 			# the previous directive
 			$parent = $lastdir;
+			$dir->{'parent'} = $parent;
 			push(@{$parent->{'members'}}, $dir);
 			}
 		elsif ($i < $lastdir->{'indent'}) {
@@ -586,6 +610,7 @@ foreach my $origl (@$lref) {
 				$parent = $parent->{'parent'};
 				}
 			push(@{$parent->{'members'}}, $dir);
+			$dir->{'parent'} = $parent;
 			}
 		$lastdir = $dir;
 		&set_parent_elines($parent, $lnum);
