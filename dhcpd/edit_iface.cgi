@@ -95,12 +95,12 @@ my $val;
 if (&foreign_check("net")) {
 	%got = map { $_, 1 } split(/\s+/, $iface);
 	&foreign_require("net", "net-lib.pl");
-	@ifaces = &net::active_interfaces();
+	@ifaces = $config{'list_listen_interfaces'} == 0 ? &net::active_interfaces() : &net::list_interfaces();
 	$sz = scalar(@ifaces);
     my @iface_sel;
 	foreach $i (@ifaces) {
-		$n = $i->{'fullname'};
-        push(@iface_sel,[$n,$n." (".&net::iface_type($n).")", ($got{$n} ? 'selected' : '') ]);
+		$n = $config{'list_listen_interfaces'} == 0 ? $i->{'fullname'} : $i;
+		push(@iface_sel,[$n,$n." (".&net::iface_type($n).")", ($got{$n} ? 'selected' : '') ]);
 		}
     $val = &ui_select("iface",undef,\@iface_sel,$sz,1);
 	}

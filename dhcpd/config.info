@@ -20,3 +20,5 @@ pid_file=Path to DHCP server PID file,3,None
 lease_file=DHCP server lease file,0
 interfaces_type=Interfaces file type,4,redhat-Redhat,mandrake-Mandrake,suse-SuSE,debian-Debian,caldera-Caldera,gentoo-Gentoo,freebsd-FreeBSD,-Webmin
 version=DHCP server version,3,Work out automatically
+list_listen_interfaces=List of Interfaces listen,1,0-Onley Interfaces Active,1-All Interfaces
+interfaces=Interfaces which run dhcp,3,Auto
