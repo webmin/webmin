@@ -108,20 +108,22 @@ if (&has_command("ip")) {
 				$l =~ s/\sinet\s+([0-9\.]+)\/(\d+)//;
 			}
 
-		# Add extra IPs as fake virtual interfaces
+		# Add extra IPs as fake virtual interfaces, from lines like
 		my $i = 0;
 		my $bn = $ifc{'name'};
-		while($l =~ s/\sinet\s+([0-9\.]+)\/(\d+).*?\Q$bn\E:(\d+)//) {
+		while($l =~ s/\sinet\s+([0-9\.]+)\/(\d+).*?\s\Q$bn\E:(\d+)// ||
+		      $l =~ s/\sinet\s+([0-9\.]+)\/(\d+).*?secondary.*?\s\Q$bn\E//) {
 			my %vifc;
+			my $vn = defined($3) ? $3 : $i;
 			$vifc{'name'} = $ifc{'name'};
-			$vifc{'fullname'} = $ifc{'name'}.":".$3;
+			$vifc{'fullname'} = $ifc{'name'}.":".$vn;
 			$vifc{'address'} = $1;
 			$vifc{'netmask'} = &prefix_to_mask("$2");
 			$vifc{'broadcast'} = &compute_broadcast(
 				$vifc{'address'}, $vifc{'netmask'});
 			$vifc{'mtu'} = $ifc{'mtu'};
 			$vifc{'up'} = $ifc{'up'};
-			$vifc{'virtual'} = $3;
+			$vifc{'virtual'} = $vn;
 			$vifc{'edit'} = ($vifc{'name'} !~ /^ppp/);
 			$vifc{'index'} = scalar(@rv);
 			push(@rv, \%vifc);
