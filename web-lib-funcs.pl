@@ -5580,10 +5580,11 @@ ref to read names and values into.
 =cut
 sub read_env_file
 {
+my ($file, $hash, $cmt) = @_;
 local $_;
-&open_readfile(FILE, $_[0]) || return 0;
+&open_readfile(FILE, $file) || return 0;
 while(<FILE>) {
-	if ($_[2]) {
+	if ($cmt) {
 		# Remove start of line comments
 		s/^\s*#+\s*//;
 		}
@@ -5591,7 +5592,7 @@ while(<FILE>) {
 	if (/^\s*(export\s*)?([A-Za-z0-9_\.]+)\s*=\s*"(.*)"/i ||
 	    /^\s*(export\s*)?([A-Za-z0-9_\.]+)\s*=\s*'(.*)'/i ||
 	    /^\s*(export\s*)?([A-Za-z0-9_\.]+)\s*=\s*(.*)/i) {
-		$_[1]->{$2} = $3;
+		$hash->{$2} = $3;
 		}
 	}
 close(FILE);
@@ -5612,15 +5613,18 @@ script. The parameters are :
 =cut
 sub write_env_file
 {
-my $exp = $_[2] ? "export " : "";
-&open_tempfile(FILE, ">$_[0]");
-foreach my $k (keys %{$_[1]}) {
-	my $v = $_[1]->{$k};
-	if ($v =~ /^\S+$/) {
-		&print_tempfile(FILE, "$exp$k=$v\n");
-		}
-	else {
-		&print_tempfile(FILE, "$exp$k=\"$v\"\n");
+my ($file, $hash, $emode) = @_;
+my $exp = $emode ? "export " : "";
+&open_tempfile(FILE, ">$file");
+foreach my $k (keys %$hash) {
+	my $v = $hash->{$k};
+	if (defined($v)) {
+		if ($v =~ /^\S+$/) {
+			&print_tempfile(FILE, "$exp$k=$v\n");
+			}
+		else {
+			&print_tempfile(FILE, "$exp$k=\"$v\"\n");
+			}
 		}
 	}
 &close_tempfile(FILE);
