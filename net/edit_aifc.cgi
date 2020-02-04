@@ -12,7 +12,7 @@ if ($in{'new'}) {
 	&can_create_iface() || &error($text{'ifcs_ecannot'});
 	if ($in{'virtual'}) {
 		# Pick a virtual number
-		$vmax = int($net::min_virtual_number);
+		$vmax = int($min_virtual_number);
 		foreach my $e (@act) {
 			$vmax = $e->{'virtual'}
 				if ($e->{'name'} eq $in{'virtual'} &&

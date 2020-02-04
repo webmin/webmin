@@ -37,7 +37,7 @@ elsif ($in{'new'}) {
 	&ui_print_header(undef, $text{'bifc_create'}, "");
 	if ($in{'virtual'}) {
 		# Pick a virtual number
-		$vmax = int($net::min_virtual_number);
+		$vmax = int($min_virtual_number);
 		foreach my $e (@boot) {
 			$vmax = $e->{'virtual'}
 				if ($e->{'name'} eq $in{'virtual'} &&
