@@ -122,7 +122,7 @@ if (open(PIDFILE, $config{'pidfile'})) {
 	my $already = <PIDFILE>;
 	close(PIDFILE);
 	chop($already);
-	if ($already && kill(0, $already)) {
+	if ($already && $already != $$ && kill(0, $already)) {
 		die "Webmin is already running with PID $already\n";
 		}
 	}
@@ -770,6 +770,8 @@ while(1) {
 	do {	$pid = waitpid(-1, WNOHANG);
 		@childpids = grep { $_ != $pid } @childpids;
 		} while($pid != 0 && $pid != -1);
+	@childpids = grep { !kill(0, $_) } @childpids;
+
 
 	# run the unblocking procedure to check if enough time has passed to
 	# unblock hosts that heve been blocked because of password failures
