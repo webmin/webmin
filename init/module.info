@@ -5,3 +5,4 @@ desc=Bootup and Shutdown
 depends=proc inittab
 longdesc=Setup scripts to be run at boot time from /etc/init.d or /etc/rc.local.
 readonly=1
+syslog=1
