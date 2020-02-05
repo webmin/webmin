@@ -259,6 +259,7 @@ if ($pmode) {
 	delete($conf{'NETMASK'.$n});
 	&write_env_file($file, \%conf);
 	&unlock_file($file);
+	$b->{'parent'} ||= $b->{'name'};
 	}
 else {
 	# Interface has it's own file
@@ -879,10 +880,20 @@ else {
 sub apply_interface
 {
 my ($i) = @_;
-local $out = &backquote_logged(
-	"cd / ; ".
-	"ifdown ".quotemeta($i->{'fullname'})." >/dev/null 2>&1 </dev/null ; ".
-	"ifup ".quotemeta($i->{'fullname'})." 2>&1 </dev/null");
+my $out;
+if ($i->{'parent'} && $i->{'virtual'} ne '') {
+	$out = &backquote_logged(
+		"cd / ; ".
+		"ifup ".quotemeta($i->{'name'})." 2>&1 </dev/null");
+	}
+else {
+	$out = &backquote_logged(
+		"cd / ; ".
+		"ifdown ".quotemeta($i->{'fullname'}).
+			" >/dev/null 2>&1 </dev/null ; ".
+		"ifup ".quotemeta($i->{'fullname'}).
+			" 2>&1 </dev/null");
+	}
 return $? || $out =~ /error/i ? $out : undef;
 }
 
