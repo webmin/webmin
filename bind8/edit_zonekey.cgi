@@ -60,7 +60,7 @@ if (@keyrecs) {
 	my $ds = &get_ds_record($zone);
 	if ($ds) {
 		print $text{'zonekey_ds'},"<br>\n";
-		print &ui_textarea("ds", $ds."\n", 2, 80, "off", 0,
+		print &ui_textarea("ds", join("\n".$desc, split(/$desc/, $ds)), 2, 80, "off", 0,
 				   "readonly style='width:90%'"),"<br>\n";
 		}
 
