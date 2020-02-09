@@ -5503,7 +5503,7 @@ return %rv;
 
 =head2 list_languages(current-lang)
 
-Returns an array of supported languages, taken from Webmin's os_list.txt file.
+Returns an array of supported languages, taken from Webmin's lang_list.txt file.
 Each is a hash reference with the following keys :
 
 =item lang - The short language code, like es for Spanish.
