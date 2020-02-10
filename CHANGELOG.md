@@ -1,5 +1,8 @@
 ## Changelog
 
+#### Version 1.941 (January 16, 2020)
+This release updates the built-in Let's Encrypt client, adds support for creating "safe-mode" Webmin users, support for CAA records in the BIND module, and the ability to search Postfix maps. It also updates the Authentic Theme to the latest version, which includes numerous improvements to the File Manager and overall UI.
+
 #### Version 1.930 (August 18, 2019)
 These updates fix a [security vulnerability](http://webmin.com/security.html) and should be installed IMMEDIATELY by all users. Although it is not exploitable in a Webmin install with the default configuration, upgrading is strongly recommended.
 
