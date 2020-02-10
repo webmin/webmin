@@ -17,7 +17,9 @@ chop(@commands = <COMMANDS>);
 close(COMMANDS);
 if (@commands) {
 	print &ui_table_row($text{'index_old'},
-		&ui_select("old", undef, [ &unique(@commands) ])." ".
+		&ui_select("old", undef,
+			[ map { [ $_, &html_escape($_) ] } 
+			      unique(@commands) ])." ".
 		&ui_button($text{'index_edit'}, "clear", undef,
 			   "onClick='form.cmd.value = form.old.value'").
 		" ".
