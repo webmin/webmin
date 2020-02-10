@@ -9,7 +9,7 @@ sub parse_webmin_log
 {
 local ($user, $script, $action, $type, $object, $p) = @_;
 if ($action eq "run") {
-	return &text('log_run', "<tt>$p->{'cmd'}</tt>");
+	return &text('log_run', "<tt>".&html_escape($p->{'cmd'})."</tt>");
 	}
 elsif ($action eq "clear") {
 	return $text{'log_clear'};
