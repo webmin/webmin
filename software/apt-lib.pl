@@ -406,7 +406,7 @@ if (&has_command("aptitude")) {
 # Get holds from apt-mark
 if (&has_command("apt-mark")) {
 	&clean_language();
-	&open_execute_command(PKGS, "apt-mark showhost 2>/dev/null", 1, 1);
+	&open_execute_command(PKGS, "apt-mark showhold 2>/dev/null", 1, 1);
 	while(<PKGS>) { 
 		if (/^([^:\s]+)/) {
 			$hold{$1} = 1;
