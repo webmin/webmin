@@ -459,6 +459,7 @@ sub apply_configuration
 {
 local $err = &run_before_apply_command();
 return $err if ($err);
+local @oldlive = &get_iptables_save("direct");
 if (defined(&apply_iptables)) {
 	# Call distro's apply command
 	$err = &apply_iptables();
@@ -468,8 +469,27 @@ else {
 	$err = &iptables_restore();
 	}
 return $err if ($err);
+if (!$config{"direct${ipvx}"}) {
+	# Put back fail2ban rules
+	local @newlive = &get_iptables_save("direct");
+	&merge_fail2ban_rules(\@oldlive, \@newlive);
+	}
 &run_after_apply_command();
 return undef;
+}
+
+# merge_fail2ban_rules(&old-live, &new-live)
+# If there were fail2ban rules before applying but not after, re-create them
+sub merge_fail2ban_rules
+{
+local ($oldlive, $newlive) = @_;
+local ($oldchain) = grep { $_->{'name'} eq 'f2b-default' } @$oldlive;
+local ($newchain) = grep { $_->{'name'} eq 'f2b-default' } @$newlive;
+return if (!$oldchain);		# fail2ban was never used
+local ($oldinput) = grep { $_->{'name'} eq 'INPUT' } @$oldlive;
+return if (!$oldinput);
+local $oldrule;
+# XXX not complete yet
 }
 
 # list_cluster_servers()
