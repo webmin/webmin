@@ -15,6 +15,7 @@ Example code:
 ##use warnings;
 use Socket;
 use POSIX;
+use Encode;
 eval "use Socket6";
 $ipv6_module_error = $@;
 our $error_handler_funcs = [ ];
@@ -10908,22 +10909,30 @@ for(my $i=0; $i<@sp1 || $i<@sp2; $i++) {
 return 0;
 }
 
-=head2 convert_to_json(data)
+=head2 convert_to_json(data, [utf8], [pretty])
 
 Converts the given Perl data structure to encoded binary string
 
 =item data parameter is a hash/array reference
+=item if the string should be UTF-8 encoded - most of the times, we already have UTF-8 on input, so don't use it
+=item if the output should be prettified
 
 =cut
 sub convert_to_json
 {
 eval "use JSON::PP";
 if (!$@) {
-	if (@_) {
-		return JSON::PP->new->latin1->encode(@_);
-		}
+	my ($data, $utf8, $pretty) = @_;
+	my $json = JSON::PP->new;
+	$utf8 = 0 if (!$utf8);
+	$pretty = 0 if (!$pretty);
+	$json = $json->pretty($pretty);
+	$data ||= {};
+	if	($utf8) {
+		return $json->encode($data);
+		} 
 	else {
-		return JSON::PP->new->latin1->encode({});
+		return decode "UTF-8", $json->encode($data);
 		}
 	}
 else {

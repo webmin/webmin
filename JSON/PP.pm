@@ -4,14 +4,17 @@ package JSON::PP;
 
 use 5.005;
 use strict;
-use base qw(Exporter);
+
+use Exporter ();
+BEGIN { @JSON::PP::ISA = ('Exporter') }
+
 use overload ();
+use JSON::PP::Boolean;
 
 use Carp ();
-use B ();
 #use Devel::Peek;
 
-$JSON::PP::VERSION = '2.27400';
+$JSON::PP::VERSION = '4.04';
 
 @JSON::PP::EXPORT = qw(encode_json decode_json from_json to_json);
 
@@ -39,13 +42,22 @@ use constant P_ESCAPE_SLASH         => 16;
 use constant P_AS_NONBLESSED        => 17;
 
 use constant P_ALLOW_UNKNOWN        => 18;
+use constant P_ALLOW_TAGS           => 19;
 
 use constant OLD_PERL => $] < 5.008 ? 1 : 0;
+use constant USE_B => $ENV{PERL_JSON_PP_USE_B} || 0;
+
+BEGIN {
+    if (USE_B) {
+        require B;
+    }
+}
 
 BEGIN {
     my @xs_compati_bit_properties = qw(
             latin1 ascii utf8 indent canonical space_before space_after allow_nonref shrink
             allow_blessed convert_blessed relaxed allow_unknown
+            allow_tags
     );
     my @pp_bit_properties = qw(
             allow_singlequote allow_bignum loose
@@ -54,31 +66,31 @@ BEGIN {
 
     # Perl version check, Unicode handling is enabled?
     # Helper module sets @JSON::PP::_properties.
-    if ($] < 5.008 ) {
+    if ( OLD_PERL ) {
         my $helper = $] >= 5.006 ? 'JSON::PP::Compat5006' : 'JSON::PP::Compat5005';
         eval qq| require $helper |;
         if ($@) { Carp::croak $@; }
     }
 
     for my $name (@xs_compati_bit_properties, @pp_bit_properties) {
-        my $flag_name = 'P_' . uc($name);
+        my $property_id = 'P_' . uc($name);
 
         eval qq/
             sub $name {
                 my \$enable = defined \$_[1] ? \$_[1] : 1;
 
                 if (\$enable) {
-                    \$_[0]->{PROPS}->[$flag_name] = 1;
+                    \$_[0]->{PROPS}->[$property_id] = 1;
                 }
                 else {
-                    \$_[0]->{PROPS}->[$flag_name] = 0;
+                    \$_[0]->{PROPS}->[$property_id] = 0;
                 }
 
                 \$_[0];
             }
 
             sub get_$name {
-                \$_[0]->{PROPS}->[$flag_name] ? 1 : '';
+                \$_[0]->{PROPS}->[$property_id] ? 1 : '';
             }
         /;
     }
@@ -88,16 +100,6 @@ BEGIN {
 
 
 # Functions
-
-my %encode_allow_method
-     = map {($_ => 1)} qw/utf8 pretty allow_nonref latin1 self_encode escape_slash
-                          allow_blessed convert_blessed indent indent_length allow_bignum
-                          as_nonblessed
-                        /;
-my %decode_allow_method
-     = map {($_ => 1)} qw/utf8 allow_nonref loose allow_singlequote allow_bignum
-                          allow_barekey max_size relaxed/;
-
 
 my $JSON; # cache
 
@@ -129,11 +131,10 @@ sub new {
     my $self  = {
         max_depth   => 512,
         max_size    => 0,
-        indent      => 0,
-        FLAGS       => 0,
-        fallback      => sub { encode_error('Invalid value. JSON can only reference.') },
         indent_length => 3,
     };
+
+    $self->{PROPS}[P_ALLOW_NONREF] = 1;
 
     bless $self, $class;
 }
@@ -164,7 +165,7 @@ sub pretty {
     my $enable = defined $v ? $v : 1;
 
     if ($enable) { # indent_length(3) for JSON::XS compatibility
-        $self->indent(1)->indent_length(3)->space_before(1)->space_after(1);
+        $self->indent(1)->space_before(1)->space_after(1);
     }
     else {
         $self->indent(0)->space_before(0)->space_after(0);
@@ -194,16 +195,47 @@ sub max_size {
 
 sub get_max_size { $_[0]->{max_size}; }
 
+sub boolean_values {
+    my $self = shift;
+    if (@_) {
+        my ($false, $true) = @_;
+        $self->{false} = $false;
+        $self->{true} = $true;
+        return ($false, $true);
+    } else {
+        delete $self->{false};
+        delete $self->{true};
+        return;
+    }
+}
+
+sub get_boolean_values {
+    my $self = shift;
+    if (exists $self->{true} and exists $self->{false}) {
+        return @$self{qw/false true/};
+    }
+    return;
+}
 
 sub filter_json_object {
-    $_[0]->{cb_object} = defined $_[1] ? $_[1] : 0;
+    if (defined $_[1] and ref $_[1] eq 'CODE') {
+        $_[0]->{cb_object} = $_[1];
+    } else {
+        delete $_[0]->{cb_object};
+    }
     $_[0]->{F_HOOK} = ($_[0]->{cb_object} or $_[0]->{cb_sk_object}) ? 1 : 0;
     $_[0];
 }
 
 sub filter_json_single_key_object {
-    if (@_ > 1) {
+    if (@_ == 1 or @_ > 3) {
+        Carp::croak("Usage: JSON::PP::filter_json_single_key_object(self, key, callback = undef)");
+    }
+    if (defined $_[2] and ref $_[2] eq 'CODE') {
         $_[0]->{cb_sk_object}->{$_[1]} = $_[2];
+    } else {
+        delete $_[0]->{cb_sk_object}->{$_[1]};
+        delete $_[0]->{cb_sk_object} unless %{$_[0]->{cb_sk_object} || {}};
     }
     $_[0]->{F_HOOK} = ($_[0]->{cb_object} or $_[0]->{cb_sk_object}) ? 1 : 0;
     $_[0];
@@ -229,7 +261,8 @@ sub sort_by {
 }
 
 sub allow_bigint {
-    Carp::carp("allow_bigint() is obsoleted. use allow_bignum() insted.");
+    Carp::carp("allow_bigint() is obsoleted. use allow_bignum() instead.");
+    $_[0]->allow_bignum;
 }
 
 ###############################
@@ -256,6 +289,7 @@ sub allow_bigint {
     my $escape_slash;
     my $bignum;
     my $as_nonblessed;
+    my $allow_tags;
 
     my $depth;
     my $indent_count;
@@ -269,12 +303,12 @@ sub allow_bigint {
         $indent_count = 0;
         $depth        = 0;
 
-        my $idx = $self->{PROPS};
+        my $props = $self->{PROPS};
 
         ($ascii, $latin1, $utf8, $indent, $canonical, $space_before, $space_after, $allow_blessed,
-            $convert_blessed, $escape_slash, $bignum, $as_nonblessed)
-         = @{$idx}[P_ASCII .. P_SPACE_AFTER, P_ALLOW_BLESSED, P_CONVERT_BLESSED,
-                    P_ESCAPE_SLASH, P_ALLOW_BIGNUM, P_AS_NONBLESSED];
+            $convert_blessed, $escape_slash, $bignum, $as_nonblessed, $allow_tags)
+         = @{$props}[P_ASCII .. P_SPACE_AFTER, P_ALLOW_BLESSED, P_CONVERT_BLESSED,
+                    P_ESCAPE_SLASH, P_ALLOW_BIGNUM, P_AS_NONBLESSED, P_ALLOW_TAGS];
 
         ($max_depth, $indent_length) = @{$self}{qw/max_depth indent_length/};
 
@@ -287,7 +321,7 @@ sub allow_bigint {
         }
 
         encode_error("hash- or arrayref expected (not a simple scalar, use allow_nonref to allow this)")
-             if(!ref $obj and !$idx->[ P_ALLOW_NONREF ]);
+             if(!ref $obj and !$props->[ P_ALLOW_NONREF ]);
 
         my $str  = $self->object_to_json($obj);
 
@@ -297,7 +331,7 @@ sub allow_bigint {
             utf8::upgrade($str);
         }
 
-        if ($idx->[ P_SHRINK ]) {
+        if ($props->[ P_SHRINK ]) {
             utf8::downgrade($str, 1);
         }
 
@@ -320,6 +354,21 @@ sub allow_bigint {
 
                 return $self->value_to_json($obj) if ( $obj->isa('JSON::PP::Boolean') );
 
+                if ( $allow_tags and $obj->can('FREEZE') ) {
+                    my $obj_class = ref $obj || $obj;
+                    $obj = bless $obj, $obj_class;
+                    my @results = $obj->FREEZE('JSON');
+                    if ( @results and ref $results[0] ) {
+                        if ( refaddr( $obj ) eq refaddr( $results[0] ) ) {
+                            encode_error( sprintf(
+                                "%s::FREEZE method returned same object as was passed instead of a new one",
+                                ref $obj
+                            ) );
+                        }
+                    }
+                    return '("'.$obj_class.'")['.join(',', @results).']';
+                }
+
                 if ( $convert_blessed and $obj->can('TO_JSON') ) {
                     my $result = $obj->TO_JSON();
                     if ( defined $result and ref( $result ) ) {
@@ -335,13 +384,13 @@ sub allow_bigint {
                 }
 
                 return "$obj" if ( $bignum and _is_bignum($obj) );
-                return $self->blessed_to_json($obj) if ($allow_blessed and $as_nonblessed); # will be removed.
 
-                encode_error( sprintf("encountered object '%s', but neither allow_blessed "
-                    . "nor convert_blessed settings are enabled", $obj)
-                ) unless ($allow_blessed);
-
-                return 'null';
+                if ($allow_blessed) {
+                    return $self->blessed_to_json($obj) if ($as_nonblessed); # will be removed.
+                    return 'null';
+                }
+                encode_error( sprintf("encountered object '%s', but neither allow_blessed, convert_blessed nor allow_tags settings are enabled (or TO_JSON/FREEZE method missing)", $obj)
+                );
             }
             else {
                 return $self->value_to_json($obj);
@@ -365,15 +414,16 @@ sub allow_bigint {
 
         for my $k ( _sort( $obj ) ) {
             if ( OLD_PERL ) { utf8::decode($k) } # key for Perl 5.6 / be optimized
-            push @res, string_to_json( $self, $k )
+            push @res, $self->string_to_json( $k )
                           .  $del
-                          . ( $self->object_to_json( $obj->{$k} ) || $self->value_to_json( $obj->{$k} ) );
+                          . ( ref $obj->{$k} ? $self->object_to_json( $obj->{$k} ) : $self->value_to_json( $obj->{$k} ) );
         }
 
         --$depth;
         $self->_down_indent() if ($indent);
 
-        return   '{' . ( @res ? $pre : '' ) . ( @res ? join( ",$pre", @res ) . $post : '' )  . '}';
+        return '{}' unless @res;
+        return '{' . $pre . join( ",$pre", @res ) . $post . '}';
     }
 
 
@@ -387,36 +437,55 @@ sub allow_bigint {
         my ($pre, $post) = $indent ? $self->_up_indent() : ('', '');
 
         for my $v (@$obj){
-            push @res, $self->object_to_json($v) || $self->value_to_json($v);
+            push @res, ref($v) ? $self->object_to_json($v) : $self->value_to_json($v);
         }
 
         --$depth;
         $self->_down_indent() if ($indent);
 
-        return '[' . ( @res ? $pre : '' ) . ( @res ? join( ",$pre", @res ) . $post : '' ) . ']';
+        return '[]' unless @res;
+        return '[' . $pre . join( ",$pre", @res ) . $post . ']';
     }
 
+    sub _looks_like_number {
+        my $value = shift;
+        if (USE_B) {
+            my $b_obj = B::svref_2object(\$value);
+            my $flags = $b_obj->FLAGS;
+            return 1 if $flags & ( B::SVp_IOK() | B::SVp_NOK() ) and !( $flags & B::SVp_POK() );
+            return;
+        } else {
+            no warnings 'numeric';
+            # if the utf8 flag is on, it almost certainly started as a string
+            return if utf8::is_utf8($value);
+            # detect numbers
+            # string & "" -> ""
+            # number & "" -> 0 (with warning)
+            # nan and inf can detect as numbers, so check with * 0
+            return unless length((my $dummy = "") & $value);
+            return unless 0 + $value eq $value;
+            return 1 if $value * 0 == 0;
+            return -1; # inf/nan
+        }
+    }
 
     sub value_to_json {
         my ($self, $value) = @_;
 
         return 'null' if(!defined $value);
 
-        my $b_obj = B::svref_2object(\$value);  # for round trip problem
-        my $flags = $b_obj->FLAGS;
-
-        return $value # as is 
-            if $flags & ( B::SVp_IOK | B::SVp_NOK ) and !( $flags & B::SVp_POK ); # SvTYPE is IV or NV?
-
         my $type = ref($value);
 
-        if(!$type){
-            return string_to_json($self, $value);
+        if (!$type) {
+            if (_looks_like_number($value)) {
+                return $value;
+            }
+            return $self->string_to_json($value);
         }
         elsif( blessed($value) and  $value->isa('JSON::PP::Boolean') ){
             return $$value == 1 ? 'true' : 'false';
         }
-        elsif ($type) {
+        else {
             if ((overload::StrVal($value) =~ /=(\w+)/)[0]) {
                 return $self->value_to_json("$value");
             }
@@ -428,25 +497,19 @@ sub allow_bigint {
                        : encode_error("cannot encode reference to scalar");
             }
 
-             if ( $self->{PROPS}->[ P_ALLOW_UNKNOWN ] ) {
-                 return 'null';
-             }
-             else {
-                 if ( $type eq 'SCALAR' or $type eq 'REF' ) {
+            if ( $self->{PROPS}->[ P_ALLOW_UNKNOWN ] ) {
+                return 'null';
+            }
+            else {
+                if ( $type eq 'SCALAR' or $type eq 'REF' ) {
                     encode_error("cannot encode reference to scalar");
-                 }
-                 else {
+                }
+                else {
                     encode_error("encountered $value, but JSON can only represent references to arrays or hashes");
-                 }
-             }
+                }
+            }
 
         }
-        else {
-            return $self->{fallback}->($value)
-                 if ($self->{fallback} and ref($self->{fallback}) eq 'CODE');
-            return 'null';
-        }
-
     }
 
 
@@ -625,19 +688,31 @@ BEGIN {
 
     my $F_HOOK;
 
-    my $allow_bigint;   # using Math::BigInt
+    my $allow_bignum;   # using Math::BigInt/BigFloat
     my $singlequote;    # loosely quoting
     my $loose;          # 
     my $allow_barekey;  # bareKey
+    my $allow_tags;
 
-    # $opt flag
-    # 0x00000001 .... decode_prefix
-    # 0x10000000 .... incr_parse
+    my $alt_true;
+    my $alt_false;
+
+    sub _detect_utf_encoding {
+        my $text = shift;
+        my @octets = unpack('C4', $text);
+        return 'unknown' unless defined $octets[3];
+        return ( $octets[0] and  $octets[1]) ? 'UTF-8'
+             : (!$octets[0] and  $octets[1]) ? 'UTF-16BE'
+             : (!$octets[0] and !$octets[1]) ? 'UTF-32BE'
+             : ( $octets[2]                ) ? 'UTF-16LE'
+             : (!$octets[2]                ) ? 'UTF-32LE'
+             : 'unknown';
+    }
 
     sub PP_decode_json {
-        my ($self, $opt); # $opt is an effective flag during this decode_json.
+        my ($self, $want_offset);
 
-        ($self, $text, $opt) = @_;
+        ($self, $text, $want_offset) = @_;
 
         ($at, $ch, $depth) = (0, '', 0);
 
@@ -645,13 +720,21 @@ BEGIN {
             decode_error("malformed JSON string, neither array, object, number, string or atom");
         }
 
-        my $idx = $self->{PROPS};
+        my $props = $self->{PROPS};
 
-        ($utf8, $relaxed, $loose, $allow_bigint, $allow_barekey, $singlequote)
-            = @{$idx}[P_UTF8, P_RELAXED, P_LOOSE .. P_ALLOW_SINGLEQUOTE];
+        ($utf8, $relaxed, $loose, $allow_bignum, $allow_barekey, $singlequote, $allow_tags)
+            = @{$props}[P_UTF8, P_RELAXED, P_LOOSE .. P_ALLOW_SINGLEQUOTE, P_ALLOW_TAGS];
+
+        ($alt_true, $alt_false) = @$self{qw/true false/};
 
         if ( $utf8 ) {
-            utf8::downgrade( $text, 1 ) or Carp::croak("Wide character in subroutine entry");
+            $encoding = _detect_utf_encoding($text);
+            if ($encoding ne 'UTF-8' and $encoding ne 'unknown') {
+                require Encode;
+                Encode::from_to($text, $encoding, 'utf-8');
+            } else {
+                utf8::downgrade( $text, 1 ) or Carp::croak("Wide character in subroutine entry");
+            }
         }
         else {
             utf8::upgrade( $text );
@@ -672,27 +755,13 @@ BEGIN {
             ) if ($bytes > $max_size);
         }
 
-        # Currently no effect
-        # should use regexp
-        my @octets = unpack('C4', $text);
-        $encoding =   ( $octets[0] and  $octets[1]) ? 'UTF-8'
-                    : (!$octets[0] and  $octets[1]) ? 'UTF-16BE'
-                    : (!$octets[0] and !$octets[1]) ? 'UTF-32BE'
-                    : ( $octets[2]                ) ? 'UTF-16LE'
-                    : (!$octets[2]                ) ? 'UTF-32LE'
-                    : 'unknown';
-
         white(); # remove head white space
 
-        my $valid_start = defined $ch; # Is there a first character for JSON structure?
+        decode_error("malformed JSON string, neither array, object, number, string or atom") unless defined $ch; # Is there a first character for JSON structure?
 
         my $result = value();
 
-        return undef if ( !$result && ( $opt & 0x10000000 ) ); # for incr_parse
-
-        decode_error("malformed JSON string, neither array, object, number, string or atom") unless $valid_start;
-
-        if ( !$idx->[ P_ALLOW_NONREF ] and !ref $result ) {
+        if ( !$props->[ P_ALLOW_NONREF ] and !ref $result ) {
                 decode_error(
                 'JSON text must be an object or array (but found number, string, true, false or null,'
                        . ' use allow_nonref to allow this)', 1);
@@ -704,12 +773,11 @@ BEGIN {
 
         white(); # remove tail white space
 
-        if ( $ch ) {
-            return ( $result, $consumed ) if ($opt & 0x00000001); # all right if decode_prefix
-            decode_error("garbage after JSON object");
-        }
+        return ( $result, $consumed ) if $want_offset; # all right if decode_prefix
 
-        ( $opt & 0x00000001 ) ? ( $result, $consumed ) : $result;
+        decode_error("garbage after JSON object") if defined $ch;
+
+        $result;
     }
 
 
@@ -724,19 +792,19 @@ BEGIN {
         return          if(!defined $ch);
         return object() if($ch eq '{');
         return array()  if($ch eq '[');
+        return tag()    if($ch eq '(');
         return string() if($ch eq '"' or ($singlequote and $ch eq "'"));
         return number() if($ch =~ /[0-9]/ or $ch eq '-');
         return word();
     }
 
     sub string {
-        my ($i, $s, $t, $u);
         my $utf16;
         my $is_utf8;
 
         ($is_valid_utf8, $utf8_len) = ('', 0);
 
-        $s = ''; # basically UTF8 flag on
+        my $s = ''; # basically UTF8 flag on
 
         if($ch eq '"' or ($singlequote and $ch eq "'")){
             my $boundChar = $ch;
@@ -820,8 +888,10 @@ BEGIN {
 
                     if (!$loose) {
                         if ($ch =~ /[\x00-\x1f\x22\x5c]/)  { # '/' ok
-                            $at--;
-                            decode_error('invalid character encountered while parsing JSON string');
+                            if (!$relaxed or $ch ne "\t") {
+                                $at--;
+                                decode_error('invalid character encountered while parsing JSON string');
+                            }
                         }
                     }
 
@@ -836,10 +906,10 @@ BEGIN {
 
     sub white {
         while( defined $ch  ){
-            if($ch le ' '){
+            if($ch eq '' or $ch =~ /\A[ \t\r\n]\z/){
                 next_chr();
             }
-            elsif($ch eq '/'){
+            elsif($relaxed and $ch eq '/'){
                 next_chr();
                 if(defined $ch and $ch eq '/'){
                     1 while(defined(next_chr()) and $ch ne "\n" and $ch ne "\r");
@@ -930,9 +1000,39 @@ BEGIN {
             }
         }
 
+        $at-- if defined $ch and $ch ne '';
         decode_error(", or ] expected while parsing array");
     }
 
+    sub tag {
+        decode_error('malformed JSON string, neither array, object, number, string or atom') unless $allow_tags;
+
+        next_chr();
+        white();
+
+        my $tag = value();
+        return unless defined $tag;
+        decode_error('malformed JSON string, (tag) must be a string') if ref $tag;
+
+        white();
+
+        if (!defined $ch or $ch ne ')') {
+            decode_error(') expected after tag');
+        }
+
+        next_chr();
+        white();
+
+        my $val = value();
+        return unless defined $val;
+        decode_error('malformed JSON string, tag value must be an array') unless ref $val eq 'ARRAY';
+
+        if (!eval { $tag->can('THAW') }) {
+             decode_error('cannot decode perl-object (package does not exist)') if $@;
+             decode_error('cannot decode perl-object (package does not have a THAW method)');
+        }
+        $tag->THAW('JSON', @$val);
+    }
 
     sub object {
         my $o = $_[0] || {}; # you can use this code to use another hash ref object.
@@ -996,7 +1096,7 @@ BEGIN {
 
         }
 
-        $at--;
+        $at-- if defined $ch and $ch ne '';
         decode_error(", or } expected while parsing object/hash");
     }
 
@@ -1017,7 +1117,7 @@ BEGIN {
         if($word eq 'true'){
             $at += 3;
             next_chr;
-            return $JSON::PP::true;
+            return defined $alt_true ? $alt_true : $JSON::PP::true;
         }
         elsif($word eq 'null'){
             $at += 3;
@@ -1029,7 +1129,7 @@ BEGIN {
             if(substr($text,$at,1) eq 'e'){
                 $at++;
                 next_chr;
-                return $JSON::PP::false;
+                return defined $alt_false ? $alt_false : $JSON::PP::false;
             }
         }
 
@@ -1046,32 +1146,7 @@ BEGIN {
         my $n    = '';
         my $v;
         my $is_dec;
-
-        # According to RFC4627, hex or oct digits are invalid.
-        if($ch eq '0'){
-            my $peek = substr($text,$at,1);
-            my $hex  = $peek =~ /[xX]/; # 0 or 1
-
-            if($hex){
-                decode_error("malformed number (leading zero must not be followed by another digit)");
-                ($n) = ( substr($text, $at+1) =~ /^([0-9a-fA-F]+)/);
-            }
-            else{ # oct
-                ($n) = ( substr($text, $at) =~ /^([0-7]+)/);
-                if (defined $n and length $n > 1) {
-                    decode_error("malformed number (leading zero must not be followed by another digit)");
-                }
-            }
-
-            if(defined $n and length($n)){
-                if (!$hex and length($n) == 1) {
-                   decode_error("malformed number (leading zero must not be followed by another digit)");
-                }
-                $at += length($n) + $hex;
-                next_chr;
-                return $hex ? hex($n) : oct($n);
-            }
-        }
+        my $is_exp;
 
         if($ch eq '-'){
             $n = '-';
@@ -1079,6 +1154,16 @@ BEGIN {
             if (!defined $ch or $ch !~ /\d/) {
                 decode_error("malformed number (no digits after initial minus)");
             }
+        }
+
+        # According to RFC4627, hex or oct digits are invalid.
+        if($ch eq '0'){
+            my $peek = substr($text,$at,1);
+            if($peek =~ /^[0-9a-dfA-DF]/){ # e may be valid (exponential)
+                decode_error("malformed number (leading zero must not be followed by another digit)");
+            }
+            $n .= $ch;
+            next_chr;
         }
 
         while(defined $ch and $ch =~ /\d/){
@@ -1105,6 +1190,7 @@ BEGIN {
 
         if(defined $ch and ($ch eq 'e' or $ch eq 'E')){
             $n .= $ch;
+            $is_exp = 1;
             next_chr;
 
             if(defined($ch) and ($ch eq '+' or $ch eq '-')){
@@ -1130,18 +1216,21 @@ BEGIN {
 
         $v .= $n;
 
-        if ($v !~ /[.eE]/ and length $v > $max_intsize) {
-            if ($allow_bigint) { # from Adam Sussman
-                require Math::BigInt;
-                return Math::BigInt->new($v);
+        if ($is_dec or $is_exp) {
+            if ($allow_bignum) {
+                require Math::BigFloat;
+                return Math::BigFloat->new($v);
             }
-            else {
-                return "$v";
+        } else {
+            if (length $v > $max_intsize) {
+                if ($allow_bignum) { # from Adam Sussman
+                    require Math::BigInt;
+                    return Math::BigInt->new($v);
+                }
+                else {
+                    return "$v";
+                }
             }
-        }
-        elsif ($allow_bigint) {
-            require Math::BigFloat;
-            return Math::BigFloat->new($v);
         }
 
         return $is_dec ? $v/1.0 : 0+$v;
@@ -1180,11 +1269,14 @@ BEGIN {
         my $no_rep = shift;
         my $str    = defined $text ? substr($text, $at) : '';
         my $mess   = '';
-        my $type   = $] >= 5.008           ? 'U*'
-                   : $] <  5.006           ? 'C*'
-                   : utf8::is_utf8( $str ) ? 'U*' # 5.6
-                   : 'C*'
-                   ;
+        my $type   = 'U*';
+
+        if ( OLD_PERL ) {
+            my $type   =  $] <  5.006           ? 'C*'
+                        : utf8::is_utf8( $str ) ? 'U*' # 5.6
+                        : 'C*'
+                        ;
+        }
 
         for my $c ( unpack( $type, $str ) ) { # emulate pv_uni_display() ?
             $mess .=  $c == 0x07 ? '\a'
@@ -1220,17 +1312,26 @@ BEGIN {
 
         if ( $cb_sk_object and @ks == 1 and exists $cb_sk_object->{ $ks[0] } and ref $cb_sk_object->{ $ks[0] } ) {
             my @val = $cb_sk_object->{ $ks[0] }->( $o->{$ks[0]} );
-            if (@val == 1) {
+            if (@val == 0) {
+                return $o;
+            }
+            elsif (@val == 1) {
                 return $val[0];
+            }
+            else {
+                Carp::croak("filter_json_single_key_object callbacks must not return more than one scalar");
             }
         }
 
         my @val = $cb_object->($o) if ($cb_object);
-        if (@val == 0 or @val > 1) {
+        if (@val == 0) {
             return $o;
         }
-        else {
+        elsif (@val == 1) {
             return $val[0];
+        }
+        else {
+            Carp::croak("filter_json_object callbacks must not return more than one scalar");
         }
     }
 
@@ -1275,26 +1376,26 @@ BEGIN {
        *utf8::is_utf8 = *Encode::is_utf8;
     }
 
-    if ( $] >= 5.008 ) {
+    if ( !OLD_PERL ) {
         *JSON::PP::JSON_PP_encode_ascii      = \&_encode_ascii;
         *JSON::PP::JSON_PP_encode_latin1     = \&_encode_latin1;
         *JSON::PP::JSON_PP_decode_surrogates = \&_decode_surrogates;
         *JSON::PP::JSON_PP_decode_unicode    = \&_decode_unicode;
-    }
 
-    if ($] >= 5.008 and $] < 5.008003) { # join() in 5.8.0 - 5.8.2 is broken.
-        package JSON::PP;
-        require subs;
-        subs->import('join');
-        eval q|
-            sub join {
-                return '' if (@_ < 2);
-                my $j   = shift;
-                my $str = shift;
-                for (@_) { $str .= $j . $_; }
-                return $str;
-            }
-        |;
+        if ($] < 5.008003) { # join() in 5.8.0 - 5.8.2 is broken.
+            package JSON::PP;
+            require subs;
+            subs->import('join');
+            eval q|
+                sub join {
+                    return '' if (@_ < 2);
+                    my $j   = shift;
+                    my $str = shift;
+                    for (@_) { $str .= $j . $_; }
+                    return $str;
+                }
+            |;
+        }
     }
 
 
@@ -1317,7 +1418,7 @@ BEGIN {
         sub JSON::PP::incr_text : lvalue {
             $_[0]->{_incr_parser} ||= JSON::PP::IncrParser->new;
 
-            if ( $_[0]->{_incr_parser}->{incr_parsing} ) {
+            if ( $_[0]->{_incr_parser}->{incr_pos} ) {
                 Carp::croak("incr_text cannot be called when the incremental parser already started parsing");
             }
             $_[0]->{_incr_parser}->{incr_text};
@@ -1338,13 +1439,14 @@ BEGIN {
         *JSON::PP::reftype = \&Scalar::Util::reftype;
         *JSON::PP::refaddr = \&Scalar::Util::refaddr;
     }
-    else{ # This code is from Sclar::Util.
+    else{ # This code is from Scalar::Util.
         # warn $@;
         eval 'sub UNIVERSAL::a_sub_not_likely_to_be_here { ref($_[0]) }';
         *JSON::PP::blessed = sub {
             local($@, $SIG{__DIE__}, $SIG{__WARN__});
             ref($_[0]) ? eval { $_[0]->a_sub_not_likely_to_be_here } : undef;
         };
+        require B;
         my %tmap = qw(
             B::NULL   SCALAR
             B::HV     HASH
@@ -1392,23 +1494,11 @@ BEGIN {
 $JSON::PP::true  = do { bless \(my $dummy = 1), "JSON::PP::Boolean" };
 $JSON::PP::false = do { bless \(my $dummy = 0), "JSON::PP::Boolean" };
 
-sub is_bool { defined $_[0] and UNIVERSAL::isa($_[0], "JSON::PP::Boolean"); }
+sub is_bool { blessed $_[0] and ( $_[0]->isa("JSON::PP::Boolean") or $_[0]->isa("Types::Serialiser::BooleanBase") or $_[0]->isa("JSON::XS::Boolean") ); }
 
 sub true  { $JSON::PP::true  }
 sub false { $JSON::PP::false }
 sub null  { undef; }
-
-###############################
-
-package JSON::PP::Boolean;
-
-use overload (
-   "0+"     => sub { ${$_[0]} },
-   "++"     => sub { $_[0] = ${$_[0]} + 1 },
-   "--"     => sub { $_[0] = ${$_[0]} - 1 },
-   fallback => 1,
-);
-
 
 ###############################
 
@@ -1422,10 +1512,10 @@ use constant INCR_M_BS   => 2; # inside backslash
 use constant INCR_M_JSON => 3; # outside anything, count nesting
 use constant INCR_M_C0   => 4;
 use constant INCR_M_C1   => 5;
+use constant INCR_M_TFN  => 6;
+use constant INCR_M_NUM  => 7;
 
 $JSON::PP::IncrParser::VERSION = '1.01';
-
-my $unpack_format = $] < 5.006 ? 'C*' : 'U*';
 
 sub new {
     my ( $class ) = @_;
@@ -1433,8 +1523,8 @@ sub new {
     bless {
         incr_nest    => 0,
         incr_text    => undef,
-        incr_parsing => 0,
-        incr_p       => 0,
+        incr_pos     => 0,
+        incr_mode    => 0,
     }, $class;
 }
 
@@ -1452,122 +1542,178 @@ sub incr_parse {
         $self->{incr_text} .= $text;
     }
 
-
-    my $max_size = $coder->get_max_size;
-
     if ( defined wantarray ) {
-
-        $self->{incr_mode} = INCR_M_WS unless defined $self->{incr_mode};
-
-        if ( wantarray ) {
-            my @ret;
-
-            $self->{incr_parsing} = 1;
-
+        my $max_size = $coder->get_max_size;
+        my $p = $self->{incr_pos};
+        my @ret;
+        {
             do {
-                push @ret, $self->_incr_parse( $coder, $self->{incr_text} );
+                unless ( $self->{incr_nest} <= 0 and $self->{incr_mode} == INCR_M_JSON ) {
+                    $self->_incr_parse( $coder );
 
-                unless ( !$self->{incr_nest} and $self->{incr_mode} == INCR_M_JSON ) {
-                    $self->{incr_mode} = INCR_M_WS if $self->{incr_mode} != INCR_M_STR;
+                    if ( $max_size and $self->{incr_pos} > $max_size ) {
+                        Carp::croak("attempted decode of JSON text of $self->{incr_pos} bytes size, but max_size is set to $max_size");
+                    }
+                    unless ( $self->{incr_nest} <= 0 and $self->{incr_mode} == INCR_M_JSON ) {
+                        # as an optimisation, do not accumulate white space in the incr buffer
+                        if ( $self->{incr_mode} == INCR_M_WS and $self->{incr_pos} ) {
+                            $self->{incr_pos} = 0;
+                            $self->{incr_text} = '';
+                        }
+                        last;
+                    }
                 }
 
-            } until ( length $self->{incr_text} >= $self->{incr_p} );
+                my ($obj, $offset) = $coder->PP_decode_json( $self->{incr_text}, 0x00000001 );
+                push @ret, $obj;
+                use bytes;
+                $self->{incr_text} = substr( $self->{incr_text}, $offset || 0 );
+                $self->{incr_pos} = 0;
+                $self->{incr_nest} = 0;
+                $self->{incr_mode} = 0;
+                last unless wantarray;
+            } while ( wantarray );
+        }
 
-            $self->{incr_parsing} = 0;
-
+        if ( wantarray ) {
             return @ret;
         }
         else { # in scalar context
-            $self->{incr_parsing} = 1;
-            my $obj = $self->_incr_parse( $coder, $self->{incr_text} );
-            $self->{incr_parsing} = 0 if defined $obj; # pointed by Martin J. Evans
-            return $obj ? $obj : undef; # $obj is an empty string, parsing was completed.
+            return defined $ret[0] ? $ret[0] : undef;
         }
-
     }
-
 }
 
 
 sub _incr_parse {
-    my ( $self, $coder, $text, $skip ) = @_;
-    my $p = $self->{incr_p};
-    my $restore = $p;
-
-    my @obj;
+    my ($self, $coder) = @_;
+    my $text = $self->{incr_text};
     my $len = length $text;
+    my $p = $self->{incr_pos};
 
-    if ( $self->{incr_mode} == INCR_M_WS ) {
-        while ( $len > $p ) {
-            my $s = substr( $text, $p, 1 );
-            $p++ and next if ( 0x20 >= unpack($unpack_format, $s) );
-            $self->{incr_mode} = INCR_M_JSON;
-            last;
-       }
-    }
-
+INCR_PARSE:
     while ( $len > $p ) {
-        my $s = substr( $text, $p++, 1 );
+        my $s = substr( $text, $p, 1 );
+        last INCR_PARSE unless defined $s;
+        my $mode = $self->{incr_mode};
 
-        if ( $s eq '"' ) {
-            if (substr( $text, $p - 2, 1 ) eq '\\' ) {
-                next;
+        if ( $mode == INCR_M_WS ) {
+            while ( $len > $p ) {
+                $s = substr( $text, $p, 1 );
+                last INCR_PARSE unless defined $s;
+                if ( ord($s) > 0x20 ) {
+                    if ( $s eq '#' ) {
+                        $self->{incr_mode} = INCR_M_C0;
+                        redo INCR_PARSE;
+                    } else {
+                        $self->{incr_mode} = INCR_M_JSON;
+                        redo INCR_PARSE;
+                    }
+                }
+                $p++;
             }
-
-            if ( $self->{incr_mode} != INCR_M_STR  ) {
-                $self->{incr_mode} = INCR_M_STR;
-            }
-            else {
-                $self->{incr_mode} = INCR_M_JSON;
-                unless ( $self->{incr_nest} ) {
+        } elsif ( $mode == INCR_M_BS ) {
+            $p++;
+            $self->{incr_mode} = INCR_M_STR;
+            redo INCR_PARSE;
+        } elsif ( $mode == INCR_M_C0 or $mode == INCR_M_C1 ) {
+            while ( $len > $p ) {
+                $s = substr( $text, $p, 1 );
+                last INCR_PARSE unless defined $s;
+                if ( $s eq "\n" ) {
+                    $self->{incr_mode} = $self->{incr_mode} == INCR_M_C0 ? INCR_M_WS : INCR_M_JSON;
                     last;
                 }
+                $p++;
             }
-        }
+            next;
+        } elsif ( $mode == INCR_M_TFN ) {
+            while ( $len > $p ) {
+                $s = substr( $text, $p++, 1 );
+                next if defined $s and $s =~ /[rueals]/;
+                last;
+            }
+            $p--;
+            $self->{incr_mode} = INCR_M_JSON;
 
-        if ( $self->{incr_mode} == INCR_M_JSON ) {
+            last INCR_PARSE unless $self->{incr_nest};
+            redo INCR_PARSE;
+        } elsif ( $mode == INCR_M_NUM ) {
+            while ( $len > $p ) {
+                $s = substr( $text, $p++, 1 );
+                next if defined $s and $s =~ /[0-9eE.+\-]/;
+                last;
+            }
+            $p--;
+            $self->{incr_mode} = INCR_M_JSON;
 
-            if ( $s eq '[' or $s eq '{' ) {
-                if ( ++$self->{incr_nest} > $coder->get_max_depth ) {
-                    Carp::croak('json text or perl structure exceeds maximum nesting level (max_depth set too low?)');
+            last INCR_PARSE unless $self->{incr_nest};
+            redo INCR_PARSE;
+        } elsif ( $mode == INCR_M_STR ) {
+            while ( $len > $p ) {
+                $s = substr( $text, $p, 1 );
+                last INCR_PARSE unless defined $s;
+                if ( $s eq '"' ) {
+                    $p++;
+                    $self->{incr_mode} = INCR_M_JSON;
+
+                    last INCR_PARSE unless $self->{incr_nest};
+                    redo INCR_PARSE;
+                }
+                elsif ( $s eq '\\' ) {
+                    $p++;
+                    if ( !defined substr($text, $p, 1) ) {
+                        $self->{incr_mode} = INCR_M_BS;
+                        last INCR_PARSE;
+                    }
+                }
+                $p++;
+            }
+        } elsif ( $mode == INCR_M_JSON ) {
+            while ( $len > $p ) {
+                $s = substr( $text, $p++, 1 );
+                if ( $s eq "\x00" ) {
+                    $p--;
+                    last INCR_PARSE;
+                } elsif ( $s eq "\x09" or $s eq "\x0a" or $s eq "\x0d" or $s eq "\x20" ) {
+                    if ( !$self->{incr_nest} ) {
+                        $p--; # do not eat the whitespace, let the next round do it
+                        last INCR_PARSE;
+                    }
+                    next;
+                } elsif ( $s eq 't' or $s eq 'f' or $s eq 'n' ) {
+                    $self->{incr_mode} = INCR_M_TFN;
+                    redo INCR_PARSE;
+                } elsif ( $s =~ /^[0-9\-]$/ ) {
+                    $self->{incr_mode} = INCR_M_NUM;
+                    redo INCR_PARSE;
+                } elsif ( $s eq '"' ) {
+                    $self->{incr_mode} = INCR_M_STR;
+                    redo INCR_PARSE;
+                } elsif ( $s eq '[' or $s eq '{' ) {
+                    if ( ++$self->{incr_nest} > $coder->get_max_depth ) {
+                        Carp::croak('json text or perl structure exceeds maximum nesting level (max_depth set too low?)');
+                    }
+                    next;
+                } elsif ( $s eq ']' or $s eq '}' ) {
+                    if ( --$self->{incr_nest} <= 0 ) {
+                        last INCR_PARSE;
+                    }
+                } elsif ( $s eq '#' ) {
+                    $self->{incr_mode} = INCR_M_C1;
+                    redo INCR_PARSE;
                 }
             }
-            elsif ( $s eq ']' or $s eq '}' ) {
-                last if ( --$self->{incr_nest} <= 0 );
-            }
-            elsif ( $s eq '#' ) {
-                while ( $len > $p ) {
-                    last if substr( $text, $p++, 1 ) eq "\n";
-                }
-            }
-
         }
-
     }
 
-    $self->{incr_p} = $p;
-
-    return if ( $self->{incr_mode} == INCR_M_STR and not $self->{incr_nest} );
-    return if ( $self->{incr_mode} == INCR_M_JSON and $self->{incr_nest} > 0 );
-
-    return '' unless ( length substr( $self->{incr_text}, 0, $p ) );
-
-    local $Carp::CarpLevel = 2;
-
-    $self->{incr_p} = $restore;
-    $self->{incr_c} = $p;
-
-    my ( $obj, $tail ) = $coder->PP_decode_json( substr( $self->{incr_text}, 0, $p ), 0x10000001 );
-
-    $self->{incr_text} = substr( $self->{incr_text}, $p );
-    $self->{incr_p} = 0;
-
-    return $obj || '';
+    $self->{incr_pos} = $p;
+    $self->{incr_parsing} = $p ? 1 : 0; # for backward compatibility
 }
 
 
 sub incr_text {
-    if ( $_[0]->{incr_parsing} ) {
+    if ( $_[0]->{incr_pos} ) {
         Carp::croak("incr_text cannot be called when the incremental parser already started parsing");
     }
     $_[0]->{incr_text};
@@ -1576,18 +1722,19 @@ sub incr_text {
 
 sub incr_skip {
     my $self  = shift;
-    $self->{incr_text} = substr( $self->{incr_text}, $self->{incr_c} );
-    $self->{incr_p} = 0;
+    $self->{incr_text} = substr( $self->{incr_text}, $self->{incr_pos} );
+    $self->{incr_pos}     = 0;
+    $self->{incr_mode}    = 0;
+    $self->{incr_nest}    = 0;
 }
 
 
 sub incr_reset {
     my $self = shift;
     $self->{incr_text}    = undef;
-    $self->{incr_p}       = 0;
+    $self->{incr_pos}     = 0;
     $self->{incr_mode}    = 0;
     $self->{incr_nest}    = 0;
-    $self->{incr_parsing} = 0;
 }
 
 ###############################
@@ -1613,12 +1760,10 @@ JSON::PP - JSON::XS compatible pure-Perl module.
 
  # OO-interface
 
- $coder = JSON::PP->new->ascii->pretty->allow_nonref;
+ $json = JSON::PP->new->ascii->pretty->allow_nonref;
  
- $json_text   = $json->encode( $perl_scalar );
+ $pretty_printed_json_text = $json->encode( $perl_scalar );
  $perl_scalar = $json->decode( $json_text );
- 
- $pretty_printed = $json->pretty->encode( $perl_scalar ); # pretty-printing
  
  # Note that JSON version 2.0 and above will automatically use
  # JSON::XS or JSON::PP, so you should be able to just:
@@ -1628,68 +1773,44 @@ JSON::PP - JSON::XS compatible pure-Perl module.
 
 =head1 VERSION
 
-    2.27400
-
-L<JSON::XS> 2.27 (~2.30) compatible.
-
-=head1 NOTE
-
-JSON::PP had been included in JSON distribution (CPAN module).
-It was a perl core module in Perl 5.14.
+    4.04
 
 =head1 DESCRIPTION
 
-This module is L<JSON::XS> compatible pure Perl module.
-(Perl 5.8 or later is recommended)
+JSON::PP is a pure perl JSON decoder/encoder, and (almost) compatible to much
+faster L<JSON::XS> written by Marc Lehmann in C. JSON::PP works as
+a fallback module when you use L<JSON> module without having
+installed JSON::XS.
 
-JSON::XS is the fastest and most proper JSON module on CPAN.
-It is written by Marc Lehmann in C, so must be compiled and
-installed in the used environment.
+Because of this fallback feature of JSON.pm, JSON::PP tries not to
+be more JavaScript-friendly than JSON::XS (i.e. not to escape extra
+characters such as U+2028 and U+2029, etc),
+in order for you not to lose such JavaScript-friendliness silently
+when you use JSON.pm and install JSON::XS for speed or by accident.
+If you need JavaScript-friendly RFC7159-compliant pure perl module,
+try L<JSON::Tiny>, which is derived from L<Mojolicious> web
+framework and is also smaller and faster than JSON::PP.
 
-JSON::PP is a pure-Perl module and has compatibility to JSON::XS.
-
-
-=head2 FEATURES
-
-=over
-
-=item * correct unicode handling
-
-This module knows how to handle Unicode (depending on Perl version).
-
-See to L<JSON::XS/A FEW NOTES ON UNICODE AND PERL> and L<UNICODE HANDLING ON PERLS>.
-
-
-=item * round-trip integrity
-
-When you serialise a perl data structure using only data types supported
-by JSON and Perl, the deserialised data structure is identical on the Perl
-level. (e.g. the string "2.0" doesn't suddenly become "2" just because
-it looks like a number). There I<are> minor exceptions to this, read the
-MAPPING section below to learn about those.
-
-
-=item * strict checking of JSON correctness
-
-There is no guessing, no generating of illegal JSON texts by default,
-and only JSON is accepted as input by default (the latter is a security feature).
-But when some options are set, loose checking features are available.
-
-=back
+JSON::PP has been in the Perl core since Perl 5.14, mainly for
+CPAN toolchain modules to parse META.json.
 
 =head1 FUNCTIONAL INTERFACE
 
-Some documents are copied and modified from L<JSON::XS/FUNCTIONAL INTERFACE>.
+This section is taken from JSON::XS almost verbatim. C<encode_json>
+and C<decode_json> are exported by default.
 
 =head2 encode_json
 
     $json_text = encode_json $perl_scalar
 
-Converts the given Perl data structure to a UTF-8 encoded, binary string.
+Converts the given Perl data structure to a UTF-8 encoded, binary string
+(that is, the string contains octets only). Croaks on error.
 
 This function call is functionally identical to:
 
     $json_text = JSON::PP->new->utf8->encode($perl_scalar)
+
+Except being faster.
 
 =head2 decode_json
 
@@ -1697,11 +1818,13 @@ This function call is functionally identical to:
 
 The opposite of C<encode_json>: expects an UTF-8 (binary) string and tries
 to parse that as an UTF-8 encoded JSON text, returning the resulting
-reference.
+reference. Croaks on error.
 
 This function call is functionally identical to:
 
     $perl_scalar = JSON::PP->new->utf8->decode($json_text)
+
+Except being faster.
 
 =head2 JSON::PP::is_bool
 
@@ -1711,114 +1834,26 @@ Returns true if the passed scalar represents either JSON::PP::true or
 JSON::PP::false, two constants that act like C<1> and C<0> respectively
 and are also used to represent JSON C<true> and C<false> in Perl strings.
 
-=head2 JSON::PP::true
-
-Returns JSON true value which is blessed object.
-It C<isa> JSON::PP::Boolean object.
-
-=head2 JSON::PP::false
-
-Returns JSON false value which is blessed object.
-It C<isa> JSON::PP::Boolean object.
-
-=head2 JSON::PP::null
-
-Returns C<undef>.
-
 See L<MAPPING>, below, for more information on how JSON values are mapped to
 Perl.
 
+=head1 OBJECT-ORIENTED INTERFACE
 
-=head1 HOW DO I DECODE A DATA FROM OUTER AND ENCODE TO OUTER
+This section is also taken from JSON::XS.
 
-This section supposes that your perl version is 5.8 or later.
-
-If you know a JSON text from an outer world - a network, a file content, and so on,
-is encoded in UTF-8, you should use C<decode_json> or C<JSON> module object
-with C<utf8> enabled. And the decoded result will contain UNICODE characters.
-
-  # from network
-  my $json        = JSON::PP->new->utf8;
-  my $json_text   = CGI->new->param( 'json_data' );
-  my $perl_scalar = $json->decode( $json_text );
-  
-  # from file content
-  local $/;
-  open( my $fh, '<', 'json.data' );
-  $json_text   = <$fh>;
-  $perl_scalar = decode_json( $json_text );
-
-If an outer data is not encoded in UTF-8, firstly you should C<decode> it.
-
-  use Encode;
-  local $/;
-  open( my $fh, '<', 'json.data' );
-  my $encoding = 'cp932';
-  my $unicode_json_text = decode( $encoding, <$fh> ); # UNICODE
-  
-  # or you can write the below code.
-  #
-  # open( my $fh, "<:encoding($encoding)", 'json.data' );
-  # $unicode_json_text = <$fh>;
-
-In this case, C<$unicode_json_text> is of course UNICODE string.
-So you B<cannot> use C<decode_json> nor C<JSON> module object with C<utf8> enabled.
-Instead of them, you use C<JSON> module object with C<utf8> disable.
-
-  $perl_scalar = $json->utf8(0)->decode( $unicode_json_text );
-
-Or C<encode 'utf8'> and C<decode_json>:
-
-  $perl_scalar = decode_json( encode( 'utf8', $unicode_json_text ) );
-  # this way is not efficient.
-
-And now, you want to convert your C<$perl_scalar> into JSON data and
-send it to an outer world - a network or a file content, and so on.
-
-Your data usually contains UNICODE strings and you want the converted data to be encoded
-in UTF-8, you should use C<encode_json> or C<JSON> module object with C<utf8> enabled.
-
-  print encode_json( $perl_scalar ); # to a network? file? or display?
-  # or
-  print $json->utf8->encode( $perl_scalar );
-
-If C<$perl_scalar> does not contain UNICODE but C<$encoding>-encoded strings
-for some reason, then its characters are regarded as B<latin1> for perl
-(because it does not concern with your $encoding).
-You B<cannot> use C<encode_json> nor C<JSON> module object with C<utf8> enabled.
-Instead of them, you use C<JSON> module object with C<utf8> disable.
-Note that the resulted text is a UNICODE string but no problem to print it.
-
-  # $perl_scalar contains $encoding encoded string values
-  $unicode_json_text = $json->utf8(0)->encode( $perl_scalar );
-  # $unicode_json_text consists of characters less than 0x100
-  print $unicode_json_text;
-
-Or C<decode $encoding> all string values and C<encode_json>:
-
-  $perl_scalar->{ foo } = decode( $encoding, $perl_scalar->{ foo } );
-  # ... do it to each string values, then encode_json
-  $json_text = encode_json( $perl_scalar );
-
-This method is a proper way but probably not efficient.
-
-See to L<Encode>, L<perluniintro>.
-
-
-=head1 METHODS
-
-Basically, check to L<JSON> or L<JSON::XS>.
+The object oriented interface lets you configure your own encoding or
+decoding style, within the limits of supported formats.
 
 =head2 new
 
     $json = JSON::PP->new
 
-Returns a new JSON::PP object that can be used to de/encode JSON
-strings.
+Creates a new JSON::PP object that can be used to de/encode JSON
+strings. All boolean flags described below are by default I<disabled>
+(with the exception of C<allow_nonref>, which defaults to I<enabled> since
+version C<4.0>).
 
-All boolean flags described below are by default I<disabled>.
-
-The mutators for flags all return the JSON object again and thus calls can
+The mutators for flags all return the JSON::PP object again and thus calls can
 be chained:
 
    my $json = JSON::PP->new->utf8->space_after->encode({a => [1,2]})
@@ -1830,16 +1865,23 @@ be chained:
     
     $enabled = $json->get_ascii
 
-If $enable is true (or missing), then the encode method will not generate characters outside
-the code range 0..127. Any Unicode characters outside that range will be escaped using either
-a single \uXXXX or a double \uHHHH\uLLLLL escape sequence, as per RFC4627.
-(See to L<JSON::XS/OBJECT-ORIENTED INTERFACE>).
+If C<$enable> is true (or missing), then the C<encode> method will not
+generate characters outside the code range C<0..127> (which is ASCII). Any
+Unicode characters outside that range will be escaped using either a
+single \uXXXX (BMP characters) or a double \uHHHH\uLLLLL escape sequence,
+as per RFC4627. The resulting encoded JSON text can be treated as a native
+Unicode string, an ascii-encoded, latin1-encoded or UTF-8 encoded string,
+or any other superset of ASCII.
 
-In Perl 5.005, there is no character having high value (more than 255).
-See to L<UNICODE HANDLING ON PERLS>.
+If C<$enable> is false, then the C<encode> method will not escape Unicode
+characters unless required by the JSON syntax or other flags. This results
+in a faster and more compact format.
 
-If $enable is false, then the encode method will not escape Unicode characters unless
-required by the JSON syntax or other flags. This results in a faster and more compact format.
+See also the section I<ENCODING/CODESET FLAG NOTES> later in this document.
+
+The main use for this flag is to produce JSON texts that can be
+transmitted over a 7-bit channel, as the encoded JSON texts will not
+contain any 8 bit characters.
 
   JSON::PP->new->ascii(1)->encode([chr 0x10401])
   => ["\ud801\udc01"]
@@ -1850,16 +1892,28 @@ required by the JSON syntax or other flags. This results in a faster and more co
     
     $enabled = $json->get_latin1
 
-If $enable is true (or missing), then the encode method will encode the resulting JSON
-text as latin1 (or iso-8859-1), escaping any characters outside the code range 0..255.
+If C<$enable> is true (or missing), then the C<encode> method will encode
+the resulting JSON text as latin1 (or iso-8859-1), escaping any characters
+outside the code range C<0..255>. The resulting string can be treated as a
+latin1-encoded JSON text or a native Unicode string. The C<decode> method
+will not be affected in any way by this flag, as C<decode> by default
+expects Unicode, which is a strict superset of latin1.
 
-If $enable is false, then the encode method will not escape Unicode characters
-unless required by the JSON syntax or other flags.
+If C<$enable> is false, then the C<encode> method will not escape Unicode
+characters unless required by the JSON syntax or other flags.
 
-  JSON::XS->new->latin1->encode (["\x{89}\x{abc}"]
+See also the section I<ENCODING/CODESET FLAG NOTES> later in this document.
+
+The main use for this flag is efficiently encoding binary data as JSON
+text, as most octets will not be escaped, resulting in a smaller encoded
+size. The disadvantage is that the resulting JSON text is encoded
+in latin1 (and must correctly be treated as such when storing and
+transferring), a rare encoding for JSON. It is therefore most useful when
+you want to store data structures known to contain binary data efficiently
+in files or databases, not when talking to other JSON encoders/decoders.
+
+  JSON::PP->new->latin1->encode (["\x{89}\x{abc}"]
   => ["\x{89}\\u0abc"]    # (perl syntax, U+abc escaped, U+89 not)
-
-See to L<UNICODE HANDLING ON PERLS>.
 
 =head2 utf8
 
@@ -1867,20 +1921,20 @@ See to L<UNICODE HANDLING ON PERLS>.
     
     $enabled = $json->get_utf8
 
-If $enable is true (or missing), then the encode method will encode the JSON result
-into UTF-8, as required by many protocols, while the decode method expects to be handled
-an UTF-8-encoded string. Please note that UTF-8-encoded strings do not contain any
-characters outside the range 0..255, they are thus useful for bytewise/binary I/O.
+If C<$enable> is true (or missing), then the C<encode> method will encode
+the JSON result into UTF-8, as required by many protocols, while the
+C<decode> method expects to be handled an UTF-8-encoded string.  Please
+note that UTF-8-encoded strings do not contain any characters outside the
+range C<0..255>, they are thus useful for bytewise/binary I/O. In future
+versions, enabling this option might enable autodetection of the UTF-16
+and UTF-32 encoding families, as described in RFC4627.
 
-(In Perl 5.005, any character outside the range 0..255 does not exist.
-See to L<UNICODE HANDLING ON PERLS>.)
+If C<$enable> is false, then the C<encode> method will return the JSON
+string as a (non-encoded) Unicode string, while C<decode> expects thus a
+Unicode string.  Any decoding or encoding (e.g. to UTF-8 or UTF-16) needs
+to be done yourself, e.g. using the Encode module.
 
-In future versions, enabling this option might enable autodetection of the UTF-16 and UTF-32
-encoding families, as described in RFC4627.
-
-If $enable is false, then the encode method will return the JSON string as a (non-encoded)
-Unicode string, while decode expects thus a Unicode string. Any decoding or encoding
-(e.g. to UTF-8 or UTF-16) needs to be done yourself, e.g. using the Encode module.
+See also the section I<ENCODING/CODESET FLAG NOTES> later in this document.
 
 Example, output UTF-16BE-encoded JSON:
 
@@ -1892,24 +1946,28 @@ Example, decode UTF-32LE-encoded JSON:
   use Encode;
   $object = JSON::PP->new->decode (decode "UTF-32LE", $jsontext);
 
-
 =head2 pretty
 
     $json = $json->pretty([$enable])
 
 This enables (or disables) all of the C<indent>, C<space_before> and
-C<space_after> flags in one call to generate the most readable
-(or most compact) form possible.
-
-Equivalent to:
-
-   $json->indent->space_before->space_after
+C<space_after> (and in the future possibly more) flags in one call to
+generate the most readable (or most compact) form possible.
 
 =head2 indent
 
     $json = $json->indent([$enable])
     
     $enabled = $json->get_indent
+
+If C<$enable> is true (or missing), then the C<encode> method will use a multiline
+format as output, putting every array member or object/hash key-value pair
+into its own line, indenting them properly.
+
+If C<$enable> is false, no newlines or indenting will be produced, and the
+resulting JSON text is guaranteed not to contain any C<newlines>.
+
+This setting has no effect when decoding JSON texts.
 
 The default indent space length is three.
 You can use C<indent_length> to change the length.
@@ -1926,7 +1984,8 @@ optional space before the C<:> separating keys from values in JSON objects.
 If C<$enable> is false, then the C<encode> method will not add any extra
 space at those places.
 
-This setting has no effect when decoding JSON texts.
+This setting has no effect when decoding JSON texts. You will also
+most likely combine this setting with C<space_after>.
 
 Example, space_before enabled, space_after and indent disabled:
 
@@ -1999,6 +2058,38 @@ character, after which more white-space and comments are allowed.
         # neither this one...
   ]
 
+=item * C-style multiple-line '/* */'-comments (JSON::PP only)
+
+Whenever JSON allows whitespace, C-style multiple-line comments are additionally
+allowed. Everything between C</*> and C<*/> is a comment, after which
+more white-space and comments are allowed.
+
+  [
+     1, /* this comment not allowed in JSON */
+        /* neither this one... */
+  ]
+
+=item * C++-style one-line '//'-comments (JSON::PP only)
+
+Whenever JSON allows whitespace, C++-style one-line comments are additionally
+allowed. They are terminated by the first carriage-return or line-feed
+character, after which more white-space and comments are allowed.
+
+  [
+     1, // this comment not allowed in JSON
+        // neither this one...
+  ]
+
+=item * literal ASCII TAB characters in strings
+
+Literal ASCII TAB characters are now allowed in strings (and treated as
+C<\t>).
+
+  [
+     "Hello\tWorld",
+     "Hello<TAB>World", # literal <TAB> would not normally be allowed
+  ]
+
 =back
 
 =head2 canonical
@@ -2012,7 +2103,8 @@ by sorting their keys. This is adding a comparatively high overhead.
 
 If C<$enable> is false, then the C<encode> method will output key-value
 pairs in the order Perl stores them (which will likely change between runs
-of the same script).
+of the same script, and can change even within the same run from 5.18
+onwards).
 
 This option is useful if you want the same data structure to be encoded as
 the same JSON text (given the same overall settings). If it is disabled,
@@ -2021,14 +2113,16 @@ as key-value pairs have no inherent ordering in Perl.
 
 This setting has no effect when decoding JSON texts.
 
-If you want your own sorting routine, you can give a code reference
-or a subroutine name to C<sort_by>. See to C<JSON::PP OWN METHODS>.
+This setting has currently no effect on tied hashes.
 
 =head2 allow_nonref
 
     $json = $json->allow_nonref([$enable])
     
     $enabled = $json->get_allow_nonref
+
+Unlike other boolean options, this opotion is enabled by default beginning
+with version C<4.0>.
 
 If C<$enable> is true (or missing), then the C<encode> method can convert a
 non-reference into its corresponding string, number or null JSON value,
@@ -2040,27 +2134,29 @@ passed an arrayref or hashref, as JSON texts must either be an object
 or array. Likewise, C<decode> will croak if given something that is not a
 JSON object or array.
 
-   JSON::PP->new->allow_nonref->encode ("Hello, World!")
-   => "Hello, World!"
+Example, encode a Perl scalar as JSON value without enabled C<allow_nonref>,
+resulting in an error:
+
+   JSON::PP->new->allow_nonref(0)->encode ("Hello, World!")
+   => hash- or arrayref expected...
 
 =head2 allow_unknown
 
-    $json = $json->allow_unknown ([$enable])
+    $json = $json->allow_unknown([$enable])
     
     $enabled = $json->get_allow_unknown
 
-If $enable is true (or missing), then "encode" will *not* throw an
+If C<$enable> is true (or missing), then C<encode> will I<not> throw an
 exception when it encounters values it cannot represent in JSON (for
-example, filehandles) but instead will encode a JSON "null" value.
-Note that blessed objects are not included here and are handled
-separately by c<allow_nonref>.
+example, filehandles) but instead will encode a JSON C<null> value. Note
+that blessed objects are not included here and are handled separately by
+c<allow_blessed>.
 
-If $enable is false (the default), then "encode" will throw an
+If C<$enable> is false (the default), then C<encode> will throw an
 exception when it encounters anything it cannot encode as JSON.
 
-This option does not affect "decode" in any way, and it is
-recommended to leave it off unless you know your communications
-partner.
+This option does not affect C<decode> in any way, and it is recommended to
+leave it off unless you know your communications partner.
 
 =head2 allow_blessed
 
@@ -2068,15 +2164,17 @@ partner.
     
     $enabled = $json->get_allow_blessed
 
+See L<OBJECT SERIALISATION> for details.
+
 If C<$enable> is true (or missing), then the C<encode> method will not
-barf when it encounters a blessed reference. Instead, the value of the
-B<convert_blessed> option will decide whether C<null> (C<convert_blessed>
-disabled or no C<TO_JSON> method found) or a representation of the
-object (C<convert_blessed> enabled and C<TO_JSON> method found) is being
-encoded. Has no effect on C<decode>.
+barf when it encounters a blessed reference that it cannot convert
+otherwise. Instead, a JSON C<null> value is encoded instead of the object.
 
 If C<$enable> is false (the default), then C<encode> will throw an
-exception when it encounters a blessed object.
+exception when it encounters a blessed object that it cannot convert
+otherwise.
+
+This setting has no effect on C<decode>.
 
 =head2 convert_blessed
 
@@ -2084,38 +2182,86 @@ exception when it encounters a blessed object.
     
     $enabled = $json->get_convert_blessed
 
+See L<OBJECT SERIALISATION> for details.
+
 If C<$enable> is true (or missing), then C<encode>, upon encountering a
 blessed object, will check for the availability of the C<TO_JSON> method
-on the object's class. If found, it will be called in scalar context
-and the resulting scalar will be encoded instead of the object. If no
-C<TO_JSON> method is found, the value of C<allow_blessed> will decide what
-to do.
+on the object's class. If found, it will be called in scalar context and
+the resulting scalar will be encoded instead of the object.
 
 The C<TO_JSON> method may safely call die if it wants. If C<TO_JSON>
 returns other blessed objects, those will be handled in the same
 way. C<TO_JSON> must take care of not causing an endless recursion cycle
 (== crash) in this case. The name of C<TO_JSON> was chosen because other
 methods called by the Perl core (== not by the user of the object) are
-usually in upper case letters and to avoid collisions with the C<to_json>
+usually in upper case letters and to avoid collisions with any C<to_json>
 function or method.
 
-This setting does not yet influence C<decode> in any way.
+If C<$enable> is false (the default), then C<encode> will not consider
+this type of conversion.
 
-If C<$enable> is false, then the C<allow_blessed> setting will decide what
-to do when a blessed object is found.
+This setting has no effect on C<decode>.
+
+=head2 allow_tags
+
+    $json = $json->allow_tags([$enable])
+
+    $enabled = $json->get_allow_tags
+
+See L<OBJECT SERIALISATION> for details.
+
+If C<$enable> is true (or missing), then C<encode>, upon encountering a
+blessed object, will check for the availability of the C<FREEZE> method on
+the object's class. If found, it will be used to serialise the object into
+a nonstandard tagged JSON value (that JSON decoders cannot decode).
+
+It also causes C<decode> to parse such tagged JSON values and deserialise
+them via a call to the C<THAW> method.
+
+If C<$enable> is false (the default), then C<encode> will not consider
+this type of conversion, and tagged JSON values will cause a parse error
+in C<decode>, as if tags were not part of the grammar.
+
+=head2 boolean_values
+
+    $json->boolean_values([$false, $true])
+
+    ($false,  $true) = $json->get_boolean_values
+
+By default, JSON booleans will be decoded as overloaded
+C<$JSON::PP::false> and C<$JSON::PP::true> objects.
+
+With this method you can specify your own boolean values for decoding -
+on decode, JSON C<false> will be decoded as a copy of C<$false>, and JSON
+C<true> will be decoded as C<$true> ("copy" here is the same thing as
+assigning a value to another variable, i.e. C<$copy = $false>).
+
+This is useful when you want to pass a decoded data structure directly
+to other serialisers like YAML, Data::MessagePack and so on.
+
+Note that this works only when you C<decode>. You can set incompatible
+boolean objects (like L<boolean>), but when you C<encode> a data structure
+with such boolean objects, you still need to enable C<convert_blessed>
+(and add a C<TO_JSON> method if necessary).
+
+Calling this method without any arguments will reset the booleans
+to their default values.
+
+C<get_boolean_values> will return both C<$false> and C<$true> values, or
+the empty list when they are set to the default.
 
 =head2 filter_json_object
 
     $json = $json->filter_json_object([$coderef])
 
 When C<$coderef> is specified, it will be called from C<decode> each
-time it decodes a JSON object. The only argument passed to the coderef
-is a reference to the newly-created hash. If the code references returns
-a single scalar (which need not be a reference), this value
-(i.e. a copy of that scalar to avoid aliasing) is inserted into the
-deserialised data structure. If it returns an empty list
-(NOTE: I<not> C<undef>, which is a valid scalar), the original deserialised
-hash will be inserted. This setting can slow down decoding considerably.
+time it decodes a JSON object. The only argument is a reference to
+the newly-created hash. If the code references returns a single scalar
+(which need not be a reference), this value (or rather a copy of it) is
+inserted into the deserialised data structure. If it returns an empty
+list (NOTE: I<not> C<undef>, which is a valid scalar), the original
+deserialised hash will be inserted. This setting can slow down decoding
+considerably.
 
 When C<$coderef> is omitted or undefined, any existing callback will
 be removed and C<decode> will not change the deserialised hash in any
@@ -2123,12 +2269,11 @@ way.
 
 Example, convert all JSON objects into the integer 5:
 
-   my $js = JSON::PP->new->filter_json_object (sub { 5 });
+   my $js = JSON::PP->new->filter_json_object(sub { 5 });
    # returns [5]
-   $js->decode ('[{}]'); # the given subroutine takes a hash reference.
-   # throw an exception because allow_nonref is not enabled
-   # so a lone 5 is not allowed.
-   $js->decode ('{"a":1, "b":2}');
+   $js->decode('[{}]');
+   # returns 5
+   $js->decode('{"a":1, "b":2}');
 
 =head2 filter_json_single_key_object
 
@@ -2190,15 +2335,13 @@ into the corresponding C<< $WIDGET{<id>} >> object:
     
     $enabled = $json->get_shrink
 
-In JSON::XS, this flag resizes strings generated by either
-C<encode> or C<decode> to their minimum size possible.
-It will also try to downgrade any strings to octet-form if possible.
+If C<$enable> is true (or missing), the string returned by C<encode> will
+be shrunk (i.e. downgraded if possible).
 
-In JSON::PP, it is noop about resizing strings but tries
-C<utf8::downgrade> to the returned string by C<encode>.
-See to L<utf8>.
+The actual definition of what shrink does might change in future versions,
+but it will always try to save space at the expense of time.
 
-See to L<JSON::XS/OBJECT-ORIENTED INTERFACE>
+If C<$enable> is false, then JSON::PP does nothing.
 
 =head2 max_depth
 
@@ -2216,13 +2359,13 @@ needs to traverse to reach a given point or the number of C<{> or C<[>
 characters without their matching closing parenthesis crossed to reach a
 given character in a string.
 
+Setting the maximum depth to one disallows any nesting, so that ensures
+that the object is only a single hash/object or array.
+
 If no argument is given, the highest possible setting will be used, which
 is rarely useful.
 
 See L<JSON::XS/SECURITY CONSIDERATIONS> for more info on why this is useful.
-
-When a large value (100 or more) was set and it de/encodes a deep nested object/text,
-it may raise a warning 'Deep recursion on subroutine' at the perl runtime phase.
 
 =head2 max_size
 
@@ -2245,12 +2388,8 @@ See L<JSON::XS/SECURITY CONSIDERATIONS> for more info on why this is useful.
 
     $json_text = $json->encode($perl_scalar)
 
-Converts the given Perl data structure (a simple scalar or a reference
-to a hash or array) to its JSON representation. Simple scalars will be
-converted into JSON string or number sequences, while references to arrays
-become JSON arrays and references to hashes become JSON objects. Undefined
-Perl values (e.g. C<undef>) become JSON C<null> values.
-References to the integers C<0> and C<1> are converted into C<true> and C<false>.
+Converts the given Perl value or data structure to its JSON
+representation. Croaks on error.
 
 =head2 decode
 
@@ -2258,11 +2397,6 @@ References to the integers C<0> and C<1> are converted into C<true> and C<false>
 
 The opposite of C<encode>: expects a JSON text and tries to parse it,
 returning the resulting simple scalar or reference. Croaks on error.
-
-JSON numbers and strings become simple Perl scalars. JSON arrays become
-Perl arrayrefs and JSON objects become Perl hashrefs. C<true> becomes
-C<1> (C<JSON::true>), C<false> becomes C<0> (C<JSON::false>) and
-C<null> becomes C<undef>.
 
 =head2 decode_prefix
 
@@ -2273,25 +2407,187 @@ when there is trailing garbage after the first JSON object, it will
 silently stop parsing there and return the number of characters consumed
 so far.
 
-   JSON->new->decode_prefix ("[1] the tail")
-   => ([], 3)
+This is useful if your JSON texts are not delimited by an outer protocol
+and you need to know where the JSON text ends.
+
+   JSON::PP->new->decode_prefix ("[1] the tail")
+   => ([1], 3)
+
+=head1 FLAGS FOR JSON::PP ONLY
+
+The following flags and properties are for JSON::PP only. If you use
+any of these, you can't make your application run faster by replacing
+JSON::PP with JSON::XS. If you need these and also speed boost,
+you might want to try L<Cpanel::JSON::XS>, a fork of JSON::XS by
+Reini Urban, which supports some of these (with a different set of
+incompatibilities). Most of these historical flags are only kept
+for backward compatibility, and should not be used in a new application.
+
+=head2 allow_singlequote
+
+    $json = $json->allow_singlequote([$enable])
+    $enabled = $json->get_allow_singlequote
+
+If C<$enable> is true (or missing), then C<decode> will accept
+invalid JSON texts that contain strings that begin and end with
+single quotation marks. C<encode> will not be affected in any way.
+I<Be aware that this option makes you accept invalid JSON texts
+as if they were valid!>. I suggest only to use this option to
+parse application-specific files written by humans (configuration
+files, resource files etc.)
+
+If C<$enable> is false (the default), then C<decode> will only accept
+valid JSON texts.
+
+    $json->allow_singlequote->decode(qq|{"foo":'bar'}|);
+    $json->allow_singlequote->decode(qq|{'foo':"bar"}|);
+    $json->allow_singlequote->decode(qq|{'foo':'bar'}|);
+
+=head2 allow_barekey
+
+    $json = $json->allow_barekey([$enable])
+    $enabled = $json->get_allow_barekey
+
+If C<$enable> is true (or missing), then C<decode> will accept
+invalid JSON texts that contain JSON objects whose names don't
+begin and end with quotation marks. C<encode> will not be affected
+in any way. I<Be aware that this option makes you accept invalid JSON
+texts as if they were valid!>. I suggest only to use this option to
+parse application-specific files written by humans (configuration
+files, resource files etc.)
+
+If C<$enable> is false (the default), then C<decode> will only accept
+valid JSON texts.
+
+    $json->allow_barekey->decode(qq|{foo:"bar"}|);
+
+=head2 allow_bignum
+
+    $json = $json->allow_bignum([$enable])
+    $enabled = $json->get_allow_bignum
+
+If C<$enable> is true (or missing), then C<decode> will convert
+big integers Perl cannot handle as integer into L<Math::BigInt>
+objects and convert floating numbers into L<Math::BigFloat>
+objects. C<encode> will convert C<Math::BigInt> and C<Math::BigFloat>
+objects into JSON numbers.
+
+   $json->allow_nonref->allow_bignum;
+   $bigfloat = $json->decode('2.000000000000000000000000001');
+   print $json->encode($bigfloat);
+   # => 2.000000000000000000000000001
+
+See also L<MAPPING>.
+
+=head2 loose
+
+    $json = $json->loose([$enable])
+    $enabled = $json->get_loose
+
+If C<$enable> is true (or missing), then C<decode> will accept
+invalid JSON texts that contain unescaped [\x00-\x1f\x22\x5c]
+characters. C<encode> will not be affected in any way.
+I<Be aware that this option makes you accept invalid JSON texts
+as if they were valid!>. I suggest only to use this option to
+parse application-specific files written by humans (configuration
+files, resource files etc.)
+
+If C<$enable> is false (the default), then C<decode> will only accept
+valid JSON texts.
+
+    $json->loose->decode(qq|["abc
+                                   def"]|);
+
+=head2 escape_slash
+
+    $json = $json->escape_slash([$enable])
+    $enabled = $json->get_escape_slash
+
+If C<$enable> is true (or missing), then C<encode> will explicitly
+escape I<slash> (solidus; C<U+002F>) characters to reduce the risk of
+XSS (cross site scripting) that may be caused by C<< </script> >>
+in a JSON text, with the cost of bloating the size of JSON texts.
+
+This option may be useful when you embed JSON in HTML, but embedding
+arbitrary JSON in HTML (by some HTML template toolkit or by string
+interpolation) is risky in general. You must escape necessary
+characters in correct order, depending on the context.
+
+C<decode> will not be affected in any way.
+
+=head2 indent_length
+
+    $json = $json->indent_length($number_of_spaces)
+    $length = $json->get_indent_length
+
+This option is only useful when you also enable C<indent> or C<pretty>.
+
+JSON::XS indents with three spaces when you C<encode> (if requested
+by C<indent> or C<pretty>), and the number cannot be changed.
+JSON::PP allows you to change/get the number of indent spaces with these
+mutator/accessor. The default number of spaces is three (the same as
+JSON::XS), and the acceptable range is from C<0> (no indentation;
+it'd be better to disable indentation by C<indent(0)>) to C<15>.
+
+=head2 sort_by
+
+    $json = $json->sort_by($code_ref)
+    $json = $json->sort_by($subroutine_name)
+
+If you just want to sort keys (names) in JSON objects when you
+C<encode>, enable C<canonical> option (see above) that allows you to
+sort object keys alphabetically.
+
+If you do need to sort non-alphabetically for whatever reasons,
+you can give a code reference (or a subroutine name) to C<sort_by>,
+then the argument will be passed to Perl's C<sort> built-in function.
+
+As the sorting is done in the JSON::PP scope, you usually need to
+prepend C<JSON::PP::> to the subroutine name, and the special variables
+C<$a> and C<$b> used in the subrontine used by C<sort> function.
+
+Example:
+
+   my %ORDER = (id => 1, class => 2, name => 3);
+   $json->sort_by(sub {
+       ($ORDER{$JSON::PP::a} // 999) <=> ($ORDER{$JSON::PP::b} // 999)
+       or $JSON::PP::a cmp $JSON::PP::b
+   });
+   print $json->encode([
+       {name => 'CPAN', id => 1, href => 'http://cpan.org'}
+   ]);
+   # [{"id":1,"name":"CPAN","href":"http://cpan.org"}]
+
+Note that C<sort_by> affects all the plain hashes in the data structure.
+If you need finer control, C<tie> necessary hashes with a module that
+implements ordered hash (such as L<Hash::Ordered> and L<Tie::IxHash>).
+C<canonical> and C<sort_by> don't affect the key order in C<tie>d
+hashes.
+
+   use Hash::Ordered;
+   tie my %hash, 'Hash::Ordered',
+       (name => 'CPAN', id => 1, href => 'http://cpan.org');
+   print $json->encode([\%hash]);
+   # [{"name":"CPAN","id":1,"href":"http://cpan.org"}] # order is kept
 
 =head1 INCREMENTAL PARSING
 
-Most of this section are copied and modified from L<JSON::XS/INCREMENTAL PARSING>.
+This section is also taken from JSON::XS.
 
-In some cases, there is the need for incremental parsing of JSON texts.
-This module does allow you to parse a JSON stream incrementally.
-It does so by accumulating text until it has a full JSON object, which
-it then can decode. This process is similar to using C<decode_prefix>
-to see if a full JSON object is available, but is much more efficient
-(and can be implemented with a minimum of method calls).
+In some cases, there is the need for incremental parsing of JSON
+texts. While this module always has to keep both JSON text and resulting
+Perl data structure in memory at one time, it does allow you to parse a
+JSON stream incrementally. It does so by accumulating text until it has
+a full JSON object, which it then can decode. This process is similar to
+using C<decode_prefix> to see if a full JSON object is available, but
+is much more efficient (and can be implemented with a minimum of method
+calls).
 
-This module will only attempt to parse the JSON text once it is sure it
+JSON::PP will only attempt to parse the JSON text once it is sure it
 has enough text to get a decisive result, using a very simple but
 truly incremental parser. This means that it sometimes won't stop as
-early as the full parser, for example, it doesn't detect parentheses
-mismatches. The only thing it guarantees is that it starts decoding as
+early as the full parser, for example, it doesn't detect mismatched
+parentheses. The only thing it guarantees is that it starts decoding as
 soon as a syntactically valid JSON text has been seen. This means you need
 to set resource limits (e.g. C<max_size>) to ensure the parser will stop
 parsing in the presence if syntax errors.
@@ -2326,15 +2622,16 @@ using the method.
 
 And finally, in list context, it will try to extract as many objects
 from the stream as it can find and return them, or the empty list
-otherwise. For this to work, there must be no separators between the JSON
-objects or arrays, instead they must be concatenated back-to-back. If
-an error occurs, an exception will be raised as in the scalar context
-case. Note that in this case, any previously-parsed JSON texts will be
-lost.
+otherwise. For this to work, there must be no separators (other than
+whitespace) between the JSON objects or arrays, instead they must be
+concatenated back-to-back. If an error occurs, an exception will be
+raised as in the scalar context case. Note that in this case, any
+previously-parsed JSON texts will be lost.
 
-Example: Parse some JSON arrays/objects in a given string and return them.
+Example: Parse some JSON arrays/objects in a given string and return
+them.
 
-    my @objs = JSON->new->incr_parse ("[5][7][1,2]");
+    my @objs = JSON::PP->new->incr_parse ("[5][7][1,2]");
 
 =head2 incr_text
 
@@ -2348,27 +2645,26 @@ although in simple tests it might actually work, it I<will> fail under
 real world conditions). As a special exception, you can also call this
 method before having parsed anything.
 
+That means you can only use this function to look at or manipulate text
+before or after complete JSON objects, not while the parser is in the
+middle of parsing a JSON object.
+
 This function is useful in two cases: a) finding the trailing text after a
 JSON object or b) parsing multiple JSON objects separated by non-JSON text
 (such as commas).
-
-    $json->incr_text =~ s/\s*,\s*//;
-
-In Perl 5.005, C<lvalue> attribute is not available.
-You must write codes like the below:
-
-    $string = $json->incr_text;
-    $string =~ s/\s*,\s*//;
-    $json->incr_text( $string );
 
 =head2 incr_skip
 
     $json->incr_skip
 
-This will reset the state of the incremental parser and will remove the
-parsed text from the input buffer. This is useful after C<incr_parse>
-died, in which case the input buffer and incremental parser state is left
-unchanged, to skip the text parsed so far and to reset the parse state.
+This will reset the state of the incremental parser and will remove
+the parsed text from the input buffer so far. This is useful after
+C<incr_parse> died, in which case the input buffer and incremental parser
+state is left unchanged, to skip the text parsed so far and to reset the
+parse state.
+
+The difference to C<incr_reset> is that only text until the parse error
+occurred is removed.
 
 =head2 incr_reset
 
@@ -2381,148 +2677,18 @@ This is useful if you want to repeatedly parse JSON objects and want to
 ignore any trailing data, which means you have to reset the parser after
 each successful decode.
 
-See to L<JSON::XS/INCREMENTAL PARSING> for examples.
-
-
-=head1 JSON::PP OWN METHODS
-
-=head2 allow_singlequote
-
-    $json = $json->allow_singlequote([$enable])
-
-If C<$enable> is true (or missing), then C<decode> will accept
-JSON strings quoted by single quotations that are invalid JSON
-format.
-
-    $json->allow_singlequote->decode({"foo":'bar'});
-    $json->allow_singlequote->decode({'foo':"bar"});
-    $json->allow_singlequote->decode({'foo':'bar'});
-
-As same as the C<relaxed> option, this option may be used to parse
-application-specific files written by humans.
-
-
-=head2 allow_barekey
-
-    $json = $json->allow_barekey([$enable])
-
-If C<$enable> is true (or missing), then C<decode> will accept
-bare keys of JSON object that are invalid JSON format.
-
-As same as the C<relaxed> option, this option may be used to parse
-application-specific files written by humans.
-
-    $json->allow_barekey->decode('{foo:"bar"}');
-
-=head2 allow_bignum
-
-    $json = $json->allow_bignum([$enable])
-
-If C<$enable> is true (or missing), then C<decode> will convert
-the big integer Perl cannot handle as integer into a L<Math::BigInt>
-object and convert a floating number (any) into a L<Math::BigFloat>.
-
-On the contrary, C<encode> converts C<Math::BigInt> objects and C<Math::BigFloat>
-objects into JSON numbers with C<allow_blessed> enabled.
-
-   $json->allow_nonref->allow_blessed->allow_bignum;
-   $bigfloat = $json->decode('2.000000000000000000000000001');
-   print $json->encode($bigfloat);
-   # => 2.000000000000000000000000001
-
-See to L<JSON::XS/MAPPING> about the normal conversion of JSON number.
-
-=head2 loose
-
-    $json = $json->loose([$enable])
-
-The unescaped [\x00-\x1f\x22\x2f\x5c] strings are invalid in JSON strings
-and the module doesn't allow you to C<decode> to these (except for \x2f).
-If C<$enable> is true (or missing), then C<decode>  will accept these
-unescaped strings.
-
-    $json->loose->decode(qq|["abc
-                                   def"]|);
-
-See L<JSON::XS/SECURITY CONSIDERATIONS>.
-
-=head2 escape_slash
-
-    $json = $json->escape_slash([$enable])
-
-According to JSON Grammar, I<slash> (U+002F) is escaped. But default
-JSON::PP (as same as JSON::XS) encodes strings without escaping slash.
-
-If C<$enable> is true (or missing), then C<encode> will escape slashes.
-
-=head2 indent_length
-
-    $json = $json->indent_length($length)
-
-JSON::XS indent space length is 3 and cannot be changed.
-JSON::PP set the indent space length with the given $length.
-The default is 3. The acceptable range is 0 to 15.
-
-=head2 sort_by
-
-    $json = $json->sort_by($function_name)
-    $json = $json->sort_by($subroutine_ref)
-
-If $function_name or $subroutine_ref are set, its sort routine are used
-in encoding JSON objects.
-
-   $js = $pc->sort_by(sub { $JSON::PP::a cmp $JSON::PP::b })->encode($obj);
-   # is($js, q|{"a":1,"b":2,"c":3,"d":4,"e":5,"f":6,"g":7,"h":8,"i":9}|);
-
-   $js = $pc->sort_by('own_sort')->encode($obj);
-   # is($js, q|{"a":1,"b":2,"c":3,"d":4,"e":5,"f":6,"g":7,"h":8,"i":9}|);
-
-   sub JSON::PP::own_sort { $JSON::PP::a cmp $JSON::PP::b }
-
-As the sorting routine runs in the JSON::PP scope, the given
-subroutine name and the special variables C<$a>, C<$b> will begin
-'JSON::PP::'.
-
-If $integer is set, then the effect is same as C<canonical> on.
-
-=head1 INTERNAL
-
-For developers.
-
-=over
-
-=item PP_encode_box
-
-Returns
-
-        {
-            depth        => $depth,
-            indent_count => $indent_count,
-        }
-
-
-=item PP_decode_box
-
-Returns
-
-        {
-            text    => $text,
-            at      => $at,
-            ch      => $ch,
-            len     => $len,
-            depth   => $depth,
-            encoding      => $encoding,
-            is_valid_utf8 => $is_valid_utf8,
-        };
-
-=back
-
 =head1 MAPPING
 
-This section is copied from JSON::XS and modified to C<JSON::PP>.
-JSON::XS and JSON::PP mapping mechanisms are almost equivalent.
+Most of this section is also taken from JSON::XS.
 
-See to L<JSON::XS/MAPPING>.
+This section describes how JSON::PP maps Perl values to JSON values and
+vice versa. These mappings are designed to "do the right thing" in most
+circumstances automatically, preserving round-tripping characteristics
+(what you put in comes out as something equivalent).
+
+For the more enlightened: note that in the following descriptions,
+lowercase I<perl> refers to the Perl interpreter, while uppercase I<Perl>
+refers to the abstract Perl language itself.
 
 =head2 JSON -> PERL
 
@@ -2531,7 +2697,7 @@ See to L<JSON::XS/MAPPING>.
 =item object
 
 A JSON object becomes a reference to a hash in Perl. No ordering of object
-keys is preserved (JSON does not preserver object key ordering itself).
+keys is preserved (JSON does not preserve object key ordering itself).
 
 =item array
 
@@ -2551,7 +2717,7 @@ the Perl level, there is no difference between those as Perl handles all
 the conversion details, but an integer may take slightly less memory and
 might represent more values exactly than floating point numbers.
 
-If the number consists of digits only, C<JSON> will try to represent
+If the number consists of digits only, JSON::PP will try to represent
 it as an integer value. If that fails, it will try to represent it as
 a numeric (floating point) value if that is possible without loss of
 precision. Otherwise it will preserve the number as a string value (in
@@ -2565,36 +2731,39 @@ the JSON number will still be re-encoded as a JSON number).
 
 Note that precision is not accuracy - binary floating point values cannot
 represent most decimal fractions exactly, and when converting from and to
-floating point, C<JSON> only guarantees precision up to but not including
+floating point, JSON::PP only guarantees precision up to but not including
 the least significant bit.
 
-When C<allow_bignum> is enabled, the big integers 
-and the numeric can be optionally converted into L<Math::BigInt> and
-L<Math::BigFloat> objects.
+When C<allow_bignum> is enabled, big integer values and any numeric
+values will be converted into L<Math::BigInt> and L<Math::BigFloat>
+objects respectively, without becoming string scalars or losing
+precision.
 
 =item true, false
 
 These JSON atoms become C<JSON::PP::true> and C<JSON::PP::false>,
 respectively. They are overloaded to act almost exactly like the numbers
 C<1> and C<0>. You can check whether a scalar is a JSON boolean by using
-the C<JSON::is_bool> function.
-
-   print JSON::PP::true . "\n";
-    => true
-   print JSON::PP::true + 1;
-    => 1
-
-   ok(JSON::true eq  '1');
-   ok(JSON::true == 1);
-
-C<JSON> will install these missing overloading features to the backend modules.
-
+the C<JSON::PP::is_bool> function.
 
 =item null
 
 A JSON null atom becomes C<undef> in Perl.
 
-C<JSON::PP::null> returns C<undef>.
+=item shell-style comments (C<< # I<text> >>)
+
+As a nonstandard extension to the JSON syntax that is enabled by the
+C<relaxed> setting, shell-style comments are allowed. They can start
+anywhere outside strings and go till the end of the line.
+
+=item tagged values (C<< (I<tag>)I<value> >>).
+
+Another nonstandard extension to the JSON syntax, enabled with the
+C<allow_tags> setting, are tagged values. In this implementation, the
+I<tag> must be a perl package/class name encoded as a JSON string, and the
+I<value> must be a JSON array encoding optional constructor arguments.
+
+See L<OBJECT SERIALISATION>, below, for details.
 
 =back
 
@@ -2609,16 +2778,14 @@ a Perl value.
 
 =item hash references
 
-Perl hash references become JSON objects. As there is no inherent ordering
-in hash keys (or JSON objects), they will usually be encoded in a
-pseudo-random order that can change between runs of the same program but
-stays generally the same within a single run of a program. C<JSON>
-optionally sort the hash keys (determined by the I<canonical> flag), so
-the same datastructure will serialise to the same JSON text (given same
-settings and version of JSON::XS), but this incurs a runtime overhead
-and is only rarely useful, e.g. when you want to compare some JSON text
-against another for equality.
-
+Perl hash references become JSON objects. As there is no inherent
+ordering in hash keys (or JSON objects), they will usually be encoded
+in a pseudo-random order. JSON::PP can optionally sort the hash keys
+(determined by the I<canonical> flag and/or I<sort_by> property), so
+the same data structure will serialise to the same JSON text (given
+same settings and version of JSON::PP), but this incurs a runtime
+overhead and is only rarely useful, e.g. when you want to compare some
+JSON text against another for equality.
 
 =item array references
 
@@ -2629,31 +2796,30 @@ Perl array references become JSON arrays.
 Other unblessed references are generally not allowed and will cause an
 exception to be thrown, except for references to the integers C<0> and
 C<1>, which get turned into C<false> and C<true> atoms in JSON. You can
-also use C<JSON::false> and C<JSON::true> to improve readability.
+also use C<JSON::PP::false> and C<JSON::PP::true> to improve
+readability.
 
-   to_json [\0,JSON::PP::true]      # yields [false,true]
+   to_json [\0, JSON::PP::true]      # yields [false,true]
 
-=item JSON::PP::true, JSON::PP::false, JSON::PP::null
+=item JSON::PP::true, JSON::PP::false
 
 These special values become JSON true and JSON false values,
 respectively. You can also use C<\1> and C<\0> directly if you want.
 
-JSON::PP::null returns C<undef>.
+=item JSON::PP::null
+
+This special value becomes JSON null.
 
 =item blessed objects
 
-Blessed objects are not directly representable in JSON. See the
-C<allow_blessed> and C<convert_blessed> methods on various options on
-how to deal with this: basically, you can choose between throwing an
-exception, encoding the reference as if it weren't blessed, or provide
-your own serialiser method.
-
-See to L<convert_blessed>.
+Blessed objects are not directly representable in JSON, but C<JSON::PP>
+allows various ways of handling objects. See L<OBJECT SERIALISATION>,
+below, for details.
 
 =item simple scalars
 
 Simple Perl scalars (any scalar that is not a reference) are the most
-difficult objects to encode: JSON::XS and JSON::PP will encode undefined scalars as
+difficult objects to encode: JSON::PP will encode undefined scalars as
 JSON C<null> values, scalars that have last been used in a string context
 before encoding as JSON strings, and anything else as number value:
 
@@ -2669,20 +2835,31 @@ before encoding as JSON strings, and anything else as number value:
    # undef becomes null
    encode_json [undef]                  # yields [null]
 
-You can force the type to be a string by stringifying it:
+You can force the type to be a JSON string by stringifying it:
 
    my $x = 3.1; # some variable containing a number
    "$x";        # stringified
    $x .= "";    # another, more awkward way to stringify
    print $x;    # perl does it for you, too, quite often
+                # (but for older perls)
 
-You can force the type to be a number by numifying it:
+You can force the type to be a JSON number by numifying it:
 
    my $x = "3"; # some variable containing a string
    $x += 0;     # numify it, ensuring it will be dumped as a number
    $x *= 1;     # same thing, the choice is yours.
 
-You cannot currently force the type in other, less obscure, ways.
+You can not currently force the type in other, less obscure, ways.
+
+Since version 2.91_01, JSON::PP uses a different number detection logic
+that converts a scalar that is possible to turn into a number safely.
+The new logic is slightly faster, and tends to help people who use older
+perl or who want to encode complicated data structure. However, this may
+results in a different JSON text from the one JSON::XS encodes (and
+thus may break tests that compare entire JSON texts). If you do
+need the previous behavior for compatibility or for finer control,
+set PERL_JSON_PP_USE_B environmental variable to true before you
+C<use> JSON::PP (or JSON.pm).
 
 Note that numerical precision has the same meaning as under Perl (so
 binary to decimal conversion follows the same rules as in Perl, which
@@ -2691,105 +2868,278 @@ extensions to the floating point numbers of your platform, such as
 infinities or NaN's - these cannot be represented in JSON, and it is an
 error to pass those in.
 
-=item Big Number
-
-When C<allow_bignum> is enabled, 
-C<encode> converts C<Math::BigInt> objects and C<Math::BigFloat>
-objects into JSON numbers.
-
-
-=back
-
-=head1 UNICODE HANDLING ON PERLS
-
-If you do not know about Unicode on Perl well,
-please check L<JSON::XS/A FEW NOTES ON UNICODE AND PERL>.
-
-=head2 Perl 5.8 and later
-
-Perl can handle Unicode and the JSON::PP de/encode methods also work properly.
-
-    $json->allow_nonref->encode(chr hex 3042);
-    $json->allow_nonref->encode(chr hex 12345);
-
-Returns C<"\u3042"> and C<"\ud808\udf45"> respectively.
-
-    $json->allow_nonref->decode('"\u3042"');
-    $json->allow_nonref->decode('"\ud808\udf45"');
-
-Returns UTF-8 encoded strings with UTF8 flag, regarded as C<U+3042> and C<U+12345>.
-
-Note that the versions from Perl 5.8.0 to 5.8.2, Perl built-in C<join> was broken,
-so JSON::PP wraps the C<join> with a subroutine. Thus JSON::PP works slow in the versions.
-
-
-=head2 Perl 5.6
-
-Perl can handle Unicode and the JSON::PP de/encode methods also work.
-
-=head2 Perl 5.005
-
-Perl 5.005 is a byte semantics world -- all strings are sequences of bytes.
-That means the unicode handling is not available.
-
-In encoding,
-
-    $json->allow_nonref->encode(chr hex 3042);  # hex 3042 is 12354.
-    $json->allow_nonref->encode(chr hex 12345); # hex 12345 is 74565.
-
-Returns C<B> and C<E>, as C<chr> takes a value more than 255, it treats
-as C<$value % 256>, so the above codes are equivalent to :
-
-    $json->allow_nonref->encode(chr 66);
-    $json->allow_nonref->encode(chr 69);
-
-In decoding,
-
-    $json->decode('"\u00e3\u0081\u0082"');
-
-The returned is a byte sequence C<0xE3 0x81 0x82> for UTF-8 encoded
-Japanese character (C<HIRAGANA LETTER A>).
-And if it is represented in Unicode code point, C<U+3042>.
-
-Next, 
-
-    $json->decode('"\u3042"');
-
-We ordinary expect the returned value is a Unicode character C<U+3042>.
-But here is 5.005 world. This is C<0xE3 0x81 0x82>.
-
-    $json->decode('"\ud808\udf45"');
-
-This is not a character C<U+12345> but bytes - C<0xf0 0x92 0x8d 0x85>.
-
-
-=head1 TODO
-
-=over
-
-=item speed
-
-=item memory saving
+JSON::PP (and JSON::XS) trusts what you pass to C<encode> method
+(or C<encode_json> function) is a clean, validated data structure with
+values that can be represented as valid JSON values only, because it's
+not from an external data source (as opposed to JSON texts you pass to
+C<decode> or C<decode_json>, which JSON::PP considers tainted and
+doesn't trust). As JSON::PP doesn't know exactly what you and consumers
+of your JSON texts want the unexpected values to be (you may want to
+convert them into null, or to stringify them with or without
+normalisation (string representation of infinities/NaN may vary
+depending on platforms), or to croak without conversion), you're advised
+to do what you and your consumers need before you encode, and also not
+to numify values that may start with values that look like a number
+(including infinities/NaN), without validating.
 
 =back
 
+=head2 OBJECT SERIALISATION
+
+As JSON cannot directly represent Perl objects, you have to choose between
+a pure JSON representation (without the ability to deserialise the object
+automatically again), and a nonstandard extension to the JSON syntax,
+tagged values.
+
+=head3 SERIALISATION
+
+What happens when C<JSON::PP> encounters a Perl object depends on the
+C<allow_blessed>, C<convert_blessed>, C<allow_tags> and C<allow_bignum>
+settings, which are used in this order:
+
+=over 4
+
+=item 1. C<allow_tags> is enabled and the object has a C<FREEZE> method.
+
+In this case, C<JSON::PP> creates a tagged JSON value, using a nonstandard
+extension to the JSON syntax.
+
+This works by invoking the C<FREEZE> method on the object, with the first
+argument being the object to serialise, and the second argument being the
+constant string C<JSON> to distinguish it from other serialisers.
+
+The C<FREEZE> method can return any number of values (i.e. zero or
+more). These values and the paclkage/classname of the object will then be
+encoded as a tagged JSON value in the following format:
+
+   ("classname")[FREEZE return values...]
+
+e.g.:
+
+   ("URI")["http://www.google.com/"]
+   ("MyDate")[2013,10,29]
+   ("ImageData::JPEG")["Z3...VlCg=="]
+
+For example, the hypothetical C<My::Object> C<FREEZE> method might use the
+objects C<type> and C<id> members to encode the object:
+
+   sub My::Object::FREEZE {
+      my ($self, $serialiser) = @_;
+
+      ($self->{type}, $self->{id})
+   }
+
+=item 2. C<convert_blessed> is enabled and the object has a C<TO_JSON> method.
+
+In this case, the C<TO_JSON> method of the object is invoked in scalar
+context. It must return a single scalar that can be directly encoded into
+JSON. This scalar replaces the object in the JSON text.
+
+For example, the following C<TO_JSON> method will convert all L<URI>
+objects to JSON strings when serialised. The fact that these values
+originally were L<URI> objects is lost.
+
+   sub URI::TO_JSON {
+      my ($uri) = @_;
+      $uri->as_string
+   }
+
+=item 3. C<allow_bignum> is enabled and the object is a C<Math::BigInt> or C<Math::BigFloat>.
+
+The object will be serialised as a JSON number value.
+
+=item 4. C<allow_blessed> is enabled.
+
+The object will be serialised as a JSON null value.
+
+=item 5. none of the above
+
+If none of the settings are enabled or the respective methods are missing,
+C<JSON::PP> throws an exception.
+
+=back
+
+=head3 DESERIALISATION
+
+For deserialisation there are only two cases to consider: either
+nonstandard tagging was used, in which case C<allow_tags> decides,
+or objects cannot be automatically be deserialised, in which
+case you can use postprocessing or the C<filter_json_object> or
+C<filter_json_single_key_object> callbacks to get some real objects our of
+your JSON.
+
+This section only considers the tagged value case: a tagged JSON object
+is encountered during decoding and C<allow_tags> is disabled, a parse
+error will result (as if tagged values were not part of the grammar).
+
+If C<allow_tags> is enabled, C<JSON::PP> will look up the C<THAW> method
+of the package/classname used during serialisation (it will not attempt
+to load the package as a Perl module). If there is no such method, the
+decoding will fail with an error.
+
+Otherwise, the C<THAW> method is invoked with the classname as first
+argument, the constant string C<JSON> as second argument, and all the
+values from the JSON array (the values originally returned by the
+C<FREEZE> method) as remaining arguments.
+
+The method must then return the object. While technically you can return
+any Perl scalar, you might have to enable the C<allow_nonref> setting to
+make that work in all cases, so better return an actual blessed reference.
+
+As an example, let's implement a C<THAW> function that regenerates the
+C<My::Object> from the C<FREEZE> example earlier:
+
+   sub My::Object::THAW {
+      my ($class, $serialiser, $type, $id) = @_;
+
+      $class->new (type => $type, id => $id)
+   }
+
+
+=head1 ENCODING/CODESET FLAG NOTES
+
+This section is taken from JSON::XS.
+
+The interested reader might have seen a number of flags that signify
+encodings or codesets - C<utf8>, C<latin1> and C<ascii>. There seems to be
+some confusion on what these do, so here is a short comparison:
+
+C<utf8> controls whether the JSON text created by C<encode> (and expected
+by C<decode>) is UTF-8 encoded or not, while C<latin1> and C<ascii> only
+control whether C<encode> escapes character values outside their respective
+codeset range. Neither of these flags conflict with each other, although
+some combinations make less sense than others.
+
+Care has been taken to make all flags symmetrical with respect to
+C<encode> and C<decode>, that is, texts encoded with any combination of
+these flag values will be correctly decoded when the same flags are used
+- in general, if you use different flag settings while encoding vs. when
+decoding you likely have a bug somewhere.
+
+Below comes a verbose discussion of these flags. Note that a "codeset" is
+simply an abstract set of character-codepoint pairs, while an encoding
+takes those codepoint numbers and I<encodes> them, in our case into
+octets. Unicode is (among other things) a codeset, UTF-8 is an encoding,
+and ISO-8859-1 (= latin 1) and ASCII are both codesets I<and> encodings at
+the same time, which can be confusing.
+
+=over 4
+
+=item C<utf8> flag disabled
+
+When C<utf8> is disabled (the default), then C<encode>/C<decode> generate
+and expect Unicode strings, that is, characters with high ordinal Unicode
+values (> 255) will be encoded as such characters, and likewise such
+characters are decoded as-is, no changes to them will be done, except
+"(re-)interpreting" them as Unicode codepoints or Unicode characters,
+respectively (to Perl, these are the same thing in strings unless you do
+funny/weird/dumb stuff).
+
+This is useful when you want to do the encoding yourself (e.g. when you
+want to have UTF-16 encoded JSON texts) or when some other layer does
+the encoding for you (for example, when printing to a terminal using a
+filehandle that transparently encodes to UTF-8 you certainly do NOT want
+to UTF-8 encode your data first and have Perl encode it another time).
+
+=item C<utf8> flag enabled
+
+If the C<utf8>-flag is enabled, C<encode>/C<decode> will encode all
+characters using the corresponding UTF-8 multi-byte sequence, and will
+expect your input strings to be encoded as UTF-8, that is, no "character"
+of the input string must have any value > 255, as UTF-8 does not allow
+that.
+
+The C<utf8> flag therefore switches between two modes: disabled means you
+will get a Unicode string in Perl, enabled means you get an UTF-8 encoded
+octet/binary string in Perl.
+
+=item C<latin1> or C<ascii> flags enabled
+
+With C<latin1> (or C<ascii>) enabled, C<encode> will escape characters
+with ordinal values > 255 (> 127 with C<ascii>) and encode the remaining
+characters as specified by the C<utf8> flag.
+
+If C<utf8> is disabled, then the result is also correctly encoded in those
+character sets (as both are proper subsets of Unicode, meaning that a
+Unicode string with all character values < 256 is the same thing as a
+ISO-8859-1 string, and a Unicode string with all character values < 128 is
+the same thing as an ASCII string in Perl).
+
+If C<utf8> is enabled, you still get a correct UTF-8-encoded string,
+regardless of these flags, just some more characters will be escaped using
+C<\uXXXX> then before.
+
+Note that ISO-8859-1-I<encoded> strings are not compatible with UTF-8
+encoding, while ASCII-encoded strings are. That is because the ISO-8859-1
+encoding is NOT a subset of UTF-8 (despite the ISO-8859-1 I<codeset> being
+a subset of Unicode), while ASCII is.
+
+Surprisingly, C<decode> will ignore these flags and so treat all input
+values as governed by the C<utf8> flag. If it is disabled, this allows you
+to decode ISO-8859-1- and ASCII-encoded strings, as both strict subsets of
+Unicode. If it is enabled, you can correctly decode UTF-8 encoded strings.
+
+So neither C<latin1> nor C<ascii> are incompatible with the C<utf8> flag -
+they only govern when the JSON output engine escapes a character or not.
+
+The main use for C<latin1> is to relatively efficiently store binary data
+as JSON, at the expense of breaking compatibility with most JSON decoders.
+
+The main use for C<ascii> is to force the output to not contain characters
+with values > 127, which means you can interpret the resulting string
+as UTF-8, ISO-8859-1, ASCII, KOI8-R or most about any character set and
+8-bit-encoding, and still get the same data structure back. This is useful
+when your channel for JSON transfer is not 8-bit clean or the encoding
+might be mangled in between (e.g. in mail), and works because ASCII is a
+proper subset of most 8-bit and multibyte encodings in use in the world.
+
+=back
+
+=head1 BUGS
+
+Please report bugs on a specific behavior of this module to RT or GitHub
+issues (preferred):
+
+L<https://github.com/makamaka/JSON-PP/issues>
+
+L<https://rt.cpan.org/Public/Dist/Display.html?Queue=JSON-PP>
+
+As for new features and requests to change common behaviors, please
+ask the author of JSON::XS (Marc Lehmann, E<lt>schmorp[at]schmorp.deE<gt>)
+first, by email (important!), to keep compatibility among JSON.pm backends.
+
+Generally speaking, if you need something special for you, you are advised
+to create a new module, maybe based on L<JSON::Tiny>, which is smaller and
+written in a much cleaner way than this module.
 
 =head1 SEE ALSO
 
-Most of the document are copied and modified from JSON::XS doc.
+The F<json_pp> command line utility for quick experiments.
 
-L<JSON::XS>
+L<JSON::XS>, L<Cpanel::JSON::XS>, and L<JSON::Tiny> for faster alternatives.
+L<JSON> and L<JSON::MaybeXS> for easy migration.
+
+L<JSON::PP::Compat5005> and L<JSON::PP::Compat5006> for older perl users.
 
 RFC4627 (L<http://www.ietf.org/rfc/rfc4627.txt>)
+
+RFC7159 (L<http://www.ietf.org/rfc/rfc7159.txt>)
+
+RFC8259 (L<http://www.ietf.org/rfc/rfc8259.txt>)
 
 =head1 AUTHOR
 
 Makamaka Hannyaharamitu, E<lt>makamaka[at]cpan.orgE<gt>
 
+=head1 CURRENT MAINTAINER
+
+Kenichi Ishigaki, E<lt>ishigaki[at]cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
 Copyright 2007-2016 by Makamaka Hannyaharamitu
+
+Most of the documentation is taken from JSON::XS by Marc Lehmann
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 
