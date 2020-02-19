@@ -242,6 +242,11 @@ if ($letsencrypt_cmd) {
 	&set_ownership_permissions(undef, undef, 0600, $key);
 	&set_ownership_permissions(undef, undef, 0600, $chain);
 	&cleanup_wellknown($wellknown_new, $challenge_new);
+
+	# Attempt to update the contact email on file with let's encrypt
+	&system_logged("$letsencrypt_cmd register --update-registration".
+	       " --email ".quotemeta($email)." >/dev/null 2>&1 </dev/null");
+
 	return (1, $cert, $key, $chain);
 	}
 else {
