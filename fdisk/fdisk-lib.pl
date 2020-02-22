@@ -518,7 +518,7 @@ while(<FDISK>) {
 	elsif (/^\s*(\d+)\s+(\d+)cyl\s+(\d+)cyl\s+(\d+)cyl\s+(primary|logical|extended)\s*(\S*)\s*(\S*)/) {
 		# Partition within the current disk from parted (msdos format)
 		local $part = { 'number' => $1,
-				'device' => $disk->{'device'}.$1,
+				'device' => $disk->{'prefix'}.$1,
 				'type' => $6 || 'ext2',
 				'start' => $2+1,
 				'end' => $3+1,
@@ -538,7 +538,7 @@ while(<FDISK>) {
 	elsif (/^\s*(\d+)\s+(\d+)cyl\s+(\d+)cyl\s+(\d+)cyl\s(.*)/) {
 		# Partition within the current disk from parted (gpt format)
 		local $part = { 'number' => $1,
-				'device' => $disk->{'device'}.$1,
+				'device' => $disk->{'prefix'}.$1,
 				'start' => $2+1,
 				'end' => $3+1,
 				'blocks' => $4 * $disk->{'cylsize'},
