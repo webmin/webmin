@@ -467,17 +467,22 @@ return sprintf "%4.4d%2.2d%2.2d", $tm[5]+1900, $tm[4]+1, $tm[3];
 # get_zone_defaults(&hash)
 sub get_zone_defaults
 {
-if (!&read_file("$module_config_directory/zonedef", $_[0])) {
-	$_[0]->{'refresh'} = 10800; $_[0]->{'retry'} = 3600;
-	$_[0]->{'expiry'} = 604800; $_[0]->{'minimum'} = 38400;
-	$_[0]->{'refunit'} = ""; $_[0]->{'retunit'} = "";
-	$_[0]->{'expunit'} = ""; $_[0]->{'minunit'} = "";
+my ($zd) = @_;
+if (!&read_file("$module_config_directory/zonedef", $zd)) {
+	$zd->{'refresh'} = 3600;
+	$zd->{'retry'} = 600;
+	$zd->{'expiry'} = 1209600;
+	$zd->{'minimum'} = 3600;
+	$zd->{'refunit'} = "";
+	$zd->{'retunit'} = "";
+	$zd->{'expunit'} = "";
+	$zd->{'minunit'} = "";
 	}
 else {
-	$_[0]->{'refunit'} = $1 if ($_[0]->{'refresh'} =~ s/([^0-9])$//);
-	$_[0]->{'retunit'} = $1 if ($_[0]->{'retry'} =~ s/([^0-9])$//);
-	$_[0]->{'expunit'} = $1 if ($_[0]->{'expiry'} =~ s/([^0-9])$//);
-	$_[0]->{'minunit'} = $1 if ($_[0]->{'minimum'} =~ s/([^0-9])$//);
+	$zd->{'refunit'} = $1 if ($zd->{'refresh'} =~ s/([^0-9])$//);
+	$zd->{'retunit'} = $1 if ($zd->{'retry'} =~ s/([^0-9])$//);
+	$zd->{'expunit'} = $1 if ($zd->{'expiry'} =~ s/([^0-9])$//);
+	$zd->{'minunit'} = $1 if ($zd->{'minimum'} =~ s/([^0-9])$//);
 	}
 }
 
