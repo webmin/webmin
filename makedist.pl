@@ -162,11 +162,6 @@ while($d = readdir(DIR)) {
 	}
 closedir(DIR);
 
-# Create UTF-8 encodings
-print "Creating UTF-8 language encodings\n";
-system("./koi8-to-cp1251.pl $tardir/$dir");
-system("./chinese-to-utf8.pl $tardir/$dir");
-
 # Remove useless .bak, test and other files, and create the tar.gz file
 print "Creating webmin-$vfile.tar.gz\n";
 system("cd $tardir ; tar cvhf - $dir 2>/dev/null | gzip -c >webmin-$vfile.tar.gz");

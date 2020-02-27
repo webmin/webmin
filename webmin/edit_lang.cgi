@@ -14,7 +14,7 @@ print &ui_table_start($text{'lang_title2'}, undef, 2, [ "width=40%" ]);
 $clang = $gconfig{'lang'} ? $gconfig{'lang'} : $default_lang;
 print &ui_table_row($text{'lang_lang'},
 	&ui_select("lang", $clang,
-	   [ map { [ $_->{'lang'}, "$_->{'desc'} (".uc($_->{'lang'}).")" ] }
+	   [ map { [ $_->{'lang'}, "$_->{'desc'}" ] }
 		 &list_languages($clang) ]));
 
 # Character set

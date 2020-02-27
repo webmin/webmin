@@ -352,7 +352,6 @@ fi
           cp -r -L ${TEMP}/${module} ${TARBALL}/
         fi
     done
-    cp "${WTEMP}/chinese-to-utf8.pl" "${TARBALL}/"
 
     # insert perl path
     config_dir=`grep env_WEBMIN_CONFIG= ${MINICONF}| sed 's/.*_WEBMIN_CONFIG=//'`
@@ -376,15 +375,6 @@ fi
             echo -e "${RED}Error: update failed, ${PROD} may in a bad state! ${NC}aborting ..."
             rm -rf .~files
             exit 6
-        fi
-
-        # postprocessing
-        # "compile" UTF-8 lang files
-        echo -en "\n${CYAN}Compile UTF-8 lang files${NC} ..."
-        if [[ `which iconv 2> /dev/null` != '' ]] ; then
-            perl "${TEMP}/chinese-to-utf8.pl" . 2>&1 | while read input; do echo -n "."; done
-        else
-            echo -e "${BLUE} iconv not found, skipping lang files!${NC}"
         fi
 
         # run authenric-thme update, possible unattended
