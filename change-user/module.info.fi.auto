@@ -1,0 +1,3 @@
+desc_fi=Vaihda kieli ja teema
+longdesc_fi=Antaa nykyiselle Webmin-käyttäjälle vaihtaa kieltä, teemaansa ja mahdollisesti salasanaa.
+name_fi=ChangeUser

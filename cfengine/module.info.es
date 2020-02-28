@@ -1,1 +1,1 @@
-desc_es=Motor de Configuración
+desc_es=Motor de ConfiguraciÃ³n

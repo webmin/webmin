@@ -1,0 +1,3 @@
+desc_it=Esportazioni NFS
+longdesc_it=Modifica le condivisioni di file dal file FreeBSD / etc / exports.
+name_it=BSDexports

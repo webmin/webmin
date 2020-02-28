@@ -1,0 +1,3 @@
+name_pt=Mudar usuário
+desc_pt=Alterar idioma e tema
+longdesc_pt=Permite que o usuário atual do Webmin altere seu idioma, tema e possivelmente senha.

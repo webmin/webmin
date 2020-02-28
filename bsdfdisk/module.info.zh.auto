@@ -1,0 +1,2 @@
+desc_zh=本地磁盘上的分区
+longdesc_zh=在FreeBSD上的本地SCSI和IDE磁盘上创建和编辑分区。

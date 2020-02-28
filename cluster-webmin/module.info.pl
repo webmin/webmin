@@ -1,2 +1,2 @@
 desc_pl=Klaster - Serwery Webmin
-longdesc_pl=Instaluj i zarz±dzaj modu³ami, szablonami, u¿ytkownikami, grupami i kontrol± dostêpu na wszystkich serwerach Webmina.
+longdesc_pl=Instaluj i zarzÄ…dzaj moduÅ‚ami, szablonami, uÅ¼ytkownikami, grupami i kontrolÄ… dostÄ™pu na wszystkich serwerach Webmina.

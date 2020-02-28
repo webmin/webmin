@@ -1,1 +1,1 @@
-desc_es=Copia Seguridad Archivos Configuraci&#243;n
+desc_es=Copia Seguridad Archivos Configuración

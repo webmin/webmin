@@ -1,0 +1,3 @@
+desc_sl=Uporabniki in skupine grozdov
+longdesc_sl=Ustvarjanje, posodabljanje in brisanje uporabnikov in skupin na več strežnikih. Za razliko od NIS-a ima vsak strežnik svoje datoteke passwd in group, ki jih modul na daljavo posodablja.
+name_sl=Uporabniki grozdov

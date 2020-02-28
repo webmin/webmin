@@ -1,0 +1,3 @@
+name_da=Klyngebrugere
+longdesc_da=Opret, opdater og slet brugere og grupper på tværs af flere servere. I modsætning til NIS har hver server sine egne passwd- og gruppefiler, der eksternt opdateres af dette modul.
+desc_da=Klyngebrugere og grupper

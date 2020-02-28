@@ -1,2 +1,2 @@
-desc_pl=Klaster - Kopia plików
-longdesc_pl=Zaplanowany transfer plików z tego serwera do innych serwerów w klastrze.
+desc_pl=Klaster - Kopia plikÃ³w
+longdesc_pl=Zaplanowany transfer plikÃ³w z tego serwera do innych serwerÃ³w w klastrze.

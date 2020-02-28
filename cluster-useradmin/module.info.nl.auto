@@ -1,0 +1,2 @@
+longdesc_nl=Creëer, update en verwijder gebruikers en groepen op meerdere servers. In tegenstelling tot NIS heeft elke server zijn eigen passwd- en groepsbestanden die op afstand worden bijgewerkt door deze module.
+name_nl=Clustergebruikers

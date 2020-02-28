@@ -1,0 +1,3 @@
+desc_tr=Küme Kullanıcıları ve Grupları
+name_tr=Küme Kullanıcıları
+longdesc_tr=Birden çok sunucuda kullanıcılar ve gruplar oluşturun, güncelleyin ve silin. NIS'den farklı olarak, her sunucunun bu modül tarafından uzaktan güncellenen kendi passwd ve grup dosyaları vardır.

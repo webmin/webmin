@@ -1,0 +1,3 @@
+name_hu=Export menedzser
+desc_hu=NFS Export
+longdesc_hu=Az NFS fájlmegosztások szerkesztése az / etc / export fájlban.

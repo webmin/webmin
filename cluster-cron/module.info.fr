@@ -1,1 +1,1 @@
-desc_fr=Tâches Cron sur les clusters
+desc_fr=TÃ¢ches Cron sur les clusters

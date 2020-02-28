@@ -1,0 +1,3 @@
+desc_da=NFS-eksport
+longdesc_da=Rediger filandel fra FreeBSD / etc / eksport filen.
+name_da=BSDexports

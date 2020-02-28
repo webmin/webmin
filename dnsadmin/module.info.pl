@@ -1,1 +1,1 @@
-desc_pl=Serwer DNS BIND&nbsp;4
+desc_pl=Serwer DNS BIND 4

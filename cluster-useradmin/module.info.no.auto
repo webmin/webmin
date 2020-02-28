@@ -1,0 +1,2 @@
+longdesc_no=Opprett, oppdater og slett brukere og grupper på tvers av flere servere. I motsetning til NIS, har hver server sine egne passwd- og gruppefiler som eksternt blir oppdatert av denne modulen.
+name_no=Klyngebrukere
