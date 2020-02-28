@@ -318,7 +318,12 @@ sub language_transcode
 {
     my ($string, $encoding) = @_;
 
-    $string = decode($encoding, $string);
+    eval {$string = decode($encoding, $string)};
+    if ($@) {
+        if (!prompt('next')) {
+            exit;
+        }
+    }
     decode_entities($string);
     $string = encode('utf-8', $string);
     return $string;
