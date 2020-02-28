@@ -1,2 +1,3 @@
-longdesc_zh_TW=編輯/ etc / exports中定義的NFS文件共享。
+longdesc_zh_TW=編輯在/etc/exports.
 name_zh_TW=出口部經理
+desc_zh_TW=NFS出口

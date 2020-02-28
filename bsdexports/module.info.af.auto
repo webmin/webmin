@@ -1,3 +1,3 @@
 desc_af=NFS Uitvoere
 name_af=BSDexports
-longdesc_af=Wysig lêeraandele uit die FreeBSD / etc / uitvoer lêer.
+longdesc_af=Wysig lêeraandele uit die FreeBSD /etc/exports lêer.

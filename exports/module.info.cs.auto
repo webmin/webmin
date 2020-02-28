@@ -1,2 +1,3 @@
-longdesc_cs=Úpravy sdílených souborů NFS definovaných v / etc / export.
+longdesc_cs=Úpravy sdílených souborů NFS definovaných v /etc/exports.
 name_cs=Exportní manažer
+desc_cs=Export NFS

@@ -1,1 +1,3 @@
 name_ca=DFSadmin
+longdesc_ca=Edita les comparticions de fitxers tal com es defineix al /etc/dfs/dfstab.
+desc_ca=Accions NFS

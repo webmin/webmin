@@ -1,3 +1,3 @@
 desc_th=การส่งออก NFS
 name_th=ผู้จัดการฝ่ายส่งออก
-longdesc_th=แก้ไขการแชร์ไฟล์ตามที่กำหนดไว้ในไฟล์ HPUX / etc / exports
+longdesc_th=แก้ไขการแชร์ไฟล์ตามที่กำหนดไว้ในไฟล์ HPUX /etc/exports

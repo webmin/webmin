@@ -1,3 +1,3 @@
 desc_el=Εξαγωγές NFS
-longdesc_el=Επεξεργαστείτε τα κοινόχρηστα αρχεία από το αρχείο FreeBSD / etc / exports.
+longdesc_el=Επεξεργαστείτε τα κοινόχρηστα αρχεία από το αρχείο FreeBSD /etc/exports.
 name_el=BSDexports

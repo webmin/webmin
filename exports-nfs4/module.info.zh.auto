@@ -1,2 +1,3 @@
-longdesc_zh=编辑在/ etc / exports中定义的NFS v4文件共享。
+longdesc_zh=编辑/etc/exports.
 name_zh=出口部经理
+desc_zh=NFS v4导出

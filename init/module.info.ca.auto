@@ -1,1 +1,3 @@
 name_ca=Gestor d’arrencada
+desc_ca=Arrencada i apagada
+longdesc_ca=Configuració dels scripts que s&#39;executaran en el moment d&#39;arrencada des de /etc/rc.local.

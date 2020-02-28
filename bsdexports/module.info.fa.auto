@@ -1,3 +1,3 @@
 name_fa=BSDexports
-longdesc_fa=اشتراک فایل را از پرونده FreeBSD / etc / eksport ویرایش کنید.
+longdesc_fa=اشتراک فایل را از پرونده FreeBSD /etc/exports کنید.
 desc_fa=صادرات NFS

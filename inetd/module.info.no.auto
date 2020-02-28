@@ -1,1 +1,2 @@
-longdesc_no=Rediger tjenester i /etc/inetd.conf, / etc / services og / etc / rpc.
+longdesc_no=Rediger tjenester i /etc/rpc.
+desc_no=Nettverkstjenester og protokoller

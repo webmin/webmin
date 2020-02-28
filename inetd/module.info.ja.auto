@@ -1,2 +1,2 @@
 desc_ja=ネットワークサービスとプロトコル
-longdesc_ja=/etc/inetd.conf、/etc/services、および/ etc / rpcのサービスを編集します。
+longdesc_ja=/etc/rpc.

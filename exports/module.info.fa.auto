@@ -1,3 +1,3 @@
 desc_fa=صادرات NFS
 name_fa=مدیر صادرات
-longdesc_fa=سهام فایل NFS را ویرایش کنید که در / etc / eksport تعریف شده است.
+longdesc_fa=سهام فایل NFS را ویرایش کنید که در /etc/exports.

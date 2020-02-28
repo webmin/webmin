@@ -1,1 +1,2 @@
-longdesc_hu=Szerkesztés a /etc/inetd.conf, az / etc / services és az / etc / rpc mappákban.
+longdesc_hu=Szerkessze a szolgáltatásokat az /etc/rpc.
+desc_hu=Hálózati szolgáltatások és protokollok

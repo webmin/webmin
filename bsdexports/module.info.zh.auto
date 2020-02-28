@@ -1,2 +1,3 @@
-longdesc_zh=从FreeBSD / etc / exports文件中编辑文件共享。
+longdesc_zh=从FreeBSD /etc/exports文件中编辑文件共享。
 name_zh=BSD出口
+desc_zh=NFS出口

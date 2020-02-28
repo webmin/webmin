@@ -1,2 +1,2 @@
-longdesc_ru=Отредактируйте сервисы в /etc/inetd.conf, / etc / services и / etc / rpc.
+longdesc_ru=Отредактируйте сервисы в /etc/rpc.
 desc_ru=Сетевые сервисы и протоколы

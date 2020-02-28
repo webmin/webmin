@@ -1,3 +1,3 @@
 name_sk=DFSadmin
 desc_sk=Akcie NFS
-longdesc_sk=Zdieľajte zdieľané súbory podľa definície v súbore / etc / dfs / dfstab.
+longdesc_sk=/etc/dfs/dfstab.

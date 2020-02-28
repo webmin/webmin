@@ -1,2 +1,2 @@
 desc_pl=Usługi sieciowe i protokoły
-longdesc_pl=Edytuj usługi w /etc/inetd.conf, / etc / services i / etc / rpc.
+longdesc_pl=Edytuj usługi w /etc/rpc.

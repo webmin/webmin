@@ -1,2 +1,3 @@
 name_zh=引导管理器
-longdesc_zh=在启动时从/etc/init.d或/etc/rc.local运行的安装脚本。
+longdesc_zh=在启动时从/etc/rc.local.
+desc_zh=开机和关机

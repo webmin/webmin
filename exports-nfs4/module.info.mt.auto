@@ -1,3 +1,3 @@
 name_mt=Maniġer tal-Esportazzjoni
-longdesc_mt=Editja l-ishma tal-fajl NFS v4 iddefiniti fi / eċċ / esportazzjonijiet.
+longdesc_mt=Editja l-ishma tal-fajl NFS v4 definit fi /etc/exports.
 desc_mt=NFS v4 Esportazzjonijiet
