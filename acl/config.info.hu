@@ -1,5 +1,5 @@
-line1=Konfigurálható beállítások,11
-display=Felhasználó és csoport megjelenítési mód,1,1-Csak a neveket,0-Neveket és modulokat
-order=Felhasználók és csoportok rendezése,1,0-A fájl rendezése szerint,1-Név szerint
-line2=Rendszer konfiguráció,11
-ssleay=Az <code>openssl</code> vagy <code>ssleay</code> program teljes elérési útja,0
+line1=KonfigurÃ¡lhatÃ³ beÃ¡llÃ­tÃ¡sok,11
+display=FelhasznÃ¡lÃ³ Ã©s csoport megjelenÃ­tÃ©si mÃ³d,1,1-Csak a neveket,0-Neveket Ã©s modulokat
+order=FelhasznÃ¡lÃ³k Ã©s csoportok rendezÃ©se,1,0-A fÃ¡jl rendezÃ©se szerint,1-NÃ©v szerint
+line2=Rendszer konfigurÃ¡ciÃ³,11
+ssleay=Az <code>openssl</code> vagy <code>ssleay</code> program teljes elÃ©rÃ©si Ãºtja,0
