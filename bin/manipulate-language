@@ -22,19 +22,21 @@ use Pod::Usage;
 sub main
 {
     my %opt;
-    GetOptions('help|h'                       => \$opt{'help'},
-               'type|w:s'                     => \$opt{'type'},
-               'modules|m:s'                  => \$opt{'modules'},
-               'language-target|t:s'          => \$opt{'language-target'},
-               'language-source|s:s'          => \$opt{'language-source'},
-               'language-source-encoding|e:s' => \$opt{'language-source-encoding'},
-               'no-translate|o!'              => \$opt{'no-translate'},
-                # 'action|a:s'                   => \$opt{'action'},   ####################################
-                # 'key|k:s'                      => \$opt{'key'},      ########### coming soon! ###########
-                # 'value|d:s'                    => \$opt{'value'},    ####################################
-               'overwrite|f!'                 => \$opt{'overwrite'},
-               'log|l:s'                      => \$opt{'log'},
-               'verbose|v:i'                  => \$opt{'verbose'});
+    GetOptions(
+        'help|h'                       => \$opt{'help'},
+        'type|w:s'                     => \$opt{'type'},
+        'modules|m:s'                  => \$opt{'modules'},
+        'language-target|t:s'          => \$opt{'language-target'},
+        'language-source|s:s'          => \$opt{'language-source'},
+        'language-source-encoding|e:s' => \$opt{'language-source-encoding'},
+        'no-translate|o!'              => \$opt{'no-translate'},
+
+        # 'action|a:s'                   => \$opt{'action'},   ####################################
+        # 'key|k:s'                      => \$opt{'key'},      ########### coming soon! ###########
+        # 'value|d:s'                    => \$opt{'value'},    ####################################
+        'overwrite|f!' => \$opt{'overwrite'},
+        'log|l:s'      => \$opt{'log'},
+        'verbose|v:i'  => \$opt{'verbose'});
     my %data;
 
     # Print help and exit
@@ -98,9 +100,11 @@ sub main
             {
                wanted => sub {
                    $found = $File::Find::name;
-                   if (!-l $found && $found =~ /$type\/$language_source$/) {
+                   if (!-l $found && ($found =~ /$type\/$language_source$/ || $found =~ /$type\.info$/)) {
                        $found =~ s/^$path\///g;
                        $found =~ s/\/$type\/$language_source//g;
+                       $found =~ s/\/$type\.info//g;
+                       $found =~ s/\/$language_source//g;
                        $found =~ s/\/$language_source//g;
                        push(@modules, $found);
                    }
@@ -718,8 +722,13 @@ sub talk
     if ($what eq 'affected') {
         my $affected = "@{$data->{'modules'}}";
         $affected =~ s/\b(lang)\b/(lang)/;
-        say GREEN, "Affected modules: ", RESET, YELLOW BOLD, $affected, RESET;
-        exit if (!prompt('next'));
+        if ($affected) {
+            say GREEN, "Affected modules: ", RESET, YELLOW BOLD, $affected, RESET;
+            exit if (!prompt('next'));
+        } else {
+            say RED, "Error: No modules found to operate on", RESET;
+            exit;
+        }
         say GREEN, "Affected languages: ", RESET, YELLOW BOLD,
           "" . ("@{$opt->{'language-target'}}" || "@{$data->{'languages_source_list_codes'}}") . "", RESET;
         exit if (!prompt('next'));
