@@ -433,6 +433,7 @@ sub translated_substitute
     } elsif ($format eq 'html') {
         $translated =~ s/<span.*?translate.*?>(.*?)<.*?>/$1/gi;
         $translated =~ s/&quot;//gi;
+        $translated =~ s/&#39;/'/gi;
     }
 
     $translated =~ s/<[ ]*(?:(\?\w+|(\w+).*?))[ ]*>(.*?)<.*?>/<$1>$3<\/$2>/g;
