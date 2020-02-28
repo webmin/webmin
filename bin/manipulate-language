@@ -411,7 +411,7 @@ sub translate_substitute
 
     # Preserve path in strings
     elsif ($format eq 'html') {
-        $value =~ s/(?:(^(\/[\w+].*?),|^(\/[\w+].*?)\.|(\/[\w+].*?) |(\/[\w+].*?)$))/<span translate="no">$1<\/span>/g;
+        $value =~ s/(?:(^(\/[\w+].*?),|^(\/[\w+].*?)\.|(\/[\w+].*?) |(\/[\w+].*?)$))/<span translate="no">"$1"<\/span>/g;
     }
 
     return $value;
@@ -432,6 +432,7 @@ sub translated_substitute
         $translated =~ s/<gtt.*?>.*?(\d+).*?<.*?>/\$$1/gi;
     } elsif ($format eq 'html') {
         $translated =~ s/<span.*?translate.*?>(.*?)<.*?>/$1/gi;
+        $translated =~ s/&quot;//gi;
     }
 
     $translated =~ s/<[ ]*(?:(\?\w+|(\w+).*?))[ ]*>(.*?)<.*?>/<$1>$3<\/$2>/g;
