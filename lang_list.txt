@@ -2,7 +2,6 @@ lang=af,           charset=UTF-8,  titles=1                    Afrikaans
 lang=ar,           charset=UTF-8,  titles=0,  rtl=1            العربية
 lang=be,           charset=UTF-8,  titles=0                    беларуская
 lang=bg,           charset=UTF-8,  titles=1                    български
-lang=bn,           charset=UTF-8,  titles=0                    বাংলা
 lang=ca,           charset=UTF-8,  titles=1                    català
 lang=cs,           charset=UTF-8,  titles=0                    čeština
 lang=da,           charset=UTF-8,  titles=1                    dansk
@@ -14,9 +13,7 @@ lang=eu,           charset=UTF-8,  titles=1                    euskara
 lang=fa,           charset=UTF-8,  titles=0,  dir=rtl, rtl=1   فارسی
 lang=fi,           charset=UTF-8,  titles=1                    suomi
 lang=fr,           charset=UTF-8,  titles=1                    français
-lang=ga,           charset=UTF-8,  titles=0                    Gaeilge
 lang=he,           charset=UTF-8,  titles=0,  dir=rtl, rtl=1   עברית
-lang=hi,           charset=UTF-8,  titles=0                    हिन्दी
 lang=hr,           charset=UTF-8,  titles=0                    hrvatski
 lang=hu,           charset=UTF-8,  titles=1                    magyar
 lang=it,           charset=UTF-8,  titles=1                    italiano
