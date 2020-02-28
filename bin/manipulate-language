@@ -424,6 +424,9 @@ sub translate
     # Replace language code to match what translator expects
     $target =~ s/_/-/;
 
+    # Prevent service unavailable error
+    sleep 1;
+
     my $tr;
     my $rsp = "https://translation.googleapis.com/language/translate/v2?q=@{[urlize($value)]}";
     my $rsh = { 'Authorization' => "Bearer \"@{[trim($token)]}\"",
