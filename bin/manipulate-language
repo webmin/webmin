@@ -431,7 +431,7 @@ sub translated_substitute
     if ($format eq 'text') {
         $translated =~ s/<gtt.*?>.*?(\d+).*?<.*?>/\$$1/gi;
     } elsif ($format eq 'html') {
-        $translated =~ s/<span.*translate.*?>(.*?)<.*?>/$1/gi;
+        $translated =~ s/<span.*?translate.*?>(.*?)<.*?>/$1/gi;
     }
 
     $translated =~ s/<[ ]*(?:(\?\w+|(\w+).*?))[ ]*>(.*?)<.*?>/<$1>$3<\/$2>/g;
