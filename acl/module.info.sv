@@ -1,1 +1,1 @@
-desc_sv=Webmin-användare
+desc_sv=Webmin-anvÃ¤ndare
