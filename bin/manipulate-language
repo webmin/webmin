@@ -459,9 +459,11 @@ sub translate
     my $format = $opt->{'translate-format'};
 
     # Updating Google Translate API token to avoid expiration
-    if (((time() - $data->{'start_time'}) / 60) > 15) {
+    my $time = time();
+    if ((($time - $data->{'start_time'}) / 60) > 15) {
         say CYAN, "Updating Google Translate API token..", RESET;
         $data->{'token'} = get_google_translate_token();
+        $data->{'start_time'} = $time;
     }
 
     my $token = $data->{'token'};
