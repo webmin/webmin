@@ -615,7 +615,7 @@ sub overwrite
                             say "        .. $key --> $translated";
                         }
 
-                        $translated = translated_substitute($translated);
+                        $translated = translated_substitute($translated, $opt);
 
                         if ($opt->{'verbose'} == 2) {
                             say "        .. $key <-> $translated";
