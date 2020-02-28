@@ -22,22 +22,24 @@ use Pod::Usage;
 sub main
 {
     my %opt;
-    GetOptions(
-        'help|h'                       => \$opt{'help'},
-        'type|w:s'                     => \$opt{'type'},
-        'modules|m:s'                  => \$opt{'modules'},
-        'language-target|t:s'          => \$opt{'language-target'},
-        'language-source|s:s'          => \$opt{'language-source'},
-        'language-source-encoding|e:s' => \$opt{'language-source-encoding'},
-        'no-translate|o!'              => \$opt{'no-translate'},
-
-        # 'action|a:s'                   => \$opt{'action'},   ####################################
-        # 'key|k:s'                      => \$opt{'key'},      ########### coming soon! ###########
-        # 'value|d:s'                    => \$opt{'value'},    ####################################
-        'overwrite|f!' => \$opt{'overwrite'},
-        'log|l:s'      => \$opt{'log'},
-        'verbose|v:i'  => \$opt{'verbose'});
+    GetOptions('help|h'                       => \$opt{'help'},
+               'type|w:s'                     => \$opt{'type'},
+               'modules|m:s'                  => \$opt{'modules'},
+               'modules-exclude|me:s'         => \$opt{'modules-exclude'},
+               'language-target|t:s'          => \$opt{'language-target'},
+               'language-source|s:s'          => \$opt{'language-source'},
+               'language-source-encoding|e:s' => \$opt{'language-source-encoding'},
+               'no-translate|o!'              => \$opt{'no-translate'},
+                # 'action|a:s'                   => \$opt{'action'},        #################################
+                # 'key|k:s'                      => \$opt{'key'},           ######### coming soon! ##########
+                # 'value|d:s'                    => \$opt{'value'},         #################################
+               'overwrite|f!'                 => \$opt{'overwrite'},
+               'log|l:s'                      => \$opt{'log'},
+               'verbose|v:i'                  => \$opt{'verbose'});
     my %data;
+
+    # Register start time
+    $data{'start_time'} = time();
 
     # Print help and exit
     pod2usage(0) if ($opt{'help'});
@@ -96,6 +98,7 @@ sub main
         @modules = sort @modules;
     } else {
         my $found;
+        my @modules_exclude = split(',', $opt{'modules-exclude'});
         find(
             {
                wanted => sub {
@@ -106,7 +109,7 @@ sub main
                        $found =~ s/\/$type\.info//g;
                        $found =~ s/\/$language_source//g;
                        $found =~ s/\/$language_source//g;
-                       if ($found !~ /^_/) {
+                       if (!any {$_ =~ /^$found$/} @modules_exclude) {
                            push(@modules, $found);
                        }
                    }
@@ -419,7 +422,15 @@ sub translated_substitute
 # Make actual translation using Google Translate API
 sub translate
 {
-    my ($token, $source, $target, $value) = @_;
+    my ($data, $source, $target, $value) = @_;
+
+    # Updating Google Translate API token to avoid expiration
+    if ((time() - $data->{'start_time'}) * 60 > 15) {
+        say CYAN, "Updating Google Translate API token..", RESET;
+        $data->{'token'} = get_google_translate_token();
+    }
+
+    my $token = $data->{'token'};
 
     # Replace language code to match what translator expects
     $target =~ s/_/-/;
@@ -562,7 +573,7 @@ sub overwrite
 
                     # Run actual translation
                     my ($translate_status, $translate_response, $translated) =
-                      translate($token, $language_source, $code, $value);
+                      translate($data, $language_source, $code, $value);
                     if ($translate_status) {
                         $translated = $translated->{'data'}->{'translations'}[0]->{'translatedText'};
 
@@ -797,6 +808,10 @@ Type of target to use for operations. Either <lang>, <ulang>, <help> directories
 =item --modules, -m
 
 Comma separated list of modules to operate on. Default is to operate on all available modules.
+
+=item --modules-exclude, -me
+
+Comma separated list of modules to exclude
 
 =item --language-target, -t
 
