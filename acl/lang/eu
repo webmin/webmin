@@ -1,8 +1,6 @@
-﻿index_title=Webmin Erabiltzaileak
 index_user=Erabiltzailea
 index_modules=Moduluak
 index_create=Webmin erabiltzaile berria sortu.
-index_rcreate=Arrisku-mailako erabiltzailea sortu.
 index_convert=Unix erabiltzaileak Webmin erabiltzaile bihurtu
 index_cert=SSL ziurtagiri bat eskatu
 index_certmsg=Egin klik botoi honetan SSL ziurtagiri bat eskatzeko, honen bidez Webminen saioa modu seguruan hasteko aukera duzu, erabiltzaile izen eta pasahitzik sartu gabe.
@@ -23,7 +21,6 @@ index_unix=Unix erabiltzailearen kautotzea konfiguratu
 index_sessions=Sarrerako saioak ikusi
 index_rbac=RBAC	konfiguratu
 index_delete=Ezabatu aukeratutakoa
-
 edit_title=Webmin erabiltzailea editatu
 edit_title2=Webmin erabiltzailea sortu
 edit_readonly=Webmin erabiltzaile hau ez litzateke editatu behar $1 moduluak kudeatzen duen moduan .<a href='$2'>Klikatu hemen</a> ohar hau saltatu eta erabiltzailea editatzen jarraitzeko. Kontuan izan edozein aldaketa gain-idatzia izan daitekeela!!
@@ -71,8 +68,6 @@ edit_ecreate=Ez zaude erabiltzaileak sortzeko baimenduta
 edit_theme=UI gai pertsonala
 edit_themeglobal=Webminen konfiguraziotik
 edit_themedef=Webmineko gai zaharra
-edit_overlay=
-Personal theme overlay
 edit_overlayglobal=Ezer ez - gai lehenetsiak erabili
 edit_log=Ikusi log fitxategiak
 edit_selall=Hautatu dena
@@ -125,12 +120,10 @@ save_eminsize=Pasahitzaren luzera minimoa falta da edo ez da zenbakizko balioa
 save_edays=Ez da baimentzeko egunik hautatu
 save_ehours=Baimentzeko orduak falta dira edo ezegokiak dira
 save_ehours2=Baimentzeko hasiera denborak amaierakoak baino lehenagokoa izan behar du
-
 delete_err=Akatsa erabiltzailea ezabatzean
 delete_eself=Ezin duzu zeure burua ezabatu
 delete_ecannot=Ez zaude erabiltzaileak ezabatzeko baimendua
 delete_euser=Ez zaude erabiltzaile hau ezabatzeko baimendua
-
 cert_title=Eskatu Ziurtagiria
 cert_issue=Igorri Ziurtagiria
 cert_header=Ziurtagiri berriaren zehaztapenak
@@ -149,17 +142,14 @@ cert_install=Instalatu zure ziurtagiria nabigatzailean
 cert_ekey=SSL gako berria ez du nabigatzaileak onartu - beharbada ez ditu SSL bezero ziurtagiriak onartzen.
 cert_eca=Akatsa ziurtagiri-autoritatea instalatzean : $1
 cert_already=Abisua - $1 ziurtagiria dagoeneko erabiltzen ari zara.
-
 acl_title=Modulu atzipen kontrola
 acl_title2= $1 etik $2 ra
 acl_title3=$1 etik $2 rako taldeentzat
 acl_options=$1 atzipen kontrolerako aukerak
-
 acl_config=Edita dezake moduluaren konfigurazioa?
 acl_reset=Baimen guztiak berrezarri
 acl_rbac=RBAC en atzipen kontrolerako ezarpenak lortu?
 acl_rbacyes=Bai (beheko ezarpenak gain-idatzi)
-
 acl_uall=Erabiltzaile guztiak
 acl_uthis=Erabiltzaile hau
 acl_usel=Hautatutako erabiltzaileak ..
@@ -197,7 +187,6 @@ acl_theme=Gai pertsonala alda dezake?
 acl_ips=IP atzipen kontrola alda dezake?
 acl_switch=Beste erabiltzaileak alda ditzake?
 acl_times=Saioa hasteko denborak alda ditzake?
-
 log_modify=Aldatu $1 erabiltzailea
 log_rename=$1 izena zuen Webmin erabiltzailea berrizendatu da $2 izenarekin
 log_create=Sortu da $1 Webmin erabiltzailea
@@ -208,7 +197,6 @@ log_reset=Berrezarri dira $1 en atzipenak $2 n
 log_cert=Igorri da $1 erabiltzailearentzat ziurtagiria
 log_modify_g=$1 Webmin taldea aldatu da
 log_rename_g=$1 Webmin taldearen izen berria $2
-
 log_create_g=$1 Webmin taldea sortu da
 log_delete_g=$1 Webmin taldea ezabatu da
 log_switch=$1 Webmin erabiltzailera aldatua
@@ -217,7 +205,6 @@ log_delete_groups=$1 Webmin taldeak ezabatuak
 log_pass=Pasahitzen murriztapenak aldatuak izan dira
 log_unix=Unix erabiltzaileen autentikazioa aldatua izan da
 log_sync=Unix erabiltzailearen sinkronizazioa aldatua izan da
-
 gedit_ecannot=Ez zaude taldeak editatzeko baimendua
 gedit_title=Editatu Webmin taldea
 gedit_title2=Sortu Webmin taldea
@@ -225,7 +212,6 @@ gedit_group=Talde izena
 gedit_rights=Webmin taldearen atzipen eskubideak
 gedit_modules=Kideen moduluak
 gedit_members=Erabiltzaile eta taldekideak
-
 gdelete_err=Akatsa taldea ezabatzean
 gdelete_ecannot=Ez zaude taldeak ezabatzeko baimendua
 gdelete_euser=Ezin duzu zure taldea ezabatu
@@ -233,13 +219,10 @@ gdelete_esub=Azpitaldeak dituzten taldeak ezin dira ezabatu
 gdelete_title=Ezabatu taldea
 gdelete_desc=Ziur zaude zaude $1 taldea eta bere kide den $2 ezabatu nahi dituzula?
 gdelete_ok=Ezabatu taldea
-
 gsave_err=Akatsa taldea gordetzean
 gsave_ename=Talde izena falta da edo okerra da
-
 gsave_enamewebmin='webmin' talde izena barne kudeaketarako erreserbatua dago
 gsave_edup=Talde izen hori dagoeneko badago
-
 convert_title=Bihurtu erabiltzaileak
 convert_ecannot=Ez zaude Unix erabiltzaileak bihurtzera baimendua
 convert_nogroups=Ez dira Webmin taldeak definitu zure sisteman. Bihurketa egin aurretik gutxienez talde bat sortu behar da honela bihurtutako erabiltzaileei baimenak esleitzeko.
@@ -250,7 +233,6 @@ convert_2=Erabiltzaile guztiak honakoak ezik
 convert_3=Talde hauetako erabiltzaileak
 convert_4=Erabiltzaile identifikadorea (UID) tarte honetakoa dutenak
 convert_group=Webmin taldera erabiltzaile berriak esleitu
-convert_sync=Unixeko pasahitz bera erabili etorkizunean?
 convert_ok=Bihurtu orain
 convert_err=Akatsa erabiltzaileak bihurtzean
 convert_eusers=Ez da erabiltzailerik sartu bihurketa egiteko
@@ -264,7 +246,6 @@ convert_exists=$1 dagoeneko existitzen da
 convert_invalid=$1 ez da baliozko Webmin erabiltzaile izena
 convert_added=$1 gehitzen
 convert_msg=Unix erabiltzaileak bihurtzen ...
-
 sync_title=Unix erabiltzaileen sinkronizazioa
 sync_desc=Formulario honen bidez posible da Webmin bidez sortutako erabiltzaileen eta modulu honetako erabiltzaileen sinkronizazio automatikoa konfiguratzea.
 sync_nogroups=Ez da Webmin talderik definitu zure sisteman. Gutxienez talde bat sortua izan behar da sortutako erabiltzaileen atzipena ezartzeko.
@@ -274,7 +255,6 @@ sync_delete=Unix erabiltzailea ezabatzean dagokion Webmin erabiltzailea ezabatu
 sync_group=Esleitu erabiltzaile berria Webmin taldeari
 sync_unix=Erabiltzaile berrien pasahitza Unix autentikazioarena bezala ezarri
 sync_ecannot=Ez zaude erabiltzaileen sinkronizazioa konfiguratzeko baimendua
-
 unix_title=Unix erabiltzaileen autentikazioa
 unix_err=Akatsa Unix autentikazioa gordetzean
 unix_desc=Orri honen bidez Webmin konfigura daiteke sistemako erabiltzaileen aurka egindako saio saiakerak  eta PAM balidatzeko. Hau lagungarri da Unix erabiltzaile askori Webminerako atzipena eman nahi zaionean.
@@ -296,41 +276,34 @@ unix_euser='$1' ez da baliozko erabiltzaile izena
 unix_egroup='$1' ez da baliozko talde izena
 unix_shells=Shell-a honako fitxategian ez duten Unix erabiltzaileak debekatu
 unix_eshells=Shell fitxategiak falta dira edo ez dira existitzen
-unix_restrict=Ondorengo murriztapen gehigarriak goian aukeratutako Unix erabiltzaileei aplikatu zaizkie.
 unix_ewhogroup=Missing group to allow in row $1
 unix_ewhouser=Missing user to allow in row $1
 unix_enone=Ez da sartu baimentzeko Unix erabiltzaile edo talderik
-unix_same=&lt;Talde edo erabiltzaile bera&gt;
+unix_same=<Talde edo erabiltzaile bera>
 unix_sudo=<tt>sudo</tt> eran komando guztiak exekuta ditzaketen erabiltzaileei baimendu  <tt>root</tt> gisa saioa hasten
 unix_pamany=Treat logins that only pass PAM validation as $1
 unix_esudo=$1 komandoa ez dago instalatua
 unix_esudomod=Perl-en $1 modulua beharrezkoa da <tt>sudo</tt> autentikaziorako eta ez dago instalatua
-
 sessions_title=Uneko login saioak
-sessions_desc=Uneko Webmin saio hasiak behean zerrendatuta ageri dira. Existitzen den saioa ezeztatzeko eta erabiltzaile bat berriro saioa hastera behartzeko, egin klik bere saio identifikadorean. 
 sessions_id=Saio identifikadorea
 sessions_user=Webmin erabiltzailea
 sessions_login=Saioa hasi zuen
 sessions_host=IP helbidea
 sessions_lview=Ikusi logak..
-
 hide_title=Ezkutatu erabiltzen ez diren moduluak
 hide_desc=The following modules will be removed from the module access list for $1 as their corresponding servers are not installed on your system ..
 hide_ok=Ezkutatu moduluak orain
 hide_none= Nothing to hide - $1 does not have access to any modules whose corresponding servers are not installed on your system.
 hide_desc2=Kontziente izan modulu hauek ez direla berriro automatikoki agertuko dagozkien zerbitzariak instalatuta badaude. Modulu hau erabiliz atzipena eskuz esleitu beharko duzu.
 hide_clone=($1 klonatu)
-
 switch_euser=Ez zaude erabiltze honetara bihurtzeko baimendua
 switch_eold=Ez da aurkitu sortuta dagoen saioa!
-
 rbac_title=RBAC konfiguratu
 rbac_desc=Webminen RBAC en integrazioak erabiltzaileen moduluak eta ACL baimenak RBAC (Role Based Access Control) datu base batetik egitea ahalbidetzen du, Webminen konfigurazio fitxategitik egin beharrean. Behin RBAC euskarria gaituta,  RBAK ek kontrolatuko ditu modulu eta ACL guztiak aukera aktibatuta duten erabiltzaileak bere baitan izango ditu RBAC ek definitutako ahalmenak, Webminen atzipen konfigurazioaren partez.
 rbac_esolaris=Momentu honetan RBAC soilik Solaris-en dago eskuragarri, ondorioz ezin da $1 sistema honetan erabili.
 rbac_eperl=RBAC-en integraziorako beharrezko den $1 Perl-en modulua ez dago instalatua.  <a href='$2'>Egin klik hemen</a> orain instalatzeko.
 rbac_ecpan=Ez daukazu Webmin-en Perl moduluen orrietarako atzipena RBAC-en integraziorako beharrezko den $1 modulua instalatzeko.
 rbac_ok=RBAC integrazioa eskuragarri dago sistema honetan, eta gaitua izan daiteke erabiltzaile bakoitzarentzat Webminen erabiltzaileak editatzeko orrian.
-
 udeletes_err=Akatsa erabiltzaileak ezabatzean
 udeletes_enone=Ez da inor hautatu
 udeletes_title=Ezabatu erabiltzaileak
@@ -338,13 +311,11 @@ udeletes_rusure=Ziur zaude aukeratutako $1 erabiltzaile ezabatu nahi dituzula? B
 udeletes_users=Aukeratutako erabiltzaileak:$1
 udeletes_ok=Ezabatu erabiltzaileak
 udeletes_ereadonly=Aukeratutako erabiltzaile bat ez-editagarri gisa markatua dago.
-
 gdeletes_err=Akatsa taldeak ezabatzean
 gdeletes_title=Ezabatu taldeak
 gdeletes_rusure=Ziur zaude $1 taldeak ezabatu nahi dituzula eta taldekide diren $2 erabiltzaileak?Beraien atzipen kontrolerako ezarpen eta erabiltzaile zehaztapen guztiak galduko dira.
 gdeletes_users=Talde aukeratua: $1
 gdeletes_ok=Ezabatu taldeak
-
 pass_title=Pasahitzen murriztapenak
 pass_header=Webmin pasahitzen nahitaezko aukerak
 pass_minsize=Pasahitzaren luzera minimoa

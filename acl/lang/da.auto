@@ -1,0 +1,7 @@
+edit_unsafe=Nulstil til ubegrænset
+edit_safe=Privilegieniveau
+edit_safe0=Ubegrænset
+edit_safe1=Kun sikre moduler
+index_screate=Opret en ny sikker bruger.
+edit_title3=Opret sikker webmin-bruger
+save_eunixname=Brugernavnet '$1' er ikke en Unix-bruger, og kan derfor ikke bruges i sikker tilstand

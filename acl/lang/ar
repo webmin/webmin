@@ -1,4 +1,3 @@
-__norefs=1
 acl_acl=يمكن تحرير وحدة التحكم في الوصول إلى الوحدة النمطية؟
 acl_all=جميع الوحدات
 acl_cats=هل يمكن تغيير التصنيف؟
@@ -95,7 +94,6 @@ index_nogroups=لم يتم تعريف مجموعات Webmin.
 index_none=لا شيء
 index_nousers=لم يتم تعريف أي مستخدم Webmin قابل للتحرير.
 index_rbac=إعداد RBAC
-index_rcreate=إنشاء مستخدم جديد على مستوى المخاطرة.
 index_return=قائمة المستخدم
 index_sessions=عرض جلسات تسجيل الدخول
 index_sync=تكوين مزامنة مستخدم Unix
