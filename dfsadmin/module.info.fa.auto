@@ -1,3 +1,3 @@
 name_fa=DFSadmin
-longdesc_fa=اشتراک فایل را مطابق با پرونده /etc/dfs/dfstab کنید.
+longdesc_fa=اشتراک فایل را مطابق تعریف در پرونده /etc/dfs/dfstab کنید.
 desc_fa=سهام NFS

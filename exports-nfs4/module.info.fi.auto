@@ -1,3 +1,3 @@
 name_fi=Vientijohtaja
 desc_fi=NFS v4 -vienti
-longdesc_fi=Muokkaa NFS v4-tiedostoosuuksia, jotka on määritetty hakemistossa /etc/exports.
+longdesc_fi=Muokkaa NFS v4-tiedostoosuuksia, jotka on määritelty /etc/exports.
