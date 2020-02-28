@@ -1,1 +1,1 @@
-desc_pl=Zarz±dca udostêpniania
+desc_pl=ZarzÄ…dca udostÄ™pniania

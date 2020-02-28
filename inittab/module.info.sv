@@ -1,1 +1,1 @@
-desc_sv=Startinställningar för SysV
+desc_sv=StartinstÃ¤llningar fÃ¶r SysV

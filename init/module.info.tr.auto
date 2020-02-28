@@ -1,0 +1,2 @@
+longdesc_tr=/Etc/init.d veya /etc/rc.local dosyasından önyükleme zamanında çalıştırılacak kurulum komut dosyaları.
+name_tr=Önyükleme Yöneticisi

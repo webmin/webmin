@@ -1,0 +1,2 @@
+longdesc_es=Configure los scripts que se ejecutarán en el momento del arranque desde /etc/init.d o /etc/rc.local.
+name_es=Gestor de arranque

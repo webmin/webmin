@@ -1,0 +1,3 @@
+desc_vi=Khởi động hệ thống ban đầu
+name_vi=Inittab
+longdesc_vi=Định cấu hình các dịch vụ cấp thấp sẽ được chạy khi khởi động và chọn runlevel ban đầu.

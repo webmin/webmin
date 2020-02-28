@@ -1,1 +1,1 @@
-desc_pl=Start i&nbsp;zamykanie systemu
+desc_pl=Start i zamykanie systemu

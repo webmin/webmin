@@ -1,0 +1,3 @@
+name_it=inittab
+desc_it=Avvio iniziale del sistema
+longdesc_it=Configurare i servizi di basso livello da eseguire all'avvio e selezionare il runlevel iniziale.

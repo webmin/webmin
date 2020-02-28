@@ -1,0 +1,3 @@
+name_pl=Zapora ogniowa 6
+desc_pl=Zapora ogniowa IPv6 w systemie Linux
+longdesc_pl=Skonfiguruj zaporę Linux za pomocą ip6tables. Umożliwia edycję wszystkich tabel, łańcuchów, reguł i opcji.

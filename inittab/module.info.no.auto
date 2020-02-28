@@ -1,0 +1,3 @@
+longdesc_no=Konfigurer tjenester på lavt nivå som skal kjøres ved starttidspunktet, og velg det første startnivået.
+name_no=inittab
+desc_no=Oppstart av systemoppstart

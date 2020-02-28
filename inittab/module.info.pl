@@ -1,1 +1,1 @@
-desc_pl=Konfiguracja inita (System&nbsp;V)
+desc_pl=Konfiguracja inita (System V)

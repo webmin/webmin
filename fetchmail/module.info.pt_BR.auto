@@ -1,0 +1,3 @@
+name_pt_BR=Fetchmail
+desc_pt_BR=Recuperação de correio do Fetchmail
+longdesc_pt_BR=Configure o popular programa fetchmail para recuperar automaticamente emails de outros servidores.

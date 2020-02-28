@@ -1,0 +1,2 @@
+desc_zh_TW=iSCSI服務器
+longdesc_zh_TW=使用帶有netbsd-iscsi軟件包的iSCSI協議在網絡上共享磁盤設備。

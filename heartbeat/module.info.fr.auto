@@ -1,0 +1,3 @@
+desc_fr=Moniteur de rythme cardiaque
+longdesc_fr=Configurez le package Heartbeat pour le basculement automatique du serveur dans un cluster.
+name_fr=Battement de coeur

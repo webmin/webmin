@@ -1,0 +1,3 @@
+longdesc_fa=اسکریپت های تنظیم شده برای اجرا در زمان بوت از /etc/init.d یا /etc/rc.local.
+desc_fa=Bootup و خاموش کردن
+name_fa=مدیر بوت

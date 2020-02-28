@@ -1,1 +1,1 @@
-desc_es=Configuraci&#243;n de Inicio (SysV)
+desc_es=Configuración de Inicio (SysV)

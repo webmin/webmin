@@ -1,0 +1,2 @@
+desc_it=Server iSCSI
+longdesc_it=Condividi i dispositivi disco attraverso la rete usando il protocollo iSCSI con il pacchetto netbsd-iscsi.

@@ -1,0 +1,3 @@
+longdesc_zh=配置Linux GRUB引导加载程序，以允许在引导时选择各种操作系统和内核。
+desc_zh=GRUB引导程序
+name_zh=格鲁布

@@ -1,2 +1,2 @@
 desc_pl=Firewall Linuksa
-longdesc_pl=Konfiguracja firewall linuksa u¿ywaj±c iptables. Pozwala na edycjê wszystkich tabel, regu³ i opcji.
+longdesc_pl=Konfiguracja firewall linuksa uÅ¼ywajÄ…c iptables. Pozwala na edycjÄ™ wszystkich tabel, reguÅ‚ i opcji.

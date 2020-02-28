@@ -1,0 +1,3 @@
+desc_zh=心跳监视器
+name_zh=心跳
+longdesc_zh=配置心跳包以在群集中进行自动服务器故障转移。

@@ -1,0 +1,2 @@
+desc_ar=خادم بروتوكول iSCSI
+longdesc_ar=مشاركة أجهزة القرص عبر الشبكة باستخدام بروتوكول iSCSI مع الحزمة netbsd-iscsi.

@@ -1,0 +1,3 @@
+name_pt_BR=IPsec
+desc_pt_BR=Configuração de VPN IPsec
+longdesc_pt_BR=Configure um cliente ou servidor para uma VPN IPsec usando o FreeSWAN.

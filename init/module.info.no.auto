@@ -1,0 +1,2 @@
+name_no=Boot Manager
+longdesc_no=Installasjonsskript som skal kjøres ved starttid fra /etc/init.d eller /etc/rc.local.

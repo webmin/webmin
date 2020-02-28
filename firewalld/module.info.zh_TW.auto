@@ -1,0 +1,2 @@
+desc_zh_TW=防火牆D
+longdesc_zh_TW=通過編輯允許的服務和端口，使用FirewallD配置Linux防火牆。

@@ -1,0 +1,2 @@
+desc_hu=Fail2Ban behatolásérzékelő
+longdesc_hu=A Fail2ban megóvja a rendszert a brute force támadásoktól, észlelve és blokkolva a forrás IP-jüket.

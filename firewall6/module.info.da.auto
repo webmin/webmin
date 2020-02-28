@@ -1,0 +1,3 @@
+name_da=Firewall6
+desc_da=Linux IPv6 Firewall
+longdesc_da=Konfigurer en Linux-firewall ved hjælp af ip6tables. Tillader redigering af alle tabeller, kæder, regler og indstillinger.

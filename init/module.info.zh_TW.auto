@@ -1,0 +1,2 @@
+name_zh_TW=引導管理器
+longdesc_zh_TW=在啟動時從/etc/init.d或/etc/rc.local運行的安裝腳本。

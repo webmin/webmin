@@ -1,2 +1,2 @@
-desc_pl=Kopia zapasowa systemu plików
-longdesc_pl=Twórz i przywracaj kopie zapasowe systemu plików
+desc_pl=Kopia zapasowa systemu plikÃ³w
+longdesc_pl=TwÃ³rz i przywracaj kopie zapasowe systemu plikÃ³w

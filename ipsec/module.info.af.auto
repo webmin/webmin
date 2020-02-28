@@ -1,0 +1,3 @@
+name_af=IPsec
+desc_af=IPsec VPN-konfigurasie
+longdesc_af=Stel 'n kliënt of bediener op vir 'n IPsec VPN met behulp van FreeSWAN.

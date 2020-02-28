@@ -1,0 +1,2 @@
+name_nl=Boot Manager
+longdesc_nl=Setup-scripts die tijdens het opstarten worden uitgevoerd vanaf /etc/init.d of /etc/rc.local.

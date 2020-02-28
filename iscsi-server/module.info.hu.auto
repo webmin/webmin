@@ -1,0 +1,2 @@
+desc_hu=iSCSI Server
+longdesc_hu=Ossza meg a lemezes eszközöket a hálózaton keresztül az iSCSI protokoll segítségével a netbsd-iscsi csomaggal.

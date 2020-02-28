@@ -1,0 +1,2 @@
+name_ja=ブートマネージャ
+longdesc_ja=ブート時に/etc/init.dまたは/etc/rc.localから実行されるセットアップスクリプト。

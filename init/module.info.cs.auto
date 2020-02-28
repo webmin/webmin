@@ -1,0 +1,2 @@
+name_cs=Boot Manager
+longdesc_cs=Instalační skripty, které se mají spouštět v době spuštění z /etc/init.d nebo /etc/rc.local.

@@ -1,0 +1,2 @@
+name_pl=Menedżer rozruchu
+longdesc_pl=Skrypty instalacyjne uruchamiane podczas rozruchu z /etc/init.d lub /etc/rc.local.
