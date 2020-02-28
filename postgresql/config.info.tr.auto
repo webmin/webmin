@@ -1,0 +1,2 @@
+webmin_subs=Do Webmin variable substitution on backup destinations?,1,1-Yes,0-No
+hba_conf=Paths to host access config file,9,60,3,\t

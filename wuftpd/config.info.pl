@@ -1,9 +1,9 @@
 line2=Konfiguracja systemu,11
-ftpd_path=Pe≥na ∂cieøka do <tt>wuftpd</tt>,0
-ftpaccess=Pe≥na ∂cieøka do pliku <tt>ftpaccess</tt>,0
-ftpconversions=Pe≥na ∂cieøka do pliku <tt>ftpconversions</tt>,0
-ftpgroups=Pe≥na ∂cieøka do pliku <tt>ftpgroups</tt>,0
-ftphosts=Pe≥na ∂cieøka do pliku <tt>ftphosts</tt>,0
-ftpusers=Pe≥na ∂cieøka do pliku <tt>ftpusers</tt>,0
-pid_file=Plik z&nbsp;numerem PID serwera FTP,0
+ftpd_path=Pe≈Çna ≈õcie≈ºka do <tt>wuftpd</tt>,0
+ftpaccess=Pe≈Çna ≈õcie≈ºka do pliku <tt>ftpaccess</tt>,0
+ftpconversions=Pe≈Çna ≈õcie≈ºka do pliku <tt>ftpconversions</tt>,0
+ftpgroups=Pe≈Çna ≈õcie≈ºka do pliku <tt>ftpgroups</tt>,0
+ftphosts=Pe≈Çna ≈õcie≈ºka do pliku <tt>ftphosts</tt>,0
+ftpusers=Pe≈Çna ≈õcie≈ºka do pliku <tt>ftpusers</tt>,0
+pid_file=Plik z¬†numerem PID serwera FTP,0
 log_file=Plik dziennika serwera FTP,0

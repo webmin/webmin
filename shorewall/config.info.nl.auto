@@ -1,0 +1,2 @@
+before_refresh_cmd=Command to run before refreshing blacklist,3,None
+after_refresh_cmd=Command to run after refreshing blacklist,3,None

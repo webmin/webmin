@@ -1,0 +1,12 @@
+pid_file=Syslog-NG PID file,3,None
+alt_syslogng_conf=Path to alternate config file,3,None
+restart_cmd=Command to apply changes,3,Kill and re-start server
+refresh=Seconds between log view refreshes,3,Never
+tail_cmd=Tail command and arguments,3,Default (tail -n LINES)
+syslogng_conf=Path to Syslog-NG config file,0
+start_cmd=Command to start Syslog-NG,3,Just run server
+lines=Default number of lines to display,0,6
+line1=Configurable options,11
+compressed=Include compressed logs in searches?,1,1-Yes,0-No
+syslogng_cmd=Path to Syslog-NG program,0
+line2=System configuration,11

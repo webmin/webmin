@@ -1,0 +1,12 @@
+given_order=Order for first name and surname,1,1-Surname&#44; Firstname,0-Firstname Surname
+samba_gid=Primary group SID,10,none-None,-Work out automatically
+group_filter=Additional LDAP filter for groups,3,None,,,,Attribute=value
+membox=Edit group members using,1,1-Text box,0-User selector
+noclash=Attributes for which duplicates are disallowed,0
+gecos=Set <tt>gecos</tt> attribute to match real name?,1,1-Yes,0-No
+person=Give all Unix users the <tt>person</tt> object class?,1,1-Yes,0-No
+given_class=Object class to add for given name?,0
+imap_foldersep=Folder separator,1,.-.,/-/
+alias_same=Can two users have the same alias?,1,1-Yes,0-No
+quota_support=IMAP server supports quotas?,1,1-Yes,0-No
+user_filter=Additional LDAP filter for users,3,None,,,,Attribute=value

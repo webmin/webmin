@@ -1,0 +1,5 @@
+nfs_check=Check NFS servers before attempting mount,1,1-Yes,0-No
+show_used=Show used disk space in filesystems list,1,1-Yes,0-No
+delete_under=Delete directory when un-mounting if under,3,Never delete
+sysinfo=Show available disk data on Dashboard,1,1-Yes,0-No
+browse_group=CIFS workgroup for browse list,0

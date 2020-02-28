@@ -1,0 +1,3 @@
+passwd_redesc=Human-readable description of regexp,3,Just use regexp
+passwd_mindays=Number of days before password change is allowed,3,None
+dict_file=Files containing dictionary words,3,Use system defaults

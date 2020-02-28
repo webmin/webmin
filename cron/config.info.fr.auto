@@ -1,0 +1,4 @@
+max_jobs=Maximum Cron jobs to show,3,Unlimited
+show_next=Show next time each job will run?,1,1-Yes,0-No
+hourly_only=Only allow jobs to be at most hourly?,1,0-No,1-Yes
+add_file=Add new jobs to file,3,User's regular crontab file

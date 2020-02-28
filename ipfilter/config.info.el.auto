@@ -1,0 +1,14 @@
+cluster_mode=Update cluster servers,1,0-Whenever a change is made,1-When applying the configuration
+ipf_conf=IPfilter firewall configuration file to edit,0
+smf=IPfilter SMF service name,3,None
+cluster_nat=Send NAT configuration to clusters too?,1,1-Yes,0-No
+ipfstat=Full path to ipfstat command,0
+ipnat=Full path to ipnat command,0
+line1=System configuration,11
+apply_cmd=Command to apply configuration,3,Just run ipf
+line0=Configurable options,11
+ipnat_conf=IPfilter NAT configuration file to edit,0
+view_comment=Display comments?,1,1-Yes,0-No
+init=IPfilter bootup script name,3,Automatic
+view_condition=Display conditions?,1,1-Yes,0-No
+ipf=Full path to ipf command,0

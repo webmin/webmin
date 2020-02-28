@@ -1,0 +1,8 @@
+history_show=Number of historical statuses to show,0
+sysinfo_users=Users to show monitors for,1,0-Only root,1-Only users with access to this module,2-All users
+pinger=Send pings with command,10,-Use builtin code,linux-Use command suitable for Linux or FreeBSD,Other command
+email_interval=Minimum interval between alerts per monitor,3,No limit,5,,minutes
+def_tmpl=Default template,10,-None,Named template
+columns=Columns for services table,1,2-2,1-1
+history_purge=Days to keep historical statuses,0
+sysinfo=Show monitors on Dashboard?,1,1-Yes,0-No

@@ -1,4 +1,4 @@
-max_users=Maximálisan megjeleníthetõ felhasználói szám,0
-input_type=Felhasználó kiválasztás típusa,1,1-Lista doboz,0-Szöveges mezõ
-sort_mode=Felhasználók rendezése,1,0-File rendbe,1-Felhasználói név szerint
-passwd_cmd=Jelszó változtatási parancs,0,Módosítsa a rendszer file -t direktbe
+max_users=MaximÃ¡lisan megjelenÃ­thetÅ‘ felhasznÃ¡lÃ³i szÃ¡m,0
+input_type=FelhasznÃ¡lÃ³ kivÃ¡lasztÃ¡s tÃ­pusa,1,1-Lista doboz,0-SzÃ¶veges mezÅ‘
+sort_mode=FelhasznÃ¡lÃ³k rendezÃ©se,1,0-File rendbe,1-FelhasznÃ¡lÃ³i nÃ©v szerint
+passwd_cmd=JelszÃ³ vÃ¡ltoztatÃ¡si parancs,0,MÃ³dosÃ­tsa a rendszer file -t direktbe

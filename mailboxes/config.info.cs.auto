@@ -1,0 +1,8 @@
+line0.5=Folder options,11
+wrap_compose=Width to wrap composed mail messages at,10,-Don't wrap,80-80 columns (standard),Other size
+line0.4=User list options,11
+no_orig_ip=Include browser IP in X-Originating-IP header?,1,0-Yes,1-No
+maildir_deleted=Skip messages flagged as deleted in Maildir?,1,1-Yes,0-No
+noindex_hostname=Include hostname in index files?,1,0-Yes,1-No
+helo_name=Hostname to use in SMTP HELO line,3,Same as system hostname
+no_mailer=Include Webmin version in X-Mailer header?,1,0-Yes,1-No

@@ -1,0 +1,3 @@
+squidclient=Path to squidclient program,3,Not installed
+cal_max=Maximum log lines to pass to calamaris,3,Unlimited
+restart_pos=Show stop/start/apply buttons,1,2-On main page,1-In headings,0-Both

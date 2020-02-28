@@ -1,0 +1,3 @@
+hosts_allow=TCP wrappers allow file,0
+hosts_deny=TCP wrappers deny file,0
+inetd_services=Fetch possible services from inetd?,1,1-Yes,0-No

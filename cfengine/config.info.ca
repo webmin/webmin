@@ -1,11 +1,10 @@
-line2=ConfiguraciÛ del sistema,11
-cfengine_dir=CamÌ del directori de fitxers de configuraciÛ,0
-cfengine=CamÌ del programa cfengine,0
-cfengine_conf=CamÌ del fitxer cfengine.conf,3,Autom‡tic
-cfrun=CamÌ del programa cfrun,0
-cfrun_hosts=CamÌ del fitxer d'opcions del servidor,3,Autom‡tic
-cfd=CamÌ del programa cfd,0
-cfd_conf=CamÌ del fitxer cfd.conf,3,Autom‡tic
+line2=Configuraci√≥ del sistema,11
+cfengine_dir=Cam√≠ del directori de fitxers de configuraci√≥,0
+cfengine=Cam√≠ del programa cfengine,0
+cfengine_conf=Cam√≠ del fitxer cfengine.conf,3,Autom√†tic
+cfrun=Cam√≠ del programa cfrun,0
+cfrun_hosts=Cam√≠ del fitxer d'opcions del servidor,3,Autom√†tic
+cfd=Cam√≠ del programa cfd,0
+cfd_conf=Cam√≠ del fitxer cfd.conf,3,Autom√†tic
 start_cmd=Ordre per iniciar cfd,3,Executa el dimoni
-stop_cmd=Ordre per aturar cfd,3,Mata el procÈs
-
+stop_cmd=Ordre per aturar cfd,3,Mata el proc√©s

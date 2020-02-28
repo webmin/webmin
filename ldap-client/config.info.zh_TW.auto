@@ -1,0 +1,11 @@
+secret=Root LDAP client password files,9,50,2,\t
+line0=LDAP config file settings,11
+pam_ldap=PAM LDAP configuration file,3,Same as LDAP client file
+auth_ldap=LDAP client configuration files,8
+ldap_pass=Login with password,3,From config file
+ldap_port=LDAP server port,3,From config file,5
+ldap_user=Login with username,3,From config file
+init_name=Local LDAP daemon init script name,0
+ldap_hosts=LDAP server hosts,3,From config file,50
+line1=LDAP browser and validation settings,11
+ldap_tls=Use SSL connection,1,-From config file,1-Yes,2-Yes with TLS,0-No

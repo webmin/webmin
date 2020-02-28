@@ -1,0 +1,12 @@
+proftpd_path=Cesta ke spouštěcímu souboru ProFTPD,0
+line2=Konfigurace systému,11
+stop_cmd=Příkaz pro zastavení ProFTP,3,Zabití procesu
+test_manual=Otestovat konfigurační soubor po ruční změně?,1,1-Ano,0-Ne
+line1=Konfigurovatelné volby,11
+ftpusers=Cesta k souboru ftp uživatelů,0
+add_file=Soubor, do kterého se přidávají virtuální hosté,3,Poslední soubor v konfiguraci
+test_config=Otestovat konfigurační soubor před aplikováním každé změny?,1,1-Ano,0-Ne
+start_cmd=Příkaz spouštějící ProFTPD,3,Automaticky
+test_always=Otestovat konfigurační soubor po každé změně?,1,1-Ano,0-Ne
+proftpd_conf=Cesta ke konfiguračnímu souboru ProFTPD,0
+pid_file=Cesta k ProFTPD PID souboru,0

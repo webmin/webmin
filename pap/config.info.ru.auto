@@ -1,0 +1,3 @@
+serials=Serial ports pattern,0
+pppd=Path to pppd server,0
+mgetty=Path to mgetty program,0

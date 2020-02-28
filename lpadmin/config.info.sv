@@ -1,10 +1,10 @@
-print_style=Skrivarinställningar,1,solaris-Solaris,linux-Linux,freebsd-FreeBSD,hpux-HPUX,lprng-LPRng,unixware-UnixWare,cups-CUPS
+print_style=SkrivarinstÃ¤llningar,1,solaris-Solaris,linux-Linux,freebsd-FreeBSD,hpux-HPUX,lprng-LPRng,unixware-UnixWare,cups-CUPS
 driver_style=Skrivardrivrutin,1,webmin-Webmin,caldera-Caldera,redhat-RedHat,hpux-HPUX,suse-SuSE,cups-CUPS
 printcap_file=Skrivarfil,3,Ingen
 model_path=Katalog med interface-program,3,Ingen
-smbclient_path=Sökväg till smbclient,3,Ingen
-gs_path=Sökväg till ghostscript,3,Ingen
-gs_fontpath=Typsnittskatalog för ghostscript,3,Standard
-gs_lib=Lib-katalog för ghostscript,3,Standard
-hpnp_path=Sökväg till hpnp-program,3,Ingen
-show_status=Visa aktiverad och mottagningsstatus istället för skrivardrivrutin?,1,1-Ja,0-Nej
+smbclient_path=SÃ¶kvÃ¤g till smbclient,3,Ingen
+gs_path=SÃ¶kvÃ¤g till ghostscript,3,Ingen
+gs_fontpath=Typsnittskatalog fÃ¶r ghostscript,3,Standard
+gs_lib=Lib-katalog fÃ¶r ghostscript,3,Standard
+hpnp_path=SÃ¶kvÃ¤g till hpnp-program,3,Ingen
+show_status=Visa aktiverad och mottagningsstatus istÃ¤llet fÃ¶r skrivardrivrutin?,1,1-Ja,0-Nej

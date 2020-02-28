@@ -1,0 +1,2 @@
+auto_mods=Always detect Apache modules automatically?,1,1-Yes,0-No
+allow_virtualmin=Allow editing of domains managed by Virtualmin?,1,1-Yes,0-No

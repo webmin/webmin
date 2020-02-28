@@ -1,2 +1,2 @@
-date_subs=Yedekleme yerleri için <tt>strftime</tt> gösterimi kullanılsın mı?,1,1-Evet,0-Hayır
-from_addr=E-posta mesajları için Gönderici: adresi,3,webmin@makineadı
+date_subs=Yedekleme yerleri iÃ§in <tt>strftime</tt> gÃ¶sterimi kullanÄ±lsÄ±n mÄ±?,1,1-Evet,0-HayÄ±r
+from_addr=E-posta mesajlarÄ± iÃ§in GÃ¶nderici: adresi,3,webmin@makineadÄ±

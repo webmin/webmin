@@ -10,7 +10,7 @@ other_class=Andere object Classen om toe te voegen aan nieuwe gebruikers,0
 gother_class=Andere object klassen om toe te voegen aan nieuwe groepen,0
 given=Laat velden zien van voor, en achternaam?,1,1-Ja,0-Nee
 given_class=Object class om toe te voegen aan gegeven naam?,0
-given_order=Volgorde voor voornaam en achternaam,1,1-Achternaam&#44; Voornaam,0-Voornaam Achternaam
+given_order=Volgorde voor voornaam en achternaam,1,1-Achternaam, Voornaam,0-Voornaam Achternaam
 slappasswd=Volledig pad naar <tt>slappasswd</tt> programma,0
 line9=LDAP attributen,11
 props=LDAP eigenschappen voor alle nieuwe gebruikers<br><i>veldnaam</i> <i>waarde</i> formaat),9,40,3,\t
@@ -33,7 +33,6 @@ line6=Nieuwe gebruiker opties,11
 base_uid=Laagste UID voor nieuwe gebruikers,3,Van Gebruikers en Groepen module
 base_gid=Laagste GID voor nieuwe groepen,3,Van Gebruikers en Groepen module
 md5=Encryptie methoden voor wachtwoorden,1,3-LDAP MD5,1-Unix MD5,0-crypt,2-Platte tekst,4-LDAP SSHA,5-Unix SHA,6-SHA512
-
 shells=Bouw een lijst van shells van,2,vaste ingebouwde lijst,paswd-Systeem gebruikers,shells-/etc/shells
 line7=Nieuwe gebruiker standaarden,11
 default_group=Standaard primaire groep voor nieuwe gebruikers,3,Van Gebruikers en Groepen module

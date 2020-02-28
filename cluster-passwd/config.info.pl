@@ -1,3 +1,3 @@
-max_users=Maksymalna ilo∂Ê uøytkownikÛw do wy∂wietlenia,0
-input_type=Typ zaznaczenia uøytkownika,1,1-Lista,0-Pole tekstowe
-sort_mode=Sortuj uøytkownikÛw wed≥ug,1,0-Kolejno∂ci w pliku,1-Nazwy uøytkownika
+max_users=Maksymalna ilo≈õƒá u≈ºytkownik√≥w do wy≈õwietlenia,0
+input_type=Typ zaznaczenia u≈ºytkownika,1,1-Lista,0-Pole tekstowe
+sort_mode=Sortuj u≈ºytkownik√≥w wed≈Çug,1,0-Kolejno≈õci w pliku,1-Nazwy u≈ºytkownika

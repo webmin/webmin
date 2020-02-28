@@ -1,3 +1,3 @@
 line2=Konfiguracja systemu,11
-vgetty_cmd= ¶cieøka do programu vgetty ,0
-vgetty_config=¶cieøka do pliku konfiguracyjnego vgetty,0
+vgetty_cmd= ≈öcie≈ºka do programu vgetty ,0
+vgetty_config=≈öcie≈ºka do pliku konfiguracyjnego vgetty,0

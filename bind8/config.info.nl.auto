@@ -1,0 +1,3 @@
+slave_file_perms=Permissions for slave zone files (in octal),3,Same as above
+spf_record=Real record type for Sender Permitted From,1,1-SPF,0-TXT
+force_random=Entropy source for DNSSEC keys,1,1-/dev/random (Secure but slow),0-/dev/urandom (Possibly insecure but fast)

@@ -1,0 +1,9 @@
+packages=Seznam CPAN modulů perlu,0
+incpackages=Zahrnout Perl moduly ze softwarových balíčků?,1,1-Ano,0-Ne
+cpan=Základní adresa CPAN modulů,0
+line2=Konfigurace systému,11
+incyum=Instalovat Perl moduly pomocí YUM nebo APT, je-li to možné?,1,1-Ano,0-Ne
+refresh_days=Dny před obnovou seznamu CPAN modulu,0,5
+line1=Možnosti konfigurace,11
+save_partial=Podržet stahovaný modul, jestliže instalace vykázala chyby?,1,1-Ano,0-Ne
+def_args=Výchozí argumenty pro Makefile.PL,0

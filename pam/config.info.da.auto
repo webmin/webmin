@@ -1,0 +1,5 @@
+line2=System configuration,11
+pam_dir=PAM configuration directory,0
+ignore=Files to ignore in PAM directory,0
+lib_dirs=Directories containing PAM libraries,0
+mod_equiv=Equivalent PAM modules,0

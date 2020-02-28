@@ -1,0 +1,2 @@
+skip_old=Include old rotated log files?,1,0-Yes,1-No
+naked=Add Webmin header and footer to Webalizer report?,1,0-Yes,1-No

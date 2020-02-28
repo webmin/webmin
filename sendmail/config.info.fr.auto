@@ -1,0 +1,9 @@
+delete_confirm=Prompt for confirmation before deleting?,1,1-Yes,0-No
+mailq_order=Ordering when flushing mail queue,1,-Default,priority-Priority,host-Hostname,time-Date received
+rebuild_cmd=Command to rebuild all maps,3,Use makemap command
+show_cmts=Show descriptions in tables?,1,1-Yes,0-No
+columns=Columns for aliases and other tables,1,2-2,1-1
+sendmail_smf=Solaris SMF service name,3,None (use PID files instead)
+sendmail_restart_command=Command to restart sendmail,3,Stop and start
+mail_type=Mail storage type,1,1-Maildir,0-mbox
+prefix_cmts=Prefix all description comments with <tt>Webmin</tt>?,1,1-Yes,0-No

@@ -1,9 +1,9 @@
 index_status=Status som skal vises i listen,1,1-Gjeldende status,0-Fra siste tidsplanlagte sjekk
-pager_cmd=Kommando for &#229; sende melding til en persons&#248;ker,3,Ingen
+pager_cmd=Kommando for å sende melding til en personsøker,3,Ingen
 refresh=Sekunder mellom side-oppfriskinger,3,Ikke oppfrisk
-sort_mode=Vis overv&#229;kere sortert etter,1,0-N&#229;r de ble opprettet,1-Beskrivelse,2-Vert,3-Siste status
+sort_mode=Vis overvåkere sortert etter,1,0-Når de ble opprettet,1-Beskrivelse,2-Vert,3-Siste status
 columns=Kolonner for tjenster-tabell,1,2-2,1-1
-output=Ta mot resultat fra programmer som kj&#248;res n&#229;r nede?,1,1-Ja,0-Nei
+output=Ta mot resultat fra programmer som kjøres når nede?,1,1-Ja,0-Nei
 subject_mode=Type e-post emne,1,0-Ny stil,1-Gammel stil
 def_tmpl=Standard mal,10,-Ingen,Navngitt mal
 pinger=Send pings med kommando,10,-Bruk innebygd kode,linux-Bruk kommando som passer for Linux eller FreeBSD,Annen kommando

@@ -1,6 +1,6 @@
 targets_file=Fitxer d'objectius del servidor iSCSI,0
-auths_file=Fitxer d'autenticació del servidor iSCSI,0
-iscsi_server=Camí complet del servidor iSCSI,0
-pid_file=Camí complet del fitxer de PID,0
+auths_file=Fitxer d'autenticaciÃ³ del servidor iSCSI,0
+iscsi_server=CamÃ­ complet del servidor iSCSI,0
+pid_file=CamÃ­ complet del fitxer de PID,0
 init_name=Nom del script d'engegada,0
-opts_file=Opcions de línia d'ordres per a llistar fitxers,0
+opts_file=Opcions de lÃ­nia d'ordres per a llistar fitxers,0

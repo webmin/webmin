@@ -1,0 +1,4 @@
+macros=Macro files directory,0
+display_zone_descriptions=Display zone descriptions in rules file?,1,0-No,1-Yes
+after_refresh_cmd=Command to run after refreshing blacklist,3,None
+before_refresh_cmd=Command to run before refreshing blacklist,3,None

@@ -1,8 +1,8 @@
-host=Bağlanılacak makine adı,3,Otomatik
-port=Bağlantı portu,0
-mode=Bağlantı tipi,1,0-Telnet,1-Secure Shell (tavsiye edilen)
-sizemode=Applet boyutu,1,0-80x24 karakter (öntanımlı fontta),1-Maksimum,2-Özel boyut
-size=Özel boy x yükseklik boyutu,0
-fontsize=Nokta ile font boyutu,3,Öntanımlı
-detach=Ayrı pencere biçimi,1,1-Evet,0-Hayır
-no_test=SSH ya da telnet sunucu test edilsin mi?1,0-Evet,1-Hayır
+host=BaÄŸlanÄ±lacak makine adÄ±,3,Otomatik
+port=BaÄŸlantÄ± portu,0
+mode=BaÄŸlantÄ± tipi,1,0-Telnet,1-Secure Shell (tavsiye edilen)
+sizemode=Applet boyutu,1,0-80x24 karakter (Ã¶ntanÄ±mlÄ± fontta),1-Maksimum,2-Ã–zel boyut
+size=Ã–zel boy x yÃ¼kseklik boyutu,0
+fontsize=Nokta ile font boyutu,3,Ã–ntanÄ±mlÄ±
+detach=AyrÄ± pencere biÃ§imi,1,1-Evet,0-HayÄ±r
+no_test=SSH ya da telnet sunucu test edilsin mi?1,0-Evet,1-HayÄ±r

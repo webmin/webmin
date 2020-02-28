@@ -1,6 +1,6 @@
 line1=Konfiguragarri diren aukerak,11
 expert=Baimendu maila bakarreko exekuzioen aukeraketa?,1,1-Bai,0-Ez
-desc=Erakutsi ekintzak deskribapenekin,1,2-Bai&#44; eta erakutsi exekuzio-maila guztiak,1-Bai,0-Ez
+desc=Erakutsi ekintzak deskribapenekin,1,2-Bai, eta erakutsi exekuzio-maila guztiak,1-Bai,0-Ez
 order=Ekintzen kargatze ordena erakutsi?1,1-bai,0-Ez
 status_check=Erakutsi ekintzen uneko egoera,1,2-Indize eta ekintza orrietan, 1- Ekintza orrietan soilk,0-Ez
 sort_mode=Ordenatu ekintzak,1,1-Karga ordenarekiko,0-Izenarekiko

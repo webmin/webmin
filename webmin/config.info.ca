@@ -1,5 +1,5 @@
-standard_url=URL de la llista de mòduls estàndard,3,A www.webmin.com
-third_url=URL de la llista de mòduls de tercers,3,A www.webmin.com
-cron_mode=Mostra els temps d'actualització com,1,0-Interfície simple,1-Selector de temps cron
-warn_days=Dies abans de l'expiració de la contrasenya per avisar els usuaris,0,5
-letsencrypt_cmd=Camí complet de l'ordre client de Let's Encrypt,3,Troba'l automàticament
+standard_url=URL de la llista de mÃ²duls estÃ ndard,3,A www.webmin.com
+third_url=URL de la llista de mÃ²duls de tercers,3,A www.webmin.com
+cron_mode=Mostra els temps d'actualitzaciÃ³ com,1,0-InterfÃ­cie simple,1-Selector de temps cron
+warn_days=Dies abans de l'expiraciÃ³ de la contrasenya per avisar els usuaris,0,5
+letsencrypt_cmd=CamÃ­ complet de l'ordre client de Let's Encrypt,3,Troba'l automÃ ticament

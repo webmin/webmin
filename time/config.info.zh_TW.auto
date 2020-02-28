@@ -1,0 +1,3 @@
+ntp_only=Only use NTP for time synchronization?,1,1-Yes,0-No
+hwclock_flags=Command-line flags for hwclock,10,-None,sysconfig-From /etc/sysconfig/clock
+zone_style=Timezone configuration method,4,linux-Linux,freebsd-FreeBSD,solaris-Solaris,-&lt;Not supported on this OS&gt;

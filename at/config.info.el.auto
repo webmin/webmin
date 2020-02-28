@@ -1,0 +1,4 @@
+allow_file=Allow At users file,3,None
+at_style=At system type,1,linux-Linux,solaris-Solaris,freebsd-FreeBSD,irix-Irix,macos-MacOS X,openserver-OpenServer
+at_dir=At jobs directory,0
+deny_file=Denied At users file,3,None

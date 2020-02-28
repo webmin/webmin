@@ -1,2 +1,2 @@
-lilo_conf=¶cieøka do pliku konfiguracyjnego LILO,0
+lilo_conf=≈öcie≈ºka do pliku konfiguracyjnego LILO,0
 lilo_cmd=Polecenie aktywacji konfiguracji LILO,0

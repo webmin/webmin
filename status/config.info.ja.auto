@@ -1,0 +1,5 @@
+email_interval=Minimum interval between alerts per monitor,3,No limit,5,,minutes
+sysinfo_users=Users to show monitors for,1,0-Only root,1-Only users with access to this module,2-All users
+history_show=Number of historical statuses to show,0
+sysinfo=Show monitors on Dashboard?,1,1-Yes,0-No
+history_purge=Days to keep historical statuses,0

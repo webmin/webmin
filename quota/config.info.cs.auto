@@ -1,0 +1,4 @@
+line1.1=Quota email messages,11
+gemail_msg=Email message for groups over quota,9,80,5,\t
+hide_uids=Show deleted users?,1,0-Yes,1-No
+gemail_subject=Subject for email message to groups,3,Default

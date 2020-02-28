@@ -1,0 +1,2 @@
+helo_name=Hostname to use in SMTP HELO line,3,Same as system hostname
+noindex_hostname=Include hostname in index files?,1,0-Yes,1-No

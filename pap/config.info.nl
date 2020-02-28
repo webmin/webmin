@@ -6,4 +6,4 @@ ppp_options=PPP optie file,0
 mgetty=Pad naar mgetty programma,0
 login_config=Mgetty login configuratie file,0
 dialin_config=Mgetty inbel configuratie file,0
-serials=Seri&#235;le poorten patroon,0
+serials=Seriële poorten patroon,0

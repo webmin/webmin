@@ -1,0 +1,4 @@
+line3=ProFTPD variables,11
+defines_file=Environment file defining ProFTPD variables,3,None
+defines_mods=Directories containing modules for HAVE_ variables,9,40,3,\t
+defines_name=Environment variable name in above file,0

@@ -1,7 +1,7 @@
-line2=Systémové nastavenia,11
-xinetd_conf=Konfiguraènı súbor Xinetd,0
-protocols_file=Súbor sie»ovıch protokolov,0
-pid_file=Cesta k Xinetd PID súboru,3,®iadny (hµada» rad¹ej proces)
-start_cmd=Príkaz pre spustenie xinetd,0
-add_dir=Prida» nové slu¾by k,15,add_dir
-lookup_servs=Vyhµadáva» èísla portov na hlavnej stránke,1,1-Áno,0-Nie
+line2=SystÃ©movÃ© nastavenia,11
+xinetd_conf=KonfiguraÄnÃ½ sÃºbor Xinetd,0
+protocols_file=SÃºbor sieÅ¥ovÃ½ch protokolov,0
+pid_file=Cesta k Xinetd PID sÃºboru,3,Å½iadny (hÄ¾adaÅ¥ radÅ¡ej proces)
+start_cmd=PrÃ­kaz pre spustenie xinetd,0
+add_dir=PridaÅ¥ novÃ© sluÅ¾by k,15,add_dir
+lookup_servs=VyhÄ¾adÃ¡vaÅ¥ ÄÃ­sla portov na hlavnej strÃ¡nke,1,1-Ãno,0-Nie

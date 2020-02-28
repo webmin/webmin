@@ -1,6 +1,6 @@
-named_boot_file=Birincil yapılandırma dosyası,0
-show_list=Alanları görüntüleme şekli,1,0-İkonlar,1-Liste
-soa_style=Seri numarası tipi,1,0-Çalışma numarası,1-Tarihe göre (YYYYAAGGss)
-records_order=Kayıtları görüntüleme şekli,1,1-Alfabetik olarak,0-Eklenme sırasına göre
-named_pid_file=PID dosyası,0
+named_boot_file=Birincil yapÄ±landÄ±rma dosyasÄ±,0
+show_list=AlanlarÄ± gÃ¶rÃ¼ntÃ¼leme ÅŸekli,1,0-Ä°konlar,1-Liste
+soa_style=Seri numarasÄ± tipi,1,0-Ã‡alÄ±ÅŸma numarasÄ±,1-Tarihe gÃ¶re (YYYYAAGGss)
+records_order=KayÄ±tlarÄ± gÃ¶rÃ¼ntÃ¼leme ÅŸekli,1,1-Alfabetik olarak,0-Eklenme sÄ±rasÄ±na gÃ¶re
+named_pid_file=PID dosyasÄ±,0
 named_pathname=<i>named</i>'in tam yolu,0

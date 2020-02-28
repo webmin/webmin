@@ -1,0 +1,2 @@
+max_output=Maximum output to capture from commands,0,10,,bytes
+max_runtime=Maximum run time for commands,0,10,,seconds

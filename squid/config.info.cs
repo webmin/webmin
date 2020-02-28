@@ -1,0 +1,16 @@
+cache_dir=Úplná cesta ke squid cache adresáři,0
+pid_file=Úlná cesta k PID souboru,0
+sync_delete=Smazat proxy uživatele v momentě mazání systémových uživatelů?,1,1-ano,0-ne
+crypt_conf=Metoda kryptování proxy hesel,1,0-kryptování,1-md5base64
+squid_start=Příkaz spouštějící squid,3,Automaticky
+squid_conf=Úplná cesta ke konfiguračnímu souboru squidu,0
+cachemgr_path=Spuštěč squid cachemgr.cgi,0
+cal_max=Maximální počet řádků v logu přecházející do calamaris,3,neomezeno
+log_dir=Úplná cesta ke squid log adresáři,0
+sync_create=Vytvořit proxy uživatele v momentě vytváření systémových uživatelů?,1,1-ano,0-ne
+line1=Možnosti konfigurace,11
+calamaris=Cesta ke calamaris log analyzátoru,3,Není nainstalován
+squid_stop=Příkaz ukončující squid,3,Automaticky
+line2=Konfigurace systému,11
+sort_conf=Třídit proxy uživatele?,1,1-ano,0-ne
+squid_path=Spouštěč squidu,0

@@ -106,7 +106,9 @@ sub main
                        $found =~ s/\/$type\.info//g;
                        $found =~ s/\/$language_source//g;
                        $found =~ s/\/$language_source//g;
-                       push(@modules, $found);
+                       if ($found !~ /^_/) {
+                           push(@modules, $found);
+                       }
                    }
                },
             },

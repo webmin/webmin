@@ -1,9 +1,9 @@
 line1=Opciones configurables,11
-dynamic=&#191;Usar n&#250;mero al azar para listar alias?,1,1-S&#237;,0-No
-sort_mode=Clasificar las listas de correo por,1,1-Nombre,0-Orden de creaci&#243;n
+dynamic=¿Usar número al azar para listar alias?,1,1-Sí,0-No
+sort_mode=Clasificar las listas de correo por,1,1-Nombre,0-Orden de creación
 perms=Permisos para archivos majordomo,1,1-Escribible por usuario,0-Escribible por usuario y grupo
-line2=Configuraci&#243;n del sistema,11
-majordomo_cf=Trayectoria completa a archivo de configuraci&#243;n de majordomo,0
+line2=Configuración del sistema,11
+majordomo_cf=Trayectoria completa a archivo de configuración de majordomo,0
 program_dir=Directorio que contiene los programas de majordomo,0
 wrapper_path=Trayectoria a wrapper de majordomo,3,En directorio de programas
 smrsh_program_dir=Directorio que contiene los programas seguros de sendmail,3,Cualquier sitio

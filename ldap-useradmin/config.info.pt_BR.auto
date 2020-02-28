@@ -1,0 +1,3 @@
+gecos=Set <tt>gecos</tt> attribute to match real name?,1,1-Yes,0-No
+group_filter=Additional LDAP filter for groups,3,None,,,,Attribute=value
+user_filter=Additional LDAP filter for users,3,None,,,,Attribute=value

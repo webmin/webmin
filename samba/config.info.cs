@@ -1,0 +1,16 @@
+smbgroupedit=Úplná cesta k smbgroupedit,3,Nic
+dont_convert=Nepřidávat seznam Unix uživatelů do seznamu samba hesel,0
+samba_password_program=Úplná cesta k smbpasswd,0
+samba_status_program=Úplná cesta k smbstatus,0
+smb_passwd=Umístění souboru s hesly Samby,3
+smb_conf=Umístění konfiguračního souboru Samby,0
+net=Úplná cesta k příkazu net,3,Nic
+sort_mode=Třídit uživatele a skupiny podle jména?,1,1-ano,0-ne
+stop_cmd=Příkaz ukončující Samba servery,3,Nic
+name_server=Úplná cesta k nmbd,0
+swat_path=Úplná cesta k swat,3,Nic
+line2=Konfigurace systému,11
+start_cmd=Příkaz spouštějící Samba servery,3,Nic
+pdbedit=Úplná cesta k pdbedit,3,Nic
+samba_server=Úplná cesta k smbd,0
+line1=Nastavení konfigurace,11

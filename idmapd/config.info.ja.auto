@@ -1,0 +1,4 @@
+line2=System configuration,11
+idmapd_conf=Path to id mapping configuration file,0
+idmapd_path=Path to rpc.idmapd daemon,0
+restart_command=Command to restart idmapd daemon,0

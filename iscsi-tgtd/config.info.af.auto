@@ -1,0 +1,9 @@
+stop_cmd=Commamd to stop iSCSI TGTd,3,Stop init script
+init_name=Bootup script name,0
+add_file=Add new targets to,3,Primary configuration file
+tgtadm=Full path to tgtadm command,0
+start_cmd=Commamd to start iSCSI TGTd,3,Start init script
+config_file=iSCSI TGTD configuration file,0
+tgtadmin=Full path to tgt-admin command,0
+tgtd=Full path to tgtd command,0
+restart_cmd=Commamd to restart iSCSI TGTd,3,Restart init script

@@ -1,0 +1,6 @@
+webmin_subs=Do Webmin variable substitution on backup destinations?,1,1-Yes,0-No
+max_text=Maximum display length for text fields,3,Unlimited
+max_dbs=Maximum number of databases and tables to display,0,5
+simple_sched=Schedule selector format,1,1-Simple,0-Complex
+style=Show databases and tables as,1,1-List,0-Icons,2-Names only
+hba_conf=Paths to host access config file,9,60,3,\t

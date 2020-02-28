@@ -1,0 +1,2 @@
+download=First Aid<br><br>If majordomo is not supported by your distribution or is not compatible with the installed version of perl: <a href="http://files1.directadmin.com/services/es_7.0_64/majordomo-1.94.5-patched.tar.gz">download a patched version here ...</a><br>&nbsp;,11
+owner_file=Save list owner in <tt>list.owner</tt> instead of aliases file,1,1-Yes,0-No

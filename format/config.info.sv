@@ -1,2 +1,2 @@
-metastat_path=Fullständig sökväg till <tt>metastat</tt>,0
-metadb_path=Fullständig sökväg till <tt>metadb</tt>,0
+metastat_path=FullstÃ¤ndig sÃ¶kvÃ¤g till <tt>metastat</tt>,0
+metadb_path=FullstÃ¤ndig sÃ¶kvÃ¤g till <tt>metadb</tt>,0

@@ -1,0 +1,7 @@
+filter_chain=Comma sepeated list of regexes to filter out chains not managed by firewall,0
+direct6=Directly edit firewall <tt>IPv6</tt> rules instead of save file?,1,1-Yes,0-No
+force_init=Always start firewall from init script on Debian,1,1-Yes,0-No
+iface=Network interface to activate firewall on,3,Automatic
+perpage=Number of rules to display per page,3,50
+line2=IPv4 configuration,11
+line3=IPv6 configuration,11

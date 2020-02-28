@@ -1,0 +1,1 @@
+hwclock_flags=Command-line flags for hwclock,10,-None,sysconfig-From /etc/sysconfig/clock

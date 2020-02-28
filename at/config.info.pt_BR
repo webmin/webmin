@@ -1,3 +1,2 @@
-line2=Configura&#231;&#227;o do Sistema,11
 at_style=Tipo de sistema At,1,linux-Linux,solaris-Solaris,freebsd-FreeBSD,irix-Irix,macos-MacOS X,openserver-OpenServer
-at_dir=Diret&#243;rio de tarefas At,0
+at_dir=Diretório de tarefas At,0
