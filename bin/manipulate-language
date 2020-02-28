@@ -320,6 +320,7 @@ sub language_transcode
 
     eval {$string = decode($encoding, $string)};
     if ($@) {
+        say "Error found: $@";
         if (!prompt('next')) {
             exit;
         }
