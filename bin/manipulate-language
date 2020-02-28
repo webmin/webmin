@@ -429,9 +429,9 @@ sub translated_substitute
 sub translate
 {
     my ($data, $source, $target, $value) = @_;
-
+    
     # Updating Google Translate API token to avoid expiration
-    if ((time() - $data->{'start_time'}) * 60 > 15) {
+    if (((time() - $data->{'start_time'}) * 60) / 15) {
         say CYAN, "Updating Google Translate API token..", RESET;
         $data->{'token'} = get_google_translate_token();
     }
