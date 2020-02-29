@@ -591,7 +591,7 @@ sub overwrite
                     # performing actual translation. It's useful when you want to translate it manually
                     # and simply need to find missing language strings on targeted file. Besides, `config.info`
                     # options are never translated (so far), just as languages that use right-to-left writing
-                    if ($opt->{'no-translate'} || $opt->{'type'} eq 'config' || $rtl && $value =~ /\$(\d+)|</) {
+                    if ($opt->{'no-translate'} || $type eq 'config' || $rtl && $value =~ /\$(\d+)|</) {
                         talk_log(("" . DARK . "   .. stored original value for \`$key\` which is" . RESET . ""),
                                  $data, $opt->{'verbose'});
                         talk_log("      — " . CYAN . " $value" . RESET . "", $data, $opt->{'verbose'});
