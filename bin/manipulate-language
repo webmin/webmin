@@ -486,7 +486,7 @@ sub translate
 
     # Updating Google Translate API token to avoid expiration
     my $time = time();
-    if ((($time - $data->{'start_time'}) / 60) > 15) {
+    if ((($time - $data->{'start_time'}) / 60) > 10) {
         say CYAN, "Updating Google Translate API token..", RESET;
         $data->{'token'} = get_google_translate_token();
         $data->{'start_time'} = $time;
@@ -498,7 +498,7 @@ sub translate
     $target =~ s/_/-/;
 
     # Prevent service unavailable error, reducing the call rate
-    select(undef, undef, undef, 0.5);
+    sleep 1;
 
     my $tr;
     my $rsp = "https://translation.googleapis.com/language/translate/v2?q=@{[urlize($value)]}";
