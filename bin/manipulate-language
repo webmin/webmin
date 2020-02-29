@@ -676,7 +676,7 @@ sub overwrite
                            my $code_ = language_map($code);
                            if ($code ne $code_ &&
                                (   $found eq "$mpath/$code_" ||
-                                   ($opt->{'type'} &&
+                                   (defined($opt->{'type'}) && $opt->{'type'} &&
                                        $opt->{'type'} =~ /config|module/ &&
                                        ($found eq "$mpath/$opt->{'type'}.info.$code_"))))
                            {
@@ -695,7 +695,7 @@ sub overwrite
             }
 
             # Prepend file name for `config.info` or `module.info` modes
-            if ($opt->{'type'} =~ /config|module/) {
+            if (defined($opt->{'type'}) && $opt->{'type'} =~ /config|module/) {
                 $code = "$opt->{'type'}.info.$code";
             }
 
