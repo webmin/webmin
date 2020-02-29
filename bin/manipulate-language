@@ -421,7 +421,7 @@ sub translate_substitute
 # as it seems to be breaking quite a lot of things
 sub translated_substitute
 {
-    my ($translated, $opt) = @_;
+    my ($translated, $original, $opt) = @_;
 
     my $format = $opt->{'translate-format'};
 
@@ -466,6 +466,12 @@ sub translated_substitute
 
     # Preserve dates example formatting
     $translated =~ s/(\p{L}{2,4}) \/ (\p{L}{2,3}) \/ (\p{L}{2,4}) (\(.*?\))/$1\/$2\/$3 $4/g;
+
+    # If initial value contains in the end of the string `text : ` or `text : $1`,
+    # then print it as such and not as `text: ` or `text: $1`
+    if ($original =~ /(?:([ ]+:[ ]*$|[ ]+:[ ]*\$\d+$))/) {
+        $translated =~ s/(?:(:[ ]*[^:]+$|:$))/ $1/g;
+    }
 
     return $translated;
 }
@@ -639,7 +645,7 @@ sub overwrite
                             say "        .. $key --> $translated";
                         }
 
-                        $translated = translated_substitute($translated, $opt);
+                        $translated = translated_substitute($translated, $_value, $opt);
 
                         if ($opt->{'verbose'} == 2) {
                             say "        .. $key <-> $translated";
