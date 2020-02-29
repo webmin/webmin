@@ -1,0 +1,3 @@
+desc_ko=TCP 래퍼
+longdesc_ko=TCP 래퍼 네트워킹 액세스 제어 파일 구성
+name_ko=tcpwrappers

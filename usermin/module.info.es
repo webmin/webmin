@@ -1,1 +1,1 @@
-desc_es=Configuración de Usermin
+desc_es=ConfiguraciÃ³n de Usermin

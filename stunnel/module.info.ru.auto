@@ -1,0 +1,2 @@
+name_ru=Stunnel
+longdesc_ru=Настройте туннели SSL для шифрования таких служб, как POP3 и IMAP, используя stunnel, запускаемый из inetd.

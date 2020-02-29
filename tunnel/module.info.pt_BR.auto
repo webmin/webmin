@@ -1,0 +1,3 @@
+name_pt_BR=Túnel
+longdesc_pt_BR=Conecte-se a outro servidor HTTP através de um túnel através do servidor Webmin.
+desc_pt_BR=Túnel HTTP

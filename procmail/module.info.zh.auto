@@ -1,0 +1,3 @@
+name_zh=邮件
+longdesc_zh=在全局/etc/procmailrc 文件中编辑配方，该配方适用于所有传入电子邮件。
+desc_zh=Procmail邮件过滤器

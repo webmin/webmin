@@ -1,0 +1,3 @@
+desc_hr=SSL tuneli
+longdesc_hr=Postavite SSL tunele za kriptiranje usluga poput POP3 i IMAP, koristeći stunnel iz inetd.
+name_hr=Stunnel

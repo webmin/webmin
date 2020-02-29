@@ -1,0 +1,3 @@
+desc_it=Rotazione del file di registro
+longdesc_it=Imposta la rotazione automatica di Apache, Squid, Syslog e altri file di registro.
+name_it=logrotate

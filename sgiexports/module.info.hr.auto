@@ -1,0 +1,3 @@
+name_hr=SGIExports
+longdesc_hr=Uređivanje dijeljenja datoteka kako je definirano u Irix datoteci /etc/exports export /etc/exports 
+desc_hr=Izvoz NFS-a

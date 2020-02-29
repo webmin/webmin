@@ -1,0 +1,3 @@
+desc_it=Tunnel SSL
+longdesc_it=Configura tunnel SSL per crittografare servizi come POP3 e IMAP, utilizzando lo stunnel eseguito da inetd.
+name_it=Stunnel

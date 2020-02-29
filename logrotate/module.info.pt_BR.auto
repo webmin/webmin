@@ -1,0 +1,3 @@
+name_pt_BR=Logrotate
+longdesc_pt_BR=Configure a rotação automática do Apache, Squid, Syslog e outros arquivos de log.
+desc_pt_BR=Rotação do arquivo de log

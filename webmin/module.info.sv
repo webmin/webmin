@@ -1,1 +1,1 @@
-desc_sv=Webmin-inställningar
+desc_sv=Webmin-instÃ¤llningar

@@ -1,0 +1,2 @@
+desc_ko=LDAP 사용자 및 그룹
+longdesc_ko=Unix, Samba 및 Cyrus IMAP 인증에 사용되는 LDAP 데이터베이스에 저장된 사용자 및 그룹을 관리합니다.

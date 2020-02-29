@@ -1,1 +1,1 @@
-desc_sv=Postfixinst‰llningar
+desc_sv=Postfixinst√§llningar

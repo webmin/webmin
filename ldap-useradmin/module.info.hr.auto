@@ -1,0 +1,2 @@
+desc_hr=Korisnici i grupe LDAP-a
+longdesc_hr=Upravljajte korisnicima i skupinama pohranjenim u LDAP bazi podataka koja se koristi za Unix, Samba i Cyrus IMAP provjeru autentičnosti.

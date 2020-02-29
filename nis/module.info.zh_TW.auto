@@ -1,0 +1,2 @@
+name_zh_TW=NIS
+longdesc_zh_TW=將系統設置為NIS客戶端，主服務器或從屬服務器。請注意，不支持NIS +。

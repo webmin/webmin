@@ -1,1 +1,1 @@
-desc_no=MON Tjenesteoverv&#229;ker
+desc_no=MON Tjenesteovervåker

@@ -1,0 +1,2 @@
+name_ko=사용자 관리자
+longdesc_ko=/etc/passwd 및 /etc/group 파일에서 Unix 사용자 및 그룹을 작성하고 편집하십시오.

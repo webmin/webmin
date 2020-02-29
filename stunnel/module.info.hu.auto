@@ -1,0 +1,3 @@
+desc_hu=SSL alagutak
+longdesc_hu=Az SSL-alagutak beállítása az olyan szolgáltatások titkosításához, mint például a POP3 és az IMAP, az inetd futtatásával elkészített csatorna segítségével.
+name_hu=Stunnelt

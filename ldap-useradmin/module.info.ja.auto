@@ -1,0 +1,2 @@
+desc_ja=LDAPユーザーとグループ
+longdesc_ja=UNIX、Samba、およびCyrus IMAP認証に使用されるLDAPデータベースに保存されているユーザーとグループを管理します。

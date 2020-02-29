@@ -1,0 +1,2 @@
+name_fr=STunnel
+longdesc_fr=Configurez des tunnels SSL pour crypter des services tels que POP3 et IMAP, en utilisant stunnel exécuté à partir d'inetd.

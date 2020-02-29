@@ -1,0 +1,3 @@
+name_uk=STunnel
+longdesc_uk=Налаштуйте тунелі SSL для шифрування таких служб, як POP3 та IMAP, за допомогою оглушення, запущеного з inetd.
+desc_uk=SSL тунелі

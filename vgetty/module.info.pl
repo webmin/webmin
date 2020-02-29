@@ -1,1 +1,1 @@
-desc_pl=Serwer poczty g≥osowej
+desc_pl=Serwer poczty g≈Çosowej

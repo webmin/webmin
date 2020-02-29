@@ -1,0 +1,2 @@
+name_ja=PAM
+longdesc_ja=telnet、POP、FTPなどのサービスで使用されるPAM認証手順を構成します。

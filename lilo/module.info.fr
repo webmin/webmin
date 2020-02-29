@@ -1,1 +1,1 @@
-desc_fr=Configuration du Démarrage de Linux
+desc_fr=Configuration du DÃ©marrage de Linux

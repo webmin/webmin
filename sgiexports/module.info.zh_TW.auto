@@ -1,0 +1,3 @@
+name_zh_TW=SGI出口
+longdesc_zh_TW=按照Irix /etc/exports 文件中的定義編輯文件共享
+desc_zh_TW=NFS出口

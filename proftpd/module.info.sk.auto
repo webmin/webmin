@@ -1,0 +1,3 @@
+name_sk=proftpd
+desc_sk=Server ProFTPD
+longdesc_sk=Nakonfigurujte výkonný FTP server ProFTPD. Podporuje všetky možnosti vo väčšine štandardných modulov.

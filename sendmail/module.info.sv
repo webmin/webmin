@@ -1,1 +1,1 @@
-desc_sv=Sendmail-inställningar
+desc_sv=Sendmail-instÃ¤llningar

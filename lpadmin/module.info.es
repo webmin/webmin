@@ -1,1 +1,1 @@
-desc_es=Administración de Impresoras
+desc_es=AdministraciÃ³n de Impresoras

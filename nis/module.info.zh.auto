@@ -1,0 +1,2 @@
+name_zh=NIS
+longdesc_zh=将系统设置为NIS客户端，主服务器或从属服务器。请注意，不支持NIS +。

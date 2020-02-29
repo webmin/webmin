@@ -1,1 +1,1 @@
-desc_fr=Serveur de bases de données PostgreSQL
+desc_fr=Serveur de bases de donnÃ©es PostgreSQL

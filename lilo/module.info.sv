@@ -1,1 +1,1 @@
-desc_sv=Inställningar för start av Linux
+desc_sv=InstÃ¤llningar fÃ¶r start av Linux

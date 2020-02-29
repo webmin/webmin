@@ -1,0 +1,2 @@
+name_cs=Stunnel
+longdesc_cs=Nastavte tunely SSL pro šifrování služeb, jako jsou POP3 a IMAP, pomocí stunnel spouštěného z inetd.

@@ -1,0 +1,2 @@
+name_sv=PAM
+longdesc_sv=Konfigurera PAM-autentiseringsstegen som används av tjänster som telnet, POP och FTP.

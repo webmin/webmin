@@ -1,0 +1,2 @@
+desc_zh=LDAP用户和组
+longdesc_zh=管理用于Unix，Samba和Cyrus IMAP身份验证的LDAP数据库中存储的用户和组。

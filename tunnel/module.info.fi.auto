@@ -1,0 +1,3 @@
+name_fi=tunneli
+longdesc_fi=Yhdistä toiseen HTTP-palvelimeen tunnelin kautta Webmin-palvelimen kautta.
+desc_fi=HTTP-tunneli

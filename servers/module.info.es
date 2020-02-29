@@ -1,1 +1,1 @@
-desc_es=Õndice de Servidores Webmin
+desc_es=√çndice de Servidores Webmin

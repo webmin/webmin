@@ -1,0 +1,3 @@
+desc_zh=PPTP VPN服务器
+longdesc_zh=将系统设置为PPTP服务器，以便Linux或Windows VPN客户端可以连接。
+name_zh=PPTPd

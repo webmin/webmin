@@ -1,0 +1,3 @@
+desc_hr=PAM provjera autentičnosti
+longdesc_hr=Konfigurirajte korake provjere autentičnosti PAM-a koje koriste usluge poput telnet, POP i FTP.
+name_hr=PAM

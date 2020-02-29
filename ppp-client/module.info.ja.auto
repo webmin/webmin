@@ -1,0 +1,3 @@
+desc_ja=PPPダイヤルアップクライアント
+longdesc_ja=モデムPPP接続でインターネットに接続するようにWV-Dialパッケージを構成します
+name_ja=PPP

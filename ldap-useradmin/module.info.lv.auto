@@ -1,0 +1,2 @@
+desc_lv=LDAP lietotāji un grupas
+longdesc_lv=Pārvaldiet lietotājus un grupas, kas glabājas LDAP datu bāzē un tiek izmantotas Unix, Samba un Cyrus IMAP autentifikācijai.

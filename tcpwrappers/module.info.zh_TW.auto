@@ -1,0 +1,3 @@
+desc_zh_TW=TCP包裝器
+name_zh_TW=tcpwrappers
+longdesc_zh_TW=配置TCP包裝網絡訪問控製文件

@@ -1,0 +1,3 @@
+name_da=PAM
+longdesc_da=Konfigurer de PAM-godkendelsestrin, der bruges af tjenester såsom telnet, POP og FTP.
+desc_da=PAM-godkendelse

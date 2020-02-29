@@ -1,1 +1,1 @@
-desc_fr=État du système et des serveurs
+desc_fr=Ã‰tat du systÃ¨me et des serveurs

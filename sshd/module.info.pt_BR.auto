@@ -1,0 +1,3 @@
+name_pt_BR=SSHD
+longdesc_pt_BR=Configure o servidor SSH para logins seguros remotos.
+desc_pt_BR=Servidor SSH

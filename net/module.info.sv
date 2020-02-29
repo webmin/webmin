@@ -1,1 +1,1 @@
-desc_sv=Nätverkskonfigurering
+desc_sv=NÃ¤tverkskonfigurering

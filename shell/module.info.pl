@@ -1,1 +1,1 @@
-desc_pl=Linia poleceñ
+desc_pl=Linia poleceÅ„

@@ -1,0 +1,3 @@
+longdesc_pt=Configure túneis SSL para criptografar serviços como POP3 e IMAP, usando stunnel executado no inetd.
+name_pt=STunnel
+desc_pt=Túneis SSL

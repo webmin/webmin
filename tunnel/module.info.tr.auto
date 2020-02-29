@@ -1,0 +1,3 @@
+name_tr=Tünel
+desc_tr=HTTP Tüneli
+longdesc_tr=Webmin sunucusu üzerinden bir tünel üzerinden başka bir HTTP sunucusuna bağlanın.

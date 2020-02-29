@@ -1,0 +1,3 @@
+desc_da=Procmail Mail-filter
+longdesc_da=Rediger opskrifter i den globale /etc/procmailrc -fil, der gælder for alle indgående e-mails.
+name_da=procmail

@@ -1,2 +1,2 @@
-desc_ca=Autenticació PAM
-longdesc_ca=Configura els passos de l'autenticació PAM utilitzats per serveis tals com telnet, POP i FTP.
+desc_ca=AutenticaciÃ³ PAM
+longdesc_ca=Configura els passos de l'autenticaciÃ³ PAM utilitzats per serveis tals com telnet, POP i FTP.

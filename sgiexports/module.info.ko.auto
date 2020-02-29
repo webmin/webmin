@@ -1,0 +1,3 @@
+name_ko=수출
+longdesc_ko=Irix /etc/exports 파일에 정의 된대로 파일 공유 편집
+desc_ko=NFS 수출

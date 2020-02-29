@@ -1,0 +1,3 @@
+name_sl=Syslog
+desc_sl=Sistemski dnevniki
+longdesc_sl=Konfigurirajte strežnik syslog v vašem sistemu in si oglejte datoteke dnevnika.

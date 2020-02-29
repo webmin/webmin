@@ -1,1 +1,1 @@
-desc_pl=RAID w&nbsp;Linuksie
+desc_pl=RAID w Linuksie

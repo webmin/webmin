@@ -1,0 +1,3 @@
+desc_af=Loglêerrotasie
+longdesc_af=Stel die outomatiese rotasie van Apache, Squid, Syslog en ander loglêers op.
+name_af=Logrotate

@@ -1,0 +1,3 @@
+name_af=RAID
+desc_af=Linux RAID
+longdesc_af=Skep RAID 0, 1, 4, 5, 6, 10 en lineêre toestelle op 'n Linux-stelsel.
