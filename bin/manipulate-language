@@ -464,6 +464,9 @@ sub translated_substitute
     # Last .. should also be preceded by space
     $translated =~ s/[ ]*(\.\.)$/ ../g;
 
+    # Preserve dates example formatting
+    $translated =~ s/(\p{L}{2,4}) \/ (\p{L}{2,3}) \/ (\p{L}{2,4}) (\(.*?\))/$1\/$2\/$3 $4/g;
+
     return $translated;
 }
 
