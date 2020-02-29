@@ -70,7 +70,7 @@ sub main
     $opt{'translate-format'} = 'text';
     
     # Force HTML format for "module" type translates
-    if ($opt{'type'} eq 'module') {
+    if (defined($opt{'type'}) && $opt{'type'} eq 'module') {
         $opt{'translate-format'} = 'html';
     }
 
