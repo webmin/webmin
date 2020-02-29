@@ -221,7 +221,7 @@ sub language_source_file
 
     # Set prefix in case of processing `config.info` or `module.info`
     my $language_source_file_target_ = "/";
-    if ($opt->{'type'} =~ /config|module/) {
+    if (defined($opt->{'type'}) && $opt->{'type'} =~ /config|module/) {
         $language_source_file_target_ = "/$opt->{'type'}.info.";
     }
 
