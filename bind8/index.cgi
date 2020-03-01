@@ -30,18 +30,6 @@ if (!-x $config{'named_path'}) {
 	exit;
 	}
 
-# Check if BIND is the right version.. Only BIND 8/9 offers the -f option
-# Is there a better way to do this?
-if (my $out = &check_bind_8()) {
-	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
-		&help_search_link("bind", "doc", "google"));
-	print "<p>",&text('index_eversion', "<tt>$config{'named_path'}</tt>",
-			  "/dnsadmin/", "<tt>$config{'named_path'} -help</tt>",
-			  "<pre>$out</pre>"),"<p>\n";
-	&ui_print_footer("/", $text{"index"});
-	exit;
-	}
-
 # Try to get the version number, and save for later calls
 my $bind_version = &get_bind_version();
 if ($bind_version && $bind_version =~ /^(\d+\.\d+)\./) {

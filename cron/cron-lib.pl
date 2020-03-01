@@ -109,7 +109,9 @@ if ($config{'system_crontab'}) {
 
 # read package-specific cron files
 opendir(DIR, &translate_filename($config{'cronfiles_dir'}));
-while($f = readdir(DIR)) {
+my @files = sort { $a cmp $b } readdir(DIR);
+closedir(DIR);
+foreach my $f (@files) {
 	next if ($f =~ /^\./);
 	$lnum = 0;
 	&open_readfile(TAB, "$config{'cronfiles_dir'}/$f");
@@ -141,7 +143,6 @@ while($f = readdir(DIR)) {
 		}
 	close(TAB);
 	}
-closedir(DIR);
 
 # Read a single user's crontab file
 if ($config{'single_file'}) {

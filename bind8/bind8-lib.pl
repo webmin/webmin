@@ -1597,16 +1597,8 @@ if (($opts = &find("options", $conf)) &&
 return 1;
 }
 
-# check_bind_8()
-# Returns the --help output if non BIND 8/9, or undef if is
-sub check_bind_8
-{
-my $fflag = $gconfig{'os_type'} eq 'windows' ? '-f' : '';
-my $out = `$config{'named_path'} -help $fflag 2>&1`;
-return $out !~ /\[-f\]/ && $out !~ /\[-f\|/ ? $out : undef;
-}
-
 my $get_chroot_cache;
+
 # get_chroot()
 # Returns the chroot directory BIND is running under
 sub get_chroot

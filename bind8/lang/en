@@ -1,6 +1,5 @@
 index_title=BIND DNS Server
 index_enamed=The BIND DNS server $1 could not be found on your system. Maybe it is not installed, or your <a href='$2'>BIND module configuration</a> is incorrect.
-index_eversion=The server executable $1 does not appear to be BIND 8 or 9. Maybe your should use the <a href='$2'>BIND 4 module</a> instead. Output from the command $3 was : $4
 index_eempty=The primary configuration file for BIND $1 does not exist, or is not valid. Create it?
 index_local=Setup nameserver for internal non-internet use only
 index_download=Setup as an internet name server, and download root server information
