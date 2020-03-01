@@ -1,42 +1,42 @@
-lang=af,           charset=UTF-8,  titles=1                    Afrikaans
-lang=ar,           charset=UTF-8,  titles=0,  rtl=1            العربية
-lang=be,           charset=UTF-8,  titles=0                    беларуская
-lang=bg,           charset=UTF-8,  titles=1                    български
-lang=ca,           charset=UTF-8,  titles=1                    català
-lang=cs,           charset=UTF-8,  titles=0                    čeština
-lang=da,           charset=UTF-8,  titles=1                    dansk
-lang=de,           charset=UTF-8,  titles=1,  auto=1           Deutsch
-lang=el,           charset=UTF-8,  titles=0                    Ελληνικά
-lang=en,           charset=UTF-8,  titles=1                    English
-lang=es,           charset=UTF-8,  titles=1                    español
-lang=eu,           charset=UTF-8,  titles=1                    euskara
-lang=fa,           charset=UTF-8,  titles=0,  dir=rtl, rtl=1   فارسی
-lang=fi,           charset=UTF-8,  titles=1                    suomi
-lang=fr,           charset=UTF-8,  titles=1                    français
-lang=he,           charset=UTF-8,  titles=0,  dir=rtl, rtl=1   עברית
-lang=hr,           charset=UTF-8,  titles=0                    hrvatski
-lang=hu,           charset=UTF-8,  titles=1                    magyar
-lang=it,           charset=UTF-8,  titles=1                    italiano
-lang=ja,           charset=UTF-8,  titles=0                    日本語
-lang=ko,           charset=UTF-8,  titles=0                    한국어
-lang=lt,           charset=UTF-8,  titles=1                    lietuvių
-lang=lv,           charset=UTF-8,  titles=1                    latviešu
-lang=ms,           charset=UTF-8,  titles=1                    Melayu
-lang=mt,           charset=UTF-8,  titles=0                    Malti
-lang=nl,           charset=UTF-8,  titles=1                    Nederlands
-lang=no,           charset=UTF-8,  titles=1                    norsk
-lang=pl,           charset=UTF-8,  titles=1                    polski
-lang=pt,           charset=UTF-8,  titles=1                    português
-lang=pt_BR,        charset=UTF-8,  titles=1,  fallback=pt      português (Brasil)
-lang=ro,           charset=UTF-8,  titles=1                    română
-lang=ru,           charset=UTF-8,  titles=0,  auto=1           русский
-lang=sk,           charset=UTF-8,  titles=1                    slovenčina
-lang=sl,           charset=UTF-8,  titles=0                    slovenščina
-lang=sv,           charset=UTF-8,  titles=1                    svenska
-lang=th,           charset=UTF-8,  titles=0                    ไทย
-lang=tr,           charset=UTF-8,  titles=1                    Türkçe
-lang=uk,           charset=UTF-8,  titles=0                    українська
-lang=ur,           charset=UTF-8,  titles=0,  rtl=1            اردو
-lang=vi,           charset=UTF-8,  titles=0                    Tiếng Việt
-lang=zh,           charset=UTF-8,  titles=0                    中文 (简体)
-lang=zh_TW,        charset=UTF-8,  titles=0                    中文 (繁體)
+lang=af,           charset=utf-8,  titles=1,  auto=1                    Afrikaans
+lang=ar,           charset=utf-8,  titles=0,  rtl=1                     العربية
+lang=be,           charset=utf-8,  titles=0                             беларуская
+lang=bg,           charset=utf-8,  titles=1                             български
+lang=ca,           charset=utf-8,  titles=1,  auto=1                    català
+lang=cs,           charset=utf-8,  titles=0                             čeština
+lang=da,           charset=utf-8,  titles=1,  auto=1                    dansk
+lang=de,           charset=utf-8,  titles=1,  auto=1                    Deutsch
+lang=el,           charset=utf-8,  titles=0,  auto=1                    Ελληνικά
+lang=en,           charset=utf-8,  titles=1                             English
+lang=es,           charset=utf-8,  titles=1,  auto=1                    español
+lang=eu,           charset=utf-8,  titles=1                             euskara
+lang=fa,           charset=utf-8,  titles=0,  dir=rtl,  rtl=1           فارسی
+lang=fi,           charset=utf-8,  titles=1,  auto=1                    suomi
+lang=fr,           charset=utf-8,  titles=1,  auto=1                    français
+lang=he,           charset=utf-8,  titles=0,  dir=rtl,  rtl=1           עברית
+lang=hr,           charset=utf-8,  titles=0                             hrvatski
+lang=hu,           charset=utf-8,  titles=1                             magyar
+lang=it,           charset=utf-8,  titles=1,  auto=1                    italiano
+lang=ja,           charset=utf-8,  titles=0,  auto=1                    日本語
+lang=ko,           charset=utf-8,  titles=0,  auto=1                    한국어
+lang=lt,           charset=utf-8,  titles=1                             lietuvių
+lang=lv,           charset=utf-8,  titles=1                             latviešu
+lang=ms,           charset=utf-8,  titles=1,  auto=1                    Melayu
+lang=mt,           charset=utf-8,  titles=0                             Malti
+lang=nl,           charset=utf-8,  titles=1,  auto=1                    Nederlands
+lang=no,           charset=utf-8,  titles=1,  auto=1                    norsk
+lang=pl,           charset=utf-8,  titles=1,  auto=1                    polski
+lang=pt,           charset=utf-8,  titles=1,  auto=1                    português
+lang=pt_BR,        charset=utf-8,  titles=1,  fallback=pt,  auto=1      português (Brasil)
+lang=ro,           charset=utf-8,  titles=1                             română
+lang=ru,           charset=utf-8,  titles=0,  auto=1                    русский
+lang=sk,           charset=utf-8,  titles=1                             slovenčina
+lang=sl,           charset=utf-8,  titles=0                             slovenščina
+lang=sv,           charset=utf-8,  titles=1                             svenska
+lang=th,           charset=utf-8,  titles=0,  auto=1                    ไทย
+lang=tr,           charset=utf-8,  titles=1                             Türkçe
+lang=uk,           charset=utf-8,  titles=0                             українська
+lang=ur,           charset=utf-8,  titles=0,  rtl=1                     اردو
+lang=vi,           charset=utf-8,  titles=0                             Tiếng Việt
+lang=zh,           charset=utf-8,  titles=0,  auto=1                    中文 (简体)
+lang=zh_TW,        charset=utf-8,  titles=0,  auto=1                    中文 (繁體)
