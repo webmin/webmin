@@ -31,11 +31,12 @@ sub main
                'language-source|s:s'          => \$opt{'language-source'},
                'language-source-exclude|se:s' => \$opt{'language-source-exclude'},
                'language-source-encoding|e:s' => \$opt{'language-source-encoding'},
-               'no-translate|o!'              => \$opt{'no-translate'},
                 # 'action|a:s'                   => \$opt{'action'},        #################################
                 # 'key|k:s'                      => \$opt{'key'},           ######### coming soon! ##########
                 # 'value|d:s'                    => \$opt{'value'},         #################################
+               'no-translate|o!'              => \$opt{'no-translate'},
                'keys-exclude|ke:s'            => \$opt{'keys-exclude'},
+               'keys-test|kt:s'               => \$opt{'keys-test'},
                'overwrite|f!'                 => \$opt{'overwrite'},
                'log|l:s'                      => \$opt{'log'},
                'verbose|v:i'                  => \$opt{'verbose'});
@@ -87,7 +88,7 @@ sub main
     # Get list of languages from `lang_list.txt` file
     $data{'languages_source_list'}       = list_languages_local(\%data);
     $data{'languages_source_list_codes'} = [map {$_->{'lang'}} @{ $data{'languages_source_list'} }];
-    
+
     # Define base language. Default is set English
     $opt{'language-source'} ||= 'en';
     my $language_source = $opt{'language-source'};
@@ -97,7 +98,7 @@ sub main
         errors('language-source', $language_source);
         exit;
     }
-    
+
     # What language encoding do we expect on human translated files
     $opt{'language-source-encoding'} ||= 'utf-8';
 
@@ -108,7 +109,7 @@ sub main
     } else {
         $language_target_exclude = $language_source;
     }
-    
+
     # Don't put on the list user excluded languages
     if ($language_target_exclude) {
         my @languages_excluded = split(',', $language_target_exclude);
@@ -172,9 +173,12 @@ sub main
         }
     }
 
+    # Test only given keys in bulk translation. Translated strings are not saved
+    $opt{'keys-test'} = [$opt{'keys-test'} ? split(',', $opt{'keys-test'}) : ()];
+
     # Exclude listed keys from bulk translation
     $opt{'keys-exclude'} = [$opt{'keys-exclude'} ? split(',', $opt{'keys-exclude'}) : ()];
-    
+
     # User interactions
     talk('affected', \%opt, \%data);
 
@@ -481,7 +485,9 @@ sub translated_substitute
         $translated =~ s/&#39;/'/gi;
     }
 
-    $translated =~ s/<[ ]*(?:(\?\w+|((?![br|hr|p])\w+).*?))[ ]*>(.*?)<.*?>/<$1>$3<\/$2>/gi;
+    # Restore destroyd tags
+    $translated =~ s/<[ ]*(?:(\?\w+|((?![br|hr|p|tt|pre])\w+).*?))[ ]*>(.*?)<.*?>/<$1>$3<\/$2>/gi;
+
     $translated =~ s/([ ]*)\$[ ]*(\d+)/$1\$$2/g;
     $translated =~ s/(['|"|`|“|«])[ ]*\$(\d+)[ ]*(['|"|`|“|»])/$1\$$2$3/g;
     $translated =~ s/(<.*?>)[ ]*(.*?)[ ]*(<.*?>)/$1$2$3/g;
@@ -511,7 +517,7 @@ sub translated_substitute
         $translated =~ s/(?:(:[ ]*[^:]+$|:$))/ $1/g;
 
         # Fix incorrectly positioned $1 :$2
-        if ($translated =~ /\$(\d+)[ ]+:\$\d+/) {            
+        if ($translated =~ /\$(\d+)[ ]+:\$\d+/) {
             $translated =~ s/\$(\d+)[ ]+:\$(\d+)/\$$1 : \$$2/;
         }
     }
@@ -589,6 +595,7 @@ sub overwrite
     my $language_target          = $opt->{'language-target'};
     my $language_target_exclude  = $opt->{'language-target-exclude'};
     my $keys_exclude             = $opt->{'keys-exclude'};
+    my $keys_test                = $opt->{'keys-test'};
 
     foreach $module (@{$modules}) {
         my (%template);
@@ -642,6 +649,11 @@ sub overwrite
                 # Don't add special keys
                 next if ($key eq '__norefs');
 
+                # If set to certain keys only, skip all other
+                if (@{$keys_test} && (!any {$_ =~ /^$key$/} @{$keys_test})) {
+                    next;
+                }
+
                 # Modify `$key` when type is set to "module", otherwise keep default
                 my $key_  = $key;
                 my $key__ = $key;
@@ -661,7 +673,7 @@ sub overwrite
                 }
 
                 # Human translated strings must be added to original `$code` file, e.g. `de` after transcoding
-                if ($language_source_file && $language_source_file->{$key_}) {
+                if ($language_source_file && $language_source_file->{$key_} && !@{$keys_test}) {
                     talk_log(
                           ("" . DARK . "   .. found and transcoded human translated value for \`$key\` key to" . RESET . ""),
                           $data, $opt->{'verbose'});
@@ -685,14 +697,15 @@ sub overwrite
                     # performing actual translation. It's useful when you want to translate it manually
                     # and simply need to find missing language strings on targeted file. Besides, `config.info`
                     # options are never translated (so far), just as languages that use right-to-left writing
-                    if ($opt->{'no-translate'}        ||
-                        $type eq 'config'             ||
-                        $rtl && $value =~ /\$(\d+)|</ ||
-                        (any {$_ =~ /^$key$/} @{$keys_exclude})
-                      )
+                    if (!@{$keys_test} &&
+                        ($opt->{'no-translate'} ||
+                            $type eq 'config' ||
+                            $rtl && $value =~ /\$(\d+)|</ ||
+                            (any {$_ =~ /^$key$/} @{$keys_exclude})))
                     {
-                        talk_log(("" . DARK . "   .. stored original value for \`$key\` which is" . RESET . ""), $data, $opt->{'verbose'});
-                        talk_log("      — " . CYAN . " $value" . RESET . "",                                   $data, $opt->{'verbose'});
+                        talk_log(("" . DARK . "   .. stored original value for \`$key\` which is" . RESET . ""),
+                                 $data, $opt->{'verbose'});
+                        talk_log("      — " . CYAN . " $value" . RESET . "", $data, $opt->{'verbose'});
                         $language_auto{$key__} = $value;
                         next;
                     }
@@ -711,15 +724,11 @@ sub overwrite
 
                     talk_log("      — $key --> $_value", $data, $opt->{'verbose'});
                     if ($opt->{'verbose'} == 2) {
-                        say "        .. $key <-- $value";
-                        say "        .. $key --> $translated";
+                        say "        .. $key --< $value";
+                        say "        .. $key >-- $translated";
                     }
 
                     $translated = translated_substitute($translated, $_value, $opt);
-
-                    if ($opt->{'verbose'} == 2) {
-                        say "        .. $key <-> $translated";
-                    }
 
                     # Store translated string
                     $language_auto{$key__} = $translated;
@@ -731,7 +740,7 @@ sub overwrite
             # If we are converting from old times, where there were different encodings and
             # file extensions for it, we need to delete/clear all old, no longer needed files
             # e.g. will be deleted: uk_UA, zh_TW.Big5, ja_JP.euc, ko_KR.euc and etc.
-            if ($opt->{'language-source-encoding'} eq 'map') {
+            if (!@{$keys_test} && $opt->{'language-source-encoding'} eq 'map') {
                 my $found;
                 find(
                     {
@@ -765,8 +774,10 @@ sub overwrite
             }
 
             # Write transcoded/translated file
-            write_file($mpath . "/$code",      \%language);
-            write_file($mpath . "/$code.auto", \%language_auto);
+            if (!@{$keys_test}) {
+                write_file($mpath . "/$code",      \%language);
+                write_file($mpath . "/$code.auto", \%language_auto);
+            }
         }
 
         say GREEN, ".. done ", RESET;
@@ -925,8 +936,14 @@ manipulate-language [options]
 Give this help list.
 
 Examples of usage:
+
+Translate to all available languages, using old-time encoding map, in module BIND, using as type "lang" directory, discarding human translations for Hebrew, keeping original value for key "mass_desc" (not translating).
  
- — manipulate-language --overwrite -m=acl,apache -t=de,ru -o -e=map -w=lang -l=acl,apache:for-de,ru.log
+ — manipulate-language --overwrite -e=map -m=bind8 -w=lang -te=he -ke=mass_desc -v=2
+
+Test translation output for "mass_desc,trusted_warning" keys, in Russian and German, in BIND module
+
+ — manipulate-language --overwrite -m=bind8 -t=ru,de -kt=mass_desc,trusted_warning -v=2
 
 =item --type <lang|ulang|help|config|module>, -w <lang|ulang|help|config|module>
 
@@ -967,6 +984,10 @@ Do not perform translation but still save currently untranslated strings to sepa
 =item --keys-exclude, -ke
 
 Comma separated list of keys that shouldn't be translated and stored with original value, when run in overwrite mode
+
+=item --keys-test, -kt
+
+Comma separated list of keys to test translation engine on; in this mode, translated strings are not saved
 
 =item --overwrite, -f
 
