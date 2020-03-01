@@ -281,7 +281,7 @@ sub language_source_file
             } elsif ($code eq 'tr') {
                 $language_source_file_encoding = "iso-8859-9";
             } elsif ($code eq 'he') {
-                $language_source_file_encoding = "iso-8859-8-i";
+                $language_source_file_encoding = "cp1255";
             } elsif ($code eq 'th') {
                 $language_source_file_encoding = "tis-620";
             } elsif ($code eq 'zh') {
@@ -514,7 +514,7 @@ sub translate
     $target =~ s/_/-/;
 
     # Prevent service unavailable error, reducing the call rate
-    sleep 1;
+    select(undef, undef, undef, 0.25);
 
     my $tr;
     my $rsp = "https://translation.googleapis.com/language/translate/v2?q=@{[urlize($value)]}";
@@ -587,7 +587,6 @@ sub overwrite
                 if (any {$_ =~ /^$code$/} @languages_excluded) {
                     next;
                 }
-
             }
 
             # Get other target language attributes
