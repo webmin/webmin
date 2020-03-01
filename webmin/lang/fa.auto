@@ -476,7 +476,7 @@ twofactor_eusers=Two-factor authentication cannot be disabled, as the following 
 descs_err=عناوین ماژول ذخیره نشد
 letsencrypt_epythonmod=The Python module $1 needed by the built-in Let's Encrypt client is not installed
 log_debug=گزینه های پرونده ورود به اشکال زدایی تغییر یافته است
-session_cmddef1=Ú¯Ø°Ø±ÙØ§ÚÙ‌ÙØ§Û ÙÙÙØ¶Û Ø±Ø§ Ø§Ø² Ø·Ø±ÛÙ PAM ØªØºÛÛØ± Ø¯ÙÛØ¯
+session_cmddef1=گذرواژه‌های منقضی را از طریق PAM تغییر دهید
 session_cmddef0=تغییر کلمه عبور با دستور:
 themes_overdesc=پوشش ها با تغییر رنگ ها ، پس زمینه ها و نمادها ظاهر یک موضوع را تغییر می دهند. آنها طرح را تغییر نمی دهند.
 twofactor_eauthyotp=نشانه معتبر نامعتبر است

@@ -25,7 +25,7 @@ advanced_eumask=Umask musí byť 3 oktálové číslo
 advanced_header=Rozšírené a experimentálne voľby
 advanced_nice=CPU priority pre naplánované úlohy
 advanced_nodelete=Neobmedzené
-advanced_pass=Vytvoriť heslo k Webmin programom? <br><font size=-1> (Nefunguje ak je autentifikácia zapnutá) </ font>
+advanced_pass=Vytvoriť heslo k Webmin programom? <br><font size=-1> (Nefunguje ak je autentifikácia zapnutá) </font>
 advanced_preload=Obnoviť Webmin funkcie knižnice? 
 advanced_pri=Prioritná úroveň 
 advanced_sclass=IO triedy pre plánované miesta 
