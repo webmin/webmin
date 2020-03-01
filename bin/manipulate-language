@@ -29,11 +29,13 @@ sub main
                'language-target|t:s'          => \$opt{'language-target'},
                'language-target-exclude|te:s' => \$opt{'language-target-exclude'},
                'language-source|s:s'          => \$opt{'language-source'},
+               'language-source-exclude|se:s' => \$opt{'language-source-exclude'},
                'language-source-encoding|e:s' => \$opt{'language-source-encoding'},
                'no-translate|o!'              => \$opt{'no-translate'},
                 # 'action|a:s'                   => \$opt{'action'},        #################################
                 # 'key|k:s'                      => \$opt{'key'},           ######### coming soon! ##########
                 # 'value|d:s'                    => \$opt{'value'},         #################################
+               'keys-exclude|ke:s'            => \$opt{'keys-exclude'},
                'overwrite|f!'                 => \$opt{'overwrite'},
                'log|l:s'                      => \$opt{'log'},
                'verbose|v:i'                  => \$opt{'verbose'});
@@ -85,9 +87,29 @@ sub main
     # Get list of languages from `lang_list.txt` file
     $data{'languages_source_list'}       = list_languages_local(\%data);
     $data{'languages_source_list_codes'} = [map {$_->{'lang'}} @{ $data{'languages_source_list'} }];
+    
+    # Define base language. Default is set English
+    $opt{'language-source'} ||= 'en';
+    my $language_source = $opt{'language-source'};
 
-    # Don't put on the list excluded languages
+    # Check, if source language exists
+    if (!any {$_ =~ /^$language_source/} @{ $data{'languages_source_list_codes'} }) {
+        errors('language-source', $language_source);
+        exit;
+    }
+    
+    # What language encoding do we expect on human translated files
+    $opt{'language-source-encoding'} ||= 'utf-8';
+
+    # Always exclude source language
     my $language_target_exclude = $opt{'language-target-exclude'};
+    if ($language_target_exclude) {
+        $language_target_exclude .= ",$language_source";
+    } else {
+        $language_target_exclude = $language_source;
+    }
+    
+    # Don't put on the list user excluded languages
     if ($language_target_exclude) {
         my @languages_excluded = split(',', $language_target_exclude);
         my @languages_allowed;
@@ -100,13 +122,6 @@ sub main
             $data{'languages_source_list_codes'} = [@languages_allowed];
         }
     }
-
-    # Define base language. Default is set English
-    $opt{'language-source'} ||= 'en';
-    my $language_source = $opt{'language-source'};
-
-    # What language encoding do we expect on human translated files
-    $opt{'language-source-encoding'} ||= 'utf-8';
 
     # Find out which modules to update, if exist
     my $modules = $opt{'modules'};
@@ -157,12 +172,9 @@ sub main
         }
     }
 
-    # Define source language
-    if (!any {$_ =~ /^$language_source/} @{ $data{'languages_source_list_codes'} }) {
-        errors('language-source', $language_source);
-        exit;
-    }
-
+    # Exclude listed keys from bulk translation
+    $opt{'keys-exclude'} = [$opt{'keys-exclude'} ? split(',', $opt{'keys-exclude'}) : ()];
+    
     # User interactions
     talk('affected', \%opt, \%data);
 
@@ -231,6 +243,16 @@ sub language_source_file
     my $language_source_file;
     my $language_source_file_encoding = 'utf-8';
 
+    # Ignore user defined source languages
+    my $language_source_exclude = $opt->{'language-source-exclude'};
+    if ($language_source_exclude) {
+        my @languages_excluded = split(',', $language_source_exclude);
+        if (any {$_ =~ /^$language_code$/} @languages_excluded) {
+            return (undef, undef);
+        }
+    }
+
+    # Correct language code according to the old language map
     if ($opt->{'language-source-encoding'} eq 'map') {
         $language_code = language_map($language_code);
     }
@@ -281,7 +303,7 @@ sub language_source_file
             } elsif ($code eq 'tr') {
                 $language_source_file_encoding = "iso-8859-9";
             } elsif ($code eq 'he') {
-                $language_source_file_encoding = "iso-8859-8-i";
+                $language_source_file_encoding = "cp1255";
             } elsif ($code eq 'th') {
                 $language_source_file_encoding = "tis-620";
             } elsif ($code eq 'zh') {
@@ -459,7 +481,7 @@ sub translated_substitute
         $translated =~ s/&#39;/'/gi;
     }
 
-    $translated =~ s/<[ ]*(?:(\?\w+|((?![br|hr])\w+).*?))[ ]*>(.*?)<.*?>/<$1>$3<\/$2>/g;
+    $translated =~ s/<[ ]*(?:(\?\w+|((?![br|hr|p])\w+).*?))[ ]*>(.*?)<.*?>/<$1>$3<\/$2>/gi;
     $translated =~ s/([ ]*)\$[ ]*(\d+)/$1\$$2/g;
     $translated =~ s/(['|"|`|“|«])[ ]*\$(\d+)[ ]*(['|"|`|“|»])/$1\$$2$3/g;
     $translated =~ s/(<.*?>)[ ]*(.*?)[ ]*(<.*?>)/$1$2$3/g;
@@ -487,6 +509,11 @@ sub translated_substitute
     # then print it as such and not as `text: ` or `text: $1`
     if ($original =~ /(?:([ ]+:[ ]*$|[ ]+:[ ]*\$\d+$))/) {
         $translated =~ s/(?:(:[ ]*[^:]+$|:$))/ $1/g;
+
+        # Fix incorrectly positioned $1 :$2
+        if ($translated =~ /\$(\d+)[ ]+:\$\d+/) {            
+            $translated =~ s/\$(\d+)[ ]+:\$(\d+)/\$$1 : \$$2/;
+        }
     }
 
     return $translated;
@@ -514,7 +541,7 @@ sub translate
     $target =~ s/_/-/;
 
     # Prevent service unavailable error, reducing the call rate
-    sleep 1;
+    select(undef, undef, undef, 0.25);
 
     my $tr;
     my $rsp = "https://translation.googleapis.com/language/translate/v2?q=@{[urlize($value)]}";
@@ -533,9 +560,11 @@ sub translate
 
     # Propose user to try again on error
     else {
+        print YELLOW, "Error: Stopped when translating `$target` language", RESET;
         print RED, "Error: Google Translator - $tc", RESET;
         if (prompt('next')) {
-            translate($data, $opt, $target, $value);
+            my $translated = translate($data, $opt, $target, $value);
+            return $translated;
         } else {
             say YELLOW, "Terminating..", RESET;
             exit;
@@ -559,6 +588,7 @@ sub overwrite
     my $language_source_encoding = $opt->{'language-source-encoding'};
     my $language_target          = $opt->{'language-target'};
     my $language_target_exclude  = $opt->{'language-target-exclude'};
+    my $keys_exclude             = $opt->{'keys-exclude'};
 
     foreach $module (@{$modules}) {
         my (%template);
@@ -587,7 +617,6 @@ sub overwrite
                 if (any {$_ =~ /^$code$/} @languages_excluded) {
                     next;
                 }
-
             }
 
             # Get other target language attributes
@@ -656,10 +685,14 @@ sub overwrite
                     # performing actual translation. It's useful when you want to translate it manually
                     # and simply need to find missing language strings on targeted file. Besides, `config.info`
                     # options are never translated (so far), just as languages that use right-to-left writing
-                    if ($opt->{'no-translate'} || $type eq 'config' || $rtl && $value =~ /\$(\d+)|</) {
-                        talk_log(("" . DARK . "   .. stored original value for \`$key\` which is" . RESET . ""),
-                                 $data, $opt->{'verbose'});
-                        talk_log("      — " . CYAN . " $value" . RESET . "", $data, $opt->{'verbose'});
+                    if ($opt->{'no-translate'}        ||
+                        $type eq 'config'             ||
+                        $rtl && $value =~ /\$(\d+)|</ ||
+                        (any {$_ =~ /^$key$/} @{$keys_exclude})
+                      )
+                    {
+                        talk_log(("" . DARK . "   .. stored original value for \`$key\` which is" . RESET . ""), $data, $opt->{'verbose'});
+                        talk_log("      — " . CYAN . " $value" . RESET . "",                                   $data, $opt->{'verbose'});
                         $language_auto{$key__} = $value;
                         next;
                     }
@@ -919,6 +952,10 @@ Comma separated list of language codes that should be excluded from processing.
 
 Language to use as a base language. Default is set English.
 
+=item --language-source-exclude, -se
+
+Comma separated list of human translated language codes to exclude from adding to target file (always translate instead).
+
 =item --language-source-encoding, -e
 
 Encoding of human translated language files. Default is set to "utf-8". Available options are <utf-8>, <auto>, <map>. Option "auto" is used to detect encoding automatically, while option "map" is used to use old-time encoding map, where each language had different encoding, and nowadays, should not be used, as all language files are going to be encoded in "utf-8" already.
@@ -926,6 +963,10 @@ Encoding of human translated language files. Default is set to "utf-8". Availabl
 =item --no-translate, -o
 
 Do not perform translation but still save currently untranslated strings to separate file, with extension ".auto". It's useful, when you need to extract missing, untranslated language stirings from the main language file.
+
+=item --keys-exclude, -ke
+
+Comma separated list of keys that shouldn't be translated and stored with original value, when run in overwrite mode
 
 =item --overwrite, -f
 
