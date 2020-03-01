@@ -559,7 +559,8 @@ sub translate
     else {
         print RED, "Error: Google Translator - $tc", RESET;
         if (prompt('next')) {
-            translate($data, $opt, $target, $value);
+            my $translated = translate($data, $opt, $target, $value);
+            return $translated;
         } else {
             say YELLOW, "Terminating..", RESET;
             exit;
@@ -944,7 +945,7 @@ Language to use as a base language. Default is set English.
 
 =item --language-source-exclude, -se
 
-Comma separated list of human translated language codes to exclude from processing.
+Comma separated list of human translated language codes to exclude from adding to target file (always translate instead).
 
 =item --language-source-encoding, -e
 
