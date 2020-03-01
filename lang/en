@@ -128,7 +128,7 @@ referer_warn_unknown=<b>Warning!</b> Webmin has detected that the program $1 was
 referer_fix1=If this is a legitimate link, you can allow links from this URL as follows :<ul><li>Login to Webmin normally.<li>Go to the <b>Webmin Configuration</b> module.<li>Click on the Trusted Referrers icon.<li>Enter the hostname $1 into the <b>Trusted websites</b> field, and click <b>Save</b>.</ul>
 referer_fix2=Alternately, you can configure Webmin to allow this link from the command line by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.<li>Add the line <tt>referers=$1</tt> at the end, or if a <tt>referers</tt> line already exists add <tt>$1</tt> to it.<li>Save the file.</ul>
 referer_fix3u=Make sure your browser is configured to send referrer information so that it can be verified by Webmin.
-referer_fix2u=Alternately, you can configure Webmin to allow links from unknown referers by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.<li>Find the line <tt>referers_none=1</tt> and change it to <tt>referers_none=0</tt>.<li>Save the file.</ul><p>WARNING - this has the side effect of opening your system up to reflected XSS attacks and so is not recommended!!
+referer_fix2u=Alternately, you can configure Webmin to allow links from unknown referers by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.<li>Find the line <tt>referers_none=1</tt> and change it to <tt>referers_none=0</tt>.<li>Save the file.</ul><p></p>WARNING - this has the side effect of opening your system up to reflected XSS attacks and so is not recommended!!
 
 session_header=Login to Webmin
 session_mesg=You must enter a username and password to login to the Webmin server on $1.
