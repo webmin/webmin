@@ -27,6 +27,7 @@ sub main
                'modules|m:s'                  => \$opt{'modules'},
                'modules-exclude|me:s'         => \$opt{'modules-exclude'},
                'language-target|t:s'          => \$opt{'language-target'},
+               'language-target-exclude|te:s' => \$opt{'language-target-exclude'},
                'language-source|s:s'          => \$opt{'language-source'},
                'language-source-encoding|e:s' => \$opt{'language-source-encoding'},
                'no-translate|o!'              => \$opt{'no-translate'},
@@ -48,7 +49,7 @@ sub main
     if (!defined($opt{'verbose'})) {
         $opt{'verbose'} = 1;
     }
-    
+
     # Get current path and make workaround to run from sub dir
     my $path = cwd;
     if ($path =~ /\/bin$/) {
@@ -68,7 +69,7 @@ sub main
 
     # Set default format to text
     $opt{'translate-format'} = 'text';
-    
+
     # Force HTML format for "module" type translates
     if (defined($opt{'type'}) && $opt{'type'} eq 'module') {
         $opt{'translate-format'} = 'html';
@@ -84,6 +85,21 @@ sub main
     # Get list of languages from `lang_list.txt` file
     $data{'languages_source_list'}       = list_languages_local(\%data);
     $data{'languages_source_list_codes'} = [map {$_->{'lang'}} @{ $data{'languages_source_list'} }];
+
+    # Don't put on the list excluded languages
+    my $language_target_exclude = $opt{'language-target-exclude'};
+    if ($language_target_exclude) {
+        my @languages_excluded = split(',', $language_target_exclude);
+        my @languages_allowed;
+        for my $language (@{ $data{'languages_source_list_codes'} }) {
+            if (!any {$_ =~ /^$language$/} @languages_excluded) {
+                push(@languages_allowed, $language);
+            }
+        }
+        if (@languages_allowed) {
+            $data{'languages_source_list_codes'} = [@languages_allowed];
+        }
+    }
 
     # Define base language. Default is set English
     $opt{'language-source'} ||= 'en';
@@ -451,10 +467,10 @@ sub translated_substitute
     $translated =~ s/\$(\d+)[ ]*：[ ]*\$(\d+)/\$$1:\$$2/g;
     $translated =~ s/(\p{L})\$(\d+)[ ]+/$1 \$$2 /g;
     $translated =~ s/(\p{L})[ ]+([:|：]){2}[ ]+(\p{L})/$1::$3/g;
-    
+
     # Remove any whitespaces
     $translated =~ s/([ ]+)/ /g;
-    
+
     # Fix trailing comma, which is separated from a word
     $translated =~ s/(.)[ ]+\./$1./g;
 
@@ -488,7 +504,7 @@ sub translate
     my $time = time();
     if ((($time - $data->{'start_time'}) / 60) > 10) {
         say CYAN, "Updating Google Translate API token..", RESET;
-        $data->{'token'} = get_google_translate_token();
+        $data->{'token'}      = get_google_translate_token();
         $data->{'start_time'} = $time;
     }
 
@@ -510,10 +526,23 @@ sub translate
     my $ts  = $rs->{'success'};
     my $tc  = $rs->{'content'};
 
+    # Exctract translation on success
     if ($ts) {
         $tr = JSON::PP->new->decode($rs->{'content'});
     }
-    return ($ts, $tc, $tr);
+
+    # Propose user to try again on error
+    else {
+        print RED, "Error: Google Translator - $tc", RESET;
+        if (prompt('next')) {
+            translate($data, $opt, $target, $value);
+        } else {
+            say YELLOW, "Terminating..", RESET;
+            exit;
+        }
+    }
+
+    return $tr;
 }
 
 # Run transcoding or translation of module(s) for the very first time
@@ -529,6 +558,7 @@ sub overwrite
     my $language_source          = $opt->{'language-source'};
     my $language_source_encoding = $opt->{'language-source-encoding'};
     my $language_target          = $opt->{'language-target'};
+    my $language_target_exclude  = $opt->{'language-target-exclude'};
 
     foreach $module (@{$modules}) {
         my (%template);
@@ -549,6 +579,15 @@ sub overwrite
             # Process only user defined languages or do all
             if (@{$language_target}) {
                 next if (!any {$_ =~ /^$code$/} @{$language_target});
+            }
+
+            # Do not process excluded languages
+            if ($language_target_exclude) {
+                my @languages_excluded = split(',', $language_target_exclude);
+                if (any {$_ =~ /^$code$/} @languages_excluded) {
+                    next;
+                }
+
             }
 
             # Get other target language attributes
@@ -634,33 +673,25 @@ sub overwrite
                     $value = translate_substitute($value, $opt);
 
                     # Run actual translation
-                    my ($translate_status, $translate_response, $translated) =
-                      translate($data, $opt, $code, $value);
-                    if ($translate_status) {
-                        $translated = $translated->{'data'}->{'translations'}[0]->{'translatedText'};
+                    my $translated = translate($data, $opt, $code, $value);
+                    $translated = $translated->{'data'}->{'translations'}[0]->{'translatedText'};
 
-                        talk_log("      — $key --> $_value", $data, $opt->{'verbose'});
-                        if ($opt->{'verbose'} == 2) {
-                            say "        .. $key <-- $value";
-                            say "        .. $key --> $translated";
-                        }
-
-                        $translated = translated_substitute($translated, $_value, $opt);
-
-                        if ($opt->{'verbose'} == 2) {
-                            say "        .. $key <-> $translated";
-                        }
-
-                        # Store translated string
-                        $language_auto{$key__} = $translated;
-                        talk_log("      — $key <-- $translated", $data, $opt->{'verbose'});
-                    } else {
-                        print RED, "Error: Google Translator - $translate_response", RESET;
-                        if (!prompt('next')) {
-                            say YELLOW, "Terminating..", RESET;
-                            exit;
-                        }
+                    talk_log("      — $key --> $_value", $data, $opt->{'verbose'});
+                    if ($opt->{'verbose'} == 2) {
+                        say "        .. $key <-- $value";
+                        say "        .. $key --> $translated";
                     }
+
+                    $translated = translated_substitute($translated, $_value, $opt);
+
+                    if ($opt->{'verbose'} == 2) {
+                        say "        .. $key <-> $translated";
+                    }
+
+                    # Store translated string
+                    $language_auto{$key__} = $translated;
+                    talk_log("      — $key <-- $translated", $data, $opt->{'verbose'});
+
                 }
             }
 
@@ -676,7 +707,8 @@ sub overwrite
                            my $code_ = language_map($code);
                            if ($code ne $code_ &&
                                (   $found eq "$mpath/$code_" ||
-                                   (defined($opt->{'type'}) && $opt->{'type'} &&
+                                   (defined($opt->{'type'}) &&
+                                       $opt->{'type'} &&
                                        $opt->{'type'} =~ /config|module/ &&
                                        ($found eq "$mpath/$opt->{'type'}.info.$code_"))))
                            {
@@ -878,6 +910,10 @@ Comma separated list of modules to exclude
 =item --language-target, -t
 
 Comma separated list of affected language codes to operate on. Default is to operate on all languages defined in language list.
+
+=item --language-target-exclude, -te
+
+Comma separated list of language codes that should be excluded from processing.
 
 =item --language-source, -s
 
