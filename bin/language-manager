@@ -564,17 +564,13 @@ sub translate
         $tr = JSON::PP->new->decode($rs->{'content'});
     }
 
-    # Propose user to try again on error
+    # On error just try again in 5 seconds
     else {
-        print YELLOW, "Error: Stopped when translating `$target` language", RESET;
+        say YELLOW, "Error: Stopped when translating `$target` language", RESET;
         print RED, "Error: Google Translator - $tc", RESET;
-        if (prompt('next')) {
-            my $translated = translate($data, $opt, $target, $value);
-            return $translated;
-        } else {
-            say YELLOW, "Terminating..", RESET;
-            exit;
-        }
+        sleep 5;
+        my $translated = translate($data, $opt, $target, $value);
+        return $translated;
     }
 
     return $tr;
@@ -649,7 +645,7 @@ sub overwrite
                 # Don't add special keys
                 next if ($key eq '__norefs');
 
-                # If set to certain keys only, skip all other
+                # If set to test certain keys only, skip all other
                 if (@{$keys_test} && (!any {$_ =~ /^$key$/} @{$keys_test})) {
                     next;
                 }
@@ -700,7 +696,7 @@ sub overwrite
                     if (!@{$keys_test} &&
                         ($opt->{'no-translate'} ||
                             $type eq 'config' ||
-                            $rtl && $value =~ /\$(\d+)|</ ||
+                            ($rtl && $value =~ /\$(\d+)|</) ||
                             (any {$_ =~ /^$key$/} @{$keys_exclude})))
                     {
                         talk_log(("" . DARK . "   .. stored original value for \`$key\` which is" . RESET . ""),
@@ -724,8 +720,8 @@ sub overwrite
 
                     talk_log("      — $key --> $_value", $data, $opt->{'verbose'});
                     if ($opt->{'verbose'} == 2) {
-                        say "        .. $key --< $value";
-                        say "        .. $key >-- $translated";
+                        say BLACK, "        .. $key --< $value", RESET;
+                        say BLACK, "        .. $key >-- $translated", RESET;
                     }
 
                     $translated = translated_substitute($translated, $_value, $opt);
