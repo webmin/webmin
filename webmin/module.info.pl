@@ -1,2 +1,2 @@
 desc_pl=Konfiguracja Webmina
-longdesc_pl=Skonfiguruj Webmina dla siebie przez np. ustawienie dozwolonych hostÛw, SSL instalowanie modu≥Ûw i szablonÛw.
+longdesc_pl=Skonfiguruj Webmina dla siebie przez np. ustawienie dozwolonych host√≥w, SSL instalowanie modu≈Ç√≥w i szablon√≥w.

@@ -1,0 +1,3 @@
+name_tr=xinetd'nin
+desc_tr=Ağ Servisleri
+longdesc_tr=İnetd yerine Xinetd tarafından kullanılan sunucuları düzenleyin.

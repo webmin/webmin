@@ -1,0 +1,3 @@
+name_de=BSDexports
+longdesc_de=Bearbeiten Sie Dateifreigaben aus der FreeBSD-Datei /etc/exports.
+desc_de=NFS-Exporte

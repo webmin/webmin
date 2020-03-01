@@ -1,0 +1,3 @@
+name_ms=Inittab
+longdesc_ms=Konfigurasikan perkhidmatan peringkat rendah yang akan dijalankan pada masa boot, dan pilih runlevel awal.
+desc_ms=Bootup Sistem Permulaan

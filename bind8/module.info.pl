@@ -1,2 +1,2 @@
 desc_pl=BIND - serwer DNS
-longdesc_pl=Twórz i edytuj domeny, rekordy DNS, opcje BIND i widoki.
+longdesc_pl=TwÃ³rz i edytuj domeny, rekordy DNS, opcje BIND i widoki.

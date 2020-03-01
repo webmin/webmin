@@ -1,0 +1,3 @@
+longdesc_hr=Stvaranje, ažuriranje i brisanje korisnika i grupa na više poslužitelja. Za razliku od NIS-a, svaki poslužitelj ima svoje passwd i grupne datoteke koje ovaj modul daljinski ažurira.
+desc_hr=Korisnici i grupe klastera
+name_hr=Korisnici klastera

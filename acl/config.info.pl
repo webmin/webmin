@@ -1,5 +1,5 @@
 line1=Opcje konfiguracyjne,11
-display=Tryb wy∂wietlania uøytkownikÛw i grup,1,1-Tylko nazwy,0-Nazwy i modu≥y
-order=Porz±dkuj uøytkownikÛw i grupy wg,1,0-Kolejno∂ci w zbiorze,1-Nazwy
+display=Tryb wy≈õwietlania u≈ºytkownik√≥w i grup,1,1-Tylko nazwy,0-Nazwy i modu≈Çy
+order=PorzƒÖdkuj u≈ºytkownik√≥w i grupy wg,1,0-Kolejno≈õci w zbiorze,1-Nazwy
 line2=Konfiguracja systemu,11
-ssleay=¶cieøka do programu openssl lub ssleay,0
+ssleay=≈öcie≈ºka do programu openssl lub ssleay,0

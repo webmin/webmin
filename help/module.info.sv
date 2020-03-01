@@ -1,1 +1,1 @@
-desc_sv=Hj‰lp om Webmin
+desc_sv=Hj√§lp om Webmin

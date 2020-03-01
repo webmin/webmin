@@ -1,0 +1,3 @@
+name_tr=İhracat müdürü
+longdesc_tr=Dosya paylaşımlarını HPUX /etc/exports export /etc/exports dosyasında tanımlandığı şekilde düzenleyin.
+desc_tr=NFS Dışa Aktarma

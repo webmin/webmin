@@ -1,0 +1,3 @@
+desc_sl=Izvoz NFS
+name_sl=Izvoznik
+longdesc_sl=Uredite skupne rabe datotek, kot so opredeljene v datoteki HP /etc/exports export.

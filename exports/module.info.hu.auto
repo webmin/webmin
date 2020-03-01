@@ -1,0 +1,3 @@
+name_hu=Export menedzser
+desc_hu=NFS Export
+longdesc_hu=Szerkessze az NFS fájlmegosztásokat, amelyek az /etc/exports. -ban vannak meghatározva /etc/exports.

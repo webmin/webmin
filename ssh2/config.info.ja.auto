@@ -1,0 +1,10 @@
+term=Terminal type,3,Default
+port=Port to connect to,3,Default
+no_test=Test SSH server?,1,0-Yes,1-No
+fontsize=Font size in points,3,Default
+detach=Separate window mode,1,1-Yes,0-No
+background=Text background color (R&#44;G&#44;B),3,Default
+foreground=Text foreground color (R&#44;G&#44;B),3,Default
+sizemode=Applet size,1,0-80x24 characters (in default font),1-Maximum,2-Custom size
+size=Custom width x height,0
+encoding=Text encoding,3,Default

@@ -1,0 +1,3 @@
+desc_sv=Nätverkstjänster
+longdesc_sv=Redigera servrar som hanteras av Xinetd, en ersättning för inetd.
+name_sv=xinetd

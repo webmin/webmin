@@ -1,0 +1,3 @@
+longdesc_sv=Konfigurera en Linux-brandvägg med ip6tables. Tillåter redigering av alla tabeller, kedjor, regler och alternativ.
+desc_sv=Linux IPv6-brandvägg
+name_sv=Firewall6

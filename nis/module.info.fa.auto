@@ -1,0 +1,3 @@
+name_fa=NIS
+desc_fa=NIS Client و Server
+longdesc_fa=یک سیستم به عنوان یک سرویس دهنده NIS ، Master یا Server slave راه اندازی کنید. توجه داشته باشید که NIS + پشتیبانی نمی شود.

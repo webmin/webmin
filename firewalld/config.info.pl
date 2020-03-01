@@ -1,2 +1,2 @@
-firewall_cmd=Pe≥na ∂cieøka do programu firewall-cmd,0
+firewall_cmd=Pe≈Çna ≈õcie≈ºka do programu firewall-cmd,0
 init_name=Nazwa skryptu init FirewallD,0

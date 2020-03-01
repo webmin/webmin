@@ -1,0 +1,3 @@
+desc_tr=GRUB Boot Loader
+longdesc_tr=Linux GRUB önyükleme yükleyicisini önyükleme sırasında çeşitli işletim sistemleri ve çekirdeklerin seçilmesine izin verecek şekilde yapılandırın.
+name_tr=GRUB

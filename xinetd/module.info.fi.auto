@@ -1,0 +1,3 @@
+desc_fi=Verkkopalvelut
+longdesc_fi=Muokkaa palvelimia, joita käsittelee Xinetd, korvaa inetd.
+name_fi=xinetd

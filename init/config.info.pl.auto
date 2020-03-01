@@ -1,0 +1,2 @@
+boot_levels=Runlevels to create new actions in,3,From /etc/inittab
+init_mode=Boot system,4,-Detect automatically,init-SysV init,upstart-Upstart,systemd-Systemd,osx-MacOS,rc-FreeBSD RC scripts,win32-Windows services,local-Single boot script

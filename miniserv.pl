@@ -2044,7 +2044,7 @@ if ($config{'userfile'}) {
 				&write_data("WWW-authenticate: Basic ".
 					   "realm=\"$config{'realm'}\"\r\n");
 				&write_keep_alive(0);
-				&write_data("Content-type: text/html; Charset=iso-8859-1\r\n");
+				&write_data("Content-type: text/html; Charset=utf-8\r\n");
 				&write_data("\r\n");
 				&reset_byte_count();
 				&write_data("<html>\n");
@@ -2302,7 +2302,7 @@ if (-d _) {
 	local $resp = "HTTP/1.0 $ok_code $ok_message\r\n".
 		      "Date: $datestr\r\n".
 		      "Server: $config{server}\r\n".
-		      "Content-type: text/html; Charset=iso-8859-1\r\n";
+		      "Content-type: text/html; Charset=utf-8\r\n";
 	&write_data($resp);
 	&write_keep_alive(0);
 	&write_data("\r\n");
@@ -2717,7 +2717,7 @@ else {
 	&write_data("HTTP/1.0 $_[0] $_[1]\r\n");
 	&write_data("Server: $config{server}\r\n");
 	&write_data("Date: $datestr\r\n");
-	&write_data("Content-type: text/html; Charset=iso-8859-1\r\n");
+	&write_data("Content-type: text/html; Charset=utf-8\r\n");
 	&write_keep_alive(0);
 	&write_data("\r\n");
 	&reset_byte_count();

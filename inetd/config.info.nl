@@ -1,5 +1,4 @@
 line1=Configureerbare opties,11
-show_empty=Laat services zien zonder programma,1,1-Ja,0-Nee
 sort_mode=Sorteer services en programma's met,1,0-Volgorde in file,1-Naam,2-Taak
 line2=Systeem configuratie,11
 inetd_conf_file=Inetd configuratie file,0

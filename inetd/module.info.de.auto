@@ -1,0 +1,2 @@
+desc_de=Netzwerkdienste und Protokolle
+longdesc_de=Bearbeiten Sie die Dienste in /etc/inetd.conf, /etc/services und /etc/rpc.

@@ -1,0 +1,3 @@
+name_vi=Tập tin HTAccess
+desc_vi=Thư mục web được bảo vệ
+longdesc_vi=Tạo các tệp.htaccess và htpasswd để bảo vệ các thư mục có thể truy cập web.

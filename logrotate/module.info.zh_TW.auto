@@ -1,0 +1,3 @@
+desc_zh_TW=日誌文件輪換
+name_zh_TW=對數旋轉
+longdesc_zh_TW=設置Apache，Squid，Syslog和其他日誌文件的自動輪換。

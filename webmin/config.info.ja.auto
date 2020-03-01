@@ -1,0 +1,4 @@
+line2=Let's Encrypt configuration,11
+letsencrypt_cmd=Full path to Let's Encrypt client command,3,Find automatically
+line1=Configurable options,11
+letsencrypt_dns_wait=Seconds to wait for Let's Encrypt DNS propogation,0,5

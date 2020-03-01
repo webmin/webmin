@@ -1,0 +1,3 @@
+desc_fi=Klusteriohjelmistopaketit
+longdesc_fi=Asenna RPM-, debian- ja solaris-paketit useille palvelimille yhdestä lähteestä.
+name_fi=Klusteriohjelmisto

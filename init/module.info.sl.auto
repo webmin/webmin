@@ -1,0 +1,3 @@
+desc_sl=Zagon in zaustavitev
+name_sl=Upravitelj zagona
+longdesc_sl=Skripte za nastavitev, ki jih je treba zagnati ob zagonu iz /etc/init.d ali /etc/rc.local.

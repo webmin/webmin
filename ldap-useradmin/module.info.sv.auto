@@ -1,0 +1,2 @@
+desc_sv=LDAP-användare och grupper
+longdesc_sv=Hantera användare och grupper lagrade i en LDAP-databas, som används för Unix, Samba och Cyrus IMAP-autentisering.

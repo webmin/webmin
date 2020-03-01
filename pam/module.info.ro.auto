@@ -1,0 +1,3 @@
+desc_ro=Autentificare PAM
+name_ro=PAM
+longdesc_ro=Configurați pașii de autentificare PAM folosiți de servicii precum telnet, POP și FTP.

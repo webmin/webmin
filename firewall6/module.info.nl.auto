@@ -1,0 +1,3 @@
+longdesc_nl=Configureer een Linux-firewall met behulp van ip6tables. Hiermee kunnen alle tabellen, ketens, regels en opties worden bewerkt.
+name_nl=Firewall6
+desc_nl=Linux IPv6 Firewall

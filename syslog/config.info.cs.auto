@@ -1,0 +1,9 @@
+start_cmd=Command to start syslog,3,Just run server
+compressed=Include compressed logs in searches?,1,1-Yes,0-No
+extras=Other log files to show<br>(With optional descriptions),9,50,4,\t
+others=Show logs from other modules?,1,1-Yes,0-No
+reverse=Log display order,1,1-Newest lines at top,0-Newest lines at bottom
+refresh=Seconds between log view refreshes,3,Never
+restart_cmd=Command to apply changes,3,Kill and re-start server
+tail_cmd=Tail command and arguments,3,Default (tail -n LINES)
+signal_cmd=Command to re-open log files,3,Send HUP signal

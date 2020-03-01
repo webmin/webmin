@@ -1,0 +1,3 @@
+name_uk=IPsec
+desc_uk=Конфігурація VPN IPsec
+longdesc_uk=Налаштуйте клієнта або сервера для IPsec VPN за допомогою FreeSWAN.

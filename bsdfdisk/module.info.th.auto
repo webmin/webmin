@@ -1,0 +1,2 @@
+desc_th=พาร์ติชันบนดิสก์ภายในเครื่อง
+longdesc_th=สร้างและแก้ไข paritions บนดิสก์ SCSI และ IDE โลคัลบน FreeBSD

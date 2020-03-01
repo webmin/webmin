@@ -1,0 +1,5 @@
+perms=Permissions for created files,3,Default (644)
+extra_directives=Extra directives to include in .htaccess,9,0,0,\t
+sha1=Offer SHA1 encryption option?,1,1-Yes,0-No
+htgroups=Groups file name,0
+digest=Offer digest encryption option?,1,1-Yes,0-No

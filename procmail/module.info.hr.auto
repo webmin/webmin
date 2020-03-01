@@ -1,0 +1,3 @@
+desc_hr=Procmail Mail Filter
+longdesc_hr=Uredite recepte u globalnoj datoteci /etc/procmailrc koji se odnose na sve dolazne poruke e-pošte.
+name_hr=Procmail

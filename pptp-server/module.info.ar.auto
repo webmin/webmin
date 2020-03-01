@@ -1,0 +1,3 @@
+desc_ar=خادم VPN PPTP
+longdesc_ar=قم بإعداد النظام الخاص بك كخادم PPTP حتى يتمكن عملاء Linux أو Windows VPN من الاتصال.
+name_ar=PPTPd

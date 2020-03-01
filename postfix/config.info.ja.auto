@@ -1,0 +1,2 @@
+max_maps=Maximum map entries to show,0,6
+delete_confirm=Prompt for confirmation before deleting?,1,1-Yes,0-No

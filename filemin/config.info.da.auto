@@ -1,0 +1,2 @@
+allowed_paths=Directories accessible to Usermin users,9,60,5,\t
+max=Maximum size for uploaded files,3,Unlimited

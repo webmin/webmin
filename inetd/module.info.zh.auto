@@ -1,0 +1,2 @@
+desc_zh=网络服务和协议
+longdesc_zh=在/etc/inetd.conf, /etc/services 和/etc/rpc.编辑服务/etc/rpc.

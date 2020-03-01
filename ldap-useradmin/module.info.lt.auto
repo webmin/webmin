@@ -1,0 +1,2 @@
+desc_lt=LDAP vartotojai ir grupės
+longdesc_lt=Tvarkykite LDAP duomenų bazėje saugomus vartotojus ir grupes, naudojamas „Unix“, „Samba“ ir „Cyrus“ IMAP autentifikavimui.

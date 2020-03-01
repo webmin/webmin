@@ -1,0 +1,2 @@
+params_file=Treat default values starting with / as file to read?,1,1-Yes,0-No
+params_cmd=Treat default values ending with | as command to run?,1,1-Yes,0-No

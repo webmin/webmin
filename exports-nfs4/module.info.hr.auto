@@ -1,0 +1,3 @@
+desc_hr=Izvoz NFS v4
+name_hr=Menadžer izvoza
+longdesc_hr=Uredite udjele datoteka NFS v4 definirane u /etc/exports.

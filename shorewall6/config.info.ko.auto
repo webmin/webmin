@@ -1,0 +1,7 @@
+before_apply_cmd=Command to run before applying configuration,3,None
+actions=Standard actions files,9,40,5,\t
+shorewall6=Path to shorewall6 command,0
+macros=Macro files directory,0
+after_apply_cmd=Command to run after applying configuration,3,None
+display_zone_descriptions=Display zone descriptions in rules file?,1,0-No,1-Yes
+config_dir=Shorewall6 configuration directory,0

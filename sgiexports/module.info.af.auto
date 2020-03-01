@@ -1,0 +1,3 @@
+desc_af=NFS Uitvoere
+longdesc_af=Bewerk lêeraandele soos omskryf in die Irix /etc/exports lêer
+name_af=SGIExports

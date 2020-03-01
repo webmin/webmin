@@ -1,0 +1,3 @@
+name_no=Firewall6
+desc_no=Linux IPv6 brannmur
+longdesc_no=Konfigurer en Linux-brannmur ved hjelp av ip6tables. Lar redigering av alle tabeller, kjeder, regler og alternativer.

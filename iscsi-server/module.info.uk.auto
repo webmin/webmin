@@ -1,0 +1,2 @@
+desc_uk=iSCSI Server
+longdesc_uk=Діліться дисковими пристроями по всій мережі, використовуючи протокол iSCSI з пакетом netbsd-iscsi.

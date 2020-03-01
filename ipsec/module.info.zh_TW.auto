@@ -1,0 +1,3 @@
+name_zh_TW=安全協議
+desc_zh_TW=IPsec VPN配置
+longdesc_zh_TW=使用FreeSWAN為IPsec VPN設置客戶端或服務器。

@@ -1,0 +1,3 @@
+desc_da=Disk- og netværksfilsystemer
+longdesc_da=Monter filsystemer og swap-filer, der normalt konfigureres i /etc/fstab eller /etc/vfstab.
+name_da=Disk Manager

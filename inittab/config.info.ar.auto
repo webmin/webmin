@@ -1,0 +1,3 @@
+inittab_file=Path to inittab file,0
+line2=System configuration,11
+telinit=Path to telinit command,0

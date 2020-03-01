@@ -1,0 +1,11 @@
+fstab_file=ブート時にマウントされるファイルシステム一覧ファイル,0
+browse_server=ブラウズリストを要求するサーバ,3,ローカルホスト
+line1=設定可能オプション,11
+autofs_file=カーネル自動マウントファイル,3
+sort_mode=ファイルシステムのソート,1,2-マウントポイント順,1-タイプ順,0-ファイル順
+delete_under=以下のマウントがアンマウントされたときにディレクトリを削除する,3,削除しない
+line2=システム設定,11
+smbclient_path=smbclientのフルパス,3
+long_fstypes=ファイルシステムの長い名前を表示するか,1,1-はい,0-いいえ
+nmblookup_path=nmblookupのフルパス,3
+auto_file=NFS 自動マウントファイル,3

@@ -1,0 +1,3 @@
+name_ca=Gestor d’exportacions
+desc_ca=Exportacions NFS
+longdesc_ca=Edita les accions del fitxer NFS definit a /etc/exports.

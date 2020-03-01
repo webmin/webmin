@@ -1,0 +1,2 @@
+cache_time=Hours to cache updated and available packages for,3,Don't cache
+update_multiple=Update multiple packages,1,1-All at once,0-One by one

@@ -1,2 +1,2 @@
-resolve=Slå upp funna serveradresser,1,1-Ja,0-Nej
-scan_time=Väntetid för att titta efter svar,0
+resolve=SlÃ¥ upp funna serveradresser,1,1-Ja,0-Nej
+scan_time=VÃ¤ntetid fÃ¶r att titta efter svar,0

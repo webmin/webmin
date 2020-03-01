@@ -1,2 +1,2 @@
 desc_pl=DHCP - Serwer
-longdesc_pl=Zarz±dzaj udostêpnianiem sieci, podsieci, hostów i grup dla ISC DHCPD.
+longdesc_pl=ZarzÄ…dzaj udostÄ™pnianiem sieci, podsieci, hostÃ³w i grup dla ISC DHCPD.

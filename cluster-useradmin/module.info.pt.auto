@@ -1,0 +1,3 @@
+name_pt=Usuários de cluster
+desc_pt=Usuários e grupos de cluster
+longdesc_pt=Crie, atualize e exclua usuários e grupos em vários servidores. Diferentemente do NIS, cada servidor possui seus próprios arquivos de senha e grupo, que são atualizados remotamente por este módulo.

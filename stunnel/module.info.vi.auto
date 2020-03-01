@@ -1,0 +1,3 @@
+name_vi=STunnel
+longdesc_vi=Thiết lập đường hầm SSL để mã hóa các dịch vụ như POP3 và IMAP, sử dụng stunnel chạy từ inetd.
+desc_vi=Đường hầm SSL

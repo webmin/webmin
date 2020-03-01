@@ -1,0 +1,3 @@
+reply_force=Force use of minimum autoreply interval?,1,1-Yes,0-No
+forward_procmail=Create .forward file to run procmail?,1,1-Yes,0-No
+reply_min=Minimum time between autoreply messages,3,No limit,5,,minutes

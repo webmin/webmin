@@ -1,0 +1,4 @@
+refresh=Seconds between RAID status refreshes,3,Never
+line2=System configuration,11
+line1=Configurable options,11
+mdadm=MDADM configuration file,0

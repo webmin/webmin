@@ -1,0 +1,3 @@
+name_zh_TW=引導管理器
+longdesc_zh_TW=在啟動時從/etc/init.d 或/etc/rc.local.運行的安裝腳本/etc/rc.local.
+desc_zh_TW=開機和關機

@@ -1,0 +1,2 @@
+desc_ja=スケジュールされたWebmin機能
+longdesc_ja=Webmin Webサーバーによって定期的なスケジュールで呼び出されるWebminモジュール関数を定義する

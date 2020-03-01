@@ -1,1 +1,1 @@
-desc_fr=Modification de la langue et du thème
+desc_fr=Modification de la langue et du thÃ¨me

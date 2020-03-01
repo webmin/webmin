@@ -1,0 +1,3 @@
+longdesc_sv=Konfigurera tjänster på låg nivå som ska köras vid starttid och välj det initiala körnivån.
+name_sv=inittab
+desc_sv=Initial systemuppstart

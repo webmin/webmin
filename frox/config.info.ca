@@ -1,5 +1,5 @@
-frox=Camí complet del programa servidor Frox,0
-frox_conf=Camí complet del fitxer de configuració de Frox,0
+frox=CamÃ­ complet del programa servidor Frox,0
+frox_conf=CamÃ­ complet del fitxer de configuraciÃ³ de Frox,0
 start_cmd=Ordre per iniciar el servidor Frox,3,Executa el programa servidor
-stop_cmd=Ordre per aturar el servidor Frox,3,Mata el procés servidor
-apply_cmd=Ordre per aplicar la configuració,3,Envia el senyal HUP
+stop_cmd=Ordre per aturar el servidor Frox,3,Mata el procÃ©s servidor
+apply_cmd=Ordre per aplicar la configuraciÃ³,3,Envia el senyal HUP

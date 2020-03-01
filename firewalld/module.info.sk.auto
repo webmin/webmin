@@ -1,0 +1,2 @@
+desc_sk=FirewallD
+longdesc_sk=Konfigurujte bránu firewall systému Linux pomocou brány FirewallD úpravou povolených služieb a portov.

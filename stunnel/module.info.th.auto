@@ -1,0 +1,3 @@
+name_th=stunnel
+desc_th=SSL Tunnels
+longdesc_th=ตั้งค่า SSL tunnels เพื่อเข้ารหัสบริการเช่น POP3 และ IMAP โดยใช้ stunnel run จาก inetd

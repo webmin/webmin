@@ -33,7 +33,7 @@ if ($access{'lang'}) {
 			    [ 0, $text{'index_langset'} ] ])." ".
 		&ui_select("lang", $user->{'lang'},
 			   [ map { [ $_->{'lang'},
-				     $_->{'desc'}." (".uc($_->{'lang'}).")" ] }
+				     $_->{'desc'} ] }
 			         &list_languages() ]), undef, [ "valign=top","valign=top" ] );
 	}
 

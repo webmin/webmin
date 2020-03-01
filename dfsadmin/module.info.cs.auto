@@ -1,0 +1,3 @@
+name_cs=DFSadmin
+longdesc_cs=Upravit sdílené soubory podle definice v souboru /etc/dfs/dfstab.
+desc_cs=Akcie NFS

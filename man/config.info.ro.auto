@@ -1,0 +1,14 @@
+howto_dir=HOWTO document directories,3,None
+list_cmd=Command to display the manual page filepath,0
+custom_dir=Custom documentation directory,3,None
+doc_dir=Package documentation directory,3,None
+kde_dir=KDE documentation directory,3,None
+list_cmd_sect=Command to display the manual page filepath from a section,0
+line2=System configuration,11
+man_cmd_sect=Command to display manual page from a section,0
+man_dir=Manual pages directories (MANPATH),9,50,3,:
+kernel_dir=Kernel documentation directory,3,None
+search_cmd=Command to search pages,0
+custom_desc=Custom documentation name,3,Default
+man2html_path=Path to man2html,3,Do not use man2html
+man_cmd=Command to display manual page,0

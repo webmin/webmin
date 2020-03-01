@@ -1,0 +1,3 @@
+longdesc_ja=起動時に実行される低レベルサービスを構成し、初期ランレベルを選択します。
+name_ja=Inittab
+desc_ja=初期システム起動

@@ -1,0 +1,3 @@
+desc_el=Διακομιστής Dialin PPP
+longdesc_el=Ρυθμίστε έναν διακομιστή dialin χρησιμοποιώντας το mgetty και το PPP.
+name_el=PPP

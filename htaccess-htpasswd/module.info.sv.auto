@@ -1,0 +1,3 @@
+name_sv=HTAccess-filer
+desc_sv=Skyddade webbkataloger
+longdesc_sv=Skapa.htaccess- och htpasswd-filer för att skydda kataloger som är tillgängliga på webben.

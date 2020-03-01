@@ -1,0 +1,14 @@
+line2=System configuration,11
+desc_name=Show other object descriptions instead of names?,1,1-Yes,0-No
+display_max=Maximum number of subnets and hosts to display,3,Unlimited
+stop_cmd=Command to stop DHCP server,3,Kill process
+lease_refresh=Seconds between refreshing lease list,3,Never
+line1=Configurable options,11
+add_file=Add new subnets&#44; hosts and groups to file,3,Main configuration file
+start_cmd=Command to start DHCP server,3,Run server executable
+interfaces_type=Interfaces file type,4,redhat-Redhat,mandrake-Mandrake,suse-SuSE,debian-Debian,caldera-Caldera,gentoo-Gentoo,freebsd-FreeBSD,-Webmin
+group_name=Show group names as,1,1-<tt>domain&#45;name</tt> option,0-Name or member count,2-Description
+restart_cmd=Command to apply configuration,3,Kill and re-start
+show_mac=Show MAC addresses for hosts?,1,1-Yes,0-No
+show_ip=Show IP addresses for hosts?,1,1-Yes,0-No
+version=DHCP server version,3,Work out automatically

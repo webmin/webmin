@@ -1,1 +1,1 @@
-desc_pl=Czytaj e-maile u¿ytkowników
+desc_pl=Czytaj e-maile uÅ¼ytkownikÃ³w

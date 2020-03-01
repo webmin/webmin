@@ -1,0 +1,3 @@
+desc_fr=Serveur PPP Dialin
+longdesc_fr=Configurez un serveur de numérotation à l'aide de mgetty et PPP.
+name_fr=PPP

@@ -1,2 +1,2 @@
-default_mode=Standardformat för processlista,4,last-Senast valda,tree-Processträd,user-Sorterad efter användare,size-Sorterad efter storlek,cpu-Sorterad efter CPU,search-Sökformulär,run-Utför formulär
-ps_style=Format för utmatning från PS-kommandon,1,sysv-SYSV,linux-Linux,hpux-HPUX,freebsd-FreeBSD,macos-MacOS
+default_mode=Standardformat fÃ¶r processlista,4,last-Senast valda,tree-ProcesstrÃ¤d,user-Sorterad efter anvÃ¤ndare,size-Sorterad efter storlek,cpu-Sorterad efter CPU,search-SÃ¶kformulÃ¤r,run-UtfÃ¶r formulÃ¤r
+ps_style=Format fÃ¶r utmatning frÃ¥n PS-kommandon,1,sysv-SYSV,linux-Linux,hpux-HPUX,freebsd-FreeBSD,macos-MacOS

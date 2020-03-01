@@ -1,0 +1,2 @@
+spool_dir=Printer spool directory,3,None,60
+ro_printcap_file=Extra printers file not managed by Webmin,3,None

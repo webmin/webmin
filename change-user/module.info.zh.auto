@@ -1,0 +1,3 @@
+name_zh=变更用户
+desc_zh=更改语言和主题
+longdesc_zh=允许当前的Webmin用户更改其语言，主题以及可能的密码。

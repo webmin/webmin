@@ -1,0 +1,1 @@
+apt_mode=Command to use for APT installs,1,0-apt&#45;get,1-aptitude

@@ -1,0 +1,3 @@
+name_sk=BSDexports
+longdesc_sk=Upravte zdieľania súborov zo súboru /etc/exports FreeBSD.
+desc_sk=Vývoz NFS

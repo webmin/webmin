@@ -1,0 +1,3 @@
+desc_ar=صادرات NFS
+name_ar=SGIExports
+longdesc_ar=قم بتحرير مشاركات الملفات كما هو محدد في ملف Irix /etc/exports export /etc/exports 

@@ -1,0 +1,3 @@
+desc_tr=Procmail Posta Filtresi
+longdesc_tr=Gelen tüm e-postalar için geçerli olan genel /etc/procmailrc dosyasındaki tarifleri düzenleyin.
+name_tr=Procmail'in

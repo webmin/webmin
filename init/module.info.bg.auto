@@ -1,0 +1,3 @@
+name_bg=Boot Manager
+desc_bg=Стартиране и изключване
+longdesc_bg=Сценариите за настройка, които да се изпълняват по време на зареждане от /etc/init.d или /etc/rc.local.

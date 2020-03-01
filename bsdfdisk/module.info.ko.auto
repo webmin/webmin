@@ -1,0 +1,2 @@
+desc_ko=로컬 디스크의 파티션
+longdesc_ko=FreeBSD의 로컬 SCSI 및 IDE 디스크에서 파티션을 작성하고 편집하십시오.

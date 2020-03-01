@@ -1,0 +1,17 @@
+groupmode=Get node group information from,1,webmin-Webmin Servers Index module,oc-OCM Manager database,-Nowhere
+line2=File settings,11
+line0=Configurable options,11
+init_start=Start and stop Bacula using,1,1-Init scripts,0-<tt>bacula</tt> command
+wait=Default backup wait mode,1,1-Wait for completion,0-Run in background
+host=Bacula database server,3,This system
+driver=Database type,1,Pg-PostgreSQL,mysql-MySQL,SQLite-SQLite
+bls=Full path to <tt>bls</tt> command,0
+pass=Password to login with,0
+bacula_dir=Bacula configuration directory,0
+line1=Bacula database settings,11
+bextract=Full path to <tt>bextract</tt> command,0
+db=Database or file containing Bacula information,0
+btape=Full path to <tt>btape</tt> command,0
+showdirs=Always show remote directors?,1,1-Yes,0-No
+apply=Automatically apply director configuration?,1,1-Yes,0-No
+user=User to login to database as,0

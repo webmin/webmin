@@ -1,0 +1,3 @@
+longdesc_pt=Configure serviços de baixo nível para serem executados no momento da inicialização e selecione o nível de execução inicial.
+name_pt=Inittab
+desc_pt=Inicialização inicial do sistema

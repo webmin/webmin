@@ -1,2 +1,2 @@
-desc_ca=Usuaris i Grups de Clúster
-longdesc_ca=Crea, actualitza i suprimeix usuaris i grups a través de múltiples servidors. Contràriament a NIS, cada servidor té els seus propis fitxers de contrasenyes i grups, que s'actualitzen remotament amb aquest mòdul.
+desc_ca=Usuaris i Grups de ClÃºster
+longdesc_ca=Crea, actualitza i suprimeix usuaris i grups a travÃ©s de mÃºltiples servidors. ContrÃ riament a NIS, cada servidor tÃ© els seus propis fitxers de contrasenyes i grups, que s'actualitzen remotament amb aquest mÃ²dul.

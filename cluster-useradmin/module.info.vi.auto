@@ -1,0 +1,3 @@
+desc_vi=Nhóm người dùng và nhóm
+longdesc_vi=Tạo, cập nhật và xóa người dùng và nhóm trên nhiều máy chủ. Không giống như NIS, mỗi máy chủ có tệp mật khẩu và nhóm riêng được mô-đun này cập nhật từ xa.
+name_vi=Người dùng cụm

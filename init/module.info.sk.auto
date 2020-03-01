@@ -1,0 +1,3 @@
+name_sk=Boot Manager
+longdesc_sk=Inštalačné skripty, ktoré sa majú spúšťať v čase zavádzania z /etc/init.d alebo /etc/rc.local.
+desc_sk=Zavádzanie a vypínanie

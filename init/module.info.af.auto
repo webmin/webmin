@@ -1,0 +1,3 @@
+longdesc_af=Stel skrifte op wat uitgevoer moet word vanaf die opstart vanaf /etc/init.d of /etc/rc.local.
+desc_af=Opstart en afsluit
+name_af=Bootbestuurder

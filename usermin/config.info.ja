@@ -1,0 +1,4 @@
+host=ユーザ切り替え時の Usermin ホスト名,3,Webminと同じ
+cron_mode=更新時間表示,1,0-簡易インターフェイス,1-Cron 時間セレクタ
+usermin_dir=Usermin 設定ディレクトリ,0
+port=ユーザ切り替え時の Usermin ポート,3,自動判別

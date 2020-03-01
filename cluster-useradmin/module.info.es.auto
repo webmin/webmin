@@ -1,0 +1,2 @@
+name_es=Usuarios de clúster
+longdesc_es=Cree, actualice y elimine usuarios y grupos en varios servidores. A diferencia de NIS, cada servidor tiene sus propios archivos passwd y group que este módulo actualiza de forma remota.

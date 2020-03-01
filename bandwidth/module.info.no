@@ -1,1 +1,1 @@
-desc_no=Overv&#229;king av b&#229;ndbredde
+desc_no=Overvåking av båndbredde

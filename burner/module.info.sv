@@ -1,1 +1,1 @@
-desc_sv=CD Br&#228;nnare
+desc_sv=CD Brännare

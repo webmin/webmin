@@ -1,0 +1,2 @@
+rebuild_cmd=Command to rebuild all maps,3,Use makemap command
+delete_confirm=Prompt for confirmation before deleting?,1,1-Yes,0-No

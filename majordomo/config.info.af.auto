@@ -1,0 +1,12 @@
+line1=Configurable options,11
+perms=Permissions for majordomo files,1,1-User writable,0-User and group writable
+smrsh_program_dir=Directory containing sendmail safe programs,3,Anywhere
+program_dir=Directory containing majordomo programs,0
+line2=System configuration,11
+majordomo_cf=Full path to majordomo config file,0
+sort_mode=Sort mailing lists by,1,1-Name,0-Order created
+download=First Aid<br><br>If majordomo is not supported by your distribution or is not compatible with the installed version of perl: <a href="http://files1.directadmin.com/services/es_7.0_64/majordomo-1.94.5-patched.tar.gz">download a patched version here ...</a><br>&nbsp;,11
+aliases_file=Path to aliases file,10,postfix-Get from Postfix,-Get from Sendmail,Other file
+wrapper_path=Path to majordomo wrapper,3,In programs directory
+dynamic=Use random number for list alias?,1,1-Yes,0-No
+owner_file=Save list owner in <tt>list.owner</tt> instead of aliases file,1,1-Yes,0-No

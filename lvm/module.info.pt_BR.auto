@@ -1,0 +1,3 @@
+name_pt_BR=LVM
+longdesc_pt_BR=Configure grupos de volumes, volumes físicos e volumes lógicos para Linux LVM.
+desc_pt_BR=Gerenciamento de volume lógico

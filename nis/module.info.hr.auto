@@ -1,0 +1,3 @@
+name_hr=NIS
+longdesc_hr=Postavljanje sustava kao NIS klijenta, glavnog ili slave poslužitelja. Imajte na umu da NIS + nije podržan.
+desc_hr=Klijent i poslužitelj NIS-a

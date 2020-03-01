@@ -1,0 +1,3 @@
+name_zh_TW=初始化表
+longdesc_zh_TW=將低級服務配置為在引導時運行，然後選擇初始運行級別。
+desc_zh_TW=初始系統啟動

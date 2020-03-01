@@ -1,0 +1,3 @@
+name_zh=tcpwrappers
+longdesc_zh=配置TCP包装网络访问控制文件
+desc_zh=TCP包装器

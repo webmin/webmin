@@ -1,0 +1,3 @@
+desc_ko=SSL 터널
+longdesc_ko=inetd에서 실행되는 stunnel을 사용하여 POP3 및 IMAP와 같은 서비스를 암호화하도록 SSL 터널을 설정하십시오.
+name_ko=스터 넬

@@ -1,0 +1,2 @@
+desc_pl=Serwer iSCSI
+longdesc_pl=Udostępniaj urządzenia dyskowe w sieci za pomocą protokołu iSCSI z pakietem netbsd-iscsi.

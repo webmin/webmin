@@ -1,0 +1,3 @@
+desc_th=การหมุนไฟล์ล็อก
+longdesc_th=ตั้งค่าการหมุนอัตโนมัติของ Apache, Squid, Syslog และไฟล์บันทึกอื่น ๆ
+name_th=logrotate

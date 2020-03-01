@@ -1,1 +1,1 @@
-desc_es=Configuración de Red
+desc_es=ConfiguraciÃ³n de Red

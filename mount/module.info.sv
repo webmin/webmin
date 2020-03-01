@@ -1,1 +1,1 @@
-desc_sv=Filsystem för diskar och nätverk
+desc_sv=Filsystem fÃ¶r diskar och nÃ¤tverk

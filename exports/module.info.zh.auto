@@ -1,0 +1,3 @@
+name_zh=出口部经理
+longdesc_zh=编辑在/etc/exports.定义的NFS文件共享/etc/exports.
+desc_zh=NFS出口

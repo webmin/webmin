@@ -1,0 +1,2 @@
+file=HTPasswd format file to edit,0
+md5=Password encryption type,1,1-MD5,0-Crypt

@@ -1,0 +1,6 @@
+my_cnf=MySQL configuration file,0
+webmin_subs=Do Webmin variable substitution on backup destinations?,1,1-Yes,0-No
+max_text=Maximum display length for text fields,3,Unlimited
+mysqld=Path to mysqld command,3,Automatic
+nopwd=Use MYSQL_PWD variable to pass password?,1,0-Yes,1-No
+charset=Character set for MySQL data,15,charset

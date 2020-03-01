@@ -1,0 +1,3 @@
+name_lv=IPsec
+desc_lv=IPsec VPN konfigurācija
+longdesc_lv=Iestatiet klientu vai serveri IPsec VPN, izmantojot FreeSWAN.

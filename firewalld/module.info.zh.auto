@@ -1,0 +1,2 @@
+desc_zh=防火墙D
+longdesc_zh=通过编辑允许的服务和端口，使用FirewallD配置Linux防火墙。

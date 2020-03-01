@@ -1,0 +1,3 @@
+name_zh=对数旋转
+desc_zh=日志文件轮换
+longdesc_zh=设置Apache，Squid，Syslog和其他日志文件的自动轮换。

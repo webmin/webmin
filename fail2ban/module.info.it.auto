@@ -1,0 +1,2 @@
+desc_it=Rilevatore di intrusioni Fail2Ban
+longdesc_it=Fail2ban protegge il tuo sistema dagli attacchi di forza bruta rilevandoli e bloccando i loro IP di origine.

@@ -1,0 +1,2 @@
+port=Usermin port for switching users,3,Determine automatically
+host=Usermin hostname for switching users,3,Same as Webmin

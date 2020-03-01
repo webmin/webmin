@@ -1,0 +1,3 @@
+name_tr=İhracat müdürü
+longdesc_tr=/etc/exports. içinde tanımlanan NFS dosya paylaşımlarını düzenleyin /etc/exports.
+desc_tr=NFS Dışa Aktarma

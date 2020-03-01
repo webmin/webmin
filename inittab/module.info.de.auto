@@ -1,0 +1,3 @@
+name_de=Inittab
+desc_de=Erster Systemstart
+longdesc_de=Konfigurieren Sie Dienste auf niedriger Ebene, die zum Startzeitpunkt ausgeführt werden sollen, und wählen Sie den anfänglichen Runlevel aus.

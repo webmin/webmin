@@ -1,0 +1,17 @@
+edit_safe=Nivel de privilegio
+edit_unsafe=Restablecer a sin restricciones
+logins_title=Inicios de sesión recientes de Webmin
+edit_safe0=Irrestricto
+delete_eanonuser=Este usuario se está utilizando para acceder al módulo anónimo
+edit_safe1=Solo módulos seguros
+sessions_out=Desconectado
+sessions_state=Estado
+sessions_kill=Desconectar..
+index_screate=Crea un nuevo usuario seguro.
+sessions_actions=Comportamiento..
+udeletes_jerr=Error al agregar usuarios al grupo
+sessions_in=Conectado
+sessions_this=Este inicio de sesión
+save_eunixname=El nombre de usuario '$1' no es un usuario de Unix, por lo que no se puede usar en modo seguro
+sessions_logouts=Mostrar también sesiones cerradas.
+edit_title3=Crear usuario seguro de Webmin

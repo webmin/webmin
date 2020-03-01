@@ -1,0 +1,2 @@
+name_ja=ユーザーマネージャー
+longdesc_ja=/etc/passwd および/etc/group ファイルからUnixユーザーおよびグループを作成および編集します。

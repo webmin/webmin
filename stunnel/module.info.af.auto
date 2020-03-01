@@ -1,0 +1,3 @@
+name_af=STunnel
+desc_af=SSL-tonnels
+longdesc_af=Stel SSL-tonnels op om dienste soos POP3 en IMAP te enkripteer, met behulp van 'n tunnel wat vanaf inetd uitgevoer word.

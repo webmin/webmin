@@ -1,2 +1,2 @@
-exports_file=file exportálás,0
-restart_command=Parancs ami újraindítja a mountd-t és nfsd -t,0
+exports_file=file exportÃ¡lÃ¡s,0
+restart_command=Parancs ami ÃºjraindÃ­tja a mountd-t Ã©s nfsd -t,0

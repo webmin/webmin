@@ -1,0 +1,3 @@
+name_ca=BSDexports
+desc_ca=Exportacions NFS
+longdesc_ca=Edita les accions del fitxer des del fitxer FreeBSD /etc/exports.

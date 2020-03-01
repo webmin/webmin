@@ -1329,7 +1329,7 @@ if (&compare_version_numbers(&get_remote_mysql_version(), "4.1") < 0) {
 	}
 else {
 	local $d = &execute_sql($db, "show character set");
-	@rv = map { [ $_->[0], $_->[1] ] } @{$d->{'data'}};
+	@rv = map { [ $_->[0], "$_->[1] ($_->[0])" ] } @{$d->{'data'}};
 	}
 return sort { lc($a->[1]) cmp lc($b->[1]) } @rv;
 }

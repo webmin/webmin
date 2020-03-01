@@ -1,0 +1,2 @@
+desc_sv=iSCSI-server
+longdesc_sv=Dela diskenheter över nätverket med iSCSI-protokollet med paketet netbsd-iscsi.

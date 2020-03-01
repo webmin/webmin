@@ -1,0 +1,3 @@
+longdesc_uk=Редагуйте загальні файли, як визначено у файлі /etc/exports export /etc/exports Irix
+desc_uk=Експорт НФС
+name_uk=SGIExports

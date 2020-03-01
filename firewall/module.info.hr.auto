@@ -1,0 +1,3 @@
+desc_hr=Linux vatrozid
+name_hr=firewall
+longdesc_hr=Konfigurirajte Linux vatrozid koristeći iptables. Omogućuje uređivanje svih tablica, lanaca, pravila i opcija.

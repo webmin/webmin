@@ -5526,43 +5526,25 @@ if (!@main::list_languages_cache) {
 	local $_;
 	open(LANG, "$root_directory/lang_list.txt");
 	while(<LANG>) {
-		if (/^(\S+)\s+(.*)/) {
+		if (/^(.*=\w+)\s+(.*)/) {
 			my $l = { 'desc' => $2 };
-			foreach $o (split(/,/, $1)) {
+			foreach my $o (split(/,/, $1)) {
+				my ($key, $value);
 				if ($o =~ /^([^=]+)=(.*)$/) {
-					$l->{$1} = $2;
+					$key   = $1;
+					$value = $2;
+					$key   =~ s/^\s+|\s+$//g;
+					$value =~ s/^\s+|\s+$//g;
+					$l->{$key} = $value;
 					}
 				}
 			$l->{'index'} = scalar(@main::list_languages_cache);
 			push(@main::list_languages_cache, $l);
-			my $utf8lang = $l->{'lang'};
-			$utf8lang =~ s/\.(\S+)$//;
-			$utf8lang =~ s/_RU$//;
-			$utf8lang .= ".UTF-8";
-			if ($l->{'charset'} ne 'UTF-8' &&
-			    ($l->{'charset'} eq 'iso-8859-1' ||
-		             $l->{'charset'} eq 'iso-8859-2' ||
-			     -r "$root_directory/lang/$utf8lang")) {
-				# Add UTF-8 variant
-				my $ul = { %$l };
-				$ul->{'charset'} = 'UTF-8';
-				$ul->{'lang'} = $utf8lang;
-				$ul->{'index'} =
-					scalar(@main::list_languages_cache);
-				$l->{'utf8_variant'} = $ul;
-				push(@main::list_languages_cache, $ul);
-				}
 			}
 		}
 	close(LANG);
-	@main::list_languages_cache = sort { $a->{'desc'} cmp $b->{'desc'} }
+	@main::list_languages_cache = sort { $a->{'lang'} cmp $b->{'lang'} }
 				     @main::list_languages_cache;
-	}
-if ($current && $current =~ /\.UTF-8$/) {
-	# If the user is already using a UTF-8 language encoding, filter out
-	# languages that have a UTF-8 variant
-	return grep { $_->{'charset'} eq 'UTF-8' ||
-		      !$_->{'utf8_variant'} } @main::list_languages_cache;
 	}
 return @main::list_languages_cache;
 }

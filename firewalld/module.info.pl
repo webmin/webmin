@@ -1,2 +1,2 @@
 desc_pl=FirewallD
-longdesc_pl=Konfiguracja Firewalla Linuksa uøywaj±c FirewallD, poprzez edytowanie dozwolonych us≥ug i portÛw.
+longdesc_pl=Konfiguracja Firewalla Linuksa u≈ºywajƒÖc FirewallD, poprzez edytowanie dozwolonych us≈Çug i port√≥w.

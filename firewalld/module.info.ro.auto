@@ -1,0 +1,2 @@
+desc_ro=FirewallD
+longdesc_ro=Configurați un firewall Linux folosind FirewallD, prin editarea de servicii și porturi permise.

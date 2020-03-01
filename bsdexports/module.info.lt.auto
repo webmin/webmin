@@ -1,0 +1,3 @@
+desc_lt=NFS eksportas
+longdesc_lt=Redaguokite failų bendrinimus iš FreeBSD failo /etc/exports.
+name_lt=BSDeksportas

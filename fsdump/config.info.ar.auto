@@ -1,0 +1,2 @@
+error_email=Send backup email,1,0-Always,1-Only if error occurs
+simple_sched=Schedule selector format,1,1-Simple,0-Complex

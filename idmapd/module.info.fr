@@ -1,1 +1,1 @@
-desc_fr=d&#233;mon idmapd
+desc_fr=démon idmapd

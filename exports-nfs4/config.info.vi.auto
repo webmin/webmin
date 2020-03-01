@@ -1,0 +1,4 @@
+restart_command=Command to restart export server,0
+exports_file=Exported filesystems file,0
+line2=System configuration,11
+apply_cmd=Command to apply configuration,3,None

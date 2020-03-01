@@ -1,0 +1,3 @@
+desc_pt_BR=daemon idmapd
+name_pt_BR=Idmapd Daemon
+longdesc_pt_BR=Gerencie o daemon de mapeamento de ID do NFS.

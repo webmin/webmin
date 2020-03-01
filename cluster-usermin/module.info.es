@@ -1,1 +1,1 @@
-desc_es=Servidores de Clúster de Usermin
+desc_es=Servidores de ClÃºster de Usermin

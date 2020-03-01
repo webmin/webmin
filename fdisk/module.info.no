@@ -1,1 +1,1 @@
-desc_no=Partisjoner p&#229; lokale disker
+desc_no=Partisjoner på lokale disker

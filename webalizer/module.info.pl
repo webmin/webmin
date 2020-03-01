@@ -1,2 +1,2 @@
-desc_pl=Webalizer - Analiza logów
+desc_pl=Webalizer - Analiza logÃ³w
 longdesc_pl=Generuje raporty z serwera www, proxy i FTP

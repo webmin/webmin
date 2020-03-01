@@ -1,0 +1,6 @@
+membox=Edit group members using,1,1-Text box,0-User selector
+passwd_mindays=Number of days before password change is allowed,3,None
+selinux_con=SElinux context for new home directories,10,-None,*-System default
+dict_file=Files containing dictionary words,3,Use system defaults
+passwd_progmode=Pass username and password to program,1,1-As input,0-As parameters
+passwd_redesc=Human-readable description of regexp,3,Just use regexp

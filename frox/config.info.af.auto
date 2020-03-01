@@ -1,0 +1,5 @@
+frox=Full path to the Frox server program,0
+apply_cmd=Command to apply configuration,3,Send HUP signal
+start_cmd=Command to start Frox server,3,Just run server program
+frox_conf=Full path to the Frox configuration file,0
+stop_cmd=Command to stop Frox server,3,Just kill server process

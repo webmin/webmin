@@ -1,0 +1,3 @@
+incpackages=Include Perl modules from software packages?,1,1-Yes,0-No
+def_args=Default arguments to Makefile.PL,0
+incyum=Install Perl modules from software packages where available?,1,1-Yes,0-No

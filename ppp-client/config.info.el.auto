@@ -1,0 +1,3 @@
+wvdial=Full path to wvdial command,0
+wvdialconf=Full path to wvdialconf command,0
+file=Full path to wvdial.conf file,0

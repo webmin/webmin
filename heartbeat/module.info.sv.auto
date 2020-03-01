@@ -1,0 +1,3 @@
+name_sv=Hjärtslag
+desc_sv=Heartbeat Monitor
+longdesc_sv=Konfigurera Heartbeat-paketet för automatisk serverovergång i ett kluster.

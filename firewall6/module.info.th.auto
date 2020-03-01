@@ -1,0 +1,3 @@
+name_th=Firewall6
+desc_th=Linux IPv6 Firewall
+longdesc_th=กำหนดค่าไฟร์วอลล์ Linux โดยใช้ ip6tables ช่วยให้การแก้ไขตารางโซ่กฎและตัวเลือกทั้งหมด

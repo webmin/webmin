@@ -1,0 +1,9 @@
+line3=Apache variables,11
+defines_file=Environment file defining Apache variables,3,None
+defines_mods=Directories containing modules for HAVE_ variables,9,40,3,\t
+graceful_cmd=Command to re-read configuration,3,Same as apply command
+virt_name=Filename pattern for virtual servers,3,Default ($DOM.conf)
+defines_name=Environment variable name in above file,0
+auto_mods=Always detect Apache modules automatically?,1,1-Yes,0-No
+link_dir=Directory to create links in for new virtual servers,3,None
+allow_virtualmin=Allow editing of domains managed by Virtualmin?,1,1-Yes,0-No

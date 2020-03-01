@@ -1,10 +1,7 @@
-
-﻿line1=گزينه‌هاي قابل پيکربندي،11
 lease=تعداد ثانيه‌هاي قابل قبول براي تاخير بين زمان سيتم و زمان سخت افزار،0
 timeserver=کارساز زمان پيش‌گزيده،3،هيچ
 ntp_only=آيا فقط از NTPبراي همگام سازي زمان استفاده شود؟،1،1-بله،0-خير
 line2=پيکربندي سيستم،11
 seconds=قالب تنظيمات زمان سيستم،1،1-MMDDHHMMYYYY.SS،0-MMDDHHMMYY،2-YYYYMMDDHHMM.SS
-zone_style=روش پيکربندي زمان منطقه،4،linux-Linux،freebsd-FreeBSD،solaris-Solaris،-&lt;برروي اين OS&gt پشتيباني نمي‌شود;
+zone_style=روش پيکربندي زمان منطقه،4،linux-Linux،freebsd-FreeBSD،solaris-Solaris،-<برروي اين OS> پشتيباني نمي‌شود;
 hwclock_flags=خط فرمان نشانها براي، ساعت سخت افزاري،10،-هيچ،از رويsysconfig-From /etc/sysconfig/clock
-

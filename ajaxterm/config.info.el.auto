@@ -1,0 +1,2 @@
+autologin=Login mode,1,0-Prompt for username and password,1-Open root shell
+timeout=Idle timeout before closing connection,0,5,,seconds

@@ -1,0 +1,3 @@
+desc_zh=逻辑卷管理
+longdesc_zh=为Linux LVM配置卷组，物理卷和逻辑卷。
+name_zh=LVM

@@ -1,0 +1,3 @@
+name_th=DFSadmin
+longdesc_th=แก้ไขการแชร์ไฟล์ตามที่กำหนดไว้ในไฟล์ /etc/dfs/dfstab 
+desc_th=การแบ่งปัน NFS

@@ -1,0 +1,3 @@
+name_de=Boot Manager
+desc_de=Hochfahren und Herunterfahren
+longdesc_de=Richten Sie Skripts ein, die beim Booten von /etc/init.d oder /etc/rc.local.

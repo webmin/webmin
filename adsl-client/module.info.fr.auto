@@ -1,0 +1,3 @@
+name_fr=ADSL
+desc_fr=Client ADSL
+longdesc_fr=Configurez un client PPP avec le package RP-PPPoE.

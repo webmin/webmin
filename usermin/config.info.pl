@@ -1,4 +1,4 @@
 usermin_dir=Katalog konfiguracyjny Usermina,0
-cron_mode=Pokaø czas aktualizacji jako,1,0-Prosty interfejs,1-Cron time selector
-host=Nazwa hosta Usermina do prze≥±czania uøytkownikÛw,3,Taki sam jak w Webmin
-port=Port Usermina do prze≥±czania uøytkownikÛw,3,Okre∂lony automatycznie
+cron_mode=Poka≈º czas aktualizacji jako,1,0-Prosty interfejs,1-Cron time selector
+host=Nazwa hosta Usermina do prze≈ÇƒÖczania u≈ºytkownik√≥w,3,Taki sam jak w Webmin
+port=Port Usermina do prze≈ÇƒÖczania u≈ºytkownik√≥w,3,Okre≈õlony automatycznie

@@ -1,0 +1,3 @@
+longdesc_ro=Configurați tuneluri SSL pentru a cripta servicii precum POP3 și IMAP, utilizând stunnel rulat din inetd.
+name_ro=Stunnel
+desc_ro=Tuneluri SSL

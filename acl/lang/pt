@@ -1,27 +1,24 @@
 index_title=Utilizador do Webmin
 index_user=Utilizador
-index_modules=M&#243;dulos
+index_modules=Módulos
 index_create=Criar novo utilizador do Webmin
 index_return=lista de utilizadores
-
 edit_title=Editar Utilizador do Webmin
 edit_title2=Criar Utilizador do Webmin
 edit_rights=Direitos de acesso do utilizador do Webmin
 edit_user=Nome do Utilizador
 edit_pass=Palvra de Passe
 edit_same=Como no Unix
-edit_dont=N&#227;o alterar
+edit_dont=Não alterar
 edit_set=Configurar para
-edit_modules=M&#243;dulos
+edit_modules=Módulos
 edit_clone=Clone
-
 save_err=Erro ao guardar utilizador
-save_ename='$1' n&#227;o &#233; um nome de utilizador v&#225;lido
-save_edup=O nome de utilizador '$1' j&#225; est&#225; a ser usado
-save_edeny=voc&#234; n&#227;o pode negar acesso a si mesmo relativamente ao m&#243;dulo de utilizadores do Webmin
-save_eunix=O utilizador de Unix '$1' n&#227;o existe
-
-acl_title=Controlo de Acesso do M&#243;dulo
+save_ename='$1' não é um nome de utilizador válido
+save_edup=O nome de utilizador '$1' já está a ser usado
+save_edeny=você não pode negar acesso a si mesmo relativamente ao módulo de utilizadores do Webmin
+save_eunix=O utilizador de Unix '$1' não existe
+acl_title=Controlo de Acesso do Módulo
 acl_title2=Para $1 em $2
-acl_options=$1 op&#231;&#245;es de contolo de acesso
-acl_config=Pode editar configura&#231;&#245;es do m&#243;dulo?
+acl_options=$1 opções de contolo de acesso
+acl_config=Pode editar configurações do módulo?

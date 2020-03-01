@@ -1,1 +1,1 @@
-desc_sv=Anv‰ndare och grupper
+desc_sv=Anv√§ndare och grupper

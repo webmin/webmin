@@ -1,0 +1,3 @@
+name_vi=Quản lý xuất khẩu
+desc_vi=Xuất khẩu NFS
+longdesc_vi=Chỉnh sửa chia sẻ tệp như được định nghĩa trong tệp /etc/exports của HPUX.

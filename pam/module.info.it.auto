@@ -1,0 +1,3 @@
+desc_it=Autenticazione PAM
+name_it=PAM
+longdesc_it=Configurare i passaggi di autenticazione PAM utilizzati da servizi come telnet, POP e FTP.

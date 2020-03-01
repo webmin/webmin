@@ -1,0 +1,3 @@
+name_de=Exportmanager
+desc_de=NFS-Exporte
+longdesc_de=Bearbeiten Sie Dateifreigaben wie in der HPUX-Datei /etc/exports export /etc/exports definiert.

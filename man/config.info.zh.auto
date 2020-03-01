@@ -1,0 +1,7 @@
+kernel_dir=Kernel documentation directory,3,None
+line2=System configuration,11
+kde_dir=KDE documentation directory,3,None
+doc_dir=Package documentation directory,3,None
+custom_dir=Custom documentation directory,3,None
+howto_dir=HOWTO document directories,3,None
+custom_desc=Custom documentation name,3,Default

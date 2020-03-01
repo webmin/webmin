@@ -1,0 +1,3 @@
+name_de=Exportmanager
+longdesc_de=Bearbeiten Sie die in /etc/exports. definierten NFS v4-Dateifreigaben /etc/exports.
+desc_de=NFS v4-Exporte

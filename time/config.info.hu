@@ -1,8 +1,8 @@
-line1=Konfigur·lhatÛ be·llÌt·sok,11
-lease=ElfogadhatÛ m·sodperc k¸lˆnbsÈg a rendszeridı Ès a hardveridı kˆzˆtt,0
-timeserver=alapÈrtelmezett idıszerver,3,Nincs
-ntp_only=Csak NTP protokoll haszn·lata idıszinkroniz·l·shoz?,1,1-Igen,0-Nem
-line2=Rendszer konfigur·ciÛ
-seconds=Rendszeridı form·tuma,1,1-MMDDHHMMYYYY.SS,0-MMDDHHMMYY,2-YYYYMMDDHHMM.SS
-zone_style=IdızÛna be·llÌt·si elj·r·s:,4,linux-Linux,freebsd-FreeBSD,solaris-Solaris,-&lt;Nem t·mogatja ez az OS&gt;
-hwclock_flags=Parancs-sori z·szlÛ a hwclock -hoz,10,-nincs,sysconfig-A /etc/sysconfig/clock -rÛl
+line1=Konfigur√°lhat√≥ be√°ll√≠t√°sok,11
+lease=Elfogadhat√≥ m√°sodperc k√ºl√∂nbs√©g a rendszerid≈ë √©s a hardverid≈ë k√∂z√∂tt,0
+timeserver=alap√©rtelmezett id≈ëszerver,3,Nincs
+ntp_only=Csak NTP protokoll haszn√°lata id≈ëszinkroniz√°l√°shoz?,1,1-Igen,0-Nem
+line2=Rendszer konfigur√°ci√≥
+seconds=Rendszerid≈ë form√°tuma,1,1-MMDDHHMMYYYY.SS,0-MMDDHHMMYY,2-YYYYMMDDHHMM.SS
+zone_style=Id≈ëz√≥na be√°ll√≠t√°si elj√°r√°s:,4,linux-Linux,freebsd-FreeBSD,solaris-Solaris,-<Nem t√°mogatja ez az OS>
+hwclock_flags=Parancs-sori z√°szl√≥ a hwclock -hoz,10,-nincs,sysconfig-A /etc/sysconfig/clock -r√≥l

@@ -1,0 +1,3 @@
+longdesc_vi=Các tập lệnh thiết lập sẽ được chạy khi khởi động từ /etc/init.d hoặc /etc/rc.local.
+name_vi=Quản lý khởi động
+desc_vi=Khởi động và tắt máy

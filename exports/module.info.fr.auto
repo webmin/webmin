@@ -1,0 +1,3 @@
+name_fr=Chef d'Exportation
+longdesc_fr=Modifiez les partages de fichiers NFS définis dans /etc/exports.
+desc_fr=Exportations NFS

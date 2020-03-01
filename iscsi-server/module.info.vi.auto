@@ -1,0 +1,2 @@
+desc_vi=Máy chủ iSCSI
+longdesc_vi=Chia sẻ các thiết bị đĩa trên mạng bằng giao thức iSCSI với gói netbsd-iscsi.

@@ -1,0 +1,3 @@
+name_be=Дыспетчар экспарту
+desc_be=Экспарт NFS v4
+longdesc_be=Адрэдагуйце долю файлаў NFS v4, вызначаную ў /etc/exports.

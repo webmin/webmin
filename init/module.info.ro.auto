@@ -1,0 +1,3 @@
+longdesc_ro=Scripturile de configurare care vor fi rulate la momentul de pornire de la /etc/init.d sau /etc/rc.local.
+name_ro=Program de încărcare
+desc_ro=Pornire și oprire

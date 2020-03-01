@@ -1,0 +1,3 @@
+name_th=xinetd
+longdesc_th=แก้ไขเซิร์ฟเวอร์ที่จัดการโดย Xinetd ซึ่งเป็นสิ่งทดแทนสำหรับ inetd
+desc_th=บริการเครือข่าย
