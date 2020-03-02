@@ -522,6 +522,16 @@ sub translated_substitute
         }
     }
 
+    # If initial string contains `/$1/` then format translated accordingly
+    if ($original =~ /\/\$\d+\//) {
+        $translated =~ s/\/[ ]*\$(\d+)[ ]*\//\/\$$1\//g;
+    }    
+
+    # If initial string contains `($2 %)` then format translated accordingly
+    if ($original =~ /\(\$(\d+)[ ]+%\)/) {
+        $translated =~ s/\(\$(\d+)[ ]*%\)/(\$$1 %)/g;
+    }    
+
     return $translated;
 }
 
