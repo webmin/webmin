@@ -34,8 +34,7 @@ sub main
                 # 'action|a:s'                   => \$opt{'action'},        #################################
                 # 'key|k:s'                      => \$opt{'key'},           ######### coming soon! ##########
                 # 'value|d:s'                    => \$opt{'value'},         #################################
-               'overwrite|f!'                 => \$opt{'overwrite'},
-               'only-diff|od!'                 => \$opt{'only-diff'},
+               'only-diff|od!'                => \$opt{'only-diff'},
                'only-transcode|ot!'           => \$opt{'only-transcode'},
                'keys-exclude|ke:s'            => \$opt{'keys-exclude'},
                'keys-test|kt:s'               => \$opt{'keys-test'},
@@ -189,14 +188,12 @@ sub main
     open $data{'out'}, ">", "$opt{'log'}" or die RED, "Error creating log: $!\n", RESET, "\n";
 
     # Execute force transcode/translate
-    if ($opt{'overwrite'}) {
-        talk('overwrite-pre', \%opt, \%data);
-        if (prompt('next')) {
-            talk('overwrite-post', \%opt, \%data);
-            overwrite(\%opt, \%data);
-        }
-        exit;
+    talk('overwrite-pre', \%opt, \%data);
+    if (prompt('next')) {
+        go(\%opt, \%data);
     }
+    exit;
+
 
     # Log the output. End
     close $data{'out'};
@@ -579,7 +576,7 @@ sub translate
 }
 
 # Run transcoding or translation of module(s) for the very first time
-sub overwrite
+sub go
 {
     my ($opt, $data) = @_;
 
@@ -911,9 +908,6 @@ sub talk
 "\nwith human translated module strings, will be used instead of machine\ntranslations. The operation log will be written in "
           . YELLOW BOLD, $opt->{'log'}, RESET, " file.", RESET;
     }
-    if ($what eq 'overwrite-post') {
-        say BLUE, "Force re-translating all languages, for all modules ..", RESET;
-    }
 }
 
 sub trim
@@ -959,7 +953,7 @@ Test translation output for "mass_desc,trusted_warning" keys, in Russian and Ger
 
  — language-manager --overwrite -m=bind8 -t=ru,de -kt=mass_desc,trusted_warning -v=2
 
-=item --type <lang|ulang|help|config|module>, -w <lang|ulang|help|config|module>
+=item --type, -w <lang|ulang|help|config|module>
 
 Type of target to use for operations. Either <lang>, <ulang>, <help> directories or language info file, as <config> or <module>. Default is set to "lang" for Webmin and "ulang" for Usermin.
 
@@ -977,7 +971,7 @@ Comma separated list of affected language codes to operate on. Default is to ope
 
 =item --language-target-exclude, -te
 
-Comma separated list of language codes that should be excluded from processing.
+Comma separated list of target language codes that should be excluded from processing.
 
 =item --language-source, -s
 
@@ -985,15 +979,11 @@ Language to use as a base language. Default is set English.
 
 =item --language-source-exclude, -se
 
-Comma separated list of human translated language codes to exclude from adding to target file (always translate instead).
+Comma separated list of human translated language codes to exclude from adding to target file (always translate instead). It might be useful if human translated files are low quality or corrupted.
 
 =item --language-source-encoding, -e
 
-Encoding of human translated language files. Default is set to "utf-8". Available options are <utf-8>, <auto>, <map>. Option "auto" is used to detect encoding automatically, while option "map" is used to use old-time encoding map, where each language had different encoding, and nowadays, should not be used, as all language files are going to be encoded in "utf-8" already.
-
-=item --overwrite, -f
-
-Use this option only when you run transcoding or translation of module(s) for the very first time. This operation uses base language (default is English) and transcodes/translates all missing strings for given type.
+Encoding of human translated language files. Default is set to "utf-8". Available options are <utf-8>, <auto>, <map>. Option "auto" is used to detect encoding automatically, while option "map" is used to use old-time encoding map, where each language file had different encoding, and nowadays, should not be used, as all language files are going to be encoded in "utf-8" already. It's always best to avoid using this option.
 
 =item --only-diff, -o
 
@@ -1005,7 +995,7 @@ Use this option to simply convert old-time style module language files (where ea
 
 =item --keys-exclude, -ke
 
-Comma separated list of keys that shouldn't be translated and stored with original value, when run in overwrite mode
+Comma separated list of keys that shouldn't be translated and stored with original values
 
 =item --keys-test, -kt
 
