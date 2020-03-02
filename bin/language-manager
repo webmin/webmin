@@ -697,7 +697,7 @@ sub go
                 # Human translated strings must be added to original `$code` file, e.g. `de` after transcoding
                 if ($language_source_file && $language_source_file->{$key_} && !@{$keys_test}) {
                     talk_log(
-                          ("" . DARK . "   .. found and transcoded human translated ($code) value for \`$key\` key to" . RESET . ""),
+                          ("" . DARK . "   .. ($code) found and transcoded human translated value for \`$key\` key to" . RESET . ""),
                           $data, $opt->{'verbose'});
 
                     # We need to re-encode the string first, depending on which human translated file is being
@@ -732,7 +732,7 @@ sub go
                             ($rtl && $value =~ /\$(\d+)|</) ||
                             (any {$_ =~ /^$key$/} @{$keys_exclude})))
                     {
-                        talk_log(("" . DARK . "   .. stored original ($code) value for \`$key\` which is" . RESET . ""),
+                        talk_log(("" . DARK . "   .. ($code) stored original value for \`$key\` which is" . RESET . ""),
                                  $data, $opt->{'verbose'});
                         talk_log("      — " . CYAN . " $value" . RESET . "", $data, $opt->{'verbose'});
                         $language_auto{$key__} = $value;
@@ -740,7 +740,7 @@ sub go
                     }
 
                     # Add translated string
-                    talk_log(("" . BRIGHT_MAGENTA . "   .. translated ($code) value for \`$key\` to" . RESET . ""),
+                    talk_log(("" . BRIGHT_MAGENTA . "   .. ($code) translated value for \`$key\` to" . RESET . ""),
                              $data, $opt->{'verbose'});
 
                     # Prepare sent text
