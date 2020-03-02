@@ -568,6 +568,7 @@ sub translate
     else {
         say YELLOW, "Error: Stopped when translating `$target` language", RESET;
         print RED, "Error: Google Translator - $tc", RESET;
+        say CYAN, "Retrying automatically in 5 seconds ..", RESET;
         sleep 5;
         my $translated = translate($data, $opt, $target, $value);
         return $translated;
