@@ -465,7 +465,12 @@ sub translated_substitute
 {
     my ($translated, $original, $opt) = @_;
 
-    my $format = $opt->{'translate-format'};
+    my $format        = $opt->{'translate-format'};
+    my $remove_spaces = sub {
+        my ($str) = @_;
+        $str =~ s/[ ]+//g;
+        return $str;
+    };
 
     # Fix broken by translator HTML closing tags
     $translated =~ s/<\/[ ]*(\w+)>/<\/$1>/g;
@@ -525,15 +530,21 @@ sub translated_substitute
     # If initial string contains `/$1/` then format translated accordingly
     if ($original =~ /\/\$\d+\//) {
         $translated =~ s/\/[ ]*\$(\d+)[ ]*\//\/\$$1\//g;
-    }    
+    }
 
     # If initial string contains `($2 %)` then format translated accordingly
     if ($original =~ /\(\$(\d+)[ ]+%\)/) {
         $translated =~ s/\(\$(\d+)[ ]*%\)/(\$$1 %)/g;
-    }    
+    }
+
+    # Always fix properly included path
+    if ($original =~ /<tt>\/.*?<\/tt>/) {
+        $translated =~ s/(<tt>)(\/.*?)(<\/tt>)/$1@{[&$remove_spaces($2)]}$3/g;
+    }
 
     return $translated;
 }
+
 
 # Make actual translation using Google Translate API
 sub translate
