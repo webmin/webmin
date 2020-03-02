@@ -35,7 +35,7 @@ sub main
                 # 'key|k:s'                      => \$opt{'key'},           ######### coming soon! ##########
                 # 'value|d:s'                    => \$opt{'value'},         #################################
                'overwrite|f!'                 => \$opt{'overwrite'},
-               'no-translate|o!'              => \$opt{'no-translate'},
+               'only-diff|od!'                 => \$opt{'only-diff'},
                'only-transcode|ot!'           => \$opt{'only-transcode'},
                'keys-exclude|ke:s'            => \$opt{'keys-exclude'},
                'keys-test|kt:s'               => \$opt{'keys-test'},
@@ -82,8 +82,9 @@ sub main
     # Check if we can get Google Translate API token
     $data{'token'} = get_google_translate_token();
     if (!$data{'token'}) {
-        $opt{'no-translate'} = 1;
-        say YELLOW . "Translation will not be done as Google Translate API key is missing." . RESET;
+        $opt{'only-diff'} = 1;
+        $opt{'only-diff-auto'} = 1;
+        say YELLOW . "Translation will not be done as Google Translate API key is missing. Falling back to `only-diff` mode.." . RESET;
     }
 
     # Get list of languages from `lang_list.txt` file
@@ -690,7 +691,7 @@ sub overwrite
                 # Machine translated strings must be added to `$code.auto` file, e.g. `de.auto`
                 else {
 
-                    # Skip steps below, and only transcode existing values for all languages
+                    # Skip steps below, and only transcode existing values
                     if ($opt->{'only-transcode'}) {
                         next;
                     }
@@ -700,7 +701,7 @@ sub overwrite
                     # and simply need to find missing language strings on targeted file. Besides, `config.info`
                     # options are never translated (so far), just as languages that use right-to-left writing
                     if (!@{$keys_test} &&
-                        ($opt->{'no-translate'} ||
+                        ($opt->{'only-diff'} ||
                             $type eq 'config' ||
                             ($rtl && $value =~ /\$(\d+)|</) ||
                             (any {$_ =~ /^$key$/} @{$keys_exclude})))
@@ -780,7 +781,7 @@ sub overwrite
 
                 # Language suffix for automatics
                 my $language_suffix = 'auto';
-                if ($opt->{'no-translate'}) {
+                if ($opt->{'only-diff'} && !$opt->{'only-diff-auto'} ) {
                     $language_suffix = 'diff';
                 }
 
@@ -994,9 +995,9 @@ Encoding of human translated language files. Default is set to "utf-8". Availabl
 
 Use this option only when you run transcoding or translation of module(s) for the very first time. This operation uses base language (default is English) and transcodes/translates all missing strings for given type.
 
-=item --no-translate, -o
+=item --only-diff, -o
 
-Do not perform translation but still save currently untranslated strings to separate file, with extension ".auto". It's useful, when you need to extract missing, untranslated language stirings from the main language file.
+Use this option to extract a difference and find missing keys on target language (against source) and save currently untranslated strings to a separate file, with ".diff" extension.
 
 =item --only-transcode, -ot
 
