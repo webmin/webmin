@@ -12,9 +12,7 @@ main_readonly=(Modo sólo lectura)
 main_return=Regresar a $1
 main_unused=Módulos sin usar
 main_refreshmods=Recargar Módulos
-
 link_essl=El módulo Perl0 Net::SSLeay necesario para realizar las conexiones HTTPS no está instalado en su sistema.
-
 category_servers=Servidores
 category_hardware=Hardware
 category_system=Sistema
@@ -24,7 +22,6 @@ category_syslet=Syslets
 category_cluster=Cluster
 category_info=Información
 category_=Otros
-
 longcategory_servers=Módulos para configuración web, correo electrónico, FTP y otros servidores
 longcategory_hardware=Módulos para impresora, disco y otras configuraciones de hardware
 longcategory_system=Módulos para usuarios, sistemas de archivos, trabajos del cron y otras configuraciones del sistema
@@ -33,13 +30,11 @@ longcategory_net=Módulos para la configuración de la red y de servicios de red
 longcategory_cluster=Módulos que pueden administrar servidores múltiples desde una única interfaz
 longcategory_info=Módulos que despliegan información sobre el sistema
 longcategory_=Módulos que no están en ninguna otra categoría
-
 header_webmin=Índice de Webmin
 header_module=Indice de Módulo
 header_help=Ayuda..
 header_config=Configuración de Módulo
 header_servers=Servidores Webmin
-
 index=índice
 yes=Si
 no=No
@@ -70,14 +65,12 @@ euserdbacl=Error al buscar usuario ACL : $1
 euserdbacl2=Error al actualizar usuario ACL : $1
 egroupdbacl=Error al buscar grupo ACL : $1
 egroupdbacl2=Error al actualizar grupo ACL : $1
-
 chooser_title1=Seleccionar Archivo..
 chooser_title2=Seleccionar Directorio..
 chooser_dir=Directorio de $1
 chooser_ok=Ok
 chooser_date=Elegir Fecha
 chooser_eopen=Escucha fallida : $1
-
 users_title1=Seleccionar Usuarios..
 users_title2=Seleccionar Usuario..
 users_sel=Usuarios Seleccionados
@@ -85,7 +78,6 @@ users_all=Todos los Usuarios
 users_ok=Ok
 users_cancel=Cancelar
 users_clear=Limpiar
-
 groups_title1=Seleccionar Grupos..
 groups_title2=Seleccionar Grupo..
 groups_all=Todos los Grupos
@@ -93,7 +85,6 @@ groups_sel=Grupos Seleccionados
 groups_ok=Ok
 groups_cancel=Cancelar
 groups_clear=Limpiar
-
 modules_title1=Seleccionar Módulos..
 modules_title2=Seleccionar Módulo..
 modules_sel=Módulos Seleccionados
@@ -101,7 +92,6 @@ modules_all=Todos los Módulos
 modules_ok=Ok
 modules_cancel=Cancelar
 modules_clear=Limpiar
-
 config_ecannot=No está autorizado a configurar este módulo
 config_title=Configuración
 config_dir=Para el módulo $1
@@ -113,25 +103,21 @@ config_err=Fallo al salvar configuración
 config_nochange=No cambiar
 config_setto=Configurar a
 config_ewebmin=El parámetro tipo 14 sólo funciona en Webmin
-
 help_err=Fallo al mostrar ayuda
 help_epath=Ruta de ayuda no introducida o no válida
 help_efile=Fallo al leer archivo de ayuda $1
-help_eheader=Sección &lt;header&gt; no encontrada
+help_eheader=Sección <header> no encontrada
 help_einclude=Fallo al incluir $1
 help_eif=$1 falló : $2
 help_eexec=$1 falló : $2
-
 referer_title=Aviso de Seguridad
 referer_warn=<b>¡Aviso!</b> Webmin ha detectado que el programa $2 fue enlazado desde la URL $1, la cual parece estar fuera del servidor de Webmin. Esto puede ser un intento de engañar a su servidor para que ejecute un comando peligroso.
-referer_warn_unknown=<b>¡Advertencia!</b> Webmin ha detectado que el programa $1 fue enlazado desde una URL desconocida, la cual parece estar fuera del servidor de Webmin. Esto puede ser un intento de engañar a su servidor para que ejecute un comando peligroso.
+referer_warn_unknown=<b>¡Advertencia!</b> Webmin ha detectado que el programa $1 estaba vinculado desde una URL desconocida, que parece estar fuera del servidor de Webmin. Esto puede ser un intento de engañar al servidor para que ejecute un comando peligroso.
 referer_warn_unknown=<b>¡Advertencia!</b> Webmin ha detectado que el programa $1 estaba vinculado desde una URL desconocida, que parece estar fuera del servidor de Webmin. Esto puede ser un intento de engañar al servidor para que ejecute un comando peligroso.
 referer_fix1=Si este es un enlace legítimo, puede permitir enlaces desde esta URL de la siguiente manera :<ul><li>Inicie sesión en Webmin normalmente.<li>Ve al módulo <b>Configuración de Webmin</b>.<li>Haga clic en el icono de referencias de confianza.<li>Ingrese el nombre de host $1 dentro del campo <b>Sitios web de confianza</b> , y haz clic <b>Guardar</b>.</ul>
 referer_fix2=Alternativamente, puedes configurar Webmin para permitir este enlace desde la línea de comandos al : <ul><li>Iniciar sesión como <tt>root</tt>, y editar el archivo <tt>/etc/webmin/config</tt> .<li>Agrega la línea<tt>referers=$1</tt> al final, o si una línea <tt>referers</tt> ya existe agregar <tt>$1</tt> a esta.<li>Guarda el archivo.</ul>
 referer_fix3u=Asegúrese de que su navegador esté configurado para enviar información de fuentes desconocidas para que Webmin pueda verificarlo.
 referer_fix2u=Alternativamente, puede configurar Webmin para permitir enlaces de fuentes desconocidas mediante: <ul><li>Iniciar sesión como <tt>root</tt>, y modifica el archivo <tt>/etc/webmin/config</tt>.<li>Encuentra la linea <tt>referers_none=1</tt> y cambiala a <tt>referers_none=0</tt>.<li>Guarda el archivo.</ul><p>ADVERTENCIA: esto tiene el efecto secundario de abrir su sistema a ataques XSS, por lo que no se recomienda.
-
-
 session_header=Ingreso a Webmin
 session_mesg=Debe ingresar un nombre de usuario y contraseña para ingresar al servidor Webmin en $1.
 session_mesg2=Debe ingresar un nombre de usuario y contraseña para ingresar.
@@ -144,13 +130,11 @@ session_failed=Fallo el ingreso.  Por favor intente nuevamente.
 session_logout=Salida del sistema exitosa.  Use el formulario de abajo para ingresar nuevamente.
 session_timed_out=Tiempo de espera agotado después de $1 minutos de inactividad.
 session_save=¿Recordar el usuario en forma permanente?
-
 pam_header=Acceso a Webmin
 pam_mesg=Debe responder a la pregunta de abajo para acceder al servidor Webmin en $1.
 pam_mesg2=Debe responder a la pregunta de abajo para acceder.
 pam_login=Continuar
 pam_restart=Reiniciar
-
 acl_root=Directorio raíz para seleccionador de archivo
 acl_otherdirs=Otros directorios visibles en el selector de archivos
 acl_nodot=¿Ocultar archivos con puntos en el selector de archivos?
@@ -183,7 +167,6 @@ acl_negative=¿Conceder nuevos permisos de módulo al usuario?
 acl_fileunix=Examinar archivos como usuario de Unix
 acl_sameunix=Igual que el inicio de sesión de Webmin
 acl_webminsearch=¿Mostrar el campo de búsqueda de Webmin?
-
 month_1=Enero
 month_2=Febrero
 month_3=Marzo
@@ -196,7 +179,6 @@ month_9=Setiembre
 month_10=Octubre
 month_11=Noviembre
 month_12=Diciembre
-
 day_0=Domingo
 day_1=Lunes
 day_2=Martes
@@ -204,7 +186,6 @@ day_3=Miércoles
 day_4=Jueves
 day_5=Viernes
 day_6=Sábado
-
 smonth_1=Ene
 smonth_2=Feb
 smonth_3=Mar
@@ -217,7 +198,6 @@ smonth_9=Sep
 smonth_10=Oct
 smonth_11=Nov
 smonth_12=Dic
-
 sday_0=Do
 sday_1=Lu
 sday_2=Ma
@@ -225,15 +205,12 @@ sday_3=Mi
 sday_4=Ju
 sday_5=Vi
 sday_6=Sa
-
 emodule=Acceso denegado : El usuario $1 no está autorizado a usar el módulo $2
 emodulecheck=El módulo $1 no está disponible en su sistema
 elock_tries2=Error al bloquear el archivo $1 después de $2 minutos. El último error fue : $3
-
 skill_high=Experto
 skill_medium=Intermedio
 skill_low=Novato
-
 feedback_title=Opinión de Webmin
 feedback_desc=Este formulario le permite reportar errores o realizar sugerencias a los desarrolladores de Webmin acerca de problemas o funcionalidades inexistentes que haya encontrado. Cuando presione el botón Enviar, los detalles ingresados en el formulario serán enviados por correo electrónico a $1.
 feedback_desc2=Esta opinión será enviada al desarrollador de Webmin, no a su administrador de sistema, ISP o compañía de hosting. Por favor escriba su opinión en inglés, aún si está corriendo actualmente Webmin en otro idioma.
@@ -262,18 +239,15 @@ feedback_to=Enviar opinión a dirección
 feedback_enoto=No se ingresaron direcciones hacia las cuales enviar la opinión
 feedback_ecannot=No está autorizado a enviar opiniones
 feedback_ecannot2=No está autorizado a enviar opiniones que contengan archivos de configuración
-
 progress_size2=Descargando $1 ($2) ..
 progress_nosize=Descargando $1 ..
 progress_datan=Recibidos $1 ($2 %)
 progress_data2n=Recibidos $1
 progress_done=.. Descarga completa.
 progress_incache=Found $1 in cache ..
-
 readparse_cdheader=Encabezamiento de Contenido-Disposición no introducido
 readparse_enc=Se esperaba codificación formulario-dato, pero se obtuvo codificación normal
 readparse_max=Los datos excedieron el tamaño máximo de $1 bytes
-
 password_expired=Su contraseña ha expirado, y debe elegir una nueva.
 password_temp=Debe seleccionar una nueva contraseña para reemplazar su inicio de sesión temporal.
 password_header=Elija Nueva Contraseña
@@ -292,7 +266,6 @@ password_enew2=Sus nuevas contraseñas no casan
 password_epam=Errir PAM : $1
 password_emodpam=El módulo perl Authen::PAM necesario para cambiar contraseñas ¡no está instalado!
 password_enewpass=No se permite nueva contraseña : $1
-
 ui_mandatory=Este campo es obligatorio
 ui_checkmandatory=No se seleccionó nada
 ui_errors=Se encontraron múltiples errores :
@@ -307,9 +280,7 @@ ui_etime=Hora no válida
 ui_paging=Mostrando filas $1 a $2 de $3
 ui_rowlabel=$2 en fila $1 :
 ui_filterbox=Escribe para filtrar..
-
 header_statusmsg=$1 apuntado en $2 $3 en $4 ($5)
-
 uptracker_title=Subiendo Archivo
 uptracker_file=Nombre del archivo
 uptracker_size=Talla
@@ -317,7 +288,6 @@ uptracker_pc=Progreso
 uptracker_eid=Sin ID de carga especificada
 uptracker_eid2=¡La ID de carga no es válida!
 uptracker_of=$1 de $2
-
 wsearch_title=Buscar $1
 wsearch_modt=Módulo
 wsearch_mtitle=Nombre del módulo
@@ -345,7 +315,6 @@ wsearch_hmod=Módulo
 wsearch_moddir=Ruta URL /$1/
 wsearch_searching=Buscando $1 . .
 wsearch_found=encontrados $1 resultados :
-
 sql_emysqldriver=Error al cargar el controlador MySQL DBI
 sql_emysqlconnect=Error al conectarse a la base de datos MySQL : $1
 sql_epostgresqldriver=Error al cargar el controlador DBI PostgreSQL
@@ -354,7 +323,6 @@ sql_eldapdriver=Error al cargar el módulo perl LDAP
 sql_eldapconnect=Error al conectarse al servidor LDAP $1
 sql_eldaptls=Error al iniciar el cifrado TLS para LDAP : $1
 sql_eldaplogin=Error al iniciar sesión en el servidor LDAP como : $1 : $2
-
 log_email_subject=Acción de Webmin en $1
 log_email_global=Acción global de Webmin
 log_email_desc=Este correo electrónico fue enviado por Webmin en respuesta a una acción del usuario.
@@ -366,7 +334,6 @@ log_email_user=Realizado por el usuario: $1
 log_email_script=Webmin script: $1
 log_email_session=Session ID: $1
 log_email_remote=Dirección del cliente $1
-
 nice_size_PB=PB
 nice_size_PiB=PiB
 nice_size_TB=TB
@@ -378,5 +345,3 @@ nice_size_MiB=MiB
 nice_size_kB=kB
 nice_size_kiB=kiB
 nice_size_b=bytes
-
-__norefs=1

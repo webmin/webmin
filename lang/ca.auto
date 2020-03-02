@@ -1,0 +1,15 @@
+nice_size_GiB=GiB
+progress_data2n=S'ha rebut $1
+progress_size2=Baixant $1 ($2) ..
+nice_size_b=bytes
+nice_size_GB=GB
+nice_size_MB=MB
+nice_size_TiB=TiB
+nice_size_kB=kB
+nice_size_PB=PB
+nice_size_PiB=PiB
+nice_size_kiB=kiB
+progress_datan=S'ha rebut $1 ($2 %)
+nice_size_MiB=MiB
+nice_size_TB=TB
+config_emodule=El mòdul no existeix

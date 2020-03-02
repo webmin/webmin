@@ -1,0 +1,13 @@
+nice_size_b=byte
+nice_size_GB=GB
+nice_size_GiB=GiB
+nice_size_PiB=PiB
+nice_size_kiB=KiB
+config_emodule=Modulen eksisterer ikke
+nice_size_MiB=MiB
+nice_size_TB=TB
+nice_size_MB=MB
+fail=mislyktes
+nice_size_TiB=TiB
+nice_size_kB=kB
+nice_size_PB=PB
