@@ -132,7 +132,7 @@ sub main
     if ($modules) {
         my @ml = split(',', $modules);
         foreach my $module (@ml) {
-            my $exists = source_data(\%data, \%opt, $module);
+            my ($exists) = source_data(\%data, \%opt, $module);
             if ($exists) {
                 push(@modules, $module);
             }
@@ -398,7 +398,8 @@ sub source_data
     $target       = "$data->{'path'}/$module";
     $source_file  = "$target/$type/$language_source";
     $source_file_ = "$target/$language_source";
-    $exists       = (-r $source_file && !-l $source_file) || (-r $source_file_ && !-l $source_file_) || 0;
+    $exists =
+      (-d $target && !-l $target && ((-r $source_file && !-l $source_file) || (-r $source_file_ && !-l $source_file_))) || 0;
 
     if (-r $source_file && !-l $source_file) {
         $target .= "/$type";
@@ -906,17 +907,20 @@ sub talk
 {
     my ($what, $opt, $data) = @_;
     if ($what eq 'affected') {
-        my $affected = "@{$data->{'modules'}}";
+        my $affected       = "@{$data->{'modules'}}";
+        my $affected_count = scalar(split(' ', $affected));
         $affected =~ s/\b(lang)\b/(lang)/;
         if ($affected) {
-            say GREEN, "Affected modules: ", RESET, YELLOW BOLD, $affected, RESET;
+            say GREEN, "Affected modules " . RESET, DARK . "[$affected_count]" . RESET . ": ", YELLOW BOLD, $affected, RESET;
             exit if (!prompt('next'));
         } else {
             say RED, "Error: No modules found to operate on", RESET;
             exit;
         }
-        say GREEN, "Affected languages: ", RESET, YELLOW BOLD,
-          "" . ("@{$opt->{'language-target'}}" || "@{$data->{'languages_source_list_codes'}}") . "", RESET;
+        my $languages       = ("@{$opt->{'language-target'}}" || "@{$data->{'languages_source_list_codes'}}");
+        my $languages_count = scalar(split(' ', $languages));
+        say GREEN, "Affected languages" . RESET, DARK . " [$languages_count]" . RESET . ": ", YELLOW BOLD,
+          "" . $languages . "", RESET;
         exit if (!prompt('next'));
     }
     if ($what eq 'overwrite-pre') {
