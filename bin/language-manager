@@ -34,10 +34,11 @@ sub main
                 # 'action|a:s'                   => \$opt{'action'},        #################################
                 # 'key|k:s'                      => \$opt{'key'},           ######### coming soon! ##########
                 # 'value|d:s'                    => \$opt{'value'},         #################################
+               'overwrite|f!'                 => \$opt{'overwrite'},
                'no-translate|o!'              => \$opt{'no-translate'},
+               'only-transcode|ot!'           => \$opt{'only-transcode'},
                'keys-exclude|ke:s'            => \$opt{'keys-exclude'},
                'keys-test|kt:s'               => \$opt{'keys-test'},
-               'overwrite|f!'                 => \$opt{'overwrite'},
                'log|l:s'                      => \$opt{'log'},
                'verbose|v:i'                  => \$opt{'verbose'});
     my %data;
@@ -689,6 +690,11 @@ sub overwrite
                 # Machine translated strings must be added to `$code.auto` file, e.g. `de.auto`
                 else {
 
+                    # Skip steps below, and only transcode existing values for all languages
+                    if ($opt->{'only-transcode'}) {
+                        next;
+                    }
+
                     # Add original value, from source language, to `$code.auto` file without
                     # performing actual translation. It's useful when you want to translate it manually
                     # and simply need to find missing language strings on targeted file. Besides, `config.info`
@@ -764,15 +770,22 @@ sub overwrite
                     $mpath);
             }
 
-            # Prepend file name for `config.info` or `module.info` modes
-            if (defined($opt->{'type'}) && $opt->{'type'} =~ /config|module/) {
-                $code = "$opt->{'type'}.info.$code";
-            }
-
             # Write transcoded/translated file
             if (!@{$keys_test}) {
+                
+                # Prepend file name for `config.info` or `module.info` modes
+                if (defined($opt->{'type'}) && $opt->{'type'} =~ /config|module/) {
+                    $code = "$opt->{'type'}.info.$code";
+                }
+
+                # Language suffix for automatics
+                my $language_suffix = 'auto';
+                if ($opt->{'no-translate'}) {
+                    $language_suffix = 'diff';
+                }
+
                 write_file($mpath . "/$code",      \%language);
-                write_file($mpath . "/$code.auto", \%language_auto);
+                write_file($mpath . "/$code.$language_suffix", \%language_auto) if (!$opt->{'only-transcode'});
             }
         }
 
@@ -933,9 +946,13 @@ Give this help list.
 
 Examples of usage:
 
-Translate to all available languages, using old-time encoding map, in module BIND, using as type "lang" directory, discarding human translations for Hebrew, keeping original value for key "mass_desc" (not translating).
+Translate to all available languages, using old-time encoding map, in module BIND, using as type "lang" directory, discarding human translations for Hebrew, keeping original value (not translating) for key "mass_desc".
  
  — language-manager --overwrite -e=map -m=bind8 -w=lang -te=he -ke=mass_desc -v=2
+
+Only transcode language files from old-time style (each language file in different encoding) to new style (all language files in "utf-8" encoding) in Apache module, and exit. No translations will be made, and no ".auto" files will be created.
+
+ — language-manager --overwrite -e=map -m=apache --only-transcode
 
 Test translation output for "mass_desc,trusted_warning" keys, in Russian and German, in BIND module
 
@@ -973,9 +990,17 @@ Comma separated list of human translated language codes to exclude from adding t
 
 Encoding of human translated language files. Default is set to "utf-8". Available options are <utf-8>, <auto>, <map>. Option "auto" is used to detect encoding automatically, while option "map" is used to use old-time encoding map, where each language had different encoding, and nowadays, should not be used, as all language files are going to be encoded in "utf-8" already.
 
+=item --overwrite, -f
+
+Use this option only when you run transcoding or translation of module(s) for the very first time. This operation uses base language (default is English) and transcodes/translates all missing strings for given type.
+
 =item --no-translate, -o
 
 Do not perform translation but still save currently untranslated strings to separate file, with extension ".auto". It's useful, when you need to extract missing, untranslated language stirings from the main language file.
+
+=item --only-transcode, -ot
+
+Use this option to simply convert old-time style module language files (where each language had different encoding) into new format, with all files encoded in "utf-8". Old files, such as "ja_JP.euc", "ko_KR.euc", "zh_TW.Big5" and "ru_RU" will be automatically deleted.
 
 =item --keys-exclude, -ke
 
@@ -985,9 +1010,6 @@ Comma separated list of keys that shouldn't be translated and stored with origin
 
 Comma separated list of keys to test translation engine on; in this mode, translated strings are not saved
 
-=item --overwrite, -f
-
-Use this only when you run transcoding or translation of module(s) for the very first time. This operation uses base language (default is English) and transcodes/translates all missing strings for given type.
 
 =item --log, -l
 
