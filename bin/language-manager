@@ -646,6 +646,7 @@ sub go
 
                 # Don't add special keys
                 next if ($key eq '__norefs');
+                next if ($key =~ /^\#/);
 
                 # If set to test certain keys only, skip all other
                 if (@{$keys_test} && (!any {$_ =~ /^$key$/} @{$keys_test})) {
