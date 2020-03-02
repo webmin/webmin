@@ -1,0 +1,17 @@
+mod_proxy_seconds=秒
+mod_log_config_ifset=設定されている場合
+mod_ssl_ecerton=SSLが有効になっている場合、証明書ファイルを選択する必要があります
+htaccess_eabsolute=オプションファイルディレクトリは絶対パスである必要があります
+core_eduplisten=リスンアドレス$1が2回リストされています
+htaccess_err=オプションファイルを作成できませんでした
+mod_ssl_ecafile=認証局キーファイルがありません
+vserv_virtualmin=このApache仮想ホストはVirtualminサーバー<tt>$1</tt>に属しているため、アドレス、ポート、ベースディレクトリ、およびホスト名はここで変更できません。
+mod_ssl_cafile=認証局ファイル
+enewline=値に無効な文字があります
+dir_proxyall=すべてのプロキシ要求
+core_protoany=<任意>
+cvirt_eroot4=Apache構成でユーザーが定義されていません
+index_return2=グローバル構成
+core_portname=プロトコル
+htaccess_eempty=オプションファイルディレクトリが入力されていません
+core_minor=マイナーバージョンのみ
