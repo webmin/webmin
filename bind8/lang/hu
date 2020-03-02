@@ -1,6 +1,5 @@
 index_title=BIND DNS Server
 index_enamed=The BIND DNS server $1 could not be found on your system. Maybe it is not installed, or your <a href='$2'>BIND module configuration</a> is incorrect.
-index_eversion=The server executable $1 does not appear to be BIND 8 or 9. Maybe your should use the <a href='$2'>BIND 4 module</a> instead. Output from the command $3 was : $4
 index_eempty=The primary configuration file for BIND $1 does not exist, or is not valid. Create it?
 index_local=Setup nameserver for internal non-internet use only
 index_download=Setup as an internet name server, and download root server information
@@ -59,7 +58,6 @@ index_massupdate=Update Records in Selected
 index_masscreate=Add Record to Selected
 index_massrdelete=Delete Records in Selected
 index_bind=BIND
-
 master_title=Edit Master Zone
 master_ecannot=You are not allowed to edit this zone
 master_eviewcannot=You are not allowed to create a zone in that view
@@ -137,7 +135,6 @@ master_defttl=Default time-to-live for records
 master_edefttl='$1' is not a valid default time-to-live for records
 master_esoagone=No SOA record found!
 master_einclude=Additional template file does not exist
-
 delete_title=Delete Zone
 delete_mesg=Are you sure you want to delete the zone $1 ? All records and the zone file will be deleted.
 delete_mesg2=Are you sure you want to delete the root zone ? Your DNS server may no longer be able to lookup addresses on the internet.
@@ -147,7 +144,6 @@ delete_fwd=Delete forward records in other zones?
 delete_onslave=Also delete from slave servers?
 delete_errslave=Master zone deleted OK, but the following errors occurred on slaves : $1
 delete_ezone=Zone was not found on slave server
-
 mcreate_title=Create Master Zone
 mcreate_ecannot=You cannot create master zones
 mcreate_opts=New master zone options
@@ -161,7 +157,6 @@ mcreate_auto=Automatic
 mcreate_err=Failed to create master zone
 mcreate_ednssecsize=Failed to compute key size : $1
 mcreate_ednssec=Record creation succeeded, but DNSSEC failed : $1
-
 slave_title=Edit Slave Zone
 stub_title=Edit Stub Zone
 slave_ecannot=You are not allowed to edit this zone
@@ -193,7 +188,6 @@ slave_applymsg2=Click this button to force a re-transfer of the zone from the ma
 slave_last=Last transferred : $1
 slave_never=Never
 slave_xfer=Test Zone Transfer
-
 screate_title1=Create Slave Zone
 screate_title2=Create Stub Zone
 screate_ecannot1=You are not allowed to create slave zones
@@ -206,7 +200,6 @@ screate_rev=Reverse (Addresses to Names)
 screate_dom=Domain name / Network
 screate_err1=Failed to create slave zone
 screate_err2=Failed to create stub zone
-
 recs_ecannot=You are not allowed to edit records in this zone
 recs_ecannottype=You are not allowed to edit records of this type
 recs_title=$1 Records
@@ -222,7 +215,6 @@ recs_find=Show records matching:
 recs_search=Search
 recs_drev=Delete reverses too?
 recs_none=The domain does not have any $1 records yet.
-
 edit_title=Edit $1
 edit_header=In $1
 edit_edit=Edit $1 Record
@@ -284,7 +276,6 @@ edit_espfip6='$1' is not a valid IPv6 address or IPv6/prefix to allow sending fr
 edit_espfinclude='$1' is not a valid additional domain from which mail is sent
 edit_espfredirect='$1' is not a valid alternate domain name
 edit_espfexp='$1' is a valid record name for a rejection message
-
 text_title=Edit Records File
 text_title2=View Records File
 text_desc3=This form allows you to manually edit the DNS records file $1. No syntax checking will be done by Webmin.
@@ -293,7 +284,6 @@ text_undo=Undo
 text_ecannot=You are not allowed to edit record files
 text_none=However the file is currently empty, probably because the zone has not yet been transferred from the master server.
 text_soa=Increase serial number automatically
-
 restart_err=Failed to apply changes
 restart_ecannot=You are not allowed to restart BIND
 restart_epidfile=Could not find BIND PID in $1
@@ -302,12 +292,10 @@ restart_erunning2=BIND does not appear to be running on the slave server $1
 restart_endc=NDC command failed : $1
 restart_ecmd=Restart command failed : $1
 restart_eversion=Slave server $1 is not running Webmin version $2 or above.
-
 start_ecannot=You are not allowed to start BIND
 start_error=Failed to start BIND : $1
 stop_epid=BIND is not running
 stop_ecannot=You are not allowed to stop BIND
-
 fwd_title=Edit Forward Zone
 fwd_ecannot=You are not allowed to edit this zone
 fwd_opts=Zone Options
@@ -316,14 +304,12 @@ fwd_forward=Try other servers?
 fwd_check=Check names?
 fwd_err=Failed to save options
 fwd_delmsg=Click this button to delete this zone from your DNS server. Records in it will then be looked up using the normal resolution process.
-
 delegation_title=Edit Delegation Zone
 delegation_ecannot=You are not allowed to edit this zone
 delegation_opts=Zone Options
 delegation_err=Failed to save options
 delegation_noopts=Delegation zones do not have any configurable options.
 delegation_delmsg=Click this button to delete this zone from your DNS server. Record types in it other than NS will then be recognized by BIND.
-
 fcreate_title=Create Forward Zone
 fcreate_ecannot=You are not allowed to create forward zones
 fcreate_opts=New forward zone options
@@ -333,12 +319,10 @@ fcreate_rev=Reverse (Addresses to Names)
 fcreate_dom=Domain name / Network
 fcreate_masters=Master servers
 fcreate_err=Failed to create forward zone
-
 dcreate_title=Create Delegation-Only Zone
 dcreate_ecannot=You are not allowed to create delegation zones
 dcreate_opts=New delegation zone options
 dcreate_err=Failed to create delegation zone
-
 create_enet='$1' is not a valid network
 create_edom='$1' is not a valid domain name
 create_edom2='$1' must be a domain, not a network
@@ -348,11 +332,9 @@ create_efile3=Failed to create '$1' : $2
 create_efile4=File $1 already exists
 create_emaster='$1' is not a valid master server address
 create_enone=You must enter at least one master server
-
 boot_err=Download failed
 boot_egzip=The root zone file is compressed, but the <tt>gzip</tt> command is not installed on your system!
 boot_egzip2=Uncompression of root zone file failed : $1
-
 type_A=Address
 type_AAAA=IPv6 Address
 type_NS=Name Server
@@ -368,7 +350,6 @@ type_LOC=Location
 type_SRV=Service Address
 type_ALL=All Record Types
 type_KEY=Public Key
-
 edit_A=Address
 edit_AAAA=IPv6 Address
 edit_NS=Name Server
@@ -383,7 +364,6 @@ edit_PTR=Reverse Address
 edit_LOC=Location
 edit_SRV=Service Address
 edit_KEY=Public Key
-
 recs_defttl=Default TTL
 recs_A=Address
 recs_AAAA=IPv6 Address
@@ -401,7 +381,6 @@ recs_SRV=Service Address
 recs_ALL=All
 recs_KEY=Public Key
 recs_delete=Delete Selected
-
 value_A1=Address
 value_AAAA1=IPv6 Address
 value_NS1=Name Server
@@ -446,7 +425,6 @@ value_spfredirect=Use SPF record from alternate domain
 value_spfnoredirect=Use this domain's record
 value_spfexp=TXT record for rejection reason
 value_spfnoexp=None
-
 warn=Warn
 fail=Fail
 ignore=Ignore
@@ -460,7 +438,6 @@ listed=Listed ..
 eip='$1' is not a valid IP address
 eport='$1' is not a valid port number
 eipacl='$1' is not a valid IP address or ACL name
-
 acl_zones=Domains this user can edit
 acl_zall=All zones
 acl_zsel=Selected zones..
@@ -493,7 +470,7 @@ acl_vall=All views
 acl_vsel=Selected views..
 acl_vnsel=All except selected..
 acl_vnone=No views
-acl_inview=Zones in view &lt;$1&gt;
+acl_inview=Zones in view <$1>
 acl_types=Allowed record types
 acl_types1=All
 acl_types0=Only listed
@@ -502,7 +479,6 @@ acl_ztypes_master=Master
 acl_ztypes_slave=Slave/stub
 acl_ztypes_delegation=Delegation
 acl_ztypes_forward=Forward
-
 servers_title=Other DNS Servers
 servers_ip=IP address
 servers_bogus=Ignore bogus server?
@@ -514,7 +490,6 @@ servers_keys=Use DNS keys
 servers_err=Failed to save other DNS servers
 servers_eip='$1' is not a valid IP address
 servers_etrans='$1' is not a valid number of maximum transfers
-
 logging_title=Logging and Errors
 logging_ecannot=You are not allowed to configure logging
 logging_header=Global logging and error options
@@ -553,7 +528,6 @@ logging_efile=Missing log filename
 logging_efile2=Log filename must be an absolute path
 logging_ever='$1' is not a valid number of versions
 logging_esize='$1' is not a valid log size
-
 acls_title=Access Control Lists
 acls_ecannot=You are not allowed to edit global acls
 acls_name=ACL Name
@@ -561,7 +535,6 @@ acls_values=Matching addresses, networks and ACLs
 acls_err=Failed to save access control lists
 acls_ename='$1' is not a valid ACL name
 acls_eline=Each IP address must be entered on a separate line for ACL '$1'
-
 files_title=Files and Directories
 files_ecannot=You are not allowed to configure files
 files_header=Global files and directories options
@@ -571,7 +544,6 @@ files_pid=Process ID file
 files_xfer=Path to zone transfer program
 files_err=Failed to save files and directories options
 files_efile=Missing or invalid filename
-
 forwarding_title=Forwarding and Transfers
 forwarding_ecannot=You are not allowed to edit forwarding and transfer options
 forwarding_header=Global forwarding and zone transfer options
@@ -590,7 +562,6 @@ forwarding_etrans=Missing or invalid maximum concurrent transfers
 forwarding_minutes=minutes
 forwarding_ip=IP address
 forwarding_port=Port
-
 net_title=Addresses and Topology
 net_ecannot=You are not allowed to edit address and topology options
 net_header=Global address and topology options
@@ -608,7 +579,6 @@ net_eport='$1' is not a valid port number
 net_eusedport=Only one line of addresses is allowed for port $1
 net_etopology=No topology addresses entered
 net_erecur=No addresses to allow recursion from entered
-
 controls_title=Control Interface Options
 controls_ecannot=You are not allowed to edit the control options
 controls_header=Control options
@@ -630,7 +600,6 @@ controls_eunixpath=Missing or invalid FIFO file path
 controls_eunixperm=Missing or invalid octal file permissions
 controls_eunixowner=Missing or invalid file owner
 controls_eunixgroup=Missing or invalid file group
-
 controls_inet=Internet port access
 controls_unix=Unix FIFO access
 controls_port=port
@@ -644,7 +613,6 @@ controls_efile=Missing or invalid FIFO filename
 controls_eperms=Missing or invalid FIFO permissions
 controls_eowner=Missing or invalid FIFO owner UID
 controls_egroup=Missing or invalid FIFO owner GID
-
 keys_title=DNS Keys
 keys_id=Key ID
 keys_alg=Algorithm
@@ -653,7 +621,6 @@ keys_ecannot=You are not allowed to edit DNS keys
 keys_err=Failed to save DNS keys
 keys_ekey='$1' is not a valid key ID
 keys_esecret=Missing or invalid base-64 encoded secret for key $1
-
 misc_title=Miscellaneous Options
 misc_ecannot=You are not allowed to edit miscellaneous options
 misc_header=Miscellaneous global options
@@ -673,7 +640,6 @@ misc_esize='$1' is not a valid size
 misc_efiles='$1' is not a valid number of maximum open files
 misc_emins='$1' is not a valid number of minutes
 misc_mins=mins
-
 zonedef_title=Zone Defaults
 zonedef_msg=Defaults for new master zones
 zonedef_err=Failed to save zone defaults
@@ -695,13 +661,10 @@ zonedef_size=Initial key size
 zonedef_single=Number of keys to create
 zonedef_two=Zone key and key-signing key
 zonedef_one=Zone key only
-
 find_title=Find Zones
 find_match=Zones matching $1 ..
 find_none=No zones found.
-
 efirst=Bad first directive at line $1 in $2
-
 findfree_title=Find Free IPs
 findfree_desc=Find Free IPs
 findfree_nofind=You cannot look for free IP's
@@ -713,10 +676,8 @@ findfree_cf=Consider <em>`freeXXX'</em> hostnames as free IPs?
 findfree_search=Search
 findfree_msg=Found $1 free IP addresses
 findfree_msg2=(of which $1 are like <i>freeXXX</i>, $2 like <i>freemac</i>)
-
 free_title=Free IP Addresses
 free_ip=IP Address
-
 log_servers=Changed other DNS servers
 log_logging=Changed logging and errors
 log_acls=Changed access control lists
@@ -773,14 +734,11 @@ log_sign=Updated DNSSEC signatures for zone $1
 log_resign=Re-signed DNSSEC key for zone $1
 log_trusted=Changed DNSSEC verification
 log_dnssec=Change DNSSEC key re-signing
-
 convert_err=Failed to convert zone
 convert_efile=A records file must be specified before a slave zone can be converted to a master.
-
 whois_title=WHOIS Information
 whois_header=Output from command $1 ..
 whois_ecannot=You are not allowed to lookup WHOIS information
-
 view_title=Edit Client View
 view_opts=Client view details
 view_opts2=Options for zones in view
@@ -791,7 +749,6 @@ view_recursion=Do full recursive lookups for clients?
 view_ecannot=You are not allowed to edit this view
 view_delete=Delete View
 view_deletemsg=Click this button to delete the view. You will have a choice of moving zones it contains to another view, or deleting them as well.
-
 vcreate_title=Create Client View
 vcreate_match_all=All clients
 vcreate_match_sel=Listed addresses, networks and ACLs..
@@ -800,7 +757,6 @@ vcreate_ename=Missing or invalid view name
 vcreate_etaken=View name is already taken
 vcreate_eclass=Missing or invalid class name
 vcreate_ecannot=You are not allowed to create views
-
 hint_title=Edit Root Zone
 hint_desc=The root zone is used by your DNS server to contact the root servers on the internet, so that it can resolve names in domains not handled by your DNS server, like <tt>.com</tt> or <tt>.net.au</tt>. Unless your DNS server is for use on an internal network or you are forwarding all queries to another server, you should not delete this root zone.
 hint_move=Move to view:
@@ -809,7 +765,6 @@ hint_refetch=Re-Download Root Nameservers
 hint_refetchdesc=Click this button to have Webmin re-download the root zone file from it's source on the Internic FTP server.
 hint_delete=Delete Root Zone
 hint_deletedesc=Click this button to remove this root zone. Without it, your nameserver will be unable to resolve domains on the Internet other than those it is a secondary for.
-
 hcreate_title=Create Root Zone
 hcreate_desc=The root zone is used by your DNS server to contact the root servers on the internet, so that it can resolve names in domains not handled by your DNS server, like <tt>.com</tt> or <tt>.net.au</tt>. If you are using multiple views, you may need to have a separate root zone in each view so that all clients can resolve internet domains properly.
 hcreate_header=Root zone details
@@ -823,7 +778,6 @@ hcreate_efile='$1' is not an allowable root file
 hcreate_efile2=Missing or invalid root file
 mcreate_erecs=Not a valid existing root zone file
 hcreate_err=Failed to create root zone
-
 vdelete_title=Delete View
 vdelete_mesg=Are you sure you want to delete the client view $1 ? All the zones in this view will either be deleted (along with their zone files) or moved to another view depending on your selection below.
 vdelete_mesg2=Are you sure you want to delete the client view $1 ?
@@ -831,7 +785,6 @@ vdelete_newview=Zones within this view
 vdelete_root=Move out of views
 vdelete_delete=Delete totally
 vdelete_move=Move to view
-
 gen_title=Record Generators
 gen_desc=This page allows you to define generators, each of which will create multiple records in this zone using an incrementing counter. This can be useful for delegating parts of the reverse zone to another server.
 gen_range=Range
@@ -851,9 +804,7 @@ gen_evalue=Missing or invalid hostname pattern for generator $1
 gen_title2=Generated Records
 gen_raw=Config file line
 gen_ecannot=You are not allowed to edit record generators
-
 refetch_err=Failed to re-download root zone
-
 slaves_title=Cluster Slave Servers
 slaves_none=No servers have been added to the DNS cluster yet.
 slaves_host=Hostname
@@ -867,7 +818,7 @@ slaves_os=Operating system
 slaves_add=Add server
 slaves_ok=Add Now
 slaves_gadd=Add servers in group
-slaves_group=In group &lt;$1&gt;
+slaves_group=In group <$1>
 slaves_need=You must add servers with a login and password in the <a href='$1'>Webmin Servers Index</a> module before they can be managed here.
 slaves_return=cluster servers
 slaves_delete=Remove Selected
@@ -881,7 +832,6 @@ slaves_sec=Create secondary on slave when creating locally?
 slaves_name=Name for NS record
 slaves_same=Same as hostname
 slaves_header=Cluster slave server options
-
 add_title=Add Servers
 add_msg=Adding $1 ..
 add_gmsg=Adding servers in group $1 ..
@@ -899,7 +849,6 @@ add_createok=Setup $1 with $2 new slave zones.
 add_ename=Missing or invalid NS record name
 add_egname=An NS record name cannot be specified when adding a group
 add_emyip=Could not work out this system's IP address. You should set the <b>Default master server IP for remote slave zones</b> on the Module Config page.
-
 mass_title=Create Zones From Batch File
 mass_desc=This page allows you to create multiple zones at once from an uploaded or server-side text file. Each line in the file must have the following format:<p><tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt><p>The <i>type</i> must be one of <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> or <tt>forward</tt>. The <i>filename</i> is optional, and will be computed automatically if missing. The <i>master IPs</i> only need to be given for slave zones.
 mass_local=Local batch file
@@ -931,7 +880,6 @@ mass_emips=Missing master IP addresses
 mass_addedslaves=Added $1 to slave servers OK.
 mass_eonslave=Errors occurred created on slave servers : $1
 mass_eviewcannot=You are not allowed to add zones to this view
-
 massdelete_title=Delete Zones
 massdelete_rusure=Are you sure you want to delete the $1 selected zones? ($2)
 massdelete_ok=Delete Now
@@ -939,7 +887,6 @@ massdelete_zone=Deleting zone $1 ..
 massdelete_done=.. done.
 massdelete_slaves=Deleting zone $1 from slave servers ..
 massdelete_failed=.. some slaves failed :
-
 rndc_title=Setup RNDC
 rndc_desc=This page can be used to setup BIND for control by the RNDC program, so that individual zones can be refreshed without needing to do a full BIND restart.
 rndc_desc2=RNDC appears to be setup properly already, so you probably do not need to use this form.
@@ -950,13 +897,11 @@ rndc_ok=Yes, Setup RNDC
 rndc_err=Failed to setup RNDC
 rndc_ekey=Could not find key in rndc.conf
 rndc_esecret=Could not find secret in rndc.conf
-
 drecs_err=Failed to delete records
 drecs_enone=None selected
 drecs_title=Delete Records
 drecs_rusure=Are you sure you want to delete the $1 selected records from $2?
 drecs_ok=Delete Now
-
 manual_title=Edit Config File
 manual_ecannot=You are not allowed to edit the BIND config file
 manual_ok=Edit
@@ -964,9 +909,7 @@ manual_efile=Selected file is not part of the BIND configuration
 manual_file=Edit config file:
 manual_edata=Nothing entered!
 manual_err=Failed to save config file
-
 syslog_desc=BIND DNS server messages
-
 umass_err=Failed to update zones
 umass_enone=None selected
 umass_title=Update Records in Zones
@@ -985,7 +928,6 @@ umass_done=.. updated $1 matching records out of $2.
 umass_none=.. no matching records out of $1 to update found.
 umass_egone=Zone does not exist
 emass_emx='$1' is not a mail server priority number followed by a valid hostname
-
 rdmass_err=Failed to delete records in zones
 rdmass_enone=None selected
 rdmass_title=Delete Records in Zones
@@ -1002,7 +944,6 @@ rdmass_done=.. deleted $1 matching records out of $2.
 rdmass_none=.. no matching records out of $1 to delete found.
 rdmass_ok=Delete Records
 rdmass_sel=Records named
-
 rmass_err=Failed to add records
 rmass_enone=None selected
 rmass_title=Add Record to Zones
@@ -1021,22 +962,18 @@ rmass_done=.. done
 rmass_eclash=.. a record with the same name and value $1 already exists.
 rmass_eclash2=.. a record with the same name and the same value $1 already exists.
 rmass_clash=Create even if record already exists?
-
 check_title=Check Records
 check_ecannot=You are not allowed to check records
 check_errs=The following errors were found in the records file $1 ..
 check_allok=No errors were found in the records file $1.
-
 ncheck_title=Check BIND Config
 ncheck_ecannot=You are not allowed to check the BIND configuration
 ncheck_errs=The following errors were found in the BIND configuration file $1 or referenced zone files ..
 ncheck_allok=No errors were found in the BIND configuration file $1 or referenced zone files.
-
 links_restart=Apply Configuration
 links_stop=Stop BIND
 links_start=Start BIND
 links_apply=Apply Zone
-
 dnssec_title=DNSSEC Key Re-Signing
 dnssec_ecannot=You are not allowed to configure DNSSEC
 dnssec_header=Key re-signing options
@@ -1046,7 +983,6 @@ dnssec_days=days
 dnssec_desc=Zones signed with DNSSEC typically have two keys - a zone key which must be re-generated and signed regularly, and a key signing key which remains constant. This page allows you to configure Webmin to perform this re-signing automatically.
 dnssec_err=Failed to save DNSSEC key re-signing
 dnssec_eperiod=Missing or invalid number of days between re-signs
-
 zonekey_title=Setup DNSSEC Key
 zonekey_desc=This zone does not have a DNSSEC signing key yet. You can use this form to have Webmin create one, so that clients resolving this zone are protected against DNS spoofing attacks.
 zonekey_header=New DNSSEC key options
@@ -1058,7 +994,6 @@ zonekey_other=Other size (in bits)
 zonekey_enable=Create and Add Key
 zonekey_err=Failed to create DNSSEC key
 zonekey_esize=Key size must be a number of bits between $1 and $2
-zonekey_efactor=Key size must be a multiple of $1
 zonekey_creating=Creating DNSSEC key for $1 ..
 zonekey_ecreate=.. creation failed : $1
 zonekey_done=.. done
@@ -1077,12 +1012,9 @@ zonekey_sign=Sign Zone
 zonekey_signdesc=Immediately re-sign this zone, so that any changes to records made manually will be included in the signing records.
 zonekey_resign=Re-Sign Zone
 zonekey_resigndesc=Generate a new zone signing key, sign it with the zone's master key, and re-sign all records.
-
 sign_err=Failed to sign zone
 sign_emsg=DNSSEC signing after records change failed : $1
-
 resign_err=Failed to re-sign zone
-
 trusted_title=DNSSEC Verification
 trusted_ecannot=You are not allowed to configure DNSSEC verification
 trusted_esupport=Your version of BIND does not support DNSSEC verification
@@ -1111,11 +1043,8 @@ trusted_ealg=Missing or invalid algorithm number in row $1
 trusted_ekey=Missing base-64 encoded trusted zone key in row $1
 trusted_setup=For DNSSEC to be useful to verify the majority of signed zones on the Internet, BIND must be configured to use a DLV server. Webmin can set this up for you, using the ICS DLV server at $1.
 trusted_ok=Setup DLV and Enable DNSSEC Verification
-
 xfer_title=Test Zone Transfer
 xfer_doing=Testing transfer of slave zone from $1 ..
 xfer_failed=.. from $1 : Failed : $2
 xfer_done=.. from $1 : Completed OK
 xfer_count=Test transfer successfully fetched $1 records from at least one nameserver. Actual transfers by BIND should also succeed.
-
-__norefs=1
