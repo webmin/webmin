@@ -81,9 +81,10 @@ sub main
     # Check if we can get Google Translate API token
     $data{'token'} = get_google_translate_token();
     if (!$data{'token'}) {
-        $opt{'only-diff'} = 1;
+        $opt{'only-diff'}      = 1;
         $opt{'only-diff-auto'} = 1;
-        say YELLOW . "Translation will not be done as Google Translate API key is missing. Falling back to `only-diff` mode.." . RESET;
+        say YELLOW .
+          "Translation will not be done as Google Translate API key is missing. Falling back to `only-diff` mode.." . RESET;
     }
 
     # Get list of languages from `lang_list.txt` file
@@ -193,7 +194,6 @@ sub main
         go(\%opt, \%data);
     }
     exit;
-
 
     # Log the output. End
     close $data{'out'};
@@ -596,6 +596,9 @@ sub go
         my (%template);
         my ($exists, $mfile, $mpath) = source_data($data, $opt, $module);
 
+        # Check if there has been something to process, if not print a message
+        my $output;
+
         # Get source, base language file
         read_file($mfile, \%template);
 
@@ -683,6 +686,8 @@ sub go
                     # Add a string to main language file
                     $language{$key__} = $language_source_file->{$key_};
 
+                    $output++;
+
                 }
 
                 # Machine translated strings must be added to `$code.auto` file, e.g. `de.auto`
@@ -723,10 +728,8 @@ sub go
                     $translated = $translated->{'data'}->{'translations'}[0]->{'translatedText'};
 
                     talk_log("      — $key --> $_value", $data, $opt->{'verbose'});
-                    if ($opt->{'verbose'} == 2) {
-                        say BLACK, "        .. $key --< $value", RESET;
-                        say BLACK, "        .. $key >-- $translated", RESET;
-                    }
+
+                    my $translated_ = $translated;
 
                     $translated = translated_substitute($translated, $_value, $opt);
 
@@ -734,6 +737,13 @@ sub go
                     $language_auto{$key__} = $translated;
                     talk_log("      — $key <-- $translated", $data, $opt->{'verbose'});
 
+                    # Print debug log
+                    if ($opt->{'verbose'} == 2) {
+                        say BLACK, "      --< $value",       RESET;
+                        say BLACK, "      >-- $translated_", RESET;
+                    }
+
+                    $output++;
                 }
             }
 
@@ -770,7 +780,7 @@ sub go
 
             # Write transcoded/translated file
             if (!@{$keys_test}) {
-                
+
                 # Prepend file name for `config.info` or `module.info` modes
                 if (defined($opt->{'type'}) && $opt->{'type'} =~ /config|module/) {
                     $code = "$opt->{'type'}.info.$code";
@@ -778,13 +788,21 @@ sub go
 
                 # Language suffix for automatics
                 my $language_suffix = 'auto';
-                if ($opt->{'only-diff'} && !$opt->{'only-diff-auto'} ) {
+                if ($opt->{'only-diff'} && !$opt->{'only-diff-auto'}) {
                     $language_suffix = 'diff';
                 }
 
-                write_file($mpath . "/$code",      \%language);
+                write_file($mpath . "/$code", \%language);
                 write_file($mpath . "/$code.$language_suffix", \%language_auto) if (!$opt->{'only-transcode'});
             }
+        }
+        if (!$output) {
+            talk_log(
+                     ("" . RED . " .. No keys were found to work on for " .
+                        BLUE . "$module" . RESET . "" . RED . " module .." . RESET . ""
+                     ),
+                     $data,
+                     1);
         }
 
         say GREEN, ".. done ", RESET;
@@ -941,17 +959,17 @@ Give this help list.
 
 Examples of usage:
 
-Translate to all available languages, using old-time encoding map, in module BIND, using as type "lang" directory, discarding human translations for Hebrew, keeping original value (not translating) for key "mass_desc".
- 
- — language-manager --overwrite -e=map -m=bind8 -w=lang -te=he -ke=mass_desc -v=2
+Translate all available languages, using old-time encoding map, for BIND module, using as type "lang" directory, discarding human translations for Hebrew, keeping original value (not translating) for key "mass_desc", and printing verbose output.
 
-Only transcode language files from old-time style (each language file in different encoding) to new style (all language files in "utf-8" encoding) in Apache module, and exit. No translations will be made, and no ".auto" files will be created.
+ — language-manager -e=map -m=bind8 -w=lang -te=he -ke=mass_desc -v
 
- — language-manager --overwrite -e=map -m=apache --only-transcode
+Only transcode language files, using old-time encoding map, from files being in different encodings, to new style, where all language files are in "utf-8" encoding, for Apache module. No translations will be made, and no ".auto" files will be created.
 
-Test translation output for "mass_desc,trusted_warning" keys, in Russian and German, in BIND module
+ — language-manager -e=map -m=apache --ot
 
- — language-manager --overwrite -m=bind8 -t=ru,de -kt=mass_desc,trusted_warning -v=2
+Test translation output for "mass_desc,trusted_warning" keys, in Russian and German languages, in BIND module and exit.
+
+ — language-manager -m=bind8 -t=ru,de -kt=mass_desc,trusted_warning -v
 
 =item --type, -w <lang|ulang|help|config|module>
 
