@@ -560,8 +560,8 @@ sub translated_substitute
     }
 
     # Always fix properly included path
-    if ($original =~ /<tt>\/.*?<\/tt>/) {
-        $translated =~ s/(<tt>)(\/.*?)(<\/tt>)/$1@{[&$remove_spaces($2)]}$3/g;
+    if ($original =~ /<tt>[\/|~\/].*?<\/tt>/) {
+        $translated =~ s/(<tt>)([\/|~\/].*?)(<\/tt>)/$1@{[&$remove_spaces($2)]}$3/g;
     }
 
     return $translated;
@@ -857,7 +857,8 @@ sub go
                 if ($git_commit) {
                     if (has_command('git')) {
                         my $gf = "$file $file_auto $file_deleted";
-                        say GREEN, ".. creating a git commit to current repo ..", RESET;
+                        say GREEN,
+                          ".. creating Git commit to current repo for " . BRIGHT_YELLOW . "`$gf`" . RESET . " files ..",
                         system('git add $gf');
                         system('git commit $gf -m "Add transcoding/translation of `$module` for language $name ($code)"');
                     } else {
