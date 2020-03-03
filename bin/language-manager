@@ -468,7 +468,7 @@ sub translate_substitute
 
     # Preserve $1, $2, $3 in strings
     if ($format eq 'text') {
-        $value =~ s/(?<!['|"|`|“|«|=])(\$(\d+))/<gtt class=notranslate>\$$2<\/gtt>/g;
+        $value =~ s/(?<!['|"|`|“|«|=|?|&])(\$(\d+))/<gtt class=notranslate>\$$2<\/gtt>/g;
     }
 
     # Preserve path in strings
