@@ -1,0 +1,4 @@
+sysinfo_dev=Enhets-ID
+sysinfo_total=Total
+acl_sysinfo=Vis tilgjengelige diskdata på dashbordet?
+linux_noserverino=Generere inodenummer på klientsiden?
