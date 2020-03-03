@@ -1,0 +1,13 @@
+log_apply=Configuration appliquée
+dknown_err=Impossible de supprimer les hôtes connus
+host_prots21=2 puis 1
+manual_edata=Rien n'est entré!
+log_manual=Édition manuelle du fichier de configuration $1
+users_chal=Utiliser l'authentification défi-réponse?
+keys_none=Impossible de trouver des entrées HostKey dans votre configuration SSHD.
+host_prots12=1 puis 2
+users_emaxauthtries=Nombre de tentatives de connexion manquant ou non numérique par connexion
+dknown_enone=Aucune sélection
+host_prots1=1 seulement
+users_eauthkeys=Fichier de clés autorisées manquant ou non valide
+host_prots2=2 seulement
