@@ -11,13 +11,11 @@ index_boot=Start at boot?
 index_bootdesc=Change this setting to enable or disable starting the Dovecot server at system boot time.
 index_return=module index
 index_version=Version $1
-
 stop_err=Failed to stop Dovecot
 stop_erunning=No longer running
 start_err=Failed to start Dovecot
 start_eprotos=No protocols selected on the <b>Networking and Protocols</b> page
 apply_err=Failed to apply configuration
-
 net_title=Networking and Protocols
 net_header=Dovecot networking and mail protocol options
 net_protocols=Serve mail protocols
@@ -43,11 +41,8 @@ net_eimaps_listen=Invalid IP address for IMAP SSL connections
 net_epop3s_listen=Invalid IP address for POP3 SSL connections
 net_elisten=Invalid IP address for non-SSL connections
 net_essl_listen=Invalid IP address for SSL connections
-
 imap_title=IMAP Options
-
 pop3_title=POP3 Options
-
 ssl_title=SSL Configuration
 ssl_header=IMAP and POP3 SSL mode options
 ssl_key=SSL private key file
@@ -65,9 +60,7 @@ ssl_ecert=Missing or non-existant certificate file
 ssl_eca=Missing or non-existant CA certificate file
 ssl_eregen=Missing or non-numeric parameter regeneration interval
 ssl_epass=No SSL key file password entered
-
 misc_title=Other Options
-
 login_title=User and Login Options
 login_header=User authentication and login options
 login_fuid=Minimum valid UID
@@ -105,7 +98,7 @@ login_shadow=Unix <tt>shadow</tt> file
 login_dpam=Default PAM service (<tt>dovecot</tt>)
 login_pam=PAM service $1
 login_session=Open and close PAM sessions
-login_pam2=PAM service $1<br>&nbsp;&nbsp;$2<br>&nbsp;&nbsp;Use cache key $3
+login_pam2=PAM service $1<br>  $2<br>  Use cache key $3
 login_other=Other Dovecot setting $1
 login_epasswdfile=Missing or non-existant custom password file
 login_euid=Missing or non-numeric UID
@@ -115,7 +108,7 @@ login_eldap=Missing or non-existant LDAP configuration file
 login_epgsql=Missing or non-existant PostgreSQL configuration file
 login_esql=Missing or non-existant SQL configuration file
 login_eppam=Missing or invalid PAM service
-login_bsdauth=BSD authentication<br>&nbsp;&nbsp;Use cache key $1
+login_bsdauth=BSD authentication<br>  Use cache key $1
 login_checkpassword=External program $1
 login_eckey=Missing or invalid cache key
 login_echeckpassword=Missing or invalid external password-checking program
@@ -123,7 +116,6 @@ login_procs=Maximum login processes
 login_count=Initial login processes
 login_eprocs=Missing or invalid maximum number of login processes
 login_ecount=Missing or invalid initial number of login processes
-
 mail_title=Mail Files
 mail_header=Mail location and reading options
 mail_env=Mail file location
@@ -176,7 +168,6 @@ mail_eindexmode=The index files location cannot be set when the mail file locati
 mail_econtrolmode=The control files location cannot be set when the mail file location is detected automatically
 mail_eindex=Missing or invalid absolute path for index files
 mail_econtrol=Missing or invalid absolute path for control files
-
 log_net=Changed Networking and Protocols
 log_login=Changed User and Login Options
 log_mail=Changed Mail Files
@@ -187,12 +178,9 @@ log_stop=Stopped Dovecot Server
 log_bootup=Enabled Dovecot at boot time
 log_bootdown=Disabled Dovecot at boot time
 log_manual=Manually edited config file $1
-
 manual_title=Edit Config Files
 manual_editsel=Edit Dovecot configuration file
 manual_err=Failed to save config file
 manual_edata=Nothing entered!
 manual_efile=Selected configuration file is not valid
 manual_ok=Edit
-
-__norefs=1
