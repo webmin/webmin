@@ -466,9 +466,9 @@ sub translate_substitute
 
     $value = language_transcode($value, 'utf-8');
 
-    # Preserve $1, $2, $3 in strings
+    # Preserve un-quoted $1, $2, $3 in strings, which are broken in so different ways, in different languages differently
     if ($format eq 'text') {
-        $value =~ s/(?<!['|"|`|“|«|=|?|&])(\$(\d+))/<gtt class=notranslate>\$$2<\/gtt>/g;
+        $value =~ s/(?<!['|"|`|“|«|=|?|&])(\$(\d+))/*\@$2*/g;
     }
 
     # Preserve path in strings
@@ -498,8 +498,11 @@ sub translated_substitute
 
     if ($format eq 'text') {
 
-        # Unescape $1, $2, $3 and revert order if broken
-        $translated =~ s/<gtt.*?>.*?(\d+).*?<.*?>/\$$1/gi;
+        # Unescape preserved, un-quoted $1, $2, $3
+        $translated =~ s/[*]{1}.*?\@[ ]*(\d+).*?[*]{1}/\$$1/gi;
+
+        # Unescape preserved, un-quoted $1, $2, $3 - stricter, when @ replaced with a (for example on pt, pt_BR)
+        $translated =~ s/[*]{1}[ ]a[ ](\d+)[ ][*]{1}/\$$1/gi;
     } elsif ($format eq 'html') {
 
         # Unescape path in strings
