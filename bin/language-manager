@@ -22,7 +22,7 @@ use Pod::Usage;
 sub main
 {
     my %data;
-    
+
     # Register start time
     $data{'start_time'} = time();
 
@@ -56,8 +56,6 @@ sub main
                'git-commit|gc!'               => \$opt{'git-commit'},
                'log|l:s'                      => \$opt{'log'},
                'verbose|v:i'                  => \$opt{'verbose'});
-
-
 
     # Print help and exit
     pod2usage(0) if ($opt{'help'});
@@ -855,15 +853,12 @@ sub go
 
                 # Git auto-commit after language was transcoded/translated
                 if ($git_commit) {
-                    if (has_command('git')) {
-                        my $gf = "$file $file_auto $file_deleted";
-                        say GREEN,
-                          ".. creating Git commit to current repo for " . BRIGHT_YELLOW . "`$gf`" . RESET . " files ..",
-                        system('git add $gf');
-                        system('git commit $gf -m "Add transcoding/translation of `$module` for language $name ($code)"');
-                    } else {
-                        say BRIGHT_YELLOW, ".. `git` command is not found!", RESET;
-                    }
+
+                    # my $gs = "$module";
+                    my $gf = trim("$file $file_auto $file_deleted");
+                    say GREEN, ".. creating Git commit to current repo for " . BRIGHT_YELLOW . "$gf" . RESET . " files ..";
+                    system("git add $gf");
+                    system("git commit $gf -m 'Add transcoding/translation of \`$module\` for language $name ($code)'");
                 }
             }
         }
