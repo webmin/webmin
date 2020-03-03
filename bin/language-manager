@@ -561,6 +561,11 @@ sub translated_substitute
     if ($original =~ /<tt>[\/|~\/].*?<\/tt>/) {
         $translated =~ s/(<tt>)([\/|~\/].*?)(<\/tt>)/$1@{[&$remove_spaces($2)]}$3/g;
     }
+    
+    # Always consider `/` to be a delimiter and replace ` / ` to `/`
+    if ($original =~ /\w+\/\w+/) {
+        $translated =~ s/[ ]+(\/)[ ]+/$1/g;
+    }
 
     return $translated;
 }
