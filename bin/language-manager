@@ -858,7 +858,7 @@ sub go
                     my $gf = trim("$file $file_auto $file_deleted");
                     say GREEN, ".. creating Git commit to current repo for " . BRIGHT_YELLOW . "$gf" . RESET . " files ..";
                     system("git add $gf");
-                    system("git commit $gf -m 'Add transcoding/translation of \`$module\` for language $name ($code)'");
+                    system("git commit $gf -m 'Add transcoding/translation for \`$module\` module of $name ($code)'");
                 }
             }
         }
