@@ -1,4 +1,3 @@
-__norefs=1
 acl_all=Allemaal
 acl_arp=Client ethernet adressen
 acl_asnum=AS Nummers
@@ -362,7 +361,6 @@ ech_return=cache lijst
 ech_rrc=Round-robin cache?
 ech_same=Onverandert
 ech_sibling=sibling
-ech_siq=Verstuur ICP wachtrijen?
 ech_ssl=Verbinden met gebruik van SSL?
 ech_t=Type
 ech_timeo=Verbinding time-out voor host
@@ -650,8 +648,6 @@ iptables_disabled=Poort omleiden is uitgeschakeld
 iptables_eapply=Toevoegen firewall mislukte : $1
 iptables_eapply2=Toevoegen Squid mislukte : $1
 iptables_eiface=Ontbrekende of ongeldige netwerk interface
-iptables_enabled=Poort omleiding is aangezet voor clients op netwerk $1
-iptables_enabled2=Poort omleiding is aangezet voor clients op interface $1
 iptables_enet=Ontbrekende of ongeldig netwerk adres (moet lijken op 192.168.1.0/24)
 iptables_err=Mislukt om poort doorsturen op te slaan
 iptables_inst0=De IPtabel firewall opdracht die nodig is om poort doorsturen op te zetten lijkt niet geinstalleerd te zijn op uw systeem. Bekijk de <a href='$1'>Linux Firewall</a> module voor meer details.
