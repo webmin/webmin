@@ -661,16 +661,22 @@ sub go
             my %language;
             my %language_auto;
 
-            talk_log(("" . YELLOW . " .. Processing $name ($code) language .." . RESET . ""), $data, $opt->{'verbose'});
-            my ($language_source_file, $language_source_file_encoding) =
-              language_source_file($opt,
-                                   $data,
-                                   ('language-name'      => $name,
-                                    'language-code'      => $code,
-                                    'module-path'        => $mpath,
-                                    'module-name'        => $module,
-                                    'translation-target' => $type
-                                   ));
+            my $message_type = "Processing";
+            $message_type = "Testing translations for selected keys with" if (@{$keys_test});
+
+            talk_log(("" . YELLOW . " .. $message_type $name ($code) language .." . RESET . ""), $data, $opt->{'verbose'});
+            my ($language_source_file, $language_source_file_encoding);
+            if (!@{$keys_test}) {
+                ($language_source_file, $language_source_file_encoding) =
+                  language_source_file($opt,
+                                       $data,
+                                       ('language-name'      => $name,
+                                        'language-code'      => $code,
+                                        'module-path'        => $mpath,
+                                        'module-name'        => $module,
+                                        'translation-target' => $type
+                                       ));
+            }
 
             while (my ($key, $value) = each %template) {
 
