@@ -181,22 +181,30 @@ sub main
     # Exclude listed keys from bulk translation
     $opt{'keys-exclude'} = [$opt{'keys-exclude'} ? split(',', $opt{'keys-exclude'}) : ()];
 
-    # User interactions
-    talk('affected', \%opt, \%data);
+    # Just run tests, and exit, without writing anything
+    if (@{ $opt{'keys-test'} }) {
+        say CYAN, "Translation testing for selected keys is about to start ..", RESET;
+        if (prompt('next')) {
+            go(\%opt, \%data);
+        }
+    } else {
 
-    # Log the output. Start
-    $opt{'log'} ||= "/tmp/language-manager-@{[time()]}.log";
-    open $data{'out'}, ">", "$opt{'log'}" or die RED, "Error creating log: $!\n", RESET, "\n";
+        # User interactions
+        talk('affected', \%opt, \%data);
 
-    # Execute force transcode/translate
-    talk('overwrite-pre', \%opt, \%data);
-    if (prompt('next')) {
-        go(\%opt, \%data);
+        # Log the output. Start
+        $opt{'log'} ||= "/tmp/language-manager-@{[time()]}.log";
+        open $data{'out'}, ">", "$opt{'log'}" or die RED, "Error creating log: $!\n", RESET, "\n";
+
+        # Execute force transcode/translate
+        talk('overwrite-pre', \%opt, \%data);
+        if (prompt('next')) {
+            go(\%opt, \%data);
+        }
+
+        # Log the output. End
+        close $data{'out'};
     }
-    exit;
-
-    # Log the output. End
-    close $data{'out'};
 
     return 0;
 }
@@ -545,7 +553,6 @@ sub translated_substitute
     return $translated;
 }
 
-
 # Make actual translation using Google Translate API
 sub translate
 {
@@ -697,8 +704,11 @@ sub go
                 # Human translated strings must be added to original `$code` file, e.g. `de` after transcoding
                 if ($language_source_file && $language_source_file->{$key_} && !@{$keys_test}) {
                     talk_log(
-                          ("" . DARK . "   .. ($code) found and transcoded human translated value for \`$key\` key to" . RESET . ""),
-                          $data, $opt->{'verbose'});
+                             ("" . DARK .
+                                "   .. ($code) found and transcoded human translated value for \`$key\` key to" . RESET . ""
+                             ),
+                             $data,
+                             $opt->{'verbose'});
 
                     # We need to re-encode the string first, depending on which human translated file is being
                     # used (iso or UTF-8). We still need to convert all back and forth to get rid of ugly &#... escapes
@@ -921,8 +931,10 @@ sub talk_log
 
     # Store to log
     my $out = $data->{'out'};
-    $what =~ s/\[\d+m//g;
-    say $out $what;
+    if ($out) {
+        $what =~ s/\[\d+m//g;
+        say $out $what;
+    }
 }
 
 sub talk
