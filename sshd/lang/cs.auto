@@ -1,0 +1,16 @@
+keys_desc=Tato stránka umožňuje zobrazit klíče SSH pro tohoto hostitele.
+users_authkeys_set=Soubor doma
+users_eauthkeys=Chybějící nebo neplatně vypadající soubor autorizovaných klíčů
+host_prots2=2 pouze
+host_prots1=1 pouze
+net_sel=Adresa ..
+net_all6=Všechny adresy IPv6
+users_emaxauthtries=Chybějící nebo nečíselný počet pokusů o přihlášení na připojení
+keys_none=Ve vaší konfiguraci SSHD se nepodařilo najít žádné položky HostKey.
+host_prots12=1 a poté 2
+users_chal=Používáte autentizaci pomocí výzvy a odpovědi?
+net_all4=Všechny adresy IPv4
+keys_title=Hostujte klíče SSH
+users_maxauthtries=Maximální počet pokusů o přihlášení na připojení
+host_prots21=2 a poté 1
+users_dsa=Povolit ověřování DSA (SSH 2)?
