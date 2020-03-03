@@ -869,15 +869,25 @@ sub prompt
         return prompt("Do you want to proceed?");
     }
     my $p = sub {
-        my ($q) = @_;
+        my ($q, $c) = @_;
+        $q = $c if ($c);
         local $| = 1;
         print DARK, "$q", RESET;
         chomp(my $a = <STDIN>);
-        return $a;
+        $a = lc($a) if ($a);
+        return lc($a);
 
     };
-    my $a = &$p("$q (y/N): ");
-    return lc($a) eq 'y';
+    my $a = &$p("$q [y/N]: ");
+    if ($a ne 'y' && $a ne 'n') {
+        my $repeat = ("" . BRIGHT_MAGENTA . "Please enter" .
+                  RESET . " " . YELLOW . "[y]" . RESET . " " . MAGENTA . "or" . RESET . " " . YELLOW . "[n]" . RESET . ": ");
+        $a = &$p(undef, $repeat);
+        if ($a ne 'y' && $a ne 'n') {
+            $a = &$p(undef, $repeat);
+        }
+    }
+    return $a eq 'y';
 }
 
 sub ask
