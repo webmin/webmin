@@ -30,7 +30,7 @@ modules_cancel=取消
 acl_fileunix=以Unix用戶瀏覽文件
 log_email_subject=$1中的Webmin操作
 log_email_mod=Webmin模塊：$1
-header_statusmsg=$1登錄到$4上的$2 $3 class = notranslate> $5 </gtt>）
+header_statusmsg=$1登錄到$4（$5）上的$2 $3
 password_euser=在密碼文件中找不到您的登錄名！
 uptracker_size=尺寸
 password_done=你的密碼已成功更改。您現在可以使用新密碼<a href='$1'>再次登錄</a>。

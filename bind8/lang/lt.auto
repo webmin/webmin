@@ -296,7 +296,7 @@ recs_RP=Atsakingas asmuo
 edit_espfmx=„$1“ nėra teisingas domeno vardas, leidžiantis siųsti MX iš
 misc_mins=min
 master_records=Įrašai
-dt_zone_rrf_updating=Atnaujinamas „gret class = notranslate> $1 </gtt>„ rollrec “įrašas. ..
+dt_zone_rrf_updating=Atnaujinamas $1 zonos „rollrec“ įrašas
 view_match=Taikykite šį vaizdą klientams
 zonedef_transfer=Leisti pervedimus iš ..
 mass_dolocal=Kurti zonas iš failo $1 ..
@@ -532,7 +532,7 @@ hcreate_real=Gaukite šakninius serverius iš
 acl_slave=Ar galima sukurti vergų / stribų zonas?
 logging_cchans=Kanalai
 net_eport=„$1“ nėra galiojantis prievado numeris
-findfree_cf=Apsvarstykite <em>`freeXXX</em> pagrindinius vardus kaip nemokamus IP?
+findfree_cf=Apsvarstykite <em>freeXXX</em> pagrindinius vardus kaip nemokamus IP?
 dt_zone_desc=Šioje zonoje dar neįgalinta DNSSEC. Galite naudoti šią formą, jei norite, kad „Webmin“ automatizuotų DNSSEC apdorojimą naudodamas „DNSSEC-Tools“, kad šią zoną išsprendžiantys klientai būtų apsaugoti nuo DNS klastojimo atakų.
 manual_ok=Redaguoti
 acl_types=Leidžiami įrašų tipai

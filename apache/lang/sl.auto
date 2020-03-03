@@ -894,7 +894,7 @@ reconfig_ok=Konfigurirajte
 mod_mime_real=Pravi tip
 type_12=Indeksiranje imenikov
 mod_cern_meta_suffix=Pisana pripona za metafikse glave
-authg_none=V besedilni datoteki ni <skupine gtt=notranslate>$1</skupine>
+authg_none=V besedilni datoteki ni skupin $1
 mod_apachessl_requirecifher=Zahtevani šifrantski sklopi, ki se uporabljajo po vzpostavitvi povezave za preverjanje šifre
 htaccess_err=Ni bilo mogoče ustvariti datoteke z možnostmi
 virt_LocationMatch=Lokacija regexp

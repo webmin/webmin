@@ -891,7 +891,7 @@ export_ecmd=Ontbrekende opdrag $1 ontbreek
 ui_sysinfo3=nêrens
 sendmail_portdef=Gebruik standaardpoort
 ssl_strong=Slegs sterk aan die PCI voldoen
-upgrade_eversion=Kan nie na weergawe <gtt class=notranslate> $1 afgradeer nie
+upgrade_eversion=Kan nie na weergawe $1 afgradeer nie
 mods_desc1=Webmin-modules kan na installasie bygevoeg word deur die vorm regs te gebruik. Modules word gewoonlik versprei in <tt>.wbm</tt> lêers, wat elk een of meer modules kan bevat. Modules kan ook vanaf RPM-lêers geïnstalleer word as dit deur u bestuurstelsel ondersteun word.
 mods_eroot=Webmin-modules kan nie geïnstalleer of bestuur word as die Webmin-kode met 'n ander stelsel gedeel word nie, soos wanneer dit binne 'n sone loop of via NFS gemonteer word.
 ui_feedbackconfig=Laat alle gebruikers toe om 'n konfigurasie by terugvoer in te sluit?

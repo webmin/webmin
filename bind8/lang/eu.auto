@@ -731,7 +731,7 @@ mcreate_dom=Domeinu izena / Sarea
 recs_addr=Helbidea
 edit_ehost='$1' ez da baliozko ostalari izena
 find_match=$1 bat datozen zonak ..
-mass_addedforward=Gehitu aurretik <zona gtt=notranslate>$1</zona> Ados
+mass_addedforward=Gehitu aurretik zona $1 Ados
 dt_conf_eemail=Helbide elektroniko falta edo baliogabea
 edit_ealg='$1' ez da baliozko algoritmo zenbakirik
 recs_SSHFP=SSH gako publikoa
@@ -967,7 +967,7 @@ hcreate_real=Lortu root zerbitzariak
 acl_slave=Sortu esklabo / zurtoin zonak?
 dt_zone_desc=Zona honek oraindik ez du DNSSEC gaituta. Inprimaki hau erabil dezakezu Webmin-ek DNSSEC prozesamendua automatizatzeko DNSSEC-tresnak erabiliz, zona hori konpontzen duten bezeroak DNSren aurkako erasoen aurka babesteko.
 net_eport='$1' ez da baliozko ataka-zenbakia
-findfree_cf=Demagun <em>`freeXXX '</em> ostalariaren izenak IP doan?
+findfree_cf=Demagun <em>freeXXX</em> ostalariaren izenak IP doan?
 ignore=Ez ikusi
 vdelete_mesg=Ziur bezeroaren ikuspegia ezabatu nahi duzula $1? Ikuspegi honetako zona guztiak ezabatu egingo dira (beren zona fitxategiekin batera) edo beheko aukeraren arabera beste ikuspegi batera eramango dira.
 logging_ever='$1' ez da baliozko bertsio kopurua

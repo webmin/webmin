@@ -161,7 +161,7 @@ login_passwdfile=Προσαρμοσμένο αρχείο κωδικού πρόσ
 mail_econtrol=Έλλειψη ή μη έγκυρη απόλυτη διαδρομή για αρχεία ελέγχου
 mail_uidl_tpop3d=tpop3d
 login_plain=Απλό κείμενο
-login_static=Χρησιμοποιήστε πάντα UID $1, GID $2 και <gt class=notranslate>$3</gt>
+login_static=Χρησιμοποιήστε πάντα UID $1, GID $2 και $3
 login_header=Ταυτότητα χρήστη και επιλογές σύνδεσης
 mail_idle=Το διάστημα μεταξύ μηνυμάτων ελέγχει όταν είναι αδρανές
 login_esql=Λείπει ή δεν υπάρχει αρχείο ρύθμισης SQL

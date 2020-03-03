@@ -66,7 +66,7 @@ nice_size_kiB=kiB
 modules_cancel=取消
 nice_size_PiB=PiB
 acl_fileunix=以Unix用户浏览文件
-header_statusmsg=$1登录到$4上的$2 $3 class = notranslate> $5 </gtt>）
+header_statusmsg=$1登录到$4（$5）上的$2 $3
 log_email_mod=Webmin模块：$1
 log_email_subject=$1中的Webmin操作
 uptracker_size=尺寸

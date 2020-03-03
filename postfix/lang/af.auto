@@ -161,7 +161,7 @@ reply_attach=Aanstuurde aanhegsels
 acl_smtp=Kan smtp redigeer?
 chooser_lattribute=Ander kenmerk
 header_filter=Pas filter toe ..
-chooser_eother=Geen ander bron vir kaart <gtt class=notranslate> $1 ontbreek of ongeldig nie
+chooser_eother=Geen ander bron vir kaart $1 ontbreek of ongeldig nie
 aform_afile=Wysig ..
 mail_mark2=spesiale
 relocated_ecannot=U mag nie die hervestigde karteringkonfigurasie verander nie
@@ -344,7 +344,7 @@ opts_maps_rbl_domains=DNS-domeine vir soek op swartlys
 opts_home_mailbox_default=Geen (gebruik standaard <tt>/var/iets</tt>)
 maps_internal_error=Kaart: interne fout
 reply_send=Stuur pos
-flushq_desc=Die poging tot die aflewering van e-pos met die opdrag <gtt class=notranslate> $1 gedwing ..
+flushq_desc=Die poging tot die aflewering van e-pos met die opdrag $1 gedwing ..
 opts_queue_minfree=Min vrye ruimte in die tou-lêerstelsel
 mail_normal=Normaal
 smtpd_nomap=Geen kaart vir toegelate adresse vir heruitvoer is nog nie ingevoer nie.

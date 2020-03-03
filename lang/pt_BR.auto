@@ -97,7 +97,7 @@ modules_all=Todos os módulos
 uptracker_eid=Nenhum ID de upload especificado
 acl_sameunix=Igual ao login no Webmin
 ui_etime=Hora inválida
-main_title3=Webmin <classe gtt=notranslate>$1</classe> (<classe gtt=notranslate>$2</classe>)
+main_title3=Webmin $1 ($2)
 nice_size_GB=GB
 egroupdbacl=Falha ao buscar a ACL do grupo : $1
 ui_searchok=Procurar

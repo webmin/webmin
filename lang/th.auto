@@ -68,7 +68,7 @@ session_mesg2=คุณต้องใส่ชื่อผู้ใช้แล
 password_done=รหัสผ่านของคุณถูกเปลี่ยนเรียบร้อยแล้ว. ตอนนี้คุณสามารถ <a href='$1'>ลงชื่อเข้าใช้อีกครั้ง</a> ด้วยรหัสผ่านใหม่
 uptracker_size=ขนาด
 password_euser=ไม่พบชื่อเข้าสู่ระบบของคุณในไฟล์รหัสผ่าน!
-header_statusmsg=$1 ลงชื่อเข้าใช้ $2 $3 บน $4 class = notranslate> $5 </GTT>)
+header_statusmsg=$1 ลงชื่อเข้าใช้ $2 $3 ใน $4 ($5)
 acl_feedback1=ใช่ แต่ไม่ใช่กับไฟล์ปรับแต่ง
 log_email_mod=โมดูล Webmin: $1
 log_email_subject=การทำงานของ Webmin ใน $1

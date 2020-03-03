@@ -268,7 +268,7 @@ smb_comment=Comente
 log_umount_l=Desmontado $2 $1 em $3
 solaris_password=Senha de login
 edit_dos_opt=Opções de sistemas de arquivos baseados em DOS
-linux_ldev=LVM VG <classe gtt=notranslate>$1</classe>, LV <classe gtt=notranslate>$2</classe>
+linux_ldev=VG LVM $1, LV $2
 solaris_etarget2=O destino SCSI para '$1' não existe
 save_edir='$1' não é um diretório
 linux_uuid=Partição com o ID $1

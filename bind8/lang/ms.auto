@@ -702,7 +702,7 @@ find_title=Mencari zon
 master_value=Nilai
 dt_zone_dssep=Rekod DS :
 edit_espfip='$1' bukan alamat IP atau IP / awalan yang sah untuk membolehkan penghantaran dari
-log_modify_record_v=$ </Gtt>,<gtt class=notranslate>
+log_modify_record_v=Diubah $1 rekod $2 nilai $4 di zon $3
 value_dmarcnop=Sama seperti domain ini
 controls_allowips=Alamat IP Pelanggan untuk membenarkan
 value_spfa=Benarkan penghantaran daripada alamat IP domain?
@@ -1005,7 +1005,7 @@ hcreate_real=Dapatkan pelayan root dari
 acl_slave=Bolehkah membuat zon hamba / zakar?
 dt_zone_desc=Zon ini tidak mempunyai DNSSEC diaktifkan lagi. Anda boleh menggunakan borang ini untuk WebM mengotomatikkan pemprosesan DNSSEC menggunakan DNSSEC-Tools, supaya pelanggan menyelesaikan zon ini dilindungi daripada serangan spam spoofing.
 net_eport='$1' bukan nombor port yang sah
-findfree_cf=Pertimbangkan <em>`freeXXX '</em> nama host sebagai IP percuma?
+findfree_cf=Pertimbangkan <em>freeXXX</em> nama host sebagai IP percuma?
 manual_ok=Edit
 acl_ztypes=Boleh membuat jenis zon
 controls_efile=Nama fail FIFO yang hilang atau tidak sah
