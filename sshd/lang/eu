@@ -16,10 +16,8 @@ index_type=SSH gako mota:
 index_rsa1=RSA (SSH v1 entzat)
 index_rsa=RSA (SSH v2 entzat)
 index_dsa=DSA (SSH v2 entzat)
-
 bits=bitak
 secs=segunduak
-
 users_title=Autentikazioa
 users_header=Saioa hasi eta autentikatzeko aukerak
 users_expire=Kontua iraungitu aurretik erabiltzaileari abisua emateko egunak
@@ -51,7 +49,6 @@ users_ebanner=Pre-login fitxategia ez da baliozkoa edo falta da
 users_authkeys=Erabiltzaileen baimendutako gakoen fitxategia
 users_authkeys_def=Defektuzkoa (~/.ssh/authorized_keys)
 users_authkeys_set=Home-en barruko fitxategia
-
 net_title=Sareratzea
 net_header=Sareratzeko aukerak
 net_port=Entzuteko portua
@@ -76,8 +73,6 @@ net_grace_def=Beti
 net_grace_s=segunduak
 net_tcp=Baimendu TCP birbidalketak?
 net_gateway=Baimendu birbidalitako portuetarako konexioak?
-net_reverse=
-Reverse-validate client IP addresses?
 net_err=Akatsa sareratzea gordetzean
 net_elisten=Entzuteko IP helbidea falta da edo ez da baliozkoa
 net_eport=Portu zenbakia ez da zuzena edo falta da
@@ -87,7 +82,6 @@ net_eprots=Gutxienez protokolo bat aukeratu behar duzu
 net_eladdress='$1' ez da entzuteko helbide zuzena
 net_elport='$1' ez da entzuteko portu baliozkoa
 net_elisten2=Entzuteko helbiderik ez da sartu
-
 access_title=Atzipen kontrola
 access_header=Sareko eta login egiteko atzipen kontrolerako aukerak
 access_allowu=Soilik erabiltzaileak baimendu
@@ -105,7 +99,6 @@ access_eallowg=Baimentzeko talderik ez da sartu
 access_edenyg=Ukatzeko talderik ez da sartu
 access_eallowh=Baimentzeko makinarik ez da sartu
 access_edenyh=Ukatzeko makinarik ez da sartu
-
 misc_title=Hainbat aukera
 misc_header=SSH zerbitzariaren bestelako hainbat aukera
 misc_x11=X11 konexio birbidalketa onartu?
@@ -129,17 +122,14 @@ misc_eumask=4-digituko zortziko erabiltzaile maskara falta da edo ez da baliozko
 misc_ebits=Zerbitzariko gakoaren luzeera falta da edo ez da zuzena
 misc_eregen=Zerbitzariko gakoaren birsortze tartea falta da edo ez da baliozkoa
 misc_epid=PID fitxategiaren helbidea falta da
-
 start_err=Akatsa SSH zerbitzaria martxan jartzean
 apply_epid=Ez dago martxan
-
 hosts_title=Bezero Makinaren Aukerak
 hosts_header=SSH bezeroen makinak
 hosts_none=Bezero makinen aukerak ez dira definitu. SSH bezeroen login guztiek defektuzko ezarpena izango dute.
 hosts_all=Makina guztiak
 hosts_add=Gehitu aukerak bezero makinarentzat.
 hosts_return=bezero makinen zerrenda
-
 host_create=Gehitu Makinaren Aukerak
 host_edit=Editatu  Makinaren Aukerak
 host_header=SSH makinarentzat bezero aukerak
@@ -195,7 +185,6 @@ host_eprots=Gutxienez protokolo bat aukeratu behar duzu
 host_proxy=Proxy konexiorako komandoa
 host_proxy_def=Ezer ez
 host_eproxy=Missing or invalid-looking connection proxy command
-
 log_users=Autentikazio aukerak aldatuak
 log_net=Sareko aukerak aldatuak
 log_access=Atzipen kontrola aldatua
@@ -209,10 +198,7 @@ log_delete_all=Makina guztientzat aukerak ezabatuak
 log_stop=SSH zerbitzaria gelditu da
 log_start=SSH zerbitzaria martxan jarri da
 log_apply=Konfigurazioa aplikatu da
-
-
 log_manual=$1 konfigurazio fitxategia eskuz editatzen
-
 sync_title=SSH Gakoaren Konfigurazioa
 sync_desc=Orri honen bidez posible da SSHren konfigurazio automatikoa ipintzea sisteman sortzen diren Unix erabiltzaile berrientzat. Konfiguratzen bada, erabiltzaile berriek ez dute ssh-keygen erabili beharko SSH erabili aurretik.
 sync_create=SSH gakoa konfiguratu Unix erabiltzaile berrientzat?
@@ -220,12 +206,10 @@ sync_auth=Kopiatu <tt>identify.pub</tt>  berria  <tt>authorized_keys</tt> ra?
 sync_pass=Pasahitza erabili pasa-esaldi bezala?
 sync_gnupg=GNUPG gakoa konfiguratu Unix erabiltzaile berrientzat.
 sync_type=Key type
-sync_auto=&lt;Automatikoa&gt;
-
+sync_auto=<Automatikoa>
 keys_title=Makinaren SSH gakoak
 keys_desc=Orri honen bidez makina honen SSH gakoak ikus daitezke.
 keys_none=Ezin izan da HosKey sarrerarik aurkitu zure SSHD konfigurazioan.
-
 manual_title=Konfigurazio fitxategiak editatu
 manual_ecannot=Ez zaude SSH zerbitzariaren konfigurazio fitxategia editatzeko baimendua
 manual_ok=Editatu
@@ -233,7 +217,5 @@ manual_efile=Aukeratutako fitxategia ez da SSH zerbitzariaren konfigurazioaren p
 manual_file=Editatu konfigurazio fitxategia:
 manual_edata=Ez da ezer sartu!
 manual_err=Akatsa konfigurazio fitxategia gordetzean
-
 dknown_err=Akatsa makina ezagunak ezabatzean
 dknown_enone=Ez da ezer aukeratu
-
