@@ -21,6 +21,21 @@ use Pod::Usage;
 
 sub main
 {
+    my %data;
+    
+    # Register start time
+    $data{'start_time'} = time();
+
+    # Prevent accidental script termination
+    my $sigkill = sub {
+        if ($data{'sigkill'}++ > 5) {
+            say RED, "\nTerminating: Ctrl-C has been pressed more than 5 times ..", RESET;
+            exit;
+        }
+    };
+    $SIG{INT} = \&$sigkill;
+
+    # Get user options from the command line
     my %opt;
     GetOptions('help|h'                       => \$opt{'help'},
                'type|w:s'                     => \$opt{'type'},
@@ -38,12 +53,11 @@ sub main
                'only-transcode|ot!'           => \$opt{'only-transcode'},
                'keys-exclude|ke:s'            => \$opt{'keys-exclude'},
                'keys-test|kt:s'               => \$opt{'keys-test'},
+               'git-commit|gc!'               => \$opt{'git-commit'},
                'log|l:s'                      => \$opt{'log'},
                'verbose|v:i'                  => \$opt{'verbose'});
-    my %data;
 
-    # Register start time
-    $data{'start_time'} = time();
+
 
     # Print help and exit
     pod2usage(0) if ($opt{'help'});
@@ -621,6 +635,7 @@ sub go
     my $language_target_exclude  = $opt->{'language-target-exclude'};
     my $keys_exclude             = $opt->{'keys-exclude'};
     my $keys_test                = $opt->{'keys-test'};
+    my $git_commit               = $opt->{'git-commit'};
 
     foreach $module (@{$modules}) {
         my (%template);
@@ -790,6 +805,7 @@ sub go
             # If we are converting from old times, where there were different encodings and
             # file extensions for it, we need to delete/clear all old, no longer needed files
             # e.g. will be deleted: uk_UA, zh_TW.Big5, ja_JP.euc, ko_KR.euc and etc.
+            my $file_deleted = "";
             if (!@{$keys_test} && $opt->{'language-source-encoding'} eq 'map') {
                 my $found;
                 find(
@@ -805,6 +821,7 @@ sub go
                                        ($found eq "$mpath/$opt->{'type'}.info.$code_"))))
                            {
                                unlink($found);
+                               $file_deleted .= " $found";
                                $found =~ s/$mpath\///;
                                talk_log(
                                         ("" . YELLOW .
@@ -831,9 +848,22 @@ sub go
                 if ($opt->{'only-diff'} && !$opt->{'only-diff-auto'}) {
                     $language_suffix = 'diff';
                 }
+                my $file      = $mpath . "/$code";
+                my $file_auto = $mpath . "/$code.$language_suffix";
+                write_file($file, \%language);
+                write_file($file_auto, \%language_auto) if (!$opt->{'only-transcode'});
 
-                write_file($mpath . "/$code", \%language);
-                write_file($mpath . "/$code.$language_suffix", \%language_auto) if (!$opt->{'only-transcode'});
+                # Git auto-commit after language was transcoded/translated
+                if ($git_commit) {
+                    if (has_command('git')) {
+                        my $gf = "$file $file_auto $file_deleted";
+                        say GREEN, ".. creating a git commit to current repo ..", RESET;
+                        system('git add $gf');
+                        system('git commit $gf -m "Add transcoding/translation of `$module` for language $name ($code)"');
+                    } else {
+                        say BRIGHT_YELLOW, ".. `git` command is not found!", RESET;
+                    }
+                }
             }
         }
         if (!$output) {
@@ -1074,6 +1104,9 @@ Comma separated list of keys that shouldn't be translated and stored with origin
 
 Comma separated list of keys to test translation engine on; in this mode, translated strings are not saved
 
+=item --git-commit, -gc
+
+Create a separate commit to the current repo, after each language was transcoded/translated
 
 =item --log, -l
 
