@@ -1,0 +1,9 @@
+ssl_ca=SSL客戶端CA證書文件
+ssl_prompt=不需要
+ssl_epass=沒有輸入SSL密鑰文件密碼
+ssl_pass=密鑰文件密碼
+manual_efile=所選的配置文件無效
+manual_ok=編輯
+ssl_eca=客戶端CA證書文件缺失或不存在
+net_lmtp=LMTP
+manual_editsel=編輯Dovecot配置文件
