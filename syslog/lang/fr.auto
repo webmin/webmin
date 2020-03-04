@@ -1,0 +1,10 @@
+index_cmd=Sortie de $1 
+index_viewfile=Afficher le fichier journal:
+index_viewok=Vue
+save_ecannot6=Vous n'êtes pas autorisé à afficher des journaux arbitraires
+save_ecannot7=Vous n'êtes pas autorisé à consulter ce journal supplémentaire
+save_emissing=Fichier journal manquant à afficher
+acl_any=Peut afficher n'importe quel fichier sous forme de journal?
+acl_extra=Fichiers journaux supplémentaires pour cet utilisateur
+acl_syslog=Peut afficher les journaux de syslog?
+acl_others=Peut afficher les journaux d'autres modules?
