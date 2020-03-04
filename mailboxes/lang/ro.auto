@@ -150,7 +150,7 @@ mail_cc=Cc
 left_prefs=Preferințe prin poștă
 acl_read=Utilizatori a căror poștă poate fi citită
 index_esystem2=Serverul de e-mail setat în configurația modulului <a href='$1'></a> nu a fost găsit în sistemul tău. Va trebui să ajustați configurația pentru a utiliza serverul corect.
-mail_for=În 1*
+mail_for=În $1
 view_forward=Redirecţiona
 acl_asame=La fel ca numele de utilizator
 view_desc=Mesaj $1 în $2

@@ -63,7 +63,7 @@ view_nobody=Tässä viestissä ei ole kehon sisältöä.
 send_eperms2=Sinulla ei ole oikeutta lähettää tiedostoa $1
 detach_ewrite=$1: seen kirjoittaminen epäonnistui : $2
 view_dstatusok=Onnistunut toimitustila
-find_in=$1 * * 2 *
+find_in=$1 in $2
 send_esmtp=SMTP-komento $1 epäonnistui : $2
 ldap_euser=Ei LDAP-sisäänkirjautumista asetettu moduulin kokoonpanossa
 index_equals=equals
@@ -145,7 +145,7 @@ reply_tabreplyto=Vastata
 folder_inbox=Saapuneet
 mail_selunread=Valitse lukematon.
 index_esystem2=<a href='$1'>moduulin kokoonpanossa</a> määritettyä postipalvelinta ei löydy järjestelmästäsi. Sinun on mukautettava kokoonpano oikean palvelimen käyttämiseksi.
-mail_for=Kohdassa 1*
+mail_for=Kohdassa $1
 left_prefs=Sähköpostiasetukset
 mail_cc=cc
 view_remote-mta=Etäpostipalvelin

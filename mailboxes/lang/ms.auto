@@ -243,7 +243,7 @@ reply_taboptions=Pilihan
 search_enone=Tiada kriteria carian yang dimasukkan
 delete_rusure2=Adakah anda pasti mahu memadamkan mesej ini dari $1? Ini mungkin mengambil sedikit masa untuk fail mel yang besar. Sehingga penghapusan selesai, tiada tindakan lain yang perlu dilakukan.
 view_aslideshow=Tunjukkan semua imej.
-search_limit=(dari * * 1 * mesej terakhir)
+search_limit=(dari $1 mesej terakhir)
 reply_body=Teks mesej
 mail_indexlink=Kembali ke peti mel
 compose_title=Tulis E-mel
@@ -280,7 +280,7 @@ delete_emovenone=Tiada mel yang dipilih untuk bergerak
 mail_loginheader2=Masuk pelayan IMAP
 ldap_ehost=Tiada pelayan LDAP ditetapkan dalam konfigurasi modul
 mail_search2=Carian untuk:
-send_eattachsize=Lampiran mel melebihi saiz maksimum dibenarkan * * 1 * bait
+send_eattachsize=Lampiran mel melebihi saiz maksimum dibenarkan $1 bait
 search_nolatest=Semua dalam folder
 view_gnupg_1=Tandatangan oleh $1 sah, tetapi rantaian amanah tidak dapat diwujudkan.
 mail_unknown=Tidak diketahui
@@ -401,7 +401,7 @@ view_noheaders=Lihat tajuk asas
 search_msg2=Hasil carian untuk $1
 send_epass=Anda tidak boleh menandatangani mesej kerana frasa laluan anda belum lagi diatur dalam modul GnuPG.
 ldap_elogin=Gagal mengikat pelayan LDAP $1 sebagai $2 : $3 
-index_eperl=Mod Perl * * 1 * diperlukan untuk mod pengesahan SMTP yang dipilih tidak dipasang atau tiada modul yang bergantung. <a href='$2'>Klik di sini</a> untuk memasangnya sekarang.
+index_eperl=Mod Perl $1 diperlukan untuk mod pengesahan SMTP yang dipilih tidak dipasang atau tiada modul yang bergantung. <a href='$2'>Klik di sini</a> untuk memasangnya sekarang.
 reply_headers=Tajuk surat
 view_dheader=Tanggalkan lampiran ke pelayan
 mail_move=Berpindah ke:

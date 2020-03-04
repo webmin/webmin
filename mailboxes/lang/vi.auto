@@ -48,7 +48,7 @@ view_desc=Tin nhắn $1 trong $2
 acl_usersg=Thành viên của nhóm
 index_esystem2=Không tìm thấy máy chủ thư được đặt trong cấu hình mô-đun <a href='$1'> trên hệ thống của bạn. Bạn sẽ cần điều chỉnh cấu hình để sử dụng đúng máy chủ.
 view_forward=Ở đằng trước
-mail_for=Trong 1*
+mail_for=Trong $1
 sform_headers=bất kỳ tiêu đề
 find_home=Thư mục nhà
 delete_enone=Không có thư nào được chọn để xóa

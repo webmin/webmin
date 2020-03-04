@@ -65,7 +65,7 @@ reply_errm=Falha ao mover o correio
 mail_logindesc=Você deve digitar um nome de usuário e senha para acessar o email <br> na sua caixa de entrada no servidor de email $1.
 reply_send=Enviar correio
 search_ematch=Você deve digitar o texto para comparar.
-search_results2=$1 mensagens de correspondência * * 2 *
+search_results2=$1 mensagens de correspondência $2
 view_crypt_3=O correio foi descriptografado com sucesso.
 view_allheaders=Ver todos os cabeçalhos
 razor_err=.. falhou! Veja a mensagem de erro acima pelo motivo.
@@ -202,7 +202,7 @@ acl_usersm=Usuários correspondentes
 acl_all=Todos
 delete_ecopyuser=O usuário para o qual copiar e-mail não existe
 mail_ecannot=Você não tem permissão para ler o email deste usuário
-mail_for=Em 1*
+mail_for=Em $1
 view_forward=frente
 index_esystem2=O servidor de correio definido na <a href='$1'>configuração do módulo</a> não foi encontrado no seu sistema. Você precisará ajustar a configuração para usar o servidor correto.
 acl_usersg=Membros de grupos

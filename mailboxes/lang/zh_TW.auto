@@ -9,7 +9,7 @@ mail_tofilter=按收件人創建過濾器
 view_dheader=分離到服務器的附件
 index_eperl=所選SMTP身份驗證模式所需的Perl模塊$1未安裝或缺少從屬模塊。 <a href='$2'>單擊此處</a>立即安裝。
 ldap_elogin=未能作為$2綁定到LDAP服務器$1 : $3
-search_msg2=** 1 *的搜索結果
+search_msg2=$1的搜索結果
 ldap_eport=在模塊配置中未設置有效的LDAP服務器端口
 slide_prev=以前
 mail_black=拒絕發件人
@@ -68,7 +68,7 @@ reply_return=撰寫郵件
 delete_ehnone=沒有選擇要報告為火腿的郵件
 reply_html1=撰寫HTML
 black_title=拒絕發件人
-log_read=閱讀** 1 *的郵件
+log_read=閱讀$1的郵件
 delall_ok=立即刪除
 reply_del=要求交貨狀態通知？
 mail_indexlink=返回信箱
@@ -145,7 +145,7 @@ reply_errm=無法移動郵件
 view_aopen=打開
 index_esystem3=聯繫在<a href='$1'>模塊配置</a>中設置的郵件系統時發生錯誤：$2。
 confirm_warnf=您確定要從文件夾<b>$2</b>中刪除$1個選定消息嗎？
-search_msg6=在$2字段中搜索** 1 *的結果
+search_msg6=在$2字段中搜索$1的結果
 view_images=顯示圖片
 black_already=電子郵件地址$1已經在SpamAssassin的拒絕地址列表中。
 left_addresses=地址簿
