@@ -892,7 +892,7 @@ sub go
                 my $file      = $mpath . "/$code";
                 my $file_auto = $mpath . "/$code.$language_suffix";
                 write_file($file, \%language);
-                write_file($file_auto, \%language_auto, undef, undef, $file) if (!$opt->{'only-transcode'});
+                write_file($file_auto, \%language_auto, undef, undef, $mfile) if (!$opt->{'only-transcode'});
 
                 # Git auto-commit after language was transcoded/translated
                 if ($git_commit) {
