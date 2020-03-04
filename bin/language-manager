@@ -570,6 +570,11 @@ sub translated_substitute
         $translated =~ s/[ ]+(\/)[ ]+/$1/g;
     }
 
+    # Treat `+` it is not not as ` + `
+    if ($original =~ /\w+\+\w+/) {
+        $translated =~ s/[ ]+(\+)[ ]+/$1/g;
+    }
+
     return $translated;
 }
 
