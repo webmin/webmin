@@ -524,6 +524,11 @@ sub translated_substitute
         # For RTL substitute `\d ٪` with `$\d`
         if ($rtl) {
             $translated =~ s/(٪[ ]+(\d+))/\$$2/g;
+
+            # Urdu returned as ٪1
+            if ($code eq 'ur') {
+                $translated =~ s/((\d+)٪)/\$$2/g;
+            }
         }
 
     } elsif ($format eq 'html') {
