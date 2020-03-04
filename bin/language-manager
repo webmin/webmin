@@ -468,8 +468,6 @@ sub translate_substitute
 
     # Preserve un-quoted $1, $2, $3 in strings, which are broken in so different ways, in different languages differently
     if ($format eq 'text') {
-
-        # $value =~ s/(?<!['|"|`|“|«|=|?|&])(\$(\d+))/*\@$2*/g;
         $value =~ s/(?<!['|"|`|“|«|=|?|&])(\$(\d+))/%$2/g;
     }
 
@@ -503,7 +501,7 @@ sub translated_substitute
         # Unescape preserved, un-quoted $1, $2, $3
         $translated =~ s/\%[ ]+(\d+)/ \$$1 /gi;
 
-        # If repalcement is change to localized version
+        # If replacement is changed to localized version
         $translated =~ s/％(\d+)/ \$$1/gi;
 
         # If the string starts with $1 and contains a space
@@ -511,8 +509,9 @@ sub translated_substitute
 
         # Get rid from undesirable spaces in parentheses
         $translated =~ s/\([ ]+\$(\d+)[ ]*\)/(\$$1)/gi;
+        $translated =~ s/\([ ]+\$(\d+)[ ]*%\)/(\$$1 %)/gi;
 
-        # There are different type of parentheses in easter languages
+        # There are different typeы of parentheses in eastern languages
         $translated =~ s/\（[ ]+\$(\d+)[ ]*\）/（\$$1）/gi;
 
         # The following, is abnormal way to make things work, around of the bugs produced by Google Translate API for (bg).
@@ -527,8 +526,6 @@ sub translated_substitute
             $translated =~ s/(٪[ ]+(\d+))/\$$2/g;
         }
 
-        # Unescape preserved, un-quoted $1, $2, $3 - stricter, when @ replaced with a (for example on pt, pt_BR)
-        # $translated =~ s/[*]{1}[ ]a[ ](\d+)[ ][*]{1}/\$$1/gi;
     } elsif ($format eq 'html') {
 
         # Unescape path in strings
@@ -890,7 +887,7 @@ sub go
                 my $file      = $mpath . "/$code";
                 my $file_auto = $mpath . "/$code.$language_suffix";
                 write_file($file, \%language);
-                write_file($file_auto, \%language_auto) if (!$opt->{'only-transcode'});
+                write_file($file_auto, \%language_auto, undef, undef, $file) if (!$opt->{'only-transcode'});
 
                 # Git auto-commit after language was transcoded/translated
                 if ($git_commit) {
