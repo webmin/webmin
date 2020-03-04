@@ -468,7 +468,9 @@ sub translate_substitute
 
     # Preserve un-quoted $1, $2, $3 in strings, which are broken in so different ways, in different languages differently
     if ($format eq 'text') {
-        $value =~ s/(?<!['|"|`|“|«|=|?|&])(\$(\d+))/*\@$2*/g;
+
+        # $value =~ s/(?<!['|"|`|“|«|=|?|&])(\$(\d+))/*\@$2*/g;
+        $value =~ s/(?<!['|"|`|“|«|=|?|&])(\$(\d+))/%$2/g;
     }
 
     # Preserve path in strings
@@ -483,7 +485,7 @@ sub translate_substitute
 # as it seems to be breaking quite a lot of things
 sub translated_substitute
 {
-    my ($translated, $original, $opt) = @_;
+    my ($translated, $original, $code, $rtl, $opt) = @_;
 
     my $format        = $opt->{'translate-format'};
     my $remove_spaces = sub {
@@ -499,10 +501,34 @@ sub translated_substitute
     if ($format eq 'text') {
 
         # Unescape preserved, un-quoted $1, $2, $3
-        $translated =~ s/[*]{1}.*?\@[ ]*(\d+).*?[*]{1}/\$$1/gi;
+        $translated =~ s/\%[ ]+(\d+)/ \$$1 /gi;
+
+        # If repalcement is change to localized version
+        $translated =~ s/％(\d+)/ \$$1/gi;
+
+        # If the string starts with $1 and contains a space
+        $translated =~ s/(^[ ]+\$)/\$/gi;
+
+        # Get rid from undesirable spaces in parentheses
+        $translated =~ s/\([ ]+\$(\d+)[ ]*\)/(\$$1)/gi;
+
+        # There are different type of parentheses in easter languages
+        $translated =~ s/\（[ ]+\$(\d+)[ ]*\）/（\$$1）/gi;
+
+        # The following, is abnormal way to make things work, around of the bugs produced by Google Translate API for (bg).
+        if ($code eq 'bg') {
+            if ($original =~ /\$(\d+)/ && $translated !~ /\$(\d+)/) {
+                $translated =~ s/(\d+)/\$$1/g;
+            }
+        }
+
+        # For RTL substitute `\d ٪` with `$\d`
+        if ($rtl) {
+            $translated =~ s/(٪[ ]+(\d+))/\$$2/g;
+        }
 
         # Unescape preserved, un-quoted $1, $2, $3 - stricter, when @ replaced with a (for example on pt, pt_BR)
-        $translated =~ s/[*]{1}[ ]a[ ](\d+)[ ][*]{1}/\$$1/gi;
+        # $translated =~ s/[*]{1}[ ]a[ ](\d+)[ ][*]{1}/\$$1/gi;
     } elsif ($format eq 'html') {
 
         # Unescape path in strings
@@ -527,8 +553,11 @@ sub translated_substitute
     # Remove any whitespaces
     $translated =~ s/([ ]+)/ /g;
 
-    # Fix trailing comma, which is separated from a word
+    # Fix trailing dot, which is separated from a word
     $translated =~ s/(.)[ ]+\./$1./g;
+
+    # Fix trailing comma, which is separated from a word
+    $translated =~ s/(.)[ ]+,/$1,/g;
 
     # Preserve inner formatting for tag's attrs
     $translated =~ s/<(\w+)[ ]+(\w+)(.*?)(=)[ ]*(.*?)[ ]*(\w+)/<$1 $2=$5$6/g;
@@ -564,7 +593,7 @@ sub translated_substitute
     if ($original =~ /<tt>[\/|~\/].*?<\/tt>/) {
         $translated =~ s/(<tt>)([\/|~\/].*?)(<\/tt>)/$1@{[&$remove_spaces($2)]}$3/g;
     }
-    
+
     # Always consider `/` to be a delimiter and replace ` / ` to `/`
     if ($original =~ /\w+\/\w+/) {
         $translated =~ s/[ ]+(\/)[ ]+/$1/g;
@@ -771,7 +800,6 @@ sub go
                     if (!@{$keys_test} &&
                         ($opt->{'only-diff'} ||
                             $type eq 'config' ||
-                            ($rtl && $value =~ /\$(\d+)|</) ||
                             (any {$_ =~ /^$key$/} @{$keys_exclude})))
                     {
                         talk_log(("" . DARK . "   .. ($code) stored original value for \`$key\` which is" . RESET . ""),
@@ -797,7 +825,7 @@ sub go
 
                     my $translated_ = $translated;
 
-                    $translated = translated_substitute($translated, $_value, $opt);
+                    $translated = translated_substitute($translated, $_value, $code, $rtl, $opt);
 
                     # Store translated string
                     $language_auto{$key__} = $translated;
