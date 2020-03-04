@@ -140,13 +140,15 @@ Write out the contents of a hash as name=value lines. The parameters are :
 
 =item sort - If given, passed hash reference will be sorted by its keys
 
+=item sortedby - If given, hash reference that is being saved will be sorted by the keys of sortby hashref
+
 =cut
 sub write_file
 {
 my (%old, @order);
 my $join = defined($_[2]) ? $_[2] : "=";
 my $realfile = &translate_filename($_[0]);
-&read_file($_[0], \%old, \@order);
+&read_file($_[4] || $_[0], \%old, \@order);
 &open_tempfile(ARFILE, ">$_[0]");
 if ($_[3] || $gconfig{'sortconfigs'}) {
 	foreach $k (sort keys %{$_[1]}) {
