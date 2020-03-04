@@ -48,6 +48,7 @@ create=Create
 delete=Delete
 find=Find
 error=Error
+error_403=Access denied!
 error_previous=previous page
 error_stack=Call Stack Trace
 error_file=File
