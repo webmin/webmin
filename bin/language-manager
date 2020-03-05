@@ -508,13 +508,13 @@ sub translated_substitute
         $translated =~ s/(^[ ]+\$)/\$/gi;
 
         # Get rid from undesirable spaces in parentheses
-        $translated =~ s/\([ ]+\$(\d+.*?)\)/(\$@{[trim($1)]})/gi;
+        $translated =~ s/([ ]+\))/)/gi;
+        $translated =~ s/([ ]+\）)/）/gi;
+        $translated =~ s/(\([ ]+)/(/gi;
+        $translated =~ s/(\（[ ]+)/（/gi;
 
         # Print actual values with percent sign
         $translated =~ s/\([ ]+\$(\d+)[ ]*%\)/(\$$1 %)/gi;
-
-        # There are different types of parentheses in eastern languages
-        $translated =~ s/\（[ ]+\$(\d+)[ ]*\）/（\$$1）/gi;
 
         # The following, is abnormal way to make things work, around of the bugs produced by Google Translate API for (bg).
         if ($code eq 'bg') {
