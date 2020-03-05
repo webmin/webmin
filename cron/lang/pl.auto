@@ -1,0 +1,13 @@
+index_manual=Ręcznie edytuj zadania crona.
+index_next=Następny bieg
+index_nunknown=Nieznany
+index_ecrondir_create=Spróbuj utworzyć katalog zadań $1 ?
+edit_next=Czas następnego uruchomienia
+when_boot=w czasie uruchamiania
+ucwhen_boot=W czasie uruchamiania
+manual_title=Ręcznie edytuj zadania Cron
+manual_edit=Plik Cron do edycji:
+manual_ok=Edytować
+manual_editing=Użyj pola tekstowego poniżej, aby edytować zadania Cron w $1. Bądź ostrożny, ponieważ Webmin nie dokona żadnej weryfikacji!
+manual_efile=Wybrany plik jest nieprawidłowy!
+manual_ecannot=Nie możesz ręcznie edytować zadań cron
