@@ -525,10 +525,21 @@ sub translated_substitute
         if ($rtl) {
             $translated =~ s/(٪[ ]+(\d+))/\$$2/g;
 
+            # Fix stuck, consecutive $2$1
+            $translated =~ s/\$(\d+)\$(\d+)/\$$1 \$$2/g;
+
             # Urdu returned as ٪1
             if ($code eq 'ur') {
                 $translated =~ s/((\d+)٪)/\$$2/g;
             }
+        }
+        
+        # Language specific fixes
+        if ($code eq 'th') {
+            $translated =~ s/(([3-9])%)/\$$2/g;
+        }
+        if ($code eq 'ro') {
+            $translated =~ s/ (([1-9])%) / \$$2 /g;
         }
 
     } elsif ($format eq 'html') {
