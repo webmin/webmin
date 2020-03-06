@@ -815,6 +815,7 @@ sub go
                     if (!@{$keys_test} &&
                         ($opt->{'only-diff'} ||
                             $type eq 'config' ||
+                            ($code eq 'ur' && $value =~ /</) ||
                             (any {$_ =~ /^$key$/} @{$keys_exclude})))
                     {
                         talk_log(("" . DARK . "   .. ($code) stored original value for \`$key\` which is" . RESET . ""),
