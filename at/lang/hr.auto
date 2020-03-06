@@ -1,0 +1,9 @@
+index_mail=Pošalji e-poštu po završetku?
+index_noat=Naredba $1 nije pronađena u vašem sustavu - možda nije instalirana ili nije dostupna za vaš operativni sustav.
+edit_shortcmd=Naredba za izvršenje
+edit_showfull=Prikaži cijelu skriptu.
+log_allow=Promijenjeni dopušteni korisnici
+log_create_job=Napravljena je zakazana naredba za $1 
+log_delete_job=Otkazana zakazana naredba za $1 
+log_exec_job=Izvršena zakazana naredba za $1 
+log_delete_jobs=Otkazane $1 zakazane naredbe
