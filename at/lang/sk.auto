@@ -1,0 +1,12 @@
+index_mail=Poslať e-mail po dokončení?
+index_delete=Zrušiť vybrané príkazy
+index_noat=Príkaz $1 nebol vo vašom systéme nájdený - možno nie je nainštalovaný alebo nie je k dispozícii pre váš operačný systém.
+edit_shortcmd=Príkaz na vykonanie
+edit_showfull=Zobraziť celý skript.
+deletes_err=Nepodarilo sa zrušiť príkazy
+deletes_enone=Žiadne vybraté
+log_allow=Zmenení povolení používatelia
+log_create_job=Bol vytvorený naplánovaný príkaz pre $1 
+log_delete_job=Zrušený naplánovaný príkaz pre $1 
+log_exec_job=Vykonal sa naplánovaný príkaz pre $1 
+log_delete_jobs=Zrušené $1 naplánované príkazy
