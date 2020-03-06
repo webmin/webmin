@@ -1,0 +1,6 @@
+index_noat=La commande $1 est introuvable sur votre système - elle n'est peut-être pas installée ou n'est pas disponible pour votre système d'exploitation.
+log_allow=Utilisateurs autorisés modifiés
+log_create_job=Commande planifiée créée pour $1 
+log_delete_job=Commande planifiée annulée pour $1 
+log_exec_job=Commande planifiée exécutée pour $1 
+log_delete_jobs=Commandes programmées $1 annulées
