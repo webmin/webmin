@@ -1,0 +1,12 @@
+index_mail=E-mailt küld a befejezéskor?
+index_delete=A kiválasztott parancsok törlése
+index_noat=A (z) $1 parancs nem található a rendszeren - talán nincs telepítve, vagy nem érhető el az operációs rendszer számára.
+edit_shortcmd=Végrehajtási parancs
+edit_showfull=A teljes szkript megjelenítése.
+deletes_err=A parancsok megszakítása nem sikerült
+deletes_enone=Egy sincs kiválasztva
+log_allow=Megváltozott az engedélyezett felhasználók
+log_create_job=Létrehozott ütemezett parancsot a (z) $1 számára
+log_delete_job=A (z) $1 ütemezett parancsát törölték
+log_exec_job=Végrehajtott ütemezett parancs a (z) $1 számára
+log_delete_jobs=$1 ütemezett parancsok törölve
