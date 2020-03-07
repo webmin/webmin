@@ -1,6 +1,5 @@
-__norefs=1
 acl_setup=Mag de monitor uitschakelen en instellingen maken?
-index_all=&lt;alles&gt;
+index_all=<alles>
 index_by=Toon verkeer met
 index_edir=De directory om de bandbreedte data $1 op te slaan bestaat niet, of is geen directory. Verander de <a href='$2'>module configuratie</a> om het pad te wijzigen.
 index_efiresys=Geen enkele ondersteunde Firewall (IPtables, IPFW, IPFilter of Shorewall) is gevonden op uw systeem. Controleer de betreffende modules om er zeker van te zijn dat ze geconfigureerd zijn.
@@ -14,7 +13,7 @@ index_emod=De Webmin module $1 is niet geinstalleerd op uw systeem of word niet 
 index_eport=Onbekende poort naam
 index_eproto=Ontbrekend protocol
 index_err=Mislukt om rapport te genereren
-index_esyslog=Er is geen enkele Systeem Log module geinstalleerd op uw systeem en/of word niet ondersteund door uw OS.  De Bandbreedte Monitor module kan niet werken zonder &#233;&#233;n van deze modules.
+index_esyslog=Er is geen enkele Systeem Log module geinstalleerd op uw systeem en/of word niet ondersteund door uw OS.  De Bandbreedte Monitor module kan niet werken zonder één van deze modules.
 index_eto=Ongeldig eind datum en tijd
 index_firesys=Gebruik $1 firewall en $2
 index_for=voor
@@ -40,7 +39,7 @@ index_missing1=Er moet een syslog configuratie ingang worden aangemaakt.
 index_missing2=Er moeten diverse firewall regels worden toegevoegd.
 index_missing3=Diverse firewall regels moeten worden toegevoegd, en een syslog configuratie ingang moet worden aangemaakt.
 index_nomatch=Geen verkeer komt overeen met de geselecteerde criteria.
-index_none=Er is nog geen verkeer door deze module samengevat. Als u het zojuist heeft ingesteld wacht dan nog minimaal &#233;&#233;n uur voordat het verkeer is afgewerkt.
+index_none=Er is nog geen verkeer door deze module samengevat. Als u het zojuist heeft ingesteld wacht dan nog minimaal één uur voordat het verkeer is afgewerkt.
 index_oport=externe poort
 index_other=Andere..
 index_port=poort
