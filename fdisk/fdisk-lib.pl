@@ -249,7 +249,7 @@ else {
 	open(FDISK, "fdisk -l -u=cylinders $devs 2>/dev/null || fdisk -l $devs 2>/dev/null |");
 	}
 while(<FDISK>) {
-	if (($m4 = ($_ =~ /Disk\s+([^ :]+):\s+(\d+)\s+(\S+),\s+(\d+)\s+bytes,\s+(\d+)\s+sectors/)) ||
+	if (($m4 = ($_ =~ /Disk\s+([^ :]+):\s+([\d\.]+)\s+(\S+),\s+(\d+)\s+bytes,\s+(\d+)\s+sectors/)) ||
 	    ($m1 = ($_ =~ /Disk\s+([^ :]+):\s+(\d+)\s+\S+\s+(\d+)\s+\S+\s+(\d+)/)) ||
 	    ($m2 = ($_ =~ /Disk\s+([^ :]+):\s+(.*)\s+bytes/)) ||
 	    ($m3 = ($_ =~ /Disk\s+([^ :]+):\s+([0-9\.]+)cyl/))) {
