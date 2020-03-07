@@ -1,0 +1,7 @@
+log_enable_repos=$1 -Paketrepositorys aktiviert
+log_disable_repos=$1 -Paketrepositorys deaktiviert
+log_delete_repos=$1 -Paket-Repositorys gelöscht
+log_enable_repo=Aktiviertes Paket-Repository $1 
+log_disable_repo=Deaktiviertes Paket-Repository $1 
+log_delete_repo=Paket-Repository $1 gelöscht
+log_create_repo=Paket-Repository $1 erstellt
