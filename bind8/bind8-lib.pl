@@ -4245,5 +4245,20 @@ sub flush_dnssec_expired_domains
 &unlink_file($dnssec_expiry_cache);
 }
 
+# get_virtualmin_domains(name)
+# Returns the Virtualmin domain objects for this zone, if any
+sub get_virtualmin_domains
+{
+my ($name) = @_;
+my @rv;
+if (&foreign_check("virtual-server")) {
+	&foreign_require("virtual-server");
+	my $d = &virtual_server::get_domain_by("dom", $name);
+	push(@rv, $d) if ($d);
+	push(@rv, &virtual_server:get_domain_by("dns_subof", $d->{'id'})) if ($d);
+	}
+return wantarray ? @rv : $rv[0];
+}
+
 1;
 
