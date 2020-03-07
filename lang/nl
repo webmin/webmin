@@ -1,4 +1,3 @@
-__norefs=1
 acl_feedback=Mag een terugkoppeling email versturen?
 acl_feedback0=Nee
 acl_feedback1=Ja, maar niet met de configuratie files
@@ -128,14 +127,14 @@ header_statusmsg=$1 is ingelogd bij $2 op $4 ($5)
 header_webmin=Webmin Index
 help_eexec=$1 mislukten : $2
 help_efile=Lezen van help file $1 is mislukt
-help_eheader=Ontbrekende &lt;header&gt; sectie
+help_eheader=Ontbrekende <header> sectie
 help_eif=$1 mislukt : $2
 help_einclude=Mislukt om $1 toe te voegen
 help_epath=Ontbrekende of ongeldig help pad
 help_err=Mislukt om help te tonen
 helpsearch=Zoek Documenten ..
 index=index
-link_essl=De Net::SSLeay Perl module die nodig is om HTTPS verbindingen te maken is niet geïnstalleerd op uw systeem.
+link_essl=De Net::SSLeay Perl module die nodig is om HTTPS verbindingen te maken is niet geÃ¯nstalleerd op uw systeem.
 longcategory_=Modules die in geen enkele categorie vallen
 longcategory_cluster=Modules die meerdere servers tegelijkertijd kunnen bedienen via een enkele interface.
 longcategory_hardware=Modules voor printer, harddisk en andere hardware configuratie
@@ -214,7 +213,6 @@ readparse_cdheader=Ontbrekende Inhoud-Dispositie header
 readparse_enc=Form-date decodering werd verwacht, maar kreeg een normale codering
 readparse_max=Data overschreed de maximale grote van $1 bytes
 referer_fix1=Indien dit een legitieme link is kunt als volgt links toestaan van deze URL : <ul><li>Normaal inloggen bij Webmin.<li>Ga naar de <b>Webmin Configuratie</b> module.<li>Klik op Vertrouwde Verwijzingen icoon.<li>Vul de hostnaam $1 in het <b>Betrouwbare websites</b> veld, en klik dan op <b>Opslaan</b>.</ul>
-referer_fix1u=Indien uw browser niet de benodigde <tt>Verwijzing</tt> header verstuurd kunt u deze controle als volgt uit schakelen :<ul><li>Normaal inloggen bij Webmin.<li>Ga naar de <b>Webmin Configuratie</b> module.<li>Klik op Vertrouwde Verwijzingen icoon.<li>Zet een vink in de <b>Vertrouw  links van onbekende verwijzingen</b> box, en klik dan op <b>Opslaan</b>.</ul>
 referer_fix2=Als alternatief kunt u Webmin ook configureren met de terminal opdracht regel door :<ul><li>Login als <tt>root</tt>, en bewerk de <tt>/etc/webmin/config</tt> file.<li>Voeg aan het einde deze regel toe <tt>referers=$1</tt>, indien er al een <tt>referers</tt> regel bestaat voegt u <tt>$1</tt> eraan toe. <li>Sla de file op.</ul>
 referer_fix2u=Als alternatief kunt u Webmin ook configureren om links van onbekende verwijzingen toe te staan door :<ul><li>Login als <tt>root</tt>, en bewerk de <tt>/etc/webmin/config</tt> file.<li>Zoek de regel <tt>referers_none=1</tt> en verander dit naar <tt>referers_none=0</tt>.<li>Sla de file op.</ul>
 referer_title=Veiligheid's Waarschuwing

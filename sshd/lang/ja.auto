@@ -1,0 +1,16 @@
+users_dsa=DSA（SSH 2）認証を許可しますか？
+users_maxauthtries=接続ごとの最大ログイン試行
+host_prots21=2、次に1
+keys_title=ホストSSHキー
+net_all4=すべてのIPv4アドレス
+users_chal=チャレンジ/レスポンス認証を使用しますか？
+host_prots12=1、次に2
+keys_none=SSHD構成にHostKeyエントリが見つかりませんでした。
+users_emaxauthtries=接続ごとのログイン試行の欠落または非数値
+net_sel=住所 ..
+host_prots1=1個のみ
+net_all6=すべてのIPv6アドレス
+host_prots2=2個のみ
+users_authkeys_set=ホームの下のファイル
+users_eauthkeys=認可されたキーファイルが見つからないか無効です
+keys_desc=このページでは、このホストのSSHキーを表示できます。

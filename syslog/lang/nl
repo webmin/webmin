@@ -1,4 +1,3 @@
-__norefs=1
 acl_all=Alle logs
 acl_any=Mag iedere file bekijken als een log?
 acl_extra=Extra log files voor deze gebruiker
@@ -30,7 +29,7 @@ edit_host=Syslog server aan
 edit_logto=Log naar
 edit_many=Veel
 edit_none=Niets
-edit_one=&#201;&#233;n
+edit_one=Één
 edit_pdir0=Tot of erboven ..
 edit_pdir1=Precies ..
 edit_pdir2=Eronder ..

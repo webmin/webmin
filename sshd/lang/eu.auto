@@ -1,0 +1,9 @@
+net_reverse=Bezeroaren IP helbideak berraztertzea?
+users_expire_def=Inoiz ez
+net_all4=IPv4 helbide guztiak
+users_chal=Erabili erronka-erantzunaren autentikazioa?
+users_maxauthtries=Konexio bakoitzeko gehieneko saiakera saiakera
+users_eauthkeys=Falta diren gakoen fitxategia falta edo baliogabea da
+net_sel=Helbidea ..
+net_all6=IPv6 helbide guztiak
+users_emaxauthtries=Konexio bakoitzeko saiakera saiakera kopurua edo ez zenbakizko bat falta da

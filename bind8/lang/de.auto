@@ -1,0 +1,5 @@
+log_dnssec=Ändern Sie die Neuunterzeichnung des DNSSEC-Schlüssels
+log_delete_stub=Gelöschte Stubzone $1
+log_forward=Vorwärtszone $1 erstellt
+log_delegation=Erstellen Sie eine Nur-Delegierungszone $1
+log_resign=Neu signierter DNSSEC-Schlüssel für Zone $1

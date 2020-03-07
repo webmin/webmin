@@ -1,4 +1,3 @@
-__norefs=1
 acl_all=Alle gebruikers
 acl_allow=Mag toegestane At gebruikers bewerken?
 acl_except=Alle gebruikers behalve

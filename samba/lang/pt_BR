@@ -563,7 +563,7 @@ swat_title=Login do SWAT
 swat_username=Nome de usu&#225;rios
 swats_fail=Falhou ao salvar nome de usu&#225;rio
 swats_user=Nome de usu&#225;rio SWAT
-viewu_ecmd=O programa de status do Samba $1 parece n&#227;o estar instalado no seu sistema. Talvez a <href='$2'>configura&#231;&#227;o do m&#243;dulo</a> esteja incorreta.
+viewu_ecmd=O programa de status do Samba $1 parece n&#227;o estar instalado no seu sistema. Talvez a <a href='$2'>configura&#231;&#227;o do m&#243;dulo</a> esteja incorreta.
 viewu_enone=Nenhum usu&#225;rio selecionado
 viewu_from=Conectado de
 viewu_group=Grupo

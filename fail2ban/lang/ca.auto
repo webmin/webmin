@@ -1,0 +1,3 @@
+log_update_jail=Presó modificada $1 
+log_update_action=Acció modificada $1 
+log_update_filter=Filtre modificat $1 

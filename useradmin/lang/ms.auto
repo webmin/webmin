@@ -301,11 +301,11 @@ index_who=Tunjukkan Log Masuk Pengguna
 index_whodesc=Tunjukkan pengguna yang sedang log masuk melalui SSH atau Usermin.
 lastlogin=Log masuk kali terakhir
 log_batch=Fail kumpulan yang dieksekusi $1
-log_batch_l=Fail kumpulan yang dieksekusi $1 dibuat, $3 gtt> dipadam)
+log_batch_l=Fail kumpulan yang dieksekusi $1 ($2 dibuat, $3 diubah suai, $4 dipadam)
 log_delete_groups=Dihapus kumpulan $1
 log_delete_users=Dihapuskan $1 pengguna
 log_gbatch=Fail kumpulan kumpulan yang dilaksanakan $1
-log_gbatch_l=Fail kumpulan kumpulan yang dieksekusi $1 ($2 dibuat, <gtt class=notranslate> / gtt> dipadam)
+log_gbatch_l=Fail kumpulan kumpulan yang dieksekusi $1 ($2 dibuat, $3 diubahsuai, $4 dipadam)
 log_gcreate=Kumpulan yang dibuat $1
 log_gdelete=Kumpulan yang dihapus $1
 log_gmodify=Kumpulan diubah suai $1

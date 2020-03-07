@@ -1,0 +1,17 @@
+index_manual=Edite manualmente os trabalhos cron.
+index_next=Próxima execução
+index_nunknown=Desconhecido
+index_ecrondir_create=Tente criar o diretório de tarefas $1 ?
+edit_next=Próximo tempo de execução
+edit_saverun=Salvar e executar agora
+save_eidx=O trabalho do Cron foi salvo com sucesso, mas não pode ser executado porque não foi encontrado!
+when_interval=a cada $1 segundo
+when_boot=no momento da inicialização
+ucwhen_interval=A cada $1 segundo
+ucwhen_boot=No momento da inicialização
+manual_title=Editar manualmente trabalhos Cron
+manual_edit=Arquivo Cron para editar:
+manual_ok=Editar
+manual_editing=Use a caixa de texto abaixo para editar tarefas Cron em $1. Tenha cuidado, pois nenhuma validação será feita pelo Webmin!
+manual_efile=O arquivo selecionado não é válido!
+manual_ecannot=Você não tem permissão para editar manualmente tarefas cron

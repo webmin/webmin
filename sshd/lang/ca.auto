@@ -1,0 +1,2 @@
+users_rsa=Permetre l'autenticació RSA (SSH 1)?
+users_dsa=Permetre l'autenticació DSA (SSH 2)?

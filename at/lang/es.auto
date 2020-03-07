@@ -1,0 +1,12 @@
+index_mail=¿Enviar correo electrónico al finalizar?
+index_delete=Cancelar comandos seleccionados
+index_noat=El comando $1 no se encontró en su sistema; tal vez no esté instalado o no esté disponible para su sistema operativo.
+edit_shortcmd=Comando para ejecutar
+edit_showfull=Mostrar guión completo.
+deletes_err=Error al cancelar comandos
+deletes_enone=Ninguna seleccionada
+log_allow=Usuarios permitidos modificados
+log_create_job=Comando programado creado para $1 
+log_delete_job=Comando programado cancelado para $1 
+log_exec_job=Comando programado ejecutado para $1 
+log_delete_jobs=Se cancelaron $1 comandos programados

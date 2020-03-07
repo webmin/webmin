@@ -1,0 +1,7 @@
+mapping_search=Cerca
+mapping_toomany=Hi ha $1 entrades de mapa, que es troba per sobre del límit de visualització de $2.
+mapping_match=Entrades de fitxers del mapa que coincideixen amb <tt>$1</tt> ..
+mapping_find=Mostra els mapatges que coincideixen:
+mysql_ecfile2=No s'ha pogut trobar la taula al fitxer de configuració de MySQL $1
+after_err=Error de configuració de correcció posterior : $1
+opts_delay_warning_time_default2=Per defecte del correfoc

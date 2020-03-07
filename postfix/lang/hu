@@ -3,7 +3,6 @@ connect_elogin=Failed to login to the database $1 : $2.
 index_title=Postfix Mail Server
 index_epath=The Postfix control command $1 is not installed on your system. Maybe your <a href='$2'>module configuration</a> is incorrect, or Postfix is not installed.
 index_postfix=Postfix
-
 internal_error=Internal Error
 index_econfig=The Postfix config command $1 does not exist. Maybe your <a href='$2'>module configuration</a> is incorrect.
 index_esuper=The Postfix supervisor command $1 does not exist. Maybe your <a href='$2'>module configuration</a> is incorrect.
@@ -13,10 +12,8 @@ index_stopmsg=Click this button to stop the running Postfix mail server. This wi
 index_startmsg=Click this button to start the Postfix mail server. Until this is done mail will not be delivered to local users from other systems, and clients will not be able to use this system as a mail server.
 index_version=Postfix version $1
 opts_err=Failed to save options
-
 check_error=Error while checking current Postfix configuration. Please manually fix Postfix configuration.
 check_manual=Manually edit the Postfix configuration file.
-
 address_rewriting_title=Address Rewriting and Masquerading
 address_rewriting_ecannot=You are not allowed to edit address rewriting and masquerading
 aliases_title=Mail Aliases
@@ -43,11 +40,9 @@ aliases_type5=Autoreply file $1
 aliases_type6=Apply filter file $1
 aliases_none=None
 aliases_delete=Delete Selected Aliases
-
 postfinger_title=Configuration Check
 postfinger_show=Show
 postfinger_ecannot=You are not allowed to check the postfix configuration
-
 mailclean_title=Clean MailQueue
 mailclean_ecannot=No privileges to clean MailQueues
 mailclean_active=Active-Queue
@@ -56,7 +51,6 @@ mailclean_deferred=Deferred-Queue
 mailclean_defer=Defer-Queue
 mailclean_all=All Queues
 mailclean_search=Search-String
-
 aform_type0=None
 aform_type1=Email address
 aform_type2=Addresses in file
@@ -72,7 +66,6 @@ aform_val=Alias to
 aform_afile=Edit..
 aform_return=alias
 aform_cmt=Description
-
 asave_err=Failed to save alias
 asave_eaddr='$1' is not a valid address
 asave_ealready=An alias for '$1' already exists
@@ -83,13 +76,11 @@ asave_etype4='$1' is not a valid program or does not exist
 asave_etype5=Autoreply file '$1' is not valid
 asave_etype4none=No program given
 asave_etype6=Filter file '$1' is not valid
-
 afile_title=Edit Address File
 afile_desc=Use the text area below to edit the addresses in the file $1.
 afile_efile=You are not allowed to edit $1.
 afile_undo=Undo Changes
 afile_ewrite=Failed to write to addresses file : $1
-
 ffile_title=Edit Filter File
 ffile_desc=Use the form below to setup filter rules in the file $1.
 ffile_efile=You are not allowed to edit $1.
@@ -105,7 +96,6 @@ ffile_other=Otherwise forward to $1
 ffile_err=Failed to save filter file
 ffile_ematch=Missing match
 ffile_eaction=Missing forwarding address
-
 rfile_title=Edit Autoreply File
 rfile_desc=Use the text area below to edit the autoreply message in $1. The message may contain the macros $SUBJECT, $FROM, $TO, $DATE and $BODY which will be expanded when the autoreply is activated.
 rfile_desc2=You can also set mail headers that add to or replace the defaults used in the autoreply by putting lines like:<br><tt>From: foo@bar.com</tt><br><tt>Subject: On holiday</tt><br>at the top of the message, separated from the body by a single blank line.
@@ -124,13 +114,11 @@ rfile_from=From: address for reply
 rfile_auto=Automatic (based on recipient's address)
 rfile_efrom=Missing From: address
 rfile_fromdesc=A From: address should always be specified where possible, as the automatic method may not be reliable.
-
 general_title=General Options
 general_title_sensible=Most Useful General options
 general_title_others=Other General Options
 general_ecannot=You are not allowed to edit General Options
 what_is_it=What is it?
-
 opts_default=Default
 opts_none=None
 opts_nomap=No map set
@@ -149,12 +137,10 @@ opts_mail_owner=Mail owner
 opts_default_privs=Default rights of the delivery agent
 opts_inet_interfaces=Network interfaces for receiving mail
 opts_all_interfaces=All
-
 opts_local_recipient_maps=Reject unknown local users
 opts_no=No
 opts_save=Save and Apply
 opts_edir=You are only allowed to specify map files under $1
-
 opts_allow_percent_hack=Rewrite "user%domain" to "user@domain"
 opts_append_at_myorigin=Rewrite "user" to "user@$mydomain"
 opts_append_dot_mydomain=Rewrite "user@host" to "user@host.$mydomain"
@@ -164,19 +150,13 @@ opts_swap_bangpath=Rewrite "site!user" to "user@site"
 opts_masquerade_domains=Address masquerading
 opts_masquerade_exceptions=Masquerading exceptions
 index_return=Postfix configuration
-
-
 opts_alias_maps=Alias databases used by the local delivery agent
-opts_alias_database=Alias databases built by &quot;newaliases&quot; command
-aliases_warning=Warning: <ul><li>when the first field is not empty, the default Postfix aliases-generation command is used to build up the corresponding databases ; <li>else the Sendmail compatibility command &quot;newaliases&quot; is used, this will use the second field's databases.</ul>
-
+opts_alias_database=Alias databases built by "newaliases" command
+aliases_warning=Warning: <ul><li>when the first field is not empty, the default Postfix aliases-generation command is used to build up the corresponding databases ; <li>else the Sendmail compatibility command "newaliases" is used, this will use the second field's databases.</ul>
 aliases_name=Name
 aliases_value=Alias to...
-
 new_alias=Create a new alias
 new_aliasmsg=Click this button to create a new alias
-
-
 local_delivery_ecannot=You are not allowed to edit local delivery options
 local_delivery_title=Local Delivery
 opts_local_transport=Name of the transport for local deliveries
@@ -202,8 +182,6 @@ opts_local_destination_recipient_limit=Max number of recipients per local messag
 opts_local_destination_recipient_limit_default=Default
 opts_prepend_delivered_header=Prepend a <tt>Delivered-To:</tt> when...
 opts_prepend_delivered_header_default=Default
-
-
 resource_title=General Resource Control
 resource_ecannot=You are not allowed to edit resource control parameters
 opts_bounce_size_limit=Max size of bounced message
@@ -223,8 +201,6 @@ opts_qmgr_message_recipient_limit=Max number of in-memory recipients
 opts_queue_minfree=Min free space in the queue file system
 opts_stale_lock_time=Max time after which stale lock is released
 opts_transport_retry_time=Time in seconds between attempts to contact a broken MDT
-
-
 opts_always_bcc=Address that receives bcc of each message
 opts_always_bcc_none=None
 opts_daemon_timeout=Timeout on handling requests
@@ -263,7 +239,6 @@ opts_trigger_timeout=Max time to send a trigger to a daemon
 opts_delay_warning_time=Time in hours before sending a warning for no delivery
 opts_delay_warning_time_default2=Postfix default
 opts_content_filter_default=None
-
 smtpd_title=SMTP Server Options
 smtpd_ecannot=You are not allowed to edit the SMTP server options
 opts_disable_vrfy_command=Disable SMTP VRFY command
@@ -292,7 +267,6 @@ opts_unknown_address_reject_code=SMTP server response on unknown domain reject
 opts_unknown_client_reject_code=SMTP server response on unknown client reject
 opts_unknown_hostname_reject_code=SMTP server response on unknown hostname reject
 smtpd_nomap=No map for allowed addresses for relaying has been entered yet.
-
 smtp_title=SMTP Client Options
 smtp_ecannot=You are not allowed to edit the SMTP client options
 opts_best_mx_transport=Action when listed as best MX host
@@ -309,10 +283,8 @@ opts_smtp_mail_timeout=Timeout on waiting for answer to MAIL FROM
 opts_smtp_rcpt_timeout=Timeout on waiting for answer to RCPT TO
 opts_smtp_data_init_timeout=Timeout on waiting for answer to DATA
 opts_smtp_data_xfer_timeout=Timeout on waiting for answer to transmit of message content
-opts_smtp_data_done_timeout=Timeout on waiting for answer to ending &quot;.&quot;
+opts_smtp_data_done_timeout=Timeout on waiting for answer to ending "."
 opts_smtp_quit_timeout=Timeout on waiting for answer to QUIT
-
-
 rate_title=Delivery rates
 rate_ecannot=You are not allowed to edit the delivery rates options
 opts_default_destination_concurrency_limit=Max number of parallel deliveries to the same destination
@@ -323,22 +295,18 @@ opts_maximal_queue_lifetime=Max time (days) in queue before message is undeliver
 opts_minimal_backoff_time=Min time (secs) between attempts to deliver a deferred message
 opts_queue_run_delay=Time (secs) between scanning the deferred queue
 opts_defer_transports=Transports that should not be delivered
-
-
 debug_title=Debugging features
 debug_ecannot=You are not allowed to edit the debugging features
 opts_debug_peer_list=List of domain/network patterns for which verbose log is enabled
 opts_debug_peer_level=Verbose logging level when matching the above list
 debug_version=Postfix Module for Webmin - Version $1
 opts_edebug=Missing or invalid verbose logging level - must be a number greater than zero
-
 ldap_title=LDAP lookups
 ldap_ecannot=You are not allowed to edit the LDAP lookups options
 ldap_non_existent=It seems that LDAP is nonexistent in your Postfix system
 opts_ldap_lookup_timeout=Timeout for LDAP database lookups
 opts_ldap_search_base=LDAP database to search
 opts_ldap_server_host=LDAP server hostname
-
 canonical_title=Canonical Mapping
 canonical_ecannot=You are not allowed to edit the canonical mapping configuration
 opts_canonical_maps=Address mapping lookup tables
@@ -352,7 +320,6 @@ canonical_edit_title=Edit Canonical Map
 canonical_return_sender=sender canonical maps
 canonical_return_recipient=recipient canonical maps
 canonical_return=canonical maps
-
 mapping_name=Name
 mapping_value=Maps to...
 mapping_delete=Delete Selected
@@ -376,7 +343,6 @@ map_noname=Missing or invalid mapping name
 map_cannot=This map cannot be edited : $1
 map_unknown=Webmin does not support the map type $1
 mapping_none=No mappings of this type have been defined yet.
-
 virtual_title=Virtual Domains
 virtual_ecannot=You are not allowed to edit the virtual domains mapping configuration
 opts_virtual_maps=Domain mapping lookup tables
@@ -384,28 +350,22 @@ opts_virtual_alias_maps=Domain mapping lookup tables
 opts_virtual_alias_domains=Domains to perform virtual mapping for
 virtual_same=From domain mapping tables
 virtual_return=virtual domains
-
 transport_title=Transport Mapping
 transport_ecannot=You are not allowed to edit the transport mapping configuration
 opts_transport_maps=Transport mapping lookup tables
 transport_return=transport maps
-
 relocated_title=Relocated Mapping
 relocated_ecannot=You are not allowed to edit the relocated mapping configuration
 relocated_return=relocated maps
 opts_relocated_maps=Relocated mapping lookup tables
 opts_content_filter=Email content filter
-
 map_click=Click on any mapping to edit its properties:
 no_map=(No map is currently defined. Define a map first, then you can edit it)
 no_map2=No map is currently defined. Define a map first, then you can edit it.
-
 stop_efailed=Failed to stop Postfix
 stop_ecannot=You are not allowed to stop Postfix
-
 start_efailed=Failed to start Postfix
 start_ecannot=You are not allowed to start Postfix
-
 query_get_efailed=Failed to query Postfix config command to get the current value of parameter $1: <tt>$2</tt>
 query_set_efailed=Failed to query Postfix config command to set the current value of parameter $1 to $2: <tt>$3</tt>
 reload_ecannot=You are not allowed to reload Postfix
@@ -413,7 +373,6 @@ reload_efailed=Failed to reload Postfix.
 regenerate_ecannot=You are not allowed to regenerate the Aliases
 regenerate_alias_efailed=Failed to regenerate aliases: <tt>$1</tt>
 regenerate_table_efailed=Failed to regenerate table $1: <tt>$2</tt>
-
 acl_resource=Can edit resources?
 acl_aliases=Can edit aliases?
 acl_aliases_options=Can edit aliases options?
@@ -440,7 +399,6 @@ acl_postfinger=Can check postfix configuration?
 acl_manual=Can edit config file?
 acl_dir=Allowed directory for map files
 acl_bcc=Can edit BCC mapping?
-
 boxes_title=User Mailboxes
 boxes_user=User
 boxes_size=Mailbox size
@@ -450,7 +408,6 @@ boxes_sent=Sent mail
 boxes_ecannot=You are not allowed to read email
 boxes_toomany=There are too many users on your system to list all their mailboxes.
 boxes_go=View mail for user:
-
 mail_title=User Email
 mail_from=From
 mail_date=Date
@@ -489,7 +446,6 @@ mail_forward=Forward
 mail_rfc=From line
 mail_move=Move to:
 mail_eexists=Message no longer exists!
-
 view_title=Read Email
 view_desc=Message $1 in $2
 view_desc2=Message $1 for user $2
@@ -518,7 +474,6 @@ view_body=Message text
 view_afile=Attachment name
 view_atype=Attachment type
 view_asize=File size
-
 compose_title=Compose Email
 reply_title=Reply to Email
 forward_title=Forward Email
@@ -529,7 +484,6 @@ reply_mailforward=Forwarded messages
 reply_attach2=Client and server-side Attachments
 reply_send=Send Mail
 reply_ecannot=You are not allowed to send mail as this user
-
 send_err=Failed to send mail
 send_eto=Missing To address
 send_efrom=Missing From address
@@ -543,7 +497,6 @@ send_eperms=User $1 cannot read $2
 send_eperms2=You are not allowed to send file $1
 send_epath=Sendmail executable $1 does not exist.
 send_ewrapper=Postfix sendmail interface program does not exist
-
 search_title=Search Results
 search_ecannot=You are not allowed to search this user's email
 search_ematch=You must enter text to match against.
@@ -551,7 +504,6 @@ search_efield=You must select a search type.
 search_none=No messages found.
 search_results2=$1 mail messages matching $2 ..
 search_results3=$1 mail messages not matching $2 ..
-
 match_from=From: matches
 match_subject=Subject: matches
 match_to=To: matches
@@ -569,7 +521,6 @@ match_!date=Date: doesn't match
 match_!body=Body doesn't match
 match_!size=Size is less than
 match_!headers=Headers don't match
-
 mailq_title=Mail Queue
 mailq_count=$1 messages
 mailq_none=No mail messages are currently queued for delivery
@@ -596,20 +547,15 @@ mailq_active=Active
 mailq_deferred=Deferred
 mailq_hold=Hold Selected
 mailq_unhold=Un-Hold Selected
-
 flushq_title=Flush Queue
 flushq_desc=Forcing the attempted delivery of mail with the command $1 ..
-
 qview_title=Queued Message
 qview_desc=From file $1
 qview_headers=Mail headers
 qview_attach=Attachments
-
 after_err=Postfix configuration error : $1
-
 searchq_title=Queue Search Results
 searchq_none=No queued messages found.
-
 header_title=Header Checks
 header_ecannot=You are not allowed to edit header checks
 header_eregexp=The header checks map must be in the format <tt>regexp:</tt><i>filename</i>
@@ -628,13 +574,11 @@ header_reject=Reject (with error message ..)
 header_warn=Log warning (with message ..)
 header_ename=Invalid regular expression - must be like /something/
 header_return=header checks
-
 body_title=Body Checks
 body_ecannot=You are not allowed to edit body checks
 body_eregexp=The body checks map must be in the format <tt>regexp:</tt><i>filename</i>
 opts_body_checks=Message body checking tables
 body_return=body checks
-
 manual_title=Edit Map File
 manual_file=Select a map file to edit:
 manual_change=Change
@@ -642,11 +586,9 @@ manual_editing=Use the text box below to manually edit the mappings in $1. Be ca
 manual_err=Failed to save map file
 manual_efile=Invalid map filename!
 manual_ecannot=You are not allowed to manually edit map files
-
 delq_titles=Deleting Messages
 delq_rusure=Are you sure you want to delete the $1 selected queued messages?
 delq_confirm=Delete Messages
-
 master_title=Server Processes
 master_name=Process name
 master_enabled=Enabled?
@@ -687,10 +629,8 @@ master_einet=A host address to listen on can only be specified for Internet proc
 master_ecommand=Missing server process command
 master_ewakeup=Missing or invalid wakeup time
 master_emaxprocs=Missing or invalid maximum number of processes
-
 delete_err=Failed to delete mappings
 delete_enone=None selected
-
 cmanual_title=Edit Config Files
 cmanual_ecannot=You are not allowed to edit the Postfix config file
 cmanual_ok=Edit
@@ -698,12 +638,10 @@ cmanual_efile=Selected file is not part of the Postfix configuration
 cmanual_file=Edit config file:
 cmanual_edata=Nothing entered!
 cmanual_err=Failed to save config file
-
 access_return=access map table
 edit_map_file=Edit Map File
 opts_reject_rbl_client=Realtime Black Lists (RBL) lookups
 opts_check_sender_access=Check sender access map table
-
 log_misc=Changed general options
 log_opts=Changed address rewriting and masquerading
 log_aliases=Changed aliases options
@@ -781,7 +719,6 @@ log_flushq=Flushed mail queue
 log_backend=Updated configuration file for map $1
 log_sasl=Changed SMTP authentication and encryption
 log_client=Changed SMTP client restrictions
-
 sasl_title=SMTP Authentication And Encryption
 opts_smtpd_sasl_auth_enable=Enable SASL SMTP authentication?
 opts_broken_sasl_auth_clients=Handle non-compliant SMTP clients?
@@ -819,7 +756,6 @@ sasl_nologin=None needed
 sasl_userpass=Login as $1 with password $2
 sasl_elogin=Missing or invalid SMTP login
 sasl_epass=Invalid SMTP password
-
 client_title=SMTP Client Restrictions
 client_ecannot=You are not allowed to edit SMTP client restrictions
 client_restrict=Client restrictions
@@ -829,7 +765,6 @@ client_other=Other restrictions :
 client_err=Failed to save client restrictions
 client_evalue=Missing value for restriction $1
 client_return=SMTP client restrictions
-
 chooser_title=Select Map Source
 chooser_header=Map source $1
 chooser_none=None
@@ -885,9 +820,7 @@ chooser_elquery_filter=Missing query filter for map $1
 chooser_elresult_attribute=Missing or invalid result attribute name for map $1
 chooser_elbind_dn=Missing login for LDAP server for map $1
 chooser_elbind_pw=Missing password for LDAP server for map $1
-
 mysql_ecfile=MySQL configuration file $1 was not found
-mysql_emysql=Failed to load the database driver $1
 mysql_elogin=Failed to login to the database $1 : $2.
 mysql_equery=Failed to query table $1 : $2
 mysql_eadd=SQL insert failed : $1
@@ -896,7 +829,6 @@ mysql_eupdate=SQL update failed : $1
 mysql_elist=SQL query failed : $1
 mysql_esource=No MySQL source named $1 was found
 mysql_eneed=The MySQL configuration parameter $1 was not found. Webmin needs this to figure out which table and fields to query.
-
 ldap_ecfile=LDAP configuration file $1 was not found
 ldap_eldapmod=Perl module $1 needed to communicate with LDAP is not installed or not loadable
 ldap_eldap=Failed to connect to LDAP server $1 on port $2
@@ -907,7 +839,6 @@ ldap_edelete=LDAP delete of $1 failed : $2
 ldap_equery=LDAP search of $1 failed : $2
 ldap_erename=LDAP rename of $1 to $2 failed : $3
 ldap_emodify=LDAP modify of $1 failed : $2
-
 bcc_title=BCC Mapping
 bcc_ecannot=You are not allowed to edit BCC mappings
 opts_sender_bcc_maps=Sender BCC mapping lookup tables
@@ -916,5 +847,3 @@ bcc_sender=Sender mappings
 bcc_recipient=Recipient mappings
 bcc_senderdesc=The sender BCC mappings define an additional email address that mail <b>from</b> the addresses or domains listed will be BCCd to.
 bcc_recipientdesc=The recipient BCC mappings define an additional email address that mail <b>to</b> the addresses or domains listed will be BCCd to.
-
-__norefs=1

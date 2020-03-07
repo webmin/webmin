@@ -1,0 +1,6 @@
+right_drivefailed=La vérification SMART a échoué!
+right_used3=$2 utilisé, $3 mis en cache, $1 au total
+right_fsfull=Avertissement! Le système de fichiers $2 monté sur $1 n'a pas d'espace disque libre!
+right_fsnearly=Avertissement! Le système de fichiers $2 monté à $1 ne dispose que de $3 d'espace disque libre
+right_ifsfull=Avertissement! Le système de fichiers monté sur $1 n'a pas d'inodes libres sur $2 !
+right_ifsnearly=Avertissement! Le système de fichiers monté sur $1 n'a que $3 d'inodes libres sur $2 

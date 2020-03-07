@@ -12,7 +12,6 @@ index_applydesc=Click this button to apply the current SpamAssassin configuratio
 index_cpan=Because SpamAssassin is a Perl module, you can also install it automatically using Webmin's <a href='$2'>Perl Modules</a> module to download $1 from CPAN.
 index_spamassassin=SpamAssassin
 index_ecannot=You are not allowed to manage the SpamAssassin configuration file $1
-
 white_title=Allowed and Denied Addresses
 white_desc=The tables on this page allow you to specify From: and To: addresses for email that is always or never categorized as spam. Any other email will be processed as normal by SpamAssassin's rules. All email addresses can contain wildcards, like *@foo.com or *.foo.com to match entire domains.
 white_from=Senders to never classify as spam
@@ -43,7 +42,6 @@ white_tabham=Allowed addresses
 white_tabspam=Denied addresses
 white_tabsome=Destination addresses
 white_tabimport=Import addresses
-
 score_title=Spam Classification
 score_desc=SpamAssassin assigns a score to each message based on its content and headers. The options on this page determine the score above which a message is considered spam, and some of the methods via which that score is calculated.
 score_header=Spam message classification options
@@ -76,7 +74,6 @@ score_emxdelay=Missing or invalid seconds to wait between MX checks
 score_etimeout=Missing or invalid seconds to wait for RBL queries
 score_ereceived=Missing or invalid number of Received: headers to check with RBL
 score_bayes=Use Bayesian learning classifier?
-
 report_title=Message Modification
 report_desc=The options on this page control the modifications that SpamAssassin makes to the headers and body of all messages that it analyzes, and modifications that it makes to those classified as spam.
 report_header=Analysed and spam message modification options
@@ -109,7 +106,6 @@ report_addspam=Spam
 report_addham=Ham
 report_addall=All
 report_eaddheader=Missing or invalid additional header to add $1
-
 user_title=Miscellaneous User Options
 user_desc=The options on this page are mostly related to the paths and settings that SpamAssassin uses for the external spam identification packages Razor, DCC and Pyzor. You can also tell SpamAssassin if it will be able to perform DNS lookups or not.
 user_header=Miscellaneous user-level options
@@ -132,7 +128,6 @@ user_err=Failed to save user options
 user_etimeout='$1' is not a valid timeout
 user_epath='$1' is not a valid client program path
 user_emax='$1' is not a valid checksum count
-
 header_title=Header and Body Tests
 header_desc=This page allows you to define additional tests that SpamAssassin will apply to email, based on message headers, the body content, URLs found in the body, or combinations of other tests. The name assigned to each test is up to you, but is usually something like CONTAINS_FOO. The actual score that SpamAssassin adds to messages matching a test can be set by entering your own or built-in test names in the tables at the bottom of the page.
 header_switch=Switch to simple mode ..
@@ -166,7 +161,6 @@ header_eeval='$1' is not a valid evaluation function
 header_eheader='$1' is not a valid email header
 header_eregexp='$1' is not a valid regular expression (must be like /expression/)
 header_emeta=Missing test expression for test '$1'
-
 priv_title=Miscellaneous Privileged Options
 priv_desc=The options on this can only be set globally, rather than in individual users' configuration files. They control with paths to various configuration and logging file.
 priv_header=Miscellaneous privilege-level settings
@@ -186,10 +180,8 @@ priv_eargs='$1' is not a valid list of arguments
 priv_emscore='$1' is not a valid highest phrase score
 priv_ephrase='$1' is not a valid two-word spam phrase
 priv_escore=Missing or invalid score for spam phrase '$1'
-
 usually=Usually $1
 ecannot=You are not allowed to use this page
-
 setup_title=Setup Procmail For SpamAssassin
 setup_desc_webmin=This form can be used to setup Procmail in $1 to run SpamAssassin on all email messages received by your system. However, this will only have any effect if your mail server has been configured to use Procmail for local delivery, or for users whose <tt>.forward</tt> files are set up to run Procmail.
 setup_desc_usermin=This form can be used to setup Procmail in $1 to run SpamAssassin on all email messages sent to your account. However, this will only have any effect if the mail server has been configured to use Procmail for local delivery, or if your <tt>.forward</tt> files is set up to feed all email to Procmail.
@@ -207,13 +199,11 @@ setup_drop1=Recipient Unix user
 setup_drop0=<tt>root</tt> user
 setup_ok=Setup Procmail for SpamAssassin
 setup_email=Forward to email address
-
 setup_err=Failed to setup SpamAssassin
 setup_efile=Missing or invalid mbox-format file
 setup_emaildir=Missing or invalid Qmail mail directory
 setup_emhdir=Missing or invalid MH mail directory
 setup_eemail=Missing or invalid email address
-
 log_white=Modified allowed and denied addresses
 log_score=Modified spam classification
 log_report=Modified message modification
@@ -223,22 +213,20 @@ log_priv=Modified miscellaneous privileged options
 log_setup=Setup Procmail for SpamAssassin
 log_procmail=Changed Procmail configuration
 log_import=Imported $1 allowed addresses
-
 import_title=Import Addresses
 import_err=Failed to import addresses
 import_efile=No file to import from selected
 import_enone=No email addresses found in file
 import_ok1=$2 email addresses were found in the file, of which $1 were new and have been added to the alllowed addresses list.
 import_ok2=$1 email addresses were found in the file, but they were all already in the allowed addresses list.
-
 mail_title=Spam Mail
 mail_desc=This page lists messages that have been classified as spam, and are awaiting some action. Messages that have been incorrectly indentified can be moved to your Inbox, while those that are really spam can be deleted.
 mail_level=Score
 mail_level2=Spam score
 mail_inbox=Move to Inbox
-mail_whitelist2=Allow Sender &amp; Inbox
-mail_razor=Report as Spam &amp; Delete
-mail_ham=Report as Ham &amp; Inbox
+mail_whitelist2=Allow Sender & Inbox
+mail_razor=Report as Spam & Delete
+mail_ham=Report as Ham & Inbox
 mail_delete=Delete
 mail_return=spam mail list
 mail_pos=Spam messages $1 to $2 of $3
@@ -248,13 +236,10 @@ mail_will=Automatic refresh in $1 minutes
 mail_wills=Automatic refresh in $1 seconds
 mail_delall=Delete All Spam
 mail_search3=Search for score above:
-
 process_eclean=An error occurred removing the SpamAssassin headers from this email
 process_ereport=Failed to report email to SpamAssassin : $1
-
 apply_err=Failed to apply changes
 apply_none=No SpamAssassin daemon processes found!
-
 acl_avail=Icons available to user
 acl_file=SpamAssassin configuration file to edit
 acl_filedef=Global config file
@@ -262,10 +247,8 @@ acl_awl=Allowed users for auto-whitelist editing
 acl_awl0=All users
 acl_awl1=Only listed users $1
 acl_awl2=Only members of groups $1
-
 search_escore=Missing or invalid spam score
 search_results5=$1 mail messages with spam score at or above $2 ..
-
 razor_title=Setup Razor Spam Detector
 razor_desc=Vipul's Razor is a collaborative spam detection and reporting system that can improve the classification of spam sent to your address. However, before it can be used you must register for a Razor account, using the form below.
 razor_user=Razor username
@@ -280,11 +263,9 @@ razor_epass=Missing password
 razor_doing=Now attempting to register and setup Razor ..
 razor_done=.. done.
 razor_failed=.. failed! See the error output above for the reason why.
-
 procmail_title=Procmail Spam Delivery
 procmail_ok=Change Procmail Delivery
 procmail_desc=The form can be used to change the Procmail configuration that determines what happens to messages classified as spam.
-
 simple_title=Header and Body Tests
 simple_desc=This page allows you to define additional tests that SpamAssassin will apply to email, based on message headers, the body content, URLs found in the body. The name assigned to each test is up to you, but is usually something like CONTAINS_FOO.
 simple_switch=Switch to advanced mode ..
@@ -295,10 +276,8 @@ simple_regexp=Match expression
 simple_score=Score to apply
 simple_describe=Description
 simple_err=Failed to save message tests
-
 before_ecmd=Before-saving command failed : $1
 after_ecmd=After-saving command failed : $1
-
 connect_emysql=Failed to load the database driver $1
 connect_elogin=Failed to login to the database $1 : $2.
 connect_equery=The database $1 does not contain the preferences table $2
@@ -306,11 +285,9 @@ connect_eldapmod=Perl module $1 needed to communicate with LDAP is not installed
 connect_eldap=Failed to connect to LDAP server $1 on port $2
 connect_eldaplogin=Failed to login to LDAP server $1 as $2 : $3
 connect_ebase=LDAP base DN $1 is not valid : $2
-
 eldap=LDAP operation failed : $1
 esql=SQL failed : $1
 ldap_euser=Could not find LDAP user object for $1
-
 db_title=SQL and LDAP Databases
 db_header=Configuration storage database options
 db_dsn=Store user configurations in
@@ -346,7 +323,6 @@ db_eldapport=Missing or invalid LDAP server port number
 db_eldapdn=Missing or invalid base DN - no spaces are allowed
 db_eldapattr=Missing or invalid SpamAssassin attribute
 db_eldapuid=Missing or invalid username attribute
-
 awl_title=Manage Auto-Whitelists
 awl_search=Search whitelist for:
 awl_ok=Search
@@ -372,7 +348,6 @@ awl_deleteone=Clear Auto-Whitelist
 awl_deleteonedesc=Remove all auto-whitelist entries for the user $1.
 awl_deleteall=Clear All Auto-Whitelists
 awl_deletealldesc=Remove all auto-whitelist entries for all users on the system.
-
 dawl_err=Failed to delete from auto-whitelist
 dawl_eopen=Could not open whitelist
 dawl_enone=No addresses to delete selected
@@ -380,4 +355,3 @@ dawl_ecannot=You are not allowed to manage the auto-whitelist for this user
 dawl_doing=Deleting auto-whitelists for all users ..
 dawl_done=.. deleted $2 entries from $1 users.
 dawl_title=Delete All Auto-Whitelists
-__norefs=1

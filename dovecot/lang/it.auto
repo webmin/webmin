@@ -1,0 +1,4 @@
+manual_editsel=Modifica il file di configurazione Dovecot
+manual_efile=Il file di configurazione selezionato non è valido
+net_lmtp=LMTP
+manual_ok=modificare
