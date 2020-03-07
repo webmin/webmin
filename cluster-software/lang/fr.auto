@@ -1,0 +1,12 @@
+install_erus=Ce serveur utilise un système de mise à jour différent du serveur maître ($1 contre $2)
+install_eupdate=Une erreur s'est produite lors de l'installation des mises à jour spécifiées
+install_ealready=La version $1 est déjà installée
+search_delete=Désinstaller les packages sélectionnés de:
+search_invert=Inverser la sélection
+host_system=Système d'emballage
+edit_have=<hôtes qui l'ont>
+refresh_header4=Nouvelle demande de listes de packages aux membres de $2 ..
+refresh_header5=Nouvelle demande de listes de packages à partir de $2 ..
+do_header6=Installation de $1 sur des hôtes qui l'ont déjà ..
+do_success2=$1 installé sur $2.
+deletes_rusure=Voulez-vous vraiment désinstaller les packages $1 des hôtes sélectionnés?
