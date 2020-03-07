@@ -1,0 +1,8 @@
+index_langglobal2=Global dil.. $1 ($2)
+index_overlay=Tema yer paylaşımı
+index_overlaydef=Yok - tema varsayılanlarını kullan
+index_passagain=Şifreyi yeniden gir
+change_epass2=yeni şifreler uyuşmuyor
+change_epass=Yeni şifre geçerli değil : $1 
+change_eoverlay=Bir kullanıcı arayüzü teması da seçilmedikçe bir tema kaplaması seçemezsiniz
+change_eoverlay2=Seçilen tema kaplaması seçilen UI temasıyla uyumlu değil
