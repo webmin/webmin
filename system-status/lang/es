@@ -22,7 +22,7 @@ right_disk=Espacio en disco local
 right_used=$2 usado, $1 en total
 right_used2=$2 usado, $1 garantizado, $3 burstable
 right_used3=$2 usado, $3 cached, $1 en total
-right_out=$1&nbsp;of&nbsp;$2
+right_out=$1 of $2
 right_fsfull=Â¡Advertencia! The $2 filesystem mounted at $1 has no free disk space!
 right_fsnearly=Â¡Advertencia! The $2 filesystem mounted at $1 sÃ³lo tiene $3 de espacio libre en disco
 right_ifsfull=Â¡Advertencia! El sistema de archivos montado en $1 no tiene inodos libres de $2!
@@ -44,7 +44,6 @@ right_upsec=$1 actualizaciones de paquetes disponibles, de las cuales $2 son act
 right_recollect=Actualizar informaciÃ³n del sistema
 right_vvirtualmin=VersiÃ³n de Virtualmin
 right_vvm2=VersiÃ³n de Cloudmin
-
 acl_show=InformaciÃ³n del sistema para mostrar
 acl_showall=Todo
 acl_showsel=Solo seleccionado ..
