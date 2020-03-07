@@ -619,6 +619,10 @@ sub translated_substitute
         $translated =~ s/[ ]+(\+)[ ]+/$1/g;
     }
 
+    # The following should have no spaces, e.g. `<tt>uid=joe,dc=my-domain,dc=com</tt>`
+    $translated =~ s/(<tt>)(uid[ ]*=.*?)(<\/tt>)/$1@{[&$remove_spaces($2)]}$3/g;
+
+
     return $translated;
 }
 
@@ -701,6 +705,12 @@ sub go
 
         # Get source, base language file
         read_file($mfile, \%template);
+
+        # Check if the module has already been transcoded/translated, to avoid potential mess
+        if ($opt->{'language-source-encoding'} eq 'map' && -r $mpath . "/de.auto") {
+            talk_log(("Transcoding/translating skipped for " . RED BOLD, $module, RESET . " module .."), $data, 1);
+            next;
+        } 
 
         talk_log(("Transcoding/translating " . BLUE BOLD, $module, RESET . " module .."), $data, 1);
         foreach $language (@{ $data->{'languages_source_list'} }) {
