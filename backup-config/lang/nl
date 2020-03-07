@@ -1,4 +1,3 @@
-__norefs=1
 backup_doing=Start backup van module configuratie files naar $1 ..
 backup_done=.. compleet. Uiteindelijk backup grote van $1, en bevat $2 files.
 backup_edest=Ontbrekende of verkeerde absolute locale file
