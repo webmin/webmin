@@ -1,0 +1,3 @@
+index_setupdesc2=<b>Varning - den här modulen loggar ALL nätverkstrafik som skickats eller mottagits i det valda gränssnittet. Detta kommer att konsumera en stor mängd diskutrymme och CPU-tid på en snabb nätverksanslutning.</b>
+index_other=Övrig ..
+setup_eiface=Saknas eller ogiltigt gränssnittsnamn
