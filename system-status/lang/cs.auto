@@ -1,5 +1,5 @@
 right_used3=Použité $2, $3 v mezipaměti, $1 celkem
 right_fsfull=Varování! Souborový systém $2 připojený na $1 nemá volné místo na disku!
 right_fsnearly=Varování! Souborový systém $2 připojený na $1 má pouze $3 volného místa na disku
-right_ifsfull=Varování! Souborový systém připojený na $1 nemá žádné% inodů z $2 !
+right_ifsfull=Varování! Souborový systém připojený na $1 nemá žádné inodů z $2 !
 right_ifsnearly=Varování! Souborový systém připojený na $1 obsahuje pouze $3 bezplatných inodů z $2 
