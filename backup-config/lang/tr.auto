@@ -1,5 +1,5 @@
 index_test=Sadece neyin geri yükleneceğini göster?
-index_nostrftime=Uyarı - bazı yedekleme işleri dosya adlarında% kullanır, ancak Modül Yapılandırma sayfasında strftime değiştirme etkin değildir.
+index_nostrftime=Uyarı - bazı yedekleme işleri dosya adlarında % kullanır, ancak Modül Yapılandırma sayfasında strftime değiştirme etkin değildir.
 index_tabsched=Zamanlanmış yedeklemeler
 index_tabbackup=Şimdi yedekle
 index_tabrestore=Şimdi geri yükle

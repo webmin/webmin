@@ -344,7 +344,7 @@ opts_fallback_relay=المضيفين / المجالات لتسليم البري�
 chooser_emquery=استعلام مخصص مفقود للخريطة
 header_redirect=إعادة التوجيه إلى العنوان ..
 aliases_delete=حذف الأسماء المستعارة المحددة
-opts_allow_percent_hack=أعد كتابة "user٪ domain" إلى "user @ domain"
+opts_allow_percent_hack=أعد كتابة "user٪domain" إلى "user@domain"
 ffile_cc=CC
 header_dunno=لا تفعل شيئا
 mail_body=الجسم

@@ -1,5 +1,5 @@
 index_test=¿Solo muestra lo que se restaurará?
-index_nostrftime=Advertencia: algunos trabajos de copia de seguridad usan% en sus nombres de archivo, pero la sustitución de strftime no está habilitada en la página de configuración del módulo.
+index_nostrftime=Advertencia: algunos trabajos de copia de seguridad usan % en sus nombres de archivo, pero la sustitución de strftime no está habilitada en la página de configuración del módulo.
 index_tabsched=Copias de seguridad programadas
 index_tabbackup=Copia ahora
 index_tabrestore=Restaurar ahora

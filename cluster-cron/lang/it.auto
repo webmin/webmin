@@ -27,6 +27,6 @@ log_modify=Cron job del cluster modificato per $1
 log_modify_l=Cron job cluster modificato $2 per $1 
 log_delete=Processo cron del cluster eliminato per $1 
 log_delete_l=Processo cron del cluster eliminato $2 per $1 
-log_deletes=Eliminati processi cron 1% cluster
+log_deletes=Eliminati processi cron $1 cluster
 delete_err=Impossibile eliminare i processi cron del cluster
 delete_enone=Nessuno selezionato

@@ -1,5 +1,5 @@
 index_test=Montrez simplement ce qui sera restauré?
-index_nostrftime=Avertissement - certains travaux de sauvegarde utilisent% dans leurs noms de fichiers, mais la substitution strftime n'est pas activée sur la page Configuration du module.
+index_nostrftime=Avertissement - certains travaux de sauvegarde utilisent % dans leurs noms de fichiers, mais la substitution strftime n'est pas activée sur la page Configuration du module.
 index_tabbackup=Sauvegarder maintenant
 index_tabrestore=Restaurer maintenant
 edit_header2=Commandes de pré et post sauvegarde

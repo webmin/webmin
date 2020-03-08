@@ -14,7 +14,7 @@ index_return=zerbitzari zerrenda
 index_start=Hasi Fetchmail Daemon
 index_stop=Fetchmail Daemon gelditu
 index_startmsg=Egin klik botoi honetan zerbitzari honetan fetchmail-eko deabrua abiarazteko eta $1 segundotan posta elektronikorako egiaztatzea. Daemon erabiltzaileak $2 gisa exekutatuko da eta goiko konfigurazioa erabiliko du.
-index_stopmsg=Egin klik botoi honetan ia 1% erabiltzaile gisa exekutatzen ari den fetchmail deabrua gelditzeko. Posta ez da $2 segundo bakoitzean automatikoki deskargatuko.
+index_stopmsg=Egin klik botoi honetan ia $1 erabiltzaile gisa exekutatzen ari den fetchmail deabrua gelditzeko. Posta ez da $2 segundo bakoitzean automatikoki deskargatuko.
 index_efetchmail=Ezin da $1 fetchmail programa aurkitu. Agian, fetchmail ez dago zure sisteman instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
 index_none=Unix-eko erabiltzaileek ez dute <tt>.fetchmailrc</tt> fitxategiak.
 index_cron=Egindako egiaztapena

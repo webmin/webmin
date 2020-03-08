@@ -6,7 +6,7 @@ listl_unknown=ناشناخته
 listl_allocs=$1 آدرس IP موجود ،$2 اختصاص یافته ($3٪)
 listl_mode=حالت نمایش  :
 listl_mode_0=DHCP اجاره می دهد
-listl_mode_1=Ø²ÛØ±ÙØ¬ÙÙØ¹Ù‌ÙØ§ Ù ÙÙØ§Ø±Ø¯ Ø§Ø³ØªÙØ§Ø¯Ù
+listl_mode_1=زیرمجموعه‌ها و موارد استفاده
 listl_size=کل IP ها
 listl_used=اختصاص داده شده
 listl_pc=درصد

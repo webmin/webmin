@@ -2,7 +2,7 @@ index_title=Monitoraġġ tal-Bandwidth
 index_efiresys=L-ebda wieħed mill-firewalls appoġġati (IPtables, IPFW, IPFilter jew Shorewall) ma ġie osservat fis-sistema tiegħek. Iċċekkja l-moduli xierqa biex tiżgura li huma kkonfigurati.
 index_efiresys2=Is-sistema tal-firewall konfigurata $1 ma nstabetx fis-sistema tiegħek. Aġġusta l- <a href='$2'>konfigurazzjoni tal-modulu</a> biex tuża l-firewall korrett.
 index_elog=Il-fajl $1 użat għall-qtugħ tal-frekwenza tal-frekwenza huwa attwalment direttorju fis-sistema tiegħek. Aġġusta l- <a href='$2'>konfigurazzjoni tal-modulu</a> biex tuża mogħdija differenti.
-index_edir=Id-direttorju għall-ħażna tad-dejta tal-bandwid%% ma jeżistix, jew mhuwiex direttorju. Aġġusta l- <a href='$2'>konfigurazzjoni tal-modulu</a> biex tuża mogħdija differenti.
+index_edir=Id-direttorju għall-ħażna tad-dejta tal-bandwid $1 ma jeżistix, jew mhuwiex direttorju. Aġġusta l- <a href='$2'>konfigurazzjoni tal-modulu</a> biex tuża mogħdija differenti.
 index_emod=Il-modulu Webmin $1 mhuwiex installat fuq din is-sistema jew mhuwiex sostnut mill-OS tiegħek. Il-modulu ta 'Monitoraġġ tal-Bandwidth ma jistax jaħdem mingħajrha.
 index_esyslog=L-ebda wieħed mill-moduli ta 'Zkuk tas-Sistema ma huma installati fuq din is-sistema u huma appoġġjati mill-OS tiegħek. Il-modulu ta 'Monitoraġġ tal-Bandwidth ma jistax jaħdem mingħajr wieħed minnhom.
 index_firesys=Uża firewall $1 u $2 

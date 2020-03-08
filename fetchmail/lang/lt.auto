@@ -13,7 +13,7 @@ index_file=„Fetchmail“ konfigūracija $1
 index_return=serverių sąrašas
 index_start=Paleiskite „Fetchmail“ demoną
 index_stop=Sustabdykite „Fetchmail“ demoną
-index_startmsg=Spustelėkite šį mygtuką, kad paleistumėte „fetchmail“ demoną šiame serveryje ir leistumėte jį tikrinti, ar nėra pašto kas 1% sekundės. Demonas veiks kaip vartotojas $2 ir naudos aukščiau pateiktą konfigūraciją.
+index_startmsg=Spustelėkite šį mygtuką, kad paleistumėte „fetchmail“ demoną šiame serveryje ir leistumėte jį tikrinti, ar nėra pašto kas $1 sekundės. Demonas veiks kaip vartotojas $2 ir naudos aukščiau pateiktą konfigūraciją.
 index_stopmsg=Spustelėkite šį mygtuką, kad sustabdytumėte „fetchmail“ demoną, kuris šiuo metu veikia kaip $1 vartotojas. Paštas nebebus automatiškai atsisiųstas kas 2 sekundes.
 index_efetchmail=Nepavyko rasti „fetchmail“ programos $1. Galbūt „fetchmail“ neįdiegtas jūsų sistemoje arba jūsų <a href='$2'>modulio konfigūracija</a> yra neteisinga.
 index_none=Joks „Unix“ vartotojas neturi <tt>.fetchmailrc</tt> failų.

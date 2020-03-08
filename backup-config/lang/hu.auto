@@ -1,5 +1,5 @@
 index_test=Csak mutasd meg, mit fognak helyreállítani?
-index_nostrftime=Figyelem! Néhány biztonsági mentési feladat% -ban használja a fájlneveket, de az strftime cseréje nem engedélyezett a Module Config oldalon.
+index_nostrftime=Figyelem! Néhány biztonsági mentési feladat % -ban használja a fájlneveket, de az strftime cseréje nem engedélyezett a Module Config oldalon.
 index_tabsched=Ütemezett biztonsági mentések
 index_tabbackup=Biztonsági mentés most
 index_tabrestore=Visszaállítás most
