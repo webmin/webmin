@@ -1,0 +1,5 @@
+index_title=Entrada de texto
+index_epython=O Ajaxterm requer que o Python seja executado, mas o comando $1 não foi encontrado no seu sistema.
+index_estart=O Ajaxterm não começou a aceitar conexões na porta $2 após $1 segundos.
+index_popup=Abrir em janela separada.
+index_credits=Usa o código de <a href='$1' target=_new>Ajaxterm</a> de Antony Lesuisse.
