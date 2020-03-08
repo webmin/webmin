@@ -1,0 +1,14 @@
+chcon_selected=Chcon valgt
+chattr_selected=Chattr valgt
+selinux=Sikkerhetssammenheng
+attributes=Attributter
+context_label=Kontekst å bruke
+context_label_error=Sikkerhetssammenheng kan ikke være tomt
+context_label_error_proc=Kunne ikke endre sikkerhetssammenheng
+attr_label=Attributter å gjelde
+attr_label_error=Attributter må spesifiseres
+attr_label_error_proc=Kunne ikke endre attributter
+http_done=Nedlastet $1 til $2.
+acl_allowed_paths2=(For ikke-rotbrukere)
+extract_etype=Ikke-støttet arkivfiltype
+ownership=Eieren
