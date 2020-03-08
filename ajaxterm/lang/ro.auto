@@ -1,0 +1,5 @@
+index_title=Logare text
+index_epython=Ajaxterm necesită rularea Python, dar comanda $1 nu a fost găsită în sistemul dvs.
+index_estart=Ajaxterm nu a început să accepte conexiuni pe portul 2 după $1 secunde.
+index_popup=Deschideți în fereastră separată ..
+index_credits=Utilizează codul de la <a href='$1' target=_new>Ajaxterm</a> de Antony Lesuisse.
