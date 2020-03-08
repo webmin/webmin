@@ -1,0 +1,3 @@
+log_create_forward=Vorwärts $1 hinzugefügt
+log_delete_forward=Vorwärts $1 entfernt
+log_update_forward=Vorwärts $1 aktualisiert
