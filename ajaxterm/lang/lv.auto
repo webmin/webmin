@@ -1,0 +1,5 @@
+index_title=Teksta pieteikšanās
+index_epython=Ajaxterm prasa Python palaist, bet komanda $1 jūsu sistēmā netika atrasta.
+index_estart=Ajaxterm nesāka pieņemt savienojumus $2 ostā pēc $1 sekundēm.
+index_popup=Atvērt atsevišķā logā ..
+index_credits=Izmanto kodu no <a href='$1' target=_new>Ajaxterm</a>, kuru izveidojis Antonijs Lesuisse.
