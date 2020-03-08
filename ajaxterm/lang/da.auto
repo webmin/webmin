@@ -1,0 +1,5 @@
+index_title=Tekst login
+index_epython=Ajaxterm kræver, at Python kører, men kommandoen $1 blev ikke fundet på dit system.
+index_estart=Ajaxterm begyndte ikke at acceptere forbindelser på port $2 efter $1 sekunder.
+index_popup=Åbn i separat vindue ..
+index_credits=Bruger kode fra <a href='$1' target=_new>Ajaxterm</a> af Antony Lesuisse.
