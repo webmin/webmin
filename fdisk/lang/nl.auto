@@ -1,0 +1,12 @@
+index_relabel2=Partitietabel maken
+index_relabeldesc2=Maak een nieuwe lege partitietabel op deze schijf, zodat partities kunnen worden toegevoegd.
+select_nvme=NVME SSD $1 schijf $2 
+select_nvmepart=NVME SSD $1 schijf $2 partitie $3 
+edit_mountiscsi=iSCSI gedeeld apparaat $1 
+btrfs_l=Bladgrootte
+btrfs_n=Grootte van knooppunt
+btrfs_s=Sectorgrootte
+fs_btrfs=BTR
+disk_iscsi=iSCSI gedeeld apparaat $1 
+disk_notable=<b>Partitietabelindeling:</b> Geen gemaakt
+disk_needtable=Er kunnen geen partities worden gemaakt zonder een partitietabel.
