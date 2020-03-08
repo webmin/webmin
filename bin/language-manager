@@ -141,18 +141,20 @@ sub main
     # Find out which modules to update, if exist
     my $modules = $opt{'modules'};
     my @modules;
+    my @modules_exclude = split(',', $opt{'modules-exclude'});
     if ($modules) {
         my @ml = split(',', $modules);
         foreach my $module (@ml) {
             my ($exists) = source_data(\%data, \%opt, $module);
             if ($exists) {
-                push(@modules, $module);
+                if (!any {$_ =~ /^$module$/} @modules_exclude) {
+                    push(@modules, $module);
+                }
             }
         }
         @modules = sort @modules;
     } else {
         my $found;
-        my @modules_exclude = split(',', $opt{'modules-exclude'});
         find(
             {
                wanted => sub {
