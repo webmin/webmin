@@ -1,9 +1,6 @@
 index_title=Filhanterare
-index_nojava=Denna modul behöver java för att fungera, men din läsare stödjer inte java
-
-top_open=Öppna
-top_view=Visa
-top_edit=Ändra
+index_nojava=Denna modul behÃ¶ver java fÃ¶r att fungera, men din lÃ¤sare stÃ¶djer inte java
+top_edit=Ã„ndra
 top_refresh=Uppdatera
 top_info=Info
 top_delete=Ta bort
@@ -13,141 +10,120 @@ top_rename=Byt namn
 top_copy=Kopiera
 top_cut=Klipp ut
 top_paste=Klistra in
-
 right_name=Namn
 right_size=Storlek
-right_user=Användare
+right_user=AnvÃ¤ndare
 right_group=Grupp
 right_date=Datum
-
-edit_enormal=Du kan bara ändra standardfiler
-edit_title=Ändrar i $1
+edit_enormal=Du kan bara Ã¤ndra standardfiler
+edit_title=Ã„ndrar i $1
 edit_title2=Skapar fil
 edit_filename=Filnamn:
-edit_eover=$1 får inte skrivas över
+edit_eover=$1 fÃ¥r inte skrivas Ã¶ver
 edit_esave=Det gick inte att spara filen: $1
-edit_eaccess=Du får inte spara filen '$1'
-
+edit_eaccess=Du fÃ¥r inte spara filen '$1'
 info_file=Fil
-info_path=Sökväg:
+info_path=SÃ¶kvÃ¤g:
 info_type=Typ:
 info_size=Storlek:
-info_mod=Ändrad:
-info_link=Länk till:
-info_perms=Rättigheter
-info_user=Användare:
+info_mod=Ã„ndrad:
+info_link=LÃ¤nk till:
+info_perms=RÃ¤ttigheter
+info_user=AnvÃ¤ndare:
 info_group=Grupp:
-info_other=Övriga:
+info_other=Ã–vriga:
 info_sticky=Sticky:
-info_sticky2=Det är bara ägare som får ta bort filer
-info_own=Ägare
+info_sticky2=Det Ã¤r bara Ã¤gare som fÃ¥r ta bort filer
+info_own=Ã„gare
 info_setuid=Setuid:
-info_setuid2=Utför som användare
+info_setuid2=UtfÃ¶r som anvÃ¤ndare
 info_setgid=Setgid:
-info_setgid2=Filer ärver grupp
-info_setgid3=Utför som grupp
-info_apply=Utför ändringarna på
+info_setgid2=Filer Ã¤rver grupp
+info_setgid3=UtfÃ¶r som grupp
+info_apply=UtfÃ¶r Ã¤ndringarna pÃ¥
 info_apply1=Endast denna katalog
 info_apply2=Denna katalog och filerna i den
 info_apply3=Denna katalog och dess underkataloger
 info_efailed=Det gick inte att uppdatera $1 : $2
-info_read=Läs
+info_read=LÃ¤s
 info_write=Skriv
 info_list=Lista
 info_exec=Exec
-
 delete_dtitle=Ta bort katalog
 delete_ftitle=Ta bort fil
-delete_ddesc=Vill du verkligen ta bort katalogen $1 med innehåll permanent?
+delete_ddesc=Vill du verkligen ta bort katalogen $1 med innehÃ¥ll permanent?
 delete_fdesc=Vill du verkligen ta bort filen $1 permanent?
 delete_efailed=Det gick inte att ta bort $1 : $2
-
 mkdir_title=Ny katalog
 mkdir_dir=Ny katalog:
 mkdir_eexists=$1 finns redan
 mkdir_efailed=Det gick inte att skapa katalogen: $1
-mkdir_eaccess=Du får inte skapa '$1'
-
-link_title=Skapa länk
-link_from=Länk från:
-link_to=Länk till:
+mkdir_eaccess=Du fÃ¥r inte skapa '$1'
+link_title=Skapa lÃ¤nk
+link_from=LÃ¤nk frÃ¥n:
+link_to=LÃ¤nk till:
 link_eexists=$1 finns redan
-link_efailed=Det gick inte att länka: $1
-link_efrom=Du får inte länka från '$1'
-link_efollow=Du får inte skapa symboliska länkar
-
-rename_title=Byt namn på $1
+link_efailed=Det gick inte att lÃ¤nka: $1
+link_efrom=Du fÃ¥r inte lÃ¤nka frÃ¥n '$1'
+link_efollow=Du fÃ¥r inte skapa symboliska lÃ¤nkar
+rename_title=Byt namn pÃ¥ $1
 rename_old=Gammalt namn:
 rename_new=Nytt namn:
 rename_ok=Byt namn
 rename_eexists=Det finns redan en fil som heter $1
 rename_efailed=Det gick inte att byta namn: $1
-rename_eold=Du får inte byta namn på '$1'
-rename_enew=Du får inte byta namn till '$1'
-
+rename_eold=Du fÃ¥r inte byta namn pÃ¥ '$1'
+rename_enew=Du fÃ¥r inte byta namn till '$1'
 file_type0=Katalog
 file_type1=Textfil
 file_type2=Bildfile
-file_type3=Binärfil
+file_type3=BinÃ¤rfil
 file_type4=Fil
-file_type5=Symbolisk länk
+file_type5=Symbolisk lÃ¤nk
 file_type6=Device-fil
 file_type7=Pipe
-
 view_enormal=Endast normala filer kan visas
-view_eaccess=Du får inte komma åt $1
-view_eopen=Det gick inte att öppna $1: $2
-
-paste_ecopy=Något måste klippas ut eller kopieras för att du ska kunna klistra in
-paste_egone=Den kopierade filen $1 finns inte längre
-paste_eover=$1 får inte skrivas över
-paste_eself=En fil får inte klistras in över sig själv
+view_eaccess=Du fÃ¥r inte komma Ã¥t $1
+view_eopen=Det gick inte att Ã¶ppna $1: $2
+paste_ecopy=NÃ¥got mÃ¥ste klippas ut eller kopieras fÃ¶r att du ska kunna klistra in
+paste_egone=Den kopierade filen $1 finns inte lÃ¤ngre
+paste_eover=$1 fÃ¥r inte skrivas Ã¶ver
+paste_eself=En fil fÃ¥r inte klistras in Ã¶ver sig sjÃ¤lv
 paste_emfailed=Det gick inte att flytta: $1
 paste_ecfailed=Det gick inte att kopiera: $1
-
 over_title=Filen finns
-over_msg=Filen $1 finns redan. Skriv in ett nytt filnamn för den inklistrade filen i fältet nedan.
+over_msg=Filen $1 finns redan. Skriv in ett nytt filnamn fÃ¶r den inklistrade filen i fÃ¤ltet nedan.
 over_new=Nytt filnamn:
 over_ok=OK
-
-upload_efailed=Det gick inte att sätta igång nedladdningen: $1
+upload_efailed=Det gick inte att sÃ¤tta igÃ¥ng nedladdningen: $1
 upload_title=Ladda ned fil
 upload_file=Fil att ladda ned
 upload_dir=Ladda ned till katalog
 upload_ok=Ladda ned
 upload_conv=Konvertera DOS-radbrytningar?
-upload_efile=Du har inte valt någon fil som ska laddas ned.
-upload_edir=Du har inte valt någon katalog att ladda ned till.
-upload_eperm=Du får inte skapa $1
+upload_efile=Du har inte valt nÃ¥gon fil som ska laddas ned.
+upload_edir=Du har inte valt nÃ¥gon katalog att ladda ned till.
+upload_eperm=Du fÃ¥r inte skapa $1
 upload_ewrite=Det gick inte att skriva till $1: $2.
-
-find_eaccess=Du får inte komma åt $1
+find_eaccess=Du fÃ¥r inte komma Ã¥t $1
 find_eexist=$1 finns inte i $2
-find_edir=$1 är inte en katalog i $2
-
+find_edir=$1 Ã¤r inte en katalog i $2
 cancel=Avbryt
-
-chmod_eaccess=Du får inte komma åt '$1'
-chmod_euser=$1 :användaren finns inte
+chmod_eaccess=Du fÃ¥r inte komma Ã¥t '$1'
+chmod_euser=$1 :anvÃ¤ndaren finns inte
 chmod_egroup=$1 :gruppen finns inte
 chmod_elink=symlink misslyckades: $1
 chmod_echown=chown misslyckades: $1
 chmod_echmod=chmod misslyckades: $1
-
-copy_efrom=Du får inte kopiera från '$1'
-copy_eto=Du får inte kopiera till '$1'
+copy_efrom=Du fÃ¥r inte kopiera frÃ¥n '$1'
+copy_eto=Du fÃ¥r inte kopiera till '$1'
 copy_elink=symlink misslyckades: $1
-
-delete_eaccess=Du får inte ta bort '$1'
-
-list_eaccess=Du får inte komma åt denna katalog
+delete_eaccess=Du fÃ¥r inte ta bort '$1'
+list_eaccess=Du fÃ¥r inte komma Ã¥t denna katalog
 list_edir=Det gick inte att lista $1: $2
-
-move_eto=Du får inte flytta filer till '$1'
-move_afrom=Du får inte flytta på '$1'
-
-acl_user=Kom åt filer på servern som användare
-acl_umask=Umask för nya filer
-acl_follow=Ska symboliska länkar alltid följas?
-acl_dirs=Tillåt endast åtkomst till kataloger
-
+move_eto=Du fÃ¥r inte flytta filer till '$1'
+move_afrom=Du fÃ¥r inte flytta pÃ¥ '$1'
+acl_user=Kom Ã¥t filer pÃ¥ servern som anvÃ¤ndare
+acl_umask=Umask fÃ¶r nya filer
+acl_follow=Ska symboliska lÃ¤nkar alltid fÃ¶ljas?
+acl_dirs=TillÃ¥t endast Ã¥tkomst till kataloger
