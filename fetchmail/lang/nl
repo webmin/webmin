@@ -1,4 +1,3 @@
-__norefs=1
 acl_all=Alle gebruikers
 acl_cron=Mag geplande controle configureren?
 acl_daemon=Mag Fetchmail daemon configureren?
