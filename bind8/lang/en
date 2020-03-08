@@ -156,6 +156,8 @@ delete_fwd=Delete forward records in other zones?
 delete_onslave=Also delete from slave servers?
 delete_errslave=Master zone deleted OK, but the following errors occurred on slaves : $1
 delete_ezone=Zone was not found on slave server
+delete_vwarn=This zone is associated with the Virtualmin domain $1, and so should not be deleted here!
+delete_vwarn2=This zone is associated with the Virtualmin domain $1 and $2 others, and so should not be deleted here!
 
 mcreate_title=Create Master Zone
 mcreate_ecannot=You cannot create master zones
@@ -1046,6 +1048,8 @@ massdelete_zone=Deleting zone $1 ..
 massdelete_done=.. done.
 massdelete_slaves=Deleting zone $1 from slave servers ..
 massdelete_failed=.. some slaves failed :
+massdelete_vwarn=Some zones are associated with the Virtualmin domain $1, and so should not be deleted here!
+massdelete_vwarn2=Some zones are associated with the Virtualmin domain $1 and $2 others, and so should not be deleted here!
 
 rndc_title=Setup RNDC
 rndc_desc=This page can be used to setup BIND for control by the RNDC program, so that individual zones can be refreshed without needing to do a full BIND restart.
