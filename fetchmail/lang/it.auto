@@ -1,0 +1,2 @@
+poll_foruser=Per l'utente $1 
+acl_daemon=È possibile configurare il demone Fetchmail?
