@@ -1,0 +1,5 @@
+index_title=Teksto prisijungimas
+index_epython=„Ajaxterm“ reikia paleisti „Python“, tačiau komanda $1 nerasta jūsų sistemoje.
+index_estart=„Ajaxterm“ nepradėjo priimti jungčių prie $2 prievado po $1 sekundės.
+index_popup=Atidaryti atskirame lange ..
+index_credits=Naudojamas kodas iš <a href='$1' target=_new>„Ajaxterm“</a>, kurį sukūrė Antony Lesuisse.
