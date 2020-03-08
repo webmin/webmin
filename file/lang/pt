@@ -1,11 +1,8 @@
 index_title=Administrador de Ficheiros
-index_nojava=Este mÛdulo requer java para funcionar, mas o seu navegador n„o suporta java
-
-top_open=Abrir
-top_view=Ver
+index_nojava=Este m√≥dulo requer java para funcionar, mas o seu navegador n√£o suporta java
 top_edit=Editar
 top_refresh=Refrescar
-top_info=InformaÁıes
+top_info=Informa√ß√µes
 top_delete=Apagar
 top_new=Novo
 top_upload=Carregar
@@ -13,134 +10,115 @@ top_rename=Renomear
 top_copy=Copiar
 top_cut=Cortar
 top_paste=Colar
-
 right_name=Nome
 right_size=Tamanho
 right_user=Utilizador
 right_group=Grupo
 right_date=Data
-
 edit_enormal=Apenas ficheiros normais podem ser editados
 edit_title=A editar $1
 edit_title2=A criar ficheiro
 edit_filename=Nome do ficheiro:
-edit_eover=$1 n„o pode ser sobrescrito
+edit_eover=$1 n√£o pode ser sobrescrito
 edit_esave=Erro ao guardar ficheiro : $1
-edit_eaccess=VocÍ n„o est· autorizado para guardar '$1'
-
+edit_eaccess=Voc√™ n√£o est√° autorizado para guardar '$1'
 info_file=Ficheiro
 info_path=Caminho:
 info_type=Tipo:
 info_size=Tamanho:
 info_mod=Modificado:
 info_link=Enlace com:
-info_perms=Permissıes
+info_perms=Permiss√µes
 info_user=Utilizador:
 info_group=Grupo:
 info_other=Outro:
-info_sticky=RestriÁ„o:
-info_sticky2=Apenas os propriet·rios podem apagar ficheiros
+info_sticky=Restri√ß√£o:
+info_sticky2=Apenas os propriet√°rios podem apagar ficheiros
 info_own=Propriedade
 info_setuid=Colocar UID:
 info_setuid2=Executar como utilizador
 info_setgid=Colocar GID:
 info_setgid2=Ficheiros herdados do grupo
 info_setgid3=Executar como grupo
-info_apply=Aplicar alteraÁıes a
-info_apply1=Este directÛrio apenas
-info_apply2=Este directÛrio e os seus ficheiros
-info_apply3=Este directÛrio e todos os subdirectÛrios
+info_apply=Aplicar altera√ß√µes a
+info_apply1=Este direct√≥rio apenas
+info_apply2=Este direct√≥rio e os seus ficheiros
+info_apply3=Este direct√≥rio e todos os subdirect√≥rios
 info_efailed=Erro ao actualizar $1 : $2
 info_read=Leitura
 info_write=Escrita
 info_list=Lista
-info_exec=ExecuÁ„o
-
-delete_dtitle=Apagar directÛrio
+info_exec=Execu√ß√£o
+delete_dtitle=Apagar direct√≥rio
 delete_ftitle=Apagar ficheiro
-delete_ddesc=Tem a certeza que quer permanentemente apagar o directÛrio $1 e todo o seu conte˙do?
+delete_ddesc=Tem a certeza que quer permanentemente apagar o direct√≥rio $1 e todo o seu conte√∫do?
 delete_fdesc=Tem a certeza que quer apagar permanentemente o ficheiro $1 ?
 delete_efailed=Erro ao apagar $1 : $2
-
-mkdir_title=Novo DirectÛrio
-mkdir_dir=Novo directÛrio:
-mkdir_eexists=$1 j· existe
-mkdir_efailed=Erro na criaÁ„o de directÛrio : $1
-mkdir_eaccess=VocÍ n„o est· autorizado para criar '$1'
-
+mkdir_title=Novo Direct√≥rio
+mkdir_dir=Novo direct√≥rio:
+mkdir_eexists=$1 j√° existe
+mkdir_efailed=Erro na cria√ß√£o de direct√≥rio : $1
+mkdir_eaccess=Voc√™ n√£o est√° autorizado para criar '$1'
 link_title=Criar Enlace
 link_from=Enlace de:
 link_to=Enlace com:
-link_eexists=$1 j· existe
+link_eexists=$1 j√° existe
 link_efailed=Erro no enlace : $1
-link_efrom=VocÍ n„o est· autorizado para criar enlaces de '$1'
-link_efollow=VocÍ n„o est· autorizado para criar enlaces simbÛlicos
-
+link_efrom=Voc√™ n√£o est√° autorizado para criar enlaces de '$1'
+link_efollow=Voc√™ n√£o est√° autorizado para criar enlaces simb√≥licos
 rename_title=Renomear $1
 rename_old=Nome antigo:
 rename_new=Nome novo:
 rename_ok=Renomear
-rename_eexists=J· existe um ficheiro denominado $1
-rename_efailed=Erro na renomeaÁ„o : $1
-rename_eold=VocÍ n„o est· autorizado para renomear '$1'
-rename_enew=VocÍ n„o est· autorizado para renomear para '$1'
-
-file_type0=DirectÛrio
+rename_eexists=J√° existe um ficheiro denominado $1
+rename_efailed=Erro na renomea√ß√£o : $1
+rename_eold=Voc√™ n√£o est√° autorizado para renomear '$1'
+rename_enew=Voc√™ n√£o est√° autorizado para renomear para '$1'
+file_type0=Direct√≥rio
 file_type1=Ficheiro de texto
 file_type2=Ficheiro de imagem
-file_type3=Ficheiro bin·rio
+file_type3=Ficheiro bin√°rio
 file_type4=Ficheiro
-file_type5=Enlace simbÛlico
+file_type5=Enlace simb√≥lico
 file_type6=Ficheiro de dispositivo
 file_type7=Tubo
-
 view_enormal=Apenas ficheiros normais podem ser vistos
-view_eaccess=VocÍ n„o est· autorizado para aceder a $1
+view_eaccess=Voc√™ n√£o est√° autorizado para aceder a $1
 view_eopen=Erro ao abrir $1 : $2
-
 paste_ecopy=Tem de cortar ou copiar primeiro antes de colar
-paste_egone=O ficheiro cpoiado $1 j· n„o existe
-paste_eover=$1 n„o pode ser sobrescrito
-paste_eself=N„o pode colar um ficheiro sobre si mesmo
+paste_egone=O ficheiro cpoiado $1 j√° n√£o existe
+paste_eover=$1 n√£o pode ser sobrescrito
+paste_eself=N√£o pode colar um ficheiro sobre si mesmo
 paste_emfailed=Erro ao mover : $1
 paste_ecfailed=Erro ao copiar : $1
-
 upload_efailed=Erro ao abrir ficheiro carregado : $1
 upload_title=Carregar Ficheiro
 upload_file=Ficheiro paa carregar
-upload_dir=Carregar para o directÛrio
+upload_dir=Carregar para o direct√≥rio
 upload_ok=Carregar
 upload_conv=Converter linhas de DOS?
-upload_efile=N„o foram seleccionados ficheiros para carregar.
-upload_edir=DirectÛrio de carga n„o existe.
-upload_eperm=VocÍ n„o est· autorizado para criar $1
+upload_efile=N√£o foram seleccionados ficheiros para carregar.
+upload_edir=Direct√≥rio de carga n√£o existe.
+upload_eperm=Voc√™ n√£o est√° autorizado para criar $1
 upload_ewrite=Erro ao escrever para $1 : $2.
-
-find_eaccess=VocÍ n„o est· autorizado para aceder a $1
-find_eexist=$1 n„o existe em $2
-find_edir=$1 n„o È um directÛrio de $2
-
+find_eaccess=Voc√™ n√£o est√° autorizado para aceder a $1
+find_eexist=$1 n√£o existe em $2
+find_edir=$1 n√£o √© um direct√≥rio de $2
 cancel=Cancelar
-
-chmod_eaccess=VocÍ n„o est· autorizado para aceder a '$1'
-chmod_euser=$1 : n„o existe tal utilizador
-chmod_egroup=$1 : n„o existe tal grupo
-chmod_elink=erro no enlace simbÛlico : $1
-chmod_echown=erro na alteraÁ„o de propriet·rio : $1
-chmod_echmod=erro na alteraÁ„o de permissıes : $1
-
-copy_efrom=VocÍ n„o est· autorizado para copiar de '$1'
-copy_eto=VocÍ n„o est· autorizado para copiar para '$1'
-copy_elink=erro no enlace simbÛlico : $1
-
-delete_eaccess=VocÍ n„o est· autorizado para apagar '$1'
-
-list_eaccess=VocÍ n„o est· autorizado para aceder a este directÛrio
-
-move_eto=VocÍ n„o est· autorizado para mover para '$1'
-move_afrom=VocÍ n„o est· autorizado para mover '$1'
-
+chmod_eaccess=Voc√™ n√£o est√° autorizado para aceder a '$1'
+chmod_euser=$1 : n√£o existe tal utilizador
+chmod_egroup=$1 : n√£o existe tal grupo
+chmod_elink=erro no enlace simb√≥lico : $1
+chmod_echown=erro na altera√ß√£o de propriet√°rio : $1
+chmod_echmod=erro na altera√ß√£o de permiss√µes : $1
+copy_efrom=Voc√™ n√£o est√° autorizado para copiar de '$1'
+copy_eto=Voc√™ n√£o est√° autorizado para copiar para '$1'
+copy_elink=erro no enlace simb√≥lico : $1
+delete_eaccess=Voc√™ n√£o est√° autorizado para apagar '$1'
+list_eaccess=Voc√™ n√£o est√° autorizado para aceder a este direct√≥rio
+move_eto=Voc√™ n√£o est√° autorizado para mover para '$1'
+move_afrom=Voc√™ n√£o est√° autorizado para mover '$1'
 acl_user=Aceder a ficheiros no servidor como utilizador
-acl_umask=M·scara de utilizador para novos ficheiros
-acl_follow=Seguir sempre enlaces simbÛlicos?
-acl_dirs=Apenas permitir acesso a directÛrios
+acl_umask=M√°scara de utilizador para novos ficheiros
+acl_follow=Seguir sempre enlaces simb√≥licos?
+acl_dirs=Apenas permitir acesso a direct√≥rios
