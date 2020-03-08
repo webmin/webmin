@@ -1,0 +1,5 @@
+index_title=ورود به متن
+index_epython=Ajaxterm به اجرای پایتون نیاز دارد ، اما دستور$1 در سیستم شما یافت نشد.
+index_estart=Ajaxterm پس از$1 ثانیه شروع به پذیرش اتصالات در پورت $2 نکرد.
+index_popup=در پنجره جداگانه باز شود ..
+index_credits=از کد <a href='$1' target=_new>Ajaxterm</a> توسط آنتونی لزوسه استفاده می کند.
