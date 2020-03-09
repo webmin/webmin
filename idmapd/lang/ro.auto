@@ -1,0 +1,11 @@
+index_title=configurația idmapd
+index_eidmapd=Daemon Idmapd $1 nu a fost găsit. Poate că nu este instalat sau configurația modulului <a href='$2'></a> este incorectă.
+general=Configurare generală
+mapping=Configurarea mapării
+pipefs_dir=Directorul Pipefs
+domain=Numele domeniului
+nobody_user=Nimeni utilizator
+nobody_group=Nimeni nu grupează
+save=Salvați configurarea și reporniți demonul
+save_err=Nu a reușit să salvați fișierul de configurare $1 
+error_dir=Directorul $1 nu există
