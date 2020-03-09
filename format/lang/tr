@@ -1,2 +1,2 @@
-select_device=SCSI kontrol edicisi $1 hedef $2 bölüm $3
-select_part=SCSI kontrol edicisi $1 hedef $2 bölüm $3 disk bölümü $4
+select_device=SCSI kontrol edicisi $1 hedef $2 bÃ¶lÃ¼m $3
+select_part=SCSI kontrol edicisi $1 hedef $2 bÃ¶lÃ¼m $3 disk bÃ¶lÃ¼mÃ¼ $4
