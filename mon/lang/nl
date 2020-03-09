@@ -1,4 +1,3 @@
-__norefs=1
 auth_all=Iedereen
 auth_cmd=MON opdracht
 auth_desc=Met deze pagina bepaald u welke MON opdrachten kunnen worden uitgevoerd door welke gebruikers wanneer zij de client programma's gebruiken.
