@@ -1,4 +1,3 @@
-__norefs=1
 delete_enone=Ingen valgt
 delete_err=Kunne ikke slette MIME type programmer
 disable_eclash=Et deaktivert MIME type program for $1 finnes allerede
