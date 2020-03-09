@@ -1,4 +1,3 @@
-__norefs=1
 access_all=Iedereen
 access_anon=Anonieme gebruikers
 access_any=Alle objecten
@@ -127,7 +126,7 @@ eacl_ewho=Ontbrekende of ongeldig-lijkend DN in rij $1
 eacl_filter=Limiet met object filter :
 eacl_header=LDAP database toegang controle regel details
 eacl_mtype=overeenkomend type
-eacl_one=&#233;&#233;n niveau lager
+eacl_one=één niveau lager
 eacl_other=Andere DN ..
 eacl_regex=reguliere expressie
 eacl_self=Zelf
