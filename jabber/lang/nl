@@ -1,4 +1,3 @@
-__norefs=1
 admin_header=Server adminstratie gebruikers
 admin_rbody=Auto-antwoord bericht
 admin_read=Lees toegang admins
@@ -87,7 +86,7 @@ karma_restore=Burst herstel periodes (<tt>herstel</tt>)
 karma_sel=Gebruik de hieronder geselecteerde instellingen ..
 karma_title=Karma Verkeer Controle
 messages_err=Mislukt om bericht op te slaan
-messages_etag=Server vCard XML start niet met &lt;vCard&gt;
+messages_etag=Server vCard XML start niet met <vCard>
 messages_evcard=Ongeldige vCard XML : $1
 messages_header=Jabber server bericht voor clients
 messages_rfields=Vereist registratie veld
