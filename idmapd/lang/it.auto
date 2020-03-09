@@ -1,0 +1,11 @@
+index_title=configurazione idmapd
+index_eidmapd=Impossibile trovare il demone Idmapd $1. Forse non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
+general=Configurazione generale
+mapping=Configurazione della mappatura
+pipefs_dir=Directory di Pipefs
+domain=Nome del dominio
+nobody_user=Nessuno utente
+nobody_group=Nessuno gruppo
+save=Salva la configurazione e riavvia il demone
+save_err=Impossibile salvare il file di configurazione $1 
+error_dir=La directory $1 non esiste
