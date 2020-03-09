@@ -72,7 +72,6 @@ index_eslappasswd=Deze module is <a href='$1'>geconfigureerd</a> om gebruik te m
 index_eperl=De $1 Perl module die deze module nodig heeft is niet geinstalleerd of werkt niet goed. <a href='$3'>Klik hier</a> om hem te downloaden en nu te installeren.
 gedit_samba=Samba groep?
 uedit_quota=IMAP quota
-__norefs=1
 search_err=Zoeken naar $1 in $2 mislukt : $3
 uedit_firstname=Eerste naam
 conn_elogin=Bind mislukt naar LDAP server $1 als $2 : $3
