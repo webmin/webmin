@@ -1,0 +1,11 @@
+index_none=Nie masz dostępu do żadnych użytkowników, aby zmienić ich hasła.
+passwd_expire=Zmusić użytkownika do zmiany hasła przy następnym logowaniu?
+passwd_others=Zmienić hasło w innych modułach?
+passwd_ecmd=Błąd $1 : $2 
+passwd_ok2=Hasło użytkownika $1 zostało pomyślnie zmienione.
+acl_self=Zawsze zezwalasz na zmianę własnego hasła?
+acl_opt=Opcjonalny
+acl_mode6=Użytkownicy pasujący
+acl_expire=Czy można zmusić użytkowników do zmiany hasła przy następnym logowaniu?
+acl_sec=Uwzględnić grupy drugorzędne?
+acl_notusers=Z wyjątkiem użytkowników
