@@ -1,0 +1,11 @@
+index_title=konfiguracija idmapd-a
+index_eidmapd=Idmapd-ov demon $1 nije pronađen. Možda nije instaliran ili je vaša <a href='$2'>konfiguracija modula</a> netočna.
+general=Opća konfiguracija
+mapping=Konfiguracija mapiranja
+pipefs_dir=Imenik cijevi
+domain=Naziv domene
+nobody_user=Nitko korisnik
+nobody_group=Nitko ne grupira
+save=Spremi config i ponovno pokreni demon
+save_err=Spremanje konfiguracijske datoteke $1 nije uspjelo
+error_dir=Imenik $1 ne postoji
