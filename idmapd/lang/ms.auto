@@ -1,0 +1,11 @@
+index_title=konfigurasi idmapd
+index_eidmapd=Idmapd daemon $1 tidak dapat dijumpai. Mungkin ia tidak dipasang, atau konfigurasi modul <a href='$2'>anda</a> tidak betul.
+general=Konfigurasi Am
+mapping=Konfigurasi pemetaan
+pipefs_dir=Direktori Pipefs
+domain=Nama domain
+nobody_user=Tiada pengguna
+nobody_group=Tiada sesiapa
+save=Simpan config dan mulakan semula daemon
+save_err=Gagal menyimpan fail konfig $1 
+error_dir=Direktori $1 tidak wujud
