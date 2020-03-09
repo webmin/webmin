@@ -1,51 +1,42 @@
-index_title=Configuració d'OpenSLP
-index_return=Configuració d'OpenSLP
-index_eslpd=No s'ha trobat al sistema el dimoni $1 d'OpenSLP. Pot ser que no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
-index_econf=No s'ha trobat al sistema el fitxer de configuració $1 d'OpenSLP. Pot ser que no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
-index_version=OpenSLP versió $1
-
+index_title=ConfiguraciÃ³ d'OpenSLP
+index_return=ConfiguraciÃ³ d'OpenSLP
+index_eslpd=No s'ha trobat al sistema el dimoni $1 d'OpenSLP. Pot ser que no estigui instalÂ·lat, o bÃ© que la <a href='$2'>configuraciÃ³ del mÃ²dul</a> sigui incorrecta.
+index_econf=No s'ha trobat al sistema el fitxer de configuraciÃ³ $1 d'OpenSLP. Pot ser que no estigui instalÂ·lat, o bÃ© que la <a href='$2'>configuraciÃ³ del mÃ²dul</a> sigui incorrecta.
+index_version=OpenSLP versiÃ³ $1
 slp_apply=Aplica els Canvis
 slp_stop=Atura OpenSLP
-
-snda_title=Abast Estàtic i DA
-snda_useScopes=Llista estàtica d'Abasts
-snda_DAAddresses=Llista estàtica d'Agents de Directori (DA)
-
-netcfg_title=Configuració de Xarxa
-netcfg_isBroadcastOnly=Força l'ús de retransmissions en lloc de multiemissió
-netcfg_passiveDADetection=Utilitza detecció passiva de DA
-netcfg_activeDADetection=Utilitza detecció activa de DA (restringida només a adreces DHCP o DA)
+snda_title=Abast EstÃ tic i DA
+snda_useScopes=Llista estÃ tica d'Abasts
+snda_DAAddresses=Llista estÃ tica d'Agents de Directori (DA)
+netcfg_title=ConfiguraciÃ³ de Xarxa
+netcfg_isBroadcastOnly=ForÃ§a l'Ãºs de retransmissions en lloc de multiemissiÃ³
+netcfg_passiveDADetection=Utilitza detecciÃ³ passiva de DA
+netcfg_activeDADetection=Utilitza detecciÃ³ activa de DA (restringida nomÃ©s a adreces DHCP o DA)
 netcfg_DAActiveDiscoveryInterval=Descobriment Actiu en segons (0 desactiva el Descobriment Actiu)
-netcfg_multicastTTL=TTL multiemissió (0-255)
-netcfg_DADiscoveryMaximumWait=Temps màxim d'espera per a les peticions de descobriment de DA (en mil·lisegons)
-netcfg_DADiscoveryTimeouts=Intervals d'espera successius de descobriment de DA (en mi·lisegons)
-netcfg_HintsFile=Camí del fitxer de consells d'OpenSLP
-netcfg_multicastMaximumWait=Temps d'espera màxima en peticions multiemissió (en mi·lisegons)
-netcfg_multicastTimeouts=Temps successius d'espera multiemissió (en mi·lisegons)
-netcfg_unicastMaximumWait=Temps d'espera màxima entre peticions monoemissió (en mi·lisegons)
-netcfg_randomWaitBound=Valor màxim per a tots els paràmetres d'espera aleatoris (en mil·lisegons)
+netcfg_multicastTTL=TTL multiemissiÃ³ (0-255)
+netcfg_DADiscoveryMaximumWait=Temps mÃ xim d'espera per a les peticions de descobriment de DA (en milÂ·lisegons)
+netcfg_DADiscoveryTimeouts=Intervals d'espera successius de descobriment de DA (en miÂ·lisegons)
+netcfg_HintsFile=CamÃ­ del fitxer de consells d'OpenSLP
+netcfg_multicastMaximumWait=Temps d'espera mÃ xima en peticions multiemissiÃ³ (en miÂ·lisegons)
+netcfg_multicastTimeouts=Temps successius d'espera multiemissiÃ³ (en miÂ·lisegons)
+netcfg_unicastMaximumWait=Temps d'espera mÃ xima entre peticions monoemissiÃ³ (en miÂ·lisegons)
+netcfg_randomWaitBound=Valor mÃ xim per a tots els parÃ metres d'espera aleatoris (en milÂ·lisegons)
 netcfg_MTU=Mida del paquet MTU (en bytes)
-netcfg_interfaces=Adreces IP de les interfícies que el DA/SA ha d'escoltar
-
-dacfg_title=Configuració de DA
-dacfg_isDA=Funciona només com a DA (Llegiu la guia d'usuaris abans de canviar això)
-
+netcfg_interfaces=Adreces IP de les interfÃ­cies que el DA/SA ha d'escoltar
+dacfg_title=ConfiguraciÃ³ de DA
+dacfg_isDA=Funciona nomÃ©s com a DA (Llegiu la guia d'usuaris abans de canviar aixÃ²)
 log_title=Rastreig i Registre
-log_traceDATraffic=Mostra els missatges de trànsit DA
+log_traceDATraffic=Mostra els missatges de trÃ nsit DA
 log_traceMsg=Mostra els missatges de detall de SLP
-log_traceDrop=Mostra la informació de missatges omesos de SLP
-log_traceReg=Mostra la informació d'enregistrament i desenregistrament de DA i SA
-
+log_traceDrop=Mostra la informaciÃ³ de missatges omesos de SLP
+log_traceReg=Mostra la informaciÃ³ d'enregistrament i desenregistrament de DA i SA
 error_open=Error en obrir el fitxer
 error_flock_on=Error en crear el bloqueig del fitxer
 error_flock_off=Error en destruir el bloqueig del fitxer
 error_hup=Error en reiniciar OpenSLP amb PID
-
 index_start=Inicia OpenSLP
-index_startmsg=Fes clic sobre aquest botó per iniciar el dimoni d'OpenSL al sistema.
+index_startmsg=Fes clic sobre aquest botÃ³ per iniciar el dimoni d'OpenSL al sistema.
 index_stop=Atura OpenSLP
-index_stopmsg=Fes clic sobre aquest botó per aturar el dimoni d'OpenSLP del sistema.
-
+index_stopmsg=Fes clic sobre aquest botÃ³ per aturar el dimoni d'OpenSLP del sistema.
 stop_err=No s'ha pogut aturar OpenSLP
 start_err=No s'ha pogut iniciar OpenSLP
-__norefs=1
