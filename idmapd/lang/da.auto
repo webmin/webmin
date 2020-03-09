@@ -1,0 +1,11 @@
+index_title=idmapd konfiguration
+index_eidmapd=Idmapd daemon $1 kunne ikke findes. Måske er det ikke installeret, eller din <a href='$2'>modulkonfiguration</a> er forkert.
+general=Generel konfiguration
+mapping=Kortlægning af konfiguration
+pipefs_dir=Pipefs bibliotek
+domain=Domænenavn
+nobody_user=Ingen bruger
+nobody_group=Ingen gruppe
+save=Gem config og genstart dæmonen
+save_err=Kunne ikke gemme konfigurationsfilen $1 
+error_dir=Katalog $1 findes ikke
