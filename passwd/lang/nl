@@ -1,4 +1,3 @@
-__norefs=1
 acl_expire=Mag bij de volgende inlog dwingen dat de gebruiker zijn wachtwoord verandert?
 acl_mode0=Alle gebruikers
 acl_mode1=Uitsluitend gebruikers
@@ -15,7 +14,7 @@ acl_others=Wachtwoord wijzigen in andere modules?
 acl_repeat=Nieuw wachtwoord tweemaal invoeren?
 acl_sec=Inclusief secondaire groepen?
 acl_users=Gebruikers waarvan het wachtwoord mag worden veranderd
-index_euseradmin=Deze module kan niet worden gebruikt omdat de Gebruikers en Groepen module niet is ge&#239;nstalleerd of op uw systeem niet wordt ondersteund.
+index_euseradmin=Deze module kan niet worden gebruikt omdat de Gebruikers en Groepen module niet is geïnstalleerd of op uw systeem niet wordt ondersteund.
 index_header=Selecteer een gebruiker om zijn of haar wachtwoord te veranderen
 index_none=U heeft geen toegang tot gebruikers om hun wachtwoord te veranderen.
 index_return=lijst met gebruikers
