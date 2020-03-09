@@ -1,0 +1,9 @@
+left_login=Логин: $1 
+left_home=Системная информация
+left_oc=При поддержке OpenCountry
+left_feedback=Отправить отзыв
+left_search_webmin=Поиск Webmin:
+left_search_usermin=Поиск Usermin:
+left_search=Поиск:
+left_logs=Просмотр логов модуля
+left_others=другие
