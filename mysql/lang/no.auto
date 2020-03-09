@@ -1,0 +1,24 @@
+index_version2=$3 versjon $1 på $2 
+index_ecnf=MySQL-konfigurasjonsfilen $1 ble ikke funnet på systemet ditt. Bruk siden <a href='$2'>modulkonfigurasjon</a> for å angi riktig sti.
+view_refresh=Forfriske
+view_go=Gå
+user_eslash=MySQL støtter ikke et passord som inneholder et tilbakeskritt
+log_manual=Manuelt redigert konfigurasjonsfil
+backup_prefix=Filnavn prefiks
+backup_eprefix=Filnavn prefiks kan ikke inneholde /
+backup_noprefix=Ingen
+backup_download=Last ned i nettleseren
+backup_path=Sti på server
+backup_eisdir=Sikkerhetsdestinasjon $1 er en katalog
+backup_edownloadall=Bare en enkelt databasebackup kan lastes ned
+backup_edownloadsave=Nedlastingsmodus kan ikke brukes til planlagte sikkerhetskopieringer
+cnf_table_open_cache=Tabeller for cache
+cnf_sort_buffer_size=Sorter bufferstørrelse
+cnf_esort_buffer_size=Manglende eller ugyldig sorteringsbufferstørrelse
+cnf_ilt=InnoDB-tidsavbrudd (i sekunder)
+cnf_eilt=Innstillingen for InnoDB-lås må være et helt tall
+manual_title=Rediger konfigurasjonsfiler
+manual_file=Rediger konfigurasjonsfil:
+manual_ok=OK
+manual_efile=Ugyldig konfigurasjonsfil!
+manual_err=Kunne ikke lagre konfigurasjonsfilen
