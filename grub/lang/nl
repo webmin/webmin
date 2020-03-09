@@ -1,4 +1,3 @@
-__norefs=1
 global_default=Standaard opstart optie
 global_edev=Niet ondersteunde installatie schijf/partitie $1
 global_eother=Ontbrekende of ongeldige schijf/partitie
@@ -23,10 +22,10 @@ index_add=Nieuwe opstart optie toevoegen
 index_efile=Het GRUB menu bestand $1 kon niet worden gevonden op uw system. Wellicht is GRUB niet geinstalleerd, of de <a href='$2'>module configuratie</a> is niet juist.
 index_epath=Het GRUB programma $1 kon niet worden gevonden op uw system. Wellicht is GRUB niet geinstalleerd, of de <a href='$2'>module configuratie</a> is niet juist.
 index_global=Bewerk Globale Opties
-index_globalmsg=Bewerk de algemene opstart instellingen die van toepassing zijn op alle opstartmenu opties, en kies het apparaat waarop GRUB moet worden ge&#239;nstalleerd.
+index_globalmsg=Bewerk de algemene opstart instellingen die van toepassing zijn op alle opstartmenu opties, en kies het apparaat waarop GRUB moet worden geïnstalleerd.
 index_install=Installeer GRUB
 index_installmsg=Installeer de GRUB boot lader op $1 om de bovenstaande opties bij het opstarten weer te geven. Dit overschrijft alle eventueel aanwezige boot laders zoals LILO en kan ervoor zorgen dat uw systeem niet meer opstart!
-index_none=Er zijn geen opstart opties gedefini&#235;erd. Zorg ervoor dat u er minimaal &#233;&#233;n instelt voordat u GRUB installeerd.
+index_none=Er zijn geen opstart opties gedefiniëerd. Zorg ervoor dat u er minimaal één instelt voordat u GRUB installeerd.
 index_return=optielijst
 index_title=GRUB Boot Lader
 install_desc=Installeer GRUB op $1 met de opdrachten $2 en $3 ..
@@ -57,7 +56,7 @@ title_eroot=Ontbrekende root partitie
 title_err=Fout bij het opslaan van de opstartopties
 title_etitle=Ontbrekende opstartmenu titel
 title_header=Opstartmenu optie details
-title_initrd=Bestand voor initi&#235;le ramdisk
+title_initrd=Bestand voor initiële ramdisk
 title_kernel=Linux kernel
 title_kfile=Pad naar kernel
 title_lock=Wachtwoord op slot?
