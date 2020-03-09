@@ -1,4 +1,3 @@
-__norefs=1
 domain=Domainname
 error_dir=Verzeichnis $1 existiert nicht
 general=Generelle Konfiguration
