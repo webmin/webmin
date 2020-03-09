@@ -1,0 +1,9 @@
+left_login=Kirjaudu sisään: $1 
+left_home=Järjestelmätiedot
+left_oc=Tukee OpenCountry
+left_feedback=Lähetä palautetta
+left_search_webmin=Hae Webministä:
+left_search_usermin=Hae käyttäjäminististä:
+left_search=Hae:
+left_logs=Tarkastele moduulin lokit
+left_others=toiset
