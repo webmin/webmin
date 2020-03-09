@@ -1,0 +1,11 @@
+index_title=konfigurace idmapd
+index_eidmapd=Idmapd daemon $1 nebyl nalezen. Možná není nainstalována nebo je vaše <a href='$2'>konfigurace modulu</a> nesprávná.
+general=Obecná konfigurace
+mapping=Konfigurace mapování
+pipefs_dir=Adresář Pipefs
+domain=Doménové jméno
+nobody_user=Nikdo uživatel
+nobody_group=Nikdo skupina
+save=Uložte konfiguraci a restartujte démona
+save_err=Uložení konfiguračního souboru $1 se nezdařilo
+error_dir=Adresář $1 neexistuje
