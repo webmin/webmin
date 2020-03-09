@@ -1,4 +1,3 @@
-__norefs=1
 aliases_efrom=Ontbrekend of ongeldig adres
 aliases_err=Mislukt om alias op te slaan
 aliases_eto=Ontbrekend naar adres
@@ -133,8 +132,8 @@ networks_header=Netwerk en adres opties
 networks_ip=IP adres
 networks_name=Netwerk naam
 networks_title=Netwerk Adres
-order_=&nbsp;
-order_compat=NIS &amp; Files
+order_= 
+order_compat=NIS & Files
 order_db=DB Files
 order_dns=DNS
 order_files=Files
