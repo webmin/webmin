@@ -1,0 +1,9 @@
+left_login=Login: $1 
+left_home=Systemoplysninger
+left_oc=Sponsoreret af OpenCountry
+left_feedback=Send feedback
+left_search_webmin=Søg i Webmin:
+left_search_usermin=Søg i brugermin:
+left_search=Søg:
+left_logs=Se modulets logfiler
+left_others=Andre
