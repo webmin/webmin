@@ -1,0 +1,7 @@
+index_mode=System rozruchowy : $1 
+index_downscript=Podobnie skrypt $1 wymieniony poniżej zostanie uruchomiony w momencie zamknięcia. Możesz dodać własne polecenia, aby demony lub serwery zostały zatrzymane w sposób czysty po zamknięciu systemu.
+index_rlchangedesc=Kliknij ten przycisk, aby przełączyć system z bieżącego poziomu uruchamiania na wybrany. Spowoduje to zatrzymanie wszystkich działań na bieżącym poziomie, a następnie uruchomienie wszystkich akcji na nowym poziomie uruchamiania.
+log_condrestart=Warunkowo wznowione działanie $1 
+upstart_fork=Serwer rozwidla się w tle?
+systemd_status3=Nieznany!
+syslog_journalctl=Dzienniki SystemD
