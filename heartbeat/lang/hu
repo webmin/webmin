@@ -1,54 +1,44 @@
-# webmin-0.90heartbeat/lang/hu
-# translated by Gabor Keve <gabor.keve@it-worx.hu>
-#
-index_title=Szívverés Monitor
-index_return=Szívverés monitor
-index_edir=A szívverés konfigurációs könyvtár $1 nem létezik. Talán a szívverés nincs installálva, vagy az Ön <a href='$2'>modul konfigurációja</a> hibás.
-index_start=Szívverés Monitor indítása
-index_startmsg=Kattintson erre a gombra ha el szeretné indítani a szívverés monitort. Ez érvényesíti az automatikus szolgáltatás failover az Ön rendszerében az aktuális konfigurációval.
-index_apply=Modosulások elfogadása
-index_applymsg=Click this button to force the running szívverés monitor process to reload the current konfigurációuration.
-
-conf_title=Konfigurációs beállítások
-conf_header=Szívverés konfigurációs beállítások
-conf_serial=Soros szívverés port
-conf_baud=A soros port baud sebessége
-conf_udp=Ethernet szívverés eszköz
+index_title=SzÃ­vverÃ©s Monitor
+index_return=SzÃ­vverÃ©s monitor
+index_edir=A szÃ­vverÃ©s konfigurÃ¡ciÃ³s kÃ¶nyvtÃ¡r $1 nem lÃ©tezik. TalÃ¡n a szÃ­vverÃ©s nincs installÃ¡lva, vagy az Ã–n <a href='$2'>modul konfigurÃ¡ciÃ³ja</a> hibÃ¡s.
+index_start=SzÃ­vverÃ©s Monitor indÃ­tÃ¡sa
+index_startmsg=Kattintson erre a gombra ha el szeretnÃ© indÃ­tani a szÃ­vverÃ©s monitort. Ez Ã©rvÃ©nyesÃ­ti az automatikus szolgÃ¡ltatÃ¡s failover az Ã–n rendszerÃ©ben az aktuÃ¡lis konfigurÃ¡ciÃ³val.
+index_apply=ModosulÃ¡sok elfogadÃ¡sa
+index_applymsg=Click this button to force the running szÃ­vverÃ©s monitor process to reload the current konfigurÃ¡ciÃ³uration.
+conf_title=KonfigurÃ¡ciÃ³s beÃ¡llÃ­tÃ¡sok
+conf_header=SzÃ­vverÃ©s konfigurÃ¡ciÃ³s beÃ¡llÃ­tÃ¡sok
+conf_baud=A soros port baud sebessÃ©ge
 conf_none=Nincs
-conf_udpport=UDP szívverés port
-conf_keepalive=A szívverések közti idõ
-conf_secs=másodperc
-conf_deadtime=Az idõ, miután a csomópont halottnak lesz tekintve
-conf_watchdog=Watchdog eszköz file
-conf_node=Hosztok a füzéren
-node_edit=A fürtök erõforrásainak szerkesztése
-node_header=Fürt erõforrásainak részletezése
-node_node=Elsõszámú csomópontja az erõforrásoknak
-node_ips=Az erõforrás IP címe
-node_ip=IP címek
-node_cidr=Hálózati maszk CIDR
-node_broad=Üzenetszórás címe
-node_servs=Az erõforrás szolgáltatás
-node_serv=Szolgáltatás
-node_args=Kiegészítõ paraméterek
-node_err=Nem lehet menteni a fürt erõforrásokat
-node_enone=Hibás vagy érvénytelen elsõdleges csomópont
-node_eip='$1' nem valós IP cím
-node_ecidr='$1' nem valós CIDR
-node_ebroad='$1' nem valós üzenetszóró cím
-
-auth_title=Hitelesítési kulcs
-auth_header=Fürt csomópont hitelesítés
-auth_mode=Hitelesítési mód
-auth_crc=CRC (Nem biztonságos)
-auth_sha1=SHA1 jelszóval
-auth_md5=MD5 jelszóval
-auth_err=Nem lehet menteni a hitelesítési kulcsot
-auth_emd5=Hibás vagy érvénytelen MD5 jelszó
-auth_esha1=Hibás vagy érvénytelen SHA1 jelszó
-
-start_err=Nem lehet indítani a szívverést
-
-apply_err=Nem lehet menteni a változásokat
-apply_epid=A folyamat már nem fut
-
+conf_udpport=UDP szÃ­vverÃ©s port
+conf_keepalive=A szÃ­vverÃ©sek kÃ¶zti idÅ‘
+conf_secs=mÃ¡sodperc
+conf_deadtime=Az idÅ‘, miutÃ¡n a csomÃ³pont halottnak lesz tekintve
+conf_watchdog=Watchdog eszkÃ¶z file
+conf_node=Hosztok a fÃ¼zÃ©ren
+node_edit=A fÃ¼rtÃ¶k erÅ‘forrÃ¡sainak szerkesztÃ©se
+node_header=FÃ¼rt erÅ‘forrÃ¡sainak rÃ©szletezÃ©se
+node_node=ElsÅ‘szÃ¡mÃº csomÃ³pontja az erÅ‘forrÃ¡soknak
+node_ips=Az erÅ‘forrÃ¡s IP cÃ­me
+node_ip=IP cÃ­mek
+node_cidr=HÃ¡lÃ³zati maszk CIDR
+node_broad=ÃœzenetszÃ³rÃ¡s cÃ­me
+node_servs=Az erÅ‘forrÃ¡s szolgÃ¡ltatÃ¡s
+node_serv=SzolgÃ¡ltatÃ¡s
+node_args=KiegÃ©szÃ­tÅ‘ paramÃ©terek
+node_err=Nem lehet menteni a fÃ¼rt erÅ‘forrÃ¡sokat
+node_enone=HibÃ¡s vagy Ã©rvÃ©nytelen elsÅ‘dleges csomÃ³pont
+node_eip='$1' nem valÃ³s IP cÃ­m
+node_ecidr='$1' nem valÃ³s CIDR
+node_ebroad='$1' nem valÃ³s Ã¼zenetszÃ³rÃ³ cÃ­m
+auth_title=HitelesÃ­tÃ©si kulcs
+auth_header=FÃ¼rt csomÃ³pont hitelesÃ­tÃ©s
+auth_mode=HitelesÃ­tÃ©si mÃ³d
+auth_crc=CRC (Nem biztonsÃ¡gos)
+auth_sha1=SHA1 jelszÃ³val
+auth_md5=MD5 jelszÃ³val
+auth_err=Nem lehet menteni a hitelesÃ­tÃ©si kulcsot
+auth_emd5=HibÃ¡s vagy Ã©rvÃ©nytelen MD5 jelszÃ³
+auth_esha1=HibÃ¡s vagy Ã©rvÃ©nytelen SHA1 jelszÃ³
+start_err=Nem lehet indÃ­tani a szÃ­vverÃ©st
+apply_err=Nem lehet menteni a vÃ¡ltozÃ¡sokat
+apply_epid=A folyamat mÃ¡r nem fut
