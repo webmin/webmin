@@ -1,0 +1,11 @@
+index_title=idmapd 구성
+index_eidmapd=Idmapd 데몬 $1 을 (를) 찾을 수 없습니다. 설치되지 않았거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
+general=일반 구성
+mapping=매핑 구성
+pipefs_dir=Pipefs 디렉토리
+domain=도메인 이름
+nobody_user=아무도 사용자
+nobody_group=아무도 그룹
+save=설정 저장 및 데몬 재시작
+save_err=구성 파일 $1 을 (를) 저장하지 못했습니다.
+error_dir=$1 디렉토리가 없습니다
