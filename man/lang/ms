@@ -30,7 +30,6 @@ index_other_google=Enjin carian Google
 index_other_kde=Dokumentasi KDE
 index_and=Padan semua
 index_or=Padan sebarang
-
 search_efor=Tiada laman manual untuk dicari telah dimasukkan
 search_title=Keputusan Carian
 search_desc=Penerangan
@@ -47,28 +46,21 @@ search_custom=Dokumentasi Custom
 search_none=Tiada Dokumentasi sepadan dengan $1 ditemui.
 search_for=Untuk $1
 search_google=Keputusan carian Google
-
 howto_title=Dokumen HOWTO
 howto_header=Fail Dokumentasi HOWTO $1
 howto_epath=Laluan dokumentasi HOWTO tidak sah
-
 doc_title=Dokumentasi Pekej
 doc_header=Pekej dokumen fail $1
 doc_epath=Laluan dokumentasi tidak sah
-
 man_title=Laman Manual
 man_header=Laman Manual untuk $1($2)
 man_noentry=Laman Manual untuk $1 tidak wujud!
-
 kernel_title=Dokumen Kernel
 kernel_header=Fail dokumen Kernel $1
 kernel_epath=Laluan dokumen kernel tidak sah
-
 kde_title=Dokumentasi KDE
 kde_header=Fail dokumen KDE $1
 kde_epath=Laluan dokumentasi KDE tisak sah
-
 perl_title=Modul Perl
 perl_header=Dokumentasi untuk modul Perl $1
 perl_emod=Nama modul Perl tidak sah
-
