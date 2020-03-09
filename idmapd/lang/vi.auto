@@ -1,0 +1,11 @@
+index_title=cấu hình idmapd
+index_eidmapd=Idmapd daemon $1 không thể tìm thấy. Có thể nó chưa được cài đặt hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
+general=Cấu hình chung
+mapping=Cấu hình bản đồ
+pipefs_dir=Thư mục Pipefs
+domain=Tên miền
+nobody_user=Không có người dùng
+nobody_group=Không ai thuộc nhóm
+save=Lưu cấu hình và khởi động lại daemon
+save_err=Không thể lưu tệp cấu hình $1 
+error_dir=Thư mục $1 không tồn tại
