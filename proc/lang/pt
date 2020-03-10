@@ -2,94 +2,79 @@ index_title=Administrador de Processos
 index_display=Mostrar
 index_tree=PID
 index_user=Utilizador
-index_size=MemÛria
+index_size=Mem√≥ria
 index_cpu=CPU
 index_search=Procurar
 index_run=Executar..
 index_display=Mostrar
 index_return=lista de processos
-
 pid=ID do processo
-owner=Propriat·rio
+owner=Propriat√°rio
 command=Comando
 cpu=CPU
 size=Tamanho
 parent=Processo de origem
-runtime=Tempo de ExecuÁ„o
+runtime=Tempo de Execu√ß√£o
 nice=Nivel de prioridade (Nice)
-
 search_user=Propriedade de
 search_match=Igual a
-search_cpu=Utilizando mais que
 search_fs=Utilizando o sistema de ficheiros
 search_files=Utilizando o ficheiro
 search_submit=Procurar
-search_none=N„o foram encontrados processos correspondentes.
+search_none=N√£o foram encontrados processos correspondentes.
 search_kill=Enviar Sinal
-search_return=formul·rio de procura
-
+search_return=formul√°rio de procura
 run_command=Comando para executar
 run_submit=Executar
-run_mode=Modo de execuÁ„o
+run_mode=Modo de execu√ß√£o
 run_bg=Correr em segundo plano
-run_fg=Esperar atÈ estar completo
-run_input=Entrada de par‚metros para o comando
-run_title=SaÌda de Resultados do Comando
-run_output=SaÌda de resultados de $1 ..
-run_none=N„o foi gerada nenhuma saÌda de resultados
-
-edit_title=InformaÁ„o do Processo
-edit_gone=Este processo j· n„o se encontra em execuÁ„o
+run_fg=Esperar at√© estar completo
+run_input=Entrada de par√¢metros para o comando
+run_title=Sa√≠da de Resultados do Comando
+run_output=Sa√≠da de resultados de $1 ..
+run_none=N√£o foi gerada nenhuma sa√≠da de resultados
+edit_title=Informa√ß√£o do Processo
+edit_gone=Este processo j√° n√£o se encontra em execu√ß√£o
 edit_sub=Sub-processos
 edit_kill=Enviar Sinal
 edit_change=Alterar
-
 kill_err=Erro ao enviar o sinal $1 para o processo $2
 kill_title=Enviar Sinal
 kill_sent=enviado
-
 renice_err=Erro no renice do processo $1
-
 linux_pri=Prioridade
 linux_tty=TTY
 linux_status=Estado
-linux_wchan=¿ Espera
-linux_mem=MemÛria
+linux_wchan=√Ä Espera
+linux_mem=Mem√≥ria
 linux_group=Grupo
 linux_ruser=Utilizador real
 linux_rgroup=Grupo real
 linux_pgid=ID do grupo do processo
 linux_tty=TTY
-
 linuxstat_R=A correr
 linuxstat_S=A dormir
 linuxstat_D=Sono Profundo
 linuxstat_T=Parado
 linuxstat_Z=Zombie
-
 freebsd_ruser=Utilizador real
 freebsd_rgroup=Grupo real
 freebsd_tty=TTY
 freebsd_pgid=Grupo do process
-freebsd_lstart=ComeÁo
-freebsd_lim=Limite de memÛria
-
+freebsd_lim=Limite de mem√≥ria
 hpux_pri=Prioridade
 hpux_tty=TTY
 hpux_status=Estado
-hpux_wchan=¿ espera de
-
+hpux_wchan=√Ä espera de
 hpuxstat_0=Inexistente
 hpuxstat_S=A Dormir
 hpuxstat_W=Em Espera
 hpuxstat_R=A Correr
-hpuxstat_I=Intermedi·rio
+hpuxstat_I=Intermedi√°rio
 hpuxstat_Z=Zombie
 hpuxstat_T=Parado
 hpuxstat_G=Em desenvolvimento
-
 macos_tty=TTY
-
 sysv_group=Grupo
 sysv_ruser=Utilizador real
 sysv_rgroup=Grupo real
