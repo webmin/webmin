@@ -1,0 +1,2 @@
+index_trunced=$2 의 총 출력이 $1 에서 잘 렸습니다.
+index_timedout=$1 초 동안 실행 한 후 명령이 종료되었습니다.
