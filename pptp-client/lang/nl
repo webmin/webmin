@@ -1,10 +1,9 @@
-__norefs=1
 cone_ealready=Reeds verbonden
 conn_cmd=Een PPTP verbinding opbouwen met de opdracht $1 ..
 conn_egone=Tunnel bestaat niet langer
 conn_einvalid=Ontbrekende server IP adres in configuratie file
 conn_err=Mislukt te verbinden met de tunnel
-conn_mppe=Het MPPE protocol voor VPN encryptie vereist een PPP deamon en kernel ondersteuning. Echter de fouten hierboven suggereren dan &#233;&#233;n of beide niet beschikbaar zijn op uw systeem. Wanneer de PPTP server geen MPPE nodig heeft, probeert u dan alle opties uit te zetten die hiermee gerelateerd zijn op de <a href='$1'>globale PPP opties</a> pagina.
+conn_mppe=Het MPPE protocol voor VPN encryptie vereist een PPP deamon en kernel ondersteuning. Echter de fouten hierboven suggereren dan één of beide niet beschikbaar zijn op uw systeem. Wanneer de PPTP server geen MPPE nodig heeft, probeert u dan alle opties uit te zetten die hiermee gerelateerd zijn op de <a href='$1'>globale PPP opties</a> pagina.
 conn_ok=.. verbinding is succesvol geactiveerd en gebruikt interface $1. Uw locale adres is $2 en het remote adres is $3.
 conn_routes=Routes toevoegen met de opdrachten ..
 conn_timeout=.. verbinding mislukt! Controleer het log bericht hieronder voor meer informatie.
@@ -37,7 +36,7 @@ edit_server=Verbind met server
 edit_title1=Toevoegen PPTP Tunnel
 edit_title2=Bewerk PPTP Tunnel
 edit_type=Type
-edit_type0=&nbsp;
+edit_type0= 
 edit_type1=Netwerk
 edit_type2=Enkele host
 edit_unknown=Andere <tt>route</tt> opdrachten
@@ -48,11 +47,11 @@ index_conn=Verbinden met :
 index_conndesc=Klik op deze knop om te verbinden met de geselecteerde PPTP VPN tunnel met gebruik van zijn huidige configuratie.
 index_disc=Verbreken van :
 index_discdesc=Klik op deze knop om de geselecteerde actieve PPTP VPN tunnel te verbreken en verwijder alle routes die ernaar toe gaan.
-index_eoptions=De globale PPTP PPP opties file $1 bestaat niet. Of u moet deze maken, of bewerk de <a href='$2'>module configuratie</a> om een andere file te gebruiken, of geen &#233;&#233;n file te gebruiken.
+index_eoptions=De globale PPTP PPP opties file $1 bestaat niet. Of u moet deze maken, of bewerk de <a href='$2'>module configuratie</a> om een andere file te gebruiken, of geen één file te gebruiken.
 index_eppp=Het PPP server programa $1 is niet geinstalleerd op uw systeem. Terwijl de PPTP dit nodig heeft om te kunnen werken.
 index_epptp=Het PPTP client programma $1 is niet gevonden op uw systeem. Misschien is het niet geinstalleerd of uw <a href='$2'>module configuratie</a> is niet correct.
 index_header=Gedefinieerde Tunnels
-index_noboot=&lt;Niet verbinden&gt;
+index_noboot=<Niet verbinden>
 index_none=Er zijn nog geen PPTP tunnels gedefinieerd.
 index_opts=Bewerk Globale PPP Opties
 index_optsdesc=Klik op deze knop om de PPP opties te bewerken die worden toegevoegd aan alle PPTP VPN tunnels.
