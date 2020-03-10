@@ -1,0 +1,8 @@
+index_title=SSH Вход
+index_warn=Внимание! Тази сесия на telnet е <b>не</b> криптирана.
+index_nojava=Този модул изисква java, за да функционира, но вашият браузър не поддържа java
+index_credits=Applet разработен под GPL от <a href='$1' target=_top>Matthias L. Jugel & Marcus Mei�ner</a>.
+index_sshcredits=Включва софтуер, разработен от екипа за разработка на Cryptix (<a href=$1 target=_top>$1</a>).
+index_esocket=Няма телнет сървър, работещ на $1 порт $2.
+index_esocket2=Няма SSH сървър, работещ на $1 порт $2.
+index_elookup=Неуспешно търсене на IP адрес за $1 за тестване на telnet или SSH сървър.
