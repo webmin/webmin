@@ -1,0 +1,12 @@
+aform_file=Přidat do souboru aliasu
+mailq_refresh=Aktualizovat frontu pošty
+mailq_refreshdesc=Znovu načtěte tuto stránku, aby se zobrazil aktuální stav fronty pošty.
+view_afile=Název přílohy
+view_atype=Typ přílohy
+view_asize=Velikost souboru
+file_ealias=Neplatný formát pro řádek souboru aliasu : $1 
+file_etab=Neplatný formát pro řádek souboru mapy : $1 
+acl_vcatchall=Mohou vytvářet záchytná mapování?
+ports_family=Protokol
+ports_inet=IPv4
+ports_inet6=IPv6
