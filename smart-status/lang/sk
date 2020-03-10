@@ -1,35 +1,34 @@
-data_doing=Zaèínam offline zber údajov na $1 ..
+data_doing=ZaÄÃ­nam offline zber Ãºdajov na $1 ..
 data_failed=.. zlyhalo!
-data_ok=.. zber úspe¹ne spustenı. Na úvodnej stránke modulu si mô¾ete pozrie» stav disku ako aj vısledky testu.
-data_title=Zber údajov
-ext_doing=Spú¹»am podrobnı test na $1 ..
+data_ok=.. zber ÃºspeÅ¡ne spustenÃ½. Na Ãºvodnej strÃ¡nke modulu si mÃ´Å¾ete pozrieÅ¥ stav disku ako aj vÃ½sledky testu.
+data_title=Zber Ãºdajov
+ext_doing=SpÃºÅ¡Å¥am podrobnÃ½ test na $1 ..
 ext_failed=$short_failed
 ext_ok=$short_ok
-ext_title=Podrobnı test
-index_check=Kontrola uspe¹ná?
-index_data=Zber údajov
+ext_title=PodrobnÃ½ test
+index_check=Kontrola uspeÅ¡nÃ¡?
+index_data=Zber Ãºdajov
 index_desc=Umiestnenie
 index_drive=Stav disku $1
-index_ecmd=Príkaz $1 nebol nájdenı na Va¹om systéme, alebo je nesprávne zadanı v <a href='$2'>konfigurácii modulu</a>. Musí by» nain¹talovanı skôr ne¾ zaènete pou¾íva» tento modul.
-index_ecmd2=Príkaz $1 nie je príkazom SMART. Musí by» správne nastavenı v <a href='$2'>konfigurácii modulu</a>.
-index_ecount=bolo zistenıch $1 chıb
-index_eide=Neboli nájdené ¾iadne IDE disky vo Va¹om systéme.
-index_enabled=SMART povolenı?
-index_errors=Zaznamenané chyby
-index_ext=Podrobnı test
+index_ecmd=PrÃ­kaz $1 nebol nÃ¡jdenÃ½ na VaÅ¡om systÃ©me, alebo je nesprÃ¡vne zadanÃ½ v <a href='$2'>konfigurÃ¡cii modulu</a>. MusÃ­ byÅ¥ nainÅ¡talovanÃ½ skÃ´r neÅ¾ zaÄnete pouÅ¾Ã­vaÅ¥ tento modul.
+index_ecmd2=PrÃ­kaz $1 nie je prÃ­kazom SMART. MusÃ­ byÅ¥ sprÃ¡vne nastavenÃ½ v <a href='$2'>konfigurÃ¡cii modulu</a>.
+index_ecount=bolo zistenÃ½ch $1 chÃ½b
+index_enabled=SMART povolenÃ½?
+index_errors=ZaznamenanÃ© chyby
+index_ext=PodrobnÃ½ test
 index_model=Vytvor a modeluj
-index_ok=Ukáza»
+index_ok=UkÃ¡zaÅ¥
 index_return=index modulu
-index_short=Krátky test
-index_show=Zobrazi» stav disku:
-index_size=Veµkos» disku
+index_short=KrÃ¡tky test
+index_show=ZobraziÅ¥ stav disku:
+index_size=VeÄ¾kosÅ¥ disku
 index_support=Podporuje SMART?
 index_title=SMART stav disku
 index_version=SMARTsuite verzia $1
 monitor_drive=Disk na kontrolu
-monitor_errors=Kontrolova» aj chybové záznamy?
+monitor_errors=KontrolovaÅ¥ aj chybovÃ© zÃ¡znamy?
 monitor_type=SMART kontrola disku
-short_doing=Spú¹»am krátky test na $1 ..
+short_doing=SpÃºÅ¡Å¥am krÃ¡tky test na $1 ..
 short_failed=.. zlyhalo!
-short_ok=.. test úspe¹ne spustenı. Pozrite si na úvodnej stránke modulu stav disku ako aj vısledky testu.
-short_title=Krátky test
+short_ok=.. test ÃºspeÅ¡ne spustenÃ½. Pozrite si na Ãºvodnej strÃ¡nke modulu stav disku ako aj vÃ½sledky testu.
+short_title=KrÃ¡tky test
