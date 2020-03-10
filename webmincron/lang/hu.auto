@@ -1,0 +1,2 @@
+log_success=A <tt>$2</tt> sikeresen futott a <tt>$1</tt> -ban
+log_failure=A <tt>$2</tt> futtatása a <tt>$1</tt> : $3 fájlban nem sikerült
