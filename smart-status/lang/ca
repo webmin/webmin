@@ -1,60 +1,53 @@
 index_title=Estat de les Unitats SMART
-index_ecmd=No s'ha trobat al sistema l'ordre de control SMART $1, o bÈ no est‡ correctament configurada a la <a href='$2'>configuraciÛ del mÚdul</a>. S'ha d'instal∑lar abans de poder utilitzar aquest mÚdul.
-index_ecmd2=No sembla que l'ordre $1 sigui l'ordre de control SMART. S'ha de configurar correctament a la <a href='$2'>configuraciÛ del mÚdul</a> abans de poder utilitzar aquest mÚdul.
-index_version=SMARTsuite versiÛ $1
+index_ecmd=No s'ha trobat al sistema l'ordre de control SMART $1, o b√© no est√† correctament configurada a la <a href='$2'>configuraci√≥ del m√≤dul</a>. S'ha d'instal¬∑lar abans de poder utilitzar aquest m√≤dul.
+index_ecmd2=No sembla que l'ordre $1 sigui l'ordre de control SMART. S'ha de configurar correctament a la <a href='$2'>configuraci√≥ del m√≤dul</a> abans de poder utilitzar aquest m√≤dul.
+index_version=SMARTsuite versi√≥ $1
 index_show=Mostra l'estat de la unitat:
 index_ok=Mostra
-index_eide=No s'ha trobat cap unitat IDE, SCSI ni SATA al sistema.
 index_drive=Estat de la unitat $1
 index_drivesub=Estat de la unitat $1, disc $2
-index_desc=UbicaciÛ
+index_desc=Ubicaci√≥
 index_size=Mida de la unitat
 index_model=Marca i model
 index_support=Suporta SMART
 index_enabled=SMART activat
-index_check=Ha passat la comprovaciÛ de la unitat
+index_check=Ha passat la comprovaci√≥ de la unitat
 index_short=Auto test Breu
-index_ext=Auto test EstËs
-index_data=Test de RecopilaciÛ de Dades
+index_ext=Auto test Est√®s
+index_data=Test de Recopilaci√≥ de Dades
 index_errors=Errors registrats
 index_ecount=$1 errors detectats
 index_attrs=Atributs SMART addicionals
 index_raw=Informe d'estat SMART complet
-index_return=a l'Ìndex de mÚduls
-index_family=FamÌlia del model
-index_serial=N˙mero de sËrie
+index_return=a l'√≠ndex de m√≤duls
+index_family=Fam√≠lia del model
+index_serial=N√∫mero de s√®rie
 index_capacity=Capacitat
 index_norm=Normalitzat:
-
-monitor_type=ComprovaciÛ d'Unitat SMART Drive Check
+monitor_type=Comprovaci√≥ d'Unitat SMART Drive Check
 monitor_type2=Desgast SSD
 monitor_drive=Unitat a comprovar
-monitor_errors=Comprova tambÈ el registre d'errors
-monitor_errorsinc=SÌ, perÚ avisa nomÈs si s'incrementa el recompte
+monitor_errors=Comprova tamb√© el registre d'errors
+monitor_errorsinc=S√≠, per√≤ avisa nom√©s si s'incrementa el recompte
 monitor_other=Altres...
-monitor_edrive=Hi falta la unitat a comprovar o bÈ Ès inv‡lida
+monitor_edrive=Hi falta la unitat a comprovar o b√© √©s inv√†lida
 monitor_nosuch=Aquesta unitat no existeix
 monitor_nosmart=No hi ha suport SMART
 monitor_errorsfound=S'ha informat de $1 errors
 monitor_errorsinced=Els errors s'han incrementat de $2 a $1
 monitor_wearlevel=Falla si el nivell de desgast cau per sota de
-monitor_ewearlevel=El percentatge de nivell de desgast Ès inv‡lid
+monitor_ewearlevel=El percentatge de nivell de desgast √©s inv√†lid
 monitor_nowearout=La unitat no reconeix cap indicador de desgast SSD
 monitor_wornout=El nivell de desgast ha caigut a $1
-
 short_title=Auto Test Breu
-short_doing=S'est‡ iniciant l'auto test breu del $1...
+short_doing=S'est√† iniciant l'auto test breu del $1...
 short_failed=...ha fallat!
-short_ok=...el test s'ha executat bÈ. Mira l'estat de la unitat a la p‡gina principal del mÚdul per veure'n els resultats.
-
-ext_title=Auto Test EstËs
-ext_doing=S'est‡ iniciant l'auto test estËs del $1...
+short_ok=...el test s'ha executat b√©. Mira l'estat de la unitat a la p√†gina principal del m√≤dul per veure'n els resultats.
+ext_title=Auto Test Est√®s
+ext_doing=S'est√† iniciant l'auto test est√®s del $1...
 ext_failed=...ha fallat!
-ext_ok=...el test s'ha executat bÈ. Mira l'estat de la unitat a la p‡gina principal del mÚdul per veure'n els resultats.
-
-data_title=Test de RecopilaciÛ de Dades
-data_doing=S'est‡ iniciant la recopilaciÛ de dades fora de lÌnia a $1...
+ext_ok=...el test s'ha executat b√©. Mira l'estat de la unitat a la p√†gina principal del m√≤dul per veure'n els resultats.
+data_title=Test de Recopilaci√≥ de Dades
+data_doing=S'est√† iniciant la recopilaci√≥ de dades fora de l√≠nia a $1...
 data_failed=...ha fallat!
-data_ok=...la recopilaciÛ s'ha executat bÈ. Mira l'estat de la unitat a la p‡gina principal del mÚdul per veure'n els resultats.
-
-__norefs=1
+data_ok=...la recopilaci√≥ s'ha executat b√©. Mira l'estat de la unitat a la p√†gina principal del m√≤dul per veure'n els resultats.
