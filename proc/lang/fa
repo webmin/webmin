@@ -1,4 +1,3 @@
-﻿
 index_title= پردازش‌هاي درحال اجرا 
 index_display= نمايش
 index_tree= PID 
@@ -9,9 +8,6 @@ index_search=جستجو
 index_zone=منطقه
 index_run=اجرا..
 index_return=فهرست پردازشها
-index_mem=<b> حافظه حقيقي : </b> مجموع KB $1 / آزاد KB $2
-index_swap=<b> حافظه مجازي:</b> مجموع KB $1/ خالي KB $2
-index_load=<b> ميانگين بار پردازنده:</b> $1 (1دقيقه)، $2 (۵دقيقه)، $3 (۱۵دقيقه)
 index_inzone=در منطقه $1
 pid= شماره مشخصه پردازش 
 owner= مالک
@@ -124,9 +120,9 @@ acl_edit=آيا ميتوان پردازشها را کشته و اولويت مط
 acl_run= اجراي فرمانات
 acl_only=آيا تنها ميتوان پردازش متعلق به خود را ديد؟
 kill_kill= کشتن پردازش
-kill_term=&nbsp;پايان‌يافتن&nbsp;&nbsp;
-kill_hup=&nbsp;&nbsp;آغاز‌مجدد&nbsp;&nbsp;&nbsp; kill_stop=&nbsp;&nbsp;&nbsp;&nbsp;توقف&nbsp;&nbsp;&nbsp;&nbsp;
-kill_cont=&nbsp;&nbsp;ادامه&nbsp;&nbsp;
+kill_term= پايان‌يافتن  
+kill_hup=  آغاز‌مجدد    kill_stop=    توقف    
+kill_cont=  ادامه  
 open_title= باز‌نمودن پرونده‌ها و اتصال‌ها 
 open_proc= براي پردازش $1 (شماره مشخصه پردازش $2) 
 open_header1= پرونده‌هاي بازشده 
@@ -160,5 +156,3 @@ trace_syscalls=رديابي فراخوانيهاي سيستم:
 trace_all=همه
 trace_sel= فهرست‌شده..
 trace_change= تغيير
- 
-
