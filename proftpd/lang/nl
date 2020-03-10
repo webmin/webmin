@@ -1,4 +1,3 @@
-__norefs=1
 anon_anon=Configureer Anonieme FTP
 anon_header1=In virtuele server $1
 anon_header2=In standaard server
@@ -65,7 +64,7 @@ index_create=Maak een virtuele server aan
 index_defdesc=Handelt iedere FTP verbinding af die niet word afgehandeld door een virtuele server.
 index_defserv=Standaard server
 index_econf=De ProFTPD config file $1 bestaat niet of is niet geldig. Misschien is uw <a href='$2'>module configuratie</a> niet in orde.
-index_eip=&lt;Onbekend&gt;
+index_eip=<Onbekend>
 index_eproftpd=De ProFTPD server $1 werd niet gevonden op uw systeem. Misschien is het niet geinstalleerd, of is uw <a href='$2'>module configuratie</a> niet in orde.
 index_eproftpd2=Het programma $1 lijkt niet de ProFTPD server te zijn. Misschien is het niet geinstalleerd, of is uw <a href='$2'>module configuratie</a> niet in orde. Het resultaat van opdracht $3 was : $4
 index_eversion=Versie  $1 van ProFTPD server word niet ondersteund door Webmin.
