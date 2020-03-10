@@ -1,23 +1,18 @@
-index_elink=Encara no s'ha configurat cap URL per fer el túnel.
+index_elink=Encara no s'ha configurat cap URL per fer el tÃºnel.
 index_url=Introdueix l'URL a obrir:
 index_open=Obre
-
-link_eurl=URL de túnel invàlid: $1
+link_eurl=URL de tÃºnel invÃ lid: $1
 link_elogin=No s'ha pogut entrar a $1 com $2.
-link_eautologin=Usuari o contrasenya invàlida per a. Fes clic <a href='$2'>aquí</a> per entrar.
-link_enouser=Cal un usuari i una contrasenya per entrar a $1,  però no n'has configurat cap.
-link_ebadurl=No tens permís per accedir l'URL $1
-link_mconfig=Fes servir la pàgina de <a href='$1'>configuració del mòdul</a> per canviar l'entrada.
-
+link_eautologin=Usuari o contrasenya invÃ lida per a. Fes clic <a href='$2'>aquÃ­</a> per entrar.
+link_enouser=Cal un usuari i una contrasenya per entrar a $1,  perÃ² no n'has configurat cap.
+link_ebadurl=No tens permÃ­s per accedir l'URL $1
+link_mconfig=Fes servir la pÃ gina de <a href='$1'>configuraciÃ³ del mÃ²dul</a> per canviar l'entrada.
 login_title=Entrada al Lloc Web
 login_desc=Has de proporcionar un nom d'usuari i una contrasenya per entrar a $1.
-login_header=Autenticació del Lloc Web
+login_header=AutenticaciÃ³ del Lloc Web
 login_user=Usuari
 login_pass=Contrasenya
 login_login=Entra
 login_clear=Neteja
-
 seturl_err=No s'ha pogut obrir l'URL
-seturl_eurl=Has introduït un URL invàlid
-
-__norefs=1
+seturl_eurl=Has introduÃ¯t un URL invÃ lid
