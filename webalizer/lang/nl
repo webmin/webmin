@@ -1,4 +1,3 @@
-__norefs=1
 acl_add=Mag een nieuwe logfile toevoegen voor analyse
 acl_any=Iedere gebruiker
 acl_dir=Alleen bekijken en bewerken toestaan van rapporten voor log's onder
@@ -129,7 +128,6 @@ index_type3=FTP
 index_version=Webalizer versie $1
 index_version_awffull=AWFFull
 index_version_webalizer=Webalizer versie $1
-
 index_view=Bekijk ..
 index_webalizer=Webalizer
 index_when=Ja, $1
