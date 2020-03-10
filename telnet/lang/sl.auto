@@ -1,0 +1,8 @@
+index_title=SSH prijava
+index_warn=Opozorilo! Ta sejna telnet je <b>ni</b> šifrirana.
+index_nojava=Ta modul potrebuje funkcijo java, vendar vaš brskalnik ne podpira jave
+index_credits=Applet razvil v okviru GPL z <a href='$1' target=_top>Matthias L. Jugel in Marcus Mei�ner</a>.
+index_sshcredits=Vključuje programsko opremo, ki jo je razvil razvojni tim Cryptix (<a href=$1 target=_top>$1</a>).
+index_esocket=Na vratih $1 port $2 ne deluje noben telnet strežnik.
+index_esocket2=Na vratih $1 vrata $2 ni strežnika SSH.
+index_elookup=IP-naslova ni bilo mogoče najti za $1, da bi preizkusil telnet ali SSH strežnik.
