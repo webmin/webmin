@@ -1,0 +1,10 @@
+index_nosearch=検索に一致するサーバーはありません。
+index_search=一致するサーバーを表示：
+index_ok=探す
+edit_portnone=設定なし
+edit_checkssl=リモートSSL証明書を確認しますか？
+save_eport2=ログイン付きのリンクタイプが選択されている場合、ポートを指定する必要があります
+find_already2=$1に既知のサーバーホストが見つかりました
+delete_title=サーバーを削除する
+delete_rusure=選択した $1個のサーバーを削除してもよろしいですか？
+delete_confirm=今すぐ削除
