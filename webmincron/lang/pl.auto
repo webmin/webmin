@@ -1,0 +1,2 @@
+log_success=Pomyślnie uruchomiono <tt>$2</tt> w <tt>$1</tt>
+log_failure=Nie można uruchomić <tt>$2</tt> w <tt>$1</tt> : $3 
