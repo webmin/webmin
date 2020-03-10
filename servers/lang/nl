@@ -1,4 +1,3 @@
-__norefs=1
 acl_add=Mag nieuwe servers registreren?
 acl_auto=Mag automatische detectie van servers opzetten?
 acl_edit=Mag servers bewerken?
@@ -105,7 +104,7 @@ index_findmsg=Klik op deze knop om automatisch Webmin servers te vinden op uw lo
 index_group=Groep
 index_host=Hostnaam en poort
 index_logout=Log uit
-index_none=&lt;Niets&gt;
+index_none=<Niets>
 index_noservers=Er zijn geen servers geregistreerd.
 index_os=Server type
 index_return=servers
