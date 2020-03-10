@@ -1,0 +1,2 @@
+log_success=<tt>$2</tt> succesvol uitgevoerd in <tt>$1</tt>
+log_failure=Kan <tt>$2</tt> niet uitvoeren in <tt>$1</tt> : $3 
