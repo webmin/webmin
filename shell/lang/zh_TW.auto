@@ -1,0 +1,2 @@
+index_trunced=$2的總輸出在 $1處被截斷。
+index_timedout=運行 $1秒後命令已終止。
