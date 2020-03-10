@@ -1,4 +1,3 @@
-__norefs=1
 access_action=Actie ..
 access_delete=Verwijder Geselecteerde Spam Controle Regels
 access_desc1=Met Sendmail's spam controle opties kunt u voorkomen dat spam uw gebruikers bereikt door email te weigeren van bepaalde adressen, en om te voorkomen dat spammers uw systeem misbruiken als relais voor email. Standaard zal Sendmail alle email accepteren vanaf ieder adres voor een locale gebruiker, maar zal iedere client of email server tegenhouden om email te versturen via uw systeem. Normaal gesproken moet u spam controle regels toevoegen om email te weigeren van spammers, en regels toevoegen om dit toe te staan van computers op uw netwerk.
@@ -324,7 +323,7 @@ gsave_ematch=Het van adres komt niet overeen met '$1'
 gsave_err=Mislukt om uitgaande adres op te slaan
 gsave_eto='$1' is geen geldig nieuw adres
 index_econfig=De Sendmail config file $1 bestaat niet. Waarschijnlijk is uw <a href='$2'>module configuratie</a> incorrect.
-index_epath=De Sendmail programma file $1 is niet ge&#239;nstalleerd op uw systeem. Waarschijnlijk is uw <a href='$2'>module configuratie</a> niet correct, of Sendmail is niet ge&#239;nstalleerd.
+index_epath=De Sendmail programma file $1 is niet geïnstalleerd op uw systeem. Waarschijnlijk is uw <a href='$2'>module configuratie</a> niet correct, of Sendmail is niet geïnstalleerd.
 index_eversion=Uw Sendmail configuratie file is niet geschikt voor de laatste versie van Sendmail. Webmin ondersteunt alleen versie 8.8 en hoger.
 index_return=Sendmail configuratie
 index_sendmail=Sendmail
@@ -430,7 +429,7 @@ mailer_local=Locale Unix aflevering
 mailers_cannot=U bent niet bevoegd om domein routing te bewerken
 mailers_delete=Verwijder Geselecteerde Domein Routes
 mailers_delivery=Aflevering
-mailers_desc1=Domein routing geeft een mogelijkheid om een special overdracht methoden te defini&#235;ren voor email naar bepaalde domeinen. Dit kan erg handig zijn indien uw systeem een gateway is voor email servers die niet bereikt kunnen worden van buiten uw netwerk of wanneer u wilt forceren dat alle email van een bepaald domein word door gestuurd door een andere server.
+mailers_desc1=Domein routing geeft een mogelijkheid om een special overdracht methoden te definiëren voor email naar bepaalde domeinen. Dit kan erg handig zijn indien uw systeem een gateway is voor email servers die niet bereikt kunnen worden van buiten uw netwerk of wanneer u wilt forceren dat alle email van een bepaald domein word door gestuurd door een andere server.
 mailers_desc2=U hoeft <b>geen</b> ingang te hebben in de <a href='$1'>locale domeinen</a> lijst voor doorgestuurde domeinen. Echter u moet dan wel een DNS MX record hebben die verwijst naar uw systeem voor alle domeinen waar het een gateway voor is.
 mailers_desc3=U moet ook ingangen hebben in de <a href='$1'>relais domeinen</a> lijst voor ieder domein
 mailers_edirective=Uw Sendmail configuratie file heeft niet de noodzakelijke richtlijnen voor domein routing.
@@ -469,7 +468,7 @@ mailq_subject=Onderwerp
 mailq_title=Email Wachtrij
 mailq_to=Naar
 mailq_unknown=Onbekend
-masq_desc1=Wanneer een domein word opgegeven hierboven zal Sendmail alle <tt>Van</tt> adressen van alle uitgaande berichten die van dit domein komen veranderen. Daarnaast zal bij ieder email bericht wat door uw systeem gaat van &#233;&#233;n van de hosts of domeinen die hieronder in de lijst staan ook hun <tt>Van</tt> adressen   op dezelfde manier worden gemodificeerd. Let op dat iedere domein maskerade (=vermommen) wat hier gedefinieerd is kan worden overschreven voor specifieke gebruikers met gebruik van de <a href='$1'>Uitgaande Adressen</a> pagina.
+masq_desc1=Wanneer een domein word opgegeven hierboven zal Sendmail alle <tt>Van</tt> adressen van alle uitgaande berichten die van dit domein komen veranderen. Daarnaast zal bij ieder email bericht wat door uw systeem gaat van één van de hosts of domeinen die hieronder in de lijst staan ook hun <tt>Van</tt> adressen   op dezelfde manier worden gemodificeerd. Let op dat iedere domein maskerade (=vermommen) wat hier gedefinieerd is kan worden overschreven voor specifieke gebruikers met gebruik van de <a href='$1'>Uitgaande Adressen</a> pagina.
 masq_desc2=Deze optie kan bruikbaar zijn indien u wilt dat email vanaf uw systeem lijkt te komen van uw domein in plaats van uw hostnaam, of wanneer uw systeem de mailhub is voor een aantal andere hosts die hun eigen mailservers hebben.
 masq_domain=Maskerade als domein
 masq_domains=Domeinen die vermomt (maskerade) moeten worden
@@ -757,7 +756,7 @@ virtusers_address=Adres $1
 virtusers_cmt=Omschrijving
 virtusers_createfile=Of wanneer deze optie net is aangezet <a href='$1'>Klik hier</a> om nu een file aan te maken.
 virtusers_delete=Verwijder Geselecteerde Adres Mappings
-virtusers_desc1=Adres mappings zijn hetzelfde als <a href='$1'>aliassen</a>, maar zijn meer geschikt voor een systeem die meerdere email domeinen heeft. Het kan gebruikt worden om email door te sturen voor een heel domein naar &#233;&#233;n adres, afhandelen van gebruikers met dezelfde naam in verschillende domeinen of alle email te mappen van het ene domein naar het andere domein.
+virtusers_desc1=Adres mappings zijn hetzelfde als <a href='$1'>aliassen</a>, maar zijn meer geschikt voor een systeem die meerdere email domeinen heeft. Het kan gebruikt worden om email door te sturen voor een heel domein naar één adres, afhandelen van gebruikers met dezelfde naam in verschillende domeinen of alle email te mappen van het ene domein naar het andere domein.
 virtusers_desc2=Let op dat u een ingang moet hebben in de <a href='$1'>locale domeinen</a> tabel voor alle domeinen die gebruik maken van adres mapping, en er moet een DNS MX record zijn voor ieder domein wat gericht is naar uw systeem.
 virtusers_domain=Domein $1
 virtusers_ecannot=U bent niet bevoegd om adres mappings te bewerken
