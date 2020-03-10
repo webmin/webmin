@@ -1,14 +1,8 @@
-﻿
 index_title=کارسازProFTPD
 index_eproftpd= کارساز ProFTPD $1 بر روي سيستم شما يافت نشد. ممکن است نصب نشده‌باشد يا <a href=’$2’> پيکربندي پيمانه</a> شما نادرست ‌باشد. 
-
 index_eproftpd2= برنامه $1 به نظر نمي رسد که کارساز ProFTPD باشد. ممکن است که نصب نشده باشد، يا <a href=’$2’> پيکربندي پيمانه</a> شما نادرست ‌باشد. خروجي فرمان $3 برابر بود با:$4
-
 index_eversion=نسخه‌ $1 کارساز ProFTPD به‌وسيله وب‌مين پشتيباني نمي شود.فقط نسخه 0.99 و بالاتر از آن قابل پشتيباني هستند.
-
-
 index_econf=پرونده $1 پيکربندي ProFTPD وجود ندارد يا نامعتبر است. ممکن است که<a href=’$2’> پيکربندي پيمانه</a> شما نادرست باشد.
-
 index_apply=بکاربستن تغييرات
 index_applymsg=اين کليد را فشار دهيد تا پيکربندي جاري از طريق ارسال يک سيگنال SIGHUPبه پردازش اجراي ProFTPDاعمال شود.
 index_start=آغاز کارساز
@@ -25,7 +19,7 @@ index_defserv=کارساز پيش‌گزيده
 index_defdesc=گرداندن همه ارتباطات FTP که بوسيله کارسازهاي مجازي گردانده نمي شوند.
 index_any=هيچ
 index_vdesc=گرداندن همه ارتباطات با $1
-index_eip=&1t;ناشناخته&gt;
+index_eip=&1t;ناشناخته>
 index_global=پيکربندي سراسري
 index_create=ايجاد کارساز مجازي
 index_version=PROFTPD نسخه $1
@@ -110,7 +104,6 @@ lserv_cmd=فرمانهاي FTP
 lserv_delete=حذف پيکربندي فرمانها
 lserv_err= عدم‌موفقيت در حفظ فرمانها
 lserv_ecmd=هيچ فرماني انتخاب نشده‌است
-
 dserv_title=پيکربندي فهرست راهنما
 dserv_dir=مسير فهرست راهنما
 dserv_err= عدم‌موفقيت در حفظ فهرست راهنما
@@ -131,10 +124,8 @@ mod_core_umask=پرونده جديد umask
 mod_core_octal=نقابي هشت هشتي
 mod_core_umask_d=نقابي فهرست راهنماي جديد
 mod_core_eumask=umaskنامعتبر است و يا يافت نشد
-
 mod_core_user=اجرا به عنوان کاربريونيکس
 mod_core_uname=اسم‌کاربر
-mod_core_UID=شناسه کاربر
 mod_core_group=اجرا به‌عنوان گروه يونيکس
 mod_core_gname=نام گروه
 mod_core_gid=شناسه گروه
@@ -182,7 +173,6 @@ mod_core_dfilter=ممنوعيت regexp فرمانها FTP
 mod_core_display=پرونده پيام پيش از ورود به سيستم
 mod_core_none=هيچ
 mod_core_edisplay=پرونده پيام پيش از ورود به سيستم يافت نشد
-
 mod_core_firstcd=فهرست راهنماي نام پرونده README
 mod_core_efirstcd=فهرست راهنماي نام پرونده README يافت نشد 
 mod_core_goaway=تعداد زياد اتصالهاي پرونده پيام***
@@ -247,12 +237,9 @@ mod_core_identmsg_def= نمايش پيام پيش‌گزيده
 mod_core_links=آيا اتصالهاي نمادي نمايش داده شود؟
 mod_core_tight=آيا فقط به درگاه‌هاي موردنياز مقيد شود؟
 mod_core_facility=امکان ثبت سيستم
-
 mod_core_level=سطح ثبت سيستم
 mod_core_backlog=طول صف TCP backlog
 mod_core_ebacklog=طول صف backlog نامعتبر است و يا يافت نشد
-
-
 mod_core_nodelay=آيا از گزينه حفره TCP_NODELAY استفاده شود؟
 mod_core_rwindow=TCP اندازه پنجره را دريافت کرد
 mod_core_erwindow=اندازه پنجره دريافت شده نامعتبر است و يا يافت نشد
@@ -371,7 +358,6 @@ start_err=عدم موفقيت در آغاز کارساز FTP
 start_einetd=وقتي که در حالت inetd هستيد نمي توانيد کارساز شبح را آغاز کنيد.
 ftpaccess_title=پرونده اختيارات هر فهرست راهنما
 ftpaccess_desc=اختيارات اضافي هر فهرست راهنما مي‌تواند در يک پرونده (که معمولاً <tt>.ftpaccess</tt> ناميده مي‌شود)در هر فهرست راهنما مشخص شوند.اختيارات براي همه پرونده‌ها در آن فهرست راهنما و زير فهرستهاي راهنما بکار برده مي‌شود مگر اين که به وسيله پرونده اختيارات ديگري لغو شود.
-
 ftpaccess_create=ايجاد پرونده اختيارات
 ftpaccess_find=پيدا کردن پرونده‌هاي اختيارات
 ftpaccess_auto=به عنوان بي‌نام
@@ -385,7 +371,6 @@ ftpindex_opts=گزينه‌هاي هر دايرکتوري
 ftpindex_edit=ويرايش رهنمودها
 ftpindex_limit=گزينه‌هاي هر فرمان
 ftpindex_addlimit=افزودن گزينه‌هاي هر فرمان براي ..
-
 ftpindex_header2=$1 در $2
 ftpindex_return=پرونده گزينه‌هاي هر فهرست راهنما
 ftpindex_header=براي $1
@@ -425,7 +410,3 @@ log_anon=$1 در FTP بي‌نام براي کارساز $2 تغيير کرد
 log_start=PROFTPD آغاز شد
 log_apply=تغييرات بکاربسته شد
 eafter=عدم‌موفقيت در وارسي پيکربندي:تغييرات $1 حفظ نشده‌است.
-PROFTPD_apply=بکاربستن تغييرات
-PROFTPD_stop=ايستادن PROFTPD
-PROFTPD_start=آغاز PROFTPD
-
