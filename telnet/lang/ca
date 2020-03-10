@@ -1,9 +1,8 @@
-index_title=ConnexiÛ SSH
-index_warn=AtenciÛ! Aquesta sessiÛ telnet <b>no</b> est‡ xifrada.
-index_nojava=Aquest mÚdul necessita java per funcionar, perÚ el teu fullejador no suporta java
-index_credits=Applet desenvolupat sota GPL per <a href='$1' target=_top>Matthias L. Jugel &amp; Marcus Meiﬂner</a>.
+index_title=Connexi√≥ SSH
+index_warn=Atenci√≥! Aquesta sessi√≥ telnet <b>no</b> est√† xifrada.
+index_nojava=Aquest m√≤dul necessita java per funcionar, per√≤ el teu fullejador no suporta java
+index_credits=Applet desenvolupat sota GPL per <a href='$1' target=_top>Matthias L. Jugel & Marcus Mei√üner</a>.
 index_sshcredits=Inclou programari desenvolupat pel Cryptix Development Team (<a href=$1 target=_top>$1</a>).
-index_esocket=No hi ha cap servidor telnet en execuciÛ a $1 port $2.
-index_esocket2=No hi ha cap servidor SSH en execuciÛ a $1 port $2.
-index_elookup=No s'ha pogut consultar l'adreÁa IP de $1 per provar el servidor telnet o SSH.
-__norefs=1
+index_esocket=No hi ha cap servidor telnet en execuci√≥ a $1 port $2.
+index_esocket2=No hi ha cap servidor SSH en execuci√≥ a $1 port $2.
+index_elookup=No s'ha pogut consultar l'adre√ßa IP de $1 per provar el servidor telnet o SSH.
