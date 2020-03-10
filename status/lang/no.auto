@@ -1,0 +1,11 @@
+type_fail2ban=Fail2Ban-server
+type_init=Oppstartaksjon
+file_eowner=Filer med feil eier : $1 
+file_egroup=Filer med feil gruppe : $1 
+file_owner=Fileier må være
+file_group=Filgruppe må være
+file_nocheck=Hva som helst
+file_perms=Oktale tillatelser må være
+file_eperm=Filer med gale tillatelser : $1 
+init_action=Handling for å sjekke
+init_eaction=Ingen handling valgt
