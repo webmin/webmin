@@ -1,4 +1,3 @@
-__norefs=1
 check_epostfix=Procmail is niet aangezet in uw Postfix configuratie. In de configuratie file <tt>$2</tt> moet de <tt>$1</tt> optie gezet worden naar <tt>$3</tt>.
 check_esendmail=Sendmail is niet opgezet om Procmail te gebruiken voor locale aflevering. Dit kan worden geconfigureerd in Webmin's <a href='$1'>Sendmail Mail Server</a> module.
 config_eline=Onbekende regel $1 in $2 : $3
