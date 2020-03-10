@@ -1,0 +1,8 @@
+index_title=เข้าสู่ระบบ SSH
+index_warn=คำเตือน! เซสชัน telnet นี้ไม่ได้เข้ารหัส <b>ไม่</b>
+index_nojava=โมดูลนี้ต้องใช้จาวาในการทำงาน แต่เบราว์เซอร์ของคุณไม่รองรับจาวา
+index_credits=แอปเพล็ตพัฒนาภายใต้ GPL โดย <a href='$1' target=_top>Matthias L. Jugel & Marcus Mei�ner</a>
+index_sshcredits=รวมซอฟต์แวร์ที่พัฒนาโดยทีมพัฒนา Cryptix (<a href=$1 target=_top>$1</a>)
+index_esocket=ไม่มีเซิร์ฟเวอร์ telnet ที่ทำงานบน $1 พอร์ต $2 
+index_esocket2=ไม่มีเซิร์ฟเวอร์ SSH ที่ทำงานบน $1 พอร์ต $2 
+index_elookup=ไม่สามารถค้นหาที่อยู่ IP สำหรับ $1 เพื่อทดสอบ telnet หรือเซิร์ฟเวอร์ SSH
