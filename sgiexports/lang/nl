@@ -7,7 +7,6 @@ index_none=Er zij nog geen NFS exports gedefinieerd.
 index_apply=Configuratie Toevoegen
 index_applydesc=Klik op deze knop om alle bovenstaande exports in de lijst actief te maken, met hun geconfigureerde opties.
 index_return=exports lijst
-
 edit_title1=Export Aanmaken
 edit_title2=Export Bewerken
 edit_header=Export details
@@ -25,17 +24,13 @@ edit_access=Mount toegang
 edit_all=Alle hosts
 edit_sel=Hosts in lijst..
 edit_none=Geen hosts
-
 save_err=Mislukt om export op te slaan
 save_edir=Ontbrekende of niet-bestaande directory om te exporteren
 save_eanon=Ontbrekende of ongeldige root gebruiker
 save_erw=Er is geen lees-schrijf hosts ingevuld
 save_eroot=Er is geen root file toegang hosts ingevuld
 save_eaccess=Er is geen mount toegang hosts ingevuld
-
 log_create_export=Aangemaakte export van $1
 log_delete_export=Verwijderde export van $1
 log_modify_export=Gemodificeerde export van $1
 log_apply=Toegevoegde configuratie
-
-__norefs=1
