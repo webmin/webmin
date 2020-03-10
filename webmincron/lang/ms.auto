@@ -1,0 +1,2 @@
+log_success=Berjaya berlari <tt>$2</tt> di <tt>$1</tt>
+log_failure=Gagal menjalankan <tt>$2</tt> dalam <tt>$1</tt> : $3 
