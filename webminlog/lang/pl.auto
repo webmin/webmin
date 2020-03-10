@@ -1,0 +1,8 @@
+search_global_failed=Logowanie do Webmina nie powiodło się : $1 
+search_global_expiredpass=Hasło wygasło
+search_global_wronguser=Nieprawidłowy użytkownik
+search_global_wrongpass=Nieprawidłowe hasło
+search_global_baduser=Zła nazwa użytkownika
+search_global_badpass=Złe hasło
+search_global_twofactor=Nieprawidłowy token dwuskładnikowy
+acl_self=Tylko ja
