@@ -1,0 +1,8 @@
+index_title=SSH Kirjaudu sisään
+index_warn=Varoitus! Tämä telnet-istunto on <b>ei</b> salattu.
+index_nojava=Tämä moduuli vaatii Java-toiminnon, mutta selaimesi ei tue Java-palvelua
+index_credits=Sovelmakehityksen kehittivät GPL: n puitteissa <a href='$1' target=_top>Matthias L. Jugel & Marcus Mei�ner</a>.
+index_sshcredits=Sisältää Cryptix-kehitysryhmän kehittämän ohjelmiston (<a href=$1 target=_top>$1</a>).
+index_esocket=Yksikään $1 portti $2 ei ole telnet-palvelin.
+index_esocket2=$1 -portissa $2 ei ole SSH-palvelinta.
+index_elookup=$1 : n IP-osoitteen haku epäonnistui telnetin tai SSH-palvelimen testaamiseksi.
