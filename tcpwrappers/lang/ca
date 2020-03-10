@@ -1,20 +1,19 @@
 index_title=Embolcalls TCP
-index_return=a l'índex
+index_return=a l'Ã­ndex
 index_allowtitle=Hosts permesos
 index_denytitle=Hosts denegats
 index_norule=Encara no s'ha definit cap regla a <tt>$1</tt>.
-index_nofile=El fitxer '$1' encara no existeix - comprova la <a href="/config.cgi?tcpwrappers">configuració del mòdul</a>
+index_nofile=El fitxer '$1' encara no existeix - comprova la <a href="/config.cgi?tcpwrappers">configuraciÃ³ del mÃ²dul</a>
 index_add=Afegeix una nova regla.
 index_service=Dimoni
 index_hosts=Hosts
 index_cmd=Ordre
 index_delete=Suprimeix les Seleccionades
 index_none=cap
-
-edit_title1allow=Creació de Regla de Permissió
-edit_title2allow=Edició de Regla de Permissió
-edit_title1deny=Creació de Regla de Denegació
-edit_title2deny=Edició de Regla de Denegació
+edit_title1allow=CreaciÃ³ de Regla de PermissiÃ³
+edit_title2allow=EdiciÃ³ de Regla de PermissiÃ³
+edit_title1deny=CreaciÃ³ de Regla de DenegaciÃ³
+edit_title2deny=EdiciÃ³ de Regla de DenegaciÃ³
 edit_eid=No s'ha trobat aquest regla
 edit_header=Opcions de la regla
 edit_service=Serveis
@@ -22,13 +21,10 @@ edit_except=Serveis exceptuats
 edit_hosts=Hosts remots
 edit_hostsexcept=Hosts exceptuats
 edit_cmd=Ordres shell
-edit_efound=No s'ha trobat el dimoni '$1' a la configuració xinetd.
-
+edit_efound=No s'ha trobat el dimoni '$1' a la configuraciÃ³ xinetd.
 save_errtitle=Error en desar la regla
-save_ehost=L'entrada del host conté caràcters incorrectes
-save_ecmd=L'entrada de l'ordre conté caràcters incorrectes
-save_eservice=El nom del dimoni conté caràcters incorrectes
-
+save_ehost=L'entrada del host contÃ© carÃ cters incorrectes
+save_ecmd=L'entrada de l'ordre contÃ© carÃ cters incorrectes
+save_eservice=El nom del dimoni contÃ© carÃ cters incorrectes
 del_errtitle=Error en suprimir la/es regla/es
 del_enone=No has marcat cap regla per suprimir
-__norefs=1
