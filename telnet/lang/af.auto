@@ -1,0 +1,8 @@
+index_title=SSH-aanmelding
+index_warn=Waarskuwing! Hierdie telnet-sessie is <b>nie</b> geënkripteer nie.
+index_nojava=Hierdie module vereis dat Java moet funksioneer, maar u blaaier ondersteun nie Java nie
+index_credits=Applet ontwikkel onder GPL deur <a href='$1' target=_top>Matthias L. Jugel & Marcus Mei�ner</a>.
+index_sshcredits=Bevat sagteware wat deur die Cryptix-ontwikkelingspan ontwikkel is (<a href=$1 target=_top>$1</a>).
+index_esocket=Daar is geen telnetbediener wat op $1 -poort $2 loop nie.
+index_esocket2=Daar is geen SSH-bediener wat op $1 -poort $2 loop nie.
+index_elookup=Kon nie die IP-adres vir $1 op soek na die telnet- of SSH-bediener opspoor nie.
