@@ -1,0 +1,13 @@
+log_create_user=Benutzerattribute für $1 erstellt
+log_modify_user=Geänderte Benutzerattribute für $1 
+log_create_auth=Berechtigung erstellt $1 
+log_modify_auth=Geänderte Berechtigung $1 
+log_delete_auth=Berechtigung $1 gelöscht
+log_create_prof=Erstelltes Profil $1 
+log_modify_prof=Geändertes Profil $1 
+log_create_exec=Ausführungsprofil $1 erstellt
+log_modify_exec=Geändertes Ausführungsprofil $1 
+log_delete_exec=Ausführungsprofil $1 gelöscht
+log_create_project=Erstelltes Projekt $1 
+log_modify_project=Geändertes Projekt $1 
+log_policy=Geänderte Systemrichtlinien
