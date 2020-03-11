@@ -624,6 +624,12 @@ sub translated_substitute
     # The following should have no spaces, e.g. `<tt>uid=joe,dc=my-domain,dc=com</tt>`
     $translated =~ s/(<tt>)(uid[ ]*=.*?)(<\/tt>)/$1@{[&$remove_spaces($2)]}$3/g;
 
+    # If original string contains ` % ` make sure output also has it
+    if ($original =~ / % /) {
+        $translated =~ s/[ ]*%[ ]*/ % /g;
+        $translated =~ s/[ ]*٪[ ]*/ ٪ /g;
+    }
+
 
     return $translated;
 }
