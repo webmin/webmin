@@ -1,7 +1,7 @@
 index_title=SMART diska statuss
 index_ecmd=SMART vadības komanda $1 jūsu sistēmā netika atrasta vai <a href='$2'>moduļa konfigurācijā</a> nav pareizi iestatīta. Pirms šī moduļa var izmantot, tas ir jāinstalē.
 index_ecmd2=Komanda $1, šķiet, nav SMART vadības komanda. Pirms šo moduli var izmantot, tas <a href='$2'>moduļa konfigurācijā</a> ir jāiestata pareizi.
-index_version=% SMARTsuite versija
+index_version=SMARTsuite versija $1
 index_show=Rādīt piedziņas statusu:
 index_ok=Izrāde
 index_eidescsi=Jūsu sistēmā netika atrasti IDE, SCSI vai SATA diskdziņi.

@@ -144,7 +144,7 @@ sched_edir=Nici un director de raport de destinație nu a fost definit în pagin
 sched_esfile=Niciun fișier de jurnal Squid nu a fost definit pe pagina <a href='$1'>Sursa jurnalului și destinația raportului</a>. Acest lucru trebuie setat înainte ca raportarea programată să poată fi activată.
 sched_range=Generați raport pentru intervalul de date
 sched_rall=Toate înregistrările în fișierul jurnal
-sched_rsel=Cele de la $1 la% acum 2 zile
+sched_rsel=Cele de la $1 la acum $2 zile
 sched_err=Nu a reușit să salveze generarea de raport programată
 sched_erfrom=Începând cu numărul de zile de început sau nevalide
 sched_erto=Numărul de sfârșit care lipsește sau este nevalid este acum

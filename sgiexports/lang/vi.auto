@@ -31,6 +31,6 @@ save_erw=Không có máy chủ đọc ghi
 save_eroot=Không có máy chủ truy cập tập tin gốc được nhập
 save_eaccess=Không có máy chủ truy cập gắn kết được nhập
 log_create_export=Đã tạo xuất $1 
-log_delete_export=Đã xóa xuất 1%
+log_delete_export=Đã xóa xuất $1
 log_modify_export=Xuất khẩu đã sửa đổi của $1 
 log_apply=Cấu hình ứng dụng

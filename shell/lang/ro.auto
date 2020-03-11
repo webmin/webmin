@@ -10,5 +10,5 @@ index_trunced=Producția totală de $2 a fost trunchiată la $1.
 index_timedout=Comanda a fost încheiată după rularea timp de $1 secunde.
 acl_user=Execută comenzi ca utilizator
 acl_user_def=Utilizator curent Webmin
-log_run=Comanda Ran%%
+log_run=Comanda Ran $1
 log_clear=Istoric de comandă șters

@@ -124,4 +124,4 @@ rollback_modfile=החזר את התוכן של הקובץ $1.
 rollback_deleted=הקובץ $1 נמחק.
 rollback_nodeleted=דילג על הקובץ $1 שאינו קיים.
 rollback_enone=לא נבחרו קבצים
-log_rollback=הפעולה חזרה 1% במודול $2 
+log_rollback=הפעולה חזרה $1 במודול $2

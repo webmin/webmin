@@ -1,4 +1,4 @@
-index_ecmd=Die bevel% s vir die sonesadministrasie is nie op u stelsel gevind nie. Dit moet geïnstalleer word voordat hierdie module gebruik kan word.
+index_ecmd=Die bevel $1 s vir die sonesadministrasie is nie op u stelsel gevind nie. Dit moet geïnstalleer word voordat hierdie module gebruik kan word.
 index_eglobal=Webmin loop in die $1 -sone eerder as in die <tt>globale</tt> -sone. Hierdie module sal slegs werk as dit in die <tt>globale</tt> sone uitgevoer word.
 index_none=Geen sones is nog gedefinieër nie.
 index_add=Voeg 'n nuwe sone by.

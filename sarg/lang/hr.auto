@@ -144,7 +144,7 @@ sched_edir=Na stranici <a href='$1'>Izvor zapisa i Odredište odredišta</a> nij
 sched_esfile=Na stranici <a href='$1'>nije definirana nijedna datoteka dnevnika lignji na stranici</a> Izvor zapisa i odredište izvještaja </a>. To se mora postaviti prije nego što se omogući planirano izvješćivanje.
 sched_range=Stvaranje izvješća za datumski raspon
 sched_rall=Svi zapisi u datoteci dnevnika
-sched_rsel=Oni od $1 do% prije 2 dana
+sched_rsel=Oni od $1 do prije $2 dana
 sched_err=Spremanje planirane generacije izvješća nije uspjelo
 sched_erfrom=Nedostaje ili nije važeći početni broj dana prije
 sched_erto=Nedostaje ili je nevažeći završni broj dana prije
