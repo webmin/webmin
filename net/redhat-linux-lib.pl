@@ -465,7 +465,7 @@ local %conf;
 if ($conf{'HOSTNAME'}) {
 	return $conf{'HOSTNAME'};
 	}
-return &get_system_hostname(1);
+return &get_system_hostname();
 }
 
 # save_hostname(name)

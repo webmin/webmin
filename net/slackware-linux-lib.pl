@@ -221,7 +221,7 @@ $hn =~ s/\r|\n//g;
 if ($hn) {
 	return $hn;
 	}
-return &get_system_hostname(1);
+return &get_system_hostname();
 }
 
 # save_hostname(name)

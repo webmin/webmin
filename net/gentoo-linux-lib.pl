@@ -266,7 +266,7 @@ local %host;
 if ($host{'HOSTNAME'}) {
 	return $host{'HOSTNAME'};
 	}
-return &get_system_hostname(1);
+return &get_system_hostname();
 }
 
 # save_hostname(name)
