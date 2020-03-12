@@ -146,9 +146,9 @@ service_known0=<tt>Time::Period</tt> stringa
 service_known1=Giorni e ore specificati
 service_known2=Periodo definito
 status_title=Stato MON
-status_ecgi=Il programma CGI di stato MON 1% non esiste. Forse non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
+status_ecgi=Il programma CGI di stato MON $1 non esiste. Forse non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
 status_eperl=Il programma CGI di stato MON richiede il modulo $1 perl. <a href='$2'>Fai clic qui</a> per installarlo direttamente da CPAN.
-status_esame=Il programma CGI di stato MON 1% è stato impostato sullo script <tt>mon.cgi</tt> in questo modulo Webmin, non sul programma CGI fornito con MON. Modifica la <a href='$2'>configurazione del modulo</a> per utilizzare il percorso corretto.
+status_esame=Il programma CGI di stato MON $1 è stato impostato sullo script <tt>mon.cgi</tt> in questo modulo Webmin, non sul programma CGI fornito con MON. Modifica la <a href='$2'>configurazione del modulo</a> per utilizzare il percorso corretto.
 users_title=Utenti MON
 users_etype=L'elenco utenti MON non può essere modificato poiché MON non è attualmente configurato per usarlo per l'autenticazione nella pagina <a href='$1'>Opzioni globali</a>.
 users_header=Utenti MON consentiti in $1 

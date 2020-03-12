@@ -7,7 +7,7 @@ index_eschema=Webmin on muodostanut yhteyden LDAP-palvelimeen, mutta epäonnistu
 index_eimap=$1. Ehkä <a href='$2'>moduulin kokoonpano</a> on väärä.
 index_emd5=Tämä moduuli on <a href='$1'>määritetty</a> käyttämään MD5-salausta salasanoihin, mutta $2 Perl -moduulia ei ole asennettu. <a href='$3'>Napsauta tätä</a>, jotta $2 -moduuli ladataan ja asennetaan.
 index_eslappasswd=Tämä moduuli on <a href='$1'>määritetty</a> käyttämään LDAP MD5 -salaus salasanoille, mutta salasanan salaamiseen käytettyä ohjelmaa <tt>$2</tt> ei ole asennettu.
-index_eusearch=Alle 1%: n käyttäjien etsiminen epäonnistui : $2 
+index_eusearch=Alle $1 : n käyttäjien etsiminen epäonnistui : $2 
 index_uadd=Lisää uusi LDAP-käyttäjä.
 index_gadd=Lisää uusi LDAP-ryhmä.
 index_unone=Yhtään LDAP-käyttäjää ei löytynyt alle $1.

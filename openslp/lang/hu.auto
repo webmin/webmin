@@ -2,7 +2,7 @@ index_title=OpenSLP konfiguráció
 index_return=OpenSLP konfiguráció
 index_eslpd=A (z) $1 OpenSLP démon nem található meg a rendszerén. Lehet, hogy nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
 index_econf=A (z) $1 OpenSLP konfigurációs fájl nem található a rendszerén. Lehet, hogy nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
-index_version=% OpenSLP verzió
+index_version=OpenSLP verzió $1
 slp_apply=Módosítások elfogadása
 slp_stop=Állítsa le az OpenSLP-t
 snda_title=Statikus hatókör és DA

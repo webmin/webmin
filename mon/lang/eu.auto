@@ -1,6 +1,6 @@
 index_title=MON Zerbitzuen monitorea
 index_return=MON indizea
-index_edir=$1 % MON ez da existitzen. Agian MON ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+index_edir=$1 MON ez da existitzen. Agian MON ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
 mon_global_title=Aldaera Globalen Konfigurazioa
 mon_conf_title=Oinarrizko konfigurazioa
 mon_status_title=Egoera Eragilea

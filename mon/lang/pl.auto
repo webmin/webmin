@@ -148,7 +148,7 @@ service_known2=Określony okres
 status_title=Status MON
 status_ecgi=Program CGI stanu MON $1 nie istnieje. Być może nie jest zainstalowany lub konfiguracja modułu <a href='$2'></a> jest nieprawidłowa.
 status_eperl=Program CGI statusu MON wymaga modułu perl $1. <a href='$2'>Kliknij tutaj</a>, aby zainstalować go bezpośrednio z CPAN.
-status_esame=Program CGI stanu MON 1% został ustawiony na skrypt <tt>mon.cgi</tt> w tym module Webmin, a nie program CGI dostarczany z MON. Dostosuj konfigurację modułu <a href='$2'></a>, aby użyć prawidłowej ścieżki.
+status_esame=Program CGI stanu MON $1 został ustawiony na skrypt <tt>mon.cgi</tt> w tym module Webmin, a nie program CGI dostarczany z MON. Dostosuj <a href='$2'>konfigurację modułu</a>, aby użyć prawidłowej ścieżki.
 users_title=Użytkownicy MON
 users_etype=Nie można edytować listy użytkowników MON, ponieważ MON nie jest obecnie skonfigurowany do używania jej do uwierzytelniania na stronie <a href='$1'>Opcje globalne</a>.
 users_header=Dozwoleni użytkownicy MON w $1 
@@ -182,4 +182,4 @@ periods_err=Nie udało się zapisać zdefiniowanych okresów
 periods_ename=„$1” nie jest prawidłową nazwą okresu
 periods_ehour=Brakująca lub nieprawidłowa godzina w okresie $1 (musi być jak 9 rano lub 5 po południu)
 show_title=Status operacyjny
-show_ecgi=Program statusu MON $1 nie istnieje. Być może nie jest zainstalowany lub konfiguracja modułu <a href='$2'></a> jest nieprawidłowa.
+show_ecgi=Program statusu MON $1 nie istnieje. Być może nie jest zainstalowany lub <a href='$2'>konfiguracja modułu</a> jest nieprawidłowa.

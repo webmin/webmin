@@ -38,5 +38,5 @@ log_delete_mailcap=Odstráňte program typu MIME pre $1
 log_create_mailcap=Bol vytvorený program typu MIME pre $1 
 log_modify_mailcap=Upravený program typu MIME pre $1 
 log_delete_mailcaps=Programy typu MIME boli odstránené
-log_disable_mailcaps=Zakázané programy typu% MIME
-log_enable_mailcaps=Povolené programy typu% MIME
+log_disable_mailcaps=Zakázané programy typu $1 MIME
+log_enable_mailcaps=Povolené programy typu $1 MIME

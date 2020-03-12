@@ -1,6 +1,6 @@
 index_title=Monitoraġġ tas-Servizz MON
 index_return=Indiċi MON
-index_edir=Id-direttorju MON%% ma jeżistix. Forsi MON mhuwiex installat, jew il-konfigurazzjoni tal-modulu <a href='$2'></a> tiegħek mhix korretta.
+index_edir=Id-direttorju MON $1 ma jeżistix. Forsi MON mhuwiex installat, jew <a href='$2'>il-konfigurazzjoni tal-modulu</a> tiegħek mhix korretta.
 mon_global_title=Konfigurazzjoni Varjabbli Globali
 mon_conf_title=Konfigurazzjoni Bażika
 mon_status_title=Status Operattiv
@@ -146,9 +146,9 @@ service_known0=<tt>Time::Perjodu</tt> string
 service_known1=Jiem u sigħat speċifikati
 service_known2=Perjodu definit
 status_title=Status MON
-status_ecgi=Il-programm MONI CGI status 1% ma jeżistix. Forsi mhuwiex installat, jew il-konfigurazzjoni <a href='$2'>tal-modulu</a> tiegħek mhix korretta.
+status_ecgi=Il-programm MONI CGI status $1 ma jeżistix. Forsi mhuwiex installat, jew il-konfigurazzjoni <a href='$2'>tal-modulu</a> tiegħek mhix korretta.
 status_eperl=Il-programm CGI tal-istatus MON jeħtieġ il-modulu perl $1. <a href='$2'>Ikklikkja hawn</a> biex tinstallaha direttament minn CPAN.
-status_esame=Il-programm MONI CGI status 1% ġie ssettjat għall-iskritt <tt>mon.cgi</tt> f'dan il-modulu Webmin, mhux il-programm CGI li jiġi ma 'MON. Aġġusta l- <a href='$2'>konfigurazzjoni tal-modulu</a> biex tuża t-triq it-tajba.
+status_esame=Il-programm MONI CGI status $1 ġie ssettjat għall-iskritt <tt>mon.cgi</tt> f'dan il-modulu Webmin, mhux il-programm CGI li jiġi ma 'MON. Aġġusta l- <a href='$2'>konfigurazzjoni tal-modulu</a> biex tuża t-triq it-tajba.
 users_title=Utenti MON
 users_etype=Il-lista ta 'utenti ta' MON ma tistax tiġi editjata minħabba li MON bħalissa mhuwiex ikkonfigurat biex jużaha għall-awtentikazzjoni fuq il-paġna <a href='$1'>Għażliet Globali</a>.
 users_header=L-utenti MON permessi f ' $1 
@@ -182,4 +182,4 @@ periods_err=Ma rnexxielux isalva perjodi definiti
 periods_ename="$1" mhux isem ta 'perjodu validu
 periods_ehour=Siegħa nieqsa jew invalida għall-perjodu $1 (trid tkun bħal 9am jew 5pm)
 show_title=Status Operattiv
-show_ecgi=Il-programm ta 'l-istatus MON%% ma jeżistix. Forsi mhuwiex installat, jew il-konfigurazzjoni <a href='$2'>tal-modulu</a> tiegħek mhix korretta.
+show_ecgi=Il-programm ta 'l-istatus MON ma jeżistix. Forsi mhuwiex installat, jew il-konfigurazzjoni <a href='$2'>tal-modulu</a> tiegħek mhix korretta.

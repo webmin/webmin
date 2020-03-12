@@ -2,9 +2,9 @@ index_title=LDAP 사용자 및 그룹
 index_ebase=시스템에서 LDAP 클라이언트 구성 파일을 찾을 수 없으므로 <a href='$1'>module config</a> 페이지에서 사용자 및 그룹 기반을 설정해야합니다.
 index_eperl=이 모듈에 필요한 $1 Perl 모듈이 설치되지 않았거나 제대로 작동하지 않습니다. <a href='$2'>여기를 클릭</a>하여 지금 다운로드하여 설치하십시오.
 index_eperl2=모듈을로드하려고 할 때 Perl이보고 한 오류는 다음과 같습니다.
-index_eldap=%1. <a href='$2'>모듈 구성</a>을 조정하려면 여기를 클릭하십시오.
+index_eldap=$1. <a href='$2'>모듈 구성</a>을 조정하려면 여기를 클릭하십시오.
 index_eschema=Webmin이 LDAP 서버에 연결되었지만 스키마를 가져 오지 못했습니다. <a href='$1'>LDAP 서버</a> 모듈에서 액세스가 거부되지 않았는지 확인하십시오.
-index_eimap=%1. <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
+index_eimap=$1. <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
 index_emd5=이 모듈은 암호에 MD5 암호화를 사용하도록 <a href='$1'>구성</a>되었지만 $2 Perl 모듈이 설치되지 않았습니다. $2 모듈을 다운로드하여 설치하려면 <a href='$3'>여기를 클릭</a>하십시오.
 index_eslappasswd=이 모듈은 암호에 LDAP MD5 암호화를 사용하도록 <a href='$1'>구성</a>되었지만 암호를 암호화하는 데 사용되는 <tt>$2</tt> 프로그램이 설치되지 않았습니다.
 index_eusearch=$1 에서 사용자를 검색하지 못했습니다  : $2 
@@ -81,7 +81,7 @@ udel_pass=LDAP 사용자 항목 삭제 중 ..
 udel_book=주소록에서 삭제 ..
 udel_imap=IMAP 폴더 삭제 중 ..
 udel_warnimap=홈 디렉토리를 삭제하면 기존 메일 우편함이 삭제됩니다!
-udel_failed=.. 실패했습니다!  : %1
+udel_failed=.. 실패했습니다!  : $1
 raw_title=LDAP 속성
 raw_name=속성 이름
 raw_value=가치

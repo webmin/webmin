@@ -18,7 +18,7 @@ head_usr=Uporabniško ime
 head_pass=Geslo
 head_mand=(Parametri v "RDEČI BARVI" so obvezni)
 err_nomon=paket 'mon' ni nameščen v sistemu
-err_nomonconf=Konfiguracijske datoteke MON% $1 v vašem sistemu ni bilo mogoče najti. Morda MON ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula</a> napačna.
+err_nomonconf=Konfiguracijske datoteke MON $1 v vašem sistemu ni bilo mogoče najti. Morda MON ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula</a> napačna.
 err_nowatch=Nobena skupina za gledanje ni izbrana. Za nadaljevanje izberite vsaj eno skupino gledalcev.
 err_noserv=Za skupino gledalcev ni izbranih nobenih storitev
 err_nomemb=Za opazovalno skupino ni izbranih gostiteljev/članov

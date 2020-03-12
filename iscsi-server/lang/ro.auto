@@ -173,4 +173,4 @@ log_manual=Fișier de configurare editat manual
 log_create_user=Utilizator iSCSI creat $1 
 log_modify_user=Utilizatorul iSCSI actualizat $1 
 log_delete_user=Utilizatorul iSCSI șters $1 
-log_delete_users=Utilizatori iSCSI ștersi 1%
+log_delete_users=Utilizatori iSCSI ștersi $1

@@ -10,7 +10,7 @@ index_eslappasswd=Этот модуль был <a href='$1'>настроен</a>
 index_eusearch=Не удалось найти пользователей до $1 : $2 
 index_uadd=Добавьте нового пользователя LDAP.
 index_gadd=Добавьте новую группу LDAP.
-index_unone=Пользователи% LDAP не найдены в $1.
+index_unone=Пользователи LDAP не найдены в $1.
 index_gnone=Группы под LDAP не были найдены под $1.
 index_return=список пользователей
 index_greturn=список групп

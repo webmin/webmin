@@ -2,9 +2,9 @@ index_title=Utilisateurs et groupes LDAP
 index_ebase=Aucun fichier de configuration client LDAP n'a été trouvé sur votre système, les bases d'utilisateurs et de groupes doivent donc être définies sur la page <a href='$1'>de configuration du module</a>.
 index_eperl=Le module $1 Perl requis par ce module n'est pas installé ou ne fonctionne pas correctement. <a href='$2'>Cliquez ici</a> pour le télécharger et l'installer maintenant.
 index_eperl2=L'erreur signalée par Perl lors de la tentative de chargement du module était :
-index_eldap=%1. Cliquez ici pour ajuster la <a href='$2'>configuration du module</a>.
+index_eldap=$1. Cliquez ici pour ajuster la <a href='$2'>configuration du module</a>.
 index_eschema=Webmin s'est connecté au serveur LDAP, mais n'a pas pu récupérer le schéma. Assurez-vous que l'accès n'a pas été refusé dans le module <a href='$1'>Serveur LDAP</a>.
-index_eimap=%1. La <a href='$2'>configuration du module</a> est peut-être incorrecte.
+index_eimap=$1. La <a href='$2'>configuration du module</a> est peut-être incorrecte.
 index_emd5=Ce module a été <a href='$1'>configuré</a> pour utiliser le chiffrement MD5 pour les mots de passe, mais le module $2 Perl n'est pas installé. <a href='$3'>Cliquez ici</a> pour télécharger et installer le module $2.
 index_eslappasswd=Ce module a été <a href='$1'>configuré</a> pour utiliser le chiffrement LDAP MD5 pour les mots de passe, mais le programme <tt>$2</tt> utilisé pour chiffrer un mot de passe n'est pas installé.
 index_eusearch=Impossible de rechercher des utilisateurs sous $1 : $2 
@@ -81,7 +81,7 @@ udel_pass=Suppression de l'entrée utilisateur LDAP.
 udel_book=Suppression du carnet d'adresses ..
 udel_imap=Suppression du dossier IMAP ..
 udel_warnimap=La boîte aux lettres existante sera supprimée lors de la suppression du répertoire personnel!
-udel_failed=.. échoué!  : %1
+udel_failed=.. échoué!  : $1
 raw_title=Attributs LDAP
 raw_name=Nom d'attribut
 raw_value=Valeurs

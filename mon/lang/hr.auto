@@ -18,7 +18,7 @@ head_usr=Korisničko ime
 head_pass=Zaporka
 head_mand=(Parametri u "CRVENOJ BOJI" su obavezni)
 err_nomon=paket 'mon' nije instaliran na sustavu
-err_nomonconf=Konfiguracijska datoteka MON% $1 nije pronađena u vašem sustavu. Možda MON nije instaliran ili je vaša <a href='$2'>konfiguracija modula</a> netočna.
+err_nomonconf=Konfiguracijska datoteka MON $1 nije pronađena u vašem sustavu. Možda MON nije instaliran ili je vaša <a href='$2'>konfiguracija modula</a> netočna.
 err_nowatch=Nije odabrana nijedna grupa za gledanje. Odaberite barem jednu Grupu za gledanje da biste nastavili.
 err_noserv=Za skupinu gledatelja nije odabrana nijedna usluga
 err_nomemb=Za grupu gledanja nisu odabrani domaćini/članovi
