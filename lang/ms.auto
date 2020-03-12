@@ -21,5 +21,5 @@ log_email_system=Dilaksanakan pada sistem: $1
 log_email_subject=Tindakan Webmin di $1
 log_email_mod=Modul Webmin: $1
 nice_size_PiB=PiB
-nice_size_kiB=kiB
+nice_size_kiB=KiB
 log_email_desc=E-mel ini dihantar oleh Webmin sebagai tindak balas kepada tindakan pengguna.
