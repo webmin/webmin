@@ -69,7 +69,7 @@ gdelete_err=Nie udało się usunąć mapowań adresów wychodzących
 gdelete_ecannot=Nie możesz usunąć mapowania dla $1 
 domains_efeature=Twoja konfiguracja sendmaila nie ma włączonej funkcji mapowania domen (<tt>domaintable</tt>). <a href='$1'>Kliknij tutaj</a>, aby skonfigurować funkcje sendmaila.
 domains_delete=Usuń wybrane mapowania domen
-dsave_ealready=Mapowanie domen dla „1 $” już istnieje
+dsave_ealready=Mapowanie domen dla „$1” już istnieje
 ddelete_err=Nie udało się usunąć mapowań domen
 ddelete_ecannot=Nie możesz usunąć mapowania dla $1 
 access_efeature=Twoja konfiguracja sendmaila nie ma włączonej funkcji kontroli spamu (<tt>access_db</tt>). <a href='$1'>Kliknij tutaj</a>, aby skonfigurować funkcje sendmaila.
@@ -82,7 +82,7 @@ sform_tag_from=Z adresu
 sform_tag_to=Adresować
 sform_tag_connect=Informacje o połączeniu
 sform_tag_spam=Informacje o spamie
-ssave_ealready=Reguła kontroli spamu dla „1 $” już istnieje
+ssave_ealready=Reguła kontroli spamu dla „$1” już istnieje
 ssave_ecannot2=Nie możesz zapisać tej reguły kontroli spamu
 sdelete_err=Nie udało się usunąć reguł kontroli spamu
 sdelete_ecannot=Nie możesz usunąć reguły dla $1 
