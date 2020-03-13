@@ -1,0 +1,11 @@
+index_title=konfigurazzjoni idmapd
+index_eidmapd=Idmapd daemon $1 ma nstabx. Forsi mhuwiex installat, jew il-konfigurazzjoni <a href='$2'>tal-modulu</a> tiegħek mhix korretta.
+general=Konfigurazzjoni Ġenerali
+mapping=Konfigurazzjoni tal-immappjar
+pipefs_dir=Direttorju tal-Pipefs
+domain=Isem tad-domain
+nobody_user=Ħadd ma jużah
+nobody_group=Ħadd ma grupp
+save=Issejvja l-konfigurazzjoni u terġa 'tibda d-daemon
+save_err=Ma rnexxielux isalva l-fajl tal-konfigurazzjoni $1 
+error_dir=Direttorju $1 ma jeżistix

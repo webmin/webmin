@@ -13,23 +13,23 @@ global_install=Installa GRUB sul disco/partizione:
 global_none=Nessuno
 global_other=Altro:
 global_password=Password di boot
-global_password_file=Usa il file di menu se la password &#232; inserita:
+global_password_file=Usa il file di menu se la password è inserita:
 global_secs=secondi
 global_sel=Selezionato
 global_timeout=Timeout prima che venga caricata la voce predefinita
 global_title=Opzioni globali
 index_add=Aggiungi una nuova voce di avvio
-index_efile=Il file di menu di GRUB $1 non &#232; stato trovato sul tuo sistema. E' probabile che GRUB non sia installato o la <a href='$2'>configurazione del modulo</a> non &#232; corretta.
-index_epath=Il file eseguibile di GRUB $1 non &#232; stato trovato sul tuo sistema. E' probabile che GRUB non sia installato o la <a href='$2'>configurazione del modulo</a> non &#232; corretta.
+index_efile=Il file di menu di GRUB $1 non è stato trovato sul tuo sistema. E' probabile che GRUB non sia installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
+index_epath=Il file eseguibile di GRUB $1 non è stato trovato sul tuo sistema. E' probabile che GRUB non sia installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
 index_global=Modifica le opzioni globali
-index_globalmsg=Modifica le opzioni globali di boot che saranno valide per tutte le voci del menu di avvio e scegli il dispositivo sul quale GRUB verr&#224; installato.
+index_globalmsg=Modifica le opzioni globali di boot che saranno valide per tutte le voci del menu di avvio e scegli il dispositivo sul quale GRUB verrà installato.
 index_install=Installa GRUB
-index_installmsg=Installa il boot loader GRUN su $1 per visualizzare i sistemi avviabili in fase di boot del sistema. Questo sovrascriver&#224; qualunque altro boot loader gi&#224; esistente (come ad esempio LILO) e potrebbe rendere il tuo sistema non avviabile!
-index_none=Nessuna voce di avvio &#232; stata definita. Assicurati di aggiungerne almeno prima di installare GRUB.
+index_installmsg=Installa il boot loader GRUN su $1 per visualizzare i sistemi avviabili in fase di boot del sistema. Questo sovrascriverà qualunque altro boot loader già esistente (come ad esempio LILO) e potrebbe rendere il tuo sistema non avviabile!
+index_none=Nessuna voce di avvio è stata definita. Assicurati di aggiungerne almeno prima di installare GRUB.
 index_return=lista delle voci di avvio
 index_title=Boot Loader GRUB
 install_desc=Sto installando GRUB su $1 con i comandi $2 e $3...
-install_efind=Il file del menu non &#232; stato trovato
+install_efind=Il file del menu non è stato trovato
 install_err=Installazione di GRUB non riuscita
 install_failed=... installazione non riuscita!
 install_ok=... installazione completata!
@@ -54,7 +54,6 @@ title_kernel=Kernel
 title_kfile=Percorso del Kernel:
 title_lock=Password bloccata?
 title_makeactive=Rendi attiva la partizione di root?
-title_none=Nessuna (voce di menu non avviabile)
 title_noverify=Non montare e vericare la partizione
 title_other=Altro:
 title_root=Partizione dell'immagine di boot:

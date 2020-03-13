@@ -1,0 +1,5 @@
+table_delete=Suprimeix els camps seleccionats
+view_refresh=Actualització
+view_go=Va
+tprivs_drusure=Esteu segur que voleu suprimir els permisos de la taula MySQL seleccionats $1 ?
+cnf_table_open_cache=Taules per a la memòria cau

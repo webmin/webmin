@@ -1,4 +1,3 @@
-__norefs=1
 connect_cmd=Probeer een verbinding te maken met de opdracht $1 ..
 connect_dns=Gebruik PPP-toegewezen DNS configuratie.
 connect_dns2=PPP-toegewezen DNS configuratie is ingesteld.
@@ -62,7 +61,7 @@ index_global=Bewerk Globale Instellingen
 index_globaldesc=Klik op deze knop om de configuratie opties te bewerken die behoren aan alle inbellers.
 index_header=Modems en Inbellers
 index_init=De WvDial configuratie file $1 bestaat niet, wat meestal een indicatie is dat het programma nog niet is ingesteld. Klik op de knop hieronder om het modem wat met uw systeem verbonden is kan worden gedecteerd en de configuratie op de juiste manier gemaakt kan worden.
-index_noboot=&lt;Niet verbinden&gt;
+index_noboot=<Niet verbinden>
 index_none=Er zijn nog geen modems of inbellers gedefinieerd.
 index_ok=Maak Configuratie
 index_out=Het resultaat van $1 was

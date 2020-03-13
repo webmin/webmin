@@ -1,4 +1,3 @@
-__norefs=1
 editrpc_aliase=Aliassen
 editrpc_command=Opdracht
 editrpc_default=Standaard
@@ -49,7 +48,7 @@ error_invalidservice='$1' is geen geldige service naam
 error_invalidver='$1' is geen geldige RPC versie
 error_invalidwrapper='$1' is geen geldige TCP-wrappers service
 error_nameexist=Een service met de naam $1 en protocol $2 bestaat reeds
-error_noprotocol=U moet minimaal &#233;&#233;n protocol kiezen
+error_noprotocol=U moet minimaal één protocol kiezen
 error_notexecutable='$1' is niet uitvoerbaar
 error_notexist='$1' bestaat niet
 error_nouser=U moet een gebruiker selecteren

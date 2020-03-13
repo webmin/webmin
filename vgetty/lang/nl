@@ -1,4 +1,3 @@
-__norefs=1
 delete_efile=Ongeldige berichten filenaam!
 email_body=Voicemail berichten ontvangen op $1 bij $2
 email_subject=Voicemail berichten
@@ -79,7 +78,7 @@ upload_esame=De berichten file $1 bestaat reeds
 upload_ewav=Mislukt converteren van WAV file : $1
 vgetty_add=Toevoegen nieuwe serieele poort
 vgetty_ans=Antwoord mode
-vgetty_ans_=&nbsp;
+vgetty_ans_= 
 vgetty_ans_data=Data
 vgetty_ans_fax=Fax
 vgetty_ans_voice=Stem

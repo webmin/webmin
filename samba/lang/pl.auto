@@ -1,0 +1,31 @@
+index_restartmsg2=Spowoduje to również rozłączenie wszelkich połączeń z serwerem, więc jeśli nie chcesz, aby bieżąca konfiguracja została zastosowana natychmiast, poczekaj 1 minutę, aż Samba automatycznie przeładuje konfigurację.
+index_einclude=Ostrzeżenie - plik konfiguracyjny Samby $1 zawiera dyrektywę $2 lub $3. Może to spowodować, że Webmin nieprawidłowo zmodyfikuje plik.
+convert_ncdesc=Lista użytkowników, których nie można konwertować, może zawierać nazwy użytkowników, identyfikatory UID, nazwy grup poprzedzone <tt>@</tt> lub zakresy UID, takie jak <i>500-1000</i> lub <i>500 -</ i >.
+smb_ads=Active Directory
+share_samedesc1=Uwaga - te ustawienia wpływają również na wartości domyślne dla wszystkich udziałów plików.
+share_samedesc2=Uwaga - te ustawienia wpływają również na wartości domyślne dla wszystkich udziałów drukarek.
+esync_del_profile=Usuwanie profilu mobilnego po usunięciu użytkownika systemu Unix
+esync_chg_profile=Zmień nazwę profilu mobilnego po zmianie nazwy użytkownika systemu Unix
+saveuser_ews=Opcja „Konto zaufania stacji roboczej” nie może być włączona dla istniejących użytkowników
+savefshare_emkdir=Nie udało się utworzyć katalogu : $1 
+viewu_ecmd=Program statusu Samba $1 nie wydaje się być zainstalowany w twoim systemie. Być może konfiguracja modułu <a href='$2'></a> jest nieprawidłowa.
+acl_bind=Czy mogę uzyskać dostęp do opcji winbind?
+groups_type_b=Wbudowany NT
+gsync_msg=Webmin można skonfigurować tak, aby zmiany na liście grup Uniksa były automatycznie stosowane do listy grup Samby. Działa to tylko wtedy, gdy moduł <b>Użytkownicy i grupy</b> służy do dodawania, usuwania lub zmiany grup.
+check_user2=$1 : Ani plik haseł Samby, ani ścieżka do pdbedit nie są ustawione na stronie <a href='$2'>Konfiguracja modułu</a>.
+check_group2=$1 : Ścieżka do komend smbgroupedit lub net nie jest ustawiona na stronie <a href='$2'>Konfiguracja modułu</a>.
+winbind_title=Powiązanie z domeną
+winbind_ecannot=Nie możesz łączyć się z domenami
+winbind_msg=Tego formularza można użyć do powiązania serwera Samba z domeną Windows, zwykle zarządzaną przez inny serwer.
+winbind_header=Powiązanie z domeną Windows
+winbind_user=Powiąż jako użytkownik
+winbind_dom=Powiązanie z domeną
+winbind_save=Bind Now
+winbind_default=Domena z konfiguracji Samby
+winbind_pass=Hasło użytkownika
+winbind_err=Nie udało się powiązać z domeną
+winbind_cmd=Powiązanie z domeną za pomocą polecenia $1 ..
+winbind_failed=.. nie powiodło się! Zobacz wynik powyżej, dlaczego.
+bind_header=Opcje wiązania domeny Windows
+bind_trust=Ufasz użytkownikom serwera domeny?
+bind_realm=Dziedzina Kerberos na serwerze domeny

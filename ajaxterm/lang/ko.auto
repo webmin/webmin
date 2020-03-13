@@ -1,0 +1,5 @@
+index_title=텍스트 로그인
+index_epython=Ajaxterm에는 Python을 실행해야하지만 시스템에서 $1 명령을 찾을 수 없습니다.
+index_estart=$1 초 후에 Ajaxterm이 포트 $2 에서 연결을 수락하지 않았습니다.
+index_popup=별도의 창에서 열기 ..
+index_credits=Antony Lesuisse의 <a href='$1' target=_new>Ajaxterm</a> 코드를 사용합니다.

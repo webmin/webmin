@@ -1,0 +1,4 @@
+index_sshcredits=包括由Cryptix開發團隊開發的軟件（<a href=$1 target=_top>$1</a>）。
+index_esocket=$1端口 $2上沒有運行telnet服務器。
+index_esocket2=$1端口 $2上沒有運行SSH服務器。
+index_elookup=無法為 $1查找IP地址以測試telnet或SSH服務器。

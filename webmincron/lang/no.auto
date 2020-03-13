@@ -1,0 +1,2 @@
+log_success=<tt>$2</tt> løp i <tt>$1</tt>
+log_failure=Kunne ikke kjøre <tt>$2</tt> i <tt>$1</tt> : $3 

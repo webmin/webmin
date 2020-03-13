@@ -1,0 +1,16 @@
+log_delete_rule=$1 Regel gelöscht
+log_modify_rule=$1 -Regel geändert
+log_move_rule=$1 Regel verschoben
+log_create_rule_l=Erstellt $1 Regel $2 
+log_delete_rule_l=$1 Regel $2 gelöscht
+log_modify_rule_l=Geänderte $1 Regel $2 
+log_move_rule_l=$1 Regel $2 verschoben
+log_delete_nat=$1 NAT-Regel gelöscht
+log_move_nat=$1 NAT-Regel verschoben
+log_create_nat_l=$1 NAT-Regel $2 $3 erstellt
+log_delete_nat_l=$1 NAT-Regel $2 $3 gelöscht
+log_move_nat_l=$1 NAT-Regel $2 $3 verschoben
+log_setup=Erstes Firewall-Setup durchgeführt
+log_unapply=Zurückgesetzte Firewall-Konfiguration
+log_delete_host=Cluster-Server $1 entfernt
+log_delete_group=$1 Clusterserver entfernt

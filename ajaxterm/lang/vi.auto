@@ -1,0 +1,5 @@
+index_title=Đăng nhập văn bản
+index_epython=Ajaxterm yêu cầu Python chạy, nhưng không tìm thấy lệnh $1 trên hệ thống của bạn.
+index_estart=Ajaxterm đã không bắt đầu chấp nhận kết nối trên cổng $2 sau $1 giây.
+index_popup=Mở trong cửa sổ riêng biệt ..
+index_credits=Sử dụng mã từ <a href='$1' target=_new>Ajaxterm</a> của Antony Lesuisse.

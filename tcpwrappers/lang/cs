@@ -1,0 +1,23 @@
+index_delete=Smazat označené
+index_cmd=Příkaz
+edit_cmd=Příkazy
+del_errtitle=Chyba při mazání pravidla
+edit_hosts=Klienti
+save_errtitle=Chyba při ukládání pravidla
+save_ehost=Klient obsahuje nepovolené znaky
+edit_efound=Démon '$1' nebyl nalezen v konfiguraci xinetd.
+index_service=Démon
+del_enone=Není označeno žádné pravidlo
+index_title=TCP Wrappers
+edit_header=Nastavení pravidla
+index_hosts=Klienti
+index_denytitle=Zakázaný přístup
+edit_eid=Pravidlo nebylo nalezeno
+index_none=není
+edit_service=Démoni
+save_ecmd=Příkaz obsahuje nepovolené znaky
+index_norule=Soubor '$1' neobsahuje žádná pravidla.
+index_allowtitle=Povolený přístup
+index_add=Přidat pravidlo
+index_return=index
+index_nofile=Soubor '$1' neexistuje - zkontrolujte vaši <a href="/config.cgi?tcpwrappers">konfiguraci modulu</a>

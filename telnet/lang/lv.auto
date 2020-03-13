@@ -1,0 +1,8 @@
+index_title=SSH pieteikšanās
+index_warn=Brīdinājums! Šī telnet sesija ir <b>nav</b> šifrēta.
+index_nojava=Šim modulim ir nepieciešama Java, lai darbotos, bet jūsu pārlūkprogramma neatbalsta Java
+index_credits=Applet, ko saskaņā ar GPL izstrādājuši <a href='$1' target=_top>Matiass L. Jugels un Markuss Meisners</a>.
+index_sshcredits=Ietver programmatūru, ko izstrādājusi Cryptix izstrādes komanda (<a href=$1 target=_top>$1</a>).
+index_esocket=Neviens telnet serveris nedarbojas uz $1 portu $2.
+index_esocket2=$1 ostā $2 nedarbojas SSH serveris.
+index_elookup=Neizdevās meklēt IP adresi $1, lai pārbaudītu telnet vai SSH serveri.

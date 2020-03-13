@@ -32,7 +32,6 @@ index_man=Manually Edit Configuration
 index_mandesc=Directly edit the primary Procmail configuration file, to create your own rules, variables and blocks.
 index_ecmd=The Procmail program $1 was not found on your system. Either it is not installed, or the <a href='$2'>module configuration</a> is incorrect.
 index_delete=Delete Selected Actions
-
 edit_title2=Edit Action
 edit_title1=Create Action
 edit_header1=Delivery action details
@@ -68,7 +67,6 @@ edit_none=None
 edit_lock=Specific file
 edit_ctype=Condition type
 edit_cvalue=Regular expression or command
-
 save_err=Failed to save action
 save_eaction_0=Missing file to append to
 save_eaction_1=Missing MH folder to write to
@@ -81,7 +79,6 @@ save_elockfile=Missing lock file name
 save_esize=Missing or invalid mail size for condition $1
 save_ere=Missing regular expression for condition $1
 save_eshell=Missing command for condition $1
-
 env_title1=Create Variable
 env_title2=Edit Variable
 env_header=Procmail environment variable
@@ -89,19 +86,15 @@ env_name=Variable name
 env_value=Value
 env_err=Failed to save variable
 env_ename=Missing or invalid variable name
-
 inc_title1=Add Include File
 inc_title2=Edit Include File
 inc_header=Included procmail rules file
 inc_inc=Included file
 inc_einc=No include file entered
-
 config_eline=Unknown line $1 in $2 : $3
-
 manual_title=Edit Configuration
 manual_desc=This page can be used to manually edit the Procmail configuration file $1. Be careful, as no syntax checking will be done.
 manual_edata=No data was supplied by your browser!
-
 log_create_rec=Created recipe to $1
 log_delete_rec=Deleted recipe to $1
 log_modify_rec=Modified recipe to $1
@@ -121,10 +114,7 @@ log_delete_inc=Deleted include file $1
 log_manual=Manually edited configuration
 log_up=Moved an entry up
 log_down=Moved an entry down
-
 delete_err=Failed to delete actions
 delete_enone=None selected
-
 check_epostfix=Procmail is not enabled in your Postfix configuration. The configuration file <tt>$2</tt> must have the <tt>$1</tt> option set to <tt>$3</tt>.
 check_esendmail=Sendmail is not setup to use Procmail for local delivery. This can be configured in Webmin's <a href='$1'>Sendmail Mail Server</a> module.
-__norefs=1

@@ -1,21 +1,19 @@
 index_title=Commandes shell de clusters
-index_cmd=Commande &#224; ex&#233;cuter
+index_cmd=Commande à exécuter
 index_old=ou
-index_server=Ex&#233;cuter sur des serveurs
-index_run=Ex&#233;cuter la commande maintenant
-index_return=&#224; l'index du module 
+index_server=Exécuter sur des serveurs
+index_run=Exécuter la commande maintenant
+index_return=à l'index du module 
 index_this=Ce serveur
-index_all=&lt;Tous les h&#244;tes&gt;
+index_all=<Tous les hôtes>
 index_group=Membres de $1
 index_clear=Effacer l'historique
-
-run_title=Ex&#233;cution d'une commande
-run_err=Impossible d'ex&#233;cuter la commande
+run_title=Exécution d'une commande
+run_err=Impossible d'exécuter la commande
 run_ecmd=Aucune commande saisie
-run_failed=Impossible d'ex&#233;cuter sur $1 : $2
+run_failed=Impossible d'exécuter sur $1 : $2
 run_success=Sortie de $1...
-run_enone=Aucun serveur sur lequel ex&#233;cuter s&#233;lectionn&#233;
-
-log_clear=Effac&#233; l'historique des commandes
-log_run=Ex&#233;cut&#233; $1 sur $2 serveurs
-log_run_l=Ex&#233;cut&#233; $1 sur $2
+run_enone=Aucun serveur sur lequel exécuter sélectionné
+log_clear=Effacé l'historique des commandes
+log_run=Exécuté $1 sur $2 serveurs
+log_run_l=Exécuté $1 sur $2

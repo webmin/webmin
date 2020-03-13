@@ -1,44 +1,36 @@
-# webmin-0.82/servers/lang/hu
-# Translated by <kissg@sztaki.hu>
-
 index_title=Webmin szerverek
-index_none=Nincs egy regisztrált szerver sem
-index_add=Új szerver regisztrálása
-index_broad=Keresés itt
-index_findmsg=Ezt a gombot nyomd meg, ha fel akarod kutatni a helyi hálózaton mûködõ (legalább 0.75 verziójú) Webmin szervereket
-index_scan=Keresés máshol
-index_scanmsg=Ezt a gombot nyomd meg, ha a $1 hálózaton lévõ (legalább 0.75 verziójú) szervereket keresed
+index_none=Nincs egy regisztrÃ¡lt szerver sem
+index_add=Ãšj szerver regisztrÃ¡lÃ¡sa
+index_broad=KeresÃ©s itt
+index_findmsg=Ezt a gombot nyomd meg, ha fel akarod kutatni a helyi hÃ¡lÃ³zaton mÅ±kÃ¶dÅ‘ (legalÃ¡bb 0.75 verziÃ³jÃº) Webmin szervereket
+index_scan=KeresÃ©s mÃ¡shol
+index_scanmsg=Ezt a gombot nyomd meg, ha a $1 hÃ¡lÃ³zaton lÃ©vÅ‘ (legalÃ¡bb 0.75 verziÃ³jÃº) szervereket keresed
 index_return=a szerverekhez
-
-edit_title=Szerver adatainak változtatása
-create_title=Új szerver regisztrálása
+edit_title=Szerver adatainak vÃ¡ltoztatÃ¡sa
+create_title=Ãšj szerver regisztrÃ¡lÃ¡sa
 edit_details=A szerver adatai
-edit_host=Gépnév
+edit_host=GÃ©pnÃ©v
 edit_port=Port
-edit_type=Szerver típusa
+edit_type=Szerver tÃ­pusa
 edit_ssl=SSL szerver?
-edit_link=Kapcsolat típusa
-edit_mode0=Közvetlen kapcsolat a szerverhez
-edit_mode1=Belépés <b>ezen</b> a szerveren keresztül az alábbi módon.<br>
-edit_user=Azonosító:
-edit_pass=Jelszó:
-
-save_err=Nem sikerült elmenteni a konfigurációt
-save_ehost=Hiányzik vagy hibás a gépnév
-save_eport=Hiányzik vagy hibás a portszám
-save_euser=Hiányzik a felhasználó azonosítója
-save_epass=Hiányzik a jelszó
-
-find_title=Szerverek keresése
-find_new=Új szerver: $1
-find_already=Már ismert szerver: $1
-find_me=Saját gépünk: $1
-find_escan=Csak C méretû hálózatot adhatsz meg
-find_none=Egyetlen szerver sem válaszolt a felhívásunkra
-
-log_modify=$1 szerver módosítva
-log_create=$1 szerver regisztrálva
-log_delete=$1 szerver törölve
+edit_link=Kapcsolat tÃ­pusa
+edit_mode0=KÃ¶zvetlen kapcsolat a szerverhez
+edit_mode1=BelÃ©pÃ©s <b>ezen</b> a szerveren keresztÃ¼l az alÃ¡bbi mÃ³don.<br>
+edit_user=AzonosÃ­tÃ³:
+edit_pass=JelszÃ³:
+save_err=Nem sikerÃ¼lt elmenteni a konfigurÃ¡ciÃ³t
+save_ehost=HiÃ¡nyzik vagy hibÃ¡s a gÃ©pnÃ©v
+save_eport=HiÃ¡nyzik vagy hibÃ¡s a portszÃ¡m
+save_euser=HiÃ¡nyzik a felhasznÃ¡lÃ³ azonosÃ­tÃ³ja
+save_epass=HiÃ¡nyzik a jelszÃ³
+find_title=Szerverek keresÃ©se
+find_new=Ãšj szerver: $1
+find_already=MÃ¡r ismert szerver: $1
+find_me=SajÃ¡t gÃ©pÃ¼nk: $1
+find_escan=Csak C mÃ©retÅ± hÃ¡lÃ³zatot adhatsz meg
+find_none=Egyetlen szerver sem vÃ¡laszolt a felhÃ­vÃ¡sunkra
+log_modify=$1 szerver mÃ³dosÃ­tva
+log_create=$1 szerver regisztrÃ¡lva
+log_delete=$1 szerver tÃ¶rÃ¶lve
 log_find=Fellelt szerver: $1
-
-link_elogin=Nem sikerült belépni $2-ként a $1 gépre
+link_elogin=Nem sikerÃ¼lt belÃ©pni $2-kÃ©nt a $1 gÃ©pre

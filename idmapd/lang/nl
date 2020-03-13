@@ -1,4 +1,3 @@
-__norefs=1
 domain=Domein naam
 error_dir=Directory $1 bestaat niet
 general=Algemene Configuratie

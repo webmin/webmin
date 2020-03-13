@@ -1,0 +1,3 @@
+index_esyslog=A Rendszernaplók egyikét sem telepíti erre a rendszerre, és az operációs rendszer nem támogatja. A sávszélesség-figyelő modul nem működhet ezek nélkül.
+index_setupdesc2=<b>Figyelem - ez a modul naplózza az összes küldött vagy fogadott hálózati forgalmat a kiválasztott felületen. Ez nagy mennyiségű lemezterületet és CPU-időt fog igénybe venni egy gyors hálózati kapcsolaton.</b>
+setup_eiface=Hiányzó vagy érvénytelen felület neve

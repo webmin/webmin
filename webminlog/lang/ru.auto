@@ -1,0 +1,14 @@
+index_sdesc=Описание действия содержит
+index_long=Показать полное описание действий?
+search_critd=где описание содержит <tt>$1</tt>
+search_global_failed=Ошибка входа в Webmin : $1 
+search_global_expiredpass=Срок действия пароля истек
+search_global_wronguser=Неправильный пользователь
+search_global_wrongpass=Неправильный пароль
+search_global_baduser=Неверное имя пользователя
+search_global_badpass=Неверный пароль
+search_global_twofactor=Неверный двухфакторный токен
+search_csv=Экспортировать как CSV.
+view_output=Содержание страницы Webmin
+view_files=Файлы изменены и команды запускаются
+acl_self=Только себя

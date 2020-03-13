@@ -1,5 +1,4 @@
-__norefs=1
-index_all=&lt;Alle hosts&gt;
+index_all=<Alle hosts>
 index_clear=Wis geschiedenis
 index_cmd=Uit te voeren opdracht
 index_group=Leden van $1

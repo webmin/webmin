@@ -1,4 +1,3 @@
-__norefs=1
 acl_all=Alle gebruikers
 acl_b=bytes
 acl_dirs=Mag bestanden uploaden en downloaden naar directory's

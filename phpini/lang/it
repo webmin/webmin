@@ -1,7 +1,7 @@
-acl_anyfile=Pu&#242; modificare i file di configurazione di PHP?
-acl_global=Pu&#242; modificare la configurazione globale di PHP?
+acl_anyfile=Può modificare i file di configurazione di PHP?
+acl_global=Può modificare la configurazione globale di PHP?
 acl_inis=File di configurazione addizionali<br>(nel formato <i>nome_file</i>=<i>descrizione</i>)
-acl_manual=Pu&#242; modificare manualmente i file di configurazione?
+acl_manual=Può modificare manualmente i file di configurazione?
 db_ehost=Server MySQL predefinito mancante o non valido
 db_emaxlinks=Numero massimo di connessioni totali mancante o non valido
 db_emaxpersist=Numero massimo di connessioni persistenti mancante o non valido
@@ -66,7 +66,7 @@ index_desc=Tipologia
 index_eaccess=Non hai accesso ad alcun file di configurazione di PHP.
 index_edit=Modifica
 index_efiles=Nessuno dei file di configurazione di PHP cui hai accesso esiste.
-index_efiles2=Non &#232; stato trovato alcun file di configurazione di PHP. Modifica la <a href='$1'>configurazione del modulo</a> per impostare il percorso corretto al file di configurazione globale di PHP.
+index_efiles2=Non è stato trovato alcun file di configurazione di PHP. Modifica la <a href='$1'>configurazione del modulo</a> per impostare il percorso corretto al file di configurazione globale di PHP.
 index_file=File di configurazione
 index_manual=Modifica manualmente
 index_return=file di configurazione
@@ -85,11 +85,11 @@ log_errors=Registrazione degli errori modificata in $1
 log_limits=Limiti alle risorse modificati in $1
 log_manual=Modifica manualmente il file $1
 log_misc=Altre impostazioni modificate in $1
-manual_desc=Questa pagina pu&#242; essere usata per la modifica manuale di un file di configurazione di PHP. Questa operazione deve essere fatta con molta attenzione in quanto in questa sede non verr&#224; effettuato alcun controllo sulla validit&#224; delle modifiche effettuate.
+manual_desc=Questa pagina può essere usata per la modifica manuale di un file di configurazione di PHP. Questa operazione deve essere fatta con molta attenzione in quanto in questa sede non verrà effettuato alcun controllo sulla validità delle modifiche effettuate.
 manual_edata=Nessun nuovo contenuto inserito
 manual_err=Modifica del file di configurazione non riuscita
 manual_title=Modifica la configurazione manualmente
-misc_asp=Permettere i tag &lt;% %&gt;?
+misc_asp=Permettere i tag <% %>?
 misc_esendmail=Comando per l'invio della posta non valido
 misc_esendmail2=Comando per l'invio della posta mancante
 misc_esmtp=Server SMTP mancante o non risolvibile
@@ -101,7 +101,7 @@ misc_sendmail=Percorso al comando per l'invio della posta
 misc_smtp=Server SMTP per l'invio della posta
 misc_title=Altre impostazioni
 misc_zlib=Comprimere l'output con zlib?
-safe_title=Opzioni per la modalit&#224; sicura
+safe_title=Opzioni per la modalità sicura
 session_cookies=Permettere l'uso di cookie per il tracciamento della sessione?
 session_elife=Durata dei cookie mancante o non valida
 session_emaxlife=Durata massima della sessione mancante o non valida

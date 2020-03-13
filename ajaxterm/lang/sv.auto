@@ -1,0 +1,5 @@
+index_title=Textinloggning
+index_epython=Ajaxterm kräver att Python körs, men kommandot $1 hittades inte på ditt system.
+index_estart=Ajaxterm började inte acceptera anslutningar på port $2 efter $1 sekunder.
+index_popup=Öppna i separat fönster ..
+index_credits=Använder kod från <a href='$1' target=_new>Ajaxterm</a> av Antony Lesuisse.

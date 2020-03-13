@@ -1,0 +1,11 @@
+index_title=configuración de idmapd
+index_eidmapd=No se pudo encontrar el daemon idmapd $1. Tal vez no esté instalado o la <a href='$2'>configuración del módulo</a> sea incorrecta.
+general=Configuración general
+mapping=Configuración de mapeo
+pipefs_dir=Directorio de pipefs
+domain=Nombre de dominio
+nobody_user=Nadie usuario
+nobody_group=Nadie grupo
+save=Guardar configuración y reiniciar demonio
+save_err=Error al guardar el archivo de configuración $1 
+error_dir=El directorio $1 no existe

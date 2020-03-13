@@ -19,7 +19,6 @@ index_mailfromnone=Default (<tt>root</tt>)
 index_program=Command to run when problems are detected
 index_programnone=Don't run any
 index_monitor=Monitoring enabled?
-
 linear=Concatenated (Linear)
 raid0=Striped (RAID0)
 raid1=Mirrored (RAID1)
@@ -28,7 +27,6 @@ raid5=Redundant (RAID5)
 raid6=Dual Redundant (RAID6)
 raid10=Striped and Mirrored (RAID10)
 blocks=blocks
-
 create_title=Create RAID Device
 create_header=RAID device options
 create_device=Device file
@@ -56,7 +54,6 @@ create_nogroup=None (use own spares only)
 create_oldgroup=Existing group
 create_newgroup=New group
 create_enewgroup=Missing or non-alphnumeric spare group name
-
 view_title=RAID Device
 view_header=RAID device options
 view_device=Device file
@@ -107,7 +104,6 @@ view_mountmsg=Enter a directory and click this button to go to a form for mounti
 view_mountmsg2=Click this button to use this RAID device for virtual memory on your system.
 view_blocks=$1 blocks
 view_sparegroup=Spare group
-
 mkfs_title=Create Filesystem
 mkfs_header2=This form allows you to build a new $2 filesystem on $1. <b>All</b> existing data will be erased!
 mkfs_options=New Linux filesystem options
@@ -115,7 +111,6 @@ mkfs_err=Failed to create filesystem
 mkfs_exec=Executing command $1 ..
 mkfs_failed=.. command failed!
 mkfs_ok=.. command complete.
-
 emkraid=<tt>mkraid</tt> failed : $1
 eraidstop=<tt>raidstop</tt> failed : $1
 eraidstart=<tt>raidstart</tt> failed : $1
@@ -126,7 +121,6 @@ emdadmadd=<tt>mdadm</tt> in <tt>--manage --add</tt> mode failed : $1
 emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
 emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
 emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
-
 log_create=Created $1 RAID device $2
 log_stop=Deactivated RAID device $1
 log_start=Activated RAID device $1
@@ -138,14 +132,11 @@ log_grow=Grown RAID device $1 to a total of $2 disks
 log_convert_to_raid6=Converted RAID5 device $1 to a RAID6 device
 log_convert_to_raid5=Converted RAID6 device $1 to a RAID5 device
 log_notif=Updated RAID problem notification options
-
 notif_err=Failed to save RAID problem notification options
 notif_emailaddr=Missing or invalid notification address
 notif_emailfrom=Missing or invalid From address
 notif_eprogram=Missing or non-existant program to run
-
 delete_title=Delete RAID Array
 delete_rusure=Are you sure you want to delete the RAID array $1, which uses $2 of disk space?
 delete_ok=Yes, Delete It
 delete_eidx=No RAID array selected!
-__norefs=1

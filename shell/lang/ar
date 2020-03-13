@@ -1,4 +1,3 @@
-__norefs=1
 acl_user=تنفيذ الأوامر كمستخدم
 acl_user_def=مستخدم Webmin الحالي
 index_clear=تنظف السجل

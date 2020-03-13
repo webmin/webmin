@@ -1,0 +1,5 @@
+index_title=Prijava v besedilo
+index_epython=Ajaxterm zahteva zagon Pythona, vendar ukaza $1 v vašem sistemu ni bilo mogoče najti.
+index_estart=Ajaxterm ni začel sprejemati povezav na vratih $2 po $1 sekundi.
+index_popup=Odpri se v ločenem oknu ..
+index_credits=Uporablja kodo <a href='$1' target=_new>Ajaxterm</a> avtorja Antonija Lesuissea.

@@ -1,4 +1,3 @@
-__norefs=1
 data_doing=Beginnen met offline data verzamelen van $1 ..
 data_failed=.. mislukt!
 data_ok=.. verzamelen gestart OK. Bekijk de harddisk status bij de modules hoofdpagina voor de resultaten.

@@ -1,0 +1,5 @@
+index_title=Metin Girişi
+index_epython=Ajaxterm, Python'un çalışmasını gerektirir, ancak $1 komutu sisteminizde bulunamadı.
+index_estart=Ajaxterm, $1 saniye sonra $2 bağlantı noktasındaki bağlantıları kabul etmeye başlamadı.
+index_popup=Ayrı pencerede aç ..
+index_credits=Antony Lesuisse tarafından <a href='$1' target=_new>Ajaxterm</a> 'dan kod kullanır.

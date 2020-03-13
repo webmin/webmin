@@ -1,0 +1,31 @@
+index_title_v=IPv4-firewall
+index_title_v6=IPv6-firewall
+index_evalid=WAARSCHUWING! Uw huidige IPtables-configuratie is ongeldig : $1 
+index_no_comment=
+index_unapply2=Configuratie opslaan
+index_unapply2desc=Klik op deze knop om de bovenstaande configuratie op te slaan in het permanente firewall-configuratiebestand.
+index_firewalld=Het lijkt erop dat FirewallD wordt gebruikt om de firewall van uw systeem te genereren. Misschien moet u in plaats daarvan de <a href='$1>FirewallD-module</a> gebruiken.
+index_fail2ban=Het lijkt erop dat Fail2Ban wordt gebruikt om enkele firewallregels te beheren. Je moet ze aanpassen met <a href='$1'>Fail2Ban-module</a> en <a href=$2>f2b -. *</a> of <a href=$2>fail2ban -. *</a> filteren ..
+index_filter_chain=wordt niet beheerd door een firewall.
+index_filter_nodirect=Externe beheerde regels gedetecteerd. Activeer "<a href=$1>Direct firewallregels bewerken"</a> of uw firewallregels kunnen breken.
+index_ipset=IP-set
+index_ipset_title=Actieve IP-sets die kunnen worden gebruikt door firewallregels
+index_ipset_name=Naam van IP-set
+index_ipset_type=Type
+index_ipset_elem=# Elementen
+index_ipset_maxe=# Max
+index_ipset_size=Grootte
+index_ipvxmode=IP-protocolversie wijzigen:
+index_ipvx4=IPv4
+index_ipvx6=IPv6
+desc_ctstate=staat van verbinding is $1 
+desc_ctstate!=verbindingsstatus is niet $1 
+desc_args--match-set=$2 zit in IP-set $1 
+desc_src=bron
+desc_dest=bestemming
+redhat_einstalled=Er is geen opstartactie <tt>iptables (6)</tt> gevonden, wat aangeeft dat het IPtables-pakket niet op uw systeem is geïnstalleerd
+edit_state_snat=Bron NATd
+edit_state_dnat=Bestemming NATd
+add_enone=Geen servers om toe te voegen geselecteerd!
+desc_icmpv6-type=ICMP-type is $1 
+desc_icmpv6-type!=ICMP-type is niet $1 

@@ -1,0 +1,9 @@
+left_login=登录名： $1
+left_home=系统信息
+left_oc=由OpenCountry赞助
+left_feedback=发送反馈
+left_search_webmin=搜索Webmin：
+left_search_usermin=搜索用户名：
+left_search=搜索：
+left_logs=查看模块的日志
+left_others=其他

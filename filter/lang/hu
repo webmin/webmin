@@ -42,7 +42,6 @@ index_astart=Don't send autoreply before
 index_aend=Don't send autoreply after
 index_charset=Autoreply message character set
 index_nowebmin=This module is only for use in Usermin. If it is visible in Webmin, the theme you are using is incomplete.
-
 edit_title1=Create Filter
 edit_title2=Edit Filter
 edit_header1=Condition for filter
@@ -67,7 +66,6 @@ edit_continue=Continue with other filter rules, even after applying this action
 edit_amode6=Send automatic reply
 edit_amode7=Save to new folder named
 edit_nobounce=Suppress forwarding of bounce messages
-
 save_err=Failed to save filter
 save_econdheader=Missing or invalid email header
 save_econdlevel=Minimum spam score must be an integer greater than zero
@@ -85,10 +83,8 @@ save_enewfolder3=A folder with the same name already exists
 save_estart=Invalid autoreply start date
 save_eend=Invalid autoreply end date
 save_echarset=Missing or invalid autoreply character set
-
 delete_err=Failed to delete filters
 delete_enone=None selected
-
 aliases_type1=Address $1
 aliases_type2=Addresses in file $1
 aliases_type3=File $1
@@ -99,7 +95,6 @@ aliases_your=Your mailbox
 aliases_delete=Delete mail
 aliases_other=Mailbox of user $1
 aliases_auto=Autoresponder with message $1
-
 auto_title=Email Automatic Reply
 auto_header=Automatic email reply options
 auto_enabled=Automatic response enabled?
@@ -109,11 +104,9 @@ auto_charsetdef=From current language
 auto_charsetother=Other character set
 auto_period=Minimum interval between replies
 auto_err=Failed to save automatic reply
-
 forward_title=Forward Email
 forward_header=Email forwarding options
 forward_enabled=Email forwarding enabled?
 forward_to=Forward to addresses
 forward_cont=Also deliver normally?
 forward_err=Failed to save email forwarding
-__norefs=1

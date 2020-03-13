@@ -1,4 +1,3 @@
-__norefs=1
 config_dirdef=Xinetd configuratie file
 config_dirto=Nieuwe file in directory
 defs_efile=Ontbrekende of ongeldige log filenaam

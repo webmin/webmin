@@ -1,0 +1,2 @@
+index_none=Henüz hiçbir ağ hizmeti tanımlanmadı.
+index_estart=$1 Xinetd başlatma komutu mevcut değil. Belki yüklü değil veya <a href='$2'>modül yapılandırmanız</a> yanlış.

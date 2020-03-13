@@ -1,0 +1,11 @@
+index_title=idmapd配置
+index_eidmapd=找不到idmapd守護程序 $1。可能未安裝，或者您的<a href='$2'>模塊配置</a>不正確。
+general=常規配置
+mapping=映射配置
+pipefs_dir=Pipefs目錄
+domain=域名
+nobody_user=沒人用戶
+nobody_group=沒人組
+save=保存配置並重新啟動守護程序
+save_err=無法保存配置文件 $1
+error_dir=目錄 $1不存在

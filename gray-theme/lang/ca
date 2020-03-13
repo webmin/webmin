@@ -1,11 +1,9 @@
-left_login=Identificació: $1
-left_home=Informació del Sistema
+left_login=IdentificaciÃ³: $1
+left_home=InformaciÃ³ del Sistema
 left_oc=Esponsoritzat per OpenCountry
 left_feedback=Envia opinions
 left_search_webmin=Busca a Webmin:
 left_search_usermin=Busca a Usermin:
 left_search=Busca:
-left_logs=Visualitza els Registres del Mòdul
+left_logs=Visualitza els Registres del MÃ²dul
 left_others=Altres
-
-__norefs=1

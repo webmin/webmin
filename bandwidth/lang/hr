@@ -1,21 +1,21 @@
-acl_setup=Ne moete pokrenuti i omogućiti nadzor?
-index_all=&lt;sve&gt;
-index_by=Prika�i promet po
-index_edir=Direktorij za spremanje �irine opsega podataka $1 ne postoji, ili nije direktrorij. Prilagodi <a href='$2'>module pode�avanja</a> da koriste drugu putanju.
-index_efiresys=Ni jedan od podranih vatrozida (IPtables, IPFW, IPFilter or Shorewall) nije pronaen u vaem sustavu. Provjerite odgovarajuće module da bi bili sigirni da su podeeni.
-index_efiresys2=Traeni $1 vatrozid sustav nije pronađen na Vaem sustavu. Prilagodite <a href='$2'>module podeavanja</a> da koriste ispravan vatrozid.
+acl_setup=Ne možete pokrenuti i omogućiti nadzor?
+index_all=<sve>
+index_by=Prikaži promet po
+index_edir=Direktorij za spremanje širine opsega podataka $1 ne postoji, ili nije direktrorij. Prilagodi <a href='$2'>module podešavanja</a> da koriste drugu putanju.
+index_efiresys=Ni jedan od podržanih vatrozida (IPtables, IPFW, IPFilter or Shorewall) nije pronašen u vašem sustavu. Provjerite odgovarajuće module da bi bili sigirni da su podešeni.
+index_efiresys2=Traženi $1 vatrozid sustav nije pronaÄ‘en na Vašem sustavu. Prilagodite <a href='$2'>module podešavanja</a> da koriste ispravan vatrozid.
 index_efrom=Neispravan početni datum i vrijeme
 index_ehost=NEpostojeći ili neispravan host
 index_ehour=Neispravan sat - mora biti u formatu yyyy-mm-dd hh:mm
-index_eiptables=Upozorenje - Vaa IPtables konfiguracija sadri greku : $1. Postavke opsega nadzora izbrisat će sva pravila vatrozida.
-index_elog=Dokument $1 kori�ten u prijavi opsega je zapravo direktorij na va�em sustavu. Prilagodite <a href='$2'>module postavki</a> da koriste drtugu putanju.
-index_emod=Webmin $1 modul nije instaliran na va�em sustavu ili ga OS ne podr�ava. Opseg nadzora modula ne moze djelovati bez njega.
+index_eiptables=Upozorenje - Vaša IPtables konfiguracija sadrži grešku : $1. Postavke opsega nadzora izbrisat će sva pravila vatrozida.
+index_elog=Dokument $1 korišten u prijavi opsega je zapravo direktorij na vašem sustavu. Prilagodite <a href='$2'>module postavki</a> da koriste drtugu putanju.
+index_emod=Webmin $1 modul nije instaliran na vašem sustavu ili ga OS ne podržava. Opseg nadzora modula ne moze djelovati bez njega.
 index_eport=Nepoznati naziv ulaza
 index_eproto=Nedostaje protokol
-index_err=Neuspjeli poku�aj generiranja izvje�taja
-index_esyslog=Ni jedan od Sistem Log modula nije instaliran na va�em sustavu i nije podr�an od strane Va�eg OS-a.
+index_err=Neuspjeli pokušaj generiranja izvještaja
+index_esyslog=Ni jedan od Sistem Log modula nije instaliran na vašem sustavu i nije podržan od strane Vašeg OS-a.
 index_eto=Neispravan kraj datuma i vremena
-index_firesys=Kori�tenje $1 vatrozida i $2
+index_firesys=Korištenje $1 vatrozida i $2
 index_for=za
 index_forhost=host...
 index_forhour=sat...
@@ -32,43 +32,43 @@ index_host=host
 index_hour=sat
 index_hport=Ulaz
 index_hproto=Protokol
-index_iface=Vanjsko mreno sučelje
+index_iface=Vanjsko mrežno sučelje
 index_iport=unutarnji ulaz
-index_low=Samo ulazi na poslu�itelju?
+index_low=Samo ulazi na poslužitelju?
 index_missing1=Postavke sistemskog zapisa moraju biti kreirane.
 index_missing2=Nekoliko vatrozid pravila mora biti dodano.
 index_missing3=Nekoliko vatrozida trebabiti dodano, i sistemski zapis postavke ulaza kreirane
 index_nomatch=Ni jedan promet ne odgovara odabranim zahtjevima.
-index_none=Ovaj modul jo uvijek nije zabiljeio nikakav promet. Ako ste ga upravo postavili, trajat će najmanje pola sata da promet bude obrađen.
+index_none=Ovaj modul još uvijek nije zabilježio nikakav promet. Ako ste ga upravo postavili, trajat će najmanje pola sata da promet bude obraÄ‘en.
 index_oport=vanjski ulaz
 index_port=ulaz
 index_proto=protokol
 index_resolv=Odgonetni imena hostova?
-index_return=forma za izvjeće
+index_return=forma za izvješće
 index_rotate=Ispravi Statistiku
-index_rotatedesc=Klikom na ovu tipku za upućivanje mrenog prometa prema trenutnom vremenu, čini ga  odmah aktivnim za izvjetavanje.
-index_search=Generiraj Izvjeće
+index_rotatedesc=Klikom na ovu tipku za upućivanje mrežnog prometa prema trenutnom vremenu, čini ga  odmah aktivnim za izvještavanje.
+index_search=Generiraj Izvješće
 index_setup=Postavi Sada
-index_setupcannot=Ipak nemate dopu�tenje da ga postavite!
-index_setupdesc=Prije nego to ovaj modul bude u mogućnosti izvjestiti o koritenju mree na vaem sustavu, on mora biti postavljen da nadzire promet na odabranom vanjskom mrenom sučelju.
-index_setupdesc2=<b>Upozorenje - ovaj modul će logirati SAV mreni promet poslan i primljen na odabranom sučelju. Ovo će iscrpiti veliku količinu prostora na discu i CPU vrijeme na brzoj vezi. 
+index_setupcannot=Ipak nemate dopuštenje da ga postavite!
+index_setupdesc=Prije nego što ovaj modul bude u mogućnosti izvjestiti o korištenju mreže na vašem sustavu, on mora biti postavljen da nadzire promet na odabranom vanjskom mrežnom sučelju.
+index_setupdesc2=<b>Upozorenje - ovaj modul će logirati SAV mrežni promet poslan i primljen na odabranom sučelju. Ovo će iscrpiti veliku količinu prostora na discu i CPU vrijeme na brzoj vezi. 
 index_title=Opseg Nadzora
-index_to=Za prija�nji promet
+index_to=Za prijašnji promet
 index_turnoff=Prekini Nadzor
-index_turnoffdesc=Klikom na ovu tipku uklonit ćete paravila vatrozida, postavke sistemskog zapisa i Cron koriten za opseg nadzora. Svi postojeći skupljeni podaciostat će netaknuti.
-index_usage=Mre�ni promet <font color=#ff0000>skinuit</font> i <font color=#0000ff>podignut</font>
+index_turnoffdesc=Klikom na ovu tipku uklonit ćete paravila vatrozida, postavke sistemskog zapisa i Cron korišten za opseg nadzora. Svi postojeći skupljeni podaciostat će netaknuti.
+index_usage=Mrežni promet <font color=#ff0000>skinuit</font> i <font color=#0000ff>podignut</font>
 log_rotate=Dopuni statistiku
 log_setup=Podesi opseg nadzora na sučelju $1
 log_turnoff=Onemogući opseg nadzora.
-rotate_doing=Obrađujem prijavljeni mreni promet...
+rotate_doing=ObraÄ‘ujem prijavljeni mrežni promet...
 rotate_done=...gotovo.
 rotate_title=Ispravi Statistiku
-setup_ecannot=Nemate doputenje da omogućite nadzor
-setup_ezone=Neuspjeli pokuaj pronalaanja Shorewall zone za odabrano sučelje
+setup_ecannot=Nemate dopuštenje da omogućite nadzor
+setup_ezone=Neuspjeli pokušaj pronalažanja Shorewall zone za odabrano sučelje
 syslog_syslog=Sistemski Zapis
 syslog_syslog-ng=Sistemski zapis-NG
 system_firewall=IPtablice
 system_ipfilter=IPFilter
 system_ipfw=[hr
 system_shorewall=Shorewall
-turnoff_ecannot=Nije Vam dopu�teno prekinuti nadzor
+turnoff_ecannot=Nije Vam dopušteno prekinuti nadzor

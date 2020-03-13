@@ -1,4 +1,3 @@
-__norefs=1
 dacfg_isDA=Functie alleen als DA (lees de gebruikers guide voordat je dit verandert)
 dacfg_title=DA Configuratie
 error_flock_off=Fout vernietigen file slot

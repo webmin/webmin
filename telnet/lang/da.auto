@@ -1,0 +1,8 @@
+index_title=SSH-login
+index_warn=Advarsel! Denne telnet-session er <b>ikke</b> krypteret.
+index_nojava=Dette modul kræver, at java skal fungere, men din browser understøtter ikke java
+index_credits=Applet udviklet under GPL af <a href='$1' target=_top>Matthias L. Jugel & Marcus Mei�ner</a>.
+index_sshcredits=Inkluderer software udviklet af Cryptix Development Team (<a href=$1 target=_top>$1</a>).
+index_esocket=Der er ingen telnet-server, der kører på $1 port $2.
+index_esocket2=Der er ingen SSH-server, der kører på $1 port $2.
+index_elookup=Kunne ikke søge IP-adresse for $1 til at teste telnet- eller SSH-server.

@@ -19,7 +19,6 @@ index_dump=Show Dump
 index_dumpdesc=Click this button to view Shorewall tracing information from the <tt>shorewall dump</tt> command.
 index_check=Check Firewall
 index_checkdesc=Click this button to have Shorewall validate your firewall configuration with the <tt>shorewall check</tt> command.
-
 list_move=Move
 list_add=Add
 list_auto=Automatic
@@ -31,7 +30,6 @@ list_manual=Manually Edit File
 list_manualdesc=Click this button to manually edit the Shorewall file $1, in which the entries above are stored.
 list_ecannot=You are not allowed to edit this Shorewall table.
 list_delete=Delete Selected
-
 restart_err=Failed to apply configuration
 refresh_err=Failed to refresh configuration
 start_err=Failed to start firewall
@@ -43,7 +41,6 @@ check_title=Check Firewall
 check_ok=.. your firewall configuration looks OK.
 check_failed=.. an error was found in your firewall configuration!
 check_cmd=Checking configuration ..
-
 zones_title=Network Zones
 zones_desc=The zones listed on this page represent different networks reachable from your system. However, the entries here do no actually have any effect on the firewall - instead, they just define zone names and descriptions.
 zones_add=Add a new network zone.
@@ -72,7 +69,6 @@ zones_firewall=Firewall system
 zones_eopts=Invalid zone options
 zones_eopts_in=Invalid zone incoming options
 zones_eopts_out=Invalid zone outgoing options
-
 policy_title=Default Policies
 policy_desc=This page allows you to configure the default actions for traffic between different firewall zones. They can be overridden for particular hosts or types of traffic on the Firewall Rules page.
 policy_add=Add a new default policy.
@@ -90,10 +86,9 @@ policy_header=Default policy details
 policy_err=Failed to save default policy
 policy_nolog=Logging disabled
 policy_ulog=Log to ULOG
-policy_efw=&lt;Firewall&gt; cann be selected for both the source and destination zones
+policy_efw=<Firewall> cann be selected for both the source and destination zones
 policy_elimit=Missing or invalid traffic limit number
 policy_eburst=Missing or invalid traffic burst number
-
 rules_title=Firewall Rules
 rules_desc=This table lists exceptions to the default policies for certain types of traffic, sources or destinations. The chosen action will be applied to packets matching the chosen criteria instead of the default.
 rules_add=Add a new firewall rule.
@@ -140,7 +135,6 @@ rules_eaction=No action selected
 rules_macro=Macro action parameter
 rules_none2=None
 rules_emacro=Missing or invalid macro parameter
-
 tos_title=Types of Service
 tos_desc=This page defines IP service types for particular types of traffic, which can be used to raise or lower their priorities.
 tos_add=Add a new type of service.
@@ -159,7 +153,6 @@ tos_edit=Edit Type of Service
 tos_create=Create Type of Service
 tos_header=Type of service details
 tos_err=Failed to save type of service
-
 interfaces_title=Network Interfaces
 interfaces_desc=Each of the network interfaces on your system that you want Shorewall to manage should be listed on this page, and associated with the zone that it is connected to. The loopback interface <tt>lo</tt> must never be listed.
 interfaces_add=Add a new network interface.
@@ -176,7 +169,6 @@ interfaces_header=Network interface details
 interfaces_err=Failed to save network interface
 interfaces_eiface=Missing or invalid interface name
 interfaces_ebroad=Missing or invalid broadcast address
-
 masq_title=Masquerading
 masq_desc=Entries on this page set up network address translation for traffic routed between some network and a particular interface.
 masq_add=Add a new masquerading rule.
@@ -207,7 +199,6 @@ masq_emnete=Empty exception networks list
 masq_esnat=Invalid SNAT IP address
 masq_eports=Missing or invalid comma-separate list of ports
 masq_eipsec=Missing IPsec options
-
 nat_title=Static NAT
 nat_desc=The static network address translation entries in this table can be used to set up a 1-1 correspondence between an external address on your firewall and an RFC1918 address of a machine behind your firewall. Static NAT is often used to allow connections to an internal server from outside your network.
 nat_add=Add a new static NAT entry.
@@ -226,7 +217,6 @@ nat_local=Active for firewall system?
 nat_eext=Invalid external IP address
 nat_eint=Invalid internal IP address
 nat_evirt=Invalid virtual interface number
-
 proxyarp_title=Proxy ARP
 proxyarp_desc=This page allows you to configure your system to answer ARP requests for IP addresses other than its own, so that it can forward packets to those addresses to their real destinations.
 proxyarp_add=Add a new proxy ARP address.
@@ -243,7 +233,6 @@ proxyarp_err=Failed to save proxy ARP
 proxyarp_have=Route to host exists?
 proxyarp_eaddr=Missing or invalid address to ARP
 proxyarp_pers=Leave route even when firewall stopped?
-
 routestopped_title=When Stopped
 routestopped_desc=By default, when the Shorewall firewall is stopped it will deny access from all hosts. This page allows you to define hosts or networks that will still be accessible.
 routestopped_add=Add a new stopped address.
@@ -259,7 +248,6 @@ routestopped_err=Failed to save stopped address
 routestopped_eaddr=No addresses entered
 routestopped_all=All addresses
 routestopped_list=Listed addresses and networks ..
-
 tunnels_title=VPN Tunnels
 tunnels_desc=This page lists VPN tunnels that pass through your firewall, and so must be allowed by the Shorewall configuration.
 tunnels_add=Add a new VPN tunnel.
@@ -290,7 +278,6 @@ tunnels_generic_l=Generic, for protocol..
 tunnels_gsel=Listed zones
 tunnels_eopenvpn=Invalid port number for OpenVPN tunnel
 tunnels_egeneric=Missing protocol or protocol:port for generic tunnel
-
 hosts_title=Zone Hosts
 hosts_desc=This page lists hosts and networks that are part of particular zones. You generally do not need to make any changes to this list.
 hosts_add=Add a new zone host.
@@ -310,10 +297,8 @@ hosts_ip=Address or network $1
 hosts_mac=MAC address $1
 hosts_ipset=IP set $1
 hosts_any=Any host
-
 edit_before=Before entry $1
 edit_after=After entry $1
-
 blacklist_title=Blacklist Hosts
 blacklist_desc=This page lists hosts and services that will be blocked if traffic from them arrives on an interface with the <b>blacklist</b> option set.
 blacklist_add=Add a new blacklist host.
@@ -336,7 +321,6 @@ blacklist_eproto=Missing or invalid protocol
 blacklist_eports=Invalid port number or comma-separated list of ports
 blacklist_eports2=Ports can only be specified for the TCP and UDP protocols
 blacklist_return=blacklist hosts
-
 providers_title=Additional Routing Providers
 providers_desc=This page defines additional routing tables. These are needed if you have connections to more than one ISP or multiple connections to the same ISP, or run Squid as a transparent proxy on a host other than the firewall.
 providers_add=Add a new routing provider.
@@ -368,21 +352,17 @@ providers_enumber=Missing or invalid provider number
 providers_emark=Missing or invalid provider mark number
 providers_edup=Missing provider to duplicate
 providers_egateway=Missing or invalid gateway
-
 manual_desc=This form can be used to manually edit the Shorewall file $1. Be careful, as no syntax checking will be done on the changes.
 manual_reset=Undo
 manual_err=Failed to save table file
 manual_efile=Invalid table name!
 manual_edata=No table file contents entered.
-
 acl_nochange=Can apply, stop and start Shorewall configuration?
 acl_files=Available Shorewall tables
 acl_all=All
 acl_sel=Selected below ..
-
 delete_err=Failed to delete rows
 delete_enone=No rows selected
-
 opts_routeback=Accept traffic back to host
 opts_source=Allow from host to any destination
 opts_dest=Allow to host from any source
@@ -400,7 +380,6 @@ opts_proxyarp=Enable proxy ARP
 opts_arp_filter=Only respond to ARP requests for interface IP
 opts_detectnets=Taylor zone to include only routed hosts
 opts_upnp=Remap packets via UPNP
-
 comment_add=Add a new comment.
 comment_edit=Edit Comment
 comment_create=Create Comment
@@ -408,7 +387,6 @@ comment_header=Table comment details
 comment_msg=Message
 comment_err=Failed to save comment
 comment_enone=No message entered
-
 log_create_table=Added entry to the $1 table
 log_modify_table=Modified entry in the $1 table
 log_delete_table=Deleted entry from the $1 table
@@ -424,7 +402,6 @@ log_start=Started firewall
 log_refresh=Refreshed firewall
 log_restart=Restarted firewall
 log_clear=Cleared firewall
-
 shorewall_conf_title=Master configuration file
 shorewall_conf_desc=This page allows you to configure the global configuration variables.  NOTE: Changing the order of variables here is not recommended if you wish to preserve the relative position of comments in the configuration file.
 shorewall_conf_add=Add a new configuration variable.
@@ -438,7 +415,6 @@ shorewall_conf_create=Create configuration variable
 shorewall_conf_header=Configuration variable details
 shorewall_conf_err=Failed to save configuration variable
 shorewall_conf_varname=Invalid variable name (must be a valid shell variable name)
-
 params_title=Custom parameters
 params_desc=This page allows you to configure Shorewall's custom parameters.  NOTE: Changing the order of parameters here is not recommended if you wish to preserve the relative position of comments in the configuration file.
 params_add=Add a new custom parameter.
@@ -452,4 +428,3 @@ params_create=Create custom parameter
 params_header=Custom parameter details
 params_err=Failed to save custom parameter
 params_varname=Invalid parameter name (must be a valid shell variable name)
-__norefs=1

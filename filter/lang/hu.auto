@@ -1,0 +1,17 @@
+index_forever=Örökké
+index_ondate=Dátum
+index_subject=Automatikus válasz üzenet tárgya
+edit_apply=Megjeleníti a megfelelő e-mailt a mappában:
+edit_move=Jelentkezés mappában lévő e-mailre:
+save_egone=A szűrő már nem létezik!
+auto_subject=Email tárgy
+move_err=A szűrő alkalmazása nem sikerült
+move_esrc=A (z) $1 forrásmappa nem létezik!
+move_edest=A (z) $1 célmappa nem létezik!
+move_esame=A forrás és a cél mappa ugyanaz
+move_title=Alkalmazza a szűrőt
+move_finding=A (z) $1 szűrőjének megfelelő üzenetek keresése ..
+move_none=.. senki sem található!
+move_found=.. $1 üzenetet talált
+move_moving=$1 üzenet áthelyezése a $2 -be.
+move_done=.. Kész

@@ -1,4 +1,3 @@
-__norefs=1
 acl_all=Alles
 acl_files=Beschikbare Shorewall tabellen
 acl_nochange=Mag Shorewall configuratie toevoegen, stoppen en starten?
@@ -217,7 +216,7 @@ policy_create=Maak Standaard Beleid
 policy_desc=Op deze pagina kunt u de standaard acties voor verkeer tussen verschillende firewall zones configureren.
 policy_eburst=Ontbrekend of ongeldig boost getal
 policy_edit=Bewerk Standaard Beleid
-policy_efw=&lt;Firewall&gt; kan worden geselecteerd voor en de bron en de bestemmings zones
+policy_efw=<Firewall> kan worden geselecteerd voor en de bron en de bestemmings zones
 policy_elimit=Ontbrekende of ongeldig verkeer limiet getal
 policy_err=Mislukt om standaard beleid op te slaan
 policy_header=Standaard beleid details

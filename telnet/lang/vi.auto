@@ -1,0 +1,8 @@
+index_title=Đăng nhập SSH
+index_warn=Cảnh báo! Phiên telnet này được mã hóa <b>không</b>.
+index_nojava=Mô-đun này yêu cầu java hoạt động, nhưng trình duyệt của bạn không hỗ trợ java
+index_credits=Applet được phát triển theo GPL bởi <a href='$1' target=_top>Matthias L. Jugel & Marcus Mei�ner</a>.
+index_sshcredits=Bao gồm phần mềm được phát triển bởi Nhóm phát triển Cryptix (<a href=$1 target=_top>$1</a>).
+index_esocket=Không có máy chủ telnet chạy trên $1 port $2.
+index_esocket2=Không có máy chủ SSH chạy trên $1 port $2.
+index_elookup=Không thể tra cứu địa chỉ IP cho $1 để kiểm tra máy chủ telnet hoặc SSH.

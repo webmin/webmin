@@ -1,4 +1,3 @@
-__norefs=1
 delete_enone=Niets geselecteerd
 delete_err=Mislukt om MIME type programma's te verwijderen
 disable_eclash=Een uitgeschakeld MIME type programma voor $1 bestaat reeds
@@ -9,7 +8,7 @@ edit_desc=MIME type omschrijving
 edit_egone=Programma bestaat niet langer!
 edit_enabled=Aangezet?
 edit_header=MIME type handler programma details
-edit_none=Niet &#233;&#233;n (altijd programma gebruiken)
+edit_none=Niet één (altijd programma gebruiken)
 edit_program=Handler programma
 edit_term=Output in terminal laten zien?
 edit_test=Test opdracht

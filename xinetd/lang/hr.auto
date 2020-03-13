@@ -1,0 +1,2 @@
+index_none=Još nisu definirane mrežne usluge.
+index_estart=Naredba za pokretanje Xinetd $1 ne postoji. Možda nije instaliran ili je vaša <a href='$2'>konfiguracija modula</a> netočna.

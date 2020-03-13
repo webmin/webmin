@@ -30,7 +30,6 @@ index_other_google=محرك بحث Google
 index_other_kde=وثائق KDE
 index_and=تطابق الكل
 index_or=مطابقة أي
-
 search_efor=لا توجد صفحة يدوية للبحث عنها
 search_title=نتائج البحث
 search_desc=الوصف
@@ -48,30 +47,22 @@ search_none=لم يتم العثور على وثائق مطابقة $1.
 search_for=لـ $1
 search_google=نتيجة بحث Google
 search_doxfer=وثائق Webmin على الانترنت
-
 howto_title=وثيقة HOWTO
 howto_header=ملف المستند HOWTO $1
 howto_epath=مسار مستند HOWTO غير صالح
-
 doc_title=وثائق الحزم
 doc_header=ملف وثيقة الحزمة $1
 doc_epath=مسار وثائق الحزمة غير صحيح
-
 man_title=صفحة يدوية
 man_header=صفحة يدوية لـ $1($2)
 man_noentry=لا توجد صفحة يدوية لـ $1!
 man_epath=لا يمكن أن تكون الصفحة اليدوية مسارًا!
-
 kernel_title=وثيقة النواة
 kernel_header=ملف وثيقة النواة $1
 kernel_epath=مسار مستند النواة غير صالح
-
 kde_title=وثائق KDE
 kde_header=ملف مستند KDE $1
 kde_epath=مسار وثائق KDE غير صالح
-
 perl_title=Perl وحدات
 perl_header=توثيق وحدة Perl $1
 perl_emod=اسم وحدة Perl غير صالح
-
-__norefs=1

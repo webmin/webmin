@@ -23,7 +23,6 @@ index_follow=After $1
 index_forcetar=In TAR format
 index_delete=Delete Selected Backups
 index_nostrftime=Warning - some backup jobs use % in their filenames, but strftime substitution is not enabled on the Module Config page.
-
 dump_dir=Directory to backup
 dump_dirs=Directories to backup
 dump_fs=Filesystem
@@ -107,7 +106,6 @@ dump_remount=Remount with <tt>noatime</tt> option during backup?
 dump_eftpupdate=Adding files to an existing archive is not possible when using FTP.
 dump_eleveldir=Only level 0 backups are allowed for directories that are not filesystem mount points
 dump_eupdatedir=The <tt>/etc/dumpdates</tt> file can only be updated for directories that are filesystem mount points
-
 edit_err=Failed to create backup
 edit_edir=Missing backup directory
 edit_efs=Filesystems of type $1 cannot be backed up by this module
@@ -129,11 +127,9 @@ edit_restore=Restore ..
 edit_to=$1 to $2
 edit_tolevel=$1 to $2 (level $3)
 edit_special=Backup schedule
-
 save_err=Failed to save backup
 save_edir=Missing or invalid backup directory
 save_efs=Backup directory cannot change to a different filesystem
-
 backup_title=Backup Now
 backup_desc=Performing backup of $1 to $2 ..
 backup_reverify=.. complete. Now verifying backup ..
@@ -146,7 +142,6 @@ backup_notape=.. backup exceeded the capacity of a single tape. Tape changing is
 backup_egone=Backup does not exist!
 backup_bg=Starting background backup process. You can monitor its progress in the <b>Running Backup Jobs</b> section on the module's main page, and will be notified of its final status via email.
 backup_ecannot=You are not allowed to backup this directory
-
 restore_title=Restore Backup
 restore_err=Failed to restore backup
 restore_ecommand=The command $1 needed to restore $2 filesystem backups was not found on your system. Maybe it is not currently installed.
@@ -190,7 +185,6 @@ restore_gzip=Uncompress archive?
 restore_keep=Don't overwrite files?
 restore_emulti=Multi-file restores cannot be done from a tape device
 restore_emulti2=Multi-file restores cannot be done from a remote server
-
 log_create=Created backup config for $1
 log_modify=Modified backup config for $1
 log_delete=Deleted backup config for $1
@@ -198,16 +192,13 @@ log_backup=Backed up $1 to $2
 log_bgbackup=Started backup of $1 to $2
 log_restore=Restored backup from $1
 log_kill=Terminated backup for $1
-
 kill_err=Failed to terminate backup
 kill_egone=No longer running!
 kill_ecannot=You are not allowed to terminate this backup
-
 newtape_err=Failed to signal new tape
 newtape_egone=Backup is no longer running!
 newtape_estatus=Backup is no longer waiting for a new tape
 newtape_ecannot=You are not allowed to manage this backup
-
 acl_edit=Can create and edit backups?
 acl_restore=Can restore backups?
 acl_cmds=Can edit before and after commands?
@@ -215,10 +206,8 @@ acl_extra=Can edit extra command-line parameters?
 acl_dirs=Allowed directories for backups
 acl_all=All directories
 acl_list=Only listed ..
-
 delete_err=Failed to delete backups
 delete_enone=None selected
-
 email_already=Backup is already running with PID $1.
 email_ebefore=Before-backup command failed!
 email_verify=Verifying backup ..
@@ -226,7 +215,5 @@ email_eafter=After-backup command failed!
 email_subject=Backup of $1 on $2
 email_ok=Backup succeeded
 email_failed=Backup failed!
-
 newtape_subject=Tape change $1 for backup of $2 on $3
 newtape_body=The backup of $2 on $3 has reached the maximum amount of data allowed on tape $1. You will need to load a new tape and hit the 'Tape Loaded' link in Webmin's Filesystem Backup module for the backup to continue.
-__norefs=1

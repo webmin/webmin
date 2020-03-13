@@ -1,4 +1,3 @@
-__norefs=1
 control_desc_optional=Slagen of falen werd genegeerd
 control_desc_required=Stop met authenticatie aan het einde van een falen
 control_desc_requisite=Stop met authenticatie direct bij een falen

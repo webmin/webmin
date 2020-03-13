@@ -180,7 +180,6 @@ whats_this_NSTATE=De volgende status van de service, handig wanneer de service o
 whats_this_SCOPE=De werk naam van de service instantie. Bekijk: smf(5). Bekijk: svcs(1).
 whats_this_STIME=De tijd (indien vandaag) of de datum dat de service de huidige status heeft bereikt. Bekijk: smf(5). Bekijk: svcs(1).
 whats_this_Select=Controleer de lijst met services die u wilt aanzetten/uitzetten/verversen enz. hier.
-
 whats_this_service_detail=Specificeer/bewerk de topniveau service informatie hier: service naam, versie nummer, gezamelijke naam om te tonen en stabiliteit. Bekijk: smf(5). Bekijk: svccfg(1M). Bekijk: service_bundle(4).
 whats_this_bundle_name=Naam van de service gebundeld met het manifest. Meerdere services kunnen worden gebundeld in 1  manifest, maar de naam hier is niet belangrijk. Voor reeds bestaande services, word het ingesteld om te exporteren omdat dit is wat svccfg doet wanneer het een manifest exporteert van de SMF repository. Bekijk: svccfg(1M). Bekijk: service_bundle(4).
 whats_this_service_name=Naam van de service. Men is het volgende formaat overeengekomen [general_service_category]/[name]. Categorieen die reeds gegeven zijn inclusief de applicatie (hoger-niveau applicaties), milestone (verzameling van andere services, zoals een naam service), platform (platform-specifieke services), systeem (Solaris systeem services), apparaate (apparaat-specifieke services), netwerk (netwerk/internet services) en site (site-specifieke omschrijvingen). U kunt uiteraard ook uw eigen categorie specificeren, maar de meeste services zouden normaal gesproken makkelijk in 1 van de bovenstaande moeten passen. Bekijk: smf(5).
@@ -323,4 +322,3 @@ smfwizard_manpage_section=Specificeer manpage sectie
 smfwizard_manpage_section_error=*Sectie moet ingevuld zijn!*
 smfwizard_manpage_manpath=Specificeer manpad
 smfwizard_manpage_manpath_error=*Manpad moet ingevuld zijn!*
-__norefs=1

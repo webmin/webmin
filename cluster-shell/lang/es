@@ -1,9 +1,9 @@
-index_all=&lt;Todos los hosts&gt;
+index_all=<Todos los hosts>
 index_clear=Limpiar Historial
 index_cmd=Comando a ejecutar
 index_group=Miembros de $1
-index_old=&#243;
-index_return=indice de m&#243;dulo
+index_old=ó
+index_return=indice de módulo
 index_run=Ejecutar Comando Ahora
 index_server=Ejecutar en servidores
 index_this=este servidor

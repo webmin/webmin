@@ -1,0 +1,5 @@
+edit_email=Envoi par e-mail à
+exec_cmd=Sortie de la commande de post-copie sur $1  :
+exec_before=Sortie de la commande avant copie sur $1  :
+email_subject_succeeded=La copie de cluster de $1 a réussi
+email_subject_failed=Échec de la copie du cluster de $1 

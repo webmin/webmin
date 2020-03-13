@@ -1,22 +1,21 @@
 index_title=Recursos Compartits NFS
-index_add=Inicia la comparticiÛ d'un nou directori.
+index_add=Inicia la compartici√≥ d'un nou directori.
 index_dir=Directori
 index_clients=Clients
 index_everyone=Tothom
 index_delete=Suprimeix els Recursos Seleccionats
 index_none=Actualment no hi ha cap directori exportat en aquest sistema.
 index_apply=Aplica els Canvis
-index_applydesc=Fes clic sobre aquest botÛ per aplica la configuraciÛ actual de comparticiÛ de fitxers. AixÚ far‡ disponibles tots els directoris llistats mÈs amunt amb les opcions especificades.
+index_applydesc=Fes clic sobre aquest bot√≥ per aplica la configuraci√≥ actual de compartici√≥ de fitxers. Aix√≤ far√† disponibles tots els directoris llistats m√©s amunt amb les opcions especificades.
 index_return=a la llista de recursos
-
-edit_title1=EdiciÛ de Recurs
-edit_title2=CreaciÛ de Recurs
+edit_title1=Edici√≥ de Recurs
+edit_title2=Creaci√≥ de Recurs
 edit_header1=Detalls del recurs
 edit_dir=Directori
-edit_desc=DescripciÛ
-edit_ro=AccÈs nomÈs lectura
-edit_rw=AccÈs de lectura / escriptura
-edit_root=AccÈs root
+edit_desc=Descripci√≥
+edit_ro=Acc√©s nom√©s lectura
+edit_rw=Acc√©s de lectura / escriptura
+edit_root=Acc√©s root
 edit_none=cap
 edit_all=Tots els hosts
 edit_listed=Els hosts llistats...
@@ -25,34 +24,27 @@ edit_nosub=Permet el muntatge de subdirectoris
 edit_nosuid=Permet fitxers 'setuid'
 edit_des=Els clients han d'utilitzar DES
 edit_kerberos=Els clients han d'utilitzar Kerberos
-edit_anon=Usuari anÚnim
+edit_anon=Usuari an√≤nim
 edit_anon0=No establert
-edit_anon1=Sense accÈs
+edit_anon1=Sense acc√©s
 edit_aclok=Permet ACLs
 edit_public=Recurs WebNFS
-edit_index=Fitxer d'Ìndex WebNFS
-
+edit_index=Fitxer d'√≠ndex WebNFS
 save_err=No s'ha pogut desar el recurs
-save_edirectory='$1' no Ès un nom de directori v‡lid
+save_edirectory='$1' no √©s un nom de directori v√†lid
 save_edirectory2=El directori '$1' no existeix
-save_erw=No has llistat cap host per a la comparticiÛ lectura/escriptura
-save_ero=No has llistat cap host per a la comparticiÛ nomÈs lectura
-save_eroot=No has llistat cap host per a la comparticiÛ root
-save_ealready=El directori '$1' ja est‡ compartit
+save_erw=No has llistat cap host per a la compartici√≥ lectura/escriptura
+save_ero=No has llistat cap host per a la compartici√≥ nom√©s lectura
+save_eroot=No has llistat cap host per a la compartici√≥ root
+save_ealready=El directori '$1' ja est√† compartit
 save_ehost=El host '$1' no existeix
-
 log_modify=Recurs NFS $1 modificat
 log_rename=Recurs NFS $1 canviat a $2
 log_create=Recurs NFS $1 creat
 log_delete=Recurs NFS $1 suprimit
 log_apply=Canvis aplicats
-
 acl_view=Pot editar els recursos NFS
-
-ecannot=No tens permÌs per gestionar recursos NFS
-
+ecannot=No tens perm√≠s per gestionar recursos NFS
 delete_err=No s'han pogut suprimir els recursos compartits
 delete_enone=No has seleccionat cap recurs
-
 restart_err=No s'han pogut aplicar els canvis
-__norefs=1

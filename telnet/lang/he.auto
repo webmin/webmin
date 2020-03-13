@@ -1,0 +1,8 @@
+index_title=כניסה ל- SSH
+index_warn=אזהרה! הפעלת Telnet זו היא <b>לא</b> מוצפן.
+index_nojava=מודול זה דורש שג'אווה תפעל, אך הדפדפן שלך אינו תומך בג'אווה
+index_credits=יישומון שפותח תחת GPL על ידי <a href='$1' target=_top>מתיאס ל. ג'וגל ומרקוס מיינר</a>.
+index_sshcredits=כולל תוכנה שפותחה על ידי צוות פיתוח Cryptix (<a href=$1 target=_top>$1</a>).
+index_esocket=אין שרת Telnet הפועל ביציאה $1 $2.
+index_esocket2=אין שרת SSH שפועל ביציאה $1 $2.
+index_elookup=בדיקת כתובת ה- IP של $1 נכשלה בבדיקת שרת telnet או SSH.

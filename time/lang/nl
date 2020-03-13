@@ -1,4 +1,3 @@
-__norefs=1
 acl_error=U bevind zich in de systeemtijd module, maar u kunt de systeem of hardware tijd niet veranderen
 acl_hw=Mag gebruiker de hardware tijd wijzigen?
 acl_no=Nee

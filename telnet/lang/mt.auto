@@ -1,0 +1,8 @@
+index_title=Idħol SSH
+index_warn=Twissija! Din is-sessjoni tat-telnet hija <b>mhux</b> kriptata.
+index_nojava=Dan il-modulu jeħtieġ java biex jiffunzjona, iżda l-browser tiegħek ma jappoġġjax java
+index_credits=Applet żviluppat taħt GPL minn <a href='$1' target=_top>Matthias L. Jugel & Marcus Mei�ner</a>.
+index_sshcredits=Jinkludi softwer żviluppat mit-Tim tal-Iżvilupp ta 'Cryptix (<a href=$1 target=_top>$1</a>).
+index_esocket=M'hemm l-ebda server telnet li jaħdem fuq $1 port $2.
+index_esocket2=M'hemm l-ebda server SSH li jaħdem fuq $1 port $2.
+index_elookup=Naqset milli tfittex l-indirizz IP għal $1 biex tittestja telnet jew server SSH.

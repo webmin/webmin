@@ -1,0 +1,2 @@
+index_cdemand=按需取消
+index_cdemanddesc=ADSL客户端当前正在等待按需连接请求。单击此按钮可使用命令 $1停止它。

@@ -1,0 +1,31 @@
+index_title_v=IPv4 tűzfal
+index_title_v6=IPv6 tűzfal
+index_evalid=FIGYELEM! A jelenlegi IPtable-konfiguráció érvénytelen : $1 
+index_no_comment=
+index_unapply2=Konfiguráció mentése
+index_unapply2desc=Kattintson erre a gombra a fenti konfiguráció mentéséhez az állandó tűzfal konfigurációs fájlba.
+index_firewalld=Úgy tűnik, hogy a FirewallD-t használják a rendszer tűzfalának előállítására. Lehet, hogy inkább a <a href='$1'>FirewallD modult</a> használja.
+index_fail2ban=Úgy tűnik, hogy a Fail2Ban-t használják egyes tűzfalszabályok kezelésére. Módosítsa azokat a <a href='$1'>Fail2Ban modullal</a> és szűrje az <a href=$2>f2b -. *</a> vagy <a href=$2>fail2ban -. *</a> szűrőt ..
+index_filter_chain=nem a tűzfal kezeli.
+index_filter_nodirect=Külső kezelt szabályok észlelve. Aktiválja a "<a href=$1>Közvetlenül a tűzfalszabályok szerkesztését"</a>, különben a tűzfalszabályok megsérülhetnek.
+index_ipset=IP-set
+index_ipset_title=Aktív IP-készletek, amelyeket a tűzfalszabályok használhatnak
+index_ipset_name=Az IP-készlet neve
+index_ipset_type=típus
+index_ipset_elem=# Elemek
+index_ipset_maxe=# Max
+index_ipset_size=Méret
+index_ipvxmode=IP-protokoll verziójának módosítása:
+index_ipvx4=IPv4
+index_ipvx6=IPv6
+desc_ctstate=a kapcsolat állapota $1 
+desc_ctstate!=a kapcsolat állapota nem $1 
+desc_args--match-set=A $2 a $1 IP-készletben található
+desc_src=forrás
+desc_dest=cél
+redhat_einstalled=Nem található <tt>iptables (6)</tt> indítási művelet, amely azt jelzi, hogy az IPtable csomag nincs telepítve a rendszerére
+edit_state_snat=Forrás NATd
+edit_state_dnat=NATd rendeltetési hely
+add_enone=Nincs kiválasztott szerver!
+desc_icmpv6-type=Az ICMP típusa $1 
+desc_icmpv6-type!=Az ICMP típusa nem $1 

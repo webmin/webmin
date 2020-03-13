@@ -1,0 +1,5 @@
+index_title=Accesso al testo
+index_epython=Ajaxterm richiede l'esecuzione di Python, ma il comando $1 non è stato trovato sul tuo sistema.
+index_estart=Ajaxterm non ha iniziato ad accettare connessioni sulla porta $2 dopo $1 secondi.
+index_popup=Apri in una finestra separata ..
+index_credits=Utilizza il codice di <a href='$1' target=_new>Ajaxterm</a> di Antony Lesuisse.

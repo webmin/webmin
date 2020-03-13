@@ -375,7 +375,7 @@ nice_size_GiB=GiB
 nice_size_MB=MB
 nice_size_MiB=MiB
 nice_size_kB=kB
-nice_size_kiB=kiB
+nice_size_kiB=KiB
 nice_size_b=bytes
 
 __norefs=1

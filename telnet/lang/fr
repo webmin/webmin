@@ -1,7 +1,7 @@
-index_credits=Applet Java d&#233;velopp&#233; sous licence GPL par <a href='$1'>Matthias L. Jugel &amp; Marcus Mei&#223;ner</a>.
+index_credits=Applet Java développé sous licence GPL par <a href='$1'>Matthias L. Jugel & Marcus Meißner</a>.
 index_esocket=Il n'y a aucun serveur telnet qui tourne sur $1 port $2
 index_esocket2=Il n'y a aucun serveur SSH qui tourne sur $1 port $2
-index_nojava=Ce module n&#233;cessite java, mais votre fureteur ne le supporte pas
-index_sshcredits=Inclus un logiciel d&#233;velopp&#233;  par l'Equipe de D&#233;veloppement Cryptix (<a href=$1 target=_top>$1</a>).
+index_nojava=Ce module nécessite java, mais votre fureteur ne le supporte pas
+index_sshcredits=Inclus un logiciel développé  par l'Equipe de Développement Cryptix (<a href=$1 target=_top>$1</a>).
 index_title=Ouverture de Session SSH/Telnet
-index_warn=Attention!  Cette session Telnet <b>n'est pas</b> encrypt&#233;.
+index_warn=Attention!  Cette session Telnet <b>n'est pas</b> encrypté.

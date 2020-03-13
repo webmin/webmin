@@ -1,0 +1,5 @@
+index_title=Inicio de sesión de texto
+index_epython=Ajaxterm requiere que Python se ejecute, pero el comando $1 no se encontró en su sistema.
+index_estart=Ajaxterm no comenzó a aceptar conexiones en el puerto $2 después de $1 segundos.
+index_popup=Abrir en una ventana separada.
+index_credits=Utiliza código de <a href='$1' target=_new>Ajaxterm</a> por Antony Lesuisse.

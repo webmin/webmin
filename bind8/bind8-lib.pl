@@ -4255,7 +4255,7 @@ if (&foreign_check("virtual-server")) {
 	&foreign_require("virtual-server");
 	my $d = &virtual_server::get_domain_by("dom", $name);
 	push(@rv, $d) if ($d);
-	push(@rv, &virtual_server:get_domain_by("dns_subof", $d->{'id'})) if ($d);
+	push(@rv, &virtual_server::get_domain_by("dns_subof", $d->{'id'})) if ($d);
 	}
 return wantarray ? @rv : $rv[0];
 }

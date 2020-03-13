@@ -1,4 +1,3 @@
-__norefs=1
 acl_dall=Alle schijven
 acl_disks=Deze gebruiker mag schijven partitioneren en formatteren
 acl_dsel=Geselecteerd.

@@ -1,0 +1,5 @@
+index_title=Sisäänkirjautuminen
+index_epython=Ajaxterm vaatii Pythonin suorittamista, mutta komentoa $1 ei löydy järjestelmästäsi.
+index_estart=Ajaxterm ei alkanut hyväksyä yhteyksiä porttiin $2 $1 sekunnin kuluttua.
+index_popup=Avaa erillisessä ikkunassa ..
+index_credits=Käyttää Antony Lesuisse'n <a href='$1' target=_new>Ajaxterm</a> -koodia.

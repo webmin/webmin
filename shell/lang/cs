@@ -1,0 +1,12 @@
+acl_user=Spustit příkazy pod uživatelem
+index_clearcmds=Vyčistit příkazy
+index_clear=Vyčistit historii
+index_title=Příkazový shell
+acl_user_def=Aktuální Webmin uživatel
+index_pok=Spustit předchozí příkaz
+index_edit=Editovat předchozí
+index_desc=Vložením Unix příkazu shellu dojde k jeho spuštění v níže uvedeném textovém poli. <tt>cd</tt> příkaz může být využit pro změnu adresáře pro následné příkazy.
+index_ok=Spustit příkaz:
+log_run=Proběhl příkaz $1
+index_history=Historie příkazů
+log_clear=Vyčištěna historie příkazů

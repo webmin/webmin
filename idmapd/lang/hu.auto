@@ -1,0 +1,11 @@
+index_title=idmapd konfiguráció
+index_eidmapd=A (z) $1 Idmapd démon nem található. Lehet, hogy nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
+general=Általános konfiguráció
+mapping=A konfiguráció feltérképezése
+pipefs_dir=Pipefs könyvtár
+domain=Domain név
+nobody_user=Senki felhasználó
+nobody_group=Senki sem
+save=Mentse a konfigurációt, és indítsa újra a démont
+save_err=A (z) $1 konfigurációs fájl mentése nem sikerült
+error_dir=A (z) $1 könyvtár nem létezik

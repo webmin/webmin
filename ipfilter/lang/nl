@@ -43,10 +43,8 @@ index_natnone=Er zij nog geen netwerk adres vertaling regels gedefinieerd.
 index_nataction=NAT mode
 index_natfrom=Pakketten die overeen komen
 index_natto=Vertaling
-
 dir_in=Inkomende
 dir_out=Uitgaande
-
 action_pass=<font color=#00aa00>Passeren</font>
 action_block=<font color=#ff0000>Blokkeren</font>
 action_skip=Overslaan
@@ -59,7 +57,6 @@ action_map=Mapping
 action_rdr=Omleiden
 action_bimap=Bidirectionele Mapping
 action_map-block=Blokkeer mapping
-
 laction_pass=<font color=#00aa00>Passeren pakket</font>
 laction_block=<font color=#ff0000>Blokkeren pakket, met ICMP code</font>
 laction_log=Log pakket, op niveau
@@ -68,11 +65,10 @@ laction_skip=Volgende regels overslaan
 laction_auth=Gebruikers-ruimte authorisatie
 laction_preauth=Controleer vorige authorisatie
 laction_call=Kernel functie oproepen
-
 edit_title1=Regel Aanmaken
 edit_title2=Regel Bewerken
 edit_header1=Regel actie
-edit_none=&lt;Geen&gt;
+edit_none=<Geen>
 edit_rst=TCP reset
 edit_return_dest=Namaak ICMP bron adres
 edit_cmt=Regel commentaar
@@ -106,8 +102,8 @@ edit_portrange=Poort is tussen $1 en $2
 edit_portrangenot=Poort is niet tussen $1 en $2
 edit_header3=Andere overeenkomende condities
 edit_proto=Protocol
-edit_protoany=&lt;Ieder protocol&gt;
-edit_prototcpudp=&lt;TCP of UDP&gt;
+edit_protoany=<Ieder protocol>
+edit_prototcpudp=<TCP of UDP>
 edit_tos=Type service
 edit_ttl=Tijd-om-te-leven
 edit_tosany=Overeenkomend met alles
@@ -123,7 +119,7 @@ edit_oifc=Anderen..
 edit_fastroute=Verstuur over interface
 edit_fastrouteip=naar bestemming IP
 edit_replyto=Reageer op interface
-edit_anyiface=&lt;Iedere interface&gt;
+edit_anyiface=<Iedere interface>
 edit_keep=Behoud historie van pakket
 edit_keepstate=Stroming status
 edit_keepfrags=Fragmentatie
@@ -131,10 +127,9 @@ edit_flags=TCP flags
 edit_flagsany=Iedere
 edit_flags2=van de
 edit_icmp=ICMP type
-edit_icmpany=&lt;Ieder type&gt;
+edit_icmpany=<Ieder type>
 edit_icmpcode=en code
-edit_codeany=&lt;Iedere code&gt;
-
+edit_codeany=<Iedere code>
 save_err=Mislukt om regel op te slaan
 save_ehostfrom=Ontbrekende of ongeldige bron hostnaam
 save_ehostto=Ontbrekende of ongeldige bestemming hostnaam
@@ -163,13 +158,11 @@ save_eto=Ontbrekende of ongeldige interface om op te versturen
 save_etoip=Ongeldig IP adres om op te versturen
 save_ereplyto=Ontbrekende of ongeldige interface om op te reageren
 save_ereplytoip=Ongeldig IP adres om op te reageren
-
 apply_err=Mislukt om configuratie toe te voegen
 apply_remote=Fout van $1 : $2
 unapply_err=Mislukt om de configuratie om te keren
 unapply_ein=Mislukt om de invoer regels te verkrijgen
 unapply_eout=Mislukt om de uitvoer regels te verkrijgen
-
 desc_if=Als $1
 desc_and=en
 desc_always=Altijd
@@ -203,7 +196,6 @@ desc_rdr=IP adressen $1 poort $2
 desc_dport1=poort is $1
 desc_dport2=poort is tussen $1 en $2
 desc_nattoiface=interface adres
-
 log_create_rule=Aangemaakte regel $1
 log_delete_rule=Verwijderde regel $1
 log_modify_rule=Gemodificeerde regel $1
@@ -232,7 +224,6 @@ log_add_host=Toegevoegde cluster server $1
 log_add_group=Toegevoegde cluster servers van groep $1
 log_delete_host=Verwijderde cluster server $1
 log_delete_group=Verwijderd $1 cluster servers
-
 cluster_title=Cluster Firewall Servers
 cluster_none=Er zijn nog geen servers toegevoegd aan de firewall cluster.
 cluster_host=Hostnaam
@@ -243,7 +234,6 @@ cluster_gadd=Servers toevoegen in groep
 cluster_need=U moet de servers toevoegen met een login en wachtwoord in de Webmin Servers Index module voordat u ze hier kunt beheren.
 cluster_return=cluster servers
 cluster_delete=Verwijder Geselecteerde
-
 add_title=Servers Toevoegen
 add_msg=Toevoegen van $1 ..
 add_gmsg=Servers toevoegen in groep $1 ..
@@ -252,7 +242,6 @@ add_gerr=Mislukt om groep toe te voegen
 add_echeck=Server $1 heeft geen IPFilter Firewall module
 add_emissing=Bij server $1 ontbreekt de firewall opdracht $2
 add_ok=$1 toegevoegd, met $2 actieve firewall regels.
-
 nat_title1=NAT Regel Aanmaken
 nat_title2=Bewerk NAT Regel
 nat_action=NAT mode
@@ -311,7 +300,4 @@ nat_edport2=Ontbrekende of ongeldige originele eind poort
 net_erdrip='$1' is geen geldige bestemming IP adres
 nat_erdrips=Geen bestemming IP's ingevuld
 nat_erdrport=Ontbrekende of ongeldige bestemming poort
-
 boot_esmf=De SMF service $1 bestaat niet of is in een onbekende status
-
-__norefs=1

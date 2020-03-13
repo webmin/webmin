@@ -1,0 +1,8 @@
+index_langglobal2=グローバル言語.. $1（$2）
+index_overlay=テーマオーバーレイ
+index_overlaydef=なし-テーマのデフォルトを使用
+index_passagain=パスワード再入力
+change_epass2=新しいパスワードが一致しません
+change_epass=新しいパスワードは無効です： $1
+change_eoverlay=UIテーマも選択しない限り、テーマオーバーレイを選択できません
+change_eoverlay2=選択したテーマオーバーレイは、選択したUIテーマと互換性がありません

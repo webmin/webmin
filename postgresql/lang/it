@@ -1,40 +1,37 @@
 index_title=Database Server PostgreSQL
-index_notrun=PostgreSQL non sta girando nel tuo server -- non puÚ essere estratta la lista dei database.
+index_notrun=PostgreSQL non sta girando nel tuo server -- non pu√≤ essere estratta la lista dei database.
 index_start=Fai partire il server PostgreSQL
-index_startmsg=Usa questo bottone per far partire il database server PostgreSQL nel tuo sistema con il comando $1. Questo modulo di Webmin non puÚ amministrare un database finchË non Ë partito.
 index_nopass=Webmin deve conoscere login e password dell'amministratore di PostgreSQL per gestire il tuo database. Per favore inserisci il nome utente e la password dell'amministratore qui sotto.
-index_nouser=Webmin Ë configurato per connettersi al server PostgreSQL come utente $1, ma l'accesso con questo utente Ë stato rifiutato.
+index_nouser=Webmin √® configurato per connettersi al server PostgreSQL come utente $1, ma l'accesso con questo utente √® stato rifiutato.
 index_ltitle=Login PostgreSQL
 index_sameunix=Connessione con utente uguale all'utente Unix?
 index_login=Login
 index_pass=Password
 index_clear=Cancella
 index_stop=Ferma Server PostgreSQL
-index_stopmsg=Usa questo bottone per fermare il database server PostgreSQL nel tuo sistema. Questo ne impedir‡ l'accesso a qualsiasi utente o programma, incluso questo modulo Webmin.
+index_stopmsg=Usa questo bottone per fermare il database server PostgreSQL nel tuo sistema. Questo ne impedir√† l'accesso a qualsiasi utente o programma, incluso questo modulo Webmin.
 index_dbs=Database PostgreSQL
 index_add=Crea un nuovo database
 index_users=Opzioni Utente
 index_return=elenco database
-index_esql=Il programma client di PostgreSQL $1 non Ë stato trovato nel tuo sistema. PostgreSQL potrebbe non essere installato, oppure la <a href='$2'>configurazione del modulo</a> Ë errata.
-index_ehba=Il file di configurazione di PostgreSQL $1 non Ë stato trovato nel tuo sistema. PostgreSQL potrebbe non essere stato inizializzato, oppure la <a href='$2'>configurazione del modulo</a> Ë errata.
-index_superuser=Il programma client di PostgreSQL non Ë stato trovato nel tuo sistema. PostgreSQL potrebbe non essere installato, oppure la <a href='$2'>configurazione del modulo</a> Ë errata.
-index_eversion=La versione di PostgreSQL nel tuo sistema Ë $1, ma Webmin supporta solo PostgreSQL versione $2 e superiori.
-index_elibrary=Il programma client di PostgreSQL non puÚ essere eseguito perchË non sono state trovale le librerie condivise di PostgreSQL. Controlla la <a href='$2'>configurazione del modulo</a> per essere sicuro che il <i>Percorso per le librerie condivise di PostgreSQL</i> sia corretto.
-index_ldpath=Il percorso per le librerie condivise Ë $1, e l'output da $2 Ë :
+index_esql=Il programma client di PostgreSQL $1 non √® stato trovato nel tuo sistema. PostgreSQL potrebbe non essere installato, oppure la <a href='$2'>configurazione del modulo</a> √® errata.
+index_ehba=Il file di configurazione di PostgreSQL $1 non √® stato trovato nel tuo sistema. PostgreSQL potrebbe non essere stato inizializzato, oppure la <a href='$2'>configurazione del modulo</a> √® errata.
+index_superuser=Il programma client di PostgreSQL non √® stato trovato nel tuo sistema. PostgreSQL potrebbe non essere installato, oppure la <a href='$2'>configurazione del modulo</a> √® errata.
+index_eversion=La versione di PostgreSQL nel tuo sistema √® $1, ma Webmin supporta solo PostgreSQL versione $2 e superiori.
+index_elibrary=Il programma client di PostgreSQL non pu√≤ essere eseguito perch√® non sono state trovale le librerie condivise di PostgreSQL. Controlla la <a href='$2'>configurazione del modulo</a> per essere sicuro che il <i>Percorso per le librerie condivise di PostgreSQL</i> sia corretto.
+index_ldpath=Il percorso per le librerie condivise √® $1, e l'output da $2 √® :
 index_version=PostgreSQL versione $1
-index_setup=Il file di configurazione di PostgreSQL $1 non Ë stato trovato nel tuo sistema, questo indica che il database non Ë stato ancora inizializzato, usa il bottone qui sotto per inizializzare PostgreSQL con il comando $2.
+index_setup=Il file di configurazione di PostgreSQL $1 non √® stato trovato nel tuo sistema, questo indica che il database non √® stato ancora inizializzato, usa il bottone qui sotto per inizializzare PostgreSQL con il comando $2.
 index_setupok=Inizializza Database
-index_nomod=Il modulo Perl $1 non Ë installato nel tuo sistema, quindi Webmin non sar‡ in grado di accedere correttamente al tuo database PostgreSQL. <a href='$2'>Installa il modulo adesso</a>.
-index_nomods=I moduli Perl $1 e $2 non sono installati nel tuo sistema, quindi Webmin non sar‡ in grado di accedere correttamente al tuo database PostgreSQL. <a href='$2'>Installa i moduli adesso</a>.
+index_nomod=Il modulo Perl $1 non √® installato nel tuo sistema, quindi Webmin non sar√† in grado di accedere correttamente al tuo database PostgreSQL. <a href='$2'>Installa il modulo adesso</a>.
+index_nomods=I moduli Perl $1 e $2 non sono installati nel tuo sistema, quindi Webmin non sar√† in grado di accedere correttamente al tuo database PostgreSQL. <a href='$2'>Installa i moduli adesso</a>.
 index_nodbs=Non hai accesso a nessun database PostgreSQL.
-
 login_err=Login fallito
 login_ecannot=Non sei autorizzato a configurare il login al database
 login_elogin=Login amministratore mancante
 login_epass=Nome utente amministratore o password errati
-
 dbase_title=Modifica Database
-dbase_noconn=Questo database non sta accettando connessioni, quindi non puÚ essere eseguita nessuna azione su di esso.
+dbase_noconn=Questo database non sta accettando connessioni, quindi non pu√≤ essere eseguita nessuna azione su di esso.
 dbase_tables=Tabelle Database
 dbase_add=Crea una nuova tabella
 dbase_drop=Cancella Database
@@ -43,7 +40,6 @@ dbase_none=Questo database non ha tabelle.
 dbase_fields=Campi:
 dbase_return=elenco tabelle
 dbase_ecannot=Non sei autorizzato a modificare questo database
-
 table_title=Modifica Tabella
 table_title2=Crea Tabella
 table_opts=Opzioni campi
@@ -62,12 +58,11 @@ table_initial=Campi iniziali
 table_header2=Opzioni nuova tabella
 table_err=Creazione tabella fallita
 table_ename=Nome tabella mancante o invalido
-table_efield='$1' non Ë un nome campo valido
+table_efield='$1' non √® un nome campo valido
 table_etype=Tipo mancante per il campo $1
 table_esize=Dimensione mancante per il campo $1
 table_enone=Nessun campo iniziale inserito
 table_fielddrop=Cancella Campo
-
 field_title1=Aggiungi Campo
 field_title2=Modifica Campo
 field_in=Nella tabella $1 del database $2
@@ -80,12 +75,10 @@ field_null=Permetti null?
 field_arr=Campo Array?
 field_key=Chiave primaria?
 field_uniq=Unique?
-field_err=Salvataggio campo fallito
-field_esize='$1' non Ë una dimensione campo valida
+field_esize='$1' non √® una dimensione campo valida
 field_eenum=Nessun valore elencato inserito
-field_efield='$1' non Ë un nome di campo valido
+field_efield='$1' non √® un nome di campo valido
 field_ekey=Campi che possono essere null non posso essere parte della chiave primaria
-
 exec_title=Esegui SQL
 exec_header=Inserisci il comando SQL da eseguire nel database ..
 exec_exec=Esegui
@@ -96,36 +89,32 @@ exec_header2=Seleziona un file con comandi SQL da eseguire nel database $1 ..
 exec_file=Da file locale
 exec_upload=Da file trasferito (upload)
 exec_eupload=Nessun file selezionato da trasferire
-exec_efile=Il file locale non esiste o non puÚ essere letto
+exec_efile=Il file locale non esiste o non pu√≤ essere letto
 exec_uploadout=Output dai comandi del file SQL trasferito ..
 exec_fileout=Output dai comandi SQL nel file $1 ..
 exec_noout=Nessun output generato
-
 stop_err=Fallimento nel fermare il database
 stop_epidfile=Apertura file PID $1 fallita
 stop_ekill=Kill processo $1 fallito : $2
 stop_ecannot=Non sei autorizzato a fermare il database server
 start_err=Fallimento nel far partire il database
 start_ecannot=Non sei autorizzato a far partire il database server
-
 ddrop_err=Cancellazione database fallita
 ddrop_title=Cancella Database
 ddrop_rusure=Sei sicuro di voler cancellare il database $1 ? $2 tabelle contenenti $3 righe di dati verranno cancellate.
-ddrop_mysql=Questo Ë il database master, cancellandolo probabilmente renderai il tuo MySQL server inutilizzabile!
+ddrop_mysql=Questo √® il database master, cancellandolo probabilmente renderai il tuo MySQL server inutilizzabile!
 ddrop_ok=Cancella Database
-
 tdrop_err=Cancellazione tabella fallita
 tdrop_title=Cancella Tabella
 tdrop_rusure=Sei sicuro di voler cancellare la tabella $1 dal database $2 ? verranno cancellate $3 righe di dati.
 tdrop_ok=Cancella Tabella
-
 view_title=Contenuto Tabella
 view_pos=Righe dalla $1 alla $2 di $3
 view_none=Questa tabella non contiene dati
 view_edit=Modifica le righe selezionate
 view_new=Aggiungi riga
 view_delete=Cancella le righe selezionate
-view_nokey=I dati in questa tabella non possono essere modificati perchË non ha chiave primaria.
+view_nokey=I dati in questa tabella non possono essere modificati perch√® non ha chiave primaria.
 view_all=Seleziona tutto
 view_invert=Inverti selezione
 view_search2=Cerca righe con campo $2 $3 $1
@@ -142,8 +131,7 @@ view_jump=Salta alla riga :
 view_download=Download..
 view_keep=Non modificare
 view_set=Setta al contenuto del file..
-view_warn=Avviso - il trasferimento di file e la visualizzazione del contenuto di campi <tt>text</tt> o <tt>byte</tt> probabilmente non funzioner‡ a meno che i moduli Perl $1 e $2 non siano installati e in uso.
-
+view_warn=Avviso - il trasferimento di file e la visualizzazione del contenuto di campi <tt>text</tt> o <tt>byte</tt> probabilmente non funzioner√† a meno che i moduli Perl $1 e $2 non siano installati e in uso.
 newdb_title=Creazione Database
 newdb_header=Opzioni nuovo database
 newdb_db=Nome database
@@ -152,12 +140,11 @@ newdb_err=Creazione database fallita
 newdb_edb=Nome database mancante o invalido
 newdb_ecannot=Non sei autorizzato a creare database
 newdb_epath=Percorso del database mancante
-
 user_title=Utenti PostgreSQL
 user_ecannot=Non sei autorizzato a modificare gli utenti
 user_name=Nome utente
-user_db=PuÚ creare database?
-user_other=PuÚ creare utenti?
+user_db=Pu√≤ creare database?
+user_other=Pu√≤ creare utenti?
 user_until=Valido fino a
 user_add=Crea un nuovo utente
 user_forever=Per sempre
@@ -174,19 +161,18 @@ user_epass=Password mancante o invalida
 user_ename=Nome utente mancante o invalida
 user_sync=Le opzioni qui sotto configurano la sincronizzazione tra l'utente Unix creato con Webmin e gli utenti PostgreSQL.
 user_sync_create=Aggiungi un nuovo utente PostgreSQL all'aggiunta di un utente Unix.
-user_sync_modify=Aggiorna un utente PostgreSQL quando l'utente Unix corrispondente Ë modificato.
-user_sync_delete=Cancella un utente PostgreSQL quando l'utente Unix corrispondente Ë cancellato.
-
+user_sync_modify=Aggiorna un utente PostgreSQL quando l'utente Unix corrispondente √® modificato.
+user_sync_delete=Cancella un utente PostgreSQL quando l'utente Unix corrispondente √® cancellato.
 host_ecannot=Non sei autorizzato a modificare gli host autorizzati
 host_title=Host Autorizzati
-host_desc=Quando un client si connette al database, gli host elencati qui sotto sono controllati in ordine fino a quando non viene trovata una riga corrisponde al client, che verr‡ quindi autorizzato oppure no.
+host_desc=Quando un client si connette al database, gli host elencati qui sotto sono controllati in ordine fino a quando non viene trovata una riga corrisponde al client, che verr√† quindi autorizzato oppure no.
 host_header=Dettagli autenticazione client PostgreSQL
 host_local=Connessioni locali
 host_address=Indirizzo host
 host_db=Database
 host_user=Utenti
 host_uall=Tutti gli utenti
-host_auth=Modalit‡ di autenticazione
+host_auth=Modalit√† di autenticazione
 host_any=Qualunque host in rete
 host_all=Tutti i database
 host_same=Uguale al nome utente
@@ -204,7 +190,6 @@ host_krb4=Kerberos V4
 host_krb5=Kerberos V5
 host_pam=PAM
 host_passwordarg=Usa file con le password
-host_identarg=Usa mappa utenti
 host_pamarg=Usa servizio PAM
 host_create=Crea Host Autorizzato
 host_edit=Modifica Host Autorizzato
@@ -222,7 +207,6 @@ host_ehost=Indirizzo IP host mancante o invalido
 host_move=Muovi
 host_edb=Nessun nome di database inserito
 host_euser=Nessun nome di utente inserito
-
 grant_title=Privilegi Assegnati
 grant_tvi=Oggetto
 grant_type=Tipo
@@ -246,7 +230,6 @@ grant_v=Vista
 grant_i=Indice
 grant_S=Sequence
 grant_none=Non esiste nessuna tabella, vista, sequenza o indice a cui assegnare privilegi.
-
 group_title=Gruppi PostgreSQL
 group_ecannot=Non sei autorizzato a modificare i gruppi
 group_name=Nome gruppo
@@ -260,11 +243,9 @@ group_return=lista gruppi
 group_err=Salvataggio gruppo fallito
 group_ename=Nome gruppo mancante o invalido
 group_egid=ID gruppo mancante o invalido
-group_etaken=Quel nome di gruppo Ë gi‡ in uso
+group_etaken=Quel nome di gruppo √® gi√† in uso
 group_none=Non esiste nessun gruppo PostgreSQL
-
 esql=SQL $1 fallito : $2
-
 log_start=Fatto partire server PostgreSQL
 log_stop=Fermato server PostgreSQL
 log_db_create=Creato database $1
@@ -299,39 +280,29 @@ log_delete_hba=Cancellata autorizzazione host $1
 log_move_hba=Spostata autorizzazione host $1
 log_grant=Assegnati privilegi su $1 nel database $2
 log_setup=Database inizializzato
-
-acl_dbs=Database che questo utente puÚ gestire
-acl_dbscannot=Questo controllo d'accesso diventer‡ effettivo alla partenza del server PostgreSQL.
+acl_dbs=Database che questo utente pu√≤ gestire
+acl_dbscannot=Questo controllo d'accesso diventer√† effettivo alla partenza del server PostgreSQL.
 acl_dall=Tutti i database
 acl_dsel=Selezionati..
-acl_create=PuÚ creare nuovi database?
-acl_delete=PuÚ cancellare database?
-acl_stop=PuÚ fermare e far partire il server PostgreSQL?
-acl_users=PuÚ modificare utenti, gruppi, host e autorizzazioni?
-acl_backup=PuÚ creare backup?
-acl_restore=PuÚ ripristinare (restore) backup?
+acl_create=Pu√≤ creare nuovi database?
+acl_delete=Pu√≤ cancellare database?
+acl_stop=Pu√≤ fermare e far partire il server PostgreSQL?
+acl_users=Pu√≤ modificare utenti, gruppi, host e autorizzazioni?
+acl_backup=Pu√≤ creare backup?
+acl_restore=Pu√≤ ripristinare (restore) backup?
 acl_login=Login a PostgreSQL come
 acl_user_def=Nome utente dal modulo di configurazione
 acl_user=Nome utente
 acl_pass=password
 acl_sameunix=Connessione e creazione backup come utente Unix corrispondente all'utente PostgreSQL?
-
 fdrop_err=Errore durante la cancellazione del campo
-fdrop_header=Cancella
-fdrop_lose_data=Seleziona per confermare che hai capito che definizioni come indici e valori di default, in tutti i campi, potrebbero essere persi.
-fdrop_perform=Cancella Campo
-fdrop_title=Cancellazione Campo
-
 setup_err=Inizializzazione database fallita
 setup_ecannot=Non sei autorizzato a inizializzare il database
-
 dbase_bkup=Backup
 dbase_rstr=Ripristino (restore)
-
 restore_title=Ripristino (Restore) Database
 restore_header=Opzioni di ripristino database
 restore_db=Nome database
-restore_path=Percorso del file di backup
 restore_err=Ripristino database fallito
 restore_edb=Nome database mancante o invalido
 restore_eacl=Devi essere autorizzato a creare e cancellare database
@@ -340,16 +311,14 @@ restore_go=Ripristino
 restore_pe1=Il file deve essere in formato tar ($1)
 restore_pe2=File non trovato ($1)
 restore_exe=Errore nell'esecuzione del comando ($1)
-restore_ecmd=Il comando di ripristino $1 non Ë stato trovato nel tuo sistema
+restore_ecmd=Il comando di ripristino $1 non √® stato trovato nel tuo sistema
 restore_ecannot=Non sei autorizzato a ripristinare il backup
 restore_only=Ripristino solo i dati senza ripristinare le tabelle?
 restore_clean=Svuoto le tabelle prima di ripristinare?
-
 backup_title=Backup Database
-backup_header=Opzioni di backup database
 backup_db=Nome database
 backup_desc=Questo form permette di fare backup del database $1 su di un file con comandi SQL.
-backup_desc2=Il backup puÚ essere effettuato immediatamente, o automaticamente con la schedulazione selezionata.
+backup_desc2=Il backup pu√≤ essere effettuato immediatamente, o automaticamente con la schedulazione selezionata.
 backup_path=Percorso file di backup
 backup_err=Backup database fallito
 backup_eacl=Devi essere autorizzato a creare e cancellare database
@@ -359,10 +328,10 @@ backup_ok=Esegui Backup
 backup_ok1=Salva ed Esegui Backup
 backup_ok2=Salva
 backup_pe1=Il file deve essere in formato .tar ($1)
-backup_pe2=Il file Ë gi‡ esistente ($1)
+backup_pe2=Il file √® gi√† esistente ($1)
 backup_pe3=Percorso file di backup mancante o invalido
 backup_ebackup=<tt>pg_dump</tt> fallito : $1
-backup_ecmd=Il comando di backup $1 non Ë stato trovato nel tuo sistema
+backup_ecmd=Il comando di backup $1 non √® stato trovato nel tuo sistema
 backup_format=Formato file di backup
 backup_format_p=Testo SQL
 backup_format_t=Archivio tar
@@ -374,6 +343,5 @@ backup_sched1=Si, scegli quando ..
 backup_ccron=Backup schedulati per i database abilitati.
 backup_dcron=Backup schedulati per i database disabilitati.
 backup_ucron=Percorso backup, opzioni e tempi per la schedulazione aggiornati.
-backup_ncron=La schedulazione dei backup Ë stata lasciata disabilitata.
-
+backup_ncron=La schedulazione dei backup √® stata lasciata disabilitata.
 r_command=Comando non supportato

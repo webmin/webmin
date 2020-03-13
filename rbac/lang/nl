@@ -1,6 +1,5 @@
 index_euser=De RBAC configuratie file $1 is niet gevonden op uw systeem. Misschien is RBAC niet geinstalleerd, of de <a href='$2'>module configuratie</a> is niet correct.
 index_return=module index
-
 users_title=Gebruiker Attributen
 users_user=Gebruikersnaam
 users_profiles=Toegekende profielen
@@ -11,7 +10,6 @@ users_return=gebruiker attributen lijst
 users_type=Type
 users_role=Rol
 users_project=Project
-
 user_title1=Gebruiker Attributen Aanmaken
 user_title2=Bewerk Gebruiker Attributen
 user_header=Attributen toegekend aan Unix gebruiker
@@ -37,7 +35,6 @@ user_eauth='$1' is geen geldige autorisatie
 user_ecannot=U bent niet bevoegd om deze gebruiker te bewerken
 user_erole=U bent niet bevoegd om de '$1' rol toe te wijzen
 user_eprof=U bent niet bevoegd om het profiel '$1' toe te wijzen
-
 auths_title=Autorisaties
 auths_name=Autorisatie naam
 auths_desc=Omschrijving
@@ -45,10 +42,8 @@ auths_none=Er zijn nog geen autorisaties gedefinieerd.
 auths_add=Nieuwe autorisatie toevoegen.
 auths_return=autorisatie lijst
 auths_ecannot=U bent niet bevoegd om de autorisaties te bewerken
-
 authc_name=Autorisatie
 authc_desc=Omschrijving
-
 auth_title1=Autorisatie Aanmaken
 auth_title2=Autorisatie Bewerken
 auth_header=Autorisatie privilege details
@@ -62,7 +57,6 @@ auth_edesc=Ongeldige lange omschrijving
 auth_eclash=Een autorisatie met dezelfde naam bestaat reeds
 auth_einuseu=Deze autorisatie is in gebruik door gebruiker $1, en kan daarom niet verwijdert worden
 auth_einusep=Deze autorisatie is in gebruik door profiel $1, en kan daarom niet verwijdert worden
-
 profs_title=Profielen
 profs_name=Profiel naam
 profs_desc=Omschrijving
@@ -71,7 +65,6 @@ profs_none=Er zijn nog geen profielen gedefinieerd.
 profs_add=Een nieuw profiel toevoegen.
 profs_return=profielen lijst
 profs_ecannot=U bent niet bevoegd om profielen te bewerken
-
 prof_title1=Profielen Aanmaken
 prof_title2=Profiel Bewerken
 prof_header=Autorisatie profiel details
@@ -88,7 +81,6 @@ prof_einuseu=Dit profiel is in gebruik door gebruiker $1, en kan daarom niet wor
 prof_einusep=Dit profiel is in gebruik door profiel $1, en kan daarom niet worden verwijdert
 prof_einusee=Dit profiel heeft $1 gerelateerde uitvoerbare profielen, en kan daarom niet worden verwijdert
 prof_none=Geen beschikbare profielen
-
 execs_title=Uitvoerbare Profielen
 execs_name=Profiel
 execs_policy=Veiligheid beleid
@@ -100,7 +92,6 @@ execs_none=Er zijn nog geen uitvoerbare profielen gedefinieerd.
 execs_add=Een nieuw uitvoerbaar profiel toevoegen.
 execs_return=Uitvoerbare profielen lijst
 execs_ecannot=U bent niet bevoegd om de uitvoerbare profielen te bewerken
-
 exec_title1=Uitvoerbaar Profiel Aanmaken
 exec_title2=Uitvoerbaar Profiel Bewerken
 exec_header=Uitvoerbaar Profiel details
@@ -122,7 +113,6 @@ exec_erruid=Ontbrekende of ongeldige gebruiker om uit te voeren
 exec_errgid=Ontbrekende of ongeldige groep om uit te voeren
 exec_erreuid=Ontbrekende of ongeldige effectieve gebruiker om uit te voeren
 exec_erregid=Ontbrekende of ongeldige effectieve groep om uit te voeren
-
 policy_title=Systeem Beleid
 policy_header=Globale systeem beleid instellingen
 policy_auths=Autorisaties voor alle gebruikers
@@ -136,20 +126,16 @@ policy_err=Mislukt om systeem beleid op te slaan
 policy_eallow=Er zijn nog geen algoritmes geselecteerd om toe te staan
 policy_eclash=Algoritmes om toe te staan en af te keuren kunnen niet tegelijkertijd geselecteerd worden
 policy_ecannot=U bent niet bevoegd om het systeem beleid te bewerken
-
 attr_none=Er zijn nog geen gebruikers attributen gedefinieerd
 attr_nonenormal=Geen Unix gebruiker gedefinieerd
 attr_nonerole=Geen beschikbare rollen gedefinieerd
-
 help_epath=Ongeldig help bestands pad!
 help_link=(Help..)
-
 crypt___unix__=Unix crypt
 crypt_1=BSD MD5
 crypt_2a=BSD Flowfish
 crypt_md5=Sun MD5
 crypt_rot13=ROT13
-
 log_create_user=Aangemaakt gebruiker attributen voor $1
 log_modify_user=Gemodificeerde gebruiker attributen voor $1
 log_delete_user=Verwijderde gebruiker attributen voor $1
@@ -166,7 +152,6 @@ log_create_project=Aangemaakt project $1
 log_modify_project=Gemodificeerd project $1
 log_delete_project=Verwijderd project $1
 log_policy=Gewijzigd systeem beleid
-
 acl_roles=Mag rollen bewerken?
 acl_users=Mag gebruiker attributen bewerken?
 acl_roleassign=Mag rollen toewijzen
@@ -181,7 +166,6 @@ acl_profs=Mag profielen bewerken?
 acl_ro=Allen bekijken
 acl_execs=Mag uitvoerbare profielen bewerken?
 acl_projects=Mag projecten bewerken?
-
 projects_title=Projecten
 projects_name=Naam
 projects_id=ID
@@ -200,7 +184,6 @@ projects_exceptusers=Alle gebruikers behalve $1
 projects_exceptgroups=Alle groepen behalve $1
 projects_onlyusers=Alleen $1
 projects_onlygroups=Alleen $1
-
 project_title1=Project Aanmaken
 project_title2=Project Bewerken
 project_header=Project details en leden
@@ -220,7 +203,7 @@ project_basic=Basis
 project_none=Geen
 project_deny=Negeer aanvraag
 project_signal=Verstuur signaal $1 ($2)
-project_nopriv=&lt;Geen&gt;
+project_nopriv=<Geen>
 project_pool=Project pool
 project_maxrss=Maximum geheugen voor leden processen
 project_err=Mislukt om project op te slaan
@@ -236,7 +219,6 @@ project_egroupscannot=Er zijn geen groepen geselecteerd om uit te sluiten
 project_elimit=Ontbrekende of ongeldig limiet in rij $1
 project_epool=Ontbrekende of ongeldige project pool naam
 project_erss=Ontbrekende of ongeldige maximum geheugen
-
 prctl_title=Bron Controle
 prctl_ok=Toon limieten voor:
 prctl_mode0=Proces met ID
@@ -250,4 +232,3 @@ prctl_res=Bron
 prctl_priv=Privilege type
 prctl_limit=Bovenste limiet
 prctl_action=Actie
-__norefs=1

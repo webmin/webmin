@@ -1,0 +1,12 @@
+edit_elength=파일이 잘 렸습니다!
+info_apply4=이 디렉토리 및 서브 디렉토리에있는 파일
+info_apply5=이 디렉토리와 모든 하위 디렉토리
+eacl_emask=최대 하나의 마스크 ACL 항목이있을 수 있습니다
+eacl_edefmask=최대 하나의 기본 마스크 ACL 항목이있을 수 있습니다
+eacl_edefaults=파일에 기본 ACL이 있으면 기본 사용자, 그룹 및 기타 ACL이 있어야합니다.
+view_epathinfo=경로에 유효하지 않은 문자가 포함되어 있습니다
+acl_relto=(모든 chroot 디렉토리에 상대적)
+eattr_s=삭제할 때 제로 블록
+extract_show=내용보기
+extract_err2=파일 내용을 가져 오지 못했습니다  : $1 
+extract_shown=압축 파일의 내용

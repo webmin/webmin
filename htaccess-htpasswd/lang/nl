@@ -1,4 +1,3 @@
-__norefs=1
 acl_dirs=Toegestane directory's
 acl_home=Inclusief Unix gebruikers home directory?
 acl_same=Zelfde als Webmin login

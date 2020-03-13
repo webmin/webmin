@@ -1,0 +1,11 @@
+index_title=idmapd-konfiguration
+index_eidmapd=Idmapd daemon $1 kunde inte hittas. Kanske är den inte installerad eller så är din <a href='$2'>modulkonfiguration</a> felaktig.
+general=Allmän konfiguration
+mapping=Kartläggningskonfiguration
+pipefs_dir=Pipefs katalog
+domain=Domän namn
+nobody_user=Ingen användare
+nobody_group=Ingen grupp
+save=Spara config och starta om daemon
+save_err=Det gick inte att spara konfigurationsfilen $1 
+error_dir=Katalog $1 finns inte

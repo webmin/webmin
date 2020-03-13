@@ -1,0 +1,25 @@
+index_title_v=IPv4-brannmur
+index_title_v6=IPv6 brannmur
+index_evalid=ADVARSEL! Din nåværende IPtables-konfigurasjon er ugyldig : $1 
+index_no_comment=
+index_fail2ban=Det ser ut til at Fail2Ban blir brukt til å administrere noen brannmurregler. Du bør endre dem med <a href='$1'>Fail2Ban-modul</a> og filtrere <a href=$2>f2b -. *</a> eller <a href=$2>fail2ban -. *</a>.
+index_filter_chain=administreres ikke av brannmuren.
+index_filter_nodirect=Eksterne administrerte regler oppdaget. Aktiver "<a href=$1>Rediger brannmurregler"</a>, ellers kan brannmurreglene bryte.
+index_ipset=IP-set
+index_ipset_title=Aktive IP-sett som kan brukes av brannmurregler
+index_ipset_name=Navn på IP-sett
+index_ipset_type=Type
+index_ipset_elem=# Elementer
+index_ipset_maxe=# Maks
+index_ipset_size=Størrelse
+index_ipvxmode=Endre IP-protokollversjon:
+index_ipvx4=IPv4
+index_ipvx6=IPv6
+desc_ctstate=tilstanden for tilkobling er $1 
+desc_ctstate!=tilstanden for tilkobling er ikke $1 
+desc_args--match-set=$2 er inneholdt i IP-sett $1 
+desc_src=kilde
+desc_dest=mål
+edit_state_snat=Kilde NATd
+edit_state_dnat=Destinasjon NATd
+add_enone=Ingen servere å legge til valgte!

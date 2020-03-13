@@ -1,13 +1,12 @@
-index_elink=Tünel için henüz bir URL belirlenmedi.
-link_eurl=Geçersiz URL tüneli: $1
-link_elogin=$1 için giriş engellendi $2 gibi 
-link_eautologin=$1 için geçersiz giriş ya da şifre. <a href='$2'>tıklayın</a> giriş için
-link_enouser=$1 e giriş için bir kullanıcı adı ve şifre gerekli, ancak hiçbir şey bulunamadı.
-
-login_title=Websiteye giriş için
-login_desc=$1 e giriş yapabilmek için kullanıcı adı ve şifre gerekli.
-login_header=Geçerli Website 
-login_user=kullanıcı adı
-login_pass=şifre
-login_login=giriş
+index_elink=TÃ¼nel iÃ§in henÃ¼z bir URL belirlenmedi.
+link_eurl=GeÃ§ersiz URL tÃ¼neli: $1
+link_elogin=$1 iÃ§in giriÅŸ engellendi $2 gibi 
+link_eautologin=$1 iÃ§in geÃ§ersiz giriÅŸ ya da ÅŸifre. <a href='$2'>tÄ±klayÄ±n</a> giriÅŸ iÃ§in
+link_enouser=$1 e giriÅŸ iÃ§in bir kullanÄ±cÄ± adÄ± ve ÅŸifre gerekli, ancak hiÃ§bir ÅŸey bulunamadÄ±.
+login_title=Websiteye giriÅŸ iÃ§in
+login_desc=$1 e giriÅŸ yapabilmek iÃ§in kullanÄ±cÄ± adÄ± ve ÅŸifre gerekli.
+login_header=GeÃ§erli Website 
+login_user=kullanÄ±cÄ± adÄ±
+login_pass=ÅŸifre
+login_login=giriÅŸ
 login_clear=temizle

@@ -1,0 +1,11 @@
+index_title=konfiguracja idmapd
+index_eidmapd=Nie można znaleźć demona Idmapd $1. Być może nie jest zainstalowany lub konfiguracja modułu <a href='$2'></a> jest nieprawidłowa.
+general=Ogólna konfiguracja
+mapping=Konfiguracja mapowania
+pipefs_dir=Katalog Pipefs
+domain=Nazwa domeny
+nobody_user=Nikt nie jest użytkownikiem
+nobody_group=Grupa nikogo
+save=Zapisz config i zrestartuj demona
+save_err=Nie udało się zapisać pliku konfiguracyjnego $1 
+error_dir=Katalog $1 nie istnieje

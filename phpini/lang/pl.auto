@@ -1,0 +1,7 @@
+list_format_ini=Format INI
+list_format_fpm=Format FPM
+vars_header=Opcje tworzenia i cytowania zmiennych PHP
+vars_magic=Cytujesz wszystkie zmienne wejściowe?
+vars_runtime=Cytuje dane generowane w czasie wykonywania?
+misc_path=Informacje o ścieżce CGI Fix?
+misc_charset=Domyślny zestaw znaków

@@ -1,0 +1,5 @@
+index_title=כניסה לטקסט
+index_epython=Ajaxterm דורש ש- Python יפעל, אך הפקודה $1 לא נמצאה במערכת שלך.
+index_estart=Ajaxterm לא התחיל לקבל חיבורים ביציאה $2 אחרי $1 שניות.
+index_popup=נפתח בחלון נפרד ..
+index_credits=משתמש בקוד מאת <a href='$1' target=_new>Ajaxterm</a> מאת אנטוני לסויס.

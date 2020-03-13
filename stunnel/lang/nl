@@ -1,4 +1,3 @@
-__norefs=1
 create_title=SSL Tunnel Aanmaken
 edit_active=Actief?
 edit_args=welk argument
@@ -36,7 +35,7 @@ index_cmd=Uitvoeren van opdracht $1
 index_command=STunnel opdracht
 index_conf=Van de config file $1
 index_delete=Verwijder Geselecteerde Tunnels
-index_einetd=Noch <tt>inetd</tt> of <tt>xinetd</tt> zijn geinstalleerd op uw systeem. &#201;&#233;n van beide is nodig om luisteren op netwerk verbindingen en deze te accepteren en door te laten naar <tt>stunnel</tt>.
+index_einetd=Noch <tt>inetd</tt> of <tt>xinetd</tt> zijn geinstalleerd op uw systeem. Één van beide is nodig om luisteren op netwerk verbindingen en deze te accepteren en door te laten naar <tt>stunnel</tt>.
 index_estunnel=De STunnel opdracht $1 is niet gevonden op uw systeem. Misschien is STunnel niet geinstalleerd, of uw <a href='$2'>module configuratie</a> is niet correct.
 index_eversion=De versie van STunnel geinstalleerd op uw systeem is $1, maar deze module heeft geen support voor versie $2 en hoger.
 index_name=Service naam

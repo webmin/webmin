@@ -1,0 +1,8 @@
+index_title=ورود به سیستم SSH
+index_warn=هشدار! این جلسه telnet <b> رمزگذاری نشده است.
+index_nojava=این ماژول برای عملکرد نیاز به جاوا دارد ، اما مرورگر شما از جاوا پشتیبانی نمی کند
+index_credits=اپلت تحت GPL توسط <a href='$1'target=_top>Matthias L. Jugel و Marcus Mei�ner</a> توسعه یافته است.
+index_sshcredits=شامل نرم افزاری است که توسط تیم توسعه Cryptix ساخته شده است (<a href=$1 target=_top>$1</a>).
+index_esocket=هیچ سرور telnet در پورت $1 پورت $2 وجود ندارد.
+index_esocket2=هیچ سرور SSH در پورت $1 پورت 2 وجود ندارد.
+index_elookup=جستجوی آدرس IP برای$1 برای آزمایش سرور telnet یا SSH انجام نشد.

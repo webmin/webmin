@@ -1,4 +1,3 @@
-__norefs=1
 acl_add=يستطيع تسجيل خوادم جديدة؟
 acl_auto=يستطيع الإعداد التلقائي لكشف عن الخوادم؟
 acl_edit=يستطيع تحرير الخوادم؟
@@ -110,7 +109,7 @@ index_findmsg=انقر فوق هذا الزر للعثور تلقائيًا عل
 index_group=المجموعة
 index_host=اسم المضيف والمنفذ
 index_logout=الخروج
-index_none=&lt;لا شيء&gt;
+index_none=<لا شيء>
 index_nosearch=لا توجد خوادم تطابق بحثك.
 index_noservers=لم يتم تسجيل أي خوادم.
 index_ok=البحث

@@ -1,0 +1,5 @@
+index_actions=Actions
+edit_emissing=Le travail Cron n'existe plus!
+log_deletes=Tâches cron $1 supprimées
+delete_err=Impossible de supprimer les tâches cron de cluster
+delete_enone=Aucune sélection

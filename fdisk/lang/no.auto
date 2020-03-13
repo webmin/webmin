@@ -1,0 +1,6 @@
+index_relabel2=Lag partisjonstabell
+index_relabeldesc2=Lag en ny tom partisjonstabell på denne disken, slik at partisjoner kan legges til.
+select_nvme=NVME SSD $1 stasjon $2 
+select_nvmepart=NVME SSD $1 stasjon $2 partisjon $3 
+disk_notable=<b>Partisjonstabellformat:</b> Ingen opprettet
+disk_needtable=Ingen partisjoner kan opprettes uten en partisjonstabell.

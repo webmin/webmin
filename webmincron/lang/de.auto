@@ -1,0 +1,2 @@
+log_success=<tt>$2</tt> wurde erfolgreich in <tt>$1</tt> ausgeführt
+log_failure=<tt>$2</tt> in <tt>$1</tt> konnte nicht ausgeführt werden : $3 

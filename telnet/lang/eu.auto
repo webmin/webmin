@@ -1,0 +1,8 @@
+index_title=SSH Saioa hasi
+index_warn=Kontuz! Telnet saio hau <b>ez</b> zifratuta dago.
+index_nojava=Modulu honek java funtzionatzea eskatzen du, baina zure arakatzaileak ez du java onartzen
+index_credits=GPL azpian garatu zen <a href='$1' target=_top>Matthias L. Jugel eta Marcus Mei�ner</a>.
+index_sshcredits=Cryptix Garapen Taldeak garatutako softwarea (<a href=$1 target=_top>$1</a>) barne hartzen du.
+index_esocket=Ez dago telnet zerbitzaririk $1 atarian $2 exekutatzen.
+index_esocket2=Ez dago SSH zerbitzaririk $1 atarian $2 exekutatzen.
+index_elookup=Huts egin du $1 helbide elektronikoa bilatzeko Telnet edo SSH zerbitzaria probatzeko.

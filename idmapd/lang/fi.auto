@@ -1,0 +1,11 @@
+index_title=idmapd-määritykset
+index_eidmapd=Idmapd-demonia $1 ei löytynyt. Ehkä sitä ei ole asennettu, tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
+general=Yleinen kokoonpano
+mapping=Kokoonpanon kartoitus
+pipefs_dir=Pipefs-hakemisto
+domain=Verkkotunnus
+nobody_user=Kukaan käyttäjä
+nobody_group=Kukaan ryhmä
+save=Tallenna asetukset ja käynnistä daemon uudelleen
+save_err=Konfiguraatiotiedoston $1 tallentaminen epäonnistui
+error_dir=Hakemistoa $1 ei ole

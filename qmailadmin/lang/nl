@@ -1,11 +1,10 @@
-__norefs=1
 adelete_enone=Niets geselecteerd
 adelete_err=Mislukt om aliassen te verwijderen
 aform_afile=Bewerk..
 aform_create=Maak Alias
 aform_edit=Bewerk Alias
 aform_name=Adres
-aform_novirt=&lt;Alle domeinen&gt;
+aform_novirt=<Alle domeinen>
 aform_return=alias
 aform_type0=Niets
 aform_type1=Email adres
