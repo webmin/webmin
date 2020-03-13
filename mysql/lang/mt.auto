@@ -13,10 +13,10 @@ index_dbs=Databases ta 'MySQL
 index_add=Oħloq database ġdida.
 index_global=Għażliet Globali
 index_return=lista tad-database
-index_eadmin=Il-programm tal-amministratur MySQL $1 ma nstabx fis-sistema tiegħek. Forsi MySQL mhuwiex installat, jew il-konfigurazzjoni tal-modulu <a href='$2'></a> tiegħek mhix korretta.
-index_esql=Il-programm tal-klijent MySQL $1 ma nstabx fis-sistema tiegħek. Forsi MySQL mhuwiex installat, jew il-konfigurazzjoni tal-modulu <a href='$2'></a> tiegħek mhix korretta.
-index_eshow=Il-programm ta ’status MySQL $1 ma nstabx fis-sistema tiegħek. Forsi MySQL mhuwiex installat, jew il-konfigurazzjoni tal-modulu <a href='$2'></a> tiegħek mhix korretta.
-index_estart=L-iskritt tal-istartjar MySQL $1 ma nstabx fis-sistema tiegħek. Forsi MySQL mhuwiex installat, jew il-konfigurazzjoni tal-modulu <a href='$2'></a> tiegħek mhix korretta.
+index_eadmin=Il-programm tal-amministratur MySQL $1 ma nstabx fis-sistema tiegħek. Forsi MySQL mhuwiex installat, jew <a href='$2'>il-konfigurazzjoni tal-modulu</a> tiegħek mhix korretta.
+index_esql=Il-programm tal-klijent MySQL $1 ma nstabx fis-sistema tiegħek. Forsi MySQL mhuwiex installat, jew <a href='$2'>il-konfigurazzjoni tal-modulu</a> tiegħek mhix korretta.
+index_eshow=Il-programm ta ’status MySQL $1 ma nstabx fis-sistema tiegħek. Forsi MySQL mhuwiex installat, jew <a href='$2'>il-konfigurazzjoni tal-modulu</a> tiegħek mhix korretta.
+index_estart=L-iskritt tal-istartjar MySQL $1 ma nstabx fis-sistema tiegħek. Forsi MySQL mhuwiex installat, jew <a href='$2'>il-konfigurazzjoni tal-modulu</a> tiegħek mhix korretta.
 index_ever=Il-programm tal-klijent MySQL $1 ma jidhirx li huwa l-verżjoni t-tajba. Webmin jappoġġja biss il-verżjonijiet MySQL 3 u aktar.
 index_nouser=Il-kont Webmin tiegħek huwa kkonfigurat biex jaqbad mas-server MySQL bħala utent $1, iżda dan l-utent ma ngħatax aċċess għalih.
 index_db=Isem tad-database
@@ -548,9 +548,9 @@ log_host_modify=Permmi modifikati għall-ospitanti $2, database $3
 log_tpriv_create=Ħoloq perms għat-tabella $4, database $3 
 log_tpriv_delete=Permess imħassar għat-tabella $4, database $3 
 log_tpriv_modify=Permmi modifikati għat-tabella $4, database $3 
-log_tpriv_create_l=Perms maħluqa għat-tabella $4, database $3,%% user 1, $2 ospitanti
+log_tpriv_create_l=Perms maħluqa għat-tabella $4, database $3, user $1, $2 ospitanti
 log_tpriv_delete_l=Perms imħassra għat-tabella $4, database $3, utent $1, ospitanti $2 
-log_tpriv_modify_l=Permmi modifikati għat-tabella $4, database $3,%% user 1, $2 ospitanti
+log_tpriv_modify_l=Permmi modifikati għat-tabella $4, database $3, user $1, $2 ospitanti
 log_cpriv_create=Perms maħluqa għall-qasam $5, tabella $4 
 log_cpriv_delete=Permess imħassar għal qasam $5 tabella $4 
 log_cpriv_modify=Permmi modifikati għall-qasam $5, tabella $4 
@@ -640,7 +640,7 @@ backup_allsubject_ok=Backup ta ' $2 databases ta' MySQL irnexxielu fuq $3
 backup_subject_failed=Backup tad-database MySQL $1 kellu xi żbalji fuq $3 
 backup_subject_ok=Backup tad-database MySQL $1 irnexxa fuq $3 
 backup_body=Appoġġ ta ' $2 fuq databases ta' MySQL fuq $1 ..
-backup_bodydoing=Appoġġ ta '%% sa $2 ..
+backup_bodydoing=Appoġġ ta $1 sa $2 ..
 backup_bodyfailed=.. Backup fallut : $1 
 backup_bodyok=.. backup ta ' $1 ħoloq OK
 backup_bodytotal=Daqs totali tal-backup : $1 

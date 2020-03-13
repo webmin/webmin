@@ -10,7 +10,7 @@ index_nousers=Erabiltzaileak oraindik ez dira zehaztu.
 index_nogroups=Oraindik ez da talde bat zehaztu.
 index_eaccess=Ez duzu direktoriorik sarbiderik!
 index_search=Aurkitu lehendik dauden babestutako direktorioak
-index_md5=MD5 enkriptazioa gaituta dago moduluaren konfigurazioan, baina horretarako ez da beharrezkoa 1% Perl modulua.
+index_md5=MD5 enkriptazioa gaituta dago moduluaren konfigurazioan, baina horretarako ez da beharrezkoa $1 Perl modulua.
 index_sha1=SHA1 enkriptazioa gaituta dago moduluaren konfigurazioan, baina horretarako ez da beharrezkoa $1 Perl modulua instalatuta.
 index_digest2=Digesten enkriptazioa gaituta dago moduluaren konfigurazioan, baina ez da instalatutako $1 komandoa edo horretarako behar den $2 Perl modulua.
 index_cpan=<a href='$1'>Egin klik hemen</a> deskargatzeko eta orain instalatzeko.
