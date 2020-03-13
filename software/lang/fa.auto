@@ -204,7 +204,7 @@ apt_input=بسته بندی از APT
 apt_install=نصب بسته (های) با دستور$1 ..
 apt_ok=.. نصب کامل.
 apt_failed=.. نصب نشد!
-apt_form=ÙÙÙ Ø¨Ø³ØªÙ‌ÙØ§ Ø±Ø§ Ø§Ø±ØªÙØ§ Ø¯ÙÛØ¯
+apt_form=همه بسته ها را ارتقا دهید
 apt_header=گزینه های ارتقاء بسته APT
 apt_update=تنظیم مجدد لیست بسته ها (<tt>به روز رسانی</tt>)
 apt_mode=حالت ارتقا
@@ -213,7 +213,7 @@ apt_mode1=ارتقاء عادی
 apt_mode0=بروزرسانی نکنید
 apt_sim=فقط نشان می دهد کدام بسته ها به روز می شوند
 apt_apply=اکنون ارتقا دهید
-apt_upgrade=ÙÙÙ Ø¨Ø³ØªÙ‌ÙØ§ Ø±Ø§ Ø§Ø±ØªÙØ§ Ø¯ÙÛØ¯
+apt_upgrade=همه بسته ها را ارتقا دهید
 apt_updatedesc=تنظیم مجدد لیست بسته ها با دستور$1 ..
 apt_updatefailed=.. تنظیم مجدد انجام نشد!
 apt_updateok=.. تنظیم مجدد کامل شد.
@@ -238,9 +238,9 @@ yum_package=بسته بندی
 yum_version=نسخه
 yum_arch=معماری
 yum_source=منبع
-yum_form=ÙÙÙ Ø¨Ø³ØªÙ‌ÙØ§ Ø±Ø§ Ø§Ø±ØªÙØ§ Ø¯ÙÛØ¯
+yum_form=همه بسته ها را ارتقا دهید
 yum_apply=همه بسته های نصب را از YUM به روز کنید
-yum_upgrade=ÙÙÙ Ø¨Ø³ØªÙ‌ÙØ§ Ø±Ø§ Ø§Ø±ØªÙØ§ Ø¯ÙÛØ¯
+yum_upgrade=همه بسته ها را ارتقا دهید
 yum_upgradedesc=به روزرسانی همه بسته ها با دستور$1 ..
 yum_upgradefailed=.. بروزرسانی انجام نشد!
 yum_upgradeok=.. بروزرسانی کامل شد.
@@ -262,7 +262,7 @@ yum_repo_efile=پرونده مخزن از قبل وجود دارد!
 urpmi_name=URPMI
 urpmi_input=بسته بندی از URPMI
 urpmi_find=مرور URPMI ..
-urpmi_form=ÙÙÙ Ø¨Ø³ØªÙ‌ÙØ§ Ø±Ø§ Ø§Ø±ØªÙØ§ Ø¯ÙÛØ¯
+urpmi_form=همه بسته ها را ارتقا دهید
 urpmi_update=بسته های موجود URPMI را به روز کنید
 urpmi_upgrade=بسته های URPMI نصب شده را به آخرین نسخه ها ارتقا دهید
 urpmi_title_update=به روزرسانی بسته های موجود
