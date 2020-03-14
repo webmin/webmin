@@ -802,6 +802,16 @@ sub go
                                        ));
             }
 
+            # Check if the module's language has already been transcoded/translated, to avoid potential waste
+            if (!@{$keys_test} &&
+                !$language_source_ignore_auto &&
+                $language_source_encoding eq 'map' &&
+                -r $mpath . "/$code.auto")
+            {
+                talk_log(("   .. transcoding/translating skipped for language " . RED BOLD, $code, RESET . " .."), $data, 1);
+                next;
+            }
+
             while (my ($key, $value) = each %template) {
 
                 # Don't add special keys
@@ -824,22 +834,11 @@ sub go
                         next;
                     }
                     my $code_ = $code;
-                    if ($opt->{'language-source-encoding'} eq 'map') {
+                    if ($language_source_encoding eq 'map') {
                         $code_ = language_map($code);
                         $key_  = "${key}_${code_}";
                     }
                     $key__ = "${key}_${code}";
-                }
-
-                # Check if the module's language has already been transcoded/translated, to avoid potential waste
-                if (!@{$keys_test} &&
-                    !$language_source_ignore_auto &&
-                    $opt->{'language-source-encoding'} eq 'map' &&
-                    -r $mpath . "/$code.auto")
-                {
-                    talk_log(("   .. transcoding/translating skipped for language " . RED BOLD, $code, RESET . " .."),
-                             $data, 1);
-                    next;
                 }
 
                 # Previously translated strings from `$code.auto` file, e.g. `de.auto`,
@@ -952,7 +951,7 @@ sub go
             # file extensions for it, we need to delete/clear all old, no longer needed files
             # e.g. will be deleted: uk_UA, zh_TW.Big5, ja_JP.euc, ko_KR.euc and etc.
             my $file_deleted = "";
-            if (!@{$keys_test} && $opt->{'language-source-encoding'} eq 'map') {
+            if (!@{$keys_test} && $language_source_encoding eq 'map') {
                 my $found;
                 find(
                     {
@@ -1010,8 +1009,13 @@ sub go
                 }
             }
 
-            if (!$output_ && $mode_sync) {
-                talk_log(("" . BRIGHT_CYAN . "  .. All strings are in sync already for $name ($code) language" . RESET . ""), $data, 1);
+            if (!$output_ &&
+                $mode_sync &&
+                $language_source_encoding eq 'utf-8' &&
+                !@{$keys_test})
+            {
+                talk_log(("" . BRIGHT_CYAN . "  .. All strings are in sync already for $name ($code) language" . RESET . ""),
+                         $data, 1);
             }
         }
         if (!$output) {
