@@ -1,0 +1,20 @@
+index_eversion2=Soubor verze Majordomo $1 nebyl nalezen v adresáři programů $2. Možná je vaše <a href='$3'>konfigurace modulu</a> nesprávná nebo není nainstalován majordomo.
+index_esendmail2=Sendmail není ve vašem systému nainstalován nebo není správně nastaven. Zkontrolujte konfiguraci <a href=$2>modulu Sendmail</a>.
+index_epostfix=Postfix není na vašem systému nainstalován nebo není správně nastaven. Zkontrolujte konfiguraci <a href='$1'>modulu Postfix</a>.
+index_esendmail3=Není nainstalován modul Sendmail Webmin potřebný pro správu aliasů.
+index_name=Název seznamu
+index_info=Seznam informací
+index_mail=Poštovní adresa
+index_moderated=Moderuje
+index_count=Počet uživatelů
+global_saved=(uložené)
+create_minimum=Minimální požadované informace
+check_title=Zkontrolujte Majordomo Config
+check_test=Vyzkoušejte. ..
+check_result=Výsledek / dodatečná kontrola
+check_status=Postavení
+check_perm=Oprávnění
+check_exec=svět spustitelný!
+check_write=svět zapisovatelný!
+check_read=svět čitelný!
+check_possible=Možný problém
