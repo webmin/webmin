@@ -137,7 +137,7 @@ elsif ($in{'pam'}) {
 		exit(0);
 		}
 	waitpid($pid, 0);
-	open(TEMP, $temp);
+	open(TEMP, "<$temp");
 	chop($rv = <TEMP>);
 	chop($messages = <TEMP>);
 	close(TEMP);
