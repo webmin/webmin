@@ -754,6 +754,9 @@ sub go
         talk_log(("Transcoding/translating " . BLUE BOLD, $module, RESET . " module .."), $data, 1);
         foreach $language (@{ $data->{'languages_source_list'} }) {
 
+            # Check if there has been something to process, if not print a message
+            my $output_;
+
             # Get target language code
             my $code = $language->{'lang'};
 
@@ -856,6 +859,8 @@ sub go
 
                     # Add a string to main language file
                     $language_auto{$key__} = $language_source_file_auto->{$key_};
+
+                    $output++;
                 }
 
                 # Human translated strings must be added to original `$code` file, e.g. `de` after transcoding
@@ -881,7 +886,6 @@ sub go
                     $language{$key__} = $language_source_file->{$key_};
 
                     $output++;
-
                 }
 
                 # Machine translated strings must be added to `$code.auto` file, e.g. `de.auto`
@@ -940,6 +944,7 @@ sub go
                     }
 
                     $output++;
+                    $output_++;
                 }
             }
 
@@ -1003,6 +1008,10 @@ sub go
                     system("git add $gf");
                     system("git commit $gf -m 'Add transcoding/translation for \`$module\` module of $name ($code)'");
                 }
+            }
+
+            if (!$output_ && $mode_sync) {
+                talk_log(("" . BRIGHT_CYAN . "  .. All strings are in sync already for $name ($code) language" . RESET . ""), $data, 1);
             }
         }
         if (!$output) {
