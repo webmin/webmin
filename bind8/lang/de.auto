@@ -1,5 +1,9 @@
-log_dnssec=Ändern Sie die Neuunterzeichnung des DNSSEC-Schlüssels
-log_delete_stub=Gelöschte Stubzone $1
+delete_vwarn=Diese Zone ist der Virtualmin-Domäne $1 zugeordnet und sollte daher hier nicht gelöscht werden!
+delete_vwarn2=Diese Zone ist mit den Virtualmin-Domänen $1 und $2 anderer verknüpft und sollte daher hier nicht gelöscht werden!
 log_forward=Vorwärtszone $1 erstellt
 log_delegation=Erstellen Sie eine Nur-Delegierungszone $1
+log_delete_stub=Gelöschte Stubzone $1
 log_resign=Neu signierter DNSSEC-Schlüssel für Zone $1
+log_dnssec=Ändern Sie die Neuunterzeichnung des DNSSEC-Schlüssels
+massdelete_vwarn=Einige Zonen sind der Virtualmin-Domäne $1 zugeordnet und sollten daher hier nicht gelöscht werden!
+massdelete_vwarn2=Einige Zonen sind der Virtualmin-Domäne $1 und $2 zugeordnet, andere sollten daher hier nicht gelöscht werden!
