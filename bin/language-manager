@@ -37,25 +37,24 @@ sub main
 
     # Get user options from the command line
     my %opt;
-    GetOptions('help|h'                       => \$opt{'help'},
-               'type|w:s'                     => \$opt{'type'},
-               'modules|m:s'                  => \$opt{'modules'},
-               'modules-exclude|me:s'         => \$opt{'modules-exclude'},
-               'language-target|t:s'          => \$opt{'language-target'},
-               'language-target-exclude|te:s' => \$opt{'language-target-exclude'},
-               'language-source|s:s'          => \$opt{'language-source'},
-               'language-source-exclude|se:s' => \$opt{'language-source-exclude'},
-               'language-source-encoding|e:s' => \$opt{'language-source-encoding'},
-                # 'action|a:s'                   => \$opt{'action'},        #################################
-                # 'key|k:s'                      => \$opt{'key'},           ######### coming soon! ##########
-                # 'value|d:s'                    => \$opt{'value'},         #################################
-               'only-diff|od!'                => \$opt{'only-diff'},
-               'only-transcode|ot!'           => \$opt{'only-transcode'},
-               'keys-exclude|ke:s'            => \$opt{'keys-exclude'},
-               'keys-test|kt:s'               => \$opt{'keys-test'},
-               'git-commit|gc!'               => \$opt{'git-commit'},
-               'log|l:s'                      => \$opt{'log'},
-               'verbose|v:i'                  => \$opt{'verbose'});
+    GetOptions('help|h'                           => \$opt{'help'},
+               'mode|x:s'                         => \$opt{'mode'},
+               'type|w:s'                         => \$opt{'type'},
+               'modules|m:s'                      => \$opt{'modules'},
+               'modules-exclude|me:s'             => \$opt{'modules-exclude'},
+               'language-target|t:s'              => \$opt{'language-target'},
+               'language-target-exclude|te:s'     => \$opt{'language-target-exclude'},
+               'language-source|s:s'              => \$opt{'language-source'},
+               'language-source-exclude|se:s'     => \$opt{'language-source-exclude'},
+               'language-source-ignore-auto|sia!' => \$opt{'language-source-ignore-auto'},
+               'language-source-encoding|e:s'     => \$opt{'language-source-encoding'},
+               'only-diff|od!'                    => \$opt{'only-diff'},
+               'only-transcode|ot!'               => \$opt{'only-transcode'},
+               'keys-exclude|ke:s'                => \$opt{'keys-exclude'},
+               'keys-test|kt:s'                   => \$opt{'keys-test'},
+               'git-commit|gc!'                   => \$opt{'git-commit'},
+               'log|l:s'                          => \$opt{'log'},
+               'verbose|v:i'                      => \$opt{'verbose'});
 
     # Print help and exit
     pod2usage(0) if ($opt{'help'});
@@ -138,10 +137,13 @@ sub main
         }
     }
 
+    # Define the mode
+    $opt{'mode'} ||= 'sync';
+
     # Find out which modules to update, if exist
     my $modules = $opt{'modules'};
     my @modules;
-    my @modules_exclude = split(',', $opt{'modules-exclude'});
+    my @modules_exclude = $opt{'modules-exclude'} ? split(',', $opt{'modules-exclude'}) : ();
     if ($modules) {
         my @ml = split(',', $modules);
         foreach my $module (@ml) {
@@ -203,17 +205,33 @@ sub main
         }
     } else {
 
-        # User interactions
-        talk('affected', \%opt, \%data);
-
         # Log the output. Start
         $opt{'log'} ||= "/tmp/language-manager-@{[time()]}.log";
         open $data{'out'}, ">", "$opt{'log'}" or die RED, "Error creating log: $!\n", RESET, "\n";
 
-        # Execute force transcode/translate
-        talk('overwrite-pre', \%opt, \%data);
-        if (prompt('next')) {
-            go(\%opt, \%data);
+        # User interactions
+        talk('affected', \%opt, \%data);
+
+        # Run in overwrite mode
+        if ($opt{'mode'} eq 'full') {
+
+            # Execute force transcode/translate
+            talk('overwrite-pre', \%opt, \%data);
+            if (prompt('next')) {
+                go(\%opt, \%data);
+            }
+        }
+
+        # Simply translate newly added strings to source language (def. en),
+        # to all targets ".auto". Deleted keys on source language will also
+        # be removed from targets, in both, human translated and ".auto" files
+        else {
+
+            # Execute language sync
+            talk('sync-pre', \%opt, \%data);
+            if (prompt('next')) {
+                go(\%opt, \%data);
+            }
         }
 
         # Log the output. End
@@ -265,6 +283,7 @@ sub language_source_file
     my ($opt, $data, %data) = @_;
     my $language_code = $data{'language-code'};
     my %language_source_file;
+    my %language_source_file_auto;
     my $language_source_file;
     my $language_source_file_encoding = 'utf-8';
 
@@ -294,6 +313,23 @@ sub language_source_file
         $language_source_file = $language_source_file_target;
     }
 
+    # Load machine translated file
+    if ($opt->{'mode'} ne 'full') {
+        my $language_source_file_target_auto = "$language_source_file_target.auto";
+        if (-r $language_source_file_target_auto) {
+            read_file($language_source_file_target_auto, \%language_source_file_auto);
+            talk_log(
+                     ("" . GREEN .
+                        "  .. Found machine translated file for $data{'language-name'} ($language_code.auto)" . RESET . ""
+                     ),
+                     $data,
+                     1);
+        } else {
+            say YELLOW, "  .. No machine translated file has be found for $data{'language-name'} ($language_code.auto)",
+              RESET;
+        }
+    }
+
     # Supply proper encoding for existing language files
     if ($language_source_file) {
         talk_log(("" . GREEN . "  .. Found human translated file for $data{'language-name'} ($language_code)" . RESET . ""),
@@ -301,7 +337,7 @@ sub language_source_file
         read_file("$language_source_file", \%language_source_file);
 
         # Force encoding based on map
-        if ($opt->{'language-source-encoding'} eq 'map') {
+        if ($opt->{'mode'} eq 'full' && $opt->{'language-source-encoding'} eq 'map') {
             my $map_auto;
             my $code = $data{'language-code'};
 
@@ -357,7 +393,7 @@ sub language_source_file
         }
 
         # Figure out encoding automatically
-        elsif ($opt->{'language-source-encoding'} eq 'auto') {
+        elsif ($opt->{'mode'} eq 'full' && $opt->{'language-source-encoding'} eq 'auto') {
             my $language_source_file_data = read_file_contents($language_source_file_target);
             $language_source_file_encoding = Encode::Detect::Detector::detect($language_source_file_data);
             if (!$language_source_file_encoding) {
@@ -376,18 +412,16 @@ sub language_source_file
                          $data,
                          1);
             }
-
         } else {
             $language_source_file_encoding = $opt->{'language-source-encoding'};
             talk_log(("" . MAGENTA . "  .. Set file encoding to default \`$language_source_file_encoding\`" . RESET . ""),
                      $data, 1);
         }
-
     } else {
         say YELLOW, "  .. No human translated file has be found for $data{'language-name'} ($language_code)", RESET;
     }
 
-    return (\%language_source_file, $language_source_file_encoding);
+    return (\%language_source_file, \%language_source_file_auto, $language_source_file_encoding);
 }
 
 sub language_transcode
@@ -537,7 +571,7 @@ sub translated_substitute
                 $translated =~ s/((\d+)٪)/\$$2/g;
             }
         }
-        
+
         # Language specific fixes
         if ($code eq 'th') {
             $translated =~ s/(([3-9])%)/\$$2/g;
@@ -630,7 +664,6 @@ sub translated_substitute
         $translated =~ s/[ ]*٪[ ]*/ ٪ /g;
     }
 
-
     return $translated;
 }
 
@@ -692,17 +725,20 @@ sub go
     my ($opt, $data) = @_;
 
     my ($module, $language);
-    my $path                     = $data->{'path'};
-    my $type                     = $data->{'type'};
-    my $token                    = $data->{'token'};
-    my $modules                  = $data->{'modules'};
-    my $language_source          = $opt->{'language-source'};
-    my $language_source_encoding = $opt->{'language-source-encoding'};
-    my $language_target          = $opt->{'language-target'};
-    my $language_target_exclude  = $opt->{'language-target-exclude'};
-    my $keys_exclude             = $opt->{'keys-exclude'};
-    my $keys_test                = $opt->{'keys-test'};
-    my $git_commit               = $opt->{'git-commit'};
+    my $path                        = $data->{'path'};
+    my $mode                        = $data->{'mode'};
+    my $type                        = $data->{'type'};
+    my $token                       = $data->{'token'};
+    my $modules                     = $data->{'modules'};
+    my $language_source             = $opt->{'language-source'};
+    my $language_source_encoding    = $opt->{'language-source-encoding'};
+    my $language_source_ignore_auto = $opt->{'language-source-ignore-auto'};
+    my $language_target             = $opt->{'language-target'};
+    my $language_target_exclude     = $opt->{'language-target-exclude'};
+    my $keys_exclude                = $opt->{'keys-exclude'};
+    my $keys_test                   = $opt->{'keys-test'};
+    my $git_commit                  = $opt->{'git-commit'};
+    my $verbose                     = $opt->{'verbose'} || @{$keys_test};
 
     foreach $module (@{$modules}) {
         my (%template);
@@ -715,10 +751,10 @@ sub go
         read_file($mfile, \%template);
 
         # Check if the module has already been transcoded/translated, to avoid potential mess
-        if ($opt->{'language-source-encoding'} eq 'map' && -r $mpath . "/de.auto") {
+        if (!@{$keys_test} && $opt->{'language-source-encoding'} eq 'map' && -r $mpath . "/de.auto") {
             talk_log(("Transcoding/translating skipped for " . RED BOLD, $module, RESET . " module .."), $data, 1);
             next;
-        } 
+        }
 
         talk_log(("Transcoding/translating " . BLUE BOLD, $module, RESET . " module .."), $data, 1);
         foreach $language (@{ $data->{'languages_source_list'} }) {
@@ -753,9 +789,11 @@ sub go
             $message_type = "Testing translations for selected keys with" if (@{$keys_test});
 
             talk_log(("" . YELLOW . " .. $message_type $name ($code) language .." . RESET . ""), $data, $opt->{'verbose'});
-            my ($language_source_file, $language_source_file_encoding);
+            my ($language_source_file, $language_source_file_auto, $language_source_file_encoding);
             if (!@{$keys_test}) {
-                ($language_source_file, $language_source_file_encoding) =
+
+                # Get pre-translated strings
+                ($language_source_file, $language_source_file_auto, $language_source_file_encoding) =
                   language_source_file($opt,
                                        $data,
                                        ('language-name'      => $name,
@@ -795,8 +833,26 @@ sub go
                     $key__ = "${key}_${code}";
                 }
 
+                # Previously translated strings from `$code.auto` file, e.g. `de.auto`, should be considered, unless forced to be dropped
+                if ($language_source_file_auto &&
+                    $language_source_file_auto->{$key_} &&
+                    !@{$keys_test} &&
+                    !$language_source_ignore_auto)
+                {
+                    talk_log(
+                             ("" . MAGENTA .
+                                "   .. ($code.auto) found and stored machine translated value for \`$key\` key to" .
+                                RESET . ""
+                             ),
+                             $data,
+                             $opt->{'verbose'});
+
+                    # Add a string to main language file
+                    $language_auto{$key__} = $language_source_file_auto->{$key_};
+                }
+
                 # Human translated strings must be added to original `$code` file, e.g. `de` after transcoding
-                if ($language_source_file && $language_source_file->{$key_} && !@{$keys_test}) {
+                elsif ($language_source_file && $language_source_file->{$key_} && !@{$keys_test}) {
                     talk_log(
                              ("" . DARK .
                                 "   .. ($code) found and transcoded human translated value for \`$key\` key to" . RESET . ""
@@ -845,7 +901,7 @@ sub go
 
                     # Add translated string
                     talk_log(("" . BRIGHT_MAGENTA . "   .. ($code) translated value for \`$key\` to" . RESET . ""),
-                             $data, $opt->{'verbose'});
+                             $data, $verbose);
 
                     # Prepare sent text
                     my $_value = $value;
@@ -855,7 +911,7 @@ sub go
                     my $translated = translate($data, $opt, $code, $value);
                     $translated = $translated->{'data'}->{'translations'}[0]->{'translatedText'};
 
-                    talk_log("      — $key --> $_value", $data, $opt->{'verbose'});
+                    talk_log("      — $key --> $_value", $data, $verbose);
 
                     my $translated_ = $translated;
 
@@ -863,10 +919,10 @@ sub go
 
                     # Store translated string
                     $language_auto{$key__} = $translated;
-                    talk_log("      — $key <-- $translated", $data, $opt->{'verbose'});
+                    talk_log("      — $key <-- $translated", $data, $verbose);
 
                     # Print debug log
-                    if ($opt->{'verbose'} == 2) {
+                    if ($verbose == 2) {
                         say BLACK, "      --< $value",       RESET;
                         say BLACK, "      >-- $translated_", RESET;
                     }
@@ -1063,7 +1119,6 @@ sub talk
         $affected =~ s/\b(lang)\b/(lang)/;
         if ($affected) {
             say GREEN, "Affected modules " . RESET, DARK . "[$affected_count]" . RESET . ": ", YELLOW BOLD, $affected, RESET;
-            exit if (!prompt('next'));
         } else {
             say RED, "Error: No modules found to operate on", RESET;
             exit;
@@ -1072,14 +1127,22 @@ sub talk
         my $languages_count = scalar(split(' ', $languages));
         say GREEN, "Affected languages" . RESET, DARK . " [$languages_count]" . RESET . ": ", YELLOW BOLD,
           "" . $languages . "", RESET;
-        exit if (!prompt('next'));
     }
     if ($what eq 'overwrite-pre') {
         say RED, "Warning! ", RESET, WHITE,
-"The following operation will force-translate and overwrite\nmentioned languages in all mentioned modules listed above, using ",
-          YELLOW BOLD, $opt->{'language-source'}, RESET, "\nas a template language. The following directory " . YELLOW BOLD,
+"The following operation will force-translate and overwrite mentioned\nlanguages in all mentioned modules listed above, using ",
+          YELLOW BOLD, $opt->{'language-source'}, RESET,
+          " as a template lang-\nuage. The following directory " . YELLOW BOLD,
           $data->{'path'}, RESET,
-"\nwith human translated module strings, will be used instead of machine\ntranslations. The operation log will be written in "
+" with human translated\nmodule strings, will be used instead of machine translations. The operation\nlog will be written in "
+          . YELLOW BOLD, $opt->{'log'}, RESET, " file.", RESET;
+    }
+
+    if ($what eq 'sync-pre') {
+        say BRIGHT_MAGENTA, "Attention! ", RESET, WHITE,
+          "The following operation will synchronize mentioned languages,\nfor all mentioned modules listed above, using ",
+          YELLOW BOLD, $opt->{'language-source'}, RESET,
+" as a template language.\nThe keys found in target languages but missing on source, will be deleted,\nwhile newly added keys on source, will be translated for targets. The ope-\nration log will be written in "
           . YELLOW BOLD, $opt->{'log'}, RESET, " file.", RESET;
     }
 }
@@ -1115,17 +1178,25 @@ Give this help list.
 
 Examples of usage:
 
+Synchronize all language keys for Apache module, using English as a source language - newly added entries to Apache source language file (def. en), will be translated and inserted into all other language files (.auto), while deleted entries will also be removed on targets, including human translated ones.
+
+ — language-manager -m=apache
+
 Translate all available languages, using old-time encoding map, for BIND module, using as type "lang" directory, discarding human translations for Hebrew, keeping original value (not translating) for key "mass_desc", and printing verbose output.
 
- — language-manager -e=map -m=bind8 -w=lang -te=he -ke=mass_desc -v
+ — language-manager -x=full -e=map -m=bind8 -w=lang -te=he -ke=mass_desc
 
 Only transcode language files, using old-time encoding map, from files being in different encodings, to new style, where all language files are in "utf-8" encoding, for Apache module. No translations will be made, and no ".auto" files will be created.
 
- — language-manager -e=map -m=apache --ot
+ — language-manager -x=full -e=map -m=apache --ot
 
-Test translation output for "mass_desc,trusted_warning" keys, in Russian and German languages, in BIND module and exit.
+Test translations for "index_stopmsg,trusted_warning" keys, in Russian and German languages, in BIND module, print on-screen results and exit.
 
- — language-manager -m=bind8 -t=ru,de -kt=mass_desc,trusted_warning -v
+ — language-manager -m=bind8 -t=ru,de -kt=index_stopmsg,trusted_warning
+
+=item --mode, -x <sync|full>
+
+Mode can be either <sync> or <full>. Default is set to "sync" and will only keep the keys found on source language, while missing keys in target languages, will be deleted, and newly added keys to source language, will be translated. Mode "full" is meant to perform full translation, keeping human translated strings and overwriting all machine translations done in the past (not recommended to run).
 
 =item --type, -w <lang|ulang|help|config|module>
 
@@ -1154,6 +1225,10 @@ Language to use as a base language. Default is set English.
 =item --language-source-exclude, -se
 
 Comma separated list of human translated language codes to exclude from adding to target file (always translate instead). It might be useful if human translated files are low quality or corrupted.
+
+=item --language-source-ignore-auto, -sia
+
+Drop all previous machine translations (those that are stored in ".auto" files) and re-run translations over again - this option is highly not recommended to use.
 
 =item --language-source-encoding, -e
 
@@ -1185,7 +1260,7 @@ Saves complete operation log. By default, log file is saved to "/tmp/language-ma
 
 =item --verbose, -v
 
-Verbosely print processed files and provide detailed output. Be detault, verbose output is enabled.
+Verbosely print processed files and provide detailed output. By detault, verbose output is enabled.
 
 =back
 
