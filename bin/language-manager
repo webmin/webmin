@@ -739,6 +739,7 @@ sub go
     my $git_commit                  = $opt->{'git-commit'};
     my $verbose                     = $opt->{'verbose'} || @{$keys_test};
     my $mode_sync                   = $opt->{'mode'} ne 'full';
+    my $verbose_silent_mode         = $mode_sync && $verbose != 2;
 
     foreach $module (@{$modules}) {
         my (%template);
@@ -845,13 +846,13 @@ sub go
                     !@{$keys_test} &&
                     !$language_source_ignore_auto)
                 {
-                    talk_log(
-                             ("" . MAGENTA .
-                                "   .. ($code.auto) found and stored machine translated value for \`$key\` key to" .
-                                RESET . ""
-                             ),
-                             $data,
-                             $opt->{'verbose'});
+                    !$verbose_silent_mode && talk_log(
+                                      ("" . MAGENTA .
+                                         "   .. ($code.auto) found and stored machine translated value for \`$key\` key to" .
+                                         RESET . ""
+                                      ),
+                                      $data,
+                                      $opt->{'verbose'});
 
                     # Add a string to main language file
                     $language_auto{$key__} = $language_source_file_auto->{$key_};
@@ -859,19 +860,22 @@ sub go
 
                 # Human translated strings must be added to original `$code` file, e.g. `de` after transcoding
                 elsif ($language_source_file && $language_source_file->{$key_} && !@{$keys_test}) {
-                    talk_log(
-                             ("" . DARK .
-                                "   .. ($code) found and transcoded human translated value for \`$key\` key to" . RESET . ""
-                             ),
-                             $data,
-                             $opt->{'verbose'});
+                    !$verbose_silent_mode && talk_log(
+                                         ("" . DARK .
+                                            "   .. ($code) found and transcoded human translated value for \`$key\` key to" .
+                                            RESET . ""
+                                         ),
+                                         $data,
+                                         $opt->{'verbose'});
 
                     # We need to re-encode the string first, depending on which human translated file is being
                     # used (iso or UTF-8). We still need to convert all back and forth to get rid of ugly &#... escapes
-                    $language_source_file->{$key_} =
-                      language_transcode($language_source_file->{$key_}, $language_source_file_encoding);
-                    talk_log("      — " . WHITE . " $language_source_file->{$key_}" . RESET . "", $data,
-                             $opt->{'verbose'});
+                    if (!$mode_sync) {
+                        $language_source_file->{$key_} =
+                          language_transcode($language_source_file->{$key_}, $language_source_file_encoding);
+                        talk_log("      — " . WHITE . " $language_source_file->{$key_}" . RESET . "",
+                                 $data, $opt->{'verbose'});
+                    }
 
                     # Add a string to main language file
                     $language{$key__} = $language_source_file->{$key_};
@@ -898,9 +902,11 @@ sub go
                             ($code eq 'ur' && $value =~ /</) ||
                             (any {$_ =~ /^$key$/} @{$keys_exclude})))
                     {
-                        talk_log(("" . DARK . "   .. ($code) stored original value for \`$key\` which is" . RESET . ""),
-                                 $data, $opt->{'verbose'});
-                        talk_log("      — " . CYAN . " $value" . RESET . "", $data, $opt->{'verbose'});
+                        if (!$verbose_silent_mode) {
+                            talk_log(("" . DARK . "   .. ($code) stored original value for \`$key\` which is" . RESET . ""),
+                                     $data, $opt->{'verbose'});
+                            talk_log("      — " . CYAN . " $value" . RESET . "", $data, $opt->{'verbose'});
+                        }
                         $language_auto{$key__} = $value;
                         next;
                     }
