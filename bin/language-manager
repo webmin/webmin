@@ -726,7 +726,6 @@ sub go
 
     my ($module, $language);
     my $path                        = $data->{'path'};
-    my $mode                        = $data->{'mode'};
     my $type                        = $data->{'type'};
     my $token                       = $data->{'token'};
     my $modules                     = $data->{'modules'};
@@ -739,6 +738,7 @@ sub go
     my $keys_test                   = $opt->{'keys-test'};
     my $git_commit                  = $opt->{'git-commit'};
     my $verbose                     = $opt->{'verbose'} || @{$keys_test};
+    my $mode_sync                   = $opt->{'mode'} ne 'full';
 
     foreach $module (@{$modules}) {
         my (%template);
@@ -749,16 +749,6 @@ sub go
 
         # Get source, base language file
         read_file($mfile, \%template);
-
-        # Check if the module has already been transcoded/translated, to avoid potential waste
-        if (!@{$keys_test} &&
-            !$language_source_ignore_auto &&
-            $opt->{'language-source-encoding'} eq 'map' &&
-            -r $mpath . "/de.auto")
-        {
-            talk_log(("Transcoding/translating skipped for " . RED BOLD, $module, RESET . " module .."), $data, 1);
-            next;
-        }
 
         talk_log(("Transcoding/translating " . BLUE BOLD, $module, RESET . " module .."), $data, 1);
         foreach $language (@{ $data->{'languages_source_list'} }) {
@@ -837,7 +827,19 @@ sub go
                     $key__ = "${key}_${code}";
                 }
 
-    # Previously translated strings from `$code.auto` file, e.g. `de.auto`, should be considered, unless forced to be dropped
+                # Check if the module's language has already been transcoded/translated, to avoid potential waste
+                if (!@{$keys_test} &&
+                    !$language_source_ignore_auto &&
+                    $opt->{'language-source-encoding'} eq 'map' &&
+                    -r $mpath . "/$code.auto")
+                {
+                    talk_log(("   .. transcoding/translating skipped for language " . RED BOLD, $code, RESET . " .."),
+                             $data, 1);
+                    next;
+                }
+
+                # Previously translated strings from `$code.auto` file, e.g. `de.auto`,
+                # should be considered, unless forced to be dropped
                 if ($language_source_file_auto &&
                     $language_source_file_auto->{$key_} &&
                     !@{$keys_test} &&
@@ -983,7 +985,7 @@ sub go
                 }
                 my $file      = $mpath . "/$code";
                 my $file_auto = $mpath . "/$code.$language_suffix";
-                write_file($file, \%language);
+                write_file($file, \%language, undef, undef, $mfile);
                 write_file($file_auto, \%language_auto, undef, undef, $mfile) if (!$opt->{'only-transcode'});
 
                 # Git auto-commit after language was transcoded/translated
