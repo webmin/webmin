@@ -1235,3 +1235,4 @@ xfer_failed=.. minn $1: Ma rnexxiex : $2
 xfer_done=.. minn $1: Imtela 'OK
 xfer_count=Trasferiment tat-test imwettaq b'suċċess $1 rekords minn mill-inqas server wieħed. It-trasferimenti attwali mill-BIND għandhom ukoll jirnexxu.
 xfer_none=It-trasferiment tat-test deher jirnexxi, imma fil-fatt ma ġab l-ebda rekord!
+xfer_none_new_test=Dan huwa t-test

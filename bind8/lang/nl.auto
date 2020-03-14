@@ -113,3 +113,4 @@ trusted_dlvs2=Geen
 trusted_warning=Waarschuwing! Uw BIND DNSSEC-clientconfiguratie bevat verouderde sleutels die niet meer werken in oktober 2017. Gebruik de <a href='$1'>BIND DNSSEC-verificatiepagina</a> om de configuratie aan te passen, of klik op de onderstaande knop.
 trusted_fix=Bevestig DNSSEC-configuratie
 xfer_none=Testoverdracht leek te lukken, maar leverde eigenlijk geen records op!
+xfer_none_new_test=Dit is de test

@@ -12,3 +12,4 @@ value_caa_issuewild=Уайлдкард сертификат
 value_caa_iodef=URL адрес на нарушение на правилата
 massdelete_vwarn=Някои зони са свързани с домейна Virtualmin $1 и затова не трябва да се изтриват тук!
 massdelete_vwarn2=Някои зони са свързани с домейна Virtualmin $1 и $2 други и затова не трябва да се изтриват тук!
+xfer_none_new_test=Това е тестът

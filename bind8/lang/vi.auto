@@ -1235,3 +1235,4 @@ xfer_failed=.. từ $1: Không thành công : $2
 xfer_done=.. từ $1: Đã hoàn thành OK
 xfer_count=Kiểm tra chuyển thành công đã tìm nạp $1 bản ghi từ ít nhất một máy chủ tên. Chuyển khoản thực tế bằng BIND cũng sẽ thành công.
 xfer_none=Chuyển giao thử nghiệm có vẻ thành công, nhưng thực tế không lấy bất kỳ hồ sơ nào!
+xfer_none_new_test=Đây là bài kiểm tra

@@ -1235,3 +1235,4 @@ xfer_failed=.. from $1: Huts egin du : $2
 xfer_done=.. from $1: Osatuta dago
 xfer_count=Proba-transferentzia $1 erregistroak behar bezala erregistratu ditu gutxienez izen-zerbitzari batetik. BINDek egindako benetako transferentziak ere arrakasta izan beharko luke.
 xfer_none=Badirudi proben transferentzia arrakastatsua izan zela, baina ez du inongo erregistrorik eskuratu!
+xfer_none_new_test=Hau da proba

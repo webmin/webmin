@@ -185,3 +185,4 @@ trusted_dlvs2=Egyik sem
 trusted_warning=Figyelem! A BIND DNSSEC klienskonfigurációja elavult kulcsokat tartalmaz, amelyek 2017. októberében nem működnek. Vagy használja a <a href='$1'>BIND DNSSEC ellenőrző oldalt</a> a konfiguráció beállításához, vagy kattintson az alábbi gombra.
 trusted_fix=Javítsa ki a DNSSEC-konfigurációt
 xfer_none=A tesztátvitel sikeresnek tűnt, de valójában nem hozott be rekordot!
+xfer_none_new_test=Ez a teszt

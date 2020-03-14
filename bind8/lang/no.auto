@@ -43,3 +43,4 @@ trusted_dlvs0=Oppført nedenfor. ..
 trusted_dlvs2=Ingen
 trusted_warning=Advarsel! BIND DNSSEC-klientkonfigurasjonen inneholder utdaterte nøkler som slutter å fungere i oktober 2017. Bruk enten <a href='$1'>BIND DNSSEC-bekreftelsessiden</a> for å justere konfigurasjonen, eller klikk på knappen nedenfor.
 trusted_fix=Fix DNSSEC-konfigurasjon
+xfer_none_new_test=Dette er testen

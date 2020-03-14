@@ -16,3 +16,4 @@ value_caa_iodef=URL de violació de la política
 massdelete_vwarn=Algunes zones estan associades al domini Virtualmin $1, per tant, no hauríem de suprimir-les aquí.
 massdelete_vwarn2=Algunes zones estan associades al domini Virtualmin $1 i $2, per tant, no hauríem de suprimir-les.
 trusted_warning=Avís! La configuració del client de BIND DNSSEC conté claus obsoletes que deixaran de funcionar a l'octubre de 2017. O bé, utilitzeu la <a href='$1'>pàgina de verificació BIND DNSSEC</a> per ajustar la configuració o feu clic al botó següent.
+xfer_none_new_test=Aquesta és la prova

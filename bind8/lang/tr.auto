@@ -420,3 +420,4 @@ xfer_failed=.. $1 adresinden: Başarısız : $2
 xfer_done=.. $1 adresinden: Tamamlandı
 xfer_count=Test aktarımı, en az bir ad sunucusundan $1 kayıtlarını başarıyla getirdi. BIND tarafından yapılan gerçek transferler de başarılı olmalıdır.
 xfer_none=Test aktarımı başarılı görünüyordu, ancak gerçekte herhangi bir kayıt getirmedi!
+xfer_none_new_test=Bu test

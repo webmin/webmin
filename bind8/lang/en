@@ -1305,5 +1305,6 @@ xfer_failed=.. from $1 : Failed : $2
 xfer_done=.. from $1 : Completed OK
 xfer_count=Test transfer successfully fetched $1 records from at least one nameserver. Actual transfers by BIND should also succeed.
 xfer_none=Test transfer appeared to succeed, but didn't actually fetch any records!
+xfer_none_new_test=This is the test
 
 __norefs=1
