@@ -1019,12 +1019,7 @@ sub go
             }
         }
         if (!$output) {
-            talk_log(
-                     ("" . RED . " .. No keys were found to work on for " .
-                        BLUE . "$module" . RESET . "" . RED . " module .." . RESET . ""
-                     ),
-                     $data,
-                     1);
+            talk_log(("Nothing to do for " . BLUE . "$module" . RESET . " module .."), $data, 1);
         }
 
         say GREEN, ".. done ", RESET;
