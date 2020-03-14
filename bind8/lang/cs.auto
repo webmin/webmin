@@ -375,4 +375,3 @@ xfer_failed=.. z $1: Selhalo : $2
 xfer_done=.. z $1: Dokončeno OK
 xfer_count=Testovací přenos byl úspěšně načten z záznamů $1 z alespoň jednoho jmenného serveru. Skutečné převody prostřednictvím BIND by měly být také úspěšné.
 xfer_none=Zkušební přenos se zdál být úspěšný, ale ve skutečnosti nenašel žádné záznamy!
-xfer_none_new_test=Toto je test

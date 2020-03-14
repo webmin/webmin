@@ -815,4 +815,3 @@ xfer_failed=.. from $1 : 실패  : $2
 xfer_done=.. from $1 : 완료 완료
 xfer_count=테스트 전송이 하나 이상의 네임 서버에서 $1 레코드를 성공적으로 가져 왔습니다. BIND에 의한 실제 전송도 성공해야합니다.
 xfer_none=테스트 전송이 성공한 것으로 보이지만 실제로 레코드를 가져 오지 못했습니다!
-xfer_none_new_test=이것은 테스트입니다

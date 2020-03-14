@@ -1235,4 +1235,3 @@ xfer_failed=.. iš $1: Nepavyko : $2
 xfer_done=.. iš $1: baigta gerai
 xfer_count=Testo perkėlimas sėkmingai gautas $1 įrašų iš bent vieno vardų serverio. Faktiniai BIND pervedimai taip pat turėtų būti sėkmingi.
 xfer_none=Atrodė, kad bandymo perkėlimas pavyko, tačiau iš tikrųjų nepavyko gauti jokių įrašų!
-xfer_none_new_test=Tai yra testas

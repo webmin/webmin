@@ -66,4 +66,3 @@ trusted_dlvs0=Wymienione poniżej. ..
 trusted_dlvs2=Żaden
 trusted_warning=Ostrzeżenie! Twoja konfiguracja klienta BIND DNSSEC zawiera nieaktualne klucze, które przestaną działać w październiku 2017 r. Użyj strony <a href='$1'>BIND DNSSEC Weryfikacja</a>, aby dostosować konfigurację, lub kliknij przycisk poniżej.
 trusted_fix=Napraw konfigurację DNSSEC
-xfer_none_new_test=To jest test

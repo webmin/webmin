@@ -638,4 +638,3 @@ xfer_failed=.. da $1: non riuscito : $2
 xfer_done=.. da $1: completato OK
 xfer_count=Il trasferimento di prova ha recuperato correttamente $1 da almeno un nameserver. Anche i trasferimenti effettivi di BIND dovrebbero avere esito positivo.
 xfer_none=Il trasferimento di prova sembrava avere successo, ma in realtà non ha recuperato alcun record!
-xfer_none_new_test=Questo è il test

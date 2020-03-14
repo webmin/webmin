@@ -1235,4 +1235,3 @@ xfer_failed=.. no $1: Neizdevās : $2
 xfer_done=.. no $1: Pabeigts Labi
 xfer_count=Pārbaudes pārsūtīšana ir veiksmīgi iegūta vismaz viena nosaukuma servera $1 ierakstos. Arī faktiskajiem BIND pārskaitījumiem vajadzētu būt veiksmīgiem.
 xfer_none=Pārbaudes pārsūtīšana šķita veiksmīga, taču faktiski netika atgriezts neviens ieraksts!
-xfer_none_new_test=Šis ir pārbaudījums

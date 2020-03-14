@@ -1235,4 +1235,3 @@ xfer_failed=.. fra $1: Mislykkedes : $2
 xfer_done=.. fra $1: Fuldført OK
 xfer_count=Testoverførsel blev hentet $1 poster fra mindst en navneserver. Faktiske overførsler fra BIND bør også lykkes.
 xfer_none=Testoverførsel så ud til at lykkes, men hentede faktisk ikke nogen poster!
-xfer_none_new_test=Dette er testen

@@ -911,4 +911,3 @@ xfer_failed=.. from $1：失敗：$2
 xfer_done=.. from $1：完成OK
 xfer_count=測試傳輸已成功從至少一個名稱服務器中獲取了$1記錄。 BIND的實際轉帳也應該成功。
 xfer_none=測試傳輸似乎成功了，但實際上並沒有獲取任何記錄！
-xfer_none_new_test=這是測試

@@ -1233,4 +1233,3 @@ xfer_failed=.. dari $1: Gagal : $2
 xfer_done=.. dari $1: Selesai OK
 xfer_count=Pemindahan ujian berjaya diambil dari rekod $1 dari sekurang-kurangnya satu pelayan nama. Perpindahan sebenar oleh BIND juga harus berjaya.
 xfer_none=Pemindahan ujian kelihatan berjaya, tetapi sebenarnya tidak mengambil sebarang rekod!
-xfer_none_new_test=Inilah ujian

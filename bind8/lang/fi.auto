@@ -1235,4 +1235,3 @@ xfer_failed=.. lähteestä $1: epäonnistui : $2
 xfer_done=.. alkaen $1: Valmis OK
 xfer_count=Testisiirto nousi onnistuneesti $1 tietueet ainakin yhdestä nimipalvelimesta. Myös BIND: n tosiasiallisten siirtojen pitäisi onnistua.
 xfer_none=Testisiirto näytti onnistuneelta, mutta ei hakenut tietueita!
-xfer_none_new_test=Tämä on testi

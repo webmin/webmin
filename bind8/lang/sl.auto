@@ -1235,4 +1235,3 @@ xfer_failed=.. od $1: Ni uspelo : $2
 xfer_done=.. from $1: Končano v redu
 xfer_count=Testni prenos je bil uspešno pridobljen $1 od vsaj enega strežnika imen. Dejanski prenosi BIND bi prav tako morali uspeti.
 xfer_none=Zdi se, da je testni prenos uspel, vendar dejansko ni dobil nobenih zapisov!
-xfer_none_new_test=To je test

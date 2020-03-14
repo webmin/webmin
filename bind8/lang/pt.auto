@@ -905,4 +905,3 @@ xfer_failed=.. from $1: Falha : $2
 xfer_done=.. from $1: Concluído OK
 xfer_count=A transferência de teste buscou com êxito $1 registros de pelo menos um servidor de nomes. As transferências reais do BIND também devem ter êxito.
 xfer_none=A transferência de teste pareceu ter sucesso, mas na verdade não obteve nenhum registro!
-xfer_none_new_test=Este é o teste

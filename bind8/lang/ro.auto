@@ -1235,4 +1235,3 @@ xfer_failed=.. de la $1: Nu a reușit : $2
 xfer_done=.. de la $1: Completat OK
 xfer_count=Transferul de test a înregistrat cu succes $1 înregistrări de la cel puțin un nume de nume. Transferurile efective de către BIND ar trebui să aibă succes.
 xfer_none=Transferul de test pare să aibă succes, dar nu a obținut înregistrări!
-xfer_none_new_test=Acesta este testul

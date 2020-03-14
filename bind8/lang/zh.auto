@@ -640,4 +640,3 @@ xfer_failed=.. from $1：失败：$2
 xfer_done=.. from $1：完成OK
 xfer_count=测试传输已成功从至少一个名称服务器中获取了$1记录。 BIND的实际转帐也应该成功。
 xfer_none=测试传输似乎成功了，但实际上并没有获取任何记录！
-xfer_none_new_test=这是测试

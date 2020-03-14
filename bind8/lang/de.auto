@@ -7,4 +7,3 @@ log_resign=Neu signierter DNSSEC-Schlüssel für Zone $1
 log_dnssec=Ändern Sie die Neuunterzeichnung des DNSSEC-Schlüssels
 massdelete_vwarn=Einige Zonen sind der Virtualmin-Domäne $1 zugeordnet und sollten daher hier nicht gelöscht werden!
 massdelete_vwarn2=Einige Zonen sind der Virtualmin-Domäne $1 und $2 zugeordnet, andere sollten daher hier nicht gelöscht werden!
-xfer_none_new_test=Dies ist der Test

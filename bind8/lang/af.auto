@@ -1235,4 +1235,3 @@ xfer_failed=.. vanaf $1: Misluk : $2
 xfer_done=.. vanaf $1: Voltooi OK
 xfer_count=Toetsoordrag is $1 rekords suksesvol van minstens een naambediener afgehaal. Werklike oordragte deur BIND behoort ook te slaag.
 xfer_none=Die toetsoordrag blyk te slaag, maar het eintlik geen rekords gaan haal nie!
-xfer_none_new_test=Dit is die toets

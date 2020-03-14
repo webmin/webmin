@@ -400,4 +400,3 @@ xfer_failed=.. från $1: Misslyckades : $2
 xfer_done=.. från $1: Färdig OK
 xfer_count=Testöverföringen hämtades $1 poster från minst en namnserver. Faktiska överföringar från BIND bör också lyckas.
 xfer_none=Testöverföringen verkade lyckas, men hämtade faktiskt inga poster!
-xfer_none_new_test=Detta är testet

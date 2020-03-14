@@ -567,4 +567,3 @@ xfer_failed=.. de $1: Falló : $2
 xfer_done=.. de $1: Completado OK
 xfer_count=La transferencia de prueba obtuvo con éxito $1 registros de al menos un servidor de nombres. Las transferencias reales por BIND también deberían tener éxito.
 xfer_none=La transferencia de prueba pareció tener éxito, ¡pero en realidad no obtuvo ningún registro!
-xfer_none_new_test=Esta es la prueba
