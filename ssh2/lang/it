@@ -1,5 +1,4 @@
 index_title=SSH/Telnet Login
 index_warn=Attenzione! Questa sessione telnet <b>non e'</b> criptata.
 index_nojava=Questo modulo richiede java per funzionare, ma il tuo browser
-non supporta java
-index_credits=Applet GPL sviluppata da <a href='$1'>Matthias L. Jugel &amp; Marcus Meiﬂner</a>.
+index_credits=Applet GPL sviluppata da <a href='$1'>Matthias L. Jugel & Marcus Mei√üner</a>.

@@ -4,10 +4,8 @@ index_mods=Moduli da cercare
 index_all=Tutti
 index_sel=Moduli selezionati
 index_search=Trova
-index_reset=Azzera
 index_header=Ricerca globale nel Webmin Help
 index_return=pagina di ricerca
-
 search_err=Ricerca fallita
 search_eterms=Termini di ricerca mancanti
 search_emods=Non hai scelto i moduli

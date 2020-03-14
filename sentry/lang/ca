@@ -1,106 +1,99 @@
 index_title=Sentinelles de Seguretat
-index_ecommands=No s'ha trobat al sistema cap de les ordres de seguretat de <tt>sentry</tt> ($1, $2 or $3). Pot ser que no n'hi hagi cap d'instal∑lada, o bÈ que la <a href='$4'>configuraciÛ del mÚdul</a> sigui incorrecta.
-index_return=al men˙ de mÚduls
-
-portsentry_title=ConfiguraciÛ de Portsentry
-portsentry_below=(DetecciÛ d'escaneig de ports)
-portsentry_ecommand=No s'ha trobat al sistema el dimoni $1 de Portsentry. Pot ser que no estigui instal∑Lat, o bÈ que la <a href='$2'>configuraciÛ del mÚdul</a> sigui incorrecta.
-portsentry_eversion=No sembla que el programa $1 sigui el dimoni de Portsentry. Pot ser que no estigui instal∑lat, o bÈ que la <a href='$2'>configuraciÛ del mÚdul</a> sigui incorrecta.
-portsentry_eversion2=La versiÛ de Portsentry instal∑lada al sistema Ès la $2, perÚ Webmin nomÈs suporta la versiÛ 1.
-portsentry_version=VersiÛ $1 de Portsentry
-portsentry_header=Opcions de la detecciÛ d'escaneig de ports
+index_ecommands=No s'ha trobat al sistema cap de les ordres de seguretat de <tt>sentry</tt> ($1, $2 or $3). Pot ser que no n'hi hagi cap d'instal¬∑lada, o b√© que la <a href='$4'>configuraci√≥ del m√≤dul</a> sigui incorrecta.
+index_return=al men√∫ de m√≤duls
+portsentry_title=Configuraci√≥ de Portsentry
+portsentry_below=(Detecci√≥ d'escaneig de ports)
+portsentry_ecommand=No s'ha trobat al sistema el dimoni $1 de Portsentry. Pot ser que no estigui instal¬∑Lat, o b√© que la <a href='$2'>configuraci√≥ del m√≤dul</a> sigui incorrecta.
+portsentry_eversion=No sembla que el programa $1 sigui el dimoni de Portsentry. Pot ser que no estigui instal¬∑lat, o b√© que la <a href='$2'>configuraci√≥ del m√≤dul</a> sigui incorrecta.
+portsentry_eversion2=La versi√≥ de Portsentry instal¬∑lada al sistema √©s la $2, per√≤ Webmin nom√©s suporta la versi√≥ 1.
+portsentry_version=Versi√≥ $1 de Portsentry
+portsentry_header=Opcions de la detecci√≥ d'escaneig de ports
 portsentry_tmode=Ports TCP a monitoritzar
-portsentry_mode0=Per al mode b‡sic, els ports llistats
-portsentry_mode1=Per al mode avanÁat, tots els ports per sota de $1 excepte $2
+portsentry_mode0=Per al mode b√†sic, els ports llistats
+portsentry_mode1=Per al mode avan√ßat, tots els ports per sota de $1 excepte $2
 portsentry_umode=Ports UDP a monitoritzar
-portsentry_ignore=Hosts el tr‡nsit dels quals cal ignorar
+portsentry_ignore=Hosts el tr√†nsit dels quals cal ignorar
 portsentry_tblock=Bloqueja sondes TCP
 portsentry_ublock=Bloqueja sondes UDP
 portsentry_trigger=Nombre de connexions abans d'activar el bloqueig
 portsentry_banner=Missatge per a les connexions bloquejades
 portsentry_kill=Executa l'ordre <tt>kill</tt>
 portsentry_err=No s'han pogut desar les opcions de Portsentry
-portsentry_etports='$1' no Ès un port TCP de mode b‡sic v‡lid
-portsentry_etadv=Hi falta el port TCP m‡xim per al mode avanÁat o bÈ Ès inv‡lid
-portsentry_etexc='$1' no Ès un port TCP exclÚs v‡lid
-portsentry_euports='$1' no Ès un port UDP de mode b‡sic v‡lid
-portsentry_euadv=Hi falta el port UDP m‡xim per al mode avanÁat o bÈ Ès inv‡lid
-portsentry_euexc='$1' no Ès port UDP exclÚs v‡lid
-portsentry_etrigger=Hi falta el nombre de connexions o bÈ Ès inv‡lid
-portsentry_eignore='$1' no Ès cap nom de host ni cap adreÁa IP v‡lida 
+portsentry_etports='$1' no √©s un port TCP de mode b√†sic v√†lid
+portsentry_etadv=Hi falta el port TCP m√†xim per al mode avan√ßat o b√© √©s inv√†lid
+portsentry_etexc='$1' no √©s un port TCP excl√≤s v√†lid
+portsentry_euports='$1' no √©s un port UDP de mode b√†sic v√†lid
+portsentry_euadv=Hi falta el port UDP m√†xim per al mode avan√ßat o b√© √©s inv√†lid
+portsentry_euexc='$1' no √©s port UDP excl√≤s v√†lid
+portsentry_etrigger=Hi falta el nombre de connexions o b√© √©s inv√†lid
+portsentry_eignore='$1' no √©s cap nom de host ni cap adre√ßa IP v√†lida 
 portsentry_start=Inicia els Dimonis Portsentry
-portsentry_startdesc=Fes clic sobre aquest botÛ per iniciar els dimonis de Portsentry amb l'ordre $1, utilitzant les opcions de configuraciÛ superiors.
+portsentry_startdesc=Fes clic sobre aquest bot√≥ per iniciar els dimonis de Portsentry amb l'ordre $1, utilitzant les opcions de configuraci√≥ superiors.
 portsentry_stop=Atura els Dimonis Portsentry
-portsentry_stopdesc=Fes clic sobre aquest botÛ per aturar els dimonis Portsentry en execuciÛ. AixÚ aturar‡ immediatament tota detecciÛ d'escaneig de ports.
-portsentry_apply=Aplica la ConfiguraciÛ
-portsentry_applydesc=Fes clic sobre aquest botÛ per aplicar la configuraciÛ actual aturant els dimonis de Portsentry i reengegant-los amb l'ordre $1.
-portsentry_applyerr=No s'ha pogut aplicar la configuraciÛ
+portsentry_stopdesc=Fes clic sobre aquest bot√≥ per aturar els dimonis Portsentry en execuci√≥. Aix√≤ aturar√† immediatament tota detecci√≥ d'escaneig de ports.
+portsentry_apply=Aplica la Configuraci√≥
+portsentry_applydesc=Fes clic sobre aquest bot√≥ per aplicar la configuraci√≥ actual aturant els dimonis de Portsentry i reengegant-los amb l'ordre $1.
+portsentry_applyerr=No s'ha pogut aplicar la configuraci√≥
 portsentry_stoperr=No s'ha pogut aturar portsentry
 portsentry_ekill=No s'han pogut matar els processos $1: $2
-portsentry_estopped=Ja no est‡ en execuciÛ
+portsentry_estopped=Ja no est√† en execuci√≥
 portsentry_starterr=No s'ha pogut iniciar portsentry
 portsentry_save=Desa i Aplica
-
-hostsentry_title=ConfiguraciÛ de Hostsentry
-hostsentry_below=(DetecciÛ d'entrades sospitoses)
-hostsentry_ecommand=No s'ha trobat al sistema el script python $1 de portsentry. Pot ser que no estigui instal∑lat, o bÈ que la <a href='$2'>configuraciÛ del mÚdul</a> sigui incorrecta.
-hostsentry_header=Opcions de detecciÛ d'entrades sospitoses
+hostsentry_title=Configuraci√≥ de Hostsentry
+hostsentry_below=(Detecci√≥ d'entrades sospitoses)
+hostsentry_ecommand=No s'ha trobat al sistema el script python $1 de portsentry. Pot ser que no estigui instal¬∑lat, o b√© que la <a href='$2'>configuraci√≥ del m√≤dul</a> sigui incorrecta.
+hostsentry_header=Opcions de detecci√≥ d'entrades sospitoses
 hostsentry_wtmp=Fitxer de registre d'entrades
 hostsentry_ignore=Usuaris l'entrada dels quals cal ignorar
-hostsentry_mods=MÚduls de Hostsentry <br>per ordre de processament
+hostsentry_mods=M√≤duls de Hostsentry <br>per ordre de processament
 hostsentry_start=Inicia el Dimoni Hostsentry
-hostsentry_startdesc=Fes clic sobre aquest botÛ per iniciar el dimoni Hostsentry amb l'ordre $1, utilitzant les opcions de configuraciÛ superiors.
+hostsentry_startdesc=Fes clic sobre aquest bot√≥ per iniciar el dimoni Hostsentry amb l'ordre $1, utilitzant les opcions de configuraci√≥ superiors.
 hostsentry_stop=Atura el Dimoni Hostsentry
-hostsentry_stopdesc=Fes clic sobre aquest botÛ per aturar el dimoni Hostsentry en execuciÛ. AixÚ aturar‡ immediatament tota detecciÛ d'entrades sospitoses.
-hostsentry_apply=Aplica la ConfiguraciÛ
-hostsentry_applydesc=Fes clic sobre aquest botÛ per aplicar la configuraciÛ actual aturant el dimoni Hostsentry i reiniciant-lo amb l'ordre $1.
+hostsentry_stopdesc=Fes clic sobre aquest bot√≥ per aturar el dimoni Hostsentry en execuci√≥. Aix√≤ aturar√† immediatament tota detecci√≥ d'entrades sospitoses.
+hostsentry_apply=Aplica la Configuraci√≥
+hostsentry_applydesc=Fes clic sobre aquest bot√≥ per aplicar la configuraci√≥ actual aturant el dimoni Hostsentry i reiniciant-lo amb l'ordre $1.
 hostsentry_foreign=Hosts que es consideren no forasters
-hostsentry_multiple=Hosts les entrades m˙ltiples dels quals sÛn fiables
-hostsentry_applyerr=No s'ha pogut aplicar la configuraciÛ
+hostsentry_multiple=Hosts les entrades m√∫ltiples dels quals s√≥n fiables
+hostsentry_applyerr=No s'ha pogut aplicar la configuraci√≥
 hostsentry_stoperr=No s'ha pogut aturar hostsentry
 hostsentry_ekill=No s'ha pogut matar els processos $1: $2
-hostsentry_estopped=Ja no est‡ en execuciÛ
+hostsentry_estopped=Ja no est√† en execuci√≥
 hostsentry_starterr=No s'ha pogut iniciar hostsentry
 hostsentry_save=Desa i Aplica
-hostsentry_err=No s'ha pogut desar la configuraciÛ de hostsentry
-hostsentry_eignore='$1' no Ès un usuari v‡lid
-hostsentry_emultiple='$1' no Ès un host v‡lid a partir del qual ignorar les entrades
-
-logcheck_title=ConfiguraciÛ dels Registres de VerificaciÛ
-logcheck_ecommand=No s'ha trobat al sistema l'ordre de verificaciÛ de registres $1. Pot ser que no estigui instal∑lada, o bÈ que la <a href='$2'>configuraciÛ del mÚdul</a> sigui incorrecta.
-logcheck_eversion=L'ordre $1 de comprovacio de registres no tÈ la versiÛ esperada per Webmin.
-logcheck_below=(An‡lisi de registres sospitosos)
-logcheck_header=Opcions de comprovaciÛ del fitxer de registres
-slogcheck_to=Envia els informes a
+hostsentry_err=No s'ha pogut desar la configuraci√≥ de hostsentry
+hostsentry_eignore='$1' no √©s un usuari v√†lid
+hostsentry_emultiple='$1' no √©s un host v√†lid a partir del qual ignorar les entrades
+logcheck_title=Configuraci√≥ dels Registres de Verificaci√≥
+logcheck_ecommand=No s'ha trobat al sistema l'ordre de verificaci√≥ de registres $1. Pot ser que no estigui instal¬∑lada, o b√© que la <a href='$2'>configuraci√≥ del m√≤dul</a> sigui incorrecta.
+logcheck_eversion=L'ordre $1 de comprovacio de registres no t√© la versi√≥ esperada per Webmin.
+logcheck_below=(An√†lisi de registres sospitosos)
+logcheck_header=Opcions de comprovaci√≥ del fitxer de registres
 logcheck_hacking=Missatges de registre de pirateig
-logcheck_violations=Missatges de registre de violaciÛ
+logcheck_violations=Missatges de registre de violaci√≥
 logcheck_violations_ign=Excepte
 logcheck_ignore=Missatges de registre ignorats
-logcheck_disabled=ComprovaciÛ planificada de registres desactivada
+logcheck_disabled=Comprovaci√≥ planificada de registres desactivada
 logcheck_enabled=Comprova els registres a intervals seleccionats...
 logcheck_save=Desa i Aplica
-logcheck_eto=Hi falta l'adreÁa de correu o bÈ Ès inv‡lida
-logcheck_runparts=La comprovaciÛ de registres s'executa des de cron amb el script $1
+logcheck_eto=Hi falta l'adre√ßa de correu o b√© √©s inv√†lida
+logcheck_runparts=La comprovaci√≥ de registres s'executa des de cron amb el script $1
 logcheck_files=Fitxers de registre que es monitoritzen
-
 mod_moduleLoginLogout=Enregistra les entrades i les sortides
 mod_moduleFirstLogin=Detecta la primera entrada d'un usuari
 mod_moduleForeignDomain=Detecta l'entrada des d'un domini foraster
 mod_moduleRhostsCheck=Detecta fitxers .rhosts insegurs
 mod_moduleHistoryTruncated=Detecta el truncament dels fitxer d'historial
 mod_moduleOddDirnames=Detecta directoris arrel estranys
-mod_moduleMultipleLogins=Detecta entrades m˙ltiples simult‡nies
+mod_moduleMultipleLogins=Detecta entrades m√∫ltiples simult√†nies
 mod_moduleOddLoginTime=Detecta hores d'entrada estranyes
 mod_moduleInvalidUtmp=Detecta entrades utmp modificades
 mod_moduleHistorySuspicious=Detecta ordres sospitoses als historials
-mod_moduleNetworkDaemon=Detecta dimonis que s'han deixat en execuciÛ
+mod_moduleNetworkDaemon=Detecta dimonis que s'han deixat en execuci√≥
 mod_moduleFileExists=Detecta fitxers sospitosos als directoris arrel
-
-log_hostsentry=S'ha desat la configuraciÛ de hostsentry
-log_portsentry=S'ha desat la configuraciÛ de portsentry
-log_logcheck=S'ha desat la configuraciÛ de comprovaciÛ de registres
+log_hostsentry=S'ha desat la configuraci√≥ de hostsentry
+log_portsentry=S'ha desat la configuraci√≥ de portsentry
+log_logcheck=S'ha desat la configuraci√≥ de comprovaci√≥ de registres
 log_hostsentry_start=S'ha iniciat el dimoni de hostsentry
 log_hostsentry_stop=S'ha aturat el dimoni de hostsentry
 log_portsentry_start=S'ha iniciat el dimoni de portsentry
 log_portsentry_stop=S'ha aturat el dimoni de portsentry
-__norefs=1

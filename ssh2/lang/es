@@ -1,7 +1,6 @@
 index_title=Login desde Telnet
-index_warn=°Aviso! Esta sesiÛn telnet <b>no</b> est· encriptada.
-index_nojava=Este mÛdulo requiere de java para que funcione pero tu navegador no lo soporta
-index_credits=Applet desarrollada bajo GPL por <a href='$1'>Matthias L. Jugel &amp; Marcus Meiﬂner</a>.
-index_sshcredits=Incluye software desarrollado por el Cryptix Development Team (<a href=$1>$1</a>).
-index_esocket=No hay servidor Telnet ejecut·ndose en $1 puerto $2.
-index_esocket2=No hay servidor SSH ejecut·ndose en $1 puerto $2.
+index_warn=¬°Aviso! Esta sesi√≥n telnet <b>no</b> est√° encriptada.
+index_nojava=Este m√≥dulo requiere de java para que funcione pero tu navegador no lo soporta
+index_credits=Applet desarrollada bajo GPL por <a href='$1'>Matthias L. Jugel & Marcus Mei√üner</a>.
+index_esocket=No hay servidor Telnet ejecut√°ndose en $1 puerto $2.
+index_esocket2=No hay servidor SSH ejecut√°ndose en $1 puerto $2.

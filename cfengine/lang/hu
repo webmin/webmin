@@ -51,7 +51,6 @@ index_required=Check filesystem $1
 index_required2=Check $1 filesystems
 index_disks=$index_required
 index_disks2=$index_required2
-
 edit_title=Edit Settings for Class
 edit_create1=Add Action and Class
 edit_create2=Add Settings for Class
@@ -193,7 +192,6 @@ edit_resother=Other <tt>resolv.conf</tt> lines
 edit_route=Default gateway
 edit_reqfs=Filesystem to check
 edit_reqfree=Minimum free space
-
 save_err=Failed to save class
 save_eclass=Missing or invalid class name
 save_elinkfrom=Missing or invalid from for symlink $1
@@ -256,7 +254,6 @@ save_emiscmode=Invalid mount options for $1
 save_eroute=Missing or invalid default gateway
 save_ereq=Invalid filesystem to check $1
 save_ereqfree=Missing or invalid minimum free space for $1
-
 section_groups=Define groups
 section_classes=$section_groups
 section_control_0=Master control
@@ -284,7 +281,6 @@ section_grant=$section_admit
 section_deny=Denied directories
 section_required=Check Filesystems
 section_disks=$section_required
-
 run_title=Run Configuration Engine
 run_desc=This page can be used to run the Configuration Engine on this host. When run, all the actions that you have configured will be carried out where necessary.
 run_header=Options for running CFengine on this host
@@ -297,7 +293,6 @@ run_nolinks=Can create symbolic links?
 run_verbose=Show verbose output?
 run_exec=Running command $1 ..
 run_ok=Run Now
-
 cfd_title=Configuration Engine Daemon
 cfd_stop=Stop Configuration Engine Daemon
 cfd_stopdesc=Click this button to stop the running Configuration Engine daemon. This will prevent other hosts from running the configuration on this server, and stop the scheduled running of the configuration.
@@ -306,7 +301,6 @@ cfd_startdesc=Click this button to start the Configuration Engine daemon with th
 cfd_return=daemon options
 cfd_none=No settings for the Configuration Engine daemon has been created yet.
 cfd_ecmd=The Configuration Engine daemon command $1 was not found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
-
 push_title=Remote Configuration Hosts
 push_header=Configuration server distribution options
 push_domain=Domain name
@@ -323,7 +317,6 @@ push_return=remote configuration hosts
 push_title2=Run Host Configurations
 push_exec=Running host configurations with command $1 ..
 push_ecmd=The Configuration Engine remote execution command $1 was not found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
-
 type_control_0=The field below lists the actions that are executed when the configuration engine runs, in the order that they will be executed. Actions which are not listed will not be processed, even if they are listed on the main page.
 type_control_1=The options below control the global behaviour of the background process that accepts requests to execute the configuration on this host when requested by a remote host, or on a fixed schedule.
 type_directories=The directories listed below will be created with the given ownership and permissions when they do not exist. The owner, group and permissions fields are optional.
@@ -345,13 +338,10 @@ type_resolve=The DNS server IP addresses that you enter below will be used to up
 type_defaultroute=When this action is run, the configuration engine will check the current default route against the gateway specified below.
 type_required=The filesystems listed below will be checked when this action is run to verify that they are mounted, and if not a warning message will be displayed. Each filesystem will also be checked to see if its free space has fallen below the set minimum, if any.
 type_disks=$type_required
-
 stop_err=Failed to stop Configuration Engine daemon
 stop_epids=No longer running
 stop_ekill=Failed to kill process : $1
-
 start_err=Failed to start Configuration Engine daemon
-
 log_create_section=Created action $1 and class
 log_create_class=Added class to action $1
 log_modify_class=Modified class in action $1
@@ -362,7 +352,6 @@ log_start=Started daemon
 log_stop=Stopped daemon
 log_push=Changed remote configuration hosts
 log_prun=Ran host configurations
-
 hosts_title=Webmin CFengine Cluster
 hosts_hosts=Servers in Cluster
 hosts_nohosts=No Webmin servers running CFengine have been defined yet.
@@ -374,7 +363,6 @@ hosts_rundesc=Click this button to have the Configuration Engine run on all the 
 hosts_copydesc=Click this button to have the CFengine configuration from this server copied to all the servers above, and immediately executed.
 hosts_opts=Options for running configurations
 hosts_return=servers list
-
 add_title=Add Servers
 add_msg=Adding $1 ..
 add_gmsg=Adding servers in group $1 ..
@@ -384,7 +372,6 @@ add_echeck=Server $1 does not have the configuration engine module
 add_ecfengine=CFengine is not installed on server $1
 add_ok=Added server $1 ($2 $3)
 add_eversion=CFengine on server $1 is version $2, but this Webmin module only supports versions $3 .
-
 host_title=Managed Server
 host_header=Managed CFengine server details
 host_name=Host name
@@ -393,11 +380,8 @@ host_delete=Remove from managed list
 host_os=OS from Webmin
 host_cfg=Current CFengine configuration from $1
 host_ver=CFengine version
-
 cluster_title=Run Configuration Engine
 cluster_header=Running configuration engine on all hosts in cluster ..
 cluster_success=Output from CFengine on $1 ..
 cluster_failed=Failed to run CFengine on $1 : $2
-
 this_server=this server
-

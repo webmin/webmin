@@ -1,105 +1,99 @@
 index_title=Centinelas de Seguridad
-index_ecommands=Ninguno de los comandos de centinela de seguridad ($1, $2 o $3) fue hallado en tu sistema. Quiz&#225;s no est&#225; instalado o tu <a href='$4'>configuraci&#243;n del m&#243;dulo</a> es incorrecta.
-index_return=men&#250; del m&#243;dulo
-
-portsentry_title=Configuraci&#243;n de Centinela de Puerto
-portsentry_below=(Detecci&#243;n de exploraci&#243;n de puerto)
-portsentry_ecommand=El daemon de Centinela de Puerto $1 no fue hallado en tu sistema. Quiz&#225;s no est&#225; instalado o tu <a href='$2'>configuraci&#243;n del m&#243;dulo</a> es incorrecta.
-portsentry_eversion=El programa $1 no parece ser un daemon de Centinela de Puerto. Quiz&#225;s no est&#225; instalado o tu <a href='$2'>configuraci&#243;n del m&#243;dulo</a> es incorrecta.
-portsentry_eversion2=La versi&#243;n de Centinea de Puerto (Portsentry) instalada en tu sistema es la $2, pero Webmin s&#243;lo soporta la versi&#243;n 1 en esta entrega.
-portsentry_version=Versi&#243;n $1 de Portsentry
-portsentry_header=Opciones de detecci&#243;n de exploraci&#243;n de puerto
+index_ecommands=Ninguno de los comandos de centinela de seguridad ($1, $2 o $3) fue hallado en tu sistema. Quizás no está instalado o tu <a href='$4'>configuración del módulo</a> es incorrecta.
+index_return=menú del módulo
+portsentry_title=Configuración de Centinela de Puerto
+portsentry_below=(Detección de exploración de puerto)
+portsentry_ecommand=El daemon de Centinela de Puerto $1 no fue hallado en tu sistema. Quizás no está instalado o tu <a href='$2'>configuración del módulo</a> es incorrecta.
+portsentry_eversion=El programa $1 no parece ser un daemon de Centinela de Puerto. Quizás no está instalado o tu <a href='$2'>configuración del módulo</a> es incorrecta.
+portsentry_eversion2=La versión de Centinea de Puerto (Portsentry) instalada en tu sistema es la $2, pero Webmin sólo soporta la versión 1 en esta entrega.
+portsentry_version=Versión $1 de Portsentry
+portsentry_header=Opciones de detección de exploración de puerto
 portsentry_tmode=puertos TCP a monitorizar
-portsentry_mode0=Para modo b&#225;sico, puertos listados
+portsentry_mode0=Para modo básico, puertos listados
 portsentry_mode1=Para modo avanzado, todos los puertos debajo $1 excepto $2
 portsentry_umode=Puertos UDP a monitorizar
-portsentry_ignore=M&#225;quinas de donde ignorar el tr&#225;fico
+portsentry_ignore=Máquinas de donde ignorar el tráfico
 portsentry_tblock=Bloquear pruebas TCP
 portsentry_ublock=Bloquear pruebas UDP
-portsentry_trigger=N&#250;mero de conexiones antes de disparar el bloqueo
+portsentry_trigger=Número de conexiones antes de disparar el bloqueo
 portsentry_banner=Mensaje para conexiones bloqueadas
 portsentry_kill=Ejecutar comando kill
 portsentry_err=No pude salvar opciones de portsentry
-portsentry_etports='$1' no es un puerto TCP en modo b&#225;sico
-portsentry_etadv=El m&#225;ximo de puertos TCP para modo avanzado falta o es inv&#225;lido
-portsentry_etexc='$1' no es un puerto TCP exclu&#237;do v&#225;lido
-portsentry_euports='$1' no es un puerto UDP en modo b&#225;sico v&#225;lido
-portsentry_euadv=El m&#225;ximo de puertos UDP para modo avanzado falta o es inv&#225;lido
-portsentry_euexc='$1' no es un puerto UDP exclu&#237;do v&#225;lido
-portsentry_etrigger=El n&#250;mero de conexiones antes de disparar falta o es inv&#225;lido
-portsentry_eignore='$1' no es un nombre de m&#225;quina v&#225;lido o direcci&#243;n IP a ignorar
+portsentry_etports='$1' no es un puerto TCP en modo básico
+portsentry_etadv=El máximo de puertos TCP para modo avanzado falta o es inválido
+portsentry_etexc='$1' no es un puerto TCP excluído válido
+portsentry_euports='$1' no es un puerto UDP en modo básico válido
+portsentry_euadv=El máximo de puertos UDP para modo avanzado falta o es inválido
+portsentry_euexc='$1' no es un puerto UDP excluído válido
+portsentry_etrigger=El número de conexiones antes de disparar falta o es inválido
+portsentry_eignore='$1' no es un nombre de máquina válido o dirección IP a ignorar
 portsentry_start=Arrancar Daemons de Portsentry
-portsentry_startdesc=Haz click en este bot&#243;n para arrancar los daemons de Portsentry mediante el comando $1 y utilizando las opciones de configuraci&#243;n de arriba.
+portsentry_startdesc=Haz click en este botón para arrancar los daemons de Portsentry mediante el comando $1 y utilizando las opciones de configuración de arriba.
 portsentry_stop=Parar Daemons de Portsentry
-portsentry_stopdesc=Haz click en este bot&#243;n para parar los daemons en ejecuci&#243;n de Portsentry. Esto cesar&#225; inmedi&#225;tamente toda la detecci&#243;n de exploraci&#243;n de puerto.
-portsentry_apply=Aplicar Configuraci&#243;n
-portsentry_applydesc=Haz click en este bot&#243;n para aplicar la configuraci&#243;n actual mediante la parada de los daemons de Portsentry y su rearrancado con el comando $1.
-portsentry_applyerr=No pude aplicar la configuraci&#243;n
+portsentry_stopdesc=Haz click en este botón para parar los daemons en ejecución de Portsentry. Esto cesará inmediátamente toda la detección de exploración de puerto.
+portsentry_apply=Aplicar Configuración
+portsentry_applydesc=Haz click en este botón para aplicar la configuración actual mediante la parada de los daemons de Portsentry y su rearrancado con el comando $1.
+portsentry_applyerr=No pude aplicar la configuración
 portsentry_stoperr=No pude parar portsentry
 portsentry_ekill=No pude matar los procesos $1: $2
-portsentry_estopped=Ya no est&#225; en ejecuci&#243;n
+portsentry_estopped=Ya no está en ejecución
 portsentry_starterr=No pude arrancar portsentry
 portsentry_save=Salvar y Aplicar
-
-hostsentry_title=Configuraci&#243;n de Centinela de M&#225;quina (Hostsentry)
-hostsentry_below=(Detecci&#243;n lo login sospechoso)
-hostsentry_ecommand=El gui&#243;n de hostsentry de python $1 no fue hallado en tu sistema. Quiz&#225;s no est&#225; instalado o tu <a href='$2'>configuraci&#243;n del m&#243;dulo</a> es incorrecta.
-hostsentry_header=Opciones de detecci&#243;n de login sospechoso
+hostsentry_title=Configuración de Centinela de Máquina (Hostsentry)
+hostsentry_below=(Detección lo login sospechoso)
+hostsentry_ecommand=El guión de hostsentry de python $1 no fue hallado en tu sistema. Quizás no está instalado o tu <a href='$2'>configuración del módulo</a> es incorrecta.
+hostsentry_header=Opciones de detección de login sospechoso
 hostsentry_wtmp=Archivo de registro de Logins
 hostsentry_ignore=Usuarios de los que ignorar los logins
-hostsentry_mods=M&#243;dulos de Hostsentry<br>en orden de proceso
+hostsentry_mods=Módulos de Hostsentry<br>en orden de proceso
 hostsentry_start=Arrancar Daemon de Hostsentry
-hostsentry_startdesc=Hac click en este bot&#243;n para arrancar el daemon de Hostsentry mediante el comando $1, usando las opciones de configuraci&#243;n de arriba.
+hostsentry_startdesc=Hac click en este botón para arrancar el daemon de Hostsentry mediante el comando $1, usando las opciones de configuración de arriba.
 hostsentry_stop=Parar Daemon de Hostsentry
-hostsentry_stopdesc=Haz click en este bot&#243;n para parar el daemon de Hostsentry en ejecuci&#243;n. Esto har&#225; que cese inmedi&#225;tamente toda detecci&#243;n sospechosa de login.
-hostsentry_apply=Aplicar Configuraci&#243;n
-hostsentry_applydesc=Haz click en este bot&#243;n para aplicar la configuraci&#243;n actual mediante la parada de los daemon de Hostsentry y su rearrancado con el comando $1.
-hostsentry_foreign=M&#225;quinas a no considerar for&#225;neas
-hostsentry_multiple=M&#225;quinas de las que confiar logins m&#250;ltiples
-hostsentry_applyerr=No pude aplicar configuraci&#243;n
+hostsentry_stopdesc=Haz click en este botón para parar el daemon de Hostsentry en ejecución. Esto hará que cese inmediátamente toda detección sospechosa de login.
+hostsentry_apply=Aplicar Configuración
+hostsentry_applydesc=Haz click en este botón para aplicar la configuración actual mediante la parada de los daemon de Hostsentry y su rearrancado con el comando $1.
+hostsentry_foreign=Máquinas a no considerar foráneas
+hostsentry_multiple=Máquinas de las que confiar logins múltiples
+hostsentry_applyerr=No pude aplicar configuración
 hostsentry_stoperr=No pude parar hostsentry
 hostsentry_ekill=No pude matar proceso $1: $2
-hostsentry_estopped=Ya no est&#225; en ejecuci&#243;n
+hostsentry_estopped=Ya no está en ejecución
 hostsentry_starterr=No pude arrancar hostsentry
 hostsentry_save=Salvar y Aplicar
-hostsentry_err=No pude salvar la configuraci&#243;n de hostsentry
-hostsentry_eignore='$1' no es un usuario v&#225;lido de quien ignorar los login
-hostsentry_emultiple='$1' no es una m&#225;quina v&#225;lida de la que ignorar m&#250;ltiples login
-
-logcheck_title=Configuraci&#243;n de Revisi&#243;n de Diario (Logcheck)
-logcheck_ecommand=El comando logcheck $1 no fue hallado en tu sistema. Quiz&#225;s no est&#225; instalado o tu <a href='$2'>configuraci&#243;n del m&#243;dulo</a> es incorrecta.
-logcheck_below=(An&#225;lisis de diario sospechoso)
-logcheck_header=Opciones de revisi&#243;n de archivo de diario
+hostsentry_err=No pude salvar la configuración de hostsentry
+hostsentry_eignore='$1' no es un usuario válido de quien ignorar los login
+hostsentry_emultiple='$1' no es una máquina válida de la que ignorar múltiples login
+logcheck_title=Configuración de Revisión de Diario (Logcheck)
+logcheck_ecommand=El comando logcheck $1 no fue hallado en tu sistema. Quizás no está instalado o tu <a href='$2'>configuración del módulo</a> es incorrecta.
+logcheck_below=(Análisis de diario sospechoso)
+logcheck_header=Opciones de revisión de archivo de diario
 logcheck_to=Enviar informes mediante Email a
 logcheck_hacking=Mensajes de diario de Hacking
-logcheck_violations=Mensajes de diario de violaci&#243;n
+logcheck_violations=Mensajes de diario de violación
 logcheck_violations_ign=Excepto para
 logcheck_ignore=Mensajes de diario ignorados
-logcheck_disabled=Revisi&#243;n de diario planificado desactivada
+logcheck_disabled=Revisión de diario planificado desactivada
 logcheck_enabled=Revisar diarios a horas seleccionadas...
 logcheck_save=Salvar y Aplicar
-logcheck_eto=La direcci&#243;n de email falta o es inv&#225;lida
-logcheck_runparts=La revisi&#243;n de diario se ejecuta desde cron mediante el gui&#243;n $1
+logcheck_eto=La dirección de email falta o es inválida
+logcheck_runparts=La revisión de diario se ejecuta desde cron mediante el guión $1
 logcheck_files=Archivos de diario que son monitorizados
-
 mod_moduleLoginLogout=Grabar logins y logouts
 mod_moduleFirstLogin=Detecta el primer login por usuario
-mod_moduleForeignDomain=Detectar login desde dominio for&#225;neo
+mod_moduleForeignDomain=Detectar login desde dominio foráneo
 mod_moduleRhostsCheck=Detectar archivo .rhosts inseguro
 mod_moduleHistoryTruncated=Detectar truncado de archivo de historia
 mod_moduleOddDirnames=Detectar directorio inicial impar
-mod_moduleMultipleLogins=Detectar m&#250;ltiples logins simult&#225;neos
+mod_moduleMultipleLogins=Detectar múltiples logins simultáneos
 mod_moduleOddLoginTime=Detectar tiempo de login impar
 mod_moduleInvalidUtmp=Detectar entrada de utmp modificada
 mod_moduleHistorySuspicious=Detectar comandos sospechosos en historia
-mod_moduleNetworkDaemon=Detectar daemon dejado en ejecuci&#243;n
+mod_moduleNetworkDaemon=Detectar daemon dejado en ejecución
 mod_moduleFileExists=Detectar archivos sospechosos en directorio inicial
-
-log_hostsentry=Salvada configuraci&#243;n de hostsentry
-log_portsentry=Salvada configuraci&#243;n de portsentry
-log_logcheck=Salvada configuraci&#243;n de logcheck
+log_hostsentry=Salvada configuración de hostsentry
+log_portsentry=Salvada configuración de portsentry
+log_logcheck=Salvada configuración de logcheck
 log_hostsentry_start=Arrancado daemon de hostsentry
 log_hostsentry_stop=Parado daemon de hostsentry
 log_portsentry_start=Arrancado daemon de portsentry
 log_portsentry_stop=Parado daemon de portsentry
-

@@ -1,7 +1,6 @@
-__norefs=1
-index_credits=VNC&#8722;Client&#8722;Applet erstellt von AT&amp;T. Besuchen Sie <a href=http://www.uk.research.att.com/vnc>http://www.uk.research.att.com/vnc</a> f&uuml;r mehr Informationen.
-index_ecmd=Das ben&ouml;tigte VNC&#8722;Serverprogramm $1 f&uuml;r ein spezifisches Programm ist nicht installiert.
-index_esocket=Es l&auml;uft kein VNC&#8722;Server auf $1 Port $2.
-index_nojava=Dieses Module ben&ouml;tigt JAVA, aber Ihr Browser unterst&uuml;tzt kein JAVA.
-index_title=VNC&#8722;Client
-index_warn=Achtung! Diese VNC&#8722;Sitzung ist <b>NICHT</b> verschl&uuml;sselt.
+index_title=VNC−Client
+index_warn=Achtung! Diese VNC−Sitzung ist <b>NICHT</b> verschlüsselt.
+index_nojava=Dieses Module benötigt JAVA, aber Ihr Browser unterstützt kein JAVA.
+index_credits=VNC−Client−Applet erstellt von AT&T. Besuchen Sie <a href=http://www.uk.research.att.com/vnc>http://www.uk.research.att.com/vnc</a> für mehr Informationen.
+index_esocket=Es läuft kein VNC−Server auf $1 Port $2.
+index_ecmd=Das benötigte VNC−Serverprogramm $1 für ein spezifisches Programm ist nicht installiert.

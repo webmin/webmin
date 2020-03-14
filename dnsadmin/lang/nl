@@ -1,4 +1,3 @@
-
 log_servers=Gewijzigde andere DNS servers
 log_logging=Gewijzigde logs en fouten
 log_acls=Gewijzigde toegangs controle lijst
@@ -24,4 +23,3 @@ log_delete_record=Verwijderd $1 record $2 in zone $3
 log_create_record=Aangemaakt $1 record $2 in zone $3
 log_modify_record=Gewijzigd $1 record $2 in zone $3
 log_boot=Primaire configuratie file aangemaakt
-
