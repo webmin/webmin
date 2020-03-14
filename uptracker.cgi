@@ -45,7 +45,7 @@ $start = time();
 while(1) {
 	sleep(1);
 	$now = time();
-	if (!open(UPFILE, $upfile)) {
+	if (!open(UPFILE, "<$upfile")) {
 		# Doesn't exist yet
 		if ($now - $start > 60) {
 			# Give up after 60 seconds
