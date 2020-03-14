@@ -750,8 +750,12 @@ sub go
         # Get source, base language file
         read_file($mfile, \%template);
 
-        # Check if the module has already been transcoded/translated, to avoid potential mess
-        if (!@{$keys_test} && $opt->{'language-source-encoding'} eq 'map' && -r $mpath . "/de.auto") {
+        # Check if the module has already been transcoded/translated, to avoid potential waste
+        if (!@{$keys_test} &&
+            !$language_source_ignore_auto &&
+            $opt->{'language-source-encoding'} eq 'map' &&
+            -r $mpath . "/de.auto")
+        {
             talk_log(("Transcoding/translating skipped for " . RED BOLD, $module, RESET . " module .."), $data, 1);
             next;
         }
@@ -833,7 +837,7 @@ sub go
                     $key__ = "${key}_${code}";
                 }
 
-                # Previously translated strings from `$code.auto` file, e.g. `de.auto`, should be considered, unless forced to be dropped
+    # Previously translated strings from `$code.auto` file, e.g. `de.auto`, should be considered, unless forced to be dropped
                 if ($language_source_file_auto &&
                     $language_source_file_auto->{$key_} &&
                     !@{$keys_test} &&
