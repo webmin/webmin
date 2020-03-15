@@ -1,119 +1,113 @@
 index_title=Gravador de CD
-index_profiles=Perfis de grava&#231;&#227;o
+index_profiles=Perfis de gravação
 index_name=Nome do perfil
-index_type=Tipo de grava&#231;&#227;o
+index_type=Tipo de gravação
 index_files=Arquivo(s) para gravar
 index_add=Adicionar novo perfil do tipo:
-index_type1=&#218;nica imagem ISO
-index_type2=Arquivos e diret&#243;rios
+index_type1=Única imagem ISO
+index_type2=Arquivos e diretórios
 index_type3=Trilhas de Audio
 index_type4=Copiar CD
-index_none=Nenhum perfil de grava&#231;&#227;o foi definido.
-index_global=Op&#231;&#245;es Globais
-index_ecdrecord=O comando de grava&#231;&#227;o de CD $1 n&#227;o foi encontrado em seu sistema. Talvez ele n&#227;o esteja instalado, ou sua <a href='$2'>configura&#231;&#227;o do m&#243;dulo</a> est&#225; incorreta.
+index_none=Nenhum perfil de gravação foi definido.
+index_global=Opções Globais
+index_ecdrecord=O comando de gravação de CD $1 não foi encontrado em seu sistema. Talvez ele não esteja instalado, ou sua <a href='$2'>configuração do módulo</a> está incorreta.
 index_return=lista de perfis
-
-edit_title=Editar perfil de grava&#231;&#227;o
-create_title=Criar um perfil de grava&#231;&#227;o
-edit_emkisofs=O comando para gerar sistemas de arquivo ISO $1 n&#227;o foi encontrado em seu sistema. Talvez ele n&#227;o esteja instalado, ou a sua <a href='$2'>configura&#231;&#227;o de m&#243;dulo</a> est&#225; incorreta.
-edit_empg123=O comando para decodificar MP3 $1 n&#227;o foi encontrado em seu sistema. Talvez ele n&#227;o esteja instalado, ou a sua <a href='$2'>configura&#231;&#227;o de m&#243;dulo</a> est&#225; incorreta.
-edit_ecdrdao=O comando para coiar CD $1 n&#227;o foi encontrado em seu sistema. Talvez ele n&#227;o esteja instalado, ou a sua <a href='$2'>configura&#231;&#227;o de m&#243;dulo</a> est&#225; incorreta.
-edit_header=Op&#231;&#245;es de perfil de grava&#231;&#227;o
+edit_title=Editar perfil de gravação
+create_title=Criar um perfil de gravação
+edit_emkisofs=O comando para gerar sistemas de arquivo ISO $1 não foi encontrado em seu sistema. Talvez ele não esteja instalado, ou a sua <a href='$2'>configuração de módulo</a> está incorreta.
+edit_empg123=O comando para decodificar MP3 $1 não foi encontrado em seu sistema. Talvez ele não esteja instalado, ou a sua <a href='$2'>configuração de módulo</a> está incorreta.
+edit_ecdrdao=O comando para coiar CD $1 não foi encontrado em seu sistema. Talvez ele não esteja instalado, ou a sua <a href='$2'>configuração de módulo</a> está incorreta.
+edit_header=Opções de perfil de gravação
 edit_name=Nome do perfil
 edit_iso=Imagem ISO a gravar
 edit_isosize=Verificar o tamanho do arquivo ISO?
-edit_dirs=Diret&#243;rios a incluir
-edit_source=Arquivo fonte ou diret&#243;rio
-edit_dest=Diret&#243;rio no CD
-edit_rock=Gerar extens&#245;es RockRidge (unix)?
-edit_rock2=Sim, com permiss&#245;es sensatas
-edit_joliet=Gerar extens&#245;es Joliet (windows)?
+edit_dirs=Diretórios a incluir
+edit_source=Arquivo fonte ou diretório
+edit_dest=Diretório no CD
+edit_rock=Gerar extensões RockRidge (unix)?
+edit_rock2=Sim, com permissões sensatas
+edit_joliet=Gerar extensões Joliet (windows)?
 edit_long=Permitir nome de arquivos longos?
 edit_trans=Gerar o arquivo TRANS.TBL?
 edit_volid=CD volume ID
-edit_mp3s=Arquivos MP3 e diret&#243;rios
+edit_mp3s=Arquivos MP3 e diretórios
 edit_burn=Salvar e gravar agora
 edit_test=Salvar e testar e gravar agora
-edit_return=perfil de grava&#231;&#227;o
-edit_ask=Pedir confirma&#231;&#227;o antes de gravar?
+edit_return=perfil de gravação
+edit_ask=Pedir confirmação antes de gravar?
 edit_sdev=Fonte do dispositivo CD
 edit_other=Outro dispositivo..
-edit_fly=Modo c&#243;pia
-edit_fly1=Direto do CD para grava&#231;&#227;o
-edit_fly0=Usar arquivo tempor&#225;rio
+edit_fly=Modo cópia
+edit_fly1=Direto do CD para gravação
+edit_fly0=Usar arquivo temporário
 edit_srcdrv=Driver do dispositivo fonte
 edit_dstdrv=Driver do dispositivo de destino
-
 save_err=Falha ao salvar perfil
 save_ename=Nome do perfil faltando
-save_eiso=Arquivo ISO inv&#225;lido ou faltando
-save_esource=Diret&#243;rio fonte $1 inv&#225;lido ou faltando
-save_edest=Faltando diret&#243;rio no CD para $1
-save_edirs=N&#227;o foram escolhidos diret&#243;rios de origem
-save_emp3s=N&#227;o foram escolhidos arquivos MP3 ou diret&#243;rios
-save_emp3=O arquivo MP3 ou diret&#243;rio '$1' n&#227;o existe
-save_eother=Arquivo do dispositivo de origem n&#227;o existe
-
+save_eiso=Arquivo ISO inválido ou faltando
+save_esource=Diretório fonte $1 inválido ou faltando
+save_edest=Faltando diretório no CD para $1
+save_edirs=Não foram escolhidos diretórios de origem
+save_emp3s=Não foram escolhidos arquivos MP3 ou diretórios
+save_emp3=O arquivo MP3 ou diretório '$1' não existe
+save_eother=Arquivo do dispositivo de origem não existe
 burn_title=Gravar CD
-burn_rutest1=Voc&#234; tem certeza que quer testar a grava&#231;&#227;o da imagem ISO $1 ?
-burn_rusure1=Voc&#234; tem certeza que quer gravar a imagem ISO $1 em CD ?
-burn_rutest2=Voc&#234; tem certeza que quer testar a grava&#231;&#227;o dos diret&#243;rios escolhidos ?
-burn_rusure2=Voc&#234; tem certeza que quer gravar os diret&#243;rios escolhidos em CD ?
-burn_rutest3=Voc&#234; tem certeza que quer testar a grava&#231;&#227;o das trilhas de audio ?
-burn_rusure3=Voc&#234; tem certeza que quer gravar as trilhas de audio em CD ?
-burn_rusure4=Voc&#234; tem certeza que quer copiar de $1 ?
+burn_rutest1=Você tem certeza que quer testar a gravação da imagem ISO $1 ?
+burn_rusure1=Você tem certeza que quer gravar a imagem ISO $1 em CD ?
+burn_rutest2=Você tem certeza que quer testar a gravação dos diretórios escolhidos ?
+burn_rusure2=Você tem certeza que quer gravar os diretórios escolhidos em CD ?
+burn_rutest3=Você tem certeza que quer testar a gravação das trilhas de audio ?
+burn_rusure3=Você tem certeza que quer gravar as trilhas de audio em CD ?
+burn_rusure4=Você tem certeza que quer copiar de $1 ?
 burn_ok=Sim, gravar agora!
-burn_cancel=N&#227;o, apague o arquivo ISO tempor&#225;rio
-burn_eject=Ejetar o CD ap&#243;s a grava&#231;&#227;o
+burn_cancel=Não, apague o arquivo ISO temporário
+burn_eject=Ejetar o CD após a gravação
 burn_blank=Apagar o CD antes de gravar?
-burn_bfast=Apagar r&#225;pido
+burn_bfast=Apagar rápido
 burn_ball=Apagar devagar
-burn_bg=Come&#231;ar o processo de grava&#231;&#227;o em segundo plano
-burn_edev=Voc&#234; n&#227;o pode gravar um CD enquanto um dispositivo de grava&#231;&#227;o n&#227;o for configurado na p&#225;gina <a href='$1'>Op&#231;&#245;es do Dispositivo</a>.
+burn_bg=Começar o processo de gravação em segundo plano
+burn_edev=Você não pode gravar um CD enquanto um dispositivo de gravação não for configurado na página <a href='$1'>Opções do Dispositivo</a>.
 burn_header=Gravando o CD com o comando $1 ..
-burn_theader=Testando a grava&#231;&#227;o com o comando $1 ..
+burn_theader=Testando a gravação com o comando $1 ..
 burn_header2=Gravando o CD em segundo plano com o comando $1 ..
-burn_theader2=Testando a grava&#231;&#227;o em segundo plano com o comando $1 ..
+burn_theader2=Testando a gravação em segundo plano com o comando $1 ..
 burn_mheader=Criando um sistema de arquivos ISO com o comando $1 ..
 burn_mfailed=Falha ao criar o sistema de arquivos ISO!
-burn_egone=A imagem ISO foi apagada - Voc&#234; ter&#225; que retornar para o <a href='$1'>perfil de grava&#231;&#227;o</a> para ger&#225;-la novamente.
-burn_egone2=As trilhas de audio tempor&#225;rias foram apagadas - Voc&#234; ter&#225; que retornar para o <a href='$1'>perfil de grava&#231;&#227;o</a> para ger&#225;-las novamente.
-burn_700=Aten&#231;&#227;o! Sua imagem ISO tem o tamanho de $1 MB, que est&#225; al&#233;m dos 700 MB permitidos em um CD de 80 minutos.
-burn_650=Aten&#231;&#227;o! Sua imagem ISO tem o tamanho de $1 MB, que est&#225; al&#233;m dos 650 MB permitidos em um CD normal. Entretanto, caber&#225; em um CD de 80 minutos.
-burn_size=A imagem ISO gerado tem $1 MB, de um total de $2 MB que &#233; permitido em um CD normal.
-burn_nomp3s=O diret&#243;rio escolhido n&#227;o possui nenhum arquivo.
+burn_egone=A imagem ISO foi apagada - Você terá que retornar para o <a href='$1'>perfil de gravação</a> para gerá-la novamente.
+burn_egone2=As trilhas de audio temporárias foram apagadas - Você terá que retornar para o <a href='$1'>perfil de gravação</a> para gerá-las novamente.
+burn_700=Atenção! Sua imagem ISO tem o tamanho de $1 MB, que está além dos 700 MB permitidos em um CD de 80 minutos.
+burn_650=Atenção! Sua imagem ISO tem o tamanho de $1 MB, que está além dos 650 MB permitidos em um CD normal. Entretanto, caberá em um CD de 80 minutos.
+burn_size=A imagem ISO gerado tem $1 MB, de um total de $2 MB que é permitido em um CD normal.
+burn_nomp3s=O diretório escolhido não possui nenhum arquivo.
 burn_mp3header=Convertendo arquivos MP3s para trilhas de audio com o comando $1 ..
 burn_mp3failed=Falha ao converter os arquivs MP3!
-burn_mp3format=O arquivo $1 n&#227;o parece estar no formato MP3.
-burn_746=Aten&#231;&#227;o! Suas trilhas de audio tem o tamanho de $1 MB, que est&#225; al&#233;m do total de 746 MB permitido em um CD comum de audio. Entretando, caber&#225; em um CD de 80 minutos.
-burn_807=Aten&#231;&#227;o! Suas trilhas de audio tem o tamanho de $1 MB, que est&#225; al&#233;m do total de 807 MB permitido em um CD de 80 minutos.
-burn_mp3size=As trilhas de audio convertidas tem o tamanho de $1 MB, de um total de $2 MB que &#233; permitido em um CD comum de audio.
-
-dev_title=Op&#231;&#245;es do dispositivo
-dev_header=Op&#231;&#245;es do dispositivo de grava&#231;&#227;o de CD
-dev_device=Dispositivo de grava&#231;&#227;o
-dev_none=&lt;Nenhum selecionado&gt;
-dev_speed=Velocidade de grava&#231;&#227;o
+burn_mp3format=O arquivo $1 não parece estar no formato MP3.
+burn_746=Atenção! Suas trilhas de audio tem o tamanho de $1 MB, que está além do total de 746 MB permitido em um CD comum de audio. Entretando, caberá em um CD de 80 minutos.
+burn_807=Atenção! Suas trilhas de audio tem o tamanho de $1 MB, que está além do total de 807 MB permitido em um CD de 80 minutos.
+burn_mp3size=As trilhas de audio convertidas tem o tamanho de $1 MB, de um total de $2 MB que é permitido em um CD comum de audio.
+dev_title=Opções do dispositivo
+dev_header=Opções do dispositivo de gravação de CD
+dev_device=Dispositivo de gravação
+dev_none=<Nenhum selecionado>
+dev_speed=Velocidade de gravação
 dev_other=Outra..
-dev_extra=Op&#231;&#245;es extra do <tt>cdrecord</tt>
-dev_err=Falha ao salvar as op&#231;&#245;es do dispositivo
-dev_eother=Velocidade de grava&#231;&#227;o invalida ou faltando
-
-mkisofs_title=Op&#231;&#245;es do sistema de arquivos ISO
-mkisofs_header=Op&#231;&#245;es globais do sistema de arquivos ISO
-mkisofs_novers=Incluir o n&#250;mero da vers&#227;o no nome dos arquivos?
+dev_extra=Opções extra do <tt>cdrecord</tt>
+dev_err=Falha ao salvar as opções do dispositivo
+dev_eother=Velocidade de gravação invalida ou faltando
+mkisofs_title=Opções do sistema de arquivos ISO
+mkisofs_header=Opções globais do sistema de arquivos ISO
+mkisofs_novers=Incluir o número da versão no nome dos arquivos?
 mkisofs_notrans=Permitir todos os caracteres no nome dos arquivos?
 mkisofs_nobak=Pular arquivos de backup?
-mkisofs_fsyms=Seguir links simb&#243;licos?
-
+mkisofs_fsyms=Seguir links simbólicos?
 config_cdrecord=Comando para gravar CD
 config_mkisofs=Comando para gerar sistemas de arquivo ISO
 config_mpg123=Comando para decodificar MP3
 config_cdrdao=Comando para copiar CD
-config_temp=Diret&#243;rio de arquivos tempor&#225;rios
-config_temp_def=Diret&#243;rio tempor&#225;rio do Webmin
-config_ecdrecord=Comando de grava&#231;&#227;o de CD inv&#225;lido ou faltando
-config_emkisofs=Comando cria&#231;&#227;o de sistemas de arquivos ISO inv&#225;lido ou faltando
-config_empg123=Comando para decodifica&#231;&#227;o de MP3 inv&#225;lido ou faltando
-config_ecdrdao=Comando para c&#243;pia de CD inv&#225;lido ou faltando
-config_etemp=Diret&#243;rio de arquivo tempor&#225;rio inv&#225;lido ou faltando
+config_temp=Diretório de arquivos temporários
+config_temp_def=Diretório temporário do Webmin
+config_ecdrecord=Comando de gravação de CD inválido ou faltando
+config_emkisofs=Comando criação de sistemas de arquivos ISO inválido ou faltando
+config_empg123=Comando para decodificação de MP3 inválido ou faltando
+config_ecdrdao=Comando para cópia de CD inválido ou faltando
+config_etemp=Diretório de arquivo temporário inválido ou faltando

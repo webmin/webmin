@@ -995,7 +995,8 @@ sub go
                 }
                 my $file      = $mpath . "/$code";
                 my $file_auto = $mpath . "/$code.$language_suffix";
-                write_file($file, \%language, undef, undef, $mfile);
+                write_file($file, \%language, undef, undef, $mfile)
+                  if (%language || (!%language && !$opt->{'only-transcode'}));
                 write_file($file_auto, \%language_auto, undef, undef, $mfile) if (!$opt->{'only-transcode'});
 
                 # Git auto-commit after language was transcoded/translated
@@ -1208,7 +1209,7 @@ Translate all available languages, using old-time encoding map, for BIND module,
 
 Only transcode language files, using old-time encoding map, from files being in different encodings, to new style, where all language files are in "utf-8" encoding, for Apache module. No translations will be made, and no ".auto" files will be created.
 
- — language-manager -x=full -e=map -m=apache --ot
+ — language-manager -x=full -e=map -m=apache -ot
 
 Test translations for "index_stopmsg,trusted_warning" keys, in Russian and German languages, in BIND module, print on-screen results and exit.
 

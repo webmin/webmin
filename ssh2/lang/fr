@@ -1,4 +1,4 @@
 index_title=Ouverture de Session SSH/Telnet
-index_warn=Attention!  Cette session Telnet <b>n'est pas</b> encrypté.
-index_nojava=Ce module nécessite java, mais votre fureteur ne le supporte pas
-index_credits=Applet Java développé sous licence GPL par <a href='$1'>Matthias L. Jugel &amp; Marcus Meißner</a>.
+index_warn=Attention!  Cette session Telnet <b>n'est pas</b> encryptÃ©.
+index_nojava=Ce module nÃ©cessite java, mais votre fureteur ne le supporte pas
+index_credits=Applet Java dÃ©veloppÃ© sous licence GPL par <a href='$1'>Matthias L. Jugel & Marcus MeiÃŸner</a>.

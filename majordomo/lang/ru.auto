@@ -1,0 +1,20 @@
+index_eversion2=Файл версии Majordomo $1 не найден в каталоге программ $2. Возможно, ваша <a href='$3'>конфигурация модуля</a> неверна или majordomo не установлен.
+index_esendmail2=Sendmail либо не установлен, либо неправильно настроен в вашей системе. Проверьте <a href=$2>модуль Sendmail</a>.
+index_epostfix=Postfix либо не установлен, либо неправильно настроен в вашей системе. Проверьте <a href='$1'>модуль Postfix</a>.
+index_esendmail3=Модуль Sendmail Webmin, необходимый для управления псевдонимами, не установлен.
+index_name=Имя списка
+index_info=Список информации
+index_mail=Почтовый адрес
+index_moderated=Модерируемый
+index_count=Количество пользователей
+global_saved=(Сохранены)
+create_minimum=Минимально необходимая информация
+check_title=Проверьте Majordomo Config
+check_test=Тест на. ..
+check_result=Результат / дополнительная проверка
+check_status=Положение дел
+check_perm=права доступа
+check_exec=исполняемый мир!
+check_write=Мир для записи!
+check_read=читаемый мир!
+check_possible=Возможная проблема

@@ -1,0 +1,27 @@
+index_eversion2=Majordomoバージョンファイル $1は、プログラムディレクトリ $2で見つかりませんでした。 <a href='$3'>モジュール設定</a>が間違っているか、majordomoがインストールされていない可能性があります。
+index_esendmail2=Sendmailがシステムにインストールされていないか、適切にセットアップされていません。 <a href=$2>Sendmailモジュール</a>の設定を確認してください。
+index_epostfix=Postfixがシステムにインストールされていないか、適切にセットアップされていません。 <a href='$1'>Postfixモジュール</a>の設定を確認してください。
+index_esendmail3=エイリアスの管理に必要なSendmail Webminモジュールがインストールされていません。
+index_version=Majordomoバージョン $1
+index_name=リスト名
+index_info=リスト情報
+index_mail=メールアドレス
+index_moderated=モデレート
+index_count=ユーザー数
+global_saved=（保存済み）
+create_archive=メーリングリストをアーカイブしますか？
+create_archiveyear=年次ファイルで
+create_archivemonth=月次ファイルで
+create_archiveday=毎日のファイルで
+create_minimum=最低限必要な情報
+alias_err=エイリアスのセットアップに失敗しました
+alias_eowner=所有者のメールアドレスがありません
+check_title=Majordomo構成を確認する
+check_test=のテスト. ..
+check_result=結果/追加チェック
+check_status=状態
+check_perm=許可
+check_exec=世界実行可能！
+check_write=世界の書き込み可能！
+check_read=世界が読める！
+check_possible=考えられる問題

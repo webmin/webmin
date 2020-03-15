@@ -1,27 +1,25 @@
-
 log_servers=Cambiados otros servidores DNS
 log_logging=Cambiados diarios y errores
 log_acls=Cmabiadas listas de control de acceso
 log_files=Cambiados directorios y archivos
-log_forwarding=Cambiados reenvÌos y transferencias
-log_net=Cambiadas direcciones y topologÌa
+log_forwarding=Cambiados reenv√≠os y transferencias
+log_net=Cambiadas direcciones y topolog√≠a
 log_misc=Cambiadas opciones varias
 log_zonedef=Cambiados valores por defecto de zona
 log_apply=Cambios aplicados
 log_start=Servidor DNS arrancado
 log_master=Creada zona maestra $1
 log_slave=Creada zona esclava $1
-log_stub=Creada zona de sÛlo cachÈ $1
-log_forward=Creada zona de reenvÌo $1
+log_stub=Creada zona de s√≥lo cach√© $1
+log_forward=Creada zona de reenv√≠o $1
 log_delete_master=Borrada zona maestra $1
 log_delete_slave=Borrada zona esclava $1
-log_delete_stub=Borrada zona de sÛlo cachÈ $1
-log_delete_forward=Borrada zona de reenvÌo $1
-log_text=Editados manu·lmente registros de $1
-log_soa=Cambiados par·metros de zona de $1
+log_delete_stub=Borrada zona de s√≥lo cach√© $1
+log_delete_forward=Borrada zona de reenv√≠o $1
+log_text=Editados manu√°lmente registros de $1
+log_soa=Cambiados par√°metros de zona de $1
 log_opts=Cambiadas opciones de zona de $1
 log_delete_record=Borrado $1 registro $2 en zona $3
 log_create_record=Creado $1 registro $2 en zona $3
 log_modify_record=Modificado $1 registro $2 en zona $3
-log_boot=Creado archivo de configuraciÛn primario
-
+log_boot=Creado archivo de configuraci√≥n primario

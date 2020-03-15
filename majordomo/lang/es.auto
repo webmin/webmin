@@ -1,0 +1,19 @@
+index_esendmail=La configuración <tt>$1</tt> de su configuración de módulo se establece en <tt>$2</tt>, que no existe. Tal vez la <a href='$3'>configuración del módulo</a> sea incorrecta o no esté instalado ningún demonio de correo.
+index_epostfix=Postfix no está instalado o no está configurado correctamente en su sistema. Verifique la configuración del <a href='$1'>módulo Postfix</a>.
+index_esendmail3=El módulo Sendmail Webmin necesario para administrar los alias no está instalado.
+index_name=Lista de nombres
+index_info=Información de la lista
+index_mail=Dirección de correo
+index_moderated=Moderado
+index_count=# de usuarios
+global_saved=(salvado)
+create_minimum=Información mínima requerida
+check_title=Verifique la configuración de Majordomo
+check_test=Hacer una prueba por. ..
+check_result=Resultado / verificación adicional
+check_status=Estado
+check_perm=Permisos
+check_exec=mundo ejecutable!
+check_write=mundo escribible!
+check_read=legible por el mundo!
+check_possible=Posible problema

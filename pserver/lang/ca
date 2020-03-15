@@ -1,109 +1,98 @@
 index_title=Servidor CVS
-index_ecvs=No s'ha trobat al sistema l'ordre CVS $1. Pot ser que no estigui instal∑lada, o bÈ que la <a href='$2'>configuraciÛ del mÚdul</a> sigui incorrecta.
-index_eversion=No s'ha pogut obtenir la versiÛ a partir de l'ordre CVS $1. La sortida Ès $2.
-index_eroot=El directori arrel de CVS no s'ha establert correctament. Has d'utilitzar la <a href='$1'>configuraciÛ del mÚdul</a> per establir-lo abans que aquest mÚdul pugui funcionar.
-index_initdesc=Alternativament, pots crear un nou repositori CVS sota $1 fent clic al botÛ de sota.
+index_ecvs=No s'ha trobat al sistema l'ordre CVS $1. Pot ser que no estigui instal¬∑lada, o b√© que la <a href='$2'>configuraci√≥ del m√≤dul</a> sigui incorrecta.
+index_eversion=No s'ha pogut obtenir la versi√≥ a partir de l'ordre CVS $1. La sortida √©s $2.
+index_eroot=El directori arrel de CVS no s'ha establert correctament. Has d'utilitzar la <a href='$1'>configuraci√≥ del m√≤dul</a> per establir-lo abans que aquest m√≤dul pugui funcionar.
+index_initdesc=Alternativament, pots crear un nou repositori CVS sota $1 fent clic al bot√≥ de sota.
 index_init=Inicialitza el Repositori
-index_version=VersiÛ CVS $1
-index_setup=ConfiguraciÛ del Servidor CVS
-index_setupdesc=No sembla que el servidor CVS estigui actualment configurat al sistema. Fes clic sobre aquest botÛ per executar-lo a partir de $1, de manera que els usuaris remots puguin accedir al repositori CVS.
+index_version=Versi√≥ CVS $1
+index_setup=Configuraci√≥ del Servidor CVS
+index_setupdesc=No sembla que el servidor CVS estigui actualment configurat al sistema. Fes clic sobre aquest bot√≥ per executar-lo a partir de $1, de manera que els usuaris remots puguin accedir al repositori CVS.
 index_act=Activa el Servidor CVS
-index_actdesc=El servidor CVS est‡ configurat per executar-se a partir de $1 al teu sistema, perÚ actualment no est‡ actiu. Fes clic sobre aquest botÛ si vols activar-lo i permetre que els usuaris remots accedeixin al repositori CVS.
-index_actdesc2=El servidor CVS est‡ configurat per executar-se a partir de $1 al teu sistema per a l'arrel CVS $2, perÚ actualment no est‡ actiu. Fes clic sobre aquest botÛ si vols activar-lo i permetre que els usuaris remots accedeixin al repositori CVS.
+index_actdesc=El servidor CVS est√† configurat per executar-se a partir de $1 al teu sistema, per√≤ actualment no est√† actiu. Fes clic sobre aquest bot√≥ si vols activar-lo i permetre que els usuaris remots accedeixin al repositori CVS.
+index_actdesc2=El servidor CVS est√† configurat per executar-se a partir de $1 al teu sistema per a l'arrel CVS $2, per√≤ actualment no est√† actiu. Fes clic sobre aquest bot√≥ si vols activar-lo i permetre que els usuaris remots accedeixin al repositori CVS.
 index_deact=Desactiva el Servidor CVS
-index_deactdesc=El servidor CVS est‡ configurat per executar-se a partir de $1 al teu sistema, i est‡ actiu. Fes clic sobre aquest botÛ si vols desactivar-lo i evitar que els usuaris remots accedeixin al repositori CVS.
-index_deactdesc2=El servidor CVS est‡ configurat per executar-se a partir de $1 al teu sistema per a l'arrel CVS $2, i est‡ actiu. Fes clic sobre aquest botÛ si vols desactivar-lo i evitar que els usuaris remots accedeixin al repositori CVS.
-index_return=a l'Ìndex del mÚdul
+index_deactdesc=El servidor CVS est√† configurat per executar-se a partir de $1 al teu sistema, i est√† actiu. Fes clic sobre aquest bot√≥ si vols desactivar-lo i evitar que els usuaris remots accedeixin al repositori CVS.
+index_deactdesc2=El servidor CVS est√† configurat per executar-se a partir de $1 al teu sistema per a l'arrel CVS $2, i est√† actiu. Fes clic sobre aquest bot√≥ si vols desactivar-lo i evitar que els usuaris remots accedeixin al repositori CVS.
+index_return=a l'√≠ndex del m√≤dul
 index_asuser=Executa com a usuari:
-index_einetroot=AtenciÛ! L'arrel CVS establerta a la configuraciÛ del mÚdul no coincideix amb l'arrel del servidor CVS. AixÚ es pot arreglar desactivant i reactivant el servidor CVS.
-
-setup_einet=No sembla que ni <tt>inetd</tt> ni <tt>xinetd</tt> estiguin instal∑lats al sistema.
-setup_ecannot=No tens permÌs per configurar el servidor CVS
-
+index_einetroot=Atenci√≥! L'arrel CVS establerta a la configuraci√≥ del m√≤dul no coincideix amb l'arrel del servidor CVS. Aix√≤ es pot arreglar desactivant i reactivant el servidor CVS.
+setup_einet=No sembla que ni <tt>inetd</tt> ni <tt>xinetd</tt> estiguin instal¬∑lats al sistema.
+setup_ecannot=No tens perm√≠s per configurar el servidor CVS
 passwd_title=Usuaris CVS
 passwd_header=Usuaris dels servidor CVS
-passwd_desc=El servidor CVS permetr‡ els usuaris llistats a sota d'entrar i accedir al repositori. Si un usuari no llistat hi intenta entrar, en lloc d'aixÚ el servidor pot intentar verficar la contrasenya de l'usuari contra el fitxer de contrasenyes del sistema, depenent de la configuraciÛ del servidor.
+passwd_desc=El servidor CVS permetr√† els usuaris llistats a sota d'entrar i accedir al repositori. Si un usuari no llistat hi intenta entrar, en lloc d'aix√≤ el servidor pot intentar verficar la contrasenya de l'usuari contra el fitxer de contrasenyes del sistema, depenent de la configuraci√≥ del servidor.
 passwd_add=Afegeix un nou usuari CVS.
 passwd_none=Encara no s'ha definit cap usuari CVS.
-passwd_sync=Les opcions de sota configuren la sincronitzaciÛ entre els usuaris Unix creats a travÈs de Webmin i els usuaris CVS.
+passwd_sync=Les opcions de sota configuren la sincronitzaci√≥ entre els usuaris Unix creats a trav√©s de Webmin i els usuaris CVS.
 passwd_sync_create=Afegeix un nou usuari CVS quan s'afegeixi un nou usuari Unix.
 passwd_sync_modify=Actualitza un usuari CVS quan l'usuari Unix corresponent es modifiqui.
 passwd_sync_delete=Suprimeix un usuari CVS quan l'usuari Unix corresponent se suprimeixi.
 passwd_return=a la llista d'usuaris
-passwd_ecannot=No tens permÌs per gestionar els usuaris CVS
-
-edit_title1=CreaciÛ d'Usuari CVS
-edit_title2=EdiciÛ d'Usuari CVS
+passwd_ecannot=No tens perm√≠s per gestionar els usuaris CVS
+edit_title1=Creaci√≥ d'Usuari CVS
+edit_title2=Edici√≥ d'Usuari CVS
 edit_header=Detalls de l'usuari CVS
 edit_user=Usuari
 edit_pass=Contrasenya
 edit_pass3=Copia de Unix
 edit_pass2=No en cal cap dels dos
-edit_pass1=Deixa-ho tal com est‡
+edit_pass1=Deixa-ho tal com est√†
 edit_pass0=Estableix a...
 edit_unix=Accedeix els fitxers com l'usuari Unix
 edit_unixdef=Igual que l'usuari
-
 save_err=No s'ha pogut desar l'usuari CVS
-save_euser=Hi falta el nom d'usuari o bÈ Ès inv‡lid
-save_eunix=Hi falta el nom de l'usuari Unix o bÈ Ès inv‡lid
+save_euser=Hi falta el nom d'usuari o b√© √©s inv√†lid
+save_eunix=Hi falta el nom de l'usuari Unix o b√© √©s inv√†lid
 save_ecopy=L'usuari Unix del qual s'ha de copiar la contrasenya no existeix
-save_emd5=La contrasenya Unix est‡ en format MD5
-
-access_title=Control d'AccÈs d'Usuaris
-access_header=Usuaris CVS de nomÈs lectura
-access_readers1=No hi ha cap usuari nomÈs lectura
-access_readers0=Els usuaris llistats sÛn nomÈs lectura...
+save_emd5=La contrasenya Unix est√† en format MD5
+access_title=Control d'Acc√©s d'Usuaris
+access_header=Usuaris CVS de nom√©s lectura
+access_readers1=No hi ha cap usuari nom√©s lectura
+access_readers0=Els usuaris llistats s√≥n nom√©s lectura...
 access_writers1=Tots els usuaris poden escriure
-access_writers0=NomÈs poden escriure els usuaris llistats...
-access_desc=Si un usuari est‡ a totes dues llistes de lectura i escriptura, se li donar‡ accÈs nomÈs lectura.
-access_err=No s'ha pogut desar el control d'accÈs d'usuaris
+access_writers0=Nom√©s poden escriure els usuaris llistats...
+access_desc=Si un usuari est√† a totes dues llistes de lectura i escriptura, se li donar√† acc√©s nom√©s lectura.
+access_err=No s'ha pogut desar el control d'acc√©s d'usuaris
 access_euser=L'usuari '$1' no existeix
-access_ecannot=No tens permÌs per editar el control d'accÈs d'usuaris
-
+access_ecannot=No tens perm√≠s per editar el control d'acc√©s d'usuaris
 cvsweb_title=Fullejat del Repositori
-cvsweb_ecmd=No s'ha trobat al sistema l'ordre CVS $1. Aquesta ordre Ès necess‡ria per a visualitzar el repositori CVS.
-cvsweb_ecannot=No tens permÌs per veure el repositori CVS
-
-config_title=ConfiguraciÛ del Servidor
-config_header=Opcions de configuraciÛ del servidor
+cvsweb_ecmd=No s'ha trobat al sistema l'ordre CVS $1. Aquesta ordre √©s necess√†ria per a visualitzar el repositori CVS.
+cvsweb_ecannot=No tens perm√≠s per veure el repositori CVS
+config_title=Configuraci√≥ del Servidor
+config_header=Opcions de configuraci√≥ del servidor
 config_auth=Verifica els usuaris contra el fitxer de contrasenyes del sistema
 config_top=Crea directoris CVS de nivell superior
 config_hist=Tipus d'esdeveniments a enregistrar a l'historial
 config_hist_all=Tots
 config_hist_sel=Els tipus seleccionats...
 config_hist_F=Alliberament
-config_hist_O=VerificaciÛ
-config_hist_E=ExportaciÛ
+config_hist_O=Verificaci√≥
+config_hist_E=Exportaci√≥
 config_hist_T=RTag
-config_hist_C=FusiÛ amb col∑lisions
-config_hist_G=FusiÛ amb Ëxit
+config_hist_C=Fusi√≥ amb col¬∑lisions
+config_hist_G=Fusi√≥ amb √®xit
 config_hist_U=Fitxer de treball copiat
 config_hist_W=Fitxer de treball suprimit
 config_hist_A=Fitxer afegit
 config_hist_M=Fitxer modificat
 config_hist_R=Fitxer eliminat
 config_lock=Directori de bloqueigs de fitxers
-config_err=No s'ha pogut desar la configuraciÛ del servidor
-config_elock=Hi falta el directori de bloqueigs de fitxers o bÈ Ès inv‡lid
-config_ecannot=No tens permÌs per editar la configuraciÛ del servidor
-
+config_err=No s'ha pogut desar la configuraci√≥ del servidor
+config_elock=Hi falta el directori de bloqueigs de fitxers o b√© √©s inv√†lid
+config_ecannot=No tens perm√≠s per editar la configuraci√≥ del servidor
 log_setup=S'ha configurat el Servidor CVS
 log_activate=S'ha activat el servidor CVS
 log_deactivate=S'ha desactivat el servidor CVS
 log_create_user=S'ha creat l'usuari $1
 log_delete_user=S'ha suprimit l'usuari $1
 log_modify_user=S'ha modificat l'usuari $1
-log_access=S'ha canviat el control d'accÈs d'usuaris
-log_config=S'ha canviat la configuraciÛ del servidor
-
+log_access=S'ha canviat el control d'acc√©s d'usuaris
+log_config=S'ha canviat la configuraci√≥ del servidor
 acl_passwd=Pot gestionar els usuaris CVS
-acl_access=Pot editar el control d'accÈs d'usuaris
-acl_config=Pot editar la configuraciÛ del servidor
+acl_access=Pot editar el control d'acc√©s d'usuaris
+acl_config=Pot editar la configuraci√≥ del servidor
 acl_cvsweb=Pot veure el repositori CVS
 acl_setup=Pot configurar inetd o xinetd per per executar el servidor CVS
 acl_init=Pot inicialitzar el repositori
-
 init_err=No s'ha pogut inicialitzar el repositori
-init_ecannot=No tens permÌs per inicialitzar repositoris
-__norefs=1
+init_ecannot=No tens perm√≠s per inicialitzar repositoris
