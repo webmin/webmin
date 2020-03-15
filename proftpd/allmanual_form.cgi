@@ -25,9 +25,7 @@ print "<form action=allmanual_save.cgi method=post ",
       "enctype=multipart/form-data>\n";
 print "<input type=hidden name=file value='$in{'file'}'>\n";
 print "<textarea name=data rows=20 cols=80>";
-open(FILE, $in{'file'});
-while(<FILE>) { print &html_escape($_); }
-close(FILE);
+print &html_escape(&read_file_contents($in{'file'}));
 print "</textarea><br>\n";
 print "<input type=submit value='$text{'save'}'>\n";
 

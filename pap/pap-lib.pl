@@ -59,7 +59,7 @@ sub parse_ppp_options
 {
 local @rv;
 local $lnum = 0;
-open(OPTS, $_[0]);
+open(OPTS, "<".$_[0]);
 while(<OPTS>) {
 	s/\r|\n//g;
 	s/#.*$//g;
@@ -127,7 +127,7 @@ sub parse_login_config
 {
 local @rv;
 local $lnum = 0;
-open(LOGIN, $config{'login_config'});
+open(LOGIN, "<".$config{'login_config'});
 while(<LOGIN>) {
 	s/\r|\n//g;
 	s/#.*$//g;
@@ -172,7 +172,7 @@ sub parse_dialin_config
 {
 local @rv;
 local $lnum = 0;
-open(DIALIN, $config{'dialin_config'});
+open(DIALIN, "<".$config{'dialin_config'});
 while(<DIALIN>) {
 	s/\r|\n//g;
 	s/#.*$//g;

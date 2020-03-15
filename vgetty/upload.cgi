@@ -48,7 +48,7 @@ if (-r "$dir/$in{'wav_filename'}.rmd") {
 	&error(&text('upload_esame', "$in{'wav_filename'}.rmd"));
 	}
 $index = &messages_index(\@conf);
-open(INDEX, $index);
+open(INDEX, "<$index");
 @index = map { chomp; $_ } <INDEX>;
 close(INDEX);
 if (!@index) {

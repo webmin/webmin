@@ -32,7 +32,7 @@ $time_now = time();
 
 # Scan the entries in the log file
 &pre_process();
-open(LOG, $bandwidth_log);
+open(LOG, "<".$bandwidth_log);
 while(<LOG>) {
 	if (&process_line($_, \@hours, $time_now)) {
 		# Found a valid line
@@ -57,7 +57,7 @@ foreach $hour (@hours) {
 
 # Truncate the file (if it exists) and notify syslog
 if (-r $bandwidth_log) {
-	open(LOG, ">$bandwidth_log");
+	open(LOG, ">".$bandwidth_log);
 	close(LOG);
 	}
 &foreign_call($syslog_module, "signal_syslog");

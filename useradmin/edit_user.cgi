@@ -37,7 +37,7 @@ else {
 push(@shlist, "/bin/sh", "/bin/csh", "/bin/false") if ($shells{'fixed'});
 &build_user_used(\%used, $shells{'passwd'} ? \@shlist : undef);
 if ($shells{'shells'}) {
-	open(SHELLS, "/etc/shells");
+	open(SHELLS, "</etc/shells");
 	while(<SHELLS>) {
 		s/\r|\n//g;
 		s/#.*$//;

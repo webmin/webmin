@@ -12,7 +12,7 @@ require './idmapd-lib.pl';
 
 # Write the config file
 &lock_file($config{'idmapd_conf'});
-open(FILE, "> $config{'idmapd_conf'}");
+open(FILE, ">$config{'idmapd_conf'}");
 print FILE "[General]\n";
 print FILE "Pipefs-Directory = $in{'pipefsdir'}\n";
 print FILE "Domain = $in{'domain'}\n";

@@ -305,7 +305,7 @@ sub get_stunnel_config
 local (@rv, $service);
 push(@rv, $service = { 'line' => 0, 'eline' => 0, 'values' => { } });
 local $lnum = 0;
-open(CONF, $_[0]);
+open(CONF, "<".$_[0]);
 while(<CONF>) {
 	s/\r|\n//g;
 	s/^\s*#.*$//;
@@ -366,7 +366,7 @@ if ($has_inetd) {
 if ($has_xinetd) {
 	local %xconfig = &foreign_config("xinetd");
 	local $pid;
-	if (open(PID, $xconfig{'pid_file'})) {
+	if (open(PID, "<".$xconfig{'pid_file'})) {
 		chop($pid = <PID>);
 		close(PID);
 		kill('USR2', $pid);

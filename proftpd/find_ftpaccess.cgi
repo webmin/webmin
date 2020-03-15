@@ -29,7 +29,7 @@ foreach $d (@dirs) {
 		$d = $u[7];
 		next if (!$u[7]);
 		}
-	open(FIND, "find '$d' -name .ftpaccess -print |");
+	open(FIND, "find ".quotemeta($d)." -name .ftpaccess -print |");
 	while(<FIND>) {
 		s/\r|\n//g;
 		push(@rv, $_);

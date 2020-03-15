@@ -701,7 +701,7 @@ sub save_envs
 {
 local($i, @tab, $line);
 @tab = &read_crontab($_[0]);
-open(TAB, ">$cron_temp_file");
+open(TAB, ">".$cron_temp_file);
 for($i=1; $i<@_; $i+=2) {
 	print TAB "$_[$i]=$_[$i+1]\n";
 	}
@@ -1231,7 +1231,7 @@ local $perl_path = &get_perl_path();
 &open_tempfile(CMD, ">$_[0]");
 &print_tempfile(CMD, <<EOF
 #!$perl_path
-open(CONF, "$config_directory/miniserv.conf") || die "Failed to open $config_directory/miniserv.conf : \$!";
+open(CONF, "<$config_directory/miniserv.conf") || die "Failed to open $config_directory/miniserv.conf : \$!";
 while(<CONF>) {
         \$root = \$1 if (/^root=(.*)/);
         }

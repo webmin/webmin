@@ -12,7 +12,7 @@ sub parse_gentoo_net
 local @rv;
 local $sect;
 local $lnum = 0;
-open(CONF, $gentoo_net_config);
+open(CONF, "<".$gentoo_net_config);
 while(<CONF>) {
 	s/\r|\n//g;
 	s/#.*$//;

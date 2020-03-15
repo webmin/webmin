@@ -97,7 +97,7 @@ return $_[0]->{'desc'} || $_[0]->{'realhost'} || $_[0]->{'host'};
 # Returns an array of open categories
 sub get_heiropen
 {
-open(HEIROPEN, "$module_config_directory/heiropen.$_[0]");
+open(HEIROPEN, "<$module_config_directory/heiropen.$_[0]");
 local @heiropen = <HEIROPEN>;
 chop(@heiropen);
 close(HEIROPEN);

@@ -52,7 +52,7 @@ if ($rings =~ /^\//) {
 		-r $tf ? "" : "checked", $text{'vgetty_default'};
 	printf "<input type=radio name=rings_def value=0 %s> %s\n",
 		-r $tf ? "checked" : "";
-	open(TF, $tf);
+	open(TF, "<$tf");
 	chop($rc = <TF>);
 	close(TF);
 	print "<input name=rings size=5 value='$rc'></td> </tr>\n";
@@ -66,7 +66,7 @@ if ($ans =~ /^\//) {
 		-r $tf ? "" : "checked", $text{'vgetty_default'};
 	printf "<input type=radio name=ans_def value=0 %s> %s\n",
 		-r $tf ? "checked" : "";
-	open(TF, $tf);
+	open(TF, "<$tf");
 	chop($am = <TF>);
 	close(TF);
 	print &answer_mode_input($am, "ans"),"</td> </tr>\n";

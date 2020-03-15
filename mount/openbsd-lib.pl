@@ -13,7 +13,7 @@ sub list_mounts
 local(@rv, @p, @o, $_, $i, $j); $i = 0;
 
 # Get /etc/fstab mounts
-open(FSTAB, $config{'fstab_file'});
+open(FSTAB, "<".$config{'fstab_file'});
 while(<FSTAB>) {
 	local(@o, $at_boot);
 	chop; s/#.*$//g;
@@ -67,7 +67,7 @@ local($i, @fstab, $line, $opts, $j, @amd);
 $i = 0;
 
 # Update fstab file
-open(FSTAB, $config{fstab_file});
+open(FSTAB, "<".$config{fstab_file});
 @fstab = <FSTAB>;
 close(FSTAB);
 &open_tempfile(FSTAB, "> $config{fstab_file}");
@@ -101,7 +101,7 @@ local($i, @fstab, $line, $opts, $j, @amd);
 $i = 0;
 
 # Update fstab file
-open(FSTAB, $config{fstab_file});
+open(FSTAB, "<".$config{fstab_file});
 @fstab = <FSTAB>;
 close(FSTAB);
 &open_tempfile(FSTAB, "> $config{fstab_file}");

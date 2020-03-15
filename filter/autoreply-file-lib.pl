@@ -6,7 +6,7 @@ sub read_autoreply
 {
 local ($file, $simple) = @_;
 local @lines;
-open(FILE, $file);
+open(FILE, "<".$file);
 while(<FILE>) {
 	if (/^Reply-Tracking:\s*(.*)/) {
 		$simple->{'replies'} = $1;

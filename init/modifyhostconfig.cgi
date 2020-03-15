@@ -34,7 +34,7 @@ $hostc = $config{'hostconfig'};
 # modify and write the hostconfig file
 @new = ();
 &lock_file($config{'hostconfig'});
-open(LOCAL, "$hostc");
+open(LOCAL, "<$hostc");
 @old = <LOCAL>;
 close(LOCAL);
 foreach $line (@old) {

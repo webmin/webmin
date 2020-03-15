@@ -9,7 +9,7 @@ if ($config{'stop_cmd'}) {
 	&error("<tt>$out</tt>") if ($?);
 	}
 else {
-	if (open(PID, $config{'pid_file'}) && chop($pid = <PID>) &&
+	if (open(PID, "<$config{'pid_file'}") && chop($pid = <PID>) &&
 	    &kill_logged('TERM', $pid)) {
 		close(PID);
 		}

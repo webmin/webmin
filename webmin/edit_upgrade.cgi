@@ -14,7 +14,7 @@ if (&shared_root_directory()) {
 $mode = &get_install_type();
 
 # was the install to a target directory?
-if (open(DIR, "$config_directory/install-dir")) {
+if (open(DIR, "<$config_directory/install-dir")) {
 	chop($dir = <DIR>);
 	close(DIR);
 	}

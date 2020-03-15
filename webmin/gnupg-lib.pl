@@ -113,8 +113,8 @@ return $fp;
 # get_passphrase(&key)
 sub get_passphrase
 {
-open(PASS, "$user_module_config_directory/pass.$_[0]->{'key'}") ||
-  open(PASS, "$user_module_config_directory/pass") || return undef;
+open(PASS, "<$user_module_config_directory/pass.$_[0]->{'key'}") ||
+  open(PASS, "<$user_module_config_directory/pass") || return undef;
 my $pass = <PASS>;
 close(PASS);
 chop($pass);
@@ -336,7 +336,7 @@ else {
 sub read_entire_file
 {
 my ($rv, $buf);
-open(FILE, $_[0]) || return undef;
+open(FILE, "<".$_[0]) || return undef;
 while(read(FILE, $buf, 1024) > 0) {
 	$rv .= $buf;
 	}

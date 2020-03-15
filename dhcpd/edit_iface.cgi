@@ -10,7 +10,7 @@ $access{'noconfig'} && &error($text{'iface_ecannot'});
 if ($config{'interfaces_type'} eq 'mandrake') {
 	if (-r "/etc/conf.linuxconf") {
 		# Older mandrake's init script uses a linuxconf setting
-		open(FILE, "/etc/conf.linuxconf");
+		open(FILE, "</etc/conf.linuxconf");
 		while(<FILE>) {
 			if (/DHCP.interface\s+(.*)/) {
 				$iface = $1;

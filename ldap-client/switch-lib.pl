@@ -9,7 +9,7 @@ sub get_nsswitch_config
 if (!scalar(@get_nsswitch_cache)) {
 	@get_nsswitch_cache = ( );
 	local $lnum = 0;
-	open(CONF, $nsswitch_config_file);
+	open(CONF, "<".$nsswitch_config_file);
 	while(<CONF>) {
 		s/\r|\n//g;
 		s/#.*$//;

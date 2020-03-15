@@ -150,7 +150,7 @@ my $install_root_directory = $gconfig{'install_root'} || $root_directory;
 
 # Uncompress the module file if needed
 my $two;
-open(MFILE, $file);
+open(MFILE, "<".$file);
 read(MFILE, $two, 2);
 close(MFILE);
 if ($two eq "\037\235") {
@@ -209,7 +209,7 @@ elsif ($two eq "BZ") {
 # Check if this is an RPM webmin module or theme
 my ($type, $redirect_to);
 $type = "";
-if (open(TYPE, "$root_directory/install-type")) {
+if (open(TYPE, "<$root_directory/install-type")) {
 	chop($type = <TYPE>);
 	close(TYPE);
 	}
@@ -537,7 +537,7 @@ else {
 		}
 
 	my $type = '';
-	if (open(TYPE, "$mdir/install-type")) {
+	if (open(TYPE, "<$mdir/install-type")) {
 		chop($type = <TYPE>);
 		close(TYPE);
 		}
@@ -690,7 +690,7 @@ else {
 &http_download($host, $port, $page, $temp, \$error, undef, $ssl);
 return $error if ($error);
 my @rv;
-open(TEMP, $temp);
+open(TEMP, "<".$temp);
 while(<TEMP>) {
 	s/\r|\n//g;
 	my @l = split(/\t+/, $_);
@@ -735,7 +735,7 @@ else {
 &http_download($host, $port, $page, $temp, \$error, undef, $ssl);
 return $error if ($error);
 my @rv;
-open(TEMP, $temp);
+open(TEMP, "<".$temp);
 while(<TEMP>) {
 	s/\r|\n//g;
 	my @l = split(/\t+/, $_);
@@ -791,7 +791,7 @@ or undef if the admin hasn't chosen any yet.
 =cut
 sub get_newmodule_users
 {
-if (open(NEWMODS, $newmodule_users_file)) {
+if (open(NEWMODS, "<".$newmodule_users_file)) {
 	my @rv;
 	while(<NEWMODS>) {
 		s/\r|\n//g;
@@ -915,7 +915,7 @@ if (!$ec && $sigmode) {
 	}
 
 my @updates;
-open(UPDATES, $temp);
+open(UPDATES, "<".$temp);
 while(<UPDATES>) {
 	if (/^([^\t]+)\t+([^\t]+)\t+([^\t]+)\t+([^\t]+)\t+(.*)/) {
 		push(@updates, [ $1, $2, $3, $4, $5 ]);
@@ -1338,7 +1338,7 @@ Returns the number of seconds the system has been up, or undef if un-available.
 sub get_system_uptime
 {
 # Try Linux /proc/uptime first
-if (open(UPTIME, "/proc/uptime")) {
+if (open(UPTIME, "</proc/uptime")) {
 	my $line = <UPTIME>;
 	close(UPTIME);
 	my ($uptime, $dummy) = split(/\s+/, $line);
@@ -1386,7 +1386,7 @@ sub list_operating_systems
 {
 my $file = $_[0] || "$root_directory/os_list.txt";
 my @rv;
-open(OSLIST, $file);
+open(OSLIST, "<".$file);
 while(<OSLIST>) {
 	if (/^([^\t]+)\t+([^\t]+)\t+([^\t]+)\t+([^\t]+)\t+(.*)/) {
 		push(@rv, { 'realtype' => $1,
@@ -1743,7 +1743,7 @@ sub get_module_install_type
 {
 my ($mod) = @_;
 my $it = &module_root_directory($mod)."/install-type";
-open(TYPE, $it) || return undef;
+open(TYPE, "<".$it) || return undef;
 my $type = <TYPE>;
 chop($type);
 close(TYPE);
@@ -1759,7 +1759,7 @@ or undef for tar.gz).
 sub get_install_type
 {
 my $mode;
-if (open(MODE, "$root_directory/install-type")) {
+if (open(MODE, "<$root_directory/install-type")) {
 	chop($mode = <MODE>);
 	close(MODE);
 	}
@@ -2312,7 +2312,7 @@ my ($error, $version, $release);
 &http_download($primary_host, $primary_port, '/', $file, \$error, undef, 0,
 	       undef, undef, 5);
 return (0, $error) if ($error);
-open(FILE, $file);
+open(FILE, "<".$file);
 while(<FILE>) {
 	if (/webmin-([0-9\.]+)-(\d+)\.tar\.gz/ ||
 	    /webmin-([0-9\.]+)\.tar\.gz/) {

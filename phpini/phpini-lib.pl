@@ -24,7 +24,7 @@ if (!defined($get_config_cache{$file})) {
 	local @rv = ( );
 	local $lnum = 0;
 	local $section;
-	open(CONFIG, $file) || return undef;
+	open(CONFIG, "<".$file) || return undef;
 	if ($fmt eq "ini") {
 		# Classic php.ini format
 		while(<CONFIG>) {

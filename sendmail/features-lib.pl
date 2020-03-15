@@ -6,7 +6,7 @@
 sub list_features
 {
 local (@rv, $lnum = 0);
-open(MC, $config{'sendmail_mc'});
+open(MC, "<".$config{'sendmail_mc'});
 while(<MC>) {
 	s/\r|\n//g;
 	local $f;
@@ -84,7 +84,7 @@ return @rv;
 sub list_define_types
 {
 local (@rv, $d);
-open(DEFINES, "$module_root_directory/defines");
+open(DEFINES, "<$module_root_directory/defines");
 while($d = <DEFINES>) {
 	$d =~ s/\r|\n//g;
 	local $t = $text{'def_'.lc($d)};

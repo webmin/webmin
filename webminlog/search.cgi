@@ -70,7 +70,7 @@ else {
 my @match;
 my %index;
 &build_log_index(\%index);
-open(LOG, $webmin_logfile);
+open(LOG, "<$webmin_logfile");
 while(my ($id, $idx) = each %index) {
 	if ($id =~ /^last/) {
 	    next;

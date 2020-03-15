@@ -44,7 +44,7 @@ if ($config{'config_file'}) {
 	# Show the fetchmail daemon form
 	foreach $pf ($config{'pid_file'},
 		     "$uinfo[7]/.fetchmail.pid", "$uinfo[7]/.fetchmail") {
-		if (open(PID, $pf) && ($line=<PID>) &&
+		if (open(PID, "<$pf") && ($line=<PID>) &&
 		    (($pid,$interval) = split(/\s+/, $line)) && $pid &&
 		    kill(0, $pid)) {
 			$running++;

@@ -82,7 +82,7 @@ sub create_aliases_file($)
 
 	if ( ! -e $file )
     {
-        open(CONF,"> $file");
+        open(CONF, ">$file");
         print CONF <<EOF;
 
 *: :fail: That user does not exist.
@@ -189,7 +189,7 @@ sub list_virtusers
 		$file =~ /^(.*)$config{'exim_aliasfileextre'}/;
 		$domain = $1;
 		$file_line = 1;
-		open(FILE,"$exim_virt_dir/$file") || die("Could not find $file. $!");
+		open(FILE, "<$exim_virt_dir/$file") || die("Could not find $file. $!");
 		while ( <FILE> )
 		{
 			if ( /^([^\*\#\s:]+):?\s+(.*)$/ )

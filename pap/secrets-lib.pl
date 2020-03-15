@@ -5,7 +5,7 @@
 sub list_secrets
 {
 local(@rv, $line, $_);
-open(SEC, $config{'pap_file'});
+open(SEC, "<".$config{'pap_file'});
 $line = 0;
 while(<SEC>) {
 	chop;

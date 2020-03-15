@@ -35,7 +35,7 @@ foreach $h (@hosts) {
 		push(@shlist, $u->{'shell'}) if ($u->{'shell'});
 		}
 	}
-open(SHELLS, "/etc/shells");
+open(SHELLS, "</etc/shells");
 while(<SHELLS>) {
 	s/\r|\n//g;
 	s/#.*$//;

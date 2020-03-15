@@ -15,7 +15,7 @@ sub get_config
 {
 if (!scalar(@get_config_cache)) {
 	local $lnum = 0;
-	open(CONF, $config{'sarg_conf'});
+	open(CONF, "<".$config{'sarg_conf'});
 	while(<CONF>) {
 		s/\r|\n//g;
 		if (/^\s*(#*)\s*(\S+)\s+"([^"]*)"/ ||
@@ -281,7 +281,7 @@ local $default = &find($name, $conf, 2);
 local $defstr = $default ? " ($default->{'value'})" : "";
 local $found;
 local @langs = ( [ "", $text{'default'}.$defstr ] );
-open(LANGS, $file);
+open(LANGS, "<".$file);
 while(<LANGS>) {
 	chop;
 	if (/^(\S+)\t+(\S.*)/) {

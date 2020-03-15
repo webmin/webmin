@@ -15,7 +15,7 @@ return @list_mounts_cache if (@list_mounts_cache);
 local(@rv, @p, $_, $i); $i = 0;
 
 # List normal filesystem mounts
-open(FSTAB, $config{fstab_file});
+open(FSTAB, "<".$config{fstab_file});
 while(<FSTAB>) {
 	chop; s/#.*$//g;
 	if (!/\S/) { next; }
@@ -27,7 +27,7 @@ while(<FSTAB>) {
 close(FSTAB);
 
 # List automount points
-open(AUTOTAB, $config{autofs_file});
+open(AUTOTAB, "<".$config{autofs_file});
 while(<AUTOTAB>) {
 	chop; s/#.*$//g;
 	if (!/\S/ || /^[+\-]/) { next; }
@@ -78,7 +78,7 @@ return $len;
 sub delete_mount
 {
 local(@fstab, $i, $line, $_);
-open(FSTAB, $config{fstab_file});
+open(FSTAB, "<".$config{fstab_file});
 @fstab = <FSTAB>;
 close(FSTAB);
 $i = 0;
@@ -93,7 +93,7 @@ foreach (@fstab) {
 	}
 &close_tempfile(FSTAB);
 
-open(AUTOTAB, $config{autofs_file});
+open(AUTOTAB, "<".$config{autofs_file});
 @autotab = <AUTOTAB>;
 close(AUTOTAB);
 &open_tempfile(AUTOTAB, "> $config{autofs_file}");
@@ -116,7 +116,7 @@ sub change_mount
 local(@fstab, @autotab, $i, $line, $fsck, $dir, $_);
 $i = 0;
 
-open(FSTAB, $config{fstab_file});
+open(FSTAB, "<".$config{fstab_file});
 @fstab = <FSTAB>;
 close(FSTAB);
 &open_tempfile(FSTAB, "> $config{fstab_file}");
@@ -136,7 +136,7 @@ foreach (@fstab) {
 	}
 &close_tempfile(FSTAB);
 
-open(AUTOTAB, $config{autofs_file});
+open(AUTOTAB, "<".$config{autofs_file});
 @autotab = <AUTOTAB>;
 close(AUTOTAB);
 &open_tempfile(AUTOTAB, "> $config{autofs_file}");
@@ -1209,7 +1209,7 @@ elsif ($_[0] eq "swap") {
 		}
 	else { $dv = $in{swap_path}; }
 
-	if (!open(SWAPFILE, $dv)) {
+	if (!open(SWAPFILE, "<".$dv)) {
 		if ($! =~ /No such file/ && $in{swap_dev}) {
 			if ($dv !~ /^\/dev/) {
 				&swap_form($dv);
@@ -1330,7 +1330,7 @@ elsif ($_[0] =~ /^\/dev\/md\/dsk\/d(.)$/) {
 	}
 else {
 	# Some other device
-	if (!open(DEV, $_[0])) {
+	if (!open(DEV, "<".$_[0])) {
 		if ($! =~ /No such file or directory/) {
 			&error(&text('solaris_edevfile', $_[0]));
 			}

@@ -73,7 +73,7 @@ if ($shells{'passwd'}) {
 	&build_user_used(undef, \@shlist);
 	}
 if ($shells{'shells'}) {
-	open(SHELLS, "/etc/shells");
+	open(SHELLS, "</etc/shells");
 	while(<SHELLS>) {
 		s/\r|\n//g;
 		s/#.*$//;

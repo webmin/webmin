@@ -31,7 +31,7 @@ if ($job) {
 	print "Content-length: $total\n";
 	print "\n";
 	foreach $pf (@pf) {
-		open(FILE, $pf);
+		open(FILE, "<$pf");
 		while(<FILE>) { print; }
 		close(FILE);
 		}

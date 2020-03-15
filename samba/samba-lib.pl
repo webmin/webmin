@@ -9,7 +9,7 @@ use WebminCore;
 $has_iconv = &has_command("iconv");
 
 # Get the samba version
-if (open(VERSION, "$module_config_directory/version")) {
+if (open(VERSION, "<$module_config_directory/version")) {
 	chop($samba_version = <VERSION>);
 	close(VERSION);
 	}

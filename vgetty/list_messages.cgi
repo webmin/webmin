@@ -10,7 +10,7 @@ require './vgetty-lib.pl';
 @conf = &get_config();
 $dir = &messages_dir(\@conf);
 $index = &messages_index(\@conf);
-open(INDEX, $index);
+open(INDEX, "<$index");
 while(<INDEX>) {
 	s/\r|\n//g;
 	push(@messages, &rmd_file_info("$dir/$_"));

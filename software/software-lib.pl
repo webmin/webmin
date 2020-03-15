@@ -70,7 +70,7 @@ if ($update_system) {
 sub uncompress_if_needed
 {
 return $_[0] if (&is_readonly_mode());	# don't even bother
-open(PFILE, $_[0]);
+open(PFILE, "<".$_[0]);
 read(PFILE, $two, 2);
 close(PFILE);
 if ($two eq "\037\235") {

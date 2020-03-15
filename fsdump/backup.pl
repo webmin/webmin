@@ -85,7 +85,7 @@ else {
 
 	if ($temp) {
 		# Read output
-		open(OUT, $temp);
+		open(OUT, "<".$temp);
 		while(<OUT>) {
 			s/\r//g;
 			$out .= $_;

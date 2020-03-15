@@ -230,7 +230,7 @@ if ($config{'groups_dir'} && opendir(DIR, $config{'groups_dir'})) {
 			$gmap{$f} = $grp = { 'name' => $f, 'type' => 1 };
 			push(@rv, $grp);
 			}
-		open(GROUP, "$config{'groups_dir'}/$f");
+		open(GROUP, "<$config{'groups_dir'}/$f");
 		while(<GROUP>) {
 			s/\r|\n//g;
 			s/#.*$//;

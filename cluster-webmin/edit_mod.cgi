@@ -85,7 +85,7 @@ if ($type eq 'mod') {
 		print $text{'edit_osall'};
 		}
 	else {
-		open(OSLIST, "$root_directory/os_list.txt");
+		open(OSLIST, "<$root_directory/os_list.txt");
 		while(<OSLIST>) {
 			chop;
 			if (/^([^\t]+)\t+([^\t]+)\t+(\S+)\t+(\S+)\t*(.*)$/) {

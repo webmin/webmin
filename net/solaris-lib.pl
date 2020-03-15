@@ -173,7 +173,7 @@ while($f = readdir(ETC)) {
 		$ifc{'index'} = scalar(@rv);
 		$ifc{'edit'}++;
 		$ifc{'file'} = "$etc/$f";
-		open(FILE, "$etc/$f");
+		open(FILE, "<$etc/$f");
 		chop($ifc{'address'} = <FILE>);
 		close(FILE);
 		if ($ifc{'address'}) {

@@ -6,7 +6,7 @@ require './mon-lib.pl';
 &ui_print_header(undef, $text{'auth_title'}, "");
 
 $file = &mon_auth_file();
-open(FILE, $file);
+open(FILE, "<$file");
 while(<FILE>) {
 	s/\r|\n//g;
 	s/#.*$//;

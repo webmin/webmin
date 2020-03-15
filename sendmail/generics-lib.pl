@@ -27,7 +27,7 @@ if (!scalar(@list_generics_cache)) {
 	@list_generics_cache = ( );
 	local $lnum = 0;
 	local $cmt;
-	open(GEN, $_[0]);
+	open(GEN, "<".$_[0]);
 	while(<GEN>) {
 		s/\r|\n//g;     # remove newlines
 		if (/^\s*#+\s*(.*)/) {

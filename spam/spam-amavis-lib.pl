@@ -10,7 +10,7 @@ use Fcntl;
 sub get_amavis_config
 {
 local(@rv, $line);
-open(CONF, $config{'amavisdconf'});
+open(CONF, "<".$config{'amavisdconf'});
 while(<CONF>) {
 	s/\r|\n//g;
 	if (/^\s*#|^\s*$/) { $line++; next; }

@@ -13,7 +13,7 @@ $authkeys = $config{'authkeys'} ? $config{'authkeys'}
 $resource_d = $config{'resource_d'} ? $config{'resource_d'}
 				    : "$config{'ha_dir'}/resource.d";
 
-open(VERSION, "$module_config_directory/version");
+open(VERSION, "<$module_config_directory/version");
 chop($heartbeat_version = <VERSION>);
 close(VERSION);
 
@@ -21,7 +21,7 @@ sub get_ha_config
 {
 local @rv;
 local $lnum = 0;
-open(CONF, $ha_cf);
+open(CONF, "<".$ha_cf);
 while(<CONF>) {
 	s/\s+$//;
 	s/#.*$//;
@@ -101,7 +101,7 @@ sub list_resources()
 {
 local @rv;
 local $lnum = 0;
-open(RES, $haresources);
+open(RES, "<".$haresources);
 while(<RES>) {
 	s/\s+$//;
 	s/#.*$//;
@@ -160,7 +160,7 @@ return join(" ", @l);
 sub get_auth_config
 {
 local $rv;
-open(AUTH, $authkeys);
+open(AUTH, "<".$authkeys);
 while(<AUTH>) {
 	s/\r|\n//g;
 	s/#.*$//;

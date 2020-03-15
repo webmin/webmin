@@ -549,7 +549,7 @@ sub wizard_get_data()
 local ($pagename, $pageinst, $datafile, @data, $line, $key, $value, %hash);
 ($pagename, $pageinst) = @_;
 $datafile = &wizard_datafile_name($pagename, $pageinst);
-open(DATAFILE, $datafile);
+open(DATAFILE, "<".$datafile);
 @data = <DATAFILE>;
 foreach $line (@data) {
 	if ($line =~ /^\s*\#/) {

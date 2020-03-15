@@ -66,7 +66,7 @@ if (!defined($config_file_cache{$file})) {
 	local @rv = ( );
 	local $parent = { 'members' => \@rv };
 	local $lnum = 0;
-	open(CONF, $_[0]) || return undef;
+	open(CONF, "<".$_[0]) || return undef;
 	local @lines = <CONF>;
 	close(CONF);
 	for(my $i=0; $i<@lines; $i++) {
@@ -813,7 +813,7 @@ return undef;
 
 sub get_bacula_version_cached
 {
-open(CACHE, "$module_config_directory/version");
+open(CACHE, "<$module_config_directory/version");
 chop($version = <CACHE>);
 close(CACHE);
 return $version || &get_bacula_version();

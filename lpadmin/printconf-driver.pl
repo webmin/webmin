@@ -84,7 +84,7 @@ return { 'mode' => 2,
 # read_m4_file(file, &hash)
 sub read_m4_file
 {
-open(CFG, $_[0]);
+open(CFG, "<".$_[0]);
 while(<CFG>) {
 	s/#.*$//; s/\r|\n//g;
 	if (/^\s*define\(([A-Za-z0-9\_]+)\s*,\s*`([^']*)'\)/) {

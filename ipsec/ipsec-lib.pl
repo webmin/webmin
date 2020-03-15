@@ -16,7 +16,7 @@ local $file = $_[0] || $config{'file'};
 local (@rv, $sect);
 local $lnum = 0;
 local $fh = "CONF".$get_config_fh++;
-open($fh, $file);
+open($fh, "<".$file);
 while(<$fh>) {
 	s/\r|\n//g;
 	s/#.*$//;
@@ -182,7 +182,7 @@ return @rv;
 sub read_policy
 {
 local @rv;
-open(FILE, "$config{'policies_dir'}/$_[0]");
+open(FILE, "<$config{'policies_dir'}/$_[0]");
 while(<FILE>) {
 	push(@rv, "$1/$2") if (/^\s*([0-9\.]+)\/(\d+)/);
 	}
@@ -261,7 +261,7 @@ sleep(5);
 # Look for new error messages
 local $i;
 for($i=0; $i<@ipsec_logfiles; $i++) {
-	open(LOG, $ipsec_logfiles[$i]) || next;
+	open(LOG, "<".$ipsec_logfiles[$i]) || next;
 	seek(LOG, $ipsec_logfile_sizes[$i], 0);
 	while(<LOG>) {
 		s/\r|\n//g;
@@ -292,7 +292,7 @@ return $out =~ /(FreeS\/WAN|Openswan|StrongSWAN|Libreswan)\s+([^ \n\(]+)/i ? ($2
 sub got_secret
 {
 local $gotkey;
-open(SEC, $config{'secrets'}) || return 0;
+open(SEC, "<".$config{'secrets'}) || return 0;
 while(<SEC>) {
 	s/\r|\n//g;
 	s/#.*$//;
@@ -356,7 +356,7 @@ sub list_secrets
 if (!scalar(@list_secrets_cache)) {
 	local (@lines);
 	local $lnum = 0;
-	open(SEC, $config{'secrets'});
+	open(SEC, "<".$config{'secrets'});
 	while(<SEC>) {
 		s/\r|\n//g;
 		s/^\s*#.*$//;

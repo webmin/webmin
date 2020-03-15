@@ -21,7 +21,7 @@ if ($config{'securenets'}) {
 	print "<td><table border>\n";
 	print "<tr $tb> <td><b>$text{'security_mask'}</b></td> ",
 	      "<td><b>$text{'security_net'}</b></td> </tr>\n";
-	open(NETS, $config{'securenets'});
+	open(NETS, "<$config{'securenets'}");
 	while(<NETS>) {
 		s/#.*$//;
 		if (/(\S+)\s+(\S+)/) {

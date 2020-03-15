@@ -235,7 +235,7 @@ local @rv;
 foreach my $f (glob("$mdir/*.cgi")) {
 	local $found = 0;
 	local $header = 0;
-	open(CGI, $f);
+	open(CGI, "<".$f);
 	LINE: while(my $line = <CGI>) {
 		if ($line =~ /(header|ui_print_header|ui_print_unbuffered_header)\(/) {
 			$header++;

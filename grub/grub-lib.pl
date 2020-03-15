@@ -18,7 +18,7 @@ sub get_menu_config
 {
 local $lnum = 0;
 local (@rv, $title);
-open(CONF, $config{'menu_file'});
+open(CONF, "<".$config{'menu_file'});
 while(<CONF>) {
 	s/#.*$//;
 	s/\r|\n//g;
@@ -216,7 +216,7 @@ else {
 	# Just use the existing file
 	$dm = $config{'device_map'};
 	}
-open(MAP, $dm);
+open(MAP, "<".$dm);
 while(<MAP>) {
 	s/\r|\n//g;
 	s/#.*$//;

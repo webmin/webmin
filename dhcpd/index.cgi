@@ -12,14 +12,14 @@ $display_max = $config{'display_max'} || 1000000000;
 &ReadParse();
 $horder = $in{'horder'};
 $norder = $in{'norder'};
-if ($horder eq "" && open(INDEX, "$module_config_directory/hindex.".$remote_user)) {
+if ($horder eq "" && open(INDEX, "<$module_config_directory/hindex.".$remote_user)) {
 	chop($horder = <INDEX>);
 	close(INDEX);
 	}
 if (!$horder) {
 	$horder = 0;
 	}
-if ($norder eq "" && open(INDEX, "$module_config_directory/nindex.".$remote_user)) {
+if ($norder eq "" && open(INDEX, "<$module_config_directory/nindex.".$remote_user)) {
 	chop($norder = <INDEX>);
 	close(INDEX);
 	}

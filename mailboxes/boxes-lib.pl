@@ -508,7 +508,7 @@ if ($ct =~ /multipart\/(\S+)/i && ($ct =~ /boundary="([^"]+)"/i ||
 			print HEXBIN $attach->{'data'};
 			close(HEXBIN);
 			if (!$?) {
-				open(HEXBIN, "$temp/attach.data");
+				open(HEXBIN, "<$temp/attach.data");
 				local $/ = undef;
 				$attach->{'data'} = <HEXBIN>;
 				close(HEXBIN);
@@ -562,7 +562,7 @@ if ($ct =~ /multipart\/(\S+)/i && ($ct =~ /boundary="([^"]+)"/i ||
 				while($f = readdir(DIR)) {
 					next if ($f eq '.' || $f eq '..');
 					local $data;
-					open(FILE, "$tempdir/$f");
+					open(FILE, "<$tempdir/$f");
 					while(<FILE>) {
 						$data .= $_;
 						}

@@ -38,7 +38,7 @@ if (!$in{'delete'}) {
 
 # Read the file
 $skip = 0;
-open(FILE, $file);
+open(FILE, "<$file");
 while(<FILE>) {
 	s/\r|\n//g;
 	next if (!/\S/);

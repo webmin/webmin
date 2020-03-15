@@ -89,7 +89,7 @@ push(@rv, { 'name' => 'lo0',
 	    'netmask' => '255.0.0.0',
 	    'up' => 1,
 	    'edit' => 0 });
-open(MASK, "/etc/netmasks");
+open(MASK, "</etc/netmasks");
 while(<MASK>) {
 	s/\r|\n//g;
 	s/#.*$//g;
@@ -108,7 +108,7 @@ while($f = readdir(ETC)) {
 		$ifc{'index'} = scalar(@rv);
 		$ifc{'edit'}++;
 		$ifc{'file'} = "/etc/$f";
-		open(FILE, "/etc/$f");
+		open(FILE, "</etc/$f");
 		chop($ifc{'address'} = <FILE>);
 		close(FILE);
 		if ($ifc{'address'}) {
@@ -202,7 +202,7 @@ return &to_ipaddress($_[0]) ? 1 : 0;
 sub get_dns_config
 {
 local $dns;
-open(RESOLV, "/etc/resolv.conf");
+open(RESOLV, "</etc/resolv.conf");
 while(<RESOLV>) {
 	s/\r|\n//g;
 	s/#.*$//g;
@@ -217,7 +217,7 @@ while(<RESOLV>) {
 		}
 	}
 close(RESOLV);
-open(SWITCH, "/etc/nsswitch.conf");
+open(SWITCH, "</etc/nsswitch.conf");
 while(<SWITCH>) {
 	s/\r|\n//g;
 	if (/hosts:\s+(.*)/) {
@@ -234,7 +234,7 @@ return $dns;
 sub save_dns_config
 {
 &lock_file("/etc/resolv.conf");
-open(RESOLV, "/etc/resolv.conf");
+open(RESOLV, "</etc/resolv.conf");
 local @resolv = <RESOLV>;
 close(RESOLV);
 &open_tempfile(RESOLV, ">/etc/resolv.conf");
@@ -256,7 +256,7 @@ foreach (@resolv) {
 &unlock_file("/etc/resolv.conf");
 
 &lock_file("/etc/nsswitch.conf");
-open(SWITCH, "/etc/nsswitch.conf");
+open(SWITCH, "</etc/nsswitch.conf");
 local @switch = <SWITCH>;
 close(SWITCH);
 &open_tempfile(SWITCH, ">/etc/nsswitch.conf");

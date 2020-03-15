@@ -36,7 +36,7 @@ sub get_config
 {
 local @rv;
 local $lnum = 0;
-open(CONFIG, $config{'vgetty_config'});
+open(CONFIG, "<".$config{'vgetty_config'});
 while(<CONFIG>) {
 	s/\r|\n//g;
 	s/#.*$//;

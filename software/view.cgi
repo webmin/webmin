@@ -9,7 +9,7 @@ $p = $ENV{'PATH_INFO'};
 if ($p =~ /\.([^\.\/]+)$/) {
 	$ext = lc($1);
 	&get_miniserv_config(\%miniserv);
-	open(MIME, $miniserv{'mimetypes'});
+	open(MIME, "<$miniserv{'mimetypes'}");
 	while(<MIME>) {
 		s/#.*//g;
 		if (/(\S+)\s+(.*)/) {

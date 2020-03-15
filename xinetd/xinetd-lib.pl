@@ -16,7 +16,7 @@ return &parse_xinetd($config{'xinetd_conf'});
 sub parse_xinetd
 {
 local @rv;
-open(INET, $_[0]);
+open(INET, "<".$_[0]);
 local @lines = <INET>;
 close(INET);
 local $lnum = 0;
@@ -155,7 +155,7 @@ return @rv;
 sub list_protocols
 {
 local(@rv);
-open(PROT, $config{'protocols_file'});
+open(PROT, "<".$config{'protocols_file'});
 while(<PROT>) {
 	chop; s/#.*$//g;
 	if (!/\S/) { next; }

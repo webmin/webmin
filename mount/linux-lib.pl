@@ -75,7 +75,7 @@ local(@rv, @p, @o, $_, $i, $j);
 $i = 0;
 
 # Get /etc/fstab mounts
-open(FSTAB, $config{fstab_file});
+open(FSTAB, "<".$config{fstab_file});
 while(<FSTAB>) {
 	local(@o, $at_boot);
 	chop; s/#.*$//g;
@@ -149,7 +149,7 @@ elsif ($amd_support == 2) {
 
 # Get kernel automounter configuration
 if ($autofs_support) {
-	open(AUTO, $config{'autofs_file'});
+	open(AUTO, "<".$config{'autofs_file'});
 	while(<AUTO>) {
 		chop;
 		s/#.*$//g;
@@ -243,7 +243,7 @@ local($i, @fstab, $line, $opts, $j, @amd);
 $i = 0;
 
 # Update fstab file
-open(FSTAB, $config{fstab_file});
+open(FSTAB, "<".$config{fstab_file});
 @fstab = <FSTAB>;
 close(FSTAB);
 &open_tempfile(FSTAB, "> $config{fstab_file}");
@@ -315,7 +315,7 @@ elsif ($amd_support == 2) {
 
 # Update autofs configuration
 if ($autofs_support) {
-	open(AUTO, $config{'autofs_file'});
+	open(AUTO, "<".$config{'autofs_file'});
 	@auto = <AUTO>;
 	close(AUTO);
 	&open_tempfile(AUTO, "> $config{'autofs_file'}");
@@ -346,7 +346,7 @@ local($i, @fstab, $line, $opts, $j, @amd);
 $i = 0;
 
 # Update fstab file
-open(FSTAB, $config{fstab_file});
+open(FSTAB, "<".$config{fstab_file});
 @fstab = <FSTAB>;
 close(FSTAB);
 &open_tempfile(FSTAB, ">$config{fstab_file}");
@@ -393,7 +393,7 @@ elsif ($amd_support == 2) {
 
 # Update AMD file
 if ($amd_support) {
-	open(AMD, $config{auto_file});
+	open(AMD, "<".$config{auto_file});
 	@amd = <AMD>;
 	close(AMD);
 	&open_tempfile(AMD, ">$config{auto_file}");
@@ -416,7 +416,7 @@ if ($amd_support) {
 
 # Update autofs file
 if ($autofs_support) {
-	open(AUTO, $config{'autofs_file'});
+	open(AUTO, "<".$config{'autofs_file'});
 	@auto = <AUTO>;
 	close(AUTO);
 	&open_tempfile(AUTO, ">$config{'autofs_file'}");
@@ -445,7 +445,7 @@ local(@rv, @p, @o, $mo, $_, %smbopts);
 local @mounts = &list_mounts();
 
 &read_smbopts();
-open(MTAB, "/etc/mtab");
+open(MTAB, "</etc/mtab");
 while(<MTAB>) {
 	chop;
 	s/#.*$//g;
@@ -544,7 +544,7 @@ while(<MTAB>) {
 	push(@rv, [ $p[1], $p[0], $p[2], $p[3] ]);
 	}
 close(MTAB);
-open(SWAPS, "/proc/swaps");
+open(SWAPS, "</proc/swaps");
 while(<SWAPS>) {
 	chop;
 	if (/^(\/\S+)\s+/) {
@@ -2261,7 +2261,7 @@ return @rv ? join(',' , @rv) : "-";
 sub read_smbopts
 {
 local($_);
-open(SMBOPTS, "$module_config_directory/smbfs");
+open(SMBOPTS, "<$module_config_directory/smbfs");
 while(<SMBOPTS>) {
 	/^(\S+)\s+(\S+)$/;
 	$smbopts{$1} = $2;
@@ -2380,7 +2380,7 @@ local $sl = $/;
 $/ = undef;
 local $rv;
 foreach $f (split(/\s+/, $config{'auto_file'})) {
-	open(AMD, $f);
+	open(AMD, "<".$f);
 	$rv .= <AMD>;
 	close(AMD);
 	}
@@ -2404,7 +2404,7 @@ sub parse_amd_conf
 local (@rv, $str);
 foreach $f (split(/\s+/, $config{'auto_file'})) {
 	local $lnum = 0;
-	open(AMD, $f);
+	open(AMD, "<".$f);
 	while(<AMD>) {
 		s/\r|\n//g;
 		s/#.*$//g;

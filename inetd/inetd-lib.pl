@@ -34,7 +34,7 @@ sub list_rpcs
 {
 local(@rv, $l);
 $l = 0;
-open(RPC, $config{rpc_file});
+open(RPC, "<".$config{rpc_file});
 while(<RPC>) {
 	chop; s/#.*$//g;
 	if (/^(\S+)\s+(\d+)\s*(.*)$/) {
@@ -61,7 +61,7 @@ sub create_rpc
 sub modify_rpc
 {
 local(@rpcs);
-open(RPC, $config{rpc_file});
+open(RPC, "<".$config{rpc_file});
 @rpcs = <RPC>;
 close(RPC);
 $rpcs[$_[0]] = "$_[1]\t$_[2]".($_[3] ? "\t$_[3]\n" : "\n");
@@ -76,7 +76,7 @@ $rpcs[$_[0]] = "$_[1]\t$_[2]".($_[3] ? "\t$_[3]\n" : "\n");
 sub delete_rpc
 {
 local(@rpcs);
-open(RPC, $config{rpc_file});
+open(RPC, "<".$config{rpc_file});
 @rpcs = <RPC>;
 close(RPC);
 splice(@rpcs, $_[0], 1);

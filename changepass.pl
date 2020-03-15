@@ -9,7 +9,7 @@ if (!-d $config) {
 	print STDERR "The config directory $config does not exist\n";
 	exit 2;
 	}
-if (!open(CONF, "$config/miniserv.conf")) {
+if (!open(CONF, "<$config/miniserv.conf")) {
 	print STDERR "Failed to open $config/miniserv.conf : $!\n";
 	print STDERR "Maybe $config is not the Webmin config directory.\n";
 	exit 3;
@@ -20,7 +20,7 @@ while(<CONF>) {
 close(CONF);
 
 # Update the users file
-if (!open(USERS, $config{'userfile'})) {
+if (!open(USERS, "<".$config{'userfile'})) {
 	print STDERR "Failed to open Webmin users file $config{'userfile'} : $!\n";
 	exit 4;
 	}
@@ -43,7 +43,7 @@ srand(time() ^ $$);
 $salt = chr(int(rand(26))+65).chr(int(rand(26))+65);
 $uinfo->[1] = crypt($pass, $salt);
 $uinfo->[6] = time();
-if (!open(USERS, "> $config{'userfile'}")) {
+if (!open(USERS, ">$config{'userfile'}")) {
 	print STDERR "Failed to open Webmin users file $config{'userfile'} : $!\n";
 	exit 6;
 	}
@@ -54,7 +54,7 @@ close(USERS);
 print "Updated password of Webmin user $user\n";
 
 # Send a signal to have miniserv reload it's config
-if (open(PID, $config{'pidfile'})) {
+if (open(PID, "<".$config{'pidfile'})) {
 	$pid = <PID>;
 	$pid =~ s/\r|\n//;
 	close(PID);

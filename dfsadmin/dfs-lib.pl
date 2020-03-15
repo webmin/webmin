@@ -7,7 +7,7 @@ use WebminCore;
 %access = &get_module_acl();
 
 $default_type = 'nfs';
-if ($config{'fstypes_file'} && open(TYPES, $config{'fstypes_file'})) {
+if ($config{'fstypes_file'} && open(TYPES, "<".$config{'fstypes_file'})) {
 	if (<TYPES> =~ /^(\S+)/) {
 		$default_type = $1;
 		}
@@ -21,7 +21,7 @@ sub list_shares
 {
 local $lnum = 0;
 local @rv;
-open(DFS, $config{'dfstab_file'});
+open(DFS, "<".$config{'dfstab_file'});
 while(<DFS>) {
 	s/\r|\n//g; s/#.*$//;
 	if (/^\s*\S*share\s+(.*)/) {

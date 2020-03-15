@@ -26,7 +26,7 @@ if (!defined($list_authusers_cache{$file})) {
 	local $_;
 	my $lnum = 0;
 	my $count = 0;
-	if (open(HTPASSWD, $file)) {
+	if (open(HTPASSWD, "<".$file)) {
 		while(<HTPASSWD>) {
 			if (/^(#?)\s*([^:]+):(\S*)/) {
 				push(@{$list_authusers_cache{$file}},
@@ -56,7 +56,7 @@ if (!defined($list_authusers_cache{$file})) {
 	local $_;
 	my $lnum = 0;
 	my $count = 0;
-	if (open(HTPASSWD, $file)) {
+	if (open(HTPASSWD, "<".$file)) {
 		while(<HTPASSWD>) {
 			if (/^(#?)\s*(\S+):(\S+):(\S*)/) {
 				push(@{$list_authusers_cache{$file}},
@@ -201,7 +201,7 @@ if (!defined($list_authgroups_cache{$file})) {
 	local $_;
 	my $lnum = 0;
 	my $count = 0;
-	open(HTPASSWD, $file);
+	open(HTPASSWD, "<".$file);
 	while(<HTPASSWD>) {
 		if (/^(#?)\s*(\S+):\s*(.*)/) {
 			push(@{$list_authgroups_cache{$file}},

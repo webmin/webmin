@@ -228,7 +228,7 @@ sub installed_file
 local ($cf, $type, @packs);
 local $real_dir = &translate_filename($pkg_dir);
 while($cf = <$real_dir/*/*/CONTENTS>) {
-	open(FILE, $cf);
+	open(FILE, "<".$cf);
 	while(<FILE>) {
 		local @l = split(/\s+/);
 		if ($l[1] eq $_[0]) {

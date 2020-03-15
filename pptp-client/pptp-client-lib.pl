@@ -33,7 +33,7 @@ sub parse_ppp_options
 {
 local @rv;
 local $lnum = 0;
-open(OPTS, $_[0]);
+open(OPTS, "<".$_[0]);
 while(<OPTS>) {
 	s/\r|\n//g;
 	if (/^#\s*(.*)/) {

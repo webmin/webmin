@@ -34,7 +34,8 @@ foreach $v (&find_directive_struct("VirtualHost", $conf)) {
 if ($in{'from'} == 0) {
 	# search under all directories
 	for($i=0; $i<@dirs; $i++) {
-		open(FIND, "find $dirs[$i] -name $files[$i] -print |");
+		open(FIND, "find ".quotemeta($dirs[$i]).
+			   " -name ".quotemeta($files[$i])." -print |");
 		while(<FIND>) {
 			s/\r|\n//g;
 			push(@rv, $_);
@@ -44,7 +45,9 @@ if ($in{'from'} == 0) {
 	}
 else {
 	# search under the given directory only
-	foreach $f (&unique(@files)) { push(@args, "-name $f"); }
+	foreach $f (&unique(@files)) {
+		push(@args, "-name ".quotemeta($f));
+		}
 	$args = join(' -o ', @args);
 	open(FIND, "find ".quotemeta($in{'dir'})." $args -print |");
 	while(<FIND>) {

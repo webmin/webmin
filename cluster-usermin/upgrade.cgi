@@ -37,7 +37,7 @@ elsif ($in{'source'} == 2) {
 	$file = &tempname();
 	&http_download($usermin::update_host, $usermin::update_port, '/index6.html', $file, \$error);
 	$error && &inst_error($error);
-	open(FILE, $file);
+	open(FILE, "<$file");
 	while(<FILE>) {
 		if (/usermin-([0-9\.]+)\.tar\.gz/) {
 			$site_version = $1;
@@ -138,7 +138,7 @@ else {
 	}
 
 # gunzip the file if needed
-open(FILE, $file);
+open(FILE, "<$file");
 read(FILE, $two, 2);
 close(FILE);
 if ($two eq "\037\213") {

@@ -39,7 +39,7 @@ elsif ($in{'source'} == 2) {
 	$file = &transname();
 	&http_download('www.webmin.com', 80, '/index6.html', $file, \$error);
 	$error && &inst_error($error);
-	open(FILE, $file);
+	open(FILE, "<$file");
 	while(<FILE>) {
 		if (/usermin-([0-9\.]+)-(\d+)\.tar\.gz/ ||
 		    /usermin-([0-9\.]+)\.tar\.gz/) {
@@ -115,7 +115,7 @@ elsif ($in{'source'} == 5) {
 $qfile = quotemeta($file);
 
 # gunzip the file if needed
-open(FILE, $file);
+open(FILE, "<$file");
 read(FILE, $two, 2);
 close(FILE);
 if ($two eq "\037\213") {
@@ -299,7 +299,7 @@ if ($updates_error) {
         print "<br>",&text('upgrade_eupdates', $updates_error),"<p>\n";
         }
 else {
-        open(UPDATES, $updatestemp);
+        open(UPDATES, "<$updatestemp");
         while(<UPDATES>) {
                 if (/^([^\t]+)\t+([^\t]+)\t+([^\t]+)\t+([^\t]+)\t+(.*)/) {
                         push(@updates, [ $1, $2, $3, $4, $5 ]);

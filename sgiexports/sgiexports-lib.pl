@@ -11,7 +11,7 @@ sub get_exports
 {
 local $lnum = 0;
 local @rv;
-open(EXPORTS, $config{'exports_file'});
+open(EXPORTS, "<".$config{'exports_file'});
 while(<EXPORTS>) {
 	s/\r|\n//g;
 	s/#.*$//g;

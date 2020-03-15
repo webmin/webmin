@@ -97,7 +97,7 @@ foreach my $dev (glob("/dev/ada[0-9]"),
 		}
 
 	# Get disk model from dmesg
-	open(DMESG, "/var/run/dmesg.boot");
+	open(DMESG, "</var/run/dmesg.boot");
 	while(<DMESG>) {
 		if (/^(\S+):\s+(\S+\s+)?<(.*)>/ && $1 eq $disk->{'short'}) {
 			$disk->{'model'} = $3;

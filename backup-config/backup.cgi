@@ -49,7 +49,7 @@ else {
 		}
 	print "Content-type: application/x-gzip\n\n";
 	my $buf;
-	open(TEMP, $temp);
+	open(TEMP, "<$temp");
 	while(read(TEMP, $buf, 1024)) {
 		print $buf;
 		}

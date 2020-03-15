@@ -20,7 +20,7 @@ while($f = readdir(DIR)) {
 		# Read custom-command file
 		$cmd{'file'} = "$mcd/$f";
 		$cmd{'id'} = $1;
-		open(FILE, $cmd{'file'});
+		open(FILE, "<".$cmd{'file'});
 		chop($cmd{'cmd'} = <FILE>);
 		chop($cmd{'desc'} = <FILE>);
 		local @o = split(/\s+/, <FILE>);
@@ -38,7 +38,7 @@ while($f = readdir(DIR)) {
 		# Read file-editor file
 		$cmd{'file'} = "$mcd/$f";
 		$cmd{'id'} = $1;
-		open(FILE, $cmd{'file'});
+		open(FILE, "<".$cmd{'file'});
 		chop($cmd{'edit'} = <FILE>);
 		chop($cmd{'desc'} = <FILE>);
 		chop($cmd{'user'} = <FILE>);
@@ -56,7 +56,7 @@ while($f = readdir(DIR)) {
 		# Read SQL file
 		$cmd{'file'} = "$mcd/$f";
 		$cmd{'id'} = $1;
-		open(FILE, $cmd{'file'});
+		open(FILE, "<".$cmd{'file'});
 		chop($cmd{'desc'} = <FILE>);
 		chop($cmd{'type'} = <FILE>);
 		chop($cmd{'db'} = <FILE>);
@@ -82,14 +82,14 @@ while($f = readdir(DIR)) {
 			}
 		close(FILE);
 		$cmd{'index'} = scalar(@rv);
-		open(HTML, "$mcd/$cmd{'id'}.html");
+		open(HTML, "<$mcd/$cmd{'id'}.html");
 		while(<HTML>) {
 			$cmd{'html'} .= $_;
 			}
 		close(HTML);
 
 		# Read cluster hosts file
-		open(CLUSTER, "$mcd/$cmd{'id'}.hosts");
+		open(CLUSTER, "<$mcd/$cmd{'id'}.hosts");
 		while(<CLUSTER>) {
 			s/\r|\n//g;
 			push(@{$cmd{'hosts'}}, $_);
@@ -308,7 +308,7 @@ if ($file !~ /^\// && $file !~ /\|\s*$/) {
 		$file = "$uinfo[7]/$file";
 		}
 	}
-open(FILE, $file);
+open(FILE, "<".$file);
 while(<FILE>) {
 	s/\r|\n//g;
 	next if (/^#/);

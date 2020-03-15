@@ -1599,7 +1599,7 @@ local @st = stat($errorlog);
 my $start = time();
 while(time() - $start < $timeout) {
 	sleep(1);
-	open(ERRORLOG, $errorlog);
+	open(ERRORLOG, "<".$errorlog);
 	seek(ERRORLOG, $st[7], 0);
 	local $/ = undef;
 	local $rest = <ERRORLOG>;
@@ -1634,7 +1634,7 @@ elsif (-x $config{'apachectl_path'}) {
 else {
 	# kill the process
 	$pidfile = &get_pid_file();
-	open(PID, $pidfile) || return &text('stop_epid', $pidfile);
+	open(PID, "<".$pidfile) || return &text('stop_epid', $pidfile);
 	<PID> =~ /(\d+)/ || return &text('stop_epid2', $pidfile);
 	close(PID);
 	&kill_logged('TERM', $1) || return &text('stop_esig', $1);

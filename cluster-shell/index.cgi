@@ -12,7 +12,7 @@ print &ui_table_start(undef, undef, 2);
 print &ui_table_row($text{'index_cmd'},
 	&ui_textbox("cmd", undef, 60));
 
-open(COMMANDS, $commands_file);
+open(COMMANDS, "<$commands_file");
 chop(@commands = <COMMANDS>);
 close(COMMANDS);
 if (@commands) {

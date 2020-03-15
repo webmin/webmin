@@ -30,7 +30,7 @@ local @rv;
 local $cv = \@rv;
 local ($last_indent, $parent);
 local $lnum = 0;
-open(CONF, $mon_config_file);
+open(CONF, "<".$mon_config_file);
 while(<CONF>) {
 	local $slnum = $lnum;
 	s/\s+$//;
@@ -278,7 +278,7 @@ else {
 sub list_users
 {
 local(@rv, $lnum = 0);
-open(USERS, &mon_users_file());
+open(USERS, "<".&mon_users_file());
 while(<USERS>) {
 	s/\r|\n//g;
 	s/#.*//;

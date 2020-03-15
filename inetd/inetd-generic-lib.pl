@@ -7,7 +7,7 @@ sub list_services
 local(@rv, $l);
 $l = 0;
 system("$config{'get_services_command'}") if ($config{'get_services_command'});
-open(SERVICES, $config{services_file});
+open(SERVICES, "<".$config{services_file});
 while(<SERVICES>) {
 	chop; s/#.*$//g;
 	if (/^(\S+)\s+([0-9]+)\/(\S+)\s*(.*)$/) {
@@ -47,7 +47,7 @@ system("$config{'put_services_command'}") if ($config{'put_services_command'});
 sub modify_service
 {
 local(@serv);
-open(SERVICES, $config{services_file});
+open(SERVICES, "<".$config{services_file});
 @serv = <SERVICES>;
 close(SERVICES);
 $serv[$_[0]] = "$_[1]\t$_[2]/$_[3]".($_[4] ? "\t$_[4]\n" : "\n");
@@ -61,7 +61,7 @@ system("$config{'put_services_command'}") if ($config{'put_services_command'});
 sub delete_service
 {
 local(@serv);
-open(SERVICES, $config{services_file});
+open(SERVICES, "<".$config{services_file});
 @serv = <SERVICES>;
 close(SERVICES);
 splice(@serv, $_[0], 1);
@@ -76,7 +76,7 @@ system("$config{'put_services_command'}") if ($config{'put_services_command'});
 sub list_protocols
 {
 local(@rv);
-open(PROT, $config{protocols_file});
+open(PROT, "<".$config{protocols_file});
 while(<PROT>) {
 	chop; s/#.*$//g;
 	if (!/\S/) { next; }
@@ -111,7 +111,7 @@ closedir(DIR);
 # parse each file
 foreach $f (@files) {
 	$l = 0;
-	open(INET, $f);
+	open(INET, "<".$f);
 	while(<INET>) {
 		chop;
 		if (/^(#+|#<off>#)?\s*(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\??\/\S+|internal)\s*(.*)$/) {
@@ -144,7 +144,7 @@ sub create_inet
 sub modify_inet
 {
 local(@inet);
-open(INET, $_[9]);
+open(INET, "<".$_[9]);
 @inet = <INET>;
 close(INET);
 $inet[$_[0]] = ($_[1] ? "" : "#")."$_[2]\t$_[3]\t$_[4]\t$_[5]\t$_[6]\t$_[7]".
@@ -160,7 +160,7 @@ $inet[$_[0]] = ($_[1] ? "" : "#")."$_[2]\t$_[3]\t$_[4]\t$_[5]\t$_[6]\t$_[7]".
 sub delete_inet
 {
 local(@inet);
-open(INET, $_[1]);
+open(INET, "<".$_[1]);
 @inet = <INET>;
 close(INET);
 splice(@inet, $_[0], 1);

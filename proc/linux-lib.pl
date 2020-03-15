@@ -224,7 +224,7 @@ else {
 # Disconnects this process from it's controlling PTY, if connected
 sub close_controlling_pty
 {
-if (open(DEVTTY, "/dev/tty")) {
+if (open(DEVTTY, "</dev/tty")) {
 	# Special ioctl to disconnect (TIOCNOTTY)
 	ioctl(DEVTTY, 0x5422, 0);
 	close(DEVTTY);
@@ -249,7 +249,7 @@ sub get_memory_info
 {
 local %m;
 local $memburst;
-if (&running_in_openvz() && open(BEAN, "/proc/user_beancounters")) {
+if (&running_in_openvz() && open(BEAN, "</proc/user_beancounters")) {
 	# If we are running under Virtuozzo, there may be a limit on memory
 	# use in force that is less than the real system's memory. Or it may be
 	# a higher 'burstable' limit. Use this, unless it is unreasonably
@@ -268,7 +268,7 @@ if (&running_in_openvz() && open(BEAN, "/proc/user_beancounters")) {
 		}
 	close(BEAN);
 	}
-open(MEMINFO, "/proc/meminfo") || return ();
+open(MEMINFO, "</proc/meminfo") || return ();
 while(<MEMINFO>) {
 	if (/^(\S+):\s+(\d+)/) {
 		$m{lc($1)} = $2;
@@ -307,11 +307,11 @@ return ( $memtotal,
 # CPU mhz, model, vendor, cache and count
 sub os_get_cpu_info
 {
-open(LOAD, "/proc/loadavg") || return ();
+open(LOAD, "</proc/loadavg") || return ();
 local @load = split(/\s+/, <LOAD>);
 close(LOAD);
 local %c;
-open(CPUINFO, "/proc/cpuinfo");
+open(CPUINFO, "</proc/cpuinfo");
 while(<CPUINFO>) {
 	if (/^(\S[^:]*\S)\s*:\s*(.*)/) {
 		$c{lc($1)} = $2;
