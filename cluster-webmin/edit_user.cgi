@@ -84,9 +84,9 @@ printf "<input type=radio name=lang_def value=0> %s\n",
 print "<select name=lang>\n";
 print "<option value='' selected>$text{'user_default'}</option>\n";
 foreach $l (@langs) {
-	printf "<option value=%s>%s (%s)</option>\n",
+	printf "<option value=%s>%s</option>\n",
 		$l->{'lang'},
-		$l->{'desc'}, uc($l->{'lang'});
+		$l->{'desc'};
 	}
 print "</select></td> </tr>\n";
 
