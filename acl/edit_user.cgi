@@ -192,12 +192,12 @@ if ($access{'chcert'}) {
 
 if ($access{'lang'}) {
 	# Current language
+	my $ulang = safe_language($user{'lang'});
 	print &ui_table_row($text{'edit_lang'},
-		&ui_radio("lang_def", $user{'lang'} ? 0 : 1,
+		&ui_radio("lang_def", $ulang ? 0 : 1,
 		  [ [ 1, $text{'default'} ],
-		    [ 0, &ui_select("lang", $user{'lang'},
-			    [ map { [ $_->{'lang'}, $_->{'desc'}." (".
-					uc($_->{'lang'}).")" ] }
+		    [ 0, &ui_select("lang", $ulang,
+			    [ map { [ $_->{'lang'}, $_->{'desc'}."" ] }
 				  &list_languages() ]) ]
 		  ]));
 	}

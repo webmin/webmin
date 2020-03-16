@@ -11,11 +11,11 @@ print &ui_form_start("change_lang.cgi", "post");
 print &ui_table_start($text{'lang_title2'}, undef, 2, [ "width=40%" ]);
 
 # Language
-$clang = $gconfig{'lang'} ? $gconfig{'lang'} : $default_lang;
+$clang = $gconfig{'lang'} ? safe_language($gconfig{'lang'}) : $default_lang;
 print &ui_table_row($text{'lang_lang'},
 	&ui_select("lang", $clang,
 	   [ map { [ $_->{'lang'}, "$_->{'desc'}" ] }
-		 &list_languages($clang) ]));
+		 &list_languages() ]));
 
 # Character set
 print &ui_table_row($text{'lang_charset'},

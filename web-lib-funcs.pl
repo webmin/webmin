@@ -4825,12 +4825,12 @@ if ($gconfig{'acceptlang'}) {
 			}
 		}
 	}
-$current_lang = $force_lang ? $force_lang :
+$current_lang = safe_language($force_lang ? $force_lang :
     $accepted_lang ? $accepted_lang :
     $remote_user_attrs{'lang'} ? $remote_user_attrs{'lang'} :
     $gconfig{"lang_$remote_user"} ? $gconfig{"lang_$remote_user"} :
     $gconfig{"lang_$base_remote_user"} ? $gconfig{"lang_$base_remote_user"} :
-    $gconfig{"lang"} ? $gconfig{"lang"} : $default_lang;
+    $gconfig{"lang"} ? $gconfig{"lang"} : $default_lang);
 foreach my $l (@langs) {
 	$current_lang_info = $l if ($l->{'lang'} eq $current_lang);
 	}
@@ -5549,6 +5549,45 @@ if (!@main::list_languages_cache) {
 				     @main::list_languages_cache;
 	}
 return @main::list_languages_cache;
+}
+
+=head2 safe_language($current_user_lang)
+
+Returns new type of value for language code
+
+=item current_user_lang - Old value for language code to update, like ja_JP.euc or zh_CN or ru_RU.
+
+=cut
+sub safe_language
+{
+my ($code) = @_;
+$code =~ s/\.\S+//g;
+my %language_map = (
+
+    # Use new type of language codes
+    'ja_JP' => 'ja',
+    'ko_KR' => 'ko',
+    'en_gb' => 'en',
+    'ms_MY' => 'ms',
+    'ru_RU' => 'ru',
+    'ru_SU' => 'ru',
+    'uk_UA' => 'uk',
+    'zh_CN' => 'zh',
+    'zh_TW' => 'zh_TW',
+
+    # Czech is `cs` not `cz`, as there is no `cz` at all
+    'cz' => 'cs',
+
+    # Slovenian is `sl` not `si`, as `si` is Sinhala
+    'si' => 'sl',
+
+    # Greek is `el` not `gr`
+    'gr' => 'el');
+
+if ($language_map{$code}) {
+    $code = $language_map{$code};
+	}
+return $code;
 }
 
 =head2 read_env_file(file, &hash, [include-commented])

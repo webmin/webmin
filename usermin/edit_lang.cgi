@@ -13,10 +13,10 @@ print &ui_form_start("change_lang.cgi", "post");
 print &ui_table_start($text{'lang_title2'}, undef, 2);
 
 # Language
-$clang = $uconfig{'lang'} ? $uconfig{'lang'} : $default_lang;
+$clang = $uconfig{'lang'} ? safe_language($uconfig{'lang'}) : $default_lang;
 print &ui_table_row($text{'lang_lang'},
         &ui_select("lang", $clang,
-           [ map { [ $_->{'lang'}, "$_->{'desc'} (".uc($_->{'lang'}).")" ] }
+           [ map { [ $_->{'lang'}, "$_->{'desc'}" ] }
                  &list_languages() ]));
 
 # Use language from browser?

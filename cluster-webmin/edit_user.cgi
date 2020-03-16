@@ -73,10 +73,11 @@ print "<option value=5>$text{'user_extauth'}</option>\n";
 print "</select><input type=password name=pass size=25></td> </tr>\n";
 
 @langs = &list_languages();
+my $ulang = safe_language($user->{'lang'});
 %langdesc = map { $_->{'lang'}, $_->{'desc'} } @langs;
 print "<tr> <td><b>$text{'user_lang'}</b></td> <td>\n";
 printf "<input type=radio name=lang_def value=1 checked> %s (%s)\n",
-	$text{'user_leave'}, $user->{'lang'} ? $langdesc{$user->{'lang'}}
+	$text{'user_leave'}, $ulang ? $langdesc{$ulang}
 					     : $text{'user_default'};
 printf "<input type=radio name=lang_def value=0> %s\n",
 	$text{'user_set'};

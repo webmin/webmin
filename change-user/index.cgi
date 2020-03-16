@@ -23,15 +23,16 @@ print &ui_table_start(undef, undef, 2);
 
 if ($access{'lang'}) {
 	# Show personal language
-	my $glang = $gconfig{"lang"} || $default_lang;
-	my @langs = &list_languages($user->{'lang'} || $glang);
+	my $glang = safe_language($gconfig{"lang"}) || $default_lang;
+	my $ulang = safe_language($user->{'lang'});
+	my @langs = &list_languages($ulang || $glang);
 	my ($linfo) = grep { $_->{'lang'} eq $glang } @langs;
 	print &ui_table_row($text{'index_lang'},
-		&ui_radio("lang_def", $user->{'lang'} ? 0 : 1,
+		&ui_radio("lang_def", $ulang ? 0 : 1,
 			  [ [ 1, &text('index_langglobal2', $linfo->{'desc'},
 				       $linfo->{'lang'})."<br>" ],
 			    [ 0, $text{'index_langset'} ] ])." ".
-		&ui_select("lang", $user->{'lang'},
+		&ui_select("lang", $ulang,
 			   [ map { [ $_->{'lang'},
 				     $_->{'desc'} ] }
 			         &list_languages() ]), undef, [ "valign=top","valign=top" ] );
