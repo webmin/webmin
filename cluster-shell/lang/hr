@@ -1,13 +1,13 @@
 index_all=<Svi hostovi>
 index_clear=Izriši Povijest
 index_cmd=Naredba za pokretanje
-index_group=ÄŒlanovi iz $1
+index_group=Članovi iz $1
 index_old=ili
 index_return=index modula
 index_run=Pokreni Naredbu Sada
 index_server=Pokreni na poslužiteljima
 index_this=ovaj poslužitelj
-index_title=Slupina ÄŒelija NerdbiÂ¸
+index_title=Slupina Čelija NerdbiÂ¸
 log_clear=Izbriši povijest naredbi
 log_run=Pokreni $1 na $2 poslužiteljima
 log_run_l=Pokreni $1 na $2
