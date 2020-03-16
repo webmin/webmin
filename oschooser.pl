@@ -10,7 +10,7 @@
 $| = 1;
 
 ($oslist, $out, $auto) = @ARGV;
-open(OS, $oslist) || die "failed to open $oslist : $!";
+open(OS, "<".$oslist) || die "failed to open $oslist : $!";
 while(<OS>) {
 	chop;
 	if (/^([^\t]+)\t+([^\t]+)\t+([^\t]+)\t+([^\t]+)\t*(.*)$/) {

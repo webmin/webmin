@@ -34,7 +34,7 @@ if ($mt =~ /^image\//) {
 &ui_print_header(undef, $text{'doc_title'}, "");
 
 # Work out compression format
-open(FILE, $in{'file'});
+open(FILE, "<$in{'file'}");
 read(FILE, $two, 2);
 $qm = quotemeta($in{'file'});
 if ($two eq "\037\213") {

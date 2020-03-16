@@ -5,7 +5,7 @@ sub display_module_args
 {
 local $file = $_[2]->{'conffile'} ? $_[2]->{'conffile'}
 				  : "/etc/security/pam_env.conf";
-open(FILE, $file);
+open(FILE, "<".$file);
 while(<FILE>) {
 	s/#.*$//;
 	s/\r|\n//g;

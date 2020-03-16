@@ -106,8 +106,8 @@ chop($host = `hostname`);
 $rheader{'Message-Id'} = "<".time().".".$$."\@".$host.">";
 
 # read the autoreply file (or alternate)
-if (open(AUTO, $ARGV[0]) ||
-    $ARGV[2] && open(AUTO, $ARGV[2])) {
+if (open(AUTO, "<".$ARGV[0]) ||
+    $ARGV[2] && open(AUTO, "<".$ARGV[2])) {
 	while(<AUTO>) {
 		s/\$SUBJECT/$header{'subject'}/g;
 		s/\$FROM/$header{'from'}/g;
@@ -244,7 +244,7 @@ if ($spam) {
 	print SPAM $body;
 	close(SPAM);
 	$isspam = undef;
-	open(SPAMOUT, $temp);
+	open(SPAMOUT, "<".$temp);
 	while(<SPAMOUT>) {
 		if (/^X-Spam-Status:\s+Yes/i) {
 			$isspam = 1;
@@ -263,7 +263,7 @@ if ($spam) {
 # Read attached files
 foreach $f (@files) {
 	local $/ = undef;
-	if (!open(FILE, $f)) {
+	if (!open(FILE, "<".$f)) {
 		print STDERR "Failed to open $f : $!\n";
 		exit(1);
 		}
@@ -441,7 +441,7 @@ return $file =~ /\.gif/i ? "image/gif" :
 sub read_config_file
 {
 local %config;
-if (open(CONF, $_[0])) {
+if (open(CONF, "<".$_[0])) {
 	while(<CONF>) {
 		if (/^(\S+)=(.*)/) {
 			$config{$1} = $2;

@@ -61,7 +61,7 @@ local @rv = ( { 'dummy' => 1,
 		'line' => -1,
 		'eline' => -1 } );
 local $lnum = 0;
-open(CONF, $config{'sshd_config'});
+open(CONF, "<".$config{'sshd_config'});
 while(<CONF>) {
 	s/\r|\n//g;
 	s/^\s*#.*$//g;
@@ -181,7 +181,7 @@ local @rv = ( { 'dummy' => 1,
 		'eline' => -1 } );
 local $host;
 local $lnum = 0;
-open(CLIENT, $config{'client_config'});
+open(CLIENT, "<".$config{'client_config'});
 while(<CLIENT>) {
 	s/\r|\n//g;
 	s/^\s*#.*$//g;

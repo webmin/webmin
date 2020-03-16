@@ -46,7 +46,7 @@ if ($ty == 0) {
 		#	}
 		print "<form action=save_startscript.cgi method=post>\n";
 		print "<textarea name=startup rows=20 cols=80>";
-		open(STARTSCRIPT, $startscript);
+		open(STARTSCRIPT, "<$startscript");
 		while(<STARTSCRIPT>) { print; }
 		close(STARTSCRIPT);
 		print "</textarea><br>\n";
@@ -60,7 +60,7 @@ if ($ty == 0) {
 		#	}
 		print "<form action=save_startscript.cgi method=post>\n";
 		print "<textarea name=plist rows=20 cols=80>";
-		open(PLIST, $plistedit);
+		open(PLIST, "<$plistedit");
 		while(<PLIST>) { print; }
 		close(PLIST);
 		print "</textarea><br>\n";
@@ -148,7 +148,7 @@ if ($ty == 2) {
 		"<tt>$config{'hostconfig'}</tt>"),"<br>\n";
 	print "<form action=save_startscript.cgi method=post>\n";
 	print "<textarea name=hostconfig rows=20 cols=80>";
-	open(LOCAL, $config{'hostconfig'});
+	open(LOCAL, "<$config{'hostconfig'}");
 	while(<LOCAL>) { print; }
 	close(LOCAL);
 	print "</textarea><br>\n";

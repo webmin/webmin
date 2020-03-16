@@ -27,7 +27,7 @@ else {
 sub list_exports
 {
 local(@rv, $lnum, $_);
-open(EXP, $config{'exports_file'});
+open(EXP, "<".$config{'exports_file'});
 $lnum = -1; $index = 0;
 while(<EXP>) {
 	$lnum++;

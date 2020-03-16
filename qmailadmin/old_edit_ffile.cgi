@@ -6,7 +6,7 @@ require './qmail-lib.pl';
 &ReadParse();
 
 &ui_print_header(undef, $text{'ffile_title'}, "");
-open(FILE, $in{'file'});
+open(FILE, "<$in{'file'}");
 while(<FILE>) {
 	s/\r|\n//g;
 	if (/^(\S+)\s+(\S+)\s+(\S+)\s+(.*)$/) {

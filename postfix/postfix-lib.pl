@@ -1612,7 +1612,7 @@ if (!scalar(@master_config_cache)) {
 	@master_config_cache = ( );
 	local $lnum = 0;
 	local $prog;
-	open(MASTER, $config{'postfix_master'});
+	open(MASTER, "<".$config{'postfix_master'});
 	while(<MASTER>) {
 		s/\r|\n//g;
 		if (/^(#?)\s*(\S+)\s+(inet|unix|fifo)\s+(y|n|\-)\s+(y|n|\-)\s+(y|n|\-)\s+(\S+)\s+(\S+)\s+(.*)$/) {

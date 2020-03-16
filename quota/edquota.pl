@@ -14,10 +14,10 @@ $sf = $ENV{'QUOTA_SFILES'};
 $hf = $ENV{'QUOTA_HFILES'};
 $f = $ARGV[0];
 
-open(FILE, $f);
+open(FILE, "<".$f);
 while(<FILE>) { $qdata .= $_; }
 close(FILE);
 $nqdata = &edit_quota_file($qdata, $fs, $sb, $hb, $sf, $hf);
-open(FILE, "> $f");
+open(FILE, ">".$f);
 print FILE $nqdata;
 close(FILE);

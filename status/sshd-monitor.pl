@@ -12,7 +12,7 @@ return { 'up' => -1 } if (!-r $sconfig{'sshd_config'});
 local $conf = &foreign_call($_[1], "get_sshd_config");
 local $pidfile = &foreign_call($_[1], "find_value", "PidFile", $conf);
 $pidfile ||= $sconfig{'pid_file'};
-if (open(PID, $pidfile) && <PID> =~ /(\d+)/ && kill(0, $1)) {
+if (open(PID, "<".$pidfile) && <PID> =~ /(\d+)/ && kill(0, $1)) {
 	close(PID);
 	local @st = stat($pidfile);
 	return { 'up' => 1,

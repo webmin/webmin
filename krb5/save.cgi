@@ -9,7 +9,7 @@ require './krb5-lib.pl';
 
 # Write the config file
 &lock_file($config{'krb5_conf'});
-open(FILE, "> $config{'krb5_conf'}");
+open(FILE, ">$config{'krb5_conf'}");
 print FILE "[logging]\n";
 print FILE "default = FILE:$in{'default_log'}\n";
 print FILE "kdc = FILE:$in{'kdc_log'}\n";

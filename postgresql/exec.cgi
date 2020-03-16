@@ -35,7 +35,7 @@ else {
 		}
 
 	# Add to the old commands file
-	open(OLD, "$commands_file.$in{'db'}");
+	open(OLD, "<$commands_file.$in{'db'}");
 	while(<OLD>) {
 		s/\r|\n//g;
 		$already++ if ($_ eq $in{'cmd'});

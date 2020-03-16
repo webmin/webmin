@@ -545,7 +545,7 @@ else {
 sub get_hba_config
 {
 local $lnum = 0;
-open(HBA, $hba_conf_file);
+open(HBA, "<".$hba_conf_file);
 while(<HBA>) {
 	s/\r|\n//g;
 	s/^\s*#.*$//g;

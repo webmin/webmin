@@ -495,7 +495,7 @@ else {
 	}
 
 # Validate archive
-open(FILE, $file);
+open(FILE, "<".$file);
 my $two;
 read(FILE, $two, 2);
 close(FILE);
@@ -537,7 +537,7 @@ my %mfiles;
 my @files;
 while($m = readdir(DIR)) {
 	next if ($m eq "." || $m eq ".." || !$hasmod{$m});
-	open(MAN, "$manifests_dir/$m");
+	open(MAN, "<$manifests_dir/$m");
 	my @mfiles;
 	while(<MAN>) {
 		s/\r|\n//g;

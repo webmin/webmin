@@ -6,7 +6,7 @@ sub get_webmin_status
 {
 local %miniserv;
 &get_miniserv_config(\%miniserv);
-if (open(PID, $miniserv{'pidfile'}) && chop($pid = <PID>) && kill(0, $pid)) {
+if (open(PID, "<".$miniserv{'pidfile'}) && chop($pid = <PID>) && kill(0, $pid)) {
 	return { 'up' => 1 };
 	}
 else {

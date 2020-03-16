@@ -300,7 +300,7 @@ my ($stat, $start, $end) = @_;
 my @rv;
 my $last_time;
 my $now = time();
-open(HISTORY, "$historic_info_dir/$stat");
+open(HISTORY, "<$historic_info_dir/$stat");
 while(<HISTORY>) {
 	chop;
 	my ($time, $value) = split(" ", $_);
@@ -347,7 +347,7 @@ return \%maxpossible;
 sub get_historic_first_last
 {
 my ($stat) = @_;
-open(HISTORY, "$historic_info_dir/$stat") || return (undef, undef);
+open(HISTORY, "<$historic_info_dir/$stat") || return (undef, undef);
 my $first = <HISTORY>;
 $first || return (undef, undef);
 chop($first);

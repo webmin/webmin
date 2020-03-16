@@ -46,7 +46,7 @@ return 1;	# same!
 sub read_shorewall_config
 {
 	local @ret;
-	open(SHOREWALL_CONF, "$config{'config_dir'}/shorewall.conf");
+	open(SHOREWALL_CONF, "<$config{'config_dir'}/shorewall.conf");
 	while (<SHOREWALL_CONF>) {
 		chomp;
 		s/\r//;
@@ -96,7 +96,7 @@ sub read_table_file
 {
 local @rv;
 local $func = $_[1];
-open(FILE, "$config{'config_dir'}/$_[0]");
+open(FILE, "<$config{'config_dir'}/$_[0]");
 while(<FILE>) {
 	s/\r|\n//g;
 	local $l = &$func($_);
@@ -112,7 +112,7 @@ sub read_table_struct
 if (!defined($read_table_cache{$_[0]})) {
 	local @rv;
 	local $func = $_[1];
-	open(FILE, "$config{'config_dir'}/$_[0]");
+	open(FILE, "<$config{'config_dir'}/$_[0]");
 	local $lnum = 0;
 	while(<FILE>) {
 		s/\r|\n//g;
@@ -640,7 +640,7 @@ else {
 sub new_interfaces_format
 {
 if (&version_atleast(4, 5, 3)) {
-	open(FILE, "$config{'config_dir'}/interfaces");
+	open(FILE, "<$config{'config_dir'}/interfaces");
 	while(<FILE>) {
 		s/\r|\n//g;
 		if ($_ =~ /\??FORMAT\s+2/) {
@@ -1928,7 +1928,7 @@ sub list_standard_actions
 {
 local @rv;
 foreach my $a (split(/\t+/, $config{'actions'})) {
-	open(ACTIONS, $a);
+	open(ACTIONS, "<".$a);
 	while(<ACTIONS>) {
 		s/\r|\n//g;
 		s/#.*$//;
@@ -1971,7 +1971,7 @@ sub get_shorewall_version
 {
 local ($nocache) = @_;
 local $version;
-if (!$nocache && open(VERSION, "$module_config_directory/version")) {
+if (!$nocache && open(VERSION, "<$module_config_directory/version")) {
 	chop($version = <VERSION>);
 	close(VERSION);
 	}
@@ -1997,7 +1997,7 @@ sub list_protocols
 {
 local @stdprotos = ( 'tcp', 'udp', 'icmp' );
 local @otherprotos;
-open(PROTOS, "/etc/protocols");
+open(PROTOS, "</etc/protocols");
 while(<PROTOS>) {
 	s/\r|\n//g;
 	s/#.*$//;

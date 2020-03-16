@@ -66,7 +66,7 @@ elsif ($file eq "direct") {
 	# Read active rules
 	$file = $direct;
 	}
-open(FILE, $file);
+open(FILE, "<".$file);
 local $cmt;
 LINE:
 while(<FILE>) {

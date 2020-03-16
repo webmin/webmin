@@ -14,7 +14,7 @@ if ($in{'source'} == 0) {
 	$data =~ /\S/ || &error($text{'batch_efile'});
 	}
 elsif ($in{'source'} == 1) {
-	open(LOCAL, $in{'local'}) || &error($text{'batch_elocal'});
+	open(LOCAL, "<$in{'local'}") || &error($text{'batch_elocal'});
 	while(<LOCAL>) {
 		$data .= $_;
 		}

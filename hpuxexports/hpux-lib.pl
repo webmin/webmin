@@ -7,7 +7,7 @@ sub list_exports
 {
 local (@rv, $pos, $lnum, $h, $o, $line);
 return @list_exports_cache if (@list_exports_cache);
-open(EXP, $config{'exports_file'});
+open(EXP, "<".$config{'exports_file'});
 $lnum = 0;
 while($line = <EXP>) {
         local $slnum = $lnum;

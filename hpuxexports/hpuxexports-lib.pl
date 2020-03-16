@@ -11,7 +11,7 @@ use Socket;
 sub list_exports
 {
 local(@rv);
-open(EXP, $config{exports_file});
+open(EXP, "<".$config{exports_file});
 while(<EXP>) {
 	chop; s/#.*//g;
 	if (!/\S/) { next; }
@@ -28,7 +28,7 @@ return @rv;
 sub get_exports
 {
 local(@rv);
-open(EXP, $config{exports_file});
+open(EXP, "<".$config{exports_file});
 while(<EXP>) {
 	chop; s/#.*//g;
 	if (!/\S/) { next; }
@@ -64,7 +64,7 @@ if ($_[1]) { &print_tempfile(EXP, "-$_[1]\n"); };
 sub modify_export
 {
 local(@exp);
-open(EXP, $config{exports_file});
+open(EXP, "<".$config{exports_file});
 @exp = <EXP>;
 close(EXP);
 &open_tempfile(EXP, "> $config{exports_file}");
@@ -90,7 +90,7 @@ foreach (@exp) {
 sub delete_export
 {
 local(@exp);
-open(EXP, $config{exports_file});
+open(EXP, "<".$config{exports_file});
 @exp = <EXP>;
 close(EXP);
 &open_tempfile(EXP, "> $config{exports_file}");

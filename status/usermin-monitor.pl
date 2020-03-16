@@ -8,7 +8,7 @@ local %uconfig = &foreign_config($_[1]);
 local %miniserv;
 &read_file("$uconfig{'usermin_dir'}/miniserv.conf", \%miniserv) ||
 	return { 'up' => -1 };
-if (open(PID, $miniserv{'pidfile'}) && chop($pid = <PID>) && kill(0, $pid)) {
+if (open(PID, "<".$miniserv{'pidfile'}) && chop($pid = <PID>) && kill(0, $pid)) {
 	return { 'up' => 1 };
 	}
 else {

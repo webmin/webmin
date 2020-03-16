@@ -185,7 +185,7 @@ if (defined($get_config_cache{$file})) {
 	}
 local @rv;
 local $lnum = 0;
-open(CONF, $file);
+open(CONF, "<".$file);
 while(<CONF>) {
 	s/\r|\n//g;
 	s/^\s*#.*$//;
@@ -267,7 +267,7 @@ foreach my $file (&recursive_find_ldif($config{'config_file'})) {
 	$cls =~ s/^\Q$config{'config_file'}\/\E//;
 	$cls =~ s/\.ldif$//;
 	$cls = join(",", reverse(split(/\//, $cls)));
-	open(CONFIG, $file);
+	open(CONFIG, "<".$file);
 	while(<CONFIG>) {
 		s/\r|\n//g;
 		s/^#.*$//;

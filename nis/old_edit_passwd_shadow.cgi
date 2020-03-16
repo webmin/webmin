@@ -9,7 +9,7 @@ use Time::Local;
 
 # Build list of available shells
 @shlist = ("/bin/sh", "/bin/csh", "/bin/false");
-open(SHELLS, "/etc/shells");
+open(SHELLS, "</etc/shells");
 while(<SHELLS>) {
 	s/\r|\n//g;
 	s/#.*$//;

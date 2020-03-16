@@ -11,7 +11,7 @@ print "<form action=save_file.cgi method=post enctype=multipart/form-data>\n";
 print "<table border width=100%>\n";
 print "<tr $tb> <td><b>$text{'file_header'}</b></td> </tr>\n";
 print "<tr $cb> <td><textarea name=file rows=15 cols=80>";
-open(FILE, $config{'jabber_config'});
+open(FILE, "<$config{'jabber_config'}");
 while(<FILE>) {
 	print &html_escape($_);
 	}

@@ -7,7 +7,7 @@ sub get_mon_status
 local %mconfig = &foreign_config($_[1]);
 -d $mconfig{'cfbasedir'} || return { 'up' => -1 };
 local $pid;
-if (open(PID, $mconfig{'pid_file'}) && chop($pid = <PID>) && kill(0, $pid)) {
+if (open(PID, "<".$mconfig{'pid_file'}) && chop($pid = <PID>) && kill(0, $pid)) {
 	return { 'up' => 1 };
 	}
 else {

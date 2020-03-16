@@ -49,7 +49,7 @@ if (opendir(DIR, $fn)) {
 else {
 	# Just a normal config file
 	local $lnum = 0;
-	if (open(CONF, $fn)) {
+	if (open(CONF, "<".$fn)) {
 		@rv = &parse_config_file(CONF, $lnum, $fn);
 		close(CONF);
 		foreach $inc (&find_directive("Include", \@rv)) {
@@ -616,7 +616,7 @@ return wantarray ? ($c, $v) : $c;
 sub get_ftpaccess_config
 {
 local($lnum, @conf);
-open(FTPACCESS, $_[0]);
+open(FTPACCESS, "<".$_[0]);
 @conf = &parse_config_file(FTPACCESS, $lnum, $_[0]);
 close(FTPACCESS);
 return \@conf;
@@ -679,7 +679,7 @@ if ($config{'test_always'}) {
 	local @files = &unique(map { $_->{'file'} } @$conf);
 	local $/ = undef;
 	foreach $f (@files) {
-		if (open(BEFORE, $f)) {
+		if (open(BEFORE, "<".$f)) {
 			$before_changing{$f} = <BEFORE>;
 			close(BEFORE);
 			}

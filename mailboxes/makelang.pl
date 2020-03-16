@@ -32,7 +32,7 @@ foreach $k (@eorder) {
 sub read_file
 {
 local $_;
-open(ARFILE, $_[0]) || return 0;
+open(ARFILE, "<".$_[0]) || return 0;
 while(<ARFILE>) {
 	chomp;
 	local $hash = index($_, "#");

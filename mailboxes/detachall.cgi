@@ -54,7 +54,7 @@ if ($?) {
 
 # Output the ZIP
 print "Content-type: application/zip\n\n";
-open(ZIP, $zip);
+open(ZIP, "<$zip");
 while(read(ZIP, $buf, 32768) > 0) {
 	print $buf;
 	}

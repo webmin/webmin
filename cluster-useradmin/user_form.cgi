@@ -21,7 +21,7 @@ foreach $h (@hosts) {
 		push(@glist, $g) if (!$donegroup{$g->{'group'}}++);
 		}
 	}
-open(SHELLS, "/etc/shells");
+open(SHELLS, "</etc/shells");
 while(<SHELLS>) {
 	s/\r|\n//g;
 	s/#.*$//;

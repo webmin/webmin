@@ -41,7 +41,7 @@ if (!$config{'httpd_conf'} && !(-e "$conf/httpd.conf") &&
 	opendir(CONF, $conf);
 	foreach $f (readdir(CONF)) {
 		if ($f =~ /^(.*)-dist$/) {
-			open(DIST, "$conf/$f");
+			open(DIST, "<$conf/$f");
 			@dist = <DIST>;
 			close(DIST);
 			&open_tempfile(REAL, ">$conf/$1");

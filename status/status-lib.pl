@@ -583,7 +583,7 @@ if ($maxtail) {
 	open(HFILE, "tail -".quotemeta($maxtail)." ".quotemeta($hfile)." |");
 	}
 else {
-	open(HFILE, $hfile);
+	open(HFILE, "<".$hfile);
 	}
 my @rv;
 while(my $line = <HFILE>) {

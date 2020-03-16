@@ -20,7 +20,7 @@ if ($in{'clearcmds'}) {
 	&webmin_log("clear");
 	}
 else {
-	open(PREVFILE, $prevfile);
+	open(PREVFILE, "<$prevfile");
 	chop(@allprevious = <PREVFILE>);
 	close(PREVFILE);
 	@previous = &unique(@allprevious);

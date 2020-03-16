@@ -15,7 +15,7 @@ while(my $f = readdir($DIR)) {
 			       'date' => hex($2) * 60,
 			       'user' => scalar(getpwuid($st[4])),
 			       'created' => $st[9] };
-		open(my $FILE, $p);
+		open(my $FILE, "<".$p);
 		while(<$FILE>) {
 			$job->{'cmd'} .= $_;
 			}

@@ -118,9 +118,7 @@ else {
 		print "<tr $tb> <td><b>",&text('tables_file', "<tt>$f</tt>"),
 		      "</b></td> </tr>\n";
 		print "<tr $cb> <td><textarea name=data_$fnum rows=20 cols=80>";
-		open(FILE, $f);
-		print <FILE>;
-		close(FILE);
+		print &read_file_contents($f);
 		print "</textarea></td></tr></table><br>\n";
 		$fnum++;
 		}
@@ -144,7 +142,7 @@ sub show_nis_table
 {
 local @f = @{$_[1]->{'files'}};
 local $lines = 0;
-open(FILE, $f[0]);
+open(FILE, "<$f[0]");
 while(<FILE>) {
 	s/\r|\n//g;
 	s/^\s*#.*$//;

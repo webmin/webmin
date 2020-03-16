@@ -119,7 +119,7 @@ sub read_file
 {
 local($arr);
 $arr = $_[1];
-open(ARFILE, $_[0]) || return 0;
+open(ARFILE, "<".$_[0]) || return 0;
 while(<ARFILE>) {
 	s/\r|\n//g;
         if (!/^#/ && /^([^=]+)=(.*)$/) { $$arr{$1} = $2; }
@@ -134,7 +134,7 @@ sub write_file
 {
 local($arr);
 $arr = $_[1];
-open(ARFILE, "> $_[0]");
+open(ARFILE, ">".$_[0]);
 foreach $k (keys %$arr) {
         print ARFILE "$k=$$arr{$k}\n";
         }

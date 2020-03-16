@@ -98,7 +98,7 @@ else {
 sub dump_erroricon
 {
 print "Content-type: image/gif\n\n";
-open(ICON, "images/error.gif");
+open(ICON, "<images/error.gif");
 while(<ICON>) { print; }
 close(ICON);
 exit;

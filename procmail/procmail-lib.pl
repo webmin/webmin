@@ -29,7 +29,7 @@ sub parse_procmail_file
 local (@rv, $rec, $_);
 local $lnum = 0;
 local $fh = $_[0];
-open($fh, $_[0]);
+open($fh, "<".$_[0]);
 while(<$fh>) {
 	local $slnum = $lnum;
 	s/\s+$//;

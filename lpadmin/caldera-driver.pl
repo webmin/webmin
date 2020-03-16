@@ -9,7 +9,7 @@
 		 'ledger', 'Ledger' );
 $driver_dir = "/etc/sysconfig/printers";
 $base_driver = "/usr/libexec/printers/genericfilter";
-open(BASE, $base_driver);
+open(BASE, "<".$base_driver);
 $base_driver_text = join(<BASE>);
 close(BASE);
 $webmin_windows_driver = 1;
@@ -30,7 +30,7 @@ if (!$_[0]) {
 	return { 'mode' => 0,
 		 'desc' => "$text{'caldera_none'}" };
 	}
-open(DRV, $_[0]);
+open(DRV, "<".$_[0]);
 local @lines = <DRV>;
 close(DRV);
 local %conf;
@@ -57,7 +57,7 @@ if ($lines[1] =~ /^source ($driver_dir\/\S+)/) {
 		}
 	else {
 		# A caldera printer driver
-		open(COAS, $config{'coas_printers'});
+		open(COAS, "<".$config{'coas_printers'});
 		local $plist = &parse_coas(COAS);
 		close(COAS);
 		local ($prn, $p);
@@ -89,7 +89,7 @@ elsif (join(@lines) eq $base_driver_text) {
 		}
 	else {
 		# A new caldera printer driver
-		open(COAS, $config{'coas_printers'});
+		open(COAS, "<".$config{'coas_printers'});
 		local $plist = &parse_coas(COAS);
 		close(COAS);
 		local ($prn, $p, $type);
@@ -178,7 +178,7 @@ else {
 		}
 	else {
 		# Create the 2.3 driver program
-		open(DRIVER, $base_driver);
+		open(DRIVER, "<".$base_driver);
 		local @lines = <DRIVER>;
 		close(DRIVER);
 		&open_tempfile(DRV, ">$drv");
@@ -221,7 +221,7 @@ print "<td><table width=100%>\n";
 local $sels = $gconfig{'os_version'} < 2.4 ? 5 : 10;
 print "<tr> <td valign=top><b>$text{'caldera_printer'}</b></td>\n";
 print "<td colspan=3><select size=$sels name=gsdevice onChange='setres(0)'>\n";
-open(COAS, $config{'coas_printers'});
+open(COAS, "<".$config{'coas_printers'});
 local $plist = &parse_coas(COAS);
 close(COAS);
 local ($i, $j, $p, $k, $found, $select_res);
@@ -362,7 +362,7 @@ elsif ($in{'mode'} == 2) {
 	}
 elsif ($in{'mode'} == 1) {
 	# Normal ghostscript driver
-	open(COAS, $config{'coas_printers'});
+	open(COAS, "<".$config{'coas_printers'});
 	local $plist = &parse_coas(COAS);
 	close(COAS);
 	$in{'gsdevice'} || &error($text{'caldera_edriver'});

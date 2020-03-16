@@ -28,7 +28,7 @@ if (not $in{'action_name'}=~ /^[A-Z][A-Z0-9_]*$/ ) {
 	}
 else {
 	#make sure action name is not in use
-	open(LOCAL, $config{'hostconfig'});
+	open(LOCAL, "<$config{'hostconfig'}");
 	@temp = <LOCAL>;
 	close(LOCAL);
 	foreach $element (@temp) {

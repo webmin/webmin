@@ -12,7 +12,7 @@ if ($in{'type'} !~ /^(\S+)\/(\S+)$/) {
 	}
 
 &lock_file($in{'file'});
-open(MIME, $in{'file'});
+open(MIME, "<$in{'file'}");
 @mime = <MIME>;
 close(MIME);
 $line = "$in{'type'} ".join(" ", split(/\s+/, $in{'exts'}))."\n";

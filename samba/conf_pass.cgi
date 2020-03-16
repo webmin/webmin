@@ -55,7 +55,7 @@ $map = &ui_radio("username_map_def", &getval("username map") eq "" ? 1 : 0,
 		   [ 0, $text{'passwd_below'} ] ])."<br>\n";
 $map .= &ui_columns_start([ $text{'passwd_unixuser'},
 			    $text{'passwd_winuser'} ]);
-open(UMAP, &getval("username map"));
+open(UMAP, "<".&getval("username map"));
 while(<UMAP>) {
 	s/\r|\n//g;
 	s/[#;].*$//g;

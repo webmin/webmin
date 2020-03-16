@@ -70,7 +70,7 @@ sub tokenize_file
 {
 local $lines = 0;
 local ($line, $cmode);
-open(FILE, $_[0]);
+open(FILE, "<".$_[0]);
 while($line = <FILE>) {
 	# strip comments
 	$line =~ s/\r|\n//g;

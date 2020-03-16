@@ -9,7 +9,7 @@ use WebminCore;
 # Returns the idmapd config
 sub get_config {
     local %conf;
-    open(FILE, $config{'idmapd_conf'});
+    open(FILE, "<".$config{'idmapd_conf'});
     while(<FILE>) {
 	chomp;
 	s/#.*//;

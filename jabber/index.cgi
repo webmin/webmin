@@ -85,7 +85,7 @@ if (!ref($conf)) {
 &icons_table(\@links, \@titles, \@icons);
 
 # Show warning about config file
-open(CONFIG, $config{'jabber_config'});
+open(CONFIG, "<$config{'jabber_config'}");
 while(<CONFIG>) {
 	if (/\s+<!--/) {
 		$has_comment++;

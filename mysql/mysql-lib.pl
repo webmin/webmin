@@ -1413,7 +1413,7 @@ return map { [ $_, $text{'compat_'.$_} ] }
 # 4 for zip
 sub compression_format
 {
-open(BACKUP, $_[0]);
+open(BACKUP, "<".$_[0]);
 local $two;
 read(BACKUP, $two, 2);
 close(BACKUP);

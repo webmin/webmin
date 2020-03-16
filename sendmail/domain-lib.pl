@@ -27,7 +27,7 @@ if (!scalar(@list_domains_cache)) {
 	@list_domains_cache = ( );
 	local $lnum = 0;
 	local $cmt;
-	open(DOM, $_[0]);
+	open(DOM, "<".$_[0]);
 	while(<DOM>) {
 		s/\r|\n//g;     # remove newlines
 		if (/^\s*#+\s*(.*)/) {

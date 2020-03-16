@@ -44,7 +44,7 @@ my ($onlyuser, $onlymodule, $start, $end) = @_;
 my %index;
 &build_log_index(\%index);
 my @rv;
-open(LOG, $webmin_logfile);
+open(LOG, "<".$webmin_logfile);
 my ($id, $idx);
 while(($id, $idx) = each %index) {
 	my ($pos, $time, $user, $module, $sid) = split(/\s+/, $idx);
@@ -158,7 +158,7 @@ my @files = &expand_base_dir(-d $base ? $base : $oldbase);
 # Read the diff files
 foreach my $file (@files) {
         my ($type, $object, $diff, $input);
-	open(DIFF, $file);
+	open(DIFF, "<".$file);
         my $line = <DIFF>;
         while(<DIFF>) { $diff .= $_; }
         close(DIFF);
@@ -169,7 +169,7 @@ foreach my $file (@files) {
                 $type = $1; $object = $2;
                 }
 	if ($type eq "exec") {
-		open(INPUT, $file.".input");
+		open(INPUT, "<".$file.".input");
 		while(<INPUT>) {
 			$input .= $_;
 			}
@@ -209,7 +209,7 @@ my @files = &expand_base_dir(-d $base ? $base : $oldbase);
 
 foreach my $file (@files) {
         my ($type, $object, $data);
-	open(FILE, $file);
+	open(FILE, "<".$file);
         my $line = <FILE>;
 	$line =~ s/\r|\n//g;
         while(<FILE>) { $data .= $_; }
@@ -342,7 +342,7 @@ sub get_action
 {
 my %index;
 &build_log_index(\%index);
-open(LOG, $webmin_logfile);
+open(LOG, "<".$webmin_logfile);
 my @idx = split(/\s+/, $index{$_[0]});
 seek(LOG, $idx[0], 0);
 my $line = <LOG>;
@@ -368,7 +368,7 @@ dbmopen(%$index, $ifile, 0600);
 my @st = stat($webmin_logfile);
 if (@st && (!$index->{'lastchange'} || $st[9] > $index->{'lastchange'})) {
 	# Log has changed .. perhaps need to rebuild
-	open(LOG, $webmin_logfile);
+	open(LOG, "<".$webmin_logfile);
 	if ($index->{'lastsize'} && $st[7] >= $index->{'lastsize'}) {
 		# Gotten bigger .. just add new lines
 		seek(LOG, $index->{'lastpos'}, 0);

@@ -11,7 +11,7 @@ sub get_ftpaccess
 {
 local @rv;
 local $lnum = 0;
-open(FTP, $config{'ftpaccess'});
+open(FTP, "<".$config{'ftpaccess'});
 while(<FTP>) {
 	s/\r|\n//g;
 	s/#.*$//;

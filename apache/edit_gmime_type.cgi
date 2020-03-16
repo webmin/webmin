@@ -7,7 +7,7 @@ require './apache-lib.pl';
 $access{'global'}==1 || &error($text{'mime_ecannot'});
 if (defined($in{'line'})) {
 	&ui_print_header(undef, $text{'mime_edit'}, "");
-	open(MIME, $in{'file'});
+	open(MIME, "<$in{'file'}");
 	for($i=0; $i<=$in{'line'}; $i++) {
 		$line = <MIME>;
 		}

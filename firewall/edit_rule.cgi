@@ -456,7 +456,7 @@ local ($name, $value) = @_;
 local @stdprotos = ( 'tcp', 'udp', "icmp${ipvx_icmp}", undef );
 $value ||= "tcp";
 local @otherprotos;
-open(PROTOS, "/etc/protocols");
+open(PROTOS, "</etc/protocols");
 while(<PROTOS>) {
 	s/\r|\n//g;
 	s/#.*$//;

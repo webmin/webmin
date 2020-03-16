@@ -5,7 +5,7 @@ sub display_module_args
 {
 local $file = "/etc/security/group.conf";
 local @group;
-open(FILE, $file);
+open(FILE, "<".$file);
 while(<FILE>) {
 	s/#.*$//;
 	s/\r|\n//g;

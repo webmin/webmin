@@ -142,10 +142,7 @@ if ($section{'help'}) {
 		closedir(DIR2);
 		HELP: foreach $p (&unique(@pfx)) {
 			local $file = &help_file($m, $p);
-			open(HELP, $file);
-			local @st = stat($file);
-			read(HELP, $help, $st[7]);
-			close(HELP);
+			local $help = &read_file_contents($file);
 			if ($help =~ /<header>([^<]+)<\/header>/) {
 				$header = $1;
 				}
@@ -370,7 +367,7 @@ return @rv;
 sub read_doc_file
 {
 local ($two, $first, $title, $data);
-open(FILE, $_[0]);
+open(FILE, "<$_[0]");
 read(FILE, $two, 2);
 local $qm = quotemeta($_[0]);
 if ($two eq "\037\213") {
@@ -400,7 +397,7 @@ return ($title ? $title : $first =~ /<.*>/ ? undef : $first, $data);
 sub parse_perl_module
 {
 local (%doc, $inside);
-open(MOD, $_[0]);
+open(MOD, "<$_[0]");
 while(<MOD>) {
 	if (/^\s*package\s+(\S+)\s*;/ && !$doc{'package'}) {
 		$doc{'package'} = $1;
@@ -424,7 +421,7 @@ sub inchelp
 {
 local $inc;
 local $ipath = &help_file($_[1], $_[0]);
-open(INC, $ipath) || return "<i>".&text('search_einclude', $_[0])."</i><br>\n";
+open(INC, "<$ipath") || return "<i>".&text('search_einclude', $_[0])."</i><br>\n";
 local @st = stat(INC);
 read(INC, $inc, $st[7]);
 close(INC);

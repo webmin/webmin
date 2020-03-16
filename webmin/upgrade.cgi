@@ -192,7 +192,7 @@ else {
 
 if ($in{'mode'} ne 'gentoo') {
 	# gunzip the file if needed
-	open(FILE, $file);
+	open(FILE, "<$file");
 	read(FILE, $two, 2);
 	close(FILE);
 	if ($two eq "\037\213") {
@@ -215,7 +215,7 @@ $qfile = quotemeta($file);
 if ($in{'mode'} eq 'rpm') {
 	# Check if it is an RPM package
 	$rpmname = "webmin";
-	if (open(RPM, "$root_directory/rpm-name")) {
+	if (open(RPM, "<$root_directory/rpm-name")) {
 		chop($rpmname = <RPM>);
 		close(RPM);
 		}
@@ -252,7 +252,7 @@ if ($in{'mode'} eq 'rpm') {
 elsif ($in{'mode'} eq 'deb') {
 	# Check if it is a Debian package
 	$debname = "webmin";
-	if (open(RPM, "$root_directory/deb-name")) {
+	if (open(RPM, "<$root_directory/deb-name")) {
 		chop($debname = <RPM>);
 		close(RPM);
 		}
@@ -366,7 +366,7 @@ elsif ($in{'mode'} eq 'solaris-pkg' || $in{'mode'} eq 'sun-pkg') {
 	}
 elsif ($in{'mode'} eq 'gentoo') {
 	# Check if it is a gentoo .tar.gz or .ebuild file of webmin
-	open(EMERGE, "emerge --pretend '$file' 2>/dev/null |");
+	open(EMERGE, "emerge --pretend ".quotemeta($file)." 2>/dev/null |");
 	while(<EMERGE>) {
 		s/\r|\n//g;
 		s/\033[^m]+m//g;

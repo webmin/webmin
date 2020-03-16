@@ -373,7 +373,7 @@ sub get_inittab_runlevel
 local %iconfig = &foreign_config("inittab");
 local @rv;
 local $id = $config{'inittab_id'};
-if (open(TAB, $iconfig{'inittab_file'})) {
+if (open(TAB, "<".$iconfig{'inittab_file'})) {
 	# Read the inittab file
 	while(<TAB>) {
 		if (/^$id:(\d+):/ && $1) { @rv = ( $1 ); }
@@ -419,7 +419,7 @@ in with supported parameters to the action, like 'start' and 'stop'.
 sub init_description
 {
 # Read contents of script, extract start/stop commands
-open(FILE, $_[0]);
+open(FILE, "<".$_[0]);
 local @lines = <FILE>;
 close(FILE);
 local $data = join("", @lines);
@@ -495,7 +495,7 @@ sub chkconfig_info
 {
 local @rv;
 local $desc;
-open(FILE, $_[0]);
+open(FILE, "<".$_[0]);
 while(<FILE>) {
 	if (/^#\s*chkconfig:\s+(\S+)\s+(\d+)\s+(\d+)/) {
 		@rv = ( $1 eq '-' ? [ ] : [ split(//, $1) ], $2, $3 );
@@ -525,7 +525,7 @@ if ($init_mode eq "upstart") {
 					quotemeta($name)." 2>&1");
 	if (!$?) {
 		my $cfile = "/etc/init/$name.conf";
-		open(CONF, $cfile);
+		open(CONF, "<".$cfile);
 		while(<CONF>) {
 			if (/^(#*)\s*start/) {
 				return $1 ? 1 : 2;
@@ -572,7 +572,7 @@ elsif ($init_mode eq "local") {
 	# Look for entry in rc.local
 	local $fn = "$module_config_directory/$name.sh";
 	local $cmd = "$fn start";
-	open(LOCAL, $config{'local_script'});
+	open(LOCAL, "<".$config{'local_script'});
 	while(<LOCAL>) {
 		s/\r|\n//g;
 		$found++ if ($_ eq $cmd);
@@ -1207,7 +1207,7 @@ elsif ($mode eq "rc") {
 	}
 elsif ($mode eq "osx") {
 	# Delete OSX hostconfig entry
-	open(LOCAL, $config{'hostconfig'});
+	open(LOCAL, "<".$config{'hostconfig'});
 	my @local = <LOCAL>;
 	close(LOCAL);
 	my $start = $name."=-";
@@ -1912,7 +1912,7 @@ foreach my $l (split(/\r?\n/, $out)) {
 		if ($l =~ /process\s+(\d+)/) {
 			$s->{'pid'} = $1;
 			}
-		open(CONF, "/etc/init/$s->{'name'}.conf");
+		open(CONF, "</etc/init/$s->{'name'}.conf");
 		while(<CONF>) {
 			if (/^description\s+"([^"]+)"/ && !$s->{'desc'}) {
 				$s->{'desc'} = $1;
@@ -2378,7 +2378,7 @@ sub get_action_args
 {
 my ($file) = @_;
 my %hasarg;
-open(FILE, $file);
+open(FILE, "<".$file);
 while(<FILE>) {
 	if (/^\s*(['"]?)([a-z]+)\1\)/i) {
 		$hasarg{$2}++;

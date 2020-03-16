@@ -219,7 +219,7 @@ if (!$in{'save'}) {
 
 		if ($in{'dest'}) {
 			# Sent to browser
-			open(OUT, $file);
+			open(OUT, "<$file");
 			while(<OUT>) {
 				print $_;
 				}

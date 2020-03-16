@@ -18,7 +18,7 @@ sub get_sendmailcf
 if (!@sendmailcf_cache) {
 	local($lnum, $i);
 	$lnum = 0; $i = 0;
-	open(CF, $config{'sendmail_cf'});
+	open(CF, "<".$config{'sendmail_cf'});
 	while(<CF>) {
 		s/^#.*$//g;	# remove comments
 		s/\r|\n//g;	# remove newlines
@@ -174,7 +174,7 @@ else {
 	# Just HUP the process
 	local ($pid, $any);
 	foreach my $pidfile (split(/\t+/, $config{'sendmail_pid'})) {
-		if (open(PID, $pidfile)) {
+		if (open(PID, "<".$pidfile)) {
 			chop($pid = <PID>);
 			close(PID);
 			if ($pid) { &kill_logged('HUP', $pid); }
@@ -326,7 +326,7 @@ local @rv;
 if ($cwfile) {
 	# get entries listed in a separate file
 	$$cwref = $cwfile if ($cwref);
-	open(CW, $cwfile);
+	open(CW, "<".$cwfile);
 	while(<CW>) {
 		s/\r|\n//g;
 		s/#.*$//g;
@@ -462,7 +462,7 @@ return @qfiles;
 sub list_dontblames
 {
 local @rv;
-open(BLAME, "$module_root_directory/dontblames");
+open(BLAME, "<$module_root_directory/dontblames");
 while(<BLAME>) {
 	s/\r|\n//g;
 	s/^\s*#.*$//;

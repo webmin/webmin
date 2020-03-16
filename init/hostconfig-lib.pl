@@ -17,7 +17,7 @@ sub hostconfig_settings
 ####
 local($conffile, @hconf);
 $conffile = "$config{'hostconfig'}";
-open(LOCAL, $conffile);
+open(LOCAL, "<".$conffile);
 @conf = <LOCAL>;
 close(LOCAL);
 @conf = grep /^\w/, @conf;
@@ -210,7 +210,7 @@ my($action_item, $startupfile) = @_;
 
 # get current setting
 $line = "$config{'hostconfig'}";
-open(HCONF, $line);
+open(HCONF, "<".$line);
 @sconf = <HCONF>;
 close(HCONF);
 @sconf = grep /^$action_item=/, @sconf;
@@ -229,7 +229,7 @@ $option_selected = "";
 
 # get possible settings
 if ( $startupfile ne "" ) {
-	open(LOCAL, $startupfile);
+	open(LOCAL, "<".$startupfile);
 	@sfile = <LOCAL>;
 	close(LOCAL);
 	#

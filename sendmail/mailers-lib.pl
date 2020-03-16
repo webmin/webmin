@@ -27,7 +27,7 @@ if (!scalar(@list_mailers_cache)) {
 	local $lnum = 0;
 	@list_mailers_cache = ( );
 	local $cmt;
-	open(MAILER, $_[0]);
+	open(MAILER, "<".$_[0]);
 	while(<MAILER>) {
 		s/\r|\n//g;     # remove newlines
 		if (/^\s*#+\s*(.*)/) {

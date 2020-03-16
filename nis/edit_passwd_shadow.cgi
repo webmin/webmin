@@ -11,7 +11,7 @@ $mode = ($0 =~ /passwd_shadow_full.cgi$/ ? 2 :
 
 # Build list of available shells
 @shlist = ("/bin/sh", "/bin/csh", "/bin/false");
-open(SHELLS, "/etc/shells");
+open(SHELLS, "</etc/shells");
 while(<SHELLS>) {
 	s/\r|\n//g;
 	s/^\s*#.*$//;

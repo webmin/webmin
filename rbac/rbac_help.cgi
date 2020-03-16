@@ -10,7 +10,7 @@ $hf = $in{'help'};
   &error($text{'help_epath'});
 
 &PrintHeader();
-open(HELP, $hf);
+open(HELP, "<$hf");
 while(<HELP>) {
 	print $_;
 	}

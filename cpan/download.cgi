@@ -125,7 +125,7 @@ elsif ($in{'source'} == 3) {
 		print "<p>\n";
 
 		# Make sure it is valid
-		open(PFILE, $packages_file);
+		open(PFILE, "<$packages_file");
 		read(PFILE, $two, 2);
 		close(PFILE);
 		if ($two ne "\037\213") {
@@ -273,7 +273,7 @@ foreach $d (@dirs) {
 		system("$cmd >/dev/null 2>&1 </dev/null");
 		}
 	local @prereqs;
-	open(MAKEFILE, "$mtemp/$d/Makefile");
+	open(MAKEFILE, "<$mtemp/$d/Makefile");
 	while(<MAKEFILE>) {
 		last if /MakeMaker post_initialize section/;
 		if (/^#\s+PREREQ_PM\s+=>\s+(.+)/) {

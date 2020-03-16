@@ -20,7 +20,7 @@ return $rv;
 sub get_client_config
 {
 local $nis;
-open(CONF, $config{'client_conf'});
+open(CONF, "<".$config{'client_conf'});
 while(<CONF>) {
 	s/\r|\n//g;
 	s/#.*$//g;
@@ -228,7 +228,7 @@ sub parse_nisupdate_conf
 {
 local @rv;
 local $lnum = 0;
-open(CONF, $_[0]);
+open(CONF, "<".$_[0]);
 while(<CONF>) {
 	s/\r|\n//g;
 	if (/^\s*(#*)(\s*\$rule{['"]([^"']+)['"]}.*)/) {

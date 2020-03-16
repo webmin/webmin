@@ -92,7 +92,7 @@ if ($in{'prog_mode'} == 1) {
 #!/bin/sh -- # -*- perl -*-
 eval 'exec $perl_path -S \$0 \${1+"\$\@"}'
         if \$running_under_some_shell;
-open(CONF, "$config_directory/miniserv.conf");
+open(CONF, "<$config_directory/miniserv.conf");
 while(<CONF>) {
 	\$root = \$1 if (/^root=(.*)/);
 	}

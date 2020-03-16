@@ -351,7 +351,7 @@ sub get_yum_config
 {
 local @rv;
 local $sect;
-open(CONF, $yum_config);
+open(CONF, "<".$yum_config);
 while(<CONF>) {
 	s/\r|\n//g;
 	s/^\s*#.*$//;

@@ -542,7 +542,7 @@ Read and output the contents of the given file.
 sub include
 {
 local $_;
-open(INCLUDE, &translate_filename($_[0])) || return 0;
+open(INCLUDE, "<".&translate_filename($_[0])) || return 0;
 while(<INCLUDE>) {
 	print;
 	}
@@ -1986,7 +1986,7 @@ my ($usermod, $userlist, $only) = @_;
 if (!%main::acl_hash_cache) {
 	# Read from local files
 	local $_;
-	open(ACL, &acl_filename());
+	open(ACL, "<".&acl_filename());
 	while(<ACL>) {
 		if (/^([^:]+):\s*(.*)/) {
 			my $user = $1;
@@ -2132,7 +2132,7 @@ if ($gconfig{'os_type'} ne 'windows') {
 	my @oldst = stat($miniserv{'pidfile'});
 	$pid = $ENV{'MINISERV_PID'};
 	if (!$pid || !kill(0, $pid)) {
-		if (!open(PID, $miniserv{'pidfile'})) {
+		if (!open(PID, "<".$miniserv{'pidfile'})) {
 			print STDERR "PID file $miniserv{'pidfile'} does ",
 				     "not exist\n" if (!$ignore);
 			return;
@@ -2215,7 +2215,7 @@ if ($gconfig{'os_type'} ne 'windows') {
 	$miniserv{'inetd'} && return;
 	$pid = $ENV{'MINISERV_PID'};
 	if (!$pid || !kill(0, $pid)) {
-		if (!open(PID, $miniserv{'pidfile'})) {
+		if (!open(PID, "<".$miniserv{'pidfile'})) {
 			print STDERR "PID file $miniserv{'pidfile'} does ",
 				     "not exist\n" if (!$ignore);
 			return;
@@ -2950,7 +2950,7 @@ else {
 
 # transfer data
 my $got;
-open(PFILE, $_[2]);
+open(PFILE, "<".$_[2]);
 while(read(PFILE, $buf, 1024) > 0) {
 	print CON $buf;
 	$got += length($buf);
@@ -3281,7 +3281,7 @@ sub replace_file_line
 {
 my @lines;
 my $realfile = &translate_filename($_[0]);
-open(FILE, $realfile);
+open(FILE, "<".$realfile);
 @lines = <FILE>;
 close(FILE);
 if (@_ > 2) { splice(@lines, $_[1], 1, @_[2..$#_]); }
@@ -3320,7 +3320,7 @@ if (!$main::file_cache{$realfile}) {
         my (@lines, $eol);
 	local $_;
 	&webmin_debug_log('READ', $file) if ($gconfig{'debug_what_read'});
-        open(READFILE, $realfile);
+        open(READFILE, "<".$realfile);
         while(<READFILE>) {
 		if (!$eol) {
 			$eol = /\r\n$/ ? "\r\n" : "\n";
@@ -3919,7 +3919,7 @@ Returns the version of Webmin currently being run, such as 1.450.
 sub get_webmin_version
 {
 if (!$get_webmin_version) {
-	open(VERSION, "$root_directory/version") || return 0;
+	open(VERSION, "<$root_directory/version") || return 0;
 	($get_webmin_version = <VERSION>) =~ tr/\r|\n//d;
 	close(VERSION);
 	if (length($get_webmin_version) > 6) {
@@ -4496,7 +4496,7 @@ if (!defined($ENV{'WEBMIN_CONFIG'})) {
 	}
 $config_directory = $ENV{'WEBMIN_CONFIG'};
 if (!defined($ENV{'WEBMIN_VAR'})) {
-	open(VARPATH, "$config_directory/var-path");
+	open(VARPATH, "<$config_directory/var-path");
 	chop($var_directory = <VARPATH>);
 	close(VARPATH);
 	}
@@ -5147,7 +5147,7 @@ sub text_subs
 if (substr($_[0], 0, 8) eq "include:") {
 	local $_;
 	my $rv;
-	open(INCLUDE, substr($_[0], 8));
+	open(INCLUDE, "<".substr($_[0], 8));
 	while(<INCLUDE>) {
 		$rv .= $_;
 		}
@@ -5526,7 +5526,7 @@ my ($current) = @_;
 if (!@main::list_languages_cache) {
 	my $o;
 	local $_;
-	open(LANG, "$root_directory/lang_list.txt");
+	open(LANG, "<$root_directory/lang_list.txt");
 	while(<LANG>) {
 		if (/^(.*=\w+)\s+(.*)/) {
 			my $l = { 'desc' => $2 };
@@ -5641,7 +5641,7 @@ my $lock_tries_count = 0;
 my $last_lock_err;
 while(1) {
 	my $pid;
-	if (!$no_lock && open(LOCKING, "$realfile.lock")) {
+	if (!$no_lock && open(LOCKING, "<$realfile.lock")) {
 		$pid = <LOCKING>;
 		$pid = int($pid);
 		close(LOCKING);
@@ -5697,7 +5697,7 @@ while(1) {
 				$main::locked_file_type{$realfile} = 2;
 				$main::locked_file_data{$realfile} = $lnk;
 				}
-			elsif (open(ORIGFILE, $realfile)) {
+			elsif (open(ORIGFILE, "<".$realfile)) {
 				$main::locked_file_type{$realfile} = 0;
 				$main::locked_file_data{$realfile} = '';
 				local $_;
@@ -5835,7 +5835,7 @@ return 0 if (!$file);
 return $$ if (defined($main::locked_file_list{$realfile}));
 return 0 if (!&can_lock_file($realfile));
 my $pid;
-if (open(LOCKING, "$realfile.lock")) {
+if (open(LOCKING, "<$realfile.lock")) {
 	$pid = <LOCKING>;
 	$pid = int($pid);
 	close(LOCKING);
@@ -6805,7 +6805,7 @@ my $serv = ref($host) ? $host->{'host'} : $host;
 &open_socket($serv || "localhost", $rv->[1], TWRITE, \$error);
 return &$main::remote_error_handler("Failed to transfer file : $error")
 	if ($error);
-open(FILE, $localfile) ||
+open(FILE, "<".$localfile) ||
 	return &$main::remote_error_handler("Failed to open $localfile : $!");
 while(read(FILE, $got, 1024) > 0) {
 	print TWRITE $got;
@@ -7408,7 +7408,7 @@ On other systems, only the current time and process ID are used.
 sub seed_random
 {
 if (!$main::done_seed_random) {
-	if (open(RANDOM, "/dev/urandom")) {
+	if (open(RANDOM, "</dev/urandom")) {
 		my $buf;
 		read(RANDOM, $buf, 4);
 		close(RANDOM);
@@ -8242,7 +8242,7 @@ sub list_usermods
 if (!$main::got_list_usermods_cache) {
 	@main::list_usermods_cache = ( );
 	local $_;
-	open(USERMODS, "$config_directory/usermin.mods");
+	open(USERMODS, "<$config_directory/usermin.mods");
 	while(<USERMODS>) {
 		if (/^([^:]+):(\+|-|):(.*)/) {
 			push(@main::list_usermods_cache,
@@ -8282,7 +8282,7 @@ foreach my $u (@{$_[1]}) {
 	elsif ($u->[0] =~ /^\//) {
 		# Check users and groups in file
 		local $_;
-		open(USERFILE, $u->[0]);
+		open(USERFILE, "<".$u->[0]);
 		while(<USERFILE>) {
 			tr/\r\n//d;
 			if ($_ eq $remote_user) {
@@ -8549,7 +8549,7 @@ sub load_entities_map
 {
 if (!%entities_map_cache) {
 	local $_;
-	open(EMAP, "$root_directory/entities_map.txt");
+	open(EMAP, "<$root_directory/entities_map.txt");
 	while(<EMAP>) {
 		if (/^(\d+)\s+(\S+)/) {
 			$entities_map_cache{$2} = $1;
@@ -8737,7 +8737,7 @@ Returns the path to Perl currently in use, such as /usr/bin/perl.
 =cut
 sub get_perl_path
 {
-if (open(PERL, "$config_directory/perl-path")) {
+if (open(PERL, "<$config_directory/perl-path")) {
 	my $rv;
 	chop($rv = <PERL>);
 	close(PERL);
@@ -8840,7 +8840,7 @@ Given a pid file, returns the PID it contains if the process is running.
 =cut
 sub check_pid_file
 {
-open(PIDFILE, $_[0]) || return undef;
+open(PIDFILE, "<".$_[0]) || return undef;
 my $pid = <PIDFILE>;
 close(PIDFILE);
 $pid =~ /^\s*(\d+)/ || return undef;
@@ -8907,7 +8907,7 @@ sub list_mime_types
 {
 if (!@list_mime_types_cache) {
 	local $_;
-	open(MIME, "$root_directory/mime.types");
+	open(MIME, "<$root_directory/mime.types");
 	while(<MIME>) {
 		my $cmt;
 		s/\r|\n//g;
@@ -9003,7 +9003,7 @@ else {
 	elsif ($file =~ /^(>|>>)(\/dev\/.*)/ || lc($file) eq "nul") {
 		# Writes to /dev/null or TTYs don't need to be handled
 		&webmin_debug_log($1 eq ">" ? "WRITE" : "APPEND", $2) if ($db);
-		return open($fh, $file);
+		return open($fh, "<".$file);
 		}
 	elsif ($file =~ /^>\s*(([a-zA-Z]:)?\/.*)$/ && !$notemp) {
 		&webmin_debug_log("WRITE", $1) if ($db);
@@ -9077,7 +9077,7 @@ else {
 		# Read mode .. nothing to do here
 		&webmin_debug_log("READ", $file) if ($db);
 		$file = &translate_filename($file);
-		return open($fh, $file);
+		return open($fh, "<".$file);
 		}
 	elsif ($file eq ">" || $file eq ">>") {
 		my ($package, $filename, $line) = caller;
@@ -9347,7 +9347,7 @@ if (Authen::SolarisRBAC::chkauth("webmin.$mod.admin", $user)) {
 		}
 	}
 local $_;
-open(RBAC, &module_root_directory($mod)."/rbac-mapping");
+open(RBAC, "<".&module_root_directory($mod)."/rbac-mapping");
 while(<RBAC>) {
 	s/\r|\n//g;
 	s/#.*$//;
@@ -9588,7 +9588,7 @@ if (&is_readonly_mode() && !$safe) {
 		return open($fh, ">$null_file");
 		}
 	else {
-		return open($fh, $null_file);
+		return open($fh, "<$null_file");
 		}
 	}
 # Really run it
@@ -9852,7 +9852,7 @@ sub running_in_vserver
 return 0 if ($gconfig{'os_type'} !~ /^\*-linux$/);
 my $vserver;
 local $_;
-open(MTAB, "/etc/mtab");
+open(MTAB, "</etc/mtab");
 while(<MTAB>) {
 	my ($dev, $mp) = split(/\s+/, $_);
 	if ($mp eq "/" && $dev =~ /^\/dev\/hdv/) {

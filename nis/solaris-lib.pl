@@ -19,11 +19,11 @@ return $rv;
 sub get_client_config
 {
 local $nis;
-open(DOM, "/etc/defaultdomain");
+open(DOM, "</etc/defaultdomain");
 chop($nis->{'domain'} = <DOM>);
 close(DOM);
 if ($nis->{'domain'}) {
-	if (open(SRV, "$binding_dir/$nis->{'domain'}/ypservers")) {
+	if (open(SRV, "<$binding_dir/$nis->{'domain'}/ypservers")) {
 		while(<SRV>) {
 			s/\r|\n//g;
 			push(@{$nis->{'servers'}}, $_);
@@ -238,7 +238,7 @@ sub parse_yp_makefile
 # First parse joined lines
 local $lnum = 0;
 local (@lines, $llast);
-open(MAKE, $yp_makefile);
+open(MAKE, "<".$yp_makefile);
 while(<MAKE>) {
 	s/\r|\n//g;
 	local $slash = (s/\\$//);

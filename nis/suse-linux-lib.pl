@@ -171,7 +171,7 @@ printf "<td><input name=mingid size=10 value='%s'></td> </tr>\n",
 	$var->{'MINGID'}->{'value'};
 
 print "<tr> <td><b>$text{'server_slaves'}</b></td>\n";
-open(SLAVES, "/var/yp/ypservers");
+open(SLAVES, "</var/yp/ypservers");
 while(<SLAVES>) {
 	s/\s//g;
 	push(@slaves, $_) if ($_);
@@ -363,7 +363,7 @@ sub parse_rc_config
 local $rc;
 local $lnum = 0;
 local $f = $_[0] ? $_[0] : $rc_config;
-open(CONF, $f);
+open(CONF, "<".$f);
 while(<CONF>) {
 	s/\r|\n//g;
 	s/#.*$//g;

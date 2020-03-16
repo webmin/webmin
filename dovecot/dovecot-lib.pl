@@ -37,7 +37,7 @@ local $filedir = $file;
 $filedir =~ s/\/[^\/]+$//;
 local $lnum = 0;
 local ($section, @sections);
-open(CONF, $file);
+open(CONF, "<".$file);
 local @lines = <CONF>;
 close(CONF);
 local $_;

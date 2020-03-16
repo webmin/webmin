@@ -15,7 +15,7 @@ $prog = "exec_form.cgi?db=".&urlize($in{'db'})."&mode=";
 print &ui_tabs_start(\@tabs, "mode", $in{'mode'} || "exec", 1);
 
 # Get recently run commands
-open(OLD, "$commands_file.$in{'db'}");
+open(OLD, "<$commands_file.$in{'db'}");
 while(<OLD>) {
 	s/\r|\n//g;
 	push(@old, $_);

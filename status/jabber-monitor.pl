@@ -9,7 +9,7 @@ local %jconfig = &foreign_config($_[1]);
 -r $jconfig{'jabber_config'} || return { 'up' => -1 };
 &foreign_require($_[1], "jabber-lib.pl");
 local $pidfile = &foreign_call($_[1], "jabber_pid_file");
-if (open(PID, $pidfile) && ($pid = int(<PID>)) && kill(0, $pid)) {
+if (open(PID, "<".$pidfile) && ($pid = int(<PID>)) && kill(0, $pid)) {
 	return { 'up' => 1 };
 	}
 else {

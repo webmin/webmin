@@ -77,7 +77,7 @@ return ();
 # Disconnects this process from it's controlling PTY, if connected
 sub close_controlling_pty
 {
-if (open(DEVTTY, "/dev/tty")) {
+if (open(DEVTTY, "</dev/tty")) {
 	# Special ioctl to disconnect (TIOCNOTTY)
 	ioctl(DEVTTY, 536900721, 0);
 	close(DEVTTY);
