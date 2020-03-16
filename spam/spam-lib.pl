@@ -1067,7 +1067,7 @@ else {
 	return 1;
 	}
 }
-"<".
+
 # list_spamassassin_languages()
 # Returns a list of language codes and descriptions
 sub list_spamassassin_languages
