@@ -1,4 +1,3 @@
-main_return= بازگشت به $1 
 main_homepage= آغازه 
 main_feedback= بازخورد… 
 main_switch=تغيير کاربر… 
@@ -8,6 +7,7 @@ main_title=وب‌مين $1 برروي $2 ($3)
 main_title2=وب‌مين
 main_none=شما به هيچ يک از پيمانه‌هاي وب‌مين دستيابي نداريد.
 main_skill=سطح کنترلت 
+main_return= بازگشت به $1 
 link_essl= پيمانه Net::SSLeay از مجموعه پيمانه‌هاي پرل نياز به ايجاد يک ارتباط HTTPS دارد که برروي سيستم شما نصب نشده است.
 category_servers= ‌کارساز‌ها
 category_hardware=سخت‌افزار 

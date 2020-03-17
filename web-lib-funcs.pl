@@ -5099,7 +5099,6 @@ my ($dir) = ($_[1] || "lang");
 foreach my $o (@lang_order_list) {
 	my $ok = &read_file_cached_with_stat("$root/$dir/$o", \%text);
 	&read_file_cached_with_stat("$root/$dir/$o.auto", \%text) if($auto && $ok && -r "$root/$dir/$o.auto");
-	# die("$root/$dir/$o.auto") if(-r "$root/$dir/$o.auto");
 	return () if (!$ok && $o eq $default_lang);
 	}
 if ($ol) {

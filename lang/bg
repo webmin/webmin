@@ -1,4 +1,3 @@
-main_return=Обратно към $1
 main_homepage=Домашна страница
 main_feedback=Feedback..
 main_switch=Смени юзер..
@@ -8,6 +7,7 @@ main_title=Webmin $1 на $2 ($3)
 main_title2=Webmin
 main_none=Вие нямате достъп до Webmin модулите.
 main_skill=Skill level
+main_return=Обратно към $1
 link_essl=Net::SSLeay Perl модулът необходим за осъществяване на HTTPS връзка не е инсталиран на тази система.
 category_servers=Сървъри
 category_hardware=Хардуер

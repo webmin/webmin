@@ -1,10 +1,10 @@
-main_return=Gå tillbaka till $1
 main_homepage=Hemsida
 main_feedback=Tyck till ...
 main_switch=Ny användare ...
 main_version=Version $1 på $2 ($3)
 main_title=Webmin $1 på $2 ($3)
 main_none=Du har inte åtkomsträttighet till några Webmin-moduler
+main_return=Gå tillbaka till $1
 category_servers=Servrar
 category_hardware=Hårdvara
 category_system=System

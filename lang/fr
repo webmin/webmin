@@ -1,4 +1,3 @@
-main_return=Retourner à $1
 main_homepage=Page d'accueil
 main_feedback=Rapport...
 main_switch=Changer d'utilisateur...
@@ -9,6 +8,7 @@ main_title2=Webmin
 main_none=Vous n'avez accès à aucun modules Webmin.
 main_skill=Niveau de compétence
 main_readonly=(Mode lecture seule)
+main_return=Retourner à $1
 link_essl=The Net::Le module SSLeay Perl requis pour créer des connections HTTPS n'est pas installé sur votre système.
 category_servers=Serveurs
 category_hardware=Matériel
