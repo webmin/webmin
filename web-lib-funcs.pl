@@ -5083,11 +5083,23 @@ sub load_language
 my %text;
 my $root = $root_directory;
 my $ol = $gconfig{'overlang'};
+my $auto = $gconfig{"langauto_$remote_user"};
+if (!defined($auto)) {
+	my $glangauto = $gconfig{'langauto'};
+	if (defined($glangauto)) {
+		$auto = $glangauto;
+	} else {
+		my ($clanginfo) = grep { $_->{'lang'} eq $current_lang } &list_languages();
+		$auto = $clanginfo->{'auto'};
+	}
+}
 my ($dir) = ($_[1] || "lang");
 
 # Read global lang files
 foreach my $o (@lang_order_list) {
 	my $ok = &read_file_cached_with_stat("$root/$dir/$o", \%text);
+	&read_file_cached_with_stat("$root/$dir/$o.auto", \%text) if($auto && $ok && -r "$root/$dir/$o.auto");
+	# die("$root/$dir/$o.auto") if(-r "$root/$dir/$o.auto");
 	return () if (!$ok && $o eq $default_lang);
 	}
 if ($ol) {
@@ -5108,6 +5120,7 @@ if ($_[0]) {
 	my $mdir = &module_root_directory($_[0]);
 	foreach my $o (@lang_order_list) {
 		&read_file_cached_with_stat("$mdir/$dir/$o", \%text);
+		&read_file_cached_with_stat("$mdir/$dir/$o.auto", \%text) if($auto && -r "$mdir/$dir/$o.auto");
 		}
 	if ($ol) {
 		foreach my $o (@lang_order_list) {
@@ -5518,6 +5531,8 @@ Each is a hash reference with the following keys :
 =item titles - Set to 1 only if Webmin has title images for the language.
 
 =item fallback - The code for another language to use if a string does not exist in this one. For all languages, English is the ultimate fallback.
+
+=item auto - The language will load machine translations by default if set to 1
 
 =cut
 sub list_languages

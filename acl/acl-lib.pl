@@ -85,6 +85,7 @@ while(my $l = <$fh>) {
 		$user{'twofactor_apikey'} = $user[13];
 		$user{'modules'} = $acl{$user[0]};
 		$user{'lang'} = $gconfig{"lang_$user[0]"};
+		$user{'langauto'} = $gconfig{"langauto_$user[0]"};
 		$user{'notabs'} = $gconfig{"notabs_$user[0]"};
 		$user{'rbacdeny'} = $gconfig{"rbacdeny_$user[0]"};
 		if ($gconfig{"theme_$user[0]"}) {
@@ -613,7 +614,7 @@ if ($user->{'proto'}) {
 			}
 		}
 	&disconnect_userdb($miniserv{'userdb'}, $dbh);
-	}
+	} 
 else {
 	# In local files
 	&lock_file($ENV{'MINISERV_CONFIG'});
@@ -697,6 +698,8 @@ else {
 
 	delete($gconfig{"lang_".$username});
 	$gconfig{"lang_".$user->{'name'}} = $user->{'lang'} if ($user->{'lang'});
+	delete($gconfig{"langauto_".$username});
+	$gconfig{"langauto_".$user->{'name'}} = $user->{'langauto'} if (defined($user->{'langauto'}));
 	delete($gconfig{"notabs_".$username});
 	$gconfig{"notabs_".$user->{'name'}} = $user->{'notabs'}
 		if ($user->{'notabs'});
