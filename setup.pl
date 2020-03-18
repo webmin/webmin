@@ -525,6 +525,10 @@ else {
 	if ($os_type eq "hpux") {
 		print START "exec '$wadir/miniserv.pl' $config_directory/miniserv.conf &\n";
 		}
+	elsif ($os_type eq "redhat-linux") {
+		## maybe include a test to determine where perl is?
+		print START "/usr/bin/perl '$wadir/miniserv.pl' $config_directory/miniserv.conf &\n";
+		}
 	else {
 		print START "exec '$wadir/miniserv.pl' $config_directory/miniserv.conf\n";
 		}
