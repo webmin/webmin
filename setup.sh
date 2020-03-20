@@ -446,8 +446,7 @@ else
 
 	# Ask whether to run at boot time
 	if [ "$atboot" = "" ]; then
-		if [[ "$os_type" == *-linux ]]
-		then
+		if echo "$os_type" | egrep -iq "(-linux)"; then
 		    os_type="linux"
 		fi
 		initsupp=`grep "^os_support=" "$srcdir/init/module.info" | sed -e 's/os_support=//g' | grep $os_type`
