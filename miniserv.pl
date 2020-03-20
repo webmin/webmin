@@ -4034,7 +4034,7 @@ if (!$bad_urandom) {
 		my $tmpsid;
 		if (read(RANDOM, $tmpsid, 16) == 16) {
 			$sid = lc(unpack('h*',$tmpsid));
-			if (length($sid) < 32) {
+			if ($sid !~ /^[0-9a-fA-F]{32}+$/) {
 				$sid = 'bad';
 				}
 			}
@@ -4043,8 +4043,10 @@ if (!$bad_urandom) {
 	alarm(0);
 	}
 if (!$sid && !$force_urandom) {
+	my $offset = int(rand(2048));
 	my @charset = ('0' ..'9', 'a' .. 'f');
-	$sid = join('', map { $charset[rand(@charset)] } 1 .. 32);
+	$sid = join('', map { $charset[rand(@charset)] } 1 .. 4096);
+	$sid = substr($sid, $offset, 32);
 	}
 return $sid;
 }
