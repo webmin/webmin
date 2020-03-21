@@ -87,6 +87,8 @@ while(<FSTAB>) {
 	else {
 		@p = split(/\s+/, $_);
 		}
+	$p[0] =~ s/\\040/ /g;
+	$p[1] =~ s/\\040/ /g;
 	if ($p[2] eq "proc") { $p[0] = "proc"; }
 	elsif ($p[2] eq "auto") { $p[2] = "*"; }
 	elsif ($p[2] eq "swap") { $p[1] = "swap"; }
@@ -171,7 +173,7 @@ return @rv;
 # Add a new entry to the fstab file, old or new automounter file
 sub create_mount
 {
-local(@mlist, @amd, $_); local($opts);
+local(@mlist, @amd, $_, $opts);
 
 if ($_[2] eq "auto") {
 	if ($amd_support == 1) {
@@ -211,10 +213,12 @@ else {
 	local $dev = $_[1];
 	if ($_[2] eq $smbfs_fs || $_[2] eq "cifs") {
 		$dev =~ s/\\/\//g;
-		$dev =~ s/ /\\040/g;
 		}
+	$dev =~ s/ /\\040/g;
+	local $mp = $_[0];
+	$mp =~ s/ /\\040/g;
 	&open_tempfile(FSTAB, ">> $config{fstab_file}");
-	&print_tempfile(FSTAB, $dev."\t".$_[0]."\t".$_[2]);
+	&print_tempfile(FSTAB, $dev."\t".$mp."\t".$_[2]);
 	local @opts = $_[3] eq "-" ? ( ) : split(/,/, $_[3]);
 	if ($_[5] eq "no") {
 		push(@opts, "noauto");
@@ -254,9 +258,11 @@ foreach (@fstab) {
 		local $dev = $_[2];
 		if ($_[3] eq $smbfs_fs || $_[3] eq "cifs") {
 			$dev =~ s/\\/\//g;
-			$dev =~ s/ /\\040/g;
 			}
-		&print_tempfile(FSTAB, $dev."\t".$_[1]."\t".$_[3]);
+		$dev =~ s/ /\\040/g;
+		local $mp = $_[1];
+		$mp =~ s/ /\\040/g;
+		&print_tempfile(FSTAB, $dev."\t".$mp."\t".$_[3]);
 		local @opts = $_[4] eq "-" ? ( ) : split(/,/, $_[4]);
 		if ($_[6] eq "no") {
 			push(@opts, "noauto");
