@@ -3,7 +3,7 @@ index_all=<sve>
 index_by=Prikaži promet po
 index_edir=Direktorij za spremanje širine opsega podataka $1 ne postoji, ili nije direktrorij. Prilagodi <a href='$2'>module podešavanja</a> da koriste drugu putanju.
 index_efiresys=Ni jedan od podržanih vatrozida (IPtables, IPFW, IPFilter or Shorewall) nije pronašen u vašem sustavu. Provjerite odgovarajuće module da bi bili sigirni da su podešeni.
-index_efiresys2=Traženi $1 vatrozid sustav nije pronaÄ‘en na Vašem sustavu. Prilagodite <a href='$2'>module podešavanja</a> da koriste ispravan vatrozid.
+index_efiresys2=Traženi $1 vatrozid sustav nije pronađen na Vašem sustavu. Prilagodite <a href='$2'>module podešavanja</a> da koriste ispravan vatrozid.
 index_efrom=Neispravan početni datum i vrijeme
 index_ehost=NEpostojeći ili neispravan host
 index_ehour=Neispravan sat - mora biti u formatu yyyy-mm-dd hh:mm
@@ -39,7 +39,7 @@ index_missing1=Postavke sistemskog zapisa moraju biti kreirane.
 index_missing2=Nekoliko vatrozid pravila mora biti dodano.
 index_missing3=Nekoliko vatrozida trebabiti dodano, i sistemski zapis postavke ulaza kreirane
 index_nomatch=Ni jedan promet ne odgovara odabranim zahtjevima.
-index_none=Ovaj modul još uvijek nije zabilježio nikakav promet. Ako ste ga upravo postavili, trajat će najmanje pola sata da promet bude obraÄ‘en.
+index_none=Ovaj modul još uvijek nije zabilježio nikakav promet. Ako ste ga upravo postavili, trajat će najmanje pola sata da promet bude obrađen.
 index_oport=vanjski ulaz
 index_port=ulaz
 index_proto=protokol
@@ -60,7 +60,7 @@ index_usage=Mrežni promet <font color=#ff0000>skinuit</font> i <font color=#000
 log_rotate=Dopuni statistiku
 log_setup=Podesi opseg nadzora na sučelju $1
 log_turnoff=Onemogući opseg nadzora.
-rotate_doing=ObraÄ‘ujem prijavljeni mrežni promet...
+rotate_doing=Obrađujem prijavljeni mrežni promet...
 rotate_done=...gotovo.
 rotate_title=Ispravi Statistiku
 setup_ecannot=Nemate dopuštenje da omogućite nadzor

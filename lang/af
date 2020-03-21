@@ -1,4 +1,3 @@
-main_return=Terug na $1
 main_homepage=Tuisblad
 main_feedback=Terugvoering..
 main_switch=Skakel na gebruiker..
@@ -8,6 +7,7 @@ main_title=Webmin $1 op $2 ($3)
 main_title2=Webmin
 main_none=U het nie toegang tot enige Webmin modules nie.
 main_skill=Ervarenheid
+main_return=Terug na $1
 category_servers=Bedieners
 category_hardware=Hardeware
 category_system=Stelsel

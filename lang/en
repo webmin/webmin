@@ -378,4 +378,6 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=bytes
 
+langauto_include=Include machine translations
+
 __norefs=1

@@ -1,4 +1,3 @@
-main_return=Gráþti á $1
 main_homepage=Pirmas puslapis
 main_feedback=Atsiliepimai..
 main_switch=Jungtis kitu vartotoju..
@@ -8,6 +7,7 @@ main_title=Webmin $1 sistemoje $2 ($3)
 main_title2=Webmin
 main_none=Jums neleista naudotis Webmin moduliais.
 main_skill=Lygis
+main_return=Gráþti á $1
 category_servers=Servisai
 category_hardware=Hardware
 category_system=Sistema

@@ -1,4 +1,3 @@
-main_return=Geri Dön ($1) 
 main_homepage=Ana Sayfa
 main_feedback=Feedback..
 main_switch=Kullanıcı Değiştir..
@@ -6,6 +5,7 @@ main_logout=Çıkış
 main_version=$2'de Sürüm $1 ($3)
 main_title=$2'de Webmin $1 ($3)
 main_none=Herhangi bir webmin modülüne ulaşmak için izininiz yoktur.
+main_return=Geri Dön ($1) 
 category_servers=Sunucular
 category_hardware=Donanım
 category_system=Sistem
@@ -105,4 +105,3 @@ smonth_11=Kas
 smonth_12=Ara
 ui_selall=Tümünü seç
 ui_selinv=Seçilenleri tersine çevir
-config_dir=$1 modülü için

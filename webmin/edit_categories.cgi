@@ -10,7 +10,7 @@ print ui_form_start("edit_categories.cgi");
 print "<b>$text{'categories_lang'}</b>\n";
 print ui_select("lang", $in{'lang'},
 	[ [ "", "&lt;$text{'default'}&gt;" ],
-	  map { [ $_->{'lang'}, "$_->{'desc'} (".uc($_->{'lang'}).")" ] }
+	  map { [ $_->{'lang'}, "$_->{'desc'}" ] }
 	      list_languages() ]),"\n";
 print ui_submit($text{'categories_langok'}),"\n";
 print ui_form_end();

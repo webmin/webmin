@@ -4825,12 +4825,12 @@ if ($gconfig{'acceptlang'}) {
 			}
 		}
 	}
-$current_lang = $force_lang ? $force_lang :
+$current_lang = safe_language($force_lang ? $force_lang :
     $accepted_lang ? $accepted_lang :
     $remote_user_attrs{'lang'} ? $remote_user_attrs{'lang'} :
     $gconfig{"lang_$remote_user"} ? $gconfig{"lang_$remote_user"} :
     $gconfig{"lang_$base_remote_user"} ? $gconfig{"lang_$base_remote_user"} :
-    $gconfig{"lang"} ? $gconfig{"lang"} : $default_lang;
+    $gconfig{"lang"} ? $gconfig{"lang"} : $default_lang);
 foreach my $l (@langs) {
 	$current_lang_info = $l if ($l->{'lang'} eq $current_lang);
 	}
@@ -5083,11 +5083,22 @@ sub load_language
 my %text;
 my $root = $root_directory;
 my $ol = $gconfig{'overlang'};
+my $auto = $gconfig{"langauto_$remote_user"};
+if (!defined($auto)) {
+	my $glangauto = $gconfig{'langauto'};
+	if (defined($glangauto)) {
+		$auto = $glangauto;
+	} else {
+		my ($clanginfo) = grep { $_->{'lang'} eq $current_lang } &list_languages();
+		$auto = $clanginfo->{'auto'};
+	}
+}
 my ($dir) = ($_[1] || "lang");
 
 # Read global lang files
 foreach my $o (@lang_order_list) {
 	my $ok = &read_file_cached_with_stat("$root/$dir/$o", \%text);
+	&read_file_cached_with_stat("$root/$dir/$o.auto", \%text) if($auto && $ok && -r "$root/$dir/$o.auto");
 	return () if (!$ok && $o eq $default_lang);
 	}
 if ($ol) {
@@ -5108,6 +5119,7 @@ if ($_[0]) {
 	my $mdir = &module_root_directory($_[0]);
 	foreach my $o (@lang_order_list) {
 		&read_file_cached_with_stat("$mdir/$dir/$o", \%text);
+		&read_file_cached_with_stat("$mdir/$dir/$o.auto", \%text) if($auto && -r "$mdir/$dir/$o.auto");
 		}
 	if ($ol) {
 		foreach my $o (@lang_order_list) {
@@ -5519,6 +5531,8 @@ Each is a hash reference with the following keys :
 
 =item fallback - The code for another language to use if a string does not exist in this one. For all languages, English is the ultimate fallback.
 
+=item auto - The language will load machine translations by default if set to 1
+
 =cut
 sub list_languages
 {
@@ -5549,6 +5563,45 @@ if (!@main::list_languages_cache) {
 				     @main::list_languages_cache;
 	}
 return @main::list_languages_cache;
+}
+
+=head2 safe_language($current_user_lang)
+
+Returns new type of value for language code
+
+=item current_user_lang - Old value for language code to update, like ja_JP.euc or zh_CN or ru_RU.
+
+=cut
+sub safe_language
+{
+my ($code) = @_;
+$code =~ s/\.\S+//g;
+my %language_map = (
+
+    # Use new type of language codes
+    'ja_JP' => 'ja',
+    'ko_KR' => 'ko',
+    'en_gb' => 'en',
+    'ms_MY' => 'ms',
+    'ru_RU' => 'ru',
+    'ru_SU' => 'ru',
+    'uk_UA' => 'uk',
+    'zh_CN' => 'zh',
+    'zh_TW' => 'zh_TW',
+
+    # Czech is `cs` not `cz`, as there is no `cz` at all
+    'cz' => 'cs',
+
+    # Slovenian is `sl` not `si`, as `si` is Sinhala
+    'si' => 'sl',
+
+    # Greek is `el` not `gr`
+    'gr' => 'el');
+
+if ($language_map{$code}) {
+    $code = $language_map{$code};
+	}
+return $code;
 }
 
 =head2 read_env_file(file, &hash, [include-commented])

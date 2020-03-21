@@ -1,4 +1,3 @@
-main_return=Inapoi la $1
 main_homepage=Index
 main_feedback=Feedback..
 main_switch=Schimba utilizator..
@@ -9,6 +8,7 @@ main_title2=Webmin
 main_none=Nu aveti acces la toate modulele Webmin.
 main_skill=Nivel de pricepere
 main_readonly=(Doar in mod citire)
+main_return=Inapoi la $1
 link_essl=Modulul perl The Net::SSLeay necesar pentru a face conexiuni HTTPS nu este instalat pe sistemul dumneavoastra.
 category_servers=Servere
 category_hardware=Hardware

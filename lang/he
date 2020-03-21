@@ -1,10 +1,10 @@
-main_return=חזור אל  ה$1
 main_homepage=דף ראשי
 main_feedback=משוב..
 main_switch=החלפץ משתמש..
 main_version=גירסא $1 על $2 ($3)
 main_title=Webmin $1 על $2 ($3)
 main_none=אין לך גישה למודולים של webmin.
+main_return=חזור אל  ה$1
 category_servers=שרתים
 category_hardware=חומרה
 category_system=מערכת

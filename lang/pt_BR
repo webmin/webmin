@@ -1,13 +1,12 @@
-main_return=Voltar à $1
 main_homepage=Página Inicial
 main_feedback=Comentários ..
-main_switch=Trcar usuário ..
 main_switch=Trcar usuário ..
 main_version=Versão $1 em $2 ($3)
 main_title=Webmin $1 no servidor $2 ($3)
 main_title2=Webmin
 main_none=Você não tem acesso a nenhum módulo Webmin.
 main_skill=Nível de Habilidade
+main_return=Voltar à $1
 category_servers=Servidores
 category_hardware=Hardware
 category_system=Sistema

@@ -219,8 +219,8 @@ if ($@) {
 	}
 
 # Check if /dev/urandom really generates random IDs, by calling it twice
-local $rand1 = &generate_random_id("foo", 1);
-local $rand2 = &generate_random_id("foo", 2);
+local $rand1 = &generate_random_id(1);
+local $rand2 = &generate_random_id(1);
 if ($rand1 eq $rand2) {
 	$bad_urandom = 1;
 	push(@startup_msg,
@@ -1834,7 +1834,7 @@ if ($config{'userfile'}) {
 
 		if (!$in{'cid'}) {
 			# Start of a new conversation - answer must be username
-			$cid = &generate_random_id($in{'answer'});
+			$cid = &generate_random_id();
 			print $PASSINw "pamstart $cid $host $in{'answer'}\n";
 			}
 		else {
@@ -4024,7 +4024,7 @@ return 1;
 # Returns a random session ID number
 sub generate_random_id
 {
-local ($pass, $force_urandom) = @_;
+my ($force_urandom) = @_;
 local $sid;
 if (!$bad_urandom) {
 	# First try /dev/urandom, unless we have marked it as bad
@@ -4034,18 +4034,19 @@ if (!$bad_urandom) {
 		my $tmpsid;
 		if (read(RANDOM, $tmpsid, 16) == 16) {
 			$sid = lc(unpack('h*',$tmpsid));
+			if ($sid !~ /^[0-9a-fA-F]{32}+$/) {
+				$sid = 'bad';
+				}
 			}
 		close(RANDOM);
 		}
 	alarm(0);
 	}
 if (!$sid && !$force_urandom) {
-	$sid = time();
-	local $mul = 1;
-	foreach $c (split(//, &unix_crypt($pass, substr($$, -2)))) {
-		$sid += ord($c) * $mul;
-		$mul *= 3;
-		}
+	my $offset = int(rand(2048));
+	my @charset = ('0' ..'9', 'a' .. 'f');
+	$sid = join('', map { $charset[rand(@charset)] } 1 .. 4096);
+	$sid = substr($sid, $offset, 32);
 	}
 return $sid;
 }
@@ -4080,7 +4081,7 @@ if ($ok && (!$expired ||
 	    $config{'passwd_mode'} == 1)) {
 	# Logged in OK! Tell the main process about
 	# the new SID
-	local $sid = &generate_random_id($pass);
+	local $sid = &generate_random_id();
 	print DEBUG "handle_login: sid=$sid\n";
 	print $PASSINw "new $sid $authuser $acptip\n";
 
