@@ -2279,7 +2279,8 @@ my $cfile = &get_systemd_root($name)."/".$name;
 &print_tempfile(CFILE, "Type=forking\n") if ($forks);
 &print_tempfile(CFILE, "Type=oneshot\n",
 		       "RemainAfterExit=yes\n") if ($exits);
-&print_tempfile(CFILE, "PIDFile=$pidfile\n") if ($pidfile);
+####&print_tempfile(CFILE, "PIDFile=$pidfile\n") if ($pidfile);
+&print_tempfile(CFILE, "ExecStartPost=/bin/sh -c 'umask 022; pgrep miniserv > /var/webmin/webmin.pid'") if ($pidfile);Updfs
 &print_tempfile(CFILE, "\n");
 &print_tempfile(CFILE, "[Install]\n");
 &print_tempfile(CFILE, "WantedBy=multi-user.target\n");
