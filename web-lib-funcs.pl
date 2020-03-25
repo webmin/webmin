@@ -2124,6 +2124,16 @@ if ($main::webmin_script_type eq 'web' && !$ENV{"MINISERV_CONFIG"} &&
 	return;
 	}
 
+	###  https://www.thoughtco.com/perl-array-exec-system-function-tutorial-2641183
+	## redhat/centos 8 only
+if  ( $gconfig{'os_type'} == 'redhat-linux' && $gconfig{'real_os_version'}  =~ m'^8.*'  ) {
+        $systemctl_result = `systemctl restart webmin.service; `  ;
+        if  ( $systemctl_result ) {
+                print STDERR  ($systemctl_result)  ;
+		}
+        return;
+	}
+
 my $i;
 if ($gconfig{'os_type'} ne 'windows') {
 	# On Unix systems, we can restart with a signal
