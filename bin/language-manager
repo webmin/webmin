@@ -74,7 +74,7 @@ sub main
     # Load Webmin lib
     require("$path/web-lib-funcs.pl");
 
-    # Enforce user specific target: language directory, config.info or module.info file {lang|ulang|config|module}
+    # Enforce user specific target: language directory, config.info or module.info file {lang|ulang|config|uconfig|module}
     $opt{'type'} && ($type = $opt{'type'});
 
     # Store path and type
@@ -303,7 +303,7 @@ sub language_source_file
 
     # Set prefix in case of processing `config.info` or `module.info`
     my $language_source_file_target_ = "/";
-    if (defined($opt->{'type'}) && $opt->{'type'} =~ /config|module/) {
+    if (defined($opt->{'type'}) && $opt->{'type'} =~ /config|uconfig|module/) {
         $language_source_file_target_ = "/$opt->{'type'}.info.";
     }
 
@@ -418,7 +418,7 @@ sub language_source_file
                      $data, 1);
         }
     } else {
-        say YELLOW, "  .. No human translated file has be found for $data{'language-name'} ($language_code)", RESET;
+        say YELLOW, "  .. No human translated file has been found for $data{'language-name'} ($language_code)", RESET;
     }
 
     return (\%language_source_file, \%language_source_file_auto, $language_source_file_encoding);
@@ -447,7 +447,7 @@ sub source_data
 
     $language_source = $opt->{'language-source'};
     $type            = $data->{'type'};
-    if ($type eq 'config' || $type eq 'module') {
+    if ($type eq 'config' || $type eq 'uconfig' || $type eq 'module') {
         $language_source = $language_source ne 'en' ? "$type.info.$language_source" : "$type.info";
     }
 
@@ -902,6 +902,7 @@ sub go
                     if (!@{$keys_test} &&
                         ($opt->{'only-diff'} ||
                             $type eq 'config' ||
+                            $type eq 'uconfig' ||
                             ($code eq 'ur' && $value =~ /</) ||
                             (any {$_ =~ /^$key$/} @{$keys_exclude})))
                     {
@@ -962,7 +963,7 @@ sub go
                                (   $found eq "$mpath/$code_" ||
                                    (defined($opt->{'type'}) &&
                                        $opt->{'type'} &&
-                                       $opt->{'type'} =~ /config|module/ &&
+                                       $opt->{'type'} =~ /config|uconfig|module/ &&
                                        ($found eq "$mpath/$opt->{'type'}.info.$code_"))))
                            {
                                unlink($found);
@@ -984,7 +985,7 @@ sub go
             if (!@{$keys_test}) {
 
                 # Prepend file name for `config.info` or `module.info` modes
-                if (defined($opt->{'type'}) && $opt->{'type'} =~ /config|module/) {
+                if (defined($opt->{'type'}) && $opt->{'type'} =~ /config|uconfig|module/) {
                     $code = "$opt->{'type'}.info.$code";
                 }
 
@@ -1183,7 +1184,7 @@ language-manager
 
 =head1 DESCRIPTION
 
-Manage Webmin/Usermin module language files (lang|ulang|help|config|module), to perform transcoding, translation, spell check and add/remove language strings.
+Manage Webmin/Usermin module language files (lang|ulang|help|config|uconfig|module), to perform transcoding, translation, spell check and add/remove language strings.
 
 =head1 SYNOPSIS
 
@@ -1205,7 +1206,7 @@ Synchronize all language keys for Apache module, using English as a source langu
 
 Translate all available languages, using old-time encoding map, for BIND module, using as type "lang" directory, discarding human translations for Hebrew, keeping original value (not translating) for key "mass_desc", and printing verbose output.
 
- — language-manager -x=full -e=map -m=bind8 -w=lang -te=he -ke=mass_desc
+ — language-manager -x=full -e=map -m=bind8 -w=lang -se=he -ke=mass_desc
 
 Only transcode language files, using old-time encoding map, from files being in different encodings, to new style, where all language files are in "utf-8" encoding, for Apache module. No translations will be made, and no ".auto" files will be created.
 
@@ -1219,7 +1220,7 @@ Test translations for "index_stopmsg,trusted_warning" keys, in Russian and Germa
 
 Mode can be either <sync> or <full>. Default is set to "sync" and will only keep the keys found on source language, while missing keys in target languages, will be deleted, and newly added keys to source language, will be translated. Mode "full" is meant to perform full translation, keeping human translated strings and overwriting all machine translations done in the past (not recommended to run).
 
-=item --type, -w <lang|ulang|help|config|module>
+=item --type, -w <lang|ulang|help|config|uconfig|module>
 
 Type of target to use for operations. Either <lang>, <ulang>, <help> directories or language info file, as <config> or <module>. Default is set to "lang" for Webmin and "ulang" for Usermin.
 
