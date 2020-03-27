@@ -48,7 +48,7 @@ bytes=baitų
 megabytes=megabaitų
 extended=Išplėstas
 opt_default=Numatytas
-opt_error=„1 USD“ negalioja $2 
+opt_error=„$1“ negalioja $2 
 open_error=$1 komanda nerasta
 select_device=$1 įrenginys $2 
 select_part=$1 įrenginys $2 skaidinys $3 
@@ -159,7 +159,7 @@ reboot_ok=Perkrauti dabar
 reboot_why=Pakeitėte $1 skaidinių lentelę. Kad šis pakeitimas tinkamai įsigaliotų, jūsų sistema turi būti paleista iš naujo.
 save_err=Nepavyko išsaugoti skaidinio
 save_ecannot=Jums neleidžiama redaguoti šio disko
-save_estart=„1 USD“ nėra galiojantis pradinis cilindras
+save_estart=„$1“ nėra galiojantis pradinis cilindras
 save_eend=„$1“ nėra galiojantis cilindras
 save_emin=Pradinis cilindras turi būti> = $1 
 save_emax=Galinis cilindras turi būti <= $1 
