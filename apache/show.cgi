@@ -70,26 +70,24 @@ print "</pre></td></tr></table>\n";
 print "</td></tr>\n";
 
 if ($in{'virt'} || $in{'file'} || defined($in{'idx'})) {
-	print "<tr><form action=manual_form.cgi>\n";
-	print $s;
-	print "<td><input type=submit name=these ",
-	      "value='$text{'show_these'}'></td>\n";
-	print "</form>\n";
+	print "<tr>\n";
+	print "<td><form action=manual_form.cgi>";
+	print "<input type=submit name=these value='$text{'show_these'}'>";
+	print "$s";
+	print "</form></td>\n";
 	}
 else {
 	print "<tr> <td></td>\n";
 	}
 
-print "<form action=$edit>\n";
-print $s;
-print "<td align=right>",&ui_submit($text{'show_edit'}),"\n";
+print "<td align=right><form action=$edit>$s",&ui_submit($text{'show_edit'}),"\n";
 print "<select name=type>\n";
 foreach $e (@elist) {
 	print "<option value=",$e->{'edit'}->{'type'},">",
 	      $e->{'name'},"</option>\n";
 	}
-print "</select></td>\n";
-print "</form></tr></table>\n";
+print "</select></form></td>\n";
+print "</tr></table>\n";
 
 &ui_print_footer("$return?$args", $rmsg);
 
