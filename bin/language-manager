@@ -421,7 +421,8 @@ sub language_source_file
         say YELLOW, "  .. No human translated file has been found for $data{'language-name'} ($language_code)", RESET;
     }
 
-    return (\%language_source_file, \%language_source_file_auto, $language_source_file_encoding);
+    return (\%language_source_file, \%language_source_file_auto, $language_source_file_encoding,
+            $language_source_file_target);
 }
 
 sub language_transcode
@@ -787,19 +788,36 @@ sub go
             $message_type = "Testing translations for selected keys with" if (@{$keys_test});
 
             talk_log(("" . YELLOW . " .. $message_type $name ($code) language .." . RESET . ""), $data, $opt->{'verbose'});
-            my ($language_source_file, $language_source_file_auto, $language_source_file_encoding);
+            my ($language_source_file,
+                $language_source_file_auto,
+                $language_source_file_encoding,
+                $language_source_file_target);
             if (!@{$keys_test}) {
 
                 # Get pre-translated strings
-                ($language_source_file, $language_source_file_auto, $language_source_file_encoding) =
-                  language_source_file($opt,
-                                       $data,
-                                       ('language-name'      => $name,
-                                        'language-code'      => $code,
-                                        'module-path'        => $mpath,
-                                        'module-name'        => $module,
-                                        'translation-target' => $type
-                                       ));
+                ($language_source_file,
+                 $language_source_file_auto,
+                 $language_source_file_encoding,
+                 $language_source_file_target)
+                  = language_source_file($opt,
+                                         $data,
+                                         ('language-name'      => $name,
+                                          'language-code'      => $code,
+                                          'module-path'        => $mpath,
+                                          'module-name'        => $module,
+                                          'translation-target' => $type
+                                         ));
+
+                if (-l $language_source_file_target) {
+                    talk_log(
+                             ("  " . CYAN BOLD .
+                                ".. symlink detected - transcoding/translating skipped for this file $name ($code)" .
+                                RESET . " .."
+                             ),
+                             $data,
+                             1);
+                    next;
+                }
             }
 
             # Check if the module's language has already been transcoded/translated, to avoid potential waste
@@ -901,8 +919,8 @@ sub go
                     # options are never translated (so far), just as languages that use right-to-left writing
                     if (!@{$keys_test} &&
                         ($opt->{'only-diff'} ||
-                            $type eq 'config' ||
-                            $type eq 'uconfig' ||
+                            $type eq 'config'                ||
+                            $type eq 'uconfig'               ||
                             ($code eq 'ur' && $value =~ /</) ||
                             (any {$_ =~ /^$key$/} @{$keys_exclude})))
                     {
