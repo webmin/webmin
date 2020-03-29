@@ -1491,12 +1491,13 @@ sub error
 $main::no_miniserv_userdb = 1;
 my $msg = join("", @_);
 $msg =~ s/<[^>]*>//g;
+my $error_details = (($ENV{'WEBMIN_DEBUG'} || $gconfig{'debug_enabled'}) ? "" : "\n");
 if (!$main::error_must_die) {
 	print STDERR "Error: ",$msg,"\n";
 	}
 &load_theme_library();
 if ($main::error_must_die) {
-	die @_;
+	die "@_$error_details";
 	}
 &call_error_handlers();
 if (!$ENV{'REQUEST_METHOD'}) {
