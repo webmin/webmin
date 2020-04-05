@@ -14,7 +14,6 @@ my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 my $dom = $zone->{'name'};
 &can_edit_zone($zone) || &error($text{'master_ecannot'});
 
-my $desc = &ip6int_to_net(&arpa_to_ip($dom));
 my @st;
 my $lasttrans;
 if ($zone->{'file'}) {
@@ -22,8 +21,8 @@ if ($zone->{'file'}) {
 	$lasttrans = &text('slave_last', @st && $st[7] ? &make_date($st[9])
 					     	       : $text{'slave_never'});
 	}
-&ui_print_header($desc, $0 =~ /edit_slave/ ? $text{'slave_title'}
-					   : $text{'stub_title'},
+&ui_print_header(&zone_subhead($zone),
+		 $0 =~ /edit_slave/ ? $text{'slave_title'} : $text{'stub_title'},
 		 "", undef, 0, 0, 0, &restart_links($zone),
 		 undef, undef, $lasttrans);
 

@@ -15,7 +15,7 @@ my $file = $zone->{'file'};
 my $type = $zone->{'type'};
 
 if (!$access{'findfree'}) {&error($text{'findfree_nofind'})};
-my $desc = &text('findfree_header', &arpa_to_ip($dom));
+my $desc = &text('findfree_header', &zone_subhead($zone));
 &ui_print_header($desc, &text('findfree_title'), "",
 		 undef, undef, undef, undef, &restart_links($zone));
 

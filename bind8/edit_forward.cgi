@@ -19,8 +19,7 @@ my $dom = $zone->{'name'};
 $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'fwd_ecannot'});
-my $desc = &ip6int_to_net(&arpa_to_ip($dom));
-&ui_print_header($desc, $text{'fwd_title'}, "",
+&ui_print_header(&zone_subhead($zone), $text{'fwd_title'}, "",
 		 undef, undef, undef, undef, &restart_links());
 
 # Start of the form

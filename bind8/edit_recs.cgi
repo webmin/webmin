@@ -13,7 +13,7 @@ my $dom = $zone->{'name'};
 	&error($text{'recs_ecannot'});
 &can_edit_type($in{'type'}, \%access) ||
 	&error($text{'recs_ecannottype'});
-my $desc = &text('recs_header', &ip6int_to_net(&arpa_to_ip($dom)));
+my $desc = &text('recs_header', &zone_subhead($zone));
 my $typedesc = $text{"recs_$in{'type'}"} || $in{'type'};
 &ui_print_header($desc, &text('recs_title', $typedesc), "",
 		 undef, undef, undef, undef, &restart_links($zone));

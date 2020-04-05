@@ -12,8 +12,7 @@ my $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
 $access{'params'} || &error($text{'master_esoacannot'});
-my $desc = &ip6int_to_net(&arpa_to_ip($dom));
-&ui_print_header($desc, $text{'master_params'}, "",
+&ui_print_header(&zone_subhead($zone), $text{'master_params'}, "",
 		 undef, undef, undef, undef, &restart_links($zone));
 
 my @recs = &read_zone_file($zone->{'file'}, $dom);

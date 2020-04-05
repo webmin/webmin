@@ -4260,5 +4260,15 @@ if (&foreign_check("virtual-server")) {
 return wantarray ? @rv : $rv[0];
 }
 
+# zone_subhead(&zone)
+# Returns a ui_header subtitle for a zone
+sub zone_subhead
+{
+my ($zone) = @_;
+my $desc = &ip6int_to_net(&arpa_to_ip($zone->{'name'}));
+my $view = $zone->{'view'};
+return $view ? &text('master_inview', $desc, $view) : $desc;
+}
+
 1;
 

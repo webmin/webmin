@@ -67,6 +67,7 @@ index_eexpired_conf=Automatic signing should be re-enabled on the $1 page.
 index_eexpired_mod=Use the $1 module to either disable DNSSEC for these domains, or check why signing is failing.
 
 master_title=Edit Master Zone
+master_inview=$1 in view $2
 master_ecannot=You are not allowed to edit this zone
 master_egone=Zone $1 does not exist in any view
 master_egone2=Zone $1 does not exist!

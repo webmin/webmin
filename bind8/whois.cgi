@@ -15,8 +15,7 @@ my $dom = $zone->{'name'};
 
 my $tv = $zone->{'type'};
 $dom =~ s/\.$//;
-my $desc = &ip6int_to_net(&arpa_to_ip($dom));
-&ui_print_header($desc, $text{'whois_title'}, "",
+&ui_print_header(&zone_subhead($zone), $text{'whois_title'}, "",
 		 undef, undef, undef, undef, &restart_links($zone));
 
 my $qdom = quotemeta($dom);

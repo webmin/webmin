@@ -12,8 +12,7 @@ $in{'view'} = 'any' if (!$in{'view'} || $in{'view'} eq '');
 my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 my $dom = $zone->{'name'};
 &can_edit_zone($zone) || &error($text{'master_ecannot'});
-my $desc = &ip6int_to_net(&arpa_to_ip($dom));
-&ui_print_header($desc, $text{'master_title'}, "",
+&ui_print_header(&zone_subhead($zone), $text{'master_title'}, "",
 		 undef, undef, undef, undef, &restart_links($zone));
 
 # Find the record types
