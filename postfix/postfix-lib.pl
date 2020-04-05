@@ -264,32 +264,61 @@ sub reload_postfix
     return undef;
 }
 
+# get_bootup_action()
+# Returns the name of the init script to start and stop Postfix, if found.
+sub get_bootup_action
+{
+return undef if (!&foreign_check("init"));
+&foreign_require("init");
+my $name = $config{'init_name'} || 'postfix';
+my $st = &init::action_status($name);
+return $st == 0 ? undef : $name;
+}
+
 # stop_postfix()
 # Attempts to stop postfix, returning undef on success or an error message
 sub stop_postfix
 {
-local $out;
+my ($ok, $out, $init);
 if ($config{'stop_cmd'}) {
+	# Use the user-configured stop command
 	$out = &backquote_logged("$config{'stop_cmd'} 2>&1");
+	$ok = !$?;
 	}
 else {
-	$out = &backquote_logged("$config{'postfix_control_command'} -c $config_dir stop 2>&1");
+	# Run the init script if there is one, and also the control command in
+	# case this is a systemd server and it assumes Postfix isn't running
+	if ($init = &get_bootup_action()) {
+		($ok, $out) = &init::stop_action($init);
+		}
+	if (&is_postfix_running()) {
+		$out = &backquote_logged("$config{'postfix_control_command'} -c $config_dir stop 2>&1");
+		$ok = !$?;
+		}
 	}
-return $? ? "<tt>$out</tt>" : undef;
+return $ok ? undef : "<tt>".&html_escape($out)."</tt>";
 }
 
 # start_postfix()
 # Attempts to start postfix, returning undef on success or an error message
 sub start_postfix
 {
-local $out;
+my ($ok, $out, $init);
 if ($config{'start_cmd'}) {
+	# Use the user-configured start command
 	$out = &backquote_logged("$config{'start_cmd'} 2>&1");
+	$ok = !$?;
+	}
+elsif ($init = &get_bootup_action()) {
+	# Run the init script if there is one
+	($ok, $out) = &init::start_action($init);
+	$ok = !$?;
 	}
 else {
+	# Fall back to the Postfix control command
 	$out = &backquote_logged("$config{'postfix_control_command'} -c $config_dir start 2>&1");
 	}
-return $? ? "<tt>$out</tt>" : undef;
+return $ok ? undef : "<tt>".&html_escape($out)."</tt>";
 }
 
 # option_radios_freefield(name_of_option, length_of_free_field, [name_of_radiobutton, text_of_radiobutton]+)
