@@ -3159,7 +3159,7 @@ my $request_nolog = $request;
 
 # Process full request string like `POST /index.cgi?param=1 HTTP/1.1` as well
 if ($request =~ /^(POST|GET)\s+/) {
-    $request_nolog =~ s/(.*?)(\/.*?)\s+(.*)/$2/g;
+	$request_nolog =~ s/(.*?)(\/.*?)\s+(.*)/$2/g;
 	}
 if ($config{'nolog'}) {
 	foreach my $nolog (split(/\s+/, $config{'nolog'})) {
