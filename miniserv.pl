@@ -3155,9 +3155,15 @@ sub log_request
 {
 local ($host, $user, $request, $code, $bytes) = @_;
 local $headers;
+my $request_nolog = $request;
+
+# Process full request string like `POST /index.cgi?param=1 HTTP/1.1` as well
+if ($request =~ /^(POST|GET)\s+/) {
+    $request_nolog =~ s/(.*?)(\/.*?)\s+(.*)/$2/g;
+	}
 if ($config{'nolog'}) {
 	foreach my $nolog (split(/\s+/, $config{'nolog'})) {
-		return if ($request =~ /^$nolog$/);
+		return if ($request_nolog =~ /^$nolog$/);
 		}
 	}
 if ($config{'log'}) {
