@@ -1167,7 +1167,7 @@ print "<p>\n";
 sub restart_button
 {
 local $rv;
-$args = "redir=".&urlize($gconfig{'webprefix'} . &this_url());
+$args = "redir=".&urlize(&this_url());
 local @rv;
 if (&is_apache_running()) {
 	if ($access{'apply'}) {
