@@ -85,7 +85,9 @@ if (!$in{'clear'}) {
 							# programs get the right
 							# module, not this one!
 			if (&supports_users() && $user ne "root") {
-				$cmd = &command_as_user($user, 2, "cd $pwd ; $cmd");
+				$cmd = &command_as_user(
+					$user, $access{'shellenv'} ? 2 : 0,
+					"cd $pwd && $cmd");
 				@uinfo = getpwnam($user);
 				}
 			else {
