@@ -12,7 +12,9 @@ my $dom = $zone->{'name'};
 	&error($text{'master_ecannot'});
 $access{'dnssec'} || &error($text{'dnssec_ecannot'});
 
-&ui_print_header(&zone_subhead($zone), $text{'zonekey_title'}, "",
+my $desc = &zone_subhead($zone);
+
+&ui_print_header($desc, $text{'zonekey_title'}, "",
 		 undef, undef, undef, undef, &restart_links($zone));
 
 # Check if the zone already has a key, from a DNSKEY record
