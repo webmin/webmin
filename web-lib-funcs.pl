@@ -5066,7 +5066,7 @@ return 1;
 }
 
 =head2 load_language_auto()
-Returns 1 or 0, if *.auto files should be used based on options (user/list_lang.txt)
+Returns 1 or 0, if *.auto files should be used based on options (user or lang_list.txt)
 
 =cut
 sub load_language_auto
