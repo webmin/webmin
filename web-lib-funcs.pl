@@ -5065,6 +5065,26 @@ if ($main::export_to_caller) {
 return 1;
 }
 
+=head2 load_language_auto()
+Returns 1 or 0, if *.auto files should be used based on options (user/list_lang.txt)
+
+=cut
+sub load_language_auto
+{
+	my $auto = $gconfig{"langauto_$remote_user"};
+	if (!defined($auto)) {
+		my $glangauto = $gconfig{'langauto'};
+		if (defined($glangauto)) {
+			$auto = $glangauto;
+			} 
+		else {
+			my ($clanginfo) = grep { $_->{'lang'} eq $current_lang } &list_languages();
+			$auto = $clanginfo->{'auto'};
+			}
+		}
+return $auto;
+}
+
 =head2 load_language([module], [directory])
 
 Returns a hashtable mapping text codes to strings in the appropriate language,
@@ -5084,22 +5104,14 @@ sub load_language
 my %text;
 my $root = $root_directory;
 my $ol = $gconfig{'overlang'};
-my $auto = $gconfig{"langauto_$remote_user"};
-if (!defined($auto)) {
-	my $glangauto = $gconfig{'langauto'};
-	if (defined($glangauto)) {
-		$auto = $glangauto;
-	} else {
-		my ($clanginfo) = grep { $_->{'lang'} eq $current_lang } &list_languages();
-		$auto = $clanginfo->{'auto'};
-	}
-}
+my $auto = load_language_auto();
 my ($dir) = ($_[1] || "lang");
 
 # Read global lang files
 foreach my $o (@lang_order_list) {
 	my $ok = &read_file_cached_with_stat("$root/$dir/$o", \%text);
-	&read_file_cached_with_stat("$root/$dir/$o.auto", \%text) if($auto && $ok && -r "$root/$dir/$o.auto");
+	&read_file_cached_with_stat("$root/$dir/$o.auto", \%text) 
+		if($auto && $ok && -r "$root/$dir/$o.auto");
 	return () if (!$ok && $o eq $default_lang);
 	}
 if ($ol) {
@@ -5120,7 +5132,8 @@ if ($_[0]) {
 	my $mdir = &module_root_directory($_[0]);
 	foreach my $o (@lang_order_list) {
 		&read_file_cached_with_stat("$mdir/$dir/$o", \%text);
-		&read_file_cached_with_stat("$mdir/$dir/$o.auto", \%text) if($auto && -r "$mdir/$dir/$o.auto");
+		&read_file_cached_with_stat("$mdir/$dir/$o.auto", \%text)
+			if($auto && -r "$mdir/$dir/$o.auto");
 		}
 	if ($ol) {
 		foreach my $o (@lang_order_list) {
@@ -5300,6 +5313,7 @@ sub get_module_info
 return () if ($_[0] =~ /^\./);
 my (%rv, $clone, $o);
 my $mdir = &module_root_directory($_[0]);
+my $auto = load_language_auto();
 &read_file_cached("$mdir/module.info", \%rv) || return ();
 if (-l $mdir) {
 	# A clone is a module that links to another directory under the root
@@ -5316,6 +5330,8 @@ if (-l $mdir) {
 foreach $o (@lang_order_list) {
 	next if ($o eq "en");
 	&read_file_cached("$mdir/module.info.$o", \%rv);
+	&read_file_cached("$mdir/module.info.$o.auto", \%rv)
+		if ($auto && -r "$mdir/module.info.$o.auto");
 	}
 
 # Apply desc_$LANG overrides
@@ -7445,8 +7461,13 @@ sub help_file
 {
 my $mdir = &module_root_directory($_[0]);
 my $dir = "$mdir/help";
+my $auto = load_language_auto();
 foreach my $o (@lang_order_list) {
 	my $lang = "$dir/$_[1].$o.html";
+	my $lang_auto = "$dir/$_[1].$o.auto.html";
+	if ($auto && !-r $lang && -r $lang_auto) {
+		return $lang_auto;
+		}
 	return $lang if (-r $lang);
 	}
 return "$dir/$_[1].html";
