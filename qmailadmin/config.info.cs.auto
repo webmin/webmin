@@ -1,7 +1,0 @@
-columns=Columns for aliases and other tables,1,2-2,1-1
-mailq_sort=Sort mail queue by,1,0-Queue ID,1-From address,2-To address
-mailq_count=Show size of mail queue on main page?,1,0-Yes,1-No
-fwd_mode=Forward messages with quoting?,1,0-Yes,1-No
-delete_warn=Confirm before deleting messages,1,1-Yes,0-No
-index_min=Minimum mail file size to index,3,Always index
-apply_cmd=Command to apply configuration,3,Just send HUP signal

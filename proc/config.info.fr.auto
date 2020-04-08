@@ -1,3 +1,0 @@
-trace_java=Show system call trace using,1,1-Java applet,0-Text
-hide_self=Hide Webmin processes from list?,1,1-Yes,0-No
-cut_length=Characters to truncate commands to,3,Unlimited

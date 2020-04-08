@@ -1,2 +1,0 @@
-webmin_subs=Do Webmin variable substitution on backup destinations?,1,1-Yes,0-No
-nonewtape=Action if tape is full,1,1-Fail immediately,0-Prompt for new tape

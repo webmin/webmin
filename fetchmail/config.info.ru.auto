@@ -1,4 +1,0 @@
-max_users=Maximum number of users to display,3,Unlimited
-view_mode=Display user list as,1,1-Usernames only,0-Usernames and fetchmail configuration
-stop_cmd=Command to stop fetchmail daemon,3,Just run fetchmail -q
-start_cmd=Command to start fetchmail daemon,3,Just run fetchmail

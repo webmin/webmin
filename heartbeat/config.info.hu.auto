@@ -1,8 +1,0 @@
-alt_haresources=Sample resources file,3,None
-line2=System configuration,11
-req_resource_cmd=Script to take Resource,0
-alt_ha_cf=Sample heartbeat config file,3,None
-alt_authkeys=Sample authentication keys file,3,None
-heartbeat=Path to heartbeat command,0
-version=Version of Heartbeat installed,3,Work out automatically
-serials=Pattern for serial port files,0

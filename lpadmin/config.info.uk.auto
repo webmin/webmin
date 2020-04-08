@@ -1,3 +1,0 @@
-spool_dir=Printer spool directory,3,None,60
-ro_printcap_file=Extra printers file not managed by Webmin,3,None
-show_jobs=Show number of jobs in queues on main page?,1,1-Yes,0-No

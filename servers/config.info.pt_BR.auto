@@ -1,9 +1,0 @@
-skipifaces=Network interfaces to not detect,0
-listen=Scan for servers on UDP port,3,Same as this system
-deffast=Default RPC mode,1,1-Fast,2-Automatic,0-Slow
-deflink=Default login mode,4,0-Normal link to server,1-Login via Webmin,2-Login when icon is clicked,3-Login with same username and password
-skipips=IPs or hostnames of systems to not detect,9,50,5,\t
-auto_type=Default system type,14,show_deftype
-show_ip=Always show address and port on main page?,1,1-Yes,0-No
-max_servers=Show search form if number of servers exceeds,0
-capath=File or directory for remote SSL CA certificates,0

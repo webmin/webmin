@@ -1,8 +1,0 @@
-nscd_restart=Command to restart nscd,3,Send HUP signal
-real_base=Real home directory base,3,Same as above
-passwd_redesc=Human-readable description of regexp,3,Just use regexp
-passwd_progmode=Pass username and password to program,1,1-As input,0-As parameters
-dict_file=Files containing dictionary words,3,Use system defaults
-selinux_con=SElinux context for new home directories,10,-None,*-System default
-membox=Edit group members using,1,1-Text box,0-User selector
-passwd_mindays=Number of days before password change is allowed,3,None

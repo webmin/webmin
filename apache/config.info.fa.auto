@@ -1,8 +1,0 @@
-link_dir=Directory to create links in for new virtual servers,3,None
-allow_virtualmin=Allow editing of domains managed by Virtualmin?,1,1-Yes,0-No
-auto_mods=Always detect Apache modules automatically?,1,1-Yes,0-No
-defines_name=Environment variable name in above file,0
-graceful_cmd=Command to re-read configuration,3,Same as apply command
-defines_mods=Directories containing modules for HAVE_ variables,9,40,3,\t
-defines_file=Environment file defining Apache variables,3,None
-line3=Apache variables,11

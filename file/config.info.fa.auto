@@ -1,8 +1,0 @@
-hide_dot_files=Show files starting with a dot?,1,0-Yes,1-No
-force_text=Editor for HTML files,1,1-Text editor,0-HTML editor
-defzip=Default archive mode for uploads,1,2-Extract and delete,1-Extract,0-Do nothing
-fixed=Font size for text,3,Default (12 points)
-width=Width for scaled images,3,Default (300 pixels)
-small_fixed=Font size for buttons,3,Default (10 points)
-defuser=Default user for uploads,10,root-root,*-Same as directory,Other user
-htmlexts=File extensions to edit as HTML,3,Default (.htm and .html)

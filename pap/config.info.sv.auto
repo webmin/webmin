@@ -1,7 +1,0 @@
-pppd=Path to pppd server,0
-dialin_config=Mgetty dialin configuration file,0
-serials=Serial ports pattern,0
-ppp_options=PPP options file,0
-mgetty=Path to mgetty program,0
-line2=System configuration,11
-login_config=Mgetty login configuration file,0

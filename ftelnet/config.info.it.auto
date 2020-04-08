@@ -1,3 +1,0 @@
-cols=Number of text columns,3,Default (80)
-telnetport=Port for telnet server,3,Default (23)
-rows=Number of text rows,3,Default (25)

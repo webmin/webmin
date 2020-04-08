@@ -1,3 +1,0 @@
-nfs_check=Check NFS servers before attempting mount,1,1-Yes,0-No
-sysinfo=Show available disk data on Dashboard,1,1-Yes,0-No
-browse_group=CIFS workgroup for browse list,0

@@ -1,9 +1,0 @@
-line1.1=Quota email messages,11
-email_msg=Email message for users over quota,9,80,5,\t
-pc_show=Usage percentages to show,1,2-Hard and soft,1-Hard only,0-Soft only
-email_subject=Subject for email message to users,3,Default
-group_setquota_command=Command to set a group's quota,3,None
-gemail_subject=Subject for email message to groups,3,Default
-hide_uids=Show deleted users?,1,0-Yes,1-No
-user_setquota_command=Command to set a user's quota,3,None
-gemail_msg=Email message for groups over quota,9,80,5,\t

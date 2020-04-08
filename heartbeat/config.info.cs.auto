@@ -1,3 +1,0 @@
-heartbeat=Path to heartbeat command,0
-version=Version of Heartbeat installed,3,Work out automatically
-req_resource_cmd=Script to take Resource,0

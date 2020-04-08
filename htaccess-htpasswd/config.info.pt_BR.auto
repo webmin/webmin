@@ -1,9 +1,0 @@
-perms=Permissions for created files,3,Default (644)
-md5=Offer MD5 encryption option?,1,1-Yes,0-No
-digest=Offer digest encryption option?,1,1-Yes,0-No
-htaccess=Apache options file name,0
-extra_directives=Extra directives to include in .htaccess,9,0,0,\t
-sha1=Offer SHA1 encryption option?,1,1-Yes,0-No
-htpasswd=Users file name,0
-sort=Sort users by,1,1-Username,0-Order in file
-htgroups=Groups file name,0

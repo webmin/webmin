@@ -1,6 +1,0 @@
-squid_stop=Command to stop squid,3,Automatic
-squidclient=Path to squidclient program,3,Not installed
-squid_restart=Command to apply changes,3,Automatic
-squid_path=Squid executable,0
-squid_start=Command to start squid,3,Automatic
-squid_conf=Full path to squid config file,0
