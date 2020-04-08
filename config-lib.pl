@@ -114,12 +114,12 @@ foreach my $c (@info_order) {
 		# One of many
 		my $len = 0;
 		for(my $i=2; $i<@p; $i++) {
-			$p[$i] =~ /^(\S*)\-(.*)$/;
+			$p[$i] =~ /^(\S*?)\-(.*)$/;
 			$len += length($2);
 			}
 		my @opts;
 		for($i=2; $i<@p; $i++) {
-			$p[$i] =~ /^(\S*)\-(.*)$/;
+			$p[$i] =~ /^(\S*?)\-(.*)$/;
 			push(@opts, [ $1, $2.($len > 50 ? "<br>" : "") ]);
 			}
 		$field = &ui_radio($c, $config{$c}, \@opts);
@@ -129,7 +129,7 @@ foreach my $c (@info_order) {
 		my %sel;
 		map { $sel{$_}++ } split(/,/, $config{$c});
 		for($i=2; $i<@p; $i++) {
-			$p[$i] =~ /^(\S*)\-(.*)$/;
+			$p[$i] =~ /^(\S*?)\-(.*)$/;
 			$field .= &ui_checkbox($c, $1, $2, $sel{$1});
 			}
 		}
@@ -143,7 +143,7 @@ foreach my $c (@info_order) {
 		# One of many menu
 		my @opts;
 		for($i=2; $i<@p; $i++) {
-			$p[$i] =~ /^(\S*)\-(.*)$/;
+			$p[$i] =~ /^(\S*?)\-(.*)$/;
 			push(@opts, [ $1, $2 ]);
 			}
 		$field = &ui_select($c, $config{$c}, \@opts);
@@ -198,7 +198,7 @@ foreach my $c (@info_order) {
 		# Radios with freetext option
 		my $len = 20;
 		for(my $i=2; $i<@p; $i++) {
-			if ($p[$i] =~ /^(\S*)\-(.*)$/) {
+			if ($p[$i] =~ /^(\S*?)\-(.*)$/) {
 				$len += length($2);
 				}
 			else {
@@ -208,11 +208,11 @@ foreach my $c (@info_order) {
 		my $fv = $config{$c};
 		my @opts;
 		for(my $i=2; $i<@p; $i++) {
-			($p[$i] =~ /^(\S*)\-(.*)$/) || next;
+			($p[$i] =~ /^(\S*?)\-(.*)$/) || next;
 			push(@opts, [ $1, $2.($len > 50 ? "<br>" : "") ]);
 			$fv = undef if ($config{$c} eq $1);
 			}
-		push(@opts, [ "free", $p[$#p] !~ /^(\S*)\-(.*)$/ ? $p[$#p]
+		push(@opts, [ "free", $p[$#p] !~ /^(\S*?)\-(.*)$/ ? $p[$#p]
 								 : " " ]);
 		$field = &ui_radio($c, $fv ? "free" : $config{$c}, \@opts)." ".
 			 &ui_textbox($c."_free", $fv, 20);
@@ -229,7 +229,7 @@ foreach my $c (@info_order) {
 		my @sel = split(/,/, $config{$c});
 		my @opts;
 		for($i=2; $i<@p; $i++) {
-			$p[$i] =~ /^(\S*)\-(.*)$/;
+			$p[$i] =~ /^(\S*?)\-(.*)$/;
 			push(@opts, [ $1, $2 ]);
 			}
 		$field = &ui_select($c, \@sel, \@opts, 5, 1);
