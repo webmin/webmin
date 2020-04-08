@@ -430,7 +430,7 @@ sub language_transcode
     my ($string, $encoding, $opt) = @_;
 
     # In case it's a `config` or `uconfig` file, preserve 
-    # &#44;, as a regular comma separates params
+    # &#44; and &#45;, as a literal characters
     my $type_config = $opt->{'type'} =~ /config|uconfig/;
     if ($type_config) {
         $string =~ s/&#44;/~,~,~/g;
@@ -451,15 +451,15 @@ sub language_transcode
     decode_entities($string);
     $string = encode('utf-8', $string);
     
-    # Restore encoded commas
+    # Restore special commas and dashes
     if ($type_config) {
         $string =~ s/~-~-~/&#45;/g;
         $string =~ s/~,~,~/&#44;/g;
     }
 
     # Restore escaped tags
-    $string =~ s/~!~!!~/&lt;/g;
     $string =~ s/~!!~!~/&gt;/g;
+    $string =~ s/~!~!!~/&lt;/g;
     return $string;
 }
 
