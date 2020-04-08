@@ -8665,14 +8665,12 @@ return defined($gconfig{'userconfig'}) ? 'usermin' : 'webmin';
 =head2 get_charset
 
 Returns the character set for the current language, such as iso-8859-1.
+Nowadays should always return 'UTF-8' encoding only
 
 =cut
 sub get_charset
 {
-my $charset = defined($gconfig{'charset'}) ? $gconfig{'charset'} :
-		 $current_lang_info->{'charset'} ?
-		 $current_lang_info->{'charset'} : $default_charset;
-return $charset;
+return 'UTF-8';
 }
 
 =head2 get_display_hostname
